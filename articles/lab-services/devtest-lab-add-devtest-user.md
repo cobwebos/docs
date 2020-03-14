@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
 ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380945"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284273"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中添加所有者和用户
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -31,28 +31,28 @@ ms.locfileid: "78380945"
 ## <a name="actions-that-can-be-performed-in-each-role"></a>每个角色可以执行的操作
 可以为用户分配一下三种主要角色：
 
-* 所有者
+* “所有者”
 * DevTest 实验室用户
-* Contributor
+* 参与者
 
 下表说明了每个角色的用户可以执行的操作：
 
 | **此角色的用户可以执行的操作** | **实验室用户** | **所有者** | **参与者** |
 | --- | --- | --- | --- |
 | **实验室任务** | | | |
-| 将用户添加到实验室 |是 |是 |是 |
-| 更新成本设置 |是 |是 |是 |
+| 将用户添加到实验室 |否 |是 |否 |
+| 更新成本设置 |否 |是 |是 |
 | **VM 基本任务** | | | |
-| 添加和删除自定义映像 |是 |是 |是 |
+| 添加和删除自定义映像 |否 |是 |是 |
 | 添加、更新和删除公式 |是 |是 |是 |
-| 将 Azure 市场映像加入允许列表 |是 |是 |是 |
+| 将 Azure 市场映像加入允许列表 |否 |是 |是 |
 | **VM 任务** | | | |
 | 创建 VM |是 |是 |是 |
 | 启动、停止和删除 VM |用户仅创建 VM |是 |是 |
-| 更新 VM 策略 |是 |是 |是 |
+| 更新 VM 策略 |否 |是 |是 |
 | 将数据磁盘添加到 VM 或从中删除 |用户仅创建 VM |是 |是 |
 | **项目任务** | | | |
-| 添加和删除项目存储库 |是 |是 |是 |
+| 添加和删除项目存储库 |否 |是 |是 |
 | 应用项目 |是 |是 |是 |
 
 > [!NOTE]

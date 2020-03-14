@@ -3,12 +3,12 @@ title: 使用恢复服务保管库的诊断设置
 description: 介绍如何使用 Azure 备份的新旧诊断事件的文章
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583939"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136933"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>使用恢复服务保管库的诊断设置
 
@@ -56,7 +56,9 @@ Azure 备份提供以下诊断事件，每个事件都提供一组特定的备�
 
 通常，保管库的所有与备份相关的诊断数据都包含在一个名为 "AzureBackupReport" 的事件中。 上述六个事件实质上是 AzureBackupReport 中包含的所有数据的分解。 
 
-目前，在用户对此事件具有现有自定义查询的情况下（例如，自定义日志警报、自定义可视化效果等），我们将继续支持 AzureBackupReport 事件以获得向后兼容性。但是，我们建议为保管库中的所有新诊断设置选择新事件，因为这样可以更轻松地在日志查询中使用这些数据，从而可以更好地发现架构及其结构，从而提高这两个引入的性能延迟和查询时间。 对使用 Azure 诊断模式的支持最终将会逐步推出，因此选择新事件可能会帮助你在以后避免复杂的迁移。
+目前，在用户对此事件具有现有自定义查询的情况下（例如，自定义日志警报、自定义可视化效果等），我们将继续支持 AzureBackupReport 事件以获得向后兼容性。但是，**我们建议尽快迁移到新事件**，因为这样可以使数据更易于在日志查询中使用，从而可以更好地发现架构及其结构，从而提高引入延迟和查询时间的性能。 **对使用 Azure 诊断模式的支持最终将会逐步推出，因此选择新事件可能会帮助你在以后避免复杂的迁移**。
+
+使用 Azure 备份的内置策略为指定范围内的所有保管库添加包含6个新事件的新诊断设置：[大规模配置保管库诊断设置](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 你可以选择为 AzureBackupReport 和六个新事件创建单独的诊断设置，直到你将所有自定义查询迁移到使用新表中的数据。 下图显示了一个具有两个诊断设置的保管库的示例。 名为**Setting1**的第一个设置在 AzureDiagnostics 模式下将 AzureBackupReport 事件的数据发送到 LA 工作区。 名为**Setting2**的第二个设置将六个新的 Azure 备份事件的数据发送到 "资源特定" 模式下的 "LA" 工作区。
 

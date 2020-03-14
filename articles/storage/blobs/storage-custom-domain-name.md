@@ -9,16 +9,18 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 892f8bb24da00f1bd5827725f40fdc4359be0937
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906542"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370468"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>将自定义域映射到 Azure Blob 存储终结点
 
 可以将自定义域映射到 blob 服务终结点或[静态网站](storage-blob-static-website.md)终结点。 
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > 此映射仅适用于子域（例如： `www.contoso.com`）。 如果希望 web 终结点在根域上可用（例如： `contoso.com`），则必须使用 Azure CDN。 有关指南，请参阅本文中的将[自定义域映射到已启用 HTTPS](#enable-https)部分。 由于你转到本文的这一节来启用自定义域的根域，因此用于启用 HTTPS 的那一节中的步骤是可选的。 
@@ -231,7 +233,7 @@ ms.locfileid: "76906542"
 
 若要删除自定义域映射，请取消注册该自定义域。 使用以下过程之一。
 
-#### <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+#### <a name="portal"></a>[门户](#tab/azure-portal)
 
 若要删除自定义域设置，请执行以下操作：
 
@@ -246,9 +248,9 @@ ms.locfileid: "76906542"
 
 成功删除自定义域后，你将看到一个门户通知，指出你的存储帐户已成功更新
 
-#### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要删除自定义域注册，请使用 [az storage account update](https://docs.microsoft.com/cli/azure/storage/account) CLI 命令，并为 `--custom-domain` 参数值指定空字符串 (`""`)。
+若要删除自定义域注册，请使用 [az storage account update](https://docs.microsoft.com/cli/azure/storage/account) CLI 命令，并为 `""` 参数值指定空字符串 (`--custom-domain`)。
 
 * 命令格式：
 
@@ -268,11 +270,11 @@ ms.locfileid: "76906542"
       --custom-domain ""
   ```
 
-#### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-若要删除自定义域注册，请使用 [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) PowerShell cmdlet，并为 `-CustomDomainName` 参数值指定空字符串 (`""`)。
+若要删除自定义域注册，请使用 [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) PowerShell cmdlet，并为 `""` 参数值指定空字符串 (`-CustomDomainName`)。
 
 * 命令格式：
 

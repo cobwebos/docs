@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 88382a5b6e0364145d8504b5e25ef1a9bfd0111a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 95f7d4d03fbac6ec7c27630f1210ef999ddc776c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484122"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369261"
 ---
 # <a name="check-for-pool-and-node-errors"></a>检查池和节点错误
 
@@ -137,8 +137,21 @@ Batch 在删除过程中将[池状态](https://docs.microsoft.com/rest/api/batch
 
 对于每个任务编写的文件，可以为每个任务指定保留时间，以确定任务文件在自动清理之前保留多长时间。 可以缩短保留时间以降低存储要求。
 
-如果临时磁盘空间已满，则节点当前将停止正在运行的任务。 以后会报告[节点错误](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)。
+如果临时磁盘空间不足（或非常接近空间不足），则节点将转到 "[不可用](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)" 状态，并且将报告节点错误（使用已存在的链接），指出磁盘已满。
 
+### <a name="what-to-do-when-a-disk-is-full"></a>磁盘已满时要执行的操作
+
+确定磁盘已满的原因：如果不能确定节点上占据空间的原因，则建议远程进入节点并在空间已消失的位置手动调查。 你还可以使用[批处理列表文件 API](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode)来检查批处理托管文件夹（例如，任务输出）中的文件。 请注意，此 API 只列出批处理托管目录中的文件，如果任务在其他位置创建文件，则不会看到这些文件。
+
+请确保已从节点检索到所需的任何数据或将其上载到持久存储。 磁盘完全问题的所有缓解措施都涉及到删除数据以释放空间。
+
+### <a name="recovering-the-node"></a>恢复节点
+
+1. 如果池是[loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)池，则可以通过[批处理重新映像 API](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage)重新映像该节点。这会清理整个磁盘。 [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)池目前不支持重映像。
+
+2. 如果池是[VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)，则可以使用 "[删除节点" API](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes)从池中删除节点。 然后，你可以再次增加池以将错误节点替换为新节点。
+
+3.  删除已完成的旧作业或任务数据仍位于节点上的旧已完成任务。 有关作业/任务数据位于节点上的提示，可以在节点上的[RecentTasks 集合](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation)中查看，也可以在[节点上的文件](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode)中查看。 删除作业将删除作业中的所有任务，删除作业中的任务会触发要删除的节点上的任务目录中的数据，从而释放空间。 释放足够的空间后，重新启动该节点，并再次进入 "不可用" 状态并再次进入 "空闲" 状态。
 
 ## <a name="next-steps"></a>后续步骤
 

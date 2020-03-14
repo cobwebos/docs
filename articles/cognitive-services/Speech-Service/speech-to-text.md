@@ -3,19 +3,19 @@ title: 语音到文本语音服务
 titleSuffix: Azure Cognitive Services
 description: 通过语音到文本功能，可以将音频流实时传输到文本中。 应用程序、工具或设备可以对此文本输入使用、显示和执行操作。 此服务可与文本到语音（语音合成）和语音翻译功能无缝协作。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.author: erhopf
-ms.openlocfilehash: 8518f92a4f4df1686d4b338783a93d969e04d219
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/12/2020
+ms.author: dapine
+ms.openlocfilehash: c5befcade944ff481b5f55e3a4afe11672dad117
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388303"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371250"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音转文本？
 
@@ -24,9 +24,8 @@ ms.locfileid: "78388303"
 语音到文本服务默认使用通用语言模型。 此模型是使用 Microsoft 拥有的数据训练的，部署在云中。 这对于对话和听写方案是最佳的。 使用语音到文本进行识别和在独特的环境中工作时，可以创建自定义声音、语言和发音模型并对其进行训练。 自定义有助于解决环境干扰或特定于行业的词汇。
 
 > [!NOTE]
-> 必应语音于2019年10月15日停用。 如果你的应用程序、工具或产品正在使用必应语音 Api 或自定义语音，我们已创建了可帮助你迁移到语音服务的指南。
+> 必应语音于2019年10月15日停用。 如果你的应用程序、工具或产品正在使用必应语音 Api，我们已创建了可帮助你迁移到语音服务的指南。
 > - [从必应语音迁移到语音服务](how-to-migrate-from-bing-speech.md)
-> - [从自定义语音迁移到语音服务](how-to-migrate-from-custom-speech-service.md)
 
 ## <a name="get-started-with-speech-to-text"></a>开始语音到文本
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心的自适应网络强化 |Microsoft Docs
-description: 了解如何根据实际流量模式、网络安全组（NSG）规则进行强化，并进一步改善安全状况。
+description: 了解如何使用实际的流量模式来强化网络安全组（NSG）规则，并进一步改善安全状况。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/24/2019
+ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: bc610fa1d7a5fa1a10db3298164404b92d5d9f85
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559272"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139583"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 安全中心的自适应网络强化
 了解如何在 Azure 安全中心配置自适应网络强化。
@@ -30,10 +30,12 @@ ms.locfileid: "74559272"
 
 例如，假设现有的 NSG 规则是允许端口22上的 140.20.30.10/24 流量。 根据分析，自适应网络强化建议会缩小范围并允许来自 140.23.30.10/29 的流量（这是较窄的 IP 范围），并拒绝到该端口的所有其他流量。
 
+>[!TIP]
+> 自适应网络强化建议仅在特定端口上受支持。 有关完整列表，请参阅下面的[支持哪些端口？](#which-ports-are-supported) 
+
+
 ![网络强化视图](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
-> [!NOTE]
-> 以下端口支持自适应网络强化建议：22、3389、21、23、445、4333、3306、1433、1434、53、20、5985、5986、5432、139、66、1128
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>查看自适应网络强化警报和规则
 
@@ -73,7 +75,7 @@ ms.locfileid: "74559272"
     ![强制执行规则](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
 
 
-### 修改规则<a name ="modify-rule"></a>
+### 修改规则<a name ="modify-rule"> </a>
 
 你可能需要修改建议的规则参数。 例如，你可能想要更改建议的 IP 范围。
 
@@ -106,7 +108,7 @@ ms.locfileid: "74559272"
 
     ![强制规则](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
-### 添加新规则<a name ="add-rule"></a>
+### 添加新规则<a name ="add-rule"> </a>
 
 可以添加安全中心不推荐的 "允许" 规则。
 
@@ -129,7 +131,7 @@ ms.locfileid: "74559272"
     ![强制规则](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
-### 删除规则<a name ="delete-rule"></a>
+### 删除规则<a name ="delete-rule"> </a>
 
 必要时，可以删除当前会话的建议规则。 例如，你可能会确定应用建议的规则可能会阻止合法的流量。
 
@@ -139,11 +141,72 @@ ms.locfileid: "74559272"
 
     ![强化规则](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
 
-
-
-
-
-
-
  
 
+## <a name="which-ports-are-supported"></a>支持哪些端口？
+
+自适应网络强化建议仅在特定端口上受支持。 此表提供完整列表：
+
+|端口|协议|关联服务|
+|:---:|:----:|:----|
+|13|UDP|日间服务|
+|17|UDP|QOTD 协议|
+|19|UDP|CHARGEN 协议|
+|22|TCP|SSH|
+|23|TCP|Telnet|
+|53|UDP|DNS|
+|69|UDP|TFTP|
+|81|TCP|潜在恶意（TOR 出口节点）|
+|111|TCP/UDP|RPC|
+|119|TCP|NNTP|
+|123|UDP|NTP|
+|135|TCP/UDP|终结点映射器;RPCDCE|
+|137|TCP/UDP|NetBIOS 名称服务|
+|138|TCP/UDP|NetBIOS 数据报服务|
+|139|TCP|NetBIOS 会话服务|
+|161|TCP/UDP|SNMP|
+|162|TCP/UDP|SNMP|
+|389|TCP|LDAP|
+|445|TCP|SMB|
+|512|TCP|Rexec|
+|514|TCP|远程 shell|
+|593|TCP/UDP|HTTP RPC|
+|636|TCP|LDAP|
+|873|TCP|Rsync|
+|1433|TCP|MS SQL|
+|1434|UDP|MS SQL|
+|1900|UDP|SSDP|
+|1900|UDP|SSDP|
+|2049|TCP/UDP|NFS|
+|2301|TCP|Compaq 管理服务|
+|2323|TCP|三维-nfsd|
+|2381|TCP|Compaq 管理服务|
+|3268|TCP|LDAP|
+|3306|TCP|MySQL|
+|3389|TCP|RDP|
+|4333|TCP|mSQL|
+|5353|UDP|Mdn|
+|5432|TCP|PostgreSQL|
+|5555|TCP|个人代理;HP OmniBack|
+|5800|TCP|VNC|
+|5900|TCP|远程帧缓冲区;VNC|
+|5900|TCP|VNC|
+|5985|TCP|Windows PowerShell|
+|5986|TCP|Windows PowerShell|
+|6379|TCP|Redis|
+|6379|TCP|Redis|
+|7000|TCP|Cassandra|
+|7001|TCP|Cassandra|
+|7199|TCP|Cassandra|
+|8081|TCP|CosmosDBSun 代理管理员|
+|8089|TCP|Splunk|
+|8545|TCP|潜在恶意（Cryptominer）|
+|9042|TCP|Cassandra|
+|9160|TCP|Cassandra|
+|9300|TCP|Elasticsearch|
+|11211|UDP|Memcached|
+|16379|TCP|Redis|
+|26379|TCP|Redis|
+|27017|TCP|MongoDB|
+|37215|TCP|潜在恶意|
+||||

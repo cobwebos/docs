@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70d843f5773f66e6e17c40d0441553e3cb096c64
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 39e6e9d500a398fd34b8b61727dee8bf11da7430
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462150"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270480"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作方式：体系结构和概念
 
@@ -135,7 +135,7 @@ Azure 机器学习记录所有运行并将以下信息存储在试验中：
 
 使用机器学习管道可以创建和管理将各个机器学习阶段整合到一起的工作流。 例如，管道可能包含数据准备、模型定型、模型部署和推理/评分阶段。 每个阶段可以包含多个步骤，每个步骤都能够以无人参与方式在各种计算目标中运行。 
 
-管道步骤可重复使用，如果该步骤的输出未发生更改，则可以运行，而无需重新运行后续步骤。 例如，如果数据未更改，则可以重新训练模型，而无需重新运行成本高昂的数据准备步骤。 管道还允许数据科学家协作，同时处理机器学习工作流的不同区域。
+管道步骤可重复使用，如果这些步骤的输出未发生更改，则可以运行，而无需重新运行前面的步骤。 例如，如果数据未更改，则可以重新训练模型，而无需重新运行成本高昂的数据准备步骤。 管道还允许数据科学家协作，同时处理机器学习工作流的不同区域。
 
 有关机器学习管道与此服务的详细信息，请参阅[管道和 Azure 机器学习](concept-ml-pipelines.md)。
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 11/14/2019
+ms.date: 3/13/2020
 ms.author: swmachan
-ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4180dc6127fb2d31465400b1b25fb7e2d68f4754
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123060"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369159"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
-## <a name="whats-new"></a>新增功能
+## <a name="whats-new"></a>新增功能？
 
 文本翻译 API 版本 3 提供了基于 JSON 的新型 Web API。 它通过将现有功能合并到更少的操作中来提高可用性和性能，并提供新功能。
 
@@ -31,24 +31,24 @@ ms.locfileid: "74123060"
 
 ## <a name="base-urls"></a>基 URL
 
-Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 10 个 [Azure 地理区域](https://azure.microsoft.com/global-infrastructure/regions)：
+Microsoft Translator 位于多个数据中心位置之外。 目前它们位于10个[Azure 地理区域](https://azure.microsoft.com/global-infrastructure/regions)：
 
 * **美洲：** 美国东部、美国中南部、美国西部和美国西部2 
 * **亚太：** 韩国南部、日本东部、东南亚和澳大利亚东部
 * **欧洲：** 北欧和西欧
 
-在大多数情况下，对 Microsoft 文本翻译 API 的请求由距离请求的来源位置最近的数据中心处理。 如果数据中心出现故障，请求可能会路由到 Azure 地理区域之外。
+在大多数情况下，对 Microsoft 文本翻译 API 的请求由距离请求的来源位置最近的数据中心处理。 如果数据中心出现故障，请求可能会在 Azure 地域外部路由。
 
-若要强制由特定 Azure 地理区域处理请求，请将 API 请求中的全球终结点更改为所需的区域终结点：
+若要强制由特定 Azure 地域处理请求，请将 API 请求中的全局终结点更改为所需的区域终结点：
 
 |说明|Azure 地理|基 URL|
 |:--|:--|:--|
 |Azure|全局（非区域）|   api.cognitive.microsofttranslator.com|
-|Azure|美国|   api-nam.cognitive.microsofttranslator.com|
+|Azure|United States|   api-nam.cognitive.microsofttranslator.com|
 |Azure|欧洲|  api-eur.cognitive.microsofttranslator.com|
 |Azure|亚太区|    api-apc.cognitive.microsofttranslator.com|
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 订阅 Azure 认知服务中的文本翻译 API 或[认知服务多服务](https://azure.microsoft.com/pricing/details/cognitive-services/)，并使用你的订阅密钥（在 Azure 门户中提供）进行身份验证。 
 
@@ -58,17 +58,74 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 |:----|:----|
 |Ocp-Apim-Subscription-Key|如果要传递密钥，请与认知服务订阅一起使用。<br/>该值是文本翻译 API 订阅的 Azure 密钥。|
 |授权|如果要传递身份验证令牌，请与认知服务订阅一起使用。<br/>该值是持有者令牌：`Bearer <token>`。|
-|Ocp-Apim-Subscription-Region|*如果要传递多服务机密密钥，请将用于认知服务多服务订阅。*<br/>值是多服务订阅的区域。 如果不使用多服务订阅，此值是可选的。|
+|Ocp-Apim-Subscription-Region|*用于认知服务多服务和区域翻译人员资源。*<br/>值是多服务或区域翻译器资源的区域。 使用全局转换器资源时，此值是可选的。|
 
 ###  <a name="secret-key"></a>密钥
 第一个选项是使用 `Ocp-Apim-Subscription-Key` 标头进行身份验证。 将 `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` 标头添加到请求中。
 
-### <a name="authorization-token"></a>授权令牌
+#### <a name="authenticating-with-a-global-resource"></a>使用全局资源进行身份验证
+
+使用[全局转换器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)时，需要包含一个标头来调用转换器 API。
+
+|标头|说明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 该值是文本翻译 API 订阅的 Azure 密钥。|
+
+下面是一个示例请求，使用全局转换器资源调用转换器 API
+
+```curl
+// Pass secret key using headers
+curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-regional-resource"></a>使用区域资源进行身份验证
+
+使用[区域翻译人员资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)时。
+需要两个标头来调用转换器 API。
+
+|标头|说明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 该值是文本翻译 API 订阅的 Azure 密钥。|
+|Ocp-Apim-Subscription-Region| 该值是转换器资源的区域。 |
+
+下面是使用区域翻译人员资源调用 Translator API 的示例请求
+
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://api.cognitive.microsoft.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-multi-service-resource"></a>使用多服务资源进行身份验证
+
+使用认知服务的多服务资源时。 这样便可以使用一个密钥对多个服务的请求进行身份验证。 
+
+使用多服务密钥时，必须在请求中包括两个身份验证标头。 需要两个标头来调用转换器 API。
+
+|标头|说明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 值是多服务资源的 Azure 密钥。|
+|Ocp-Apim-Subscription-Region| 值是多服务资源的区域。 |
+
+区域对于多服务文本 API 订阅是必需的。 你选择的区域是在使用多服务订阅密钥时可用于文本翻译的唯一区域，并且必须是通过 Azure 门户注册多服务订阅时所选的同一区域。
+
+可用区域有 `australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centralus`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`francecentral`、`japaneast`、`japanwest`、`koreacentral`、`northcentralus`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2`和 `southafricanorth`。
+
+如果使用参数 `Subscription-Key` 传递查询字符串中的密钥，则必须使用查询参数 `Subscription-Region` 指定区域。
+
+### <a name="authenticating-with-an-access-token"></a>使用访问令牌进行身份验证
 或者，可以交换访问令牌的密钥。 此令牌作为 `Authorization` 标头包含在每个请求中。 若要获取授权令牌，请向以下 URL 发出 `POST` 请求：
 
-| 环境     | 身份验证服务 URL                                |
+| 资源类型     | 身份验证服务 URL                                |
 |-----------------|-----------------------------------------------------------|
-| Azure           | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| Global          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| 区域或多服务 | `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
 以下是根据给定密钥获取令牌的示例请求：
 
@@ -88,22 +145,29 @@ Authorization: Bearer <Base64-access_token>
 
 身份验证令牌的有效期为 10 分钟。 对转换器 Api 进行多次调用时，应重新使用该令牌。 但是，如果程序在很长一段时间内向转换器 API 发出请求，则程序必须定期请求新的访问令牌（例如，每8分钟一次）。
 
-### <a name="multi-service-subscription"></a>多服务订阅
+## <a name="virtual-network-support"></a>虚拟网络支持
 
-最后一个身份验证选项是使用认知服务的多服务订阅。 这样便可以使用一个密钥对多个服务的请求进行身份验证。 
+转换器服务现在提供了有限区域（`WestUS2`、`EastUS`、`SouthCentralUS`、`WestUS`、`Central US EUAP`、`global`）中的虚拟网络功能。 若要启用虚拟网络，请参阅[配置 Azure 认知服务虚拟网络](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 
 
-使用多服务密钥时，必须在请求中包括两个身份验证标头。 第一个标头可传递密钥，第二个标头可指定与你的订阅关联的区域。 
-* `Ocp-Apim-Subscription-Key`
-* `Ocp-Apim-Subscription-Region`
+启用此功能后，必须使用自定义终结点来调用转换器 API。 不能使用全局转换器终结点（"api.cognitive.microsofttranslator.com"），也不能使用访问令牌进行身份验证。
 
-区域对于多服务文本 API 订阅是必需的。 你选择的区域是在使用多服务订阅密钥时可用于文本翻译的唯一区域，并且必须是通过 Azure 门户注册多服务订阅时所选的同一区域。
+创建[转换器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)后，可以找到自定义终结点。
 
-可用区域有 `australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centralus`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`francecentral`、`japaneast`、`japanwest`、`koreacentral`、`northcentralus`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2`和 `southafricanorth`。
+|标头|说明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 该值是文本翻译 API 订阅的 Azure 密钥。|
+|Ocp-Apim-Subscription-Region| 该值是转换器资源的区域。 如果资源 `global`，则此值是可选的|
 
-如果使用参数 `Subscription-Key` 传递查询字符串中的密钥，则必须使用查询参数 `Subscription-Region` 指定区域。
+下面是使用自定义终结点调用 Translator API 的示例请求
 
-如果使用持有者令牌，则必须从区域终结点中获取令牌：`https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`。
-
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translator/text/v3.0/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
 
 ## <a name="errors"></a>错误
 
@@ -158,10 +222,10 @@ Authorization: Bearer <Base64-access_token>
 | 403000| 不允许该操作。|
 | 403001| 由于订阅已超过其免费配额，因此不允许该操作。|
 | 405000| 请求的资源不支持该请求方法。|
-| 408001| 正在准备所请求的翻译系统。 请在几分钟后重试。|
-| 408002| 等待传入流时请求超时。 客户端没有在服务器准备等待的时间内生成请求。 客户端可以在以后的任何时间重复该请求，而不做任何修改。|
+| 408001| 正在准备请求的翻译系统。 请在几分钟后重试。|
+| 408002| 等待传入流时请求超时。 在服务器准备等待的时间内，客户端未生成请求。 客户端可以重复此请求，而不会在以后的任何时间进行修改。|
 | 415000| Content-Type 标头缺失或无效。|
-| 429000、429001、429002| 由于客户端已超出请求限制，服务器拒绝了请求。|
+| 429000、429001、429002| 服务器拒绝了请求，因为客户端已超出请求限制。|
 | 500000| 发生了意外错误。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 | 503000| 服务暂时不可用。 请重试。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 
@@ -181,5 +245,5 @@ Authorization: Bearer <Base64-access_token>
 | BlockedCalls| 超过速率或配额限制的调用数。|
 | ServerErrors| 服务器内部错误（5XX）的调用次数。|
 | ClientErrors| 与客户端错误（4XX）的调用次数。|
-| Latency| 完成请求的持续时间（毫秒）。|
+| 延迟| 完成请求的持续时间（毫秒）。|
 | CharactersTranslated| 传入的文本请求中的字符总数。|

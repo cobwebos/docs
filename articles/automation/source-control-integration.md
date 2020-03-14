@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: eef67ca8111983adb4d9994894ba215240daee6f
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: b0eed8fe9d548ee54698d187e192960bb3b44e44
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78253735"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368802"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
@@ -33,7 +33,7 @@ Azure 自动化支持三种类型的源代码管理：
 
 * 源代码管理存储库（GitHub 或 Azure Repos）
 * [运行方式帐户](manage-runas-account.md)
-* 自动化帐户中的[最新 Azure 模块](automation-update-azure-modules.md)，包括**Az**模块（Az module 等效于 AzureRM）
+* 自动化帐户中的[最新 Azure 模块](automation-update-azure-modules.md)，包括 `Az.Accounts` 模块（Az module 等效于 `AzureRM.Profile`）
 
 > [!NOTE]
 > 源代码管理同步作业以用户的自动化帐户运行，并按与其他自动化作业相同的费率进行计费。
@@ -54,15 +54,15 @@ Azure 自动化支持三种类型的源代码管理：
 
 3. 此时会打开一个浏览器窗口，提示你登录。 按照提示完成身份验证。
 
-4. 在 "**源代码管理摘要**" 页上，使用字段填充下面定义的源代码管理属性。 完成后单击“保存”。 
+4. 在 "源代码管理摘要" 页上，使用字段填充下面定义的源代码管理属性。 完成后单击“保存”。 
 
     |properties  |说明  |
     |---------|---------|
     |源代码管理名称     | 源代码管理的友好名称。 此名称只能包含字母和数字。        |
-    |源代码管理类型     | 源代码管理机制的类型。 可用选项包括：</br> GitHub</br>Azure Repos （Git）</br> Azure Repos （TFVC）        |
+    |源代码管理类型     | 源代码管理机制的类型。 可用选项包括：</br> * GitHub</br>* Azure Repos （Git）</br> * Azure Repos （TFVC）        |
     |存储库     | 存储库或项目的名称。 检索到前200个存储库。 要搜索存储库，请在字段中键入名称，然后单击**GitHub 上**的 "搜索"。|
     |分支     | 从中提取源文件的分支。 分支目标不能用于 TFVC 源控件类型。          |
-    |文件夹路径     | 包含要同步的 runbook 的文件夹，例如，/Runbooks。 仅同步指定文件夹中的 runbook。 不支持递归。        |
+    |文件夹路径     | 包含要同步的 runbook 的文件夹，例如， **/Runbooks**。 仅同步指定文件夹中的 runbook。 不支持递归。        |
     |自动同步<sup>1</sup>     | 当在源代码管理存储库中执行提交时，将打开或关闭自动同步的设置。        |
     |发布 Runbook     | 在从源代码管理同步之后自动发布 runbook 后，的设置为; 否则为。           |
     |说明     | 指定有关源代码管理的其他详细信息的文本。        |
@@ -72,7 +72,7 @@ Azure 自动化支持三种类型的源代码管理：
    ![源代码管理摘要](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> 你的源代码管理存储库的登录名可能与 Azure 门户的登录名不同。 配置源代码管理时，请确保您已登录到您的源代码管理存储库的正确帐户。 如果有疑问，请在浏览器中打开新的选项卡，从 visualstudio.com 或 github.com 注销，然后再次尝试连接到源代码管理。
+> 您的源代码管理存储库的登录名可能不同于您 Azure 门户的登录名。 配置源代码管理时，请确保您已登录到您的源代码管理存储库的正确帐户。 如果有疑问，请在浏览器中打开新的选项卡，从**visualstudio.com**或**github.com**注销，然后再次尝试连接到源代码管理。
 
 ### <a name="configure-source-control----powershell"></a>配置源代码管理--PowerShell
 
@@ -109,13 +109,13 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.v
 
 |范围  |说明  |
 |---------|---------|
-|**存储库**     |         |
-|repo:status     | 访问提交状态         |
-|repo_deployment      | 访问部署状态         |
-|public_repo     | 访问公共存储库         |
-|**admin:repo_hook**     |         |
-|write:repo_hook     | 写入存储库挂钩         |
-|read:repo_hook|读取存储库挂钩|
+|**`repo`**     |         |
+|`repo:status`     | 访问提交状态         |
+|`repo_deployment`      | 访问部署状态         |
+|`public_repo`     | 访问公共存储库         |
+|**`admin:repo_hook`**     |         |
+|`write:repo_hook`     | 写入存储库挂钩         |
+|`read:repo_hook`|读取存储库挂钩|
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Azure Repos 的最小 PAT 权限
 
@@ -134,9 +134,9 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.v
 
 ## <a name="synchronizing"></a>正在同步
 
-执行以下操作以与源代码管理同步。 
+请按照以下步骤与源代码管理同步。 
 
-1. 从 "**源代码管理**" 页上的表中选择源。 
+1. 从 "源代码管理" 页上的表中选择源。 
 
 2. 单击“开始同步”以开始同步过程。 
 
@@ -178,7 +178,7 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.v
 
     ```
 
-6. 通过选择 "**源代码管理同步作业摘要**" 页上的 "**所有日志**"，可以获得其他日志记录。 这些附加日志条目有助于排查使用源代码管理时可能会出现的问题。
+6. 通过选择 "源代码管理同步作业摘要" 页上的 "**所有日志**"，可以获得其他日志记录。 这些附加日志条目有助于排查使用源代码管理时可能会出现的问题。
 
 ## <a name="disconnecting-source-control"></a>断开连接源代码管理
 
@@ -188,11 +188,11 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.v
 
 2. 选择要删除的源代码管理机制。 
 
-3. 在“源代码管理摘要”页面上，单击“删除”。
+3. 在 "源代码管理摘要" 页上，单击 "**删除**"。
 
 ## <a name="handling-encoding-issues"></a>处理编码问题
 
-如果多个用户正在使用不同的编辑器在源代码管理存储库中编辑 runbook，则可能会出现编码问题。 若要了解有关此情况的详细信息，请参阅[编码问题的常见原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)
+如果多个用户正在使用不同的编辑器在源代码管理存储库中编辑 runbook，则可能会出现编码问题。 若要了解有关此情况的详细信息，请参阅[编码问题的常见原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)。
 
 ## <a name="updating-the-pat"></a>更新 PAT
 

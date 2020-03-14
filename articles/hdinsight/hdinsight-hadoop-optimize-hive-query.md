@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030944"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272326"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Apache Hive 查询
 
@@ -187,7 +187,7 @@ set hive.vectorized.execution.enabled = true;
 
 ## <a name="other-optimization-methods"></a>其他优化方法
 
-你还可以考虑使用其他一些高级优化方法，例如：
+还可以考虑使用其他一些高级优化方法，例如：
 
 * **Hive 存储桶：** 将大型数据集群集化或分段以优化查询性能的技术。
 * **联接优化**：Hive 的查询执行计划优化，可改善联接的效率并减少用户提示的需要。 有关详细信息，请参阅[联接优化](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)。
@@ -195,7 +195,7 @@ set hive.vectorized.execution.enabled = true;
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已学习了几种常见的 Hive 查询优化方法。 若要了解更多信息，请参阅下列文章：
+在本文中，已学习了几种常见的 Hive 查询优化方法。 若要了解详细信息，请参阅以下文章：
 
 * [使用 HDInsight 中的 Apache Hive](hadoop/hdinsight-use-hive.md)
 * [使用 HDInsight 中的交互式查询分析航班延误数据](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)

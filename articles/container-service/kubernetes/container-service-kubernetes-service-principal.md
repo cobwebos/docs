@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3126339a1eb8ff9c0ef34a330333635d3d0f6433
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274369"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371114"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>（已弃用）在容器服务中为 Kubernetes 群集设置 Azure AD 服务主体
 
@@ -71,7 +71,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscrip
 可以在使用 [Azure 命令行接口 (CLI)](container-service-kubernetes-walkthrough.md)、[Azure 门户](../dcos-swarm/container-service-deployment.md)等方法部署 Kubernetes 群集时指定这些参数。
 
 >[!TIP]
->指定“客户端 ID”时，请确保使用服务主体的 `appId` 而不是 `ObjectId`。
+>指定“客户端 ID”时，请确保使用服务主体的 **而不是**。`appId``ObjectId`
 >
 
 以下示例说明了一种通过 Azure CLI 传递参数的方法。 此示例使用 [Kubernetes 快速启动模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)。
@@ -103,7 +103,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscrip
 
 以下命令创建 Kubernetes 群集，并生成 SSH 密钥和服务主体凭据：
 
-```console
+```azurecli
 az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-keys --orchestrator-type kubernetes
 ```
 
@@ -133,7 +133,7 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 除非在创建服务主体时使用 `--years` 参数指定了自定义时效期，否则凭据的有效期为自创建之时起 1 年。 凭据过期后，群集节点可能进入“NotReady”状态。
 
-若要查看服务主体的过期日期，请使用 `--debug` 参数执行 [az ad app show](/cli/azure/ad/app#az-ad-app-show) 命令，然后在输出底部附近查找 `passwordCredentials` 的 `endDate` 值：
+若要查看服务主体的过期日期，请使用 [ 参数执行 ](/cli/azure/ad/app#az-ad-app-show)az ad app show`--debug` 命令，然后在输出底部附近查找 `endDate` 的 `passwordCredentials` 值：
 
 ```azurecli
 az ad app show --id <appId> --debug

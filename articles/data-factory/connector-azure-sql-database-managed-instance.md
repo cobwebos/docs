@@ -10,13 +10,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/09/2019
-ms.openlocfilehash: e25b860417333d458bdde870d20968fce7dda715
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/12/2020
+ms.openlocfilehash: cfa53d480120ec75623a6a372b258b63e6264f92
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892884"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136037"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库托管实例复制数据
 
@@ -26,7 +26,7 @@ ms.locfileid: "75892884"
 
 以下活动支持此 Azure SQL 数据库托管实例连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)
 
@@ -41,16 +41,13 @@ ms.locfileid: "75892884"
 >[!NOTE]
 >此连接器目前不支持 Azure SQL 数据库托管实例[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) 。 若要解决此情况，可以通过自承载集成运行时使用[泛型 odbc 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 按照[此指南](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current)进行 ODBC 驱动程序下载和连接字符串配置。
 
->[!NOTE]
->此连接器目前不支持服务主体和托管标识身份验证。 若要解决此操作，请选择 Azure SQL 数据库连接器，并手动指定托管实例的服务器。
-
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要访问 Azure SQL 数据库托管实例[公共终结点](../sql-database/sql-database-managed-instance-public-endpoint-securely.md)，可以使用 Azure 数据工厂托管的 azure 集成运行时。 确保启用公共终结点，并且还允许网络安全组上的公共终结点流量，使 Azure 数据工厂能够连接到数据库。 有关详细信息，请参阅[此指南](../sql-database/sql-database-managed-instance-public-endpoint-configure.md)。
 
 若要访问 Azure SQL 数据库托管实例专用终结点，请设置可访问数据库的[自承载集成运行时](create-self-hosted-integration-runtime.md)。 如果在与托管实例相同的虚拟网络中设置自承载集成运行时，请确保集成运行时计算机与托管实例位于不同的子网中。 如果在与托管实例不同的虚拟网络中预配了自承载集成运行时，则可以使用虚拟网络对等互连或虚拟网络到虚拟网络连接。 有关详细信息，请参阅[将应用程序连接到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-connect-app.md)。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -60,10 +57,10 @@ ms.locfileid: "75892884"
 
 Azure SQL 数据库托管实例链接的服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为**AzureSqlMI**。 | 是 |
-| connectionString |此属性指定使用 SQL 身份验证连接到托管实例所需的**connectionString**信息。 有关详细信息，请参阅以下示例。 <br/>默认端口为 1433。 如果将 Azure SQL 数据库托管实例与公共终结点一起使用，请显式指定端口3342。<br> 还可以在 Azure Key Vault 中输入密码。 如果它是 SQL 身份验证，请从连接字符串中请求 `password` 配置。 有关详细信息，请参阅表后面的 JSON 示例，并[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
+| connectionString |此属性指定使用 SQL 身份验证连接到托管实例所需的**connectionString**信息。 有关详细信息，请参阅以下示例。 <br/>默认端口为1433。 如果将 Azure SQL 数据库托管实例与公共终结点一起使用，请显式指定端口3342。<br> 还可以在 Azure Key Vault 中输入密码。 如果它是 SQL 身份验证，请从连接字符串中请求 `password` 配置。 有关详细信息，请参阅表后面的 JSON 示例，并[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是，当你将 Azure AD 身份验证用于服务主体时 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为**SecureString**以将其安全地存储在 Azure 数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，当你将 Azure AD 身份验证用于服务主体时 |
 | tenant | 指定应用程序所驻留的租户信息，例如域名或租户 ID。 通过将鼠标悬停在 Azure 门户的右上角来检索它。 | 是，当你将 Azure AD 身份验证用于服务主体时 |
@@ -133,19 +130,19 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
     - 应用程序密钥
     - 租户 ID
 
-3. 为 Azure 数据工厂托管标识[创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。 在 SQL Server Management Studio （SSMS）中，使用作为**sysadmin**的 SQL Server 帐户连接到托管实例。 在**master**数据库中，运行以下 t-sql：
+3. 为 Azure 数据工厂托管标识[创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。 在 SQL Server Management Studio (SSMS) 中，使用 SQL Server 帐户 sysadmin 连接到托管实例。 在 master 数据库中，运行以下 T-SQL：
 
     ```sql
     CREATE LOGIN [your application name] FROM EXTERNAL PROVIDER
     ```
 
-4. 为 Azure 数据工厂托管标识[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 从或连接到要复制数据的数据库，运行以下 T-sql： 
+4. 为 Azure 数据工厂托管标识[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 连接到要从/向其复制数据的数据库，运行以下 T-SQL： 
   
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER
     ```
 
-5. 向数据工厂托管标识授予对 SQL 用户和其他用户通常所需的权限。 运行下面的代码。 有关更多选项，请参阅[此文档](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current)。
+5. 向数据工厂托管标识授予对 SQL 用户和其他用户通常所需的权限。 运行以下代码。 有关更多选项，请参阅[本文档](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current)。
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your application name]
@@ -185,19 +182,19 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 1. 按照以下步骤为[你的托管实例预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)。
 
-2. 为 Azure 数据工厂托管标识[创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。 在 SQL Server Management Studio （SSMS）中，使用作为**sysadmin**的 SQL Server 帐户连接到托管实例。 在**master**数据库中，运行以下 t-sql：
+2. 为 Azure 数据工厂托管标识[创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。 在 SQL Server Management Studio (SSMS) 中，使用 SQL Server 帐户 sysadmin 连接到托管实例。 在 master 数据库中，运行以下 T-SQL：
 
     ```sql
     CREATE LOGIN [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-3. 为 Azure 数据工厂托管标识[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 从或连接到要复制数据的数据库，运行以下 T-sql： 
+3. 为 Azure 数据工厂托管标识[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 连接到要从/向其复制数据的数据库，运行以下 T-SQL： 
   
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-4. 向数据工厂托管标识授予对 SQL 用户和其他用户通常所需的权限。 运行下面的代码。 有关更多选项，请参阅[此文档](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current)。
+4. 向数据工厂托管标识授予对 SQL 用户和其他用户通常所需的权限。 运行以下代码。 有关更多选项，请参阅[本文档](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current)。
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your Data Factory name]
@@ -229,7 +226,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 若要将数据复制到 Azure SQL 数据库托管实例，还支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为**AzureSqlMITable**。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -265,12 +262,13 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 
 若要从 Azure SQL 数据库托管实例复制数据，复制活动源部分支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为**SqlMISource**。 | 是 |
 | sqlReaderQuery |此属性使用自定义 SQL 查询来读取数据。 示例为 `select * from MyTable`。 |否 |
 | sqlReaderStoredProcedureName |此属性是从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |否 |
 | storedProcedureParameters |这些参数用于存储过程。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
+| isolationLevel | 指定 SQL 源的事务锁定行为。 允许的值为： **ReadCommitted** （默认值）、 **ReadUncommitted**、 **RepeatableRead**、 **Serializable**、 **Snapshot**。 有关更多详细信息，请参阅[此文档](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
 
 **请注意以下几点：**
 
@@ -371,7 +369,7 @@ GO
 
 若要将数据复制到 Azure SQL 数据库托管实例，请在复制活动接收器部分中支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为**SqlMISink**。 | 是 |
 | writeBatchSize |*每批*插入到 SQL 表中的行数。<br/>允许的值为表示行数的整数。 默认情况下，Azure 数据工厂会根据行大小动态确定相应的批大小。  |否 |
@@ -578,9 +576,9 @@ END
 | binary |Byte[] |
 | bit |Boolean |
 | char |String, Char[] |
-| date |日期/时间 |
-| Datetime |日期/时间 |
-| datetime2 |日期/时间 |
+| date |DateTime |
+| Datetime |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
@@ -592,17 +590,17 @@ END
 | ntext |String, Char[] |
 | numeric |Decimal |
 | nvarchar |String, Char[] |
-| real |单一 |
+| real |Single |
 | rowversion |Byte[] |
-| smalldatetime |日期/时间 |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
-| sql_variant |对象 |
+| sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Int16 |
-| uniqueidentifier |GUID |
+| uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |

@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: sutalasi
-ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 5dcae83714ee3693288abf54afe8df7bb55dd578
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759817"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371437"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于 Azure VM 灾难恢复中的网络
 
@@ -52,6 +52,8 @@ ms.locfileid: "76759817"
 login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行授权和身份验证。
 *.hypervrecoverymanager.windowsazure.com | 必需，以便从 VM 进行 Site Recovery 服务通信。
 *.servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。
+*.vault.azure.net | 允许访问通过门户为启用了 ADE 的虚拟机启用复制
+*. automation.ext.azure.com | 允许通过门户为复制的项启用移动代理自动升级
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
@@ -63,6 +65,8 @@ login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行�
 - 创建一个基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则以允许访问与 AAD 对应的所有 IP 地址
 - 为目标区域创建基于 EventsHub 服务标记的 NSG 规则，以允许访问 Site Recovery 监视。
 - 创建基于 AzureSiteRecovery 服务标记的 NSG 规则，以允许访问任何区域中的 Site Recovery 服务。
+- 创建基于 AzureKeyVault 服务标记的 NSG 规则。 这只是通过门户启用启用了 ADE 的虚拟机的复制所必需的。
+- 创建基于 GuestAndHybridManagement 服务标记的 NSG 规则。 只有通过门户为复制的项启用移动代理自动升级时才需要此选项。
 - 在生产 NSG 中创建所需的 NSG 规则之前，建议先在测试 NSG 中创建这些规则，并确保没有任何问题。
 
 ## <a name="example-nsg-configuration"></a>NSG 配置示例
@@ -115,7 +119,7 @@ login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行�
 >[!NOTE]
 >不限制虚拟网络对用于 ASR 的存储帐户的访问权限。 应允许来自“所有网络”的访问
 
-### <a name="forced-tunneling"></a>强制的安全加密链路连接
+### <a name="forced-tunneling"></a>强制隧道
 
 对 0.0.0.0/0 地址前缀，可将 Azure 默认系统路由重写为[自定义路由](../virtual-network/virtual-networks-udr-overview.md#custom-routes)，并将 VM 流量转换为本地网络虚拟设备 (NVA)，但不建议对 Site Recovery 复制使用此配置。 如果使用自定义路由，则应在虚拟网络中为“存储”[创建一个虚拟网络服务终结点](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)，这样复制流量就不会离开 Azure 边界。
 

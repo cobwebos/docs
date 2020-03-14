@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 1ae3caa2d1f90bbbae1070d95d676eb206a361a0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647347"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371216"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>配置 Azure 认知服务虚拟网络
 
@@ -33,13 +33,13 @@ Azure 认知服务提供分层的安全模型。 此模型使你能够将认知�
 
 ## <a name="scenarios"></a>方案
 
-若要保护认知服务资源，你应该首先配置一个规则，拒绝默认情况下从所有网络（包括 internet 流量）访问流量。 然后，应该配置相应的规则，以便为来自特定 VNet 的流量授予访问权限。 借助此配置，可为应用程序生成安全网络边界。 此外，还可以配置规则为来自特定公共 Internet IP 地址范围的流量授予访问权限，以便能够从特定的 Internet 或本地客户端建立连接。
+若要保护认知服务资源，你应该首先配置一个规则，拒绝默认情况下从所有网络（包括 internet 流量）访问流量。 然后，你应该配置规则，以便向来自特定 Vnet 的流量授予访问权限。 借助此配置，可为应用程序生成安全网络边界。 你还可以配置规则，以便从 "选择公共 internet IP 地址范围" 中为流量授予访问权限，并启用特定 internet 或本地客户端的连接。
 
 在所有网络协议中对 Azure 认知服务（包括 REST 和 WebSocket）强制实施网络规则。 若要使用 Azure 测试控制台等工具访问数据，必须配置显式网络规则。 您可以将网络规则应用于现有认知服务资源，或者在创建新认知服务资源时应用。 一旦应用网络规则，就会对所有请求强制实施这些规则。
 
 ## <a name="supported-regions-and-service-offerings"></a>支持的区域和服务产品
 
-针对认知服务的虚拟网络支持仅限于 " *EUAP*"、"*西欧*" 和 "*美国西部 2* " Azure 区域。 此外，并非所有认知服务产品都支持虚拟网络。 以下认知服务产品允许使用虚拟网络。 如果此处未列出该服务产品，则它不支持虚拟网络。
+以下列出的认知服务的虚拟网络支持仅限*美国中部 EUAP*、*美国中南部*、美国*东部*、*美国西部 2*、*北欧*、*南非北部*、*西欧*、*印度中部*、*澳大利亚东部*、*美国西部*和*US Gov 弗吉尼亚州*Azure 区域。 如果此处未列出该服务产品，则它不支持虚拟网络。
 
 > [!div class="checklist"]
 > * [异常探测器](./anomaly-detector/index.yml)
@@ -47,23 +47,44 @@ Azure 认知服务提供分层的安全模型。 此模型使你能够将认知�
 > * [内容审查器](./content-moderator/index.yml)
 > * [自定义视觉](./custom-vision-service/index.yml)
 > * [人脸](./face/index.yml)
-> * [表单识别器](./form-recognizer/index.yml)
+> * [窗体识别器](./form-recognizer/index.yml)
 > * [LUIS](./luis/index.yml)
 > * [个性化体验创建服务](./personalizer/index.yml)
 > * [文本分析](./text-analytics/index.yml)
+> * [QnA Maker](./qnamaker/index.yml)
+
+以下列出的认知服务的虚拟网络支持仅限*美国中部 EUAP*、美国*中南部*、美国*东部*、美国*西部 2*、*全球*和*US Gov 弗吉尼亚州*Azure 区域。
+> [!div class="checklist"]
+> * [文本翻译](./translator/index.yml)
+
+## <a name="service-tags"></a>服务标记
+除了支持上述服务的虚拟网络服务终结点外，认知服务还支持出站网络规则配置服务标记。 以下服务包含在 CognitiveServicesManagement 服务标记中。
+> [!div class="checklist"]
+> * [异常探测器](./anomaly-detector/index.yml)
+> * [计算机视觉](./computer-vision/index.yml)
+> * [内容审查器](./content-moderator/index.yml)
+> * [自定义视觉](./custom-vision-service/index.yml)
+> * [人脸](./face/index.yml)
+> * [窗体识别器](./form-recognizer/index.yml)
+> * [LUIS](./luis/index.yml)
+> * [个性化体验创建服务](./personalizer/index.yml)
+> * [文本分析](./text-analytics/index.yml)
+> * [QnA Maker](./qnamaker/index.yml)
+> * [文本翻译](./translator/index.yml)
+> * [语音服务](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>更改默认网络访问规则
 
 默认情况下，认知服务资源接受来自任何网络上的客户端的连接。 若要限制为仅允许选定网络访问，必须先更改默认操作。
 
 > [!WARNING]
-> 对网络规则进行更改可能会影响你的应用程序连接到 Azure 认知服务的能力。 除非还应用了**授予**访问权限的特定网络规则，否则将默认网络规则设置为“拒绝”会阻止对数据的所有访问。 在将默认规则更改为拒绝访问之前，务必先使用网络规则对所有许可网络授予访问权限。 如果允许列出本地网络的 IP 地址，请确保从本地网络添加所有可能的传出公共 IP 地址。
+> 对网络规则进行更改可能会影响你的应用程序连接到 Azure 认知服务的能力。 如果也应用**授予**访问权限的特定网络规则，则将默认网络规则设置为 "**拒绝**" 将阻止对数据的所有访问。 在将默认规则更改为拒绝访问之前，务必先使用网络规则对所有许可网络授予访问权限。 如果允许列出本地网络的 IP 地址，请确保从本地网络添加所有可能的传出公共 IP 地址。
 
 ### <a name="managing-default-network-access-rules"></a>管理默认网络访问规则
 
 可以通过 Azure 门户、PowerShell 或 Azure CLI 管理认知服务资源的默认网络访问规则。
 
-# <a name="azure-portaltabportal"></a>[Azure 门户](#tab/portal)
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
 1. 请参阅要保护的认知服务资源。
 
@@ -78,7 +99,7 @@ Azure 认知服务提供分层的安全模型。 此模型使你能够将认知�
 
 1. 单击“保存”应用所做的更改。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. 安装[Azure PowerShell](/powershell/azure/install-az-ps)并[登录](/powershell/azure/authenticate-azureps)，或选择 "**试用**"。
 
@@ -114,7 +135,7 @@ Azure 认知服务提供分层的安全模型。 此模型使你能够将认知�
     Update-AzCognitiveServicesAccountNetworkRuleSet @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 安装[Azure CLI](/cli/azure/install-azure-cli)并[登录](/cli/azure/authenticate-azure-cli)，或选择 "**试用**"。
 
@@ -148,24 +169,24 @@ Azure 认知服务提供分层的安全模型。 此模型使你能够将认知�
 
 你可以将认知服务资源配置为仅允许来自特定子网的访问。 允许的子网可能属于同一订阅或不同订阅中的 VNet，包括属于不同 Azure Active Directory 租户的订阅。
 
-为 VNet 中的 Azure 认知服务启用[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。 服务终结点将流量从 VNet 路由到 Azure 认知服务服务的最佳路径。 子网和虚拟网络的标识也随每个请求进行传输。 然后，管理员可以为认知服务资源配置网络规则，以允许从 VNet 中的特定子网接收请求。 通过这些网络规则授予访问权限的客户端必须继续满足认知服务资源访问数据的授权要求。
+为 VNet 中的 Azure 认知服务启用[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。 服务终结点将流量从 VNet 路由到 Azure 认知服务服务的最佳路径。 子网和虚拟网络的标识也随每个请求一起传输。 然后，管理员可以为认知服务资源配置网络规则，以允许从 VNet 中的特定子网接收请求。 通过这些网络规则授予访问权限的客户端必须继续满足认知服务资源访问数据的授权要求。
 
 每个认知服务资源最多支持100个虚拟网络规则，这些规则可以与[IP 网络规则](#grant-access-from-an-internet-ip-range)结合。
 
-### <a name="required-permissions"></a>所需权限
+### <a name="required-permissions"></a>所需的权限
 
 若要将虚拟网络规则应用到认知服务资源，用户必须对所添加的子网具有适当的权限。 所需的权限是默认*参与者*角色或*认知服务参与者*角色。 还可以将所需权限添加到自定义角色定义。
 
 认知服务资源和授予访问权限的虚拟网络可能位于不同的订阅中，其中包括属于不同 Azure AD 租户的订阅。
 
 > [!NOTE]
-> 目前，仅支持通过 Powershell、CLI 和 REST API 来配置对属于不同 Azure Active Directory 租户的虚拟网络中的子网授予访问权限的规则。 无法通过 Azure 门户配置此类规则，但可以在门户中查看此类规则。
+> 目前仅支持通过 Powershell、CLI 和 REST Api 来配置对虚拟网络中的子网进行访问 Azure Active Directory 的规则。 此类规则无法通过 Azure 门户进行配置，但可在门户中查看。
 
 ### <a name="managing-virtual-network-rules"></a>管理虚拟网络规则
 
 可以通过 Azure 门户、PowerShell 或 Azure CLI 管理认知服务资源的虚拟网络规则。
 
-# <a name="azure-portaltabportal"></a>[Azure 门户](#tab/portal)
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
 1. 请参阅要保护的认知服务资源。
 
@@ -192,7 +213,7 @@ Azure 认知服务提供分层的安全模型。 此模型使你能够将认知�
     > [!NOTE]
     > 如果先前未为所选的虚拟网络和子网配置 Azure 认知服务的服务终结点，则可以将其配置为此操作的一部分。
     >
-    > 目前，在创建规则期间，只会显示属于同一 Azure Active Directory 租户的虚拟网络供用户选择。 若要对属于其他租户的虚拟网络中的子网授予访问权限，请使用 Powershell、CLI 或 REST API。
+    > 目前，规则创建期间仅显示属于同一 Azure Active Directory 租户的虚拟网络。 若要授予访问属于其他租户的虚拟网络中子网的权限，请使用 Powershell、CLI 或 REST Api。
 
 1. 若要删除虚拟网络或子网规则，请选择 " **...** " 以打开虚拟网络或子网的上下文菜单，然后选择 "**删除**"。
 
@@ -200,7 +221,7 @@ Azure 认知服务提供分层的安全模型。 此模型使你能够将认知�
 
 1. 单击“保存”应用所做的更改。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. 安装[Azure PowerShell](/powershell/azure/install-az-ps)并[登录](/powershell/azure/authenticate-azureps)，或选择 "**试用**"。
 
@@ -241,7 +262,7 @@ Azure 认知服务提供分层的安全模型。 此模型使你能够将认知�
     ```
 
     > [!TIP]
-    > 若要为属于其他 Azure AD 租户的 VNet 中的子网添加网络规则，请使用“/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name”格式的完全限定的 **VirtualNetworkResourceId** 参数。
+    > 若要为另一个 Azure AD 租户的 VNet 中的子网添加网络规则，请使用 "/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name" 形式的完全限定的**VirtualNetworkResourceId**参数。
 
 1. 为虚拟网络和子网删除网络规则。
 
@@ -260,7 +281,7 @@ Azure 认知服务提供分层的安全模型。 此模型使你能够将认知�
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 安装[Azure CLI](/cli/azure/install-azure-cli)并[登录](/cli/azure/authenticate-azure-cli)，或选择 "**试用**"。
 
@@ -293,9 +314,9 @@ Azure 认知服务提供分层的安全模型。 此模型使你能够将认知�
     ```
 
     > [!TIP]
-    > 若要为属于其他 Azure AD 租户的 VNet 中的子网添加规则，请使用“/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name”格式的完全限定的子网 ID。
+    > 若要为另一个 Azure AD 租户的 VNet 中的子网添加规则，请使用 "/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name" 形式的完全限定子网 ID。
     > 
-    > 可以使用 **subscription** 参数检索属于其他 Azure AD 租户的 VNet 的子网 ID。
+    > 可以使用**订阅**参数检索属于另一个 Azure AD 租户的 VNet 的子网 ID。
 
 1. 为虚拟网络和子网删除网络规则。
 
@@ -340,7 +361,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 可以通过 Azure 门户、PowerShell 或 Azure CLI 管理认知服务资源的 IP 网络规则。
 
-# <a name="azure-portaltabportal"></a>[Azure 门户](#tab/portal)
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
 1. 请参阅要保护的认知服务资源。
 
@@ -358,7 +379,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 1. 单击“保存”应用所做的更改。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. 安装[Azure PowerShell](/powershell/azure/install-az-ps)并[登录](/powershell/azure/authenticate-azureps)，或选择 "**试用**"。
 
@@ -416,7 +437,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 安装[Azure CLI](/cli/azure/install-azure-cli)并[登录](/cli/azure/authenticate-azure-cli)，或选择 "**试用**"。
 

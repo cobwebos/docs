@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 评估支持
 description: 了解 Azure Migrate 中的 VMware 评估支持。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: b887508fb8e422bd83aa9d13e42085d7a6bd2283
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361809"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269583"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 评估的支持矩阵 
 
@@ -43,6 +43,7 @@ ms.locfileid: "78361809"
 **vCenter 凭据** | 具有只读访问权限的 vCenter Server 帐户，以及为虚拟机启用 > 来宾操作的特权。
 **VM 凭据** | 目前支持所有 Windows 服务器使用一个凭据，并支持为所有 Linux 服务器使用一个凭据。<br/><br/> 为 Windows Vm 创建来宾用户帐户，为所有 Linux Vm 创建常规/普通用户帐户（非 sudo 访问权限）。
 **VMware 工具** | 必须在要发现的 Vm 上安装并运行 VMware 工具。 <br/> 如果 VMware 工具版本介于 9.10-10.2.0 之间，请确保将其升级到超过10.2.0。
+**PowerShell** | Vm 必须具有版本2.0 或更高版本的 Powershell
 **端口访问** | 在运行要发现的 Vm 的 ESXi 主机上，Azure Migrate 设备必须能够连接到 TCP 端口443。
 **限制** | 对于应用发现，最多可以发现每个设备10000。 
 
@@ -88,7 +89,7 @@ ESXi 主机 | **仅[应用程序发现](https://docs.microsoft.com/azure/migrate
 
 ## <a name="agentless-dependency-visualization"></a>无代理依赖项可视化
 
-此选项当前处于预览状态。 [了解详细信息](how-to-create-group-machine-dependencies-agentless.md)。 下表总结了要求。
+此选项目前处于预览状态。 [了解详细信息](how-to-create-group-machine-dependencies-agentless.md)。 下表总结了要求。
 
 **要求** | **详细信息**
 --- | ---
@@ -100,6 +101,7 @@ ESXi 主机 | **仅[应用程序发现](https://docs.microsoft.com/azure/migrate
 **Linux 帐户** | 可视化需要具有 Root 权限的用户帐户。<br/><br/> 或者，用户帐户需要对/bin/netstat 和/bin/ls 文件的这些权限： CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
 **VM 代理** | Vm 无需代理。
 **VMware 工具** | 必须在要分析的 Vm 上安装并运行 VMware 工具。 <br/> 如果 VMware 工具版本介于 9.10-10.2.0 之间，请确保将其升级到超过10.2.0。
+**PowerShell** | Vm 必须具有版本2.0 或更高版本的 Powershell
 **vCenter 凭据** | 具有只读访问权限的 vCenter Server 帐户，以及为虚拟机启用 > 来宾操作的特权。
 **端口访问** | 在运行要分析的 Vm 的 ESXi 主机上，Azure Migrate 设备必须能够连接到 TCP 端口443。
 

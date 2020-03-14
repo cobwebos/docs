@@ -1,6 +1,6 @@
 ---
 title: 注册 Azure NetApp 文件 | Microsoft Docs
-description: 介绍如何注册以使用 Azure NetApp 文件。
+description: 描述如何注册以使用 Azure NetApp 文件。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,33 +15,33 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: b-juche
 ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299213"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274055"
 ---
 # <a name="register-for-azure-netapp-files"></a>注册 Azure NetApp 文件
 
 > [!IMPORTANT] 
-> 在注册之前 Azure NetApp 文件资源提供程序，你应已收到一封电子邮件从 Azure NetApp 文件团队确认您已被授予对服务的访问。 
+> 在注册 Azure NetApp 文件资源提供程序之前，你必须收到来自 Azure NetApp 文件团队的一封电子邮件，确认你已被授予对该服务的访问权限。 
 
-在本文中，了解如何注册 Azure NetApp 文件，以便你可以开始使用该服务。
+本文介绍如何注册 Azure NetApp 文件，以便你可以开始使用该服务。
 
-## <a name="waitlist"></a>提交已插入等待队列请求用于访问服务
+## <a name="waitlist"></a>提交用于访问服务的候补请求
 
-1. 提交已插入等待队列的访问通过 Azure NetApp 文件服务请求[Azure NetApp 文件已插入等待队列提交页面](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)。 
+1. 提交候补请求，通过[Azure Netapp 文件候补提交页](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)访问 Azure netapp 文件服务。 
 
-    候补名单注册不保证我们的服务立即访问。 
+    候补注册不保证立即访问服务。 
 
-2. 在继续执行其他任务之前等待来自 Azure NetApp 文件团队的官方确认电子邮件。 
+2. 在继续执行其他任务之前，请先从 Azure NetApp 文件团队等待官方确认电子邮件。 
 
 ## <a name="resource-provider"></a>注册 NetApp 资源提供程序
 
 若要使用该服务，必须为 Azure NetApp 文件注册 Azure 资源提供程序。
 
 > [!NOTE] 
-> 你将能够成功即使没有被授予访问权限的服务注册 NetApp 资源提供程序。 但是，而无需访问授权的任何 Azure 门户或 API 创建 NetApp 帐户或任何其他 Azure NetApp 文件资源请求将被拒绝并显示以下错误：  
+> 即使没有为服务授予访问权限，也能成功注册 NetApp 资源提供程序。 但是，如果没有访问授权，则任何 Azure 门户或 API 请求创建 NetApp 帐户或任何其他 Azure NetApp 文件资源都将被拒绝，并出现以下错误：  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
@@ -65,7 +65,7 @@ ms.locfileid: "66299213"
        
    `<SubID>` 是你的订阅 ID。
 
-    如果您看不到功能名称`Microsoft.NetApp/ANFGA`，没有对服务的访问。 在此步骤处停止。 按照中的说明进行操作[提交用于访问服务已插入等待队列请求](#waitlist)才能继续操作之前的请求服务访问权限。 
+    如果看不到功能名称 `Microsoft.NetApp/ANFGA`，则无法访问该服务。 停止执行此步骤。 按照[提交用于访问服务的候补请求](#waitlist)中的说明来请求服务访问，然后再继续。 
 
 4. 在 Azure Cloud Shell 控制台中，输入以下命令来注册 Azure 资源提供程序： 
     

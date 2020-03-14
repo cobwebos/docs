@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191426"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284039"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板自动部署 Azure 逻辑应用
 
@@ -61,7 +61,7 @@ ms.locfileid: "77191426"
 
 对于逻辑应用模板，你主要使用以下模板对象：
 
-| 属性 | 说明 |
+| Attribute | 说明 |
 |-----------|-------------|
 | `parameters` | 声明用于接受在 Azure 中创建和自定义要部署的资源时要使用的值的[模板参数](../azure-resource-manager/templates/template-syntax.md#parameters)。 例如，这些参数接受逻辑应用的名称和位置、连接以及部署所需的其他资源的值。 您可以将这些参数值存储在[参数文件](#template-parameter-files)中，本主题稍后将对此进行介绍。 有关常规详细信息，请参阅[参数-资源管理器模板结构和语法](../azure-resource-manager/templates/template-syntax.md#parameters)。 |
 | `resources` | 定义要创建或更新的[资源](../azure-resource-manager/templates/template-syntax.md#resources)，并将其部署到 azure 资源组，例如逻辑应用、连接、Azure 存储帐户等。 有关常规详细信息，请参阅[资源-资源管理器模板结构和语法](../azure-resource-manager/templates/template-syntax.md#resources)。 |
@@ -319,13 +319,13 @@ ms.locfileid: "77191426"
 
 下面是特定于逻辑应用资源定义的属性：
 
-| 属性 | 必需 | 类型 | 说明 |
+| Attribute | 必选 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | `state` | 是 | String | 逻辑应用在部署时的状态，其中 `Enabled` 意味着逻辑应用是实时的，`Disabled` 意味着逻辑应用处于非活动状态。 例如，如果你尚未准备好逻辑应用，但想要部署草稿版，则可以使用 `Disabled` 选项。 |
-| `integrationAccount` | 是 | Object | 如果逻辑应用使用集成帐户（用于存储企业到企业（B2B）方案的项目），此对象将包含 `id` 属性，该属性指定集成帐户的 ID。 |
+| `integrationAccount` | 否 | Object | 如果逻辑应用使用集成帐户（用于存储企业到企业（B2B）方案的项目），此对象将包含 `id` 属性，该属性指定集成帐户的 ID。 |
 | `definition` | 是 | Object | 逻辑应用的基础工作流定义与代码视图中显示的对象相同，并在[工作流定义语言的架构参考](../logic-apps/logic-apps-workflow-definition-language.md)主题中完全说明。 在此工作流定义中，`parameters` 对象声明要在逻辑应用运行时中使用的值的参数。 有关详细信息，请参阅[工作流定义和参数](#workflow-definition-parameters)。 <p><p>若要查看逻辑应用的工作流定义中的属性，请从 "设计视图" 切换到 Azure 门户或 Visual Studio 中的 "代码视图"，或使用[Azure 资源浏览器](https://resources.azure.com)之类的工具。 |
-| `parameters` | 是 | Object | 要在逻辑应用运行时中使用的[工作流定义参数值](#workflow-definition-parameters)。 这些值的参数定义显示在[工作流定义的 parameters 对象](#workflow-definition-parameters)内。 此外，如果逻辑应用使用[托管连接器](../connectors/apis-list.md)来访问其他服务和系统，则此对象将包含一个 `$connections` 对象，该对象将设置要在运行时使用的连接值。 |
-| `accessControl` | 是 | Object | 用于指定逻辑应用的安全属性，如限制对请求触发器的 IP 访问，或运行历史记录输入和输出。 有关详细信息，请参阅[对逻辑应用的安全访问](../logic-apps/logic-apps-securing-a-logic-app.md)。 |
+| `parameters` | 否 | Object | 要在逻辑应用运行时中使用的[工作流定义参数值](#workflow-definition-parameters)。 这些值的参数定义显示在[工作流定义的 parameters 对象](#workflow-definition-parameters)内。 此外，如果逻辑应用使用[托管连接器](../connectors/apis-list.md)来访问其他服务和系统，则此对象将包含一个 `$connections` 对象，该对象将设置要在运行时使用的连接值。 |
+| `accessControl` | 否 | Object | 用于指定逻辑应用的安全属性，如限制对请求触发器的 IP 访问，或运行历史记录输入和输出。 有关详细信息，请参阅[对逻辑应用的安全访问](../logic-apps/logic-apps-securing-a-logic-app.md)。 |
 ||||
 
 有关特定于逻辑应用、集成帐户和集成帐户项目的模板资源信息，请参阅[Microsoft. 逻辑资源类型](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)。
@@ -936,7 +936,7 @@ ms.locfileid: "77191426"
 }
 ```
 
-| 属性 | 说明 |
+| Attribute | 说明 |
 |-----------|-------------|
 | `token:clientId` | 与服务主体关联的应用程序或客户端 ID |
 | `token:clientSecret` | 与服务主体关联的键值 |
