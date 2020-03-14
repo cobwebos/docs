@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365775"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267685"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>使用 StorSimple 设备管理器服务修改 StorSimple 设备配置
 
@@ -65,7 +65,7 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
 
  从下拉列表中选择所在的时区。 最多可以指定两个网络时间协议 (NTP) 服务器：
 
- - **主 NTP 服务器** - 该配置是必需的，并且是在使用用于 StorSimple 的 Windows PowerShell 配置设备时指定的。 可将默认的 Windows Server **time.windows.com** 指定为你的 NTP 服务器。 可以通过 Azure 门户查看主 NTP 服务器配置，但若要更改此配置，必须使用 Windows PowerShell 界面。 使用 `Set-HcsNTPClientServerAddress` cmdlet 修改设备的主 NTP 服务器。 有关详细信息，请参阅 [Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet 的语法。
+ - **主 NTP 服务器** - 该配置是必需的，并且是在使用用于 StorSimple 的 Windows PowerShell 配置设备时指定的。 可以将默认 Windows Server **time.windows.com** 指定为 NTP 服务器。 可以通过 Azure 门户查看主 NTP 服务器配置，但若要更改此配置，必须使用 Windows PowerShell 界面。 使用 `Set-HcsNTPClientServerAddress` cmdlet 修改设备的主 NTP 服务器。 有关详细信息，请参阅 [Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) cmdlet 的语法。
 
 - **辅助 NTP 服务器** - 该配置是可选的。 可以使用门户来配置辅助 NTP 服务器。
 
@@ -127,7 +127,7 @@ Azure 门户“设置”边栏选项卡中的“设备设置”部分包含可�
   * **已启用 iSCSI** – 当启用后，设备将使用此接口来与 iSCSI 主机进行通信。
     
     建议将 iSCSI 流量与云存储流量相隔离。 另请注意，如果主机与设备在同一子网内，则不需要分配网关；但是，如果主机与设备在不同的子网中，则需要分配网关。
-* **IP 地址** - 配置任何网络接口时，必须配置虚拟 IP (VIP)。 这可以是 IPv4 和/或 IPv6 地址。 设备网络接口同时支持 IPv4 和 IPv6 地址系列。 在使用 IPv4 时，用十进制点符号指定一个 32 位 IP 地址 (*xxx.xxx.xxx.xxx*)。 当使用 IPv6 时，只需要提供一个 4 位的前缀，会基于该前缀自动为设备网络接口生成一个 128 位的地址。
+* **IP 地址** - 配置任何网络接口时，必须配置虚拟 IP (VIP)。 这可以是 IPv4 和/或 IPv6 地址。 设备网络接口同时支持 IPv4 和 IPv6 地址系列。 当使用 IPv4 时，请采用点分十进制表示法指定 32 位 IP 地址 (*xxx.xxx.xxx.xxx*)。 当使用 IPv6 时，只需要提供一个 4 位的前缀，会基于该前缀自动为设备网络接口生成一个 128 位的地址。
 * **子网** – 这指的是子网掩码，并且是通过 Windows PowerShell 接口配置的。
 * **网关** – 这是当此接口尝试与不在同一 IP 地址空间（子网）内的节点进行通信时应该使用的默认网关。 默认网关必须与接口 IP 地址在同一地址空间（子网）内，如子网掩码所确定。
 * **固定 IP 地址** – 只有配置 DATA 0 接口时，此字段才可用。 要执行更新或设备故障排除之类的操作，可能需要直接连接到设备控制器。 固定 IP 地址可以用来访问设备上的主动和被动控制器。

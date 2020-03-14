@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 6c672e57c0c1c0b62b79afbacec3f842770e3d61
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 910e788830ec55b610a9234a8c8ac75dda1ea189
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169235"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218105"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio 中调试模型（经典）
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 运行模型时，可能会遇到以下错误：
 
@@ -46,7 +48,7 @@ ms.locfileid: "77169235"
 
 ## <a name="score-model-module-produces-incorrect-results"></a>“评分模型”模块生成不正确的结果
 
-![图像 2](./media/debug-models/train_test-2.png)
+![image2](./media/debug-models/train_test-2.png)
 
 在用于监督学习的典型训练/测试实验中，[拆分数据][split]模块将原始数据集分为两部分：一个部分用于定型模型，一个部分用于对定型模型的执行情况进行评分。 然后使用经过训练的模型对测试数据进行评分，之后评估结果以确定模型的准确性。
 

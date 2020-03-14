@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: b764799d3f40cef24a0412ac950026af650d4ec7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229021"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272846"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Azure Front Door 服务中的后端和后端池
 本文介绍有关如何将应用部署与 Azure 前门服务进行映射的概念。 它还说明了应用后端的前端配置中的不同术语。
@@ -67,7 +67,7 @@ ms.locfileid: "74229021"
 ### <a name="health-probes"></a>运行状况探测
 前门服务将定期 HTTP/HTTPS 探测请求发送到每个已配置的后端。 探测请求会确定每个后端的邻近性和运行状况以对最终用户请求进行负载平衡。 后端池的运行状况探测设置定义我们如何轮询 app 后端的运行状况状态。 以下设置可用于负载平衡配置：
 
-- **路径**。 用于对后端池中所有后端的探测请求的 URL。 例如，如果你的某个后端为 contoso-westus.azurewebsites.net，并且路径设置为/probe/test.aspx，则在将协议设置为 HTTP 时，前门服务环境（假定该协议设置为 HTTP）将向 http\://contoso-westus.azurewebsites.net/probe/test.aspx 发送运行状况探测请求。
+- **Path**。 用于对后端池中所有后端的探测请求的 URL。 例如，如果你的某个后端为 contoso-westus.azurewebsites.net，并且路径设置为/probe/test.aspx，则在将协议设置为 HTTP 时，前门服务环境（假定该协议设置为 HTTP）将向 http\://contoso-westus.azurewebsites.net/probe/test.aspx 发送运行状况探测请求。
 
 - **协议**。 定义是否通过 HTTP 或 HTTPS 协议将前端服务的运行状况探测请求发送到后端。
 

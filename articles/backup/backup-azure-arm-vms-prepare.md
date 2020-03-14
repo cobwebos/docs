@@ -4,11 +4,11 @@ description: 介绍如何使用 Azure 备份在恢复服务保管库中备份 Az
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363688"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273509"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
@@ -101,7 +101,7 @@ ms.locfileid: "78363688"
 
       ![默认备份策略](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-4. 在 "**选择虚拟机**" 中，选择要使用策略备份的 vm。 然后单击 **“确定”** 。
+4. 在 "**选择虚拟机**" 中，选择要使用策略备份的 vm。 然后单击“确定”。
 
    * 已验证所选 Vm。
    * 只能选择与保管库位于同一区域中的 VM。
@@ -133,7 +133,7 @@ ms.locfileid: "78363688"
     * 可以保留一到五天的即时还原快照。 默认设置为两天。
 4. 在 "**保持期**" 中，指定要保留每日或每周备份点的时间长度。
 5. 在 "**每月备份点的保留期**" 中，指定是否要保留每月备份和每周备份。
-6. 单击 **“确定”** 保存策略。
+6. 单击“确定”保存策略。
 
     ![新建备份策略](./media/backup-azure-arm-vms-prepare/new-policy.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "78363688"
 2. 在 "**备份项**" 中，单击 " **Azure 虚拟机**"。
 3. 在 "**备份项**" 列表中，单击省略号（...）。
 4. 单击“立即备份”。
-5. 现在，在 "**备份**" 中使用 "日历" 控件选择应该保留恢复点的最后一天。 然后单击 **“确定”** 。
+5. 现在，在 "**备份**" 中使用 "日历" 控件选择应该保留恢复点的最后一天。 然后单击“确定”。
 6. 监视门户通知。 可以在保管库仪表板 >“备份作业” **“进行中”监视作业进度。**  >  创建初始备份可能需要一些时间，具体取决于 VM 的大小。
 
 ## <a name="verify-backup-job-status"></a>验证备份作业状态

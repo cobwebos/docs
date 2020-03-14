@@ -4,100 +4,23 @@ description: 了解如何创建私有 Azure Kubernetes 服务（AKS）群集
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: b8b4f8062d9f60648e22ab4eb0be78eb47159834
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944201"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205173"
 ---
-# <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>创建私有 Azure Kubernetes Service 群集（预览版）
+# <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用的 Azure Kubernetes 服务群集
 
 在专用群集中，控制平面或 API 服务器具有内部 IP 地址，这些地址在[专用 intranets 文档的 RFC1918 分配](https://tools.ietf.org/html/rfc1918)中定义。 通过使用专用群集，可以确保 API 服务器与节点池之间的网络流量仅保留在专用网络上。
 
 控制平面或 API 服务器位于 Azure Kubernetes 服务（AKS）管理的 Azure 订阅中。 客户的群集或节点池在客户的订阅中。 服务器和群集或节点池可以通过 API 服务器虚拟网络中的[Azure 专用链接服务][private-link-service]和在客户 AKS 群集的子网中公开的专用终结点相互通信。
 
-> [!IMPORTANT]
-> AKS 预览功能是自助服务，可通过选择进行提供。 预览*按*原样*提供，并*已从服务级别协议（SLA）和有限担保中排除。 *最大程度地*减少了客户支持 AKS 的预览。 因此，这些功能并不用于生产。 有关详细信息，请参阅以下支持文章：
->
-> * [AKS 支持策略](support-policies.md)
-> * [Azure 支持常见问题](faq.md)
-
 ## <a name="prerequisites"></a>必备条件
 
-* Azure CLI 版本2.0.77 或更高版本，以及 Azure CLI AKS 预览版扩展版本0.4.18
+* Azure CLI 版本2.2.0 或更高版本
 
-## <a name="currently-supported-regions"></a>当前支持的区域
-
-* 澳大利亚东部
-* 澳大利亚东南部
-* 巴西南部
-* 加拿大中部
-* 加拿大东部
-* Cenral
-* 东亚
-* 美国东部
-* 美国东部 2
-* 美国东部 2 EUAP
-* 法国中部
-* 德国北部
-* 日本东部
-* 日本西部
-* 韩国中部
-* 韩国南部
-* 美国中北部
-* 北欧
-* 北欧
-* 美国中南部
-* 英国南部
-* 西欧
-* 美国西部
-* 美国西部 2
-* 美国东部 2
-
-## <a name="currently-supported-availability-zones"></a>当前支持的可用性区域
-
-* 美国中部
-* 美国东部
-* 美国东部 2
-* 法国中部
-* 日本东部
-* 北欧
-* 东南亚
-* 英国南部
-* 西欧
-* 美国西部 2
-
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>安装最新 Azure CLI AKS 预览版扩展
-
-若要使用专用群集，需要 Azure CLI AKS 预览版扩展版本0.4.18 或更高版本。 使用[az extension add][az-extension-add]命令安装 Azure CLI AKS Preview 扩展，然后使用以下[az extension update][az-extension-update]命令检查是否有任何可用的更新：
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-> [!CAUTION]
-> 在订阅上注册功能时，当前无法注册该功能。 启用某些预览功能后，可以使用订阅中创建的所有 AKS 群集的默认设置。 不要对生产订阅启用预览功能。 使用单独的订阅来测试预览功能并收集反馈。
-
-```azurecli-interactive
-az feature register --name AKSPrivateLinkPreview --namespace Microsoft.ContainerService
-```
-
-注册状态显示为 "*已注册*" 可能需要几分钟时间。 可以通过使用以下[az feature list][az-feature-list]命令来检查状态：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSPrivateLinkPreview')].{Name:name,State:properties.state}"
-```
-
-注册状态后，使用以下[az provider register][az-provider-register]命令刷新*ContainerService*资源提供程序的注册：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-az provider register --namespace Microsoft.Network
-```
 ## <a name="create-a-private-aks-cluster"></a>创建专用 AKS 群集
 
 ### <a name="create-a-resource-group"></a>创建资源组
@@ -159,6 +82,7 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，你
 9. 前往具有 VM 的虚拟网络，选择**对等互连**，选择 AKS 虚拟网络，然后创建对等互连。 如果 AKS 虚拟网络上的地址范围和 VM 的虚拟网络冲突，则对等互连失败。 有关详细信息，请参阅[虚拟网络对等互连][virtual-network-peering]。
 
 ## <a name="dependencies"></a>依赖项  
+
 * 仅标准 Azure 负载均衡器支持专用链接服务。 不支持基本的 Azure 负载均衡器。  
 * 若要使用自定义 DNS 服务器，请将具有 DNS 的 AD 服务器部署到此 IP 168.63.129.16
 
@@ -173,7 +97,6 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，你
 * 不支持将现有的 AKS 群集转换为专用群集
 * 删除或修改客户子网中的专用终结点将导致群集停止工作。 
 * 容器 Azure Monitor 当前不支持。
-* 当前不支持*自带 DNS* 。
 
 
 <!-- LINKS - internal -->

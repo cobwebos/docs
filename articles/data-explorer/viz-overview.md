@@ -8,12 +8,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 32ccc5ad236c87d3609798a8432db14ee440d067
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7b1c7825beb769b610d661cb9644fc3f3919d548
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064557"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139056"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>Azure 数据资源管理器中的数据可视化 
 
@@ -42,6 +42,10 @@ Azure 数据资源管理器提供使用[内置本机 Excel 连接器](excel-conn
 ## <a name="grafana"></a>Grafana
 
 [Grafana](https://grafana.com)提供了一个 azure 数据资源管理器插件，可用于将 azure 数据资源管理器中的数据可视化。 [将 Azure 数据资源管理器设置为 Grafana 的数据源，然后将数据可视化](/azure/data-explorer/grafana)。 
+
+## <a name="kibana"></a>Kibana
+
+Azure 数据资源管理器提供使用 K2Bridge （一个开源连接器）连接到[Kibana （"发现" 页）](https://www.elastic.co/guide/en/kibana/6.8/discover.html)的功能。 [将 Azure 数据资源管理器设置为 Kibana 的数据源，然后将数据可视化](/azure/data-explorer/k2bridge)。
 
 ## <a name="odbc-connector"></a>ODBC 连接器
 

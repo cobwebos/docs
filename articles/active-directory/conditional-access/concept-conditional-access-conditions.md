@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: b9e6d2d6cf602bca74c8899586eef0a8108fde3c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620733"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263330"
 ---
 # <a name="conditional-access-conditions"></a>条件性访问：条件
 
@@ -72,7 +72,7 @@ Azure AD 条件访问支持以下设备平台：
       - 此选项包括使用不支持新式身份验证的基本/旧身份验证协议的客户端。
          - 经过身份验证的 SMTP-POP 和 IMAP 客户端使用它来发送电子邮件。
          - 自动发现-由 Outlook 和 EAS 客户端用于查找和连接到 Exchange Online 中的邮箱。
-         - Exchange Online PowerShell-用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需要使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
+         - Exchange Online PowerShell-用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需要使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
          - Exchange Web 服务（EWS）-Outlook、Outlook for Mac 和第三方应用程序使用的编程接口。
          - IMAP4-由 IMAP 电子邮件客户端使用。
          - MAPI over HTTP （MAPI/HTTP）-由 Outlook 2010 及更高版本使用。
@@ -142,8 +142,8 @@ Azure AD 条件访问支持以下设备平台：
 | “邮件/日历/联系人”应用、Outlook 2016、Outlook 2013（使用新式身份验证）| Office 365 Exchange Online | Windows 10 |
 | 用于应用的 MFA 和位置策略。 不支持基于设备的策略。| 任何“我的应用”应用服务 | Android 和 iOS |
 | Microsoft Teams 服务 - 控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、iOS、Android、WP 和 Web 客户端）的所有服务 | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android 和 macOS |
-| Office 2016 应用、Office 2013 （采用新式身份验证）、 [OneDrive 同步客户端](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1、Windows 7 |
-| Office 2016 应用、通用 Office 应用、Office 2013 （采用新式身份验证）、 [OneDrive 同步客户端](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
+| Office 2016 应用、Office 2013 （采用新式身份验证）、 [OneDrive 同步客户端](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1、Windows 7 |
+| Office 2016 应用、通用 Office 应用、Office 2013 （采用新式身份验证）、 [OneDrive 同步客户端](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
 | Office 2016（仅限 Word、Excel、PowerPoint、OneNote）。 | Office 365 SharePoint Online | macOS |
 | Office 2019| Office 365 SharePoint Online | Windows 10、macOS |
 | Office 移动应用 | Office 365 SharePoint Online | Android、iOS |

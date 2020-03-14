@@ -8,11 +8,11 @@ ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391036"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248588"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>在 Azure Monitor 中 Log Analytics 工作区收集 Azure 平台日志
 Azure 中的[平台日志](platform-logs-overview.md)，包括 azure 活动日志和资源日志，提供 azure 资源及其所依赖的 azure 平台的详细诊断和审核信息。 本文介绍如何在 Log Analytics 工作区中收集资源日志，以便使用功能强大的日志查询在 Azure Monitor 日志中收集的其他监视数据对其进行分析，还可以 Azure Monitor 利用警报和可视化效果. 

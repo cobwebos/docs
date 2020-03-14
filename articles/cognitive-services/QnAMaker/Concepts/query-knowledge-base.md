@@ -4,11 +4,11 @@ description: 必须发布知识库。 发布后，将使用 generateAnswer API �
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843305"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220717"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>查询知识库以获取答案
 
@@ -24,9 +24,9 @@ ms.locfileid: "76843305"
 
 下表对此过程进行了说明。
 
-|步骤|用途|
+|步骤|目的|
 |--|--|
-|第|客户端应用程序将用户查询发送到[GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)。|
+|1|客户端应用程序将用户查询发送到[GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)。|
 |2|QnA Maker 通过语言检测、spellers 和断字符来预处理用户查询。|
 |3|此预处理用于更改最佳搜索结果的用户查询。|
 |4|此更改的查询将发送到 Azure 认知搜索索引，该索引接收 `top` 的结果数。 如果这些结果中没有正确答案，请将 `top` 的值略微增大。 通常，在90% 的查询中，`top` 的值为10。|

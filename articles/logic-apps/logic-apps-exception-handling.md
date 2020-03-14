@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906693"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284026"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
 
@@ -27,7 +27,7 @@ ms.locfileid: "76906693"
 
 重试策略类型如下所示：
 
-| 类型 | Description |
+| 类型 | 说明 |
 |------|-------------|
 | **Default** | 此策略可*按指数级增长*间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 |
 | **指数间隔**  | 此策略会等待从指数增长的范围中随机选定的时间间隔，然后再发送下一个请求。 |
@@ -69,7 +69,7 @@ ms.locfileid: "76906693"
 
 *必需*
 
-| 值 | 类型 | Description |
+| 值 | 类型 | 说明 |
 |-------|------|-------------|
 | <*retry-policy-type*> | String | 要使用的重试策略类型：`default`、`none`、`fixed` 或 `exponential` |
 | <*retry-interval*> | String | 其中值必须使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重试时间间隔。 默认的最小时间间隔是 `PT5S`，而最大时间间隔是 `PT1D`。 如果使用指数式时间间隔策略，可更改最小值和最大值。 |
@@ -78,7 +78,7 @@ ms.locfileid: "76906693"
 
 *可选*
 
-| 值 | 类型 | Description |
+| 值 | 类型 | 说明 |
 |-------|------|-------------|
 | <*minimum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最小时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） |
 | <*maximum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最大时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） |
@@ -114,11 +114,11 @@ ms.locfileid: "76906693"
 
 ### <a name="none"></a>无
 
-要指定操作或触发器不重试失败的请求，请将 <retry-policy-type> 设置为 `none`。
+要指定操作或触发器不重试失败的请求，请将 <retry-policy-type> 设置为`none`。
 
 ### <a name="fixed-interval"></a>固定间隔
 
-要指定操作或触发器在等待指定的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为 `fixed`。
+要指定操作或触发器在等待指定的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为`fixed`。
 
 *示例*
 
@@ -143,7 +143,7 @@ ms.locfileid: "76906693"
 
 ### <a name="exponential-interval"></a>指数间隔
 
-要指定操作或触发器在等待随机的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为 `exponential`。 随机时间间隔选自呈指数增长的范围。 此外，可通过自行指定最小时间间隔和最大时间间隔替代默认的最小和最大时间间隔。
+要指定操作或触发器在等待随机的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为`exponential`。 随机时间间隔选自呈指数增长的范围。 此外，可通过自行指定最小时间间隔和最大时间间隔替代默认的最小和最大时间间隔。
 
 **随机变量范围**
 
@@ -151,7 +151,7 @@ ms.locfileid: "76906693"
 
 | 重试次数 | 最小间隔 | 最大间隔 |
 |--------------|------------------|------------------|
-| 第 | max(0, <minimum-interval>) | min(interval, <maximum-interval>) |
+| 1 | max(0, <minimum-interval>) | min(interval, <maximum-interval>) |
 | 2 | max(interval, <minimum-interval>) | min(2 * interval, <maximum-interval>) |
 | 3 | max(2 * interval, <minimum-interval>) | min(4 * interval, <maximum-interval>) |
 | 4 | max(4 * interval, <minimum-interval>) | min(8 * interval, <maximum-interval>) |

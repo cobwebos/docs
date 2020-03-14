@@ -4,11 +4,11 @@ description: 使用 Microsoft Azure 恢复服务（MARS）代理来备份 Window
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: 0e1f7044c62bbaa9969b97690bf16b9ed446c27c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673014"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247769"
 ---
 # <a name="back-up-windows-machines-by-using-the-azure-backup-mars-agent"></a>使用 Azure 备份 MARS 代理备份 Windows 计算机
 

@@ -3,14 +3,14 @@ title: 查询 Azure 更新管理日志
 description: 本文介绍如何在 Log Analytics 工作区中查询更新管理的日志。
 services: automation
 ms.subservice: update-management
-ms.date: 01/10/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5a1979b0e714f35694999c04e1f890b710d54ac9
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867066"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216852"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Azure Monitor 日志中更新管理的查询更新记录
 
@@ -26,12 +26,12 @@ ms.locfileid: "75867066"
 
 将创建一个类型为 `RequiredUpdate` 的记录，表示计算机所需的更新。 这些记录的属性在下表中列出：
 
-| 属性 | Description | 
+| properties | 说明 | 
 |----------|-------------|
 | Computer | 报表计算机的完全限定的域名。 |
 | KBID | Windows 更新的知识库文章 ID。 |
 | ManagementGroupName | Operations Manager 管理组或 Log Analytics 工作区的名称。 | 
-| 产品 | 更新适用的产品。 | 
+| Products | 更新适用的产品。 | 
 | PublishDate | 可从 Windows 更新下载和安装更新的日期。 |
 | 服务器 | | 
 | SourceHealthServiceId | 表示 Log Analytics Windows 代理 ID 的唯一标识符。 |
@@ -40,14 +40,14 @@ ms.locfileid: "75867066"
 | TimeGenerated | 创建记录的日期和时间。 | 
 | 类型 | *Update* | 
 | UpdateClassification | 指示可应用的更新的类型。 对于 Windows：<br> *关键更新*<br> *安全更新*<br> *更新汇总*<br> *功能包*<br> *Service pack*<br> *定义更新*<br> *工具*<br> *更新*。 对于 Linux：<br> *关键更新和安全更新*<br> *其他* |
-| UpdateSeverity | 此漏洞的严重性分级。 值为：<br> *严重*<br> *重要说明*<br> *Moderate*<br> *Low* |
+| UpdateSeverity | 此漏洞的严重性分级。 值为：<br> *严重*<br> *重要说明*<br> *适中*<br> *低级* |
 | UpdateTitle | 更新的标题。|
 
 ### <a name="update"></a>更新
 
 将创建一个类型为 "`Update`" 的记录，该记录表示计算机的可用更新及其安装状态。 这些记录的属性在下表中列出：
 
-| 属性 | Description | 
+| properties | 说明 | 
 |----------|-------------|
 | ApprovalSource | 仅适用于 Windows 操作系统。 值为*Microsoft 更新*。 |
 | 已批准 | *True*或*False* |
@@ -55,7 +55,7 @@ ms.locfileid: "75867066"
 | Computer | 报表计算机的完全限定的域名。 |
 | ComputerEnvironment | *Azure*或*非 azure*。 |
 | MSRCBulletinID | 安全公告 ID 号 | 
-| MSRCSeverity | 此漏洞的严重性分级。 值为：<br> *严重*<br> *重要说明*<br> *Moderate*<br> *Low* |  
+| MSRCSeverity | 此漏洞的严重性分级。 值为：<br> *严重*<br> *重要说明*<br> *适中*<br> *低级* |  
 | KBID | Windows 更新的知识库文章 ID。 |
 | ManagementGroupName | Operations Manager 管理组或 Log Analytics 工作区的名称。 |
 | UpdateID | 软件更新的唯一标识符。 |
@@ -73,7 +73,7 @@ ms.locfileid: "75867066"
 | 标题 | 更新的标题。 |
 | PublishedDate （UTC） | 可从 Windows 更新下载和安装更新的日期。  |
 | UpdateState | 更新的当前状态。 | 
-| 产品 | 更新适用的产品。 |
+| Products | 更新适用的产品。 |
 | SubscriptionId | Azure 订阅的唯一标识符。 | 
 | ResourceGroup | 资源所属的资源组的名称。 | 
 | ResourceProvider | 指定资源提供程序。 | 
@@ -84,7 +84,7 @@ ms.locfileid: "75867066"
 
 将创建一个类型为 `UpdateAgent` 的记录，该记录提供计算机上的更新代理的详细信息。 这些记录的属性在下表中列出：
 
-| 属性 | Description | 
+| properties | 说明 | 
 |----------|-------------|
 | AgeofOldestMissingRequiredUpdate | | 
 | AutomaticUpdateEnabled | | 
@@ -105,7 +105,7 @@ ms.locfileid: "75867066"
 
 将创建一个类型为 "`UpdateRunProgress`" 的记录，该记录提供计算机计划部署的更新部署状态。 这些记录的属性在下表中列出：
 
-| 属性 | Description | 
+| properties | 说明 | 
 |----------|-------------|
 | Computer | 报表计算机的完全限定的域名。 |
 | ComputerEnvironment | *Azure*或*非 azure*。 | 
@@ -116,7 +116,7 @@ ms.locfileid: "75867066"
 | KBID | Windows 更新的知识库文章 ID。 | 
 | ManagementGroupName | Operations Manager 管理组或 Log Analytics 工作区的名称。 |
 | OSType | 指定操作系统、 *Windows*或*Linux*的类型。 | 
-| 产品 | 更新适用的产品。 |
+| Products | 更新适用的产品。 |
 | 资源 | 资源的名称。 | 
 | ResourceId | 与记录关联的资源的唯一标识符。 |
 | ResourceProvider | 指定资源提供程序。 | 
@@ -137,15 +137,15 @@ ms.locfileid: "75867066"
 
 将创建一个类型为 `UpdateSummary` 的记录，该记录按计算机提供更新摘要。 这些记录的属性在下表中列出：
 
-| 属性 | Description | 
+| properties | 说明 | 
 |----------|-------------|
 | Computer | 报表计算机的完全限定的域名。 |
 | ComputerEnvironment | *Azure*或*非 azure*。 | 
 | CriticalUpdatesMissing | 缺少的关键更新的数量。 | 
 | ManagementGroupName | Operations Manager 管理组或 Log Analytics 工作区的名称。 |
 | NETRuntimeVersion | Windows 计算机上安装的 .NET Framework 版本。 |
-| OldestMissingSecurityUpdateBucket | | 
-| OldestMissingSecurityUpdateInDays | |
+| OldestMissingSecurityUpdateBucket | 值为：<br> *最近*<br> *30天前*<br> *60天前*<br> *保留* | 
+| OldestMissingSecurityUpdateInDays | 检测到未安装的最早更新的总天数。 |
 | OsVersion | 操作系统的版本。 |
 | OtherUpdatesMissing | 缺少检测到的更新计数。 |
 | 资源 |  资源的名称。 | 
@@ -237,7 +237,7 @@ Update
 
 ### <a name="single-azure-vm-assessment-queries-linux"></a>单个 Azure VM 评估查询 (Linux)
 
-对于某些 Linux 发行版, 与来自 Azure 资源管理器的 VMUUID 值和存储在 Azure Monitor 日志中的[字节序](https://en.wikipedia.org/wiki/Endianness)不匹配。 以下查询可检查任一字节序的匹配情况。 使用 GUID 的 big-endian 和 little-endian 格式替换 VMUUID 值可正常地返回结果。 可以通过在 Azure Monitor 日志中运行以下查询来找到应使用的 VMUUID： `Update | where Computer == "<machine name>"
+对于某些 Linux 发行版，与来自 Azure 资源管理器的 VMUUID 值和存储在 Azure Monitor 日志[中的值不匹配。](https://en.wikipedia.org/wiki/Endianness) 以下查询可检查任一字节序的匹配情况。 使用 GUID 的 big-endian 和 little-endian 格式替换 VMUUID 值可正常地返回结果。 可以通过在 Azure Monitor 日志中运行以下查询来找到应使用的 VMUUID： `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>缺少更新摘要

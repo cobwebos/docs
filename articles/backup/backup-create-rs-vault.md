@@ -4,12 +4,12 @@ description: 本文介绍如何创建用于存储备份和恢复点的恢复服�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: eb7dcb4038260b1edac57a2163a1c0eae29ee452
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5eac302668c2f322390b38475860c77f1cd40d72
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363681"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247951"
 ---
 # <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -88,7 +88,15 @@ Azure 备份会自动处理保管库的存储。 你需要指定如何复制该�
 >开始之前：
 >
 >- 有关支持的托管类型和区域的列表，请参阅[支持矩阵](backup-support-matrix.md#cross-region-restore)。
->- 跨区域还原（CRR）功能当前仅在以下区域提供：美国中部、美国西部2、澳大利亚东部和澳大利亚东南部。 
+>- 跨区域还原（CRR）功能当前仅在以下区域提供： 
+>    - 美国中西部
+>    - 美国西部 2
+>    - 澳大利亚东部
+>    - 澳大利亚东南部
+>    - 日本东部
+>    - 日本西部
+>    - 东南亚
+>    - 英国南部
 >- CRR 是适用于任何 GRS 保管库的保管库级别选择功能（默认情况下处于关闭状态）。
 >- 请使用以下命令将你的订阅加入此功能：<br>
 >  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`

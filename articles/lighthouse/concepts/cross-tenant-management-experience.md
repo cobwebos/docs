@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 42368bcbc9f15f9ff5ef957b4c88f15bf070f25b
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 0e55923e688d1062adc5838a88e8d3202864282a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402083"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218385"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -29,7 +29,7 @@ Azure 委派资源管理可更灵活地管理多个客户的资源，而无需�
 
 ![显示服务提供者责任的三个客户租户](../media/azure-delegated-resource-management-customer-tenants.jpg)
 
-使用 Azure 委派资源管理，授权用户可以登录到服务提供商的租户来访问这些资源，如下所示：
+使用 Azure 委托资源管理，授权用户可以登录到服务提供商的租户来访问这些资源，如下所示：
 
 ![通过一个服务提供商租户管理的客户资源](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
@@ -63,6 +63,7 @@ Azure PowerShell [AzSubscription cmdlet](https://docs.microsoft.com/powershell/m
 
 - 备份并还原客户租户中的客户数据
 - 使用[备份资源管理器](../../backup/monitor-azure-backup-with-backup-explorer.md)来帮助查看备份项（包括尚未针对备份配置的 Azure 资源）的操作信息，以及为委托订阅监视信息（作业和警报）。 备份资源管理器当前仅对 Azure VM 数据可用。
+- 在委派的订阅中使用[备份报表](../../backup/configure-reports.md)来跟踪历史趋势、分析备份存储消耗以及审核备份和还原。
 
 [Azure Kubernetes 服务 (AKS)](../../aks/index.yml)：
 
@@ -90,7 +91,7 @@ Azure PowerShell [AzSubscription cmdlet](https://docs.microsoft.com/powershell/m
 [Azure 安全中心](../../security-center/index.yml)：
 
 - 跨租户可见性
-  - 监视安全策略的符合性，并确保跨所有租户资源的安全覆盖
+  - 监视与安全策略的符合性并确保所有租户资源的安全覆盖
   - 单个视图中跨多个客户的连续合规性监视
   - 通过安全分数计算监视、会审可操作安全建议，并设置其优先级
 - 跨租户安全状况管理
@@ -98,7 +99,7 @@ Azure PowerShell [AzSubscription cmdlet](https://docs.microsoft.com/powershell/m
   - 对不符合可操作安全建议的资源执行操作
   - 收集并存储安全相关数据
 - 跨租户威胁检测和保护
-  - 跨租户资源检测威胁
+  - 跨租户的资源检测威胁
   - 应用高级威胁防护控制（如实时 (JIT) VM 访问）
   - 通过自适应网络强化来强化网络安全组配置
   - 通过自适应应用程序控制，确保服务器仅运行适当的应用程序和进程
@@ -136,10 +137,10 @@ Azure PowerShell [AzSubscription cmdlet](https://docs.microsoft.com/powershell/m
 ## <a name="current-limitations"></a>当前限制
 对于所有方案，都请注意以下当前限制：
 
-- 可以使用 Azure 委派资源管理执行 Azure 资源管理器处理的请求。 这些请求的操作 URI 都以 `https://management.azure.com` 开头。 但是，Azure 委派资源管理不支持由资源类型的实例处理的请求（如 KeyVault 机密访问或存储数据访问）。 这些请求的操作 URI 通常以实例特有的地址开头，例如 `https://myaccount.blob.core.windows.net` 或 `https://mykeyvault.vault.azure.net/`。 后者通常也是数据操作，而不是管理操作。 
+- 可以使用 Azure 委派资源管理执行 Azure 资源管理器处理的请求。 这些请求的操作 URI 都以 `https://management.azure.com` 开头。 但是，Azure 委派的资源管理不支持由资源类型的实例（如 KeyVault 的机密访问或存储数据访问）处理的请求。 这些请求的操作 URI 通常以实例特有的地址开头，例如 `https://myaccount.blob.core.windows.net` 或 `https://mykeyvault.vault.azure.net/`。 后者通常也是数据操作，而不是管理操作。 
 - 角色分配必须使用基于角色的访问控制 (RBAC) [内置角色](../../role-based-access-control/built-in-roles.md)。 除了所有者或具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions) 权限的任何内置角色之外，Azure 委派资源管理当前支持其他所有内置角色。 仅在[向托管标识分配角色](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)时才支持使用用户访问管理员角色。  不支持自定义角色和[经典订阅管理员角色](../../role-based-access-control/classic-administrators.md)。
 - 虽然你可以将使用 Azure Databricks 的订阅加入其中，但管理租户中的用户目前无法在委派的订阅上启动 Azure Databricks 工作区。
-- 虽然可以为具有资源锁的 Azure 委托资源管理加入订阅和资源组，但这些锁不会阻止管理租户中的用户执行操作。 用于保护系统管理资源（例如由 Azure 托管应用程序或 Azure 蓝图创建的资源）的[拒绝分配](../../role-based-access-control/deny-assignments.md)（系统分配的拒绝分配）会阻止管理租户中的用户对这些资源进行操作；但是，此时客户租户中的用户无法创建自己的拒绝分配（用户分配的拒绝分配）。
+- 虽然可以为具有资源锁的 Azure 委托资源管理加入订阅和资源组，但这些锁不会阻止管理租户中的用户执行操作。 [拒绝](../../role-based-access-control/deny-assignments.md)保护系统管理的资源的分配，如由 azure 托管应用程序或 azure 蓝图创建的资源（系统分配的拒绝分配），则会阻止管理租户中的用户对这些资源进行操作;但是，在这段时间内，客户租户中的用户无法创建自己的拒绝分配（用户分配的拒绝分配）。
 
 ## <a name="next-steps"></a>后续步骤
 

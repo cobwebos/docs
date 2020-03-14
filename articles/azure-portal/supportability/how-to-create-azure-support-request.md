@@ -9,18 +9,18 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: kfollis
-ms.openlocfilehash: 6218a1089352ce9ee3e2d1d10f3282e64eae8c51
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 28a29bbb94f63657a69e873bb8f969e96ee92c76
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547653"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248484"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>如何创建 Azure 支持请求
 
 ## <a name="overview"></a>概述
 
-Azure 客户可在[Azure 门户](https://portal.azure.com)中创建和管理支持请求。
+Azure 使你能够创建和管理支持请求，也称为支持票证。 你可以创建和管理[Azure 门户](https://portal.azure.com)中的请求，本文将对此进行介绍。 你还可以使用[Azure 支持票证 REST API](/rest/api/support)以编程方式创建和管理请求。
 
 > [!NOTE]
 > Azure 门户 URL 特定于部署组织的 Azure 云。
@@ -43,13 +43,13 @@ Azure 客户可在[Azure 门户](https://portal.azure.com)中创建和管理支�
 
 ### <a name="role-based-access-control"></a>基于角色的访问控制
 
-若要创建支持请求，你必须是管理员或被分配到 "[支持请求参与者](../../role-based-access-control/built-in-roles.md#support-request-contributor)" 角色。
+若要创建支持请求，你必须是管理员或在订阅级别分配到 "[支持请求参与者](../../role-based-access-control/built-in-roles.md#support-request-contributor)" 角色。
 
 ### <a name="go-to-help--support-from-the-global-header"></a>从全局标头中转到 "帮助 + 支持"
 
 若要从 Azure 门户中的任何位置启动支持请求：
 
-1. 选择门户右上角的“?” 在全局标头中。 然后选择 "**帮助 + 支持**"。
+1. 选择 **？** 在全局标头中。 然后选择 "**帮助 + 支持**"。
 
    ![帮助和支持](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 

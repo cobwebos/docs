@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396062"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79285144"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制对 Azure IoT 中心设备预配服务的访问
 
@@ -39,7 +39,7 @@ ms.locfileid: "78396062"
 > [!NOTE]
 > 有关详细信息，请参阅[权限](#device-provisioning-service-permissions)。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 Azure IoT 中心设备预配服务通过针对共享访问策略验证令牌，授予对终结点的访问权限。 安全凭据（例如对称密钥）永远不会通过网络发送。
 
@@ -141,7 +141,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 
 以下是终结点上显示的服务功能：
 
-| 终结点 | 功能 |
+| 端点 | 功能 |
 | --- | --- |
 | `{your-service}.azure-devices-provisioning.net/enrollments` |向设备注册操作提供设备预配服务。 |
 | `{your-service}.azure-devices-provisioning.net/enrollmentGroups` |提供用于管理设备注册组的操作。 |
@@ -177,7 +177,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 下表列出了可用于控制对 IoT 设备预配服务的访问的权限。
 
-| 权限 | 注意 |
+| 权限 | 说明 |
 | --- | --- |
 | ServiceConfig |授予用于更改服务配置的访问权限。 <br/>后端云服务将使用此权限。 |
 | EnrollmentRead |授予对设备注册和注册组的读取访问权限。 <br/>后端云服务将使用此权限。 |

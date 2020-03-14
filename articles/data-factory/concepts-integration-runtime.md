@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/28/2020
 ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990515"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246664"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：
@@ -33,7 +33,7 @@ ms.locfileid: "76990515"
 数据工厂提供三种类型的集成运行时，应选择最能满足你所寻求的数据集成功能和网络环境需求的类型。  这三种类型是：
 
 - Azure
-- 自托管
+- 自承载
 - Azure-SSIS
 
 下表介绍了针对其中每个集成运行时类型提供的功能和网络支持：
@@ -41,7 +41,7 @@ ms.locfileid: "76990515"
 IR 类型 | 公用网络 | 专用网络
 ------- | -------------- | ---------------
 Azure | 数据流<br/>数据移动<br/>活动分派 | &nbsp;
-自托管 | 数据移动<br/>活动分派 | 数据移动<br/>活动分派
+自承载 | 数据移动<br/>活动分派 | 数据移动<br/>活动分派
 Azure-SSIS | SSIS 包执行 | SSIS 包执行
 
 下图介绍了如何结合使用不同的集成运行时以提供丰富的数据集成功能和网络支持：

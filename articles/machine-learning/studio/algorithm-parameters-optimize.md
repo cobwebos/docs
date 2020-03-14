@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 33705d0c9f2f405be733fd21c88cb83e96aec781
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 04148b482cb07665f43df5bd86a77175cbbaf08b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168968"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218270"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>选择参数以优化 Azure 机器学习 Studio （经典）中的算法
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 本主题介绍如何为 Azure 机器学习 Studio （经典）中的算法选择正确的超参数集。 大多数机器学习算法使用参数来设置。 训练模型时，需要为这些参数提供值。 经过训练的模型效力取决于选择的模型参数。 查找最佳参数集的过程称为*模型选择*。
 
@@ -41,7 +43,7 @@ ms.locfileid: "77168968"
 
 ![双类提升决策树，单个参数](./media/algorithm-parameters-optimize/fig2.png)
 
- 或者，使用**使用范围生成器**定义网格的最大和最小网格点和生成的总点数。 默认情况下，参数值按线性刻度生成。 但是，如果“对数刻度”处于选中状态，这些值会在对数刻度中生成（即相邻点的比率是常量，而不是它们的差）。 对于整数参数，可使用连字符定义范围。 例如，“1-10”是指介于 1 到 10（均含）之间的所有整数构成参数集。 也支持混合模式。 例如，参数集“1-10、20、50”将包括整数 1-10、20 和 50。
+ 或者，使用**使用范围生成器**定义网格的最大和最小网格点和生成的总点数。 默认情况下，参数值按线性刻度生成。 但是，如果“对数刻度”处于选中状态，这些值会在对数刻度中生成（即相邻点的比率是常量，而不是它们的差）。 对于整数参数，可使用连字符定义范围。 例如，"1-10" 表示1和10之间的所有整数（包括两者）都形成参数集。 也支持混合模式。 例如，参数集 "1-10，20，50" 将包含整数1-10、20和50。
 
 ![双类提升决策树，参数范围](./media/algorithm-parameters-optimize/fig3.png)
 

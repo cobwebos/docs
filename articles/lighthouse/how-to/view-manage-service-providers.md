@@ -4,11 +4,11 @@ description: 客户可以使用 Azure 门户中的“服务提供商”页面来
 ms.date: 02/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: 94103c293ffa7ccfb9d7da0a237dc1b1c6540b72
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393999"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270623"
 ---
 # <a name="view-and-manage-service-providers"></a>查看和管理服务提供商
 

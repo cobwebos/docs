@@ -11,14 +11,16 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: a4ce383959b10836791ea065ffe8a9c243f6ad0d
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168989"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204539"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>从 Azure AI 库中查看和删除产品内用户数据
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 可以使用界面或 AI 库目录 API 从 Azure AI 库中查看和删除产品内用户数据。 本文介绍了相关实现方法。
 
@@ -30,9 +32,9 @@ ms.locfileid: "77168989"
 
 你可以查看通过 Azure AI 库网站 UI 发布的项目。 用户可以查看已公开和未列出的解决方案、项目、试验及其他已发布的项目：
 
-1.  登录到 [Azure AI 库](https://gallery.azure.ai/)。
-2.  单击右上角的配置文件图片，然后单击帐户名称以加载配置文件页面。
-3.  配置文件页面显示发布到库的所有项目，包括未列出的条目。
+1.    登录到 [Azure AI 库](https://gallery.azure.ai/)。
+2.    单击右上角的配置文件图片，然后单击帐户名称以加载配置文件页面。
+3.    配置文件页面显示发布到库的所有项目，包括未列出的条目。
 
 ## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>使用 AI 库目录 API 查看数据
 
@@ -43,9 +45,9 @@ ms.locfileid: "77168989"
 ### <a name="get-an-author-id"></a>获取作者 ID
 作者 ID 基于发布到 Azure AI 库时使用的电子邮件地址。 它不会发生变化：
 
-1.  登录到 [Azure AI 库](https://gallery.azure.ai/)。
-2.  单击右上角的配置文件图片，然后单击帐户名称以加载配置文件页面。
-3.  地址栏中的 URL 显示字母数字 ID，后跟 `authorId=`。 例如，对于 URL：`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+1.    登录到 [Azure AI 库](https://gallery.azure.ai/)。
+2.    单击右上角的配置文件图片，然后单击帐户名称以加载配置文件页面。
+3.    地址栏中的 URL 显示字母数字 ID，后跟 `authorId=`。 例如，对于 URL：`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     作者 ID 为：`99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
@@ -55,12 +57,12 @@ ms.locfileid: "77168989"
 
 若要获取访问令牌，需检查登录时浏览器对目录 API 发出的 HTTP 请求的 `DataLabAccessToken` 标头：
 
-1.  登录到 [Azure AI 库](https://gallery.azure.ai/)。
-2.  单击右上角的配置文件图片，然后单击帐户名称以加载配置文件页面。
-3.  按 F12 打开浏览器的“开发人员工具”窗格，选择“网络”选项卡，然后刷新页面。 
+1.    登录到 [Azure AI 库](https://gallery.azure.ai/)。
+2.    单击右上角的配置文件图片，然后单击帐户名称以加载配置文件页面。
+3.    按 F12 打开浏览器的“开发人员工具”窗格，选择“网络”选项卡，然后刷新页面。 
 4. 通过在“筛选器”文本框中键入字符串 *catalog*，根据该字符串筛选请求。
-5.  在 `https://catalog.cortanaanalytics.com/entities`URL 的请求中，查找 GET 请求并选择 "*标头*" 选项卡。向下滚动到 "*请求标头*" 部分。
-6.  标头 `DataLabAccessToken` 下便是字母数字令牌。 为了确保数据安全，请不要共享此令牌。
+5.    在 `https://catalog.cortanaanalytics.com/entities`URL 的请求中，查找 GET 请求并选择 "*标头*" 选项卡。向下滚动到 "*请求标头*" 部分。
+6.    标头 `DataLabAccessToken` 下便是字母数字令牌。 为了确保数据安全，请不要共享此令牌。
 
 ### <a name="view-user-information"></a>查看用户信息
 使用在之前步骤中获取的作者 ID，通过替换以下 URL 中的 `[AuthorId]` 来查看用户配置文件中的信息：
@@ -92,9 +94,9 @@ ms.locfileid: "77168989"
 
 此查询仅显示公共实体。 若要查看所有实体，包括未列出的实体，请提供从前一部分获取的访问令牌。
 
-1.  使用 [Postman](https://www.getpostman.com) 之类的工具，按[获取访问令牌](#get-your-access-token)中所述创建对目录 URL 的 HTTP GET 请求。
-2.  创建名为 `DataLabAccessToken` 的 HTTP 请求标头，并将值设置为访问令牌。
-3.  提交 HTTP 请求。
+1.    使用 [Postman](https://www.getpostman.com) 之类的工具，按[获取访问令牌](#get-your-access-token)中所述创建对目录 URL 的 HTTP GET 请求。
+2.    创建名为 `DataLabAccessToken` 的 HTTP 请求标头，并将值设置为访问令牌。
+3.    提交 HTTP 请求。
 
 > [!TIP]
 > 如果未列出的实体没有出现在目录 API 的响应中，则表示该用户的访问令牌可能无效或者已过期。 从 Azure AI 库注销，然后重复[获取访问令牌](#get-your-access-token)中的步骤以续订令牌。 

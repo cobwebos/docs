@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 7246a072c1bf2253b822fca53b0b69700c66221d
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 23550c83e76631e44d5036e0a038f01b61a79f1b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565228"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208231"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>为标识分配访问权限
 
@@ -26,7 +26,7 @@ ms.locfileid: "77565228"
 - **存储文件数据 SMB 共享提升的参与者**允许通过 SMB 在 Azure 存储文件共享中读取、写入、删除和修改 NTFS 权限。
 
 > [!IMPORTANT]
-> 对文件共享的完全管理控制（包括将角色分配给标识的控制权限）需要使用存储帐户密钥。 Azure AD 凭据不支持管理控制。
+> 对文件共享的完全管理控制（包括获取文件所有权的能力）需要使用存储帐户密钥。 Azure AD 凭据不支持管理控制。
 
 你可以使用 Azure 门户、PowerShell 或 Azure CLI 将内置角色分配给用户的 Azure AD 标识，以便授予共享级别权限。
 

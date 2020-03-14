@@ -1,6 +1,6 @@
 ---
 title: Azure RBAC 的 azure 内置角色
-description: 介绍 azure 基于角色的访问控制（Azure RBAC）的 Azure 内置角色。 列出 Actions、NotActions、DataActions 和 NotDataActions。
+description: 本文介绍了 azure 基于角色的访问控制（RBAC）的 Azure 内置角色。 其中列出了操作、NotActions、DataActions 和 NotDataActions。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,26 +11,26 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/18/2020
+ms.date: 03/12/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b7b944880074b64f6a9e66e177082e52632e9c9d
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 5b6da05f07636f6a6dde16cf6d8061629a72adfa
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205885"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281101"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
-[Azure 基于角色的访问控制（AZURE RBAC）](overview.md)具有多个 azure 内置角色，你可以将这些角色分配给用户、组、服务主体和托管标识。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不满足组织的特定需求，则可以创建自己的[Azure 自定义角色](custom-roles.md)。
+[Azure 基于角色的访问控制（RBAC）](overview.md)具有多个 azure 内置角色，你可以将这些角色分配给用户、组、服务主体和托管标识。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不满足组织的特定需求，则可以创建自己的[Azure 自定义角色](custom-roles.md)。
 
-本文列出了 Azure 资源的内置角色，这些角色总是在不断发展。 若要获取最新角色，请使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 如果你正在寻找 Azure Active Directory 的管理员角色，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+本文列出了 Azure 资源的内置角色，这些角色总是在不断发展。 若要获取最新角色，请使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 如果正在查找 Azure Active Directory （Azure AD）的管理员角色，请参阅[Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
 ## <a name="descriptions-and-ids"></a>说明和 Id
 
-下表提供了每个内置角色的简短说明和唯一 ID。 单击角色名称，查看每个角色的 `Actions`、`NotActions`、`DataActions` 和 `NotDataActions` 列表。 有关这些操作的含义以及它们如何应用于管理和数据平面的信息，请参阅[了解 Azure 资源的角色定义](role-definitions.md)。
+下表提供了每个内置角色的简短说明和唯一 ID。 选择角色名称，查看每个角色 `Actions`、`NotActions`、`DataActions`和 `NotDataActions` 的列表。 有关这些操作的含义以及它们如何应用于管理和数据平面的信息，请参阅[了解 Azure 资源的角色定义](role-definitions.md)。
 
 
 > [!div class="mx-tableFixed"]
@@ -73,7 +73,7 @@ ms.locfileid: "78205885"
 > | [备份操作员](#backup-operator) | 允许管理备份服务，但删除备份、创建保管库以及授予其他人访问权限除外 | 00c29273-979b-4161-815c-10b084fb9324 |
 > | [备份读取器](#backup-reader) | 可以查看备份服务，但是不能进行更改 | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | [计费读者](#billing-reader) | 允许对帐单数据进行读取访问 | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
-> | [BizTalk 参与者](#biztalk-contributor) | 允许你管理 BizTalk 服务，但不能访问它们。 | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
+> | [BizTalk 参与者](#biztalk-contributor) | 允许管理 BizTalk 服务，但不允许访问这些服务。 | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | [区块链成员节点访问（预览）](#blockchain-member-node-access-preview) | 允许访问区块链成员节点 | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | [蓝图参与者](#blueprint-contributor) | 可以管理蓝图定义，但不能对其进行分配。 | 41077137-e803-4205-871c-5a86e6a753b4 |
 > | [蓝图操作员](#blueprint-operator) | 可以分配现有的已发布蓝图，但无法创建新的蓝图。 注意：仅当使用用户分配的托管标识完成分配时，此操作才有效。 | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
@@ -106,7 +106,7 @@ ms.locfileid: "78205885"
 > | [EventGrid EventSubscription 读者](#eventgrid-eventsubscription-reader) | 可以读取 EventGrid 事件订阅。 | 2414bbcf-6497-4faf-8c65-045460748405 |
 > | [HDInsight 群集操作员](#hdinsight-cluster-operator) | 允许你读取和修改 HDInsight 群集配置。 | 61ed4efc-fab3-44fd-b111-e24485cc132a |
 > | [HDInsight 域服务参与者](#hdinsight-domain-services-contributor) | 可以读取、创建、修改和删除 HDInsight 企业安全性套餐所需的域服务相关操作 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
-> | [智能系统帐户参与者](#intelligent-systems-account-contributor) | 允许你管理 Intelligent Systems 帐户，但不能访问它们。 | 03a6d094-3444-4b3d-88af-7477090a9e5e |
+> | [智能系统帐户参与者](#intelligent-systems-account-contributor) | 允许管理智能系统帐户，但不允许访问这些帐户。 | 03a6d094-3444-4b3d-88af-7477090a9e5e |
 > | [密钥保管库参与者](#key-vault-contributor) | 允许管理密钥保管库，但不允许对其进行访问。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | [实验室创建者](#lab-creator) | 允许在 Azure 实验室帐户下创建、管理、删除托管实验室。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
@@ -125,15 +125,15 @@ ms.locfileid: "78205885"
 > | [监视指标发布者](#monitoring-metrics-publisher) | 允许针对 Azure 资源发布指标 | 3913510d-42f4-4e42-8a64-420c390055eb |
 > | [监视查阅者](#monitoring-reader) | 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | [网络参与者](#network-contributor) | 允许管理网络，但不允许访问这些网络。 | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
-> | [New Relic APM 帐户参与者](#new-relic-apm-account-contributor) | 允许你管理 New Relic 应用程序性能管理帐户和应用程序，但不能访问它们。 | 5d28c62d-5b37-4476-8438-e587778df237 |
+> | [New Relic APM 帐户参与者](#new-relic-apm-account-contributor) | 允许管理 New Relic 应用程序性能管理帐户和应用程序，但不允许访问它们。 | 5d28c62d-5b37-4476-8438-e587778df237 |
 > | [所有者](#owner) | 允许管理所有功能，包括对资源的访问权限。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | [策略见解数据写入程序（预览）](#policy-insights-data-writer-preview) | 允许对资源策略的读取访问权限以及对资源组件策略事件的写入访问权限。 | 66bb4e9e-b016-4a94-8249-4c0511c2be84 |
 > | [读取者](#reader) | 允许查看所有内容，但不能进行任何更改。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [读取器和数据访问](#reader-and-data-access) | 允许查看所有内容，但不允许删除或创建存储帐户或包含的资源。 它还允许使用存储帐户密钥对存储帐户中包含的所有数据进行读/写访问。 | c12c1c16-33a1-487b-954d-41c89c60f349 |
-> | [Redis 缓存参与者](#redis-cache-contributor) | 允许你管理 Redis Cache，但不能访问它们。 | e0f68234-74aa-48ed-b826-c38b57376e17 |
+> | [Redis 缓存参与者](#redis-cache-contributor) | 允许管理 Redis 缓存，但不允许访问这些缓存。 | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | [资源策略参与者](#resource-policy-contributor) | 具有创建/修改资源策略、创建支持票证和读取资源/层次结构权限的用户。 | 36243c78-bf99-498c-9df9-86d9f8d28608 |
-> | [计划程序作业集合参与者](#scheduler-job-collections-contributor) | 允许你管理计划程序作业集合，但不能访问它们。 | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
-> | [搜索服务参与者](#search-service-contributor) | 允许你管理搜索服务，但不能访问它们。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
+> | [计划程序作业集合参与者](#scheduler-job-collections-contributor) | 允许管理计划程序作业集合，但不允许访问这些集合。 | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
+> | [搜索服务参与者](#search-service-contributor) | 允许管理搜索服务，但不允许访问这些服务。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [安全管理员](#security-admin) | 可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [安全评估参与者](#security-assessment-contributor) | 允许你将评估推送到安全中心 | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [安全管理器（旧版）](#security-manager-legacy) | 这是旧角色。 请改用安全管理员。 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
@@ -144,9 +144,9 @@ ms.locfileid: "78205885"
 > | [空间锚定帐户参与者](#spatial-anchors-account-contributor) | 允许你管理帐户中的空间锚，但不能删除它们 | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
 > | [空间锚定帐户所有者](#spatial-anchors-account-owner) | 允许你管理帐户中的空间锚，包括删除它们 | 70bbe301-9835-447d-afdd-19eb3167307c |
 > | [空间锚定帐户读取器](#spatial-anchors-account-reader) | 允许您在帐户中查找和读取空间锚的属性 | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
-> | [SQL DB 参与者](#sql-db-contributor) | 允许你管理 SQL 数据库，但不能访问它们。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。 | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
+> | [SQL DB 参与者](#sql-db-contributor) | 允许管理 SQL 数据库，但不允许访问这些数据库。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。 | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
 > | [SQL 托管实例参与者](#sql-managed-instance-contributor) | 允许你管理 SQL 托管实例和所需的网络配置，但不能向其他人提供访问权限。 | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
-> | [SQL 安全管理器](#sql-security-manager) | 允许你管理 SQL 服务器和数据库与安全性相关的策略，但不能访问它们。 | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
+> | [SQL 安全管理器](#sql-security-manager) | 允许管理 SQL 服务器和数据库的安全相关策略，但不允许访问它们。 | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | [SQL Server 参与者](#sql-server-contributor) | 允许管理 SQL 服务器和数据库，但不允许访问它们及其安全相关的策略。 | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 > | [存储帐户参与者](#storage-account-contributor) | 允许管理存储帐户。 提供对帐户密钥的访问权限，它可用于通过共享密钥授权访问数据。 | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | [存储帐户密钥操作员服务角色](#storage-account-key-operator-service-role) | 允许列出和重新生成存储帐户访问密钥。 | 81a9662b-bebf-436f-a333-f67b29880f12 |
@@ -163,12 +163,12 @@ ms.locfileid: "78205885"
 > | [存储队列数据读取器](#storage-queue-data-reader) | 阅读并列出 Azure 存储队列和队列消息。 若要了解给定数据操作所需的操作，请参阅[调用 blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 19e7f393-937e-4f77-808e-94535e297925 |
 > | [支持请求参与者](#support-request-contributor) | 允许创建和管理支持请求 | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
 > | [流量管理器参与者](#traffic-manager-contributor) | 允许管理流量管理器配置文件，但不允许控制谁可以访问它们。 | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
-> | [用户访问管理员](#user-access-administrator) | 允许你管理用户对 Azure 资源的访问权限。 | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
+> | [用户访问管理员](#user-access-administrator) | 允许管理用户对 Azure 资源的访问权限。 | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | [虚拟机管理员登录](#virtual-machine-administrator-login) | 在门户中查看虚拟机并以管理员身份登录 | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | [虚拟机参与者](#virtual-machine-contributor) | 允许管理虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [虚拟机用户登录](#virtual-machine-user-login) | 在门户中查看虚拟机并以普通用户身份登录。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
-> | [Web 计划参与者](#web-plan-contributor) | 允许你管理网站的 Web 计划，但不能访问它们。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
-> | [网站参与者](#website-contributor) | 允许你管理网站（而非 Web 计划），但不能访问它们。 | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | [Web 计划参与者](#web-plan-contributor) | 允许管理网站的 Web 计划，但不允许访问这些计划。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
+> | [网站参与者](#website-contributor) | 允许管理网站（而非 Web 计划），但不允许访问这些网站。 | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | [工作簿参与者](#workbook-contributor) | 可以保存共享的工作簿。 | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
 > | [工作簿读者](#workbook-reader) | 可以读取工作簿。 | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 
@@ -176,7 +176,7 @@ ms.locfileid: "78205885"
 ## <a name="general"></a>常规
 
 
-### <a name="contributor"></a>Contributor
+### <a name="contributor"></a>参与者
 
 允许你管理所有内容，但不授予对资源的访问权限。
 
@@ -226,7 +226,7 @@ ms.locfileid: "78205885"
 }
 ```
 
-### <a name="owner"></a>所有者
+### <a name="owner"></a>“所有者”
 
 允许管理所有功能，包括对资源的访问权限。
 
@@ -308,7 +308,7 @@ ms.locfileid: "78205885"
 
 ### <a name="user-access-administrator"></a>用户访问管理员
 
-允许你管理用户对 Azure 资源的访问权限。
+允许管理用户对 Azure 资源的访问权限。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -531,7 +531,7 @@ ms.locfileid: "78205885"
 }
 ```
 
-## <a name="analytics"></a>分析
+## <a name="analytics"></a>Analytics
 
 
 ### <a name="azure-event-hubs-data-owner"></a>Azure 事件中心数据所有者
@@ -1059,7 +1059,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they’re connected to.",
+  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they're connected to.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "name": "d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "permissions": [
@@ -1860,7 +1860,7 @@ ACR 隔离数据编写器
 
 ### <a name="redis-cache-contributor"></a>Redis Cache 参与者
 
-允许你管理 Redis Cache，但不能访问它们。
+允许管理 Redis 缓存，但不允许访问这些缓存。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -1912,7 +1912,7 @@ ACR 隔离数据编写器
 
 ### <a name="sql-db-contributor"></a>SQL DB 参与者
 
-允许你管理 SQL 数据库，但不能访问它们。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。
+允许管理 SQL 数据库，但不允许访问这些数据库。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2052,7 +2052,7 @@ ACR 隔离数据编写器
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage SQL Managed Instances and required network configuration, but can’t give access to others.",
+  "description": "Lets you manage SQL Managed Instances and required network configuration, but can't give access to others.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "name": "4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "permissions": [
@@ -2086,7 +2086,7 @@ ACR 隔离数据编写器
 
 ### <a name="sql-security-manager"></a>SQL 安全管理器
 
-允许你管理 SQL 服务器和数据库与安全性相关的策略，但不能访问它们。
+允许管理 SQL 服务器和数据库的安全相关策略，但不允许访问它们。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2711,7 +2711,7 @@ ACR 隔离数据编写器
 }
 ```
 
-## <a name="identity"></a>身份
+## <a name="identity"></a>标识
 
 
 ### <a name="managed-identity-contributor"></a>托管的标识参与者
@@ -2820,7 +2820,7 @@ ACR 隔离数据编写器
 }
 ```
 
-## <a name="integration"></a>Integration
+## <a name="integration"></a>集成
 
 
 ### <a name="api-management-service-contributor"></a>API 管理服务参与者
@@ -3137,7 +3137,7 @@ ACR 隔离数据编写器
 
 ### <a name="intelligent-systems-account-contributor"></a>Intelligent Systems 帐户参与者
 
-允许你管理 Intelligent Systems 帐户，但不能访问它们。
+允许管理智能系统帐户，但不允许访问这些帐户。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -3853,10 +3853,7 @@ ACR 隔离数据编写器
 
 ### <a name="blueprint-operator"></a>蓝图运算符
 
-可以分配现有的已发布蓝图，但无法创建新的蓝图。 
-
-> [!NOTE] 
-> 仅当使用用户分配的托管标识完成分配时，此操作才有效。
+可以分配现有的已发布蓝图，但无法创建新的蓝图。 注意：仅当使用用户分配的托管标识完成分配时，此操作才有效。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4316,6 +4313,8 @@ ACR 隔离数据编写器
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
 > | AlertsManagement/smartDetectorAlertRules/* |  |
+> | AlertsManagement/actionRules/* |  |
+> | AlertsManagement/smartGroups/* |  |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -4359,7 +4358,9 @@ ACR 隔离数据编写器
         "Microsoft.Support/*",
         "Microsoft.WorkloadMonitor/monitors/*",
         "Microsoft.WorkloadMonitor/notificationSettings/*",
-        "Microsoft.AlertsManagement/smartDetectorAlertRules/*"
+        "Microsoft.AlertsManagement/smartDetectorAlertRules/*",
+        "Microsoft.AlertsManagement/actionRules/*",
+        "Microsoft.AlertsManagement/smartGroups/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -4464,7 +4465,7 @@ ACR 隔离数据编写器
 
 ### <a name="new-relic-apm-account-contributor"></a>New elic APM 帐户参与者
 
-允许你管理 New Relic 应用程序性能管理帐户和应用程序，但不能访问它们。
+允许管理 New Relic 应用程序性能管理帐户和应用程序，但不允许访问它们。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4614,7 +4615,7 @@ ACR 隔离数据编写器
 
 ### <a name="scheduler-job-collections-contributor"></a>计划程序作业集合参与者
 
-允许你管理计划程序作业集合，但不能访问它们。
+允许管理计划程序作业集合，但不允许访问这些集合。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4788,7 +4789,7 @@ ACR 隔离数据编写器
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | 读取任何可保护项 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | 应用还原点 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | 故障转移提交 |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | 计划的故障转移 |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | 计划内故障转移 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | 读取任何受保护项 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | 读取任何复制恢复点 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/action | 修复复制 |
@@ -5291,7 +5292,7 @@ ACR 隔离数据编写器
 }
 ```
 
-## <a name="networking"></a>联网
+## <a name="networking"></a>网络
 
 
 ### <a name="cdn-endpoint-contributor"></a>CDN 终结点参与者
@@ -5322,7 +5323,7 @@ ACR 隔离数据编写器
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "name": "426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "permissions": [
@@ -5376,7 +5377,7 @@ ACR 隔离数据编写器
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN endpoints, but can’t make changes.",
+  "description": "Can view CDN endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "name": "871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "permissions": [
@@ -5430,7 +5431,7 @@ ACR 隔离数据编写器
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN profiles and their endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN profiles and their endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "name": "ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "permissions": [
@@ -5484,7 +5485,7 @@ ACR 隔离数据编写器
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN profiles and their endpoints, but can’t make changes.",
+  "description": "Can view CDN profiles and their endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8f96442b-4075-438f-813d-ad51ab4019af",
   "name": "8f96442b-4075-438f-813d-ad51ab4019af",
   "permissions": [
@@ -5731,7 +5732,7 @@ Azure Sentinel 参与者
 > | **操作** |  |
 > | SecurityInsights/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
-> | Microsoft.OperationalInsights/workspaces/read | 获取现有工作区 |
+> | Microsoft.OperationalInsights/workspaces/*/read | 查看 log analytics 数据 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* |  |
 > | Microsoft.OperationsManagement/solutions/read | 获取现有的 OMS 解决方案 |
 > | Microsoft.OperationalInsights/workspaces/query/read | 基于工作区中的数据运行查询 |
@@ -5763,7 +5764,7 @@ Azure Sentinel 参与者
       "actions": [
         "Microsoft.SecurityInsights/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/*",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5797,7 +5798,8 @@ Azure Sentinel 读取器
 > | **操作** |  |
 > | SecurityInsights/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
-> | Microsoft.OperationalInsights/workspaces/read | 获取现有工作区 |
+> | Microsoft.OperationalInsights/workspaces/*/read | 查看 log analytics 数据 |
+> | Microsoft.operationalinsights/workspace/Linkedservices.json/read | 获取给定工作区下的链接服务。 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | 获取保存的搜索查询 |
 > | Microsoft.OperationsManagement/solutions/read | 获取现有的 OMS 解决方案 |
 > | Microsoft.OperationalInsights/workspaces/query/read | 基于工作区中的数据运行查询 |
@@ -5829,7 +5831,8 @@ Azure Sentinel 读取器
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
+        "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5863,8 +5866,9 @@ Azure Sentinel 响应程序
 > | **操作** |  |
 > | SecurityInsights/*/read |  |
 > | SecurityInsights/case/* |  |
+> | SecurityInsights/事件/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
-> | Microsoft.OperationalInsights/workspaces/read | 获取现有工作区 |
+> | Microsoft.OperationalInsights/workspaces/*/read | 查看 log analytics 数据 |
 > | Microsoft.operationalinsights/工作区/数据源/读取 | 获取工作区下面的数据源。 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | 获取保存的搜索查询 |
 > | Microsoft.OperationsManagement/solutions/read | 获取现有的 OMS 解决方案 |
@@ -5897,8 +5901,9 @@ Azure Sentinel 响应程序
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/cases/*",
+        "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
@@ -6655,6 +6660,7 @@ Azure Sentinel 响应程序
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 获取给定操作的操作状态 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | 列出所有备份保护意向 |
 > | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
+> | Microsoft.RecoveryServices/locations/backupValidateFeatures/action | 验证功能 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -6709,7 +6715,8 @@ Azure Sentinel 响应程序
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
-        "Microsoft.RecoveryServices/Vaults/usages/read"
+        "Microsoft.RecoveryServices/Vaults/usages/read",
+        "Microsoft.RecoveryServices/locations/backupValidateFeatures/action"
       ],
       "notActions": [],
       "dataActions": [],
@@ -7677,7 +7684,7 @@ Azure Sentinel 响应程序
 
 ### <a name="search-service-contributor"></a>搜索服务参与者
 
-允许你管理搜索服务，但不能访问它们。
+允许管理搜索服务，但不允许访问这些服务。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -7729,7 +7736,7 @@ Azure Sentinel 响应程序
 
 ### <a name="web-plan-contributor"></a>Web 计划参与者
 
-允许你管理网站的 Web 计划，但不能访问它们。
+允许管理网站的 Web 计划，但不允许访问这些计划。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -7783,7 +7790,7 @@ Azure Sentinel 响应程序
 
 ### <a name="website-contributor"></a>网站参与者
 
-允许你管理网站（而非 Web 计划），但不能访问它们。
+允许管理网站（而非 Web 计划），但不允许访问这些网站。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -7848,7 +7855,7 @@ Azure Sentinel 响应程序
 
 ### <a name="biztalk-contributor"></a>BizTalk 参与者
 
-允许你管理 BizTalk 服务，但不能访问它们。
+允许管理 BizTalk 服务，但不允许访问这些服务。
 
 > [!div class="mx-tableFixed"]
 > |  |  |

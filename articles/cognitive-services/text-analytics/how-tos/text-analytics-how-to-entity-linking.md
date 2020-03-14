@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 243086ddaae47eba20eea6877fe6d7f8f9889290
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117478"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203485"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -182,14 +182,13 @@ NER
 
 所有 POST 请求都返回带有 Id 和检测到的实体属性的 JSON 格式的响应。
 
-系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。
-
+系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。 由于多语言和表情符号支持，响应可能包含文本偏移量。 有关详细信息，请参阅[如何处理文本偏移](../concepts/text-offsets.md)。
 
 #### <a name="version-30-preview"></a>[版本 3.0-预览版）](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>V3 响应示例
 
-版本3为 NER 和实体链接提供单独的终结点。 这两个操作的响应如下所示。
+版本3为 NER 和实体链接提供单独的终结点。 这两个操作的响应如下所示。 
 
 #### <a name="example-ner-response"></a>NER 响应示例
 

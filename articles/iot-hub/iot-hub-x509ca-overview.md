@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257576"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79284507"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 证书进行设备身份验证
 
@@ -40,7 +40,7 @@ X.509 CA 证书位于每个设备的证书链的顶层。  可以根据目标用
 
 也可以创建自签名的 X.509 CA 用于试验，或者在闭合型 IoT 网络中使用。
 
-不管 X.509 CA 证书是如何获取的，都请确保保持其相应私钥的机密性，并始终对此私钥进行保护。  这是确保能够在 X.509 CA 身份验证中建立信任的必要措施。
+无论你如何获取 x.509 CA 证书，都一定要保留其对应的私钥机密并进行保护。  这是确保能够在 X.509 CA 身份验证中建立信任的必要措施。
 
 了解如何[创建自签名的 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)（在这整篇功能介绍中可用于试验）。
 
@@ -50,7 +50,7 @@ X.509 CA 证书的所有者能以加密方式为某个中间 CA 签名，而该 
 
 ![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
 
-设备证书（也称页证书）必须将“所有者名称”设置为  **设备 ID**，后者是在 Azure IoT 中心注册 IoT 设备时使用过的。 身份验证需要此设置。
+设备证书（也称为 "叶证书"）必须将 "*使用者名称*" 设置为在 Azure iot 中心注册 IoT 设备时使用的**设备 ID** 。 此设置是进行身份验证所必需的。
 
 在此处了解如何像为设备签名时一样[创建证书链](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)。
 

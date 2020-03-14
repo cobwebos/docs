@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b51016b1b73b51cd1f1ec827f05fc9a93dd4cb38
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: eb62883859a3efeb1c05deb38d8a40fba76e9cdf
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650701"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137914"
 ---
 # <a name="list-blobs-with-net"></a>用 .NET 列出 blob
 
 列出代码中的 blob 时，可以指定多个选项来管理从 Azure 存储返回结果的方式。 您可以指定要在每个结果集中返回的结果数，然后检索后续集。 您可以指定一个前缀以返回名称以该字符或字符串开头的 blob。 而且，可以在平面列表结构中以分层方式列出 blob。 分层列表返回 blob，就好像它们被组织到文件夹中一样。 
 
-本文介绍如何使用[用于 .net 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage/client)列出 blob。  
+本文介绍如何使用[用于 .net 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage?view=azure-dotnet)列出 blob。  
 
 ## <a name="understand-blob-listing-options"></a>了解 blob 列表选项
 

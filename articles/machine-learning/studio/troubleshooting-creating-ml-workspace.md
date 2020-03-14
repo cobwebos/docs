@@ -10,17 +10,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: ba792c225c9875bbad50e3fb460c84ed012ce615
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 58ccd63e16382aca8e16eb67efba951a055eb254
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169100"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217841"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-classic-workspace"></a>故障排除指南：创建并连接到 Azure 机器学习 Studio （经典）工作区
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 本指南提供了一些在设置 Azure 机器学习 Studio （经典）工作区时遇到的一些常见问题的解决方案。
-
-
 
 ## <a name="workspace-owner"></a>工作区所有者
 若要在机器学习 Studio （经典）中打开工作区，你必须登录到用于创建工作区的 Microsoft 帐户，或者需要收到所有者发出的邀请以加入工作区。 在 Azure 门户中可以管理工作区，包括配置访问权限。
@@ -30,14 +31,14 @@ ms.locfileid: "77169100"
 [管理 Azure 机器学习 Studio （经典）工作区]: manage-workspace.md
 
 ## <a name="allowed-regions"></a>允许的区域
-机器学习当前只允许有限数量的区域。 如果订阅不包括这些区域之一，可能会看到错误消息，“你在允许的区域中没有订阅。”
+机器学习当前只允许有限数量的区域。 如果你的订阅不包括其中一个区域，你可能会看到错误消息 "你在允许的区域中没有订阅。"
 
 要请求将某区域添加到订阅，可从 Azure 门户创建新的 Microsoft 支持请求，将“计费”选为问题类型，然后按照提示提交请求。
 
 ## <a name="storage-account"></a>存储帐户
 机器学习服务需要存储帐户以存储数据。 你可以使用现有存储帐户，也可以在创建新的机器学习 Studio （经典）工作区时创建新的存储帐户（如果你有创建新存储帐户的配额）。
 
-创建新的机器学习 Studio （经典）工作区后，可以使用创建工作区所用 Microsoft 帐户登录到机器学习 Studio （经典）。 如果遇到错误消息，“未找到工作区”（类似于下面的屏幕快照），请使用以下步骤删除浏览器 cookie。
+创建新的机器学习 Studio （经典）工作区后，可以使用创建工作区所用 Microsoft 帐户登录到机器学习 Studio （经典）。 如果遇到错误消息 "找不到工作区" （类似于以下屏幕截图），请使用以下步骤删除浏览器 cookie。
 
 ![未找到工作区](media/troubleshooting-creating-ml-workspace/screen3.png)
 

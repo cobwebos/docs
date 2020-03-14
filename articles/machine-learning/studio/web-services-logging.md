@@ -11,14 +11,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.openlocfilehash: 0b0dfeb6a19e2f6f24568de0b4712758d2b7ad4a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90e7692fe0e254074d8176d719d0ca9abad54a9b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427400"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217843"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>为 Azure 机器学习 Studio （经典） web 服务启用日志记录
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 本文档提供了有关机器学习 Studio （经典） web 服务的日志记录功能的信息。 日志记录不仅提供错误号和消息，还可帮助你排除对机器学习 Studio （经典） Api 的调用。  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>如何为 Web 服务启用日志记录
@@ -61,7 +64,7 @@ ms.locfileid: "75427400"
 
 
 ## <a name="the-effects-of-enabling-logging"></a>启用日志记录的效果
-启用日志记录后，对于来自 Web 服务终结点的诊断和错误，它们都记录在与用户的工作区链接的 Azure 存储帐户中的“ml-diagnostics”blob 容器中。 此容器承载与此存储帐户相关联的所有工作区的所有 Web 服务终结点的所有诊断信息。
+启用日志记录时，web 服务终结点的诊断和错误记录在与用户的工作区链接的 Azure 存储帐户中的**ml 诊断**blob 容器中。 此容器承载与此存储帐户相关联的所有工作区的所有 Web 服务终结点的所有诊断信息。
 
 可使用可用于浏览 Azure 存储帐户的多种工具中的任意一种查看日志。 最简单的方法是导航到 Azure 门户中的存储帐户，单击“门户”，然后单击容器“ml-diagnostics”。  
 
@@ -80,7 +83,7 @@ ms.locfileid: "75427400"
 
 其中“日志类型”是以下值之一：  
 
-* batch  
+* 批处理  
 * score/requests  
 * score/init  
 

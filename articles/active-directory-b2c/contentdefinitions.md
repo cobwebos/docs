@@ -12,11 +12,11 @@ ms.date: 02/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b55199ec2684ab7b95ce4e4988b19814c27b2cc3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374795"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246053"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,7 +61,7 @@ ms.locfileid: "78374795"
 
 **ContentDefinition** 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 内容定义标识符。 其值为本页稍后的“内容定义 ID”部分指定的值。 |
 
@@ -133,21 +133,21 @@ ms.locfileid: "78374795"
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| 项 | 0:n | 与内容定义相关的元数据。 |
+| Item | 0:n | 与内容定义相关的元数据。 |
 
 **Metadata** 元素的 **Item** 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| Key | 是 | 元数据密钥。  |
+| 密钥 | 是 | 元数据密钥。  |
 
 #### <a name="metadata-keys"></a>元数据密钥
 
 内容定义支持以下元数据项：
 
-| Key | 必需 | 说明 |
+| 密钥 | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| DisplayName | 是 | 一个字符串，其中包含内容定义的名称。 |
+| DisplayName | 否 | 一个字符串，其中包含内容定义的名称。 |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -159,9 +159,9 @@ ms.locfileid: "78374795"
 
 **LocalizedResourcesReference**元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| Language | 是 | 一个字符串，包含符合 RFC 5646“用于标识语言的标记”的策略支持的语言。 |
+| 语言 | 是 | 一个字符串，包含符合 RFC 5646“用于标识语言的标记”的策略支持的语言。 |
 | LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的标识符。 |
 
 以下示例演示包含对英语、法语和西班牙语本地化的引用的注册或登录内容定义：

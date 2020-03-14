@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387358"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281049"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -61,15 +61,15 @@ ms.locfileid: "78387358"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了 SAP Business Warehouse (BW) 链接服务专属 JSON 元素的说明。
 
-属性 | 说明 | 允许的值 | 必需
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-server | SAP BW 实例所驻留的服务器的名称。 | string | 是
+server | SAP BW 实例所驻留的服务器的名称。 | 字符串 | 是
 systemNumber | SAP BW 系统的系统编号。 | 用字符串表示的两位十进制数。 | 是
 clientId | SAP W 系统中的客户端的客户端 ID。 | 用字符串表示的三位十进制数。 | 是
-username | 有权访问 SAP 服务器的用户名 | string | 是
-password | 用户密码。 | string | 是
-gatewayName | 网关的名称，数据工厂服务应使用此网关连接到本地 SAP BW 实例。 | string | 是
-encryptedCredential | 加密的凭据字符串。 | string | 是
+username | 有权访问 SAP 服务器的用户名 | 字符串 | 是
+password | 用户密码。 | 字符串 | 是
+gatewayName | 网关的名称，数据工厂服务应使用此网关连接到本地 SAP BW 实例。 | 字符串 | 是
+encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
@@ -84,7 +84,7 @@ encryptedCredential | 加密的凭据字符串。 | string | 是
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 SAP BW）时，以下属性在 typeProperties 节中可用：
 
-| 属性 | 说明 | 允许的值 | 必需 |
+| properties | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | query | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | MDX 查询。 | 是 |
 
@@ -308,7 +308,7 @@ QUAN | Decimal
 RAW | Byte[]
 RAWSTRING | Byte[]
 STRING | String
-单位 | String
+UNIT | String
 DATS | String
 NUMC | String
 TIMS | String

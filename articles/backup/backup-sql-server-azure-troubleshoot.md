@@ -3,12 +3,12 @@ title: SQL Server 数据库备份的疑难解答
 description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Server 数据库的故障排除信息。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 69cae196e7fad70d75fb12709e5bf0d618bbc81c
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7ebe76fde344b1dabca9a3aee2d0cc9e1edb8df4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602324"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247821"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 备份排查 SQL Server 数据库备份问题
 
@@ -21,6 +21,7 @@ ms.locfileid: "77602324"
 若要为虚拟机上的 SQL Server 数据库配置保护，必须在该虚拟机上安装**AzureBackupWindowsWorkload**扩展。 如果收到错误**UserErrorSQLNoSysadminMembership**，则表示 SQL Server 实例没有所需的备份权限。 若要修复此错误，请按照[设置 VM 权限](backup-azure-sql-database.md#set-vm-permissions)中的步骤操作。
 
 ## <a name="troubleshoot-discover-and-configure-issues"></a>发现和配置问题疑难解答
+
 创建和配置恢复服务保管库后，发现数据库和配置备份的过程分为两个步骤。<br>
 
 ![sql](./media/backup-azure-sql-database/sql.png)
@@ -35,9 +36,25 @@ ms.locfileid: "77602324"
 
 - 如果在用于保护数据库的同一个保管库中注册了 SQL VM 的保管库，请按照[配置备份](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup)步骤操作。
 
-如果需要在新保管库中注册 SQL VM，则必须将其从旧保管库中注销。  从保管库中取消注册 SQL VM 需要停止保护所有受保护的数据源，然后可以删除已备份的数据。 删除备份的数据是一种破坏性操作。  查看并采取取消注册 SQL VM 的所有预防措施后，请将此同一 VM 注册到新的保管库，然后重试备份操作。
+如果需要在新保管库中注册 SQL VM，则必须将其从旧保管库中注销。  从保管库注销 SQL VM 需要停止保护所有受保护的数据源，然后可以删除已备份的数据。 删除备份的数据是一种破坏性操作。  查看并采取取消注册 SQL VM 的所有预防措施后，请将此同一 VM 注册到新的保管库，然后重试备份操作。
 
+## <a name="troubleshoot-backup-and-recovery-issues"></a>备份和恢复问题疑难解答  
 
+有时，可能会在备份和还原操作中发生随机失败，否则这些操作可能会停滞。 这可能是因为 VM 上的防病毒程序。 作为最佳做法，我们建议执行以下步骤：
+
+1. 从防病毒扫描中排除以下文件夹：
+
+    `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.Edp.AzureBackupWindowsWorkload`
+
+    用*SystemDrive*的字母替换 `C:\`。
+
+1. 从防病毒扫描中排除 VM 内运行的以下三个进程：
+
+    - IaasWLPluginSvc
+    - IaasWorkloadCoordinaorService
+    - TriggerExtensionJob
+
+1. SQL 还提供了一些有关使用防病毒程序的准则。 有关详细信息，请参阅[此文](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server)。
 
 ## <a name="error-messages"></a>错误消息
 
@@ -149,7 +166,6 @@ ms.locfileid: "77602324"
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
 由于 internet 连接问题，VM 无法联系 Azure 备份服务。 | VM 需要与 Azure 备份服务、Azure 存储或 Azure Active Directory 服务建立出站连接。| -如果你使用 NSG 来限制连接，则应使用 AzureBackup service 标记，以允许对 azure 备份服务、Azure 存储或 Azure Active Directory 服务的出站访问。 请按照以下[步骤](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags)授予访问权限。<br>-确保 DNS 正在解析 Azure 终结点。<br>-检查 VM 是否在阻止访问 internet 的负载均衡器后面。 通过向 Vm 分配公共 IP，发现将起作用。<br>-验证没有防火墙/防病毒/代理正在阻止调用上述三个目标服务。
-
 
 ## <a name="re-registration-failures"></a>重新注册失败
 

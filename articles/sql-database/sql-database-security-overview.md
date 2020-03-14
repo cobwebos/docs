@@ -1,5 +1,5 @@
 ---
-title: 安全概述
+title: 安全性概述
 description: 了解 Azure SQL 数据库和 SQL Server 的安全性，包括云与本地 SQL Server 之间的差异。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 4aa45cc1e8b79186d3ddd5d2b2964addb3929b1a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 348b8fc44628437cbbcfbcd39a26d048284aa60e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978574"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208858"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -46,7 +46,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 > [!IMPORTANT]
 > 管理 Azure 中的数据库和数据库服务器由门户用户帐户的角色分配控制。 有关本文的详细信息，请参阅 [Azure 门户中基于角色的访问控制](../role-based-access-control/overview.md)。
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 身份验证是证明用户所声明身份的过程。 Azure SQL 数据库支持两种类型的身份验证：
 
@@ -71,7 +71,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 
 最佳做法是在需要时创建自定义角色。 将用户添加到具有完成工作所需的最少特权的角色。 不要直接向用户分配权限。 服务器管理员帐户是内置 db_owner 角色的成员，它具有广泛的权限，只应授予少数具有管理职责的用户。 对于 Azure SQL 数据库应用程序，请使用[EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql)来指定所调用的模块的执行上下文，或使用具有受限权限的[应用程序角色](/sql/relational-databases/security/authentication-access/application-roles)。 这种做法可确保连接到数据库的应用程序具有该应用程序所需的最少特权。 遵循这些最佳做法还会促进职责分离。
 
-### <a name="row-level-security"></a>行级别安全性
+### <a name="row-level-security"></a>行级安全性
 
 行级别安全性使客户可以基于执行查询的用户的特性（例如，组成员身份或执行上下文）来控制对数据库表进行的访问。 行级别安全性还可用于实现基于标签的自定义安全概念。 有关详细信息，请参阅[行级别安全性](/sql/relational-databases/security/row-level-security)。
 
@@ -146,12 +146,12 @@ SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来�
 
 有关详细信息，请参阅[数据发现和分类入门](sql-database-data-discovery-and-classification.md)。
 
-### <a name="compliance"></a>合规
+### <a name="compliance"></a>合规性
 
 除了上述有助于应用程序符合各项安全要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，你可以在其中找到最新的 SQL 数据库符合性认证列表。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关使用 SQL 数据库中的访问控制功能的介绍，请参阅[控制访问](sql-database-control-access.md)。
+- 有关如何使用 SQL 数据库中的登录名、用户帐户、数据库角色和权限的讨论，请参阅[管理登录名和用户帐户](sql-database-manage-logins.md)。
 - 有关数据库审核的讨论，请参阅 [SQL 数据库审核](sql-database-auditing.md)。
 - 有关威胁检测的讨论，请参阅 [SQL 数据库威胁检测](sql-database-threat-detection.md)。

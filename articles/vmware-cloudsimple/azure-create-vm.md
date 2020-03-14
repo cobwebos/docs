@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360757"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244688"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>使用 VMware 基础结构上的 VM 模板在 Azure 中创建虚拟机
 
@@ -29,7 +29,7 @@ ms.locfileid: "78360757"
 
 2. 搜索“CloudSimple 虚拟机”。
 
-3. 单击 **“添加”** 。
+3. 单击“添加”。
 
     ![创建 CloudSimple 虚拟机](media/create-cloudsimple-virtual-machine.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "78360757"
     | 订阅 | 与私有云关联的 Azure 订阅。  |
     | 资源组 | VM 将分配到的资源组。 可以选择现有的组，或创建新组。 |
     | 名称 | 用于标识 VM 的名称。  |
-    | Location | 托管此 VM 的 Azure 区域。  |
+    | 位置 | 托管此 VM 的 Azure 区域。  |
     | 私有云 | CloudSimple 要在其中创建虚拟机的私有云。 |
     | 资源池 | VM 的映射资源池。 请从可用的资源池中进行选择。 |
     | vSphere 模板 | VM 的 vSphere 模板。  |
@@ -62,7 +62,7 @@ ms.locfileid: "78360757"
 
     对于 "网络接口"，单击 "**添加网络接口**" 并配置以下设置。
 
-    | 控件 | 说明 |
+    | 控制 | 说明 |
     | ------------ | ------------- |
     | 名称 | 输入一个名称用于标识接口。  |
     | 网络 | 从私有云 vSphere 中已配置的分布式端口组列表中进行选择。  |
@@ -71,12 +71,12 @@ ms.locfileid: "78360757"
 
     对于磁盘，单击 "**添加磁盘**"，然后配置下列设置。
 
-    | 项 | 说明 |
+    | Item | 说明 |
     | ------------ | ------------- |
     | 名称 | 输入一个名称用于标识磁盘。  |
     | 大小 | 选择一种可用大小。  |
     | SCSI 控制器 | 选择磁盘的 SCSI 控制器。  |
-    | 模式 | 确定磁盘如何参与快照。 选择以下选项之一： <br> 独立持久性：写入到磁盘的所有数据都将被永久写入。<br> 独立的非永久性：关闭或重置虚拟机时，写入磁盘的更改将被丢弃。  使用独立非永久性模式可始终以相同的状态重启 VM。 有关详细信息，请参阅 [VMware 文档](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)。
+    | “模式” | 确定磁盘如何参与快照。 选择以下选项之一： <br> 独立持久性：写入到磁盘的所有数据都将被永久写入。<br> 独立的非永久性：关闭或重置虚拟机时，写入磁盘的更改将被丢弃。  使用独立非永久性模式可始终以相同的状态重启 VM。 有关详细信息，请参阅 [VMware 文档](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)。
 
 7. 验证完成后，查看设置，然后单击 "**创建**"。 若要进行任何更改，请单击顶部的选项卡或单击。
 

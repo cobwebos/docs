@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 4dae0d10f103710a0e6039127c5c1cacb63c03c4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/12/2020
+ms.openlocfilehash: 50e88d43d159ba5ac8f7b6c196c9843faad9eaf1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893111"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79246222"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Data Lake Storage Gen1 或从中复制数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "75893111"
 
 以下活动支持此 Azure Data Lake Storage Gen1 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md) 
+- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md) 
 - [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)
@@ -45,7 +45,7 @@ ms.locfileid: "75893111"
 > [!IMPORTANT]
 > 如果使用自承载 integration runtime 复制数据，请将企业防火墙配置为允许在端口443上的出站流量 `<ADLS account name>.azuredatalakestore.net` 和 `login.microsoftonline.com/<tenant>/oauth2/token`。 后者是 Azure 安全令牌服务，集成运行时需要与之通信以获取访问令牌。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 > [!TIP]
 > 有关如何使用 Azure Data Lake Store 连接器的演练，请参阅将[数据加载到 Azure Data Lake Store](load-azure-data-lake-store.md)中。
@@ -58,7 +58,7 @@ ms.locfileid: "75893111"
 
 Azure Data Lake Store 链接服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | `type` 属性必须设置为 **AzureDataLakeStore**。 | 是 |
 | dataLakeStoreUri | Azure Data Lake Store 帐户相关信息。 此信息采用以下格式之一：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
@@ -83,7 +83,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 `SecureString` 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -158,7 +158,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 基于格式的数据集中 `location` 设置下的 Azure Data Lake Store Gen1 支持以下属性：
 
-| 属性   | Description                                                  | 需要 |
+| properties   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为**AzureDataLakeStoreLocation**。 | 是      |
 | folderPath | 文件夹的路径。 如果要使用通配符筛选文件夹，请跳过此设置并在 "活动源" 设置中指定它。 | 否       |
@@ -200,7 +200,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 基于格式的复制源中 `storeSettings` 设置下的 Azure Data Lake Store Gen1 支持以下属性：
 
-| 属性                 | Description                                                  | 需要                                      |
+| properties                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为**AzureDataLakeStoreReadSettings**。 | 是                                           |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | 否                                            |
@@ -257,10 +257,11 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 基于格式的复制接收器 `storeSettings` 设置下的 Azure Data Lake Store Gen1 支持以下属性：
 
-| 属性                 | Description                                                  | 需要 |
+| properties                 | 说明                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为**AzureDataLakeStoreWriteSettings**。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
+| expiryDateTime | 指定写入文件的到期时间。 时间以 "2020-03-01T08：00： 00Z" 格式应用于 UTC 时间。 默认情况下，它为 NULL，这意味着写入的文件永远不会过期。 | 否 |
 | maxConcurrentConnections | 并发连接到数据存储的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
 
 **示例：**
@@ -427,7 +428,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为**AzureDataLakeStoreFile**。 |是 |
 | folderPath | Data Lake Store 中的文件夹的路径。 如果未指定，它指向根目录。 <br/><br/>支持通配符筛选器。 允许的通配符 `*` （与零个或多个字符匹配）和 `?` （与零个或一个字符匹配）。 如果你的实际文件夹名称中有通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>例如： rootfolder/子文件夹/。 请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |否 |
@@ -472,7 +473,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 `type` 属性必须设置为**AzureDataLakeStoreSource**。 |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 如果 `recursive` 设置为 true 且接收器是基于文件的存储，则不会在接收器上复制或创建空文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | 否 |
@@ -512,7 +513,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 ### <a name="legacy-copy-activity-sink-model"></a>旧复制活动接收器模型
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 `type` 属性必须设置为**AzureDataLakeStoreSink**。 |是 |
 | copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，会自动生成文件名。 | 否 |

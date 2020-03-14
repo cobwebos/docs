@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: fd363f7b685db5e309827a0c5e635264e676b388
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926179"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281751"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "74926179"
 
 以下活动支持此 SAP 表连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 SAP 表复制到任何支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -47,7 +47,7 @@ ms.locfileid: "74926179"
 - 如果配置了 SNC，请使用基本身份验证或安全网络通信（SNC）复制数据。
 - 连接到 SAP 应用程序服务器或 SAP 消息服务器。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要使用此 SAP 表连接器，需执行以下操作：
 
@@ -62,7 +62,7 @@ ms.locfileid: "74926179"
   - 授权使用远程函数调用（RFC）目标。
   - 对 S_SDSAUTH 授权对象的执行活动的权限。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -72,24 +72,24 @@ ms.locfileid: "74926179"
 
 SAP BW 开放式中心链接服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | `type` | `type` 属性必须设置为 `SapTable`。 | 是 |
-| `server` | SAP 实例所在的服务器的名称。<br/>使用连接到 SAP 应用程序服务器。 | No |
-| `systemNumber` | SAP 系统的系统编号。<br/>使用连接到 SAP 应用程序服务器。<br/>允许的值：用字符串表示的两位十进制数。 | No |
-| `messageServer` | SAP 消息服务器的主机名。<br/>使用连接到 SAP 消息服务器。 | No |
-| `messageServerService` | 消息服务器的服务名称或端口号。<br/>使用连接到 SAP 消息服务器。 | No |
-| `systemId` | 表所在的 SAP 系统的 ID。<br/>使用连接到 SAP 消息服务器。 | No |
-| `logonGroup` | SAP 系统的登录组。<br/>使用连接到 SAP 消息服务器。 | No |
+| `server` | SAP 实例所在的服务器的名称。<br/>使用连接到 SAP 应用程序服务器。 | 否 |
+| `systemNumber` | SAP 系统的系统编号。<br/>使用连接到 SAP 应用程序服务器。<br/>允许的值：用字符串表示的两位十进制数。 | 否 |
+| `messageServer` | SAP 消息服务器的主机名。<br/>使用连接到 SAP 消息服务器。 | 否 |
+| `messageServerService` | 消息服务器的服务名称或端口号。<br/>使用连接到 SAP 消息服务器。 | 否 |
+| `systemId` | 表所在的 SAP 系统的 ID。<br/>使用连接到 SAP 消息服务器。 | 否 |
+| `logonGroup` | SAP 系统的登录组。<br/>使用连接到 SAP 消息服务器。 | 否 |
 | `clientId` | SAP 系统中的客户端 ID。<br/>允许的值：用字符串表示的三位十进制数。 | 是 |
-| `language` | SAP 系统使用的语言。<br/>默认值为 `EN`。| No |
+| `language` | SAP 系统使用的语言。<br/>默认值为 `EN`。| 否 |
 | `userName` | 有权访问 SAP 服务器的用户的名称。 | 是 |
 | `password` | 用户的密码。 将此字段标记为 `SecureString` 类型，以将其安全地存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
-| `sncMode` | 用于访问表所在的 SAP 服务器的 SNC 激活指示器。<br/>如果要使用 SNC 连接到 SAP 服务器，请使用。<br/>允许的值为 `0` （off、default）或 `1` （on）。 | No |
-| `sncMyName` | 发起程序的 SNC 名称，用于访问表所在的 SAP 服务器。<br/>当 `sncMode` 为 on 时应用。 | No |
-| `sncPartnerName` | 用于访问表所在 SAP 服务器的通信伙伴的 SNC 名称。<br/>当 `sncMode` 为 on 时应用。 | No |
-| `sncLibraryPath` | 外部安全产品的库，用于访问表所在的 SAP 服务器。<br/>当 `sncMode` 为 on 时应用。 | No |
-| `sncQop` | 要应用的保护级别的 SNC 质量。<br/>当 `sncMode` 为 On 时应用。 <br/>允许的值为 `1` （身份验证）、`2` （完整性）、`3` （隐私）、`8` （默认）、`9` （最大值）。 | No |
+| `sncMode` | 用于访问表所在的 SAP 服务器的 SNC 激活指示器。<br/>如果要使用 SNC 连接到 SAP 服务器，请使用。<br/>允许的值为 `0` （off、default）或 `1` （on）。 | 否 |
+| `sncMyName` | 发起程序的 SNC 名称，用于访问表所在的 SAP 服务器。<br/>当 `sncMode` 为 on 时应用。 | 否 |
+| `sncPartnerName` | 用于访问表所在 SAP 服务器的通信伙伴的 SNC 名称。<br/>当 `sncMode` 为 on 时应用。 | 否 |
+| `sncLibraryPath` | 外部安全产品的库，用于访问表所在的 SAP 服务器。<br/>当 `sncMode` 为 on 时应用。 | 否 |
+| `sncQop` | 要应用的保护级别的 SNC 质量。<br/>当 `sncMode` 为 On 时应用。 <br/>允许的值为 `1` （身份验证）、`2` （完整性）、`3` （隐私）、`8` （默认）、`9` （最大值）。 | 否 |
 | `connectVia` | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 需要自承载集成运行时，如[先决条件](#prerequisites)中所述。 |是 |
 
 **示例1：连接到 SAP 应用程序服务器**
@@ -180,7 +180,7 @@ SAP BW 开放式中心链接服务支持以下属性：
 
 若要将数据从和复制到 SAP BW 打开中心链接服务，支持以下属性：
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | `type` | `type` 属性必须设置为 `SapTableResource`。 | 是 |
 | `tableName` | 要从中复制数据的 SAP 表的名称。 | 是 |
@@ -212,18 +212,18 @@ SAP BW 开放式中心链接服务支持以下属性：
 
 若要从 SAP 表中复制数据，支持以下属性：
 
-| properties                         | 描述                                                  | 需要 |
+| properties                         | 说明                                                  | 必选 |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | `type` 属性必须设置为 `SapTableSource`。         | 是      |
-| `rowCount`                         | 要检索的行数。                              | No       |
-| `rfcTableFields`                   | 要从 SAP 表复制的字段（列）。 例如，`column0, column1` 。 | No       |
-| `rfcTableOptions`                  | 用于筛选 SAP 表中的行的选项。 例如，`COLUMN0 EQ 'SOMEVALUE'` 。 另请参阅本文后面的 SAP 查询运算符表。 | No       |
-| `customRfcReadTableFunctionModule` | 自定义 RFC 函数模块，可用于从 SAP 表中读取数据。<br>你可以使用自定义 RFC 函数模块来定义从 SAP 系统检索数据并将数据返回到数据工厂的方式。 自定义函数模块必须具有实现的接口（导入、导出、表），这类似于 `/SAPDS/RFC_READ_TABLE2`，这是数据工厂使用的默认接口。 | No       |
-| `partitionOption`                  | 要从 SAP 表中读取的分区机制。 支持的选项包括： <ul><li>`None`</li><li>`PartitionOnInt` （左侧为零的整数或整数值，如 `0000012345`）</li><li>`PartitionOnCalendarYear` （格式为 "YYYY" 的4位数字）</li><li>`PartitionOnCalendarMonth` （格式为 "YYYYMM" 的6位数字）</li><li>`PartitionOnCalendarDate` （格式为 "YYYYMMDD" 的8位数字）</li></ul> | No       |
-| `partitionColumnName`              | 用于对数据进行分区的列的名称。                | No       |
-| `partitionUpperBound`              | `partitionColumnName` 中指定的列的最大值，将用于继续进行分区。 | No       |
-| `partitionLowerBound`              | `partitionColumnName` 中指定的列的最小值，将用于继续分区。 | No       |
-| `maxPartitionsNumber`              | 要将数据拆分到的分区的最大数目。     | No       |
+| `rowCount`                         | 要检索的行数。                              | 否       |
+| `rfcTableFields`                   | 要从 SAP 表复制的字段（列）。 例如，`column0, column1` 。 | 否       |
+| `rfcTableOptions`                  | 用于筛选 SAP 表中的行的选项。 例如，`COLUMN0 EQ 'SOMEVALUE'` 。 另请参阅本文后面的 SAP 查询运算符表。 | 否       |
+| `customRfcReadTableFunctionModule` | 自定义 RFC 函数模块，可用于从 SAP 表中读取数据。<br>你可以使用自定义 RFC 函数模块来定义从 SAP 系统检索数据并将数据返回到数据工厂的方式。 自定义函数模块必须具有实现的接口（导入、导出、表），这类似于 `/SAPDS/RFC_READ_TABLE2`，这是数据工厂使用的默认接口。 | 否       |
+| `partitionOption`                  | 要从 SAP 表中读取的分区机制。 支持的选项包括： <ul><li>`None`</li><li>`PartitionOnInt` （左侧为零的整数或整数值，如 `0000012345`）</li><li>`PartitionOnCalendarYear` （格式为 "YYYY" 的4位数字）</li><li>`PartitionOnCalendarMonth` （格式为 "YYYYMM" 的6位数字）</li><li>`PartitionOnCalendarDate` （格式为 "YYYYMMDD" 的8位数字）</li></ul> | 否       |
+| `partitionColumnName`              | 用于对数据进行分区的列的名称。                | 否       |
+| `partitionUpperBound`              | `partitionColumnName` 中指定的列的最大值，将用于继续进行分区。 | 否       |
+| `partitionLowerBound`              | `partitionColumnName` 中指定的列的最小值，将用于继续分区。 | 否       |
+| `maxPartitionsNumber`              | 要将数据拆分到的分区的最大数目。     | 否       |
 
 >[!TIP]
 >如果 SAP 表有大量数据（如几亿行），请使用 `partitionOption` 和 `partitionSetting` 将数据拆分成较小的分区。 在这种情况下，将按分区读取数据，并通过单个 RFC 调用从 SAP 服务器检索每个数据分区。<br/>
@@ -234,12 +234,12 @@ SAP BW 开放式中心链接服务支持以下属性：
 
 在 `rfcTableOptions`中，可以使用以下常见 SAP 查询运算符来筛选行：
 
-| 运算符 | 描述 |
+| 操作员 | 说明 |
 | :------- | :------- |
 | `EQ` | 等于 |
 | `NE` | 不等于 |
 | `LT` | 小于 |
-| `LE` | 小于等于 |
+| `LE` | 小于或等于 |
 | `GT` | 大于 |
 | `GE` | 大于或等于 |
 | `LIKE` | 与 `LIKE 'Emma%'` |

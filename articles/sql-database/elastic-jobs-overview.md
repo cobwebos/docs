@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 633c3ffc8e266087c88116a15c43469727a9a50d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e5b07ac0e9421cbca034b17c573cab16641f49f7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133650"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214478"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>创建、配置和管理弹性作业
 
@@ -35,7 +35,7 @@ ms.locfileid: "77133650"
 
 1. 使用[PowerShell](elastic-jobs-powershell.md)或[t-sql](elastic-jobs-tsql.md#create-a-credential-for-job-execution)为*作业数据库*中的作业执行创建凭据。
 2. 使用[PowerShell](elastic-jobs-powershell.md)或[t-sql](elastic-jobs-tsql.md#create-a-target-group-servers)定义目标组（要运行作业的数据库）。
-3. 在作业将运行的每个数据库中创建作业代理凭据[（向组中的每个数据库添加用户（或角色））](sql-database-control-access.md)。 有关示例，请参阅 [PowerShell 教程](elastic-jobs-powershell.md)。
+3. 在作业将运行的每个数据库中创建作业代理凭据[（向组中的每个数据库添加用户（或角色））](sql-database-manage-logins.md)。 有关示例，请参阅 [PowerShell 教程](elastic-jobs-powershell.md)。
 4. 使用[PowerShell](elastic-jobs-powershell.md)或[t-sql](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases)创建作业。
 5. 使用 [PowerShell](elastic-jobs-powershell.md) 或 [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) 添加作业步骤。
 6. 使用[PowerShell](elastic-jobs-powershell.md#run-the-job)或[t-sql](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job)运行作业。
@@ -57,7 +57,7 @@ ms.locfileid: "77133650"
 
 ![弹性作业凭据](media/elastic-jobs-overview/job-credentials.png)
 
-## <a name="security-best-practices"></a>安全最佳实践
+## <a name="security-best-practices"></a>安全最佳做法
 
 使用弹性作业时的一些最佳做法注意事项：
 
@@ -82,7 +82,7 @@ ms.locfileid: "77133650"
 ## <a name="best-practices-for-creating-jobs"></a>创建作业的最佳做法
 
 ### <a name="idempotent-scripts"></a>幂等脚本
-作业的 T-SQL 脚本必须[幂等](https://en.wikipedia.org/wiki/Idempotence)。 “幂等”是指如果脚本成功，则再次运行时，会出现相同的结果。 脚本可能由于暂时性网络问题而失败。 在此情况下，作业将自动重试运行脚本，达到默认的次数才停止。 即使幂等脚本已成功运行两次（或更多次），也仍会返回相同的结果。
+作业的 T-SQL 脚本必须[幂等](https://en.wikipedia.org/wiki/Idempotence)。 “幂等”是指如果脚本成功，则再次运行时，会出现相同的结果。 脚本可能由于暂时性网络问题而失败。 在此情况下，作业会自动重试运行脚本，达到默认的次数才停止。 即使幂等脚本已成功运行两次（或更多次），也仍会返回相同的结果。
 
 一个简单的策略是在创建对象之前测试其是否存在。
 

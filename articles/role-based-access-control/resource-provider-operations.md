@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/18/2020
+ms.date: 03/12/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9b3a1175b5e22b787c62365d3b113e02ec1d1326
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 6b0d967dad250b06988865cde2f4ce11367f8acb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206990"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245767"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
 
@@ -33,7 +33,7 @@ ms.locfileid: "78206990"
 Azure 服务： [Azure Active Directory 域服务](../active-directory-domain-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.AAD/unregister/action | 取消注册域服务 |
 > | 操作 | Microsoft.AAD/register/action | 注册域服务 |
@@ -55,7 +55,7 @@ Azure 服务： [Azure Active Directory 域服务](../active-directory-domain-se
 Microsoft Monitoring Insights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > |  | **diagnosticsettings** |  |
 > | 操作 | microsoft.aadiam/diagnosticsettings/write | 写入诊断设置 |
@@ -73,7 +73,7 @@ Microsoft Monitoring Insights
 Azure 服务：核心
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Addons/register/action | 向 Microsoft.Addons 注册指定的订阅 |
 > |  | **运算符** |  |
@@ -90,7 +90,7 @@ Azure 服务：核心
 Azure 服务： [Azure Active Directory](../active-directory/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ADHybridHealthService/configuration/action | 更新租户配置。 |
 > | 操作 | Microsoft.ADHybridHealthService/services/action | 更新租户中的服务实例。 |
@@ -219,7 +219,7 @@ Azure 服务： [Azure Active Directory](../active-directory/index.yml)
 Azure 服务： [Azure 顾问](../advisor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Advisor/generateRecommendations/action | 获取“生成建议”状态 |
 > | 操作 | Microsoft.Advisor/register/action | 注册 Microsoft 顾问的订阅 |
@@ -250,7 +250,7 @@ Azure 服务： [Azure 顾问](../advisor/index.yml)
 Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.AlertsManagement/register/action | 注册 Microsoft 警报管理的订阅 |
 > |  | **actionRules** |  |
@@ -289,7 +289,7 @@ Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 Azure 服务： [Azure Analysis Services](../analysis-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.AnalysisServices/register/action | 注册 Analysis Services 资源提供程序。 |
 > |  | **机构** |  |
@@ -317,7 +317,7 @@ Azure 服务： [Azure Analysis Services](../analysis-services/index.yml)
 Azure 服务： [API 管理](../api-management/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ApiManagement/register/action | 注册 Microsoft.ApiManagement 资源提供程序的订阅 |
 > | 操作 | Microsoft.ApiManagement/unregister/action | 取消注册 Microsoft.ApiManagement 资源提供程序的订阅 |
@@ -448,10 +448,9 @@ Azure 服务： [API 管理](../api-management/index.yml)
 > | 操作 | ApiManagement/服务/网关/读取 | 列出注册到服务实例的网关集合。 或获取由其标识符指定的网关的详细信息。 |
 > | 操作 | ApiManagement/服务/网关/写入 | 创建或更新要用于 Api 管理实例的网关。 或更新由其标识符指定的网关的详细信息。 |
 > | 操作 | ApiManagement/服务/网关/删除 | 删除特定的网关。 |
-> | 操作 | ApiManagement/服务/网关/密钥/操作 | 检索网关密钥。 |
-> | 操作 | ApiManagement/服务/网关/regeneratePrimaryKey/action | 重新生成用它创建的任何令牌 invalidationg 的主网关密钥。 |
-> | 操作 | ApiManagement/服务/网关/regenerateSecondaryKey/action | 重新生成用它创建的任何令牌 invalidationg 的辅助网关密钥。 |
-> | 操作 | ApiManagement/服务/网关/令牌/操作 | 获取网关的共享访问授权令牌。 |
+> | 操作 | ApiManagement/服务/网关/listKeys/action | 检索网关密钥。 |
+> | 操作 | ApiManagement/服务/网关/regenerateKey/action | 重新生成指定的网关密钥 invalidationg 用它创建的任何令牌。 |
+> | 操作 | ApiManagement/服务/网关/generateToken/action | 获取网关的共享访问授权令牌。 |
 > |  | **服务/网关/api** |  |
 > | 操作 | ApiManagement/服务/网关/api/读取 | 列出与网关关联的 Api 的集合。 |
 > | 操作 | ApiManagement/服务/网关/api/写入 | 将 API 添加到指定的网关。 |
@@ -483,7 +482,7 @@ Azure 服务： [API 管理](../api-management/index.yml)
 > | 操作 | ApiManagement/service/namedValues/read | 列出在服务实例中定义的命名值的集合。 或获取由标识符指定的命名值的详细信息。 |
 > | 操作 | ApiManagement/service/namedValues/write | 创建或更新命名值。 或更新特定的命名值。 |
 > | 操作 | ApiManagement/namedValues/delete | 从 API 管理服务实例中删除特定的命名值。 |
-> | 操作 | ApiManagement/namedValues/listSecrets/action | 获取由标识符指定的已命名值的机密。 |
+> | 操作 | ApiManagement/namedValues/listValue/action | 获取由标识符指定的已命名值的机密。 |
 > |  | **服务/networkstatus** |  |
 > | 操作 | Microsoft.ApiManagement/service/networkstatus/read | 获取服务所依赖的资源的网络访问状态。 |
 > |  | **服务/通知** |  |
@@ -616,7 +615,7 @@ Azure 服务： [API 管理](../api-management/index.yml)
 Azure 服务：核心
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | AppConfiguration/注册/操作 | 注册订阅以使用 Microsoft 应用配置。 |
 > |  | **checkNameAvailability** |  |
@@ -667,7 +666,7 @@ Azure 服务：核心
 Azure 服务： [azure 资源管理器](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Authorization/elevateAccess/action | 向调用方授予租户范围的“用户访问管理员”访问权限 |
 > |  | **classicAdministrators** |  |
@@ -721,7 +720,7 @@ Azure 服务： [azure 资源管理器](../azure-resource-manager/index.yml)
 Azure 服务：[自动化](../automation/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Automation/register/action | 将订阅注册到 Azure Automation |
 > |  | **automationAccounts** |  |
@@ -809,6 +808,18 @@ Azure 服务：[自动化](../automation/index.yml)
 > | 操作 | Microsoft.Automation/automationAccounts/nodes/reports/content/read | 读取 Azure Automation DSC 报表内容 |
 > |  | **automationAccounts/objectDataTypes/fields** |  |
 > | 操作 | Microsoft.Automation/automationAccounts/objectDataTypes/fields/read | 获取 Azure 自动化 TypeField |
+> |  | **automationAccounts/privateEndpointConnectionProxies** |  |
+> | 操作 | AutomationAccounts/privateEndpointConnectionProxies/read | 读取 Azure 自动化专用终结点连接代理 |
+> | 操作 | AutomationAccounts/privateEndpointConnectionProxies/write | 创建 Azure 自动化专用终结点连接代理 |
+> | 操作 | AutomationAccounts/privateEndpointConnectionProxies/validate/action | 验证专用终结点连接请求（groupId 验证） |
+> | 操作 | AutomationAccounts/privateEndpointConnectionProxies/delete | 删除 Azure 自动化专用终结点连接代理 |
+> |  | **automationAccounts/privateEndpointConnectionProxies/operationResults** |  |
+> | 操作 | AutomationAccounts/privateEndpointConnectionProxies/operationResults/read | 获取 Azure 自动化专用终结点代理操作结果。 |
+> |  | **automationAccounts/privateEndpointConnections** |  |
+> | 操作 | AutomationAccounts/privateEndpointConnections/read | 获取 Azure 自动化专用终结点连接状态 |
+> | 操作 | AutomationAccounts/privateEndpointConnections/write | 批准或拒绝 Azure 自动化专用终结点连接 |
+> |  | **automationAccounts/privateLinkResources** |  |
+> | 操作 | AutomationAccounts/privateLinkResources/read | 读取专用终结点的组信息 |
 > |  | **automationAccounts/python2Packages** |  |
 > | 操作 | Microsoft.Automation/automationAccounts/python2Packages/read | 获取 Azure 自动化 Python 2 包 |
 > | 操作 | Microsoft.Automation/automationAccounts/python2Packages/write | 创建或更新 Azure 自动化 Python 2 包 |
@@ -890,7 +901,7 @@ Azure 服务：[自动化](../automation/index.yml)
 Azure 服务： [Azure Active Directory B2C](../active-directory-b2c/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.AzureActiveDirectory/register/action | 注册 Microsoft.AzureActiveDirectory 资源提供程序的订阅 |
 > |  | **b2cDirectories** |  |
@@ -907,9 +918,11 @@ Azure 服务： [Azure Active Directory B2C](../active-directory-b2c/index.yml)
 Azure 服务：核心
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.AzureStack/register/action | 使用 Microsoft.AzureStack 资源提供程序注册订阅 |
+> |  | **cloudManifestFiles** |  |
+> | 操作 | Test-azurestack/cloudManifestFiles/read | 获取云清单文件 |
 > |  | **操作** |  |
 > | 操作 | Microsoft.AzureStack/Operations/read | 获取资源提供程序操作的属性 |
 > |  | **注册** |  |
@@ -927,15 +940,13 @@ Azure 服务：核心
 > | 操作 | Test-azurestack/注册/产品/getProducts/操作 | 检索 Azure Stack Marketplace 产品的列表 |
 > | 操作 | Test-azurestack/注册/产品/getProduct/操作 | 检索 Azure Stack Marketplace 产品 |
 > | 操作 | Test-azurestack/注册/产品/uploadProductLog/操作 | 记录 Azure Stack Marketplace 产品操作状态和时间戳 |
-> |  | **verificationKeys** |  |
-> | 操作 | Test-azurestack/verificationKeys/getCurrentKey/action | 获取 Azure Stack 签名公钥的当前版本 |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 Azure 服务： [Batch](../batch/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Batch/register/action | 注册批处理资源提供程序的订阅，并启用批处理帐户的创建 |
 > | 操作 | Microsoft.Batch/unregister/action | 取消注册 Batch 资源提供程序的订阅，阻止创建 Batch 帐户 |
@@ -994,7 +1005,7 @@ Azure 服务： [Batch](../batch/index.yml)
 Azure 服务：[成本管理 + 计费](../cost-management-billing/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | ValidateAddress/操作 |  |
 > | 操作 | Microsoft.Billing/register/action |  |
@@ -1010,6 +1021,7 @@ Azure 服务：[成本管理 + 计费](../cost-management-billing/index.yml)
 > | 操作 | BillingAccounts/billingProfiles/write |  |
 > | 操作 | BillingAccounts/billingProfiles/read |  |
 > | 操作 | BillingAccounts/billingProfiles/write |  |
+> | 操作 | BillingAccounts/billingProfiles/write |  |
 > |  | **billingAccounts/billingProfiles/billingPermissions** |  |
 > | 操作 | BillingAccounts/billingProfiles/billingPermissions/read |  |
 > |  | **billingAccounts/billingProfiles/customers** |  |
@@ -1019,6 +1031,7 @@ Azure 服务：[成本管理 + 计费](../cost-management-billing/index.yml)
 > |  | **billingAccounts/billingProfiles/invoiceSections** |  |
 > | 操作 | BillingAccounts/billingProfiles/invoiceSections/write |  |
 > | 操作 | BillingAccounts/billingProfiles/invoiceSections/read |  |
+> | 操作 | BillingAccounts/billingProfiles/invoiceSections/write |  |
 > |  | **billingAccounts/billingProfiles/invoiceSections/billingPermissions** |  |
 > | 操作 | BillingAccounts/billingProfiles/invoiceSections/billingPermissions/read |  |
 > |  | **billingAccounts/billingProfiles/invoiceSections/billingSubscriptions** |  |
@@ -1059,7 +1072,7 @@ Azure 服务：[成本管理 + 计费](../cost-management-billing/index.yml)
 Azure 服务：[必应地图](https://docs.microsoft.com/BingMaps/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | BingMaps/updateCommunicationPreference/action | 更新 BingMaps 的所有者的通信首选项。 |
 > | 操作 | BingMaps/listCommunicationPreference/action | 获取 BingMaps 的所有者的通信首选项。 |
@@ -1078,7 +1091,7 @@ Azure 服务：[必应地图](https://docs.microsoft.com/BingMaps/)
 Azure 服务： [Azure 区块链服务](../blockchain/workbench/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Blockchain/register/action | 注册区块链资源提供程序的订阅。 |
 > |  | **blockchainMembers** |  |
@@ -1109,7 +1122,7 @@ Azure 服务： [Azure 区块链服务](../blockchain/workbench/index.yml)
 Azure 服务： [Azure 蓝图](../governance/blueprints/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Blueprint/register/action | 注册 Azure 蓝图资源提供程序 |
 > |  | **blueprintAssignments** |  |
@@ -1139,7 +1152,7 @@ Azure 服务： [Azure 蓝图](../governance/blueprints/index.yml)
 Azure 服务： [Azure 机器人服务](https://docs.microsoft.com/azure/bot-service/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | BotService/checknameavailability/action | 检查机器人的名称可用性 |
 > | 操作 | BotService/listauthserviceproviders/action | 列出身份验证服务提供程序 |
@@ -1168,7 +1181,7 @@ Azure 服务： [Azure 机器人服务](https://docs.microsoft.com/azure/bot-ser
 Azure 服务：[用于 Redis 的 Azure 缓存](../azure-cache-for-redis/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Cache/checknameavailability/action | 检查名称是否可用于新的 Redis 缓存 |
 > | 操作 | Microsoft.Cache/register/action | 将“Microsoft.Cache”资源提供程序注册到订阅 |
@@ -1208,7 +1221,7 @@ Azure 服务：[用于 Redis 的 Azure 缓存](../azure-cache-for-redis/index.ym
 Azure 服务：核心
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Capacity/calculateprice/action | 计算任何预留价格 |
 > | 操作 | Microsoft.Capacity/checkoffers/action | 检查任何订阅套餐 |
@@ -1257,20 +1270,12 @@ Azure 服务：核心
 Azure 服务：[内容交付网络](../cdn/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Cdn/register/action | 注册 CDN 资源提供程序的订阅，并启用 CDN 配置文件的创建。 |
 > | 操作 | Microsoft.Cdn/CheckNameAvailability/action |  |
 > | 操作 | Microsoft.Cdn/ValidateProbe/action |  |
 > | 操作 | Microsoft.Cdn/CheckResourceUsage/action |  |
-> |  | **cdnwebapplicationfirewallmanagedrulesets** |  |
-> | 操作 | Microsoft Cdn/cdnwebapplicationfirewallmanagedrulesets/读取 |  |
-> | 操作 | Microsoft Cdn/cdnwebapplicationfirewallmanagedrulesets/写入 |  |
-> | 操作 | Cdnwebapplicationfirewallmanagedrulesets/删除 |  |
-> |  | **cdnwebapplicationfirewallpolicies** |  |
-> | 操作 | Microsoft Cdn/cdnwebapplicationfirewallpolicies/读取 |  |
-> | 操作 | Microsoft Cdn/cdnwebapplicationfirewallpolicies/写入 |  |
-> | 操作 | Cdnwebapplicationfirewallpolicies/删除 |  |
 > |  | **edgenodes** |  |
 > | 操作 | Microsoft.Cdn/edgenodes/read |  |
 > | 操作 | Microsoft.Cdn/edgenodes/write |  |
@@ -1279,10 +1284,6 @@ Azure 服务：[内容交付网络](../cdn/index.yml)
 > | 操作 | Microsoft.Cdn/operationresults/read |  |
 > | 操作 | Microsoft.Cdn/operationresults/write |  |
 > | 操作 | Microsoft.Cdn/operationresults/delete |  |
-> |  | **operationresults/cdnwebapplicationfirewallpolicyresults** |  |
-> | 操作 | Microsoft Cdn/operationresults/cdnwebapplicationfirewallpolicyresults/read |  |
-> | 操作 | Microsoft Cdn/operationresults/cdnwebapplicationfirewallpolicyresults/write |  |
-> | 操作 | Microsoft Cdn/operationresults/cdnwebapplicationfirewallpolicyresults/delete |  |
 > |  | **operationresults/profileresults** |  |
 > | 操作 | Microsoft.Cdn/operationresults/profileresults/read |  |
 > | 操作 | Microsoft.Cdn/operationresults/profileresults/write |  |
@@ -1306,6 +1307,10 @@ Azure 服务：[内容交付网络](../cdn/index.yml)
 > | 操作 | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/delete |  |
 > | 操作 | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/DisableCustomHttps/action |  |
 > | 操作 | Microsoft.Cdn/operationresults/profileresults/endpointresults/customdomainresults/EnableCustomHttps/action |  |
+> |  | **operationresults/profileresults/endpointresults/origingroupresults** |  |
+> | 操作 | Microsoft Cdn/operationresults/profileresults/endpointresults/origingroupresults/read |  |
+> | 操作 | Microsoft Cdn/operationresults/profileresults/endpointresults/origingroupresults/write |  |
+> | 操作 | Microsoft Cdn/operationresults/profileresults/endpointresults/origingroupresults/delete |  |
 > |  | **operationresults/profileresults/endpointresults/originresults** |  |
 > | 操作 | Microsoft.Cdn/operationresults/profileresults/endpointresults/originresults/read |  |
 > | 操作 | Microsoft.Cdn/operationresults/profileresults/endpointresults/originresults/write |  |
@@ -1335,6 +1340,10 @@ Azure 服务：[内容交付网络](../cdn/index.yml)
 > | 操作 | Microsoft.Cdn/profiles/endpoints/customdomains/delete |  |
 > | 操作 | Microsoft.Cdn/profiles/endpoints/customdomains/DisableCustomHttps/action |  |
 > | 操作 | Microsoft.Cdn/profiles/endpoints/customdomains/EnableCustomHttps/action |  |
+> |  | **配置文件/终结点/origingroups** |  |
+> | 操作 | Microsoft Cdn/配置文件/终结点/origingroups/读取 |  |
+> | 操作 | Microsoft Cdn/配置文件/终结点/origingroups/写入 |  |
+> | 操作 | Microsoft Cdn/配置文件/终结点/origingroups/删除 |  |
 > |  | **配置文件/终结点/源** |  |
 > | 操作 | Microsoft.Cdn/profiles/endpoints/origins/read |  |
 > | 操作 | Microsoft.Cdn/profiles/endpoints/origins/write |  |
@@ -1345,7 +1354,7 @@ Azure 服务：[内容交付网络](../cdn/index.yml)
 Azure 服务：[应用服务证书](../app-service/configure-ssl-certificate.md#import-an-app-service-certificate)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.CertificateRegistration/provisionGlobalAppServicePrincipalInUserTenant/Action | 为服务应用主体预配服务主体 |
 > | 操作 | Microsoft.CertificateRegistration/validateCertificateRegistrationInformation/Action | 验证证书购买对象但不提交该对象 |
@@ -1374,7 +1383,7 @@ Azure 服务：[应用服务证书](../app-service/configure-ssl-certificate.md#
 Azure 服务：经典部署模型虚拟机
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ClassicCompute/register/action | 注册到经典计算 |
 > | 操作 | Microsoft.ClassicCompute/checkDomainNameAvailability/action | 检查给定域名的可用性。 |
@@ -1548,7 +1557,7 @@ Azure 服务：经典部署模型虚拟机
 Azure 服务：经典部署模型虚拟网络
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ClassicNetwork/register/action | 注册到经典网络 |
 > |  | **expressroutecrossconnections** |  |
@@ -1655,7 +1664,7 @@ Azure 服务：经典部署模型虚拟网络
 Azure 服务：经典部署模型存储
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ClassicStorage/register/action | 注册到经典存储 |
 > | 操作 | Microsoft.ClassicStorage/checkStorageAccountAvailability/action | 检查存储帐户的可用性。 |
@@ -1754,8 +1763,9 @@ Azure 服务：经典部署模型存储
 Azure 服务：[认知服务](../cognitive-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
+> | 操作 | Microsoft.CognitiveServices/register/action | 订阅注册操作 |
 > | 操作 | Microsoft.CognitiveServices/register/action | 注册认知服务的订阅 |
 > | 操作 | Microsoft.CognitiveServices/checkDomainAvailability/action | 读取订阅的可用 Sku。 |
 > | 操作 | Microsoft.CognitiveServices/register/action | 注册认知服务的订阅 |
@@ -2101,21 +2111,21 @@ Azure 服务：[认知服务](../cognitive-services/index.yml)
 Azure 服务：核心
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft 商业/注册/操作 | 注册 Microsoft Commerce UsageAggregate 的订阅 |
 > | 操作 | Microsoft Commerce/注销/操作 | 取消注册 Microsoft Commerce UsageAggregate 订阅 |
 > |  | **RateCard** |  |
 > | 操作 | Microsoft.Commerce/RateCard/read | 返回给定订阅的套餐数据、资源/计量元数据和费率。 |
 > |  | **Get-usageaggregates** |  |
-> | 操作 | Microsoft.Commerce/UsageAggregates/read | 检索订阅的 Microsoft Azure 消耗量。 结果包含特定时间范围内的聚合用量数据、订阅和资源相关信息。 |
+> | 操作 | Microsoft.Commerce/UsageAggregates/read | 检索订阅 Microsoft Azure 的使用量。 结果包含特定时间范围内的聚合用量数据、订阅和资源相关信息。 |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 Azure 服务：[虚拟机](../virtual-machines/index.yml)、[虚拟机规模集](../virtual-machine-scale-sets/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Compute/register/action | 将订阅注册到 Microsoft.Compute 资源提供程序 |
 > | 操作 | Microsoft.Compute/unregister/action | 取消注册与 Microsoft. 计算资源提供程序的订阅 |
@@ -2323,7 +2333,7 @@ Azure 服务：[虚拟机](../virtual-machines/index.yml)、[虚拟机规模集]
 Azure 服务：[成本管理](../cost-management-billing/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Consumption/register/action | 注册到消耗 RP |
 > |  | **aggregatedcost** |  |
@@ -2381,7 +2391,7 @@ Azure 服务：[成本管理](../cost-management-billing/index.yml)
 Azure 服务：[容器实例](../container-instances/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ContainerInstance/register/action | 为容器实例资源提供程序注册订阅并启用容器组的创建。 |
 > |  | **containerGroups** |  |
@@ -2424,7 +2434,7 @@ Azure 服务：[容器实例](../container-instances/index.yml)
 Azure 服务：[容器注册表](../container-registry/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ContainerRegistry/register/action | 注册容器注册表资源提供程序的订阅，并启用容器注册表的创建 |
 > |  | **checkNameAvailability** |  |
@@ -2447,6 +2457,8 @@ Azure 服务：[容器注册表](../container-registry/index.yml)
 > | 操作 | Microsoft.ContainerRegistry/registries/queueBuild/action | 根据请求参数创建新生成，并将其添加到生成队列。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/listBuildSourceUploadUrl/action | 获取容器注册表的源上传 URL 位置。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/scheduleRun/action | 计划针对容器注册表的运行。 |
+> |  | **注册表/agentpools** |  |
+> | 操作 | Microsoft.containerregistry/注册表/agentpools/listQueueStatus/action | 列出容器注册表的 agentpool 的所有队列状态。 |
 > |  | **注册表/项目** |  |
 > | 操作 | Microsoft.ContainerRegistry/registries/artifacts/delete | 删除容器注册表中的项目。 |
 > |  | **注册表/生成** |  |
@@ -2510,6 +2522,8 @@ Azure 服务：[容器注册表](../container-registry/index.yml)
 > | 操作 | Microsoft.containerregistry/注册表/scopeMaps/operationStatuses/read | 获取范围映射异步操作状态。 |
 > |  | **注册表/签名** |  |
 > | 操作 | Microsoft.ContainerRegistry/registries/sign/write | 推送/拉取容器注册表的内容信任元数据。 |
+> |  | **注册表/taskruns** |  |
+> | 操作 | Microsoft.containerregistry/注册表/taskruns/listDetails/action | 列出容器注册表的 k 的所有详细信息。 |
 > |  | **注册表/任务** |  |
 > | 操作 | Microsoft.ContainerRegistry/registries/tasks/read | 获取容器注册表的任务，或列出所有任务。 |
 > | 操作 | Microsoft.ContainerRegistry/registries/tasks/write | 创建或更新容器注册表的任务。 |
@@ -2538,7 +2552,7 @@ Azure 服务：[容器注册表](../container-registry/index.yml)
 Azure 服务： [Azure Kubernetes 服务（AKS）](../aks/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ContainerService/register/action | 将订阅注册到 Microsoft.ContainerService 资源提供程序 |
 > | 操作 | Microsoft.ContainerService/unregister/action | 取消注册到 Microsoft.ContainerService 资源提供程序的订阅 |
@@ -2596,7 +2610,7 @@ Azure 服务： [Azure Kubernetes 服务（AKS）](../aks/index.yml)
 Azure 服务：[成本管理](../cost-management-billing/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.CostManagement/query/action | 按范围查询使用情况数据。 |
 > | 操作 | Microsoft.CostManagement/reports/action | 按范围计划使用情况数据的报告。 |
@@ -2660,7 +2674,7 @@ Azure 服务：[成本管理](../cost-management-billing/index.yml)
 Azure 服务： [Azure Data Box](../databox-family/index.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DataBox/register/action | 注册提供程序 Microsoft.Databox |
 > | 操作 | DataBox/注销/操作 | 取消注册提供商 Databox |
@@ -2691,7 +2705,7 @@ Azure 服务： [Azure Data Box](../databox-family/index.md)
 Azure 服务： [Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > |  | **dataBoxEdgeDevices** |  |
 > | 操作 | Microsoft.DataBoxEdge/dataBoxEdgeDevices/uploadCertificate/action | 上传用于注册设备的证书 |
@@ -2797,7 +2811,7 @@ Azure 服务： [Azure Data Box Edge](../databox-online/data-box-edge-overview.m
 Azure 服务： [Azure Databricks](../azure-databricks/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Databricks/register/action | 注册到 Databricks。 |
 > |  | **机构** |  |
@@ -2812,6 +2826,9 @@ Azure 服务： [Azure Databricks](../azure-databricks/index.yml)
 > | 操作 | Microsoft.Databricks/workspaces/delete | 删除 Databricks 工作区。 |
 > | 操作 | Databricks/工作区/refreshPermissions/action | 刷新工作区的权限 |
 > | 操作 | Databricks/工作区/updateDenyAssignment/action | Update 拒绝工作区的托管资源组的赋值 not 操作 |
+> | 操作 | Databricks/工作区/refreshWorkspaces/action | 使用 URL 等新的详细信息刷新工作区 |
+> |  | **工作区/dbWorkspaces** |  |
+> | 操作 | Databricks/工作区/dbWorkspaces/写入 | 初始化 Databricks 工作区（仅限内部） |
 > |  | **workspace/providers/diagnosticSettings/** |  |
 > | 操作 | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/read | 设置 Databricks 工作区的可用诊断设置 |
 > | 操作 | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/write | 添加或修改诊断设置。 |
@@ -2830,7 +2847,7 @@ Azure 服务： [Azure Databricks](../azure-databricks/index.yml)
 Azure 服务：[数据目录](../data-catalog/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DataCatalog/register/action | 为数据目录资源提供程序注册订阅 |
 > | 操作 | Microsoft.DataCatalog/unregister/action | 取消注册数据目录资源提供程序的订阅 |
@@ -2852,7 +2869,7 @@ Azure 服务：[数据目录](../data-catalog/index.yml)
 Azure 服务：[数据工厂](../data-factory/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DataFactory/register/action | 注册数据工厂资源提供程序的订阅。 |
 > | 操作 | Microsoft.DataFactory/unregister/action | 取消注册数据工厂资源提供程序的订阅。 |
@@ -3024,7 +3041,7 @@ Azure 服务：[数据工厂](../data-factory/index.yml)
 Azure 服务： [Data Lake Analytics](../data-lake-analytics/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DataLakeAnalytics/register/action | 将订阅注册到 DataLakeAnalytics。 |
 > |  | **帐户** |  |
@@ -3074,7 +3091,7 @@ Azure 服务： [Data Lake Analytics](../data-lake-analytics/index.yml)
 Azure 服务： [Azure Data Lake Store](../storage/blobs/data-lake-storage-introduction.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DataLakeStore/register/action | 将订阅注册到 DataLakeStore。 |
 > |  | **帐户** |  |
@@ -3121,7 +3138,7 @@ Azure 服务： [Azure Data Lake Store](../storage/blobs/data-lake-storage-intro
 Azure 服务： [Azure 数据库迁移服务](../dms/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DataMigration/register/action | 向 Azure 数据库迁移服务提供商注册订阅 |
 > |  | **位置/operationResults** |  |
@@ -3173,7 +3190,7 @@ Azure 服务： [Azure 数据库迁移服务](../dms/index.yml)
 Azure 服务： [Azure Database for MariaDB](../mariadb/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DBforMariaDB/register/action | 注册 MariaDB 资源提供程序 |
 > | 操作 | Microsoft.DBforMariaDB/checkNameAvailability/action | 验证给定的服务器名称是否可用于在全球范围内对给定的订阅进行预配。 |
@@ -3282,7 +3299,7 @@ Azure 服务： [Azure Database for MariaDB](../mariadb/index.yml)
 Azure 服务： [Azure Database for MySQL](../mysql/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DBforMySQL/register/action | 注册 MySQL 资源提供程序 |
 > | 操作 | Microsoft.DBforMySQL/checkNameAvailability/action | 验证给定的服务器名称是否可用于在全球范围内对给定的订阅进行预配。 |
@@ -3391,7 +3408,7 @@ Azure 服务： [Azure Database for MySQL](../mysql/index.yml)
 Azure 服务： [Azure Database for PostgreSQL](../postgresql/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DBforPostgreSQL/register/action | 注册 PostgreSQL 资源提供程序 |
 > | 操作 | Microsoft.DBforPostgreSQL/checkNameAvailability/action | 验证给定的服务器名称是否可用于在全球范围内对给定的订阅进行预配。 |
@@ -3470,7 +3487,7 @@ Azure 服务： [Azure Database for PostgreSQL](../postgresql/index.yml)
 > | 操作 | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/diagnosticSettings/read | 获取资源的诊断设置 |
 > | 操作 | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/diagnosticSettings/write | 创建或更新资源的诊断设置 |
 > |  | **服务器/提供程序/logDefinitions/** |  |
-> | 操作 | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/logDefinitions/read | 获取 Postgres 服务器的可用日志 |
+> | 操作 | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/logDefinitions/read | 获取 PostgreSQL 服务器的可用日志 |
 > |  | **服务器/提供程序/metricDefinitions/** |  |
 > | 操作 | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/metricDefinitions/read | 返回可用于数据库的指标类型 |
 > |  | **服务器/queryTexts** |  |
@@ -3506,7 +3523,7 @@ Azure 服务： [Azure Database for PostgreSQL](../postgresql/index.yml)
 > | 操作 | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/diagnosticSettings/read | 获取资源的诊断设置 |
 > | 操作 | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/diagnosticSettings/write | 创建或更新资源的诊断设置 |
 > |  | **serversv2/providers/logDefinitions/** |  |
-> | 操作 | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/logDefinitions/read | 获取 Postgres 服务器的可用日志 |
+> | 操作 | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/logDefinitions/read | 获取 PostgreSQL 服务器的可用日志 |
 > |  | **serversv2/providers/metricDefinitions/** |  |
 > | 操作 | Microsoft.DBforPostgreSQL/serversv2/providers/Microsoft.Insights/metricDefinitions/read | 返回可用于数据库的指标类型 |
 
@@ -3515,7 +3532,7 @@ Azure 服务： [Azure Database for PostgreSQL](../postgresql/index.yml)
 Azure 服务： [iot](../iot-hub/index.yml)中心、 [Iot 中心设备预配服务](../iot-dps/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Devices/register/action | 注册 IotHub 资源提供程序的订阅，并启用 IotHub 资源的创建 |
 > | 操作 | Microsoft.Devices/checkNameAvailability/Action | 检查 IotHub 名称是否可用 |
@@ -3597,6 +3614,7 @@ Azure 服务： [iot](../iot-hub/index.yml)中心、 [Iot 中心设备预配服�
 > | 操作 | Microsoft.Devices/iotHubs/listkeys/Action | 获取所有 IotHub 密钥 |
 > | 操作 | Microsoft.Devices/iotHubs/exportDevices/Action | 导出设备 |
 > | 操作 | Microsoft.Devices/iotHubs/importDevices/Action | 导入设备 |
+> | 操作 | IotHubs/privateEndpointConnectionsApproval/Action | 批准或拒绝专用终结点连接 |
 > |  | **iotHubs/证书** |  |
 > | 操作 | Microsoft.Devices/iotHubs/certificates/Read | 获取证书 |
 > | 操作 | Microsoft.Devices/iotHubs/certificates/Write | 创建或更新证书 |
@@ -3611,6 +3629,10 @@ Azure 服务： [iot](../iot-hub/index.yml)中心、 [Iot 中心设备预配服�
 > |  | **IotHubs/diagnosticSettings** |  |
 > | 操作 | Microsoft.Devices/IotHubs/diagnosticSettings/read | 获取资源的诊断设置 |
 > | 操作 | Microsoft.Devices/IotHubs/diagnosticSettings/write | 创建或更新资源的诊断设置 |
+> |  | **iotHubs/digitalTwinsLinks** |  |
+> | 操作 | IotHubs/digitalTwinsLinks/Write |  |
+> | 操作 | IotHubs/digitalTwinsLinks/Read |  |
+> | 操作 | IotHubs/digitalTwinsLinks/Delete |  |
 > |  | **iotHubs/eventGridFilters** |  |
 > | 操作 | Microsoft.Devices/iotHubs/eventGridFilters/Write | 创建新的或更新现有的事件网格筛选器 |
 > | 操作 | Microsoft.Devices/iotHubs/eventGridFilters/Read | 获取事件网格筛选器 |
@@ -3631,6 +3653,21 @@ Azure 服务： [iot](../iot-hub/index.yml)中心、 [Iot 中心设备预配服�
 > | 操作 | Microsoft.Devices/IotHubs/metricDefinitions/read | 获取 IotHub 服务的可用指标 |
 > |  | **iotHubs/operationresults** |  |
 > | 操作 | Microsoft.Devices/iotHubs/operationresults/Read | 获取操作结果（已过时的 API） |
+> |  | **iotHubs/privateEndpointConnectionProxies** |  |
+> | 操作 | IotHubs/privateEndpointConnectionProxies/validate/Action | 在创建过程中验证专用终结点连接代理输入 |
+> | 操作 | IotHubs/privateEndpointConnectionProxies/Read | 获取指定的专用终结点连接代理的属性 |
+> | 操作 | IotHubs/privateEndpointConnectionProxies/Write | 创建或更新专用终结点连接代理 |
+> | 操作 | IotHubs/privateEndpointConnectionProxies/Delete | 删除现有的专用终结点连接代理 |
+> |  | **iotHubs/privateEndpointConnectionProxies/operationResults** |  |
+> | 操作 | IotHubs/privateEndpointConnectionProxies/operationResults/Read | 获取对专用终结点连接代理的异步操作的结果 |
+> |  | **iotHubs/privateEndpointConnections** |  |
+> | 操作 | IotHubs/privateEndpointConnections/Read | 获取指定的专用终结点连接的属性 |
+> | 操作 | IotHubs/privateEndpointConnections/Delete | 删除现有的专用终结点连接 |
+> | 操作 | IotHubs/privateEndpointConnections/Write | 创建或更新专用终结点连接 |
+> |  | **iotHubs/privateEndpointConnections/operationResults** |  |
+> | 操作 | IotHubs/privateEndpointConnections/operationResults/Read | 获取对专用终结点连接的异步操作的结果 |
+> |  | **iotHubs/privateLinkResources** |  |
+> | 操作 | IotHubs/privateLinkResources/Read | 获取 IotHub 的专用链接资源 |
 > |  | **iotHubs/quotaMetrics** |  |
 > | 操作 | Microsoft.Devices/iotHubs/quotaMetrics/Read | 获取配额指标 |
 > |  | **iotHubs/路由** |  |
@@ -3687,7 +3724,7 @@ Azure 服务： [iot](../iot-hub/index.yml)中心、 [Iot 中心设备预配服�
 Azure 服务： [Azure Dev Spaces](../dev-spaces/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DevSpaces/register/action | 将 Microsoft Dev Spaces 资源提供程序注册到订阅 |
 > |  | **控制器** |  |
@@ -3707,7 +3744,7 @@ Azure 服务： [Azure Dev Spaces](../dev-spaces/index.yml)
 Azure 服务： [Azure 实验室服务](../lab-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DevTestLab/register/action | 注册订阅 |
 > |  | **labCenters** |  |
@@ -3856,7 +3893,7 @@ Azure 服务： [Azure 实验室服务](../lab-services/index.yml)
 Azure 服务： [Azure Cosmos DB](../cosmos-db/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DocumentDB/register/action |  注册订阅的 Microsoft DocumentDB 资源提供程序 |
 > |  | **databaseAccountNames** |  |
@@ -4079,7 +4116,7 @@ Azure 服务： [Azure Cosmos DB](../cosmos-db/index.yml)
 Azure 服务：[应用服务](../app-service/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.DomainRegistration/generateSsoRequest/Action | 生成登录域控制中心的请求。 |
 > | 操作 | Microsoft.DomainRegistration/validateDomainRegistrationInformation/Action | 验证域购买对象但不提交该对象 |
@@ -4111,7 +4148,7 @@ Azure 服务：[应用服务](../app-service/index.yml)
 Azure 服务：[事件网格](../event-grid/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.EventGrid/register/action | 注册事件网格资源提供程序的订阅。 |
 > | 操作 | Microsoft.EventGrid/unregister/action | 取消注册事件网格资源提供程序的订阅。 |
@@ -4121,6 +4158,17 @@ Azure 服务：[事件网格](../event-grid/index.yml)
 > | 操作 | Microsoft.EventGrid/domains/delete | 删除域 |
 > | 操作 | Microsoft.EventGrid/domains/listKeys/action | 列出域的密钥 |
 > | 操作 | Microsoft.EventGrid/domains/regenerateKey/action | 重新生成域的密钥 |
+> |  | **域/privateEndpointConnectionProxies** |  |
+> | 操作 | EventGrid/域/privateEndpointConnectionProxies/验证/操作 | 验证域的 PrivateEndpointConnectionProxies |
+> | 操作 | EventGrid/域/privateEndpointConnectionProxies/read | 读取域的 PrivateEndpointConnectionProxies |
+> | 操作 | EventGrid/域/privateEndpointConnectionProxies/write | 为域写入 PrivateEndpointConnectionProxies |
+> | 操作 | EventGrid/域/privateEndpointConnectionProxies/delete | 删除域的 PrivateEndpointConnectionProxies |
+> |  | **域/privateEndpointConnections** |  |
+> | 操作 | EventGrid/域/privateEndpointConnections/read | 读取域的 PrivateEndpointConnections |
+> | 操作 | EventGrid/域/privateEndpointConnections/write | 为域写入 PrivateEndpointConnections |
+> | 操作 | EventGrid/域/privateEndpointConnections/delete | 删除域的 PrivateEndpointConnections |
+> |  | **域/privateLinkResources** |  |
+> | 操作 | EventGrid/域/privateLinkResources/read | 获取或列出域的 PrivateLinkResources |
 > |  | **域/提供商/logDefinitions/** |  |
 > | 操作 | EventGrid/域/提供程序/logDefinitions/read | 允许访问诊断日志 |
 > |  | **域/提供商/metricDefinitions/** |  |
@@ -4160,12 +4208,56 @@ Azure 服务：[事件网格](../event-grid/index.yml)
 > | 操作 | Microsoft.EventGrid/operations/read | 列出 EventGrid 操作。 |
 > |  | **operationsStatus** |  |
 > | 操作 | Microsoft.EventGrid/operationsStatus/read | 读取操作的状态 |
+> |  | **partnerNamespaces** |  |
+> | 操作 | EventGrid/partnerNamespaces/write | 创建或更新合作伙伴命名空间 |
+> | 操作 | EventGrid/partnerNamespaces/read | 读取合作伙伴命名空间 |
+> | 操作 | EventGrid/partnerNamespaces/delete | 删除合作伙伴命名空间 |
+> | 操作 | EventGrid/partnerNamespaces/listKeys/action | 列出合作伙伴命名空间的键 |
+> | 操作 | EventGrid/partnerNamespaces/regenerateKey/action | 为合作伙伴命名空间重新生成密钥 |
+> |  | **partnerNamespaces/eventChannels** |  |
+> | 操作 | EventGrid/partnerNamespaces/eventChannels/read | 读取事件通道 |
+> | 操作 | EventGrid/partnerNamespaces/eventChannels/write | 创建或更新事件通道 |
+> | 操作 | EventGrid/partnerNamespaces/eventChannels/delete | 删除事件通道 |
+> |  | **partnerRegistrations** |  |
+> | 操作 | EventGrid/partnerRegistrations/write | 创建或更新合作伙伴注册 |
+> | 操作 | EventGrid/partnerRegistrations/read | 读取合作伙伴注册 |
+> | 操作 | EventGrid/partnerRegistrations/delete | 删除合作伙伴注册 |
+> |  | **partnerTopics** |  |
+> | 操作 | EventGrid/partnerTopics/read | 读取合作伙伴主题 |
+> | 操作 | EventGrid/partnerTopics/write | 创建或更新合作伙伴主题 |
+> | 操作 | EventGrid/partnerTopics/delete | 删除合作伙伴主题 |
+> | 操作 | EventGrid/partnerTopics/activate/action | 激活合作伙伴主题 |
+> | 操作 | EventGrid/partnerTopics/停用/操作 | 停用合作伙伴主题 |
+> |  | **sku** |  |
+> | 操作 | EventGrid/sku/读取 | 读取事件网格资源的可用 Sku 定义 |
+> |  | **systemTopics** |  |
+> | 操作 | EventGrid/systemTopics/read | 阅读系统主题 |
+> | 操作 | EventGrid/systemTopics/write | 创建或更新系统主题 |
+> | 操作 | EventGrid/systemTopics/delete | 删除系统主题 |
+> |  | **systemTopics/providers/diagnosticSettings/** |  |
+> | 操作 | EventGrid/systemTopics/providers/diagnosticSettings/read | 获取系统主题的诊断设置 |
+> | 操作 | EventGrid/systemTopics/providers/diagnosticSettings/write | 创建或更新系统主题的诊断设置 |
+> |  | **systemTopics/providers/logDefinitions/** |  |
+> | 操作 | EventGrid/systemTopics/providers/logDefinitions/read | 允许访问诊断日志 |
+> |  | **systemTopics/providers/metricDefinitions/** |  |
+> | 操作 | EventGrid/systemTopics/providers/metricDefinitions/read | 获取系统主题的可用指标 |
 > |  | **topics** |  |
 > | 操作 | Microsoft.EventGrid/topics/write | 创建或更新主题 |
 > | 操作 | Microsoft.EventGrid/topics/read | 读取主题 |
 > | 操作 | Microsoft.EventGrid/topics/delete | 删除主题 |
 > | 操作 | Microsoft.EventGrid/topics/listKeys/action | 列出主题的密钥 |
 > | 操作 | Microsoft.EventGrid/topics/regenerateKey/action | 重新生成主题的密钥 |
+> |  | **主题/privateEndpointConnectionProxies** |  |
+> | 操作 | EventGrid/主题/privateEndpointConnectionProxies/验证/操作 | 验证 PrivateEndpointConnectionProxies 的主题 |
+> | 操作 | EventGrid/主题/privateEndpointConnectionProxies/read | 阅读 PrivateEndpointConnectionProxies 主题 |
+> | 操作 | EventGrid/主题/privateEndpointConnectionProxies/write | 为主题编写 PrivateEndpointConnectionProxies |
+> | 操作 | EventGrid/主题/privateEndpointConnectionProxies/delete | 删除 PrivateEndpointConnectionProxies 主题 |
+> |  | **主题/privateEndpointConnections** |  |
+> | 操作 | EventGrid/主题/privateEndpointConnections/read | 阅读 PrivateEndpointConnections 主题 |
+> | 操作 | EventGrid/主题/privateEndpointConnections/write | 为主题编写 PrivateEndpointConnections |
+> | 操作 | EventGrid/主题/privateEndpointConnections/delete | 删除 PrivateEndpointConnections 主题 |
+> |  | **主题/privateLinkResources** |  |
+> | 操作 | EventGrid/主题/privateLinkResources/read | 阅读 PrivateLinkResources 主题 |
 > |  | **主题/提供者/diagnosticSettings/** |  |
 > | 操作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/read | 获取主题的诊断设置 |
 > | 操作 | Microsoft.EventGrid/topics/providers/Microsoft.Insights/diagnosticSettings/write | 创建或更新主题的诊断设置 |
@@ -4185,7 +4277,7 @@ Azure 服务：[事件网格](../event-grid/index.yml)
 Azure 服务：[事件中心](../event-hubs/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.EventHub/checkNamespaceAvailability/action | 检查给定订阅下的命名空间可用性。 已弃用此 API，请改用 CheckNameAvailability。 |
 > | 操作 | Microsoft.EventHub/checkNameAvailability/action | 检查给定订阅下的命名空间可用性。 |
@@ -4259,6 +4351,11 @@ Azure 服务：[事件中心](../event-hubs/index.yml)
 > | 操作 | Microsoft.EventHub/namespaces/networkrulesets/delete | 删除 VNET 规则资源 |
 > |  | **命名空间/operationresults** |  |
 > | 操作 | Microsoft.EventHub/namespaces/operationresults/read | 获取命名空间操作的状态 |
+> |  | **命名空间/privateEndpointConnectionProxies** |  |
+> | 操作 | Node.js/命名空间/privateEndpointConnectionProxies/验证/操作 | 验证专用终结点连接代理 |
+> | 操作 | Node.js/命名空间/privateEndpointConnectionProxies/读取 | 获取专用终结点连接代理 |
+> | 操作 | Node.js/命名空间/privateEndpointConnectionProxies/写入 | 创建专用终结点连接代理 |
+> | 操作 | PrivateEndpointConnectionProxies/命名空间/删除 | 删除专用终结点连接代理 |
 > |  | **命名空间/提供程序/diagnosticSettings/** |  |
 > | 操作 | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | 获取命名空间诊断设置资源说明列表 |
 > | 操作 | Microsoft.EventHub/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | 获取命名空间诊断设置资源说明列表 |
@@ -4285,7 +4382,7 @@ Azure 服务：[事件中心](../event-hubs/index.yml)
 Azure 服务： [azure 资源管理器](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Features/register/action | 注册某个订阅的功能。 |
 > |  | **features** |  |
@@ -4302,7 +4399,7 @@ Azure 服务： [azure 资源管理器](../azure-resource-manager/index.yml)
 Azure 服务： [Azure 策略](../governance/policy/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.GuestConfiguration/register/action | 注册 GuestConfiguration 资源提供程序的订阅。 |
 > |  | **guestConfigurationAssignments** |  |
@@ -4319,7 +4416,7 @@ Azure 服务： [Azure 策略](../governance/policy/index.yml)
 Azure 服务： [HDInsight](../hdinsight/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft HDInsight/注册/操作 | 为订阅注册 HDInsight 资源提供程序 |
 > | 操作 | Microsoft HDInsight/注销/操作 | 为订阅注销 HDInsight 资源提供程序 |
@@ -4358,7 +4455,7 @@ Azure 服务： [HDInsight](../hdinsight/index.yml)
 Azure 服务： [Azure Arc](../azure-arc/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | HybridCompute/注册/操作 | 注册 HybridCompute 资源提供程序的订阅 |
 > | 操作 | HybridCompute/注销/操作 | 取消注册 HybridCompute 资源提供程序的订阅 |
@@ -4381,7 +4478,7 @@ Azure 服务： [Azure Arc](../azure-arc/index.yml)
 Azure 服务： [Azure 导入/导出](../storage/common/storage-import-export-service.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ImportExport/register/action | 注册导入/导出资源提供程序的订阅，并启用导入/导出作业的创建。 |
 > |  | **jobs** |  |
@@ -4399,7 +4496,7 @@ Azure 服务： [Azure 导入/导出](../storage/common/storage-import-export-se
 Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Insights/Metrics/Action | 指标操作 |
 > | 操作 | Microsoft.Insights/Register/Action | 注册 Microsoft Insights 提供程序 |
@@ -4885,6 +4982,8 @@ Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 > | 操作 | Microsoft Insights/myWorkbooks/Read | 读取专用工作簿 |
 > |  | **操作** |  |
 > | 操作 | Microsoft.Insights/Operations/Read | 读取操作 |
+> |  | **PrivateLinkScopeOperationStatuses** |  |
+> | 操作 | Microsoft Insights/PrivateLinkScopeOperationStatuses/Read | 读取专用链接作用域操作状态 |
 > |  | **PrivateLinkScopes** |  |
 > | 操作 | Microsoft Insights/PrivateLinkScopes/Read | 读取专用链接范围 |
 > | 操作 | PrivateLinkScopes/写入 | 创建或更新专用链接范围 |
@@ -4934,7 +5033,7 @@ Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 Microsoft Monitoring Insights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > |  | **diagnosticsettings** |  |
 > | 操作 | Microsoft.Intune/diagnosticsettings/write | 写入诊断设置 |
@@ -4948,7 +5047,7 @@ Microsoft Monitoring Insights
 Azure 服务： [IoT Central](../iot-central/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.IoTCentral/checkNameAvailability/action | 检查 IoT Central 应用程序名称是否可用 |
 > | 操作 | Microsoft.IoTCentral/checkSubdomainAvailability/action | 检查 IoT Central 应用程序子域是否可用 |
@@ -4966,7 +5065,7 @@ Azure 服务： [IoT Central](../iot-central/index.yml)
 Azure 服务： [Azure 数字孪生](../digital-twins/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.IoTSpaces/register/action | 注册 Microsoft.IoTSpaces Graph 资源提供程序的订阅，以便能够创建资源 |
 > |  | **Graph** |  |
@@ -4979,7 +5078,7 @@ Azure 服务： [Azure 数字孪生](../digital-twins/index.yml)
 Azure 服务： [Key Vault](../key-vault/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.KeyVault/register/action | 注册订阅 |
 > | 操作 | Microsoft.KeyVault/unregister/action | 取消注册订阅 |
@@ -5063,7 +5162,7 @@ Azure 服务： [Key Vault](../key-vault/index.yml)
 Azure 服务： [azure 数据资源管理器](../data-explorer/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Kusto/注册/操作 | 订阅注册操作 |
 > | 操作 | Kusto/注册/操作 | 向 Kusto 资源提供程序注册订阅。 |
@@ -5131,7 +5230,7 @@ Azure 服务： [azure 数据资源管理器](../data-explorer/index.yml)
 Azure 服务： [Azure 实验室服务](../lab-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.LabServices/register/action | 注册订阅 |
 > |  | **labAccounts** |  |
@@ -5199,7 +5298,7 @@ Azure 服务： [Azure 实验室服务](../lab-services/index.yml)
 Azure 服务：[逻辑应用](../logic-apps/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Logic/register/action | 为给定的订阅注册 Microsoft.Logic 资源提供程序。 |
 > |  | **integrationAccounts** |  |
@@ -5351,7 +5450,7 @@ Azure 服务：[逻辑应用](../logic-apps/index.yml)
 Azure 服务：[机器学习 Studio](../machine-learning/studio/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.MachineLearning/register/action | 注册机器学习 Web 服务资源提供程序的订阅，并启用 Web 服务的创建。 |
 > | 操作 | Microsoft.MachineLearning/webServices/action | 为受支持的区域创建区域 Web 服务属性 |
@@ -5389,7 +5488,7 @@ Azure 服务：[机器学习 Studio](../machine-learning/studio/index.yml)
 Azure 服务：[机器学习服务](../machine-learning/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.MachineLearningServices/register/action | 注册机器学习服务资源提供程序的订阅。 |
 > |  | **机构** |  |
@@ -5538,7 +5637,7 @@ Azure 服务：[机器学习服务](../machine-learning/index.yml)
 Azure 服务： [azure 资源的托管标识](../active-directory/managed-identities-azure-resources/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ManagedIdentity/register/action | 注册托管标识资源提供程序的订阅 |
 > |  | **标识** |  |
@@ -5556,7 +5655,7 @@ Azure 服务： [azure 资源的托管标识](../active-directory/managed-identi
 Azure 服务： [Azure Lighthouse](../lighthouse/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | ManagedServices/注册/操作 | 注册到托管服务。 |
 > | 操作 | ManagedServices/注销/操作 | 从托管服务中取消注册。 |
@@ -5580,7 +5679,7 @@ Azure 服务： [Azure Lighthouse](../lighthouse/index.yml)
 Azure 服务：[管理组](../governance/management-groups/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Management/checkNameAvailability/action | 检查指定的管理组名称是否有效且唯一。 |
 > | 操作 | Microsoft.Management/getEntities/action | 列出已通过身份验证的用户的所有实体（管理组、订阅等）。 |
@@ -5604,7 +5703,7 @@ Azure 服务：[管理组](../governance/management-groups/index.yml)
 Azure 服务： [Azure Maps](../azure-maps/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Maps/register/action | 注册提供程序 |
 > |  | **帐户** |  |
@@ -5627,9 +5726,10 @@ Azure 服务： [Azure Maps](../azure-maps/index.yml)
 Azure 服务：核心
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Marketplace/register/action | 注册订阅中的 Microsoft.Marketplace 资源提供程序。 |
+> | 操作 | Microsoft Marketplace/privateStores/操作 | 更新 PrivateStore。 |
 > |  | **offerTypes/发布者/产品/服务/计划/协议** |  |
 > | 操作 | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/read | 返回一个协议。 |
 > | 操作 | Microsoft.Marketplace/offerTypes/publishers/offers/plans/agreements/write | 接受已签名的协议。 |
@@ -5637,13 +5737,20 @@ Azure 服务：核心
 > | 操作 | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/read | 返回配置。 |
 > | 操作 | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/write | 保存配置。 |
 > | 操作 | Microsoft.Marketplace/offerTypes/publishers/offers/plans/configs/importImage/action | 将映像导入到最终用户的 ACR。 |
+> |  | **privateStores** |  |
+> | 操作 | Microsoft Marketplace/privateStores/写入 | 创建 PrivateStore。 |
+> | 操作 | PrivateStores/删除 | 删除 PrivateStore。 |
+> | 操作 | Microsoft Marketplace/privateStores/产品/服务/操作 | PrivateStore 中的更新提议。 |
+> |  | **privateStores/产品/服务** |  |
+> | 操作 | Microsoft Marketplace/privateStores/产品/服务/写入 | 在 PrivateStore 中创建产品/服务。 |
+> | 操作 | Microsoft Marketplace/privateStores/产品/服务/删除 | 删除 PrivateStore 中的产品/服务。 |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
 Azure 服务：核心
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > |  | **ClassicDevServices** |  |
 > | 操作 | Microsoft.MarketplaceApps/ClassicDevServices/read | 对经典开发人员服务执行 GET 操作。 |
@@ -5659,7 +5766,7 @@ Azure 服务：核心
 Azure 服务：核心
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > |  | **保密协议** |  |
 > | 操作 | Microsoft.MarketplaceOrdering/agreements/read | 返回给定订阅下的所有协议 |
@@ -5678,7 +5785,7 @@ Azure 服务：核心
 Azure 服务：[媒体服务](../media-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Media/register/action | 注册媒体服务资源提供程序的订阅，并启用媒体服务帐户的创建 |
 > | 操作 | Microsoft.Media/unregister/action | 取消注册媒体服务资源提供程序的订阅 |
@@ -5763,7 +5870,7 @@ Azure 服务：[媒体服务](../media-services/index.yml)
 Azure 服务： [Azure Migrate](../migrate/migrate-services-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Migrate/register/action | 使用 Microsoft.Migrate 资源提供程序注册订阅 |
 > |  | **assessmentprojects** |  |
@@ -5856,7 +5963,7 @@ Azure 服务： [Azure Migrate](../migrate/migrate-services-overview.md)
 Azure 服务： [Azure 空间锚](../spatial-anchors/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | MixedReality/注册/操作 | 注册混合现实资源提供程序的订阅。 |
 > |  | **remoteRenderingAccounts/providers/metricDefinitions/** |  |
@@ -5897,7 +6004,7 @@ Azure 服务： [Azure 空间锚](../spatial-anchors/index.yml)
 Azure 服务： [Azure NetApp 文件](../azure-netapp-files/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft-NetApp/注册/操作 | 订阅注册操作 |
 > | 操作 | Microsoft-NetApp/注销/操作 | 取消注册与 Microsoft 的资源提供程序的订阅 |
@@ -5956,7 +6063,7 @@ Azure 服务： [Azure NetApp 文件](../azure-netapp-files/index.yml)
 Azure 服务：[虚拟网络](../virtual-network/index.yml)，[负载平衡器](../load-balancer/index.yml)，[应用程序网关](../application-gateway/index.yml)， [Azure DNS](../dns/index.yml)， [ExpressRoute](../expressroute/index.yml)， [VPN 网关](../vpn-gateway/index.yml)，[流量管理器](../traffic-manager/index.yml)，[网络观察](../network-watcher/index.yml)程序， [azure 防火墙](../firewall/index.yml) [azure 前门服务](../frontdoor/index.yml)， [azure 堡垒](../bastion/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Network/register/action | 注册订阅 |
 > | 操作 | Microsoft.Network/unregister/action | 取消注册订阅 |
@@ -5988,6 +6095,10 @@ Azure 服务：[虚拟网络](../virtual-network/index.yml)，[负载平衡器](
 > | 操作 | ApplicationGatewayWebApplicationFirewallPolicies/read | 获取应用程序网关 WAF 策略 |
 > | 操作 | ApplicationGatewayWebApplicationFirewallPolicies/write | 创建应用程序网关 WAF 策略，或更新应用程序网关 WAF 策略 |
 > | 操作 | ApplicationGatewayWebApplicationFirewallPolicies/删除 | 删除应用程序网关 WAF 策略 |
+> |  | **applicationRuleCollections** |  |
+> | 操作 | ApplicationRuleCollections/read | 获取 Azure 防火墙 ApplicationRuleCollection |
+> | 操作 | ApplicationRuleCollections/write | CreatesOrUpdates Azure 防火墙 ApplicationRuleCollection |
+> | 操作 | ApplicationRuleCollections/删除 | 删除 Azure 防火墙 ApplicationRuleCollection |
 > |  | **applicationSecurityGroups** |  |
 > | 操作 | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action | 将 IP 配置加入到应用程序安全组中。 Not 可报警。 |
 > | 操作 | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | 将安全规则加入到应用程序安全组中。 Not 可报警。 |
@@ -6042,48 +6153,48 @@ Azure 服务：[虚拟网络](../virtual-network/index.yml)，[负载平衡器](
 > | 操作 | Microsoft.Network/dnszones/write | 在资源组中创建或更新 DNS 区域。  用于更新 DNS 区域资源上的标记。 请注意，无法使用此命令在区域中创建或更新记录集。 |
 > | 操作 | Microsoft.Network/dnszones/delete | 删除 JSON 格式的 DNS 区域。 区域属性包括 tags、etag、numberOfRecordSets 和 maxNumberOfRecordSets。 |
 > |  | **dnszones/A** |  |
-> | 操作 | Microsoft.Network/dnszones/A/read | 获取 JSON 格式的、“A”类型的记录集。 记录集包含记录列表以及 TTL、标记和 etag。 |
-> | 操作 | Microsoft.Network/dnszones/A/write | 在 DNS 区域中创建或更新“A”类型的记录集。 指定的记录将替换记录集中的当前记录。 |
-> | 操作 | Microsoft.Network/dnszones/A/delete | 从 DNS 区域中删除具有给定名称的、类型为“A”的记录集。 |
+> | 操作 | Microsoft.Network/dnszones/A/read | 获取 JSON 格式的类型为 "A" 的记录集。 记录集包含记录列表以及 TTL、标记和 etag。 |
+> | 操作 | Microsoft.Network/dnszones/A/write | 在 DNS 区域中创建或更新 "A" 类型的记录集。 指定的记录将替换记录集中的当前记录。 |
+> | 操作 | Microsoft.Network/dnszones/A/delete | 从 DNS 区域中删除具有给定名称的、类型为 "A" 的记录集。 |
 > |  | **dnszones/AAAA** |  |
-> | 操作 | Microsoft.Network/dnszones/AAAA/read | 获取 JSON 格式的、“AAAA”类型的记录集。 记录集包含记录列表以及 TTL、标记和 etag。 |
-> | 操作 | Microsoft.Network/dnszones/AAAA/write | 在 DNS 区域中创建或更新“AAAA”类型的记录集。 指定的记录将替换记录集中的当前记录。 |
-> | 操作 | Microsoft.Network/dnszones/AAAA/delete | 从 DNS 区域中删除具有给定名称的、类型为“AAAA”的记录集。 |
+> | 操作 | Microsoft.Network/dnszones/AAAA/read | 获取 JSON 格式的、"AAAA" 类型的记录集。 记录集包含记录列表以及 TTL、标记和 etag。 |
+> | 操作 | Microsoft.Network/dnszones/AAAA/write | 在 DNS 区域中创建或更新 "AAAA" 类型的记录集。 指定的记录将替换记录集中的当前记录。 |
+> | 操作 | Microsoft.Network/dnszones/AAAA/delete | 从 DNS 区域中删除具有给定名称的、类型为 "AAAA" 的记录集。 |
 > |  | **dnszones/所有** |  |
 > | 操作 | Microsoft.Network/dnszones/all/read | 获取各种类型的 DNS 记录集 |
 > |  | **dnszones/CAA** |  |
-> | 操作 | Microsoft.Network/dnszones/CAA/read | 获取 JSON 格式的、“CAA”类型的记录集。 记录集包含 TTL、标记和 etag。 |
-> | 操作 | Microsoft.Network/dnszones/CAA/write | 在 DNS 区域中创建或更新“CAA”类型的记录集。 指定的记录将替换记录集中的当前记录。 |
-> | 操作 | Microsoft.Network/dnszones/CAA/delete | 从 DNS 区域中删除具有给定名称的、类型为“CAA”的记录集。 |
+> | 操作 | Microsoft.Network/dnszones/CAA/read | 获取 JSON 格式的 "CAA" 类型的记录集。 记录集包含 TTL、标记和 etag。 |
+> | 操作 | Microsoft.Network/dnszones/CAA/write | 在 DNS 区域中创建或更新 "CAA" 类型的记录集。 指定的记录将替换记录集中的当前记录。 |
+> | 操作 | Microsoft.Network/dnszones/CAA/delete | 从 DNS 区域中删除具有给定名称的、类型为 "CAA" 的记录集。 |
 > |  | **dnszones/CNAME** |  |
-> | 操作 | Microsoft.Network/dnszones/CNAME/read | 获取 JSON 格式的、“CNAME”类型的记录集。 记录集包含 TTL、标记和 etag。 |
-> | 操作 | Microsoft.Network/dnszones/CNAME/write | 在 DNS 区域中创建或更新“CNAME”类型的记录集。 指定的记录将替换记录集中的当前记录。 |
-> | 操作 | Microsoft.Network/dnszones/CNAME/delete | 从 DNS 区域中删除具有给定名称的、类型为“CNAME”的记录集。 |
+> | 操作 | Microsoft.Network/dnszones/CNAME/read | 获取 JSON 格式的、"CNAME" 类型的记录集。 记录集包含 TTL、标记和 etag。 |
+> | 操作 | Microsoft.Network/dnszones/CNAME/write | 在 DNS 区域中创建或更新 "CNAME" 类型的记录集。 指定的记录将替换记录集中的当前记录。 |
+> | 操作 | Microsoft.Network/dnszones/CNAME/delete | 从 DNS 区域中删除具有给定名称的、类型为 "CNAME" 的记录集。 |
 > |  | **dnszones/MX** |  |
-> | 操作 | Microsoft.Network/dnszones/MX/read | 获取 JSON 格式的、“MX”类型的记录集。 记录集包含记录列表以及 TTL、标记和 etag。 |
-> | 操作 | Microsoft.Network/dnszones/MX/write | 在 DNS 区域中创建或更新“MX”类型的记录集。 指定的记录将替换记录集中的当前记录。 |
-> | 操作 | Microsoft.Network/dnszones/MX/delete | 从 DNS 区域中删除具有给定名称的、类型为“MX”的记录集。 |
+> | 操作 | Microsoft.Network/dnszones/MX/read | 获取 JSON 格式的、"MX" 类型的记录集。 记录集包含记录列表以及 TTL、标记和 etag。 |
+> | 操作 | Microsoft.Network/dnszones/MX/write | 在 DNS 区域中创建或更新 "MX" 类型的记录集。 指定的记录将替换记录集中的当前记录。 |
+> | 操作 | Microsoft.Network/dnszones/MX/delete | 从 DNS 区域中删除具有给定名称的、类型为 "MX" 的记录集。 |
 > |  | **dnszones/NS** |  |
 > | 操作 | Microsoft.Network/dnszones/NS/read | 获取 NS 类型的 DNS 记录集 |
 > | 操作 | Microsoft.Network/dnszones/NS/write | 创建或更新 NS 类型的 DNS 记录集 |
 > | 操作 | Microsoft.Network/dnszones/NS/delete | 删除 NS 类型的 DNS 记录集 |
 > |  | **dnszones/PTR** |  |
-> | 操作 | Microsoft.Network/dnszones/PTR/read | 获取 JSON 格式的、“PTR”类型的记录集。 记录集包含记录列表以及 TTL、标记和 etag。 |
-> | 操作 | Microsoft.Network/dnszones/PTR/write | 在 DNS 区域中创建或更新“PTR”类型的记录集。 指定的记录将替换记录集中的当前记录。 |
-> | 操作 | Microsoft.Network/dnszones/PTR/delete | 从 DNS 区域中删除具有给定名称的、类型为“PTR”的记录集。 |
+> | 操作 | Microsoft.Network/dnszones/PTR/read | 获取 JSON 格式的 "PTR" 类型的记录集。 记录集包含记录列表以及 TTL、标记和 etag。 |
+> | 操作 | Microsoft.Network/dnszones/PTR/write | 在 DNS 区域中创建或更新 "PTR" 类型的记录集。 指定的记录将替换记录集中的当前记录。 |
+> | 操作 | Microsoft.Network/dnszones/PTR/delete | 从 DNS 区域中删除具有给定名称和类型 "PTR" 的记录集。 |
 > |  | **dnszones/记录集** |  |
 > | 操作 | Microsoft.Network/dnszones/recordsets/read | 获取各种类型的 DNS 记录集 |
 > |  | **dnszones/SOA** |  |
 > | 操作 | Microsoft.Network/dnszones/SOA/read | 获取 SOA 类型的 DNS 记录集 |
 > | 操作 | Microsoft.Network/dnszones/SOA/write | 创建或更新 SOA 类型的 DNS 记录集 |
 > |  | **dnszones/SRV** |  |
-> | 操作 | Microsoft.Network/dnszones/SRV/read | 获取 JSON 格式的、“SRV”类型的记录集。 记录集包含记录列表以及 TTL、标记和 etag。 |
+> | 操作 | Microsoft.Network/dnszones/SRV/read | 获取 JSON 格式的、"SRV" 类型的记录集。 记录集包含记录列表以及 TTL、标记和 etag。 |
 > | 操作 | Microsoft.Network/dnszones/SRV/write | 创建或更新 SRV 类型的记录集 |
-> | 操作 | Microsoft.Network/dnszones/SRV/delete | 从 DNS 区域中删除具有给定名称的、类型为“SRV”的记录集。 |
+> | 操作 | Microsoft.Network/dnszones/SRV/delete | 从 DNS 区域中删除具有给定名称的、类型为 "SRV" 的记录集。 |
 > |  | **dnszones/TXT** |  |
-> | 操作 | Microsoft.Network/dnszones/TXT/read | 获取 JSON 格式的、“TXT”类型的记录集。 记录集包含记录列表以及 TTL、标记和 etag。 |
-> | 操作 | Microsoft.Network/dnszones/TXT/write | 在 DNS 区域中创建或更新“TXT”类型的记录集。 指定的记录将替换记录集中的当前记录。 |
-> | 操作 | Microsoft.Network/dnszones/TXT/delete | 从 DNS 区域中删除具有给定名称的、类型为“TXT”的记录集。 |
+> | 操作 | Microsoft.Network/dnszones/TXT/read | 获取 JSON 格式的 "TXT" 类型的记录集。 记录集包含记录列表以及 TTL、标记和 etag。 |
+> | 操作 | Microsoft.Network/dnszones/TXT/write | 在 DNS 区域中创建或更新 "TXT" 类型的记录集。 指定的记录将替换记录集中的当前记录。 |
+> | 操作 | Microsoft.Network/dnszones/TXT/delete | 从 DNS 区域中删除具有给定名称和类型 "TXT" 的记录集。 |
 > |  | **expressRouteCircuits** |  |
 > | 操作 | Microsoft.Network/expressRouteCircuits/read | 获取 ExpressRouteCircuit |
 > | 操作 | Microsoft.Network/expressRouteCircuits/write | 创建新的或更新现有的 ExpressRouteCircuit |
@@ -6259,6 +6370,22 @@ Azure 服务：[虚拟网络](../virtual-network/index.yml)，[负载平衡器](
 > | 操作 | Microsoft.Network/locations/usages/read | 获取资源用量指标 |
 > |  | **位置/virtualNetworkAvailableEndpointServices** |  |
 > | 操作 | Microsoft.Network/locations/virtualNetworkAvailableEndpointServices/read | 获取可用虚拟网络终结点服务的列表 |
+> |  | **natRuleCollections** |  |
+> | 操作 | NatRuleCollections/read | 获取 Azure 防火墙 NatRuleCollection |
+> | 操作 | NatRuleCollections/write | CreatesOrUpdates Azure 防火墙 NatRuleCollection |
+> | 操作 | NatRuleCollections/删除 | 删除 Azure 防火墙 NatRuleCollection |
+> |  | **networkExperimentProfiles** |  |
+> | 操作 | NetworkExperimentProfiles/read | 获取 Internet 分析器配置文件 |
+> | 操作 | NetworkExperimentProfiles/write | 创建或更新 Internet 分析器配置文件 |
+> | 操作 | NetworkExperimentProfiles/删除 | 删除 Internet 分析器配置文件 |
+> |  | **networkExperimentProfiles/试验** |  |
+> | 操作 | NetworkExperimentProfiles/试验/读取 | 获取 Internet 分析器测试 |
+> | 操作 | NetworkExperimentProfiles/试验/写入 | 创建或更新 Internet 分析器测试 |
+> | 操作 | NetworkExperimentProfiles/试验/删除 | 删除 Internet 分析器测试 |
+> | 操作 | NetworkExperimentProfiles/timeseries/action | 获取 Internet 分析器测试的时序 |
+> | 操作 | NetworkExperimentProfiles/latencyScorecard/action | 获取 Internet 分析器测试的延迟记分卡 |
+> |  | **networkExperimentProfiles/preconfiguredEndpoints** |  |
+> | 操作 | NetworkExperimentProfiles/preconfiguredEndpoints/read | 获取 Internet 分析器配置文件的预配置终结点 |
 > |  | **networkIntentPolicies** |  |
 > | 操作 | Microsoft.Network/networkIntentPolicies/read | 获取网络意向策略说明 |
 > | 操作 | Microsoft.Network/networkIntentPolicies/write | 创建网络意向策略或更新现有网络意向策略 |
@@ -6287,6 +6414,10 @@ Azure 服务：[虚拟网络](../virtual-network/index.yml)，[负载平衡器](
 > | 操作 | Microsoft.Network/networkProfiles/setContainers/action | 设置容器 |
 > | 操作 | Microsoft.Network/networkProfiles/removeContainers/action | 删除容器 |
 > | 操作 | Microsoft.Network/networkProfiles/setNetworkInterfaces/action | 设置容器网络接口 |
+> |  | **networkRuleCollections** |  |
+> | 操作 | NetworkRuleCollections/read | 获取 Azure 防火墙 NetworkRuleCollection |
+> | 操作 | NetworkRuleCollections/write | CreatesOrUpdates Azure 防火墙 NetworkRuleCollection |
+> | 操作 | NetworkRuleCollections/删除 | 删除 Azure 防火墙 NetworkRuleCollection |
 > |  | **networkSecurityGroups** |  |
 > | 操作 | Microsoft.Network/networkSecurityGroups/read | 获取网络安全组定义 |
 > | 操作 | Microsoft.Network/networkSecurityGroups/write | 创建网络安全组，或更新现有的网络安全组 |
@@ -6608,7 +6739,7 @@ Azure 服务：[虚拟网络](../virtual-network/index.yml)，[负载平衡器](
 Azure 服务：[通知中心](../notification-hubs/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.NotificationHubs/register/action | 注册 NotificationHubs 资源提供程序的订阅，并启用命名空间和 NotificationHubs 的创建 |
 > | 操作 | Microsoft.NotificationHubs/unregister/action | 取消注册 NotificationHubs 资源提供程序的订阅，并启用命名空间和 NotificationHubs 的创建 |
@@ -6650,7 +6781,7 @@ Azure 服务：[通知中心](../notification-hubs/index.yml)
 Azure 服务： [Azure Migrate](../migrate/migrate-services-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.OffAzure/register/action | 使用 Microsoft.OffAzure 资源提供程序注册订阅 |
 > | 操作 | Microsoft.OffAzure/register/action | 使用 Microsoft.OffAzure 资源提供程序注册订阅 |
@@ -6922,7 +7053,7 @@ Azure 服务： [Azure Migrate](../migrate/migrate-services-overview.md)
 Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.OperationalInsights/register/action | 将订阅注册到资源提供程序。 |
 > | 操作 | microsoft.operationalinsights/register/action | Rergisters 订阅。 |
@@ -7030,6 +7161,18 @@ Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/ADFActivityRun/read | 从 ADFActivityRun 表中读取数据 |
 > |  | **workspace/query/ADFPipelineRun** |  |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/ADFPipelineRun/read | 从 ADFPipelineRun 表中读取数据 |
+> |  | **workspace/query/ADFSSISIntegrationRuntimeLogs** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/ADFSSISIntegrationRuntimeLogs/读取 | 从 ADFSSISIntegrationRuntimeLogs 表中读取数据 |
+> |  | **workspace/query/ADFSSISPackageEventMessageContext** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/ADFSSISPackageEventMessageContext/读取 | 从 ADFSSISPackageEventMessageContext 表中读取数据 |
+> |  | **workspace/query/ADFSSISPackageEventMessages** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/ADFSSISPackageEventMessages/读取 | 从 ADFSSISPackageEventMessages 表中读取数据 |
+> |  | **workspace/query/ADFSSISPackageExecutableStatistics** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/ADFSSISPackageExecutableStatistics/读取 | 从 ADFSSISPackageExecutableStatistics 表中读取数据 |
+> |  | **workspace/query/ADFSSISPackageExecutionComponentPhases** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/ADFSSISPackageExecutionComponentPhases/读取 | 从 ADFSSISPackageExecutionComponentPhases 表中读取数据 |
+> |  | **workspace/query/ADFSSISPackageExecutionDataStatistics** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/ADFSSISPackageExecutionDataStatistics/读取 | 从 ADFSSISPackageExecutionDataStatistics 表中读取数据 |
 > |  | **workspace/query/ADFTriggerRun** |  |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/ADFTriggerRun/read | 从 ADFTriggerRun 表中读取数据 |
 > |  | **workspace/query/ADReplicationResult** |  |
@@ -7052,14 +7195,30 @@ Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 > | 操作 | Microsoft.operationalinsights/工作区/查询/AmlComputeJobEvent/读取 | 从 AmlComputeJobEvent 表中读取数据 |
 > |  | **workspace/query/ApiManagementGatewayLogs** |  |
 > | 操作 | Microsoft.operationalinsights/工作区/查询/ApiManagementGatewayLogs/读取 | 从 ApiManagementGatewayLogs 表中读取数据 |
+> |  | **workspace/query/AppAvailabilityResults** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/AppAvailabilityResults/读取 | 从 AppAvailabilityResults 表中读取数据 |
+> |  | **workspace/query/AppBrowserTimings** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/AppBrowserTimings/读取 | 从 AppBrowserTimings 表中读取数据 |
 > |  | **workspace/query/AppCenterError** |  |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AppCenterError/read | 从 AppCenterError 表读取数据 |
+> |  | **workspace/query/AppDependencies** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/AppDependencies/读取 | 从 AppDependencies 表中读取数据 |
+> |  | **workspace/query/AppEvents** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/AppEvents/读取 | 从 AppEvents 表中读取数据 |
 > |  | **workspace/query/Applicationinsights.config** |  |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/ApplicationInsights/read | 从 ApplicationInsights 表读取数据 |
+> |  | **workspace/query/AppMetrics** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/AppMetrics/读取 | 从 AppMetrics 表中读取数据 |
+> |  | **workspace/query/AppPageViews** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/AppPageViews/读取 | 从 AppPageViews 表中读取数据 |
+> |  | **workspace/query/AppPerformanceCounters** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/AppPerformanceCounters/读取 | 从 AppPerformanceCounters 表中读取数据 |
 > |  | **workspace/query/AppPlatformLogsforSpring** |  |
 > | 操作 | Microsoft.operationalinsights/工作区/查询/AppPlatformLogsforSpring/读取 | 从 AppPlatformLogsforSpring 表中读取数据 |
 > |  | **workspace/query/AppPlatformSystemLogs** |  |
 > | 操作 | Microsoft.operationalinsights/工作区/查询/AppPlatformSystemLogs/读取 | 从 AppPlatformSystemLogs 表中读取数据 |
+> |  | **workspace/query/AppRequests** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/AppRequests/读取 | 从 AppRequests 表中读取数据 |
 > |  | **workspace/query/AppServiceAppLogs** |  |
 > | 操作 | Microsoft.operationalinsights/工作区/查询/AppServiceAppLogs/读取 | 从 AppServiceAppLogs 表中读取数据 |
 > |  | **workspace/query/AppServiceAuditLogs** |  |
@@ -7072,6 +7231,10 @@ Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 > | 操作 | Microsoft.operationalinsights/工作区/查询/AppServiceFileAuditLogs/读取 | 从 AppServiceFileAuditLogs 表中读取数据 |
 > |  | **workspace/query/AppServiceHTTPLogs** |  |
 > | 操作 | Microsoft.operationalinsights/工作区/查询/AppServiceHTTPLogs/读取 | 从 AppServiceHTTPLogs 表中读取数据 |
+> |  | **workspace/query/AppSystemEvents** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/AppSystemEvents/读取 | 从 AppSystemEvents 表中读取数据 |
+> |  | **workspace/query/AppTraces** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/AppTraces/读取 | 从 AppTraces 表中读取数据 |
 > |  | **workspace/query/AuditLogs** |  |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AuditLogs/read | 从 AuditLogs 表读取数据 |
 > |  | **workspace/query/AutoscaleEvaluationsLog** |  |
@@ -7086,6 +7249,8 @@ Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AzureActivity/read | 从 AzureActivity 表读取数据 |
 > |  | **workspace/query/AzureAssessmentRecommendation** |  |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AzureAssessmentRecommendation/read | 从 AzureAssessmentRecommendation 表中读取数据 |
+> |  | **workspace/query/AzureDiagnostics** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/AzureDiagnostics/读取 | 从 AzureDiagnostics 表中读取数据 |
 > |  | **workspace/query/AzureMetrics** |  |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/AzureMetrics/read | 从 AzureMetrics 表读取数据 |
 > |  | **workspace/query/BaiClusterEvent** |  |
@@ -7424,6 +7589,8 @@ Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/SPAssessmentRecommendation/read | 从 SPAssessmentRecommendation 表读取数据 |
 > |  | **workspace/query/SQLAssessmentRecommendation** |  |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/SQLAssessmentRecommendation/read | 从 SQLAssessmentRecommendation 表读取数据 |
+> |  | **workspace/query/SqlDataClassification** |  |
+> | 操作 | Microsoft.operationalinsights/工作区/查询/SqlDataClassification/读取 | 从 SqlDataClassification 表中读取数据 |
 > |  | **workspace/query/SQLQueryPerformance** |  |
 > | 操作 | Microsoft.OperationalInsights/workspaces/query/SQLQueryPerformance/read | 从 SQLQueryPerformance 表读取数据 |
 > |  | **workspace/query/SqlThreatProtectionLoginAudits** |  |
@@ -7560,7 +7727,7 @@ Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.OperationsManagement/register/action | 将订阅注册到资源提供程序。 |
 > |  | **managementAssociations** |  |
@@ -7581,7 +7748,7 @@ Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 Azure 服务： [Azure 策略](../governance/policy/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.PolicyInsights/register/action | 注册 Microsoft Policy Insights 资源提供程序，并对其启用操作。 |
 > | 操作 | Microsoft.PolicyInsights/unregister/action | 取消注册 Microsoft Policy Insights 资源提供程序。 |
@@ -7621,7 +7788,7 @@ Azure 服务： [Azure 策略](../governance/policy/index.yml)
 Azure 服务： [Azure 门户](../azure-portal/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Portal/register/action | 注册到门户 |
 > |  | **控制台** |  |
@@ -7642,7 +7809,7 @@ Azure 服务： [Azure 门户](../azure-portal/index.yml)
 Azure 服务： [Power BI Embedded](https://docs.microsoft.com/azure/power-bi-embedded/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.PowerBIDedicated/register/action | 注册 Power BI 专用资源提供程序。 |
 > |  | **容量** |  |
@@ -7669,7 +7836,7 @@ Azure 服务： [Power BI Embedded](https://docs.microsoft.com/azure/power-bi-em
 Azure 服务： [Site Recovery](../site-recovery/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.RecoveryServices/register/action | 注册给定资源提供程序的订阅 |
 > |  | **位置** |  |
@@ -7784,6 +7951,21 @@ Azure 服务： [Site Recovery](../site-recovery/index.yml)
 > |  | **保管库/monitoringConfigurations** |  |
 > | 操作 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/read | 获取恢复服务保管库通知配置。 |
 > | 操作 | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/write | 配置到恢复服务保管库的电子邮件通知。 |
+> |  | **保管库/privateEndpointConnectionProxies** |  |
+> | 操作 | microsoft.recoveryservices/保管库/privateEndpointConnectionProxies/delete | 获取所有可保护的容器 |
+> | 操作 | microsoft.recoveryservices/保管库/privateEndpointConnectionProxies/read | 获取所有可保护的容器 |
+> | 操作 | microsoft.recoveryservices/保管库/privateEndpointConnectionProxies/验证/操作 | 获取所有可保护的容器 |
+> | 操作 | microsoft.recoveryservices/保管库/privateEndpointConnectionProxies/write | 获取所有可保护的容器 |
+> |  | **保管库/privateEndpointConnectionProxies/operationResults** |  |
+> | 操作 | microsoft.recoveryservices/保管库/privateEndpointConnectionProxies/operationResults/read | 获取所有可保护的容器 |
+> |  | **保管库/privateEndpointConnectionProxies/operationsStatus** |  |
+> | 操作 | microsoft.recoveryservices/保管库/privateEndpointConnectionProxies/operationsStatus/read | 获取所有可保护的容器 |
+> |  | **保管库/privateEndpointConnections** |  |
+> | 操作 | microsoft.recoveryservices/保管库/privateEndpointConnections/write | 获取所有可保护的容器 |
+> |  | **保管库/privateEndpointConnections/operationResults** |  |
+> | 操作 | microsoft.recoveryservices/保管库/privateEndpointConnections/operationResults/read | 获取所有可保护的容器 |
+> |  | **保管库/privateEndpointConnections/operationsStatus** |  |
+> | 操作 | microsoft.recoveryservices/保管库/privateEndpointConnections/operationsStatus/read | 获取所有可保护的容器 |
 > |  | **保管库/registeredIdentities** |  |
 > | 操作 | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | “注册服务容器”操作可用于向恢复服务注册容器。 |
 > | 操作 | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | “获取容器”操作可用于获取针对资源注册的容器。 |
@@ -7842,7 +8024,7 @@ Azure 服务： [Site Recovery](../site-recovery/index.yml)
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/write | 创建或更新任何受保护的项 |
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/delete | 删除任何受保护的项 |
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/remove/action | 删除受保护的项 |
-> | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | 计划的故障转移 |
+> | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | 计划内故障转移 |
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/action | 故障转移 |
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/action | 测试故障转移 |
 > | 操作 | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | 测试故障转移清理 |
@@ -7960,7 +8142,7 @@ Azure 服务： [Site Recovery](../site-recovery/index.yml)
 Azure 服务： [Azure 中继](../service-bus-relay/relay-what-is-it.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Relay/checkNamespaceAvailability/action | 检查给定订阅下的命名空间可用性。 已弃用此 API，请改用 CheckNameAvailability。 |
 > | 操作 | Microsoft.Relay/checkNameAvailability/action | 检查给定订阅下的命名空间可用性。 |
@@ -8008,6 +8190,11 @@ Azure 服务： [Azure 中继](../service-bus-relay/relay-what-is-it.md)
 > | 操作 | Microsoft networkrulesets/命名空间/删除 | 删除 VNET 规则资源 |
 > |  | **命名空间/operationresults** |  |
 > | 操作 | Microsoft.Relay/namespaces/operationresults/read | 获取命名空间操作的状态 |
+> |  | **命名空间/privateEndpointConnectionProxies** |  |
+> | 操作 | Microsoft. 中继/命名空间/privateEndpointConnectionProxies/验证/操作 | 验证专用终结点连接代理 |
+> | 操作 | Microsoft. 中继/命名空间/privateEndpointConnectionProxies/读取 | 获取专用终结点连接代理 |
+> | 操作 | Microsoft. 中继/命名空间/privateEndpointConnectionProxies/写入 | 创建专用终结点连接代理 |
+> | 操作 | Microsoft privateEndpointConnectionProxies/命名空间/删除 | 删除专用终结点连接代理 |
 > |  | **命名空间/提供程序/diagnosticSettings/** |  |
 > | 操作 | Microsoft. 中继/命名空间/提供程序/diagnosticSettings/读取 | 获取命名空间诊断设置资源说明列表 |
 > | 操作 | Microsoft. 中继/命名空间/提供程序/diagnosticSettings/写入 | 获取命名空间诊断设置资源说明列表 |
@@ -8034,7 +8221,7 @@ Azure 服务： [Azure 中继](../service-bus-relay/relay-what-is-it.md)
 Azure 服务： [Azure 服务运行状况](../service-health/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ResourceHealth/register/action | 注册 Microsoft ResourceHealth 的订阅 |
 > | 操作 | Microsoft.ResourceHealth/unregister/action | 取消注册 Microsoft ResourceHealth 的订阅 |
@@ -8043,6 +8230,8 @@ Azure 服务： [Azure 服务运行状况](../service-health/index.yml)
 > | 操作 | Microsoft.ResourceHealth/AvailabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
 > |  | **AvailabilityStatuses/当前** |  |
 > | 操作 | Microsoft.ResourceHealth/AvailabilityStatuses/current/read | 获取指定资源的可用性状态 |
+> |  | **emergingissues** |  |
+> | 操作 | ResourceHealth/emergingissues/read | 获取 Azure 服务的新兴问题 |
 > |  | **events** |  |
 > | 操作 | Microsoft.ResourceHealth/events/read | 获取给定订阅的服务运行状况事件 |
 > |  | **healthevent** |  |
@@ -8065,7 +8254,7 @@ Azure 服务： [Azure 服务运行状况](../service-health/index.yml)
 Azure 服务： [azure 资源管理器](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Resources/checkResourceName/action | 检查资源名称的有效性。 |
 > | 操作 | CalculateTemplateHash/操作 | 计算所提供模板的哈希值。 |
@@ -8144,7 +8333,7 @@ Azure 服务： [azure 资源管理器](../azure-resource-manager/index.yml)
 Azure 服务：[计划程序](../scheduler/index.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > |  | **免费** |  |
 > | 操作 | Microsoft.Scheduler/jobcollections/read | 获取作业集合 |
@@ -8166,7 +8355,7 @@ Azure 服务：[计划程序](../scheduler/index.md)
 Azure 服务： [Azure 搜索](../search/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Search/register/action | 注册搜索资源提供程序的订阅，并启用搜索服务的创建。 |
 > | 操作 | Microsoft.Search/checkNameAvailability/action | 检查服务名称的可用性。 |
@@ -8195,7 +8384,7 @@ Azure 服务： [Azure 搜索](../search/index.yml)
 Azure 服务：[安全中心](../security-center/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Security/register/action | 注册 Azure 安全中心的订阅 |
 > | 操作 | Microsoft.Security/unregister/action | 从 Azure 安全中心取消注册订阅 |
@@ -8216,6 +8405,9 @@ Azure 服务：[安全中心](../security-center/index.yml)
 > |  | **风险** |  |
 > | 操作 | Microsoft. Security/评估/读 | 获取订阅的安全评估 |
 > | 操作 | Microsoft 安全/评估/写入 | 在订阅上创建或更新安全评估 |
+> |  | **autoProvisioningSettings** |  |
+> | 操作 | Microsoft. Security/autoProvisioningSettings/read | 获取订阅的安全自动预配设置 |
+> | 操作 | Microsoft. Security/autoProvisioningSettings/write | 为订阅创建或更新安全自动预配设置 |
 > |  | **complianceResults** |  |
 > | 操作 | Microsoft.Security/complianceResults/read | 获取资源的符合性结果 |
 > |  | **informationProtectionPolicies** |  |
@@ -8279,7 +8471,7 @@ Azure 服务：[安全中心](../security-center/index.yml)
 Microsoft Monitoring Insights
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > |  | **diagnosticsettings** |  |
 > | 操作 | Microsoft.SecurityGraph/diagnosticsettings/write | 写入诊断设置 |
@@ -8293,7 +8485,7 @@ Microsoft Monitoring Insights
 Azure 服务： [Azure Sentinel](../sentinel/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | SecurityInsights/注册/操作 | 将订阅注册到 Azure Sentinel |
 > | 操作 | SecurityInsights/注销/操作 | 从 Azure Sentinel 取消注册订阅 |
@@ -8346,7 +8538,7 @@ Azure 服务： [Azure Sentinel](../sentinel/index.yml)
 Azure 服务：[服务总线](../service-bus/index.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ServiceBus/checkNamespaceAvailability/action | 检查给定订阅下的命名空间可用性。 已弃用此 API，请改用 CheckNameAvailability。 |
 > | 操作 | Microsoft.ServiceBus/checkNameAvailability/action | 检查给定订阅下的命名空间可用性。 |
@@ -8406,6 +8598,11 @@ Azure 服务：[服务总线](../service-bus/index.md)
 > | 操作 | Microsoft.ServiceBus/namespaces/networkrulesets/delete | 删除 VNET 规则资源 |
 > |  | **命名空间/operationresults** |  |
 > | 操作 | Microsoft.ServiceBus/namespaces/operationresults/read | 获取命名空间操作的状态 |
+> |  | **命名空间/privateEndpointConnectionProxies** |  |
+> | 操作 | Microsoft. 验证/命名空间/privateEndpointConnectionProxies/验证/操作 | 验证专用终结点连接代理 |
+> | 操作 | PrivateEndpointConnectionProxies/命名空间/已读 | 获取专用终结点连接代理 |
+> | 操作 | PrivateEndpointConnectionProxies/命名空间/写入 | 创建专用终结点连接代理 |
+> | 操作 | PrivateEndpointConnectionProxies/命名空间/删除 | 删除专用终结点连接代理 |
 > |  | **命名空间/提供程序/diagnosticSettings/** |  |
 > | 操作 | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | 获取命名空间诊断设置资源说明列表 |
 > | 操作 | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | 获取命名空间诊断设置资源说明列表 |
@@ -8462,7 +8659,7 @@ Azure 服务：[服务总线](../service-bus/index.md)
 Azure 服务： [Service Fabric](../service-fabric/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.ServiceFabric/register/action | 注册任何操作 |
 > |  | **坏** |  |
@@ -8511,7 +8708,7 @@ Azure 服务： [Service Fabric](../service-fabric/index.yml)
 Azure 服务： [Azure SignalR 服务](../azure-signalr/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.SignalRService/register/action | 将“Microsoft.SignalRService”资源提供程序注册到订阅 |
 > | 操作 | Microsoft.SignalRService/unregister/action | 将“Microsoft.SignalRService”资源提供程序从订阅中取消注册 |
@@ -8556,7 +8753,7 @@ Azure 服务： [Azure SignalR 服务](../azure-signalr/index.yml)
 Azure 服务： [Azure 托管应用程序](../azure-resource-manager/managed-applications/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Solutions/register/action | 注册到解决方案。 |
 > | 操作 | Microsoft.Solutions/unregister/action | 从解决方案中取消注册。 |
@@ -8588,7 +8785,7 @@ Azure 服务： [Azure 托管应用程序](../azure-resource-manager/managed-app
 Azure 服务： [AZURE Sql 数据库](../sql-database/index.yml)、 [sql 数据仓库](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Sql/checkNameAvailability/action | 验证给定的服务器名称是否可用于在全球范围内对给定的订阅进行预配。 |
 > | 操作 | Microsoft.Sql/register/action | 注册 Microsoft SQL 数据库资源提供程序的订阅，并启用 Microsoft SQL 数据库的创建。 |
@@ -9203,7 +9400,7 @@ Azure 服务： [AZURE Sql 数据库](../sql-database/index.yml)、 [sql 数据�
 Azure 服务：[在 Azure 虚拟机上 SQL Server](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | SqlVirtualMachine/注册/操作 | 向 SqlVirtualMachine 资源提供程序注册订阅 |
 > | 操作 | SqlVirtualMachine/注销/操作 | 取消注册 SqlVirtualMachine 资源提供程序的订阅 |
@@ -9235,7 +9432,7 @@ Azure 服务：[在 Azure 虚拟机上 SQL Server](../virtual-machines/windows/s
 Azure 服务：[存储](../storage/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Storage/register/action | 注册存储资源提供程序的订阅，并启用存储帐户的创建。 |
 > |  | **checknameavailability** |  |
@@ -9367,7 +9564,7 @@ Azure 服务：[存储](../storage/index.yml)
 Azure 服务：[存储](../storage/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | storagesync.sys/注册/操作 | 注册存储同步提供程序的订阅 |
 > | 操作 | storagesync.sys/注销/操作 | 注销存储同步提供程序的订阅 |
@@ -9426,7 +9623,7 @@ Azure 服务：[存储](../storage/index.yml)
 Azure 服务： [StorSimple](../storsimple/index.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.StorSimple/register/action | 注册提供程序 Microsoft.StorSimple |
 > |  | **管理** |  |
@@ -9691,7 +9888,7 @@ Azure 服务： [StorSimple](../storsimple/index.md)
 Azure 服务：[流分析](../stream-analytics/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.StreamAnalytics/Register/action | 使用流分析资源提供程序注册订阅 |
 > |  | **位置/配额** |  |
@@ -9750,7 +9947,7 @@ Azure 服务：[流分析](../stream-analytics/index.yml)
 Azure 服务：核心
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Subscription/CreateSubscription/action | 创建 Azure 订阅 |
 > | 操作 | Microsoft.Subscription/register/action | 使用 Microsoft.Subscription 资源提供程序注册订阅 |
@@ -9765,7 +9962,7 @@ Azure 服务：核心
 Azure 服务：核心
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.Support/register/action | 注册支持资源提供程序 |
 > | 操作 | Microsoft. Support/checkNameAvailability/action | 检查该名称是否有效且未用于资源类型 |
@@ -9791,7 +9988,7 @@ Azure 服务：核心
 Azure 服务：[时序见解](../time-series-insights/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.TimeSeriesInsights/register/action | 注册时序见解资源提供程序的订阅，并启用时序见解环境的创建。 |
 > |  | **情形** |  |
@@ -9818,7 +10015,7 @@ Azure 服务：[时序见解](../time-series-insights/index.yml)
 Azure 服务： [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | Microsoft.VisualStudio/Register/Action | 使用 Microsoft.VisualStudio 提供程序注册 Azure 订阅 |
 > |  | **帐户** |  |
@@ -9844,7 +10041,7 @@ Azure 服务： [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 Azure 服务：[应用服务](../app-service/index.yml)，[函数](../azure-functions/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > | 操作 | microsoft.web/unregister/action | 取消注册订阅的 Microsoft.Web 资源提供程序。 |
 > | 操作 | microsoft.web/validate/action | 验证。 |
@@ -10503,7 +10700,7 @@ Azure 服务：[应用服务](../app-service/index.yml)，[函数](../azure-func
 Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | 操作类型 | 操作 | 说明 |
+> | 操作类型 | Operation | 说明 |
 > | --- | --- | --- |
 > |  | **组分** |  |
 > | 操作 | Microsoft.WorkloadMonitor/components/read | 获取资源的组件 |

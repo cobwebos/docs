@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
 ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440554"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244532"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Netezza 复制数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "75440554"
 
 以下活动支持此 Netezza 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 
@@ -39,11 +39,11 @@ Netezza 连接器支持从源进行并行复制。 有关详细信息，请参�
 
 Azure 数据工厂提供内置驱动程序以启用连接。 无需要手动安装任何驱动程序即可使用此连接器。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 可以通过使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建使用复制活动的管道。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
 
@@ -53,7 +53,7 @@ Azure 数据工厂提供内置驱动程序以启用连接。 无需要手动安�
 
 Netezza 链接服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | “type”属性必须设置为“Netezza”。 | 是 |
 | connectionString | 用于连接到 Netezza 的 ODBC 连接字符串。 <br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `pwd` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -61,7 +61,7 @@ Netezza 链接服务支持以下属性：
 
 典型的连接字符串为 `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`。 下表介绍了更多可以设置的属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | SecurityLevel | 驱动程序用于连接到数据存储区的安全级别 (SSL/TLS)。 示例：`SecurityLevel=preferredSecured`。 支持的值为：<br/>-  仅不安全 (onlyUnSecured)：驱动程序不使用 SSL。<br/>-  首选不安全 (preferredUnSecured)（默认）：如果服务器提供了选择，则驱动程序不使用 SSL。 <br/>-  首选安全 (preferredSecured)：如果服务器提供了选择，则驱动程序使用 SSL。 <br/>-  仅安全 (onlySecured)：除非有 SSL 连接，否则驱动程序不会连接。 | 否 |
 | CaCertFile | 服务器使用的 SSL 证书的完整路径。 示例： `CaCertFile=<cert path>;`| 是，如果启用了 SSL |
@@ -118,7 +118,7 @@ Netezza 链接服务支持以下属性：
 
 若要从 Netezza 复制数据，请将数据集的 type 属性设置为“NetezzaTable”。 支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为： **NetezzaTable** | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
@@ -154,7 +154,7 @@ Netezza 链接服务支持以下属性：
 
 若要从 Netezza 复制数据，请将复制活动中的 source 类型设置为“NetezzaSource”。 复制活动 **source** 节支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 必须将复制活动源的 type 属性设置为“NetezzaSource”。 | 是 |
 | query | 使用自定义 SQL 查询读取数据。 示例： `"SELECT * FROM MyTable"` | 否（如果指定了数据集中的“tableName”） |
@@ -206,7 +206,7 @@ Netezza 链接服务支持以下属性：
 
 建议使用数据分区启用并行复制，尤其是从 Netezza 数据库加载大量数据时。 下面是针对不同方案的建议配置。 将数据复制到基于文件的数据存储时，将 recommanded 写入文件夹作为多个文件（仅指定文件夹名称），在这种情况下，性能比写入单个文件更好。
 
-| 方案                                                     | 建议设置                                           |
+| 场景                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 大表的完全加载。                                   | **分区选项**：数据切片。 <br><br/>在执行期间，数据工厂会根据[Netezza 的内置数据切片](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)自动对数据进行分区，并按分区复制数据。 |
 | 使用自定义查询加载大量数据。                 | **分区选项**：数据切片。<br>**查询**： `SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`。<br>在执行过程中，数据工厂会替换 `?AdfPartitionCount` （在复制活动上设置了并行复制号）并将 `?AdfDataSliceCondition` 与数据切片分区逻辑一起，并将其发送到 Netezza。 |

@@ -10,14 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: d0e9fff56949125c5fa797e0e4ef7e1183448dd0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: cbe01ee9b8edeab349db484cea6c25dca32bf213
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168576"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218029"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理管理 Azure 机器学习 Studio （经典） web 服务
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 ## <a name="overview"></a>概述
 本指南演示如何快速开始使用 API 管理来管理 Azure 机器学习 Studio （经典） web 服务。
 
@@ -66,7 +69,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 4. 输入“Web API URL 后缀”。 这是客户向服务实例发送请求时使用的 URL 的最后一个部分（本示例使用“azureml-demo”）。
 5. 对于“Web API URL 方案”，请选择“HTTPS”。
 6. 对于“产品”，请选择“初学者”。
-7. 单击“保存”。
+7. 单击“ **保存**”。
 
 
 ## <a name="add-the-operations"></a>添加操作
@@ -103,7 +106,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 3. 对于“URL 模板”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`
 4. 输入“显示名称”（本示例使用“BES 提交”）。
 5. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
-6. 单击“保存”。
+6. 单击“ **保存**”。
 
 ### <a name="start-a-batch-execution-job"></a>启动批处理执行作业
 
@@ -112,7 +115,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 3. 对于“HTTP 谓词”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`
 4. 输入“显示名称”（本示例使用“BES 启动”）。
 6. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
-7. 单击“保存”。
+7. 单击“ **保存**”。
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>获取批处理执行作业的状态或结果
 
@@ -121,7 +124,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 3. 对于“URL 模板”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`
 4. 输入“显示名称”（本示例使用“BES 状态”）。
 6. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
-7. 单击“保存”。
+7. 单击“ **保存**”。
 
 ### <a name="delete-a-batch-execution-job"></a>删除批处理执行作业
 
@@ -130,7 +133,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 3. 对于“URL 模板”，请键入“ **”。** `/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`
 4. 输入“显示名称”（本示例使用“BES 删除”）。
 5. 在左侧依次单击“响应” > “添加”，并选择“200 正常”。
-6. 单击“保存”。
+6. 单击“ **保存**”。
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>从开发人员门户调用操作
 
@@ -245,9 +248,9 @@ AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行�
 
     import urllib2
     import json
-    workspace = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE WORKSPACE ID>"
-    service = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE SERVICE ID>"
-    api_key = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE API KEY>"
+    workspace = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE WORKSPACE ID>"
+    service = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE SERVICE ID>"
+    api_key = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE API KEY>"
     data = {
     "Inputs": {
         "input1": {

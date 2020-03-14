@@ -13,11 +13,11 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1c2036bf9995725e4bbef44e4c039f8336eb81a0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375698"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244285"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -92,7 +92,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 通常，用户越多，需要的计算机容量越大。 下面是一个表，它提供卷的轮廓和不同计算机可以处理的预计延迟。 请注意，它们全都基于预期的每秒事务数 (TPS) 而非按用户计算的，因为使用模式会变化，无法用来预测负载。 还会根据响应大小和后端应用程序响应时间，会有一些差异 - 较大的响应大小和较慢的响应时间将产生较低的最大 TPS。 我们还建议另外添加一些计算机，使跨计算机的分布式负载始终提供足够的缓冲区。 额外的容量将确保高可用性和复原能力。
 
-|内核数|RAM|预期的延迟 (MS)-P99|最大 TPS|
+|核心数|RAM|预期的延迟 (MS)-P99|最大 TPS|
 | ----- | ----- | ----- | ----- |
 |2|8|325|586|
 |4|16|320|1150|
@@ -114,7 +114,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 有关配置出站防火墙规则的详细信息，请参阅[使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)。
 
-## <a name="performance-and-scalability"></a>性能和缩放性
+## <a name="performance-and-scalability"></a>性能和可伸缩性
 
 应用程序代理服务的规模是透明的，但对于连接器而言，规模是一种可变因素。 需要提供足够的连接器才能处理高峰流量。 由于连接器是无状态的，它们不受用户或会话数目影响。 而会对请求的数目及其有效负载大小进行响应。 使用标准 Web 流量，一台普通的计算机每秒就能处理几千个请求。 具体能够处理多少，取决于确切的计算机特征。
 

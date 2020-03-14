@@ -12,14 +12,14 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 90fa3b06e2696e9b45c333c75c8a8e117d5c0c96
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: e918f7ee64d4bc49d5da80bf9a3e7595555296dc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563110"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203689"
 ---
-# <a name="scaling-streaming-with-cdn"></a>用 CDN 缩放流式处理
+# <a name="scaling-streaming-with-cdn"></a>使用 CDN 缩放流式处理
 
 Azure 内容分发网络 (CDN) 为开发人员提供了一个全局解决方案，通过在世界各地按特定策略放置的物理节点缓存内容来快速分发高带宽内容。  
 
@@ -147,4 +147,5 @@ CDN 缓存是一种反应过程。 如果 CDN 能预测下一个对象将被请�
 
 ## <a name="next-steps"></a>后续步骤
 
-此[存储库](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)中的示例介绍了如何使用 .NET 启动默认流式处理终结点。
+* 请确保审阅[流式处理终结点（原始）](streaming-endpoint-concept.md)文档。
+* 此[存储库](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)中的示例介绍了如何使用 .NET 启动默认流式处理终结点。

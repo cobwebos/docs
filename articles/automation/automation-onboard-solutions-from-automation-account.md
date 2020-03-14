@@ -6,11 +6,11 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373094"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278670"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>载入更新管理、更改跟踪和清单解决方案
 
@@ -125,7 +125,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 2. 在“取消链接工作区”页上，单击“取消链接工作区”。
 
-   ![“取消链接工作区”页](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
+   ![“取消链接工作区”页](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png)。
 
    系统会提示用户确认是否要继续。
 

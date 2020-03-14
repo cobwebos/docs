@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: rohogue
 ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990600"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271884"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
@@ -148,8 +148,8 @@ NFS 存储目标可以有多个虚拟路径，只要每个路径代表同一个�
 
 | 使用模型 | 缓存模式 | 后端验证 | 最大写回延迟 |
 | ---- | ---- | ---- | ---- |
-| 读取繁重的罕见写入 | 读取 | 从来没有 | 无 |
-| 超过15% 写入 | 读取/写入 | 从来没有 | 1 小时 |
+| 读取繁重的罕见写入 | 读取 | 从不 | 无 |
+| 超过15% 写入 | 读取/写入 | 从不 | 1 小时 |
 | 客户端绕过缓存 | 读取 | 30 秒 | 无 |
 
 ## <a name="next-steps"></a>后续步骤

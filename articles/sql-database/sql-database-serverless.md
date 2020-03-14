@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 12/03/2019
-ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.date: 3/11/2020
+ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131966"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268699"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 
@@ -66,7 +66,7 @@ Azure SQL 数据库无服务器是单一数据库的计算层，可根据工作�
 | | **无服务器计算** | **预配计算** |
 |:---|:---|:---|
 |**数据库使用模式**| 一段时间内的平均计算利用率，具有间歇的不可预测使用情况。 |  使用更高的平均计算使用率（一段时间）或使用弹性池的多个数据库的更常规使用模式。|
-| **性能管理工作量** |Lower|较高|
+| **性能管理工作量** |较低|较高|
 |**计算缩放**|自动|手动|
 |**计算响应能力**|在非活动期后较低|即时|
 |**计费粒度**|每秒|每小时|
@@ -75,7 +75,7 @@ Azure SQL 数据库无服务器是单一数据库的计算层，可根据工作�
 
 目前，仅 vCore 购买模型中第 5 代硬件上的常规用途层中支持 SQL 数据库无服务器。
 
-## <a name="autoscaling"></a>自动扩展
+## <a name="autoscaling"></a>自动缩放
 
 ### <a name="scaling-responsiveness"></a>缩放响应能力
 
@@ -124,9 +124,9 @@ SQL 缓存的增长，因为数据是以相同的方式从磁盘中提取的，�
 
 如果以下任一条件为 true，则会触发 Autoresuming：
 
-|功能|自动恢复触发器|
+|Feature|自动恢复触发器|
 |---|---|
-|身份验证和授权|Login|
+|身份验证和授权|登录|
 |威胁检测|启用/禁用数据库或服务器级别的威胁检测设置。<br>修改数据库或服务器级别的威胁检测设置。|
 |数据发现和分类|添加、修改、删除或查看敏感度标签|
 |审核|查看审核记录。<br>更新或查看审核策略。|
@@ -148,6 +148,10 @@ SQL 缓存的增长，因为数据是以相同的方式从磁盘中提取的，�
 ### <a name="latency"></a>延迟
 
 无服务器数据库的 autoresume 和 autopause 延迟通常按1分钟到 autoresume 和1-10 分钟到 autopause。
+
+### <a name="customer-managed-transparent-data-encryption-byok"></a>客户托管的透明数据加密（BYOK）
+
+如果使用[客户托管的透明数据加密](transparent-data-encryption-byok-azure-sql.md)（BYOK），并且在发生密钥删除或吊销时自动暂停无服务器数据库，则数据库将保持自动暂停状态。  在这种情况下，当下次尝试恢复时，数据库将保持暂停状态，直到超过10分钟后，数据库的状态转换为 "不可访问"。  数据库变为不可访问后，恢复过程与预配的计算数据库相同。  如果当发生密钥删除或吊销时，无服务器数据库处于联机状态，则在大约10分钟或更短时间内，数据库也会变得不可访问，这与预配的计算数据库相同。
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>载入无服务器计算层
 
@@ -275,7 +279,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 下表列出了用于监视应用包和无服务器数据库的用户池资源使用情况的指标：
 
-|实体|跃点数|说明|单位|
+|实体|指标|说明|单位|
 |---|---|---|---|
 |应用包|app_cpu_percent|应用使用的 vCore 数相对于应用允许的最大 vCore 数的百分比。|百分比|
 |应用包|app_cpu_billed|报告期内收取的应用计算费用。 在此期间支付的金额是此指标和 vCore 单位价格的乘积。 <br><br>此指标的值是通过将每秒使用的最大 CPU 和内存使用量按时间进行汇总来得到的。 如果使用的量小于按照最小 vCore 数和最小内存量预配的最小量，则按照预配的最小量进行计费。 为了将 CPU 与内存进行比较以便于计费，将内存中的内存量（以 GB 为单位）重新调整为每个 vCore 的 Vcore，以将内存标准化为多个单元。|vCore 秒|

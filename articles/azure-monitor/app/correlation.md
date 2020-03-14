@@ -7,11 +7,11 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78367652"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276122"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -48,9 +48,9 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 | itemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock page                |              | STYz               | STYz         |
-| 依赖项 | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
-| request    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
-| 依赖项 | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
+| dependency | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
+| 请求    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| dependency | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
 对外部服务发出 `GET /api/stock/value` 调用时，您需要知道该服务器的标识，以便您可以相应地设置 `dependency.target` 字段。 如果外部服务不支持监视，则会将 `target` 设置为服务的主机名（例如 `stock-prices-api.com`）。 但是，如果服务通过返回预定义的 HTTP 标头来标识自身，`target` 包含允许 Application Insights 通过从该服务查询遥测数据来生成分布式跟踪的服务标识。
 

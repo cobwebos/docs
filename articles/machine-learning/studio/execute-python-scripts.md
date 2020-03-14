@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: ec210fcdf521413438edd256cc3ee988b67f293f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c79f6bd63fa5d8d8c6b22ff271d8ca513a94fd64
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168666"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218079"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio （经典）中执行 Python 机器学习脚本
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Python 是披肩多个数据科学家的工具中的一个重要工具。 它在典型机器学习工作流的每个阶段中使用，包括数据浏览、功能提取、模型定型和验证和部署。
 
@@ -71,7 +73,7 @@ Studio 数据集不同于 Panda DataFrames。 因此，Studio （经典）中的
 
 常见的用例是将现有 Python 脚本合并到 Studio （经典）试验中。 [执行 Python 脚本][execute-python-script]模块接受包含第三个输入端口的 Python 模块的 zip 文件。 在运行时执行框架会解压缩该文件，内容将添加到 Python 解释器的库路径。 然后，`azureml_main` 入口点函数可直接导入这些模块。 
 
-例如，请考虑包含简单“Hello, World”函数的 Hello.py 文件。
+作为示例，请考虑文件 Hello.py，其中包含简单的 "Hello，World" 函数。
 
 ![Hello.py 文件中的用户定义函数](./media/execute-python-scripts/figure4.png)
 

@@ -17,17 +17,17 @@ ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
 ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138382"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245637"
 ---
 # <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 门户添加或删除外部来宾用户的角色分配
 
 使用[Azure 基于角色的访问控制（RBAC）](overview.md) ，可以更好地管理大型组织，适用于需要访问环境中的特定资源，但不一定要访问整个基础结构或任何与计费相关范围的外部协作者、供应商或兼职的中小型企业。 你可以使用[AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md)中的功能与外部来宾用户合作，你可以使用 RBAC 仅授予来宾用户在你的环境中所需的权限。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要添加或删除角色分配，必须具备：
 
@@ -165,7 +165,7 @@ ms.locfileid: "77138382"
 
 1. 单击要删除的来宾用户。
 
-1. 单击“删除”。
+1. 单击 **“删除”** 。
 
    ![删除来宾用户](./media/role-assignments-external-users/delete-guest-user.png)
 

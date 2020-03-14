@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 068cc2ed9743a62aa2249a815893c71499711092
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: ca05603ebf06906349a7f94443eafb773a0764f9
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617017"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138988"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA（大型实例）网络体系结构
 
@@ -77,7 +77,7 @@ Azure 中 SAP 部署的差别如下：
 
 在版本为 HANA 大型实例标记的情况下，如 SAP 说明 #1100926-常见问题：如果配置了 Azure ExpressRoute Fast 路径，则在[SAP 说明-FAQ：网络性能](https://launchpad.support.sap.com/#/notes/1100926/E)（如下所示）中所述，在 azure VM 与 Hana 大型实例戳记更近之间网络延迟。 若要部署接近于版本4的 HANA 大型实例单元的 Azure Vm，需利用[Azure 邻近性放置组](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)。 [对于 sap 应用程序的最佳网络延迟，Azure 邻近性放置组](sap-proximity-placement-scenarios.md)中介绍了如何使用近程放置组来查找同一 azure 数据中心内的 sap 应用程序层（如修订版4托管 HANA 大型实例单位）。
 
-若要在 Vm 和 HANA 大型实例之间提供确定性网络延迟，请选择 ExpressRoute 网关 SKU。 不同于本地与 VM 之间的流量模式，VM 与 HANA 大型实例之间的流量模式可能是这样的：一开始流量很小，但随着要传输的请求和数据量的增多，可能会出现流量突然增高的迸发现象。 为了应对这种迸发现象，我们强烈建议使用 UltraPerformance 网关 SKU。 对于类型 II 类 HANA 大型实例 Sku，将 UltraPerformance 网关 SKU 用作 Expressroute 网关是必需的。
+若要在 Vm 和 HANA 大型实例之间提供确定性网络延迟，请选择 ExpressRoute 网关 SKU。 不同于本地与 VM 之间的流量模式，VM 与 HANA 大型实例之间的流量模式可能是这样的：一开始流量很小，但随着要传输的请求和数据量的增多，可能会出现流量突然增高的迸发现象。 为了应对这种迸发现象，我们强烈建议使用 UltraPerformance 网关 SKU。 对于类型 II 类 HANA 大型实例 Sku，将 UltraPerformance 网关 SKU 用作 ExpressRoute 网关是必需的。
 
 > [!IMPORTANT] 
 > 假定所有的网络流量都位于 SAP 应用层与数据库层之间，则仅支持使用虚拟网络的 HighPerformance 或 UltraPerformance 网关 SKU 来连接到 Azure 上的 SAP HANA（大型实例）。 对于 HANA 大型实例类型 II Sku，只支持使用 UltraPerformance 网关 SKU 作为 ExpressRoute 网关。 使用 ExpressRoute 快速路径时的异常适用（请参阅下文）

@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386923"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272560"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Apache Ambari 优化 HDInsight 群集配置
 
@@ -123,7 +123,7 @@ Hadoop 会尝试将单个文件拆分（映射）为多个文件，以并行方�
 
 一个 Hive 查询是在一个或多个阶段中执行的。 如果可以并行运行各个独立阶段，则会提高查询性能。
 
-1. 若要启用并行查询执行，请导航到 Hive 的“配置”选项卡并搜索  **属性。** `hive.exec.parallel` 默认值为 false。 将该值更改为 true，然后按 **Enter** 保存该值。
+1. 若要启用并行查询执行，请导航到 Hive 的“配置”选项卡并搜索  **属性。** `hive.exec.parallel` 默认值是 False。 将该值更改为 true，然后按 **Enter** 保存该值。
 
 1. 若要限制要并行运行的作业数，请修改 "`hive.exec.parallel.thread.number`" 属性。 默认值为 8。
 
@@ -135,7 +135,7 @@ Hive 逐行处理数据。 矢量化指示 Hive 以块（一个块包含 1,024 �
 
 1. 若要启用矢量化查询执行，请导航到 Hive 的“配置”选项卡并搜索  **参数。** `hive.vectorized.execution.enabled` Hive 0.13.0 或更高版本的默认值为 true。
 
-1. 若要为查询的化简端启用矢量化执行，请将 `hive.vectorized.execution.reduce.enabled` 参数设置为 true。 默认值为 false。
+1. 若要为查询的化简端启用矢量化执行，请将 `hive.vectorized.execution.reduce.enabled` 参数设置为 true。 默认值是 False。
 
     ![Apache Hive 向量化执行](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
 
@@ -177,14 +177,14 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 | 格式 | 工具 | 算法 | 文件扩展名 | 是否可拆分？ |
 | -- | -- | -- | -- | -- |
-| Gzip | Gzip | DEFLATE | .gz | 是 |
+| Gzip | Gzip | DEFLATE | .gz | 否 |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | 是 |
 | LZO | Lzop | LZO | .lzo | 是（如果已编制索引） |
-| Snappy | 不可用 | Snappy | Snappy | 是 |
+| Snappy | 空值 | Snappy | Snappy | 否 |
 
 一般规则是，尽量使用可拆分的压缩方法，否则会创建极少的映射器。 如果输入数据为文本，则 `bzip2` 是最佳选项。 对于 ORC 格式，Snappy 是最快的压缩选项。
 
-1. 若要启用中间压缩，请导航到 Hive 的“配置”选项卡，并将  **参数设置为 true。** `hive.exec.compress.intermediate` 默认值为 false。
+1. 若要启用中间压缩，请导航到 Hive 的“配置”选项卡，并将  **参数设置为 true。** `hive.exec.compress.intermediate` 默认值是 False。
 
     ![Hive 执行 - 中间压缩](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
@@ -201,7 +201,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
     c. 在“添加属性”窗口中，输入 `mapred.map.output.compression.codec` 作为键，输入 `org.apache.hadoop.io.compress.SnappyCodec` 作为值。
 
-    d. 选择“添加”。
+    d. 选择 **添加** 。
 
     ![Apache Hive 自定义属性添加](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 
@@ -214,7 +214,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 还可以压缩最终的 Hive 输出。
 
-1. 若要压缩最终的 Hive 输出，请导航到 Hive 的“配置”选项卡，并将  **参数设置为 true。** `hive.exec.compress.output` 默认值为 false。
+1. 若要压缩最终的 Hive 输出，请导航到 Hive 的“配置”选项卡，并将  **参数设置为 true。** `hive.exec.compress.output` 默认值是 False。
 
 1. 若要选择输出压缩编解码器，请根据上一部分的步骤 3 所述，将 `mapred.output.compression.codec` 自定义属性添加到“自定义 hive-site”窗格。
 
@@ -226,7 +226,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 不应该对输入量较大的长时间运行的 MapReduce 任务启用推理执行。
 
-* 若要启用推理执行，请导航到 Hive 的“配置”选项卡，并将  **参数设置为 true。** `hive.mapred.reduce.tasks.speculative.execution` 默认值为 false。
+* 若要启用推理执行，请导航到 Hive 的“配置”选项卡，并将  **参数设置为 true。** `hive.mapred.reduce.tasks.speculative.execution` 默认值是 False。
 
     ![Hive mapred 化简任务推理执行](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
@@ -266,7 +266,7 @@ Hive 允许在表中插入记录时创建动态分区，且无需预定义每个
 
 Hive 中的默认联接类型是“随机联接”。 在 Hive 中，特殊的映射器会读取输入，并向中间文件发出联接键/值对。 Hadoop 在随机阶段中排序与合并这些对。 此随机阶段的系统开销较大。 根据数据选择右联接可以显著提高性能。
 
-| 联接类型 | 时间 | 如何收集 | Hive 设置 | Comments |
+| 联接类型 | 时间 | 方式 | Hive 设置 | 注释 |
 | -- | -- | -- | -- | -- |
 | 随机联接 | <ul><li>默认选项</li><li>始终运行</li></ul> | <ul><li>从某个表的一部分内容中读取</li><li>根据联接键存储和排序</li><li>向每个化简器发送一个存储桶</li><li>在化简端执行联接</li></ul> | 不需要过多的 Hive 设置 | 每次运行 |
 | 映射联接 | <ul><li>一个表可以装入内存</li></ul> | <ul><li>将小型表读入内存哈希表</li><li>通过大型文件的一部分流式处理</li><li>联接哈希表中的每条记录</li><li>只按映射器执行联接</li></ul> | `hive.auto.confvert.join=true` | 速度很快，但受限 |
@@ -311,7 +311,7 @@ Hive 中的默认联接类型是“随机联接”。 在 Hive 中，特殊的�
 
 与在 Hive 中一样，本地模式可用于加快作业，且生成的数据量相对较小。
 
-1. 若要启用本地模式，请将 `pig.auto.local.enabled` 设置为 **true**。 默认值为 false。
+1. 若要启用本地模式，请将 `pig.auto.local.enabled` 设置为 **true**。 默认值是 False。
 
 1. 输入数据大小小于 `pig.auto.local.input.maxbytes` 属性值的作业被视为小型作业。 默认值为 1 GB。
 
@@ -335,13 +335,13 @@ Pig 可将 UDF 所需的 JAR 文件复制到分布式缓存，使这些文件可
 
 Pig 在作业执行期间生成临时文件。 压缩临时文件可以在将文件读取或写入到磁盘时提高性能。 以下设置可用于压缩临时文件。
 
-* `pig.tmpfilecompression`：如果为 true，则启用临时文件压缩。 默认值为 false。
+* `pig.tmpfilecompression`：如果为 true，则启用临时文件压缩。 默认值是 False。
 
 * `pig.tmpfilecompression.codec`：用于压缩临时文件的压缩编解码器。 建议的压缩编解码器为 [LZO](https://www.oberhumer.com/opensource/lzo/) 和 Snappy，它们可以降低 CPU 利用率。
 
 ### <a name="enable-split-combining"></a>启用拆分合并
 
-如果已启用，则会合并小型文件，以减少映射任务数目。 这可以提高包含大量小型文件的作业的效率。 若要启用，请将 `pig.noSplitCombination` 设置为 true。 默认值为 false。
+如果已启用，则会合并小型文件，以减少映射任务数目。 这可以提高包含大量小型文件的作业的效率。 若要启用，请将 `pig.noSplitCombination` 设置为 true。 默认值是 False。
 
 ### <a name="tune-mappers"></a>优化映射器
 

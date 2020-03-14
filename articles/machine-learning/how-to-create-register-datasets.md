@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 003924c42a1a7e428a3a11f21a4cfe782c12e859
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 778f6b8d133ddb21f918d65a9d8aecd8b2205b08
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255797"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283766"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -33,8 +33,7 @@ ms.locfileid: "78255797"
 * 与其他用户共享数据和进行协作。
 
 ## <a name="prerequisites"></a>必备条件
-
-若要创建和使用数据集，需要：
+' 若要创建和使用数据集，需要：
 
 * Azure 订阅。 如果没有，请在开始之前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
@@ -44,6 +43,16 @@ ms.locfileid: "78255797"
 
 > [!NOTE]
 > 某些数据集类依赖于[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包。 对于 Linux 用户，仅以下分发版支持这些类： Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
+
+## <a name="compute-size-guidance"></a>计算大小指南
+
+创建数据集时，请检查计算处理能力和内存中的数据大小。 存储中的数据大小与数据帧中的数据大小不同。 例如，CSV 文件中的数据最多可以扩展到数据帧中的10倍，因此，1 GB 的 CSV 文件在数据帧中可能会变成 10 GB。 
+
+主要因素是数据集在内存中的大小，例如，数据帧。 建议计算大小和处理能力包含 RAM 大小的2倍。 因此，如果你的数据帧为10GB，则需要一个具有 20 GB RAM 的计算目标，以确保数据帧可以更适合内存并进行处理。 如果数据已压缩，则可以进一步扩展;以压缩 parquet 格式存储的 20 GB 相对稀疏数据可以在内存中扩展到 ~ 800 GB。 由于 Parquet 文件以纵栏格式存储数据，因此，如果只需要一半的列，则只需在内存中加载 ~ 400 GB。
+ 
+如果你使用的是 Pandas，则没有理由使用超过1个 vCPU，因为这就是它将使用的全部。 通过 Modin 和 Dask/Ray，你只需将 `import pandas as pd` 改为 `import modin.pandas as pd`，就可以轻松地在单个 Azure 机器学习计算实例/节点上通过和/Ray 并行化到多个个 vcpu，并向外扩展到大群集。 
+ 
+如果无法为数据获得足够大的虚拟空间，则可以使用以下两个选项：使用 Spark 或 Dask 等框架对数据 "内存不足" 执行处理，即，数据帧按分区加载到 RAM 分区并进行处理，最终结果是最终收集。 如果这太慢，Spark 或 Dask 允许向外扩展到仍可使用交互的群集。 
 
 ## <a name="dataset-types"></a>数据集类型
 
@@ -57,9 +66,9 @@ ms.locfileid: "78255797"
 
 ## <a name="create-datasets"></a>创建数据集
 
-通过创建数据集，可以创建对数据源位置的引用以及其元数据的副本。 由于数据仍保留在其现有位置，因此不会产生额外的存储成本。 您可以使用 Python SDK 或 https://ml.azure.com创建 `TabularDataset` 和 `FileDataset` 数据集。
+通过创建数据集，可以创建对数据源位置的引用以及其元数据的副本。 由于数据仍保留在其现有位置，因此不会产生额外的存储成本。 可以使用 Python SDK 或 https://ml.azure.com创建 `TabularDataset` 和 `FileDataset` 数据集。
 
-要使数据可 Azure 机器学习访问，必须从[Azure 数据存储](how-to-access-data.md)或公共 web url 中的路径创建数据集。
+要使数据可 Azure 机器学习访问，必须从[Azure 数据存储](how-to-access-data.md)或公共 web url 中的路径创建数据集。 
 
 ### <a name="use-the-sdk"></a>使用 SDK
 
@@ -70,7 +79,6 @@ ms.locfileid: "78255797"
 2. 通过引用数据存储中的路径来创建数据集。
 > [!Note]
 > 可以从多个数据存储中的多个路径创建数据集。 你可以从其创建数据集的文件数量或数据大小没有硬性限制。 但是，对于每个数据路径，会将几个请求发送到存储服务，以检查它是否指向文件或文件夹。 此开销可能会导致性能下降或发生故障。 引用其中包含1000文件的文件夹的数据集被视为引用一个数据路径。 为了获得最佳性能，我们建议创建在数据存储中引用小于100路径的数据集。
-
 
 #### <a name="create-a-tabulardataset"></a>创建 TabularDataset
 
@@ -138,7 +146,7 @@ datastore = workspace.get_default_datastore()
 
 # upload the local file from src_dir to the target_path in datastore
 datastore.upload(src_dir='data', target_path='data')
-create a dataset referencing the cloud location
+# create a dataset referencing the cloud location
 dataset = Dataset.Tabular.from_delimited_files(datastore.path('data/prepared.csv'))
 ```
 
@@ -201,7 +209,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 1. 选择 "**表格**或**文件**" 作为数据集类型。
 1. 选择 "**下一步**" 以打开**数据存储和文件选择**窗体。 在此窗体上，你可以选择在创建数据集后保留数据集的位置，还可以选择要用于数据集的数据文件。 
 1. 选择 "**下一步**" 以填充**设置和预览**和**架构**窗体;它们是根据文件类型智能填充的，你可以在创建这些窗体之前，进一步配置你的数据集。 
-1. 选择 "**下一步**" 查看**确认详细信息**窗体。 检查所做的选择，并为数据集创建可选的数据配置文件。 详细了解[数据分析](how-to-create-portal-experiments.md#profile)。 
+1. 选择 "**下一步**" 查看**确认详细信息**窗体。 检查所做的选择，并为数据集创建可选的数据配置文件。 详细了解[数据分析](how-to-use-automated-ml-for-ml-models.md#profile)。 
 1. 选择 "**创建**" 以完成数据集创建。
 
 ## <a name="register-datasets"></a>注册数据集

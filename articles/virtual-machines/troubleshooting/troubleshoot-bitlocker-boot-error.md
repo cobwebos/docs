@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749670"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250005"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
 
@@ -47,7 +47,7 @@ ms.locfileid: "73749670"
 如果此方法未能解决此问题，请执行以下步骤，手动还原 BEK 文件：
 
 1. 拍摄受影响的 VM 的系统磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
-2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤 7 中运行 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令，必须在恢复 VM 中启用“BitLocker 驱动器加密”功能。
+2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤7中运行[manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde)命令，必须在恢复 VM 中启用**BitLocker 驱动器加密**功能。
 
     附加托管磁盘时，可能会收到“包含加密设置，因此不能用作数据磁盘”错误消息。 在此情况下，运行以下脚本，重试附加磁盘：
 
@@ -119,25 +119,25 @@ ms.locfileid: "73749670"
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7.  若要使用 BEK 文件解锁附加磁盘，请运行以下命令。
+7.  若要使用 BEK 文件解锁附加的磁盘，请运行以下命令。
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
     ```
     在此示例中，附加的 OS 磁盘为驱动器 F。请确保使用正确的驱动器号。 
 
-8. 使用 BEK 密钥成功解锁磁盘以后，从恢复 VM 分离该磁盘，然后使用该新的 OS 磁盘重新创建 VM。
+8. 使用 BEK 密钥成功解锁磁盘后，请从恢复 VM 分离磁盘，然后使用这个新的 OS 磁盘重新创建 VM。
 
     > [!NOTE]
-    > 对于使用磁盘加密的 VM，不支持交换 OS 磁盘。
+    > 使用磁盘加密的 Vm 不支持交换 OS 磁盘。
 
-9. 如果新的 VM 仍然不能正常启动，请在解锁设备后尝试下述步骤之一：
+9. 如果新 VM 仍无法正常启动，请在解锁驱动器后尝试执行以下步骤之一：
 
-    - 暂停保护，以便运行以下命令，暂时关闭 BitLocker：
+    - 通过运行以下内容暂停保护以暂时关闭 BitLocker：
 
                     manage-bde -protectors -disable F: -rc 0
            
-    - 完全解密该驱动器。 为此，请运行以下命令：
+    - 完全解密驱动器。 为此，请运行以下命令：
 
                     manage-bde -off F:
 
@@ -146,7 +146,7 @@ ms.locfileid: "73749670"
 对于密钥加密密钥方案，请执行以下步骤：
 
 1. 请确保登录的用户帐户需要“用户|密钥权限|加密操作|解包密钥”中 Key Vault 访问策略中的“解包”权限。
-2. 将以下脚本保存到 .PS1 文件：
+2. 将以下脚本保存到。PS1 文件：
 
     ```powershell
     #Set the Parameters for the script
@@ -255,38 +255,38 @@ ms.locfileid: "73749670"
     ```
     在此示例中，附加的 OS 磁盘为驱动器 F。请确保使用正确的驱动器号。 
 
-6. 使用 BEK 密钥成功解锁磁盘以后，从恢复 VM 分离该磁盘，然后使用该新的 OS 磁盘重新创建 VM。 
+6. 使用 BEK 密钥成功解锁磁盘后，请从恢复 VM 分离磁盘，然后使用这个新的 OS 磁盘重新创建 VM。 
 
     > [!NOTE]
-    > 对于使用磁盘加密的 VM，不支持交换 OS 磁盘。
+    > 使用磁盘加密的 Vm 不支持交换 OS 磁盘。
 
-7. 如果新的 VM 仍然不能正常启动，请在解锁设备后尝试下述步骤之一：
+7. 如果新 VM 仍无法正常启动，请在解锁驱动器后尝试执行以下步骤之一：
 
-    - 暂停保护，以便运行以下命令，暂时关闭 BitLocker：
+    - 通过运行以下命令暂停保护以暂时关闭 BitLocker：
 
              manage-bde -protectors -disable F: -rc 0
            
-    - 完全解密该驱动器。 为此，请运行以下命令：
+    - 完全解密驱动器。 为此，请运行以下命令：
 
                     manage-bde -off F:
-## <a name="script-troubleshooting"></a>脚本故障排除
+## <a name="script-troubleshooting"></a>脚本疑难解答
 
 **错误：无法加载文件或程序集**
 
-发出此错误是因为 ADAL 程序集的路径错误。 如果 AZ 模块只为当前用户安装，则 ADAL 程序集将位于 `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>` 中。
+之所以发生此错误，是因为 ADAL 程序集的路径不正确。 如果仅为当前用户安装 AZ 模块，则 ADAL 程序集将位于 `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`中。
 
-也可搜索 `Az.Accounts` 文件夹来查找正确的路径。
+您还可以搜索 `Az.Accounts` 文件夹以查找正确的路径。
 
 **错误： AzKeyVaultSecret 或 AzKeyVaultSecret 未被识别为 cmdlet 的名称**
 
-如果使用旧的 AZ PowerShell 模块，则必须将这两个命令更改为 `Get-AzureKeyVaultSecret` 和 `Get-AzureKeyVaultSecret`。
+如果使用的是旧 AZ PowerShell 模块，则必须将两个命令更改为 `Get-AzureKeyVaultSecret` 和 `Get-AzureKeyVaultSecret`。
 
 **参数示例**
 
 | parameters  | 值示例  |注释   |
 |---|---|---|
-|  $keyVaultName | myKeyVault2112852926  | 用于存储此密钥的密钥保管库的名称 |
+|  $keyVaultName | myKeyVault2112852926  | 存储密钥的密钥保管库的名称 |
 |$kekName   |mykey   | 用于加密 VM 的密钥的名称|
-|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | VM 密钥的机密的名称|
+|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | VM 密钥的机密名称|
 |$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D.BEK |用于写入 BEK 文件的路径。|
-|$adTenant  |contoso.onmicrosoft.com   | 用于托管密钥保管库的 Azure Active Directory 的 FQDN 或 GUID |
+|$adTenant  |contoso.onmicrosoft.com   | 承载密钥保管库的 Azure Active Directory 的 FQDN 或 GUID |

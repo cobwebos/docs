@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: 69cf79f8258f85f2fb5e787f91aa843837d0a3a1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c5f12da3606361b504d4581916d9645fa3cd24f0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538483"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283454"
 ---
 # <a name="understand-automated-machine-learning-results"></a>了解自动化机器学习结果
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,14 +27,14 @@ ms.locfileid: "75538483"
 + [回归模型的度量值、图表和图形](#regression)
 + [模型 interpretability 和特征重要性](#explain-model)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 * 使用 SDK 或 Azure 机器学习 studio，为自动机器学习运行创建试验。
 
     * 使用 SDK 生成[分类模型](how-to-auto-train-remote.md)或[回归模型](tutorial-auto-train-models.md)
-    * 使用[Azure 机器学习 studio](how-to-create-portal-experiments.md)通过上传适当的数据来创建分类或回归模型。
+    * 使用[Azure 机器学习 studio](how-to-use-automated-ml-for-ml-models.md)通过上传适当的数据来创建分类或回归模型。
 
 ## <a name="view-the-run"></a>查看运行
 
@@ -76,7 +76,7 @@ ms.locfileid: "75538483"
 
 分类任务的每次运行迭代中都保存了以下指标。
 
-度量值|Description|计算|其他参数
+指标|说明|计算|其他参数
 --|--|--|--
 AUC_macro| AUC 是接收方操作特性曲线下面的区域。 Macro 是每个类的 AUC 算术平均值。  | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
 AUC_Micro| AUC 是接收方操作特性曲线下面的区域。 微的计算方法是将每个类中的真正的正值和假正值组合在一起。| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
@@ -89,7 +89,7 @@ balanced_accuracy|平衡准确度是每个类的召回率算术平均值。|[计
 f1_score_macro|F1 评分是精度和召回率的调和平均值。 宏是每个类的 F1 分数的算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="macro"|
 f1_score_micro|F1 评分是精度和召回率的调和平均值。 微通过计算总真实正值、假负和误报计算出全局计算。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="micro"|
 f1_score_weighted|F1 评分是精度和召回率的调和平均值。 按每个类的 F1 评分类频率计算的加权平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="weighted"|
-log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 对于包含 true 标签 ca-yt 的单个样本，{0,1} 在 ca-yt = 1 的情况下估计概率 yp，日志丢失为-log P （&#124;ca-yt yp） =-（ca-yt log （yp） + （1-ca-yt） log （））。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|无|
+log_loss|这是在中使用的丢失函数，例如神经网络，它在给定概率分类器预测的情况下，将其（多项式）逻辑回归和扩展（如神经网络）定义为负对数。 对于包含 true 标签 ca-yt 的单个样本，{0,1} 在 ca-yt = 1 的情况下估计概率 yp，日志丢失为-log P （&#124;ca-yt yp） =-（ca-yt log （yp） + （1-ca-yt） log （））。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|无|
 norm_macro_recall|规范化宏召回率是已规范化的宏召回率，因此，随机性能的评分为 0，完美性能的评分为 1。 这是通过 norm_macro_recall： = （recall_score_macro-R）/（1-R）实现的，其中 R 是随机预测的 recall_score_macro 预期值（即，对于二元分类，r = 0.5，对于 C 类分类问题则为 r = （1/C））。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "宏" |
 precision_score_macro|精度是正确标记的有效预测元素的百分比。 宏是每个类的精度算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
 precision_score_micro|精度是正确标记的有效预测元素的百分比。 通过计算总的实际正值和假正值，对微进行全局计算。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
@@ -190,7 +190,7 @@ weighted_accuracy|加权准确度是精确的，其中每个示例给定的权�
 ### <a name="calibration-chart"></a>校准图
 
 #### <a name="what-is-a-calibration-chart"></a>什么是校准图？
-校准图用于显示预测模型的置信度。 为此，它会显示预测概率与实际概率之间的关系。其中，“概率”表示特定实例属于某个标签的可能性。
+校准图用于显示预测模型的置信度。 它通过显示预测的概率与实际概率之间的关系，来实现此目标，其中，"概率" 表示特定实例属于某个标签的概率。
 #### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>自动 ML ML 如何处理校准图？
 对于所有分类问题，可以查看微观平均、宏观平均以及给定预测模型中每个类的校准行。
 
@@ -218,7 +218,7 @@ weighted_accuracy|加权准确度是精确的，其中每个示例给定的权�
 
 对于回归或预测任务，在每次运行迭代中保存以下度量值。
 
-|度量值|Description|计算|其他参数
+|指标|说明|计算|其他参数
 --|--|--|--|
 explained_variance|解释方差是数学模型计算给定数据集的方差时遵循的比例。 它是原始数据方差与误差方差之间的递减百分比。 如果误差平均值为 0，则它等于解释方差。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|无|
 r2_score|R2 是与输出平均值的基线模型相比，平方误差的确定系数或递减百分比。 |[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|无|

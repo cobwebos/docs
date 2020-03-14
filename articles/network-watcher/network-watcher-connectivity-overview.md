@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842863"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283272"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure 网络观察程序中排查连接问题功能的简介
 
@@ -29,7 +29,7 @@ ms.locfileid: "76842863"
 
 下表显示了运行完连接问题故障排除后返回的属性。
 
-|属性  |Description  |
+|properties  |说明  |
 |---------|---------|
 |ConnectionStatus     | 连接检查的状态。 可能的结果为 **Reachable** 和 **Unreachable**。        |
 |AvgLatencyInMs     | 连接检查期间的平均延迟，以毫秒为单位。 （仅当检查状态为 reachable 时才显示）        |
@@ -72,7 +72,7 @@ ms.locfileid: "76842863"
 
 连接问题故障排除返回有关连接的错误类型。 下表提供了返回的当前错误类型的列表。
 
-|类型  |Description  |
+|类型  |说明  |
 |---------|---------|
 |CPU     | CPU 利用率较高。       |
 |内存     | 内存利用率较高。       |

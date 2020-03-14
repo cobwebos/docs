@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 84098901d58e2087c7ece77049e445bb5c76f2a9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923785"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266021"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复制数据
 
-本文概述了如何使用 Azure 数据工厂中的复制活动，通过 Open Hub 从 SAP Business Warehouse (BW) 复制数据。 是基于总体介绍复制活动的[复制活动概述](copy-activity-overview.md)一文进行扩展的。
+本文概述了如何使用 Azure 数据工厂中的复制活动，通过 Open Hub 从 SAP Business Warehouse (BW) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 >[!TIP]
 >若要了解 ADF 全面支持 SAP 数据集成方案，请参阅[使用 Azure 数据工厂的 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，并提供详细的简介、comparsion 和指南。
@@ -30,7 +30,7 @@ ms.locfileid: "74923785"
 
 以下活动支持通过开放集线器连接器实现的 SAP 业务仓库：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 可以通过 Open Hub 将数据从 SAP Business Warehouse 复制到任何受支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -73,11 +73,11 @@ ADF SAP BW 开放集线器连接器提供两个可选属性： `excludeLastReque
 
 为了进行适当的增量处理，不允许在同一打开的中心表中具有来自不同 DTPs 的请求 Id。 因此，你不得为每个打开的中心目标（OHD）创建多个 DTP。 如果需要从同一 InfoProvider 的完全和增量提取，则应为同一 InfoProvider 创建两个 OHDs。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要使用此 SAP Business Warehouse Open Hub 连接器，需要：
 
-- 设置 3.13 或更高版本的自承载集成运行时。 有关详细信息，请参阅[自我托管集成运行时](create-self-hosted-integration-runtime.md)一文。
+- 设置 3.13 或更高版本的自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
 
 - 从 SAP 的网站下载 **64 位 [SAP .NET Connector 3.0](https://support.sap.com/en/product/connectors/msnet.html)** ，将其安装在自承载 IR 计算机上。 安装时，请在可选的安装步骤窗口中确保选择“将程序集安装到 GAC”选项，如下图所示。 
 
@@ -104,10 +104,10 @@ ADF SAP BW 开放集线器连接器提供两个可选属性： `excludeLastReque
 
 SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | Type 属性必须设置为： **SapOpenHub** | 是 |
-| 服务器 | SAP BW 实例所驻留的服务器的名称。 | 是 |
+| server | SAP BW 实例所驻留的服务器的名称。 | 是 |
 | systemNumber | SAP BW 系统的系统编号。<br/>允许值：用字符串表示的两位十进制数。 | 是 |
 | clientId | SAP W 系统中的客户端的客户端 ID。<br/>允许值：用字符串表示的三位十进制数。 | 是 |
 | 语言 | SAP 系统使用的语言。 | 否（默认值为 **EN**）|
@@ -146,7 +146,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从/向 SAP BW Open Hub 复制数据，请将数据集的 type 属性设置为 **SapOpenHubTable**。 支持以下属性。
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SapOpenHubTable**。  | 是 |
 | openHubDestinationName | 要从其复制数据的 Open Hub Destination 的名称。 | 是 |
@@ -180,11 +180,11 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从 SAP BW 打开的中心复制数据，复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的**type**属性必须设置为**SapOpenHubSource**。 | 是 |
 | excludeLastRequest | 是否排除最后一个请求的记录。 | 否（默认为 **true**） |
-| baseRequestId | 增量加载的请求的 ID。 设置以后，只会检索 requestId **大于**此属性的值的数据。  | No |
+| baseRequestId | 增量加载的请求的 ID。 设置以后，只会检索 requestId **大于**此属性的值的数据。  | 否 |
 
 >[!TIP]
 >如果 Open Hub 表只包含通过单个请求 ID 生成的数据（例如，始终进行完全加载并覆盖表中的现有数据，或者只在测试时运行 DTP 一次），则请记住取消选中“excludeLastRequest”选项，以便复制数据。
@@ -230,14 +230,14 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 | SAP ABAP 类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| C（字符串） | 字符串 |
+| C（字符串） | String |
 | I（整数） | Int32 |
 | F（浮点数） | Double |
-| D（日期） | 字符串 |
-| T（时间） | 字符串 |
+| D（日期） | String |
+| T（时间） | String |
 | P（BCD 打包，货币，小数，Qty） | Decimal |
-| N (Numc) | 字符串 |
-| X（二进制，原始） | 字符串 |
+| N (Numc) | String |
+| X（二进制，原始） | String |
 
 ## <a name="lookup-activity-properties"></a>查找活动属性
 
@@ -245,4 +245,4 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

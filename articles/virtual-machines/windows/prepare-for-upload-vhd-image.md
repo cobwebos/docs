@@ -1,5 +1,5 @@
 ---
-title: 准备要上传到 Azure 的 Windows VHD
+title: 准备好要上传到 Azure 的 Windows VHD
 description: 了解如何准备 Windows VHD 或 VHDX，以将其上传到 Azure
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 719a1985aeb0db7b0cf7f55a10762bf3ebb3e045
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906776"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79250187"
 ---
-# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备要上传到 Azure 的 Windows VHD 或 VHDX
+# <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
-将 Windows 虚拟机（VM）从本地上传到 Azure 之前，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 支持以 VHD 文件格式且具有固定大小磁盘的第1代和第2代 Vm。 VHD 允许的最大大小为 1023 GB。 
+将 Windows 虚拟机（VM）从本地上传到 Azure 之前，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 支持以 VHD 文件格式且具有固定大小磁盘的第1代和第2代 Vm。 VHD 允许的最大大小为 1,023 GB。 
 
-在第1代虚拟机中，你可以将 VHDX 文件系统转换为 VHD。 你还可以将动态扩展磁盘转换为固定大小磁盘。 但无法更改 VM 的代。 有关详细信息，请参阅是否[应在 hyper-v 中创建第1代或第2代 vm？](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)和[适用于第2代 vm （预览版）的 Azure 支持](generation-2.md)。
+在第1代虚拟机中，你可以将 VHDX 文件系统转换为 VHD。 你还可以将动态扩展磁盘转换为固定大小磁盘。 但无法更改 VM 的代次。 有关详细信息，请参阅是否[应在 hyper-v 中创建第1代或第2代 vm？](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)和[适用于第2代 vm （预览版）的 Azure 支持](generation-2.md)。
 
 有关 Azure Vm 的支持策略的信息，请参阅[Microsoft server software support For Azure vm](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)。
 
@@ -56,11 +56,11 @@ ms.locfileid: "76906776"
 
 1. 在运行虚拟磁盘转换过程之前备份 VM。
 
-1. 确保 Windows VHD 在本地服务器上正常工作。 在尝试将 VM 转换或上传到 Azure 之前，请解决 VM 本身中的任何错误。
+1. 确保 Windows VHD 在本地服务器上正常工作。 在尝试转换磁盘或将其上传到 Azure 之前，请解决 VM 本身内部的所有错误。
 
 1. 关于 VHD 的大小：
 
-   1. Azure 上的所有 Vhd 都必须将虚拟大小调整为1MB。 将原始磁盘转换为 VHD 时，必须确保原始磁盘大小为 1 MB 的倍数，然后转换。 在从已上传的 VHD 中创建映像时，将会导致错误。
+   1. Azure 上的所有 VHD 必须已将虚拟大小调整为 1MB。 将原始磁盘转换为 VHD 时，必须确保原始磁盘大小为 1 MB 的倍数，然后转换。 在从已上传的 VHD 中创建映像时，将会导致错误。
 
    2. 操作系统 VHD 允许的最大大小为2TB。
 
@@ -68,19 +68,19 @@ ms.locfileid: "76906776"
 转换磁盘后，创建使用该磁盘的虚拟机。 启动并登录到该 VM，以完成准备上传。
 
 ### <a name="use-hyper-v-manager-to-convert-the-disk"></a>使用 Hyper-v 管理器转换磁盘 
-1. 打开 Hyper-v 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择 "**操作** > **编辑磁盘**"。
+1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择 "**操作** > **编辑磁盘**"。
 2. 在 "**查找虚拟硬盘**" 页面上，选择虚拟磁盘。
 3. 在 "**选择操作**" 页上，选择 "**转换** > **下一步**"。
 4. 如果需要从 VHDX 进行转换，请选择 " **VHD** > "**下一步**"。
 5. 如果需要从动态扩展磁盘进行转换，请选择 "**固定大小**" > "**下一步**"。
-6. 找到并选择要将新的 VHD 文件保存到的路径。
-7. 选择 "**完成**"。
+6. 找到并选择新 VHD 文件的保存路径。
+7. 选择“完成”。
 
 > [!NOTE]
 > 使用提升的 PowerShell 会话运行本文中的命令。
 
 ### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 转换磁盘 
-可以使用 Windows PowerShell 中的 "[转换-VHD](https://technet.microsoft.com/library/hh848454.aspx) " 命令转换虚拟磁盘。 在启动 PowerShell 时选择 "**以管理员身份运行**"。 
+可以使用 Windows PowerShell 中的 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) 命令转换虚拟磁盘。 启动 PowerShell 时，选择“以管理员身份运行”。 
 
 下面的示例命令将磁盘从 VHDX 转换为 VHD。 此命令还会将磁盘从动态扩展磁盘转换为固定大小磁盘。
 
@@ -101,9 +101,9 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 在计划上传到 Azure 的 VM 上，在[提升的命令提示符窗口](https://technet.microsoft.com/library/cc947813.aspx)中运行以下命令：
 
-1. 删除路由表中的所有静态永久性路由：
+1. 删除路由表中的所有静态持久性路由：
    
-   * 若要查看路由表，请在命令提示符下运行 `route print`。
+   * 若要查看路由表，请在命令提示符处运行 `route print`。
    * 请检查 `Persistence Routes` 部分。 如果有持久性路由，请使用 `route delete` 命令将其删除。
 2. 删除 WinHTTP 代理：
    
@@ -152,7 +152,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name "TMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
     ```
 
-## <a name="check-the-windows-services"></a>检查 Windows 服务
+## <a name="check-the-windows-services"></a>查看 Windows 服务
 请确保以下每个 Windows 服务都设置为 Windows 默认值。 必须设置这些服务才能确保 VM 连接。 若要重置启动设置，请运行以下命令：
    
 ```PowerShell
@@ -174,7 +174,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 >[!NOTE] 
 >运行 `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <object name> -Value <value>`时，可能会收到一条错误消息。 您可以放心地忽略此消息。 这意味着只有域不会通过组策略对象推送该配置。
 
-1. 启用远程桌面协议（RDP）：
+1. 已启用远程桌面协议 (RDP)：
    
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0 -Type DWord -Force
@@ -187,9 +187,9 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
     ```PowerShell
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "PortNumber" -Value 3389 -Type DWord -Force
     ```
-    部署 VM 时，将针对端口3389创建默认规则。 若要更改端口号，请在 VM 部署到 Azure 中后执行此操作。
+    部署 VM 时，默认规则是针对端口 3389 创建的。 若要更改端口号，请在 VM 部署到 Azure 中后执行此操作。
 
-3. 侦听器正在每个网络接口中侦听：
+3. 侦听器在每个网络接口中侦听：
    
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "LanAdapter" -Value 0 -Type DWord -Force
@@ -211,7 +211,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
     Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -Name "KeepAliveInterval" -Value 1  -Type DWord -Force
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "KeepAliveTimeout" -Value 1 -Type DWord -Force
     ```
-6. 重新连接
+6. 重新连接：
     
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -Name "fDisableAutoReconnect" -Value 0 -Type DWord -Force
@@ -235,13 +235,13 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 
 9. 如果 VM 将是域的一部分，请检查以下策略，以确保不会还原以前的设置。 
     
-    | 努力                                     | 策略                                                                                                                                                       | “值”                                                                                    |
+    | 目标                                     | 策略                                                                                                                                                       | 值                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-    | RDP 已启用                           | Computer 配置 \windows \ \Windows 远程 Desktop 服务 \ 远程 Desktop Session 主机 \ 连接         | 允许用户使用远程桌面进行远程连接                                  |
-    | NLA 组策略                         | \ \Windows 远程桌面服务 \ 远程桌面会话主机                                                    | 使用 NLA 需要用户身份验证才能进行远程访问 |
-    | Keep-alive 设置                      | Computer 配置 \windows \ \Windows \Windows \Windows Desktop 服务 \ 远程 Desktop Session 主机 \ 连接 | 配置 keep-alive 连接间隔                                                 |
-    | 重新连接设置                       | Computer 配置 \windows \ \Windows \Windows \Windows Desktop 服务 \ 远程 Desktop Session 主机 \ 连接 | 自动重新连接                                                                   |
-    | 连接设置数量有限 | Computer 配置 \windows \ \Windows \Windows \Windows Desktop 服务 \ 远程 Desktop Session 主机 \ 连接 | 限制连接数                                                              |
+    | RDP 已启用                           | 计算机配置\策略\Windows 设置\管理模板\组件\远程桌面服务\远程桌面会话主机\连接         | 允许用户使用远程桌面进行远程连接                                  |
+    | NLA 组策略                         | 设置\管理模板\组件\远程桌面服务\远程桌面会话主机\安全性                                                    | 使用 NLA 需要用户身份验证才能进行远程访问 |
+    | Keep-alive 设置                      | 计算机配置\策略\Windows 设置\管理模板\Windows 组件\远程桌面服务\远程桌面会话主机\连接 | 配置保持活动状态的连接间隔                                                 |
+    | 重新连接设置                       | 计算机配置\策略\Windows 设置\管理模板\Windows 组件\远程桌面服务\远程桌面会话主机\连接 | 自动重新连接                                                                   |
+    | 连接设置数量有限 | 计算机配置\策略\Windows 设置\管理模板\Windows 组件\远程桌面服务\远程桌面会话主机\连接 | 限制连接数                                                              |
 
 ## <a name="configure-windows-firewall-rules"></a>配置 Windows 防火墙规则
 1. 在三个配置文件（"域"、"标准" 和 "公共"）上启用 Windows 防火墙：
@@ -267,15 +267,21 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
    ```PowerShell
    Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabled True
    ``` 
-5. 如果 VM 将是域的一部分，请检查以下 Azure AD 策略，以确保不会还原以前的设置。 
+5. 为 Azure 平台网络创建规则：
 
-    | 努力                                 | 策略                                                                                                                                                  | “值”                                   |
+   ```PowerShell
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Inbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow -EdgeTraversalPolicy Allow
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Outbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow
+   ``` 
+6. 如果 VM 将是域的一部分，请检查以下 Azure AD 策略，以确保不会还原以前的设置。 
+
+    | 目标                                 | 策略                                                                                                                                                  | 值                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
-    | 启用 Windows 防火墙配置文件 | Computer 配置 \windows \ \Windows \ \Windows 管理 \windows 模板 \windows \Windows Firewall   | 保护所有网络连接         |
-    | 启用 RDP                           | Computer 配置 \windows \ \Windows \ \Windows 管理 \windows 模板 \windows \Windows Firewall   | 允许入站远程桌面例外 |
-    |                                      | Computer 配置 \windows \ \Windows \ \Windows 管理 \windows 模板 \windows \Windows Firewall | 允许入站远程桌面例外 |
-    | 启用 ICMP-V4                       | Computer 配置 \windows \ \Windows \ \Windows 管理 \windows 模板 \windows \Windows Firewall   | 允许 ICMP 异常                   |
-    |                                      | Computer 配置 \windows \ \Windows \ \Windows 管理 \windows 模板 \windows \Windows Firewall | 允许 ICMP 异常                   |
+    | 启用 Windows 防火墙配置文件 | 计算机配置\策略\Windows 设置\管理模板\网络\网络连接\Windows 防火墙\域配置文件\Windows 防火墙   | 保护所有网络连接         |
+    | 启用 RDP                           | 计算机配置\策略\Windows 设置\管理模板\网络\网络连接\Windows 防火墙\域配置文件\Windows 防火墙   | 允许入站远程桌面异常 |
+    |                                      | 计算机配置\策略\Windows 设置\管理模板\网络\网络连接\Windows 防火墙\标准配置文件\Windows 防火墙 | 允许入站远程桌面异常 |
+    | 启用 ICMP-V4                       | 计算机配置\策略\Windows 设置\管理模板\网络\网络连接\Windows 防火墙\域配置文件\Windows 防火墙   | 允许 ICMP 异常                   |
+    |                                      | 计算机配置\策略\Windows 设置\管理模板\网络\网络连接\Windows 防火墙\标准配置文件\Windows 防火墙 | 允许 ICMP 异常                   |
 
 ## <a name="verify-the-vm"></a>验证 VM 
 
@@ -288,7 +294,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
     ```
     请确保报表显示 "干净" 和 "正常" 的磁盘。
 
-2. 设置引导配置数据（BCD）设置。 
+2. 设置引导配置数据 (BCD) 设置。 
 
     > [!NOTE]
     > 使用权限提升的 PowerShell 窗口运行这些命令。
@@ -339,19 +345,19 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 
 6. 上传域控制器的 Windows VHD：
 
-   * 请按照[以下额外步骤](https://support.microsoft.com/kb/2904015)来准备磁盘。
+   * 请执行[这些额外的步骤](https://support.microsoft.com/kb/2904015)来准备磁盘。
 
    * 请确保了解目录服务还原模式（DSRM）密码，以防在某个时间点必须在 DSRM 中启动 VM。 有关详细信息，请参阅[设置 DSRM 密码](https://technet.microsoft.com/library/cc754363(v=ws.11).aspx)。
 
 7. 请确保知道内置的管理员帐户和密码。 你可能需要重置当前的本地管理员密码，并确保可以使用此帐户通过 RDP 连接登录 Windows。 此访问权限由 "允许通过远程桌面服务登录" 组策略对象控制。 在此处本地组策略编辑器查看此对象：
 
-    计算机配置 \Windows 设置 \ 安全设置 \ 本地策略 \ 权限分配
+    计算机配置\Windows 设置\安全设置\本地策略\用户权限分配
 
 8. 检查以下 Azure AD 策略，以确保不会通过 RDP 或从网络阻止 RDP 访问：
 
-    - 计算机配置 \Windows 设置 \ 安全设置 \ 本地策略 \ 权限分配登录从网络访问此计算机
+    - 计算机配置\Windows 设置\安全设置\本地策略\用户权限分配\拒绝从网络访问这台计算机
 
-    - 计算机配置 \Windows 设置 \ 安全设置 \ 本地策略 \ 本地策略 \ 分配登录登录远程桌面服务
+    - 计算机配置\Windows 设置\安全设置\本地策略\用户权限分配\拒绝通过远程桌面服务登录
 
 
 9. 检查以下 Azure AD 策略，确保不会删除任何所需的访问帐户：
@@ -364,7 +370,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 
    - 备份操作员
 
-   - 人人
+   - 所有人
 
    - 用户
 
@@ -379,35 +385,35 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 
 | 组件               | Binary         | Windows 7 SP1、Windows Server 2008 R2 SP1 | Windows 8、Windows Server 2012               | Windows 8.1，Windows Server 2012 R2 | Windows 10 v1607、Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709、Windows Server 2016 v1709 | Windows 10 v1803、Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
-| 存储                 | disk .sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638/6.2.9200.21757-KB3137061: | 6.3.9600.18203-KB3137061:         | -                                                       | -                          | -                                               | -                                               |
-|                         | storport .sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
-|                         | .sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
-|                         | Iologmsg   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                  | -                                                       | -                          | -                                               | -                                               |
-|                         | Classpnp   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17061 / 6.2.9200.21180 - KB2995387 | 6.3.9600.18334 - KB3172614         | 10.0.14393.953 - KB4022715                              | -                          | -                                               | -                                               |
-|                         | Volsnap    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17047 / 6.2.9200.21165 - KB2975331 | 6.3.9600.18265 - KB3145384         | -                                                       | 10.0.15063.0               | -                                               | -                                               |
-|                         | partmgr    | 6.1.7601.23403 - KB3125574                | 6.2.9200.16681 - KB2877114                  | 6.3.9600.17401-KB3000850         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
-|                         | volmgr     |                                           |                                             |                                    |                                                         | 10.0.15063.0               | -                                               | -                                               |
-|                         | Volmgrx    | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | 10.0.15063.0               | -                                               | -                                               |
-|                         | Msiscsi    | 6.1.7601.23403 - KB3125574                | 6.2.9200.21006 - KB2955163                  | 6.3.9600.18624 - KB4022726         | 10.0.14393.1066 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
-|                         | Msdsm      | 6.1.7601.23403 - KB3125574                | 6.2.9200.21474 - KB3046101                  | 6.3.9600.18592 - KB4022726         | -                                                       | -                          | -                                               | -                                               |
-|                         | Mpio       | 6.1.7601.23403 - KB3125574                | 6.2.9200.21190 - KB3046101                  | 6.3.9600.18616 - KB4022726         | 10.0.14393.1198 - KB4022715                             | -                          | -                                               | -                                               |
-|                         | vmstorfl   | 6.3.9600.18907 - KB4072650                | 6.3.9600.18080 - KB3063109                  | 6.3.9600.18907 - KB4072650         | 10.0.14393.2007 - KB4345418                             | 10.0.15063.850 - KB4345419 | 10.0.16299.371 - KB4345420                      | -                                               |
-|                         | Fveapi     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614         | 10.0.14393.576 - KB4022715                              | -                          | -                                               | -                                               |
-|                         | Fveapibase | 6.1.7601.23403 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.17415 - KB3172614         | 10.0.14393.206-KB4022715                              | -                          | -                                               | -                                               |
+| 存储                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
+|                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
+|                         | ntfs.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
+|                         | Iologmsg.dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                  | -                                                       | -                          | -                                               | -                                               |
+|                         | Classpnp.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17061 / 6.2.9200.21180 - KB2995387 | 6.3.9600.18334 - KB3172614         | 10.0.14393.953 - KB4022715                              | -                          | -                                               | -                                               |
+|                         | Volsnap.sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17047 / 6.2.9200.21165 - KB2975331 | 6.3.9600.18265 - KB3145384         | -                                                       | 10.0.15063.0               | -                                               | -                                               |
+|                         | partmgr.sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.16681 - KB2877114                  | 6.3.9600.17401 - KB3000850         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
+|                         | volmgr.sys     |                                           |                                             |                                    |                                                         | 10.0.15063.0               | -                                               | -                                               |
+|                         | Volmgrx.sys    | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | 10.0.15063.0               | -                                               | -                                               |
+|                         | Msiscsi.sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.21006 - KB2955163                  | 6.3.9600.18624 - KB4022726         | 10.0.14393.1066 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
+|                         | Msdsm.sys      | 6.1.7601.23403 - KB3125574                | 6.2.9200.21474 - KB3046101                  | 6.3.9600.18592 - KB4022726         | -                                                       | -                          | -                                               | -                                               |
+|                         | Mpio.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.21190 - KB3046101                  | 6.3.9600.18616 - KB4022726         | 10.0.14393.1198 - KB4022715                             | -                          | -                                               | -                                               |
+|                         | vmstorfl.sys   | 6.3.9600.18907 - KB4072650                | 6.3.9600.18080 - KB3063109                  | 6.3.9600.18907 - KB4072650         | 10.0.14393.2007 - KB4345418                             | 10.0.15063.850 - KB4345419 | 10.0.16299.371 - KB4345420                      | -                                               |
+|                         | Fveapi.dll     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614         | 10.0.14393.576 - KB4022715                              | -                          | -                                               | -                                               |
+|                         | Fveapibase.dll | 6.1.7601.23403 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.17415 - KB3172614         | 10.0.14393.206 - KB4022715                              | -                          | -                                               | -                                               |
 | 网络                 | netvsc.sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
-|                         | mrxsmb10   | 6.1.7601.23816 - KB4022722                | 6.2.9200.22108 - KB4022724                  | 6.3.9600.18603 - KB4022726         | 10.0.14393.479 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
-|                         | mrxsmb20   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
-|                         | mrxsmb     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
-|                         | tcpip .sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
+|                         | mrxsmb10.sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.22108 - KB4022724                  | 6.3.9600.18603 - KB4022726         | 10.0.14393.479 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
+|                         | mrxsmb20.sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
+|                         | mrxsmb.sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
+|                         | tcpip.sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
 |                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
-|                         | vmswitch   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
-| Core                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
-| 远程桌面服务 | rdpcorets  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
-|                         | termsrv    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415-KB3000850         | 10.0.14393.0-KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
+|                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
+| 核心                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
+| 远程桌面服务 | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
+|                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 - KB3000850         | 10.0.14393.0 - KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
 |                         | termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726         | 10.0.14393.594 - KB4022715                              | -                          | -                                               | -                                               |
-|                         | rdpdd      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
-|                         | rdpwd      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
+|                         | rdpdd.dll      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
+|                         | rdpwd.sys      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 | 安全性                | MS17-010       | KB4012212                                 | KB4012213                                   | KB4012213                          | KB4012606                                               | KB4012606                  | -                                               | -                                               |
 |                         |                |                                           | KB4012216                                   |                                    | KB4013198                                               | KB4013198                  | -                                               | -                                               |
 |                         |                | KB4012215                                 | KB4012214                                   | KB4012216                          | KB4013429                                               | KB4013429                  | -                                               | -                                               |
@@ -427,11 +433,11 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 如果只需从一个磁盘创建一个 VM，则无需使用 Sysprep。 相反，你可以从*专用映像*创建 VM。 有关如何从专用磁盘创建 VM 的信息，请参阅：
 
 - [从专用磁盘创建 VM](create-vm-specialized.md)
-- [从专用 VHD 磁盘创建 VM](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
+- [Create a VM from a specialized VHD disk](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)（从专用 VHD 磁盘创建 VM）
 
 如果要创建通用化映像，则需运行 Sysprep。 有关详细信息，请参阅[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。 
 
-并非每个安装在基于 Windows 的计算机上的角色或应用程序都支持通用化映像。 因此，在运行此过程之前，请确保 Sysprep 支持计算机的角色。 有关详细信息，请参阅[Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)。
+并非每个安装在基于 Windows 的计算机上的角色或应用程序都支持通用化映像。 因此，在运行此过程之前，请确保 Sysprep 支持计算机的角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)。
 
 ### <a name="generalize-a-vhd"></a>通用化 VHD
 
@@ -439,16 +445,16 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 > 在执行以下步骤中的 `sysprep.exe` 后，关闭 VM。 在 Azure 中创建映像之前，请不要将其重新打开。
 
 1. 登录到 Windows VM。
-1. 以管理员身份运行**命令提示符**。 
+1. 以管理员身份运行命令提示符。 
 1. 将目录更改为 `%windir%\system32\sysprep`。 然后运行 `sysprep.exe`。
-1. 在 "**系统准备工具**" 对话框中，选择 "**进入系统全新体验（OOBE）** "，并确保已选中 "**通用化**" 复选框。
+1. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。
 
     ![系统准备工具](media/prepare-for-upload-vhd-image/syspre.png)
-1. 在 "**关闭选项**" 中，选择 "**关闭**"。
-1. 选择 **确定**。
+1. 在“关机选项”中选择“关机”。
+1. 选择“确定”。
 1. Sysprep 完成后，关闭 VM。 不要使用 "**重新启动**" 来关闭 VM。
 
-现在，VHD 已准备好上传。 有关如何从通用化磁盘创建 VM 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新 vm](sa-upload-generalized.md)。
+现在，VHD 已准备就绪，可以上传了。 有关如何从通用化磁盘创建 VM 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新 vm](sa-upload-generalized.md)。
 
 
 >[!NOTE]
@@ -456,7 +462,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 
 
 ## <a name="complete-the-recommended-configurations"></a>完成建议的配置
-以下设置不影响 VHD 上传。 但是，我们强烈建议你对其进行配置。
+以下设置不影响 VHD 上传。 但是，我们强烈建议配置这些设置。
 
 * 安装[Azure 虚拟机代理](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 然后即可启用 VM 扩展。 VM 扩展实现了可能需要用于 Vm 的大多数关键功能。 例如，你将需要这些扩展来重置密码或配置 RDP。 有关详细信息，请参阅[Azure 虚拟机代理概述](../extensions/agent-windows.md)。
 * 在 Azure 中创建 VM 后，建议将页面文件放在*时态驱动器卷*上，以提高性能。 您可以设置文件位置，如下所示：
@@ -468,6 +474,6 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
   * 建议禁用防病毒软件可能提供的脚本阻止程序。 当你从映像部署新的 VM 时，它们可能会影响和阻止执行的 Windows 预配代理脚本。
   
 ## <a name="next-steps"></a>后续步骤
-* [将 Windows VM 映像上传到 Azure 以进行资源管理器部署](upload-generalized-managed.md)
+* [将 Windows VM 映像上传到 Azure 以进行 Resource Manager 部署](upload-generalized-managed.md)
 * [排查 Azure Windows VM 激活问题](troubleshoot-activation-problems.md)
 

@@ -10,11 +10,11 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595770"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219507"
 ---
 # <a name="how-to-manage-settings"></a>如何管理设置
 
@@ -85,7 +85,7 @@ ms.locfileid: "68595770"
 
 ## <a name="sharing-permissions"></a>共享权限
 
-1.  **读者：** 工作区中的读者可以查看工作区中的所有信息。
+1.  **读取者：** 工作区中的读取者可以查看工作区中的所有信息。
 
 2.  **编辑者：** 工作区中的编辑者可以添加文档、训练模型，以及删除文档和项目。 他们可以添加订阅密钥，但无法修改工作区的共享对象、删除工作区，或更改工作区名称。
 
@@ -103,4 +103,4 @@ ms.locfileid: "68595770"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何从 [Microsoft Translator Hub](https://hub.microsofttranslator.com) [迁移工作区和项目](how-to-migrate.md)
+- 了解如何从 [Microsoft Translator Hub](how-to-migrate.md)[迁移工作区和项目](https://hub.microsofttranslator.com)

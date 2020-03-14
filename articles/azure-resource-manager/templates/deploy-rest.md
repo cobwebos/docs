@@ -4,11 +4,11 @@ description: 使用 Azure 资源管理器和资源管理器 REST API 将资源�
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.openlocfilehash: fc386f51073c256fd083a04bbed39316784827b1
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152504"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273808"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>使用 Resource Manager 模板和 Resource Manager REST API 部署资源
 

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.openlocfilehash: b2c407036277b17c0f8c08f3261c932a6dc66624
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361813"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276174"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
 Application Insights .NET SDK 由多个 NuGet 包组成。 [核心包](https://www.nuget.org/packages/Microsoft.ApplicationInsights)提供 API，用于将遥测数据发送到 Application Insights。 [其他包](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)提供遥测*模块*和*初始值设定项*，用于自动从应用程序及其上下文跟踪遥测。 通过调整配置文件，可以启用或禁用遥测模块和初始值设定项，并为其中一些参数设置参数。
@@ -135,7 +135,7 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 可以[编写自己的遥测处理器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。
 
 #### <a name="adaptive-sampling-telemetry-processor-from-200-beta3"></a>自适应采样遥测处理器（来自 2.0.0-beta3）
-默认情况下已启用此项。 如果应用程序要发送大量遥测数据，此处理器将删除某些遥测数据。
+此项已默认启用。 如果应用程序要发送大量遥测数据，此处理器将删除某些遥测数据。
 
 ```xml
 

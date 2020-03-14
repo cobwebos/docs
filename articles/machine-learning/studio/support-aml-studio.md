@@ -9,14 +9,16 @@ ms.topic: conceptual
 author: peterclu
 ms.author: amlstudiodocs
 ms.date: 01/18/2019
-ms.openlocfilehash: ee4ef451888638c0ba33d7938c88b836b28f3fe5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f7146db33368877b8eb029e106559477376c5953
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894632"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217905"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>获取 Azure 机器学习 Studio （经典）的支持和培训
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 本文介绍如何了解 Azure 机器学习 Studio （经典）的详细信息，并获取对问题和问题的支持。
 
@@ -41,4 +43,4 @@ ms.locfileid: "75894632"
 
 + **Stack Overflow**：访问 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上标记为“Azure-Machine-Learning”的 Azure 机器学习社区。
 
-+ 在我们的 [Azure 机器学习反馈通道](https://feedback.azure.com/forums/257792-machine-learning)中**分享产品建议**和功能请求。 若要分享建议，请选择每篇文章末尾的“产品反馈”按钮。
++ 在我们的 **Azure 机器学习反馈通道**中[分享产品建议](https://feedback.azure.com/forums/257792-machine-learning)和功能请求。 若要分享建议，请选择每篇文章末尾的“产品反馈”按钮。

@@ -1,24 +1,64 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Avere vFXT for Azure 文档
+summary: Avere vFXT for Azure 为数据密集型的高性能计算 (HPC) 任务提供了基于云的缓存层。
 metadata:
   title: Avere vFXT for Azure 文档
-  description: 使用 Avere vFXT 作为缓存层来执行需要进行大量读取操作的高性能计算 (HPC) 任务
-  services: avere-vfxt
-  author: ekpgh
+  description: 使用 Avere vFXT 作为缓存层来执行需要进行大量读取操作的高性能计算 (HPC) 任务。
   ms.service: avere-vfxt
   ms.topic: landing-page
-  ms.date: 12/19/2019
+  author: ronhogue
   ms.author: rohogue
-abstract:
-  description: 'Avere vFXT for Azure 为数据密集型的高性能计算 (HPC) 任务提供了基于云的缓存层。 通过将文件缓存到接近计算节点的位置，Avere vFXT 提高了读取速度，即使在处于峰值负载的情况下也可让工作顺利进行。 Avere vFXT 最适合用于具有 1,000 到 40,000 个客户端核心的系统。 <p>Avere vFXT 与现有的数据存储协作，让文件靠近基于 Azure 的计算资源。 活动文件仍会在你的数据中心内长期存储。'
-sections:
-  - title: Avere vFXT for Azure 入门
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="avere-vfxt-deploy-plan">规划 Avere vFXT for Azure 系统</a>
-          - html: <a href="avere-vfxt-deploy-overview">了解 Avere vFXT 部署</a>
-          - html: <a href="avere-vfxt-prereqs">满足先决条件</a>
-          - html: <a href="avere-vfxt-deploy">部署 Avere vFXT 群集</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 9b80c5dae1b9b08a5fc71c321813a28b576e0de4
+  ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "79297775"
+landingContent:
+- title: 关于 Avere vFXT for Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Avere vFXT for Azure？
+      url: avere-vfxt-overview.md
+  - linkListType: concept
+    links:
+    - text: 常见问题解答
+      url: avere-vfxt-faq.md
+- title: 规划和准备
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 规划 Avere vFXT 系统
+      url: avere-vfxt-deploy-plan.md
+  - linkListType: how-to-guide
+    links:
+    - text: 准备创建 Avere vFXT
+      url: avere-vfxt-prereqs.md
+- title: 创建和部署
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 部署概述
+      url: avere-vfxt-deploy-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 部署 vFXT 群集
+      url: avere-vfxt-deploy.md
+- title: 连接和管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 访问 vFXT 群集
+      url: avere-vfxt-cluster-gui.md
+    - text: 启用支持上传
+      url: avere-vfxt-enable-support.md
+    - text: 配置存储
+      url: avere-vfxt-add-storage.md
+    - text: 装载 Avere vFXT 群集
+      url: avere-vfxt-mount-clients.md
+    - text: 将数据移到 vFXT 群集
+      url: avere-vfxt-data-ingest.md
+    - text: 管理 Avere vFXT 群集
+      url: avere-vfxt-manage-cluster.md

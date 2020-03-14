@@ -4,11 +4,11 @@ description: 解决有关在 Azure 备份中备份文件和文件夹的常见问
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673083"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273418"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>有关备份文件和文件夹的常见问题
 

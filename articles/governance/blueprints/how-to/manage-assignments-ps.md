@@ -4,11 +4,11 @@ description: 了解如何通过官方 Azure 蓝图 PowerShell 模块 Az. 蓝图�
 ms.date: 09/30/2019
 ms.topic: how-to
 ms.openlocfilehash: 765ed5e1849443d6ac73fe4507327e97e4fdc4c2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973639"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280711"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>如何通过 PowerShell 管理分配
 

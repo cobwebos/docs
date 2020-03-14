@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 6c7c041565f6376e7f8b8b84f5076b30c1eec7bf
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846402"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278111"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置虚拟网络支持
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 VNet 是云中的专用网络。 为 Azure Redis 缓存实例配置了 VNet 后，该实例不可公开寻址，而只能从 VNet 中的虚拟机和应用程序进行访问。 本文说明如何为高级 Azure Redis 缓存实例配置虚拟网络支持。
@@ -98,7 +98,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 
 有九个出站端口要求。 这些范围中的出站请求是出站到缓存运行所必需的其他服务或 Redis 子网的内部请求，以便进行节点间通信。 对于地域复制，存在用于在主缓存和辅助缓存的子网之间进行通信的额外出站要求。
 
-| 端口 | 方向 | 传输协议 | 用途 | 本地 IP | 远程 IP |
+| 端口 | 方向 | 传输协议 | 目的 | 本地 IP | 远程 IP |
 | --- | --- | --- | --- | --- | --- |
 | 80、443 |出站 |TCP |Azure 存储/PKI (Internet) 上的 Redis 依赖关系 | （Redis 子网） |* |
 | 443 | 出站 | TCP | Azure Key Vault 上的 Redis 依赖关系 | （Redis 子网） | AzureKeyVault <sup>1</sup> |
@@ -124,7 +124,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和�
 
 有 8 个入站端口范围要求。 这些范围内的入站请求是指从同一 VNET 上托管的其他服务入站或者来自 Redis 子网通信内部。
 
-| 端口 | 方向 | 传输协议 | 用途 | 本地 IP | 远程 IP |
+| 端口 | 方向 | 传输协议 | 目的 | 本地 IP | 远程 IP |
 | --- | --- | --- | --- | --- | --- |
 | 6379、6380 |入站 |TCP |与 Redis 的客户端通信、Azure 负载均衡 | （Redis 子网） | （Redis 子网）、虚拟网络、Azure 负载均衡器<sup>1</sup> |
 | 8443 |入站 |TCP |Redis 内部通信 | （Redis 子网） |（Redis 子网） |

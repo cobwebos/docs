@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 0cc7c3b7d8b364e0bcca671efaff2cf324695428
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73667749"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281543"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure 数据工厂支持的计算环境
 > [!NOTE]
@@ -119,12 +119,12 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 > 
 
 ### <a name="properties"></a>属性
-| 属性                     | 说明                              | 必选 |
+| properties                     | 说明                              | 必选 |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | 将 type 属性设置为 **HDInsightOnDemand**。 | 是      |
 | clusterSize                  | 群集中的工作节点/数据节点数。 HDInsight 群集创建时具有 2 个头节点以及一定数量的工作节点（为此属性指定的数量）。 节点大小为 Standard_D3，采用 4 个核心。 包含 4 个工作节点的群集采用 24 个核心（工作节点采用 4\*4 = 16 个核心，头节点采用 2\*4 = 8 个核心）。 有关 Standard_D3 层的详细信息，请参阅[在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。 | 是      |
 | timeToLive                   | 按需 HDInsight 群集允许的空闲时间。 指定当活动运行完成后，如果群集中没有其他的活动作业，按需 HDInsight 群集保持活动状态的时间。<br /><br />例如，如果一个活动运行需要 6 分钟，而 **timeToLive** 的设置是 5 分钟，则当 6 分钟的活动运行处理结束后，群集将保持 5 分钟的活动状态。 如果在这 6 分钟的时间内执行其他的活动运行，则由同一群集进行处理。<br /><br />创建按需 HDInsight 群集是一项开销很大的操作（可能需要花费一段时间）。 请根据需要使用此设置，以通过重复使用一个按需 HDInsight 群集来提高数据工厂的性能。<br /><br />如果将 **timeToLive** 值设置为 **0**，则会在活动运行处理完后立即删除群集。 但是，如果设置较高的值，群集可能会保持不必要的空闲状态，从而造成较高成本。 根据具体需要设置适当的值非常重要。<br /><br />如果 **timeToLive** 值设置得当，则多个管道可以共享按需 HDInsight 群集的实例。 | 是      |
-| version                      | HDInsight 群集的版本。 有关允许的 HDInsight 版本，请参阅[支持的 HDInsight 版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)。 如果未指定此值，将使用[最新的 HDI 默认版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)。 | 否       |
+| 版本                      | HDInsight 群集的版本。 有关允许的 HDInsight 版本，请参阅[支持的 HDInsight 版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)。 如果未指定此值，将使用[最新的 HDI 默认版本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)。 | 否       |
 | linkedServiceName            | 由按需群集用于存储和处理数据的 Azure 存储链接服务。 HDInsight 群集在创建时与此存储帐户位于同一区域。<p>目前，无法创建使用 Azure Data Lake Store 作为存储的按需 HDInsight 群集。 若要将 HDInsight 处理后的结果数据存储在 Data Lake Store 中，请使用“复制活动”将数据从 Blob 存储复制到 Data Lake Store。 </p> | 是      |
 | additionalLinkedServiceNames | 为 HDInsight 链接服务指定更多的存储帐户。 数据工厂会代你注册存储帐户。 这些存储帐户必须与 HDInsight 群集位于同一区域。 HDInsight 群集是在 **linkedServiceName** 属性指定的存储帐户所在的同一区域中创建的。 | 否       |
 | osType                       | 操作系统的类型。 允许的值为 **Linux** 和 **Windows**。 如果未指定此值，将使用 **Linux**。  <br /><br />我们强烈建议使用基于 Linux 的 HDInsight 群集。 Windows 上的 HDInsight 的停用日期是 2018 年 7 月 31 日。 | 否       |
@@ -142,7 +142,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ### <a name="advanced-properties"></a>高级属性
 若要对按需 HDInsight 群集进行粒度配置，可指定以下属性：
 
-| 属性               | 说明                              | 必选 |
+| properties               | 说明                              | 必选 |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | 为要创建的 HDInsight 群集指定核心配置参数 (core-site.xml)。 | 否       |
 | hBaseConfiguration     | 为 HDInsight 群集指定 HBase 配置参数 (hbase-site.xml)。 | 否       |
@@ -195,7 +195,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ### <a name="node-sizes"></a>节点大小
 若要指定头节点、数据节点和 ZooKeeper 节点的大小，请使用以下属性： 
 
-| 属性          | 说明                              | 必选 |
+| properties          | 说明                              | 必选 |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | 设置头节点的大小。 默认值为 **Standard_D3**。 有关详细信息，请参阅[指定节点大小](#specify-node-sizes)。 | 否       |
 | dataNodeSize      | 设置数据节点的大小。 默认值为 **Standard_D3**。 | 否       |
@@ -229,7 +229,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 此类型的配置支持以下计算环境：
 
 * Azure HDInsight
-* Azure Batch
+* Azure 批处理
 * Azure 机器学习
 * Azure Data Lake Analytics
 * Azure SQL 数据库、Azure SQL 数据仓库、SQL Server
@@ -255,7 +255,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                              | 必选 |
+| properties          | 说明                              | 必选 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | 将 type 属性设置为 **HDInsight**。 | 是      |
 | clusterUri        | HDInsight 群集的 URI。        | 是      |
@@ -303,7 +303,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| 属性          | 说明                              | 必选 |
+| properties          | 说明                              | 必选 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | 将 type 属性设置为 **AzureBatch**。 | 是      |
 | accountName       | Batch 帐户的名称。         | 是      |
@@ -330,7 +330,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 ```
 
 ### <a name="properties"></a>属性
-| 属性   | 说明                              | 必选 |
+| properties   | 说明                              | 必选 |
 | ---------- | ---------------------------------------- | -------- |
 | 类型       | 将 type 属性设置为 **AzureML**。 | 是      |
 | mlEndpoint | 批处理计分 URL。                   | 是      |
@@ -341,7 +341,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 下表描述了 JSON 定义中使用的泛型属性。
 
-| 属性                 | 说明                              | 必选                                 |
+| properties                 | 说明                              | 必选                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | type                 | 将 type 属性设置为 **AzureDataLakeAnalytics**。 | 是                                      |
 | accountName          | Data Lake Analytics 帐户名。  | 是                                      |
@@ -360,7 +360,7 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性                | 说明                              | 必选 |
+| properties                | 说明                              | 必选 |
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | 应用程序的客户端 ID。     | 是      |
 | servicePrincipalKey | 应用程序的密钥。           | 是      |
@@ -388,10 +388,10 @@ Microsoft 会不断更新支持的 HDInsight 版本，以及最新的 Hadoop 生
 #### <a name="user-credential-authentication"></a>用户凭据身份验证
 若要对 Data Lake Analytics 使用用户凭据身份验证，请指定以下属性：
 
-| 属性          | 说明                              | 必选 |
+| properties          | 说明                              | 必选 |
 | :---------------- | :--------------------------------------- | :------- |
 | authorization | 在数据工厂编辑器中，选择“授权”按钮。 在此属性中输入用于分配自动生成的授权 URL 的凭据。 | 是      |
-| sessionId     | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时，会自动生成此设置。 | 是      |
+| sessionID     | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时，会自动生成此设置。 | 是      |
 
 **示例：用户凭据身份验证**
 ```json

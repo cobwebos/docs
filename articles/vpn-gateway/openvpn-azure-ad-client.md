@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3559a139ff89c949ee691310ae25af7d6950abdf
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251616"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138954"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>为 P2S OpenVPN 协议连接配置 VPN 客户端： Azure AD 身份验证
 
@@ -184,6 +184,10 @@ ms.locfileid: "78251616"
 </clientconfig>
 </azvpnprofile>
 ```
+
+> [!NOTE]
+> OpenVPN Azure AD 客户端使用 DNS 名称解析策略表（NRPT）条目，这意味着将不会在 `ipconfig /all`的输出下列出 DNS 服务器。 若要确认使用中的 DNS 设置，请参阅 PowerShell 中的[get-dnsclientnrptpolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) 。
+>
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何实现将自定义路由添加到 VPN 客户端？
 

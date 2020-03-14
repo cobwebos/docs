@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 6812393b01172cda5d2fa4dcbe9de2bf4264a99f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9cec91ccc80b9072b1a3da756f26f47eb88b951c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980776"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268608"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>将 SQL Server 数据库迁移到 Azure SQL 数据库
 
@@ -40,7 +40,7 @@ ms.locfileid: "75980776"
 
   ![VSSSDT 迁移示意图](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
-1. 使用最新版[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)[评估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)数据库的兼容性。
+1. 使用最新版[数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)[评估](https://www.microsoft.com/download/details.aspx?id=53595)数据库的兼容性。
 2. 以 Transact-SQL 脚本形式准备任何必需的修补程序。
 3. 进行迁移时，创建正在迁移的源数据库的事务一致副本，或暂停源数据库中发生的新事务。 实现后一种选择的方法包括禁用客户端连接或创建[数据库快照](https://msdn.microsoft.com/library/ms175876.aspx)。 迁移后，可以使用事务复制来更新已迁移的数据库，该数据库包含迁移的截止时间点后发生的更改。 请参阅[使用事务迁移进行迁移](sql-database-single-database-migrate.md#method-2-use-transactional-replication)。  
 4. 部署 Transact-SQL 脚本，将修补程序应用到数据库副本。
@@ -62,7 +62,7 @@ ms.locfileid: "75980776"
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>在迁移完成后优化性能
 
-在迁移完成后[更新统计信息](https://msdn.microsoft.com/library/ms187348.aspx)并进行完全扫描。
+在迁移完成后[更新统计信息](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql)并进行完全扫描。
 
 ## <a name="method-2-use-transactional-replication"></a>方法 2：使用事务复制
 

@@ -1,5 +1,5 @@
 ---
-title: PIM 中的 Azure AD 角色安全向导 - Azure Active Directory | Microsoft Docs
+title: PIM 中的 Azure AD 角色安全向导-Azure Active Directory |Microsoft Docs
 description: 介绍了可以用来使用 Azure AD Privileged Identity Management (PIM) 将永久特权 Azure AD 角色分配转换为符合条件的分配的安全向导。
 services: active-directory
 documentationcenter: ''
@@ -15,11 +15,11 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04bd0993873568ba7cce368ddd9277ed356b636c
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847046"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266567"
 ---
 # <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Privileged Identity Management 中的 Azure AD 角色安全向导
 
@@ -37,27 +37,27 @@ ms.locfileid: "73847046"
 
 ## <a name="run-the-wizard"></a>运行向导
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 打开“Azure AD Privileged Identity Management”。
 
 1. 选择 " **Azure AD 角色**"，然后选择 "**向导**"。
 
-    ![“Azure AD 角色 - 向导”页，其中显示运行向导的 3 个步骤](./media/pim-security-wizard/wizard-start.png)
+    ![Azure AD 角色-向导页面，其中显示了运行向导的三个步骤](./media/pim-security-wizard/wizard-start.png)
 
 1. 选择**1 发现特权角色**。
 
 1. 查看特权角色列表以查看哪些用户是永久的或符合条件的。
 
-    ![“发现特权角色 - 角色”窗格，其中显示永久和符合条件的成员](./media/pim-security-wizard/discover-privileged-roles-users.png)
+    ![发现特权角色-显示永久和合格成员的角色窗格](./media/pim-security-wizard/discover-privileged-roles-users.png)
 
 1. 选择 "**下一步**" 以选择要使其符合条件的用户或组。
 
-    ![“将成员转换为符合条件成员”页，其中显示选择要使其符合角色条件的成员的选项](./media/pim-security-wizard/convert-members-eligible.png)
+    ![将成员转换为符合条件的页，其中包含选择要为角色提供资格的成员的选项](./media/pim-security-wizard/convert-members-eligible.png)
 
 1. 选择用户或组后，选择 "**下一步**"。
 
-    ![“查看更改”页，显示将要转换的具有永久角色分配的成员](./media/pim-security-wizard/review-changes.png)
+    !["查看更改" 页面，其中显示了具有将转换的永久角色分配的成员](./media/pim-security-wizard/review-changes.png)
 
 1. 选择 **"确定"** 将永久分配转换为符合条件。
 

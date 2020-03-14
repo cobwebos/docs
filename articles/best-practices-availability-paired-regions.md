@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: jeconnoc
-ms.openlocfilehash: 0e47bde280e9483f3c265e0d3147eadcbb128612
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 778943dad9a04632797d5d9165b6f1f9a3eb9850
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270986"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248250"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
@@ -26,7 +26,7 @@ Azure 地理位置定义了一个世界区域，其中包含至少一个 Azure �
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-某些 Azure 服务会进一步利用配对区域，以确保业务连续性并防范数据丢失。  Azure 提供了多个[存储解决方案](/storage/common/storage-redundancy.md#redundancy-in-a-secondary-region)，这些解决方案利用配对的区域来确保数据的可用性。 例如， [Azure 异地冗余存储](/storage/common/storage-redundancy.md#geo-redundant-storage)（GRS）会自动将数据复制到次要区域，确保即使在主要区域无法恢复的情况下，数据也是持久的。 
+某些 Azure 服务会进一步利用配对区域，以确保业务连续性并防范数据丢失。  Azure 提供了多个[存储解决方案](./storage/common/storage-redundancy.md#redundancy-in-a-secondary-region)，这些解决方案利用配对的区域来确保数据的可用性。 例如， [Azure 异地冗余存储](./storage/common/storage-redundancy.md#geo-redundant-storage)（GRS）会自动将数据复制到次要区域，确保即使在主要区域无法恢复的情况下，数据也是持久的。 
 
 请注意，并非所有 Azure 服务都会自动复制数据，也不会将所有 Azure 服务自动从失败的区域回滚到其对。  在这种情况下，客户必须配置恢复和复制。
 

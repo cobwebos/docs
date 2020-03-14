@@ -1,24 +1,18 @@
 ---
 title: 适用于第2代 Vm 的 Azure 支持
 description: 第2代 Vm 的 Azure 支持概述
-services: virtual-machines-linux
-documentationcenter: ''
 author: ju-shim
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 8b1acb4676d97ff16410543828493428059ad0fb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b68179caed4df5efd3696d7d6a3739a1e07a3c80
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392894"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267295"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>支持 Azure 上的第2代 Vm
 

@@ -16,11 +16,11 @@ ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 145bc45e1b7faeddc23cf5f0662337e15ab51c29
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392467"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245689"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>使用 REST API 为 Azure 资源创建或更新自定义角色
 
@@ -38,7 +38,7 @@ ms.locfileid: "78392467"
 
 1. 将 *{filter}* 替换为角色类型。
 
-    | 筛选器 | 说明 |
+    | “筛选器” | 说明 |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | 基于 CustomRole 类型的筛选器 |
 
@@ -62,7 +62,7 @@ ms.locfileid: "78392467"
 
 1. 将 *{filter}* 替换为角色类型。
 
-    | 筛选器 | 说明 |
+    | “筛选器” | 说明 |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | 基于 CustomRole 类型的筛选器 |
 
@@ -86,7 +86,7 @@ ms.locfileid: "78392467"
 
 1. 将 *{filter}* 替换为角色的显示名称。
 
-    | 筛选器 | 说明 |
+    | “筛选器” | 说明 |
     | --- | --- |
     | `$filter=roleName%20eq%20'{roleDisplayName}'` | 使用角色的准确显示名称的 URL 编码形式。 例如 `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 

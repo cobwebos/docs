@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 9afac1adef801956f176dd339c795e2df533a2c7
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 648dbdb7e9e9d1b20c55d3fa5b314b7e4657d5e7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169123"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204176"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>使用本地 SQL Server 数据库通过 Azure 机器学习 Studio （经典）执行分析
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 通常，使用本地数据的企业希望利用云的规模和灵活性来平衡其机器学习工作负荷。 但他们并不希望在将企业的本地数据移动到云时中断其当前业务处理和工作流。 Azure 机器学习 Studio （经典）现在支持从本地 SQL Server 数据库读取数据，然后使用此数据对模型进行定型和评分。 再也不必在云和本地服务器之间手动复制并同步数据。 相反，Azure 机器学习 Studio （经典）中的 "**导入数据**" 模块现在可以直接从本地 SQL Server 数据库中读取，以便进行定型和评分工作。
 
@@ -43,7 +45,7 @@ ms.locfileid: "77169123"
 * 数据工厂自承载运行时需要带有 .NET Framework 4.6.1 或更高版本的 64 位操作系统。
 * 支持的 Windows 操作系统版本有 Windows 10、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016。 
 * IR 计算机的推荐配置至少为：2 GHz、4 核 CPU、8 GB RAM 和 80 GB 磁盘。
-* 如果主机计算机进入休眠状态，则 IR 不会响应数据请求。 因此，安装 IR 之前，请在计算机上配置相应的电源计划。 如果计算机配置为休眠，则 IR 安装会显示一条消息。
+* 如果主机处于休眠状态，则 IR 不会响应数据请求。 因此，安装 IR 之前，请在计算机上配置相应的电源计划。 如果计算机配置为休眠，则 IR 安装会显示一条消息。
 * 由于复制活动按特定频率发生，因此计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率还很大程度上取决于正在移动的数据量。 进行多个复制作业时，将观察到资源使用率在高峰期上升。 尽管以上所列最低配置从技术上讲足够，但你可能希望具有更多资源的配置（相对于最低配置），具体取决于数据移动的特定负载。
 
 在设置并使用数据工厂自承载集成运行时的时候，请注意以下几点：
@@ -51,7 +53,7 @@ ms.locfileid: "77169123"
 * 一台计算机上只能安装一个 IR 实例。
 * 可以将单个 IR 用于多个本地数据源。
 * 可以将不同计算机上的多个 IR 连接到同一个本地数据源。
-* 一次只能为一个工作区配置一个 IRs。 目前不能跨工作区共享 IR。
+* 一次只能为一个工作区配置一个 IRs。 目前，IRs 不能跨工作区共享。
 * 可以为单个工作区配置多个 IR。 例如，你可能想要在开发期间使用连接到测试数据源的 IR，并在准备好操作时使用生产 IR。
 * IR 不需要位于数据源所在的计算机上。 但是，如果离数据源较近，可以减少网关连接到数据源的时间。 建议不要在托管本地数据源的计算机上安装 IR，从而避免 IR 和数据源之间的资源争用。
 * 如果计算机上已安装 IR 作为 Power BI 或 Azure 数据工厂方案，请在另一台计算机上安装 Azure 机器学习 Studio （经典）的单独 IR。
@@ -68,7 +70,7 @@ ms.locfileid: "77169123"
 在本演练中，你将在 Azure 机器学习工作区中设置 Azure 数据工厂 Integration Runtime，对其进行配置，然后从本地 SQL Server 数据库中读取数据。
 
 > [!TIP]
-> 开始之前，请在浏览器中禁用 `studio.azureml.net` 的弹出窗口阻止程序。 如果使用的是 Google Chrome 浏览器，请下载并安装 Google Chrome WebStore [ClickOnce 应用扩展](https://chrome.google.com/webstore/search/clickonce?_category=extensions)中提供的几个插件中的一个。
+> 在开始之前，请为 `studio.azureml.net`禁用浏览器弹出窗口阻止程序。 如果使用的是 Google Chrome 浏览器，请下载并安装 Google Chrome WebStore [ClickOnce 应用扩展](https://chrome.google.com/webstore/search/clickonce?_category=extensions)中提供的几个插件中的一个。
 >
 > [!NOTE]
 > Azure 数据工厂自承载集成运行时之前名为“数据管理网关”。 此分步教程将继续称其为网关。  
@@ -118,7 +120,7 @@ ms.locfileid: "77169123"
 这将完成 Azure 机器学习 Studio （经典）中的网关设置过程。
 现在，已可以使用本地数据。
 
-可以为每个工作区创建并设置 Studio （经典）中的多个网关。 例如，可能希望开发期间某个网关与测试数据源连接，而其他网关用于生产数据源。 Azure 机器学习 Studio （经典）提供了根据公司环境设置多个网关的灵活性。 目前，不能在工作区之间共享网关，一台计算机上只能安装一个网关。 有关详细信息，请参阅[使用数据管理网关在本地源与云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)。
+可以为每个工作区创建并设置 Studio （经典）中的多个网关。 例如，可能希望开发期间某个网关与测试数据源连接，而其他网关用于生产数据源。 Azure 机器学习 Studio （经典）提供了根据公司环境设置多个网关的灵活性。 目前不能在工作区之间共享网关，并且一台计算机上只能安装一个网关。 有关详细信息，请参阅[使用数据管理网关在本地源与云之间移动数据](../../data-factory/tutorial-hybrid-copy-portal.md)。
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>步骤 2：使用网关从本地数据源读取数据
 在完成设置网关后，可以将“导入数据”模块添加到从本地 SQL Server 数据库输入数据的实验。

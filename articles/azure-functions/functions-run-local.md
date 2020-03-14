@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 559c9ee237f95f9d175aaefb487131466700e899
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 19691a654162ee3855cb257fd42e29d2e1fc0157
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190783"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276655"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -65,13 +65,13 @@ ms.locfileid: "78190783"
 
     ##### <a name="v2x"></a>v2.x
 
-    ```bash
+    ```cmd
     npm install -g azure-functions-core-tools
     ```
 
     ##### <a name="v3x"></a>v3. x
 
-    ```bash
+    ```cmd
     npm install -g azure-functions-core-tools@3
     ```
 
@@ -79,7 +79,7 @@ ms.locfileid: "78190783"
 
 1. 如果不打算使用[扩展捆绑]，请安装[.NET Core 2.X SDK for Windows](https://www.microsoft.com/net/download/windows)。
 
-# <a name="macos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 以下步骤使用 Homebrew 在 macOS 上安装 Core Tools。
 
@@ -163,33 +163,33 @@ Functions 项目目录包含文件 [host.json](functions-host-json.md) 和 [loca
 
 在终端窗口中或者在命令提示符下，运行以下命令创建项目和本地 Git 存储库：
 
-```bash
+```
 func init MyFunctionProj
 ```
 
 提供项目名称时，将创建并初始化具有该名称的新文件夹。 否则，初始化当前文件夹。  
 在版本 2.x 中运行命令时，必须为项目选择一个运行时。 
 
-```output
+<pre>
 Select a worker runtime:
 dotnet
 node
 python 
 powershell
-```
+</pre>
 
 使用向上/向下箭头键选择语言，然后按 Enter。 如果打算开发 JavaScript 或 TypeScript 函数，请选择 "**节点**"，然后选择语言。 TypeScript 有[一些额外的要求](functions-reference-node.md#typescript)。 
 
 JavaScript 项目的输出如以下示例所示：
 
-```output
+<pre>
 Select a worker runtime: node
 Writing .gitignore
 Writing host.json
 Writing local.settings.json
 Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
-```
+</pre>
 
 `func init` 支持以下选项，除非另有说明，否则这些选项仅限版本 2.x：
 
@@ -247,12 +247,12 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
   + 从现有函数应用下载所有设置：
 
-    ```bash
+    ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
   + 获取特定存储帐户的连接字符串。
 
-    ```bash
+    ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
@@ -262,13 +262,13 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 若要创建函数，请运行以下命令：
 
-```bash
+```
 func new
 ```
 
 在版本 2.x 中运行 `func new` 时，系统会提示你选择采用函数应用默认语言的模板，另外还会提示你选择函数的名称。 在版本 1.x 中，系统还会提示你选择语言。
 
-```output
+<pre>
 Select a language: Select a template:
 Blob trigger
 Cosmos DB trigger
@@ -279,18 +279,18 @@ SendGrid
 Service Bus Queue trigger
 Service Bus Topic trigger
 Timer trigger
-```
+</pre>
 
 函数代码在具有所提供的函数名称的子文件夹中生成，如以下队列触发器输出中所示：
 
-```output
+<pre>
 Select a language: Select a template: Queue trigger
 Function name: [QueueTriggerJS] MyQueueTrigger
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\index.js
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\readme.md
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\sample.dat
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
-```
+</pre>
 
 也可以在命令中使用以下参数指定这些选项：
 
@@ -303,62 +303,65 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 例如，若要在单个命令中创建 JavaScript HTTP 触发器，请运行：
 
-```bash
+```
 func new --template "Http Trigger" --name MyHttpTrigger
 ```
 
 若要在单个命令中创建队列触发的函数，请运行：
 
-```bash
+```
 func new --template "Queue Trigger" --name QueueTriggerJS
 ```
 
 ## <a name="start"></a>在本地运行函数
 
-若要运行 Functions 项目，请运行 Functions 主机。 宿主为项目中的所有函数启用触发器。 
+若要运行 Functions 项目，请运行 Functions 主机。 宿主为项目中的所有函数启用触发器。 启动命令因项目语言而异。
 
-### <a name="version-2x"></a>版本 2.x
+# <a name="c"></a>[C\#](#tab/csharp)
 
-在运行时的版本2.x 中，start 命令因项目语言而异。
-
-#### <a name="c"></a>C\#
-
-```command
+```
 func start --build
 ```
+# <a name="javascript"></a>[JavaScript](#tab/node)
 
-#### <a name="javascript"></a>JavaScript
-
-```command
+```
 func start
 ```
 
-#### <a name="typescript"></a>TypeScript
+# <a name="python"></a>[Python](#tab/python)
 
-```command
+```
+func start
+```
+此命令必须[在虚拟环境中运行](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv)。
+
+# <a name="typescript"></a>[TypeScript](#tab/ts)
+
+```
 npm install
 npm start     
 ```
 
-### <a name="version-1x"></a>版本 1.x
+---
 
-函数运行时的版本1.x 需要 `host` 命令，如以下示例中所示：
-
-```command
-func host start
-```
+>[!NOTE]  
+> 函数运行时的版本1.x 需要 `host` 命令，如以下示例中所示：
+>
+> ```
+> func host start
+> ```
 
 `func start` 支持以下选项：
 
 | 选项     | 说明                            |
 | ------------ | -------------------------------------- |
-| **`--no-build`** | 在运行之前请勿生成当前项目。 仅限于 dotnet 项目。 默认设置为 false。 仅限版本 2.x。 |
-| **`--cert`** | 包含私钥的 .pfx 文件的路径。 仅与 `--useHttps` 结合使用。 仅限版本 2.x。 |
-| **`--cors-credentials`** | 允许跨域经身份验证的请求（例如 cookies 和身份验证标头），仅限版本 2.x。 |
+| **`--no-build`** | 在运行之前请勿生成当前项目。 仅限于 dotnet 项目。 默认设置为 false。 版本1.x 不支持。 |
+| **`--cert`** | 包含私钥的 .pfx 文件的路径。 仅与 `--useHttps` 结合使用。 版本1.x 不支持。 |
+| **`--cors-credentials`** | 允许跨域身份验证请求（即 cookie 和身份验证标头），而不支持版本1.x。 |
 | **`--cors`** | 以逗号分隔的 CORS 来源列表，其中不包含空格。 |
-| **`--language-worker`** | 用于配置语言辅助角色的参数。 例如，可以通过提供[调试端口和其他所需的参数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)来启用语言辅助角色调试。 仅限版本 2.x。 |
+| **`--language-worker`** | 用于配置语言辅助角色的参数。 例如，可以通过提供[调试端口和其他所需的参数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)来启用语言辅助角色调试。 版本1.x 不支持。 |
 | **`--nodeDebugPort`** , **`-n`** | 要使用的 node.js 调试器的端口。 默认值：launch.json 中的值或 5858。 仅限版本 1.x。 |
-| **`--password`** | 密码或包含 .pfx 文件密码的文件。 仅与 `--cert` 结合使用。 仅限版本 2.x。 |
+| **`--password`** | 密码或包含 .pfx 文件密码的文件。 仅与 `--cert` 结合使用。 版本1.x 不支持。 |
 | **`--port`** , **`-p`** | 要侦听的本地端口。 默认值：7071。 |
 | **`--pause-on-error`** | 退出进程前，暂停增加其他输入。 仅当从集成开发环境 (IDE) 启动 Core Tools 时才使用。|
 | **`--script-root`** , **`--prefix`** | 用于指定要运行或部署的函数应用的根目录路径。 此选项用于可在子文件夹中生成项目文件的已编译项目。 例如，生成 C# 类库项目时，将在某个根子文件夹中生成 host.json、local.settings.json 和 function.json 文件，其路径类似于 *。* `MyProject/bin/Debug/netstandard2.0` 在这种情况下，请将前缀设置为 `--script-root MyProject/bin/Debug/netstandard2.0`。 这是在 Azure 中运行的函数应用的根目录。 |
@@ -367,13 +370,13 @@ func host start
 
 Functions 主机启动时，会输出 HTTP 触发的函数的 URL：
 
-```output
+<pre>
 Found the following functions:
 Host.Functions.MyHttpTrigger
 
 Job host started
 Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
-```
+</pre>
 
 >[!IMPORTANT]
 >在本地运行时，不会对 HTTP 终结点强制执行授权。 这意味着所有本地 HTTP 请求都将作为 `authLevel = "anonymous"` 处理。 有关详细信息，请参阅 [HTTP 绑定](functions-bindings-http-webhook-trigger.md#authorization-keys)一文。
@@ -397,21 +400,31 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 
 以下 cURL 命令使用查询字符串中传递的 name`MyHttpTrigger`_参数从 GET 请求触发_ quickstart 函数。
 
-```bash
+```
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 
 下面的示例是在请求主体中传递 name 的 POST 请求中调用的相同函数：
 
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```cmd
+curl --request POST http://localhost:7071/api/MyHttpTrigger --data "{'name':'Azure Rocks'}"
+```
+---
 
 可以从在查询字符串中传递数据的浏览器发出 GET 请求。 对于所有其他 HTTP 方法，必须使用 cURL、Fiddler、Postman 或类似的 HTTP 测试工具。
 
 #### <a name="non-http-triggered-functions"></a>非 HTTP 触发的函数
 
-对于 HTTP 触发器和 webhook 以外的所有类型函数，你可以通过调用管理终结点在本地测试函数。 在本地服务器上通过 HTTP POST 请求调用此终结点会触发该函数。 可以选择通过 POST 请求正文将测试数据传递给执行。 此功能类似于 Azure 门户中的“测试”选项卡。
+对于除 HTTP 触发器和 webhook 和事件网格触发器之外的所有类型的函数，可以通过调用管理终结点在本地测试函数。 在本地服务器上通过 HTTP POST 请求调用此终结点会触发该函数。 
+
+若要在本地测试事件网格触发函数，请参阅[利用查看器 web 应用进行本地测试](functions-bindings-event-grid-trigger.md#local-testing-with-viewer-web-app)。
+
+可以选择通过 POST 请求正文将测试数据传递给执行。 此功能类似于 Azure 门户中的“测试”选项卡。
 
 可以调用以下管理员终结点以触发非 HTTP 函数：
 
@@ -427,16 +440,22 @@ curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azu
 
 `<trigger_input>` 值包含函数所需格式的数据。 下面的 cURL 示例是指向 `QueueTriggerJS` 函数的 POST。 在这种情况下，输入是一个字符串，等同于期望在队列中找到的消息。
 
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
-curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
+curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTrigger
 ```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```bash
+curl --request POST -H "Content-Type:application/json" --data "{'input':'sample queue data'}" http://localhost:7071/admin/functions/QueueTrigger
+```
+---
 
-#### <a name="using-the-func-run-command-in-version-1x"></a>在版本 1.x 中使用 `func run` 命令
+#### <a name="using-the-func-run-command-version-1x-only"></a>使用 `func run` 命令（仅限版本1.x）
 
 >[!IMPORTANT]
-> 该工具的 2.x 版本不支持 `func run` 命令。 有关详细信息，请参阅主题[如何指向 Azure Functions 运行时版本](set-runtime-version.md)。
+> 只有版本1.x 的工具支持 `func run` 命令。 有关详细信息，请参阅主题[如何指向 Azure Functions 运行时版本](set-runtime-version.md)。
 
-也可以使用 `func run <FunctionName>` 直接调用函数并为函数提供输入数据。 此命令类似于在 Azure 门户中使用“测试”选项卡运行函数。
+在版本1.x 中，你还可以使用 `func run <FunctionName>` 直接调用函数，并为函数提供输入数据。 此命令类似于在 Azure 门户中使用“测试”选项卡运行函数。
 
 `func run` 支持以下选项：
 
@@ -450,7 +469,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 例如，若要调用 HTTP 触发的函数并传递内容正文，请运行以下命令：
 
-```bash
+```
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
@@ -467,7 +486,7 @@ Azure Functions Core Tools 支持两种类型的部署：通过[Zip](functions-d
 
 若要将本地代码发布到 Azure 中的函数应用，请使用 `publish` 命令：
 
-```bash
+```
 func azure functionapp publish <FunctionAppName>
 ```
 
@@ -504,7 +523,7 @@ func azure functionapp publish <FunctionAppName>
 
 Azure Functions 允许在[自定义 Docker 容器](functions-deployment-technologies.md#docker-container)中部署函数项目。 有关详细信息，请参阅[使用自定义映像在 Linux 上创建函数](functions-create-function-linux-custom-image.md)。 自定义容器必须有一个 Dockerfile。 若要创建具有 Dockerfile 的应用，请在 `func init`上使用--Dockerfile 选项。
 
-```bash
+```
 func deploy
 ```
 

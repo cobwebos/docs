@@ -9,16 +9,16 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 6baf9d4edba9ba8db008c5c6a8d7af6832ba3273
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 578d076dfc2fc383051c0c3a8528cdbb0fbcdb15
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591228"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208787"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>解决连接问题和 Microsoft Azure SQL 数据库的其他错误
 
-与 Azure SQL 数据库连接失败时，会出现错误消息。 这些连接问题可能是由于以下原因导致的： Azure SQL 数据库重新配置、防火墙设置、连接超时值、不正确的登录信息或未能在 [应用程序设计] 期间应用最佳实践和设计指南（sql-database-develop-overview.md）进程。 此外，如果达到了某些 Azure SQL Database 资源的最大限制，则无法连接到 Azure SQL 数据库。
+与 Azure SQL 数据库连接失败时，会出现错误消息。 这些连接问题可能是由于以下原因导致的： Azure SQL 数据库重新配置、防火墙设置、连接超时值、不正确的登录信息或在[应用程序设计](sql-database-develop-overview.md)过程中无法应用最佳实践和设计指南。 此外，如果达到了某些 Azure SQL Database 资源的最大限制，则无法连接到 Azure SQL 数据库。
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>暂时性故障错误消息（40197、40613和其他）
 

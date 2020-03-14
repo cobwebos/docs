@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c90278eccf889595378d3b6b07de2468910c660c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 5b05cd31a1747da0170556003e7a8534752e2fde
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080870"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137188"
 ---
 # <a name="use-the-azure-portal-to-create-a-media-services-account"></a>使用 Azure 门户创建媒体服务帐户
 
@@ -54,8 +54,6 @@ Azure 门户提供了一种快速创建 Azure 媒体服务帐户的方法。 可
     
 1. 选择“固定到仪表板”以查看帐户部署进度。
 1. 单击窗体底部的“创建”。
-   
-    成功创建帐户后，会打开概述页。 在流式处理终结点表中，帐户的默认流式处理终结点处于 "**已停止**" 状态。 
 
     创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用[动态打包](dynamic-packaging-overview.md)和[动态加密](content-protection-overview.md)，要从中流式传输内容的流式处理终结点必须处于 "**正在运行**" 状态。 
 

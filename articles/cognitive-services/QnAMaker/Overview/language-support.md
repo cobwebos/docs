@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720998"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220552"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker 资源和知识库的语言支持
 
@@ -52,7 +52,7 @@ ms.locfileid: "73720998"
 |希腊语|
 |古吉拉特语|
 |希伯来语|
-|印地语|
+|Hindi|
 |匈牙利语|
 |冰岛语|
 |印度尼西亚语|

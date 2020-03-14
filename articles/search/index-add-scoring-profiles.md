@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666301"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245455"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>将计分配置文件添加到 Azure 认知搜索索引
 
@@ -232,7 +232,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 > [!NOTE]  
 >  计分函数仅可应用于可筛选的字段。  
 
-|属性|描述|  
+|Attribute|说明|  
 |---------------|-----------------|  
 |`name`|必需。 这是计分概要文件的名称。 它遵循与字段相同的命名约定。 它必须以字母开头，不能包含点、冒号或 @ 符号，并且不能以短语“azureSearch”（区分大小写）开头。|  
 |`text`|包含权重属性。|  

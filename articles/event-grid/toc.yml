@@ -8,6 +8,8 @@
       href: overview.md
     - name: 比较消息服务
       href: compare-messaging-services.md
+    - name: 高级层级和基本层级
+      href: premium-basic-tiers.md
 - name: 快速入门
   expanded: true
   items:
@@ -102,6 +104,8 @@
           href: security-authentication.md
         - name: 授权
           href: security-authorization.md
+        - name: 网络安全
+          href: network-security.md
     - name: 传递和重试
       href: delivery-and-retry.md
     - name: 事件筛选
@@ -118,6 +122,12 @@
       href: geo-disaster-recovery.md
 - name: 操作方法指南
   items:
+    - name: 配置专用终结点（预览版）
+      href: configure-private-endpoints.md
+    - name: 配置 IP 防火墙（预览版）
+      href: configure-firewall.md
+    - name: 更新定价层
+      href: update-tier.md
     - name: 发布到自定义主题
       href: post-to-custom-topic.md
     - name: 在 HTTP 终结点接收事件

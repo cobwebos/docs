@@ -13,11 +13,11 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438921"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281933"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
@@ -140,7 +140,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 | --- | --- |
 | 在基于文件的存储（Blob 存储；Data Lake Store；Amazon S3；本地文件系统；本地 HDFS）之间复制数据 |介于 1 和 32 之间。 取决于文件大小以及用于在两个云数据存储之间复制数据的云数据移动单元 (DMU) 数，或用于混合复制的网关计算机的物理配置（将数据粘贴到本地数据存储或从本地数据存储复制）。 |
 | 将数据**从任何源数据存储复制到 Azure 表存储** |4 |
-| 所有其他源和接收器对 |第 |
+| 所有其他源和接收器对 |1 |
 
 默认行为通常应可提供最佳吞吐量。 但是，若要控制托管数据存储的计算机上的负载或优化复制性能，可选择替代默认值并为 **parallelCopies** 属性指定值。 该值必须介于 1 和 32 之间（两者均含）。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
 
@@ -205,12 +205,12 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ### <a name="configuration"></a>配置
 在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 TRUE 时，指定下一个表中列出的其他属性。 如果未指定，则还需要创建 Azure 存储或存储共享访问签名链接服务供暂存用。
 
-| 属性 | Description | 默认值 | 需要 |
+| properties | 说明 | 默认值 | 必选 |
 | --- | --- | --- | --- |
-| **enableStaging** |指定是否要通过过渡暂存存储复制数据。 |错误 |否 |
-| **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能使用具有共享访问签名的存储通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |N/A |将 **enableStaging** 设置为 TRUE 时，则为是 |
-| **路径** |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |N/A |否 |
-| **enableCompression** |指定是否应先压缩数据，再将数据复制到目标。 此设置可减少传输的数据量。 |错误 |否 |
+| **enableStaging** |指定是否要通过过渡暂存存储复制数据。 |False |否 |
+| **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能使用具有共享访问签名的存储通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |空值 |将 **enableStaging** 设置为 TRUE 时，则为是 |
+| **路径** |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |空值 |否 |
+| **enableCompression** |指定是否应先压缩数据，再将数据复制到目标。 此设置可减少传输的数据量。 |False |否 |
 
 以下是具有上表所述属性的复制活动的示例定义：
 

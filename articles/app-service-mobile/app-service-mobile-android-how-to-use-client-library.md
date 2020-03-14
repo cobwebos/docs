@@ -7,11 +7,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 52e91d900ce0f22862904695ba8adf463219c469
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374226"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249381"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>如何使用用于 Android 的 Azure 移动应用 SDK
 
@@ -155,7 +155,7 @@ Azure 移动应用 SDK 的核心作用是让你访问移动应用后端上的 SQ
 
 * id
 * text
-* 完整
+* complete
 
 相应的类型化客户端对象驻留在名为 **MyDataTable.java** 的文件中：
 
@@ -571,7 +571,7 @@ ToDoItemAdapter 构造函数的第二个参数是对布局的引用。 我们现
 
 #### <a name="use-adapter"></a>使用适配器绑定到 UI
 
-现在，你可以使用数据绑定了。 以下代码演示了如何获取表中的项，并使用返回项填充本地适配器。
+现在，可以使用数据绑定了。 以下代码演示了如何获取表中的项，并使用返回项填充本地适配器。
 
 ```java
     public void showAll(View view) {
@@ -726,7 +726,7 @@ mToDoTable.delete(ID);
 ```
 
 ### <a name="json_get"></a>从非类型化表中返回所有行
-以下代码演示了如何检索整个表。 由于使用的是 Json 数据表，你可以选择性地只检索某些表的列。
+以下代码演示了如何检索整个表。 由于使用的是 Json 数据表，可以选择性地只检索某些表的列。
 
 ```java
 public void showAllUntyped(View view) {
@@ -865,7 +865,7 @@ private AsyncTask<Void, Void, Void> sync(MobileServiceClient mClient) {
 
 ## <a name="custom-api"></a>调用自定义 API
 
-自定义 API 可让你定义自定义终结点，这些终结点将会公开不映射到插入、更新、删除或读取操作的服务器功能。 使用自定义 API 能够以更大的力度控制消息传送，包括读取和设置 HTTP 消息标头，以及定义除 JSON 以外的消息正文格式。
+自定义 API 可让你定义自定义终结点，这些终结点会公开不映射到插入、更新、删除或读取操作的服务器功能。 使用自定义 API 能够以更大的力度控制消息传送，包括读取和设置 HTTP 消息标头，以及定义除 JSON 以外的消息正文格式。
 
 从 Android 客户端调用 **invokeApi** 方法，以调用自定义 API 终结点。 以下示例演示了如何调用名为 **completeAll** 的 API 终结点，从而返回名为 **MarkAllResult** 的集合类。
 
@@ -893,7 +893,7 @@ public void completeItem(View view) {
 
 教程已详细说明如何添加这些功能。
 
-应用服务支持使用各种外部标识提供者[对应用用户进行身份验证](app-service-mobile-android-get-started-users.md)，这些提供者包括：Facebook、Google、Microsoft 帐户、Twitter 和 Azure Active Directory。 你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 你还可以在后端中使用已经过身份验证的用户的标识来实施授权规则。
+应用服务支持使用各种外部标识提供者[对应用用户进行身份验证](app-service-mobile-android-get-started-users.md)，这些提供者包括：Facebook、Google、Microsoft 帐户、Twitter 和 Azure Active Directory。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在后端中使用已经过身份验证的用户的标识来实施授权规则。
 
 支持两种身份验证流：**服务器**流和**客户端**流。 服务器流依赖于标识提供者 Web 界面，因此可提供最简便的身份验证体验。  实现服务器流身份验证不需要任何其他 SDK。 服务器流身份验证不提供与移动设备的深入集成，因此建议仅用于验证概念方案。
 
@@ -906,7 +906,7 @@ public void completeItem(View view) {
 * 在应用服务后端上，仅为经过身份验证的用户授予表权限。
 * 将身份验证代码添加到应用。
 
-你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以使用已经过身份验证的用户的 SID 来修改请求。  有关详细信息，请参阅[身份验证入门]和“如何使用服务器 SDK”文档。
+可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以使用已经过身份验证的用户的 SID 来修改请求。  有关详细信息，请参阅[身份验证入门]和“如何使用服务器 SDK”文档。
 
 ### <a name="caching"></a>身份验证：服务器流
 

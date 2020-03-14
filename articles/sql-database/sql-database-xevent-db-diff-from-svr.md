@@ -3,7 +3,7 @@ title: 扩展的事件
 description: 介绍 Azure SQL 数据库中的扩展事件 (XEvents)，以及这些事件会话与 Microsoft SQL Server 中的事件会话有怎样的细微差别。
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cb4eb4474ad074a3e69dc146c97b48d54343595b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822297"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213947"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL 数据库中的扩展事件
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -32,11 +32,11 @@ ms.locfileid: "73822297"
 针对 Azure SQL 数据库和 Microsoft SQL Server 的扩展事件的其他相关信息位于：
 
 - [快速入门：SQL Server 中的扩展事件](https://msdn.microsoft.com/library/mt733217.aspx)
-- [扩展的事件](https://msdn.microsoft.com/library/bb630282.aspx)
+- [扩展事件](https://msdn.microsoft.com/library/bb630282.aspx)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-本主题假设读者了解以下内容：
+本主题假设读者有以下方面的经验：
 
 - [Azure SQL 数据库服务](https://azure.microsoft.com/services/sql-database/)。
 - Microsoft SQL Server 中的[扩展事件](https://msdn.microsoft.com/library/bb630282.aspx)。
@@ -77,7 +77,7 @@ ms.locfileid: "73822297"
 - 最佳实践是在 **CREATE EVENT SESSION** 或 **ALTER EVENT SESSION** 语句中包含 **STARTUP_STATE = ON** 的事件会话选项。
     - **= ON** 值支持在由于故障转移而重新配置逻辑数据库之后自动重新启动。
 
-## <a name="new-catalog-views"></a>新的目录视图
+## <a name="new-catalog-views"></a>新目录视图
 
 扩展事件功能受多个[目录视图](https://msdn.microsoft.com/library/ms174365.aspx)的支持。 目录视图告诉你有关当前数据库中用户创建的事件会话的*元数据或定义*的信息。 视图不会返回有关活动事件会话的实例的信息。
 
@@ -91,7 +91,7 @@ ms.locfileid: "73822297"
 
 在 Microsoft SQL Server 中，类似目录视图的名称包含 *.server\_* 而不是 *.database\_* 。 名称模式类似于 **sys.server_event_%** 。
 
-## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>新的动态管理视图 [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>新的动态管理视图 [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
 Azure SQL 数据库具有支持扩展事件的[动态管理视图 (DMV)](https://msdn.microsoft.com/library/bb677293.aspx)。 DMV 告诉你有关*活动*事件会话的信息。
 
@@ -177,7 +177,7 @@ SELECT
 
 在某些情况下，大量使用扩展事件可能会累积过多的活动内存，使整个系统变得不太正常。 因此，Azure SQL 数据库系统会动态设置和调整事件会话可以累积的活动内存量限制。 动态计算会考虑许多因素。
 
-如果收到错误消息，指出已强制实施内存最大值，可采取以下纠正措施：
+如果收到错误消息，指出已强制实施内存最大值，则可以采取以下一些纠正措施：
 
 - 运行更少的并发事件会话。
 - 通过对事件会话执行 **CREATE** 和 **ALTER** 语句，减少在 **MAX\_MEMORY** 子句中指定的内存量。

@@ -4,12 +4,12 @@ description: 了解如何使用 JavaScript 开发函数。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 345df8e1ea88caa6f8dbe941245c1f989c3e81c6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584483"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276824"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -363,6 +363,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 | _headers_ | 一个包含响应标头的对象。             |
 | _isRaw_   | 指示是否为响应跳过格式设置。    |
 | _status_  | 响应的 HTTP 状态代码。                     |
+| _cookie_ | 在响应中设置的 HTTP cookie 对象的数组。 HTTP cookie 对象有 `name`、`value`和其他 cookie 属性，如 `maxAge` 或 `sameSite`。 |
 
 ### <a name="accessing-the-request-and-response"></a>访问请求和响应 
 

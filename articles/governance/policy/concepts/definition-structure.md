@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1100248b43dbdf668dc1164651f3d9f941f3f016
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 95625894d0eb603ae9a37c96c91d01f3720346b1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920206"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280724"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -580,14 +580,14 @@ Azure 策略支持以下类型的影响：
 
 以下函数可在策略规则中使用，但不同于 Azure 资源管理器模板中的使用：
 
-- `addDays(dateTime, numberOfDaysToAdd)`
-  - **dateTime**： [Required] 通用 ISO 8601 dateTime 格式 "Yyyy-mm-dd-yyyy-mm-ddthh： MM： fffffffZ" 中的字符串
-  - **numberOfDaysToAdd**： [必需] 整数-要添加的天数
 - `utcNow()`-与资源管理器模板不同，此值可在 defaultValue 之外使用。
   - 返回一个字符串，该字符串设置为当前日期和时间，采用通用 ISO 8601 DateTime 格式 "yyyy-mm-dd-Yyyy-mm-ddthh： MM： fffffffZ"
 
 以下函数仅适用于策略规则：
 
+- `addDays(dateTime, numberOfDaysToAdd)`
+  - **dateTime**： [Required] 通用 ISO 8601 dateTime 格式 "Yyyy-mm-dd-yyyy-mm-ddthh： MM： fffffffZ" 中的字符串
+  - **numberOfDaysToAdd**： [必需] 整数-要添加的天数
 - `field(fieldName)`
   - **fieldName**： [必需] 字符串-要检索的[字段](#fields)的名称
   - 返回由 If 条件计算的资源中该字段的值

@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
 ms.openlocfilehash: 019ddbac1900856666b958d90b4395f25eb5ee84
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461530"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268959"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>教程：在 Azure SQL 数据库和本地 SQL Server 之间设置 SQL 数据同步
 
@@ -54,7 +54,7 @@ ms.locfileid: "75461530"
 
    在“创建数据同步组”页中，请更改以下设置：
 
-   | 设置                        | Description |
+   | 设置                        | 说明 |
    | ------------------------------ | ------------------------------------------------- |
    | **同步组名称** | 输入新同步组的名称。 此名称不同于数据库本身的名称。 |
    | **同步元数据数据库** | 选择创建数据库（推荐）或使用现有数据库。<br/><br/>如果选择“新建数据库”，请选择“创建新数据库”。 然后在“SQL 数据库”页中，命名并配置新数据库，再选择“确定”。<br/><br/>如果选择“使用现有数据库”，请从列表中选择数据库。 |
@@ -82,7 +82,7 @@ ms.locfileid: "75461530"
 
   在“配置 Azure SQL 数据库”页中，更改以下设置：
 
-  | 设置                       | Description |
+  | 设置                       | 说明 |
   | ----------------------------- | ------------------------------------------------- |
   | **同步成员名称** | 提供新同步成员的名称。 此名称不同于数据库本身的名称。 |
   | **订阅** | 选择关联的 Azure 订阅，以用于计费。 |
@@ -169,7 +169,7 @@ ms.locfileid: "75461530"
 
     ![手动同步](media/sql-database-get-started-sql-data-sync/datasync-sync.png)
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 数据同步以什么频率同步数据？
 

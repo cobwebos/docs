@@ -12,15 +12,15 @@ ms.date: 03/29/2018
 ms.author: rosh
 ROBOTS: NOINDEX
 ms.openlocfilehash: f92c0faaaa3aa0cd2af16a031f3bed4c6b41fc22
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706845"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220783"
 ---
 # <a name="project-url-preview-v7-reference"></a>项目 URL 预览 v7 参考
 
-URL 预览支持对博客文章、论坛讨论、预览页面等 Web 资源的简要描述。URL 可以是任何类型的 Internet 资源：网页、新闻、图像或视频。 查询必须是使用 http 或 https 方案的绝对 URL；不支持相对 URL 或其他方案（如 ftp://）。
+URL 预览支持用于博客文章、论坛讨论、预览页面等的 Web 资源的简要说明。URL 可以是任何类型的 Internet 资源：网页、新闻、图像或视频。 查询必须是使用 http 或 https 方案的绝对 URL；不支持相对 URL 或其他方案（如 ftp://）。
 
 使用 URL 预览的应用程序使用 URL 将 Web 请求发送到终结点，以便在查询参数中预览。 请求必须包含 *Ocp-Apim-Subscription-Key* 标头。
 
@@ -28,8 +28,8 @@ URL 预览支持对博客文章、论坛讨论、预览页面等 Web 资源的�
 
 必须仅使用来自 URL 预览的数据，通过最终用户在社交媒体、聊天机器人或类似产品/服务上发起的 URL 共享，显示超链接到其源站点的预览片段和缩略图图像。 不得复制、存储或缓存从项目 URL 预览收到的任何数据。 必须按照请求禁用可能从网站或内容所有者处收到的预览。
 
-## <a name="endpoint"></a>终结点
-若要请求 URL 预览结果，请向以下终结点发送请求。 使用标头和 URL 参数来进一步定义规范。
+## <a name="endpoint"></a>端点
+若要请求 URL 预览结果，请向以下终结点发送请求。 使用标头和 URL 参数来定义更多规范。
 
 终结点 GET：
 ```
@@ -63,7 +63,7 @@ q - 标识要预览的 URL 的查询
 ## <a name="headers"></a>标头
 下面是请求和响应可能包含的标头。
 
-|Header|描述|
+|标头|说明|
 |------------|-----------------|
 |<a name="market" />BingAPIs-Market|响应标头。<br /><br /> 请求使用的市场。 形式为 \<languageCode\>-\<countryCode\>。 例如，en-US。|
 |<a name="traceid" />BingAPIs-TraceId|响应标头。<br /><br /> 包含请求详细信息的日志条目 ID。 发生错误时，捕获此 ID。 如果无法确定并解决问题，请纳入此 ID 以及提供给支持团队的其他信息。|
@@ -74,7 +74,7 @@ q - 标识要预览的 URL 的查询
 ## <a name="query-parameters"></a>查询参数
 请求可以包含以下查询参数。 请查看所需参数的“必需”列。 必须对查询参数进行 URL 编码。 查询必须是使用 http 或 https 方案的绝对 URL；我们不支持相对 URL 或其他方案（如 ftp://）
 
-|名称|值|type|必填|
+|名称|值|类型|必选|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需获取可能的市场值列表，请参阅“市场代码”。<br /><br /> **注意：** URL 预览 API 目前仅支持美国地理和英语。<br /><br />|String|是|
 |<a name="query" />q|要预览的 URL|String|是|
@@ -84,14 +84,14 @@ q - 标识要预览的 URL 的查询
 ## <a name="response-objects"></a>响应对象
 就像在 Web 搜索 API 中一样，响应架构为 [WebPage] 或 ErrorResponse。 如果请求失败，则顶级对象为 [ErrorResponse](#errorresponse) 对象。
 
-|Object|描述|
+|Object|说明|
 |------------|-----------------|
 |[WebPage](#webpage)|包含预览属性的顶级 JSON 对象。|
 
-### <a name="error"></a>Error
+### <a name="error"></a>错误
 定义已发生的错误。
 
-|元素|描述|type|
+|元素|说明|类型|
 |-------------|-----------------|----------|
 |<a name="error-code" />code|用于标识错误类别的错误代码。 如需可能的代码的列表，请参阅[错误代码](#error-codes)。|String|
 |<a name="error-message" />message|对错误的说明。|String|
@@ -103,7 +103,7 @@ q - 标识要预览的 URL 的查询
 ### <a name="errorresponse"></a>ErrorResponse
 请求失败时响应包含的顶级对象。
 
-|名称|ReplTest1|type|
+|名称|值|类型|
 |----------|-----------|----------|
 |_type|类型提示。|String|
 |<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[Error](#error)[]|
@@ -111,7 +111,7 @@ q - 标识要预览的 URL 的查询
 ### <a name="webpage"></a>WebPage
 定义预览版网页的信息。
 
-|姓名|值|type|
+|名称|值|类型|
 |----------|-----------|----------|
 |name|页面标题，不一定是 HTML 标题|String|
 |url|进行了实际爬网的 URL（请求可能已随之进行了重定向）|String|
@@ -120,7 +120,7 @@ q - 标识要预览的 URL 的查询
 |primaryImageOfPage/contentUrl|将包括在预览版中的代表性图像的 URL|String|
 
 ### <a name="identifiable"></a>Identifiable
-|姓名|值|类型|
+|名称|值|类型|
 |-------------|-----------------|----------|
 |id|一个资源标识符|String|
 
@@ -128,7 +128,7 @@ q - 标识要预览的 URL 的查询
 
 下面是请求可能返回的 HTTP 状态代码。
 
-|状态代码|描述|
+|状态代码|说明|
 |-----------------|-----------------|
 |200|成功。|
 |400|查询参数之一缺失或无效。|
@@ -171,11 +171,11 @@ q - 标识要预览的 URL 的查询
 
 下面是可能的错误代码和子错误代码值。
 
-|代码|SubCode|描述
+|代码|SubCode|说明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP 状态代码为 500。
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，则 HTTP 状态代码为 400。<br/><br/>如果使用 HTTP 协议而不是 HTTPS 协议，则必应会返回 HttpNotAllowed，且 HTTP 状态代码为 410。
-|RateLimitExceeded|无子代码|每当超过每秒查询数 (QPS) 或每月查询数 (QPM) 配额时，必应都会返回 RateLimitExceeded。<br/><br/>如果超过 QPS，则必应会回 HTTP 状态代码 429；如果超过 QPM，则必应会返回 403。
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>已阻止|只要请求的任何部分无效，必应就会返回 InvalidRequest。 例如，缺少必需参数或参数值无效。<br/><br/>如果错误是 ParameterMissing 或 ParameterInvalidValue，HTTP 状态代码为 400。<br/><br/>如果使用 HTTP 协议而不是 HTTPS 协议，则必应会返回 HttpNotAllowed，且 HTTP 状态代码为 410。
+|RateLimitExceeded|无子代码|只要超过每秒查询数 (QPS) 或每月查询数 (QPM) 配额，必应就会返回 RateLimitExceeded。<br/><br/>如果超过 QPS，则必应会回 HTTP 状态代码 429；如果超过 QPM，则必应会返回 403。
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|当必应无法验证调用方身份时，必应会返回 InvalidAuthorization。 例如，缺少 `Ocp-Apim-Subscription-Key` 头或订阅密钥无效。<br/><br/>如果指定多个身份验证方法，便会发生冗余。<br/><br/>如果错误是 InvalidAuthorization，HTTP 状态代码为 401。
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|当调用方无权访问资源时，必应会返回 InsufficientAuthorization。 如果订阅密钥已遭禁用或到期，就会发生此类错误。 <br/><br/>如果错误是 InsufficientAuthorization，HTTP 状态代码为 403。
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396112"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219243"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>文本分析 API 的示例用户方案
 
@@ -29,7 +29,7 @@ ms.locfileid: "78396112"
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>分析录制的客户来电
 
-使用文本转语音、情绪分析和关键短语提取从客户服务通话中提取见解。 在 Power BI 仪表板或门户中显示结果，以便更好地了解客户，突出显示客户服务趋势，并提升客户参与度。 以批的形式发送 API 请求以生成报告，或者进行实时干预。 请参阅 [GitHub 上的](https://github.com/rlagh2/callcenteranalytics)示例代码。
+使用文本转语音、情绪分析和关键短语提取从客户服务通话中提取见解。 在 Power BI 仪表板或门户中显示结果，以便更好地了解客户，突出显示客户服务趋势，并提升客户参与度。 以批的形式发送 API 请求以生成报告，或者进行实时干预。 请参阅[GitHub 上](https://github.com/rlagh2/callcenteranalytics)的示例代码。
 
 ![描述如何使用情绪分析从客户服务通话中自动获取见解的插图](media/use-cases/azure-inbound.svg)
 
@@ -45,11 +45,11 @@ ms.locfileid: "78396112"
 
 ![描述如何使用关键短语提取在社交媒体上监视产品和公司反馈的插图](media/use-cases/social-feed.svg)
 
-## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>对包含敏感信息的文档进行分类和编修
+## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>对包含敏感信息的文档进行分类和密文
 
-使用“命名实体识别”识别文档中的个人信息和敏感信息。 使用数据对文档进行分类或对其进行编修，以便安全地共享这些文档。
+使用命名实体识别识别文档中的个人信息和敏感信息。 使用数据对文档进行分类或对它们进行标记，以便可以安全地共享它们。
 
-![描述如何使用 NER 检测个人信息并对文档进行分类和编修的图像](media/use-cases/sensitive-docs.jpg)
+![描述如何使用 NER 检测个人信息以及对文档进行分类和密文的图像](media/use-cases/sensitive-docs.jpg)
 
 ## <a name="next-steps"></a>后续步骤
 

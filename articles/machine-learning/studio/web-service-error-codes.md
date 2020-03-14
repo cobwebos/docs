@@ -12,14 +12,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 15e73740f5d932d0fa4cfb9a56c9fe7b155555cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9e25f2fbc10eb07cc71f2a7bd34247c0191f61b9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468164"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217759"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure 机器学习 Studio （经典） REST API 错误代码
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
  
 Azure 机器学习 Studio （经典） web 服务上的操作可能会返回以下错误代码。
  
@@ -27,7 +29,7 @@ Azure 机器学习 Studio （经典） web 服务上的操作可能会返回以�
  
 提供的参数无效。
  
-出现此类错误表示某处提供的参数无效。 这可能是某个对象传递给 Web 服务的凭据或 Azure 存储位置。 请查看“details”节中的错误“code”字段，诊断是哪个具体的参数无效。
+出现此类错误表示某处提供的参数无效。 这可能是某个对象传递给 Web 服务的凭据或 Azure 存储位置。 请查看 "详细信息" 部分中的错误 "代码" 字段，以诊断哪个特定参数无效。
  
 | 错误代码 | 用户消息 |
 | ---------- |--------------|
@@ -43,7 +45,7 @@ Azure 机器学习 Studio （经典） web 服务上的操作可能会返回以�
 | ContainerValidationFailed | Blob 容器验证失败并出现以下错误: {0}。 |
 | DataTypeNotSupported | 提供了不支持的数据类型。 请提供有效的数据类型，并重试。 |
 | DuplicateInputInBatchCall | 批处理请求无效。 不能同时指定单输入和多输入。 请从请求中删除这些项中的一个，并重试。 |
-| ExpiryTimeInThePast | 提供的到期时间已过去: {0}。 请提供将来的过期时间(UTC)，并重试。 要设置为永不过期，请将过期时间设置为 NULL。 |
+| ExpiryTimeInThePast | 提供的到期时间已过去: {0}。 请提供将来的过期时间(UTC)，然后重试。 要设置为永不过期，请将过期时间设置为 NULL。 |
 | IncompleteSettings | 诊断设置不完整。 |
 | InputBlobRelativeLocationInvalid | 未提供 Azure 存储 Blob 名称。 请提供有效的 Blob 名称，并重试。 |
 | InvalidBlob | Blob 的 Blob 规范无效: {0}。 请检查连接字符串/相对路径或 SAS 令牌规范是否正确，并重试。 |
@@ -154,7 +156,7 @@ Web 服务包无效。 请检查提供的 Web 服务包是否正确，并重试�
  
 | 错误代码 | 用户消息 |
 | ---------- |--------------|
-| ModelOutputMetadataMismatch | 输出参数名称无效。 请尝试使用元数据编辑器模块将列重命名，并重试。 |
+| ModelOutputMetadataMismatch | 输出参数名称无效。 请尝试使用元数据编辑器模块将列重命名，然后重试。 |
  
 ## <a name="memoryquotaviolation-http-status-code-413"></a>MemoryQuotaViolation（HTTP 状态代码 413）
  

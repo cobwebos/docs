@@ -6,11 +6,11 @@ ms.subservice: dsc
 ms.date: 09/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: a4a46837e366caf2860aa0d6597ec7aebc94905a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373520"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278982"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>在 Automation State Configuration 中编译 DSC 配置
 
@@ -182,7 +182,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 ### <a name="work-with-assets-in-azure-automation-during-compilation"></a>在编译期间使用 Azure 自动化中的资产
 
-Azure 自动化状态配置和 runbook 中的资产引用相同。 有关详细信息，请参阅以下内容：
+Azure 自动化状态配置和 runbook 中的资产引用相同。 有关详细信息，请参阅以下主题：
 
 - [证书](automation-certificates.md)
 - [连接](automation-connections.md)

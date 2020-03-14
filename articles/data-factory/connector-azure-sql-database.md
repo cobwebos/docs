@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/28/2020
-ms.openlocfilehash: def57dc125a148abd330643fc5848a35cd3b52bf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 03/12/2020
+ms.openlocfilehash: f7cfcb8a9cb99a85fd59f9366ba2ec031da9699b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990993"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243596"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据
 
@@ -48,7 +48,7 @@ ms.locfileid: "76990993"
 > 如果使用 Azure 数据工厂 integration runtime 复制数据，请配置[azure SQL Server 防火墙](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)，使 azure 服务可以访问服务器。
 > 如果使用自承载 integration runtime 复制数据，请将 Azure SQL Server 防火墙配置为允许适当的 IP 范围。 此范围包括用于连接到 Azure SQL 数据库的计算机 IP。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -58,7 +58,7 @@ ms.locfileid: "76990993"
 
 Azure SQL 数据库链接服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 AzureSqlDatabase。 | 是 |
 | connectionString | 为 connectionString 属性指定连接到 Azure SQL 数据库实例所需的信息。 <br/>你还可以将密码或服务主体密钥放在 Azure Key Vault 中。 如果它是 SQL 身份验证，请从连接字符串中请求 `password` 配置。 有关详细信息，请参阅表后面的 JSON 示例，并[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
@@ -219,7 +219,7 @@ Azure SQL 数据库链接服务支持以下属性：
 
 Azure SQL 数据库数据集支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureSqlTable。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -255,12 +255,13 @@ Azure SQL 数据库数据集支持以下属性：
 
 若要从 Azure SQL 数据库复制数据，复制活动**源**部分支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的**type**属性必须设置为**AzureSqlSource**。 对于向后兼容性，仍支持 "SqlSource" 类型。 | 是 |
 | sqlReaderQuery | 此属性使用自定义 SQL 查询来读取数据。 示例为 `select * from MyTable`。 | 否 |
 | sqlReaderStoredProcedureName | 从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 | 否 |
 | storedProcedureParameters | 存储过程的参数。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写相匹配。 | 否 |
+| isolationLevel | 指定 SQL 源的事务锁定行为。 允许的值为： **ReadCommitted** （默认值）、 **ReadUncommitted**、 **RepeatableRead**、 **Serializable**、 **Snapshot**。 有关更多详细信息，请参阅[此文档](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
 
 **需要注意的要点：**
 
@@ -361,7 +362,7 @@ GO
 
 若要将数据复制到 Azure SQL 数据库，请在复制活动**接收器**部分中支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的**type**属性必须设置为**AzureSqlSink**。 对于向后兼容性，仍支持 "SqlSink" 类型。 | 是 |
 | writeBatchSize | *每批*插入到 SQL 表中的行数。<br/> 允许的值为 **integer**（行数）。 默认情况下，Azure 数据工厂会根据行大小动态确定相应的批大小。 | 否 |
@@ -615,9 +616,9 @@ ADF 将使用在此处选取为密钥的列名作为后续更新 upsert （删�
 | binary |Byte[] |
 | bit |Boolean |
 | char |String, Char[] |
-| date |日期/时间 |
-| Datetime |日期/时间 |
-| datetime2 |日期/时间 |
+| date |DateTime |
+| Datetime |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
@@ -629,17 +630,17 @@ ADF 将使用在此处选取为密钥的列名作为后续更新 upsert （删�
 | ntext |String, Char[] |
 | numeric |Decimal |
 | nvarchar |String, Char[] |
-| real |单一 |
+| real |Single |
 | rowversion |Byte[] |
-| smalldatetime |日期/时间 |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
-| sql_variant |对象 |
+| sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
-| uniqueidentifier |GUID |
+| uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |

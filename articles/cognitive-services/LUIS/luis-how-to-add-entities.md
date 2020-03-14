@@ -1,7 +1,7 @@
 ---
-title: 添加实体 - LUIS
+title: 添加实体-LUIS
 titleSuffix: Azure Cognitive Services
-description: 创建实体，以便从语言理解 (LUIS) 应用的用户话语中提取关键数据。 提取的实体数据由客户端应用程序用来 fullfil 客户请求。
+description: 创建实体以从语言理解（LUIS）应用的用户最谈话中提取关键数据。 提取的实体数据由客户端应用程序用来 fullfil 客户请求。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383674"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220904"
 ---
 # <a name="add-entities-to-extract-data"></a>添加实体以提取数据 
 
-创建实体，以便从语言理解 (LUIS) 应用的用户话语中提取关键数据。 你的客户端应用程序使用提取的实体数据来 fullfil 客户请求。
+创建实体以从语言理解（LUIS）应用的用户最谈话中提取关键数据。 你的客户端应用程序使用提取的实体数据来 fullfil 客户请求。
 
 实体表示要提取的话语中的字词或短语。 实体描述与意向相关的信息，它们有时对于应用执行任务至关重要。 在将示例查询文本添加到意向或从（之前或之后）将示例查询文本添加到目的时，可以创建实体。
 
@@ -80,7 +80,7 @@ ms.locfileid: "74383674"
 1. 选择 " **+ 创建**"，然后选择实体类型。 
 1. 继续配置实体，并在完成后选择 "**创建**"。 
 
-### <a name="add-list-entities-for-exact-matches"></a>添加列表实体以进行完全匹配
+### <a name="add-list-entities-for-exact-matches"></a>为完全匹配项添加列表实体
 
 列表实体表示一组固定、封闭的相关单词。 当您作为作者，可以更改列表时，LUIS 不会扩大或缩小列表。 你还可以使用 [列出实体 json 格式（例如，json 到列表实体）导入到现有的列表实体中的一个实体。 
 
@@ -88,7 +88,7 @@ ms.locfileid: "74383674"
 
 |颜色列表项名称|颜色-同义词|
 |--|--|
-|红色|crimson、血、apple、消防引擎|
+|Red|crimson、血、apple、消防引擎|
 |蓝色|天空，azure，钴|
 |绿色|王，酸橙色|
 
@@ -153,7 +153,7 @@ ms.locfileid: "74383674"
 
 <a name="add-pattern-any-entities"></a>
 
-## <a name="add-a-patternany-entity"></a>添加 pattern.any 实体
+## <a name="add-a-patternany-entity"></a>添加模式。任何实体
 
 [模式。任何](luis-concept-entity-types.md)实体仅适用于[模式](luis-how-to-model-intent-pattern.md)，而不是意向的示例最谈话。 此类实体有助于 LUIS 查找不同长度和字词选择的实体结尾。 由于此实体会在模式中使用，因此，LUIS 可识别实体末尾在话语模板中的位置。
 
@@ -171,7 +171,7 @@ ms.locfileid: "74383674"
 
 如果发现模式在包含 Pattern.any 时错误提取实体，请使用[显式列表](reference-pattern-syntax.md#explicit-lists)来更正此问题。 
 
-## <a name="do-not-change-entity-type"></a>不要更改实体类型
+## <a name="do-not-change-entity-type"></a>不更改实体类型
 
 LUIS 不允许更改实体类型，因为它不知道构造该实体要添加或删除的内容。 若要更改类型，最好创建一个名称稍微不同的、类型正确的新实体。 实体创建后，在每句话语中，删除旧标记实体名称并添加新的实体名称。 重新标记所有话语后，即可删除旧实体。 
 

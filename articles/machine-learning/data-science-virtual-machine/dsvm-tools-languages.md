@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: e7b32579712e89c0d5595303ee7e03d8b2462607
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615419"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283649"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>数据科学虚拟机支持的语言 
 
@@ -118,7 +118,7 @@ Windows：
 
 * 在命令提示符下运行：
 
-  打开命令提示符并键入 `R`。
+  打开命令提示符，然后键入 `R`。
 
 * 在 IDE 中使用：
 

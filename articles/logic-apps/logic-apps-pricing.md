@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526138"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270454"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -64,7 +64,7 @@ ms.locfileid: "77526138"
 
   有关集成帐户限制的详细信息，请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 可以在本主题的后面部分了解有关[集成帐户层及其定价模型](#integration-accounts)的详细信息。
 
-如果选择高级 ISE SKU，基本单位具有固定容量。 如果需要更多的吞吐量，可以在创建期间或之后[添加更多缩放单位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)。 开发人员 ISE SKU 不能添加更多缩放单位。 在 ISE 中运行的逻辑应用不会产生数据保留成本。
+如果选择高级 ISE SKU，基本单位具有固定容量。 如果需要更多的吞吐量，可以在创建期间或之后[添加更多缩放单位](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 开发人员 ISE SKU 不能添加更多缩放单位。 在 ISE 中运行的逻辑应用不会产生数据保留成本。
 
 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
 ms.openlocfilehash: 99083cd08db98a6d6ac56d4cf55aaf9d0e64e2b4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361828"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274601"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 Azure Log Analytics 代理是为在任何云、本地计算机中的虚拟机和[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)监视的虚拟机之间进行全面管理而开发的。 Windows 和 Linux 代理将从不同源收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区，以及监视解决方案中定义的任何唯一日志或指标。 Log Analytics 代理还支持[用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)、 [azure 安全中心](/azure/security-center/)和[azure 自动化](../../automation/automation-intro.md)等 Azure Monitor 中的见解和其他服务。
@@ -151,7 +151,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 ## <a name="network-firewall-requirements"></a>网络防火墙要求
 下面的信息列出了 Linux 和 Windows 代理与 Azure Monitor 日志通信所需的代理和防火墙配置信息。  
 
-|代理资源|端口 |Direction |绕过 HTTPS 检查|
+|代理资源|端口 |方向 |绕过 HTTPS 检查|
 |------|---------|--------|--------|   
 |*.ods.opinsights.azure.com |端口 443 |出站|是 |  
 |*.oms.opinsights.azure.com |端口 443 |出站|是 |  
@@ -170,7 +170,7 @@ Windows 和 Linux 代理支持通过代理服务器或 Log Analytics 网关与 A
 > [!NOTE]
 > 如果代理服务器无需进行身份验证，Linux 代理仍要求提供伪用户名/密码。 这可以是任何用户名或密码。
 
-|属性| 说明 |
+|properties| 说明 |
 |--------|-------------|
 |协议 | https |
 |user | 用于代理身份验证的可选用户名 |

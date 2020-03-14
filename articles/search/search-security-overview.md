@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978589"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282830"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure 认知搜索中的安全性和数据隐私
 
@@ -39,7 +39,7 @@ Azure 认知搜索按以下标准认证，如[2018 年6月公布](https://azure.
 
 加密在整个索引管道中进行扩展：从连接、传输和到 Azure 认知搜索中存储的索引数据。
 
-| 安全层 | Description |
+| 安全层 | 说明 |
 |----------------|-------------|
 | 传输中加密 <br>(HTTPS/SSL/TLS) | Azure 认知搜索侦听 HTTPS 端口443。 与 Azure 服务建立的跨平台连接经过加密。 <br/><br/>客户端到服务的所有 Azure 认知搜索交互都是支持 SSL/TLS 1.2 的交互。  请务必为你的服务的 SSL 连接使用 TLSv1.2。|
 | 静态加密 <br>Microsoft 托管密钥 | 加密在索引过程中完全进行内部化处理，而不会显著影响完成索引所需的时间或索引大小。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。<br><br>在内部，加密基于 [Azure 存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。<br><br> 加密是 Azure 认知搜索内部的，证书和加密密钥由 Microsoft 内部管理，并采用全局应用。 无法在门户中或以编程方式打开或关闭加密、管理或替换为自己的密钥，或者查看加密设置。<br><br>静态加密已在2018年1月24日公布，适用于所有地区的所有服务层，包括免费级别。 对于完全加密，必须删除该日期之前创建的索引并重新生成，以便进行加密。 否则，仅对 1 月 24 日以后添加的新数据进行加密。|
@@ -91,7 +91,7 @@ Azure 认知搜索按以下标准认证，如[2018 年6月公布](https://azure.
 
 如果需要对内容进行精细的基于每个用户的控制，可以在查询中生成安全筛选器，返回与给定安全标识关联的文档。 基于标识的访问控制不是预定义的角色和角色分配，它作为*筛选器*实现，该筛选器可以根据标识修整文档和内容的搜索结果。 下表描述了修整未经授权内容的搜索结果的两种方法。
 
-| 方法 | Description |
+| 方法 | 说明 |
 |----------|-------------|
 |[基于标识筛选器的安全修整](search-security-trimming-for-azure-search.md)  | 阐述实现用户标识访问控制的基本工作流。 该工作流包括将安全标识符添加到索引，然后解释如何针对该字段进行筛选，以修整受禁内容的结果。 |
 |[Azure Active Directory 标识的安全修整](search-security-trimming-for-azure-search-with-aad.md)  | 此文延伸了前一篇文章的内容，提供了有关从 Azure Active Directory (AAD)（Azure 云平台中的一个[免费服务](https://azure.microsoft.com/free/)）检索标识的步骤。 |
@@ -100,7 +100,7 @@ Azure 认知搜索按以下标准认证，如[2018 年6月公布](https://azure.
 
 下表总结了 Azure 认知搜索中所允许的操作，以及哪些密钥会解锁特定操作。
 
-| 操作 | 权限 |
+| Operation | 权限 |
 |-----------|-------------------------|
 | 创建服务 | Azure 订阅持有者|
 | 缩放服务 | 管理密钥，资源中的 RBAC 所有者或参与者  |

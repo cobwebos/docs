@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
 ms.openlocfilehash: 176cd9b0bf72a123bc644ebc27ee0e091aa54e97
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024613"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245182"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure 中的 IP 地址类型和分配方法
 
@@ -68,7 +68,7 @@ ms.locfileid: "77024613"
 - 分配到可以采用公共 IP 地址的任何 Azure 资源，例如网络接口、VPN 网关、应用程序网关和面向 Internet 的负载均衡器。
 - 不支持可用性区域方案。  需要为可用性区域方案使用标准 SKU 公共 IP。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)与[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-#### <a name="standard"></a>标准
+#### <a name="standard"></a>Standard
 
 标准 SKU 公共 IP 地址为：
 
@@ -106,7 +106,7 @@ ms.locfileid: "77024613"
 >
 
 ### <a name="dns-hostname-resolution"></a>DNS 主机名解析
-可以为公共 IP 资源指定一个 DNS 域名标签，以便在 Azure 托管的 DNS 服务器中为 *domainnamelabel*.*location*.cloudapp.azure.com 创建目标为公共 IP 地址的映射。 例如，如果在创建公共 IP 资源时将 *domainnamelabel* 指定为 **contoso**，将 Azure 的“位置”指定为“美国西部”，则会将完全限定域名 (FQDN) **contoso.westus.cloudapp.azure.com** 解析成该资源的公共 IP 地址。
+可以为公共 IP 资源指定一个 DNS 域名标签，以便在 Azure 托管的 DNS 服务器中为 *domainnamelabel*.*location*.cloudapp.azure.com 创建目标为公共 IP 地址的映射。 例如，如果在创建公共 IP 资源时将 **domainnamelabel** 指定为 *contoso*，将 Azure 的“位置”指定为“美国西部”，则会将完全限定域名 (FQDN) **contoso.westus.cloudapp.azure.com** 解析成该资源的公共 IP 地址。
 
 > [!IMPORTANT]
 > 所创建的每个域名标签在其 Azure 位置中必须是唯一的。  
@@ -117,7 +117,7 @@ ms.locfileid: "77024613"
 
 ### <a name="virtual-machines"></a>虚拟机
 
-将公共 IP 地址分配到其**网络接口**可将其与 [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机相关联。 可以向虚拟机分配动态或静态公共 IP 地址。 详细了解如何[将 IP 地址分配到网络接口](virtual-network-network-interface-addresses.md)。
+将公共 IP 地址分配到其[网络接口](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)可将其与 [Windows](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 **Linux** 虚拟机相关联。 可以向虚拟机分配动态或静态公共 IP 地址。 详细了解如何[将 IP 地址分配到网络接口](virtual-network-network-interface-addresses.md)。
 
 ### <a name="internet-facing-load-balancers"></a>面向 Internet 的负载均衡器
 
@@ -129,7 +129,7 @@ ms.locfileid: "77024613"
 
 ### <a name="application-gateways"></a>应用程序网关数
 
-将公共 IP 地址分配给网关的**前端**配置可以将其与 Azure [应用程序网关](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)相关联。 此公共 IP 地址充当负载均衡型 VIP。 只能将*动态*基本公共 IP 地址分配给应用程序网关 V1 前端配置，并且只能将*静态*标准 SKU 地址分配到 V2 前端配置。
+将公共 IP 地址分配给网关的[前端](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)配置可以将其与 Azure **应用程序网关**相关联。 此公共 IP 地址充当负载均衡型 VIP。 只能将*动态*基本公共 IP 地址分配给应用程序网关 V1 前端配置，并且只能将*静态*标准 SKU 地址分配到 V2 前端配置。
 
 ### <a name="at-a-glance"></a>概览
 下表显示了将公共 IP 地址关联到顶级资源时所依据的特定属性，以及能够使用的可能分配方法（动态或静态）。
@@ -161,7 +161,7 @@ ms.locfileid: "77024613"
 
 ### <a name="virtual-machines"></a>虚拟机
 
-可将一个或多个专用 IP 地址分配给 [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机的一个或多个**网络接口**。 可将每个专用 IP 地址的分配方法指定为动态或静态。
+可将一个或多个专用 IP 地址分配给 **Windows** 或 [Linux](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机的一个或多个[网络接口](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 可将每个专用 IP 地址的分配方法指定为动态或静态。
 
 #### <a name="internal-dns-hostname-resolution-for-virtual-machines"></a>内部 DNS 主机名解析（针对虚拟机）
 
@@ -173,7 +173,7 @@ ms.locfileid: "77024613"
 
 ### <a name="internal-load-balancers-ilb--application-gateways"></a>内部负载均衡器 (ILB) 和应用程序网关
 
-可以将专用 IP 地址分配到 [Azure 内部负载均衡器](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB) 或 [Azure 应用程序网关](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的**前端**配置。 此专用 IP 地址将用作内部终结点，仅供其虚拟网络和连接到该虚拟网络的远程网络中的资源访问。 可将动态或静态专用 IP 地址分配到前端配置。
+可以将专用 IP 地址分配到 **Azure 内部负载均衡器** (ILB) 或 [Azure 应用程序网关](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的[前端](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)配置。 此专用 IP 地址将用作内部终结点，仅供其虚拟网络和连接到该虚拟网络的远程网络中的资源访问。 可将动态或静态专用 IP 地址分配到前端配置。
 
 ### <a name="at-a-glance"></a>概览
 下表显示了将专用 IP 地址关联到顶级资源时所依据的特定属性，以及能够使用的可能分配方法（动态或静态）。
@@ -187,7 +187,7 @@ ms.locfileid: "77024613"
 ## <a name="limits"></a>限制
 Azure 中的[网络限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)全面阐述了对 IP 寻址施加的限制。 这些限制根据区域和订阅设置。 可以[与支持人员联系](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，根据业务需求将默认限制提高到最大限制。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 公共 IP 地址可能会产生少许费用。 有关 Azure 中 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses)页。
 
 ## <a name="next-steps"></a>后续步骤

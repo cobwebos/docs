@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: andyxu
 author: gogowings
 ms.date: 11/04/2019
-ms.openlocfilehash: 5ec953ace6bb9583c622f89cfcd0196482b1c683
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d8a975487c68a21b2c8b6fa2f07d86c312243f12
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541746"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139039"
 ---
 # <a name="consume-azure-machine-learning-events-preview"></a>使用 Azure 机器学习事件（预览）
 
@@ -36,12 +36,13 @@ Azure 事件网格从源中读取事件，例如 Azure 机器学习和其他 Azu
 
 Azure 机器学习在机器学习生命周期的各个点提供事件： 
 
-| 事件类型 | Description |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | 在机器学习试验运行完成时引发 |
 | `Microsoft.MachineLearningServices.ModelRegistered` | 在工作区中注册机器学习模型时引发 |
 | `Microsoft.MachineLearningServices.ModelDeployed` | 当完成使用一个或多个模型的推理服务部署时引发 |
 | `Microsoft.MachineLearningServices.DatasetDriftDetected` | 当完成两个数据集的数据偏移检测作业时引发 |
+| `Microsoft.MachineLearningServices.RunStatusChanged` | 当运行状态更改时引发，当前仅在运行状态为 "失败" 时引发 |
 
 ## <a name="subscribe-to-machine-learning-events"></a>订阅机器学习事件
 
@@ -61,6 +62,7 @@ Azure 事件网格支持基于的__开头为__的主题筛选器，以匹配项_
 | `Microsoft.MachineLearningServices.ModelRegistered` | `models/{modelName}:{modelVersion}` | `models/sklearn_regression_model:3` |
 | `Microsoft.MachineLearningServices.ModelDeployed` | `endpoints/{serviceId}` | `endpoints/my_sklearn_aks` |
 | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
+| `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
 
 ### <a name="advanced-filtering"></a>高级筛选
 

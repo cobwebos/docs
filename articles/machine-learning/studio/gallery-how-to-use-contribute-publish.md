@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 6a82c4d6eecec3a3a9ef690536988c8402444ffc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 882b52b74603465bd0a55a12fd9ef03f7b625046
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168543"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204318"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 **[Azure AI 库](https://gallery.azure.ai)** 是一个社区驱动的站点，用于发现和共享使用 Azure AI 构建的解决方案。
 该库包含各种可用于开发自己的分析解决方案的资源。
@@ -86,7 +88,7 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 1. 在试验画布下面的操作列表中，选择“发布到库”。
 
-1. 在库中，输入描述性的**名称**和**标记**。 突出显示使用过的技术或要解决的实际问题。 描述性实验标题的示例是“二元分类：Twitter 观点分析”。
+1. 在库中，输入描述性的**名称**和**标记**。 突出显示使用过的技术或要解决的实际问题。 描述性实验标题的示例是 "二元分类： Twitter 情绪分析"。
 
 1. 在“摘要”框中，输入实验的摘要。 简要描述实验解决的问题以及处理方式。
 

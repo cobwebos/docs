@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4ce56b64502904308f45c74a5471447d93419452
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 598be26024c22ba81c3f33510423605abc854b13
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303046"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216832"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure 自动化中的变量资产
 
@@ -32,7 +32,7 @@ ms.locfileid: "78303046"
 
 创建变量时，可以将 Azure 自动化中的加密和存储指定为安全资产。 其他安全资产包括凭据、证书和连接。 Azure 自动化将加密这些资产，并使用为每个自动化帐户生成的唯一密钥来存储这些资产。 密钥存储在系统管理的 Key Vault 中。 在存储安全资产之前，Azure 自动化会从 Key Vault 加载密钥，然后使用该密钥来加密资产。 
 
-Azure Automation 安全地存储每个加密变量。 不能使用 Azure PowerShell 模块随附的[AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) cmdlet 检索其值。 检索加密值的唯一方法是使用 runbook 或 DSC 配置中的**get-automationvariable**活动。
+Azure Automation 安全地存储每个加密变量。 不能使用 Azure PowerShell 模块随附的[AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) cmdlet 检索其值。 检索加密值的唯一方法是使用 runbook 或 DSC 配置中的 `Get-AutomationVariable` 活动。
 
 >[!NOTE]
 >本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az module 安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于你的自动化帐户，可使用[如何在 Azure 自动化中更新 Azure PowerShell 模块](../automation-update-azure-modules.md)，将模块更新到最新版本。
@@ -42,12 +42,12 @@ Azure Automation 安全地存储每个加密变量。 不能使用 Azure PowerSh
 使用 Azure 门户创建变量时，必须从下拉列表中指定数据类型，以便门户可以显示用于输入变量值的相应控件。 下面是 Azure Automation 中的可用变量类型：
 
 * String
-* 整数
+* Integer
 * DateTime
 * Boolean
 * Null
 
-此变量不限于指定的数据类型。 如果要指定不同类型的值，则必须使用 Windows PowerShell 设置该变量。 如果指定 "**未定义**"，则变量的值将设置为**null**，并且必须将值设置为[AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) cmdlet 或**get-automationvariable**活动。
+此变量不限于指定的数据类型。 如果要指定不同类型的值，则必须使用 Windows PowerShell 设置该变量。 如果指定 "**未定义**"，则变量的值将设置为 Null，并且必须将值设置为[AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) cmdlet 或 `Set-AutomationVariable` 活动。
 
 不能使用该门户来创建或更改复杂变量类型的值。 但是，可以使用 Windows PowerShell 提供任何类型的值。 复杂类型作为[PSCustomObject](/dotnet/api/system.management.automation.pscustomobject)检索。
 
@@ -66,31 +66,31 @@ Azure Automation 安全地存储每个加密变量。 不能使用 Azure PowerSh
 
 ## <a name="activities-to-access-variables"></a>用于访问变量的活动
 
-下表中的活动用于在 runbook 和 DSC 配置中访问变量。 本文开头的加密变量介绍了**AzAutomationVariable**和**get-automationvariable**之间的区别。
+下表中的活动用于在 runbook 和 DSC 配置中访问变量。 本文开头的加密变量说明 `Get-AzAutomationVariable` 和 `Get-AutomationVariable` 之间的差异。
 
 | 活动 | 说明 |
 |:---|:---|
-|**Get-automationvariable**|检索现有变量的值。|
-|**Get-automationvariable**|设置现有变量的值。|
+|`Get-AutomationVariable`|检索现有变量的值。|
+|`Set-AutomationVariable`|设置现有变量的值。|
 
 > [!NOTE]
-> 避免在 runbook 或 DSC 配置中使用**get-automationvariable**的*Name*参数中的变量。 使用此参数可以在设计时使 runbook 或 DSC 配置和自动化变量之间依赖项的发现复杂化。
+> 避免在 runbook 或 DSC 配置中的 `Get-AutomationVariable` 的 `Name` 参数中使用变量。 使用此参数可以在设计时使 runbook 或 DSC 配置和自动化变量之间依赖项的发现复杂化。
 
 下表中的函数用于在 Python2 Runbook 中访问和检索变量。
 
 |Python2 函数|说明|
 |:---|:---|
-|automationassets.get_automation_variable|检索现有变量的值。 |
-|automationassets.set_automation_variable|设置现有变量的值。 |
+|`automationassets.get_automation_variable`|检索现有变量的值。 |
+|`automationassets.set_automation_variable`|设置现有变量的值。 |
 
 > [!NOTE]
-> 必须将**automationassets**模块导入到 Python runbook 的顶部，才能访问资产功能。
+> 必须将 `automationassets` 模块导入 Python runbook 的顶部，才能访问资产功能。
 
 ## <a name="creating-a-new-automation-variable"></a>创建新的自动化变量
 
 ### <a name="create-a-new-variable-using-the-azure-portal"></a>使用 Azure 门户创建新变量
 
-1. 在自动化帐户中，单击“资产”磁贴，然后在“资产”边栏选项卡中选择“变量”。
+1. 在自动化帐户中，单击 "**资产**" 磁贴，然后单击 "**资产**" 边栏选项卡，然后选择 "**变量**"。
 2. 在“变量”磁贴中，选择“添加变量”。
 3. 完成 "**新建变量**" 边栏选项卡上的选项，然后单击 "**创建**" 以保存新变量。
 
@@ -99,7 +99,7 @@ Azure Automation 安全地存储每个加密变量。 不能使用 Azure PowerSh
 
 ### <a name="create-a-new-variable-with-windows-powershell"></a>使用 Windows PowerShell 创建新变量
 
-此脚本使用**AzAutomationVariable** cmdlet 创建新变量并设置其初始值。 然后，它可以使用**AzAutomationVariable**检索值。 如果该值为简单类型，则检索同一类型。 如果它是复杂类型，则检索**PSCustomObject**类型。
+此脚本使用 `New-AzAutomationVariable` cmdlet 来创建新变量并设置其初始值。 然后，它可以使用 `Get-AzAutomationVariable`检索值。 如果该值为简单类型，则检索同一类型。 如果是复杂类型，则检索 `PSCustomObject` 类型。
 
 下面的示例演示如何创建字符串类型的变量，然后返回其值。
 
@@ -125,17 +125,17 @@ $vmIpAddress = $vmValue.IpAddress
 
 ## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>使用 Runbook 或 DSC 配置中的变量
 
-使用 Set-AutomationVariable 活动设置 PowerShell Runbook 或 DSC 配置中自动化变量的值，并使用 Get-AutomationVariable 来检索该值。 不应在 runbook 或 DSC 配置中使用**AzAutomationVariable**和**AzAutomationVariable** Cmdlet 或它们的 AzureRM 模块等效项，因为它们的效率低于工作流活动。 
+使用 "`Set-AutomationVariable`" 活动在 PowerShell runbook 或 DSC 配置中设置自动化变量的值，并使用 `Get-AutomationVariable` 来检索它。 不应在 runbook 或 DSC 配置中使用 `Set-AzAutomationVariable` 和 `Get-AzAutomationVariable` cmdlet 或它们的 AzureRM 模块等效项，因为它们的效率低于工作流活动。 
 
-请注意，不能使用**AzAutomationVariable**或其 AzureRM 模块等效项检索安全变量的值。 
+请注意，不能使用 `Get-AzAutomationVariable` 或其 AzureRM 模块等效项检索安全变量的值。 
 
-从 runbook 或 DSC 配置中创建新变量的唯一方法是使用**AzAutomationVariable** cmdlet。
+从 runbook 或 DSC 配置中创建新变量的唯一方法是使用 `New-AzAutomationVariable` cmdlet。
 
 ### <a name="textual-runbook-samples"></a>文本 Runbook 示例
 
 #### <a name="set-and-retrieve-a-simple-value-from-a-variable"></a>设置和检索变量中的一个简单值
 
-下面的示例命令演示如何设置和检索文本 Runbook 中的变量。 此示例假设创建名为*NumberOfIterations*和*NumberOfRunnings*的整数变量和一个名为*samplemessage.txt*的字符串变量。
+下面的示例命令演示如何设置和检索文本 Runbook 中的变量。 此示例假设创建名为 `NumberOfIterations` 和 `NumberOfRunnings` 的整数变量和一个名为 `SampleMessage`的字符串变量。
 
 ```powershell
 $NumberOfIterations = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfIterations'
@@ -176,13 +176,13 @@ except AutomationAssetNotFound:
 
 ### <a name="graphical-runbook-samples"></a>图形 Runbook 示例
 
-在图形 runbook 中，可以添加**get-automationvariable**或**get-automationvariable**活动。 只需在图形编辑器的 "库" 窗格中右键单击该变量，然后选择所需的活动即可。
+在图形 runbook 中，可以添加 `Get-AutomationVariable` 或 `Set-AutomationVariable` 活动。 只需在图形编辑器的 "库" 窗格中右键单击该变量，然后选择所需的活动即可。
 
 ![将变量添加到画布](../media/variables/runbook-variable-add-canvas.png)
 
 #### <a name="set-values-in-a-variable"></a>设置变量中的值
 
-下图显示了在图形 Runbook 中用于更新具有简单值的一个变量的示例活动。 在此示例中， **new-azvm**检索单个 Azure 虚拟机，并将计算机名称保存到类型为字符串的现有自动化变量。 [链接是管道还是序列](../automation-graphical-authoring-intro.md#links-and-workflow)并不重要，因为代码只需要输出中的单个对象。
+下图显示了在图形 Runbook 中用于更新具有简单值的一个变量的示例活动。 在此示例中，`Get-AzVM` 检索单个 Azure 虚拟机，并将计算机名称保存到现有的自动化字符串变量中。 [链接是管道还是序列](../automation-graphical-authoring-intro.md#links-and-workflow)并不重要，因为代码只需要输出中的单个对象。
 
 ![设置简单变量](../media/variables/runbook-set-simple-variable.png)
 

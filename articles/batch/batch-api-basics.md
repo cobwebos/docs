@@ -15,11 +15,11 @@ ms.date: 08/29/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 4d6c4ff06783489ea7b6c3488cf6746d579b4c6a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025939"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247678"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -77,7 +77,7 @@ ms.locfileid: "77025939"
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-## <a name="azure-storage-account"></a>Azure 存储器帐户
+## <a name="azure-storage-account"></a>Azure 存储帐户
 
 大多数 Batch 解决方案使用 Azure 存储来存储资源文件和输出文件。 例如，Batch 任务（包括标准任务、启动任务、作业准备任务和作业释放任务）通常指定位于存储帐户中的资源文件。
 
@@ -126,7 +126,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 以下部分更详细地介绍了每个设置。
 
 > [!IMPORTANT]
-> Batch 帐户具有默认配额，用于限制 Batch 帐户中的核心数。 核心数对应于计算节点数。 可以在 [Azure Batch 服务的配额和限制](batch-quota-limit.md)中找到默认配额以及如何[提高配额](batch-quota-limit.md#increase-a-quota)的说明。 如果池不能实现其目标节点数，则问题可能出在核心配额上。
+> Batch 帐户具有默认配额，用于限制 Batch 帐户中的核心数。 核心数对应于计算节点数。 可以在 [Azure Batch 服务的配额和限制](batch-quota-limit.md#increase-a-quota)中找到默认配额以及如何[提高配额](batch-quota-limit.md)的说明。 如果池不能实现其目标节点数，则问题可能出在核心配额上。
 >
 
 ### <a name="compute-node-operating-system-and-version"></a>计算节点的操作系统和版本
@@ -143,7 +143,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
     * *OS 系列* 还确定了要与操作系统一起安装哪些版本的 .NET。
     * 与云服务中的辅助角色一样，可以指定 *OS 版本*（有关辅助角色的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)）。
-    * 与辅助角色一样，对于 *OS 版本*，建议指定 `*`，使节点可自动升级，而无需采取措施来适应新的版本。 选择特定 OS 版本的主要用例是在允许更新版本之前执行向后兼容测试，以确保保持应用程序兼容性。 验证后，便可以更新池的 *OS 版本*并安装新的操作系统映像 – 所有正在运行的任务将会中断并重新排队。
+    * 与辅助角色一样，对于 `*`OS 版本 *，建议指定* ，使节点可自动升级，而无需采取措施来适应新的版本。 选择特定 OS 版本的主要用例是在允许更新版本之前执行向后兼容测试，以确保保持应用程序兼容性。 验证后，便可以更新池的 *OS 版本*并安装新的操作系统映像 – 所有正在运行的任务将会中断并重新排队。
 
 创建池时，需要选择适当的 **nodeAgentSkuId**，具体取决于 VHD 基本映像的 OS。 可以通过调用[列出支持的节点代理 sku](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus)操作来获取可用节点代理 sku id 到其 OS 映像引用的映射。
 
@@ -189,7 +189,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 
 [每个节点的最大任务数](batch-parallel-node-tasks.md) 配置选项确定了可以在池中每个计算节点上并行运行的最大任务数。
 
-默认配置指定每次在节点上运行一个任务，但在某些情况下，在一个节点上同时执行两个或多个任务可能更有利。 请参阅 [concurrent node tasks](batch-parallel-node-tasks.md)（并发节点任务）一文中的[示例方案](batch-parallel-node-tasks.md#example-scenario)，了解如何通过在每个节点上运行多个任务来受益。
+默认配置指定每次在节点上运行一个任务，但在某些情况下，在一个节点上同时执行两个或多个任务可能更有利。 请参阅 [concurrent node tasks](batch-parallel-node-tasks.md#example-scenario)（并发节点任务）一文中的[示例方案](batch-parallel-node-tasks.md)，了解如何通过在每个节点上运行多个任务来受益。
 
 你还可以指定一个*填充类型*，用于确定 Batch 是要将任务平均分散到池中的所有节点，还是在将任务分配给另一个节点之前，将每个节点打包到最大数量的任务。
 
@@ -381,7 +381,7 @@ Batch 服务在节点上公开文件系统的一部分作为 *根目录*。 任�
 
 * **任务**：**在工作项目录中**，为节点上运行的每个任务创建一个目录。 它通过引用 `AZ_BATCH_TASK_DIR` 环境变量来访问。
 
-    在每个任务目录中，Batch 服务将创建由 `AZ_BATCH_TASK_WORKING_DIR` 环境变量指定唯一路径的任务目录 (`wd`)。 此目录提供对任务的读/写访问权限。 任务可以创建、读取、更新和删除此目录下的文件。 此目录根据指定给任务的 *RetentionTime* 约束来保留。
+    在每个任务目录中，Batch 服务将创建由 `wd` 环境变量指定唯一路径的任务目录 (`AZ_BATCH_TASK_WORKING_DIR`)。 此目录提供对任务的读/写访问权限。 任务可以创建、读取、更新和删除此目录下的文件。 此目录根据指定给任务的 *RetentionTime* 约束来保留。
 
     `stdout.txt` 和 `stderr.txt`：在任务执行期间，会将这些文件写入任务文件夹。
 

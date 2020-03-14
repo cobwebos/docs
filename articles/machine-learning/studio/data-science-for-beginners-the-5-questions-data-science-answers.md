@@ -10,14 +10,14 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: feb49b4e12bd304b49e0c50cd43ed0be52761532
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: af0611e121228a587e159bd4e6529c807132d16d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838768"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204437"
 ---
-# <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>适用于初学者的数据科研视频 1：5 个数据科研问题的解答
+# <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>适用于初学者的数据科学视频 1：5 个数据科学问题的解答
 通过顶级数据科学家制作的“适合初学者的数据科学”的五个简短视频，快速了解数据科学。 这些视频介绍基础知识，但无论是对研究数据科学感兴趣还是与数据科学家合作，这些内容都非常有用。
 
 第一个视频是有关数据科学可回答的这类问题。 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)
@@ -32,9 +32,9 @@ ms.locfileid: "73838768"
 
 * 视频 1：5 个数据科学可解答的问题
 * 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒）
-* 视频 3：[提出一个可用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md)（4 分 17 秒）
-* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒）
-* 视频 5：[复制他人的工作以研究数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒）
+* 视频3：[提出可使用数据回答的问题](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *（4分钟17秒）*
+* 视频4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *（7分钟42秒）*
+* 视频5：[复制其他人的工作以进行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *（3分钟18秒）*
 
 ## <a name="transcript-the-5-questions-data-science-answers"></a>抄本：5 个数据科学解答的问题
 好！ 欢迎观看“适合初学者的数据科学”系列视频。
@@ -78,12 +78,12 @@ ms.locfileid: "73838768"
 
 ![异常检测算法：这是否很奇怪？](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
 
-如果有信用卡，那么已从异常检测获益。 信用卡公司分析购买模式，使他们可提醒用户可能的欺诈行为。 “异常”费用可能是在一家通常不会去购物的商店购物时，或购买非常昂贵的物品时所产生的费用。
+如果有信用卡，则已从异常情况检测中获益。 信用卡公司分析购买模式，使他们可提醒用户可能的欺诈行为。 “异常”费用可能是在一家通常不会去购物的商店购物时，或购买非常昂贵的物品时所产生的费用。
 
 此问题在很多方面都很有用。 例如：
 
 * 如果汽车上配有压力表，可能会想知道：此压力表读数是否正常？
-* 如果正在监控 Internet，就会想知道：此消息是否是来自 internet 的典型消息？
+* 如果监视的是 internet，则需要知道：此邮件是否是来自 internet 的典型消息？
 
 异常检测标志意外或异常事件或行为。 它会提供在何处查找问题的线索。
 
@@ -102,7 +102,7 @@ ms.locfileid: "73838768"
 ## <a name="question-4-how-is-this-organized-uses-clustering-algorithms"></a>“问题 4：组织方式为何？”使用聚类分析算法
 最后两个问题更高级一点。
 
-有时希望了解数据集的结构 - 组织方式为何？ 对于此问题，并没有已经知道结果的示例。
+有时希望了解数据集的结构 - 组织方式为何？ 对于此问题，你没有了解其结果的示例。
 
 可通过多种方法梳理出数据结构。 其中一种方法就是聚类分析。 为方便解释，该方法将数据分成多个自然“群”。 使用聚类分析，不会存在正确答案。
 
@@ -136,4 +136,4 @@ ms.locfileid: "73838768"
 
 ## <a name="next-steps"></a>后续步骤
 * [试用机器学习 Studio （经典）进行第一次数据科学试验](create-experiment.md)
-* [获取 Microsoft Azure 上的机器学习的简介](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [在 Microsoft Azure 上获取机器学习简介](/azure/machine-learning/preview/overview-what-is-azure-ml)

@@ -9,11 +9,11 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930424"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278332"
 ---
 # <a name="manage-modules-in-azure-automation"></a>在 Azure 自动化中管理模块
 
@@ -82,7 +82,7 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 >这些内部 cmdlet 在 Windows 混合 Runbook 辅助角色上可用，在 Linux 混合 Runbook 辅助角色上不可用。 为直接在计算机上运行的 runbook 或环境中的资源使用相应的[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0)或[Az 模块](../az-modules.md)。 
 >
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -271,10 +271,10 @@ myModule
 | Microsoft.PowerShell.Security |  |
 | Microsoft.PowerShell.Utility |  |
 | Microsoft.WSMan.Management |  |
-| Orchestrator.AssetManagement.Cmdlets | 第 |
+| Orchestrator.AssetManagement.Cmdlets | 1 |
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
-| StateConfigCompositeResources | 第 |
+| StateConfigCompositeResources | 1 |
 | xDSCDomainjoin | 1.1 |
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |

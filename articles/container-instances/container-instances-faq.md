@@ -5,11 +5,11 @@ author: dkkapur
 ms.topic: article
 ms.date: 01/07/2020
 ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888016"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247171"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题
 
@@ -85,7 +85,7 @@ Azure 容器实例旨在作为无服务器容器点播服务，因此，我们�
 
 你可以在所选的[Azure 虚拟网络中部署容器组](container-instances-vnet.md)，并将专用 ip 委托给容器组，以在 VNet 中跨 Azure 资源路由流量。 将容器组部署到虚拟网络当前适用于 Azure 区域的一个子集中的生产工作负荷。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 ### <a name="when-does-the-meter-start-running"></a>计量器何时开始运行？
 

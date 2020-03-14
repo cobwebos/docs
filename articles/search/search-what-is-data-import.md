@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: cc3f38e9bb96ce76263a3124f8bfdc49dc638bfd
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113776"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282752"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>数据导入概述-Azure 认知搜索
 
@@ -41,22 +41,22 @@ ms.locfileid: "74113776"
 
 ### <a name="indexing-actions-upload-merge-mergeorupload-delete"></a>索引操作：上传、合并、mergeOrUpload、删除
 
-可以按文档控制索引操作的类型，指定是应该完整地上传文档、与现有文档内容合并还是将其删除。
+您可以基于每个文档来控制索引操作的类型，指定文档是否应完整上传、是否与现有文档内容合并，或是否已删除。
 
-在 REST API 中，向 Azure 认知搜索索引的终结点 URL 发出包含 JSON 请求正文的 HTTP POST 请求。 “value”数组中的每个 JSON 对象都包含文档的密钥，并指定索引操作是添加、更新还是删除文档内容。 有关代码示例，请参阅[加载文档](search-get-started-dotnet.md#load-documents)。
+在 REST API 中，向 Azure 认知搜索索引的终结点 URL 发出包含 JSON 请求正文的 HTTP POST 请求。 "Value" 数组中的每个 JSON 对象都包含文档的键，并指定索引操作是否添加、更新或删除文档内容。 有关代码示例，请参阅[加载文档](search-get-started-dotnet.md#load-documents)。
 
-在 .NET SDK 中，请将数据打包到 `IndexBatch` 对象中。 `IndexBatch` 封装 `IndexAction` 对象的集合，其中每个对象都包含一个文档和一个属性，告知 Azure 认知搜索对该文档执行的操作。 有关代码示例，请参阅 [C# 快速入门](search-get-started-dotnet.md)。
+在 .NET SDK 中，将你的数据打包到 `IndexBatch` 的对象。 `IndexBatch` 封装 `IndexAction` 对象的集合，其中每个对象都包含一个文档和一个属性，告知 Azure 认知搜索对该文档执行的操作。 有关代码示例，请参阅[ C#快速入门](search-get-started-dotnet.md)。
 
 
 | @search.action | 说明 | 每个文档必需的字段 | 说明 |
 | -------------- | ----------- | ---------------------------------- | ----- |
-| `upload` |`upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |关键字段以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
-| `merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |关键字段以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 在 .NET SDK 中，这包括 `DataType.Collection(DataType.String)` 类型的字段。 在 REST API 中，这包括 `Collection(Edm.String)` 类型的字段。 例如，如果文档包含值为 `tags` 的字段 `["budget"]`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
-| `mergeOrUpload` |如果索引中已存在具有给定关键字段的文档，则此操作的行为类似于 `merge`。 如果该文档不存在，则它的行为类似于对新文档进行 `upload` 。 |关键字段以及要定义的任何其他字段 |- |
+| `upload` |`upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |键，以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
+| `merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |键，以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 在 .NET SDK 中，这包括类型的字段 `DataType.Collection(DataType.String)`。 在 REST API 中，这包括类型的字段 `Collection(Edm.String)`。 例如，如果文档包含值为 `tags` 的字段 `["budget"]`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
+| `mergeOrUpload` |如果索引中已存在具有给定关键字段的文档，则此操作的行为类似于 `merge`。 如果该文档不存在，则它的行为类似于对新文档进行 `upload` 。 |键，以及要定义的任何其他字段 |- |
 | `delete` |从索引中删除指定文档。 |仅关键字段 |所指定关键字段以外的所有字段都会被忽略。 如果要从文档中删除单个字段，请改用 `merge`，只需将该字段显式设置为 null。 |
 
 ## <a name="decide-which-indexing-action-to-use"></a>确定要使用的索引操作
-若要使用 .NET SDK 导入数据，请执行 upload、merge、delete 和 mergeOrUpload 操作。 根据选择的以下操作，每个文档必须仅包含某些特定的字段：
+使用 .NET SDK （上传、合并、删除和 mergeOrUpload）导入数据。 根据选择的以下操作，每个文档必须仅包含某些特定的字段：
 
 
 ### <a name="formulate-your-query"></a>表述查询

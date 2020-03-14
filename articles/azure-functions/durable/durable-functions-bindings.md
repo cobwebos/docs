@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410227"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278215"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 的绑定
 
@@ -21,7 +21,7 @@ ms.locfileid: "75410227"
 
 使用适用于 Azure Functions 的 Visual Studio 工具时，使用 [OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .NET 属性配置业务流程触发器。
 
-使用脚本语言（例如 JavaScript 或 C# scripting）编写业务流程协调程序函数时，由 *function.json* 文件中 `bindings` 数组的以下 JSON 对象定义业务流程协调程序触发器：
+使用脚本语言（例如 JavaScript 或 C# scripting）编写业务流程协调程序函数时，由 `bindings`function.json*文件中* 数组的以下 JSON 对象定义业务流程协调程序触发器：
 
 ```json
 {
@@ -128,7 +128,7 @@ module.exports = df.orchestrator(function*(context) {
 
 如果使用的是 Visual Studio，则使用 `ActivityTriggerAttribute` .NET 属性配置活动触发器。
 
-如果使用 VS Code 或 Azure 门户进行开发，则由 function.json 文件中 `bindings` 数组的以下 JSON 对象定义活动触发器：
+如果使用 VS Code 或 Azure 门户进行开发，则由 function.json`bindings`*文件中* 数组的以下 JSON 对象定义活动触发器：
 
 ```json
 {
@@ -456,7 +456,7 @@ public class Counter
 有关基于类的语法及其用法的详细信息，请参阅[定义实体类](durable-functions-dotnet-entities.md#defining-entity-classes)。
 
 > [!NOTE]
-> 使用实体类时，必须将具有 `[FunctionName]` 属性的函数入口点方法声明为 `static`。 非静态入口点方法可能会导致多次进行对象初始化，并可能导致其他不确定的行为。
+> 使用实体类时，必须将具有 `[FunctionName]` 属性的函数入口点方法声明为 *。* `static` 非静态入口点方法可能会导致多次进行对象初始化，并可能导致其他不确定的行为。
 
 实体类具有用于与绑定和 .NET 依赖项注入交互的特殊机制。 有关详细信息，请参阅[实体构造](durable-functions-dotnet-entities.md#entity-construction)。
 
@@ -500,7 +500,7 @@ module.exports = df.entity(function(context) {
 ```
 
 > [!NOTE]
-> 从 `durable-functions` npm 包版本 1.3.0 开始，JavaScript 中提供了持久实体。
+> 从  **npm 包版本 1.3.0 开始，JavaScript 中提供了持久实体**`durable-functions`。
 
 ## <a name="entity-client"></a>实体客户端
 
@@ -634,7 +634,7 @@ module.exports = async function (context) {
 ```
 
 > [!NOTE]
-> 从 `durable-functions` npm 包版本 1.3.0 开始，JavaScript 中提供了持久实体。
+> 从  **npm 包版本 1.3.0 开始，JavaScript 中提供了持久实体**`durable-functions`。
 
 <a name="host-json"></a>
 ## <a name="hostjson-settings"></a>host.json 设置

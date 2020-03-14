@@ -4,11 +4,11 @@ description: 了解基于代理的 VMWare 迁移的 Azure Migrate 复制设备�
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901557"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245858"
 ---
 # <a name="replication-appliance"></a>复制设备
 
@@ -35,20 +35,20 @@ ms.locfileid: "76901557"
 
 当使用 Azure Migrate 中心提供的 .OVA 模板设置复制设备时，设备将运行 Windows Server 2016 并符合支持要求。 如果在物理服务器上手动设置复制设备，请确保它符合要求。
 
-组件 | 要求
+组件 | **要求**
 --- | ---
  | **VMware VM 设备**
 PowerCLI | 如果复制设备在 VMware VM 上运行，则应安装[PowerCLI 版本 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) 。
 NIC 类型 | VMXNET3 （如果设备是 VMware VM）
  | **硬件设置**
-CPU 内核数 | 8
+CPU 核心数 | 8
 RAM | 16 GB
-磁盘数 | 三：操作系统磁盘、进程服务器缓存磁盘和保留驱动器。
+磁盘数目 | 三：操作系统磁盘、进程服务器缓存磁盘和保留驱动器。
 可用磁盘空间（缓存） | 600 GB
 可用磁盘空间（保留磁盘） | 600 GB
 **软件设置** |
 操作系统 | Windows Server 2016 或 Windows Server 2012 R2
-许可证 | 该设备附带了 Windows Server 2016 评估版许可证，该许可证在180天内有效。<br/><br/> 如果评估期接近过期，我们建议你下载并部署新设备，或者激活设备 VM 的操作系统许可证。
+许可 | 该设备附带了 Windows Server 2016 评估版许可证，该许可证在180天内有效。<br/><br/> 如果评估期接近过期，我们建议你下载并部署新设备，或者激活设备 VM 的操作系统许可证。
 操作系统区域设置 | 美国英语
 TLS | 应启用 TLS 1.2。
 .NET Framework | 应在计算机上安装 .NET Framework 4.6 或更高版本（启用了强密码。
@@ -86,7 +86,7 @@ https:\//management.azure.com | 用于复制管理操作和协调
 *.services.visualstudio.com | 用于遥测数据（可选）
 time.nist.gov | 用于检查系统时间与全球时间之间的时间同步。
 time.windows.com | 用于检查系统时间与全球时间之间的时间同步。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | OVF 安装程序需要对这些 Url 的访问权限。 它们由 Azure Active Directory 用于访问控制和标识管理
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https：\//login.live.com <br/> https：\//graph.windows.net <br/> https:\//login.windows.net <br/> https：\//www.live.com <br/> https：\//www.microsoft.com  | OVF 安装程序需要对这些 Url 的访问权限。 它们由 Azure Active Directory 用于访问控制和标识管理
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载
 
 ## <a name="port-access"></a>端口访问

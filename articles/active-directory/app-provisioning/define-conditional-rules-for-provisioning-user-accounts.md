@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12ba93a7e3de3c290d5952227b67843c0a9846d3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 2c667409f2abb9f1cf89ae3b34f08e0f9eec067e
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544260"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138529"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。
@@ -103,7 +103,8 @@ ms.locfileid: "77544260"
 
 
 >[!IMPORTANT] 
-> 当前不支持 IsMemberOf 筛选器。
+> - 当前不支持 IsMemberOf 筛选器。
+> - 多值属性不支持等于和不等于
 
 9. 可重复步骤 7-8 以添加其他范围子句。
 
@@ -120,12 +121,12 @@ ms.locfileid: "77544260"
 
 
 ## <a name="common-scoping-filters"></a>常见范围筛选器
-| 目标属性| 运算符 | 值 | 说明|
+| 目标属性| 操作员 | 值 | 说明|
 |----|----|----|----|
 |userPrincipalName|正则表达式匹配|.\*@domain.com |具有 userPrincipal 域 @domain.com 的所有用户将处于预配范围内|
 |userPrincipalName|不匹配 REGEX|.\*@domain.com|具有 @domain.com 域的 userPrincipal 的所有用户将不在预配范围内|
 |department|EQUALS|sales|销售部门的所有用户都处于预配范围内|
-|WorkerID|正则表达式匹配|(1[0-9][0-9][0-9][0-9][0-9][0-9])| 介于1000000和2000000之间的 workerIDs 的所有员工都处于预配的范围内。|
+|workerID|正则表达式匹配|(1[0-9][0-9][0-9][0-9][0-9][0-9])| 介于1000000和2000000之间的 workerIDs 的所有员工都处于预配的范围内。|
 
 ## <a name="related-articles"></a>相关文章
 * [在 SaaS 应用程序中自动预配和取消预配用户](../app-provisioning/user-provisioning.md)

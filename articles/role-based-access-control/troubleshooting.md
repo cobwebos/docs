@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
 ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980991"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245520"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>对 Azure 资源的 RBAC 问题进行故障排除
 
@@ -56,7 +56,7 @@ ms.locfileid: "75980991"
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>具有未知安全主体的角色分配
 
-如果向安全主体（用户、组、服务主体或托管标识）分配角色，然后在不删除角色分配的情况下删除安全主体，则角色分配的安全主体类型将列为 "**未知**"。 下面的屏幕截图展示了 Azure 门户中的一个示例。 安全主体名称列出为 "**已删除标识**" 并且**标识已不存在**。 
+如果向安全主体（用户、组、服务主体或托管标识）分配角色，然后在不删除角色分配的情况下删除安全主体，则角色分配的安全主体类型将列为 "**未知**"。 以下屏幕截图显示了 Azure 门户中的示例。 安全主体名称列出为 "**已删除标识**" 并且**标识已不存在**。 
 
 ![Web 应用程序资源组](./media/troubleshooting/unknown-security-principal.png)
 
@@ -149,7 +149,7 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 创建或�
 这些项需要对包含网站的整个**资源组**具有**写**访问权限：  
 
 * SSL 证书和绑定（SSL 证书可以在同一资源组和地理位置中的站点之间共享）  
-* 预警规则  
+* 警报规则  
 * 自动缩放设置  
 * Application Insights 组件  
 * Web 测试  
@@ -171,7 +171,7 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 创建或�
 
 * 可用性集  
 * 负载均衡集  
-* 预警规则  
+* 警报规则  
 
 如果无法访问以上任何磁贴，则需要让管理员提供对资源组的“参与者”访问权限。
 

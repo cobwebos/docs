@@ -4,11 +4,11 @@ description: 本文逐步讲解如何使用 Azure CLI、Azure PowerShell 和 RES
 ms.date: 01/31/2019
 ms.topic: how-to
 ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386795"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264539"
 ---
 # <a name="programmatically-create-policies"></a>以编程方式创建策略
 
@@ -16,7 +16,7 @@ ms.locfileid: "78386795"
 
 有关符合性的信息，请参阅[获取符合性数据](get-compliance-data.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保满足以下先决条件：
 

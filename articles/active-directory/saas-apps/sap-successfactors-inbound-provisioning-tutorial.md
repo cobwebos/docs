@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
 ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374779"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249680"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>教程：配置 SAP SuccessFactors 以 Active Directory 用户预配（预览版）
 本教程的目的是说明将用户从 SuccessFactors Employee Central 预配到 Active Directory （AD）和 Azure AD 时需要执行的步骤，并提供对 SuccessFactors 的电子邮件地址的可选写回。 此集成在公共预览版中，支持从 SuccessFactors 员工中心检索70多个以上的[用户属性](../app-provisioning/sap-successfactors-attribute-reference.md)。
@@ -117,7 +117,7 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
   >[!NOTE]
   >有关此预配应用检索到的属性的完整列表，请参阅[SuccessFactors 特性引用](../app-provisioning/sap-successfactors-attribute-reference.md)
 
-* 单击“完成”。 单击“保存更改”。
+* 单击“完成”。 单击 **“保存更改”** 。
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>为 API 用户创建权限组
 
@@ -146,7 +146,7 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
 * 查看权限角色授予权限组。 
   > [!div class="mx-imgBorder"]
   > ![权限角色和组详细信息](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* 单击“保存更改”。
+* 单击 **“保存更改”** 。
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-active-directory"></a>配置从 SuccessFactors 到 Active Directory 的用户预配
 
@@ -346,7 +346,7 @@ SuccessFactors 预配应用配置完成后，即可在 Azure 门户中打开预�
 
 1. 在“预配”选项卡中，将“预配状态”设置为“打开”。
 
-2. 单击 **“保存”** 。
+2. 单击“ **保存**”。
 
 3. 此操作将启动初始同步，这可能会花费几小时的时间，具体取决于 SuccessFactors 租户中的用户数量。 您可以查看进度栏，以跟踪同步周期的进度。 
 

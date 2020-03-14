@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 7c77527b7300c1149e96c94a4dbe122da226ac6d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382570"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280815"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Azure 前门服务中 HTTP 标头的协议支持
 本文概述了前门服务在呼叫路径的各个部分（请参阅图像）中支持的协议。 以下各节提供了有关前门服务支持的 HTTP 标头的详细信息。

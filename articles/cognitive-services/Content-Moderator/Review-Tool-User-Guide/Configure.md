@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379032"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220123"
 ---
 # <a name="configure-the-review-tool"></a>配置审阅工具
 
@@ -95,7 +95,7 @@ ms.locfileid: "78379032"
 [查看工具](./human-in-the-loop.md)包括以下连接器：
 
 - 情感
-- 脸
+- 人脸
 - PhotoDNA 云服务
 - 文本分析
 

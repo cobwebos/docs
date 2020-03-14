@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: fde8829da3e523ced44143db0dee6b93cf9152bd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 466f870f257ca4d93764cbfdb4208e8cf1f75553
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147765"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79205047"
 ---
-# <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>为 Azure Cosmos 帐户配置 Azure 专用链接（预览）
+# <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>为 Azure Cosmos 帐户配置 Azure 专用链接
 
 使用 Azure 专用链接，可以通过专用终结点连接到 Azure Cosmos 帐户。 专用终结点是虚拟网络内子网中的一组专用 IP 地址。 然后，可以通过专用 IP 地址限制对 Azure Cosmos 帐户的访问。 当私有链接与受限制的 NSG 策略结合时，它有助于降低数据渗透的风险。 若要了解有关专用终结点的详细信息，请参阅[Azure 专用链接](../private-link/private-link-overview.md)一文。
 
@@ -22,6 +22,9 @@ ms.locfileid: "74147765"
 你可以使用 "自动" 或 "手动" 审批方法连接到使用 "专用" 链接配置的 Azure Cosmos 帐户。 若要了解详细信息，请参阅专用链接文档的 "[批准工作流](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)" 部分。 
 
 本文介绍创建专用终结点的步骤。 它假定您使用的是自动批准方法。
+
+> [!NOTE]
+> 专用终结点支持目前在仅适用于网关连接模式的支持区域中已正式发布。 对于直接模式，它作为预览功能提供。
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>使用 Azure 门户创建专用终结点
 
@@ -33,7 +36,7 @@ ms.locfileid: "74147765"
 
    ![用于在 Azure 门户中创建专用终结点的选择](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
 
-1. 在 "**创建专用终结点（预览）-基本**信息" 窗格中，输入或选择以下详细信息：
+1. 在 "**创建专用终结点-基本**信息" 窗格中，输入或选择以下详细信息：
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -57,7 +60,7 @@ ms.locfileid: "74147765"
     |||
 
 1. 选择**下一步：配置**。
-1. 在“创建专用终结点(预览版) - 配置”中，输入或选择以下信息：
+1. 在 "**创建专用终结点-配置**" 中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -349,7 +352,7 @@ $deploymentOutput
         },
         "VNetId": {
             "type": "string"
-        }       
+        }        
     },
     "resources": [
         {
@@ -374,7 +377,7 @@ $deploymentOutput
                     "id": "[parameters('VNetId')]"
                 }
             }
-        }       
+        }        
     ]
 }
 ```
@@ -391,7 +394,7 @@ $deploymentOutput
         },
         "IPAddress": {
             "type":"string"
-        }       
+        }        
     },
     "resources": [
          {
@@ -406,7 +409,7 @@ $deploymentOutput
                     }
                 ]
             }
-        }   
+        }    
     ]
 }
 ```
@@ -548,29 +551,13 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>添加或删除区域时更新专用终结点
 
-若要在 Azure Cosmos 帐户中添加或删除区域，需要在该帐户中添加或删除 DNS 条目。 使用以下步骤在专用终结点中相应地更新这些更改：
-
-1. 当 Azure Cosmos DB 管理员添加或删除区域时，网络管理员将获取有关挂起的更改的通知。 对于映射到 Azure Cosmos 帐户的专用终结点，`ActionsRequired` 属性的值会从 `None` 更改为 `Recreate`。 然后，网络管理员通过使用用于创建 PUT 请求的相同资源管理器负载发出 PUT 请求来更新专用终结点。
-
-1. 更新专用终结点后，你可以更新子网的专用 DNS 区域，以反映已添加或已删除的 DNS 条目及其相应的专用 IP 地址。
+若要在 Azure Cosmos 帐户中添加或删除区域，需要在该帐户中添加或删除 DNS 条目。 添加或删除区域后，可以更新子网的专用 DNS 区域，以反映已添加或已删除的 DNS 条目及其相应的专用 IP 地址。
 
 例如，假设你在三个区域部署 Azure Cosmos 帐户： "美国西部"、"美国中部" 和 "西欧"。 为帐户创建专用终结点时，子网中会保留四个专用 Ip。 这三个区域中的每一个都有一个 IP，并且与全局/地区无关的终结点有一个 IP。
 
-稍后，你可以将新区域（例如 "美国东部"）添加到 Azure Cosmos 帐户。 默认情况下，不能从现有的专用终结点访问新区域。 Azure Cosmos 帐户管理员应在从新区域访问专用终结点连接之前刷新该连接。 
+稍后，你可以将新区域（例如 "美国东部"）添加到 Azure Cosmos 帐户。 添加新区域后，需要将相应的 DNS 记录添加到专用 DNS 区域或自定义 DNS。
 
-运行 ` Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>` 命令时，该命令的输出包含 `actionsRequired` 参数。 此参数设置为 `Recreate`。 此值指示应刷新专用终结点。 接下来，Azure Cosmos 帐户管理员运行 `Set-AzPrivateEndpoint` 命令来触发专用终结点刷新。
-
-```powershell
-$pe = Get-AzPrivateEndpoint -Name <your private endpoint name> -ResourceGroupName <your resource group name>
-
-Set-AzPrivateEndpoint -PrivateEndpoint $pe
-```
-
-新的专用 IP 会自动保留在此专用终结点下的子网中。 `actionsRequired` 的值将变为 `None`。 如果你没有任何专用 DNS 区域集成（换言之，如果你使用的是自定义专用 DNS 区域），则必须配置专用 DNS 区域，以便为与新区域对应的专用 IP 添加新的 DNS 记录。
-
-删除区域时，可以使用相同的步骤。 已删除区域的专用 IP 会自动回收，`actionsRequired` 标志将变为 `None`。 如果没有任何专用 DNS 区域集成，则必须将专用 DNS 区域配置为删除已删除区域的 DNS 记录。
-
-删除私有终结点或删除 Azure Cosmos 帐户中的某个区域时，不会自动删除专用 DNS 区域中的 DNS 记录。 你必须手动删除 DNS 记录。
+删除区域时，可以使用相同的步骤。 删除区域后，需要从专用 DNS 区域或自定义 DNS 中删除相应的 DNS 记录。
 
 ## <a name="current-limitations"></a>当前限制
 
@@ -583,9 +570,11 @@ Set-AzPrivateEndpoint -PrivateEndpoint $pe
 
 * 使用直接模式连接将专用链接与 Azure Cosmos 帐户一起使用时，只能使用 TCP 协议。 目前尚不支持 HTTP 协议。
 
+* 专用终结点支持目前在仅适用于网关连接模式的支持区域中已正式发布。 对于直接模式，它作为预览功能提供。
+
 * 当你使用 Azure Cosmos DB 的适用于 MongoDB 帐户的 API 时，仅支持服务器版本3.6 上的帐户的专用终结点（即，以 `*.mongo.cosmos.azure.com`格式使用终结点的帐户）。 服务器版本3.2 上的帐户不支持专用链接（即，使用该终结点的帐户格式 `*.documents.azure.com`）。 若要使用专用链接，你应该将旧帐户迁移到新版本。
 
-* 如果 Azure Cosmos DB 使用的是具有私有链接的 MongoDB 帐户的 API，则无法使用 Robo 3T、Studio 3T 和 Mongoose 等工具。 仅当指定了 `appName=<account name>` 参数时，终结点才能具有专用链接支持。 例如 `replicaSet=globaldb&appName=mydbaccountname`。 由于这些工具不会在连接字符串中将应用名称传递到服务，因此不能使用 "专用链接"。 但你仍可以通过使用3.6 版本的 SDK 驱动程序来访问这些帐户。
+* 如果 Azure Cosmos DB 使用的是具有私有链接的 MongoDB 帐户的 API，则无法使用 Robo 3T、Studio 3T 和 Mongoose 等工具。 仅当指定了 `appName=<account name>` 参数时，终结点才能具有专用链接支持。 示例为 `replicaSet=globaldb&appName=mydbaccountname`。 由于这些工具不会在连接字符串中将应用名称传递到服务，因此不能使用 "专用链接"。 但你仍可以通过使用3.6 版本的 SDK 驱动程序来访问这些帐户。
 
 * 如果虚拟网络包含 "专用" 链接，则无法移动或删除该网络。
 

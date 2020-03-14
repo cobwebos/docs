@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/08/2019
+ms.date: 3/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 9ea3388cb65b18c093ffff3ec8b8c9f2764ef189
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 23d83b59c510f2565b2f66f78dad56c9c9592dd0
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300062"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136511"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：为 Azure AD 应用提供可选声明
 
@@ -37,7 +37,7 @@ ms.locfileid: "78300062"
 
 | 帐户类型 | v1.0 令牌 | v2.0 令牌  |
 |--------------|---------------|----------------|
-| Microsoft 个人帐户  | 不可用  | 支持 |
+| Microsoft 个人帐户  | 空值  | 支持 |
 | Azure AD 帐户      | 支持 | 支持 |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v1.0 和 v2.0 可选声明集
@@ -49,7 +49,7 @@ ms.locfileid: "78300062"
 
 **表2：1.0 版和 v2.0 可选声明集**
 
-| 名称                       |  说明   | 令牌类型 | 用户类型 | 注意  |
+| 名称                       |  说明   | 令牌类型 | 用户类型 | 说明  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | 用户上次进行身份验证的时间。 请参阅 OpenID Connect 规范。| JWT        |           |  |
 | `tenant_region_scope`      | 资源租户的区域 | JWT        |           | |
@@ -78,17 +78,17 @@ ms.locfileid: "78300062"
 
 **表3：仅限 v2.0 的可选声明**
 
-| JWT 声明     | 名称                            | 说明                                | 注意 |
+| JWT 声明     | 名称                            | 说明                                | 说明 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 地址                      | 客户端从中登录的 IP 地址。   |       |
 | `onprem_sid`  | 本地安全标识符 |                                             |       |
 | `pwd_exp`     | 密码过期时间        | 密码过期的日期时间。 |       |
 | `pwd_url`     | 更改密码 URL             | 用户更改密码时可以访问的 URL。   |   |
 | `in_corp`     | 企业网络内部        | 表示客户端是否从企业网络登录。 如果不是，则不包含此声明。   |  以 MFA 中的[可信 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 设置为基础。    |
-| `nickname`    | 别名                        | 用户的其他名称。 昵称与名字或姓氏不同。 | 
-| `family_name` | 姓氏                       | 提供用户对象中定义的用户的姓、姓氏或家族名称。 <br>"family_name":"Miller" | MSA 和 Azure AD 中支持   |
-| `given_name`  | 名字                      | 提供用户对象上设置的用户的第一个或 "给定" 名称。<br>"given_name": "Frank"                   | MSA 和 Azure AD 中支持  |
-| `upn`         | 用户主体名称 | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于关键数据。 | 有关声明配置，请参阅下面的[附加属性](#additional-properties-of-optional-claims)。 |
+| `nickname`    | 别名                        | 用户的其他名称。 昵称与名字或姓氏不同。 需要 `profile` 范围。| 
+| `family_name` | 姓氏                       | 提供用户对象中定义的用户的姓、姓氏或家族名称。 <br>"family_name":"Miller" | 在 MSA 和 Azure AD 中受支持。 需要 `profile` 范围。   |
+| `given_name`  | 名字                      | 提供用户对象上设置的用户的第一个或 "给定" 名称。<br>"given_name": "Frank"                   | 在 MSA 和 Azure AD 中受支持。  需要 `profile` 范围。 |
+| `upn`         | 用户主体名称 | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于关键数据。 | 有关声明配置，请参阅下面的[附加属性](#additional-properties-of-optional-claims)。 需要 `profile` 范围。|
 
 ### <a name="additional-properties-of-optional-claims"></a>可选声明的附加属性
 
@@ -117,12 +117,13 @@ ms.locfileid: "78300062"
         }
     ```
 
-此 OptionalClaims 对象会导致返回到客户端的 ID 令牌包含另一个 UPN 及其他主租户和资源租户信息。 仅当用户是租户中的来宾（使用不同的 IDP 进行身份验证）时，才会在令牌中更改 `upn` 声明。 
+此 OptionalClaims 对象将导致返回给客户端的 ID 令牌包含带有额外 home 租户和资源租户信息的 upn 声明。 仅当用户是租户中的来宾（使用不同的 IDP 进行身份验证）时，才会在令牌中更改 `upn` 声明。 
 
 ## <a name="configuring-optional-claims"></a>配置可选声明
 
 > [!IMPORTANT]
 > **始终**使用资源的清单而不是客户端生成访问令牌。  因此在请求中 `...scope=https://graph.microsoft.com/user.read...` 资源是 Microsoft Graph API。  因此，访问令牌是使用 Microsoft Graph API 清单创建的，而不是客户端的清单。  更改应用程序的清单永远不会导致 Microsoft Graph API 的令牌看上去不同。  为了验证你的 `accessToken` 更改是否有效，请为你的应用程序请求一个令牌，而不是向其他应用请求。  
+
 
 可以通过 UI 或应用程序清单为应用程序配置可选声明。
 
@@ -138,7 +139,7 @@ ms.locfileid: "78300062"
 2. 选择 "**添加可选声明**"。
 3. 选择要配置的令牌类型。
 4. 选择要添加的可选声明。
-5. 单击 **“添加”** 。
+5. 单击“添加”。
 
 **通过应用程序清单配置可选声明：**
 
@@ -203,11 +204,11 @@ ms.locfileid: "78300062"
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 可选声明的名称。                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | 声明的源（目录对象）。 扩展属性提供预定义声明和用户定义的声明。 如果源值为 null，则声明是预定义的可选声明。 如果源值为 user，则 name 属性中的值是来自用户对象的扩展属性。 |
-| `essential`            | Edm.Boolean             | 如果值为 true，则必须使用客户端指定的声明，以确保为最终用户请求的特定任务提供顺利的授权体验。 默认值为 false。                                                                                                             |
+| `essential`            | Edm.Boolean             | 如果值为 true，则必须使用客户端指定的声明，以确保为最终用户请求的特定任务提供顺利的授权体验。 默认值是 False。                                                                                                             |
 | `additionalProperties` | 集合 (Edm.String) | 声明的附加属性。 如果此集合中存在某个属性，该属性将修改 name 属性中指定的可选声明的行为。                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>配置目录扩展可选声明
 
-除了标准的可选声明集外，还可以将令牌配置为包括扩展。 使用此功能可以附加应用可以使用的附加用户信息 – 例如，用户设置的附加标识符或重要配置选项。 有关示例，请参阅本页底部的。
+除了标准的可选声明集外，还可以将令牌配置为包括扩展。 有关详细信息，请参阅[Microsoft Graph extensionProperty 文档](https://docs.microsoft.com/graph/api/resources/extensionproperty?view=graph-rest-1.0)-请注意，可选声明不支持架构和打开扩展，仅限 AAD-Graph 样式的目录扩展。 使用此功能可以附加应用可以使用的附加用户信息 – 例如，用户设置的附加标识符或重要配置选项。 有关示例，请参阅本页底部的。
 
 > [!NOTE]
 > - 目录架构扩展是一项仅限 Azure AD 的功能，因此，如果应用程序清单请求自定义扩展插件，并且 MSA 用户登录到应用，则将不会返回这些扩展。
@@ -240,7 +241,7 @@ ms.locfileid: "78300062"
 2. 选择 "**添加组声明**"
 3. 选择要返回的组类型（**所有组**、 **SecurityGroup**或**DirectoryRole**）。 **All Groups**选项包括**SecurityGroup**、 **DirectoryRole**和**DistributionList**
 4. 可选：单击 "特定令牌类型" 属性以修改组声明值以包含本地组属性，或将声明类型更改为角色
-5. 单击 **“保存”**
+5. 单击“保存”
 
 **通过应用程序清单配置组可选声明：**
 1. 登录到 [Azure 门户](https://portal.azure.com)
@@ -250,7 +251,7 @@ ms.locfileid: "78300062"
 1. 在 "**管理**" 部分下，选择 "**清单**"
 3. 使用清单编辑器添加以下项：
 
-   有效值包括：
+   有效值为：
 
    - "All" （此选项包括 SecurityGroup、DirectoryRole 和 DistributionList）
    - "SecurityGroup"
@@ -269,7 +270,7 @@ ms.locfileid: "78300062"
    如果希望在 "可选声明" 部分中将 "本地 AD 组属性" 标记为 "包含本地 AD 组属性"，请指定要应用的标记类型可选声明、所请求的可选声明的名称和所需的任何其他属性。  可以列出多个标记类型：
 
    - OIDC ID 令牌的 idToken
-   - OAuth/OIDC 访问令牌的 accessToken
+   - OAuth 访问令牌的 accessToken
    - SAML 令牌的 Saml2Token。
 
    > [!NOTE]

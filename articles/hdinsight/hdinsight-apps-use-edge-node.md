@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/27/2020
 ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386401"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272599"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点
 
@@ -77,11 +77,11 @@ ms.locfileid: "78386401"
 
 1. 配置以下属性：
 
-    |属性 |说明 |
+    |properties |说明 |
     |---|---|
     |订阅|选择用于创建群集的 Azure 订阅。|
     |资源组|选择用于现有 HDInsight 群集的资源组。|
-    |Location|选择现有 HDInsight 群集的位置。|
+    |位置|选择现有 HDInsight 群集的位置。|
     |群集名称|输入现有 HDInsight 群集的名称。|
 
 1. 选中 **"我同意上述条款和条件**"，然后选择 "**购买**" 创建边缘节点。
@@ -101,11 +101,11 @@ ms.locfileid: "78386401"
 
 1. 配置以下属性：
 
-    |属性 |说明 |
+    |properties |说明 |
     |---|---|
     |订阅|选择用于创建群集的 Azure 订阅。|
     |资源组|创建用于该群集的新资源组。|
-    |Location|选择资源组的位置。|
+    |位置|选择资源组的位置。|
     |群集名称|输入要创建的新群集的名称。|
     |群集登录用户名|输入 Hadoop HTTP 用户名。  默认名称为 **admin**。|
     |群集登录密码|输入 Hadoop HTTP 用户密码。|
@@ -158,7 +158,7 @@ ms.locfileid: "78386401"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何添加边缘节点以及如何访问边缘节点。 若要了解更多信息，请参阅下列文章：
+本文介绍了如何添加边缘节点以及如何访问边缘节点。 若要了解详细信息，请参阅以下文章：
 
 * [安装 HDInsight 应用程序](hdinsight-apps-install-applications.md)：了解如何将 HDInsight 应用程序安装到群集。
 * [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)：了解如何将未发布的 HDInsight 应用程序部署到 HDInsight。

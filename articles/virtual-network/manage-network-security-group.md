@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: kumud
 ms.openlocfilehash: fa933b820d8677e4d080b54ce5e6a5d506ea38fc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978927"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245104"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>创建、更改或删除网络安全组
 
@@ -30,11 +30,11 @@ ms.locfileid: "75978927"
 在完成本文任何部分中的步骤之前，请完成以下任务：
 
 - 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
-- 如果使用门户，请打开 https://portal.azure.com ，并使用 Azure 帐户登录。
+- 如果使用门户，请打开 https://portal.azure.com，并使用 Azure 帐户登录。
 - 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 - 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.28 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
-必须将登录或连接到 Azure 所用的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有“[权限](#permissions)”中所列适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+必须将登录或连接到 Azure 所用的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有“[权限](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)”中所列适当操作的[自定义角色](#permissions)。
 
 ## <a name="work-with-network-security-groups"></a>使用网络安全组
 
@@ -125,10 +125,10 @@ ms.locfileid: "75978927"
     |目标     | 为出站安全规则选择**任何** **应用程序安全组**、 **IP 地址**或**虚拟网络**。 如果创建的是入站安全规则，则选项与 "**源**" 列中列出的选项相同。        | 如果选择“应用程序安全组”，那么必须选择一个或多个与网络接口存在于同一区域的现有的应用程序安全组。 了解如何[创建应用程序安全组](#create-an-application-security-group)。 如果选择“应用程序安全组”，则选择一个与网络接口存在于同一区域的现有的应用程序安全组。 如果选择“IP 地址”，则指定“目标 IP 地址/CIDR 范围”。 类似于“源”和“源 IP 地址/CIDR 范围”，你可指定单个或多个地址或范围，并且可指定的数目有限制。 选择“虚拟网络”，它是一个服务标记，意味着流量可到虚拟网络地址空间内的所有 IP 地址。 如果指定的 IP 地址已分配给 Azure 虚拟机，请确保指定的是专用 IP，而不是已分配给虚拟机的公共 IP 地址。 在 Azure 将公共 IP 地址转换为专用 IP 地址以符合入站安全规则后，在 Azure 将专用 IP 地址转换为公共 IP 地址以符合出站规则之前，会处理安全规则。 若要了解有关 Azure 中的公共和专用 IP 地址的详细信息，请参阅 [IP 地址类型](virtual-network-ip-addresses-overview-arm.md)。        |
     |目标端口范围     | 指定单个值或以逗号分隔的多个值的列表。 | 类似于“源端口范围”，可指定单个或多个端口和范围，并且可指定的数目有限制。 |
     |协议     | 选择 "**任何**"、" **TCP**"、" **UDP** " 或 " **ICMP**"。        |         |
-    |行动     | 选择“允许”或“拒绝”。        |         |
-    |优先级     | 输入一个介于 100-4096 之间的值，该值对于网络安全组内的所有安全规则都是唯一的。 |规则按优先顺序处理。 编号越低，优先级越高。 建议创建规则时在优先级数字之间留出空隙，例如 100, 200, 300。 留出空隙后，未来在需要使规则高于或低于现有规则时，可更轻松添加规则。         |
+    |操作     | 选择“允许”或“拒绝”。        |         |
+    |优先度     | 输入一个介于 100-4096 之间的值，该值对于网络安全组内的所有安全规则都是唯一的。 |规则按优先顺序处理。 编号越低，优先级越高。 建议创建规则时在优先级数字之间留出空隙，例如 100, 200, 300。 留出空隙后，未来在需要使规则高于或低于现有规则时，可更轻松添加规则。         |
     |名称     | 网络安全组内规则的唯一名称。        |  名称最多可包含 80 个字符。 它必须以字母或数字开头，以字母、数字或下划线结尾，且仅可包含字母、数字、下划线、句点或连字符。       |
-    |Description     | 可选说明。        |         |
+    |说明     | 可选说明。        |         |
 
 **命令**
 
@@ -254,7 +254,7 @@ ms.locfileid: "75978927"
 
 ### <a name="network-security-group"></a>网络安全组
 
-| 行动                                                        |   名称                                                                |
+| 操作                                                        |   名称                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/read                  |   获取网络安全组                                          |
 | Microsoft.Network/networkSecurityGroups/write                 |   创建或更新网络安全组                             |
@@ -264,7 +264,7 @@ ms.locfileid: "75978927"
 
 ### <a name="network-security-group-rule"></a>网络安全组规则
 
-| 行动                                                        |   名称                                                                |
+| 操作                                                        |   名称                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/rules/read            |   获取规则                                                            |
 | Microsoft.Network/networkSecurityGroups/rules/write           |   创建或更新规则                                               |
@@ -272,7 +272,7 @@ ms.locfileid: "75978927"
 
 ### <a name="application-security-group"></a>应用程序安全组
 
-| 行动                                                                     | 名称                                                     |
+| 操作                                                                     | 名称                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | 将 IP 配置加入到应用程序安全组中|
 | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | 将安全规则加入到应用程序安全组中    |

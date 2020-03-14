@@ -10,25 +10,24 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: c4923e43613653bf3dfe8055754039ab0cf57fca
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: 739bba7ed9ab4770a762c08fccc422ce048ae11d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587373"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214093"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>使用 Intelligent Insights 排查 Azure SQL 数据库性能问题
 
-本页提供有关通过 [Intelligent Insights](sql-database-intelligent-insights.md) 数据库性能诊断日志检测到的 Azure SQL 数据库和托管实例性能问题的信息。 诊断日志遥测可以流式传输到[Azure Monitor 日志](../azure-monitor/insights/azure-sql.md)、 [azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [azure 存储](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
+本页提供有关 Azure SQL 数据库的信息，并托管实例通过[智能见解](sql-database-intelligent-insights.md)资源日志检测到的性能问题。 可以将指标和资源日志流式传输到[Azure Monitor 日志](../azure-monitor/insights/azure-sql.md)、 [azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [azure 存储](sql-database-metrics-diag-logging.md#stream-into-azure-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
 
 > [!NOTE]
 > 有关通过 Intelligent Insights 快速排查 SQL 数据库性能问题的指导，请参阅本文档中的[建议的故障排除流程](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)流程图。
->
 
 ## <a name="detectable-database-performance-patterns"></a>可检测的数据库性能模式
 
-智能见解可根据查询执行等待时间、错误或超时自动检测 SQL 数据库和托管实例数据库的性能问题， 它会将检测到的性能模式输出到诊断日志。 下表汇总了可检测的性能模式。
+智能见解会根据查询执行等待时间、错误或超时，自动检测 Azure SQL 数据库中的数据库的性能问题。 智能见解将检测到的性能模式输出到 SQL 数据库资源日志。 下表汇总了可检测的性能模式。
 
 | 可检测性能模式 | Azure SQL 数据库和弹性池的说明 | 托管实例中的数据库的说明 |
 | :------------------- | ------------------- | ------------------- |
@@ -82,7 +81,7 @@ SQL 数据库上的资源通常称为 [DTU](sql-database-what-is-a-dtu.md) 或 [
 
 这项检测是通过多个指标的组合来执行的。 度量的基本指标会根据以往的工作负荷基线检测工作负荷的增大情况。 另一种形式的检测基于对活动工作线程数的大幅提升的检测，这种提升率足以影响查询性能。
 
-更严重时，由于 SQL 数据库无法处理工作负荷，导致工作负荷不断堆积。 结果就是工作负荷不断增大，即出现工作负荷堆积情况。 因此，工作负荷等待执行的时间也增加。 这种情况代表最严重的数据库性能问题之一。 可通过监视已中止工作线程数的增加情况来检测此问题。 
+更严重时，由于 SQL 数据库无法处理工作负荷，导致工作负荷不断堆积。 结果就是工作负荷不断增大，即出现工作负荷堆积情况。 因此，工作负荷等待执行的时间也增加。 这种情况代表最严重的数据库性能问题之一。 可通过监视已中止工作线程数的增加情况来检测此问题。
 
 ### <a name="troubleshooting"></a>故障排除
 
@@ -102,29 +101,29 @@ SQL 数据库上的资源通常称为 [DTU](sql-database-what-is-a-dtu.md) 或 [
 
 ### <a name="troubleshooting"></a>故障排除
 
-诊断日志会输出内存对象存储详细信息，并输出已标记为内存使用率高最大原因的分配器（即工作线程）和相关时间戳。 可以将此信息用作故障排除的基础。 
+诊断日志会输出内存对象存储详细信息，并输出已标记为内存使用率高最大原因的分配器（即工作线程）和相关时间戳。 可以将此信息用作故障排除的基础。
 
 可以优化或删除与导致内存使用率最高的分配器相关的查询。 还可以确保不查询那些不打算使用的数据。 合理的做法是始终在查询中使用 WHERE 子句。 此外，建议创建非聚集索引来搜寻数据，而不是扫描数据。
 
 还可以减少工作负荷，方法是对其进行优化，或者将其分配到多个数据库。 也可将工作负荷分配到多个数据库中。 如果此类解决方案不可行，可以考虑提高 SQL 数据库订阅的定价层，以增加可供数据库使用的内存资源量。
 
-有关其他故障排除建议，请参阅 [Memory grants meditation: The mysterious SQL Server memory consumer with many names](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/)（内存授予探幽：有多个名称的神秘 SQL Server 内存消耗者）。
+有关其他故障排除建议，请参阅 [Memory grants meditation: The mysterious SQL Server memory consumer with many names](https://techcommunity.microsoft.com/t5/sql-server-support/memory-grants-meditation-the-mysterious-sql-server-memory/ba-p/333994)（内存授予探幽：有多个名称的神秘 SQL Server 内存消耗者）。
 
 ## <a name="locking"></a>锁定
 
 ### <a name="what-is-happening"></a>发生了什么
 
-此性能模式表示当前数据库性能降低，相比过去七天的性能基线，在这种性能情况下检测到的数据库锁定过多。 
+此性能模式表示当前数据库性能降低，相比过去七天的性能基线，在这种性能情况下检测到的数据库锁定过多。
 
 在现代 RDBMS 中，锁定对于实现多线程系统至关重要，这样可以通过尽可能地运行多个同步工作线程和并行数据库事务，最大程度地提高性能。 此上下文中的锁定是指一种内置访问机制，即只允许单个事务以独占方式访问所需的行、页、表和文件，不允许其他事务与之争用资源。 当锁定资源进行独占使用的事务用完资源后，对这些资源的锁定就会取消，允许其他事务访问所需资源。 有关锁定的详细信息，请参阅[数据库引擎中的锁定](https://msdn.microsoft.com/library/ms190615.aspx)。
 
-如果 SQL 引擎执行的事务长时间等待访问已被锁定供独占使用的资源，这段等待时间会导致工作负荷在执行起来时变慢。 
+如果 SQL 引擎执行的事务长时间等待访问已被锁定供独占使用的资源，这段等待时间会导致工作负荷在执行起来时变慢。
 
 ### <a name="troubleshooting"></a>故障排除
 
 诊断日志会输出锁定详细信息，可将这些信息用作故障排除的基础。 可以分析报告的阻塞查询（即造成锁定性能降低的查询）并将其删除。 在某些情况下，可以成功优化阻塞查询。
 
-缓解问题的最简单安全方法是保持较短的事务运行时间，并减少开销最高的查询的锁占用时间。 可以将大批操作分成小批操作。 合理的做法是尽量提高查询效率，减少查询时的锁定时间。 减少大型扫描，因为这些扫描会增大死锁的可能性，并对数据库总体性能造成负面影响。 对于识别出的导致锁定的查询，可以通过创建新索引或将列添加到现有索引来避免表扫描。 
+缓解问题的最简单安全方法是保持较短的事务运行时间，并减少开销最高的查询的锁占用时间。 可以将大批操作分成小批操作。 合理的做法是尽量提高查询效率，减少查询时的锁定时间。 减少大型扫描，因为这些扫描会增大死锁的可能性，并对数据库总体性能造成负面影响。 对于识别出的导致锁定的查询，可以通过创建新索引或将列添加到现有索引来避免表扫描。
 
 有关更多建议，请参阅 [How to resolve blocking problems that are caused by lock escalation in SQL Server](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)（如何解决 SQL Server 中的锁升级造成的阻塞问题）。
 
@@ -136,7 +135,7 @@ SQL 数据库上的资源通常称为 [DTU](sql-database-what-is-a-dtu.md) 或 [
 
 专家系统会对比基线期间来分析当前的数据库性能。 它会确定此前运行的某个查询是否运行得比以前更慢，因为查询执行计划的并行化程度比本来应有的程度更高。
 
-SQL 数据库的 MAXDOP 服务器配置选项用于控制并行执行同一查询时可以使用的 CPU 核心数。 
+SQL 数据库的 MAXDOP 服务器配置选项用于控制并行执行同一查询时可以使用的 CPU 核心数。
 
 ### <a name="troubleshooting"></a>故障排除
 
@@ -164,7 +163,7 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 由于 Pagelatch 是 SQL 数据库的内部控制机制，因此 SQL 数据库会自动确定何时使用它。 应用程序决策（包括架构设计）可以影响因闩锁的确定性行为而导致的 Pagelatch 行为。
 
-处理闩锁争用的一个方法是将有序索引键替换为无序键，以便在索引范围内均匀分配插入内容。 通常情况下，索引中的前导列可按比例分配工作负荷。 可考虑的另一种方法是表分区。 在分区表中创建一个包含计算列的哈希分区方案，是缓解过度闩锁争用的常用方法。 如果发生 Pagelatch IO 争用，可以引入索引来缓解此性能问题。 
+处理闩锁争用的一个方法是将有序索引键替换为无序键，以便在索引范围内均匀分配插入内容。 通常情况下，索引中的前导列可按比例分配工作负荷。 可考虑的另一种方法是表分区。 在分区表中创建一个包含计算列的哈希分区方案，是缓解过度闩锁争用的常用方法。 如果发生 Pagelatch IO 争用，可以引入索引来缓解此性能问题。
 
 有关详细信息，请参阅 [Diagnose and resolve latch contention on SQL Server](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf)（诊断和解决 SQL Server 上的闩锁争用）（PDF 下载）。
 
@@ -208,13 +207,13 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 这种可检测的性能模式表示确定的性能不佳的查询导致工作负荷的性能相比过去七天的工作负荷基线有所降级。
 
-在这种情况下，系统无法将性能不佳的查询归到任何其他标准的可检测性能类别下，但确实检测到导致性能回归的等待统计信息。 因此，系统会将其视为具有等待时间延长统计信息的查询，并会在其中公开导致性能回归的等待时间统计信息。 
+在这种情况下，系统无法将性能不佳的查询归到任何其他标准的可检测性能类别下，但确实检测到导致性能回归的等待统计信息。 因此，系统会将其视为具有等待时间延长统计信息的查询，并会在其中公开导致性能回归的等待时间统计信息。
 
 ### <a name="troubleshooting"></a>故障排除
 
 诊断日志会输出等待时间延长详情、受影响查询的查询哈希的信息。
 
-由于系统无法成功识别查询性能不佳的根本原因，在手动故障排除时，诊断信息是很好的入手点。 可以优化这些查询的性能。 合理的做法是只提取需使用的数据，简化复杂的查询，将其分解成较小的查询。 
+由于系统无法成功识别查询性能不佳的根本原因，在手动故障排除时，诊断信息是很好的入手点。 可以优化这些查询的性能。 合理的做法是只提取需使用的数据，简化复杂的查询，将其分解成较小的查询。
 
 有关优化查询性能的详细信息，请参阅[查询优化](https://msdn.microsoft.com/library/ms176005.aspx)。
 
@@ -226,15 +225,15 @@ Latch（闩锁）是一种轻量同步机制，允许 SQL 数据库启用多线�
 
 ### <a name="troubleshooting"></a>故障排除
 
-诊断日志输出 tempDB 争用详细信息。 可以将此信息用作故障排除的入手点。 可以通过两项操作来减轻此类争用并提高整个工作负荷的吞吐量：一是停止使用临时表， 二是使用内存优化表。 
+诊断日志输出 tempDB 争用详细信息。 可以将此信息用作故障排除的入手点。 可以通过两项操作来减轻此类争用并提高整个工作负荷的吞吐量：一是停止使用临时表， 二是使用内存优化表。
 
-有关详细信息，请参阅[内存优化表简介](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)。 
+有关详细信息，请参阅[内存优化表简介](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)。
 
 ## <a name="elastic-pool-dtu-shortage"></a>弹性池 DTU 不足
 
 ### <a name="what-is-happening"></a>发生了什么
 
-此可检测的性能模式表示当前数据库工作负荷的性能与过去七天的基线相比有所降级。 这是由于在订阅的弹性池中缺少可用的 DTU。 
+此可检测的性能模式表示当前数据库工作负荷的性能与过去七天的基线相比有所降级。 这是由于在订阅的弹性池中缺少可用的 DTU。
 
 SQL 数据库中的资源通常称为 [DTU 资源](sql-database-purchase-models.md#dtu-based-purchasing-model)，由 CPU 和 IO（数据和事务日志 IO）资源的混合度量值构成。 [Azure 弹性池资源](sql-database-elastic-pool.md)用作出于缩放目的而在多个数据库之间共享的可用 eDTU 资源的池。 如果弹性池中的可用 eDTU 资源不够大，无法支持池中的所有数据库，则系统就会检测到“弹性池 DTU 不足”性能问题。
 
@@ -258,13 +257,13 @@ SQL 数据库可以确定查询执行开销最低的查询执行计划。 由于
 
 新计划回归状况表示这样一种状态：SQL 数据库开始执行不如旧计划那么有效的新查询执行计划。 旧计划回归状况表示这样一种状态：SQL 数据库弃用更有效的新计划，改用不如新计划那么有效的旧计划。 现有计划更改的工作负荷回归表示这样一种状态：不断交替使用旧计划和新计划，天平逐渐倾向于性能不佳的计划。
 
-有关计划回归的详细信息，请参阅 [What is plan regression in SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/)（SQL Server 中的计划回归是什么？）。 
+有关计划回归的详细信息，请参阅 [What is plan regression in SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/)（SQL Server 中的计划回归是什么？）。
 
 ### <a name="troubleshooting"></a>故障排除
 
 诊断日志输出查询哈希、正确计划 ID、错误计划 ID 和查询 ID。 可以将此信息用作故障排除的基础。
 
-可以使用提供的查询哈希来分析哪个计划对于可识别的特定查询而言性能更好。 确定哪个计划更适合自己的查询后，可以手动强制该计划。 
+可以使用提供的查询哈希来分析哪个计划对于可识别的特定查询而言性能更好。 确定哪个计划更适合自己的查询后，可以手动强制该计划。
 
 有关详细信息，请参阅 [Learn how SQL Server prevents plan regressions](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/)（了解 SQL Server 如何阻止计划回归）。
 
@@ -300,7 +299,7 @@ SQL 数据库可以确定查询执行开销最低的查询执行计划。 由于
 
 这种可检测的性能模式指示客户端的情况。 必须在客户端应用程序或客户端网络上进行故障排除。 诊断日志会输出在过去两小时内让客户端等待最长时间来使用的查询哈希和等待时间。 可以将此信息用作故障排除的基础。
 
-可以优化应用程序在使用这些查询时的性能。 还可以考虑可能的网络延迟问题。 由于性能降低问题的检出是基于最近七天性能基线的更改，因此可以调查此性能回归事件是否因最近的应用程序或网络状况变化而导致。 
+可以优化应用程序在使用这些查询时的性能。 还可以考虑可能的网络延迟问题。 由于性能降低问题的检出是基于最近七天性能基线的更改，因此可以调查此性能回归事件是否因最近的应用程序或网络状况变化而导致。
 
 ## <a name="pricing-tier-downgrade"></a>定价层降级
 
@@ -318,7 +317,7 @@ SQL 数据库可以确定查询执行开销最低的查询执行计划。 由于
 
  请遵循流程图，通过建议的方法使用 Intelligent Insights 排查性能问题。
 
-通过在 Azure 门户中转到 Azure SQL Analytics 来访问 Intelligent Insights。 尝试找到传入的性能警报并选择它。 在检测页上确定发生了什么情况。 观察提供的问题根本原因分析、查询文本、查询时间趋势和事件演变情况。 使用用于缓解性能问题的 Intelligent Insights 建议来尝试解决问题。 
+通过在 Azure 门户中转到 Azure SQL Analytics 来访问 Intelligent Insights。 尝试找到传入的性能警报并选择它。 在检测页上确定发生了什么情况。 观察提供的问题根本原因分析、查询文本、查询时间趋势和事件演变情况。 使用用于缓解性能问题的 Intelligent Insights 建议来尝试解决问题。
 
 [![故障排除流程图](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
 
@@ -328,6 +327,7 @@ SQL 数据库可以确定查询执行开销最低的查询执行计划。 由于
 Intelligent Insights 通常需要花费一小时来针对性能问题执行根本原因分析。 如果在 Intelligent Insights 中找不到问题，而该问题又很重要，则请使用查询存储手动确定性能问题的根本原因。 （通常情况下，这些问题少于一小时。）有关详细信息，请参阅[使用查询存储监视性能](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
 
 ## <a name="next-steps"></a>后续步骤
+
 - 了解 [Intelligent Insights](sql-database-intelligent-insights.md) 概念。
 - 使用 [Intelligent Insights Azure SQL 数据库性能诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)。
 - [使用 Azure SQL Analytics 监视 Azure SQL 数据库](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)。

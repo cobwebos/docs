@@ -4,12 +4,12 @@ description: 本文介绍如何在 azure 虚拟机上备份 SQL Server 数据库
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 7a6bae3a850b5e67af8da80a06b862e7e2e7561d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 5b10907738feeecbec06669175e82578f2915f92
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120836"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273327"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -29,7 +29,7 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
 >Azure vm**中的 SQL Server 软删除和 AZURE vm 工作负荷中 SAP HANA 的软删除**现已在预览版中提供。<br>
 >若要注册预览版，请在 AskAzureBackupTeam@microsoft.com 写信
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在备份 SQL Server 数据库之前，请检查以下条件：
 
@@ -59,7 +59,7 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
 
   1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
   2. 在“设置”下，选择“出站安全规则”。
-  3. 选择“添加”。 输入创建新规则所需的所有详细信息，如[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为 **AzureBackup**。
+  3. 选择 **添加** 。 输入创建新规则所需的所有详细信息，如[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为 **AzureBackup**。
   4. 单击“添加”，保存新创建的出站安全规则。
 
 若要使用 PowerShell 创建规则，请执行以下操作：
@@ -97,6 +97,10 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
 使用 NSG 服务标记 | 由于范围更改会自动合并，因此更易于管理 <br/><br/> 无额外成本 <br/><br/> | 仅可与 NSG 配合使用 <br/><br/> 提供对整个服务的访问权限
 使用 Azure 防火墙 FQDN 标记 | 自动管理必需的 FQDN，因此更易于管理 | 仅可与 Azure 防火墙配合使用
 使用 HTTP 代理 | 对 VM 进行单点 Internet 访问 <br/> | 通过代理软件运行 VM 带来的额外成本 <br/> 无已发布的 FQDN 地址，允许规则将受到 Azure IP 地址更改的限制
+
+#### <a name="private-endpoints"></a>专用终结点
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Azure 备份的数据库命名准则
 

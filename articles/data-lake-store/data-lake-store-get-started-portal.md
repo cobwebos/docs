@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385689"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265579"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Storage Gen1
 
@@ -26,7 +26,7 @@ ms.locfileid: "78385689"
 
 了解如何使用 Azure 门户创建 Data Lake Storage Gen1 帐户并执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关详细信息，请参阅[Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始学习本教程之前，必须做好以下准备：
 
@@ -44,7 +44,7 @@ ms.locfileid: "78385689"
    * **订阅**。 选择要在其下创建新的 Data Lake Storage Gen1 帐户的订阅。
    * **资源组**。 选择现有资源组，或选择“新建”选项创建一个资源组。 资源组是一个容器，包含应用程序的相关资源。 有关详细信息，请参阅 [Azure 中的资源组](../azure-resource-manager/management/overview.md#resource-groups)。
    * **位置**：选择要创建 Data Lake Storage Gen1 帐户的位置。
-   * **加密设置**。 有三个选择：
+   * **加密设置**。 有三个选项：
 
      * 不启用加密。
      * 如果希望 Data Lake Storage Gen1 管理加密密钥，请使用 Data Lake Storage Gen1 管理的密钥。

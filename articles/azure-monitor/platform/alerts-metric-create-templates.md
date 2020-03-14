@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
 ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368002"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274978"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
@@ -23,7 +23,7 @@ ms.locfileid: "78368002"
 > [!IMPORTANT]
 > 用于创建资源类型的指标警报的资源模板： Azure Log Analytics 工作区（即） `Microsoft.OperationalInsights/workspaces`，需要额外的步骤。 有关详细信息，请参阅有关[日志指标警报 - 资源模板](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)的文章。
 
-基本步骤如下所示：
+基本步骤如下所述：
 
 1. 将以下某个模板用作描述如何创建警报的 JSON 文件。
 2. 编辑并使用相应的参数文件作为 JSON 来自定义警报。
