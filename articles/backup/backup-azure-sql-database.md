@@ -3,16 +3,23 @@ title: 将 SQL Server 数据库备份到 Azure
 description: 本文介绍如何将 SQL Server 备份到 Azure。 此外还介绍 SQL Server 的恢复。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 7305a75852deac466028e6278fca76626d8c1820
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462586"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297469"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
-SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO) 和长期保留。 可以使用 [Azure 备份](backup-overview.md)来备份 Azure VM 上运行的 SQL Server 数据库。
+[Azure 备份](backup-overview.md)提供了一种基于流的专用解决方案，可备份在 Azure vm 中运行的 SQL Server。 此解决方案与 Azure 备份的零基础结构备份、长期保留和集中管理的优点保持一致。 此外，它还为 SQL Server 提供了以下优点：
+
+1. 支持所有备份类型的工作负荷感知备份-完整备份、差异备份和日志记录
+2. 15分钟 RPO （恢复点目标），频繁进行日志备份
+3. 时点恢复最多一秒
+4. 单个数据库级别的备份和还原
+
+若要查看目前支持的备份和还原方案，请参阅[支持矩阵](backup-azure-sql-database.md#scenario-support)。
 
 ## <a name="backup-process"></a>备份过程
 
@@ -65,11 +72,11 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Always On 可用性组的备份行为
 
-建议只在 AG 的一个节点上配置备份。 应该始终在主节点所在的区域配置备份。 换句话说，必须始终确保主节点存在于进行备份配置的区域。 如果 AG 的所有节点位于进行备份配置的区域，则没有任何可担心的事情。
+建议只在 AG 的一个节点上配置备份。 应该始终在主节点所在的区域配置备份。 换句话说，必须始终确保主节点存在于进行备份配置的区域。 如果 AG 的所有节点都在配置了备份的同一区域，则无需考虑任何问题。
 
 #### <a name="for-cross-region-ag"></a>对于跨区域 AG
 
-* 不管备份首选项如何，备份都不会发生在那些与备份配置不在同一区域的节点中。 这是因为跨区域备份不受支持。 如果只有两个节点，而辅助节点位于另一区域，则在这种情况下，备份会继续在主节点中进行（除非备份首选项为“仅限辅助节点”）。
+* 无论备份首选项如何，都不会从配置了备份的同一区域中的节点进行备份。 这是因为跨区域备份不受支持。 如果只有两个节点，并且辅助节点在另一个区域中，则为;在这种情况下，备份将继续从主节点进行（除非您的备份首选项为 "仅辅助"）。
 * 如果故障转移与备份配置不在同一区域进行，则已故障转移的区域中的节点上的备份会失败。
 
 根据备份首选项和备份类型（完整/差异/日志/仅复制完整），从特定节点（主要/次要）获取备份。
@@ -78,37 +85,37 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 **备份类型** | **Node**
     --- | ---
-    完整 | 主要
-    差异 | 主要
-    日志 |  主要
-    仅复制完整 |  主要
+    完全 | 主
+    差异 | 主
+    日志 |  主
+    仅复制完整 |  主
 
 * **备份首选项：仅辅助副本**
 
 **备份类型** | **Node**
 --- | ---
-完整 | 主要
-差异 | 主要
-日志 |  辅助
-仅复制完整 |  辅助
+完全 | 主
+差异 | 主
+日志 |  辅助副本
+仅复制完整 |  辅助副本
 
 * **备份首选项：辅助**
 
 **备份类型** | **Node**
 --- | ---
-完整 | 主要
-差异 | 主要
-日志 |  辅助
-仅复制完整 |  辅助
+完全 | 主
+差异 | 主
+日志 |  辅助副本
+仅复制完整 |  辅助副本
 
 * **无备份首选项**
 
 **备份类型** | **Node**
 --- | ---
-完整 | 主要
-差异 | 主要
-日志 |  辅助
-仅复制完整 |  辅助
+完全 | 主
+差异 | 主
+日志 |  辅助副本
+仅复制完整 |  辅助副本
 
 ## <a name="set-vm-permissions"></a>设置 VM 权限
 

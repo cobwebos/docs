@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MySQL （预览版） CLI 安装方法的专用链接
+title: 专用链接-Azure CLI-Azure Database for MySQL
 description: 了解如何从 Azure CLI 配置 Azure Database for MySQL 的专用链接
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d9a401bfbf1f0c63995c8f7773abb6e8e874e7e
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: f83f52f1c1800803c5e1d47f1931f7b13b2c11de
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561691"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368003"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>使用 CLI 创建和管理 Azure Database for MySQL （预览版）的专用链接
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>使用 CLI 创建和管理 Azure Database for MySQL 的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本文中，你将了解如何使用 Azure CLI 在 Azure 虚拟网络中创建 VM，并使用 Azure 私有终结点在 Azure Database for MySQL 服务器中创建 VM。
 

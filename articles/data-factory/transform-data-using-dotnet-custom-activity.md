@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439531"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260574"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 
@@ -99,7 +99,7 @@ ms.locfileid: "75439531"
 
 下表描述了此活动特有的属性的名称和描述。
 
-| 属性              | Description                              | 需要 |
+| properties              | 说明                              | 必选 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
@@ -349,7 +349,7 @@ Activity Error section:
 如果现有的 .NET 代码是针对版本1（自定义） DotNet 活动编写的，则需要修改代码，使其适用于自定义活动的当前版本。 按照以下高级准则更新代码：
 
   - 将项目从 .NET 类库更改为控制台应用程序。
-  - 使用 `Main` 方法启动应用程序。 不再需要 `IDotNetActivity` 接口的 `Execute` 方法。
+  - 使用 `Main` 方法启动应用程序。 不再需要 `Execute` 接口的 `IDotNetActivity` 方法。
   - 使用 JSON 序列化程序并且不作为强类型对象读取和分析链接服务、数据集和活动。 将所需属性的值传递到主要自定义代码逻辑。 可将前面的 SampleApp.exe 代码作为示例进行参考。
   - 不再支持 Logger 对象。 可将可执行文件的输出打印到控制台并保存到 stdout.txt。
   - 不再需要 Microsoft.Azure.Management.DataFactories NuGet 包。

@@ -17,11 +17,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4e9468c0a0f6844c7522ff43761cf58f4beea27e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376060"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261575"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 
@@ -130,42 +130,42 @@ ms.locfileid: "78376060"
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2008-r2"></a>在 Windows Server 2008 R2 上启用 AD FS 审核的步骤
 
-1. 单击 **“开始”** ，指向 **“程序”** ，指向 **“管理工具”** ，然后单击 **“本地安全策略”** 。
-2. 导航到 **“安全设置\本地策略\用户权限分配”** 文件夹，然后双击 **“生成安全审核”** 。
-3. 在 **“本地安全设置”** 选项卡上，验证是否列出了 AD FS 2.0 服务帐户。 如果该服务帐户不存在，请单击 **“添加用户或组”** 并将其添加到列表中，然后单击 **“确定”** 。
+1. 单击“开始”，指向“程序”，指向“管理工具”，并单击“本地安全策略”。
+2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。
+3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 2.0 服务帐户。 如果该帐户不存在，请单击“添加用户或组”并将其添加到列表中，然后单击“确定”。
 4. 若要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>。
 5. 关闭“本地安全策略”。
 <br />   -- **仅主 AD FS 服务器需要执行以下步骤。** -- <br />
 6. 打开“AD FS 管理”管理单元。 若要打开“AD FS 管理”管理单元，请单击“开始”，指向“程序”，指向“管理工具”，然后单击“AD FS 2.0 管理”。
 7. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。
-8. 在 **“联合身份验证服务属性”** 对话框中，单击 **“事件”** 选项卡。
-9. 选中 **“成功审核”** 和 **“失败审核”** 复选框。
+8. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。
+9. 选择“成功审核”和“失败审核”复选框。
 10. 单击“确定”。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>在 Windows Server 2012 R2 上启用 AD FS 审核的步骤
 
 1. 通过在“开始”屏幕上打开“服务器管理器”或在桌面的任务栏中打开“服务器管理器”的方式打开“本地安全策略”，并单击“工具/本地安全策略”。
-2. 导航到 **“安全设置\本地策略\用户权限分配”** 文件夹，然后双击 **“生成安全审核”** 。
-3. 在 **“本地安全设置”** 选项卡上，验证是否列出了 AD FS 服务帐户。 如果该服务帐户不存在，请单击 **“添加用户或组”** 并将其添加到列表中，然后单击 **“确定”** 。
+2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。
+3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 服务帐户。 如果该帐户不存在，请单击“添加用户或组”并将其添加到列表中，然后单击“确定”。
 4. 若要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：```auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable```
 5. 关闭“本地安全策略”。
 <br />   -- **仅主 AD FS 服务器需要执行以下步骤。** -- <br />
 6. 打开“AD FS 管理”管理单元（在“服务器管理器”中，单击“工具”，并选择“AD FS 管理”）。
 7. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。
-8. 在 **“联合身份验证服务属性”** 对话框中，单击 **“事件”** 选项卡。
+8. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。
 9. 选择“成功审核”和“失败审核”复选框，并单击“确定”。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>在 Windows Server 2016 上针对 AD FS 启用审核
 
 1. 通过在“开始”屏幕上打开“服务器管理器”或在桌面的任务栏中打开“服务器管理器”的方式打开“本地安全策略”，并单击“工具/本地安全策略”。
-2. 导航到 **“安全设置\本地策略\用户权限分配”** 文件夹，然后双击 **“生成安全审核”** 。
-3. 在 **“本地安全设置”** 选项卡上，验证是否列出了 AD FS 服务帐户。 如果该帐户不存在，请单击“添加用户或组”将 AD FS 服务帐户添加到列表中，然后单击“确定”。
+2. 导航到“安全设置\本地策略\用户权限分配”文件夹，并双击“生成安全审核”。
+3. 在“本地安全设置”选项卡上，验证是否列出了 AD FS 服务帐户。 如果该帐户不存在，请单击“添加用户或组”将 AD FS 服务帐户添加到列表中，然后单击“确定”。
 4. 若要启用审核，请使用提升的权限打开命令提示符，并运行以下命令：<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
 5. 关闭“本地安全策略”。
 <br />   -- **仅主 AD FS 服务器需要执行以下步骤。** -- <br />
 6. 打开“AD FS 管理”管理单元（在“服务器管理器”中，单击“工具”，并选择“AD FS 管理”）。
 7. 在“操作”窗格中，单击“编辑联合身份验证服务属性”。
-8. 在 **“联合身份验证服务属性”** 对话框中，单击 **“事件”** 选项卡。
+8. 在“联合身份验证服务属性”对话框中，单击“事件”选项卡。
 9. 选择“成功审核”和“失败审核”复选框，并单击“确定”。 默认情况下，会启用此项。
 10. 打开 PowerShell 窗口并运行以下命令：```Set-AdfsProperties -AuditLevel Verbose```。
 
@@ -304,7 +304,7 @@ Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential 
 
 ## <a name="configure-azure-ad-connect-health-agents-to-use-http-proxy"></a>将 Azure AD Connect Health 代理配置为使用 HTTP 代理
 
-你可以将 Azure AD Connect Health 代理配置为使用 HTTP 代理。
+可以将 Azure AD Connect Health 代理配置为使用 HTTP 代理。
 
 > [!NOTE]
 > * 不支持使用“Netsh WinHttp set ProxyServerAddress”，因为代理使用 System.Net（而不是 Microsoft Windows HTTP 服务）发出 Web 请求。
@@ -373,7 +373,7 @@ Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential 
 role 参数目前可接受以下值：
 
 * ADFS
-* Sync
+* 同步
 * ADDS
 
 > [!NOTE]

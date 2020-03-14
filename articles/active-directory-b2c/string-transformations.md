@@ -12,11 +12,11 @@ ms.date: 02/24/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4a5d0908842c20e15fdf7b336b9e244c4bafb345
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78397790"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264292"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 

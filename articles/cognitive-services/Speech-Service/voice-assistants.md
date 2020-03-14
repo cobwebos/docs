@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 9219c9a72ce9e1cfba3504b0b8e16ade77f8a5e5
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78394839"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369890"
 ---
-# <a name="about-voice-assistants"></a>关于语音助手
+# <a name="what-is-a-voice-assistant"></a>什么是语音助手？
 
 使用语音服务的语音助手使开发人员可以为其应用程序和体验创建自然、人为的对话接口。
 

@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 35046d33a85eaed913454f188f2a4526715526a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168778"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218164"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>为 Azure 机器学习 Studio （经典）定义自定义 R 模块
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 本主题介绍如何创作和部署自定义的 R Studio （经典）。 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块， 并举例说明如何构建定义模块的文件以及如何在机器学习工作区中进行模块部署注册。 随后本主题会详细说明用于定义自定义模块的元素和属性。 本主题还会讨论如何使用辅助功能和文件以及多个输出。 
 
@@ -200,7 +202,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
     </Ports> 
 
 
-在“CustomAddRows.R”中以列表形式按正确的顺序返回列出的对象：
+并按 "Customaddrows.xml" 中的正确顺序返回列表中的对象的列表：
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -333,11 +335,11 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
 放置在自定义模块 ZIP 文件中的所有文件都可以在执行期间使用。 所有存在的目录结构都将保留。 这意味着文件在本地和 Azure 机器学习 Studio （经典）执行中的工作方式相同。 
 
 > [!NOTE]
-> 请注意所有文件均被提取到了“src”目录，因此所有路径必须有“src”前缀。
+> 请注意，所有文件都提取到 "src" 目录中，因此所有路径都应具有 "src/" 前缀。
 > 
 > 
 
-例如，你想从数据集中删除带有 NA 的行并移除所有重复的行，让后将其输出到 CustomAddRows；同时你已将具有此功能的 R 函数写入了 RemoveDupNARows.R 文件
+例如，假设你想要从数据集中删除包含 NAs 的任何行，还需要删除任何重复的行，然后将其输出到 Customaddrows.xml 中，并且已经编写了一个在 Removedupnarows.r 文件中执行该操作的 R 函数：
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -359,7 +361,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
         return (dataset)
     }
 
-然后，上传包含“CustomAddRows.R”、“CustomAddRows.xml”和“RemoveDupNARows.R”的 zip 文件作为自定义 R 模块。
+接下来，将包含 "Customaddrows.xml"、"Customaddrows.xml" 和 "Removedupnarows.r" 的 zip 文件上传为自定义 R 模块。
 
 ## <a name="execution-environment"></a>执行环境
 R 脚本的执行环境使用与**执行 R 脚本**模块相同的 R 版本，且可以使用相同的默认包。 还可以将 R 包加入自定义模块 zip 文件，将其添加到自定义模块。 只需像在自己的 R 环境中一样将其加载到 R 脚本中。 

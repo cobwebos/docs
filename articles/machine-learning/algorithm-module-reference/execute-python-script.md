@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 52eb3bdb463389d075421661610b5ee94d14d77d
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 3370c7ebb8e0253543e6b9cb6ce7614811fb5bd0
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037086"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140784"
 ---
 # <a name="execute-python-script-module"></a>执行 Python 脚本模块
 
@@ -114,7 +114,10 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 }
 ```
 
-成功提交管道后，可以在模块的右面板中预览图像 ![上传的映像](media/module/upload-image-in-python-script.png)
+成功提交管道后，可以在模块的右窗格中预览图像
+
+[!div class="mx-imgBorder"]
+![上传-图像](media/module/upload-image-in-python-script.png)
 
 ## <a name="how-to-configure-execute-python-script"></a>如何配置执行 Python 脚本
 
@@ -132,7 +135,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
     ![执行 Python 输入映射](media/module/python-module.png)
 
-4. 若要包括新的 Python 包或代码，请在**脚本捆绑包**上添加包含这些自定义资源的压缩文件。 **脚本捆绑包**的输入必须是作为文件类型数据集上传到工作区的压缩文件。 
+4. 若要包括新的 Python 包或代码，请在**脚本捆绑包**上添加包含这些自定义资源的压缩文件。 **脚本捆绑包**的输入必须是作为文件类型数据集上传到工作区的压缩文件。 您可以在 "**数据集**资产" 页中上传数据集，并且可以从 "设计器创作" 页左侧模块树的 "**我的数据集**" 列表中拖放数据集模块。 
 
     在管道执行过程中，可以使用上载的压缩存档中包含的任何文件。 如果存档中包含目录结构，则会保留结构，但必须在路径前面添加一个名为**src**的目录。
 

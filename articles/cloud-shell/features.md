@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 20ac4fabdc5f0e70191d6886d43a5376bcf4cad5
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0aa71e4b78df8087093f183b146c525d2a8a0f99
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586285"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366234"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
 
@@ -88,7 +88,7 @@ Cloud Shell 预先配置了开放源代码工具（如 Terraform、Ansible 和 C
 |Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
-|PowerShell |[7.0.0-rc. 2](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[版](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 和 3.5（默认）|
 
 ## <a name="next-steps"></a>后续步骤

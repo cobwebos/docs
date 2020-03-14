@@ -9,18 +9,20 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 55dbcc15afb12c03c98fb8d6e4e7f4acb269f620
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: a980c7bd068a463956191eece43ec1be233e7890
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968153"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367612"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>将业务关键 blob 数据存储在不可变的存储中
 
 使用 Azure Blob 存储的不可变存储，用户可以在蠕虫（写入一次，读取多个）状态下存储关键业务数据对象。 此状态可以根据用户指定的时间间隔使数据保持不可擦除且不可修改的状态。 在保留间隔期间，可以创建和读取 blob，但不能修改或删除它们。 不可变存储可用于所有 Azure 区域中的常规用途 v1、常规用途 v2、BlobStorage 和 BlockBlobStorage 帐户。
 
 有关如何使用 Azure 门户、PowerShell 或 Azure CLI 设置和清除法律持有或创建基于时间的保留策略的信息，请参阅[设置和管理 Blob 存储的不可变性策略](storage-blob-immutability-policies-manage.md)。
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="about-immutable-blob-storage"></a>关于不可变 Blob 存储
 
@@ -116,11 +118,11 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 使用此功能不会产生额外的费用。 不可变数据的定价方式与可变数据相同。 有关 Azure Blob 存储的定价详细信息，请参阅[Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 **能否提供蠕虫符合性的文档？**
 
-是的。 为了记录相容性，Microsoft 保留了一个领先的独立评估事务所，该公司专用于记录管理和信息管理、Cohasset 关联，以评估不可变的 Blob 存储及其与特定于金融服务行业。 Cohasset 验证当用于在蠕虫状态下保留基于时间的 Blob 时，不可变的 Blob 存储满足 CFTC 规则1.31 （c）-（d）、FINRA 规则4511和 SEC 规则17a-4 的相关存储要求。 Microsoft 以这组规则为目标，因为它们表示针对金融机构的记录保留内容的最具规范性指导。 [Microsoft 服务信任中心](https://aka.ms/AzureWormStorage)提供了 Cohasset 报告。 若要从 Microsoft 请求有关蠕虫不可变性符合性的证明，请联系 Azure 支持。
+可以。 为了记录相容性，Microsoft 保留了一个领先的独立评估事务所，该公司专用于记录管理和信息管理、Cohasset 关联，以评估不可变的 Blob 存储及其与特定于金融服务行业。 Cohasset 验证当用于在蠕虫状态下保留基于时间的 Blob 时，不可变的 Blob 存储满足 CFTC 规则1.31 （c）-（d）、FINRA 规则4511和 SEC 规则17a-4 的相关存储要求。 Microsoft 以这组规则为目标，因为它们表示针对金融机构的记录保留内容的最具规范性指导。 [Microsoft 服务信任中心](https://aka.ms/AzureWormStorage)提供了 Cohasset 报告。 若要从 Microsoft 请求有关蠕虫不可变性符合性的证明，请联系 Azure 支持。
 
 **此功能是否仅适用于块 blob 和追加 blob，或是否也适用于页 blob？**
 
@@ -160,7 +162,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 **你们是否为只想试用此功能的用户提供试用期或宽限期？**
 
-是的。 首次创建基于时间的保留策略时，该策略处于*解锁*状态。 在这种状态下，可以对保留时间间隔进行所需的更改，例如延长或缩短保留时间间隔，甚至可以删除策略。 策略被锁定后，它将保持锁定状态，直到保留时间间隔到期为止。 此锁定策略可防止删除和修改保留间隔。 我们强烈建议仅在试用的情况下使用未锁定状态，并在 24 小时内锁定策略。 这种做法有助于遵守 SEC 17a-4(f) 及其他法规。
+可以。 首次创建基于时间的保留策略时，该策略处于*解锁*状态。 在这种状态下，可以对保留时间间隔进行所需的更改，例如延长或缩短保留时间间隔，甚至可以删除策略。 策略被锁定后，它将保持锁定状态，直到保留时间间隔到期为止。 此锁定策略可防止删除和修改保留间隔。 我们强烈建议仅在试用的情况下使用未锁定状态，并在 24 小时内锁定策略。 这种做法有助于遵守 SEC 17a-4(f) 及其他法规。
 
 **是否可以使用可变 blob 策略的软删除？**
 

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc0da82447b5df0735b16f46298a2f473ee61ea0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187808"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371369"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -60,7 +60,7 @@ ms.locfileid: "77187808"
 
    ![构建您自己的模板](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. 选择 "**加载文件**"，然后选择生成的资源管理器模板。
+1. 选择 "**加载文件**"，然后选择生成的资源管理器模板。 这是在步骤1中导出的 .zip 文件中的**arm_template**文件。
 
    ![编辑模板](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -171,7 +171,7 @@ ms.locfileid: "77187808"
 
     参数文件也需位于 publish 分支中。
 
--  在上一部分中介绍的 Azure 资源管理器部署任务之前添加[Azure Key Vault 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)：
+1. 在上一部分中介绍的 Azure 资源管理器部署任务之前添加[Azure Key Vault 任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)：
 
     1.  在 "**任务**" 选项卡上，创建一个新任务。 搜索并添加**Azure Key Vault** 。
 
@@ -179,9 +179,9 @@ ms.locfileid: "77187808"
 
     ![添加 Key Vault 任务](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-   #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>向 Azure Pipelines 代理授权
+#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>向 Azure Pipelines 代理授权
 
-   如果未设置正确的权限，Azure Key Vault 任务可能会失败并出现 "拒绝访问" 错误。 下载版本的日志，并找到包含命令的 ps1 文件，以便向 Azure Pipelines 代理提供权限。 可以直接运行该命令。 或者，你可以从文件复制主体 ID 并在 Azure 门户中手动添加访问策略。 `Get` 和 `List` 是所需的最小权限。
+如果未设置正确的权限，Azure Key Vault 任务可能会失败并出现 "拒绝访问" 错误。 下载版本的日志，并找到包含命令的 ps1 文件，以便向 Azure Pipelines 代理提供权限。 可以直接运行该命令。 或者，你可以从文件复制主体 ID 并在 Azure 门户中手动添加访问策略。 `Get` 和 `List` 是所需的最小权限。
 
 ### <a name="update-active-triggers"></a>更新活动触发器
 
@@ -471,7 +471,10 @@ else {
 * 你使用自动 CI/CD，并且想要在资源管理器部署过程中更改某些属性，但默认情况下不会对属性进行参数化。
 * 由于默认资源管理器模板超过允许的最大参数（256），因此您的工厂非常大。
 
-在这些情况下，若要重写默认参数化模板，请在指定为数据工厂 git 集成的根文件夹的文件夹中创建一个名为 "arm-模板-参数-json" 的文件。 必须使用正确的文件名。 数据工厂从 Azure 数据工厂门户中当前所处的任何分支读取此文件，而不仅仅是从协作分支读取此文件。 您可以通过在用户界面中选择 "**导出 ARM 模板**"，从私有分支创建或编辑该文件。 然后，可以将文件合并到协作分支。 如果未找到任何文件，则使用默认模板。
+在这些情况下，若要重写默认参数化模板，请在指定为数据工厂 git 集成的根文件夹的文件夹中创建一个名为 " **arm-模板-参数-json** " 的文件。 必须使用正确的文件名。 数据工厂从 Azure 数据工厂门户中当前所处的任何分支读取此文件，而不仅仅是从协作分支读取此文件。 您可以通过在用户界面中选择 "**导出 ARM 模板**"，从私有分支创建或编辑该文件。 然后，可以将文件合并到协作分支。 如果未找到任何文件，则使用默认模板。
+
+> [!NOTE]
+> 自定义参数化模板不会将 ARM 模板参数限制更改为256。 它允许选择并减少参数化属性的数目。
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>自定义参数文件的语法
 
@@ -657,7 +660,7 @@ else {
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",

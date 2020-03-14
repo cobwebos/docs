@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
-ms.openlocfilehash: e45baba74d7bf752718e5e36a148a91987cd3ffb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082428"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79209431"
 ---
 # <a name="how-to-use-azure-sql-database"></a>如何使用 Azure SQL 数据库
 
@@ -43,14 +43,14 @@ ms.locfileid: "74082428"
 
 - [手动优化](sql-database-performance-guidance.md)
 - [使用 DMV 监视性能](sql-database-monitoring-with-dmvs.md)
-- [使用查询存储监视性能](sql-database-operate-query-store.md)
+- [使用查询存储监视性能](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [使用智能见解排查性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)
 - [使用智能见解诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [监视内存中 OLTP 空间](sql-database-in-memory-oltp-monitoring.md)
 
 ### <a name="extended-events"></a>扩展的事件
 
-- [扩展的事件](sql-database-xevent-db-diff-from-svr.md)
+- [扩展事件](sql-database-xevent-db-diff-from-svr.md)
 - [将扩展的事件存储到事件文件](sql-database-xevent-code-event-file.md)
 - [将扩展的事件存储到环形缓冲区](sql-database-xevent-code-ring-buffer.md)
 

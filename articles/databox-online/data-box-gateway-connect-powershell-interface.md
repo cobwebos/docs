@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/02/2019
 ms.author: alkohli
 ms.openlocfilehash: 6c9f3455a07001a8d1b9b8a1e84f2af3392b5690
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384607"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260210"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Data Box Gateway 设备
 
@@ -25,7 +25,7 @@ Azure Data Box Gateway 解决方案使你能够通过网络将数据发送到 Az
 
 - 连接到 PowerShell 接口
 - 创建支持包
-- 上载证书
+- 上传证书
 - 在非 DHCP 环境中启动
 - 查看设备信息
 
@@ -37,7 +37,7 @@ Azure Data Box Gateway 解决方案使你能够通过网络将数据发送到 Az
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-## <a name="upload-certificate"></a>上载证书
+## <a name="upload-certificate"></a>上传证书
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 

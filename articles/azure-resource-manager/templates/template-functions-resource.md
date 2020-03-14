@@ -4,11 +4,11 @@ description: 介绍可在 Azure 资源管理器模板中使用的用于检索资
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207002"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79248666"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 

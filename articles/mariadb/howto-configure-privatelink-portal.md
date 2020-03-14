@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MariaDB （预览版）门户安装方法的专用链接
+title: 专用链接-Azure 门户-Azure Database for MariaDB
 description: 了解如何从 Azure 门户配置 Azure Database for MariaDB 的专用链接
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: a9b3ae1ed28fc22d91760a4af3832a604a419a30
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 3f421cad64caf91b898bb1ec13dc909b93b7f72d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561725"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370332"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>使用门户创建和管理 Azure Database for MariaDB （预览版）的专用链接
+# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>使用门户创建和管理 Azure Database for MariaDB 的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。  在本文中，你将了解如何使用 Azure 门户在 Azure 虚拟网络中创建 VM，并使用 Azure 私有终结点在 Azure Database for MariaDB 服务器中创建 VM。
 
@@ -126,12 +126,12 @@ ms.locfileid: "77561725"
 
 在本部分中，你将创建 MariaDB 服务器到它的专用终结点。 
 
-1. 在 Azure 门户屏幕的左上方，选择“创建资源” **“网络”** “专用链接中心(预览版)”。 >  > 
+1. 在 Azure 门户屏幕的左上方，选择 "**创建资源** > **网络** > **专用链接**"。
 2. 在“专用链接中心 - 概述”中的“与服务建立专用连接”选项的旁边，选择“启动”。
 
     ![专用链接概述](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. 在“创建专用终结点(预览版) - 基本信息”中，输入或选择以下信息：
+1. 在 "**创建专用终结点-基础知识**" 中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -154,7 +154,7 @@ ms.locfileid: "77561725"
     |目标子资源 |选择*mariadbServer*|
     |||
 7. 选择**下一步：配置**。
-8. 在“创建专用终结点(预览版) - 配置”中，输入或选择以下信息：
+8. 在 "**创建专用终结点-配置**" 中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |

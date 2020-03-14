@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MySQL （预览版）门户安装方法的专用链接
+title: 专用链接-Azure 门户-Azure Database for MySQL
 description: 了解如何从 Azure 门户配置 Azure Database for MySQL 的专用链接
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 193227ff98accb31c15e388c810aea7460a2cb5d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4a4824a9f8340b12bca7e18562d723eb24e58b71
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561657"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371913"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-portal"></a>使用门户创建和管理 Azure Database for MySQL （预览版）的专用链接
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>使用门户创建和管理 Azure Database for MySQL 的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本文中，你将了解如何使用 Azure 门户在 Azure 虚拟网络中创建 VM，并使用 Azure 私有终结点在 Azure Database for MySQL 服务器中创建 VM。
 
@@ -126,13 +126,13 @@ ms.locfileid: "77561657"
 
 在本部分中，将创建 MySQL 服务器，并向其添加专用终结点。 
 
-1. 在 Azure 门户屏幕的左上方，选择“创建资源” **“网络”** “专用链接中心(预览版)”。 >  > 
+1. 在 Azure 门户屏幕的左上方，选择 "**创建资源** > **网络** > **专用链接**"。
 
 2. 在“专用链接中心 - 概述”中的“与服务建立专用连接”选项的旁边，选择“启动”。
 
     ![专用链接概述](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. 在“创建专用终结点(预览版) - 基本信息”中，输入或选择以下信息：
+1. 在 "**创建专用终结点-基础知识**" 中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -156,7 +156,7 @@ ms.locfileid: "77561657"
     |目标子资源 |选择*mysqlServer*|
     |||
 7. 选择**下一步：配置**。
-8. 在“创建专用终结点(预览版) - 配置”中，输入或选择以下信息：
+8. 在 "**创建专用终结点-配置**" 中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |

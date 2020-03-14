@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d024382f816e98fb5cb83331dd417f0c41362bc4
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: b7c26a40d5c5feebe122db911b88dc5a0caa9042
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207041"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254204"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -43,7 +43,7 @@ ms.locfileid: "78207041"
 
 若要了解如何在 Azure Active Directory 中向用户分配管理角色，请参阅[在 Azure Active Directory 中查看和分配管理员角色](directory-manage-roles-portal.md)。
 
-## <a name="available-roles"></a>可用角色
+## <a name="available-roles"></a>可用的角色
 
 提供以下管理员角色：
 
@@ -121,7 +121,7 @@ ms.locfileid: "78207041"
 
 ### <a name="billing-administrator"></a>[计费管理员](#billing-administrator-permissions)
 
-采购物品、管理订阅、管理支持票证并监视服务运行状况。
+进行采购、管理订阅、管理支持票证，以及监视服务运行状况。
 
 ### <a name="cloud-application-administrator"></a>[云应用程序管理员](#cloud-application-administrator-permissions)
 
@@ -219,7 +219,7 @@ In | 有权执行的操作
 
 ### <a name="global-administrator--company-administrator"></a>[全局管理员/公司管理员](#company-administrator-permissions)
 
-具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Microsoft 365 安全中心、Microsoft 365 合规中心、Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 注册 Azure Active Directory 租户的人员将成为全局管理员。 你的公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
+具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Microsoft 365 安全中心、Microsoft 365 合规中心、Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 注册 Azure Active Directory 租户的人员将成为全局管理员。 公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
 
 > [!NOTE]
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为 "公司管理员"。 它是 [Azure 门户](https://portal.azure.com)中的“全局管理员”。
@@ -409,7 +409,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 具有此角色的用户可以打开 Azure 和 Office 365 服务的 Microsoft 支持请求，并在[Azure 门户](https://portal.azure.com)和[Microsoft 365 管理中心](https://admin.microsoft.com)中查看服务仪表板和消息中心。 [有关管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)的详细信息。
 
 > [!NOTE]
-> 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为 "服务支持管理员"。 它是[Azure 门户](https://portal.azure.com)、 [Microsoft 365 管理中心](https://admin.microsoft.com)和 Intune 门户中的 "服务管理员"。
+> 以前，此角色在[Azure 门户](https://portal.azure.com)和[Microsoft 365 管理中心](https://admin.microsoft.com)名为 "服务管理员"。 我们已将其重命名为 "服务支持管理员"，以与 Microsoft Graph API、Azure AD 图形 API 和 Azure AD PowerShell 中的因此名称一致。
 
 ### <a name="sharepoint-administrator"></a>[SharePoint 管理员](#sharepoint-service-administrator-permissions)
 
@@ -990,18 +990,19 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 
 | **操作** | **说明** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft. directory/groups/统一/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 属性。 |
 | microsoft. directory/groups/统一/基本/更新 | 更新 Office 365 组的基本属性。 |
 | microsoft. directory/groups/统一/创建 | 创建 Office 365 组。 |
 | microsoft. directory/groups/统一/删除 | 删除 Office 365 组。 |
 | microsoft. directory/groups/统一/成员/更新 | 更新 Office 365 组的成员身份。 |
 | microsoft. directory/groups/统一/所有者/更新 | 更新 Office 365 组的所有权。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.exchange/allEntities/allTasks | 管理 Exchange Online 的各个方面。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 ### <a name="external-identity-provider-administrator-permissions"></a>外部标识提供者管理员权限
 
@@ -1101,7 +1102,6 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 
 ### <a name="guest-inviter-permissions"></a>来宾邀请者权限
 可以邀请与“成员可邀请来宾”设置无关的来宾用户。
@@ -1212,10 +1212,12 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | 管理 Skype for Business Online 的各个方面。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
+
 
 ### <a name="message-center-privacy-reader-permissions"></a>消息中心隐私读取器权限
 
@@ -1260,7 +1262,6 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 | office365. userCommunication/allEntities/allTasks | 阅读并更新新增的消息可见性。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
@@ -1442,7 +1443,6 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | microsoft.office365.search/allEntities/allProperties/allTasks | 创建和删除所有资源，然后读取和更新 office365 中的所有属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 ### <a name="search-editor-permissions"></a>搜索编辑器权限
@@ -1458,7 +1458,6 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | --- | --- |
 | microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
 | microsoft.office365.search/content/allProperties/allTasks | 创建和删除内容，并读取和更新 office365 中的所有属性。 |
-| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 
 ### <a name="security-administrator-permissions"></a>安全管理员权限
 
@@ -1507,7 +1506,6 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | microsoft.azure.advancedThreatProtection/allEntities/read | 阅读并配置 Azure AD 高级威胁防护。 |
 | microsoft.intune/allEntities/allTasks | 管理 Intune 的各个方面。 |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | 阅读并配置安全与合规中心。 |
-| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | 阅读并配置 Windows Defender 高级威胁防护。 |
 
 ### <a name="security-reader-permissions"></a>安全读者权限
@@ -1560,18 +1558,19 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 
 | **操作** | **说明** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
 | microsoft. directory/groups/统一/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 属性。 |
 | microsoft. directory/groups/统一/基本/更新 | 更新 Office 365 组的基本属性。 |
 | microsoft. directory/groups/统一/创建 | 创建 Office 365 组。 |
 | microsoft. directory/groups/统一/删除 | 删除 Office 365 组。 |
 | microsoft. directory/groups/统一/成员/更新 | 更新 Office 365 组的成员身份。 |
 | microsoft. directory/groups/统一/所有者/更新 | 更新 Office 365 组的所有权。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.sharepoint/allEntities/allTasks | 创建和删除所有资源，然后读取和更新 microsoft.office365.sharepoint 中的标准属性。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 ### <a name="teams-communications-administrator-permissions"></a>团队通信管理员权限
 
@@ -1741,8 +1740,8 @@ Power Platform 管理员 | Power 平台管理员 | 11648597-926c-4cf3-9c36-bcebb
 安全管理员 | 安全管理员 | 194ae4cb-b126-40b2-bd5b-6091b380977d
 安全操作员 | 安全操作员 | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 安全读取者 | 安全读取者 | 5d6b6bb7-de71-4623-b4af-96380a352509
-服务支持管理员 | 服务管理员 | f023fd81-a637-4b56-95fd-791ac0226033
-SharePoint 服务管理员 | SharePoint administrator | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+服务支持管理员 | 服务支持管理员 | f023fd81-a637-4b56-95fd-791ac0226033
+SharePoint 服务管理员 | SharePoint 管理员 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Teams 通信管理员 | Teams 通信管理员 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Teams 通信支持工程师 | Teams 通信支持工程师 | f70938a0-fc10-4177-9e90-2178f8765737
 Teams 通信支持专家 | Teams 通信支持专家 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12

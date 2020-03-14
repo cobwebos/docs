@@ -4,11 +4,11 @@ description: 了解如何在 Azure 中删除和部署应用程序 Service Fabric
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614496"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282505"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>部署和删除使用 PowerShell 的应用程序
 
@@ -348,7 +348,7 @@ ImageStoreConnectionString 可在群集清单中找到：
 
 问题：大型应用程序包（GB 级别）的 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 超时。
 请尝试：
-- 通过 `TimeoutSec` 参数为 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 命令指定更长的超时。 此超时默认为 30 分钟。
+- 通过 [ 参数为 ](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)Copy-ServiceFabricApplicationPackage`TimeoutSec` 命令指定更长的超时。 此超时默认为 30 分钟。
 - 检查源计算机和群集之间的网络连接。 如果连接缓慢，请考虑使用一台网络连接状况更好的计算机。
 如果客户端计算机位于另一个区域，而不在此群集中，请考虑使用此群集的邻近区域或同区域中的客户端计算机。
 - 检查是否已达到外部限制。 例如，将映像存储配置为使用 Azure 存储时，可能会限制上传。
@@ -356,8 +356,8 @@ ImageStoreConnectionString 可在群集清单中找到：
 问题：上传包已成功完成，但[register-servicefabricapplicationtype](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)超时。然后
 - 复制到映像存储之前[对包进行压缩](service-fabric-package-apps.md#compress-a-package)。
 压缩可减小文件大小，减少文件数量，这反过来会减少通信流量和 Service Fabric 必须执行的工作量。 上传操作可能会变慢（尤其是包括压缩时间时），但注册和注销应用程序类型会加快。
-- 通过 `TimeoutSec` 参数为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定更长的超时。
-- 为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定 `Async` 切换。 当群集接受命令并且应用程序类型的注册以异步方式继续时，该命令将返回。 因此，在此情况下，无需指定较长的超时。 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令将列出已成功注册的所有应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
+- 通过 [ 参数为 ](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)Register-ServiceFabricApplicationType`TimeoutSec` 指定更长的超时。
+- 为 `Async`Register-ServiceFabricApplicationType[ 指定 ](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 切换。 当群集接受命令并且应用程序类型的注册以异步方式继续时，该命令将返回。 因此，在此情况下，无需指定较长的超时。 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令将列出已成功注册的所有应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
 
 ```powershell
 Get-ServiceFabricApplicationType
@@ -375,8 +375,8 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 问题：具有多个文件（上千个）的应用程序包的 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 超时。
 请尝试：
 - 复制到映像存储之前[对包进行压缩](service-fabric-package-apps.md#compress-a-package)。 压缩可以减少文件数量。
-- 通过 `TimeoutSec` 参数为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定更长的超时。
-- 为 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 指定 `Async` 切换。 当群集接受命令并且应用程序类型的注册以异步方式继续时，该命令将返回。
+- 通过 [ 参数为 ](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)Register-ServiceFabricApplicationType`TimeoutSec` 指定更长的超时。
+- 为 `Async`Register-ServiceFabricApplicationType[ 指定 ](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) 切换。 当群集接受命令并且应用程序类型的注册以异步方式继续时，该命令将返回。
 因此，在此情况下，无需指定较长的超时。 [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) 命令将列出已成功注册的所有应用程序类型版本及其注册状态。 此命令可用于确定注册的完成时间。
 
 ```powershell

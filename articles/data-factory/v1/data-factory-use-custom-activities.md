@@ -13,11 +13,11 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385350"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265722"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -42,7 +42,7 @@ ms.locfileid: "78385350"
 > - 无法使用自定义活动中的数据管理网关来访问本地数据源。 目前，[数据管理网关](data-factory-data-management-gateway.md)仅支持数据工厂中的复制活动和存储过程活动。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>演练：创建自定义活动
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 * Visual Studio 2012/2013/2015/2017
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
@@ -105,7 +105,7 @@ public IDictionary<string, string> Execute(
      <li>从右侧项目类型列表中选择“类库”<b></b>。 在 Visual Studio 中，选择 "<b>类库（.NET Framework）</b> " </li>
      <li>对于“名称”<b></b>，输入 <b>MyDotNetActivity</b>。</li>
      <li>对于“位置”<b></b>，选择“C:\ADFGetStarted”<b></b>。</li>
-     <li>单击“确定”<b></b>以创建项目。</li>
+     <li>单击“确定”以创建该项目 <b></b> 。</li>
    </ol>
 
 2. 单击“工具”，指向“NuGet 包管理器”，并单击“包管理器控制台”。
@@ -712,7 +712,7 @@ test custom activity Microsoft test custom activity Microsoft
     Install-Package WindowsAzure.Storage -Version 4.3.0
     ```
 
-    生成此项目。 从 bin\Debug 文件夹中删除 4.3.0 版本以上的 Azure.Storage 程序集。 创建包含二进制代码的 zip 文件和 PDB 文件。 使用 blob 容器 (customactivitycontainer) 中的此文件替换旧的 zip 文件。 重新运行失败的切片（右击切片，并单击“运行”）。
+    生成项目。 从 bin\Debug 文件夹中删除 4.3.0 版本以上的 Azure.Storage 程序集。 创建包含二进制代码的 zip 文件和 PDB 文件。 使用 blob 容器 (customactivitycontainer) 中的此文件替换旧的 zip 文件。 重新运行失败的切片（右击切片，并单击“运行”）。
 8. 自定义活动不使用包中的 **app.config** 文件。 因此，如果代码从配置文件读取任何连接字符串，其在运行时无效。 使用 Azure Batch 时的最佳做法是在 **Azure KeyVault** 中保存所有机密，使用基于证书的服务主体来保护 **keyvault**，并将该证书分发到 Azure Batch 池。 然后，.NET 自定义活动可以在运行时从 KeyVault 访问机密。 该解决方案是一种通用解决方法，可以延伸到任何类型的机密，而不仅仅是连接字符串。
 
    有一个更容易的解决方法（但非最佳做法）：可通过连接字符串设置创建 **Azure SQL 链接服务**，再创建使用该链接服务的数据集，并将作为虚拟输入数据集的数据集链接到自定义 .NET 活动。 然后，可访问自定义活动代码中的链接服务连接字符串。

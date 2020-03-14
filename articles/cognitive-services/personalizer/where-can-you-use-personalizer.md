@@ -4,11 +4,11 @@ description: 在应用程序能够选择要显示的正确项、操作或产品�
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 63e66315898242beb5da59927e8d506e6f2cff78
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622706"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219320"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>在何处以及如何使用 Personalizer
 

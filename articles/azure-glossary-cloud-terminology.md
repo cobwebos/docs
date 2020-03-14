@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978761"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276473"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
 
@@ -121,7 +121,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 ## <a name="sas"></a>共享访问签名 (SAS)
 使用该签名能够在不公开帐户密钥的情况下，授予对资源的有限访问权限。 例如，[Azure 存储使用 SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) 授予客户端对 Blob 等对象的访问权限。 [IoT 中心使用 SAS](iot-hub/iot-hub-devguide-security.md#security-tokens) 授予设备发送遥测数据的权限。
 
-## <a name="storage-account"></a>存储器帐户
+## <a name="storage-account"></a>存储帐户
 该帐户可授予对 Azure 存储中的 Azure Blob、队列、表和文件服务的访问权限。 存储帐户名称定义 Azure 存储数据对象的唯一命名空间。  
 请参阅[关于 Azure 存储帐户](storage/common/storage-create-storage-account.md)
 

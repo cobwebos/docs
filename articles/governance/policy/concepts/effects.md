@@ -4,11 +4,11 @@ description: Azure 策略定义具有各种影响，决定了如何管理和报�
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 502c8a87c4e915ebd1fd764915daa9c89a307097
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544124"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281179"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -158,7 +158,7 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 
 **操作**属性具有以下选项：
 
-|操作 |说明 |
+|Operation |说明 |
 |-|-|
 |addOrReplace |将已定义的标记和值添加到资源，即使已存在具有不同值的标记也是如此。 |
 |添加 |将已定义的标记和值添加到资源。 |

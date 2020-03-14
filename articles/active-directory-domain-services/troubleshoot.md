@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: c4b2dea05b459d6e9ae4eb086fa127d88a84a768
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: e17112cbe2a494a585cd5a09c36cfe449d3d433c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249209"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365809"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的常见错误和故障排除步骤
 
@@ -30,7 +30,7 @@ ms.locfileid: "78249209"
 
 | **示例错误消息** | **解决方法** |
 | --- |:--- |
-| *此网络上已在使用该名称 addscontoso.com。指定一个未使用的名称。* |[虚拟网络中的域名冲突](troubleshoot.md#domain-name-conflict) |
+| *此网络上已在使用该名称 aaddscontoso.com。指定一个未使用的名称。* |[虚拟网络中的域名冲突](troubleshoot.md#domain-name-conflict) |
 | *无法在此 Azure AD 租户中启用域服务。服务对名为 "Azure AD 域服务同步" 的应用程序没有足够的权限。删除名为 "Azure AD 域服务同步" 的应用程序，然后尝试为 Azure AD 租户启用域服务。* |[域服务没有足够的权限访问 Azure AD 域服务同步应用程序](troubleshoot.md#inadequate-permissions) |
 | *无法在此 Azure AD 租户中启用域服务。Azure AD 租户中的域服务应用程序没有启用域服务所需的权限。使用应用程序标识符 d87dcbc6-a371-462e-88e3-28ad15ec4e64 删除应用程序，然后尝试为 Azure AD 租户启用域服务。* |[Azure AD 租户中未正确配置域服务应用程序](troubleshoot.md#invalid-configuration) |
 | *无法在此 Azure AD 租户中启用域服务。Azure AD 租户中禁用 Microsoft Azure AD 应用程序。启用应用程序标识符为 00000002-0000-0000-c000-000000000000 的应用程序，然后尝试为 Azure AD 租户启用域服务。* |[Microsoft Graph 应用程序已在 Azure AD 租户中禁用](troubleshoot.md#microsoft-graph-disabled) |

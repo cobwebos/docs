@@ -6,11 +6,11 @@ ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397274"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259092"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric 的状态管理
 

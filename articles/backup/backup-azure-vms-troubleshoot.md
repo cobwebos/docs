@@ -4,12 +4,12 @@ description: 本文介绍如何解决在备份和还原 Azure 虚拟机时遇到
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 8e29061becd9eb82dd04f3ed0db787542b29cbc7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 15e4b4c8850798fd2386cd2874b6ab58a18d5406
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363687"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297384"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -24,7 +24,7 @@ ms.locfileid: "78363687"
 * 确保 VM 代理（WA 代理）是[最新版本](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)。
 * 请确保 Windows 或 Linux VM 操作系统版本受支持，请参阅[IAAS Vm 备份支持矩阵](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas)。
 * 验证其他备份服务未运行。
-  * 若要确保没有快照扩展问题，请[卸载扩展以强制重新加载，然后重试备份](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load)。
+  * 若要确保没有快照扩展问题，请[卸载扩展以强制重新加载，然后重试备份](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout)。
 * 验证 VM 是否有 internet 连接。
   * 请确保其他备份服务未运行。
 * 在 `Services.msc`中，确保**Windows Azure 来宾代理**服务正在**运行**。 如果缺少**Windows Azure 来宾代理**服务，请通过[在恢复服务保管库中备份 Azure vm](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)来安装它。
@@ -76,7 +76,7 @@ ms.locfileid: "78363687"
 错误代码： ExtensionInstallationFailedMDTC <br/>
 错误消息：扩展安装失败，出现错误 "COM + 无法与 Microsoft 分布式事务处理协调器联系 <br/>
 
-由于 Windows 服务**Com + 系统**应用程序出现问题，备份操作失败。  ТЄЅвѕцґЛОКМв，ЗлЦґРРПВБРІЅЦи：
+由于 Windows 服务**Com + 系统**应用程序出现问题，备份操作失败。  若要解决此问题，请执行以下步骤：
 
 * 尝试启动/重新启动 Windows 服务**Com + 系统应用程序**（通过提升的命令提示符 **-net start COMSysApp**）。
 * 确保**分布式事务处理协调器**服务作为**网络服务**帐户运行。 否则，请将其更改为以**网络服务**帐户运行，然后重新启动**Com + 系统应用程序**。
@@ -117,7 +117,7 @@ ms.locfileid: "78363687"
 
    * 列出文件夹/读取数据
    * 读取属性
-   * 读取扩展属性
+   * 读取扩展的属性
    * 创建文件/写入数据
    * 创建文件夹/附加数据
    * 写入属性
@@ -134,7 +134,7 @@ ms.locfileid: "78363687"
 错误代码： ExtensionStuckInDeletionState <br/>
 错误消息：扩展状态不能用于备份操作
 
-备份操作失败，因为备份扩展的状态不一致。 ТЄЅвѕцґЛОКМв，ЗлЦґРРПВБРІЅЦи：
+备份操作失败，因为备份扩展的状态不一致。 若要解决此问题，请执行以下步骤：
 
 * 确保来宾代理已安装并可做出响应
 * 从 Azure 门户中转到 "**虚拟机**" > **所有设置** > **扩展**
@@ -190,7 +190,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 | 虚拟机上不存在 VM 代理： <br>安装任何必备组件和 VM 代理。 然后，重启该操作。 |阅读有关 [VM 代理安装以及如何验证 VM 代理安装](#vm-agent)的详细信息。 |
 | **错误代码**： ExtensionSnapshotFailedNoSecureNetwork <br/> **错误消息**：快照操作失败，因为创建安全网络通信通道失败。 | <ol><li> 通过在权限提升模式下运行“regedit.exe”来打开注册表编辑器。 <li> 标识系统中存在的所有 .NET Framework 版本。 它们位于注册表项“HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft”的层次结构下。 <li> 请为注册表项中存在的每个 .Net Framework 添加以下键： <br> “SchUseStrongCrypto"=dword:00000001”。 </ol>|
 | **错误代码**： ExtensionVCRedistInstallationFailure <br/> **错误消息**：快照操作失败，因为安装 visual Studio 2012 的C++ visual 可再发行组件失败。 | 导航到 C:\packages\plugins\microsoft.azure.recoveryservices.vmsnapshot\agentversion and install 并安装 vcredist2013_x64。<br/>确保将 "服务安装" 的注册表项值设置为正确的值。 也就是说，将**HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver**中的**开始**值设置为**3** ，而不是**4**。 <br><br>如果仍然遇到安装问题，请通过权限提升的命令提示符运行“MSIEXEC /UNREGISTER”，接着运行“MSIEXEC /REGISTER”来重启安装服务。  |
-
+| **错误代码**： UserErrorRequestDisallowedByPolicy <BR> **错误消息**：在 VM 上配置了无效的策略，该策略将阻止快照操作。 | 如果你的 Azure 策略在[你的环境中控制标记](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags)，则可以考虑将策略从[拒绝效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)更改为[修改效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)，或根据[Azure 备份所需的命名架构](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)手动创建资源组。
 ## <a name="jobs"></a>作业
 
 | 错误详细信息 | 解决方法 |
@@ -200,7 +200,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 | 备份不能取消该作业，因为它没有正在进行： <br>仅支持取消正在进行的作业。 尝试取消正在进行的作业。 |由于临时状态而发生此错误。 请稍等片刻，并重试取消操作。 |
 | 备份未能取消作业： <br>请等待作业完成。 |无 |
 
-## <a name="restore"></a>Restore
+## <a name="restore"></a>还原
 
 | 错误详细信息 | 解决方法 |
 | --- | --- |
@@ -273,7 +273,7 @@ VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储�
 * 如果四个以上的 VM 共享同一云服务，请为 VM 选择多个不同的备份策略。 错开备份时间，使同时开始的 VM 备份不超过四个。 尝试将策略中的开始时间至少隔开一小时。
 * VM 在高 CPU 或内存情况下运行。 如果虚拟机在高内存或 CPU 使用率（超过 90%）情况下运行，则快照任务将排队并延迟。 最终，它会超时。如果发生此问题，请尝试按需备份。
 
-## <a name="networking"></a>联网
+## <a name="networking"></a>网络
 
 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。 如果需要静态专用 IP，请通过 Azure 门户或 PowerShell 配置该 IP。 请确保已启用 VM 内的 DHCP 选项。
 获取有关如何通过 PowerShell 设置静态 IP 的详细信息：

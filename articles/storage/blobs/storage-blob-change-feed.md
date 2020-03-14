@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: b26e54c7130469eee87a9237f4847f46cb3b7698
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ea0b173f12a1c80f276af3ce3f6222efaad07972
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75691048"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370621"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob 存储中的更改源支持（预览）
 
 更改源的目的是提供存储帐户中 blob 和 blob 元数据发生的所有更改的事务日志。 更改源提供了这些更改的**有序、有** **保证**、**持久**、**不可变**的**只读**日志。 客户端应用程序可以在流式传输或批处理模式下随时读取这些日志。 利用更改源，你可以构建高效且可缩放的解决方案，以较低的成本处理在 Blob 存储帐户中发生的更改事件。
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 更改源将以[blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)的形式存储在存储帐户的特殊容器中，其[价格](https://azure.microsoft.com/pricing/details/storage/blobs/)为标准 blob。 您可以根据您的需求来控制这些文件的保留期（请参阅当前版本的[条件](#conditions)）。 更改事件将作为[Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html)格式规范中的记录追加到更改源：采用简洁、快速、二进制格式，该格式可通过内联架构提供丰富的数据结构。 这种格式广泛用于 Hadoop 生态系统、流分析和 Azure 数据工厂。
 
@@ -55,7 +57,7 @@ ms.locfileid: "75691048"
 > [!IMPORTANT]
 > 更改源以公共预览版提供，并在**westcentralus**和**westus2**区域中提供。 请参阅本文的 "[条件](#conditions)" 一节。 若要注册预览版，请参阅本文的[注册订阅](#register)部分。 必须先注册你的订阅，然后才能在存储帐户上启用更改源。
 
-### <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 使用 Azure 门户在存储帐户上启用更改源：
 
@@ -69,7 +71,7 @@ ms.locfileid: "75691048"
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 启用更改源：
 
@@ -99,7 +101,7 @@ ms.locfileid: "75691048"
    Update-AzStorageBlobServiceProperty -EnableChangeFeed $true
    ```
 
-### <a name="templatetabtemplate"></a>[模板](#tab/template)
+### <a name="template"></a>[模板](#tab/template)
 使用 Azure 资源管理器模板通过 Azure 门户在现有存储帐户上启用更改源：
 
 1. 在 Azure 门户中，选择 "**创建资源**"。
@@ -148,7 +150,7 @@ ms.locfileid: "75691048"
 
 <a id="segment-index"></a>
 
-### <a name="segments"></a>细分市场
+### <a name="segments"></a>段数
 
 更改源是组织为每**小时***段*的更改日志，但会在每隔几分钟后附加和更新。 仅当在该小时发生了 blob 更改事件时，才会创建这些段。 这样，客户端应用程序便可以使用在特定时间范围内发生的更改，而不必搜索整个日志。 若要了解详细信息，请参阅[规范](#specifications)。
 
@@ -317,7 +319,7 @@ az provider register --namespace 'Microsoft.Storage'
 - 当你调用 ListContainers API 时，你当前无法看到 **$blobchangefeed**容器，并且容器未显示在 Azure 门户或存储资源管理器
 - 以前启动的[帐户故障转移](../common/storage-disaster-recovery-guidance.md)的存储帐户可能在出现日志文件时出现问题。 将来的任何帐户故障转移也可能会影响预览期间的日志文件。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>更改源和存储分析日志记录之间的区别是什么？
 分析日志包含所有操作的成功和失败请求的所有读取、写入、列出和删除操作的记录。 分析日志是最大努力，不保证顺序。

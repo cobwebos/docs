@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: kgremban
 ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929694"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271078"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
 
-实施 Azure IoT 中心的企业期望其资源具有可靠的性能。 为了帮助你维护有关操作的密切关注，IoT 中心与[Azure Monitor](../azure-monitor/index.yml)和[Azure 资源运行状况](../service-health/resource-health-overview.md)完全集成。 这两个服务相辅相成，提供所需的数据来让 IoT 解决方案保持正常的运行。
+实施 Azure IoT 中心的企业期望其资源具有可靠的性能。 为了帮助你维护有关操作的密切关注，IoT 中心与[Azure Monitor](../azure-monitor/index.yml)和[Azure 资源运行状况](../service-health/resource-health-overview.md)完全集成。 这两项服务旨在为您提供所需的数据，使 IoT 解决方案保持正常运行状态。
 
-Azure Monitor 是监视所有 Azure 服务并记录其日志的单一源。 可将 Azure Monitor 生成的诊断日志发送到 Azure Monitor 日志、事件中心或 Azure 存储进行自定义处理。 借助 Azure Monitor 的指标和诊断设置，可以洞察资源的性能。 请继续阅读本文，了解如何对 IoT 中心[使用 Azure Monitor](#use-azure-monitor)。 
+Azure Monitor 是监视所有 Azure 服务并记录其日志的单一源。 可以将 Azure Monitor 生成的诊断日志发送到 Azure Monitor 日志、事件中心或 Azure 存储进行自定义处理。 借助 Azure Monitor 的指标和诊断设置，可以洞察资源的性能。 请继续阅读本文，了解如何对 IoT 中心[使用 Azure Monitor](#use-azure-monitor)。 
 
 > [!IMPORTANT]
 > IoT 中心服务使用 Azure Monitor 诊断日志发出的事件不保证可靠或有序。 某些事件可能会丢失或未按顺序传送。 诊断日志也不是实时的，可能需要几分钟的时间才能将事件记录到所选的目标。
 
-Azure 资源运行状况可以帮助你在 Azure 问题影响资源时进行诊断和获取支持。 仪表板提供每个 IoT 中心的当前和过去的运行状态。 继续阅读到本文底部的部分，了解如何对 IoT 中心[使用 Azure 资源运行状况](#use-azure-resource-health)。 
+Azure 资源运行状况可以帮助你在 Azure 问题影响资源时进行诊断和获取支持。 仪表板为每个 IoT 中心提供当前和过去的运行状况状态。 请继续阅读本文底部的部分，了解如何[将 Azure 资源运行状况](#use-azure-resource-health)与 IoT 中心一起使用。 
 
 IoT 中心还提供了其自己的指标，可使用这些指标了解 IoT 资源的状态。 若要了解详细信息，请参阅[了解 IoT 中心指标](iot-hub-metrics.md)。
 
@@ -47,7 +47,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 连接类别跟踪设备连接，并断开事件与 IoT 中心和错误的连接。 此类别用于识别未经授权的连接尝试或者在失去与设备的连接时发出警报。
 
 > [!NOTE]
-> 若要获得设备的可靠连接状态，请检查[设备检测信号](iot-hub-devguide-identity-registry.md#device-heartbeat)。
+> 对于设备的可靠连接状态，请检查[设备检测信号](iot-hub-devguide-identity-registry.md#device-heartbeat)。
 
 ```json
 {
@@ -343,7 +343,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 此时不会计算 `durationMs`，因为 IoT 中心的时钟可能不会与设备时钟同步，所以持续时间计算可能产生误导。 我们建议使用 `properties` 部分中的时间戳编写逻辑，以捕获设备到云延迟的峰值。
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Integer | 以字节为单位的设备到云消息的大小 |
 | **deviceId** | ASCII 7 位字母数字字符字符串 | 设备的标识 |
@@ -377,7 +377,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 在 `properties` 部分中，此日志包含有关消息入口的其他信息。
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | String | True 或 false，指示 IoT 中心是否启用了消息路由 |
 | **parentSpanId** | String | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 D2C 消息跟踪 |
@@ -409,7 +409,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 在 `properties` 部分中，此日志包含有关消息入口的其他信息。
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **endpointName** | String | 路由终结点的名称 |
 | **endpointType** | String | 路由终结点的类型 |
@@ -536,19 +536,19 @@ class Program
 
 使用 Azure 资源运行状况可以监视 IoT 中心是否已启动并正在运行。 此外，还可以了解是否发生了影响 IoT 中心运行状况的区域性服务中断。 若要了解有关 Azure IoT 中心运行状态的具体详细信息，我们建议[使用 Azure Monitor](#use-azure-monitor)。
 
-Azure IoT 中心指示区域级别的运行状况。 如果区域性服务中断影响了你的 IoT 中心，则运行状态显示为“未知”。 若要了解详细信息，请参阅 [Azure 资源运行状况中的资源类型和运行状况检查](../service-health/resource-health-checks-resource-types.md)。
+Azure IoT 中心指示区域级别的运行状况。 如果区域性服务中断影响了你的 IoT 中心，则运行状态显示为“未知”。 若要了解详细信息，请参阅[Azure 资源运行状况中的资源类型和运行状况检查](../service-health/resource-health-checks-resource-types.md)。
 
 若要检查 IoT 中心的运行状况，请遵循以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 导航到“服务运行状况” **“资源运行状况”。**  > 
 
-3. 从下拉列表框中，选择你的订阅，然后选择“IoT 中心”作为资源类型。
+3. 从下拉框中选择订阅，并选择 " **IoT 中心**" 作为资源类型。
 
 若要了解有关如何解释运行状况数据的详细信息，请参阅[Azure 资源运行状况概述](../service-health/resource-health-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 IoT 中心指标](iot-hub-metrics.md)
-* [通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+* [与连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视和通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

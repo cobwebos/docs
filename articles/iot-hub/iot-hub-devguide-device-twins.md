@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 4b80004a3d818e66cc2fb61f3d611bbe3e3ded92
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/01/2020
+ms.openlocfilehash: 51e58de92f111c8854add613a299f2b8ccec0503
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807028"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79285235"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
@@ -40,7 +40,7 @@ ms.locfileid: "74807028"
 
 有关使用所需的属性、直接方法或云到设备的消息的指导，请参阅[云到设备的通信指南](iot-hub-devguide-c2d-guidance.md)。
 
-## <a name="device-twins"></a>设备孪生
+## <a name="device-twins"></a>设备克隆
 
 设备克隆存储具有以下用途的设备相关信息：
 
@@ -54,9 +54,9 @@ ms.locfileid: "74807028"
 
 * **标记**。 解决方案后端可从中读取和写入数据的 JSON 文档的某个部分。 标记对设备应用不可见。
 
-* **所需的属性**。 与报告的属性结合使用，同步设备配置或状态。 解决方案后端可设置所需的属性，并且设备应用可进行读取。 此外，当所需的属性发生更改时，设备应用可收到通知。
+* **所需属性**。 与报告的属性结合使用，同步设备配置或状态。 解决方案后端可设置所需的属性，并且设备应用可进行读取。 此外，当所需的属性发生更改时，设备应用可收到通知。
 
-* **报告的属性**。 与所需的属性结合使用，同步设备配置或状态。 设备应用可设置报告的属性，并且解决方案后端可进行读取和查询。
+* **报告属性**。 与所需的属性结合使用，同步设备配置或状态。 设备应用可设置报告的属性，并且解决方案后端可进行读取和查询。
 
 * **设备标识属性**。 设备孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应设备标识的只读属性。
 
@@ -182,7 +182,7 @@ ms.locfileid: "74807028"
 
   - 属性
 
-    | 名称 | Value |
+    | 名称 | 值 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  发送通知的时间 |
@@ -219,7 +219,7 @@ ms.locfileid: "74807028"
     }
     ```
 
-上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)中定义的 **ServiceConnect** 权限。
+上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要**控制对 IoT 中心的访问**中定义的 [ServiceConnect](iot-hub-devguide-security.md) 权限。
 
 除了上述操作以外，解决方案后端还可以：
 
@@ -231,13 +231,13 @@ ms.locfileid: "74807028"
 
 设备应用使用以下原子操作对设备克隆执行操作：
 
-* **检索设备孪生**。 此操作返回当前连接的设备的设备克隆文档（包括所需的系统属性和报告的系统属性）。 （标记对设备应用不可见。）
+* **检索设备克隆**。 此操作返回当前连接的设备的设备克隆文档（包括所需的系统属性和报告的系统属性）。 （标记对设备应用不可见。）
 
 * **部分更新报告属性**。 使用此操作可以部分更新当前连接的设备的报告属性。 此操作使用的 JSON 更新格式与解决方案后端用于部分更新所需属性的格式相同。
 
 * **观察所需属性**。 当前连接的设备可以选择在所需属性发生更新时接收通知。 设备收到的更新格式与解决方案后端执行的更新格式相同（部分或完全替换）。
 
-上述所有操作都需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)中定义的 **DeviceConnect** 权限。
+上述所有操作都需要**控制对 IoT 中心的访问**中定义的 [DeviceConnect](iot-hub-devguide-security.md) 权限。
 
 借助 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md)，可通过多种语言和平台轻松使用上述操作。 有关用于同步所需属性的 IoT 中心基元的详细信息，请参阅[设备重新连接流](iot-hub-devguide-device-twins.md#device-reconnection-flow)。
 
@@ -245,11 +245,15 @@ ms.locfileid: "74807028"
 
 标记、所需的属性和报告的属性是具有以下限制的 JSON 对象：
 
-* JSON 对象中的所有键都是 UTF-8 编码、区分大小写和最大为 1 KB。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
+* **键**： JSON 对象中的所有键都是 utf-8 编码、区分大小写和最大为 1 KB。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
 
-* JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 不允许数组。 最大整数值为 4503599627370495，而最小整数值为 -4503599627370496。
+* **值**： json 对象中的所有值可以是以下 json 类型：布尔值、数字、字符串、对象。 不允许数组。
 
-* 标记、所需属性和报告属性中的所有 JSON 对象的最大深度为10。 例如，以下对象是有效的：
+    * 整数的最小值可为-4503599627370496，最大值为4503599627370495。
+
+    * 字符串值是 UTF-8 编码的，最大长度为 4 KB。
+
+* **深度**：标记、所需属性和报告属性中 JSON 对象的最大深度为10。 例如，以下对象是有效的：
 
    ```json
    {
@@ -281,15 +285,23 @@ ms.locfileid: "74807028"
    }
    ```
 
-* 所有字符串的值的长度最多为 4 KB。
-
 ## <a name="device-twin-size"></a>设备克隆的大小
 
-IoT 中心对 `tags`的值强制使用 8 KB 的大小限制，并对 `properties/desired` 和 `properties/reported`的值限制每个大小的大小限制为 32 KB。 这些总计与只读元素互斥。
+IoT 中心对 `tags`的值强制使用 8 KB 的大小限制，并对 `properties/desired` 和 `properties/reported`的值限制每个大小的大小限制为 32 KB。 这些总计与只读元素（例如 `$etag`、`$version`和 `$metadata/$lastUpdated`）不相容。
 
-该大小的计算考虑到了所有字符，但不包括 UNICODE 控制字符（段 C0 和 C1），以及出现在字符串常量外部的空格。
+克隆大小的计算方式如下：
 
-IoT 中心拒绝将这些文档的大小增加到超出限制的所有操作，在这种情况下还会返回错误。
+* 对于 JSON 文档中的每个属性，IoT 中心累积计算并添加属性的键和值的长度。
+
+* 属性键被视为 UTF8 编码的字符串。
+
+* 简单属性值被视为 UTF8 编码的字符串、数字值（8字节）或布尔值（4字节）。
+
+* UTF8 编码字符串的大小通过对所有字符进行计数计算，不包括 UNICODE 控制字符（段 C0 和 C1）。
+
+* 复杂属性值（嵌套对象）根据它们所包含的属性键和属性值的聚合大小进行计算。
+
+IoT 中心拒绝所有操作，这些操作会增加 `tags`、`properties/desired`或 `properties/reported` 超过限制的文档大小。
 
 ## <a name="device-twin-metadata"></a>设备克隆的元数据
 

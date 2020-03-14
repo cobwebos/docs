@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 447e8a67cedbb8f78e4db9602f603fefd382693c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: f6dbdb54c1c5a5d477c3ccb988963758faab83b0
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162933"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140008"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>使用从动数据库在 Azure 中附加数据库数据资源管理器
 
@@ -26,7 +26,7 @@ ms.locfileid: "77162933"
 * 单个群集可以遵循多个负责人群集中的数据库。 
 * 一个群集可以同时包含一个使用者数据库和领导者数据库
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 1. 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 1. 为领导和执行程序[创建群集和 DB](/azure/data-explorer/create-cluster-database-portal) 。
@@ -164,7 +164,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
         },
         "defaultPrincipalsModificationKind": {
             "type": "string",
-            "defaultValue": "",
+            "defaultValue": "Union",
             "metadata": {
                 "description": "The default principal modification kind."
             }
@@ -180,13 +180,10 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('attachedDatabaseConfigurationsName')]",
+            "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
             "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Kusto/clusters', parameters('followerClusterName'))]"
-            ],
             "properties": {
                 "databaseName": "[parameters('databaseName')]",
                 "clusterResourceId": "[parameters('leaderClusterResourceId')]",
@@ -211,7 +208,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 |数据库名称     |      要遵循的数据库的名称。 如果要跟踪领导的所有数据库，请使用 "*"。   |
 |领导群集资源 ID    |   领导者群集的资源 ID。      |
 |默认主体修改种类    |   默认主体修改类型。 可以是 `Union`、`Replace` 或 `None`。 有关默认主体修改类型的详细信息，请参阅[principal 修改 kind control 命令](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind)。      |
-|Location   |   所有资源的位置。 领导者和从动者必须位于同一位置。       |
+|位置   |   所有资源的位置。 领导者和从动者必须位于同一位置。       |
  
 ### <a name="verify-that-the-database-was-successfully-attached"></a>验证数据库是否已成功附加
 
@@ -222,7 +219,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
     ![只读数据库](media/follower/read-only-follower-database.png)
 
-或者：
+也可使用以下命令：
 
 1. 导航到主持人群集并选择 "**数据库**"
 2. 检查相关数据库是否被标记为**与他人共享** > **是**

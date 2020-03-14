@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: eca2dbe7589fdc7d59a84d21ecf59749d986ade9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7429a9d5e9a803f0e9a6f900c5d81e77e7477a48
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826414"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214494"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>使用多租户 SQL 数据库 SaaS 应用设置和使用 Azure Monitor 日志
 
@@ -30,7 +30,7 @@ ms.locfileid: "73826414"
 > * 安装和配置 Azure Monitor 日志。
 > * 使用 Azure Monitor 日志来监视池和数据库。
 
-若要完成本教程，请确保已完成以下先决条件：
+若要完成本教程，请确保已完成了以下先决条件：
 
 * 已部署了 Wingtip Tickets SaaS“每租户一个数据库”应用。 若要在五分钟内完成部署，请参阅[部署并探究 Wingtip Tickets SaaS“每租户一个数据库”应用程序](saas-dbpertenant-get-started-deploy.md)。
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
@@ -41,7 +41,7 @@ ms.locfileid: "73826414"
 
 对于 Azure SQL 数据库，Azure 门户中提供了针对数据库和池的监视和警报功能。 此内置的监视和警报功能非常方便，但它也是特定于资源的。 这意味着它不太适用于监视大型安装或者提供跨资源和订阅的统一视图。
 
-对于大容量方案，可以使用 Azure Monitor 日志进行监视和警报。 Azure Monitor 是一项单独的 Azure 服务，可用于对可能很多服务中从工作区中收集的诊断日志和遥测进行分析。 Azure Monitor 日志提供了一个内置的查询语言和数据可视化工具，允许操作数据分析。 SQL Analytics 解决方案提供了多个预定义的弹性池和数据库监视和警报视图与查询。 Azure Monitor 日志还提供自定义视图设计器。
+对于大容量方案，可以使用 Azure Monitor 日志进行监视和警报。 Azure Monitor 是一项单独的 Azure 服务，可用于对可能很多服务中从工作区收集的日志进行分析。 Azure Monitor 日志提供了一个内置的查询语言和数据可视化工具，允许操作数据分析。 SQL Analytics 解决方案提供了多个预定义的弹性池和数据库监视和警报视图与查询。 Azure Monitor 日志还提供自定义视图设计器。
 
 OMS 工作区现在称为 Log Analytics 工作区。 Log Analytics 工作区和分析解决方案可以在 Azure 门户中打开。 Azure 门户是更新的访问点，但在某些区域中可能会落后于 Operations Management Suite 门户。
 

@@ -12,14 +12,14 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.openlocfilehash: 56a5221504a3905855fa5dc713707f34ae357aea
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: d910a76397a40a14d960b59f60561cbee470f5c4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165132"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263681"
 ---
-# <a name="why-update-to-microsoft-identity-platform-v20"></a>为什么要更新到 Microsoft 标识平台（v2.0）？
+# <a name="why-update-to-microsoft-identity-platform-v20"></a>为什么要更新到 Microsoft 标识平台 (v2.0)？
 
 开发新应用程序时，了解 Microsoft 标识平台（v2.0）与 Azure Active Directory （1.0）终结点之间的差异非常重要。 本文介绍了端点与 Microsoft 标识平台的一些现有限制之间的主要区别。
 
@@ -34,7 +34,7 @@ ms.locfileid: "77165132"
 * Microsoft 标识平台终结点允许 Azure AD 和个人 Microsoft 帐户（MSA）（如 hotmail.com、outlook.com 和 msn.com）的工作和学校帐户登录。
 * 对于配置为 *[单租户](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* 的应用程序或配置为指向特定于租户的终结点（`https://login.microsoftonline.com/{TenantId_or_Name}`）的*多租户*应用程序，这两个终结点还接受 Azure AD 目录的 *[来宾用户](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* 的登录。
 
-Microsoft 标识平台终结点允许你编写应用，这些应用接受来自 Microsoft 个人帐户和工作和学校帐户的登录。 这样，你便可以编写完全不区分帐户的应用。 例如，如果应用调用 [Microsoft Graph](https://graph.microsoft.io)，则工作帐户可以使用某些附加功能和数据，如 SharePoint 站点或目录数据。 但对于许多操作（例如[读取用户的邮件](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_messages)），相同的代码可以访问个人帐户以及工作和学校帐户的电子邮件。
+Microsoft 标识平台终结点允许你编写应用，这些应用接受来自 Microsoft 个人帐户和工作和学校帐户的登录。 这样，你便可以编写完全不区分帐户的应用。 例如，如果应用调用 [Microsoft Graph](https://graph.microsoft.io)，则工作帐户可以使用某些附加功能和数据，如 SharePoint 站点或目录数据。 但对于许多操作（例如[读取用户的邮件](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0)），相同的代码可以访问个人帐户以及工作和学校帐户的电子邮件。
 
 对于 Microsoft 标识平台终结点，你可以使用 Microsoft 身份验证库（MSAL）来获取对消费者、教育和企业领域的访问权限。 Azure AD v1.0 终结点仅接受工作和学校帐户的登录。
 
@@ -70,7 +70,7 @@ Microsoft 标识平台终结点允许你编写应用，这些应用接受来自 
 ```text
 GET https://login.microsoftonline.com/common/oauth2/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&resource=https://graph.windows.net/
+&resource=https://graph.microsoft.com/
 ...
 ```
 
@@ -81,7 +81,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ```text
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&scope=https://graph.windows.net/directory.read%20https://graph.windows.net/directory.write
+&scope=https://graph.microsoft.com/directory.read%20https://graph.microsoft.com/directory.write
 ...
 ```
 

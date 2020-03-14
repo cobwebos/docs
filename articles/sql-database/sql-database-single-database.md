@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 7b084954cb53d19739a0f633661e0c76fa82dd13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7bca36bdb41c5800a8718f76d48afcfde6f9333e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820942"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79208840"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库
 
@@ -29,7 +29,7 @@ ms.locfileid: "73820942"
 
 ## <a name="dynamic-scalability"></a>动态可伸缩性
 
-可以在无服务器计算层的小型单一数据库中构建第一个应用，或者在预配的计算层中生成较小的计算大小。 可以根据解决方案的需要，随时以手动或编程方式更改[计算或服务层级](sql-database-single-database-scale.md)。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
+可以在无服务器计算层的小型单一数据库中构建第一个应用，或者在预配的计算层中生成较小的计算大小。 你可以根据解决方案的需要，手动或以编程方式更改[计算或服务层](sql-database-single-database-scale.md)。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
 
 ## <a name="single-databases-and-elastic-pools"></a>单一数据库和弹性池
 
@@ -37,11 +37,11 @@ ms.locfileid: "73820942"
 
 ## <a name="monitoring-and-alerting"></a>监视和警报
 
-将内置的[性能监视](sql-database-performance.md)和[警报工具](sql-database-insights-alerts-portal.md)与性能等级组合使用。 使用这些工具，可以根据当前需求或项目性能的需求，快速评估调高或调低性能产生的影响。 此外，SQL 数据库可[发出指标和诊断日志](sql-database-metrics-diag-logging.md)，以便更轻松地监视。
+将内置的[性能监视](sql-database-performance.md)和[警报工具](sql-database-insights-alerts-portal.md)与性能等级组合使用。 使用这些工具，可以根据当前需求或项目性能的需求，快速评估调高或调低性能产生的影响。 此外，SQL 数据库还可以[发出指标和资源日志](sql-database-metrics-diag-logging.md)，以便更轻松地进行监视。
 
 ## <a name="availability-capabilities"></a>可用性功能
 
-单一数据库、弹性池和托管实例全都提供许多可用性特征。 有关信息，请参阅[可用性特征](sql-database-technical-overview.md#availability-capabilities)。
+单个数据库、弹性池和托管实例都提供许多可用性特征。 有关信息，请参阅[可用性特征](sql-database-technical-overview.md#availability-capabilities)。
 
 ## <a name="transact-sql-differences"></a>Transact-SQL 的差异
 
@@ -50,12 +50,12 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](sql-database-transact-sql-information.md)。
 
-## <a name="security"></a>“安全”
+## <a name="security"></a>安全性
 
 SQL 数据库提供一系列[内置安全性和符合性](sql-database-security-overview.md)功能，帮助应用程序满足各种安全性和符合性要求。
 
 > [!IMPORTANT]
-> Azure SQL 数据库（所有部署选项）已通过了许多符合性标准的认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，你可以在其中找到最新的 SQL 数据库符合性认证列表。
+> Azure SQL 数据库（所有部署选项）已针对多个符合性标准进行了认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，你可以在其中找到最新的 SQL 数据库符合性认证列表。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,29 +10,29 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
-ms.openlocfilehash: c950fbedde19e3b7708d3640487d413fcac7787f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360984"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214723"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>在 Azure 云服务角色上安装 .NET
 本文介绍如何安装不随 Azure 来宾 OS 一起提供的 .NET Framework 版本。 可使用来宾 OS 上的 .NET 配置云服务 web 角色和辅助角色。
 
-例如，可在来宾 OS 系列 4 上安装 .NET 4.6.2（它不随 .NET 4.6 的任何版本一起提供）。 （来宾操作系统系列5随附 .NET 4.6。）有关 Azure 来宾 OS 版本的最新信息，请参阅[Azure 来宾 os 发行新闻](cloud-services-guestos-update-matrix.md)。 
+例如，你可以在来宾 OS 系列4上安装 .NET Framework 4.6.2，这不附带 .NET Framework 4.6 的任何版本。 （来宾操作系统系列5附带 .NET Framework 4.6。）有关 Azure 来宾 OS 版本的最新信息，请参阅[Azure 来宾 os 发行新闻](cloud-services-guestos-update-matrix.md)。 
 
 >[!IMPORTANT]
->Azure SDK 2.9 包含一个限制，限制将 .NET 4.6 部署到来宾 OS 系列 4 或更早版本。 有关此限制的修复方法可在 [Microsoft 文档](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9)站点上找到。
+>Azure SDK 2.9 在来宾 OS 系列4或更早版本上对部署 .NET Framework 4.6 有限制。 有关此限制的修复方法可在 [Microsoft 文档](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9)站点上找到。
 
 要在 web 角色和辅助角色上安装 .NET，可将 .NET web 安装程序包括为云服务项目的一部分。 将安装程序作为角色启动任务的一部分启动。 
 
 ## <a name="add-the-net-installer-to-your-project"></a>将 .NET 安装程序添加到项目
 若要下载 .NET Framework 的 Web 安装程序，请选择想要安装的版本：
 
-* [.NET 4.8 web 安装程序](https://dotnet.microsoft.com/download/thank-you/net48)
-* [.NET 4.7.2 Web 安装程序](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [.NET 4.6.2 Web 安装程序](https://www.microsoft.com/download/details.aspx?id=53345)
+* [.NET Framework 4.8 web 安装程序](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET Framework 4.7.2 web 安装程序](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [.NET Framework 4.6.2 web 安装程序](https://www.microsoft.com/download/details.aspx?id=53345)
 
 添加 web 角色的安装程序：
   1. 在“解决方案资源管理器”中云服务项目中的“角色”下，右键单击 web 角色，然后选择“添加” > “新文件夹”。 创建一个名为 **bin** 的文件夹。
@@ -44,7 +44,7 @@ ms.locfileid: "75360984"
 当以此方式将文件添加到角色内容文件夹时，会自动将其添加到云服务包。 然后会将文件部署到虚拟机上的一致位置。 对云服务中的每个 Web 和辅助角色重复此过程，以便所有角色都有安装程序的副本。
 
 > [!NOTE]
-> 即使应用程序面向 .NET 4.6，也应该在云服务角色上安装 .NET 4.6.2。 来宾 OS 包括知识库[更新 3098779](https://support.microsoft.com/kb/3098779)和[更新 3097997](https://support.microsoft.com/kb/3097997)。 如果在知识库更新上安装 .NET 4.6，运行 .NET 应用程序时可能会出现问题。 若要避免这些问题，请安装 .NET 4.6.2，而不是版本 4.6。 有关详细信息，请参阅[知识库文章 3118750](https://support.microsoft.com/kb/3118750) 和 [4340191](https://support.microsoft.com/kb/4340191)。
+> 即使应用程序面向 .NET Framework 4.6，你也应该在云服务角色上安装 .NET Framework 4.6.2。 来宾 OS 包括知识库[更新 3098779](https://support.microsoft.com/kb/3098779)和[更新 3097997](https://support.microsoft.com/kb/3097997)。 如果在知识库更新上安装了 .NET Framework 4.6，则在运行 .NET 应用程序时可能会出现问题。 若要避免这些问题，请安装 .NET Framework 4.6.2，而不是4.6 版。 有关详细信息，请参阅[知识库文章 3118750](https://support.microsoft.com/kb/3118750) 和 [4340191](https://support.microsoft.com/kb/4340191)。
 > 
 > 
 
@@ -82,7 +82,7 @@ ms.locfileid: "75360984"
 
 2. 创建名为“install.cmd”的文件并将以下安装脚本添加到该文件。
 
-   脚本将通过查询注册表来检查指定的 .NET Framework 版本是否已安装在计算机上。 如果未安装该 .NET 版本，则将打开 .Net Web 安装程序。 为帮助排查任何问题，该脚本会将所有活动记录到文件 startuptasklog-(current date and time).txt（存储在“InstallLogs”本地存储中）。
+   脚本将通过查询注册表来检查指定的 .NET Framework 版本是否已安装在计算机上。 如果未安装 .NET Framework 版本，则会打开 .NET Framework web 安装程序。 为帮助排查任何问题，该脚本会将所有活动记录到文件 startuptasklog-(current date and time).txt（存储在“InstallLogs”本地存储中）。
    
    > [!IMPORTANT]
    > 使用 Windows 记事本等基本文本编辑器创建 install.cmd 文件。 如果使用 Visual Studio 创建文本文件并将扩展名更改为 .cmd，则文件可能仍包含 UTF-8 字节顺序标记。 运行该脚本的第一行时，此标记可能会导致错误。 为避免此错误，可将脚本第一行设为可被字节顺序处理过程跳过的 REM 语句。 

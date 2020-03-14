@@ -18,17 +18,17 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 9b4479436077dbad8cf2fb4dc40954194c138981
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377689"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263564"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory 代码示例（v1.0 终结点）
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-你可以使用 Microsoft Azure Active Directory (Azure AD) 向你的 web 应用程序和 web API 添加身份验证和授权。
+可以使用 Microsoft Azure Active Directory (Azure AD) 向 web 应用程序和 web API 添加身份验证和授权。
 
 此部分提供可用于详细了解 Azure AD v1.0 终结点的示例链接。 这些示例将展示其工作原理以及可以在应用程序中使用的代码片段。 在代码示例页上，可以找到在要求、安装和设置方面提供帮助的详细自述主题。 并且代码带有注释，可以帮助你理解关键部分。
 
@@ -81,11 +81,11 @@ ms.locfileid: "78377689"
 客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph | 调用 ASP.NET 或 ASP.NET Core 2.x Web API
 ------------------ | -------- | ---------- | -------------------- | -------------------------
 桌面 (WPF)           | ![此图显示 .NET/C#徽标](media/sample-v2-code/logo-net.png)  | 交互 | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) 的一部分 | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
-移动 (UWP)            | .![此图显示 .NET/C#/UWP](media/sample-v2-code/logo-windows.png)   | 交互 | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> 此示例使用 [WAM](/windows/uwp/security/web-account-manager)，而不是 [ADAL.NET](https://aka.ms/adalnet)|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store)（使用 ADAL.NET 调用单租户 Web API 的 UWP 应用程序） </p> [dotnet-webapi-multite nant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store)（使用 ADAL.NET 调用多租户 Web API 的 UWP 应用程序）|
+移动 (UWP)            | 。![此图显示 .NET/C#/UWP](media/sample-v2-code/logo-windows.png)   | 交互 | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> 此示例使用 [WAM](/windows/uwp/security/web-account-manager)，而不是 [ADAL.NET](https://aka.ms/adalnet)|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store)（使用 ADAL.NET 调用单租户 Web API 的 UWP 应用程序） </p> [dotnet-webapi-multite nant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store)（使用 ADAL.NET 调用多租户 Web API 的 UWP 应用程序）|
 移动（Android、iOS、UWP）   | ![此图显示 .NET/C# （Xamarin）](media/sample-v2-code/logo-xamarin.png) | 交互 | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 移动 (Android)           | ![此图像显示 Android 徽标](media/sample-v2-code/logo-android.png) | 交互 |   [android](https://github.com/Azure-Samples/active-directory-android) |
 移动 (iOS)           | ![此图显示了 iOS/目标 C 或 Swift](media/sample-v2-code/logo-ios.png) | 交互 |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
-桌面（控制台）          | ![此图显示 .NET/C#徽标](media/sample-v2-code/logo-net.png) | 用户名/密码 </p>  集成 Windows 身份验证 | | [dotnet-native-headless](https://github.com/azure-samples/active-directory-dotnet-native-headless)
+桌面（控制台）          | ![此图显示 .NET/C#徽标](media/sample-v2-code/logo-net.png) | 用户名/密码 </p>  Windows 集成身份验证 | | [dotnet-native-headless](https://github.com/azure-samples/active-directory-dotnet-native-headless)
 桌面（控制台）          | ![此图显示了 Java 徽标](media/sample-v2-code/logo-java.png) | 用户名/密码 | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
 桌面（控制台）           | ![此图显示 .NET Core/C#徽标](media/sample-v2-code/logo-netcore.png) | 设备代码流 | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
 

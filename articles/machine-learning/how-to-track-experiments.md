@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: e6b2f73540a0af7ed9c12469406a77d1bed8a2b4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 0c77e9d0aa4f44f33b1345a6021fc0378459ee85
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396456"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296959"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>监视 Azure ML 试验运行和指标
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -58,76 +58,27 @@ ms.locfileid: "78396456"
 
 1. 加载工作区。 若要了解有关设置工作区配置的详细信息，请参阅[工作区配置文件](how-to-configure-environment.md#workspace)。
 
-   ```python
-   from azureml.core import Experiment, Run, Workspace
-   import azureml.core
-  
-   ws = Workspace.from_config()
-   ```
-  
+[！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb？ name = load_ws）]
+
+
 ## <a name="option-1-use-start_logging"></a>选项 1：使用 start_logging
 
 **start_logging** 可创建笔记本等方案中使用的交互式运行。 试验中会话期间记录的任何指标都会添加到运行记录中。
 
 下面的示例在本地 Jupyter 笔记本中本地训练简单的 sklearn 岭模型。 若要详细了解如何将试验提交到不同的环境，请参阅[设置用于模型定型的计算目标 Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/how-to-set-up-training-targets)。
 
-1. 在本地 Jupyter 笔记本中创建训练脚本。 
+### <a name="load-the-data"></a>加载数据
 
-   ```python
-   # load diabetes dataset, a well-known small dataset that comes with scikit-learn
-   from sklearn.datasets import load_diabetes
-   from sklearn.linear_model import Ridge
-   from sklearn.metrics import mean_squared_error
-   from sklearn.model_selection import train_test_split
-   from sklearn.externals import joblib
+此示例使用 scikit-learn 提供的糖尿病数据集，这是一个众所周知的小型数据集。 此单元会加载数据集，并将其拆分为随机定型集和测试集。
 
-   X, y = load_diabetes(return_X_y = True)
-   columns = ['age', 'gender', 'bmi', 'bp', 's1', 's2', 's3', 's4', 's5', 's6']
-   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
-   data = {
-      "train":{"X": X_train, "y": y_train},        
-      "test":{"X": X_test, "y": y_test}
-   }
-   reg = Ridge(alpha = 0.03)
-   reg.fit(data['train']['X'], data['train']['y'])
-   preds = reg.predict(data['test']['X'])
-   print('Mean Squared Error is', mean_squared_error(preds, data['test']['y']))
-   joblib.dump(value = reg, filename = 'model.pkl');
-   ```
+[！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb？ name = load_data）]
 
-2. 使用 Azure 机器学习 SDK 添加试验跟踪，并将持久化模型上传到试验运行记录。 以下代码添加标记、日志，并将模型文件上传到试验运行。
+### <a name="add-tracking"></a>添加跟踪
+使用 Azure 机器学习 SDK 添加试验跟踪，并将持久化模型上传到试验运行记录。 以下代码添加标记、日志，并将模型文件上传到试验运行。
 
-   ```python
-    # Get an experiment object from Azure Machine Learning
-    experiment = Experiment(workspace=ws, name="train-within-notebook")
-    
-    # Create a run object in the experiment
-    run =  experiment.start_logging()
-    # Log the algorithm parameter alpha to the run
-    run.log('alpha', 0.03)
-    
-    # Create, fit, and test the scikit-learn Ridge regression model
-    regression_model = Ridge(alpha=0.03)
-    regression_model.fit(data['train']['X'], data['train']['y'])
-    preds = regression_model.predict(data['test']['X'])
-    
-    # Output the Mean Squared Error to the notebook and to the run
-    print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
-    run.log('mse', mean_squared_error(data['test']['y'], preds))
-    
-    # Save the model to the outputs directory for capture
-    model_file_name = 'outputs/model.pkl'
-    
-    joblib.dump(value = regression_model, filename = model_file_name)
-    
-    # upload the model file explicitly into artifacts 
-    run.upload_file(name = model_file_name, path_or_stream = model_file_name)
-    
-    # Complete the run
-    run.complete()
-   ```
+[！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb？ name = create_experiment）]
 
-    脚本以 ```run.complete()``` 结束，将运行标记为已完成。  此函数通常用于交互式 Notebook 方案。
+脚本以 ```run.complete()``` 结束，将运行标记为已完成。  此函数通常用于交互式 Notebook 方案。
 
 ## <a name="option-2-use-scriptrunconfig"></a>选项 2：使用 ScriptRunConfig
 
@@ -137,94 +88,23 @@ ms.locfileid: "78396456"
 
 1. 创建定型脚本 `train.py`。
 
-   ```python
-   # train.py
-
-   import os
-   from sklearn.datasets import load_diabetes
-   from sklearn.linear_model import Ridge
-   from sklearn.metrics import mean_squared_error
-   from sklearn.model_selection import train_test_split
-   from azureml.core.run import Run
-   from sklearn.externals import joblib
-
-   import numpy as np
-
-   #os.makedirs('./outputs', exist_ok = True)
-
-   X, y = load_diabetes(return_X_y = True)
-
-   run = Run.get_context()
-
-   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
-   data = {"train": {"X": X_train, "y": y_train},
-          "test": {"X": X_test, "y": y_test}}
-
-   # list of numbers from 0.0 to 1.0 with a 0.05 interval
-   alphas = mylib.get_alphas()
-
-   for alpha in alphas:
-      # Use Ridge algorithm to create a regression model
-      reg = Ridge(alpha = alpha)
-      reg.fit(data["train"]["X"], data["train"]["y"])
-
-      preds = reg.predict(data["test"]["X"])
-      mse = mean_squared_error(preds, data["test"]["y"])
-      # log the alpha and mse values
-      run.log('alpha', alpha)
-      run.log('mse', mse)
-
-      model_file_name = 'ridge_{0:.2f}.pkl'.format(alpha)
-      # save model in the outputs folder so it automatically get uploaded
-      with open(model_file_name, "wb") as file:
-          joblib.dump(value = reg, filename = model_file_name)
-
-      # upload the model file explicitly into artifacts 
-      run.upload_file(name = model_file_name, path_or_stream = model_file_name)
-
-      # register the model
-      #run.register_model(file_name = model_file_name)
-
-      print('alpha is {0:.2f}, and mse is {1:0.2f}'.format(alpha, mse))
-  
-   ```
+   [！代码-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py）]
 
 2. `train.py` 脚本引用 `mylib.py`，通过后者，可获取要在岭模型中使用的 alpha 值的列表。
 
-   ```python
-   # mylib.py
-  
-   import numpy as np
-
-   def get_alphas():
-      # list of numbers from 0.0 to 1.0 with a 0.05 interval
-      return np.arange(0.0, 1.0, 0.05)
-   ```
+   [！代码-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/mylib.py）] 
 
 3. 配置用户管理的本地环境。
 
-   ```python
-   from azureml.core.environment import Environment
-    
-   # Editing a run configuration property on-fly.
-   user_managed_env = Environment("user-managed-env")
-    
-   user_managed_env.python.user_managed_dependencies = True
-    
-   # You can choose a specific Python environment by pointing to a Python path 
-   #user_managed_env.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
-   ```
+   [！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb？ name = user_managed_env）]
+
 
 4. 提交要在用户管理的环境中运行的 ```train.py``` 脚本。 整个脚本文件夹都要提交以进行训练，包括 ```mylib.py``` 文件。
 
-   ```python
-   from azureml.core import ScriptRunConfig
-    
-   exp = Experiment(workspace=ws, name="train-on-local")
-   src = ScriptRunConfig(source_directory='./', script='train.py')
-   src.run_config.environment = user_managed_env
-   run = exp.submit(src)
-   ```
+   [！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb？ name = src）][！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb？ name = run）]
+
+
+
 
 ## <a name="manage-a-run"></a>管理运行
 

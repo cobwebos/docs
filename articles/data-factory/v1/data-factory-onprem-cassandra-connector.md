@@ -13,11 +13,11 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 05cee60fb1f4d43d1b4ce371aa9f22650b4782da
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387634"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79281296"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 Cassandra 数据库移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -34,7 +34,7 @@ ms.locfileid: "78387634"
 ## <a name="supported-versions"></a>支持的版本
 Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承载集成运行时上运行的活动，从 IR 版本 3.7 以及更高版本开始，Cassandra 3.x 受支持。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 要使 Azure 数据工厂服务能够连接到本地 Cassandra 数据库，必须在托管数据库的同一计算机上或在单独的计算机上安装数据管理网关，以避免与数据库争用资源。 数据管理网关是一个以安全和托管的方式将本地数据源连接到云服务的组件。 有关数据管理网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 有关设置网关以便数据管道移动数据的分步说明，请参阅[将数据从本地移到云](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
 必须使用网关连接到 Cassandra 数据库，即使数据库在云中托管（例如，在 Azure IaaS VM 上），也是如此。 只要网关能连接数据库，就可在托管数据库的同一 VM 上或单独的 VM 上安装网关。
@@ -63,16 +63,16 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供特定于 Cassandra 链接服务的 JSON 元素的说明。
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
 | type |“type”属性必须设置为：OnPremisesCassandra |是 |
-| 主机 |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/><br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
+| host |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/><br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
 | port |Cassandra 服务器用来侦听客户端连接的 TCP 端口。 |否，默认值：9042 |
 | authenticationType |Basic 或 Anonymous |是 |
 | username |为用户帐户指定用户名。 |是（如果 authenticationType 设置为 Basic）。 |
 | password |指定用户帐户的密码。 |是（如果 authenticationType 设置为 Basic）。 |
 | gatewayName |用于连接到本地 Cassandra 数据库的网关的名称。 |是 |
-| encryptedCredential |网关加密的凭据。 |是 |
+| encryptedCredential |网关加密的凭据。 |否 |
 
 >[!NOTE]
 >当前不支持使用 SSL 连接到 Cassandra。
@@ -82,7 +82,7 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 CassandraTable 数据集类型的 typeProperties 节具有以下属性
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
 | keyspace |Cassandra 数据库中密钥空间或架构的名称。 |是（如果未定义 CassandraSource 的查询）。 |
 | tableName |Cassandra 数据库中表的名称。 |是（如果未定义 CassandraSource 的查询）。 |
@@ -94,10 +94,10 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 
 源类型为 CassandraSource 时，以下属性在 typeProperties 节中可用：
 
-| 属性 | 说明 | 允许的值 | 必需 |
+| properties | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | query |使用自定义查询读取数据。 |SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 keyspace name.table name 来表示要查询的表。 |否（如果定义了数据集上的 tableName 和 keyspace）。 |
-| consistencyLevel |一致性级别指定在将数据返回到客户端应用程序之前必须响应读取请求的副本的数量。 Cassandra 会检查指定数量的副本，以使数据满足读取请求。 |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE。 有关详细信息，请参阅 [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html)（配置数据一致性）。 |No。 默认值为 ONE。 |
+| consistencyLevel |一致性级别指定在将数据返回到客户端应用程序之前必须响应读取请求的副本的数量。 Cassandra 会检查指定数量的副本，以使数据满足读取请求。 |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE。 有关详细信息，请参阅 [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html)（配置数据一致性）。 |不是。 默认值为 ONE。 |
 
 ## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>JSON 示例：将数据从 Cassandra 复制到 Azure Blob
 此示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 其中演示如何将数据从本地 Cassandra 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
@@ -299,7 +299,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 ### <a name="example"></a>示例
 例如，下面的“ExampleTable”是一个 Cassandra 数据库表，其中包含名为“pk_int”的整数主键列、文本列命名值、列表列、映射列和名为“StringSet”的集列。
 
-| pk_int | 值 | 列表 | 映射 | StringSet |
+| pk_int | 值 | 列出 | 映射 | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |“示例值 1” |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |“示例值 3” |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |

@@ -3,12 +3,12 @@ title: Azure 备份支持矩阵
 description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 788da5708178cfa533d4382a4a417cef73f46a5e
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: d036e527880a98d323e8de2f3a8721d7e12dbb07
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254904"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273262"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -84,7 +84,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 ## <a name="daylight-saving-time-support"></a>夏令时支持
 
-对于 Azure VM 备份，azure 备份不支持夏令时自动时钟调整。 请根据需要手动修改备份策略。
+对于 Azure VM 备份，azure 备份不支持夏令时自动时钟调整。 它不会向前或向后移动备份的小时数。 若要确保备份在所需的时间运行，请根据需要手动修改备份策略。
 
 ## <a name="disk-deduplication-support"></a>磁盘重复数据删除支持
 

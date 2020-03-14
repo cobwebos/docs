@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620616"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257935"
 ---
 # <a name="about-migration"></a>关于迁移
 
@@ -26,7 +26,7 @@ ms.locfileid: "73620616"
 - **迁移 AWS**：将 AWS Windows 实例迁移到 Azure IaaS VM。 
 
 > [!NOTE]
-> 你现在可以使用 Azure Migrate 服务从本地迁移到 Azure。 [了解详细信息](../migrate/migrate-overview.md)。
+> 现在可以使用 Azure Migrate 服务从本地迁移到 Azure。 [了解详细信息](../migrate/migrate-overview.md)。
 
 ## <a name="what-do-we-mean-by-migration"></a>迁移的意思是什么？
 

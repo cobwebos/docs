@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4a27165d929cc9bc5f18e372f7f108887e466e43
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754056"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299356"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Azure SQL 数据库实例池（预览）操作指南
 
@@ -26,7 +26,7 @@ ms.locfileid: "75754056"
 
 下表显示了与实例池相关的可用操作及其在 Azure 门户和 PowerShell 中的可用性。
 
-|命令|Azure 门户|PowerShell|
+|Command|Azure 门户|PowerShell|
 |:---|:---|:---|
 |创建实例池|否|是|
 |更新实例池（属性的数目有限）|否 |是 |
@@ -41,7 +41,7 @@ ms.locfileid: "75754056"
 
 可用的[PowerShell 命令](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|Cmdlet |Description |
+|Cmdlet |说明 |
 |:---|:---|
 |[新-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | 创建 Azure SQL 数据库实例池。 |
 |[AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | 返回有关 Azure SQL 实例池的信息。 |
@@ -50,7 +50,7 @@ ms.locfileid: "75754056"
 |[AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | 返回有关 Azure SQL 实例池使用情况的信息。 |
 
 
-若要使用 PowerShell，请[安装最新版本的 Powershell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell-core)，并按照说明[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+若要使用 PowerShell，请[安装最新版本的 Powershell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)，并按照说明[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 对于与池中的实例和单个实例相关的操作，请使用标准[托管实例命令](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances)，但在对池中的实例使用这些命令时，必须填充 "*实例池名称*" 属性。
 

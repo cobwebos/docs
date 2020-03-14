@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422068"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266190"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在应用服务环境 v1 中创建 Web 应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "75422068"
 > 
 > 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 本教程假设已创建一个应用服务环境。 如果尚未创建，请参阅[创建应用服务环境](app-service-web-how-to-create-an-app-service-environment.md)。 
 
 ## <a name="create-a-web-app"></a>创建 Web 应用

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374418"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249537"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的页模板
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
@@ -99,7 +99,7 @@ ms.locfileid: "78374418"
 </div>  
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  此模板使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [basic-signin](api-management-page-controls.md#basic-signin)  
@@ -158,7 +158,7 @@ ms.locfileid: "78374418"
 </div>  
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  此模板使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [sign-up](api-management-page-controls.md#sign-up)  
@@ -222,18 +222,18 @@ ms.locfileid: "78374418"
 </p>  
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  此模板可能不使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
-|referenceCode|string|因内部错误显示页面时生成的代码。|  
-|errorCode|string|因内部错误显示页面时生成的代码。|  
-|emailBody|string|因内部错误显示页面时生成的电子邮件正文。|  
-|requestedUrl|string|找不到页面时请求的 URL。|  
-|referrerUrl|string|所请求的 URL 的引用 URL。|  
+|referenceCode|字符串|因内部错误显示页面时生成的代码。|  
+|errorCode|字符串|因内部错误显示页面时生成的代码。|  
+|emailBody|字符串|因内部错误显示页面时生成的电子邮件正文。|  
+|requestedUrl|字符串|找不到页面时请求的 URL。|  
+|referrerUrl|字符串|所请求的 URL 的引用 URL。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   

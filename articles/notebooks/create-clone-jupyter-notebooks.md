@@ -4,11 +4,11 @@ description: Azure Notebooks 预览项目可管理笔记本和相关文件的集
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646239"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280568"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>在 Azure Notebooks 预览中创建和克隆项目
 
@@ -20,13 +20,13 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 ## <a name="use-the-my-projects-dashboard"></a>使用“我的项目”仪表板
 
-“我的项目”仪表板位于 `https://notebooks.azure.com/<userID>/projects`，用于查看、管理和创建项目：
+“我的项目”仪表板位于 **，用于查看、管理和创建项目**`https://notebooks.azure.com/<userID>/projects`：
 
 [![Azure Notebooks 中的“我的项目”仪表板](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 可在仪表板上执行的操作取决于你是否使用拥有用户 ID 的帐户登录：
 
-| 命令 | 可用于 | Description |
+| Command | 适用对象 | 说明 |
 | --- | --- | --- |
 | **运行** | “所有者” | 启动项目服务器并在 Jupyter 中打开项目文件夹。 （更常见的是：先导航到项目文件夹中，然后从中启动一个笔记本。） |
 | **下载** | 所有人 | 将选定项目的副本下载到一个 ZIP 文件中。 |
@@ -57,7 +57,7 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 使用“+ 新建项目”命令时，Azure Notebooks 显示一个“新建项目”弹出窗口。 在其中输入以下信息，然后选择“创建”：
 
-| 字段 | Description |
+| 字段 | 说明 |
 | --- | --- |
 | 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 例如，"我的笔记本项目"。 |
 | 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分（形式为 `https://notebooks.azure.com/<user_id>/projects/<project_id>`）。 此 ID 只能使用字母、数字和连字符，不能超过30个字符，且不能是[保留的项目 ID](#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
@@ -70,10 +70,10 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| about | account | 管理 | api | 博客 | 教室 |
+| about | account | 管理 | api | 发布 | 课堂 |
 | content | 仪表板 | 浏览 | 常见问题 | help | html |
-| 主页 | 导入 | 图书馆 | 管理 | 新 | 笔记本 |
-| notebooks | pdf | 预览版 | 定价 | 个人资料 | 搜索 |
+| 主页 | 进口 | 图书馆 | 管理 | 新 | 笔记本 |
+| notebooks | pdf | 预览 | 定价 | 个人资料 | 搜索 |
 | status | support | 测试 | | | |
 
 如果尝试使用其中一个词作为项目 ID，则 "新建**项目**" 和 "**项目设置**" 弹出窗口会指示 "库 ID 是保留标识符"。
@@ -84,7 +84,7 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 可轻松将整个公共 GitHub 存储库作为项目（包括任何数据和 README.md 文件）导入。 使用“上传 GitHub 存储库”命令，在弹出窗口中提供以下详细信息，然后选择“导入”：
 
-| 字段 | Description |
+| 字段 | 说明 |
 | --- | --- |
 | GitHub 存储库 | github.com 上的源存储库的名称。 例如，若要克隆 Azure 认知服务的 Jupyter 笔记本（位于 [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)），请输入“Microsoft/cognitive-services-notebooks”。  |
 | 以递归方式克隆 | GitHub 存储库可以包含多个子存储库。 如果希望克隆父存储库及其所有子存储库，请设置此选项。 一个存储库可能拥有许多子存储库，除非需要这样设置，否则请勿勾选此选项。 |

@@ -1,34 +1,51 @@
 ---
-title: 调用 HTTP 和 HTTPS 终结点
-description: 使用 Azure 逻辑应用将传出请求发送到 HTTP 和 HTTPS 终结点
+title: 使用 HTTP 或 HTTPS 调用服务终结点
+description: 从 Azure 逻辑应用向服务终结点发送出站 HTTP 或 HTTPS 请求
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 9c1b2af8d06c9466ed6c82308de941b43510238a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 8aefe851708c0b8d8780d03e4364e034e783bf4a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118010"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297182"
 ---
-# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用发送对 HTTP 或 HTTPS 终结点的传出调用
+# <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>通过 HTTP 或 HTTPS 从 Azure 逻辑应用调用服务终结点
 
-通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置 HTTP 触发器或操作，你可以创建定期将请求发送到任何 HTTP 或 HTTPS 终结点的自动化任务和工作流。 若要接收和响应传入的 HTTP 或 HTTPS 调用，请使用内置[请求触发器或响应操作](../connectors/connectors-native-reqres.md)。
+通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置 HTTP 触发器或操作，可以创建通过 HTTP 或 HTTPS 向服务终结点发送请求的自动化任务和工作流。 例如，可以通过按特定计划检查终结点来监视网站的服务终结点。 当在该终结点上发生指定的事件时（如网站关闭），事件会触发逻辑应用的工作流，并运行该工作流中的操作。 如果要改为接收和响应入站 HTTPS 调用，请使用内置[请求触发器或响应操作](../connectors/connectors-native-reqres.md)。
 
-例如，可以通过按指定计划检查终结点来监视网站的服务终结点。 当某个事件发生在该终结点（如网站关闭）时，该事件会触发逻辑应用的工作流，并运行指定的操作。
+> [!NOTE]
+> 根据目标终结点的功能，HTTP 连接器支持传输层安全（TLS）版本1.0、1.1 和1.2。 逻辑应用与端点协商，使用的支持的最高版本。 例如，如果端点支持1.2，连接器将首先使用1.2。 否则，连接器将使用下一个支持的最高版本。
 
-若要按定期计划检查或*轮询*终结点，可以使用 HTTP 触发器作为工作流的第一步。 每次检查时，该触发器会向该终结点发送调用或请求。 该终结点的响应确定了逻辑应用的工作流是否运行。 触发器将响应中的任何内容传递到逻辑应用中的操作。
+若要按定期计划检查或*轮询*终结点，请[添加 HTTP 触发器](#http-trigger)作为工作流中的第一步。 每次触发器检查终结点时，触发器都会调用或向终结点发送*请求*。 该终结点的响应确定了逻辑应用的工作流是否运行。 触发器将终结点响应中的所有内容传递给逻辑应用中的操作。
 
-可将 HTTP 操作用作工作流中的另一个步骤，用于调用所需的终结点。 该终结点的响应确定了工作流剩余操作的运行方式。
+若要从工作流中的任何其他位置调用终结点，请[添加 HTTP 操作](#http-action)。 该终结点的响应确定了工作流剩余操作的运行方式。
 
-根据目标终结点的功能，HTTP 连接器支持传输层安全（TLS）版本1.0、1.1 和1.2。 逻辑应用与端点协商，使用的支持的最高版本。 例如，如果端点支持1.2，连接器将首先使用1.2。 否则，连接器将使用下一个支持的最高版本。
+> [!IMPORTANT]
+> 如果 HTTP 触发器或操作包含这些标头，则逻辑应用会从生成的请求消息中删除这些标头，而不会显示任何警告或错误：
+>
+> * `Accept-*`
+> * `Allow`
+> * `Content-*` 具有以下例外： `Content-Disposition`、`Content-Encoding`和 `Content-Type`
+> * `Cookie`
+> * `Expires`
+> * `Host`
+> * `Last-Modified`
+> * `Origin`
+> * `Set-Cookie`
+> * `Transfer-Encoding`
+>
+> 尽管逻辑应用不会阻止你将使用 HTTP 触发器或操作的逻辑应用保存到这些标头，但逻辑应用会忽略这些标头。
 
-## <a name="prerequisites"></a>先决条件
+本文介绍如何将 HTTP 触发器或操作添加到逻辑应用的工作流。
 
-* 一个 Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+## <a name="prerequisites"></a>必备条件
+
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 要调用的目标终结点的 URL
 
@@ -36,13 +53,15 @@ ms.locfileid: "77118010"
 
 * 要从中调用目标终结点的逻辑应用。 若要开始使用 HTTP 触发器，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 HTTP 操作，请使用所需的任何触发器启动逻辑应用。 此示例使用 HTTP 触发器作为第一步。
 
+<a name="http-trigger"></a>
+
 ## <a name="add-an-http-trigger"></a>添加 HTTP 触发器
 
 此内置触发器对终结点的指定 URL 进行 HTTP 调用并返回响应。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
 
-1. 在 "**选择操作**" 下的 "搜索" 框中，输入 "http" 作为筛选器。 从 "**触发器**" 列表中，选择**HTTP**触发器。
+1. 在设计器的搜索框下，选择 "**内置**"。 在搜索框中，输入 `http` 作为筛选器。 从 "**触发器**" 列表中，选择**HTTP**触发器。
 
    ![选择 HTTP 触发器](./media/connectors-native-http/select-http-trigger.png)
 
@@ -63,6 +82,8 @@ ms.locfileid: "77118010"
 
 1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
+<a name="http-action"></a>
+
 ## <a name="add-an-http-action"></a>添加 HTTP 操作
 
 此内置操作对终结点的指定 URL 进行 HTTP 调用并返回响应。
@@ -75,7 +96,7 @@ ms.locfileid: "77118010"
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号（ **+** ），然后选择 "**添加操作**"。
 
-1. 在 "**选择操作**" 下的 "搜索" 框中，输入 "http" 作为筛选器。 从 "**操作**" 列表中，选择**HTTP**操作。
+1. 在“选择操作”下，选择“内置”。 在搜索框中，输入 `http` 作为筛选器。 从 "**操作**" 列表中，选择**HTTP**操作。
 
    ![选择“HTTP”操作](./media/connectors-native-http/select-http-action.png)
 
@@ -153,18 +174,18 @@ ms.locfileid: "77118010"
 
 | 属性名称 | 类型 | 说明 |
 |---------------|------|-------------|
-| 页眉 | 对象 | 请求中的标头 |
-| body | 对象 | JSON 对象 | 具有来自请求的正文内容的对象 |
+| headers | 对象 (object) | 请求中的标头 |
+| body | 对象 (object) | JSON 对象 | 具有来自请求的正文内容的对象 |
 | 状态代码 | int | 请求的状态代码 |
 |||
 
 | 状态代码 | 说明 |
 |-------------|-------------|
-| 200 | 确定 |
+| 200 | OK |
 | 202 | 已接受 |
 | 400 | 错误的请求 |
-| 401 | Unauthorized |
-| 403 | 已禁止 |
+| 401 | 未授权 |
+| 403 | 禁止 |
 | 404 | 未找到 |
 | 500 | 内部服务器错误。 发生未知错误。 |
 |||

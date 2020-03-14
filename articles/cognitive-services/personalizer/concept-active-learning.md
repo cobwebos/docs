@@ -4,11 +4,11 @@ description: 学习设置确定模型定型的*超参数*。 对于在不同学�
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: abe6a2a2ec9b9978230d894c69193469f6e932e6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381260"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219342"
 ---
 # <a name="learning-policy-and-settings"></a>了解策略和设置
 

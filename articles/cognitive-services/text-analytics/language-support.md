@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117473"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219276"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>文本分析 API 的语言和区域支持
 
@@ -47,7 +47,7 @@ ms.locfileid: "79117473"
 > [!NOTE]
 > 有关命名实体识别（NER） v3 公共预览版的详细语言支持，请参阅[命名实体类型](named-entity-types.md)。
 
-| Language              | 语言代码 | 情绪 | 关键短语 | 命名实体识别 | 实体链接 |       注意        |
+| 语言              | 语言代码 | 情绪 | 关键短语 | 命名实体识别 | 实体链接 |       说明        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | 阿拉伯语                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | 捷克语                 |     `cs`      |           |             |           ✔ \*           |                |                    |

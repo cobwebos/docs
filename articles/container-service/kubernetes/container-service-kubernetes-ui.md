@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 6ce78ca19458b497980cf2cfc374f787d3a5d9f5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 01abcc961d1c2ad9d3e2cf35f82e62929bc2fb89
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276977"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371131"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>（已弃用）在 Azure 容器服务中使用 Kubernetes Web UI
 
@@ -21,7 +21,7 @@ ms.locfileid: "76276977"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 本演练假定用户已[使用 Azure 容器服务创建 Kubernetes 群集](container-service-kubernetes-walkthrough.md)，
 
 
@@ -29,8 +29,8 @@ ms.locfileid: "76276977"
 
 可以通过运行以下语句测试是否已安装 `az` 工具：
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 如果尚未安装 `az` 工具，请参阅[此处](https://github.com/azure/azure-cli#installation)的说明。
@@ -38,13 +38,13 @@ $ az --version
 可以通过运行以下语句测试是否已安装 `kubectl` 工具：
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 如果尚未安装 `kubectl`，则可运行：
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="overview"></a>概述
@@ -52,8 +52,8 @@ $ az acs kubernetes install-cli
 ### <a name="connect-to-the-web-ui"></a>连接到 Web UI
 可以通过运行以下语句启动 Kubernetes Web UI：
 
-```console
-$ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
+```azurecli
+az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
 此时会打开一个 Web 浏览器，该浏览器已配置为与安全代理通信，将本地计算机连接到 Kubernetes Web UI。

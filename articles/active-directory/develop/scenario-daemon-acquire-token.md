@@ -16,11 +16,11 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 7f1010949a72f95ef2836c43666e6cea9281e04d
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611914"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262641"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>用于调用 web Api 的守护程序应用-获取令牌
 

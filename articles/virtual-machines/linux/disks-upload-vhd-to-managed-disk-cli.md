@@ -4,16 +4,16 @@ description: 了解如何使用 Azure CLI 通过直接上传将 vhd 上传到 Az
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 09/20/2019
+ms.date: 03/13/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 2a5bfec08546d6cf00b1e04017b3879db8f016ee
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: f2eb0f59d460fbf8d6595db658bb3f5f9c4a6ad0
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970339"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365843"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>使用 Azure CLI 将 vhd 上传到 Azure
 
@@ -28,7 +28,7 @@ ms.locfileid: "78970339"
 - 下载最新[版本的 AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安装 Azure CLI](/cli/azure/install-azure-cli)。
 - Vhd 文件，本地存储
-- 如果要从本地上载 vhd：已[为 Azure 准备](../windows/prepare-for-upload-vhd-image.md)的 vhd，本地存储。
+- 如果要从本地上载 vhd：已[为 Azure 准备](../windows/prepare-for-upload-vhd-image.md)的固定大小 vhd，本地存储。
 - 如果要执行复制操作，请使用 Azure 中的托管磁盘。
 
 ## <a name="create-an-empty-managed-disk"></a>创建一个空托管磁盘
@@ -79,8 +79,6 @@ az disk grant-access -n mydiskname -g resourcegroupname --access-level Write --d
 ```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
-
-如果在上传过程中 SAS 过期，但尚未调用 `revoke-access`，则可以使用 `grant-access`来继续上传。
 
 上传完成后，不再需要将任何数据写入磁盘，请撤销 SAS。 吊销 SAS 将更改托管磁盘的状态，并允许你将磁盘附加到 VM。
 

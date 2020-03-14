@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3de4baa4eafe26cff18d9b1bcfb59398439994b0
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 22a4177d85cb9dbbaa9ed75e063306484c7b48a9
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969773"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298965"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -26,6 +26,10 @@ Key Vault VM 扩展支持以下版本的 Windows：
 - Windows Server 2019
 - Windows Server 2016
 - Windows Server 2012
+
+### <a name="supported-certificate-content-types"></a>支持的证书内容类型
+
+- PKCS #12
 
 ## <a name="extension-schema"></a>扩展架构
 

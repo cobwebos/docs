@@ -4,11 +4,11 @@ description: 介绍如何对使用 Azure 备份来备份 SAP HANA 数据库时�
 ms.topic: troubleshooting
 ms.date: 11/7/2019
 ms.openlocfilehash: 8872cfe87df9b8d0553d777f72fe7102d08dea4d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382493"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273288"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>排查 Azure 上 SAP HANA 数据库的备份问题
 

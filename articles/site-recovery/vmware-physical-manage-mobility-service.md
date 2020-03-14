@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362556"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256960"
 ---
 # <a name="manage-the-mobility-agent"></a>管理移动代理 
 
@@ -37,11 +37,24 @@ ms.locfileid: "78362556"
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>通过 powershell 脚本在 Windows server 上更新移动服务
 
+开始在受保护的计算机上更新移动服务之前，请确保部署中的配置服务器、横向扩展进程服务器及所有主目标服务器均已更新。
+
 使用以下脚本通过 power shell cmdlet 升级服务器上的移动服务
 
 ```azurepowershell
 Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
+
+## <a name="update-mobility-service-manually-on-each-protected-server"></a>在每个受保护的服务器上手动更新移动服务
+
+1. 开始在受保护的计算机上更新移动服务之前，请确保部署中的配置服务器、横向扩展进程服务器及所有主目标服务器均已更新。
+
+2. 根据服务器的操作系统[查找代理安装程序](vmware-physical-mobility-service-overview.md#locate-installer-files)。
+
+>[!IMPORTANT]
+> 如果要将 Azure IaaS VM 从一个 Azure 区域复制到另一个 Azure 区域，请不要使用此方法。 有关所有可用选项的信息，请参阅[我们的指南](azure-to-azure-autoupdate.md)。
+
+3. 将安装文件复制到受保护的计算机上，并运行它以更新移动代理。
 
 ## <a name="update-account-used-for-push-installation-of-mobility-service"></a>用于移动服务的推送安装的更新帐户
 

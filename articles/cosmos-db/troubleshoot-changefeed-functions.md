@@ -3,16 +3,16 @@ title: 排查使用 Cosmos DB 的 Azure Functions 触发器时遇到的问题
 description: 使用 Cosmos DB 的 Azure Functions 触发器时，常见问题、解决方法和诊断步骤
 author: ealsur
 ms.service: cosmos-db
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f382406d164aa7378631753c2cfc85bc69003a4f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605085"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365502"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>诊断并解决使用 Cosmos DB 的 Azure Functions 触发器时的问题
 
@@ -52,6 +52,10 @@ Azure 函数失败，并出现错误消息 "源集合" 集合名称 "（在数�
 
 以前版本的 Azure Cosmos DB 扩展不支持使用在[共享吞吐量数据库](./set-throughput.md#set-throughput-on-a-database)中创建的租约容器。 若要解决此问题，请更新[CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB)扩展以获取最新版本。
 
+### <a name="azure-function-fails-to-start-with-partitionkey-must-be-supplied-for-this-operation"></a>Azure 函数无法以 "必须为此操作提供 PartitionKey" 启动。
+
+此错误表示你当前正在使用具有旧[扩展依赖项](#dependencies)的分区租用集合。 升级到最新的可用版本。 如果当前正在 Azure Functions V1 上运行，则需要升级到 Azure Functions V2。
+
 ### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Azure 函数无法以 "租约集合，如果已分区，则必须具有等于 id 的分区键"。
 
 此错误表示当前租约容器已分区，但分区键路径不 `/id`。 若要解决此问题，需要用 `/id` 作为分区键来重新创建租约容器。
@@ -70,6 +74,13 @@ Azure 函数失败，并出现错误消息 "源集合" 集合名称 "（在数�
 3. 你的 Azure Cosmos 容器可能会受到[速率限制](./request-units.md)。
 4. 你可以使用触发器中的 `PreferredLocations` 属性指定以逗号分隔的 Azure 区域列表，以定义自定义首选连接顺序。
 
+### <a name="some-changes-are-repeated-in-my-trigger"></a>某些更改在触发器中重复
+
+"更改" 这一概念是对文档的操作。 收到相同文档的事件的最常见情况是：
+* 帐户使用最终一致性。 在最终一致性级别使用更改源时，可能会在后续更改源读取操作之间发生重复的事件（一个读取操作的最后一个事件显示为下一个读取操作的最后一个事件）。
+* 正在更新文档。 更改源可以包含对相同文档的多个操作，如果该文档正在接收更新，则可以选取多个事件（每个更新一个）。 区分同一文档的不同操作的一种简单方法是跟踪[每个更改](change-feed.md#change-feed-and-_etag-_lsn-or-_ts)的 `_lsn` 属性。 如果二者不匹配，则对同一文档的这些更改是不同的。
+* 如果你只是通过 `id`来识别文档，请记住，文档的唯一标识符是 `id` 及其分区键（可以有两个文档的 `id` 但不同的分区键）。
+
 ### <a name="some-changes-are-missing-in-my-trigger"></a>触发器中缺少某些更改
 
 如果发现 azure Cosmos 容器中发生的某些更改未被 Azure 函数选取，则需要执行一项初步调查步骤，。
@@ -83,20 +94,20 @@ Azure 函数失败，并出现错误消息 "源集合" 集合名称 "（在数�
 > [!NOTE]
 > 默认情况下，如果在代码执行过程中出现未经处理的异常，则 Cosmos DB 的 Azure Functions 触发器将不会重试一批更改。 这意味着更改未到达目标的原因是因为您无法处理它们。
 
-如果你发现触发器根本未接收到一些更改，最常见的情况是**另一个 Azure 函数正在运行**。 它可以是在 Azure 中部署的另一个 Azure 函数，或者是在开发人员计算机上以**完全相同的配置**（相同的监视容器和租赁容器）运行的 azure function，此 azure 函数正在盗取你需要 Azure 功能处理的一部分更改。
+如果发现触发器根本未接收到一些更改，最常见的情况是**另一个 Azure 函数正在运行**。 它可以是在 Azure 中部署的另一个 Azure 函数，或者是在开发人员计算机上以**完全相同的配置**（相同的监视容器和租赁容器）运行的 azure function，此 azure 函数正在盗取你需要 Azure 功能处理的一部分更改。
 
-此外，如果知道有多少 Azure Function App 实例正在运行，就可以验证方案。 如果检查借用容器并统计其中的租约项数，则它们中的 `Owner` 属性的非重复值应该等于 Function App 的实例数。 如果所有者数目超过已知 Azure 函数应用实例的数目，则表示这些额外的所有者正在“窃取”更改。
+此外，如果知道有多少 Azure Function App 实例正在运行，就可以验证方案。 如果检查借用容器并统计其中的租约项数，则它们中的 `Owner` 属性的非重复值应该等于 Function App 的实例数。 如果所有者数量高于已知 Azure Function App 实例，则表示这些额外的所有者是 "偷窃" 更改。
 
 解决这种情况的一个简单方法是使用新的/不同的值将 `LeaseCollectionPrefix/leaseCollectionPrefix` 应用于函数，或者使用新的租约容器来进行测试。
 
-### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>需要从头开始重新启动容器中的所有项，然后重新处理它们 
-从头开始重新处理容器中的所有项：
+### <a name="need-to-restart-and-reprocess-all-the-items-in-my-container-from-the-beginning"></a>需要从头开始重新启动并重新处理容器中的所有项 
+从开始重新处理容器中的所有项：
 1. 如果 Azure 函数当前正在运行，请停止它。 
 1. 删除租约集合中的文档（或删除并重新创建租约集合，使其为空）
 1. 将函数中的[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) CosmosDBTrigger 属性设置为 true。 
 1. 重新启动 Azure function。 现在它将读取并处理开始的所有更改。 
 
-如果将[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)设置为 true，则会告知 Azure 函数开始从集合历史记录开始读取更改，而不是从当前时间开始读取更改。 这仅适用于尚未创建的租约（即租约集合中的文档）。 如果已创建租约，则将此属性设置为 "true" 将不起任何作用;在此方案中，当某个函数停止并重新启动时，它将从最后一个检查点开始读取，如租约集合中所定义。 若要从头开始重新处理，请遵循上述步骤1-4。  
+如果将[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)设置为 true，则会告知 Azure 函数开始从集合历史记录开始读取更改，而不是从当前时间开始读取更改。 这仅适用于尚未创建的租约（即，租约集合中的文档）。 如果已创建租约，则将此属性设置为 "true" 将不起任何作用;在此方案中，当某个函数停止并重新启动时，它将从最后一个检查点开始读取，如租约集合中所定义。 若要从头开始重新处理，请按照上面的步骤1-4。  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>仅可通过 IReadOnlyList\<文档 > 或 JArray 进行绑定
 

@@ -1,5 +1,5 @@
 ---
-title: 关于多设备对话（预览版）-语音服务
+title: 多设备对话（预览）-语音服务
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: b3802e66b0ba5a68c898e69ec64b01edce1541c1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560807"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371352"
 ---
-# <a name="about-multi-device-conversation-preview"></a>关于多设备会话（预览）
+# <a name="what-is-multi-device-conversation-preview"></a>什么是多设备对话（预览版）？
 
 **多设备对话**使你可以轻松地在多个客户端之间创建语音或文本对话，并协调它们之间发送的消息。
 
@@ -75,8 +75,8 @@ ms.locfileid: "77560807"
 会话**是指**一个用户为要加入的其他参与用户启动的会话。 所有客户端都使用五行**会话代码**连接到会话。
 
 每个会话创建的元数据包括：
--   会话的开始和结束时间的时间戳
--   会话中所有参与者的列表，其中包括每个用户选择的昵称以及语音或文本输入的主要语言。
+-    会话的开始和结束时间的时间戳
+-    会话中所有参与者的列表，其中包括每个用户选择的昵称以及语音或文本输入的主要语言。
 
 
 会话中有两种类型的用户：**主机**和**参与者**。

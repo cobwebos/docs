@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: fb4b06eca0d6df6848e2e215d8890569701f7596
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 20d07be99aa2f9881218f8d581ac8d429a1fe4d0
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705609"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298795"
 ---
 # <a name="troubleshoot"></a>故障排除
 
 本文提供常见 Azure FarmBeats 问题的解决方案。
 
-有关更多帮助，请在 farmbeatssupport@microsoft.com与我们联系。 请确保电子邮件中包含 "部署部署**日志**文件"。
+有关更多帮助，请在 farmbeatssupport@microsoft.com与我们联系。 确保你的电子邮件中包含 "部署的文件" **。**
 
 若要下载文件**日志**文件，请执行以下操作：
 
@@ -51,7 +51,7 @@ ms.locfileid: "76705609"
 
 **纠正操作**：
 
-1. 请确保已正确完成合作伙伴注册-可以通过转到 datahub swagger 来检查此项，导航到/Partner API，执行 Get 操作并检查伙伴是否已注册。 否则，请按照此处的[步骤](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)添加合作伙伴。
+1. 请确保已正确完成合作伙伴注册-可以通过转到 datahub swagger 来检查此项，导航到/Partner API，执行 Get 操作并检查伙伴是否已注册。 否则，请按照[此处的步骤](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)添加合作伙伴。
 2. 确保使用了正确的遥测消息格式：
 
 ```json
@@ -65,11 +65,11 @@ ms.locfileid: "76705609"
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -82,7 +82,7 @@ ms.locfileid: "76705609"
 **纠正操作**：
 
 1. 在 Datahub Swagger 中转到合作伙伴 API。
-2. 选择 "获取 ** >  > ** "**执行**"。
+2. 选择**Get** "获取 ** >  > ** "**执行**"。
 3. 请注意你感兴趣的传感器伙伴的合作伙伴 ID。
 4. 返回到合作伙伴 API，并选择 "**获取/\<ID" >** 。
 5. 指定步骤3中的合作伙伴 ID，然后选择 "**执行**"。
@@ -119,14 +119,14 @@ ms.locfileid: "76705609"
 2. 删除特定设备。  
 
     > [!NOTE]
-    > 如果传感器与设备相关联，则无法删除该设备。 有关如何删除关联的传感器的详细信息，请参阅[获取传感器合作伙伴的传感器数据](get-sensor-data-from-sensor-partner.md)部分中的 "删除传感器" 部分。
+    > 如果传感器与设备相关联，则无法删除该设备。 有关如何删除关联的传感器的详细信息，请参阅[从传感器合作伙伴获取传感器数据](get-sensor-data-from-sensor-partner.md)中的**删除传感器**部分。
 
 
 ## <a name="issues-with-jobs"></a>作业问题
 
 ### <a name="farmbeats-internal-error"></a>FarmBeats 内部错误
 
-**消息**： "FarmBeats 内部错误，请参阅故障排除指南以了解更多详细信息。"
+**消息**： "FarmBeats 内部错误，请参阅故障排除指南以了解更多详细信息"。
 
 **纠正操作**：此问题可能是由于数据管道中的暂时性故障导致的。 请重新创建该作业。 如果错误仍然存在，请在 FarmBeats 论坛上的文章中添加错误消息，或联系 FarmBeatsSupport@microsoft.com。
 
@@ -142,7 +142,7 @@ ms.locfileid: "76705609"
 
 ### <a name="unable-to-log-in-to-accelerator"></a>无法登录到加速器
 
-**消息**： "错误：你无权调用服务。 请与管理员联系以获得授权。 "
+**消息**： "错误：你无权调用服务。 请与管理员联系以获取授权。 "
 
 **纠正操作**：请求管理员授权你访问 FarmBeats 部署。 为此，可通过在快捷键的 "**设置**" 窗格中执行 RoleAssignment Api 或访问控制来完成。  
 
@@ -163,6 +163,7 @@ ms.locfileid: "76705609"
 **问题**： FarmBeats 加速器不显示最新版本，即使在升级 FarmBeatsDeployment 之后。
 
 **纠正操作**：此错误是由于浏览器中的服务辅助角色持久性导致的。 请执行以下操作：
+
 1. 关闭所有已打开加速器的浏览器选项卡，然后关闭浏览器窗口。
 2. 启动浏览器的新实例，并重新加载加速器 URI。 此操作将加载新版本的加速器。
 
@@ -175,6 +176,7 @@ ms.locfileid: "76705609"
 **纠正操作**：
 
 执行下列操作之一：
+
 - 重新运行安装程序，以便升级具有正确用户名和密码的 Datahub。
 - 重新运行失败的作业，或在5到7天的日期范围内运行附属索引作业，然后查看作业是否成功。
 
@@ -198,6 +200,7 @@ ms.locfileid: "76705609"
 1. 如果任何作业或管道由于正在执行维护而失败，请在一段时间后重新提交作业。 
 
    有关任何计划内或非计划的 Sentinel 维护活动的信息，请访问[Copernicus 开放式 Access Hub 新闻](https://scihub.copernicus.eu/news/)站点。  
+
 2. 重新运行失败的作业，或在5到7天的日期范围内运行附属索引作业，然后查看作业是否成功。
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel：达到了最大连接数
@@ -207,17 +210,19 @@ ms.locfileid: "76705609"
 **这意味着**，如果由于已达到连接的最大数量而导致作业失败，则将在另一个软件部署中使用同一个 Sentinel 帐户。
 
 **纠正操作**：尝试下列任一操作：
+
 * 创建新的 Sentinel 帐户，然后重新运行安装程序以使用新的 Sentinel 用户名和密码升级 Datahub。  
 * 重新运行失败的作业，或在5到7天的日期范围内运行附属索引作业，然后查看作业是否成功。
 
 ### <a name="sentinel-server-refused-connection"></a>Sentinel 服务器：已拒绝连接 
 
-**作业失败消息**： "服务器拒绝连接： http://172.30.175.69:8983/solr/dhus 。" 
+**作业失败消息**： "服务器拒绝连接： http://172.30.175.69:8983/solr/dhus。" 
 
 **纠正操作**：如果在 Sentinel 服务器上执行了任何维护活动，则会出现此问题。 
 1. 如果任何作业或管道由于正在执行维护而失败，请在一段时间后重新提交作业。 
 
    有关任何计划内或非计划的 Sentinel 维护活动的信息，请访问[Copernicus 开放式 Access Hub 新闻](https://scihub.copernicus.eu/news/)站点。  
+
 2. 重新运行失败的作业，或在5到7天的日期范围内运行附属索引作业，然后查看作业是否成功。
 
 ## <a name="collect-logs-manually"></a>手动收集日志
@@ -225,6 +230,7 @@ ms.locfileid: "76705609"
 [安装并部署 Azure 存储资源管理器]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)。
 
 ### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>收集 Datahub 中的 Azure 数据工厂作业日志
+
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在**搜索**框中，搜索 FarmBeats Datahub 资源组。
 
@@ -300,7 +306,7 @@ ms.locfileid: "76705609"
 
 ### <a name="azure-active-directory-azure-ad-related-issues"></a>Azure Active Directory （Azure AD）相关问题
 
-**错误消息**： "无法将所需设置更新为 Azure AD 应用 d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0：权限不足，无法完成操作。 确保为 Azure AD 应用正确地配置了上述设置。 "
+**错误消息**： "无法将所需设置更新为 Azure AD 应用 d41axx40-xx21-4fbd-8xxf-97xxx9e2xxc0：权限不足，无法完成操作。 确保为 Azure AD 应用正确配置了上述设置。 "
 
 **意思**： Azure AD 应用注册配置未正确完成。  
 

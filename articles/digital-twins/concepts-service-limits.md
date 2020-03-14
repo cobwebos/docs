@@ -8,28 +8,22 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 8658bc44e41f61e717cf228a6d8e7cee6b477022
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5e323d8faa19ceb0712aa6183df17740ce2a0a1d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264944"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370367"
 ---
 # <a name="public-preview-service-limits"></a>公共预览版服务限制
 
-处于公共预览版期间，Azure 数字孪生具有临时订阅、实例和速率限制。
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
-这些约束有助于简化学习新服务及其许多功能。
-
-> [!NOTE]
-> 正式发布版 (GA) 将增大或删除这些限制。
+在公共预览版中，Azure 数字孪生具有以下临时订阅、实例和现有客户的速率限制。 存在这些约束是为了帮助简化有关新服务及其许多功能的学习，并将在正式发布（GA）的情况下增加或删除。
 
 ## <a name="per-subscription-limits"></a>每个订阅的限制
 
-处于公共预览版期间，每个 Azure 订阅一次只能创建或运行一个 Azure 数字孪生实例。
-
-> [!TIP]
-> 如果删除你的实例，则可以新建一个。
+处于公共预览版期间，每个 Azure 订阅一次只能创建或运行一个 Azure 数字孪生实例。 如果删除你的实例，则可以新建一个。
 
 ## <a name="per-instance-limits"></a>每个实例的限制
 
@@ -71,7 +65,7 @@ Azure 数字孪生管理 API 的请求速率限制是：
 以下限制会限制设备可以发送到 Azure 数字孪生实例的所有消息总数：
 
 - 所有设备每秒100消息数
--   每台设备每秒25条消息
+-    每台设备每秒25条消息
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390483"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257480"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>将 Azure 自动化 Runbook 添加到恢复计划
 
@@ -189,7 +189,7 @@ Aman Sharma 在[收集云](http://harvestingclouds.com)上的博客提供了一�
 
 ### <a name="use-a-complex-variable-to-store-more-information"></a>使用复杂变量存储更多信息
 
-在某些情况下，你可能无法为每个恢复计划创建不同的变量。 假设有一个方案需要单个脚本在特定 Vm 上分配公共 IP 地址。 在另一种情况下，需要在不同的 VM 上（而不是在所有 VM 上）应用其他 NSG。 注意：
+在某些情况下，你可能无法为每个恢复计划创建不同的变量。 假设有一个方案需要单个脚本在特定 Vm 上分配公共 IP 地址。 在另一种情况下，需要在不同的 VM 上（而不是在所有 VM 上）应用其他 NSG。 请注意：
 
 - 你可以创建可用于任何恢复计划的脚本。
 - 每个恢复计划包含的 VM 数量不定。

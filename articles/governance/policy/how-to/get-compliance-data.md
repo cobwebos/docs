@@ -4,11 +4,11 @@ description: Azure Policy 的评估和效果确定了符合性。 了解如何�
 ms.date: 02/01/2019
 ms.topic: how-to
 ms.openlocfilehash: 891c9c72d8e83dc8f9adb930e8ebd11b70f6aad8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873142"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280633"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -26,7 +26,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 
 ## <a name="evaluation-triggers"></a>评估触发器
 
-已完成的评估周期的结果通过 `PolicyStates` 和 `PolicyEvents` 操作在 `Microsoft.PolicyInsights` 资源提供程序中获取。 有关 Azure Policy Insights REST API 操作的详细信息，请参阅[Azure Policy insights](/rest/api/policy-insights/)。
+已完成的评估周期的结果通过 `Microsoft.PolicyInsights` 和 `PolicyStates` 操作在 `PolicyEvents` 资源提供程序中获取。 有关 Azure Policy Insights REST API 操作的详细信息，请参阅[Azure Policy insights](/rest/api/policy-insights/)。
 
 已分配的策略和计划的评估会在各种事件后发生：
 
@@ -53,13 +53,13 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 
 扫描支持评估订阅或资源组中的资源。 使用以下 URI 结构，通过 REST API POST 命令开始按范围扫描：
 
-- Subscription
+- 订阅
 
   ```http
   POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
   ```
 
-- Resource group
+- 资源组
 
   ```http
   POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
@@ -71,7 +71,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
 ```
 
-以静态方式为请求的范围生成了 `{ResourceContainerGUID}`。 如果某个范围已在运行按需扫描，则不会启动新扫描。 而是为新请求的状态提供相同的 `{ResourceContainerGUID}` 位置 URI。 在评估过程中，位置 URI 的 REST API GET 命令返回“202 Accepted”状态。 评估扫描完成后，返回“200 OK”状态。 已完成的扫描的正文为 JSON 响应，其状态为：
+以静态方式为请求的范围生成了 `{ResourceContainerGUID}`。 如果某个范围已在运行按需扫描，则不会启动新扫描。 而是向新请求提供状态相同的 `{ResourceContainerGUID}`**位置**URI。 在评估过程中，位置 URI 的 REST API GET 命令返回“202 Accepted”状态。 评估扫描完成后，返回“200 OK”状态。 已完成的扫描的正文为 JSON 响应，其状态为：
 
 ```json
 {
@@ -84,12 +84,12 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 在分配中，如果某资源不符合策略或计划规则，则该资源不合规。
 下表显示了对于生成的符合性状态，不同的策略效果是如何与条件评估配合使用的：
 
-| 资源状态 | 作用 | 策略评估 | 符合性状态 |
+| 资源状态 | 效果 | 策略评估 | 符合性状态 |
 | --- | --- | --- | --- |
-| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | 正确 | 不符合 |
-| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | 错误 | 合规性 |
-| 新 | Audit、AuditIfNotExist\* | 正确 | 不符合 |
-| 新 | Audit、AuditIfNotExist\* | 错误 | 合规性 |
+| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 不符合 |
+| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 符合 |
+| 新建 | Audit、AuditIfNotExist\* | True | 不符合 |
+| 新建 | Audit、AuditIfNotExist\* | False | 符合 |
 
 \*Append、DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE。
 这些效果还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
@@ -244,7 +244,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
-### <a name="view-events"></a>查看活动
+### <a name="view-events"></a>查看事件
 
 创建或更新资源时，将生成策略评估结果。 结果称为“策略事件”。 使用以下 URI 查看与订阅关联的最近策略事件。
 
@@ -385,7 +385,7 @@ TenantId                   : {tenantId}
 PrincipalOid               : {principalOid}
 ```
 
-可以结合 Azure PowerShell cmdlet `Get-AzADUser` 使用 **PrincipalOid** 字段来获取特定的用户。 请将 **{principalOid}** 替换为在前一示例中获取的响应。
+可以结合 Azure PowerShell cmdlet **使用**PrincipalOid`Get-AzADUser` 字段来获取特定的用户。 请将 **{principalOid}** 替换为在前一示例中获取的响应。
 
 ```azurepowershell-interactive
 PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName

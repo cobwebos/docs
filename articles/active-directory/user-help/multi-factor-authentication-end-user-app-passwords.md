@@ -14,11 +14,11 @@ ms.date: 08/13/2019
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 5f81181ac3107307a352cdbcd0b5cc4a555deacb
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062619"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253216"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理双重验证的应用密码
 

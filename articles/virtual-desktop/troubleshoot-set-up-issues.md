@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 17505084095eb8fbe46c20c7aa226131e128b286
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 36b15b41279edc60d337a7ba70abe2ca64d4bc7f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127420"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371590"
 ---
 # <a name="tenant-and-host-pool-creation"></a>创建租户和主机池
 
@@ -145,7 +145,7 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 
 若要解决此问题，请执行以下操作：
 
-1. 打开 Azure 门户，并中转到 "**虚拟网络**" 边栏选项卡。
+1. 打开 Azure 门户，并中转到 "**虚拟网络**" 选项卡。
 2. 找到 VNET，然后选择 " **DNS 服务器**"。
 3. "DNS 服务器" 菜单应该出现在屏幕的右侧。 在该菜单上，选择 "**自定义**"。
 4. 请确保 "自定义" 下列出的 DNS 服务器匹配域控制器或 Active Directory 域。 如果看不到你的 DNS 服务器，可以通过在 "**添加 dns 服务器**" 字段中输入其值来添加它。

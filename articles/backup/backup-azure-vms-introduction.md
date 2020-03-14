@@ -3,16 +3,22 @@ title: 关于 Azure VM 备份
 description: 本文介绍 Azure 备份服务如何备份 Azure 虚拟机，以及如何遵循最佳做法。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 67ff06e882ec61dff58922606469ac27a8bbf7fd
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363683"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297350"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM 备份概述
 
 本文介绍[Azure 备份服务](backup-introduction-to-azure-backup.md)如何备份 azure 虚拟机（vm）。
+
+Azure 备份提供独立且独立的备份来防止 Vm 上数据的意外破坏。 备份存储在提供恢复点内置管理的恢复服务保管库中。 配置和缩放很简单，备份经过优化，可根据需要轻松还原。
+
+作为备份过程的一部分，将[创建快照](#snapshot-creation)，并将数据传输到恢复服务保管库，而不会影响生产工作负荷。 快照提供了不同的一致性级别[，如下所述。](#snapshot-consistency)
+
+Azure 备份还为数据库工作负荷（如[SQL Server](backup-azure-sql-database.md)和[SAP HANA](sap-hana-db-about.md) ）提供专门的产品/服务，可提供15分钟的 RPO （恢复点目标），并允许备份和还原单个数据库。
 
 ## <a name="backup-process"></a>备份过程
 
@@ -66,7 +72,7 @@ Azure 备份根据备份计划拍摄快照。
   - 如果执行前脚本和后脚本成功执行，Azure 备份会将恢复点标记为应用程序一致。 但是，当你使用自定义脚本时，最终将负责应用程序一致性。
   - [了解](backup-azure-linux-app-consistent.md)有关如何配置脚本的详细信息。
 
-### <a name="snapshot-consistency"></a>快照一致性
+## <a name="snapshot-consistency"></a>快照一致性
 
 下表说明了不同类型的快照一致性：
 
@@ -122,7 +128,7 @@ Azure 备份根据备份计划拍摄快照。
 
 **磁盘** | **最大大小** | **实际存在的数据**
 --- | --- | ---
-操作系统磁盘 | 32 TB | 17 GB
+OS 磁盘 | 32 TB | 17 GB
 本地/临时磁盘 | 135 GB | 5 GB（不包括在备份中）
 数据磁盘 1 | 32 TB| 30 GB
 数据磁盘 2 | 32 TB | 0 GB

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128774"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274705"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 诊断扩展架构
 Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作系统中的监视数据和 Azure 计算资源的工作负荷。 本文详细介绍了用于在 Windows 虚拟机和其他计算资源上配置诊断扩展的架构。

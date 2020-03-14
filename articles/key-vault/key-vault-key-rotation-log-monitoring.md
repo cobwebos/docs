@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f7fbc82c08d89d73d671a49fb31b9d3cca01c721
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6962a264787bd8a55b6f6a2ebdb6eeb615c33d5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195509"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218398"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>使用密钥轮替和审核设置 Azure Key Vault
 
@@ -23,21 +23,16 @@ ms.locfileid: "78195509"
 
 有了密钥保管库以后，即可使用它来存储密钥和机密。 应用程序不再需要保存密钥或机密，可以根据需要从保管库请求密钥或机密。 使用密钥保管库可以更新密钥和机密，而不会影响应用程序的行为，这会为密钥和机密管理提供多种可能性。
 
->[!IMPORTANT]
-> 本文中的示例仅用于说明目的， 它们不用于生产。 
+本文逐步讲解如何实现存储帐户密钥的计划轮换、监视密钥保管库审核日志，并在发出意外请求时发出警报。 
 
-本文介绍：
+必须首先使用所选的方法创建密钥保管库：
 
-- 一个使用 Azure Key Vault 存储机密的示例。 在本文中，存储的机密是应用程序访问的 Azure 存储帐户密钥。 
-- 如何实现该存储帐户密钥的计划轮换。
-- 如何监视密钥保管库审核日志，并在发出意外请求时发出警报。
+- [使用 Azure CLI 设置和检索 Azure Key Vault 的机密](quick-create-cli.md)
+- [使用 Azure PowerShell 设置和检索 Azure Key Vault 的机密](quick-create-powershell.md)
+- [使用 Azure 门户设置和检索 Azure Key Vault 的机密](quick-create-portal.md)
 
-> [!NOTE]
-> 本文不详细介绍密钥保管库的初始设置。 有关信息，请参阅[什么是 Azure 密钥保管库？](key-vault-overview.md)。 有关跨平台命令行接口说明，请参阅[使用 Azure CLI 管理 Key Vault](key-vault-manage-with-cli2.md)。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="set-up-key-vault"></a>设置密钥保管库
+## <a name="store-a-secret"></a>存储机密
 
 要使应用程序能够从密钥保管库检索机密，必须先创建机密并将其上传到保管库。
 

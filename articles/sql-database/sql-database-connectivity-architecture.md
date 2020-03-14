@@ -11,17 +11,22 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 07/02/2019
-ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 03/09/2020
+ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647673"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256414"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
+> [!NOTE]
+> 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
 
-本文介绍 Azure SQL 数据库和 SQL 数据仓库连接体系结构，以及如何使用不同的组件将流量定向到 Azure SQL 实例。 借助这些连接组件，可以通过连接自 Azure 内部的客户端和连接自 Azure 外部的客户端将网络流量定向到 Azure SQL 数据库或 SQL 数据仓库。 本文还提供脚本示例用于更改连接方式，以及提供与更改默认连接设置相关的注意事项。
+> [!IMPORTANT]
+> 本文不适用于 **Azure SQL 数据库托管实例**。 请参阅[托管实例的连接体系结构](sql-database-managed-instance-connectivity-architecture.md)。
+
+本文介绍了将网络流量定向到 Azure SQL 数据库或 SQL 数据仓库的各种组件的体系结构。 它还介绍了不同的连接策略，以及它如何影响从 Azure 内部连接的客户端和从 Azure 外部连接的客户端。 
 
 ## <a name="connectivity-architecture"></a>连接体系结构
 
@@ -39,13 +44,13 @@ ms.locfileid: "75647673"
 
 Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三个选项：
 
-- **重定向（推荐）：** 客户端直接建立与托管数据库的节点的连接，从而降低延迟并提高吞吐量。 对于要使用此模式的连接，客户端需要
-   - 允许从客户端到 11000 11999 范围内端口上的所有 Azure IP 地址的入站和出站通信。  
-   - 允许从客户端到端口1433上的 Azure SQL 数据库网关 IP 地址的入站和出站通信。
+- **重定向（推荐）：** 客户端直接建立与托管数据库的节点的连接，从而降低延迟并提高吞吐量。 对于使用此模式的连接，客户端需要：
+   - 允许从客户端到 11000 11999 范围内端口上的所有 Azure IP 地址的出站通信。 使用 SQL 服务标记，使其更易于管理。  
+   - 允许从客户端到端口1433上的 Azure SQL 数据库网关 IP 地址的出站通信。
 
-- **代理：** 在此模式下，所有连接都通过 Azure SQL 数据库网关进行代理，从而提高延迟并降低吞吐量。 对于使用此模式的连接，客户端需要允许从客户端到端口1433上的 Azure SQL 数据库网关 IP 地址的入站和出站通信。
+- **代理：** 在此模式下，所有连接都通过 Azure SQL 数据库网关进行代理，从而提高延迟并降低吞吐量。 对于使用此模式的连接，客户端需要允许从客户端到端口1433上的 Azure SQL 数据库网关 IP 地址的出站通信。
 
-- **默认值：** 这是在创建之后对所有服务器生效的连接策略，除非显式将连接策略更改为 `Proxy` 或 `Redirect`。 对于来自 Azure 内部的所有客户端连接（例如，从 Azure 虚拟机）`Redirect` 默认策略，并为源自外部（例如，来自本地工作站的连接）的所有客户端连接 `Proxy`。
+- **默认值：** 这是在创建之后对所有服务器生效的连接策略，除非显式将连接策略更改为 `Proxy` 或 `Redirect`。 默认策略为源自 Azure 内部的所有客户端连接`Redirect` （例如，从 Azure 虚拟机），并为源自外部（例如，来自本地工作站的连接）的所有客户端连接 `Proxy`。
 
  强烈建议对 `Proxy` 连接策略进行 `Redirect` 连接策略，以实现最低的延迟和最高的吞吐量。但是，你将需要满足如上所述允许网络流量的其他要求。 如果客户端是 Azure 虚拟机，则可以通过使用网络安全组（NSG）和[服务标记](../virtual-network/security-overview.md#service-tags)来实现此目的。 如果客户端从本地工作站进行连接，则你可能需要与网络管理员合作，以允许网络流量通过你的企业防火墙。
 
@@ -101,11 +106,13 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 | 韩国南部          | 52.231.200.86      |
 | 美国中北部     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | 北欧         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
+| 挪威东部          | 51.120.96.0        |
+| 挪威西部          | 51.120.216.0       |
 | 南非北部   | 102.133.152.0      |
 | 南非西部    | 102.133.24.0       |
 | 美国中南部     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
 | 东南亚      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
-| 阿拉伯联合酋长国中部          | 20.37.72.64        |
+| 阿联酋中部          | 20.37.72.64        |
 | 阿拉伯联合酋长国北部            | 65.52.248.0        |
 | 英国南部             | 51.140.184.11      |
 | 英国西部              | 51.141.8.11        |
@@ -115,78 +122,7 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 | 美国西部 2            | 13.66.226.202      |
 |                      |                    |
 
-## <a name="change-azure-sql-database-connection-policy"></a>更改 Azure SQL 数据库连接策略
 
-若要更改 Azure SQL 数据库服务器的 Azure SQL 数据库连接策略，请使用 [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) 命令。
-
-- 如果将连接策略设置为 `Proxy`，则所有网络数据包均通过 Azure SQL 数据库网关进行传输。 对于此设置，需要允许仅出站到 Azure SQL 数据库网关 IP。 使用 `Proxy` 设置比使用 `Redirect` 设置的延迟时间更长。
-- 如果连接策略设置为 `Redirect`，则所有网络数据包直接向数据库群集传输。 对于此设置，需要允许出站到多个 IP。
-
-## <a name="script-to-change-connection-settings-via-powershell"></a>通过 PowerShell 编写脚本以更改连接设置
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> Azure SQL 数据库仍支持 PowerShell Azure 资源管理器模块，但所有将来的开发都适用于 Az .Sql 模块。 有关这些 cmdlet，请参阅[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令的参数完全相同。 以下脚本需要[Azure PowerShell 模块](/powershell/azure/install-az-ps)。
-
-以下 PowerShell 脚本演示如何更改连接策略。
-
-```powershell
-# Get SQL Server ID
-$sqlserverid=(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
-
-# Set URI
-$id="$sqlserverid/connectionPolicies/Default"
-
-# Get current connection policy
-(Get-AzResource -ResourceId $id).Properties.connectionType
-
-# Update connection policy
-Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
-```
-
-## <a name="script-to-change-connection-settings-via-azure-cli"></a>通过 Azure CLI 编写脚本以更改连接设置
-
-> [!IMPORTANT]
-> 此脚本需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
-
-### <a name="azure-cli-in-a-bash-shell"></a>Bash shell 中的 Azure CLI
-
-> [!IMPORTANT]
-> 此脚本需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
-
-以下 CLI 脚本演示了如何更改 bash shell 中的连接策略。
-
-```azurecli-interactive
-# Get SQL Server ID
-sqlserverid=$(az sql server show -n sql-server-name -g sql-server-group --query 'id' -o tsv)
-
-# Set URI
-ids="$sqlserverid/connectionPolicies/Default"
-
-# Get current connection policy
-az resource show --ids $ids
-
-# Update connection policy
-az resource update --ids $ids --set properties.connectionType=Proxy
-```
-
-### <a name="azure-cli-from-a-windows-command-prompt"></a>从 Windows 命令提示符 Azure CLI
-
-> [!IMPORTANT]
-> 此脚本需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
-
-下面的 CLI 脚本演示如何从 Windows 命令提示符（安装了 Azure CLI）更改连接策略。
-
-```azurecli
-# Get SQL Server ID and set URI
-FOR /F "tokens=*" %g IN ('az sql server show --resource-group myResourceGroup-571418053 --name server-538465606 --query "id" -o tsv') do (SET sqlserverid=%g/connectionPolicies/Default)
-
-# Get current connection policy
-az resource show --ids %sqlserverid%
-
-# Update connection policy
-az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
-```
 
 ## <a name="next-steps"></a>后续步骤
 

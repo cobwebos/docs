@@ -6,12 +6,12 @@ author: iainfoulds
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 2071ba93e826fabc4778426e2b4404b7475d1bd2
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 55d7a00a0a8c0b655f06810f8bcea7126bb9167f
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594391"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368411"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>在 Azure Kubernetes 服务 (AKS) 群集中缩放节点数
 
@@ -27,9 +27,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPo
 
 以下示例输出表明名称为 nodepool1：
 
-```console
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
-
+```output
 [
   {
     "count": 1,

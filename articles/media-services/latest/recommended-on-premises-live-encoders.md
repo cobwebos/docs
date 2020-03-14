@@ -9,14 +9,14 @@ ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 60f9209129c75e329b283045d19b4b5140b40ec2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 3b7a75ac1c0876d562dc49e9253fe734475a551a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268194"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298948"
 ---
-# <a name="recommended-on-premises-live-streaming-encoders"></a>推荐的本地实时流式处理编码器
+# <a name="tested-on-premises-live-streaming-encoders"></a>已测试本地实时流式处理编码器
 
 在 Azure 媒体服务中，[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)（频道）表示用于处理实时传送视频流内容的管道。 直播活动通过以下两种方式之一接收实时输入流。
 
@@ -24,10 +24,12 @@ ms.locfileid: "78268194"
 
     如果要将多比特率流用于传递实时事件，则必须同步不同比特率上的视频 GOP 大小和视频片段，以避免播放端出现意外的行为。
 
-  > [!NOTE]
+  > [!TIP]
   > 实时传送视频流时，使用直通方法是最经济的。
  
 * 本地实时编码器使用以下格式之一将单比特率流发送到使用媒体服务执行实时编码的实时事件： RTMP 或平滑流式处理（零碎的）。 然后，直播活动将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。
+
+本文介绍了已测试的本地实时流式处理编码器。 有关如何验证你的本地实时编码器的说明，请参阅[验证你的本地编码器](become-on-premises-encoder-partner.md)
 
 若要详细了解如何使用媒体服务进行实时编码，请参阅[使用媒体服务 v3 的实时传送视频流](live-streaming-overview.md)。
 
@@ -99,8 +101,8 @@ ms.locfileid: "78268194"
 
 ## <a name="see-also"></a>另请参阅
 
-[成为本地编码器合作伙伴](become-on-premises-encoder-partner.md)
+[使用媒体服务 v3 实时传送视频流](live-streaming-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用媒体服务 v3 实时传送视频流](live-streaming-overview.md)
+[如何验证编码器](become-on-premises-encoder-partner.md)

@@ -1,24 +1,24 @@
 ---
-title: Azure Database for PostgreSQL 的专用链接-单服务器（预览） CLI 安装程序方法
+title: 专用链接-Azure CLI-Azure Database for PostgreSQL-单一服务器
 description: 了解如何从 Azure CLI 配置 Azure Database for PostgreSQL 单服务器的专用链接
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 0eacf0f65346247d5fda5b26ead924a8cfd94dd9
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: d4288b901a0e6e132e32f8391d108e79861fc331
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562082"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371029"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>使用 CLI 创建和管理 Azure Database for PostgreSQL 单一服务器（预览版）的专用链接
+# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>使用 CLI 创建和管理 Azure Database for PostgreSQL 单服务器的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本文中，你将了解如何使用 Azure CLI 在 Azure 虚拟网络中创建 VM 和使用 Azure 专用终结点 Azure Database for PostgreSQL 单一服务器。
 
 > [!NOTE]
-> 此功能在所有 Azure Database for PostgreSQL 单一服务器支持常规用途和内存优化定价层的 Azure 区域中均可用。
+> 此功能在所有 Azure Database for PostgreSQL 单服务器支持常规用途和内存优化定价层的 Azure 区域中均可用。
 
 ## <a name="prerequisites"></a>必备条件
 

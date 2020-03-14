@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 01fde82e69917f59f6519524c4c8828feb84a4f9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795968"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297826"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>向应用程序网关公开 WebSocket 服务器
 
-如应用程序网关 v2 文档中所述，它为[WebSocket 和 HTTP/2 协议提供本机支持](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic)。 请注意，对于应用程序网关和 Kubernetes 入口，无用户可配置的设置来选择性地启用或禁用 WebSocket 支持。
+如应用程序网关 v2 文档中所述，它为[WebSocket 和 HTTP/2 协议提供本机支持](features.md#websocket-and-http2-traffic)。 请注意，对于应用程序网关和 Kubernetes 入口，无用户可配置的设置来选择性地启用或禁用 WebSocket 支持。
 
 下面的 Kubernetes 部署 YAML 显示了用于部署 WebSocket 服务器的最低配置，这与部署常规 web 服务器相同：
 ```yaml
@@ -75,7 +75,7 @@ spec:
               servicePort: 80
 ```
 
-假设已满足所有先决条件，并且你的应用程序网关由 AKS 中的 Kubernetes 入口控制，以上部署会导致在应用程序网关的公共 IP 的端口80上公开 Websocket 服务器，并 `ws.contoso.com`域名.
+假设已满足所有先决条件，并且你的应用程序网关由 AKS 中的 Kubernetes 入口控制，以上部署会导致在应用程序网关的公共 IP 和 `ws.contoso.com` 域的端口80上公开 Websocket 服务器。
 
 以下卷命令将测试 WebSocket 服务器部署：
 ```sh

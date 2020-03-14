@@ -4,11 +4,11 @@ description: 了解 Azure Site Recovery 中的恢复计划。
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396970"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257766"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
 

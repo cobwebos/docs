@@ -2,20 +2,20 @@
 title: 将 Raspberry Pi 连接到云中的 Azure IoT 中心（node.js）
 description: 在本教程中，了解如何设置 Raspberry Pi 并将其连接到 Azure IoT 中心，以供 Raspberry Pi 将数据发送到 Azure 云平台。
 author: wesmc7777
-manager: philmea
+manager: eliotgra
 keywords: Azure IoT Raspberry Pi, Raspberry Pi IoT 中心, Raspberry Pi 将数据发送到云, 连接到云的 Raspberry Pi
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: wesmc
-ms.openlocfilehash: 5780477be71988653e89379ae17e9009337bbc0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c32ae73f065aa5cd1d0dabec421d354684fbb3c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457101"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371489"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 
@@ -94,21 +94,21 @@ ms.locfileid: "75457101"
 
 1. 下载 Raspbian。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 [Raspbian Buster](https://www.raspberrypi.org/downloads/raspbian/) （.zip 文件）。
+   a. [Raspbian Buster](https://www.raspberrypi.org/downloads/raspbian/) （.zip 文件）。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 将 Raspbian 映像提取到计算机上的一个文件夹中。
+   b. 将 Raspbian 映像提取到计算机上的一个文件夹中。
 
 2. 将 Raspbian 安装到 microSD 卡。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 [下载并安装 Etcher SD 卡刻录机实用工具](https://etcher.io/)。
+   a. [下载并安装 Etcher SD 卡刻录机实用工具](https://etcher.io/)。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 运行 Etcher 并选择你在步骤 1 中提取的 Raspbian 映像。
+   b. 运行 Etcher 并选择你在步骤 1 中提取的 Raspbian 映像。
 
    c. 选择 microSD 卡驱动器。 Etcher 可能已选择了正确的驱动器。
 
-   d.单击“下一步”。 单击“刷机”，将 Raspbian 安装到 microSD 卡。
+   d. 单击“刷机”，将 Raspbian 安装到 microSD 卡。
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在安装完成后，从计算机中移除 microSD 卡。 可以安全地直接移除 microSD 卡，因为在完成时 Etcher 会自动弹出或卸载 microSD 卡。
+   e. 在安装完成后，从计算机中移除 microSD 卡。 可以安全地直接移除 microSD 卡，因为在完成时 Etcher 会自动弹出或卸载 microSD 卡。
 
    f. 将 microSD 卡插入到 Pi 中。
 
@@ -171,9 +171,9 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 
    **Windows 用户**
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 下载并安装 [PuTTY](https://www.putty.org/) for Windows。
+   a. 下载并安装 [PuTTY](https://www.putty.org/) for Windows。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 将 Pi 的 IP 地址复制到主机名（或 IP 地址）部分，并选择 SSH 作为连接类型。
+   b. 将 Pi 的 IP 地址复制到主机名（或 IP 地址）部分，并选择 SSH 作为连接类型。
 
    ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7-putty-windows.png)
 
@@ -202,13 +202,13 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 3. 克隆示例应用程序。
 
    ```bash
-   git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
+   git clone https://github.com/Azure-Samples/azure-iot-samples-node.git
    ```
 
 4. 安装示例的所有包。 安装包括 Azure IoT 设备 SDK、BME280 传感器库和接线 Pi 库。
 
    ```bash
-   cd iot-hub-node-raspberrypi-client-app
+   cd azure-iot-samples-node/iot-hub/Tutorials/RaspberryPiApp
    npm install
    ```
 
@@ -256,6 +256,6 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 
 ## <a name="next-steps"></a>后续步骤
 
-此时已运行示例应用程序，以收集传感器数据并将其发送到 IoT 中心。
+已运行示例应用程序来收集传感器数据并将其发送到 IoT 中心。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

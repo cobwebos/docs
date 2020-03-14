@@ -10,11 +10,11 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.openlocfilehash: 4d9a54c220861b19d67b07998e609ee72897446a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360910"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255478"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>管理对容器和 blob 的匿名读取访问
 
@@ -22,7 +22,7 @@ ms.locfileid: "78360910"
 
 如果想要始终允许对某些 Blob 进行匿名读取访问，最好的方法是启用公共读取访问。 可以创建共享访问签名，实现更精细的控制。 利用共享访问签名，可以针对特定时间段提供使用不同权限的受限访问。 有关创建共享访问签名的详细信息，请参阅[在 Azure 存储中使用共享访问签名 (SAS)](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>授予对容器和 blob 的匿名用户权限
+## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>授予对容器和 Blob 的匿名用户权限
 
 默认情况下，容器和其中的任何 blob 只能由已被授予适当权限的用户访问。 若要授予匿名用户对容器及其 blob 的读取权限，可以设置容器公共访问级别。 授予对容器的公共访问权限时，匿名用户可以读取可公开访问的容器中的 blob，而无需对请求进行授权。
 
@@ -76,13 +76,13 @@ private static async Task SetPublicContainerPermissions(CloudBlobContainer conta
 }
 ```
 
-## <a name="access-containers-and-blobs-anonymously"></a>匿名访问容器和 blob
+## <a name="access-containers-and-blobs-anonymously"></a>匿名访问容器和 Blob
 
-如果某个客户端需要以匿名方式访问容器和 blob，则可以让该客户端使用不需要凭据的构造函数。 下面的示例演示了以匿名方式引用容器和 blob 的几种不同方式。
+如果某个客户端需要以匿名方式访问容器和 Blob，该客户端则可以使用不需要凭据的构造函数。 下面的示例演示了以匿名方式引用容器和 blob 的几种不同方式。
 
 ### <a name="create-an-anonymous-client-object"></a>创建匿名客户端对象
 
-可以通过提供帐户的 Blob 存储终结点，为匿名访问创建新的服务客户端对象。 不过，你还必须知道该帐户中允许进行匿名访问的容器的名称。
+可以通过提供帐户的 Blob 存储终结点，为匿名访问创建新的服务客户端对象。 但是，也必须要知道该帐户中允许进行匿名访问的容器的名称。
 
 ```csharp
 public static void CreateAnonymousBlobClient()
@@ -104,7 +104,7 @@ public static void CreateAnonymousBlobClient()
 
 ### <a name="reference-a-container-anonymously"></a>以匿名方式引用容器
 
-如果你有容器的 URL，而该容器可以通过匿名方式来使用，则可使用该 URL 来直接引用容器。
+如果拥有可以通过匿名方式使用的容器的 URL，则可使用该 URL 来直接引用容器。
 
 ```csharp
 public static void ListBlobsAnonymously()
@@ -122,9 +122,9 @@ public static void ListBlobsAnonymously()
 }
 ```
 
-### <a name="reference-a-blob-anonymously"></a>以匿名方式引用 blob
+### <a name="reference-a-blob-anonymously"></a>以匿名方式引用 Blob
 
-如果你有 blob 的 URL，而该 blob 允许进行匿名访问，则可使用该 URL 来直接引用 blob：
+如果拥有允许进行匿名访问的 Blob 的 URL，则可使用该 URL 来直接引用 Blob：
 
 ```csharp
 public static void DownloadBlobAnonymously()

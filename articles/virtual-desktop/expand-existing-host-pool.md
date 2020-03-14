@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: aee5195fe86fed3e631908a38d3bdb7d5e4883b8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127891"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365213"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的会话主机展开现有的主机池
 
@@ -71,7 +71,7 @@ ms.locfileid: "79127891"
 
 ## <a name="run-the-azure-marketplace-offering"></a>运行 Azure Marketplace 产品/服务
 
-按照[使用 Azure Marketplace 创建主机池](./create-host-pools-azure-marketplace.md)中的说明进行操作，直到[运行 azure marketplace 产品/服务来预配新的主机池](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)。 转到该点时，需要为每个边栏选项卡输入以下信息：
+按照[使用 Azure Marketplace 创建主机池](./create-host-pools-azure-marketplace.md)中的说明进行操作，直到[运行 azure marketplace 产品/服务来预配新的主机池](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)。 转到该点时，需要输入每个选项卡的下列信息：
 
 ### <a name="basics"></a>基础
 

@@ -9,11 +9,11 @@ ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360927"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255309"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
 
@@ -27,7 +27,7 @@ ms.locfileid: "78360927"
 |平台 |版本 |
 |---------|---------|
 |Windows     | Windows 7 企业版、Windows 7 旗舰版 <br> Windows 8 专业版、Windows 8 企业版、Windows 8.1 专业版、Windows 8.1 企业版 <br> Windows 10        |
-|Windows 服务器     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
+|Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
 
 ## <a name="other-required-software-for-windows-client"></a>Windows 客户端所需的其他软件
 
@@ -59,8 +59,8 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 
 |作业  |存储服务 |支持  |不支持  |
 |---------|---------|---------|---------|
-|导入     |  Azure Blob 存储 <br><br> Azure 文件存储       | 支持块 Blob 和页 Blob <br><br> 支持文件          |
-|导出     |   Azure Blob 存储       | 支持块 Blob、页 Blob 和追加 Blob         | 不支持 Azure 文件
+|Import     |  Azure Blob 存储 <br><br> Azure 文件存储       | 支持块 Blob 和页 Blob <br><br> 支持文件          |
+|Export     |   Azure Blob 存储       | 支持块 Blob、页 Blob 和追加 Blob         | 不支持 Azure 文件
 
 
 ## <a name="supported-hardware"></a>支持的硬件

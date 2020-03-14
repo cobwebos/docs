@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 7d3b580a939d207bbcc410e13555cdaa28067f87
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 29fa294d2f384ae74c1184c6207648907cb99386
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250985"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299101"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -392,8 +392,8 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | Azure 容器注册表任务 | Microsoft.ContainerRegistry/registries | 在构建容器映像时，ACR 任务可以访问存储帐户。 |
 | Azure 数据工厂             | Microsoft.DataFactory/factories        | 允许通过 ADF 运行时访问存储帐户。 |
 | Azure Data Share               | DataShare/帐户           | 允许通过数据共享访问存储帐户。 |
-| Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详细信息](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md)。 |
-| Azure 机器学习服务 | Microsoft.MachineLearningServices      | 授权 Azure 机器学习工作区将试验输出、模型和日志写入 Blob 存储。 [了解详细信息](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
+| Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详细信息](/azure/logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
+| Azure 机器学习服务 | Microsoft.MachineLearningServices      | 授权 Azure 机器学习工作区将试验输出、模型和日志写入 Blob 存储并读取数据。 [了解详细信息](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
 | Azure SQL 数据仓库       | Microsoft.Sql                          | 允许使用 PolyBase 从特定 SQL 数据库实例导入和导出数据。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
 | Azure 流分析         | Microsoft.StreamAnalytics             | 允许将流式处理作业中的数据写入 Blob 存储。 此功能目前处于预览状态。 [了解详细信息](/azure/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Synapse/工作区          | 允许从 Synapse Analytics 访问 Azure 存储中的数据。 |

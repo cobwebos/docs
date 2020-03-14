@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: c109f5309837de8c9b4bd3e4bc5a5da0a6da534e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 8fe9e551a4ca7dea8f53e0f8c2975ca3d88c48f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806858"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366251"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装自定义 Apache Hadoop 应用程序
 
@@ -21,9 +21,9 @@ ms.locfileid: "74806858"
 
 HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程序。  这些应用程序可能是 Microsoft、独立软件供应商 (ISV) 或自己开发的。  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
-如果想要在现有的 HDInsight 群集上安装 HDInsight 应用程序，必须有一个 HDInsight 群集。 若要创建群集，请参阅 [创建群集](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。 也可以在创建 HDInsight 群集时安装 HDInsight 应用程序。
+如果想要在现有的 HDInsight 群集上安装 HDInsight 应用程序，必须有一个 HDInsight 群集。 若要创建群集，请参阅 [创建群集](hadoop/apache-hadoop-linux-tutorial-get-started.md)。 也可以在创建 HDInsight 群集时安装 HDInsight 应用程序。
 
 ## <a name="install-hdinsight-applications"></a>安装 HDInsight 应用程序
 
@@ -77,7 +77,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 选择安装应用程序的群集。
 1. 从 "**设置**" 菜单中选择 "**应用程序**"。
 1. 从列表中选择 "**色调**" 以查看属性。  
@@ -125,7 +125,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 选择安装应用程序的群集。
 1. 从 "**设置**" 菜单中选择 "**应用程序**"。
 1. 右键单击要删除的应用程序，然后选择 "**删除**"。

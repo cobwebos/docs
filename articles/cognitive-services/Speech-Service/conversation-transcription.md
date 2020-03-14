@@ -1,5 +1,5 @@
 ---
-title: 关于对话脚本（预览版）-语音服务
+title: 对话脚本（预览）-语音服务
 titleSuffix: Azure Cognitive Services
 description: 对话脚本是一种语音到文本解决方案，它将语音识别、发言人标识和句子归属组合到每个扬声器（也称为 diarization），以提供任何会话的实时和/或异步方式。
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 8e36a5c4d9ce2bc38565d6c9c256ed2cc7efe357
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 8fc52428795b0dc8123d501dac9605c473f61456
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561062"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367816"
 ---
-# <a name="about-conversation-transcription-preview"></a>关于对话脚本（预览）
+# <a name="what-is-conversation-transcription-preview"></a>什么是对话脚本（预览版）？
 
 对话脚本是一种[语音到文本](speech-to-text.md)解决方案，它将语音识别、发言人标识和句子归属组合到每个扬声器（也称为_diarization_），以提供任何会话的实时和/或异步方式。 对话脚本将会话中的发言人区分开来，以确定谁说什么和何时，并使开发人员能够轻松地将语音到文本添加到执行多发言人 diarization 的应用程序。
 

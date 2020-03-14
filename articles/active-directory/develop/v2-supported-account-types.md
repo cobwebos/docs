@@ -17,11 +17,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: de90c81f56b6017b2d53ecbfb2c400a4c9f05d81
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700050"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262277"
 ---
 # <a name="supported-account-types"></a>支持的帐户类型
 
@@ -40,7 +40,7 @@ ms.locfileid: "76700050"
   - 使用工作、学校或个人 Microsoft 帐户。
   - 仅使用个人 Microsoft 帐户。
     > [!NOTE]
-    > 目前，Microsoft 标识平台通过为“工作、学校或 Microsoft 个人帐户”注册应用，仅支持个人 Microsoft 帐户，然后，在构建应用程序（例如 `https://login.microsoftonline.com/consumers`）时，通过指定 Azure AD 权限来限制应用程序代码中的登录。
+    > 目前，Microsoft 标识平台通过为“工作、学校或 Microsoft 个人帐户”注册应用，仅支持个人 Microsoft 帐户，然后，在构建应用程序（例如 **）时，通过指定 Azure AD 权限来限制应用程序代码中的登录**`https://login.microsoftonline.com/consumers`。
 
 - 如果你正在为消费者应用程序编写业务，还可以借助 Azure AD B2C 使用其社交身份登录用户。
 

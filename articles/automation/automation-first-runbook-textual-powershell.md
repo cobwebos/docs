@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: b9808ddc3b61b0055642c5a0f2a82b0dc7553b33
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e0c48137f5eecc96b6e7b1cbce5f0c683b2a976a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384855"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367306"
 ---
 # <a name="my-first-powershell-runbook"></a>我的第一个 PowerShell Runbook
 
@@ -39,21 +39,24 @@ ms.locfileid: "78384855"
 
 PowerShell runbook 与 PowerShell 工作流 runbook 具有相同的生命周期、功能和管理功能。 但存在一些差异和限制。
 
-* PowerShell runbook 比 PowerShell 工作流 runbook 的运行速度更快，因为它们不使用编译步骤。
-* PowerShell 工作簿不支持 PowerShell 工作流 runbook 中使用的检查点。 使用检查点，PowerShell 工作流 runbook 可以从任何点恢复操作。 你的 PowerShell runbook 只能从一开始就恢复操作。
-* PowerShell runbook 仅可按顺序执行命令。 PowerShell 工作流 runbook 支持串行和并行执行。
-* 对于 PowerShell runbook，脚本中的所有内容都在单个运行空间中运行。 在 PowerShell 工作流 runbook 中，活动、命令或脚本块可以有自己的运行空间。 
-* PowerShell runbook 与 PowerShell 工作流 runbook 有一些[语法差异](https://technet.microsoft.com/magazine/dn151046.aspx)。
+| 特征  | PowerShell Runbook | PowerShell 工作流 Runbook |
+| ------ | ----- | ----- |
+| Speed | 快速运行，因为它们不使用编译步骤。 | 运行速度变慢。 |
+| 检查点 | 不支持检查点。 PowerShell runbook 只能从一开始就恢复操作。 | 使用检查点，使工作簿可以从任何点恢复操作。 |
+| 命令执行 | 仅支持串行执行。 | 支持串行和并行执行。|
+| Runspace | 单个运行空间运行脚本中的所有内容。 | 一个单独的运行空间可用于活动、命令或脚本块。 |
+
+除了这些差异外，PowerShell runbook 与 PowerShell 工作流 runbook 之间存在一些[语法差异](https://technet.microsoft.com/magazine/dn151046.aspx)。
 
 ## <a name="step-1---create-runbook"></a>步骤 1 - 创建 Runbook
 
-首先创建一个输出文本 **Hello World** 的简单 Runbook。
+首先创建一个 `Hello World`输出文本的简单 runbook。
 
 1. 在 Azure 门户中，打开自动化帐户。
 2. 选择 "**流程自动化**" 下的 " **runbook** "，打开 runbook 的列表。
 3. 通过选择 "**创建 runbook**" 来创建新的 runbook。
 4. 将该 Runbook 命名为 **MyFirstRunbook-PowerShell**。
-5. 在这种情况下，你将创建一个[PowerShell runbook](automation-runbook-types.md#powershell-runbooks)。 选择 " **Powershell** " 作为 " **Runbook 类型**"。
+5. 在这种情况下，你将创建一个[PowerShell runbook](automation-runbook-types.md#powershell-runbooks)。 选择 " **PowerShell** " 作为 " **Runbook 类型**"。
 6. 单击“创建”以创建 Runbook 并打开文本编辑器 。
 
 ## <a name="step-2---add-code-to-the-runbook"></a>步骤 2 - 将代码添加到 Runbook
@@ -74,9 +77,9 @@ PowerShell runbook 与 PowerShell 工作流 runbook 具有相同的生命周期�
 2. 单击“启动”以启动测试 。 这应该是唯一的已启用选项。
 3. 请注意，将创建一个[runbook 作业](automation-runbook-execution.md)并在窗格中显示其状态。
 
-   作业状态将作为**排队**开始，指示作业正在等待云中的 runbook 辅助角色变为可用。 当工作线程声明作业时，状态将更改为 "**正在启动**"。 最后，当 runbook 实际开始运行时，状态将变为 "**正在运行**"。
+   作业状态将作为 `Queued`开始，指示作业正在等待云中的 runbook 辅助角色变为可用。 辅助角色声明作业时，状态将更改为 "`Starting`"。 最后，当 runbook 实际开始运行时，状态将变为 `Running`。
 
-4. Runbook 作业完成后，"测试" 窗格将显示其输出。 在这种情况下，会看到 **Hello World**。
+4. Runbook 作业完成后，"测试" 窗格将显示其输出。 在这种情况下，你将看到 `Hello World`。
 
    ![测试窗格输出](media/automation-first-runbook-textual-powershell/automation-testpane-output.png)
 
@@ -96,12 +99,12 @@ PowerShell runbook 与 PowerShell 工作流 runbook 具有相同的生命周期�
 
    ![作业摘要](media/automation-first-runbook-textual-powershell/job-pane-status-blade-jobsummary.png)
 
-1. Runbook 状态显示为 "**已完成**" 后，单击 "**输出**" 打开 "输出" 页，您可以在其中看到**Hello World**显示。
+1. Runbook 状态显示 `Completed`后，请单击 "**输出**" 打开 "输出" 页，您可以在其中查看 `Hello World` 显示。
 
    ![作业输出](media/automation-first-runbook-textual-powershell/job-pane-status-blade-outputtile.png)
 
 1. 关闭“输出”页。
-1. 单击“所有日志”打开 Runbook 作业的“流”窗格。 只应在输出流中看到**Hello World** 。
+1. 单击“所有日志”打开 Runbook 作业的“流”窗格。 只应在输出流中看到 `Hello World`。
 
     请注意，"流" 窗格可以显示 runbook 作业的其他流，如 "详细" 和 "错误流" （如果 runbook 向其写入）。
 
@@ -118,10 +121,10 @@ PowerShell runbook 与 PowerShell 工作流 runbook 具有相同的生命周期�
 
 已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 需要让其管理 Azure 资源。 要执行此操作，runbook 必须能够使用在创建自动化帐户时自动创建的运行方式帐户进行身份验证。
 
-如以下示例中所示，运行方式连接是用[AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) cmdlet 建立的。 如果跨多个订阅管理资源，则需要将*AzContext*参数与[AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0)一起使用。
+如以下示例中所示，运行方式连接是用[AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) cmdlet 建立的。 如果要跨多个订阅管理资源，则需要将 `AzContext` 参数与[AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0)一起使用。
 
 > [!NOTE]
-> 对于 PowerShell runbook， **AzAccount**和**add-azurermaccount**是**AzAccount**的别名。 可以使用这些 cmdlet，或者将自动化帐户中的[模块更新](automation-update-azure-modules.md)到最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新模块。
+> 对于 PowerShell runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 `Connect-AzAccount`的别名。 可以使用这些 cmdlet，或者将自动化帐户中的[模块更新](automation-update-azure-modules.md)到最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新模块。
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -149,7 +152,7 @@ PowerShell runbook 与 PowerShell 工作流 runbook 具有相同的生命周期�
    Get-AzVM -ResourceGroupName myResourceGroup -AzContext $AzureContext
    ```
 1. 通过单击**MyFirstRunbook**页上的 "**编辑**" 打开文本编辑器。
-1. 不再需要**写入输出**行。 请继续并删除它。
+1. 不需要再 `Write-Output` 行。 请继续并删除它。
 1. 键入或复制并粘贴以下代码，这些代码将用自动化运行方式帐户处理身份验证。
 
    ```powershell
@@ -181,7 +184,7 @@ PowerShell runbook 与 PowerShell 工作流 runbook 具有相同的生命周期�
 
 现在 Runbook 正在向 Azure 订阅进行身份验证，你可以管理资源。 让我们添加一个命令来启动虚拟机。 你可以在 Azure 订阅中选取任何虚拟机，而只需将该名称硬编码到 runbook 中。
 
-1. 在 runbook 脚本中，添加[new-azvm](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) cmdlet 以启动虚拟机。 如下所示，该 cmdlet 使用名为**VMName**的虚拟机和名为**ResourceGroupName**的资源组启动虚拟机。
+1. 在 runbook 脚本中，添加[new-azvm](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) cmdlet 以启动虚拟机。 如下所示，该 cmdlet 使用名为 `ResourceGroupName`的资源组启动名为 `VMName` 的虚拟机。
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -211,7 +214,7 @@ PowerShell runbook 与 PowerShell 工作流 runbook 具有相同的生命周期�
 
 你的 runbook 当前会启动你在 runbook 中硬编码的虚拟机。 如果在启动 runbook 时指定虚拟机，runbook 将更有用。 让我们向 runbook 添加输入参数以提供该功能。
 
-1. 在文本编辑器中，修改**new-azvm** cmdlet 以使用参数*VMName*和*ResourceGroupName*的变量。 
+1. 在文本编辑器中，修改 `Start-AzVM` cmdlet 以使用 `VMName` 和 `ResourceGroupName`参数的变量。 
 
    ```powershell
    Param(

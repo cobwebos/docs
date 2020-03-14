@@ -7,11 +7,11 @@ ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
 ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191430"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270532"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
 
@@ -164,14 +164,14 @@ ms.locfileid: "77191430"
 | 找到新数据或事件？  | API 响应 | 
 | ------------------------- | ------------ |
 | 已找到 | 返回 HTTP `200 OK` 状态与响应有效负载（下一步的输入）。 <br/>此响应创建逻辑应用实例，并启动工作流。 | 
-| 找不到 | 返回 HTTP `202 ACCEPTED` 状态与 `location` 标头和 `retry-after` 标头。 <br/>对于触发器，`location` 标头还应包含 `triggerState` 查询参数，通常是“时间戳”。 API 可以使用此标识符跟踪上次触发逻辑应用的时间。 | 
+| 未找到 | 返回 HTTP `202 ACCEPTED` 状态与 `location` 标头和 `retry-after` 标头。 <br/>对于触发器，`location` 标头还应包含 `triggerState` 查询参数，通常是“时间戳”。 API 可以使用此标识符跟踪上次触发逻辑应用的时间。 | 
 ||| 
 
 例如，若要定期检查服务的新文件，可生成具有以下行为的轮询触发器：
 
 | 请求是否包含 `triggerState`？ | API 响应 | 
 | -------------------------------- | -------------| 
-| 是 | 返回 HTTP `202 ACCEPTED` 状态及 `location` 设置为当前时间、`triggerState` 间隔为 15 秒的 `retry-after` 标头。 | 
+| 否 | 返回 HTTP `202 ACCEPTED` 状态及 `location` 设置为当前时间、`triggerState` 间隔为 15 秒的 `retry-after` 标头。 | 
 | 是 | 在 `DateTime` 的 `triggerState` 之后检查服务的已添加文件。 | 
 ||| 
 

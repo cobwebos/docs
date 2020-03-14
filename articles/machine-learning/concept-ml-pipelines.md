@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 3f1d0e13d9b76c7ef06edb953b59ebfa73c302de
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366217"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296840"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
 Azure 机器学习管道使你可以在机器学习项目中创建工作流。 这些工作流有多个优点： 
 
 + 简易
-+ 速度
++ Speed
 + 可重复性
 + 灵活性
 + 版本控制和跟踪
@@ -204,6 +204,12 @@ pipeline_run.wait_for_completion()
 |**跟踪和版本控制**|可以使用管道 SDK 显式对数据源、输入和输出进行命名和版本控制，而不是在循环访问时手动跟踪数据和结果路径。 还可以将脚本和数据分开管理以提高工作效率。|
 | **模块化** | 分离关注区和隔离更改可让软件以更快的速度以更高的质量发展。 | 
 |**协作**|管道使数据科学家能够在机器学习设计过程的所有方面进行协作，同时能够同时处理管道步骤。|
+
+### <a name="choosing-the-proper-pipelinestep-subclass"></a>选择适当的 PipelineStep 子类
+
+`PythonScriptStep` 是抽象 `PipelineStep`的最灵活的子类。 其他子类（如 `EstimatorStep` 子类和 `DataTransferStep`）可以用更少的代码来完成特定任务。 例如，只需传入步骤、`Estimator`和计算目标的名称即可创建 `EstimatorStep`。 或者，你可以重写输入和输出、管道参数和参数。 有关详细信息，请参阅[使用估计器训练模型 Azure 机器学习](how-to-train-ml-models.md)。 
+
+`DataTransferStep` 可以轻松地在数据源和接收器之间移动数据。 手动执行此操作的代码非常简单，但却是重复的。 相反，您只需创建一个名称、对数据源和数据接收器的引用以及计算目标的 `DataTransferStep`。 [带有 DataTransferStep 的笔记本 Azure 机器学习管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb)演示了这种灵活性。
 
 ## <a name="modules"></a>模块
 

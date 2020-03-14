@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932479"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261757"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD 权利管理是什么？
 
@@ -114,7 +114,7 @@ Azure AD 的权利管理可以帮助解决这些难题。  若要详细了解客
 
 为了更好地了解权限管理及其文档，你可以参考以下术语列表。
 
-| 条款 | Description |
+| 术语 | 说明 |
 | --- | --- |
 | 访问包 | 团队或项目需要并受策略管辖的资源的捆绑。 访问包始终包含在目录中。 在用户需要请求访问权限的情况下，你将创建新的访问包。  |
 | 访问请求 | 访问访问包中的资源的请求。 请求通常通过审批工作流。  如果获得批准，请求用户将收到访问包分配。 |
@@ -156,7 +156,7 @@ Azure 政府、Azure 德国和 Azure 中国世纪互联的专用云当前不可�
 
 下面是一些示例许可方案，可帮助您确定您必须拥有的许可证数量。
 
-| 方案 | 计算 | 许可证数量 |
+| 场景 | 计算 | 许可证数量 |
 | --- | --- | --- |
 | Woodgrove Bank 中的全局管理员创建了初始目录，并将管理任务委派给了其他6个用户。 其中一个策略指定**所有员工**（2000员工）都可以请求一组特定的访问包。 150员工请求访问包。 | 2000**可以**请求访问包的员工 | 2,000 |
 | Woodgrove Bank 中的全局管理员创建了初始目录，并将管理任务委派给了其他6个用户。 其中一个策略指定**所有员工**（2000员工）都可以请求一组特定的访问包。 另一个策略指定来自**合作伙伴 Contoso** （来宾）的用户的某些用户可以请求受批准的相同访问包。 Contoso 有30000个用户。 150员工要求访问包和10500用户从 Contoso 请求访问。 | 2000员工 + 超过1:5 比率的 Contoso 的500来宾用户（10500-（2000 * 5）） | 2,500 |

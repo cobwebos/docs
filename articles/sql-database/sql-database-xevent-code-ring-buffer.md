@@ -3,7 +3,7 @@ title: XEvent 环形缓冲区代码
 description: 提供一个 Transact-SQL 代码示例，以帮助你快速轻松地在 Azure SQL 数据库中使用环形缓冲区目标。
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 7adffac045ddb2ba369993b1b805e3ce2304fb38
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ad98b61d6339388551af93671b3d4d892942f4e4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822315"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79213965"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的环形缓冲区目标代码
 
@@ -40,7 +40,7 @@ ms.locfileid: "73822315"
 7. 删除环形缓冲区目标以释放其资源。
 8. 删除事件会话和演示表。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 帐户和订阅。 可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 可以在其中创建表的任何数据库。
@@ -222,7 +222,7 @@ GO
 
 然后，在结果窗格中，我们单击了 target_data_XML 列标题下的单元格。 这个单击动作在 ssms.exe 中按结果单元格内容显示的顺序，以 XML 格式创建了另一个文件选项卡。
 
-输出显示在以下块中。 结果看起来很长，但其实只是两个 **\<event>** 元素。
+输出显示在以下块中。 它看起来很长，但它只是两个 **\<事件 >** 元素。
 
 &nbsp;
 

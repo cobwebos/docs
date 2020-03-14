@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.openlocfilehash: 6771cdb206920c8e3b746e28573de1742543b4c8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 03/11/2020
+ms.openlocfilehash: 6e0c98cffef06fb6d6345fc2b23bbc22715909b4
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646687"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370179"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火墙配置 Azure HDInsight 群集的出站网络流量
 
@@ -26,12 +26,13 @@ Azure HDInsight 群集通常部署在自己的虚拟网络中。 群集与该虚
 
 HDInsight 出站通信依赖项几乎使用 Fqdn 完全定义，后者后面没有静态 IP 地址。 缺少静态地址意味着网络安全组（Nsg）不能用于锁定群集的出站流量。 通常，地址会发生更改，而不能根据当前名称解析设置规则并使用它来设置 NSG 规则。
 
-保护出站地址的解决方案是使用防火墙设备，该设备可以基于域名控制出站流量。 Azure 防火墙可以基于目标或[fqdn 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)的 FQDN 限制出站 HTTP 和 HTTPS 流量。
+保护出站地址的解决方案是使用防火墙设备，该设备可以基于域名控制出站流量。 Azure 防火墙可以基于目标或[fqdn 标记](../firewall/fqdn-tags.md)的 FQDN 限制出站 HTTP 和 HTTPS 流量。
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>配置 HDInsight 的 Azure 防火墙
 
 使用 Azure 防火墙锁定现有 HDInsight 中的出口的步骤摘要如下：
 
+1. 创建子网。
 1. 创建防火墙。
 1. 向防火墙添加应用程序规则
 1. 向防火墙添加网络规则。
@@ -59,11 +60,11 @@ HDInsight 出站通信依赖项几乎使用 Fqdn 完全定义，后者后面没�
 
     **顶部部分**
 
-    | 属性|  值|
+    | properties|  值|
     |---|---|
     |名称| FwAppRule|
-    |优先级|200|
-    |行动|允许|
+    |优先度|200|
+    |操作|Allow|
 
     **FQDN 标记部分**
 
@@ -77,7 +78,7 @@ HDInsight 出站通信依赖项几乎使用 Fqdn 完全定义，后者后面没�
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | 允许 Windows 登录活动 |
     | Rule_3 | * | https:443 | login.microsoftonline.com | 允许 Windows 登录活动 |
-    | Rule_4 | * | https:443,http:80 | storage_account_name。 core .net | 将 `storage_account_name` 替换为实际的存储帐户名称。 如果你的群集支持 WASB，则添加 WASB 的规则。 若要仅使用 https 连接，请确保在存储帐户上启用了["需要安全传输"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 。 |
+    | Rule_4 | * | https:443,http:80 | storage_account_name。 core .net | 将 `storage_account_name` 替换为实际的存储帐户名称。 如果你的群集支持 WASB，则添加 WASB 的规则。 若要仅使用 https 连接，请确保在存储帐户上启用了["需要安全传输"](../storage/common/storage-require-secure-transfer.md) 。 |
 
    ![标题：输入应用程序规则集合详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -93,11 +94,11 @@ HDInsight 出站通信依赖项几乎使用 Fqdn 完全定义，后者后面没�
 
     **顶部部分**
 
-    | 属性|  值|
+    | properties|  值|
     |---|---|
     |名称| FwNetRule|
-    |优先级|200|
-    |行动|允许|
+    |优先度|200|
+    |操作|Allow|
 
     **IP 地址部分**
 
@@ -138,12 +139,12 @@ HDInsight 出站通信依赖项几乎使用 Fqdn 完全定义，后者后面没�
 
 | 路由名称 | 地址前缀 | 下一跃点类型 | 下一跃点地址 |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | 不可用 |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | 不可用 |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | 不可用 |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | 不可用 |
-| 13.82.225.233 | 13.82.225.233/32 | Internet | 不可用 |
-| 40.71.175.99 | 40.71.175.99/32 | Internet | 不可用 |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | NA |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | NA |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | NA |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | NA |
+| 13.82.225.233 | 13.82.225.233/32 | Internet | NA |
+| 40.71.175.99 | 40.71.175.99/32 | Internet | NA |
 | 0.0.0.0 | 0.0.0.0/0 | 虚拟设备 | 10.0.2.4 |
 
 完成路由表配置：
@@ -182,7 +183,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 ## <a name="access-to-the-cluster"></a>对群集的访问权限
 
-成功设置防火墙后，可以使用内部终结点（`https://CLUSTERNAME-int.azurehdinsight.net`）从 VNET 内部访问 Ambari。
+成功设置防火墙后，可以使用内部终结点（`https://CLUSTERNAME-int.azurehdinsight.net`）从虚拟网络内部访问 Ambari。
 
 若要使用公共终结点（`https://CLUSTERNAME.azurehdinsight.net`）或 ssh 终结点（`CLUSTERNAME-ssh.azurehdinsight.net`），请确保路由表和 NSG 规则中具有正确的路由，以避免[此处](../firewall/integrate-lb.md)所述的非对称路由问题。 具体来说，在这种情况下，您需要允许入站 NSG 规则中的客户端 IP 地址，并将其添加到用户定义的路由表中，并将下一个跃点设置为 `internet`。 如果未正确设置，将会出现超时错误。
 
@@ -204,7 +205,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 | **终结点** |
 |---|
 | Azure SQL |
-| Azure 存储器 |
+| Azure 存储 |
 | Azure Active Directory |
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项

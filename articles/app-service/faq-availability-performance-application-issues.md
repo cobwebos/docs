@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c12e14b8b842e3ccf9f2bf9e0ab783d8852ee69b
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 433f5885c7f057226e78c4ae57e03d7619004d21
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659707"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259859"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
 
@@ -92,8 +92,9 @@ ms.locfileid: "75659707"
 默认情况下，Web 应用如果已处于空闲状态达到一定时间，则会卸载。 这样可以让系统节省资源。 其缺点是 Web 应用卸载之后的第一个请求的响应时间会较长，以使 Web 应用可以加载并启动服务响应。 在基本和标准服务计划中，可以打开“始终可用”设置以使应用始终加载。 这可消除应用处于空闲状态之后的较长加载时间。 更改“始终可用”设置：
 
 1. 在 Azure 门户中，转到你的 Web 应用。
-2. 选择“应用程序设置”。
-3. 对于“始终可用”，选择“打开”。
+2. 选择**配置**
+3. 选择 "**常规设置**"。
+4. 对于“始终可用”，选择“打开”。
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>如何打开失败请求跟踪？
 

@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.openlocfilehash: ce98d2db86c87ac6aa8fa4872bc076714467d32f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697534"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263044"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 标识平台开发人员术语表
 
@@ -25,7 +25,7 @@ ms.locfileid: "76697534"
 
 ## <a name="access-token"></a>访问令牌
 
-由[授权服务器](#authorization-server)颁发的一种[安全令牌](#security-token)，可供[客户端应用程序](#client-application)用来访问[受保护的资源服务器](#resource-server)。 令牌通常以[JSON Web 令牌（JWT）][JWT]的形式表示，由[资源所有者](#resource-owner)授予客户端的授权，用于请求级别的访问权限。 该令牌包含所有适用的主体相关[声明](#claim)，可让客户端应用程序将其作为某种形式的凭据来访问给定的资源。 并使得资源所有者不必对客户端公开凭据。
+由[授权服务器](#security-token)颁发的一种[安全令牌](#authorization-server)，可供[客户端应用程序](#client-application)用来访问[受保护的资源服务器](#resource-server)。 令牌通常以[JSON Web 令牌（JWT）][JWT]的形式表示，由[资源所有者](#resource-owner)授予客户端的授权，用于请求级别的访问权限。 该令牌包含所有适用的主体相关[声明](#claim)，可让客户端应用程序将其作为某种形式的凭据来访问给定的资源。 并使得资源所有者不必对客户端公开凭据。
 
 根据提供的凭据，访问令牌有时称为“用户+应用”或“仅限应用”。 例如，如果客户端应用程序：
 
@@ -67,11 +67,11 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 授权经过身份验证的安全主体执行某项操作的措施。 在 Azure AD 编程模型中有两个主要用例：
 
 * 在 [OAuth2 授权](#authorization-grant)流程中：[资源所有者](#resource-owner)向[客户端应用程序](#client-application)授权时，允许客户端访问资源所有者的资源。
-* 在客户端访问资源期间：与[资源服务器](#resource-server)实现的机制一样，使用[访问令牌](#access-token)中提供的[声明](#claim)值作为依据做出访问控制决策。
+* 在客户端访问资源期间：与[资源服务器](#resource-server)实现的机制一样，使用[访问令牌](#claim)中提供的[声明](#access-token)值作为依据做出访问控制决策。
 
 ## <a name="authorization-code"></a>授权代码
 
-在四个 OAuth2 [授权](#authorization-grant)之一的“授权代码”流程中，由[授权终结点](#authorization-endpoint)提供给[客户端应用程序](#client-application)的短期“令牌”。 为响应[资源所有者](#resource-owner)的身份验证，将授权代码返回给客户端应用程序，指出资源所有者已进行所请求资源的访问授权委托。 在执行流程的过程中，稍后会将授权代码兑换为[访问令牌](#access-token)。
+在四个 OAuth2 [授权](#client-application)之一的“授权代码”流程中，由[授权终结点](#authorization-endpoint)提供给[客户端应用程序](#authorization-grant)的短期“令牌”。 为响应[资源所有者](#resource-owner)的身份验证，将授权代码返回给客户端应用程序，指出资源所有者已进行所请求资源的访问授权委托。 在执行流程的过程中，稍后会将授权代码兑换为[访问令牌](#access-token)。
 
 ## <a name="authorization-endpoint"></a>授权终结点
 
@@ -85,7 +85,7 @@ Azure AD 向应用程序注册颁发的唯一标识符，用于标识特定应�
 
 ## <a name="authorization-server"></a>授权服务器
 
-根据[OAuth2 授权框架][OAuth2-Role-Def]的定义，在成功验证[资源所有者](#resource-owner)并获取其授权之后，负责向[客户端](#client-application)颁发访问令牌的服务器。 [客户端应用程序](#client-application)在运行时根据 OAuth2 定义的[权限授予](#authorization-grant)，通过其[权限](#authorization-endpoint)和[令牌](#token-endpoint)终结点来与授权服务器交互。
+根据[OAuth2 授权框架][OAuth2-Role-Def]的定义，在成功验证[资源所有者](#resource-owner)并获取其授权之后，负责向[客户端](#client-application)颁发访问令牌的服务器。 [客户端应用程序](#client-application)在运行时根据 OAuth2 定义的[权限授予](#authorization-endpoint)，通过其[权限](#token-endpoint)和[令牌](#authorization-grant)终结点来与授权服务器交互。
 
 对于 Microsoft 标识平台应用程序集成，Microsoft 标识平台为 Azure AD 应用程序和 Microsoft 服务 Api （例如[Microsoft Graph api][Microsoft-Graph]）实现授权服务器角色。
 
@@ -119,7 +119,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 ## <a name="multi-tenant-application"></a>多租户应用程序
 
-一类应用程序，允许在任何 Azure AD [租户](#tenant)（包括在其中注册了客户端的租户以外的租户）中预配的用户进行登录和[同意](#consent)操作。 [本机客户端](#native-client)应用程序默认为多租户，而 [Web 客户端](#web-client)和 [Web 资源/API](#resource-server) 应用程序则可在单租户和多租户之间做出选择。 相反，注册为单租户的 Web 应用程序只允许来自应用程序注册所在相同租户中预配的用户帐户的登录。
+一类应用程序，允许在任何 Azure AD [租户](#consent)（包括在其中注册了客户端的租户以外的租户）中预配的用户进行登录和[同意](#tenant)操作。 [本机客户端](#native-client)应用程序默认为多租户，而 [Web 客户端](#web-client)和 [Web 资源/API](#resource-server) 应用程序则可在单租户和多租户之间做出选择。 相反，注册为单租户的 Web 应用程序只允许来自应用程序注册所在相同租户中预配的用户帐户的登录。
 
 有关更多详细信息，请参阅[如何使用多租户应用程序模式登录任何 Azure AD 用户][AAD-Multi-Tenant-Overview]。
 
@@ -131,7 +131,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 [客户端应用程序](#client-application)通过声明权限请求来获取[资源服务器](#resource-server)访问权限。 有两种权限类型：
 
-* “委托的”权限，可使用登录的[资源所有者](#resource-owner)的委托授权指定[基于范围](#scopes)的访问，在运行时提供给资源作为客户端[访问令牌](#access-token)中的[“scp”声明](#claim)。
+* “委托的”权限，可使用登录的[资源所有者](#scopes)的委托授权指定[基于范围](#resource-owner)的访问，在运行时提供给资源作为客户端[访问令牌](#claim)中的[“scp”声明](#access-token)。
 * “应用程序”权限，可使用客户端应用程序的凭据/标识指定[基于角色](#roles)的访问，在运行时提供给资源作为客户端访问令牌中的[“角色”声明](#claim)。
 
 权限也会在[同意](#consent)过程中出现，让管理员或资源所有者有机会允许/拒绝客户端对其租户中的资源进行访问。
@@ -184,7 +184,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 ## <a name="sign-out"></a>注销
 
-使最终用户变成未身份验证状态的过程，解除用户在[登录](#sign-in)期间与[客户端应用程序](#client-application)会话关联的状态
+使最终用户变成未身份验证状态的过程，解除用户在[登录](#client-application)期间与[客户端应用程序](#sign-in)会话关联的状态
 
 ## <a name="tenant"></a>tenant
 

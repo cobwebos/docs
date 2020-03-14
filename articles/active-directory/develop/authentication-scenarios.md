@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 6e14284b5d653af01631d56acf954f9c2a1f10ab
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3ec965318da1361454b4a6bb78ed7147562b5fea
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194989"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138512"
 ---
 # <a name="authentication-basics"></a>身份验证基础知识
 
@@ -50,7 +50,7 @@ Azure AD 还提供 Azure Active Directory B2C 以便组织可以使用诸如 Goo
 
 安全令牌包含用户和应用的相关信息。 Azure AD 使用包含声明的基于 JSON 的标记（Jwt）。
 
-声明向另一个实体（例如[资源服务器](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server)）提供一个实体（例如[客户端应用程序](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application)或[资源所有者](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner)）的断言。
+声明向另一个实体（例如[资源服务器](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-server)）提供有关一个实体（例如[客户端应用程序](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#client-application)或[资源所有者](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#resource-owner)）的断言。
 
 声明是中继令牌主体相关事实的名称/值对。 例如，声明可能包含有关[授权服务器](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#authorization-server)进行身份验证的安全主体的事实。 给定令牌中存在的声明取决于许多因素，包括令牌类型、用于验证主体身份的凭据类型和应用程序配置等。
 

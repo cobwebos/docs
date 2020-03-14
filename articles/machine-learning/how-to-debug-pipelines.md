@@ -10,11 +10,11 @@ author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
 ms.openlocfilehash: c81d4db5798c15327e06471f1cb0da4841bd61b2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396248"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283441"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>调试机器学习管道并对其进行故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -76,7 +76,7 @@ ms.locfileid: "78396248"
 
 下表包含了管道开发期间的一些常见问题，其中包含可能的解决方案。
 
-| Problem | 可能的解决方案 |
+| 问题 | 可能的解决方案 |
 |--|--|
 | 无法将数据传递到 `PipelineData` directory | 请确保已在脚本中创建了一个目录，该目录对应于管道期望步骤输出数据的位置。 在大多数情况下，输入参数将定义输出目录，然后显式创建目录。 使用 `os.makedirs(args.output_dir, exist_ok=True)` 创建输出目录。 有关显示此设计模式的评分脚本示例，请参阅[教程](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script)。 |
 | 依赖项 bug | 如果你在本地开发并测试了脚本，但在管道中的远程计算上运行时发现依赖项问题，请确保你的计算环境依赖项和版本与你的测试环境匹配。 |
@@ -90,7 +90,7 @@ ms.locfileid: "78396248"
 
 | 库                    | 类型   | 示例                                                          | 目标                                  | 资源                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure 机器学习 SDK | 跃点数 | `run.log(name, val)`                                             | Azure 机器学习门户 UI             | [如何跟踪试验](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml。运行类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
+| Azure 机器学习 SDK | 指标 | `run.log(name, val)`                                             | Azure 机器学习门户 UI             | [如何跟踪试验](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml。运行类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
 | Python 打印/日志记录    | 日志    | `print(val)`<br>`logging.info(message)`                          | 驱动程序日志，Azure 机器学习设计器 | [如何跟踪试验](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python 日志记录](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | 日志    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights 跟踪                | [在 Application Insights 中调试管道](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)（OpenCensus Azure Monitor 导出程序）<br>[Python 日志记录指南](https://docs.python.org/3/howto/logging-cookbook.html) |
 
@@ -158,7 +158,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 在某些情况下，可能需要以交互方式调试 ML 管道中使用的 Python 代码。 通过使用 Visual Studio Code （VS Code）和针对 Visual Studio 的 Python 工具（PTVSD），可以在代码在定型环境中运行时附加到代码。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 * 配置为使用__Azure 虚拟网络__的__Azure 机器学习工作区__。
 * 一个__Azure 机器学习管道__，它使用 Python 脚本作为管道步骤的一部分。 例如，PythonScriptStep。

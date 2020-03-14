@@ -4,12 +4,12 @@ description: 了解 Azure 容器注册表的静态加密，以及如何使用存
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: 8bce77c776fe088e5c317f02cd2757738a287069
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 7bfc4e9a73280ab330efbeeba51a5dcb0a80da10
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096488"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365333"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>使用客户托管的密钥进行加密
 
@@ -27,6 +27,7 @@ ms.locfileid: "79096488"
 
 * 当前只能在创建注册表时启用此功能。
 * 在注册表中启用客户托管的密钥后，无法将其禁用。
+* 使用客户管理的密钥加密的注册表中当前不支持[内容信任](container-registry-content-trust.md)。
 * 在使用客户管理的密钥加密的注册表中，运行[ACR 任务](container-registry-tasks-overview.md)的日志当前只保留24小时。 如果需要长时间保留日志，请参阅有关[导出和存储任务运行日志](container-registry-tasks-logs.md#alternative-log-storage)的指南。
 
 ## <a name="prerequisites"></a>必备条件

@@ -4,26 +4,40 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 53c9dea83fc6d413d7e82194696ffedabcc8cf7b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 14a6703b3e256d33ab3b18e1821587cc3eb293db
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830042"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79382152"
 ---
-为了所运行的应用程序，请务必确保虚拟机 (VM) 安全。 保护 VM 可以添加一个或多个 Azure 服务和功能，这些服务和功能涵盖保护对 VM 的访问和保护数据存储。 按照本文提供的信息操作，可确保 VM 和应用程序安全。
+务必为运行的应用程序保护虚拟机（VM）。 保护 VM 可以添加一个或多个 Azure 服务和功能，这些服务和功能涵盖保护对 VM 的访问和保护数据存储。 按照本文提供的信息操作，可确保 VM 和应用程序安全。
 
 ## <a name="antimalware"></a>反恶意软件
 
-现代云环境的威胁局势非常多变，增加了为了满足合规性和安全要求，维护有效保护机制方面的压力。 [适用于 Azure 的 Microsoft 反恶意软件](../articles/security/fundamentals/antimalware.md)是一种免费实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 可配置警报，以便在已知恶意或不需要的软件试图安装自身或在 VM 上运行时通知你。 运行 Linux 或 Windows Server 2008 的 VM 不支持此软件。
+现代云环境的威胁局势非常多变，增加了为了满足合规性和安全要求，维护有效保护机制方面的压力。 [适用于 Azure 的 Microsoft 反恶意软件](../articles/security/fundamentals/antimalware.md)是一种免费实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 可配置警报，以便在已知恶意或不需要的软件试图安装自身或在 VM 上运行时通知你。 运行 Linux 或 Windows Server 2008 的 Vm 不支持此方法。
 
 ## <a name="azure-security-center"></a>Azure 安全中心
 
 [Azure 安全中心](../articles/security-center/security-center-intro.md)可帮助防范、检测和应对针对 VM 的威胁。 安全中心提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
 
-安全中心的实时访问可以跨 VM 部署应用，用以锁定发往 Azure VM 的入站流量，降低遭受攻击的可能性，同时还可根据需要轻松连接到 VM。 当启用实时访问且用户请求访问 VM 时，安全中心将检查用户对该 VM 的权限。 如果用户具有正确权限，则会批准请求并且安全中心会自动将网络安全组 (NSG) 配置为：在限定时间内允许发往选定端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。 
+安全中心的实时访问可在 VM 部署中应用，以锁定到 Azure Vm 的入站流量，降低遭受攻击的可能性，同时在需要时提供轻松的连接来连接到 Vm。 当启用实时访问且用户请求访问 VM 时，安全中心将检查用户对该 VM 的权限。 如果用户具有正确权限，则会批准请求并且安全中心会自动将网络安全组 (NSG) 配置为：在限定时间内允许发往选定端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。 
 
 ## <a name="encryption"></a>加密
+
+为托管磁盘提供了两种加密方法。 在 OS 级别进行加密（Azure 磁盘加密），并在平台级别进行加密，这是服务器端加密。
+
+### <a name="server-side-encryption"></a>服务器端加密
+
+默认情况下，在将数据保存到云时，Azure 托管磁盘会自动加密数据。 服务器端加密可保护你的数据，并可帮助你满足组织的安全性和符合性承诺。 Azure 托管磁盘中的数据以透明方式使用256位[AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最强阻止密码之一）进行加密，且符合 FIPS 140-2。
+
+加密不会影响托管磁盘的性能。 加密不会产生额外的费用。
+
+你可以依赖于平台托管的密钥来加密托管磁盘，也可以使用自己的密钥来管理加密。 如果选择使用自己的密钥管理加密，则可以指定*客户托管的密钥*，用于加密和解密托管磁盘中的所有数据。 
+
+若要了解有关服务器端加密的详细信息，请参阅适用于[Windows](../articles/virtual-machines/windows/disk-encryption.md)或[Linux](../articles/virtual-machines/linux/disk-encryption.md)的文章。
+
+### <a name="azure-disk-encryption"></a>Azure 磁盘加密
 
 为了增强 [Windows VM](../articles/virtual-machines/windows/encrypt-disks.md) 和 [Linux VM](../articles/virtual-machines/linux/disk-encryption-overview.md) 的安全性，可以加密 Azure 中的虚拟磁盘。 Windows VM 上的虚拟磁盘使用 BitLocker 进行静态加密。 Linux VM 上的虚拟磁盘是使用 dm-crypt 静态加密的。 
 
@@ -49,7 +63,7 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-使用[基于角色的访问控制 (RBAC)](../articles/role-based-access-control/overview.md)，可以在团队中对职责进行分配，仅向 VM 上的用户授予执行作业所需的访问权限。 可以仅允许某些操作，而不是向 VM 上的每个人授予不受限制的权限。 可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/role) 或 [Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md) 为 [Azure 门户](../articles/role-based-access-control/role-assignments-portal.md)中的 VM 配置访问控制。
+使用[基于角色的访问控制 (RBAC)](../articles/role-based-access-control/overview.md)，可以在团队中对职责进行分配，仅向 VM 上的用户授予执行作业所需的访问权限。 可以仅允许某些操作，而不是向 VM 上的每个人授予不受限制的权限。 可以使用 [Azure CLI](../articles/role-based-access-control/role-assignments-portal.md) 或 [Azure PowerShell](https://docs.microsoft.com/cli/azure/role) 为 [Azure 门户](../articles/role-based-access-control/role-assignments-powershell.md)中的 VM 配置访问控制。
 
 
 ## <a name="next-steps"></a>后续步骤

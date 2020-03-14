@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 7356f627c8a85cb89f3900e1af84d5e0a7d4be17
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 9af7b471210ca3cc69428e68aef4aafaee159344
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096205"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299067"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL 数据库托管实例数据库中配置复制
 
@@ -42,7 +42,6 @@ ms.locfileid: "79096205"
 
 将托管实例配置为充当发布服务器和/或分发服务器的功能需要：
 
-- 该托管实例当前未加入异地复制关系。
 - 发布服务器托管实例与分发服务器和订阅服务器位于同一虚拟网络上，或已在所有三个实体的虚拟网络之间建立[vNet 对等互连](../virtual-network/tutorial-connect-virtual-networks-powershell.md)。 
 - 连接时，在复制参与者之间使用 SQL 身份验证。
 - 适用于复制工作目录的 Azure 存储帐户共享。

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 47da8146d3984982a9024b3bd084a1ab384c944f
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392727"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298778"
 ---
 # <a name="manage-users"></a>管理用户
 
@@ -26,6 +26,8 @@ Azure FarmBeats 为属于 Azure Active Directory （Azure AD）实例的人员�
 Azure FarmBeats 使用 Azure AD 进行身份验证、访问控制和角色。 可以将 Azure AD 租户中的用户添加为 Azure FarmBeats 中的用户。
 
 > [!NOTE]
+> 如果用户不是 Azure AD 租户用户，请按照**添加 Azure AD 用户**部分中的说明完成安装。
+
 > 如果尝试添加为 Azure FarmBeats 用户的用户在 Azure AD 租户中不存在，请按照 "添加 Azure AD 用户" 部分中的说明完成安装。
 
 Azure FarmBeats 支持两种类型的用户角色：
@@ -63,7 +65,7 @@ Azure FarmBeats 支持两种类型的用户角色：
 ## <a name="add-azure-ad-users"></a>添加 Azure AD 用户
 
 > [!NOTE]
-> Azure FarmBeats 用户需要存在于 Azure AD 租户中，然后才能将其分配给应用程序和角色。 如果 Azure AD 租户中不存在要添加到 Azure FarmBeats 的用户，请按照本部分中的说明进行操作。 如果 Azure AD 租户中存在该用户，则可以跳过这些说明。
+> Azure FarmBeats 用户需要在将其分配给应用程序和角色之前存在于 Azure AD 租户中。 如果 Azure AD 租户中不存在用户，请按照本部分中的说明进行操作。 如果 Azure AD 租户中已存在用户，则跳过说明。
 
 若要将用户添加到 Azure AD，请执行以下操作：
 

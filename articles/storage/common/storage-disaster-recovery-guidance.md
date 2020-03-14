@@ -10,18 +10,20 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: f7a8f6d0d3ab3b456c41128da9b689f6b7eda0f7
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894531"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365351"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>灾难恢复和帐户故障转移（预览版）
 
 Microsoft 致力于确保 Azure 服务一直可用。 不过，可能会发生计划外服务中断。 如果你的应用程序需要复原，Microsoft 建议使用异地冗余存储，以便将你的数据复制到第二个区域。 此外，客户还应制定用于处理区域服务中断的灾难恢复计划。 灾难恢复计划的一个重要组成部分是，准备在主终结点不可用时将故障转移到辅助终结点。
 
 Azure 存储支持异地冗余存储帐户故障转移（预览版）。 通过帐户故障转移，可以在主终结点不可用时为存储帐户启动故障转移过程。 故障转移将辅助终结点更新为，存储帐户的主终结点。 在故障转移完成后，客户端便可以开始对新的主终结点执行写入操作。
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 本文介绍了帐户故障转移所涉及的概念和过程，以及如何让存储帐户做好恢复准备，且造成的客户影响最小。 若要了解如何在 Azure 门户或 PowerShell 中启动帐户故障转移，请参阅[启动帐户故障转移（预览版）](storage-initiate-account-failover.md)。
 
@@ -124,7 +126,7 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 #### <a name="storage-account-containing-archived-blobs"></a>包含存档 blob 的存储帐户
 
-包含存档 blob 的存储帐户支持帐户故障转移。 故障转移完成后，若要将帐户转换回 GRS 或 GRS，则需要首先将所有 archieved blob 解除冻结到联机层。
+包含存档 blob 的存储帐户支持帐户故障转移。 故障转移完成后，若要将帐户转换回 GRS 或 GRS，需要先将所有已存档的 blob 解除冻结。
 
 #### <a name="storage-resource-provider"></a>存储资源提供程序
 

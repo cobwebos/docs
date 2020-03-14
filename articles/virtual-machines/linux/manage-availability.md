@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.openlocfilehash: 8ca16c8f114cf1732bcfb1c8a7d9ae85414d70e5
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945853"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267204"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>管理 Linux 虚拟机的可用性
 

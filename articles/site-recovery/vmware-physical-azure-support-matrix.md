@@ -3,14 +3,14 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复的支持矩阵
 description: 汇总了使用 Azure Site Recovery 对 VMware Vm 和物理服务器到 Azure 的灾难恢复的支持。
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/21/2020
+ms.date: 2/24/2020
 ms.author: raynew
-ms.openlocfilehash: b7ace4f470a4e054be5d7f5945fc3e9c4f7d0810
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 05e60c5b008746bbfd72dbe7a2e14b18aa563671
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362542"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371386"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -135,11 +135,11 @@ SUSE Linux Enterprise Server 15 和 15 SP1 | 9.32 | 所有[股票 SUSE 15 和15�
 
 组件 | **支持**
 --- | ---
-文件系统 | ext3、ext4、XFS
+文件系统 | ext3、ext4、XFS、BTRFS （适用于按此表的条件）
 卷管理器 | -受支持。<br/> -从[更新汇总 31](https://support.microsoft.com/help/4478871/) （移动服务版本9.20）开始支持 LVM 上的/boot。 在早期的移动服务版本中不受支持。<br/> -不支持多个 OS 磁盘。
 半虚拟化存储设备 | 不支持半虚拟化驱动程序导出的设备。
-多队列块 IO 设备 | 不受支持。
-具有 HP CCISS 存储控制器的物理服务器 | 不受支持。
+多队列块 IO 设备 | 不支持。
+具有 HP CCISS 存储控制器的物理服务器 | 不支持。
 设备/装入点命名约定 | 设备名称或装入点名称应是唯一的。<br/> 确保没有两个设备/装入点具有区分大小写的名称。 例如，不支持*device1*和*device1*相同 VM 的命名设备。
 目录 | 如果运行早于版本9.20 的移动服务版本（在[更新汇总 31](https://support.microsoft.com/help/4478871/)中发布），则这些限制适用：<br/><br/> -这些目录（如果设置为单独的分区/文件系统）必须位于源服务器上的同一 OS 磁盘：/（root）、/boot、/usr、/usr/local、/var 和/etc。</br> -/Boot 目录应位于磁盘分区，而不是 LVM 卷上。<br/><br/> 从版本9.20 开始，这些限制并不适用。 
 启动目录 | -启动磁盘不得采用 GPT 分区格式。 这是一种 Azure 体系结构限制。 支持将 GPT 磁盘作为数据磁盘。<br/><br/> 虚拟机上不支持多个启动磁盘<br/><br/> -不支持跨多个磁盘的 LVM 卷上的/boot。<br/> -不能复制没有启动磁盘的计算机。
@@ -152,22 +152,22 @@ BTRFS | BTRFS 支持从[更新汇总 34](https://support.microsoft.com/help/4490
 **Action** | **详细信息**
 --- | ---
 调整复制的 VM 上的磁盘大小 | 在故障转移之前，在源 VM 上受支持，直接位于 VM 属性中。 无需禁用/重新启用复制。<br/><br/> 如果在故障转移后更改源 VM，则更改不会捕获。<br/><br/> 如果在故障转移后更改 Azure VM 上的磁盘大小，则故障回复时，Site Recovery 将创建包含更新的新 VM。
-在复制的 VM 上添加磁盘 | 不受支持。<br/> 为 VM 禁用复制，添加磁盘，然后重新启用复制。
+在复制的 VM 上添加磁盘 | 不支持。<br/> 为 VM 禁用复制，添加磁盘，然后重新启用复制。
 
 ## <a name="network"></a>网络
 
 组件 | **支持**
 --- | ---
 主机网络 NIC 组合 | 对于 VMware VM，受支持。 <br/><br/>对于物理计算机复制，不支持。
-主机网络 VLAN | 可以。
-主机网络 IPv4 | 可以。
-主机网络 IPv6 | No。
-来宾/服务器网络 NIC 组合 | No。
-来宾/服务器网络 IPv4 | 可以。
-来宾/服务器网络 IPv6 | No。
-来宾/服务器网络静态 IP (Windows) | 可以。
-来宾/服务器网络静态 IP (Linux) | 可以。 <br/><br/>VM 配置为在故障回复时使用 DHCP。
-来宾/服务器网络多个 NIC | 可以。
+主机网络 VLAN | 是的。
+主机网络 IPv4 | 是的。
+主机网络 IPv6 | 不是。
+来宾/服务器网络 NIC 组合 | 不是。
+来宾/服务器网络 IPv4 | 是的。
+来宾/服务器网络 IPv6 | 不是。
+来宾/服务器网络静态 IP (Windows) | 是的。
+来宾/服务器网络静态 IP (Linux) | 是的。 <br/><br/>VM 配置为在故障回复时使用 DHCP。
+来宾/服务器网络多个 NIC | 是的。
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure VM 网络（故障转移后）
@@ -183,33 +183,33 @@ Azure 流量管理器 | 是
 IPv4 | 是
 保留源 IP 地址 | 是
 Azure 虚拟网络服务终结点<br/> | 是
-加速网络 | 是
+加速网络 | 否
 
 ## <a name="storage"></a>存储
 组件 | **支持**
 --- | ---
 动态磁盘 | OS 磁盘必须是基本磁盘。 <br/><br/>数据磁盘可以是动态磁盘
-Docker 磁盘配置 | 是
+Docker 磁盘配置 | 否
 主机 NFS | VMware 支持<br/><br/> 物理服务器不支持
 主机 SAN (iSCSI/FC) | 是
 主机 vSAN | VMware 支持<br/><br/> 不适用于物理服务器
 主机多路径 (MPIO) | 是，针对以下项进行了测试：Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON
 主机虚拟卷 (VVols) | VMware 支持<br/><br/> 不适用于物理服务器
 来宾/服务器 VMDK | 是
-来宾/服务器共享群集磁盘 | 是
-来宾/服务器加密磁盘 | 是
-来宾/服务器 NFS | 是
+来宾/服务器共享群集磁盘 | 否
+来宾/服务器加密磁盘 | 否
+来宾/服务器 NFS | 否
 来宾/服务器 iSCSI | 对于迁移-是<br/>对于灾难恢复-否，iSCSI 将作为附加磁盘故障回复到 VM
-来宾/服务器 SMB 3.0 | 是
+来宾/服务器 SMB 3.0 | 否
 来宾/服务器 RDM | 是<br/><br/> 不适用于物理服务器
 > 1 TB 的来宾/服务器磁盘 | 是，磁盘必须大于 1024 MB<br/><br/>复制到托管磁盘时最大为 8192 GB （向前9.26 版）<br></br> 复制到存储帐户时高达 4095 GB
-逻辑和物理扇区大小均为 4K 的来宾/服务器磁盘 | 是
-具有4K 逻辑和512字节物理扇区大小的来宾/服务器磁盘 | 是
+逻辑和物理扇区大小均为 4K 的来宾/服务器磁盘 | 否
+具有4K 逻辑和512字节物理扇区大小的来宾/服务器磁盘 | 否
 包含 > 4 TB 的条带化磁盘的来宾/服务器卷 <br/><br/>逻辑卷管理 (LVM)| 是
-来宾/服务器 - 存储空间 | 是
-来宾/服务器热添加/删除磁盘 | 是
+来宾/服务器 - 存储空间 | 否
+来宾/服务器热添加/删除磁盘 | 否
 来宾/服务器 - 排除磁盘 | 是
-来宾/服务器多路径 (MPIO) | 是
+来宾/服务器多路径 (MPIO) | 否
 来宾/服务器 GPT 分区 | 从[更新汇总 37](https://support.microsoft.com/help/4508614/) （移动服务版本9.25）开始支持五个分区。 以前的四项支持。
 ReFS | 移动服务版本9.23 或更高版本支持复原文件系统
 来宾/服务器 EFI/UEFI 引导 | -支持 Windows Server 2012 或更高版本，具有移动代理版本9.30 的 SLES 12 SP4 和 RHEL 8。0<br/> -不支持安全 UEFI 启动类型。 
@@ -218,25 +218,25 @@ ReFS | 移动服务版本9.23 或更高版本支持复原文件系统
 
 |**复制类型**   |**支持**  |
 |---------|---------|
-|卸载的数据传输（ODX）    |       是  |
-|脱机种子设定        |   是      |
-| Azure Data Box | 是
+|卸载的数据传输（ODX）    |       否  |
+|脱机种子设定        |   否      |
+| Azure Data Box | 否
 
-## <a name="azure-storage"></a>Azure 存储空间
+## <a name="azure-storage"></a>Azure 存储
 
 组件 | **支持**
 --- | ---
 本地冗余存储 | 是
 异地冗余存储 | 是
 读取访问异地冗余存储 | 是
-冷存储 | 是
-热存储| 是
-块 Blob | 是
+冷存储 | 否
+热存储| 否
+块 Blob | 否
 静态加密（SSE）| 是
 静态加密（CMK）| 是（通过 Powershell Az 3.3.0 module）
 高级存储 | 是
-导入/导出服务 | 是
-适用于 Vnet 的 Azure 存储防火墙 | 可以。<br/> 在目标存储/缓存存储帐户（用于存储复制数据）上配置。
+导入/导出服务 | 否
+适用于 Vnet 的 Azure 存储防火墙 | 是的。<br/> 在目标存储/缓存存储帐户（用于存储复制数据）上配置。
 常规用途 v2 存储帐户（热层和冷层） | 是（与 V1 相比，V2 的事务成本明显较高）
 
 ## <a name="azure-compute"></a>Azure 计算
@@ -244,7 +244,7 @@ ReFS | 移动服务版本9.23 或更高版本支持复原文件系统
 **功能** | **支持**
 --- | ---
 可用性集 | 是
-可用性区域 | 是
+可用性区域 | 否
 HUB | 是
 托管磁盘 | 是
 
@@ -261,9 +261,9 @@ HUB | 是
 数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。
 数据磁盘大小 | 复制到托管磁盘时最大为 8192 GB （向前9.26 版）<br></br>复制到存储帐户时高达 4095 GB| 如果不支持，检查会失败。
 网络适配器 | 支持多个适配器。 |
-已共享的 VHD | 不受支持。 | 如果不支持，检查会失败。
-FC 磁盘 | 不受支持。 | 如果不支持，检查会失败。
-BitLocker | 不受支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。 |
+共享 VHD | 不支持。 | 如果不支持，检查会失败。
+FC 磁盘 | 不支持。 | 如果不支持，检查会失败。
+BitLocker | 不支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。 |
 VM 名称 | 1 到 63 个字符。<br/><br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
 
 ## <a name="resource-group-limits"></a>资源组限制
@@ -300,10 +300,10 @@ VM 上所有磁盘的峰值数据变动量 | 54 MB/秒
 
 **Action** | **支持**
 --- | ---
-跨资源组移动保管库 | 是
-在订阅内和跨订阅移动保管库 | 是
-跨资源组移动存储、网络和 Azure VM | 是
-在订阅内和跨订阅移动存储、网络、Azure Vm。 | 是
+跨资源组移动保管库 | 否
+在订阅内和跨订阅移动保管库 | 否
+跨资源组移动存储、网络和 Azure VM | 否
+在订阅内和跨订阅移动存储、网络、Azure Vm。 | 否
 
 
 ## <a name="obtain-latest-components"></a>获取最新组件

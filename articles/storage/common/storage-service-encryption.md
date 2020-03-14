@@ -4,17 +4,17 @@ description: Azure 存储通过在将数据保存到云之前自动对其进行�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 02/05/2020
+ms.date: 03/09/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 86d6a63601036abdde4ee7ae73114566d749feca
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
-ms.translationtype: HT
+ms.openlocfilehash: 028b186964643a08a4370741a3f1ff2ba33a4e85
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79130001"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370298"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
@@ -46,10 +46,10 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 |                                        |    Microsoft 托管的密钥                             |    客户管理的密钥                                                                                                                        |    客户提供的密钥                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    加密/解密操作    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    支持 Azure 存储服务    |    全部                                                |    Blob 存储，Azure 文件<sup>1，2</sup>                                                                                                               |    Blob 存储                                                                  |
-|    密钥存储                         |    Microsoft 密钥存储    |    Azure 密钥保管库                                                                                                                              |    Azure Key Vault 或任何其他密钥存储                                                                 |
+|    支持 Azure 存储服务    |    All                                                |    Blob 存储，Azure 文件<sup>1，2</sup>                                                                                                               |    Blob 存储                                                                  |
+|    密钥存储                         |    Microsoft 密钥存储    |    Azure Key Vault                                                                                                                              |    Azure Key Vault 或任何其他密钥存储                                                                 |
 |    关键轮换责任         |    Microsoft                                          |    客户                                                                                                                                     |    客户                                                                      |
-|    密钥用法                           |    Microsoft                                          |    Azure 门户、存储资源提供程序 REST API、Azure 存储管理库、PowerShell、CLI        |    Azure 存储 REST API （Blob 存储）、Azure 存储客户端库    |
+|    密钥使用情况                           |    Microsoft                                          |    Azure 门户、存储资源提供程序 REST API、Azure 存储管理库、PowerShell、CLI        |    Azure 存储 REST API （Blob 存储）、Azure 存储客户端库    |
 |    密钥访问权限                          |    仅限 Microsoft                                     |    Microsoft，客户                                                                                                                    |    仅限客户                                                                 |
 
 <sup>1</sup>有关创建支持对队列存储使用客户托管密钥的帐户的信息，请参阅[创建支持队列的客户托管密钥的帐户](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。<br />
@@ -65,7 +65,7 @@ Azure 存储中的数据以透明方式加密和解密，并使用256位[AES 加
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>客户托管的密钥与 Azure Key Vault
 
-可以在存储帐户级别用自己的密钥来管理 Azure 存储加密。 当你在存储帐户级别指定客户托管密钥时，该密钥用于保护和控制访问存储帐户的根加密密钥，而该密钥反过来用于加密和解密所有 blob 和文件数据。 客户管理的密钥提供更大的灵活性，以创建、轮换、禁用和撤消访问控制。 你还可以审核用于保护数据的加密密钥。
+可以在存储帐户级别用自己的密钥来管理 Azure 存储加密。 当你在存储帐户级别指定客户托管密钥时，该密钥用于保护和控制对存储帐户的根加密密钥的访问权限，而该密钥反过来用于加密和解密所有 blob 和文件数据。 客户管理的密钥为管理访问控制提供了更大的灵活性。 你还可以审核用于保护数据的加密密钥。
 
 必须使用 Azure Key Vault 来存储客户管理的密钥。 你可以创建自己的密钥并将其存储在密钥保管库中，也可以使用 Azure Key Vault Api 来生成密钥。 存储帐户和密钥保管库必须位于同一区域和相同的 Azure Active Directory （Azure AD）租户中，但它们可以位于不同的订阅中。 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](../../key-vault/key-vault-overview.md)。
 
@@ -112,7 +112,31 @@ Azure 存储加密仅支持大小为2048的 RSA 密钥。 有关密钥的详细�
 
 ### <a name="revoke-access-to-customer-managed-keys"></a>撤消对客户管理的密钥的访问权限
 
-若要撤消对客户管理的密钥的访问权限，请使用 PowerShell 或 Azure CLI。 有关详细信息，请参阅[Azure Key Vault PowerShell](/powershell/module/az.keyvault//)或[Azure Key Vault CLI](/cli/azure/keyvault)。 有效地吊销访问权限会阻止对存储帐户中所有数据的访问，因为 Azure 存储无法访问加密密钥。
+你可以随时撤销存储帐户对客户管理的密钥的访问权限。 在撤消对客户管理的密钥的访问权限，或者在禁用或删除密钥之后，客户端无法调用从 blob 或其元数据读取或写入数据的操作。 对于所有用户，尝试调用以下任何操作都将失败，错误代码为403（禁止）：
+
+- 用请求 URI 上的 `include=metadata` 参数调用时[列出 blob](/rest/api/storageservices/list-blobs)
+- [获取 Blob](/rest/api/storageservices/get-blob)
+- [获取 Blob 属性](/rest/api/storageservices/get-blob-properties)
+- [获取 Blob 元数据](/rest/api/storageservices/get-blob-metadata)
+- [设置 Blob 元数据](/rest/api/storageservices/set-blob-metadata)
+- [快照 Blob](/rest/api/storageservices/snapshot-blob)（与 `x-ms-meta-name` 请求标头一起调用时）
+- [复制 Blob](/rest/api/storageservices/copy-blob)
+- [从 URL 复制 Blob](/rest/api/storageservices/copy-blob-from-url)
+- [设置 Blob 层](/rest/api/storageservices/set-blob-tier)
+- [放置块](/rest/api/storageservices/put-block)
+- [将块置于 URL 中](/rest/api/storageservices/put-block-from-url)
+- [追加块](/rest/api/storageservices/append-block)
+- [将块追加到 URL](/rest/api/storageservices/append-block-from-url)
+- [放置 Blob](/rest/api/storageservices/put-blob)
+- [放置页](/rest/api/storageservices/put-page)
+- [从 URL 放置页面](/rest/api/storageservices/put-page-from-url)
+- [增量复制 Blob](/rest/api/storageservices/incremental-copy-blob)
+
+若要再次调用这些操作，请还原对客户管理的密钥的访问权限。
+
+此部分中未列出的所有数据操作可能在吊销客户管理的密钥或禁用或删除密钥后继续。
+
+若要撤消对客户管理的密钥的访问权限，请使用[PowerShell](storage-encryption-keys-powershell.md#revoke-customer-managed-keys)或[Azure CLI](storage-encryption-keys-cli.md#revoke-customer-managed-keys)。
 
 ### <a name="customer-managed-keys-for-azure-managed-disks-preview"></a>Azure 托管磁盘的客户托管密钥（预览版）
 
@@ -122,11 +146,11 @@ Azure 存储加密仅支持大小为2048的 RSA 密钥。 有关密钥的详细�
 
 对 Azure Blob 存储发出请求的客户端可以选择为单个请求提供加密密钥。 在请求中包含加密密钥可对 Blob 存储操作的加密设置进行精细控制。 客户提供的密钥（预览版）可存储在 Azure Key Vault 或其他密钥存储中。
 
-有关演示如何为对 Blob 存储的请求指定客户提供的密钥的示例，请参阅[使用 .net 为 blob 存储的请求指定客户提供的密钥](../blobs/storage-blob-customer-provided-key.md)。 
+有关演示如何为对 Blob 存储的请求指定客户提供的密钥的示例，请参阅[使用 .net 为 blob 存储的请求指定客户提供的密钥](../blobs/storage-blob-customer-provided-key.md)。
 
 ### <a name="encrypting-read-and-write-operations"></a>加密读写操作
 
-当客户端应用程序在请求中提供加密密钥时，Azure 存储会在读取和写入 blob 数据时以透明方式执行加密和解密。 Azure 存储会将加密密钥的 SHA-256 哈希与 blob 的内容一起写入。 哈希用于验证对 blob 的所有后续操作是否都使用相同的加密密钥。 
+当客户端应用程序在请求中提供加密密钥时，Azure 存储会在读取和写入 blob 数据时以透明方式执行加密和解密。 Azure 存储会将加密密钥的 SHA-256 哈希与 blob 的内容一起写入。 哈希用于验证对 blob 的所有后续操作是否都使用相同的加密密钥。
 
 当客户端与请求一起发送时，Azure 存储不存储或管理加密密钥。 加密或解密过程完成后，密钥将被安全地丢弃。
 

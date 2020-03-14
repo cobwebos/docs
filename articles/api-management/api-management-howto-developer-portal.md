@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 311ce34a4b5cfbb9a54a285094dac34c7dd5a225
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b6b11242831e68787fe225d4d0b66638f1388de6
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126553"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297979"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -156,6 +156,12 @@ ms.locfileid: "79126553"
     </expose-headers>
 </cors>
 ```
+
+在全局作用域上应用 CORS，以确保为所有 Api 启用了该 CORS。
+
+1. 在 Azure 门户中，导航到 API 管理服务的 " **api** " 部分中的**所有 api** 。
+2. 单击 "**入站处理**" 部分中的 **</>** 图标。
+3. 将策略插入到 XML 文件的 **<inbound>** 部分。 请确保 **<origin>** 值与开发人员门户的域匹配。
 
 > [!NOTE]
 > 

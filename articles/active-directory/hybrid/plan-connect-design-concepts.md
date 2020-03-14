@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376076"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253879"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：设计概念
 本文档旨在说明 Azure AD Connect 实现设计期间必须考虑到的各个方面。 本文档是特定领域的深入探讨，其他文档中也简要描述了这些概念。
@@ -70,7 +70,7 @@ sourceAnchor 属性区分大小写。 “JohnDoe”与“johndoe”是不同的�
 出于此原因，Azure AD Connect 实施以下限制：
 
 * 只能在初始安装期间设置 sourceAnchor 属性。 如果重新运行安装向导，此选项是只读的。 如果需要更改此设置，必须卸载然后重新安装。
-* 如果你要安装其他 Azure AD Connect 服务器，则必须选择以前所用的同一 sourceAnchor 属性。 如果以前使用 DirSync，现在想要迁移到 Azure AD Connect，则必须使用 **objectGUID**，因为这是 DirSync 所用的属性。
+* 如果要安装其他 Azure AD Connect 服务器，则必须选择以前所用的同一 sourceAnchor 属性。 如果以前使用 DirSync，现在想要迁移到 Azure AD Connect，则必须使用 **objectGUID**，因为这是 DirSync 所用的属性。
 * 如果 sourceAnchor 值在对象导出到 Azure AD 之后发生更改，Azure AD Connect Sync 将引发错误，并且不允许在更正问题且在源目录中改回 sourceAnchor 之前，对此对象进行任何其他更改。
 
 ## <a name="using-ms-ds-consistencyguid-as-sourceanchor"></a>将 ms-DS-ConsistencyGuid 用作 sourceAnchor

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 1cf8c208e83950706278e2cff5d13951393eec8f
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037118"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79140767"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
 
@@ -97,13 +97,16 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-成功提交管道后，可以在模块的右面板中预览图像 ![上传的映像](media/module/upload-image-in-r-script.png)
+成功提交管道后，可以在模块的右窗格中预览图像
+
+[!div class="mx-imgBorder"]
+![上传-图像](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>如何配置执行 R 脚本
 
 **执行 R 脚本**模块包含可用作起始点的示例代码。 若要配置 "**执行 R 脚本**" 模块，请提供一组输入和要执行的代码。
 
-![R-模块](media/module/upload-image-in-r-script.png)
+![R-模块](media/module/execute-r-script.png)
 
 使用此模块加载时，存储在设计器中的数据集将自动转换为 R 数据帧。
 
@@ -123,25 +126,25 @@ azureml_main <- function(dataframe1, dataframe2){
 
     为了帮助你入门，" **R 脚本**" 文本框中预先填充了可以编辑或替换的示例代码。
     
-```R
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main
-# which is the entry point for this module.
+    ```R
+    # R version: 3.5.1
+    # The script MUST contain a function named azureml_main
+    # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
-azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
+    # The entry point function can contain up to two input arguments:
+    #   Param<dataframe1>: a R DataFrame
+    #   Param<dataframe2>: a R DataFrame
+    azureml_main <- function(dataframe1, dataframe2){
+    print("R script run.")
 
-  # If a zip file is connected to the third input port, it is
-  # unzipped under "./Script Bundle". This directory is added
-  # to sys.path.
+    # If a zip file is connected to the third input port, it is
+    # unzipped under "./Script Bundle". This directory is added
+    # to sys.path.
 
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
+    # Return datasets as a Named List
+    return(list(dataset1=dataframe1, dataset2=dataframe2))
+    }
+    ```
 
  * 脚本必须包含名为 `azureml_main`的函数，这是此模块的入口点。
 
@@ -174,9 +177,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 **执行 r 脚本**模块支持任意 R 脚本文件作为输入。 为此，必须将这些文件作为 ZIP 文件的一部分上传到你的工作区。
 
-1. 若要将包含 R 代码的 ZIP 文件上传到工作区，请单击 "**新建**"，再单击 "**数据集**"，然后选择 "**从本地文件**和**ZIP 文件**" 选项。  
+1. 若要将包含 R 代码的 ZIP 文件上传到工作区，请单击 "**数据集**资产" 页，单击 "**创建数据集**"，然后选择 "**从本地文件**" 和 "**文件**数据集类型" 选项。  
 
-1. 验证压缩文件是否在 "**保存的数据集**" 列表中可用。
+1. 验证左侧模块树中 "**数据集**" 类别下的 "**我的数据集**" 列表中是否有该压缩文件。
 
 1.  将数据集连接到 "**脚本绑定**" 输入端口。
 

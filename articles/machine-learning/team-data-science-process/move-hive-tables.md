@@ -12,17 +12,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 625d9d5c5ecf095d4acbff625754b2065f184536
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393383"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251656"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>从 Blob 存储创建 Hive 表和加载数据
 
 本文介绍通用 Hive 查询，该查询可创建 Hive 表并从 Azure Blob 存储加载数据。 同时提供了一些如何对 Hive 表进行分区和使用优化行纵栏表 (ORC) 格式来增强查询性能的指南。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文假设用户具备以下条件：
 
 * 已创建 Azure 存储帐户。 如果需要说明，请参阅[关于 Azure 存储帐户](../../storage/common/storage-introduction.md)。
@@ -82,7 +82,7 @@ Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用
     hive -S -e "<Hive queries>"
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>在 Hive 命令控制台中提交 Hive 查询。
-也可以首先通过在 Hadoop 命令行中运行命令 `hive` 输入 Hive 命令控制台，然后在 Hive 命令控制台中提交 Hive 查询。 下面是一个示例。 在此示例中，两个红色框分别突出显示了用于输入 Hive 命令控制台的命令，以及在 Hive 命令控制台中提交的 Hive 查询。 绿色框突出显示了 Hive 查询的输出。
+也可以首先通过在 Hadoop 命令行中运行命令 `hive` 输入 Hive 命令控制台，然后在 Hive 命令控制台中提交 Hive 查询。 以下是一个示例。 在此示例中，两个红色框分别突出显示了用于输入 Hive 命令控制台的命令，以及在 Hive 命令控制台中提交的 Hive 查询。 绿色框突出显示了 Hive 查询的输出。
 
 ![打开 Hive 命令控制台并输入命令，查看 Hive 查询输出](./media/move-hive-tables/run-hive-queries-2.png)
 

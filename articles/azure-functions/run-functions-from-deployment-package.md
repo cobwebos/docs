@@ -3,12 +3,12 @@ title: 从包运行 Azure Functions
 description: 通过装载包含函数应用项目文件的部署包文件，让 Azure Functions 运行时运行函数。
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 3ae287939f22469b03f0e10f184f067274464905
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: d40896d6a4659945dbeda9ca965366f0b2ca4bd2
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087033"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365265"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>从包文件运行 Azure Functions
 
@@ -58,32 +58,6 @@ ms.locfileid: "79087033"
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-### <a name="use-key-vault-references"></a>使用 Key Vault 引用
-
-为了增加安全性，你可以将 Key Vault 引用与外部 URL 一起使用。 这会使 URL 处于静态加密状态，并允许利用 Key Vault 进行机密管理和旋转。 建议使用 Azure Blob 存储，以便轻松旋转关联的 SAS 密钥。 Azure Blob 存储是静态加密的，这使应用程序数据在未部署到应用服务时保持安全。
-
-1. 创建 Azure 密钥保管库。
-
-    ```azurecli
-    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
-    ```
-
-1. 添加外部 URL 作为 Key Vault 中的机密。
-
-    ```azurecli
-    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
-    ```
-
-1. 创建 `WEBSITE_RUN_FROM_PACKAGE` 应用设置，并将值设置为对外部 URL 的 Key Vault 引用。
-
-    ```azurecli
-    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
-    ```
-
-有关详细信息，请参阅以下文章。
-
-- [应用服务的 Key Vault 参考](../app-service/app-service-key-vault-references.md)
-- [静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>故障排除
 

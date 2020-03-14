@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 3ded20f37a394e6adf726ad40c01aa36d41e4e8d
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392034"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299339"
 ---
 # <a name="azure-best-practices-for-network-security"></a>网络安全的 Azure 最佳实践
 本文讨论了用于增强网络安全的 Azure 最佳实践集合。 这些最佳实践衍生自我们的 Azure 网络经验和客户的经验。
@@ -111,7 +111,7 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 * 防病毒
 * 僵尸网络防护
 
-要查找可用的 Azure 虚拟网络安全设备，请转到 [Azure 市场](https://azure.microsoft.com/marketplace/)并搜索“安全”和“网络安全”。
+若要查找可用的 Azure 虚拟网络安全设备，请访问[Azure Marketplace](https://azure.microsoft.com/marketplace/)并搜索 "安全" 和 "网络安全"。
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>为安全区部署外围网络
 [外围网格](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter)（也称为 DMZ）是物理或逻辑网络区段，可在资产与 Internet 之间提供额外的安全层。 外围网络边缘的专用网络访问控制设备只允许所需流量流入虚拟网络。
@@ -122,7 +122,7 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 
 根据前面提到的零信任概念，建议你考虑将外围网络用于所有高安全性部署，以增强 Azure 资源的网络安全和访问控制级别。 你可以使用 Azure 或第三方解决方案在资产与 internet 之间提供额外的安全层：
 
-- Azure 本机控件。 [在应用程序网关上](/azure/application-gateway/overview#web-application-firewall)使用[Azure 防火墙](/azure/firewall/overview)和 web 应用程序防火墙，可提供基本的安全功能，其中包含完全有状态防火墙即服务、内置的高可用性、无限制的云可伸缩性、FQDN 筛选、对 OWASP 核心规则集的支持，以及简单的设置和配置。
+- Azure 本机控件。 [在应用程序网关上](../../application-gateway/features.md#web-application-firewall)使用[Azure 防火墙](/azure/firewall/overview)和 web 应用程序防火墙，可提供基本的安全功能，其中包含完全有状态防火墙即服务、内置的高可用性、无限制的云可伸缩性、FQDN 筛选、对 OWASP 核心规则集的支持，以及简单的设置和配置。
 - 第三方产品/服务。 在[Azure Marketplace](https://azuremarketplace.microsoft.com/)中搜索下一代防火墙（NGFW）和其他第三方产品/服务，提供熟悉的安全工具和更高的网络安全级别。 配置可能更为复杂，但第三方产品/服务可能允许你使用现有的功能和技能集。
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>避免通过专用 WAN 链接向 internet 公开
@@ -130,7 +130,7 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 
 在混合 IT 方案中，通常有某种类型的跨界连接。 跨界连接可让公司将其本地网络连接到 Azure 虚拟网络。 可用的跨界连接解决方案有两种：
 
-* [站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。 它是一种值得信赖、可靠且成熟的技术，但连接是通过 Internet 进行的。 带宽限制为最多约 1.25 Gbps。 在某些情况下，站点到站点 VPN 是一个理想的选择。
+* [站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。 它是受信任的、可靠的且已建立的技术，但通过 internet 进行连接。 带宽限制为最多约 1.25 Gbps。 在某些情况下，站点到站点 VPN 是一个理想的选择。
 * **Azure ExpressRoute**。 建议使用 [ExpressRoute](../../expressroute/expressroute-introduction.md) 进行跨界连接。 使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 通过 ExpressRoute，可以建立与 Microsoft 云服务（如 Azure、Office 365 和 Dynamics 365）的连接。 ExpressRoute 是你本地位置或 Microsoft Exchange 托管提供商之间的专用 WAN 链路。 由于这是一种电信连接，你的数据不会通过 internet 传输，因此不会暴露在 internet 通信的潜在风险中。
 
 ExpressRoute 连接的位置可能会影响防火墙容量、可伸缩性、可靠性和网络流量可见性。 需要确定在现有（本地）网络中终止 ExpressRoute 的位置。 可以：
@@ -139,7 +139,7 @@ ExpressRoute 连接的位置可能会影响防火墙容量、可伸缩性、可�
 - 在防火墙内终止（网络扩展模式）。 这是默认建议。 在所有其他情况下，我们建议将 Azure 视为第 n 个数据中心。
 
 ## <a name="optimize-uptime-and-performance"></a>优化运行时间和性能
-如果服务已关闭，便无法访问信息。 如果性能太差而无法使用数据，则可以将此数据视为无法访问。 从安全角度来看，需要尽可能确保服务有最佳的运行时间和性能。
+如果服务已关闭，则无法访问信息。 如果性能太差而无法使用数据，则可以将此数据视为无法访问。 从安全角度来看，需要尽可能确保服务有最佳的运行时间和性能。
 
 用于增强可用性和性能的常用且有效的方法是负载均衡。 负载均衡是将网络流量分布于服务中各服务器的方法。 例如，如果服务中有前端 Web 服务器，可以使用负载均衡将流量分布于多台前端 Web 服务器。
 
@@ -158,7 +158,7 @@ ExpressRoute 连接的位置可能会影响防火墙容量、可伸缩性、可�
 **场景**：需要在位于 Azure 虚拟网络中的服务器之间对来自 Internet 的传入连接进行负载均衡。 也就是说当：
 
 - 具有接受来自 Internet 的传入请求的无状态应用程序时。
-- 不需要粘性会话或 SSL 卸载时。 粘性会话是与应用程序负载均衡一起使用的方法，用于实现服务器关联。
+- 不需要粘滞会话或 SSL 卸载。 粘性会话是与应用程序负载均衡一起使用的方法，用于实现服务器关联。
 
 **负载均衡选项**：使用 Azure 门户[创建外部负载均衡器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)，该均衡器将多个 VM 之间的传入请求进行分散，以提供更高级别的可用性。
 
@@ -175,7 +175,7 @@ ExpressRoute 连接的位置可能会影响防火墙容量、可伸缩性、可�
 例如，如果用户从欧盟对服务发出请求，此连接会被定向到位于欧盟数据中心的服务。 这一部分的流量管理器全局负载均衡有助于改善性能，因为连接到最近的数据中心比连接到远处的数据中心还要快。
 
 ## <a name="disable-rdpssh-access-to-virtual-machines"></a>禁用对虚拟机的 RDP/SSH 访问
-使用[远程桌面协议](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol) (RDP) 和[安全外壳](https://en.wikipedia.org/wiki/Secure_Shell) (SSH) 协议可以访问 Azure 虚拟机。 这些协议支持远程管理 VM，并且是数据中心计算中的标准协议。
+使用[远程桌面协议](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol)（RDP）和[安全外壳](https://en.wikipedia.org/wiki/Secure_Shell)（SSH）协议可以访问 Azure 虚拟机。 这些协议支持远程管理 VM，并且是数据中心计算中的标准协议。
 
 在 Internet 上使用这些协议的潜在安全问题是，攻击者可以使用[暴力破解](https://en.wikipedia.org/wiki/Brute-force_attack)技术来访问 Azure 虚拟机。 攻击者获取访问权限后，就可以使用 VM 作为破坏虚拟网络上其他计算机的启动点，甚至攻击 Azure 之外的网络设备。
 
@@ -187,12 +187,12 @@ ExpressRoute 连接的位置可能会影响防火墙容量、可伸缩性、可�
 点到站点 VPN 比直接 RDP 或 SSH 连接更安全，因为用户必须事先通过两次身份验证才将连接到 VM。 首先，用户需要进行身份验证（并获得授权）以建立点到站点 VPN 连接。 其次，用户需要进行身份验证（并获得授权）以建立 RDP 或 SSH 会话。
 
 **方案**：使本地网络上的用户能够连接到 Azure 虚拟网络上的 VM。   
-**选项**：[站点到站点 VPN](/azure/vpn-gateway/vpn-gateway-site-to-site-create) 通过 Internet 将整个网络连接到另一个网络。 可以使用站点到站点 VPN 将本地网络连接到 Azure 虚拟网络。 本地网络上的用户通过站点到站点 VPN 使用 RDP 或 SSH 协议进行连接。 不必允许通过 Internet 进行的直接 RDP 或 SSH 访问。
+**选项**：[站点到站点 VPN](/azure/vpn-gateway/vpn-gateway-site-to-site-create) 通过 Internet 将整个网络连接到另一个网络。 可以使用站点到站点 VPN 将本地网络连接到 Azure 虚拟网络。 本地网络上的用户通过站点到站点 VPN 使用 RDP 或 SSH 协议进行连接。 无需允许通过 internet 的直接 RDP 或 SSH 访问。
 
 **方案**：使用专用的 WAN 链接提供类似于站点到站点 VPN 的功能。   
 **选项**：使用 [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/)。 它提供类似于站点到站点 VPN 的功能。 它们的主要区别包括：
 
-- 专用的 WAN 链接不会遍历 Internet。
+- 专用 WAN 链接不会遍历 internet。
 - 专用的 WAN 链接通常更稳定且性能更佳。
 
 ## <a name="secure-your-critical-azure-service-resources-to-only-your-virtual-networks"></a>保护关键的 Azure 服务资源，只允许在客户自己的虚拟网络中对其进行访问
@@ -210,4 +210,4 @@ ExpressRoute 连接的位置可能会影响防火墙容量、可伸缩性、可�
 要了解服务终结点及可使用服务终结点的 Azure 服务和区域的详细信息，请参阅[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](best-practices-and-patterns.md)。
+请参阅[azure 安全最佳实践和模式](best-practices-and-patterns.md)，以了解在使用 Azure 设计、部署和管理云解决方案时要使用的更多安全最佳方案。

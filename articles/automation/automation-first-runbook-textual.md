@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/24/2018
 ms.topic: conceptual
-ms.openlocfilehash: 16b6a0cf3e43b172667f55b1ac95e8a278769f9d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: a5a1cad3179063f75a5d9a19567624180b5793a1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246387"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367255"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>我的第一个 PowerShell 工作流 Runbook
 
@@ -36,7 +36,7 @@ ms.locfileid: "78246387"
 
 ## <a name="step-1---create-new-runbook"></a>步骤 1 - 创建新的 Runbook
 
-首先创建一个输出文本 **Hello World** 的简单 Runbook。
+首先创建一个 `Hello World`输出文本的简单 runbook。
 
 1. 在 Azure 门户中，打开自动化帐户。
 
@@ -45,14 +45,14 @@ ms.locfileid: "78246387"
 1. 选择 "**流程自动化**" 下的 " **runbook** "，打开 runbook 的列表。
 1. 通过选择 "**创建 runbook**" 来创建新的 runbook。
 1. 将该 Runbook 命名为 **MyFirstRunbook-Workflow**。
-1. 在这种情况下，你将创建一个[PowerShell 工作流 runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 因此，请选择 " **Powershell 工作流**" 作为 " **Runbook 类型**"。
+1. 在这种情况下，你将创建一个[PowerShell 工作流 runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 选择 " **PowerShell 工作流**" 作为 " **Runbook 类型**"。
 1. 单击“创建”以创建 Runbook 并打开文本编辑器 。
 
 ## <a name="step-2---add-code-to-the-runbook"></a>步骤 2 - 将代码添加到 Runbook
 
 你可以直接在 runbook 中键入代码，也可以从 "库" 控件选择 cmdlet、runbook 和资产，并将其添加到具有任何相关参数的 runbook。 对于本教程，请将代码直接键入 runbook。
 
-1. 你的 runbook 当前为空，仅包含所需的**Workflow**关键字、runbook 的名称和以及括住整个工作流的大括号。
+1. Runbook 当前为空，仅包含所需的 `Workflow` 关键字、runbook 的名称和以及括住整个工作流的大括号。
 
    ```powershell-interactive
    Workflow MyFirstRunbook-Workflow
@@ -79,9 +79,9 @@ ms.locfileid: "78246387"
 1. 单击 "**启动**" 以启动测试，并测试 "唯一启用" 选项。
 1. 请注意，将创建一个[runbook 作业](automation-runbook-execution.md)并在窗格中显示其状态。
 
-   作业状态将作为**排队**开始，指示作业正在等待云中的 runbook 辅助角色变为可用。 当工作线程声明作业时，状态将更改为 "**正在启动**"。 最后，当 runbook 实际开始运行时，状态将变为 "**正在运行**"。
+   作业状态将作为 `Queued`开始，指示作业正在等待云中的 runbook 辅助角色变为可用。 辅助角色声明作业时，状态将更改为 "`Starting`"。 最后，当 runbook 实际开始运行时，状态将变为 `Running`。
 
-1. Runbook 作业完成后，"测试" 窗格将显示其输出。 在这种情况下，会看到 **Hello World**。
+1. Runbook 作业完成后，"测试" 窗格将显示其输出。 在这种情况下，你将看到 `Hello World`。
 
    ![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
 
@@ -107,13 +107,13 @@ ms.locfileid: "78246387"
 
    ![作业摘要](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)
 
-1. 一旦此 Runbook 状态显示“已完成”，单击“输出”。 此时会打开 "输出" 页，您可以在其中查看**Hello World**消息。
+1. Runbook 状态显示 `Completed`后，单击 "**输出**"。 此时会打开 "输出" 页，您可以在其中查看 `Hello World` 消息。
 
    ![作业摘要](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)
 
 1. 关闭“输出”页。
 
-1. 单击“所有日志”打开 Runbook 作业的“流”窗格。 只应在输出流中看到**Hello World** 。 请注意，"流" 窗格可以显示 runbook 作业的其他流，如 "详细" 和 "错误流" （如果 runbook 向其写入）。
+1. 单击“所有日志”打开 Runbook 作业的“流”窗格。 只应在输出流中看到 `Hello World`。 请注意，"流" 窗格可以显示 runbook 作业的其他流，如 "详细" 和 "错误流" （如果 runbook 向其写入）。
 
    ![作业摘要](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 
@@ -126,10 +126,10 @@ ms.locfileid: "78246387"
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>步骤 5 - 添加身份验证来管理 Azure 资源
 
-已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 需要让其管理 Azure 资源。 除非它使用订阅凭据进行身份验证，否则不能执行此操作。 身份验证使用**AzAccount** cmdlet。
+已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 需要让其管理 Azure 资源。 除非它使用订阅凭据进行身份验证，否则不能执行此操作。 身份验证使用 `Connect-AzAccount` cmdlet。
 
 >[!NOTE]
->对于 PowerShell runbook， **AzAccount**和**add-azurermaccount**是**AzAccount**的别名。 可以使用这些 cmdlet，或者将自动化帐户中的[模块更新](automation-update-azure-modules.md)到最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新模块。
+>对于 PowerShell runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 `Connect-AzAccount`的别名。 可以使用这些 cmdlet，或者将自动化帐户中的[模块更新](automation-update-azure-modules.md)到最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新模块。
 
 1. 导航到 " **MyFirstRunbook** " 页，然后单击 "**编辑**" 打开文本编辑器。
 2. 删除 `Write-Output` 行。
@@ -154,7 +154,7 @@ ms.locfileid: "78246387"
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>步骤 6 – 添加用于启动虚拟机的代码
 
-现在，runbook 正在向 Azure 订阅进行身份验证，你可以管理资源。 让我们添加一个命令来启动虚拟机。 你可以在 Azure 订阅中选取任何 VM，现在你可以在 runbook 中硬编码该名称。 如果要跨多个订阅管理资源，则需要将*AzContext*参数与[AzContext](/powershell/module/az.accounts/get-azcontext) cmdlet 一起使用。
+现在，runbook 正在向 Azure 订阅进行身份验证，你可以管理资源。 让我们添加一个命令来启动虚拟机。 你可以在 Azure 订阅中选取任何 VM，现在你可以在 runbook 中硬编码该名称。 如果要跨多个订阅管理资源，则需要将 `AzContext` 参数与[AzContext](/powershell/module/az.accounts/get-azcontext) cmdlet 一起使用。
 
 1. 输入对[new-azvm](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0
 ) cmdlet 的调用，提供要启动的 VM 的名称和资源组名称，如下所示。 
@@ -181,7 +181,7 @@ ms.locfileid: "78246387"
 
 你的 runbook 当前会启动你在 runbook 中硬编码的虚拟机。 如果可以在启动 runbook 时指定 VM，则此方法将更有用。 让我们向 runbook 添加输入参数以提供该功能。
 
-1. 将*VMName*和*ResourceGroupName*的值添加到 runbook，并将关联的变量与**new-azvm** cmdlet 结合使用，如下所示。
+1. 将 `VMName` 的变量和 `ResourceGroupName` 参数添加到 runbook，并将变量与 `Start-AzVM` cmdlet 一起使用，如下所示。
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow

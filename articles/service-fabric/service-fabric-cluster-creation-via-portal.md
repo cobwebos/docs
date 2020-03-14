@@ -4,11 +4,11 @@ description: 了解如何使用 Azure 门户和 Azure Key Vault 在 Azure 中设
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363375"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258793"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -173,7 +173,7 @@ ms.locfileid: "78363375"
 
 若要完成群集创建，请单击“创建”。 还可以选择性下载模板。
 
-![摘要]
+![总结]
 
 可以在通知栏中查看群集创建进度。 （单击屏幕右上角的状态栏旁边的 "电铃" 图标。）如果在创建群集时单击了 "**固定到启动板**"，则会看到 "**部署" Service Fabric 群集**固定到 "**开始**" 面板。 此过程将需要一些时间才能完成。 
 
