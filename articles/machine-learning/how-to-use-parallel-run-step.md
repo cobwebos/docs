@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 01/15/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: ff366468c994d8ba151dd476a5bcccc52bb7309f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 313ba2c02fd65a967ab1969b6f99893de9a3bdb4
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122830"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037345"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,9 +32,9 @@ ms.locfileid: "76122830"
 > * 创建[机器学习管道](concept-ml-pipelines.md)，以根据 [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) 数据集注册预先训练的图像分类模型。 
 > * 使用该模型可对 Azure Blob 存储帐户中提供的示例映像运行批处理推理。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
 * 对于引导式快速入门，如果你还没有 Azure 机器学习的工作区或笔记本虚拟机，请完成[安装教程](tutorial-1st-experiment-sdk-setup.md)。 
 
@@ -85,7 +85,7 @@ def_data_store = ws.get_default_datastore()
 - 包含标签的目录。
 - 输出的目录。
 
-`Dataset` 是一个用于在 Azure 机器学习中浏览、转换和管理数据的类。 此类有两种类型：`TabularDataset` 和 `FileDataset`。 在此示例中，将使用 `FileDataset` 作为批处理推理管道步骤的输入。 
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) 是一个用于在 Azure 机器学习中浏览、转换和管理数据的类。 此类有两种类型：[`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 和 [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py)。 在此示例中，将使用 `FileDataset` 作为批处理推理管道步骤的输入。 
 
 > [!NOTE] 
 > 现在，批处理推理中的 `FileDataset` 支持仅限于 Azure Blob 存储。 
@@ -94,7 +94,7 @@ def_data_store = ws.get_default_datastore()
 
 有关 Azure 机器学习数据集的详细信息，请参阅[创建和访问数据集（预览版）](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)。
 
-`PipelineData` 对象用于在管道步骤之间传输中间数据。 在此示例中，将其用于推理输出。
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 对象用于在管道步骤之间传输中间数据。 在此示例中，将其用于推理输出。
 
 ```python
 from azureml.core.dataset import Dataset
@@ -184,13 +184,13 @@ model = Model.register(model_path="models/",
 ## <a name="write-your-inference-script"></a>编写推理脚本
 
 >[!Warning]
->下面的代码只是[示例笔记本](https://aka.ms/batch-inference-notebooks)使用的示例。 你需要根据具体情况创建自己的脚本。
+>下面的代码只是[示例笔记本](https://aka.ms/batch-inference-notebooks)使用的示例。 你需要为方案创建自己的脚本。
 
 脚本必须包含  两个函数：
 - `init()`设置用户帐户 ：此函数适用于后续推理的任何成本高昂或常见的准备工作。 例如，使用它将模型加载到全局对象。 此函数将在进程开始时调用一次。
 -  `run(mini_batch)`设置用户帐户 ：将针对每个 `mini_batch` 实例运行此函数。
     -  `mini_batch`设置用户帐户 ：并行运行步骤将调用 run 方法，并将列表或 Pandas 数据帧作为参数传递给该方法。 min_batch 中的每个条目是文件路径（如果输入是 FileDataset）或 Pandas 数据帧（如果输入是 TabularDataset）。
-    -  `response`：run() 方法应返回 Pandas 数据帧或数组。 对于 append_row output_action，这些返回的元素将追加到公共输出文件中。 对于 summary_only，将忽略元素的内容。 对于所有的输出操作，每个返回的输出元素都指示输入微型批处理中输入元素的一次成功运行。 用户应确保运行结果中包含足够的数据，以便将输入映射到运行结果。 运行输出将写入输出文件中，并且不保证按顺序写入，用户应使用输出中的某些键将其映射到输入。
+    -  `response`：run() 方法应返回 Pandas 数据帧或数组。 对于 append_row output_action，这些返回的元素将追加到公共输出文件中。 对于 summary_only，将忽略元素的内容。 对于所有的输出操作，每个返回的输出元素都指示输入微型批处理中输入元素的一次成功运行。 你应确保运行结果中包含足够的数据，以便将输入映射到运行结果。 运行输出将写入输出文件中，并且不保证按顺序写入，你应使用输出中的某个键将其映射到输入。
 
 ```python
 # Snippets from a sample script.
@@ -331,7 +331,7 @@ parallelrun_step = ParallelRunStep(
 
 ### <a name="run-the-pipeline"></a>运行管道
 
-现在请运行管道。 首先，使用工作区引用和创建的管道步骤创建一个 `Pipeline` 对象。 `steps` 参数是步骤数组。 在本例中，批量评分只有一个步骤。 若要生成包含多个步骤的管道，请将步骤按顺序放入此数组。
+现在请运行管道。 首先，使用工作区引用和创建的管道步骤创建一个 [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) 对象。 `steps` 参数是步骤数组。 在本例中，批量评分只有一个步骤。 若要生成包含多个步骤的管道，请将步骤按顺序放入此数组。
 
 接下来，使用 `Experiment.submit()` 函数提交管道以供执行。
 

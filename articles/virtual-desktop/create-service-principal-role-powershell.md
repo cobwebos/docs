@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 1e26af6c4bf86cfd412df7435379e610ffd69e85
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 5bdc51f47a170922d4fc33e8538695af29e5159c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367414"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128110"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>教程：通过使用 PowerShell 创建服务主体和角色分配
 
@@ -28,7 +29,7 @@ ms.locfileid: "77367414"
 > * 在 Windows 虚拟桌面中创建角色分配。
 > * 使用服务主体登录到 Windows 虚拟桌面。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在创建服务主体和角色分配之前，需要先完成三项操作：
 
@@ -44,7 +45,7 @@ ms.locfileid: "77367414"
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>在 Azure Active Directory 中创建服务主体
 
-在 PowerShell 会话中满足先决条件后，运行以下 PowerShell cmdlet 在 Azure 中创建多租户服务主体。
+在满足 PowerShell 会话中的先决条件之后，运行以下 PowerShell cmdlet，以在 Azure 中创建多租户服务主体。
 
 ```powershell
 Import-Module AzureAD
@@ -54,7 +55,7 @@ $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrin
 ```
 ## <a name="view-your-credentials-in-powershell"></a>在 PowerShell 中查看凭据
 
-在为服务主体创建角色分配之前，请查看凭据并将其记下以供将来参考。 请务必记下密码，因为关闭此 PowerShell 会话后，便无法检索密码。
+在为服务主体创建角色分配之前，请查看凭据并将其记下以供将来参考。 密码特别重要，因为关闭此 PowerShell 会话后将无法检索密码。
 
 下面是应该记下的三个凭据，以及用于获取这些凭据的 cmdlet：
 

@@ -7,18 +7,18 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 1c9b3bfdbe7aff203efa6b36f0e40cb65aba1175
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 4212277dbdf29705152832f3830692b43b8d1297
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278342"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402811"
 ---
 # <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>（已弃用）Azure 容器服务教程 - 管理 DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS 提供了一个用于运行现代和容器化应用程序的分布式平台。 通过 Azure 容器服务，使预配生产就绪的 DC/OS 群集变得简单快捷。 此快速入门详细介绍了部署 DC/OS 群集和运行基本工作负载所需的基本步骤。
+DC/OS 提供了一个用于运行现代和容器化应用程序的分布式平台。 通过 Azure 容器服务，使预配生产就绪的 DC/OS 群集变得简单快捷。 此快速入门详细介绍了部署 DC/OS 群集和运行基本工作负荷所需的基本步骤。
 
 > [!div class="checklist"]
 > * 创建 ACS DC/OS 群集
@@ -66,7 +66,7 @@ ip=$(az network public-ip list --resource-group myResourceGroup --query "[?conta
 
 要创建 SSH 隧道，请运行以下命令并按照屏幕上的说明进行操作。 如果正在使用端口 80，则该命令将失败。 将隧道端口更新为未在用的端口，例如 `85:localhost:80`。 
 
-```azurecli
+```console
 sudo ssh -i ~/.ssh/id_rsa -fNL 80:localhost:80 -p 2200 azureuser@$ip
 ```
 
@@ -80,7 +80,7 @@ az acs dcos install-cli
 
 在 CLI 可用于群集之前，必须将它配置为使用 SSH 隧道。 为此，请运行以下命令，并根据需要调整端口。
 
-```azurecli
+```console
 dcos config set core.dcos_url http://localhost
 ```
 
@@ -116,19 +116,19 @@ ACS DC/OS 群集的默认计划机制为 Marathon。 Marathon 用于启动应用
 
 运行以下命令以计划要在 DC/OS 群集上运行的应用程序。
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 若要查看应用的部署状态，请运行以下命令。
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 当“TASKS”  列值从“0/1”  切换到“1/1”  时，应用部署已完成。
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     0/1    ---       ---      False      DOCKER   None
 ```
@@ -165,19 +165,19 @@ ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD
 
 使用 `dcos marathon app update` 命令更新应用程序。
 
-```azurecli
+```console
 dcos marathon app update demo-app-private < marathon-app.json
 ```
 
 若要查看应用的部署状态，请运行以下命令。
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 当“TASKS”  列值从“1/3”  切换到“3/1”  时，应用程序部署已完成。
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/3    ---       ---      False      DOCKER   None
 ```
@@ -222,13 +222,13 @@ ACS DC/OS 群集包括两个节点集，一个是可通过 Internet 访问的公
 
 运行以下命令以计划要在 DC/OS 群集上运行的应用程序。
 
-```azurecli 
+```console
 dcos marathon app add nginx-public.json
 ```
 
 获取 DC/OS 公共群集代理的公共 IP 地址。
 
-```azurecli 
+```azurecli
 az network public-ip list --resource-group myResourceGroup --query "[?contains(name,'dcos-agent')].[ipAddress]" -o tsv
 ```
 
@@ -256,7 +256,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 如果不再需要资源组、DC/OS 群集和所有相关的资源，则可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令将其删除。
 
-```azurecli 
+```azurecli
 az group delete --name myResourceGroup --no-wait
 ```
 

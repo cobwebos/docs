@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: tutorial
-ms.date: 12/20/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 038716f43c18432b1b8e7c86c3ffbcab46f1db8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa10ab5a4b1c69b359936edf91da767da08d2f98
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382790"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943090"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>教程：生成网页拼写检查客户端
 
@@ -27,9 +27,9 @@ ms.locfileid: "75382790"
 > - 对必应拼写检查 API 进行简单查询
 > - 显示查询结果
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-要继续学习本教程，需要必应拼写检查 API 的订阅密钥。 如果没有订阅密钥，可以[注册免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)。
+要继续学习本教程，需要必应拼写检查 API 的订阅密钥。 如果没有，请在 Azure 门户中[创建必应拼写检查资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)。 也可以使用[试用密钥](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)。
 
 ## <a name="create-a-new-web-page"></a>创建新的网页
 

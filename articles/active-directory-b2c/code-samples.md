@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: fc37e594984aa4c13fc9e770129a0423ba512737
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: ed593cb3f53878ceb1d4913a9244369ff4600371
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189678"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78397567"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C 代码示例
 
@@ -46,5 +46,4 @@ ms.locfileid: "78189678"
 
 | 示例 | 说明 |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | 调用了一个 Web API 的单页应用程序 (SPA)。 身份验证是利用 MSAL.js 通过 Azure AD B2C 执行的。 |
-| [javascript-hellojs-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-hellojs-singlepageapp) | 一个单页应用，其中实现了一个 ASP.NET Web API 后端，使用 Azure AD B2C 完成用户注册和登录，并使用 OAuth 2.0 访问令牌调用 Web API。 |
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | 调用了一个 Web API 的单页应用程序 (SPA)。 通过 MSAL.js 使用 Azure AD B2C 完成身份验证。 |

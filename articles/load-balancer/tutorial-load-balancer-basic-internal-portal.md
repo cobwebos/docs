@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d167a157935c6d51c025d2fbb11586343a2ef3f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6f62771d707d1aebccbfaf809dee7d0dedf5fefa
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453520"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096126"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>教程：在 Azure 门户中通过基本负载均衡器对内部流量负载进行均衡
 
@@ -121,10 +121,10 @@ ms.locfileid: "75453520"
 1. 在“添加后端池”  页上，键入或选择以下值：
    
    - **Name**：键入 *MyBackendPool*。
-   - **关联到**：在下拉列表中选择“可用性集”。 
-   - **可用性集**：选择“MyAvailabilitySet”  。
+   - **关联到**：下拉并选择“虚拟机”  。
    
-1. 选择“添加目标网络 IP 配置”。  
+   
+1. 选择“虚拟机”  。 
    1. 将 **MyVM1** 和 **MyVM2** 添加到后端池。
    2. 添加每台计算机以后，请在下拉列表中选择其**网络 IP 配置**。 
    

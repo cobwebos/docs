@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1acc17f9c2fbeb53b992891174866433d14f128d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986655"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943878"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教程：使用必应 Web 搜索 API 创建单页应用
 
@@ -32,13 +32,12 @@ ms.locfileid: "76986655"
 
 要使用此应用，需具备带必应搜索 API 的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)获取订阅密钥。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需具备以下几项才可运行应用：
 
 * Node.js 8 或更高版本
-* 订阅密钥
-
+* 必应搜索 API 的订阅密钥。 如果没有该密钥，请[创建必应搜索 v7 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)。 也可以使用[试用密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
 ## <a name="get-the-source-code-and-install-dependencies"></a>获取源代码并安装依赖项
 
 首先是使用示例应用的源代码克隆存储库。

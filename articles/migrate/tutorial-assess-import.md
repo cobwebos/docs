@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 060399952545c903fec8ecf08d99e438883c9fd1
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902538"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079862"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>使用导入的数据评估服务器
 
@@ -109,7 +109,7 @@ ms.locfileid: "75902538"
 IP 地址  | 否 | 服务器地址。
 **核心数** | 是 | 分配给服务器的处理器内核数。
 **内存** | 是 | 分配给服务器的总 RAM (MB)。
-**OS 名称** | 是 | 服务器操作系统。
+**OS 名称** | 是 | 服务器操作系统。 <br/> 匹配或包含[此](#supported-operating-system-names)列表中的名称的操作系统名称将被评估识别。
 **OS 版本** | 否 | 服务器操作系统版本。
 **磁盘数目** | 否 | 如果提供了单独的磁盘详细信息，则不需要。
 **磁盘 1 大小**  | 否 | 磁盘最大大小 (GB)。<br/>可以通过在模板中[添加列](#add-multiple-disks)来添加更多磁盘的详细信息。 最多可以添加八个磁盘。
@@ -433,7 +433,7 @@ IP 地址  | 否 | 服务器地址。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你执行了以下操作：
+本教程介绍以下操作：
 
 > [!div class="checklist"]
 > * 使用 CSV 将服务器导入到了“Azure Migrate:服务器评估”。

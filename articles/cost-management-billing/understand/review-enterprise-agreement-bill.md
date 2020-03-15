@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 03/03/2020
+ms.date: 03/06/2020
 ms.author: banders
-ms.openlocfilehash: ca1064ce3414f4a796110c022125b68c0674e0d6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 5de6baf81f67ef6bee43b54e7aa0d62088c15be9
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270193"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898640"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解 Azure 企业协议帐单
 
@@ -118,7 +118,7 @@ ms.locfileid: "78270193"
 
 本部分仅适用于你在澳大利亚、日本或新加坡的情况。
 
-将企业门户的“报告” > “使用情况摘要”中的 Azure 市场总额与市场发票进行比较。   市场发票仅适用于 Azure 市场采购和使用。 “使用情况摘要”中的金额不含税。 
+将企业门户的“报告” > “使用情况摘要”中的 Azure 市场总额与市场发票进行比较。   市场发票仅适用于 Azure 市场采购和使用。 **使用情况摘要**上的金额已包含由发布者确定的税款。
 
 登录到[企业门户](https://ea.azure.com)，然后选择“报告”  。 在选项卡的右上角，将视图从“M”切换到“C”，然后匹配发票上的周期。    
 

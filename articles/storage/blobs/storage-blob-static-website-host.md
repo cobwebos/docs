@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 69acb9152d1dc30d986276939e29e8c183095b18
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539597"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330389"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -27,7 +27,7 @@ ms.locfileid: "77539597"
 > * 配置静态网站托管
 > * 部署 Hello World 网站
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -92,8 +92,6 @@ ms.locfileid: "77539597"
 1. 选择包含存储帐户的订阅，已经为该帐户启用静态网站托管功能。 接下来，根据提示选择存储帐户。
 
 Visual Studio Code 现在会将文件上传到 Web 终结点，并显示成功状态栏。 启动网站，在 Azure 中查看它。
-
-![在 Azure 中查看静态网站部署](media/storage-blob-static-website-host/view-static-website-endpoint.png)
 
 你已成功完成本教程并将静态网站部署到 Azure。
 

@@ -3,12 +3,12 @@ title: Azure 状态概述 | Microsoft Docs
 description: Azure 服务运行状况的全局视图
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 4f4a0bf09c9256362e71466b9545389f4341ef38
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654148"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898341"
 ---
 # <a name="azure-status-overview"></a>Azure 状态概述
 
@@ -26,7 +26,7 @@ Azure 状态页会根据 Azure 服务的更改而实时更新。 如果保持 Az
 
 虽然 Azure 状态页始终显示最新运行状况信息，但是可使用 [Azure 状态历史记录页](https://status.azure.com/status/history/)查看先前事件。
 
-在该页中可最多查看过去 90 天内的事件，包括有关 Azure 的初步根本原因、风险缓解和后续步骤。
+状态历史记录页显示从 2019 年 11 月发布的事件开始过去 365 天内的事件，包括初步的根本原因、缓解措施和 Azure 的后续步骤。
 
 ## <a name="rss-feed"></a>RSS 源
 

@@ -10,20 +10,37 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 03/06/2020
 ms.author: jaserano
-ms.openlocfilehash: 199d32efef256fe3b56dbcf0a5d3ac6351f2d0b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cd9d17eb365937035919b7e712a4b5824f747bda
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200908"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942577"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>排查 Azure 付款问题
 
 尝试在 Microsoft Azure 门户或 Azure 帐户中心更新付款信息帐户时，可能会遇到问题或错误。
 
 若要解决问题，请在下面选择最接近错误的主题。
+
+## <a name="my-credit-card-was-declined-when-i-tried-to-sign-up-for-azure"></a>尝试注册 Azure 时，信用卡被拒绝了
+
+若要排查卡被拒绝的问题，请参阅[排查注册 Azure 时卡被拒的问题](troubleshoot-declined-card.md)。
+
+## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>在我的帐户下看不到需更新付款方式的订阅
+
+你使用的电子邮件 ID 可能不同于用于订阅的电子邮件 ID。
+
+若要排查此问题，请参阅[在 Azure 门户或 Azure 帐户中心注册时出现“找不到任何订阅”错误](no-subscriptions-found.md)。
+
+## <a name="unable-to-use-a-virtual-or-prepaid-credit-or-debit-card-as-a-payment-method"></a>无法使用虚拟或预付信用卡或借记卡作为付款方式。
+
+*   不接受虚拟或预付信用卡作为 Azure 订阅的付款方式。
+*   不接受借记卡作为 Azure 订阅的付款方式。
+
+有关详细信息，请参阅[排查注册 Azure 时卡被拒的问题](troubleshoot-declined-card.md)。
 
 ## <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>无法从保存的账单付款方式中删除信用卡
 
@@ -33,19 +50,11 @@ ms.locfileid: "77200908"
 
 ## <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>在添加新付款方式后无法删除旧付款方式
 
-新付款方式可能未与订阅关联。 若要将付款方式与订阅相关联，请参阅[添加、更新或删除用于 Azure 的信用卡或借记卡](change-credit-card.md)。
-
-若要排查卡被拒绝的问题，请参阅[如何排查卡在进行 Azure 注册时被拒绝的问题](troubleshoot-declined-card.md)。
+新付款方式可能未与订阅关联。 若要帮助将付款方式与订阅相关联，请参阅[添加、更新或删除用于 Azure 的信用卡](change-credit-card.md)。
 
 ## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>因存在“无法删除付款方式”错误，无法删除付款方式 
 
 发生此错误是由于存在未清余额。 请在删除付款方式之前结清任何未清余额。
-
-## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>在我的帐户下看不到需更新付款方式的订阅
-
-你使用的电子邮件 ID 可能不同于用于订阅的电子邮件 ID。
-
-若要排查此问题，请参阅[在 Azure 门户或 Azure 帐户中心注册时出现“找不到任何订阅”错误](no-subscriptions-found.md)。
 
 ## <a name="unable-to-make-payment-for-a-subscription"></a>无法为订阅付款
 

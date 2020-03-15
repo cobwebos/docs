@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 711e15986265324bbb353fb2b4404cbfeb48dc84
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931816"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851418"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用 Azure CLI 监视该数据
 
@@ -35,6 +35,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 在本部分中，启动 Azure Cloud Shell 的实例。 如果在本地使用 CLI，请跳到[准备两个 CLI 会话](#prepare-two-cli-sessions)部分。
 
 若要启动 Cloud Shell，请执行以下操作：
+
 1. 选择 Azure 门户右上方菜单栏中的“Cloud Shell”  按钮。 
 
     ![Azure 门户 Cloud Shell 按钮](media/quickstart-send-telemetry-cli/cloud-shell-button.png)
@@ -42,25 +43,30 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
     > [!NOTE]
     > 如果这是你第一次使用 Cloud Shell，系统会提示你创建使用 Cloud Shell 所需的存储。  选择用于创建存储帐户和 Microsoft Azure 文件共享的订阅。 
 
-1. 在“选择环境”下拉列表中选择首选 CLI 环境  。 本快速入门使用 Bash 环境  。 以下所有 CLI 命令也在 Powershell 环境中工作。 
+2. 在“选择环境”下拉列表中选择首选 CLI 环境  。 本快速入门使用 Bash 环境  。 以下所有 CLI 命令也在 Powershell 环境中工作。 
 
     ![选择 CLI 环境](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>准备两个 CLI 会话
+
 在本部分中，准备两个 Azure CLI 会话。 如果使用 Cloud Shell，将在单独的浏览器选项卡中运行这两个会话。 如果使用本地 CLI 客户端，将运行两个单独的 CLI 实例。 使用第一个会话作为模拟设备，并使用第二个会话来监视和发送消息。 若要运行命令，请选择“复制”以复制本快速入门中的代码块，将其粘贴到 shell 会话中，然后运行它  。
 
 Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中心之间的所有通信都经过身份验证和加密。 因此，本快速入门不需要将用于实际设备的额外身份验证（如连接字符串）。
 
-1. 运行 [az extension add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) 命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+*  运行 [az extension add](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add) 命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
    ```azurecli
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
-    安装 Azure IOT 扩展后，无需在任何 Cloud Shell 会话中再次安装。 
+   
+   安装 Azure IOT 扩展后，无需在任何 Cloud Shell 会话中再次安装。 
 
-1. 打开第二个 CLI 会话。  如果使用 Cloud Shell，请选择“打开新会话”  。 如果在本地使用 CLI，请打开第二个实例。 
+   [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-    ![打开新的 Cloud Shell 会话](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
+*  打开第二个 CLI 会话。  如果使用 Cloud Shell，请选择“打开新会话”  。 如果在本地使用 CLI，请打开第二个实例。 
+
+    >[!div class="mx-imgBorder"]
+    >![打开新的 Cloud Shell 会话](media/quickstart-send-telemetry-cli/cloud-shell-new-session.png)
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 在本部分中，使用 Azure CLI 创建资源组和 IoT 中心。  Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 IoT 中心充当中央消息中心，用于 IoT 应用程序与设备之间的双向通信。 

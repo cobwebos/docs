@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: cefd8472c23458b94c4da5ae3c239e9d427276bf
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 54efe7b5c392ad2b4cc3a0de414e04951b268508
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760175"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674249"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Windows 设备
 
@@ -40,10 +40,12 @@ ms.locfileid: "76760175"
 将 Azure IoT 扩展添加到 Cloud Shell 实例。
 
    ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
 
-## <a name="prerequisites"></a>必备条件
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
+
+## <a name="prerequisites"></a>先决条件
 
 云资源：
 
@@ -105,7 +107,7 @@ IoT Edge 设备：
    az iot hub device-identity create --device-id myEdgeDevice --hub-name {hub_name} --edge-enabled
    ```
 
-   如果出现有关 iothubowner 策略密钥的错误，请确保 Cloud Shell 运行最新版的 azure-cli-iot-ext 扩展。
+   如果收到有关 iothubowner 策略密钥的错误，请确保 Cloud Shell 正在运行最新版 azure-iot 扩展。
 
 2. 检索设备的连接字符串，该字符串将物理设备与其在 IoT 中心的标识链接在一起。
 

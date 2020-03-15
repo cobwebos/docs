@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 411ffb9c05b0f6b4d8b7d37a11d0838c8734ec5e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443657"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079801"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
@@ -170,6 +170,8 @@ Azure Maps 针对移动设备设计，可帮助你开发跨平台应用程序。
 若要访问 Azure Maps 服务，只需转到 [Azure 门户](https://portal.azure.com)并创建一个 Azure Maps 帐户即可。
 
 Azure Maps 使用基于密钥的身份验证方案。 你的帐户将附带为你生成的两个密钥，请使用任一密钥。 开始将这些位置功能集成到应用程序中，并向 Azure Maps 服务发出请求。
+
+注意：Azure Maps 将与第三方 TomTom 共享客户提供的地址/位置查询（简称“查询”），以实现地图功能。 与 TomTom 共享时，查询不会链接到任何客户或最终用户，也不能用于识别个人。 Microsoft 目前正在向“联机服务分包商”列表添加 TomTom。 请注意，与 Moovit 和 AccuWeather 集成的移动和天气服务目前以[预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)提供。
 
 ## <a name="supported-regions"></a>支持的区域
 

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7886c863dd50fd3f09d782f892bdebabceb73546
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b878c9e26a1f1f0e1e71e79d8f52b81f12924ef3
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160094"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968397"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>教程：将 Qlik Sense Enterprise 与 Azure Active Directory 集成
 
@@ -31,7 +30,7 @@ ms.locfileid: "73160094"
 * 让用户使用其 Azure AD 帐户自动登录到 Qlik Sense Enterprise。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +41,11 @@ ms.locfileid: "73160094"
 
 ## <a name="scenario-description"></a>方案描述
 
-本教程在测试环境中配置并测试 Azure AD SSO。 Qlik Sense Enterprise 支持 **SP** 发起的 SSO。
+本教程在测试环境中配置并测试 Azure AD SSO。 
+* Qlik Sense Enterprise 支持 **SP** 发起的 SSO。
+* Qlik Sense Enterprise 支持**实时预配**
+
+* 配置 Qlik Sense Enterprise 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-qlik-sense-enterprise-from-the-gallery"></a>从库中添加 Qlik Sense Enterprise
 
@@ -62,11 +65,11 @@ ms.locfileid: "73160094"
 若要配置和测试 Qlik Sense Enterprise 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-2. **[配置 Qlik Sense Enterprise SSO](#configure-qlik-sense-enterprise-sso)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Qlik Sense Enterprise 测试用户](#create-qlik-sense-enterprise-test-user)** - 在 Qlik Sense Enterprise 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+1. **[配置 Qlik Sense Enterprise SSO](#configure-qlik-sense-enterprise-sso)** - 在应用程序端配置单一登录设置。
+    * **[创建 Qlik Sense Enterprise 测试用户](#create-qlik-sense-enterprise-test-user)** - 在 Qlik Sense Enterprise 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
@@ -82,7 +85,7 @@ ms.locfileid: "73160094"
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL： `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/hub`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL  ：
+    b. 在“标识符”文本框中，使用以下模式之一键入 URL： 
 
     | |
     |--|
@@ -101,7 +104,37 @@ ms.locfileid: "73160094"
 
     ![证书下载链接](common/metadataxml.png)
 
-### <a name="configure-qlik-sense-enterprise-sso"></a>配置 Qlik Sense Enterprise SSO
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
+在本部分中，将在 Azure 门户中创建一个名为 Britta Simon 的测试用户。
+
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
+1. 选择屏幕顶部的“新建用户”  。
+1. 在“用户”属性中执行以下步骤  ：
+   1. 在“名称”  字段中，输入 `Britta Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
+   1. 单击“创建”。 
+
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，通过授予 Britta Simon 访问 Qlik Sense Enterprise 的权限，允许其使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在应用程序列表中，选择“Qlik Sense Enterprise”  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+
+   ![“用户和组”链接](common/users-groups-blade.png)
+
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+
+    ![“添加用户”链接](common/add-assign-user.png)
+
+1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
+1. 在“添加分配”对话框中，单击“分配”按钮。  
+
+## <a name="configure-qlik-sense-enterprise-sso"></a>配置 Qlik Sense Enterprise SSO
 
 1. 准备联合元数据 XML 文件，以便将其上传到 Qlik Sense 服务器。
 
@@ -180,7 +213,7 @@ ms.locfileid: "73160094"
 
     “主机允许列表”标识在连接到 Qlik Sense 服务器时接受的主机名。  **输入连接到 Qlik Sense 服务器时用户将指定的主机名。** 主机名是与 SAML 主机 URI 相同的值，但没有 https://。
 
-11. 单击“应用”按钮。 
+11. 单击“应用”  按钮。
 
     ![QlikSense][qs14]
 
@@ -218,39 +251,9 @@ ms.locfileid: "73160094"
 
     ![QlikSense][qs53]
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-
-在本部分中，将在 Azure 门户中创建一个名为 Britta Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `Britta Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`BrittaSimon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，通过授予 Britta Simon 访问 Qlik Sense Enterprise 的权限，允许其使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Qlik Sense Enterprise”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
-1. 在“添加分配”对话框中，单击“分配”按钮。  
-
 ### <a name="create-qlik-sense-enterprise-test-user"></a>创建 Qlik Sense Enterprise 测试用户
 
-在本部分中，会在 Qlik Sense Enterprise 中创建一个名为“Britta Simon”的用户。 请与  [Qlik Sense Enterprise 支持团队](https://www.qlik.com/us/services/support)协作，在 Qlik Sense Enterprise 平台上添加用户。 使用单一登录前，必须先创建并激活用户。
+Qlik Sense Enterprise 支持**实时预配**，当用户使用 SSO 功能时，他们会自动添加到 Qlik Sense Enterprise 的“USERS”存储库中。 此外，客户端可以使用 QMC 并创建 UDC（用户目录连接器），以便从其选择的 LDAP（例如 Active Directory 等）中将用户预填充到 Qlik Sense Enterprise 中。
 
 ### <a name="test-sso"></a>测试 SSO
 
@@ -260,9 +263,11 @@ ms.locfileid: "73160094"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

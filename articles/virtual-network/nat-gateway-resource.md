@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 45cb07de9ddc7854e6da8b8739acfaa95dd0ed01
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: d920bde856521f1e662536c1187881e143612039
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304117"
+ms.locfileid: "78359096"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>使用 NAT 网关资源设计虚拟网络（公共预览版）
 
@@ -335,7 +335,7 @@ NAT 网关资源与 UDP 和 TCP 流的 IP 和 IP 传输标头交互，对应用�
 ## <a name="limitations"></a>限制
 
 - NAT 与标准 SKU 公共 IP、公共 IP 前缀和负载均衡器资源兼容。   基本资源（例如基本负载均衡器）以及派生自这些资源的任何产品都与 NAT 不兼容。  必须将基本资源放在未配置 NAT 的子网中。
-- 支持 IPv4 地址系列。  NAT 不会与 IPv6 地址系列交互。
+- 支持 IPv4 地址系列。  NAT 不会与 IPv6 地址系列交互。  NAT 不能部署在具有 IPv6 前缀的子网中。
 - 使用 NAT 时不支持 NSG 流日志记录。
 - NAT 不能跨多个虚拟网络。
 
@@ -351,8 +351,8 @@ NAT 网关资源与 UDP 和 TCP 流的 IP 和 IP 传输标头交互，对应用�
 
 * 了解[虚拟网络 NAT](nat-overview.md)。
 * 了解 [NAT 网关资源的指标和警报](nat-metrics.md)。
-* 了解 [NAT 网关资源故障排除](troubleshoot-nat.md)。
-* [在 UserVoice 中告诉我们接下来你希望开发哪些功能](https://aka.ms/natuservoice)。
+* 了解如何[排查 NAT 网关资源问题](troubleshoot-nat.md)。
+* [在 UserVoice 中告诉我们下一步为虚拟网络 NAT 构建什么](https://aka.ms/natuservoice)。
 * [提供有关公共预览版的反馈](https://aka.ms/natfeedback)。
 * 有关验证 NAT 网关的教程
   - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)

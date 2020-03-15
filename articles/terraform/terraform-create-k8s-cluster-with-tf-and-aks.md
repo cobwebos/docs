@@ -1,14 +1,15 @@
 ---
 title: 教程 - 使用 Terraform 和 Azure Kubernetes 服务 (AKS) 创建 Kubernetes 群集
-description: 演示如何使用 Azure Kubernetes 服务和 Terraform 创建 Kubernetes 群集的教程
+description: 本教程使用 Azure Kubernetes 服务和 Terraform 创建 Kubernetes 群集
+keywords: azure devops terraform aks kubernetes
 ms.topic: tutorial
-ms.date: 11/07/2019
-ms.openlocfilehash: eb8619418cf6d42f600499bb5a12322adce6f44b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 03/09/2020
+ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472241"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945294"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>教程：使用 Terraform 和 Azure Kubernetes 服务 (AKS) 创建 Kubernetes 群集
 
@@ -21,7 +22,7 @@ ms.locfileid: "77472241"
 > * 使用 Terraform 和 AKS 创建 Kubernetes 群集
 > * 使用 kubectl 工具测试 Kubernetes 群集的可用性
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
@@ -71,7 +72,10 @@ ms.locfileid: "77472241"
 
     ```hcl
     provider "azurerm" {
-        version = "~>1.5"
+        # The "feature" block is required for AzureRM provider 2.x. 
+        # If you are using version 1.x, the "features" block is not allowed.
+        version = "~>2.0"
+        features {}
     }
 
     terraform {
@@ -166,7 +170,7 @@ ms.locfileid: "77472241"
 
     使用 `linux_profile` 记录可以配置用于通过 SSH 登录到工作器节点的设置。
 
-    使用 AKS 时，只需支付工作节点的费用。 `default_node_pool` 记录配置这些工作器节点的详细信息。 `default_node_pool record` 包含要创建的工作器节点数，以及工作器节点的类型。 如果将来需要纵向扩展或缩减群集，请修改此记录中的 `count` 值。
+    使用 AKS 时，只需支付工作节点的费用。 `default_node_pool` 记录配置这些工作器节点的详细信息。 `default_node_pool record` 包含要创建的工作器节点数，以及工作器节点的类型。 如果将来需要纵向扩展或纵向缩减群集，请修改此记录中的 `count` 值。
 
 1. 保存文件 ( **&lt;Ctrl>S**) 并退出编辑器 ( **&lt;Ctrl>Q**)。
 

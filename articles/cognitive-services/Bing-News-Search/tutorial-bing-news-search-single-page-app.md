@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 12/12/2019
+ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e128daa82eca8142a636df0958ddca574e398713
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383109"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943119"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>教程：创建单页 Web 应用
 
@@ -39,6 +39,12 @@ ms.locfileid: "75383109"
 > * 处理可能出现的错误
 
 教程页是完全独立的；它不使用任何外部框架、样式表或图像文件， 而仅使用广泛支持的 JavaScript 语言功能，并且适用于所有主要 Web 浏览器的当前版本。
+
+
+## <a name="prerequisites"></a>先决条件
+
+若要继续学习本教程，需要必应搜索 API 的订阅密钥。 如果没有这些密钥，可以使用[试用密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)和[基本必应地图密钥](https://www.microsoft.com/maps/create-a-bing-maps-key)。
+
 
 ## <a name="app-components"></a>应用组件
 与任何单页 Web 应用一样，本教程应用程序包含以下三个部分：

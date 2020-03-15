@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d79c953f22bfe587f740bc29050796834309186a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 700f2ca4d46b3483531fa0784cb78699befb20ca
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103369"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897739"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SAP NetWeaver 的集成
 
@@ -173,11 +173,11 @@ SAP NetWeaver 支持 **SAML**（**SP 发起的 SSO**）和 **OAuth**。 本教�
 
     ![image](./media/sapnetweaver-tutorial/nameidattribute.png)
 
-    ![图像](./media/sapnetweaver-tutorial/nameidattribute1.png)
+    ![image](./media/sapnetweaver-tutorial/nameidattribute1.png)
 
     b. 从“转换”列表中，选择“ExtractMailPrefix()”   。
 
-    c. 从“参数 1”列表中，选择“user.userprinicipalname”   。
+    c. 从“参数 1”列表中选择“user.userprincipalname”   。
 
     d. 单击“ **保存**”。
 
@@ -259,7 +259,7 @@ SAP NetWeaver 支持 **SAML**（**SP 发起的 SSO**）和 **OAuth**。 本教�
 
     ![配置单一登录](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
 
-11. 转到选项卡“受信任的提供程序” > “联合身份验证”（屏幕底部）   。 单击“编辑”。 
+11. 转到选项卡“受信任的提供程序” > “联合身份验证”（屏幕底部）   。 单击 **“编辑”** 。
 
     ![配置单一登录](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
 
@@ -273,7 +273,7 @@ SAP NetWeaver 支持 **SAML**（**SP 发起的 SSO**）和 **OAuth**。 本教�
 
 14. 请注意，“用户 ID 源”和“用户 ID 映射模式”值确定 SAP 用户与 Azure AD 声明之间的链接   。  
 
-    #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>场景：SAP 用户到 Azure AD 用户的映射。
+    #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>方案：SAP 用户到 Azure AD 用户的映射。
 
     a. 从 SAP 获取 NameID 详细信息的屏幕截图。
 
@@ -283,7 +283,7 @@ SAP NetWeaver 支持 **SAML**（**SP 发起的 SSO**）和 **OAuth**。 本教�
 
     ![配置单一登录](./media/sapnetweaver-tutorial/claimsaad1.png)
 
-    #### <a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>场景：根据 SU01 中配置的电子邮件地址选择 SAP 用户 ID。 在这种情况下，应在 su01 中为每个需要 SSO 的用户配置电子邮件 ID。
+    #### <a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>方案：根据 SU01 中配置的电子邮件地址选择 SAP 用户 ID。 在这种情况下，应在 su01 中为每个需要 SSO 的用户配置电子邮件 ID。
 
     a.  从 SAP 获取 NameID 详细信息的屏幕截图。
 

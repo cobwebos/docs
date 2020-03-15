@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: d930b1db48e3a5c4bda96f0b7d80a9c9f24d53d9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 623ec5e082a8ed889329936d020bf28434a56fbf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400645"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942526"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>教程：使用 Azure Data Box Gateway 传输数据
 
@@ -24,7 +24,7 @@ ms.locfileid: "58400645"
 
 此过程可能需要大约 10 分钟来完成。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 添加共享
@@ -45,11 +45,11 @@ ms.locfileid: "58400645"
 
 若要创建共享，请执行以下过程：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择自己的 Data Box Gateway 资源，然后转到“概览”。 设备应为“联机”状态。 在设备命令栏中，选择“+ 添加共享”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择自己的 Data Box Gateway 资源，然后转到“概览”。  设备应为“联机”状态。 在设备命令栏中，选择“+ 添加共享”  。
    
    ![添加共享](./media/data-box-gateway-deploy-add-shares/click-add-share.png)
 
-4. 在“添加共享”中，执行以下过程：
+4. 在“添加共享”中，执行以下过程： 
 
     1. 提供共享的唯一名称。 共享名称只能包含小写字母、数字和连字符。 共享名称必须为 3 到 63 个字符长，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。
     
@@ -57,23 +57,23 @@ ms.locfileid: "58400645"
 
     3. 提供一个可供共享驻留在其中的存储帐户。 如果容器尚不存在，系统会使用新创建的共享名称在存储帐户中创建一个容器。 如果容器已存在，则使用该容器。
     
-    4. 从块 Blob、页 Blob 或文件中选择“存储服务”。 所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以 Blob 块的形式驻留在 Azure 中，因此选择“块 Blob”。 如果选择“页 Blob”，必须确保数据按 512 字节对齐。 例如，VHDX 始终按 512 字节对齐。
+    4. 从块 Blob、页 Blob 或文件中选择“存储服务”。  所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以 Blob 块的形式驻留在 Azure 中，因此选择“块 Blob”。 如果选择“页 Blob”，必须确保数据按 512 字节对齐。 例如，VHDX 始终按 512 字节对齐。
    
     5. 此步骤取决于你是创建 SMB 共享还是 NFS 共享。
      
-    - **SMB 共享** - 在“所有特权本地用户”下选择“新建”或“使用现有”。 如果创建新的本地用户，请输入用户名和密码，然后确认密码。 此操作为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
+    - **SMB 共享** - 在“所有特权本地用户”下选择“新建”或“使用现有”。    如果创建新的本地用户，请输入用户名和密码，然后确认密码。    此操作为本地用户分配权限。 当前不支持修改共享级权限。
     
         ![添加 SMB 共享](./media/data-box-gateway-deploy-add-shares/add-share-smb-1.png)
         
-        如果针对此共享数据选中“仅允许读取操作”复选框，则可以指定只读用户。
+        如果针对此共享数据选中“仅允许读取操作”复选框，则可以指定只读用户。 
         
     - **NFS 共享** - 输入允许访问共享的客户端的 IP 地址。
 
         ![添加 NFS 共享](./media/data-box-gateway-deploy-add-shares/add-share-nfs-1.png)
    
-9. 选择“创建”以创建共享。
+9. 选择“创建”  以创建共享。
     
-    系统会通知你正在创建共享。 使用指定的设置创建共享后，“共享”磁贴会更新以反映新共享。
+    系统会通知你正在创建共享。 使用指定的设置创建共享后，“共享”  磁贴会更新以反映新共享。
     
     ![“更新的共享”磁贴](./media/data-box-gateway-deploy-add-shares/updated-list-of-shares.png) 
 
@@ -105,7 +105,7 @@ ms.locfileid: "58400645"
 
 
 2. 在键盘上选择“Windows + R”。 
-3. 在“运行”窗口中指定 `\\<device IP address>`，然后选择“确定”。 此时会打开文件资源管理器。 此时应该能够查看作为文件夹创建的共享。 在文件资源管理器中，双击要查看其内容的共享（文件夹）。
+3. 在“运行”窗口中指定  `\\<device IP address>`，然后选择“确定”。  此时会打开文件资源管理器。 此时应该能够查看作为文件夹创建的共享。 在文件资源管理器中，双击要查看其内容的共享（文件夹）。
  
     ![连接到 SMB 共享](./media/data-box-gateway-deploy-add-shares/connect-to-share2.png)-->
 
@@ -133,7 +133,7 @@ ms.locfileid: "58400645"
 
 > [!NOTE] 
 > 以下注意事项适用于此版本：
-> - 在共享中创建文件以后，不允许重命名文件。
+> - 不支持在共享中创建文件后重命名该文件。
 > - 从共享中删除文件并不删除存储帐户中的条目。
 > - 如果使用 `rsync` 复制数据，则不支持 `rsync -a` 选项。
 

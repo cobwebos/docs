@@ -7,12 +7,12 @@ ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: df2d4eb1b28ac9f13511692ca7588414ea4fdff0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272392"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037259"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Enterprise 注册发票
 
@@ -30,8 +30,8 @@ Azure Enterprise 门户会自动生成默认的采购订单 (PO) 编号，除非
 1. 从日期范围下拉菜单中选择一个“发票期间”  。
 
    在收到发票通知之后、支付发票金额之前的 7 天内可以编辑 PO 编号。
-1. 在“PO 编号”字段中输入新的  **PO** 编号。
-1. 选择“ **保存**”提交更改。 
+1. 在“PO 编号”  字段中输入新的 PO 编号。
+1. 选择“保存”以提交更改  。
 
 ### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>若要更新 Azure 市场采购订单编号：
 
@@ -41,8 +41,8 @@ Azure Enterprise 门户会自动生成默认的采购订单 (PO) 编号，除非
 1. 从日期范围下拉菜单中选择一个“发票期间”  。
 
    在收到发票通知之后、支付发票金额之前的 7 天内可以编辑 PO 编号。
-1. 在“PO 编号”字段中输入新的  **PO** 编号。
-1. 选择“ **保存**”提交更改。 
+1. 在“PO 编号”  字段中输入新的 PO 编号。
+1. 选择“保存”以提交更改  。
 
 ## <a name="cadence-of-azure-enterprise-billing"></a>Azure Enterprise 计费频率
 

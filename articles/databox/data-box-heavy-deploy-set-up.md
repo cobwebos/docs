@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c96caf7a90f35913bcba04a00553ad1df2689999
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: dbf3531f84d218543b0ab1fb2199a66bdbde2926
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514419"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117250"
 ---
 ::: zone target = "docs"
 
@@ -46,7 +46,7 @@ ms.locfileid: "76514419"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 
@@ -100,7 +100,7 @@ ms.locfileid: "76514419"
 
 在设备的某个节点上，执行以下步骤进行网络布线。
 
-1. 使用 CAT 6 RJ-45 网线（图中的蓝色线缆）将主机连接到 1-Gbps 管理端口。
+1. 使用 CAT 6 RJ-45 网络电缆（图片中右上角连接到标有 MGMT 的插头的电缆）将主计算机连接到 1-Gbps 管理端口。
 2. 使用 QSFP+ 电缆（光纤或铜）连接至少一个 40-Gbps（首选超过 1 Gbps）的网络接口进行数据传输。 如果使用 10-Gbps 交换机，请使用 SFP+ 电缆和 QSFP+ 转 SFP+ 适配器（QSA 适配器）连接 40 Gbps 网络接口进行数据传输。
 
     ![Data Box Heavy 端口已布线](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)

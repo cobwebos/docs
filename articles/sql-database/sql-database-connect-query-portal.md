@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 3990d7ec63c312d38168fe76269e1a920f1a6817
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3ccc2a5343cf02127990dca80a1300959fa06a3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827116"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087174"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>快速入门：使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据
 
@@ -42,7 +42,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
 
 ## <a name="sign-in-the-azure-portal"></a>登录 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="connect-using-sql-authentication"></a>使用 SQL 身份验证进行连接
 
@@ -86,7 +86,7 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
 
 7. 在“SQL Server”菜单中，选择“SQL 数据库”，然后选择 SQL数据库   。
 
-8. 在“SQL 数据库”菜单中，选择“查询编辑器(预览)”   。 在“登录”页面中的“Active Directory 身份验证”标签下，将显示一条消息，说明你已登录（如果你是 Azure AD 管理员）   。然后选择“按 \<用户或组 ID> 身份继续”按钮   。
+8. 在“SQL 数据库”菜单中，选择“查询编辑器(预览)”   。 在“登录”页面中的“Active Directory 身份验证”标签下，将显示一条消息，说明你已登录（如果你是 Azure AD 管理员）   。然后选择“以 \<用户或组 ID> 身份继续”按钮   。
 
 ## <a name="view-data"></a>查看数据
 
@@ -167,6 +167,8 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
 
 * 查询编辑器使用端口 443 和 1443 进行通信。  请确保已在这些端口上启用出站 HTTPS 流量。 还需要将出站 IP 地址添加到服务器的允许防火墙规则中，以访问你的数据库和数据仓库。
 
+* 查询编辑器使用专用链接，无需将客户端 IP 地址添加到 SQL 数据库防火墙中
+
 * 按 F5 刷新查询编辑器页，任何正在处理的查询都将丢失。
 
 * 查询编辑器不支持连接到 `master` 数据库。
@@ -176,6 +178,8 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
 * 查询编辑器仅支持地理数据类型的柱面投影。
 
 * 不支持适用于数据库表和视图的 IntelliSense。 但是，此编辑器支持对已键入的名称启用自动完成功能。
+
+
 
 
 ## <a name="next-steps"></a>后续步骤

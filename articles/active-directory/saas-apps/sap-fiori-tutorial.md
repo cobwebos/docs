@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50d1875ce2529222e8ff7472c48bf6d4dd878667
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 917ba9274276fec5d01a40bdf7219e8d4fee1395
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772869"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897767"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SAP Fiori 集成
 
@@ -173,7 +173,7 @@ ms.locfileid: "70772869"
 
     1. 在“转换”列表中，选择“ExtractMailPrefix()”   。
 
-    1. 在“参数 1”列表中，选择“user.userprinicipalname”   。
+    1. 在“参数 1”列表中，选择“user.userprincipalname”   。
 
     1. 选择“保存”。 
 
@@ -231,15 +231,15 @@ ms.locfileid: "70772869"
 
     ![SAP 中的“添加和上传元数据文件”选项](./media/sapfiori-tutorial/tutorial-sapnetweaver-uploadmetadata.png)
 
-1. 上传从 Azure 门户下载的元数据文件。 选择“**下一步**”。
+1. 上传从 Azure 门户下载的元数据文件。 选择“**下一页**”。
 
     ![选择要在 SAP 中上传的元数据文件](./media/sapfiori-tutorial/tutorial-sapnetweaver-metadatafile.png)
 
-1. 在下一页的“别名”框中，输入别名  。 例如：aadsts  。 选择“**下一步**”。
+1. 在下一页的“别名”框中，输入别名  。 例如：aadsts  。 选择“**下一页**”。
 
     ![SAP 中的“别名”框](./media/sapfiori-tutorial/tutorial-sapnetweaver-aliasname.png)
 
-1. 确保“摘要算法”框中的值为 SHA-256   。 选择“**下一步**”。
+1. 确保“摘要算法”框中的值为 SHA-256   。 选择“**下一页**”。
 
     ![验证 SAP 中的摘要算法值](./media/sapfiori-tutorial/tutorial-sapnetweaver-identityprovider.png)
 

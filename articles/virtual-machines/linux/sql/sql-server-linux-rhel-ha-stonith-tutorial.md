@@ -7,13 +7,13 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 01/27/2020
-ms.openlocfilehash: 0eaff1685cea88d352f1a22f382b7af2ed0ed6cb
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 02/27/2020
+ms.openlocfilehash: 40c91f67231fb6a9d01191ee5215eae8d4dc045b
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252206"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096697"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：在 Azure 中的 RHEL 虚拟机上为 SQL Server 配置可用性组 
 
@@ -360,8 +360,8 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  3. 单击[ **“应用注册”** ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)。
  4. 单击“新建注册”。 
  5. 输入一个**名称**（例如 `<resourceGroupName>-app`），选择“仅限此组织目录中的帐户” 
- 6. 选择“Web”作为应用程序类型，输入登录 URL（例如 http://localhost) ，然后单击“添加”。  不会使用登录 URL，可为它输入任何有效的 URL
- 7. 选择“证书和机密”，然后单击“新建客户端机密”  
+ 6. 选择“Web”作为应用程序类型，输入登录 URL（例如 http://localhost) ，然后单击“添加”。  不使用登录 URL，它可以是任何有效的 URL。 完成后，单击“注册” 
+ 7. 为新应用注册选择“证书和机密”  ，然后单击“新建客户端密码” 
  8. 输入新密钥（客户端机密）的说明，选择“永不过期”，然后单击“添加”  
  9. 请记下机密的值。 此值用作服务主体的密码
 10. 选择“概述”。  记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
@@ -569,12 +569,14 @@ sudo systemctl restart mssql-server
 ```sql
 CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
 GO
+
 BACKUP CERTIFICATE dbm_certificate
    TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
    WITH PRIVATE KEY (
            FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
            ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
        );
+GO
 ```
 
 运行 `exit` 命令退出 SQL CMD 会话，并返回到 SSH 会话。
@@ -623,6 +625,7 @@ BACKUP CERTIFICATE dbm_certificate
         FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
         DECRYPTION BY PASSWORD = '<Private_Key_Password>'
                 );
+    GO
     ```
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>在所有副本上创建数据库镜像终结点
@@ -640,6 +643,7 @@ ENCRYPTION = REQUIRED ALGORITHM AES
 GO
 
 ALTER ENDPOINT [Hadr_endpoint] STATE = STARTED;
+GO
 ```
 
 ### <a name="create-the-availability-group"></a>创建可用性组
@@ -677,6 +681,7 @@ CREATE AVAILABILITY GROUP [ag1]
 GO
 
 ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
+GO
 ```
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>为 Pacemaker 创建 SQL Server 登录名
@@ -688,9 +693,12 @@ ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
 ```sql
 USE [master]
 GO
+
 CREATE LOGIN [pacemakerLogin] with PASSWORD= N'<password>';
 GO
+
 ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
+GO
 ```
 
 在所有 SQL Server 上，保存 SQL Server 登录名使用的凭据。 
@@ -733,6 +741,7 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
     GO
 
     ALTER AVAILABILITY GROUP [ag1] GRANT CREATE ANY DATABASE;
+    GO
     ```
 
 1. 在主要副本和每个次要副本上运行以下 Transact-SQL 脚本：
@@ -742,6 +751,7 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
     GO
     
     GRANT VIEW SERVER STATE TO pacemakerLogin;
+    GO
     ```
 
 1. 加入次要副本后，在 SSMS 对象资源管理器中展开“Always On 高可用性”节点即可看到这些副本： 
@@ -766,6 +776,7 @@ BACKUP DATABASE [db1] -- backs up the database to disk
 GO
 
 ALTER AVAILABILITY GROUP [ag1] ADD DATABASE [db1]; -- adds the database db1 to the AG
+GO
 ```
 
 ### <a name="verify-that-the-database-is-created-on-the-secondary-servers"></a>验证是否已在辅助服务器上创建了数据库
@@ -805,7 +816,6 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     Master/Slave Set: ag_cluster-master [ag_cluster]
     Masters: [ <VM1> ]
     Slaves: [ <VM2> <VM3> ]
-    virtualip      (ocf::heartbeat:IPaddr2):       Started <VM1>
     ```
 
 ### <a name="create-a-virtual-ip-resource"></a>创建虚拟 IP 资源
@@ -946,7 +956,6 @@ Daemon Status:
          Masters: [ <VM2> ]
          Slaves: [ <VM1> <VM3> ]
     virtualip      (ocf::heartbeat:IPaddr2):       Started <VM2>
-     
     ```
 
 ## <a name="test-fencing"></a>测试隔离
@@ -975,7 +984,7 @@ Node: <VM3> fenced
 
 ## <a name="next-steps"></a>后续步骤
 
-若要对 Azure 中创建的 SQL Server 使用可用性组侦听器，首先需要创建并配置负载均衡器。
+为了利用 SQL Server 的可用性组侦听程序，需要创建和配置一个负载均衡器。
 
 > [!div class="nextstepaction"]
-> [在 Azure 门户中创建并配置负载均衡器](../../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md#create-and-configure-the-load-balancer-in-the-azure-portal)
+> [教程：在 Azure 中的 RHEL 虚拟机上为 SQL Server 配置可用性组侦听程序](sql-server-linux-rhel-ha-listener-tutorial.md)

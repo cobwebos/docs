@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 8e272267ffc8dd2946a390470df78b179ebbdf92
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f8f2db3e81c498757bfc39bf70999ce1e70c09da
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199647"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117181"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>获取 MPA 帐户的 Azure 订阅的计费所有权
 
@@ -24,7 +24,7 @@ ms.locfileid: "77199647"
 
 本文适用于 Microsoft 合作伙伴协议的计费帐户。 这些帐户是为云解决方案提供商 (CSP) 创建的，用于在新的商业体验中管理其客户的计费。 新体验仅适用于特定的合作伙伴，他们至少有一个接受 Microsoft 客户协议 (MCA) 且有 Azure 计划的客户。 [检查你是否有权访问 Microsoft 合作伙伴协议](#check-access-to-a-microsoft-partner-agreement)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 1. 与客户建立[经销商关系](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer)。 查看 [CSP 区域授权概述](https://docs.microsoft.com/partner-center/regional-authorization-overview)，确保客户和合作伙伴租户在同一个获得授权的区域内。  
 
@@ -139,7 +139,7 @@ ms.locfileid: "77199647"
 
 ### <a name="azure-reservations-transfer"></a>Azure 预留项转移
 
-Azure 预留项不会随订阅一起自动移动。 请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)移动预留项。
+Azure 预留不会自动随订阅一起移动。可以在 CSP 中保留预留或[取消并重新购买预留](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)。 
 
 ### <a name="access-to-azure-services"></a>对 Azure 服务的访问权限
 

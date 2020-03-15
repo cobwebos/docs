@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 服务器迁移工具将本地 Hyp
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: a321c3e731a6649f0831f7d515f1c464b311c9ac
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: e1b670db3399857278c646d3793e8ec946d385b0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545902"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943301"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -31,7 +31,7 @@ ms.locfileid: "76545902"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始学习本教程之前，应做好以下准备：
 
@@ -243,7 +243,10 @@ Azure Migrate 服务器迁移运行一个轻型 Hyper-V VM 设备。
 
 ## <a name="complete-the-migration"></a>完成迁移
 
-1. 完成迁移后，右键单击该 VM 并选择“停止迁移”。  这会停止本地计算机的复制，并清理 VM 的复制状态信息。
+1. 完成迁移后，右键单击该 VM 并选择“停止迁移”。  这样会执行以下操作：
+    - 停止本地计算机的复制。
+    - 从 Azure Migrate 的“复制服务器”  计数中删除该计算机：服务器迁移。
+    - 清除 VM 的复制状态信息。
 2. 在已迁移的计算机上安装 Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 代理。
 3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
 4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。

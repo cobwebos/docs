@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: c3d571f494d5f08c7c9e3c551eba88fb86e1ec23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c7b41f77f8eb57c39489f1e5a69b0ac1c3c9c7d4
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448792"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943913"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教程：构建自定义搜索网页
 
@@ -32,9 +32,9 @@ ms.locfileid: "75448792"
 > - 添加固定条目
 > - 将自定义搜索集成到网页中
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-- 要继续学习本教程，需要 Bing 自定义搜索 API 的订阅密钥。  若要获取密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)。
+- 要继续学习本教程，需要 Bing 自定义搜索 API 的订阅密钥。  若要获取密钥，请在 Azure 门户中[创建必应自定义搜索资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)。 也可以使用[试用密钥](https://azure.microsoft.com/try/cognitive-services)。
 - 如果尚未安装 Visual Studio 2017 或更高版本，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-a-custom-search-instance"></a>创建自定义搜索实例
@@ -60,11 +60,11 @@ ms.locfileid: "75448792"
 
 要包含来自特定网站或 URL 的结果，可将其添加到“活动”选项卡  。
 
-1.  在“配置”  页上，单击“活动”  选项卡，输入要纳入搜索范围的一个或多个网站的 URL。
+1.       在“配置”  页上，单击“活动”  选项卡，输入要纳入搜索范围的一个或多个网站的 URL。
 
     ![“定义编辑器”的“活动”选项卡的屏幕截图](../media/customSrchEditor.png)
 
-2.  若要确保实例会返回结果，请在右侧的预览窗格中输入查询。 必应仅返回已编入索引的公共网站的结果。
+2.       若要确保实例会返回结果，请在右侧的预览窗格中输入查询。 必应仅返回已编入索引的公共网站的结果。
 
 ## <a name="add-blocked-entries"></a>添加阻止条目
 
@@ -79,7 +79,7 @@ ms.locfileid: "75448792"
 
 ## <a name="add-pinned-entries"></a>添加固定条目
 
-若要将特定网页固定到搜索结果顶部，可将该网页和查询术语添加到“固定”选项卡  。“固定”选项卡包含网页和查询术语的配对列表，用于指定显示为特定查询最匹配结果的网页  。 仅当用户的查询字符串与基于 pin 的匹配条件的 pin 查询字符串相匹配时，才会固定网页。 只有编制索引的网页才会显示在搜索中。 有关详细信息，请参阅[定义自定义视图](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results)。
+若要将特定网页固定到搜索结果顶部，可将该网页和查询术语添加到“固定”选项卡  。“固定”选项卡包含网页和查询术语的配对列表，用于指定显示为特定查询最匹配结果的网页  。 仅当用户的查询字符串根据固定项的匹配条件与固定项查询字符串匹配时，才会固定网页。 只有编制索引的网页才会显示在搜索中。 有关详细信息，请参阅[定义自定义视图](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results)。
 
 1. 在“配置”  页上，单击“固定”  选项卡，输入希望作为最匹配结果返回的网页及查询术语。  
   

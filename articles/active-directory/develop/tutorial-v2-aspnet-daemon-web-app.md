@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: ec6664e7c55057c29c5b741203b326ce460c6e91
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 635b12cc2ffc4d318eaaa74fffc17e4ce4d58c0b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701223"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129950"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教程：生成使用 Microsoft 标识平台终结点的多租户守护程序
 
@@ -39,7 +39,8 @@ ms.locfileid: "76701223"
 
 本示例中的“守护程序”组件是 API 控制器 `SyncController.cs`。 调用该控制器时，它会从 Microsoft Graph 提取客户的 Azure Active Directory (Azure AD) 租户中的用户列表。 `SyncController.cs` 由 Web 应用程序中的 AJAX 调用触发。 它使用[适用于 .NET 的 Microsoft 身份验证库 (MSAL)](msal-overview.md) 获取 Microsoft Graph 的访问令牌。
 
-对于更简单的控制台守护程序应用程序，请参阅 [.NET Core 守护程序快速入门](quickstart-v2-netcore-daemon.md)。
+>[!NOTE]
+> 如果你不熟悉 Microsoft 标识平台，我们建议你从 [.NET Core 守护程序快速入门](quickstart-v2-netcore-daemon.md)开始。
 
 ## <a name="scenario"></a>场景
 
@@ -49,7 +50,7 @@ ms.locfileid: "76701223"
 
 有关此示例中使用的概念的详细信息，请阅读[标识平台终结点的客户端凭据协议文档](v2-oauth2-client-creds-grant-flow.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要运行本快速入门中的示例，你将需要：
 

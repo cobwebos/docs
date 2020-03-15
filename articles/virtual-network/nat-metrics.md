@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 268f5f5b7bf1bed27a01085974bea72af6a84f3b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 51713db8532eb33f102de9320dea9eaeb98c4019
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304049"
+ms.locfileid: "78359083"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure 虚拟网络 NAT 指标
 
@@ -57,8 +57,10 @@ NAT 网关资源在 Azure Monitor 中提供以下多维指标：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[虚拟网络 NAT](nat-overview.md)。
-- 了解 [NAT 网关资源](nat-gateway-resource.md)
-- 了解 [Azure Monitor](../azure-monitor/overview.md)
-- 了解如何[排查 NAT 网关资源问题](troubleshoot-nat.md)。
+* 了解[虚拟网络 NAT](nat-overview.md)。
+* 了解 [NAT 网关资源](nat-gateway-resource.md)
+* 了解 [Azure Monitor](../azure-monitor/overview.md)
+* 了解如何[排查 NAT 网关资源问题](troubleshoot-nat.md)。
+* [在 UserVoice 中告诉我们下一步为虚拟网络 NAT 构建什么](https://aka.ms/natuservoice)。
+
 

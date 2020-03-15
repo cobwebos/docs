@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 75bd27f0945c66b9757055c0777b43a050ba67d7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920988"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942918"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 简介
 
@@ -25,15 +25,15 @@ Data Lake Storage Gen2 使 Azure 存储成为在 Azure 上构建企业 Data Lake
 
 Data Lake Storage Gen2 的一个基本部分是向 Blob 存储添加[分层命名空间](data-lake-storage-namespace.md)。 分层命名空间将对象/文件组织到目录层次结构中，以便进行有效的数据访问。 常见的对象存储命名约定在名称中使用斜杠来模拟分层目录结构。 这种结构在 Data Lake Storage Gen2 中得以真正实现。 诸如重命名或删除目录之类的操作在目录上成为单个原子元数据操作，而不是枚举或处理共享目录名称前缀的所有对象。
 
-过去，基于云的分析必须在性能、管理和安全性方面做出妥协。 Data Lake Storage Gen2 通过以下方式解决这些方面中的每个问题：
+Data Lake Storage Gen2 在 Blob 存储的基础上构建，并通过以下方式增强了性能、管理和安全性：
 
--   优化了性能  ，因为你不需要将复制或转换数据作为分析的先决条件。 分层命名空间极大地提高了目录管理操作的性能，从而提高了整体作业性能。
+-   优化了性能  ，因为你不需要将复制或转换数据作为分析的先决条件。 与 Blob 存储上的平面命名空间相比，分层命名空间极大地提高了目录管理操作的性能，从而提高了整体作业性能。
 
 -   管理  更为容易，因为你可以通过目录和子目录来组织和操作文件。
 
 -   安全性  是可以强制实施的，因为可以在目录或单个文件上定义 POSIX 权限。
 
--   由于 Data Lake Storage Gen2 基于低成本的 [Azure Blob 存储](storage-blobs-introduction.md)而构建，因此，可以实现成本效益  。 这些新增功能进一步降低了在 Azure 上运行大数据分析的总拥有成本。
+另外，Data Lake Storage Gen2 非常经济高效，因为它构建在低成本的 [Azure Blob 存储](storage-blobs-introduction.md)之上。 这些新增功能进一步降低了在 Azure 上运行大数据分析的总拥有成本。
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 的主要功能
 

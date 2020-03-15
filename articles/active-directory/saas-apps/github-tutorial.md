@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ddc2622a67979f989c030d615c402387e7762d5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3f4084532ac370880df69d825927240c297dd371
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983441"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129901"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 的单一登录 (SSO) 集成
 
@@ -32,7 +32,7 @@ ms.locfileid: "76983441"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 GitHub 的集成，需要以下项：
 
@@ -163,6 +163,8 @@ ms.locfileid: "76983441"
     c. 在记事本中打开从 Azure 门户下载的证书，将内容粘贴到“公共证书”  文本框中。
 
     d. 单击“编辑”图标，将“签名方法”和“摘要方法”从 **RSA-SHA1** 和 **SHA1** 编辑为 **RSA-SHA256** 和 **SHA256**，如下所示    。
+    
+    e. 从默认 URL 更新**断言使用者服务 URL (回复 URL)** ，以便 Github 中的 URL 与 Azure 应用注册中的 URL 匹配。
 
     ![image](./media/github-tutorial/tutorial_github_sha.png)
 

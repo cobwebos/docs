@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 0b9e7732e5274fd71c773a19d17e09ecdaa2ceb0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270021"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851131"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 C# 和 AI 从 Azure Blob 生成可搜索的内容
 
@@ -186,7 +186,7 @@ namespace EnrichwithAI
 
 ### <a name="create-a-client"></a>创建客户端
 
-在 Main 下创建的 `SearchServiceClient` 类的实例。
+在 `Main` 下创建 `SearchServiceClient` 类的实例。
 
 ```csharp
 public static void Main(string[] args)
@@ -213,6 +213,22 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 > [!NOTE]
 > `SearchServiceClient` 类管理与搜索服务的连接。 为了避免打开太多连接，应尝试在应用程序中共享 `SearchServiceClient` 的单个实例（如果可能）。 它的方法在启用此类共享时是线程安全的。
 > 
+
+### <a name="add-function-to-exit-the-program-during-failure"></a>添加在程序失败时退出程序的函数
+
+本教程旨在帮助你了解索引管道的每个步骤。 如果存在阻止程序创建数据源、技能组、索引或索引器的严重问题，程序将输出错误消息并退出，以便你了解并解决该问题。
+
+将 `ExitProgram` 添加到 `Main`，以处理需要程序退出的情况。
+
+```csharp
+private static void ExitProgram(string message)
+{
+    Console.WriteLine("{0}", message);
+    Console.WriteLine("Press any key to exit the program...");
+    Console.ReadKey();
+    Environment.Exit(0);
+}
+```
 
 ## <a name="3---create-the-pipeline"></a>3 - 创建管道
 
@@ -251,7 +267,7 @@ private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceCl
 
 为了让请求成功，此方法将返回已创建的数据源。 如果请求有问题（如参数无效），此方法将抛出异常。
 
-现在，在 Main 中添加一行，以调用刚刚添加的 `CreateOrUpdateDataSource` 函数。
+现在，在 `Main` 中添加一行，以调用刚刚添加的 `CreateOrUpdateDataSource` 函数。
 
 ```csharp
 public static void Main(string[] args)
@@ -537,7 +553,7 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 }
 ```
 
-将以下代码行添加到 Main 中。
+将以下行添加到 `Main`。
 
 ```csharp
     // Create the skills
@@ -675,7 +691,7 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 
 在测试期间，你可能会发现要多次尝试创建索引。 因此，请先检查要创建的索引是否已存在，再尝试创建索引。
 
-将以下代码行添加到 Main 中。
+将以下行添加到 `Main`。
 
 ```csharp
     // Create the index
@@ -779,7 +795,7 @@ private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, Data
     return indexer;
 }
 ```
-将以下代码行添加到 Main 中。
+将以下行添加到 `Main`。
 
 ```csharp
     // Create the indexer, map fields, and execute transformations
@@ -840,7 +856,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 
 处理某些源文件和技能的组合时经常会出现警告，这并不总是意味着出现了问题。 在本教程中，警告是良性的（例如，JPEG 文件中没有文本输入）。
 
-将以下代码行添加到 Main 中。
+将以下行添加到 `Main`。
 
 ```csharp
     // Check indexer overall status
@@ -854,7 +870,7 @@ private static void CheckIndexerOverallStatus(SearchServiceClient serviceClient,
 
 作为验证步骤，请查询所有字段的索引。
 
-将以下代码行添加到 Main 中。
+将以下行添加到 `Main`。
 
 ```csharp
 DocumentSearchResult<DemoIndex> results;
@@ -890,7 +906,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-将以下代码添加到 Main 中。 第一个 try-catch 返回索引定义，其中包含每个字段的名称、类型和属性。 第二个 try-catch 是参数化查询，其中的 `Select` 指定要包含在结果中的字段，例如 `organizations`。 `"*"` 搜索字符串返回单个字段的所有内容。
+将以下代码添加到 `Main`。 第一个 try-catch 返回索引定义，其中包含每个字段的名称、类型和属性。 第二个 try-catch 是参数化查询，其中的 `Select` 指定要包含在结果中的字段，例如 `organizations`。 `"*"` 搜索字符串返回单个字段的所有内容。
 
 ```csharp
 //Verify content is returned after indexing is finished

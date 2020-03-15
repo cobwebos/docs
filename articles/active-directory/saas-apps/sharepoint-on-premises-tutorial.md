@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 60ff8769192191ba112008e7baee23740147dfe9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: bd9e916d1e50d9d5bc0717a1d283b3dcf5d383c9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367037"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037013"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>教程：Azure Active Directory 与本地 SharePoint 的集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "77367037"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与本地 SharePoint 的集成，需要准备好以下各项：
 
@@ -271,7 +271,7 @@ ms.locfileid: "77367037"
 10. 在本地 SharePoint 场或替代的自定义声明提供程序解决方案中配置 AzureCP。  本示例使用 AzureCP。
 
     > [!NOTE]
-    > 请注意，AzureCP 不是 Microsoft 产品，Microsoft 技术支持部门不会为其提供支持。 根据 https://yvand.github.io/AzureCP/ 中所述，在本地 SharePoint 场中下载、安装并配置 AzureCP 
+    > 请注意，AzureCP 不是 Microsoft 产品，Microsoft 技术支持部门不会为其提供支持。 根据 [https://yvand.github.io/AzureCP/](https://yvand.github.io/AzureCP/) 中所述，在本地 SharePoint 场中下载、安装并配置 AzureCP 
 
 11. **在本地 SharePoint 中向 Azure Active Directory 安全组授予访问权限**：- 必须向这些组授予对本地 SharePoint 中的应用程序的访问权限。  使用以下步骤设置访问 Web 应用程序的权限。
 

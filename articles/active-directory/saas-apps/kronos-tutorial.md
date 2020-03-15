@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec568793d717da2493b2c45fe1dca5ad56073886
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4ae90b729db51287f2a98caa36ae43d83a2a207c
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986251"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897798"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Kronos 集成
 
@@ -91,7 +91,7 @@ ms.locfileid: "68986251"
 
 1. Kronos 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 1. 在“用户属性”  对话框的“用户声明”  部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
@@ -99,11 +99,11 @@ ms.locfileid: "68986251"
 
     ![image](./media/kronos-tutorial/tutorial_usermail.png)
 
-    ![图像](./media/kronos-tutorial/tutorial_usermailedit.png)
+    ![image](./media/kronos-tutorial/tutorial_usermailedit.png)
 
     b. 从“转换”列表中，选择“ExtractMailPrefix()”   。
 
-    c. 从“参数 1”列表中，选择“user.userprinicipalname”   。
+    c. 从“参数 1”列表中选择“user.userprincipalname”   。
 
     d. 单击“ **保存**”。
 
@@ -137,12 +137,12 @@ ms.locfileid: "68986251"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-kronos-sso"></a>配置 Kronos SSO

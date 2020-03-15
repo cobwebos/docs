@@ -7,15 +7,15 @@ titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
-ms.date: 09/17/2019
-ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/09/2020
+ms.openlocfilehash: ab9c5c5c1134d2e09a790a788a3b7e55f807dd9b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121074"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945366"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Azure SQL 数据库和数据仓库的专用链接（预览版）
+# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Azure SQL 数据库和数据仓库的专用链接
 
 使用专用链接可以通过**专用终结点**连接到 Azure 中的各种 PaaS 服务。 若要查看支持专用链接功能的 PaaS 服务列表，请参阅[专用链接文档](../private-link/index.yml)页。 专用终结点是特定 [VNet](../virtual-network/virtual-networks-overview.md) 和子网中的专用 IP 地址。 
 
@@ -145,7 +145,7 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 检查连接
 > [!NOTE]
->在客户端的连接字符串中使用服务器的**完全限定的域名(FQDN)** 。 直接登录到 IP 地址的任何尝试都将因设计失败。
+> 在客户端的连接字符串中使用服务器的**完全限定域名 (FQDN)** 。 直接登录 IP 地址的任何尝试都将失败。 此行为是设计使然，因为专用终结点会将流量路由到该区域中的 SQL 网关，并且需要指定 FQDN 才能成功登录。
 
 请按照此处的步骤使用 [SSMS 连接到 SQL 数据库](sql-database-connect-query-ssms.md)。 使用 SSMS 连接到 SQL 数据库后，请运行以下查询，验证是否正在从 Azure VM 的专用 IP 地址进行连接：
 
@@ -153,8 +153,9 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
-> [!NOTE]
-> 在预览版中，与专用终结点建立的连接仅支持使用“代理”作为[连接策略](sql-database-connectivity-architecture.md#connection-policy) 
+
+## <a name="limitations"></a>限制 
+与专用终结点的连接仅支持使用“代理”作为[连接策略](sql-database-connectivity-architecture.md#connection-policy) 
 
 
 ## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>从对等互连虚拟网络 (VNet) 中的 Azure VM 进行连接 

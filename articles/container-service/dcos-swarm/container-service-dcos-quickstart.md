@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9efedd5b619a2a3bd592019fea3ca48b7244ca10
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6274e24bae2e2a6eade0122fe244652eb29cacf9
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278503"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399225"
 ---
 # <a name="deprecated-deploy-a-dcos-cluster"></a>（已弃用）部署 DC/OS 群集
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS 提供了一个用于运行现代和容器化应用程序的分布式平台。 通过 Azure 容器服务，使预配生产就绪的 DC/OS 群集变得简单快捷。 此快速入门详细介绍了部署 DC/OS 群集和运行基本工作负载所需的基本步骤。
+DC/OS 提供了一个用于运行现代和容器化应用程序的分布式平台。 通过 Azure 容器服务，使预配生产就绪的 DC/OS 群集变得简单快捷。 本快速入门详细介绍了部署 DC/OS 群集和运行基本工作负荷所需的基本步骤。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -128,19 +128,19 @@ ACS DC/OS 群集的默认计划机制为 Marathon。 Marathon 用于启动应用
 
 运行以下命令以计划要在 DC/OS 群集上运行的应用程序。
 
-```azurecli
+```console
 dcos marathon app add marathon-app.json
 ```
 
 若要查看应用的部署状态，请运行以下命令。
 
-```azurecli
+```console
 dcos marathon app list
 ```
 
 当“WAITING”  列值从“True”  切换到“False”  时，应用程序部署已完成。
 
-```azurecli
+```output
 ID     MEM  CPUS  TASKS  HEALTH  DEPLOYMENT  WAITING  CONTAINER  CMD   
 /test   32   1     1/1    ---       ---      False      DOCKER   None
 ```

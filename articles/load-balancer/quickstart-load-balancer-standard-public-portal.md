@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 2477d91ac885d4ef39df7b9246f7272d66c3f7ee
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b424fe315737b84479283eed2d77398c8ce4f148
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251861"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898836"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建负载均衡器以对 VM 进行负载均衡
 
@@ -34,7 +34,7 @@ ms.locfileid: "78251861"
 
 ## <a name="create-a-load-balancer"></a>创建负载均衡器
 
-在本部分，你将创建一个负载均衡器，以帮助对虚拟机进行负载均衡。 可以创建公共负载均衡器或内部负载均衡器。 创建公共负载均衡器时，还必须为该负载均衡器创建一个配置为前端（默认情况下命名为 *LoadBalancerFrontend*）的新公共 IP 地址。
+在本部分，你将创建一个负载均衡器，以帮助对虚拟机进行负载均衡。 可以创建公共负载均衡器或内部负载均衡器。 创建公共负载均衡器时，还必须为该负载均衡器创建一个配置为前端（默认情况下命名为“LoadBalancerFrontend”  ）的新公共 IP 地址。
 
 1. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”    。
 2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”    ：

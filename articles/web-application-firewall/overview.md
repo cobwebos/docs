@@ -4,15 +4,15 @@ description: 本文提供 Azure Web 应用程序防火墙 (WAF) 的概述
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 03/06/2020
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 7b43a6bdac254493da8693b55158e15746e76dc3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 44bc8db5d8ada0378f8f9d0911ed398ba491d289
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488283"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851191"
 ---
 # <a name="what-is-azure-web-application-firewall"></a>什么是 Azure Web 应用程序防火墙？
 
@@ -24,7 +24,11 @@ Web 应用程序防火墙 (WAF) 为 Web 应用程序提供集中保护，使其�
 
 相较保护每个单独的 Web 应用程序，WAF 解决方案可以通过在中心位置修补已知漏洞，更快地对安全威胁做出反应。
 
-可将 WAF 与 Azure 应用程序网关和 Azure Front Door 服务一同部署。 目前，WAF 提供针对每个特定服务自定义的功能。 有关适用于每个服务的 WAF 功能的详细信息，请参阅每个服务的概述。
+## <a name="supported-services"></a>支持的服务
+
+WAF 可以通过 [Azure 应用程序网关](../application-gateway/overview.md)和 [Azure Front Door 服务](../frontdoor/front-door-overview.md)进行部署。 这两个服务都是第 7 层 (HTTP/S) 负载均衡器，但是应用程序网关是区域服务，而 Front Door 是全局服务。 WAF 提供针对每个特定服务自定义的功能。
+
+有关详细信息，请参阅“每个服务的 WAF 概述”。
 
 ## <a name="next-steps"></a>后续步骤
 

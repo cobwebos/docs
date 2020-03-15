@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: dapine
-ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6baa98d50c50146e93b4832053f63f3bead90a6d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119673"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330817"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>快速入门：使用语音 SDK 创建语音助手，Java（预览版）
 
 我们还提供了有关[语音转文本](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre)、[文本转语音](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre)和[语音翻译](~/articles/cognitive-services/Speech-Service/quickstarts/translate-speech-to-text.md?pivots=programming-language-java&tabs=jre)的快速入门。
 
-在本文中，我们将使用 [Azure 认知服务语音 SDK](speech-sdk.md) 创建一个 Java 控制台应用程序。 该应用程序将连接到事先创作的某个机器人。该机器人配置为使用 Direct Line 语音通道，发送语音请求，并返回语音响应活动（如果已配置）。 该应用程序是使用语音 SDK Maven 包和 Eclipse Java IDE 在 Windows、Ubuntu Linux 或 macOS 上生成的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
+在本文中，我们将使用 [Azure 认知服务语音 SDK](speech-sdk.md) 创建一个 Java 控制台应用程序。 该应用程序将连接到事先创作的某个机器人。该机器人配置为使用 Direct Line 语音通道，发送语音请求，并返回语音响应活动（如果已配置）。 该应用程序是使用语音 SDK Maven 包和 Eclipse Java IDE 在 Windows、Linux 或 macOS 上生成的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要：
 
-- 操作系统：Windows（64 位）、Ubuntu Linux 16.04/18.04（64 位）或 MacOS 10.13 或更高版本。
+- 操作系统：Windows（64 位）、Ubuntu Linux 16.04/18.04（64 位）、RHEL/CentOS 8 (x64) 或 macOS 10.13 或更高版本。
 - [Eclipse Java IDE](https://www.eclipse.org/downloads/)。
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) 或 [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 - 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或在 [Azure 门户](https://portal.azure.com)中创建它。
@@ -42,6 +42,17 @@ ms.locfileid: "77119673"
 sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
+
+在 RHEL/CentOS 8 上：
+
+```sh
+sudo yum update
+sudo yum groupinstall "Development tools"
+sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl wget
+```
+
+> [!NOTE]
+> 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
 如果运行 Windows（64 位），请确保已安装适用于平台的 Microsoft Visual C++ 可再发行程序包：
 

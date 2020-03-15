@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 564e8dd8e6d7c4c0e3747469875e030be30b1a9b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: a875cee7e6796a2c865bde4a62f2f0463eb12130
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046699"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967741"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Salesforce 集成
 
@@ -32,7 +32,7 @@ ms.locfileid: "77046699"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -180,7 +180,7 @@ ms.locfileid: "77046699"
 
     ![配置单一登录](./media/salesforce-tutorial/xmlchoose.png)
 
-1. 在“SAML 单一登录设置”  页上，字段将自动填充，请单击“保存”。
+1. 在“SAML 单一登录设置”  页上，自动填充字段，选择“启用用户预配”  ，然后单击“保存”  。
 
     ![配置单一登录](./media/salesforce-tutorial/salesforcexml.png)
 

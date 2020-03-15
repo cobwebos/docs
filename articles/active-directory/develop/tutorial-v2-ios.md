@@ -13,18 +13,21 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7704779ff605e28358f6f82c22ccda84d371dba9
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: abf083aacbdc643d780a8061b405752f36e27e45
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084384"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129933"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph
 
 本教程介绍如何将 iOS 或 macOS 应用与 Microsoft 标识平台集成。 应用会将用户登录，获取用于调用 Microsoft Graph API 的访问令牌，并针对 Microsoft Graph API 发出请求。  
 
 完成本指南后，应用程序将接受个人 Microsoft 帐户（包括 outlook.com、live.com 和其他帐户）进行登录，还能够接受使用 Azure Active Directory 的任何公司或组织的工作或学校帐户进行登录。
+
+>[!NOTE]
+> 如果你不熟悉 Microsoft 标识平台，我们建议你从[从 iOS 或 macOS 应用登录用户并调用 Microsoft Graph API](quickstart-v2-ios.md) 开始。
 
 ## <a name="how-this-tutorial-works"></a>本教程工作原理
 
@@ -44,7 +47,7 @@ ms.locfileid: "77084384"
 
 本教程适用于 iOS 和 macOS 应用。 请注意，这两个平台之间的某些步骤有所不同。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - XCode 版本 10.x 或更高版本是在本指南中构建应用所必需的。 可以从 [iTunes 网站](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode 下载 URL")下载 XCode。
 - Microsoft 身份验证库 ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc))。 可使用依赖项管理器或手动添加库。 以下说明演示了如何操作。

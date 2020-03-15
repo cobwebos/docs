@@ -4,17 +4,17 @@ description: 本教程介绍如何对所使用的 Azure 服务进行成本计划
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f5943e37267a79ad342fbd9afe0256a4ca7182e6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251189"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128349"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -54,7 +54,7 @@ ms.locfileid: "78251189"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-- 通过 https://portal.azure.com 登录到 Azure 门户。
+- 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>在 Azure 门户中创建预算
 
@@ -164,7 +164,7 @@ New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -Star
 ```
 ## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建预算
 
-可以使用 Azure 资源管理器模板创建预算。 该模板可帮助你在资源组下创建预算。 该模板仅支持企业协议客户。
+可以使用 Azure 资源管理器模板创建预算。 该模板可帮助你在资源组下创建预算。 
 
 选择下图登录到 Azure 门户并打开模板：
 

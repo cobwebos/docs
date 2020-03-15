@@ -1,20 +1,15 @@
 ---
 title: 快速入门 - 将 Docker 容器部署到容器实例 - 门户
 description: 本快速入门将使用 Azure 门户快速部署在隔离的 Azure 容器实例中运行的容器化 Web 应用
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: quickstart
-ms.date: 04/17/2019
-ms.author: danlep
+ms.date: 03/09/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e0c5ba57c7664a64c1b11bed215f419f31630d39
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533525"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087966"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure 中部署容器实例
 
@@ -40,15 +35,16 @@ ms.locfileid: "74533525"
 
 * 资源组：“新建” > `myresourcegroup` 
 * 容器名称：`mycontainer`
-* 容器映像：`mcr.microsoft.com/azuredocs/aci-helloworld`
+* 映像源：**快速启动映像**
+* 容器映像：`mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
 ![在 Azure 门户中配置新的容器实例的基本设置][aci-portal-03]
 
-对于本快速入门，使用“公共”的默认“映像类型”设置以部署公共 Microsoft `aci-helloworld` 映像   。 此 Linux 映像打包了一个用 Node.js 编写的小型 Web 应用程序，该应用程序提供静态 HTML 页面。
+对于本快速入门，请使用默认设置来部署公共 Microsoft `aci-helloworld` 映像。 此示例 Linux 映像打包了一个用 Node.js 编写的小型 Web 应用，该应用提供静态 HTML 页面。 还可以将自己的容器映像存储在 Azure 容器注册表、Docker Hub 或其他注册表中。
 
 在“网络”页，为容器指定一个“DNS 名称标签”   。 该名称在创建容器实例的 Azure 区域中必须是唯一的。 容器将可通过 `<dns-name-label>.<region>.azurecontainer.io` 公开访问。 如果收到“DNS 名称标签不可用”错误消息，请尝试使用一个不同的 DNS 名称标签。
 
-![在 Azure 门户中配置新的容器实例][aci-portal-04]
+![在 Azure 门户中配置新容器实例的网络设置][aci-portal-04]
 
 将其他设置保留为默认设置，然后选择“查看 + 创建”  。
 
@@ -56,7 +52,7 @@ ms.locfileid: "74533525"
 
 ![Azure 门户中新的容器实例的设置摘要][aci-portal-05]
 
-当部署启动时，会显示一个通知，指明部署正在进行。 部署了容器组后，会显示另一个通知。
+当部署启动时，会显示一个通知，指出正在进行部署。 部署了容器组后，会显示另一个通知。
 
 通过导航到“资源组” > “myresourcegroup” > “mycontainer”打开容器组的概述    。 记下容器实例的 **FQDN**（完全限定的域名）及其**状态**。
 

@@ -1,6 +1,6 @@
 ---
-title: '快速入门：缩放计算 - Azure 门户 '
-description: 在 Azure 门户中缩放 SQL 池中的计算。 横向扩展计算为提高性能或缩放重新计算以节约成本。
+title: 缩放 Synapse SQL 池的计算（Azure 门户）
+description: 可以使用 Azure 门户缩放 Synapse SQL 池（数据仓库）的计算。
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7463849223fdf81466237c7d0c912763988e80e6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: df0b21e98812faf99b6e67f262cec6e9c29db2f1
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78200325"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130262"
 ---
-# <a name="quickstart-scale-compute-in-azure-synapse-analytics-sql-pool-in-the-azure-portal"></a>快速入门：在 Azure 门户中缩放 Azure Synapse Analytics SQL 池中的计算
+# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-the-azure-portal"></a>快速入门：使用 Azure 门户缩放 Synapse SQL 池的计算
 
-在 Azure 门户中缩放 SQL 池中的计算。 [横向扩展计算](sql-data-warehouse-manage-compute-overview.md)以提高性能或按比例缩减计算以节约成本。 
+可以使用 Azure 门户缩放 Synapse SQL 池（数据仓库）的计算。 [横向扩展计算](sql-data-warehouse-manage-compute-overview.md)以提高性能或按比例缩减计算以节约成本。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -30,9 +30,9 @@ ms.locfileid: "78200325"
 
 ## <a name="before-you-begin"></a>开始之前
 
-可以缩放现有的 SQL 池，或使用[快速入门：创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的 SQL 池  。  本快速入门教程缩放 **mySampleDataWarehouse**。
+可以缩放现有的 SQL 池，或使用[快速入门：创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的 SQL 池  。 本快速入门教程缩放 **mySampleDataWarehouse**。
 
->[!Note]
+>[!IMPORTANT] 
 >SQL 池必须处于联机状态才能进行缩放。 
 
 ## <a name="scale-compute"></a>缩放计算
@@ -52,7 +52,4 @@ ms.locfileid: "78200325"
     ![移动滑块](media/quickstart-scale-compute-portal/scale-dwu.png)
 
 ## <a name="next-steps"></a>后续步骤
-现已了解如何缩放 SQL 池的计算。 若要详细了解 SQL 池，请继续阅读有关加载数据的教程。
-
-> [!div class="nextstepaction"]
->[将数据加载到 SQL 池中](load-data-from-azure-blob-storage-using-polybase.md)
+若要详细了解 SQL 池，请继续阅读[将数据加载到 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)教程。 

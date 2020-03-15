@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: azure, kinect, 规格, 硬件, DK, 功能, 深度, 彩色, RGB, IMU, 阵列, 多, 同步
-ms.openlocfilehash: 574537e7cf3887fc4c3c11597c9ad9f0c94869f8
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: e22f42a69e7d9b8283ec2f2da478dde0c27ce4ec
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78267569"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402886"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>同步多个 Azure Kinect DK 设备
 
@@ -30,7 +30,7 @@ ms.locfileid: "78267569"
    附加的同步设备可以提供遮挡的数据。
 - 扫描三维对象。
 - 将有效帧速率提升至 30 帧/秒 (FPS) 以上的值。
-- 捕获同一场景的多个 4K 彩色图像，所有图像在曝光开始后的 100 微秒 (&mu;s) 内对齐。
+- 捕获同一场景的多个 4K 彩色图像，所有图像都在曝光中心时间点的 100 微秒 (&mu;s) 内对齐。
 - 增大相机的空间覆盖范围。
 
 ## <a name="plan-your-multi-device-configuration"></a>规划多设备配置
@@ -74,9 +74,6 @@ ms.locfileid: "78267569"
 若要控制每个设备的精确定时，我们建议使用手动曝光设置。 使用自动曝光设置时，每个彩色相机可能会动态更改实际曝光。 由于曝光会影响定时，此类更改很快就会使相机失去同步。
 
 避免在图像捕获循环中重复指定相同的曝光设置。 必要时，请只调用 API 一次。
-
-#### <a name="timestamp-considerations"></a>时间戳考虑因素
-充当主角色或从属角色的设备根据“帧起点”而不是“帧中点”来报告图像时间戳。  
 
 #### <a name="avoiding-interference-between-multiple-depth-cameras"></a>避免多个深度相机之间产生干扰
 
@@ -128,7 +125,7 @@ ms.locfileid: "78267569"
 1. 运行 **sudo update-grub**。
 1. 重新启动计算机。
 
-### <a name="cables"></a>线缆
+### <a name="cables"></a>电缆
 
 若要将设备相互连接并连接到主机，必须使用 3.5 毫米公对公线缆（也称为 3.5 毫米音频线）。 线缆长度应小于 10 米，可以是立体声或单声道音频线。
 

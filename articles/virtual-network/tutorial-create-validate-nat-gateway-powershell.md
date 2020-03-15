@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: faaf32b08fdf2415b1c60192f917fc2aedc14704
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: e0fb78be363795bbb09fb0f14bd018fceea34a48
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660982"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897896"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>教程：使用 Azure PowerShell 创建 NAT 网关并测试 NAT 服务
 
@@ -271,7 +271,7 @@ New-AzVirtualNetwork -Name $vdn -ResourceGroupName $rsg -Location $loc -AddressP
 
 ### <a name="create-public-ip-for-destination-vm"></a>创建目标 VM 的公共 IP
 
-我们将创建一个用于访问源 VM 的公共 IP。  使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPdestinationVM** 的公共 IP 地址资源。  此命令的结果将存储在名为 **$publicIpdestinationVM** 的变量中，供稍后使用。
+我们将创建一个用于访问目标 VM 的公共 IP。  使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPdestinationVM** 的公共 IP 地址资源。  此命令的结果将存储在名为 **$publicIpdestinationVM** 的变量中，供稍后使用。
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'

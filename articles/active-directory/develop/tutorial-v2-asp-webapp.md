@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 50eb88373b05d979d7f4b67b317e98c2a944459b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e33f52d5c1f9c06a5acbae5c66b051ca82ef14c0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701324"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126646"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -30,6 +30,9 @@ ms.locfileid: "76701324"
 在本指南完成时，你的应用程序将能够接受个人帐户（例如 outlook.com、live.com 等）的登录。 此外，来自任何与 Microsoft 标识平台集成的公司或组织的工作和学校帐户也能够登录到你的应用。
 
 > 本指南需要 Microsoft Visual Studio 2019。  尚未安装？  [免费下载 Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+
+>[!NOTE]
+> 如果你不熟悉 Microsoft 标识平台，我们建议你从[将 Microsoft 标识平台登录添加到 ASP.NET Web 应用](quickstart-v2-aspnet-webapp.md)开始。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南生成的示例应用的工作原理
 

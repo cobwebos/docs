@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 9353e5749906aca1f0c91b622c93ba6028cd3bef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ab6904a2569e508c0697cc273af4fd40a1767de
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432200"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898739"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>教程 3：部署信用风险模型 - Azure 机器学习工作室（经典版）
 
@@ -40,7 +40,7 @@ ms.locfileid: "75432200"
 > * 管理 Web 服务
 > * 访问 Web 服务
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成[本教程的第二部分](tutorial-part2-credit-risk-train.md)。
 
@@ -227,11 +227,7 @@ Web 服务是一种 Azure Web 服务，可以两种方式之一使用 REST API �
 * **请求/响应** - 用户通过使用 HTTP 协议，向服务发送信用数据的一个或多个行，而服务会使用一个或多个结果集进行响应。
 * **Batch 执行** - 用户将信用数据的一个或多个行存储在 Azure blob 中，然后将 blob 位置发送到服务。 服务将对输入 blob 中数据的所有行进行评分，将结果存储到另一 blob 中，并返回该容器的 URL。  
 
-访问经典 Web 服务最快且最简单的方法是通过 [Azure ML 请求-响应服务 Web 应用](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)或 [Azure ML 批处理执行服务 Web 应用模板](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)。
-
-这些 Web 应用模板可生成自定义 Web 应用，该应用了解 Web 服务的输入数据及返回结果。 所需操作就是提供 Web 服务和数据的访问权限，余下操作由模板完成。
-
-有关使用 Web 应用模板的详细信息，请参阅[使用 Azure 机器学习 Web 服务与 Web 应用模板](/azure/machine-learning/studio/consume-web-services)。
+有关访问和使用 Web 服务的详细信息，请参阅[通过 Web 应用模板使用 Azure 机器学习 Web 服务](/azure/machine-learning/studio/consume-web-services)。
 
 
 

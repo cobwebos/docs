@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 03/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b23ef246561d052935642c323c2d830e21cbe7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f019d818fb5a017d184bda8d773eb0aaf0f3645a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "73570210"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944401"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Druva 集成
 
@@ -44,7 +43,8 @@ ms.locfileid: "73570210"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Druva 支持 SP 和 IDP 发起的 SSO 
+* Druva 支持 **IDP** 发起的 SSO
+* 配置 Druva SSO 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -81,11 +81,13 @@ ms.locfileid: "73570210"
 1. 在“选择单一登录方法”页上选择“SAML”   。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
-1. 在“基本 SAML 配置”部分，如果你要在“IDP 发起的模式”下配置应用程序，用户无需执行任何步骤，因为应用已与 Azure 进行预集成。  
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+1. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
-    在“登录 URL”文本框中，键入 URL：`https://login.druva.com/api/commonlogin/samlconsume` 
+    a. 在“标识符(实体 ID)”文本框中，键入字符串值：`DCP-login`  。
+    
+    b. 在“回复 URL (断言使用者服务 URL)”  文本框中，键入 URL：`https://cloud.druva.com/wrsaml/consume`。
 
 1. 单击“ **保存**”。
 
@@ -95,7 +97,7 @@ ms.locfileid: "73570210"
 
 1. 除了上述属性，Druva 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ------------------- | -------------------- |
     | emailAddress | user.email |
     | druva_auth_token | DCP 管理控制台生成的 SSO 令牌，无引号。  例如：X-XXXXX-XXXX-S-A-M-P-L-E+TXOXKXEXNX=. Azure 会在身份验证令牌两侧自动添加引号。 |
@@ -182,3 +184,5 @@ ms.locfileid: "73570210"
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [在 Azure AD 中试用 Druva](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

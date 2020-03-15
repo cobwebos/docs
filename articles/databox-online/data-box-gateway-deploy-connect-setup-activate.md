@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 33333f8df1e4809a330815e34074d1bca556cd14
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c2a0dde496d6af66387210ca9b2ebf9cb4bdae7f
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561827"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087944"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>教程：连接、设置、激活 Azure Data Box Gateway
 
@@ -29,7 +29,7 @@ ms.locfileid: "77561827"
 > * 连接到虚拟设备
 > * 设置和激活虚拟设备
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 配置和设置 Data Box Gateway 之前，请确保：
 
@@ -92,6 +92,11 @@ ms.locfileid: "77561827"
    2. 在“身份验证”下选择“无”或“NTLM”。   
    3. 如果使用身份验证，请输入用户名和密码   。
    4. 若要验证并应用配置的 Web 代理设置，请选择“应用”  。
+
+   > [!NOTE]
+   > 不支持代理自动配置 (PAC) 文件。 PAC 文件定义了 Web 浏览器和其他用户代理如何自动选择适当的代理服务器（访问方法）来获取给定 URL。
+   > 尝试拦截和读取所有流量（然后用其自己的证书对所有内容进行重新签名）的代理不兼容，因为代理的证书不受信任。
+   > 通常，透明代理非常适用于 Azure Data Box Gateway。
 
 4. （可选）在左窗格中选择“时间设置”，然后为设备配置时区以及主 NTP 服务器和辅助 NTP 服务器。  
 

@@ -3,13 +3,12 @@ title: 在 Azure 中创建用于响应 HTTP 请求的函数
 description: 了解如何通过命令行创建函数，然后将本地项目发布到 Azure Functions 中托管的无服务器实例。
 ms.date: 01/28/2020
 ms.topic: quickstart
-zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 2a02e1481d975f877508bde02948bc65561b9f13
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: f2ec642a477348923e8f587879d4804c07fff5a0
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272743"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096260"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入门：在 Azure 中创建用于响应 HTTP 请求的函数
 
@@ -23,7 +22,12 @@ ms.locfileid: "78272743"
 
 + 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell"  
 + [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 或更高的 2.x 版本。
+::: zone-end  
+::: zone pivot="programming-language-python"
++ Python 3.6 和 3.7 需要 [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 或更高的 2.x 版本。 Python 3.8 需要 Core Tools [版本 3.x](./functions-run-local.md#v2)。
+::: zone-end
 
 + [Azure CLI](/cli/azure/install-azure-cli) 2.0.76 或更高版本。 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
@@ -31,7 +35,7 @@ ms.locfileid: "78272743"
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-+ Azure Functions 支持的 [Python 3.7](https://www.python.org/downloads/release/python-375/) 或 [Python 3.6](https://www.python.org/downloads/release/python-368/)。 尚不支持 Python 3.8 和更高版本。 
++ Azure Functions 支持的 [Python 3.8](https://www.python.org/downloads/release/python-382/)、[Python 3.7](https://www.python.org/downloads/release/python-375/)、[Python 3.6](https://www.python.org/downloads/release/python-368/)。 
 ::: zone-end
 ::: zone pivot="programming-language-powershell"
 + [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
@@ -51,11 +55,11 @@ ms.locfileid: "78272743"
 + 运行 `node --version` 检查报告的 Node.js 版本是否为 8.x 或 10.x。
 ::: zone-end
 ::: zone pivot="programming-language-python"
-+ 运行 `python --version` (Linux/MacOS) 或 `py --version` (Windows)，检查报告的 Python 版本是否为 3.7.x 或 3.6.x。
++ 运行 `python --version` (Linux/MacOS) 或 `py --version` (Windows)，以检查 Python 版本是否报告 3.8.x、3.7.x 或 3.6.x。
 
 ## <a name="create-venv"></a>创建并激活虚拟环境
 
-在适当的文件夹中，运行以下命令以创建并激活一个名为 `.venv` 的虚拟环境。 请务必使用受 Azure Functions 支持的 Python 3.7 或 3.6。
+在适当的文件夹中，运行以下命令以创建并激活一个名为 `.venv` 的虚拟环境。 请务必使用受 Azure Functions 支持的 Python 3.8、3.7 或 3.6。
 
 
 # <a name="bash"></a>[bash](#tab/bash)
@@ -268,13 +272,15 @@ py -m venv .venv
     
     在本快速入门中使用的存储帐户只会产生几美分的费用。
     
-1. 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令创建 Functions 应用。 在以下示例中，请将 `<STORAGE_NAME>` 替换为在上一步骤中使用的帐户的名称，并将 `<APP_NAME>` 替换为适合自己的全局唯一名称。 `<APP_NAME>` 也是函数应用的默认 DNS 域。 
+1. 使用 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) 命令创建函数应用。 在以下示例中，请将 `<STORAGE_NAME>` 替换为在上一步骤中使用的帐户的名称，并将 `<APP_NAME>` 替换为适合自己的全局唯一名称。 `<APP_NAME>` 也是函数应用的默认 DNS 域。 
 
     ::: zone pivot="programming-language-python"  
-    如果使用 Python 3.6，请同时将 `--runtime-version` 更改为 `3.6`。
+    如果使用的是 Python 3.8，请将 `--runtime-version` 更改为 `3.8`，并将 `--functions_version` 更改为 `3`。
+    
+    如果使用的是 Python 3.6，请将 `--runtime-version` 更改为 `3.6`。
 
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 
@@ -283,19 +289,19 @@ py -m venv .venv
 
     
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 10 --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 10 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 
     ::: zone pivot="programming-language-csharp"  
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime dotnet --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime dotnet --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
     
     ::: zone pivot="programming-language-powershell"  
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 701ae5e70612b89c28e3092571e26e4f06389af0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7a15db6bbbcd9dfd43b025b780fda5a8b1d79da2
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924617"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946144"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>教程：使用 Azure Data Box Edge 传输数据
 
@@ -22,7 +22,7 @@ ms.locfileid: "64924617"
 
 此过程可能需要大约 10 分钟来完成。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 添加共享
@@ -69,7 +69,7 @@ ms.locfileid: "64924617"
    
     f. 根据你已创建的是 SMB 共享还是 NFS 共享，请执行以下步骤之一： 
      
-    - **SMB 共享**：在“所有特权本地用户”下选择“新建”或“使用现有”。    如果创建新的本地用户，请输入用户名和密码，然后确认密码。 此操作为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改它们。
+    - **SMB 共享**：在“所有特权本地用户”下选择“新建”或“使用现有”。    如果创建新的本地用户，请输入用户名和密码，然后确认密码。 此操作为本地用户分配权限。 当前不支持修改共享级权限。
 
         如果针对此共享数据选中“仅允许读取操作”复选框，则可以指定只读用户。 
 
@@ -145,7 +145,7 @@ ms.locfileid: "64924617"
 
 > [!NOTE] 
 > 以下注意事项适用于此版本：
-> - 在共享中创建文件以后，不允许重命名文件。 
+> - 不支持在共享中创建文件后重命名该文件。 
 > - 从共享中删除文件并不删除存储帐户中的条目。
 
 ## <a name="next-steps"></a>后续步骤

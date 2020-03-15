@@ -5,29 +5,29 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
-ms.date: 10/08/2019
-ms.openlocfilehash: 96420a3ea4ddc8c3d8210f1b35d6606257eba5ff
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,seodec18
+ms.date: 03/11/2020
+ms.openlocfilehash: 66bfa0d3ee4cb03f1b48e2db24be7a90d97f60d6
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494374"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117216"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Spark 结构化流式处理与 Apache Kafka on HDInsight 配合使用
 
-本教程说明如何使用 [Apache Spark 结构化流式处理](https://spark.apache.org/docs/latest/structured-streaming-programming-guide)和 [Apache Kafka](https://kafka.apache.org/) on Azure HDInsight 来读取和写入数据。
+本教程说明如何使用 [Apache Spark 结构化流式处理](https://spark.apache.org/docs/latest/structured-streaming-programming-guide)和 [Apache Kafka](./kafka/apache-kafka-introduction.md) on Azure HDInsight 来读取和写入数据。
 
 Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这允许以与批量计算相同的方式表达针对静态数据的流式计算。  
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure 资源管理器模板创建群集
 > * 将 Spark 结构化流式处理与 Kafka 配合使用
 
-完成本文档中的步骤后，请记得删除这些群集，避免支付额外费用。
+完成本文档中的步骤后，请记得删除这些群集，以免产生额外的费用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -142,8 +142,8 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     | 设置 | 值 |
     | --- | --- |
-    | Subscription | Azure 订阅 |
-    | Resource group | 包含资源的资源组。 |
+    | 订阅 | Azure 订阅 |
+    | 资源组 | 包含资源的资源组。 |
     | 位置 | 创建资源时所在的 Azure 区域。 |
     | Spark 群集名称 | Spark 群集的名称。 前六个字符必须与 Kafka 群集名称不同。 |
     | Kafka 群集名称 | Kafka 群集的名称。 前六个字符必须与 Spark 群集名称不同。 |
@@ -154,7 +154,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
     ![自定义模板的屏幕截图](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
-3. 阅读“条款和条件”  ，并选择“我同意上述条款和条件”  。
+3. 阅读“条款和条件”，然后选择“我同意上述条款和条件”   。
 
 4. 选择“购买”。 
 
@@ -168,23 +168,21 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 1. 收集主机信息。 使用下面的 curl 和 [jq](https://stedolan.github.io/jq/) 命令获取 Kafka ZooKeeper 主机和代理主机信息。 这些命令设计用于 Windows 命令提示符，在其他环境中需要进行细微的更改。 将 `KafkaCluster` 替换为 Kafka 群集的名称，并将 `KafkaPassword` 替换为群集登录密码。 另外，将 `C:\HDI\jq-win64.exe` 替换为 jq 安装的实际路径。 在 Windows 命令提示符中输入命令，然后保存输出，以便在后续步骤中使用。
 
     ```cmd
+    REM Enter cluster name in lowercase
+
     set CLUSTERNAME=KafkaCluster
     set PASSWORD=KafkaPassword
-    
+
     curl -u admin:%PASSWORD% -G "https://%CLUSTERNAME%.azurehdinsight.net/api/v1/clusters/%CLUSTERNAME%/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | C:\HDI\jq-win64.exe -r "["""\(.host_components[].HostRoles.host_name):2181"""] | join(""",""")"
-    
+
     curl -u admin:%PASSWORD% -G "https://%CLUSTERNAME%.azurehdinsight.net/api/v1/clusters/%CLUSTERNAME%/services/KAFKA/components/KAFKA_BROKER" | C:\HDI\jq-win64.exe -r "["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")"
     ```
 
-2. 在 Web 浏览器中，连接到 Spark 群集上的 Jupyter 笔记本。 在下列 URL 中，将 `CLUSTERNAME` 替换为你的 __Spark__ 群集名：
+1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net/jupyter`，其中的 `CLUSTERNAME` 是群集的名称。 出现提示时，输入创建群集时使用的群集登录名（管理员）和密码。
 
-        https://CLUSTERNAME.azurehdinsight.net/jupyter
+1. 选择“新建”>“Spark”，创建一个笔记本。 
 
-    出现提示时，输入创建群集时使用的群集登录名（管理员）和密码。
-
-3. 选择“新建”>“Spark”，创建一个笔记本。 
-
-4. Spark 流式处理具有微型批处理，这意味着数据是成批传入的，而执行程序则对这批数据运行。 如果执行程序的空闲超时少于处理批处理所需的时间，则将不断添加和删除执行程序。 如果执行程序的空闲超时大于批处理持续时间，则不会删除执行程序。 因此，**我们建议你在运行流式处理应用程序时通过将 spark.dynamicAllocation.enabled 设置为 false 来禁用动态分配。**
+1. Spark 流式处理具有微型批处理，这意味着数据是成批传入的，而执行程序则对这批数据运行。 如果执行程序的空闲超时少于处理批处理所需的时间，则将不断添加和删除执行程序。 如果执行程序的空闲超时大于批处理持续时间，则不会删除执行程序。 因此，**我们建议你在运行流式处理应用程序时通过将 spark.dynamicAllocation.enabled 设置为 false 来禁用动态分配。**
 
     加载供 Notebook 使用的包，方法是在 Notebook 单元格中输入以下信息。 使用 **CTRL + ENTER** 运行该命令。
 
@@ -199,7 +197,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     }
     ```
 
-5. 创建 Kafka 主题。 编辑以下命令，将 `YOUR_ZOOKEEPER_HOSTS` 替换为在第一步提取的 Zookeeper 主机信息。 在 Jupyter Notebook 中输入编辑的命令，创建 `tripdata` 主题。
+1. 创建 Kafka 主题。 编辑以下命令，将 `YOUR_ZOOKEEPER_HOSTS` 替换为在第一步提取的 Zookeeper 主机信息。 在 Jupyter Notebook 中输入编辑的命令，创建 `tripdata` 主题。
 
     ```scala
     %%bash
@@ -208,7 +206,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic tripdata --zookeeper $KafkaZookeepers
     ```
 
-6. 检索出租车行程数据。 在下一单元格中输入此命令，加载纽约市出租车行程数据。 先将数据加载到数据帧中，然后将数据帧作为单元格输出显示。
+1. 检索出租车行程数据。 在下一单元格中输入此命令，加载纽约市出租车行程数据。 先将数据加载到数据帧中，然后将数据帧作为单元格输出显示。
 
     ```scala
     import spark.implicits._
@@ -224,7 +222,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     taxiDF.show()
     ```
 
-7. 设置 Kafka 代理主机信息。 将 `YOUR_KAFKA_BROKER_HOSTS` 替换为在步骤 1 中提取的代理主机信息。  在下一 Jupyter Notebook 单元格中输入编辑的命令。
+1. 设置 Kafka 代理主机信息。 将 `YOUR_KAFKA_BROKER_HOSTS` 替换为在步骤 1 中提取的代理主机信息。  在下一 Jupyter Notebook 单元格中输入编辑的命令。
 
     ```scala
     // The Kafka broker hosts and topic used to write to Kafka
@@ -234,7 +232,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     println("Finished setting Kafka broker and topic configuration.")
     ```
 
-8. 将数据发送到 Kafka。 在以下命令中，`vendorid` 字段用作 Kafka 消息的键值。 将数据分区时，此键供 Kafka 使用。 所有字段都作为 JSON 字符串值存储在 Kafka 消息中。 在 Jupyter 中输入以下命令，使用批量查询将数据保存到 Kafka。
+1. 将数据发送到 Kafka。 在以下命令中，`vendorid` 字段用作 Kafka 消息的键值。 将数据分区时，此键供 Kafka 使用。 所有字段都作为 JSON 字符串值存储在 Kafka 消息中。 在 Jupyter 中输入以下命令，使用批量查询将数据保存到 Kafka。
 
     ```scala
     // Select the vendorid as the key and save the JSON string as the value.
@@ -243,7 +241,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     println("Data sent to Kafka")
     ```
 
-9. 声明一个架构。 以下命令演示了从 Kafka 读取 JSON 数据时如何使用架构。 在下一 Jupyter 单元格中输入此命令。
+1. 声明一个架构。 以下命令演示了从 Kafka 读取 JSON 数据时如何使用架构。 在下一 Jupyter 单元格中输入此命令。
 
     ```scala
     // Import bits useed for declaring schemas and working with JSON data
@@ -279,7 +277,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     println("Schema declared")
     ```
 
-10. 选择数据并启动流。 以下命令演示如何使用批量查询从 Kafka 检索数据，然后将结果写入 Spark 群集上的 HDFS。 在此示例中，`select` 从 Kafka 检索消息（值字段），然后为其应用架构。 然后，将数据以 parquet 格式写入 HDFS（WASB 或 ADL）。 在下一 Jupyter 单元格中输入此命令。
+1. 选择数据并启动流。 以下命令演示如何使用批量查询从 Kafka 检索数据，然后将结果写入 Spark 群集上的 HDFS。 在此示例中，`select` 从 Kafka 检索消息（值字段），然后为其应用架构。 然后，将数据以 parquet 格式写入 HDFS（WASB 或 ADL）。 在下一 Jupyter 单元格中输入此命令。
 
     ```scala
     // Read a batch from Kafka
@@ -291,14 +289,14 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     println("Wrote data to file")
     ```
 
-11. 可以在下一 Jupyter 单元格中输入此命令，验证这些文件是否已创建。 它会在 `/example/batchtripdata` 目录中列出文件。
+1. 可以在下一 Jupyter 单元格中输入此命令，验证这些文件是否已创建。 它会在 `/example/batchtripdata` 目录中列出文件。
 
     ```scala
     %%bash
     hdfs dfs -ls /example/batchtripdata
     ```
 
-12. 上一示例使用了批量查询，而以下命令则演示如何使用流式处理查询执行相同的操作。 在下一 Jupyter 单元格中输入此命令。
+1. 上一示例使用了批量查询，而以下命令则演示如何使用流式处理查询执行相同的操作。 在下一 Jupyter 单元格中输入此命令。
 
     ```scala
     // Stream from Kafka
@@ -309,7 +307,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     println("Wrote data to file")
     ```
 
-13. 运行以下单元格，验证是否已通过流式处理查询写入这些文件。
+1. 运行以下单元格，验证是否已通过流式处理查询写入这些文件。
 
     ```scala
     %%bash
@@ -322,7 +320,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 若要使用 Azure 门户删除资源组，请执行以下操作：
 
-1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。 
+1. 在 [Azure 门户](https://portal.azure.com/)中，展开左侧的菜单以打开服务菜单，然后选择“资源组”  以显示资源组列表。
 2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。 
 3. 选择“删除资源组”，然后进行确认。 
 
@@ -333,7 +331,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何使用 [Apache Spark 结构化流式处理](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)从 [Apache Kafka](https://kafka.apache.org/) on HDInsight 写入和读取数据。 使用以下链接，了解如何将 [Apache Storm](https://storm.apache.org/) 和 Kafka 结合使用。
+本教程介绍了如何使用 [Apache Spark 结构化流式处理](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)从 [Apache Kafka](./kafka/apache-kafka-introduction.md) on HDInsight 写入和读取数据。 使用以下链接，了解如何将 [Apache Storm](./storm/apache-storm-overview.md) 和 Kafka 结合使用。
 
 > [!div class="nextstepaction"]
 > [将 Apache Storm 与 Apache Kafka 配合使用](hdinsight-apache-storm-with-kafka.md)

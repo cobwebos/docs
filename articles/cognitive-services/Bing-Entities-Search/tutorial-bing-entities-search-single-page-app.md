@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 12/11/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 875a83501b00f0b23aa13317493ab6d341e4e283
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448593"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943135"
 ---
 # <a name="tutorial-single-page-web-app"></a>教程：单页 Web 应用
 
@@ -55,6 +55,10 @@ ms.locfileid: "75448593"
 
 > [!NOTE]
 > 本教程大致类似于[单页必应 Web 搜索应用教程](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)，但只涉及实体搜索结果。
+
+## <a name="prerequisites"></a>先决条件
+
+若要继续学习本教程，需要必应搜索 API 和必应地图 API 的订阅密钥。 如果没有这些密钥，可以使用[试用密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)和[基本必应地图密钥](https://www.microsoft.com/maps/create-a-bing-maps-key)。
 
 ## <a name="app-components"></a>应用组件
 

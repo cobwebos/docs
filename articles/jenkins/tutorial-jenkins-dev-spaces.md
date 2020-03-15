@@ -3,12 +3,12 @@ title: 通过 Azure Kubernetes 服务使用适用于 Jenkins 的 Azure Dev Space
 description: 了解如何在持续集成管道中使用 Azure Dev Spaces 插件。
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 7b23893eb331f55ff41992a2ca660e79f44a609a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 281565cec5ee947781ab8ee9f62a00e01f9ababb
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250901"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037024"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>教程：通过 Azure Kubernetes 服务使用适用于 Jenkins 的 Azure Dev Spaces 插件 
 
@@ -265,7 +265,7 @@ Jenkins 管道配置和 Jenkinsfile 定义 CI 管道中的阶段。 此流程图
 
 ![Jenkins 管道流](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-flow.png)
 
-1. 从 https://github.com/azure-devops/mywebapi 下载  mywebapi 项目的已修改版本。 此项目包含创建管道所需的一系列文件，包括 Jenkinsfile，Dockerfile 和 Helm 图表   。
+1. 从 [https://github.com/azure-devops/mywebapi](https://github.com/azure-devops/mywebapi) 下载  mywebapi 项目的已修改版本。 此项目包含创建管道所需的一系列文件，包括 Jenkinsfile，Dockerfile 和 Helm 图表   。
 
 2. 登录到 Jenkins。 从左侧菜单中选择“添加项”  。
 

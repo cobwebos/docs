@@ -1,14 +1,15 @@
 ---
 title: 教程 - 在 Azure Kubernetes 服务中创建应用程序网关入口控制器
-description: 演示如何创建包含 Azure Kubernetes 服务和用作入口控制器的应用程序网关的 Kubernetes 群集的教程
+description: 在本教程中，你将使用 Azure Kubernetes 服务创建一个 Kubernetes 群集，并且在该群集中将应用程序网关作为入口控制器
+keywords: azure devops terraform application gateway ingress aks kubernetes
 ms.topic: tutorial
-ms.date: 11/13/2019
-ms.openlocfilehash: 14b8f6ba74a06c126da239671cbb2053df19af7d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.date: 03/09/2020
+ms.openlocfilehash: 6b48d0acb654f0b0643c0754e53f6bc6ea76bb45
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251757"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945322"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>教程：在 Azure Kubernetes 服务中创建应用程序网关入口控制器
 
@@ -77,7 +78,10 @@ ms.locfileid: "78251757"
 
     ```hcl
     provider "azurerm" {
-        version = "~>1.18"
+      # The "feature" block is required for AzureRM provider 2.x. 
+      # If you are using version 1.x, the "features" block is not allowed.
+      version = "~>2.0"
+      features {}
     }
 
     terraform {
@@ -442,11 +446,10 @@ ms.locfileid: "78251757"
         }
       }
 
-      agent_pool_profile {
+      default_node_pool {
         name            = "agentpool"
-        count           = var.aks_agent_count
+        node_count      = var.aks_agent_count
         vm_size         = var.aks_agent_vm_size
-        os_type         = "Linux"
         os_disk_size_gb = var.aks_agent_os_disk_size
         vnet_subnet_id  = data.azurerm_subnet.kubesubnet.id
       }
@@ -475,7 +478,7 @@ ms.locfileid: "78251757"
 
 使用 `linux_profile` 记录可以配置用于通过 SSH 登录到工作器节点的设置。
 
-使用 AKS 时，只需支付工作节点的费用。 `agent_pool_profile` 记录配置这些工作器节点的详细信息。 `agent_pool_profile record` 包含要创建的工作器节点数，以及工作器节点的类型。 如果将来需要纵向扩展或缩减群集，请修改此记录中的 `count` 值。
+使用 AKS 时，只需支付工作节点的费用。 `agent_pool_profile` 记录配置这些工作器节点的详细信息。 `agent_pool_profile record` 包含要创建的工作器节点数，以及工作器节点的类型。 如果将来需要纵向扩展或纵向缩减群集，请修改此记录中的 `count` 值。
 
 ## <a name="create-a-terraform-output-file"></a>创建 Terraform 输出文件
 

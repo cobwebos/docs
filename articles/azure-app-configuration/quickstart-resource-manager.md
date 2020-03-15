@@ -6,19 +6,23 @@ ms.author: lcozzens
 ms.date: 03/05/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
-ms.custom: mvc
-ms.openlocfilehash: 7c6f4b2ea9494c004067a8b19df2c2f098ac2b7f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.custom:
+- mvc
+- subject-armqs
+ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274506"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126381"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration"></a>快速入门：自动完成使用应用程序配置的 VM 部署
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>快速入门：使用应用配置和资源管理器模板自动部署 VM
 
 Azure PowerShell 模块用于通过 PowerShell cmdlet 或脚本创建和管理 Azure 资源。 本快速入门介绍如何使用 Azure PowerShell 和 Azure 资源管理器模板部署 Azure 应用程序配置存储。 然后，介绍如何使用该存储中的键-值来部署 VM。
 
 你将使用必备模板创建应用程序配置存储，然后使用 Azure 门户或 Azure CLI 将键-值添加到存储中。 主模板引用现有配置存储中的现有键-值配置。 检索到的值用于设置模板创建的资源（例如本示例中的 VM）的属性。
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -85,7 +89,7 @@ New-AzResourceGroup `
       },
       "skuName": {
         "type": "string",
-        "defaultValue": "free",
+        "defaultValue": "standard",
         "metadata": {
           "description": "Specifies the SKU of the app configuration store."
         }
@@ -332,7 +336,7 @@ New-AzResourceGroup `
                     "imageReference": {
                         "publisher": "MicrosoftWindowsServer",
                         "offer": "WindowsServer",
-                        "sku": "[listKeyValue(variables('appConfigRef'), '2019-02-01-preview', variables('windowsOSVersionParameters')).value]",
+                        "sku": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('windowsOSVersionParameters')).value]",
                         "version": "latest"
                     },
                     "osDisk": {
@@ -340,7 +344,7 @@ New-AzResourceGroup `
                     },
                     "dataDisks": [
                         {
-                            "diskSizeGB": "[listKeyValue(variables('appConfigRef'), '2019-02-01-preview', variables('diskSizeGBParameters')).value]",
+                            "diskSizeGB": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('diskSizeGBParameters')).value]",
                             "lun": 0,
                             "createOption": "Empty"
                         }

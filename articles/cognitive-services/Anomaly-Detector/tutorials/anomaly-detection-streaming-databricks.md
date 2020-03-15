@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 93ee5df4327aa396573665cd0c2cbd8222015cce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e0df0773daf8f9be21ac70d8390013adfd93483a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448895"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402673"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教程：使用 Azure Databricks 针对流数据进行异常情况检测
 
@@ -40,14 +40,12 @@ ms.locfileid: "75448895"
 > * 在推文中运行异常检测
 
 > [!Note]
-> 本教程引入了一个方法，用于为异常检测器 API 实现建议的[解决方案体系结构](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/)。
+> * 本教程引入了一个方法，用于为异常检测器 API 实现建议的[解决方案体系结构](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/)。
+> * 本教程不能使用异常检测器 API 或 Azure Databricks 的免费试用版来完成。 
 
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+创建 [Azure 订阅](https://azure.microsoft.com/free/)（如果没有）。
 
-> [!Note]
-> 本教程不能使用异常检测器 API 的免费试用版密钥来完成。 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为**即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。
-
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [Azure 事件中心命名空间](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)和事件中心。
 

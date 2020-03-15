@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: allensu
-ms.openlocfilehash: 0e19271b5c69610dd9f44c3121e195b80732279c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669533"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359256"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>什么是虚拟网络 NAT（公共预览版）？
 
@@ -192,13 +192,13 @@ NAT 网关通过两个单独的计量器来计费：
 
 ## <a name="limitations"></a>限制
 
-- NAT 与标准 SKU 公共 IP、公共 IP 前缀和负载均衡器资源兼容。   基本资源（例如基本负载均衡器）以及派生自这些资源的任何产品都与 NAT 不兼容。  必须将基本资源放在未配置 NAT 的子网中。
-- 支持 IPv4 地址系列。  NAT 不会与 IPv6 地址系列交互。
-- 使用 NAT 时不支持 NSG 流日志记录。
-- NAT 不能跨多个虚拟网络。
+* NAT 与标准 SKU 公共 IP、公共 IP 前缀和负载均衡器资源兼容。   基本资源（例如基本负载均衡器）以及派生自这些资源的任何产品都与 NAT 不兼容。  必须将基本资源放在未配置 NAT 的子网中。
+* 支持 IPv4 地址系列。  NAT 不会与 IPv6 地址系列交互。  NAT 不能部署在具有 IPv6 前缀的子网中。
+* 使用 NAT 时不支持 NSG 流日志记录。
+* NAT 不能跨多个虚拟网络。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [NAT 网关资源](./nat-gateway-resource.md)。
-- [在 UserVoice 中告诉我们接下来你希望开发哪些功能](https://aka.ms/natuservoice)。
-- [提供有关公共预览版的反馈](https://aka.ms/natfeedback)。
+* 了解 [NAT 网关资源](./nat-gateway-resource.md)。
+* [在 UserVoice 中告诉我们下一步为虚拟网络 NAT 构建什么](https://aka.ms/natuservoice)。
+* [提供有关公共预览版的反馈](https://aka.ms/natfeedback)。
