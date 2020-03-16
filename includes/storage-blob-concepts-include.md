@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: cac6c40397e272d6d65931029c500bdcc2b774cc
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: e90e750bf248bdcc8e50c6ddc6e9fa0273660195
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875405"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136012"
 ---
 Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义的数据（如文本或二进制数据）。
 
@@ -30,7 +30,7 @@ Blob 存储用于：
 
 用户或客户端应用程序通过 HTTP/HTTPS 可以从世界任何地方访问 Blob 存储中的对象。 Blob 存储中的对象可以通过 [Azure 存储 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage)、[Azure CLI](https://docs.microsoft.com/cli/azure/storage) 或 Azure 存储客户端库访问。 提供了不同语言的客户端库，包括：
 
-* [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client)
+* [.NET](/dotnet/api/overview/azure/storage?view=azure-dotnet)
 * [Java](https://docs.microsoft.com/java/api/overview/azure/storage)
 * [Node.js](https://azure.github.io/azure-storage-node) 
 * [Python](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-python)
