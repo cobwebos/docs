@@ -1,6 +1,6 @@
 ---
-title: 快速入门：创建数据仓库 (PowerShell)
-description: 通过 Azure PowerShell 使用服务器级防火墙规则快速创建 Azure Synapse Analytics 数据仓库逻辑服务器。
+title: 使用 Azure PowerShell 创建并查询 Synapse SQL 池
+description: 通过 Azure PowerShell 使用服务器级防火墙规则快速创建 Synapse SQL 池逻辑服务器。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 3cf55a400c1894794d555e1362f2197aad44a96b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199982"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130296"
 ---
-# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建和查询数据仓库
+# <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建并查询 Synapse SQL 池
 
-通过使用 Azure PowerShell 预配 SQL 池来创建 Azure Synapse Analytics 数据仓库。
+使用 Azure PowerShell 在 Azure Synapse Analytics 中创建 Synapse SQL 池（数据仓库）。
 
 ## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-> [!NOTE]
-> 创建仓库可能会产生新的计费服务。  有关详细信息，请参阅 [Azure Synapse Analytics 定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
+> [!IMPORTANT]
+> 创建 SQL 池可能会产生新的计费服务。  有关详细信息，请参阅 [Azure Synapse Analytics 定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -94,7 +94,9 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>配置服务器防火墙规则
 
-使用 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) 命令创建 [Azure SQL 服务器级防火墙规则](../sql-database/sql-database-firewall-configure.md)。 服务器级防火墙规则允许外部应用程序（例如 SQL Server Management Studio 或 SQLCMD 实用程序）通过 SQL 数据仓库服务防火墙连接到 SQL 数据仓库。 在以下示例中，防火墙仅对其他 Azure 资源开放。 要启用外部连接，请将 IP 地址更改为适合你环境的地址。 若要开放所有 IP 地址，请使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束地址。
+使用 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) 命令创建 [Azure SQL 服务器级防火墙规则](../sql-database/sql-database-firewall-configure.md)。 服务器级防火墙规则允许外部应用程序（例如 SQL Server Management Studio 或 SQLCMD 实用程序）通过 SQL 池服务防火墙连接到 SQL 池。 
+
+在以下示例中，防火墙仅对其他 Azure 资源开放。 要启用外部连接，请将 IP 地址更改为适合你环境的地址。 若要开放所有 IP 地址，请使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束地址。
 
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -107,8 +109,8 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 >
 
 
-## <a name="create-a-data-warehouse"></a>创建数据仓库
-此示例使用以前定义的变量创建数据仓库。  它将服务目标指定为 DW100c，这是针对数据仓库的低成本起点。 
+## <a name="create-a-sql-pool"></a>创建 SQL 池
+以下示例使用以前定义的变量创建 SQL 池。  它将服务目标指定为 DW100c，这是针对 SQL 池的低成本起点。 
 
 ```Powershell
 New-AzSqlDatabase `
@@ -124,10 +126,10 @@ New-AzSqlDatabase `
 所需的参数有：
 
 * **RequestedServiceObjectiveName**：请求的[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)的数量。 增加此数量会增加计算成本。 有关支持值的列表，请参阅[内存和并发限制](memory-concurrency-limits.md)。
-* **DatabaseName**：要创建的数据仓库的名称。
+* **DatabaseName**：要创建的 SQL 池的名称。
 * **ServerName**：用于创建过程的服务器名称。
 * **ResourceGroupName**：要使用的资源组。 若要查找订阅中可用的资源，请使用 Get-AzureResource。
-* **Edition**：必须是“DataWarehouse”才能创建数据仓库。
+* **Edition**：必须是“DataWarehouse”才能创建 SQL 池。
 
 可选参数有：
 
@@ -151,6 +153,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>后续步骤
 
-现已创建数据仓库、防火墙规则、已连接到数据仓库，并运行了几个查询。 若要了解详细信息，请继续阅读有关加载数据的教程。
-> [!div class="nextstepaction"]
->[将数据加载到数据仓库](load-data-from-azure-blob-storage-using-polybase.md)
+现已创建 SQL 池、创建防火墙规则、连接到 SQL 池并运行了几个查询。 若要了解详细信息，请继续阅读[将数据加载到 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)一文。

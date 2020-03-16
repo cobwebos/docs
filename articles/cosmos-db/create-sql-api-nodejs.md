@@ -8,22 +8,22 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: dech
-ms.openlocfilehash: c36f31ef30b6386677c517b1d7e643f9eacea093
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 729fd776321a90257289dcf92f13079a8206d9d9
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303284"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927365"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Node.js 连接和查询 Azure Cosmos DB SQL API 帐户中的数据
 
 > [!div class="op_single_selector"]
-> * [.NET V3](create-sql-api-dotnet.md)
-> * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
-> * [Node.js](create-sql-api-nodejs.md)
-> * [Python](create-sql-api-python.md)
-> * [Xamarin](create-sql-api-xamarin-dotnet.md)
+> - [.NET V3](create-sql-api-dotnet.md)
+> - [.NET V4](create-sql-api-dotnet-V4.md)
+> - [Java](create-sql-api-java.md)
+> - [Node.js](create-sql-api-nodejs.md)
+> - [Python](create-sql-api-python.md)
+> - [Xamarin](create-sql-api-xamarin-dotnet.md)
 
 在本快速入门中，你将通过 Azure 门户并使用从 GitHub 克隆的 Node.js 应用来创建和管理 Azure Cosmos DB SQL API 帐户。 Azure Cosmos DB 是一种多模型数据库服务，它通过全局分布和水平缩放功能让你快速创建和查询文档、表、键/值和图形数据库。
 
@@ -33,32 +33,40 @@ ms.locfileid: "78303284"
 - [Node.js 6.0.0+](https://nodejs.org/)。
 - [Git](https://www.git-scm.com/downloads)。
 
-## <a name="create-a-database"></a>创建数据库
+## <a name="create-an-azure-cosmos-account"></a>创建 Azure Cosmos 帐户
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+在本快速入门中，可以使用[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 选项创建 Azure Cosmos 帐户。
+
+1. 导航到[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 页。
+
+1. 选择 **SQL** API 帐户，然后选择“创建”  。 使用 Microsoft 帐户登录。
+
+1. 登录成功后，应该就可以使用 Azure Cosmos 帐户。 选择“在 Azure 门户中打开”，  打开新创建的帐户。
+
+“免费试用 Azure Cosmos DB”选项不需要 Azure 订阅，它为你提供了有效期为 30 天的 Azure Cosmos 帐户。 若要延长 Azure Cosmos 帐户的使用时间，应改为在 Azure 订阅中[创建帐户](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account)。
 
 ## <a name="add-a-container"></a>添加容器
 
-现在可以在 Azure 门户中使用数据资源管理器工具来创建数据库和容器。 
+现在可以在 Azure 门户中使用数据资源管理器工具来创建数据库和容器。
 
-1. 选择“数据资源管理器” > “新建容器”。   
-    
-    “添加容器”区域显示在最右侧，可能需要向右滚动才能看到它。 
+1. 选择“数据资源管理器” > “新建容器”。  
 
-    ![Azure 门户 >“数据资源管理器”>“添加集合”窗格](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
+   “添加容器”区域显示在最右侧，可能需要向右滚动才能看到它。 
+
+   ![Azure 门户 >“数据资源管理器”>“添加集合”窗格](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
 
 2. 在“添加容器”页中，输入新容器的设置。 
 
-    |设置|建议的值|说明
-    |---|---|---|
-    |**数据库 ID**|任务|输入 *Tasks* 作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。  此选项还有助于节省成本。 |
-    |**吞吐量**|400|将吞吐量保留为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。| 
-    |**容器 ID**|Items|输入 *Items* 作为新容器的名称。 容器 ID 与数据库名称的字符要求相同。|
-    |**分区键**| /category| 本文中所述的示例使用 /category  作为分区键。|
-    
-    除了前面的设置，还可以选择为容器添加“唯一键”。  在此示例中，请将此字段留空。 开发人员可以使用唯一键向数据库添加一层数据完整性。 创建容器时，通过创建唯一键策略，可确保每个分区键的一个或多个值的唯一性。 若要了解详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)一文。
-    
-    选择“确定”  。 数据资源管理器将显示新的数据库和容器。
+   | 设置           | 建议的值 | 说明                                                                                                                                                                                                                                                                                                                                                                           |
+   | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **数据库 ID**   | 任务           | 输入 _Tasks_ 作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。  此选项还有助于节省成本。 |
+   | **吞吐量**    | 400             | 将吞吐量保留为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。                                                                                                                                                                                                                                                    |
+   | **容器 ID**  | Items           | 输入 _Items_ 作为新容器的名称。 容器 ID 与数据库名称的字符要求相同。                                                                                                                                                                                                                                                               |
+   | **分区键** | /category       | 本文中所述的示例使用 /category  作为分区键。                                                                                                                                                                                                                                                                                                           |
+
+   除了前面的设置，还可以选择为容器添加“唯一键”。  在此示例中，请将此字段留空。 开发人员可以使用唯一键向数据库添加一层数据完整性。 创建容器时，通过创建唯一键策略，可确保每个分区键的一个或多个值的唯一性。 若要了解详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)一文。
+
+   选择“确定”  。 数据资源管理器将显示新的数据库和容器。
 
 ## <a name="add-sample-data"></a>添加示例数据
 
@@ -84,9 +92,21 @@ ms.locfileid: "78303284"
 
 如果你熟悉旧版 SQL JavaScript SDK，则可能习惯于看到术语“集合”和“文档”。   由于 Azure Cosmos DB 支持[多 API 模型](introduction.md)，因此 [2.0+ 版的 JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) 使用通用术语“容器”  （可能为集合、图形或表），并使用“项”  来描述容器的内容。
 
+Cosmos DB JavaScript SDK 称为“@azure/cosmos”，可以从 npm 安装...
+
+```bash
+npm install @azure/cosmos
+```
+
 以下代码片段全部摘自 _app.js_ 文件。
 
-- `CosmosClient` 对象已初始化。
+- `CosmosClient` 从 `@azure/cosmos` npm 包导入。
+
+  ```javascript
+  const CosmosClient = require("@azure/cosmos").CosmosClient;
+  ```
+
+- 新的 `CosmosClient` 对象已初始化。
 
   ```javascript
   const client = new CosmosClient({ endpoint, key });
@@ -115,8 +135,6 @@ ms.locfileid: "78303284"
   const { resources: results } = await container.items
     .query(querySpec)
     .fetchAll();
-
-  return results;
   ```
 
 - 创建新项
@@ -134,8 +152,6 @@ ms.locfileid: "78303284"
   const { resource: itemToUpdate } = await container
     .item(id, category)
     .replace(itemToUpdate);
-
-  return result;
   ```
 
 - 删除项
@@ -167,19 +183,17 @@ ms.locfileid: "78303284"
 
 ## <a name="run-the-app"></a>运行应用
 
-1. 在终端中运行 `npm install`，安装所需的 npm 模块
+1. 在终端中运行 `npm install`，安装“@azure/cosmos”npm 包
 
 2. 在终端中运行 `node app.js`，启动 node 应用程序。
 
-现可返回数据资源管理器，然后修改和处理这些新数据。
+3. 之前在本快速入门中创建的两个项已列出。新项已创建。 该项上的“isComplete”标志更新为“true”，最后该项被删除。
+
+可以继续试用此示例应用程序，也可以返回到数据资源管理器来修改和处理数据。
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
-
-## <a name="clean-up-resources"></a>清理资源
-
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

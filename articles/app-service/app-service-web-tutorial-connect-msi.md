@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: b57ee458b857db5692f34e51f388ca8374a3c03b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: af44f4a96567cc86c9f884cdfe5e28ff6b7bd8f3
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524370"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897697"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接的安全
 
@@ -41,7 +41,7 @@ ms.locfileid: "77524370"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文从你在[教程：使用 SQL 数据库在 Azure 中生成 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)或[教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用](app-service-web-tutorial-dotnetcore-sqldb.md)。 请先完成这两篇教程之一（如果尚未完成）。 也可调整这些步骤，使用 SQL 数据库来生成自己的 .NET 应用。
 
@@ -127,6 +127,9 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.1
 
 - 找到名为 `MyDbConnection` 的连接字符串，并将其 `connectionString` 值替换为 `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`。 将 \<server-name> 和 \<db-name> 替换为你的服务器名称和数据库名称   。
 
+> [!NOTE]
+> 刚注册的 SqlAuthenticationProvider 基于之前安装的 AppAuthentication 库。 默认情况下，它使用系统分配的标识。 若要利用用户分配的标识，需提供其他配置。 请参阅针对 AppAuthentication 库的[连接字符串支持](../key-vault/service-to-service-authentication.md#connection-string-support)。
+
 这就是连接到 SQL 数据库所要完成的所有准备工作。 在 Visual Studio 中调试时，代码将使用[设置 Visual Studio](#set-up-visual-studio) 中配置的 Azure AD 用户。 稍后你将设置 SQL 数据库服务器，以允许应用服务应用的托管标识建立连接。
 
 键入 `Ctrl+F5`，再次运行该应用。 浏览器中相同的 CRUD 应用程序现使用 Azure AD 身份验证直接连接到 Azure SQL 数据库。 此设置使你能够从 Visual Studio 运行数据库迁移。
@@ -189,6 +192,9 @@ conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceT
 
 接下来，配置应用服务应用，使其使用系统分配的托管标识连接到 SQL 数据库。
 
+> [!NOTE]
+> 虽然本部分的说明适用于系统分配的标识，但用户分配的标识同样可以很容易地使用。 为此， 需更改 `az webapp identity assign command`，以便分配所需的用户分配标识。 然后，在创建 SQL 用户时，请确保使用用户分配的标识资源的名称，而不是站点名称。
+
 ### <a name="enable-managed-identity-on-app"></a>在应用上启用托管标识
 
 若要为 Azure 应用启用托管标识，请在 Cloud Shell 中使用 [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) 命令。 在以下命令中，替换 \<app-name>  。
@@ -237,9 +243,12 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>* 是 Azure AD 中托管标识的名称。 由于它是系统分配的，它始终与应用服务应用的名称相同。 若要为 Azure AD 组授予权限，请改为使用组的显示名称（例如，*myAzureSQLDBAccessGroup*）。
+*\<identity-name>* 是 Azure AD 中托管标识的名称。 如果标识是系统分配的，则此名称始终与应用服务应用的名称相同。 若要为 Azure AD 组授予权限，请改为使用组的显示名称（例如，*myAzureSQLDBAccessGroup*）。
 
 键入 `EXIT`，返回到 Cloud Shell 提示符窗口。
+
+> [!NOTE]
+> 托管标识的后端服务还[保留一个令牌缓存](overview-managed-identity.md#obtain-tokens-for-azure-resources)，只有在过期的情况下才更新目标资源的令牌。 如果在配置 SQL 数据库权限时出错，并尝试在使用应用获取令牌后修改权限，则在缓存的令牌过期之前，实际上不会获得具有更新权限的新令牌。 
 
 ### <a name="modify-connection-string"></a>修改连接字符串
 
