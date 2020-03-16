@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a02fb7ab7e42f2a56041638a3d883287da3eb42
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 27fdf966f99ac2cba394515cb654ed74178d6673
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674490"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137639"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -43,7 +43,7 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 - Azure Vm 和 HANA 大型实例支持的 SAP 部署方案。 可在以下文档中找到有关支持的方案的信息：
     - [Azure 虚拟机支持的方案中的 SAP 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)
     - [HANA 大型实例支持的方案](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)
-- 在不同的 Azure 区域中提供了哪些 Azure 服务、Azure VM 类型和 Azure 存储，请查看[按区域提供](https://azure.microsoft.com/global-infrastructure/services/)的站点产品 
+- Azure 服务、Azure VM 类型和 Azure 存储服务在不同的 Azure 区域中提供，查看[区域提供](https://azure.microsoft.com/global-infrastructure/services/)的站点产品 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA on Azure（大型实例）
@@ -110,7 +110,10 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 
 
 ## <a name="change-log"></a>更改日志
-
+- 03/11/2020：[Azure 虚拟机支持的方案中的 SAP 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)更改，用于澄清每个 DBMS 实例支持的多个数据库
+- 03/11/2020：[SAP NetWeaver 的 Azure 虚拟机规划和实施中的](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)更改说明第1代和第2代 vm
+- 03/10/2020：更改[Azure 虚拟机存储配置 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) ，以明确和的实际吞吐量限制
+- 03/09/2020：Azure [SUSE Linux Enterprise Server vm 上的 Sap NetWeaver 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)变化，适用于 sap 应用程序的 azure 虚拟机上的 sap NetWeaver 的高可用性，适用于[sap 应用程序的 azure NetApp 文件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)，AZURE vm 上的 sap SUSE Linux Enterprise Server 的高可用性，SUSE Linux Enterprise Server 上的[AZURE 虚拟机](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)上的 NFS 的高可用性，在 SUSE Linux Enterprise Server 上的 azure vm 上[设置 SUSE Linux Enterprise Server Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)，高[可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm) [RHEL 多 SID 指南中的 azure vm 上 SAP HANA azure SUSE Linux Enterprise Server vm 的可用性，](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)用于在 Azure [vm 上实现 SAP NetWeaver 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid) 
 - 03/05/2020：适用于[SAP NetWeaver 的 Azure 虚拟机规划和实施](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)中的 azure 区域和 azure 虚拟机的结构更改和内容更改
 - 03/03/2020：在 SLES 上， [Azure vm 上的 SAP NW 的高可用性发生了变化，适用于 sap 应用程序的和](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)会更改为更有效率的和卷布局
 - 03/01/2020：[针对 Azure 虚拟机上的 SAP HANA 的改编备份指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)，包括 azure 备份服务。 [SAP HANA 在文件级别上的 Azure 备份](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)中缩减和紧缩的内容，并删除了通过磁盘快照处理备份的第三篇文档。 在 Azure 虚拟机上 SAP HANA 的备份指南中处理内容 

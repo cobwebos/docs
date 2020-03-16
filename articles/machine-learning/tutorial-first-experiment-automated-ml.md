@@ -1,7 +1,7 @@
 ---
-title: 创建第一个自动化 ML 试验
+title: 创建自动化 ML 分类模型
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习工作室中使用自动化机器学习训练和部署分类模型。
+description: 了解如何通过 Azure 机器学习的自动化机器学习（自动化 ML）界面来训练和部署分类模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 96af942ab68d4ae738df56bf94d8410ee5d8cc34
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048281"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129662"
 ---
-# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>教程：使用自动化机器学习创建第一个分类模型
+# <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教程：使用 Azure 机器学习中的自动化 ML 创建分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-本教程介绍如何在不编写任何代码行的情况下，通过 Azure 机器学习工作室创建第一个自动化机器学习试验。 本示例将创建一个分类模型来预测某家金融机构的客户是否会认购定期存款产品。
+在本教程中，你将了解如何使用 Azure 机器学习的自动化机器学习界面在不编写任何代码行的情况下创建一个基本的分类模型。 此分类模型预测某个金融机构的客户是否会认购定期存款产品。
 
 利用自动机器学习，可以自动完成耗时的任务。 自动机器学习会快速循环访问算法和超参数的多个组合，以帮助你根据所选的成功指标找到最佳模型。
 
@@ -32,9 +32,9 @@ ms.locfileid: "77048281"
 > * 查看试验详细信息。
 > * 部署模型。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://aka.ms/AMLFree)。
 
 * 下载 [**bankmarketing_train.csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) 数据文件。 **y** 列指示客户是否认购了定期存款产品，该列稍后在本教程中将标识为预测目标列。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "77048281"
 
 Azure 机器学习工作区是云中的基础资源，用于试验、训练和部署机器学习模型。 它将 Azure 订阅和资源组关联到服务中一个易于使用的对象。 
 
-通过 Azure 机器学习工作室创建工作区，该工作室是用于管理 Azure 资源的基于 Web 的控制台。
+通过 Azure 门户创建工作区，该门户是用于管理 Azure 资源的基于 Web 的控制台。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
@@ -51,9 +51,9 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 ## <a name="create-and-run-the-experiment"></a>创建并运行试验
 
-在 Azure 机器学习工作室中完成以下试验设置和运行步骤，该工作室是包含用于为所有技能级别的数据科学实践者执行数据科学方案的机器学习工具的合并界面。 Internet Explorer 浏览器不支持此工作室。
+通过 https://ml.azure.com 处的 Azure 机器学习完成以下试验设置和运行步骤，这是一个综合性的 Web 界面，其中包括了为所有技能级别的数据科学实践者执行数据科学方案所需的机器学习工具。 Internet Explorer 浏览器不支持此界面。
 
-1. 登录到 [Azure 机器学习工作室](https://ml.azure.com)。
+1. 登录到 https://ml.azure.com 处的 Azure 机器学习。
 
 1. 选择创建的订阅和工作区。
 
@@ -63,13 +63,13 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
    由于这是你的第一个自动化 ML 试验，因此会看到空列表和文档链接。
 
-   ![Azure 机器学习工作室](./media/tutorial-first-experiment-automated-ml/get-started.png)
+   ![“入门”页](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
 1. 选择“新的自动化 ML 运行”  。 
 
 1. 通过从“+ 创建数据集”  下拉菜单选择“从本地文件”  ，创建新的数据集。 
 
-    1. 在“基本信息”  窗体上，为数据集指定一个名称，并提供可选说明。 Azure 机器学习工作室中的自动化 ML 当前仅支持表格数据集，因此，数据集类型应当默认设置为“表格”。
+    1. 在“基本信息”窗体中，为数据集指定名称，并提供可选的说明。  自动化 ML 当前仅支持 TabularDataset，因此，数据集类型应当默认设置为“表格”。 
 
     1. 在左下角选择“下一步” 
 
@@ -163,9 +163,9 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 ![运行迭代详细信息](./media/tutorial-first-experiment-automated-ml/run-detail.gif)
 
-## <a name="deploy-the-model"></a>部署模型
+## <a name="deploy-the-best-model"></a>部署最佳模型
 
-Azure 机器学习工作室中的自动化机器学习可以通过几个步骤将最佳模型部署为 Web 服务。 部署是模型的集成，因此它可以对新数据进行预测并识别潜在的机会领域。 
+使用自动化机器学习界面，你可以通过几个步骤将最佳模型部署为 Web 服务。 部署是模型的集成，因此它可以对新数据进行预测并识别潜在的机会领域。 
 
 对于本试验，部署到 Web 服务意味着金融机构现已获得一个迭代和可缩放的 Web 解决方案，用于识别潜在的定期存款客户。 
 
@@ -173,7 +173,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 
 在此试验上下文中，根据 **AUC_weighted** 指标，**VotingEnsemble** 被视为最佳模型。  我们将部署此模型，但请注意，部署需要大约 20 分钟才能完成。 部署过程需要几个步骤，包括注册模型、生成资源和为 Web 服务配置资源。
 
-1. 选择左下角的“部署最佳模型”按钮  。
+1. 选择左下角的“部署最佳模型”按钮。 
 
 1. 按如下所示填充“部署模型”窗格： 
 
@@ -201,9 +201,9 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 
 ### <a name="delete-the-deployment-instance"></a>删除部署实例
 
-若要保留资源组和工作区以便在其他教程和探索中使用，请仅从 Azure 机器学习工作室中删除部署实例。 
+若要保留资源组和工作区以便在其他教程和探索中使用，请从 https://ml.azure.com/ 处的 Azure 机器学习中仅删除部署实例。 
 
-1. 转到 [Azure 机器学习工作室](https://ml.azure.com/)。 导航到你的工作区，然后在“资产”  窗格的左下角选择“终结点”  。 
+1. 转到 https://ml.azure.com/ 处的 Azure 机器学习。 导航到你的工作区，然后在“资产”  窗格的左下角选择“终结点”  。 
 
 1. 选择要删除的部署，然后选择“删除”。  
 
@@ -215,15 +215,15 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本自动化机器学习教程中，你已使用 Azure 机器学习工作室创建并部署了一个分类模型。 有关详细信息和后续步骤，请参阅以下文章：
+在本自动化机器学习教程中，你已使用 Azure 机器学习的自动化 ML 界面创建并部署了一个分类模型。 有关详细信息和后续步骤，请参阅以下文章：
 
 > [!div class="nextstepaction"]
 > [使用 Web 服务](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ 详细了解[特征化](how-to-create-portal-experiments.md#featurization)。
-+ 详细了解[数据分析](how-to-create-portal-experiments.md#profile)。
 + 详细了解[自动化机器学习](concept-automated-ml.md)。
-+ 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md#classification)一文。
++ 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md#classification)一文并详细了解[特征化](how-to-use-automated-ml-for-ml-models.md#featurization)。
++ 详细了解[数据分析](how-to-use-automated-ml-for-ml-models.md#profile)。
+
 
 >[!NOTE]
 > 此银行营销数据集是根据 [Creative Commons (CCO:Public Domain) 许可条款](https://creativecommons.org/publicdomain/zero/1.0/)提供的。 数据库各项内容中的任何权利是根据[数据库内容许可条款](https://creativecommons.org/publicdomain/zero/1.0/)在 [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset) 上授予的。 此数据集最初在 [UCI 机器学习数据库](https://archive.ics.uci.edu/ml/datasets/bank+marketing)中提供。<br><br>

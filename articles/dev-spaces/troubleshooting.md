@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何在启用和使用时对常见问题进行故障排除和解决 Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 0cf8eb7b07622a989bc78637b1601ba68b9b5f6f
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: af6577684af559b7e152a53fbe4293740d676e6e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251125"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370825"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑难解答
 
@@ -76,12 +76,15 @@ Azure Dev Spaces 无法在 AKS 群集上创建控制器，因为它找不到*就
 
 若要解决此问题，请更新 AKS 群集上的[破坏配置](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations)，以确保至少有一个 Linux 节点在没有指定 tolerations 的情况下计划 pod。 另外，请确保至少有一个允许计划在不指定 tolerations 的情况下进行计划的 Linux 节点处于 "*就绪*" 状态。 如果节点需要很长时间才能达到 "*就绪*" 状态，则可以尝试重启节点。
 
-### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>运行 `az aks use-dev-spaces` 时出现 "Azure Dev Spaces CLI 未正确安装" 错误
+### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>运行 az aks 时出现错误 Azure Dev Spaces "CLI 未正确安装"
 
 Azure Dev Spaces CLI 的更新更改了它的安装路径。 如果你使用的 Azure CLI 版本早于2.0.63，则可能会看到此错误。 若要显示 Azure CLI 的版本，请使用 `az --version`。
 
 ```azurecli
 az --version
+```
+
+```output
 azure-cli                         2.0.60 *
 ...
 ```
@@ -126,7 +129,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 当使用以这些语�
 如果使用 `azds up` 开关运行 `--verbose`，或在 Visual Studio 中启用详细日志记录，便会看到其他详细信息：
 
 ```cmd
-$ azds up --verbose
+azds up --verbose
 
 Installed chart in 2s
 Waiting for container image build...
@@ -292,7 +295,7 @@ Service cannot be started.
 
 运行 Visual Studio Code 调试程序时，可能会看到此错误。 你的开发计算机上可能没有C#安装 VS Code 扩展。 此C#扩展包括对 .net Core （CoreCLR）的调试支持。
 
-若要解决此问题，请安装的[VS Code C#扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
+若要解决此问题，请安装的[VS Code C#扩展](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
 
 ### <a name="error-configured-debug-type-coreclr-is-not-supported"></a>错误 "不支持配置的调试类型 ' coreclr '"
 
@@ -361,6 +364,9 @@ kubectl get pods --all-namespaces --include-uninitialized
 
 ```azurecli
 az aks get-credentials --resource-group <resource group name> --name <cluster name>
+```
+
+```bash
 kubectl delete InitializerConfiguration azds
 ```
 
@@ -495,5 +501,8 @@ kubectl -n my-namespace delete pod --all
 
 ```azurecli
 az aks get-credentials -g <resource group name> -n <cluster name>
+```
+
+```console
 azds controller refresh-credentials -g <resource group name> -n <cluster name>
 ```

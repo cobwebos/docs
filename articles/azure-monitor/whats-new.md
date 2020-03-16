@@ -5,16 +5,70 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 02/05/2020
-ms.openlocfilehash: ecee13850e735f827a5465e0f49039f514afe233
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/05/2020
+ms.openlocfilehash: b42acdf64612da6837bc67752f7a22169ddef7e2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657735"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673323"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 本文提供新的或已经过重大更新的 Azure Monitor 文章列表。 在每个月的第一周，本文将会刷新，以包含上个月的文章更新。
+
+## <a name="march-2020"></a>2020 年 3 月
+
+### <a name="agents"></a>代理
+通过重新编写诊断扩展内容进行了多处更新。
+
+- [Azure 监视代理概述](platform/agents-overview.md) - 重新构造了各个表格来更好地阐明每个代理的特有功能。
+- [Azure 诊断扩展概述](platform/diagnostics-extension-overview.md) - 全部进行了重新编写。
+- [在 Azure Monitor 中使用适用于 IIS 的 Blob 存储和适用于事件的表存储](platform/diagnostics-extension-logs.md) - 针对更新和澄清进行了常规重新编写。
+- [安装并配置 Windows Azure 诊断扩展 (WAD)](platform/diagnostics-extension-windows-install.md) - 新文章。 
+- [Windows 诊断扩展架构](platform/diagnostics-extension-schema-windows.md) - 已重新组织。
+- [将数据从 Windows Azure 诊断扩展发送到 Azure 事件中心](platform/diagnostics-extension-stream-event-hubs.md) - 全部进行了重新编写和更新。
+- [在 Azure 存储中存储和查看诊断数据](platform/diagnostics-extension-to-storage.md) - 全部进行了重新编写和更新。
+- [适用于 Windows 的 Log Analytics 虚拟机扩展](../virtual-machines/extensions/oms-windows.md) - 更好地阐明了与 Log Analytics 代理的关系。
+- [适用于 Linux 的 Azure Monitor 虚拟机扩展](../virtual-machines/extensions/oms-linux.md) - 更好地阐明了与 Log Analytics 代理的关系。
+
+
+
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Application Insights 中的连接字符串](app/sdk-connection-string.md) - 新文章。
+
+### <a name="insights-and-solutions"></a>见解和解决方案
+
+#### <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
+- [将 Azure Active Directory 与 Azure Kubernetes 服务集成](../aks/azure-ad-integration.md) - 添加了有关以下事项的说明：创建客户端应用程序来支持启用了 RBAC 的群集以支持将 Azure Monitor 用于容器。
+
+#### <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor
+- [用于 VM 的 Azure Monitor（正式版）常见问题解答](insights/vminsights-ga-release-faq.md) - 对性能数据的存储方式相关内容进行了更改。
+
+#### <a name="office-365"></a>Office 365
+- [Azure 中的 Office 365 管理解决方案](insights/solution-office-365.md) - 更新了弃用日期。
+
+
+### <a name="logs"></a>日志
+- [优化 Azure Monitor 中的日志查询](log-query/query-optimization.md) - 新文章。
+- [管理 Azure Monitor 日志的使用情况和成本](platform/manage-cost-storage.md) - 改进了示例查询来帮助你更好地了解使用情况。
+
+### <a name="metrics"></a>指标
+- [可通过诊断设置导出的 Azure Monitor 平台指标](platform/metrics-supported-export-diagnostic-settings.md) - 添加了有关针对 null 值和零值的行为更改的内容。
+
+
+### <a name="visualizations"></a>可视化效果
+增加了多篇新文章来提供视图设计器到工作簿转换指南。
+
+- [Azure Monitor 视图设计器到工作簿转换指南](platform/view-designer-conversion-overview.md) - 新文章。
+- [Azure Monitor 视图设计器到工作簿转换选项](platform/view-designer-conversion-options.md) - 新文章。
+- [Azure Monitor 视图设计器到工作簿磁贴转换](platform/view-designer-conversion-tiles.md) - 新文章。
+- [Azure Monitor 视图设计器到工作簿转换摘要和访问](platform/view-designer-conversion-access.md) - 新文章。
+- [Azure Monitor 视图设计器到工作簿转换常见任务](platform/view-designer-conversion-tasks.md) - 新文章。
+- [Azure Monitor 视图设计器到工作簿转换示例](platform/view-designer-conversion-examples.md) - 新文章。
+
+
+
 
 ## <a name="january-2020"></a>2020 年 1 月
 
@@ -43,14 +97,14 @@ ms.locfileid: "77657735"
 ### <a name="insights-and-solutions"></a>见解和解决方案
 
 #### <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
-- [配置用于容器的 Azure Monitor 代理数据收集](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config) - 添加了有关在 Azure Red Hat OpenShift 上升级代理的详细信息，并添加了更多信息来区分代理的升级方法。
-- [为用于容器的 Azure Monitor 创建性能警报](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-alerts) - 修订了信息，并更新了使用工作区上下文警报针对工作区中存储的性能数据创建警报的步骤。
-- [使用用于容器的 Azure Monitor 监视 Kubernetes](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze) - 更新了概述文章，以及有关 Windows Kubernetes 群集支持的分析文章。
-- [使用用于容器的 Azure Monitor 配置 Azure Red Hat OpenShift 群集](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-azure-redhat-setup) - 添加了有关在 Azure Red Hat OpenShift 上升级代理的详细信息，并添加了更多信息来区分代理的升级方法。
-- [使用用于容器的 Azure Monitor 配置混合 Kubernetes 群集](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-hybrid-setup) - 更新了此文章，以反映 Kubelet cAdvisor 中添加的对安全端口 10250 的支持。
-- [如何管理用于容器的 Azure Monitor 代理](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-manage-agent) - 更新了有关在 Azure Red Hat OpenShift 与其他类型的 Kubernetes 群集中进行指标擦除的行为和配置的详细信息。
-- [配置用于容器的 Azure Monitor Prometheus 集成](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-prometheus-integration) - 更新了有关在 Azure Red Hat OpenShift 与其他类型的 Kubernetes 群集中进行指标擦除的行为和配置的详细信息。
-- [如何更新用于容器的 Azure Monitor 以启用指标](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-update-metrics) - 更新了有关在 Azure Red Hat OpenShift 与其他类型的 Kubernetes 群集中进行指标擦除的行为和配置的详细信息。
+- [配置用于容器的 Azure Monitor 代理数据收集](insights/container-insights-agent-config.md) - 添加了有关在 Azure Red Hat OpenShift 上升级代理的详细信息，并添加了更多信息来区分代理的升级方法。
+- [为用于容器的 Azure Monitor 创建性能警报](insights/container-insights-alerts.md) - 修订了信息，并更新了使用工作区上下文警报针对工作区中存储的性能数据创建警报的步骤。
+- [使用用于容器的 Azure Monitor 监视 Kubernetes](insights/container-insights-analyze.md) - 更新了概述文章，以及有关 Windows Kubernetes 群集支持的分析文章。
+- [使用用于容器的 Azure Monitor 配置 Azure Red Hat OpenShift 群集](insights/container-insights-azure-redhat-setup.md) - 添加了有关在 Azure Red Hat OpenShift 上升级代理的详细信息，并添加了更多信息来区分代理的升级方法。
+- [使用用于容器的 Azure Monitor 配置混合 Kubernetes 群集](insights/container-insights-hybrid-setup.md) - 更新了此文章，以反映 Kubelet cAdvisor 中添加的对安全端口 10250 的支持。
+- [如何管理用于容器的 Azure Monitor 代理](insights/container-insights-manage-agent.md) - 更新了有关在 Azure Red Hat OpenShift 与其他类型的 Kubernetes 群集中进行指标擦除的行为和配置的详细信息。
+- [配置用于容器的 Azure Monitor Prometheus 集成](insights/container-insights-prometheus-integration.md) - 更新了有关在 Azure Red Hat OpenShift 与其他类型的 Kubernetes 群集中进行指标擦除的行为和配置的详细信息。
+- [如何更新用于容器的 Azure Monitor 以启用指标](insights/container-insights-update-metrics.md) - 更新了有关在 Azure Red Hat OpenShift 与其他类型的 Kubernetes 群集中进行指标擦除的行为和配置的详细信息。
 
 
 #### <a name="azure-monitor-for-vms"></a>用于 VM 的 Azure Monitor

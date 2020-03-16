@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e27fca86613757c36ac664e2e449cabed68d550
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6d0a9bf172039adcaa756660d38acc1547e91b49
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772442"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898698"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>在标记项目中标记图像
 
@@ -23,7 +23,7 @@ ms.locfileid: "75772442"
 > * 标记工具
 > * 如何使用工具执行特定的标签任务
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 正在运行的数据标签项目的标签门户 URL
 * 或组织和项目的 [Microsoft 帐户](https://account.microsoft.com/account)或 Azure Active Directory 帐户
@@ -58,6 +58,16 @@ ms.locfileid: "75772442"
 
 提交手头数据的标记后，Azure 将使用工作队列中的一组新图像刷新页面。
 
+### <a name="assisted-machine-learning"></a>辅助机器学习 
+
+在执行多类或多标签分类任务期间，可能会触发机器学习算法。 如果在项目中启用了这些算法，你可能会看到以下内容：
+
+* 在标记了一定数量的图像后，你可能会在屏幕顶部的项目名称旁边看到“群集任务”  。  这意味着这些图像被分组到一起，在同一页面上呈现相似的图像。  如果是这样，请切换到多个图像视图中的一个来利用分组。  
+
+* 稍后，你可能会在项目名称旁边看到“预标记任务”  。  然后，图像将显示一个来自机器学习分类模型的建议标签。 任何机器学习模型都达不到 100% 的准确度。 虽然我们只使用模型有信心识别的图像，但这些图像仍然可能没有正确地预标记。  看到这些标签时，请在提交页面之前更正任何错误的标签。  
+
+特别是在标记项目的早期阶段，机器学习模型可能只能准确地预标记一小部分图像。 在标记这些图像后，标记项目将返回到手动标记，为下一轮模型训练收集更多数据。 随着时间的推移，模型将对更高比例的图像更有信心，从而在项目的后期产生更多的预标记任务。
+
 ## <a name="tag-images-for-multi-class-classification"></a>标记图像以进行多类分类
 
 如果项目的类型为“图像分类多类”，则会将单一标记分配给整个图像。 若要随时查看指导，请转到“说明”页，然后选择“查看详细说明”。  
@@ -81,6 +91,7 @@ ms.locfileid: "75772442"
 ![显示多个取消选择操作的屏幕截图](./media/how-to-label-images/multiple-deselection.png)
 
 仅当将至少一个标记应用于每个图像后，Azure 才会启用“提交”  按钮。 选择“提交”以保存工作。 
+
 
 ## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>标记图像并指定边界框以进行对象检测
 

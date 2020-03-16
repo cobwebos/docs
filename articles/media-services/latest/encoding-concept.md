@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f3825a2d87d5948de4bb4a9b86be8e3050f2100
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981105"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251513"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>用媒体服务编码视频和音频
 
@@ -26,7 +26,10 @@ ms.locfileid: "75981105"
 
 视频通常通过[渐进式下载](https://en.wikipedia.org/wiki/Progressive_download)或[自适应比特率流式处理](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)传送到设备和应用。
 
-* 若要通过渐进式下载来提供，可以使用 Azure 媒体服务将数字[媒体文件（](https://en.wikipedia.org/wiki/MPEG-4_Part_14)夹层）转换为 "AAC" 文件，其中包含使用[h.264 编解码器](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)编码的视频，以及使用[](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)编解码器编码的音频。 此文件可写入存储帐户中的资产。 可以使用 Azure 存储 Api 或 Sdk （例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md)或[.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）直接下载文件。 如果在存储中创建了具有特定容器名称的输出资产，请使用该位置。 否则，可以使用 Media Services[列出资产容器 url](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)。 
+> [!IMPORTANT]
+> 媒体服务不会对已取消或误码的作业计费。 例如，已达到50% 进度且已取消的作业不会按作业分钟数50% 计费。 只需为已完成的作业付费。
+
+* 若要通过渐进式下载来提供，可以使用 Azure 媒体服务将数字[媒体文件（](https://en.wikipedia.org/wiki/MPEG-4_Part_14)夹层）转换为 ["AAC"](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) 文件，其中包含使用[h.264 编解码器](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)编码的视频，以及使用编解码器编码的音频。 此文件可写入存储帐户中的资产。 可以使用 Azure 存储 Api 或 Sdk （例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md)或[.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）直接下载文件。 如果在存储中创建了具有特定容器名称的输出资产，请使用该位置。 否则，可以使用 Media Services[列出资产容器 url](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)。 
 * 若要为自适应比特率流式处理准备传递内容，需要将夹层文件编码为多个比特率（从高到低）。 为了确保质量的正常过渡，视频的分辨率会降低，因为比特率降低。 这会生成所谓的编码阶梯–一张解析表和比特率（请参阅[自动生成的自适应比特率阶梯](autogen-bitrate-ladder.md)）。 可以使用媒体服务在多个比特率上对中间文件进行编码。 在此过程中，你将获得一组未处理的文件和关联的流式处理配置文件，这些文件写入存储帐户中的资产。 然后，可以使用媒体服务中的[动态打包](dynamic-packaging-overview.md)功能通过流式处理协议（例如[MPEG-短线](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP)和[HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)）传送视频。 这要求你创建一个[流式处理定位符](streaming-locators-concept.md)并生成与受支持的协议对应的流式处理 url，然后，可以根据其功能将其移交给设备/应用。
 
 下图显示了用于动态打包的按需编码工作流。
@@ -94,7 +97,7 @@ ms.locfileid: "75981105"
 目前支持以下预设：
 
 - **EncoderNamedPreset. AACGoodQualityAudio**：生成单个文件，其中仅包含以 192 kbps 编码的立体声音频。
-- **EncoderNamedPreset. microsoft.media.adaptivestreaming.smoothbytestreamhandler** （推荐）：有关详细信息，请参阅[自动生成比特率阶梯](autogen-bitrate-ladder.md)。
+- **EncoderNamedPreset. microsoft.media.adaptivestreaming.smoothbytestreamhandler** （推荐）：有关详细信息，请参阅[自动生成比特率梯形图](autogen-bitrate-ladder.md)。
 - **EncoderNamedPreset. ContentAwareEncodingExperimental**：公开用于识别内容的编码的实验性预设。 根据给定的任何输入内容，该服务会尝试自动确定最佳层数，并尝试通过自适应流式处理传送适当的比特率和分辨率设置。 基础算法将在一段时间内继续发展。 输出将包含带有视频和音频交错的有文件的文件。 有关详细信息，请参阅[内容识别编码的实验性预设](content-aware-encoding.md)。
 - **EncoderNamedPreset. H264MultipleBitrate1080p**：生成一组8个 GOP 对齐的文件，范围从 6000 kbps 到 400 kbps，以及立体声 AAC 音频。 起始分辨率为 1080p，之后下降到 360p。
 - **EncoderNamedPreset. H264MultipleBitrate720p**：生成六个 GOP 对齐的文件的集合，范围为 3400 kbps 到 400 kbps，以及立体声 AAC 音频。 起始分辨率为 720p，之后下降到 360p。
@@ -135,6 +138,12 @@ ms.locfileid: "75981105"
 ## <a name="scaling-encoding-in-v3"></a>在 v3 中缩放编码
 
 若要缩放媒体处理，请参阅[利用 CLI 缩放](media-reserved-units-cli-how-to.md)。
+
+## <a name="billing"></a>账单
+
+媒体服务不会对已取消或误码的作业计费。 例如，已达到50% 进度且已取消的作业不会按作业分钟数50% 计费。 只需为已完成的作业付费。
+
+有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/media-services/)。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
