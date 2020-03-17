@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/06/2020
+ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 4ce2da3070105f6e098373108164b6f590d423c6
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: ee1e3cbade33f1786e8b93a549d19b87eba189e7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925667"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79203387"
 ---
 <a name="HOLTop"></a>
 
@@ -41,9 +41,6 @@ ms.locfileid: "78925667"
 
 ### <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
 
-> [!NOTE]
-> 还可[在浏览器中](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)运行此版本的文本分析客户端库。
-
 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。 
 
 ```console
@@ -65,6 +62,9 @@ npm init
 npm install --save @azure/ai-text-analytics
 ```
 
+> [!TIP]
+> 想要立即查看整个快速入门代码文件？ 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/TextAnalytics/text-analytics-v3-client-library.js)找到它，其中包含此快速入门中的代码示例。 
+
 #### <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
 安装 `@azure/cognitiveservices-textanalytics` NPM 包：
@@ -73,14 +73,13 @@ npm install --save @azure/ai-text-analytics
 npm install --save @azure/cognitiveservices-textanalytics
 ```
 
-应用的 `package.json` 文件将使用依赖项进行更新。
-
-创建一个名为 `index.js` 的文件，并添加以下库：
+> [!TIP]
+> 想要立即查看整个快速入门代码文件？ 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/textAnalytics.js)找到它，其中包含此快速入门中的代码示例。 
 
 ---
 
 应用的 `package.json` 文件将使用依赖项进行更新。
-创建一个名为 `index.js` 的文件，并添加以下库：
+创建一个名为 `index.js` 的文件，并添加以下内容：
 
 #### <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
 
@@ -161,14 +160,13 @@ async function sentimentAnalysis(client){
         console.log(`ID: ${document.id}`);
         console.log(`\tDocument Sentiment: ${document.sentiment}`);
         console.log(`\tDocument Scores:`);
-        console.log(`\t\tPositive: ${document.sentimentScores.positive.toFixed(2)} \tNegative: ${document.sentimentScores.negative.toFixed(2)} \tNeutral: ${document.sentimentScores.neutral.toFixed(2)}`);
+        console.log(`\t\tPositive: ${document.confidenceScores.positive.toFixed(2)} \tNegative: ${document.confidenceScores.negative.toFixed(2)} \tNeutral: ${document.confidenceScores.neutral.toFixed(2)}`);
         console.log(`\tSentences Sentiment(${document.sentences.length}):`);
         document.sentences.forEach(sentence => {
             console.log(`\t\tSentence sentiment: ${sentence.sentiment}`)
             console.log(`\t\tSentences Scores:`);
-            console.log(`\t\tPositive: ${sentence.sentimentScores.positive.toFixed(2)} \tNegative: ${sentence.sentimentScores.negative.toFixed(2)} \tNeutral: ${sentence.sentimentScores.neutral.toFixed(2)}`);
-            console.log(`\t\tLength: ${sentence.length}, Offset: ${sentence.offset}`);
-        })
+            console.log(`\t\tPositive: ${sentence.confidenceScores.positive.toFixed(2)} \tNegative: ${sentence.confidenceScores.negative.toFixed(2)} \tNeutral: ${sentence.confidenceScores.neutral.toFixed(2)}`);
+        });
     });
 }
 sentimentAnalysis(textAnalyticsClient)
@@ -187,11 +185,9 @@ ID: 0
                 Sentence sentiment: positive
                 Sentences Scores:
                 Positive: 1.00  Negative: 0.00  Neutral: 0.00
-                Length: 30, Offset: 0
                 Sentence sentiment: neutral
                 Sentences Scores:
                 Positive: 0.21  Negative: 0.02  Neutral: 0.77
-                Length: 30, Offset: 31
 ```
 
 #### <a name="version-21"></a>[版本 2.1](#tab/version-2)
@@ -286,7 +282,7 @@ async function entityRecognition(client){
         console.log(`Document ID: ${document.id}`);
         document.entities.forEach(entity => {
             console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
-            console.log(`\tOffset: ${entity.offset}, Length: ${entity.length} \tScore: ${entity.score}`);
+            console.log(`\tScore: ${entity.score}`);
         });
     });
 }
@@ -300,25 +296,26 @@ entityRecognition(textAnalyticsClient);
 ```console
 Document ID: 0
         Name: Microsoft         Category: Organization  Subcategory: N/A
-        Offset: 0, Length: 9    Score: 1
+        Score: 1
         Name: Bill Gates        Category: Person        Subcategory: N/A
-        Offset: 25, Length: 10  Score: 0.67
+        Score: 0.67
         Name: Paul Allen        Category: Person        Subcategory: N/A
-        Offset: 40, Length: 10  Score: 0.81
+        Score: 0.81
         Name: April 4, 1975     Category: DateTime      Subcategory: Date
-        Offset: 54, Length: 13  Score: 0.8
+        Score: 0.8
         Name: interpreters      Category: PersonType    Subcategory: N/A
-        Offset: 95, Length: 12  Score: 0.6
+        Score: 0.6
         Name: 8800      Category: Quantity      Subcategory: Number
-        Offset: 123, Length: 4  Score: 0.8
+        Score: 0.8
 Document ID: 1
         Name: Microsoft         Category: Organization  Subcategory: N/A
-        Offset: 21, Length: 9   Score: 0.96
+        Score: 0.96
         Name: Redmond   Category: Location      Subcategory: GPE
-        Offset: 60, Length: 7   Score: 0.09
+        Score: 0.09
         Name: 21        Category: Quantity      Subcategory: Number
-        Offset: 71, Length: 2   Score: 0.8
+        Score: 0.8
         Name: Seattle   Category: Location      Subcategory: GPE
+        Score: 0.31
 ```
 
 ## <a name="using-ner-to-detect-personal-information"></a>使用 NER 检测个人信息
@@ -338,7 +335,7 @@ async function entityPiiRecognition(client){
         console.log(`Document ID: ${document.id}`);
         document.entities.forEach(entity => {
             console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
-            console.log(`\tOffset: ${entity.offset}, Length: ${entity.length} \tScore: ${entity.score}`);
+            console.log(`\tScore: ${entity.score}`);
         });
     });
 }
@@ -352,7 +349,7 @@ entityPiiRecognition(textAnalyticsClient);
 ```console
 Document ID: 0
         Name: 123-12-1234       Category: U.S. Social Security Number (SSN)     Subcategory: N/A
-        Offset: 33, Length: 11  Score: 0.85
+        Score: 0.85
 ```
 
 ## <a name="entity-linking"></a>实体链接
@@ -370,11 +367,10 @@ async function linkedEntityRecognition(client){
     entityResults.forEach(document => {
         console.log(`Document ID: ${document.id}`);
         document.entities.forEach(entity => {
-            console.log(`\tName: ${entity.name} \tID: ${entity.id} \tURL: ${entity.url} \tData Source: ${entity.dataSource}`);
+            console.log(`\tName: ${entity.name} \tID: ${entity.dataSourceEntityId} \tURL: ${entity.url} \tData Source: ${entity.dataSource}`);
             console.log(`\tMatches:`)
             entity.matches.forEach(match => {
-                console.log(`\t\tText: ${match.text}`);
-                console.log(`\t\tOffset: ${match.offset}, Length: ${match.length} \tScore: ${match.score.toFixed(3)}`);
+                console.log(`\t\tText: ${match.text} \tScore: ${match.score.toFixed(2)}`);
             });
         });
     });
@@ -390,32 +386,24 @@ linkedEntityRecognition(textAnalyticsClient);
 Document ID: 0
         Name: Altair 8800       ID: Altair 8800         URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
         Matches:
-                Text: Altair 8800
-                Offset: 116, Length: 11         Score: 0.777
+                Text: Altair 8800       Score: 0.78
         Name: Bill Gates        ID: Bill Gates  URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
         Matches:
-                Text: Bill Gates
-                Offset: 25, Length: 10  Score: 0.555
-                Text: Gates
-                Offset: 161, Length: 5  Score: 0.555
+                Text: Bill Gates        Score: 0.55
+                Text: Gates     Score: 0.55
         Name: Paul Allen        ID: Paul Allen  URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
         Matches:
-                Text: Paul Allen
-                Offset: 40, Length: 10  Score: 0.533
+                Text: Paul Allen        Score: 0.53
         Name: Microsoft         ID: Microsoft   URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
         Matches:
-                Text: Microsoft
-                Offset: 0, Length: 9    Score: 0.469
-                Text: Microsoft
-                Offset: 150, Length: 9  Score: 0.469
+                Text: Microsoft         Score: 0.47
+                Text: Microsoft         Score: 0.47
         Name: April 4   ID: April 4     URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
         Matches:
-                Text: April 4
-                Offset: 54, Length: 7   Score: 0.248
+                Text: April 4   Score: 0.25
         Name: BASIC     ID: BASIC       URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
         Matches:
-                Text: BASIC
-                Offset: 89, Length: 5   Score: 0.281
+                Text: BASIC     Score: 0.28
 ```
 
 #### <a name="version-21"></a>[版本 2.1](#tab/version-2)
