@@ -6,20 +6,20 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 6ba6aab1a1b4a78af1a991cbf74083a41f0c0306
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 32a31892317cadb37f16e48df80bef7d6d8a99ef
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651776"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925488"
 ---
 使用必应 Web 搜索客户端库可以轻松地将必应 Web 搜索集成到 C# 应用程序中。 本快速入门介绍如何实例化客户端、发送请求和输出响应。
 
 想要马上查看代码？ GitHub 上提供了[适用于 .NET 的必应搜索客户端库](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)的示例。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 下面是在开始本快速入门之前需要准备好的项目：
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/) 或
@@ -422,3 +422,4 @@ dotnet run
 
 > [!div class="nextstepaction"]
 > [认知服务 Node.js SDK 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
+                                    

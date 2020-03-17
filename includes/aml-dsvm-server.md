@@ -8,13 +8,13 @@ ms.author: sgilley
 manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 01/25/2019
-ms.openlocfilehash: ac5656a8efe1dee932bfe753f8bdc06b787e20af
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 03/05/2020
+ms.openlocfilehash: e289cf7aea6e0ea46ff049f3ea8bf9e1517e8aaf
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529775"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673642"
 ---
 1. [创建 Azure 机器学习工作区](../articles/machine-learning/how-to-manage-workspace.md)。
 

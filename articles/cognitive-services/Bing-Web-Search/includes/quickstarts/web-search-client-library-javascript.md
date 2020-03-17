@@ -6,20 +6,20 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 3f8d0e8996aa972aa63f31d6d5cf8b3fb3c00bd8
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 0380dc8d2ff34cf9eecaad063a305491a357ca29
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651752"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78924988"
 ---
 使用必应 Web 搜索客户端库可以轻松地将必应 Web 搜索集成到 Node.js 应用程序中。 本快速入门介绍如何实例化客户端、发送请求和输出响应。
 
 想要马上查看代码？ GitHub 上提供了[适用于 JavaScript 的必应搜索客户端库](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples)的示例。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 下面是在开始本快速入门之前需要准备好的项目：
 
 * [Node.js 6](https://nodejs.org/en/download/) 或更高版本
