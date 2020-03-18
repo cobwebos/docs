@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f121be4ec8c3d3ab618e2955d9dbd8ab5eea461d
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67173128"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129208"
 ---
 ## <a name="test-your-code"></a>测试代码
 
@@ -41,10 +41,10 @@ ms.locfileid: "67173128"
 
 在登录后，应当会显示由 Microsoft Graph API 调用返回的用户配置文件信息。 结果会显示在“API 调用结果”框中  。 有关通过调用 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 获取的令牌的基本信息，应当会在“令牌信息”框中显示  。 结果包含以下属性：
 
-|属性  |格式  |说明 |
+|properties  |格式  |说明 |
 |---------|---------|---------|
-
-|**Username** |<span>user@domain.com</span> |用于标识用户的用户名。| |**令牌到期** |DateTime |令牌到期的时间。 MSAL 根据需要通过续订令牌来延长到期日期。|
+|**用户名** |<span>user@domain.com</span> |用于标识用户的用户名。|
+|**令牌到期** |DateTime |令牌到期的时间。 MSAL 根据需要通过续订令牌来延长到期日期。|
 
 
 <!--start-collapse-->

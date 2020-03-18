@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/19/2019
 ms.author: yulili
-ms.openlocfilehash: e38b1bdd3258675dfac9a155f7cee338a1f8f806
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 230b4abb9a740e830392a92369477c7dc44f60ee
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818454"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925430"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -23,8 +23,7 @@ ms.locfileid: "74818454"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=android)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=android)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=android)
 
 ## <a name="create-user-interface"></a>创建用户界面
 

@@ -6,19 +6,18 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 1a9a85ebc9d883db0415382ecf40de343d300667
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 724f52317ce2afda023ae0514a330da0032e8710
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77445990"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925161"
 ---
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 准备工作：
 
-* 如果这是第一个 Python 项目，请使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">创建一个空示例项目<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">安装用于开发环境的语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">安装适用于开发环境的语音 SDK，并创建一个空示例项目<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>创建 LUIS 应用以进行意向识别
 
@@ -74,7 +73,7 @@ ms.locfileid: "77445990"
 
 在 `IntentRecognizer` 对象中，我们将调用 `recognize_once()` 方法。 此方法是告知语音服务你要发送单个需识别的短语，在确定该短语后会停止识别语音。
 
-将此代码插入到你的模型下方：
+将此代码插入到你的模型下方。
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
@@ -82,11 +81,13 @@ ms.locfileid: "77445990"
 
 语音服务返回识别结果后，将需要对其进行处理。 我们会简单地将结果输出到控制台。
 
-在调用 `recognize_once()` 下，添加以下代码：[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
+在对 `recognize_once()` 的调用下方，添加以下代码。
+
+[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 
 ## <a name="check-your-code"></a>查看代码
 
-此时，代码应如下所示：
+此时，代码应如下所示。
 
 > [!NOTE]
 > 我们已向此版本添加了一些注释。
