@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: af6a7611381cbf7a251e65969d156f4c40d71843
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
-ms.translationtype: HT
+ms.openlocfilehash: b16790e288f6569f08ce14e5a7c751bbd8083faf
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126771"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138428"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略配置密码复杂性
 
@@ -153,4 +153,4 @@ ms.locfileid: "79126771"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[在 Azure Active Directory B2C 中使用自定义策略配置密码更改](custom-policy-password-change.md)。
-- - 了解有关 IEF 引用中的[谓词](predicates.md)和[PredicateValidations](predicates.md#predicatevalidations)元素的详细信息。
+- 了解有关 IEF 引用中的[谓词](predicates.md)和[PredicateValidations](predicates.md#predicatevalidations)元素的详细信息。

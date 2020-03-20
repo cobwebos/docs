@@ -12,11 +12,11 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8e07d3e1815c1b47b9d37c08e8fac5359b71fe7c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189002"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245988"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -24,21 +24,21 @@ ms.locfileid: "78189002"
 
 通过完成本文中的步骤，可以创建具有品牌和外观的注册和登录自定义策略。 使用 Azure Active Directory B2C (Azure AD B2C)，几乎可以完全控制呈现给用户的 HTML 和 CSS 内容。 使用自定义策略时，需要以 XML 配置 UI 自定义，而不是使用 Azure 门户中的控件进行配置。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>必备组件
 
 完成[自定义策略入门](custom-policy-get-started.md)中的步骤。 应准备好一个有效的自定义策略，以便使用本地帐户注册和登录。
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4. 修改扩展文件
+## <a name="4-modify-the-extensions-file"></a>4.修改扩展文件
 
 若要配置 UI 自定义，请将基文件中的**ContentDefinition**及其子元素复制到扩展文件中。
 
-1. 打开策略的基文件。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>  。 此基本文件是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取[自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
+1. 打开策略的基文件。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>。 此基本文件是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取[自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
 1. 搜索并复制 ContentDefinitions 元素的全部内容。
 1. 打开扩展文件， 例如，TrustFrameworkExtensions.xml。 搜索 BuildingBlocks 元素。 如果该元素不存在，请添加该元素。
 1. 粘贴作为 BuildingBlocks 元素的子元素复制的 ContentDefinitions 元素的全部内容。
-1. 在复制的 XML 中搜索包含  **的 ContentDefinition**`Id="api.signuporsignin"` 元素。
+1. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition 元素。
 1. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html` 。
 
     自定义策略应类似于以下代码片段：
@@ -60,7 +60,7 @@ ms.locfileid: "78189002"
 
 1. 保存扩展文件。
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. 上载和测试更新的自定义策略
+## <a name="5-upload-and-test-your-updated-custom-policy"></a>5.上载和测试更新的自定义策略
 
 ### <a name="51-upload-the-custom-policy"></a>5.1 上传自定义策略
 

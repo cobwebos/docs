@@ -11,25 +11,28 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8ec60f694000985f51db25db621e5814df62cdb3
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 13a5fa6a030d876d92651ca587e37fdc6a3ec600
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126811"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136136"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略在客户注册期间禁用电子邮件验证
 
 [!INCLUDE [disable email verification intro](../../includes/active-directory-b2c-disable-email-verification.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>系统必备
 
 完成[自定义策略入门](custom-policy-get-started.md)中的步骤。 你应具有用于注册的工作自定义策略，并使用社交帐户和本地帐户进行登录。
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>将元数据添加到自断言技术配置文件
 
-**LocalAccountSignUpWithLogonEmail**技术配置文件是[自行断言](self-asserted-technical-profile.md)的，它是在注册流程中调用的。 若要禁用电子邮件验证，请将 `EnforceEmailVerification` 的元数据设置为 false。 覆盖扩展文件中的 LocalAccountSignUpWithLogonEmail 技术配置文件。 找到 `ClaimsProviders` 元素。 将以下声明提供程序添加到 `ClaimsProviders` 元素：
+**LocalAccountSignUpWithLogonEmail**技术配置文件是[自行断言](self-asserted-technical-profile.md)的，它是在注册流程中调用的。 若要禁用电子邮件验证，请将 `EnforceEmailVerification` 的元数据设置为 false。 覆盖扩展文件中的 LocalAccountSignUpWithLogonEmail 技术配置文件。 
 
+1. 打开策略的扩展文件。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>。
+1. 找到 `ClaimsProviders` 元素。 如果该元素不存在，请添加该元素。
+1. 将以下声明提供程序添加到 `ClaimsProviders` 元素：
 
 ```XML
 <ClaimsProvider>
