@@ -46,7 +46,7 @@ ms.locfileid: "79272261"
 
     HDInsight 与 Azure 数据中心中特定 IP 地址之间的通信必须不受限制。 此外，还必须设置几个防火墙允许端口以进行客户端通信。 有关详细信息，请参阅[控制网络流量](#networktraffic)一节。
 
-## <a id="existingvnet"></a>将 HDInsight 添加到现有虚拟网络
+## <a name="add-hdinsight-to-an-existing-virtual-network"></a><a id="existingvnet"></a>将 HDInsight 添加到现有虚拟网络
 
 使用本部分中的步骤，了解如何将 HDInsight 添加到现有 Azure 虚拟网络。
 
@@ -110,7 +110,7 @@ ms.locfileid: "79272261"
    > [!IMPORTANT]  
    > 向虚拟网络添加 HDInsight 是一项可选的配置步骤。 请确保在配置群集时选择虚拟网络。
 
-## <a id="multinet"></a>连接多个网络
+## <a name="connecting-multiple-networks"></a><a id="multinet"></a>连接多个网络
 
 多网络配置的最大挑战是网络之间的名称解析。
 
@@ -201,7 +201,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 2. 若要确定服务可用的节点和端口，请参阅 [HDInsight 的 Hadoop 服务所用的端口](./hdinsight-hadoop-port-settings-for-services.md)一文。
 
-## <a id="networktraffic"></a>控制网络流量
+## <a name="controlling-network-traffic"></a><a id="networktraffic"></a>控制网络流量
 
 ### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>用于控制到 HDInsight 群集的入站和出站流量的技术
 
@@ -237,13 +237,13 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 强制隧道是用户定义的路由配置，其中来自子网的所有流量都强制发往特定网络或位置，例如你的本地网络。 HDInsight__不__支持强制隧道传输到本地网络。
 
-## <a id="hdinsight-ip"></a>需要的 IP 地址
+## <a name="required-ip-addresses"></a><a id="hdinsight-ip"></a>需要的 IP 地址
 
 如果使用网络安全组或用户定义的路由来控制流量，请参阅[HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)。
 
-## <a id="hdinsight-ports"></a>所需的端口
+## <a name="required-ports"></a><a id="hdinsight-ports"></a>所需的端口
 
-如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中介绍的 Azure 管理流量在端口 443 上到达群集，则不需要特地将端口列入白名单。
+如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中介绍的 Azure 管理流量在端口 443 上到达群集，则不需要特地将端口列入允许列表。
 
 对于特定服务的端口列表，请参阅 [HDInsight 上的 Apache Hadoop 服务所用的端口](hdinsight-hadoop-port-settings-for-services.md)文档。
 

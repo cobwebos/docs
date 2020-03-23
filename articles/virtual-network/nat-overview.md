@@ -45,7 +45,7 @@ ms.locfileid: "78359256"
 
 可为使用 NAT 的每个子网定义出站连接。  同一虚拟网络中的多个子网可以使用不同的 NAT。 可以通过指定要使用的 [NAT 网关资源](./nat-gateway-resource.md)来配置子网。 任何虚拟机实例中的所有 UDP 和 TCP 出站流都会使用 NAT。 
 
-NAT 与标准 SKU [公共 IP 地址资源](./virtual-network-ip-addresses-overview-arm.md#standard)、[公共 IP 前缀资源](./public-ip-address-prefix.md)或两者的组合相兼容。  可以直接使用公共 IP 前缀，或者在多个 NAT 网关资源之间分配前缀的公共 IP 地址。 NAT 会将所有流量梳理到前缀的 IP 地址范围。  在部署中将任何 IP 加入白名单的过程现在都很简单。
+NAT 与标准 SKU [公共 IP 地址资源](./virtual-network-ip-addresses-overview-arm.md#standard)、[公共 IP 前缀资源](./public-ip-address-prefix.md)或两者的组合相兼容。  可以直接使用公共 IP 前缀，或者在多个 NAT 网关资源之间分配前缀的公共 IP 地址。 NAT 会将所有流量梳理到前缀的 IP 地址范围。  在部署中将任何 IP 加入允许列表的过程现在都很简单。
 
 NAT 会自动处理子网的所有出站流量，而无需完成任何客户配置。  不需要指定用户定义的路由。 NAT 优先于其他[出站方案](../load-balancer/load-balancer-outbound-connections.md)，可替代子网的默认 Internet 目标。
 
@@ -125,7 +125,7 @@ NAT 默认是区域性的。 创建[可用性区域](../availability-zones/az-ov
 
 在保持一般可用性的条件下，NAT 数据路径的可用性至少为 99.9%。
 
-## <a name = "region-availability"></a>区域可用性
+## <a name="region-availability"></a><a name = "region-availability"></a>区域可用性
 
 NAT 目前可在以下区域中使用：
 
@@ -136,7 +136,7 @@ NAT 目前可在以下区域中使用：
 - 美国西部 2
 - 美国中西部
 
-## <a name = "enable-preview"></a>公共预览版参与
+## <a name="public-preview-participation"></a><a name = "enable-preview"></a>公共预览版参与
 
 必须注册订阅才能参与公共预览版的评估。  需要完成包括两个步骤的过程才能参与，下面提供了适用于 Azure CLI 和 Azure PowerShell 的说明。  激活可能需要几分钟才能完成。
 

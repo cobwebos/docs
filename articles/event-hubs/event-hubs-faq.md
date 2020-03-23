@@ -77,7 +77,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 | HTTP、HTTPS | 80、443 |  |
 | Kafka | 9093 | 请参阅[从 Kafka 应用程序使用事件中心](event-hubs-for-kafka-ecosystem-overview.md)
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>需要对哪些 IP 地址进行白名单？
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>需要对哪些 IP 地址进行允许列表？
 若要查找连接的空白列表的正确 IP 地址，请执行以下步骤：
 
 1. 从命令提示符处运行以下命令： 

@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 05/06/2019
 ms.openlocfilehash: 92e726529f2c81b169dc5ad485148ad8118bbc81
 ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/25/2020
 ms.locfileid: "77592860"
@@ -143,7 +143,7 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 ## <a name="deny-all-inbound-traffic-to-a-pod"></a>拒绝流向 Pod 的所有入站流量
 
-定义规则以允许特定网络流量之前，请首先创建用于拒绝所有流量的网络策略。 此策略为你提供了开始仅对所需流量进行白名单的起点。 此外，还可清楚看到，应用网络策略后，相关流量被丢弃。
+定义规则以允许特定网络流量之前，请首先创建用于拒绝所有流量的网络策略。 此策略为你提供了开始仅对所需流量进行允许列表的起点。 此外，还可清楚看到，应用网络策略后，相关流量被丢弃。
 
 对于应用程序环境和流量规则示例，让我们首先创建一个名为 "*开发*" 的命名空间来运行示例 pod：
 
