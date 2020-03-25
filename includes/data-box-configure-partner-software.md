@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/20/2018
 ms.author: alkohli
 ms.openlocfilehash: cbf6d01925e1924bc5f3c7f1e99840d479fef296
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67173616"
 ---
 配置合作伙伴软件以连接到客户端。 若要连接到合作伙伴软件，通常需要使用在前面的步骤中从本地 Web UI 的“连接并复制”  页面收集的以下信息（可能有所不同）：

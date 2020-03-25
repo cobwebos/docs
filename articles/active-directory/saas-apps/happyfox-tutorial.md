@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 HappyFox 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 HappyFox 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 HappyFox 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7e5e43bd32e7e0ddbe0a7b5f63d74a1fd46f68d9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159127"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>教程：Azure Active Directory 与 HappyFox 集成
@@ -35,7 +35,7 @@ ms.locfileid: "73159127"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 HappyFox 的集成，需要以下项：
 
@@ -85,7 +85,7 @@ ms.locfileid: "73159127"
 2. **[配置 HappyFox 单一登录](#configure-happyfox-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 HappyFox 测试用户](#create-happyfox-test-user) - 在 HappyFox 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式  。
+5. **创建 HappyFox 测试用户[ - 在 HappyFox 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式](#create-happyfox-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -110,9 +110,9 @@ ms.locfileid: "73159127"
 
     ![HappyFox 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.happyfox.com/` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<subdomain>.happyfox.com/`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.happyfox.com/saml/metadata/` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<subdomain>.happyfox.com/saml/metadata/`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系[ HappyFox 客户端支持团队](https://support.happyfox.com/home)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -173,7 +173,7 @@ ms.locfileid: "73159127"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

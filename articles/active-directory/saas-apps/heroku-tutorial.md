@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Heroku 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Heroku 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Heroku 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a9cb7738a8983ca2f76866fa40d49cd6cc06f99
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159085"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-heroku"></a>教程：Azure Active Directory 与 Heroku 的集成
+# <a name="tutorial-azure-active-directory-integration-with-heroku"></a>教程：Azure Active Directory 与 Heroku 集成
 
 本教程介绍了如何将 Heroku 与 Azure Active Directory (Azure AD) 进行集成。
 将 Heroku 与 Azure AD 集成具有以下优势：
@@ -35,7 +35,7 @@ ms.locfileid: "73159085"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Heroku 的集成，需要以下项目：
 
@@ -82,7 +82,7 @@ ms.locfileid: "73159085"
 2. **[配置 Heroku 单一登录](#configure-heroku-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Heroku 测试用户](#create-heroku-test-user) - 在 Heroku 中创建 Britta Simon 的对应用户，并且将其链接到用户在 Azure AD 中的代表  。
+5. **创建 Heroku 测试用户[ - 在 Heroku 中创建 Britta Simon 的对应用户，并且将其链接到用户在 Azure AD 中的代表](#create-heroku-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -107,9 +107,9 @@ ms.locfileid: "73159085"
 
     ![Heroku 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://sso.heroku.com/saml/<company-name>/init` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://sso.heroku.com/saml/<company-name>/init`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://sso.heroku.com/saml/<company-name>` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://sso.heroku.com/saml/<company-name>`
 
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 可从 Heroku 团队获取这些值，本文的稍后部分将对此进行描述。
@@ -164,7 +164,7 @@ ms.locfileid: "73159085"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

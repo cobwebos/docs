@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Silverback 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Silverback 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Silverback 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3c4eab02ed0c7c09fe9b5893bbaaf7cbe1c8028f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090908"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-silverback"></a>教程：Azure Active Directory 与 Silverback 的集成
+# <a name="tutorial-azure-active-directory-integration-with-silverback"></a>教程：Azure Active Directory 与 Silverback 集成
 
 在本教程中，你将学习如何将 Silverback 与 Azure Active Directory (Azure AD) 集成。
 将 Silverback 与 Azure AD 集成可提供以下好处：
@@ -34,7 +34,7 @@ ms.locfileid: "67090908"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Silverback 的集成，需要准备好以下各项：
 
@@ -107,7 +107,7 @@ ms.locfileid: "67090908"
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YOURSILVERBACKURL>.com/ssp`。
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`<YOURSILVERBACKURL>.com` 
+    b. 在“标识符”框中，使用以下模式键入 URL：  `<YOURSILVERBACKURL>.com`
 
     c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
@@ -122,7 +122,7 @@ ms.locfileid: "67090908"
 
 1. 在另一 Web 浏览器中，以管理员身份登录 Silverback 服务器。
 
-2. 导航到“管理员” > “验证提供程序”   。
+2. 导航到“管理员” **“验证提供程序”**  >   。
 
 3. 在“验证提供程序设置”页上，执行以下步骤  ：
 
@@ -144,7 +144,7 @@ ms.locfileid: "67090908"
 
     h.  为按钮选择背景“颜色”  。
 
-    i.  单击“ **保存**”。
+    i.  单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -164,7 +164,7 @@ ms.locfileid: "67090908"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
+    b. 在“用户名”  字段中键入 **brittasimon@yourcompanydomain.extension**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -217,16 +217,16 @@ ms.locfileid: "67090908"
 
     c. 在“姓氏”文本框中，输入用户的名字，如 Simon   。
 
-    d. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 **Brittasimon@contoso.com**  。
+    d. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如  **Brittasimon@contoso.com** 。
 
     e. 在“密码”文本框中，输入密码  。
 
     f. 在“确认密码”文本框中，重新输入密码并确认  。
 
-    g. 单击“ **保存**”。
+    g. 单击“保存”  。
 
 > [!NOTE]
-> 如果不想手动创建每个用户，请启用“管理员” > “验证提供程序”下的“动态用户创建”复选框    。
+> 如果不想手动创建每个用户，请启用“管理员” **“验证提供程序”下的“动态用户创建”复选框**   >   。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

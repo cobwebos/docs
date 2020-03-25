@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
 ms.openlocfilehash: 7195de1cf58e5dd2e1d0b49b309f3afc718cca92
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77656256"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>使用 Azure Application Insights 监视和警报应用程序的运行状况
@@ -24,9 +24,9 @@ Azure Application Insights 可用于监视应用程序，并在其不可用、�
 > * 创建可用性测试以持续检查应用程序的响应
 > * 出现问题时向管理员发送邮件
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-为完成此教程：
+完成本教程：
 
 创建 [Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights)。
 

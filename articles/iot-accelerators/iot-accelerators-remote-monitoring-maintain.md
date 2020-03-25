@@ -10,13 +10,13 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 853fa2b80e04dd8d9225d023db8030fed044ed7f
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73890922"
 ---
-# <a name="tutorial-troubleshoot-and-fix-device-issues"></a>教程：进行故障排除并修复设备问题
+# <a name="tutorial-troubleshoot-and-fix-device-issues"></a>教程：排查并修复设备问题
 
 在本教程中，我们将使用远程监视解决方案加速器来识别和解决联网 IoT 设备的问题。 我们将使用解决方案加速器仪表板中的警报来识别问题，然后运行远程作业来解决这些问题。
 

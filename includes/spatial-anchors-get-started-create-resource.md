@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
 ms.openlocfilehash: 32f4545a45eda8acddd7c93cc4917dbadca9ad4d
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67135054"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>创建空间定位点资源

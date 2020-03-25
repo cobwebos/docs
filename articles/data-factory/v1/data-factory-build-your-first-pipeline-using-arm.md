@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.openlocfilehash: db767a8d2f0452a9bedeaf8495152ef337255111
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75439025"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂
@@ -28,7 +28,7 @@ ms.locfileid: "75439025"
 > 
  
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
+> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
 
 本教程介绍如何使用 Azure 资源管理器模板创建第一个 Azure 数据工厂。 若要使用其他工具/SDK 来完成教程，请从下拉列表中选择一个选项。
 
@@ -37,7 +37,7 @@ ms.locfileid: "75439025"
 > [!NOTE]
 > 本教程中的数据管道可以转换输入数据，以便生成输出数据。 有关如何使用 Azure 数据工厂复制数据的教程，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 > 
-> 本教程中的管道只有一个活动，其类型为：HDInsightHive。 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。 
+> 本教程中的管道只有一类活动：HDInsightHive。 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。 
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -261,7 +261,7 @@ ms.locfileid: "75439025"
 ```
 
 > [!NOTE]
-> 可以在以下文章中找到用于创建 Azure 数据工厂的其他资源管理器模板示例：[教程：使用 Azure 资源管理器模板创建包含复制活动的管道](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)。  
+> 可以在[教程：使用 Azure 资源管理器模板创建包含复制活动的管道](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)中找到用于创建 Azure 数据工厂的另一个资源管理器模板示例。  
 > 
 > 
 
@@ -615,7 +615,7 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
     ]
 }
 ```
-此模板使用以下名称的网关创建名为 GatewayUsingArmDF 的数据工厂：GatewayUsingARM。 
+此模板使用名为 GatewayUsingARM 的网关创建名为 GatewayUsingArmDF 的数据工厂。 
 
 ## <a name="see-also"></a>另请参阅
 

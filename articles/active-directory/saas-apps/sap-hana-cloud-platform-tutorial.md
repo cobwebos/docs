@@ -17,10 +17,10 @@ ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89ea2c45e16dfeb63801f70fa4480c0d865a890f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160087"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>教程：将 Azure Active Directory 与 SAP Cloud Platform 集成
@@ -35,7 +35,7 @@ ms.locfileid: "73160087"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 SAP Cloud Platform 的集成，需要具有以下项：
 
@@ -163,7 +163,7 @@ ms.locfileid: "73160087"
 
     ![信任管理](./media/sap-hana-cloud-platform-tutorial/ic793931.png "信任管理")
    
-    a. 单击“编辑”。 
+    a. 单击 **“编辑”** 。
 
     b. 对于“配置类型”  ，选择“自定义”  。
 
@@ -175,7 +175,7 @@ ms.locfileid: "73160087"
 
     f. 对于“强制身份验证”  ，选择“禁用”  。
 
-    g. 单击“ **保存**”。
+    g. 单击“保存”  。
 
 4. 保存“本地服务提供程序”设置后，执行以下步骤获取回复 URL： 
    
@@ -254,7 +254,7 @@ ms.locfileid: "73160087"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -307,7 +307,7 @@ ms.locfileid: "73160087"
 
     d. 单击“分配”  ，将用户分配到角色。
 
-    e. 单击“ **保存**”。
+    e. 单击“保存”  。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

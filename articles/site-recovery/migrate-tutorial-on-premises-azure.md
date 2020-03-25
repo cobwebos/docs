@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 24015810a295ef88b7d3e63bfc464ddddef6b55f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73939620"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
@@ -51,9 +51,9 @@ ms.locfileid: "73939620"
 1. 单击“恢复服务保管库”  > 保管库。
 2. 在“资源”菜单中，依次单击“Site Recovery”   > “准备基础结构”   > “保护目标”  。
 3. 在“保护目标”  中，选择要迁移的内容。
-    - **VMware**：选择“到 Azure”   > “是，使用 VMWare vSphere 虚拟机监控程序”  。
-    - **物理计算机**：选择“到 Azure”   > “未虚拟化/其他”  。
-    - **Hyper-V**：选择“到 Azure”   > “是，使用 Hyper-V”  。 如果 Hyper-V VM 由 VMM 管理，则选择“是”  。
+    -  VMware：选择“到 Azure”   > “是，使用 VMWare vSphere 虚拟机监控程序”  。
+    - “物理计算机”  ：选择“到 Azure”   > “未虚拟化/其他”  。
+    -  Hyper-V：选择“到 Azure”   > “是，使用 Hyper-V”  。 如果 Hyper-V VM 由 VMM 管理，则选择“是”  。
 
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
@@ -102,7 +102,7 @@ Hyper-V | [启用复制](hyper-v-azure-tutorial.md#enable-replication)<br/><br/>
 为想要迁移的计算机运行故障转移。
 
 1. 在“设置”   > “复制的项”  中，单击计算机 >“故障转移”  。
-2. 在“故障转移”  中，选择要故障转移到的“恢复点”  。 选择最新的恢复点。
+2. 在“故障转移”中，选择要故障转移到的“恢复点”   。 选择最新恢复点。
 3. 加密密钥设置与此方案无关。
 4. 选择“在开始故障转移前关闭计算机”  。 在触发故障转移之前，Site Recovery 会尝试关闭虚拟机。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。 
 5. 检查 Azure VM 是否在 Azure 中按预期显示。
@@ -115,7 +115,7 @@ Hyper-V | [启用复制](hyper-v-azure-tutorial.md#enable-replication)<br/><br/>
 
 
 > [!WARNING]
-> **不会取消正在进行的故障转移**：在故障转移开始前，VM 复制已停止。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
+> **请勿取消正在进行的故障转移**：在故障转移开始前，VM 复制已停止。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
 
 在某些情况下，故障转移需要大约八到十分钟的时间完成其他进程。 你可能注意到物理服务器、VMware Linux 计算机、未启用 DHCP 服务的 VMware VM 和未安装以下启动驱动程序：storvsc、vmbus、storflt、intelide、atapi 的 VMware VM 需要更长的测试故障转移时间。
 
@@ -158,7 +158,7 @@ Hyper-V | [启用复制](hyper-v-azure-tutorial.md#enable-replication)<br/><br/>
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已将本地 VM 迁移到 Azure VM。 Now
+在本教程中，已将本地 VM 迁移到 Azure VM。 现在
 
 > [!div class="nextstepaction"]
 > 为 Azure VM 设置到 Azure 次要区域的[灾难恢复](azure-to-azure-replicate-after-migration.md)。

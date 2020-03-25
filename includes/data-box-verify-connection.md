@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: 8a09a52db40f4f52219bce3e703e275b0f310c1a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67173617"
 ---
 按照以下步骤连接到存储帐户并验证连接。
@@ -17,7 +17,7 @@ ms.locfileid: "67173617"
 
     ![Data Box 仪表板](media/data-box-verify-connection/data-box-connect-via-rest-9.png)
 
-2. 粘贴**帐户名称**和**帐户密钥**（本地 Web UI 的“连接并复制”  页面中的“密钥 1”值）。 选择“其他(在下面输入)”  作为存储终结点域，然后如下所述提供 blob 服务终结点。 只有当通过 *http* 进行传输时才应选中“使用 HTTP”  选项。 如果使用 *https*，则不要选中此选项。 选择“**下一步**”。
+2. 粘贴**帐户名称**和**帐户密钥**（本地 Web UI 的“连接并复制”  页面中的“密钥 1”值）。 选择“其他(在下面输入)”  作为存储终结点域，然后如下所述提供 blob 服务终结点。 只有当通过 **http** 进行传输时才应选中“使用 HTTP”  选项。 如果使用 *https*，则不要选中此选项。 选择“**下一页**”。
 
     ![Data Box 仪表板](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
 

@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 08/20/2019
 ms.author: juliako
 ms.openlocfilehash: 09c93e2d851bea22e9d54dde35398f36335eb896
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70967576"
 ---
 # <a name="cli-example-reset-the-account-credentials"></a>CLI 示例：重置帐户凭据
 
 本文中的 Azure CLI 脚本演示如何重置帐户凭据和恢复 app.config 设置。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 [创建媒体服务帐户](create-account-cli-how-to.md)。
 

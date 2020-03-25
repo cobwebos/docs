@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: alkohli
 ms.openlocfilehash: b0204673c0706403c8c5a7367be19e590d9cb134
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "65604088"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
@@ -27,7 +27,7 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
 > * 跟踪订单
 > * 取消订单
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 请先完成下述适用于 Data Box 服务和设备的配置先决条件，然后部署设备。
 
@@ -46,7 +46,7 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
 
 在开始之前，请确保：
 - 应该将一个主机连接到数据中心网络。 Data Box 会从此计算机复制数据。 主机必须按照 [Azure Data Box 系统要求](data-box-system-requirements.md)中的说明运行支持的操作系统。
-- 数据中心需要有高速网络。 强烈建议你至少使用一个 10 GbE 连接。 如果 10 GbE 连接不可用，则可使用 1 GbE 数据链路，但复制速度会受影响。
+- 数据中心需要有高速网络。 强烈建议你至少建立一个 10 GbE 连接。 如果 10 GbE 连接不可用，则可使用 1 GbE 数据链路，但复制速度会受影响。
 
 
 ## <a name="order-data-box"></a>订购 Data Box
@@ -54,7 +54,7 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
 在 Azure 门户中执行以下步骤以订购设备。
 
 1. 使用 Microsoft Azure 凭据在以下 URL 登录：[https://portal.azure.com](https://portal.azure.com)。
-2. 单击“+ 创建资源”并搜索 *Azure Data Box*。  单击“Azure Data Box”。 
+2. 单击“+ 创建资源”并搜索 **Azure Data Box**。  单击“Azure Data Box”。 
     
    [![搜索“Azure Data Box 1”](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
 

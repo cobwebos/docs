@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: 3fe4dc76e8ece0d525f307626b1772a3239805db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977506"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
@@ -149,7 +149,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 5. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 6. 选择“固定到仪表板”  。     
 7. 单击“创建”。       
-8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”  。
+8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。 
 
     ![“正在部署数据工厂”磁贴](media/tutorial-control-flow-portal/deploying-data-factory.png)
 9. 创建完成后，可以看到图中所示的“数据工厂”页。 
@@ -195,7 +195,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
     1. 输入 **AzureStorageLinkedService** 作为**名称**。
     2. 选择自己 Azure 存储帐户作为**存储帐户名称**。
-    3. 单击“ **保存**”。
+    3. 单击“保存”  。
 
    ![新建 Azure 存储链接服务](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. 输入 `@pipeline().parameters.sourceBlobContainer` 作为文件夹，输入 `emp.txt` 作为文件名。 使用 sourceBlobContainer 管道参数设置数据集的文件夹路径。
@@ -266,13 +266,13 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         ```
 
         ![第二个 Web 活动的设置](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
-22. 在管道设计器中选择“复制”活动，单击 **+->** 按钮，然后选择“错误”。    
+22. 在管道设计器中选择“复制”活动，单击  **按钮，然后选择“错误”。+->**   
 
     ![第二个 Web 活动的设置](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. 将“复制”活动旁边的**红色**按钮拖放到第二个“Web”活动 **SendFailureEmailActivity**。 可以四处移动活动，使管道如下图所示：
 
     ![包含所有活动的完整管道](./media/tutorial-control-flow-portal/full-pipeline.png)
-24. 若要验证管道，请单击工具栏中的“验证”按钮。  单击 **>>** 按钮关闭“管道验证输出”窗口。 
+24. 若要验证管道，请单击工具栏中的“验证”按钮。  单击  **按钮关闭“管道验证输出”窗口。>>**
 
     ![验证管道](./media/tutorial-control-flow-portal/validate-pipeline.png)
 24. 若要将实体（数据集、管道等）发布到数据工厂服务，请选择“全部发布”。  等待“已成功发布”消息出现。 

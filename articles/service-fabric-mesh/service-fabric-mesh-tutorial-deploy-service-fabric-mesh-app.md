@@ -7,10 +7,10 @@ ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: d2bb37252bc93c982dbc090a0c3f20aef842325f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75351850"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>教程：部署 Service Fabric 网格应用程序
@@ -61,11 +61,11 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 选择自己的 Azure 帐户和订阅。 选择“位置”  。 本文使用“美国东部”  。
 
-在“资源组”下，选择“\<创建新资源组...>”   。 此时会出现一个对话框，我们将在其中创建新资源组。 本文使用“美国东部”位置并将组命名为 **sfmeshTutorial1RG**（如果组织有多个人使用同一订阅，请选择唯一的组名称）。   按“创建”以创建资源组，并返回发布对话框。 
+在“资源组”下，选择“**创建新资源组...>”** **\<** 。 此时会出现一个对话框，我们将在其中创建新资源组。 本文使用“美国东部”位置并将组命名为 **sfmeshTutorial1RG**（如果组织有多个人使用同一订阅，请选择唯一的组名称）。   按“创建”以创建资源组，并返回发布对话框。 
 
 ![Visual Studio - Service Fabric 网格 - 新建资源组对话框](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择“\<创建新容器注册表...>”    。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称   。 指定一个**位置**（本教程使用“美国东部”）。  在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG   。 将“SKU”设置为“基本”，然后按“创建”，以创建专用 Azure 容器注册表并返回发布对话框。   
+返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择“**创建新容器注册表...>”**  **\<** 。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称   。 指定一个**位置**（本教程使用“美国东部”）。  在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG   。 将“SKU”设置为“基本”，然后按“创建”，以创建专用 Azure 容器注册表并返回发布对话框。   
 
 ![Visual Studio - Service Fabric 网格 - 新建容器注册表对话框](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 

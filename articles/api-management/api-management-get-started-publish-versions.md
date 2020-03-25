@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73176835"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>发布 API 的多个版本 
 
 有时，让 API 的所有调用方都使用完全相同的版本是不切实际的。 如果调用方想要升级到更高的版本，他们会希望以一种易于理解的方法实现此目的。 在 Azure API 管理中使用**版本**即可实现此目的。 有关详细信息，请参阅[版本和修订](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将新版本添加到现有 API
@@ -34,11 +34,11 @@ ms.locfileid: "73176835"
 
 ![开发人员门户上显示的版本](media/api-management-getstarted-publish-versions/azure_portal.PNG)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
-+ 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
++ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
 
 ## <a name="add-a-new-version"></a>添加新版本
 
@@ -101,7 +101,7 @@ ms.locfileid: "73176835"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将新版本添加到现有 API

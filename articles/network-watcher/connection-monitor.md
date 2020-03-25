@@ -16,10 +16,10 @@ ms.date: 10/25/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76834648"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
@@ -159,7 +159,7 @@ ms.locfileid: "76834648"
 
     可以看到在 **myvm2529** 网络接口的状态列中有一个红色感叹号。
 
-6. 若要了解状态变化的原因，请选择上图中的“10.0.0.5”。 连接监视器通知你通信失败的原因是：“由于以下网络安全组规则，通信被阻止：  UserRule_DenySshInbound”。
+6. 若要了解状态变化的原因，请选择上图中的“10.0.0.5”。 连接监视器指示通信故障的原因是：  流量被以下网络安全组规则阻止: UserRule_DenySshInbound。
 
     如果你并不知道某人已实施你在步骤 4 中创建的安全规则，则可以从连接监视器中了解到，该规则是引发通信问题的原因。 然后，你就可以更改、覆盖或删除该规则，以便还原 VM 之间的通信。
 

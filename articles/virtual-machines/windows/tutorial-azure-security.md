@@ -16,10 +16,10 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 6b763d08dc898566bfe0d7a28bf6471d4edf4c59
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74064958"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>教程：使用 Azure 安全中心监视 Windows 虚拟机
@@ -124,7 +124,7 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 ![RDP 攻击](./media/tutorial-azure-security/rdp-attack.png)
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，用户设置了安全中心，并查看了安全中心内的 VM。 你已了解如何：
+在本教程中，用户设置了安全中心，并查看了安全中心内的 VM。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置数据收集

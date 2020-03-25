@@ -9,10 +9,10 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 48907713082ebb1008ad963121671b36af7f2731
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74228158"
 ---
 本部分说明如何从 .NET 控制台应用以标记模板通知的形式发送突发新闻。
@@ -23,7 +23,7 @@ ms.locfileid: "74228158"
     1. 输入应用程序的名称。
     1. 对于“解决方案”  ，选择“添加到解决方案”  ，然后选择“创建”  以创建项目。
 
-1. 选择“工具” > “NuGet 包管理器” > “包管理器控制台”，然后在控制台窗口中运行以下命令    ：
+1. 选择“工具” **“NuGet 包管理器”** “包管理器控制台”，然后在控制台窗口中运行以下命令 >    >   ：
 
    ```powershell
    Install-Package Microsoft.Azure.NotificationHubs

@@ -9,10 +9,10 @@ ms.date: 04/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: a9b3547844d0b2dcca58a95d04c9cb81d32fa52c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76276416"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 创建单区域虚拟机规模集

@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77193150"
 ---
 ## <a name="create-the-webapi-project"></a>创建 WebAPI 项目
@@ -21,7 +21,7 @@ ms.locfileid: "77193150"
 
 - **对客户端进行身份验证**：添加消息处理程序，以便对客户端请求进行身份验证，并将用户与请求相关联。
 - **使用 WebAPI 后端注册通知**：添加一个控制器来处理新的注册，使客户端设备能够接收通知。 经过身份验证的用户名将作为[标记](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md)自动添加到注册。
-- **将通知发送到客户端**：添加一个控制器，以便用户触发安全推送，将内容推送到与标记关联的设备和客户端。
+- **将通知发送到客户端**：添加一个控制器，以便用户触发安全推送到与标记关联的设备和客户端。
 
 通过执行以下操作创建新的 ASP.NET WebAPI 后端：
 
@@ -141,7 +141,7 @@ ms.locfileid: "77193150"
 
     > [!NOTE]
     > 安全说明：`AuthenticationTestHandler` 类不提供真正的身份验证。 它仅用于模拟基本身份验证并且是不安全的。 必须在生产应用程序和服务中实现安全的身份验证机制。
-5. 若要注册消息处理程序，请在 **App_Start/WebApiConfig.cs** 类中 `Register` 方法的末尾添加以下代码：
+5. 若要注册消息处理程序，请在 `Register`App_Start/WebApiConfig.cs**类中** 方法的末尾添加以下代码：
 
     ```csharp
     config.MessageHandlers.Add(new AuthenticationTestHandler());

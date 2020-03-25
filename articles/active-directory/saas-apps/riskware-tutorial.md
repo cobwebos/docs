@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Riskware 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Riskware 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Riskware 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 6eaa1be81d3ac0733c0829bc45e1b62f8aae5755
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72027117"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>教程：Azure Active Directory 与 Riskware 集成
+# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>教程：Azure Active Directory 与 Riskware 的集成
 
 本教程介绍如何将 Riskware 与 Azure Active Directory (Azure AD) 集成。
 将 Riskware 与 Azure AD 集成提供以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "72027117"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Riskware 的集成，需要以下项：
 
@@ -183,7 +183,7 @@ ms.locfileid: "72027117"
 
     l. 选中“使用 SAML 请求”  复选框。
 
-    m. 单击“ **保存**”。
+    m. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -203,7 +203,7 @@ ms.locfileid: "72027117"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`   
+    b. 在“用户名”字段中，键入  `brittasimon@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -268,7 +268,7 @@ ms.locfileid: "72027117"
 
     a. 在“身份验证”部分下，选择设置的“身份验证”模式（例如“AZURE Configuration for SSO”）。  
 
-    b. 在“登录详细信息”部分下的“用户 ID”文本框中，输入类似于 `brittasimon@contoso.com` 的用户电子邮件   。
+    b. 在“登录详细信息”部分下的“用户 ID”文本框中，输入类似于  **的用户电子邮件**  `brittasimon@contoso.com`。
 
     c. 在“密码”文本框中，输入用户的密码。 
 
@@ -282,7 +282,7 @@ ms.locfileid: "72027117"
 
     c. 在“员工”部分下，选择“员工状态”，例如“休假”。  
 
-    d. 单击“ **保存**”。
+    d. 单击“保存”  。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

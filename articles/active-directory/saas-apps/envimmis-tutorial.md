@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Envi MMIS 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Envi MMIS 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Envi MMIS 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1689517042713e9a3ce75c6ada822cb3d6ff138
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158264"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>教程：Azure Active Directory 与 Envi MMIS 集成
@@ -35,7 +35,7 @@ ms.locfileid: "73158264"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Envi MMIS 的集成，需要具有以下项：
 
@@ -141,7 +141,7 @@ ms.locfileid: "73158264"
 
     ![配置单一登录“保存”按钮](./media/envimmis-tutorial/configure1.png)
 
-3. 单击“编辑”。 
+3. 单击 **“编辑”** 。
 
     ![配置单一登录“保存”按钮](./media/envimmis-tutorial/configure2.png)
 
@@ -183,9 +183,9 @@ ms.locfileid: "73158264"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”  字段中，输入 BrittaSimon  。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -246,11 +246,11 @@ ms.locfileid: "73158264"
 
     d. 在“职务”  文本框中，键入用户的职务。
     
-    e. 在“电子邮件地址”文本框中，键入 Britta Simon 帐户的电子邮件地址，例如“brittasimon\@contoso.com”   。
+    e. 在“电子邮件地址”文本框中，键入 Britta Simon 帐户的电子邮件地址，例如“brittasimon**contoso.com”** **\@** 。
 
     f. 在“SSO 用户名”  文本框中，键入 Britta Simon 帐户的用户名（例如 **brittasimon\@contoso.com**）。
 
-    g. 单击“ **保存**”。
+    g. 单击“保存”  。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

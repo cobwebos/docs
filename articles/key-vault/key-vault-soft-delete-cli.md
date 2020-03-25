@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: 940de5e100da934e0bc4efdfc6686f8040e10954
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392381"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79457315"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 
@@ -53,7 +53,7 @@ Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，�
 对于名为 ContosoVault 的现有密钥保管库，请按如下所示启用软删除。 
 
 ```azurecli
-az resource update --id $(az keyvault show --name ContosoVault -o tsv | awk '{print $1}') --set properties.enableSoftDelete=true
+az keyvault update -n ContosoVault --enable-soft-delete true
 ```
 
 ### <a name="new-key-vault"></a>新的密钥保管库
@@ -66,7 +66,7 @@ az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-
 
 ### <a name="verify-soft-delete-enablement"></a>验证软删除支持
 
-若要验证密钥保管库是否启用了软删除，请运行“显示”命令，并查看“启用软删除?” 属性：
+若要验证密钥保管库是否启用了软删除，请运行“显示”命令，并查看“启用软删除?”  属性：
 
 ```azurecli
 az keyvault show --name ContosoVault
@@ -96,9 +96,9 @@ az keyvault delete --name ContosoVault
 ```azurecli
 az keyvault list-deleted
 ```
-- ID 可用于在恢复或清除时识别资源。 
-- 资源 ID是此保管库的原始资源 ID。 由于此密钥保管库现在处于已删除状态，因此该资源 ID 不存在任何资源。 
-- “计划清除日期”表示如果不采取任何操作，将永久删除保管库。 用于计算“计划清除日期”的默认保留期是 90 天。
+- ID 可用于在恢复或清除时识别资源  。 
+- 资源 ID是此保管库的原始资源 ID  。 由于此密钥保管库现在处于已删除状态，因此该资源 ID 不存在任何资源。 
+- “计划清除日期”表示如果不采取任何操作，将永久删除保管库  。 用于计算“计划清除日期”的默认保留期是 90 天  。
 
 ## <a name="recovering-a-key-vault"></a>恢复密钥保管库
 
@@ -151,18 +151,18 @@ az keyvault key recover --name ContosoFirstKey --vault-name ContosoVault
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-“恢复”和“清除”操作具有与密钥保管库访问策略相关的各自权限。 用户或服务主体如果要执行“恢复”或“清除”操作，必须拥有该密钥或机密的相应权限。 默认情况下，使用“全部”快捷方式授予所有权限时，“清除”不会添加到密钥保管库访问策略中。 必须明确授予“清除”权限。 
+“恢复”和“清除”操作具有与密钥保管库访问策略相关的各自权限   。 用户或服务主体如果要执行“恢复”或“清除”操作，必须拥有该密钥或机密的相应权限   。 默认情况下，使用“全部”快捷方式授予所有权限时，“清除”不会添加到密钥保管库访问策略中  。 必须明确授予“清除”权限  。 
 
 #### <a name="set-a-key-vault-access-policy"></a>设置密钥保管库访问策略
 
-以下命令授予 user@contoso.com 对“ContosoVault”中的密钥执行多项操作（包括“清除”）的权限：
+以下命令授予 user@contoso.com 对“ContosoVault”中的密钥执行多项操作（包括“清除”）的权限   ：
 
 ```azurecli
 az keyvault set-policy --name ContosoVault --key-permissions get create delete list update import backup restore recover purge
 ```
 
 >[!NOTE] 
-> 如果现有密钥保管库刚刚启用软删除，则可能没有“恢复”和“清除”权限。
+> 如果现有密钥保管库刚刚启用软删除，则可能没有“恢复”和“清除”权限   。
 
 #### <a name="secrets"></a>机密
 
@@ -214,16 +214,16 @@ az keyvault purge --location westus --name ContosoVault
 ```
 
 ### <a name="purge-permissions-required"></a>所需的清除权限
-- 要清除已删除的密钥保管库，用户需要 Microsoft.KeyVault/locations/deletedVaults/purge/action 操作的 RBAC 权限。 
-- 要列出已删除的密钥保管库，用户需要 Microsoft.KeyVault/deletedVaults/read 操作的 RBAC 权限。 
+- 要清除已删除的密钥保管库，用户需要 Microsoft.KeyVault/locations/deletedVaults/purge/action 操作的 RBAC 权限  。 
+- 要列出已删除的密钥保管库，用户需要 Microsoft.KeyVault/deletedVaults/read 操作的 RBAC 权限  。 
 - 默认情况下，只有订阅管理员具有这些权限。 
 
 ### <a name="scheduled-purge"></a>计划清除
 
-列出已删除的密钥保管库对象还会显示 Key Vault 计划将其清除的时间。 “计划清除日期”指示如果不采取任何操作，将永久删除密钥保管库对象的时间。 默认情况下，已删除的密钥保管库对象的保留期为 90 天。
+列出已删除的密钥保管库对象还会显示 Key Vault 计划将其清除的时间。 “计划清除日期”指示如果不采取任何操作，将永久删除密钥保管库对象的时间  。 默认情况下，已删除的密钥保管库对象的保留期为 90 天。
 
 >[!IMPORTANT]
->已清除的保管库对象（由“计划清除日期”字段触发清除操作）将被永久删除。 不可恢复！
+>已清除的保管库对象（由“计划清除日期”字段触发清除操作）将被永久删除  。 不可恢复！
 
 ## <a name="enabling-purge-protection"></a>启用清除保护
 
@@ -233,13 +233,13 @@ az keyvault purge --location westus --name ContosoVault
 
 若要在创建保管库时同时启用软删除和清除保护，请使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) 命令：
 
-```
+```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
 ```
 
 若要向现有保管库（已启用软删除）添加清除保护，请使用 [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) 命令：
 
-```
+```azurecli
 az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
 ```
 

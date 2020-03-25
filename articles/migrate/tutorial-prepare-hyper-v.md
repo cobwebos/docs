@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
 ms.openlocfilehash: 1d327f558806e0205540c183c56b92ba31e33cb7
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77031214"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>准备评估 Hyper-V VM 并将其迁移到 Azure
@@ -73,7 +73,7 @@ ms.locfileid: "77031214"
 
 租户/全局管理员可按如下所述授予权限：
 
-1. 在 Azure AD 中，租户/全局管理员应导航到“Azure Active Directory” > “用户” > “用户设置”    。
+1. 在 Azure AD 中，租户/全局管理员应导航到“Azure Active Directory” **“用户”** “用户设置” >    >   。
 2. 管理员应将“应用注册”设置为“是”   。
 
     ![Azure AD 权限](./media/tutorial-prepare-hyper-v/aad.png)

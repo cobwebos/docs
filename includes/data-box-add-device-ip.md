@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: e4b366075cb16f62a0e16b5b06da6fb19ffefdb9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67173615"
 ---
 1. 登录到 Data Box 设备。 请确保该设备已解锁。
@@ -27,7 +27,7 @@ ms.locfileid: "67173615"
 
     ![Data Box 仪表板](media/data-box-add-device-ip/data-box-connect-via-rest-4.png)
 
-5. 以管理员身份启动**记事本**，并打开位于 `C:\Windows\System32\Drivers\etc` 的 **hosts** 文件。
+5. 以管理员身份启动**记事本**，并打开位于 **的**hosts`C:\Windows\System32\Drivers\etc` 文件。
 6. 将以下条目添加到 **hosts** 文件中：`<device IP address> <Blob service endpoint>`
 7. 请使用以下图像作为参考。 保存 **hosts** 文件。
 

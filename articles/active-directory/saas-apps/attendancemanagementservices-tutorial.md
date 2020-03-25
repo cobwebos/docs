@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Attendance Management Services 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Attendance Management Services{1}{2}的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Attendance Management Services 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7143d0afce7a3644286703a9eba0da1ee45305f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67106548"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>教程：Azure Active Directory 与 Attendance Management Services 的集成
@@ -35,7 +35,7 @@ ms.locfileid: "67106548"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要配置 Azure AD 与 Attendance Management Services 的集成，需具备以下项：
 
@@ -72,7 +72,7 @@ ms.locfileid: "67106548"
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Attendance Management Services 的 Azure AD 单一登录  。
+在本部分中，将基于名为“Britta Simon”的测试用户配置并测试 Attendance Management Services  的 Azure AD 单一登录{3}{4}。
 要使单一登录生效，需在 Azure AD 用户与 Attendance Management Services 中的相关用户间建立链接关系。
 
 若要配置和测试 Attendance Management Services 的 Azure AD 单一登录，需完成以下构建基块：
@@ -106,9 +106,9 @@ ms.locfileid: "67106548"
 
     ![Attendance Management Services 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://id.obc.jp/<tenant information >/` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://id.obc.jp/<tenant information >/`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://id.obc.jp/<tenant information >/` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://id.obc.jp/<tenant information >/`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Attendance Management Services 客户支持团队](https://www.obcnet.jp/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -169,7 +169,7 @@ ms.locfileid: "67106548"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -221,7 +221,7 @@ ms.locfileid: "67106548"
 
     ![添加员工](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. 在“OBCiD”文本框中，键入用户的电子邮件，例如 `BrittaSimon\@contoso.com`  。
+    a. 在“OBCiD”文本框中，键入用户的电子邮件，例如  `BrittaSimon\@contoso.com`。
 
     b. 在“密码”文本框中，键入用户的密码。 
 

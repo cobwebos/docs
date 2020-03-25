@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Mozy Enterprise 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Mozy Enterprise 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 Mozy Enterprise 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 7d3b7f8982a24856818cbb6ce86060beac969fc2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233495"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>教程：Azure Active Directory 与 Mozy Enterprise 集成
+# <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>教程：Azure Active Directory 与 Mozy Enterprise 的集成
 
 本教程介绍了如何将 Mozy Enterprise 与 Azure Active Directory (Azure AD) 集成。
 将 Mozy Enterprise 与 Azure AD 集成具有以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "74233495"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Mozy Enterprise 的集成，需备齐以下项：
 
@@ -80,7 +80,7 @@ ms.locfileid: "74233495"
 2. **[配置 Mozy Enterprise 单一登录](#configure-mozy-enterprise-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Mozy Enterprise 测试用户](#create-mozy-enterprise-test-user) - 在 Mozy Enterprise 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户  。
+5. **创建 Mozy Enterprise 测试用户[ - 在 Mozy Enterprise 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户](#create-mozy-enterprise-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -150,7 +150,7 @@ ms.locfileid: "74233495"
    
     g. 选择“为使用其网络凭据登录的管理员启用 SSO”。 
    
-    h. 单击“保存更改”  。
+    h. 单击 **“保存更改”** 。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -170,7 +170,7 @@ ms.locfileid: "74233495"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

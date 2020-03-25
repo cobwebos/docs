@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 32dff9a165125ab1949560ce36438ae266cd3036
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74090298"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>将恢复服务保管库和 Azure Site Recovery 配置移到另一个 Azure 区域
@@ -33,7 +33,7 @@ ms.locfileid: "74090298"
 > [!IMPORTANT]
 > 目前，将恢复服务保管库和灾难恢复配置按原样移到不同的区域并没有最佳方法。 本文将指导你完成禁用复制并在新区域中进行设置的过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 在尝试将 Azure VM 移到另一区域之前，请确保删除灾难恢复配置。 
 

@@ -17,10 +17,10 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7774fd55a64df198a9b025a67ce377deebefe8fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74232075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>教程：Azure Active Directory 与 Bime 集成
@@ -35,7 +35,7 @@ ms.locfileid: "74232075"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Bime 的集成，需要以下项：
 
@@ -81,7 +81,7 @@ ms.locfileid: "74232075"
 2. **[配置 Bime 单一登录](#configure-bime-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Bime 测试用户](#create-bime-test-user) - 在 Bime 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式  。
+5. **创建 Bime 测试用户[ - 在 Bime 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式](#create-bime-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -106,9 +106,9 @@ ms.locfileid: "74232075"
 
     ![Bime 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenant-name>.Bimeapp.com` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<tenant-name>.Bimeapp.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<tenant-name>.Bimeapp.com` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<tenant-name>.Bimeapp.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Bime 客户端支持团队](https://bime.zendesk.com/hc/categories/202604307-Support-tech-notes-and-tips-)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -149,7 +149,7 @@ ms.locfileid: "74232075"
 
     c. 在“证书指纹”  文本框中，粘贴从 Azure 门户复制的“指纹”  值。
 
-    d. 单击“ **保存**”。
+    d. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -169,7 +169,7 @@ ms.locfileid: "74232075"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -226,9 +226,9 @@ ms.locfileid: "74232075"
 
     b. 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）   。
 
-    c. 在“电子邮件”文本框中，输入用户的电子邮件，例如 brittasimon\@contoso.com   。
+    c. 在“电子邮件”文本框中，输入用户的电子邮件，例如 brittasimon**contoso.com** **\@** 。
 
-    d. 单击“ **保存**”。
+    d. 单击“保存”  。
 
 > [!NOTE]
 > 可使用其他任何 Bime 用户帐户创建工具或 Bime 提供的 API 预配 Azure AD 用户帐户。

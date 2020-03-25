@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359713"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79221924"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -36,11 +36,11 @@ ms.locfileid: "78359713"
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
-+ 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
++ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -190,7 +190,7 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 | callerIpAddress | 字符串 | 直接网关调用方（可以是中介）的 IP 地址 |
 | correlationId | 字符串 | 由 API 管理分配的唯一 http 请求标识符 |
 | location | 字符串 | 处理请求的网关所在 Azure 区域的名称 |
-| httpStatusCodeCategory | 字符串 | http 响应状态代码的类别：成功（301 或以下，或者 304 或 307）、未授权（401、403、429）、错误（400、500 到 600）、其他 |
+| httpStatusCodeCategory | 字符串 | Http 响应状态代码的类别：成功（301 或以下，或者 304 或 307）、未授权（401、403、429）、错误（400、500 到 600）、其他 |
 | resourceId | 字符串 | API 管理资源 /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> 的 ID |
 | properties | 对象 (object) | 当前请求的属性 |
 | method | 字符串 | 传入请求的 HTTP 方法 |

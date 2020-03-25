@@ -17,10 +17,10 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 81594e6a21372f2b4dacedbda638cc87bad966db
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227572"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>教程：Azure Active Directory 与 IdeaScale 集成
@@ -35,7 +35,7 @@ ms.locfileid: "74227572"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 IdeaScale 的集成，需要以下项：
 
@@ -81,7 +81,7 @@ ms.locfileid: "74227572"
 2. **[配置 IdeaScale 单一登录](#configure-ideascale-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 IdeaScale 测试用户](#create-ideascale-test-user) - 在 IdeaScale 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式  。
+5. **创建 IdeaScale 测试用户[ - 在 IdeaScale 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式](#create-ideascale-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -106,7 +106,7 @@ ms.locfileid: "74227572"
 
     ![IdeaScale 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.ideascale.com` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<companyname>.ideascale.com`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
     
@@ -140,7 +140,7 @@ ms.locfileid: "74227572"
 
     ![社区设置](./media/ideascale-tutorial/ic790847.png "社区设置")
 
-3. 转到“安全性”\>“单一登录设置”  。
+3. 转到“安全性” **“单一登录设置”\>** 。
 
     ![单一登录设置](./media/ideascale-tutorial/ic790848.png "单一登录设置")
 
@@ -158,7 +158,7 @@ ms.locfileid: "74227572"
 
     c. 在“注销成功 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
 
-    d. 单击“保存更改”  。
+    d. 单击 **“保存更改”** 。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -178,7 +178,7 @@ ms.locfileid: "74227572"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -223,7 +223,7 @@ ms.locfileid: "74227572"
 
     ![社区设置](./media/ideascale-tutorial/ic790847.png "社区设置")
 
-3. 转到“基本设置”\>“成员管理”  。
+3. 转到“基本设置” **“成员管理”\>** 。
 
 4. 单击“添加成员”  。
 
@@ -235,7 +235,7 @@ ms.locfileid: "74227572"
 
     a. 在“电子邮件地址”文本框中，键入要预配的有效 Azure AD 帐户的电子邮件地址  。
 
-    b. 单击“保存更改”  。
+    b. 单击 **“保存更改”** 。
 
     > [!NOTE]
     > Azure Active Directory 帐户持有者将收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。

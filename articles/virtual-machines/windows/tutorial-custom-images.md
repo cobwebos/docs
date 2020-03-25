@@ -13,10 +13,10 @@ ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 7360798f2f95184145a856babf501e3080cbaaf4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76274189"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Azure VM 的自定义映像
@@ -71,7 +71,7 @@ Stop-AzVM `
    -Name myVM -Force
 ```
 
-使用 [Set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) 将虚拟机的状态设置为 `-Generalized`。 
+使用 `-Generalized`Set-AzVm[ 将虚拟机的状态设置为 ](https://docs.microsoft.com/powershell/module/az.compute/set-azvm)。 
    
 ```azurepowershell-interactive
 Set-AzVM `

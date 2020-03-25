@@ -9,17 +9,17 @@ ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 367a0b1d17f8d5ebe4f46835ace963b00e75354e
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68229178"
 ---
 若要使用 Azure 门户创建 IoT 中心，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“创建资源” > “物联网” > “IoT 中心”    。
+1. 选择“创建资源” **“物联网”** “IoT 中心” >    >   。
 
     ![选择安装 IoT 中心](media/iot-hub-tutorials-create-free-hub/selectiothub.png)
 
@@ -27,10 +27,10 @@ ms.locfileid: "68229178"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | Subscription | 在下拉列表中选择自己的 Azure 订阅。 |
-    | Resource group | 新建。 本教程使用名称 **tutorials-iot-hub-rg**。 |
+    | 订阅 | 在下拉列表中选择自己的 Azure 订阅。 |
+    | 资源组 | 新建。 本教程使用名称 **tutorials-iot-hub-rg**。 |
     | 区域 | 本教程使用“美国西部”  。 可以选择离你最近的区域。 |
-    | Name | 以下屏幕截图使用名称 **tutorials-iot-hub**。 创建中心时，必须选择自己的唯一名称。 |
+    | 名称 | 以下屏幕截图使用名称 **tutorials-iot-hub**。 创建中心时，必须选择自己的唯一名称。 |
 
     ![中心设置 1](media/iot-hub-tutorials-create-free-hub/hubdefinition-1.png)
 

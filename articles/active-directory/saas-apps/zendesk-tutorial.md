@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Zendesk 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Zendesk 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Zendesk 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4887457f457ff533a0eaf10be7db1627a950f5bd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233265"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>教程：Azure Active Directory 与 Zendesk 的集成
+# <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>教程：Azure Active Directory 与 Zendesk 集成
 
 本教程介绍了如何将 Zendesk 与 Azure Active Directory (Azure AD) 集成。
 将 Zendesk 与 Azure AD 集成具有以下优势：
@@ -35,7 +35,7 @@ ms.locfileid: "74233265"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Zendesk 的集成，需备齐以下项：
 
@@ -108,24 +108,24 @@ ms.locfileid: "74233265"
 
     ![Zendesk 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.zendesk.com` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<subdomain>.zendesk.com`
 
-   b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.zendesk.com` 
+   b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<subdomain>.zendesk.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Zendesk 客户端支持团队](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. Zendesk 应用程序需要特定格式的 SAML 断言。 没有强制的 SAML 属性，但可以选择从应用程序集成页上的“用户属性”  部分中进行管理。 在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. 在“用户属性”  对话框的“用户声明”  部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -137,7 +137,7 @@ ms.locfileid: "74233265"
 
     f. 单击“确定” 
 
-    g. 单击“ **保存**”。
+    g. 单击“保存”  。
 
     > [!NOTE]
     > 可以使用扩展属性添加默认情况下不在 Azure AD 中的属性。 单击 [可在 SAML 中设置的用户属性](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-)，获取 Zendesk 接受的 SAML 属性的完整列表  。
@@ -176,7 +176,7 @@ ms.locfileid: "74233265"
 
 4. 在“安全”  页中，执行以下步骤：
 
-    ![安全性](././media/zendesk-tutorial/ic773089.png "安全")
+    ![安全性](././media/zendesk-tutorial/ic773089.png "安全性")
 
     ![单一登录](././media/zendesk-tutorial/ic773090.png "单一登录")
 
@@ -190,7 +190,7 @@ ms.locfileid: "74233265"
 
     e. 在“证书指纹”  文本框中，粘贴从 Azure 门户复制的证书“指纹”  值。
 
-    f. 单击“ **保存**”。
+    f. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -210,7 +210,7 @@ ms.locfileid: "74233265"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

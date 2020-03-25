@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: ccb5e40738680181e7339b8652d029597c7d0bd4
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70935107"
 ---
 1. 登录到 [Firebase 控制台](https://firebase.google.com/console/)。 如果还没有 Firebase 项目，创建一个新项目。
@@ -48,7 +48,7 @@ ms.locfileid: "70935107"
     4. 在工具栏上选择“立即同步”。  
  
         ![build.gradle 配置更改](./media/notification-hubs-enable-firebase-cloud-messaging/build-gradle-configurations.png)
-6. 选择“**下一步**”。 
+6. 选择“**下一页**”。 
 7. 选择“跳过此步骤”  。 
 
     ![跳过最后一步](./media/notification-hubs-enable-firebase-cloud-messaging/skip-this-step.png)

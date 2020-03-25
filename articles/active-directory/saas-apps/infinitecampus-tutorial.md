@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: d54769c1f3265e2cee619520044313fca46855a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67100368"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>教程：Azure Active Directory 与 Infinite Campus 的集成
@@ -34,7 +34,7 @@ ms.locfileid: "67100368"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Infinite Campus 的集成，需要以下项：
 
@@ -124,7 +124,7 @@ ms.locfileid: "67100368"
 
     ![管理](./media/infinitecampus-tutorial/tutorial_infinitecampus_admin.png)
 
-3. 导航到“用户安全性” > “SAML 管理” > “SSO 服务提供程序配置”。   
+3. 导航到“用户安全性” **“SAML 管理”** “SSO 服务提供程序配置”。 >    >  
 
     ![SAML](./media/infinitecampus-tutorial/tutorial_infinitecampus_saml.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "67100368"
 
     d. 单击“同步”后，将在“SSO 服务提供程序配置”页中自动填充值。   可以验证这些值是否与上述步骤 4 中显示的值相匹配。
 
-    e. 单击“ **保存**”。
+    e. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -160,7 +160,7 @@ ms.locfileid: "67100368"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如，BrittaSimon@contoso.com 。
+    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如，BrittaSimon@contoso.com 。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 

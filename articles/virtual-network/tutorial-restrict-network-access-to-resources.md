@@ -17,15 +17,15 @@ ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
 ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74186374"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>教程：使用 Azure 门户通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
-通过虚拟网络服务终结点，可将某些 Azure 服务资源限制为仅允许某个虚拟网络子网通过网络进行访问。 还可以删除对资源的 Internet 访问。 服务终结点提供从虚拟网络到受支持 Azure 服务的直接连接，使你能够使用虚拟网络的专用地址空间访问 Azure 服务。 通过服务终结点发往 Azure 资源的流量始终保留在 Microsoft Azure 主干网络上。 本教程介绍如何执行下列操作：
+通过虚拟网络服务终结点，可将某些 Azure 服务资源限制为仅允许某个虚拟网络子网通过网络进行访问。 还可以删除对资源的 Internet 访问。 服务终结点提供从虚拟网络到受支持 Azure 服务的直接连接，使你能够使用虚拟网络的专用地址空间访问 Azure 服务。 通过服务终结点发往 Azure 资源的流量始终保留在 Microsoft Azure 主干网络上。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建包含一个子网的虚拟网络
@@ -37,7 +37,7 @@ ms.locfileid: "74186374"
 
 如果你愿意，可以使用 [Azure CLI](tutorial-restrict-network-access-to-resources-cli.md) 或 [Azure PowerShell](tutorial-restrict-network-access-to-resources-powershell.md) 完成本教程中的步骤。
 
-如果没有 Azure 订阅，请在开始之前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -53,8 +53,8 @@ ms.locfileid: "74186374"
    |----|----|
    |名称| myVirtualNetwork |
    |地址空间| 10.0.0.0/16|
-   |Subscription| 选择订阅|
-   |Resource group | 选择“新建”，并输入 myResourceGroup  |
+   |订阅| 选择订阅|
+   |资源组 | 选择“新建”，并输入 myResourceGroup  |
    |位置| 选择“美国东部”  |
    |子网名称| 公共|
    |子网地址范围| 10.0.0.0/24|
@@ -94,9 +94,9 @@ ms.locfileid: "74186374"
 
     |设置|值|
     |----|----|
-    |Name| myNsgPrivate |
-    |Subscription| 选择订阅|
-    |Resource group | 选择“使用现有资源组”，再选择“myResourceGroup”   。|
+    |名称| myNsgPrivate |
+    |订阅| 选择订阅|
+    |资源组 | 选择“使用现有资源组”，再选择“myResourceGroup”   。|
     |位置| 选择“美国东部”  |
 
 4. 创建网络安全组后，在门户顶部的“搜索资源、服务和文档”框中输入 *myNsgPrivate*。  当“myNsgPrivate”出现在搜索结果中时，将其选中。 
@@ -111,10 +111,10 @@ ms.locfileid: "74186374"
     |目标 | 选择“服务标记” |
     |目标服务标记 | 选择“存储” |
     |目标端口范围| * |
-    |协议|任意|
-    |操作|允许|
+    |协议|Any|
+    |操作|Allow|
     |优先度|100|
-    |Name|Allow-Storage-All|
+    |名称|Allow-Storage-All|
 
 8. 创建另一条出站安全规则，拒绝到 Internet 的通信。 此规则将覆盖所有网络安全组中允许出站 Internet 通信的默认规则。 使用以下值再次完成步骤 5-7：
 
@@ -125,10 +125,10 @@ ms.locfileid: "74186374"
     |目标 | 选择“服务标记” |
     |目标服务标记| 选择“Internet” |
     |目标端口范围| * |
-    |协议|任意|
+    |协议|Any|
     |操作|拒绝|
     |优先度|110|
-    |Name|Deny-Internet-All|
+    |名称|Deny-Internet-All|
 
 9. 在“设置”下，选择“入站安全规则”。  
 10. 选择“+ 添加”  。
@@ -136,14 +136,14 @@ ms.locfileid: "74186374"
 
     |设置|值|
     |----|----|
-    |源| 任意 |
+    |源| Any |
     |源端口范围| * |
     |目标 | 选择“VirtualNetwork” |
     |目标端口范围| 3389 |
-    |协议|任意|
-    |操作|允许|
+    |协议|Any|
+    |操作|Allow|
     |优先度|120|
-    |Name|Allow-RDP-All|
+    |名称|Allow-RDP-All|
 
 12. 在“设置”下选择“子网”。  
 13. 选择“+ 关联” 
@@ -162,12 +162,12 @@ ms.locfileid: "74186374"
 
     |设置|值|
     |----|----|
-    |Name| 输入在所有 Azure 位置中唯一的、长度为 3-24 个字符且仅使用数字和小写字母的名称。|
+    |名称| 输入在所有 Azure 位置中唯一的、长度为 3-24 个字符且仅使用数字和小写字母的名称。|
     |帐户类型|StorageV2（常规用途 v2）|
     |位置| 选择“美国东部”  |
     |复制| 本地冗余存储 (LRS)|
-    |Subscription| 选择订阅|
-    |Resource group | 选择“使用现有资源组”，再选择“myResourceGroup”   。|
+    |订阅| 选择订阅|
+    |资源组 | 选择“使用现有资源组”，再选择“myResourceGroup”   。|
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>在存储帐户中创建文件共享
 
@@ -191,7 +191,7 @@ ms.locfileid: "74186374"
 
     |设置|值|
     |----|----|
-    |Subscription| 选择订阅。|
+    |订阅| 选择订阅。|
     |虚拟网络|选择“虚拟网络”下的“myVirtualNetwork”  |
     |子网| 选择“子网”下的“专用”  |
 
@@ -217,11 +217,11 @@ ms.locfileid: "74186374"
 
    |设置|值|
    |----|----|
-   |Name| myVmPublic|
+   |名称| myVmPublic|
    |用户名|输入所选用户名。|
    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
-   |Subscription| 选择订阅。|
-   |Resource group| 选择“使用现有资源组”，再选择“myResourceGroup”   。|
+   |订阅| 选择订阅。|
+   |资源组| 选择“使用现有资源组”，再选择“myResourceGroup”   。|
    |位置| 选择“美国东部”  。|
 
    ![输入虚拟机的基本信息](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
@@ -281,7 +281,7 @@ ms.locfileid: "74186374"
 
 1. 在门户顶部的“搜索资源、服务和文档”框中，输入 *myVmPublic*。 
 2. 当“myVmPublic”出现在搜索结果中时，将其选中。 
-3. 针对 *myVmPublic* VM 完成[确认对存储帐户的访问](#confirm-access-to-storage-account)中的步骤 1-6。
+3. 针对 [myVmPublic](#confirm-access-to-storage-account) VM 完成*确认对存储帐户的访问*中的步骤 1-6。
 
    稍等片刻，你会收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在“公共”子网中。  “公共”  子网没有为 Azure 存储启用服务终结点。 存储帐户仅允许从“专用”  子网访问网络，而不允许从“公共”  子网访问。
 
@@ -301,7 +301,7 @@ ms.locfileid: "74186374"
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”   。 当在搜索结果中看到“myResourceGroup”时，将其选中。 
-2. 选择“删除资源组”。 
+2. 选择“删除资源组”  。
 3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。   
 
 ## <a name="next-steps"></a>后续步骤

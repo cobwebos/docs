@@ -15,10 +15,10 @@ ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
 ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161776"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>在 Azure 上创建 Pivotal Cloud Foundry 群集
@@ -44,7 +44,7 @@ ssh-keygen -t rsa -b 2048
 >
 > 若要创建服务主体，需要所有者帐户权限。 还可以编写一个脚本来自动创建服务主体。 例如，可以使用 Azure CLI 的 [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest)。
 
-1. 登录到 Azure 帐户。
+1. 登录 Azure 帐户。
 
     `az login`
 

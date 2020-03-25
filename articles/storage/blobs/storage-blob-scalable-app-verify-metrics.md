@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: dc0f8171e18598e4f805a03a4bc6d17de220fbe1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68698977"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>验证存储帐户的吞吐量和延迟指标
@@ -40,7 +40,7 @@ ms.locfileid: "68698977"
 |---|---|
 |**成功 E2E 延迟**|向存储服务或指定的 API 操作发出的成功请求的平均端到端延迟。 此值包括在 Azure 存储中读取请求、发送响应和接收响应确认所需的处理时间。|
 |**成功服务器延迟**|Azure 存储处理成功请求所用的平均时间。 此值不包括 SuccessE2ELatency 中指定的网络延迟。 |
-|**Transactions**|向存储服务或指定的 API 操作发出的请求数。 此数字包括成功和失败的请求数，以及引发错误的请求数。 在该示例中，块大小设置为 100 MB。 在这种情况下，每个 100 MB 的块被认为是一个事务。|
+|**中的**|向存储服务或指定的 API 操作发出的请求数。 此数字包括成功和失败的请求数，以及引发错误的请求数。 在该示例中，块大小设置为 100 MB。 在这种情况下，每个 100 MB 的块被认为是一个事务。|
 |**流入量**|流入数据量。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。 |
 |**流出量**|流出数据量。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。 |
 

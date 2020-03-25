@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Recognize 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Recognize 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 Recognize 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: c0a513ad8fe772839813615d065616f2c911a031
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>教程：Azure Active Directory 与 Recognize 集成
@@ -34,7 +34,7 @@ ms.locfileid: "68943340"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Recognize 的集成，需要以下项：
 
@@ -118,7 +118,7 @@ ms.locfileid: "68943340"
 
     ![Recognize 域和 URL 单一登录信息](common/sp-identifier.png)
 
-     在“登录 URL”文本框中，使用以下模式键入 URL：`https://recognizeapp.com/<your-domain>/saml/sso` 
+     在“登录 URL”文本框中，使用以下模式键入 URL：  `https://recognizeapp.com/<your-domain>/saml/sso`
 
     > [!Note]
     > 如果“标识符”值未自动填充，可通过打开“SSO 设置”部分的“服务提供程序元数据 URL”来获取“标识符”值，本教程的“配置 Recognize 单一登录”部分会对此予以介绍。   登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 请联系 [Recognize 客户端支持团队](mailto:support@recognizeapp.com)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -191,7 +191,7 @@ ms.locfileid: "68943340"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -239,7 +239,7 @@ ms.locfileid: "68943340"
 
 4. 在“用户同步”  部分中，执行以下步骤。
    
-    ![新建用户](./media/recognize-tutorial/tutorial_recognize_005.png "New User")
+    ![新建用户](./media/recognize-tutorial/tutorial_recognize_005.png "新建用户")
    
     a. 对于“启用同步”  ，选择“启用”  。
    

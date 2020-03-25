@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: a2bec6401ae3ac53f46e92e9be38abf57a92163d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74108101"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>导入 SOAP API 并将其转换为 REST
@@ -30,13 +30,13 @@ ms.locfileid: "74108101"
 > * 在 Azure 门户中测试 API
 > * 在开发人员门户中测试 API
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
+完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>导入和发布后端 API
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>导入和发布后端 API
 
 1. 在“API 管理”下面选择“API”。  
 2. 从“添加新的 API”列表中选择“WSDL”   。
@@ -69,7 +69,7 @@ ms.locfileid: "74108101"
 2. 按“测试”选项卡  。
 3. 选择某个操作。
 
-    该页将显示查询参数的字段和标头的字段。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 如果创建了 APIM 实例，那么你已是管理员，因此会自动填充该密钥。 
+    该页将显示查询参数的字段和标头的字段。 其中一个标头是“Ocp-Apim-Subscription-Key”，用于提供和此 API 关联的产品订阅密钥。 如果创建了 APIM 实例，那么你已是管理员，因此会自动填充该密钥。 
 1. 按“发送”。 
 
     后端以“200 正常”和某些数据做出响应  。

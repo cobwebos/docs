@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Optimizely 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Optimizely 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 Optimizely 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 2e25c615e040dd4359e278b95045fbc71ca60ef1
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943959"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>教程：Azure Active Directory 与 Optimizely 集成
+# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>教程：Azure Active Directory 与 Optimizely 的集成
 
 本教程介绍如何将 Optimizely 与 Azure Active Directory (Azure AD) 集成。
 将 Optimizely 与 Azure AD 集成具有以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "68943959"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Optimizely 的集成，需备齐以下项目：
 
@@ -105,7 +105,7 @@ ms.locfileid: "68943959"
 
     ![Optimizely 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://app.optimizely.net/<instance name>` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://app.optimizely.net/<instance name>`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `urn:auth0:optimizely:contoso`
 
@@ -118,15 +118,15 @@ ms.locfileid: "68943959"
 
 6. 除了上述属性，Optimizely 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | Name | 源属性 |
+    | 名称 | 源属性 |
     | ---------------| --------------- |
     | 电子邮件 | user.mail |
     
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -138,7 +138,7 @@ ms.locfileid: "68943959"
 
     f. 单击“确定” 
 
-    g. 单击“ **保存**”。
+    g. 单击“保存”  。
 
 4. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -194,7 +194,7 @@ ms.locfileid: "68943959"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
+    b. 在“用户名”  字段中键入 **brittasimon@yourcompanydomain.extension**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

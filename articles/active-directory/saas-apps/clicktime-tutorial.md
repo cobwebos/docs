@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 ClickTime 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 ClickTime 的集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 ClickTime 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 233ddde25645cbdd9073011eeec2a20e42c8e9a8
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157405"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>教程：Azure Active Directory 与 ClickTime 集成
+# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>教程：Azure Active Directory 与 ClickTime 的集成
 
 本教程介绍了如何将 ClickTime 与 Azure Active Directory (Azure AD) 进行集成。
 将 ClickTime 与 Azure AD 集成可提供以下优势：
@@ -35,7 +35,7 @@ ms.locfileid: "73157405"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 ClickTime 的集成，需要具有以下项：
 
@@ -106,7 +106,7 @@ ms.locfileid: "73157405"
 
     ![ClickTime 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中键入 URL：`https://app.clicktime.com/sp/` 
+    a. 在“标识符”文本框中键入 URL：  `https://app.clicktime.com/sp/`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
     
@@ -145,7 +145,7 @@ ms.locfileid: "73157405"
    
     c.  在记事本中打开从 Azure 门户下载的 base-64 编码证书，复制内容，然后将其粘贴到“X.509 证书”文本框中    。
    
-    d.  单击“ **保存**”。
+    d.  单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -165,7 +165,7 @@ ms.locfileid: "73157405"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -224,12 +224,12 @@ ms.locfileid: "73157405"
    
     a.  在“全名”文本框中，键入用户的全名，例如 Britta Simon   。 
   
-    b.  在“电子邮件地址”文本框中，键入用户的电子邮件，例如 brittasimon\@contoso.com   。
+    b.  在“电子邮件地址”文本框中，键入用户的电子邮件，例如 brittasimon**contoso.com** **\@** 。
        
     > [!NOTE]
     > 如果需要，可以设置新人员对象的其他属性。
    
-    c.  单击“ **保存**”。
+    c.  单击“保存”  。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

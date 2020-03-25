@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: ef623b95e104b485c6bfc8b2f489afeca436d81e
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74084178"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>为 Hyper-V 灾难恢复准备 Azure 资源
@@ -36,7 +36,7 @@ ms.locfileid: "74084178"
 
 ## <a name="sign-in"></a>登录
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="verify-account-permissions"></a>验证帐户权限
 
@@ -52,7 +52,7 @@ ms.locfileid: "74084178"
 
 已复制计算机的映像保存在 Azure 存储中。 在从本地故障转移到 Azure 时，会从该存储中创建 Azure VM。 存储帐户必须位于与恢复服务保管库相同的区域。
 
-1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“创建资源” > “存储” > “存储帐户 - blob、文件、表、队列”    。
+1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“创建资源” **“存储”** “存储帐户 - blob、文件、表、队列” >    >   。
 2. 在“创建存储帐户”  中，输入帐户的名称。  选择的名称必须在 Azure 中唯一，长度为 3 到 24 个字符，且只能使用小写字母和数字。 本教程使用 **contosovmsacct1910171607**。
 3. 在“部署模型”中，选择“资源管理器”。  
 4. 在“帐户类型”中，选择“存储(常规用途 v1)”   。 请不要选择 blob 存储。
@@ -67,7 +67,7 @@ ms.locfileid: "74084178"
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
-1. 在 Azure 门户中选择“+创建资源”，然后在 Azure 市场中搜索“恢复服务”。 
+1. 在 Azure 门户中选择“+创建资源”，然后在 Azure 市场中搜索“恢复服务”。  {3}{4}
 2. 选择“备份和站点恢复(OMS)”。  接下来，在“备份和站点恢复”页上，选择“创建”。  
 1. 在“恢复服务保管库”>“名称”中，输入一个易记名称用于标识该保管库。  在本教程中，请使用 ContosoVMVault  。
 2. 在**资源组**中，选择现有资源组或创建新资源组。 本教程使用 **contosoRG**。
@@ -82,7 +82,7 @@ ms.locfileid: "74084178"
 
 在故障转移后创建的 Azure VM 会加入此网络。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源”   >   “网络” >   “虚拟网络”。 保留选择“资源管理器”作为部署模型。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择 **“创建资源”**  >  **“网络”**  >  **“虚拟网络”** 。 保留选择“资源管理器”作为部署模型。
 2. 在“名称”中  ，输入网络名称。 名称在 Azure 资源组中必须唯一。 本教程使用 **ContosoASRnet**。
 3. 指定要在其中创建网络的资源组。 本教程使用现有资源组 **contosoRG**。
 4. 在“地址范围”中，输入 **10.0.0.0/24** 作为网络范围。  此网络没有子网。

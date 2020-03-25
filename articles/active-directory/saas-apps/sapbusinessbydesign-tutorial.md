@@ -17,10 +17,10 @@ ms.date: 04/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b830f0760b768826b2d937b4a8b2ffbd8e9e2a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091672"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>教程：将 Azure Active Directory 与 SAP Business ByDesign 集成
@@ -35,7 +35,7 @@ ms.locfileid: "67091672"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 SAP Business ByDesign 的集成，需备齐以下项目：
 
@@ -106,9 +106,9 @@ ms.locfileid: "67091672"
 
     ![SAP Business ByDesign 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<servername>.sapbydesign.com` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<servername>.sapbydesign.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<servername>.sapbydesign.com` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<servername>.sapbydesign.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [SAP Business ByDesign 客户端支持团队](https://www.sap.com/products/cloud-analytics.support.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -121,7 +121,7 @@ ms.locfileid: "67091672"
 
     ![image](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
 
-7. 在“管理用户声明”部分中，执行以下步骤：![图像](media/sapbusinessbydesign-tutorial/mail-prefix2.png) 
+7. 在“管理用户声明”部分中，执行以下步骤：**图像**![](media/sapbusinessbydesign-tutorial/mail-prefix2.png)
 
     a. 选择“转换”作为“源”   。
 
@@ -129,7 +129,7 @@ ms.locfileid: "67091672"
 
     c. 从“参数 1”下拉列表中，选择要用于实现的用户属性  。 例如，如果想要使用 EmployeeID 作为唯一用户标识符并且已在 ExtensionAttribute2 中存储属性值，则选择 user.extensionattribute2。
 
-    d. 单击“ **保存**”。
+    d. 单击“保存”  。
 
 8. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -206,7 +206,7 @@ ms.locfileid: "67091672"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 

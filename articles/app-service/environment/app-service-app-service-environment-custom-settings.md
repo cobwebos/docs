@@ -6,13 +6,13 @@ ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: stefsch
-ms.custom: seodec18
-ms.openlocfilehash: 42a06724274288955b11c3daf9cbf33d72ddf75d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 25393007a3cc878737ea5927cb65bcf7ef945313
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430489"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057569"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>应用服务环境的自定义配置设置
 ## <a name="overview"></a>概述
@@ -96,7 +96,7 @@ ms.locfileid: "75430489"
         ],
 
 > [!WARNING]
-> 如果对 SChannel 无法理解的密码套件设置不正确的值，与服务器的所有 TLS 通信可能会停止运行。 在这种情况下，必须从 **clusterSettings** 中删除 *FrontEndSSLCipherSuiteOrder* 条目，并提交更新的 Resource Manager 模板以还原回默认的密码套件设置。  请谨慎使用此功能。
+> 如果对 SChannel 无法理解的密码套件设置不正确的值，与服务器的所有 TLS 通信可能会停止运行。 在这种情况下，必须从 *clusterSettings* 中删除 **FrontEndSSLCipherSuiteOrder** 条目，并提交更新的 Resource Manager 模板以还原回默认的密码套件设置。  请谨慎使用此功能。
 > 
 > 
 

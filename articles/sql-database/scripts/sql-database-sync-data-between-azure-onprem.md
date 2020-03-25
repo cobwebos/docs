@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: d8fa054bc418fc3230c1a69fb2767faadc59a9a8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74421879"
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>使用 PowerShell 在 SQL 数据库和 SQL Server 本地数据库之间进行同步
@@ -33,7 +33,7 @@ ms.locfileid: "74421879"
 > [!IMPORTANT]
 > 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 使用 AdventureWorksLT 示例数据库创建 Azure SQL 数据库作为中心数据库
 - 在同步数据库所在的相同区域中创建 Azure SQL 数据库
@@ -290,7 +290,7 @@ Remove-AzResourceGroup -ResourceGroupName $syncDatabaseResourceGroupName
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzSqlSyncAgent](/powershell/module/az.sql/New-azSqlSyncAgent) |  新建同步代理 |
 | [New-AzSqlSyncAgentKey](/powershell/module/az.sql/New-azSqlSyncAgentKey) |  生成与同步代理关联的代理密钥 |

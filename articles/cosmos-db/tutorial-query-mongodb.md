@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5b9bc78f6af833d89a3404de0295ddad78ebdf20
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74870133"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 查询数据
@@ -58,7 +58,7 @@ ms.locfileid: "74870133"
   "isRegistered": false
 }
 ```
-## <a id="examplequery1"></a>示例查询 1 
+## <a name="example-query-1"></a><a id="examplequery1"></a>示例查询 1 
 
 在上述家庭示例文档中，以下查询返回其 ID 字段匹配 `WakefieldFamily` 的文档。
 
@@ -108,7 +108,7 @@ ms.locfileid: "74870133"
     "isRegistered": false
     }
 
-## <a id="examplequery2"></a>示例查询 2 
+## <a name="example-query-2"></a><a id="examplequery2"></a>示例查询 2 
 
 下一个查询返回该家庭中的所有子女。 
 
@@ -141,7 +141,7 @@ ms.locfileid: "74870133"
     }
 
 
-## <a id="examplequery3"></a>示例查询 3 
+## <a name="example-query-3"></a><a id="examplequery3"></a>示例查询 3 
 
 下一个查询返回所有已注册的家庭。 
 
@@ -150,7 +150,7 @@ ms.locfileid: "74870133"
     db.families.find( { "isRegistered" : true })
 **结果**不返回任何文档。 
 
-## <a id="examplequery4"></a>示例查询 4
+## <a name="example-query-4"></a><a id="examplequery4"></a>示例查询 4
 
 下一个查询返回所有未注册的家庭。 
 
@@ -194,7 +194,7 @@ ms.locfileid: "74870133"
     "isRegistered": false
 }
 
-## <a id="examplequery5"></a>示例查询 5
+## <a name="example-query-5"></a><a id="examplequery5"></a>示例查询 5
 
 下一个查询返回所有未注册且所在州为纽约 (NY) 的家庭。 
 
@@ -240,7 +240,7 @@ ms.locfileid: "74870133"
 }
 
 
-## <a id="examplequery6"></a>示例查询 6
+## <a name="example-query-6"></a><a id="examplequery6"></a>示例查询 6
 
 下一个查询返回子女读 8 年级的所有家庭。
 
@@ -285,7 +285,7 @@ ms.locfileid: "74870133"
     "isRegistered": false
 }
 
-## <a id="examplequery7"></a>示例查询 7
+## <a name="example-query-7"></a><a id="examplequery7"></a>示例查询 7
 
 下一个查询返回有 3 个子女的家庭。
 

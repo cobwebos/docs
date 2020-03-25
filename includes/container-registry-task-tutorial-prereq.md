@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
 ms.openlocfilehash: 40cc1856a5e943ca5596e7d11712febadd30e3ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67133661"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="get-sample-code"></a>获取示例代码
 
@@ -19,7 +19,7 @@ ms.locfileid: "67133661"
 
 ### <a name="container-registry"></a>容器注册表
 
-Azure 订阅中必须具有 Azure 容器注册表才能完成此教程。 如果需要注册表，请参阅[上一教程](../articles/container-registry/container-registry-tutorial-quick-task.md)或[快速入门：使用 Azure CLI 创建容器注册表](../articles/container-registry/container-registry-get-started-azure-cli.md)。
+Azure 订阅中必须具有 Azure 容器注册表才能完成此教程。 如果需要注册表，请参阅[前面教程](../articles/container-registry/container-registry-tutorial-quick-task.md)，或[快速入门：使用 Azure CLI 创建容器注册表](../articles/container-registry/container-registry-get-started-azure-cli.md)。
 
 ## <a name="create-a-github-personal-access-token"></a>创建 GitHub 个人访问令牌
 

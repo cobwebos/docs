@@ -17,10 +17,10 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e32f8c3ea300960893163264e99bd6c51138c7c5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159655"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>教程：Azure Active Directory 与 LaunchDarkly 集成
@@ -35,7 +35,7 @@ ms.locfileid: "73159655"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 LaunchDarkly 的集成，需要以下各项：
 
@@ -107,7 +107,7 @@ ms.locfileid: "73159655"
 
     ![LaunchDarkly 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中键入 URL：`app.launchdarkly.com` 
+    a. 在“标识符”文本框中键入 URL：  `app.launchdarkly.com`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://app.launchdarkly.com/trust/saml2/acs/<customers-unique-id>`
 
@@ -180,7 +180,7 @@ ms.locfileid: "73159655"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

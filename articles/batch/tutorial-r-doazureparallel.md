@@ -12,10 +12,10 @@ ms.date: 01/23/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 64daede5de4f2d1bbc69c65f88fe5b5875a0a5b8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77025837"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>教程：使用 Azure Batch 运行并行 R 模拟 
@@ -108,7 +108,7 @@ generateClusterConfig("cluster.json")
 对于本教程，请将配置更改如下：
 
 * 将 `maxTasksPerNode` 增加到 *2*，以便充分利用每个节点上的两个核心
-* 将 `dedicatedNodes` 设置为 *0*，以便尝试适用于 Batch 的低优先级 VM。 将 `lowPriorityNodes` 的 `min` 设置为 *5*， 并将 `max` 设置为 *10*，或者根据需要选择更小的数字。 
+* 将 `dedicatedNodes` 设置为 *0*，以便尝试适用于 Batch 的低优先级 VM。 将 `min` 的 `lowPriorityNodes` 设置为 *5*， 并将 `max` 设置为 *10*，或者根据需要选择更小的数字。 
 
 其余设置保留默认值，然后保存文件。 该属性应与下面类似：
 

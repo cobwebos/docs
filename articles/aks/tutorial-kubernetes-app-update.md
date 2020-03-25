@@ -6,13 +6,13 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77593370"
 ---
-# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序。
+# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序
 
 在 Kubernetes 中部署应用程序后，可以指定新的容器映像或映像版本，从而更新应用程序。 更新分阶段进行，因此，只有一部分部署会同时更新。 借助这种暂存更新，可以让应用程序在更新期间继续运行。 如果发生部署故障，还可以利用它的回滚机制。
 
@@ -34,7 +34,7 @@ ms.locfileid: "77593370"
 
 ## <a name="update-an-application"></a>更新应用程序
 
-让我们更改示例应用程序，然后更新已部署到 AKS 群集的版本。 确保在克隆的 *azure-voting-app-redis* 目录中操作。 可在 *azure-vote* 目录中找到示例应用程序的源代码。 使用编辑器（例如 `vi`）打开 *config_file.cfg* 文件：
+让我们更改示例应用程序，然后更新已部署到 AKS 群集的版本。 确保在克隆的 *azure-voting-app-redis* 目录中操作。 可在 *azure-vote* 目录中找到示例应用程序的源代码。 使用编辑器（例如 *）打开* config_file.cfg`vi` 文件：
 
 ```console
 vi azure-vote/azure-vote/config_file.cfg
@@ -85,7 +85,7 @@ docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 现在，请使用 [docker push][docker-push] 将映像上传到注册表。 将 `<acrLoginServer>` 替换为 ACR 登录服务器名称。
 
 > [!NOTE]
-> 如果在推送到 ACR 注册表时遇到问题，请确保你仍已登录。 使用在 [创建 Azure 容器注册表](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry)步骤中创建的 Azure 容器注册表的名称运行 [az acr login][az-acr-login] 命令。 例如，`az acr login --name <azure container registry name>` 。
+> 如果在推送到 ACR 注册表时遇到问题，请确保你仍已登录。 使用在 [创建 Azure 容器注册表][az-acr-login]步骤中创建的 Azure 容器注册表的名称运行 [az acr login](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) 命令。 例如，`az acr login --name <azure container registry name>` 。
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2

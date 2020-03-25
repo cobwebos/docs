@@ -4,14 +4,14 @@ ms.service: jenkins
 ms.topic: include
 ms.date: 03/03/2020
 ms.author: tarcher
-ms.openlocfilehash: 2468dc72881755a2990e8ddf8112d7fe27f64f4d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: e9b8ad7a7fcc499f8760b56e6a737be8a6a9e06c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78274446"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79199638"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅
 * 可以在计算机的命令行（例如 Bash shell 或 [PuTTY](https://www.putty.org/)）上访问 SSH
@@ -63,11 +63,11 @@ Jenkins 服务器现在已就绪，可以生成代码了。
 
 ![定义 Git 存储库](./media/jenkins-install-solution-template-steps/jenkins-job-git-configuration.png) 
 
-依次选择“生成”选项卡、“添加生成步骤”、“调用 Gradle 脚本”。    选择“使用 Gradle 包装器”，然后在“包装器位置”中输入 `complete`，并输入 `build` 作为“任务”。   
+依次选择“生成”选项卡、“添加生成步骤”、“调用 Gradle 脚本”。    选择“使用 Gradle 包装器”，然后在“包装器位置”中输入 **，并输入**  作为“任务”。`complete`  `build` 
 
 ![使用要生成的 Gradle 包装器](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-config.png) 
 
-选择“高级”，然后在“根生成脚本”字段中输入 `complete`。   选择“保存”。 
+选择“高级”，然后在“根生成脚本”字段中输入 **。** `complete`  选择“保存”。 
 
 ![在 Gradle 包装器生成步骤中设置高级设置](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-advances.png) 
 
@@ -86,4 +86,4 @@ Jenkins 服务器现在已就绪，可以生成代码了。
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [将 Azure VM 作为 Jenkins 代理添加](/azure/jenkins-azure-vm-agents)
+> [将 Azure VM 作为 Jenkins 代理添加](/azure/jenkins/jenkins-azure-vm-agents)

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Cezanne HR Software 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Cezanne HR Software 的集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 Cezanne HR Software 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa689e6138f8d965e59f7cfa7a85e0835301086c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158696"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>教程：Azure Active Directory 与 Cezanne HR Software 集成
+# <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>教程：Azure Active Directory 与 Cezanne HR Software 的集成
 
 在本教程中，了解如何将 Cezanne HR Software 与 Azure Active Directory (Azure AD) 集成。
 将 Cezanne HR Software 与 Azure AD 集成可提供以下优势：
@@ -35,7 +35,7 @@ ms.locfileid: "73158696"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Cezanne HR Software 的集成，需要具有以下项：
 
@@ -106,9 +106,9 @@ ms.locfileid: "73158696"
 
     ![Cezanne HR Software 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>`
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://w3.cezanneondemand.com/CezanneOnDemand/` 
+    b. 在“标识符(实体 ID)”文本框中，键入 URL：  `https://w3.cezanneondemand.com/CezanneOnDemand/`
 
     c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://w3.cezanneondemand.com:443/cezanneondemand/-/<tenantidentifier>/Saml/samlp`
     
@@ -185,7 +185,7 @@ ms.locfileid: "73158696"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -246,7 +246,7 @@ ms.locfileid: "73158696"
 
     ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "新建用户")
 
-    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。 
+    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 **）。** Brittasimon@contoso.com
 
     b. 在“密码”文本框中，键入用户的密码。 
 
@@ -256,15 +256,15 @@ ms.locfileid: "73158696"
 
 5. 导航到“单一登录”选项卡，并在“SAML 2.0 标识符”区域中选择“新增”。   
 
-    ![User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "用户")
+    ![用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "用户")
 
 6. 对于“标识提供者”，选择标识提供者，在“用户标识符”文本框中，输入 Britta Simon 帐户的电子邮件地址。  
 
-    ![User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "用户")
+    ![用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "用户")
 
 7. 单击“保存”按钮  。
 
-    ![User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "用户")
+    ![用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "用户")
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

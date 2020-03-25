@@ -16,10 +16,10 @@ ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: f2c739d90917bd00bbde5d680a20a18271a581cc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74038887"
 ---
 # <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>将 VHD 上传到 Azure 并创建新 VM 的示例脚本
@@ -129,7 +129,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| 命令                                                                                                             | 说明                                                                                                                                                                                |
+| Command                                                                                                             | 说明                                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)                           | 创建用于存储所有资源的资源组。                                                                                                                          |
 | [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)                         | 创建存储帐户。                                                                                                                                                           |

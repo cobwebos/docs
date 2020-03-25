@@ -17,10 +17,10 @@ ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfa7934472b512e2c884ab3f9a06728a8fb18b12
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>教程：Azure Active Directory 与 BambooHR 集成
@@ -35,7 +35,7 @@ ms.locfileid: "73157746"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 BambooHR 的集成，需要以下项：
 
@@ -81,7 +81,7 @@ ms.locfileid: "73157746"
 2. **[配置 BambooHR 单一登录](#configure-bamboohr-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 BambooHR 测试用户](#create-bamboohr-test-user) - 在 BambooHR 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式  。
+5. **创建 BambooHR 测试用户[ - 在 BambooHR 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式](#create-bamboohr-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -106,9 +106,9 @@ ms.locfileid: "73157746"
 
     ![BambooHR 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.bamboohr.com` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<company>.bamboohr.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`BambooHR-SAML` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `BambooHR-SAML`
 
     > [!NOTE]
     > “登录 URL”  值不是实际值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [BambooHR 客户端支持团队](https://www.bamboohr.com/contact.php)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -169,7 +169,7 @@ ms.locfileid: "73157746"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -214,7 +214,7 @@ ms.locfileid: "73157746"
 
 3. 选择“概述”。 
 
-4. 在左窗格中，选择“安全” > “用户”。  
+4. 在左窗格中，选择“安全” **“用户”。**  >  
 
 5. 键入要设置的有效 Azure AD 帐户的用户名、密码和电子邮件地址。
 

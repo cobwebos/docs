@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Zscaler Two 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Zscaler Two 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Zscaler Two 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 7ea4eecd5c27b6a9f14bc358c7db61da544e7530
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68825093"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>教程：Azure Active Directory 与 Zscaler Two 的集成
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>教程：Azure Active Directory 与 Zscaler Two 集成
 
 本教程介绍如何将 Zscaler Two 与 Azure Active Directory (Azure AD) 集成。
 将 Zscaler Two 与 Azure AD 集成提供以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "68825093"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Zscaler Two 的集成，需要以下项：
 
@@ -118,15 +118,15 @@ ms.locfileid: "68825093"
 
 6. 除了上述属性，Zscaler Two 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
     
-    | Name | 源属性 |
+    | 名称 | 源属性 |
     | ---------| ------------ |
     | memberOf     | user.assignedroles |
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -136,7 +136,7 @@ ms.locfileid: "68825093"
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
     
-    f. 单击“ **保存**”。
+    f. 单击“保存”  。
 
     > [!NOTE]
     > 若要了解如何在 Azure AD 中配置角色，请单击[此处](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)
@@ -161,7 +161,7 @@ ms.locfileid: "68825093"
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
-2. 将扩展添加到浏览器后，单击“安装 Zscaler Two”  会将你定向到 Zscaler Two 应用程序。 在此处，请提供管理员凭据以登录到 Zscaler Two。 浏览器扩展会自动配置应用程序，并自动执行第 3 步到第 6 步。
+2. 将扩展添加到浏览器后，单击“安装 Zscaler Two”  会将你定向到 Zscaler Two 应用程序。 在此处，请提供管理员凭据以登录到 Zscaler Two。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-6。
 
     ![设置 SSO](common/setup-sso.png)
 
@@ -193,7 +193,7 @@ ms.locfileid: "68825093"
 
     g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。 
 
-    h. 单击“ **保存**”。
+    h. 单击“保存”  。
 
 6. 在“配置用户身份验证”  对话框页上，执行以下步骤：
 
@@ -252,7 +252,7 @@ ms.locfileid: "68825093"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 

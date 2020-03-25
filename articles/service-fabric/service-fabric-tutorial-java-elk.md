@@ -7,10 +7,10 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75376646"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>教程：使用 ELK 监视 Service Fabric 应用程序
@@ -100,7 +100,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
     logstash-plugin install logstash-input-azureeventhub
     ```
 
-4. 使用以下内容创建或修改现有 Logstash 配置文件：如果是创建该文件并在 Azure 中使用 ELK Bitnami 映像，则必须在 ```/opt/bitnami/logstash/conf/access-log.conf``` 处创建该文件。
+4. 创建或修改现有 Logstash 配置文件并在其中包含以下内容：如果是创建文件并在 Azure 中使用 ELK Bitnami 映像，则必须在 ```/opt/bitnami/logstash/conf/access-log.conf``` 位置创建该文件。
 
     ```json
     input

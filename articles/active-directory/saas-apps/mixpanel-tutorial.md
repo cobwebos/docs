@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Mixpanel 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Mixpanel 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 Mixpanel 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 58074d02dfc437a1804784e73fa4e65086b53b9e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160469"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>教程：Azure Active Directory 与 Mixpanel 的集成
@@ -34,7 +34,7 @@ ms.locfileid: "73160469"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Mixpanel 的集成，需要具有以下项：
 
@@ -80,7 +80,7 @@ ms.locfileid: "73160469"
 2. **[配置 Mixpanel 单一登录](#configure-mixpanel-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Mixpanel 测试用户](#create-mixpanel-test-user) - 在 Mixpanel 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式  。
+5. **创建 Mixpanel 测试用户[ - 在 Mixpanel 中创建 Britta Simon 的对应用户，将其链接到该用户的 Azure AD 表示形式](#create-mixpanel-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -164,7 +164,7 @@ ms.locfileid: "73160469"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

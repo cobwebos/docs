@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Thoughtworks Mingle 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Thoughtworks Mingle 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 Thoughtworks Mingle 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: a12d4dca61734275ef0e56dfe2a800c64dc52540
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233293"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>教程：Azure Active Directory 与 Thoughtworks Mingle 的集成
+# <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>教程：Azure Active Directory 与 Thoughtworks Mingle 集成
 
 本教程介绍如何将 Thoughtworks Mingle 与 Azure Active Directory (Azure AD) 集成。
 将 Thoughtworks Mingle 与 Azure AD 集成提供以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "74233293"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Thoughtworks Mingle 的集成，需要以下项：
 
@@ -138,7 +138,7 @@ ms.locfileid: "74233293"
     
     a. 若要上传元数据文件，请单击“选择文件”。  
 
-    b. 单击“保存更改”  。
+    b. 单击 **“保存更改”** 。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -158,7 +158,7 @@ ms.locfileid: "74233293"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 

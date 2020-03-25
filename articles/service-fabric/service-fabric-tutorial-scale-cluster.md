@@ -5,21 +5,21 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251799"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：缩放 Azure 中的 Service Fabric 群集
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：在 Azure 中缩放 Service Fabric 群集
 
 本教程是系列教程的第三部分，介绍如何扩大和缩小现有群集。 完成时，将知道如何缩放群集以及如何清理剩余的资源。  有关缩放 Azure 中运行的群集的详细信息，请阅读[缩放 Service Fabric 群集](service-fabric-cluster-scaling.md)。
 
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 添加和删除节点（横向扩展和缩小）
-> * 添加和删除节点类型（横向扩展和缩小）
+> * 添加和删除节点（横向扩展和横向缩减）
+> * 添加和删除节点类型（横向扩展和横向缩减）
 > * 增加节点资源（纵向扩展）
 
 在此系列教程中，你会学习如何：
@@ -33,7 +33,7 @@ ms.locfileid: "78251799"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本教程之前：
 
@@ -76,7 +76,7 @@ ms.locfileid: "78251799"
 
 ## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>添加或删除某个节点类型的节点
 
-横向扩展和缩减或水平缩放会更改群集中的节点数。 横向扩展和缩减时，会添加更多虚拟机实例到规模集。 这些实例成为 Service Fabric 使用的节点。 Service Fabric 知道规模集什么时候添加了更多实例（通过扩大实现）并自动做出反应。 随时可以缩放群集，即使该群集上正在运行工作负荷。
+横向扩展和缩减或水平缩放会更改群集中的节点数。 横向缩减或扩展时，会添加更多虚拟机实例到规模集。 这些实例成为 Service Fabric 使用的节点。 Service Fabric 知道规模集什么时候添加了更多实例（通过扩大实现）并自动做出反应。 随时可以缩放群集，即使该群集上正在运行工作负荷。
 
 ### <a name="update-the-template"></a>更新模板
 
@@ -865,8 +865,8 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
-> * 添加和删除节点（横向扩展和缩小）
-> * 添加和删除节点类型（横向扩展和缩小）
+> * 添加和删除节点（横向扩展和横向缩减）
+> * 添加和删除节点类型（横向扩展和横向缩减）
 > * 增加节点资源（纵向扩展）
 
 接下来，请转到以下教程了解如何升级群集运行时。
@@ -878,7 +878,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
 
-> * 添加和删除节点类型（横向扩展和缩小）
+> * 添加和删除节点类型（横向扩展和横向缩减）
 > * 增加节点资源（纵向扩展）
 
 接下来，请转到以下教程了解如何升级群集运行时。

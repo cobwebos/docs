@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, 虚拟机, cicd
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78192602"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>教程：使用 Jenkins 和 Azure DevOps Services 将应用部署到 Azure 中的 Linux 虚拟机
@@ -59,7 +59,7 @@ ms.locfileid: "78192602"
 
 ## <a name="configure-jenkins-plug-ins"></a>配置 Jenkins 插件
 
-首先，必须配置两个 Jenkins 插件：**NodeJS** 和 **VS Team Services 持续部署**。
+首先，必须配置两个 Jenkins 插件：NodeJS  和 VS Team Services 持续部署  。
 
 1. 打开你的 Jenkins 帐户，并选择“管理 Jenkins”  。
 2. 在“管理 Jenkins”  页面上，选择“管理插件”  。
@@ -78,7 +78,7 @@ ms.locfileid: "78192602"
 3. 在“源代码管理”  选项卡上，选择“Git”  并输入包含应用代码的存储库和分支的详细信息。    
     ![将存储库添加到生成](media/tutorial-build-deploy-jenkins/jenkins-git.png)
 4. 在“生成触发器”  选项卡上，选择“轮询 SCM”  并输入计划 `H/03 * * * *`，以便每三分钟轮询一次 Git 存储库中的更改。 
-5. 在“生成环境”  选项卡上，选择“提供节点 &amp; npm bin/ folder PATH”  ，然后选择“NodeJS 安装”  值。 使“npmrc 文件”  设置为“用户系统默认值”  。
+5. 在“生成环境”  选项卡上，选择“提供节点  **npm bin/ folder PATH”&amp;** ，然后选择“NodeJS 安装”  值。 使“npmrc 文件”  设置为“用户系统默认值”  。
 6. 在“生成”  选项卡上，选择“执行 shell”  ，然后输入命令 `npm install`，以确保更新所有依赖项。
 
 
@@ -91,7 +91,7 @@ ms.locfileid: "78192602"
   
     若要了解如何生成令牌，请阅读[如何为 Azure DevOps Services 创建个人访问令牌？](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts)。
 2. 在“生成后操作”  选项卡中，选择“添加生成后操作”  。 选择“存档项目”  。
-3. 对于“要存档的文件”，输入 `**/*` 以包括所有文件  。
+3. 对于“要存档的文件”，输入  **以包括所有文件**`**/*`。
 4. 若要创建其他操作，请选择“添加生成后操作”  。
 5. 选择“在 TFS/Team Services 中触发发布”  。 输入你的 Azure DevOps Services 组织的 URI，例如 **https://{your-organization-name}.visualstudio.com**。
 6. 输入**项目**名称。
@@ -122,7 +122,7 @@ ms.locfileid: "78192602"
    > [!NOTE]
    > 在以下过程中，确保安装先决条件，且不使用 sudo 权限运行脚本  。
 
-1. 打开“生成 &amp; 发布”中心的“发布”  选项卡  ，打开“部署组”  ，然后选择“+ 新建”  。
+1. 打开“生成  **发布”中心的“发布”** **选项卡&amp;** ，打开“部署组”  ，然后选择“+ 新建”  。
 2. 为部署组输入名称和可选说明。 然后选择“创建”  。
 3. 为部署目标虚拟机选择操作系统。 例如，选择“Ubuntu 16.04+”  。
 4. 选择“使用脚本中的个人访问令牌进行身份验证”  。
@@ -138,12 +138,12 @@ ms.locfileid: "78192602"
 
 若要在 Azure Pipelines 中创建发布管道，请执行以下操作：
 
-1. 打开“生成 &amp; 发布”中心的“发布”  选项卡  ，然后选择“创建发布管道”  。 
+1. 打开“生成  **发布”中心的“发布”** **选项卡&amp;** ，然后选择“创建发布管道”  。 
 2. 通过选择以“空进程”  开始，选择“空”  模板。
 3. 在“项目”  部分，选择“+ 添加项目”  ，然后在“源类型”中选择“Jenkins”   。 选择你的 Jenkins 服务终结点连接。 然后选择 Jenkins 源作业，并选择“添加”  。
 4. 选择“环境 1”旁边的省略号  。 选择“添加部署组阶段”  。
 5. 选择部署组。
-5. 选择“+”  ，向“部署组阶段”中添加任务  。
+5. 选择“ **”+** ，向“部署组阶段”中添加任务  。
 6. 选择“Shell 脚本”  任务，并选择“添加”  。 “Shell 脚本”  任务为要在每个服务器上运行的脚本提供配置，以安装 Node.js 并启动应用。
 8. 对于“脚本路径”  ，请输入“$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh”  。
 9. 选择“高级”  ，然后启用“指定工作目录”  。

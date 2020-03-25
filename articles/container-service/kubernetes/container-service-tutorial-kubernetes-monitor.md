@@ -8,10 +8,10 @@ ms.date: 04/05/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 84c2438a8c25b1b64f46e12923212812beac687d
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273327"
 ---
 # <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Kubernetes 群集
@@ -40,7 +40,7 @@ ms.locfileid: "78273327"
 
 ## <a name="get-workspace-settings"></a>获取工作区设置
 
-如果可以访问 [Log Analytics 门户](https://mms.microsoft.com)，请转到“设置” > “连接的源” > “Linux 服务器”    。 你可以在其中找到工作区 ID 和主要或辅助工作区密钥。   记下这些值，在群集上设置 Log Analytics 代理需要这些值。
+如果可以访问 [Log Analytics 门户](https://mms.microsoft.com)，请转到“设置” **“连接的源”** “Linux 服务器” >    >   。 你可以在其中找到工作区 ID 和主要或辅助工作区密钥。   记下这些值，在群集上设置 Log Analytics 代理需要这些值。
 
 ## <a name="create-kubernetes-secret"></a>创建 Kubernetes 机密
 

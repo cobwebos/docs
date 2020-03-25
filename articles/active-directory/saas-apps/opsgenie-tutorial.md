@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 OpsGenie 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 OpsGenie 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 OpsGenie 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 446ac54d84f7b2b3bf3aaf6eaf5536f0dfb804fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095756"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>教程：Azure Active Directory 与 OpsGenie 集成
+# <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>教程：Azure Active Directory 与 OpsGenie 的集成
 
 本教程介绍如何将 OpsGenie 与 Azure Active Directory (Azure AD) 集成。
 将 OpsGenie 与 Azure AD 集成具有以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "67095756"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 OpsGenie 的集成，需备齐以下项目：
 
@@ -105,7 +105,7 @@ ms.locfileid: "67095756"
 
     ![OpsGenie 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”文本框中，键入 URL：`https://app.opsgenie.com/auth/login` 
+    在“登录 URL”文本框中，键入 URL：  `https://app.opsgenie.com/auth/login`
 
 5. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
@@ -145,7 +145,7 @@ ms.locfileid: "67095756"
     
     b. 在“元数据 URL:”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值。 
     
-    c. 单击“保存更改”  。
+    c. 单击 **“保存更改”** 。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -165,7 +165,7 @@ ms.locfileid: "67095756"
 
     a. 在“名称”字段中，输入“B. Simon”   。
   
-    b. 在“用户名”  字段中键入 bsimon@yourcompanydomain.extension   
+    b. 在“用户名”  字段中键入 **bsimon@yourcompanydomain.extension**  
     例如： BSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -218,7 +218,7 @@ ms.locfileid: "67095756"
    
     b. 在“完整名称”文本框中，键入“B. Simon”   。
    
-    c. 单击“ **保存**”。 
+    c. 单击“保存”  。 
 
 >[!NOTE]
 >B. Simon 会收到一封电子邮件，其中包含配置文件设置说明。

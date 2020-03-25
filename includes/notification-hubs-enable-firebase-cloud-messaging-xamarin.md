@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 45bdd569741dc13181bcaf9e8587a02b3d02c621
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68728821"
 ---
 1. 登录到 [Firebase 控制台](https://firebase.google.com/console/)。 如果还没有 Firebase 项目，创建一个新项目。
@@ -28,7 +28,7 @@ ms.locfileid: "68728821"
     1. 选择“下载 google-services.json”  。 然后将文件保存到项目的文件夹中，然后选择“下一步”  。 如果尚未创建 Visual Studio 项目，则可以在创建项目后执行此步骤。 
 
         ![下载 google-services.json](./media/notification-hubs-enable-firebase-cloud-messaging/download-google-service-button.png)
-    6. 选择“**下一步**”。 
+    6. 选择“**下一页**”。 
     7. 选择“跳过此步骤”  。 
 
         ![跳过最后一步](./media/notification-hubs-enable-firebase-cloud-messaging/skip-this-step.png)

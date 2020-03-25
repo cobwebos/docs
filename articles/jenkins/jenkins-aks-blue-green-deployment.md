@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, kubernetes, k8s, aks, 蓝绿部署, 持续交�
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251474"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务 (AKS)
@@ -26,7 +26,7 @@ Azure Kubernetes 服务 (AKS) 管理托管的 Kubernetes 环境，使用户能�
 > * 手动配置 Kubernetes 群集
 > * 创建并运行 Jenkins 作业
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 - [GitHub 帐户](https://github.com)：需要使用一个 GitHub 帐户来克隆示例存储库。
 - [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)：使用 Azure CLI 2.0 创建 Kubernetes 群集。
 - [Chocolatey](https://chocolatey.org)：用于安装 kubectl 的包管理器。
@@ -143,7 +143,7 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. 更新公共和测试终结点的 DNS 名称。 创建 Kubernetes 群集时，还会创建采用 **MC_&lt;your-resource-group-name> _&lt;your-kubernetes-cluster-name>_ &lt;your-location>** 命名模式的[附加资源组](https://github.com/Azure/AKS/issues/3)。
+1. 更新公共和测试终结点的 DNS 名称。 创建 Kubernetes 群集时，还会创建采用 [MC_](https://github.com/Azure/AKS/issues/3)your-resource-group-name> **&lt;your-kubernetes-cluster-name> _&lt;your-location>_ 命名模式的&lt;附加资源组**。
 
     在资源组中查找公共 IP。
 
@@ -247,7 +247,7 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
 ## <a name="create-the-job"></a>创建作业
 1. 在“管道”类型中添加一个新作业。 
 
-1. 选择“管道” > “定义” > “来自 SCM 的管道脚本”。   
+1. 选择“管道” **“定义”** “来自 SCM 的管道脚本”。 >    >  
 
 1. 输入包含 &lt;your-forked-repo> 的 SCM 存储库 URL。
 
@@ -255,7 +255,7 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
 
 ## <a name="run-the-job"></a>运行作业
 
-1. 验证是否可以成功在本地环境中运行项目。 以下是操作方法：[在本地计算机上运行项目](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)。
+1. 验证是否可以成功在本地环境中运行项目。 请参阅[在本地计算机上运行项目](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)。
 
 1. 运行 Jenkins 作业。 首次运行该作业时，Jenkins 会将待办事项应用部署到蓝色环境（默认的非活动环境）。 
 

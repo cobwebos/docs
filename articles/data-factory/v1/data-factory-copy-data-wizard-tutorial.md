@@ -13,13 +13,13 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8bbe32a202af3b8684c16cc2e56d5a111511bef5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438902"
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教程：使用数据工厂复制向导创建包含复制活动的管道
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教程：使用数据工厂复制向导创建带有复制活动的管道
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
@@ -61,7 +61,7 @@ ms.locfileid: "75438902"
       - 选择“使用现有资源组”并选择一个现有的资源组。 
       - 选择“新建”并输入资源组的名称。 
           
-        本教程中的某些步骤假定你对资源组使用以下名称：**ADFTutorialResourceGroup**。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../../azure-resource-manager/management/overview.md)。
+        本教程中的一些步骤假定使用 **ADFTutorialResourceGroup** 作为资源组名称。 若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../../azure-resource-manager/management/overview.md)。
    4. 选择数据工厂的**位置**。
    5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。   
    6. 单击“创建”。 
@@ -134,7 +134,7 @@ ms.locfileid: "75438902"
     ![复制工具 - 性能设置](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
 
 ## <a name="launch-monitor-and-manage-application"></a>启动监视器和管理应用程序
-1. 在“部署”页上单击以下链接：`Click here to monitor copy pipeline`。 
+1. 在“部署”页上单击以下链接： **。** `Click here to monitor copy pipeline`
    
    ![复制工具 - 部署成功](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)  
 2. 监视应用程序会在 Web 浏览器的单独选项卡中启动。   

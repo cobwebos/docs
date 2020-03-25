@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Questetra BPM Suite 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Questetra BPM Suite 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Questetra BPM Suite 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: f58d6cbc6ec04e51e105662dff31c60ff502584c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093359"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>教程：Azure Active Directory 与 Questetra BPM Suite 的集成
+# <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>教程：Azure Active Directory 与 Questetra BPM Suite 集成
 
 在本教程中，了解如何将 Questetra BPM Suite 与 Azure Active Directory (Azure AD) 集成。
 将 Questetra BPM Suite 与 Azure AD 集成提供以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "67093359"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Questetra BPM Suite 的集成，需备齐以下项目：
 
@@ -105,9 +105,9 @@ ms.locfileid: "67093359"
 
     ![Questetra BPM Suite 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.questetra.net/saml/SSO/alias/bpm` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<subdomain>.questetra.net/saml/SSO/alias/bpm`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.questetra.net/` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<subdomain>.questetra.net/`
 
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 可以从 **Questetra BPM Suite** 公司站点的“SP 信息”  部分获取这些值（在本教程中的后面部分进行说明），或者联系 [Questetra BPM Suite 客户端支持团队](https://www.questetra.com/contact/)来获取。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -160,7 +160,7 @@ ms.locfileid: "67093359"
 
     f. 在记事本中打开从 Azure 门户下载的 Base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“验证证书”文本框中   。 
 
-    g. 单击“ **保存**”。
+    g. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -180,7 +180,7 @@ ms.locfileid: "67093359"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -226,9 +226,9 @@ ms.locfileid: "67093359"
    
     ![创建测试用户][300] 
    
-    a. 在“名称”文本框中，键入用户的**名称** britta.simon@contoso.com。 
+    a. 在“名称”文本框中，键入用户的**名称** **。** britta.simon@contoso.com
    
-    b. 在“电子邮件”文本框中，键入用户的**电子邮件地址** britta.simon@contoso.com。 
+    b. 在“电子邮件”文本框中，键入用户的**电子邮件地址** **。** britta.simon@contoso.com
    
     c. 在“密码”文本框中，键入用户的密码   。
     

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 UserEcho 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 UserEcho 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 UserEcho 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 59d61eda7002fe46cf99fac63822b2333b2d64b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67087767"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-userecho"></a>教程：Azure Active Directory 与 UserEcho 集成
+# <a name="tutorial-azure-active-directory-integration-with-userecho"></a>教程：Azure Active Directory 与 UserEcho 的集成
 
 本教程介绍如何将 UserEcho 与 Azure Active Directory (Azure AD) 集成。
 将 UserEcho 与 Azure AD 集成可提供以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "67087767"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 UserEcho 的集成，需要以下项：
 
@@ -105,9 +105,9 @@ ms.locfileid: "67087767"
 
     ![UserEcho 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.userecho.com/` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<companyname>.userecho.com/`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.userecho.com/saml/metadata/` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<companyname>.userecho.com/saml/metadata/`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [UserEcho 客户端支持团队](https://feedback.userecho.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -154,7 +154,7 @@ ms.locfileid: "67087767"
     
     d. 在记事本中打开下载的证书，复制其内容，并将其粘贴到“X.509 证书”  文本框中。
     
-    e. 单击“ **保存**”。
+    e. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -174,7 +174,7 @@ ms.locfileid: "67087767"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -236,7 +236,7 @@ ms.locfileid: "67087767"
 
     a. 在“名称”文本框中，键入用户名（如 Britta Simon）  。
     
-    b.  在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。 
+    b.  在“电子邮件”文本框中，键入用户的电子邮件地址（例如 **）。** Brittasimon@contoso.com
     
     c. 单击“邀请”。 
 
