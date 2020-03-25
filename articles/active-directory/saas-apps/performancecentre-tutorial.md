@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 PerformanceCentre 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 PerformanceCentre 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 PerformanceCentre 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 08f0f1c1e9bbfcd27f97cd58fa6c6e40f448f9f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>教程：Azure Active Directory 与 PerformanceCentre 的集成
@@ -34,7 +34,7 @@ ms.locfileid: "67094631"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 PerformanceCentre 的集成，需备齐以下项目：
 
@@ -80,7 +80,7 @@ ms.locfileid: "67094631"
 2. **[配置 PerformanceCentree 单一登录](#configure-performancecentre-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 PerformanceCentre 测试用户](#create-performancecentre-test-user) - 在 PerformanceCentre 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户  。
+5. **创建 PerformanceCentre 测试用户[ - 在 PerformanceCentre 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户](#create-performancecentre-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -105,9 +105,9 @@ ms.locfileid: "67094631"
 
     ![PerformanceCentre 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`http://<companyname>.performancecentre.com/saml/SSO` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `http://<companyname>.performancecentre.com/saml/SSO`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://<companyname>.performancecentre.com` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `http://<companyname>.performancecentre.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [PerformanceCentre 客户端支持团队](https://www.performancecentre.com/contact-us/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -168,7 +168,7 @@ ms.locfileid: "67094631"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
+    b. 在“用户名”  字段中键入 **brittasimon@yourcompanydomain.extension**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -224,7 +224,7 @@ ms.locfileid: "67094631"
     
     b. 对于“选择角色”选项，请选择“客户端管理员”。  
     
-    c. 单击“ **保存**”。 
+    c. 单击“保存”  。 
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

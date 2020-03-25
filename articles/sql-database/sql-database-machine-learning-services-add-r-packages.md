@@ -14,10 +14,10 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
 ms.openlocfilehash: ce85f45d823df42e70af53824e175968439621d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73819872"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>将 R 包添加到 Azure SQL 数据库机器学习服务（预览版）
@@ -26,7 +26,7 @@ ms.locfileid: "73819872"
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 在本地计算机上安装 [R](https://www.r-project.org) 和 [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/)。 R 适用于 Windows、MacOS 和 Linux。 本文假设使用 Windows。
 
@@ -60,7 +60,7 @@ WITH RESULT SETS((
 
 **结果**
 
-![R 中的已安装包](./media/sql-database-machine-learning-services-add-r-packages/r-installed-packages.png)
+![R 中安装的包](./media/sql-database-machine-learning-services-add-r-packages/r-installed-packages.png)
 
 ## <a name="add-a-package-with-sqlmlutils"></a>使用 sqlmlutils 添加包
 
@@ -92,7 +92,7 @@ WITH RESULT SETS((
 
 ### <a name="add-the-package"></a>添加包
 
-1. 打开 RStudio 并创建新的 **R 脚本**文件。 
+1. 打开 RStudio 并创建一个新 R Script 文件  。 
 
 1. 使用以下 R 代码通过 **sqlmlutils** 安装 **glue** 包。 请将相应部分替换为自己的 Azure SQL 数据库连接信息。
 
@@ -108,7 +108,7 @@ WITH RESULT SETS((
     ```
 
     > [!TIP]
-    > **scope** 可以是 **PUBLIC** 或 **PRIVATE**。 公共范围适用于数据库管理员安装供所有用户使用的包。 如果选择专用范围，则包只能供安装该包的用户使用。 如果不指定范围，则默认范围为 **PRIVATE**。
+    > 范围可为 PUBLIC（公共）或 PRIVATE（私有）    。 当数据库管理员需要安装所有用户都能使用的包时，公共范围就非常有用。 若采用私有范围，则只有安装这个包的用户才能使用它。 如果未指定范围，则默认范围为 PRIVATE（私有）  。
 
 ### <a name="verify-the-package"></a>验证包
 
@@ -164,7 +164,7 @@ sql_remove.packages(connectionString = connection, pkgs = "glue", scope = "PUBLI
 ```
 
 > [!TIP]
-> 将 R 包安装到 Azure SQL 数据库的另一种方法是使用 **CREATE EXTERNAL LIBRARY** T-SQL 语句从字节流上传 R 包。 请参阅 [CREATE EXTERNAL LIBRARY](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) 参考文档中的[从字节流创建库](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream)。
+> 将 R 包安装到 Azure SQL 数据库的另一种方法是使用 **CREATE EXTERNAL LIBRARY** T-SQL 语句从字节流上传 R 包。 请参阅 [CREATE EXTERNAL LIBRARY](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) 参考文档中的[从字节流创建库](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql)。
 
 ## <a name="next-steps"></a>后续步骤
 

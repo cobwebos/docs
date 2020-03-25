@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78303930"
 ---
 # <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
@@ -34,7 +34,7 @@ ms.locfileid: "78303930"
 > [!NOTE]
 > 本教程演示如何将 Azure VM 按原样从一个区域移到另一个区域。 如果需要通过将可用性集中的 VM 以区域固定 VM 的形式移动到其他区域中来提高可用性，请参阅[将 Azure VM 移动到可用性区域教程](move-azure-vms-avset-azone.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 请确保 Azure VM 位于要从中移动的 Azure 区域中。
 - 验证所选的[源区域 - 目标区域组合是否受支持](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)，并在目标区域方面做出明智的决策。
@@ -83,11 +83,11 @@ ms.locfileid: "78303930"
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>在除了源区域之外的任意区域中创建保管库
 
 1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务**。
-1. 选择“创建资源” > “管理工具” > “备份和 Site Recovery”    。
+1. 选择“创建资源” **“管理工具”** “备份和 Site Recovery” >    >   。
 1. 在“名称”  中，指定友好名称 **ContosoVMVault**。 如果有多个订阅，请选择合适的一个。
 1. 创建资源组 ContosoRG  。
 1. 指定 Azure 区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
-1. 在“恢复服务保管库”中，选择“概述” > “ContosoVMVault” > “+复制”     。
+1. 在“恢复服务保管库”中，选择“概述” **“ContosoVMVault”** “+复制”   >    >   。
 1. 在“源”中，选择“Azure”。  
 1. 在“源位置”中，选择当前运行 VM 的 Azure 源区域。 
 1. 选择“资源管理器”部署模型。 然后选择“源订阅”和“源资源组”。  
@@ -99,7 +99,7 @@ Site Recovery 会检索与订阅和资源组关联的 VM 列表。
 
 1. 在下一步中，选择要移动的 VM，然后选择“确定”  。
 1. 在“设置”中，选择“灾难恢复”   。
-1. 在“配置灾难恢复” > “目标区域”中，选择要复制到的目标区域   。
+1. 在“配置灾难恢复” **“目标区域”中，选择要复制到的目标区域** >   。
 1. 对于本教程，接受其他默认设置。
 1. 选择“启用复制”  。 此步骤将启动用于为 VM 启用复制的作业。
 
@@ -109,7 +109,7 @@ Site Recovery 会检索与订阅和资源组关联的 VM 列表。
 
 以下步骤演示如何执行移动到目标区域。
 
-1. 转到保管库。 在“设置” > “复制的项”中选择 VM，然后选择“故障转移”    。
+1. 转到保管库。 在“设置” **“复制的项”中选择 VM，然后选择“故障转移”**  >    。
 2. 在“故障转移”  中，选择“最新”  。
 3. 选择“在开始故障转移前关闭计算机”  。 Site Recovery 在触发故障转移之前会尝试关闭源 VM。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。 
 4. 该作业完成后，检查 VM 是否按预期显示在目标 Azure 区域中。

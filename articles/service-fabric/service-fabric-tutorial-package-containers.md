@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252743"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>教程：使用 Yeoman 将容器打包并部署为 Service Fabric 应用程序
@@ -25,7 +25,7 @@ ms.locfileid: "78252743"
 > * 部署并运行应用程序
 > * 清理应用程序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 会使用已推送至在本教程系列[第 1 部分](service-fabric-tutorial-create-container-images.md)中所创建的 Azure 容器注册表的容器映像。
 * 会[设置](service-fabric-tutorial-create-container-images.md) Linux 开发环境。
@@ -83,7 +83,7 @@ Service Fabric 提供基架工具，有助于使用 Yeoman 模板生成器从终
 若要将其他容器服务添加到已使用 Yeoman 创建的应用程序，请执行以下步骤：
 
 1. 将一级目录更改到 **TestContainer** 目录，例如， *./TestContainer*
-2. `yo azuresfcontainer:AddService`运行
+2. `yo azuresfcontainer:AddService`运行 {2}
 3. 将服务命名为“azurevoteback”
 4. 为 Redis 提供容器映像路径 - 'alpine:redis'
 5. 按 Enter 以使“命令”部分为空

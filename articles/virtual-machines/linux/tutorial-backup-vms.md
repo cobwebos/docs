@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2a53086b959f5b93d17d307a59682a44fe1f33a8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6c8b29052b4ca1d3ccd6f1f9b6afba5177dbd6c8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034581"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066500"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>教程：在 Azure 中备份和还原 Linux 虚拟机的文件
 
@@ -43,7 +43,7 @@ ms.locfileid: "74034581"
 ## <a name="create-a-backup"></a>创建备份
 在恢复服务保管库中创建计划每日备份：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 在左侧菜单中选择“虚拟机”。  
 3. 从列表中选择要备份的 VM。
 4. 在 VM 边栏选项卡上的“设置”部分中，单击“备份”。   此时会打开“启用备份”边栏选项卡。 
@@ -56,7 +56,7 @@ ms.locfileid: "74034581"
 
     ![恢复点](./media/tutorial-backup-vms/backup-complete.png)
 
-首次备份大约需要 20 分钟。 完成备份后，请继续学习本教程的下一部分。
+首次备份大约需要 20 分钟。 完成备份后，请继续执行本教程的下一部分。
 
 ## <a name="restore-a-file"></a>还原文件
 
@@ -64,7 +64,7 @@ ms.locfileid: "74034581"
 
 本示例演示如何恢复默认 nginx 网页 /var/www/html/index.nginx-debian.html。 本示例中的 VM 的公共 IP 地址为 *13.69.75.209*。 可使用以下命令找到 VM 的 IP 地址：
 
- ```bash 
+ ```azurecli
  az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
  ```
 
@@ -78,6 +78,7 @@ ms.locfileid: "74034581"
     ```bash
     ssh 13.69.75.209
     ```
+
 2. 删除 /var/www/html/index.nginx-debian.html。
 
     ```bash
@@ -93,8 +94,8 @@ ms.locfileid: "74034581"
 7. 从列表中选择 VM。
 8. 在 VM 边栏选项卡上的“设置”部分中，单击“备份”。   此时会打开“备份”边栏选项卡。  
 9. 在边栏选项卡顶部的菜单中，选择“文件恢复”。  此时会打开“文件恢复”边栏选项卡。 
-10. 在**步骤 1：选择恢复点**中，从下拉列表中选择恢复点。
-11. 在**步骤 2：下载脚本以浏览并恢复文件”中，单击“下载可执行文件”按钮**  。 将下载的文件保存到本地计算机。
+10. 在“步骤 1: 选择恢复点”中，从下拉列表中选择恢复点。 
+11. 在“步骤 2: 下载脚本以浏览并恢复文件”中，单击“下载可执行文件”按钮。   将下载的文件保存到本地计算机。
 7. 单击“下载脚本”在本地下载脚本文件。 
 8. 打开 Bash 提示符并键入以下命令。请将 *Linux_myVM_05 05 2017.sh* 替换为下载的脚本的正确路径和文件名，将 *azureuser* 替换为 VM 的用户名，将 *13.69.75.209* 替换为 VM 的公共 IP 地址。
     
@@ -122,7 +123,7 @@ ms.locfileid: "74034581"
     
 12. 脚本的输出将提供装入点的路径。 输出与下面类似：
 
-    ```bash
+    ```output
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
                           
@@ -155,12 +156,12 @@ ms.locfileid: "74034581"
 
     ![默认的 nginx 网页](./media/tutorial-backup-vms/nginx-working.png)
 
-18. 在本地计算机上，返回 Azure 门户的浏览器选项卡，在**步骤 3：恢复后卸载磁盘**中，单击“卸载磁盘”按钮  。 如果忘记执行此步骤，与装入点的连接会在 12 小时后自动关闭。 在这 12 个小时后，若要创建新的装入点，需要下载新脚本。
+18. 在本地计算机上，返回到 Azure 门户的浏览器选项卡，并在“步骤 3: 恢复后卸载磁盘”中单击“卸载磁盘”按钮。   如果忘记执行此步骤，与装入点的连接会在 12 小时后自动关闭。 在这 12 个小时后，若要创建新的装入点，需要下载新脚本。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 VM 的备份

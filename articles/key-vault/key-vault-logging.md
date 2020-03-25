@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 8915970cd4c70228fad3b49921f4c81d6d90aa72
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78195322"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 日志记录
@@ -38,7 +38,7 @@ ms.locfileid: "78195322"
 
 有关 Key Vault的概述信息，请参阅[什么是 Azure Key Vault？](key-vault-overview.md)。 有关 Key Vault 可用位置的信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，必须满足下列要求：
 
@@ -46,7 +46,7 @@ ms.locfileid: "78195322"
 * Azure PowerShell，最低版本为 1.0.0。 要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 如果已安装了 Azure PowerShell，但不知道版本，请在 Azure PowerShell 控制台中输入 `$PSVersionTable.PSVersion`。  
 * 足够的 Azure 存储用于保存密钥保管库日志。
 
-## <a id="connect"></a>连接到 Key Vault 订阅
+## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>连接到 Key Vault 订阅
 
 设置密钥日志记录的第一步是将 Azure PowerShell 指向要记录的 Key Vault。
 
@@ -72,7 +72,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 将 PowerShell 指向正确的订阅是一个重要步骤，尤其是在有多个订阅与帐户关联的情况下。 有关配置 Azure PowerShell 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
-## <a id="storage"></a>为日志创建存储帐户
+## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>为日志创建存储帐户
 
 尽管可以使用现有的存储帐户来保存日志，但我们将专门创建一个存储帐户来保存 Key Vault 日志。 为方便起见，在稍后遇到必须指定此帐户的情况时，我们会将详细信息存储到名为 **sa**的变量中。
 
@@ -87,7 +87,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 >
 >
 
-## <a id="identify"></a>标识用于保存日志的密钥保管库
+## <a name="identify-the-key-vault-for-your-logs"></a><a id="identify"></a>标识用于保存日志的密钥保管库
 
 在[入门教程](key-vault-get-started.md)中，Key Vault 名称为 **ContosoKeyVault**。 我们将继续使用该名称，并将详细信息存储在名为 **kv** 的变量中：
 
@@ -95,7 +95,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a id="enable"></a>启用日志记录
+## <a name="enable-logging"></a><a id="enable"></a>启用日志记录
 
 为了启用 Key Vault 日志记录，我们将使用 **Set-AzDiagnosticSetting** cmdlet 并配合针对新存储帐户和 Key Vault 创建的变量。 还将 **-Enabled** 标志设置为 **$true**，并将类别设置为 **AuditEvent**（Key Vault 日志记录的唯一类别）：
 
@@ -132,7 +132,7 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
   * 签名、验证、加密、解密、包装和解包密钥、获取机密、列出密钥和机密（及其版本）。
 * 导致出现 401 响应的未经身份验证的请求。 例如，请求不包含持有者令牌、格式不正确或已过期，或者包含无效的令牌。  
 
-## <a id="access"></a>访问日志
+## <a name="access-your-logs"></a><a id="access"></a>访问日志
 
 Key Vault 日志存储在提供的存储帐户的 **insights-logs-auditevent** 容器中。 若要查看这些日志，必须下载 Blob。
 
@@ -187,7 +187,7 @@ $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-运行第二个命令时，blob 名称中的 / 分隔符会在目标文件夹下创建完整的文件夹结构  。 你将使用此结构下载 Blob 并将其存储为文件。
+运行第二个命令时，blob 名称中的  **分隔符会在目标文件夹下创建完整的文件夹结构/** 。 你将使用此结构下载 Blob 并将其存储为文件。
 
 若要选择性地下载 Blob，请使用通配符。 例如：
 
@@ -214,7 +214,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 * 若要查询密钥保管库资源的诊断设置状态：`Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * 若要禁用密钥保管库资源的日志记录： `Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
-## <a id="interpret"></a>解释 Key Vault 日志
+## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>解释 Key Vault 日志
 
 每个 Blob 存储为文本，并格式化为 JSON Blob。 让我们看一个示例日志项。 运行以下命令：
 
@@ -303,13 +303,13 @@ Get-AzKeyVault -VaultName 'contosokeyvault'`
 | **SecretList** |[列出保管库中的机密](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[列出机密的版本](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
-## <a id="loganalytics"></a>使用 Azure Monitor 日志
+## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>使用 Azure Monitor 日志
 
 可以使用 Azure Monitor 日志中的 Key Vault 解决方案查看 Key Vault **AuditEvent** 日志。 在 Azure Monitor 日志中，可以使用日志查询来分析数据并获取所需的信息。 
 
 有关详细信息，包括如何进行设置，请参阅 [Azure Monitor 日志中的Azure Key Vault 解决方案](../azure-monitor/insights/azure-key-vault.md)。 如果需要从 Azure Monitor 日志预览版提供的旧 Key Vault 解决方案进行迁移，且之前在该方案中，首先将日志路由到了 Azure 存储帐户，并将 Azure Monitor 日志配置为了从此处读取，则本文也可提供指导。
 
-## <a id="next"></a>后续步骤
+## <a name="next-steps"></a><a id="next"></a>后续步骤
 
 有关在 .NET Web 应用程序中使用 Azure Key Vault 的教程，请参阅[从 Web 应用程序使用 Azure Key Vault](tutorial-net-create-vault-azure-web-app.md)。
 

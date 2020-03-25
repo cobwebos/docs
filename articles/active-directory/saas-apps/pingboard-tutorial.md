@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Pingboard 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Pingboard 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Pingboard 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 341d8dd712b858572ec5df76b176258ca87c8857
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094426"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>教程：Azure Active Directory 与 Pingboard 的集成
+# <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>教程：Azure Active Directory 与 Pingboard 集成
 
 在本教程中，了解如何将 Pingboard 与 Azure Active Directory (Azure AD) 集成。
 将 Pingboard 与 Azure AD 集成提供以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "67094426"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Pingboard 的集成，需要具有以下项：
 
@@ -82,7 +82,7 @@ ms.locfileid: "67094426"
 2. **[配置 Pingboard 单一登录](#configure-pingboard-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Pingboard 测试用户](#create-pingboard-test-user) - 在 Pingboard 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式  。
+5. **创建 Pingboard 测试用户[ - 在 Pingboard 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式](#create-pingboard-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -107,7 +107,7 @@ ms.locfileid: "67094426"
 
     ![Pingboard 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中键入 URL：`http://app.pingboard.com/sp` 
+    a. 在“标识符”文本框中键入 URL：  `http://app.pingboard.com/sp`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<entity-id>.pingboard.com/auth/saml/consume`
 
@@ -174,7 +174,7 @@ ms.locfileid: "67094426"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -224,7 +224,7 @@ ms.locfileid: "67094426"
 
     a. 在“全名”文本框中，键入用户的全名，如 Britta Simon   。
 
-    b. 在“电子邮件”文本框中，键入用户的电子邮件地址，如 brittasimon@contoso.com   。
+    b. 在“电子邮件”文本框中，键入用户的电子邮件地址，如  **brittasimon@contoso.com** 。
 
     c. 在“职务”  文本框中，键入 Britta Simon 的职务。
 

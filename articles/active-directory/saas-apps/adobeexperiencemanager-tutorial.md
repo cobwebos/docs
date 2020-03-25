@@ -17,10 +17,10 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f39751f40b32c5da24e13d75d2607d7da0a57ad3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73154110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>教程：Azure Active Directory 与 Adobe Experience Manager 的集成
@@ -35,7 +35,7 @@ ms.locfileid: "73154110"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Adobe Experience Manager 的集成，需准备好以下各项：
 
@@ -139,7 +139,7 @@ ms.locfileid: "73154110"
 
 1. 在另一个浏览器窗口中打开“Adobe Experience Manager”管理门户  。
 
-2. 选择“设置” > “安全” > “用户”    。
+2. 选择“设置” **“安全”** “用户” >    >   。
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
 
@@ -147,7 +147,7 @@ ms.locfileid: "73154110"
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
-4. 选择“帐户设置” > “管理信任存储”   。
+4. 选择“帐户设置” **“管理信任存储”**  >   。
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
@@ -163,11 +163,11 @@ ms.locfileid: "73154110"
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
 
-8. 选择“帐户设置” > “创建/管理密钥存储”   。 通过提供密码创建密钥存储。
+8. 选择“帐户设置” **“创建/管理密钥存储”**  >   。 通过提供密码创建密钥存储。
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
 
-9. 返回管理屏幕。 然后选择“设置” > “操作” > “Web 控制台”。   
+9. 返回管理屏幕。 然后选择“设置” **“操作”** “Web 控制台”。 >    >  
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "73154110"
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin4.png)
 
-    a. 在“路径”框中，输入 **/**  。
+    a. 在“路径”框中，输入  **/** 。
 
     b. 在“IDP URL”框中，输入从 Azure 门户复制的“登录 URL”值   。
 
@@ -221,7 +221,7 @@ ms.locfileid: "73154110"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

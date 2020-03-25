@@ -10,10 +10,10 @@ ms.topic: tutorial
 description: 本教程介绍如何使用 Azure Dev Spaces 和 Visual Studio 在 Azure Kubernetes 服务中对 .NET Core 应用程序进行团队开发
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
 ms.openlocfilehash: b4520ce35807fb022fa39ae9b00347a27e192380
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78245051"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>使用 .NET Core 和 Visual Studio 通过 Azure Dev Spaces 进行团队开发
@@ -63,8 +63,8 @@ ms.locfileid: "78245051"
 1. 在“解决方案资源管理器”中右键单击该项目，并选择“属性”。  
 1. 选择左侧的“调试”选项卡，显示 Azure Dev Spaces 设置。 
 1. 选择“更改”，以创建调试服务（使用 F5 或 Ctrl+F5）时使用的空间。 
-1. 在“空间”下拉列表中，选择“\<创建新空间...\>”。 
-1. 确保父空间设置为“\<无\>”，然后输入空间名称 **dev**。  单击“确定”。
+1. 在“空间”下拉列表中，选择“**创建新空间...\<”。\>**
+1. 确保父空间设置为“**无\<”，然后输入空间名称 \>dev**。  单击“确定”。
 1. 按 Ctrl+F5，在不附加调试程序的情况下运行 _mywebapi_。
 1. 切换到包含 _webfrontend_ 项目的 Visual Studio 窗口，同样按 Ctrl+F5 运行该项目。
 
@@ -88,7 +88,7 @@ ms.locfileid: "78245051"
 2. 在“解决方案资源管理器”中右键单击该项目，并选择“属性”。  
 3. 选择左侧的“调试”选项卡，显示 Azure Dev Spaces 设置。 
 4. 在此处，可以更改或创建在执行 F5 或 Ctrl+F5 调试时使用的群集和/或空间。 *确保已选择前面创建的 Azure 开发人员空间*。
-5. 在“空间”下拉列表中，选择“\<创建新空间...\>”。 
+5. 在“空间”下拉列表中，选择“**创建新空间...\<”。\>**
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "78245051"
 
 ### <a name="update-code-for-mywebapi"></a>更新 *mywebapi* 的代码
 
-1. 在 *mywebapi* 项目中，对 `Controllers/ValuesController.cs` 文件中的 `string Get(int id)` 方法进行代码更改，如下所示：
+1. 在 *mywebapi* 项目中，对 `string Get(int id)` 文件中的 `Controllers/ValuesController.cs` 方法进行代码更改，如下所示：
  
     ```csharp
     [HttpGet("{id}")]
@@ -124,7 +124,7 @@ ms.locfileid: "78245051"
 ### <a name="test-code-running-in-the-_devscott_-space"></a>测试 _dev/scott_ 空间中运行的代码
 若要结合 *webfrontend* 测试 *mywebapi* 的新版本，请在浏览器中打开 *webfrontend* 的公共接入点 URL (例如 http://dev.webfrontend.123456abcdef.eus.azds.io) 并转到“关于”页。 应会看到原始消息“Hello from webfrontend and Hello from mywebapi”。
 
-现在，请将“scott.s.” 部分添加到 URL，这样它就可以读取类似于 http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io 的内容，并刷新浏览器。 随后应会命中 *mywebapi* 项目中设置的断点。 按 F5 继续，浏览器中应会显示新消息“Hello from webfrontend and mywebapi now says something new”。 这是因为，_dev/scott_ 中已更新的代码的路径正在 *mywebapi* 空间中运行。
+现在，请将“scott.s.” 部分添加到 URL，这样它就可以读取类似于 http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io 的内容，并刷新浏览器。 随后应会命中 *mywebapi* 项目中设置的断点。 按 F5 继续，浏览器中应会显示新消息“Hello from webfrontend and mywebapi now says something new”。 这是因为，*dev/scott* 中已更新的代码的路径正在 _mywebapi_ 空间中运行。
 
 创建始终包含最新更改的 _dev_ 空间后，假设应用程序设计为利用 DevSpace 的基于空间的路由（如本教程部分中所述），则更容易发现，Dev Spaces 在较大应用程序的上下文中可为新功能的测试提供很大的帮助。 无需将所有服务部署到专用空间，可以创建派生自 _dev_ 的专用空间，并仅“启动”实际使用的服务。  Dev Spaces 路由基础结构将在专用空间中利用它所能找到的最多服务来处理剩余的工作，同时默认回到 _dev_ 空间中运行的最新版本。 更有利的是，多个开发人员可以同时在其自己的空间中积极开发不同的服务，而不会相互干扰。 
 

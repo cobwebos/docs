@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
 ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70072154"
 ---
 # <a name="edit-an-api"></a>编辑 API
@@ -26,7 +26,7 @@ ms.locfileid: "70072154"
 + 可以通过在 APIM 实例中添加、删除、重命名操作来执行此操作。 
 + 可以编辑 API 的 swagger。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + [创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 + [导入和发布第一个 API](import-and-publish.md)
@@ -37,7 +37,7 @@ ms.locfileid: "70072154"
 
 ![编辑 API](./media/edit-api/edit-api001.png)
 
-1. 单击 **API** 选项卡。
+1. 单击“API”选项卡。 
 2. 选择以前导入的某个 API。
 3. 选择“设计”  选项卡。
 4. 选择要编辑的操作。

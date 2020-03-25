@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Clear Review 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Clear Review 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Clear Review 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f2a0560163f9806053f49944cbec0db2b1a9de8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67105464"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>教程：Azure Active Directory 与 Clear Review 集成
+# <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>教程：Azure Active Directory 与 Clear Review 的集成
 
 在本教程中，了解如何将 Clear Review 与 Azure Active Directory (Azure AD) 集成。
 将 Clear Review 与 Azure AD 集成提供以下优势：
@@ -35,7 +35,7 @@ ms.locfileid: "67105464"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Clear Review 的集成，需要以下项目：
 
@@ -129,11 +129,11 @@ ms.locfileid: "67105464"
 
     ![image](./media/clearreview-tutorial/attribute02.png)
 
-    ![图像](./media/clearreview-tutorial/attribute01.png)
+    ![image](./media/clearreview-tutorial/attribute01.png)
 
     b. 在“源属性”列表中，选择该行的 user.mail 属性值   。
 
-    c. 单击“ **保存**”。
+    c. 单击“保存”  。
 
 8. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -173,7 +173,7 @@ ms.locfileid: "67105464"
 
     d. 在记事本中打开下载的证书，将其内容粘贴到“X.509 证书”文本框中。    
 
-    e. 单击“ **保存**”。
+    e. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -193,7 +193,7 @@ ms.locfileid: "67105464"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

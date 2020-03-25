@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 iQualify LMS 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 iQualify LMS 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 iQualify LMS 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: a1db4784eb63df14b7e7971d0273512ba657df96
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68944990"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>教程：Azure Active Directory 与 iQualify LMS 集成
@@ -34,12 +34,12 @@ ms.locfileid: "68944990"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 iQualify LMS 的集成，需要以下项：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了 iQualify LMS 单一登录的订阅
+* 启用了单一登录的 iQualify LMS 订阅
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -72,8 +72,8 @@ ms.locfileid: "68944990"
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 iQualify LMS 的 Azure AD 单一登录。 
-若要使单一登录有效，需要在 Azure AD 用户与 iQualify LMS 相关用户之间建立链接关系。
+在本部分中，我们基于名为“Britta Simon”的测试用户为 iQualify LMS 配置和测试 Azure AD 单一登录。 
+若要使单一登录有效，需要在 Azure AD 用户与 iQualify LMS 相关用户之间建立关联。
 
 若要配置和测试 iQualify LMS 的 Azure AD 单一登录，需要完成以下构建基块：
 
@@ -81,14 +81,14 @@ ms.locfileid: "68944990"
 2. **[配置 iQualify LMS 单一登录](#configure-iqualify-lms-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 iQualify LMS 测试用户](#create-iqualify-lms-test-user)** - 在 iQualify LMS 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+5. **[创建 iQualify LMS 测试用户](#create-iqualify-lms-test-user)** - 在 iQualify LMS 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-若要配置 iQualify LMS 的 Azure AD 单一登录，请执行以下步骤：
+要为 iQualify LMS 配置 Azure AD 单一登录，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的 iQualify LMS 应用程序集成页上，选择“单一登录”   。
 
@@ -137,7 +137,7 @@ ms.locfileid: "68944990"
 
 7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ：
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | --- | --- |
     | 电子邮件 | user.userprincipalname |
     | first_name | user.givenname |
@@ -146,9 +146,9 @@ ms.locfileid: "68944990"
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -160,7 +160,7 @@ ms.locfileid: "68944990"
 
     f. 单击“确定” 
 
-    g. 单击“ **保存**”。
+    g. 单击“保存”  。
 
     > [!Note]
     > **person_id** 属性是**可选**的
@@ -229,7 +229,7 @@ ms.locfileid: "68944990"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
+    b. 在“用户名”  字段中键入 **brittasimon@yourcompanydomain.extension**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

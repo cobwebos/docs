@@ -9,10 +9,10 @@ description: 本教程介绍如何使用 Azure Dev Spaces 和 Visual Studio Code
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 352671b2fe31095b0ffcaffb49195071a456a892
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78245011"
 ---
 # <a name="team-development-using-java-and-visual-studio-code-with-azure-dev-spaces"></a>通过 Azure Dev Spaces 使用 Java 和 Visual Studio Code 进行团队开发
@@ -56,7 +56,7 @@ ms.locfileid: "78245011"
 
 1. 克隆 [Dev Spaces 示例应用程序](https://github.com/Azure/dev-spaces)：`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
 1. 签出远程分支 *azds_updates*：`git checkout -b azds_updates origin/azds_updates`
-1. 选择 _dev_ 空间：`azds space select --name dev`。 当系统提示选择父 dev 空间时，请选择“\<无\>”  。
+1. 选择 _dev_ 空间：`azds space select --name dev`。 当系统提示选择父 dev 空间时，请选择“_无\<”\>_ 。
 1. 导航到 _mywebapi_ 目录并执行 `azds up -d`
 1. 导航到 _webfrontend_ 目录并执行 `azds up -d`
 1. 执行 `azds list-uris` 以查看 _webfrontend_ 的公共终结点
@@ -101,7 +101,7 @@ azds space select --name scott
 让我们看看该项目的运行情况。
 
 ### <a name="make-a-code-change"></a>进行代码更改
-转到 `mywebapi` 的 VS Code 窗口，并在 `src/main/java/com/ms/sample/mywebapi/Application.java` 中对 `String index()` 方法进行代码编辑，例如：
+转到 `mywebapi` 的 VS Code 窗口，并在 `String index()` 中对 `src/main/java/com/ms/sample/mywebapi/Application.java` 方法进行代码编辑，例如：
 
 ```java
 @RequestMapping(value = "/", produces = "text/plain")
@@ -135,7 +135,7 @@ http://localhost:53831 => mywebapi.scott:80                                Tunne
 http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 ```
 
-请注意，*webfrontend* 的公共访问点 URL 带有 *scott.s* 前缀。 此 URL 对于 _dev/scott_ 空间是唯一的。 此 URL 前缀告知入口控制器将请求路由到服务的 _dev/scott_ 版本。 当 Dev Spaces 处理包含此 URL 的请求时，入口控制器首先尝试将请求路由到 _dev/scott_ 空间中的 *webfrontend* 服务。 如果该操作失败，则会将请求作为回退路由到 _dev_ 空间中的 *webfrontend* 服务。 另请注意，可以使用一个 localhost URL 通过 Kubernetes 的端口转发  功能经 localhost 访问服务。 若要详细了解 Azure Dev Spaces 中的 URL 和路由，请参阅 [Azure Dev Spaces 的工作原理及其配置方式](how-dev-spaces-works.md)。
+请注意，*webfrontend* 的公共访问点 URL 带有 *scott.s* 前缀。 此 URL 对于 _dev/scott_ 空间是唯一的。 此 URL 前缀告知入口控制器将请求路由到服务的 _dev/scott_ 版本。 当 Dev Spaces 处理包含此 URL 的请求时，入口控制器首先尝试将请求路由到 *dev/scott* 空间中的 _webfrontend_ 服务。 如果该操作失败，则会将请求作为回退路由到 *dev* 空间中的 _webfrontend_ 服务。 另请注意，可以使用一个 localhost URL 通过 Kubernetes 的端口转发  功能经 localhost 访问服务。 若要详细了解 Azure Dev Spaces 中的 URL 和路由，请参阅 [Azure Dev Spaces 的工作原理及其配置方式](how-dev-spaces-works.md)。
 
 ![空间路由](media/common/Space-Routing.png)
 

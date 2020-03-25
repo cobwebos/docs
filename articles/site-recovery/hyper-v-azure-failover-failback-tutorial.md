@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 03826abf6da94859c510f4c127dfce035aa79370
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75498169"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>将 Hyper-V VM 故障转移到 Azure
@@ -58,13 +58,13 @@ ms.locfileid: "75498169"
 
 ## <a name="fail-over-to-azure"></a>故障转移到 Azure
 
-1. 在“设置” > “复制的项”中，单击“VM”>“故障转移”    。
+1. 在“设置” **“复制的项”中，单击“VM”>“故障转移”**  >    。
 2. 在“故障转移”中，选择“最新”恢复点   。 
 3. 选择“在开始故障转移前关闭计算机”  。 在触发故障转移之前，Site Recovery 会尝试关闭源 VM。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。 
 4. 验证故障转移后，单击“提交”  。 这会删除所有可用的恢复点。
 
 > [!WARNING]
-> **不会取消正在进行的故障转移**：如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
+> **请勿取消正在进行的故障转移**：如果取消正在进行中，故障转移将停止，但 VM 将不会再复制。
 
 ## <a name="connect-to-failed-over-vm"></a>连接到故障转移的 VM
 

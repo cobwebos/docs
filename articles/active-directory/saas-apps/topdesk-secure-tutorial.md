@@ -17,10 +17,10 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 393557531fe69a494a16e0f4c49ac07891e490ec
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>教程：Azure Active Directory 与 TOPdesk - Secure 集成
@@ -35,7 +35,7 @@ ms.locfileid: "74233402"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 TOPdesk - Secure 的集成，需要以下项：
 
@@ -189,7 +189,7 @@ ms.locfileid: "74233402"
 
     f. 在“显示名称”  文本框中，键入配置名称。
 
-    g. 单击“ **保存**”。
+    g. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -209,7 +209,7 @@ ms.locfileid: "74233402"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -251,9 +251,9 @@ ms.locfileid: "74233402"
 
 1. 以管理员身份登录 **TOPdesk - Secure** 公司站点。
 
-2. 在顶部菜单中，单击“TOPdesk”\>“新建”\>“支持文件”\>“操作员”  。
+2. 在顶部菜单中，单击“TOPdesk” **“新建”\>“支持文件”\>“操作员”\>** 。
 
-    运算符![](./media/topdesk-secure-tutorial/ic790610.png "运算符")
+    ![“运算符”](./media/topdesk-secure-tutorial/ic790610.png "操作员")
 
 3. 在“新建操作员”  对话框中，执行以下步骤：
 
@@ -267,7 +267,7 @@ ms.locfileid: "74233402"
 
     d. 在“TOPdesk 登录”  部分的“登录名”  文本框中，键入用户的登录名。
 
-    e. 单击“ **保存**”。
+    e. 单击“保存”  。
 
 > [!NOTE]
 > 可使用任何其他 TOPdesk - Secure 用户帐户创建工具或 TOPdesk - Secure 提供的 API 来预配 Azure AD 用户帐户。

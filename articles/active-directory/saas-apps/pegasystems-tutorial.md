@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Pega Systems 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Pega Systems 的集成 | Microsoft 文档
 description: 本教程介绍如何在 Azure Active Directory 与 Pega Systems 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: bd54466e054055ff84cd5bb2b28c5cc074ac0017
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72026799"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>教程：zure Active Directory 与 Pega Systems 集成
+# <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>教程：Azure Active Directory 与 Pega Systems 集成
 
 本教程介绍如何将 Pega Systems 与 Azure Active Directory (Azure AD) 集成。
 
@@ -36,7 +36,7 @@ ms.locfileid: "72026799"
 
 如果没有 Azure 订阅，可以在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Pega Systems 的集成，需要准备好以下各项：
 
@@ -78,8 +78,8 @@ ms.locfileid: "72026799"
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** ，为用户启用该功能。
 2. 在应用程序端 **[配置 Pega Systems 单一登录](#configure-pega-systems-single-sign-on)** 。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，为用户启用 Azure AD 单一登录。
+3. **创建 Azure AD 测试用户[，以测试 Azure AD 单一登录](#create-an-azure-ad-test-user)** 。
+4. **分配 Azure AD 测试用户[，为用户启用 Azure AD 单一登录](#assign-the-azure-ad-test-user)** 。
 5. 创建与用户的 Azure AD 表示形式相链接的 **[Pega Systems 测试用户](#create-a-pega-systems-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** ，验证配置是否正常工作。
 
@@ -119,7 +119,7 @@ ms.locfileid: "72026799"
 
     1. 在“登录 URL”框中，输入登录 URL 值。 
 
-    1. 在“中继状态”框中，输入采用以下模式的 URL：`https://<customername>.pegacloud.io/prweb/sso` 
+    1. 在“中继状态”框中，输入采用以下模式的 URL：  `https://<customername>.pegacloud.io/prweb/sso`
 
     > [!NOTE]
     > 此处提供的值为占位符。 使用实际的标识符、回复 URL、登录 URL 和中继状态 URL。 可以根据本教程稍后所述，从 Pega 应用程序获取标识符和回复 URL 值。 若要获取中继状态值，请联系 [Pega Systems 支持团队](https://www.pega.com/contact-us)。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -158,7 +158,7 @@ ms.locfileid: "72026799"
 
     1. 在“源属性”列表中，选择为该行显示的属性值。 
 
-    1. 选择“确定”。 
+    1. 选择“确定”  。
 
     1. 选择“保存”。 
 
@@ -180,7 +180,7 @@ ms.locfileid: "72026799"
 
 1. 若要在 **Pega Systems** 端配置单一登录，请在另一个浏览器窗口中使用管理员帐户登录到 Pega 门户。
 
-2. 选择“创建” > “SysAdmin” > “身份验证服务”：   
+2. 选择“创建” **“SysAdmin”** “身份验证服务”： >    >  
 
     ![选择“身份验证服务”](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
@@ -234,9 +234,9 @@ ms.locfileid: "72026799"
 
     a. 在“姓名”  框中，输入 **BrittaSimon**。
   
-    b. 在“用户名”框中，输入 **brittasimon@\<公司域>.\<扩展>** 。  （例如：BrittaSimon@contoso.com。）
+    b. 在“用户名”框中，输入 **brittasimon@** 公司域>.**扩展>\<。\<** （例如：BrittaSimon@contoso.com。）
 
-    c. 选择“显示密码”，然后记下“密码”框中的值。  
+    c. 选择“显示密码”，然后记下“密码”框中的值   。
 
     d. 选择“创建”  。
 

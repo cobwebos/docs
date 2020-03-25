@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66117543"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>教程：使用远程监视解决方案加速器检测边缘异常情况
@@ -80,7 +80,7 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 作业     | 标记  |
+    | 作业     | Tags  |
     | 作业名称 | AddEdgeTag |
     | 密钥     | IsOilPump |
     | 值   | Y     |
@@ -98,13 +98,13 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
     | ------- | ----- |
     | 名称    | OilPumps |
     | 字段   | Tags.IsOilPump |
-    | 运算符 | =（等于） |
+    | 操作员 | =（等于） |
     | 值    | Y |
     | 类型     | 文本 |
 
     [![创建设备组](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
 
-1. 单击“ **保存**”。
+1. 单击“保存”  。
 
 现在，上述 IoT Edge 设备会出现在 **OilPumps** 组中。
 
@@ -209,11 +209,11 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
 1. 在“创建部署”>“添加模块”页上，单击“+ 添加”。   选择“IoT Edge 模块”  。
 
-1. 在“IoT Edge 自定义模块”面板中，输入 **temperatureSensor** 作为名称，输入 **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** 作为映像 URI。  单击“ **保存**”。
+1. 在“IoT Edge 自定义模块”面板中，输入 **temperatureSensor** 作为名称，输入 **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** 作为映像 URI。  单击“保存”  。
 
 1. 在“创建部署”>“添加模块”页上，单击“+ 添加”以添加另一个模块。   选择“Azure 流分析模块”  。
 
-1. 在“Edge 部署”面板中选择你的订阅以及在上一部分创建的 **EdgeDeviceJob**。  单击“ **保存**”。
+1. 在“Edge 部署”面板中选择你的订阅以及在上一部分创建的 **EdgeDeviceJob**。  单击“保存”  。
 
 1. 在“创建部署”>“添加模块”页上，单击“下一步”。  
 
@@ -315,11 +315,11 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
     | 选项 | 值 |
     | ------ | ----- |
     | 规则名称 | 油泵温度 |
-    | Description | 油泵温度超过 300 |
+    | 说明 | 油泵温度超过 300 |
     | 设备组 | OilPumps |
     | 计算 | 即时 |
     | 字段 | 温度 |
-    | 运算符 | > |
+    | 操作员 | > |
     | 值 | 300 |
     | 严重性级别 | 信息 |
 

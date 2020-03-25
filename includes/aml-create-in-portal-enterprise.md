@@ -10,10 +10,10 @@ ms.custom: include file
 ms.topic: include
 ms.date: 10/04/2019
 ms.openlocfilehash: b44d624db419919823ec85bcb599007fb75c92b9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73929620"
 ---
 1. 使用 Azure 订阅的凭据登录到 [Azure 门户](https://portal.azure.com/)。 
@@ -33,8 +33,8 @@ ms.locfileid: "73929620"
    字段|说明 
    ---|---
    工作区名称 |输入用于标识工作区的唯一名称。 本示例使用 docs-ws  。 名称在整个资源组中必须唯一。 使用易于记忆且区别于其他人所创建工作区的名称。 
-   Subscription |选择要使用的 Azure 订阅。
-   Resource group | 使用订阅中的现有资源组，或者输入一个名称，创建新的资源组。 资源组保存 Azure 解决方案的相关资源。 本示例使用 docs-aml  。 
+   订阅 |选择要使用的 Azure 订阅。
+   资源组 | 使用订阅中的现有资源组，或者输入一个名称，创建新的资源组。 资源组保存 Azure 解决方案的相关资源。 本示例使用 docs-aml  。 
    位置 | 选择离你的用户和数据资源最近的位置来创建工作区。
    工作区版本 | 选择“Enterprise”  。 本教程需要使用 Enterprise 版本。 Enterprise 版本处于预览阶段，目前不会增加任何额外成本。 
 

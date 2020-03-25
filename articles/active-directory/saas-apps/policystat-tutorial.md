@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 PolicyStat 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 PolicyStat 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 PolicyStat 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 327e470d60235e6bf400293e80e3aec5f6144ff4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>教程：Azure Active Directory 与 PolicyStat 的集成
@@ -34,7 +34,7 @@ ms.locfileid: "68943444"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 PolicyStat 的集成，需要以下项：
 
@@ -107,9 +107,9 @@ ms.locfileid: "68943444"
 
     ![PolicyStat 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.policystat.com` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<companyname>.policystat.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.policystat.com/saml2/metadata/` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<companyname>.policystat.com/saml2/metadata/`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [PolicyStat 客户端支持团队](http://www.policystat.com/support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -124,15 +124,15 @@ ms.locfileid: "68943444"
 
 6. 除上述属性以外，PolicyStat 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | Name | 源属性 |
+    | 名称 | 源属性 |
     |------------------- | -------------------- |
     | uid | ExtractMailPrefix([mail]) |
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
     
-    ![图像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![图像](./media/policystat-tutorial/attribute01.png)
+    ![image](./media/policystat-tutorial/attribute01.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -144,7 +144,7 @@ ms.locfileid: "68943444"
     
     f. 在“参数 1”列表中，键入该行显示的属性值  。
 
-    g. 单击“ **保存**”。
+    g. 单击“保存”  。
 
 7. 在“设置 PolicyStat”部分，根据要求复制相应的 URL。 
 
@@ -178,9 +178,9 @@ ms.locfileid: "68943444"
 
     c. 在“姓氏属性”文本框中，键入用户的姓氏，如 Simon    。
 
-    d. 在“电子邮件属性”文本框中，键入用户的**电子邮件地址** `BrittaSimon@contoso.com`。 
+    d. 在“电子邮件属性”文本框中，键入用户的**电子邮件地址** **。** `BrittaSimon@contoso.com`
 
-    e. 单击“保存更改”  。
+    e. 单击 **“保存更改”** 。
 
 5. 单击“IDP 元数据”，并在“IDP 元数据”部分执行以下步骤：  
    
@@ -188,7 +188,7 @@ ms.locfileid: "68943444"
    
     a. 打开下载的元数据文件，复制其内容，然后将其粘贴到“标识提供者元数据”文本框中  。
 
-    b. 单击“保存更改”  。
+    b. 单击 **“保存更改”** 。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -208,7 +208,7 @@ ms.locfileid: "68943444"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 

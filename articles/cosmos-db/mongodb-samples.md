@@ -9,11 +9,11 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 28ee64f70cd281a2563a855fb1fca91f229ec7bd
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507512"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "61330592"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>使用 Node.js 和 Azure Cosmos DB 的用于 MongoDB 的 API 生成应用 
 > [!div class="op_single_selector"]
@@ -31,9 +31,9 @@ ms.locfileid: "55507512"
 * [创建](create-mongodb-dotnet.md#create-account) Cosmos 帐户，配置为使用 Azure Cosmos DB 的用于 MongoDB 的 API。
 * 检索[连接字符串](connect-mongodb-account.md)信息。
 
-## <a name="create-the-app"></a>创建应用程序
+## <a name="create-the-app"></a>创建应用
 
-1. 创建 app.js 文件，并复制粘贴以下代码。
+1. 创建 app.js  文件，并复制粘贴以下代码。
 
     ```javascript
     var MongoClient = require('mongodb').MongoClient;
@@ -115,7 +115,7 @@ ms.locfileid: "55507512"
     });
     ```
     
-    可选：如果使用的是 MongoDB Node.js 2.2 驱动程序，请替换下面的代码片段：
+    **可选**：如果使用的是 MongoDB Node.js 2.2 驱动程序，请替换下面的代码片段  ：
 
     原始：
 
@@ -152,14 +152,14 @@ ms.locfileid: "55507512"
     });
     ```
     
-2. 按照帐户设置修改 app.js 文件中的以下变量（了解如何查找[连接字符串](connect-mongodb-account.md)）：
+2. 按照帐户设置修改 app.js  文件中的以下变量（了解如何查找[连接字符串](connect-mongodb-account.md)）：
 
     > [!IMPORTANT]
-    > MongoDB Node.js 3.0 驱动程序需要在 Cosmos DB 密码中对特殊字符进行编码。 请务必将“=”字符编码为 %3D
+    > MongoDB Node.js 3.0 驱动程序需要在 Cosmos DB 密码中对特殊字符进行编码  。 请务必将“=”字符编码为 %3D
     >
-    > 示例：密码 jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv== 编码为 jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D
+    > 示例：密码 jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv== 编码为 jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D  
     >
-    > MongoDB Node.js 2.2 驱动程序无需在 Cosmos DB 密码中对特殊字符进行编码。
+    > MongoDB Node.js 2.2 驱动程序无需在 Cosmos DB 密码中对特殊字符进行编码  。
     >
     >
    

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 08c5bd8da0dda74156b2d44c8106ed345ef749dd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73177022"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>教程：Azure Active Directory 与 Picturepark 集成
@@ -34,7 +34,7 @@ ms.locfileid: "73177022"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Picturepark 的集成，需要以下项：
 
@@ -105,7 +105,7 @@ ms.locfileid: "73177022"
 
     ![Picturepark 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.picturepark.com` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<companyname>.picturepark.com`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
 
@@ -127,7 +127,7 @@ ms.locfileid: "73177022"
 
     ![复制指纹值](common/copy-thumbprint.png)
 
-7. 在“设置 Picturepark”部分，根据要求复制相应的 URL。  对于“登录 URL”，请使用模式如下的值：`https://login.microsoftonline.com/_my_directory_id_/wsfed` 
+7. 在“设置 Picturepark”部分，根据要求复制相应的 URL。  对于“登录 URL”，请使用模式如下的值：  `https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ 是 Azure AD 订阅的租户 ID。
@@ -166,7 +166,7 @@ ms.locfileid: "73177022"
 
 5. 单击“JoinDefaultUsersGroup”。 
 
-6. 若要在“声明”文本框中设置“Emailaddress”属性，请键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 并单击“保存”    。
+6. 若要在“声明”文本框中设置“Emailaddress”属性，请键入  **并单击“保存”**  `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`  。
 
       ![配置](./media/picturepark-tutorial/ic795065.png "配置")
 
@@ -188,7 +188,7 @@ ms.locfileid: "73177022"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -240,7 +240,7 @@ ms.locfileid: "73177022"
    
     ![创建用户](./media/picturepark-tutorial/ic795069.png "创建用户")
    
-    a. 在“电子邮件地址”文本框中，键入用户 `BrittaSimon@contoso.com` 的**电子邮件地址**  。  
+    a. 在“电子邮件地址”文本框中，键入用户  **的**电子邮件地址  `BrittaSimon@contoso.com`。  
    
     b. 在“密码”和“确认密码”文本框中，键入密码（“BrittaSimon”）    。 
    

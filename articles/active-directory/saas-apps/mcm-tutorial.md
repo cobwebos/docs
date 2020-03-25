@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 4ed3e5c543f96876d9b6078f1bd47839a0a0396a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76293413"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>教程：Azure Active Directory 与 MCM 的集成
@@ -105,9 +105,9 @@ ms.locfileid: "76293413"
 
     ![MCM 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://myaba.co.uk/client-access/<companyname>/saml.php` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://myaba.co.uk/client-access/<companyname>/saml.php`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://myaba.co.uk/<companyname>` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://myaba.co.uk/<companyname>`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [MCM 客户端支持团队](https://mcmtechnology.com/support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -148,7 +148,7 @@ ms.locfileid: "76293413"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 LockPath Keylight 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 LockPath Keylight 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 LockPath Keylight 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 148c2c46a911088d01ab83fe2d16e8ca81d272ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67098779"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>教程：Azure Active Directory 与 LockPath Keylight 的集成
+# <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>教程：Azure Active Directory 与 LockPath Keylight 集成
 
 本教程介绍如何将 LockPath Keylight 与 Azure Active Directory (Azure AD) 集成。
 将 LockPath Keylight 与 Azure AD 集成提供以下优势：
@@ -35,7 +35,7 @@ ms.locfileid: "67098779"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 LockPath Keylight 的集成，需要以下项：
 
@@ -107,9 +107,9 @@ ms.locfileid: "67098779"
 
     ![LockPath Keylight 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.keylightgrc.com/` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<company name>.keylightgrc.com/`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<company name>.keylightgrc.com` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<company name>.keylightgrc.com`
 
     c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<company name>.keylightgrc.com/Login.aspx`
 
@@ -178,7 +178,7 @@ ms.locfileid: "67098779"
 
     m. 在“姓氏属性”  文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`。
 
-    n. 单击“ **保存**”。
+    n. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -198,7 +198,7 @@ ms.locfileid: "67098779"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 

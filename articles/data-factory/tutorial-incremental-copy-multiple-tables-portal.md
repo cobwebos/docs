@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
 ms.openlocfilehash: 2c89b53d66b93ff38a7cff07b2889faf8eda24ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75439294"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
@@ -231,7 +231,7 @@ END
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
-2. 在左侧菜单中，选择“创建资源” > “分析” > “数据工厂”：    
+2. 在左侧菜单中，选择“创建资源” **“分析”** “数据工厂”： >    >   
    
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -267,7 +267,7 @@ END
 1. 选择“自承载”，然后单击“继续”。   
 1. 在“名称”中输入 **MySelfHostedIR**，然后单击“创建”。   
 
-1. 在“选项 1: 快速安装”部分中单击“单击此处对此计算机启动快速安装”   。 
+1. 在“选项 1: 快速安装”部分单击“单击此处对此计算机启动快速安装”。   
 
    ![单击“快速安装”链接](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. 在“集成运行时(自承载)快速安装”窗口中，单击“关闭”。   
@@ -448,8 +448,8 @@ END
         
 1. 请执行以下步骤：
 
-    1. 在“数据集”属性中，  输入 `@{item().TABLE_NAME}` 作为 **SinkTableName** 参数。
-    1. 至于“存储过程名称”属性，请输入 `@{item().StoredProcedureNameForMergeOperation}`。 
+    1. 在“数据集”属性中，  输入 **作为**SinkTableName`@{item().TABLE_NAME}` 参数。
+    1. 至于“存储过程名称”属性，请输入 **。** `@{item().StoredProcedureNameForMergeOperation}`
     1. 至于“表类型”属性，  请输入 `@{item().TableType}`。
     1. 至于“表类型参数名称”，  请输入 `@{item().TABLE_NAME}`。
 

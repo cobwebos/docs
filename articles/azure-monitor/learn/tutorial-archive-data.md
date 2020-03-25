@@ -9,10 +9,10 @@ ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
 ms.openlocfilehash: 3ed00b1c68c41bc392b09c97dd47c9cdb8fa890d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77661719"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>使用 Azure 存储将 Azure 指标和日志数据存档
@@ -95,7 +95,7 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 
 6. 将“保留期(天)”滑块移至 30  。 此滑块设置监视数据要在存储帐户中保留的天数。 Azure Monitor 会自动删除早于所述天数的数据。 如果保留期为 0 天，则无限期存储数据。
 
-7. 单击“ **保存**”。
+7. 单击“保存”  。
 
 现在，资源的监视数据将流入到存储帐户。
 
@@ -136,7 +136,7 @@ Azure 环境的很多层都会生成可存档到 Azure 存储帐户的日志和�
 
 9. 在显示的部分中，选择在之前的“创建存储帐户”步骤中创建的存储帐户  。
 
-10. 单击“ **保存**”。
+10. 单击“保存”  。
 
 现在，虚拟机的监视数据将流入到存储帐户。
 

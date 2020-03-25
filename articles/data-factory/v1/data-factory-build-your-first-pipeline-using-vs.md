@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
 ms.openlocfilehash: eb9c21bf1972304da688586da9ccabe5063fa112
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438976"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
@@ -29,7 +29,7 @@ ms.locfileid: "75438976"
 
 
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
+> 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[快速入门：使用 Azure 数据工厂创建数据工厂](../quickstart-create-data-factory-dot-net.md)。
 
 本教程演示如何使用 Visual Studio 创建 Azure 数据工厂。 你可以使用数据工厂项目模板创建 Visual Studio 项目，以 JSON 格式定义数据工厂实体（链接服务、数据集和管道），并将这些实体发布/部署到云。 
 
@@ -65,7 +65,7 @@ ms.locfileid: "75438976"
 3. 必须在计算机上安装了以下软件：
    * Visual Studio 2013 或 Visual Studio 2015
    * 下载用于 Visual Studio 2013 或 Visual Studio 2015 的 Azure SDK。 导航到 [Azure 下载页](https://azure.microsoft.com/downloads/)，在“.NET”部分中单击“VS 2013”或“VS 2015”。   
-   * 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 还可以执行以下步骤来更新插件：在菜单上，依次单击“工具” -> “扩展和更新” -> “联机” -> “Visual Studio 库” -> “适用于 Visual Studio 的 Microsoft Azure 数据工厂工具” -> “更新”。      
+   * 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 还可通过执行以下步骤更新插件：在菜单上，依次单击“工具” **“扩展和更新”** “联机” -> “Visual Studio 库” **“适用于 Visual Studio 的 Microsoft Azure 数据工厂工具”** “更新”。 ->    ->    ->    ->  
 
 现在，使用 Visual Studio 创建 Azure 数据工厂。
 
@@ -79,7 +79,7 @@ ms.locfileid: "75438976"
     ![解决方案资源管理器](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
 ### <a name="create-linked-services"></a>创建链接服务
-此步骤创建两个链接服务：**Azure 存储**和 **HDInsight 按需**。 
+在此步骤中，将创建两项链接服务：**Azure 存储**和**按需 HDInsight**。 
 
 Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到数据工厂。 数据工厂在运行时使用链接服务设置中的连接字符串连接到 Azure 存储。 该存储保存管道的输入和输出数据，以及 Hive 活动所使用的 Hive 脚本文件。 
 
@@ -214,7 +214,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 4. 保存 **OutputDataset.json** 文件。
 
 ### <a name="create-pipeline"></a>创建管道
-目前已创建 Azure 存储链接服务，以及输入和输出数据集。 现在，请创建 **HDInsightHive** 活动的管道。 Hive 活动的“输入”  设置为 **AzureBlobInput**，“输出”  设置为 **AzureBlobOutput**。 每月获取输入数据集的切片（frequency：Month；interval：1），每月也生成输出切片。 
+目前已创建 Azure 存储链接服务，以及输入和输出数据集。 现在，请创建 **HDInsightHive** 活动的管道。 Hive 活动的“输入”  设置为 **AzureBlobInput**，“输出”  设置为 **AzureBlobOutput**。 输入数据集的切片每月都会提供（频率：每月，间隔：1），输出切片也是每月都会生成。 
 
 1. 在“解决方案资源管理器”中，右键单击“管道”，指向“添加”，并单击“新建项”。    
 2. 从列表中选择“Hive 转换管道”，并单击“添加”。  
@@ -275,7 +275,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
     在特定于 HDInsight Hive 活动的类型属性中，请指定包含 Hive 脚本文件的 Azure 存储链接服务、脚本文件的路径，以及脚本文件的参数。 
 
-    Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 scriptLinkedService 指定）中，以及 `adfgetstarted` 容器的 `script` 文件夹中。
+    Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 scriptLinkedService 指定）中，以及 `script` 容器的 `adfgetstarted` 文件夹中。
 
     `defines` 节用于指定运行时设置，这些设置将作为 Hive 配置值（例如 `${hiveconf:inputtable}`、`${hiveconf:partitionedtable})`）传递给 Hive 脚本。
 
@@ -288,7 +288,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 1. 在“解决方案资源管理器”窗口中右键单击“依赖项”，指向“添加”，并单击“现有项”。      
 2. 导航到 **C:\ADFGettingStarted**，选择 **partitionweblogs.hql** 和 **input.log** 文件，并单击“添加”。  已根据[教程概述](data-factory-build-your-first-pipeline.md)的部分先决条件创建上述两个文件。
 
-在下一步骤中发布解决方案时，请将 **partitionweblogs.hql** 文件上传到 `adfgetstarted` Blob 容器中的 **script** 文件夹。   
+在下一步骤中发布解决方案时，请将 **partitionweblogs.hql** 文件上传到 **Blob 容器中的**script`adfgetstarted` 文件夹。   
 
 ### <a name="publishdeploy-data-factory-entities"></a>发布/部署数据工厂实体
 在此步骤中，请将项目中的数据工厂实体（链接服务、数据集和管道）发布到 Azure 数据工厂服务。 在发布过程中，请指定数据工厂的名称。 
@@ -323,7 +323,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 重要注意事项：
 
-- 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”  ，请执行下列操作之一，再尝试重新发布：
+- 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，尝试再次发布： 
     - 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
         ```powershell   
         Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
@@ -345,7 +345,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
    1. 单击“更多服务”，并单击“数据工厂”。  
        
         ![浏览数据工厂](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png)
-   2. 从数据工厂列表中选择数据工厂的名称（例如：**DataFactoryUsingVS09152016**）。
+   2. 从数据工厂列表中选择数据工厂的名称（例如： **DataFactoryUsingVS09152016**）。
    
        ![选择数据工厂](./media/data-factory-build-your-first-pipeline-using-vs/select-first-data-factory.png)
 2. 在数据工厂的主页中单击“图示”。 
@@ -375,7 +375,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
    > 创建按需 HDInsight 群集通常需要一段时间（大约 20 分钟）。 因此，预期管道需要花费 **大约 30 分钟** 来处理切片。  
    
     ![数据集](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
-10. 当切片处于“就绪”状态时，检查 Blob 存储中 `adfgetstarted` 容器内 `partitioneddata` 文件夹的输出数据。   
+10. 当切片处于“就绪”状态时，检查 Blob 存储中 **容器内** 文件夹的输出数据。`partitioneddata``adfgetstarted`  
 
     ![输出数据](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
 11. 单击切片可在“数据切片”边栏选项卡中查看其详细信息。 
@@ -402,7 +402,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
     ![活动窗口详细信息](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-details.png)
 
 > [!IMPORTANT]
-> 成功处理切片后，会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上传到 `adfgetstarted` 容器的 `inputdata` 文件夹中。
+> 成功处理切片后，会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上传到 `inputdata` 容器的 `adfgetstarted` 文件夹中。
 
 ### <a name="additional-notes"></a>附加说明
 - 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本来转换输入数据的 HDInsight Hive 活动。 有关复制活动支持的所有源和接收器，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 有关数据工厂支持的计算服务列表，请参阅[计算链接的服务](data-factory-compute-linked-services.md)。
@@ -556,7 +556,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 4. 创建了包含 **HDInsight Hive** 活动的**管道**。  
 
 ## <a name="next-steps"></a>后续步骤
-本文创建了可在按需 HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 若要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅[教程：将数据从 Azure Blob 复制到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+本文创建了可在按需 HDInsight 群集上运行 Hive 脚本、包含转换活动（HDInsight 活动）的管道。 要了解如何使用复制活动将数据从 Azure Blob 复制到 Azure SQL，请参阅 [Tutorial: Copy data from an Azure blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)（教程：将数据从 Azure Blob 复制到 Azure SQL）。
 
 通过将一个活动的输出数据集设置为另一个活动的输入数据集，可链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[数据工厂中的计划和执行情况](data-factory-scheduling-and-execution.md)。 
 

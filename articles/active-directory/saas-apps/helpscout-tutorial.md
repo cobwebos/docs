@@ -17,10 +17,10 @@ ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b71ccbc6cfdb9d3d37fc46b0e932fa98eee2fb43
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159091"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>教程：Azure Active Directory 与 Help Scout 集成
@@ -35,7 +35,7 @@ ms.locfileid: "73159091"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要配置 Azure AD 与 Help Scout 的集成，需要以下项：
 
@@ -96,9 +96,9 @@ ms.locfileid: "73159091"
 
     ![Help Scout 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. “标识符”是 Help Scout 的“受众 URI (服务提供程序实体 ID)”，以 `urn:` 开头  
+    a. “标识符”是 Help Scout 的“受众 URI (服务提供程序实体 ID)”，以  **开头**  `urn:`
 
-    b. “回复 URL”是 Help Scout 的“发回 URL (断言使用者服务 URL)”，以 `https://` 开头   
+    b. “回复 URL”是 Help Scout 的“发回 URL (断言使用者服务 URL)”，以  **开头**  `https://` 
 
     > [!NOTE]
     > 这些 URL 中的值仅用于演示。 需要使用实际回复 URL 和标识符更新这些值。 可从“身份验证”部分下面的“单一登录”选项卡获取这些值，本教程稍后将会介绍。 
@@ -107,7 +107,7 @@ ms.locfileid: "73159091"
 
     ![Help Scout 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，键入 URL `https://secure.helpscout.net/members/login/` 
+    在“登录 URL”文本框中，键入 URL  `https://secure.helpscout.net/members/login/`
 
 1. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -141,7 +141,7 @@ ms.locfileid: "73159091"
 
     a. 在“姓名”字段中，输入“B.Simon”   。
   
-    b. 在“用户名”字段中，键入 B.Simon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 B.Simon**yourcompanydomain.extension** **\@**  
     例如： B.Simon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -214,7 +214,7 @@ ms.locfileid: "73159091"
 
     d. 最后，可以希望用户只能通过此方法登录到 Help Scout，可将“强制 SAML 登录”切换为打开状态。  如果希望用户仍旧使用其 Help Scout 凭据登录，可将此选项切换为关闭状态。 即使启用此选项，帐户所有者也始终能够使用其帐户密码登录到 Help Scout。
 
-    e. 单击“ **保存**”。
+    e. 单击“保存”  。
 
 ### <a name="create-help-scout-test-user"></a>创建 Help Scout 测试用户
 

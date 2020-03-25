@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252786"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>教程：在 Linux Service Fabric 群集上创建容器映像
@@ -31,7 +31,7 @@ ms.locfileid: "78252786"
 > * [使用容器生成和运行 Service Fabric 应用程序](service-fabric-tutorial-package-containers.md)
 > * [如何在 Service Fabric 中处理故障转移和缩放](service-fabric-tutorial-containers-failover.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 设置 Service Fabric 的 Linux 开发环境。 按照[此处](service-fabric-get-started-linux.md)的说明设置 Linux 环境。
 * 本教程需要运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
@@ -92,7 +92,7 @@ az account set --subscription <subscription_id>
 
 在部署 Azure 容器注册表时，首先需要一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-使用“**az group create**”命令创建资源组。 在此示例中，在“westus”区域中创建了名为“myResourceGroup”的资源组   。
+使用“az group create”命令创建资源组  。 在此示例中，在“westus”区域中创建了名为“myResourceGroup”的资源组   。
 
 ```azurecli
 az group create --name <myResourceGroup> --location westus

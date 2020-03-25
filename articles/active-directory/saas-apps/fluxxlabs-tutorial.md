@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Fluxx Labs 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Fluxx Labs 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Fluxx Labs 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: e624520a9d1f39bc8115ac72e9df0398065928f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67102392"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>教程：Azure Active Directory 与 Fluxx Labs 集成
@@ -34,7 +34,7 @@ ms.locfileid: "67102392"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Fluxx Labs 的集成，需要做好以下各项准备：
 
@@ -144,7 +144,7 @@ ms.locfileid: "67102392"
 
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config1.png)
 
-3. 在管理面板中，选择“插件” > “集成”，然后选择“SAML SSO (已禁用)”   
+3. 在管理面板中，选择“插件” **“集成”，然后选择“SAML SSO (已禁用)”**  >   
 
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config2.png)
 
@@ -166,9 +166,9 @@ ms.locfileid: "67102392"
 
     g. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“标识提供者证书”  文本框。
 
-    h. 在“名称标识符格式”文本框中，输入值 `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`。 
+    h. 在“名称标识符格式”文本框中，输入值 **。** `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`
 
-    i. 单击“ **保存**”。
+    i. 单击“保存”  。
 
     > [!NOTE]
     > 保存内容后，字段会出于安全原因显示空白，但值已保存到配置中。
@@ -191,7 +191,7 @@ ms.locfileid: "67102392"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -245,7 +245,7 @@ ms.locfileid: "67102392"
 
     a. Fluxx Labs 使用电子邮件作为 SSO 登录名的唯一标识符。 在“SSO UID”字段中填写用户的电子邮件地址，该值与他们进行 SSO 登录时使用的电子邮件地址匹配。 
 
-    b. 单击“ **保存**”。
+    b. 单击“保存”  。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

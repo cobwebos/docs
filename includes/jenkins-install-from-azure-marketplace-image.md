@@ -10,10 +10,10 @@ ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
 ms.openlocfilehash: 5439de30b02b0ce05853c8112f9e29239743ef98
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67173570"
 ---
 1. 在浏览器中，打开[用于 Jenkins 的 Azure 市场映像](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)。
@@ -62,7 +62,7 @@ ms.locfileid: "67173570"
 1. 在“集成设置”  选项卡中，指定以下值：
 
     - **服务主体** - 服务主体已添加到 Jenkins 中，作为使用 Azure 进行身份验证的凭据。 `Auto` 意味着将由 MSI（托管服务标识）创建主体。 `Manual` 意味着应由你创建主体。 
-        - **应用程序 ID** 和**机密** - 如果针对“服务主体”  选项选择 `Manual` 选项，则需要为服务主体指定 `Application ID` 和 `Secret`。 [创建服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)时，请注意，默认角色是“参与者”  ，该角色对于使用 Azure 资源已足够。
+        - **应用程序 ID** 和**机密** - 如果针对“服务主体”`Manual`**选项选择**  选项，则需要为服务主体指定 `Application ID` 和 `Secret`。 [创建服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)时，请注意，默认角色是“参与者”  ，该角色对于使用 Azure 资源已足够。
     - **启用云代理** - 为代理指定默认云模板，其中 `ACI` 是指 Azure 容器实例，`VM` 是指虚拟机。 如果不想启用云代理，也可以指定 `No`。
 
 1. 选择“确定”  以进入“摘要”  选项卡。

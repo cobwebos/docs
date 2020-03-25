@@ -17,10 +17,10 @@ ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a83d27af4fd783b95c53ef3a9169cb72bfc29d34
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67872426"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>单一登录的一键式应用配置
@@ -37,7 +37,7 @@ ms.locfileid: "67872426"
 - 更有效、更准确的 SSO 配置。
 - 设置时无需合作伙伴通信或支持。 应用程序会提供用于配置 SAML 的 UI。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 用于配置 SSO 的应用程序的有效订阅。 还需要管理员凭据。
 - 在浏览器中安装 Microsoft 所提供的“我的应用安全登录扩展”  。 有关详细信息，请参阅[在“我的应用”门户中访问和使用应用](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)。
@@ -59,7 +59,7 @@ ms.locfileid: "67872426"
 
    ![安装“我的应用”安全登录浏览器扩展](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-6. 将扩展添加到浏览器后，选择“设置 \<应用程序名称\>”  。 重定向到应用程序管理门户后，以管理员身份登录。
+6. 将扩展添加到浏览器后，选择“设置 **应用程序名称\<”\>** 。 重定向到应用程序管理门户后，以管理员身份登录。
 
    ![设置应用程序名称](./media/one-click-sso-tutorial/setup-sso.png)
 

@@ -7,10 +7,10 @@ ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75376641"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>教程：配置 Jenkins 环境以便为 Service Fabric 上的 Java 应用程序启用 CI/CD
@@ -77,7 +77,7 @@ ms.locfileid: "75376641"
 
 1. 首先，如果没有可用于在 GitHub 上托管投票项目的存储库，请创建一个存储库。 在本教程的余下内容中，此存储库名为 **dev_test**。
 
-1. 在 ``http://<HOST-IP>:8080`` 的 Jenkins 仪表板上创建一个**新项**。
+1. 在  **的 Jenkins 仪表板上创建一个**新项``http://<HOST-IP>:8080``。
 
 1. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，并单击“确定”。  
 
@@ -115,11 +115,11 @@ ms.locfileid: "75376641"
     > 如果使用 Service Fabric 部署 Jenkins 容器映像，此处的群集可与托管 Jenkins 容器应用程序的群集相同。
     >
 
-1. 单击“ **保存**”。
+1. 单击“保存”  。
 
 ## <a name="update-your-existing-application"></a>更新现有应用程序
 
-1. 使用 **Service Fabric 投票示例 V2** 更新 *VotingApplication/VotingWebPkg/Code/wwwroot/index.html* 文件中 HTML 的标题。
+1. 使用 *Service Fabric 投票示例 V2* 更新 **VotingApplication/VotingWebPkg/Code/wwwroot/index.html** 文件中 HTML 的标题。
 
     ```html
     <div ng-app="VotingApp" ng-controller="VotingAppController" ng-init="refresh()">
@@ -133,7 +133,7 @@ ms.locfileid: "75376641"
     </div>
     ```
 
-1. 在 *Voting/VotingApplication/ApplicationManifest.xml* 文件中，将 **ApplicationTypeVersion** 和 **ServiceManifestVersion** 版本更新为 **2.0.0**。
+1. 在 **Voting/VotingApplication/ApplicationManifest.xml** 文件中，将 **ApplicationTypeVersion** 和 **ServiceManifestVersion** 版本更新为 *2.0.0*。
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -160,7 +160,7 @@ ms.locfileid: "75376641"
     </ApplicationManifest>
     ```
 
-1. 在 *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* 文件中，将 **ServiceManifest** 中的 **Version** 字段以及 **CodePackage** 标记中的 **Version** 字段更新为 **2.0.0**。
+1. 在 **Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml** 文件中，将 **ServiceManifest** 中的 **Version** 字段以及 **CodePackage** 标记中的 *Version* 字段更新为 **2.0.0**。
 
     ```xml
     <CodePackage Name="Code" Version="2.0.0">

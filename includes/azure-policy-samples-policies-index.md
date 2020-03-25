@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: bdd46f06357a806a707882a623520235e3903581
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79381955"
 ---
 ## <a name="app-configuration"></a>应用配置

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Samanage 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Samanage 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Samanage 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 741efbae84e18c811beb6c0579c1949c5ddf619c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160115"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>教程：Azure Active Directory 与 Samanage 的集成
+# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>教程：Azure Active Directory 与 Samanage 集成
 
 本教程介绍如何将 Samanage 与 Azure Active Directory (Azure AD) 集成。
 将 Samanage 与 Azure AD 集成提供以下优势：
@@ -35,7 +35,7 @@ ms.locfileid: "73160115"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Samanage 的集成，需备齐以下项目：
 
@@ -106,9 +106,9 @@ ms.locfileid: "73160115"
 
     ![Samanage 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<Company Name>.samanage.com/saml_login/<Company Name>` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<Company Name>.samanage.com/saml_login/<Company Name>`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<Company Name>.samanage.com` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<Company Name>.samanage.com`
 
     > [!NOTE] 
     > 这些不是实际值。 本教程稍后将介绍如何使用实际的登录 URL 和标识符来更新该值。 有关更多详细信息，请联系 [Samanage 客户端支持团队](https://www.samanage.com/support)。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -177,7 +177,7 @@ ms.locfileid: "73160115"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -221,7 +221,7 @@ ms.locfileid: "73160115"
 
 2. 在左侧导航窗格中，单击“仪表板”  并选择“设置”  。
    
-    ![设置](./media/samanage-tutorial/tutorial_samanage_001.png "设置")
+    ![安装](./media/samanage-tutorial/tutorial_samanage_001.png "设置")
 
 3. 单击“用户”  选项卡
    

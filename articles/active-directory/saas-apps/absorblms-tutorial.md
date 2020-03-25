@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Absorb LMS 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Absorb LMS 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Absorb LMS 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 936de76d1117c56f5a9dec48b51f33b9afa15351
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67107507"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>教程：Azure Active Directory 与 Absorb LMS 集成
+# <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>教程：Azure Active Directory 与 Absorb LMS 的集成
 
 本教程介绍如何将 Absorb LMS 与 Azure Active Directory (Azure AD) 集成。
 将 Absorb LMS 与 Azure AD 集成提供以下优势：
@@ -35,7 +35,7 @@ ms.locfileid: "67107507"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Absorb LMS 的集成，需要以下项：
 
@@ -199,7 +199,7 @@ ms.locfileid: "67107507"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 `brittasimon\@yourcompanydomain.extension`   
+    b. 在“用户名”字段中，键入  `brittasimon\@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -269,7 +269,7 @@ ms.locfileid: "67107507"
     ![“仅允许 SSO 登录”切换](./media/absorblms-tutorial/save.png)
 
     > [!NOTE]
-    > 默认情况下，SSO 中未启用“用户预配”。 如果客户想启用此功能，需要按[此](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning)文档所述进行设置。 另请注意，只有采用 ACS URL-`https://company.myabsorb.com/api/rest/v2/authentication/saml` 的 Absorb 5 - New Learner Experience 才能使用“用户预配”功能 
+    > 默认情况下，SSO 中未启用“用户预配”。 如果客户想启用此功能，需要按[此](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning)文档所述进行设置。 另请注意，只有采用 ACS URL- **的 Absorb 5 - New Learner Experience 才能使用“用户预配”功能**`https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

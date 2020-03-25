@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
 ms.openlocfilehash: 0b3acb1b421962cde7d90398f42bdfeefda578e3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74971496"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>针对 Azure 应用服务的 CLI 示例
@@ -24,7 +24,7 @@ ms.locfileid: "74971496"
 | [创建应用并从 GitHub 部署代码](./scripts/cli-deploy-github.md?toc=%2fcli%2fazure%2ftoc.json)| 创建应用服务应用并从公共 GitHub 存储库部署代码。 |
 | [从 GitHub 使用连续部署创建应用](./scripts/cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| 创建应用服务应用并从你拥有的 GitHub 存储库持续向其发布代码。 |
 | [从本地 Git 存储库创建应用并部署代码](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | 创建应用服务应用并配置从本地 Git 存储库进行的代码推送。 |
-| [创建应用并将代码部署到过渡环境](./scripts/cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | 创建应用服务应用并为其配置用于暂存代码更改的部署槽。 |
+| [创建应用并将代码部署到过渡环境](./scripts/cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | 创建应用服务应用并为其配置用于暂存代码更改的部署槽位。 |
 | [在 Docker 容器中创建 ASP.NET Core 应用](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| 在 Linux 上创建应用服务应用并从 Docker 中心加载 Docker 映像。 |
 |**配置应用**||
 | [将自定义域映射到应用](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| 创建应用服务应用并将自定义域名映射到它。 |

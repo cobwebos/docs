@@ -11,10 +11,10 @@ ms.date: 11/29/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: d4277e383a5cb69ef5395cb6dc477d888abd1d0d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77023083"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>教程：使用 Python API 通过 Azure Batch 运行并行工作负荷
@@ -213,7 +213,7 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>创建任务
 
-应用通过调用 `add_tasks` 在作业中创建任务。 这个定义的函数使用 [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) 类创建任务对象的列表。 每个任务都运行 ffmpeg，使用 `command_line` 参数来处理输入 `resource_files` 对象。 ffmpeg 此前已在创建池时安装在每个节点上。 在这里，命令行运行 ffmpeg 将每个输入 MP4（视频）文件转换为 MP3（音频）文件。
+应用通过调用 `add_tasks` 在作业中创建任务。 这个定义的函数使用 [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) 类创建任务对象的列表。 每个任务都运行 ffmpeg，使用 `resource_files` 参数来处理输入 `command_line` 对象。 ffmpeg 此前已在创建池时安装在每个节点上。 在这里，命令行运行 ffmpeg 将每个输入 MP4（视频）文件转换为 MP3（音频）文件。
 
 此示例在运行命令行后为 MP3 文件创建 [OutputFile](/python/api/azure-batch/azure.batch.models.outputfile) 对象。 每个任务的输出文件（在此示例中为一个）都会使用任务的 `output_files` 属性上传到关联的存储帐户中的一个容器。
 

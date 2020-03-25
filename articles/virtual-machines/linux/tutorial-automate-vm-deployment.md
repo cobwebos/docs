@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 27c7e32f081003ac236c6d1405eb3512f6c4433c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 62a8c68b11562cac7bb9e8a318cbe08084449423
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034641"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066502"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>教程 - 如何在 Azure 中的 Linux 虚拟机首次启动时使用 cloud-init 对其进行自定义
 
@@ -58,7 +58,7 @@ Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装  或
 
 在 bash 提示符下或在 Cloud Shell 中，创建名为 cloud-init.txt  的文件并粘贴以下配置。 例如，键入 `sensible-editor cloud-init.txt` 以创建文件并查看可用编辑器的列表。 请确保已正确复制整个 cloud-init 文件，尤其是第一行：
 
-```azurecli-interactive
+```bash
 #cloud-config
 package_upgrade: true
 packages:
@@ -130,7 +130,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>测试 Web 应用
-现在可以打开 Web 浏览器，并在地址栏中输入“http:\/\/\<publicIpAddress>”  。 在 VM 创建过程中提供自己的公共 IP 地址。 将显示 Node.js 应用，如下例所示：
+现在可以打开 Web 浏览器，并在地址栏中输入“http: *\/\/publicIpAddress>”\<* 。 在 VM 创建过程中提供自己的公共 IP 地址。 将显示 Node.js 应用，如下例所示：
 
 ![查看运行中的 NGINX 站点](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -138,7 +138,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ## <a name="inject-certificates-from-key-vault"></a>插入 Key Vault 中的证书
 此可选部分展示了如何在 Azure Key Vault 中安全存储证书，并在 VM 部署期间将其插入。 此过程可确保首次启动时会最新的证书插入到 VM 中，而不是使用内置证书中随附的自定义映像。 在该过程中，证书永远不会离开 Azure 平台，也不会在脚本、命令行历史记录或模板中公开。
 
-Azure Key Vault 保护加密密钥和机密，例如证书或密码。 Key Vault 有助于简化密钥管理过程，从而可持续掌控用于访问和加密数据的密钥。 此方案介绍了一些用于证书创建和使用的 Key Vault 概念，但未详尽概述如何使用 Key Vault。
+Azure Key Vault 保护加密密钥和机密，例如证书或密码。 Key Vault 有助于简化密钥管理过程，让你能够持续掌控用于数据访问和加密的密钥。 此方案介绍了一些用于证书创建和使用的 Key Vault 概念，但未详尽概述如何使用 Key Vault。
 
 以下步骤演示可如何：
 
@@ -261,7 +261,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>测试 Web 应用是否安全
-现在可以打开 Web 浏览器，并在地址栏中输入“https:\/\/\<publicIpAddress>”  。 提供你自己的公共 IP 地址，如前面的 VM 创建过程的输出中所示。 若使用自签名的证书，请接受安全警告：
+现在可以打开 Web 浏览器，并在地址栏中输入“https: *\/\/publicIpAddress>”\<* 。 提供你自己的公共 IP 地址，如前面的 VM 创建过程的输出中所示。 若使用自签名的证书，请接受安全警告：
 
 ![接受 Web 浏览器安全警告](./media/tutorial-automate-vm-deployment/browser-warning.png)
 
@@ -271,7 +271,7 @@ az vm open-port \
 
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，使用 cloud-init 在首次启动时配置 VM。 你已了解如何：
+在本教程中，使用 cloud-init 在首次启动时配置 VM。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 cloud-init 配置文件

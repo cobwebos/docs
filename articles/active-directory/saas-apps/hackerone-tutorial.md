@@ -17,10 +17,10 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: effd0593384190eb1a1cf261305dd61818c3d0b0
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76120694"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>教程：Azure Active Directory 与 HackerOne 集成
@@ -82,7 +82,7 @@ ms.locfileid: "76120694"
 2. **[配置 HackerOne 单一登录](#configure-hackerone-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 HackerOne 测试用户](#create-hackerone-test-user) - 在 HackerOne 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户  。
+5. **创建 HackerOne 测试用户[ - 在 HackerOne 中有一个与 Azure AD 中的 Britta Simon 相对应的关联用户](#create-hackerone-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -147,7 +147,7 @@ ms.locfileid: "76120694"
 
     c. 打开从 Azure 门户下载到记事本中的“证书文件”，  将内容复制到剪贴板，然后粘贴到“X509 证书”  文本框。
 
-    d. 单击“ **保存**”。
+    d. 单击“保存”  。
 
 5. 在“身份验证设置”对话框中，执行以下步骤：
 
@@ -181,7 +181,7 @@ ms.locfileid: "76120694"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
 
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

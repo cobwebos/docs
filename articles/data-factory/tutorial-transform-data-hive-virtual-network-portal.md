@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
 ms.openlocfilehash: dd0de5415dc001f107221add7ea223450290b3f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75439266"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
@@ -40,7 +40,7 @@ ms.locfileid: "75439266"
 - **Azure 虚拟网络**。 如果没有 Azure 虚拟网络，请遵照[这些说明](../virtual-network/quick-create-portal.md)创建虚拟网络。 在本示例中，HDInsight 位于 Azure 虚拟网络中。 下面是 Azure 虚拟网络的示例配置。 
 
     ![创建虚拟网络](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
-- **HDInsight 群集**。 创建一个 HDInsight 群集，并按照以下文章中所述，将该群集加入到在前一步骤中创建的虚拟网络：[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md)。 下面是虚拟网络中 HDInsight 的示例配置。 
+- **HDInsight 群集**。 创建一个 HDInsight 群集，并遵循[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md) 一文中所述，将该群集加入到在前一步骤中创建的虚拟网络。 下面是虚拟网络中 HDInsight 的示例配置。 
 
     ![虚拟网络中的 HDInsight](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
 - **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明。
@@ -93,7 +93,7 @@ ms.locfileid: "75439266"
 5. 选择数据工厂的**位置**。 列表中只会显示支持创建数据工厂的位置。
 6. 选择“固定到仪表板”  。     
 7. 单击“创建”。 
-8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”  。 
+8. 在仪表板上，会看到状态为“正在部署数据工厂”的以下磁贴。  
 
      ![“正在部署数据工厂”磁贴](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. 创建完成后，可以看到图中所示的“数据工厂”页。 
@@ -166,7 +166,7 @@ ms.locfileid: "75439266"
     2. 为“通过集成运行时连接”选择“MySelfHostedIR”。  
     3. 对于“存储帐户名称”，请选择自己的 Azure 存储帐户。  
     4. 若要测试与存储帐户的连接，请单击“测试连接”。 
-    5. 单击“ **保存**”。
+    5. 单击“保存”  。
    
         ![指定 Azure Blob 存储帐户](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 
@@ -226,7 +226,7 @@ ms.locfileid: "75439266"
         ![脚本设置](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. 在“脚本”选项卡中，展开“高级”部分。   
     6. 单击“参数”对应的“从脚本自动填充”。   
-    7. 使用以下格式输入“输出”参数的值：`wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`。  例如：`wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`。
+    7. 使用以下格式输入“输出”参数的值： **。** `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` 例如：`wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`。
  
         ![脚本参数](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. 若要将项目发布到数据工厂，请单击“发布”。 

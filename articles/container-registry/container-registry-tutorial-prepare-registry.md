@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454436"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222144"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教程：准备异地复制的 Azure 容器注册表
 
@@ -37,9 +37,9 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
-选择“创建资源” > “容器” > “Azure 容器注册表”。   
+选择“创建资源” **“容器”** “Azure 容器注册表”。 >    >  
 
 ![在 Azure 门户中创建容器注册表][tut-portal-01]
 
@@ -67,7 +67,7 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 在 Azure 门户中导航到新的容器注册表，选择“服务”下面的“复制项”：  
 
-![Azure 门户容器注册表 UI 中的“复制项”][tut-portal-03]
+![Azure 门户容器注册表 UI 中的副本][tut-portal-03]
 
 此时会出现一幅地图，其中显示了绿色的六边形，表示支持异地复制的 Azure 区域：
 
@@ -75,7 +75,7 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 选择注册表对应的绿色六边形将它复制到“美国东部”区域，然后选择“创建复制项”下面的“创建”：  
 
- ![Azure 门户中的“创建复制项”UI][tut-portal-04]
+ ![Azure 门户中的“创建副本”UI][tut-portal-04]
 
 完成复制后，门户会显示两个区域的“就绪”状态。  使用“刷新”按钮刷新复制状态；创建并同步副本可能需要大约一分钟时间。 
 
@@ -205,7 +205,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-由于已经为异地复制配置了注册表，因此，使用这一条 `docker push` 命令，即可将映像自动复制到“美国西部”和“美国东部”区域。  
+由于已经为异地复制配置了注册表，因此，使用这一条  *命令，即可将映像自动复制到“美国西部”和“美国东部”区域。*  `docker push`
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1

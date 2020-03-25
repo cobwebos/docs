@@ -10,11 +10,11 @@ ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: e6651fc5988a1e1830807219cda02ab057db9a4f
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329814"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "60480378"
 ---
 # <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>（已弃用）创建文件共享并将其装载到 DC/OS 群集
 
@@ -27,7 +27,7 @@ ms.locfileid: "54329814"
 > * 创建文件共享
 > * 在 DC/OS 群集中装载共享
 
-需要 ACS DC/OS 群集才能完成本教程中的步骤。 必要时，[此脚本示例](./../kubernetes/scripts/container-service-cli-deploy-dcos.md)可为你创建一个。
+需要 ACS DC/OS 群集来完成本教程中的步骤。 必要时，[此脚本示例](./../kubernetes/scripts/container-service-cli-deploy-dcos.md)可为你创建一个。
 
 本教程需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
@@ -93,7 +93,7 @@ scp ~/.ssh/id_rsa azureuser@$FQDN:~/.ssh
 ssh azureuser@$FQDN
 ```
 
-创建名为 cifsMount.sh 的文件，并将以下内容复制到其中。 
+创建名为 cifsMount.sh  的文件，并将以下内容复制到其中。 
 
 此脚本用于装载 Azure 文件共享。 使用前面收集的信息更新 `STORAGE_ACCT_NAME` 和 `ACCESS_KEY` 变量。
 
@@ -114,9 +114,9 @@ if [ ! -d "/mnt/share/$SHARE_NAME" ]; then sudo mkdir -p "/mnt/share/$SHARE_NAME
 # Mount the share under the previous local folder created
 sudo mount -t cifs //$STORAGE_ACCT_NAME.file.core.windows.net/$SHARE_NAME /mnt/share/$SHARE_NAME -o vers=3.0,username=$STORAGE_ACCT_NAME,password=$ACCESS_KEY,dir_mode=0777,file_mode=0777
 ```
-创建第二个文件，命名为 getNodesRunScript.sh，并将以下内容复制到该文件中。 
+创建第二个文件，命名为 getNodesRunScript.sh  ，并将以下内容复制到该文件中。 
 
-此脚本可发现所有群集节点，然后运行 cifsMount.sh 脚本，在各个节点上装载文件共享。
+此脚本可发现所有群集节点，然后运行 cifsMount.sh  脚本，在各个节点上装载文件共享。
 
 ```azurecli-interactive
 #!/bin/bash

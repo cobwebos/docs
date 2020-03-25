@@ -10,10 +10,10 @@ ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: b03fb27c46d4fd925b91b8927fdd50ff4912aaec
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71969564"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-projects"></a>教程：使用 Azure DevOps Projects 将 ASP.NET 应用部署到 Azure 虚拟机
@@ -37,7 +37,7 @@ DevOps Projects 还可以：
 > * 配置 Azure Application Insights 监视
 > * 清理资源
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 可以通过 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 免费获取一个。
 
@@ -45,7 +45,7 @@ DevOps Projects 还可以：
 
 DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Projects 还可在所选的 Azure 订阅中创建 Azure 资源，例如虚拟机。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左窗格中，选择“新建”。 
 
@@ -103,7 +103,7 @@ DevOps Projects 会自动在 Azure Pipelines 中配置一个 CI/CD 管道。 可
     此窗格显示最近针对生成所做的更改的审核线索。 Azure DevOps 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 
 1. 选择“触发器”。   
-    DevOps Projects 会自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 （可选）可以选择在 CI 过程中包括或排除分库。
+    DevOps Projects 会自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 （可选）可以选择在 CI 过程中包括或排除分支。
 
 1. 选择“保留期”。   
     可以根据方案指定策略，以保留或删除特定数目的生成。
@@ -112,7 +112,7 @@ DevOps Projects 会自动在 Azure Pipelines 中配置一个 CI/CD 管道。 可
 
 DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure 订阅所要执行的步骤。 这些步骤包括配置 Azure 服务连接，以便在 Azure 订阅中进行 Azure DevOps 身份验证。 自动化还会创建一个 CD 管道，用于提供到 Azure 虚拟机的 CD。 若要详细了解 Azure DevOps CD 管道，请执行以下操作：
 
-1. 依次选择“生成和发布”、“发布”。    
+1. 选择“生成和发布”，然后选择“发布”。    
     DevOps Projects 会创建一个发布管道，用于管理到 Azure 的部署。
 
 1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。   
@@ -208,7 +208,7 @@ DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 DevOps Projects 部署 ASP.NET 应用

@@ -5,10 +5,10 @@ ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 1/31/2020
 ms.openlocfilehash: 089a199da08503e13dbd42518970c3b7ed8a984d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77619288"
 ---
 1. 若要创建新应用程序配置存储区，请登录 [Azure 门户](https://portal.azure.com)。 在主页的左上角，选择“创建资源”  。 在“搜索市场”框中，输入“应用程序配置”并选择 Enter   。
@@ -19,7 +19,7 @@ ms.locfileid: "77619288"
 
     ![选择“创建”](media/azure-app-configuration-create/azure-portal-app-configuration-create.png)
 
-1. 在“应用程序配置” > “创建”窗格中，输入以下设置   ：
+1. 在“应用程序配置” **“创建”窗格中，输入以下设置** >   ：
 
     | 设置 | 建议的值 | 说明 |
     |---|---|---|
@@ -33,4 +33,4 @@ ms.locfileid: "77619288"
 
 1. 选择“创建”  。 部署可能需要几分钟。
 
-1. 部署完成后，选择“设置” > “访问密钥”   。 记下只读主密钥连接字符串。 稍后将使用此连接字符串来配置应用程序，以与创建的应用程序配置存储区进行通信。
+1. 部署完成后，选择“设置” **“访问密钥”**  >   。 记下只读主密钥连接字符串。 稍后将使用此连接字符串来配置应用程序，以与创建的应用程序配置存储区进行通信。

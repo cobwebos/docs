@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Zoho One 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Zoho One 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Zoho One 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 0a37789e7c7efeb71770ff0e8061d57e6603b6c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086232"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>教程：Azure Active Directory 与 Zoho One 集成
+# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>教程：Azure Active Directory 与 Zoho One 的集成
 
 本教程介绍了如何将 Zoho One 与 Azure Active Directory (Azure AD) 进行集成。
 将 Zoho One 与 Azure AD 集成可提供以下优势：
@@ -34,7 +34,7 @@ ms.locfileid: "67086232"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Zoho One 的集成，需要准备好以下各项：
 
@@ -105,7 +105,7 @@ ms.locfileid: "67086232"
 
     ![Zoho One 域和 URL 单一登录信息](common/idp-relay.png)
 
-    a. 在“标识符”文本框中键入 URL：`one.zoho.com` 
+    a. 在“标识符”文本框中键入 URL：  `one.zoho.com`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
@@ -114,7 +114,7 @@ ms.locfileid: "67086232"
 
     c. 单击“设置其他 URL”  。
 
-    d. 在“中继状态”文本框中键入 URL：`https://one.zoho.com` 
+    d. 在“中继状态”文本框中键入 URL：  `https://one.zoho.com`
 
 5. 如果要在“SP”发起的模式下配置应用程序，请执行以下步骤  ：
 
@@ -158,9 +158,9 @@ ms.locfileid: "67086232"
 
     c. 单击“浏览”  来上传从 Azure 门户下载的**证书 (Base64)** 。
 
-    d. 单击“ **保存**”。
+    d. 单击“保存”  。
 
-4. 保存 SAML 身份验证设置后，复制“SAML 标识符”值并在其后追加“回复 URL”（替代 `<saml-identifier>`，例如 `https://accounts.zoho.com/samlresponse/one.zoho.com`），然后在“基本 SAML 配置”部分的“回复 URL”文本框中粘贴生成的值。    
+4. 保存 SAML 身份验证设置后，复制“SAML 标识符”值并在其后追加“回复 URL”（替代 **，例如** ），然后在“基本 SAML 配置”部分的“回复 URL”文本框中粘贴生成的值。  `<saml-identifier>``https://accounts.zoho.com/samlresponse/one.zoho.com`  
 
     ![Zoho One SAML](./media/zohoone-tutorial/tutorial_zohoone_samlidenti.png)
 
@@ -197,7 +197,7 @@ ms.locfileid: "67086232"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -247,7 +247,7 @@ ms.locfileid: "67086232"
     
     a. 在“姓名”文本框中，输入用户名，例如 Britta Simon   。
     
-    b. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon@contoso.com  。
+    b. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如  brittasimon@contoso.com。
 
     >[!Note]
     >从域列表中选择已验证的域。

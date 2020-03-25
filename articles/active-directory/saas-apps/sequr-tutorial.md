@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 Sequr 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 与 Sequr 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Sequr 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2eed00aab4296cb5352e74d9e6bfc014f2340646
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091090"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sequr"></a>教程：Azure Active Directory 与 Sequr 集成
+# <a name="tutorial-azure-active-directory-integration-with-sequr"></a>教程：Azure Active Directory 与 Sequr 的集成
 
 本教程介绍了如何将 Sequr 与 Azure Active Directory (Azure AD) 进行集成。
 将 Sequr 与 Azure AD 集成可提供以下优势：
@@ -35,7 +35,7 @@ ms.locfileid: "67091090"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Sequr 的集成，需要具有以下各项：
 
@@ -106,7 +106,7 @@ ms.locfileid: "67091090"
 
     ![Sequr 域和 URL 单一登录信息](common/idp-identifier.png)
 
-    在“标识符”文本框中键入 URL：`https://login.sequr.io` 
+    在“标识符”文本框中键入 URL：  `https://login.sequr.io`
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -152,7 +152,7 @@ ms.locfileid: "67091090"
 
     c. 在保存配置后，将会生成中继状态值。 复制“中继状态”值并将其粘贴到 Azure 门户中“基本 SAML 配置”部分中的“中继状态”文本框    。
 
-    d. 单击“ **保存**”。
+    d. 单击“保存”  。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -172,7 +172,7 @@ ms.locfileid: "67091090"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 

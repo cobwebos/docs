@@ -17,10 +17,10 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 44a34fe5637e895ea69b6fc4c277b7722b306c97
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161182"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>教程：将 Azure Active Directory 与 SAP HANA 集成
@@ -35,7 +35,7 @@ ms.locfileid: "73161182"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 SAP HANA 的集成，需要以下项：
 
@@ -92,7 +92,7 @@ ms.locfileid: "73161182"
 2. **[配置 SAP HANA 单一登录](#configure-sap-hana-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 SAP HANA 测试用户](#create-sap-hana-test-user) - 在 SAP HANA 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式  。
+5. **创建 SAP HANA 测试用户[ - 在 SAP HANA 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式](#create-sap-hana-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -117,7 +117,7 @@ ms.locfileid: "73161182"
 
     ![SAP HANA 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中键入以下值：`HA100` 
+    a. 在“标识符”文本框中键入以下值：  `HA100`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
 
@@ -134,13 +134,13 @@ ms.locfileid: "73161182"
 
     ![image](./media/saphana-tutorial/tutorial_usermail.png)
 
-    ![图像](./media/saphana-tutorial/tutorial_usermailedit.png)
+    ![image](./media/saphana-tutorial/tutorial_usermailedit.png)
 
     b. 从“转换”列表中，选择“ExtractMailPrefix()”   。
 
     c. 从“参数 1”列表中，选择“user.mail”   。
 
-    d. 单击“ **保存**”。
+    d. 单击“保存”  。
 
 7. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -196,7 +196,7 @@ ms.locfileid: "73161182"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。

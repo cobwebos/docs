@@ -7,10 +7,10 @@ ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: b226c37c36da033862377860be4c413229651fb6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614037"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教程：使用 Application Insights 在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
@@ -102,7 +102,7 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
 5. 在显示的“审阅更改”对话框中单击“确定”，接受“接受许可证”中的条款。    这样即可将 NuGet 添加到服务。
 6. 现在需在两个服务中设置遥测初始值设定项。 为此，请打开“VotingWeb.cs”和“VotingData.cs”。   对这两个文件执行下述两项步骤：
-    1. 在每个  \<ServiceName>.cs 顶部的现有 *using* 语句之后添加下面这两个 using  语句：
+    1. 在每个  *ServiceName>.cs 顶部的现有 \<using* 语句之后添加下面这两个 using  语句：
 
     ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
@@ -150,7 +150,7 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
         .Build();
     ```
 
-仔细进行检查，确保在 *VotingWeb.cs* 和 *VotingData.cs* 中调用 `UseApplicationInsights()` 方法，如上所示。
+仔细进行检查，确保在 `UseApplicationInsights()`VotingWeb.cs*和*VotingData.cs*中调用* 方法，如上所示。
 
 >[!NOTE]
 >此示例应用使用 http 供服务通信。 如果使用 Service Remoting V2 来开发应用，则需在以前添加代码的位置添加以下代码行

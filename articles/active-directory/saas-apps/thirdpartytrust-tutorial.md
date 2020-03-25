@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 345c9fc89882597f23958a620453008eeb5bfb86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67089030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdpartytrust"></a>教程：Azure Active Directory 与 ThirdPartyTrust 集成
@@ -34,7 +34,7 @@ ms.locfileid: "67089030"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 ThirdPartyTrust 的集成，需要以下项：
 
@@ -111,7 +111,7 @@ ms.locfileid: "67089030"
 
     ![image](common/both-preintegrated-signon.png)
 
-    在“登录 URL”文本框中，键入 URL：`https://api.thirdpartytrust.com/sai3/test` 
+    在“登录 URL”文本框中，键入 URL：  `https://api.thirdpartytrust.com/sai3/test`
 
 6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -149,7 +149,7 @@ ms.locfileid: "67089030"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 

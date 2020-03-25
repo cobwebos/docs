@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: fd1a7f133c5719873133554fc2292e94e6fe26a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75980333"
 ---
 1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务**。
@@ -19,4 +19,4 @@ ms.locfileid: "75980333"
 
    ![新保管库](./media/site-recovery-create-vault/new-vault-settings.png)
 
-   新保管库会显示在“仪表板” > “所有资源”中，以及“恢复服务保管库”主页面上。   
+   新保管库会显示在“仪表板” **“所有资源”中，以及“恢复服务保管库”主页面上。**  >   

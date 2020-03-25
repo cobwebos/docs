@@ -17,10 +17,10 @@ ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 788c1292b844088f171479b40fc566ff5cfc8a57
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73154019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>教程：Azure Active Directory 与 Adobe Sign 集成
@@ -35,7 +35,7 @@ ms.locfileid: "73154019"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Adobe Sign 的集成，需要以下项：
 
@@ -106,9 +106,9 @@ ms.locfileid: "73154019"
 
     ![Adobe Sign 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.echosign.com/` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<companyname>.echosign.com/`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.echosign.com` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<companyname>.echosign.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Adobe Sign 客户端支持团队](https://helpx.adobe.com/in/contact/support.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -194,7 +194,7 @@ ms.locfileid: "73154019"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -236,7 +236,7 @@ ms.locfileid: "73154019"
 
 1. 以管理员身份登录到 **Adobe Sign** 公司站点。
 
-2. 在顶部菜单中，选择“帐户”。  然后，在左窗格中选择“用户和组” > “创建新用户”。  
+2. 在顶部菜单中，选择“帐户”。  然后，在左窗格中选择“用户和组” **“创建新用户”。**  >  
    
     ![Adobe Sign 公司站点的屏幕截图，其中突出显示了“帐户”、“用户和组”和“创建新用户”](./media/adobe-echosign-tutorial/ic789524.png "帐户")
    

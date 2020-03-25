@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 6710344e73e3c0ea6f9b3491209689871cc14a4f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d20c05e6ec5a413b81ede9cb4906de2595967115
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160951"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048476"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>教程：Azure Active Directory 与 Uberflip 的集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "73160951"
 
 有关服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Uberflip 的集成，需要具有以下项：
 
@@ -54,7 +54,7 @@ Uberflip 支持以下功能：
 
 若要配置 Uberflip 与 Azure AD 的集成，需要从 Azure 市场中将 Uberflip 添加到托管 SaaS 应用列表。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左窗格中选择“Azure Active Directory”  。
 
    ![“Azure Active Directory”选项](common/select-azuread.png)
@@ -139,7 +139,7 @@ Uberflip 支持以下功能：
 
 在本部分中，将在 Azure 门户中创建一个名为 B. Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。   
+1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” **“用户”** “所有用户”。 >    >  
 
     ![“用户”和“所有用户”选项](common/users.png)
 
@@ -153,7 +153,7 @@ Uberflip 支持以下功能：
 
     1. 在“名称”框中，输入“BSimon”   。
   
-    1. 在“用户名”框中，输入“BSimon\@\<yourcompanydomain>.\<extension>”   。 例如，BSimon\@contoso.com  。
+    1. 在“用户名”框中，输入“BSimon  yourcompanydomain>.**extension>”\@\<\<** 。 例如，BSimon**contoso.com\@** 。
 
     1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
 
@@ -163,7 +163,7 @@ Uberflip 支持以下功能：
 
 在本部分中，通过授予 B. Simon 访问 Uberflip 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序” > “Uberflip”    。
+1. 在 Azure 门户中，选择“企业应用程序” **“所有应用程序”** “Uberflip” >    >   。
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 

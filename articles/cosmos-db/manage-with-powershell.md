@@ -8,11 +8,11 @@ ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364428"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222094"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB SQL API 资源
 
@@ -45,7 +45,7 @@ ms.locfileid: "78364428"
 * [修改 Azure Cosmos 帐户的故障转移优先级](#modify-failover-priority)
 * [触发 Azure Cosmos 帐户的手动故障转移](#trigger-manual-failover)
 
-### <a id="create-account"></a> 创建 Azure Cosmos 帐户
+### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a> 创建 Azure Cosmos 帐户
 
 此命令创建一个 Azure Cosmos 数据库帐户，该帐户使用[多区域][distribute-data-globally]、有限过期[一致性策略](consistency-levels.md)。
 
@@ -86,7 +86,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 可以为 Azure Cosmos 帐户配置 IP 防火墙和虚拟网络服务终结点。 若要了解如何为 Azure Cosmos DB 配置 IP 防火墙，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)。  若要详细了解如何为 Azure Cosmos DB 启用服务终结点，请参阅[配置从虚拟网络进行访问的权限](how-to-configure-vnet-service-endpoint.md)。
 
-### <a id="list-accounts"></a> 列出订阅中的所有 Azure Cosmos 帐户
+### <a name="list-all-azure-cosmos-accounts-in-a-subscription"></a><a id="list-accounts"></a> 列出订阅中的所有 Azure Cosmos 帐户
 
 可以使用此命令列出订阅中的所有 Azure Cosmos 帐户。
 
@@ -96,7 +96,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 Get-AzResource -ResourceType Microsoft.DocumentDb/databaseAccounts | ft
 ```
 
-### <a id="get-account"></a> 获取 Azure Cosmos 帐户的属性
+### <a name="get-the-properties-of-an-azure-cosmos-account"></a><a id="get-account"></a> 获取 Azure Cosmos 帐户的属性
 
 此命令可获取现有 Azure Cosmos 帐户的属性。
 
@@ -111,7 +111,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName | Select-Object Properties
 ```
 
-### <a id="update-account"></a> 更新 Azure Cosmos 帐户
+### <a name="update-an-azure-cosmos-account"></a><a id="update-account"></a> 更新 Azure Cosmos 帐户
 
 此命令可更新 Azure Cosmos 数据库帐户属性。 可以更新的属性包括：
 
@@ -184,7 +184,7 @@ Set-AzResource -ResourceType $resourceType `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
-### <a id="multi-master"></a> 为 Azure Cosmos 帐户启用多个写入区域
+### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-master"></a> 为 Azure Cosmos 帐户启用多个写入区域
 
 ```azurepowershell-interactive
 # Update an Azure Cosmos account from single to multi-master
@@ -204,7 +204,7 @@ Set-AzResource -ResourceType $resourceType `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-### <a id="delete-account"></a> 删除 Azure Cosmos 帐户
+### <a name="delete-an-azure-cosmos-account"></a><a id="delete-account"></a> 删除 Azure Cosmos 帐户
 
 此命令可删除现有 Azure Cosmos 帐户。
 
@@ -218,7 +218,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName
 ```
 
-### <a id="update-tags"></a> 更新 Azure Cosmos 帐户标记
+### <a name="update-tags-of-an-azure-cosmos-account"></a><a id="update-tags"></a> 更新 Azure Cosmos 帐户标记
 
 下面的示例介绍如何设置 Azure Cosmos 帐户的 [Azure 资源标记][azure-resource-tags]。
 
@@ -241,7 +241,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -Tags $tags
 ```
 
-### <a id="list-keys"></a>列出帐户密钥
+### <a name="list-account-keys"></a><a id="list-keys"></a>列出帐户密钥
 
 创建 Azure Cosmos DB 帐户时，服务生成两个主访问密钥，可用于访问 Azure Cosmos DB 帐户时的身份验证。 提供两个访问密钥后，Azure Cosmos DB 支持在不中断 Azure Cosmos DB 帐户连接的情况下重新生成密钥。 还可以使用只读密钥，用于对只读操作进行身份验证。 有两个读写密钥（主密钥和辅助密钥）和两个只读密钥（主密钥和辅助密钥）。
 
@@ -259,7 +259,7 @@ Write-Host "PrimaryKey =" $keys.primaryMasterKey
 Write-Host "SecondaryKey =" $keys.secondaryMasterKey
 ```
 
-### <a id="list-connection-strings"></a> 列出连接字符串
+### <a name="list-connection-strings"></a><a id="list-connection-strings"></a> 列出连接字符串
 
 对于 MongoDB 帐户，可以使用以下命令检索将 MongoDB 应用连接到数据库帐户的连接字符串。
 
@@ -276,7 +276,7 @@ $keys = Invoke-AzResourceAction -Action listConnectionStrings `
 Select-Object $keys
 ```
 
-### <a id="regenerate-keys"></a> 重新生成帐户密钥
+### <a name="regenerate-account-keys"></a><a id="regenerate-keys"></a> 重新生成帐户密钥
 
 应定期重新生成 Azure Cosmos 帐户访问密钥，使连接更安全。 将会为帐户分配主访问密钥和辅助访问密钥。 这样，当重新生成某个密钥时，客户端仍可以进行访问。 有四种 Azure Cosmos 帐户密钥（主密钥、辅助密钥、PrimaryReadonly 密钥和 SecondaryReadonly 密钥）
 
@@ -295,7 +295,7 @@ $keys = Invoke-AzResourceAction -Action regenerateKey `
 Select-Object $keys
 ```
 
-### <a id="enable-automatic-failover"></a> 启用自动故障转移
+### <a name="enable-automatic-failover"></a><a id="enable-automatic-failover"></a> 启用自动故障转移
 
 使 Cosmos 帐户能够在主要区域不可用时故障转移到其次要区域。
 
@@ -316,7 +316,7 @@ Set-AzResource -ResourceType $resourceType `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-### <a id="modify-failover-priority"></a> 修改故障转移优先级
+### <a name="modify-failover-priority"></a><a id="modify-failover-priority"></a> 修改故障转移优先级
 
 对于配置了自动故障转移的帐户，可以更改在主要副本不可用时 Cosmos 将次要副本提升为主要副本的顺序。
 
@@ -347,7 +347,7 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
     -ResourceGroupName $resourceGroupName -Name $accountName -Parameters $failoverPolicies
 ```
 
-### <a id="trigger-manual-failover"></a> 触发手动故障转移
+### <a name="trigger-manual-failover"></a><a id="trigger-manual-failover"></a> 触发手动故障转移
 
 对于配置了手动故障转移的帐户，可以通过修改为 `failoverPriority=0` 来进行故障转移并将所有次要副本提升为主要副本。 此操作可用于启动灾难恢复演练以测试灾难恢复规划。
 
@@ -389,7 +389,7 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 * [获取单个 Azure Cosmos 数据库](#get-db)
 * [删除 Azure Cosmos 数据库](#delete-db)
 
-### <a id="create-db"></a>创建 Azure Cosmos 数据库
+### <a name="create-an-azure-cosmos-database"></a><a id="create-db"></a>创建 Azure Cosmos 数据库
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos database
@@ -407,7 +407,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $DataBaseProperties
 ```
 
-### <a id="create-db-ru"></a>创建共享吞吐量的 Azure Cosmos 数据库
+### <a name="create-an-azure-cosmos-database-with-shared-throughput"></a><a id="create-db-ru"></a>创建共享吞吐量的 Azure Cosmos 数据库
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -425,7 +425,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $DataBaseProperties
 ```
 
-### <a id="get-db-ru"></a>获取 Azure Cosmos 数据库的吞吐量
+### <a name="get-the-throughput-of-an-azure-cosmos-database"></a><a id="get-db-ru"></a>获取 Azure Cosmos 数据库的吞吐量
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -440,7 +440,7 @@ Get-AzResource -ResourceType $databaseThroughputResourceType `
     -Name $databaseThroughputResourceName  | Select-Object Properties
 ```
 
-### <a id="list-db"></a>获取帐户中的所有 Azure Cosmos 数据库
+### <a name="get-all-azure-cosmos-databases-in-an-account"></a><a id="list-db"></a>获取帐户中的所有 Azure Cosmos 数据库
 
 ```azurepowershell-interactive
 # Get all databases in an Azure Cosmos account
@@ -453,7 +453,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName  | Select-Object Properties
 ```
 
-### <a id="get-db"></a>获取单个 Azure Cosmos 数据库
+### <a name="get-a-single-azure-cosmos-database"></a><a id="get-db"></a>获取单个 Azure Cosmos 数据库
 
 ```azurepowershell-interactive
 # Get a single database in an Azure Cosmos account
@@ -467,7 +467,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName | Select-Object Properties
 ```
 
-### <a id="delete-db"></a>删除 Azure Cosmos 数据库
+### <a name="delete-an-azure-cosmos-database"></a><a id="delete-db"></a>删除 Azure Cosmos 数据库
 
 ```azurepowershell-interactive
 # Delete a database in an Azure Cosmos account
@@ -495,7 +495,7 @@ Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/data
 * [获取数据库中的单个 Azure Cosmos 容器](#get-container)
 * [删除 Azure Cosmos 容器](#delete-container)
 
-### <a id="create-container"></a>创建 Azure Cosmos 容器
+### <a name="create-an-azure-cosmos-container"></a><a id="create-container"></a>创建 Azure Cosmos 容器
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos container with default indexes and throughput at 400 RU
@@ -521,7 +521,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="create-container-big-pk"></a>使用大分区键大小创建 Azure Cosmos 容器
+### <a name="create-an-azure-cosmos-container-with-a-large-partition-key-size"></a><a id="create-container-big-pk"></a>使用大分区键大小创建 Azure Cosmos 容器
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos container with a large partition key value (version = 2)
@@ -548,7 +548,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="get-container-ru"></a>获取 Azure Cosmos 容器的吞吐量
+### <a name="get-the-throughput-of-an-azure-cosmos-container"></a><a id="get-container-ru"></a>获取 Azure Cosmos 容器的吞吐量
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -563,7 +563,7 @@ Get-AzResource -ResourceType $containerThroughputResourceType `
     -Name $containerThroughputResourceName  | Select-Object Properties
 ```
 
-### <a id="create-container-ru"></a>创建共享吞吐量的 Azure Cosmos 容器
+### <a name="create-an-azure-cosmos-container-with-shared-throughput"></a><a id="create-container-ru"></a>创建共享吞吐量的 Azure Cosmos 容器
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -588,7 +588,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties 
 ```
 
-### <a id="create-container-custom-index"></a>使用自定义索引策略创建 Azure Cosmos 容器
+### <a name="create-an-azure-cosmos-container-with-custom-index-policy"></a><a id="create-container-custom-index"></a>使用自定义索引策略创建 Azure Cosmos 容器
 
 ```azurepowershell-interactive
 # Create a container with a custom indexing policy
@@ -624,7 +624,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="create-container-no-index"></a>在索引关闭的情况下创建 Azure Cosmos 容器
+### <a name="create-an-azure-cosmos-container-with-indexing-turned-off"></a><a id="create-container-no-index"></a>在索引关闭的情况下创建 Azure Cosmos 容器
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos container with no indexing
@@ -653,7 +653,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="create-container-unique-key-ttl"></a>创建键策略和 TTL 都独一无二的 Azure Cosmos 容器
+### <a name="create-an-azure-cosmos-container-with-unique-key-policy-and-ttl"></a><a id="create-container-unique-key-ttl"></a>创建键策略和 TTL 都独一无二的 Azure Cosmos 容器
 
 ```azurepowershell-interactive
 # Create a container with a unique key policy and TTL of one day
@@ -696,7 +696,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="create-container-lww"></a>创建带冲突解决方案的 Azure Cosmos 容器
+### <a name="create-an-azure-cosmos-container-with-conflict-resolution"></a><a id="create-container-lww"></a>创建带冲突解决方案的 Azure Cosmos 容器
 
 若要通过创建冲突解决方案策略来使用存储过程，请设置 `"mode"="custom"`，并将解决方案路径设置为存储过程的名称，即 `"conflictResolutionPath"="myResolverStoredProcedure"`。 若要将所有冲突都写入 ConflictsFeed，然后分别进行处理，请设置 `"mode"="custom"` 和 `"conflictResolutionPath"=""`
 
@@ -728,7 +728,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-### <a id="list-containers"></a>列出数据库中的所有 Azure Cosmos 容器
+### <a name="list-all-azure-cosmos-containers-in-a-database"></a><a id="list-containers"></a>列出数据库中的所有 Azure Cosmos 容器
 
 ```azurepowershell-interactive
 # List all Azure Cosmos containers in a database
@@ -742,7 +742,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName | Select-Object Properties
 ```
 
-### <a id="get-container"></a>获取数据库中的单个 Azure Cosmos 容器
+### <a name="get-a-single-azure-cosmos-container-in-a-database"></a><a id="get-container"></a>获取数据库中的单个 Azure Cosmos 容器
 
 ```azurepowershell-interactive
 # Get a single Azure Cosmos container in a database
@@ -757,7 +757,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName | Select-Object Properties
 ```
 
-### <a id="delete-container"></a>删除 Azure Cosmos 容器
+### <a name="delete-an-azure-cosmos-container"></a><a id="delete-container"></a>删除 Azure Cosmos 容器
 
 ```azurepowershell-interactive
 # Delete an Azure Cosmos container

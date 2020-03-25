@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: dc80141d796b66dd7e610342166f7b88df58f530
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "75928229"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>在 Azure 门户中创建命名空间
@@ -54,7 +54,7 @@ ms.locfileid: "75928229"
 3. 在“共享访问策略”  屏幕中，单击“RootManageSharedAccessKey”  。
    
     ![connection-info](./media/service-bus-create-namespace-portal/connection-info.png)
-4. 在“策略:  RootManageSharedAccessKey”窗口中，单击“主连接字符串”旁边的复制按钮，将连接字符串复制到剪贴板供稍后使用  。 将此值粘贴到记事本或其他某个临时位置。
+4. 在“策略: RootManageSharedAccessKey”窗口中，单击“主连接字符串”旁边的“复制”按钮，将连接字符串复制到剪贴板供以后使用   。 将此值粘贴到记事本或其他某个临时位置。
    
     ![connection-string](./media/service-bus-create-namespace-portal/connection-string.png)
 5. 重复上述步骤，将**主键**的值复制和粘贴到临时位置，以供将来使用。
