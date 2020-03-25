@@ -119,14 +119,6 @@
       href: 'https://msdn.microsoft.com/library/mt163667.aspx'
     - name: 资源管理器模板
       href: /azure/templates/microsoft.network/trafficmanagerprofiles
-- name: 相关内容
-  items:
-    - name: 应用程序网关
-      href: /azure/application-gateway/
-    - name: 负载均衡器
-      href: /azure/load-balancer/
-    - name: Azure DNS
-      href: /azure/dns/
 - name: 资源
   items:
     - name: Azure 路线图

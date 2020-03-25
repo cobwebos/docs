@@ -1,25 +1,25 @@
 ---
 title: 教程 - 使用 Cloudyn 优化预留实例成本 - Azure
 description: 本教程介绍如何优化 Azure 和 Amazon Web Services (AWS) 的预订实例成本。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b37ef5b6fe92538986a267b53c821bf616ba77fb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 22a435a63c4ff649fe428e031bca7beecdbc46d1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201112"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463707"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
 
-# <a name="tutorial-optimize-reserved-instances"></a>教程：优化预留实例
+# <a name="tutorial-optimize-reserved-instances"></a>教程：优化预订实例
 
 本教程介绍如何通过 Cloudyn 来优化 Azure 和 Amazon Web Services (AWS) 的预留实例成本和使用率。 云服务提供商提供的预订实例是一种长期合同承诺。在该合同中，你对将来使用 VM 的情况进行先期承诺。 与标准的即用即付 VM 定价模型相比，它可以节省大量的资金。 仅当完全使用预订实例的容量时，潜在的节省才会实现。
 
@@ -36,6 +36,8 @@ ms.locfileid: "77201112"
 > * 修改未使用的预订
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="prerequisites"></a>必备条件
 

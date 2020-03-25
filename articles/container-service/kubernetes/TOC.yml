@@ -29,7 +29,7 @@
   items:
     - name: 服务主体 - Kubernetes
       href: container-service-kubernetes-service-principal.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 将 Kubernetes 与 Windows 配合使用
       href: container-service-kubernetes-windows-walkthrough.md
@@ -61,7 +61,7 @@
           href: container-service-deploy-spring-boot-app-on-kubernetes.md
         - name: 使用 fabric8 Maven 插件部署 Spring Boot 应用
           href: container-service-deploy-spring-boot-app-using-fabric8-maven-plugin.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/acs

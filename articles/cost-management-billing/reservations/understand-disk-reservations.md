@@ -10,10 +10,10 @@ ms.workload: na
 ms.date: 01/30/2020
 ms.author: rogarana
 ms.openlocfilehash: 18fdda3e28761fcf912b716f51b5e270a9b224d0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77586642"
 ---
 # <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>了解预留折扣如何应用于 Azure 磁盘存储
@@ -46,7 +46,7 @@ Azure 磁盘预留折扣是一种“不用就会失效”的折扣。 它按小�
 
 ### <a name="tiering-your-capacity"></a>对容量进行分层
 
-假设在预留期的某个给定小时内，你希望使用总共 200 个 P30 高级 SSD。 此外，假设你在前 30 分钟只使用了 100 个。 在此期限内，将完全涵盖你的用量，因为预留了 100 个 P30 磁盘。 然后，如果你未继续使用前 100 个磁盘（因此你使用的是零），并且在剩余的 30 分钟内开始使用另外 100 个磁盘，则你的预留也能涵盖该用量。
+假设在预留期的某个给定小时内，你希望使用总共 200 个 P30 高级 SSD。 此外，假设你在前 30 分钟只使用了 100 个。 在此期限内，将完全涵盖你的用量，因为预留了 100 个 P30 磁盘。 然后，如果你未继续使用前 100 个磁盘（因此你使用的是零），并且在剩余的 30 分钟内开始使用另外 100 个磁盘，则你的预留也能涵盖该使用量。
 
 ![未充分使用、超额使用和分层容量的示例](media/understand-disk-reservations/reserved-disks-example-scenarios.png)
 

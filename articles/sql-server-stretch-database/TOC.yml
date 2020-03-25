@@ -4,7 +4,7 @@
   items:
     - name: 什么是 Stretch Database？
       href: /sql/sql-server/stretch-database/stretch-database
-    - name: 限制与阻碍性问题
+    - name: 限制和阻止问题
       href: /sql/sql-server/stretch-database/limitations-for-stretch-database
 - name: 入门
   items:
@@ -36,7 +36,7 @@
           href: /sql/sql-server/stretch-database/restore-stretch-enabled-databases-stretch-database
         - name: 禁用 Stretch Database
           href: /sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data
-- name: 引用
+- name: 参考
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=sql-server-database'

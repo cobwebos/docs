@@ -316,8 +316,6 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: 均衡群集
               href: service-fabric-cluster-resource-manager-balancing.md
-            - name: 子群集
-              href: service-fabric-cluster-resource-manager-subclustering.md
             - name: 限制
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: 服务移动

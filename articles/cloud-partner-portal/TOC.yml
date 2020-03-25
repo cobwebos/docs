@@ -8,14 +8,14 @@
       href: ./cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
     - name: 支持的产品
       href: ./Cloud-partner-portal-products-that-can-get-published-via-portal.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 管理虚拟机
       items:
         - name: 创作虚拟机套餐
           href: ./cloud-partner-portal-publish-virtual-machine.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: './cloud-partner-portal-publish-virtual-machine.md#what-are-pre-requisites-for-publishing-a-vm'
             - name: Microsoft 开发人员帐户注册
               href: ./cloud-partner-portal-dev-center-accounts-registration.md

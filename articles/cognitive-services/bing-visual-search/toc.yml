@@ -56,7 +56,7 @@
     - name: 适用于视觉搜索 API 的分析
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 使用令牌获取见解
       href: use-insights-token.md
@@ -67,7 +67,7 @@
       href: tutorial-visual-search-insights-token.md
     - name: 创建单页 Web 应用
       href: tutorial-bing-visual-search-single-page-app.md
-- name: 引用
+- name: 参考
   items:
     - name: REST v7 API
       href: 'https://aka.ms/bingvisualsearchreferencedoc'

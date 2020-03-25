@@ -9,6 +9,8 @@
           href: review-customer-agreement-bill.md
         - name: 查看 Microsoft 合作伙伴协议帐单
           href: review-partner-agreement-bill.md
+        - name: 查看企业协议帐单
+          href: review-enterprise-agreement-bill.md
     - name: 概念
       items:
         - name: 个人订阅使用情况术语

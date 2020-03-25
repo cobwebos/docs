@@ -11,11 +11,11 @@ ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245388"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238153"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 
@@ -109,7 +109,7 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 - [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [即用即付开发/测试](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)
-- [Visual Studio Enterprise：BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/)
+- [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/)
 - [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)
 - [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)
 - [Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
@@ -124,7 +124,7 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 
 这些 FAQ 适用于将 Azure 订阅计费所有权转移到另一帐户的用户。
 
-### <a name="whoisaa"></a> 谁是帐户的计费管理员？
+### <a name="who-is-a-billing-administrator-of-an-account"></a><a name="whoisaa"></a> 谁是帐户的计费管理员？
 
 计费管理员是有权管理帐户计费的人员。 他们有权在 [Azure 门户](https://portal.azure.com)中访问计费，并可执行各种计费任务，例如创建订阅、查看和支付发票，或更新付款方式。
 
@@ -206,15 +206,15 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 
 ## <a name="troubleshooting"></a>故障排除
 
-### <a id="no-button"></a> 为什么我没有看到“转让订阅”按钮？
+### <a name="why-dont-i-see-the-transfer-subscription-button"></a><a id="no-button"></a> 为什么我没有看到“转让订阅”按钮？
 
 自助式服务订阅转移不适用于你的计费帐户。 目前，我们不支持在 Azure 门户上转移企业协议 (EA) 帐户中订阅的计费所有权。 此外，在 Microsoft 代表的配合下创建的 Microsoft 客户协议帐户不支持转移计费所有权。
 
-### <a id="no-button"></a> 为何我的订阅类型不支持转移？
+### <a name="why-doesnt-my-subscription-type-support-transfer"></a><a id="no-button"></a> 为何我的订阅类型不支持转移？
 
 并非所有类型的订阅都支持计费所有权转移。 若要查看支持转移的订阅类型列表，请参阅[支持的订阅类型](#supported-subscription-types)
 
-### <a id="no-button"></a> 尝试转移订阅的计费所有权时，为何会出现拒绝访问错误？
+### <a name="why-am-i-receiving-an-access-denied-error-when-i-try-to-transfer-billing-ownership-of-a-subscription"></a><a id="no-button"></a> 尝试转移订阅的计费所有权时，为何会出现拒绝访问错误？
 
 如果你尝试转移 Microsoft Azure 计划订阅，但没有必要的权限，则会看到此错误。 若要转移 Microsoft Azure 计划订阅，你需是要从中计收订阅费用的发票科目的所有者或参与者。 有关详细信息，请参阅[管理发票科目的订阅](understand-mca-roles.md#manage-subscriptions-for-invoice-section)。
 

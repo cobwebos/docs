@@ -10,10 +10,10 @@ ms.date: 02/24/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7955e9bc75b2a27ac42d381df1e686ec8a0ed04b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77587737"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>了解 Azure 外部服务收费
@@ -49,7 +49,7 @@ You can view a list of the external services that are on each subscription withi
 
 EA 客户可以在 EA 门户中查看外部服务支出和下载报表。 若要开始使用，请参阅[适用于 EA 客户的 Azure 市场](https://ea.azure.com/helpdocs/azureMarketplace)。
 
-## <a name="view-and-download-invoices-for-external-services"></a>查看和下载外部服务的发票
+## <a name="view-and-download-invoices-for-external-services"></a>查看和下载适用于外部服务的发票
 
 如果你签订了 Microsoft 客户协议 (MCA) 或 Microsoft 合作伙伴协议 (MPA)，则第三方服务将在一份发票中与其他 Azure 服务一起计费。 [检查计费帐户类型](#check-billing-account-type)，查看你是否有权访问 MCA 或 MPA。 如果你有权访问，请参阅[在 Azure 门户中查看和下载发票](download-azure-invoice.md)以查看第三方费用。
 

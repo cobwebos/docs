@@ -9,7 +9,7 @@
   items:
     - name: 运行示例基因组学工作流
       href: quickstart-run-genomics-workflow-portal.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 使用各种输入文件格式
       items:

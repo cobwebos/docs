@@ -49,7 +49,7 @@ sections:
           - html: '<a href="https://github.com/Azure/azure-notificationhubs-dotnet">.NET SDK</a>'
           - html: '<a href="https://github.com/Azure/azure-notificationhubs-samples">示例存储库（其他平台）</a>'
           - html: <a href="/azure/notification-hubs/samples-powershell">PowerShell</a>
-  - title: 引用
+  - title: 参考
     items:
       - type: list
         style: unordered

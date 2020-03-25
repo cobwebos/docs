@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200738"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>通过自定义计费帐户来组织成本
@@ -78,7 +78,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 3. 在左侧窗格中选择“计费配置文件”。  在列表中选择一个计费配置文件。 新科目将显示在所选计费配置文件的发票上。
 
-   [![显示计费配置文件列表的屏幕截图](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![屏幕截图，显示了计费配置文件列表](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
 4. 在左侧窗格中选择“发票科目”，然后在页面顶部选择“添加”。  
 
@@ -106,7 +106,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 3. 在左侧窗格中选择“计费配置文件”，然后在页面顶部选择“添加”。  
 
-   [![显示计费配置文件列表的屏幕截图](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![屏幕截图，显示了计费配置文件列表](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >

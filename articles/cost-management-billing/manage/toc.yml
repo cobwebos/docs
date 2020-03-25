@@ -83,8 +83,6 @@
       items:
         - name: 在 Azure EA 门户中开始
           href: ea-portal-get-started.md
-        - name: 了解 EA 帐单
-          href: ../understand/review-enterprise-agreement-bill.md
         - name: Azure 中的 EA 角色
           href: understand-ea-roles.md
         - name: Azure EA 门户管理

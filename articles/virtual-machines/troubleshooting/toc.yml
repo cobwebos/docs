@@ -218,7 +218,7 @@
       href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md
 - name: Windows 激活问题
   items:
-    - name: 排查 Windows 激活问题
+    - name: Windows 激活问题
       href: troubleshoot-activation-problems.md
     - name: 强制隧道的激活问题
       href: custom-routes-enable-kms-activation.md

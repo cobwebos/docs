@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199239"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>在 Azure 门户中查看 Azure 预留
@@ -33,7 +33,7 @@ ms.locfileid: "77199239"
     ![显示预留列表的示例](./media/view-reservations/view-reservations.png)
 4. 选择一个预留并查看过去五天的利用率趋势。  
     ![显示预留利用率趋势的示例](./media/view-reservations/reservation-utilization.png)
-5. 还可以使用预留实例使用情况 API 和 [Microsoft Azure 使用见解 Power BI 内容包](/power-bi/service-connect-to-azure-consumption-insights)获取[预留利用率](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)。
+5. 还可以使用预留实例使用情况 API 和 [Microsoft Azure 使用见解 Power BI 内容包](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)获取[预留利用率](/power-bi/service-connect-to-azure-consumption-insights)。
 
 如果需要更改某个预留的范围，拆分某个预留，或者更改谁可以管理预留，请参阅[管理 Azure 预留](manage-reserved-vm-instance.md)。
 

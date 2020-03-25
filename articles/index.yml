@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e885abcd997a4764090c5e8c8ce7ad14c0963220
-  ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+  ms.openlocfilehash: e3d9f63d2f365d5f91f205dc57b1d28e42711403
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/11/2020
-  ms.locfileid: "79086718"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80129818"
 highlightedContent:
   items:
   - title: Azure 开发人员入门指南
@@ -278,7 +278,7 @@ productDirectory:
     azureCategories:
     - analytics
     url: data-explorer/index.yml
-  - title: Azure Data Lake Storage
+  - title: Azure Data Lake 存储
     summary: 基于 Azure Blob 存储构建且可缩放性很高的安全 Data Lake 存储
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
@@ -304,7 +304,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/synapse.svg
     azureCategories:
     - analytics
-    url: sql-data-warehouse/index.yml
+    url: synapse-analytics/sql-data-warehouse/index.yml
   - title: 数据目录
     summary: 充分利用企业数据资产
     imageSrc: https://static.docs.com/ui/media/product/azure/data-catalog.svg
@@ -800,7 +800,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/service-bus.svg
     azureCategories:
     - integration
-    url: service-bus/index.md
+    url: service-bus-messaging/index.yml
   - title: Azure 数字孪生（预览版）
     summary: 构建下一代 IoT 空间智能解决方案
     imageSrc: https://static.docs.com/ui/media/product/azure/digital-twins.svg
@@ -1220,7 +1220,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/storsimple-device-managers.svg
     azureCategories:
     - storage
-    url: storsimple/index.md
+    url: storsimple/index.yml
   - title: Azure SignalR 服务
     summary: 轻松添加实时 Web 功能
     imageSrc: https://static.docs.com/ui/media/product/azure/signalr-service.svg

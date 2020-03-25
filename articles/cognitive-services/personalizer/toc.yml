@@ -107,6 +107,8 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 加密
+      href: personalizer-encryption-of-data-at-rest.md
     - name: Azure 路线图
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: 定价

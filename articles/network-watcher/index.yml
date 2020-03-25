@@ -12,10 +12,10 @@ metadata:
   ms.author: kumud
   ms.date: 08/29/2019
   ms.openlocfilehash: 534da1b945b4a4463406d5b5c6277833fad35984
-  ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/30/2019
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "70195092"
 landingContent:
 - title: 关于网络观察程序
@@ -74,7 +74,7 @@ landingContent:
       url: traffic-analytics.md
     - text: 记录 VM 网络流量
       url: network-watcher-nsg-flow-logging-portal.md
-- title: 引用
+- title: 参考
   linkLists:
   - linkListType: reference
     links:

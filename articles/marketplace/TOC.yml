@@ -173,7 +173,7 @@
         - name: Azure 应用程序产品/服务
           href: ./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/azure-applications/cpp-prerequisites.md
             - name: 创建 Azure 应用程序套餐
               href: ./cloud-partner-portal/azure-applications/cpp-create-offer.md
@@ -199,7 +199,7 @@
         - name: 咨询服务
           href: ./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md
             - name: 创建咨询服务套餐
               href: ./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md
@@ -213,7 +213,7 @@
         - name: 容器套餐
           href: ./cloud-partner-portal/containers/cpp-containers-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/containers/cpp-prerequisites.md
             - name: 创建容器套餐
               href: ./cloud-partner-portal/containers/cpp-create-offer.md
@@ -250,7 +250,7 @@
         - name: Dynamics 365 for Customer Engagement 产品/服务
           href: ./cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/dyn365ce/cpp-prerequisites.md
             - name: 创建客户参与套餐
               href: ./cloud-partner-portal/dyn365ce/cpp-create-offer.md
@@ -272,7 +272,7 @@
         - name: Dynamics 365 for Operations 套餐
           href: ./cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal-orig/pre-requisites.md
             - name: 如何发布
               href: ./cloud-partner-portal-orig/manage-dynamics-365-for-operations.md
@@ -289,7 +289,7 @@
         - name: IoT Edge 模块套餐
           href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
             - name: 创建 IoT Edge 模块套餐
               href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
@@ -311,7 +311,7 @@
         - name: Power BI 应用套餐
           href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
             - name: 创建 Power BI 应用套餐
               href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
@@ -335,7 +335,7 @@
         - name: 虚拟机套餐
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
           items:
-            - name: 先决条件
+            - name: 必备条件
               href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
             - name: 创建 VM 套餐
               href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
@@ -399,7 +399,7 @@
       items:
         - name: 概述
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
-        - name: 先决条件
+        - name: 必备条件
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
         - name: 注意事项
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md

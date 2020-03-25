@@ -30,13 +30,13 @@
       href: tutorials/batch-anomaly-detection-powerbi.md
     - name: 使用 Azure Databricks 针对流数据进行异常情况检测
       href: tutorials/anomaly-detection-streaming-databricks.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 识别数据中的异常
       href: how-to/identify-anomalies.md
     - name: 使用容器
       items:
-        - name: 安装并运行容器
+        - name: 安装和运行容器
           displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
           href: anomaly-detector-container-howto.md
         - name: 配置容器
@@ -48,7 +48,7 @@
   items:
     - name: 异常情况检测 API 最佳做法
       href: concepts/anomaly-detection-best-practices.md
-- name: 引用
+- name: 参考
   items:
     - name: REST API 参考
       href: 'https://aka.ms/anomaly-detector-rest-api-ref'

@@ -9,10 +9,10 @@ ms.date: 02/13/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 70d409eac4d87c73826bd06baf128c9eef000a45
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199732"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>排查企业成本查看问题
@@ -30,7 +30,7 @@ ms.locfileid: "77199732"
 2. 如果你是 EA Direct 客户，则有以下几种可能性：
     * 你是帐户所有者且你的注册管理员已禁用“AO 查看费用”设置  。  
     * 你是部门管理员且你的注册管理员已禁用“DA 查看费用”设置  。
-    * 请联系你的注册管理员以获取访问权限。 注册管理员可以在[企业门户](https://ea.azure.com/manage/enrollment)中更新设置。
+    * 联系你的注册管理员以获取访问权限。 注册管理员可以在[企业门户](https://ea.azure.com/manage/enrollment)中更新设置。
 
       ![显示 Enterprise Portal 设置以供查看费用的屏幕截图。](./media/enterprise-mgmt-grp-troubleshoot-cost-view/ea-portal-settings.png)
 

@@ -68,7 +68,7 @@
               href: manage-certificates-for-federated-single-sign-on.md
             - name: 租户限制
               href: tenant-restrictions.md
-            - name: 配置 SAML 令牌加密（预览版）
+            - name: 配置 SAML 令牌加密
               href: howto-saml-token-encryption.md
             - name: 最终用户门户
               href: end-user-experiences.md
@@ -139,9 +139,7 @@
               href: grant-admin-consent.md
             - name: 配置管理员同意工作流（预览版）
               href: configure-admin-consent-workflow.md
-            - name: 用于将用户和组分配到应用的方法
-              href: methods-for-assigning-users-and-groups.md
-            - name: 将用户分配到应用
+            - name: 向应用分配用户或组
               href: assign-user-or-group-access-portal.md
             - name: 在“我的应用”上创建集合
               href: access-panel-collections.md

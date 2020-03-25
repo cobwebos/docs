@@ -25,7 +25,7 @@
   items:
     - name: 保护容器
       href: container-service-security.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 缩放 ACS 群集
       href: container-service-scale.md
@@ -65,7 +65,7 @@
           href: container-service-docker-swarm-setup-ci-cd.md
         - name: 将 CI/CD 与 Docker Swarm（ACS 引擎）和 Azure DevOps 配合使用
           href: container-service-docker-swarm-mode-setup-ci-cd-acs-engine.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/acs

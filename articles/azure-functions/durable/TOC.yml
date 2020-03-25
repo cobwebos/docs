@@ -73,7 +73,7 @@
       href: durable-functions-perf-and-scale.md
     - name: 高可用性
       href: durable-functions-disaster-recovery-geo-distribution.md
-- name: 引用
+- name: 参考
   items:
     - name: Host.json 设置
       href: 'durable-functions-bindings.md#host-json'
@@ -83,7 +83,7 @@
       href: durable-functions-http-api.md
     - name: .NET API
       href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 开发
       items:

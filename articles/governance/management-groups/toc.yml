@@ -7,7 +7,7 @@
       href: ../azure-management.md
     - name: 管理组
       href: ./overview.md
-- name: 操作指南
+- name: 操作方法指南
   expanded: true
   items:
     - name: 创建管理组

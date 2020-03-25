@@ -39,16 +39,16 @@
       href: concept-risk-events.md
     - name: 有风险的用户
       href: concept-user-at-risk.md
-    - name: 预配日志
+    - name: “预配”日志
       href: concept-provisioning-logs.md
     - name: 报告 API
       href: concept-reporting-api.md
     - name: Azure Monitor 中的 Azure AD 日志
       href: concept-activity-logs-azure-monitor.md
-- name: 操作指南
+- name: 操作方法指南
   expanded: true
   items:
-    - name: 报告
+    - name: 报表
       items:
         - name: 查找活动报表
           href: howto-find-activity-reports.md
@@ -82,7 +82,7 @@
           href: troubleshoot-missing-data-download.md
         - name: 不能访问用于报告的图形 API
           href: troubleshoot-graph-api.md
-- name: 引用
+- name: 参考
   expanded: true
   items:
     - name: 用于报告的 Azure AD PowerShell cmdlet

@@ -23,7 +23,7 @@
         - name: 托管磁盘
           items:
             - name: 使用 CLI 在可用性区域中添加托管磁盘
-              href: '../virtual-machines/linux/add-disk.md#use-managed-disks'
+              href: '../virtual-machines/linux/add-disk.md#attach-a-new-disk-to-a-vm'
             - name: 使用 PowerShell 在可用性区域中添加托管磁盘
               href: '../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine'
         - name: 虚拟机规模集
@@ -68,11 +68,11 @@
         - name: 事件中心
           items:
             - name: 事件中心异地灾难恢复
-              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones-preview'
+              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones'
         - name: 服务总线
           items:
             - name: 服务总线异地灾难恢复
-              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview'
+              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones'
         - name: VPN 网关
           items:
             - name: 创建区域冗余的虚拟网关

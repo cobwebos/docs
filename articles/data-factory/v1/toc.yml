@@ -181,7 +181,7 @@
           href: data-factory-troubleshoot-gateway-issues.md
     - name: 使用存储过程活动调用 SSIS 包
       href: how-to-invoke-ssis-package-stored-procedure-activity.md
-- name: 引用
+- name: 参考
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=data-factory'
