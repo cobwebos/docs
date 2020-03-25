@@ -143,8 +143,6 @@
           href: consuming-from-excel.md
         - name: 使用 Excel 加载项
           href: excel-add-in-for-web-services.md
-        - name: 使用 Batch 池
-          href: dedicated-capacity-for-bes-jobs.md
     - name: 用例
       items:
         - name: 客户流失

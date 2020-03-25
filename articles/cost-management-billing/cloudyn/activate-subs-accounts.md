@@ -1,26 +1,28 @@
 ---
-title: 激活 Azure 订阅和帐户 | Microsoft Docs
+title: 激活 Azure 订阅和帐户
 description: 使用适用于新帐户和现有帐户的 Azure 资源管理器 API 实现访问，并解决常见的帐户问题。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 2467ee65b3f7090e5854bdd7848abab667ccfe55
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 62138163b3c3f94d60c55cf93d84db5dff446823
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301363"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474656"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>使用 Cloudyn 激活 Azure 订阅和帐户
 
 添加或更新 Azure 资源管理器凭据可让 Cloudyn 发现 Azure 租户中的所有帐户和订阅。 如果还在虚拟机上启用了 Azure 诊断扩展，则 Cloudyn 可以收集 CPU 和内存等扩展指标。 本文介绍如何使用适用于新帐户和现有帐户的 Azure 资源管理器 API 实现访问。 此外，还介绍如何解决常见的帐户问题。
 
 当订阅处于未激活状态时，Cloudyn 无法访问大多数 Azure 订阅数据  。 你必须编辑未激活的帐户，以便 Cloudyn 可以访问它们  。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="required-azure-permissions"></a>所需的 Azure 权限
 

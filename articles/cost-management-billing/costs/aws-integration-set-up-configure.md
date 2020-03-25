@@ -1,20 +1,18 @@
 ---
 title: 设置 AWS 与 Azure 成本管理的集成
 description: 本文逐步讲解如何设置并配置 AWS 成本和使用情况报表与 Azure 成本管理的集成。
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.custom: ''
-ms.openlocfilehash: 90d75383c1bd7c67b3feeb77fe2284d7b4e0cdf9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199987"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203077"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>设置并配置 AWS 成本和使用情况报表集成
 
@@ -39,11 +37,11 @@ AWS 建议使用成本和使用情况报表来收集和处理 AWS 成本。 有�
 9. 在“配置 S3 桶”对话框中执行以下任务之一：
     1. 从下拉列表中选择某个现有的桶，然后选择“下一步”。 
     2. 输入桶名称以及要在其中创建新桶的区域，然后选择“下一步”。 
-10. 选择“我已确认此策略正确”，然后单击“保存”。  
-11. （可选）对于“报表路径前缀”，请输入要附加在报表名称前面的报表路径前缀。
+10.    选择“我已确认此策略正确”，然后单击“保存”。  
+11.    （可选）对于“报表路径前缀”，请输入要附加在报表名称前面的报表路径前缀。
 如果不指定前缀，则默认前缀是为报表指定的名称。 日期范围采用 `/report-name/date-range/` 格式。
 12. 对于“时间单位”，请选择“小时”。  
-13. 对于“报表版本控制”，请选择是希望报表的每个版本覆盖以前的版本，还是要添加额外的新报表。 
+13.    对于“报表版本控制”，请选择是希望报表的每个版本覆盖以前的版本，还是要添加额外的新报表。 
 14. 对于“为以下对象启用数据集成”，无需做出任何选择。 
 15. 对于“压缩”，请选择“GZIP”。  
 16. 选择“**下一页**”。
@@ -124,8 +122,8 @@ Azure 成本管理每天会多次访问成本和使用情况报表所在的 S3 �
             "Effect": "Allow",
             "Action": [
 "organizations:ListAccounts",
-            "ce:*",
-            "cur:DescribeReportDefinitions"
+             "ce:*",
+             "cur:DescribeReportDefinitions"
             ],
             "Resource": "*"
         },

@@ -1,5 +1,5 @@
 ---
-title: 更改 Azure 帐户的个人资料信息 | Microsoft Docs
+title: 更改 Azure 帐户的个人资料信息
 description: 介绍如何更改 Azure 管理帐户的个人资料信息和联系人电子邮件地址。
 author: genlin
 ms.reviewer: dcscontentpm
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46f2645b640224a9dfd68775574653c35da8652d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1a53dd6e6682d0237793c4afcdea25370f9cc17c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199868"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202975"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>更改 Azure 帐户的个人资料信息
 
