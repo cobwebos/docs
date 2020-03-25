@@ -1,19 +1,18 @@
 ---
 title: 使用 Power BI 应用分析 Azure 成本
 description: 本文介绍如何安装和使用 Azure 成本管理 Power BI 应用。
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: bc676910a05dbec97ae05578399029f85f71e1ef
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: cd82c5880762e670a42066416042be57ef018a99
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399629"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203145"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>使用适用于企业协议 (EA) 的 Azure 成本管理 Power BI 应用分析成本
 

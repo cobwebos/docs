@@ -32,7 +32,7 @@
           href: customization.md
         - name: API 如何对字符计数
           href: character-counts.md
-    - name: 操作指南
+    - name: 操作方法指南
       items:
         - name: 注册文本翻译 API
           href: translator-text-how-to-signup.md
@@ -46,12 +46,6 @@
           href: prevent-translation.md
         - name: 使用动态字典功能
           href: dynamic-dictionary.md
-        - name: 使用容器
-          items:
-            - name: 安装并运行容器
-              href: how-to-install-containers.md
-            - name: 配置容器
-              href: translator-text-container-config.md
         - name: 在防火墙后面翻译
           href: firewalls.md
     - name: 示例
@@ -70,7 +64,7 @@
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP'
         - name: Ruby
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Ruby'
-    - name: 引用
+    - name: 参考
       items:
         - name: v3 文本翻译 API 参考
           href: reference/v3-0-reference.md
@@ -144,7 +138,7 @@
           href: custom-translator/training-and-model.md
         - name: BLEU 分数
           href: custom-translator/what-is-bleu-score.md
-    - name: 操作指南
+    - name: 操作方法指南
       items:
         - name: 创建一个项目
           href: custom-translator/how-to-create-project.md
@@ -178,5 +172,7 @@
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: 合规性
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+        - name: 加密
+          href: translator-encryption-of-data-at-rest.md
         - name: 堆栈溢出
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77201027"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>从企业协议迁移到 Microsoft 客户协议 API
@@ -429,8 +429,8 @@ HTTP Status 200
 | --- | --- | --- |
 | 测定仪 ID | _meterId_ | 计量的唯一标识符。 与 meterID 相同。 |
 | 计量器名称 | meterName | 计量的名称。 计量器代表 Azure 服务的可部署资源。 |
-| 计量器类别  | 服务 | 计量的分类类别的名称。 与 Microsoft 客户协议价目表中的服务相同。 确切的字符串值不同。 |
-| 计量器子类别 | meterSubCategory | 计量子分类类别的名称。 基于服务中的高级功能集差异分类。 例如“基本 SQL 数据库”与“标准 SQL 数据库”。 |
+| 计量类别  | 服务 | 计量的分类类别的名称。 与 Microsoft 客户协议价目表中的服务相同。 确切的字符串值不同。 |
+| 计量子类别 | meterSubCategory | 计量子分类类别的名称。 基于服务中的高级功能集差异分类。 例如“基本 SQL 数据库”与“标准 SQL 数据库”。 |
 | 计量器区域 | meterRegion | &nbsp;  |
 | 单位 | _不适用_ | 可从 unitOfMeasure 分析。 |
 | 度量单位 | unitOfMeasure | &nbsp;  |

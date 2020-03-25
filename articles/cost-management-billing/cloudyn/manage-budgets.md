@@ -1,20 +1,20 @@
 ---
 title: 在 Azure 中管理 Cloudyn 预算
 description: 本文介绍了如何在 Cloudyn 中快速创建和管理预算。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 1436c9b3b612a231760b6cdb04b5166fb45d7962
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: f2f8fdbf2b470e9f1eb0d82c4c6de230c2a9e78f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201129"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464149"
 ---
 # <a name="manage-azure-budgets-with-cloudyn"></a>使用 Cloudyn 管理 Azure 预算
 
@@ -27,6 +27,8 @@ ms.locfileid: "77201129"
 预算报告显示所分配的预算。 用户可以查看自己的支出在一段时间内何时超过、低于或等于消费能力。 如果选择预算报告顶部的“显示/隐藏字段”  ，可以查看成本、预算、累计成本或总预算。
 
 Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是一个本机 Azure 成本管理解决方案。 借助它，可以分析成本、创建和管理预算、导出数据，并能查看和采纳优化建议，从而节省资金。 有关成本管理中的预算的详细信息，请参阅[创建和管理预算](../costs/tutorial-acm-create-budgets.md)。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="create-budgets"></a>创建预算
 

@@ -22,7 +22,7 @@
           href: native-app.md
         - name: 守护程序或服务器应用程序
           href: service-to-service.md
-    - name: 身份验证
+    - name: Authentication
       items:
         - name: 身份验证基础知识
           href: v1-authentication-scenarios.md
@@ -83,7 +83,7 @@
       href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
 - name: 操作方法指南
   items:
-    - name: 身份验证
+    - name: Authentication
       items:
         - name: 配置单一登录
           displayName: SSO

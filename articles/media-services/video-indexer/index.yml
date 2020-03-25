@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: 了解 Azure 媒体服务视频索引器
-summary: Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 认知搜索、认知服务（例如人脸 API、Microsoft Translator、计算机视觉 API 和自定义语音服务）生成的云应用程序。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。
+summary: Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 认知搜索、认知服务（例如人脸 API、Microsoft Translator、计算机视觉 API 和自定义语音识别服务）生成的云应用程序。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。
 metadata:
   title: Azure 媒体服务视频索引器文档
-  description: Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 认知搜索、认知服务（例如人脸 API、Microsoft Translator、计算机视觉 API 和自定义语音服务）生成的云应用程序。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。
+  description: Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 认知搜索、认知服务（例如人脸 API、Microsoft Translator、计算机视觉 API 和自定义语音识别服务）生成的云应用程序。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。
   services: media-services
   ms.service: media-services
   ms.subservice: 
@@ -13,10 +13,10 @@ metadata:
   ms.author: juliako
   ms.date: 02/18/2020
   ms.openlocfilehash: a3e1ec7b97d76287614b4e154143899acf7fd902
-  ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/20/2020
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "77485108"
 landingContent:
 - title: 关于 Azure 媒体服务视频索引器

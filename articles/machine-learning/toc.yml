@@ -13,6 +13,7 @@
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: 教程
+  expanded: true
   items:
     - name: 工作室和设计器
       items:
@@ -87,10 +88,10 @@
       href: concept-workspace.md
     - name: 环境
       href: concept-environments.md
-    - name: 数据访问
-      href: concept-data.md
     - name: 数据引入
       href: concept-data-ingestion.md
+    - name: 数据访问
+      href: concept-data.md
     - name: 模型定型
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md

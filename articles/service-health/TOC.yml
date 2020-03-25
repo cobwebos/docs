@@ -34,7 +34,7 @@
       href: service-health-rest.md
     - name: 配置资源运行状况事件的警报
       href: resource-health-alert-arm-template-guide.md
-- name: 引用
+- name: 参考
   items:
     - name: 服务运行状况通知属性
       href: service-health-notifications-properties.md

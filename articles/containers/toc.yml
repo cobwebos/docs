@@ -75,7 +75,7 @@
               href: ../openshift/tutorial-scale-cluster.md
             - name: 3 - 删除 Azure Red Hat OpenShift 群集
               href: ../openshift/tutorial-delete-cluster.md
-    - name: 引用
+    - name: 参考
       items:
         - name: Azure 容器实例 (az container)
           href: 'https://docs.microsoft.com/cli/azure/container'

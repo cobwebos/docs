@@ -43,7 +43,7 @@
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search'
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 获取视频见解
       href: video-insights.md
@@ -63,7 +63,7 @@
       href: concepts/get-videos.md
     - name: 发送搜索请求
       href: concepts/sending-requests.md
-- name: 引用
+- name: 参考
   items:
     - name: 必应视频搜索 API v7
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference'

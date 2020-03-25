@@ -111,7 +111,7 @@
       href: ./ansible-matrix.md
     - name: 适用于 Azure 的所有模块
       href: 'https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure'
-- name: 工具
+- name: 资源
   items:
     - name: 适用于 Ansible 的 Visual Studio Code 扩展
       href: 'https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible'

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: f0b093950b7f8fbbfbb0ca8ceb48cb0aa6341e10
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200276"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>如何对 Azure SQL 数据库应用预留折扣
@@ -32,13 +32,13 @@ ms.locfileid: "77200276"
 
 以下示例演示如何根据购买的核心数目以及 SQL 数据库的运行时间，来应用 SQL 数据库预留容量折扣。
 
-- 应用场景 1：为 8 核 SQL 数据库购买了 SQL 数据库预留容量。 运行一个与剩余预留属性匹配的 16 核 SQL 数据库。 将按 8 个核心的 SQL 数据库计算用量收取即用即付费用。 将获得 8 核 SQL 数据库计算用量的一小时预留折扣。
+- 场景 1：为 8 核 SQL 数据库购买了 SQL 数据库预留容量。 运行一个与剩余预留属性匹配的 16 核 SQL 数据库。 将按 8 个核心的 SQL 数据库计算用量收取即用即付费用。 将获得 8 核 SQL 数据库计算用量的一小时预留折扣。
 
 剩余的示例假设购买的 SQL 数据库预留容量用于 16 核 SQL 数据库，并且剩余的预留属性与正在运行的 SQL 数据库相匹配。
 
-- 应用场景 2：运行两个 8 核 SQL 数据库，各运行一小时。 将对 8 核 SQL 数据库的计算用量应用 16 核预留折扣。
-- 应用场景 3：从下午 1 点到下午 1:30 运行一个 16 核 SQL 数据库。 从下午 1:30 到下午 2 点运行另一个 16 核 SQL 数据库。 预留折扣同时涵盖这两个数据库。
-- 应用场景 4：从下午 1 点到下午 1:45 运行一个 16 核 SQL 数据库。 从下午 1:30 到下午 2 点运行另一个 16 核 SQL 数据库。 将收取 15 分钟重叠期的即用即付费用。 预留折扣将应用到剩余时间的计算用量。
+- 场景 2：运行两个 8 核 SQL 数据库，各运行一小时。 将对 8 核 SQL 数据库的计算用量应用 16 核预留折扣。
+- 场景 3：从下午 1 点到下午 1:30 运行一个 16 核 SQL 数据库。 从下午 1:30 到下午 2 点运行另一个 16 核 SQL 数据库。 预留折扣同时涵盖这两个数据库。
+- 场景 4：从下午 1 点到下午 1:45 运行一个 16 核 SQL 数据库。 从下午 1:30 到下午 2 点运行另一个 16 核 SQL 数据库。 将收取 15 分钟重叠期的即用即付费用。 预留折扣将应用到剩余时间的计算用量。
 
 若要了解 Azure 预留的应用情况并在计费使用情况报告中查看该信息，请参阅[了解 Azure 预留使用情况](understand-reserved-instance-usage-ea.md)。
 

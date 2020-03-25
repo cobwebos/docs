@@ -10,10 +10,10 @@ ms.date: 02/14/2020
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 1dd0dfad0c68e18ae272d5d94fedd67d24be9ae1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200772"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>查看和下载组织的 Azure 定价
@@ -75,8 +75,8 @@ ms.locfileid: "77200772"
 
 1. 转到 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator)。
 1. 在右上角，选择“登录”  。
-1. 在“程序和产品/服务” > “许可计划”下，选择“企业协议 (EA)”。   
-1. 在“程序和产品/服务” > “所选协议”下，选择“未选择任何项”。   
+1. 在“程序和产品/服务” **“许可计划”下，选择“企业协议 (EA)”。**  >   
+1. 在“程序和产品/服务” **“所选协议”下，选择“未选择任何项”。**  >   
 
     ![其中显示了价目表“下载 csv”按钮的屏幕截图](./media/ea-pricing/ea-pricing-calculator-estimate.png)
 

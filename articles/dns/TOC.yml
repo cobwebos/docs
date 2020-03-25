@@ -157,22 +157,6 @@
           href: /dotnet/api/overview/azure/privatedns/management
         - name: REST
           href: /rest/api/dns/privatedns/privatezones
-- name: 相关内容
-  items:
-    - name: 专用链接
-      href: ../private-link/private-link-overview.md
-    - name: 应用程序网关
-      href: /azure/application-gateway/
-    - name: 虚拟网络
-      href: /azure/virtual-network/
-    - name: 虚拟机
-      href: /azure/virtual-machines/
-    - name: 负载均衡器
-      href: /azure/load-balancer/
-    - name: 流量管理器
-      href: /azure/traffic-manager/
-    - name: Web 应用
-      href: /azure/app-service/
 - name: 资源
   items:
     - name: Azure 路线图

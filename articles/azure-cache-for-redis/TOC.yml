@@ -33,6 +33,10 @@
       href: cli-samples.md
 - name: 概念
   items:
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
     - name: 故障转移和修补
       href: cache-failover.md
     - name: 最佳做法
@@ -44,7 +48,7 @@
     - name: 计划
       items:
         - name: 选择缓存层
-          href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'
+          href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
         - name: 使用群集分布缓存
           href: cache-how-to-premium-clustering.md
         - name: 使用 Redis 数据持久性保留缓存
@@ -113,7 +117,7 @@
       items:
         - name: 更新为不同的大小和层
           href: cache-how-to-scale.md
-        - name: 使用 Redis 群集进行缩减/扩展
+        - name: 使用 Redis 群集进行横向缩减/扩展
           href: cache-how-to-premium-clustering.md
 - name: 参考
   items:

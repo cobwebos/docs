@@ -4,10 +4,10 @@ description: 加拿大联邦 PBMM 蓝图示例概述。 此蓝图示例可帮助
 ms.date: 09/04/2019
 ms.topic: sample
 ms.openlocfilehash: c1c5f9c6ec8dc49db4c93d0fbf9caa379a4ab160
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "74544513"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大联邦 PBMM 蓝图示例概述

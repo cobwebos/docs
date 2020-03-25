@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199120"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>教程：查看个人 Azure 账单
@@ -27,7 +27,7 @@ ms.locfileid: "77199120"
 > * 将已开票费用与使用情况文件进行比较
 > * 在成本分析中比较费用和使用情况
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 必须有付费的 Microsoft Online Services 计划  计费帐户。 此帐户在你通过 Azure 网站注册获取 Azure 时创建。 例如，如果你有一个[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)，或者你是 [Visual Studio 订阅者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)。
 
@@ -120,7 +120,7 @@ ms.locfileid: "77199120"
 
 ![发票使用费](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external"></a>外部服务单独计费
+## <a name="external-services-billed-separately"></a><a name="external"></a>外部服务单独计费
 
 外部服务或市场费用针对的是由第三方软件供应商创建的资源。 这些资源可以从 Azure 市场使用。 例如，Barracuda 防火墙是由第三方提供的 Azure 市场资源。 此防火墙的所有费用及其对应的计量指标都将显示为外部服务费用。
 
@@ -149,7 +149,7 @@ Azure 不直接根据资源成本计费。 资源费用按一个或多个计量�
 
 可以在使用情况 CSV 文件中查看用于计算账单的计量。
 
-## <a name="payment"></a>支付账单
+## <a name="pay-your-bill"></a><a name="payment"></a>支付账单
 
 如果已将信用卡设置为付款方式，则会在计费周期结束后的 10 天内自动付款。 在信用卡对帐单上，行项会显示 **MSFT Azure**。
 

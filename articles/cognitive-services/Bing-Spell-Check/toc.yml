@@ -32,7 +32,7 @@
   items:
     - name: 构建拼写检查 Web 应用
       href: tutorials/spellcheck.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 从 v5 升级到 v7
       href: bing-spell-check-upgrade-guide-v5-to-v7.md
@@ -46,7 +46,7 @@
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Spell+Check'
-- name: 引用
+- name: 参考
   items:
     - name: 必应拼写检查 API v7
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference'

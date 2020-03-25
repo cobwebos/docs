@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
 ms.openlocfilehash: 1c4522bed191ef4142cc603bf0e1d22f086111ee
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200582"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>为 Azure 客户打开银行 (PSD2) 和强客户身份验证 (SCA)
 
-从 2019 年 9 月 14 日开始，[欧洲经济区](https://en.wikipedia.org/wiki/European_Economic_Area)的 31 个国家/地区的银行需要在处理付款之前验证在线购买者的身份。 此项验证需要通过多重身份验证来帮助确保在线购物安全且受到保护。 在某些国家/地区，此项验证要求的日期将会延期。 有关详细信息，请参阅[有关 PSD2 的 Microsoft 常见问题解答](https://support.microsoft.com/en-us/help/4517854?preview)。
+从 2019 年 9 月 14 日开始，[欧洲经济区](https://en.wikipedia.org/wiki/European_Economic_Area)的 31 个国家的银行需要在处理付款之前验证在线购买者的身份。 此项验证需要通过多重身份验证来帮助确保在线购物安全且受到保护。 在某些国家/地区，此项验证要求的日期将会延期。 有关详细信息，请参阅[有关 PSD2 的 Microsoft 常见问题解答](https://support.microsoft.com/en-us/help/4517854?preview)。
 
 ## <a name="what-psd2-means-for-azure-customers"></a>PSD2 对 Azure 客户的意义
 

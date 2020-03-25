@@ -17,7 +17,7 @@
       href: concept-identity-protection-user-experience.md
     - name: 标识保护和 B2B 用户
       href: concept-identity-protection-b2b.md
-- name: 操作指南
+- name: 操作方法指南
   expanded: true
   items:
     - name: 配置通知
@@ -42,7 +42,7 @@
       href: howto-identity-protection-risk-feedback.md
     - name: 常见问题解答
       href: troubleshooting-identity-protection-faq.md
-- name: 引用
+- name: 参考
   items:
     - name: 术语表
       href: reference-identity-protection-glossary.md

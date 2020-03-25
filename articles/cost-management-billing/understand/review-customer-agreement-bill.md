@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 21579c7c3acd726ac8958768238631333cf63c39
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199137"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237558"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>教程：查看 Microsoft 客户协议发票
 
@@ -28,7 +28,7 @@ ms.locfileid: "77199137"
 > * 查看未结费用以估算下一份发票
 > * 分析 Azure 使用费
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 你必须有签订了 Microsoft 客户协议的计费帐户。
 

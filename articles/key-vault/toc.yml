@@ -129,7 +129,7 @@
       href: tutorial-rotation.md
     - name: 与 Azure Policy 集成
       href: azure-policy.md
-    - name: 与 Azure 专用链接服务（预览版）集成
+    - name: 与 Azure 专用链接服务集成
       href: private-link-service.md
     - name: Azure Key Vault 日志记录
       href: key-vault-logging.md

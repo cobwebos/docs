@@ -1,20 +1,19 @@
 ---
-title: 使用 Azure 帐户注册 Office 365 | Microsoft Docs
+title: 使用 Azure 帐户注册 Office 365
 description: 了解如何使用 Azure 帐户创建 Office 365 订阅
 author: JiangChen79
 ms.reviewer: adwise
 tags: billing,top-support-issue
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: banders
-ms.openlocfilehash: b38800a990056d7de0b6978573ddc19c80503a1d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 736009a88f309e0a38402222668a9609f844552f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199919"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204811"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>使用 Azure 帐户注册 Office 365 订阅
 如果是 Azure 订阅者，则可以使用 Azure 帐户注册 Office 365 订阅。 如果是拥有 Azure 订阅的组织的成员，可在现有 Azure Active Directory (Azure AD) 中为用户创建 Office 365 订阅。 使用帐户（必须在 Azure Active Directory 租户中具有全局管理员或计费管理员权限）注册 Office 365 订阅。 有关详细信息，请参阅[在 Azure AD 中检查我的帐户权限](#RoleInAzureAD)和[在 Azure Active Directory 中分配管理员角色](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
@@ -47,7 +46,7 @@ ms.locfileid: "77199919"
 
 注册完以后，Office 365 订阅将添加到 Azure 订阅所属的同一 Azure Active Directory 实例中。 有关详细信息，请参阅[有关 Azure 和 Office 365 订阅的详细信息](office-365-account-for-azure-subscription.md#more-about-subs)和 [Azure 订阅如何与 Azure Active Directory 关联](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
-## <a id="RoleInAzureAD"></a>查看 Azure AD 中的帐户权限
+## <a name="check-my-account-permissions-in-azure-ad"></a><a id="RoleInAzureAD"></a>查看 Azure AD 中的帐户权限
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 单击“所有服务”  ，并搜索“Active Directory”  。
 

@@ -94,4 +94,4 @@ sections:
           - title: Languages
             html: '<p><a href="/dotnet/api/microsoft.azure.devices">.NET（服务）</a></p><p><a href="/dotnet/api/microsoft.azure.devices.client">.NET（设备）</a></p><p><a href="https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/">C（设备 SDK）</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java（服务）</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java（设备）</a></p><p><a href="/javascript/api/azure-iothub/?view=azure-iot-typescript-latest">Node.js（服务）</a></p><p><a href="/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest">Node.js（设备）</a></p>'
           - title: REST
-            html: <p><a href="/rest/api/iothub/device">REST（设备）</a></p><p><a href="/rest/api/iothub/service">REST（服务）</a></p><p><a href="/rest/api/iothub/iothubresource">REST（IoT 中心资源）</a></p><p><a href="/rest/api/iothub/certificates">REST（证书）</a></p>
+            html: <p><a href="/rest/api/iothub/device">REST（设备）</a></p><p><a href="/rest/api/iothub/service/configuration">REST（服务）</a></p><p><a href="/rest/api/iothub/iothubresource">REST（IoT 中心资源）</a></p><p><a href="/rest/api/iothub/certificates">REST（证书）</a></p>
