@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
 ms.openlocfilehash: c4e8608c0d5c8dc79fa299d5d814f33cd6c8da2d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68726325"
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>适用于 Azure Blob 存储的 Azure PowerShell 示例

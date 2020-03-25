@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: mjbrown
 ms.openlocfilehash: 4f81f278c87b096b2dae844252229fb1dee45599
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75445057"
 ---
 # <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>更新 Azure Cosmos DB 的密钥空间或表的 RU/秒 - Cassandra API

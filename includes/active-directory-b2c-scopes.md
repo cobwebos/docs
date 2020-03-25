@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: 9d394b07ff17ab24305b2580efc8bedfc5e7d384
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78183361"
 ---
 #### <a name="applications"></a>[应用程序](#tab/applications/)
@@ -17,8 +17,8 @@ ms.locfileid: "78183361"
 1. 选择“应用程序”。 
 1. 选择“webapi1”  应用程序以打开其属性页。 
 1. 选择“已发布的范围”  。 可以使用已发布的范围向客户端应用程序授予访问 Web API 的某些权限。
-1. 在“范围”中输入 `demo.read`，在“说明”中输入 `Read access to the web API`。  
-1. 在“范围”中输入 `demo.write`，在“说明”中输入 `Write access to the web API`。  
+1. 在“范围”中输入 **，在“说明”中输入** 。`demo.read`  `Read access to the web API`
+1. 在“范围”中输入 **，在“说明”中输入** 。`demo.write`  `Write access to the web API`
 1. 选择“保存”。 
 
 #### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)

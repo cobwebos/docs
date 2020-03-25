@@ -9,10 +9,10 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/28/2018
 ms.openlocfilehash: 14bb46d8917aedb3ea5a625db2489c97a4fd0ba3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66122070"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>使用 Azure CLI 为 PostgreSQL 服务器创建 Azure 数据库并配置防火墙规则
@@ -41,5 +41,5 @@ ms.locfileid: "66122070"
 | [az group delete](/cli/azure/group) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-- 阅读有关 Azure CLI 的更多信息：[Azure CLI 文档](/cli/azure)
-- 请尝试其他脚本：[用于 PostgreSQL 的 Azure 数据库的 Azure CLI 示例](../sample-scripts-azure-cli.md)
+- 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)
+- 尝试其他脚本：[Azure Database for PostgreSQL 的 Azure CLI 示例](../sample-scripts-azure-cli.md)

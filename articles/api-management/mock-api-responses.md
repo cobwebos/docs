@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70067937"
 ---
 # <a name="mock-api-responses"></a>模拟 API 响应
@@ -27,7 +27,7 @@ ms.locfileid: "70067937"
 + 当以 API 的结构设计为主，后端实现为辅时。 或者并行开发后端时。
 + 当后端暂时不可正常运行或不可缩放时。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建测试 API 
@@ -37,11 +37,11 @@ ms.locfileid: "70067937"
 
 ![模拟操作响应](./media/mock-api-responses/mock-api-responses01.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
 + 了解 [Azure API 管理中策略的概念](api-management-howto-policies.md)。
-+ 请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
++ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 
 ## <a name="create-a-test-api"></a>创建测试 API 
 
@@ -78,7 +78,7 @@ ms.locfileid: "70067937"
 5. 从列表中选择“200 OK”。 
 6. 在右侧的“表示形式”标题下，选择“+ 添加表示形式”。  
 7. 在搜索框中输入“application/json”，选择“application/json”内容类型。  
-8. 在“示例”文本框中，输入 `{ "sampleField" : "test" }`。 
+8. 在“示例”文本框中，输入 **。** `{ "sampleField" : "test" }`
 9. 选择“创建”  。
 
 ## <a name="enable-response-mocking"></a>启用响应模拟
@@ -97,7 +97,7 @@ ms.locfileid: "70067937"
 
     ![启用响应模拟](./media/mock-api-responses/mock-api-responses-set-mocking.png)
 
-7. 单击“ **保存**”。
+7. 单击“保存”  。
 
 ## <a name="test-the-mocked-api"></a>测试模拟 API
 
@@ -121,7 +121,7 @@ ms.locfileid: "70067937"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建测试 API

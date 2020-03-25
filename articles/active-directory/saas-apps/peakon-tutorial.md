@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: b093a26848701254ad674081037c266f1fb012b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094727"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>教程：Azure Active Directory 与 Peakon 集成
@@ -34,7 +34,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Peakon 的集成，需要准备好以下各项：
 
@@ -80,7 +80,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 2. **[配置 Peakon 单一登录](#configure-peakon-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Peakon 测试用户](#create-peakon-test-user) - 在 Peakon 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式  。
+5. **创建 Peakon 测试用户[ - 在 Peakon 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式](#create-peakon-test-user)** 。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -113,7 +113,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 
     ![Peakon 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，键入 URL：`https://app.peakon.com/login` 
+    在“登录 URL”文本框中，键入 URL：  `https://app.peakon.com/login`
 
     > [!NOTE]
     > 这些不是实际值。 本教程稍后将介绍如何使用实际的标识符和回复 URL 来更新这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -182,7 +182,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
+    b. 在“用户名”  字段中键入 **brittasimon@yourcompanydomain.extension**  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -236,9 +236,9 @@ Peakon 与 Azure AD 集成提供以下优势：
 
      ![新增员工](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. 在“姓名”文本框中，键入名字“Britta”和姓氏“Simon”   。
+    a. 在“姓名”文本框中，键入名字“Britta”和姓氏“Simon”    。
 
-    b. 在“电子邮件”文本框中键入电子邮件，例如 **Brittasimon\@contoso.com**。 
+    b. 在“电子邮件”文本框中键入电子邮件，例如 **Brittasimon**contoso.com **。\@**
 
     c. 单击“创建员工”  。
 
