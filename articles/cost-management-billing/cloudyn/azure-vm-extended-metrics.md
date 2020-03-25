@@ -1,20 +1,20 @@
 ---
-title: 为 Azure 虚拟机添加扩展指标 | Microsoft Docs
+title: 为 Azure 虚拟机添加扩展指标
 description: 本文帮助你为 Azure VM 启用和配置扩展的诊断指标。
-keywords: ''
 author: bandersmsft
 ms.reviewer: vitavor
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ROBOTS: NOINDEX
+ms.openlocfilehash: b4c646f3d42edc39f457cd735f16409f4ef05d2c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082908"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481613"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>为 Azure 虚拟机添加扩展指标
 
@@ -30,7 +30,9 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 例如，你可能想要监视 Azure VM 的 CPU 百分比和内存百分比。 Azure VM 指标对应于“CPU 百分比”和“\内存\使用中的已提交字节百分比”。  
 
 > [!NOTE]
-> 只有 Azure 来宾级监视支持扩展的指标数据收集。 Cloudyn 与 [Log Analytics 代理](../../azure-monitor/platform/agents-overview.md)不兼容。 
+> 只有 Azure 来宾级监视支持扩展的指标数据收集。 Cloudyn 与 [Log Analytics 代理](../../azure-monitor/platform/agents-overview.md)不兼容。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>确定是否启用了扩展的指标
 
