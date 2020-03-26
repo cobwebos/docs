@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75553117"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>教程：通过 Azure 自动化创建 Azure HDInsight 群集
@@ -28,7 +28,7 @@ ms.locfileid: "75553117"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 现有的 [Azure 自动化帐户](../automation/automation-quickstart-create-account.md)。
 * 现有的 [Azure 存储帐户](../storage/common/storage-account-create.md)，它将用作群集存储。

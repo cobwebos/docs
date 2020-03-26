@@ -1,5 +1,5 @@
 ---
-title: 快速入门：查找可用聊天室-Azure 数字孪生 |Microsoft Docs
+title: 快速入门：查找可用房间 - Azure 数字孪生 | Microsoft Docs
 description: 在本快速入门中，请运行两个 .NET Core 示例应用程序，将模拟的移动和二氧化碳遥测数据发送到 Azure 数字孪生中的空间。 目标是在云中进行计算处理以后，通过管理 API 查找空气清新的可用房间。
 ms.author: alinast
 author: alinamstanciu
@@ -10,14 +10,16 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 01/10/2020
-ms.openlocfilehash: 6c9c5df27f4a361e534bac2fe21b2c470f8d0186
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.openlocfilehash: de8611e53339d38a03836bc9272ad42ff88a59b8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382223"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79371420"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>快速入门：通过 Azure 数字孪生查找可用房间
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 可以通过 Azure 数字孪生服务重新创建物理环境的数字图像。 然后，你可以获得环境中事件的通知并自定义对其的响应。
 
@@ -27,7 +29,7 @@ ms.locfileid: "78382223"
 
 >[!VIDEO https://www.youtube.com/embed/1izK266tbMI]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 1. 如果没有 Azure 帐户，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -101,7 +103,7 @@ ms.locfileid: "78382223"
 1. 打开新的命令提示符窗口。 转到下载在 `digital-twins-samples-csharp-master` 文件夹中的项目。
 1. 运行 `cd device-connectivity`。
 1. 运行 `dotnet restore`。
-1. 编辑 [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json)，使用上面的 **更新**DeviceConnectionString`ConnectionString`。 保存更新的文件。
+1. 编辑 [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json)，使用上面的 `ConnectionString` 更新 **DeviceConnectionString**。 保存更新的文件。
 1. 运行 `dotnet run`，开始发送传感器数据。 这些数据将发送到 Azure 数字孪生，如下图所示。
 
      [![设备连接性](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png#lightbox)
@@ -154,7 +156,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 若要继续学习这些教程，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请删除通过本快速入门创建的所有资源。
 
 1. 删除下载示例存储库时创建的文件夹。
-1. 在 [Azure 门户](https://portal.azure.com)左侧的菜单中，选择“所有资源”。 然后，选择数字孪生资源。 在“所有资源”窗格的顶部选择“删除”。
+1. 在 [Azure 门户](https://portal.azure.com)左侧的菜单中，选择“所有资源”。  然后，选择数字孪生资源。 在“所有资源”窗格的顶部选择“删除”   。
 
     > [!TIP]
     > 如果之前在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。

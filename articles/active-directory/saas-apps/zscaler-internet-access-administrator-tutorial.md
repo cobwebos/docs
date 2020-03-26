@@ -17,10 +17,10 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a149527c6e00972991bf0b18e6f7c599799a0c91
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>教程：Azure Active Directory 与 Zscaler Internet Access Administrator 的集成
@@ -140,9 +140,9 @@ ms.locfileid: "73161034"
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![图像](./common/new-save-attribute.png)
+    ![image](./common/new-save-attribute.png)
     
-    ![图像](./common/new-attribute-details.png)
+    ![image](./common/new-attribute-details.png)
 
     b. 在“源属性”  列表中，选择属性值。
 

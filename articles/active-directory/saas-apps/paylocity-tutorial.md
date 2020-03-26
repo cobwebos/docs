@@ -17,10 +17,10 @@ ms.date: 10/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f6684df42971b91975f6a7f5aeded9326cef3f5
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72969709"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Paylocity 集成
@@ -96,7 +96,7 @@ ms.locfileid: "72969709"
 
 1. 除了上述属性，Paylocity 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但是必须使用实际值更新这些属性。
 
-    | Name |  源属性|
+    | 名称 |  源属性|
     | ---------------| --------------- |
     | PartnerID | <"PartnerID"> |
     | PaylocityUser | <"PaylocityUser"> |

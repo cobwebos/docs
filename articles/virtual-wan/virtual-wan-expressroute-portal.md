@@ -9,10 +9,10 @@ ms.date: 02/13/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
 ms.openlocfilehash: 35ca071cd8495611f0f350511ef9406f82c5be23
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77209420"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建 ExpressRoute 关联
@@ -44,7 +44,7 @@ ms.locfileid: "77209420"
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="openvwan"></a>创建虚拟 WAN
+## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>创建虚拟 WAN
 
 从浏览器导航到 [Azure 门户](https://portal.azure.com)并使用 Azure 帐户登录。
 
@@ -62,19 +62,19 @@ ms.locfileid: "77209420"
 4. 填写完字段后，单击“审阅 + 创建”  。
 5. 验证通过后，选择“创建”以创建虚拟 WAN  。
 
-## <a name="hub"></a>创建虚拟中心和网关
+## <a name="create-a-virtual-hub-and-gateway"></a><a name="hub"></a>创建虚拟中心和网关
 
 虚拟中心是虚拟 WAN 创建和使用的虚拟网络。 它可以包含各种网关，如 VPN 和 ExpressRoute。 在本部分中，将为虚拟中心创建 ExpressRoute 网关。 你可以在[创建新虚拟中心](#newhub)时创建网关，或者可以通过编辑[现有中心](#existinghub)，在现有中心创建网关。 
 
 ExpressRoute 网关以 2 Gbps 为单位进行预配。 1 个缩放单元= 2 Gbps，最多支持 10 个缩放单元 = 20 Gbps。 完全创建虚拟中心和网关大约需要 30 分钟。
 
-### <a name="newhub"></a>创建新的虚拟中心和网关
+### <a name="to-create-a-new-virtual-hub-and-a-gateway"></a><a name="newhub"></a>创建新的虚拟中心和网关
 
 创建新的虚拟中心。 创建中心后，即使你没有附加任何站点，也会对该中心收取费用。
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-er-hub-include.md)]
 
-### <a name="existinghub"></a>在现有中心中创建网关
+### <a name="to-create-a-gateway-in-an-existing-hub"></a><a name="existinghub"></a>在现有中心中创建网关
 
 还可以通过编辑现有中心，在现有中心创建网关。
 
@@ -90,7 +90,7 @@ ExpressRoute 网关以 2 Gbps 为单位进行预配。 1 个缩放单元= 2 Gbps
 
 ![查看网关](./media/virtual-wan-expressroute-portal/viewgw.png "查看网关")
 
-## <a name="connectvnet"></a>将 VNet 连接到中心
+## <a name="connect-your-vnet-to-the-hub"></a><a name="connectvnet"></a>将 VNet 连接到中心
 
 此步骤在中心与 VNet 之间创建对等互连。 针对要连接的每个 VNet 重复这些步骤。
 
@@ -103,7 +103,7 @@ ExpressRoute 网关以 2 Gbps 为单位进行预配。 1 个缩放单元= 2 Gbps
     * **订阅** - 验证订阅。
     * **虚拟网络** - 选择要连接到此中心的虚拟网络。 此虚拟网络不能包含现有的虚拟网络网关（既不能是 VPN 也不能是 ExpressRoute）。
 
-## <a name="connectcircuit"></a>将线路连接到中心网关
+## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>将线路连接到中心网关
 
 创建网关后，就可以将 [ExpressRoute 线路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)连接到该网关。 ExpressRoute Global Reach 支持的位置中的 ExpressRoute 高级版线路可以连接到虚拟 WAN ExpressRoute 网关。
 
@@ -116,7 +116,7 @@ ExpressRoute 网关以 2 Gbps 为单位进行预配。 1 个缩放单元= 2 Gbps
 
    ![连接线路](./media/virtual-wan-expressroute-portal/cktconnect.png "连接线路")
 
-### <a name="authkey"></a>通过兑换授权密钥进行连接
+### <a name="to-connect-by-redeeming-an-authorization-key"></a><a name="authkey"></a>通过兑换授权密钥进行连接
 
 使用提供的授权密钥和线路 URI 进行连接。
 

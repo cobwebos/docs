@@ -4,16 +4,18 @@ description: 本快速入门提供了多个 Python 代码示例，你可以使�
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: seo-python-october2019
+ms.custom:
+- mvc
+- seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/09/2020
-ms.openlocfilehash: 96296a4ecea8dd1d546adf2292291746bd37507d
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c9ea155f3cc71dd961a3780e3b188a6d062606bc
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938933"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067896"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>快速入门：使用 Python 通过 Azure Database for MySQL 连接并查询数据
 
@@ -21,7 +23,7 @@ ms.locfileid: "76938933"
 
 本主题假设你熟悉如何使用 Python 进行开发，但不熟悉 Azure Database for MySQL 的用法。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure Database for MySQL 服务器。 [使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)或[使用 Azure CLI 创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)。

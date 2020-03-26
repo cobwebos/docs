@@ -4,10 +4,10 @@ description: IRS 1075 (Rev.11-2016) 蓝图示例的部署步骤，包括蓝图�
 ms.date: 11/20/2019
 ms.topic: sample
 ms.openlocfilehash: 15fcac5bfd11d889522d078853bd6f916eb54616
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74546804"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>部署 IRS 1075 蓝图示例

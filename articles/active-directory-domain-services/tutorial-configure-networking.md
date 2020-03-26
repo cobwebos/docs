@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
 ms.openlocfilehash: 26122278ad74fb1d383ca7a900810b6060ee78f5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73172648"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>教程：为 Azure Active Directory 域服务实例配置虚拟网络
@@ -22,7 +22,7 @@ ms.locfileid: "73172648"
 
 本教程介绍如何创建和配置专用的虚拟网络子网，或者如何将不同的网络对等互连到 Azure AD DS 托管域的虚拟网络。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 了解已加入域的资源与 Azure AD DS 之间的虚拟网络连接选项
@@ -104,7 +104,7 @@ ms.locfileid: "73172648"
 1. 若要创建对等互连，请选择“+ 添加”。  在以下示例中，默认的 *aadds-vnet* 已对等互连到名为 *myVnet* 的虚拟网络。 使用自己的值配置以下设置：
 
     * **从 aadds-vnet 到远程虚拟网络的对等互连的名称**：两个网络的描述性标识符，例如 *aadds-vnet-myvnet*
-    * **虚拟网络部署类型**：*Resource Manager*
+    * **虚拟网络部署类型**：*资源管理器*
     * **订阅**：要对等互连到的虚拟网络的订阅，例如 *Azure*
     * **虚拟网络**：要对等互连到的虚拟网络，例如 *myVnet*
     * **从 myVnet 到 aadds-vnet 的对等互连的名称**：两个网络的描述性标识符，例如 *myvnet-to-aadds-vnet*
@@ -141,7 +141,7 @@ ms.locfileid: "73172648"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 了解已加入域的资源与 Azure AD DS 之间的虚拟网络连接选项

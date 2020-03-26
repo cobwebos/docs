@@ -5,20 +5,20 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/07/2019
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186729"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79475835"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>教程：使用 Azure 门户在 Azure Front Door 上创建 Web 应用程序防火墙策略
 
 本教程介绍如何创建基本的 Azure Web 应用程序防火墙 (WAF) 策略，并将其应用到 Azure Front Door 上的前端主机。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 WAF 策略
@@ -38,8 +38,8 @@ ms.locfileid: "74186729"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Subscription            |选择 Front Door 订阅名称。|
-    | Resource group          |选择 Front Door 资源组名称。|
+    | 订阅            |选择 Front Door 订阅名称。|
+    | 资源组          |选择 Front Door 资源组名称。|
     | 策略名称             |输入 WAF 策略的唯一名称。|
 
    ![创建 WAF 策略](../media/waf-front-door-create-portal/basic.png)

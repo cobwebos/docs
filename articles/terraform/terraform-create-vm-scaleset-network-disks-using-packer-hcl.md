@@ -4,10 +4,10 @@ description: 使用 Terraform 通过 Packer 生成的自定义映像配置 Azure
 ms.topic: tutorial
 ms.date: 11/07/2019
 ms.openlocfilehash: 92a8221d625f8b6b73343f74b85fdfcf5e578b23
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77472192"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>教程：使用 Terraform 通过 Packer 自定义映像创建 Azure 虚拟机规模集
@@ -26,7 +26,7 @@ ms.locfileid: "77472192"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - **Terraform**：[安装 Terraform 并配置对 Azure 的访问](terraform-install-configure.md)。
 - **SSH 密钥对**：[创建 SSH 密钥对](/azure/virtual-machines/linux/mac-create-ssh-keys)。

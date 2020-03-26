@@ -5,17 +5,18 @@ description: 使用 SAS 令牌、加密和 HTTPS 保护云中的应用程序数�
 services: storage
 author: tamram
 ms.service: storage
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: b027ed6b936761e35e835401f9ce8398fac33073
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 13a2a0bcc362a13b0c42650509d356f613527cfc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129636"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80061331"
 ---
 # <a name="secure-access-to-application-data"></a>安全访问应用程序数据
 

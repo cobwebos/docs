@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.openlocfilehash: 2681b2199f321f695bc621ed5580319a5e907b34
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274031"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>教程：生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
@@ -58,7 +58,7 @@ ms.locfileid: "78274031"
 
 [!INCLUDE [create-dbaccount-preview](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="SetupVS"></a>步骤 2：设置 Visual Studio 项目
+## <a name="step-2-set-up-your-visual-studio-project"></a><a id="SetupVS"></a>步骤 2：设置 Visual Studio 项目
 
 1. 打开 Visual Studio 并选择“创建新项目”  。
 1. 在“创建新项目”  中，选择用于 C# 的“控制台应用(.NET Framework)”  ，然后选择“下一步”  。
@@ -75,7 +75,7 @@ ms.locfileid: "78274031"
 
 很好！ 现在，我们已完成安装，让我们开始编写一些代码。 如需本教程的已完成的项目，请参阅 [Developing a .NET console app using Azure Cosmos DB](https://github.com/Azure-Samples/cosmos-dotnet-getting-started)（使用 Azure Cosmos DB 开发 .NET 控制台应用）。
 
-## <a id="Connect"></a>步骤 3：连接到 Azure Cosmos DB 帐户
+## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>步骤 3：连接到 Azure Cosmos DB 帐户
 
 1. 将 *Program.cs* 文件中 C# 应用程序开头的引用替换为以下引用：
 
@@ -270,7 +270,7 @@ ms.locfileid: "78274031"
 
 祝贺你！ 你已成功创建 Azure Cosmos 数据库。  
 
-## <a id="CreateColl"></a>步骤 5：创建容器
+## <a name="step-5-create-a-container"></a><a id="CreateColl"></a>步骤 5：创建容器
 
 > [!WARNING]
 > 方法 `CreateContainerIfNotExistsAsync` 创建新的容器，牵涉到定价。 有关详细信息，请访问 [定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。
@@ -301,7 +301,7 @@ ms.locfileid: "78274031"
 
 祝贺你！ 你已成功创建 Azure Cosmos 容器。  
 
-## <a id="CreateDoc"></a>步骤 6：向容器添加项
+## <a name="step-6-add-items-to-the-container"></a><a id="CreateDoc"></a>步骤 6：向容器添加项
 
 `CosmosContainer` 类的 [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) 方法可以创建项。 使用 SQL API 时，项会投射为文档，后者是用户定义的任意 JSON 内容。 现在，可以将项插入 Azure Cosmos 容器中。
 
@@ -342,7 +342,7 @@ ms.locfileid: "78274031"
 
 祝贺你！ 你已成功创建两个 Azure Cosmos 项。  
 
-## <a id="Query"></a>步骤 7：查询 Azure Cosmos DB 资源
+## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>步骤 7：查询 Azure Cosmos DB 资源
 
 Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查询。 有关详细信息，请参阅 [SQL 查询入门](sql-api-sql-query.md)。 以下示例代码演示了如何针对我们在上一步插入的项来运行查询。
 
@@ -370,7 +370,7 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
 
 祝贺你！ 你已成功查询 Azure Cosmos 容器。
 
-## <a id="ReplaceItem"></a>步骤 8：替换 JSON 项
+## <a name="step-8-replace-a-json-item"></a><a id="ReplaceItem"></a>步骤 8：替换 JSON 项
 
 现在，我们将更新 Azure Cosmos DB 中的一个项。 我们将更改 `Family` 的 `IsRegistered` 属性以及某个孩子的 `Grade`。
 
@@ -399,7 +399,7 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
 
 祝贺你！ 你已成功替换 Azure Cosmos 项。
 
-## <a id="DeleteDocument"></a>步骤 9：删除项目
+## <a name="step-9-delete-item"></a><a id="DeleteDocument"></a>步骤 9：删除项目
 
 现在，我们将删除 Azure Cosmos DB 中的一个项。
 
@@ -429,7 +429,7 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
 
 祝贺你！ 你已成功删除 Azure Cosmos 项。
 
-## <a id="DeleteDatabase"></a>步骤 10：删除数据库
+## <a name="step-10-delete-the-database"></a><a id="DeleteDatabase"></a>步骤 10：删除数据库
 
 现在，我们将删除数据库。 删除已创建的数据库会删除该数据库及其所有子资源。 这些资源包括容器、项、任何存储过程、用户定义的函数以及触发器。 我们还释放 `CosmosClient` 实例。
 
@@ -445,7 +445,7 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
 
 祝贺你！ 你已成功删除 Azure Cosmos 数据库。
 
-## <a id="Run"></a>步骤 11：一起运行 C# 控制台应用程序！
+## <a name="step-11-run-your-c-console-application-all-together"></a><a id="Run"></a>步骤 11：一起运行 C# 控制台应用程序！
 
 在 Visual Studio 中选择 F5，即可在调试模式下生成并运行应用程序。
 
@@ -478,7 +478,7 @@ End of demo, press any key to exit.
 
 祝贺你！ 已经完成了本教程，并且获得了一个正常工作的 C# 控制台应用程序！
 
-## <a id="GetSolution"></a>获取完整的教程解决方案
+## <a name="get-the-complete-tutorial-solution"></a><a id="GetSolution"></a>获取完整的教程解决方案
 
 如果没有时间完成本教程中的步骤，或者只需下载代码示例，则可下载这些示例。
 

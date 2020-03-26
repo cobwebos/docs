@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 8d725834cb2dd86163909b2ae598e61026ae4bb9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6ce0066765de3d99f8309bf568b467518f38923e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024103"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215305"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>快速入门：在 Azure 门户中运行第一个 Batch 作业
 
@@ -24,7 +24,7 @@ ms.locfileid: "77024103"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure 
 
-通过 https://portal.azure.com 登录到 Azure 门户。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-a-batch-account"></a>创建批处理帐户
 
@@ -106,7 +106,7 @@ Batch 会立即创建池，但分配和启动计算节点则需要数分钟。 �
 
 2. 输入名为“mytask”的**任务 ID**。  
 
-3. 在“命令行”中输入 `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`。  其余设置保留默认值，然后选择“确定”  。
+3. 在“命令行”中输入 **。** `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"` 其余设置保留默认值，然后选择“确定”  。
 
    ![创建任务][task_create]
 

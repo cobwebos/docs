@@ -1,7 +1,7 @@
 ---
 title: 教程：在 R 中部署聚类模型
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: 本文是由三个部分组成的教程系列的第三篇文章，其中介绍了如何使用 Azure SQL 数据库机器学习服务（预览版）在 R 中部署聚类模型。
+description: 本文是由三个部分组成的教程系列的第三部分，其中介绍了如何使用 Azure SQL 数据库机器学习服务（预览版）在 R 中部署聚类模型。
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,10 +14,10 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ms.openlocfilehash: 6f4d237d5e923aab61ae34a235d2e1f759399e6d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68640905"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：使用 Azure SQL 数据库机器学习服务（预览版）在 R 中部署聚类模型
@@ -26,12 +26,12 @@ ms.locfileid: "68640905"
 
 你将使用嵌入式 R 脚本创建一个可执行聚类的存储过程。 由于模型在 Azure SQL 数据库中执行，因此可用存储在数据库中的数据轻松地对其进行训练。
 
-本文将介绍如何执行以下操作：
+本文将指导如何进行以下操作：
 
 > [!div class="checklist"]
 > * 创建生成模型的存储过程
-> * 在 SQL 数据库中执行聚类
-> * 使用聚类信息
+> * 在 SQL 数据库中执行聚类分析
+> * 使用聚类分析信息
 
 在[第 1 部分](sql-database-tutorial-clustering-model-prepare-data.md)中，你已了解如何准备 Azure SQL 数据库中的数据，以执行聚类分析。
 
@@ -45,10 +45,10 @@ ms.locfileid: "68640905"
 
 ## <a name="create-a-stored-procedure-that-generates-the-model"></a>创建生成模型的存储过程
 
-运行以下 T-SQL 脚本创建该存储过程。 该过程会重新创建在本教程系列的第一和第二部分制定的步骤：
+运行以下 T-SQL 脚本，以创建存储过程。 此过程会重建本教程系列的第一部分和第二部分中开发的步骤：
 
-* 根据客户的采购和退货历史记录将客户分类
-* 使用 K 平均值算法生成客户的四个聚类
+* 根据客户的购买和返回历史记录，对客户进行分类
+* 使用 K-Means 算法生成四个客户群集
 
 该过程将生成的客户聚类映射存储在数据库表 **customer_return_clusters** 中。
 
@@ -175,7 +175,7 @@ END;
 GO
 ```
 
-## <a name="perform-clustering-in-sql-database"></a>在 SQL 数据库中执行聚类
+## <a name="perform-clustering-in-sql-database"></a>在 SQL 数据库中执行聚类分析
 
 创建该存储过程后，请执行以下脚本来执行聚类。
 
@@ -206,9 +206,9 @@ cluster  customer  orderRatio  itemsRatio  monetaryRatio  frequency
 2        32549     0           0           0.031281       4
 ```
 
-## <a name="use-the-clustering-information"></a>使用聚类信息
+## <a name="use-the-clustering-information"></a>使用聚类分析信息
 
-由于聚类过程已存储在数据库中，因此它可以针对同一个数据库中存储的客户数据的有效执行聚类。 每当更新客户数据和使用更新的聚类信息时，都可以执行该过程。
+由于在数据库中存储了聚类分析过程，因此它可以针对存储在同一数据库中的客户数据高效执行聚类分析。 每次更新客户数据并使用更新的聚类分析信息时，都可以执行该过程。
 
 假设你要将促销电子邮件发送到聚类 3 中的客户，该组的退货行为较活跃（可以在[第二部分](sql-database-tutorial-clustering-model-build.md#analyze-the-results)了解四个聚类的描述方式）。 以下代码选择聚类 3 中客户的电子邮件地址。
 
@@ -237,11 +237,11 @@ WHERE r.cluster = 3
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程系列的第三部分，你已完成以下步骤：
+在本系列教程的第三部分中，你已完成以下步骤：
 
 * 创建生成模型的存储过程
-* 在 SQL 数据库中执行聚类
-* 使用聚类信息
+* 在 SQL 数据库中执行聚类分析
+* 使用聚类分析信息
 
 要了解有关在 Azure SQL 数据库机器学习服务（预览版）中使用 R 的详细信息，请参阅：
 

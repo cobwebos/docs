@@ -17,17 +17,17 @@ ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
 ms.openlocfilehash: 1a276770887bee39972ba8630fb13f52bcbe802d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77049970"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>快速入门：使用 Azure DevOps Projects 为 Java 应用设置 CI/CD 管道
 
 在本快速入门中，将利用简化的 Azure DevOps 项目体验在 Azure Pipelines 中为 Java 应用设置持续集成 (CI) 和持续交付 (CD) 管道。 可以使用 Azure DevOps Projects 来设置开发、部署和监视应用所需的全部设置。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
 - [Azure DevOps](https://azure.microsoft.com/services/devops/) 帐户和组织。

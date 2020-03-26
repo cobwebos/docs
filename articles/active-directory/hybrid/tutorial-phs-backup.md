@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e5ad7badfa44a006fd7e71d3b0e42ee95ac698d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "64919009"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>教程：在 Azure AD Connect 中将 PHS 设置为 AD FS 的后备
@@ -42,14 +42,14 @@ ms.locfileid: "64919009"
 
 1.  双击在桌面上创建的 Azure AD Connect 图标
 2.  单击 **“配置”** 。
-3.  从“其他任务”页中选择“自定义同步选项”，并单击“下一步”。
+3.  从“其他任务”页中选择“自定义同步选项”  ，并单击“下一步”  。
 4.  输入全局管理员的用户名和密码。  上一教程中已在[此处](tutorial-federation.md#create-a-global-administrator-in-azure-ad)创建该帐户。
-5.  在“连接目录”屏幕上，单击“下一步”。
-6.  在“域和 OU 筛选”屏幕上，单击“下一步”。
-7.  在“可选功能”屏幕上，选中“密码哈希同步”并单击“下一步”。
+5.  在“连接目录”  屏幕上，单击“下一步”  。
+6.  在“域和 OU 筛选”  屏幕上，单击“下一步”  。
+7.  在“可选功能”  屏幕上，选中“密码哈希同步”  并单击“下一步”  。
 ![Select](media/tutorial-phs-backup/backup1.png)</br>
-8.  在“准备好配置”屏幕上，单击“配置”。
-9.  一旦配置完成，单击“退出”。
+8.  在“准备好配置”  屏幕上，单击“配置”  。
+9.  一旦配置完成，单击“退出”  。
 10. 就这么简单！  完成。  密码哈希同步即将发生，如果 AD FS 变得不可用，即可用作后备。
 
 ## <a name="switch-to-password-hash-synchronization"></a>切换到密码哈希同步
@@ -60,14 +60,14 @@ ms.locfileid: "64919009"
 
 1. 双击在桌面上创建的 Azure AD Connect 图标
 2.  单击 **“配置”** 。
-3.  选择“更改用户登录”并单击“下一步”。
+3.  选择“更改用户登录”  并单击“下一步”  。
 ![更改](media/tutorial-phs-backup/backup2.png)</br>
 4.  输入全局管理员的用户名和密码。  上一教程中已在[此处](tutorial-federation.md#create-a-global-administrator-in-azure-ad)创建该帐户。
-5.  在“用户登录”屏幕上，选择“密码哈希同步”，并选中“请勿切换用户帐户”框。  
-6.  保留默认选中的“启用单一登录”并单击“下一步”。
-7.  在“启用单一登录”屏幕上单击“下一步”。
-8.  在“准备好配置”屏幕上，单击“配置”。
-9.  配置完成后，单击“退出”。
+5.  在“用户登录”  屏幕上，选择“密码哈希同步”  ，并选中“请勿切换用户帐户”  框。  
+6.  保留默认选中的“启用单一登录”  并单击“下一步”  。
+7.  在“启用单一登录”  屏幕上单击“下一步”  。
+8.  在“准备好配置”  屏幕上，单击“配置”  。
+9.  配置完成后，单击“退出”  。
 10. 用户现在可以使用他们的密码登录到 Azure 和 Azure 服务。
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>使用我们的某位用户测试登录
@@ -81,30 +81,30 @@ ms.locfileid: "64919009"
 
 1.  双击在桌面上创建的 Azure AD Connect 图标
 2.  单击 **“配置”** 。
-3.  选择“更改用户登录”并单击“下一步”。
+3.  选择“更改用户登录”  并单击“下一步”  。
 4.  输入全局管理员的用户名和密码。  这是上一教程中在[此处](tutorial-federation.md#create-a-global-administrator-in-azure-ad)创建的帐户。
-5.  在“用户登录”屏幕上，选择“使用 AD FS 进行联合身份验证”，然后单击“下一步”。  
-6. 在“域管理员凭据”页上，输入 contoso\管理员用户名和密码，然后单击“下一步”。
-7. 在“AD FS 场”屏幕上，单击“下一步”。
-8. 在“Azure AD 域”屏幕上，从下拉列表中选择域，然后单击“下一步”。
-9. 在“准备好配置”屏幕上，单击“配置”。
-10. 配置完成后，单击“下一步”。
+5.  在“用户登录”屏幕上，选择“使用 AD FS 进行联合身份验证”，然后单击“下一步”   。   
+6. 在“域管理员凭据”页上，输入 contoso\管理员用户名和密码，然后单击“下一步”  。
+7. 在“AD FS 场”屏幕上，单击“下一步”。 
+8. 在“Azure AD 域”屏幕上，从下拉列表中选择域，然后单击“下一步”   。
+9. 在“准备好配置”  屏幕上，单击“配置”  。
+10. 配置完成后，单击“下一步”  。
 ![配置](media/tutorial-phs-backup/backup4.png)</br>
-11. 在“验证联合身份验证连接性”屏幕上，单击“验证”。  可能需要配置 DNS 记录（添加 A 和 AAAA 记录），然后此操作才能成功完成。
+11. 在“验证联合身份验证连接性”屏幕上，单击“验证”。    可能需要配置 DNS 记录（添加 A 和 AAAA 记录），然后此操作才能成功完成。
 ![验证](media/tutorial-phs-backup/backup5.png)</br>
-12. 单击“退出”。
+12. 单击“退出”  。
 
 ## <a name="reset-the-ad-fs-and-azure-trust"></a>重置 AD FS 和 Azure 信任
 现在需重置 AD FS 与 Azure 之间的信任。
 
 1.  双击在桌面上创建的 Azure AD Connect 图标
 2.  单击 **“配置”** 。
-3.  选择“管理联合身份验证”，然后单击“下一步”。
-4.  选择“重置 Azure AD 信任”，然后单击“下一步”。
+3.  选择“管理联合身份验证”，然后单击“下一步”。  
+4.  选择“重置 Azure AD 信任”，然后单击“下一步”。  
 ![重置](media/tutorial-phs-backup/backup6.png)</br>
-5.  在“连接到 Azure AD”屏幕上，输入全局管理员的用户名和密码。
-6.  在“连接到 AD FS”屏幕上，输入 contoso\管理员用户名和密码，然后单击“下一步”。
-7.  在“证书”屏幕上，单击“下一步”。
+5.  在“连接到 Azure AD”屏幕上，输入全局管理员的用户名和密码。 
+6.  在“连接到 AD FS”屏幕上，输入 contoso\管理员用户名和密码，然后单击“下一步”  。 
+7.  在“证书”屏幕上，单击“下一步”。  
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>使用我们的某位用户测试登录
 

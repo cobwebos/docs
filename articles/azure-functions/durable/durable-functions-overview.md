@@ -7,17 +7,17 @@ ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
 ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355649"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290085"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
 *Durable Functions* 是 [Azure Functions](../functions-overview.md) 的一个扩展，可用于在无服务器计算环境中编写有状态函数。 在该扩展中，可以通过编写[业务流程协调程序函数](durable-functions-orchestrations.md)和有状态实体并使用 Azure Functions 编程模型编写[实体函数](durable-functions-entities.md)，来定义有状态工作流。   在幕后，该扩展可以管理状态、检查点和重启，使你可以专注于业务逻辑。
 
-## <a name="language-support"></a>支持的语言
+## <a name="supported-languages"></a><a name="language-support"></a>支持的语言
 
 Durable Functions 目前支持以下语言：
 
@@ -40,7 +40,7 @@ Durable Functions 的主要用例是简化无服务器应用程序中出现的�
 * [人机交互](#human)
 * [聚合器（有状态实体）](#aggregator)
 
-### <a name="chaining"></a>模式 #1：函数链
+### <a name="pattern-1-function-chaining"></a><a name="chaining"></a>模式 #1：函数链
 
 在函数链接模式中，将按特定顺序执行一系列函数。 在此模式中，一个函数的输出将应用到另一函数的输入。
 
@@ -97,7 +97,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-### <a name="fan-in-out"></a>模式 #2：扇出/扇入
+### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>模式 #2：扇出/扇入
 
 在扇出/扇入模式中，将会并行执行多个函数，然后等待所有函数完成。 通常会对这些函数返回的结果执行一些聚合操作。
 
@@ -167,7 +167,7 @@ module.exports = df.orchestrator(function*(context) {
 > [!NOTE]
 > 在极少数情况下，崩溃可能在活动函数完成之后、其完成状态已保存到业务流程历史记录之前的时段内发生。 如果发生这种情况，则在进程恢复之后，活动函数将从头开始重新运行。
 
-### <a name="async-http"></a>模式 #3：异步 HTTP API
+### <a name="pattern-3-async-http-apis"></a><a name="async-http"></a>模式 #3：异步 HTTP API
 
 异步 HTTP API 模式解决了使用外部客户端协调长时间运行的操作的状态时出现的问题。 实现此模式的一种常用方式是让 HTTP 终结点触发长时间运行的操作。 然后，将客户端重定向到某个状态终结点，客户端可轮询该终结点，以了解操作是何时完成的。
 
@@ -206,7 +206,7 @@ Durable Functions 扩展公开内置的 HTTP API 用于管理长时间运行的�
 
 有关详细信息，请参阅 [HTTP 功能](durable-functions-http-features.md)一文，其中介绍了如何使用 Durable Functions 扩展通过 HTTP 公开异步的长时间运行的进程。
 
-### <a name="monitoring"></a>模式 #4：监视
+### <a name="pattern-4-monitor"></a><a name="monitoring"></a>模式 #4：监视
 
 监视模式是指工作流中的灵活重复进程。 例如，轮询到满足特定的条件为止。 可以使用常规[计时器触发器](../functions-bindings-timer.md)解决简单方案（例如定期清理作业），但该方案的间隔是静态的，并且管理实例生存期会变得复杂。 可以使用 Durable Functions 创建灵活的重复间隔、管理任务生存期，以及从单个业务流程创建多个监视进程。
 
@@ -280,7 +280,7 @@ module.exports = df.orchestrator(function*(context) {
 
 收到请求时，会为该作业 ID 创建新的业务流程实例。 该实例会一直轮询状态，直到满足条件退出循环。 持久计时器控制轮询间隔。 然后可以执行其他操作，或者可以结束业务流程。 当 `nextCheck` 超过 `expiryTime` 时，监视器将结束。
 
-### <a name="human"></a>模式 #5：人机交互
+### <a name="pattern-5-human-interaction"></a><a name="human"></a>模式 #5：人机交互
 
 许多自动化过程涉及到某种人机交互。 自动化过程中涉及的人机交互非常棘手，因为人的可用性和响应能力不如云服务那样高。 自动化过程允许使用超时和补偿逻辑来实现这种交互。
 
@@ -382,7 +382,7 @@ module.exports = async function (context) {
 
 ---
 
-### <a name="aggregator"></a>模式 #6：聚合器（有状态实体）
+### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>模式 #6：聚合器（有状态实体）
 
 第六种模式涉及到将一段时间的事件数据聚合到单个可寻址的实体。  在此模式中，要聚合的数据可来自多个源、可分批传送，也可以分散在较长的时间段。 聚合器可能需要在事件数据抵达时对其执行操作，而外部客户端可能需要查询聚合数据。
 

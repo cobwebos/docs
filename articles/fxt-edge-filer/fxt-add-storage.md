@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 3f736942627d088e3a639f89bef5438714c2608b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381381"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223134"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>教程：添加后端存储并配置虚拟命名空间 
 

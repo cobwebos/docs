@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bcec326ddab1e74f43e1bb7ef446998a40799fd0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73043561"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Veracode 集成
@@ -90,7 +90,7 @@ ms.locfileid: "73043561"
 
 1. Veracode 还要求在 SAML 响应中传回其他几个属性。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------| --------------- |
     | 名 |User.givenname |
     | 姓 |User.surname |
@@ -129,7 +129,7 @@ ms.locfileid: "73043561"
     b. 对于“用户数据更新”，选择“首选项 Veracode 用户数据”   。
 
     c. 对于“SAML 属性的详细信息”  ，选择以下选项：
-      * “用户角色” 
+      * **用户角色**
       * “策略管理员” 
       * “审阅者” 
       * “安全主管” 

@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: b711a12161bc134bdcbb8c1f3e74f2e5ae06e701
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 3cda4db558210ecbfcfc8ce2aaed8c6f69f5e026
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083145"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79458777"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>快速入门：使用资源管理器模板创建 Azure CDN 配置文件和终结点
 
@@ -42,7 +42,7 @@ ms.locfileid: "74083145"
 
 在所选的位置中创建资源组。 本示例演示如何在“美国东部”位置创建名为 cdn 的资源组。
 
-```bash
+```azurecli-interactive
 az group create --name cdn --location eastus
 ```
 
@@ -189,7 +189,7 @@ az group create --name cdn --location eastus
 
 **endpointOriginHostName** - 要通过 CDN 提供的终结点，例如 cdndemo.azurewebsites.net。
 
-```bash
+```azurecli-interactive
 az group deployment create --resource-group cdn --template-file arm-cdn.json
 ```
 
@@ -197,7 +197,7 @@ az group deployment create --resource-group cdn --template-file arm-cdn.json
 
 ## <a name="view-the-cdn-profile"></a>查看 CDN 配置文件
 
-```bash
+```azurecli-interactive
 az cdn profile list --resource-group cdn -o table
 ```
 
@@ -205,7 +205,7 @@ az cdn profile list --resource-group cdn -o table
 
 ## <a name="view-the-cdn-endpoint-for-the-profile-standard-microsoft"></a>查看 standard-microsoft 配置文件的 CDN 终结点
 
-```bash
+```azurecli-interactive
 az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o table
 ```
 
@@ -213,11 +213,11 @@ az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o t
 
 使用 HostName 查看内容。 例如，使用浏览器访问 https://cdndemo-azurewebsites-net.azureedge.net 。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 删除资源组会自动删除其中部署的所有资源。
 
-```bash
+```azurecli-interactive
 az group delete --name cdn
 ```
 

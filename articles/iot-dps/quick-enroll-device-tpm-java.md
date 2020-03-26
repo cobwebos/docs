@@ -10,11 +10,11 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: c199d5be4c103c80a6fcc126af70f48367909f64
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605368"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290585"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>快速入门：使用 Java 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
@@ -22,7 +22,7 @@ ms.locfileid: "77605368"
 
 在本快速入门中，你将借助示例 Java 应用程序，使用 Java 服务 SDK 以编程方式在 Azure IoT 中心设备预配服务中为模拟 TPM 设备创建单个注册。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
 - 完成[从 TPM 设备读取加密密钥](quick-create-simulated-device.md#simulatetpm)。

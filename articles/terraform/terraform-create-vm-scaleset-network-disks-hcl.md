@@ -4,10 +4,10 @@ description: 了解如何使用 Terraform 配置 Azure 虚拟机规模集并设�
 ms.topic: tutorial
 ms.date: 11/07/2019
 ms.openlocfilehash: 4e445d5e6ae4b7fc4528c6d61ee2bc86870827b1
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77472224"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>教程：使用 Terraform 创建 Azure 虚拟机规模集
@@ -26,7 +26,7 @@ ms.locfileid: "77472224"
 > [!NOTE]
 > [GitHub 上的 Awesome Terraform 存储库](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss)中提供了本文所用的最新版本的 Terraform 配置文件。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 

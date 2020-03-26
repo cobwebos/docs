@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: ed93f332c6361d2f7cd5189ee5fedf3d9f5cf82d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 53f1b9a2fde20cacccd0730213695f26c1200fa7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410445"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132542"
 ---
 # <a name="what-is-azure-databricks"></a>什么是 Azure Databricks？
 
@@ -23,7 +23,7 @@ Azure Databricks 是基于 Apache Spark 的分析平台，已针对 Microsoft Az
 
 ![什么是 Azure Databricks？](./media/what-is-azure-databricks/azure-databricks-overview.png "什么是 Azure Databricks？")
 
-Azure Databricks 是基于Apache Spark 的快速、简单、协作型分析服务。 使用大数据管道时，原始或结构化的数据将通过 Azure 数据工厂以批的形式引入 Azure，或者通过 Kafka、事件中心或 IoT 中心进行准实时的流式传输。 此数据将驻留在 Data Lake（长久存储）、Azure Blob 存储或 Azure Data Lake Storage 中。 在运行分析工作流的过程中，可以使用 Azure Databricks 从 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)、[Azure Data Lake Storage](../data-lake-store/index.md)、[Azure Cosmos DB](../cosmos-db/index.yml) 或 [Azure SQL 数据仓库](../sql-data-warehouse/index.yml)等多个数据源读取数据，并使用 Spark 将数据转化为前所未有的见解。
+Azure Databricks 是基于Apache Spark 的快速、简单、协作型分析服务。 使用大数据管道时，原始或结构化的数据将通过 Azure 数据工厂以批的形式引入 Azure，或者通过 Kafka、事件中心或 IoT 中心进行准实时的流式传输。 此数据将驻留在 Data Lake（长久存储）、Azure Blob 存储或 Azure Data Lake Storage 中。 在运行分析工作流的过程中，可以使用 Azure Databricks 从 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)、[Azure Data Lake Storage](../data-lake-store/index.yml)、[Azure Cosmos DB](../cosmos-db/index.yml) 或 [Azure SQL 数据仓库](../synapse-analytics/sql-data-warehouse/index.yml)等多个数据源读取数据，并使用 Spark 将数据转化为前所未有的见解。
 
 ![Databricks 管道](./media/what-is-azure-databricks/databricks-pipeline.png)
 
@@ -61,7 +61,7 @@ Azure Databricks 在云中拥有安全可靠的生产环境，由 Spark 专家�
 * 使用基于 Spark 的安全数据集成功能，在无需集中化的情况下统一数据。 
 * 即时获得每个版本中的最新 Apache Spark 功能。
 
-### <a name="databricks-runtime"></a>Databricks 运行时
+### <a name="databricks-runtime"></a>Databricks Runtime
 Databricks 运行时构建在 Apache Spark 的基础之上，并且是对 Azure 云原生构建的。 
 
 与“无服务器”选项一样，Azure Databricks 完全消除了设置和配置数据基础结构所存在的基础结构复杂性以及所需的专业知识。  “无服务器”选项可帮助数据科学家以团队形式快速迭代。

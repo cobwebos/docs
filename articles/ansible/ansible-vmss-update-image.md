@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, 虚拟机, 虚拟机规模集,
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: b7d3053c09d2dcb667a4fc407035f4814f786932
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155844"
 ---
 # <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>教程：使用 Ansible 更新 Azure 虚拟机规模集的自定义映像
@@ -235,7 +235,7 @@ ansible-playbook capture-images.yml --extra-vars "resource_group=myrg"
 在本部分中，使用了 playbook 配置以下 Azure 资源：
 
 * 公共 IP 地址
-* 负载均衡
+* 负载均衡器
 * 规模集引用了 `image_vmforimageA`
 
 可通过两种方式获取示例 playbook：

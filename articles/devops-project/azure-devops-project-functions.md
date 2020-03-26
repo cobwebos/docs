@@ -10,10 +10,10 @@ ms.date: 06/20/2019
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: 4e7e9428af86f131632650f18d45e7dd48f4b5cb
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71971558"
 ---
 # <a name="continuously-deploy-to-azure-functions-with-devops-projects"></a>使用 DevOps Projects 持续部署到 Azure Functions
@@ -101,7 +101,7 @@ DevOps Projects 自动在你的 Azure DevOps 组织中配置一个 CI/CD 管道�
 
 1. 选择“编辑”  。 在此窗格中，可以检查生成管道的各种任务。 该生成会执行各种任务，例如，从 Git 存储库提取源代码、生成应用程序、运行单元测试，以及发布用于部署的输出。
 
-1. 选择“触发器”。  DevOps Projects 会自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 （可选）可以选择在 CI 过程中包括或排除分库。
+1. 选择“触发器”。  DevOps Projects 会自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 （可选）可以选择在 CI 过程中包括或排除分支。
 
 1. 选择“保留期”。  可以根据方案指定策略，以保留或删除特定数目的生成。
 
@@ -158,7 +158,7 @@ DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 
 ## <a name="next-steps"></a>后续步骤
 
-可以选择根据所在团队的需求修改这些生成和发布管道。 也可以将此 CI/CD 模式用作其他管道的模板。 本教程介绍了如何：
+可以选择根据所在团队的需求修改这些生成和发布管道。 也可以将此 CI/CD 模式用作其他管道的模板。 在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 DevOps Projects 将 ASP.NET Core 应用部署到 Azure Function

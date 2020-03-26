@@ -4,10 +4,10 @@ description: 此 Azure Policy 模式通过示例介绍了如何在策略定义�
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: e65767dd9cbe7b2192c21f779643289e5a7fc45e
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77170255"
 ---
 # <a name="azure-policy-pattern-field-properties"></a>Azure Policy 模式：字段属性

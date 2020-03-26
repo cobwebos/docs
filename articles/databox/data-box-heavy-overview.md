@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70142916"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>什么是 Azure Data Box Heavy？
@@ -65,7 +65,7 @@ Data Box Heavy 用于在几乎不影响网络的情况下将大量数据移到 A
 | 维度                                              | 宽度：26 英寸 高度：28 英寸 长度：48 英寸 |
 | 机架空间                                              | 无法进行机架安装|
 | 所需的电缆                                         | 包括 4 根接地的120 V/10 A 电源线 (NEMA 5-15) <br> 设备支持最高 240 V 电源，提供 C-13 电源插座 <br> 使用兼容 [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) 的网络电缆  |
-| 幂                                                    | 4 个内置电源 (PSU)，在两个设备节点之间共享 <br> 1,200 瓦特典型功耗|
+| 电源                                                    | 4 个内置电源 (PSU)，在两个设备节点之间共享 <br> 1,200 瓦特典型功耗|
 | 存储容量                                        | 约 1-PB（原始），每个包含 70 个 14 TB 的磁盘 <br> 770 TB 可用容量|
 | 节点数                                          | 每个设备 2 个独立节点（每个 500 TB） |
 | 每个节点的网络接口数                             | 每个节点 4 个网络接口 <br><br> MGMT、DATA3 <ul><li> 2 X 1-GbE 接口 </li><li> MGMT 用于管理和初始设置，用户不可配置 </li><li> 默认情况下，DATA3 是用户可配置的动态主机配置协议 (DHCP)</li></ul>DATA1、DATA2 数据接口 <ul><li>2 X 40-GbE 接口 </li><li> 用户可配置为 DHCP（默认）或静态</li></ul>|

@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d9059c9386af6fab6bb1068d6a9e64b763206f94
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74929208"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>教程：使用 Visual Studio 创建包含复制活动的管道
@@ -55,7 +55,7 @@ ms.locfileid: "74929208"
    * 下载用于 Visual Studio 2013 或 Visual Studio 2015 的 Azure SDK。 导航到 [Azure 下载页](https://azure.microsoft.com/downloads/)，在“.NET”部分中单击“VS 2013”或“VS 2015”。   
    * 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 还可以执行以下步骤来更新插件：在菜单上，依次单击“工具” -> “扩展和更新” -> “联机” -> “Visual Studio 库” -> “适用于 Visual Studio 的 Microsoft Azure 数据工厂工具” -> “更新”。      
 
-## <a name="steps"></a>Steps
+## <a name="steps"></a>步骤
 下面是本教程中要执行的步骤：
 
 1. 在数据工厂中创建“链接服务”  。 此步骤将创建两个链接服务，其类型分别为：Azure 存储和 Azure SQL 数据库。 
@@ -163,7 +163,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
    ``` 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    | 属性 | 说明 |
+    | properties | 说明 |
     |:--- |:--- |
     | type | type 属性设置为 **AzureBlob**，因为数据驻留在 Azure Blob 存储中。 |
     | linkedServiceName | 表示前面创建的 **AzureStorageLinkedService**。 |
@@ -211,11 +211,11 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     ```
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    | 属性 | 说明 |
+    | properties | 说明 |
     |:--- |:--- |
     | type | type 属性设置为 **AzureSqlTable**，因为数据复制到 Azure SQL 数据库中的表。 |
     | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |
-    | tableName | 指定一个表  ，以便将数据复制到其中。 | 
+    | tableName | 指定一个**表**，以便将数据复制到其中。 | 
     | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示输出切片在管道开始和结束时间范围内（而不是范围外）**每小时**生成一次。  |
 
     数据库的 emp 表包含三列 – **ID**、**FirstName** 和 **LastName**。 ID 是标识列，因此只需在此处指定 **FirstName** 和 **LastName**。
@@ -336,7 +336,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     ```powershell    
     Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
-    可运行以下命令来确认数据工厂提供程序是否已注册。 
+    可通过运行以下命令来确认数据工厂提供程序是否已注册。 
     
     ```powershell
     Get-AzResourceProvider
@@ -362,13 +362,13 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     ![数据工厂主页](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
 5. 按照[监视数据集和管道](data-factory-monitor-manage-pipelines.md)中的说明，监视在本教程中创建的管道和数据集。 目前，Visual Studio 不支持对数据工厂管道进行监视。 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 本教程创建了一个 Azure 数据工厂，用于将数据从 Azure Blob 复制到 Azure SQL 数据库。 使用 Visual Studio 创建数据工厂、链接服务、数据集和管道。 下面是本教程中执行的高级步骤：  
 
 1. 创建了 Azure **数据工厂**。
 2. 创建 **链接服务**：
    1. **Azure 存储** 链接服务，链接存放输入数据的 Azure 存储帐户。     
-   2. **Azure SQL** 链接服务，链接存放输出数据的 Azure SQL 数据库。 
+   2. 一个 **Azure SQL** 链接服务，用于链接保存输出数据的 Azure SQL 数据库。 
 3. 创建了 **数据集**，用于描述管道的输入和输出数据。
 4. 创建了包含**复制活动**的**管道**，其中 **BlobSource** 为源，**SqlSink** 为接收器。 
 

@@ -10,17 +10,17 @@ ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: hrasheed
 ms.openlocfilehash: e43d2d64535085a9b22d2febc761fc7026498ba8
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71077138"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用 Apache HBase
 
 本教程演示如何在 Azure HDInsight 中创建 Apache HBase 群集、创建 HBase 表以及使用 Apache Hive 查询表。  有关 HBase 的一般信息，请参阅 [HDInsight HBase 概述](./apache-hbase-overview.md)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Apache HBase 群集
@@ -45,10 +45,10 @@ ms.locfileid: "71077138"
 
 2. 在“自定义部署”边栏选项卡中输入以下值： 
 
-    |属性 |说明 |
+    |properties |说明 |
     |---|---|
-    |Subscription|选择用于创建群集的 Azure 订阅。|
-    |Resource group|创建 Azure 资源管理组，或使用现有的组。|
+    |订阅|选择用于创建群集的 Azure 订阅。|
+    |资源组|创建 Azure 资源管理组，或使用现有的组。|
     |位置|指定资源组的位置。 |
     |ClusterName|输入 HBase 群集的名称。|
     |群集登录名和密码|默认登录名为“admin”  。|
@@ -76,7 +76,7 @@ ms.locfileid: "71077138"
 
 **使用 HBase shell**
 
-1. 使用 `ssh` 命令连接到 HBase 群集。 通过将 `CLUSTERNAME` 替换为群集的名称来编辑以下命令，然后输入该命令：
+1. 使用 `ssh` 命令连接到 HBase 群集。 编辑以下命令，将 `CLUSTERNAME` 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -298,11 +298,11 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 
 为了避免不一致，建议在删除群集之前先禁用 HBase 表。 可以使用 HBase 命令 `disable 'Contacts'`。 如果不打算继续使用此应用程序，请使用以下步骤删除创建的 HBase 群集：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 在顶部的“搜索”框中，键入 **HDInsight**。 
 1. 选择“服务”下的“HDInsight 群集”   。
 1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。 
-1. 单击“删除”  。 单击 **“是”** 。
+1. 单击 **“删除”** 。 单击 **“是”** 。
 
 ## <a name="next-steps"></a>后续步骤
 

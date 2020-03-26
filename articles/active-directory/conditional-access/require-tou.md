@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74380103"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入门：在访问云应用之前要求接受使用条款
@@ -31,7 +31,7 @@ ms.locfileid: "74380103"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门中的方案，你需要：
 
@@ -105,7 +105,7 @@ ms.locfileid: "74380103"
 
 1. 在“新建”页上的“名称”文本框中，键入“要求 Isabella 接受 TOU”。   
 
-   ![Name](./media/require-tou/71.png)
+   ![名称](./media/require-tou/71.png)
 
 1. 在“分配”部分中，单击“用户和组”。  
 
@@ -137,7 +137,7 @@ ms.locfileid: "74380103"
 
 1. 在“授予”页上： 
 
-   ![授权](./media/require-tou/111.png)
+   ![授予](./media/require-tou/111.png)
 
    1. 选择“授予访问权限”  。
    1. 选择“我的 TOU”  。
@@ -189,7 +189,7 @@ ms.locfileid: "74380103"
 
 在上一部分中，你已经了解如何评估模拟登录。 除了模拟之外，还应该测试条件访问策略，以确保其按预期工作。
 
-若要测试策略，请尝试使用 **Isabella Simonsen** 测试帐户登录 [Azure 门户](https://portal.azure.com)。 此时应会出现一个要求接受使用条款的对话框。
+若要测试策略，请尝试使用 [Isabella Simonsen](https://portal.azure.com) 测试帐户登录 **Azure 门户**。 此时应会出现一个要求接受使用条款的对话框。
 
 ![使用条款](./media/require-tou/57.png)
 

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 60463a00c6864bed7b3a18e816ef0143d3573782
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67103252"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>教程：Azure Active Directory 与 Everbridge 集成
@@ -192,7 +192,7 @@ ms.locfileid: "67103252"
 
     a. 在“姓名”  框中，输入 **BrittaSimon**。
   
-    b. 在“用户名”框中输入 `brittasimon@yourcompanydomain.extension`  。 例如 BrittaSimon@contoso.com。
+    b. 在“用户名”框中输入 `brittasimon@yourcompanydomain.extension`  。 示例为 BrittaSimon@contoso.com。
 
     c. 选中“显示密码”复选框  。 记下“密码”框中显示的值  。
 

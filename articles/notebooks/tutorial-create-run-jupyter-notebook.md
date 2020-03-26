@@ -4,10 +4,10 @@ description: 了解如何在 Azure Notebooks 预览版中创建并运行一个�
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.openlocfilehash: 8a1c13f41ef1588b040b3540b852d83764c6ce79
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75660811"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>教程：使用 Python 创建并运行 Jupyter Notebook
@@ -156,10 +156,10 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
 | 文件 | 用于管理 Notebook 文件的命令，包括用于创建和复制 Notebook、显示打印预览，以及以各种格式下载 Notebook 的命令。 |
 | 编辑 | 用于剪切、复制和粘贴单元、查找和替换值、管理单元附件，以及插入图像的典型命令。  |
 | 查看 | 用于控制 Jupyter UI 不同部分的可见性的命令。 |
-| Insert | 用于在当前单元的上方或下方插入新单元的命令。 创建 Notebook 时经常要使用这些命令。 |
+| 插入 | 用于在当前单元的上方或下方插入新单元的命令。 创建 Notebook 时经常要使用这些命令。 |
 | 单元 | 各种“运行”命令用于运行一个单元，或运行采用不同组合形式的多个单元。  “单元类型”命令用于在“代码”、“Markdown”和“原始 NBConvert”（纯文本）之间更改单元的类型。     “当前输出”和“所有输出”命令控制运行代码的输出显示方式，包括一个用于清除所有输出的命令。   |
 | 内核 | 用于管理代码在内核中的运行方式的命令，此外还有一个“更改内核”命令，它可以更改用于运行 Notebook 的语言或 Python 版本。  |
-| data | 用于从项目或会话上传和下载文件的命令。 请参阅[使用项目数据文件](work-with-project-data-files.md) |
+| 数据 | 用于从项目或会话上传和下载文件的命令。 请参阅[使用项目数据文件](work-with-project-data-files.md) |
 | 小组件 | 用于管理 [Jupyter 小组件](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html)的命令。这些小组件提供有关可视化、映射和绘制的附加功能。|
 | 帮助 | 用于提供 Jupyter 界面帮助和文档的命令。 |
 

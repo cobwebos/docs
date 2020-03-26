@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71212058"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户发送通知
@@ -48,7 +48,7 @@ ms.locfileid: "71212058"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程基于在[教程：使用 Azure 通知中心向通用 Windows 平台应用发送通知](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)教程中创建的通知中心和 Visual Studio 项目。 因此，请在开始本教程之前完成该教程。
+本教程基于在[教程：使用 Azure 通知中心向通用 Windows 平台应用发送通知](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)教程中完成的项目中的代码。 因此，请在开始本教程之前完成该教程。
 
 > [!NOTE]
 > 如果使用 Azure 应用服务中的移动应用作为后端服务，请参阅本教程的[移动应用版本](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)。
@@ -236,7 +236,7 @@ ms.locfileid: "71212058"
     using System.Threading.Tasks;
     using System.Linq;
     ```
-15. 在 `RegisterClient` 类定义中添加以下代码：
+15. 在 `RegisterClient` 类定义中添加以下代码。
 
     ```csharp
     private string POST_URL;

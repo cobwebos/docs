@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 4baf12533bed523c81ff41a81975f5bf5b918ac2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 7c26487018b9632b5780dcd7c56ab36f286f8cac
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250805"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060002"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>教程：使用 Azure 门户创建 NAT 网关并测试 NAT 服务
 
 在本教程中，你将创建一个 NAT 网关来为 Azure 中的虚拟机提供出站连接。 为了测试该 NAT 网关，你将部署源和目标虚拟机。 你将通过从源虚拟机的公共 IP 地址与目标虚拟机建立出站连接，来测试 NAT 网关。  为简单起见，本教程将源和目标部署在同一资源组中的两个不同虚拟网络内。
 
->[!NOTE] 
->Azure 虚拟网络 NAT 目前以公共预览版提供，仅在有限的几个[区域](./nat-overview.md#region-availability)中可用。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms)。
+如果你愿意，可以使用 [Azure CLI](tutorial-create-validate-nat-gateway-cli.md) 或 [Azure PowerShell](tutorial-create-validate-nat-gateway-powershell.md) 而不是门户来完成这些步骤。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -315,7 +314,6 @@ hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 - 有关[使用 Azure CLI 部署 NAT 网关资源](./quickstart-create-nat-gateway-cli.md)的快速入门。
 - 有关[使用 Azure PowerShell 部署 NAT 网关资源](./quickstart-create-nat-gateway-powershell.md)的快速入门。
 - 有关[使用 Azure 门户部署 NAT 网关资源](./quickstart-create-nat-gateway-portal.md)的快速入门。
-- [提供有关公共预览版的反馈](https://aka.ms/natfeedback)。
 
 > [!div class="nextstepaction"]
 

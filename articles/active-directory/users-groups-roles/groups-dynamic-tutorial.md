@@ -15,17 +15,17 @@ ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74027111"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>教程：自动添加或删除组成员
 
 在 Azure Active Directory (Azure AD) 中，可以自动地在安全组或 Office 365 组中添加或删除用户，因此不必总是手动执行该操作。 当用户或设备的任何属性更改时，Azure AD 会评估租户中的所有动态组规则，看该更改是否会导致成员的添加或删除。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 在合作伙伴公司中创建自动填充的来宾用户组
 > * 向特定于合作伙伴的功能所对应的组分配许可证，方便来宾用户访问
@@ -97,7 +97,7 @@ ms.locfileid: "74027111"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 > [!div class="checklist"]
 > * 创建包含来宾用户的组
 > * 将许可证分配给新组

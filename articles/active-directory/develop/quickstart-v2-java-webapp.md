@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 3bfcc1ef8c58f71811af604fbc07736a13102e83
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c2f3272beb463a16f9488139b6c3a45febae6493
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249087"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79529628"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -99,7 +99,7 @@ ms.locfileid: "78249087"
 >   将生成的 keystore 文件放在“resources”文件夹中。
    
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [下载代码示例]()
+> [下载代码示例](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-code-sample"></a>步骤 3：配置代码示例

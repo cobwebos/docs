@@ -17,10 +17,10 @@ ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43fd1375ac8ffa850ca3f2c4c2b34e63631a9811
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72025917"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ARC Facilities 集成
@@ -97,7 +97,7 @@ ms.locfileid: "72025917"
 
     ![image](./media/arc-facilities-tutorial/config01.png)
 
-    ![图像](./media/arc-facilities-tutorial/config02.png)
+    ![image](./media/arc-facilities-tutorial/config02.png)
 
     b. 从单选列表中选择“所有组”。 
 

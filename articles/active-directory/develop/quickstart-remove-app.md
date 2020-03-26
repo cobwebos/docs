@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 3cc9e4458f14a63bad7f484bc16683248895ede9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704079"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215895"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>快速入门：删除注册到 Microsoft 标识平台的应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "76704079"
 * 删除你或你的组织编写的应用程序
 * 删除其他组织编写的应用程序
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 拥有一个其中已注册了应用程序的租户。 若要了解如何添加和注册应用，请参阅[将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)。
 

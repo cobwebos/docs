@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 07/11/2019
 ms.openlocfilehash: 602de3e23eb5419958f84b071e2220550d1d04d0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73821721"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL 数据库托管实例入门
@@ -45,7 +45,7 @@ ms.locfileid: "73821721"
 
 创建托管实例和配置访问权限后，可以开始迁移本地 SQL Server 或 Azure VM 上的数据库。 如果要迁移的源数据库中存在一些不受支持的功能，则迁移将会失败。 若要避免失败并检查兼容性，可以安装[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)，用于分析 SQL Server 上的数据库，并找出可能会阻止迁移到托管实例的任何问题，例如，是否存在 [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) 或多个日志文件。 解决这些问题后，即可将数据库迁移到托管实例。 [数据库实验助手](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/)是另一个有用的工具，它可以记录 SQL Server 上的工作负荷，并在托管实例上重放该工作负荷，以便可以确定在迁移到托管实例时是否会出现任何性能问题。
 
-确保可将数据库迁移到托管实例后，可以使用本机 SQL Server 还原功能通过 `.bak` 文件将数据库还原到托管实例。 可以使用此方法从本地安装的 SQL Server 数据库引擎或 Azure VM 迁移数据库。 请参阅快速入门[从备份还原到托管实例](sql-database-managed-instance-get-started-restore.md)。 此快速入门介绍了如何使用 `RESTORE` Transact-SQL 命令从 Azure Blob 存储中存储的 `.bak` 文件还原。
+确保可将数据库迁移到托管实例后，可以使用本机 SQL Server 还原功能通过 `.bak` 文件将数据库还原到托管实例。 可以使用此方法从本地安装的 SQL Server 数据库引擎或 Azure VM 迁移数据库。 请参阅快速入门[从备份还原到托管实例](sql-database-managed-instance-get-started-restore.md)。 此快速入门介绍了如何使用 `.bak` Transact-SQL 命令从 Azure Blob 存储中存储的 `RESTORE` 文件还原。
 
 > [!TIP]
 > 若要使用 `BACKUP` Transact-SQL 命令创建 Azure Blob 存储中数据库的备份，请参阅 [SQL Server 备份到 URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)。

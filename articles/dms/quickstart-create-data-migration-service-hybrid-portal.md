@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 01/21/2019
-ms.openlocfilehash: 8dba12fc2c3777c2c45315f1805fa7ec8f1d8b83
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.date: 03/13/2020
+ms.openlocfilehash: dd3e77610749eb5d146b0c0b7cf9d307fba0dd83
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255044"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79370230"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>快速入门：使用 Azure 门户和 Azure 数据库迁移服务创建混合模式实例
 
@@ -146,7 +146,7 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
 7. 运行以下命令，在本地服务器上安装 Azure 数据库迁移服务混合辅助角色：
 
     ```
-    <drive>:\<folder>\Install>DMSWorkerBootstrap.exe -a Install -IAcceptDMSLicenseTerms
+    <drive>:\<folder>\Install>DMSWorkerBootstrap.exe -a Install -IAcceptDMSLicenseTerms -d
     ```
 
     > [!NOTE]

@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
 ms.openlocfilehash: e964be548a2f82ecc268a147dd20817b232f51a6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74924809"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure 数据工厂与数据工厂版本 1 之对比
@@ -30,7 +30,7 @@ ms.locfileid: "74924809"
 | 管道 | 数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 可使用 startTime、endTime、isPaused 来计划和运行管道。 | 管道是对数据执行的成组活动。 但是，管道中活动的计划已单独划归到新的触发器资源中。 可以将数据工厂的当前版本中的管道视为“工作流单位”，可以单独地通过触发器对其进行计划，这样更贴切些。 <br/><br/>在数据工厂的当前版本中，管道不按时间“段”来执行。 数据工厂 V1 中的 startTime、endTime 和 isPaused 概念在数据工厂的当前版本中不再存在。 有关详细信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)与[管道和活动](concepts-pipelines-activities.md)。 |
 | 活动 | “活动”用于定义在管道中对数据执行的操作。 支持数据移动（复制活动）和数据转换活动（例如 Hive、Pig 和 MapReduce）。 | 在数据工厂的当前版本中，活动仍然是在管道中定义的操作。 数据工厂的当前版本引入了新的[控制流活动](concepts-pipelines-activities.md#control-flow-activities)。 可以在控制流（循环和分支）中使用这些活动。 在 V1 中受支持的数据移动和数据转换活动在当前版本中也受支持。 在当前版本中，在定义转换活动时可以不使用数据集。 |
 | 混合数据移动和活动分派 | [数据管理网关](v1/data-factory-data-management-gateway.md)即现在的 Integration Runtime，支持在本地和云之间移动数据。| 数据管理网关现在称为自承载 Integration Runtime。 它提供的功能与 V1 中的相同。 <br/><br/> 数据工厂的当前版本中的 Azure-SSIS Integration Runtime 还支持在云中部署和运行 SQL Server Integration Services (SSIS) 包。 有关详细信息，请参阅 [Azure 数据工厂中的集成运行时](concepts-integration-runtime.md)。|
-| parameters | NA | 参数是在管道中定义的只读配置设置的键值对。 可以在手动运行管道时，传递参数的自变量。 如果使用计划程序触发器，该触发器还可以传递参数的值。 管道中的活动使用参数值。  |
+| 参数 | NA | 参数是在管道中定义的只读配置设置的键值对。 可以在手动运行管道时，传递参数的自变量。 如果使用计划程序触发器，该触发器还可以传递参数的值。 管道中的活动使用参数值。  |
 | 表达式 | 数据工厂 V1 允许在数据选择查询和活动/数据集属性中使用函数和系统变量。 | 在数据工厂的当前版本中，可以在 JSON 字符串值中的任何位置使用表达式。 有关详细信息，请参阅[数据工厂的当前版本中的表达式和函数](control-flow-expression-language-functions.md)。|
 | 管道运行 | NA | 管道执行的单个实例。 例如，假设你有一个管道分别在上午 8 点、9 点和 10 点执行。 在这种情况下，将分三次单独运行管道（即三次管道运行）。 每次管道运行都有唯一的管道运行 ID。 管道运行 ID 是一个 GUID，用于对特定的管道运行进行唯一定义。 管道运行通常通过将自变量传递给管道中定义的参数进行实例化。 |
 | 活动运行 | NA | 管道中活动执行的实例。 | 
@@ -48,7 +48,7 @@ ms.locfileid: "74924809"
 ### <a name="branching-activities"></a>分支活动
 在当前版本中，可以在管道中对活动进行分支。 [If-condition 活动](control-flow-if-condition-activity.md)可提供 `if` 语句在编程语言中提供的相同功能。 当条件计算结果为 `true` 时，它会计算一组活动，当条件计算结果为 `false` 时，它会计算另一组活动。 有关分支活动的示例，请参阅[分支和链接活动](tutorial-control-flow.md)教程。
 
-### <a name="parameters"></a>parameters 
+### <a name="parameters"></a>参数 
 可以在管道级别定义参数，在按需或通过触发器调用管道时传递自变量。 活动可以使用传递给管道的自变量。 有关详细信息，请参阅[管道和触发器](concepts-pipeline-execution-triggers.md)。 
 
 ### <a name="custom-state-passing"></a>自定义状态传递

@@ -8,10 +8,10 @@ ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 03/06/2020
 ms.openlocfilehash: c0eaf3907cbfcd86424b1d2cbc03930a7af72786
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78927570"
 ---
 # <a name="create-a-azure-media-services-live-stream-with-the-portal-and-wirecast"></a>使用门户和 Wirecast 创建 Azure 媒体服务实时流

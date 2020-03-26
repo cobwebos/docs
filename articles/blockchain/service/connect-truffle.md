@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: quickstart
 ms.reviewer: janders
 ms.openlocfilehash: 9ea96aa32072775fe6fb9563442f5e3564d37ea5
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74455793"
 ---
 # <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>快速入门：使用 Truffle 连接到 Azure 区块链服务
@@ -52,7 +52,7 @@ ms.locfileid: "74455793"
 
 若要配置 Truffle 项目，需要从 Azure 门户获取一些事务节点信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 转到你的 Azure 区块链服务成员。 选择“事务节点”  和默认事务节点链接。
 
     ![选择默认事务节点](./media/connect-truffle/transaction-nodes.png)

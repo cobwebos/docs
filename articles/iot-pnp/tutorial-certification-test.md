@@ -9,10 +9,10 @@ ms.author: koichih
 author: konichi3
 ms.date: 12/27/2019
 ms.openlocfilehash: dc2c33659f3f3a3df0f11fcc6ab36a9fc993da43
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75550156"
 ---
 # <a name="tutorial-certify-your-iot-plug-and-play-preview-device"></a>教程：认证 IoT 即插即用预览版设备
@@ -28,7 +28,7 @@ ms.locfileid: "75550156"
 > * 如何查看 IoT 即插即用接口和运行认证测试。
 > * 如何将认证的 IoT 即插即用设备发布到目录。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/04/2019
 ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67797194"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>快速入门：在 Azure 数据资源管理器 Web UI 中查询数据
@@ -181,7 +181,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 数据资源管理器当前处于预览阶段，欢迎提供体验反馈。 可立即执行此操作，也可等待，直到你已经花了更多时间。
 
-1. 在应用程序的右上角，选择反馈图标： ![反馈图标](media/web-query-data/icon-feedback.png).
+1. 在应用程序的右上角，选择反馈图标： ![反馈图标](media/web-query-data/icon-feedback.png)。
 
 1. 输入反馈，然后选择“提交”  。
 

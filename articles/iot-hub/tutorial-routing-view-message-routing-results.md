@@ -10,10 +10,10 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73890396"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教程：第 2 部分 - 查看路由的消息
@@ -40,7 +40,7 @@ ms.locfileid: "73890396"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“+ 创建资源”。  在搜索框中输入“逻辑应用”，并单击 Enter  。 在显示的搜索结果中选择“逻辑应用”，然后选择“创建”进入“创建逻辑应用”窗格   。 填充字段。
 
-   **名称**：此字段是逻辑应用的名称。 本教程使用 ContosoLogicApp  。
+   **Name**：此字段是逻辑应用的名称。 本教程使用 ContosoLogicApp  。
 
    **订阅**：选择 Azure 订阅。
 

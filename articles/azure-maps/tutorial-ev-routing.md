@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 22a8561d69dd0eeb22f9fe025f5b792422db2c17
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77208159"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks 规划电动车路线 (Python)
@@ -35,7 +35,7 @@ Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发�
 > * 基于驾驶时间查找并直观显示最近的电动车充电站的路线。
 
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 
 若要完成本教程，首先需要创建一个 Azure Maps 帐户并获取主密钥（订阅密钥）。 
 

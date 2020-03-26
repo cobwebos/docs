@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 域服务概述 | Microsoft Docs
+title: Azure Active Directory 域服务概述 | Microsoft 文档
 description: 在本概述中，了解 Azure Active Directory 域服务提供的内容，以及如何在组织中用其向云中的应用程序和服务提供标识服务。
 services: active-directory-ds
 author: iainfoulds
@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 01/22/2020
 ms.author: iainfou
 ms.openlocfilehash: ea0fa0e9d4e475a8496d1ee52b4cdfea11a13d8d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76544098"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>什么是 Azure Active Directory 域服务？

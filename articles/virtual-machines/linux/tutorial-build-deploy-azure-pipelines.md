@@ -12,10 +12,10 @@ ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
 ms.openlocfilehash: bb7c773d02c5da5c115af79cd9e90c78e71eb6bf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76988322"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>教程：使用 Azure DevOps Services 和 Azure Pipelines 将应用部署到 Azure 中的 Linux 虚拟机
@@ -53,7 +53,7 @@ Azure Pipelines 提供了一组完整且功能完备的 CI/CD 自动化工具，
 
 但是，如果你是新用户，则可以使用我们的示例代码来获得更好的入门体验。 在这种情况下，请在 GitHub 中对此存储库创建分支：
 
-#### <a name="javatabjava"></a>[Java](#tab/java)
+#### <a name="java"></a>[Java](#tab/java)
 
 ```
 https://github.com/spring-projects/spring-petclinic
@@ -62,7 +62,7 @@ https://github.com/spring-projects/spring-petclinic
 > [!NOTE]
 > Petclinic 是使用 [Maven](https://spring.io/guides/gs/maven/) 生成的 [Java Spring Boot](https://spring.io/guides/gs/spring-boot) 应用程序。
 
-#### <a name="javascripttabjava-script"></a>[JavaScript](#tab/java-script)
+#### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
 ```
 https://github.com/azure-devops/fabrikam-node
@@ -82,13 +82,13 @@ https://github.com/azure-devops/fabrikam-node
 上面提到的示例应用已在 Ubuntu 16.04 上经过测试，我们建议你将相同版本的 Linux VM 用于此快速入门。
 根据用于应用的运行时堆栈，遵循下面所述的其他步骤。
 
-#### <a name="javatabjava"></a>[Java](#tab/java)
+#### <a name="java"></a>[Java](#tab/java)
 
 - 若要部署基于 Java Spring Boot 和基于 Spring Cloud 的应用，请使用[此](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804)模板在 Azure 中创建 Linux VM，此模板可提供完全受支持的基于 OpenJDK 的运行时。
 - 若要在 Tomcat 服务器上部署 Java servlet，请使用[此](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) Azure 模板通过 Java 8 创建 Linux VM，并[将 Tomcat 9.x 配置为服务](https://tomcat.apache.org/tomcat-9.0-doc/setup.html)。
 - 若要部署基于 Java EE 的应用，请使用 Azure 模板创建 [Linux VM + Java + WebSphere 9.x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90) 或 [Linux VM + Java + WebLogic 12.x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin) 或 [Linux VM + Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + WildFly/JBoss 14 
 
-#### <a name="javascripttabjava-script"></a>[JavaScript](#tab/java-script)
+#### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
 若要安装 javascript 应用或 Node.js 应用，需要使用包含 Nginx Web 服务器的 Linux VM 来部署应用。
 如果你没有包含 Nginx 的 Linux VM，请使用[此示例](/azure/virtual-machines/linux/quick-create-cli)中的步骤在 Azure 中创建一个。
@@ -141,7 +141,7 @@ https://github.com/azure-devops/fabrikam-node
 
 1. Azure Pipelines 将分析存储库，并建议使用合适的管道模板。
 
-#### <a name="javatabjava"></a>[Java](#tab/java)
+#### <a name="java"></a>[Java](#tab/java)
 
 选择“入门”模板，并复制下面的 YAML 代码片段，该代码片段可生成 Java 项目并使用 Apache Maven 运行测试  ：
 
@@ -165,7 +165,7 @@ https://github.com/azure-devops/fabrikam-node
 
 有关更多指导，请按照[使用 Maven 生成 Java 应用](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/java)中所述的步骤进行操作。
 
-#### <a name="javascripttabjava-script"></a>[JavaScript](#tab/java-script)
+#### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
 选择“入门”模板，然后复制以下 YAML 代码片段，该代码片段使用 npm 生成常规 Node.js 项目  。
 

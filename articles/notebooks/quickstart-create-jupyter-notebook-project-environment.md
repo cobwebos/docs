@@ -4,10 +4,10 @@ description: 在配置了一组特定的已安装包和启动脚本的 Azure Not
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: 6388cb7997cac5bef25975043a13c4e080f288d4
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78196835"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中创建具有自定义环境的项目

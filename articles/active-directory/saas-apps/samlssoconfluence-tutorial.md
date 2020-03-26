@@ -17,10 +17,10 @@ ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9676a71940569b26d6b0b6bfef767108ae57d953
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161215"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>教程：Azure Active Directory 与 SAML SSO for Confluence by resolution GmbH 集成
@@ -143,7 +143,7 @@ ms.locfileid: "73161215"
 
     ![配置单一登录](./media/samlssoconfluence-tutorial/addon7.png)
 
-6. 插件安装随即开始。 单击“**关闭**”。
+6. 插件安装随即开始。 单击“关闭”  。
 
     ![配置单一登录](./media/samlssoconfluence-tutorial/addon8.png)
 

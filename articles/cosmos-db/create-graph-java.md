@@ -10,10 +10,10 @@ ms.date: 03/26/2019
 ms.author: lbosq
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 9f9b6614c586d9c7c721dfc59da9c4a9c342b57c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77062027"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>快速入门：使用 Java SDK 和 Azure Cosmos DB Gremlin API 构建图形数据库
@@ -29,7 +29,7 @@ ms.locfileid: "77062027"
 
 在本快速入门中，你将通过 Azure 门户创建和管理 Azure Cosmos DB Gremlin（图形）API 帐户，并使用从 GitHub 克隆的 Java 应用来添加数据。 Azure Cosmos DB 是一种多模型数据库服务，它通过全局分布和水平缩放功能让你快速创建和查询文档、表、键/值和图形数据库。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 - 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
 - [Java 开发工具包 (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 将 `JAVA_HOME` 环境变量指向其中安装了 JDK 的文件夹。
 - [Maven 二进制存档](https://maven.apache.org/download.cgi)。 
@@ -127,7 +127,7 @@ ms.locfileid: "77062027"
 
     `username: /dbs/$database$/colls/$collection$`
 
-    更改为 
+    to 
 
     `username: /dbs/sample-database/colls/sample-graph`
 
@@ -199,11 +199,11 @@ ms.locfileid: "77062027"
 
 9. 选择“添加属性”  ，以添加下列每个属性：
 
-    键|值|说明
+    key|值|说明
     ----|----|----
     id|rakesh|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
-    gender|male| 
-    school|MIT| 
+    gender|男| 
+    学校|MIT| 
 
 10. 选择“确定”  。 
 

@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 门户创建第一个可无服务器执行
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.openlocfilehash: 1492188f72eb4a691ddceb78aa269601f192e467
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76963829"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>在 Azure 应用服务计划中创建 Linux 上的函数应用
@@ -57,7 +57,7 @@ ms.locfileid: "76963829"
 
 接下来，在新的 Function App 中创建一个函数。 即使函数应用可用，它也可能需要花费几分钟时间才能完全初始化。
 
-## <a name="create-function"></a>创建 HTTP 触发的函数
+## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>创建 HTTP 触发的函数
 
 本部分介绍如何使用门户在新的函数应用中创建函数。
 

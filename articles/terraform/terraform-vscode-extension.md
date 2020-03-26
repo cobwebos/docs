@@ -4,10 +4,10 @@ description: 了解如何在 Visual Studio Code 中安装和使用 Azure Terrafo
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: fcb47024fd26f061ca4475b01d00f1ae13303b61
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77472275"
 ---
 # <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>教程：配置 Azure Terraform Visual Studio Code 扩展
@@ -20,7 +20,7 @@ ms.locfileid: "77472275"
 > * 安装和使用 Azure 服务提供的 Terraform Visual Studio Code 扩展。
 > * 使用 Visual Studio Code 编写、规划和执行 Terraform 计划。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 - **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 - **Terraform**：[安装和配置 Terraform](terraform-install-configure.md)。

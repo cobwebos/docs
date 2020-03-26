@@ -10,10 +10,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
 ms.openlocfilehash: fa6e393500e9deeb91ee84aa5255320003817f08
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76719885"
 ---
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>教程：在两个托管实例和 SQL Server 之间配置事务复制
@@ -34,7 +34,7 @@ ms.locfileid: "76719885"
 
 若要配置托管实例发布服务器和托管实例订阅服务器之间的复制，请参阅[在两个托管实例之间配置事务复制](replication-with-sql-database-managed-instance.md)。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保具备以下先决条件：
 

@@ -9,10 +9,10 @@ ms.date: 03/02/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 7220e48c6103352108bdb89e107bb862ee194040
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251487"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>教程：在 Azure 门户中通过 Azure 防火墙 DNAT 筛选入站 Internet 流量
@@ -121,7 +121,7 @@ ms.locfileid: "78251487"
 2. 对于“子网”，请选择“SN-Workload”。  
 3. 对于“公共 IP 地址”，请选择“无”。  
 4. 对于“公共入站端口”，请选择“无”。   
-2. 保留其他默认设置，然后选择“下一步:  管理”。
+2. 保留其他默认设置，然后选择“下一步:**管理”** 。
 
 **管理**
 

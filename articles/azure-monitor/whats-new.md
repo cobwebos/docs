@@ -6,17 +6,17 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 03/05/2020
-ms.openlocfilehash: b42acdf64612da6837bc67752f7a22169ddef7e2
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: c29790035ec4e971957784e826a1e8bd8e0c9329
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673323"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79500492"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 本文提供新的或已经过重大更新的 Azure Monitor 文章列表。 在每个月的第一周，本文将会刷新，以包含上个月的文章更新。
 
-## <a name="march-2020"></a>2020 年 3 月
+## <a name="february-2020"></a>2020 年 2 月
 
 ### <a name="agents"></a>代理
 通过重新编写诊断扩展内容进行了多处更新。
@@ -27,7 +27,7 @@ ms.locfileid: "78673323"
 - [安装并配置 Windows Azure 诊断扩展 (WAD)](platform/diagnostics-extension-windows-install.md) - 新文章。 
 - [Windows 诊断扩展架构](platform/diagnostics-extension-schema-windows.md) - 已重新组织。
 - [将数据从 Windows Azure 诊断扩展发送到 Azure 事件中心](platform/diagnostics-extension-stream-event-hubs.md) - 全部进行了重新编写和更新。
-- [在 Azure 存储中存储和查看诊断数据](platform/diagnostics-extension-to-storage.md) - 全部进行了重新编写和更新。
+- [在 Azure 存储中存储和查看诊断数据](/azure/cloud-services/diagnostics-extension-to-storage) - 全部进行了重新编写和更新。
 - [适用于 Windows 的 Log Analytics 虚拟机扩展](../virtual-machines/extensions/oms-windows.md) - 更好地阐明了与 Log Analytics 代理的关系。
 - [适用于 Linux 的 Azure Monitor 虚拟机扩展](../virtual-machines/extensions/oms-linux.md) - 更好地阐明了与 Log Analytics 代理的关系。
 
@@ -53,7 +53,7 @@ ms.locfileid: "78673323"
 - [优化 Azure Monitor 中的日志查询](log-query/query-optimization.md) - 新文章。
 - [管理 Azure Monitor 日志的使用情况和成本](platform/manage-cost-storage.md) - 改进了示例查询来帮助你更好地了解使用情况。
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 - [可通过诊断设置导出的 Azure Monitor 平台指标](platform/metrics-supported-export-diagnostic-settings.md) - 添加了有关针对 null 值和零值的行为更改的内容。
 
 
@@ -175,7 +175,7 @@ ms.locfileid: "78673323"
 - [删除和恢复 Azure Log Analytics 工作区](platform/delete-workspace.md) - 添加了 PowerShell 方法。
 - [设计 Azure Monitor 日志部署](platform/design-logs-deployment.md) - 提高了工作区的引入速率。
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 - [可通过诊断设置导出的 Azure Monitor 平台指标](platform/metrics-supported-export-diagnostic-settings.md) - 新文章。
 
 ### <a name="platform-logs"></a>平台日志

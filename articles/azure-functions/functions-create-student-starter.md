@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
 ms.openlocfilehash: 189a0bc80ab2894b2888b496b3beb45249d859f6
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75921133"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>使用面向学生的 Azure 入门版创建函数
@@ -72,7 +72,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 接下来，在新的 Function App 中创建一个函数。
 
-## <a name="create-function"></a>创建 HTTP 触发的函数
+## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>创建 HTTP 触发的函数
 
 1. 展开新的函数应用，然后选择 **Functions** 旁边的 **+** 按钮，选择“门户中”  ，然后选择“继续”  。
 

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 398c947e98486fa975f3f786fb64f45e9cae9287
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobi"></a>教程：Azure Active Directory 与 MOBI 集成

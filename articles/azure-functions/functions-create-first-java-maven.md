@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: dbdcf2552b453fa72bfec616a02bd45afc45fb0f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: ad3b38a12020c56c31e03879b3fbcb9a8dda25f1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272736"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79136861"
 ---
 # <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>快速入门：使用 Java 和 Maven/Gradle 创建函数并将其发布到 Azure
 
@@ -136,14 +136,14 @@ Application started. Press Ctrl+C to shut down.
 
 Http Functions:
 
-    HttpTrigger-Java: [GET,POST] http://localhost:7071/api/HttpTrigger-Java
+    HttpExample: [GET,POST] http://localhost:7071/api/HttpExample
 ...
 ```
 
 使用 cURL 在新的终端窗口中从命令行触发函数：
 
 ```bash
-curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
+curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
 ```
 
 ```output
@@ -215,7 +215,7 @@ gradle azureFunctionsDeploy
 若要使用 `cURL` 验证在 Azure 上运行的函数应用，请将以下示例中的 URL 替换为从门户复制的 URL。
 
 ```console
-curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
+curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpExample?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
 这会向函数终结点发送一个 POST 请求，请求正文中包含 `AzureFunctions`。 会看到以下响应。

@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: 4c6a9a2b5991c9f99bf728ecfed144cc77e4c49a
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314328"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290465"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -66,7 +66,7 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 对于无代码或低代码训练和部署，请尝试：
 
-+ **Azure 机器学习设计器**
++ **Azure 机器学习设计器（预览版）**
 
   使用设计器可在不编写任何代码的情况下准备数据、训练、测试、部署、管理和跟踪机器学习模型。 不需要编程，只需以可视方式连接数据集和模块即可构建模型。 尝试[设计器教程](tutorial-designer-automobile-price-train-score.md)。
 
@@ -116,7 +116,7 @@ Azure 机器学习可与 Azure 平台上的其他服务配合使用，还能与�
 
 Azure 存储帐户、计算目标和其他资源可在虚拟网络内安全地用于定型模型并执行推理。 有关详细信息，请参阅[虚拟网络中的安全试验和推理](how-to-enable-virtual-network.md)。
 
-## <a name="sku"></a>Basic 和 Enterprise Edition
+## <a name="basic--enterprise-editions"></a><a name="sku"></a>Basic 和 Enterprise Edition
 
 Azure 机器学习提供了两个版本，专为你的机器学习需求提供：
 + Basic（正式版）

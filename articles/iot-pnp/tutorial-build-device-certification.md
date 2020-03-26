@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: ce7d3ee8a0d05d837bc0049cba688cffe14d8a8c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e97aa07d2a43a03805fd881c674157ee676c37b4
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721636"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239907"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>生成可供认证的 IoT 即插即用预览版设备
 
@@ -28,7 +28,7 @@ ms.locfileid: "76721636"
 - 设备代码是否实现设备信息接口。
 - 功能模型和设备代码可在 IoT Central 正常运行。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 
@@ -91,7 +91,7 @@ ms.locfileid: "76721636"
 
 1. 使用以下 Azure CLI 命令显示设备信息接口 ID 所对应的接口：
 
-    ```cmd/sh
+    ```azurecli
     az iot pnp interface show --interface urn:azureiot:DeviceManagement:DeviceInformation:1
     ```
 

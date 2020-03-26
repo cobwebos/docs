@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.custom: mvc
 ms.openlocfilehash: b2ce157f0f192135ab0507e4aae4c0a282bda1ea
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76166179"
 ---
 # <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>对 Azure VM 的次要区域运行灾难恢复演练
@@ -25,7 +25,7 @@ ms.locfileid: "76166179"
 > [!NOTE]
 > 本教程将帮助你以最少的步骤执行灾难恢复演练。 若要详细了解与执行灾难恢复演练相关的各种功能，请参阅与 Azure VM [复制](azure-to-azure-how-to-enable-replication.md)、[网络](azure-to-azure-about-networking.md)、[自动化](azure-to-azure-powershell.md)或[故障排除](azure-to-azure-troubleshoot-errors.md)相关的文档。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在尝试学习本教程之前，请检查以下各项：
 

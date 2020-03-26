@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d5086377b0bb7f3ca2ece643f82a4e45156f1955
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78184819"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>使用访问控制策略提供 Key Vault 身份验证

@@ -4,10 +4,10 @@ description: 了解如何在中心-辐射拓扑中实现两个连接到某个中
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 2a36b8ac22fb52f6b8f1246fd254d9c3ff22fc82
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159007"
 ---
 # <a name="tutorial-create-a-spoke-network-in-azure-using-terraform"></a>教程：使用 Terraform 在 Azure 中创建辐射网络

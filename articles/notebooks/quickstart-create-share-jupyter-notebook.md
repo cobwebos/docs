@@ -4,17 +4,17 @@ description: 在 Azure Notebooks 预览版上快速创建并运行 Jupyter 笔�
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: d3310444fa28240b8fb1344199514a9601a2c615
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77064438"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中创建和共享笔记本
 
 在本快速入门中，你将在 Azure Notebooks 上创建并运行 Jupyter 笔记本，然后与其他人共享该笔记本。 Jupyter 可让你轻松地将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果组合到一个可共享的画布（笔记本）上。 Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 无。
 
 ## <a name="create-a-new-project-and-notebook"></a>创建新项目和笔记本

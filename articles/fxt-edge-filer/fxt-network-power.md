@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395435"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223944"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>教程：为 Azure FXT Edge Filer 节点建立网络连接并提供电源
 
@@ -25,7 +25,7 @@ ms.locfileid: "78395435"
 > * 如何通过电缆管理臂（CMA）布线
 > * 如何将电源连接到机架设备并打开电源
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 在开始本教程之前，应在标准设备机架中安装 Azure FXT Edge Filer。 CMA 应安装在文件管理器节点上。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "78395435"
   * SFP28 型 25GbE 型直接连接双轴电缆
   * SFP28 型 10GbE 型直接连接双轴电缆
 
-* 1GbE 网络端口用于群集管理流量。 如果要为群集配置创建物理上独立的网络（请参阅[配置管理网络](fxt-cluster-create.md#configure-the-management-network)），请在创建群集时选中“使用 1Gb 管理网络”选项。 使用标准 Cat5 或更好的电缆连接端口，如支持的电缆列表中所述。
+* 1GbE 网络端口用于群集管理流量。 如果要为群集配置创建物理上独立的网络（请参阅[配置管理网络](fxt-cluster-create.md#configure-the-management-network)），请在创建群集时选中“使用 1Gb 管理网络”选项。  使用标准 Cat5 或更好的电缆连接端口，如支持的电缆列表中所述。
 
   如果计划使用高速端口处理所有流量，可以不连接 1GbE 端口。 默认情况下，如果有更高速数据端口可用，就不会使用 1GbE 网络端口。  
 
