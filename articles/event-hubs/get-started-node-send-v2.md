@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
 ms.openlocfilehash: e296ae36eeeb816d8704ab03824f8cbb80082ea6
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77163001"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>使用 JavaScript（azure/event-hubs 版本 5）向/从事件中心发送/接收事件
@@ -21,7 +21,7 @@ ms.locfileid: "77163001"
 > [!IMPORTANT]
 > 本快速入门使用最新的 azure/event-hubs 版本 5 包。 有关使用旧的 azure/event-hubs 版本 2 包的快速入门，请参阅[使用 azure/event-hubs 版本 2 发送和接收事件](event-hubs-node-get-started-send.md)。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 如果不熟悉 Azure 事件中心，请在阅读本快速入门之前参阅[事件中心概述](event-hubs-about.md)。 
 
 若要完成本快速入门，需要具备以下先决条件：

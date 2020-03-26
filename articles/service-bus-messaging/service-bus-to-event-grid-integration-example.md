@@ -14,25 +14,32 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 3fb2f4a4969e8df94a60ac20c761f073b6a9d030
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fef325b67c38eda09a05dac9d74bd5b97df164cc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462097"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067762"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>教程：使用 Azure Functions 和 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应
-本教程介绍如何使用 Azure Functions 和 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应。 你将执行以下操作：
- 
-- 创建一个测试 Azure 函数，用于调试和查看从事件网格发出的初始事件流。
-- 创建一个根据事件网格事件接收和处理 Azure 服务总线消息的 Azure 函数。
-- 创建一个逻辑应用，用于对事件网格事件做出响应
+本教程介绍如何使用 Azure Functions 和 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应。 
 
-创建服务总线、事件网格、Azure Functions 和逻辑应用项目后，将执行以下操作： 
+在本教程中，你将了解如何执行以下操作：
+> [!div class="checklist"]
+> * 创建服务总线命名空间
+> * 准备用于发送消息的示例应用程序
+> * 在 Azure 上设置测试函数
+> * 通过事件网格连接函数和命名空间
+> * 向服务总线主题发送消息
+> * 使用 Azure Functions 接收消息
+> * 使用逻辑应用接收消息
 
-1. 向服务总线主题发送消息。 
-2. 验证主题的订阅是否收到了这些消息
-3. 验证订阅事件的函数或逻辑应用是否收到了事件。 
+## <a name="prerequisites"></a>先决条件
+
+若要完成本教程，请确保已安装：
+
+- [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](https://www.visualstudio.com/vs)或更高版本。
+- [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
 
 ## <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
 请遵照以下教程中的说明：[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
@@ -65,7 +72,7 @@ ms.locfileid: "75462097"
 然后执行以下步骤： 
 
 
-# <a name="azure-functions-v2tabv2"></a>[Azure Functions V2](#tab/v2)
+# <a name="azure-functions-v2"></a>[Azure Functions V2](#tab/v2)
 
 1. 在树视图中展开“函数”，并选择你的函数。  将函数代码替换为以下代码： 
 
@@ -122,7 +129,7 @@ ms.locfileid: "75462097"
 
     ![获取函数 URL](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
-# <a name="azure-functions-v1tabv1"></a>[Azure Functions V1](#tab/v1)
+# <a name="azure-functions-v1"></a>[Azure Functions V1](#tab/v1)
 
 1. 将函数配置为使用 **V1** 版本： 
     1. 在树视图中选择你的函数应用，然后选择“函数应用设置”。  

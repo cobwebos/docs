@@ -4,10 +4,10 @@ description: UK OFFICIAL 和 UK NHS 蓝图示例的部署步骤，包括蓝图�
 ms.date: 06/26/2019
 ms.topic: sample
 ms.openlocfilehash: 3d69f4477163618aa225150ac6352a16e901f826
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74546397"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>部署 UK OFFICIAL 和 UK NHS 蓝图示例

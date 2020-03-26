@@ -7,17 +7,17 @@ ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68950234"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>教程：在 Azure 数据目录中注册数据资产
 
 本教程介绍如何使用注册工具将 Azure SQL 数据库示例中的数据资产注册到目录。 注册是从数据源及其包含的资产中提取关键结构元数据（例如名称、类型和位置），并将该元数据复制到目录的过程。 数据源与数据资产保留在原地，但目录使用元数据，使数据源及其数据更容易发现和识别。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 注册数据资产 
 > * 搜索数据资产
@@ -176,7 +176,7 @@ Azure 数据目录中的发现使用两个主要机制：搜索和筛选。
 
 2. 清除“对象类型”下面的“表”筛选器。  
 
-3. 按 **ENTER**。
+3. 按 **Enter**。
 
 4. 确认搜索结果中显示了注册的 **Product**、**ProductCategory**、**ProductDescription** 表以及 Azure SQL 数据库。
 
@@ -253,7 +253,7 @@ Azure 数据目录支持众包批注方式。 任何数据目录用户都可以�
 
 在本练习中，已连接到使用 Azure 数据目录发现的数据资产。 在 Azure 数据目录门户中，可以使用已集成到“打开方式”菜单中的客户端应用程序来直接建立连接。  也可以使用资产元数据中包含的连接位置信息来与选择的任何应用程序建立连接。 例如，可以使用 SQL Server Management Studio 连接到 Azure SQL 数据库，以访问本教程中注册的数据资产中的数据。
 
-1. 打开 **SQL Server Management Studio**。
+1. 打开 SQL Server Management Studio  。
 
 2. 在“连接到服务器”对话框中，输入 Azure 数据目录门户的“属性”窗格中显示的服务器名称。  
 
@@ -312,7 +312,7 @@ Azure 数据目录支持众包批注方式。 任何数据目录用户都可以�
 > [!NOTE]
 > 目录的默认行为是允许任何用户注册任何数据源，允许任何用户删除任何已注册的数据资产。 标准版 Azure 数据目录中包含的管理功能提供其他选项，用于取得资产所有权、限制谁可以发现资产，以及谁可以删除资产。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本教程介绍了 Azure 数据目录的基本功能，包括注册、批注、发现和管理企业数据资产。 完成本教程后，便可以开始使用此产品了。 一开始，可以注册自己和团队依赖的数据源，并邀请同事使用目录。
 

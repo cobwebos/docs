@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, Azure 应用服务, Web 应用
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2891ff47b17900c4c1c8e1c21f22495b65108fd5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156570"
 ---
 # <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>教程：使用 Ansible 在 Azure 应用服务中配置应用

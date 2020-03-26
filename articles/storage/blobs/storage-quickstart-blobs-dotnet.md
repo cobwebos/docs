@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: b8ddeda2c435a52efd14f06acb3c1a8bb94bc45e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5cfb0430bc94d347afd75bc01170a71a7ad53565
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381844"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215405"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12
 
@@ -237,9 +237,11 @@ Console.WriteLine("\nDownloading blob to\n\t{0}\n", downloadFilePath);
 // Download the blob's contents and save it to a file
 BlobDownloadInfo download = await blobClient.DownloadAsync();
 
-using FileStream downloadFileStream = File.OpenWrite(downloadFilePath);
-await download.Content.CopyToAsync(downloadFileStream);
-downloadFileStream.Close();
+using (FileStream downloadFileStream = File.OpenWrite(downloadFilePath))
+{
+    await download.Content.CopyToAsync(downloadFileStream);
+    downloadFileStream.Close();
+}
 ```
 
 ### <a name="delete-a-container"></a>删除容器

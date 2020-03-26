@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 53812e68fe397b81f29869565e0e4a0640a9ef23
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76964628"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-java"></a>快速入门：与已连接到解决方案的 IoT 即插即用预览版设备交互 (Java)
@@ -21,7 +21,7 @@ ms.locfileid: "76964628"
 
 IoT 即插即用预览版简化了 IoT 的使用，无需了解底层设备实现，就能使用它来与某个设备的功能交互。 本快速入门介绍如何使用 Java 来连接和控制已与解决方案连接的 IoT 即插即用设备。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，需要在开发计算机上使用 Java SE 8。 还需要安装 Maven 3。
 

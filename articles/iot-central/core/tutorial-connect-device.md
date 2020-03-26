@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 1bcfc949eff0639dd1b4a063687e2c198f480ea3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77624333"
 ---
 # <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>教程：创建 Node.js 客户端应用程序并将其连接到 Azure IoT Central 应用程序 (Node.js)
@@ -29,7 +29,7 @@ ms.locfileid: "77624333"
 > * 使用视图管理设备属性。
 > * 调用命令来控制设备。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，需要以下各项：
 

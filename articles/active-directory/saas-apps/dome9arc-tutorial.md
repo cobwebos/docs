@@ -17,10 +17,10 @@ ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b46ac34db21576c7e2de2271a468e3e782ff6aa9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73885354"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Check Point CloudGuard Dome9 Arc 集成
@@ -89,7 +89,7 @@ ms.locfileid: "73885354"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://secure.dome9.com/sso/saml/<yourcompanyname>`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://secure.dome9.com/sso/saml/<yourcompanyname>`
 
@@ -102,7 +102,7 @@ ms.locfileid: "73885354"
 
 1. 除上述属性外，Check Point CloudGuard Dome9 Arc 应用程序还要求在 SAML 响应中传回更多属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
     
-    | Name |  源属性|
+    | 名称 |  源属性|
     | ---------------| --------------- |
     | memberof | user.assignedroles |
 

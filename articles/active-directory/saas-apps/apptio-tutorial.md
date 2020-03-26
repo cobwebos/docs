@@ -17,10 +17,10 @@ ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a421afc736399472a513dfc145321ba33ef6fdca
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71129727"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apptio"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Apptio 集成

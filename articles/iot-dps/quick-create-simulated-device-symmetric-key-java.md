@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: aaa1a4423363255536db7d53a1f8f8fa9ba686ff
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76961184"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>快速入门：使用对称密钥预配模拟设备
@@ -32,7 +32,7 @@ ms.locfileid: "76961184"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 确保已在计算机上安装 [Java SE 开发工具包 8](https://aka.ms/azure-jdks) 或更高版本。
 

@@ -9,10 +9,10 @@ ms.date: 05/23/2018
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 6163392c80d40b6ea65e681aa175c21c244099b9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74122705"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>快速入门：将 Azure Redis 缓存与 Java 配合使用

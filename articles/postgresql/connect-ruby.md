@@ -9,10 +9,10 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
 ms.openlocfilehash: 5dd4cfe9bee0db6f14f736c79fe91770641008fb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74766899"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL - 单一服务器：使用 Ruby 连接和查询数据

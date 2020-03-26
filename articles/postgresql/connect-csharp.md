@@ -9,10 +9,10 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/6/2019
 ms.openlocfilehash: 4ac462873d34faa5ffa9d1e1bd873734be88e442
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74767970"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-net-c-to-connect-and-query-data"></a>Azure Database for PostgreSQL - 单一服务器：使用 .NET (C#) 连接和查询数据

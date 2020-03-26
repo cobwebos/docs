@@ -4,17 +4,17 @@ titleSuffix: Azure Storage
 description: 本快速入门介绍如何使用 Azure 存储资源管理器创建容器和 blob、将 blob 下载到本地计算机，以及查看容器中的所有 blob。
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: f19152b5b8bc569fa07109b6135fa85b9b55bff1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 04530844316610bb8a97e8a299b5fb41ebf49955
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892458"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061373"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>快速入门：使用 Azure 存储资源管理器创建 blob
 
@@ -52,7 +52,7 @@ ms.locfileid: "74892458"
 
 ## <a name="upload-blobs-to-the-container"></a>将 blob 上传到容器
 
-blob 存储支持块 blob、追加 blob 和页 blob。 用于备份 IaaS VM 的 VHD 文件都是页 blob。 追加 blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 Blob 存储中存储的大多数文件都是块 blob。
+Blob 存储支持块 blob、追加 blob 和页 blob。 用于备份 IaaS VM 的 VHD 文件是页 Blob。 追加 blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 Blob 存储中存储的大多数文件都是块 blob。
 
 在容器功能区中，选择“上传”  。 此操作提供上传文件夹或文件的选项。
 

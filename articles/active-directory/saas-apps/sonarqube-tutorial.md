@@ -17,10 +17,10 @@ ms.date: 09/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 571d8849fd7cae5c872a56182858848dbb43ef42
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72026687"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Sonarqube 集成

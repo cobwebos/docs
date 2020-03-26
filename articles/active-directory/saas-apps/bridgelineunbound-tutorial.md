@@ -17,10 +17,10 @@ ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 641b3ee0dd2f6e232d2f36d08bda5b1f2cf80102
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157596"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>教程：Azure Active Directory 与 Bridgeline Unbound 的集成

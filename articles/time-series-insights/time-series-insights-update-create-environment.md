@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/20/2020
 ms.custom: seodec18
 ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77526802"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>教程：设置 Azure 时序见解预览环境
@@ -37,7 +37,7 @@ ms.locfileid: "77526802"
 
 注册一个[免费的 Azure 订阅](https://azure.microsoft.com/free/)（如果还没有）。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 必须至少具有 Azure 订阅的参与者角色  。 有关详细信息，请阅读[使用基于角色的访问控制和 Azure 门户管理访问权限](../role-based-access-control/role-assignments-portal.md)。
 

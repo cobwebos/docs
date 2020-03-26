@@ -17,10 +17,10 @@ ms.date: 08/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a935ef6d14b4de67964c555e0ffa610bbe992459
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70171562"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmos"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Litmos 集成
@@ -120,12 +120,12 @@ ms.locfileid: "70171562"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-litmos-sso"></a>配置 Litmos SSO
@@ -156,7 +156,7 @@ ms.locfileid: "70171562"
 
     b. 在记事本中打开 base-64 编码证书，将其内容复制到剪贴板，再粘贴到“SAML X.509 证书”文本框中。 
 
-    c. 单击“保存更改”  。
+    c. 单击 **“保存更改”** 。
 
 ### <a name="create-litmos-test-user"></a>创建 Litmos 测试用户
 

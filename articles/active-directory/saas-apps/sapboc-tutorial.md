@@ -17,10 +17,10 @@ ms.date: 07/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1fd01c86086c7491d22f655fcba5da237286412f
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68347796"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>教程：将 SAP Analytics Cloud 与 Azure Active Directory 集成
@@ -166,12 +166,12 @@ ms.locfileid: "68347796"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-sap-analytics-cloud-test-user"></a>创建 SAP Analytics Cloud 测试用户

@@ -12,10 +12,10 @@ ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
 ms.openlocfilehash: fea3440dd7c017b85d6fffa2ec0fe5d26cd98b97
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77022165"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>教程：在 Azure IoT Central 中自定义操作员仪表板和管理设备
@@ -32,7 +32,7 @@ ms.locfileid: "77022165"
 > * 添加属性磁贴以显示设备详细信息
 > * 添加命令磁贴以运行命令
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 构建者应完成相关教程以创建 Azure IoT Central 店内分析应用程序并添加设备：
 

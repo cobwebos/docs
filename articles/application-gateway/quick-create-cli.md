@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/05/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 5512e44ab52a3c3d957bbc0d0a07a7a1e7b6f50e
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: f60b26756c0affffbd45c8596fdf73d11ffa8e81
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399576"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239513"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure CLI
 
@@ -171,7 +171,7 @@ Azure 可能需要长达 30 分钟的时间来创建应用程序网关。 创建
 
 虽然 Azure 不需 NGINX Web 服务器即可创建应用程序网关，但本快速入门中安装了它，用来验证 Azure 是否已成功创建应用程序网关。 若要获取新应用程序网关的公共 IP 地址，请使用 `az network public-ip show`。 
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \

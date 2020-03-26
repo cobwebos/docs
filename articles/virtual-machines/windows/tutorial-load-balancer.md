@@ -16,10 +16,10 @@ ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 05a796d7bbe08f8e560c6545f3ed37c0f54b9cf9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74067865"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>教程：在 Azure 中使用 Azure PowerShell 均衡 Windows 虚拟机负载以创建高可用性应用程序
@@ -290,7 +290,7 @@ Set-AzNetworkInterface -NetworkInterface $nic
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已创建负载均衡器并已将 VM 附加到它。 你已了解如何：
+在本教程中，已创建负载均衡器并已将 VM 附加到它。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure 负载均衡器

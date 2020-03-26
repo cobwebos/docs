@@ -10,10 +10,10 @@ ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: 229b4b9f53ea3866dce1169645f6d6da20827271
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73888905"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>使用 DevOps Projects 部署受 Azure Cosmos DB 支持的 Node.js 应用
@@ -45,7 +45,7 @@ DevOps Projects 还可以：
 
 DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Projects 还会在所选的 Azure 订阅中创建 Azure 资源，例如 Azure Cosmos DB、Application Insights、应用服务和应用服务计划。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左窗格中，选择“创建资源”  。
 
@@ -158,7 +158,7 @@ DevOps Projects 会自动创建并配置从 Azure DevOps 组织部署到 Azure �
 
 ## <a name="next-steps"></a>后续步骤
 
-可以根据你的团队的需求修改这些生成和发布管道。 也可以将此 CI/CD 模式用作其他管道的模板。 本教程介绍了如何：
+可以根据你的团队的需求修改这些生成和发布管道。 也可以将此 CI/CD 模式用作其他管道的模板。 在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 DevOps Projects 部署受 Azure Cosmos DB 支持的 Node.js 应用

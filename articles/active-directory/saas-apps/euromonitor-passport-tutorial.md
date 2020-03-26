@@ -17,10 +17,10 @@ ms.date: 10/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1748c6945dc50554c84fa8c178cece02baf9d840
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74075247"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-euromonitor-passport"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Euromonitor Passport 的集成
@@ -97,7 +97,7 @@ ms.locfileid: "74075247"
 
 1. 除了上述属性，Euromonitor Passport 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------| --------- |
     | 名称标识符值 | user.userprincipalname |
 

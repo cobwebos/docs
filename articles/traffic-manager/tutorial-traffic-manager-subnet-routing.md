@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: rohink
 ms.openlocfilehash: 49e0bce6eea8fac32f49bb905c225e898e709af0
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77136284"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>教程：使用流量管理器，基于用户子网，将流量定向到特定终结点
@@ -36,7 +36,7 @@ ms.locfileid: "77136284"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 为了查看流量管理器的运作方式，本教程要求部署以下各项：
 

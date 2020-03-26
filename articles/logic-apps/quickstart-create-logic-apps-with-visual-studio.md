@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
 ms.openlocfilehash: 693b2fd8ac7440b67f53de0aedb9a8268a90de76
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968887"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290525"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入门：使用 Azure 逻辑应用创建自动化任务、流程和工作流 - Visual Studio
 
@@ -26,7 +26,7 @@ ms.locfileid: "75968887"
 
 <a name="prerequisites"></a>
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 

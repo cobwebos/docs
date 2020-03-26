@@ -4,10 +4,10 @@ description: 本教程说明如何在 Azure 中实现包含本地资源的本地
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 361f9919fdd406a1fef6bbf2b7512dbc20266a54
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159217"
 ---
 # <a name="tutorial-create-on-premises-virtual-network-in-azure-using-terraform"></a>教程：在 Azure 中使用 Terraform 创建本地虚拟网络

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 04/30/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 9222ac31e067cba6a0ffa71143c90f906ba6ff7f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74454686"
 ---
 # <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>教程：将已更新的容器映像推送到异地复制的容器注册表以进行区域性 Web 应用部署

@@ -10,17 +10,17 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73718924"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>教程：使用 CLI 和主题/订阅更新库存
 
 Microsoft Azure 服务总线是一种多租户云消息传送服务，可以在应用程序和服务之间发送信息。 异步操作可实现灵活的中转消息传送、结构化的先进先出 (FIFO) 消息传送以及发布/订阅功能。 本教程展示了如何使用 Azure CLI 和 Java 在零售库存方案中将服务总线主题和订阅与发布/订阅频道配合使用。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 使用 Azure CLI 创建一个服务总线主题和一个或多个对该主题的订阅
 > * 使用 Azure CLI 添加主题筛选器
@@ -330,7 +330,7 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已使用 Azure CLI 预配了资源，然后从服务总线主题及其订阅发送并接收了消息。 你已了解如何：
+在本教程中，你已使用 Azure CLI 预配了资源，然后从服务总线主题及其订阅发送并接收了消息。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure 门户创建一个服务总线主题和一个或多个对该主题的订阅

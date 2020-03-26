@@ -17,10 +17,10 @@ ms.date: 08/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a63872680d28664c6d5a7ff109f6de72817173d5
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68989649"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>教程：将 Aha! 与 Azure Active Directory 集成

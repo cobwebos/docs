@@ -17,10 +17,10 @@ ms.date: 04/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8968ec9edd5b1f732bf9d4721bdc4e9bcaf5fa17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093127"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-real-links"></a>教程：Azure Active Directory 与 Real Links 集成
@@ -137,7 +137,7 @@ ms.locfileid: "67093127"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”  字段中，输入 BrittaSimon  。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
     b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
 

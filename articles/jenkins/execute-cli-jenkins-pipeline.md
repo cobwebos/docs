@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, 应用服务, cli
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: bd9192974f6860d08d84a9028702ce2203f562e7
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158819"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>使用 Jenkins 和 Azure CLI 部署到 Azure 应用服务
@@ -212,7 +212,7 @@ Linux 上的 Web 应用支持用另一种方式执行部署，即，使用 Docke
     转到 http://&lt;app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>（将 &lt;x> 和 &lt;y> 替换为任意数字）获取 x 与 y 的和
     
 ## <a name="next-steps"></a>后续步骤
-在本教程中，配置了一个 Jenkins 管道，用于签出 GitHub 存储库中的源代码。 运行 Maven 以生成 war 文件，然后使用 Azure CLI 部署到 Azure 应用服务。 你已了解如何：
+在本教程中，配置了一个 Jenkins 管道，用于签出 GitHub 存储库中的源代码。 运行 Maven 以生成 war 文件，然后使用 Azure CLI 部署到 Azure 应用服务。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Jenkins VM

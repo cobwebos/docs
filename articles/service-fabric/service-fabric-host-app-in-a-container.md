@@ -4,10 +4,10 @@ description: 了解如何使用 Visual Studio 将现有 .NET 应用程序容器�
 ms.topic: tutorial
 ms.date: 07/08/2019
 ms.openlocfilehash: d1602d292af24d8c0bc9139debb3967aa7183a06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75463059"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教程：将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric
@@ -25,7 +25,7 @@ ms.locfileid: "75463059"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 1. 如果还没有 Azure 订阅，[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 2. 安装 [Docker CE for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)，以便在 Windows 10 上运行容器。

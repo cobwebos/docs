@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: quickstart
 ms.reviewer: janders
 ms.openlocfilehash: 9da78eac1dc429bcc0ad52bb9cb2f1fb743a90d4
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74455828"
 ---
 # <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>快速入门：使用 Geth 附加到 Azure 区块链服务事务节点
@@ -26,7 +26,7 @@ ms.locfileid: "74455828"
 
 可以在 Azure 门户中获取 Azure 区块链服务事务节点的 Geth 连接字符串。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 转到你的 Azure 区块链服务成员。 选择“事务节点”  和默认事务节点链接。
 
     ![选择默认事务节点](./media/connect-geth/transaction-nodes.png)

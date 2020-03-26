@@ -19,10 +19,10 @@ ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 251f72ab4f4d53fc2c836f06c78a1faa291b3a8a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74276077"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>快速入门：诊断虚拟机网络流量筛选器问题 - Azure CLI
@@ -171,7 +171,7 @@ az network nic list-effective-nsg \
 },
 ```
 
-可以在上述输出中看到 **destinationAddressPrefix** 为 **Internet**。 尚不清楚 13.107.21.200 与 **Internet** 的关系如何。 可以看到多个地址前缀列在 **expandedDestinationAddressPrefix** 下。 列表中的一个前缀是 **12.0.0.0/6**，涵盖了 IP 地址范围 12.0.0.1-15.255.255.254。 由于 13.107.21.200 在该地址范围内，因此 **AllowInternetOutBound** 规则允许此出站流量。 另外，在上述输出中没有显示优先级更高（数字更小）的可以覆盖此规则的规则。 若要拒绝到某个 IP 地址的出站通信，可以添加一项优先级更高的安全规则，拒绝通过端口 80 向该 IP 地址发送出站流量。
+可以在上述输出中看到 **destinationAddressPrefix** 为 **Internet**。 尚不清楚 13.107.21.200 与 **Internet** 的关系如何。 可以看到多个地址前缀列在 **expandedDestinationAddressPrefix** 下。 列表中的前缀之一为 **12.0.0.0/6**，它涵盖了 IP 地址范围 12.0.0.1-15.255.255.254。 由于 13.107.21.200 在该地址范围内，因此 **AllowInternetOutBound** 规则允许此出站流量。 另外，在上述输出中没有显示优先级更高（数字更小）的可以覆盖此规则的规则。 若要拒绝到某个 IP 地址的出站通信，可以添加一项优先级更高的安全规则，拒绝通过端口 80 向该 IP 地址发送出站流量。
 
 在[使用 IP 流验证](#use-ip-flow-verify)中运行 `az network watcher test-ip-flow` 命令以测试发往 172.131.0.100 的出站通信时，输出指示 **DefaultOutboundDenyAll** 规则拒绝了该通信。 **DefaultOutboundDenyAll** 规则相当于在 `az network nic list-effective-nsg` 命令的以下输出中列出的 **DenyAllOutBound** 规则：
 

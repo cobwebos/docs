@@ -16,10 +16,10 @@ ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 607ad17af42b88737d8ca4ebc379504d9b0b40df
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74073445"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-azure-with-powershell"></a>快速入门：使用 PowerShell 在 Azure 中创建 Windows 虚拟机
@@ -65,13 +65,13 @@ New-AzVm `
 
 在部署完成后，通过 RDP 登录到 VM。 若要查看运行中的 VM，请安装 IIS Web 服务器。
 
-若要查看 VM 的公用 IP 地址，请使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) cmdlet：
+若要查看 VM 的公共 IP 地址，请使用 [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) cmdlet：
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
-使用以下命令从本地计算机创建远程桌面会话。 将 IP 地址替换为您的虚拟机的公用 IP 地址。 
+使用以下命令从本地计算机创建远程桌面会话。 将 IP 地址替换为你的 VM 的公共 IP 地址。 
 
 ```powershell
 mstsc /v:publicIpAddress
@@ -93,7 +93,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-web-server-in-action"></a>查看运行中的 Web 服务器
 
-如果 IIS 已安装，并且 VM 上的端口 80 已对 Internet 开放， 则可以使用所选的 Web 浏览器查看默认的 IIS 欢迎页。 使用上一步中获取的 VM 的公用 IP 地址。 以下示例展示了默认 IIS 网站：
+如果 IIS 已安装，并且 VM 上的端口 80 已对 Internet 开放， 则可以使用所选的 Web 浏览器查看默认的 IIS 欢迎页。 使用上一步中获取的 VM 的公共 IP 地址。 以下示例展示了默认 IIS 网站：
 
 ![IIS 默认站点](./media/quick-create-powershell/default-iis-website.png)
 

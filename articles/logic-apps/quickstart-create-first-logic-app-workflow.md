@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
 ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77191277"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>快速入门：使用 Azure 逻辑应用创建第一个工作流 - Azure 门户

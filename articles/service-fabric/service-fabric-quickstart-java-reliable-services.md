@@ -7,10 +7,10 @@ ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: fc615149b092aebfdde767fb3b716fb897bfd551
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77121507"
 ---
 # <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>快速入门：将 Java 应用部署到 Linux 上的 Azure Service Fabric
@@ -19,7 +19,7 @@ ms.locfileid: "77121507"
 
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理微服务和容器。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [Java 环境](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) 和 [Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
 - [Eclipse Neon (4.6)+](https://www.eclipse.org/downloads/packages/) 和[用于 Service Fabric 的 Eclipse 插件](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#install-the-eclipse-plug-in-optional)

@@ -4,10 +4,10 @@ description: 使用免费的 Azure Notebooks 预览版服务在云中运行 Jupy
 ms.topic: overview
 ms.date: 04/05/2019
 ms.openlocfilehash: bd2355bdefcedca5026a25915dc1da55fdc33a36
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75646324"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks 预览版概述
@@ -65,7 +65,7 @@ Notebook 服务器保证最多存在 8 小时。 在大多数情况下，你的�
 
 Azure Notebooks 还包括除基础发行版之外的额外包。 例如，Python 内核包括 numpy、pandas、scikit-learn、matplotlib 和 bokeh 库。
 
-也可自定义一个项目，为该项目中的所有笔记本创建一个环境。 有关详细信息，请参阅[快速入门：在自定义环境下创建项目](quickstart-create-jupyter-notebook-project-environment.md)。
+也可自定义一个项目，为该项目中的所有笔记本创建一个环境。 有关更多信息，请参阅[快速入门：使用自定义环境创建项目](quickstart-create-jupyter-notebook-project-environment.md)。
 
 除了基础发行版，Azure Notebooks 还预安装了许多额外的可供数据科学家使用的包。 也可使用每种语言的典型过程来安装你自己的包。
 

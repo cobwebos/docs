@@ -9,10 +9,10 @@ ms.date: 03/06/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
 ms.openlocfilehash: 49078d2f374203a9fab4fe0f5e3881f6b1b22959
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79130324"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据

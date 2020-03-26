@@ -7,10 +7,10 @@ ms.service: security
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.openlocfilehash: 9bbe74bd2f3137443b4e239201c604d9de52582e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72245687"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建和加密 Windows VM
@@ -25,7 +25,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
+使用“[az group create](/cli/azure/group?view=azure-cli-latest#az-group-create)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

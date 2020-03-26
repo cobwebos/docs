@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551261"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223124"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>教程：创建 Azure FXT Edge Filer 群集
 
@@ -30,7 +30,7 @@ ms.locfileid: "75551261"
 
 此过程需要 15 到 45 分钟，具体取决于识别 IP 地址和网络资源所需要的工作量。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始本教程前，请完成以下先决条件：
 

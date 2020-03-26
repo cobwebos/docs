@@ -9,17 +9,17 @@ manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
 ms.openlocfilehash: 44007000475793005560914fd816cd0c16927f9a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77202439"
 ---
 # <a name="quickstart-install-ansible-on-linux-virtual-machines-in-azure"></a>快速入门：在 Azure 中的 Linux 虚拟机上安装 Ansible
 
 使用 Ansible 可以在环境中自动部署和配置资源。 本文介绍如何为某些最常用的 Linux 分发版配置 Ansible。 若要在其他分发版中安装 Ansible，请调整适用于特定平台的安装包。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-sp.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]

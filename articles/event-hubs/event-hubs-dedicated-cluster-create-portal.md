@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: femila
 ms.openlocfilehash: 5b1574eaac8771043e09500225b65e4835c8e627
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77157476"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>快速入门：使用 Azure 门户创建事件中心专用群集 
@@ -26,7 +26,7 @@ ms.locfileid: "77157476"
 > [Azure 门户](https://aka.ms/eventhubsclusterquickstart)目前提取此自助体验的预览版。 如果对专用套餐存有疑问，请联系[事件中心团队](mailto:askeventhubs@microsoft.com)。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要完成本快速入门，请确保具备以下项：
 
 - 一个 Azure 帐户。 如果没有帐户，请在开始之前[购买一个帐户](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)。 此功能不支持免费的 Azure 帐户。 

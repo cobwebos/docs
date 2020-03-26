@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa2cac7c89a2cb1bd99675727bcd51e82c4a18ef
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74007861"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>教程：将 Azure AD 日志存档到 Azure 存储帐户
@@ -38,7 +38,7 @@ ms.locfileid: "74007861"
 
 ## <a name="archive-logs-to-an-azure-storage-account"></a>将日志存档到 Azure 存储帐户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 
 2. 选择“Azure Active Directory” > “活动” > “审核日志”。    
 

@@ -10,10 +10,10 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 02/24/2020
 ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77604858"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>设置 Azure 机器学习 Visual Studio Code 扩展
@@ -27,7 +27,7 @@ ms.locfileid: "77604858"
 > * 从 Visual Studio Code 登录到 Azure 帐户
 > * 使用 Azure 机器学习扩展来运行示例脚本
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有订阅，注册之后即可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 - Visual Studio Code。 如果尚未安装它，请[安装它](https://code.visualstudio.com/docs/setup/setup-overview)。

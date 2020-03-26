@@ -4,13 +4,13 @@ description: 了解如何为应用配置预先构建的 Ruby 容器。 本文介
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: seodec18
-ms.openlocfilehash: 2b096725575598bd44d7da39f77f85dee5b5e40e
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8daebba840223d050a14b4b99cb6ae15472ee4f5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255813"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046323"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Ruby 应用
 
@@ -131,7 +131,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
 ```
 
-### <a name="set-secret_key_base-manually"></a> 手动设置 secret_key_base
+### <a name="set-secret_key_base-manually"></a><a name="set-secret_key_base-manually"></a> 手动设置 secret_key_base
 
 要使用自己的 `secret_key_base` 值而不是让应用服务生成一个值，请使用所需的值设置 `SECRET_KEY_BASE` [应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 例如：
 

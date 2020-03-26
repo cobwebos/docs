@@ -11,10 +11,10 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 01/27/2020
 ms.openlocfilehash: 11e0a8a0076fb2e68c379b279f471ff74846df2e
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77088321"
 ---
 # <a name="tutorial-forecast-bike-sharing-demand-with-automated-machine-learning"></a>教程：使用自动化机器学习预测单车共享需求
@@ -30,7 +30,7 @@ ms.locfileid: "77088321"
 > * 浏览试验结果。
 > * 部署最佳模型。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 企业版 Azure 机器学习工作区。 如果没有工作区，请[创建企业版工作区](how-to-manage-workspace.md)。 
     * Azure 机器学习工作室中的自动化机器学习仅适用于企业版工作区。 

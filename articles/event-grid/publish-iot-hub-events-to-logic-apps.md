@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
 ms.openlocfilehash: 334b7b2c59b328e8eff3c7c2b9c3ed46bffc3442
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74706430"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>教程：使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知

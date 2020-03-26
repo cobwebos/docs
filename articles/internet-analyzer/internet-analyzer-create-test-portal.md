@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 64bbed9b558d4c20889b28a5247e2113d20daa77
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73509831"
 ---
 # <a name="create-an-internet-analyzer-test-using-portal-preview"></a>使用门户创建 Internet 分析器测试（预览版）
@@ -24,7 +24,7 @@ ms.locfileid: "73509831"
 
 ## <a name="before-you-begin"></a>开始之前
 
-公共预览版可在全球使用；但是，在预览期，数据存储仅限在“美国西部 2”区域使用。 
+公开预览版可以全局使用；但是，在预览期间，只有美国西部 2 支持数据存储  。
 
 ## <a name="basics"></a>基础
 
@@ -75,4 +75,4 @@ ms.locfileid: "73509831"
 ## <a name="next-steps"></a>后续步骤
 
 * 阅读 [Internet 分析器常见问题解答](internet-analyzer-faq.md)
-* 详细了解如何嵌入 [Internet 分析器客户端](internet-analyzer-embed-client.md)和创建[自定义终结点](internet-analyzer-custom-endpoint.md)。
+* 了解有关嵌入 [Internet 分析器客户端](internet-analyzer-embed-client.md)和创建[自定义终结点](internet-analyzer-custom-endpoint.md)的详细信息。

@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.openlocfilehash: 340017a121d12c95c7c04bbfe67b336638209e9c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75439012"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教程：使用 Azure 门户生成第一个数据工厂
@@ -42,7 +42,7 @@ ms.locfileid: "75439012"
 > 
 > 一个管道可以有多个活动。 而且，可以通过将一个活动的输出数据集设置为另一个活动的输入数据集，链接两个活动（两个活动先后运行）。 有关详细信息，请参阅[在数据工厂中计划和执行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 阅读[教程概述](data-factory-build-your-first-pipeline.md)，并按“先决条件”部分的步骤操作。
 
 本文不提供数据工厂服务的概念性概述。 有关该服务的详细信息，请阅读 [Azure 数据工厂简介](data-factory-introduction.md)。  

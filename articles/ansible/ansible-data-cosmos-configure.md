@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, cosmo db, database
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 8c898e3cb0747a442d50b7241ebfcf401148817e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156473"
 ---
 # <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>教程：使用 Ansible 配置 Azure Cosmos DB 帐户
@@ -31,7 +31,7 @@ ms.locfileid: "74156473"
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-random-postfix"></a>创建一个随机后缀
+## <a name="create-a-random-postfix"></a>创建随机后缀
 
 示例 playbook 代码片段创建一个随机后缀。 后缀用作 Azure Cosmos DB 帐户名的一部分。
 
@@ -230,7 +230,7 @@ Azure 资源组由示例 playbook 片段创建。 资源组是在其中部署和
 在本部分运行 playbook 来测试本文所示的各种功能。
 
 运行 playbook 之前，请进行如下更改：
-- 在 `vars` 部分，将 `{{ resource_group_name }}` 占位符替换为资源组名称。
+- 在 `vars` 节中，将 `{{ resource_group_name }}` 占位符替换为你的资源组名称。
 - 请确保 `cosmosdbaccount_name 仅包含小写字符并且是全局唯一的。
 
 使用 `ansible-playbook` 命令运行 playbook：

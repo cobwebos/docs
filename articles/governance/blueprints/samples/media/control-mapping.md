@@ -4,10 +4,10 @@ description: 媒体蓝图示例的控制映射。 每个控制都映射到一个
 ms.date: 02/24/2020
 ms.topic: sample
 ms.openlocfilehash: bdc4ef65c6d61a9d4217d7873bb29bd787842e71
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78201734"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>媒体蓝图示例的控制映射

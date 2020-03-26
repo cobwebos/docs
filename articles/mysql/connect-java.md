@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 12/02/2019
-ms.openlocfilehash: 18a61c215f6c10bb399beaa83ec53ad2ebc62970
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 3/18/2020
+ms.openlocfilehash: 0a41dfbdbfb1a0f588c1a334aefeb4fb5043e813
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938989"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067949"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>快速入门：使用 Java 连接到 Azure Database for MySQL 并查询其中的数据
 
@@ -21,7 +21,7 @@ ms.locfileid: "76938989"
 
 本主题假设你熟悉如何使用 Java 进行开发，但不熟悉 Azure Database for MySQL 的用法。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure Database for MySQL 服务器。 [使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)或[使用 Azure CLI 创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)。

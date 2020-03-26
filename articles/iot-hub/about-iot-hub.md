@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: 78678474430792eb7fe419ef4f15828d461c1fec
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75647401"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT 中心是什么？

@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, Azure 应用服务, Web 应用
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 9eb50922361c817de8047dece4849a9b221677f0
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155913"
 ---
 # <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>教程：使用 Ansible 在 Azure 应用服务中缩放应用
@@ -35,7 +35,7 @@ ms.locfileid: "74155913"
 有两个工作流可用于缩放、纵向扩展和横向扩展   。
 
 **纵向扩展：** 纵向扩展意味着要获得更多资源。 这些资源包括 CPU、内存、磁盘空间、VM 等。 可通过更改应用所属的应用服务计划的定价层来纵向扩展应用。 
-**横向扩展：** 横向扩展意味着要增加运行应用的 VM 实例数量。 根据应用服务计划定价层，可横向扩展到多达 20 个实例。 借助[自动缩放](/azure/azure-monitor/platform/autoscale-get-started)，可以根据预定义的规则和计划自动横向扩展实例计数。
+**横向扩展：** 横向扩展意味着要增加运行应用的 VM 实例数量。 根据应用服务计划定价层，可横向扩展到多达 20 个实例。 借助[自动缩放](/azure/azure-monitor/platform/autoscale-get-started)，可以根据预定义的规则和计划自动缩放实例计数。
 
 本部分中的 playbook 代码定义以下操作：
 

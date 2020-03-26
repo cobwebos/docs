@@ -6,17 +6,17 @@ ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
 ms.openlocfilehash: 62e6b007e89fc6be726d3d971ca838770db9cb6e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75422153"
 ---
 # <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>将自定义 Linux 容器部署到 Azure 应用服务
 
 Linux 上的应用服务在 Linux 上提供预定义的应用程序堆栈，并支持特定语言，例如 .NET、PHP、Node.js 等。 还可使用自定义 Docker 映像，于尚未在 Azure 中定义的应用程序堆栈中运行 Web 应用。 本快速入门介绍如何将[Azure 容器注册表](/azure/container-registry) (ACR) 中的映像部署到应用服务。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 一个 [Azure 帐户](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
 * [Docker](https://www.docker.com/community-edition)

@@ -7,11 +7,11 @@ ms.topic: overview
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582125"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216385"
 ---
 # <a name="what-is-azure-hpc-cache"></a>什么是 Azure HPC 缓存？
 

@@ -14,10 +14,10 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ms.openlocfilehash: 9fa816b2a8e736f03c99b66b898f48bd2a483b31
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68596774"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：使用 Azure SQL 数据库机器学习服务（预览版）在 R 中部署预测模型
@@ -197,7 +197,7 @@ RentalCount_Predicted
 332.571428571429
 ```
 
-已在 Azure SQL 数据库中成功创建、培训和部署模型。 然后在存储过程中使用该模型来基于新数据预测值。
+已在 Azure SQL 数据库中成功创建、培训和部署模型。 然后，你在存储过程中使用了该模型来基于新数据对值进行预测。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -212,7 +212,7 @@ RentalCount_Predicted
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程系列的第三部分，你已完成以下步骤：
+在本系列教程的第三部分中，你已完成以下步骤：
 
 * 创建生成机器学习模型的存储过程
 * 将模型存储在数据库表中

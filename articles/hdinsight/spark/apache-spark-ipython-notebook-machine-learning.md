@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
 ms.openlocfilehash: 6e46d7403e251bccd69467cfcdaa1d5073b4e454
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494556"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中生成 Apache Spark 机器学习应用程序
@@ -21,7 +21,7 @@ ms.locfileid: "73494556"
 
 [MLib](https://spark.apache.org/docs/latest/ml-guide.html) 是 Spark 的可缩放机器学习库，由常见学习算法和实用工具（包括分类、回归、聚集、协作筛选、维数约简以及底层优化基元）组成。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 开发 Apache Spark 机器学习应用程序
 
@@ -192,7 +192,7 @@ HDInsight 中的 Apache Spark 群集包含 Anaconda 库。 它还包括适用于
 
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的群集：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 在顶部的“搜索”框中，键入 **HDInsight**。 
 

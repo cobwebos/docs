@@ -10,11 +10,11 @@ ms.localizationpriority: high
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200123"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214286"
 ---
 ::: zone target="docs"
 
@@ -26,7 +26,7 @@ ms.locfileid: "77200123"
 > * 验证 Azure 中的数据上传
 > * 从 Data Box 磁盘中擦除数据
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保已完成[教程：退回 Azure Data Box Disk](data-box-disk-deploy-picked-up.md)。
 

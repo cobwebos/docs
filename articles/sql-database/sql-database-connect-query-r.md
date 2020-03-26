@@ -14,10 +14,10 @@ ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
 ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768513"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>快速入门：将 R 与机器学习服务配合使用来查询 Azure SQL 数据库（预览版）
@@ -26,7 +26,7 @@ ms.locfileid: "76768513"
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - 一个 [Azure SQL 数据库](sql-database-single-database-get-started.md)

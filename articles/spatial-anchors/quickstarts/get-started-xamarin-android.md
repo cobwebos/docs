@@ -9,10 +9,10 @@ ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 94906d645ec38a24d54536ee8aa93e7418c8dc35
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75465181"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Xamarin Android 应用
@@ -28,7 +28,7 @@ ms.locfileid: "75465181"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，请确保具备以下项：
 - Windows 或 macOS 计算机：
@@ -69,13 +69,13 @@ ms.locfileid: "75465181"
 
 将启动项目设置为 **SampleXamarin.Android**，将**解决方案配置**更改为“发布”  ，然后在设备选择器下拉列表中选择要部署到的设备。
 
-# <a name="windowstabdeploy-windows"></a>[Windows](#tab/deploy-windows)
+# <a name="windows"></a>[Windows](#tab/deploy-windows)
 
 ![Visual Studio 配置](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
 选择“调试” > “开始调试”以部署并启动应用   。
 
-# <a name="macostabdeploy-macos"></a>[macOS](#tab/deploy-macos)
+# <a name="macos"></a>[macOS](#tab/deploy-macos)
 
 ![Visual Studio 配置](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 

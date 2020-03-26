@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/05/2019
 ms.author: rohink
 ms.openlocfilehash: 34a9858ffbec2360a347b8c765d53551fd2d9fc0
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76935430"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 专用 DNS 区域

@@ -9,17 +9,17 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
 ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76906436"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>快速入门：使用 Python v2.1 SDK 管理 blob
 
 本快速入门介绍如何使用 Python 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载和列出 Blob，并创建和删除容器。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - 一个 Azure 存储帐户。 [创建存储帐户](../common/storage-account-create.md)。

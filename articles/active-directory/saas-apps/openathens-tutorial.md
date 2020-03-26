@@ -17,10 +17,10 @@ ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43fc2272a81672ea613bdcbe17c5381e99cafbff
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73053202"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>教程：Azure Active Directory 单一登录 (SSO) 与 OpenAthens 的集成

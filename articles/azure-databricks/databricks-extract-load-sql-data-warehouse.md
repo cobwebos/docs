@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 8c7c9c2e3a1195422db30ba913b1cea3a1a360e4
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 8819b79a105b7a654a34e47c5ba9b3d351a1d926
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301686"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239419"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
@@ -47,7 +47,7 @@ ms.locfileid: "78301686"
 
 在开始本教程之前，完成以下任务：
 
-* 以服务器管理员身份创建 Azure SQL 数据仓库、创建服务器级防火墙规则并连接到服务器。请参阅[快速入门：在 Azure 门户中创建和查询 Azure SQL 数据仓库](../sql-data-warehouse/create-data-warehouse-portal.md)。
+* 以服务器管理员身份创建 Azure SQL 数据仓库、创建服务器级防火墙规则并连接到服务器。请参阅[快速入门：在 Azure 门户中创建和查询 Azure SQL 数据仓库](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)。
 
 * 为 Azure SQL 数据仓库创建主密钥。 请参阅[创建数据库主密钥](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)。
 
@@ -155,13 +155,13 @@ ms.locfileid: "78301686"
 
    ```scala
    val appID = "<appID>"
-   val password = "<password>"
+   val secret = "<secret>"
    val tenantID = "<tenant-id>"
 
    spark.conf.set("fs.azure.account.auth.type", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
    spark.conf.set("fs.azure.account.oauth2.client.id", "<appID>")
-   spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret", "<secret>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
    ```

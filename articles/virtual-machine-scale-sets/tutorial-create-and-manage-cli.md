@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c2bddb4ef1401dd45b5aa9418f6e1890df0879ae
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 27f216a3cc101d4241fb8d30d27999a0397356dc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277225"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80062803"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 本教程介绍如何执行下列操作：
@@ -69,7 +69,7 @@ az vmss list-instances \
 
 以下示例输出显示了规模集中的两个 VM 实例：
 
-```bash
+```output
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
 ------------  --------------------  ----------  ------------  -------------------  ---------------  ------------------------------------
            1  True                  eastus      myScaleSet_1  Succeeded            MYRESOURCEGROUP  c059be0c-37a2-497a-b111-41272641533c
@@ -100,7 +100,7 @@ az vmss list-instance-connection-info \
 
 以下示例输出显示了实例名称、负载均衡器的公共 IP 地址，以及可以通过 NAT 规则将流量转发到其中的端口号：
 
-```bash
+```output
 {
   "instance 1": "13.92.224.66:50001",
   "instance 3": "13.92.224.66:50003"
@@ -109,13 +109,13 @@ az vmss list-instance-connection-info \
 
 通过 SSH 连接到第一个 VM 实例。 使用 `-p` 参数指定公共 IP 地址和端口号，如前述命令所示：
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
 登录到 VM 实例以后，可以根据需要执行一些手动配置更改。 现在，请按正常方式关闭 SSH 会话：
 
-```bash
+```console
 exit
 ```
 
@@ -129,7 +129,7 @@ az vm image list --output table
 
 以下示例输出显示 Azure 上的最常用 VM 映像。 可以使用 *UrnAlias* 在创建规模集时指定一个最常用的映像。
 
-```bash
+```output
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
@@ -153,7 +153,7 @@ az vm image list --offer CentOS --all --output table
 
 以下浓缩版输出显示了一些可用的 CentOS 7.3 映像：
 
-```azurecli-interactive 
+```output
 Offer    Publisher   Sku   Urn                                 Version
 -------  ----------  ----  ----------------------------------  -------------
 CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20161221   7.3.20161221
@@ -202,7 +202,7 @@ az vm list-sizes --location eastus --output table
 
 输出类似于以下浓缩版示例，其中显示了分配给每个 VM 大小的资源：
 
-```azurecli-interactive
+```output
   MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
 ------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
                  4          3584  Standard_DS1_v2                       1           1047552                    7168

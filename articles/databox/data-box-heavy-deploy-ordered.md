@@ -10,10 +10,10 @@ ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: dce3549bde4c62245e1d2b1f8ac0c88c0b70260c
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70241393"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>教程：订购 Azure Data Box Heavy
@@ -81,7 +81,7 @@ Azure Data Box Heavy 是一个混合解决方案，可以快速、方便、可�
 
     |设置  |值  |
     |---------|---------|
-    |Subscription     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 订阅链接到计费帐户。       |
+    |订阅     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 订阅链接到计费帐户。       |
     |传输类型     | 选择“导入到 Azure”。         |
     |来源国家/地区     | 选择数据当前所在的国家/地区。         |
     |目标 Azure 区域     | 选择要在其中传输数据的 Azure 区域。        |
@@ -96,8 +96,8 @@ Azure Data Box Heavy 是一个混合解决方案，可以快速、方便、可�
     
     |设置  |值  |
     |---------|---------|
-    |Name     | 提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。      |
-    |Resource group     | 使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
+    |名称     | 提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。      |
+    |资源组     | 使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
     |目标 Azure 区域     | 选择存储帐户的区域。 <br> 有关详细信息，请转到[适用区域](https://azure.microsoft.com/global-infrastructure/services/?products=databox)。        |
     |存储目标     | 从存储帐户和/或托管磁盘中进行选择。 <br> 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个或多个存储帐户。 <br>Data Box Heavy 可以与最多 10 个存储帐户关联。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。 <br> 不支持 Azure Data Lake Storage Gen 2 帐户。 请参阅[设备支持的存储帐户](data-box-heavy-system-requirements.md#supported-storage-accounts)。 <br>支持使用虚拟网络的存储帐户。 若要允许 Data Box 服务使用受保护的存储帐户，请在存储帐户网络防火墙设置中启用受信任的服务。 有关详细信息，请了解如何[将 Azure Data Box 服务添加为受信任的服务](../storage/common/storage-network-security.md#exceptions)。|
 
@@ -117,7 +117,7 @@ Azure Data Box Heavy 是一个混合解决方案，可以快速、方便、可�
 
 7. 在“寄送地址”中，提供你的姓名、公司的名称和邮政地址，以及有效的电话号码。  选择“验证地址”。  
 
-    服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。 选择“**下一步**”。
+    服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。 选择“**下一页**”。
 
 8. 在“通知详细信息”中，指定电子邮件地址。  服务会将有关任何订单状态更新的电子邮件通知发送到指定的电子邮件地址。
 

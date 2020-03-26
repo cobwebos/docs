@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77560214"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>教程：使用数据复制服务将数据复制到 Azure Data Box Heavy（预览版）
@@ -29,7 +29,7 @@ ms.locfileid: "77560214"
 > [!div class="checklist"]
 > * 将数据复制到 Data Box Heavy
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 

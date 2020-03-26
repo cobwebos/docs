@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 11d4eb396d332327addcd85ed7badd36ef8f1d10
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5168dab7501cdb2907b3eede5877dce39e9e5c97
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647938"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473041"
 ---
-# <a name="publish-an-azure-managed-application-definition"></a>发布 Azure 托管应用程序定义
+# <a name="quickstart-publish-an-azure-managed-application-definition"></a>快速入门：发布 Azure 托管应用程序定义
 
 本快速入门简单介绍了如何使用托管应用程序。 请先向组织中用户的内部目录添加托管应用程序定义， 为简单起见，我们已为托管应用程序生成了文件。 这些文件可通过 GitHub 获取。 可以在[创建服务目录应用程序](publish-service-catalog-app.md)教程中了解如何生成这些文件。
 

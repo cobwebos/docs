@@ -9,17 +9,17 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.openlocfilehash: 05b94ca9bd14392bad5288882a80f5c75590ef7b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76931787"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>快速入门：通过 Microsoft 基因组学服务运行工作流
 
 在本快速入门中，你会将输入数据上传到 Azure Blob 存储帐户中，并使用 Python 基因组学客户端通过 Microsoft 基因组学服务运行工作流。 Microsoft 基因组学是一种可缩放的安全服务，适用于二次分析，可以快速处理一个基因组，从原始的读数开始，生成比对读数和变体调用。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
 - 装有 `pip` 的 [Python 2.7.12+](https://www.python.org/downloads/release/python-2714/)，并且系统路径中具有 `python`。 Microsoft 基因组学客户端与 Python 3 不兼容。 

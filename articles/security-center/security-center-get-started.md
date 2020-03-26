@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73664289"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>快速入门：将 Azure 订阅加入安全中心标准层
@@ -26,7 +26,7 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 
 本文介绍如何升级到标准层以提高安全性，以及在虚拟机上安装 Microsoft Monitoring Agent 来监视安全漏洞和威胁。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 如果尚无订阅，可注册[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 若要将订阅升级到标准层，必须拥有“订阅所有者”、“订阅参与者”或“安全管理员”角色。

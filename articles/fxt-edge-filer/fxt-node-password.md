@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75550885"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>教程：设置硬件密码
@@ -34,7 +34,7 @@ ms.locfileid: "75550885"
 
 完成本教程大约需要 15 分钟。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始本教程之前，请完成以下步骤： 
 

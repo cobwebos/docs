@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 03/21/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 9901b3f18973365dc9ceb8c85ff8587b6c2ea894
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74533610"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure 中部署容器实例

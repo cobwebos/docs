@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: zhshang
 ms.openlocfilehash: 022780f2b37c8bed49c81774d443b69bae41e5e7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73476754"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>快速入门：使用 SignalR 服务创建聊天室
@@ -134,8 +134,8 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
 
 在 SignalR 中，集线器是核心组件，用于公开一组可从客户端调用的方法。 本部分通过两种方法定义集线器类： 
 
-* `Broadcast`：此方法向所有客户端广播消息。
-* `Echo`：此方法将消息发送回调用方。
+* `Broadcast`设置用户帐户 ：此方法向所有客户端广播消息。
+* `Echo`设置用户帐户 ：此方法将消息发送回调用方。
 
 这两个方法都使用 ASP.NET Core SignalR SDK 提供的 `Clients` 接口。 使用此接口可以访问所有已连接的客户端，因此你可将内容推送到客户端。
 

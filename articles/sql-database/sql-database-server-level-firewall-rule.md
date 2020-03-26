@@ -12,10 +12,10 @@ ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
 ms.openlocfilehash: ff2508952b75bad88ff8ff92388c20ba52f50f42
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73818261"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>快速入门：使用 Azure 门户为单一数据库和共用数据库创建服务器级防火墙规则
@@ -28,7 +28,7 @@ ms.locfileid: "73818261"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>创建服务器级 IP 防火墙规则
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: b73389a9b1dadfff287718abec1755007cbe859c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f4885bea686267ce0397e9ca6f3e2c0ac8640971
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595110"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215565"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -74,13 +74,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为 *Ready*：
 
-```
+```output
 NAME                       STATUS    ROLES     AGE       VERSION
 aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 ```
@@ -181,13 +181,13 @@ spec:
 
 使用 [kubectl apply][kubectl-apply] 命令部署应用程序，并指定 YAML 清单的名称：
 
-```azurecli-interactive
+```console
 kubectl apply -f azure-vote.yaml
 ```
 
 以下示例输出显示已成功创建了部署和服务：
 
-```
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
@@ -200,20 +200,20 @@ service "azure-vote-front" created
 
 若要监视进度，请将 [kubectl get service][kubectl-get] 命令与 `--watch` 参数配合使用。
 
-```azurecli-interactive
+```console
 kubectl get service azure-vote-front --watch
 ```
 
 最初，*azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending*。
 
-```
+```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 当 *EXTERNAL-IP* 地址从 *pending* 更改为实际公共 IP 地址时，请使用 `CTRL-C` 停止 `kubectl` 监视进程。 以下示例输出显示向服务分配了有效的公共 IP 地址：
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 

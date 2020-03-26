@@ -4,10 +4,10 @@ description: 在本快速入门中，你将使用 Azure PowerShell 创建 Azure 
 ms.date: 11/25/2019
 ms.topic: quickstart
 ms.openlocfilehash: 3fd6060d1f38c523ccf22e80807f6220bfdf3cbc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75978308"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建策略分配以识别不符合的资源
@@ -17,7 +17,7 @@ ms.locfileid: "75978308"
 Azure PowerShell 模块用于从命令行或脚本管理 Azure 资源。
 本指南介绍如何使用 Az 模块来创建策略分配。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 

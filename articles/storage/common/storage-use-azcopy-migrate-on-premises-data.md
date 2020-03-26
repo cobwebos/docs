@@ -9,17 +9,17 @@ ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: f7155053072b3533503765dc6f4fbf185d21f0d4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74327513"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>教程：使用 AzCopy 将本地数据迁移到云存储空间
 
 AzCopy 是一个命令行工具，借助该工具，可使用简单命令将数据复制到 Azure Blob 存储、Azure 文件和 Azure 表存储或从其中复制出数据。 这些命令旨在实现最佳性能。 使用 AzCopy，可在文件系统和存储帐户之间或在存储帐户之间复制数据。 AzCopy 可以用来将数据从本地复制到存储帐户。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建存储帐户。 
@@ -121,11 +121,11 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.wind
 > [!NOTE]
 > Linux 示例将追加 SAS 令牌。 你需要在命令中提供一个。 当前版本的 AzCopy V10 不支持 cron 作业中的 Azure AD 授权。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
     azcopy sync "/mnt/myfiles" "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-05-30T06:57:40Z&st=2019-05-29T22:57:40Z&spr=https&sig=BXHippZxxx54hQn%2F4tBY%2BE2JHGCTRv52445rtoyqgFBUo%3D" --recursive=true
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
     azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true
 
@@ -135,7 +135,7 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.wind
 
  使用 Schtasks  ，管理员能够在本地或远程计算机上创建、删除、查询、更改、运行和结束计划的任务。 使用 Cron  ，Linux 和 Unix 用户能够使用 [cron 表达式](https://en.wikipedia.org/wiki/Cron#CRON_expression)在指定日期和时间运行命令或脚本。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 若要在 Linux 上创建 cron 作业，请在终端上输入以下命令：
 
@@ -146,7 +146,7 @@ crontab -e
 
 在命令中指定 cron 表达式 `*/5 * * * *` 可指示 shell 脚本 `script.sh` 应每隔五分钟运行一次。 可计划让脚本在每日、每月或每年的特定时间运行。 若要了解有关设置作业执行日期和时间的详细信息，请参阅 [cron 表达式](https://en.wikipedia.org/wiki/Cron#CRON_expression)。
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 若要在 Windows 上创建计划任务，请在命令提示符下或在 PowerShell 中输入以下命令：
 

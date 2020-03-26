@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: aa676dd374eccf2a4b5c4622689ed402c8679e5a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76964815"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-java"></a>快速入门：将示例 IoT 即插即用预览版设备应用程序连接到 IoT 中心 (Java)
@@ -23,7 +23,7 @@ ms.locfileid: "76964815"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，需要在开发计算机上使用 Java SE 8。 还需要安装 Maven 3。
 

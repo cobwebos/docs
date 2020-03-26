@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.openlocfilehash: 8f244d64fe33a1529cf66314515bbe16e05ccffb
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77121530"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C# 教程：添加自动完成功能和建议 - Azure 认知搜索
@@ -26,7 +26,7 @@ ms.locfileid: "77121530"
 > * 添加自动完成功能
 > * 结合使用自动完成功能和建议
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 

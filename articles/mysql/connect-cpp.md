@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 1cec92631208b446f5621c9010d8cb7b86ae38e9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: c09327e208719d31b1ae1587c14d0223269abfa9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770792"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80062586"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Connector/C++ 连接和查询数据
 本快速入门演示如何使用 C++ 应用程序连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 C++ 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
@@ -48,7 +48,7 @@ ms.locfileid: "74770792"
 ## <a name="get-connection-information"></a>获取连接信息
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 在 Azure 门户的左侧菜单中，单击“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
 3. 单击服务器名称。
 4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。    如果忘记了密码，也可通过此面板来重置密码。

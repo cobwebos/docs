@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 663958ae367162eaeb336c819d1d219dc74a2cbe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233285"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>教程：将 Syncplicity 与 Azure Active Directory 集成
@@ -62,8 +62,8 @@ ms.locfileid: "74233285"
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
 2. **[配置 Syncplicity SSO](#configure-syncplicity-sso)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B.Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B.Simon 能够使用 Azure AD 单一登录。
+3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 5. **[创建 Syncplicity 测试用户](#create-syncplicity-test-user)** - 在 Syncplicity 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 6. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 

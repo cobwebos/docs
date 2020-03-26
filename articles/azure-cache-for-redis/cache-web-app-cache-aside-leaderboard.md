@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75411944"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教程：在 ASP.NET 中创建缓存端排行榜
@@ -28,7 +28,7 @@ ms.locfileid: "75411944"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，必须满意以下先决条件：
 

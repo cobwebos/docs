@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
 ms.openlocfilehash: 17802228c8f08e3c8f1533296e2d39080f6f8b7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75456630"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用创建自动化的基于计划的重复工作流
@@ -32,7 +32,7 @@ ms.locfileid: "75456630"
 
 ![高级逻辑应用工作流概述](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果你没有 Azure 订阅，请在开始之前[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 

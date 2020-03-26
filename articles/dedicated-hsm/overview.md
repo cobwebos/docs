@@ -14,10 +14,10 @@ ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: dd5ce117645ef2b368bbf8f0e441770d6e746b5b
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70881079"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>什么是 Azure 专用 HSM？
@@ -91,4 +91,4 @@ Azure 专用 HSM 是否适合取决于你能否做出需求和妥协的复杂组
 * [物理安全性](physical-security.md)
 * [网络](networking.md)
 * [可支持性](supportability.md)
-* [监视](monitoring.md)
+* [Monitoring](monitoring.md)

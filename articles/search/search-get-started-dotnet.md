@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/10/2020
 ms.openlocfilehash: 3d0006a3c77050c1bb21a0da8d6be51e659f933d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77589209"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>快速入门：使用 C# 通过 .NET SDK 创建 Azure 认知搜索索引
@@ -32,7 +32,7 @@ ms.locfileid: "77589209"
 > [!NOTE]
 > 为简单起见，本文中的演示代码使用 Azure 认知搜索 .NET SDK 的同步方法。 但是，对于生产场景，建议你在自己的应用程序中使用异步方法，使应用程序保持可缩放且响应迅速。 例如，可以使用 `CreateAsync` 和 `DeleteAsync`，而不是 `Create` 和 `Delete`。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要以下服务和工具。
 

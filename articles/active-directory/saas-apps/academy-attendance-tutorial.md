@@ -17,10 +17,10 @@ ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2e3214572042f4a6d6cf5e6e160a4d37a9f2909d
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74082115"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-academy-attendance"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Academy Attendance 的集成
@@ -103,9 +103,9 @@ ms.locfileid: "74082115"
 
 1. 除了上述属性，Academy Attendance 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name |  源属性|
+    | 名称 |  源属性|
     | --------- | --------------- |
-    | role      | user.assignedroles |
+    | 角色 (role)      | user.assignedroles |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 

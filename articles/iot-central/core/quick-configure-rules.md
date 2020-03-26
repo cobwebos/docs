@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77169471"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>快速入门：在 Azure IoT Central 中配置用于设备的规则和操作
@@ -22,7 +22,7 @@ ms.locfileid: "77169471"
 
 在本快速入门中，你将创建一条规则，用于在设备传感器报告的温度超过 90&deg; F 时发送电子邮件。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，应先完成前面的两个快速入门：[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)和[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)，以创建要使用的 **MXChip IoT DevKit** 设备模板。
 

@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: 534956a53615cfafeffa611127bc8c3cc4493753
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77604916"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入门：使用 Java 将 X.509 设备注册到设备预配服务
@@ -22,7 +22,7 @@ ms.locfileid: "77604916"
 
 在本快速入门中，你将使用 Java 以编程方式将一组 X.509 模拟设备注册到 Azure IoT 中心设备预配服务。 通过创建注册组或单个注册，将设备注册到预配服务实例。 本快速入门介绍如何使用 Java 服务 SDK 和示例 Java 应用程序创建这两种类型的注册。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
 - 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。

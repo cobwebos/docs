@@ -10,10 +10,10 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.openlocfilehash: 9764c4bc794eb8d133270b762fa2bca30a056fea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75459634"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>教程：使用 SSMS 在 Azure SQL 数据库的单一数据库中设计关系数据库
@@ -35,7 +35,7 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
 > [!NOTE]
 > 本教程使用单一数据库。 你也可以使用弹性池中的共用数据库，或托管实例中的实例数据库。 若要连接到托管实例，请参阅以下托管实例快速入门：[快速入门：配置 Azure VM 以连接到 Azure SQL 数据库托管实例](sql-database-managed-instance-configure-vm.md)和[快速入门：配置从本地到 Azure SQL 数据库托管实例的点到站点连接](sql-database-managed-instance-configure-p2s.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，请确保已安装：
 

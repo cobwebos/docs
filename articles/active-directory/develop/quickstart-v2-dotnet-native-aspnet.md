@@ -12,10 +12,10 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.openlocfilehash: 582afef8929da2ba75aab70c1ed0fa9e57fd3f19
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76703467"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>快速入门：调用受 Microsoft 标识平台保护的 ASP.NET Web API
@@ -24,7 +24,7 @@ ms.locfileid: "76703467"
 
 此示例还包含 Windows 桌面应用程序 (WPF) 客户端，该客户端演示了如何请求访问令牌以访问 Web API。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 运行此示例需要以下项：
 

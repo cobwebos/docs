@@ -9,17 +9,17 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74327563"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>教程：使用 Azure HDInsight 提取、转换和加载数据
 
 本教程执行 ETL 操作：提取、转换和加载数据。 有了原始 CSV 数据文件以后，将其导入 Azure HDInsight 群集，使用 Apache Hive 对其进行转换，然后使用 Apache Sqoop 将其加载到 Azure SQL 数据库。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 提取数据并将其上传到 HDInsight 群集。
@@ -76,7 +76,7 @@ ms.locfileid: "74327563"
 
    如果使用密码对 SSH 登录名进行身份验证，系统会提示输入密码。
 
-   如果使用公钥，可能需要使用 `-i` 参数并指定匹配私钥的路径。 例如，`scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:`。
+   如果使用公钥，可能需要使用 `-i` 参数并指定匹配私钥的路径。 例如，`scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:` 。
 
 2. 上传完成后，使用 SSH 连接到群集。 在命令提示符中输入以下命令：
 

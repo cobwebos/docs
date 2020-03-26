@@ -1,17 +1,17 @@
 ---
-title: 使用 Visual Studio Code 将函数连接到 Azure 存储
-description: 了解如何使用 Visual Studio Code 添加输出绑定以将函数连接到 Azure 存储队列。
-ms.date: 06/25/2019
+title: 使用 Visual Studio Code 将 Azure Functions 连接到 Azure 存储
+description: 了解如何通过将输出绑定添加到 Visual Studio Code 项目将 Azure Functions 连接到 Azure 存储队列。
+ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 5b7d7be7854a216b7cb7b610ea6d51fdc496a93f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 22f7df52e90a35a3ed9a26a7672f8354efc173e3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845650"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290065"
 ---
-# <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>使用 Visual Studio Code 将函数连接到 Azure 存储
+# <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>使用 Visual Studio Code 将 Azure Functions 连接到 Azure 存储
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
@@ -19,7 +19,7 @@ ms.locfileid: "76845650"
 
 大多数绑定都需要一个存储的连接字符串，函数将使用该字符串来访问绑定的服务。 为便于操作，请使用连同函数应用一起创建的存储帐户。 与此帐户建立的连接已存储在名为 `AzureWebJobsStorage` 的应用设置中。  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="configure-your-local-environment"></a>配置本地环境
 
 在开始本文之前，必须满足以下要求：
 
@@ -90,98 +90,17 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 定义绑定后，可以使用绑定的 `name`，将其作为函数签名中的属性进行访问。 使用输出绑定时，无需使用 Azure 存储 SDK 代码进行身份验证、获取队列引用或写入数据。 Functions 运行时和队列输出绑定将为你执行这些任务。
 
-::: zone pivot="programming-language-javascript"
-
+::: zone pivot="programming-language-javascript"  
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
+::: zone-end  
 
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-
-添加在 `context.bindings` 上使用 `msg` 输出绑定对象来创建队列消息的代码。 请在 `context.res` 语句之前添加此代码。
-
-```typescript
-// Add a message to the Storage queue.
-context.bindings.msg = "Name passed to the function: " + name;
-```
-
-此时，你的函数应如下所示：
-
-```javascript
-import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-
-const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    context.log('HTTP trigger function processed a request.');
-    const name = (req.query.name || (req.body && req.body.name));
-
-    if (name) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " + name; 
-        // Send a "hello" response.
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-
-export default httpTrigger;
-```
-
-::: zone-end
+::: zone pivot="programming-language-typescript"  
+[!INCLUDE [functions-add-output-binding-ts](../../includes/functions-add-output-binding-ts.md)]
+::: zone-end  
 
 ::: zone pivot="programming-language-powershell"
 
-添加使用 `Push-OutputBinding` cmdlet 通过 `msg` 输出绑定将文本写入队列的代码。 在 `if` 语句中设置“正常”状态之前，请添加此代码。
-
-```powershell
-# Write the $name value to the queue.
-$outputMsg = "Name passed to the function: $name"
-Push-OutputBinding -name msg -Value $outputMsg
-```
-
-此时，你的函数应如下所示：
-
-```powershell
-using namespace System.Net
-
-# Input bindings are passed in via param block.
-param($Request, $TriggerMetadata)
-
-# Write to the Azure Functions log stream.
-Write-Host "PowerShell HTTP trigger function processed a request."
-
-# Interact with query parameters or the body of the request.
-$name = $Request.Query.Name
-if (-not $name) {
-    $name = $Request.Body.Name
-}
-
-if ($name) {
-    # Write the $name value to the queue.
-    $outputMsg = "Name passed to the function: $name"
-    Push-OutputBinding -name msg -Value $outputMsg
-
-    $status = [HttpStatusCode]::OK
-    $body = "Hello $name"
-}
-else {
-    $status = [HttpStatusCode]::BadRequest
-    $body = "Please pass a name on the query string or in the request body."
-}
-
-# Associate values to output bindings by calling 'Push-OutputBinding'.
-Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
-    StatusCode = $status
-    Body = $body
-})
-```
+[!INCLUDE [functions-add-output-binding-powershell](../../includes/functions-add-output-binding-powershell.md)]
 
 ::: zone-end
 
@@ -191,11 +110,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 
 ::: zone-end
 
-::: zone pivot="programming-language-csharp"
-
+::: zone pivot="programming-language-csharp"  
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
-
-::: zone-end
+::: zone-end  
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
@@ -215,7 +132,7 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 
 如果已安装 Azure 存储资源管理器并已将其连接到 Azure 帐户，请跳过此部分。
 
-1. 运行 [Azure 存储浏览器]工具，选择左侧的连接图标，并选择“添加帐户”  。
+1. 运行 [Azure存储资源管理器] 工具，选择左侧的“连接”图标，然后选择“添加帐户”  。
 
     ![将 Azure 帐户添加到 Microsoft Azure 存储资源管理器](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-add-account.png)
 
@@ -231,7 +148,7 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 
 1. 展开“队列”节点，然后选择名为 **outqueue** 的队列。  
 
-   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用 Azure 的默认 `name` 值调用了此函数，则队列消息为“传递给函数的名称：   Azure”。
+   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用默认的 `name` 值 *Azure* 调用了此函数，则队列消息为“传递给函数的名称: Azure”。 
 
     ![Azure 存储资源管理器中显示的队列消息](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
@@ -263,9 +180,29 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 
 ## <a name="next-steps"></a>后续步骤
 
-现已更新 HTTP 触发的函数，使其将数据写入存储队列。 接下来，可以详细了解如何使用 Visual Studio Code 来开发 Azure Functions：
+现已更新 HTTP 触发的函数，使其将数据写入存储队列。 现在，可以详细了解如何使用 Visual Studio Code 开发 Functions：
 
-> [!div class="nextstepaction"]
-> [使用 Visual Studio Code 开发 Azure Functions](functions-develop-vs-code.md)
-
-[Azure 存储浏览器]: https://storageexplorer.com/
++ [使用 Visual Studio Code 开发 Azure Functions](functions-develop-vs-code.md)
+::: zone pivot="programming-language-csharp"  
++ [C# 中完整 Function 项目的示例](/samples/browse/?products=azure-functions&languages=csharp)。
++ [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)  
+::: zone-end 
+::: zone pivot="programming-language-javascript"  
++ [JavaScript 中完整函数项目的示例](/samples/browse/?products=azure-functions&languages=javascript)。
++ [Azure Functions JavaScript 开发人员指南](functions-reference-node.md)  
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
++ [TypeScript 中完整函数项目的示例](/samples/browse/?products=azure-functions&languages=typescript)。
++ [Azure Functions TypeScript 开发人员指南](functions-reference-node.md#typescript)  
+::: zone-end  
+::: zone pivot="programming-language-python"  
++ [Python 中完整函数项目的示例](/samples/browse/?products=azure-functions&languages=python)。
++ [Azure Functions Python 开发人员指南](functions-reference-python.md)  
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
++ [PowerShell 中完整函数项目的示例](/samples/browse/?products=azure-functions&languages=azurepowershell)。
++ [Azure Functions PowerShell 开发人员指南](functions-reference-powershell.md) 
+::: zone-end
++ [Azure Functions 触发器和绑定](functions-triggers-bindings.md)。
++ [Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)
++ [估算消耗计划成本](functions-consumption-costs.md)一文。

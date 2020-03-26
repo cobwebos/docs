@@ -4,10 +4,10 @@ description: CIS Microsoft Azure 基础基准蓝图示例的部署步骤，包�
 ms.date: 10/14/2019
 ms.topic: sample
 ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74544527"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>部署 CIS Microsoft Azure 基础基准蓝图示例

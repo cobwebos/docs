@@ -5,16 +5,17 @@ description: 如果为存储帐户启用了读取访问权限异地冗余存储 
 services: storage
 author: tamram
 ms.service: storage
+ms.subservice: blobs
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 522ed13681a98535c35552128fc8432782ec1ca2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 3693ae8c9c425c35ab1a4ebf88b6cd3dfb58f92c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162695"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80061290"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>教程：模拟从主要区域读取数据时出现的故障
 
@@ -31,7 +32,7 @@ ms.locfileid: "77162695"
 > * 使用[无效的静态路由](#simulate-a-failure-with-an-invalid-static-route)或 [Fiddler](#simulate-a-failure-with-fiddler) 模拟故障
 > * 模拟主终结点还原
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始学习本教程之前，请完成前一教程：[使用 Azure 存储实现应用程序数据的高可用性][previous-tutorial]。
 

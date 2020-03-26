@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.openlocfilehash: f1a6e72e1444a26b675379d9948217a7773c4a1c
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138266"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79224064"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>教程：使用 Azure CLI 为 Azure 资源创建自定义角色
 
@@ -34,7 +34,7 @@ ms.locfileid: "77138266"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要：
 

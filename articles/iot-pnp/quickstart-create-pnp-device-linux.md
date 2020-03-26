@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: d2cc440572d6f33480972c15f5c498cc384cb2e3
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75550475"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-linux"></a>快速入门：使用设备功能模型创建 IoT 即插即用预览设备 (Linux)
@@ -21,7 +21,7 @@ ms.locfileid: "75550475"
 
 _设备功能模型_ (DCM) 描述 IoT 即插即用设备的功能。 DCM 通常与产品 SKU 相关联。 DCM 中定义的功能组织成可重复使用的接口。 可以基于 DCM 生成主干设备代码。 本快速入门介绍如何通过 DCM 在 Ubuntu Linux 上使用 VS Code 创建 IoT 即插即用设备。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门假设你在桌面环境中使用 Ubuntu Linux。 本教程中的步骤已使用 Ubuntu 18.04 进行了测试。
 

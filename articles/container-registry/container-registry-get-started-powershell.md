@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 872b2a29444e5278db34ce44741e2ca90d885702
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74456374"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用容器注册表

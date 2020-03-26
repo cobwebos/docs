@@ -6,24 +6,24 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 12/02/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 5cfdcf2664871849d4488be4320f6aa03e296ce7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f83af794a179634b9b6b7adedd329ea6f4a7b8d0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770027"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79536456"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>使用 Azure CLI 创建 Azure Database for MariaDB 服务器
 
-Azure CLI 可用于从命令行或脚本创建和管理 Azure 资源。 本快速入门教程介绍如何使用 Azure CLI 在大约 5 分钟内在 Azure 资源组中创建 Azure Database for MariaDB 服务器。 
+Azure CLI 可用于从命令行或脚本创建和管理 Azure 资源。 本快速入门教程介绍如何使用 Azure CLI 在大约 5 分钟内在 Azure 资源组中创建 Azure Database for MariaDB 服务器。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-就本快速入门来说，如果在本地安装并使用 CLI，则必须运行 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。 
+就本快速入门来说，如果在本地安装并使用 CLI，则必须运行 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
 如果有多个订阅，请选择要计费的资源所在的订阅，或者本身要计费的订阅。 若要选择帐户中的特定订阅 ID，请使用 [az account set](/cli/azure/account#az-account-set) 命令：
 
@@ -47,7 +47,7 @@ az group create --name myresourcegroup --location westus
 
 设置 | 示例值 | 说明
 ---|---|---
-名称 | **mydemoserver** | 输入用于标识 Azure Database for MariaDB 服务器的唯一名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 它必须包含 3 到 63 个字符。
+name | **mydemoserver** | 输入用于标识 Azure Database for MariaDB 服务器的唯一名称。 服务器名称只能包含小写字母、数字和连字符 (-) 字符。 它必须包含 3 到 63 个字符。
 resource-group |  myresourcegroup | 输入 Azure 资源组的名称。
 sku-name | **GP_Gen5_2** | SKU 的名称。 请遵循简写约定：*定价层*\_*计算代*\_*vCore 数*。 有关 **sku-name** 参数的详细信息，请查看此表后面的部分。
 backup-retention | **7** | 保留备份的时长。 单位为天。 范围：7 到 35。 
@@ -74,13 +74,12 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 > [!NOTE]
 > 如果轻量级计算和 I/O 足以满足工作负荷要求，请考虑使用“基本”定价层。 请注意，在“基本”定价层中创建的服务器以后不能扩展到“常规用途”或“内存优化”定价层。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/mariadb/)。
-> 
 
 ## <a name="configure-a-firewall-rule"></a>配置防火墙规则
 
-使用 [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) 命令创建 Azure Database for MariaDB 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 mysql 命令行工具或 MySQL Workbench）通过 Azure Database for MariaDB 服务防火墙连接到服务器。 
+使用 [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) 命令创建 Azure Database for MariaDB 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 mysql 命令行工具或 MySQL Workbench）通过 Azure Database for MariaDB 服务防火墙连接到服务器。
 
-以下示例创建名为 `AllowMyIP` 的防火墙规则，该规则允许从特定的 IP 地址 (192.168.0.1) 进行连接。 替换 IP 地址或 IP 地址范围，这些地址或地址范围对应于要从其进行连接的位置。 
+以下示例创建名为 `AllowMyIP` 的防火墙规则，该规则允许从特定的 IP 地址 (192.168.0.1) 进行连接。 替换 IP 地址或 IP 地址范围，这些地址或地址范围对应于要从其进行连接的位置。
 
 ```azurecli-interactive
 az mariadb server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -88,14 +87,13 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 
 > [!NOTE]
 > 连接到 Azure Database for MariaDB 时，经端口 3306 进行通信。 如果尝试从企业网络内部进行连接，则可能不允许经端口 3306 的出站流量。 在这种情况下，若要连接到服务器，必须要求 IT 部门打开端口 3306。
-> 
 
 ## <a name="configure-ssl-settings"></a>配置 SSL 设置
 
 默认情况下，在服务器和客户端应用程序之间强制实施 SSL 连接。 此默认设置可通过 Internet 加密数据流确保“传输中”数据的安全性。 就本快速入门来说，请禁用服务器的 SSL 连接。 建议不要对生产服务器禁用 SSL。 有关详细信息，请参阅[配置应用程序中的 SSL 连接性以安全连接到 Azure Database for MariaDB](./howto-configure-ssl.md)。
 
 以下示例禁止在 Azure Database for MariaDB 服务器上强制实施 SSL：
- 
+
 ```azurecli-interactive
 az mariadb server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Disabled
 ```
@@ -156,9 +154,10 @@ az mariadb server show --resource-group myresourcegroup --name mydemoserver
    ```sql
    status
    ```
+
    应会看到类似于以下文本的内容：
 
-   ```bash
+   ```cmd
    C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
    Enter password: ***********
    Welcome to the MySQL monitor.  Commands end with ; or \g.

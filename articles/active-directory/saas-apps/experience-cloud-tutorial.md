@@ -16,10 +16,10 @@ ms.date: 02/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d044a229764d0d6ce1d0f3b10b95d406ccd3dd5f
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77371442"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-experience-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Experience Cloud 的集成
@@ -32,7 +32,7 @@ ms.locfileid: "77371442"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

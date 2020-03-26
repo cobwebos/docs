@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: cynthn
 ms.openlocfilehash: b3454291a40a1d39b281e28b7d1ebdbcac4020b4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76270890"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建虚拟机规模集

@@ -5,10 +5,10 @@ keywords: azure devops terraform vm virtual machine cluster module registry
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 9faeee9bb2f0fb6dc148a3868f6fc0dae3833a2a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945293"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>教程：使用模块注册表通过 Terraform 创建 Azure VM 群集

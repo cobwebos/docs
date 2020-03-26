@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/24/2020
-ms.openlocfilehash: 7d2dd65224aad231db9574aa5a1fa4a00b328da8
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 8939d9b342094342d576c00cf02e622286c8fc0f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623562"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80130583"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Hadoop 群集
 
@@ -52,7 +52,7 @@ ms.locfileid: "77623562"
     |安全外壳 (SSH) 用户名 | 默认用户名为“sshuser”  。  可以提供其他名称作为 SSH 用户名。 |
     |对 SSH 使用群集登录密码| 选中此复选框，让 SSH 用户使用与提供给群集登录用户的密码相同的密码。|
 
-    ![HDInsight Linux 入门 - 提供群集基本值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-basics-blank.png "提供用于创建 HDInsight 群集的基本值")
+    ![HDInsight Linux 入门 - 提供群集基本值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-basics.png "提供用于创建 HDInsight 群集的基本值")
 
     选择页面底部的“下一步:  存储 >>”以前进到存储设置。
 

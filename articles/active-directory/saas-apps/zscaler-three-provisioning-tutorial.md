@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 177bc34162c2b5e4dadc54e1166c5f6061068bae
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77064098"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>教程：为 Zscaler Three 配置自动用户预配
@@ -29,7 +29,7 @@ ms.locfileid: "77064098"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务基础上构建的连接器。 有关此服务的功能、工作原理的重要详细信息以及常见问题解答，请参阅[使用 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消预配](../active-directory-saas-app-provisioning.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程中所述的步骤，需要准备好以下各项：
 

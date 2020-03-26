@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: fdbd002ac946f3ac3a1a67980905d4ed6f5510c5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 1f6a05fdfc28adf412ffbd1402e37b69d1c51634
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470337"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79477759"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建标准负载均衡器以对 VM 进行负载均衡
 
@@ -58,7 +58,7 @@ ms.locfileid: "77470337"
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
 ```
 
-使用 ```-SKU Basic``` 创建基本公共 IP。 基本公共 IP 与**标准**负载均衡器不兼容。 Microsoft 建议将“标准”用于生产工作负载。 
+使用 `-SKU Basic` 创建基本公共 IP。 基本公共 IP 与**标准**负载均衡器不兼容。 Microsoft 建议将“标准”用于生产工作负载。 
 
 > [!IMPORTANT]
 > 本快速入门的其余部分假定在上述 SKU 选择过程中选择了“标准”  SKU。
@@ -73,7 +73,7 @@ ms.locfileid: "77470337"
 
 ### <a name="create-the-load-balancer"></a>创建负载均衡器
 
-使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 创建名为 **myLoadBalancer** 的公共 Azure 负载均衡器，该负载均衡器包括名为 **myFrontEnd** 的前端池、名为 **myBackEndPool** 的后端池（与在前一步中创建的公共 IP 地址 **myPublicIP** 相关联）。 使用 ```--sku basic``` 创建基本公共 IP。 Microsoft 建议将标准 SKU 用于生产工作负载。
+使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 创建名为 **myLoadBalancer** 的公共 Azure 负载均衡器，该负载均衡器包括名为 **myFrontEnd** 的前端池、名为 **myBackEndPool** 的后端池（与在前一步中创建的公共 IP 地址 **myPublicIP** 相关联）。 使用 `--sku basic` 创建基本公共 IP。 Microsoft 建议将标准 SKU 用于生产工作负载。
 
 ```azurecli-interactive
   az network lb create \
@@ -83,7 +83,7 @@ ms.locfileid: "77470337"
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool       
-  ```
+```
 
 > [!IMPORTANT]
 > 本快速入门的其余部分假定在上述 SKU 选择过程中选择了“标准”  SKU。
@@ -133,7 +133,8 @@ ms.locfileid: "77470337"
     --name myVnet \
     --subnet-name mySubnet
 ```
-###  <a name="create-a-network-security-group"></a>创建网络安全组
+
+### <a name="create-a-network-security-group"></a>创建网络安全组
 
 对于标准负载均衡器，后端地址池中的 VM 需要具有属于网络安全组的 NIC。 创建网络安全组，以定义虚拟网络的入站连接。
 
@@ -161,6 +162,7 @@ ms.locfileid: "77470337"
     --access allow \
     --priority 200
 ```
+
 ### <a name="create-nics"></a>创建 NIC
 
 使用 [az network nic create](/cli/azure/network/nic#az-network-nic-create) 创建三个网络接口，并将它们与公共 IP 地址和网络安全组关联。 
@@ -246,11 +248,11 @@ runcmd:
   - npm init
   - npm install express -y
   - nodejs index.js
-``` 
- 
+```
+
 使用 [az vm create](/cli/azure/vm#az-vm-create) 创建虚拟机。
 
- ```azurecli-interactive
+```azurecli-interactive
 
   az vm create \
     --resource-group myResourceGroupSLB \
@@ -283,6 +285,7 @@ runcmd:
     --no-wait
 
 ```
+
 VM 可能需要几分钟才能部署好。
 
 ## <a name="test-the-load-balancer"></a>测试负载均衡器
@@ -295,16 +298,18 @@ VM 可能需要几分钟才能部署好。
     --name myPublicIP \
     --query [ipAddress] \
     --output tsv
-``` 
+```
+
    ![测试负载均衡器](./media/load-balancer-standard-public-cli/running-nodejs-app.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要资源组、负载均衡器和所有相关的资源，可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令将其删除。
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete --name myResourceGroupSLB
 ```
+
 ## <a name="next-steps"></a>后续步骤
 在本快速入门中，我们创建了一个标准负载均衡器，向其附加了 VM，配置了负载均衡器流量规则与运行状况探测，然后测试了该负载均衡器。 若要详细了解 Azure 负载均衡器，请继续学习 [Azure 负载均衡器教程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)。
 

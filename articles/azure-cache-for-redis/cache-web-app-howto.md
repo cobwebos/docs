@@ -7,11 +7,11 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3da1902906c4fb12bf5eef473ee39e721e4efe3a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 155993bb3da781e698398ed8ddffa626e8f6cb2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74927069"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>快速入门：将 Azure Redis 缓存与 ASP.NET Web 应用配合使用 
@@ -47,7 +47,7 @@ ms.locfileid: "74927069"
 
 4. 对于“身份验证”设置，请确保指定“不进行身份验证”。   默认的“身份验证”设置可能因 Visual Studio 版本而异。  若要对其进行更改，请选择“更改身份验证”，然后选择“不进行身份验证”。  
 
-5. 选择“确定”创建该项目。 
+5. 选择“确定”  以创建项目。
 
 ## <a name="create-a-cache"></a>创建缓存
 
@@ -143,7 +143,7 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
 
             // Connection refers to a property that returns a ConnectionMultiplexer
             // as shown in the previous example.
-            IDatabase cache = lazyConnection.GetDatabase();
+            IDatabase cache = lazyConnection.Value.GetDatabase();
 
             // Perform cache operations using the cache object...
 
@@ -166,7 +166,7 @@ ASP.NET 运行时合并了外部文件的内容以及 `<appSettings>` 元素中�
             ViewBag.command5 = "CLIENT LIST";
             ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
 
-            lazyConnection.Dispose();
+            lazyConnection.Value.Dispose();
 
             return View();
         }

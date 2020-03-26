@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fd74b3fad7f0b26eff2fdedddae171a1b7297dcd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 32e7b67cb3dda715127204d77c4988d41ed3f9d3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898904"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80240280"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Windows 虚拟机
 
@@ -59,7 +59,7 @@ az vm create \
 
 创建 VM 和支持资源需要几分钟时间。 以下示例输出表明 VM 创建操作已成功。
 
-```azurecli-interactive
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",

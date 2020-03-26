@@ -4,10 +4,10 @@ description: 了解如何使用 Yeoman 在 Azure 中创建 Terraform 基模板�
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 82c3f5e640789547abb716b55959e1821a61e6d0
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77472139"
 ---
 # <a name="tutorial-create-a-terraform-base-template-in-azure-using-yeoman"></a>教程：使用 Yeoman 在 Azure 中创建 Terraform 基模板
@@ -21,7 +21,7 @@ ms.locfileid: "77472139"
 > * 使用 Docker 文件运行 Terraform 模块。
 > * 在 Azure Cloud Shell 中以本机方式运行 Terraform 模块。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 - **Visual Studio Code**：针对平台[下载 Visual Studio Code](https://code.visualstudio.com/download)。

@@ -17,10 +17,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47af0a43e4d081f50fedf685d46347f0f36233fd
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68825620"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wrike"></a>教程：Azure Active Directory 与 Wrike 集成

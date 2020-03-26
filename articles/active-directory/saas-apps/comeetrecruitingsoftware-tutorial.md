@@ -17,10 +17,10 @@ ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25a88e3abd7eacc323b5d45fd4fae1304010253b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158550"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>教程：Azure Active Directory 与 Comeet Recruiting Software 的集成
@@ -125,16 +125,16 @@ ms.locfileid: "73158550"
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ： 
 
-    | Name |  源属性|
+    | 名称 |  源属性|
     | ---------------| --------------- |
     | NameIdentifier | user.mail |
     | comeet_id | user.userprincipalname |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”  以打开“管理用户声明”  对话框。
+    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 

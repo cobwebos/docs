@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494322"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>教程：使用 ODBC 和 PowerShell 查询 Apache Hive
@@ -52,10 +52,10 @@ ms.locfileid: "73494322"
 
 1. 键入或选择以下值：
 
-   | 属性 | 说明 |
+   | properties | 说明 |
    | --- | --- |
    |  数据源名称 |为数据源提供名称 |
-   |  主机 |输入 `CLUSTERNAME.azurehdinsight.net` 。 例如： `myHDICluster.azurehdinsight.net` |
+   |  主机 |输入 `CLUSTERNAME.azurehdinsight.net`。 例如： `myHDICluster.azurehdinsight.net` |
    |  端口 |使用 **443**。|
    |  数据库 |使用“默认”  。 |
    |  机制 |选择“Windows Azure HDInsight 服务”  |

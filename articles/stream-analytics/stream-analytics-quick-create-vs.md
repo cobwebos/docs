@@ -7,10 +7,10 @@ ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.openlocfilehash: 21dbd4128cad7df11aeb713286d868879a58519b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75431528"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>快速入门：使用 Visual Studio 创建 Azure 流分析作业

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74007657"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心
@@ -39,7 +39,7 @@ ms.locfileid: "74007657"
 
 ## <a name="stream-logs-to-an-event-hub"></a>将日志流式传输到事件中心
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 
 2. 选择“Azure Active Directory” > “监视” > “审核日志”。    
 

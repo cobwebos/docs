@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
 ms.openlocfilehash: e670df359cc33c9eaca089d0ed8f9614ef8c0468
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73904149"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>快速入门：配置 IoT 解决方案

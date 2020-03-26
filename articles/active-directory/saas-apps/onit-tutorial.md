@@ -17,10 +17,10 @@ ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e908cb76a57f027494230edc648b69da0730ac27
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70164244"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Onit 集成

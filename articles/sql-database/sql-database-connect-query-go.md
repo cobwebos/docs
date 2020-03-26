@@ -12,10 +12,10 @@ ms.author: craigg
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
 ms.openlocfilehash: 9b85b1bfb8935b5e311bb7d9503c17261a210127
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73827083"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>快速入门：使用 Golang 查询 Azure SQL 数据库
@@ -46,13 +46,13 @@ ms.locfileid: "73827083"
 
   - **MacOS**：安装 Homebrew 和 Golang。 请参阅[步骤 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/)。
   - **Ubuntu**：安装 Golang。 请参阅[步骤 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/)。
-  - Windows  ：安装 Golang。 请参阅[步骤 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/)。
+  -  Windows：安装 Golang。 请参阅[步骤 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/)。
 
 ## <a name="get-sql-server-connection-information"></a>获取 SQL Server 连接信息
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
 

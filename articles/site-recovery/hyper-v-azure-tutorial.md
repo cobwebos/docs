@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 741d4718b5e6140f4ddd2bb22e1a2ec830763176
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029946"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79224034"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>对 Azure 设置本地 Hyper-V VM 的灾难恢复
 
@@ -21,7 +21,7 @@ ms.locfileid: "74029946"
 
 此教程为系列教程中的第三个教程。 本教程演示如何设置本地 Hyper-V VM 到 Azure 的灾难恢复。 本教程适用于不由 Microsoft System Center Virtual Machine Manager (VMM) 托管的 Hyper-V VM。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 选择复制源和目标。
@@ -30,7 +30,7 @@ ms.locfileid: "74029946"
 > * 为 VM 启用复制。
 
 > [!NOTE]
-> 教程中介绍了某个方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请查看 [Site Recovery 文档](https://docs.microsoft.com/azure/site-recovery)的“操作指南”部分所列的文章  。
+> 教程介绍了某个方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请查看 [Site Recovery 文档](https://docs.microsoft.com/azure/site-recovery)的“操作指南”部分所列的文章  。
 
 
 

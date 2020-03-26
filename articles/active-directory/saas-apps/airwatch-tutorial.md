@@ -17,10 +17,10 @@ ms.date: 07/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 772b37816b83c275bae927d825434dc3ca76a35c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74231992"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>教程：将 AirWatch 与 Azure Active Directory 集成
@@ -93,12 +93,12 @@ ms.locfileid: "74231992"
 
 1. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤     ：
 
-    | Name |  源属性|
+    | 名称 |  源属性|
     |---------------|----------------|
     | UID | user.userprincipalname |
     | | |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”  以打开“管理用户声明”  对话框。
+    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -130,11 +130,11 @@ ms.locfileid: "74231992"
 
 1. 单击“用户”选项卡，在“基 DN”文本框中键入域名，然后单击“保存”    。
 
-   ![User](./media/airwatch-tutorial/ic791922.png "用户")
+   ![用户](./media/airwatch-tutorial/ic791922.png "用户")
 
 1. 单击“服务器”  选项卡。
 
-   ![服务器](./media/airwatch-tutorial/ic791923.png "服务器")
+   ![Server](./media/airwatch-tutorial/ic791923.png "服务器")
 
 1. 在“LDAP”  部分执行以下步骤：
 
@@ -164,11 +164,11 @@ ms.locfileid: "74231992"
 
 1. 再次单击“用户”  选项卡。
 
-    ![User](./media/airwatch-tutorial/ic791926.png "用户")
+    ![用户](./media/airwatch-tutorial/ic791926.png "用户")
 
 1. 在“属性”  部分中，执行以下步骤：
 
-    ![属性](./media/airwatch-tutorial/ic791927.png "属性")
+    ![Attribute](./media/airwatch-tutorial/ic791927.png "Attribute")
 
     a. 在“对象标识符”文本框中，键入 `http://schemas.microsoft.com/identity/claims/objectidentifier`  。
 

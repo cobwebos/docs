@@ -1,6 +1,6 @@
 ---
 title: Apache Kafka on HDInsight 简介 - Azure
-description: 了解 Apache Kafka on HDInsight：了解它的涵义和用途以及在何处可找到示例和入门信息。
+description: 了解 Apache Kafka on HDInsight：它的涵义和用途以及在何处可找到示例和入门信息。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
 ms.openlocfilehash: 92f56f3b405470bc8ae0e9ebab2450ddc31b3c6a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77672168"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Kafka
@@ -79,6 +79,6 @@ Kafka 将记录（数据）存储在主题中  。 记录由生成者  生成，
 
 * [将 Kafka 与 REST 代理配合使用](rest-proxy.md)
 
-* [教程：将 Apache Spark 与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-spark-with-kafka.md)
+* [教程：将 Apache Spark 与 Apache Kafka on HDInsight 结合使用](../hdinsight-apache-spark-with-kafka.md)
 
-* [教程：将 Apache Storm 与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-storm-with-kafka.md)
+* [教程：将 Apache Storm 与 Apache Kafka on HDInsight 结合使用](../hdinsight-apache-storm-with-kafka.md)

@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 7e8cbadf2c68b97451b40afb876ceb7d88d3758e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 1d5f8d6e0b2499bbecd32e7cb3fda2cd2cad4d19
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661050"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202212"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 NAT 网关
 
 本快速入门介绍如何使用 Azure 虚拟网络 NAT 服务。 你将创建一个 NAT 网关，以便为 Azure 中的虚拟机提供出站连接。 
-
->[!NOTE] 
->Azure 虚拟网络 NAT 目前以公共预览版提供，仅在有限的几个[区域](https://azure.microsoft.com/global-infrastructure/regions/)中可用。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms)。
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -293,7 +290,6 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 - 有关[使用 Azure CLI 部署 NAT 网关资源](./quickstart-create-nat-gateway-cli.md)的快速入门。
 - 有关[使用 Azure PowerShell 部署 NAT 网关资源](./quickstart-create-nat-gateway-powershell.md)的快速入门。
 - 有关[使用 Azure 门户部署 NAT 网关资源](./quickstart-create-nat-gateway-portal.md)的快速入门。
-- [提供有关公共预览版的反馈](https://aka.ms/natfeedback)。
 > [!div class="nextstepaction"]
 
 

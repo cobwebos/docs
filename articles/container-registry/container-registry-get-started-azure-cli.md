@@ -5,15 +5,15 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, H1Hack27Feb2017, mvc
 ms.openlocfilehash: 551a3659feb39943c9f794484abb6f2da4367f39
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74455169"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建专用容器注册表
 
-Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何使用 Azure CLI 创建 Azure 容器注册表实例。 然后，使用 Docker 命令将容器映像推送到注册表中，最终从注册表拉取并运行该映像。
+Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专用的 Docker 容器映像。 本指南详述了如何使用 Azure CLI 创建 Azure 容器注册表实例。 然后，使用 Docker 命令将容器映像推送到注册表中，最终从注册表提取并运行该映像。
 
 本快速入门需要运行 Azure CLI（建议运行 2.0.55 或更高版本）。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
@@ -23,7 +23,7 @@ Azure 容器注册表是托管的 Docker 容器注册表服务，用于存储专
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create][az-group-create] 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+使用“[az group create][az-group-create]”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
 

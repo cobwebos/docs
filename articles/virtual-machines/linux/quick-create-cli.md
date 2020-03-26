@@ -20,10 +20,10 @@ ms.custom:
 - seo-javascript-october2019
 - seo-python-october2019
 ms.openlocfilehash: 7732320e987e6397dde2aff0f6c4328d551d99b1
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72427921"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Linux 虚拟机
@@ -44,7 +44,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
+使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -111,7 +111,7 @@ sudo apt-get -y install nginx
 
 ## <a name="view-the-web-server-in-action"></a>查看运行中的 Web 服务器
 
-使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 使用你的 VM 的公用 IP 地址作为 Web 地址。 以下示例演示了默认 NGINX 网站：
+使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 使用你的 VM 的公共 IP 地址作为 Web 地址。 以下示例演示了默认 NGINX 网站：
 
 ![查看 NGINX 欢迎页](./media/quick-create-cli/view-the-nginx-welcome-page.png)
 

@@ -17,10 +17,10 @@ ms.date: 01/02/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3ce5cff0de2939c25400d1d63138b23bc6c9822
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74232037"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>教程：Azure Active Directory 与 Canvas 集成
@@ -141,7 +141,7 @@ ms.locfileid: "74232037"
 
 3. 在左侧导航窗格中，选择“身份验证”，并单击“添加新 SAML 配置”。  
 
-    ![身份验证](./media/canvas-lms-tutorial/ic775991.png "Authentication")
+    ![身份验证](./media/canvas-lms-tutorial/ic775991.png "身份验证")
 
 4. 在“当前集成”页上，执行以下步骤：
 

@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671879"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215985"
 ---
 # <a name="what-is-conditional-access"></a>什么是条件访问？
 
@@ -26,7 +26,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 ![概念性条件信号加上要实施的决策](./media/overview/conditional-access-signal-decision-enforcement.png)
 
-最简单地讲，条件访问策略是一些 if-then 语句：如果用户想要访问某个资源，则必须完成某个操作。 示例：工资经理希望访问工资单应用程序，并需要执行多重身份验证才能访问该应用程序。
+最简单地讲，条件访问策略是一些 if-then 语句：如果用户想要访问某个资源，则必须完成某个操作。 示例：薪资管理人员想要访问薪资应用程序，而需要执行多重身份验证才能访问。
 
 管理员面临着两个主要目标：
 

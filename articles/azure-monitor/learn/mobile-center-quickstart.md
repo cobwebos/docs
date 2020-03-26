@@ -9,17 +9,17 @@ ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
 ms.openlocfilehash: a59a6841a1db3cecfe52c54135b42f5b6a095ce3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77660285"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>开始使用 App Center 和 Application Insights 分析移动应用
 
 本快速入门将指导你完成将应用的 App Center 实例连接到 Application Insights 的整个过程。 与 App Center 的[分析](https://docs.microsoft.com/mobile-center/analytics/)服务提供的工具相比，Application Insights 的功能更为强大，可让你对遥测数据进行更准确的查询、分段、筛选和分析。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，你需要：
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: rohink
 ms.openlocfilehash: 559ed0a134bb6db78d1e89634138b4025e04152b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76934772"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流量管理器配置文件
@@ -31,7 +31,7 @@ ms.locfileid: "76934772"
 
 登录 [Azure 门户](https://portal.azure.com)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要两个部署在两个不同的 Azure 区域（美国东部和西欧）的 Web 应用程序实例。   每个都可以充当流量管理器的主终结点和故障转移终结点。
 
