@@ -5,21 +5,21 @@ ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
-ms.custom: seodec18
-ms.openlocfilehash: 2a0b3994af48372b8ed0a3c6eaecf4289d0980c1
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: mvc, devcenter, vs-azure, seodec18
+ms.openlocfilehash: a9acb55f0a03a6ec1ba0bb6bb38c665b059b672b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671377"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80047026"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用
 
-[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。 本教程演示如何在应用服务中部署数据驱动的 ASP.NET 应用，以及如何将其连接到 [Azure SQL 数据库](../sql-database/sql-database-technical-overview.md)。 完成后，你便拥有了一个在 Azure 中运行并连接到 SQL 数据库的 ASP.NET 应用。
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 本教程演示如何在应用服务中部署数据驱动的 ASP.NET 应用，以及如何将其连接到 [Azure SQL 数据库](../sql-database/sql-database-technical-overview.md)。 完成后，你便拥有了一个在 Azure 中运行并连接到 SQL 数据库的 ASP.NET 应用。
 
 ![已在 Azure 应用服务中发布 ASP.NET 应用程序](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 SQL 数据库。
@@ -33,7 +33,7 @@ ms.locfileid: "74671377"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 安装带有 ASP.NET 和 Web 开发  工作负荷的 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a>。
 
@@ -50,7 +50,7 @@ ms.locfileid: "74671377"
 
 在 Visual Studio 中打开 dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln 文件  。 
 
-键入 `Ctrl+F5` 在不调试的情况下运行应用。 该应用将显示在默认浏览器中。 选择“新建”  链接，创建一对待办事项  。 
+键入 `Ctrl+F5` 在不调试的情况下运行应用。 该应用将显示在默认浏览器中。 选择“新建”  链接，创建几个待办事项  。 
 
 ![“新建 ASP.NET 项目”对话框](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "74671377"
 
 ### <a name="configure-the-web-app-name"></a>配置 Web 应用名称
 
-可保留生成的 Web 应用名称，或将其更改为另一个唯一名称（有效字符是 `a-z` `0-9` 和 `-`）。 Web 应用名称将用作应用默认 URL 的一部分（`<app_name>.azurewebsites.net`，其中 `<app_name>` 是 Web 应用的名称）。 Web 应用名称在 Azure 中的所有应用程序中必须是唯一的。 
+可保留生成的 Web 应用名称，或将其更改为另一个唯一名称（有效字符是 `a-z``0-9` 和 `-`）。 Web 应用名称将用作应用默认 URL 的一部分（`<app_name>.azurewebsites.net`，其中 `<app_name>` 是 Web 应用的名称）。 Web 应用名称在 Azure 中的所有应用程序中必须是唯一的。 
 
 ![“创建应用服务”对话框](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
 
@@ -212,7 +212,7 @@ public bool Done { get; set; }
 
 ### <a name="run-code-first-migrations-locally"></a>本地运行 Code First 迁移
 
-运行几个命令更新本地数据库。 
+运行以下命令更新本地数据库。 
 
 在“工具”  菜单中，单击“NuGet 包管理器”   > “包管理器控制台”  。
 
@@ -276,7 +276,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 </th>
 ```
 
-查找包含 `Html.ActionLink()` 帮助程序方法的 `<td>` 元素。 在此 `<td>` _上面_，使用以下 Razor 代码添加另一个 `<td>` 元素：
+查找包含 `Html.ActionLink()` 帮助程序方法的 `<td>` 元素。 在此 `<td>`_上面_，使用以下 Razor 代码添加另一个 `<td>` 元素：
 
 ```csharp
 <td>
@@ -288,7 +288,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 
 键入 `Ctrl+F5` 运行应用。
 
-现在可以添加一个待办事项，并勾选“完成”  。 然后，它会在主页中显示为已完成的项。 请记住，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
+你现在可以添加一个待办事项，并检查''Done''  。 然后，它会在主页中显示为已完成的项。 请记住，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
 
 ### <a name="enable-code-first-migrations-in-azure"></a>在 Azure 中启用 Code First 迁移
 
@@ -401,7 +401,7 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 SQL 数据库。

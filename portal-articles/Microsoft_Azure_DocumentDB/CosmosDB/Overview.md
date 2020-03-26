@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 12/13/2017
 ms.author: sewatson
 ms.openlocfilehash: bd5951fe86bde7e71c77d5564216421c1d2d1ea4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "64708462"
 ---
 # <a name="azure-cosmos-db-documentation"></a>Azure Cosmos DB 文档
@@ -51,10 +51,10 @@ Azure Cosmos DB 是一个全球分布式数据库服务，使用它可以跨任�
 
 了解如何使用 Azure Cosmos DB 开发应用：
 
-- 使用 Cosmos DB 开发应用：[SQL](/azure/cosmos-db/tutorial-develop-sql-api-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb-nodejs) | [表](/azure/cosmos-db/tutorial-develop-table-dotnet) | [图形](/azure/cosmos-db/tutorial-develop-graph-dotnet)
+- 使用 Cosmos DB 开发应用：[SQL](/azure/cosmos-db/tutorial-develop-sql-api-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb-nodejs) | [表](/azure/cosmos-db/tutorial-develop-table-dotnet) | [图](/azure/cosmos-db/tutorial-develop-graph-dotnet)
 - 将数据导入 Cosmos DB [SQL](/azure/cosmos-db/sql-api-import-data) | [MongoDB](/azure/cosmos-db/mongodb-migrate) 
 - 使用 Cosmos DB 查询数据：[SQL](/azure/cosmos-db/tutorial-query-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-query-mongodb) | [表](/azure/cosmos-db/tutorial-query-table) | [图形](/azure/cosmos-db/tutorial-query-graph)
-- 使用 Cosmos DB 进行全局数据库复制：[SQL](/azure/cosmos-db/tutorial-global-distribution-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [表](/azure/cosmos-db/tutorial-global-distribution-table | [图形](/azure/cosmos-db/tutorial-global-distribution-graph)
+- 通过 Cosmos DB 进行的全局数据库复制：[SQL](/azure/cosmos-db/tutorial-global-distribution-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [表](/azure/cosmos-db/tutorial-global-distribution-table | [图](/azure/cosmos-db/tutorial-global-distribution-graph)
 - [使用仿真程序本地开发应用程序](/azure/cosmos-db/local-emulator)
 
 ## <a name="samples"></a>示例

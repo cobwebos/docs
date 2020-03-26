@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 3c461e543e3b01501ec47589a9eab3d74820491a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1ad76ce6e2e7bab20c1ca1c1bc327d74cb55c1e5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500233"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79473483"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用动态配置
 
@@ -40,7 +40,7 @@ ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据�
 > * 设置应用程序，使其能够更新配置以响应应用程序配置存储区中的更改。
 > * 在应用程序的控制器中注入最新配置。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
 
@@ -52,7 +52,7 @@ ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据�
 
 1. 通过运行以下命令，添加对 `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet 包的引用：
 
-    ```CLI
+    ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 

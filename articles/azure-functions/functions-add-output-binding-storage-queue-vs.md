@@ -5,10 +5,10 @@ ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74849201"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>使用 Visual Studio 将函数连接到 Azure 存储
@@ -19,7 +19,7 @@ ms.locfileid: "74849201"
 
 大多数绑定都需要一个存储的连接字符串，函数将使用该字符串来访问绑定的服务。 为便于操作，请使用连同函数应用一起创建的存储帐户。 与此帐户建立的连接已存储在名为 `AzureWebJobsStorage` 的应用设置中。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本文之前，必须： 
 
@@ -45,7 +45,7 @@ ms.locfileid: "74849201"
 
 由于你使用的是队列存储输出绑定，因此在运行项目之前，需要安装存储绑定扩展。 绑定（HTTP 和计时器触发器除外）将实现为扩展包。 
 
-1. 在“工具”菜单中，选择“NuGet 包管理器” > “包管理器控制台”。    
+1. 在“工具”菜单中，选择“NuGet 包管理器” **“包管理器控制台”。**   >   
 
 1. 在控制台中，运行以下 [Install-Package](/nuget/tools/ps-ref-install-package) 命令安装存储扩展：
 
@@ -75,11 +75,11 @@ ms.locfileid: "74849201"
 
 1. 在 Visual Studio 的“视图”菜单中，选择“Cloud Explorer”。  
 
-1. 在“Cloud Explorer”中，展开你的 Azure 订阅和“存储帐户”，然后展开函数使用的存储帐户。   如果你忘记了存储帐户名称，请查看 *local.settings.json* 文件中的 `AzureWebJobsStorage` 连接字符串设置。  
+1. 在“Cloud Explorer”中，展开你的 Azure 订阅和“存储帐户”，然后展开函数使用的存储帐户。   如果你忘记了存储帐户名称，请查看 `AzureWebJobsStorage`local.settings.json*文件中的* 连接字符串设置。  
 
 1. 展开“队列”节点，然后双击名为 **outqueue** 的队列，在 Visual Studio 中查看队列的内容。  
 
-   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用 Azure 的默认 `name` 值调用了此函数，则队列消息为“传递给函数的名称：   Azure”。
+   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用默认的 `name` 值 *Azure* 调用了此函数，则队列消息为“传递给函数的名称: Azure”。 
 
     ![Azure 存储资源管理器中显示的队列消息](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 

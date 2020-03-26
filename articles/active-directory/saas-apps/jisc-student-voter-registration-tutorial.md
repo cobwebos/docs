@@ -17,10 +17,10 @@ ms.date: 11/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7de54b507630174107994f1434f17120f3abffbb
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74806124"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jisc-student-voter-registration"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Jisc Student Voter Registration 的集成
@@ -91,7 +91,7 @@ ms.locfileid: "74806124"
 
 1. 除上述属性以外，Jisc Student Voter Registration 应用程序还要求在 SAML 响应中传回其他几个属性。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name |  源属性|
+    | 名称 |  源属性|
     | ---------|  --------- |
     | postalcode | user.postalcode |
     | 唯一用户标识符 | user.objectid |

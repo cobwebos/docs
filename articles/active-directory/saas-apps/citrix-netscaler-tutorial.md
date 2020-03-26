@@ -17,10 +17,10 @@ ms.date: 12/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 785242a2cf51571a6d13b2b4691d33e46369bf94
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977911"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>教程：Azure Active Directory 单一登录与 Citrix NetScaler（基于 Kerberos 的身份验证）集成
@@ -33,7 +33,7 @@ ms.locfileid: "75977911"
 
 若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -64,13 +64,13 @@ ms.locfileid: "75977911"
 
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 
-1. 在“从库中添加”部分的搜索框中，输入 Citrix NetScaler   。
+1. 在“从库中添加”部分的搜索框中，输入 **Citrix NetScaler**  。
 
-1. 在结果中选择 Citrix NetScaler，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在结果中选择“Citrix NetScaler”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-citrix-netscaler"></a>为 Citrix NetScaler 配置和测试 Azure AD 单一登录
 
-使用名为 B.Simon 的测试用户配置并测试 Citrix NetScaler 的 Azure AD SSO  。 若要正常使用 SSO，需要在 Azure AD 用户与 Citrix NetScaler 中的相关用户之间建立关联关系。
+使用名为 **B.Simon** 的测试用户配置并测试 Citrix NetScaler 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 Citrix NetScaler 中的相关用户之间建立关联关系。
 
 若要配置并测试 Citrix NetScaler 的 Azure AD SSO，请完成以下构建基块：
 

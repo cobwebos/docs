@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
 ms.openlocfilehash: 3775070320b8c6e96dd06031bd87ea53f37046c5
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78894853"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>开始监视 ASP.NET Web 应用程序
@@ -20,7 +20,7 @@ ms.locfileid: "78894853"
 
 本快速入门演示如何将 Application Insights 添加到现有 ASP.NET Web 应用程序并开始分析实时统计信息，这只是可用来分析应用程序的各种方法之一。 如果没有 ASP.NET Web 应用程序，则可以按照[创建 ASP.NET Web 应用快速入门](../../app-service/app-service-web-get-started-dotnet-framework.md)创建一个。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 完成本快速入门教程需要：
 
 - 使用以下工作负荷安装 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)：
@@ -44,7 +44,7 @@ ms.locfileid: "78894853"
 
 4. 选择订阅并单击“注册”  。
 
-5. 选择“项目” > “管理 NuGet 包” > “包源: nuget.org” > “更新”，将 Application Insights SDK 包更新到最新稳定版本     。
+5. 选择“项目” **“管理 NuGet 包”** “包源: nuget.org” > “更新”，将 Application Insights SDK 包更新到最新稳定版本   >    >   。
 
 6. 通过从“调试”  菜单中选择“启动调试”  或通过按 F5 键来运行应用程序。
 

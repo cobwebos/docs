@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: 02b239922f481240341225ea68d8d0ee7492c48b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59044168"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "60445785"
 ---
 # <a name="what-is-azure-data-explorer"></a>什么是 Azure 数据资源管理器？
 
@@ -30,7 +30,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ## <a name="data-warehousing-workflow"></a>数据仓库工作流
 
-Azure 数据资源管理器与其他主要服务相集成，提供数据收集、引入、存储、索引、查询和可视化等端到端解决方案。 它通过对数 TB 的各种原始数据上执行流的“探索”步骤，在数据仓库流中发挥着关键作用。
+Azure 数据资源管理器与其他主要服务相集成，提供数据收集、引入、存储、索引、查询和可视化等端到端解决方案。 它通过对数 TB 的各种原始数据上执行流的“探索”步骤，在数据仓库流中发挥着关键作用  。
 
 ![数据仓库图](media/data-explorer-overview/data-warehouse.png)
 
@@ -44,9 +44,9 @@ Azure 数据资源管理器支持多个引入方法，包括连接到常见服�
 
 Azure 数据资源管理器中的工作通常遵循以下模式：
 
-1. **创建数据库：** 创建群集，然后在该群集中创建一个或多个数据库。 [快速入门：创建 Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md)
+1. **创建数据库**：创建群集，然后在该群集中创建一个或多个数据库   。 [快速入门：创建 Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md)
 
-1. **引入数据：** 将数据加载到数据库表，以便对其运行查询。 [快速入门：将数据从事件中心引入到 Azure 数据资源管理器](ingest-data-event-hub.md)
+1. **引入数据**：将数据加载到数据库表，以便你可以对其运行查询。 [快速入门：将数据从事件中心引入到 Azure 数据资源管理器](ingest-data-event-hub.md)
 
 1. **查询数据库**：使用 Web 应用程序来运行、查看以及共享查询和结果。 它可在 Azure 门户中使用，也可作为独立的应用程序使用。 此外可以以编程方式（使用 SDK）或向 REST API 终结点发送查询。 [快速入门：在 Azure 数据资源管理器中查询数据](web-query-data.md)
 

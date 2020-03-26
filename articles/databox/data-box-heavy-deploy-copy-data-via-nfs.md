@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 4361cee3d07408c3abb5031d2ab18c15c92c5e0a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595806"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222804"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>教程：通过 NFS 将数据复制到 Azure Data Box Heavy
 
 本教程介绍如何使用本地 Web UI 从主机连接到 Azure Data Box Heavy 并将数据复制到其中。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 先决条件

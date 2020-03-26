@@ -17,10 +17,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68227469"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>教程：Azure Active Directory 与 PageDNA 的集成
@@ -56,7 +56,7 @@ PageDNA 支持以下功能：
 
 若要配置 PageDNA 与 Azure AD 的集成，需要从 Azure 市场中将 PageDNA 添加到托管 SaaS 应用列表：
 
-1. 登录到 [Azure 门户](https://portal.azure.com?azure-portal=true)。
+1. 登录 [Azure 门户](https://portal.azure.com?azure-portal=true)。
 1. 在左窗格中选择“Azure Active Directory”  。
 
     ![“Azure Active Directory”选项](common/select-azuread.png)

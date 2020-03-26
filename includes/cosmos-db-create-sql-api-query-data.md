@@ -9,10 +9,10 @@ ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 64c900e01496dad0d5f6a96d8d790ae0c2a8c95a
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78927391"
 ---
 可以在数据资源管理器中使用查询来检索和筛选数据。

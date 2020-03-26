@@ -6,10 +6,10 @@ ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75466262"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>快速入门：将 Windows 容器部署到 Service Fabric
@@ -41,7 +41,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 Service Fabric SDK 和工具提供服务模板，用于将容器部署到 Service Fabric 群集。
 
-以“管理员”身份启动 Visual Studio。  选择“文件” > “新建” > “项目”    。
+以“管理员”身份启动 Visual Studio。  选择“文件” **“新建”** “项目” >    >   。
 
 选择“Service Fabric 应用程序”，将其命名为“MyFirstContainer”，并单击“创建”   。
 
@@ -132,7 +132,7 @@ Thumbprint                                Subject
 
 在解决方案资源管理器中右键单击“MyFirstContainer”，选择“发布”。   此时，“发布”对话框显示。
 
-运行上述 `Import-PfxCertificate` 命令时，请复制 PowerShell 窗口中 **CN =** 后面的内容，并将端口 `19000` 添加到其中。 例如，`mysfcluster.SouthCentralUS.cloudapp.azure.com:19000` 。 复制到“连接终结点”  字段。 请记下此值，因为在后面的步骤中需要用到。
+运行上述 **命令时，请复制 PowerShell 窗口中**CN =`Import-PfxCertificate` 后面的内容，并将端口 `19000` 添加到其中。 例如，`mysfcluster.SouthCentralUS.cloudapp.azure.com:19000` 。 复制到“连接终结点”  字段。 请记下此值，因为在后面的步骤中需要用到。
 
 单击“高级连接参数”，验证连接参数信息。   *FindValue* 和 *ServerCertThumbprint* 值必须与在前一步骤中运行 `Import-PfxCertificate` 时安装的证书的指纹匹配。
 

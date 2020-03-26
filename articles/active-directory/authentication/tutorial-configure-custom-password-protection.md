@@ -11,10 +11,10 @@ author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4abb15462689470c87e9cf5ba8d5be8af2e45bfd
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78253117"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>教程：为 Azure Active Directory 密码保护配置自定义受禁密码
@@ -71,7 +71,7 @@ Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不�
 1. 将字符串添加到“自定义受禁密码列表”，每行添加一个字符串。  以下注意事项和限制适用于自定义受禁密码列表：
 
     * 自定义受禁密码列表最多可以包含 1000 个字词。
-    * 自定义受禁密码列表不区分大小写。
+    * 自定义禁止密码列表不区分大小写。
     * 自定义受禁密码列表考虑常见的似形字符，例如“o”和“0”，或者“a”和“@”。
     * 最小字符串长度为 4 个字符，最大字符串长度为 16 个字符。
 
@@ -82,7 +82,7 @@ Azure AD 包含全局受禁密码列表。 全局受禁密码列表的内容不�
 1. 将“对 Windows Server Active Directory 启用密码保护”选项保留设置为“否”。  
 1. 若要启用自定义受禁密码和条目，请选择“保存”。 
 
-自定义受禁密码列表更新可能需要几个小时才能应用。
+自定义禁止密码列表更新可能需要几个小时才能应用。
 
 对于混合环境，还可以[将 Azure AD 密码保护部署到本地环境](howto-password-ban-bad-on-premises-deploy.md)。 相同的全局和自定义受禁密码列表将同时用于云和本地密码更改请求。
 

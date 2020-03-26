@@ -17,10 +17,10 @@ ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21b8cb06712e370972e0b8fec518c37d078262e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67107054"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>教程：将 AlertOps 与 Azure Active Directory 集成
@@ -84,7 +84,7 @@ ms.locfileid: "67107054"
 
     1. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.alertops.com/login.aspx`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.alertops.com/login.aspx`
 
@@ -105,7 +105,7 @@ ms.locfileid: "67107054"
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
-2. 将扩展添加到浏览器后，单击“安装 AlertOps”  会将你定向到 AlertOps 应用程序。 在此处，请提供管理员凭据以登录到 AlertOps。 浏览器扩展会自动配置应用程序，并自动执行第 3 步到第 5 步。
+2. 将扩展添加到浏览器后，单击“安装 AlertOps”  会将你定向到 AlertOps 应用程序。 在此处，请提供管理员凭据以登录到 AlertOps。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-5。
 
     ![设置配置](common/setup-sso.png)
 
@@ -151,16 +151,16 @@ ms.locfileid: "67107054"
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在“应用程序”列表中，选择“AlertOps”。 
-1. 在应用的概览页中，找到“管理”部分，选择“用户和组”   。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-alertops-test-user"></a>创建 AlertOps 测试用户

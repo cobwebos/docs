@@ -6,17 +6,17 @@ ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
 ms.openlocfilehash: 2eddedea7d626a92e21442c81aa49e00491958a1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78273025"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行集成
 
 结合使用 [Kubernetes 服务目录][kubernetes-service-catalog]和 Open Service Broker for Azure (OSBA) 时，开发人员可利用 Kubernetes 中的 Azure 托管服务。 本指南重点介绍如何使用 Kubernetes 部署 Kubernetes 服务目录、Open Service Broker for Azure (OSBA) 和使用 Azure 托管服务的应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * Azure 订阅
 
 * Azure CLI：[在本地安装][azure-cli-install]，或在 [Azure Cloud Shell][azure-cloud-shell] 中使用。

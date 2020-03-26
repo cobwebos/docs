@@ -6,10 +6,10 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.openlocfilehash: c3750da6bd76c8cb3908fbdc71ba676f09d77def
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648804"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>教程：创建包含自定义操作和资源的托管应用程序
@@ -26,7 +26,7 @@ ms.locfileid: "75648804"
 > * 部署托管应用程序的实例
 > * 执行自定义操作并创建自定义资源
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要知道：
 
@@ -219,7 +219,7 @@ $blobUri=(Get-AzureStorageBlob -Container appcontainer -Blob app.zip -Context $c
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-# <a name="azure-clitabazurecli-interactive"></a>[Azure CLI](#tab/azurecli-interactive)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli-interactive)
 
 ```azurecli-interactive
 resourceGroup="appResourcesGroup"
@@ -244,7 +244,7 @@ az managedapp definition create \
   --package-file-uri "path to your app.zip package"
 ```
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 Azure 门户中，选择“所有服务”。  在资源列表中，键入并选择“托管应用程序中心”。 
 2. 在“托管应用程序中心”上选择“服务目录应用程序定义”，然后单击“添加”。    
@@ -277,7 +277,7 @@ az managedapp definition create \
 
 部署托管应用程序定义时，请运行以下脚本，或遵循 Azure 门户中的步骤，使用自定义提供程序来部署托管应用程序实例：
 
-# <a name="azure-clitabazurecli-interactive"></a>[Azure CLI](#tab/azurecli-interactive)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli-interactive)
 
 ```azurecli-interactive
 appResourcesGroup="appResourcesGroup"
@@ -300,7 +300,7 @@ az managedapp create \
   --parameters "{\"funcname\": {\"value\": \"managedusersappfunction\"}, \"storageName\": {\"value\": \"managedusersappstorage\"}}"
 ```
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 Azure 门户中，选择“所有服务”。  在资源列表中，键入并选择“托管应用程序中心”。 
 2. 在“托管应用程序中心”上选择“服务目录应用程序”，然后单击“添加”。    

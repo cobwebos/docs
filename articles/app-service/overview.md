@@ -4,13 +4,13 @@ description: 了解 Azure 应用服务如何帮助用户开发和托管 Web 应�
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 01/04/2017
-ms.custom: seodec18
-ms.openlocfilehash: 849886eb03f46949301d76113109aae8188ff8fc
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: b385136183fba5d1e64db3763453d2f4b23d4d96
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687044"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80045174"
 ---
 # <a name="app-service-overview"></a>应用服务概述
 

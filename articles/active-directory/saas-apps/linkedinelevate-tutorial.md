@@ -17,10 +17,10 @@ ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 03efae5f9dec904f141a6776766850aa1f328892
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74892118"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>教程：Azure Active Directory 单一登录 (SSO) 与 LinkedIn Elevate 的集成
@@ -163,7 +163,7 @@ ms.locfileid: "74892118"
 
     ![配置单一登录](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
 
-1. 单击“开启”  启用 SSO。 SSO 状态将从“未连接”  更改为“已连接” 
+1. 单击“打开”  启用 SSO。 SSO 状态将从“未连接”  更改为“已连接” 
 
     ![配置单一登录](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
 

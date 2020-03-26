@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1a6858d5eda8227b3f7c1b90dee86f44273a258
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74846345"
 ---
-# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>教程：使用风险检测来触发多重身份验证和密码更改
+# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>教程：使用风险检测触发多重身份验证和密码更改
 
 本教程需启用 Azure Active Directory (Azure AD) 标识保护，这是一项 Azure AD Premium P2 功能，不仅仅是一项监视和报告工具。 若要保护组织的标识，可以配置基于风险的策略，以便自动响应风险行为。 这些策略可以进行自动阻止，也可以启动修正，包括要求进行密码更改和强制进行多重身份验证。
 
@@ -54,7 +54,7 @@ Azure AD 标识保护策略可以在现有的条件访问策略基础上使用�
 
 Azure AD 标识保护包括一个默认策略，该策略可以让用户注册多重身份验证并轻松地标识当前注册状态。 启用此策略不会一开始就要求用户执行多重身份验证，而是会要求他们预先注册。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 单击“所有服务”，然后浏览到“Azure AD 标识保护”。  
 1. 单击“MFA 注册”。 
 1. 将“强制实施策略”  设置为“打开”。

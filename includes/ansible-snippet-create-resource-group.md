@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/22/2019
 ms.author: tarcher
 ms.openlocfilehash: 3b2faa3fe095366e0868937220d464b76b1f070d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67172967"
 ---
 1. 在 Cloud Shell 中，创建名为 `rg.yml` 的文件。

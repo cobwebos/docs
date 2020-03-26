@@ -17,10 +17,10 @@ ms.date: 12/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3e53ba11744b0e78287ffc46c4aac7b99b16b23
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74889543"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Moxtra 的集成
@@ -198,7 +198,7 @@ ms.locfileid: "74889543"
    
     ![配置单一登录](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
-1. 在“添加用户”  对话框中，执行以下步骤：
+1. 在“添加用户”对话框中，执行以下步骤： 
   
     a. 在“名字”文本框中，键入 **B**。 
   

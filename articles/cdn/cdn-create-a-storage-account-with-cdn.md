@@ -16,10 +16,10 @@ ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: ffcbeb311a91791432bb285b59f5486393ffe4f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75386980"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>快速入门：将 Azure 存储帐户与 Azure CDN 集成
@@ -31,7 +31,7 @@ ms.locfileid: "75386980"
 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
-使用以下过程为 Azure 订阅创建新的存储帐户。 通过存储帐户可访问 Azure 存储服务。 存储帐户表示用于访问每个 Azure 存储器服务组件的最高级别的命名空间：Azure Blob、队列和表存储。 有关详细信息，请参阅 [Microsoft Azure 存储简介](../storage/common/storage-introduction.md)。
+使用以下过程为 Azure 订阅创建新的存储帐户。 通过存储帐户可访问 Azure 存储服务。 存储帐户表示用于访问每个 Azure 存储服务组件的最高级别的命名空间：Azure Blob、队列和表存储。 有关详细信息，请参阅 [Microsoft Azure 存储简介](../storage/common/storage-introduction.md)。
 
 要创建存储帐户，必须是相关订阅的服务管理员或联合管理员。
 
@@ -57,7 +57,7 @@ ms.locfileid: "75386980"
    
     http:// *&lt;StorageAcountLabel&gt;* .blob.core.windows.net/ *&lt;mycontainer&gt;*
 
-    其中，&lt;StorageAccountLabel&gt; 引用在“名称”框中输入的值   。
+    其中，*StorageAccountLabel&lt; 引用在“名称”框中输入的值&gt;*  。
    
     > [!IMPORTANT]    
     > 该 URL 标签构成存储帐户 URI 的子域，在 Azure 中的所有托管服务中必须是唯一的。
@@ -75,7 +75,7 @@ ms.locfileid: "75386980"
     | **“性能”** | 使用默认值。 |
     | **需要安全传输** | 使用默认值。 |
     | **订阅** | 从下拉列表中选择一个 Azure 订阅。 |
-    | **资源组** | 选择“新建”，然后输入 *my-resource-group-123* 作为资源组名称。  该名称必须全局唯一。 如果它已被使用，可以输入一个不同的名称，也可以选择“使用现有”  并从下拉列表中选择 **my-resource-group-123**。 <br />有关资源组的信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md#resource-groups)。| 
+    | **资源组** | 选择“新建”，然后输入 **my-resource-group-123** 作为资源组名称。  该名称必须全局唯一。 如果它已被使用，可以输入一个不同的名称，也可以选择“使用现有”  并从下拉列表中选择 **my-resource-group-123**。 <br />有关资源组的信息，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md#resource-groups)。| 
     | **配置虚拟网络** | 使用默认值。 |  
     
 5. 选择“固定到仪表板”  ，以便在创建存储帐户后将其保存到仪表板。
@@ -136,7 +136,7 @@ http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 
 1. 在 Azure 门户的左侧菜单中，选择“资源组”  ，然后选择“my-resource-group-123”  。
 
-2.  在“资源组”页上选择“删除资源组”，在文本框中输入 *my-resource-group-123*，然后选择“删除”。  
+2.  在“资源组”页上选择“删除资源组”，在文本框中输入 **my-resource-group-123**，然后选择“删除”。  
 
     此操作会删除在本快速入门中创建的资源组、配置文件和终结点。
 
@@ -146,5 +146,5 @@ http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 若要了解如何在 CDN 终结点上添加自定义域和启用 HTTPS，请参阅以下教程：
 
 > [!div class="nextstepaction"]
-> [教程：通过 HTTPS 使用 Azure CDN 自定义域访问存储 Blob](cdn-storage-custom-domain-https.md)
+> [教程：通过 HTTPS 使用 Azure CDN 自定义域访问存储 blob](cdn-storage-custom-domain-https.md)
 

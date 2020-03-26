@@ -14,10 +14,10 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 8994079cf18a9af5f5e1368761015bbd8b836bd9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74790906"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 SQL Server Windows 虚拟机
@@ -28,12 +28,12 @@ ms.locfileid: "74790906"
 > - 本快速入门提供的路径适用于快速预配并连接到 SQL VM。 若要详细了解创建 SQL VM 所需的其他 Azure PowerShell 选项，请参阅 [SQL Server VM 预配指南（使用 Azure PowerShell）](virtual-machines-windows-ps-sql-create.md)。
 > - 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md)。
 
-## <a id="subscription"></a> 获取 Azure 订阅
+## <a name="get-an-azure-subscription"></a><a id="subscription"></a> 获取 Azure 订阅
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 
-## <a id="powershell"></a> 获取 Azure PowerShell
+## <a name="get-azure-powershell"></a><a id="powershell"></a> 获取 Azure PowerShell
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -180,7 +180,7 @@ ms.locfileid: "74790906"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不需要让 VM 继续运行，可以在不使用它时将它停止，以免产生不必要的费用。 以下命令可停止 VM，但保留它供将来使用。
+如果不需要让 VM 持续运行，可以在不使用它时将它停止，以免产生不必要的费用。 以下命令可停止 VM，但保留它供将来使用。
 
 ```powershell
 Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName

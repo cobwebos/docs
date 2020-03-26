@@ -5,13 +5,13 @@ ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
-ms.custom: seodec18
-ms.openlocfilehash: 2ab67743a349c33000d4b6f8b8566ff48e5e1d24
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 5c37d92504af78cb62cfa17057e089128ca8ad35
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500019"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80046854"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>教程：在 Azure 中生成 Node.js 和 MongoDB 应用
 
@@ -35,9 +35,9 @@ Azure 应用服务提供高度可缩放、自修补的 Web 托管服务。 本�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 1. [安装 Git](https://git-scm.com/)
 2. [安装 Node.js 和 NPM](https://nodejs.org/)
@@ -311,9 +311,9 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 可以通过此方法向基于 Git 的部署添加任意步骤。 如果重启 Azure 应用（无论何时），应用服务都不会重新运行这些自动化任务。
 
-### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用 
+### <a name="browse-to-the-azure-app"></a>转到 Azure 应用 
 
-使用 Web 浏览器浏览到已部署的应用。 
+使用 Web 浏览器转到已部署的应用。 
 
 ```bash 
 http://<app_name>.azurewebsites.net 
