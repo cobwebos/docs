@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
 ms.openlocfilehash: b44759ce4e65e55a3d143fd178764e8ae6e16e89
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74767919"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL - 单一服务器：使用 Go 语言连接和查询数据
@@ -31,7 +31,7 @@ ms.locfileid: "74767919"
 2. 从开始菜单启动命令提示符。
 3. 为项目创建一个文件夹，例如 `mkdir  %USERPROFILE%\go\src\postgresqlgo`。
 4. 将目录转到项目文件夹，例如 `cd %USERPROFILE%\go\src\postgresqlgo`。
-5. 设置 GOPATH 的环境变量，使之指向源代码目录。 `set GOPATH=%USERPROFILE%\go`。
+5. 设置 GOPATH 的环境变量，使之指向源代码目录。 `set GOPATH=%USERPROFILE%\go` 列中的一个值匹配。
 6. 通过运行 `go get github.com/lib/pq` 命令安装[纯 Go 语言 Postgres 驱动程序 (pq)](https://github.com/lib/pq)。
 
    总起来说就是，安装 Go，然后在命令提示符处运行以下命令：

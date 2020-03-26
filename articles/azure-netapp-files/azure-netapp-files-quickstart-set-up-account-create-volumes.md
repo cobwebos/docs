@@ -8,10 +8,10 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 12/01/2019
 ms.openlocfilehash: fc7f13fb7ffe1667aaeaa4a3cc1916c6049a98c1
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75551635"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>快速入门：设置 Azure NetApp 文件并创建 NFS 卷 
@@ -42,13 +42,13 @@ ms.locfileid: "75551635"
 > 注册过程可能需要一些时间才能完成。
 >
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 对于使用门户的注册步骤，请按照上面所述打开 Cloud Shell 会话，然后执行以下 Azure CLI 步骤：
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 本操作指南文章需要 Azure PowerShell 模块 Az 2.6.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果你愿意，可以改为在 PowerShell 会话中使用 Cloud Shell 控制台。
 
@@ -62,7 +62,7 @@ ms.locfileid: "75551635"
     Register-AzResourceProvider -ProviderNamespace Microsoft.NetApp
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
@@ -70,7 +70,7 @@ ms.locfileid: "75551635"
 
 ## <a name="create-a-netapp-account"></a>创建 NetApp 帐户
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 Azure 门户的搜索框中输入“Azure NetApp 文件”，然后从显示的列表中选择“Azure NetApp 文件”。  
 
@@ -92,7 +92,7 @@ ms.locfileid: "75551635"
 
 4. 单击“创建”以创建新的 NetApp 帐户。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. 定义一些变量，以便我们可以在其余示例中引用它们：
 
@@ -119,7 +119,7 @@ ms.locfileid: "75551635"
     New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $location -Name $anfAccountName
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 定义一些变量，以便我们可以在其余示例中引用它们：
 
@@ -154,7 +154,7 @@ ms.locfileid: "75551635"
 
 ## <a name="set-up-a-capacity-pool"></a>设置容量池
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 Azure NetApp 文件管理边栏选项卡中，选择你的 NetApp 帐户 (**myaccount1**)。
 
@@ -175,7 +175,7 @@ ms.locfileid: "75551635"
 
 5. 单击“确定”。 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. 定义一些新变量以供将来引用
 
@@ -191,7 +191,7 @@ ms.locfileid: "75551635"
     New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $location -AccountName $anfAccountName -Name $poolName -PoolSize $poolSizeBytes -ServiceLevel $serviceLevel
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 定义一些新变量以供将来引用
 
@@ -217,7 +217,7 @@ ms.locfileid: "75551635"
 
 ## <a name="create-nfs-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 NFS 卷
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在 NetApp 帐户的 Azure NetApp 文件管理边栏选项卡中，单击“卷”。 
 
@@ -261,7 +261,7 @@ ms.locfileid: "75551635"
 
     ![已创建卷](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. 使用 [New-AzDelegation](/powershell/module/az.network/new-azdelegation) 命令创建对“Microsoft.NetApp/volumes”的子网委派。
 
@@ -299,7 +299,7 @@ ms.locfileid: "75551635"
         -ProtocolType NFSv3
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 定义一些变量供以后使用。
     
@@ -356,7 +356,7 @@ ms.locfileid: "75551635"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 完成后，如果需要，你可以删除资源组。 删除资源组的操作不可逆。  
 
@@ -380,7 +380,7 @@ ms.locfileid: "75551635"
 
     ![删除资源组](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 完成后，如果需要，你可以删除资源组。 删除资源组的操作不可逆。  
 
@@ -393,7 +393,7 @@ ms.locfileid: "75551635"
     Remove-AzResourceGroup -Name $resourceGroup
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 完成后，如果需要，你可以删除资源组。 删除资源组的操作不可逆。  
 

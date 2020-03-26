@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 02/17/2020
 ms.reviewer: jeking
 ms.openlocfilehash: 346795b79a78589d949b035a803a67a9e5a2e8e5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77470728"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>快速入门：使用 Databricks 分析数据
 
 在本快速入门中，你将使用 Azure Databricks 运行 Apache Spark 作业，以对存储帐户中存储的数据执行分析。 在 Spark 作业中，你将分析收音机频道订阅数据，以根据人口统计信息洞察免费/付费节目的使用情况。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 

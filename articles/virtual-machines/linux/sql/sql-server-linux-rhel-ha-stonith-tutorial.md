@@ -9,10 +9,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 02/27/2020
 ms.openlocfilehash: 40c91f67231fb6a9d01191ee5215eae8d4dc045b
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79096697"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：在 Azure 中的 RHEL 虚拟机上为 SQL Server 配置可用性组 

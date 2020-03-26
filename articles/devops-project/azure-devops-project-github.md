@@ -17,10 +17,10 @@ author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: a0496999a9a5dc3e9bfd57df0ec035e6db77d620
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73615129"
 ---
 # <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>教程：使用 Azure DevOps Projects 为现有的代码创建 CI/CD 管道
@@ -46,7 +46,7 @@ Azure DevOps Projects 提供简化的过程让用户与 Azure 建立持续集成
 
 Azure DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 Azure DevOps Projects 还可以在所选的 Azure 订阅中创建 Azure 资源。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 在 Azure 门户菜单中，选择“创建资源”  。
 

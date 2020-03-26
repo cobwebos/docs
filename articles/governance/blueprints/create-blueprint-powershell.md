@@ -4,17 +4,17 @@ description: 本快速入门中通过 PowerShell 使用 Azure 蓝图创建、定
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: 8b418fa2b5244c42b8597bbbe7ed4773133d03a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75436631"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>快速入门：使用 PowerShell 定义和分配 Azure 蓝图
 
 了解如何创建和分配蓝图以后即可定义常见的模式，以便根据资源管理器模板、策略、安全性等方面的要求开发可重复使用和可快速部署的配置。 本教程介绍如何使用 Azure 蓝图来执行某些与在组织中创建、发布和分配蓝图相关的常见任务，例如：
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
 

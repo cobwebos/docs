@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: dfa17720b34962611d240aa7c35ba8092bf99082
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158147"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>教程：使用 Azure Functions 进行 Azure SignalR 服务身份验证
@@ -53,10 +53,10 @@ ms.locfileid: "74158147"
 
 1. 输入以下信息。
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
     | 资源名称 | SignalR 服务实例的唯一名称 |
-    | Resource group | 创建具有唯一名称的新资源组 |
+    | 资源组 | 创建具有唯一名称的新资源组 |
     | 位置 | 选择靠近自己的位置 |
     | 定价层 | 免费 |
 
@@ -145,11 +145,11 @@ ms.locfileid: "74158147"
 
 1. 出现提示时，请提供以下信息。
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
     | 函数应用文件夹 | 选择主项目文件夹 |
     | 模板 | HTTP 触发器 |
-    | Name | negotiate |
+    | 名称 | negotiate |
     | 授权级别 | 匿名 |
 
     将创建包含新函数的名为 negotiate  的文件夹。
@@ -204,11 +204,11 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 出现提示时，请提供以下信息。
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
     | 函数应用文件夹 | 选择主项目文件夹 |
     | 模板 | HTTP 触发器 |
-    | Name | SendMessage |
+    | 名称 | SendMessage |
     | 授权级别 | 匿名 |
 
     将创建包含新函数的名为 **SendMessage** 的文件夹。
@@ -315,13 +315,13 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 输入以下信息。
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
-    | Subscription | 选择包含 SignalR 服务实例的订阅 |
-    | Resource group | 选择相同资源组 |
+    | 订阅 | 选择包含 SignalR 服务实例的订阅 |
+    | 资源组 | 选择相同资源组 |
     | 资源名称 | 存储帐户的唯一名称 |
     | 位置 | 选择其他资源所在的同一位置 |
-    | 性能 | 标准 |
+    | 性能 | Standard |
     | 帐户类型 | StorageV2（常规用途 V2） |
     | 复制 | 本地冗余存储 (LRS) |
     | 访问层 | 热 |
@@ -371,13 +371,13 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 出现提示时，请提供以下信息。
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
     | 要部署的文件夹 | 选择主项目文件夹 |
-    | Subscription | 选择订阅 |
+    | 订阅 | 选择订阅 |
     | 函数应用 | 选择“创建新函数应用”  |
     | 函数应用名称 | 输入唯一的名称 |
-    | Resource group | 选择 SignalR 服务实例所在的同一资源组 |
+    | 资源组 | 选择 SignalR 服务实例所在的同一资源组 |
     | 存储帐户 | 选择前面创建的存储帐户 |
 
     随即会在 Azure 中创建新的函数应用，并开始部署。 等待部署完成。
@@ -390,10 +390,10 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 出现提示时，请提供以下信息。
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
     | 本地设置文件 | local.settings.json |
-    | Subscription | 选择订阅 |
+    | 订阅 | 选择订阅 |
     | 函数应用 | 选择前面部署的函数应用 |
 
 本地设置将上传到 Azure 中的函数应用。 如果系统提示是否要覆盖现有设置，请选择“全是”。 
@@ -449,9 +449,9 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 输入以下值：
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
-    | Subscription | 选择订阅 |
+    | 订阅 | 选择订阅 |
     | 存储帐户 | 选择前面创建的存储帐户 |
     | 要部署的文件夹 | 选择“浏览”  ，然后选择“内容”  文件夹 |
 

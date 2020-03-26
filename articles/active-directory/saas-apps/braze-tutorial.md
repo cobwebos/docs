@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52a53735ebf8e0e4affa7daf6c345de6bf467228
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72373444"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-braze"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Braze 集成
@@ -97,7 +97,7 @@ ms.locfileid: "72373444"
 
 1. 除了上述属性，Braze 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | -----| --------------- |
     | 电子邮件 | user.userprincipalname |
     | first_name| user.givenname|

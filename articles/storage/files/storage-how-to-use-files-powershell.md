@@ -8,10 +8,10 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c419c2127b1c5fe3aaa60c6e828ff0c5a6676c07
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77598538"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建和管理 Azure 文件共享 
@@ -195,7 +195,7 @@ Get-AzStorageFile `
 - 适用于 Linux 系统的[逻辑卷管理器 (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) 快照。
 - 适用于 macOS 的 [Apple 文件系统 (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) 快照。 
 
-可以在通过 [Get-AzStorageShare](/powershell/module/az.storage/Get-AzStorageShare) cmdlet 检索的文件共享的 PowerShell 对象上使用 `Snapshot` 方法来创建某个共享的共享快照。 
+可以在通过 `Snapshot`Get-AzStorageShare[ cmdlet 检索的文件共享的 PowerShell 对象上使用 ](/powershell/module/az.storage/Get-AzStorageShare) 方法来创建某个共享的共享快照。 
 
 ```azurepowershell-interactive
 $share = Get-AzStorageShare -Context $storageAcct.Context -Name $shareName
@@ -203,7 +203,7 @@ $snapshot = $share.Snapshot()
 ```
 
 ### <a name="browse-share-snapshots"></a>浏览共享快照
-可以浏览共享快照的内容，只需将快照引用 (`$snapshot`) 传递给 `Get-AzStorageFile` cmdlet 的 `-Share` 参数即可。
+可以浏览共享快照的内容，只需将快照引用 (`$snapshot`) 传递给 `-Share` cmdlet 的 `Get-AzStorageFile` 参数即可。
 
 ```azurepowershell-interactive
 Get-AzStorageFile -Share $snapshot
@@ -238,7 +238,7 @@ Start-AzStorageFileCopy `
 ```
 
 ### <a name="delete-a-share-snapshot"></a>删除共享快照
-可以使用 [Remove-AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) cmdlet 删除共享快照，其中的变量包含对 `-Share` 参数的 `$snapshot` 引用。
+可以使用 [Remove-AzStorageShare](/powershell/module/az.storage/Remove-AzStorageShare) cmdlet 删除共享快照，其中的变量包含对 `$snapshot` 参数的 `-Share` 引用。
 
 ```azurepowershell-interactive
 Remove-AzStorageShare `

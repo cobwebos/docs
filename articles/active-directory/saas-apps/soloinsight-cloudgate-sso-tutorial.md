@@ -17,10 +17,10 @@ ms.date: 05/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b88822f164e0fe8cdf55eddfa981644f725e01f3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159932"
 ---
 # <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>教程：将 Soloinsight-CloudGate SSO 与 Azure Active Directory 集成
@@ -174,7 +174,7 @@ ms.locfileid: "73159932"
     ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-soloinsight-cloudgate-sso-test-user"></a>创建 Soloinsight-CloudGate SSO 测试用户

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76166999"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
@@ -37,7 +37,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 >[!TIP]
 >本教程是 [Raspberry Pi 3 上的自定义视觉和 Azure IoT Edge](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) 示例项目的简化版本。 本教程旨在在云 VM 上运行，并使用静态图像训练和测试图像分类器，这对于刚开始评估 IoT Edge 上的自定义视觉的用户非常有用。 该示例项目使用物理硬件并设置一个实时相机源，用于训练和测试图像分类器，这对于想要尝试更详细的真实应用场景的用户非常有用。

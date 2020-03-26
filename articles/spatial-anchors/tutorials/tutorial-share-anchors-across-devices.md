@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77615501"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>教程：在会话和设备间共享 Azure 空间定位点

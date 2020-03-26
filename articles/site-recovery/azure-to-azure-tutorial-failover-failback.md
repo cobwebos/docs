@@ -10,15 +10,15 @@ ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 9bc0d25e19ad3412e62eb3386b0faf3ae5d2a444
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68782593"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>在区域之间故障转移和重新保护 Azure VM
 
-本教程介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 服务将 Azure 虚拟机 (VM) 故障转移到次要 Azure 区域。 故障转移后，对 VM 重新进行保护。 本教程介绍如何执行下列操作：
+本教程介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 服务将 Azure 虚拟机 (VM) 故障转移到次要 Azure 区域。 故障转移后，对 VM 重新进行保护。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 故障转移 Azure VM

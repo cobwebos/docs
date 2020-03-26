@@ -4,10 +4,10 @@ description: 在本教程中，了解如何将 Azure VM 上运行的 SQL Server 
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.openlocfilehash: 3216404b04647e2fb5f15beb09b9a4ccd6648bba
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74171889"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>在 Azure VM 中备份 SQL Server 数据库

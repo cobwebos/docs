@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
 ms.openlocfilehash: 7ba921656d0dad059b1d15f443bcefeff03ade50
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977388"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
@@ -42,7 +42,7 @@ ms.locfileid: "75977388"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 存储帐户。 可将 Blob 存储用作源数据存储。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)。
 * Azure 存储资源管理器下载。 若要安装此工具，请参阅 [Azure 存储资源管理器](https://storageexplorer.com/)。
@@ -66,7 +66,7 @@ ms.locfileid: "75977388"
 1. 打开 Azure 存储资源管理器。 展开你的存储帐户。 右键单击“Blob 容器”，并选择“创建 Blob 容器”。  
 1. 将新容器命名为 *adfv2branch*，然后选择“上传”将 *input.txt* 文件添加到该容器。 
 
-## 创建 Visual Studio 项目<a name="create-visual-studio-project"></a>
+## <a name="create-visual-studio-project"></a>创建 Visual Studio 项目<a name="create-visual-studio-project"></a>
 
 创建一个 C# .NET 控制台应用程序：
 
@@ -364,7 +364,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 在此管道中使用以下功能：
 
-* parameters
+* 参数
 * Web 活动
 * 活动依赖项
 * 使用一个活动的输出作为另一活动的输入
@@ -449,7 +449,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
    client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
    ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 管道代码的第一个部分定义参数。
 

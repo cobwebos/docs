@@ -4,13 +4,13 @@ description: 将第一个 PHP 应用部署到 Azure 应用服务中的 Linux 容
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 7608c10f2d101a3c24209a5e09bccc6dc31401ca
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validatem seodec18
+ms.openlocfilehash: 5a2abaf49071c90ea4fe0d5b5a454ce91f2cb1e4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524098"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046054"
 ---
 # <a name="create-a-php-app-in-app-service-on-linux"></a>在 Linux 上的应用服务中创建 PHP 应用
 
@@ -26,7 +26,7 @@ ms.locfileid: "77524098"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成本快速入门教程需要：
 

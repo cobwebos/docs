@@ -9,10 +9,10 @@ ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
 ms.openlocfilehash: 24173b553f30f652caf20b1ec7500fd9c4d2f7a0
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73241223"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>快速入门：在 Azure HDInsight 中创建和监视 Apache Storm 拓扑
@@ -55,7 +55,7 @@ Storm 提供一个 Web 界面用于处理正在运行的拓扑，并包含在 HD
 
     新页提供以下信息：
 
-    |属性 | 说明 |
+    |properties | 说明 |
     |---|---|
     |拓扑统计信息|有关拓扑性能的基本信息，已组织到时间窗口中。 选择特定的时间窗口会更改页面其他部分中显示的信息的时间窗口。|
     |Spout|有关 spout 的基本信息，包括每个 spout 返回的最后一个错误。|
@@ -72,7 +72,7 @@ Storm 提供一个 Web 界面用于处理正在运行的拓扑，并包含在 HD
 
     新页显示以下信息：
 
-    |属性 | 说明 |
+    |properties | 说明 |
     |---|---|
     |Spout/Bolt 统计信息|有关组件性能的基本信息，已组织到时间窗口中。 选择特定的时间窗口会更改页面其他部分中显示的信息的时间窗口。|
     |输入统计信息（仅限 Bolt）|有关生成 Bolt 所用数据的组件的信息。|

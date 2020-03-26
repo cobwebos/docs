@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 487dca97dc47bf214bedf38f44b2d29a71567cbb
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74533345"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>教程：创建要部署到 Azure 容器实例的容器映像

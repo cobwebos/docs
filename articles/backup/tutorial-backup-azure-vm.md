@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.custom: mvc
 ms.openlocfilehash: 154238eae78ce44b9fc91058e58d9a11e254c0f9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74171785"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>使用 PowerShell 备份 Azure VM

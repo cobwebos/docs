@@ -10,10 +10,10 @@ ms.date: 03/12/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 38a40d628b883c0e7ada824d47d3fdf3d29caf93
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74084385"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>教程：使用 Azure CLI 和 Azure 门户配置 IoT 中心消息路由
@@ -162,7 +162,7 @@ az servicebus queue create --name $sbQueueName \
 
 9. 现在完成余下的路由查询信息。 此查询指定将消息发送到刚刚添加为终结点的存储容器的条件。 填充屏幕上的字段。
 
-   **名称**：为路由查询输入名称。 本教程使用 **ContosoStorageRoute**。
+   **Name**：为路由查询输入名称。 本教程使用 **ContosoStorageRoute**。
 
    **终结点**：选择刚刚设置的终结点。
 
@@ -200,7 +200,7 @@ az servicebus queue create --name $sbQueueName \
 
 6. 现在完成余下的路由查询信息。 此查询指定将消息发送到刚刚添加为终结点的服务总线队列的条件。 填充屏幕上的字段。 
 
-   **名称**：为路由查询输入名称。 本教程使用 **ContosoSBQueueRoute**。 
+   **Name**：为路由查询输入名称。 本教程使用 **ContosoSBQueueRoute**。 
 
    **终结点**：选择刚刚设置的终结点。
 

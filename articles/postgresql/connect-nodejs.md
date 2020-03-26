@@ -4,22 +4,26 @@ description: 本快速入门提供了可用于从 Azure Database for PostgreSQL 
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: seo-javascript-september2019, seo-javascript-october2019
+ms.custom:
+- mvc
+- devcenter
+- seo-javascript-september2019
+- seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: ca3a8bb093e81404da638ff869e05b5a4626626e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1d48fc818ca32b6168b0986ddb6453fe66fc8341
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774843"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80062265"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 Node.js 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
 
 在本快速入门中，我们使用 Node.js 应用程序连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文中的步骤假定你熟悉如何使用 Node.js 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 

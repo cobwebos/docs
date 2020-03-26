@@ -8,10 +8,10 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.openlocfilehash: d7050cfdae2c726a3a5bd44b4399792a400572a3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77025514"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>教程：部署并演练互联物流应用程序模板
@@ -25,7 +25,7 @@ ms.locfileid: "77025514"
 * 创建互联物流应用程序
 * 演练应用程序 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 无需满足特定的先决条件，就可以部署此应用
 * 建议使用 Azure 订阅，但不使用也可以

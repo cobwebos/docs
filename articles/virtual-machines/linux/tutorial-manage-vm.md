@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b7660d2bcb6f2bb8b738ed92401937c0b988fef2
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: e5474387933404c29536759d383a4f2c85236949
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034419"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80060199"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理 Linux VM
 
@@ -39,11 +39,11 @@ Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azu
 
 ## <a name="create-resource-group"></a>创建资源组
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group) 命令创建资源组。 
+使用“[az group create](https://docs.microsoft.com/cli/azure/group)”命令创建资源组。 
 
 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus”  区域中创建了名为“myResourceGroupVM”  的资源组。 
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupVM --location eastus
 ```
 
@@ -66,7 +66,7 @@ az vm create \
 
 创建 VM 可能需要几分钟。 创建 VM 后，Azure CLI 会输出有关 VM 的信息。 请记下 `publicIpAddress`，可以使用此地址访问虚拟机。 
 
-```azurecli-interactive 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroupVM/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -105,7 +105,7 @@ az vm image list --output table
 
 命令输出返回 Azure 上最常用的 VM 映像。
 
-```bash
+```output
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 WindowsServer  MicrosoftWindowsServer  2016-Datacenter     MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest     Win2016Datacenter    latest
@@ -129,7 +129,7 @@ az vm image list --offer CentOS --all --output table
 
 部分输出：
 
-```azurecli-interactive 
+```output
 Offer             Publisher         Sku   Urn                                     Version
 ----------------  ----------------  ----  --------------------------------------  -----------
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.201501         6.5.201501
@@ -142,7 +142,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207     
 
 若要使用特定的映像部署 VM，请记下“Urn”列中的值，包括发布者、产品/服务、SKU，以及用于[标识](cli-ps-findimage.md#terminology)映像的版本号（可选）。  指定映像时，可将映像版本号替换为“latest”，这会选择最新的发行版。 在此示例中，`--image` 参数用于指定最新版本的 CentOS 6.5 映像。  
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
 ```
 
@@ -174,7 +174,7 @@ az vm list-sizes --location eastus --output table
 
 部分输出：
 
-```azurecli-interactive 
+```output
   MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
 ------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
                  2          3584  Standard_DS1                          1           1047552                    7168
@@ -199,7 +199,7 @@ az vm list-sizes --location eastus --output table
 
 在前面的 VM 创建示例中未提供大小，因此会使用默认大小。 可以在创建时使用 [az vm create](/cli/azure/vm) 和 `--size` 参数选择 VM 大小。 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroupVM \
     --name myVM3 \
@@ -221,6 +221,7 @@ az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfil
 ```azurecli-interactive 
 az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
 ```
+
 如果所需大小可用，则可从开机状态调整 VM 大小，但需在此操作期间重启 VM。 使用 [az vm resize]( /cli/azure/vm) 命令执行大小调整。
 
 ```azurecli-interactive 
@@ -229,19 +230,19 @@ az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_
 
 如果所需大小在当前群集上不可用，则需解除分配 VM，才能执行调整大小操作。 使用 [az vm deallocate]( /cli/azure/vm) 命令停止和解除分配 VM。 请注意，重新打开 VM 的电源时，可能会删除临时磁盘上的所有数据。 除非使用静态 IP 地址，否则公共 IP 地址也会更改。 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupVM --name myVM
 ```
 
 解除分配 VM 后，可能会发生大小调整。 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_GS1
 ```
 
 调整大小后，可以启动 VM。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
@@ -265,7 +266,7 @@ Azure VM 可能会处于多种电源状态之一。 从虚拟机监控程序的�
 
 若要检索特定 VM 的状态，请使用 [az vm get-instance-view](/cli/azure/vm) 命令。 请确保为虚拟机和资源组指定有效的名称。 
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm get-instance-view \
     --name myVM \
     --resource-group myResourceGroupVM \
@@ -274,7 +275,7 @@ az vm get-instance-view \
 
 输出：
 
-```azurecli-interactive 
+```output
 ode                DisplayStatus    Level
 ------------------  ---------------  -------
 PowerState/running  VM running       Info
@@ -288,19 +289,19 @@ PowerState/running  VM running       Info
 
 此命令返回虚拟机的私有 IP 地址和公共 IP 地址。  
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm list-ip-addresses --resource-group myResourceGroupVM --name myVM --output table
 ```
 
 ### <a name="stop-virtual-machine"></a>停止虚拟机
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm stop --resource-group myResourceGroupVM --name myVM
 ```
 
 ### <a name="start-virtual-machine"></a>启动虚拟机
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm start --resource-group myResourceGroupVM --name myVM
 ```
 
@@ -308,7 +309,7 @@ az vm start --resource-group myResourceGroupVM --name myVM
 
 删除资源组还会删除其包含的所有资源，例如 VM、虚拟网络和磁盘。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroupVM --no-wait --yes
 ```
 

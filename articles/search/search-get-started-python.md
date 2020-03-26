@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
 ms.openlocfilehash: 93fb9ec735de1abf89eb217d0f4096fcfc0afe94
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78227096"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在 Python 中使用 Jupyter Notebook 创建 Azure 认知搜索索引

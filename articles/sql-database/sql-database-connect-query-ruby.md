@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: 4bef55b049ee542efdb9d72d13fa196c989c75ec
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73826923"
 ---
 # <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>快速入门：使用 Ruby 查询 Azure SQL 数据库
@@ -48,13 +48,13 @@ ms.locfileid: "73826923"
   
   - **Ubuntu**：安装 Ruby、rbenv 和 ruby-build、Ruby、FreeTDS 和 TinyTDS 的先决条件。 请参阅 [Create Ruby apps using SQL Server on Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)（在 Ubuntu 上使用 SQL Server 创建 Ruby 应用）中的步骤 1.2、1.3、1.4、1.5 和 2.1。
   
-  - Windows  ：安装 Ruby、Ruby Devkit 和 TinyTDS。 请参阅[配置用于 Ruby 开发的开发环境](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development)。
+  -  Windows：安装 Ruby、Ruby Devkit 和 TinyTDS。 请参阅[配置用于 Ruby 开发的开发环境](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development)。
 
 ## <a name="get-sql-server-connection-information"></a>获取 SQL Server 连接信息
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
 

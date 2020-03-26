@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 01/16/2020
 ms.custom: H1Hack27Feb2017, mvc
 ms.openlocfilehash: f0948cb58ba9403a34fbfd61ec43c29bed3440bc
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77621007"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions 简介
@@ -67,7 +67,7 @@ Functions 是一个理想的解决方案，用于处理批量数据、集成系�
 
 - **服务总线主题**：通过[对服务总线主题消息做出响应](./functions-bindings-service-bus.md)连接到其他 Azure 服务或本地服务
 
-## <a name="pricing"></a>Functions 的费用是多少？
+## <a name="how-much-does-functions-cost"></a><a name="pricing"></a>Functions 的费用是多少？
 
 Azure Functions 有三种定价计划。 请选择最适合自己的那种：
 

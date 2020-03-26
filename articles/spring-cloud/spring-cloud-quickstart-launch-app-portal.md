@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: a215fe2305b320fe27ef9d868d060f3e9cb14c1c
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 9cd59fdf81e9b5d56872d20c76e8ea177b3c8577
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431287"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79470888"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>快速入门：使用 Azure 门户启动现有 Azure Spring Cloud 应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "77431287"
 > * 部署每个微服务
 > * 为应用程序分配公共终结点
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 >[!Note]
 > Azure Spring Cloud 目前以公共预览版的形式提供。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。  有关预览期间支持的详细信息，请参阅[常见问题解答](https://azure.microsoft.com/support/faq/)或提交[支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
@@ -48,7 +48,7 @@ ms.locfileid: "77431287"
 
 使用以下命令安装用于 Azure CLI 的 Azure Spring Cloud 扩展
 
-```Azure CLI
+```azurecli
 az extension add --name spring-cloud
 ```
 
@@ -114,7 +114,7 @@ az extension add --name spring-cloud
 
 1. 打开 [Azure Cloud Shell](https://shell.azure.com)，将示例应用存储库克隆到本地计算机。  我们先在此处创建一个名为 `source-code` 的临时目录，然后再克隆应用。
 
-    ```azurecli
+    ```console
     mkdir source-code
     cd source-code
     git clone https://github.com/Azure-Samples/piggymetrics
@@ -122,10 +122,11 @@ az extension add --name spring-cloud
 
 2. 构建克隆包。
 
-    ```azurecli
+    ```console
     cd piggymetrics
     mvn clean package -DskipTests
     ```
+
 3. 为资源组和服务指定名称。 请务必将以下占位符替换为之前在本教程中预配的资源组名称和服务名称。
 
     ```azurecli

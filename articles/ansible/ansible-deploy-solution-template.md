@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, 解决方案模板, 虚拟机, azure 资源的
 ms.topic: quickstart
 ms.date: 04/30/2019
 ms.openlocfilehash: cc3a6c1f0ef36b51b62e6aa58f317aee13149589
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77193780"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>快速入门：将适用于 Azure 的 Ansible 解决方案模板部署到 CentOS
@@ -19,7 +19,7 @@ ms.locfileid: "77193780"
 - **Azure 命令行接口 (CLI) 2.0** - [Azure CLI 2.0](/cli/azure/?view=azure-cli-latest) 是用于管理 Azure 资源的跨平台命令行体验。 
 - **Azure 资源的托管标识** - [Azure 资源的托管标识](/azure/active-directory/managed-identities-azure-resources/overview)功能可以保护云应用程序凭据的安全。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 

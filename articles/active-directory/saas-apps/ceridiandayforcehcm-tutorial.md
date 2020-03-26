@@ -17,10 +17,10 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f488f22535c290b5fecbd0ffa9f8867f0b715bac
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158690"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>教程：Azure Active Directory 与 Ceridian Dayforce HCM 集成
@@ -132,19 +132,19 @@ ms.locfileid: "73158690"
 
 5. Ceridian Dayforce HCM 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. 在“用户属性”  对话框的“用户声明”  部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     | 名称 | 源属性|
     | ---------| --------- |
-    | 名称  | user.extensionattribute2 |
+    | name  | user.extensionattribute2 |
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 

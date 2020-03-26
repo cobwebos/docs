@@ -1,5 +1,5 @@
 ---
-title: 什么是与 Azure AD 的联合？ | Microsoft 文档
+title: 什么是与 Azure AD 的联合？ | Microsoft Docs
 description: 介绍了与 Azure AD 的联合。
 services: active-directory
 author: billmath
@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb8886987c09b504262d6ea12863a646d6022cc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
-ms.translationtype: MT
+ms.openlocfilehash: fd7a5b186ebc98babe1baacc9f56f39dc8fbc093
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883655"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80049371"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>什么是与 Azure AD 的联合？
 

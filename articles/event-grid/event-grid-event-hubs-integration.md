@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 6f5bd129b175210cd5b9415a65b8db06d904e24d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73718182"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教程：将大数据流式传输到数据仓库
@@ -60,7 +60,7 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>在 Azure 门户中启动 Azure Cloud Shell
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 选择顶部的“Cloud Shell”按钮  。
 
     ![Azure 门户](media/event-grid-event-hubs-integration/azure-portal.png)
@@ -85,9 +85,9 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
         az group create -l eastus -n <Name for the resource group>
         ```
     1. 为资源组指定名称 
-    2. 按 **ENTER**。 
+    2. 按 **Enter**。 
 
-        下面是一个示例：
+        以下是示例：
     
         ```azurecli
         user@Azure:~$ az group create -l eastus -n ehubegridgrp

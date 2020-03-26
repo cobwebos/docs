@@ -16,10 +16,10 @@ ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67594223"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教程：向 Azure 应用服务 Web 应用添加 Azure CDN
@@ -40,7 +40,7 @@ ms.locfileid: "67594223"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 - [安装 Git](https://git-scm.com/)
 - [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
 ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77604456"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
@@ -33,7 +33,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要逐步执行本教程中介绍的功能，必须有安全中心的“标准”定价层。 可以免费试用安全中心标准版。
 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](https://docs.microsoft.com/azure/security-center/security-center-get-started)”详细介绍了如何升级到标准版。

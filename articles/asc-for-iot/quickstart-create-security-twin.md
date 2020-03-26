@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
 ms.openlocfilehash: b362130c2b717f813a6332f81a3c8179bea4166a
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73904165"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>快速入门：创建 azureiotsecurity 模块孪生

@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.custom: include file
 ms.openlocfilehash: ea3e135849e07685f81b1cb9a1a63721942d2cb2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75971841"
 ---
 - 如果不熟悉 Azure 资源功能的托管标识，请参阅此[概述](../articles/active-directory/msi-overview.md)。 如果没有 Azure 帐户，请在继续操作前[注册免费帐户](https://azure.microsoft.com/free/)。

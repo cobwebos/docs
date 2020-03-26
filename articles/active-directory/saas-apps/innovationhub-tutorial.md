@@ -17,10 +17,10 @@ ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 207b277d22d6c16d51813ed66782b8a40684b14e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74889662"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-innoverse"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Innoverse 的集成
@@ -91,7 +91,7 @@ ms.locfileid: "74889662"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<domainname>.innover.se/auth/saml2/login`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<domainname>.innover.se/auth/saml2/login`
 

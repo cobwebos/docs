@@ -17,10 +17,10 @@ ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b29405ebc620736a4318c2c3a875e8864c1eafb6
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70846902"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workboard"></a>教程：Azure Active Directory 单一登录 (SSO) 与 WorkBoard 集成
@@ -87,7 +87,7 @@ ms.locfileid: "70846902"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://www.myworkboard.com/lib/php/simplesaml/www/module.php/saml/sp/saml2-acs.php/<ENVIRONMENTNAME>`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://www.myworkboard.com/wb/user/login?saml_sso=<ENVIRONMENTNAME>`
 

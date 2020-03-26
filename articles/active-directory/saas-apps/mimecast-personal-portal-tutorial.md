@@ -17,10 +17,10 @@ ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 259635613855e4d7687cf569c94bbd3dd04027fe
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160624"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>教程：Azure Active Directory 与 Mimecast Personal Portal 的集成
@@ -111,7 +111,7 @@ ms.locfileid: "73160624"
     | 区域  |  值 | 
     | --------------- | --------------- | 
     | 欧洲          | `https://eu-api.mimecast.com/login/saml`|
-    | 美国   | `https://us-api.mimecast.com/login/saml`|
+    | United States   | `https://us-api.mimecast.com/login/saml`|
     | 南非    | `https://za-api.mimecast.com/login/saml`|
     | 澳大利亚       | `https://au-api.mimecast.com/login/saml`|
     | 海外        | `https://jer-api.mimecast.com/login/saml`|
@@ -121,7 +121,7 @@ ms.locfileid: "73160624"
     | 区域  |  值 | 
     | --------------- | --------------- |
     | 欧洲          | `https://eu-api.mimecast.com/sso/<accountcode>`|
-    | 美国   | `https://us-api.mimecast.com/sso/<accountcode>`|    
+    | United States   | `https://us-api.mimecast.com/sso/<accountcode>`|    
     | 南非    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | 澳大利亚       | `https://au-api.mimecast.com/sso/<accountcode>`|
     | 海外        | `https://jer-api.mimecast.com/sso/<accountcode>`|
@@ -131,7 +131,7 @@ ms.locfileid: "73160624"
     | 区域  |  值 | 
     | --------------- | --------------- | 
     | 欧洲          | `https://eu-api.mimecast.com/login/saml`|
-    | 美国   | `https://us-api.mimecast.com/login/saml`|
+    | United States   | `https://us-api.mimecast.com/login/saml`|
     | 南非    | `https://za-api.mimecast.com/login/saml`|
     | 澳大利亚       | `https://au-api.mimecast.com/login/saml`|
     | 海外        | `https://jer-api.mimecast.com/login/saml`|
@@ -248,7 +248,7 @@ ms.locfileid: "73160624"
 
 需要注册一个域，才能创建用户。
 
-**若要配置用户预配，请执行以下步骤：**
+**若要配置用户设置，请执行以下步骤：**
 
 1. 以管理员身份登录到 **Mimecast Personal Portal**。
 

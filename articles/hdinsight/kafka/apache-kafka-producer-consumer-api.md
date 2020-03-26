@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 102523316aaa59803fb9a6957457fc7bd4f6ce4f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5a7d4d1917f65cd3d836db83600937a3e3d89de6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186815"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223594"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教程：使用 Apache Kafka 生成者和使用者 API
 
@@ -24,14 +24,14 @@ Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafk
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 必备条件
+> * 先决条件
 > * 了解代码
 > * 生成并部署应用程序
 > * 在群集上运行应用程序
 
 有关这些 API 的详细信息，请参阅有关[生成者 API](https://kafka.apache.org/documentation/#producerapi) 和[使用者 API](https://kafka.apache.org/documentation/#consumerapi) 的 Apache 文档。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Apache Kafka on HDInsight 群集。 若要了解如何创建该群集，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。
 * [Java Developer Kit (JDK) 版本 8](https://aka.ms/azure-jdks) 或等效工具，例如 OpenJDK。
@@ -47,7 +47,7 @@ Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafk
 * `Producer.java`设置用户帐户 ：此文件使用生成者 API 将随机句子发送到 Kafka。
 * `Consumer.java`设置用户帐户 ：此文件使用使用者 API 从 Kafka 读取数据并将其发出到 STDOUT。
 * `AdminClientWrapper.java`设置用户帐户 ：此文件使用管理 API 来创建、描述和删除 Kafka 主题。
-* `Run.java`设置用户帐户：用于运行生成者和使用者代码的命令行接口。
+* `Run.java`设置用户帐户 ：用于运行生成者和使用者代码的命令行接口。
 
 ### <a name="pomxml"></a>Pom.xml
 
@@ -133,7 +133,7 @@ consumer = new KafkaConsumer<>(properties);
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
 
-## <a id="run"></a> 运行示例
+## <a name="run-the-example"></a><a id="run"></a> 运行示例
 
 1. 将 `sshuser` 替换为群集的 SSH 用户，并将 `CLUSTERNAME` 替换为群集的名称。 输入以下命令，打开到群集的 SSH 连接。 出现提示时，输入 SSH 用户帐户的密码。
 
@@ -218,5 +218,5 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 
 本文档介绍了如何将 Apache Kafka 生成者和使用者 API 与 Kafka on HDInsight 配合使用。 使用以下内容，详细了解如何使用 Kafka：
 
-> [!div class="nextstepaction"]
-> [分析 Apache Kafka 日志](apache-kafka-log-analytics-operations-management.md)
+* [使用 Kafka REST 代理](rest-proxy.md)
+* [分析 Apache Kafka 日志](apache-kafka-log-analytics-operations-management.md)

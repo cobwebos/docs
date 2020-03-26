@@ -17,10 +17,10 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0447a8dd464363ae7e076dde2520565005d7c0a5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67588240"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>教程：Azure Active Directory 与 Sectigo Certificate Manager 的集成
@@ -55,7 +55,7 @@ Sectigo Certificate Manager 支持以下功能：
 
 若要将 Sectigo Certificate Manager 与 Azure AD 集成，必须将 Sectigo Certificate Manager 添加到托管 SaaS 应用列表。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左侧菜单中，选择“Azure Active Directory”  。
 

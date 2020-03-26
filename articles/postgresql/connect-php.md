@@ -9,10 +9,10 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
 ms.openlocfilehash: 6e453201eb499f65ee7f3b8c17cbf0e5127182b0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74766372"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL - 单一服务器：使用 PHP 连接和查询数据

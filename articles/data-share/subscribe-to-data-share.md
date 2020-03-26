@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.openlocfilehash: 5b7d9cd7e7d438cf2beac76d5d8bcc78d377a8f4
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77083102"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教程：使用 Azure Data Share 接受和接收数据  
@@ -23,7 +23,7 @@ ms.locfileid: "77083102"
 > * 指定数据目标
 > * 创建按计划刷新的数据共享的订阅
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 在接受数据共享邀请之前，必须预配多个 Azure 资源，这些资源已在下面列出。 
 
 确保在接受数据共享邀请之前已满足所有先决条件。 

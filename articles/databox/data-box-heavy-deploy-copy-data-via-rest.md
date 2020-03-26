@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 43f6404a483cad8377e70591f5454180f0dd07a6
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77560331"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教程：通过 REST API 将数据复制到 Azure Data Box Blob 存储  
@@ -22,11 +22,11 @@ ms.locfileid: "77560331"
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 必备条件
+> * 先决条件
 > * 通过 *http* 或 *https* 连接到 Data Box Blob 存储
 > * 将数据复制到 Data Box Heavy
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 
@@ -241,7 +241,7 @@ ms.locfileid: "77560331"
 本教程介绍了有关 Azure Data Box 的主题，例如：
 
 > [!div class="checklist"]
-> * 必备条件
+> * 先决条件
 > * 通过 *http* 或 *https* 连接到 Data Box Blob 存储
 > * 将数据复制到 Data Box Heavy
 

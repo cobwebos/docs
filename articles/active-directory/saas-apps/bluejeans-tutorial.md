@@ -17,10 +17,10 @@ ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfc38f63c5b6361122c236543320b91d22faa70a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72595049"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BlueJeans for Azure AD 集成
@@ -165,7 +165,7 @@ ms.locfileid: "72595049"
 
     a. 在“用户 ID”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`  。
 
-    b. 在“电子邮件”  文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
+    b. 在“电子邮件”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`  。
 
     c. 单击“保存更改”。 
 

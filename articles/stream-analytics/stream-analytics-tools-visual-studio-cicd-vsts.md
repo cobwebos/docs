@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: d9360ff64206cdce208f9643cf8ca86515aaeb7e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75354439"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>教程：使用 Azure Pipelines 通过 CI/CD 部署 Azure 流分析作业
@@ -26,7 +26,7 @@ ms.locfileid: "75354439"
 > * 在 Azure 管道中创建发布管道
 > * 自动部署和升级应用程序
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 在开始之前，请确保具有以下各项：
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。

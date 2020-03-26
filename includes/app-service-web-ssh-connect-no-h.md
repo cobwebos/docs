@@ -9,10 +9,10 @@ ms.date: 03/29/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 060bc1039982cc0a77214d5dbe2a08de7a839c84
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67173429"
 ---
 若要通过容器打开直接的 SSH 会话，应用应该处于正在运行状态。

@@ -5,13 +5,13 @@ ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: a68392d003e4e2a81801a903302badd99c1e9e87
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 940b49d29707a55bc5d63d6f49cdef19ba3f28e5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523962"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80045709"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 Node.js 和 MongoDB 应用
 
@@ -35,9 +35,9 @@ ms.locfileid: "77523962"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 1. [安装 Git](https://git-scm.com/)
 2. [安装 Node.js v6.0 或以上版本及 NPM](https://nodejs.org/)
@@ -298,9 +298,9 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
 
 可以通过此方法向基于 Git 的部署添加任意步骤。 如果重启 Azure 应用（无论何时），应用服务都不会重新运行这些自动化任务。 有关详细信息，请参阅[运行 Grunt/Bower/Gulp](configure-language-nodejs.md#run-gruntbowergulp)。
 
-### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
+### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
-使用 Web 浏览器浏览到已部署的应用。
+使用 Web 浏览器转到已部署的应用。
 
 ```bash
 http://<app-name>.azurewebsites.net

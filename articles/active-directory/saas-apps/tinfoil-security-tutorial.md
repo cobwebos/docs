@@ -17,10 +17,10 @@ ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71d3078b553843922cd51e4e0f43ea84b6dcde16
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74170766"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tinfoil-security"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TINFOIL SECURITY 的集成
@@ -91,7 +91,7 @@ ms.locfileid: "74170766"
 
 1. 除了上述属性，Visitly 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name | 源属性 |
+    | 名称 | 源属性 |
     | ------------------- | -------------|
     | 帐户 ID | UXXXXXXXXXXXXX |
 
@@ -148,9 +148,9 @@ ms.locfileid: "74170766"
 
     ![仪表板](./media/tinfoil-security-tutorial/ic798971.png "仪表板")
 
-1. 单击“安全”  。
+1. 单击 **“安全性”** 。
 
-    ![安全性](./media/tinfoil-security-tutorial/ic798972.png "安全")
+    ![安全性](./media/tinfoil-security-tutorial/ic798972.png "安全性")
 
 1. 在“单一登录”  配置页上，执行以下步骤：
 

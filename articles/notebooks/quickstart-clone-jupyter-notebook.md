@@ -4,10 +4,10 @@ description: 快速克隆 GitHub 存储库中的 Jupyter 笔记本并在 Azure N
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: d0f3a12ff04e115074c3821c5e29652484710bca
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77064591"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中克隆笔记本
@@ -18,7 +18,7 @@ GitHub 存储库为 Jupyter 笔记本提供存储和版本控制。 协作者维
 
 由于你的 Azure Notebooks 克隆位于云中，因此可以将它与其他协作者共享，这些协作者不需要创建任何本地复制，也不需要在其计算机上安装 Jupyter。 你还可以克隆某个笔记本来仅将其用作你自己的项目的起点，或者克隆它来获取数据文件。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 无。
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>克隆 Azure 认知服务笔记本

@@ -17,10 +17,10 @@ ms.date: 09/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1184129783b448cb2d6dc22e488ffe38401a1218
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72264113"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp-globalview"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ADP Globalview 集成

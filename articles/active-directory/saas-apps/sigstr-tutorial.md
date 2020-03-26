@@ -17,10 +17,10 @@ ms.date: 08/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e87f6aa3d85694afc8fa9fabacdae5e8b0719213
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "69641834"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sigstr"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Sigstr 集成
@@ -89,7 +89,7 @@ ms.locfileid: "69641834"
 
 1. 除上述属性以外，Sigstr 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以添加 SAML 令牌属性，如下表中所示：
 
-    | Name |  源属性|
+    | 名称 |  源属性|
     | -------|----------- |
     | 电子邮件 | user.mail |
 
@@ -141,12 +141,12 @@ ms.locfileid: "69641834"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-sigstr-test-user"></a>创建 Sigstr 测试用户

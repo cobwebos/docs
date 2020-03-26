@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/24/2020
-ms.openlocfilehash: 9e220c7a7813f89eacab5137362e39153d2b334a
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 90f7010970f70379c8adecc4214c44d896a1beaf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207177"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80130253"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Kafka 群集
 
@@ -57,7 +57,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
     |安全外壳 (SSH) 用户名 | 默认用户名为“sshuser”  。  可以提供其他名称作为 SSH 用户名。 |
     |对 SSH 使用群集登录密码| 选中此复选框，让 SSH 用户使用与提供给群集登录用户的密码相同的密码。|
 
-   ![Azure 门户创建群集基本信息](./media/apache-kafka-get-started/azure-portal-cluster-basics-blank.png)
+   ![Azure 门户创建群集基本信息](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
 
     每个 Azure 区域（位置）均提供_容错域_。 容错域是 Azure 数据中心基础硬件的逻辑分组。 每个容错域共享公用电源和网络交换机。 在 HDInsight 群集中实现节点的虚拟机和托管磁盘跨这些容错域分布。 此体系结构可限制物理硬件故障造成的潜在影响。
 
@@ -132,7 +132,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
     Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
     ```
 
-## <a id="getkafkainfo"></a>获取 Apache Zookeeper 主机和代理主机信息
+## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>获取 Apache Zookeeper 主机和代理主机信息
 
 使用 Kafka 时，必须了解 Apache Zookeeper 和代理主机   。 这些主机配合 Apache Kafka API 和 Kafka 随附的许多实用程序一起使用。
 

@@ -10,10 +10,10 @@ ms.custom:
 - seo-python-october2019
 - cli-validate
 ms.openlocfilehash: 13431b62e64774a4c31cf95200def3ba77f973d7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77523896"
 ---
 # <a name="tutorial-run-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>教程：在 Azure 应用服务中使用 PostgreSQL 运行 Python (Django) Web 应用
@@ -32,7 +32,7 @@ ms.locfileid: "77523896"
 
 可以在 macOS、Linux 或 Windows 中执行本文中的步骤。 大多数情况下的步骤是相似的，但本教程中不会对差异进行详细介绍。 下面的大多数示例都使用 Linux 上的 `bash` 终端窗口。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始本教程前，请执行以下操作：
 
@@ -392,7 +392,7 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
 
 应用服务部署服务器会看到存储库根目录中的 *requirements.txt*，并且会在 `git push` 后自动运行 Python 包管理。
 
-### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
+### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
 通过 URL http:\//\<app-name>.azurewebsites.net 浏览到已部署的应用  。 它需要一些时间才能启动，因为在首次请求该应用时必须下载并运行容器。 如果页面超时或显示错误消息，请等待数分钟，然后刷新页面。
 

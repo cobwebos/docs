@@ -7,15 +7,15 @@ manager: rkarlin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.custom: fasttrack-edit
+ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 2b83fc6231f590b3c0765ec647101b22920058da
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 95dcc135593c566eb1319ed52df3df6c1ada6609
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581661"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067686"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>快速入门：Azure Sentinel 入门
 
@@ -51,7 +51,7 @@ ms.locfileid: "77581661"
 
    ![Azure Sentinel 地图](./media/qs-get-visibility/anomolies.png)
 
-## 使用内置工作簿<a name="dashboards"></a>
+## <a name="use-built-in-workbooks"></a>使用内置工作簿<a name="dashboards"></a>
 
 内置工作簿提供连接的数据源中的集成数据，让你深入调查这些服务中生成的事件。 内置工作簿包括 Azure AD、Azure 活动事件和本地信息，这些数据可能来自服务器的 Windows 事件、第一方警报或任何第三方（包括防火墙流量日志、Office 365 和基于 Windows 事件的不安全协议）。 这些工作簿基于 Azure Monitor 工作簿，为你提供增强的可定制性和灵活性，方便你设计自己的工作簿。 有关详细信息，请参阅[工作簿](../azure-monitor/app/usage-workbooks.md)。
 

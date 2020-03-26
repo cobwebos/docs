@@ -8,10 +8,10 @@ author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
 ms.openlocfilehash: 8b96a35db91a282be1fb5e4c6143e6bd0a0203f2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73606145"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>展示如何使用开放数据集来扩充数据的示例 Jupyter 笔记本 
@@ -21,19 +21,19 @@ ms.locfileid: "73606145"
 >如果是在非 Spark 环境中，开放数据集仅允许一次下载一个月的数据，并利用一些类来避免较大数据集出现 MemoryError。
 
 ## <a name="load-noaa-integrated-surface-database-isd-data"></a>加载 NOAA 集成地面数据库 (ISD) 数据 
-|Notebook        | 说明                                    |
+|笔记本        | 说明                                    |
 |----------------|------------------------------------------------|
 |[将最近一个月的天气数据加载到 Pandas 数据帧](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-access/02-weather-to-pandas-dataframe.ipynb) | 了解如何将历史天气数据加载到最常用的 Pandas 数据帧。 |
 |[将最近一个月的天气数据加载到 Spark 数据帧](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-access/01-weather-to-spark-dataframe.ipynb) | 了解如何将历史天气数据加载到最常用的 Spark 数据帧。  |
 
 ## <a name="join-demo-data-with-noaa-isd-data"></a>联接演示数据和 NOAA ISD 数据 
-|Notebook        | 说明                                    |
+|笔记本        | 说明                                    |
 |----------------|------------------------------------------------|
 |[联接演示数据和天气数据 - Pandas](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/02-weather-join-in-pandas.ipynb) | 在 Pandas 数据帧中，联接 1 个月的传感器位置演示数据集与天气读数。  |
 |[联接演示数据和天气数据 - Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/01-weather-join-in-spark.ipynb) | 在 Spark 数据帧中，联接传感器位置演示数据集与天气读数。 |
 
 ## <a name="join-nyc-taxi-data-with-noaa-isd-data"></a>联接纽约出租车数据与 NOAA ISD 数据 
-|Notebook        | 说明                                    |
+|笔记本        | 说明                                    |
 |----------------|------------------------------------------------|
 |[扩充了天气数据的出租车车程数据 - Pandas](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/04-nyc-taxi-join-weather-in-pandas.ipynb) | 加载纽约绿色出租车数据（1 个月内），并在 Pandas 数据帧中使用天气数据扩充它。 此示例重写方法 `get_pandas_limit`，并平衡数据加载性能与数据量。|
 |[扩充了天气数据的出租车车程数据 - Spark](https://github.com/Azure/OpenDatasetsNotebooks/blob/master/tutorials/data-join/03-nyc-taxi-join-weather-in-spark.ipynb) | 加载纽约绿色出租车数据，并在 Spark 数据帧中使用天气数据扩充它。  |

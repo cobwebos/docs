@@ -16,10 +16,10 @@ ms.date: 02/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38cad1262d9da836b23f9042734e13aa533cd69e
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78207344"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trunarrative"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TruNarrative 的集成

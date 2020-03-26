@@ -17,10 +17,10 @@ ms.date: 01/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdd8daa5cb0d82a3bfdb97496c650e1ce1d21a81
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>教程：Azure Active Directory 与 Asset Bank 的集成

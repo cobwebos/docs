@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: tutorial
 ms.openlocfilehash: 6acb68b7bbaa54db2e4143a42e43aede2caed35f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75420707"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>教程：从 Azure 自动化 runbook 发送电子邮件
@@ -24,7 +24,7 @@ ms.locfileid: "75420707"
 > * 将 SendGrid API 密钥存储在 KeyVault 中
 > * 创建一个 runbook，用于检索 API 密钥和发送电子邮件
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成本教程需要以下各项：
 

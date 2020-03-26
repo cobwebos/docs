@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
 ms.openlocfilehash: f700b06e6ade0d72178777b67cb734f3120b36dc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395464"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214955"
 ---
-# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户构建 .NET Framework 或核心应用程序
+# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 .NET Framework 或 Core 应用程序
 
 > [!div class="op_single_selector"]
 > * [Gremlin 控制台](create-graph-gremlin-console.md)
@@ -30,9 +30,9 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 本快速入门演示如何使用 Azure 门户创建 Azure Cosmos DB [Gremlin API](graph-introduction.md) 帐户、数据库和图（容器）。 然后使用开源驱动程序 [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) 生成并运行控制台应用。  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-如果尚未安装 Visual Studio 2019，可以下载并使用**免费**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
+如果尚未安装 Visual Studio 2019，可以下载并使用**免费**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -83,19 +83,19 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 以下代码片段全部摘自 Program.cs 文件。
 
-* 根据上面创建的帐户设置连接参数： 
+* 跟踪上面创建的帐户设置连接参数： 
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="configureConnectivity":::
 
-* 要执行的 Gremlin 命令在字典中列出：
+* 要执行的 Gremlin 命令列在字典中：
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineQueries":::
 
-* 使用上面提供的参数创建新的 `GremlinServer`，并 `GremlinClient` 连接对象：
+* 使用上面提供的参数创建新的 `GremlinServer` 和 `GremlinClient` 连接对象：
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineClientandServerObjects":::
 
-* 使用带有异步任务的 `GremlinClient` 对象执行每个 Gremlin 查询。 可以从上一步中定义的字典读取 Gremlin 查询，并执行这些查询。 稍后将获取结果，并使用 Newtonsoft.json 包中的 `JsonSerializer` 类来读取设置为字典格式的值：
+* 通过将 `GremlinClient` 对象与异步任务配合使用来执行每一个 Gremlin 查询。 可以从上一步中定义的字典读取 Gremlin 查询，并执行它们。 稍后使用 Newtonsoft.Json 包中的 `JsonSerializer` 类，获取结果并读取已格式化为字典的值：
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="executeQueries":::
 
@@ -103,7 +103,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 从 [Azure 门户](https://portal.azure.com/)中，导航到你的图形数据库帐户。 在“概述”选项卡中，可以看到两个终结点： 
+1. 从 [Azure 门户](https://portal.azure.com/)中，导航到你的图形数据库帐户。 在“概述”  选项卡中，可以看到两个终结点： 
  
    **.NET SDK URI** - 使用 Microsoft.Azure.Graphs 库连接到图形帐户时将使用此值。 
 
@@ -111,18 +111,18 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     ![复制终结点](./media/create-graph-dotnet/endpoint.png)
 
-   若要运行此示例，请复制**Gremlin 终结点**值，删除末尾的端口号，即 URI 变为 `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`。 终结点值应类似于 `testgraphacct.gremlin.cosmosdb.azure.com`
+   若要运行此示例，请复制 **Gremlin 终结点**值，删除末尾的端口号，也就是说，URI 将变为 `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`。 终结点值应类似于 `testgraphacct.gremlin.cosmosdb.azure.com`
 
-1. 接下来，导航到 "**密钥**" 选项卡，然后从 "Azure 门户" 中复制 "**主密钥**" 值。 
+1. 接下来，从 Azure 门户中导航到“密钥”选项卡并复制“主密钥”值。   
 
-1. 复制了帐户的 URI 和主密钥后，请将其保存到运行该应用程序的本地计算机上的新环境变量。 若要设置环境变量，请打开命令提示符窗口，并运行以下命令。 请确保将 < Your_Azure_Cosmos_account_URI > 并 < Your_Azure_Cosmos_account_PRIMARY_KEY 值。
+1. 复制帐户的 URI 和主键以后，请将其保存到运行应用程序的本地计算机的新环境变量中。 若要设置环境变量，请打开命令提示符窗口，并运行以下命令。 确保替换 <Your_Azure_Cosmos_account_URI> 和 <Your_Azure_Cosmos_account_PRIMARY_KEY> 值。
 
    ```console
    setx EndpointUrl "https://<your cosmos db account name>.gremlin.cosmosdb.azure.com"
    setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 
-1. 打开*Program.cs*文件，并将 "database" 和 "container" 变量与上面创建的数据库和容器（也是图形名称）进行更新。
+1. 打开 *Program.cs* 文件，将 "database" 和 "container" 变量更新为在上面创建的数据库和容器的名称（也是图形名称）。
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
@@ -140,9 +140,9 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在可以返回到 Azure 门户中的数据资源管理器，浏览和查询新的图形数据。
 
-1. 在数据资源管理器中，新数据库会显示在“图形”窗格中。 展开数据库和容器节点，然后单击“图形”。
+1. 在数据资源管理器中，新数据库会显示在“图形”窗格中。 展开数据库和容器节点，然后单击“图形”。 
 
-2. 单击“应用筛选器”按钮，使用默认查询来查看图形中的所有顶点。 示例应用生成的数据会显示在“图形”窗格中。
+2. 单击“应用筛选器”按钮，使用默认查询来查看图形中的所有顶点。  示例应用生成的数据会显示在“图形”窗格中。
 
     可以放大和缩小图形，可以扩展图形显示空间，可以添加其他顶点，还可以在显示图面移动顶点。
 

@@ -4,11 +4,11 @@ description: 在本教程中，了解如何使用 Azure CLI 管理 Azure VM 上�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.openlocfilehash: 2c088c27a678a4541cbba3c4c43c9cd830c60ff0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75470792"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222454"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 管理 Azure VM 中的 SAP HANA 数据库
 

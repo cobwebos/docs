@@ -16,15 +16,15 @@ ms.date: 11/15/2019
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 64b906c8a6b52d9c9655f3fe2b13d504d8eed4cb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74278076"
 ---
 # <a name="compare-azure-cdn-product-features"></a>比较 Azure CDN 产品功能
 
-Azure 内容分发网络 (CDN) 包括四个产品：“来自 Microsoft 的 Azure CDN Standard”、“来自 Akamai 的 Azure CDN Standard”、“来自 Verizon 的 Azure CDN Standard”和“来自 Verizon 的 Azure CDN Premium”     。 有关将**来自 Verizon 的标准 Azure CDN** 配置文件迁移到**来自 Verizon 的高级 Azure CDN** 的信息，请参阅[将 Azure CDN 配置文件从标准 Verizon 迁移到高级 Verizon](cdn-migrate.md)。 请注意，虽然存在从标准 Verizon 到高级 Verizon 的升级路径，但目前没有其他产品之间的转换机制。
+Azure 内容分发网络 (CDN) 包括四种产品：“来自 Microsoft 的 Azure CDN Standard”、“来自 Akamai 的 Azure CDN Standard”、“来自 Verizon 的 Azure CDN Standard”和“来自 Verizon 的 Azure CDN Premium”     。 有关将**来自 Verizon 的标准 Azure CDN** 配置文件迁移到**来自 Verizon 的高级 Azure CDN** 的信息，请参阅[将 Azure CDN 配置文件从标准 Verizon 迁移到高级 Verizon](cdn-migrate.md)。 请注意，虽然存在从标准 Verizon 到高级 Verizon 的升级路径，但目前没有其他产品之间的转换机制。
 
 下表比较了每个产品的可用功能。
 

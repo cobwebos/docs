@@ -10,10 +10,10 @@ ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 01/15/2020
 ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77163171"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教程：将发送到 Azure 事件中心的实时事件中的数据异常可视化
@@ -32,7 +32,7 @@ ms.locfileid: "77163171"
 
 需要一个 Azure 订阅才能完成此教程。 如果没有订阅，请在开始之前[创建一个免费帐户][]。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

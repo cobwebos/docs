@@ -15,10 +15,10 @@ ms.topic: quickstart
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 92f25f4bdac4942478c93f717c81eadd2c2f5b4a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76760668"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>快速入门：如何通过 PHP 使用服务总线主题和订阅
@@ -33,7 +33,7 @@ ms.locfileid: "76760668"
 - 从订阅接收消息
 - 删除主题和订阅
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 遵循[快速入门：使用 Azure 门户创建服务总线主题以及对该主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)中的步骤创建服务总线**命名空间**并获取**连接字符串**。
 

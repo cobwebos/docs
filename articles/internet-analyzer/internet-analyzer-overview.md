@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 3d9d1240e31d40a3d9c75d56314acc1721d90b99
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73488133"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>什么是 Internet 分析器？ （预览版）
@@ -45,7 +45,7 @@ Internet 分析器解决了与云迁移、部署到新的或额外的 Azure 区�
     * 北欧
     * 南非北部
     * 东南亚 
-    * 阿联酋北部
+    * 阿拉伯联合酋长国北部
     * 英国西部  
     * 西欧
     * 美国西部 
@@ -58,7 +58,7 @@ Internet 分析器解决了与云迁移、部署到新的或额外的 Azure 区�
     * 欧洲西部、阿联酋北部
     * 美国西部、美国东部 
     * 美国西部、欧洲西部
-    * 美国西部、阿联酋北部
+    * 美国西部、阿拉伯联合酋长国北部
     * 欧洲西部、阿联酋北部、东南亚
     * 美国西部、欧洲西部、东亚
     * 美国西部、欧洲北部、东南亚、阿联酋北部、南非北部 

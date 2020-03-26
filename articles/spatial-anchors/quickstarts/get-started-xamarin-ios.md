@@ -9,10 +9,10 @@ ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: c5e217a33c8b461a438e2d0209fe6733850634e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75465145"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Xamarin iOS 应用
@@ -28,7 +28,7 @@ ms.locfileid: "75465145"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，请确保具备以下项：
 - 运行 macOS High Sierra (10.13) 或更高版本的 Mac，其中装有：

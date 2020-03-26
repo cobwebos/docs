@@ -10,10 +10,10 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: 17ac29de243f4abfff1cfc83fc6424799978bf0e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74978145"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教程：通过使用 Azure Database for PostgreSQL - 超大规模 (Citus)设计多租户数据库
@@ -23,7 +23,7 @@ ms.locfileid: "74978145"
 > [!div class="checklist"]
 > * 创建 Hyperscale (Citus) 服务器组
 > * 使用 psql 实用工具创建架构
-> * 节点中的分片表
+> * 在节点之间将表分片
 > * 引入示例数据
 > * 查询租户数据
 > * 租户之间共享数据
@@ -126,11 +126,11 @@ CREATE TABLE impressions (
 
 多租户应用程序仅可以对每个租户强制实施唯一性，因此所有主键和外键包含公司 ID。
 
-## <a name="shard-tables-across-nodes"></a>节点中的分片表
+## <a name="shard-tables-across-nodes"></a>在节点之间将表分片
 
 超大规模部署基于用户指定的列的值存储不同节点上的表行。 此“分布列”标记哪个租户拥有哪些行。
 
-让我们将分布列设置为 company\_id，即租户标识符。 在 Psql 中，运行这些函数：
+让我们将分布列设置为 company\_id，即租户标识符。 在 psql 中运行以下函数：
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -271,8 +271,8 @@ SELECT id
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你学习了如何预配 Hyperscale (Citus) 服务器组。 使用 psql 连接它，创建架构和分布式数据。 你已了解如何在租户中和租户之间查询数据，以及如何自定义每租户架构。
+在本教程中，你学习了如何预配 Hyperscale (Citus) 服务器组。 你已使用 psql 连接到该组，创建了架构并分布了数据。 你已了解如何在租户中和租户之间查询数据，以及如何自定义每租户架构。
 
-接下来，了解有关超大规模的概念。
+接下来，请了解有关超大规模的概念。
 > [!div class="nextstepaction"]
 > [超大规模节点类型](https://aka.ms/hyperscale-concepts)

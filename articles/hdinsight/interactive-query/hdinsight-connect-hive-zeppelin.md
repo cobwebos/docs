@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 915aca0e95fce05f74477b526de047c829c7f512
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890393"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79367918"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>快速入门：使用 Apache Zeppelin 在 Azure HDInsight 中执行 Apache Hive 查询
 
@@ -23,7 +23,7 @@ ms.locfileid: "74890393"
 
 ## <a name="prerequisites"></a>先决条件
 
-一个 HDInsight 交互式查询群集。 若要创建 HDInsight 群集，请参阅[创建群集](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。  请确保选择“交互式查询”群集类型。 
+一个 HDInsight 交互式查询群集。 若要创建 HDInsight 群集，请参阅[创建群集](../hadoop/apache-hadoop-linux-tutorial-get-started.md)。  请确保选择“交互式查询”群集类型。 
 
 ## <a name="create-an-apache-zeppelin-note"></a>创建 Apache Zeppelin 笔记
 

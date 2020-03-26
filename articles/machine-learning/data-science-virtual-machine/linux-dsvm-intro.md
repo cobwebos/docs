@@ -9,17 +9,17 @@ ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.openlocfilehash: 73541b31125ee6e99dc2351e26f6a564a1603487
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77526019"
 ---
 # <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>快速入门：在 Azure 中设置 CentOS (Linux) Data Science Virtual Machine
 
 启动并运行基于 CentOS 的 Data Science Virtual Machine。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要创建 CentOS Data Science Virtual Machine，必须具备 **Azure 订阅**。 [创建免费订阅](https://azure.com/free)。
 

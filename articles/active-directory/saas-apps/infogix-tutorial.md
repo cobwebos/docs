@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: a0b8dbb3992808bdcb94291d876192431c72f6c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67100344"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>教程：Azure Active Directory 与 Infogix Data3Sixty Govern 集成
@@ -39,7 +39,7 @@ ms.locfileid: "67100344"
 若要配置 Azure AD 与 Infogix Data3Sixty Govern 的集成，需要以下项：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了 Infogix Data3Sixty Govern 单一登录的订阅
+* 启用了单一登录的 Infogix Data3Sixty Govern 订阅
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -72,8 +72,8 @@ ms.locfileid: "67100344"
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于一个名为“Britta Simon”的测试用户，配置和测试 Infogix Data3Sixty Govern 的 Azure AD 单一登录。 
-若要运行单一登录，需要在 Azure AD 用户与 Infogix Data3Sixty Govern 相关用户之间建立链接关系。
+在本部分中，我们基于名为“Britta Simon”的测试用户为 Infogix Data3Sixty Govern 配置和测试 Azure AD 单一登录。 
+若要使单一登录有效，需要在 Azure AD 用户与 Infogix Data3Sixty Govern 相关用户之间建立关联。
 
 若要配置和测试 Infogix Data3Sixty Govern 的 Azure AD 单一登录，需要完成以下构建基块：
 
@@ -81,14 +81,14 @@ ms.locfileid: "67100344"
 2. **[配置 Infogix Data3Sixty Govern 单一登录](#configure-infogix-data3sixty-govern-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Infogix Data3Sixty Govern 测试用户](#create-infogix-data3sixty-govern-test-user)** - 在 Infogix Data3Sixty Govern 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+5. **[创建 Infogix Data3Sixty Govern 测试用户](#create-infogix-data3sixty-govern-test-user)** - 在 Infogix Data3Sixty Govern 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-若要配置 Infogix Data3Sixty Govern 的 Azure AD 单一登录，请执行以下步骤：
+要为 Infogix Data3Sixty Govern 配置 Azure AD 单一登录，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的 **Infogix Data3Sixty Govern** 应用程序集成页上，选择“单一登录”。 
 
@@ -133,9 +133,9 @@ ms.locfileid: "67100344"
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 

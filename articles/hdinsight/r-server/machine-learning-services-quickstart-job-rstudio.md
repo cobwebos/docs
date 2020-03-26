@@ -9,10 +9,10 @@ ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
 ms.openlocfilehash: 8a6a204ee5080e3acf99c13ecba1e1c7664d68b4
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73241883"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>快速入门：使用 RStudio Server 在 Azure HDInsight 中的 ML Services 群集上执行 R 脚本
@@ -23,7 +23,7 @@ Azure HDInsight 上的 ML Services 允许 R 脚本使用 Apache Spark 和 Apache
 
 ## <a name="prerequisite"></a>先决条件
 
-HDInsight 上的 ML Services 群集。 参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“机器学习服务”作为“群集类型”。  
+HDInsight 上的机器学习服务群集。 参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“机器学习服务”作为“群集类型”。  
 
 ## <a name="connect-to-rstudio-server"></a>连接到 RStudio Server
 

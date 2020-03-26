@@ -9,17 +9,17 @@ ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74091348"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>在 Azure 区域之间对 Azure VM 进行故障回复
 
 [Azure Site Recovery](site-recovery-overview.md) 服务可管理和协调本地计算机和 Azure 虚拟机 (VM) 的复制、故障转移和故障回复，因而有利于灾难恢复策略。
 
-本教程介绍如何故障回复单个 Azure VM。 故障转移后，须在主要区域可用时故障回复到主要区域。 本教程介绍如何执行下列操作：
+本教程介绍如何故障回复单个 Azure VM。 故障转移后，须在主要区域可用时故障回复到主要区域。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > 
@@ -47,7 +47,7 @@ ms.locfileid: "74091348"
 2. 在“复制的项”中选择 VM，然后选择“故障转移”   。
 3. 在“故障转移”中，选择要故障转移到的恢复点  ：
     - **最新(默认设置)** ：处理 Site Recovery 服务中的所有数据，并提供最低的恢复点目标 (RPO)。
-    - **最新处理**：将 VM 还原到由 Site Recovery 处理的最新恢复点。
+    - **最新处理**：将 VM 还原到由 Site Recovery 处理过的最新恢复点。
     - **自定义**：故障转移到特定的恢复点。 此选项可用于执行测试故障转移。
 4. 如果希望 Site Recovery 在触发故障转移之前在 DR 区域尝试关闭 VM，请选择“在开始故障转移前关闭计算机”  。 即使关机失败，故障转移也仍会继续。 
 5. 在“作业”页上跟踪故障转移进度。 

@@ -7,12 +7,12 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 19a35a6586b04818c09190899714345d21e0088d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 8daf7380e859cd2f9b5890c716f7b7d95e6c3fe4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330747"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061335"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>快速入门：使用 Python v12 SDK 管理 blob
 
@@ -171,7 +171,7 @@ container_client = blob_service_client.create_container(container_name)
 将此代码添加到 `try` 块的末尾：
 
 ```python
-# Create a file in local Documents directory to upload and download
+# Create a file in local data directory to upload and download
 local_path = "./data"
 local_file_name = "quickstart" + str(uuid.uuid4()) + ".txt"
 upload_file_path = os.path.join(local_path, local_file_name)
@@ -214,7 +214,7 @@ for blob in blob_list:
 
 ```python
 # Download the blob to a local file
-# Add 'DOWNLOAD' before the .txt extension so you can see both files in Documents
+# Add 'DOWNLOAD' before the .txt extension so you can see both files in the data directory
 download_file_path = os.path.join(local_path, str.replace(local_file_name ,'.txt', 'DOWNLOAD.txt'))
 print("\nDownloading blob to \n\t" + download_file_path)
 
@@ -276,7 +276,7 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-在开始清理过程之前，请在“Documents”文件夹中查看这两个文件  。 可以打开它们，然后就会观察到它们完全相同。
+在开始清理过程之前，请在“data”文件夹中查看这两个文件  。 可以打开它们，然后就会观察到它们完全相同。
 
 验证文件后，按 Enter 键以删除测试文件并完成演示  。
 

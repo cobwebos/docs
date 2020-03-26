@@ -17,10 +17,10 @@ ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0e08ef72dca09f873ad1cfcc91e132063b88406b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227535"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Freshservice 集成
@@ -129,7 +129,7 @@ ms.locfileid: "74227535"
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“Freshservice”  。
-1. 在应用的概览页中，找到“管理”部分，选择“用户和组”   。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "74227535"
 
 5. 在“客户门户”中单击“安全”。  
 
-    ![安全性](./media/freshservice-tutorial/ic790815.png "安全")
+    ![安全性](./media/freshservice-tutorial/ic790815.png "安全性")
 
 6. 在“安全”  部分中，执行以下步骤：
 

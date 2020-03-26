@@ -4,10 +4,10 @@ description: 将 Jupyter 笔记本从本地计算机或 Web URL 快速传输到 
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: baf05d7adb1340d712ff0fc87436d5bbac51bc8f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77064319"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>快速入门：将本地 Jupyter 笔记本迁移到 Azure Notebooks 预览版
@@ -18,7 +18,7 @@ ms.locfileid: "77064319"
 
 将本地或基于存储库的笔记本迁移到 Azure Notebooks 就可以立即与协作者共享它们，这些协作者只需浏览器即可查看并运行你的笔记本。 如果登录到 Azure Notebooks，他们也可以进行更改。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 本地计算机或其他可访问文件 URL 上的 [Jupyter 笔记本](https://jupyter-notebook.readthedocs.io)。 
 

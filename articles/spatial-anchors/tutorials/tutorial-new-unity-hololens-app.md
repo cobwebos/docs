@@ -9,17 +9,17 @@ ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: e1abb759c80e770f1e650c232b6b2e21232b7e6f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75457720"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>教程：有关使用 Azure 空间定位点创建新 HoloLens Unity 应用的分步说明
 
 本教程将演示如何使用 Azure Spatial Anchor 创建新的 HoloLens Unity 应用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保做好以下准备：
 
@@ -141,7 +141,7 @@ ms.locfileid: "75457720"
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>获取 Azure 空间定位点
 
-## <a name="via-unity-packagetabunitypackage"></a>[通过 Unity 包](#tab/UnityPackage)
+## <a name="via-unity-package"></a>[通过 Unity 包](#tab/UnityPackage)
 
 现在下载 Azure 空间定位点 SDK。 转到 [Azure 空间定位点 GitHub 发布页面](https://github.com/Azure/azure-spatial-anchors-samples/releases)。 在“资产”下，下载“AzureSpatialAnchors.unitypackage”  。 在 Unity 中，转到“资产”，单击“导入包” > “自定义包...”    。导航到包并选择“打开”  。
 
@@ -149,7 +149,7 @@ ms.locfileid: "75457720"
 
 现在需要还原 Nuget 包以获取 Azure 空间定位点 SDK。 从“Unity”生成，然后再次打开并生成“Visual Studio”解决方案，详见[试用](#trying-it-out)   。
 
-## <a name="via-nugetforunitytabnugetforunity"></a>[通过 NuGetForUnity](#tab/NuGetForUnity)
+## <a name="via-nugetforunity"></a>[通过 NuGetForUnity](#tab/NuGetForUnity)
 
 首先，我们需安装 NuGetForUnity。 转到 [NuGetForUnity GitHub 发布页面](https://github.com/GlitchEnzo/NuGetForUnity/releases)。 在“资产”下，下载最新的 **NuGetForUnity.unitypackage**。 在 Unity 中，转到“资产”，单击“导入包” > “自定义包...”    。导航到包并选择“打开”  。 Unity 现在会安装 NugetForUnity。 如果在 Unity 中看不到新的 **NuGet** 下拉列表，则可能需要在“项目”   >   “资产”下右键单击。 然后选择“全部重新导入”。 
 

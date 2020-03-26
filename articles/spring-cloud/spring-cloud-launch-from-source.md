@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: brendm
-ms.openlocfilehash: b506fdcdec1ae3e98c1a4afe9c5124e284ed4d99
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 3ab4b1729ea380671b72a9bb01740930a186d5c3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589005"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79470788"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>快速入门：从源代码启动 Spring Cloud 应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "77589005"
 > * 部署每个微服务
 > * 为应用程序分配公共终结点
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 >[!Note]
 > Azure Spring Cloud 目前以公共预览版的形式提供。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。  有关预览期间支持的详细信息，请参阅[常见问题解答](https://azure.microsoft.com/support/faq/)或提交[支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
@@ -48,7 +48,7 @@ ms.locfileid: "77589005"
 
 通过以下命令安装用于 Azure CLI 的 Azure Spring Cloud 扩展
 
-```Azure CLI
+```azurecli
 az extension add --name spring-cloud
 ```
 
@@ -56,7 +56,7 @@ az extension add --name spring-cloud
 
 登录到 Azure CLI 并选择你的有效订阅。 请务必选择已列入 Azure Spring Cloud 允许列表的有效订阅
 
-```Azure CLI
+```azurecli
 az login
 az account list -o table
 az account set --subscription

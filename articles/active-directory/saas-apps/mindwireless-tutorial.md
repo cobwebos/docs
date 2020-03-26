@@ -17,10 +17,10 @@ ms.date: 10/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ee64f14491a97c754f3e1dbbbf6e6a7ed6f93844
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72596225"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mindwireless"></a>教程：Azure Active Directory 单一登录 (SSO) 与 mindWireless 的集成
@@ -95,7 +95,7 @@ ms.locfileid: "72596225"
 
 1. 除了上述属性，mindWireless 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name | 命名空间  |  源属性|
+    | 名称 | 命名空间  |  源属性|
     | -------------- | --------------- | ----------------|
     | 员工 ID | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`| user.employeeid |
 

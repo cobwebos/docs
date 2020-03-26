@@ -13,10 +13,10 @@ ms.custom:
 - seo-python-october2019
 - mvc
 ms.openlocfilehash: 140ae0fc9f9a8daba193aa05e0800d83b7b6b963
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77086047"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>快速入门：使用 Python API 运行 Azure Batch 作业
@@ -27,7 +27,7 @@ ms.locfileid: "77086047"
 
 ![Azure Batch 工作流概述](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - 一个 **Azure Batch** 帐户和一个关联的 **Azure 存储**帐户。 使用 [Azure 门户](quick-create-portal.md)或 [CLI](quick-create-cli.md) 创建这些帐户。

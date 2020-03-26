@@ -17,10 +17,10 @@ ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56049e1b1253cd749a8e16061957c6b5b8786e3c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72594529"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purelyhr"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PurelyHR 集成

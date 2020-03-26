@@ -11,10 +11,10 @@ author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 253eb23be03c1cc0f2abf4ad1fed734426dc287d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77154675"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>教程：使用 Azure 多重身份验证保护用户登录事件
@@ -30,7 +30,7 @@ ms.locfileid: "77154675"
 > * 配置提示执行 MFA 的策略条件
 > * 以用户身份测试 MFA 过程
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需有以下资源和特权才能完成本教程：
 

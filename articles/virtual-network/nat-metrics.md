@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 51713db8532eb33f102de9320dea9eaeb98c4019
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4f1760c32117b34d4d453964473cba3c7d07f725
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359083"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79202172"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure 虚拟网络 NAT 指标
 
@@ -30,9 +30,6 @@ Azure 虚拟网络 NAT 网关资源提供多维指标。 可以使用这些指�
 </p>
 
 图：*用于出站 Internet 连接的虚拟网络 NAT*
-
->[!NOTE] 
->虚拟网络 NAT 暂时以公共预览版提供。 目前它只能在有限的几个[区域](nat-overview.md#region-availability)中使用。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms)。
 
 ## <a name="metrics"></a>指标
 

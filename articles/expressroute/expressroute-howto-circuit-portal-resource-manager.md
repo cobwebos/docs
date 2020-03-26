@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/20/2018
 ms.author: cherylmc
 ms.openlocfilehash: 686ac8013879eff8adc4476d56119bbb4a169900
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74813144"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>教程：创建和修改 ExpressRoute 线路
@@ -34,7 +34,7 @@ ms.locfileid: "74813144"
 * 确保有权创建新的网络资源。 如果没有适当的权限，请与帐户管理员联系。
 * 可以在开始前[观看一段视频](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)，以更好地了解步骤。
 
-## <a name="create"></a>创建和预配 ExpressRoute 线路
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>创建和预配 ExpressRoute 线路
 
 ### <a name="1-sign-in-to-the-azure-portal"></a>1.登录到 Azure 门户
 
@@ -118,11 +118,11 @@ ms.locfileid: "74813144"
 
 接下来，将虚拟网络链接到 ExpressRoute 线路。 使用 Resource Manager 部署模式时，请参阅[将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)一文。
 
-## <a name="status"></a>获取 ExpressRoute 线路状态
+## <a name="getting-the-status-of-an-expressroute-circuit"></a><a name="status"></a>获取 ExpressRoute 线路状态
 
 可以选择线路并查看“概述”页，从而查看线路状态。
 
-## <a name="modify"></a>修改 ExpressRoute 线路
+## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>修改 ExpressRoute 线路
 
 可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。 可以修改“配置”  页上的“带宽”、“SKU”、“计费模型”和“允许经典操作”。 若要了解限制，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
 
@@ -151,7 +151,7 @@ ms.locfileid: "74813144"
 
 ![修改线路](./media/expressroute-howto-circuit-portal-resource-manager/modify-circuit-configuration.png)
 
-## <a name="delete"></a>取消设置和删除 ExpressRoute 线路
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>取消设置和删除 ExpressRoute 线路
 
 可以通过选择“删除”  图标来删除 ExpressRoute 线路。 请注意以下信息：
 

@@ -17,10 +17,10 @@ ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3249957fa20c208d0fd06c676200753163d4bfc8
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70376078"
 ---
 # <a name="tutorial-integrate-learning-at-work-with-azure-active-directory"></a>教程：将 Learning at Work 与 Azure Active Directory 集成

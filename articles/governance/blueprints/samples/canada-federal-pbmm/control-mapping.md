@@ -4,10 +4,10 @@ description: 加拿大联邦 PBMM 蓝图示例的控制映射。 每个控制都
 ms.date: 09/04/2019
 ms.topic: sample
 ms.openlocfilehash: 943ca6849f9a55ce45b609a06cfcbb9b96b691c2
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74545253"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大联邦 PBMM 蓝图示例的控制映射

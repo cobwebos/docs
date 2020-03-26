@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: 5d5e8250a75cc26d4b9843875f71325e163ef23b
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: c327629f0c5e88520a8bb0b9c4ff68e6edc00c35
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943558"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79137333"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>快速入门：使用适用于 .NET 的 Azure 存储 SDK v11 来管理队列
 
@@ -262,7 +262,7 @@ if (queue != null)
 
 ### <a name="binaries-and-source-code"></a>二进制文件和源代码
 
-- 下载最新版本的[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage/client)的 NuGet 包
+- 下载最新版本的[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage?view=azure-dotnet)的 NuGet 包
     - [通用](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
     - [队列](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - 查看 GitHub 上的 [.NET 客户端库源代码](https://github.com/Azure/azure-storage-net)。

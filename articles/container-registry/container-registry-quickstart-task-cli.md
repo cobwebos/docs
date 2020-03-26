@@ -4,10 +4,10 @@ description: 使用 Azure 容器注册表快速运行任务，以便在云中按
 ms.topic: quickstart
 ms.date: 01/31/2020
 ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76986268"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入门：使用 Azure 容器注册表任务生成和运行容器映像

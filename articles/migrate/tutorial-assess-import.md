@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 91b9c71e7c735fca08f71ca37ed28734c8d634a1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079862"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79453640"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>使用导入的数据评估服务器
 
@@ -142,7 +142,6 @@ IP 地址  | 否 | 服务器地址。
 **业务负责人** | 否 | 业务部门所有者。
 **业务应用程序名称** | 否 | 应用所属的应用程序的名称。
 **位置** | 否 | 服务器所在的数据中心。
-**服务器解除授权日期** | 否 | 物理服务器或虚拟服务器的基础物理服务器的解除授权日期。
 
 ### <a name="add-operating-systems"></a>添加操作系统
 

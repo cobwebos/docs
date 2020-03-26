@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: c78fa8ec470f04bcd88ab403249f77a65120c707
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67550391"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>教程：Azure Active Directory 与 ForeSee CX Suite 的集成

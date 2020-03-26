@@ -16,10 +16,10 @@ ms.date: 12/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6f8bd195043745d39327ae695abf00229aba8ec
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648474"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dotcom-monitor"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Dotcom-Monitor 集成
@@ -32,7 +32,7 @@ ms.locfileid: "75648474"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

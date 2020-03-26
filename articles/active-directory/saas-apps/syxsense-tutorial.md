@@ -16,10 +16,10 @@ ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 684b8c31524c55ad3335c02ec1268f1afea78a93
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77086584"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-syxsense"></a>教程：Azure Active Directory 与 Syxsense 的单一登录 (SSO) 集成
@@ -32,7 +32,7 @@ ms.locfileid: "77086584"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -96,13 +96,13 @@ ms.locfileid: "77086584"
 
 1. Syxsense 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
 
-    ![图像](common/default-attributes.png)
+    ![image](common/default-attributes.png)
 
 1. 除上述属性以外，Syxsense 应用程序还要求在 SAML 响应中传回其他几个属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
     | 名称 | 源属性|
     | ------------ | --------- |
-    | Email | user.email |
+    | 电子邮件 | user.email |
 
 1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 

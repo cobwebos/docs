@@ -4,19 +4,21 @@ description: 了解如何使用 Azure 资源管理器模板快速创建 Kubernet
 services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
-ms.custom: mvc
-ms.openlocfilehash: 9c4a79f196cc0737ddc9490f2fedda99961289f4
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.custom: mvc,subject-armqs
+ms.openlocfilehash: e8117eb1b521dc2e3fa9eaca1316e0b9c14f0e98
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273777"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80129453"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板部署 Azure Kubernetes 服务 (AKS) 群集
 
 Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 在本快速入门中，我们将使用 Azure 资源管理器模板部署一个 AKS 群集。 该群集中将运行一个包含 Web 前端和 Redis 实例的多容器应用程序。
 
 ![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 本快速入门假设读者基本了解 Kubernetes 的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
@@ -68,13 +70,21 @@ az ad sp create-for-rbac --skip-assignment
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-本快速入门中所用的模板用于[部署 Azure Kubernetes 服务群集](https://azure.microsoft.com/resources/templates/101-aks/)。 有关更多 AKS 示例，请参阅 [AKS 快速入门模板][aks-quickstart-templates]站点。
+### <a name="review-the-template"></a>查看模板
+
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-aks/)。
+
+:::code language="json" source="~/quickstart-templates/101-aks/azuredeploy.json" range="1-126" highlight="86-118":::
+
+有关更多 AKS 示例，请参阅 [AKS 快速入门模板][aks-quickstart-templates]站点。
+
+### <a name="deploy-the-template"></a>部署模板
 
 1. 选择下图登录到 Azure 并打开一个模板。
 
     [![部署到 Azure](./media/kubernetes-walkthrough-rm-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
-2. 选择或输入以下值。  
+2. 选择或输入以下值。
 
     对于本快速入门，请保留“OS 磁盘大小(GB)”、“代理计数”、“代理 VM 大小”、“OS 类型”和“Kubernetes 版本”的默认值。      为以下模板参数提供自己的值：
 
@@ -95,7 +105,9 @@ az ad sp create-for-rbac --skip-assignment
 
 创建 AKS 群集需要几分钟时间。 等待群集成功部署，然后转到下一步骤。
 
-## <a name="connect-to-the-cluster"></a>连接到群集
+## <a name="validate-the-deployment"></a>验证部署
+
+### <a name="connect-to-the-cluster"></a>连接到群集
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli][az-aks-install-cli] 命令：
 
@@ -124,7 +136,7 @@ aks-agentpool-41324942-1   Ready    agent   6m46s   v1.12.6
 aks-agentpool-41324942-2   Ready    agent   6m45s   v1.12.6
 ```
 
-## <a name="run-the-application"></a>运行应用程序
+### <a name="run-the-application"></a>运行应用程序
 
 Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本快速入门中，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 此清单包括两个 [Kubernetes 部署][kubernetes-deployment] - 一个用于 Azure Vote Python 示例应用程序，另一个用于 Redis 实例。 此外，还会创建两个 [Kubernetes 服务][kubernetes-service] - 一个内部服务用于 Redis 实例，一个外部服务用于从 Internet 访问 Azure Vote 应用程序。
 
@@ -233,7 +245,7 @@ deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
 
-## <a name="test-the-application"></a>测试应用程序
+### <a name="test-the-application"></a>测试应用程序
 
 应用程序运行时，Kubernetes 服务将向 Internet 公开应用程序前端。 此过程可能需要几分钟才能完成。
 
@@ -260,7 +272,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 ![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
-## <a name="delete-cluster"></a>删除群集
+## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要群集，可以使用 [az group delete][az-group-delete] 命令删除资源组、容器服务及所有相关资源。
 

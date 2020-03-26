@@ -7,12 +7,12 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: b53896896ecd4b0e577e8d2c5ec13e00ce6fab30
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e68e91d90846ab77b994b53be7a84a9dd8bc5a25
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191920"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216165"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob
 
@@ -118,7 +118,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 以下图示显示了这些资源之间的关系。
 
-![Blob 存储体系结构的图示](./media/storage-blob-introduction/blob1.png)
+![Blob 存储体系结构的图示](./media/storage-blobs-introduction/blob1.png)
 
 使用以下 JavaScript 类与这些资源进行交互：
 

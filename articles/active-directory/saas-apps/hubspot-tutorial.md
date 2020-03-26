@@ -17,10 +17,10 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68944445"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>教程：Azure Active Directory 与 HubSpot 的集成
@@ -55,7 +55,7 @@ HubSpot 支持以下功能：
 
 若要将 HubSpot 与 Azure AD 集成，必须将 HubSpot 添加到托管 SaaS 应用列表中。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左侧菜单中，选择“Azure Active Directory”  。
 

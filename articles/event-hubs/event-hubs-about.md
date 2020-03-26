@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: e8a91647d7532a9904901c247bb0b4096ffa0a1c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77161692"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中心 — 大数据流式处理平台和事件引入服务
@@ -49,7 +49,7 @@ Azure 事件中心是大数据流式处理平台和事件引入服务。 它可�
 
 实时引入、缓冲、存储和处理流，以获取可行的见解。 事件中心使用[分区的使用者模型](event-hubs-scalability.md#partitions)，可让多个应用程序同时处理流，并允许控制处理速度。
 
-在 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或 [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)  中近乎实时地[捕获](event-hubs-capture-overview.md)数据，以进行长期保留或微批处理。 可以基于用于派生实时分析的同一个流实现此行为。 设置捕获极其简单。 无需管理费用即可运行它，并且可以使用事件中心 [吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 使用事件中心可以专注于数据处理而不是数据捕获。
+在 [Azure Blob 存储](event-hubs-capture-overview.md)或 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/blobs/)[ 中近乎实时地](https://azure.microsoft.com/services/data-lake-store/)捕获 数据，以进行长期保留或微批处理。 可以基于用于派生实时分析的同一个流实现此行为。 设置捕获极其简单。 无需管理费用即可运行它，并且可以使用事件中心 [吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 使用事件中心可以专注于数据处理而不是数据捕获。
 
 Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，以构成无服务器体系结构。
 
@@ -66,11 +66,11 @@ Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，
 ## <a name="key-architecture-components"></a>重要的体系结构组件
 事件中心包含以下[关键组件](event-hubs-features.md)：
 
-- **事件生成者**：向事件中心发送数据的所有实体。 事件发布者可以使用 HTTPS、AMQP 1.0 或 Apache Kafka（1.0 和更高版本）发布事件。
+- **事件生成者**：向事件中心发送数据的实体。 事件发布者可以使用 HTTPS、AMQP 1.0 或 Apache Kafka（1.0 和更高版本）发布事件。
 - **分区**：每个使用者只读取消息流的特定子集或分区。
 - **使用者组**：整个事件中心的视图（状态、位置或偏移量）。 通过使用者组来使用应用程序时，每个应用程序都有事件流的单独视图。 使用者根据自身的步调和情况独立读取流。
 - **吞吐量单位**：预先购买的容量单位，控制事件中心的吞吐量容量。
-- **事件接收者**：从事件中心读取事件数据的所有实体。 所有事件中心使用者通过 AMQP 1.0 会话进行连接。 事件中心服务在事件变得可用时通过会话来提供事件。 所有 Kafka 使用者都通过 Kafka 协议 1.0 及更高版本进行连接。
+- **事件接收者**：从事件中心读取事件数据的实体。 所有事件中心使用者通过 AMQP 1.0 会话进行连接。 事件中心服务在事件变得可用时通过会话来提供事件。 所有 Kafka 使用者都通过 Kafka 协议 1.0 及更高版本进行连接。
 
 下图显示了事件中心流处理体系结构：
 

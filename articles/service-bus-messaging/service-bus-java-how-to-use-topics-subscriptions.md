@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 9b75b5cd5e674020f41897309a3c69b9371cc768
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a08a071466f4f10c1364cefdda7c9c136e1e1ef5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759289"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79137982"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>快速入门：通过 Java 使用服务总线主题和订阅
 
@@ -28,7 +28,7 @@ ms.locfileid: "76759289"
 
 在本快速入门中，你将编写一些 Java 代码，用于将消息发送到 Azure 服务总线主题，然后从该主题的订阅接收消息。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 遵循[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
@@ -182,7 +182,7 @@ public class MyServiceBusTopicClient {
         receiveClient.registerMessageHandler(
                     messageHandler,
                     // callback invoked when the message handler has an exception to report
-                // 1 concurrent call, messages are auto-completed, auto-renew duration
+                // 1 concurrent call, messages aren't auto-completed, auto-renew duration
                 new MessageHandlerOptions(1, false, Duration.ofMinutes(1)));
 
     }

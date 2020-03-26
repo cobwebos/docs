@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494361"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Storm 与 Apache Kafka on HDInsight 配合使用
 
 本教程说明如何使用 [Apache Storm](https://storm.apache.org/) 拓扑并通过 [Apache Kafka](https://kafka.apache.org/) on Azure HDInsight 来读取和写入数据。 本教程还说明如何将数据保存到 Storm 群集上的 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 兼容存储。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * Storm 和 Kafka
@@ -64,19 +64,19 @@ ms.locfileid: "73494361"
 
 Apache Storm 提供了多个组件以便与 Apache Kafka 配合使用。 此教程中使用了以下组件：
 
-* `org.apache.storm.kafka.KafkaSpout`：此组件用于读取 Kafka 中的数据。 此组件依赖于下列组件：
+* `org.apache.storm.kafka.KafkaSpout`设置用户帐户 ：此组件用于读取 Kafka 中的数据。 此组件依赖于下列组件：
 
-    * `org.apache.storm.kafka.SpoutConfig`：提供 Spout 组件的配置。
+    * `org.apache.storm.kafka.SpoutConfig`设置用户帐户 ：提供 Spout 组件的配置。
 
     * `org.apache.storm.spout.SchemeAsMultiScheme` 和 `org.apache.storm.kafka.StringScheme`：Kafka 中的数据转换成 Storm 元组的方式。
 
-* `org.apache.storm.kafka.bolt.KafkaBolt`：此组件将数据写入 Kafka。 此组件依赖于下列组件：
+* `org.apache.storm.kafka.bolt.KafkaBolt`设置用户帐户 ：此组件将数据写入 Kafka。 此组件依赖于下列组件：
 
-    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`：描述写入到的主题。
+    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`设置用户帐户 ：描述写入到的主题。
 
-    * `org.apache.kafka.common.serialization.StringSerializer`：配置 Bolt 以将数据串行化为字符串值。
+    * `org.apache.kafka.common.serialization.StringSerializer`设置用户帐户 ：配置 Bolt 以将数据串行化为字符串值。
 
-    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`：将 Storm 拓扑内使用的元组数据结构映射到存储在 Kafka 中的字段。
+    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`设置用户帐户 ：将 Storm 拓扑内使用的元组数据结构映射到存储在 Kafka 中的字段。
 
 `org.apache.storm : storm-kafka` 包提供了这些组件。 使用与 Storm 版本相匹配的包版本。 对于 HDInsight 3.6，Storm 版本为 1.1.0。
 还需要 `org.apache.kafka : kafka_2.10` 包，其中包含其他 Kafka 组件。 使用与 Storm 版本相匹配的 Kafka 版本。 对于 HDInsight 3.6，Kafka 版本为 1.1.1。
@@ -134,15 +134,15 @@ Apache Storm 提供了多个组件以便与 Apache Kafka 配合使用。 此教�
 
 在运行时为这些拓扑设置以下参数：
 
-* `${kafka.topic}`：拓扑读取/写入的 Kafka 主题的名称。
+* `${kafka.topic}`设置用户帐户 ：拓扑读取/写入的 Kafka 主题的名称。
 
-* `${kafka.broker.hosts}`：运行 Kafka 中转站的主机。 写入 Kafka 时，KafkaBolt 将使用中转站信息。
+* `${kafka.broker.hosts}`设置用户帐户 ：运行 Kafka 中转站的主机。 写入 Kafka 时，KafkaBolt 将使用中转站信息。
 
-* `${kafka.zookeeper.hosts}`：Kafka 群集中运行 Zookeeper 的主机。
+* `${kafka.zookeeper.hosts}`设置用户帐户 ：Kafka 群集中运行 Zookeeper 的主机。
 
-* `${hdfs.url}`：HDFSBolt 组件的文件系统 URL。 指示是否已将数据写入 Azure 存储帐户或 Azure Data Lake Storage。
+* `${hdfs.url}`设置用户帐户 ：HDFSBolt 组件的文件系统 URL。 指示是否已将数据写入 Azure 存储帐户或 Azure Data Lake Storage。
 
-* `${hdfs.write.dir}`：数据写入到的目录。
+* `${hdfs.write.dir}`设置用户帐户 ：数据写入到的目录。
 
 有关 Flux 拓扑的详细信息，请参阅 [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)。
 
@@ -408,8 +408,8 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
       | 设置 | 值 |
       | --- | --- |
-      | Subscription | Azure 订阅 |
-      | Resource group | 包含资源的资源组。 |
+      | 订阅 | Azure 订阅 |
+      | 资源组 | 包含资源的资源组。 |
       | 位置 | 创建资源时所在的 Azure 区域。 |
       | Kafka 群集名称 | Kafka 群集的名称。 |
       | Storm 群集名称 | Storm 群集的名称。 |
@@ -566,13 +566,13 @@ Kafka 将数据存储在主题中  。 启动 Storm 拓扑之前，必须创建�
 
     此命令使用的参数如下：
 
-    * `org.apache.storm.flux.Flux`：使用 Flux 配置和运行此拓扑。
+    * `org.apache.storm.flux.Flux`设置用户帐户 ：使用 Flux 配置和运行此拓扑。
 
-    * `--remote`：将拓扑提交到 Nimbus。 拓扑分布在群集中的辅助角色节点。
+    * `--remote`设置用户帐户 ：将拓扑提交到 Nimbus。 拓扑分布在群集中的辅助角色节点。
 
-    * `-R /writer.yaml`：使用 `writer.yaml` 文件配置拓扑。 `-R` 指示此资源包含在 jar 文件中。 它位于 jar 的根目录中，因此 `/writer.yaml` 是它的路径。
+    * `-R /writer.yaml`设置用户帐户 ：使用 `writer.yaml` 文件配置拓扑。 `-R` 指示此资源包含在 jar 文件中。 它位于 jar 的根目录中，因此 `/writer.yaml` 是它的路径。
 
-    * `--filter`：使用 `dev.properties` 文件中的值填充 `writer.yaml` 拓扑中的条目。 例如，文件中 `kafka.topic` 条目的值用于替换拓扑定义中的 `${kafka.topic}` 条目。
+    * `--filter`设置用户帐户 ：使用 `dev.properties` 文件中的值填充 `writer.yaml` 拓扑中的条目。 例如，文件中 `kafka.topic` 条目的值用于替换拓扑定义中的 `${kafka.topic}` 条目。
 
 ## <a name="start-the-reader"></a>启动读取器
 

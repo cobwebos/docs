@@ -10,10 +10,10 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.openlocfilehash: 11fecd875385d8ba044cbe44e2270eed11d61ce1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77581543"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>快速入门：载入 Azure Sentinel
@@ -39,7 +39,7 @@ ms.locfileid: "77581543"
 - 连接特定数据源可能需要其他权限。
 - Azure Sentinel 是付费服务。 有关定价信息，请参阅[关于 Azure Sentinel](https://go.microsoft.com/fwlink/?linkid=2104058)。
  
-## 启用 Azure Sentinel <a name="enable"></a>
+## <a name="enable-azure-sentinel"></a>启用 Azure Sentinel <a name="enable"></a>
 
 1. 登录到 Azure 门户。 确保已选中在其中创建 Azure Sentinel 的订阅。
 

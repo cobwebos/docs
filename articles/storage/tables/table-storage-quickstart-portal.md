@@ -9,10 +9,10 @@ ms.date: 12/02/2019
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 63495206ffffc57a895a9ec1efc88410a02ea097
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75979950"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 存储表 

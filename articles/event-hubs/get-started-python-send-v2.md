@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 7c971dcac702318d15a27736828092e987468ca3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77162967"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>使用 Python（azure-eventhub 版本 5）向/从事件中心发送/接收事件
@@ -21,7 +21,7 @@ ms.locfileid: "77162967"
 > [!IMPORTANT]
 > 本快速入门使用最新的 azure-eventhub 版本 5 包。 有关使用旧的 azure-eventhub 版本 1 包的快速入门，请参阅[使用 azure-eventhub 版本 1 发送和接收事件](event-hubs-python-get-started-send.md)。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 如果不熟悉 Azure 事件中心，请在阅读本快速入门之前参阅[事件中心概述](event-hubs-about.md)。 
 
 若要完成本快速入门，需要具备以下先决条件：

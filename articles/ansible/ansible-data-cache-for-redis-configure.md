@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, cache, redis
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2ef36ee9e3601d77bfa114b903f6a75b5874b158
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156511"
 ---
 # <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>教程：使用 Ansible 在 Azure Redis 缓存中配置缓存
@@ -238,7 +238,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，具体取决于应用的�
 
 在本部分运行 playbook 来测试本文所示的各种功能。
 
-在 `vars` 部分，将 `{{ resource_group_name }}` 占位符替换为资源组名称。
+在 `vars` 节中，将 `{{ resource_group_name }}` 占位符替换为你的资源组名称。
 
 使用 `ansible-playbook` 命令运行 playbook：
 
@@ -337,7 +337,7 @@ Tuesday 12 March 2019  16:44:14 +0800 (0:00:06.217)       0:23:08.626
         state: absent
 ```
 
-在 `vars` 部分，将 `{{ resource_group_name }}` 占位符替换为资源组名称。
+在 `vars` 节中，将 `{{ resource_group_name }}` 占位符替换为你的资源组名称。
 
 使用 `ansible-playbook` 命令运行 playbook：
 

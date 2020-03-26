@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: cbrooks
 ms.openlocfilehash: 9cbdc5231fdc9f836f300b1a3a81a237a9efc123
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75968199"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>教程：使用 Azure 存储队列
@@ -33,7 +33,7 @@ Azure 队列存储实现基于云的队列以在分布式应用程序的组件�
 > - 检查命令行参数
 > - 生成并运行应用
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 获取跨平台 [Visual Studio Code](https://code.visualstudio.com/download) 编辑器的免费副本。
 - 下载并安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。

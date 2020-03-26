@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 01/06/2020
 ms.openlocfilehash: fee7c8eb73fe0bb7c9fd0bd9de9aa57bd8c40215
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77580645"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure 认知搜索是什么？

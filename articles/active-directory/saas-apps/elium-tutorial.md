@@ -17,10 +17,10 @@ ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0900f730c287586725722f0b8baaeb0c22f850c2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72791224"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Elium 的集成
@@ -87,7 +87,7 @@ ms.locfileid: "72791224"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/acs`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<platform-domain>.elium.com/login/saml2/login`
 
@@ -100,7 +100,7 @@ ms.locfileid: "72791224"
 
 1. 除了上述属性，Elium 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------| ----------------|
     | 电子邮件   |user.mail |
     | first_name| user.givenname |

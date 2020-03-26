@@ -10,11 +10,11 @@ ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: fb2fd89664517e44cf5128a5c82e583f03087061
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70307686"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214252"
 ---
 ::: zone target="docs"
 
@@ -55,7 +55,7 @@ ms.locfileid: "70307686"
 | **软件**| **版本** |
 | --- | --- |
 | Windows PowerShell |5.0 |
-| .NET framework |4.5.1 |
+| .NET Framework |4.5.1 |
 | Windows Management Framework |5.0|
 | BitLocker| - |
 
@@ -76,7 +76,7 @@ ms.locfileid: "70307686"
 
 | **存储帐户** | **说明** |
 | --- | --- |
-| 经典 | 标准 |
+| 经典 | Standard |
 | 常规用途  |标准；同时支持 V1 和 V2。 同时支持热层和冷层。 |
 | Blob 存储帐户 | |
 

@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
 ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77138201"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>教程：使用 RBAC 和 Azure 资源管理器模板授予用户对 Azure 资源的访问权限
@@ -34,7 +34,7 @@ ms.locfileid: "77138201"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要添加和删除角色分配，必须具有：
 

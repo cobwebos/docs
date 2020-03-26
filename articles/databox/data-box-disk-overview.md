@@ -10,11 +10,11 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204769"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215725"
 ---
 # <a name="what-is-azure-data-box-disk"></a>什么是 Azure Data Box 磁盘？
 
@@ -82,7 +82,7 @@ Data Box 磁盘旨在将大量数据移到 Azure，且不影响网络。 该解�
 | 每笔订单的存储容量                              | 40 TB（可用容量大约为 35 TB）|
 | 磁盘存储容量                                   | 8 TB（可用容量大约为 7 TB）|
 | 数据接口                                          | USB   |
-| 安全                                                | 使用 BitLocker 和安全更新预先加密 <br> 通过支持密钥保护的磁盘 <br> 数据始终加密  |
+| 安全性                                                | 使用 BitLocker 和安全更新预先加密 <br> 通过支持密钥保护的磁盘 <br> 数据始终加密  |
 | 数据传输率                                      | 最高 430 MBps，具体取决于文件大小      |
 |管理                                               | Azure 门户 |
 

@@ -14,10 +14,10 @@ ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: fa9fbf3bac55ca0b26c3644b7f6818fa96088612
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "69639395"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Node.js
@@ -57,7 +57,7 @@ ms.locfileid: "69639395"
 3. 创建基于 HTTPS URL 的**作业**输入。
 4. 使用先前创建的输入和输出提交编码**作业**。
 5. 检查作业的状态。
-6. 创建**流式处理定位符**。
+6. 创建**流定位符**。
 7. 生成流式处理 URL。
 
 ## <a name="run-the-sample-app"></a>运行示例应用

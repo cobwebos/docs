@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.openlocfilehash: d14d8f38ff8a2bed01584d5c5fec56d254cede05
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73494757"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>快速入门：使用 PowerShell 在 Azure HDInsight 中创建 Apache Kafka 群集
@@ -139,7 +139,7 @@ New-AzHDInsightCluster `
 
 如果计划使用 32 个以上的辅助角色节点（在创建群集时配置或者是在创建之后通过扩展群集来配置），则必须使用 `-HeadNodeSize` 参数指定至少具有 8 个核心和 14 GB RAM 的 VM 大小。 有关节点大小和相关费用的详细信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+## <a name="connect-to-the-cluster"></a>连接到群集
 
 1. 若要连接到 Kafka 群集的主要头节点，请使用以下命令。 将 `sshuser` 替换为 SSH 用户名。 将 `mykafka` 替换为 Kafka 群集的名称
 
@@ -174,7 +174,7 @@ Welcome to Kafka on HDInsight.
 Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 ```
 
-## <a id="getkafkainfo"></a>获取 Apache Zookeeper 主机和代理主机信息
+## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>获取 Apache Zookeeper 主机和代理主机信息
 
 使用 Kafka 时，必须了解 Apache Zookeeper 和代理主机   。 这些主机配合 Kafka API 和 Kafka 随附的许多实用工具一起使用。
 

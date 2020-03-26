@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77443051"
 ---
 # <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>教程：使用 Azure 防火墙管理器预览版保护虚拟 WAN 
