@@ -17,10 +17,10 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c0753a061b698adb3c79ccde6856799c8928cd9f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73154890"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-15five"></a>教程：Azure Active Directory 与 15Five 的集成
@@ -204,7 +204,7 @@ ms.locfileid: "73154890"
 
     a. 在相关文本框中键入要预配的有效 Azure Active Directory 帐户的“名字”  、“姓氏”  、“职位”  、“电子邮件地址”  。
 
-    b. 单击“Done”（完成）  。
+    b. 单击“完成”  。
 
     > [!NOTE]
     > Azure AD 帐户持有者会收到一封电子邮件，其中包含用于在激活帐户前确认帐户的链接。

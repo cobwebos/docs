@@ -17,10 +17,10 @@ ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15a84504efc39b901120c6584634950809f0c306
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72790970"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ipass-smartconnect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 iPass SmartConnect 的集成
@@ -98,7 +98,7 @@ ms.locfileid: "72790970"
 
 1. 除了上述属性，iPass SmartConnect 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name |  源属性|
+    | 名称 |  源属性|
     | ---------------| ----------|
     | firstName | user.givenname |
     | lastName | user.surname |

@@ -17,10 +17,10 @@ ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a4f82617784fa782d37b915800498f44f8222bb2
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71121846"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trello"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Trello 集成
@@ -95,7 +95,7 @@ ms.locfileid: "71121846"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/consume/<enterprise>`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://trello.com/auth/saml/login/<enterprise>`
 

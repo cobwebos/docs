@@ -5,18 +5,18 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0680309b13bf4499f0d153f44e575c1762b54d79
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 95d54a0661f0a0cebdbfc225074be0ce0d83a5cc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773174"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79368887"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>教程：从 Azure 门户使用导出的模板
 
 在本教程系列中，你已创建一个用于部署 Azure 存储帐户的模板。 在接下来的两篇教程中，你将添加一个应用服务计划和一个网站。   本教程介绍如何从 Azure 门户导出模板（无需从头开始创建模板），以及如何使用 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)中的示例模板。 你可以根据自己的用途自定义这些模板。 本教程重点介绍如何导出模板，以及自定义模板的结果。 完成本教程需要大约 **14 分钟**。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 建议完成[有关输出的教程](template-tutorial-add-outputs.md)，但这不是一项要求。
 
@@ -84,7 +84,7 @@ ms.locfileid: "76773174"
 
 如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -95,10 +95,10 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addappserviceplan \
   --resource-group myResourceGroup \
   --template-file $templateFile \

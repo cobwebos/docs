@@ -5,13 +5,13 @@ ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
-ms.custom: seodec18
-ms.openlocfilehash: 9375a59fedcd134a64cfa3bf8b92e33d326ee925
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 2dcf1bef27b5d9e1a740f136361b756f59293b00
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500035"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80046760"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>教程：在 Azure 中构建 PHP 和 MySQL 应用
 
@@ -35,9 +35,9 @@ ms.locfileid: "77500035"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 * [安装 Git](https://git-scm.com/)
 * [安装 PHP 5.6.4 或更高版本](https://php.net/downloads.php)
@@ -183,7 +183,7 @@ az mysql server create --resource-group myResourceGroup --name <mysql_server_nam
     "tier": "GeneralPurpose"
   },
   "sslEnforcement": "Enabled",
-  ...   +  
+  ...    +  
   -  < Output has been truncated for readability >
 }
 ```
@@ -211,7 +211,8 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql_ser
 在本地终端窗口中，连接到 Azure 中的 MySQL 服务器。 使用前面为 &lt;mysql_server_name> 指定的值  。 出现输入密码的提示时，请使用在 Azure 中创建数据库时指定的密码。
 
 ```bash
-mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
+mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p<PASSWORD> --ssl-mode=REQUIRED --ssl-ca=<PATH_TO_PEM>
+
 ```
 
 ### <a name="create-a-production-database"></a>创建生产数据库
@@ -424,7 +425,7 @@ remote: Running deployment command...
 > 可使用此方法将任何步骤添加到应用服务中的基于 Git 的部署。 有关详细信息，请参阅[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。
 >
 
-### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
+### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
 浏览到 `http://<app_name>.azurewebsites.net` 并在列表中添加一些任务。
 

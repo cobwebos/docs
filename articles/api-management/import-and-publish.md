@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: apimpm
 ms.openlocfilehash: 886063dcf886d79ac960814f20b3789e8e3b6839
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78163468"
 ---
 # <a name="import-and-publish-your-first-api"></a>导入和发布第一个 API 
@@ -41,7 +41,7 @@ ms.locfileid: "78163468"
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>导入和发布后端 API
+## <a name="import-and-publish-a-backend-api"></a><a name="create-api"> </a>导入和发布后端 API
 
 本部分介绍如何导入和发布 OpenAPI 规范后端 API。
  
@@ -61,7 +61,7 @@ ms.locfileid: "78163468"
    |**说明**|输入上述服务 URL 后，API 管理将根据 JSON 填写此字段。|API 的可选说明。|
    |**URL 方案**|**HTTPS**|可以使用哪些协议来访问 API。|
    |**API URL 后缀**|会议 |追加到 API 管理服务基 URL 的后缀。 API 管理根据 API 的后缀区分 API，因此后缀对于给定发布者的每个 API 必须唯一。|
-   |**产品**|**不受限制**|一个或多个 API 的关联。 每个 API 管理实例附带两个示例产品：“初学者”和“无限制”   。 通过将 API 关联到某个产品（在本示例中为“无限制”）来发布该 API。 <br/>可在一个产品中包含多个 API，并通过开发人员门户将其提供给开发人员。 若要将此 API 添加到另一个产品，请键入或选择产品名称。 重复此步骤以将 API 添加到多个产品。 以后也可以从“设置”页将 API 添加到产品。 <br/>开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 <br/>如果你创建了 API 管理实例，那么你已是管理员，因此订阅了实例中的每个产品。|
+   |**产品**|**不受限制**|一个或多个 API 的关联。 每个 API 管理实例附带两个示例产品：**初学者**和**无限**。 通过将 API 关联到某个产品（在本示例中为“无限制”）来发布该 API。 <br/>可在一个产品中包含多个 API，并通过开发人员门户将其提供给开发人员。 若要将此 API 添加到另一个产品，请键入或选择产品名称。 重复此步骤以将 API 添加到多个产品。 以后也可以从“设置”页将 API 添加到产品。 <br/>开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 <br/>如果你创建了 API 管理实例，那么你已是管理员，因此订阅了实例中的每个产品。|
    |**标记**| |用于组织搜索、分组或筛选 API 的标记。|
    |**对此 API 进行版本控制？**|选择或取消选择|有关版本控制的详细信息，请参阅[发布 API 的多个版本](api-management-get-started-publish-versions.md)。|
    
@@ -84,7 +84,7 @@ ms.locfileid: "78163468"
    
    后端以“200 正常”和某些数据做出响应  。
 
-## <a name="next-steps"> </a>后续步骤
+## <a name="next-steps"></a><a name="next-steps"> </a>后续步骤
 
 在本教程中，你了解了如何执行以下操作：
 

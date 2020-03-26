@@ -17,10 +17,10 @@ ms.date: 11/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 042dd242285081001ca48c9f17e4d42c2294c0ff
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74979133"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Akamai 的集成
@@ -179,7 +179,7 @@ ms.locfileid: "74979133"
 
     ![配置 Akamai](./media/header-akamai-tutorial/configure08.png)
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>身份验证
 
 ![配置 Akamai](./media/header-akamai-tutorial/configure09.png)
 
@@ -227,7 +227,7 @@ ms.locfileid: "74979133"
 
     ![配置 Akamai](./media/header-akamai-tutorial/configure19.png)
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>身份验证
 
 单击“保存并转到‘服务’”。 
 
@@ -273,7 +273,7 @@ ms.locfileid: "74979133"
 
     e. 指定“连接器位置”，并选择连接器。
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>身份验证
 
 单击“保存并转到‘服务’”。 
 

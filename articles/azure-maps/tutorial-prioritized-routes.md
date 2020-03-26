@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 628a3003cec2cc2ca58f1b133cf3236417dfa94e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77209488"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>教程：使用 Azure Maps 查找不同出行模式的路线
@@ -26,7 +26,7 @@ ms.locfileid: "77209488"
 > * 创建声明出行模式的路线查询
 > * 在地图上显示多条路线
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 在继续之前，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明进行操作，并选择 S1 定价层。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 ## <a name="create-a-new-map"></a>创建新地图

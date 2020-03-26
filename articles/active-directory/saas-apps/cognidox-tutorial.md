@@ -17,10 +17,10 @@ ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad06d2f695109866bab60502a67f0d2c2f425477
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68480260"
 ---
 # <a name="tutorial-integrate-cognidox-with-azure-active-directory"></a>教程：将 Cognidox 与 Azure Active Directory 集成
@@ -88,7 +88,7 @@ ms.locfileid: "68480260"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<YOURCOMPANY>.cdox.net/auth/postResponse`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YOURCOMPANY>.cdox.net/`
 
@@ -101,12 +101,12 @@ ms.locfileid: "68480260"
 
 6. 除上述属性以外，Cognidox 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以添加 SAML 令牌属性，如下表中所示： 
 
-    | Name | 命名空间  |  转换 | 参数 1 |
+    | 名称 | 命名空间  |  转换 | 参数 1 |
     | ---------------| --------------- | --------- |
     | wanshort | http://appinux.com/windowsaccountname2 | ExtractMailPrefix() | user.userprincipalname |
 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”  以打开“管理用户声明”  对话框。
+    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -154,12 +154,12 @@ ms.locfileid: "68480260"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-cognidox-test-user"></a>创建 Cognidox 测试用户

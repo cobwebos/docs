@@ -17,10 +17,10 @@ ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: daf86270224d2a76eb124e879594ac2588b46776
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72969729"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mail-luck"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Mail Luck! 的集成
@@ -28,7 +28,7 @@ ms.locfileid: "72969729"
 本教程介绍如何将 Mail Luck! 与 Azure Active Directory (Azure AD) 集成。 将 Mail Luck! 与 Azure AD 集成后，可以：
 
 * 在 Azure AD 中控制谁有权访问 Mail Luck!。
-* 让用户使用其 Azure AD 帐户自动 登录到 Mail Luck!。
+* 让用户使用其 Azure AD 帐户自动 登录到 Aha!。
 * 在一个中心位置（Azure 门户）管理帐户。
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
@@ -46,7 +46,7 @@ ms.locfileid: "72969729"
 
 * Mail Luck! 支持 **SP** 发起的 SSO
 
-## <a name="adding-mail-luck-from-the-gallery"></a>从库中 添加 Mail Luck!
+## <a name="adding-mail-luck-from-the-gallery"></a>从库中 添加 Aha!
 
 若要配置 Mail Luck! 与 Azure AD 的集成，你需要将 Mail Luck! 添加到托管式 SaaS 应用的列表中。
 
@@ -54,12 +54,12 @@ ms.locfileid: "72969729"
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中   ， 键入“Mail Luck!”。
+1. 在“从库中添加”部分的搜索框中   ， 键入“Aha!”。
 1. 从结果面板中选择“Mail Luck!”，  然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-mail-luck"></a>配置并测试 Mail Luck! 的 Azure AD 单一登录
 
-使用具有名为 B.Simon 的测试用户配置并测试 Mail Luck! 的 Azure AD SSO。  若要运行 SSO，需要在 Azure AD 用户与 Mail Luck! 中的相关用户之间建立链接关系。
+使用具有名为 B.Simon 的测试用户配置并测试 Aha! 的 Azure AD SSO。  若要运行 SSO，需要在 Azure AD 用户与 Mail Luck! 中的相关用户之间建立链接关系。
 
 若要配置并测试 Mail Luck! 的 Azure AD SSO，请完成以下构建基块：
 

@@ -2,15 +2,15 @@
 title: 概述
 description: 介绍如何使用 Azure 资源管理器在 Azure 上部署和管理资源以及对其进行访问控制。
 ms.topic: overview
-ms.date: 08/29/2019
-ms.openlocfilehash: f7e11ada8bf10baa99faf08d2b4b401e3bea2d9e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/25/2020
+ms.openlocfilehash: 1e2a6959117749b4e7d08a9768b4189b97ef08bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344627"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80258135"
 ---
-# <a name="azure-resource-manager-overview"></a>Azure 资源管理器概述
+# <a name="what-is-azure-resource-manager"></a>什么是 Azure 资源管理器？
 
 Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理层用于在 Azure 订阅中创建、更新和删除资源。 部署后，可以使用访问控制、锁和标记等管理功能来保护和组织资源。
 
@@ -20,7 +20,7 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理
 
 当用户从任意 Azure 工具、API 或 SDK 发送请求时，资源管理器将会接收该请求。 它会对该请求进行身份验证和授权。 资源管理器将请求发送到 Azure 服务，后者将执行请求的操作。 由于所有请求是通过同一个 API 处理的，因此在所有不同的工具中会看到一致的结果和功能。
 
-下图演示了 Azure 资源管理器在处理 Azure 请求时发挥的作用。 
+下图演示了 Azure 资源管理器在处理 Azure 请求时发挥的作用。
 
 ![Resource Manager 请求模型](./media/overview/consistent-management-layer.png)
 
@@ -102,12 +102,8 @@ Azure 资源管理器服务旨在实现复原能力和持续可用性。 REST AP
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关资源提供程序提供的所有操作，请参阅 [Azure REST API](/rest/api/azure/)。
-
 * 若要了解有关移动资源的信息，请参阅[将资源移到新资源组或订阅](move-resource-group-and-subscription.md)。
 
 * 若要了解如何标记资源，请参阅[使用标记来组织 Azure 资源](tag-resources.md)。
 
 * 若要了解如何锁定资源，请参阅[锁定资源以防止意外更改](lock-resources.md)。
-
-* 有关为部署创建模板的信息，请参阅[模板部署概述](../templates/overview.md)。

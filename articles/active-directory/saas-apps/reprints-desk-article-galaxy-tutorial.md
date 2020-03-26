@@ -16,10 +16,10 @@ ms.date: 01/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d94fc0bc736d2136d4711ab02ae554605deeb35
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76761346"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-reprints-desk---article-galaxy"></a>教程：Azure Active Directory 的单一登录 (SSO) 与 Reprints Desk - Article Galaxy 的集成
@@ -32,7 +32,7 @@ ms.locfileid: "76761346"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

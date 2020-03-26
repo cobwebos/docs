@@ -7,13 +7,13 @@ ms.assetid: fc755f82-ca3e-4532-b251-690b699324d6
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 5b9906abaa253c667c883a2e0e8ecd6e4cc9d496
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: c17cfcd2e55b98be9d86a73f6388d921336f993b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685750"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057664"
 ---
 # <a name="back-up-a-web-app-using-powershell"></a>使用 PowerShell 备份 Web 应用
 
@@ -39,7 +39,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | 创建存储帐户。 |

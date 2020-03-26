@@ -17,10 +17,10 @@ ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e54994d02dd1abbca1602952fbad058b3ad993d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72594265"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ScaleX Enterprise 集成
@@ -87,7 +87,7 @@ ms.locfileid: "72594265"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://platform.rescale.com/saml2/<company id>/acs/`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://platform.rescale.com/saml2/<company id>/sso/`
 

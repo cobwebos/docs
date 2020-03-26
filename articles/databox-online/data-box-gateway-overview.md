@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: b8c6b4085f56bc12b67bf87177ba33b82c6a6db9
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "69900588"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>什么是 Data Box Gateway？
@@ -69,10 +69,10 @@ Data Box Gateway 虚拟设备具有以下规范：
 | 虚拟处理器（核心数）   | 最低为 4 核 |
 | 内存  |最低为 8 GB|
 | 可用性|单节点|
-| 磁盘|OS 磁盘：250 GB <br> 数据磁盘：最低为 2 TB、预配精简，并且必须由 SSD 提供支持|
+| 磁盘|OS 磁盘：250 GB <br> 数据磁盘：最低为 2 TB、配置精简，并且必须由 SSD 提供支持|
 | 网络接口 |1 个或多个虚拟网络接口|
 | 本机文件共享协议|SMB 和 NFS  |
-| 安全|必须进行身份验证才能访问设备和数据 <br> 使用 AES-256 位加密动态数据进行加密|
+| 安全性|必须进行身份验证才能访问设备和数据 <br> 使用 AES-256 位加密动态数据进行加密|
 | 管理|本地 Web UI - 设备的初始设置、诊断和电源管理 <br> Azure 门户 - Data Box Gateway 设备的日常管理       |
 
 ## <a name="components"></a>组件

@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92572d2f829f1f3a1727c7f349aa25f7113ec104
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72792393"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-floqast"></a>教程：Azure Active Directory 单一登录 (SSO) 与 FloQast 的集成
@@ -95,7 +95,7 @@ ms.locfileid: "72792393"
 
 1. 除了上述属性，FloQast 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ------------- | -------------- |
     | FirstName           | user.givenname |
     | LastName            | user.surname |

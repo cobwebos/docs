@@ -17,10 +17,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441c9345f92974c387429baac768dbccb03fc995
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67107610"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>教程：Azure Active Directory 与 10,000ft Plans 的集成
@@ -148,7 +148,7 @@ ms.locfileid: "67107610"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”  字段中，输入 BrittaSimon  。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
     b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
 

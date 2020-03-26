@@ -6,17 +6,17 @@ ms.topic: tutorial
 ms.date: 05/01/2019
 ms.author: evanhi
 ms.openlocfilehash: 393993a44c860525b9bd9a540ed7afff78e5b93c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648504"
 ---
 # <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>快速入门：创建自定义提供程序并部署自定义资源
 
 在本快速入门中，你将创建自己的资源提供程序，并为该资源提供程序部署自定义资源类型。 有关自定义提供程序的详细信息，请参阅 [Azure 自定义提供程序预览版概述](overview.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成本快速入门中的步骤需要调用 REST 操作。 可以通过[不同的方法来发送 REST 请求](/rest/api/azure/)。 如果还没有用于 REST 操作的工具，请安装 [ARMClient](https://github.com/projectkudu/ARMClient)。 它是一种可简化 Azure 资源管理器 API 调用的开源命令行工具。
 

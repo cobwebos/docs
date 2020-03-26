@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 83974a57fe080e76dee26781abaddf2b0b884839
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091489"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>教程：Azure Active Directory 与 SCC LifeCycle 的集成

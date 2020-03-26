@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 09df78955de6423244c2d8ec94e1e1c06ecab257
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648734"
 ---
 # <a name="create-and-use-a-custom-provider"></a>创建并使用自定义提供程序
@@ -109,7 +109,7 @@ name  | 是 | 终结点定义的名称。 Azure 会通过其 API 在“/subscrip
 
 ### <a name="custom-actions"></a>自定义操作
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
 > 必须将 `{subscriptionId}` 和 `{resourceGroupName}` 占位符替换为订阅和资源组（已在其中部署自定义提供程序）。
@@ -129,7 +129,7 @@ az resource invoke-action --action myCustomAction \
 *ids* | 是 | 自定义提供程序的资源 ID
 *request-body* | 否 | 将要发送到终结点的请求正文
 
-# <a name="templatetabtemplate"></a>[模板](#tab/template)
+# <a name="template"></a>[模板](#tab/template)
 
 无。
 
@@ -137,7 +137,7 @@ az resource invoke-action --action myCustomAction \
 
 ### <a name="custom-resources"></a>自定义资源
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
 > 必须将 `{subscriptionId}` 和 `{resourceGroupName}` 占位符替换为订阅和资源组（已在其中部署自定义提供程序）。
@@ -182,7 +182,7 @@ az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGr
 ---|---|---
 *id* | 是 | 自定义资源的资源 ID。 此 ID 是自定义提供程序资源 ID 的扩展。
 
-# <a name="templatetabtemplate"></a>[模板](#tab/template)
+# <a name="template"></a>[模板](#tab/template)
 
 示例资源管理器模板：
 

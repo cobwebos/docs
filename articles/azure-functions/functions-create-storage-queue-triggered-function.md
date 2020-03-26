@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 3d4cfc40f1849ecd2745b1d662973c7f64a0a60c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769245"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>创建由 Azure 队列存储触发的函数
@@ -36,7 +36,7 @@ ms.locfileid: "75769245"
 
 ## <a name="create-a-queue-triggered-function"></a>创建队列触发的函数
 
-1. 展开 Function App，单击“Functions”旁边的 + 按钮   。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
+1. 展开 Function App，单击“Functions”旁边的  **按钮+**  。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
 
    ![Azure 门户中的 Functions 快速入门页](./media/functions-create-storage-queue-triggered-function/function-app-quickstart-choose-portal.png)
 

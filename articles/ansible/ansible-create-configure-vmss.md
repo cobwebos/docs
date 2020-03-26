@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, 虚拟机, 虚拟机规模集,
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: e1cc40459988fb9bc38e3dbbcde563cebb531e3d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156549"
 ---
 # <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>教程：使用 Ansible 在 Azure 中配置虚拟机规模集
@@ -32,7 +32,7 @@ ms.locfileid: "74156549"
 
 ## <a name="configure-a-scale-set"></a>配置规模集
 
-本部分的 playbook 代码定义以下资源：
+本部分中的 playbook 代码定义以下资源：
 
 * 所有资源将部署到的**资源组**。
 * 10.0.0.0/16 地址空间中的**虚拟网络**
@@ -42,7 +42,7 @@ ms.locfileid: "74156549"
 * **负载均衡器**，使用负载均衡器规则将流量分配到一组定义的 VM
 * 使用所有已创建资源的**虚拟机规模集**
 
-有两种方式可获取相同的 playbook：
+可通过两种方式获取示例 playbook：
 
 * [下载 playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml) 并将其保存到 `vmss-create.yml`。
 * 新建名为 `vmss-create.yml` 的文件，并将以下内容复制到其中：
@@ -143,7 +143,7 @@ ms.locfileid: "74156549"
 
 运行 playbook 之前，请参阅以下说明：
 
-* 在 `vars` 节中，请将 `{{ admin_password }}` 占位符替换为你自己的密码。
+* 在 `vars` 部分中，请将 `{{ admin_password }}` 占位符替换为你自己的密码。
 
 使用 `ansible-playbook` 命令运行 playbook：
 
@@ -151,7 +151,7 @@ ms.locfileid: "74156549"
 ansible-playbook vmss-create.yml
 ```
 
-运行 playbook 后，将看到类似于以下结果的输出：
+运行 playbook 后，可看到类似于以下结果的输出：
 
 ```Output
 PLAY [localhost] 
@@ -189,7 +189,7 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
 
 [配置的规模集](#configure-a-scale-set)当前有两个实例。 使用以下步骤确认该值：
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 1. 导航到配置的规模集。
 
@@ -213,7 +213,7 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
 
 本部分的 playbook 代码检索有关规模集的信息，并将其容量从 2 更改为 3。
 
-有两种方式可获取相同的 playbook：
+可通过两种方式获取示例 playbook：
 
 * [下载 playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml) 并将其保存到 `vmss-scale-out.yml`。
 * 新建名为 `vmss-scale-out.yml` 的文件，并将以下内容复制到其中：
@@ -249,7 +249,7 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
 ansible-playbook vmss-scale-out.yml
 ```
 
-运行 playbook 后，将看到类似于以下结果的输出：
+运行 playbook 后，可看到类似于以下结果的输出：
 
 ```Output
 PLAY [localhost] 
@@ -289,7 +289,7 @@ localhost                  : ok=5    changed=1    unreachable=0    failed=0
 
 通过 Azure 门户验证操作结果：
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 1. 导航到配置的规模集。
 

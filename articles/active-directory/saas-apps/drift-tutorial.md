@@ -17,10 +17,10 @@ ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0cd749ef66ee62f6d89d949cef7ce800bc46d59a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72554359"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-drift"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Drift 集成
@@ -100,9 +100,9 @@ ms.locfileid: "72554359"
 
 7. 除了上述属性，Drift 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。 
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------| --------------- |    
-    | Name | user.displayname |
+    | 名称 | user.displayname |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 

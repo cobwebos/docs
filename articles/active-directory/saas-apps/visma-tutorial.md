@@ -17,10 +17,10 @@ ms.date: 11/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff4c4e71da2a0e736c989e52d2fcb6f9f8636551
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74485376"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visma"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Visma 的集成
@@ -87,7 +87,7 @@ ms.locfileid: "74485376"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.my.connect.visma.com/saml/acs`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.my.connect.visma.com`
 

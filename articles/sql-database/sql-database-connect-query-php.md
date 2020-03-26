@@ -11,17 +11,17 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 02/12/2019
 ms.openlocfilehash: ae119dd23da670f16c0239b14119519c431e6326
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73827017"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>快速入门：使用 PHP 查询 Azure SQL 数据库
 
 本文演示了如何使用 [PHP](https://php.net/manual/en/intro-whatis.php) 连接到 Azure SQL 数据库。 然后即可使用 T-SQL 语句来查询数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成此示例，请确保具备以下先决条件：
 
@@ -35,7 +35,7 @@ ms.locfileid: "73827017"
   | 配置 | [服务器级别 IP 防火墙规则](sql-database-server-level-firewall-rule.md)| [从 VM 进行连接](sql-database-managed-instance-configure-vm.md)|
   |||[从现场进行连接](sql-database-managed-instance-configure-p2s.md)
   |加载数据|根据快速入门加载的 Adventure Works|[还原 Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 所提供的 [BACPAC](sql-database-import.md) 文件还原或导入 Adventure Works|
+  |||从 [GitHub](sql-database-import.md) 所提供的 [BACPAC](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 文件还原或导入 Adventure Works|
   |||
 
   > [!IMPORTANT]
@@ -53,7 +53,7 @@ ms.locfileid: "73827017"
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
 

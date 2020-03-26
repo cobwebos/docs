@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, 虚拟机, 虚拟机规模集,
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.openlocfilehash: d638ae3f0c33734b42ef5456772fcd2bc62e35a4
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75940862"
 ---
 # <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>教程：使用 Ansible 在 Azure 中部署虚拟机规模集
@@ -26,7 +26,7 @@ ms.locfileid: "75940862"
 > * 在规模集上安装 JRE（Java 运行时环境）
 > * 将 Java 应用程序部署到规模集
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 

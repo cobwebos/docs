@@ -7,10 +7,10 @@ ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
 ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78272805"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>将 Java 函数连接到 Azure 存储
@@ -21,7 +21,7 @@ ms.locfileid: "78272805"
 
 大多数绑定都需要一个存储的连接字符串，函数将使用该字符串来访问绑定的服务。 为便于建立此连接，请使用连同函数应用一起创建的存储帐户。 与此帐户建立的连接已存储在名为 `AzureWebJobsStorage` 的应用设置中。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本文之前，请完成 [Java 快速入门第 1 部分](functions-create-first-java-maven.md)中的步骤。
 
@@ -97,7 +97,7 @@ public HttpResponseMessage run(
 
 ## <a name="update-the-tests"></a>更新测试
 
-由于原型还创建一组测试，因此需更新这些测试，以便处理 `run` 方法签名中的新 `msg` 参数。  
+由于原型还创建一组测试，因此需更新这些测试，以便处理 `msg` 方法签名中的新 `run` 参数。  
 
 浏览到测试代码在 _src/test/java_ 下的位置，打开 *Function.java* 项目文件，将 `//Invoke` 下的代码行替换为以下代码。
 

@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74012304"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>教程：通过 Azure 门户使用 SSL 终端配置应用程序网关
 
 可通过 Azure 门户使用 SSL 终端的证书配置使用虚拟机作为后端服务器的[应用程序网关](overview.md)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建自签名证书
@@ -88,7 +88,7 @@ Export-PfxCertificate `
 
     在“配置虚拟网络”下，通过选择“新建”创建新的虚拟网络   。 在打开的“创建虚拟网络”窗口中，输入以下值以创建虚拟网络和两个子网  ：
 
-    - **名称**：输入 *myVNet* 作为虚拟网络的名称。
+    - **Name**：输入 *myVNet* 作为虚拟网络的名称。
 
     - **子网名称**（应用程序网关子网）：子网网关将显示名为“默认值”的子网   。 将此子网的名称更改为 myAGSubnet  。<br>应用程序网关子网只能包含应用程序网关。 不允许其他资源。
 
@@ -122,7 +122,7 @@ Export-PfxCertificate `
 
 2. 在打开的“添加后端池”窗口中，输入以下值以创建空的后端池  ：
 
-    - **名称**：输入“myBackendPool”作为后端池的名称  。
+    - **Name**：输入“myBackendPool”作为后端池的名称  。
     - **添加不包含目标的后端池**：选择“是”以创建不包含目标的后端池  。 你将在创建应用程序网关之后添加后端目标。
 
 3. 在“添加后端池”窗口中，选择“添加”以保存后端池配置并返回到“后端”选项卡    。

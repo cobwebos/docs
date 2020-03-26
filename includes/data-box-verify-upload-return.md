@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 09/19/2019
 ms.author: alkohli
 ms.openlocfilehash: a23b0b2c71207bf84a4938d54a78a62efb6cbcbd
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71172625"
 ---
 当 Microsoft 收到并扫描该设备时，订单状态将更新为“已接收”。  然后，该设备将经受物理验证，以确定是否存在损坏或篡改迹象。
@@ -50,7 +50,7 @@ ms.locfileid: "71172625"
 本教程介绍了有关 Azure Data Box 的主题，例如：
 
 > [!div class="checklist"]
-> * 先决条件
+> * 必备条件
 > * 准备交付
 > * 将 Data Box 寄送到 Microsoft
 > * 验证 Azure 中的数据上传

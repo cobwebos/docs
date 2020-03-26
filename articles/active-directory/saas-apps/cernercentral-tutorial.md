@@ -17,10 +17,10 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d530ce802b6735ffe0b45abdc97fe99a1a7e619b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67105773"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>教程：Azure Active Directory 与 Cerner Central 的集成

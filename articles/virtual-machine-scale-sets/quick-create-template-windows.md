@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.openlocfilehash: 4430a73f7b46a31847322e65c0aa3c95ebd385ca
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76270161"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>快速入门：使用 Azure 模板创建 Windows 虚拟机规模集
@@ -160,7 +160,7 @@ Update-AzVmss `
 Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-以“http:\//publicIpAddress/MyApp”  格式将负载均衡器的公共 IP 地址输入到 Web 浏览器中。 负载均衡器将流量分发到某个 VM 实例，如以下示例所示：
+以“http: */publicIpAddress/MyApp”\/* 格式将负载均衡器的公共 IP 地址输入到 Web 浏览器中。 负载均衡器将流量分发到某个 VM 实例，如以下示例所示：
 
 ![运行 IIS 网站](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
 

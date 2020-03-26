@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.custom: mvc
 ms.openlocfilehash: 73f8d23dcd53b4cbbb3fbd902c789e868c2b021b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769177"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>使用 Functions 将消息添加到 Azure 存储队列
@@ -26,7 +26,7 @@ ms.locfileid: "75769177"
 
 * 安装 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)。 这是一项工具，可以用来检查输出绑定创建的队列消息。
 
-## <a name="add-binding"></a>添加输出绑定
+## <a name="add-an-output-binding"></a><a name="add-binding"></a>添加输出绑定
 
 在此部分，请使用门户 UI 将队列存储输出绑定添加到此前创建的函数。 有了此绑定，就可以在尽量减少代码编写工作的情况下在队列中创建消息。 不需为打开存储连接、创建队列、获取队列引用之类的任务编写代码。 Azure Functions 运行时和队列输出绑定为你处理这些任务。
 
@@ -60,13 +60,13 @@ ms.locfileid: "75769177"
 
 ## <a name="add-code-that-uses-the-output-binding"></a>添加使用输出绑定的代码
 
-在此部分，请添加将消息写入输出队列的代码。 该消息包括在查询字符串中传递到 HTTP 触发器的值。 例如，如果查询字符串包含 `name=Azure`，则队列消息将是“传递给函数的名称：  Azure”。
+在此部分，请添加将消息写入输出队列的代码。 该消息包括在查询字符串中传递到 HTTP 触发器的值。 例如，如果查询字符串包含 `name=Azure`，则队列消息将是“传递给函数的名称: Azure”。 
 
 1. 选择函数以在编辑器中显示函数代码。
 
 1. 根据函数语言更新函数代码：
 
-    # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+    # <a name="c"></a>[C\#](#tab/csharp)
 
     向方法签名添加 **outputQueueItem** 参数，如以下示例所示。
 
@@ -84,7 +84,7 @@ ms.locfileid: "75769177"
     outputQueueItem.Add("Name passed to the function: " + name);
     ```
 
-    # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+    # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
     添加使用 `context.bindings` 对象上的输出绑定创建队列消息的代码。 请在`context.done` 语句之前添加此代码。
 
@@ -105,7 +105,7 @@ ms.locfileid: "75769177"
 
     请注意，**请求正文**包含 `name` 值 *Azure*。 此值显示在队列消息中，该消息是在调用函数时创建的。
     
-    如果不想选择此处的“运行”，也可调用该函数，方法是在浏览器中输入 URL，然后在查询字符串中指定 `name` 值。  此浏览器方法在[以前的快速入门](functions-create-first-azure-function.md#test-the-function)中演示过。
+    如果不想选择此处的“运行”，也可调用该函数，方法是在浏览器中输入 URL，然后在查询字符串中指定  **值。** `name` 此浏览器方法在[以前的快速入门](functions-create-first-azure-function.md#test-the-function)中演示过。
 
 2. 检查日志以确保该函数成功。 
 
@@ -143,7 +143,7 @@ ms.locfileid: "75769177"
 
 1. 展开“队列”节点，然后选择名为 **outqueue** 的队列。  
 
-   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用 Azure 的默认 `name` 值调用了此函数，则队列消息为“传递给函数的名称：   Azure”。
+   此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用默认的 `name` 值 *Azure* 调用了此函数，则队列消息为“传递给函数的名称: Azure”。 
 
     ![存储资源管理器中显示的队列消息](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 

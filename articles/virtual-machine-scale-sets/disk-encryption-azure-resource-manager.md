@@ -7,10 +7,10 @@ ms.service: virtual-machine-scale-sets
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.openlocfilehash: aeba9aee8dd10b1245fb0a1e1cc98a1951382c72
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72530935"
 ---
 # <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>使用 Azure 资源管理器加密虚拟机规模集

@@ -8,10 +8,10 @@ ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 7d121e9aeb897897322f1253c332e7a1baabdc9e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75768956"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>创建与 Azure 逻辑应用集成的函数
@@ -32,7 +32,7 @@ Azure Functions 在逻辑应用设计器中与 Azure 逻辑应用集成。 借�
 > * 将逻辑应用连接到函数。
 > * 根据函数的响应发送电子邮件。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 + 有效的 [Twitter](https://twitter.com/) 帐户。 
 + [Outlook.com](https://outlook.com/) 帐户（用于发送通知）。

@@ -17,10 +17,10 @@ ms.date: 10/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2631b34f5658c9d4f76ca26d378bc63fe59ad156
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72373267"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamphoria"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Teamphoria 集成

@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, mysql, 数据库
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 9cd574417733518b993bb242c2c168aba338e34a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78247871"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>教程：使用 Ansible 在 Azure Database for MySQL 中配置数据库

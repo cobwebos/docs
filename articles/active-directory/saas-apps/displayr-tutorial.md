@@ -17,10 +17,10 @@ ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3cd1785595cf2f6b2401837780106f52fdc97e36
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67103988"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>教程：将 Displayr 与 Azure Active Directory 集成
@@ -101,7 +101,7 @@ ms.locfileid: "67103988"
 
     ![image](./media/displayr-tutorial/config04.png)
 
-    ![图像](./media/displayr-tutorial/config05.png)
+    ![image](./media/displayr-tutorial/config05.png)
 
     b. 从单选列表中选择“所有组”。 
 
@@ -177,12 +177,12 @@ ms.locfileid: "67103988"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，从“用户”列表中选择“Britta Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-displayr-test-user"></a>创建 Displayr 测试用户

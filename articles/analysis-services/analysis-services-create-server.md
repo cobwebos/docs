@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 4c1b22d4871d3e490f59be71b63569fdf563ce45
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75442838"
 ---
 # <a name="quickstart-create-a-server---portal"></a>快速入门：创建服务器 - 门户
@@ -30,7 +30,7 @@ ms.locfileid: "75442838"
 
 ## <a name="create-a-server"></a>创建服务器
 
-1. 依次单击“+ 创建资源” > “Analytics” > “Analysis Services”    。
+1. 依次单击“+ 创建资源” **“Analytics”** “Analysis Services” >    >   。
 
     ![门户](./media/analysis-services-create-server/aas-create-server-portal.png)
 

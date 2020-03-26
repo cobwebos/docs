@@ -16,10 +16,10 @@ ms.date: 01/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b2df764fe20f513812b80857c345ce9f1ae25bfb
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76157318"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-enterprise"></a>教程：Azure Active Directory 与 Terraform Enterprise 的单一登录 (SSO) 集成
@@ -32,7 +32,7 @@ ms.locfileid: "76157318"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -100,7 +100,7 @@ ms.locfileid: "76157318"
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
-在本部分中，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
 1. 选择屏幕顶部的“新建用户”  。

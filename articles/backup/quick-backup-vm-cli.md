@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: a359e47a70f6a1a9e0957b4e1c3965c8db12339a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74171992"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>使用 CLI 在 Azure 中备份虚拟机
@@ -75,13 +75,13 @@ az backup protection enable-for-vm \
 
 ## <a name="start-a-backup-job"></a>启动备份作业
 
-若要立即开始备份而不是等待默认策略根据计划的时间运行作业，请使用 [az backup protection backup-now](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now)。 第一个备份作业会创建一个完整恢复点。 此初始备份后的每个备份作业会创建增量恢复点。 增量恢复点有利于存储并具有时效性，因为它们仅传输自上次备份以来所做的更改。
+若要立即开始备份而不是等待默认策略根据计划的时间运行作业，请使用 [az backup protection backup-now](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now)。 第一个备份作业会创建一个完整恢复点。 初始备份后的每个备份作业都会创建增量恢复点。 增量恢复点有利于存储并具有时效性，因为它们仅传输自上次备份以来所做的更改。
 
 以下参数用于备份 VM：
 
 - `--container-name` 是 VM 的名称
 - `--item-name` 是 VM 的名称
-- 应以 UTC 时间格式 (**dd-mm-yyyy**) 将 `--retain-until` 值设置为希望恢复点可用的最后一个日期
+- 应以 UTC 时间格式 (`--retain-until`dd-mm-yyyy **) 将**  值设置为希望恢复点可用的最后一个日期
 
 以下示例备份名为 *myVM* 的 VM，并将恢复点的过期时间设置为 2017 年 10 月 18 日：
 

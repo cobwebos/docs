@@ -17,10 +17,10 @@ ms.date: 09/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 837787d375a7570b7daf0a149960ca0020bcdced
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72264063"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SAP Cloud for Customer 的集成
@@ -99,7 +99,7 @@ ms.locfileid: "72264063"
 
     ![image](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
 
-    ![图像](./media/sap-customer-cloud-tutorial/tutorial_usermailedit.png)
+    ![image](./media/sap-customer-cloud-tutorial/tutorial_usermailedit.png)
 
     b. 选择“转换”作为“源”   。
 

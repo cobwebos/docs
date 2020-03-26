@@ -16,10 +16,10 @@ ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b60009373e3880e3cea978c238f65f3efc028ae4
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77088301"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-verkada-command"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Verkada Command 的集成
@@ -32,7 +32,7 @@ ms.locfileid: "77088301"
 
 若要详细了解 SaaS 应用与 Azure AD 单一登录的集成，请参阅[单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

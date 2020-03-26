@@ -11,10 +11,10 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71b9052f364dfbae205dd324ba69de9578ccc225
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77026310"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教程：使用户能够使用 Azure Active Directory 自助式密码重置来解锁其帐户或重置密码
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 > * 配置身份验证方法和注册选项
 > * 以用户身份测试 SSPR 过程
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需有以下资源和特权才能完成本教程：
 

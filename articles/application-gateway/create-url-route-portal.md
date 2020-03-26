@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: bc810ac7901d83f03d3f3ac2199561225326d261
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74048136"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>教程：通过 Azure 门户使用基于路径的路由规则创建应用程序网关
@@ -131,7 +131,7 @@ ms.locfileid: "74048136"
 
 2. 在打开的“添加后端池”窗口中，输入以下值以创建空的后端池  ：
 
-    - **名称**：输入“myBackendPool”作为后端池的名称  。
+    - **Name**：输入“myBackendPool”作为后端池的名称  。
 3. 在“后端目标”  、“目标类型”  下，从下拉列表中选择“虚拟机”  。
 
 5. 在  “目标”下， 为 myVM1 选择网络接口  。

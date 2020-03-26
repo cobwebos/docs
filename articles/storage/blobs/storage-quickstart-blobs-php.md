@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68726392"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 本快速入门介绍如何使用 PHP 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -42,14 +42,14 @@ git clone https://github.com/Azure-Samples/storage-blobs-php-quickstart.git
 ## <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
 在应用程序中，必须提供存储帐户名称和帐户密钥，以创建应用程序的 **BlobRestProxy** 实例。 建议将这些标识符存储在运行应用程序的本地计算机的环境变量中。 根据操作系统按照下面的一个示例创建环境变量。 将 youraccountname  和 youraccountkey  值分别替换为帐户名称和密钥。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export ACCOUNT_NAME=<youraccountname>
 export ACCOUNT_KEY=<youraccountkey>
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```cmd
 setx ACCOUNT_NAME=<youraccountname>
@@ -63,7 +63,7 @@ setx ACCOUNT_KEY=<youraccountkey>
 ## <a name="run-the-sample"></a>运行示例
 此示例在“.”文件夹中创建一个测试文件。 示例程序会将该测试文件上传到 Blob 存储，列出容器中的 blob，并使用新名称下载此文件。 
 
-运行示例。 以下输出是运行应用程序时返回的输出的示例：
+运行该示例。 以下输出是运行应用程序时返回的输出的示例：
   
 ```
 Uploading BlockBlob: HelloWorld.txt

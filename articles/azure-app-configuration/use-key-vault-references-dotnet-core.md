@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 4e896c5fa6f8656be29eed7eb8d4e8854a94ecfa
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: eceb4a9d4e0cc84166280f30b094b82088f53a4a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116619"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79475300"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用 Key Vault 引用
 
@@ -41,7 +41,7 @@ ms.locfileid: "77116619"
 > * 创建一个应用程序配置密钥，用于引用 Key Vault 中存储的值
 > * 从 ASP.NET Core Web 应用程序访问此密钥的值。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前，请安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
 
@@ -110,7 +110,6 @@ ms.locfileid: "77116619"
     "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
     "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
     "galleryEndpointUrl": "https://gallery.azure.com/",
     "managementEndpointUrl": "https://management.core.windows.net/"
@@ -125,7 +124,7 @@ ms.locfileid: "77116619"
 
 1. 添加环境变量以存储 *clientId*、*clientSecret*和 *tenantId* 的值。
 
-    #### <a name="windows-command-prompttabcmd"></a>[Windows 命令提示符](#tab/cmd)
+    #### <a name="windows-command-prompt"></a>[Windows 命令提示符](#tab/cmd)
 
     ```cmd
     setx AZURE_CLIENT_ID <clientId-of-your-service-principal>
@@ -133,7 +132,7 @@ ms.locfileid: "77116619"
     setx AZURE_TENANT_ID <tenantId-of-your-service-principal>
     ```
 
-    #### <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```PowerShell
     $Env:AZURE_CLIENT_ID = <clientId-of-your-service-principal>
@@ -141,7 +140,7 @@ ms.locfileid: "77116619"
     $Env:AZURE_TENANT_ID = <tenantId-of-your-service-principal>
     ```
 
-    #### <a name="bashtabbash"></a>[Bash](#tab/bash)
+    #### <a name="bash"></a>[Bash](#tab/bash)
 
     ```bash
     export AZURE_CLIENT_ID = <clientId-of-your-service-principal>
@@ -174,7 +173,7 @@ ms.locfileid: "77116619"
 
 1. 通过调用 `config.AddAzureAppConfiguration` 方法，更新 `CreateWebHostBuilder` 方法以使用应用配置。 包括 `ConfigureKeyVault` 选项，并将正确的凭据传递到 Key Vault。
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -195,7 +194,7 @@ ms.locfileid: "77116619"
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -245,13 +244,13 @@ ms.locfileid: "77116619"
 
 1. 要通过使用 .NET Core CLI 生成应用，请在命令行界面中执行以下命令：
 
-    ```
+    ```dotnetcli
     dotnet build
     ```
 
 1. 完成生成后，使用以下命令在本地运行 Web 应用：
 
-    ```
+    ```dotnetcli
     dotnet run
     ```
 

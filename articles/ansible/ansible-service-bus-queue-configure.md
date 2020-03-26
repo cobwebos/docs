@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, 服务总线, 队列
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 8ba4c2296d903c4f35aa36eb92dfbc3b56ec4b18
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76713230"
 ---
 # <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>教程：使用 Ansible 配置 Azure 服务总线中的队列
@@ -27,7 +27,7 @@ ms.locfileid: "76713230"
 > * 检索队列信息
 > * 撤销队列 SAS 策略
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]

@@ -17,10 +17,10 @@ ms.date: 10/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83bff484e4ca3a1579067501be134d71da72abfa
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72271857"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-in-case-of-crisis---mobile"></a>教程：Azure Active Directory 单一登录 (SSO) 与 In Case of Crisis - Mobile 集成

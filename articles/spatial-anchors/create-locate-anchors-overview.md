@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: f406edb42204e7ffc94bcbfa1e22b269aea67b32
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74270448"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>如何使用 Azure 空间定位点创建并查找定位点

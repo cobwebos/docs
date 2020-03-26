@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, 网络, 对等互连
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 78699a005d721b46a88a26452f5db68438793d34
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155729"
 ---
 # <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>教程：使用 Ansible 配置 Azure 虚拟网络对等互连
@@ -227,9 +227,9 @@ ms.locfileid: "74155729"
 
 ## <a name="run-the-sample-playbook"></a>运行示例 playbook
 
-本部分的示例 playbook 代码用于测试本教程中所述的各种功能。
+本部分的示例 playbook 代码用于测试本教程中所示的各项功能。
 
-以下是部分使用 playbook 时要考虑的重要注意事项：
+下面是使用示例 playbook 时要考虑的部分关键注意事项：
 
 - 在 `vars` 节中，将 `{{ resource_group_name }}` 占位符替换为你的资源组名称。
 
@@ -239,7 +239,7 @@ ms.locfileid: "74155729"
 ansible-playbook vnet_peering.yml
 ```
 
-运行 playbook 后，将看到与下述结果类似的输出：
+运行 playbook 后，可看到类似于以下结果的输出：
 
 ```Output
 PLAY [localhost] 
@@ -315,7 +315,7 @@ localhost                  : ok=12   changed=9    unreachable=0    failed=0    s
         state: absent
 ```
 
-以下是部分使用 playbook 时要考虑的重要注意事项：
+下面是使用示例 playbook 时要考虑的部分关键注意事项：
 
 - 请将 `{{ resource_group_name-1 }}` 占位符替换为创建的第一个资源组的名称。
 - 请将 `{{ resource_group_name-2 }}` 占位符替换为创建的第二个资源组的名称。

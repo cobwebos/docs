@@ -1,7 +1,7 @@
 ---
 title: 什么是 Microsoft 基因组学？
 titleSuffix: Microsoft Genomics
-description: 了解如何使用 Microsoft 基因组学来运行 BWA-GATK 工作流，以便进行基因组分析。
+description: 了解 Microsoft 基因组学如何使用 Burrows-Wheeler Aligner (BWA) 的云实现以及基因组分析工具包 (GATK) 为基因组排序提供支持。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,11 +9,11 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: overview
 ms.date: 12/07/2017
-ms.openlocfilehash: 461e385bae3b091c72355ed27a35ae5408bda7c2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 04ecab58db822aa80ca2abba1bebaa39598498bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73498815"
 ---
 # <a name="what-is-microsoft-genomics"></a>什么是 Microsoft 基因组学？

@@ -12,10 +12,10 @@ ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
 ms.openlocfilehash: 034f92ca3b7552373ae69148d09d58d3a5dd166a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768645"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>快速入门：使用 Java 查询 Azure SQL 数据库
@@ -28,17 +28,17 @@ ms.locfileid: "76768645"
 - 一个 [Azure SQL 数据库](sql-database-single-database-get-started.md)
 - [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) 相关的软件
 
-  # <a name="macostabmacos"></a>[macOS](#tab/macos)
+  # <a name="macos"></a>[macOS](#tab/macos)
 
-  安装 Homebrew 和 Java，然后使用[在 macOS 上创建使用 SQL Server 的 Java 应用](https://www.microsoft.com/sql-server/developer-get-started/java/mac/)中的步骤 **1.2** 和 **1.3** 安装 Maven。
+  安装 Homebrew 和 Java，然后使用**在 macOS 上创建使用 SQL Server 的 Java 应用**中的步骤 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/java/mac/) 安装 Maven。
 
-  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  安装 Java 和 Java 开发工具包，然后使用[在 Ubuntu 上创建使用 SQL Server 的 Java 应用](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/)中的步骤 **1.2**、**1.3** 和 **1.4** 安装 Maven。
+  安装 Java 和 Java 开发工具包，然后使用**在 Ubuntu 上创建使用 SQL Server 的 Java 应用**中的步骤 **1.2**、**1.3** 和 [1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/) 安装 Maven。
 
-  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+  # <a name="windows"></a>[Windows](#tab/windows)
 
-  安装 Java，然后使用[在 Windows 上创建使用 SQL Server 的 Java 应用](https://www.microsoft.com/sql-server/developer-get-started/java/windows/)中的步骤 **1.2** 和 **1.3** 安装 Maven。
+  安装 Java，然后使用**在 Windows 上创建使用 SQL Server 的 Java 应用**中的步骤 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/) 安装 Maven。
 
   ---
 

@@ -17,10 +17,10 @@ ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 456fc2a736b3213a14e5704f89a808c120c45b33
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158675"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>教程：将 Bynder 与 Azure Active Directory 集成
@@ -88,7 +88,7 @@ ms.locfileid: "73158675"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<company name>.getbynder.com/sso/SAML/authenticate/`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<company name>.getbynder.com/login/`
 

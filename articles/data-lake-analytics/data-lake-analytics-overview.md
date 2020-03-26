@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
 ms.openlocfilehash: 3572c308310c49eed48ccb25dfa7cb0fb161515f
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70164513"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>什么是 Azure Data Lake Analytics？

@@ -17,10 +17,10 @@ ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dcf0341e03a5d95abbe8b1a8ce69379fef8251b7
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68989050"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zscaler 集成
@@ -94,7 +94,7 @@ ms.locfileid: "68989050"
 
 1. 除了上述属性，Zscaler 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | Name | 源属性 |
+    | 名称 | 源属性 |
     | ---------| ------------ |
     | memberOf     | user.assignedroles |
 

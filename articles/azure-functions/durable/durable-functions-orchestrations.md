@@ -6,11 +6,11 @@ ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
 ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356662"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290105"
 ---
 # <a name="durable-orchestrations"></a>持久业务流程
 
@@ -133,19 +133,19 @@ module.exports = df.orchestrator(function*(context) {
 
 * **PartitionKey**：包含业务流程的实例 ID。
 * **EventType**：表示事件的类型。 可为以下类型之一：
-  * **OrchestrationStarted**：业务流程协调程序函数已从等待状态恢复，或者正首次运行。 `Timestamp` 列用于填充 `CurrentUtcDateTime` (.NET) 和 `currentUtcDateTime` (JavaScript) API 的确定性值。
+  * **OrchestrationStarted**：业务流程协调程序函数已从 await（等待）状态恢复，或者正在首次运行。 `Timestamp` 列用于填充 `CurrentUtcDateTime` (.NET) 和 `currentUtcDateTime` (JavaScript) API 的确定性值。
   * **ExecutionStarted**：业务流程协调程序函数已开始首次执行。 此事件也包含 `Input` 列中输入的函数。
   * **TaskScheduled**：已计划活动函数。 `Name` 列中已捕获该活动函数的名称。
   * **TaskCompleted**：已完成活动函数。 `Result` 列中提供了该函数的结果。
   * **TimerCreated**：已创建持久计时器。 `FireAt` 列包含计时器过期时的 UTC 计划时间。
-  * **TimerFired**：已触发持久计时器。
+  * **TimerFired**：持久计时器已触发。
   * **EventRaised**：已将外部事件发送到业务流程实例。 `Name` 列捕获事件的名称，`Input` 列捕获事件的有效负载。
-  * **OrchestratorCompleted**：处于等待状态的业务流程协调程序函数。
+  * **OrchestratorCompleted**：业务流程协调程序函数处于等待状态。
   * **ContinueAsNew**：业务流程协调程序函数已完成，并已使用新状态重启自身。 `Result` 列包含用作已重启实例中的输入的值。
   * **ExecutionCompleted**：业务流程协调程序函数已运行并已完成（或失败）。 该函数的输出或错误详细信息存储在 `Result` 列中。
-* **时间戳**：历史记录事件的 UTC 时间戳。
+* **Timestamp**：历史记录事件的 UTC 时间戳。
 * **Name**：调用的函数的名称。
-* **输入**：函数的 JSON 格式的输入。
+* **Input**：函数的 JSON 格式输入。
 * **Result**：函数的输出，即其返回值。
 
 > [!WARNING]
@@ -188,7 +188,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>关键节（Durable Functions 2.x，当前仅限 .NET）
 
-业务流程实例是单线程的，因此无需考虑业务流程内部的争用情况。  但是，当业务流程与外部系统交互时，可能会出现争用情况。 若要在与外部系统交互时缓解争用情况，业务流程协调程序函数可以使用 .NET 中的 `LockAsync` 方法定义关键节。 
+业务流程实例是单线程的，因此无需考虑业务流程内部的争用情况。  但是，当业务流程与外部系统交互时，可能会出现争用情况。 若要在与外部系统交互时缓解争用情况，业务流程协调程序函数可以使用 .NET 中的  *方法定义关键节。* `LockAsync`
 
 以下示例代码演示了一个定义关键节的业务流程协调程序函数。 它使用 `LockAsync` 方法进入关键节。 此方法要求向某个持久管理锁状态的[持久实体](durable-functions-entities.md)传递一个或多个引用。 此业务流程的单个实例每次只能执行关键节中的代码。
 
@@ -267,7 +267,7 @@ module.exports = df.orchestrator(function*(context) {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-在 .NET 中，还可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 对象。 以下示例使用了 [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 添加的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 的新功能：
+在 .NET 中，还可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 对象。 以下示例使用了 [C# 7](https://docs.microsoft.com/dotnet/csharp/tuples) 添加的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 的新功能：
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]

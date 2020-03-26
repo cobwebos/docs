@@ -6,17 +6,17 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648604"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>教程：使用 Azure 自定义提供程序进行资源载入
 
 在本教程中，将部署到 Azure 自定义资源提供程序，该提供程序使用 Microsoft.CustomProviders/associations 资源类型扩展 Azure 资源管理器 API。 本教程介绍如何扩展自定义提供程序实例所在的资源组之外的现有资源。 在本教程中，自定义资源提供程序由 Azure 逻辑应用提供支持，但你可以使用任何公共 API 终结点。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要知道：
 

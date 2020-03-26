@@ -17,10 +17,10 @@ ms.date: 01/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f3e23a4c3c3b668939c9f0ac1331214ddbb7cdf
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159367"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>教程：Azure Active Directory 与 Compliance ELF 集成

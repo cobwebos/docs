@@ -17,10 +17,10 @@ ms.date: 12/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 87f1c884edf6841b65495cd31ed4c7d6e63aedd9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977932"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>教程：Azure Active Directory 单一登录与 Citrix NetScaler 的集成（基于标头的身份验证）
@@ -33,7 +33,7 @@ ms.locfileid: "75977932"
 
 若要了解服务型软件 (SaaS) 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -164,7 +164,7 @@ ms.locfileid: "75977932"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分，你将通过授予用户 B.Simon 访问 Citrix NetScaler 的权限，使其能够使用 Azure SSO。
+在本部分中，通过授予用户 B.Simon 访问 Citrix NetScaler 的权限，允许其使用 Azure SSO。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 

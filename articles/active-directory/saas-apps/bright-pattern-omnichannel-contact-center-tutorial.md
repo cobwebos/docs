@@ -17,10 +17,10 @@ ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27cda1f1a797ca0cb8e1b9d1c4cd7498c22ddde5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74081938"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bright-pattern-omnichannel-contact-center"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Bright Pattern Omnichannel Contact Center 的集成
@@ -91,7 +91,7 @@ ms.locfileid: "74081938"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.brightpattern.com/agentdesktop/sso/redirect`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.brightpattern.com/`
 
@@ -104,7 +104,7 @@ ms.locfileid: "74081938"
 
 1. 除了上述属性，Bright Pattern Omnichannel Contact Center 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name | 命名空间  |
+    | 名称 | 命名空间  |
     | ---------------| --------------- |
     | firstName | user.givenname |
     | lastName | user.surname |

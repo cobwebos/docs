@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d593e5f27dbcd676e2b42975251778a6c48a7d79
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 594f0ed55b5ce5c31e87fd2011f3bc1522a12380
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511869"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215825"
 ---
 # <a name="what-is-a-device-identity"></a>什么是设备标识？
 
@@ -37,16 +37,16 @@ ms.locfileid: "76511869"
 若要获取 Azure AD 中的设备，可以使用多个选项：
 
 - **已注册到 Azure AD**
-   - 已注册到 Azure AD 的设备通常是个人拥有的设备或移动设备，并已登录到个人 Microsoft 帐户或其他本地帐户。
+   - 已注册 Azure AD 的设备通常是个人拥有设备或移动设备，并已登录到个人 Microsoft 帐户或其他本地帐户。
       - Windows 10
       - iOS
       - Android
       - MacOS
 - **已加入 Azure AD**
-   - 已加入 Azure AD 的设备由组织拥有，已登录到属于该组织的 Azure AD 帐户。 这些设备位于云中。
+   - 已加入 Azure AD 的设备由组织拥有，并已登录到属于该组织的 Azure AD 帐户。 这些设备位于云中。
       - Windows 10 
 - **已加入混合 Azure AD**
-   - 已加入混合 Azure AD 的设备由组织拥有，已登录到属于该组织的 Azure AD 帐户。 这些设备位于云中和本地。
+   - 已加入混合 Azure AD 的设备由组织拥有，并已登录到属于该组织的 Azure AD 帐户。 这些设备位于云中和本地。
       - Windows 7、8.1 或 10
       - Windows Server 2008 或更高版本
 

@@ -13,10 +13,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 53abc28a6923c2d55b3bb39defb08778485a9744
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71212444"
 ---
 # <a name="create-an-azure-notification-hub-in-the-azure-portal"></a>在 Azure 门户中创建 Azure 通知中心 
@@ -32,7 +32,7 @@ Azure 通知中心提供易于使用且横向扩展的推送引擎，可用于�
 ## <a name="create-a-notification-hub-in-an-existing-namespace"></a>在现有的命名空间中创建通知中心
 在此部分，请在现有的命名空间中创建一个通知中心。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单上选择“所有服务”  ，搜索“通知中心”  ，选择“通知中心命名空间”旁边的**星号** (`*`)，  将其添加到左侧菜单上的“收藏夹”部分。  选择“通知中心命名空间”。  
 
       ![Azure 门户 - 选择“通知中心命名空间”](./media/create-notification-hub-portal/select-notification-hub-namespaces-all-services.png)

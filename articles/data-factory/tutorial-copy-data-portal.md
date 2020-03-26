@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.date: 06/21/2018
 ms.author: jingwang
 ms.openlocfilehash: 135a18f275137e72b5ff4d79f6a32bd39bd9c00c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977409"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 SQL 数据库
@@ -35,7 +35,7 @@ ms.locfileid: "75977409"
 > * 按计划触发管道。
 > * 监视管道和活动运行。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * **Azure 存储帐户**。 可将 Blob 存储用作  源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-account-create.md)以获取创建步骤。
 * **Azure SQL 数据库**。 将数据库用作  接收器数据存储。 如果没有 SQL 数据库，请参阅[创建 SQL 数据库](../sql-database/sql-database-get-started-portal.md)，了解创建该数据库的步骤。

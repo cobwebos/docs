@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: iainfou
 ms.openlocfilehash: c7a34256bff46247ed6c97bc2931942f631bbf09
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67173502"
 ---
 > [!WARNING]
@@ -19,7 +19,7 @@ ms.locfileid: "67173502"
 > 我们建议你部署以下 Azure 市场解决方案之一：
 >
 > * Mesosphere DC/OS
->   * [企业版](https://azuremarketplace.microsoft.com/marketplace/apps/mesosphere.enterprise-dcos?tab=Overview)
+>   * [Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/mesosphere.enterprise-dcos?tab=Overview)
 >   * [开放源版](https://azuremarketplace.microsoft.com/marketplace/apps/mesosphere.dcos?tab=overview)
 >
 > 如果想要使用 Kubernetes，请参阅 [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks)。

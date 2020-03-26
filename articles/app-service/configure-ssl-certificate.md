@@ -7,11 +7,11 @@ ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356907"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223914"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 SSL 证书
 

@@ -17,10 +17,10 @@ ms.date: 11/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7dd09f80721bb4180eb5f2c25f3315e6211c63cc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74085150"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blue-access-for-members-bam"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Blue Access for Members (BAM) 集成
@@ -104,7 +104,7 @@ ms.locfileid: "74085150"
 
 1. 除了上述属性，Blue Access for Members (BAM) 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name |  源属性|
+    | 名称 |  源属性|
     | ------------ | --------- |
     | ClientID | `<ClientID>` |
     | UID | `<UID>` |

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 5fbec8b6a1a21826896f8e2499b1e8b7237d0ff9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095901"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>教程：Azure Active Directory 与 OneTrust Privacy Management Software 集成

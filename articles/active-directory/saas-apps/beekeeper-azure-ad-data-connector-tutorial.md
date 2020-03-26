@@ -16,10 +16,10 @@ ms.date: 02/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbac5f6b26ff5df9114eebdf850faff263f7cd78
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77373166"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beekeeper-azure-ad-sso"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Beekeeper Azure AD SSO 的集成
@@ -32,7 +32,7 @@ ms.locfileid: "77373166"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

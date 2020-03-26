@@ -17,10 +17,10 @@ ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55216e9eb4bd5cda2635564480751459f05e8309
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71121625"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Evernote 的集成

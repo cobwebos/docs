@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 12/02/2019
-ms.openlocfilehash: f2dc6ec2fb99addc6a2c050c072e0221fd2c8e0b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 84fd24890495e7278c69c2f83c7182fd65f86791
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769075"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79535555"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>什么是 Azure Database for MariaDB？
 

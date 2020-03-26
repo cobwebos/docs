@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 4abf5078a005f9d928397d9666e7f2bc55d65f19
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75431554"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流分析作业
@@ -30,7 +30,7 @@ ms.locfileid: "75431554"
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“创建资源” > “物联网” > “IoT 中心”    。
+2. 选择“创建资源” **“物联网”** “IoT 中心” >    >   。
 
 3. 在“IoT 中心”窗格中，输入以下信息： 
    
@@ -43,7 +43,7 @@ ms.locfileid: "75431554"
 
    ![创建 IoT 中心](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
 
-4. 在完成时选择“下一步:  设置大小和规模”。
+4. 选择“下一步: 设置大小和规模”。 
 
 5. 选择“定价和缩放层”  。 就本快速入门来说，请选择“F1 - 免费”层（前提是此层在订阅上仍然可用）  。 有关详细信息，请参阅 [IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
 

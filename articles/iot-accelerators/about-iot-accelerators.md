@@ -10,10 +10,10 @@ ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
 ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71309522"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT 解决方案加速器是什么？
@@ -78,7 +78,7 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 
 原始的解决方案加速器是使用模型-视图-控制器 (MVC) 体系结构以 .NET 编写的。 Microsoft 正在将解决方案加速器更新为新的微服务体系结构。 下表显示了解决方案加速器的当前状态，并提供了 GitHub 存储库的链接：
 
-| 解决方案加速器   | 体系结构  | 语言     |
+| 解决方案加速器   | 体系结构  | Languages     |
 | ---------------------- | ------------- | ------------- |
 | 远程监视      | 微服务 | [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) 和 [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) |
 | 预测性维护 | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |

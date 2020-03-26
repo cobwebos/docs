@@ -17,10 +17,10 @@ ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6bc442bd48de3b75d43206a1f111b1e26c4608ed
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71174433"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bis"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BIS 集成

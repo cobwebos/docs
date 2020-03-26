@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 uniFLOW Online 的单一登录 (SSO) 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 uniFLOW Online 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 uniFLOW Online 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f26af813fcd4032aabce2305ac8845307d1fca65
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76262106"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>教程：Azure Active Directory 与 uniFLOW Online 的单一登录 (SSO) 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>教程：Azure Active Directory 单一登录 (SSO) 与 uniFLOW Online 的集成
 
 本教程介绍如何将 uniFLOW Online 与 Azure Active Directory (Azure AD) 集成。 将 uniFLOW Online 与 Azure AD 集成后，可以：
 
@@ -33,7 +33,7 @@ ms.locfileid: "76262106"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -136,7 +136,7 @@ ms.locfileid: "76262106"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分，将通过授予 B.Simon 访问 uniFLOW Online 的权限，使其能够使用 Azure 单一登录。
+在本部分，你将通过授予 B.Simon 访问 uniFLOW Online 的权限，使其能够使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在“应用程序”列表中选择“uniFLOW Online”。 

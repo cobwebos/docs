@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: c9c860bf994dfeef57e8fd86329ed3a2b3f85e4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67087339"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>教程：Azure Active Directory 与 Vodeclic 集成
@@ -191,7 +191,7 @@ ms.locfileid: "67087339"
 本部分在 Vodeclic 中创建一个名为 Britta Simon 的用户。 在  [Vodeclic 支持团队](mailto:hotline@vodeclic.com)的配合下，将用户添加到 Vodeclic 平台。 使用单一登录前，必须先创建并激活用户。
 
 > [!NOTE]
-> 根据应用程序要求，可能需要将计算机添加到允许列表中。 对于这种情况，需要与 [Vodeclic 支持团队](mailto:hotline@vodeclic.com)共享公用 IP 地址。
+> 根据应用程序要求，可能需要将计算机添加到允许列表中。 对于这种情况，需要与 [Vodeclic 支持团队](mailto:hotline@vodeclic.com)共享公共 IP 地址。
 
 ### <a name="test-single-sign-on"></a>测试单一登录 
 

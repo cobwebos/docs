@@ -13,10 +13,10 @@ ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
 ms.openlocfilehash: 34583ef49b2f919391af3fe5700a558b2dc40700
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77187238"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>使用 Python 在 Azure 存储中捕获事件中心数据并读取该数据（azure-eventhub 版本 5）

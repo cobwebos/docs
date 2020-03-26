@@ -17,10 +17,10 @@ ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0a75869c257e6b875a00036218b05db5521e8d0b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72532949"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nuclino"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Nuclino 的集成
@@ -103,7 +103,7 @@ ms.locfileid: "72532949"
 
 7. 除了上述属性，Nuclino 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name |  源属性|
+    | 名称 |  源属性|
     | ---------------| --------- |
     | first_name | user.givenname |
     | last_name | user.surname |

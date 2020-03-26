@@ -17,10 +17,10 @@ ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d4e497c556bde1be4e498cd85a68282a0e3b2666
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72026266"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex Meetings 集成
@@ -103,7 +103,7 @@ ms.locfileid: "72026266"
 
 6. 除了上述属性外，Cisco Webex Meetings 应用程序还需要将另外几个属性在 SAML 响应中传回。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以添加 SAML 令牌属性，如下表中所示： 
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------|  --------- |
     |   名    | user.givenname |
     |   姓    | user.surname |

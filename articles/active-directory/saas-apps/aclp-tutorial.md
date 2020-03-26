@@ -17,10 +17,10 @@ ms.date: 05/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 516e85fa4dca6c18bc83ee169e284c3c490ba74e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67165100"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aclp"></a>教程：Azure Active Directory 与 ACLP 的集成

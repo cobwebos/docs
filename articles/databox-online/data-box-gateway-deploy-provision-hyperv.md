@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 63d88f1b9903eaad7ed4f57f59ca2a49445e3d40
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77365317"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>教程：在 Hyper-V 中预配 Azure Data Box Gateway
@@ -33,7 +33,7 @@ ms.locfileid: "77365317"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 对于在 Windows Server 2016 或 Windows Server 2012 R2 上运行 Hyper-V 的主机系统，在其上预配虚拟设备的先决条件如下所示。
 

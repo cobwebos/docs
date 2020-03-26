@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: b8923000b0bbc75e6d96b1b27a1154ef8ff87f24
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 58683cb6eb74fcc3bc2f90245d6f76ef65bdf2e6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770707"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067924"
 ---
-# <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database for MySQL：使用 PHP 连接和查询数据
+# <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database for MySQL：使用 PHP 进行连接并查询数据
 本快速入门演示了如何使用 [PHP](https://secure.php.net/manual/intro-whatis.php) 应用程序连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 PHP 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 此快速入门使用以下任意指南中创建的资源作为起点：
 - [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)

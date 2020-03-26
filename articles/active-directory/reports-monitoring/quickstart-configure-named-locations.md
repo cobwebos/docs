@@ -17,10 +17,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: df45ab0a7b1729ae6c1602c9769cd5b6da26f6ac
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74014356"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中配置命名位置
@@ -31,7 +31,7 @@ ms.locfileid: "74014356"
 
 在本快速入门中，你将了解如何在环境中配置命名位置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，你需要：
 
@@ -41,7 +41,7 @@ ms.locfileid: "74014356"
 
 ## <a name="configure-named-locations"></a>配置命名位置
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 在左侧窗格中，选择“Azure Active Directory”  ，然后从“安全性”  部分中选择“条件访问”  。
 

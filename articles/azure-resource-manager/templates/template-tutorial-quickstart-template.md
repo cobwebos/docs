@@ -5,18 +5,18 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0feb0a1a682328f1e23a7d800eb4f5653a6acdd1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1e110bb4711490f53da7628f608f150a2bc3186c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765425"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79368870"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>教程：使用 Azure 快速入门模板
 
 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)是一个存储库，其中包含社区贡献的模板。 可以在模板开发中使用示例模板。 在本教程中，我们需找到一个网站资源定义，然后将其添加到自己的模板中。 完成该过程需要大约 **12 分钟**。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 建议完成[有关已导出模板的教程](template-tutorial-export-template.md)，但这不是必需的。
 
@@ -63,7 +63,7 @@ Web 应用名称必须在 Azure 中独一无二。 为了防止出现重复名�
 
 如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -75,10 +75,10 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addwebapp \
   --resource-group myResourceGroup \
   --template-file $templateFile \

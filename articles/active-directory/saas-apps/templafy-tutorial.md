@@ -17,10 +17,10 @@ ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52130ac90f9faec19eedf77da425645e35259269
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74081614"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-templafy"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Templafy 的集成
@@ -94,7 +94,7 @@ ms.locfileid: "74081614"
 
 1. 除了上述属性，Templafy 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name | 源属性| 命名空间  |
+    | 名称 | 源属性| 命名空间  |
     | ---------------| --------------- | --------- |
     | givenname | user.givenname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | surname | user.surname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|

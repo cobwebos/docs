@@ -4,13 +4,13 @@ description: 了解如何在 Azure 应用服务中运行 Linux Ruby 应用，同
 ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 6ce52b9754f69ef9c6eaf1f59062b6366670985f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 7339bb1ec2c16e9d6c83d2cbae8810b660b60765
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524021"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80045484"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在基于 Linux 上的 Azure 应用服务中生成 Ruby 和 Postgres 应用
 
@@ -30,9 +30,9 @@ ms.locfileid: "77524021"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 * [安装 Git](https://git-scm.com/)
 * [安装 Ruby 2.3](https://www.ruby-lang.org/en/documentation/installation/)
@@ -350,7 +350,7 @@ remote: Running deployment command...
 < Output has been truncated for readability >
 ```
 
-### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
+### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
 浏览到 `http://<app-name>.azurewebsites.net` 并在列表中添加一些任务。
 

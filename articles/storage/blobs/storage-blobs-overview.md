@@ -9,10 +9,10 @@ ms.date: 11/04/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 8f9c1b1762c4e6028d935e03a630dfc0ca4ee4b9
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73615759"
 ---
 # <a name="what-is-azure-blob-storage"></a>什么是 Azure Blob 存储？ 

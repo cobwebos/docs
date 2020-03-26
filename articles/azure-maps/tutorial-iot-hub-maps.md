@@ -10,11 +10,11 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: f0367a195ca0aa5f26ff0819b00c50fabae1d271
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359718"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223704"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 

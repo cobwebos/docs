@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: 086ec95531b01477be56d4b1a19d189f167a020f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086678"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>教程：Azure Active Directory 与 Workspot Control 集成
@@ -142,7 +142,7 @@ ms.locfileid: "67086678"
 
 2. 在页面顶部的工具栏中，选择“设置”。  ，然后选择“SAML”  。
 
-    ![设置选项](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
+    ![安装选项](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
 3. 在“安全断言标记语言配置”窗口中，执行以下步骤  ：
  

@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, cloudshell, playbook, aks, 容器, aks, 
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: bfb19371ad651439c087cebd03023d48852ee2df
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156890"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>教程：使用 Ansible 在 Azure Kubernetes 服务 (AKS) 中配置 kubenet 网络
@@ -342,7 +342,7 @@ localhost                  : ok=15   changed=2    unreachable=0    failed=0    s
             force: yes
 ```
 
-在 `vars` 部分，将 `{{ resource_group_name }}` 占位符替换为资源组名称。
+在 `vars` 节中，将 `{{ resource_group_name }}` 占位符替换为你的资源组名称。
 
 使用 `ansible-playbook` 命令运行 playbook：
 

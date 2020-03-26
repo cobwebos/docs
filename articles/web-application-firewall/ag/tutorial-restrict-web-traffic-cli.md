@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 78a8eaa75ec5eea33e27217f07439aae16ec4742
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4882ac51af271625b8e61d862890beb6d5f63213
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495535"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80240079"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>使用 Azure CLI 启用 Web 应用程序防火墙
 
@@ -38,9 +38,9 @@ ms.locfileid: "73495535"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group#az-group-create) 创建名为 *myResourceGroupAG* 的 Azure 资源组。
+资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 *az group create* 创建名为 [myResourceGroupAG](/cli/azure/group#az-group-create) 的 Azure 资源组。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus
 ```
 
@@ -143,7 +143,7 @@ az vmss extension set \
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-使用 [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) 创建名为 *myagstore1* 的存储帐户。
+使用 *az storage account create* 创建名为 [myagstore1](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) 的存储帐户。
 
 ```azurecli-interactive
 az storage account create \
@@ -172,7 +172,7 @@ az monitor diagnostic-settings create --name appgwdiag --resource $appgwid \
 
 若要获取应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \

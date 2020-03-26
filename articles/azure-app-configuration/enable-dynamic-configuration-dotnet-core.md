@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
 ms.openlocfilehash: afecc84748ae8ce85c07e3b482bd9b596bdca251
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75433682"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>教程：在 .NET Core 应用中使用动态配置
@@ -37,7 +37,7 @@ ms.locfileid: "75433682"
 > * 设置 .NET Core 应用，使其能够更新配置以响应应用程序配置存储区中的更改。
 > * 在应用程序中使用最新配置。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。
 

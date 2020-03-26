@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: cec437929e2f7ccd94cf4cf94ec81f87dac2678a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: cfdd0beac7d257a424d327df71602b4612c3da3b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669159"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79536847"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -25,11 +25,14 @@ Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥
 - 通过[智能警报](platform/alerts-smartgroups-overview.md)和[自动操作](platform/alerts-action-rules.md)支持大规模操作。
 - 使用 Azure [仪表板](learn/tutorial-logs-dashboards.md)和[工作簿](app/usage-workbooks.md)创建可视化效果。
 
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4qXeL]
+
+
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="overview"></a>概述
 
-下图提供了 Azure Monitor 的概要视图。 示意图的中心是用于存储指标和日志（Azure Monitor 使用的两种基本类型的数据）的数据存储。 左侧是用于填充这些[数据存储](platform/data-platform.md)的[监视数据源](platform/data-sources.md)。 右侧是 Azure Monitor 针对这些收集的数据执行的不同功能，例如分析、警报和流式传输到外部系统。
+下图提供了 Azure Monitor 的概要视图。 示意图的中心是用于存储指标和日志（Azure Monitor 使用的两种基本类型的数据）的数据存储。 左侧是用于填充这些[数据存储](platform/data-sources.md)的[监视数据源](platform/data-platform.md)。 右侧是 Azure Monitor 针对这些收集的数据执行的不同功能，例如分析、警报和流式传输到外部系统。
 
 ![Azure Monitor 概述](media/overview/overview.png)
 
@@ -39,7 +42,7 @@ Azure Monitor 收集的所有数据属于以下两种基本类型之一：[指�
 
 Azure 门户中的“概述”页会直接显示 Azure Monitor 针对许多 Azure 资源收集的数据。 例如，在查看任一虚拟机时，多个图表会显示性能指标。 单击任一图形会在 Azure 门户上的[指标资源管理器](platform/metrics-charts.md)中打开数据，可在其中绘制多个指标在不同时间段的值的图表。  可以通过交互方式查看图表，也可以将其固定到某个仪表板，与其他可视化效果一起查看。
 
-![指标](media/overview/metrics.png)
+![度量值](media/overview/metrics.png)
 
 可以使用[查询](log-query/log-query-overview.md)来分析 Azure Monitor 收集的日志数据，这些查询可以快速检索、合并和分析所收集的数据。  可以使用 Azure 门户中的 [Log Analytics](log-query/portals.md) 创建和测试查询，然后可以直接使用这些工具分析数据，或者保存查询以便与[可视化效果](visualizations.md)或[警报规则](platform/alerts-overview.md)配合使用。
 
@@ -53,7 +56,7 @@ Azure Monitor 可从各种源收集数据。 可将应用程序的监视数据�
 
 - **应用程序监视数据**：有关编写的代码的性能和功能的数据，不管平台是什么。
 - **来宾 OS 监视数据**：有关运行应用程序的操作系统的数据。 此应用程序可以在 Azure 中运行，也可以在其他云中或本地运行。 
-- **Azure 资源监视数据**：有关 Azure 资源的操作的数据。
+- **Azure 资源监视数据**：有关 Azure 资源操作的数据。
 - **Azure 订阅监视数据**：有关 Azure 订阅操作和管理的数据，以及有关 Azure 本身运行状况和操作的数据。 
 - **Azure 租户监视数据**：有关租户级 Azure 服务（例如 Azure Active Directory）操作的数据。
 

@@ -8,18 +8,18 @@ author: tomarchermsft
 manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 7ee17fa1ddb0c70921f8a9625944053e71ec016f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 111003718fc82683f1756276132def0aea7b7375
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201925"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239562"
 ---
 # <a name="quickstart-configure-linux-virtual-machines-in-azure-using-ansible"></a>快速入门：使用 Ansible 在 Azure 中配置 Linux 虚拟机
 
 Ansible 使用声明性语言，适用于通过 Ansible *playbook* 来自动完成 Azure 资源的创建、配置和部署。 本文提供了一个用于配置 Linux 虚拟机的示例 Ansible playbook。 [完整的 Ansible playbook](#complete-sample-ansible-playbook) 列在本文末尾。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)]
@@ -220,7 +220,7 @@ Ansible 需要一个在其中部署了资源的资源组。 以下示例 Ansible
 
 1. 创建名为 `azure_create_complete_vm.yml` 的文件（用于包含 playbook）并在 VI 编辑器中将其打开，如下所示：
 
-   ```azurecli-interactive
+   ```bash
    vi azure_create_complete_vm.yml
    ```
 

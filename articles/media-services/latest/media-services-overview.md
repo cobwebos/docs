@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 7e4a242c1f81a504872dae6399683483c836daf2
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: bd3890757377525cf9c178866a2a2fbc0791b9de
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086900"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79461004"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure 媒体服务 v3 概述
 
@@ -31,7 +31,7 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 媒体服务 v3 SDK 基于[媒体服务 v3 OpenAPI 规范 (Swagger)](https://aka.ms/ams-v3-rest-sdk)。
 
 > [!NOTE]
-> 目前，可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理媒体服务 v3 [直播活动](live-events-outputs-concept.md)、查看（而不是管理）v3 [资产](assets-concept.md)、[获取有关访问 API 的信息](access-api-portal.md)。 对于其他所有管理任务（例如，[转换和作业](transforms-jobs-concept.md)和[内容保护](content-protection-overview.md)），请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
+> 目前，可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理媒体服务 v3 [直播活动](live-events-outputs-concept.md)、查看（而不是管理）v3 [资产](assets-concept.md)、[获取有关访问 API 的信息](access-api-portal.md)。 对于其他所有管理任务（例如，[转换和作业](transforms-jobs-concept.md)和[内容保护](content-protection-overview.md)），请使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -47,7 +47,7 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 
 使用媒体服务，你可以在云中构建各种媒体工作流。 下面是媒体服务的功能的一些示例：
 
-* 提供各种格式的视频，以便通过各种浏览器和设备播放视频。 为了将点播和实时传送视频流传输到各种客户端（移动设备、电视、电脑等），需要对视频和音频进行适当的编码和打包。 要了解如何交付和流式传输此类内容，请参阅[快速入门：编码和流式传输文件](stream-files-dotnet-quickstart.md)。
+* 提供各种格式的视频，以便通过各种浏览器和设备播放视频。 为了将点播和实时传送视频流传输到各种客户端（移动设备、电视、电脑等），需要对视频和音频进行适当的编码和打包。 若要了解如何交付和流式传输此类内容，请参阅[快速入门：编码和流式传输文件](stream-files-dotnet-quickstart.md)。
 * 向大量在线观众流式传输实时体育赛事，例如足球、棒球、大学和高中体育运动等等。
 * 广播公共会议和活动，例如市政厅、市议会和立法机构。
 * 分析录制的视频或音频内容。 例如，为了实现更高的客户满意度，组织可以提取语音转文本并生成搜索索引和仪表板。 然后，他们可以提取围绕常见的投诉、投诉原因以及其他相关数据的情报。

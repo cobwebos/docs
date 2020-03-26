@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: apimpm
 ms.openlocfilehash: 5440333360549c5df2da57c97b24dcc77436ba4b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70072704"
 ---
 # <a name="add-an-api-manually"></a>手动添加 API
@@ -29,7 +29,7 @@ ms.locfileid: "70072704"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
+请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -85,7 +85,7 @@ ms.locfileid: "70072704"
 
 ### <a name="add-the-operation"></a>添加操作
 
-1. 选择在上一步骤中创建的 API。
+1. 选择上一步中创建的 API。
 2. 单击“+ 添加操作”。 
 3. 在“URL”中，选择“GET”，并在资源中输入“/status/{code}”。    （可选）可以提供与此参数关联的某些信息。 例如，为“类型”输入“数字”，为“值”输入“200”（默认值）。    
 4. 输入“GetStatus”作为“显示名称”。 

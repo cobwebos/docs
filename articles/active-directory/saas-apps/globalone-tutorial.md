@@ -17,10 +17,10 @@ ms.date: 06/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 14eac7240c183911fba763bf21c37077107cc275
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68944919"
 ---
 # <a name="tutorial-integrate-globalone-with-azure-active-directory"></a>教程：将 GlobalOne 与 Azure Active Directory 集成
@@ -86,18 +86,18 @@ ms.locfileid: "68944919"
 
 1. 除了上述属性，GlobalOne 应用程序还需要在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------| --------------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
     | 电子邮件 | user.mail |
-    | 公司 | `<YOUR COMPANY NAME>` |
+    | Company | `<YOUR COMPANY NAME>` |
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。 
 
@@ -111,7 +111,7 @@ ms.locfileid: "68944919"
 
     g. 单击“ **保存**”。
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(原始)”，然后选择“下载”，以下载该证书并将其保存到计算机上     。
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(原始)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
    ![证书下载链接](common/certificateraw.png)
 
@@ -145,12 +145,12 @@ ms.locfileid: "68944919"
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”    。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
 
     ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，选择“用户”列表中的“B. Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮   。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-globalone-test-user"></a>创建 GlobalOne 测试用户

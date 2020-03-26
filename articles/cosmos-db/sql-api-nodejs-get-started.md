@@ -10,10 +10,10 @@ ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
 ms.openlocfilehash: 67f0d79c6b074a822917829eee94c5fd3f6a1ef2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274037"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教程：使用 JavaScript SDK 生成 Node.js 控制台应用以管理 Azure Cosmos DB SQL API 数据
@@ -53,7 +53,7 @@ ms.locfileid: "78274037"
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="SetupNode"></a>设置 Node.js 应用程序
+## <a name="set-up-your-nodejs-application"></a><a id="SetupNode"></a>设置 Node.js 应用程序
 
 在开始编写生成应用程序所需的代码之前，可以生成应用的框架。 运行以下步骤，设置包含框架代码的 Node.js 应用程序：
 
@@ -75,7 +75,7 @@ ms.locfileid: "78274037"
 5. 通过 npm 安装 @azure/cosmos 模块。 使用以下命令：
    * ```npm install @azure/cosmos --save```
 
-## <a id="Config"></a>设置应用的配置
+## <a name="set-your-apps-configurations"></a><a id="Config"></a>设置应用的配置
 
 有了应用以后，需确保它可以与 Azure Cosmos DB 通信。 如以下步骤所示，更新一些配置设置即可将应用设置为与 Azure Cosmos DB 通信：
 
@@ -101,7 +101,7 @@ ms.locfileid: "78274037"
    
    `module.exports = config;` 代码用于导出 ```config``` 对象，以便可以在 ```app.js``` 文件中引用该对象。
 
-## <a id="Connect"></a>连接到 Azure Cosmos DB 帐户
+## <a name="connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>连接到 Azure Cosmos DB 帐户
 
 1. 在文本编辑器中打开空的 ```app.js``` 文件。 复制并粘贴以下代码，以导入 ```@azure/cosmos``` 模块和新建的 ```config``` 模块。
 
@@ -250,7 +250,7 @@ ms.locfileid: "78274037"
    node app.js
    ```
 
-## <a id="CreateContainer"></a>创建容器
+## <a name="create-a-container"></a><a id="CreateContainer"></a>创建容器
 
 接下来在 Azure Cosmos DB 帐户中创建一个容器，用于存储和查询数据。 
 
@@ -374,7 +374,7 @@ ms.locfileid: "78274037"
    node app.js
    ```
 
-## <a id="CreateItem"></a>创建项
+## <a name="create-an-item"></a><a id="CreateItem"></a>创建项
 
 可以使用 **Items** 类的 create 函数创建项。 使用 SQL API 时，项会投射为文档，后者是用户定义的（任意）JSON 内容。 现在，可以将项插入 Azure Cosmos DB 中。
 
@@ -414,7 +414,7 @@ ms.locfileid: "78274037"
    ```
 
 
-## <a id="Query"></a>查询 Azure Cosmos DB 资源
+## <a name="query-azure-cosmos-db-resources"></a><a id="Query"></a>查询 Azure Cosmos DB 资源
 
 Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查询。 下面的示例代码演示了一个可以针对容器中文档运行的查询。
 
@@ -471,7 +471,7 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
    ```
 
 
-## <a id="ReplaceItem"></a>替换项
+## <a name="replace-an-item"></a><a id="ReplaceItem"></a>替换项
 Azure Cosmos DB 支持替换项的内容。
 
 1. 复制 **replaceFamilyItem** 函数并将其粘贴到 app.js 文件的 **queryContainer** 函数下面。 请注意，我们已将某个子项的属性“grade”从以前的值 5 更改为 6。
@@ -516,7 +516,7 @@ Azure Cosmos DB 支持替换项的内容。
    ```
 
 
-## <a id="DeleteItem"></a>删除项
+## <a name="delete-an-item"></a><a id="DeleteItem"></a>删除项
 
 Azure Cosmos DB 支持删除 JSON 项。
 
@@ -561,7 +561,7 @@ Azure Cosmos DB 支持删除 JSON 项。
    ```
 
 
-## <a id="DeleteDatabase"></a>删除数据库
+## <a name="delete-the-database"></a><a id="DeleteDatabase"></a>删除数据库
 
 删除已创建的数据库会删除该数据库及其所有子资源（容器、项等）。
 
@@ -598,7 +598,7 @@ Azure Cosmos DB 支持删除 JSON 项。
       .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
    ```
 
-## <a id="Run"></a>运行 Node.js 应用程序
+## <a name="run-your-nodejs-application"></a><a id="Run"></a>运行 Node.js 应用程序
 
 总起来看，代码应如下所示：
 
@@ -649,7 +649,7 @@ node app.js
     Press any key to exit
    ```
 
-## <a id="GetSolution"></a>获取完整的 Node.js 教程解决方案 
+## <a name="get-the-complete-nodejs-tutorial-solution"></a><a id="GetSolution"></a>获取完整的 Node.js 教程解决方案 
 
 如果没有时间完成本教程中的步骤，或者只需下载代码，则可从 [GitHub](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started ) 获取。 
 

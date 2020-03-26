@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
 ms.openlocfilehash: 369c708fd3181076c6deb9d7ac9134c57a18f819
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73827089"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>快速入门：使用 .NET Core (C#) 查询 Azure SQL 数据库
@@ -25,7 +25,7 @@ ms.locfileid: "73827089"
 > [!TIP]
 > 以下 Microsoft Learn 模块可帮助你免费学习如何[开发和配置可查询 Azure SQL 数据库的 ASP.NET 应用程序](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 对于本教程的内容，你需要：
 
@@ -39,7 +39,7 @@ ms.locfileid: "73827089"
   | 配置 | [服务器级别 IP 防火墙规则](sql-database-server-level-firewall-rule.md)| [从 VM 进行连接](sql-database-managed-instance-configure-vm.md)|
   |||[从现场进行连接](sql-database-managed-instance-configure-p2s.md)
   |加载数据|根据快速入门加载的 Adventure Works|[还原 Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 所提供的 [BACPAC](sql-database-import.md) 文件还原或导入 Adventure Works|
+  |||从 [GitHub](sql-database-import.md) 所提供的 [BACPAC](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 文件还原或导入 Adventure Works|
   |||
 
   > [!IMPORTANT]
@@ -54,7 +54,7 @@ ms.locfileid: "73827089"
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
 
@@ -79,7 +79,7 @@ ms.locfileid: "73827089"
     ```
     此命令将创建新的应用项目文件，包括初始 C# 代码文件 (**Program.cs**)、XML 配置文件 (**sqltest.csproj**) 和所需的二进制文件。
 
-2. 在文本编辑器中，打开 sqltest.csproj 并在 `<Project>` 标记之间粘贴以下 XML  。 此 XML 会添加 `System.Data.SqlClient` 作为依赖项。
+2. 在文本编辑器中，打开 sqltest.csproj 并在  **标记之间粘贴以下 XML**`<Project>`。 此 XML 会添加 `System.Data.SqlClient` 作为依赖项。
 
     ```xml
     <ItemGroup>

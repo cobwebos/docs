@@ -16,10 +16,10 @@ ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e40a5f02a62d1e01e58c1d8a5ca03f0c80a75c84
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77086572"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-prisma-cloud-sso"></a>教程：Azure Active Directory 与 Prisma Cloud SSO 的单一登录 (SSO) 集成
@@ -32,7 +32,7 @@ ms.locfileid: "77086572"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -136,7 +136,7 @@ ms.locfileid: "77086572"
 
 ### <a name="create-prisma-cloud-sso-test-user"></a>创建 Prisma Cloud SSO 测试用户
 
-在本部分中，将在 Prisma Cloud SSO 中创建名为 B.Simon 的用户。 Prisma Cloud SSO 支持默认启用的实时预配。 此部分不需要你执行任何操作。 尝试访问 Prisma Cloud SSO 时，如果 Prisma Cloud SSO 中尚不存在用户，则系统会创建一个新用户。
+在本部分中，将在 Prisma Cloud SSO 中创建名为 B.Simon 的用户。 Prisma Cloud SSO 支持默认启用的实时预配。 此部分不存在任何操作项。 尝试访问 Prisma Cloud SSO 时，如果 Prisma Cloud SSO 中尚不存在用户，则系统会创建一个新用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

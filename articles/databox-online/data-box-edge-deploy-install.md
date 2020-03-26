@@ -10,10 +10,10 @@ ms.date: 01/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
 ms.openlocfilehash: fe74db34e62a80935954c6cfc2e591d49a84b0b7
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76263942"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>教程：安装 Azure Data Box Edge
@@ -29,7 +29,7 @@ ms.locfileid: "76263942"
 > * 将设备装入机架
 > * 为设备布线
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 下面是安装物理设备所要满足的先决条件：
 
@@ -86,7 +86,7 @@ ms.locfileid: "76263942"
 > Data Box Edge 设备必须安装在机架中才能正常工作。
 
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 - 在开始之前，请阅读“安全、环保和法规信息”小册子中的安全指示。 这本小册子已随设备一起交付。
 - 在最靠近机箱底部的分配空间中开始安装导轨。

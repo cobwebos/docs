@@ -17,10 +17,10 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec519e9296d8f8b5373e4db84f4efb4af5f07a9e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73153607"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>教程：Azure Active Directory 与 Allbound SSO 集成
@@ -154,7 +154,7 @@ ms.locfileid: "73153607"
 
     ![“用户”对话框](common/user-properties.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“名称”  字段中，输入 BrittaSimon  。
+    a. 在“名称”  字段中，输入 BrittaSimon  。
   
     b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
     例如： BrittaSimon@contoso.com
