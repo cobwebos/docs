@@ -1,6 +1,6 @@
 ---
 title: 使用 CLI 创建 Internet 分析器测试 | Microsoft Docs
-description: 本文将介绍如何创建你的首个 Internet 分析器测试。
+description: 本文介绍如何创建第一个 Internet 分析器测试。
 services: internet-analyzer
 author: diego-perez-botero
 ms.service: internet-analyzer
@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74184270"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>使用 CLI（预览版）创建 Internet 分析器测试
@@ -36,7 +36,7 @@ Internet 分析器 CLI 将公开以下类型的资源：
 * **时序** - 时序显示指标如何随时间变化。
 
 ## <a name="profile-and-test-creation"></a>配置文件和测试创建
-1. 按照 [Azure Internet 分析器常见问题解答](internet-analyzer-faq.md)中的“如何参与预览版？”的说明获得 Internet 分析器的预览版访问权限  。
+1. 按照 [Azure Internet 分析器常见问题解答](internet-analyzer-faq.md)的“如何参与预览？”中的说明获得 Internet 分析器的预览版访问权限  。
 2. [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 3. 运行 `login` 命令以启动 CLI 会话：
     ```azurecli-interactive
@@ -113,7 +113,7 @@ Internet 分析器 CLI 将公开以下类型的资源：
     ]
     ````
 
-12. 若要开始生成测量，必须将测试的“scriptFileUri”指向的 JavaScript 文件嵌入 Web 应用程序中  。 在[嵌入 Internet 分析器客户端](internet-analyzer-embed-client.md)页上可以找到具体说明。
+12. 若要开始生成测量，必须将测试的“scriptFileUri”指向的 JavaScript 文件嵌入 Web 应用程序中  。 可在[嵌入 Internet 分析器客户端](internet-analyzer-embed-client.md)页上找到具体的说明。
 
 13. 可以通过跟踪测试的“状态”值来监视测试的进度：
     ```azurecli-interactive

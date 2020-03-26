@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75376454"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Android 应用
@@ -28,7 +28,7 @@ ms.locfileid: "75376454"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，请确保具备以下项：
 
@@ -44,11 +44,11 @@ ms.locfileid: "75376454"
 
 ## <a name="open-the-sample-project"></a>打开示例项目
 
-# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+# <a name="java"></a>[Java](#tab/openproject-java)
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
@@ -64,11 +64,11 @@ git submodule update --init --recursive
 
 打开 Android Studio。
 
-# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+# <a name="java"></a>[Java](#tab/openproject-java)
 
 选择“打开现有 Android Studio 项目”，然后选择位于 `Android/Java/` 的项目  。
 
-# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 选择“打开现有 Android Studio 项目”，然后选择位于 `Android/NDK/` 的项目  。
 
@@ -78,7 +78,7 @@ git submodule update --init --recursive
 
 下一步是将应用程序配置为使用帐户标识符和帐户密钥。 在[设置空间定位点资源](#create-a-spatial-anchors-resource)时，将它们复制到文本编辑器中。
 
-# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+# <a name="java"></a>[Java](#tab/openproject-java)
 
 打开 `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`。
 
@@ -86,7 +86,7 @@ git submodule update --init --recursive
 
 找到 `SpatialAnchorsAccountId` 字段并将 `Set me` 替换为帐户标识符。
 
-# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+# <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
 打开 `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`。
 

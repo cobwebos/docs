@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894594"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290195"
 ---
 # <a name="what-is-azure-virtual-network"></a>什么是 Azure 虚拟网络？
 
@@ -38,7 +38,7 @@ Azure 虚拟网络 (VNet) 是 Azure 中专用网络的基本构建块。 VNet �
 - 确保地址空间不重叠。 确保 VNet 地址空间（CIDR 块）不与组织的其他网络范围重叠。
 - 子网不应涵盖 VNet 的整个地址空间。 提前规划，为将来留出一些地址空间。
 - 建议使用少量的大型 VNet，而不要使用多个小型 VNet。 这可以防止出现管理开销。
-- 使用网络完全组 (NSG) 保护 VNet。
+- 通过将网络安全组 (NSG) 分配给 VNet 下的子网来保护 VNet。
 
 ## <a name="communicate-with-the-internet"></a>与 Internet 通信
 

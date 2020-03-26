@@ -14,21 +14,21 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ms.openlocfilehash: 9f16ebc5acff7bbccc9de28e2fab0d223c6e244b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68640013"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：使用 Azure SQL 数据库机器学习服务（预览版）在 R 中生成聚类模型
 
 在这个由三部分组成的教程系列的第二部分中，你将在 R 中构建一个 K-Means 模型来执行聚类分析。 在本系列的下一部分中，将使用 Azure SQL 数据库机器学习服务（预览版）在 SQL 数据库中部署此模型。
 
-本文将介绍如何执行以下操作：
+本文将指导如何进行以下操作：
 
 > [!div class="checklist"]
-> * 定义 K 平均值算法的聚类数
-> * 执行聚类
+> * 定义 K-Means 算法的群集数
+> * 执行聚类分析
 > * 分析结果
 
 在[第 1 部分](sql-database-tutorial-clustering-model-prepare-data.md)中，你已了解如何准备 Azure SQL 数据库中的数据，以执行聚类分析。
@@ -41,15 +41,15 @@ ms.locfileid: "68640013"
 
 * 本教程的第二部分假定你已完成[**第一部分**](sql-database-tutorial-clustering-model-prepare-data.md)及其先决条件。
 
-## <a name="define-the-number-of-clusters"></a>定义聚类数
+## <a name="define-the-number-of-clusters"></a>定义群集数
 
-若要聚类客户数据，可以使用“K 平均值”聚类算法 - 最简单、最有名的数据分组方式。 
-可以在 [K 平均值聚类算法完整指南](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html)中详细了解 K 平均值。
+若要对客户数据进行聚类分析，需要使用 K-Means 聚类分析算法，这是最简单、最常见的数据分组方法之一  。
+有关 K-Means 的详细信息，请参阅 [K-means 聚类分析算法的完整指南](https://www.kdnuggets.com/2019/05/guide-k-means-clustering-algorithm.html)。
 
-该算法接受两种输入：数据本身，以及预定义的数字“*k*”（代表要生成的聚类数）。
-输出为 *k* 个聚类，其中包含已在聚类之间分区的输入数据。
+该算法接受两个输入：数据本身，以及代表要生成的群集数的预定义数字“k”  。
+输出是 K 个群集，输入数据在群集之间进行分区  。
 
-若要确定算法使用的聚类数，请使用组内平方和乘以提取的聚类数绘图。 要使用的适当聚类数位于绘图的转折或“拐弯”处。
+要确定要使用的算法的群集数，请使用组内平方和的图，并按提取的群集数进行绘制。 要使用的适当群集数是在曲线的折弯处或“肘形”处。
 
 ```r
 # Determine number of clusters by using a plot of the within groups sum of squares,
@@ -60,11 +60,11 @@ for (i in 2:20)
 plot(1:20, wss, type = "b", xlab = "Number of Clusters", ylab = "Within groups sum of squares")
 ```
 
-![拐弯图](./media/sql-database-tutorial-clustering-model-build/elbow-graph.png)
+![肘形图](./media/sql-database-tutorial-clustering-model-build/elbow-graph.png)
 
-根据图形，*k = 4* 似乎是可以尝试的适当值。 该 *k* 值会将客户分组为四个聚类。
+根据该图，看起来 k = 4 将是一个不错的尝试值  。 该 ķ 值将客户分组为四个群集  。
 
-## <a name="perform-clustering"></a>执行聚类
+## <a name="perform-clustering"></a>执行聚类分析
 
 以下 R 脚本使用函数 **rxKmeans**，即 RevoScaleR 包中的 K 平均值函数。
 
@@ -122,18 +122,18 @@ Within cluster sum of squares by cluster:
     0.0000  1329.0160 18561.3157   363.2188
 ```
 
-使用[第 1 部分](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers)中定义的变量可获得四个聚类平均值：
+使用[第一部分](sql-database-tutorial-clustering-model-prepare-data.md#separate-customers)中定义的变量给出四种群集平均值：
 
-* *orderRatio* = 退货订单率（部分退货或全部退货的订单总数与订单总数之比）
-* *itemsRatio* = 退货率（退货总数与采购货品数之比）
-* *monetaryRatio* = 退货金额率（退货的总货币金额与采购金额之比）
-* *frequency* = 退货频率
+* orderRatio = 退单率（部分或全部退货的订单总数与订单总数的比率） 
+* itemsRatio = 退货率（退货总数与购买商品数量的比率） 
+* monetaryRatio = 退款率（退货的总货币金额与购买总金额的比率） 
+* frequency = 退货频率 
 
-使用 K 平均值的数据挖掘经常需要进一步分析结果，并采取更多的步骤来更好地了解每个聚类，但可以提供一些很好的线索。
-可通过以下几种方式来解释这些结果：
+使用 K-Means 进行数据挖掘通常需要对结果进行进一步的分析，并采取进一步的步骤以更好地理解每个群集，但是它可以提供一些优秀的潜在顾客。
+下面通过以下几种方法来解释这些结果：
 
 * 聚类 1（最大聚类）似乎是不太活跃的客户组（所有值均为零）。
-* 聚类 3 似乎是在退货行为方面较为突出的组。
+* 群集 3 似乎是一个在返回行为方面出现的组。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -148,10 +148,10 @@ Within cluster sum of squares by cluster:
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程系列的第二部分，你已完成以下步骤：
+在本教程系列的第二部分中，你已完成这些步骤：
 
-* 定义 K 平均值算法的聚类数
-* 执行聚类
+* 定义 K-Means 算法的群集数
+* 执行聚类分析
 * 分析结果
 
 若要部署已创建的机器学习模型，请遵循本教程系列的第三部分：

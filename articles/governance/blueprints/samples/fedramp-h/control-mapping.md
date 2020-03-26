@@ -4,10 +4,10 @@ description: FedRAMP High 蓝图示例的控制映射。 每个控制都映射�
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: cceca23e4bdc749c553eaf41b5f9599be3c9bf7d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77150606"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High 蓝图示例的控制映射

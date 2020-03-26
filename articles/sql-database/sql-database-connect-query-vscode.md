@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: 28b35f273783b2e4d0b8f59c5bc5be384b933ba2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73826893"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>快速入门：使用 Visual Studio Code 连接和查询 Azure SQL 数据库
@@ -72,7 +72,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
 
@@ -105,14 +105,14 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 4. 按照提示指定新配置文件的连接属性。 指定每个值后，选择“Enter”继续  。
 
-   | 属性       | 建议的值 | 说明 |
+   | properties       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **服务器名称** | 完全限定的服务器名称 | 类似于：mynewserver20170313.database.windows.net  。 |
    | **数据库名称** | mySampleDatabase | 要连接到的数据库。 |
    | **身份验证** | SQL 登录名| 本教程使用 SQL 身份验证。 |
    | **用户名** | 用户名 | 用于创建服务器的服务器管理员帐户的用户名。 |
    | **密码(SQL 登录名)** | 密码 | 用于创建服务器的服务器管理员帐户的密码。 |
-   | **保存密码?** | 是或否 | 如果不希望每次都输入密码，则请选择“是”  。 |
+   | **是否保存密码？** | 是或否 | 如果不希望每次都输入密码，则请选择“是”  。 |
    |  输入此配置文件的名称 | 配置文件名称，例如 mySampleProfile  | 保存配置文件可以在后续登录时加快连接速度。 |
 
    如果成功，会显示通知，指出已创建并连接配置文件。

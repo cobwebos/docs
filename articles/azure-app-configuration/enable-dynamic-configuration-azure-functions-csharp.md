@@ -16,17 +16,17 @@ ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
 ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74187291"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>教程：在 Azure Functions 应用中使用动态配置
 
 应用程序配置 .NET Standard 配置提供程序支持缓存和动态刷新由应用程序活动驱动的配置。 本教程演示如何在代码中实现动态配置更新。 它建立在本快速入门中介绍的 Azure Functions 应用之上。 在继续本教程之前，请先完成[使用 Azure 应用程序配置创建 Azure Functions 应用](./quickstart-azure-functions-csharp.md)这一教程。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置 Azure Functions 应用，使其能够更新配置以响应应用程序配置存储区中的更改。
@@ -110,7 +110,7 @@ ms.locfileid: "74187291"
 
     ![本地函数启动快速入门](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-5. 登录到 [Azure 门户](https://portal.azure.com)。 选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区实例  。
+5. 登录 [Azure 门户](https://portal.azure.com)。 选择“所有资源”，然后选择在快速入门中创建的应用程序配置存储区实例  。
 
 6. 选择“配置资源管理器”并更新以下密钥值  ：
 

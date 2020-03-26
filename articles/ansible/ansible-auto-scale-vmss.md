@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, playbook, 缩放, 自动缩放, 虚拟�
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: fb8d2a4bfca32be4575ca8f11018e5cab17cd9a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156811"
 ---
 # <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>教程：使用 Ansible 在 Azure 中自动缩放虚拟机规模集
@@ -85,7 +85,7 @@ ansible-playbook vmss-auto-scale.yml
 
 ## <a name="autoscale-based-on-performance-data"></a>按性能数据自动缩放
 
-如果应用程序需求提高，规模集中 VM 实例上的负载将会增大。 如果这种负载增大持续稳定，而不只是短暂的需求，那么可以配置自动缩放规则来增加规模集中的 VM 实例数。 创建这些 VM 实例并部署应用程序后，规模集会开始通过负载均衡器将流量分配到这些实例和应用程序。 通过 Ansible 可控制 CPU 使用情况、磁盘使用情况和应用加载时间等要监视的指标。 可根据性能指标阈值，按定期计划或特定日期缩放和扩展规模集。 
+如果应用程序需求提高，规模集中 VM 实例上的负载将会增大。 如果这种负载增大持续稳定，而不只是短暂的需求，那么可以配置自动缩放规则来增加规模集中的 VM 实例数。 创建这些 VM 实例并部署应用程序后，规模集会开始通过负载均衡器将流量分配到这些实例和应用程序。 通过 Ansible 可控制 CPU 使用情况、磁盘使用情况和应用加载时间等要监视的指标。 可根据性能指标阈值，按定期计划或特定日期横向缩减和横向扩展规模集。 
 
 本部分的 playbook 代码在每周一下午 6 点检查过去 10 分钟的 CPU 工作负载。 
 

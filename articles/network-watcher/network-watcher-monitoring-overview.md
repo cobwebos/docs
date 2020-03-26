@@ -15,10 +15,10 @@ ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844983"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure 网络观察程序是什么？
@@ -27,7 +27,7 @@ Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟�
 
 ## <a name="monitoring"></a>监视
 
-### <a name = "connection-monitor"></a>监视虚拟机与终结点之间的通信
+### <a name="monitor-communication-between-a-virtual-machine-and-an-endpoint"></a><a name = "connection-monitor"></a>监视虚拟机与终结点之间的通信
 
 终结点可以是另一个虚拟机 (VM)、完全限定的域名 (FQDN)、统一资源标识符 (URI) 或 IPv4 地址。 连接监视器功能定期监视通信，并告知 VM 与终结点之间的可访问性、延迟和网络拓扑变化。  例如，你使用了一个 Web 服务器 VM 来与数据库服务器 VM 通信。 组织中你不认识的某个人可能对 Web 服务器、数据库服务器 VM 或子网应用了自定义的路由或网络安全规则。
 
@@ -55,7 +55,7 @@ Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟�
 
 创建虚拟网络时，Azure 将为网络流量创建多个默认出站路由。 来自虚拟网络中部署的所有资源（例如 VM）的出站流量将会根据 Azure 的默认路由进行路由。 可以替代 Azure 的默认路由，或创建其他路由。 你可能发现，特定的路由导致 VM 不再能够与其他资源通信。 使用下一个跃点功能可以指定源和目标 IPv4 地址。  下一跃点会测试通信，并告知使用了哪种类型的下一跃点来路由流量。 然后，可以删除、更改或添加路由，以解决路由问题。 详细了解[下一跃点](diagnose-vm-network-routing-problem.md)功能。
 
-### <a name="connection-troubleshoot"></a>诊断 VM 的出站连接
+### <a name="diagnose-outbound-connections-from-a-vm"></a><a name="connection-troubleshoot"></a>诊断 VM 的出站连接
 
 使用连接故障排除功能可以测试 VM 与另一个 VM、FQDN、URI 或 IPv4 地址之间的连接。  该项测试返回的信息与使用[连接监视器](#connection-monitor)功能返回的信息类似，但测试的是某个时间点的连接，而不是像连接监视器那样监视各时间段的连接。 详细了解如何使用[连接故障排除](network-watcher-connectivity-overview.md)来排查连接问题。
 

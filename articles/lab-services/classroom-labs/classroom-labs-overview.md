@@ -14,10 +14,10 @@ ms.topic: overview
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.openlocfilehash: bbbea0c943758c2682f7b166e461807d2914f790
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74561676"
 ---
 # <a name="introduction-to-classroom-labs"></a>教室实验室简介

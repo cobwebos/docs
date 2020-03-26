@@ -9,10 +9,10 @@ ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
 ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494160"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用交互式查询提取、转换和加载数据
@@ -42,7 +42,7 @@ ms.locfileid: "73494160"
 
 2. 在页面上，清除所有字段，然后选择以下值：
 
-   | Name | 值 |
+   | 名称 | 值 |
    | --- | --- |
    | 筛选年份 |2019 |
    | 筛选期间 |1 月 |

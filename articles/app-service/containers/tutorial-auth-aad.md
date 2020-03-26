@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.custom: seodec18
 ms.openlocfilehash: 71aec33d5afe1a909f460ddae2d5cb0552857fee
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74688938"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>教程：在 Linux 上的 Azure 应用服务中对用户进行端到端身份验证和授权
@@ -44,7 +44,7 @@ ms.locfileid: "74688938"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 * [安装 Git](https://git-scm.com/)。
 * [安装 .NET Core](https://www.microsoft.com/net/core/)。
@@ -264,7 +264,7 @@ git push frontend master
 
 ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/tutorial-auth-aad/resources-enable-write.png)
 
-在左侧浏览器中，单击“订阅”   >    \<your-subscription>  > “resourceGroups”   > “myAuthResourceGroup”   > “提供程序”   > “Microsoft.Web”   > “站点”   >  \<front-end-app-name>    > “配置”   > “authsettings”  。
+在左侧浏览器中，单击“订阅”   >    \<your-subscription>  > “resourceGroups”   > “myAuthResourceGroup”   > “提供程序”   > “Microsoft.Web”   > “站点”   > \<front-end-app-name>    > “配置”   > “authsettings”  。
 
 在“authsettings”  视图中，单击“编辑”  。 使用复制的客户端 ID 将 `additionalLoginParams` 设置为以下 JSON 字符串。 
 
@@ -428,7 +428,7 @@ az group delete --name myAuthResourceGroup
 > * 使用服务器代码中的访问令牌
 > * 使用客户端（浏览器）代码中的访问令牌
 
-转到下一教程，了解如何将自定义 DNS 名称映射到应用。
+继续学习下一篇教程，了解如何将自定义 DNS 名称映射到应用。
 
 > [!div class="nextstepaction"]
 > [将现有的自定义 DNS 名称映射到 Azure 应用服务](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

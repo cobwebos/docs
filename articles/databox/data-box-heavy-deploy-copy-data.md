@@ -10,11 +10,11 @@ ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 475e628901a96334976dbdbbaa8b362197ec3bc3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914036"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214201"
 ---
 ::: zone target = "docs"
 
@@ -32,7 +32,7 @@ ms.locfileid: "70914036"
 
 本教程介绍如何使用本地 Web UI 连接到主机并从中复制数据。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 连接到 Data Box Heavy
@@ -164,14 +164,14 @@ sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/data
 
 连接到 SMB 共享后，开始数据复制。
 
-1. 可以使用与 SMB 兼容的任何文件复制工具（例如 Robocopy）复制数据。 可以使用 Robocopy 启动多个复制作业。 请使用以下命令：
+1. 可以使用与 SMB 兼容的任何文件复制工具（例如 Robocopy）复制数据。 可以使用 Robocopy 启动多个复制作业。 使用以下命令：
     
     ```
     robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile>
     ```
     下表描述了属性。
     
-    |属性  |说明  |
+    |Attribute  |说明  |
     |---------|---------|
     |/e      |复制包括空目录的子目录。         |
     |/r:     |指定复制失败时的重试次数。         |
@@ -270,7 +270,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/data
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了有关 Azure Data Box Heavy 的主题，例如：
+本教程介绍了 Azure Data Box Heavy 主题，例如：
 
 > [!div class="checklist"]
 > * 连接到 Data Box Heavy

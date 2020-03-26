@@ -17,10 +17,10 @@ ms.date: 11/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d3e3f86d761a686993e6ecf32718aa2e15dac92
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74534614"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-qmarkets-idea--innovation-management"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Qmarkets Idea & Innovation Management 集成
@@ -91,7 +91,7 @@ ms.locfileid: "74534614"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<app_url>/sso/saml2/acs/qmarkets_sp_<endpoint_id>`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<app_url>/sso/saml2/endpoint/qmarkets_sp_<endpoint_id>`
 

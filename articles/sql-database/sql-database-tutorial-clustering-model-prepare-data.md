@@ -14,23 +14,23 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ms.openlocfilehash: 800dbfc05c47a949bf024e9a5c671979b49ad201
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68639972"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：准备数据以使用 Azure SQL 数据库机器学习服务（预览版）在 R 中执行聚类
 
 在这个由三部分组成的教程系列的第一部分中，将使用 R 从 Azure SQL 数据库导入和准备数据。在此系列中的后面部分，将通过 Azure SQL 数据库机器学习服务（预览版）借助 R 语言使用该数据训练和部署聚类分析模型。
 
-“聚类”是指将数据组织成组，其中的成员在某个方面具有类似性。 
-你将使用“K 平均值”算法针对某个产品采购和退货数据集中的客户执行聚类。  将客户聚类之后，可以专门针对特定的组，以更有效的方式展开营销活动。
-K 平均值聚类是一种非监督式学习算法，它会在数据中根据类似性查找模式。 
+聚类分析可解释为将数据组织成组，其中一个组的成员在某些方面类似  。
+你将使用 K-Means 算法在产品购买及退货的数据集中执行针对客户的聚类分析  。 通过对客户进行聚类分析，可以将特定组定为目标，更加高效地专注于市场营销工作。
+K-Means 群集是一种无监督式学习算法，该算法根据相似性寻找数据中的规律  。
 
 在此系列的第一部分和第二部分中，将在 RStudio 中开发一些 R 脚本，以便准备数据和训练机器学习模型。 然后，在第三部分中，将使用存储过程在 SQL 数据库中运行这些 R 脚本。
 
-本文将介绍如何执行以下操作：
+本文将指导如何进行以下操作：
 
 > [!div class="checklist"]
 > * 将示例数据库导入 Azure SQL 数据库
@@ -57,11 +57,11 @@ K 平均值聚类是一种非监督式学习算法，它会在数据中根据类
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="import-the-sample-database"></a>导入示例数据库
 
-本教程中使用的示例数据集已保存到 .bacpac 数据库备份文件中，可供下载和使用  。 此数据集派生自[事务处理性能委员会 (TPC)](http://www.tpc.org/default.asp) 提供的 [tpcx-bb](http://www.tpc.org/tpcx-bb/default.asp) 数据集。
+本教程中使用的示例数据集已保存到 .bacpac 数据库备份文件中，可供下载和使用  。 此数据集派生自 [事务处理性能委员会 (TPC)](http://www.tpc.org/default.asp) 提供的 [tpcx-bb](http://www.tpc.org/tpcx-bb/default.asp) 数据集。
 
 1. 下载文件 [tpcxbb_1gb.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac)。
 
@@ -76,10 +76,10 @@ K 平均值聚类是一种非监督式学习算法，它会在数据中根据类
 在 RStudio 中创建新的 RScript 文件并运行以下脚本。
 在 SQL 查询中，在以下维上分隔客户：
 
-* **orderRatio** = 退货订单率（部分退货或全部退货的订单总数与订单总数之比）
-* **itemsRatio** = 退货率（退货总数与采购货品数之比）
-* **monetaryRatio** = 退货金额率（退货的总货币金额与采购金额之比）
-* **frequency** = 退货频率
+* orderRatio = 退单率（部分或全部退货的订单总数与订单总数的比率） 
+* itemsRatio = 退货率（退货总数与购买商品数量的比率） 
+* monetaryRatio = 退款率（退货的总货币金额与购买总金额的比率） 
+* frequency = 退货频率 
 
 在 **paste** 函数中，将 **Server**、**UID** 和 **PWD** 替换为你自己的连接信息。
 
@@ -156,7 +156,7 @@ LEFT OUTER JOIN (
 "
 ```
 
-## <a name="load-the-data-into-a-data-frame"></a>将数据加载到数据帧
+## <a name="load-the-data-into-a-data-frame"></a>将数据加载到数据帧中
 
 现在，运行以下脚本以使用 **rxSqlServerData** 函数将查询结果返回给 R 数据帧。
 在此过程中，需要定义所选列的类型（使用 colClasses），以确保将类型正确传输到 R。
@@ -182,7 +182,7 @@ customer_data <- rxDataStep(customer_returns);
 head(customer_data, n = 5);
 ```
 
-应看到如下所示的结果。
+可得到类似于下面的结果。
 
 ```results
   customer orderRatio itemsRatio monetaryRatio frequency
@@ -206,7 +206,7 @@ head(customer_data, n = 5);
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程系列的第一部分，你已完成以下步骤：
+在本系列教程的第一部分中，你已完成以下步骤：
 
 * 将示例数据库导入 Azure SQL 数据库
 * 使用 R 沿不同维度分离客户

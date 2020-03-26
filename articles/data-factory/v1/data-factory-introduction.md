@@ -1,6 +1,6 @@
 ---
 title: 数据工厂（数据集成服务）简介
-description: 了解什么是 Azure 数据工厂：协调和自动执行数据移动和转换的云数据集成服务。
+description: 了解 Azure 数据工厂的定义：一种云数据集成服务，可对数据的移动和转换进行协调和自动化。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
 ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73666806"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
@@ -118,7 +118,7 @@ Azure 数据工厂中的管道（数据驱动型工作流）通常执行以下�
 
 ### <a name="relationship-between-data-factory-entities"></a>数据工厂实体之间的关系
 
-![示意图：数据工厂（一种云数据集成服务）- 重要概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![示意图：数据工厂（云数据集成服务）- 重要概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>支持的区域
 目前可在美国西部、美国东部和北欧区域创建数据工厂。 但是，数据工厂可以访问其他 Azure 区域的数据存储和计算数据，在数据存储之间移动数据或使用计算服务处理数据。

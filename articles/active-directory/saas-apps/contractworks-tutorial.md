@@ -17,10 +17,10 @@ ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d18676e0a8a4f366237a71784436580a8069e53
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70743618"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contractworks"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ContractWorks 集成

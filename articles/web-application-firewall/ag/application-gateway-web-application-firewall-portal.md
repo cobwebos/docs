@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 68a9f051bf3d59cbf32377cb503e9ded0a54d5e9
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74049217"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户创建具有 Web 应用程序防火墙的应用程序网关
 
 本教程演示如何使用 Azure 门户创建具有 Web 应用程序防火墙 (WAF) 的应用程序网关。 WAF 使用 [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 规则保护应用程序。 这些规则包括针对各种攻击（例如 SQL 注入、跨站点脚本攻击和会话劫持）的保护。 创建应用程序网关后，请测试该网关以确保其正常运行。 使用 Azure 应用程序网关，可以为端口分配侦听器、创建规则以及向后端池添加资源，以便将应用程序 Web 流量定向到特定资源。 为简单起见，本教程使用了带有公共前端 IP 的简单设置、在此应用程序网关上托管单个站点的基本侦听器、用于后端池的两台虚拟机以及基本请求传递规则。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建启用 WAF 的应用程序网关
@@ -60,7 +60,7 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
     在“配置虚拟网络”下，通过选择“新建”创建新的虚拟网络   。 在打开的“创建虚拟网络”窗口中，输入以下值以创建虚拟网络和两个子网  ：
 
-    - **名称**：输入 *myVNet* 作为虚拟网络的名称。
+    - **Name**：输入 *myVNet* 作为虚拟网络的名称。
 
     - **子网名称**（应用程序网关子网）：子网网关将显示名为“默认值”的子网   。 将此子网的名称更改为 myAGSubnet  。<br>应用程序网关子网只能包含应用程序网关。 不允许其他资源。
 
@@ -94,7 +94,7 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
 2. 在打开的“添加后端池”窗口中，输入以下值以创建空的后端池  ：
 
-    - **名称**：输入“myBackendPool”作为后端池的名称  。
+    - **Name**：输入“myBackendPool”作为后端池的名称  。
     - **添加不包含目标的后端池**：选择“是”以创建不包含目标的后端池  。 你将在创建应用程序网关之后添加后端目标。
 
 3. 在“添加后端池”窗口中，选择“添加”以保存后端池配置并返回到“后端”选项卡    。

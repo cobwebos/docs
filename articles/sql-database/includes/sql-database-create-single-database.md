@@ -7,10 +7,10 @@ ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
 ms.openlocfilehash: c1ca87b6e7b8afb50522e73107707e15782a0a91
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79199969"
 ---
 在此步骤中，你将创建一个 Azure SQL 数据库服务器和一个使用 AdventureWorksLT 示例数据的数据库。 可以通过使用 Azure 门户菜单和屏幕，或通过在 Azure Cloud Shell 中使用 Azure CLI 或 PowerShell 脚本来创建数据库。
@@ -56,13 +56,13 @@ ms.locfileid: "79199969"
    
    进行更改后，请选择“应用”  。
    
-1. 在页面底部选择“下一步:  网络”。
+1. 在完成时选择“下一步:  网络”。
    
    ![新建 SQL 数据库 -“基本信息”选项卡](../media/sql-database-single-database-get-started/new-sql-database-basics.png)
    
 1. 在“网络”  选项卡上的“连接方法”  下，选择“公共终结点”  。 
 1. 在  “防火墙规则”下，将“添加当前客户端 IP 地址”  设置为“是”  。
-1. 在页面底部选择“下一步:  其他设置”。
+1. 在完成时选择“下一步:  其他设置”。
    
    ![“网络”选项卡](../media/sql-database-single-database-get-started/networking.png)
    
@@ -147,7 +147,7 @@ az sql db create \
 
 前面的代码使用以下 Azure CLI 命令：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | 将订阅设置为当前的活动订阅。 | 
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
@@ -235,7 +235,7 @@ az sql db create \
 
 前面的代码使用以下 PowerShell 命令：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
