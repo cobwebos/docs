@@ -7,10 +7,10 @@ ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
 ms.openlocfilehash: e3d984fee75dcdb8d4e14e7b454e74a3f7c629f2
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75730133"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>快速入门：将 .NET Reliable Services 应用程序部署到 Service Fabric
@@ -30,7 +30,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 * 跨多个节点横向扩展应用程序
 * 执行应用程序滚动升级
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本快速入门教程需要：
 
@@ -82,9 +82,9 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 右键单击“开始”菜单中的 Visual Studio 图标，再选择“以管理员身份运行”  。 若要将调试程序附加到服务，需要以管理员身份运行 Visual Studio。
 
-从克隆的存储库中打开“Voting.sln” Visual Studio 解决方案。 
+从克隆的存储库中打开 Voting.sln  Visual Studio 解决方案。
 
-默认情况下，Voting 应用程序侦听 8080 端口。  应用程序端口在 */VotingWeb/PackageRoot/ServiceManifest.xml* 文件中进行设置。  可以通过更新**终结点**元素的 **Port** 属性来更改应用程序端口。  若要在本地部署和运行应用程序，应用程序端口必须为打开状态且在你的计算机上可用。  如果更改了应用程序端口，请将本文中的“8080”替换为新的应用程序端口值。
+默认情况下，Voting 应用程序在端口 8080 上侦听。  应用程序端口在 */VotingWeb/PackageRoot/ServiceManifest.xml* 文件中进行设置。  可以通过更新**终结点**元素的 **Port** 属性来更改应用程序端口。  若要在本地部署和运行应用程序，应用程序端口必须为打开状态且在你的计算机上可用。  如果更改应用程序端口，请通篇将本文中的“8080”替换为新的应用程序端口值。
 
 若要部署应用程序，请按 F5  。
 
@@ -139,8 +139,8 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
      ![添加投票后端服务](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-   - 在方法的第一行 (1)  ，`StateManager` 获取或添加一个可靠字典 `counts`。
-   - 与可靠字典中的值进行的所有交互都需要使用事务，这个 using 语句 (2)  负责创建此事务。
+   - 在方法 (1) 的第一行  ，`StateManager` 获取或添加一个可靠字典 `counts`。
+   - 与可靠字典中的值进行的所有交互都需要使用事务，这个 using 语句（图中标识为2）  负责创建此事务。
    - 在事务中更新投票选项的相关键值，并提交操作  (3)。 提交方法返回后，便会更新字典中的数据，并将数据复制到群集中的其他节点。 数据现在安全地存储在群集中，并且后端服务可以故障转移到其他节点，同时数据仍可用。
 5. 按 F5  以继续操作
 
@@ -170,8 +170,8 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
     运行升级期间，仍可以使用应用程序。 由于在群集中运行的服务有两个实例，因此一些请求可能会获取升级版应用程序，另一些请求可能仍获取旧版应用程序。
 
-11. 打开浏览器，并转到 19080 端口上的群集地址。 例如，`http://localhost:19080/` 。
-12. 单击树视图中的“应用程序”  节点，再单击右侧窗格中的“正在进行的升级”  。 可以了解如何通过群集中的升级域滚动升级，同时确保在继续执行下一步之前每个域都能够正常运行。 在验证域运行状况后，进度栏中的升级域将显示为绿色。
+11. 打开浏览器，并在端口 19080 上转到群集地址。 例如，`http://localhost:19080/` 。
+12. 单击树视图中的“应用程序”  节点，再单击右侧窗格中的“进行中的升级”  。 可以了解如何通过群集中的升级域滚动升级，同时确保在继续执行下一步之前每个域都能够正常运行。 在验证域运行状况后，进度栏中的升级域将显示为绿色。
     ![Service Fabric Explorer 中的升级视图](./media/service-fabric-quickstart-dotnet/upgrading.png)
 
     Service Fabric 在升级群集中每个节点上的服务后等待两分钟，从而确保升级安全性。 预计整个更新大约需要 8 分钟的时间。

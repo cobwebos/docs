@@ -17,10 +17,10 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: f7429a6de05a301b579354d722ad354b78ce6cbf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70899676"
 ---
 # <a name="create-a-cicd-pipeline-for-go-by-using-azure-devops-projects"></a>使用 Azure DevOps Projects 创建适用于 Go 的 CI/CD 管道
@@ -33,7 +33,7 @@ ms.locfileid: "70899676"
 
 DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Projects 还可以在所选的 Azure 订阅中创建 Azure 资源。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左窗格中，选择“创建资源”  。
 
@@ -45,7 +45,7 @@ DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的
 
 1. 选择 **Go** 示例应用，然后选择“下一步”。   
     
-1. **示例 Go 应用**是默认的框架。 选择“**下一步**”。  
+1. **示例 Go 应用**是默认的框架。 选择“**下一页**”。  
     前面选择的应用框架规定了可用于部署的 Azure 服务部署目标的类型。 
     
 1. 保留默认 Azure 服务，然后选择“下一步”。 
@@ -107,7 +107,7 @@ DevOps Projects 会自动在 Azure Repos 中配置一个完整的 CI/CD 管道�
     此窗格显示最近针对生成所做的更改的审核线索。 Azure DevOps 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 
 1. 选择“触发器”。   
-    DevOps Projects 会自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 （可选）可以选择在 CI 过程中包括或排除分库。
+    DevOps Projects 会自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 （可选）可以选择在 CI 过程中包括或排除分支。
 
 1. 选择“保留期”。   
     可以根据方案指定策略，以保留或删除特定数目的生成。

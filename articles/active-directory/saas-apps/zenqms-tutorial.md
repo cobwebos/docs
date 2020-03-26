@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 2104768f8842910bf83239e86106d288d7ad9baf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>教程：Azure Active Directory 与 ZenQMS 的集成
@@ -34,7 +34,7 @@ ms.locfileid: "67086340"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 ZenQMS 的集成，需要以下项：
 
@@ -130,7 +130,7 @@ ms.locfileid: "67086340"
 
 ### <a name="configure-zenqms-single-sign-on"></a>配置 ZenQMS 单一登录
 
-若要在“ZenQMS”端配置单一登录，需将应用联合元数据 URL 发送给 [ZenQMS 支持团队](mailto:help@zenqms.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在“ZenQMS”端配置单一登录，需将应用联合元数据 URL 发送给   [ZenQMS 支持团队](mailto:help@zenqms.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -150,7 +150,7 @@ ms.locfileid: "67086340"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 

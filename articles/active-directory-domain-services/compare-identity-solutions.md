@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 01/22/2020
 ms.author: iainfou
 ms.openlocfilehash: d2495605cccf658b15e812fd85fd65671e84d15b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76544270"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自我管理型 Azure Active Directory 域服务、Azure Active Directory 和托管型 Azure Active Directory 域服务的比较
@@ -102,7 +102,7 @@ Azure AD DS 提供传统自我管理型 AD DS 环境的一小部分功能，这�
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | 设备控制方            | Azure AD                                            | Azure AD DS 托管域                                                |
 | 在目录中的表示形式 | Azure AD 目录中的设备对象            | Azure AD DS 托管域中的计算机对象                        |
-| 身份验证                  | 基于 OAuth/OpenID Connect 的协议              | Kerberos 和 NTLM 协议                                               |
+| Authentication                  | 基于 OAuth/OpenID Connect 的协议              | Kerberos 和 NTLM 协议                                               |
 | 管理                      | Intune 等移动设备管理 (MDM) 软件 | 组策略                                                              |
 | 网络                      | 通过 Internet 工作                             | 必须连接到部署管理域的虚拟网络或与其对等互连 |
 | 非常适合用于...                    | 最终用户移动设备或台式机设备                  | 在 Azure 中部署的服务器 VM                                              |

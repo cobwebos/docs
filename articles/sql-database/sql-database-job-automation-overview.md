@@ -9,17 +9,18 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/07/2020
-ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: dcaaf3c2f793e7148e1695cdfaa68c768db5fff6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382322"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215455"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用数据库作业自动完成管理任务
 
-Azure SQL 数据库允许创建和计划可针对一个或多个数据库定期执行的作业，以运行 T-SQL 查询和执行维护任务。 每个作业会记录执行状态，如果发生任何失败，则还会自动重试操作。
+Azure SQL 数据库允许创建和计划可针对一个或多个数据库定期执行的作业，以运行 T-SQL 查询和执行维护任务。
+每个作业会记录执行状态，如果发生任何失败，则还会自动重试操作。
 可以定义目标数据库或者要在其中执行作业的 Azure SQL 数据库组，同时定义作业的运行计划。
 作业可以处理登录到目标数据库的任务。 此外，可以定义、维护以及保存要跨一组 Azure SQL 数据库执行的 Transact-SQL 脚本。
 
@@ -48,10 +49,10 @@ Azure SQL 数据库允许创建和计划可针对一个或多个数据库定期�
 
 值得注意的是，SQL 代理（可以在本地使用以及作为 SQL 数据库托管实例的一部分使用）与数据库弹性作业代理（适用于 Azure SQL 数据库中的单一数据库和 SQL 数据仓库中的数据库）之间存在一些差异。
 
-|  |弹性作业  |SQL 代理 |
+| |弹性作业 |SQL 代理 |
 |---------|---------|---------|
-|范围     |  作业代理所在 Azure 云中任意数目的 Azure SQL 数据库和/或数据仓库。 目标可以位于不同的 SQL 数据库服务器、订阅和/或区域中。 <br><br>目标组可以包含单个数据库或数据仓库，也可以包含某个服务器、池或分片映射中的所有数据库（在作业运行时动态枚举）。 | SQL 代理所在 SQL Server 实例中的任何单个数据库。 |
-|支持的 API 和工具     |  门户、PowerShell、T-SQL、Azure 资源管理器      |   T-SQL、SQL Server Management Studio (SSMS)     |
+|范围 | 作业代理所在 Azure 云中任意数目的 Azure SQL 数据库和/或数据仓库。 目标可以位于不同的 SQL 数据库服务器、订阅和/或区域中。 <br><br>目标组可以包含单个数据库或数据仓库，也可以包含某个服务器、池或分片映射中的所有数据库（在作业运行时动态枚举）。 | SQL 代理所在 SQL Server 实例中的任何单个数据库。 |
+|支持的 API 和工具 | 门户、PowerShell、T-SQL、Azure 资源管理器 | T-SQL、SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL 代理作业
 
@@ -106,8 +107,8 @@ EXECUTE msdb.dbo.sysmail_add_account_sp
     @email_address = '$(loginEmail)',
     @display_name = 'SQL Agent Account',
     @mailserver_name = '$(mailserver)' ,
-    @username = '$(loginEmail)' ,  
-    @password = '$(password)' 
+    @username = '$(loginEmail)' ,
+    @password = '$(password)'
 
 -- Create a Database Mail profile
 EXECUTE msdb.dbo.sysmail_add_profile_sp
@@ -125,13 +126,13 @@ EXECUTE msdb.dbo.sysmail_add_profileaccount_sp
 
 ```sql
 GO
-EXEC sp_configure 'show advanced options', 1;  
-GO  
-RECONFIGURE;  
-GO  
-EXEC sp_configure 'Database Mail XPs', 1;  
-GO  
-RECONFIGURE 
+EXEC sp_configure 'show advanced options', 1;
+GO
+RECONFIGURE;
+GO
+EXEC sp_configure 'Database Mail XPs', 1;
+GO
+RECONFIGURE
 ```
 
 可以通知操作员 SQL 代理作业发生了问题。 操作员为一个或多个托管实例的维护负责人定义联系信息。 有时，操作员职责会分配给一个人。
@@ -140,23 +141,24 @@ RECONFIGURE
 可以使用 SSMS 或以下示例中所示的 Transact-SQL 脚本创建操作员：
 
 ```sql
-EXEC msdb.dbo.sp_add_operator 
-    @name=N'Mihajlo Pupun', 
-        @enabled=1, 
-        @email_address=N'mihajlo.pupin@contoso.com'
+EXEC msdb.dbo.sp_add_operator
+    @name=N'Mihajlo Pupun',
+    @enabled=1,
+    @email_address=N'mihajlo.pupin@contoso.com'
 ```
 
 可以使用 SSMS 或以下 Transact-SQL 脚本修改任何作业并分配操作员，以便在作业完成、失败或成功时向其发送电子邮件通知：
 
 ```sql
-EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS', 
-        @notify_level_email=3,                        -- Options are: 1 on succeed, 2 on failure, 3 on complete
-        @notify_email_operator_name=N'Mihajlo Pupun'
+EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
+    @notify_level_email=3, -- Options are: 1 on succeed, 2 on failure, 3 on complete
+    @notify_email_operator_name=N'Mihajlo Pupun'
 ```
 
 ### <a name="sql-agent-job-limitations"></a>SQL 代理作业限制
 
 在 SQL Server 中可用的某些 SQL 代理功能在托管实例中不受支持：
+
 - SQL 代理设置为只读。 托管实例不支持过程 `sp_set_agent_properties`。
 - 目前，托管实例不支持启用/禁用 SQL 代理。 SQL 代理始终运行。
 - 部分支持通知
@@ -180,17 +182,16 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 ### <a name="elastic-job-components"></a>弹性作业组件
 
-|组件  | 说明（表下提供其他详细信息） |
+|组件 | 说明（表下提供其他详细信息） |
 |---------|---------|
-|[**弹性作业代理**](#elastic-job-agent) |  为了运行和管理作业而创建的 Azure 资源。   |
-|[**作业数据库**](#job-database)    |    作业代理用来存储作业相关数据、作业定义等内容的 Azure SQL 数据库。      |
-|[**目标组**](#target-group)      |  一组服务器、池、数据库和分片映射，可对其运行作业。       |
-|[**作业**](#job)  |  作业是由一个或多个[作业步骤](#job-step)组成的工作单元。 作业步骤指定要运行的 T-SQL 脚本，以及执行脚本所需的其他详细信息。  |
-
+|[**弹性作业代理**](#elastic-job-agent) | 为了运行和管理作业而创建的 Azure 资源。 |
+|[**作业数据库**](#job-database) | 作业代理用来存储作业相关数据、作业定义等内容的 Azure SQL 数据库。 |
+|[**目标组**](#target-group) | 一组服务器、池、数据库和分片映射，可对其运行作业。 |
+|[**作业**](#job) | 作业是由一个或多个[作业步骤](#job-step)组成的工作单元。 作业步骤指定要运行的 T-SQL 脚本，以及执行脚本所需的其他详细信息。 |
 
 #### <a name="elastic-job-agent"></a>弹性作业代理
 
-弹性作业代理是用于创建、运行和管理作业的 Azure 资源。 弹性作业代理是在门户（也支持 [PowerShell](elastic-jobs-powershell.md) 和 REST）中创建的 Azure 资源。 
+弹性作业代理是用于创建、运行和管理作业的 Azure 资源。 弹性作业代理是在门户（也支持 [PowerShell](elastic-jobs-powershell.md) 和 REST）中创建的 Azure 资源。
 
 创建**弹性作业代理**需要现有的 SQL 数据库。 代理将此现有的数据库配置为[  作业数据库](#job-database)。
 
@@ -202,24 +203,20 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 就目前的预览版来说，需要使用现有的 Azure SQL 数据库（S0 或更高级别）来创建弹性作业代理。
 
- 作业数据库不一定需要是新的，但应该干净且为空，其服务目标应该为 S0 或更高。 作业数据库的服务对象建议使用  S1 或更高，但最佳选择取决于作业的性能需求：作业步骤数，作业目标数，以及作业的运行频率。 例如，对于每小时只运行数个作业且以十个以下数据库为目标的作业代理，也许 S0 数据库就够用了，但 S0 数据库的每分钟运行一个作业的速度可能不够快，因此使用更高的服务层级可能会更好。 
+ 作业数据库不一定需要是新的，但应该干净且为空，其服务目标应该为 S0 或更高。 作业数据库的服务对象建议使用  S1 或更高，但最佳选择取决于作业的性能需求：作业步骤数，作业目标数，以及作业的运行频率。 例如，对于每小时只运行数个作业且以十个以下数据库为目标的作业代理，也许 S0 数据库就够用了，但 S0 数据库的每分钟运行一个作业的速度可能不够快，因此使用更高的服务层级可能会更好。
 
-如果针对作业数据库的操作的速度比预期慢，则在出现速度缓慢的情况时使用 Azure 门户或 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV [监视](sql-database-monitor-tune-overview.md#monitor-database-performance)作业数据库中的数据库性能和资源利用率。 如果资源（如 CPU、数据 IO 或日志写入）的使用率达到 100%，且与出现缓慢情况的时间段相关，请考虑以增量方式将数据库扩展到更高的服务目标（采用 [DTU 模型](sql-database-service-tiers-dtu.md)或 [vCore 模型](sql-database-service-tiers-vcore.md)），直到工作数据库性能得到充分改进。
-
+如果针对作业数据库的操作的速度比预期慢，则在出现速度缓慢的情况时使用 Azure 门户或 [sys.dm_db_resource_stats](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring) DMV [监视](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)作业数据库中的数据库性能和资源利用率。 如果资源（如 CPU、数据 IO 或日志写入）的使用率达到 100%，且与出现缓慢情况的时间段相关，请考虑以增量方式将数据库扩展到更高的服务目标（采用 [DTU 模型](sql-database-service-tiers-dtu.md)或 [vCore 模型](sql-database-service-tiers-vcore.md)），直到工作数据库性能得到充分改进。
 
 ##### <a name="job-database-permissions"></a>作业数据库权限
 
 在创建作业代理期间，会在作业数据库中创建一个架构、多个表和一个名为 *jobs_reader* 的角色。  此角色使用以下权限创建，旨在为管理员提供进行作业监视所需的更细致访问控制：
 
-
-|角色名称  |“作业”架构权限  |“jobs_internal”架构权限  |
+|角色名称 |“作业”架构权限 |“jobs_internal”架构权限 |
 |---------|---------|---------|
-|**jobs_reader**     |    SELECT     |    无     |
+|**jobs_reader** | SELECT | 无 |
 
 > [!IMPORTANT]
 > 在以数据库管理员身份授予作业数据库的访问权限之前，请考虑清楚安全隐患。  有权创建或编辑作业的恶意用户可能会创建或编辑一个作业，以便使用存储的凭据连接到受其控制的数据库，从而确定凭据的密码。
-
-
 
 #### <a name="target-group"></a>目标组
 
@@ -246,7 +243,6 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 **示例 3** 演示的目标组与*示例 2* 的类似，但明确排除了单个数据库。 作业步骤的操作不会在排除的数据库中执行。 <br>
 **示例 4** 演示的目标组包含一个充当目标的弹性池。 与*示例 2* 类似，此池会在作业运行时动态枚举，以便确定池中数据库的列表。
 <br><br>
-
 
 ![目标组示例](media/elastic-jobs-overview/targetgroup-examples2.png)
 
@@ -287,7 +283,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 SQL Server 代理](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) 
-- [如何创建和管理弹性作业](elastic-jobs-overview.md) 
-- [使用 PowerShell 创建和管理弹性作业](elastic-jobs-powershell.md) 
-- [使用 Transact-SQL (T-SQL) 创建和管理弹性作业](elastic-jobs-tsql.md) 
+- [什么是 SQL Server 代理](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
+- [如何创建和管理弹性作业](elastic-jobs-overview.md)
+- [使用 PowerShell 创建和管理弹性作业](elastic-jobs-powershell.md)
+- [使用 Transact-SQL (T-SQL) 创建和管理弹性作业](elastic-jobs-tsql.md)

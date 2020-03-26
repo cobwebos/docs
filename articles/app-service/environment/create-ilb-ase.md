@@ -6,13 +6,13 @@ ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 3bbc2dcc86d50e0a88e2f3e96c426cb317f41dea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 98345e8585a3f6653659e0d41eb5c3308a0a6634
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75375026"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80057412"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>创建和使用内部负载均衡器应用服务环境 
 
@@ -74,7 +74,7 @@ Azure 应用服务环境是指将 Azure 应用服务部署到 Azure 虚拟网络
 
 在 ILB ASE 中创建应用通常与在 ASE 中创建应用相同。
 
-1. 在 Azure 门户中，选择“创建资源” > “Web” > “Web 应用”。   
+1. 在 Azure 门户中，选择“创建资源” **“Web”** “Web 应用”。 >    >  
 
 1. 输入应用的名称。
 

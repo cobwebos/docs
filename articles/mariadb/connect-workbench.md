@@ -6,19 +6,19 @@ ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2018
-ms.openlocfilehash: 85a38fe3e2d17eb53d1ed5f8f231898849bd01db
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 4bb1a71c5d8a58e6d94007554c72019001d395db
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772055"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79528994"
 ---
-# <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB：使用 MySQL Workbench 连接和查询数据
+# <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB：使用 MySQL Workbench 进行连接并查询数据
 
 本快速入门演示如何使用 MySQL Workbench 连接到 Azure Database for MariaDB 实例。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 此快速入门使用以下任意指南中创建的资源作为起点：
 
@@ -33,7 +33,7 @@ ms.locfileid: "74772055"
 
 获取连接到 Azure Database for MariaDB 实例所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 在 Azure 门户的左侧菜单中，选择“所有资源”。  搜索所创建的服务器（例如 **mydemoserver**）。
 
@@ -57,7 +57,7 @@ ms.locfileid: "74772055"
    | 连接方法 | **标准 (TCP/IP)** | 标准 (TCP/IP) 就足够了。 |
    | 主机名 | 服务器名称  | 指定在创建 Azure Database for MariaDB 实例时使用的服务器名称值。 示例服务器为 **mydemoserver.mariadb.database.azure.com**。 请使用完全限定的域名 (\*.mariadb.database.azure.com)，如示例中所示。 如果不记得服务器名称，请完成上一部分的步骤，以便获取连接信息。  |
    | 端口 | **3306** | 在连接到 Azure Database for MariaDB 时，始终使用端口 3306。 |
-   | 用户名 |  服务器管理员登录名  | 输入在创建 Azure Database for MariaDB 实例时使用的服务器管理员登录用户名。 示例用户名是 **myadmin\@mydemoserver**。 如果不记得服务器管理员登录名，请完成上一部分的步骤，以便获取连接信息。 格式为“username\@servername”  。
+   | 用户名 |  服务器管理员登录名  | 输入在创建 Azure Database for MariaDB 实例时使用的服务器管理员登录用户名。 示例用户名是 myadmin**mydemoserver\@** 。 如果不记得服务器管理员登录名，请完成上一部分的步骤，以便获取连接信息。 格式为 username*servername\@* 。
    | 密码 | 你的密码  | 若要保存密码，请选择“在保管库中存储”  。 |
 
    ![设置新连接](./media/connect-workbench/2-setup-new-connection.png)

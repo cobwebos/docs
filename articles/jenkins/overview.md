@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, 概述
 ms.topic: overview
 ms.date: 10/23/2019
 ms.openlocfilehash: a9297ebc116d75cfe1d4f37d4e9ada7d5198beae
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77620168"
 ---
 # <a name="azure-and-jenkins"></a>Azure 和 Jenkins
@@ -33,7 +33,7 @@ ms.locfileid: "77620168"
 
 配置 [Azure 服务主体](/azure/azure-resource-manager/resource-group-overview)后，Jenkins 作业和管道可以使用此凭据执行以下操作：
 
-- 在使用 [Azure 存储插件](https://plugins.jenkins.io/windows-azure-storage)的 [Azure 存储](/azure/storage/common/storage-introduction)中，安全存储并存档生成项目。 查看 [Jenkins 存储操作方法](storage-java-jenkins-continuous-integration-solution.md)了解详细信息。
+- 在使用 [Azure 存储插件](/azure/storage/common/storage-introduction)的 [Azure 存储](https://plugins.jenkins.io/windows-azure-storage)中，安全存储并存档生成项目。 查看 [Jenkins 存储操作方法](storage-java-jenkins-continuous-integration-solution.md)了解详细信息。
 - 使用 [Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline) 管理和配置 Azure 资源。
 
 ## <a name="deploy-your-code-into-azure-services"></a>将代码部署到 Azure 服务

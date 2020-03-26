@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: d9745bdb1cb6de86a96946564865958433d49732
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086199"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>教程：Azure Active Directory 与 Ziflow 集成
@@ -34,7 +34,7 @@ ms.locfileid: "67086199"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Ziflow 的集成，需要准备好以下各项：
 
@@ -77,10 +77,10 @@ ms.locfileid: "67086199"
 若要配置和测试 Ziflow 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. [配置 Ziflow 单一登录](#configure-ziflow-single-sign-on)  - 在应用程序端配置单一登录。
+2. **[配置 Ziflow 单一登录](#configure-ziflow-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Ziflow 测试用户](#create-ziflow-test-user)  - 在 Ziflow 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+5. **[创建 Ziflow 测试用户](#create-ziflow-test-user)** - 在 Ziflow 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -105,9 +105,9 @@ ms.locfileid: "67086199"
 
     ![Ziflow 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://ziflow-production.auth0.com/login/callback?connection=<UniqueID>` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://ziflow-production.auth0.com/login/callback?connection=<UniqueID>`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`urn:auth0:ziflow-production:<UniqueID>` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `urn:auth0:ziflow-production:<UniqueID>`
 
     > [!NOTE]
     > 上面的值不是实际值。 本教程稍后将介绍如何使用实际值来更新“标识符”和“登录 URL”中的唯一 ID 值。
@@ -170,7 +170,7 @@ ms.locfileid: "67086199"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -222,7 +222,7 @@ ms.locfileid: "67086199"
 
     ![Ziflow 配置添加用户](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
 
-    a. 在“电子邮件”文本框中，输入用户的电子邮件，如 brittasimon@contoso.com。 
+    a. 在“电子邮件”文本框中，输入用户的电子邮件，如 **。** brittasimon@contoso.com
 
     b. 在“名字”文本框中，输入用户的名字，例如 Britta  。
 

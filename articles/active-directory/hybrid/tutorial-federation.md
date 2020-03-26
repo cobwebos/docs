@@ -15,11 +15,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a51175d192a5afb1f84f8d0ed2de9796f198f82d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102394"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "60296545"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>教程：将单个 AD 林环境联合到云中
 
@@ -27,7 +27,7 @@ ms.locfileid: "58102394"
 
 以下教程将引导你使用联合创建混合标识环境。  然后，可以使用此环境进行测试或更熟悉混合标识的工作方式。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 以下是完成本教程所需的先决条件
 - 安装了 [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) 的计算机。  建议在 [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) 或 [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) 计算机上执行此操作。
 - [Azure 订阅](https://azure.microsoft.com/free)
@@ -84,12 +84,12 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 1. Hyper-V 管理器，双击虚拟机
 2. 单击“开始”按钮。
 3. 系统将提示你“按任意键以从 CD 或 DVD 启动”。 继续执行此操作。
-4. 在“Windows Server 启动”屏幕上，选择语言，然后单击“下一步”。
-5. 单击“立即安装”。
-6. 输入许可证密钥并单击“下一步”。
-7. 勾选“我接受许可条款”，然后单击“下一步”。
-8. 选择“自定义: 仅安装 Windows (高级)”
-9. 点击“下一步”
+4. 在“Windows Server 启动”屏幕上，选择语言，然后单击“下一步”  。
+5. 单击“立即安装”  。
+6. 输入许可证密钥并单击“下一步”  。
+7. 勾选“我接受许可条款”，然后单击“下一步”  。
+8. 选择“自定义: 仅安装 Windows (高级)” 
+9. 单击“下一步” 
 10. 安装完成后，重新启动虚拟机，登录并运行 Windows 更新，以确保 VM 是最新的。  安装最新更新。
 
 ## <a name="install-active-directory-pre-requisites"></a>安装 Active Directory 的先决条件
@@ -202,20 +202,20 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 现在，我们需要创建 Azure AD 租户，以便我们可以将用户同步到云。  要创建新的 Azure AD 租户，请执行以下操作。
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)，使用具有 Azure 订阅的帐户登录。
-2. 选择加号图标 (+) 并搜索“Azure Active Directory”。
-3. 在搜索结果中选择“Azure Active Directory”。
-4. 选择“创建”。</br>
+2. 选择加号图标 (+) 并搜索“Azure Active Directory”   。
+3. 在搜索结果中选择“Azure Active Directory”  。
+4. 选择“创建”  。</br>
 ![创建](media/tutorial-password-hash-sync/create1.png)</br>
-5. 为组织提供名称以及初始域名。 然后选择“创建”。 随即创建目录。
-6. 完成此操作后，单击此处链接以管理目录。
+5. 为组织提供名称以及初始域名   。 然后选择“创建”  。 随即创建目录。
+6. 完成此操作后，单击此处链接以管理目录  。
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>在 Azure AD 中创建全局管理员
 现在我们有了 Azure AD 租户，我们将创建全局管理员帐户。  此帐户用于在 Azure AD Connect 安装期间创建 Azure AD 连接器帐户。  Azure AD 连接器帐户用于将信息写入 Azure AD。   要创建全局管理员帐户，请执行以下操作。
 
-1.  在“管理”下，选择“用户”。</br>
+1.  在“管理”下，选择“用户”   。</br>
 ![创建](media/tutorial-password-hash-sync/gadmin1.png)</br>
-2.  选择“所有用户”，然后选择“+ 新建用户”。
-3.  为此用户提供名称和用户名。 这将是租户的全局管理员。 还需要将“目录角色”更改为“全局管理员”。 还可以显示临时密码。 完成后，选择“创建”。</br>
+2.  选择“所有用户”，然后选择“+ 新建用户”   。
+3.  为此用户提供名称和用户名。 这将是租户的全局管理员。 还需要将“目录角色”更改为“全局管理员”   。 还可以显示临时密码。 完成后，选择“创建”  。</br>
 ![创建](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. 完成此操作后，使用新的全局管理员帐户和临时密码打开新的 Web 浏览器并登录 myapps.microsoft.com。
 5. 将全局管理员的密码更改为你可以记住的密码。
@@ -223,11 +223,11 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 ## <a name="add-the-custom-domain-name-to-your-directory"></a>将自定义域名添加到目录
 现在我们有了租户和全局管理员，我们需要添加自定义域，以便 Azure 可以对其进行验证。  请执行以下操作：
 
-1. 请务必返回 [ Azure 门户](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)关闭“所有用户”边栏选项卡。
-2. 在左侧选择“自定义域名”。
-3. 选择“添加自定义域”。</br>
+1. 请务必返回 [ Azure 门户](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)关闭“所有用户”  边栏选项卡。
+2. 在左侧选择“自定义域名”  。
+3. 选择“添加自定义域”  。</br>
 ![联合身份验证](media/tutorial-federation/custom1.png)</br>
-4. 在“自定义域名”上的框中输入自定义域的名称，然后单击“添加域”。
+4. 在“自定义域名”上的框中输入自定义域的名称，然后单击“添加域”   。
 5. 在自定义域名屏幕上，将获得 TXT 或 MX 信息。  必须将此信息添加到你域下域注册机构的 DNS 信息中。  因此，需要转到域注册机构，在域的 DNS 设置中输入 TXT 或 MX 信息。  这将允许 Azure 验证你的域。  Azure 最多可能需要 24 小时才能验证它。  有关详细信息，请参阅[添加自定义域](../../active-directory/fundamentals/add-custom-domain.md)文档。</br>
 ![联合身份验证](media/tutorial-federation/custom2.png)</br>
 6. 要确保已验证，请单击“验证”按钮。</br>
@@ -238,35 +238,35 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 
 1. 下载 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
 2. 导航到 **AzureADConnect.msi**并双击它。
-3. 在“欢迎”屏幕上，选中对应的框，同意许可条款，并单击“继续”。  
-4. 在“快速设置”屏幕上，单击“自定义”。  
-5. 在“安装所需组件”屏幕上。 单击“安装”。  
-6. 在“用户登录”屏幕上，选择“使用 AD FS 进行联合身份验证”，然后单击“下一步”。
+3. 在“欢迎”屏幕上，选中对应的框，同意许可条款，并单击“继续”。   
+4. 在“快速设置”屏幕上，单击“自定义”  。  
+5. 在“安装所需组件”屏幕上。 单击“安装”  。  
+6. 在“用户登录”屏幕上，选择“使用 AD FS 进行联合身份验证”，然后单击“下一步”   。
 ![联合身份验证](media/tutorial-federation/fed1.png)
 
-1. 在“连接到 Azure AD”屏幕上，输入我们在上面创建的全局管理员的用户名和密码，然后单击“下一步”。
-2. 在“连接目录”屏幕上，单击“添加目录”。  然后选择“新建 AD 帐户”并输入 contoso\管理员的用户名和密码，然后单击“确定”。
-3. 单击“下一步”。
-4. 在“Azure AD 登录配置”屏幕上，选择“继续但不匹配已验证域的所有 UPN 后缀”，然后单击“下一步”。
-5. 在“域和 OU 筛选”屏幕上，单击“下一步”。
-6. 在“唯一标识用户”屏幕上，单击“下一步”。
-7. 在“筛选用户和设备”屏幕上，单击“下一步”。
-8. 在“可选功能”屏幕上，单击“下一步”。
-9. 在“域管理员凭据”页上，输入 contoso\管理员用户名和密码，然后单击“下一步”。
-10. 在“AD FS 场”屏幕上，确保选择“配置新的 AD FS 场”。
-11. 选择“使用联合服务器上安装的证书”，然后单击“浏览”。
-12. 在搜索框中输入“DC1”，并在找到它时选择它。  单击“确定” 。
-13. 从“证书文件”下拉列表中，选择我们在上面创建的证书“adfs.contoso.com”。  单击“下一步”。
+1. 在“连接到 Azure AD”屏幕上，输入我们在上面创建的全局管理员的用户名和密码，然后单击“下一步”  。
+2. 在“连接目录”屏幕上，单击“添加目录”  。  然后选择“新建 AD 帐户”并输入 contoso\管理员的用户名和密码，然后单击“确定”   。
+3. 单击“下一步”。 
+4. 在“Azure AD 登录配置”屏幕上，选择“继续但不匹配已验证域的所有 UPN 后缀”，然后单击“下一步”   。
+5. 在“域和 OU 筛选”屏幕上，单击“下一步”  。
+6. 在“唯一标识用户”屏幕上，单击“下一步”  。
+7. 在“筛选用户和设备”屏幕上，单击“下一步”  。
+8. 在“可选功能”屏幕上，单击“下一步”  。
+9. 在“域管理员凭据”页上，输入 contoso\管理员用户名和密码，然后单击“下一步”  。
+10. 在“AD FS 场”屏幕上，确保选择“配置新的 AD FS 场”  。
+11. 选择“使用联合服务器上安装的证书”，然后单击“浏览”   。
+12. 在搜索框中输入“DC1”，并在找到它时选择它。  单击“确定”  。
+13. 从“证书文件”下拉列表中，选择我们在上面创建的证书“adfs.contoso.com”   。  单击“下一步”。 
 ![联合身份验证](media/tutorial-federation/fed2.png)
 
-1. 在“AD FS 服务器”屏幕上，单击“浏览”，在搜索框中输入“DC1”，并在找到它时选择它。  单击“确定” 。  单击“下一步”。
+1. 在“AD FS 服务器”屏幕上，单击“浏览”，在搜索框中输入“DC1”，并在找到它时选择它  。  单击“确定”  。  单击“下一步”。 
 ![联合身份验证](media/tutorial-federation/fed3.png)
 
-1. 在“Web 应用代理服务器”屏幕上，单击“下一步”。
-2. 在“AD FS 服务帐户”屏幕上，输入 contoso\管理员用户名和密码，然后单击“下一步”。
-3. 在“Azure AD 域”屏幕上，从下拉列表中选择已验证的自定义域，然后单击“下一步”。
-4. 在“准备好配置”屏幕上，单击“安装”。
-5. 安装完成后，单击“退出” 。
+1. 在“Web 应用代理服务器”屏幕上，单击“下一步”  。
+2. 在“AD FS 服务帐户”屏幕上，输入 contoso\管理员用户名和密码，然后单击“下一步”  。
+3. 在“Azure AD 域”屏幕上，从下拉列表中选择已验证的自定义域，然后单击“下一步”  。
+4. 在“准备好配置”屏幕上，单击“安装”。 
+5. 安装完成后，单击“退出”  。
 6. 安装完成后，请注销并再次登录，即可使用 Synchronization Service Manager 或同步规则编辑器。
 
 
@@ -275,8 +275,8 @@ New-SelfSignedCertificate -DnsName $DNSname -CertStoreLocation $Location
 
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)，使用具有 Azure 订阅的帐户登录。
-2. 在左侧选择“Azure Active Directory”
-3. 在“管理”下，选择“用户”。
+2. 在左侧选择“Azure Active Directory” 
+3. 在“管理”下，选择“用户”   。
 4. 验证租户中是否显示了新用户![同步](media/tutorial-password-hash-sync/synch1.png)
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>使用我们的某位用户测试登录
