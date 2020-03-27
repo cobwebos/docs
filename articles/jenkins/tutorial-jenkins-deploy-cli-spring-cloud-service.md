@@ -4,10 +4,10 @@ description: 了解如何使用持续集成和部署管道中的 Azure CLI 将�
 ms.topic: tutorial
 ms.date: 01/07/2020
 ms.openlocfilehash: 67ad97bb762ed302ef52c404d47c5755ea4b245b
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75732850"
 ---
 # <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>教程：使用 Jenkins 和 Azure CLI 将应用部署到 Azure Spring Cloud
@@ -23,7 +23,7 @@ ms.locfileid: "75732850"
 
 本教程假设你具备核心 Azure 服务、Azure Spring Cloud、Jenkins [管道](https://jenkins.io/doc/book/pipeline/)和插件以及 GitHub 的中级知识。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 >[!Note]
 > Azure Spring Cloud 目前以公共预览版的形式提供。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。  有关预览期间支持的详细信息，请参阅[常见问题解答](https://azure.microsoft.com/support/faq/)或提交[支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。

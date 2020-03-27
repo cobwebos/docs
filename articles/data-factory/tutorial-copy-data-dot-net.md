@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 93c4f71c762cff3e3f5a01f0e2595f3498f9d38d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977318"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Blob 复制到 Azure SQL 数据库
@@ -36,13 +36,13 @@ ms.locfileid: "75977318"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * *Azure 存储帐户*。 可将 Blob 存储用作*源*数据存储。 如果没有 Azure 存储帐户，请参阅[创建常规用途的存储帐户](../storage/common/storage-account-create.md)。
 * *Azure SQL 数据库*。 将数据库用作*接收器*数据存储。 如果你没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-single-database-get-started.md)。
 * *Visual Studio*。 本文中的演练使用 Visual Studio 2019。
 * *[Azure SDK for .NET](/dotnet/azure/dotnet-tools)* 。
-* *Azure Active Directory 应用程序*。 如果没有 Azure Active Directory 应用程序，请参阅[操作方法：使用门户创建 Azure AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md)的[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)部分。 复制可以在后续步骤中使用的以下值：**应用程序(客户端) ID**、**身份验证密钥**和**目录(租户) ID**。 按照同一文章中的以下说明将应用程序分配到“参与者”角色。 
+* *Azure Active Directory 应用程序*。 如果没有 Azure Active Directory 应用程序，请参阅[操作方法：使用门户创建 Azure AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md)的创建 Azure Active Directory 应用程序部分。 复制可以在后续步骤中使用的以下值：**应用程序(客户端) ID**、**身份验证密钥**和**目录(租户) ID**。 按照同一文章中的以下说明将应用程序分配到“参与者”角色。 
 
 ### <a name="create-a-blob-and-a-sql-table"></a>创建 blob 和 SQL 表
 
