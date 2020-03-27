@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, 传感器, 查看器, 可视化, 深度, rgb, 颜色, imu, 音频, 麦克风, 点云
 ms.openlocfilehash: 57cf7df831e97da4143a7f196b69a3a10609a017
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73931767"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect 查看器

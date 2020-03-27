@@ -89,8 +89,10 @@
       items:
         - name: 搜索地址
           href: how-to-search-for-address.md
-        - name: 有关搜索的最佳做法
+        - name: 有关使用搜索服务的最佳做法
           href: how-to-use-best-practices-for-search.md
+        - name: 有关使用路线服务的最佳做法
+          href: how-to-use-best-practices-for-routing.md
         - name: 在静态地图上呈现自定义数据
           href: how-to-render-custom-data.md
         - name: 请求公共交通路线
@@ -101,7 +103,7 @@
       items:
         - name: 地图控件
           items:
-            - name: Web 地图控件入门
+            - name: 使用 Azure Maps 地图控件
               href: how-to-use-map-control.md
             - name: 创建地图
               href: map-create.md
@@ -247,12 +249,38 @@
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: 服务模块
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
+        - name: 空间 IO 模块
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
     - name: 资源管理器模板
       href: /azure/templates/microsoft.maps/accounts
 - name: 资源
   items:
     - name: 支持和帮助选项
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT 服务
+      items:
+        - name: IoT 中心
+          href: /azure/iot-hub
+        - name: IoT 中心设备预配服务
+          href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 解决方案加速器
+          href: /azure/iot-accelerators
+        - name: IoT 即插即用
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: 时序见解
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK
+      items:
+        - name: IoT 服务 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT 设备 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: Azure Maps 使用条款
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps 定价
@@ -281,31 +309,3 @@
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: 基于 IoT 学校的 Azure Maps
       href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'
-- name: 相关内容
-  items:
-    - name: 解决方案
-      items:
-        - name: IoT 解决方案加速器
-          href: /azure/iot-suite
-        - name: IoT Central
-          href: /azure/iot-central/iot-support-help
-    - name: 平台服务
-      items:
-        - name: IoT 中心
-          href: /azure/iot-hub
-        - name: IoT 即插即用
-          href: /azure/iot-pnp
-        - name: IoT 中心设备预配服务
-          href: /azure/iot-dps
-        - name: 地图
-          href: /azure/azure-maps
-        - name: 服务 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: 时序见解
-          href: /azure/time-series-insights
-    - name: Edge 解决方案
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: IoT 设备 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

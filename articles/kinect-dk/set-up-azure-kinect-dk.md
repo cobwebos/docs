@@ -14,10 +14,10 @@ audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
 ms.openlocfilehash: b33565f319de77385c966f742fa52391f4869eed
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77209129"
 ---
 # <a name="quickstart-set-up-your-azure-kinect-dk"></a>快速入门：设置 Azure Kinect DK

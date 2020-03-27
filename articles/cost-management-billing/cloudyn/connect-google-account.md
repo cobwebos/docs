@@ -1,25 +1,26 @@
 ---
-title: 在 Azure 中将 Google Cloud Platform 帐户连接到 Cloudyn | Microsoft Docs
+title: 在 Azure 中将 Google Cloud Platform 帐户连接到 Cloudyn
 description: 连接 Google Cloud Platform 帐户即可查看 Cloudyn 报表中的成本和使用情况数据。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 09989337b2e78277c6182630ce0f1cdf57a0e0c1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4e10d39f744b40e7eb9058841eed9ff0f0e55d44
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770188"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474639"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>连接 Google Cloud Platform 帐户
 
 可以将现有 Google Cloud Platform 帐户连接到 Cloudyn。 将帐户连接到 Cloudyn 后，即可查看 Cloudyn 报表中的成本和使用情况数据。 本文介绍了如何配置 Google 帐户，并将它连接到 Cloudyn。
 
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="collect-project-information"></a>收集项目信息
 

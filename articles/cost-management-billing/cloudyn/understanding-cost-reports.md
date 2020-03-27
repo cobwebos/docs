@@ -1,24 +1,26 @@
 ---
-title: 了解 Azure 中的 Cloudyn 成本管理报表 | Microsoft Docs
+title: 了解 Azure 中的 Cloudyn 成本管理报表
 description: 本文可帮助你了解 Cloudyn 成本管理报表的基本结构和功能。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 89bcbf75396a1eda9de4a715739adb3a3696e137
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d4f8e26aef5fbfb20c1721d1851a4940863121b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773988"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474537"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>了解 Cloudyn 成本管理报表
 
 本文可帮助你了解 Cloudyn 成本管理报表的基本结构和功能。 大多数 Cloudyn 报表都较为直观，具有统一的外观。 阅读本文后，即可使用所有成本管理报表。 许多标准功能在各种报表中都可用，使你能够轻松导航报表。 报表是可自定义的，你可以从多个选项中进行选择以计算和显示结果。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="report-fields-and-options"></a>报表字段和选项
 

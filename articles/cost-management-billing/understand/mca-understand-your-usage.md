@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: ef6ef96bf248c449b318cebaba9c53f63e448855
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c6883dfd0f4c3bc11afdd68ead8c8c84729b1880
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199154"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065685"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft 客户协议的 Azure 使用情况和费用文件中的术语
 
@@ -88,6 +88,8 @@ meterCategory | 计量的分类类别的名称。 例如，“云服务”、“
 meterSubCategory | 计量子分类类别的名称
 meterRegion | 提供服务计量的区域的名称。 指明某些服务的数据中心的位置，这些服务根据数据中心位置进行定价。
 offer | 购买的套餐的名称
+PayGPrice | 资源的零售价格。
+PricingModel | 指示计量器定价方式的标识符（值：On Demand、Reservation、Spot）
 productId | 产生费用的产品的唯一标识符
 product | 产生费用的产品的名称
 订阅 ID | 产生费用的订阅的唯一标识符

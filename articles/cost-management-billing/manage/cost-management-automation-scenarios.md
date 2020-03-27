@@ -1,20 +1,19 @@
 ---
-title: Azure 计费和成本管理自动化方案 | Microsoft Docs
+title: Azure 计费和成本管理自动化方案
 description: 了解如何将常用的计费和成本管理方案映射到不同的 API。
 author: bandersmsft
 ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: e5e3f36888a4bbf18ec601f5c361ed7ca2563aa6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9dd41949548daf5d62b5cdd10206eb7ccdbc3962
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199783"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202924"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>计费和成本管理自动化方案
 

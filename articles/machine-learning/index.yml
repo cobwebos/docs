@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure 机器学习文档
-summary: Azure 机器学习提供了 Web 界面和 SDK，以便你可以大规模快速训练并部署机器学习模型和管道。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。
+summary: 了解如何使用 Azure 机器学习大规模训练、部署和管理机器学习模型与管道。 教程、代码示例、API 参考和其他资源介绍了操作方法。
 metadata:
   title: Azure 机器学习文档
-  description: Azure 机器学习提供了 Web 界面和 SDK，以便你大规模快速训练并部署机器学习模型和管道。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。
+  description: 了解如何使用 Azure 机器学习大规模训练、部署和管理机器学习模型与管道。 教程、代码示例、API 参考和其他资源介绍了操作方法。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,39 +11,33 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 03/05/2020
-  ms.openlocfilehash: 5165456617193f4701b1bc635c103d0719c8f403
-  ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+  ms.date: 03/18/2020
+  ms.openlocfilehash: 5855d523bf32798166ab32b6ff336cae95e81ca1
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/05/2020
-  ms.locfileid: "78328551"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80063958"
 landingContent:
-- title: Azure ML 入门
+- title: 机器学习入门
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Python 笔记本中的试验
+    - text: Python 笔记本
       url: tutorial-1st-experiment-sdk-setup.md
-    - text: RStudio 中的试验
-      url: tutorial-1st-r-experiment.md
-    - text: 使用拖放设计器进行试验
+    - text: 设计器（拖放式）
       url: tutorial-designer-automobile-price-train-score.md
-    - text: 通过自动化 ML 进行试验
+    - text: RStudio
+      url: tutorial-1st-r-experiment.md
+    - text: 自动 ML
       url: tutorial-first-experiment-automated-ml.md
   - linkListType: overview
     links:
-    - text: 什么是 Azure ML？
+    - text: 什么是 Azure 机器学习？
       url: overview-what-is-azure-ml.md
     - text: 体系结构和概念
       url: concept-azure-machine-learning-architecture.md
-  - linkListType: how-to-guide
-    links:
-    - text: 设置你的环境
-      url: how-to-configure-environment.md
-    - text: 设置训练计算目标
-      url: how-to-set-up-training-targets.md
-- title: 试验：Python SDK
+- title: 使用 Python SDK
   linkLists:
   - linkListType: tutorial
     links:
@@ -51,10 +45,12 @@ landingContent:
       url: tutorial-1st-experiment-sdk-setup.md
     - text: 对图像进行分类
       url: tutorial-train-models-with-aml.md
-    - text: 使用自动化 ML 预测出租车费用
+    - text: 使用自动化机器学习预测出租车费用
       url: tutorial-auto-train-models.md
   - linkListType: how-to-guide
     links:
+    - text: 设置你的环境
+      url: how-to-configure-environment.md
     - text: 使用 Scikit-learn 进行训练
       url: how-to-train-scikit-learn.md
     - text: 使用 TensorFlow 进行训练
@@ -63,28 +59,20 @@ landingContent:
       url: how-to-train-pytorch.md
     - text: 使用 Keras 进行训练
       url: how-to-train-keras.md
-- title: 使用 ML 管道
+- title: 生成机器学习管道
   linkLists:
-  - linkListType: overview
-    links:
-    - text: 什么是 ML 管道？
-      url: concept-ml-pipelines.md
-    - text: “拖放”设计器
-      url: concept-designer.md
   - linkListType: tutorial
     links:
+    - text: 创建机器学习管道 (Python)
+      url: tutorial-pipeline-batch-scoring-classification.md
     - text: 用于预测价格的线性回归（设计器）
       url: tutorial-designer-automobile-price-train-score.md
-    - text: 创建 ML 管道 (Python SDK)
-      url: tutorial-pipeline-batch-scoring-classification.md
-  - linkListType: how-to-guide
+  - linkListType: overview
     links:
-    - text: 计划管道 (Python SDK)
-      url: how-to-schedule-pipelines.md
-    - text: 预测延迟（设计器）
-      url: how-to-designer-sample-classification-flight-delay.md
-    - text: 预测流失（设计器）
-      url: how-to-designer-sample-classification-churn.md
+    - text: 什么是机器学习管道？
+      url: concept-ml-pipelines.md
+    - text: 什么是设计器？
+      url: concept-designer.md
 - title: 部署和管理模型
   linkLists:
   - linkListType: how-to-guide
@@ -93,14 +81,14 @@ landingContent:
       url: concept-model-management-and-deployment.md
     - text: 部署方式和位置
       url: how-to-deploy-and-where.md
-    - text: 身份验证
-      url: how-to-setup-authentication.md
+    - text: MLOps 示例
+      url: https://github.com/microsoft/MLOps
     - text: 实时预测
       url: how-to-consume-web-service.md
     - text: 成批预测
       url: how-to-use-parallel-run-step.md
-    - text: 端到端示例 (GitHub)
-      url: https://github.com/microsoft/MLOps
+    - text: 身份验证
+      url: how-to-setup-authentication.md
 - title: 转到参考文档
   linkLists:
   - linkListType: reference
@@ -109,11 +97,11 @@ landingContent:
       url: https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py
     - text: 用于 R 的 SDK
       url: https://azure.github.io/azureml-sdk-for-r/reference/index.html
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/azureml/
     - text: 机器学习 CLI
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
     - text: 设计器算法和模块
       url: algorithm-module-reference/module-reference.md
-    - text: REST API
-      url: https://docs.microsoft.com/rest/api/azureml/
     - text: AI 参考体系结构 (GitHub)
       url: https://github.com/Microsoft/AI

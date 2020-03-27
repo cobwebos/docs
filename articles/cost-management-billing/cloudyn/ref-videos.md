@@ -1,24 +1,26 @@
 ---
-title: Azure 中的 Cloudyn 培训视频 | Microsoft Docs
+title: Azure 中的 Cloudyn 培训视频
 description: Cloudyn 培训视频介绍如何入门和使用其功能。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 3344dfb1518eeb495b019138c72d566ce4064017
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9acad813914614fd2cdaad4fd348e9e19225c67e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201095"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463758"
 ---
 # <a name="cloudyn-walk-through-training-videos"></a>Cloudyn 演练培训视频
 
 以下视频提供相关演示，指导你开始使用 Cloudyn 及其功能。 Cloudyn 支持多云成本跟踪和优化，包括 Microsoft Azure、Amazon Web Services 和 Google Cloud Platform。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="overview-video"></a>概述视频
 

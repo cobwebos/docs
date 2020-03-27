@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 坐标系, 校准, 函数, 内部, 外部, 相机, 投影, 取消投影, 转换, rgb-d, 点云
 ms.openlocfilehash: a501765222154bde4ed35e878a9d18042893fca2
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73932202"
 ---
 # <a name="use-azure-kinect-calibration-functions"></a>使用 Azure Kinect 校准函数

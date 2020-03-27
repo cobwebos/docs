@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 计费 API 获取 Azure 使用情况 | Microsoft Docs
+title: 使用 Azure 计费 API 获取 Azure 使用情况
 description: 了解 Azure 帐单用量和 RateCard API，洞察 Azure 资源消耗量和趋势。
 author: tonguyen
 ms.reviewer: mumami
@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 2765a1acca21081a696bb165b75a96e1a668aa40
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 7a9762d36d2c9ae6ede6718a31cae99afa230ef6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200412"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237626"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>使用 Azure 计费 API 以编程方式洞察 Azure 用量
 使用 Azure 计费 API 将用量和资源数据提取到偏好的数据分析工具。 Azure 资源用量和 RateCard API 可以帮助你准确预测及管理成本。 这些 API 作为资源提供程序实现，属于 Azure 资源管理器公开的 API 系列。  

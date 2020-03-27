@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, sdk, 人体, 跟踪, 关节, 应用程序, 第一个
 ms.openlocfilehash: bdf8ee7a14bf59a151dfa316b11159830b4f63b8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76756238"
 ---
 # <a name="quickstart-build-an-azure-kinect-body-tracking-application"></a>快速入门：生成 Azure Kinect 人体跟踪应用程序

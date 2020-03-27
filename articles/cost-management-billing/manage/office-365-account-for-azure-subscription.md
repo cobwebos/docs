@@ -1,5 +1,5 @@
 ---
-title: 使用 Office 365 帐户注册 Azure | Microsoft 文档
+title: 使用 Office 365 帐户注册 Azure
 description: 了解如何使用 Office 365 帐户创建 Azure 订阅
 author: JiangChen79
 ms.reviewer: adwise
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 265d9bcafa7caf9af0f8c4c7f33de044fa02349c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b42a5b83f5442755614a3cb2ae81cffda09b4b3b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199579"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238102"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>使用 Office 365 帐户注册 Azure 订阅
 如果具有 Office 365 订阅，可以使用 Office 365 帐户创建 Azure 订阅。 使用 Office 365 用户名和密码登录 [Azure 门户](https://portal.azure.com/)。 如果想要设置虚拟机或使用其他 Azure 服务，则必须注册 Azure 订阅。 可以与他人共享 Azure 订阅并[使用基于角色的访问控制来管理对 Azure 订阅和资源的访问](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
@@ -35,7 +35,7 @@ ms.locfileid: "77199579"
 
 - 如果需要将组织中的其他人员添加到 Azure 订阅，请参阅 [Azure 门户中的访问管理入门](../../role-based-access-control/overview.md)。
 
-## <a id="more-about-subs">有关 Azure 和 Office 365 订阅的详细信息</a>
+## <a name=""></a><a id="more-about-subs">有关 Azure 和 Office 365 订阅的详细信息</a>
 Office 365 和 Azure 使用 Azure AD 服务管理用户和订阅。 Azure 目录类似于一个容器，可在其中对用户和订阅分组。 若要将相同用户帐户用于 Azure 和 Office 365 订阅，需确保这些 Azure 订阅是在与 Office 365 所在的相同目录中创建的。 请注意以下几点：
 
 * 在目录下创建订阅

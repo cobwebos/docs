@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: reference
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 录制, 播放, matroska, mkv
 ms.openlocfilehash: d0f7653afe3cc92e059b2615ebef18312faa716b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73932207"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>使用 Azure Kinect 传感器 SDK 录制文件格式
@@ -30,7 +30,7 @@ ms.locfileid: "73932207"
 
 ## <a name="using-third-party-tools"></a>使用第三方工具
 
-可以使用 `ffmpeg` 等工具或者 [MKVToolNix](https://mkvtoolnix.download/) 工具包中的 `mkvinfo` 命令查看和提取录制文件中的信息。
+可以使用 `ffmpeg` 等工具或者 `mkvinfo`MKVToolNix[ 工具包中的 ](https://mkvtoolnix.download/) 命令查看和提取录制文件中的信息。
 
 例如，以下命令将深度轨道作为 16 位 PNG 序列提取到同一个文件夹：
 

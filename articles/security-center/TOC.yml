@@ -37,9 +37,7 @@
       href: security-center-compliance-dashboard.md
 - name: 概念
   items:
-    - name: 安全中心中的安全功能分数
-      href: security-center-secure-score.md
-    - name: 增强的安全功能分数
+    - name: 安全功能分数
       href: secure-score-security-controls.md
     - name: 权限
       href: security-center-permissions.md
@@ -59,16 +57,18 @@
           href: azure-kubernetes-service-integration.md
     - name: 威胁防护和安全警报
       items:
+        - name: Azure 安全中心的威胁防护
+          href: threat-protection.md
         - name: 安全警报概述
           href: security-center-alerts-overview.md
         - name: 警报参考列表
           href: alerts-reference.md
+        - name: 警报架构
+          href: alerts-schemas.md
         - name: 管理安全警报
           href: security-center-managing-and-responding-alerts.md
         - name: 管理安全事件
           href: security-center-incident.md
-        - name: Azure 安全中心的威胁防护
-          href: threat-protection.md
         - name: 云智能警报关联（事件）
           href: security-center-alerts-cloud-smart.md
         - name: 安全警报地图和威胁智能
@@ -201,6 +201,8 @@
       href: security-center-features-retirement-july2019.md
     - name: 终结点保护评估和建议
       href: security-center-endpoint-protection.md
+    - name: 安全评分（旧版）
+      href: security-center-secure-score.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

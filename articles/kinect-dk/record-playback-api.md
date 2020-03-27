@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 录制, 播放, matroska, mkv
 ms.openlocfilehash: fe403f314c1df415537d090433f34627eb1249e7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73931698"
 ---
 # <a name="the-azure-kinect-playback-api"></a>Azure Kinect 播放 API
@@ -140,18 +140,18 @@ else
 | `K4A_DEPTH_MODE`             | "OFF"              | `depth_mode` / `depth_track_enabled` | 可能的值："OFF"、"NFOV_UNBINNED"、"PASSIVE_IR" 等                                                |
 | `K4A_IR_MODE`                | "OFF"              | `depth_mode` / `ir_track_enabled`    | 可能的值："OFF"、"ACTIVE"、"PASSIVE"                                                                    |
 | `K4A_IMU_MODE`               | "OFF"              | `imu_track_enabled`                  | 可能的值："ON"、"OFF"                                                                                   |
-| `K4A_CALIBRATION_FILE`       | "calibration.json" | 不适用                                  | 请参阅 [`k4a_device_get_raw_calibration()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8c4e46642cee3115aeb0b33e2b43b24f.html#ga8c4e46642cee3115aeb0b33e2b43b24f) |
+| `K4A_CALIBRATION_FILE`       | "calibration.json" | 空值                                  | 请参阅 [`k4a_device_get_raw_calibration()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8c4e46642cee3115aeb0b33e2b43b24f.html#ga8c4e46642cee3115aeb0b33e2b43b24f) |
 | `K4A_DEPTH_DELAY_NS`         | "0"                | `depth_delay_off_color_usec`         | 值以纳秒为单位存储，API 以微秒为单位。                                                        |
 | `K4A_WIRED_SYNC_MODE`        | "STANDALONE"       | `wired_sync_mode`                    | 可能的值："STANDALONE"、"MASTER"、"SUBORDINATE"                                                         |
 | `K4A_SUBORDINATE_DELAY_NS`   | "0"                | `subordinate_delay_off_master_usec`  | 值以纳秒为单位存储，API 以微秒为单位。                                                        |
-| `K4A_COLOR_FIRMWARE_VERSION` | ""                 | 不适用                                  | 设备颜色固件版本，例如 "1.x.xx"                                                            |
-| `K4A_DEPTH_FIRMWARE_VERSION` | ""                 | 不适用                                  | 设备深度固件版本，例如 "1.x.xx"                                                            |
-| `K4A_DEVICE_SERIAL_NUMBER`   | ""                 | 不适用                                  | 录制设备序列号                                                                                 |
+| `K4A_COLOR_FIRMWARE_VERSION` | ""                 | 空值                                  | 设备颜色固件版本，例如 "1.x.xx"                                                            |
+| `K4A_DEPTH_FIRMWARE_VERSION` | ""                 | 空值                                  | 设备深度固件版本，例如 "1.x.xx"                                                            |
+| `K4A_DEVICE_SERIAL_NUMBER`   | ""                 | 空值                                  | 录制设备序列号                                                                                 |
 | `K4A_START_OFFSET_NS`        | "0"                | `start_timestamp_offset_usec`        | 请参阅下面的[时间戳同步](record-playback-api.md#timestamp-synchronization)。                       |
-| `K4A_COLOR_TRACK`            | 无               | 不适用                                  | 请参阅[录制文件格式 - 识别篇目](record-file-format.md#identifying-tracks)。                     |
-| `K4A_DEPTH_TRACK`            | 无               | 不适用                                  | 请参阅[录制文件格式 - 识别篇目](record-file-format.md#identifying-tracks)。                     |
-| `K4A_IR_TRACK`               | 无               | 不适用                                  | 请参阅[录制文件格式 - 识别篇目](record-file-format.md#identifying-tracks)。                     |
-| `K4A_IMU_TRACK`              | 无               | 不适用                                  | 请参阅[录制文件格式 - 识别篇目](record-file-format.md#identifying-tracks)。                     |
+| `K4A_COLOR_TRACK`            | 无               | 空值                                  | 请参阅[录制文件格式 - 识别篇目](record-file-format.md#identifying-tracks)。                     |
+| `K4A_DEPTH_TRACK`            | 无               | 空值                                  | 请参阅[录制文件格式 - 识别篇目](record-file-format.md#identifying-tracks)。                     |
+| `K4A_IR_TRACK`               | 无               | 空值                                  | 请参阅[录制文件格式 - 识别篇目](record-file-format.md#identifying-tracks)。                     |
+| `K4A_IMU_TRACK`              | 无               | 空值                                  | 请参阅[录制文件格式 - 识别篇目](record-file-format.md#identifying-tracks)。                     |
 
 ## <a name="timestamp-synchronization"></a>时间戳同步
 

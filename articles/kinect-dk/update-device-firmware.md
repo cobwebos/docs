@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 固件, 更新, 恢复
 ms.openlocfilehash: eb60003a4233110cb33208bcb8e9784737bb2a8b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75771590"
 ---
 # <a name="update-azure-kinect-dk-firmware"></a>更新 Azure Kinect DK 固件

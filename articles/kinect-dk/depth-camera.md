@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度相机, tof, 原理, 性能, 失效
 ms.openlocfilehash: 22f04b983ed7c6a2ab19a5c1c709621655ee31c0
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73932219"
 ---
 # <a name="azure-kinect-dk-depth-camera"></a>Azure Kinect DK 深度相机

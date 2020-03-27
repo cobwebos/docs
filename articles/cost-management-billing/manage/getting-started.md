@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 3/11/2020
 ms.author: banders
-ms.openlocfilehash: e22663cf8cabd5d2abf487c96f2d69aeaaa90ab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199698"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79238136"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
@@ -25,6 +25,8 @@ ms.locfileid: "77199698"
 - 使用[计费](https://docs.microsoft.com/rest/api/billing/)和[消耗](https://docs.microsoft.com/rest/api/consumption/) API 将计费和成本数据与你自己的报表系统集成。
 - 将其他资源和工具用于企业协议 (EA)、云解决方案提供商 (CSP) 和 Azure 赞助客户。
 - [免费使用某些最常用的 Azure 服务 12 个月](create-free-services.md)，这些服务可通过 [Azure 免费帐户](https://azure.microsoft.com/free/)获取。 请参考下面列出的建议，同时请参阅[避免为免费帐户付费](avoid-charges-free-account.md)。
+
+如果需要取消 Azure 订阅，请参阅[取消 Azure 订阅](cancel-azure-subscription.md)。
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>在添加 Azure 服务之前获取估计成本
 
@@ -67,7 +69,7 @@ ms.locfileid: "77199698"
 
 创建[预算](../costs/tutorial-acm-create-budgets.md)来管理成本，并创建[警报](../costs/cost-mgt-alerts-monitor-usage-spending.md)来自动通知利益干系人支出异常和超支。
 
-### <a name="costs"></a> 使用成本分析探究和分析成本
+### <a name="explore-and-analyze-costs-with-cost-analysis"></a><a name="costs"></a> 使用成本分析探究和分析成本
 
 运行 Azure 服务后，请定期检查成本以跟踪 Azure 支出。 可以使用成本分析了解 Azure 使用情况成本的来源。
 
@@ -120,7 +122,7 @@ ms.locfileid: "77199698"
 
 使用 Azure [计费](https://docs.microsoft.com/rest/api/billing/)和[消耗](https://docs.microsoft.com/rest/api/consumption/) API 以编程方式获取计费和成本数据。 同时使用 RateCard API 和使用情况 API 获取计费使用情况。 有关详细信息，请参阅[深入了解 Microsoft Azure 资源消耗](usage-rate-card-overview.md)。
 
-## <a name="other-offers"></a>其他资源和特殊情况
+## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a>其他资源和特殊情况
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>EA、CSP 和赞助客户
 请咨询帐户管理员或 Azure 合作伙伴以开始使用。
@@ -133,7 +135,7 @@ ms.locfileid: "77199698"
 
 如果管理大型组织的 IT，建议阅读 [Azure 企业基架](/azure/architecture/cloud-adoption-guide/subscription-governance)和[企业 IT 白皮书](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf)（.pdf 下载，仅英文版）。
 
-### <a name="EA"></a> Azure 门户中的企业协议成本视图
+### <a name="enterprise-agreement-cost-views-in-the-azure-portal"></a><a name="EA"></a> Azure 门户中的企业协议成本视图
 
 企业成本视图目前为公共预览版。 注意事项：
 

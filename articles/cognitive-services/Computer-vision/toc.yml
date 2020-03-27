@@ -9,18 +9,8 @@
       href: whats-new.md
 - name: 快速入门
   items:
-    - name: 使用客户端 SDK
-      items:
-        - name: .NET SDK
-          href: quickstarts-sdk/csharp-sdk.md
-        - name: Python SDK
-          href: quickstarts-sdk/python-sdk.md
-        - name: Java SDK
-          href: quickstarts-sdk/java-sdk.md
-        - name: Node.js SDK
-          href: quickstarts-sdk/node-sdk.md
-        - name: Go SDK
-          href: quickstarts-sdk/go-sdk.md
+    - name: 使用客户端库
+      href: quickstarts-sdk/client-library.md
     - name: 使用 REST API
       items:
         - name: 分析远程图像

@@ -58,7 +58,21 @@
     - name: 概念
       items:
         - name: Dev Spaces 工作原理
-          href: how-dev-spaces-works.md
+          items:
+            - name: 概述
+              href: how-dev-spaces-works.md
+            - name: 设置群集
+              href: how-dev-spaces-works-cluster-setup.md
+            - name: 准备项目
+              href: how-dev-spaces-works-prep.md
+            - name: 运行代码
+              href: how-dev-spaces-works-up.md
+            - name: 开发空间之间的路由
+              href: how-dev-spaces-works-routing.md
+            - name: 远程调试
+              href: how-dev-spaces-works-remote-debugging.md
+            - name: 将开发计算机连接到 AKS
+              href: how-dev-spaces-works-connect.md
         - name: VS Code 如何与 Dev Spaces 配合工作
           href: how-vs-code-works-with-dev-spaces.md
         - name: 不同网络拓扑中的网络配置

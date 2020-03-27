@@ -7,12 +7,28 @@
       href: Welcome.md
     - name: 认知服务和机器学习
       href: cognitive-services-and-machine-learning.md
-    - name: 用于认知服务的虚拟网络
-      href: cognitive-services-virtual-networks.md
     - name: 认知服务的自定义子域
       href: cognitive-services-custom-subdomains.md
     - name: 语言支持
       href: language-support.md
+- name: 快速入门
+  items:
+    - name: 使用 Azure 门户创建新资源
+      href: cognitive-services-apis-create-account.md
+    - name: 使用 Azure CLI 创建新资源
+      href: cognitive-services-apis-create-account-cli.md
+    - name: 诊断日志记录
+      href: diagnostic-logging.md
+- name: 安全性
+  items:
+    - name: 认知服务的安全性
+      href: cognitive-services-security.md
+    - name: 用于认知服务的虚拟网络
+      href: cognitive-services-virtual-networks.md
+    - name: 配置客户管理的密钥
+      href: ./encryption/cognitive-services-encryption-keys-portal.md
+    - name: 对认知服务的请求进行身份验证
+      href: authentication.md
 - name: 容器支持
   items:
     - name: 容器支持
@@ -39,16 +55,6 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes 服务 (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
-- name: 快速入门
-  items:
-    - name: 使用 Azure 门户创建新资源
-      href: cognitive-services-apis-create-account.md
-    - name: 使用 Azure CLI 创建新资源
-      href: cognitive-services-apis-create-account-cli.md
-    - name: Authentication
-      href: authentication.md
-    - name: 诊断日志记录
-      href: diagnostic-logging.md
 - name: 资源
   items:
     - name: Azure 路线图

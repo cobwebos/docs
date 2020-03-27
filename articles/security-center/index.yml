@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 2896bee8f5a07a7432ca3fa2ca49caa529fdeb1e
-  ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+  ms.openlocfilehash: a1d764ce1ce332290c1bd68c5beb5f2731ae5e41
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/25/2020
-  ms.locfileid: "77604777"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80159296"
 landingContent:
 - title: 关于安全中心
   linkLists:
@@ -32,15 +32,15 @@ landingContent:
     links:
     - text: 保护容器
       url: container-security.md
-    - text: 添加动态符合性包
-      url: update-regulatory-compliance-packages.md
-    - text: 与 Windows Admin Center 集成
-      url: windows-admin-center-integration.md
+    - text: VM 的集成漏洞评估
+      url: built-in-vulnerability-assessment.md
+    - text: 查看安全警报的架构
+      url: alerts-schemas.md
     - text: 自动响应警报和建议
       url: workflow-automation.md
     - text: 导出安全警报和建议
       url: continuous-export.md
-    - text: 为 Azure Key Vault 设置高级威胁防护
+    - text: 为 Azure Key Vault 设置威胁防护
       url: advanced-threat-protection-key-vault.md
 - title: 入门
   linkLists:
@@ -52,12 +52,12 @@ landingContent:
       url: security-center-secure-score.md
     - text: 升级到高级安全
       url: security-center-onboarding.md
-- title: 提高安全分数
+- title: 提高安全评分
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 安全功能分数是什么？
-      url: security-center-secure-score.md
+    - text: 了解安全评分
+      url: secure-score-security-controls.md
     - text: 修正安全建议
       url: security-center-remediate-recommendations.md
     - text: 自定义安全建议

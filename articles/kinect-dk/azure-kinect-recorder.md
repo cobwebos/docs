@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 录制, 播放, 读取器, matroska, mkv, 流, 深度, rgb, 相机, 彩色, imu, 音频
 ms.openlocfilehash: 5fb6895d4102956a991c67ffab836a26b7a3abb0
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73932222"
 ---
 # <a name="azure-kinect-dk-recorder"></a>Azure Kinect DK 录制器
@@ -80,7 +80,7 @@ k4arecorder.exe -d WFOV_2X2BINNED -c OFF --imu OFF -l 5 output.mkv
 
 可以使用 [Azure Kinect 查看器](azure-kinect-viewer.md)打开输出的 .mkv 文件。
 
-若要提取轨道或查看文件信息，可以使用 [MKVToolNix](https://mkvtoolnix.download/) 工具包中的 `mkvinfo` 等工具。
+若要提取轨道或查看文件信息，可以使用 `mkvinfo`MKVToolNix[ 工具包中的 ](https://mkvtoolnix.download/) 等工具。
 
 ## <a name="next-steps"></a>后续步骤
 

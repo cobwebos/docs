@@ -3,19 +3,19 @@ title: Azure Red Hat OpenShift 文档
 summary: Azure Red Hat OpenShift 在 Azure 上提供受 Red Hat 和 Microsoft 支持的单租户高可用性 Kubernetes 群集。
 metadata:
   title: Azure Red Hat OpenShift 文档
-  description: 使用 Microsoft Azure Red Hat OpenShift 可在 Azure 中快速部署一个可用于生产的 Red Hat OpenShift 群集。 通过这些教程和操作指南，了解如何使用 Azure Red Hat OpenShift。
+  description: 使用 Microsoft Azure Red Hat OpenShift 可在 Azure 中部署一个可用于生产的 Red Hat OpenShift 群集。 请通过这些教程和操作指南了解操作方法。
   ms.service: container-service
   services: container-service
   ms.topic: landing-page
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: ec40ff9af0b2c09db32e40536009cd0db684f030
-  ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+  ms.openlocfilehash: f35419d63375ae8fca5f9458505b96b6ddfd3890
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/10/2020
-  ms.locfileid: "79037045"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80062288"
 landingContent:
 - title: 关于 Azure Red Hat OpenShift
   linkLists:

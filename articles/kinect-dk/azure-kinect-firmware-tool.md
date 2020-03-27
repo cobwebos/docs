@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 固件, 更新
 ms.openlocfilehash: f8b89751d27fb5a4b18d635f45f63f4f36bd05f6
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73932223"
 ---
 # <a name="azure-kinect-dk-firmware-tool"></a>Azure Kinect DK 固件工具
@@ -20,7 +20,7 @@ Azure Kinect 固件工具可用于查询和更新 Azure Kinect DK 的设备固�
 
 ## <a name="list-connected-devices"></a>列出已连接的设备
 
-可以使用 -l 选项获取已连接的设备列表：  `AzureKinectFirmwareTool.exe -l`
+可以使用 -l 选项获取已连接的设备列表。  `AzureKinectFirmwareTool.exe -l`
 
 ```console
  == Azure Kinect DK Firmware Tool ==
@@ -51,7 +51,7 @@ Current Firmware Versions:
 
 ## <a name="update-device-firmware"></a>更新设备固件
 
-此工具最常见的用途是更新设备固件。 使用 `-u` 选项调用该工具可以执行更新。 固件更新可能需要几分钟时间，具体取决于必须更新哪些固件文件。
+此工具的最常见用途是更新设备固件。 使用 `-u` 选项调用该工具可以执行更新。 固件更新可能需要几分钟时间，具体取决于必须更新哪些固件文件。
 
 有关固件更新的分步说明，请参阅 [Azure Kinect 固件更新](update-device-firmware.md)。  
 

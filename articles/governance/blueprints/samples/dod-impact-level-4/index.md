@@ -1,18 +1,18 @@
 ---
 title: DoD 影响级别 4 蓝图示例概述
 description: DoD 影响级别 4 示例的概述。 此蓝图示例可帮助客户评估特定 DoD 影响级别 4 控制要求。
-ms.date: 02/09/2020
+ms.date: 03/12/2020
 ms.topic: sample
-ms.openlocfilehash: faac024a0bd18f6a2f10e441ca9e44526463e435
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: a67dae5399d3e2e24c226c53f915b91e2524e735
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77154601"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "79415370"
 ---
 # <a name="overview-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影响级别 4 蓝图示例概述
 
-国防部影响级别 4 (DoD IL4) 蓝图示例提供了监管防护措施，其中使用 [Azure Policy](../../../policy/overview.md) 来帮助评估特定 DoD 影响级别 4 控制要求。 此蓝图可帮助客户为 Azure 部署的任何必须实现 DoD 影响级别 4 控制要求的体系结构部署一组核心策略。
+国防部影响级别 4 (DoD IL4) 蓝图示例提供了监管防护措施，其中使用 [Azure Policy](../../../policy/overview.md) 来帮助评估特定 DoD 影响级别 4 控制要求。 此蓝图可帮助客户为 Azure 部署的任何必须实现 DoD 影响级别 4 控制要求的体系结构部署一组核心策略。 有关哪些 Azure 云和服务符合 DoD 影响级别 4 授权要求的最新信息，请参阅[按 FedRAMP 和 DoD CC SRG 审核范围列出的 Azure 服务](../../../../azure-government/compliance/azure-services-in-fedramp-auditscope.md)。
 
 ## <a name="control-mapping"></a>控制映射
 

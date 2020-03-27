@@ -44,9 +44,14 @@
     - name: 查看和管理客户
       displayName: my customers
       href: ./how-to/view-manage-customers.md
-    - name: 大规模使用 Azure Monitor 日志
-      displayName: 'log, analytics, analyze, activity'
-      href: ./how-to/monitor-at-scale.md
+    - name: Azure Monitor 集成
+      items:
+        - name: 大规模使用 Azure Monitor 日志
+          displayName: 'log, analytics, analyze, activity'
+          href: ./how-to/monitor-at-scale.md
+        - name: 监视委托更改
+          displayName: activity log
+          href: ./how-to/monitor-delegation-changes.md
     - name: Azure Policy 集成
       items:
         - name: 大规模部署策略

@@ -30,12 +30,16 @@
   items:
     - name: 管理员指南
       href: administrator-guide.md
+    - name: 加速实验室帐户设置指南
+      href: account-setup-guide.md
+    - name: 加速实验室设置指南
+      href: setup-guide.md
     - name: 教室实验室 - 课程类型
       items:
         - name: 课程类型概述
           href: class-types.md
-        - name: 自然处理中的深度学习
-          href: class-type-deep-learning-natural-processing.md
+        - name: 自然语言处理中的深度学习
+          href: class-type-deep-learning-natural-language-processing.md
         - name: Linux 上的 Shell 脚本
           href: class-type-shell-scripting-linux.md
         - name: 道德黑客攻击
@@ -66,6 +70,8 @@
           href: how-to-configure-firewall-settings.md
         - name: 为实验室指定市场映像
           href: specify-marketplace-images.md
+        - name: 指定支持信息（实验室帐户所有者）
+          href: lab-account-owner-support-information.md
     - name: 创建和配置课堂实验室（讲师）
       items:
         - name: 创建和管理教室实验室
@@ -87,17 +93,29 @@
         - name: 允许在断开连接时自动关闭
           href: how-to-enable-shutdown-disconnect.md
         - name: 在模板 VM 上启用嵌套虚拟化
-          href: how-to-enable-nested-virtualization-template-vm.md
+          items:
+            - name: 有关在模板 VM 上启用嵌套虚拟化的概述
+              href: how-to-enable-nested-virtualization-template-vm.md
+            - name: 使用 UI 在模板 VM 上启用嵌套虚拟化
+              href: how-to-enable-nested-virtualization-template-vm-ui.md
+            - name: 使用脚本在模板 VM 上启用嵌套虚拟化
+              href: how-to-enable-nested-virtualization-template-vm-using-script.md
         - name: 准备 Windows 模板 VM
           href: how-to-prepare-windows-template.md
+        - name: 查看支持信息（讲师）
+          href: lab-creator-support-information.md
     - name: 连接到课堂实验室中的 VM（学生）
       items:
         - name: 访问教室实验室
           href: how-to-use-classroom-lab.md
         - name: 对 Linux VM 使用远程桌面连接
           href: how-to-use-remote-desktop-linux-student.md
+        - name: 使用 RDP 从 Mac 连接到 VM
+          href: connect-virtual-machine-mac-rdp.md
         - name: 设置或重置虚拟机的密码
           href: how-to-set-virtual-machine-passwords-student.md
+        - name: 查看支持信息（学生）
+          href: lab-user-support-information.md
 - name: 参考
   items:
     - name: REST API

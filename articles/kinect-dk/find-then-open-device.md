@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 设备, 查找, 打开
 ms.openlocfilehash: 67fc93b924d5d663bb43098969c54d1975bd5895
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73931741"
 ---
 # <a name="find-then-open-the-azure-kinect-device"></a>找到并打开 Azure Kinect 设备
@@ -57,7 +57,7 @@ for (uint8_t deviceIndex = 0; deviceIndex < device_count; deviceIndex++)
 }
 ```
 
-[`k4a_device_open()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113) 的 `index` 参数指示当连接了多个设备时要打开哪个设备。 如果你预期只会连接一个设备，可以传递 `K4A_DEVICE_DEFAULT` 的参数或 0 来指示第一台设备。
+`index`[`k4a_device_open()` 的 ](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113) 参数指示当连接了多个设备时要打开哪个设备。 如果你预期只会连接一个设备，可以传递 `K4A_DEVICE_DEFAULT` 的参数或 0 来指示第一台设备。
 
 用完句柄后，每当打开设备时，都需要调用 [`k4a_device_close()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7a3931d9a690b3971caaac83b43f9423.html#ga7a3931d9a690b3971caaac83b43f9423)。 在关闭句柄之前，无法打开同一设备的其他句柄。
 
@@ -105,7 +105,7 @@ printf("%d: Device \"%s\"\n", deviceIndex, serial_number);
 
 ## <a name="open-the-default-device"></a>打开默认设备
 
-在大多数应用程序中，只会将单个 Azure Kinect DK 附加到同一台计算机。 如果只需连接到单个预期设备，可以结合 `K4A_DEVICE_DEFAULT` 的 `index` 调用 [`k4a_device_open()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113) 打开第一台设备。
+在大多数应用程序中，只会将单个 Azure Kinect DK 附加到同一台计算机。 如果只需连接到单个预期设备，可以结合 [ 的 `k4a_device_open()` 调用 ](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113)`index``K4A_DEVICE_DEFAULT` 打开第一台设备。
 
 ```C
 k4a_device_t device = NULL;

@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, rgb, IR, 录制, 传感器, sdk, 访问, 深度, 视频, 相机, imu, 运动, 传感器, 音频, 麦克风, matroska, 传感器 sdk, 下载
 ms.openlocfilehash: 17c1b33120eacb5d0c6d3c02e692d1488ef474e6
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73932226"
 ---
 # <a name="about-azure-kinect-sensor-sdk"></a>关于 Azure Kinect 传感器 SDK
@@ -33,7 +33,7 @@ Azure Kinect 传感器 SDK 提供对 Azure Kinect 设备配置和硬件传感器
 ## <a name="tools"></a>工具
 
 - 用于监视设备数据流和配置不同模式的 [Azure Kinect 查看器](azure-kinect-viewer.md)。
-- 使用 [Matroska 容器格式](record-file-format.md)的 [Azure Kinect 录制器](azure-kinect-recorder.md)和播放读取器 API。
+- 使用 [Matroska 容器格式](azure-kinect-recorder.md)的 [Azure Kinect 录制器](record-file-format.md)和播放读取器 API。
 - Azure Kinect DK [固件更新工具](azure-kinect-firmware-tool.md)。
 
 ## <a name="sensor-sdk"></a>传感器 SDK

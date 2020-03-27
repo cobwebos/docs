@@ -315,6 +315,10 @@
               href: disk-encryption-sample-scripts.md
             - name: 隔离网络上的磁盘加密
               href: disk-encryption-isolated-network.md
+            - name: 如何验证加密状态
+              href: how-to-verify-encryption-status.md
+            - name: 如何在 crypt 中配置 LVM RAID
+              href: how-to-configure-lvm-raid-on-crypt.md
             - name: 磁盘加密故障排除
               href: disk-encryption-troubleshooting.md
             - name: 磁盘加密常见问题解答
@@ -498,8 +502,6 @@
           href: capture-image.md
         - name: 使用 Packer 生成映像
           href: build-image-with-packer.md
-        - name: Azure 中的 RHEL 映像
-          href: rhel-images.md
         - name: 下载现有磁盘
           href: download-vhd.md
     - name: 可用性和规模
@@ -520,6 +522,8 @@
           href: create-cli-availability-zone.md
     - name: 使用自动化工具
       items:
+        - name: 自定义数据
+          href: ../custom-data.md
         - name: Ansible
           items:
             - name: 安装和配置

@@ -59,6 +59,8 @@
           href: container-instances-vnet.md
         - name: 从 Azure 容器注册表部署
           href: container-instances-using-azure-container-registry.md
+        - name: 使用 GitHub Actions 进行部署（预览版）
+          href: container-instances-github-action.md
         - name: 加密部署数据
           href: container-instances-encrypt-data.md
         - name: 在专用主机上部署
@@ -83,6 +85,8 @@
           href: container-instances-gpu.md
         - name: 在挎斗中启用 SSL 终结点
           href: container-instances-container-group-ssl.md
+        - name: 公开静态 IP 地址
+          href: container-instances-application-gateway.md
     - name: 装载数据卷
       items:
         - name: Azure 文件共享

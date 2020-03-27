@@ -1,20 +1,20 @@
 ---
-title: 教程：在 Azure 中使用 Cloudyn 查看使用情况和成本 | Microsoft Docs
+title: 教程：在 Azure 中使用 Cloudyn 查看使用情况和成本
 description: 在本教程中，请查看使用情况和成本以跟踪趋势、检测低效情况并创建警报。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: a2d4525b0b29feb230f5496196a84e651e651e52
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8a15de717ea960b411d95061b560b64abb94d98f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774042"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474554"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -35,7 +35,9 @@ Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是�
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
+
+## <a name="prerequisites"></a>先决条件
 
 - 必须具有 Azure 帐户。
 - 必须有 Cloudyn 的试用注册版或付费订阅版。
@@ -74,7 +76,7 @@ Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是�
 
 “经济高效的大小调整建议”报表通过将 VM 实例类型容量与其 CPU 和内存使用情况的历史数据相比较，确定出每年可能节省的费用。  
 
-在门户顶部的菜单中，单击“优化器”   > “大小优化”   > “经济高效的大小调整建议”  。 如果有用，请应用筛选器来减少结果。 下面是一个示例图像：
+在门户顶部的菜单中，单击“优化器”   > “大小优化”   > “经济高效的大小调整建议”  。 如果有用，请应用筛选器来减少结果。 下面是一个示例插图。
 
 ![Azure VM 的经济高效的大小调整建议报告](./media/tutorial-review-usage/sizing01.png)
 

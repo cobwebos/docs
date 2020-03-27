@@ -1,26 +1,28 @@
 ---
-title: 将 Azure 企业协议注册到 Cloudyn 中 | Microsoft Docs
+title: 将 Azure 企业协议注册到 Cloudyn 中
 description: 本快速入门将详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: e6431d1fa73106267730db721060906e43c456d2
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3c54328630d4e349af25c5f28a53a66117bf6a39
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117765"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474605"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>注册 Azure 企业协议并查看成本数据
 
 使用 Azure 企业协议注册到 Cloudyn。 注册后可以访问 Cloudyn 门户。 本快速入门将详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。 此外，还将演示如何立即开始查看成本数据。
 
 Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是一个本机 Azure 成本管理解决方案。 借助它，可以分析成本、创建和管理预算、导出数据，并能查看和采纳优化建议，从而节省资金。 有关详细信息，请参阅 [Azure 成本管理](../cost-management-billing-overview.md)。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

@@ -1,21 +1,21 @@
 ### YamlMime:Landing
-title: Azure Front Door 服务文档
+title: Azure Front Door 文档
 summary: Azure Front Door 是一个可缩放的安全入口点，用于快速交付全局 Web 应用程序。
 metadata:
-  title: Azure Front Door 服务文档
-  description: Azure Front Door 服务提供可缩放的安全入口点，可快速交付全局 Web 应用程序。 使用我们的快速入门、教程和示例了解如何使用 Front Door。
+  title: Azure Front Door 文档
+  description: Azure Front Door 提供可缩放的安全入口点，可快速交付全局 Web 应用程序。 使用我们的快速入门、教程和示例了解如何使用 Front Door。
   services: frontdoor
   ms.service: frontdoor
   ms.topic: landing-page
   author: vhorne
   ms.author: victorh
   ms.date: 03/03/2020
-  ms.openlocfilehash: 7fdf859bc3d8f970fe16bd031d4fd60919c49a92
-  ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+  ms.openlocfilehash: 396b416d2c2fae101fee4ba64d85375e6d3da794
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/04/2020
-  ms.locfileid: "78273273"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79471432"
 landingContent:
 - title: 了解 Azure Front Door
   linkLists:

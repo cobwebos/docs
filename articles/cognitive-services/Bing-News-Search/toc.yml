@@ -28,14 +28,8 @@
           href: go.md
     - name: SDK 中 IsInRole 中的声明
       items:
-        - name: '使用 C#'
-          href: news-search-sdk-quickstart.md
-        - name: 使用 Node.js
-          href: news-search-sdk-node-quickstart.md
-        - name: 使用 Python
-          href: news-sdk-python-quickstart.md
-        - name: 使用 Java
-          href: news-sdk-java-quickstart.md
+        - name: 必应新闻搜索客户端库
+          href: ./quickstarts/client-libraries.md
 - name: 教程
   items:
     - name: 创建单页 Web 应用

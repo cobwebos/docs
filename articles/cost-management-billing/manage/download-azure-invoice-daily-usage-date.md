@@ -1,5 +1,5 @@
 ---
-title: 下载 Azure 帐单发票和每日使用数据 | Microsoft Docs
+title: 下载 Azure 帐单发票和每日使用数据
 description: 介绍如何下载或查看 Azure 帐单发票和每日使用数据。
 keywords: 帐单发票, 发票下载, azure 发票, azure 使用情况
 author: genlin
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: af2184d7faa2ace8ed1043eaf2aaec0d525bc937
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 629ab8a0f2af789501e6365c94f4ce7f3fd3649c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125626"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237677"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>下载或查看 Azure 帐单发票和每日使用数据
 
@@ -62,7 +62,7 @@ ms.locfileid: "79125626"
 6. 在下载上下文菜单中，选择“发票”  。
 
 如果看不到上一个计费周期的发票，请参阅“其他信息”  。 <!-- Fix this -->
-### <a name="noinvoice"></a> 为何看不到最后一个计费周期的发票？
+### <a name="why-dont-i-see-an-invoice-for-the-last-billing-period"></a><a name="noinvoice"></a> 为何看不到最后一个计费周期的发票？
 
 看不到发票的几个可能原因：
 

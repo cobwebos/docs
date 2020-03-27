@@ -7,13 +7,13 @@ ms.author: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 156f47e7a5571d37d836e68c7817352626fbd734
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/19/2020
+ms.openlocfilehash: 3a7e1e8670911d361b3c59aacc0973eac035fb70
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200242"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065729"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>查看和下载 Azure 使用情况与费用
 
@@ -21,30 +21,31 @@ ms.locfileid: "77200242"
 
 如果签订了 Microsoft 客户协议 (MCA)，则必须是计费对象信息所有者、参与者、读者或发票管理者，才能查看 Azure 使用情况和费用。  如果签订了 Microsoft 合作伙伴协议 (MPA)，则只有合作伙伴组织中的全局管理员和管理员代理角色才能查看和下载 Azure 使用情况和费用。 [在 Azure 门户中检查计费帐户类型](#check-your-billing-account-type)。
 
+根据使用的订阅类型，用于下载使用情况和费用的选项有所不同。 
+
 ## <a name="download-usage-from-the-azure-portal-csv"></a>从 Azure 门户下载使用情况 (.csv)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”。 
-
-    ![显示了 Azure 门户搜索的屏幕截图](./media/download-azure-daily-usage/portal-cm-billing-search.png)
-
+1. 搜索“成本管理 + 计费”。   
+    ![显示 Azure 门户搜索的屏幕截图](./media/download-azure-daily-usage/portal-cm-billing-search.png)
 1. 根据你的访问权限，可能需要选择一个计费帐户或计费对象信息。
 1. 在左侧菜单中，选择“账单”  下的“发票”  。
 1. 在发票网格中，找到与要下载的使用情况对应的计费周期行。
-1. 选择右侧的下载图标或省略号 (`...`)  。
-1. “下载”窗格将在右侧打开。 在“使用情况详细信息”部分，选择“下载”   。
+1. 选择右侧的下载图标或省略号 (`...`)  。  
+  ![显示“使用情况 + 费用”下载位置的屏幕截图](./media/download-azure-daily-usage/download-usage-others.png)  
+1. “下载”窗格将在右侧打开。 在“使用情况详细信息”部分，选择“下载”   。  
+
 
 ## <a name="download-usage-for-ea-customers"></a>下载 EA 客户的使用情况数据
 
 若要作为 EA 客户查看和下载使用情况数据，你必须是启用了“查看费用策略”的企业管理员、帐户所有者或部门管理员。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”。 
-
-    ![显示了 Azure 门户搜索的屏幕截图](./media/download-azure-daily-usage/portal-cm-billing-search.png)
-
+1. 搜索“成本管理 + 计费”。   
+    ![显示 Azure 门户搜索的屏幕截图](./media/download-azure-daily-usage/portal-cm-billing-search.png)
 1. 选择“使用情况 + 费用”。 
-1. 针对要下载的月份，选择“下载”。 
+1. 针对要下载的月份，选择“下载”。   
+    ![显示“使用情况 + 费用”下载位置的屏幕截图](./media/download-azure-daily-usage/download-usage-ea.png)
 
 ## <a name="download-usage-for-pending-charges"></a>下载未决费用的使用情况
 

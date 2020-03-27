@@ -5,36 +5,24 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.author: banders
-ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: ede60adc13dadc38e18ee5ade468e01b16523f4f
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587084"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80235744"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>通过按月付款的方式购买预留
 
-以前，Azure 预留需要提前付款。 而现在，你可以通过按月付款的方式购买预留。 与需要全额付款的提前付款购买不同，按月付款选项将预留的总费用平均分配到期限的每个月。 预付和每月预留的总费用相同，选择每月支付不会产生额外的费用。
+可以通过按月付款的方式购买预留项。 与需要全额付款的提前付款购买不同，按月付款选项将预留的总费用平均分配到期限的每个月。 预付和每月预留的总费用相同，选择每月支付不会产生额外的费用。
 
-每月付款金额可能会有所不同，具体取决于本地货币的当月市场汇率。
+如果使用 Microsoft 客户协议 (MCA) 购买预留项，则每月付款金额可能会有所不同，具体取决于本地货币的当月市场汇率。
 
-每月付款适用于：
+每月付款不适用于：Databricks、SUSE Linux 预留项、Red Hat 计划和 Azure Red Hat OpenShift 计算。
 
-- 虚拟机
-- Azure 存储
-- SQL 数据库
-- SQL 数据仓库
-- Cosmos DB
-- 应用服务印花费
-- 托管磁盘
-- Azure 数据资源管理器
-- Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL
-- Azure VMware Solution by CloudSimple
-
-
-在 [Azure 门户](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade)中购买预留。
+在 [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs)中购买预留。
 
 ![显示预留购买的示例](./media/monthly-payments-reservations/purchase-reservation.png)
 
@@ -58,11 +46,11 @@ ms.locfileid: "77587084"
 
 ## <a name="exchange-and-refunds"></a>交换和退款
 
-与其他预留一样，可以通过每月计费对购买的预留执行退款或交换操作。 目前，提交一个支持请求即可通过每月计费对购买的预留执行交换或退款操作。
+与其他预留一样，可以通过每月计费对购买的预留执行退款或交换操作。 
 
 交换一个按月付款的预留时，新购买的生存期费用总计应该大于已取消的针对退回的预留的剩余付款。 对于交换，没有任何其他限制或费用。 可以交换一个提前付款的预留，购买一个新的按月计费的预留。 但是，新预留的生存期价值应该大于退回的预留的按比例计算的价值。
 
-如果你取消了按月付费的预留，Microsoft 可能会对取消的承诺付款收取 12% 的取消费用。 不过，Microsoft 目前并没有收取罚款。 取消的承诺付款会累计入 50,000 美元的退款限额。 如果收取取消罚款，则不会影响退款限额。
+如果取消某个按月付款的预留项，已取消的将来付款会计入到 50,000 美元退款限额。
 
 有关交换和退款的详细信息，请参阅 [Azure 预留的自助交换和退款](exchange-and-refund-azure-reservations.md)。
 

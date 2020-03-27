@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装, 人体, 跟踪
 ms.openlocfilehash: e3f8233d208e2a45c1af9a52a76b6064b15bfe4b
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79117210"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>下载 Azure Kinect 人体跟踪 SDK
@@ -59,7 +59,7 @@ ms.locfileid: "79117210"
 ## <a name="change-log"></a>更改日志
 
 ### <a name="v101"></a>v1.0.1
-* [Bug 修复] 修复了从 Windows 内部版本 19025 或更高版本的路径加载 onnxruntime.dll 时 SDK 崩溃的问题：[链接](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/932)
+* [Bug 修复] 修复了从 Windows 内部版本 19025 或更高版本的路径加载 onnxruntime.dll 时 SDK 崩溃的问题：[链接](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/932)。
 
 ### <a name="v100"></a>v1.0.0
 * [功能] 为 msi 安装程序添加了 C# 包装器。

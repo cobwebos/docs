@@ -1,5 +1,5 @@
 ---
-title: 重新激活禁用的 Azure for Students 订阅 | Microsoft Docs
+title: 重新激活禁用的 Azure for Students 订阅
 description: 说明为什么禁用 Azure for Students 订阅以及如何将其重新激活。
 author: amberbhargava
 tags: billing
@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 66e87b36644f5ed018603c14b311c31d851a1785
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: fb091efd9888930f7e834d840d3cab047949dbf1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200925"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202992"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>为何禁用 Azure for Students 订阅？如何重新激活它？
 

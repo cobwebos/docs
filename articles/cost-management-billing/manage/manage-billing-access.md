@@ -1,5 +1,5 @@
 ---
-title: 管理对 Azure 账单信息的访问权限 | Microsoft Docs
+title: 管理对 Azure 计费的访问
 description: 了解如何向团队成员提供对 Azure 帐单信息的访问权限。
 author: vikramdesai01
 ms.reviewer: amberb
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 5a4d725d88ee38bb68ea3da4f3e2a6a9bfc7e201
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: e7a6f105c6c8292e8e95b388d60dd95c3548dbb5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200687"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237660"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理对 Azure 账单信息的访问权限
 
@@ -44,7 +44,7 @@ ms.locfileid: "77200687"
 ** 如果你是 EA 客户，帐户所有者可以将上述角色分配给其团队的其他用户。 但是，要让这些用户查看账单信息，企业管理员必须在 Enterprise Portal 中启用 AO 查看费用。
 
 
-### <a name="opt-in"></a> 允许用户下载发票
+### <a name="allow-users-to-download-invoices"></a><a name="opt-in"></a> 允许用户下载发票
 
 帐户管理员将适当角色分配给其他用户后，他们必须在 Azure 门户中打开下载发票的访问权限。 早于 2016 年 12 月的发票仅供帐户管理员查看。
 

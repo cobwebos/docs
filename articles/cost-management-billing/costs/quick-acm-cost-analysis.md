@@ -1,19 +1,19 @@
 ---
-title: 快速入门 - 通过成本分析了解 Azure 成本 | Microsoft Docs
+title: 快速入门 - 通过成本分析了解 Azure 成本
 description: 本快速入门可帮助你通过成本分析了解和分析 Azure 组织成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/24/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 002caa15b7054ab806018a733b32a1b2555e1aea
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384196"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155947"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -26,7 +26,6 @@ ms.locfileid: "78384196"
 - 通过成本分析查看成本
 - 自定义成本视图
 - 下载成本分析数据
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,6 +44,10 @@ ms.locfileid: "78384196"
 若要通过成本分析查看成本，请在 Azure 门户打开范围并在菜单中选择“成本分析”  。 例如，转到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析”   。 使用“范围”  框可在成本分析中切换到不同的范围。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 所选的范围将用于整个成本管理，以提供数据整合和控制对成本信息的访问。 使用范围时，不要多选它们。 而应先选择一个汇总了其他范围的较大范围，然后筛选出所需的嵌套范围。 了解此方法很重要，因为某些用户可能无法访问单个涵盖多个嵌套范围的父范围。
+
+请观看视频[如何在 Azure 门户中使用成本管理](https://www.youtube.com/watch?v=mfxysF-kTFA)来详细了解成本分析的用法。
+
+>[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
 初始成本分析视图包括以下方面。
 
@@ -67,7 +70,6 @@ ms.locfileid: "78384196"
 成本预测显示选定时间段的估计成本预测。 该模型基于时序回归模型。 它需要至少 10 天的最近成本和使用情况数据才能准确预测成本。 对于给定的时间段，预测模型需要使用与预测期间相同时长的训练数据。 例如，对三个月进行预测至少需要三个月的最近成本和使用情况数据。
 
 该模型使用最多六个月的训练数据来预测一年的成本。 它至少需要 7 天的训练数据才会改变它的预测。 此预测基于成本和使用模式的巨大变化，例如剧增和剧减。 预测不会为“分组依据”属性中的每个项生成单独的预测。  它仅提供针对总累计成本的预测。 如果你使用多种货币，则模型仅以美元提供成本预测。
-
 
 ## <a name="customize-cost-views"></a>自定义成本视图
 
@@ -176,11 +178,17 @@ ms.locfileid: "78384196"
 
 保存自定义视图并将其与他人共享，方法是将成本分析固定到 Azure 门户仪表板或复制成本分析的链接。
 
+请观看视频[在 Azure 成本管理中共享和保存视图](https://www.youtube.com/watch?v=kQkXXj-SmvQ)，来详细了解如何使用门户在整个组织中分享成本知识。
+
+>[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
+
 若要固定成本分析，请选择右上角的图钉图标。 固定成本分析只会保存主图表或表视图。 共享仪表板，允许他人访问此磁贴。 请注意，这只共享仪表板配置，并不授予他人访问基础数据的权限。 如果你没有成本访问权限但有共享仪表板的访问权限，将会看到“拒绝访问”消息。
 
 若要共享成本分析链接，请选择边栏选项卡顶部的“共享”  。 随即会显示一个自定义 URL，单击此 URL 会打开针对此特定范围的特定视图。 如果你没有成本访问权限也没有获取此 URL，你将看到“拒绝访问”消息。
 
 若要详细了解如何针对每个受支持的范围授予成本访问权限，请参阅[了解并使用范围](understand-work-scopes.md)。
+
+
 
 ## <a name="automation-and-offline-analysis"></a>自动化和脱机分析
 

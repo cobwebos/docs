@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 帐户链接到合作伙伴 ID | Microsoft Docs
+title: 将 Azure 帐户链接到合作伙伴 ID
 description: 通过将合作伙伴 ID 链接到用于管理客户资源的用户帐户来跟踪 Azure 客户的互动。
 author: dhirajgandhi
 ms.reviewer: dhgandhi
@@ -7,18 +7,18 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651349"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204794"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
-Microsoft 合作伙伴提供的服务可帮助客户使用 Microsoft 产品实现业务和任务目标。 当代表客户管理、配置和支持 Azure 服务时，合作伙伴用户将需要访问客户的环境。 合作伙伴可以使用合作伙伴管理链接将其合作伙伴网络 ID 与用于服务交付的凭据相关联。
+Microsoft 合作伙伴提供的服务可帮助客户使用 Microsoft 产品实现业务和任务目标。 当代表客户管理、配置和支持 Azure 服务时，合作伙伴用户将需要访问客户的环境。 合作伙伴可以使用合作伙伴管理链接 (PAL) 将其合作伙伴网络 ID 与用于服务交付的凭据相关联。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+PAL 使 Microsoft 能够识别哪些合作伙伴促成了 Azure 客户的成功。Microsoft 可以根据帐户的权限（RBAC 角色）和范围（订阅、资源组、资源），将影响力和 Azure 消费收入归结于组织。
 
 ## <a name="get-access-from-your-customer"></a>从客户获取访问权限
 

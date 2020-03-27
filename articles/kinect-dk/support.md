@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, rgb, IR, 录制, 传感器, sdk, 访问, 深度, 视频, 相机, imu, 运动, 传感器, 音频, 麦克风, matroska, 传感器 sdk, 下载, 人体, 跟踪, 支持
 ms.openlocfilehash: f2a5aa43c31a0d75e8ced1662de0bdac62ac9b58
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73931694"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Azure Kinect 支持选项和资源

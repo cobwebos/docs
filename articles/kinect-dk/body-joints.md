@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 移植, 人体, 跟踪, 关节, 层次结构, 骨骼, 连接
 ms.openlocfilehash: 4cf6ac13a93d0674f9fa144abcc3153a2d7c3350
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74978314"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Azure Kinect 人体跟踪关节
@@ -34,7 +34,7 @@ Azure Kinect 人体跟踪可以同时跟踪多个人体。 每个人体包括帧
 
 ## <a name="joint-hierarchy"></a>关节层次结构
 
-骨架包括 32 个关节，关节层次结构按照从人体中心向四肢的流向分布。 每个连接（骨骼）将父关节与子关节链接起来。 该图显示了与人体相关的关节位置和连接。
+骨架包括 32 个关节，关节层次结构按照从人体中心向四肢的流向分布。 每个连接（骨骼）将父关节与子关节链接起来。 该图演示了关节位置以及相对于人体的连接。
 
 ![关节层次结构](./media/concepts/joint-hierarchy.png)
 

@@ -1,20 +1,20 @@
 ---
-title: 教程 - 使用 Azure 中的 Cloudyn 分配访问权限 | Microsoft Docs
+title: 教程 - 使用 Azure 中的 Cloudyn 分配访问权限
 description: 本教程介绍如何使用定义实体访问级别的用户帐户分配对 Cloudyn 数据的访问权限。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: b93dfd7699ab2f1e2851b4d1f7e6d4c721186a2e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: e8fff8b75ff419cffc7f496f921dcba734109e5a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76774006"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463605"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>教程：分配对 Cloudyn 数据的访问权限
 
@@ -34,7 +34,9 @@ ms.locfileid: "76774006"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
+
+## <a name="prerequisites"></a>先决条件
 
 - 必须具有 Azure 帐户。
 - 必须有 Cloudyn 的试用注册版或付费订阅版。
@@ -66,11 +68,11 @@ ms.locfileid: "76774006"
 无法以用户身份删除自己。
 
 > [!WARNING]
-> 用户在删除后无法还原。
+> 删除用户后无法将其还原。
 
-1.  在 Cloudyn 门户中，单击右上方的齿轮符号，然后选择“用户管理”  。
-2.  在用户列表中，选择要删除的用户，然后单击“删除用户”  （垃圾桶符号）。
-3.  在“删除用户”框中，单击“是”  ，然后单击“确定”  。
+1.    在 Cloudyn 门户中，单击右上方的齿轮符号，然后选择“用户管理”  。
+2.    在用户列表中，选择要删除的用户，然后单击“删除用户”  （垃圾桶符号）。
+3.    在“删除用户”框中，单击“是”  ，然后单击“确定”  。
 
 
 ## <a name="delete-or-export-personal-data"></a>删除或导出个人数据

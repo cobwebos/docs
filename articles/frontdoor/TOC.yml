@@ -1,8 +1,8 @@
-- name: Front Door 服务文档
+- name: Front Door 文档
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是 Azure Front Door 服务？
+    - name: 什么是 Azure Front Door？
       href: front-door-overview.md
 - name: 快速入门
   expanded: true
@@ -27,6 +27,8 @@
       href: front-door-backend-pool.md
     - name: 使用 Front Door 进行缓存
       href: front-door-caching.md
+    - name: Front Door 常见问题解答
+      href: front-door-faq.md
     - name: 地区筛选
       href: front-door-geo-filtering.md
     - name: 运行状况探测
@@ -49,6 +51,8 @@
       href: front-door-url-rewrite.md
     - name: URL 重定向
       href: front-door-url-redirect.md
+    - name: 通配符域
+      href: front-door-wildcard-domain.md
 - name: 操作方法指南
   items:
     - name: 重定向流量
@@ -65,10 +69,6 @@
           href: front-door-troubleshoot-routing.md
         - name: 允许的证书颁发机构
           href: front-door-troubleshoot-allowed-ca.md
-- name: 常见问题解答
-  items:
-    - name: Front Door 常见问题解答
-      href: front-door-faq.md
 - name: 参考
   items:
     - name: Azure CLI

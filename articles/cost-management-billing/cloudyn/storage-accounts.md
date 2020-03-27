@@ -1,20 +1,20 @@
 ---
-title: 在 Azure 中为 Cloudyn 配置存储帐户 | Microsoft Docs
+title: 为 Azure 中的 Cloudyn 配置存储帐户
 description: 本文介绍如何为 Cloudyn 配置 Azure 存储帐户和 AWS 存储 Bucket。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: secdec18
-ms.openlocfilehash: ec6c68d209f867ab3547e855f3cf754bc27d53c5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ROBOTS: NOINDEX
+ms.openlocfilehash: c741f303958630415d54cabc62c04430f0b8b89d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117625"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474588"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>为 Cloudyn 配置存储帐户
 
@@ -22,7 +22,9 @@ ms.locfileid: "77117625"
 
 可以将 Cloudyn 报表保存在 Cloudyn 门户、Azure 存储或 AWS 存储 Bucket 中。 将报表保存到 Cloudyn 门户的操作免费。 但是，将报表保存到云服务提供商的存储为可选操作，需要额外付费。 本文介绍如何配置用于存储报表的 Azure 存储帐户和 Amazon Web Services (AWS) 存储 Bucket。
 
-## <a name="prerequisites"></a>必备条件
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
+
+## <a name="prerequisites"></a>先决条件
 
 必须有 Azure 存储帐户或 Amazon 存储 Bucket。
 

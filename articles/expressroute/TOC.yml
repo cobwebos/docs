@@ -16,6 +16,8 @@
       href: how-to-routefilter-portal.md
 - name: 概念
   items:
+    - name: 远程工作
+      href: work-remotely-support.md
     - name: 连接模型
       href: expressroute-connectivity-models.md
     - name: 线路和对等互连
@@ -28,7 +30,7 @@
           href: expressroute-locations.md
     - name: 关于虚拟网络网关
       href: expressroute-about-virtual-network-gateways.md
-    - name: 必备条件
+    - name: 先决条件
       href: expressroute-prerequisites.md
     - name: 工作流
       href: expressroute-workflows.md

@@ -261,8 +261,10 @@
       items:
         - name: 与页相关的功能
           href: search-pagination-page-layout.md
-        - name: 相关性调整（计分配置文件）
+        - name: 相关性优化（评分配置文件）
           href: index-add-scoring-profiles.md
+        - name: 相关性优化（相似性算法）
+          href: index-ranking-similarity.md
     - name: 计划
       items:
         - name: 选择层

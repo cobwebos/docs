@@ -1,5 +1,5 @@
 - name: StorSimple 文档
-  href: index.md
+  href: index.yml
 - name: StorSimple 虚拟阵列
   items:
     - name: 概述
@@ -91,7 +91,7 @@
           href: storsimple-virtual-array-update-12-release-notes.md
         - name: Update 1.1
           href: storsimple-virtual-array-update-11-release-notes.md
-        - name: Update 1
+        - name: 更新 1
           href: storsimple-virtual-array-update-1-release-notes.md
         - name: 存档
           items:
@@ -345,7 +345,7 @@
               href: storsimple-update21-release-notes.md
             - name: Update 2
               href: storsimple-update2-release-notes.md
-            - name: Update 1
+            - name: 更新 1
               href: storsimple-update1-release-notes.md
             - name: Update 0.3
               href: storsimple-february-2015-release-notes.md
@@ -355,7 +355,7 @@
               href: storsimple-october-2014-release-notes.md
             - name: 发行版 - 正式版
               href: storsimple-july-2014-release-notes.md
-    - name: 引用
+    - name: 参考
       items:
         - name: REST API
           href: 'https://docs.microsoft.com/rest/api/storsimple'

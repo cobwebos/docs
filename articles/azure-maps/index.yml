@@ -9,12 +9,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 1/15/2020
-  ms.openlocfilehash: cab367254df3f83903eeee110f0a435b97ea8eba
-  ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+  ms.openlocfilehash: 852a01416b52c6a7b98c3b4883210749bf3cc509
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/05/2020
-  ms.locfileid: "78368611"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80132451"
 landingContent:
 - title: 关于 Azure Maps
   linkLists:
@@ -76,20 +76,16 @@ landingContent:
       url: tutorial-create-store-locator.md
   - linkListType: how-to-guide
     links:
+    - text: 使用 Azure Maps 地图控件
+      url: how-to-use-map-control.md
+    - text: 使用绘图工具模块
+      url: set-drawing-options.md
+    - text: 使用服务模块
+      url: how-to-use-services-module.md
     - text: 使用空间 IO 模块
       url: how-to-use-spatial-io-module.md
-    - text: 添加简单的数据层
-      url: spatial-io-add-simple-data-layer.md
-    - text: 读取和写入空间数据
-      url: spatial-io-read-write-spatial-data.md
-    - text: 添加 OGC 地图层
-      url: spatial-io-add-ogc-map-layer.md
-    - text: 连接到 WFS 服务
-      url: spatial-io-connect-wfs-service.md
-    - text: 利用核心操作
-      url: spatial-io-core-operations.md
-    - text: 支持的数据格式详细信息
-      url: spatial-io-supported-data-format-details.md
+    - text: Web SDK 支持的浏览器
+      url: supported-browsers.md
   - linkListType: reference
     links:
     - text: 地图控件
@@ -128,8 +124,10 @@ landingContent:
     links:
     - text: 搜索地址（地理编码）
       url: how-to-search-for-address.md
-    - text: 有关搜索的最佳做法
+    - text: 有关使用搜索服务的最佳做法
       url: how-to-use-best-practices-for-search.md
+    - text: 有关使用路线服务的最佳做法
+      url: how-to-use-best-practices-for-routing.md
     - text: 在静态地图上呈现自定义数据
       url: how-to-render-custom-data.md
   - linkListType: reference

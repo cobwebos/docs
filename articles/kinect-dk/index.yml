@@ -86,7 +86,7 @@ sections:
           <li><b><a href="update-device-firmware.md">更新 Azure Kinect DK 固件</a></b></li>
           <li><b><a href="azure-kinect-viewer.md">了解如何使用查看器</a></b></li>
           <li><b><a href="azure-kinect-recorder.md">了解如何使用录制器</a></b></li></ul></div></div>
-  - title: 引用
+  - title: 参考
     items:
       - type: list
         style: cards

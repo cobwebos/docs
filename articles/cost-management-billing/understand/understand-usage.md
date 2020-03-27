@@ -6,14 +6,14 @@ ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: e45ef26f3d0a4b968b601e70658c5f3680492682
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199018"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065648"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 使用情况和费用文件中的术语
 
@@ -74,10 +74,12 @@ MeterName | All | 计量的名称。
 MeterRegion | All | 按位置定价的服务的数据中心位置的名称。 参见“位置”。
 MeterSubCategory | All | 计量子分类类别的名称。
 OfferId<sup>1</sup> | All | 购买的套餐的名称。
+PayGPrice | All | 资源的零售价格。
 PartNumber<sup>1</sup> | EA、PAYG | 用于获取特定计量定价的标识符。
 PlanName | EA、PAYG | 市场计划名称。
 PreviousInvoiceId | MCA | 如果此行项为退款，则指原始发票。
 PricingCurrency | MCA | 基于协商价格进行定价时所使用的货币。
+PricingModel | All | 指示计量器定价方式的标识符。 （值：On Demand、Reservation、Spot）
 Products | All | 产品的名称。
 ProductId<sup>1</sup> | MCA | 产品的唯一标识符。
 ProductOrderId | All | 产品订单的唯一标识符。

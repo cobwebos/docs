@@ -19,7 +19,7 @@
               href: service-bus-quickstart-powershell.md
             - name: Azure CLI
               href: service-bus-quickstart-cli.md
-            - name: Azure 资源管理器模板
+            - name: ARM 模板
               href: service-bus-resource-manager-namespace-queue.md
         - name: 发送和接收消息
           items:
@@ -41,7 +41,7 @@
           items:
             - name: Azure 门户
               href: service-bus-quickstart-topics-subscriptions-portal.md
-            - name: Azure 资源管理器模板
+            - name: ARM 模板
               href: service-bus-resource-manager-namespace-topic.md
         - name: 发布和订阅消息
           items:
@@ -65,6 +65,8 @@
       href: service-bus-tutorial-topics-subscriptions-portal.md
     - name: 更新清单 - CLI
       href: service-bus-tutorial-topics-subscriptions-cli.md
+    - name: 通过事件网格响应事件
+      href: service-bus-to-event-grid-integration-example.md
 - name: 示例
   items:
     - name: 服务总线示例
@@ -104,6 +106,8 @@
                   href: authenticate-application.md
         - name: 内置安全控件
           href: service-bus-messaging-security-controls.md
+        - name: 网络安全
+          href: network-security.md
 - name: 操作方法指南
   items:
     - name: 从 Azure Service Manager（经典）API 迁移到资源管理器 API
@@ -126,8 +130,6 @@
               href: message-expiration.md
             - name: 使用 Azure 事件网格进行消息处理
               href: service-bus-to-event-grid-integration-concept.md
-            - name: Azure 事件网格示例
-              href: service-bus-to-event-grid-integration-example.md
         - name: 主题筛选器和操作
           href: topic-filters.md
         - name: 从标准层迁移到高级层命名空间
@@ -152,10 +154,6 @@
               href: service-bus-amqp-troubleshoot.md
         - name: 高级功能
           items:
-            - name: 使用防火墙
-              href: service-bus-ip-filtering.md
-            - name: 虚拟网络服务终结点
-              href: service-bus-service-endpoints.md
             - name: 死信队列
               href: service-bus-dead-letter-queues.md
             - name: 预取消息
@@ -192,7 +190,7 @@
           href: service-bus-diagnostic-logs.md
         - name: 暂停和重新激活消息传递实体
           href: entity-suspend.md
-        - name: 使用 Azure 资源管理器模板
+        - name: 使用 ARM 模板
           href: service-bus-resource-manager-overview.md
           items:
             - name: 创建命名空间
@@ -203,7 +201,13 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: 安全
       items:
-        - name: 配置客户管理的密钥以进行静态加密
+        - name: 配置防火墙
+          href: service-bus-ip-filtering.md
+        - name: 配置虚拟网络服务终结点
+          href: service-bus-service-endpoints.md
+        - name: 配置专用终结点（预览版）
+          href: private-link-service.md
+        - name: 配置客户管理的密钥
           href: configure-customer-managed-key.md
     - name: 故障排除
       items:

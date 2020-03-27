@@ -8,11 +8,11 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: 故障排除, 更新, bug, kinect, 反馈, 恢复, 日志记录, 提示
 ms.openlocfilehash: 2db7b17ffc8b6595107dbc52fae719aa9f2d15db
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718201"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79289110"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect 已知问题和故障排除
 
@@ -24,7 +24,7 @@ ms.locfileid: "76718201"
   - 使用 Microsoft USB 驱动程序可以解决某些问题
   - 许多电脑提供备选的主控制器，更改 USB3 端口可能会有所帮助
 
-有关传感器 SDK 的更多问题，请查看 [GitHub 问题](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/issues)
+有关其他传感器 SDK 相关问题，请查看 [GitHub 问题](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/issues)
 
 ## <a name="collecting-logs"></a>收集日志
 

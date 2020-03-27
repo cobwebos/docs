@@ -1,20 +1,19 @@
 ---
-title: 通过 Azure 成本管理优化云投资 | Microsoft Docs
+title: 使用 Azure 成本管理优化云投资
 description: 本文有助于最大程度利用云投资、减少成本以及对资金使用情况进行评估。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201061"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80157205"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
 
@@ -116,7 +115,7 @@ Azure 提供了有助于评估过程的工具。 借助这些工具，可以充�
 
 Azure Migrate 服务可以评估本地数据中心中的组织当前工作负载。 你可以深入了解你对 Azure 替代解决方案的需求。 首先，Migrate 会分析本地计算机，确定迁移是否可行。 然后，它会建议 Azure 中的 VM 大小，以最大程度优化性能。 最后，它还会创建基于 Azure 的解决方案的成本估算值。
 
-有关详细信息，请参阅 [Azure Migrate](../../site-recovery/migrate-overview.md)。
+有关详细信息，请参阅 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview)。
 
 ## <a name="analyze-and-manage-your-costs"></a>分析和管理成本
 
@@ -125,6 +124,11 @@ Azure Migrate 服务可以评估本地数据中心中的组织当前工作负载
 ### <a name="organize-and-tag-your-resources"></a>组织和标记资源
 
 组织资源时考虑成本。 在创建订阅和资源组时，考虑各团队所负责的相关成本。 请确保在报告中考虑组织要求。 订阅和资源组提供了组织和归因组织支出的良好存储桶。 标记是归因成本的好方法。 可将标记用作筛选器。 也可在分析数据和调查成本时，将其作为分组依据。 企业协议客户还可以创建部门并将订阅放置在部门下。 Azure 中的基于成本的组织有助于组织的相关人员对减少团队支出负责。
+
+请观看视频[如何使用 Azure 成本管理查看标记策略](https://www.youtube.com/watch?v=nHQYcYGKuyw)，了解在组织中强制实施可缩放资源标记时可用的工具。
+
+>[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
+
 
 ### <a name="use-cost-analysis"></a>使用成本分析
 

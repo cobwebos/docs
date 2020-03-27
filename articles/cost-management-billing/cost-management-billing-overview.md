@@ -8,12 +8,12 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: c2d039dbf2ac7cfaeaad7ad038eb669337243cce
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 3314d00651fc5e0473d84710803671f2ad45f005
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970125"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474520"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>什么是 Azure 成本管理和计费？
 
@@ -89,13 +89,13 @@ Azure 门户当前支持以下类型的计费帐户：
 
 如果你使用外部系统来访问或查看成本管理数据，则可以轻松地从 Azure 导出数据。 你可以设置一个每日计划导出，将数据文件以 CSV 格式导出并存储在 Azure 存储中。 然后，即可从外部系统访问数据。
 
-### <a name="consider-cloudyn"></a>考虑使用 Cloudyn
+### <a name="cloudyn-deprecation"></a>Cloudyn 弃用
 
-[Cloudyn](./cloudyn/overview.md) 是与成本管理相关的一项 Azure 服务。 使用 Cloudyn，你可以跟踪 Azure 资源的云使用情况和支出。 同时，它还支持其他云提供程序，包括 AWS 和 Google。 便于理解的仪表板报告也有助于成本分配和 Showback/Chargeback。 目前，成本管理不支持 Showback/Chargeback 或其他云服务提供程序。 但是，Cloudyn 支持  这些提供程序。 目前，成本管理不支持 Microsoft 云服务提供商 (CSP) 帐户，但 Cloudyn 支持。 如果你有 CSP 帐户，或者想要使用报销/退款，则可以使用 Cloudyn 来帮助管理成本。
-
-观看 [Azure 成本管理和 Cloudyn 视频](https://www.youtube.com/watch?v=PmwFWwSluh8)来了解有关根据业务需求应当使用 Azure 成本管理还是使用 Cloudyn 的建议。
-
->[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
+[Cloudyn](./cloudyn/overview.md) 是与成本管理相关的 Azure 服务，将在 2020 年底弃用。 在可能的情况下，我们会将现有的 Cloudyn 功能直接集成到 Azure 门户中。 暂时不会登记任何新客户，但对 Cloudyn 的支持将保持到该产品完全被弃用为止。
+ 
+请观看 [Azure 成本管理和 Cloudyn 视频](https://www.youtube.com/watch?v=15DzKPMBRxM)来详细了解是要根据业务需求使用 Azure 成本管理还是 Cloudyn。
+ 
+>[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 
 ### <a name="additional-azure-tools"></a>其他 Azure 工具
 

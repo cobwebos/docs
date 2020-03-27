@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中创建 Cloudyn 支持请求 | Microsoft Docs
+title: 为 Azure 中的 Cloudyn 创建支持请求
 description: 本文将指导你完成创建 Cloudyn 支持请求所需的步骤。
 author: bandersmsft
 ms.author: banders
@@ -7,12 +7,12 @@ ms.date: 02/12/2020
 ms.topic: troubleshooting
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 683fe2be0e93945d03fb8ee8218ab11e7a1ee624
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 73c8f86e4c0bdbbbe35f17a48da4a9b340e4ec5f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199902"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203043"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>创建 Cloudyn 支持请求
 

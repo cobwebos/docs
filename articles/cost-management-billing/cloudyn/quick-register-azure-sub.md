@@ -1,24 +1,26 @@
 ---
-title: 在 Cloudyn 中注册 Azure 订阅 | Microsoft 文档
+title: 在 Cloudyn 中注册 Azure 订阅
 description: 本快速入门将详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: 084cd852e0211ea494504a0d6e2350df567de0b1
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ROBOTS: NOINDEX
+ms.openlocfilehash: f3b529d3dbe0fe41fb13fabfe32dfad208ef5012
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117798"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474622"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>注册一个单独的 Azure 订阅并查看成本数据
 
 使用 Azure 订阅在 Cloudyn 中注册。 注册后可以访问 Cloudyn 门户。 本快速入门将详细介绍创建 Cloudyn 试用订阅和登录到 Cloudyn 门户所需的注册过程。 此外，还将演示如何立即开始查看成本数据。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

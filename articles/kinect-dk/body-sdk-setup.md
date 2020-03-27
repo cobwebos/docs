@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: kinect, azure, 传感器, 访问, 深度, sdk, 人体, 跟踪, 关节, 设置, cuda, nvidia
 ms.openlocfilehash: 2cf4c1097730f88fc4bd66c28e1bdddd7fea8640
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76756240"
 ---
 # <a name="quickstart-set-up-azure-kinect-body-tracking"></a>快速入门：设置 Azure Kinect 人体跟踪
@@ -24,17 +24,17 @@ ms.locfileid: "76756240"
 
 ## <a name="install-software"></a>安装软件
 
-### <a name="install-the-latest-nvidia-driverhttpswwwnvidiacomdownloadindexaspxlangen-us"></a>[安装最新的 NVIDIA 驱动程序](https://www.nvidia.com/Download/index.aspx?lang=en-us)
+### <a name="install-the-latest-nvidia-driver"></a>[安装最新的 NVIDIA 驱动程序](https://www.nvidia.com/Download/index.aspx?lang=en-us)
 
 请下载并安装显卡的最新 NVIDIA 驱动程序。 旧版驱动程序可能与随人体跟踪 SDK 一起重新分发的 CUDA 二进制文件不兼容。
 
-### <a name="visual-c-redistributable-for-visual-studio-2015httpswwwmicrosoftcomen-usdownloaddetailsaspxid48145"></a>[Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48145)
+### <a name="visual-c-redistributable-for-visual-studio-2015"></a>[Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48145)
 
 下载并安装 Microsoft Visual C++ Redistributable for Visual Studio 2015。 
 
 ## <a name="set-up-hardware"></a>设置硬件
 
-### <a name="set-up-azure-kinect-dkset-up-azure-kinect-dkmd"></a>[设置 Azure Kinect DK](set-up-azure-kinect-dk.md)
+### <a name="set-up-azure-kinect-dk"></a>[设置 Azure Kinect DK](set-up-azure-kinect-dk.md)
 
 启动 [Azure Kinect 查看器](azure-kinect-viewer.md)来检查是否已正确设置 Azure Kinect DK。
 

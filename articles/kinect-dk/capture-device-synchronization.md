@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 内部, 外部, 同步, 菊花链, 相位偏移
 ms.openlocfilehash: 914a29882277c11c388d3f81f0b1fe827fc2f156
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73932209"
 ---
 # <a name="capture-azure-kinect-device-synchronization"></a>捕获 Azure Kinect 设备同步
@@ -20,7 +20,7 @@ Azure Kinect 硬件可以调整彩色和深度图像的捕获时间。 同一设
 
 ## <a name="device-internal-synchronization"></a>设备内部同步
 
-各个相机之间的图像捕获在硬件中同步。 在包含来自彩色和深度传感器的图像的每个 [k4a_capture_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__capture__t.html) 中，图像的时间戳根据硬件的运行模式进行调整。 默认情况下，捕获的图像是调整的曝光的中心。 可以使用 [k4a_device_configuration_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) 的 `depth_delay_off_color_usec` 字段调整深度和彩色捕获的相对计时。
+各个相机之间的图像捕获在硬件中同步。 在包含来自彩色和深度传感器的图像的每个 [k4a_capture_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__capture__t.html) 中，图像的时间戳根据硬件的运行模式进行调整。 默认情况下，捕获的图像是调整的曝光的中心。 可以使用 `depth_delay_off_color_usec`k4a_device_configuration_t[ 的 ](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) 字段调整深度和彩色捕获的相对计时。
 
 ## <a name="device-external-synchronization"></a>设备外部同步
 

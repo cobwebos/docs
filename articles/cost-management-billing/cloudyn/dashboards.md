@@ -1,24 +1,26 @@
 ---
-title: 使用 Azure 中的 Cloudyn 仪表板查看关键指标 | Microsoft Docs
+title: 使用 Azure 中的 Cloudyn 仪表板查看关键指标
 description: 本文介绍如何使用 Cloudyn 中的仪表板查看关键指标。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: 78af8f2541eb0b28d75be89612d158c889261adc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 892df9a6e0eb4d791f818eed0a78c96a829e25a0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770131"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79464217"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>使用仪表板查看关键成本指标
 
 Cloudyn 中的仪表板提供报表的高级别视图。 通过仪表板，可在单个视图中查看关键成本指标。 此外，仪表板还着重体现业务趋势，帮助做出重要的业务决策。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 还可使用仪表板为组织中具有不同职责的人员创建视图，这些人员可能包括：
 

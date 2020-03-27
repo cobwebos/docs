@@ -8,10 +8,10 @@ ms.prod: kinect-dk
 ms.topic: conceptual
 keywords: kinect, azure, 配置, 深度, 彩色, RBG, 相机, 传感器, sdk, IMU, 运动传感器, 运动, 陀螺仪, 加速度传感器, FPS
 ms.openlocfilehash: 649dd5b9de62d43d59e74d53adff1ec7de8dfd32
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73932205"
 ---
 # <a name="retrieve-azure-kinect-imu-samples"></a>检索 Azure Kinect IMU 样本
@@ -63,7 +63,7 @@ if (K4A_RESULT_SUCCEEDED != k4a_device_start_imu(device))
 3. 检索所有已排队的 IMU 样本。
 4. 重复等待下一个捕获。
 
-若要检索当前已排队的所有 IMU 样本，可以在循环中结合 0 值 `timeout_in_ms` 调用 [`k4a_device_get_imu_sample()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8e5913b3bb94a453c7143bbd6e399a0e.html#ga8e5913b3bb94a453c7143bbd6e399a0e)，直到函数返回 `K4A_WAIT_RESULT_TIMEOUT`。 `K4A_WAIT_RESULT_TIMEOUT` 指示没有排队的样本，且在指定的超时内没有任何样本抵达。
+若要检索当前已排队的所有 IMU 样本，可以在循环中结合 0 值 [ 调用 `k4a_device_get_imu_sample()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga8e5913b3bb94a453c7143bbd6e399a0e.html#ga8e5913b3bb94a453c7143bbd6e399a0e)`timeout_in_ms`，直到函数返回 `K4A_WAIT_RESULT_TIMEOUT`。 `K4A_WAIT_RESULT_TIMEOUT` 指示没有排队的样本，且在指定的超时内没有任何样本抵达。
 
 ## <a name="usage-example"></a>用例
 

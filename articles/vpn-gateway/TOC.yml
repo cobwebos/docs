@@ -16,6 +16,12 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: 远程工作支持
+      items:
+        - name: 远程工作
+          href: work-remotely-support.md
+        - name: NVA 配置和远程工作
+          href: nva-work-remotely-support.md
     - name: 关于 VPN 网关设置
       href: vpn-gateway-about-vpn-gateway-settings.md
     - name: 关于 VPN 设备
@@ -150,6 +156,8 @@
               href: vpn-gateway-howto-openvpn.md
             - name: 配置 OpenVPN 客户端
               href: vpn-gateway-howto-openvpn-clients.md
+        - name: 从 SSTP 转移到 OpenVPN 协议或 IKEv2
+          href: ikev2-openvpn-from-sstp.md
         - name: 为 P2S 转换到公共 CA 网关证书
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: 配置 Always On VPN 设备隧道
@@ -217,7 +225,7 @@
           items:
             - name: 点到站点连接问题
               href: vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md
-            - name: 点到站点连接问题 - Mac OS X VPN 客户端
+            - name: 点到站点连接问题 - macOS X VPN 客户端
               href: vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md
             - name: 点到站点 - Azure AD 身份验证
               href: troubleshoot-ad-vpn-client.md

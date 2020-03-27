@@ -8,7 +8,7 @@
   items:
     - name: 顾问入门
       href: advisor-get-started.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 提高 Azure 应用程序的可用性
       href: advisor-high-availability-recommendations.md
@@ -26,7 +26,11 @@
       href: permissions.md
     - name: 针对建议配置警报
       href: advisor-alerts.md
-- name: 引用
+    - name: 针对建议的批量修正
+      href: advisor-quick-fix.md
+    - name: Azure Resource Graph 中的顾问数据
+      href: advisor-azure-resource-graph.md
+- name: 参考
   items:
     - name: 安全中心
       href: 'https://azure.microsoft.com/services/security-center/'

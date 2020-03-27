@@ -8,15 +8,15 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装
 ms.openlocfilehash: fd24ba7e6232bb2e326bb161c5fec34b57a5b589
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73931696"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect 传感器 SDK 下载
 
-本页提供各版本 Azure Kinect 传感器 SDK 的下载链接。 安装程序提供了 Azure Kinect 开发所需的所有文件。
+本页提供各版本 Azure Kinect 传感器 SDK 的下载链接。 安装程序提供了全部所需的文件用于 Azure Kinect 方面的开发。
 
 ## <a name="azure-kinect-sensor-sdk-contents"></a>Azure Kinect 传感器 SDK 的内容
 
@@ -39,7 +39,7 @@ ms.locfileid: "73931696"
 
 目前，唯一支持的分发版是 Ubuntu 18.04。 若要请求对其他分发版的支持，请参阅[此页](https://aka.ms/azurekinectfeedback)。
 
-首先，需要遵照[此处](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software)的说明，配置 [Microsoft 的包存储库](https://packages.microsoft.com/)。
+首先，需要遵照[此处](https://packages.microsoft.com/)的说明，配置 [Microsoft 的包存储库](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software)。
 
 现在，可以安装所需的包。 `k4a-tools` 包中包含 [Azure Kinect 查看器](azure-kinect-viewer.md)、[Azure Kinect 录制器](record-sensor-streams-file.md)和 [Azure Kinect 固件工具](azure-kinect-firmware-tool.md)。 若要安装该包，请运行
 

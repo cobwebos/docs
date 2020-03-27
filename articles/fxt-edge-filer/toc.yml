@@ -20,10 +20,10 @@
       href: fxt-add-storage.md
     - name: 7 - 配置群集的网络设置
       href: fxt-configure-network.md
-- name: 操作指南
-  items:
-    - name: 装载客户端
+    - name: 8 - 装载客户端
       href: fxt-mount-clients.md
+- name: 操作方法指南
+  items:
     - name: 监视 Azure FXT Edge Filer 硬件
       href: fxt-monitor.md
     - name: 安全关闭硬件节点的电源

@@ -1,20 +1,20 @@
 ---
-title: 教程 — 使用 Azure 中的 Cloudyn 管理成本 | Microsoft Docs
+title: 教程 — 使用 Azure 中的 Cloudyn 管理成本
 description: 本教程介绍如何使用成本分摊和报销与退款报表来管理成本。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: c628a30e5a49e6bf9c0938ca8cccc0f349777668
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: a492f611ed5a785ae148894baf3f24c2df773df2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769910"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474571"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>教程：使用 Cloudyn 管理成本
 
@@ -32,7 +32,9 @@ ms.locfileid: "76769910"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
+
+## <a name="prerequisites"></a>先决条件
 
 - 必须具有 Azure 帐户。
 - 必须有 Cloudyn 的试用注册版或付费订阅版。
@@ -46,7 +48,7 @@ Cloudyn 从 Azure 获取资源组标记数据，并自动将标记信息传播�
 
 借助成本分摊模型，可以定义内部应用于未分类（未标记）资源的类别（标记），以便对成本进行分组并定义处理未标记成本的规则。 成本分摊规则是在某项服务的成本分发给一些其他服务时保存的说明。 之后，通过选择创建的模型，这些资源会在*成本分摊*报表中显示标记/类别。
 
-请记住，*成本分析*报表中的这些资源不会显示标记信息。 此外，使用成本分摊在 Cloudyn 中应用的标记不会发送到 Azure，因此不会在 Azure 门户中看到它们。
+请记住，成本分析报表中的这些资源不会显示标记信息。  此外，使用成本分摊在 Cloudyn 中应用的标记不会发送到 Azure，因此不会在 Azure 门户中看到它们。
 
 开始成本分摊时，首先要做的是通过使用成本模型定义作用域。 成本模型不会更改成本，而是将其分发。 在创建成本模型时，按照成本实体、帐户或订阅，以及多个标记来细分数据。 常见的示例标记可能包括账单代码、成本中心或组名称。 此外，标记还可帮助你对组织的其他部分执行报销和退款操作。
 

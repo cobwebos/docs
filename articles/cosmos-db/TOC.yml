@@ -85,11 +85,11 @@
       href: resource-manager-samples.md
 - name: 概念
   items:
-    - name: NoSQL 与关系数据库
+    - name: NoSQL 数据库与关系数据库
       href: relational-nosql.md
-    - name: 全球分布
+    - name: 全局分布
       items:
-        - name: 全球分布概述
+        - name: 全局分布概述
           displayName: 'replication, replicate, geo distribution'
           href: distribute-data-globally.md
         - name: 一致性级别
@@ -549,8 +549,8 @@
           href: role-based-access-control.md
         - href: cosmos-db-advanced-threat-protection.md
           name: 高级威胁防护
-        - name: 内置安全控件
-          href: cosmos-db-security-controls.md
+        - name: 安全基线
+          href: security-baseline.md
     - name: 企业就绪情况
       items:
         - name: 联机备份和本地还原
@@ -600,7 +600,7 @@
             - name: 更改源
               href: cassandra-change-feed.md
             - name: 存储和管理 Spring Data
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Cassandra 和 Spark
               items:
                 - name: 介绍
@@ -609,7 +609,7 @@
                   href: cassandra-spark-databricks.md
                 - name: 使用 HDInsight 进行连接
                   href: cassandra-spark-hdinsight.md
-                - name: 创建密钥空间和表
+                - name: 密钥空间和表
                   href: cassandra-spark-ddl-ops.md
                 - name: 插入数据
                   href: cassandra-spark-create-ops.md
@@ -709,7 +709,7 @@
             - name: 管理数据索引编制
               href: mongodb-indexing.md
             - name: 存储和管理 Spring Data
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: MongoDB 扩展命令
               href: mongodb-custom-commands.md
               displayName: custom commands
@@ -776,7 +776,7 @@
             - name: 将图数据可视化
               href: graph-visualization.md
             - name: 存储和管理 Spring Data
-              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: 使用资源管理器模板进行管理
               href: manage-gremlin-with-resource-manager.md
               displayName: ARM
@@ -1073,9 +1073,9 @@
         - name: Azure 事件中心和 Azure 存储
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: 使用 Spring Boot Starter
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
         - name: Spring Data 开发人员指南
-          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/context/context'
         - name: ODBC 驱动程序
           href: odbc-driver.md
     - name: 将数据迁移到 Cosmos DB

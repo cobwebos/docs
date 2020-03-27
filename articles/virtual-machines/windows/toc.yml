@@ -585,6 +585,8 @@
               href: create-portal-availability-zone.md
     - name: 使用自动化工具
       items:
+        - name: 自定义数据
+          href: ../custom-data.md
         - name: Chef
           href: chef-automation.md
         - name: 从 Visual Studio 发布 Web 应用

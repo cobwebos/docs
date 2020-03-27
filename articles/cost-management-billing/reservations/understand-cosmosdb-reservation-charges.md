@@ -1,18 +1,18 @@
 ---
-title: 了解如何将预留折扣应用于 Azure Cosmos DB | Microsoft Docs
+title: 了解 Azure Cosmos DB 中的预留折扣
 description: 了解如何将预留折扣应用于 Azure Cosmos DB 中的预配吞吐量（RU/秒）。
 author: bandersmsft
+ms.author: banders
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.author: banders
-ms.openlocfilehash: 2477e1074ab90d36f92b647dd74513e3fa9ae70f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 81818cc5ba2af1f9f0f70f7aa27fe62ed2c90c77
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200293"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065672"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>了解如何将预留折扣应用于 Azure Cosmos DB
 

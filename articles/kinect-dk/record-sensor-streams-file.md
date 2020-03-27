@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: quickstart
 keywords: azure, kinect, 录制, 播放, 读取器, matroska, mkv, 流, 深度, rgb, 相机, 彩色, imu, 音频, 传感器
 ms.openlocfilehash: 3dab147b593bf012bd6cd9c95d0195e84a2cbcf1
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73932206"
 ---
 # <a name="quickstart-record-azure-kinect-sensor-streams-to-a-file"></a>快速入门：将 Azure Kinect 传感器流录制到文件中

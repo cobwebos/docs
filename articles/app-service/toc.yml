@@ -87,6 +87,8 @@
           href: networking-features.md
         - name: 包含服务终结点的应用程序网关
           href: networking/app-gateway-with-service-endpoints.md
+        - name: 专用终结点
+          href: networking/private-endpoint.md
     - name: 入站和出站 IP
       href: overview-inbound-outbound-ips.md
     - name: 虚拟网络集成
@@ -175,6 +177,8 @@
           href: configure-ssl-certificate-in-code.md
         - name: 配置 TLS 相互身份验证
           href: app-service-web-configure-tls-mutual-auth.md
+        - name: 加密站点数据
+          href: configure-encrypt-at-rest-using-cmk.md
     - name: 缩放应用
       items:
         - name: 纵向扩展服务器容量
@@ -210,7 +214,7 @@
         - name: 在区域之间移动
           href: manage-move-across-regions.md
         - name: 移动订阅
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
+          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#checklist-before-moving-resources'
     - name: 运行后台任务
       items:
         - name: 创建 WebJobs

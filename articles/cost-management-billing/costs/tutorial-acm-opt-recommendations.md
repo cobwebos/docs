@@ -3,21 +3,25 @@ title: 教程 - 使用建议降低 Azure 成本
 description: 本教程帮助你使用优化建议来降低 Azure 成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 6f84b3fb75a3774dc14fd1ea045ab9cf1eeb5451
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245414"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155913"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教程：根据建议优化成本
 
 Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 Azure 顾问通过识别闲置和未充分利用的资源来优化和提高效率。 本教程通过一个示例逐步讲解如何识别未充分利用的 Azure 资源，并采取措施来降低成本。
+
+请观看视频[在 Azure 成本管理中优化云投资](https://www.youtube.com/watch?v=cSNPoAb-TNc)，详细了解如何使用顾问来优化成本。
+
+>[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 
 在本教程中，你将了解如何执行以下操作：
 

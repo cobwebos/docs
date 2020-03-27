@@ -1,5 +1,5 @@
 - name: Data Lake Storage Gen1 文档
-  href: index.md
+  href: index.yml
 - name: 切换到 Data Lake Storage Gen2 文档
   href: 'https://docs.microsoft.com/azure/storage/data-lake-storage/introduction'
 - name: 概述
@@ -150,7 +150,7 @@
           href: data-lake-store-diagnostic-logs.md
         - name: 高可用性规划
           href: data-lake-store-disaster-recovery-guidance.md
-- name: 引用
+- name: 参考
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=data-lake-store'

@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, 比较, SDK, 差别, 硬件, 软件
 ms.openlocfilehash: ec105cef0c52b02c763487fbe5b2d8c018315f4c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67452509"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Azure Kinect 与 Kinect Windows v2 的比较
@@ -33,7 +33,7 @@ Azure Kinect DK 硬件和软件开发工具包与 Kinect for Windows v2 之间�
 |                   |            | 1024x1024 像素 @15 fps |                       |
 | **连接** | 数据 | USB3.1 Gen 1，附带 USB Type-C  | USB 3.1 Gen 1|
 |  | 电源 | 外部 PSU 或 USB-C | 外部 PSU |
-|  | 同步 | RGB 和深度内部同步，外部设备到设备同步| 仅限 RGB 和深度内部同步 |
+|  | Synchronization | RGB 和深度内部同步，外部设备到设备同步| 仅限 RGB 和深度内部同步 |
 | **物理规格** | 维度 | 103 x 39 x 126 毫米 | 249 x 66 x 67 毫米 |
 |  | 重量 | 440 克 | 970 克 |
 | | 安装 | 一颗 ¼-20 UNC 螺丝。 四个内部螺丝固定点 | 一颗 ¼-20 UNC 螺丝 |
@@ -71,7 +71,7 @@ Azure Kinect SDK 的功能集与 Kinect for Windows v2 不同，详述如下：
 | | BodyIndexFrame | 人体跟踪 SDK  |
 | 协调映射|CoordinateMapper| [传感器 SDK - 图像转换](use-image-transformation.md) |
 |人脸跟踪 | FaceFrame | [认知服务：人脸](https://azure.microsoft.com/services/cognitive-services/face/)       |
-|    语音识别    |    不适用                      |    [认知服务：语音](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
+|    语音识别    |    空值                      |    [认知服务：语音](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
 
 ## <a name="next-steps"></a>后续步骤
 

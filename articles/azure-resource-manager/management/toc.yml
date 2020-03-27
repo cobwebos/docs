@@ -66,9 +66,13 @@
               href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
     - name: Tags
       items:
-        - name: 标记资源
+        - name: 决策指南
+          href: /azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json
+        - name: 使用标记
           href: tag-resources.md
-        - name: 标记支持
+        - name: 策略 - 合规性
+          href: tag-policies.md
+        - name: 支持的资源类型
           href: tag-support.md
     - name: 管理资源组
       items:

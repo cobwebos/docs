@@ -1,20 +1,19 @@
 ---
-title: 教程 - 创建并管理 Azure 预算 | Microsoft Docs
+title: 教程 - 创建和管理 Azure 预算
 description: 本教程介绍如何对所使用的 Azure 服务进行成本计划和核算。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/11/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: b81236fd63d9289f797056cf7aaceb7d826511af
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: f7c1ac65026fd366be1003842ff70a78b9082339
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128349"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80155930"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -28,6 +27,7 @@ ms.locfileid: "79128349"
 
 请观看[通过 Azure 门户将预算应用于订阅](https://www.youtube.com/watch?v=UrkHiUx19Po)视频，了解如何在 Azure 中创建预算来监视支出。
 
+>[!VIDEO https://www.youtube.com/embed/UrkHiUx19Po]
 
 在本教程中，你将了解如何执行以下操作：
 

@@ -1,20 +1,20 @@
 ---
-title: 教程 - 使用 Azure 中的 Cloudyn 预测支出情况 | Microsoft Docs
+title: 教程 - 使用 Azure 中的 Cloudyn 预测支出情况
 description: 本教程介绍如何根据历史使用情况和支出数据预测支出。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 03/12/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: 43b48cf96baaa01408d068de509e5be9fdf950ca
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: 455f611b57cf11e29d35e617df4fd9c09aff2906
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769931"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79463775"
 ---
 # <a name="tutorial-forecast-future-spending"></a>教程：预测将来的支出
 
@@ -25,7 +25,9 @@ Cloudyn 可帮助你根据历史使用情况和支出数据预测将来的支出
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
+
+## <a name="prerequisites"></a>先决条件
 
 - 必须具有 Azure 帐户。
 - 必须有 Cloudyn 的试用注册版或付费订阅版。
