@@ -1,5 +1,5 @@
 ---
-title: 维度预生成实体-LUIS
+title: 维度预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含了语言理解 (LUIS) 中维度预构建实体的信息。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: 3c7bebb38d0331c76eeaaa1d9d6464c568a61b83
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270629"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的维度预生成实体
@@ -23,17 +23,17 @@ ms.locfileid: "78270629"
 
 ## <a name="types-of-dimension"></a>维度类型
 
-从[识别器文本](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml)GitHub 存储库管理维度。
+维度由[识别器文本](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml)GitHub 存储库管理。
 
 ## <a name="resolution-for-dimension-entity"></a>维度实体的解析
 
-为查询返回以下实体对象：
+查询返回以下实体对象：
 
 `10 1/2 miles of cable`
 
 #### <a name="v3-response"></a>[V3 响应](#tab/V3)
 
-以下 JSON 是将 `verbose` 参数设置为 `false`的：
+以下 JSON 的 `verbose` 参数设置为 `false`：
 
 ```json
 "entities": {
@@ -46,7 +46,7 @@ ms.locfileid: "78270629"
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/V3-verbose)
-以下 JSON 是将 `verbose` 参数设置为 `true`的：
+以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
 "entities": {

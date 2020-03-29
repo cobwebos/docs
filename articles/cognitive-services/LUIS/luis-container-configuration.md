@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
 ms.openlocfilehash: a30fcd0ec7e53c78876596baf787639e81c638db
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73795011"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>配置语言理解 Docker 容器 
@@ -29,25 +29,25 @@ ms.locfileid: "73795011"
 |必选|设置|目的|
 |--|--|--|
 |是|[ApiKey](#apikey-setting)|用于跟踪账单信息。|
-|否|[ApplicationInsights](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
+|否|[应用洞察](#applicationinsights-setting)|允许向容器添加 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) 遥测支持。|
 |是|[计费](#billing-setting)|指定 Azure 上服务资源的终结点 URI。|
-|是|[Eula](#eula-setting)| 表示已接受容器的许可证。|
+|是|[Eula](#eula-setting)| 表示已接受容器的许可条款。|
 |否|[Fluentd](#fluentd-settings)|将日志和（可选）指标数据写入 Fluentd 服务器。|
-|否|[Http 代理](#http-proxy-credentials-settings)|配置 HTTP 代理以发出出站请求。|
+|否|[Http Proxy](#http-proxy-credentials-settings)|配置 HTTP 代理以发出出站请求。|
 |否|[Logging](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
 |是|[Mounts](#mount-settings)|从主计算机读取数据并将其写入到容器，以及从容器读回数据并将其写回到主计算机。|
 
 > [!IMPORTANT]
-> [`ApiKey`](#apikey-setting)、[`Billing`](#billing-setting) 和 [`Eula`](#eula-setting) 设置一起使用。必须为所有三个设置提供有效值，否则容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](luis-container-howto.md#billing)。
+> [`Billing`](#billing-setting)[`Eula`](#eula-setting)和[`ApiKey`](#apikey-setting)设置一起使用，您必须为所有三个设置提供有效值;因此，您必须为所有三个设置提供有效值。否则您的容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](luis-container-howto.md#billing)。
 
 ## <a name="apikey-setting"></a>ApiKey 设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，且此值必须是为[ 配置设置指定的“认知服务”`Billing`](#billing-setting)资源的有效密钥。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-setting) 配置设置指定的“认知服务”__ 资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**资源管理，在 "**密钥**" 下
-* LUIS 门户： "**密钥" 和 "终结点设置**" 页。 
+* Azure 门户：在**密钥**下**进行认知服务**资源管理
+* LUIS 门户：**键和终结点设置**页面。 
 
 请勿使用初学者密钥或创作密钥。 
 
@@ -57,14 +57,14 @@ ms.locfileid: "73795011"
 
 ## <a name="billing-setting"></a>账单设置
 
-`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”资源的终结点 URI。 必须为这个配置设置指定值，且此值必须是 Azure 上“认知服务”资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”__ 资源的终结点 URI。 您必须为此配置设置指定值，并且该值必须是 Azure 上的_认知服务_资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**概述，标记 `Endpoint`
-* LUIS portal： **Keys 和 endpoint settings**页面，作为终结点 URI 的一部分。
+* Azure 门户：**认知服务**概述，标记为`Endpoint`
+* LUIS 门户：作为终结点 URI 的一部分的**键和终结点设置**页。
 
-| 必选 | 名称 | 数据类型 | 说明 |
+| 必选 | “属性” | 数据类型 | 描述 |
 |----------|------|-----------|-------------|
 | 是      | `Billing` | 字符串 | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](luis-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
 
@@ -86,15 +86,15 @@ ms.locfileid: "73795011"
 
 ## <a name="mount-settings"></a>装载设置
 
-使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 `--mount`docker run[ 命令中指定 ](https://docs.docker.com/engine/reference/commandline/run/) 选项来指定输入装载或输出装载。 
+使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令中指定 `--mount` 选项来指定输入装载或输出装载。 
 
 LUIS 容器不使用输入或输出装载来存储训练或服务数据。 
 
-主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](luis-container-howto.md#the-host-computer)的装载位置。 
+主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间的冲突，[主机](luis-container-howto.md#the-host-computer)的装载位置可能无法访问。 
 
 下表描述了支持的设置。
 
-|必选| 名称 | 数据类型 | 说明 |
+|必选| “属性” | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
 |是| `Input` | String | 输入装入点的目标。 默认值为 `/input`。 这是 LUIS 包文件的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
 |否| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括 LUIS 查询日志和容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -109,16 +109,16 @@ LUIS 容器不使用输入或输出装载来存储训练或服务数据。
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | 值 | 格式或示例 |
+| 占位符 | “值” | 格式或示例 |
 |-------------|-------|---|
-| **{API_KEY}** | “Azure `LUIS` 密钥”页上的 `LUIS` 资源的终结点密钥。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | Azure `LUIS`“概览”页面上提供了账单终结点值。| 有关显式示例，请参阅[收集所需的参数](luis-container-howto.md#gathering-required-parameters)。 |
+| **[API_KEY]** | “Azure `LUIS` 密钥”页上的 `LUIS` 资源的终结点密钥。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Azure `LUIS`“概览”页面上提供了账单终结点值。| 有关显式示例，请参阅[收集所需参数](luis-container-howto.md#gathering-required-parameters)。 |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。 有关详细信息，请参阅[计费](luis-container-howto.md#billing)。
-> ApiKey 值是 LUIS 门户中“密钥和终结点”页面中的“密钥”，也可以在 Azure `Cognitive Services`资源密钥页上找到。 
+> ApiKey 值是 LUIS 门户中“密钥和终结点”页面中的“密钥”****，也可以在 Azure `Cognitive Services`资源密钥页上找到。 
 
 ### <a name="basic-example"></a>基本示例
 
@@ -151,7 +151,7 @@ InstrumentationKey={INSTRUMENTATION_KEY}
 
 ### <a name="logging-example"></a>日志记录示例 
 
-以下命令设置日志记录级别 `Logging:Console:LogLevel`，将日志记录级别配置为 [`Information`](https://msdn.microsoft.com)。 
+以下命令将日志记录级别`Logging:Console:LogLevel`设置 ， 以将日志记录级别配置为[`Information`](https://msdn.microsoft.com)。 
 
 ```console
 docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^

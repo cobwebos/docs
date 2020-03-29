@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: dapine
 ms.openlocfilehash: 51fe6cea80e097f34432ab8dc7293c758bd8d720
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77119806"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>使用 Python 获取“文本转语音”语音的列表
@@ -23,7 +23,7 @@ ms.locfileid: "77119806"
 
 在本文中，需要使用一个包含语音服务资源的 [Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)帐户。 如果没有帐户，可以使用[免费试用版](get-started.md)获取订阅密钥。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Python 2.7.x 或 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
@@ -132,7 +132,7 @@ python get-voices.py
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的 Python 示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [文本到语音 API 参考](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [创建自定义语音字体](how-to-customize-voice-font.md)

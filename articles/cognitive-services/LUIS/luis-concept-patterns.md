@@ -1,5 +1,5 @@
 ---
-title: 模式帮助预测-LUIS
+title: 模式有助于预测 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用模式可在不提供更多话语的情况下获得更高的意向准确度。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
 ms.openlocfilehash: 6c1b548de25369c162b4a08dfa20fce62c17f99f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75890292"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
@@ -31,23 +31,23 @@ ms.locfileid: "75890292"
 |孔西明的下属员工有谁？|获取组织结构组|.30|
 |谁归孔西明管辖？|获取组织结构组|.30|
 
-如果应用具有 10 到 20 条句子长度不同、字词顺序不同，甚至用词不同（“下属员工”、“经理”和“报告”的近义词）的话语，则 LUIS 返回的置信度得分可能较低。 创建一种模式，帮助 LUIS 了解单词顺序的重要性。 
+如果应用具有 10 到 20 条句子长度不同、字词顺序不同，甚至用词不同（“下属员工”、“经理”和“报告”的近义词）的话语，则 LUIS 返回的置信度得分可能较低。 创建一个模式来帮助 LUIS 理解字词顺序的重要性。 
 
 模式可处理以下情况： 
 
-* 意向分数低
-* 正确的目的不是排名靠前的分数，但过于接近顶级分数。 
+* 意向得分较低
+* 正确的意向得分不是最高得分但太接近最高得分。 
 
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>模式不保证提取意向
 模式使用多种预测技术。 在模式中设置模板话语的意向并不保证得出意向预测，但表示很可能得出。 
 
 <a name="patterns-do-not-improve-entity-detection"/></a>
 
-## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>模式不改进计算机学习的实体检测
+## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>模式不会提升机器学习到的实体检测
 
-模式主要用于帮助预测意向和角色。 _模式。任何_实体用于提取自由格式实体。 当模式使用实体时，模式不会帮助检测计算机学习的实体。  
+模式的主要用途是帮助预测意向和角色。 _pattern.any_ 实体用于提取自由格式实体。 当模式使用实体时，模式不会帮助检测机器学习到的实体。  
 
-若将多个话语合并到单个模式，则无法提升实体预测。 对于要激发的简单实体，你需要添加最谈话或 use list 实体，否则你的模式将不会激发。
+若将多个话语合并到单个模式，则无法提升实体预测。 若要触发简单实体，需要添加话语或使用列表实体，否则模式将不会触发。
 
 ## <a name="patterns-use-entity-roles"></a>模式使用实体角色
 如果模式中的两个或多个实体具有相关的上下文，模式会使用实体[角色](luis-concept-roles.md)来提取关于实体的上下文信息。  
@@ -58,22 +58,22 @@ ms.locfileid: "75890292"
 ## <a name="pattern-matching"></a>模式匹配
 模式的匹配顺序是先检测模式内的实体，再验证模式的其余字词和字词顺序。 要匹配模式，需要在模式中包含实体。 模式在标记级别应用，而不在字符级别应用。 
 
-## <a name="pattern-only-apps"></a>仅限模式应用
-只要每个意向有一种模式，就可以使用没有示例最谈话的意向构建应用。 对于仅限模式的应用程序，该模式不应包含计算机学习的实体，因为它们需要示例最谈话。 
+## <a name="pattern-only-apps"></a>只有模式的应用
+你可以构建其中的意向没有示例话语的应用，只要每个意向具有模式即可。 对于只有模式的应用，模式不能包含通过机器学习到的实体，因为这些实体要求具有示例话语。 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 了解[最佳实践](luis-concept-best-practices.md)。
 
 ## <a name="pattern-syntax"></a>模式语法
 
-了解[模式语法参考](reference-pattern-syntax.md)中的模式语法。 
+从[模式语法参考](reference-pattern-syntax.md)了解模式语法。 
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解模式：
 
 * [如何添加模式](luis-how-to-model-intent-pattern.md)
-* [如何添加模式。任何实体](luis-how-to-add-entities.md#add-a-patternany-entity)
+* [如何添加模式. 任何实体](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [模式语法](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]

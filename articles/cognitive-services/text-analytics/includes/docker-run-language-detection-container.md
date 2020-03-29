@@ -1,7 +1,7 @@
 ---
-title: Docker run 命令的运行容器示例
+title: 运行 Docker run 命令的容器示例
 titleSuffix: Azure Cognitive Services
-description: 用于语言检测容器的 Docker run 命令
+description: 语言检测容器的 Docker 运行命令
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: d2818336de2b3d4d810932cefb21edd95b8cf733
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70966719"
 ---
-若要运行*语言检测*容器，请执行以下`docker run`命令。
+要运行*语言检测*容器，请执行以下`docker run`命令。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

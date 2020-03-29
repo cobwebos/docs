@@ -1,7 +1,7 @@
 ---
-title: 意向和实体-LUIS
+title: 意向和实体 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 单个意向表示用户要执行的任务或操作。 它是用户话语中表达的目的或目标。 定义一组意向，对应于用户希望在应用程序中执行的操作。
+description: 单个意向表示用户想执行的任务或操作。 它是用户话语中表达的目的或目标。 定义一组意向，对应于用户希望在应用程序中执行的操作。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,34 +12,34 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220970"
 ---
-# <a name="intents-in-your-luis-app"></a>LUIS 应用中的意向
+# <a name="intents-in-your-luis-app"></a>LUIS 应用中的意图
 
-意向表示用户想执行的任务或操作。 这是用户的[陈述](luis-concept-utterance.md)中所表示的目的或目标。
+意向表示用户想执行的任务或操作。 它是用户[话语](luis-concept-utterance.md)中表达的目的或目标。
 
 定义一组意向，对应于用户希望在应用程序中执行的操作。 例如，旅行应用定义了几个意向：
 
 旅行应用意向   |   示例陈述   | 
 ------|------|
  BookFlight     |   “帮我预订下周去里约的航班” <br/> “24 号飞里约” <br/> “我需要下周日去里约热内卢的机票”    |
- Greeting     |   “嗨” <br/>“你好” <br/>“早上好”  |
+ Greeting     |   “嗨” <br/>"Hello" <br/>“早上好”  |
  CheckWeather | “波士顿的天气怎样？” <br/> “显示本周末的天气预报” |
  无         | “给我一份饼干食谱”<br>“湖人赢了吗？” |
 
-所有应用程序都附带预定义意向 "[无](#none-intent)"，即回退目的。 
+所有应用程序都附带预定义的意图，"[无](#none-intent)"，这是回退意图。 
 
 ## <a name="prebuilt-domains-provide-intents"></a>预生成域提供意向
-除了定义的意向以外，还可以使用预构建的[域](luis-how-to-use-prebuilt-domains.md)之一。 
+除了定义的意图之外，还可以使用预[构建的域](luis-how-to-use-prebuilt-domains.md)之一的预构建意图。 
 
 ## <a name="return-all-intents-scores"></a>返回所有意向的得分
-将陈述分配给单个意向。 默认情况下，当 LUIS 收到终结点上的查询文本时，它将返回该查询文本的 top 意向。 
+将陈述分配给单个意向。 当 LUIS 在终结点上收到话语时，默认情况下，它将返回该话语的最高意向。 
 
-如果希望查询文本的所有意图的分数，可以在预测 API 的查询字符串中提供标志。 
+如果想要话语的所有意向的得分，可以在预测 API 的查询字符串上提供一个标志。 
 
 |预测 API 版本|标志|
 |--|--|
@@ -47,43 +47,43 @@ ms.locfileid: "79220970"
 |V3|`show-all-intents=true`|
 
 ## <a name="intent-compared-to-entity"></a>意向与实体
-意向表示应用程序应为用户采取的操作，并且基于整个查询文本。 陈述仅可具有一个得分最高的意向，但可具有多个实体。 
+意向表示应用程序应为用户采取的操作，并且基于整个话语。 陈述仅可具有一个得分最高的意向，但可具有多个实体。 
 
 <a name="how-do-intents-relate-to-entities"></a>
 
-在_用户希望在_客户端应用程序中触发操作（如调用 checkweather （）函数）时创建意向。 然后创建实体以表示执行操作所需的参数。 
+ 当用户的意向将在客户端应用程序中触发操作时（例如，调用 checkweather() 函数），请创建意图__。 然后创建实体以表示执行操作所需的参数。 
 
 |Intent   | 实体 | 示例陈述   | 
 |------------------|------------------------------|------------------------------|
-| CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | `Seattle` `tomorrow`中有哪些天气呢？ |
+| CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | 天气`Seattle``tomorrow`怎么样？ |
 | CheckWeather | { "type": "date_range", "entity": "this weekend" } | Show me the forecast for `this weekend`（显示本周末的天气预报） | 
 ||||
 
 ## <a name="prebuilt-domain-intents"></a>预生成域意向
 
-[预](luis-how-to-use-prebuilt-domains.md)生成的域提供最谈话的意图。 
+[预构建的域](luis-how-to-use-prebuilt-domains.md)提供具有陈述的意图。 
 
 ## <a name="none-intent"></a>None 意向
 
-已创建 None 意向但有意留空。 None 意向是必需的意向，不能删除或重命名。 使用域外的陈述对其进行填充。
+已创建 None 意向但有意留空****。 None 意向是必需的意向，不能删除或重命名****。 使用域外的陈述对其进行填充。
 
-"**无**" 目的是后备意向，这在每个应用中都很重要，并且应具有10% 的总最谈话。 它用于训练应用域（主题区域）中不重要的 LUIS 陈述。 如果不向 None 意向添加任何陈述，LUIS 会强制域外的陈述进入其中一个域意向。 这将因对 LUIS 进行了错误的陈述意向训练而扭曲预测评分。 
+**None** 意向是回退意向，在每个应用中都很重要，应占话语总数的 10%。 它用于训练应用域（主题区域）中不重要的 LUIS 陈述。 如果不向 None 意向添加任何陈述，LUIS 会强制域外的陈述进入其中一个域意向****。 这将因对 LUIS 进行了错误的陈述意向训练而扭曲预测评分。 
 
-将查询文本预测为 "无" 时，客户端应用程序可以提出更多问题，或提供一个菜单以将用户定向到有效选项。 
+当话语预测为 None 意向时，客户端应用程序可以询问更多问题或提供菜单以指导用户进行有效选择。 
 
 ## <a name="negative-intentions"></a>反面意图 
-如果希望确定正面和反面意向，例如“我想要一辆车”和“我不想要一辆车”，则可以创建两个意图（一个正面意向和一个反面意向），并为每个意向添加适当的陈述。 或者，可以创建单个意向，并将两个不同的正面和反面术语标记为实体。  
+如果希望确定正面和反面意向，例如“我想要一辆车”和“我不想要一辆车”，则可以创建两个意图（一个正面意向和一个反面意向），并为每个意向添加适当的陈述********。 或者，可以创建单个意向，并将两个不同的正面和反面术语标记为实体。  
 
 ## <a name="intents-and-patterns"></a>意向和模式
 
-如果有可在部分或整个中定义为正则表达式的最谈话示例，请考虑使用与[模式](luis-concept-patterns.md)配对的[正则表达式实体](luis-concept-entity-types.md#regular-expression-entity)。 
+如果你有可部分或全部定义为正则表达式的示例话语，请考虑使用与[模式](luis-concept-patterns.md)配对的[正则表达式实体](luis-concept-entity-types.md#regular-expression-entity)。 
 
-使用正则表达式实体可保证数据提取，以便匹配模式。 模式匹配保证返回准确的意图。 
+使用正则表达式实体可以确保数据提取，以便匹配模式。 模式匹配可确保返回确切的意向。 
 
 ## <a name="intent-balance"></a>意向平衡
 应用域意向应让每个意向的陈述数保持平衡。 请勿出现一个意向具有 10 个陈述，而另一个意向具有 500 个陈述的情况。 这样不平衡。 如果遇到这种情况，请查看具有 500 个陈述的意向，了解是否可将其中许多意向重新组织为[模式](luis-concept-patterns.md)。 
 
-平衡中不包含 None 意向。 该意向应包含应用中总陈述数的 10%。
+平衡中不包含 None 意向****。 该意向应包含应用中总陈述数的 10%。
 
 ## <a name="intent-limits"></a>意向限制
 查看[限制](luis-boundaries.md#model-boundaries)以了解可添加到模型中的意向数。 

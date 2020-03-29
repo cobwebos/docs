@@ -1,23 +1,23 @@
 ---
-title: 容器公共预览版必备组件
+title: 容器公共预览先决条件
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
-description: 公共预览版容器的常见先决条件
+description: 公共预览容器的常见先决条件
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
 ms.openlocfilehash: e5d40c9ffd32320ba685e2bdbd3095b4eeec3484
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73522347"
 ---
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 使用 Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户][free-account]。
+* 使用 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][free-account]。
 * 安装[Azure CLI][azure-cli] （az）。
 * [Docker 引擎][docker-engine]并验证 Docker CLI 是否可在控制台窗口中工作。
 

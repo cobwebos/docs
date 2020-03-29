@@ -1,30 +1,33 @@
 ### YamlMime:Landing
-title: 语音转文本文档
-summary: 来自语音服务的语音到文本（也称为语音识别）允许实时将音频流传输到文本中。
+title: 语音到文本文档
+summary: 语音服务中的语音到文本（也称为语音识别）可实时批量将音频流转录到文本中。
 metadata:
-  title: 语音到文本文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  title: 语音到文本文档 - 教程，API 参考 - Azure 认知服务 |微软文档
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 03/10/2020
+  ms.date: 03/19/2020
   ms.author: dapine
-  ms.openlocfilehash: 7f3486e9944cf7f01c2a53ca101c5cc26530e086
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: b6f2fed7b5d6722b07b7f996c46e48ea0d86f755
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79370349"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "80052843"
 landingContent:
 - title: 关于语音到文本
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是语音转文本？
+    - text: 什么是实时语音到文本？
       url: speech-to-text.md
+    - text: 什么是批量语音文本？
+      url: batch-transcription.md
+    - text: 语音识别基础知识？
+      url: speech-to-text-basics.md
   - linkListType: quickstart
     links:
     - text: 识别来自麦克风输入的语音
@@ -33,7 +36,7 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: 识别存储在 Blob 存储中的语音
       url: quickstarts/from-blob.md
-- title: 通过语音到文本进行开发
+- title: 使用语音到文本进行开发
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -41,15 +44,19 @@ landingContent:
       url: how-to-choose-recognition-mode.md
     - text: 更改语音识别源语言
       url: how-to-specify-source-language.md
-    - text: 使用自定义语音识别提高准确性
+    - text: 使用自定义语音提高准确性
       url: how-to-custom-speech.md
     - text: 使用压缩的音频输入格式
       url: how-to-use-codec-compressed-audio-input-streams.md
+  - linkListType: tutorial
+    links:
+    - text: 使用租户模型提高准确性
+      url: tutorial-tenant-model.md
   - linkListType: concept
     links:
     - text: 准备自定义语音的数据
       url: how-to-custom-speech-test-data.md
-    - text: 为自定义语音定型模型
+    - text: 训练自定义语音模型
       url: how-to-custom-speech-train-model.md
     - text: 创建用户标记的听录内容
       url: how-to-custom-speech-human-labeled-transcriptions.md
