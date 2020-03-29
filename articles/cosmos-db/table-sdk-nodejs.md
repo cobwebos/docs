@@ -9,10 +9,10 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 0f94ae4a4b5ad7806658c4ae54146d4ac940750e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76771294"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>用于 Node.js 的 Azure Cosmos DB 表 API：发行说明和资源
@@ -36,7 +36,7 @@ ms.locfileid: "76771294"
 
 ## <a name="release-notes"></a>发行说明
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"/>1.0.0
 * 正式发布版
 
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
@@ -48,9 +48,9 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日 |--- |
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>FAQ
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。 
 

@@ -4,10 +4,10 @@ description: 介绍如何使用清单来描述 Service Fabric 应用程序和服
 ms.topic: conceptual
 ms.date: 8/12/2019
 ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75349966"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric 应用程序和服务清单
@@ -61,9 +61,9 @@ ms.locfileid: "75349966"
 
 **ServiceTypes** 声明此清单中的 **CodePackages** 支持哪些服务类型。 当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。 生成的进程应在运行时注册所支持的服务类型。 在清单级别而不是代码包级别声明服务类型。 因此，当存在多个代码包时，每当系统查找任何一种声明的服务类型时，它们都会被激活。
 
-**EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。 **SetupEntryPoint** 是特权入口点，以与 Service Fabric（通常是 *LocalSystem* 帐户）相同的凭据先于任何其他入口点运行。  提供单独的设置入口点可避免长时间使用高特权运行服务主机。 由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。 如果进程总是终止或出现故障，则监视并重启所产生的过程（再次从“SetupEntryPoint”开始）。  
+**EntryPoint**指定的可执行文件通常是长时间运行的服务主机。 **SetupEntryPoint** 是特权入口点，以与 Service Fabric（通常是 *LocalSystem* 帐户）相同的凭据先于任何其他入口点运行。  提供单独的设置入口点可避免长时间使用高特权运行服务主机。 **入口点**指定的可执行文件在**安装程序入口点**成功退出后运行。 如果进程总是终止或出现故障，则监视并重启所产生的过程（再次从“SetupEntryPoint”开始****）。  
 
-“SetupEntryPoint”的典型使用场景是在服务启动之前运行可执行文件，或使用提升的权限来执行操作时。 例如：
+“SetupEntryPoint”的典型使用场景是在服务启动之前运行可执行文件，或使用提升的权限来执行操作时****。 例如：
 
 * 设置和初始化服务可执行文件所需的环境变量。 这并不限于通过 Service Fabric 编程模型编写的可执行文件。 例如，npm.exe 需要配置一些环境变量来部署 node.js 应用程序。
 * 通过安装安全证书设置访问控制。
@@ -72,9 +72,9 @@ ms.locfileid: "75349966"
 
 **EnvironmentVariables**（上一示例中未设置），提供为此代码包设置的环境变量列表。 环境变量可以在 `ApplicationManifest.xml` 中重写，以便为不同的服务实例提供不同的值。 
 
-**DataPackage**（上一示例中未设置），声明一个由 Name 属性命名的文件夹，该文件夹中包含进程会在运行时使用的任意静态数据。
+**DataPackage**（上一示例中未设置），声明一个由 Name 属性命名的文件夹，该文件夹中包含进程会在运行时使用的任意静态数据****。
 
-**ConfigPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含 *Settings.xml* 文件。 此设置文件包含用户定义的键值对设置部分，进程可在运行时读回这些设置。 升级期间，如果仅更改了**ConfigPackage** **版本**，则不会重新启动正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 下面是 *Settings.xml* 文件的一个示例：
+**ConfigPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含 *Settings.xml* 文件。 此设置文件包含用户定义的键值对设置部分，进程可在运行时读回这些设置。 升级期间，如果仅更改了 **ConfigPackage** **版本**，则不重启正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 下面是*一个示例 Settings.xml*文件：
 
 ```xml
 <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -85,11 +85,11 @@ ms.locfileid: "75349966"
 </Settings>
 ```
 
-Service Fabric 服务**终结点**是 Service Fabric 资源的一个示例。 可以在不更改已编译的代码的情况下声明/更改 Service Fabric 资源。 可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定 Service Fabric 资源的访问。 在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。 详细了解[指定或替代终结点资源](service-fabric-service-manifest-resources.md)。
+Service Fabric 服务“终结点”**** 是 Service Fabric 资源的一个示例。 无需更改已编译的代码，即可声明/更改 Service Fabric 资源。 可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定 Service Fabric 资源的访问****。 在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。 详细了解[指定或替代终结点资源](service-fabric-service-manifest-resources.md)。
 
  
 > [!WARNING]
-> 设计静态端口不应与 Clustermanifest.xml 中指定的应用程序端口范围重叠。 如果指定静态端口，请将其分配到应用程序端口范围外，否则将导致端口冲突。 使用 release 6.5 CU2，我们将在检测到此类冲突时发出**运行状况警告**，但允许部署与发货6.5 行为保持同步。 但是，我们可能会阻止应用程序在下一个主要版本中进行部署。
+> 根据设计，静态端口不应与 ClusterManifest 中指定的应用程序端口范围重叠。 如果指定静态端口，请将其分配到应用程序端口范围外，否则会导致端口冲突。 对于版本 6.5CU2，当我们检测到此类冲突时，我们将发出**运行状况警告**，但让部署继续与已发布的 6.5 行为同步。 但是，我们可能会在下一个主要版本中阻止应用程序部署。
 >
 
 <!--
@@ -157,15 +157,15 @@ For more information about other features supported by service manifests, refer 
 
 **Certificates**（上一示例中未设置），声明用于[设置 HTTPS 终结点](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service)或用于[加密应用程序清单中的机密](service-fabric-application-secret-management.md)的证书。
 
-**放置约束**是定义服务运行位置的语句。 这些语句附加到您为一个或多个节点属性选择的各个服务。 有关详细信息，请参阅[放置约束和节点属性语法](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax)
+**放置约束**是定义服务运行位置的语句。 这些语句将附加到你为一个或多个节点属性选择的各个服务。 有关详细信息，请参阅[放置约束和节点属性语法](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax)
 
-**策略**（在前面的示例中未设置）描述要在应用程序级别设置的日志集合、[默认运行方式](service-fabric-application-runas-security.md)、运行[状况](service-fabric-health-introduction.md#health-policies)和[安全访问](service-fabric-application-runas-security.md)策略，包括服务是否有权访问 Service Fabric 运行时。
+**Policies**（在前面的示例中未设置）描述要在应用程序级别设置的日志收集、[默认运行方式帐户](service-fabric-application-runas-security.md)、[运行状况](service-fabric-health-introduction.md#health-policies)和[安全访问](service-fabric-application-runas-security.md)策略，包括服务是否可以访问 Service Fabric 运行时。
 
 > [!NOTE] 
-> 默认情况下，Service Fabric 应用程序具有访问 Service Fabric 运行时的权限，其形式为接受应用程序特定的请求，以及指向包含结构和应用程序特定文件的主机上的文件路径的环境变量. 当应用程序承载不受信任的代码（即，其 provenance 未知的代码，或者应用程序所有者知道不安全地执行）时，请考虑禁用此访问。 有关详细信息，请参阅[Service Fabric 中的最佳安全方案](service-fabric-best-practices-security.md#platform-isolation)。 
+> 默认情况下，Service Fabric 应用程序可以通过以下形式访问 Service Fabric 运行时：终结点（接受应用程序特定请求）和环境变量（指向包含 Fabric 和应用程序特定文件的主机上的文件路径）。 在应用程序托管不受信任的代码（即其出处未知或应用程序所有者知道其执行起来不安全）时，请考虑禁止进行此访问。 有关详细信息，请参阅 [Service Fabric 中的安全最佳做法](service-fabric-best-practices-security.md#platform-isolation)。 
 >
 
-**Principals**（上一示例中未设置），描述[运行服务并确保服务资源安全](service-fabric-application-runas-security.md)所需的安全主体（用户或组）。  Policies 部分中会引用 Principals。
+**Principals**（上一示例中未设置），描述[运行服务并确保服务资源安全](service-fabric-application-runas-security.md)所需的安全主体（用户或组）。  主体在 **"策略"** 部分中引用。
 
 
 
@@ -184,7 +184,7 @@ For more information about other features supported by application manifests, re
 - [打包应用程序](service-fabric-package-apps.md)并准备好进行部署。
 - [部署和删除应用程序](service-fabric-deploy-remove-applications.md)。
 - [配置不同应用程序实例的参数和环境变量](service-fabric-manage-multiple-environment-app-configuration.md)。
-- [配置应用程序的安全策略](service-fabric-application-runas-security.md)。
+- [为应用程序配置安全策略](service-fabric-application-runas-security.md)。
 - [设置 HTTPS 终结点](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service)。
 - [加密应用程序清单中的机密](service-fabric-application-secret-management.md)
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 3a955060eb5f19544860c1c97abe1577084bef24
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67985550"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>将 Qlik Sense 连接到 Azure Cosmos DB 并可视化数据
@@ -52,15 +52,15 @@ Qlik Sense 是一个数据可视化工具，可将来自不同源的数据合并
 
 ## <a name="connect-qlik-sense-to-cosmos-db"></a>将 Qlik Sense 连接到 Cosmos DB
 
-1. 打开 Qlik Sense，然后选择“创建新应用”  。 为应用提供一个名称，然后选择“创建”  。
+1. 打开 Qlik Sense，然后选择“创建新应用”****。 为应用提供一个名称，然后选择“创建”****。
 
    ![创建新的 Qlik Sense 应用](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
 
-2. 成功创建新应用后，选择“打开应用”  ，然后选择“添加来自文件和其他源的数据”  。 
+2. 成功创建新应用后，选择“打开应用”****，然后选择“添加来自文件和其他源的数据”****。 
 
-3. 从数据源中，选择“ODBC”  以打开新的连接设置窗口。 
+3. 从数据源中，选择“ODBC”**** 以打开新的连接设置窗口。 
 
-4. 切换到“用户 DSN”  ，然后选择之前创建的 ODBC 连接。 为连接提供一个名称，然后选择“创建”  。 
+4. 切换到“用户 DSN”****，然后选择之前创建的 ODBC 连接。 为连接提供一个名称，然后选择“创建”****。 
 
    ![创建新连接](./media/visualize-qlik-sense/create-new-connection.png)
 
@@ -68,7 +68,7 @@ Qlik Sense 是一个数据可视化工具，可将来自不同源的数据合并
 
    ![选择数据库和集合](./media/visualize-qlik-sense/choose-database-and-collection.png) 
 
-6. 接下来，选择“添加数据”  以将数据加载到 Qlik Sense。 将数据加载到 Qlik Sense 后，可以生成见解并对数据执行分析。 可以使用见解，也可以自行生成用来浏览电子游戏机销售的应用。 下图显示 
+6. 接下来，选择“添加数据”**** 以将数据加载到 Qlik Sense。 将数据加载到 Qlik Sense 后，可以生成见解并对数据执行分析。 可以使用见解，也可以自行生成用来浏览电子游戏机销售的应用。 下图显示 
 
    ![可视化数据](./media/visualize-qlik-sense/visualize-data.png)
 

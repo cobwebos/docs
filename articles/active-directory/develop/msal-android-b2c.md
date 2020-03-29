@@ -1,7 +1,7 @@
 ---
-title: Azure AD B2C （MSAL Android） |Microsoft
+title: Azure AD B2C （MSAL 安卓） |蔚蓝
 titleSuffix: Microsoft identity platform
-description: 了解将 Azure AD B2C 与适用于 Android 的 Microsoft 身份验证库（MSAL）一起使用时的特定注意事项。Android
+description: 了解将 Azure AD B2C 与适用于 Android 的 Microsoft 身份验证库 (MSAL.Android) 配合使用时的具体注意事项。
 services: active-directory
 author: brianmel
 manager: CelesteDG
@@ -14,27 +14,27 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696515"
 ---
-# <a name="use-msal-for-android-with-b2c"></a>使用适用于 Android 的 MSAL 和 B2C
+# <a name="use-msal-for-android-with-b2c"></a>将适用于 Android 的 MSAL 与 B2C 配合使用
 
-借助 Microsoft 身份验证库 (MSAL)，应用程序开发人员可以使用 [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/) 通过社交和本地标识对用户进行身份验证。 Azure AD B2C 是一个标识管理服务。 使用它可以自定义和控制客户使用应用程序时，如何注册、登录和管理他们的配置文件。
+借助 Microsoft 身份验证库 (MSAL)，应用程序开发人员可以使用 [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/) 通过社交和本地标识对用户进行身份验证。 Azure AD B2C 是一个标识管理服务。 使用该服务可以在客户使用你的应用程序时，自定义和控制他们的注册和登录方式以及管理其个人资料。
 
 ## <a name="configure-known-authorities-and-redirect-uri"></a>配置已知的颁发机构和重定向 URI
 
-在 Android MSAL 中，B2C 策略（user 旅程）配置为单独的颁发机构。
+在适用于 Android 的 MSAL 中，B2C 策略（用户旅程）配置为单独的颁发机构。
 
-给定一个具有两个策略的 B2C 应用程序：
+假设某个 B2C 应用程序有两个策略：
 - 注册/登录
-    * 调用 `B2C_1_SISOPolicy`
-- 编辑配置文件
-    * 调用 `B2C_1_EditProfile`
+    * 名为 `B2C_1_SISOPolicy`
+- 编辑个人资料
+    * 名为 `B2C_1_EditProfile`
 
-应用的配置文件将声明两个 `authorities`。 每个策略都有一个。 `B2C`每个颁发机构的 `type` 属性。
+应用的配置文件将声明两个 `authorities`。 对每个策略各声明一个。 每个颁发机构的 `type` 属性为 `B2C`。
 
 ### `app/src/main/res/raw/msal_config.json`
 ```json
@@ -54,11 +54,11 @@ ms.locfileid: "76696515"
 }
 ```
 
-`redirect_uri` 必须在应用程序配置中注册，并且还必须在 `AndroidManifest.xml` 中，以便在[授权代码授予流](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)期间支持重定向。
+`redirect_uri` 必须在应用配置中注册，此外还必须在 `AndroidManifest.xml` 中注册，以便在运行[授权代码授予流](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)期间支持重定向。
 
 ## <a name="initialize-ipublicclientapplication"></a>初始化 IPublicClientApplication
 
-`IPublicClientApplication` 由工厂方法构造，以允许以异步方式分析应用程序配置。
+`IPublicClientApplication` 由某个工厂方法构造，使用它可以异步方式分析应用程序配置。
 
 ```java
 PublicClientApplication.createMultipleAccountPublicClientApplication(
@@ -81,7 +81,7 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(
 
 ## <a name="interactively-acquire-a-token"></a>以交互方式获取令牌
 
-若要以交互方式使用 MSAL 获取令牌，请生成一个 `AcquireTokenParameters` 实例，并将其提供给 `acquireToken` 方法。 以下令牌请求使用 `default` 颁发机构。
+若要使用 MSAL 以交互方式获取令牌，请生成一个 `AcquireTokenParameters` 实例并将其提供给 `acquireToken` 方法。 以下令牌请求使用 `default` 颁发机构。
 
 ```java
 IMultipleAccountPublicClientApplication pca = ...; // Initialization not shown
@@ -110,9 +110,9 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 pca.acquireToken(parameters);
 ```
 
-## <a name="silently-renew-a-token"></a>以无提示方式续订令牌
+## <a name="silently-renew-a-token"></a>以静默方式续订令牌
 
-若要以无提示方式使用 MSAL 获取令牌，请生成一个 `AcquireTokenSilentParameters` 实例，并将其提供给 `acquireTokenSilentAsync` 方法。 与 `acquireToken` 方法不同，必须指定 `authority` 以无提示方式获取令牌。
+若要使用 MSAL 以静默方式获取令牌，请生成一个 `AcquireTokenSilentParameters` 实例并将其提供给 `acquireTokenSilentAsync` 方法。 与 `acquireToken` 方法不同，必须指定 `authority` 才能以静默方式获取令牌。
 
 ```java
 IMultilpeAccountPublicClientApplication pca = ...; // Initialization not shown
@@ -139,7 +139,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>指定策略
 
-因为 B2C 中的策略表示为单独的颁发机构，所以，调用默认的策略时，会通过在构造 `acquireToken` 或 `acquireTokenSilent` 参数时指定 `fromAuthority` 子句来实现。  例如：
+由于 B2C 中的策略以单独的颁发机构表示，因此，可以通过在构造 `acquireToken` 或 `acquireTokenSilent` 参数时指定 `fromAuthority` 子句，来调用除默认策略以外的策略。  例如：
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -153,11 +153,11 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 ## <a name="handle-password-change-policies"></a>处理密码更改策略
 
-本地帐户注册或登录用户流显示 "**忘记了密码？** " 链接。 单击此链接不会自动触发密码重置用户流。
+本地帐户注册或登录用户流显示“忘记了密码?”**** 链接。 单击此链接不会自动触发密码重置用户流。
 
-相反，错误代码 `AADB2C90118` 返回到你的应用程序。 应用应通过运行重置密码的特定用户流来处理此错误代码。
+而是会将错误代码 `AADB2C90118` 返回给应用。 应用应该通过运行一个可重置密码的特定用户流来处理此错误代码。
 
-若要捕获密码重置错误代码，可以在 `AuthenticationCallback`中使用以下实现：
+若要捕获密码重置错误代码，可以在 `AuthenticationCallback` 中使用以下实现：
 
 ```java
 new AuthenticationCallback() {
@@ -185,7 +185,7 @@ new AuthenticationCallback() {
 
 ## <a name="use-iauthenticationresult"></a>使用 IAuthenticationResult
 
-成功的令牌获取会导致 `IAuthenticationResult` 的对象。 它包含访问令牌、用户声明和元数据。
+成功获取令牌后会生成 `IAuthenticationResult` 对象。 该对象包含访问令牌、用户声明和元数据。
 
 ### <a name="get-the-access-token-and-related-properties"></a>获取访问令牌和相关属性
 
@@ -203,7 +203,7 @@ Date expiry = authenticationResult.getExpiresOn();
 String tenantId = authenticationResult.getTenantId();
 ```
 
-### <a name="get-the-authorized-account"></a>获取授权帐户
+### <a name="get-the-authorized-account"></a>获取已获授权的帐户
 
 ```java
 // Get the account from the result
@@ -227,16 +227,16 @@ String tenantId = account.getTenantId();
 
 ### <a name="idtoken-claims"></a>IdToken 声明
 
-IdToken 中返回的声明由安全令牌服务（STS）（而不是 MSAL）填充。 根据所使用的标识提供者（IdP），某些声明可能不存在。 有些 Idp 当前不提供 `preferred_username` 声明。 因为 MSAL 使用此声明来缓存，所以占位符值 `MISSING FROM THE TOKEN RESPONSE`在其位置使用。 有关 B2C IdToken 声明的详细信息，请参阅[Azure Active Directory B2C 中标记的概述](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims)。
+IdToken 中返回的声明由安全令牌服务 (STS) 而不是 MSAL 填充。 根据所用的标识提供者 (IdP)，可能缺少某些声明。 某些 IdP 目前不提供 `preferred_username` 声明。 由于 MSAL 将此声明用于缓存，因此，已使用一个占位符值 `MISSING FROM THE TOKEN RESPONSE` 来代替此声明。 有关 B2C IdToken 声明的详细信息，请参阅 [Azure Active Directory B2C 中的令牌概述](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims)
 
 ## <a name="managing-accounts-and-policies"></a>管理帐户和策略
 
-B2C 将每个策略视为单独的颁发机构。 因此，从每个策略返回的访问令牌、刷新令牌和 ID 令牌不能互换。 这意味着，每个策略都返回一个单独的 `IAccount` 对象，其令牌不能用于调用其他策略。
+B2C 将每个策略视为单独的颁发机构。 因此，从每个策略返回的访问令牌、刷新令牌和 ID 令牌不可换用。 这意味着，每个策略将返回单独的 `IAccount` 对象，该对象的令牌不可用于调用其他策略。
 
-每个策略都会向每个用户的缓存中添加一个 `IAccount`。 如果用户登录到应用程序并调用两个策略，则它们将具有两个 `IAccount`。 若要从缓存中删除此用户，你必须为每个策略调用 `removeAccount()`。
+每个策略将 `IAccount` 添加到每个用户的缓存。 如果用户登录到应用程序并调用两个策略，他们会收到两个 `IAccount`。 若要从缓存中删除此用户，必须对每个策略调用 `removeAccount()`。
 
-使用 `acquireTokenSilent`续订策略的令牌时，请提供从以前的策略调用返回的与 `AcquireTokenSilentParameters`相同的 `IAccount`。 提供另一个策略返回的帐户会导致错误。
+使用 `acquireTokenSilent` 续订策略的令牌时，请将以前调用策略后返回的相同 `IAccount` 提供给 `AcquireTokenSilentParameters`。 提供另一个策略返回的帐户会导致错误。
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure Active Directory B2C Azure Active Directory B2C （Azure AD B2C） [？](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
+若要详细了解 Azure Active Directory B2C (Azure AD B2C)，请参阅[什么是 Azure Active Directory B2C？](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)

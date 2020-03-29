@@ -7,10 +7,10 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: powershell, runbook, json, azure 自动化
 ms.openlocfilehash: d4adbea42cda54380ad32dce40cfa0d8391ee490
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75366628"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>在 Azure 自动化 PowerShell Runbook 中部署 Azure 资源管理器模板
@@ -21,7 +21,7 @@ ms.locfileid: "75366628"
 
 本文创建一个 PowerShell Runbook，该 Runbook 使用 [Azure 存储](../storage/common/storage-introduction.md)中存储的资源管理器模板部署新的 Azure 存储帐户。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要拥有以下项目：
 
@@ -234,7 +234,7 @@ Runbook 会获取资源管理器模板，并使用它来部署新的 Azure 存�
 Get-AzureRmStorageAccount
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 就这么简单！ 现在，可以使用 Azure 自动化、Azure 存储和资源管理器模板来部署所有 Azure 资源。
 

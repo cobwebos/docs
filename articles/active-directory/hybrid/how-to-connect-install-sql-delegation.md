@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60243560"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>使用 SQL 委派的管理员权限安装 Azure AD Connect
@@ -46,7 +46,7 @@ Azure AD Connect 管理员|安装 Azure AD Connect 并在自定义安装过程�
 
 1. 让 SQL 管理员使用不区分大小写的排序规则序列 **(Latin1_General_CI_AS)** 创建 ADSync 数据库。  数据库必须命名为 **ADSync**。  安装 Azure AD Connect 时，会将恢复模型、兼容性级别和包含类型更新为正确的值。  但是，必须由 SQL 管理员来正确设置排序规则序列，否则 Azure AD Connect 会阻止该安装。  若要进行恢复，SA 必须删除并重新创建数据库。
  
-   ![Collation](./media/how-to-connect-install-sql-delegation/sql4.png)
+   ![排序规则](./media/how-to-connect-install-sql-delegation/sql4.png)
 2. 向 Azure AD Connect 管理员和域服务帐户授予以下权限：
    - SQL 登录名 
    - **数据库所有者 (dbo)** 权限。
@@ -61,7 +61,7 @@ Azure AD Connect 管理员|安装 Azure AD Connect 并在自定义安装过程�
 ## <a name="additional-information"></a>其他信息
 预配数据库以后，Azure AD Connect 管理员可以在方便的情况下安装并配置本地同步。
 
-如果 SQL 管理员从以前的 Azure AD Connect 备份还原了 ADSync 数据库，你需要使用现有的数据库安装新的 Azure AD Connect 服务器。 若要详细了解如何通过现有数据库来安装 Azure AD Connect，请参阅[使用现有 ADSync 数据库安装 Azure AD Connect](how-to-connect-install-existing-database.md)。
+如果 SQL 管理员从以前的 Azure AD Connect 备份还原了 ADSync 数据库，你需要使用现有的数据库安装新的 Azure AD Connect 服务器。 有关安装 Azure AD 连接与现有数据库的详细信息，请参阅[使用现有的 ADSync 数据库安装 Azure AD 连接](how-to-connect-install-existing-database.md)。
 
 ## <a name="next-steps"></a>后续步骤
 - [通过快速设置开始使用 Azure AD Connect](how-to-connect-install-express.md)

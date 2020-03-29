@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ea151ee79fccd66f1d9422744d8f57829677ec0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67204527"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>更改 Azure AD 连接器帐户密码
@@ -42,16 +42,16 @@ Azure AD 连接器帐户应该是免费服务。 但如果需要重置其凭据�
 ---
 事件 6900  
 服务器在处理密码更改通知时遇到意外的错误：  
-AADSTS70002：验证凭据时出错。 AADSTS50054：使用了旧密码进行身份验证。
+AADSTS70002: 验证凭据时出错。 AADSTS50054: 使用旧密码进行身份验证。
 
 ---
 事件 659  
 检索密码策略同步配置时出错。 Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException：  
-AADSTS70002：验证凭据时出错。 AADSTS50054：使用了旧密码进行身份验证。
+AADSTS70002: 验证凭据时出错。 AADSTS50054: 使用旧密码进行身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 **概述主题**
 
-* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
-* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
+* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
+* [将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)
 

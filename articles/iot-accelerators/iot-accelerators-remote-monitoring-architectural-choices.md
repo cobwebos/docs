@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447161"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>远程监视体系结构选择

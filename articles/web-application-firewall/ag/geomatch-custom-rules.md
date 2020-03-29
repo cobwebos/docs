@@ -1,6 +1,6 @@
 ---
-title: Azure Web 应用程序防火墙（WAF） Geomatch 自定义规则
-description: 本文概述了 Azure 应用程序关上的 Web 应用程序防火墙（WAF） geomatch 自定义规则。
+title: Azure Web 应用程序防火墙 （WAF） 地理匹配自定义规则
+description: 本文概述了 Azure 应用程序网关上的 Web 应用程序防火墙 （WAF） 地理匹配自定义规则。
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,24 +8,24 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76961083"
 ---
-# <a name="geomatch-custom-rules-preview"></a>Geomatch 自定义规则（预览）
+# <a name="geomatch-custom-rules-preview"></a>Geomatch 自定义规则（预览版）
 
-自定义规则允许你创建定制的规则，以满足应用程序和安全策略的确切需求。 现在，你可以按国家/地区限制对你的 web 应用程序的访问。 与所有自定义规则一样，此逻辑可以与其他规则结合，以满足应用程序的需求。
+自定义规则允许您创建量身定制的规则，以满足应用程序和安全策略的确切需求。 现在，您可以按国家/地区限制对 Web 应用程序的访问。 与所有自定义规则一样，此逻辑可以与其他规则组合，以满足应用程序需求。
 
-若要创建异地筛选自定义规则，只需选择 "*地理位置*" 作为 "匹配类型"，然后从应用程序中选择要允许/阻止的国家/地区。 有关详细信息，请参阅[如何在 Powershell 中创建自定义规则](configure-waf-custom-rules.md)和更多自定义规则示例（waf-rules.md）。
+要创建地理筛选自定义规则，只需选择*地理位置*作为匹配类型，然后从应用程序中选择要允许/阻止的国家/地区。 有关详细信息[，请参阅如何在 Powershell 中创建自定义规则](configure-waf-custom-rules.md)和更多自定义规则示例（创建自定义-waf-rules.md）。
 
 > [!IMPORTANT]
 > 此公共预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="country-codes"></a>国家/地区代码
 
-如果使用的是 Geomatch 运算符，则选择器可以是以下两位数国家/地区代码中的任何一个。 
+如果使用的是 Geomatch 运算符，则选择器可以是以下任何一个两位数国家/地区代码。 
 
 |国家/地区代码 | 国家/地区名称 |
 | ----- | ----- |
@@ -54,12 +54,12 @@ ms.locfileid: "76961083"
 | BN | 文莱|
 | BO | 玻利维亚|
 | BR | 巴西|
-| BS | 巴哈马群岛|
+| BS | 巴哈马|
 | BT | 不丹|
 | BW | 博茨瓦纳|
 | BY | 白俄罗斯|
 | BZ | 伯利兹|
-| CA | 加拿大|
+| CA | Canada|
 | CD | 刚果民主共和国|
 | CF | 中非共和国|
 | CH | 瑞士|
@@ -73,7 +73,7 @@ ms.locfileid: "76961083"
 | CV | 佛得角|
 | CY | 塞浦路斯|
 | CZ | 捷克共和国|
-| 德国 | 德国|
+| DE | 德国|
 | DK | 丹麦|
 | DO | 多米尼加共和国|
 | DZ | 阿尔及利亚|
@@ -86,7 +86,7 @@ ms.locfileid: "76961083"
 | FJ | 斐济|
 | FM | 密克罗尼西亚联邦|
 | FR | 法国|
-| GB | 英国|
+| GB | United Kingdom|
 | GE | 格鲁吉亚|
 | GF | 法属圭亚那|
 | GH | 加纳|
@@ -121,7 +121,7 @@ ms.locfileid: "76961083"
 | KW | 科威特|
 | KY | 开曼群岛|
 | KZ | 哈萨克斯坦|
-| 拉丁美洲 | 老挝人民民主共和国|
+| LA | 老挝人民民主共和国|
 | LB | 黎巴嫩|
 | LI | 列支敦士登|
 | LK | 斯里兰卡|
@@ -147,7 +147,7 @@ ms.locfileid: "76961083"
 | MX | 墨西哥|
 | MY | 马来西亚|
 | MZ | 莫桑比克|
-| 不可用 | 纳米比亚|
+| NA | 纳米比亚|
 | NE | 尼日尔|
 | NG | 尼日利亚|
 | NI | 尼加拉瓜|
@@ -191,11 +191,11 @@ ms.locfileid: "76961083"
 | TN | 突尼斯|
 | TR | 土耳其|
 | TT | 特立尼达和多巴哥|
-| TW | 台湾|
+| TW | 中国台湾|
 | TZ | 坦桑尼亚联合共和国|
 | UA | 乌克兰|
 | UG | 乌干达|
-| 美国 | 美国|
+| 美国 | United States|
 | UY | 乌拉圭|
 | UZ | 乌兹别克斯坦|
 | VC | 圣文森特和格林纳丁斯|
@@ -209,4 +209,4 @@ ms.locfileid: "76961083"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解自定义规则后，[创建自己的自定义规则](create-custom-waf-rules.md)。
+了解自定义规则后，可[创建自己的自定义规则](create-custom-waf-rules.md)。

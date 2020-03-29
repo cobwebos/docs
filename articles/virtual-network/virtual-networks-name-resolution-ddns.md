@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
 ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60640372"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>使用动态 DNS 在自己的 DNS 服务器中注册主机名

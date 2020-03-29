@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
 ms.openlocfilehash: 554d3e465b42ca889ba03565e87193f80e89ed1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75361001"
 ---
 # <a name="how-to-configure-cloud-services"></a>如何配置云服务
 
-可以在 Azure 门户中配置最常使用的云服务设置。 或者，如果你希望直接更新配置文件，则可以下载要更新的服务配置文件，然后上载更新文件并使用配置更改更新云服务。 无论使用哪种方法，配置更新都将应用于所有角色实例。
+可以在 Azure 门户中配置最常使用的云服务设置。 或者，如果你希望直接更新配置文件，则可以下载要更新的服务配置文件，然后上传更新文件并使用配置更改更新云服务。 无论使用哪种方法，配置更新都将应用于所有角色实例。
 
 还可以管理云服务角色的实例，或者通过远程桌面进入这些角色中。
 
@@ -29,7 +29,7 @@ ms.locfileid: "75361001"
 
 ![“设置”页](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-可以通过“设置”或“所有设置”链接打开“设置”，在该选项卡中，可以更改“属性”、更改“配置”、管理“证书”、设置“警报规则”，以及管理有权访问该云服务的“用户”。
+可以通过“设置”或“所有设置”链接打开“设置”，在该选项卡中，可以更改“属性”、更改“配置”、管理“证书”、设置“警报规则”，以及管理有权访问该云服务的“用户”********************************。
 
 ![Azure 云服务设置](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "75361001"
 
 默认情况下，Azure 会定期将来宾 OS 更新为 OS 系列（在服务配置 (.cscfg) 中指定）中支持的最新映像，例如 Windows Server 2016。
 
-如果需要设定某一特定 OS 版本，可在“配置”中进行设置。
+如果需要设定某一特定 OS 版本，可在“配置”**** 中进行设置。
 
 ![设置 OS 版本](./media/cloud-services-how-to-configure-portal/cs-settings-config-guestosversion.png)
 
@@ -46,11 +46,11 @@ ms.locfileid: "75361001"
 
 ## <a name="monitoring"></a>监视
 
-可将警报添加到云服务。 单击“**设置**” > “**警报规则**” > “**添加警报**”。
+可将警报添加到云服务。 单击 **"设置** > **警报规则** > **添加警报**"。
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
-可以在此处设置警报。 使用“指标”下拉框，可以针对以下类型的数据设置警报。
+可以在此处设置警报。 使用“指标”**** 下拉框，可以针对以下类型的数据设置警报。
 
 * 磁盘读取
 * 磁盘写入
@@ -62,7 +62,7 @@ ms.locfileid: "75361001"
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>配置从度量值磁贴进行的监视
 
-可以单击“云服务”边栏选项卡的“监视”部分中的某个度量值磁贴，而不必使用“设置” > “警报规则”。
+您可以单击云服务的 **"监视"** 部分中的一个指标磁贴，而不是使用**设置** > **警报规则**。
 
 ![云服务监视](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "75361001"
 
 可能需要通过 [service config (cscfg)](cloud-services-model-and-package.md#cscfg) 文件来重新配置云服务。 首先，需要下载 .cscfg 文件，对其进行修改，然后再上载该文件。
 
-1. 单击“设置”图标或“所有设置”链接以打开“设置”。
+1. 单击“设置”图标或“所有设置”链接以打开“设置”************。
 
     ![“设置”页](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 2. 单击“**配置**”项。
@@ -93,7 +93,7 @@ ms.locfileid: "75361001"
 3. 单击“**下载**”按钮。
 
     ![下载](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
-4. 更新服务配置文件后，上载并应用配置更新：
+4. 更新服务配置文件后，上传并应用配置更新：
 
     ![上载](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
 5. 选择 .cscfg 文件，并单击“**确定**”。

@@ -1,7 +1,7 @@
 ---
 title: 编写高级 R 函数
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: 了解如何在 Azure SQL 数据库使用机器学习服务 （预览版） 中编写高级统计计算的 R 函数。
+description: 了解如何使用机器学习服务（预览）在 Azure SQL 数据库中编写用于高级统计计算的 R 函数。
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,37 +14,37 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 939798d5d9eb2843d7bbbbe74680342e4ce6ce95
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60702446"
 ---
-# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>在 Azure SQL 数据库使用机器学习服务 （预览版） 中编写高级的 R 函数
+# <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>使用机器学习服务（预览版）在 Azure SQL 数据库中编写高级 R 函数
 
-本文介绍如何将嵌入 R 数学和实用工具函数在 SQL 存储过程。 复杂而无法在 T-SQL 中实现的高级统计函数可以在 R 中使用只有一行代码。
+本文介绍如何在 SQL 存储过程中嵌入 R 数学函数和实用程序函数。 在 T-SQL 中难以实现的高级统计函数在 R 中只需一行代码就可以实现。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/)。
+- 如果没有 Azure 订阅，请先[创建帐户](https://azure.microsoft.com/free/)。
 
 - 若要在这些练习中运行示例代码，必须先有一个启用了机器学习服务（使用 R）的 Azure SQL 数据库。 在发布公共预览版期间，Microsoft 会将你加入该版本并为你的现有数据库或新数据库启用机器学习。 执行[注册预览版](sql-database-machine-learning-services-overview.md#signup)中的步骤。
 
 - 确保已安装了最新的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)。 你可以使用其他数据库管理或查询工具运行 R 脚本，但在本快速入门中，你将使用 SSMS。
 
-## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>创建存储的过程来生成随机数字
+## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>创建一个存储过程来生成随机数字
 
-为简单起见，让我们使用 R`stats`已安装并使用机器学习服务 （预览版） 的 Azure SQL 数据库默认情况下加载的包。 包中包含数百个常用统计任务，在它们之间的函数`rnorm`函数。 此函数将生成指定的数量的给定了标准偏差，表示使用正态分布的随机数字。
+为简单起见，让我们使用使用机器学习服务`stats`（预览）使用 Azure SQL 数据库默认安装和加载的 R 包。 该包包含数百个用于常见统计任务的函数，其中包括函数`rnorm`。 给定标准差和平均值，此函数使用正态分布生成指定数量的随机数。
 
-例如，下面的 R 代码返回 100 个数字平均数为 50，给定了标准差为 3。
+例如，以下 R 代码在标准偏差为 3 的情况下返回平均值为 50 的 100 个数字。
 
 ```R
 as.data.frame(rnorm(100, mean = 50, sd = 3));
 ```
 
-若要从 T-SQL 调用此行 R，运行`sp_execute_external_script`和 R 脚本参数，此类中添加此 R 函数：
+要从 T-SQL 调用此行 R，`sp_execute_external_script`请运行 R 函数并在 R 脚本参数中添加 R 函数，如下所示：
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -55,9 +55,9 @@ OutputDataSet <- as.data.frame(rnorm(100, mean = 50, sd =3));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-如果你想要更加轻松地生成一组不同的随机数字？
+如果你希望更轻松地生成不同的一组随机数字，那该怎么办？
 
-这很容易与 SQL 结合使用时。 定义从用户获取的参数，然后将这些自变量作为变量传递给 R 脚本的存储的过程。
+与 SQL 结合使用时，这很容易。 定义一个存储过程，从用户那里获取参数，然后将这些参数作为变量传递给 R 脚本。
 
 ```sql
 CREATE PROCEDURE MyRNorm (
@@ -78,13 +78,13 @@ OutputDataSet <- as.data.frame(rnorm(mynumbers, mymean, mysd));
 WITH RESULT SETS(([Density] FLOAT NOT NULL));
 ```
 
-- 第一行定义每个 SQL 输入参数执行存储的过程时所需的。
+- 第一行定义了在执行该存储过程时必需的每个 SQL 输入参数。
 
-- 开头的行`@params`定义使用的 R 代码，以及相应的 SQL 数据类型的所有变量。
+- 以 `@params` 开头的行定义了 R 代码使用的所有变量，以及对应的 SQL 数据类型。
 
-- 紧跟在行映射到相应的 R 变量名称的 SQL 参数名称。
+- 紧跟在后面的行将 SQL 参数名称映射到对应的 R 变量名称。
 
-既然您已将 R 函数包装在存储过程中，可以轻松地调用该函数并传入不同值，如下：
+现在，你已将 R 函数包装在了一个存储过程中，你可以轻松调用该函数并传入不同的值，如下所示：
 
 ```sql
 EXECUTE MyRNorm @param1 = 100
@@ -94,9 +94,9 @@ EXECUTE MyRNorm @param1 = 100
 
 ## <a name="use-r-utility-functions-for-troubleshooting"></a>使用 R 实用工具函数进行故障排除
 
-`utils`默认情况下，安装包提供了各种用于调查当前 R 环境的实用工具函数。 这些函数可以是你在 R 代码执行 SQL 中和在环境外的方法中发现差异时很有用。 例如，可以使用 R`memory.limit()`函数来获取当前 R 环境的内存。
+默认情况下`utils`安装的软件包提供了用于调查当前 R 环境的各种实用程序功能。 如果发现 R 代码在 SQL 和外部环境中的表现方式存在差异，则这些函数非常有用。 例如，你可以使用 R `memory.limit()` 函数获取当前 R 环境的内存。
 
-因为`utils`包已安装但未加载默认情况下，必须使用`library()`函数首先加载。
+因为 `utils` 包默认情况下已安装但未加载，因此你必须首先使用 `library()` 函数加载该包。
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -110,4 +110,4 @@ WITH RESULT SETS(([Col1] INT NOT NULL));
 ```
 
 > [!TIP]
-> 许多用户喜欢使用的系统计时函数在 R 中，如`system.time`和`proc.time`，以捕获 R 进程使用的时间和分析性能问题。
+> 许多用户喜欢使用 R 中的系统计时函数，例如`system.time`和`proc.time`， 来捕获 R 进程使用的时间并分析性能问题。

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61320113"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>概念性理解 IoT 行业中的 X.509 CA 证书
@@ -39,7 +39,7 @@ X.509 CA 身份验证的另一重要属性是简化了供应链逻辑。 设备�
 
 本文连贯地介绍如何使用 X.509 CA 身份验证（从供应链设置到设备连接），同时利用真实示例增强理解。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 X.509 CA 证书是一种数字证书，该证书的持有者可对其他证书进行签名。 此数字证书为 X.509，因为它符合 IETF RFC 5280 标准规定的证书格式标准；它也是一个证书颁发机构 (CA)，因为其持有者可对其他证书进行签名。
 

@@ -12,23 +12,23 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720446"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期
 
-Team Data Science Process (TDSP) 提供可用于构建数据科学项目的建议生命周期。 生命周期概述了成功项目所遵循的完整步骤。 如果使用另一数据科学生命周期，例如数据挖掘的跨行业标准过程 [(CRISP-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、数据库中的知识发现 [(KDD)](https://wikipedia.org/wiki/Data_mining#Process) 或组织自己的定制过程，仍可使用基于任务的 TDSP。 
+Team Data Science Process (TDSP) 提供可用于构建数据科学项目的建议生命周期。 生命周期概述了成功项目遵循的完整步骤。 如果使用另一数据科学生命周期，例如数据挖掘的跨行业标准过程 [(CRISP-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、数据库中的知识发现 [(KDD)](https://wikipedia.org/wiki/Data_mining#Process) 或组织自己的定制过程，仍可使用基于任务的 TDSP。 
 
-此生命周期为数据科学项目而设计，这些项目旨在作为智能应用程序的一部分提供。 这些应用程序部署机器学习或人工智能模型以进行预测分析。 探索数据科学项目和标识分析项目也可从使用此过程中获益。 但对于这些项目，可能并不需要这里描述的一些步骤。 
+此生命周期为数据科学项目而设计，这些项目旨在作为智能应用程序的一部分提供。 这些应用程序部署机器学习或人工智能模型以进行预测分析。 探索性数据科学项目和即兴分析项目也可以受益于此过程的使用。 但对于这些项目，可能并不需要这里描述的一些步骤。 
 
 ## <a name="five-lifecycle-stages"></a>五个生命周期阶段
 
 TDSP 生命周期由 5 个以迭代方式执行的主要阶段组成。 这些阶段包括：
 
-   1. [了解业务](lifecycle-business-understanding.md)
+   1. [业务理解](lifecycle-business-understanding.md)
    2. [数据采集和理解](lifecycle-data.md)
    3. [建模](lifecycle-modeling.md)
    4. [部署](lifecycle-deployment.md)

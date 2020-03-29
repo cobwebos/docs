@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
 ms.openlocfilehash: 66cda98f272e7353b620059a731972714db585ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75374126"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>通过使用 Azure PowerShell 将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除
@@ -40,7 +40,7 @@ ms.locfileid: "75374126"
 6. 从恢复 VM 卸载并分离磁盘。
 7. 更改受影响 VM 的 OS 磁盘。
 
-可以使用 VM 修复命令自动执行步骤1、2、3、4、6和7。 有关更多文档和说明，请参阅[使用 Azure 虚拟机修复命令修复 WINDOWS VM](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+您可以使用 VM 修复命令自动执行步骤 1、2、3、4、6 和 7。 有关更多文档和说明，请参阅[使用 Azure 虚拟机修复命令修复 Windows VM。](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 确保已安装[最新 Azure PowerShell](/powershell/azure/overview) 并登录到订阅：
 

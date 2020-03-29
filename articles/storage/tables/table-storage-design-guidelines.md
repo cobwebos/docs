@@ -9,10 +9,10 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: d056d29469ad9a60fceeee307aca3c0e1319283c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61269827"
 ---
 # <a name="guidelines-for-table-design"></a>表设计准则
@@ -32,7 +32,7 @@ ms.locfileid: "61269827"
 
 * ***不要创建热分区。*** 选择在任何时间点都能够将请求散布到多个分区的键。  
 * ***避免出现流量高峰。*** 使流量在合理的时间段内均匀分布，并避免出现流量高峰。
-* ***无需为每种实体类型创建一个单独的表。*** 当需要对多种实体类型执行原子事务操作时，可以将这些实体类型存储在同一个表的同一个分区中。
+* ***不一定为每种类型的实体创建单独的表。*** 当需要对多种实体类型执行原子事务操作时，可以将这些实体类型存储在同一个表的同一个分区中。
 * ***请考虑必须实现的最大吞吐量。*** 必须了解表服务的伸缩性目标，并确保设计不会导致超出目标。  
 
 在阅读本指南时，会看到将所有这些原则付诸实践的示例。 

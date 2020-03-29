@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65824939"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>对应用程序执行许可时发生的意外错误
@@ -37,7 +37,7 @@ ms.locfileid: "65824939"
 当非公司管理员用户尝试使用的应用程序请求只有管理员才能授予的权限时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
 
 ## <a name="policy-prevents-granting-permissions-error"></a>策略阻止权限授予错误
-* **AADSTS90093：** &lt;tenantDisplayName&gt; 管理员设置的策略阻止授予 &lt;name of app&gt; 请求的权限。 请与 &lt;tenantDisplayName&gt; 管理员联系，他/她可代表你授予对此应用的权限。
+* **AADSTS90093：**&lt;tenantDisplayName&gt; 管理员设置的策略阻止授予 &lt;应用名称&gt; 请求的权限。 请与 &lt;tenantDisplayName&gt; 管理员联系，他/她可代表你授予对此应用的权限。
 
 当公司管理员关闭用户对应用程序进行许可的能力，非管理员用户尝试使用的应用程序需要许可时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
 
@@ -47,7 +47,7 @@ ms.locfileid: "65824939"
 此错误表明服务端已发生不稳定问题。 可通过重新尝试对应用程序进行许可来解决此问题。
 
 ## <a name="resource-not-available-error"></a>资源不可用错误
-* **AADSTS65005：** &lt;clientAppDisplayName&gt; 应用已请求访问不可用的 &lt;resourceAppDisplayName&gt; 资源的权限。 
+* **AADSTS65005：**&lt;clientAppDisplayName&gt; 应用已请求访问不可用的 &lt;resourceAppDisplayName&gt; 资源的权限。 
 
 请与应用程序开发人员联系。
 

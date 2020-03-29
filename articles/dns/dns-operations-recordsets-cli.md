@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
 ms.openlocfilehash: 4e017dc940e1d32888ff279904e44d34db1fd5c3
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76936891"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure DNS 中的 DNS 记录和记录集
@@ -22,13 +22,13 @@ ms.locfileid: "76936891"
 > [!div class="op_single_selector"]
 > * [Azure 门户](dns-operations-recordsets-portal.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
-> * [PowerShell](dns-operations-recordsets.md)
+> * [电源外壳](dns-operations-recordsets.md)
 
 本文介绍如何使用适用于 Windows、Mac 和 Linux 的跨平台 Azure CLI 管理 DNS 区域的 DNS 记录。 也可以使用 [Azure PowerShell](dns-operations-recordsets.md) 或 [Azure 门户](dns-operations-recordsets-portal.md)管理 DNS 记录。
 
 本文中的示例假设读者[已安装 Azure CLI、已登录，并且已创建一个 DNS 区域](dns-operations-dnszones-cli.md)。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 在 Azure DNS 中创建 DNS 记录之前，首先需了解 Azure DNS 如何将 DNS 记录组织到 DNS 记录集中。
 
@@ -38,7 +38,7 @@ ms.locfileid: "76936891"
 
 ## <a name="create-a-dns-record"></a>创建 DNS 记录
 
-请使用 `az network dns record-set <record-type> add-record` 命令创建 DNS 记录（其中 `<record-type>` 为一种记录类型，即 a、srv、txt 等）有关帮助，请参阅 `az network dns record-set --help`。
+请使用 `az network dns record-set <record-type> add-record` 命令创建 DNS 记录（其中 `<record-type>` 为一种记录类型，即 a、srv、txt 等）有关帮助，请参阅`az network dns record-set --help`。
 
 创建记录时，需指定资源组名称、区域名称、记录集名称、记录类型，以及要创建的记录的详细信息。 给定的记录集名称必须是*相对*名称，这意味着它必须排除区域名称。
 

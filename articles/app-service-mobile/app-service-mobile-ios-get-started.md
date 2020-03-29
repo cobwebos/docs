@@ -1,16 +1,16 @@
 ---
 title: 创建 iOS 应用
-description: 遵循本教程，开始使用适用于后端或 Swift 的 iOS 开发 Azure 移动应用。
+description: 按照本教程，开始使用 Azure 移动应用后端，以 Objective-C 或 Swift 语言开发 iOS。
 ms.assetid: 6461a899-9340-42dd-b118-ffc5ba00e846
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: 1b1114a22d33689f485aa228a8a1cf65eba719da
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461481"
 ---
 # <a name="create-an-ios-app"></a>创建 iOS 应用
@@ -18,7 +18,7 @@ ms.locfileid: "77461481"
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 ## <a name="overview"></a>概述
 
-本教程说明如何将云后端服务 [Azure 应用服务移动应用](app-service-mobile-value-prop.md)添加到 iOS 应用。 第一步是在 Azure 上创建一个新的移动后端。 然后，下载一个简单的“待办事项列表”iOS 示例应用以在 Azure 中存储数据。
+本教程说明如何将云后端服务 [Azure 应用服务移动应用](app-service-mobile-value-prop.md)添加到 iOS 应用。 第一步是在 Azure 上创建一个新的移动后端。 然后，下载一个简单的“待办事项列表”** iOS 示例应用以在 Azure 中存储数据。
 
 若要完成本教程，需要一台 Mac 和 [一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)
 

@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
 ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62095976"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>使用 Azure CLI 创建应用程序网关
 
-Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有下述与应用程序传送功能：HTTP 负载均衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
+Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有以下应用程序传递功能：HTTP 负载均衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
 
 ## <a name="prerequisite-install-the-azure-cli"></a>先决条件：安装 Azure CLI
 
@@ -25,7 +25,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 > [!NOTE]
 > 如果没有 Azure 帐户，则需要注册一个。 可以[在此处注册免费试用帐户](../active-directory/fundamentals/sign-up-organization.md)。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 在此方案中，将学习如何使用 Azure 门户创建应用程序网关。
 
@@ -44,13 +44,13 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-打开**Microsoft Azure 命令提示符**，并登录。
+打开**Microsoft Azure 命令提示符**并登录。
 
 ```azurecli-interactive
 az login
 ```
 
-键入前述示例后，将提供代码。 在浏览器中导航到 https://aka.ms/devicelogin ，继续登录过程。
+键入前述示例后，将提供代码。 在浏览器中导航到 https://aka.ms/devicelogin，继续登录过程。
 
 ![显示设备登录信息的 cmd][1]
 
@@ -135,7 +135,7 @@ azure network application-gateway create \
 
 访问[创建自定义运行状况探测](application-gateway-create-probe-portal.md)，了解如何创建自定义运行状况探测
 
-访问 [配置 SSL 卸载](application-gateway-ssl-arm.md)
+访问[配置 SSL 卸载](application-gateway-ssl-arm.md)，了解如何配置 SSL 卸载并从 Web 服务器中剥离开销较高的 SSL 解密
 
 <!--Image references-->
 

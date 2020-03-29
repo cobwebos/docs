@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b1d0c070a9196eaa9a2706a607baa9a2926e2db4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67051749"
 ---
 # <a name="publish-media-services-content-using-net"></a>使用 .NET 发布媒体服务内容  
@@ -53,7 +53,7 @@ ms.locfileid: "67051749"
 
 
 >[!NOTE]
->不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的天数/访问权限，则使用相同的策略 ID。 例如，适用于需要长期保留使用的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的天数/访问权限，则使用相同的策略 ID。 例如，适用于需要长期保留使用的定位符的策略（非上传策略）。 有关详细信息，请参阅[本](media-services-dotnet-manage-entities.md#limit-access-policies)主题。
 
 ### <a name="use-media-services-net-sdk"></a>使用媒体服务 .NET SDK
 生成流 URL 

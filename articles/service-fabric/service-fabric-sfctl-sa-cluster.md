@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric sfctl sa-群集
-description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理独立群集的命令的列表。
+title: Azure Service Fabric CLI - sfctl sa-cluster
+description: 了解 sfctl，Azure 服务结构命令行接口。 包括用于管理独立群集的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 233148c04fb1a9c6cf1d6c7042c12c54eebd0205
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76904921"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
@@ -17,7 +17,7 @@ ms.locfileid: "76904921"
 
 ## <a name="commands"></a>命令
 
-|命令|Description|
+|命令|描述|
 | --- | --- |
 | config | 获取 Service Fabric 独立群集配置。 |
 | config-upgrade | 开始升级 Service Fabric 独立群集的配置。 |
@@ -28,16 +28,16 @@ ms.locfileid: "76904921"
 
 群集配置包含群集的属性，包括群集上的不同节点类型、安全配置、错误和升级域拓扑，等等。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --configuration-api-version [必需] | 独立群集 json 配置的 API 版本。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -50,9 +50,9 @@ ms.locfileid: "76904921"
 
 如果参数有效，则验证提供的配置升级参数并开始升级群集配置。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --cluster-config            [必需] | 群集配置。 |
 | --application-health-policies | 应用程序类型名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。 |
@@ -69,7 +69,7 @@ ms.locfileid: "76904921"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -90,15 +90,15 @@ policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 
 获取 Service Fabric 独立群集的群集配置升级状态详细信息。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -108,5 +108,5 @@ policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [安装](service-fabric-cli.md) Service Fabric CLI。
+- [设置](service-fabric-cli.md)服务结构 CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 4c4ac9489b9613b2eeaf26a3df9f4cbc664a1026
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60730684"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>具有低或无网络宽带的大型数据集的数据传输
@@ -59,7 +59,7 @@ ms.locfileid: "60730684"
 |    合作伙伴集成              |    部分                         |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    部分                                |
 |    寄送                         |    Microsoft 托管            |    Microsoft 托管                             |    Microsoft 托管                     |    由客户管理                    |
 | 数据移动时使用         |在商务区域内|在商务区域内|在商务区域内|跨地理区域，例如美国到欧洲|
-|    定价                          |    [定价](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [价格](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [价格](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定价](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
+|    定价                          |    [定价](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [定价](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [定价](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定价](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
 ## <a name="next-steps"></a>后续步骤

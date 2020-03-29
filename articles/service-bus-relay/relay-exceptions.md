@@ -15,27 +15,27 @@ ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
 ms.openlocfilehash: fe8f057443b978e70e7cdd2591affd455fefdca8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60749030"
 ---
 # <a name="azure-relay-exceptions"></a>Azure 中继异常
 
-本文列出了可能由 Azure 中继 API 生成的一些异常。 此参考信息随时更改，请不时返回查看更新内容。
+本文列出了可能由 Azure 中继 API 生成的一些异常。 这些参考信息可随时更改，请不时返回查看更新内容。
 
 ## <a name="exception-categories"></a>异常类别
 
 中继 API 生成的异常可以分为以下类别。 此外还列出了解决这些异常应采取的建议操作。
 
-*   **用户编码错误**：[System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)。 
+*   **用户编码错误**：[System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)、[System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)、[System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)、[System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)。 
 
-    **常规操作**：继续之前尝试修复代码。
+    常规操作：继续之前尝试修复代码。****
 *   **设置/配置错误**：[System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)。 
 
-    **常规操作**：查看配置。 必要时更改配置。
-*   **暂时性异常**：[Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception)、[Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)、[Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)。 
+    常规操作：检查配置。**** 必要时更改配置。
+*   **瞬态例外**：[微软.服务总线.消息传递异常](/dotnet/api/microsoft.servicebus.messaging.messagingexception)，[微软.服务总线.消息.服务器忙异常](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)，[微软.服务总线.消息传递异常](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)。 
 
     **常规操作**：重试操作或通知用户。
 *   **其他异常**：[System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx)、[System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx)。 
@@ -52,14 +52,14 @@ ms.locfileid: "60749030"
 | [操作无效](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |不允许在服务器或服务中执行请求的用户操作。 有关详细信息，请查看异常消息。 |检查代码和文档。 确保请求的操作有效。 |重试不会解决问题。 |
 | [操作已取消](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |尝试对已关闭、中止或释放的对象调用某个操作。 在极少数的情况下，已释放环境事务。 |检查代码并确保代码不会对已释放的对象调用操作。 |重试不会解决问题。 |
 | [未授权访问](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) 对象无法获取令牌，该令牌无效，或者令牌不包含执行操作所需的声明。 |确保使用正确的值创建令牌提供程序。 检查访问控制服务的配置。 |在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
-| [参数异常](https://msdn.microsoft.com/library/system.argumentexception.aspx)；<br /> [参数为 Null](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)；<br />[参数超出范围](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |出现下述一个或多个情况：<br />提供给该方法的一个或多个参数均无效。<br /> 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) 的 URI 包含一个或多个路径段。<br />提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) 的 URI 方案无效。 <br />属性值大于 32 KB。 |检查调用代码并确保参数正确。 |重试不会解决问题。 |
+| [参数异常](https://msdn.microsoft.com/library/system.argumentexception.aspx)，<br /> [参数为 Null](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)；<br />[参数超出范围](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |出现下述一个或多个情况：<br />提供给该方法的一个或多个参数均无效。<br /> 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) 的 URI 包含一个或多个路径段。<br />提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory.create) 的 URI 方案无效。 <br />属性值大于 32 KB。 |检查调用代码并确保参数正确。 |重试不会解决问题。 |
 | [服务器忙](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) |服务目前无法处理请求。 |客户端可以等待一段时间，并重试操作。 |客户端可以在特定的时间间隔后重试。 如果重试导致其他异常，请检查该异常的重试行为。 |
 | [超出配额](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) |消息实体已达到其最大允许大小。 |通过从实体或其子队列接收消息在该实体中创建空间。 请参阅[QuotaExceededException](#quotaexceededexception)。 |如果同时已删除消息，则重试可能会有帮助。 |
 | [超出消息大小](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |消息有效负载超出 256 KB 限制。 请注意，256 KB 限制是指总消息大小。 总消息大小可能包括系统属性和任何 Microsoft .NET 开销。 |减少消息负载的大小，并重试操作。 |重试不会解决问题。 |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 
-[QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) 指示已超出某个特定实体的配额。
+[配额超过例外](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception)表示已超出特定实体的配额。
 
 对于中继，此异常包含 [System.ServiceModel.QuotaExceededException](https://msdn.microsoft.com/library/system.servicemodel.quotaexceededexception.aspx)，指示已超过此终结点的最大侦听器数目。 这会以异常消息的 **MaximumListenersPerEndpoint** 值表示。
 

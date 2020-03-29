@@ -14,15 +14,15 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 835b3a69e779b536961110b674ae67f4e8c13ce0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845055"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>通过 VPN 网关诊断本地连接
 
-使用 Azure VPN 网关可以创建混合解决方案，解决在本地网络与 Azure 虚拟网络之间建立安全连接的需求。 每个人的要求都是独一无二的，选择的本地 VPN 设备也是如此。 Azure 目前支持[多种 VPN 设备](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)，我们正在持续与设备供应商合作验证这些设备。 在配置本地 VPN 设备之前，请查看特定于设备的配置设置。 同样，Azure VPN 网关中配置了一组[受支持的 IPsec 参数](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)用于建立连接。 目前无法在 Azure VPN 网关中指定或选择 IPsec 参数的特定组合。 若要在本地与 Azure 之间成功建立连接，本地 VPN 设备设置必须符合 Azure VPN 网关规定的 IPsec 参数。 如果设置不正确，则连接中断，并且在现在解决这些问题并不重要，并且通常需要花费几个小时来识别和修复问题。
+使用 Azure VPN 网关可以创建混合解决方案，解决在本地网络与 Azure 虚拟网络之间建立安全连接的需求。 每个人的要求都是独一无二的，选择的本地 VPN 设备也是如此。 Azure 目前支持[多种 VPN 设备](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)，我们正在持续与设备供应商合作验证这些设备。 在配置本地 VPN 设备之前，请查看特定于设备的配置设置。 同样，Azure VPN 网关中配置了一组[受支持的 IPsec 参数](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)用于建立连接。 目前无法在 Azure VPN 网关中指定或选择 IPsec 参数的特定组合。 若要在本地与 Azure 之间成功建立连接，本地 VPN 设备设置必须符合 Azure VPN 网关规定的 IPsec 参数。 如果设置不正确，则连接丢失，直到现在，解决这些问题并非易事，通常需要几个小时才能识别和修复问题。
 
 使用 Azure 网络观察程序故障排除功能，可以诊断任何网关和连接问题，在几分钟内获得足够的信息，就如何解决问题做出明智的决策。
 
@@ -44,7 +44,7 @@ ms.locfileid: "76845055"
 
 ### <a name="ike-phase-1-setup"></a>IKE 第 1 阶段设置
 
-| **属性** | **PolicyBased** | **RouteBased 和标准或高性能 VPN 网关** |
+| **属性** | **基于策略** | **RouteBased 和标准或高性能 VPN 网关** |
 | --- | --- | --- |
 | SDK 版本 |IKEv1 |IKEv2 |
 | Diffie-Hellman 组 |组 2（1024 位） |组 2（1024 位） |
@@ -59,11 +59,11 @@ ms.locfileid: "76845055"
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>使用 Azure 网络观察程序进行故障排除
 
-若要诊断连接，请连接到 Azure PowerShell 并启动 `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet。 可以在 [Troubleshoot Virtual Network Gateway and connections - PowerShell](network-watcher-troubleshoot-manage-powershell.md)（排查虚拟网络网关和连接问题 - PowerShell）中找到有关使用此 cmdlet 的详细信息。 此 cmdlet 最长可能需要几分钟时间才能完成。
+若要诊断连接，请连接到 Azure PowerShell 并启动 `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet。 您可以在[疑难解答虚拟网络网关和连接 - PowerShell](network-watcher-troubleshoot-manage-powershell.md)中找到有关使用此 cmdlet 的详细信息。 此 cmdlet 最长可能需要几分钟时间才能完成。
 
 完成该 cmdlet 后，可以导航到该 cmdlet 中指定的存储位置，获取有关问题和日志的详细信息。 Azure 网络观察程序创建包含以下日志文件的 zip 文件夹：
 
-![第][1]
+![1][1]
 
 打开名为 IKEErrors.txt 的文件，其中显示了以下错误，指出存在本地 IKE 设置配置不当的问题。
 

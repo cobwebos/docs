@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.subservice: autoscale
 ms.openlocfilehash: e22806ff94ce2eb830bb6918bfc7f80e5ad3ba0a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75364214"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>使用 VM 规模集的 Resource Manager 模板的高级自动缩放配置
@@ -31,28 +31,28 @@ ms.locfileid: "75364214"
 
 3. 现在，可以根据计划或特定要求添加更多配置文件和规则。 我们会创建一个具有三个配置文件的自动缩放设置。 若要了解自动缩放中的配置文件和规则，请查看[自动缩放最佳做法](autoscale-best-practices.md)。  
 
-    | 配置文件和规则 | Description |
+    | 配置文件和规则 | 描述 |
     |--- | --- |
-    | **配置文件** |**基于性能/指标** |
+    | **配置 文件** |**基于性能/指标** |
     | 规则 |服务总线队列消息计数 > x |
     | 规则 |服务总线队列消息计数 < y |
     | 规则 |CPU% > n |
     | 规则 |CPU% < p |
-    | **配置文件** |**工作日上午时（无规则）** |
-    | **配置文件** |**产品发布日（无规则）** |
+    | **配置 文件** |**工作日上午时（无规则）** |
+    | **配置 文件** |**产品发布日（无规则）** |
 
 4. 以下是用于进行此演练所假设的一个缩放方案。
 
-   * **基于负载** - 我想要根据在规模集上托管的应用程序上的负载情况进行扩大或缩小。*
+   * **基于负载**- 我想根据我的规模集托管的应用程序上的负载进行横向扩展。
    * **消息队列大小** - 使用服务总线队列为应用程序传入消息。 使用队列的消息计数和 CPU 利用率并配置默认的配置文件，在消息计数或 CPU 利用率达到阈值时触发缩放操作。\*
    * **每周和每日时间** - 每周定期按基于“每日时间”的配置文件（名为“工作日上午时间”）执行。 根据历史数据，在此期间最好有一定数量的 VM 实例来处理应用程序的负载。\*
    * **特殊日期** - 添加了“产品上市日”配置文件。 提前计划具体日期，以便应用程序做好准备来处理由市场通知以及将新产品放入应用程序中时所产生的负载。\*
-   * *最后两个配置文件还可以具有其他基于性能指标的规则。在这种情况下，我决定不使用一个，而是依赖于基于默认性能指标的规则。对于定期和基于日期的配置文件来说，规则是可选的。*
+   * *可以在最后两个配置文件中放置基于其他性能指标的规则。本例中决定不使用任何一个其他规则，而是依赖基于性能指标的默认规则。对于定期和基于日期的配置文件来说，规则是可选的。*
 
      自动缩放引擎的配置文件和规则的优先级顺序也在[自动缩放最佳实践](autoscale-best-practices.md)文章中有所介绍。
      有关自动缩放的常用指标列表，请参阅[自动缩放的常用指标](autoscale-common-metrics.md)
 
-5. 确保在资源浏览器中处于“读/写”模式
+5. 确保在资源浏览器中处于“读/写”**** 模式
 
     ![Autoscalewad，默认自动缩放设置](media/autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
@@ -192,12 +192,12 @@ ms.locfileid: "75364214"
     ```
     有关支持的字段及其值，请参阅[自动缩放 REST API 文档](https://msdn.microsoft.com/library/azure/dn931928.aspx)。 现在，自动缩放设置包含了之前说明的三个配置文件。
 
-7. 最后，来看一下自动缩放“通知”部分。 自动缩放通知允许在成功触发扩大或缩小操作时执行三项操作。
+7. 最后，来看一下自动缩放“通知”**** 部分。 自动缩放通知允许在成功触发扩大或缩小操作时执行三项操作。
    - 通知订阅的管理员和共同管理员
    - 向一组用户发送电子邮件
    - 触发 webhook 调用。 触发时，此 webhook 将发送关于自动缩放条件和规模集资源的元数据。 若要了解有关自动缩放 webhook 的有效负载的详细信息，请参阅[对自动缩放配置 Webhook 和电子邮件通知](autoscale-webhook-email.md)。
 
-   将以下内容添加到自动缩放设置，替换值为 null 的 **notification**  元素
+   将以下内容添加到自动缩放设置，替换值为 null 的 **notification ** 元素
 
    ```
    "notifications": [
@@ -225,7 +225,7 @@ ms.locfileid: "75364214"
 
    ```
 
-   在资源浏览器中单击“输入”按钮，更新自动缩放设置。
+   在资源浏览器中单击“输入”**** 按钮，更新自动缩放设置。
 
 已在 VM 规模集上更新了自动缩放设置，以包括多个缩放配置文件和缩放通知。
 
@@ -234,7 +234,7 @@ ms.locfileid: "75364214"
 
 [排查使用虚拟机规模集进行自动缩放的问题](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
 
-[自动缩放的常用指标](autoscale-common-metrics.md)
+[自动缩放的通用指标](autoscale-common-metrics.md)
 
 [Azure 自动缩放的最佳实践](autoscale-best-practices.md)
 

@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 6710f5e5b873f751ad21068acdc15d38574f8378
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593443"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>监视 Azure CDN 资源的运行状况
@@ -34,16 +34,16 @@ Azure CDN 资源运行状况是 [Azure 资源运行状况](../resource-health/re
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 CDN 配置文件。
 
-2. 单击“设置”按钮。 
+2. 单击“设置”按钮。****
 
     ![“设置”按钮](./media/cdn-resource-health/cdn-profile-settings.png)
 
-3. 在“支持 + 疑难解答”  下，单击“资源运行状况”  。
+3. 在“支持 + 疑难解答”** 下，单击“资源运行状况”****。
 
     ![CDN 资源运行状况](./media/cdn-resource-health/cdn-resource-health3.png)
 
 >[!TIP] 
->也可以在“帮助 + 支持”  边栏选项卡的“资源运行状况”  磁贴中找到 CDN 资源。  通过单击门户右上角的圆形 **?** ，可  快速转到“帮助 + 支持”。
+>也可以在“帮助 + 支持”** 边栏选项卡的“资源运行状况”** 磁贴中找到 CDN 资源。  通过单击门户右上角的圆形 **?**，可** 快速转到“帮助 + 支持”。
 >
 > ![帮助 + 支持](./media/cdn-resource-health/cdn-help-support.png)
 

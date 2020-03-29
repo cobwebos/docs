@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure 诊断跟踪云服务应用程序中的流
+title: 使用 Azure 诊断跟踪云服务应用程序中的流
 titleSuffix: Azure Cloud Services
 description: 将跟踪消息添加到 Azure 应用程序中，以协作进行调试、性能度量、监视、流量分析等。
 services: cloud-services
@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/20/2016
 ms.author: tagore
 ms.openlocfilehash: 47a33ba27dd6d2df626d93695c421303bace6a0b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386504"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>使用 Azure 诊断跟踪云服务应用程序的流
@@ -65,7 +65,7 @@ Trace、Debug 和 TraceSource 都要求设置“侦听器”来收集和记录�
 完成添加侦听器的步骤后，即可将 Trace 语句添加到代码中。
 
 ### <a name="to-add-trace-statement-to-your-code"></a>将 Trace 语句添加到代码中
-1. 打开应用程序的源文件。 例如，\<角色名 > 辅助角色或 web 角色的 .cs 文件。
+1. 打开应用程序的源文件。 例如，用于辅助角色或 Web 角色的 \<RoleName>.cs 文件。
 2. 添加以下 using 指令（如果尚未添加）：
     ```
         using System.Diagnostics;

@@ -1,7 +1,7 @@
 ---
-title: 已知的 Safari 浏览器问题（MSAL） |Microsoft
+title: 已知的 Safari 浏览器问题 （MSAL.js） |蔚蓝
 titleSuffix: Microsoft identity platform
-description: 了解在使用 Safari 浏览器时使用适用于 JavaScript 的 Microsoft 身份验证库（MSAL）的已知问题。
+description: 了解将适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 与 Safari 浏览器配合使用时的已知问题。
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,29 +14,29 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: edb995e31c2872c1541e29fee09dd66aafc8f9e2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696106"
 ---
-# <a name="known-issues-on-safari-browser-with-msaljs"></a>Safari 浏览器与 MSAL 的已知问题 
+# <a name="known-issues-on-safari-browser-with-msaljs"></a>将 Safari 浏览器与 MSAL.js 配合使用时的已知问题 
 
-## <a name="silent-token-renewal-on-safari-12-and-itp-20"></a>Safari 12 和 ITP 2.0 上的无提示续订
+## <a name="silent-token-renewal-on-safari-12-and-itp-20"></a>在 Safari 12 和 ITP 2.0 上进行的无提示令牌续订
 
-Apple iOS 12 和 MacOS 10.14 操作系统包含[Safari 12 浏览器](https://developer.apple.com/safari/whats-new/)的发行版。 出于安全和隐私目的，Safari 12 包括[智能跟踪防护 2.0](https://webkit.org/blog/8311/intelligent-tracking-prevention-2-0/)。 这实质上导致了浏览器删除了设置的第三方 cookie。 ITP 2.0 还将标识提供者设置的 cookie 视为第三方 cookie。
+Apple iOS 12 和 MacOS 10.14 操作系统包含一个 [Safari 12 浏览器](https://developer.apple.com/safari/whats-new/)版本。 出于安全和隐私考虑，Safari 12 包含[智能跟踪防护 2.0](https://webkit.org/blog/8311/intelligent-tracking-prevention-2-0/)。 这实际上会导致浏览器删除设置的第三方 Cookie。 ITP 2.0 将标识提供者设置的 Cookie 视为第三方 Cookie。
 
-### <a name="impact-on-msaljs"></a>对 MSAL 的影响
+### <a name="impact-on-msaljs"></a>对 MSAL.js 的影响
 
-MSAL 使用隐藏的 Iframe 作为 `acquireTokenSilent` 调用的一部分执行无提示令牌获取和续订。 无提示令牌请求依赖于可以访问通过 Azure AD 设置的 cookie 所表示的经过身份验证的用户会话的 Iframe。 由于 ITP 2.0 阻止访问这些 cookie，MSAL 无法以无提示方式获取和续订令牌，这会导致 `acquireTokenSilent` 失败。
+MSAL.js 使用隐藏的 Iframe 在 `acquireTokenSilent` 调用过程中执行无提示令牌获取和续订操作。 无提示令牌请求依赖于 Iframe 能否访问经身份验证的用户会话，该会话由 Azure AD 所设置的 Cookie 来表现。 由于 ITP 2.0 阻止对这些 Cookie 的访问，MSAL.js 无法以无提示方式获取并续订令牌，这会导致 `acquireTokenSilent` 故障。
 
-目前没有针对此问题的解决方案，我们正在通过标准社区评估选项。
+目前没有此问题的解决方案，我们正在评估标准社区的选项。
 
-### <a name="work-around"></a>解决
+### <a name="work-around"></a>变通方法
 
-默认情况下，在 Safari 浏览器上启用 ITP 设置。 可以通过导航到**首选项** -> **隐私**"并取消选中"**阻止跨站点跟踪**"选项来禁用此设置。
+默认情况下，会在 Safari 浏览器上启用 ITP 设置。 您可以通过导航到 **"首选项** -> **隐私**"并取消选中 **"防止跨站点跟踪**"选项来禁用此设置。
 
 ![safari 设置](./media/msal-js-known-issue-safari-browser/safari.png)
 
-需要使用交互式获取令牌调用来处理 `acquireTokenSilent` 失败，这会提示用户登录。
-若要避免重复登录，可以实现的方法是处理 `acquireTokenSilent` 故障，并为用户提供一个在 Safari 中禁用 ITP 设置的选项，然后再继续进行交互式调用。 禁用此设置后，后续的静默令牌续订会成功。
+需使用交互式获取令牌调用来提示用户登录，以便处理 `acquireTokenSilent` 故障。
+若要避免重复登录，可以实施的一个方法是处理 `acquireTokenSilent` 故障并为用户提供一个在 Safari 中禁用 ITP 设置的选项，然后再继续交互式调用。 禁用此设置以后，后续的无提示令牌续订应该会成功。

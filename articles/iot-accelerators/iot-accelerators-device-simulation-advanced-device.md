@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
 ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61448973"
 ---
 # <a name="create-an-advanced-device-model"></a>创建高级设备模型
@@ -22,7 +22,7 @@ ms.locfileid: "61448973"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要遵循本操作指南中的步骤，需在 Azure 订阅中部署设备模拟的实例。
 
@@ -34,7 +34,7 @@ ms.locfileid: "61448973"
 
 可能会要求使用 Azure 订阅凭据登录。
 
-然后在[在 Azure 中部署并运行 IoT 设备模拟](quickstart-device-simulation-deploy.md)快速入门中部署的设备模拟的磁贴上单击“启动”。 
+然后在[在 Azure 中部署并运行 IoT 设备模拟](quickstart-device-simulation-deploy.md)快速入门中部署的设备模拟的磁贴上单击“启动”。****
 
 ## <a name="device-models"></a>设备模型
 
@@ -56,7 +56,7 @@ ms.locfileid: "61448973"
 每个设备定义文件包含模拟设备模型的详细信息，其中包括以下信息：
 
 * 设备模型名称：字符串。
-* 协议：AMQP |MQTT |HTTP。
+* 协议：AMQP | MQTT | HTTP。
 * 初始设备状态。
 * 刷新设备状态的频率。
 * 用于刷新设备状态的 JavaScript 文件。
@@ -149,7 +149,7 @@ IoT 设备可以使用不同的协议进行连接。 模拟允许使用 **AMQP**
 ],
 ```
 
-占位符使用特殊语法 **${NAME}** ，其中，**NAME** 是 JavaScript **main** 函数返回的设备状态对象中的键。 字符串应括在引号中，而数字则不应括住。
+占位符使用特殊语法 **${NAME}**，其中，**NAME** 是 JavaScript **main** 函数返回的设备状态对象中的键。 字符串应括在引号中，而数字则不应括住。
 
 #### <a name="message-schema"></a>消息架构
 
@@ -255,8 +255,8 @@ JavaScript 文件必须包含可接受以下两个参数的 **main** 函数：
 
 * 一个 **context** 对象，其中包含三个属性：
     * 字符串形式的 **currentTime**，格式为 **yyyy-MM-dd'T'HH:mm:sszzz**。
-    * **deviceId**。 例如 **Simulated.Elevator.123**。
-    * **deviceModel**。 例如 **Elevator**。
+    * **设备 Id**. 例如 **Simulated.Elevator.123**。
+    * **设备模型**. 例如 **Elevator**。
 * 一个 **state** 对象，它是函数在上次调用中返回的值。 此设备状态由模拟服务维护，用于生成遥测消息。
 
 **main** 函数返回新的设备状态。 例如：
@@ -494,23 +494,23 @@ function main(context, state) {
 
 若要部署高级设备模型，请上传设备模拟实例的文件：
 
-在菜单栏中选择“设备模型”。  “设备模型”页列出了此设备模拟实例中可用的设备模型： 
+在菜单栏中选择“设备模型”。**** “设备模型”页列出了此设备模拟实例中可用的设备模型：****
 
 ![设备模型](media/iot-accelerators-device-simulation-advanced-device/devicemodelnav.png)
 
-在页面右上角单击“+ 添加设备模型”： 
+在页面右上角单击“+ 添加设备模型”：****
 
 ![添加设备模型](media/iot-accelerators-device-simulation-advanced-device/devicemodels.png)
 
-单击“高级”打开高级设备模型选项卡： 
+单击“高级”打开高级设备模型选项卡：****
 
 ![“高级”选项卡](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
 
-单击“浏览”，并选择创建的 JSON 和 JavaScript 文件。  请务必选择所有三个文件。 如果缺少任一文件，验证将会失败：
+单击“浏览”，并选择创建的 JSON 和 JavaScript 文件。**** 请务必选择所有三个文件。 如果缺少任一文件，验证将会失败：
 
 ![浏览文件](media/iot-accelerators-device-simulation-advanced-device/browse.png)
 
-如果文件通过了验证，请单击“保存”，然后，该设备模型可在模拟中使用。  否则，请修复所有错误并重新上传文件：
+如果文件通过了验证，请单击“保存”，然后，该设备模型可在模拟中使用。**** 否则，请修复所有错误并重新上传文件：
 
 ![保存](media/iot-accelerators-device-simulation-advanced-device/validated.png)
 

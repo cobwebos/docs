@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
 ms.openlocfilehash: 5e31ed905f05070c8715a63ef3386b0006df0a75
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840615"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
@@ -52,11 +52,11 @@ ms.locfileid: "76840615"
         
 检查针对订阅分配给用户的角色：
 
-1. 使用**AzAccount**登录到 Azure。 
+1. 使用 Login-AzAccount 登录 Azure****。 
 
-2. 使用**AzSubscription**选择所需的订阅。 
+2. 使用 Select-AzSubscription 选择所需订阅****。 
 
-3. 若要列出分配给特定用户的所有角色，请使用**AzRoleAssignment-SignInName [user email]-IncludeClassicAdministrators**。 
+3. 若要列出分配给特定用户的所有角色，请使用 **Get-AzRoleAssignment -SignInName [user email] -IncludeClassicAdministrators**。 
 
 如果未看到任何输出，请与相应的订阅管理员联系以获取运行命令的权限。 有关详细信息，请参阅[使用 Azure PowerShell 管理基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
 
@@ -122,11 +122,11 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>是否可以在单个工作区中配置多个 NSG？
 
-可以。
+是的。
 
 ## <a name="can-i-use-an-existing-workspace"></a>是否可以使用现有的的工作区？
 
-可以。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅[Azure Monitor 日志升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md)。
+是的。 如果选择现有的工作区，请确保已将此工作区迁移到新的查询语言。 如果不想要升级该工作区，则需要创建新的工作区。 有关新查询语言的详细信息，请参阅 Azure[监视器日志升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md)。
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>是否可将 Azure 存储帐户放在一个订阅中，并将 Log Analytics 工作区放在另一个订阅中？
 
@@ -134,7 +134,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>是否可将原始日志存储在不同的订阅中？
 
-不。 可将原始日志存储在为流日志启用了 NSG 的任何存储帐户中。 但存储帐户和原始日志必须位于同一订阅和区域中。
+不是。 可将原始日志存储在为流日志启用了 NSG 的任何存储帐户中。 但存储帐户和原始日志必须位于同一订阅和区域中。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>如果由于“未找到”错误而无法为流量分析配置 NSG，该如何解决？
 
@@ -142,7 +142,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>如果在 NSG 流日志页显示“无法加载”状态，该如何解决？
 
-要使流日志记录正常工作，必须注册 Microsoft.Insights 提供程序。 如果不确定是否为订阅注册了 Microsoft.Insights 提供程序，请替换以下命令中的“xxxxx-xxxxx-xxxxxx-xxxx”，并从 PowerShell 运行以下命令：
+要使流日志记录正常工作，必须注册 Microsoft.Insights 提供程序。 如果不确定是否为订阅注册了 Microsoft.Insights 提供程序，请替换以下命令中的“xxxxx-xxxxx-xxxxxx-xxxx”**，并从 PowerShell 运行以下命令：
 
 ```powershell-interactive
 **Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
@@ -176,7 +176,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>是否可以使用 PowerShell 或 Azure 资源管理器模板或客户端配置流量分析？
 
-可使用版本 6.2.1 及以上版本的 Windows PowerShell 配置流量分析。 若要使用 Set cmdlet 配置特定 NSG 的流日志记录和流量分析，请参阅[AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要获取特定 NSG 的流日志记录和流量分析状态，请参阅[AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
+可使用版本 6.2.1 及以上版本的 Windows PowerShell 配置流量分析。 若要使用 Set cmdlet 为特定 NSG 配置流日志记录和流量分析，请参阅 [Set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要获取特定 NSG 的流日志记录和流量分析状态，请参阅 [Get-AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
 
 目前，无法使用 Azure 资源管理器模板配置流量分析。
 
@@ -248,23 +248,23 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 例如，根据[定价计划](https://azure.microsoft.com/pricing/details/network-watcher/)，就美国中西部地区而言，如果流量分析处理的存储帐户中存储的流日志数据为 10 GB，而 Log Analytics 工作区中引入的增强日志为 1 GB 则适用的费用是：10 x 2.3$ + 1 x 2.76$ = 25.76$
 
-## <a name="how-frequently-does-traffic-analytics-process-data"></a>流量分析处理数据的频率如何？
+## <a name="how-frequently-does-traffic-analytics-process-data"></a>流量分析多久处理一次数据？
 
-请参阅流量分析架构和数据聚合文档中的 "[数据聚合" 部分](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation)
+请参阅“流量分析架构和数据聚合”文档中的[“数据聚合”部分](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation)
 
-## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何确定 IP 是恶意的？ 
+## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何确定 IP 是恶意 IP？ 
 
-流量分析依赖 Microsoft 内部威胁情报系统将 IP 视为恶意 IP。 这些系统利用各种遥测源，如 Microsoft 产品和服务、Microsoft 数字犯罪部门（DCU）、Microsoft 安全响应中心（MSRC）以及外部源，并在其之上构建大量智能。 其中一些数据是 Microsoft 内部数据。 如果已知 IP 被标记为恶意 IP，请提供支持票证来了解详细信息。
+流量分析依靠 Microsoft 内部威胁智能系统来确定某个 IP 是否为恶意 IP。 这些系统利用各种遥测源，例如 Microsoft 产品和服务、Microsoft 的反数字犯罪部门 (DCU)、Microsoft 安全响应中心 (MSRC) 和外部馈送，并在此基础上构建大量智能。 其中一些数据是 Microsoft 内部数据。 如果已知 IP 被标记为恶意 IP，请提出支持票证以了解详细信息。
 
-## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>如何对流量分析数据设置警报？
+## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>如何针对流量分析数据设置警报？
 
-流量分析没有对警报的内置支持。 不过，由于流量分析数据存储在 Log Analytics 可以编写自定义查询并对这些查询设置警报。 逐步
-- 可以在流量分析中使用 Log Analytics 的向。 
-- 使用[此处所述的架构](traffic-analytics-schema.md)编写查询 
-- 单击 "新建警报规则" 以创建警报
+流量分析没有对警报的内置支持。 但是，由于流量分析数据存储在 Log Analytics 中，因此可以编写自定义查询并对其设置警报。 步骤：
+- 可以在流量分析中使 Log Analytics 的短链接。 
+- 使用[此处记录的架构](traffic-analytics-schema.md)编写查询 
+- 单击“新建警报规则”以创建警报
 - 请参阅[日志警报文档](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)以创建警报
 
-## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>如何实现检查哪些 Vm 正在接收大多数本地流量
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>如何检查哪些 VM 接收的本地流量最大
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -275,7 +275,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
             | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
             | render timechart
 
-  对于 Ip：
+  对于 IP：
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -286,9 +286,9 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
             | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
             | render timechart
 
-对于时间，请使用格式： yyyy-mm-dd 00:00:00
+对于时间，使用格式 ： yyyy-mm-dd 00：00：00
 
-## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>如何实现检查我的 Vm 从本地计算机接收的流量的标准偏差
+## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>如何检查 VM 从内部机器接收的流量的标准偏差
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -299,7 +299,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
             | summarize deviation = stdev(traffic)  by vm
 
 
-对于 Ip：
+对于 IP：
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -309,7 +309,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
             | summarize deviation = stdev(traffic)  by IP
             
-## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>如何实现检查 IP 对与 NSG 规则之间可访问（或 bocked）的端口
+## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>如何检查具有 NSG 规则的 IP 对之间可到达的端口（或博波）
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
@@ -324,8 +324,8 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 地图页面包含两个主要部分：
     
-- **横幅**：地理地图顶部的横幅提供了用于选择流量分布筛选器的按钮（例如，部署、来自国家/地区的流量以及恶意）。 选择某按钮时，将在地图上应用相应的筛选器。 例如，如果选择“活动”按钮，则地图会突出显示部署中的活动数据中心。
-- **Map**：在横幅下面，map 部分显示了 Azure 数据中心和国家/地区之间的流量分布。
+- **横幅**： 地理地图顶部的横幅提供用于选择流量分布筛选器的按钮（例如，部署、来自国家/地区/地区的流量和恶意）。 选择某按钮时，将在地图上应用相应的筛选器。 例如，如果选择“活动”按钮，则地图会突出显示部署中的活动数据中心。
+- **地图**：在横幅下方，地图部分显示 Azure 数据中心和国家/地区之间的流量分布。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>标题中的键盘导航
     
@@ -336,13 +336,13 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
         
 ### <a name="keyboard-navigation-on-the-map"></a>地图中的键盘导航
     
-- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点将移至地图视图中某个突出显示的节点（“Azure 数据中心”或“国家/地区”）。
+- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点将移至地图视图中某个突出显示的节点（“Azure 数据中心”或“国家/地区”）********。
 - 若要移至地图中其他突出显示的节点，请使用 `Tab` 或 `Right arrow` 键向前移动。 使用 `Shift+Tab` 或 `Left arrow` 键向后移动。
 - 若要在地图中选择突出显示的任一节点，可以使用 `Enter` 或 `Down arrow` 键。
-- 选择任一此类节点后，焦点会转移到节点的“信息工具框”。 默认情况下，焦点会转移到“信息工具框”中的关闭按钮。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。
-- 当焦点位于“信息工具框”时，如果按 `Tab`，则焦点会移至选定节点所在的同一大洲中的终结点。 使用 `Right arrow` 和 `Left arrow` 键可浏览这些终结点。
+- 选择任一此类节点后，焦点会转移到节点的“信息工具框”。**** 默认情况下，焦点会转移到“信息工具框”中的关闭按钮。**** 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动****。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。****
+- 当焦点位于“信息工具框”时，如果按 `Tab`，则焦点会移至选定节点所在的同一大洲中的终结点****。 使用 `Right arrow` 和 `Left arrow` 键可浏览这些终结点。
 - 若要移至其他流终结点或大洲群集，请使用 `Tab` 向前移动，或使用 `Shift+Tab` 向后移动。
-- 焦点位于“大洲群集”时，可以使用 `Enter` 或 `Down` 箭头键突出显示大洲群集中的终结点。 若要在大洲群集的信息框中浏览终结点和使用关闭按钮，可分别使用 `Right arrow` 或 `Left arrow` 键向前或向后移动。 在任一终结点上，可以使用 `Shift+L` 切换到从选定节点到终结点的连接线。 可以再次按 `Shift+L` 以移至所选终结点。
+- 焦点位于“大洲群集”时，可以使用 `Enter` 或 `Down` 箭头键突出显示大洲群集中的终结点****。 若要在大洲群集的信息框中浏览终结点和使用关闭按钮，可分别使用 `Right arrow` 或 `Left arrow` 键向前或向后移动。 在任一终结点上，可以使用 `Shift+L` 切换到从选定节点到终结点的连接线。 可以再次按 `Shift+L` 以移至所选终结点。
         
 ### <a name="keyboard-navigation-at-any-stage"></a>任何阶段的键盘导航
     
@@ -366,10 +366,10 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
         
 ### <a name="keyboard-navigation-on-the-topology"></a>拓扑中的键盘导航
     
-- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点移至拓扑视图中某个突出显示的节点 (VNet)。
+- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点移至拓扑视图中某个突出显示的节点 (VNet)****。
 - 若要移至拓扑视图中其他突出显示的节点，请使用 `Shift+Right arrow` 键向前移动。 
-- 在突出显示的节点上，焦点会移至节点的“信息工具框”。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。
-- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。
+- 在突出显示的节点上，焦点会移至节点的“信息工具框”****。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮********。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动****。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。****
+- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”****。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。
     
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>如何在子网拓扑视图中使用键盘导航？
@@ -388,8 +388,8 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
         
 ### <a name="keyboard-navigation-on-the-topology"></a>拓扑中的键盘导航
     
-- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点移至拓扑视图中某个突出显示的节点（子网）。
+- 在标题中选择任一筛选器并按 `Ctrl+F6` 后，焦点移至拓扑视图中某个突出显示的节点（子网）。****
 - 若要移至拓扑视图中其他突出显示的节点，请使用 `Shift+Right arrow` 键向前移动。 
-- 在突出显示的节点上，焦点会移至节点的“信息工具框”。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。
-- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。    
+- 在突出显示的节点上，焦点会移至节点的“信息工具框”****。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮********。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动****。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。****
+- 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”****。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。    
 

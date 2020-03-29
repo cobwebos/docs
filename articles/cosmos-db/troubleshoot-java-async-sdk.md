@@ -10,14 +10,14 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65519985"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>排查将 Java 异步 SDK 与 Azure Cosmos DB SQL API 帐户配合使用时出现的问题
-本文介绍了将 [Java 异步 SDK](sql-api-sdk-async-java.md) 与 Azure Cosmos DB SQL API 帐户配合使用时的常见问题、解决方法、诊断步骤和工具。
+本文介绍在将[Java Async SDK](sql-api-sdk-async-java.md)与 Azure Cosmos DB SQL API 帐户一起使用时，常见问题、解决方法、诊断步骤和工具。
 Java 异步 SDK 提供客户端逻辑表示用于访问 Azure Cosmos DB SQL API。 本文介绍了在遇到任何问题时可以提供帮助的工具和方法。
 
 从本列表开始：
@@ -27,7 +27,7 @@ Java 异步 SDK 提供客户端逻辑表示用于访问 Azure Cosmos DB SQL API�
 * 查看[性能提示](performance-tips-async-java.md)并按照建议的做法进行操作。
 * 阅读本文的其余部分，如果找不到解决方案， 则提交 [GitHub 问题](https://github.com/Azure/azure-cosmosdb-java/issues)。
 
-## <a name="common-issues-workarounds"></a>常见问题和解决方法
+## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>常见问题和解决方法
 
 ### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>网络问题、Netty 读取超时故障、低吞吐量、高延迟
 
@@ -38,7 +38,7 @@ Java 异步 SDK 提供客户端逻辑表示用于访问 Azure Cosmos DB SQL API�
 #### <a name="connection-throttling"></a>连接限制
 连接限制可能会因[主机上的连接限制]或 [Azure SNAT (PAT) 端口耗尽]而出现。
 
-##### <a name="connection-limit-on-host"></a>主机上的连接限制
+##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>主机上的连接限制
 某些 Linux 系统（例如 Red Hat）的打开文件总数存在上限。 Linux 中的套接字以文件形式实现，因此，此上限也限制了连接总数。
 运行以下命令。
 
@@ -47,7 +47,7 @@ ulimit -a
 ```
 允许的最大打开文件数（标识为“nofile”）至少需要是连接池大小的两倍。 有关详细信息，请参阅[性能提示](performance-tips-async-java.md)。
 
-##### <a name="snat"></a>Azure SNAT (PAT) 端口耗尽
+##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) 端口耗尽
 
 如果应用部署在没有公共 IP 地址的 Azure 虚拟机上，则默认情况下，[Azure SNAT 端口](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)用于建立与 VM 外部任何终结点的连接。 从 VM 到 Azure Cosmos DB 终结点，允许的连接数受 [Azure SNAT 配置](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)的限制。
 
@@ -58,7 +58,7 @@ ulimit -a
     启用服务终结点后，不再从公共 IP 向 Azure Cosmos DB 发送请求， 而是发送虚拟网络和子网标识。 如果仅允许公共 IP，则此更改可能会导致防火墙丢失。 如果使用防火墙，则在启用服务终结点后，请使用[虚拟网络 ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) 将子网添加到防火墙。
 * 将公共 IP 分配给 Azure VM。
 
-##### <a name="cant-connect"></a>不能访问的服务-防火墙
+##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>不能访问服务 - 防火墙
 ``ConnectTimeoutException`` 指示 SDK 不能访问服务。
 使用直接模式时，可能会出现如下所示的故障：
 ```
@@ -196,7 +196,7 @@ mvn dependency:tree
 有关详细信息，请参阅[排除传递依赖项指南](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
 
 
-## <a name="enable-client-sice-logging"></a>启用客户端 SDK 日志记录
+## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>启用客户端 SDK 日志记录
 
 Java 异步 SDK 使用 SLF4j 作为日志记录外观，支持记录到常用的记录框架，如 log4j 和 logback。
 
@@ -235,7 +235,7 @@ log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 
 有关详细信息，请参阅 [sfl4j 日志记录手册](https://www.slf4j.org/manual.html)。
 
-## <a name="netstats"></a>OS 网络统计信息
+## <a name="os-network-statistics"></a><a name="netstats"></a>OS 网络统计信息
 运行 netstat 命令，掌握处于 `ESTABLISHED` 和 `CLOSE_WAIT` 等状态的连接数。
 
 在 Linux 上可以运行以下命令。
@@ -252,6 +252,6 @@ netstat -nap
 [常见问题和解决方法]: #common-issues-workarounds
 [Enable client SDK logging]: #enable-client-sice-logging
 [主机上的连接限制]: #connection-limit-on-host
-[Azure SNAT (PAT) 端口耗尽]: #snat
+[Azure SNAT （PAT） 端口耗尽]: #snat
 
 

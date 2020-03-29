@@ -12,15 +12,15 @@ ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
 ms.openlocfilehash: c4366b2718271b1e27325e6946c5016e9230cea4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76835906"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 
-利用 Azure SQL 数据库，你可以将更多资源动态添加到数据库，使[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)最短;但是，在一段较短的时间内，会有一次与数据库的连接丢失的情况，可以使用重试逻辑来缓解这种情况。
+Azure SQL 数据库使你能够以最小的[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)向数据库动态添加更多资源；但是，存在一个切换期间，在此期间与数据库的连接会短时间丢失，可以使用重试逻辑来缓解这种情况。
 
 ## <a name="overview"></a>概述
 
@@ -35,12 +35,12 @@ ms.locfileid: "76835906"
 Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
 - [基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)在三个服务层级中提供包括计算、内存和 IO 资源在内的各种内容，支持轻型到重型数据库工作负荷：“基本”、“标准”、“高级”。 每个层中的不同性能级别提供这些资源的不同组合，你可以向其添加更多的存储资源。
-- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vCore 数、内存容量，以及存储的容量和速度。 此购买模型提供三个服务层：常规用途、业务关键和超大规模。
+- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vCore 数、内存容量，以及存储的容量和速度。 此采购模型提供三个服务层：通用、关键业务和超大规模。
 
 可以在小型单一数据库中构建第一个应用，每个月只需在“常规用途”服务层级中花费少量资金。然后可以根据解决方案的需要，随时手动或以编程方式将服务层级更改为“业务关键”服务层级。 可在不给应用或客户造成停机的情况下调整性能。 动态可伸缩性可让数据库以透明方式响应快速变化的资源要求，使用户只需为用到的资源付费。
 
 > [!NOTE]
-> 动态可伸缩性不同于自动缩放。 自动缩放是指服务根据条件自动缩放的时间，而动态可伸缩性允许在最短的停机时间内进行手动缩放。
+> 动态可伸缩性不同于自动缩放。 自动缩放是指服务根据条件自动缩放，而动态可伸缩性允许在最短停机时间的情况下进行手动缩放。
 
 单个 Azure SQL 数据库支持手动动态可伸缩性，但不支持自动缩放。 若要获得更多*自动*体验，请考虑使用弹性池，它允许数据库根据各个数据库需求共享池中的资源。
 但是，有一些脚本可帮助自动执行单个 Azure SQL 数据库的可伸缩性。 有关示例，请参阅[使用 PowerShell 监视和缩放单个 SQL 数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
@@ -55,17 +55,17 @@ Azure SQL 数据库提供[基于 DTU 的购买模型](sql-database-service-tiers
 - [托管实例](sql-database-managed-instance.md)使用 [vCore](sql-database-managed-instance.md#vcore-based-purchasing-model) 模式，并允许定义分配给实例的最大 CPU 核心数和最大存储空间。 该实例中的所有数据库都将共享分配给该实例的资源。
 - [弹性池](sql-database-elastic-pool-scale.md)允许定义池中每组数据库的最大资源限制。
 
-如果需要，可以在任何一种风格中启动 "扩展" 或 "缩小" 操作，以重新启动数据库引擎进程，并将其移到不同的虚拟机。 将数据库引擎进程迁移到新的虚拟机是**在线过程**，在此过程中，你可以继续使用现有的 Azure SQL 数据库服务。 在目标数据库引擎完全初始化并准备好处理查询后，连接将从源[数据库引擎切换到目标数据库引擎](sql-database-single-database-scale.md#impact)。 
+以任何风格启动纵向扩展或缩减操作将会重启数据库引擎进程，并根据需要将其移到另一虚拟机。 将数据库引擎进程移到新虚拟机是一个**在线过程**，在该过程进行时，你可以继续使用现有的 Azure SQL 数据库服务。 目标数据库引擎完全启动并做好处理查询的准备以后，连接会[从源数据库引擎切换到目标数据库引擎](sql-database-single-database-scale.md#impact)。 
 
 
 > [!NOTE]
-> 缩小/缩小过程完成时，可能会出现短暂的连接中断。 如果已实现了[标准暂时性错误的重试逻辑](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)，则不会注意到故障转移。
+> 当放大/缩小过程完成时，可能会出现短暂的连接中断。 如果已实现了[标准暂时性错误的重试逻辑](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)，则不会注意到故障转移。
 
 ## <a name="alternative-scale-methods"></a>替代缩放方法
 
-缩放资源是在不更改数据库或应用程序代码的情况下提高数据库性能的最简单且最有效的方法。 在某些情况下，即使是最高的服务层、计算大小和性能优化，也可能不会以成功且经济高效的方式处理工作负荷。 在这种情况下，可以使用以下附加选项来扩展数据库：
+在不更改数据库或应用程序代码的情况下，缩放资源是提升数据库性能的最简单和最有效的方法。 在某些情况下，即使是最高的服务层级、计算大小和性能优化，也可能无法以成功和经济高效的方式处理工作负载。 在该情况下，可选择其他选项对数据库进行缩放：
 
-- [读取扩展](sql-database-read-scale-out.md)是一项可用功能，您可以在其中获取数据的一个只读副本，您可以在其中执行要求严格的只读查询（如报表）。 只读副本将处理只读工作负荷，而不会影响主数据库上的资源使用情况。
+- [读取扩展](sql-database-read-scale-out.md)是一项在获取数据的一个只读副本时可用的功能，可在该副本中执行要求的只读查询，如报表。 只读副本将处理只读工作负荷，而不会影响主数据库上的资源使用情况。
 - [数据库分片](sql-database-elastic-scale-introduction.md)是一组技术，可用于将数据拆分为多个数据库，并单独对这些数据库进行缩放。
 
 ## <a name="next-steps"></a>后续步骤

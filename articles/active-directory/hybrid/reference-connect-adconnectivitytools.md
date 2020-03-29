@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66473786"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect：ADConnectivityTools PowerShell 参考
@@ -27,16 +27,16 @@ ms.locfileid: "66473786"
 
 检测本地 DNS 问题。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObject] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 运行本地 DNS 连接测试。
-若要配置 Active Directory 连接器，用户必须具有这两个名称决定该林他们尝试连接到也如下所示关联到此林的域控制器。
+若要配置 Active Directory 连接器，用户必须能够对他们尝试连接的林进行名称解析，同时，必须能够在与此林关联的域控制器中进行名称解析。
 
 ### <a name="examples"></a>示例
 
@@ -52,7 +52,7 @@ Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM","MYD
 Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="confirm-forestexists"></a>Confirm-ForestExists
 
@@ -114,13 +114,13 @@ Accept wildcard characters: False
 
 确定指定的林是否存在。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 在 DNS 服务器中查询与林关联的 IP 地址。
 
@@ -132,7 +132,7 @@ Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="confirm-functionallevel"></a>Confirm-FunctionalLevel
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 
 验证 AD 林功能级别。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="samaccount"></a>SamAccount
 
@@ -175,7 +175,7 @@ Confirm-FunctionalLevel -Forest <String> [-RunWithCurrentlyLoggedInUserCredentia
 Confirm-FunctionalLevel -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 验证 AD 林功能级别是等于还是超过给定的 MinAdForestVersion (WindowsServer2003)。
 可以请求帐户（域\用户名）和密码。
@@ -200,7 +200,7 @@ Confirm-FunctionalLevel -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUser
 Confirm-FunctionalLevel -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -254,7 +254,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="confirm-networkconnectivity"></a>Confirm-NetworkConnectivity
 
@@ -262,13 +262,13 @@ Accept wildcard characters: False
 
 检测本地网络连接问题。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-NetworkConnectivity [-DCs] <Array> [-SkipDnsPort] [-ReturnResultAsPSObject] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 运行本地网络连接测试。
 
@@ -289,7 +289,7 @@ Confirm-NetworkConnectivity -SkipDnsPort -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO
 Confirm-NetworkConnectivity -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM" -Verbose
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-dcs"></a>-DCs
 
@@ -309,8 +309,8 @@ Accept wildcard characters: False
 
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
-如果用户未使用提供的 AD 站点的 DNS 服务 / 登录 DC，则他们可能想要跳过检查端口 53。
-用户仍必须能够解析 _.ldap._tcp。\<forestfqdn\>顺序 for Active Directory 连接器配置成功。
+如果用户未使用 AD 站点/登录 DC 提供的 DNS 服务，则他们可能需要跳过端口 53 的检查。
+用户还必须能够解析 _ldap._tcp.\<forestfqdn\>，才能让 Active Directory 连接器配置成功。
 
 ```yml
 Type: SwitchParameter
@@ -344,7 +344,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="confirm-targetsarereachable"></a>Confirm-TargetsAreReachable
 
@@ -352,13 +352,13 @@ Accept wildcard characters: False
 
 确定是否可访问指定的林及其关联的域控制器。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-TargetsAreReachable [-Forest] <String> [-DCs] <Array> [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 运行“ping”测试（某台计算机是否可以通过网络和/或 Internet 访问目标计算机）
 
@@ -376,7 +376,7 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM",
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -413,7 +413,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="confirm-validdomains"></a>Confirm-ValidDomains
 
@@ -421,7 +421,7 @@ Accept wildcard characters: False
 
 验证是否可访问所获取的林 FQDN 中的域
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="samaccount"></a>SamAccount
 
@@ -435,7 +435,7 @@ Confirm-ValidDomains [-Forest <String>] [-RunWithCurrentlyLoggedInUserCredential
 Confirm-ValidDomains -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 通过尝试检索 DomainGuid 和 DomainDN，验证是否可访问所获取的林 FQDN 中的所有域。
 可以请求帐户（域\用户名）和密码。
@@ -460,7 +460,7 @@ Confirm-ValidDomains -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUserCre
 Confirm-ValidDomains -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -513,7 +513,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="confirm-validenterpriseadmincredentials"></a>Confirm-ValidEnterpriseAdminCredentials
 
@@ -521,13 +521,13 @@ Accept wildcard characters: False
 
 验证用户是否有企业管理员凭据。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-ValidEnterpriseAdminCredentials [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 通过搜索验证提供的用户是否有企业管理员凭据。
 可以请求帐户（域\用户名）和密码。
@@ -546,7 +546,7 @@ Confirm-ValidEnterpriseAdminCredentials -DomainName test.contoso.com -Verbose
 Confirm-ValidEnterpriseAdminCredentials -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
@@ -567,7 +567,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="get-domainfqdndata"></a>Get-DomainFQDNData
 
@@ -575,14 +575,14 @@ Accept wildcard characters: False
 
 从帐户和密码组合中检索 DomainFQDN。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-DomainFQDNData [[-DomainFQDNDataType] <String>] [-RunWithCurrentlyLoggedInUserCredentials]
  [-ReturnExceptionOnError] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 尝试从提供的凭据中获取 domainFQDN 对象。
 如果 domainFQDN 有效，则会根据用户的选择返回 DomainFQDNName 或 RootDomainName。
@@ -602,7 +602,7 @@ Get-DomainFQDNData -DomainFQDNDataType DomainFQDNName -Verbose
 Get-DomainFQDNData -DomainFQDNDataType RootDomainName -RunWithCurrentlyLoggedInUserCredentials
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-domainfqdndatatype"></a>-DomainFQDNDataType
 
@@ -656,7 +656,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="get-forestfqdn"></a>Get-ForestFQDN
 
@@ -664,13 +664,13 @@ Accept wildcard characters: False
 
 从帐户和密码组合中检索 ForestFQDN。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ForestFQDN [-Forest] <String> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 尝试从提供的凭据中获取 ForestFQDN。
 可以请求帐户（域\用户名）和密码。
@@ -689,7 +689,7 @@ Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -Verbose
 Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -726,7 +726,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
@@ -734,14 +734,14 @@ Accept wildcard characters: False
 
 主函数。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <Boolean> [[-UserName] <String>]
  [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 运行用于验证 AD 凭据是否有效的所有可用机制。
 
@@ -753,7 +753,7 @@ Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <B
 Start-ConnectivityValidation -Forest "test.contoso.com" -AutoCreateConnectorAccount $True -Verbose
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -808,7 +808,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 ## <a name="start-networkconnectivitydiagnosistools"></a>Start-NetworkConnectivityDiagnosisTools
 
@@ -816,7 +816,7 @@ Accept wildcard characters: False
 
 用于网络连接测试的主函数。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Start-NetworkConnectivityDiagnosisTools [[-Forest] <String>] [-Credentials] <PSCredential>
@@ -824,7 +824,7 @@ Start-NetworkConnectivityDiagnosisTools [[-Forest] <String>] [-Credentials] <PSC
  [-ValidCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 运行本地网络连接测试。
 
@@ -842,7 +842,7 @@ Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM"
 Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM" -DCs "DC1.TEST.CONTOSO.COM", "DC2.TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -962,4 +962,4 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>CommonParameters
 
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。

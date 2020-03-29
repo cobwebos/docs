@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75360338"
 ---
 # <a name="how-to-update-a-cloud-service"></a>如何更新云服务
@@ -21,7 +21,7 @@ ms.locfileid: "75360338"
 ## <a name="update-an-azure-service"></a>更新 Azure 服务
 Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD) 是角色实例的逻辑集，以组方式进行更新。  Azure 每次更新一个 UD 的一个云服务，使其他 UD 中的实例能够继续处理流量。
 
-升级域的默认数量为 5 个。 可以在服务定义文件 (.csdef) 中包含 upgradeDomainCount 属性以指定不同数量的升级域。 有关 upgradeDomainCount 属性的详细信息，请参阅[Azure 云服务定义架构（. 文件）](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)。
+升级域的默认数量为 5 个。 可以在服务定义文件 (.csdef) 中包含 upgradeDomainCount 属性以指定不同数量的升级域。 有关 upgradeDomainCount 属性的详细信息，请参阅 [Azure 云服务定义架构（.csdef 文件）](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file)。
 
 在为服务中的一个或多个角色执行就地更新时，Azure 会根据所属的升级域更新角色实例集。 Azure 更新给定升级域中的所有实例（停止这些实例，更新这些实例并将它们重新联机），然后移到下一个域上。 通过仅停止在当前升级域中运行的实例，Azure 确保在执行更新时会对运行的服务造成的影响降到最低。 有关详细信息，请参阅本文后面的[如何进行更新](#howanupgradeproceeds)。
 
@@ -107,17 +107,17 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
 |就地升级|已保留|已保留|已破坏|
 |节点迁移|已破坏|已破坏|已破坏|
 
-请注意，在上面的列表中，E: 驱动器表示角色的根驱动器，而不应进行硬编码。 应改用 **%RoleRoot%** 环境变量表示该驱动器。
+请注意，在上面的列表中，E: 驱动器表示角色的根驱动器，而不应进行硬编码。 相反，请使用 **%RoleRoot%** 环境变量来表示驱动器。
 
 要在升级单实例服务时最大限度减少停机时间，请将新的多实例服务部署到过渡服务器中并执行 VIP 交换。
 
 <a name="RollbackofanUpdate"></a>
 
 ## <a name="rollback-of-an-update"></a>更新回滚
-在 Azure 结构控制器接受初始更新请求后，Azure 允许对服务启动额外的操作，从而提高了在更新期间管理服务方面的灵活性。 只有当更新（配置更改）或升级在部署上处于**进行中**状态时，才能执行回滚。 只要至少有一个服务实例尚未更新为新版本，就认为更新或升级处于进行中状态。 要测试是否允许回滚，请检查“[获取部署](/previous-versions/azure/reference/ee460804(v=azure.100))”和“[获取云服务属性](/previous-versions/azure/reference/ee460806(v=azure.100))”操作返回的 RollbackAllowed 标志值是否设置为 true。
+在 Azure 结构控制器接受初始更新请求后，Azure 允许对服务启动额外的操作，从而提高了在更新期间管理服务方面的灵活性。 只有在更新（配置更改）或升级在部署上处于“进行中”**** 状态时，才能执行回滚。 只要至少有一个服务实例尚未更新为新版本，就认为更新或升级处于进行中状态。 要测试是否允许回滚，请检查“[获取部署](/previous-versions/azure/reference/ee460804(v=azure.100))”和“[获取云服务属性](/previous-versions/azure/reference/ee460806(v=azure.100))”操作返回的 RollbackAllowed 标志值是否设置为 true。
 
 > [!NOTE]
-> 这仅对在**就地**更新或升级上调用 Rollback 有意义，因为 VIP 交换升级涉及将服务的一个完整运行实例替换为另一个实例。
+> 这仅对在“就地”**** 更新或升级上调用 Rollback 有意义，因为 VIP 交换升级涉及将服务的一个完整运行实例替换为另一个实例。
 >
 >
 
@@ -139,7 +139,7 @@ Azure 将角色实例划分为称为升级域 (UD) 的逻辑组。 升级域 (UD
 在某些情况下，不支持回滚更新或升级，这些情况包括：
 
 * 本地资源减少 - 如果更新增加了角色的本地资源，则 Azure 平台不允许进行回滚。
-* 配额限制 - 如果更新纵向缩减操作，可能没有足够的计算配额来完成回滚操作。 每个 Azure 订阅具有关联的配额，指定属于该订阅的所有托管服务可以使用的最大核心数。 如果执行给定更新的回退操作而导致订阅超过配额，则不会启用回退。
+* 配额限制 - 如果更新减少操作，可能没有足够的计算配额来完成回滚操作。 每个 Azure 订阅具有关联的配额，指定属于该订阅的所有托管服务可以使用的最大核心数。 如果执行给定更新的回退操作而导致订阅超过配额，则不会启用回退。
 * 争用情况 - 如果初始更新已完成，则无法进行回滚。
 
 回滚更新可能是非常有用的，其中的一个例子是，在手动模式下使用“[升级部署](/previous-versions/azure/reference/ee460793(v=azure.100))”操作来控制为 Azure 托管服务部署主要就地升级的速度。
@@ -172,7 +172,7 @@ Azure 在设置的升级域数之间平均分配角色的实例，可以将升�
 
 下图演示了在服务定义了两个升级域时，如何分配包含两个角色的服务。 该服务运行 8 个 Web 角色实例和 9 个辅助角色实例。
 
-![升级域的分发](media/cloud-services-update-azure-service/IC345533.png "升级域的分配")
+![升级域的分配](media/cloud-services-update-azure-service/IC345533.png "升级域的分配")
 
 > [!NOTE]
 > 请注意 Azure 控制如何在升级域之间分配实例。 无法指定将哪个实例分配给哪个域。

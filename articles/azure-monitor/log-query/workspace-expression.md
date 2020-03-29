@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75364945"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor 日志查询中的 workspace() 表达式
@@ -20,13 +20,13 @@ ms.locfileid: "75364945"
 
 ## <a name="syntax"></a>语法
 
-`workspace(`标识符`)`
+`workspace(`*标识符*`)`
 
-## <a name="arguments"></a>参数
+## <a name="arguments"></a>自变量
 
-- 标识符：使用下表中的某种格式标识工作区。
+- 标识符：使用下表中的某种格式标识工作区**。
 
-| 标识符 | Description | 示例
+| 标识符 | 说明 | 示例
 |:---|:---|:---|
 | 资源名称 | 人工可读的工作区名称（又称“组件名称”） | workspace("contosoretail") |
 | 限定的名称 | 窗体中工作区的完整名称：“subscriptionName/resourceGroup/componentName” | workspace('Contoso/ContosoResource/ContosoWorkspace') |
@@ -64,6 +64,6 @@ union
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[应用表达式](app-expression.md)以引用 Application Insights 应用。
+- 参阅[应用表达式](app-expression.md)来引用 Application Insights 应用。
 - 了解 [Azure Monitor 数据是如何存储的](log-query-overview.md)。
 - 访问有关 [Kusto 查询语言](/azure/kusto/query/)的完整文档。

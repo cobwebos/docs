@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 86c91582256261d701dc3c73b1bdfdcb6002f6e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64867219"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>使用 Azure 门户监视编码作业进度
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 ## <a name="overview"></a>概述
 
 运行作业时，通常需要采用某种方式来跟踪作业进度。 
 
-若要监视编码作业的进度，请单击“设置”（位于页面顶部），然后选择“作业”   。
+要监视编码作业的进度，请单击“设置”****（位于页面顶部），并选择“作业”****。
 
 ![作业](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 

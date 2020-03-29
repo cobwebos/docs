@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric 安全性最佳做法
-description: 保持 Azure Service Fabric 群集和应用程序安全的最佳做法和设计注意事项。
+description: 用于保护 Azure 服务结构群集和应用程序安全的最佳做法和设计注意事项。
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258923"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
@@ -143,9 +143,9 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 
 在加密受保护的值以后，[在 Service Fabric 应用程序中指定加密的机密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application)，并[解密服务代码中加密的机密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code)。
 
-## <a name="include-certificate-in-service-fabric-applications"></a>在 Service Fabric 应用程序中包括证书
+## <a name="include-certificate-in-service-fabric-applications"></a>包括 Service Fabric 应用程序中的证书
 
-若要为应用程序提供对机密的访问权限，请通过将**SecretsCertificate**元素添加到应用程序清单中来包含证书。
+若要让应用程序访问机密，请包括该证书，方法是：将 **SecretsCertificate** 元素添加到应用程序清单。
 
 ```xml
 <ApplicationManifest … >
@@ -191,7 +191,7 @@ principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGr
 az role assignment create --assignee $principalid --role 'Contributor' --scope "/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/<PROVIDER NAME>/<RESOURCE TYPE>/<RESOURCE NAME>"
 ```
 
-在 Service Fabric 应用程序代码中，为 Azure 资源管理器[获取一个访问令牌](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)，使其完全类似于以下内容：
+在 Service Fabric 应用程序代码中，通过使 REST 与以下内容类似，获取 Azure 资源管理器[的访问令牌](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)：
 
 ```bash
 access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true | python -c "import sys, json; print json.load(sys.stdin)['access_token']")
@@ -205,19 +205,19 @@ access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-v
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
 ## <a name="windows-security-baselines"></a>Windows 安全基线
-[我们建议你实现一个行业标准的配置，该配置被广泛已知并且经过良好测试，如 Microsoft 安全基线，而不是自己创建基线](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines);在虚拟机规模集上预配这些虚拟机的选项是使用 Azure Desired State Configuration （DSC）扩展处理程序，在虚拟机处于联机状态时对其进行配置，使其运行生产软件。
+[我们建议您实现众所周知且经过良好测试的行业标准配置，例如 Microsoft 安全基线，而不是自己创建基线](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines);在虚拟机缩放集中预配这些配置的选项是使用 Azure 所需状态配置 （DSC） 扩展处理程序，在 VM 联机时配置 VM，以便它们运行生产软件。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
-[Azure 防火墙是一种托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一种具有内置的高可用性和不受限制的云可伸缩性的完全有状态防火墙即服务。](https://docs.microsoft.com/azure/firewall/overview)这使你能够将出站 HTTP/S 流量限制为指定的完全限定的域名（FQDN）列表（包括通配符）。 此功能不需要 SSL 终止。 建议你将[Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)用于 Windows 更新，并启用到 Microsoft Windows 更新终结点的网络流量通过防火墙。 [使用模板部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/deploy-template)提供了一个有关 azureFirewalls 资源模板定义的示例。 Service Fabric 应用程序通用的防火墙规则是允许群集虚拟网络执行以下操作：
+[Azure 防火墙是一种托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一个完全有状态的防火墙，作为一种具有内置高可用性和无限制的云可扩展性的服务。](https://docs.microsoft.com/azure/firewall/overview)这使您能够将出站 HTTP/S 流量限制为指定的完整限定域名 （FQDN） 列表（包括通配符）。 此功能不需要 SSL 终止。 建议利用 Windows 更新的 [Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)，并允许到 Microsoft Windows 更新终结点的网络流量流经防火墙。 [使用模板部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/deploy-template)为 Microsoft.网络/azure 防火墙资源模板定义提供了一个示例。 常用于 Service Fabric 应用程序的防火墙规则是为群集虚拟网络启用以下站点：
 
-- \* download.microsoft.com
+- *download.microsoft.com
 - *servicefabric.azure.com
 - *.core.windows.net
 
-这些防火墙规则会将允许的出站网络安全组（包括 ServiceFabric 和存储）作为虚拟网络的允许目标。
+这些防火墙规则是对允许的出站网络安全组的补充，此类安全组将包括 ServiceFabric 和存储，作为来自虚拟网络的允许目标。
 
 ## <a name="tls-12"></a>TLS 1.2
-[技术](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
+[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 
 
@@ -254,7 +254,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 > 如果不使用 Windows Defender，请参阅有关配置规则的反恶意软件文档。 Linux 不支持 Windows Defender。
 
 ## <a name="platform-isolation"></a>平台隔离
-默认情况下，Service Fabric 应用程序被授予了 Service Fabric 运行时本身的访问权限，这种方式会以不同的形式表现自身：[环境变量](service-fabric-environment-variables-reference.md)，指向与应用程序和构造文件对应的主机上的文件路径、用于接受应用程序特定请求的进程间通信终结点，以及构造预期应用程序用来对其自身进行身份验证的客户端证书。 在后果同样中，如果服务托管自身不受信任的代码，则建议禁用此对 SF 运行时的访问-除非明确需要。 使用应用程序清单的 "策略" 部分中的以下声明删除对运行时的访问： 
+默认情况下，Service Fabric 应用程序会被授予访问 Service Fabric 运行时本身的权限，这本身会通过以下不同形式表明：[环境变量](service-fabric-environment-variables-reference.md)（指向对应于应用程序和 Fabric 文件的主机上的文件路径）、进程间通信终结点（接受应用程序特定请求）和客户端证书（Fabric 希望应用程序使用该证书对自身进行身份验证）。 如果服务托管本身不信任的代码，建议禁用此 SF 运行时访问权限，除非明确需要。 该运行时的访问权限可使用应用程序清单的“策略”部分中的以下声明来删除： 
 
 ```xml
 <ServiceManifestImport>
@@ -267,8 +267,8 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在运行 Windows Server 的 Vm 或计算机上创建群集：[为 Windows server Service Fabric 群集创建](service-fabric-cluster-creation-for-windows-server.md)。
-* 在运行 Linux 的 Vm 或计算机上创建群集：[创建 linux 群集](service-fabric-cluster-creation-via-portal.md)。
+* 在 VM 或计算机上创建群集，运行 Windows 服务器：[为 Windows 服务器创建服务结构群集](service-fabric-cluster-creation-for-windows-server.md)。
+* 在运行 Linux 的 VM 或计算机上创建群集：[创建 Linux 群集](service-fabric-cluster-creation-via-portal.md)。
 * 了解 [Service Fabric 支持选项](service-fabric-support.md)。
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png

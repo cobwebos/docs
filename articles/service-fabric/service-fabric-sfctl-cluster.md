@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric sfctl 群集
-description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理群集的命令的列表。
+title: Azure Service Fabric CLI- sfctl cluster
+description: 了解 sfctl，Azure 服务结构命令行接口。 包括用于管理群集的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 007ad6f59f0ce304db579f4faa1bb95611a93a37
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906158"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
@@ -17,11 +17,11 @@ ms.locfileid: "76906158"
 
 ## <a name="commands"></a>命令
 
-|命令|Description|
+|命令|描述|
 | --- | --- |
 | code-versions | 获取 Service Fabric 群集中预配的结构代码版本的列表。 |
 | config-versions | 获取 Service Fabric 群集中预配的结构配置版本的列表。 |
-| 健康 | 获取 Service Fabric 群集的运行状况。 |
+| health | 获取 Service Fabric 群集的运行状况。 |
 | manifest | 获取 Service Fabric 群集清单。 |
 | operation-cancel | 取消用户造成的错误操作。 |
 | operation-list | 获取根据提供的输入筛选的、用户造成的错误操作列表。 |
@@ -42,16 +42,16 @@ ms.locfileid: "76906158"
 
 获取群集中预配的结构代码版本的信息列表。 可以使用参数 CodeVersion 有选择地将输出筛选为该特定版本。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --code-version | Service Fabric 的产品版本。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -64,16 +64,16 @@ ms.locfileid: "76906158"
 
 获取群集中预配的结构配置版本的信息列表。 可以使用参数 ConfigVersion 有选择地将输出筛选为该特定版本。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --config-version | Service Fabric 的配置版本。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -86,20 +86,20 @@ ms.locfileid: "76906158"
 
 使用 EventsHealthStateFilter 可以根据运行状态筛选针对群集报告的运行状况事件的集合。 同样，使用 NodesHealthStateFilter 和 ApplicationsHealthStateFilter 可以根据聚合运行状态筛选返回的节点和应用程序集合。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --applications-health-state-filter | 用于根据运行状态筛选群集运行状况查询结果中返回的应用程序运行状态对象。 此参数的可能值包括从成员获取的整数值或对 HealthStateFilter 枚举成员进行位运算获取的整数值。 仅返回与筛选器匹配的应用程序。 所有应用程序都用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为“OK”(2) 和“Warning”(4) 的应用程序的运行状态。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --exclude-health-statistics | 指示运行状况统计数据是否应作为查询结果的一部分返回。 默认值为 False。 统计信息显示处于 Ok、Warning 和 Error 运行状况的子实体数。 |
 | --include-system-application-health-statistics | 指示运行状况统计信息是否应包括 fabric\:/System 应用程序的运行状况统计信息。 默认值为 False。 如果 IncludeSystemApplicationHealthStatistics 设置为 true，则运行状况统计信息包含属于 fabric\:/System 应用程序的实体。 否则，查询结果仅包含用户应用程序的运行状况统计信息。 应用此参数后，查询结果中必须包含运行状况统计信息。 |
 | --nodes-health-state-filter | 用于根据运行状态筛选群集运行状况查询结果中返回的节点运行状态对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的节点。 所有节点用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的节点的运行状态。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -110,17 +110,17 @@ ms.locfileid: "76906158"
 ## <a name="sfctl-cluster-manifest"></a>sfctl cluster manifest
 获取 Service Fabric 群集清单。
 
-获取 Service Fabric 群集清单。 群集清单包含群集的属性，这些属性包括群集上的不同节点类型、安全配置、故障和升级域拓扑等。在部署独立群集时，将这些属性指定为 Clusterconfig.x509.multimachine.json 文件的一部分。 但是，群集清单中的大部分信息是在其他部署方案中部署群集期间由 Service Fabric 在内部生成的（例如，使用 Azure 门户时）。 群集清单的内容仅供参考，用户不应依赖于文件内容的格式或其解释。
+获取 Service Fabric 群集清单。 群集清单包含群集的属性，这些属性包括群集上不同的节点类型、安全配置、故障和升级域拓扑等。在部署独立群集时，这些属性被指定为群集 Config.JSON 文件的一部分。 但是，群集清单中的大部分信息是在其他部署方案中部署群集期间由 Service Fabric 在内部生成的（例如，使用 Azure 门户时）。 群集清单的内容仅供参考，用户不应依赖于文件内容的格式或其解释。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -131,19 +131,19 @@ ms.locfileid: "76906158"
 ## <a name="sfctl-cluster-operation-cancel"></a>sfctl cluster operation-cancel
 取消用户造成的错误操作。
 
-以下 Api 启动可通过使用 CancelOperation\: StartDataLoss、StartQuorumLoss、StartPartitionRestart、StartNodeTransition 取消的故障操作。 如果 force 为 false，则会正常停止并清理用户造成的指定操作。  如果 force 为 true，则会中止命令，并可能留下一些内部状态。  请谨慎将 force 指定为 true。 除非先在 force 设置为 false 的情况下对相同的 test 命令调用此 API，或者 test 命令已包含值为 OperationState.RollingBack 的 OperationState，否则，不允许在 force 设置为 true 的情况下调用此 API。 澄清\: OperationState.RollingBack 表示系统将会/正在清理由于执行该命令而导致的内部系统状态。  如果 test 命令导致数据丢失，则系统不会还原数据。  例如，如果先调用 StartDataLoss，再调用此 API，则系统只会清理由于运行该命令而导致的内部状态。 如果命令的执行时间很长，导致数据丢失，则系统不会还原目标分区的数据。 重要说明\: 如果此 API 是通过 force = = true 调用的，则可能会遗留内部状态。
+以下 API 启动可以使用 CancelOperation 取消的错误操作：StartDataLoss、StartQuorumLoss、StartPartitionRestart、StartNodeTransition。 如果 force 为 false，则会正常停止并清理用户造成的指定操作。  如果 force 为 true，则会中止命令，并可能留下一些内部状态。  请谨慎将 force 指定为 true。 除非先在 force 设置为 false 的情况下对相同的 test 命令调用此 API，或者 test 命令已包含值为 OperationState.RollingBack 的 OperationState，否则，不允许在 force 设置为 true 的情况下调用此 API。 澄清\: OperationState.RollingBack 表示系统将会/正在清理由于执行该命令而导致的内部系统状态。  如果 test 命令导致数据丢失，则系统不会还原数据。  例如，如果先调用 StartDataLoss，再调用此 API，则系统只会清理由于运行该命令而导致的内部状态。 如果命令的执行时间很长，导致数据丢失，则系统不会还原目标分区的数据。 特别注意\: 如果在 force==true 的情况下调用此 API，则可能会留下内部状态。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --operation-id [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
 | --force | 指示是否要正常回滚和清理执行用户造成的操作后修改的内部系统状态。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -156,17 +156,17 @@ ms.locfileid: "76906158"
 
 获取根据提供的输入筛选的、用户造成的错误操作列表。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
-| --state-filter | 用于根据用户造成的操作的 OperationState 进行筛选。 -65535-选择所有-1-选择 "运行-2-选择 RollingBack-8-选择已完成-32 16-选择已取消-已取消-已取消-64-选择已强制取消"。  默认值\: 65535。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
-| --type-filter | 用于根据用户造成的操作的 OperationType 进行筛选。 -65535-选择 "全部-1-选择 PartitionDataLoss"。 -2-选择 PartitionQuorumLoss。 -4-选择 PartitionRestart。 -8-选择 NodeTransition。  默认值\: 65535。 |
+| --state-filter | 用于根据用户造成的操作的 OperationState 进行筛选。 - 65535 - 选择全部 - 1 - 选择"正在运行 - 2 " - 选择回滚 - 8 - 选择已完成 - 16 - 选择故障 - 32 - 选择"已取消 " - 64 - 选择"强制取消"。  默认值\: 65535。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
+| --type-filter | 用于根据用户造成的操作的 OperationType 进行筛选。 - 65535 - 选择“All” - 1 - 选择“PartitionDataLoss”。 - 2 - 选择 PartitionQuorumLoss。 - 4 - 选择 PartitionRestart。 - 8 - 选择 NodeTransition。  默认值\: 65535。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -179,17 +179,17 @@ ms.locfileid: "76906158"
 
 验证和预配 Service Fabric 群集的代码包或配置包。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --cluster-manifest-file-path | 群集清单文件路径。 |
 | --code-file-path | 群集代码包文件路径。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -202,15 +202,15 @@ ms.locfileid: "76906158"
 
 向 Service Fabric 群集指出应该尝试恢复当前停滞在仲裁丢失状态的系统服务。 仅当确定已关闭的副本无法恢复时，才执行此操作。 不当地使用此 API 可能导致潜在的数据丢失。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -221,11 +221,11 @@ ms.locfileid: "76906158"
 ## <a name="sfctl-cluster-report-health"></a>sfctl cluster report-health
 发送有关 Service Fabric 群集的运行状况报告。
 
-发送 Service Fabric 群集上的运行状况报告。 该报告必须包含有关运行状况报告及其所报告属性的源的信息。 该报告将发送到 Service Fabric 网关节点，后者会将其转发到运行状况存储。 该报告可能被网关接受但被运行状况存储在执行额外的验证后拒绝。 例如，运行状况存储可能会由于无效的参数（如过时的序列号）而拒绝该报告。 若要查看报表是否已应用到运行状况存储中，请运行 GetClusterHealth 并检查报表是否显示在 HealthEvents 节中。
+发送有关 Service Fabric 群集的运行状况报告。 该报告必须包含有关运行状况报告及其所报告属性的源的信息。 该报告将发送到 Service Fabric 网关节点，后者会将其转发到运行状况存储。 该报告可能被网关接受但被运行状况存储在执行额外的验证后拒绝。 例如，运行状况存储可能会由于无效的参数（如过时的序列号）而拒绝该报告。 若要了解该报告是否已应用于运行状况存储，请运行 GetClusterHealth 并检查该报告是否显示在 HealthEvents 部分中。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --health-property [必需] | 运行状况信息的属性。 <br><br> 一个实体可以有不同属性的运行状况报告。 该属性是一个字符串，不是固定的枚举，因此可使报告器灵活地对触发报告的状态条件进行分类。 例如，SourceId 为“LocalWatchdog”的报告器可以监视节点上的可用磁盘的状态，因此它可以报告该节点的“AvailableDisk”属性。 同一报告器可以监视节点连接，因此它可以报告同一节点的“Connectivity”属性。 在运行状况存储中，这些报告均被视为指定节点的单独运行状况事件。 与 SourceId 一起，该属性唯一地标识运行状况信息。 |
 | --health-state    [必需] | 可能的值包括\:“Invalid”、“Ok”、“Warning”、“Error”、“Unknown”。 |
@@ -239,7 +239,7 @@ ms.locfileid: "76906158"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -250,23 +250,23 @@ ms.locfileid: "76906158"
 ## <a name="sfctl-cluster-select"></a>sfctl cluster select
 连接到 Service Fabric 群集终结点。
 
-如果连接到安全群集，请指定证书 (.crt) 和密钥文件 (.key) 的绝对路径，或指定包含此两者的单个文件 (.pem)。 不要同时指定上述两项。 （可选）如果连接到安全群集，则还要指定 CA 捆绑文件的绝对路径，或受信任 CA 证书的目录。  没有与群集的连接，请先运行此命令，包括与 localhost 的连接。 但是，连接到本地群集时，不需要显式终结点。  如果使用的是自签名证书，或不是由知名 CA 签署的其他证书，请传入--CA 参数以确保验证通过。 如果不在生产群集上，若要跳过客户端验证（对于自签名或不是众所周知的 CA 签名非常有用），请使用--no-verify 选项。 尽管可能，但不建议用于生产群集。 否则，可能会导致证书验证错误。
+如果连接到安全群集，请指定证书 (.crt) 和密钥文件 (.key) 的绝对路径，或指定包含此两者的单个文件 (.pem)。 不要同时指定上述两项。 （可选）如果连接到安全群集，则还要指定 CA 捆绑文件的绝对路径，或受信任 CA 证书的目录。  如果没有首先运行此命令，则没有到集群的连接，包括到 localhost 的连接。 但连接到本地群集时，不需要显式终结点。  如果使用自签名证书或其他未由众所周知的 CA 签名的证书，则通过 --ca 参数以确保验证通过。 如果不是在生产群集上，要绕过客户端验证（对于自签名或未为已知 CA 签名有用），请使用 --no-验证选项。 虽然可能，但不建议生产群集。 否则可能会导致证书验证错误。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --aad | 使用 Azure Active Directory 进行身份验证。 |
 | --ca | 视为有效的 CA 证书目录的绝对路径，或 CA 捆绑文件的路径。 如果使用 CA 证书目录，则必须首先运行 OpenSSL 提供的 `c_rehash <directory>` 以计算证书哈希值并创建相应的符号链接。 这用于验证群集返回的证书是否有效。 |
 | --cert | 客户端证书文件的绝对路径。 |
-| --endpoint | 群集终结点 URL，包括端口和 HTTP 或 HTTPS 前缀。 通常，终结点的外观将类似于 https\://<-url >\:19080。 如果未指定任何终结点，则默认为 http\://localhost\:19080。  默认\: http\://localhost\:19080。 |
+| --endpoint | 群集终结点 URL，包括端口和 HTTP 或 HTTPS 前缀。 通常，终结点看起来类似于 https\://<your-url>\:19080。 如果未指定任何终结点，则默认为 http\://localhost\:19080。  默认终结点 \: http\://localhost\:19080。 |
 | --key | 客户端证书密钥文件的绝对路径。 |
 | --no-verify | 使用 HTTPS 时禁用证书验证。注意\: 这是一个不安全的选项，不应该用于生产环境。 |
 | --pem | 客户端证书（.pem 文件）的绝对路径。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -279,7 +279,7 @@ ms.locfileid: "76906158"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -292,17 +292,17 @@ ms.locfileid: "76906158"
 
 支持分别取消预配代码和配置。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --code-version | 群集代码包版本。 |
 | --config-version | 群集清单版本。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -315,9 +315,9 @@ ms.locfileid: "76906158"
 
 如果参数有效，验证提供的升级参数并对 Service Fabric 群集的代码或配置版本启动升级。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --app-health-map | 应用程序名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。 |
 | --app-type-health-map | 应用程序类型名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。 |
@@ -342,7 +342,7 @@ ms.locfileid: "76906158"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -355,16 +355,16 @@ ms.locfileid: "76906158"
 
 在适用的情况下，使群集代码或配置升级转移到下一个升级域。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --upgrade-domain [必需] | 此群集升级的下一个升级域。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -377,15 +377,15 @@ ms.locfileid: "76906158"
 
 回滚 Service Fabric 群集的代码或配置升级。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -398,15 +398,15 @@ ms.locfileid: "76906158"
 
 获取正在进行的群集升级的当前进度。 如果当前没有任何升级正在进行，则获取上次群集升级的最后一个状态。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -417,9 +417,9 @@ ms.locfileid: "76906158"
 ## <a name="sfctl-cluster-upgrade-update"></a>sfctl cluster upgrade-update
 更新 Service Fabric 群集升级的升级参数。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --app-health-map | 应用程序名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。 |
 | --app-type-health-map | 应用程序类型名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。 |
@@ -443,7 +443,7 @@ ms.locfileid: "76906158"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |

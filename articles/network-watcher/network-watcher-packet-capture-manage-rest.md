@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 5199cf95452f93db2c2dd747fcabc67a6722d31e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840887"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>通过 Azure REST API 使用 Azure 网络观察程序管理数据包捕获
 
 > [!div class="op_single_selector"]
 > - [Azure 门户](network-watcher-packet-capture-manage-portal.md)
-> - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
+> - [电源外壳](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
@@ -60,7 +60,7 @@ armclient login
 
 以下代码需要以下变量：
 
-- **subscriptionId** -还可以通过**AzSubscription** cmdlet 检索订阅 id。
+- **subscriptionId** - 还可以使用 **Get-AzSubscription** cmdlet 检索订阅 ID。
 - **resourceGroupName** - 包含虚拟机的资源组的名称。
 
 ```powershell
@@ -301,7 +301,7 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 
 ## <a name="next-steps"></a>后续步骤
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](https://storageexplorer.com/)
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息，请参阅以下链接：[存储资源管理器](https://storageexplorer.com/)
 
 查看[创建警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)，了解如何利用虚拟机警报自动执行数据包捕获
 

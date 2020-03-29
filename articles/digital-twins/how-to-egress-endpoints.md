@@ -1,6 +1,6 @@
 ---
-title: 出口和终结点-Azure 数字孪生 |Microsoft Docs
-description: 了解如何在 Azure 数字孪生中创建和传出事件终结点。
+title: 出口和终点 - Azure 数字孪生 |微软文档
+description: 了解如何在 Azure 数字孪生中创建和出口事件终结点。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 3803802a3d81655091d8be543ae9cb17221a98d8
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76511563"
 ---
 # <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure 数字孪生中的出口和终结点
@@ -23,7 +23,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 
 若要详细了解事件、路由和事件类型，请参阅[在 Azure 数字孪生中路由事件和消息](./concepts-events-routing.md)。
 
-## <a name="events"></a>活动
+## <a name="events"></a>事件
 
 事件由 IoT 对象（例如设备和传感器）发送，由 Azure 消息和事件代理进行处理。 事件是通过以下 [Azure 事件网格事件架构参考](../event-grid/event-schema.md)定义的。
 
@@ -47,11 +47,11 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| Attribute | 类型 | Description |
+| 特性 | 类型 | 说明 |
 | --- | --- | --- |
 | id | 字符串 | 事件的唯一标识符。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
-| data | 对象 | 特定于资源提供程序的事件数据。 |
+| data | 对象 (object) | 特定于资源提供程序的事件数据。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
@@ -85,17 +85,17 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 - ExtendedPropertyKey
 - ExtendedType
 - KeyStore
-- 报告
+- 报表
 - RoleDefinition
 - 传感器
 - SensorBlobMetadata
 - SensorExtendedProperty
-- 航天
+- Space
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
 - SpaceRoleAssignment
-- 系统
+- System
 - 用户
 - UserBlobMetadata
 - UserExtendedProperty
@@ -122,7 +122,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| 值 | 替换为 |
+| “值” | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -153,7 +153,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| 值 | 替换为 |
+| “值” | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -188,7 +188,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| 值 | 替换为 |
+| “值” | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -223,7 +223,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 }
 ```
 
-| 值 | 替换为 |
+| “值” | 替换为 |
 | --- | --- |
 | YOUR_TOPIC_NAME | 自定义主题的名称 |
 
@@ -246,7 +246,7 @@ Azure 数字孪生*终结点*在用户的 Azure 订阅中提供消息或事件�
 >[!IMPORTANT]
 > 请特别注意 **eventTypes** 属性。 它定义终结点处理哪些事件类型并确定其路由。
 
-经过身份验证的 HTTP POST 请求：
+针对的经过身份验证的 HTTP POST 请求：
 
 ```URL
 YOUR_MANAGEMENT_API_URL/endpoints
@@ -268,7 +268,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | 值 | 替换为 |
+    | “值” | 替换为 |
     | --- | --- |
     | YOUR_NAMESPACE | 终结点的命名空间 |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串 |
@@ -291,7 +291,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | 值 | 替换为 |
+    | “值” | 替换为 |
     | --- | --- |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串|
     | YOUR_SECONDARY_KEY | 用于进行身份验证的次要连接字符串 |
@@ -313,14 +313,14 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | 值 | 替换为 |
+    | “值” | 替换为 |
     | --- | --- |
     | YOUR_NAMESPACE | 终结点的命名空间 |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串 |
     | YOUR_SECONDARY_KEY | 用于进行身份验证的次要连接字符串 |
     | YOUR_EVENT_HUB_NAME | 事件中心的名称 |
 
-- 路由到事件中心事件类型 **DeviceMessage**。 必须在 **connectionString** 中包含 `EntityPath`：
+- 路由到事件中心事件类型 **DeviceMessage**。 在连接中`EntityPath`包含**String**是强制性的：
 
   ```JSON
   {
@@ -334,7 +334,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | 值 | 替换为 |
+    | “值” | 替换为 |
     | --- | --- |
     | YOUR_NAMESPACE | 终结点的命名空间 |
     | YOUR_PRIMARY_KEY | 用于进行身份验证的主要连接字符串 |

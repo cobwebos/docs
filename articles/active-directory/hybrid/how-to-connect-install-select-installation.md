@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：选择安装类型 | Microsoft Docs
+title: Azure AD Connect：选择安装类型 | Microsoft 文档
 description: 本主题逐步讲解如何选择 Azure AD Connect 使用的安装类型
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90a624a6b3b4696899af0d8606f653df260cc201
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60348274"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>选择 Azure AD Connect 使用的安装类型
@@ -47,13 +47,13 @@ Azure AD Connect 为全新安装提供两种安装类型：快速安装和自定
 - 如果不想要同步所有 OU，仍可使用“快速”选项。请在最后一页上取消选择“启动同步过程...”\*。 然后再次运行安装向导，更改[配置选项](how-to-connect-installation-wizard.md#customize-synchronization-options)中的 OU 并启用计划同步。
 - 想要启用 Azure AD Premium 中的某个功能，例如密码写回。 首先请完成整个快速安装过程，以完成初始安装。 然后再次运行安装向导并更改[配置选项](how-to-connect-installation-wizard.md#customize-synchronization-options)。
 
-## <a name="custom"></a>“自定义”
+## <a name="custom"></a>自定义
 自定义安装途径的选项要比快速安装多得多。 只要前一部分中所述的快速安装提供的配置无法满足组织的需要，就应该使用自定义安装。
 
 使用时机：
 
 - 无法访问 Active Directory 中的企业管理员帐户。
-- 有多个林，或者计划在将来同步多个林。
+- 有多个林，或者计划将来要同步多个林。
 - 无法通过 Connect 服务器访问林中的域。
 - 计划对用户登录使用联合身份验证或传递身份验证。
 - 对象超过 100,000 个，并且需要使用完整的 SQL Server。

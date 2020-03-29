@@ -1,5 +1,5 @@
 ---
-title: 通过 VNet 对等互连连接虚拟网络-Azure PowerShell
+title: 将虚拟网络与 VNet 对等互连连接 - Azure PowerShell
 description: 在本文中，你将学习如何使用 Azure PowerShell 通过虚拟网络对等互连来连接虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
@@ -16,10 +16,10 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: caa620c2389bb6e2387636bc262ceb2de99d8e34
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77201282"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>通过 PowerShell 使用虚拟网络对等互连连接虚拟网络
@@ -41,7 +41,7 @@ ms.locfileid: "77201282"
 
 ## <a name="create-virtual-networks"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 下面的示例在*东部*位置创建名为*myResourceGroup*的资源组。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
@@ -57,7 +57,7 @@ $virtualNetwork1 = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-创建具有[AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)的子网配置。 以下示例创建地址前缀为 10.0.0.0/24 的子网配置：
+使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建子网配置。 以下示例创建地址前缀为 10.0.0.0/24 的子网配置：
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -66,7 +66,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork1
 ```
 
-将子网配置写入具有 AzVirtualNetwork 的虚拟网络，这[将](/powershell/module/az.network/Set-azVirtualNetwork)创建子网：
+使用 [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) 将子网配置写入虚拟网络，从而创建子网：
 
 ```azurepowershell-interactive
 $virtualNetwork1 | Set-AzVirtualNetwork
@@ -94,7 +94,7 @@ $virtualNetwork2 | Set-AzVirtualNetwork
 
 ## <a name="peer-virtual-networks"></a>将虚拟网络对等互连
 
-使用[AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)创建对等互连。 以下示例将 *myVirtualNetwork1* 对等互连到 *myVirtualNetwork2*。
+使用 [Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering) 创建对等互连。 以下示例将 *myVirtualNetwork1* 对等互连到 *myVirtualNetwork2*。
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkPeering `
@@ -112,7 +112,7 @@ Add-AzVirtualNetworkPeering `
   -RemoteVirtualNetworkId $virtualNetwork1.Id
 ```
 
-在上一个命令执行后返回的输出中，可以看到 **peeringState** 为 *Connected*。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为 *Connected*。 确认*myVirtualNetwork1-myVirtualNetwork2*对等互连的对等互连状态已更改为 "通过[AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering)进行*连接*"。
+在上一个命令执行后返回的输出中，可以看到 **peeringState** 为 *Connected*。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为 *Connected*。 使用 [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) 确认 myVirtualNetwork1-myVirtualNetwork2** 对等互连的对等互连状态是否已更改为“Connected”**。
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkPeering `
@@ -158,7 +158,7 @@ New-AzVm `
 
 ## <a name="communicate-between-vms"></a>VM 之间进行通信
 
-可以从 Internet 连接到 VM 的公共 IP 地址。 使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 返回 VM 的公共 IP 地址。 以下示例返回 myVm1 VM 的公共 IP 地址：
+可以从 Internet 连接到 VM 的公共 IP 地址。 使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 返回 VM 的公共 IP 地址。 以下示例返回 myVm1 VM 的公共 IP 地址**：
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -166,13 +166,13 @@ Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-从本地计算机使用以下命令创建与 myVm1 VM 的远程桌面会话。 将 `<publicIpAddress>` 替换为上一命令返回的 IP 地址。
+从本地计算机使用以下命令创建与 myVm1 VM 的远程桌面会话**。 将 `<publicIpAddress>` 替换为上一命令返回的 IP 地址。
 
 ```
 mstsc /v:<publicIpAddress>
 ```
 
-此时会创建远程桌面协议 (.rdp) 文件，并下载到计算机，同时打开该文件。 输入用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后单击“确定”。 你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。
+此时会创建远程桌面协议 (.rdp) 文件，并下载到计算机，同时打开该文件。 输入用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后单击“确定”。************ 你可能会在登录过程中收到证书警告。 单击"**是**"或 **"继续**"继续连接。
 
 在 *myVm1* VM 上，允许 Internet 控制消息协议 (ICMP) 通过 Windows 防火墙，以便在稍后的步骤中使用 PowerShell 从 *myVm2* ping 此 VM：
 
@@ -198,7 +198,7 @@ ping 10.0.0.4
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组及其包含的所有资源，请使用[AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup)删除该资源组。
+如果不再需要资源组及其包含的所有资源，请使用 [Remove-AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup) 将其删除。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

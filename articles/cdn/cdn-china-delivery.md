@@ -16,10 +16,10 @@ ms.date: 05/16/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: a63914116f5ef9922ac05745764e0ad505dc3c91
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593955"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>使用 Azure CDN 进行中国内容分发
@@ -34,21 +34,21 @@ Azure CDN 全球和 Azure CDN 中国具有以下功能：
 
 - Azure CDN 全球：
 
-     - 门户： https://portal.azure.com  
+     - 门户：https://portal.azure.com  
 
      - 在中国之外执行内容分发
 
-     - 四个定价层：Microsoft 标准、 Verizon 标准版、 Verizon 高级版和 Akamai 标准
+     - 四个定价层：Microsoft 标准、Verizon 标准、Verizon 高级和 Akamai 标准
 
      - [文档](https://docs.microsoft.com/azure/cdn/)
 
 - Azure CDN 中国：
 
-     - 门户： https://portal.azure.cn
+     - 门户：https://portal.azure.cn
 
      - 在中国境内执行内容分发
 
-     - 两个定价层：标准和高级版
+     - 两个定价层：标准和高级
 
      - [文档](https://docs.azure.cn/en-us/cdn/)
  

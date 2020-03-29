@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 06a3469507631d032535bce62b01d964e99dc603
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60334788"
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>StorSimple Virtual Array Update 0.4 发行说明
@@ -53,9 +53,9 @@ Update 0.4 主要是一个 bug 修复版本，外加几处改进。 在此版本
 
 下表提供了此版本中所修复问题的摘要。
 
-| 不。 | Feature | 问题 |
+| 不是。 | Feature | 问题 |
 | --- | --- | --- |
-| 第 |备份性能|在早期版本中，涉及大量文件的备份将需要很长时间才能完成（在几天之内）。 在此版本中，完整备份和增量备份可看到显著减少完成时间。 |
+| 1 |备份性能|在早期版本中，涉及大量文件的备份将需要很长时间才能完成（在几天之内）。 在此版本中，完整备份和增量备份可看到显著减少完成时间。 |
 | 2 |支持包|现在，磁盘、CPU、内存、网络和云的统计信息将记录到支持日志中，使支持包在排查任何设备问题时非常有效。|
 | 3 |备份 |在早期版本中，长时间运行的备份可能会导致设备上的空间不足，从而导致备份失败。 在此版本中通过仅允许同时不超过 5 个备份排队，解决了此 bug。|
 | 4 |iSCSI | 在早期版本中，分层卷或本地固定卷的本地预留空间为预配的卷大小的 10%。 在此版本中，所有 iSCSI 卷（本地固定卷或分层卷）的本地预留限制为 10%，最大值可达 200 GB（适用于大于 2 TB 的分层卷），从而可释放本地磁盘上的更多空间。 我们建议，此版本中的本地固定卷限制为 200 GB。|
@@ -65,7 +65,7 @@ Update 0.4 主要是一个 bug 修复版本，外加几处改进。 在此版本
 
 下表提供了 StorSimple Virtual Array 的已知问题的摘要，包括早期版本中发行说明的问题。 
 
-| 不。 | Feature | 问题 | 解决方法/备注 |
+| 不是。 | Feature | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 | **1.** |更新 |无法将预览版中所创建的虚拟设备更新为受支持的正式版本。 |必须使用灾难恢复 (DR) 工作流将这些虚拟设备故障转移为正式版本。 |
 | **2.** |预配的数据磁盘 |在预配指定大小的数据磁盘，并创建相应的 StorSimple 虚拟设备后，不能立即扩展或收缩数据磁盘。 尝试进行这些操作将导致该设备本地层中的所有数据丢失。 | |
@@ -85,12 +85,12 @@ Update 0.4 主要是一个 bug 修复版本，外加几处改进。 在此版本
 | **16.** |文件服务器 |将受 Windows 加密文件系统 (EFS) 保护的文件复制或存储到 StorSimple 虚拟阵列文件服务器时会导致不受支持的配置。  | |
 
 ## <a name="next-step"></a>后续步骤
-在 StorSimple Virtual Array 上[安装 Update 0.4](storsimple-virtual-array-install-update-04.md)。
+在 StorSimple 虚拟阵列上安装[更新 0.4。](storsimple-virtual-array-install-update-04.md)
 
 ## <a name="references"></a>参考
 查找较旧版本的发行说明？ 请转到： 
 
-* [StorSimple Virtual Array Update 0.3 发行说明](storsimple-ova-update-03-release-notes.md)
+* [StorSimple 虚拟阵列更新 0.3 发行说明](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array 更新 0.1 和 0.2 发行说明](storsimple-ova-update-01-release-notes.md)
 * [StorSimple Virtual Array 正式版发行说明](storsimple-ova-pp-release-notes.md)
 

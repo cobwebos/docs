@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447040"
 ---
 # <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义服务
@@ -26,7 +26,7 @@ ms.locfileid: "61447040"
 
 在 React 应用程序中，服务通常与后端服务交互。 远程监视解决方案加速器中的示例包括与 IoT 中心管理器和配置微服务交互的服务。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 要完成本操作指南中的步骤，需要在本地开发计算机上安装以下软件：
 

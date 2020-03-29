@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 37a06b19285c1196b5d87830ea176d4bd0d4eade
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60894005"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>从 Azure Databricks 访问 Azure Cosmos DB Cassandra API 数据
 
 本文详细介绍了如何在 [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) 上通过 Spark 使用 Azure Cosmos DB Cassandra API。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * [预配 Azure Cosmos DB Cassandra API 帐户](create-cassandra-dotnet.md#create-a-database-account)
 
@@ -45,15 +45,15 @@ ms.locfileid: "60894005"
 
 ## <a name="add-the-required-dependencies"></a>添加必需的依赖项
 
-*  Cassandra Spark 连接器：- 要将 Azure Cosmos DB Cassandra API 与 Spark 集成，Cassandra 连接器应附加到 Azure Databricks 群集。 若要附加群集：
+* **** Cassandra Spark 连接器：- 要将 Azure Cosmos DB Cassandra API 与 Spark 集成，Cassandra 连接器应附加到 Azure Databricks 群集。 若要附加群集：
 
   * 查看 Databricks 运行时版本，即 Spark 版本。 然后找到与 Cassandra Spark 连接器兼容的 [maven 坐标](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector)，并将其附加到群集。 请参阅[“上传 Maven 包或 Spark 包”](https://docs.databricks.com/user-guide/libraries.html)一文，将连接器库附加到群集。 例如，“Databricks Runtime 版本 4.3”、“Spark 2.3.1”和“Scala 2.11”的 maven 坐标为 `spark-cassandra-connector_2.11-2.3.1`
 
-*  Azure Cosmos DB Cassandra API 特定的库：- 需要自定义连接工厂才能将重试策略从 Cassandra Spark 连接器配置到 Azure Cosmos DB Cassandra API。 添加 `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`[maven 坐标](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar)将库附加到群集。
+* **** Azure Cosmos DB Cassandra API 特定的库：- 需要自定义连接工厂才能将重试策略从 Cassandra Spark 连接器配置到 Azure Cosmos DB Cassandra API。 添加 `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`[maven 坐标](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar)将库附加到群集。
 
 ## <a name="sample-notebooks"></a>示例笔记本
 
-可在 GitHub 存储库下载一系列 Azure Databricks [示例笔记本](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala)。 这些示例包括如何从 Spark 连接到 Azure Cosmos DB Cassandra API 并对数据执行不同的 CRUD 操作。 此外可以[将所有笔记本导入](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc)到 Databricks 群集工作区并运行。 
+GitHub 存储库中提供了 Azure 数据砖块[示例笔记本](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala)列表，可供您下载。 这些示例包括如何从 Spark 连接到 Azure Cosmos DB Cassandra API 并对数据执行不同的 CRUD 操作。 此外可以[将所有笔记本导入](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc)到 Databricks 群集工作区并运行。 
 
 ## <a name="accessing-azure-cosmos-db-cassandra-api-from-spark-scala-programs"></a>从 Spark Scala 程序访问 Azure Cosmos DB Cassandra API
 

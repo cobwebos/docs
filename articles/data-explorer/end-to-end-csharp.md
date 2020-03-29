@@ -1,6 +1,6 @@
 ---
-title: 通过的端到端 blob 引入到 Azure 数据资源管理器C#
-description: 本文介绍如何使用使用C#的端到端示例，将 Blob 引入 Azure 数据资源管理器。
+title: 通过 C# 以端到端方式将 blob 引入到 Azure 数据资源管理器中
+description: 本文介绍如何通过使用 C# 的端到端示例，将 blob 引入 Azure 数据资源管理器中。
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,13 +8,13 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 0711484c4fff24c5dcd3c18effce596a92bc30c3
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964509"
 ---
-# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>通过的端到端 blob 引入到 Azure 数据资源管理器C#
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>通过 C# 以端到端方式将 blob 引入到 Azure 数据资源管理器中
 
 > [!div class="op_single_selector"]
 > * [C#](end-to-end-csharp.md)
@@ -23,19 +23,19 @@ ms.locfileid: "76964509"
 
 Azure 数据资源管理器是一项快速且可缩放的数据探索服务，适用于日志和遥测数据。 本文提供了有关如何将数据从 Azure Blob 存储引入 Azure 数据资源管理器的端到端示例。 
 
-你将了解如何以编程方式创建资源组、存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库。 你还将了解如何以编程方式配置 Azure 数据资源管理器从新的存储帐户引入数据。
+你将了解如何以编程方式创建资源组、存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库。 你还将了解如何以编程方式配置 Azure 数据资源管理器以从新存储帐户引入数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-## <a name="install-c-nuget"></a>安装C# NuGet
+## <a name="install-c-nuget"></a>安装 C# NuGet
 
-* 请安装[kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
-* 安装[Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)。
-* 请安装[EventGrid](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/)。
-* 安装[Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)。
-* 安装[ClientRuntime](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)进行身份验证。
+* 安装 [Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
+* 安装 [Microsoft.Azure.Management.ResourceManager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager)。
+* 安装 [Microsoft.Azure.Management.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/)。
+* 安装 [Microsoft.Azure.Storage.Blob](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)。
+* 安装[Microsoft.Rest.客户端运行时.Azure.](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)身份验证。
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
@@ -43,9 +43,9 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
 ## <a name="code-example"></a>代码示例 
 
-下面的代码示例提供了一个分步过程，该过程将导致数据引入到 Azure 数据资源管理器中。 
+下面的代码示例提供了一个分步过程，该过程导致将数据引入到 Azure 数据资源管理器中。 
 
-首先创建一个资源组。 还会创建 Azure 资源，例如存储帐户和容器、事件中心、Azure 数据资源管理器群集和数据库，并添加主体。 然后在 Azure 数据资源管理器数据库中创建 Azure 事件网格订阅以及表和列映射。 最后，创建用于配置 Azure 数据资源管理器的数据连接，以便从新的存储帐户引入数据。 
+首先创建一个资源组。 还将创建 Azure 资源，例如存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库，并添加主体。 然后，在 Azure 数据资源管理器数据库中创建 Azure 事件网格订阅以及表和列映射。 最后，创建数据连接，将 Azure 数据资源管理器配置为从新存储帐户引入数据。 
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -179,7 +179,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 | tenantId | 租户 ID。 它也称为目录 ID。|
 | subscriptionId | 用于创建资源的订阅 ID。|
 | clientId | 可以访问租户中资源的应用程序的客户端 ID。|
-| clientSecret | 可以访问租户中资源的应用程序的客户端机密。 |
+| clientSecret | 可以访问租户中资源的应用程序的客户端密码。 |
 
 ## <a name="test-the-code-example"></a>测试代码示例
 
@@ -235,6 +235,6 @@ await resourceManagementClient.ResourceGroups.DeleteAsync(resourceGroupName);
 ## <a name="next-steps"></a>后续步骤
 
 *  若要了解创建群集和数据库的其他方法，请参阅[创建 Azure 数据资源管理器群集和数据库](create-cluster-database-csharp.md)。
-* 若要详细了解引入方法，请参阅[Azure 数据资源管理器数据引入](ingest-data-overview.md)。
-* 若要了解有关 web 应用程序的信息，请参阅[快速入门：在 Azure 数据资源管理器 WEB UI 中查询数据](web-query-data.md)。
+* 若要详细了解引入方法，请参阅 [Azure 数据资源管理器数据引入](ingest-data-overview.md)。
+* 要了解 Web 应用程序，请参阅[快速入门：Azure 数据资源管理器 Web UI 中的查询数据](web-query-data.md)。
 * 使用 Kusto 查询语言[编写查询](write-queries.md)。

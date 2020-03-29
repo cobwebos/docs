@@ -14,31 +14,31 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8b38b38789edfd5a0a30fdd589849bfa345eaac9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77157850"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>通过 Azure AD 身份验证访问 Azure 媒体服务 API  
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的客户端 SDK 对媒体资源执行操作。 Azure 媒体服务提供了适用于 Microsoft.NET 的媒体服务客户端 SDK。 若要有权访问媒体服务资源和媒体服务 API，必须先进行身份验证。 
 
-媒体服务支持 [Azure Active Directory (Azure AD) 身份验证](../../active-directory/fundamentals/active-directory-whatis.md)。 Azure 媒体 REST 服务要求，发出 REST API 请求的用户或应用程序必须具有参与者或所有者角色，才能访问资源。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../../role-based-access-control/overview.md)。  
+媒体服务支持 [Azure Active Directory (Azure AD) 身份验证](../../active-directory/fundamentals/active-directory-whatis.md)。 Azure 媒体 REST 服务要求，发出 REST API 请求的用户或应用程序必须具有参与者**** 或所有者**** 角色，才能访问资源。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../../role-based-access-control/overview.md)。  
 
 本文档概述了如何使用 REST 或 .NET API 访问媒体服务 API。
 
 > [!NOTE]
-> 2018年6月1日已弃用访问控制授权。
+> 访问控制授权已于 2018 年 6 月 1 日弃用。
 
 ## <a name="access-control"></a>访问控制
 
 若要让 Azure 媒体 REST 请求成功，对于尝试访问的媒体服务帐户，调用用户必须具有参与者或所有者角色。  
 只有具有所有者角色的用户，才能向新用户或应用程序授予媒体资源（帐户）访问权限。 参与者角色只能访问媒体资源。
-未授权的请求失败，状态代码为 401。 如果看到此错误代码，请检查用户是否具有针对用户媒体服务帐户分配的参与者或所有者角色。 可以在 Azure 门户中检查角色分配。 搜索媒体帐户，再单击“访问控制”选项卡。 
+未授权的请求失败，状态代码为 401。 如果看到此错误代码，请检查用户是否具有针对用户媒体服务帐户分配的参与者或所有者角色。 可以在 Azure 门户中检查角色分配。 搜索媒体帐户，再单击“访问控制”**** 选项卡。 
 
 ![“访问控制”选项卡](./media/media-services-use-aad-auth-to-access-ams-api/media-services-access-control.png)
 
@@ -46,7 +46,7 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
  
 将 Azure AD 身份验证与 Azure 媒体服务结合使用时，可以选择下列两个身份验证选项：
 
-- **用户身份验证**： 验证使用应用程序与媒体服务资源进行交互的用户。 交互式应用程序应先提示用户输入用户凭据。 例如，授权用户用来监视编码作业或实时传送视频流的管理控制台应用程序。 
+- **用户身份验证** 验证使用应用程序与媒体服务资源进行交互的用户。 交互式应用程序应先提示用户输入用户凭据。 例如，授权用户用来监视编码作业或实时传送视频流的管理控制台应用程序。 
 - **服务主体身份验证**： 验证服务。 常常使用这种身份验证方法的应用程序是运行守护程序服务、中间层服务或计划作业的应用程序。 例如，Web 应用程序、函数应用程序、逻辑应用程序、API 和微服务。
 
 ### <a name="user-authentication"></a>用户身份验证 
@@ -139,7 +139,7 @@ Azure 媒体服务 API 是 RESTful API。 可用于通过 REST API 或可用的�
 
 如果未使用媒体服务 .NET 客户端 SDK，必须使用第 1 步所述参数，手动创建 Azure AD 访问令牌请求。 有关详细信息，请参阅[如何使用 Azure AD 身份验证库获取 Azure AD 令牌](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 异常：“远程服务器返回了错误: (401) 未授权。”
 

@@ -1,5 +1,5 @@
 ---
-title: 设置源设置以便将 VMware 灾难恢复到 Azure，并提供 Azure Site Recovery
+title: 使用 Azure 站点恢复将 VMware 灾难恢复的源设置设置为 Azure
 description: 本文介绍如何设置本地环境，以便使用 Azure Site Recovery 将 VMware VM 复制到 Azure。
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -9,31 +9,31 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257051"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>设置源环境以便从 VMware 复制到 Azure
 
-本文介绍如何设置源本地环境，以便将 VMware VM 复制到 Azure。 本文包括选择复制方案、将本地计算机设置为 Site Recovery 配置服务器以及自动发现本地 Vm 的步骤。
+本文介绍如何设置源本地环境，以便将 VMware VM 复制到 Azure。 本文包括选择复制方案、将本地计算机设置为站点恢复配置服务器以及自动发现本地 VM 的步骤。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文假设已完成以下操作：
 
 - 借助 [Azure Site Recovery 部署规划器](site-recovery-deployment-planner.md)规划了你的部署。 这可以帮助你根据每日数据更改率分配足够的带宽以满足你需要的恢复点目标 (RPO)。
-- 在 [Azure 门户](tutorial-prepare-azure.md)中[设置资源](https://portal.azure.com)。
+- 在 [Azure 门户](https://portal.azure.com)中[设置资源](tutorial-prepare-azure.md)。
 - [设置本地 VMware](vmware-azure-tutorial-prepare-on-premises.md)，包括用于自动发现的专用帐户。
 
 ## <a name="choose-your-protection-goals"></a>选择保护目标
 
-1. 在“恢复服务保管库”中，选择保管库名称。 我们在此方案中使用 **ContosoVMVault**。
-2. 在“入门”中，选择“Site Recovery”， 然后选择“准备基础结构”。
-3. 在“保护目标” **“计算机所在位置”中，选择“本地”**  > 。
-4. 在“要将计算机复制到何处?”中，选择“复制到 Azure”。
-5. 在“你的计算机是否已虚拟化”中，选择“是，带有 VMware vSphere 虚拟机监控程序”。 然后选择“确定”。
+1. 在“恢复服务保管库”**** 中，选择保管库名称。 我们在此方案中使用 **ContosoVMVault**。
+2. 在“入门”中，选择“Site Recovery”****， 然后选择“准备基础结构”****。
+3. 在**保护目标** > **"机器位于何处**"中，选择 **"本地**"。
+4. 在“要将计算机复制到何处?”中，选择“复制到 Azure”********。
+5. 在“你的计算机是否已虚拟化”中，选择“是，带有 VMware vSphere 虚拟机监控程序”********。 然后选择 **"确定**"。
 
 ## <a name="set-up-the-configuration-server"></a>设置配置服务器
 
@@ -41,7 +41,7 @@ ms.locfileid: "79257051"
 
 1. 了解配置服务器部署的[先决条件](vmware-azure-deploy-configuration-server.md#prerequisites)。
 2. [检查容量数字](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements)以便进行部署。
-3. [下载](vmware-azure-deploy-configuration-server.md#download-the-template)并[导入](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) OVA 模板，设置运行配置服务器的本地 VMware VM。 随模板提供的许可证是评估版许可证，有效期为180天。 在此期间，客户需要使用采购许可证激活 windows。
+3. [下载](vmware-azure-deploy-configuration-server.md#download-the-template)并[导入](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) OVA 模板，设置运行配置服务器的本地 VMware VM。 通过模板提供的许可证是评估许可证，有效期为 180 天。 超过有效期之后，客户需要使用购买的许可证来激活 Windows。
 4. 打开 VMware VM，并将其[注册](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services)到恢复服务保管库中。
 
 ## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>从防病毒程序中排除 Azure Site Recovery 文件夹
@@ -69,7 +69,7 @@ ms.locfileid: "79257051"
   - C:\ProgramData\ASRSetupLogs
   - C:\ProgramData\LogUploadServiceLogs
   - C:\inetpub
-  - Site Recovery 服务器安装目录。 例如：E:\Program Files (x86)\Microsoft Azure Site Recovery
+  - 站点恢复服务器安装目录。 例如：E:\Program Files (x86)\Microsoft Azure Site Recovery
 
 ### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>如果防病毒软件在横向扩展流程服务器/主目标上处于活动状态
 
@@ -81,7 +81,7 @@ ms.locfileid: "79257051"
 4. C:\ProgramData\ASRSetupLogs
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
-7. Azure Site Recovery 负载平衡进程服务器安装目录，例如： C:\Program Files （x86） \Microsoft Azure Site Recovery
+7. Azure 站点恢复加载平衡进程服务器安装目录，示例：C：*程序文件 （x86）\微软 Azure 站点恢复
 
 
 ## <a name="next-steps"></a>后续步骤

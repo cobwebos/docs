@@ -12,54 +12,54 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7e2a8cad7cd4410a95a6ebd60ada22de456737bf
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67462754"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD 注册设备
 
-Azure AD 注册设备的目标是为用户提供并支持自带设备办公 (BYOD) 或移动设备方案。 在这些情况下，用户可以访问你组织的 Azure Active Directory 控制资源使用的是个人设备。
+Azure AD 注册设备的目标是为用户提供对自带设备 （BYOD） 或移动设备方案的支持。 在这些情况下，用户可以使用个人设备访问组织的 Azure 活动目录控制资源。
 
-|   | 已注册 azure AD |
+|   | Azure AD 已注册 |
 | --- | --- |
-| **定义** | 而无需组织帐户登录到设备注册到 Azure AD |
-| **主要受众** | 适用于具有以下条件的所有用户： |
+| **定义** | 注册到 Azure AD，无需组织帐户登录设备 |
+| **主要受众** | 适用于所有具有以下条件的用户： |
 |   | 自带设备办公 (BYOD) |
 |   | 移动设备 |
 | **设备所有权** | 用户或组织 |
-| **操作系统** | Windows 10、 iOS、 Android 和 MacOS |
-| **预配** | Windows 10-设置 |
-|   | iOS/Android – 公司门户或 Microsoft Authenticator 应用 |
-|   | MacOS-公司门户 |
-| **设备登录选项** | 最终用户的本地凭据 |
+| **操作系统** | Windows 10、iOS、安卓和 MacOS |
+| **设置** | Windows 10 = 设置 |
+|   | iOS/安卓 – 公司门户或微软身份验证器应用程序 |
+|   | MacOS » 公司门户 |
+| **设备登录选项** | 最终用户本地凭据 |
 |   | 密码 |
 |   | Windows Hello |
 |   | PIN |
-|   | 生物识别或其他设备模式 |
-| **设备管理** | 移动设备管理 (示例：Microsoft Intune) |
+|   | 其他设备的生物识别或模式 |
+| **设备管理** | 移动设备管理（例如：微软Intune） |
 |   | 移动应用程序管理 |
-| **主要功能** | 对云资源的 SSO |
-|   | 当注册到 Intune 时的条件性访问 |
-|   | 通过应用保护策略的条件性访问 |
-|   | 启用使用 Microsoft Authenticator 应用手机登录 |
+| **关键功能** | SSO 到云资源 |
+|   | 注册到 Intune 时的条件访问 |
+|   | 通过应用保护策略进行条件访问 |
+|   | 使用 Microsoft 身份验证器应用启用电话登录 |
 
 ![Azure AD 注册设备](./media/concept-azure-ad-register/azure-ad-registered-device.png)
 
-Azure AD 注册设备的 Windows 10 设备上，使用 Microsoft 帐户之类的本地帐户登录，但另外有访问附加到组织的资源的 Azure AD 帐户。 基于该 Azure AD 帐户的更多受限，条件性访问策略应用到的设备标识，可以是组织中的资源的访问权限。
+Azure AD 注册设备已登录到使用本地帐户（如 Windows 10 设备上的 Microsoft 帐户），但另外还附加了 Azure AD 帐户以访问组织资源。 根据应用于设备标识的 Azure AD 帐户和条件访问策略，可以进一步限制对组织中资源的访问。
 
-管理员可以保护和进一步控制这些已注册的 Azure AD 的设备使用 Microsoft Intune 等移动设备管理 (MDM) 工具。 MDM 提供了一种强制组织所需的配置，如要求存储进行加密、 密码复杂性和保留已更新的安全软件。 
+管理员可以使用 Microsoft Intune 等移动设备管理 （MDM） 工具保护和进一步控制这些 Azure AD 注册设备。 MDM 提供了一种强制实施组织所需的配置的方法，例如要求对存储进行加密、密码复杂性以及安全软件不断更新。 
 
-访问工作应用程序第一次或手动使用 Windows 10 设置菜单时，可以完成 azure AD 注册。 
+首次访问工作应用程序或使用 Windows 10 设置菜单手动时，可以完成 Azure AD 注册。 
 
 ## <a name="scenarios"></a>方案
 
-你的组织中的用户想要访问电子邮件，工具报告时间关闭和从其家用电脑权益注册。 你的组织有需要从 Intune 兼容设备的访问权限的条件性访问策略背后的这些工具。 用户将添加其组织帐户，并向 Azure AD 注册其家庭 PC 和所需的 Intune 策略强制实施向其资源的用户权限。
+组织中的用户希望从其主电脑访问用于电子邮件、报告休假和福利注册的工具。 您的组织在条件访问策略后面拥有这些工具，该策略需要从符合 Intune 的设备进行访问。 用户添加其组织帐户，并将其主 PC 注册到 Azure AD，并强制执行所需的 Intune 策略，以允许用户访问其资源。
 
-另一个用户想要访问其已获得 root 权限的个人 Android 手机上其组织的电子邮件。 你的公司需要兼容设备和已创建的 Intune 符合性策略来阻止取得 root 权限的任何设备。 员工访问组织资源，此设备上的已停止。
+另一个用户想要访问他们的组织电子邮件在他们的个人Android手机已经扎根。 您的公司需要符合要求的设备，并创建了 Intune 合规性策略来阻止任何根设备。 员工将停止访问此设备上的组织资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [管理使用 Azure 门户的设备标识](device-management-azure-portal.md)
-- [在 Azure AD 中管理过时设备](manage-stale-devices.md)
+- [使用 Azure 门户管理设备标识](device-management-azure-portal.md)
+- [在 Azure AD 中管理陈旧的设备](manage-stale-devices.md)

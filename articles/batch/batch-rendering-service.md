@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: d4423b22c4c8afea5afa9c7040e081665b17ba87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60774023"
 ---
 # <a name="rendering-using-azure"></a>使用 Azure 进行渲染

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: e80b03f696a78887676e9f16750055a4dcfac230
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60755174"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Azure 数据框网关限制
@@ -28,11 +28,11 @@ ms.locfileid: "60755174"
 
 下表介绍了 Data Box Gateway 设备的限制。
 
-| 描述 | 值 |
+| 描述 | “值” |
 |---|---|
-|每 个设备的文件数 |1 亿 <br> 限制为每 2 TB 磁盘空间大约 2500 万个文件，最大限制为 1 亿 |
-|每 个设备的共享数 |24 |
-|每 个 Azure 存储容器的共享数 |第 |
+|不是。 设备的文件数 |1 亿 <br> 限制为每 2 TB 磁盘空间大约 2500 万个文件，最大限制为 1 亿 |
+|不是。 设备的共享数 |24 |
+|不是。 Azure 存储容器的共享数 |1 |
 |写入到共享的最大文件大小|对于 2 TB 的虚拟设备，最大文件大小为 500 GB。 <br> 最大文件大小按上述比例随数据磁盘大小而增大，直至到达最大大小 5 TB。 |
 
 ## <a name="azure-storage-limits"></a>Azure 存储限制

@@ -8,18 +8,18 @@ ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 38339defc9d06f3e809bc24f957ebbb30abb46d3
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598776"
 ---
 # <a name="how-to-deploy-azure-files"></a>如何部署 Azure 文件
-[Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 本文介绍如何在组织内实际部署 Azure 文件。
+[Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，可通过行业标准 SMB 协议访问。 本文介绍如何在组织内实际部署 Azure 文件。
 
 强烈建议在按照本文中的步骤操作之前，阅读[规划 Azure 文件部署](storage-files-planning.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本文假设你已完成下列步骤：
 
 - 在所需区域创建了具有所需复原和加密选项的 Azure 存储帐户。 有关如何创建存储帐户的分步说明，请参阅[创建存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。

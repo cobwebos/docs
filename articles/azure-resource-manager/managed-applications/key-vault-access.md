@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: f434ad6e19c89f248fec948c0a049fabb0f7c476
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248432"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>部署 Azure 托管应用程序时访问 Key Vault 机密
@@ -22,37 +22,37 @@ ms.locfileid: "79248432"
 
 1. 在门户中，选择 Key Vault。
 
-1. 选择“访问策略”。   
+1. 选择**访问策略**。   
 
    ![选择访问策略](./media/key-vault-access/select-access-policies.png)
 
-1. 选择“单击以显示高级访问策略”。
+1. 选择“单击以显示高级访问策略”****。
 
    ![显示高级访问策略](./media/key-vault-access/advanced.png)
 
-1. 选择“启用对 Azure 资源管理器的访问以进行模板部署”。 然后选择“保存”。
+1. 选择“启用对 Azure 资源管理器的访问以进行模板部署”****。 然后，选择 **"保存**"。
 
    ![启用模板部署](./media/key-vault-access/enable-template.png)
 
 ## <a name="add-service-as-contributor"></a>将服务添加为参与者
 
-1. 选择“访问控制 (IAM)”。
+1. 选择**访问控制 （IAM）。**
 
    ![选择访问控制](./media/key-vault-access/access-control.png)
 
-1. 选择“添加角色分配”。
+1. 选择“添加角色分配”****。
 
    ![选择“添加”](./media/key-vault-access/add-access-control.png)
 
-1. 对角色选择“参与者”。 搜索“设备资源提供程序”，然后从可用选项中选择它。
+1. 对角色选择“参与者”****。 搜索“设备资源提供程序”****，然后从可用选项中选择它。
 
    ![搜索提供程序](./media/key-vault-access/search-provider.png)
 
-1. 选择“保存”。
+1. 选择“保存”。****
 
 ## <a name="reference-key-vault-secret"></a>引用 Key Vault 机密
 
-若要将机密从 Key Vault 传递到托管应用程序中的模板，必须使用链接的[或嵌套的模板](../templates/linked-templates.md)，并引用链接的或嵌套模板的参数中的 Key Vault。 提供 Key Vault 的资源 ID 和机密名称。
+要将密钥保管库的机密传递到托管应用程序中的模板，必须使用[链接或嵌套模板](../templates/linked-templates.md)，并在链接或嵌套模板的参数中引用密钥保管库。 提供 Key Vault 的资源 ID 和机密名称。
 
 ```json
 {

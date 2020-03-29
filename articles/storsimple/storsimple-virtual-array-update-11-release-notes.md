@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: alkohli
 ms.openlocfilehash: 55103d6307614f8796c41c35d6345e1fc3aca261
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60789631"
 ---
 # <a name="storsimple-virtual-array-update-11-release-notes"></a>StorSimple 虚拟阵列 Update 1.1 发行说明
@@ -48,17 +48,17 @@ Update 1.1 对应于软件版本 **10.0.10307.0**。
 
 下表提供了此版本中所修复问题的摘要。
 
-| 不。 | Feature | 问题 |
+| 不是。 | Feature | 问题 |
 | --- | --- | --- |
-| 第 |备份| 此版本包含通过提高对云故障和 CPU 消耗量偏高的复原能力针对备份故障进行了改进的更改。|
-| 2 |日志记录| 此版本包含对设备处于支持会话时的详细模式日志记录的更改。|
+| 1 |备份| 此版本包含通过提高对云故障和 CPU 消耗量偏高的复原能力针对备份故障进行了改进的更改。|
+| 2 |Logging| 此版本包含对设备处于支持会话时的详细模式日志记录的更改。|
 
 
 ## <a name="known-issues-in-update-11"></a>Update 1.1 中的已知问题
 
 下表提供了 StorSimple Virtual Array 的已知问题的摘要，包括早期版本中发行说明的问题。
 
-| 不。 | Feature | 问题 | 解决方法/备注 |
+| 不是。 | Feature | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 | **1.** |更新 |无法将预览版中创建的虚拟阵列更新为受支持的正式版本。 |必须使用灾难恢复 (DR) 工作流将这些虚拟阵列故障转移为正式版本。 |
 | **2.** |预配的数据磁盘 |在预配指定大小的数据磁盘，并创建相应的 StorSimple 虚拟阵列后，不能立即扩展或收缩数据磁盘。 尝试进行这些操作将导致该设备本地层中的所有数据丢失。 | |
@@ -76,19 +76,19 @@ Update 1.1 对应于软件版本 **10.0.10307.0**。
 | **14.** |文件服务器 |如果文件夹中的文件具有与其关联的备用数据流 (ADS)，则不会通过灾难恢复、克隆和项目级恢复对该 ADS 进行备份或还原。 | |
 | **15.** |文件服务器 |不支持符号链接。 | |
 | **16.** |文件服务器 |将受 Windows 加密文件系统 (EFS) 保护的文件复制或存储到 StorSimple 虚拟阵列文件服务器时会导致不受支持的配置。  | |
-| 17\.  |更新 |如果您看到错误代码：2359302 （十六进制 0x240006） 时尝试进行安装的修补程序通过本地 UI，则表示在设备上已安装的修补程序。   | |
+| **17.** |更新 |如果尝试通过本地 UI 安装修补程序时出现错误代码：2359302（十六进制 0x240006），则表示设备上已安装有该修补程序。   | |
 | **18.** |更新 |如果使用本地 Web UI 在虚拟阵列上安装 Update 1，必须确保你运行的是 Update 0.6。 如果你运行的版本低于 Update 0.6，则必须先安装 Update 0.6，然后应用 Update 1。 如果直接从 Update 0.6 之前的版本安装 Update 1.0，则会丢失某些更新，监视图表将不会工作。   | |
 
 
 ## <a name="next-steps"></a>后续步骤
-在 StorSimple 虚拟阵列上安装 [Update 1.1](storsimple-virtual-array-install-update-11.md)。
+在 StorSimple 虚拟阵列上安装[更新 1.1。](storsimple-virtual-array-install-update-11.md)
 
 ## <a name="references"></a>参考
 查找较旧版本的发行说明？ 请转到：
-* [StorSimple 虚拟阵列 Update 1.0 发行说明](storsimple-virtual-array-update-1-release-notes.md)
+* [StorSimple 虚拟阵列更新 1.0 发行说明](storsimple-virtual-array-update-1-release-notes.md)
 * [StorSimple 虚拟阵列 Update 0.6 发行说明](storsimple-virtual-array-update-06-release-notes.md)
-* [StorSimple Virtual Array 更新 0.5 发行说明](storsimple-virtual-array-update-05-release-notes.md)
+* [StorSimple 虚拟阵列更新 0.5 发行说明](storsimple-virtual-array-update-05-release-notes.md)
 * [StorSimple 虚拟阵列更新 0.4 发行说明](storsimple-virtual-array-update-04-release-notes.md)
-* [StorSimple Virtual Array Update 0.3 发行说明](storsimple-ova-update-03-release-notes.md)
+* [StorSimple 虚拟阵列更新 0.3 发行说明](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array 更新 0.1 和 0.2 发行说明](storsimple-ova-update-01-release-notes.md)
 * [StorSimple Virtual Array 正式版发行说明](storsimple-ova-pp-release-notes.md)

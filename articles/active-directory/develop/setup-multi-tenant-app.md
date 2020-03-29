@@ -1,5 +1,5 @@
 ---
-title: 配置新的多租户应用程序 |Microsoft Docs
+title: 配置新的多租户应用程序 |微软文档
 description: 了解如何将应用程序配置为多租户，以及多租户应用程序如何工作
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: ae5f0f0cd42c4b734e14a66bc7ba9cf5bbfe61a4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701478"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>如何配置新的多租户应用程序

@@ -1,6 +1,6 @@
 ---
 title: 在 Visual Studio 中查看 Azure 流分析作业
-description: 了解如何使用 Visual Studio 查看、启动和停止、测试连接、检查结果并导出 Azure 流分析作业。
+description: 了解如何使用 Visual Studio 查看、启动和停止、测试连接、检查结果以及导出 Azure 流分析作业。
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.openlocfilehash: ad35ed342dfd40b98d61919749479ec5612cdd4f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75369620"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>使用 Visual Studio 查看 Azure 流分析作业
@@ -32,11 +32,11 @@ ms.locfileid: "75369620"
 
 ### <a name="open-the-job-view"></a>打开作业视图
 
-1. 在“服务器资源管理器”中，选择“流分析作业”，然后选择“刷新”。 作业应显示在“流分析作业”下。
+1. 在**服务器资源管理器中**，选择 **"流分析"作业**，然后选择 **"刷新**"。 作业应显示在“流分析作业”下****。
 
     ![流分析服务器资源管理器列表](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
-2. 展开作业节点，并双击“作业视图”节点打开作业视图。
+2. 展开作业节点，并双击“作业视图”节点打开作业视图****。
     
    ![展开的作业节点](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "75369620"
 
 ## <a name="check-job-results"></a>检查作业结果
 
-适用于 Visual Studio 的流分析工具目前支持 Azure Data Lake Storage 和 Blob 存储的输出预览。 若要查看结果，只需双击“作业视图”中作业关系图的输出节点并输入相应凭据即可。
+适用于 Visual Studio 的流分析工具目前支持 Azure Data Lake Storage 和 Blob 存储的输出预览。 若要查看结果，只需双击“作业视图”**** 中作业关系图的输出节点并输入相应凭据即可。
 
    ![流分析作业 Blob 输出](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
 
@@ -56,25 +56,25 @@ ms.locfileid: "75369620"
 
 可使用两种方法将现有作业导出到项目。
 
-1. 在“服务器资源管理器”中的“流分析作业”节点下，右键单击作业节点。 选择“导出到新的流分析项目”。
+1. 在“服务器资源管理器”中的“流分析作业”节点下，右键单击作业节点****。 选择“导出到新的流分析项目”****。
     
    ![将作业导出到项目](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-01.png)
     
-    生成的项目会显示在“解决方案资源管理器”中。
+    生成的项目会显示在“解决方案资源管理器”中****。
     
    ![解决方案资源管理器](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
 
-2. 在作业视图中，选择“生成项目”。
+2. 在作业视图中，选择“生成项目”****。
     
    ![从作业视图生成项目](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
 
 ## <a name="test-connections"></a>测试连接
 
-通过在“测试连接”下拉框中选择一个选项，可从“作业视图”中测试输入和输出连接。
+通过在“测试连接”**** 下拉框中选择一个选项，可从“作业视图”**** 中测试输入和输出连接。
 
    ![“测试连接”下拉框](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
 
-“测试连接”结果会显示在“输出”窗口中。
+“测试连接”**** 结果会显示在“输出”**** 窗口中。
 
    ![“测试连接”结果](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
 

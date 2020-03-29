@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.openlocfilehash: 7a589ba80b61ea5ef9ea1c941e9a0218a1653c99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60735503"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>将 IoT 设备连接到 Azure：IoT 中心和事件中心
@@ -44,7 +44,7 @@ Azure IoT 中心是连接 IoT 设备的云网关，它会收集数据并促成�
 
 ### <a name="next-steps"></a>后续步骤
 
-若要进一步探索 IoT 中心的功能，请参阅 [IoT 中心开发人员指南](iot-hub-devguide.md)。
+要进一步探索 IoT 中心的功能，请参阅[IoT 中心开发人员指南](iot-hub-devguide.md)。
 
 <!-- This one reference link is used over and over. --robinsh -->
 [checkmark]: ./media/iot-hub-compare-event-hubs/ic195031.png

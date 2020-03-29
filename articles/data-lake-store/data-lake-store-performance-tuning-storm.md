@@ -13,22 +13,22 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61436471"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Storm on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
 了解在优化 Azure Storm 拓扑的性能时应该考虑的因素。 例如，必须了解 Spout 和 Bolt 的工作特征（这种工作是 I/O 密集型还是内存密集型的）。 本文介绍一系列性能优化指南，包括如何排查常见问题。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
-* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集  。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
-* **在 Data Lake Storage Gen1 中运行 Storm 群集**。 有关详细信息，请参阅 [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
+* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
+* **在 Data Lake Storage Gen1 中运行 Storm 群集**。 有关详细信息，请参阅[HDInsight 上的风暴](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
 * **Data Lake Storage Gen1 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)。  
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>优化拓扑的并行度
@@ -117,11 +117,11 @@ ms.locfileid: "61436471"
 
 * **失败数。** 在超时之前无法完全处理的元组数目。
 
-* **容量。** 系统繁忙程度的度量值。 如果此数字等于 1，则表示 Bolt 以最快的速度工作。 如果小于 1，应提高并行度。 如果大于 1，应降低并行度。
+* **能力。** 系统繁忙程度的度量值。 如果此数字等于 1，则表示 Bolt 以最快的速度工作。 如果小于 1，应提高并行度。 如果大于 1，应降低并行度。
 
 ## <a name="troubleshoot-common-problems"></a>排查常见问题
 下面是一些常见的故障排除方案。
-* **大量元组超时。** 检查拓扑中的每个节点，确定瓶颈所在。 此问题的最常见原因是 Bolt 跟不上 Spout， 从而导致元组在等待处理时阻塞内部缓冲区。 请考虑增大超时值，或减小最大 Spout 挂起时间。
+* **许多元结正在超时。** 查看拓扑中的每个节点，以确定瓶颈的位置。 此问题的最常见原因是 Bolt 跟不上 Spout， 从而导致元组在等待处理时阻塞内部缓冲区。 请考虑增大超时值，或减小最大 Spout 挂起时间。
 
 * **进程执行延迟总计较高，但 Bolt 进程延迟较低。** 此情况下，可能不会快速确认元组。 请检查是否有足够数量的确认器。 另一种可能是元组在队列中等待 Bolt 处理的时间太长。 请减小最大 Spout 挂起时间。
 
@@ -132,10 +132,10 @@ ms.locfileid: "61436471"
 
 若要查看是否受到限制，请在客户端上启用调试日志记录：
 
-1. 在“Ambari” > “Storm” > “配置” > “高级 storm-worker-log4j”中，将 **&lt;root level="info"&gt;** 更改为 **&lt;root level=”debug”&gt;** 。     重新启动所有节点/服务使配置生效。
+1. 在**Ambari** > **风暴** > **Config** > **高级风暴工作者-log4j**中，将**根级别="信息"&lt;&gt;** 更改为**&lt;根级别="调试"。&gt;** 重新启动所有节点/服务使配置生效。
 2. 监视工作器节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Storage Gen1 限制异常。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Storm 的其他性能优化方法，请参阅这篇[博客](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)。
+风暴的其他性能调优可以[在此博客](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)中引用。
 
 有关可运行的其他示例，请参阅 [GitHub 上的这篇文章](https://github.com/hdinsight/storm-performance-automation)。

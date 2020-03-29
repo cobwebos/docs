@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60885334"
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Azure Data Lake Store 入门（使用 Azure CLI）
@@ -23,26 +23,26 @@ ms.locfileid: "60885334"
 
 > [!div class="op_single_selector"]
 > * [门户](data-lake-store-get-started-portal.md)
-> * [PowerShell](data-lake-store-get-started-powershell.md)
+> * [电源外壳](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
 > 
 
-了解如何使用 Azure CLI 来创建 Azure Data Lake Storage Gen1 帐户以及执行基本操作，如创建文件夹、上载和下载数据文件、删除帐户等。有关 Data Lake Storage Gen1 的详细信息，请参阅 [Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
+了解如何使用 Azure CLI 创建 Azure 数据湖存储 Gen1 帐户，并执行基本操作，如创建文件夹、上载和下载数据文件、删除帐户等。有关数据存储第 1 代的详细信息，请参阅[数据存储库第 1 代概述](data-lake-store-overview.md)。
 
 Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 它可以在 macOS、Linux 和 Windows 上使用。 有关详细信息，请参阅 [Azure CLI 概述](https://docs.microsoft.com/cli/azure)。 也可查看 [Azure Data Lake Storage Gen1 CLI 参考](https://docs.microsoft.com/cli/azure/dls)，获取命令和语法的完整列表。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具有：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **Azure CLI**：请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 以获取说明。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
-本文对 Data Lake Storage Gen1 使用一种较为简单的身份验证方法，你可以在其中以最终用户的身份登录。 系统会根据登录用户的访问级别约束对 Data Lake Storage Gen1 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Storage Gen1 中进行身份验证，即“最终用户身份验证”或“服务到服务身份验证”   。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
+本文对 Data Lake Storage Gen1 使用一种较为简单的身份验证方法，你可以在其中以最终用户的身份登录。 系统会根据登录用户的访问级别约束对 Data Lake Storage Gen1 帐户和文件系统的访问权限。 不过，也可以使用其他方法在 Data Lake Storage Gen1 中进行身份验证，即“最终用户身份验证”或“服务到服务身份验证”********。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
 
 ## <a name="log-in-to-your-azure-subscription"></a>登录到 Azure 订阅
@@ -53,7 +53,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 它可以�
     az login
     ```
 
-    将获得要在下一步骤中使用的代码。 使用 Web 浏览器打开页面 https://aka.ms/devicelogin ，然后输入该代码进行身份验证。 系统会提示使用凭据登录。
+    将获得要在下一步骤中使用的代码。 使用 Web 浏览器打开页面 https://aka.ms/devicelogin，然后输入该代码进行身份验证。 系统会提示使用凭据登录。
 
 2. 登录后，窗口会列出与帐户相关联的所有 Azure 订阅。 通过以下命令来使用特定订阅。
    
@@ -134,7 +134,7 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
 
 ## <a name="rename-download-and-delete-data-from-a-data-lake-storage-gen1-account"></a>重命名、下载以及删除 Data Lake Storage Gen1 帐户中的数据 
 
-* 使用以下命令，**重命名文件**：
+* **要重命名文件，** 请使用以下命令：
   
     ```azurecli
     az dls fs move --account mydatalakestoragegen1 --source-path /mynewfolder/vehicle1_09142014.csv --destination-path /mynewfolder/vehicle1_09142014_copy.csv
@@ -151,7 +151,7 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
     > 
     >
 
-* 使用以下命令，**删除文件**：
+* **要删除文件，** 请使用以下命令：
   
     ```azurecli
     az dls fs delete --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014_copy.csv
@@ -185,7 +185,7 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
     az dls fs access show --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014.csv
     ```
 
-    输出应如下所示：
+    输出应与以下内容类似：
 
         {
             "entries": [
@@ -235,5 +235,5 @@ az dls account delete --account mydatalakestoragegen1
 ## <a name="next-steps"></a>后续步骤
 * [使用 Azure Data Lake Storage Gen1 满足大数据要求](data-lake-store-data-scenarios.md) 
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
-* [配合使用 Azure Data Lake Analytics 和 Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [将 Azure Data Lake Analytics 与 Data Lake Storage Gen1 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76543012"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>了解在 Azure 中管理虚拟机时遇到的常见错误消息
@@ -99,8 +99,8 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  InvalidParameter  |  提供的密码长度必须在 {0} 到 {1} 个字符之间，且必须满足以下至少 {2} 个密码复杂性要求: <ol><li> 包含一个大写字符</li><li>包含一个小写字符</li><li>包含一个数字</li><li>包含一个特殊字符。</li></ol>  |
 |  InvalidParameter  |  不允许指定的管理员用户名。  |
 |  InvalidParameter  |  如果 VM 是通过平台或用户映像创建的，则无法附加现有 OS 磁盘。  |
-|  InvalidParameter  |  容器名称 {0} 无效。 容器名称的长度必须为 3-63 个字符，且仅可包含小写字母数字字符和连字符。 连字符前必须跟一个字母数字字符。  |
-|  InvalidParameter  |  URL {1} 中的容器名称 {0} 无效。 容器名称的长度必须为 3-63 个字符，且仅可包含小写字母数字字符和连字符。 连字符前必须跟一个字母数字字符。  |
+|  InvalidParameter  |  容器名称 {0} 无效。 容器名称的长度必须为 3-63 个字符，且仅可包含小写字母数字字符和连字符。 连字符前后必须为字母数字字符。  |
+|  InvalidParameter  |  URL {1} 中的容器名称 {0} 无效。 容器名称的长度必须为 3-63 个字符，且仅可包含小写字母数字字符和连字符。 连字符前后必须为字母数字字符。  |
 |  InvalidParameter  |  URL {0} 中的 Blob 名称包含斜杠。 目前磁盘不支持这种显示方式。  |
 |  InvalidParameter  |  URI {0} 似乎不是正确的 Blob URI。  |
 |  InvalidParameter  |  名为“{0}”的磁盘已在使用相同的 LUN: {1}。  |
@@ -205,7 +205,7 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 |  VMExtensionManagementInternalError  |  准备 VM 扩展时出现多个错误。 有关详细信息，请参阅 VM 扩展实例视图。  |
 |  VMExtensionProvisioningError  |  VM 在处理扩展“{0}”时报告失败。 错误消息:“{1}”。  |
 |  VMExtensionProvisioningError  |  未能在 VM 上预配多个 VM 扩展。 有关详细信息，请参阅 VM 扩展实例视图。  |
-|  VMExtensionProvisioningTimeout  |  VM 扩展 "{0}" 的预配已超时。扩展安装可能耗时过长，或无法获得扩展状态。  |
+|  VMExtensionProvisioningTimeout  |  VM 扩展的{0}预配已超时。扩展安装可能时间过长，或无法获得扩展状态。  |
 |  VMMarketplaceInvalidInput  |  从非市场映像创建虚拟机无需计划信息，请删除请求中的计划信息。 OS 磁盘名称为 {0}。  |
 |  VMMarketplaceInvalidInput  |  购买信息不匹配。 无法从市场映像部署。 OS 磁盘名称为 {0}。  |
 |  VMMarketplaceInvalidInput  |  从市场映像创建虚拟机需要请求中的计划信息。 OS 磁盘名称为 {0}。  |
@@ -216,4 +216,4 @@ Azure VM 使用以下 JSON 格式进行错误响应：
 
 
 ## <a name="next-steps"></a>后续步骤
-如果需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+如果需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **"获取支持**"。

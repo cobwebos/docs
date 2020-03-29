@@ -1,20 +1,20 @@
 ---
-title: 没有800计数限制的资源
-description: 列出资源组中可包含800个以上实例的 Azure 资源类型。
+title: 没有 800 计数限制的资源
+description: 列出可以在一个资源组中有 800 多个实例的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76937936"
 ---
-# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>资源不限于每个资源组800个实例
+# <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
 
-默认情况下，可以在每个资源组中部署最多800个资源类型的实例。 但是，某些资源类型不受800实例限制的限制。 本文列出了资源组中可包含800个以上实例的 Azure 资源类型。 所有其他资源类型限制为800实例。
+默认情况下，就单个资源类型来说，可以在每个资源组中部署最多 800 个实例。 不过，某些资源类型没有 800 个实例的限制。 本文列出了可以在一个资源组中有 800 多个实例的 Azure 资源类型。 所有其他资源类型有 800 个实例的限制。
 
-对于某些资源类型，需要联系支持人员以删除800实例限制。 本文中注明了这些资源类型。
+就某些资源类型来说，若要移除 800 个实例的限制，需联系支持部门。 这些资源类型已在本文中注明。
 
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
@@ -30,7 +30,7 @@ ms.locfileid: "76937936"
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
-* botServices-默认情况下，限于800实例。 可以通过联系支持人员来增加该限制。
+* 机器人服务 - 默认情况下，限制为 800 个实例。 可以通过联系支持人员来提高该限制。
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -46,9 +46,9 @@ ms.locfileid: "76937936"
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 * registries/buildTasks
-* 注册表/buildTasks/listSourceRepositoryProperties
+* registries/buildTasks/listSourceRepositoryProperties
 * registries/buildTasks/steps
-* 注册表/buildTasks/步骤/listBuildArguments
+* registries/buildTasks/steps/listBuildArguments
 * registries/eventGridFilters
 * registries/replications
 * registries/tasks
@@ -56,19 +56,19 @@ ms.locfileid: "76937936"
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
-* 服务器
+* servers
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
-* 服务器
+* servers
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 * serverGroups
-* 服务器
+* servers
 * serversv2
 
-## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>微软.企业知识图
 
 * services
 
@@ -77,9 +77,9 @@ ms.locfileid: "76937936"
 * clusters
 * namespaces
 
-## <a name="microsoftexperimentation"></a>Microsoft 试验
+## <a name="microsoftexperimentation"></a>微软.实验
 
-* experimentWorkspaces
+* 实验工作
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
@@ -101,11 +101,11 @@ ms.locfileid: "76937936"
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
-* netAppAccounts
-* netAppAccounts/capacityPools
-* netAppAccounts/capacityPools/卷
-* netAppAccounts/capacityPools/卷集/mountTargets
-* netAppAccounts/capacityPools/卷/快照
+* 净应用账户
+* 净应用账户/容量池
+* 净应用账户/容量池/卷
+* 净应用帐户/容量池/卷/装载目标
+* 净应用帐户/容量池/卷/快照
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -137,11 +137,11 @@ ms.locfileid: "76937936"
 * privateDnsZones/SOA
 * privateDnsZones/SRV
 * privateDnsZones/TXT
-* privateDnsZones/所有
+* privateDnsZones/all
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* publicIPAddresses-默认情况下，限于800实例。 可以通过联系支持人员来增加该限制。
+* publicIPAddresses - 默认情况下，限制为 800 个实例。 可以通过联系支持人员来提高该限制。
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
@@ -152,7 +152,7 @@ ms.locfileid: "76937936"
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
-* workspaceCollections-默认情况下，限于800实例。 可以通过联系支持人员来增加该限制。
+* workspaceCollections - 默认情况下，限制为 800 个实例。 可以通过联系支持人员来提高该限制。
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -168,7 +168,7 @@ ms.locfileid: "76937936"
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
-* 应用程序
+* 服务
 * containerGroups
 * gateways
 * networks
@@ -186,4 +186,4 @@ ms.locfileid: "76937936"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关配额和限制的完整列表，请参阅[Azure 订阅和服务限制、配额和约束](azure-subscription-service-limits.md)。
+有关配额和限制的完整列表，请参阅 [Azure 订阅和服务限制、配额与约束](azure-subscription-service-limits.md)。
