@@ -14,10 +14,10 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62127338"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>协调 Azure 开发测试实验室的实施
@@ -61,4 +61,4 @@ ms.locfileid: "62127338"
 5. 确保已完成相应的合规性与安全性评审
 
 ## <a name="next-steps"></a>后续步骤
-请参阅本系列的下一篇文章：[Azure 开发测试实验室基础设施治理](devtest-lab-guidance-governance-resources.md)
+参阅本系列教程的下一篇文章：[Azure 开发测试实验室基础结构的监管](devtest-lab-guidance-governance-resources.md)

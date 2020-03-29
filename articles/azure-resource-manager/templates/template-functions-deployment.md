@@ -1,23 +1,23 @@
 ---
-title: 模板函数-部署
+title: 模板函数 - 部署
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索部署信息的函数。
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 86a1d3d7e05fedacd7a3c044ecab241ca9d059c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79274263"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156321"
 ---
-# <a name="deployment-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的部署函数 
+# <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署功能 
 
-资源管理器提供了以下用于获取与当前部署相关的值的函数：
+资源管理器提供以下功能，用于获取与 Azure 资源管理器 （ARM） 模板的当前部署相关的值：
 
-* [deployment](#deployment)
+* [部署](#deployment)
 * [环境](#environment)
 * [参数](#parameters)
-* [variables](#variables)
+* [变量](#variables)
 
 若要从资源、资源组或订阅获取值，请参阅 [Resource functions](template-functions-resource.md)（资源函数）。
 
@@ -141,7 +141,7 @@ ms.locfileid: "79274263"
 
 ### <a name="return-value"></a>返回值
 
-此函数返回当前 Azure 环境的属性。 以下示例显示了全局 Azure 的属性。 主权云可能返回略有不同的属性。
+此函数返回当前 Azure 环境的属性。 以下示例显示了全局 Azure 的属性。 主权云可能会返回略有不同的属性。
 
 ```json
 {
@@ -179,7 +179,7 @@ ms.locfileid: "79274263"
 
 ### <a name="example"></a>示例
 
-下面的示例模板返回环境对象。
+以下示例模板返回环境对象。
 
 ```json
 {
@@ -195,7 +195,7 @@ ms.locfileid: "79274263"
 }
 ```
 
-在部署到全局 Azure 时，上面的示例返回以下对象：
+前面的示例在部署到全局 Azure 时返回以下对象：
 
 ```json
 {
@@ -237,7 +237,7 @@ ms.locfileid: "79274263"
 
 返回一个参数值。 指定的参数名称必须已在模板的 parameters 节中定义。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -326,7 +326,7 @@ ms.locfileid: "79274263"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | stringOutput | String | option 1 |
 | intOutput | Int | 1 |
@@ -334,7 +334,7 @@ ms.locfileid: "79274263"
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | option 1 |
 
-有关使用参数的详细信息，请参阅[Azure 资源管理器模板中的参数](template-parameters.md)。
+如需详细了解如何使用参数，请参阅 [Azure 资源管理器模板中的参数](template-parameters.md)。
 
 ## <a name="variables"></a>variables
 
@@ -342,7 +342,7 @@ ms.locfileid: "79274263"
 
 返回变量的值。 指定的变量名称必须已在模板的 variables 节中定义。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -392,7 +392,7 @@ ms.locfileid: "79274263"
         "var4": {
             "property1": "value1",
             "property2": "value2"
-        }
+          }
     },
     "resources": [],
     "outputs": {
@@ -418,18 +418,18 @@ ms.locfileid: "79274263"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-有关使用变量的详细信息，请参阅[Azure 资源管理器模板中的变量](template-variables.md)。
+如需详细了解如何使用变量，请参阅 [Azure 资源管理器模板中的变量](template-variables.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
 * 若要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
-* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
+* 要迭代创建资源类型时指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: d256f417fb3bacbf3f363fc2a9f8701a1bb49d71
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773626"
 ---
 # <a name="create-content-keys-with-rest"></a>使用 REST 创建内容密钥
@@ -30,7 +30,7 @@ ms.locfileid: "76773626"
 
 媒体服务允许传送加密的资产。 **ContentKey** 提供对**资产**的安全访问。 
 
-创建新资产时（例如，[上传文件](media-services-rest-upload-files.md)之前），可以指定以下加密选项：**StorageEncrypted**、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。 
+创建新资产时（例如，[上载文件](media-services-rest-upload-files.md)之前），可以指定以下加密选项：**StorageEncrypted**、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。 
 
 将资产传送到客户端时，可以使用以下两个加密选项之一[将资产配置为动态加密](media-services-rest-configure-asset-delivery-policy.md)：**DynamicEnvelopeEncryption** 或 **DynamicCommonEncryption**。
 
@@ -177,7 +177,7 @@ ms.locfileid: "76773626"
     }
 
 
-以下示例演示了如何创建 **ContentKey**，其中 **ContentKeyType** 设置为存储加密（“1”）且 **ProtectionKeyType** 设置为“0”，以指示保护密钥 ID 是 X.509 证书指纹。  
+下面的示例演示如何使用用于存储加密**的 ContentKeyType**集创建 ContentKey（"1"）和保护**ContentKey****密钥类型**设置为"0"以指示保护密钥 ID 是 X.509 证书指纹。  
 
 请求
 

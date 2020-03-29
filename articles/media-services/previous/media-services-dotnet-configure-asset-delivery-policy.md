@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: ab3c40ee408498453bb137c63c440d980b0b7255
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974506"
 ---
 # <a name="configure-asset-delivery-policies-with-net-sdk"></a>使用 .NET SDK 配置资产传送策略
@@ -30,13 +30,13 @@ ms.locfileid: "74974506"
 本文介绍为何以及如何创建和配置资产传送策略。
 
 >[!NOTE]
->创建 AMS 帐户后，系统会将一个处于“已停止”状态的默认流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+>创建 AMS 帐户时，默认**流式**处理终结点将添加到处于 **"已停止"** 状态的帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。**** 
 >
 >此外，要使用动态打包和动态加密，资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。
 
 可以将不同的策略应用到同一个资产。 例如，可以将 PlayReady 加密应用到平滑流，将 AES 信封应用到 MPEG DASH 和 HLS。 将阻止流式处理传送策略中未定义的任何协议（例如，添加仅将 HLS 指定为协议的单个策略）。 如果根本没有定义任何资产传送策略，则属例外。 此时，将允许所有明文形式的协议。
 
-如果要传送存储加密资产，则必须配置资产的传送策略。 在流式传输资产之前，流式处理服务器会删除存储加密，然后再使用指定的传送策略流式传输内容。 例如，要传送使用高级加密标准 (AES) 信封加密密钥加密的资产，请将策略类型设为 **DynamicEnvelopeEncryption**。 要删除存储加密并以明文的形式流式传输资产，请将策略类型设为 **NoDynamicEncryption**。 下面是演示如何配置这些策略类型的示例。
+如果要传送存储加密资产，则必须配置资产的传送策略。 在流式传输资产之前，流式处理服务器会删除存储加密，然后再使用指定的传送策略流式传输内容。 例如，要传送使用高级加密标准 (AES) 信封加密密钥加密的资产，请将策略类型设为 **DynamicEnvelopeEncryption**。 要删除存储加密并在清除中流式传输资产，请将策略类型设置为**NoDynamic 加密**。 下面是演示如何配置这些策略类型的示例。
 
 根据配置资产传送策略的方式，可以动态打包、加密和流式传输以下流式处理协议：平滑流式处理、HLS 和 MPEG DASH。
 
@@ -199,9 +199,9 @@ Azure 媒体服务还允许添加 Widevine 加密。 以下示例演示将 PlayR
     }
 ```
 
-## <a id="types"></a>定义 AssetDeliveryPolicy 时使用的类型
+## <a name="types-used-when-defining-assetdeliverypolicy"></a><a id="types"></a>定义 AssetDeliveryPolicy 时使用的类型
 
-### <a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
+### <a name="assetdeliveryprotocol"></a><a id="AssetDeliveryProtocol"></a>AssetDeliveryProtocol
 
 以下枚举说明可以为资产传递协议设置的值。
 
@@ -237,7 +237,7 @@ Azure 媒体服务还允许添加 Widevine 加密。 以下示例演示将 PlayR
         All = 0xFFFF
     }
 ```
-### <a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
+### <a name="assetdeliverypolicytype"></a><a id="AssetDeliveryPolicyType"></a>AssetDeliveryPolicyType
 
 以下枚举说明可以为资产传递策略类型设置的值。  
 ```csharp
@@ -270,7 +270,7 @@ Azure 媒体服务还允许添加 Widevine 加密。 以下示例演示将 PlayR
         DynamicCommonEncryption
         }
 ```
-### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a name="contentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
 
 以下枚举说明可用于配置到客户端的内容密钥传递方法的值。
   ```csharp  
@@ -302,7 +302,7 @@ Azure 媒体服务还允许添加 Widevine 加密。 以下示例演示将 PlayR
 
     }
 ```
-### <a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
+### <a name="assetdeliverypolicyconfigurationkey"></a><a id="AssetDeliveryPolicyConfigurationKey"></a>AssetDeliveryPolicyConfigurationKey
 
 以下枚举说明为配置用于获取资产传递策略的特定配置的密钥可以设置的值。
 ```csharp
@@ -352,7 +352,7 @@ Azure 媒体服务还允许添加 Widevine 加密。 以下示例演示将 PlayR
 
 ## <a name="additional-notes"></a>附加说明
 
-* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
 ms.openlocfilehash: 84367a00643c48e7fe2fb7f907bab64589193b2e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938544"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
@@ -58,7 +58,7 @@ DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度�
 
 * [CA App Synthetic Monitor](https://asm.ca.com/en/checkit.php)
 
-    此站点以前称为 "监视鼠标检查网站" 工具，可同时显示来自多个地理区域的 DNS 解析时间。 输入 URL 即可查看 DNS 解析时间、连接时间以及各个地理位置的连接速度。 使用此测试可以查看针对全球不同位置返回了哪些托管服务。
+    以前称为 Watch-mouse Check Website Tool，此站点同时显示来自多个地理区域的 DNS 解析时间。 输入 URL 即可查看 DNS 解析时间、连接时间以及各个地理位置的连接速度。 使用此测试可以查看针对全球不同位置返回了哪些托管服务。
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 

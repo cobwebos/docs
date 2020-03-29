@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e822906a072ec8244c7108e98289482adebb5a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18b5f19e3e994aa05fa99caf360d0c1be69ec7a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60244876"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049775"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>与 Azure AD 联合的多域支持
 以下文档提供了有关与 Office 365 或 Azure AD 域联合时如何使用多个顶级域和子域的指导。
@@ -69,7 +69,7 @@ ms.locfileid: "60244876"
 
 因此，在 Azure AD 或 Office 365 上进行身份验证期间，将使用用户令牌中的 IssuerUri 元素来查找 Azure AD 中的域。  如果找不到匹配项，身份验证将会失败。
 
-例如，如果用户的 UPN 是 bsimon@bmcontoso.com，则 AD FS 颁发的令牌中的 IssuerUri 元素将设置为 <http://bmcontoso.com/adfs/services/trust>。 此元素将匹配 Azure AD 配置，并且身份验证会成功。
+例如，如果用户的 UPN 是 bsimon@bmcontoso.com，则 AD FS 颁发的令牌中的 IssuerUri 元素将设置为 `http://bmcontoso.com/adfs/services/trust`。 此元素将匹配 Azure AD 配置，并且身份验证会成功。
 
 以下是实现此逻辑的自定义声明规则：
 
@@ -82,7 +82,7 @@ ms.locfileid: "60244876"
 >
 
 ## <a name="how-to-update-the-trust-between-ad-fs-and-azure-ad"></a>如何更新 AD FS 与 Azure AD 之间的信任
-如果未设置 AD FS 与 Azure AD 实例之间的联合信任，可能需要重新创建此信任。  原因是，当进行初始设置时未使用 `-SupportMultipleDomain` 参数时，会将 IssuerUri 设置为默认值。  在下面的屏幕截图中，可以看到 IssuerUri 设置为 https://adfs.bmcontoso.com/adfs/services/trust 。
+如果未设置 AD FS 与 Azure AD 实例之间的联合信任，可能需要重新创建此信任。  原因是，当进行初始设置时未使用 `-SupportMultipleDomain` 参数时，会将 IssuerUri 设置为默认值。  在下面的屏幕截图中，可以看到 IssuerUri 设置为 `https://adfs.bmcontoso.com/adfs/services/trust`。
 
 如果已成功在 Azure AD 门户中添加了新域，然后尝试使用 `Convert-MsolDomaintoFederated -DomainName <your domain>` 对其进行转换，则会收到以下错误。
 
@@ -100,9 +100,9 @@ ms.locfileid: "60244876"
 
 请使用以下步骤来删除 Microsoft Online 信任，并更新原始域。
 
-1. 在 AD FS 联合服务器上，打开“AD FS 管理”  。
-2. 展开左侧的“信任关系”  和“信赖方信任” 
-3. 删除右侧的“Microsoft Office 365 标识平台”  项。
+1. 在 AD FS 联合服务器上，打开“AD FS 管理”****。
+2. 展开左侧的“信任关系”**** 和“信赖方信任”****
+3. 删除右侧的“Microsoft Office 365 标识平台”**** 项。
    ![删除 Microsoft Online](./media/how-to-connect-install-multiple-domains/trust4.png)
 4. 在已安装[适用于 Windows PowerShell 的 Azure Active Directory 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx)的计算机上运行以下命令：`$cred=Get-Credential`。  
 5. 输入要联合的 Azure AD 域的全局管理员用户名和密码。
@@ -126,18 +126,18 @@ ms.locfileid: "60244876"
 5. 单击“安装”
 
 ### <a name="verify-the-new-top-level-domain"></a>验证新的顶级域
-使用 PowerShell 命令 `Get-MsolDomainFederationSettings -DomainName <your domain>` 可以查看更新的 IssuerUri。  下面的屏幕截图显示原始域 http://bmcontoso.com/adfs/services/trust 上的联合设置已更新
+使用 PowerShell 命令 `Get-MsolDomainFederationSettings -DomainName <your domain>` 可以查看更新的 IssuerUri。  下面的屏幕截图显示原始域 `http://bmcontoso.com/adfs/services/trust` 上的联合设置已更新
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
-新域上的 IssuerUri 已设置为 https://bmfabrikam.com/adfs/services/trust
+新域上的 IssuerUri 已设置为 `https://bmfabrikam.com/adfs/services/trust`
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/settings2.png)
 
 ## <a name="support-for-subdomains"></a>对子域的支持
 添加子域时，因为 Azure AD 处理域的方式，导致子域继承父项的设置。  因此，IssuerUri 需要与父项匹配。
 
-例如，假设我有 bmcontoso.com，后来又添加了 corp.bmcontoso.com。  corp.bmcontoso.com 中的用户的 IssuerUri 将需要是 **http://bmcontoso.com/adfs/services/trust 。**  但是，为 Azure AD 实现的上述标准规则将生成颁发者为 **http://corp.bmcontoso.com/adfs/services/trust 的令牌。** 这与域的所需值不匹配，身份验证会失败。
+例如，假设我有 bmcontoso.com，后来又添加了 corp.bmcontoso.com。  来自corp.bmcontoso.com的用户的颁发者需要是**http://bmcontoso.com/adfs/services/trust。**  但是，上述为 Azure AD 实现的标准规则将生成一个颁发者**http://corp.bmcontoso.com/adfs/services/trust为 的令牌。** 这与域的所需值不匹配，身份验证会失败。
 
 ### <a name="how-to-enable-support-for-subdomains"></a>如何启用对子域的支持
 若要避免此行为，需要更新 Microsoft Online 的 AD FS 信赖方信任。  为此，必须配置自定义声明规则，使其在构造自定义 Issuer 值时能够从用户的 UPN 后缀中删除任何子域。
@@ -154,7 +154,7 @@ ms.locfileid: "60244876"
 1. 打开“AD FS 管理”
 2. 右键单击 Microsoft Online RP 信任，并选择“编辑声明规则”
 3. 选择第三个声明规则并替换![编辑声明](./media/how-to-connect-install-multiple-domains/sub1.png)
-4. 替换当前声明：
+4. 将当前的声明：
 
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
 
@@ -169,8 +169,8 @@ ms.locfileid: "60244876"
 ## <a name="next-steps"></a>后续步骤
 安装 Azure AD Connect 后，可以[验证安装并分配许可证](how-to-connect-post-installation.md)。
 
-若要了解有关这些功能（在安装过程中已启用）的详细信息，请参阅：[自动升级](how-to-connect-install-automatic-upgrade.md)、[防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](how-to-connect-health-sync.md)。
+若要了解有关这些功能（在安装过程中已启用）的详细信息，请参阅[自动升级](how-to-connect-install-automatic-upgrade.md)、[防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)和 [Azure AD Connect Health](how-to-connect-health-sync.md)。
 
 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](how-to-connect-sync-feature-scheduler.md)。
 
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。

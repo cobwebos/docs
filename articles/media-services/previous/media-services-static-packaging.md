@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.openlocfilehash: e99d72a0bce51d5d61e5f248f5ba279afe13a405
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74970119"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>使用 Azure 媒体包装器完成静态打包任务  
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 
 ## <a name="overview"></a>概述
 
 为通过 Internet 传送数字视频，必须压缩媒体。 数字视频文件较大，可能因过大而无法通过 Internet 传送或者无法在客户的设备上正常显示。 编码是压缩视频和音频以便客户能够查看媒体的过程。 视频经过编码后即可放入不同的文件容器中。 将编码后的媒体放入容器这一过程称为打包。 以 MP4 文件为例，可以使用 Azure 媒体包装器将其转换为平滑流式处理或 HLS 内容。 
 
-媒体服务支持动态和静态打包。 使用静态打包时，需要以客户要求的各种格式创建内容副本。 通过动态打包，你只需创建包含一组自适应比特率或平滑流式处理文件的资产。 然后，按需流式处理服务器会确保用户以选定的协议按清单或分段请求中的指定格式接收流。 因此，只需以单一存储格式存储文件并为其付费，媒体服务服务就会基于客户端的请求构建并提供相应响应。
+媒体服务支持动态和静态打包。 使用静态打包时，需要以客户要求的各种格式创建内容副本。 使用动态打包，只需创建包含一组自适应比特率 MP4 或平滑流式处理文件的资产。 然后，按需流式处理服务器会确保用户以选定的协议按清单或分段请求中的指定格式接收流。 因此，只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。
 
 > [!NOTE]
 > 建议使用[动态打包](media-services-dynamic-packaging-overview.md)。
@@ -81,7 +81,7 @@ ms.locfileid: "74970119"
     </smil>
 ```
 
-获得自适应比特率设置后，可以利用动态打包。 动态打包允许通过指定的协议传送流，而不需要进一步地打包。 有关详细信息，请参阅[动态打包](media-services-dynamic-packaging-overview.md)。
+一旦您设置了自适应比特率 MP4，即可利用动态打包。 动态打包允许通过指定的协议传送流，而不需要进一步地打包。 有关详细信息，请参阅[动态打包](media-services-dynamic-packaging-overview.md)。
 
 以下代码示例使用 Azure 媒体服务 .NET SDK 扩展。  请确保更新代码，以指向输入 MP4 文件和 .ism 文件所在的文件夹， 并指向 MediaPackager_ValidateTask.xml 文件所在的位置。 此 XML 文件的定义请参见 [Azure 媒体包装器的任务预设](https://msdn.microsoft.com/library/azure/hh973635.aspx)一文。
 
@@ -717,7 +717,7 @@ ms.locfileid: "74970119"
 > [!NOTE]
 > 要将内容转换为 HLS，必须先将内容转换/编码为平滑流。
 > 此外，对于使用 AES 加密的 HLS，请确保在 MediaPackager_SmoothToHLS.xml 文件中设置以下属性：将加密属性设置为 true，将密钥值和 keyuri 值设置为指向身份验证\授权服务器。
-> 媒体服务创建密钥文件并将其放置在资产容器中。 应该将 /asset-containerguid/\*.key 文件复制到服务器（或创建自己的密钥文件），然后从资产容器中删除 \*.key 文件。
+> 媒体服务创建一个密钥文件并将其放在资产容器中。 应该将 /asset-containerguid/\*.key 文件复制到服务器（或创建自己的密钥文件），然后从资产容器中删除 \*.key 文件。
 > 
 > 
 
@@ -1481,7 +1481,7 @@ ms.locfileid: "74970119"
 
 ## <a name="additional-notes"></a>附加说明
 
-* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 0c37d77ca73ddbe8b79351f90275a1d639757633
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74923740"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
@@ -24,32 +24,32 @@ ms.locfileid: "74923740"
 > * [版本 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [当前版本](connector-sap-business-warehouse.md)
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP Business Warehouse (BW) 复制数据。 是基于总体介绍复制活动的[复制活动概述](copy-activity-overview.md)一文进行扩展的。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 SAP Business Warehouse (BW) 复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 >[!TIP]
->若要了解 ADF 全面支持 SAP 数据集成方案，请参阅[使用 Azure 数据工厂的 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，并提供详细的简介、comparsion 和指南。
+>若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含详细介绍、比较和指导。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-以下活动支持此 SAP Business 仓库连接器：
+以下活动支持此 SAP Business Warehouse 连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
-- [Lookup 活动](control-flow-lookup-activity.md)
+- [查找活动](control-flow-lookup-activity.md)
 
 可以将数据从 SAP Business Warehouse 复制到任何受支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，此 SAP Business Warehouse 连接器支持：
 
-- SAP Business Warehouse 版本 7.x。
-- 使用 MDX 查询从 InfoCubes 和 QueryCubes（包括 BEx 查询）复制数据。
+- SAP Business Warehouse 版本 7.x****。
+- 使用 MDX 查询从 InfoCubes 和 QueryCubes****（包括 BEx 查询）复制数据。
 - 使用基本身份验证复制数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要使用此 SAP Business Warehouse 连接器，需要：
 
-- 设置自承载集成运行时。 有关详细信息，请参阅[自我托管集成运行时](create-self-hosted-integration-runtime.md)一文。
-- 在集成运行时计算机上安装 SAP NetWeaver 库。 可以从 SAP 管理员处或直接从 [SAP 软件下载中心](https://support.sap.com/swdc)获取 SAP Netweaver 库。 搜索“SAP Note #1025361”获取最新版本的下载位置。 请确保选取与集成运行时安装匹配的 64 位 SAP NetWeaver 库。 然后，按照 SAP 说明安装 SAP NetWeaver RFC SDK 中包含的所有文件。 SAP NetWeaver 库也包括在 SAP 客户端工具安装中。
+- 设置自承载集成运行时。 有关详细信息[，请参阅自托管集成运行时](create-self-hosted-integration-runtime.md)文章。
+- 在集成运行时计算机上安装 SAP NetWeaver 库****。 可以从 SAP 管理员处或直接从 [SAP 软件下载中心](https://support.sap.com/swdc)获取 SAP Netweaver 库。 搜索“SAP Note #1025361”**** 获取最新版本的下载位置。 请确保选择与您的集成运行时安装匹配的**64 位**SAP NetWeaver 库。 然后，按照 SAP 说明安装 SAP NetWeaver RFC SDK 中包含的所有文件。 SAP NetWeaver 库也包括在 SAP 客户端工具安装中。
 
 >[!TIP]
 >要解决 SAP BW 的连接问题，请确保：
@@ -66,17 +66,17 @@ ms.locfileid: "74923740"
 
 SAP Business Warehouse (BW) 链接服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：SapBw | 是 |
-| 服务器 | SAP BW 实例所驻留的服务器的名称。 | 是 |
+| type | type 属性必须设置为：SapBw**** | 是 |
+| server | SAP BW 实例所驻留的服务器的名称。 | 是 |
 | systemNumber | SAP BW 系统的系统编号。<br/>允许值：用字符串表示的两位十进制数。 | 是 |
 | clientId | SAP W 系统中的客户端的客户端 ID。<br/>允许值：用字符串表示的三位十进制数。 | 是 |
 | userName | 有权访问 SAP 服务器的用户名。 | 是 |
 | password | 用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
-**示例：**
+**例子：**
 
 ```json
 {
@@ -103,11 +103,11 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 SAP BW 数据集支持的属性列表。
+有关可用于定义数据集的节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 SAP BW 数据集支持的属性列表。
 
-若要从 SAP BW 复制数据，请将数据集的 type 属性设置为 " **SapBwCube**"。 RelationalTable 类型的 SAP BW 数据集不支持任何类型特定的属性。
+要从 SAP BW 复制数据，请将数据集的 type 属性设置为“SapBwCube”****。 RelationalTable 类型的 SAP BW 数据集不支持任何类型特定的属性。
 
-**示例：**
+**例子：**
 
 ```json
 {
@@ -124,7 +124,7 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 }
 ```
 
-如果使用的是 `RelationalTable` 类型化数据集，则仍支持原样，但建议使用新的数据集。
+如果使用 `RelationalTable` 类型数据集，该数据集仍按原样受支持，但我们建议今后使用新数据集。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
@@ -132,14 +132,14 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 ### <a name="sap-bw-as-source"></a>SAP BW 作为源
 
-若要从 SAP BW 复制数据，复制活动**源**部分支持以下属性：
+若要从 SAP BW 复制数据，复制活动的 **source** 节支持以下属性：
 
-| properties | 描述 | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为： **SapBwSource** | 是 |
-| 查询 | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | 是 |
+| type | 必须将复制活动源的类型属性设置为 **：SapBwSource** | 是 |
+| query | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | 是 |
 
-**示例：**
+**例子：**
 
 ```json
 "activities":[
@@ -171,7 +171,7 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 ]
 ```
 
-如果使用的是 `RelationalSource` 类型化源，则仍支持原样，但建议使用新的源。
+如果使用 `RelationalSource` 类型源，该源仍按原样受支持，但我们建议今后使用新源。
 
 ## <a name="data-type-mapping-for-sap-bw"></a>SAP BW 的数据类型映射
 
@@ -180,33 +180,33 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 | SAP BW 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
 | ACCP | Int |
-| CHAR | 字符串 |
-| CLNT | 字符串 |
+| CHAR | String |
+| CLNT | String |
 | CURR | Decimal |
-| CUKY | 字符串 |
+| CUKY | String |
 | DEC | Decimal |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |
-| LANG | 字符串 |
-| LCHR | 字符串 |
+| LANG | String |
+| LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
 | QUAN | Decimal |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| STRING | 字符串 |
-| 单位 | 字符串 |
-| DATS | 字符串 |
-| NUMC | 字符串 |
-| TIMS | 字符串 |
+| STRING | String |
+| UNIT | String |
+| DATS | String |
+| NUMC | String |
+| TIMS | String |
 
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
-若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动作为源和接收器支持的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 29a4d20390575778ccdecde390c257ccf6a48eb1
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720922"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的 Key Vault 中存储机密
@@ -26,13 +26,13 @@ ms.locfileid: "76720922"
 
 为解决此问题并还将机密保存在安全位置，开发测试实验室支持在 [Azure Key Vault](../key-vault/key-vault-overview.md) 中存储机密。 当用户第一次保存机密时，开发测试实验室服务会自动在包含实验室的同一资源组中创建密钥保管库，并将机密存储在密钥保管库中。 开发测试实验室为每个用户创建单独的密钥保管库。 
 
-请注意，实验室用户首先需要创建实验室虚拟机，然后才能在 key vault 中创建机密。 这是因为，开发测试实验室服务需要将实验室用户与有效的用户文档关联，然后才允许用户在其密钥保管库中创建和存储机密。 
+请注意，实验室用户首先需要创建实验室虚拟机，然后才能在密钥保管库中创建机密。 这是因为 DevTest Lab 服务需要在允许实验室用户在其密钥保管库中创建和存储机密之前将实验室用户与有效的用户文档相关联。 
 
 
 ## <a name="save-a-secret-in-azure-key-vault"></a>将机密保存在 Azure Key Vault 中
 若要在 Azure Key Vault 中保存机密，请执行以下步骤：
 
-1. 在左侧菜单中选择“我的机密”。
+1. 在左侧菜单中选择“我的机密”****。
 2. 输入机密的**名称**。 在创建 VM、公式或环境时，你会在下拉列表中看到此名称。 
 3. 输入机密作为**值**。
 
@@ -41,8 +41,8 @@ ms.locfileid: "76720922"
 ## <a name="use-a-secret-from-azure-key-vault"></a>使用 Azure Key Vault 中的机密
 当需要输入机密以创建 VM、公式或环境时，可以手动输入机密或从 Key Vault 中选择已保存的机密。 若要使用存储在 Key Vault 中的机密，请执行以下操作：
 
-1. 选择“使用已保存的机密”。 
-2. 从“选取机密”的下拉列表中选择机密。 
+1. 选择“使用已保存的机密”****。 
+2. 从“选取机密”**** 的下拉列表中选择机密。 
 
     ![在 VM 中使用机密](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
 

@@ -1,6 +1,6 @@
 ---
 title: PowerShell：将 Azure Data Lake Store Gen1 用作附加存储的 Azure HDInsight 群集 | Microsoft Docs
-description: 了解如何使用 Azure PowerShell 配置 Azure Data Lake Storage Gen1 为附加存储的 HDInsight 群集。
+description: 了解如何使用 Azure PowerShell 将具有 Azure 数据湖存储 Gen1 的 HDInsight 群集配置为其他存储。
 services: data-lake-store,hdinsight
 documentationcenter: ''
 author: twooley
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 4cd61619e0417ab1db8d8413872b2dff1c904fc1
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970144"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>使用 Azure PowerShell 创建将 Azure Data Lake Storage Gen1 用作额外存储的 HDInsight 群集
@@ -29,7 +29,7 @@ ms.locfileid: "78970144"
 >
 >
 
-了解如何使用 Azure PowerShell 来配置包含 Azure Data Lake Storage Gen1（用作额外存储）的 HDInsight 群集。 有关如何创建将 Data Lake Storage Gen1 用作默认存储的 HDInsight 群集的说明，请参阅[创建将 Data Lake Storage Gen1 用作默认存储的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)。
+了解如何使用 Azure PowerShell 来配置包含 Azure Data Lake Storage Gen1（用作额外存储）的 HDInsight 群集****。 有关如何创建将 Data Lake Storage Gen1 用作默认存储的 HDInsight 群集的说明，请参阅[创建将 Data Lake Storage Gen1 用作默认存储的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)。
 
 > [!NOTE]
 > 若要将 Data Lake Storage Gen1 用作 HDInsight 群集的额外存储，强烈建议在创建群集时按本文说明进行操作。 向现有 HDInsight 群集添加 Data Lake Storage Gen1 作为额外存储是很复杂的过程，容易出现错误。
@@ -50,7 +50,7 @@ ms.locfileid: "78970144"
 * 创建具有 Data Lake Storage Gen1 身份验证的 HDInsight 群集
 * 在此群集上运行作业
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -58,7 +58,7 @@ ms.locfileid: "78970144"
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
-* **Windows SDK**。 可从[此处](https://dev.windows.com/en-us/downloads)进行安装。 可使用它来创建安全证书。
+* **Windows SDK**. 可从[此处](https://dev.windows.com/en-us/downloads)进行安装。 可使用它来创建安全证书。
 * **Azure Active Directory 服务主体**。 本教程中的步骤用于指导如何在 Azure AD 中创建服务主体。 但是，只有 Azure AD 管理员才能创建服务主体。 Azure AD 管理员可以跳过此先决条件，继续阅读本教程。
 
     **如果不是 Azure AD 管理员**，将无法执行创建服务主体所需的步骤。 在这种情况下，Azure AD 管理员必须先创建服务主体，然后才能创建包含 Data Lake Storage Gen1 的 HDInsight 群集。 此外，必须使用证书创建服务主体，如[使用证书创建服务主体](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)中所述。
@@ -138,7 +138,7 @@ ms.locfileid: "78970144"
 
 继续进行本部分中的步骤前，请确保已安装有 [Windows SDK](https://dev.windows.com/en-us/downloads)。 还必须创建一个目录（该证书会在其中创建），例如 **C:\mycertdir**。
 
-1. 从 PowerShell 窗口中，导航到安装 Windows SDK 的位置（通常 `C:\Program Files (x86)\Windows Kits\10\bin\x86` 并使用[MakeCert][makecert]实用工具创建自签名证书和私钥。 使用以下命令。
+1. 在 PowerShell 窗口中，导航到安装 Windows SDK 的位置（通常为 `C:\Program Files (x86)\Windows Kits\10\bin\x86`），并使用 [MakeCert][makecert] 实用工具创建一个自签名证书和私钥。 使用以下命令。
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
@@ -146,7 +146,7 @@ ms.locfileid: "78970144"
         makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
 
     系统会提示输入私钥密码。 此命令成功执行后，指定的证书目录中应会出现 **CertFile.cer** 和 **mykey.pvk**。
-2. 使用[Pvk2Pfx][pvk2pfx]实用工具将 MakeCert 创建的 pvk 和 .cer 文件转换为 .pfx 文件。 运行以下命令。
+2. 使用 [Pvk2Pfx][pvk2pfx] 实用工具将 MakeCert 创建的.pvk 和.cer 文件转换为.pfx 文件。 运行以下命令。
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 
@@ -156,7 +156,7 @@ ms.locfileid: "78970144"
 
 此部分中将执行以下用于创建 Azure Active Directory 应用程序的服务主体、将角色分配给服务主体，通过提供证书作为服务主体进行身份验证的步骤。 运行以下命令在 Azure Active Directory 中创建应用程序。
 
-1. 将以下 cmdlet 粘贴到 PowerShell 控制台窗口中。 请确保为 **-DisplayName** 属性指定的值唯一。 此外， **-HomePage** 和 **-IdentiferUris** 的值是占位符值，且未进行验证。
+1. 将以下 cmdlet 粘贴到 PowerShell 控制台窗口中。 请确保为 **-DisplayName** 属性指定的值唯一。 此外，**-HomePage** 和 **-IdentiferUris** 的值是占位符值，且未进行验证。
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
@@ -231,7 +231,7 @@ ms.locfileid: "78970144"
 1. 连接后，请使用以下命令启动 Hive 命令行界面 (CLI)。
 
         hive
-2. 使用该 CLI 输入以下语句，通过使用 Data Lake Storage Gen1 中的示例数据创建一个名为 vehicles 的新表：
+2. 使用该 CLI 输入以下语句，通过使用 Data Lake Storage Gen1 中的示例数据创建一个名为 vehicles 的新表****：
 
         DROP TABLE vehicles;
         CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://<mydatalakestoragegen1>.azuredatalakestore.net:443/';

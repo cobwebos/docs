@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
 ms.openlocfilehash: 675919db55932d3ccc04fd5397f6f673832b4900
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840564"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>查看 Azure 虚拟网络的拓扑
@@ -26,12 +26,12 @@ ms.locfileid: "76840564"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name = "azure-portal"></a>查看拓扑 - Azure 门户
+## <a name="view-topology---azure-portal"></a><a name = "azure-portal"></a>查看拓扑 - Azure 门户
 
 1. 使用具有必要[权限](required-rbac-permissions.md)的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 在门户左上角选择“所有服务”。
-3. 在“所有服务”筛选器框中，输入“网络观察程序”。 结果中出现“网络观察程序”后，将其选中。
-4. 选择“拓扑”。 生成拓扑要求在特定区域有网络观察程序，而该特定区域正是需要为其生成拓扑的虚拟网络所在的区域。 如果未在要为其生成拓扑的虚拟网络所在的区域启用网络观察程序，系统会在所有区域为你创建网络观察程序。 网络观察程序在名为 **NetworkWatcherRG** 的资源组中创建。
+2. 在门户左上角选择“所有服务”****。
+3. 在“所有服务”筛选器框中，输入“网络观察程序”******。 结果中出现“网络观察程序”后，将其选中****。
+4. 选择“拓扑”。**** 生成拓扑要求在特定区域有网络观察程序，而该特定区域正是需要为其生成拓扑的虚拟网络所在的区域。 如果未在要为其生成拓扑的虚拟网络所在的区域启用网络观察程序，系统会在所有区域为你创建网络观察程序。 网络观察程序在名为 **NetworkWatcherRG** 的资源组中创建。
 5. 依次选择订阅、要查看其拓扑的虚拟网络的资源组、虚拟网络。 下图中显示了名为 *MyResourceGroup* 的资源组中名为 *MyVnet* 的虚拟网络的拓扑：
 
     ![查看拓扑](./media/view-network-topology/view-topology.png)
@@ -43,25 +43,25 @@ ms.locfileid: "76840564"
 
    图中显示的拓扑对应的虚拟网络是在部署 **“通过网络虚拟设备路由流量”脚本示例**后创建的，该示例可以通过 [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 或 [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 部署。
 
-6. 选择“下载拓扑”，以 svg 格式将映像下载为可编辑文件。
+6. 选择“下载拓扑”****，以 svg 格式将映像下载为可编辑文件。
 
-图中所示资源是虚拟网络中的网络组件子集。 例如，在显示网络安全组时，其中的安全规则不在图中显示。 线条表示以下两种关系中的一种：包含或关联，不过并未在图中进行区分。 若要查看虚拟网络中资源的完整列表以及资源之间关系的类型，请使用 [PowerShell](#powershell) 或 [Azure CLI](#azure-cli) 生成拓扑。
+图中所示资源是虚拟网络中的网络组件子集。 例如，在显示网络安全组时，其中的安全规则不在图中显示。 线条表示以下两种关系中的一种：** 包含或** 关联，不过并未在图中进行区分。 若要查看虚拟网络中资源的完整列表以及资源之间关系的类型，请使用 [PowerShell](#powershell) 或 [Azure CLI](#azure-cli) 生成拓扑。
 
-## <a name = "azure-cli"></a>查看拓扑 - Azure CLI
+## <a name="view-topology---azure-cli"></a><a name = "azure-cli"></a>查看拓扑 - Azure CLI
 
 可以运行后续步骤中的命令：
-- 在 Azure Cloud Shell 中选择任意命令右上角的“试用”。 Azure Cloud Shell 是免费的交互式 Shell，它预安装有常用 Azure 工具并将其配置为与帐户一起使用。
+- 在 Azure Cloud Shell 中选择任意命令右上角的“试用”。**** Azure Cloud Shell 是免费的交互式 Shell，它预安装有常用 Azure 工具并将其配置为与帐户一起使用。
 - 通过在计算机中运行 CLI。 如果在计算机中运行 CLI，则本文中的步骤要求使用 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 所用帐户必须拥有所需的[权限](required-rbac-permissions.md)。
 
-1. 如果你已在要为其创建拓扑的虚拟网络所在的区域中有一个网络观察程序，请跳至步骤 3。 使用 [az group create](/cli/azure/group) 创建一个包含网络观察程序的资源组。 以下示例在“eastus”区域创建此资源组：
+1. 如果你已在要为其创建拓扑的虚拟网络所在的区域中有一个网络观察程序，请跳至步骤 3。 使用 [az group create](/cli/azure/group) 创建一个包含网络观察程序的资源组。 以下示例在“eastus”区域创建此资源组：**
 
     ```azurecli-interactive
     az group create --name NetworkWatcherRG --location eastus
     ```
 
-2. 使用 [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) 创建网络观察程序。 以下示例在“eastus”区域创建网络观察程序：
+2. 使用 [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) 创建网络观察程序。 以下示例在“eastus”区域创建网络观察程序：**
 
     ```azurecli-interactive
     az network watcher configure \
@@ -80,21 +80,21 @@ ms.locfileid: "76840564"
 
    详细了解返回的输出中的关系和[属性](#properties)。 如果没有现有的可以查看其拓扑的虚拟网络，则可使用[通过网络虚拟设备路由流量](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)脚本示例创建一个。 若要查看拓扑图并以可编辑文件的形式来下载它，请使用[门户](#azure-portal)。
 
-## <a name = "powershell"></a>查看拓扑 - PowerShell
+## <a name="view-topology---powershell"></a><a name = "powershell"></a>查看拓扑 - PowerShell
 
 可以运行后续步骤中的命令：
-- 在 Azure Cloud Shell 中选择任意命令右上角的“试用”。 Azure Cloud Shell 是免费的交互式 Shell，它预安装有常用 Azure 工具并将其配置为与帐户一起使用。
-- 通过在计算机中运行 PowerShell。 如果从计算机运行 PowerShell，则本文需要 Azure PowerShell `Az` 模块。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+- 在 Azure Cloud Shell 中选择任意命令右上角的“试用”。**** Azure Cloud Shell 是免费的交互式 Shell，它预安装有常用 Azure 工具并将其配置为与帐户一起使用。
+- 通过在计算机中运行 PowerShell。 如果从计算机运行 PowerShell，本文需要 Azure PowerShell`Az`模块。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 所用帐户必须拥有所需的[权限](required-rbac-permissions.md)。
 
-1. 如果你已在要为其创建拓扑的虚拟网络所在的区域中有一个网络观察程序，请跳至步骤 3。 使用 AzResourceGroup 创建一个包含网络观察[程序](/powershell/module/az.Resources/New-azResourceGroup)的资源组。 以下示例在“eastus”区域创建此资源组：
+1. 如果你已在要为其创建拓扑的虚拟网络所在的区域中有一个网络观察程序，请跳至步骤 3。 使用[New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup)创建资源组以包含网络观察程序。 以下示例在“eastus”区域创建此资源组：**
 
     ```azurepowershell-interactive
     New-AzResourceGroup -Name NetworkWatcherRG -Location EastUS
     ```
 
-2. 使用 AzNetworkWatcher 创建网络观察[程序](/powershell/module/az.network/new-aznetworkwatcher)。 以下示例在“eastus”区域创建网络观察程序：
+2. 使用 [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) 创建网络观察程序。 以下示例在“eastus”区域创建网络观察程序：
 
     ```azurepowershell-interactive
     New-AzNetworkWatcher `
@@ -102,7 +102,7 @@ ms.locfileid: "76840564"
       -ResourceGroupName NetworkWatcherRG
     ```
 
-3. 使用[AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher)检索网络观察程序实例。 以下示例在“美国东部”区域检索网络观察程序：
+3. 使用 [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) 检索网络观察程序实例。 以下示例在“美国东部”区域检索网络观察程序：
 
     ```azurepowershell-interactive
     $nw = Get-AzResource `
@@ -112,7 +112,7 @@ ms.locfileid: "76840564"
       -ResourceGroupName $nw.ResourceGroupName
     ```
 
-4. 使用[AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology)检索拓扑。 以下示例在名为 *MyResourceGroup* 的资源组中检索虚拟网络的拓扑：
+4. 使用 [Get-AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology) 检索拓扑。 以下示例在名为 *MyResourceGroup* 的资源组中检索虚拟网络的拓扑：
 
     ```azurepowershell-interactive
     Get-AzNetworkWatcherTopology `

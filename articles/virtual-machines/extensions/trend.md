@@ -1,5 +1,5 @@
 ---
-title: 在虚拟机上安装趋势微 Deep Security
+title: 在 VM 上安装趋势微型深度安全性
 description: 本文介绍如何在 Azure 中使用经典部署模型创建的 VM 上安装和配置 Trend Micro Deep Security。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
 ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919917"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务
@@ -36,21 +36,21 @@ ms.locfileid: "77919917"
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>在新 VM 上安装 Deep Security Agent
 
-使用[市场](https://portal.azure.com)中的映像创建虚拟机时，**Azure 门户**允许安装 Trend Micro 安全扩展。 如果要创建的是单个虚拟机，则可通过此门户轻松地添加来自 Trend Micro 的保护。
+使用**市场**中的映像创建虚拟机时，[Azure 门户](https://portal.azure.com)允许安装 Trend Micro 安全扩展。 如果要创建的是单个虚拟机，则可通过此门户轻松地添加来自 Trend Micro 的保护。
 
-使用**市场**中的某个条目会打开一个向导，帮助用户设置虚拟机。 使用该向导的第三个面板“设置”边栏选项卡安装 Trend Micro 安全扩展。  有关常规说明，请参阅[在 Azure 门户中创建运行 Windows 的虚拟机](../windows/classic/tutorial.md)。
+使用**市场**中的某个条目会打开一个向导，帮助用户设置虚拟机。 使用该向导的第三个面板“设置”**** 边栏选项卡安装 Trend Micro 安全扩展。  有关常规说明，请参阅[在 Azure 门户中创建运行 Windows 的虚拟机](../windows/classic/tutorial.md)。
 
-进入向导的“设置”边栏选项卡时，请执行以下步骤：
+进入向导的“设置”**** 边栏选项卡时，请执行以下步骤：
 
-1. 单击“扩展”，并在下一个窗格中单击“添加扩展”。
+1. 单击“扩展”****，并在下一个窗格中单击“添加扩展”****。
 
    ![开始添加扩展][1]
 
-2. 在“新建资源”窗格中选择“Deep Security Agent”。 在 Deep Security Agent 窗格中，单击“创建”。
+2. 在“新建资源”**** 窗格中选择“Deep Security Agent”****。 在 Deep Security Agent 窗格中，单击“创建”****。
 
    ![标识 Deep Security Agent][2]
 
-3. 为扩展输入“租户标识符”和“租户激活密码”。 （可选）可输入“安全策略标识符”。 然后，单击“确定”添加客户端。
+3. 为扩展输入“租户标识符”**** 和“租户激活密码”****。 （可选）可输入“安全策略标识符”****。 然后，单击“确定”**** 添加客户端。
 
    ![提供扩展详细信息][3]
 
@@ -85,7 +85,7 @@ ms.locfileid: "77919917"
 * 示例的[说明](https://go.microsoft.com/fwlink/?LinkId=404099)
 
 ## <a name="additional-resources"></a>其他资源
-[如何登录到运行 Windows Server 的虚拟机]
+[如何登录到运行 Windows 服务器的虚拟机]
 
 [Azure VM 扩展和功能]
 
@@ -95,5 +95,5 @@ ms.locfileid: "77919917"
 [3]: ./media/trend/SecurityAgentDetails.png
 
 <!-- Link references -->
-[如何登录到运行 Windows Server 的虚拟机]:../windows/classic/connect-logon.md
+[如何登录到运行 Windows 服务器的虚拟机]:../windows/classic/connect-logon.md
 [Azure VM 扩展和功能]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

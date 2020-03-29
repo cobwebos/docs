@@ -1,5 +1,5 @@
 ---
-title: 通过 Python 进行客户端加密
+title: 使用 Python 进行客户端加密
 titleSuffix: Azure Storage
 description: 适用于 Python 的 Azure 存储客户端库支持客户端加密，实现 Azure 存储应用程序的最高安全性。
 services: storage
@@ -12,13 +12,13 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 16e66cd762b86b27dc6703542ca7261b2300a33b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74895373"
 ---
-# <a name="client-side-encryption-with-python"></a>通过 Python 进行客户端加密
+# <a name="client-side-encryption-with-python"></a>使用 Python 进行客户端加密
 
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
@@ -59,7 +59,7 @@ ms.locfileid: "74895373"
 在加密过程中，客户端库将生成 16 字节的随机初始化向量 (IV) 和 32 字节的随机内容加密密钥 (CEK) 并将使用此信息对 Blob 数据执行信封加密。 然后，已包装的 CEK 和一些附加加密元数据将与服务上的已加密 Blob 一起存储为 Blob 元数据。
 
 > [!WARNING]
-> 如果您要针对 Blob 编辑或上传自己的元数据，需要确保此元数据已保留。 如果在没有此元数据的情况下上传新元数据，则已包装的 CEK、IV 和其他元数据将丢失，而 Blob 内容将永远无法再检索。
+> 如果要针对 Blob 编辑或上传自己的元数据，需要确保此元数据已保留。 如果在没有此元数据的情况下上传新元数据，则已包装的 CEK、IV 和其他元数据将丢失，而 Blob 内容将永远无法再检索。
 > 
 > 
 
@@ -97,10 +97,10 @@ ms.locfileid: "74895373"
 
    请注意，只有字符串属性可以加密。 如果要对其他类型的属性进行加密，必须将它们转换为字符串。 加密的字符串作为二进制属性存储在服务中，并在解密之后转换回字符串（原始字符串，不是 EdmType.STRING 类型的 EntityProperties）。
 
-   对于表，除了加密策略以外，用户还必须指定要加密的属性。 为此，可将这些属性存储在 type 设置为 EdmType.STRING 且 encrypt 设置为 true 的 TableEntity 对象中，或者在 tableservice 对象中设置 encryption_resolver_function。 加密解析程序是一个函数，它接受分区键、行键和属性名称并返回一个布尔值以指示是否应加密该属性。 在加密过程中，客户端库将使用此信息来确定是否应在写入到网络时加密属性。 该委托还可以围绕如何加密属性来实现逻辑的可能性。 （例如，如果 X，则加密属性 A，否则加密属性 A 和 B。）请注意，在读取或查询实体时，不需要提供此信息。
+   对于表，除了加密策略以外，用户还必须指定要加密的属性。 为此，可将这些属性存储在 type 设置为 EdmType.STRING 且 encrypt 设置为 true 的 TableEntity 对象中，或者在 tableservice 对象中设置 encryption_resolver_function。 加密解析程序是一个函数，它接受分区键、行键和属性名称并返回一个布尔值以指示是否应加密该属性。 在加密过程中，客户端库将使用此信息来确定是否应在写入到网络时加密属性。 该委托还可以围绕如何加密属性来实现逻辑的可能性。 （例如，如果 X，则加密属性 A;否则加密属性 A 和 B。请注意，在读取或查询实体时不必提供此信息。
 
 ### <a name="batch-operations"></a>批处理操作
-一个加密策略将应用到批中的所有行。 客户端库将为批中的每行在内部生成一个新的随机 IV 和随机 CEK。 用户还可以选择通过在加密解析程序中定义此行为来加密批中的每个操作的不同属性。
+一个加密策略将应用到批中的所有行。 客户端库将为批中的每行在内部生成一个新的随机 IV 和随机 CEK。 用户还可以选择通过在加密解析程序中定义此行为来加密批处理中的每个操作的不同属性。
 如果某个批是通过 tableservice batch() 方法以上下文管理器形式创建的，则 tableservice 的加密策略会自动应用到该批。 如果某个批是通过调用构造函数显式创建的，则必须将加密策略作为参数来传递，并且在该批的生存期内都不要修改加密策略。
 请注意，使用批的加密策略将实例插入批时，会将实体加密（使用 tableservice 的加密策略提交批时不会加密实体）。
 
@@ -141,7 +141,7 @@ KEK 必须实现以下方法才能成功加密数据：
   * 如果指定为获取密钥，则将调用密钥解析程序。 如果指定了解析程序，但该解析程序不具有密钥标识符的映射，则将引发错误。
   * 如果未指定解析程序，但指定了密钥，则在该密钥的标识符与所需密钥标识符匹配时使用该密钥。 如果标识符不匹配，则将引发错误。
 
-    Azure 中的加密示例演示了针对 blob、队列和表的更详细端到端方案。
+    azure.storage.samples 中的加密示例演示了针对 blob、队列和表的更详细端到端方案。
       KEK 和密钥解析程序的示例实现在示例文件中分别以 KeyWrapper 和 KeyResolver 提供。
 
 ### <a name="requireencryption-mode"></a>RequireEncryption 模式
@@ -234,7 +234,7 @@ my_table_service.get_entity(
     table_name, entity['PartitionKey'], entity['RowKey'])
 ```
 
-### <a name="using-attributes"></a>使用属性
+### <a name="using-attributes"></a>使用特性
 如上所述，可能通过将某个属性存储在 EntityProperty 对象中并设置 encrypt 字段，将该属性标记为进行加密。
 
 ```python

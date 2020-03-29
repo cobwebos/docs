@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 门户管理流式处理终结点 | Microsoft Docs
-description: 本文演示如何通过 Azure 门户管理流式处理终结点。
+description: 本文演示如何使用 Azure 门户管理流式处理终结点。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900882"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>使用 Azure 门户管理流式处理终结点 
@@ -36,7 +36,7 @@ ms.locfileid: "74900882"
 要开始管理帐户的流式处理终结点，请执行以下操作。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 在“设置”边栏选项卡中，选择“流式处理终结点”。
+2. 在“设置”**** 边栏选项卡中，选择“流式处理终结点”****。
    
     ![流式处理终结点](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
@@ -50,17 +50,17 @@ ms.locfileid: "74900882"
 
 若要使用 Azure 门户添加/删除流式处理终结点，请执行以下操作：
 
-1. 若要添加流式处理终结点，请单击页面顶部的“+ 终结点”。 
+1. 若要添加流式处理终结点，请单击页面顶部的“+ 终结点”****。 
 
     如果想要使用不同的 CDN 并直接访问，可能需要多个流式处理终结点。
 
-2. 若要删除流式处理终结点，请按“删除”按钮。      
-3. 单击“启动”按钮以启动流式处理终结点。
+2. 若要删除流式处理终结点，请按“删除”**** 按钮。      
+3. 单击“启动”**** 按钮以启动流式处理终结点。
    
     ![流式处理终结点](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
-## <a id="configure_streaming_endpoints"></a>配置流式处理终结点
+## <a name="configuring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>配置流式处理终结点
 使用流式处理终结点可以配置以下属性：
 
 * 访问控制
@@ -75,7 +75,7 @@ ms.locfileid: "74900882"
 可通过执行以下操作配置流式处理终结点：
 
 1. 选择要配置的流式处理终结点。
-2. 单击“设置”。
+2. 单击“设置”****。
 
 后面提供了字段的简要说明。
 
@@ -89,15 +89,15 @@ ms.locfileid: "74900882"
 
 有关详细信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)文章。
 
-## <a id="enable_cdn"></a>启用 Azure CDN 集成
+## <a name="enable-azure-cdn-integration"></a><a id="enable_cdn"></a>启用 Azure CDN 集成
 
 创建新帐户时，默认情况下，默认流式处理终结点 Azure CDN 集成已启用。
 
-如果以后想要禁用/启用 CDN，流式处理终结点必须处于“已停止”状态。 可能需要长达两小时才能启用 Azure CDN 集成并使更改在所有 CDN POP 中生效。 但是，可以启动流式处理终结点和流，而不会被流式处理终结点中断，集成完成后，将从 CDN 传送流。 在预配期间，流式处理终结点的状态为“正在启动”，可能会观测到性能降低。
+如果以后想要禁用/启用 CDN，流式处理终结点必须处于“已停止”**** 状态。 可能需要长达两小时才能启用 Azure CDN 集成并使更改在所有 CDN POP 中生效。 但是，可以启动流式处理终结点和流，而不会被流式处理终结点中断，集成完成后，将从 CDN 传送流。 在预配期间，流式处理终结点的状态为“正在启动”****，可能会观测到性能降低。
 
 将在所有 Azure 数据中心启用 CDN 集成，但中国区域和联邦政府区域除外。
 
-启用 CDN 集成后，“访问控制”、 ** “自定义主机名”和“Akamai 签名身份验证”配置将处于禁用状态。
+启用 CDN 集成后，“访问控制”****、 ** “自定义主机名”和“Akamai 签名身份验证”**** 配置将处于禁用状态。
  
 > [!IMPORTANT]
 > 标准流式处理终结点可在 **Verizon 提供的 Azure CDN** 上实现 Azure 媒体服务与 Azure CDN 的集成。 可以使用所有 **Azure CDN 定价层和提供程序**配置高级流式处理终结点。 有关 Azure CDN 功能的详细信息，请参阅 [CDN 概述](../../cdn/cdn-overview.md)。
@@ -111,7 +111,7 @@ ms.locfileid: "74900882"
 
 ## <a name="configure-cdn-profile"></a>配置 CDN 配置文件
 
-可以通过选择顶部的“管理 CDN”按钮配置 CDN 配置文件。
+可以通过选择顶部的“管理 CDN”**** 按钮配置 CDN 配置文件。
 
 ![流式处理终结点](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints6.png)
 

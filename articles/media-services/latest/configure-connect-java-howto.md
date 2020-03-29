@@ -1,6 +1,6 @@
 ---
-title: 连接到 Azure 媒体服务 v3 API-Java
-description: 本文介绍如何通过 Java 连接到 Azure 媒体服务 v3 API。
+title: 连接到 Azure 媒体服务 v3 API - Java
+description: 本文介绍如何使用 Java 连接到 Azure 媒体服务 v3 API。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,51 +14,51 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74888489"
 ---
-# <a name="connect-to-media-services-v3-api---java"></a>连接到媒体服务 v3 API-Java
+# <a name="connect-to-media-services-v3-api---java"></a>连接到媒体服务 v3 API - Java
 
 本文介绍如何使用服务主体登录方法连接到 Azure 媒体服务 v3 Java SDK。
 
-本文介绍如何使用 Visual Studio Code 开发示例应用。
+在本文中，Visual Studio Code 用于开发示例应用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 遵循[编写带有 Visual Studio Code 的 Java](https://code.visualstudio.com/docs/java/java-tutorial)来安装：
+- 按照 [Writing Java with Visual Studio Code](https://code.visualstudio.com/docs/java/java-tutorial)（使用 Visual Studio Code 编写 Java）中的说明安装以下内容：
 
    - JDK
    - Apache Maven
    - Java 扩展包
 - 请确保设置 `JAVA_HOME` 和 `PATH` 环境变量。
-- [创建媒体服务帐户](create-account-cli-how-to.md)。 请确保记住资源组名称和媒体服务帐户名。
-- 按照[访问 api](access-api-cli-how-to.md)主题中的步骤进行操作。 记录稍后步骤中所需的订阅 ID、应用程序 ID （客户端 ID）、身份验证密钥（机密）和租户 ID。
+- [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。
+- 按照[访问 API](access-api-cli-how-to.md) 主题中的步骤进行操作。 记下订阅 ID、应用程序 ID（客户端 ID）、身份验证密钥（机密）和租户 ID，以便在后面的步骤中使用。
 
 另请参阅：
 
-- [Visual Studio Code 中的 Java](https://code.visualstudio.com/docs/languages/java)
-- [VS Code 中的 Java 项目管理](https://code.visualstudio.com/docs/java/java-project)
+- [Java in Visual Studio Code](https://code.visualstudio.com/docs/languages/java)（Visual Studio Code 中的 Java）
+- [Java Project Management in VS Code](https://code.visualstudio.com/docs/java/java-project)（VS Code 中的 Java 项目管理）
 
 > [!IMPORTANT]
 > 查看[命名约定](media-services-apis-overview.md#naming-conventions)。
 
 ## <a name="create-a-maven-project"></a>创建 Maven 项目
 
-打开一个命令行工具，并 `cd` 到要在其中创建项目的目录。
+打开命令行工具，使用 `cd` 命令转到需要在其中创建此项目的目录。
     
 ```
 mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
 
-运行该命令时，将创建 `pom.xml`、`App.java`和其他文件。 
+运行此命令时，会创建 `pom.xml`、`App.java` 和其他文件。 
 
 ## <a name="add-dependencies"></a>添加依赖项
 
-1. 在 Visual Studio Code 中，打开项目所处的文件夹。
-1. 查找并打开 `pom.xml`
+1. 在 Visual Studio Code 中，打开项目所在的文件夹
+1. 找到并打开 `pom.xml`
 1. 添加所需的依赖项
 
     ```xml
@@ -81,7 +81,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
 
 ## <a name="connect-to-the-java-client"></a>连接到 Java 客户端
 
-1. 打开 `src\main\java\com\azure\ams` 下的 `App.java` 文件，并确保包包含在顶部：
+1. 打开 `src\main\java\com\azure\ams` 下的 `App.java` 文件，确保包包括在顶部：
 
     ```java
     package com.azure.ams;
@@ -94,7 +94,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-1. 若要创建发出请求所需的 Active Directory 凭据，请将以下代码添加到 App 类的 main 方法中，并设置从[Access api](access-api-cli-how-to.md)获取的值：
+1. 若要创建发出请求所需的 Active Directory 凭据，请将以下代码添加到 App 类的 main 方法，然后设置从[访问 API](access-api-cli-how-to.md) 获取的值：
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -119,7 +119,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
    ```
 1. 运行应用。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [媒体服务概念](concepts-overview.md)
 - [Java SDK](https://aka.ms/ams-v3-java-sdk)
@@ -128,6 +128,6 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
 
 ## <a name="next-steps"></a>后续步骤
 
-你现在可以包括 `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` 和开始操作实体。
+现在可以包括 `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` 并开始操作实体。
 
-有关更多代码示例，请参阅[JAVA SDK 示例](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/)存储库。
+有关更多代码示例，请参阅 [Java SDK 示例](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/)存储库。

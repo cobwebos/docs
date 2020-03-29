@@ -8,10 +8,10 @@ services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447575"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>自定义和重新部署微服务
@@ -20,7 +20,7 @@ ms.locfileid: "61447575"
 
 远程监视解决方案使用基于 Docker 映像生成的微服务，这些映像是从 Docker 中心提取的。 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 >[!div class="checklist"]
 > * 在远程监视解决方案中编辑并生成微服务
@@ -29,7 +29,7 @@ ms.locfileid: "61447575"
 > * 提取新 Docker 映像
 > * 可视化更改 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要学习本教程，需要：
 
@@ -45,7 +45,7 @@ ms.locfileid: "61447575"
 1. 确保远程监视解决方案在计算机本地运行。
 2. 找到下载的 Postman 并打开它。
 3. 在 Postman 中的 GET 内输入以下内容：`http://localhost:8080/iothubmanager/v1/status`。
-4. 查看返回的结果，应会看到 "Status":"OK:Alive and Well"。
+4. 查看返回的结果，应会看到 "Status": "OK:Alive and Well"。
 
     ![Alive and Well Postman 消息](./media/iot-accelerators-microservices-example/postman-alive-well.png)
 
@@ -144,11 +144,11 @@ ms.locfileid: "61447575"
     ```
 
 3. 找到下载的 Postman 并打开它。
-4. 在 Postman 中的 GET 内输入以下请求：`http://localhost:8080/iothubmanager/v1/status`。 现在应看到，"Status":"OK:New Edits Made Here!"。
+4. 在 Postman 中的 GET 内输入以下请求：`http://localhost:8080/iothubmanager/v1/status`。 现在应会看到 "Status": "OK: New Edits Made Here!"。
 
 ![New Edits Made Here Postman 消息](./media/iot-accelerators-microservices-example/new-postman-message.png)
 
-## <a name="Troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a><a name="Troubleshoot"></a>疑难解答
 
 如果遇到问题，请尝试删除本地计算机上的 Docker 映像和容器。
 

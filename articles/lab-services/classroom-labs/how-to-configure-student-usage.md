@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 实验室服务的教室实验室中配置使用设置
-description: 了解如何配置实验室的用户数，将用户注册到实验室，控制用户可以使用 VM 的小时数，以及其他内容。
+description: 了解如何配置实验室的学生人数、让他们在实验室注册、控制他们可以使用 VM 的小时数等。
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,179 +13,214 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: daa302e9be026157b464a12998f3faa52526aba6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2697bed77263bb5b8349898765851a9b87992279
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79270935"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159449"
 ---
 # <a name="add-and-manage-lab-users"></a>添加和管理实验室用户
-本文介绍了如何向实验室添加用户，将用户注册到实验室，控制用户可以使用 VM 的小时数，以及其他内容。 
 
+本文介绍如何将学生用户添加到实验室、向实验室注册、控制他们可以使用虚拟机 （VM） 的额外小时数等。 
 
-## <a name="add-users-to-the-lab"></a>将用户添加到实验室
+## <a name="add-users-to-a-lab"></a>将用户添加到实验室
 
-1. 选择左侧菜单上的“用户”。 默认情况下，“限制访问”选项处于启用状态。 当此设置处于启用状态时，用户即使有注册链接也不能注册到实验室，除非该用户在用户列表中。 只有列表中的用户可以使用你发送的注册链接注册到实验室。 在此过程中，请将用户添加到列表。 也可关闭“限制访问”，这样一来，用户只要有注册链接就可以注册到实验室。 
-2. 选择工具栏中的“添加用户”，然后选择“通过电子邮件地址添加”。 
+在本节中，您可以手动将学生添加到实验室或通过上传 CSV 文件。 请执行以下操作：
 
-    ![“添加用户”按钮](../media/how-to-configure-student-usage/add-users-button.png)
-1. 在“添加用户”页上，在多个不同的行中输入电子邮件地址，或者在一行中输入以分号分隔的电子邮件地址。 
+1. 在左窗格中，选择“用户”****。 
 
-    ![添加用户电子邮件地址](../media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. 选择“保存”。 可以在列表中看到用户的电子邮件地址及其状态（已注册或未注册）。 
+    默认情况下，"**限制访问**"选项处于打开状态，除非他们在用户列表中，否则即使学生有注册链接，也不能在实验室注册。 只有列出的用户可以使用您发送的注册链接向实验室注册。 在此过程中，请将用户添加到列表。 或者，您可以关闭 **"限制访问**"，允许学生注册实验室，只要他们有注册链接。 
+
+1. 在 **"用户"** 窗格的顶部，选择 **"添加用户**"，然后选择"**按电子邮件地址添加**"。 
+
+    !["添加用户"按钮](../media/how-to-configure-student-usage/add-users-button.png)
+
+1. 在"**添加用户"** 窗格中，在单独的行或由分号分隔的一行上输入学生的电子邮件地址。 
+
+    ![添加用户的电子邮件地址](../media/how-to-configure-student-usage/add-users-email-addresses.png)
+
+1. 选择“保存”。**** 
+
+    该列表显示当前用户的电子邮件地址和状态，无论他们是否在实验室注册。 
 
     ![用户列表](../media/how-to-configure-student-usage/list-of-added-users.png)
 
     > [!NOTE]
-    > 将用户注册到实验室后，列表中会显示其姓名。 列表中显示的名称是通过在 Azure Active Directory 中使用用户的名字和姓氏来构造的。 
+    > 学生注册到实验室后，列表将显示他们的姓名。 列表中显示的名称是使用 Azure 活动目录中学生的名字和姓氏构造的。 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>通过上传 CSV 文件添加用户
-还可通过上传包含用户电子邮件地址的 CSV 文件来添加用户。
 
-1. 创建一个 CSV 文件，在其中将用户的电子邮件地址放在一个列中。
+您还可以通过上传包含其电子邮件地址的 CSV 文件来添加用户。
 
-    ![带有用户的 CSV 文件](../media/how-to-configure-student-usage/csv-file-with-users.png)
-2. 在实验室的 "**用户**" 页上，选择工具栏上的 "**添加用户**"，然后选择 "**上载 CSV**"。
+1. 在 Microsoft Excel 中，创建一个 CSV 文件，该文件将学生的电子邮件地址列在一列中。
 
-    ![“上传 CSV”按钮](../media/how-to-configure-student-usage/upload-csv-button.png)
-3. 选择包含用户电子邮件地址的 CSV 文件。 在选择 CSV 文件后选择“打开”时，可以看到以下“添加用户”窗口。 电子邮件地址列表中将填充来自 CSV 文件的电子邮件地址。 
+    ![CSV 文件中的用户列表](../media/how-to-configure-student-usage/csv-file-with-users.png)
 
-    ![填充有来自 CSV 文件的电子邮件地址的“添加用户”窗口](../media/how-to-configure-student-usage/add-users-window.png)
-4. 在“添加用户”窗口中选择“保存”。 
-5. 确认你可以在用户列表中看到用户。 
+1. 在 **"用户"** 窗格的顶部，选择 **"添加用户**"，然后选择"**上载 CSV**"。
 
-    ![添加的用户的列表](../media/how-to-configure-student-usage/list-of-added-users.png)
+    !["上传 CSV"按钮](../media/how-to-configure-student-usage/upload-csv-button.png)
+
+1. 选择包含学生电子邮件地址的 CSV 文件，然后选择 **"打开**"。
+
+    "**添加用户"** 窗口显示来自 CSV 文件的电子邮件地址列表。 
+
+    ![包含 CSV 文件的电子邮件地址的"添加用户"窗口](../media/how-to-configure-student-usage/add-users-window.png)
+
+1. 选择“保存”。**** 
+
+1. 在"**用户"** 窗格中，查看添加的学生列表。 
+
+    !["用户"窗格中添加的用户列表](../media/how-to-configure-student-usage/list-of-added-users.png)
 
 ## <a name="send-invitations-to-users"></a>向用户发送邀请
-若要向学生发送注册链接，请使用以下方法之一。 第一种方法显示了如何使用注册链接和可选消息向学生发送电子邮件。 第二种方法向您演示如何获取注册链接，你可以根据需要以任何方式与他人共享。 
 
-如果为实验室启用了“限制访问”，则只有用户列表中的用户可以使用注册链接注册到实验室。 默认情况下该选项处于启用状态。 
+要向新用户发送注册链接，请使用以下方法之一。 
+
+如果为实验室启用了 **"限制访问**"选项，则只有列出的用户可以使用注册链接注册到实验室。 默认情况下会启用此选项。 
 
 ### <a name="invite-all-users"></a>邀请所有用户
-1. 切换到“用户”视图（如果尚未转到该页），然后在工具栏上选择“全部邀请”。 
 
-    ![选择学生](../media/tutorial-setup-classroom-lab/invite-all-button.png)
+此方法演示如何向所有列出的学生发送包含注册链接和可选消息的电子邮件。
 
-1. 在“通过电子邮件发送邀请”页上，输入可选的消息，然后选择“发送”。 电子邮件自动包含注册链接。 若要获取此注册链接，可以选择工具栏上的“... (省略号)”，然后选择“注册链接”。 
+1. 在"**用户"** 窗格中，选择 **"邀请所有**"。 
 
-    ![通过电子邮件发送注册链接](../media/tutorial-setup-classroom-lab/send-email.png)
-4. 可以在“用户”列表中查看**邀请**状态。 在 **\<日期 > 上**，状态应更改为 "**发送**" 和 "发送"。 
+    !["全部邀请"按钮](../media/tutorial-setup-classroom-lab/invite-all-button.png)
 
-    若要详细了解如何将学生添加到课堂并管理其对实验室的使用，请参阅[如何配置学生对实验室的使用](how-to-configure-student-usage.md)。
+1. 在"**通过电子邮件发送邀请"** 窗口中，输入可选邮件，然后选择"**发送**"。 
+
+    电子邮件自动包含注册链接。 要单独获取和保存注册链接，请选择 **"用户"** 窗格顶部的省略号 **（.），** 然后选择 **"注册链接**"。 
+
+    !["通过电子邮件发送注册链接"窗口](../media/tutorial-setup-classroom-lab/send-email.png)
+
+    **"用户"** 列表**的"邀请"** 列显示每个添加用户的邀请状态。 状态应更改为 **"发送"，** 然后更改为 **"发送\<日期>。 ** 
 
 ### <a name="invite-selected-users"></a>邀请所选用户
 
-1. 在列表中选择一个或多个用户。 
-2. 然后，选择工具栏上的 "选择的行" 中显示的**信封**图标（或）选择 "**邀请**"。 
+此方法演示如何仅邀请某些学生并获得注册链接，您可以与其他人共享。
+
+1. 在"**用户"** 窗格中，在列表中选择一个学生或多个学生。 
+
+1. 在所选学生的行中，选择**信封**图标，或在工具栏上选择 **"邀请**"。 
 
     ![邀请所选用户](../media/how-to-configure-student-usage/invite-selected-users.png)
-3. 在 "**通过电子邮件发送邀请**" 窗口中，输入可选**消息**，然后选择 "**发送**"。 
 
-    ![向选定用户发送电子邮件](../media/how-to-configure-student-usage/send-invitation-to-selected-users.png)
+1. 在"**通过电子邮件发送邀请"** 窗口中，输入可选**邮件**，然后选择"**发送**"。 
 
-    **用户**列表的 "**邀请**" 列中会显示此操作的状态。 邀请电子邮件包含用户可用于向实验室注册的注册链接。
+    ![向所选用户发送电子邮件](../media/how-to-configure-student-usage/send-invitation-to-selected-users.png)
 
-1. 切换到 "**用户**" 视图（如果尚未在页面上）。 
+    "**用户"** 窗格在表的"**邀请"** 列中显示此操作的状态。 邀请电子邮件包括学生可用于在实验室注册的注册链接。
 
-## <a name="get-registration-link"></a>获取注册链接
-你还可以从门户获取注册链接，并使用你自己的电子邮件客户端应用程序发送该链接。 
+## <a name="get-the-registration-link"></a>获取注册链接
 
-1. 在左侧菜单中选择“用户”，切换到“用户”视图。 
-2. 选择 **.。。（省略号）** 在工具栏上，选择 "**注册链接**"。
+在本节中，您可以从门户获取注册链接，并使用您自己的电子邮件应用程序发送该链接。 
+
+1. 在 **"用户"** 窗格中，选择 **"注册"链接**。
 
     ![学生注册链接](../media/how-to-configure-student-usage/registration-link-button.png)
-1. 在 "**用户注册**" 对话框中，选择 "**复制**" 按钮。 将链接复制到剪贴板。 将其粘贴到电子邮件编辑器，然后向学生发送电子邮件。 
 
-    ![学生注册链接](../media/how-to-configure-student-usage/registration-link.png)
-2. 在 "**用户注册**" 对话框中，选择 "**完成**"。 
-4. 向学生发送**注册链接**，以便学生可以注册该类。 
+1. 在 **"用户注册**"窗口中，选择 **"复制**"，然后选择 **"完成**"。 
+
+    !["用户注册"窗口](../media/how-to-configure-student-usage/registration-link.png)
+
+    将链接复制到剪贴板。 
+    
+1. 在电子邮件应用程序中，粘贴注册链接，然后将电子邮件发送给学生，以便学生可以注册课程。 
 
 ## <a name="view-registered-users"></a>查看已注册用户
 
-1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 
-2. 选择“登录”并输入凭据。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。
-3. 在“我的实验室”页上，选择要跟踪其使用情况的实验室。 
-4. 选择左侧菜单上的“用户”，或选择“用户”磁贴。 此时会看到注册到实验室的学生。  
+1. 转到[Azure 实验室服务](https://labs.azure.com)网站。 
+1. 选择 **"登录**"，然后输入凭据。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。
+1. 在 **"我的实验室"** 页面上，选择要跟踪其使用情况的实验室。 
+1. 在左侧窗格中，选择 **"用户**"或"**选择"用户**"磁贴。 
 
-    ![注册的用户](../media/tutorial-track-usage/registered-users.png)
+    "**用户"** 窗格显示在实验室注册的学生列表。  
+
+    ![注册用户列表](../media/tutorial-track-usage/registered-users.png)
 
 ## <a name="set-quotas-for-users"></a>为用户设置配额
-可以使用以下步骤来设置每个用户的配额： 
 
-1. 如果页面尚未处于活动状态，请在左侧菜单中选择“用户”。 
-2. 在工具栏上选择 "**每用户配额： \<数 > 小时**"。 
-3. 在 "**每个用户的配额**" 页上，指定你想要在计划的类时间之外为每个用户（学生）指定的小时数，然后选择 "**保存**"。
+您可以通过执行以下操作为每个学生设置一小时配额： 
 
-    ![每个用户的配额](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. 现在，工具栏上已更改的值： "**每个用户的配额： \<小时数 >** 和" 用户 "列表中。
+1. 在 **"用户"** 窗格中，选择**工具栏上的\<"每个用户配额：>小时数**"。 
+1. 在 **"每个用户配额"** 窗口中，指定要在计划上课时间之外给每个学生的小时数，然后选择 **"保存**"。
 
-    ![每个用户的配额-之后](../media/how-to-configure-student-usage/quot-per-user-after.png)
+    !["每个用户的配额"窗口](../media/how-to-configure-student-usage/quota-per-user.png)    
+
+    更改的值现在显示在 **"每个用户的\<配额：工具栏>** 按钮和用户列表中的小时数，如下所示：
+
+    ![每个用户的配额小时数](../media/how-to-configure-student-usage/quot-per-user-after.png)
 
     > [!IMPORTANT]
-    > [VM 的计划运行时间](how-to-create-schedules.md)不计入分配给用户的配额。 配额是指学生在 VM 上花费的计划外时间。 
+    > [VM 的计划运行时间](how-to-create-schedules.md)不计入分配给学生的配额。 配额是学生花费在 VM 上的计划时间以外的时间。 
 
-## <a name="set-additional-quota-for-a-specific-user"></a>为特定用户设置附加配额
-可以指定用户的额外配额。 除了之前部分中的所有用户所设置的通用配额外，此配额也是如此。 例如，如果您（作为指导员）将所有用户的配额设置为10小时，并为特定用户设置5小时的额外配额，则该用户将获得15（10 + 5）小时的配额。 如果稍后将常见配额更改为，例如15，则用户将获得20（15 + 5）小时的配额。 请记住，此整体配额在计划时间之外。 学生在计划时间内使用实验室 VM 的时间不计为此配额。 
+## <a name="set-additional-quotas-for-specific-users"></a>为特定用户设置其他配额
 
-为此，请执行下列步骤：
+您可以为某些学生指定配额，超出上一节中为所有用户设置的通用配额。 例如，如果您作为教师，将所有学生的配额设置为 10 小时，并为特定学生设置 5 小时的额外配额，则该学生将获得 15 （10 + 5） 小时的配额。 如果您稍后将公共配额更改为 15，则学生将获得 20 小时（15 + 5） 小时的配额。 请记住，此总配额超出计划时间。 学生在计划时间内在实验室 VM 上花费的时间不计入此配额。 
 
-1. 从 "**用户**" 页上的用户列表中选择一个用户（student）。
-2. 然后，从工具栏中选择 "**调整配额**"。 
+要设置其他配额，可以执行以下操作：
 
-    ![调整配额按钮](../media/how-to-configure-student-usage/adjust-quota-button.png)
-3. 输入所选用户或用户的**额外小时**数，然后选择 "**应用**"。 
+1. 在"**用户"** 窗格中，从列表中选择一个学生，然后在工具栏上选择 **"调整配额**"。 
 
-    ![用户的额外配额](../media/how-to-configure-student-usage/additional-quota.png)
-4. 你将在 "**使用情况**" 列中看到用户的更新使用情况。 
+    !["调整配额"按钮](../media/how-to-configure-student-usage/adjust-quota-button.png)
 
-    ![用户的新使用情况](../media/how-to-configure-student-usage/new-usage-hours.png)
+1. 在**\<"调整所选用户或用户电子邮件地址>的"配额"中**，输入要授予所选学生或学生的额外实验室小时数，然后选择"**应用**"。 
+
+    !["调整配额..."窗口](../media/how-to-configure-student-usage/additional-quota.png)
+
+    "**使用情况"** 列显示所选学生的更新配额。 
+
+    ![用户的新用法](../media/how-to-configure-student-usage/new-usage-hours.png)
 
 ## <a name="student-accounts"></a>学生帐户
-若要将学生添加到课堂实验室，请使用其电子邮件帐户。 可以使用以下类型的电子邮件帐户：
 
-- 大学的 Office 365 Azure Active Directory 提供的学生电子邮件帐户。 
-- Microsoft 电子邮件帐户，如 `@outlook.com`、`@hotmail.com`、`@msn.com`或 `@live.com`。
-- 非 Microsoft 电子邮件帐户，如 Yahoo 或 Google 提供的帐户。 但是，这些类型的帐户必须与 Microsoft 帐户链接。
+要将学生添加到教室实验室，请使用他们的电子邮件帐户。 学生可能具有以下类型的电子邮件帐户：
+
+- 由大学为 Office 365 提供的 Azure 活动目录实例提供的学生电子邮件帐户。 
+- 微软域电子邮件帐户，如*outlook.com*outlook.com、hotmail.com、msn.com*hotmail.com*或*live.com*。 *msn.com*
+- 非微软电子邮件帐户，如雅虎提供的电子邮件帐户 或谷歌。 但是，这些类型的帐户必须与 Microsoft 帐户链接。
 - 一个 GitHub 帐户。 此帐户必须与 Microsoft 帐户链接。
 
-### <a name="using-a-non-microsoft-email-account"></a>使用非 Microsoft 电子邮件帐户
-学生可以使用非 Microsoft 电子邮件帐户来注册和登录到教室实验室。  但注册要求学生首先创建一个链接到非 Microsoft 电子邮件地址的 Microsoft 帐户。
+### <a name="use-a-non-microsoft-email-account"></a>使用非 Microsoft 电子邮件帐户
+学生可以使用非 Microsoft 电子邮件帐户注册并登录到教室实验室。  但是，注册要求他们首先创建链接到其非 Microsoft 电子邮件地址的 Microsoft 帐户。
 
-许多学生可能已经有一个链接到非 Microsoft 电子邮件地址的 Microsoft 帐户。 例如，如果学生已经将其电子邮件地址与 Microsoft 的其他产品或服务（如 Office、Skype、OneDrive 或 Windows）一起使用，则学生已经有了一个 Microsoft 帐户。  
+许多学生可能已经拥有链接到其非 Microsoft 电子邮件地址的 Microsoft 帐户。 例如，如果学生将电子邮件地址与其他 Microsoft 产品或服务（如 Office、Skype、OneDrive 或 Windows）一起使用，则他们已拥有 Microsoft 帐户。  
 
-当学生单击注册 URL 登录到课堂时，系统将提示他们输入其电子邮件地址和密码。 如果学生尝试使用未链接 Microsoft 帐户的非 Microsoft 帐户进行登录，则该学生会收到以下错误消息： 
+当学生使用注册链接登录到教室时，系统会提示他们输入电子邮件地址和密码。 尝试使用未链接到 Microsoft 帐户的非 Microsoft 帐户登录的学生将收到以下错误消息： 
 
-![错误消息](../media/how-to-configure-student-usage/cant-find-account.png)
+![登录时出现错误消息](../media/how-to-configure-student-usage/cant-find-account.png)
 
-若要注册 Microsoft 帐户，学员应[http://signup.live.com](http://signup.live.com)。  
+下面是一个链接，供学生[注册一个微软帐户](http://signup.live.com)。  
 
 > [!IMPORTANT]
-> 学生登录到教室实验室时，不会为他们提供创建 Microsoft 帐户的选项。 因此，我们建议在向使用非 Microsoft 帐户的学生发送的课堂实验室注册电子邮件中包含此注册链接。
+> 当学生登录到教室实验室时，他们无法选择创建 Microsoft 帐户。 因此，我们建议您在教室实验室注册电子邮件中包括此注册链接http://signup.live.com，以及您发送给使用非 Microsoft 帐户的学生的教室实验室注册电子邮件中。
 
-### <a name="using-a-github-account"></a>使用 GitHub 帐户
-学生还可以使用现有的 GitHub 帐户注册和登录到教室实验室。 如果学生已经有一个链接到其 GitHub 帐户的 Microsoft 帐户，则他们可以登录并提供其密码，如前一部分中所示。 如果尚未将其 GitHub 帐户链接到 Microsoft 帐户，则应选择 "**登录" 选项**：
+### <a name="use-a-github-account"></a>使用 GitHub 帐户
+学生还可以使用现有的 GitHub 帐户注册并登录到教室实验室。 如果他们已经有一个 Microsoft 帐户链接到其 GitHub 帐户，学生可以登录并提供其密码，如上一节所示。 
 
-![登录选项链接](../media/how-to-configure-student-usage/signin-options.png)
+如果他们尚未将其 GitHub 帐户链接到 Microsoft 帐户，则可以执行以下操作：
 
-在 "**登录选项**" 页面上，选择 "**用 GitHub 登录**"。
+1. 选择**登录选项**链接，如下所示：
 
-![用 GitHub 链接登录](../media/how-to-configure-student-usage/signin-github.png)
+    !["登录选项"链接](../media/how-to-configure-student-usage/signin-options.png)
 
-最后，系统将提示他们创建链接到其 GitHub 帐户的 Microsoft 帐户。 当学生选择**下一个**时，会自动发生此情况。  然后，该学生会立即登录并连接到教室实验室。
+1. 在 **"登录"选项**窗口中，选择**使用 GitHub 登录**。
 
-## <a name="export-list-of-users-to-a-csv-file"></a>将用户列表导出到 CSV 文件
+    !["使用 GitHub 登录"链接](../media/how-to-configure-student-usage/signin-github.png)
 
-1. 切换到 "**用户**" 选项卡。
-2. 选择工具栏上的 " **...** " （省略号），然后选择 "**导出 CSV**"。 
+    提示后，学生将创建链接到其 GitHub 帐户的 Microsoft 帐户。 当他们选择 **"下一步**"时，链接会自动发生。 然后，他们立即登录并连接到教室实验室。
 
-    ![导出用户列表](../media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
+## <a name="export-a-list-of-users-to-a-csv-file"></a>将用户列表导出到 CSV 文件
+
+1. 转到 **"用户"** 窗格。
+1. 在工具栏上，选择省略号 **（...），** 然后选择 **"导出 CSV**"。 
+
+    !["导出 CSV"按钮](../media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：
 
-- [以管理员身份创建并管理实验室帐户](how-to-manage-lab-accounts.md)
-- [以实验室所有者身份创建并管理实验室](how-to-manage-classroom-labs.md)
-- [以实验室所有者身份设置并发布模板](how-to-create-manage-template.md)
-- [以实验室用户身份访问教室实验室](how-to-use-classroom-lab.md)
+- 对于管理员：[创建和管理实验室帐户](how-to-manage-lab-accounts.md)
+- 对于实验室所有者：[创建和管理实验室](how-to-manage-classroom-labs.md)以及[设置和发布模板](how-to-create-manage-template.md)
+- 对于实验室用户：[访问教室实验室](how-to-use-classroom-lab.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/12/2019
 ms.openlocfilehash: 2eb455ba6fa40538bfa03018be47232066036c23
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930425"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>创建 Azure 数据工厂数据流
@@ -20,7 +20,7 @@ ms.locfileid: "74930425"
 
 在 ADF 中映射数据流提供了一种无需任何编码即可大规模转换数据的方法，。 通过构造一系列转换，可以在数据流设计器中设计数据转换作业。 从任意数量的源转换开始，然后是数据转换步骤。 然后，使用接收器完成数据流，以将结果放在目标提供程序中。
 
-首先，从 Azure 门户创建新的 V2 数据工厂。 创建新工厂后，单击“创作和监视”磁贴以启动数据工厂 UI。
+首先从 Azure 门户创建新的 V2 数据工厂。 创建新工厂后，单击“创作和监视”磁贴以启动数据工厂 UI。
 
 ![数据流选项](media/data-flow/v2portal.png "数据流创建")
 
@@ -30,16 +30,16 @@ ms.locfileid: "74930425"
 
 系统将提示输入 Azure Blob 存储帐户信息。
 
-![数据流选项](media/data-flow/template2.png "数据流创建2")
+![数据流选项](media/data-flow/template2.png "数据流创建 2")
 
 [可在此处找到用于这些示例的数据](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata)。 下载示例数据并将文件存储在 Azure Blob 存储帐户中，以便执行示例。
 
-## <a name="create-new-data-flow"></a>创建新数据流
+## <a name="create-new-data-flow"></a>创建新的数据流
 
-使用 ADF UI 中的 "创建资源" 加号按钮创建数据流。
+使用 ADF UI 中的"添加符号"按钮创建数据流。
 
 ![数据流选项](media/data-flow/newresource.png "新资源")
 
 ## <a name="next-steps"></a>后续步骤
 
-开始使用[源转换](data-flow-source.md)生成数据转换。
+开始使用[源转换](data-flow-source.md)构建数据转换。

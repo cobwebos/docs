@@ -1,5 +1,5 @@
 ---
-title: Microsoft Threat Modeling Tool 发行说明
+title: 微软威胁建模工具发布说明
 titleSuffix: Azure
 description: 阐述 Threat Modeling Tool 的发行说明
 services: security
@@ -14,14 +14,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 03/22/2019
 ms.author: jegeib
-ms.openlocfilehash: a1a3687edaed012f255af915886917c3ac188896
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: eea853ec5829eda3f7496439979adae7bb20c639
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78269624"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125088"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool 发行版
 
@@ -38,10 +38,11 @@ Microsoft Threat Modeling Tool 目前作为免费的[单击下载](https://aka.m
 
 ## <a name="release-notes"></a>发行说明
 
-- [MICROSOFT THREAT MODELING TOOL GA 版本 7.3.00206.1](threat-modeling-tool-releases-73002061.md) -11 2020 年2月
-- [MICROSOFT THREAT MODELING TOOL GA 版本 7.1.61015.1](threat-modeling-tool-releases-71610151.md) -16 2019 年10月
-- [MICROSOFT THREAT MODELING TOOL GA 版本 7.1.60702.1](threat-modeling-tool-releases-71607021.md) -2 2019 年7月
-- [MICROSOFT THREAT MODELING TOOL GA 版本 7.1.60408.1](threat-modeling-tool-releases-71604081.md) -9 2019 年4月
+- [微软威胁建模工具 GA 版本 7.3.00316.1](threat-modeling-tool-releases-73003161.md) - 2020 年 3 月 22 日
+- [微软威胁建模工具 GA 版本 7.3.00206.1](threat-modeling-tool-releases-73002061.md) - 2020 年 2 月 11 日
+- [微软威胁建模工具 GA 版本 7.1.61015.1](threat-modeling-tool-releases-71610151.md) - 2019 年 10 月 16 日
+- [微软威胁建模工具 GA 版本 7.1.60702.1](threat-modeling-tool-releases-71607021.md) - 2019 年 7 月 2 日
+- [微软威胁建模工具 GA 版本 7.1.60408.1](threat-modeling-tool-releases-71604081.md) - 2019 年 4 月 9 日
 - [Microsoft Threat Modeling Tool 正式发行版 7.1.60126.1](threat-modeling-tool-releases-71601261.md) - 2019 年 1 月 29 日
 - [Microsoft Threat Modeling Tool 正式发行版 7.1.51023.1](threat-modeling-tool-releases-71510231.md) - 2018 年 11 月 1 日
 - [Microsoft Threat Modeling Tool 正式发行版 7.1.50911.2](threat-modeling-tool-releases-71509112.md) - 2018 年 9 月 12 日

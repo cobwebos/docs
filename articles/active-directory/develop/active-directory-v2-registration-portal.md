@@ -1,7 +1,7 @@
 ---
-title: 应用注册门户参考 |Microsoft
+title: 应用注册门户参考 |蔚蓝
 titleSuffix: Microsoft identity platform
-description: Microsoft 应用注册门户中的功能的说明。
+description: Microsoft 应用注册门户中功能的说明。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,27 +15,27 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.openlocfilehash: 26ebee446523c138569b9d5379c9a5e1b9e93e7d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76698435"
 ---
 # <a name="app-registration-reference"></a>应用注册参考
 
-本文档提供了在 Azure 门户的[应用注册](https://aka.ms/appregistrations)体验中找到的各种功能的上下文和说明。
+本文档提供 Azure 门户中[应用注册](https://aka.ms/appregistrations)体验中的各种功能的上下文和说明。
 
 ## <a name="my-applications-or-converged-applications"></a>我的应用程序或聚合应用程序
 
-此列表包含所有已注册的用于 Microsoft 标识平台（v2.0）终结点的应用程序。 这些应用程序能够让用户使用个人 Microsoft 帐户和工作/学校帐户从 Azure Active Directory 登录。 若要详细了解标识平台终结点，请参阅 v2.0[概述](active-directory-appmodel-v2-overview.md)。 这些应用程序也可以用来与 Microsoft 帐户身份验证终结点 `https://login.live.com` 集成。
+此列表包含注册供 Microsoft 标识平台 （v2.0） 终结点使用的所有应用程序。 这些应用程序能够让用户使用个人 Microsoft 帐户和工作/学校帐户从 Azure Active Directory 登录。 要了解有关标识平台终结点的详细信息，请参阅[v2.0 概述](active-directory-appmodel-v2-overview.md)。 这些应用程序也可以用来与 Microsoft 帐户身份验证终结点 `https://login.live.com` 集成。
 
 ## <a name="azure-ad-only-applications"></a>Azure AD 专用应用程序
 
-此列表包含所有已注册且可与 Azure AD v1.0 终结点搭配使用的应用程序。 这些应用程序只能让用户使用工作/学校帐户从 Azure Active Directory 登录。 此列表包含在[Azure 门户](https://portal.azure.com)中使用**应用注册**体验注册的应用程序。
+此列表包含所有已注册且可与 Azure AD v1.0 终结点搭配使用的应用程序。 这些应用程序只能让用户使用工作/学校帐户从 Azure Active Directory 登录。 此列表包括使用[Azure 门户](https://portal.azure.com)中的**应用注册**体验注册的应用程序。
 
 ## <a name="live-sdk-applications"></a>Live SDK 应用程序
 
-此列表包含所有已注册且只能与 Microsoft 帐户搭配使用的应用程序。 它们不能与 Azure Active Directory 搭配使用。 可以在此处找到之前已向 MSA 开发人员门户 (`https://account.live.com/developers/applications`) 注册的所有应用程序。 你先前在 `https://account.live.com/developers/applications` 上执行的所有功能现在可以在[应用注册](https://aka.ms/appregistrations)中执行。
+此列表包含所有已注册且只能与 Microsoft 帐户搭配使用的应用程序。 它们不能与 Azure Active Directory 搭配使用。 可以在此处找到之前已向 MSA 开发人员门户 (`https://account.live.com/developers/applications`) 注册的所有应用程序。 您以前执行`https://account.live.com/developers/applications`的所有功能现在可以在[应用注册中](https://aka.ms/appregistrations)执行。
 
 ## <a name="application-secrets"></a>应用程序密码
 
@@ -43,17 +43,17 @@ ms.locfileid: "76698435"
 
 每个应用都能在任何指定时间包含两个有效的应用程序密码。 通过维护两个密码，就能够在应用程序的整个环境中执行定期的密钥滚动更新。 将应用程序的全部内容移迁移到新密码之后，可能会删除旧密码，并预配一个新密码。
 
-目前，应用注册门户中只允许两种类型的应用程序密码。 如果选择“生成新密码”，将生成一个共享密码并存储在各自的数据存储中，可以在应用程序中使用该密码。 如果选择“生成新密钥对”，将创建一个新的公钥/私钥对，可下载并用来向 Azure AD 进行客户端身份验证。 如果选择“上载公钥”，则可以使用自己的公钥对/私钥对。
+目前，应用注册门户中只允许两种类型的应用程序密码。 如果选择“生成新密码”****，将生成一个共享密码并存储在各自的数据存储中，可以在应用程序中使用该密码。 如果选择“生成新密钥对”****，将创建一个新的公钥/私钥对，可下载并用来向 Azure AD 进行客户端身份验证。 如果选择“上载公钥”****，则可以使用自己的公钥对/私钥对。
 你需要上载包含公钥的证书。
 
-## <a name="profile"></a>个人资料
+## <a name="profile"></a>配置文件
 
 应用注册门户的配置文件部分可以用来自定义应用程序的登录页面。 目前，可以更改登录页面的应用程序徽标、服务条款 URL 和隐私声明 URL。 徽标必须是 GIF、PNG 或 JPEG 文件中透明的 48 x 48 或 50 x 50 像素图像，且大小不超过 15 KB。 请尝试更改这些值，并查看所生成的登录页面！
 
 ## <a name="live-sdk-support"></a>Live SDK 支持
 
-启用“Live SDK 支持”后，系统会将创建的所有应用程序密码预配到 Azure AD 和 Microsoft 帐户数据存储中。 这让应用程序能够直接与 Microsoft 帐户服务 (login.live.com) 集成。 如果你希望直接使用 Microsoft 帐户构建应用（而不是使用 v2.0 终结点），则应确保启用 Live SDK 支持。
+启用“Live SDK 支持”后，系统会将创建的所有应用程序密码预配到 Azure AD 和 Microsoft 帐户数据存储中。 这让应用程序能够直接与 Microsoft 帐户服务 (login.live.com) 集成。 如果您希望直接使用 Microsoft 帐户构建应用（而不是使用 v2.0 终结点），则应确保启用了实时 SDK 支持。
 
 如果禁用 Live SDK 支持，将确保系统只会将应用程序密码写入 Azure AD 数据存储。 Azure AD 数据存储包含企业级法规，使其遵守特定的标准，例如遵守 FISMA。 如果启用 Live SDK 支持，应用程序可能不会遵守其中某些标准。
 
-如果你只计划使用 v2.0 终结点，则可以安全地禁用 Live SDK 支持。
+如果您只计划使用 v2.0 终结点，则可以安全地禁用实时 SDK 支持。

@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: f150234ecd3446858e8a6aa7d224eb3ad3d0efd3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927346"
 ---
 # <a name="templates"></a>模板
@@ -26,11 +26,11 @@ ms.locfileid: "74927346"
 
 可通过以下两种方式，开始从模板创建数据工厂管道：
 
-1.  在“概述”页上选择“从模板创建管道”打开模板库。
+1.  在“概述”页上选择“从模板创建管道”打开模板库。****
 
     ![从“概述”页打开模板库](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  在资源浏览器中的“创作”选项卡上选择 **+** ，然后选择“模板中的管道”打开模板库。
+1.  在"资源资源管理器"中的"作者"**+** 选项卡上，选择"**从模板中获取管道**以打开模板库"。
 
     ![从“创作”页打开模板库](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -40,7 +40,7 @@ ms.locfileid: "74927346"
 
 ### <a name="out-of-the-box-data-factory-templates"></a>现成的数据工厂模板
 
-数据工厂使用 Azure 资源管理器模板来保存数据工厂管道模板。 在[官方 Azure 数据工厂 GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/templates)存储库中，可以看到所有资源管理器模板以及用于现成数据工厂模板的清单文件。 Microsoft 提供的预定义模板包括但不限于以下各项：
+数据工厂使用 Azure 资源管理器模板来保存数据工厂管道模板。 您可以在正式的[Azure 数据工厂 GitHub 存储库](https://github.com/Azure/Azure-DataFactory/tree/master/templates)中查看所有资源管理器模板以及用于开箱即用数据工厂模板的清单文件。 Microsoft 提供的预定义模板包括但不限于以下各项：
 
 -   复制模板：
 
@@ -56,7 +56,7 @@ ms.locfileid: "74927346"
 
     -   从 \<源\> 复制到 \<目标\>
 
-        -   [从 Amazon S3 到 Azure Data Lake Store 第2代](solution-template-migration-s3-azure.md)
+        -   [从 Amazon S3 复制到 Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 
         -   从 Google Big Query 复制到 Azure Data Lake Store Gen 2
 
@@ -80,11 +80,11 @@ ms.locfileid: "74927346"
 
 ### <a name="my-templates"></a>我的模板
 
-还可以通过在“管道”选项卡上选择“另存为模板”，将管道另存为模板。
+还可以通过在“管道”选项卡上选择“另存为模板”，将管道另存为模板。****
 
 ![将管道另存为模板](media/solution-templates-introduction/templates-intro-image4.png)
 
-可以在模板库的“我的模板”部分查看另存为模板的管道。 也可以在资源浏览器的“模板”部分查看这些管道。
+可以在模板库的“我的模板”部分查看另存为模板的管道。**** 也可以在资源浏览器的“模板”部分查看这些管道。****
 
 ![我的模板](media/solution-templates-introduction/templates-intro-image5.png)
 

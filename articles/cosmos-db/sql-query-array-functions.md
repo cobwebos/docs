@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查询语言中的数组函数
-description: 了解数组函数如何允许对中的数组执行操作 Azure Cosmos DB
+description: 了解如何使用数组函数对 Azure Cosmos DB 中的数组执行操作
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,19 +8,19 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a0256470892d634361498f1632027aff562c7761
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74871799"
 ---
-# <a name="array-functions-azure-cosmos-db"></a>数组函数（Azure Cosmos DB）
+# <a name="array-functions-azure-cosmos-db"></a>数组函数 (Azure Cosmos DB)
 
-数组函数使你能够对 Azure Cosmos DB 中的数组执行操作。
+使用数组函数可以对 Azure Cosmos DB 中的数组执行操作。
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>函数
 
-下面的标量函数对数组输入值执行运算，并返回数值、布尔值或数组值：
+以下标量函数对数组输入值执行操作，并返回数值、布尔值或数组值：
   
 ||||  
 |-|-|-|  
@@ -30,7 +30,7 @@ ms.locfileid: "74871799"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 简介](introduction.md)
-- [用户定义函数](sql-query-udfs.md)
-- [聚合](sql-query-aggregates.md)
+- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 简介](introduction.md)
+- [用户定义的函数](sql-query-udfs.md)
+- [集 料](sql-query-aggregates.md)

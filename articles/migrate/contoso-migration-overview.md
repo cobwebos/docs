@@ -1,22 +1,22 @@
 ---
-title: Contoso 迁移系列 |Microsoft Docs
+title: Contoso 迁移系列 |微软文档
 description: 提供 Contoso 用于将其本地数据中心迁移到 Azure 的迁移策略和方案的概述。
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: raynew
 ms.openlocfilehash: d37bee589eb7ee2e6e30c8dcea2531dd1f063481
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78939179"
 ---
 # <a name="contoso-migration-series"></a>Contoso 迁移系列
 
 
-我们有一系列文章演示了虚构的组织 Contoso 如何将本地基础结构迁移到[Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/)云。 
+我们有一系列文章，展示了虚构的组织 Contoso 如何将本地基础结构迁移到[Microsoft Azure](https://azure.microsoft.com/overview/what-is-azure/)云。 
 
-该系列包括相关信息和方案来说明如何设置基础结构的迁移及运行不同类型的迁移。 方案在执行过程中的复杂性会增长。 文章展示 Contoso 公司如何完成其迁移任务，但始终提供一般阅读和特定说明的指针。
+该系列包括相关信息和方案来说明如何设置基础结构的迁移及运行不同类型的迁移。 随着方案的进展，其复杂性会增大。 文章展示 Contoso 公司如何完成其迁移任务，但始终提供一般阅读和特定说明的指针。
 
 ## <a name="migration-articles"></a>迁移文章
 
@@ -27,7 +27,7 @@ ms.locfileid: "78939179"
 
 **文章** | **详细信息** 
 --- | --- 
-[文章 1：概述](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-overview) | 概述文章系列、Contoso 的迁移策略和该系列所用的示例应用。 
+[第 1 篇：概述](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-overview) | 概述文章系列、Contoso 的迁移策略和该系列所用的示例应用。 
 [文章 2：部署 Azure 基础结构](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-infrastructure) | Contoso 准备其本地和 Azure 基础结构进行迁移。 该系列的所有迁移文章共用同一个基础结构。 
 [文章 3：评估要迁移到 Azure 的本地资源](https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-migration-guide/assess?tabs=Tools)  | Contoso 评估 VMware 上运行的本地 SmartHotel360 应用。 Contoso 使用 Azure Migrate 服务评估应用 VM，并使用数据迁移助手评估应用 SQL Server 数据库。
 [文章 4：在 Azure VM 和 SQL 数据库托管实例上重新托管应用](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rehost-vm-sql-managed-instance) | Contoso 将其本地 SmartHotel360 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM。 Contoso 使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 Azure SQL 数据库托管实例。
@@ -45,4 +45,4 @@ ms.locfileid: "78939179"
 ## <a name="next-steps"></a>后续步骤
 
 - [了解](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/)云迁移。
-- 了解有关[数据库迁移指南](https://datamigration.microsoft.com/)中的其他方案（源/目标对）的迁移策略。
+- 在[数据库迁移指南](https://datamigration.microsoft.com/)中了解其他方案（源/目标对）的迁移策略。

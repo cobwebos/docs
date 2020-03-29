@@ -12,17 +12,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1138c95274c769186a9a29aa4d35517e378baeae
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720480"
 ---
 # <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期部署阶段
 
 本文概述了与 Team Data Science Process (TDSP) 的部署相关联的目标、任务和可交付结果。 此过程提供可用于构建数据科学项目的建议生命周期。 该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
 
-   1. **了解业务**
+   1. **业务理解**
    2. **数据采集和理解**
    3. **建模**
    4. **部署**
@@ -63,12 +63,12 @@ ms.locfileid: "76720480"
 
 以下是 TDSP 生命周期中每个步骤的链接：
 
-   1. [了解业务](lifecycle-business-understanding.md)
+   1. [业务理解](lifecycle-business-understanding.md)
    2. [数据采集和理解](lifecycle-data.md)
    3. [建模](lifecycle-modeling.md)
    4. [部署](lifecycle-deployment.md)
    5. [客户验收](lifecycle-acceptance.md)
 
-我们提供了完整的演练，演示特定方案在过程中的所有步骤。 [示例演练](walkthroughs.md)一文提供了包含链接和缩略图描述的方案列表。 该演练演示如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。 
+我们提供完整的演练，演示特定方案过程中的所有步骤。 [示例演练](walkthroughs.md)一文提供了包含链接和缩略图描述的方案列表。 该演练演示如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。 
 
 有关如何在使用 Azure 机器学习工作室的 TDSP 中执行步骤的示例，请参阅[通过 Azure 机器学习使用 TDSP](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。

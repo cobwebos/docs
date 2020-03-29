@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 虚拟机规模集的扩展序列化
+title: 将扩展排序与 Azure 虚拟机缩放集一起使用
 description: 了解如何在虚拟机规模集上部署多个扩展时对扩展预配进行排序。
 author: mayanknayar
 tags: azure-resource-manager
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
 ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278050"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>在虚拟机规模集中对扩展预配进行排序
@@ -21,7 +21,7 @@ Azure 虚拟机扩展提供部署后配置和管理、监视、安全性等功�
 
 本文详细介绍了如何在虚拟机规模集中对要为 VM 实例配置的扩展进行排序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 本文假定你熟悉以下内容：
 -   Azure 虚拟机[扩展](../virtual-machines/extensions/overview.md)
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虚拟机规模集
@@ -186,7 +186,7 @@ PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/provider
 ### <a name="azure-powershell"></a>Azure PowerShell
 使用 [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) cmdlet 将应用程序运行状况扩展添加到规模集模型定义中。 必须使用 Az PowerShell 1.2.0 或更高版本，才能执行扩展排序。
 
-下面的示例将[应用程序运行状况扩展](virtual-machine-scale-sets-health-extension.md)添加到 `extensionProfile`（位于基于 Windows 的规模集的规模集模型中）。 应用程序运行状况扩展在规模集中已定义的[自定义脚本扩展](../virtual-machines/extensions/custom-script-windows.md)后预配。
+下面的示例将[应用程序运行状况扩展](virtual-machine-scale-sets-health-extension.md)添加到`extensionProfile`基于 Windows 的比例集的比例集模型中。 应用程序运行状况扩展在规模集中已定义的[自定义脚本扩展](../virtual-machines/extensions/custom-script-windows.md)后预配。
 
 ```azurepowershell-interactive
 # Define the scale set variables
@@ -223,7 +223,7 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 使用 [az vmss 扩展集](/cli/azure/vmss/extension#az-vmss-extension-set)将应用程序运行状况扩展添加到规模集模型定义中。 必须使用 Azure CLI 2.0.55 或更高版本，才能执行扩展排序。
 
-下面的示例将[应用程序运行状况扩展](virtual-machine-scale-sets-health-extension.md)添加到基于 Windows 的规模集的规模集模型中。 应用程序运行状况扩展在规模集中已定义的[自定义脚本扩展](../virtual-machines/extensions/custom-script-windows.md)后预配。
+下面的示例将[应用程序运行状况扩展](virtual-machine-scale-sets-health-extension.md)添加到基于 Windows 的比例集的比例集模型。 应用程序运行状况扩展在规模集中已定义的[自定义脚本扩展](../virtual-machines/extensions/custom-script-windows.md)后预配。
 
 ```azurecli-interactive
 az vmss extension set \
@@ -237,11 +237,11 @@ az vmss extension set \
 ```
 
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
 ### <a name="not-able-to-add-extension-with-dependencies"></a>无法添加有依赖项的扩展？
 1. 请确保 provisionAfterExtensions 中指定的扩展已在规模集模型中定义。
-2. 请确保未引入循环依赖。 例如，不允许使用以下序列： ExtensionA-> ExtensionB-> ExtensionC-> ExtensionA
+2. 请确保未引入循环依赖。 例如，不允许以下序列：扩展A ->扩展B ->扩展C ->扩展A
 3. 请确保所依赖的任何扩展在扩展“属性”下有“设置”属性。 例如，如果需要在扩展 A 之后预配扩展 B，扩展 A 必须在扩展 A“属性”下有“设置”字段。 如果扩展不强制要求任何必需设置，可以指定空的“设置”属性。
 
 ### <a name="not-able-to-remove-extensions"></a>无法删除扩展？

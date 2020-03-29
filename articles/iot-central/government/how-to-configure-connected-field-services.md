@@ -4,15 +4,15 @@ description: 了解如何使用 Azure IoT Central 和 Dynamics 365 Field Service
 author: miriambrus
 ms.author: miriamb
 ms.date: 10/23/2019
-ms.topic: overview
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ae266495db1d6b94a43aa962a3e9b63a8115c526
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
-ms.translationtype: HT
+ms.openlocfilehash: 7c708268eaeade1cfb625c73ff8758a1941ff5b8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017661"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157443"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>使用 Azure IoT Central 和 Dynamics 365 Field Service 构建端到端解决方案 
 
@@ -21,7 +21,7 @@ ms.locfileid: "77017661"
 构建者可以将 Azure IoT Central 应用程序集成到其他业务系统。 
 
 
-例如，在连接的废弃物管理解决方案中，可以优化垃圾收集车的调度。 可以基于连接的垃圾桶中的 IoT 传感器数据进行优化。在 [IoT Central 连接的废弃物管理应用程序](./tutorial-connected-waste-management.md)中，可以配置规则和操作，并将其设置为触发在 Dynamics Field Service 中创建警报。 此方案是通过使用 Microsoft Flow 完成的，Microsoft Flow 将直接在 IoT Central 中进行配置，以便跨应用程序和服务自动执行工作流。 此外，基于现场服务中的服务活动，可以将信息发送回 Azure IoT Central。 
+例如，在连接的废弃物管理解决方案中，可以优化垃圾收集车的调度。 优化可以基于来自连接的垃圾箱的 IoT 传感器数据进行。在[IoT 中央连接的废物管理应用程序中](./tutorial-connected-waste-management.md)，您可以配置规则和操作，并将其设置为触发动态现场服务中创建警报。 此方案是通过使用 Microsoft Flow 完成的，Microsoft Flow 将直接在 IoT Central 中进行配置，以便跨应用程序和服务自动执行工作流。 此外，基于现场服务中的服务活动，可以将信息发送回 Azure IoT Central。 
 
 ## <a name="how-to-connect-your-azure-iot-central-application-with-dynamics-365-field-services"></a>如何使用 Dynamics 365 Field Service 连接 Azure IoT Central 应用程序 
 

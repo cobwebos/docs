@@ -7,28 +7,28 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.openlocfilehash: aa638b86b0788b8c274f9dcb3c04c1fc385b4ae1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76279033"
 ---
-# <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>将 Azure 磁盘加密用于虚拟机规模集扩展顺序
+# <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>将 Azure 磁盘加密与虚拟机规模集扩展排序配合使用
 
-Azure 磁盘加密等扩展可以按指定顺序添加到 Azure 虚拟机规模集。 为此，请使用[扩展序列](virtual-machine-scale-sets-extension-sequencing.md)化。 
+Azure 磁盘加密等扩展可以按指定顺序添加到 Azure 虚拟机规模集。 为此，请使用[扩展排序](virtual-machine-scale-sets-extension-sequencing.md)。 
 
 通常，应将加密应用到磁盘：
 
-- 在准备好磁盘或卷的扩展或自定义脚本之后。
-- 在访问或使用已加密磁盘或卷上的数据的扩展或自定义脚本之前。
+- 在准备磁盘或卷的扩展或自定义脚本之后。
+- 在访问或使用加密磁盘或卷上的数据的扩展或自定义脚本之前。
 
-在任一情况下，`provisionAfterExtensions` 属性指定应在序列中稍后添加的扩展。
+在上述任一情况下，`provisionAfterExtensions` 属性都指定在序列中稍后应添加哪个扩展。
 
 ## <a name="sample-azure-templates"></a>示例 Azure 模板
 
-如果要在另一个扩展后应用 Azure 磁盘加密，请将 "`provisionAfterExtensions`" 属性放入 AzureDiskEncryption extension 块。 
+如果希望在另一个扩展之后应用 Azure 磁盘加密，请将 `provisionAfterExtensions` 属性放在 AzureDiskEncryption 扩展块中。 
 
-下面的示例使用 "CustomScriptExtension"，这是一个用于初始化和格式化 Windows 磁盘的 Powershell 脚本，后面跟有 "AzureDiskEncryption"：
+下面是一个使用“CustomScriptExtension”的例子，这是一个初始化和格式化 Windows 磁盘的 Powershell 脚本，后跟“AzureDiskEncryption”：
 
 ```json
 "virtualMachineProfile": {
@@ -84,9 +84,9 @@ Azure 磁盘加密等扩展可以按指定顺序添加到 Azure 虚拟机规模�
 }
 ```
 
-如果要在另一个扩展之前应用 Azure 磁盘加密，请将 `provisionAfterExtensions` 属性置于扩展的块中。
+如果希望在另一个扩展之前应用 Azure 磁盘加密，请将 `provisionAfterExtensions` 属性放在后面跟着的扩展块中。
 
-下面是一个示例，该示例使用 "AzureDiskEncryption"，后跟 "VMDiagnosticsSettings"，后者是在基于 Windows 的 Azure 虚拟机上提供监视和诊断功能的扩展：
+下面是一个使用“AzureDiskEncryption”（后跟“VMDiagnosticsSettings”，这是一个在基于 Windows 的 Azure VM 上提供监视和诊断功能的扩展）的例子：
 
 
 ```json
@@ -152,12 +152,12 @@ Azure 磁盘加密等扩展可以按指定顺序添加到 Azure 虚拟机规模�
 ```
 
 有关更深入的模板，请参阅：
-* 在设置磁盘格式的自定义 shell 脚本后应用 Azure 磁盘加密扩展（Linux）： [extseq-customscript](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
+* 在一个用于格式化磁盘 (Linux) 的自定义 shell 脚本之后应用 Azure 磁盘加密扩展：[deploy-extseq-linux-ADE-after-customscript.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/ade-vmss/deploy-extseq-linux-ADE-after-customscript.json)
 
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关扩展序列化的详细信息：[虚拟机规模集中的序列扩展设置](virtual-machine-scale-sets-extension-sequencing.md)。
-- 了解有关 `provisionAfterExtensions` 属性的详细信息： [virtualMachineScaleSets/extension 模板引用](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)。
+- 了解有关扩展排序的更多：[虚拟机缩放集中的序列扩展预配](virtual-machine-scale-sets-extension-sequencing.md)。
+- 了解有关`provisionAfterExtensions`属性的更多[：Microsoft.计算虚拟机规模集/扩展模板引用](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)。
 - [适用于虚拟机规模集的 Azure 磁盘加密](disk-encryption-overview.md)
 - [使用 Azure CLI 加密虚拟机规模集](disk-encryption-cli.md)
 - [使用 Azure PowerShell 加密虚拟机规模集](disk-encryption-powershell.md)

@@ -11,10 +11,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
 ms.openlocfilehash: 1f920f2672c19455a8e8ac979e8d6d1eb14d4c35
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74924298"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
@@ -23,7 +23,7 @@ ms.locfileid: "74924298"
 > * [映射数据流](data-flow-create.md)
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
-> * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
+> * [Mapreduce](transform-data-using-hadoop-map-reduce.md)  
 > * [HDInsight Streaming](transform-data-using-hadoop-streaming.md)
 > * [HDInsight Spark](transform-data-using-spark.md)
 > * [机器学习](transform-data-using-machine-learning.md) 
@@ -35,23 +35,23 @@ ms.locfileid: "74924298"
 > * [.NET 自定义](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>概述
-本文介绍 Azure 数据工厂中的数据转换活动，你可以使用这些活动将原始数据转换和处理为大规模预测和见解。 在计算环境（如 Azure Databricks 或 Azure HDInsight）中执行转换活动。 其提供了相关文章链接，内附各转换活动的详细信息。
+本文介绍了 Azure 数据工厂中的数据转换活动，可利用这些活动将原始数据转换和处理为大规模预测和见解。 转换活动在计算环境中执行，如 Azure 数据块或 Azure HDInsight。 其提供了相关文章链接，内附各转换活动的详细信息。
 
 数据工厂支持以下数据转换活动，这些活动可单独添加到[管道](concepts-pipelines-activities.md)，还可与其他活动关联在一起。
 
-## <a name="transform-natively-in-azure-data-factory-with-data-flows"></a>将 Azure 数据工厂中的本机转换为数据流
+## <a name="transform-natively-in-azure-data-factory-with-data-flows"></a>使用数据流在 Azure 数据工厂进行本机转换
 
 ### <a name="mapping-data-flows"></a>映射数据流
 
-映射数据流是在 Azure 数据工厂中以可视方式设计的数据转换。 数据流允许数据工程师开发图形数据转换逻辑，而无需编写代码。 生成的数据流将作为使用扩展 Spark 群集的 Azure 数据工厂管道中的活动执行。 数据流活动可以通过现有的数据工厂计划、控制、流和监视功能来操作化。 有关详细信息，请参阅[映射数据流](concepts-data-flow-overview.md)。
+映射数据流是在 Azure 数据工厂中直观地设计的数据转换。 数据流允许数据工程师无需编写代码即可开发图形数据转换逻辑。 生成的数据流在 Azure 数据工厂管道中执行，这些活动使用横向扩展的 Spark 群集。 数据流活动可以通过现有的数据工厂调度、控制、流和监视功能进行操作。 有关详细信息，请参阅[映射数据流](concepts-data-flow-overview.md)。
 
-### <a name="wrangling-data-flows"></a>整理数据流
+### <a name="wrangling-data-flows"></a>旋转数据流
 
-通过 Azure 数据工厂中的整理数据流，可以在云规模上以迭代方式进行无代码的数据准备。 整理数据流与[Power Query Online](https://docs.microsoft.com/power-query/)集成，并通过 spark 执行将 Power Query M 功能提供给云规模的数据整理。 有关详细信息，请参阅[整理 data](wrangling-data-flow-overview.md)flow。
+通过 Azure 数据工厂中旋转数据流，您可以迭代云规模进行无代码数据准备。 旋转数据流与[在线电源查询](https://docs.microsoft.com/power-query/)集成，并通过火花执行使 Power Query M 函数可用于云级数据争鸣。 有关详细信息，请参阅[争论数据流](wrangling-data-flow-overview.md)。
 
 ## <a name="external-transformations"></a>外部转换
 
-或者，您可以自行编写代码转换并管理外部计算环境。
+或者，您可以自行编写转换和管理外部计算环境。
 
 ### <a name="hdinsight-hive-activity"></a>HDInsight Hive 活动
 数据工厂管道中的 HDInsight Hive 活动会在自己的或基于 Windows/Linux 的按需 HDInsight 群集上执行 Hive 查询。 有关此活动的详细信息，请参阅 [Hive 活动](transform-data-using-hadoop-hive.md)一文。 
@@ -69,9 +69,9 @@ ms.locfileid: "74924298"
 数据工厂管道中的 HDInsight Spark 活动在自己的 HDInsight 群集上执行 Spark 程序。 有关详细信息，请参阅[从 Azure 数据工厂调用 Spark 程序](transform-data-using-spark.md)。 
 
 ### <a name="machine-learning-activities"></a>机器学习活动
-借助 Azure 数据工厂，可轻松创建相关管道，利用已发布的 Azure 机器学习 Web 服务进行预测分析。 借助 Azure 数据工厂管道中的[批处理执行活动](transform-data-using-machine-learning.md)，可以调用机器学习 Web 服务预测批处理中的数据。
+借助 Azure 数据工厂，可轻松创建相关管道，利用已发布的 Azure 机器学习 Web 服务进行预测分析。 使用 Azure 数据工厂管道中的[批处理执行活动](transform-data-using-machine-learning.md)，可以调用机器学习 Web 服务对批处理中的数据进行预测。
 
-随着时间推移，需要使用新的输入数据集重新定型机器学习评分实验中的预测模型。 完成重新定型后，可使用重新定型的机器学习模型更新评分 Web 服务。 可以使用[更新资源活动](update-machine-learning-models.md)，通过新的训练模型更新 Web 服务。  
+随着时间推移，需要使用新的输入数据集重新定型机器学习评分实验中的预测模型。 完成重新定型后，可使用重新定型的机器学习模型更新评分 Web 服务。 您可以使用["更新资源"活动](update-machine-learning-models.md)使用新训练的模型更新 Web 服务。  
 
 有关这些机器学习活动的详细信息，请参阅[使用机器学习活动](transform-data-using-machine-learning.md)。 
 
@@ -83,7 +83,7 @@ Data Lake Analytics U-SQL 活动在 Azure Data Lake Analytics 群集上运行 U-
 
 ### <a name="databricks-notebook-activity"></a>Databricks Notebook 活动
 
-数据工厂管道中的 Azure Databricks 笔记本活动在 Azure Databricks 工作区中运行 Databricks 笔记本。 Azure Databricks 是一个用于运行 Apache Spark 的托管平台。 请参阅[通过运行 Databricks Notebook 转换数据](transform-data-databricks-notebook.md)。
+数据工厂管道中的 Azure 数据砖块笔记本活动在 Azure 数据砖块工作区中运行数据砖块笔记本。 Azure Databricks 是一个用于运行 Apache Spark 的托管平台。 请参阅[通过运行 Databricks Notebook 转换数据](transform-data-databricks-notebook.md)。
 
 ### <a name="databricks-jar-activity"></a>Databricks Jar 活动
 

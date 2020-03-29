@@ -1,6 +1,6 @@
 ---
 title: 通过 CLI 使用 Azure 媒体服务创建筛选器 | Microsoft Docs
-description: 本文介绍如何使用 CLI 通过 Azure 媒体服务 v3 创建筛选器。
+description: 本文演示如何使用 CLI 使用 Azure 媒体服务 v3 创建筛选器。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,10 +15,10 @@ ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74896074"
 ---
 # <a name="creating-filters-with-cli"></a>使用 CLI 创建筛选器 
@@ -30,9 +30,9 @@ ms.locfileid: "74896074"
 本主题说明如何为点播视频资产配置筛选器，并使用适用于媒体服务 v3 的 CLI 创建[帐户筛选器](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)和[资产筛选器](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)。 
 
 > [!NOTE]
-> 请确保查看[presentationTimeRange](filters-concept.md#presentationtimerange)。
+> 请确保查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>先决条件 
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "74896074"
 以下示例定义添加到最终清单的曲目择条件。 此筛选器包括属于 EC-3 的任何音频曲目和比特率在 0-1000000 范围内的任何视频曲目。
 
 > [!TIP]
-> 如果计划在 REST 中定义**筛选器**，请注意，需要包含 "Properties" 包装 JSON 对象。  
+> 如果计划在 REST 中定义**筛选器**，请注意需要包括“Properties”包装器 JSON 对象。  
 
 ```json
 [
@@ -100,11 +100,11 @@ az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-
 
 此外，请参阅[筛选器的 JSON 示例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)。
 
-## <a name="associate-filters-with-streaming-locator"></a>将筛选器与流式处理定位符关联
+## <a name="associate-filters-with-streaming-locator"></a>将筛选器与流定位器关联
 
-可以指定将应用于流式处理定位符的资产或帐户筛选器的列表。 [动态包装器（流式处理终结点）](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器结合在一起。 这种组合生成[动态清单](filters-dynamic-manifest-overview.md)，它基于在流式处理定位符上指定的 URL 中的筛选器和筛选器。 如果要应用筛选器，但不希望在 URL 中公开筛选器名称，建议使用此功能。
+可以指定资产或帐户筛选器的列表，这些筛选器将应用于流定位器。 [动态打包程序（流式处理终结点）](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位器上指定的“URL + 筛选器”中的筛选器。 如果要应用筛选器，但不希望在 URL 中公开筛选器名称，建议使用此功能。
 
-以下 CLI 代码演示了如何创建流式处理定位符并指定 `filters`。 这是一个可选属性，它采用以空格分隔的资产筛选器名称和/或帐户筛选器名称列表。
+以下 CLI 代码显示了如何创建流定位器并指定 `filters`。 这是一个可选属性，它采用以空格分隔的资产筛选器名称和/或帐户筛选器名称的列表。
 
 ```azurecli
 az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocatorName \
@@ -130,6 +130,6 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
 
 [流视频](stream-files-tutorial-with-api.md) 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

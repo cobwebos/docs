@@ -1,14 +1,14 @@
 ---
 title: 使用 REST API 创建备份策略
-description: 在本文中，你将了解如何使用 REST API 创建和管理备份策略（计划和保留期）。
+description: 本文介绍如何使用 REST API 创建和管理备份策略（计划和保留期）。
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963846"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务备份策略
@@ -29,10 +29,10 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 例如，若要为 Azure VM 备份创建策略，需在请求正文中包含以下组成部分。
 
-|名称  |需要  |类型  |Description  |
+|“属性”  |必选  |类型  |说明  |
 |---------|---------|---------|---------|
-|properties     |   正确      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 属性        |
-|标记     |         | 对象        |  资源标记       |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 属性        |
+|标记     |         | Object        |  资源标记       |
 
 有关请求正文中的完整定义列表，请参阅[备份策略 REST API 文档](/rest/api/backup/protectionpolicies/createorupdate)。
 
@@ -135,11 +135,11 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 创建/更新备份策略是一项[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
-当创建另一个操作时，它将返回两个响应：202（接受），然后在该操作完成时返回200（确定）。
+它返回两个响应：创建另一个操作时为 202（已接受），当该操作完成时返回 200 （OK）。
 
-|名称  |类型  |Description  |
+|“属性”  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     |    [Protection PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  确定       |
+|200 正常     |    [Protection PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 已接受     |         |     已接受    |
 
 ### <a name="example-responses"></a>示例响应
@@ -164,7 +164,7 @@ Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作。
+然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作**。
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13

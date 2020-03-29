@@ -1,23 +1,23 @@
 ---
-title: 使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区 | Microsoft Docs
+title: 日志分析工作区的 Azure 资源管理器模板
 description: 可以使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 1b084b8cbf87817a4ff12fdb56f44b740a6d6a12
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 357075caaf91769026deb839e038e5d42fb63a38
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248601"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80054690"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-可以使用[Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)在 Azure Monitor 中创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
+可以使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)在 Azure Monitor 中创建和配置 Log Analytics 工作区。 可使用模板执行的任务示例包括：
 
 * 创建工作区，包括设置定价层和容量预留
 * 添加解决方案
@@ -46,19 +46,19 @@ ms.locfileid: "79248601"
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
-下面的示例使用本地计算机中的模板创建一个工作区。 JSON 模板配置为仅要求新工作区的名称和位置。 它使用为其他工作区参数指定的值，例如[访问控制模式](design-logs-deployment.md#access-control-mode)、定价层、保留期和容量预留级别。
+下面的示例使用本地计算机中的模板创建工作区。 JSON 模板配置为仅需要新工作区的名称和位置。 它使用为其他工作区参数指定的值，如[访问控制模式](design-logs-deployment.md#access-control-mode)、定价层、保留和容量预留级别。
 
-对于容量预留，可以通过指定 `CapacityReservation` 的 SKU，并为属性 `capacityReservationLevel`指定的值（GB）来定义所选的容量预留容量。 以下列表详细介绍了在配置时支持的值和行为。
+对于容量预留，通过指定属性`CapacityReservation``capacityReservationLevel`的 SKU 和 GB 的值来定义用于引入数据的选定容量预留。 以下列表详细介绍了配置受支持的值和行为。
 
-- 设置保留限制后，在31天内不能更改为其他 SKU。
+- 设置预订限制后，您不能在 31 天内更改为其他 SKU。
 
-- 设置保留值后，只能在31天内增加。
+- 设置预留值后，只能在 31 天内增加预订值。
 
-- 只能将 `capacityReservationLevel` 的值设置为100的倍数，最大值为50000。
+- 只能以 100`capacityReservationLevel`的倍数设置 的值，最大值为 50000。
 
-- 如果增加预留级别，则会重置计时器，并且不能将其更改为自此更新后的31天。  
+- 如果增加预留级别，计时器将重置，并且在此更新后 31 天内无法更改计时器。  
 
-- 如果修改工作区的任何其他属性，但将保留限制保留到相同级别，则不会重置计时器。 
+- 如果修改工作区的任何其他属性，但保留限制保留到同一级别，则计时器不会重置。 
 
 ### <a name="create-and-deploy-template"></a>创建和部署模板
 
@@ -145,16 +145,16 @@ ms.locfileid: "79248601"
     }
     ```
 
-> [信息] 有关容量保留设置，请在 "sku" 下使用这些属性：
+> [信息] 容量预留设置，在"sKU"下使用这些属性：
 
->   "name"： "CapacityReservation"，
+>   "名称"："容量保留"，
 
->   "capacityReservationLevel"：100
+>   "容量保留级别"： 100
 
 
 2. 按要求编辑模板。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)参考，了解支持的属性和值。 
 3. 在本地文件夹中将此文件另存为 **deploylaworkspacetemplate.json**。
-4. 已做好部署此模板的准备。 使用 PowerShell 或命令行来创建工作区，并将工作区名称和位置指定为命令的一部分。 工作区名称必须在所有 Azure 订阅中全局唯一。
+4. 已做好部署此模板的准备。 使用 PowerShell 或命令行创建工作区，并在命令中指定工作区名称和位置。 工作区名称必须在所有 Azure 订阅中全局唯一。
 
    * 对于 PowerShell，请在包含模板的文件夹中使用以下命令：
    
@@ -176,7 +176,7 @@ ms.locfileid: "79248601"
 以下模板示例演示了如何：
 
 1. 向工作区添加解决方案
-2. 创建保存的搜索
+2. 创建保存的搜索。 为了确保部署不会意外覆盖保存的搜索，应在"已保存的搜索"资源中添加 eTag 属性，以覆盖和维护已保存搜索的阳萎性。
 3. 创建计算机组
 4. 从装有 Windows 代理的计算机启用 IIS 日志收集
 5. 从 Linux 计算机中收集逻辑磁盘性能计数器 (% Used Inodes; Free Megabytes; % Used Space; Disk Transfers/sec; Disk Reads/sec; Disk Writes/sec)
@@ -318,11 +318,11 @@ ms.locfileid: "79248601"
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
           ],
           "properties": {
-            "Category": "VMSS",
-            "ETag": "*",
-            "DisplayName": "VMSS Instance Count",
-            "Query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
-            "Version": 1
+            "category": "VMSS",
+            "eTag": "*",
+            "displayName": "VMSS Instance Count",
+            "query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
+            "version": 1
           }
         },
         {

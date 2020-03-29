@@ -10,46 +10,46 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 74102423461a56bb6fc19c2eb9874f96a76e34e0
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310707"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>在 Azure 仪表板上使用 Markdown 磁贴显示自定义内容
 
-可以向 Azure 仪表板添加 Markdown 磁贴，以便显示自定义的静态内容。 例如，可以在 markdown 磁贴上显示基本说明、图像或超链接集。
+可以向 Azure 仪表板添加 Markdown 磁贴，以便显示自定义的静态内容。 例如，可以在 Markdown 磁贴上显示基本的说明、图像或一组超链接。
 
 ## <a name="add-a-markdown-tile-to-your-dashboard"></a>向仪表板添加 Markdown 磁贴
 
-1. 在 Azure 门户边栏中选择“仪表板”。
+1. 在 Azure 门户边栏中选择“仪表板”。****
 
-   ![显示门户边栏的屏幕截图](./media/azure-portal-markdown-tile/azure-portal-nav.png)
+   ![屏幕截图，显示门户边栏](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
 1. 如果已创建任何自定义仪表板，请在仪表板视图中通过下拉列表选择会显示自定义 Markdown 磁贴的仪表板。 选择用于打开**磁贴库**的编辑图标。
 
    ![屏幕截图，显示仪表板编辑视图](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
-1. 在**磁贴库**中，找到名为**Markdown**的磁贴，然后选择 "**添加**"。 此时会将磁贴添加到仪表板，而“编辑 Markdown”窗格也会打开。
+1. 在“磁贴库”中找到名为 **Markdown** 的磁贴，然后选择“添加”。******** 此时会将磁贴添加到仪表板，而“编辑 Markdown”窗格也会打开。****
 
-1. 输入**标题**和**副标题**的值，这些值将在移动到另一个字段后显示在磁贴上。
+1. 输入“标题”和“副标题”的值，这些值会在你转到另一字段后显示在磁贴上。********
 
-   ![显示输入标题和副标题的结果的屏幕截图](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
+   ![屏幕截图，显示输入标题和副标题后的结果](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
 
-1. 选择其中一个选项，其中包含 markdown 内容：使用 URL**内联编辑**或**插入内容**。
+1. 选择包含标记内容的选项之一：**内联编辑**或使用 URL**插入内容**。
 
-   - 如果要直接输入 markdown，请选择 "**内联编辑**"。
+   - 如果要直接输入 Markdown，请选择“内联编辑”。****
 
-      ![显示输入内联内容的屏幕截图](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-inline-content.png)
+      ![屏幕截图，显示输入内联内容](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-inline-content.png)
 
-   - 如果要使用在线托管的现有 markdown 内容，请选择 "**使用 URL 插入内容**"。
+   - 如果要使用以联机方式托管的现有 Markdown 内容，请选择“使用 URL 插入内容”****。
 
-      ![显示输入 URL 的屏幕截图](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
+      ![屏幕截图，显示输入 URL](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > 为了增加安全性，你可以创建一个 markdown 文件并将其存储在[启用了加密的 Azure 存储帐户 blob](../storage/common/storage-service-encryption.md)中，然后使用 URL 选项指向该文件。 Markdown 内容是通过存储帐户的加密选项加密的。 只有对该文件具有权限的用户可以在仪表板上看到 markdown 内容。
+      > 为了增加安全性，可以创建一个 Markdown 文件，将其存储在[启用了加密的 Azure 存储帐户 Blob](../storage/common/storage-service-encryption.md) 中，然后使用 URL 选项指向该文件。 通过存储帐户的加密选项来加密 Markdown 内容。 只有有权访问文件的用户才能查看仪表板上的 Markdown 内容。
 
-1. 选择“完成”，关闭“编辑 Markdown”窗格。 你的内容将显示在 "Markdown" 磁贴上，你可以通过拖动右下角的句柄来调整其大小。
+1. 选择“完成”，关闭“编辑 Markdown”窗格。******** 内容会显示在 Markdown 磁贴上，该磁贴可以通过在右下角拖动图柄来重设大小。
 
    ![屏幕截图，显示自定义 Markdown 磁贴](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 

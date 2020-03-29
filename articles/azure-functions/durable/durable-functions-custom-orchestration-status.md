@@ -5,26 +5,26 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76766276"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions 中的自定义业务流程状态 (Azure Functions)
 
-使用自定义业务流程状态，可以为业务流程协调程序函数设置自定义状态值。 此状态通过[HTTP GETSTATUS api](durable-functions-http-api.md#get-instance-status)或业务流程客户端上的[`GetStatusAsync` API](durable-functions-instance-management.md#query-instances)提供。
+使用自定义业务流程状态，可以为业务流程协调程序函数设置自定义状态值。 此状态通过 HTTP [GetStatus API](durable-functions-http-api.md#get-instance-status)或业务流程客户端上的[`GetStatusAsync`API](durable-functions-instance-management.md#query-instances)提供。
 
 ## <a name="sample-use-cases"></a>示例用例
 
 > [!NOTE]
-> 下面的示例演示如何使用中的C#自定义状态功能和 JavaScript。 C#示例是针对 Durable Functions 2.x 编写的，与 Durable Functions 1.x 不兼容。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+> 以下示例演示如何在 C# 和 JavaScript 中使用自定义状态功能。 C# 示例是针对 Durable Functions 2.x 编写的，与 Durable Functions 1.x 不兼容。 有关不同版本之间的差异的详细信息，请参阅[持久函数版本](durable-functions-versions.md)一文。
 
 ### <a name="visualize-progress"></a>显示进度
 
 客户端可以轮询状态终结点，并显示进度 UI 来直观显示当前执行阶段。 以下示例演示了进度共享：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -51,9 +51,9 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-`E1_HelloSequence` orchestrator 函数：
+`E1_HelloSequence`协调器功能：
 
 ```javascript
 const df = require("durable-functions");
@@ -73,7 +73,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-`E1_SayHello` 活动函数：
+`E1_SayHello`活动功能：
 
 ```javascript
 module.exports = async function(context, name) {
@@ -85,7 +85,7 @@ module.exports = async function(context, name) {
 
 然后，只有当 `CustomStatus` 字段设置为“London”时，客户端才会收到业务流程的输出：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -118,7 +118,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -156,7 +156,7 @@ module.exports = async function(context, req) {
 
 另一个有趣的方案是通过基于独特的特征或交互返回自定义输出对用户进行细分。 借助自定义业务流程状态，客户端代码将保持为泛型。 所有主要修改都将发生在服务器端，如以下示例中所示：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -194,7 +194,7 @@ public static void Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -233,7 +233,7 @@ module.exports = df.orchestrator(function*(context) {
 
 业务流程协调程序可以通过自定义状态为客户端提供独特指令。 自定义状态指令将映射到业务流程代码中的步骤：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -261,7 +261,7 @@ public static async Task<bool> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -294,7 +294,7 @@ module.exports = df.orchestrator(function*(context) {
 
 在下面的示例中，首先设置了自定义状态；
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
@@ -309,7 +309,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -347,7 +347,7 @@ GET /runtime/webhooks/durabletask/instances/instance123
 ```
 
 > [!WARNING]
-> 自定义状态有效负载限制为 16 KB 的 UTF-16 JSON 文本，因为它需要能够容纳在 Azure 表存储列中。 如果需要更大的负载，建议使用外部存储。
+> 自定义状态有效负载限制为 16 KB 的 UTF-16 JSON 文本，因为它需要能够容纳在 Azure 表存储列中。 如果需要更大的有效负载，我们建议使用外部存储。
 
 ## <a name="next-steps"></a>后续步骤
 

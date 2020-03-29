@@ -1,5 +1,5 @@
 ---
-title: 停止使用托管标识 VM 扩展-Azure AD
+title: 停止使用托管标识 VM 扩展 - Azure AD
 description: 有关停止使用 VM 扩展并开始使用 Azure 实例元数据服务 (IMDS) 进行身份验证的分步说明。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 3440713c287967655678e1cde2c000a6ed28b900
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 01b8e1dbc290bed86ccfc3c7016e8bd9168e427a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183951"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049070"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>如何停止使用虚拟机托管标识扩展并开始使用 Azure 实例元数据服务
 
@@ -35,7 +35,7 @@ ms.locfileid: "74183951"
 
 ### <a name="provision-the-extension"></a>预配扩展 
 
-将虚拟机或虚拟机规模集配置为使用托管标识时，可以选择性地在 `-Type`Set-AzVMExtension[ cmdlet 中使用 ](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) 参数，来预配 Azure 资源托管标识 VM 扩展。 可以传递 `ManagedIdentityExtensionForWindows` 或 `ManagedIdentityExtensionForLinux`（取决于虚拟机的类型），并使用 `-Name` 参数将其命名。 `-Settings` 参数指定 OAuth 令牌终结点用于令牌获取的端口：
+将虚拟机或虚拟机规模集配置为使用托管标识时，可以选择性地在 [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) cmdlet 中使用 `-Type` 参数，来预配 Azure 资源托管标识 VM 扩展。 可以传递 `ManagedIdentityExtensionForWindows` 或 `ManagedIdentityExtensionForLinux`（取决于虚拟机的类型），并使用 `-Name` 参数将其命名。 `-Settings` 参数指定 OAuth 令牌终结点用于令牌获取的端口：
 
 ```powershell
    $settings = @{ "port" = 50342 }
@@ -96,7 +96,7 @@ ms.locfileid: "74183951"
 由于 DNS 查找失败，虚拟机扩展的预配可能会失败。 如果发生这种情况，请重启虚拟机，然后重试。 
 
 ### <a name="remove-the-extension"></a>删除扩展 
-若要删除扩展，请在 Azure CLI 中结合 `-n ManagedIdentityExtensionForWindows`az vm extension delete`-n ManagedIdentityExtensionForLinux` 或 [az vmss extension delete](https://docs.microsoft.com/cli/azure/vm/)（针对虚拟机规模集）使用 [ 或 ](https://docs.microsoft.com/cli/azure/vmss) 开关，或者在 Powershell 中使用 `Remove-AzVMExtension`：
+若要删除扩展，请在 Azure CLI 中结合 [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/) 或 [az vmss extension delete](https://docs.microsoft.com/cli/azure/vmss)（针对虚拟机规模集）使用 `-n ManagedIdentityExtensionForWindows` 或 `-n ManagedIdentityExtensionForLinux` 开关，或者在 Powershell 中使用 `Remove-AzVMExtension`：
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -119,11 +119,11 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `http://localhost:50342/oauth2/token` | Azure 资源的托管标识终结点，其中 50342 是可配置的默认端口。 |
-| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 https://management.azure.com/ 的令牌。 |
+| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 它也会显示在所颁发令牌的 `aud`（受众）声明中。 本示例请求一个用于访问 Azure 资源管理器的、应用 ID URI 为 `https://management.azure.com/` 的令牌。 |
 | `Metadata` | 一个 HTTP 请求标头字段，Azure 资源的托管标识需要使用该元素来缓解服务器端请求伪造 (SSRF) 攻击。 必须将此值设置为“true”（全小写）。|
 | `object_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 object_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
 | `client_id` | （可选）一个查询字符串参数，指示要将此令牌用于的托管标识的 client_id。 如果 VM 有用户分配的多个托管标识，则为必需的。|
@@ -145,7 +145,7 @@ Content-Type: application/json
 }
 ```
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 | ------- | ----------- |
 | `access_token` | 请求的访问令牌。 调用受保护 REST API 时，该令牌将作为“持有者”令牌嵌入在 `Authorization` 请求标头字段中，使 API 能够对调用方进行身份验证。 | 
 | `refresh_token` | 未由 Azure 资源的托管标识使用。 |
@@ -172,7 +172,7 @@ Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <loc
 
 #### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>尝试 Azure 资源托管标识扩展的架构导出功能时，“自动化脚本”失败
 
-如果在虚拟机上启用了 Azure 资源托管标识，当尝试将“自动化脚本”功能用于虚拟机或其资源组时，将显示以下错误：
+在虚拟机上启用 Azure 资源的托管标识时，尝试对虚拟机或其资源组使用"自动化脚本"功能时将显示以下错误：
 
 ![Azure 资源托管标识自动化脚本导出错误](./media/howto-migrate-vm-extension/automation-script-export-error.png)
 

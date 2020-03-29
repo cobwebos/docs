@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：声明性预配表达式 | Microsoft Docs
+title: Azure AD Connect：声明性预配表达式 | Microsoft 文档
 description: 说明声明性设置表达式
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60245505"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步：了解声明性设置表达式
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步：了解声明性预配表达式
 Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的声明式预配。 使用该功能可以实现完整的标识集成业务逻辑，而无需编写已编译的代码。
 
 声明性设置的一个重要组成部分是属性流中使用的表达式语言。 所用的语言是 Microsoft® Visual Basic® for Applications (VBA) 的子集。 Microsoft Office 中使用了这种语言，具有 VBScript 经验的用户都认识该语言。 声明性预配表达式语言只使用函数，不属于结构化语言。 它不提供任何方法或语句。 函数嵌套在表达式程序流中。
@@ -38,17 +38,17 @@ Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的
 * 参数通过百分比符号标识：%ParameterName%
 * 字符串常量放在引号中：例如 "Contoso"（注意：必须使用直引号 ""，而不能使用弯引号“”）
 * 数字值表示不带引号，并且应为十进制。 十六进制值带有前缀 &H。 例如，98052, &HFF
-* 布尔值以常量表示：True、False。
+* 表示布尔值的常量： True、 False。
 * 内置常量和文本仅使用其名称表示：NULL、CRLF、IgnoreThisFlow
 
 ### <a name="functions"></a>函数
-声明性预配使用许多函数来实现转换属性值的可能性。 这些函数可以嵌套，因此，一个函数的结果会传递到另一个函数。
+声明性预配使用许多函数来实现转换属性值的可能性。 这些函数可以嵌套，因此，一个函数的结果将传递到另一个函数。
 
 `Function1(Function2(Function3()))`
 
 有关函数的完整列表，请参阅[函数参考](reference-connect-sync-functions-reference.md)。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 通过连接器或由管理员使用 PowerShell 定义参数。 参数通常包含因系统不同而各异的值，例如用户所在域的名称。 这些参数可在属性流中使用。
 
 Active Directory 连接器为入站同步规则提供以下参数：
@@ -88,16 +88,16 @@ Active Directory 连接器为入站同步规则提供以下参数：
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` 查找 SIP 地址并从值中删除该地址。
 
 ## <a name="next-steps"></a>后续步骤
-* 在[了解声明性预配](concept-azure-ad-connect-sync-declarative-provisioning.md)中阅读有关配置模型的详细信息。
-* 在[了解默认配置](concept-azure-ad-connect-sync-default-configuration.md)中了解如何现成使用声明性设置。
+* 在 [Understanding Declarative Provisioning](concept-azure-ad-connect-sync-declarative-provisioning.md)（了解声明性预配）中了解有关配置模型的详细信息。
+* 在 [Understanding the default configuration](concept-azure-ad-connect-sync-default-configuration.md)（了解默认配置）中了解如何现成地使用声明式预配。
 * 在 [How to make a change to the default configuration](how-to-connect-sync-change-the-configuration.md)（如何对默认配置进行更改）中了解如何使用声明性预配进行实际更改。
 
 **概述主题**
 
-* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
-* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
+* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
+* [将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)
 
 **参考主题**
 
-* [Azure AD Connect 同步：函数引用](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect 同步：函数参考](reference-connect-sync-functions-reference.md)
 

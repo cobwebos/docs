@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773687"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>开始使用 REST 传送点播内容  
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 本快速入门介绍了使用 Azure 媒体服务 (AMS) REST API 实现视频点播 (VoD) 内容传送应用程序的步骤。
 
@@ -36,11 +36,11 @@ ms.locfileid: "76773687"
 
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 以下是开始使用媒体服务和 REST API 进行开发所要满足的先决条件。
 
-* 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
-* 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
+* 一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个媒体服务帐户。 要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
 * 了解如何使用媒体服务 REST API 进行开发。 有关详细信息，请参阅[媒体服务 REST API 概述](media-services-rest-how-to-use.md)。
 * 可以发送 HTTP 请求和响应的所选应用程序。 本教程使用 [Fiddler](https://www.telerik.com/download/fiddler)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "76773687"
 使用 Azure 媒体服务时，最常见的场景之一是通过自适应比特率流式处理传送视频。 媒体服务提供动态打包，可按媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）及时传送自适应比特率 MP4 编码内容，而无需存储上述各种流格式的预打包版本。
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
+>创建 AMS 帐户时，**默认**流式处理终结点将添加到处于 **"已停止"** 状态的帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。****
 
 若要启动流式处理终结点，请执行以下操作：
 
@@ -79,21 +79,21 @@ ms.locfileid: "76773687"
 4. 单击“启动”图标。
 5. 单击“保存”按钮保存更改。
 
-## <a id="connect"></a>使用 REST API 连接到媒体服务帐户
+## <a name="connect-to-the-media-services-account-with-rest-api"></a><a id="connect"></a>使用 REST API 连接到媒体服务帐户
 
 若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
-## <a id="upload"></a>使用 REST API 创建新资产并上载视频文件
+## <a name="create-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>使用 REST API 创建新资产并上载视频文件
 
-在媒体服务中，可以将数字文件上传到资产中。 **资产**实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及有关这些文件的元数据）。 文件上传到资产后，你的内容将安全地存储在云中，以便进行进一步处理和流式处理。
+在媒体服务中，可以将数字文件上传到资产中。 **资产**实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏字幕文件（以及有关这些文件的元数据）。 文件上载到资产后，您的内容将安全地存储在云中，以便进一步处理和流式传输。
 
 创建资产时必须提供的值之一是资产创建选项。 **Options** 属性是一个枚举值，描述可用于创建资产的加密选项。 有效值为以下列表中的某个值，而不是此列表中值的组合：
 
-* **None** = **0** - 不使用加密。 使用此选项时，内容在传送过程中或静态存储过程中都不会受到保护。
+* **无** = **0** - 不使用加密。 使用此选项时，内容在传送过程中或静态存储过程中都不会受到保护。
     如果计划使用渐进式下载交付 MP4，则使用此选项。
-* **StorageEncrypted** = **1** - 使用 AES-256 位加密在本地加密明文内容，然后将其上传到 Azure 存储，在其中以加密形式静态存储相关内容。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
-* **CommonEncryptionProtected** = **2** - 上传经过通用加密或 PlayReady DRM 加密并受其保护的内容（例如，受 PlayReady DRM 保护的平滑流式处理）时使用此选项。
-* **EnvelopeEncryptionProtected** = **4** - 如果要上传使用 AES 加密的 HLS，请使用此选项。 Transform Manager 必须已对文件进行编码和加密。
+* **Storage加密** = **1** - 使用 AES-256 位加密在本地加密清除内容，然后将它上载到 Azure 存储，在静态存储中加密存储。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
+* **通用加密保护** = **2** - 如果您正在上传已加密且已使用通用加密或 PlayReady DRM 保护的内容（例如，使用 PlayReady DRM 保护的平滑流式处理），请使用此选项。
+* **信封加密保护** = **4** – 如果您上传了使用 AES 加密的 HLS，请使用此选项。 Transform Manager 必须已对文件进行编码和加密。
 
 ### <a name="create-an-asset"></a>创建资产
 资产是媒体服务中多种类型的对象或多组对象（包括视频、音频、图像、缩略图集合、文本轨道和隐藏的解释性字幕文件）的容器。 在 REST API 中，创建资产需要向媒体服务发送 POST 请求，并将任何有关资产的属性信息放入请求正文中。
@@ -261,7 +261,7 @@ ms.locfileid: "76773687"
 
 ### <a name="get-the-upload-url"></a>获取上传 URL
 
-若要检索实际上传 URL，请创建一个 SAS 定位符。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅[定位符](https://docs.microsoft.com/rest/api/media/operations/locator)。
+若要检索实际上传 URL，请创建一个 SAS 定位符。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅[定位器](https://docs.microsoft.com/rest/api/media/operations/locator)。
 
 SAS URL 采用以下格式：
 
@@ -405,7 +405,7 @@ SAS URL 采用以下格式：
     HTTP/1.1 204 No Content
     ...
 
-## <a id="encode"></a>将源文件编码为一组自适应比特率 MP4 文件
+## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a><a id="encode"></a>将源文件编码为一组自适应比特率 MP4 文件
 
 将资产引入媒体服务后，即可对媒体进行编码、传输复用、打水印等处理，然后将其传送至客户端。 将根据多个后台角色实例调度把那个运行这些活动，以确保较高的性能和可用性。 这些活动称为作业，每个作业由原子任务构成，这些原子任务在资产文件上完成具体的工作（有关详细信息，请参阅[作业](https://docs.microsoft.com/rest/api/media/operations/job)、[任务](https://docs.microsoft.com/rest/api/media/operations/task)描述）。
 
@@ -692,14 +692,14 @@ SAS URL 采用以下格式：
        ]
     }
 
-## <a id="publish_get_urls"></a>使用 REST API 发布资产并获取流式处理和渐进式下载 URL
+## <a name="publish-the-asset-and-get-streaming-and-progressive-download-urls-with-rest-api"></a><a id="publish_get_urls"></a>使用 REST API 发布资产并获取流式处理和渐进式下载 URL
 
 要流处理或下载资产，必须先创建定位符来“发布”资产。 定位符提供对资产中所含文件的访问权限。 媒体服务支持两种类型的定位符：用于流媒体（例如 MPEG DASH、HLS 或平滑流式处理）的 OnDemandOrigin 定位符，以及用于下载媒体文件的访问签名 (SAS) 定位符。 
 
 创建定位符后，可以创建用来流式处理或下载文件的 URL。
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
+>创建 AMS 帐户时，**默认**流式处理终结点将添加到处于 **"已停止"** 状态的帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。****
 
 平滑流式处理的流式处理 URL 采用以下格式：
 
@@ -817,7 +817,7 @@ MPEG DASH 的流 URL 采用以下格式：
 设置 AccessPolicy 和定位符后，可以使用 Azure 存储 REST API 下载文件。  
 
 > [!NOTE]
-> 必须将要下载的文件的文件名添加到在上一部分收到的定位符 **Path** 值中。 例如： https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? 。 。 。
+> 必须将要下载的文件的文件名添加到在上一部分收到的定位符 **Path** 值中。 例如： https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
 
 有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
 
@@ -910,7 +910,7 @@ MPEG DASH 的流 URL 采用以下格式：
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
-## <a id="play"></a>播放内容
+## <a name="play-your-content"></a><a id="play"></a>播放内容
 若要流式处理视频，请使用 [Azure 媒体服务播放器](https://aka.ms/azuremediaplayer)。
 
 要测试渐进式下载，请将 URL 粘贴到浏览器（例如 IE、Chrome、Safari）中。

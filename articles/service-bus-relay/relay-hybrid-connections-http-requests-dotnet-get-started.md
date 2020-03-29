@@ -1,5 +1,5 @@
 ---
-title: Azure 中继混合连接-.NET 中的 HTTP 请求
+title: Azure 中继混合连接 - HTTP 请求 (.NET)
 description: 使用 .NET 为 Azure 中继混合连接 HTTP 请求编写 C# 控制台应用程序。
 services: service-bus-relay
 documentationcenter: .net
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 7c984876c4338b4f6802ba55752c8f612c390e94
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75355169"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>开始在 .NET 中使用中继混合连接 HTTP 请求
@@ -34,12 +34,12 @@ ms.locfileid: "75355169"
 4. 编写客户端（发送方）控制台应用程序，用于发送消息。
 5. 运行应用程序。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要具备以下先决条件：
 
-* [Visual Studio 2015 或更高版本](https://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
-* Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+* [视觉工作室 2015 或更高版本](https://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
+* Azure 订阅。 如果没有，请先[创建一个免费帐户](https://azure.microsoft.com/free/)。"
 
 ## <a name="create-a-namespace"></a>创建命名空间
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
@@ -67,7 +67,7 @@ ms.locfileid: "75355169"
 1. 运行客户端应用程序。 你将在客户端窗口中看到 `hello!`。 客户端向服务器发送了一个 HTTP 请求，服务器以 `hello!` 进行响应。 
 3. 现在，若要关闭控制台窗口，请在两个控制台窗口中按 **ENTER**。 
 
-恭喜，你已经创建了一个完整的混合连接应用程序！
+祝贺你，你已创建了一个完整的混合连接应用程序！
 
 ## <a name="next-steps"></a>后续步骤
 

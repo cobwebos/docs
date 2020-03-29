@@ -1,7 +1,7 @@
 ---
 title: 自定义电子邮件验证
 titleSuffix: Azure AD B2C
-description: 了解如何自定义在客户注册使用您 Azure AD B2C 的应用程序时发送给他们的验证电子邮件。
+description: 了解如何自定义在客户注册使用启用 Azure AD B2C 的应用程序时发送给客户的验证电子邮件。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,50 +12,50 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6cc0508a63f26b955ac5e0ebf3ef58a184a35997
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671630"
 ---
-# <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义电子邮件验证
+# <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Azure 活动目录 B2C 中的自定义电子邮件验证
 
-使用 Azure Active Directory B2C （Azure AD B2C）中的自定义电子邮件向注册使用你的应用程序的用户发送自定义电子邮件。 通过使用[DisplayControls](display-controls.md) （目前为预览版）和第三方电子邮件提供商，你可以使用自己的电子邮件模板，*从：* 地址和主题，以及支持本地化和自定义一次性密码（OTP）设置。
+使用 Azure 活动目录 B2C（Azure AD B2C）中的自定义电子邮件向注册使用应用程序的用户发送自定义电子邮件。 通过使用[DisplayControls（](display-controls.md)当前预览版）和第三方电子邮件提供商，您可以使用自己的电子邮件模板和*From：* 地址和主题，以及支持本地化和自定义一次性密码 （OTP） 设置。
 
-自定义电子邮件验证要求使用第三方电子邮件提供程序（如[SendGrid](https://sendgrid.com)或[SparkPost](https://sparkpost.com)）、自定义 REST API 或任何基于 HTTP 的电子邮件提供程序（包括你自己的电子邮件提供程序）。 本文介绍如何设置使用 SendGrid 的解决方案。
+自定义电子邮件验证需要使用第三方电子邮件提供商（如[SendGrid](https://sendgrid.com)或[SparkPost、](https://sparkpost.com)自定义 REST API 或任何基于 HTTP 的电子邮件提供商（包括您自己的）。 本文介绍设置使用 SendGrid 的解决方案。
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="create-a-sendgrid-account"></a>创建 SendGrid 帐户
 
-如果还没有帐户，请首先设置 SendGrid 帐户（Azure 客户每月可解锁25000免费电子邮件）。 有关安装说明，请参阅[如何在 Azure 中使用 SendGrid 发送电子邮件](../sendgrid-dotnet-how-to-send-email.md)中的[创建 SendGrid 帐户](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)部分。
+如果还没有，请先设置 SendGrid 帐户（Azure 客户每月可以解锁 25，000 封免费电子邮件）。 有关设置说明，请参阅创建"如何使用 Azure 使用[SendGrid 发送电子邮件](../sendgrid-dotnet-how-to-send-email.md)的["发送网格帐户"](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)部分。
 
-请确保完成[创建 SENDGRID API 密钥](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)的部分。 记录 API 密钥以便在后面的步骤中使用。
+请务必完成[创建 SendGrid API 密钥](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)的部分。 记录 API 密钥，以便在后面的步骤中使用。
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>创建 Azure AD B2C 策略密钥
 
-接下来，将 SendGrid API 密钥存储在 Azure AD B2C 策略密钥中，以供策略参考。
+接下来，将 SendGrid API 密钥存储在 Azure AD B2C 策略密钥中，供策略参考。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 请确保使用的是包含 Azure AD B2C 租户的目录。 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择 Azure AD B2C 的目录。
-1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
-1. 在“概述”页上选择“标识体验框架”。
-1. 选择“策略密钥”，然后选择“添加”。
-1. 对于“选项”，请选择 `Manual`。
+1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的**目录 + 订阅**筛选器，然后选择 Azure AD B2C 目录。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”********。
+1. 在“概述”页上选择“标识体验框架”****。
+1. 选择“策略密钥”****，然后选择“添加”****。
+1. 对于“选项”****，请选择 `Manual`。
 1. 输入策略密钥的**名称**。 例如，`SendGridSecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
-1. 在“机密”中，输入前面记录的应用程序机密。
-1. 在“密钥用法”处选择 **。** `Signature`
-1. 选择“创建”。
+1. 在“机密”中，输入前面记录的应用程序机密****。
+1. 在“密钥用法”处选择 `Signature`。****
+1. 选择 **“创建”**。
 
-## <a name="create-sendgrid-template"></a>创建 SendGrid 模板
+## <a name="create-sendgrid-template"></a>创建发送网格模板
 
-创建 SendGrid 帐户并将 SendGrid API 密钥存储在 Azure AD B2C 策略密钥中，创建 SendGrid[动态事务模板](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)。
+使用创建 SendGrid 帐户并将 SendGrid API 密钥存储在 Azure AD B2C 策略密钥中，创建 SendGrid[动态事务模板](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)。
 
-1. 在 SendGrid 站点上，打开 "[事务模板](https://sendgrid.com/dynamic_templates)" 页，然后选择 "**创建模板**"。
-1. 输入 `Verification email` 的唯一模板名称，然后选择 "**保存**"。
-1. 若要开始编辑新模板，请选择 "**添加版本**"。
-1. 选择 "**代码编辑器**"，然后**继续**。
-1. 在 HTML 编辑器中，粘贴以下 HTML 模板或使用自己的模板。 将用一次性密码值和用户电子邮件地址动态替换 `{{otp}}` 和 `{{email}}` 参数。
+1. 在 SendGrid 网站上，打开[事务模板](https://sendgrid.com/dynamic_templates)页面并选择"**创建模板**"。
+1. 输入一个唯一的`Verification email`模板名称，然后选择 **"保存**"。
+1. 要开始编辑新模板，请选择"**添加版本**"。
+1. 选择**代码编辑器**，然后**继续**。
+1. 在 HTML 编辑器中，粘贴以下 HTML 模板或使用您自己的模板。 和`{{otp}}``{{email}}`参数将动态替换为一次性密码值和用户电子邮件地址。
 
     ```HTML
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -151,16 +151,16 @@ ms.locfileid: "78671630"
     </html>
     ```
 
-1. 展开左侧的 "**设置**"，为 "**电子邮件主题**" 输入 `{{subject}}`。
-1. 选择 "**保存模板**"。
-1. 通过选择 "返回" 箭头返回到 "**事务模板**" 页。
-1. 记录创建的模板**ID** ，以便在后面的步骤中使用。 例如，`d-989077fbba9746e89f3f6411f596fb96` 。 [添加声明转换](#add-the-claims-transformation)时，可以指定此 ID。
+1. 展开左侧的**设置**，对于 **"电子邮件主题"，** 请`{{subject}}`输入 。
+1. 选择 **"保存模板**"。
+1. 通过选择后退箭头返回到**事务模板**页面。
+1. 记录在后面的步骤中创建的模板的**ID。** 例如，`d-989077fbba9746e89f3f6411f596fb96` 。 在[添加声明转换](#add-the-claims-transformation)时指定此 ID。
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>添加 Azure AD B2C 声明类型
 
-在策略中，将以下声明类型添加到 `<BuildingBlocks>`中的 `<ClaimsSchema>` 元素。
+在策略中，将以下声明类型添加到 中`<ClaimsSchema>``<BuildingBlocks>`的元素。
 
-这些声明类型是使用一次性密码（OTP）代码生成和验证电子邮件地址所必需的。
+使用一次性密码 （OTP） 代码生成和验证电子邮件地址，需要这些声明类型。
 
 ```XML
 <ClaimType Id="Otp">
@@ -181,15 +181,15 @@ ms.locfileid: "78671630"
 
 ## <a name="add-the-claims-transformation"></a>添加声明转换
 
-接下来，需要一个声明转换来输出 JSON 字符串声明，该声明将是发送到 SendGrid 的请求正文。
+接下来，您需要声明转换来输出 JSON 字符串声明，该声明将成为发送到 SendGrid 的请求的正文。
 
-JSON 对象的结构由 InputClaims 的输入参数和 TransformationClaimTypes 的点表示法中的 Id 定义。 点表示法中的数字表示数组。 值来自 "InputClaims" 值和 "输入参数" "值" 属性。 有关 JSON 声明转换的详细信息，请参阅[json 声明转换](json-transformations.md)。
+JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimTypes 的点表示法中的 ID 定义。 点表示法中的数字表示数组。 值来自 InputClaims 的值和 InputParameters 的“Value”属性。 有关 JSON 声明转换的详细信息，请参阅[JSON 声明转换](json-transformations.md)。
 
-将以下声明转换添加到 `<BuildingBlocks>`中的 `<ClaimsTransformations>` 元素。 对声明转换 XML 进行以下更新：
+将以下声明转换添加到`<ClaimsTransformations>``<BuildingBlocks>`中的元素。 对声明转换 XML 进行以下更新：
 
-* 将 `template_id` InputParameter 值更新为先前在[创建 SendGrid 模板](#create-sendgrid-template)中创建的 SendGrid 事务模板的 ID。
-* 更新 `from.email` 地址值。 使用有效的电子邮件地址可帮助防止验证电子邮件被标记为垃圾邮件。
-* 使用适用于你的组织的主题行更新 `personalizations.0.dynamic_template_data.subject` 主题行输入参数的值。
+* 使用之前`template_id`在[创建 SendGrid 模板](#create-sendgrid-template)中创建的 SendGrid 事务模板的 ID 更新输入参数值。
+* 更新`from.email`地址值。 使用有效的电子邮件地址帮助防止验证电子邮件被标记为垃圾邮件。
+* 使用适合您的组织的主题行`personalizations.0.dynamic_template_data.subject`更新主题行输入参数的值。
 
 ```XML
 <ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
@@ -213,7 +213,7 @@ JSON 对象的结构由 InputClaims 的输入参数和 TransformationClaimTypes 
 
 ## <a name="add-datauri-content-definition"></a>添加 DataUri 内容定义
 
-在 `<BuildingBlocks>`中的声明转换下，添加以下[ContentDefinition](contentdefinitions.md)以引用版本2.0.0 数据 URI：
+下面的声明转换在`<BuildingBlocks>`中添加以下内容[定义](contentdefinitions.md)以引用版本 2.0.0 数据 URI：
 
 ```XML
 <ContentDefinitions>
@@ -223,20 +223,20 @@ JSON 对象的结构由 InputClaims 的输入参数和 TransformationClaimTypes 
 </ContentDefinitions>
 ```
 
-## <a name="create-a-displaycontrol"></a>创建一个 DisplayControl
+## <a name="create-a-displaycontrol"></a>创建显示控制
 
-验证显示控件用于使用发送给用户的验证码来验证电子邮件地址。
+验证显示控件用于使用发送给用户的验证码验证电子邮件地址。
 
 此示例显示控件配置为：
 
-1. 收集用户的 `email` 地址声明类型。
-1. 等待用户为发送给用户的代码提供 `verificationCode` 声明类型。
-1. 返回 `email` 引用此显示控件的自断言技术配置文件。
-1. 使用 `SendCode` 操作生成 OTP 代码，并向用户发送包含 OTP 代码的电子邮件。
+1. 从用户`email`收集地址声明类型。
+1. 等待用户提供`verificationCode`声明类型，并发送到用户的代码。
+1. `email`返回回具有对此显示控件引用的自断言技术配置文件。
+1. 使用`SendCode`该操作，生成 OTP 代码，并向用户发送带有 OTP 代码的电子邮件。
 
-![发送验证代码电子邮件操作](media/custom-email/display-control-verification-email-action-01.png)
+![发送验证码电子邮件操作](media/custom-email/display-control-verification-email-action-01.png)
 
-在 "内容定义" 下，在 "`<BuildingBlocks>`" 中，将类型为[VerificationControl](display-control-verification.md)的以下 " [DisplayControl](display-controls.md) " 添加到策略中。
+在内容定义下，仍在`<BuildingBlocks>`中，向策略添加以下类型的["验证控制"](display-control-verification.md)的[显示控制](display-controls.md)。
 
 ```XML
 <DisplayControls>
@@ -267,9 +267,9 @@ JSON 对象的结构由 InputClaims 的输入参数和 TransformationClaimTypes 
 
 ## <a name="add-otp-technical-profiles"></a>添加 OTP 技术配置文件
 
-`GenerateOtp` 技术配置文件会为电子邮件地址生成代码。 `VerifyOtp` 技术配置文件验证与电子邮件地址关联的代码。 你可以更改格式的配置以及一次性密码的过期时间。 有关 OTP 技术配置文件的详细信息，请参阅[定义一次性密码技术配置文件](one-time-password-technical-profile.md)。
+技术`GenerateOtp`配置文件生成电子邮件地址的代码。 技术`VerifyOtp`配置文件验证与电子邮件地址关联的代码。 您可以更改格式的配置和一次性密码的过期。 有关 OTP 技术配置文件的详细信息，请参阅[定义一次性密码技术配置文件](one-time-password-technical-profile.md)。
 
-将以下技术配置文件添加到 `<ClaimsProviders>` 元素。
+将以下技术配置文件添加到元素`<ClaimsProviders>`。
 
 ```XML
 <ClaimsProvider>
@@ -313,7 +313,7 @@ JSON 对象的结构由 InputClaims 的输入参数和 TransformationClaimTypes 
 
 此 REST API 技术配置文件生成电子邮件内容（使用 SendGrid 格式）。 有关 RESTful 技术配置文件的详细信息，请参阅[定义 RESTful 技术配置文件](restful-technical-profile.md)。
 
-对于 OTP 技术配置文件，请将以下技术配置文件添加到 `<ClaimsProviders>` 元素。
+与 OTP 技术配置文件一样，向`<ClaimsProviders>`元素添加以下技术配置文件。
 
 ```XML
 <ClaimsProvider>
@@ -342,11 +342,11 @@ JSON 对象的结构由 InputClaims 的输入参数和 TransformationClaimTypes 
 </ClaimsProvider>
 ```
 
-## <a name="make-a-reference-to-the-displaycontrol"></a>引用控件
+## <a name="make-a-reference-to-the-displaycontrol"></a>引用显示控件
 
-在最后一步中，添加对所创建的控件的引用。 如果使用的是早期版本的 Azure AD B2C 策略，请将现有 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件替换为以下项。 此技术配置文件使用 `DisplayClaims`，其中包含对该控件的引用。
+在最后一步中，添加对您创建的显示控件的引用。 如果使用早期版本的`LocalAccountSignUpWithLogonEmail`Azure AD B2C 策略，请将现有自断言技术配置文件替换为以下内容。 此技术配置文件与`DisplayClaims`显示器控制一起使用。
 
-有关详细信息，请参阅[自断言技术配置文件](restful-technical-profile.md)和显示[控件](display-controls.md)。
+有关详细信息，请参阅[自断言技术配置文件](restful-technical-profile.md)和[显示控制](display-controls.md)。
 
 ```XML
 <ClaimsProvider>
@@ -393,14 +393,14 @@ JSON 对象的结构由 InputClaims 的输入参数和 TransformationClaimTypes 
 </ClaimsProvider>
 ```
 
-## <a name="optional-localize-your-email"></a>可有可无本地化电子邮件
+## <a name="optional-localize-your-email"></a>[可选]本地化您的电子邮件
 
-若要本地化电子邮件，必须向 SendGrid 或电子邮件提供商发送已本地化的字符串。 例如，本地化电子邮件主题、正文、代码消息或电子邮件签名。 为此，可以使用[GetLocalizedStringsTransformation](string-transformations.md)声明转换将本地化的字符串复制到声明类型。 在生成 JSON 有效负载的 `GenerateSendGridRequestBody` 声明转换中，使用包含本地化字符串的输入声明。
+要本地化电子邮件，您必须向 SendGrid 或电子邮件提供商发送本地化字符串。 例如，本地化电子邮件主题、正文、代码消息或电子邮件签名。 为此，可以使用["获取本地化字符串转换"](string-transformations.md)声明转换将本地化字符串复制到声明类型中。 在`GenerateSendGridRequestBody`生成 JSON 负载的声明转换中，使用包含本地化字符串的输入声明。
 
-1. 在策略中，定义以下字符串声明： subject、message、codeIntro 和签名。
-1. 定义[GetLocalizedStringsTransformation](string-transformations.md)声明转换，以将本地化字符串值替换为步骤1中的声明。
-1. 将 `GenerateSendGridRequestBody` 声明转换更改为使用带有以下 XML 代码段的输入声明。
-1. 将 SendGrind 模板更新为使用动态参数来替换所有将通过 Azure AD B2C 本地化的字符串。
+1. 在策略中定义以下字符串声明：主题、消息、代码简介和签名。
+1. 定义[获取本地化字符串转换](string-transformations.md)声明转换，以从步骤 1 替换本地化的字符串值到声明中。
+1. 更改`GenerateSendGridRequestBody`声明转换以将输入声明与以下 XML 代码段一起使用。
+1. 更新 SendGrind 模板以使用动态参数代替 Azure AD B2C 本地化的所有字符串。
 
 ```XML
 <ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
@@ -425,8 +425,8 @@ JSON 对象的结构由 InputClaims 的输入参数和 TransformationClaimTypes 
 
 ## <a name="next-steps"></a>后续步骤
 
-可在 GitHub 上找到自定义电子邮件验证策略的示例：
+您可以在 GitHub 上找到自定义电子邮件验证策略的示例：
 
-[自定义电子邮件验证-DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
+[自定义电子邮件验证 - 显示控制](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 
 有关使用自定义 REST API 或任何基于 HTTP 的 SMTP 电子邮件提供程序的信息，请参阅[在 Azure AD B2C 自定义策略中定义 RESTful 技术配置文件](restful-technical-profile.md)。

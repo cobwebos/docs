@@ -1,7 +1,7 @@
 ---
 title: 使用 PowerShell 管理 Azure 独立云中的数据
 titleSuffix: Azure Storage
-description: 使用 Azure PowerShell 管理中国云、政府云和德语云中的存储。
+description: 使用 Azure PowerShell 管理中国云、政府云和德国云中的存储。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,10 +10,10 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 5fa515515c06466e121a5c0ee925fd4d14245363
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74895234"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
@@ -21,7 +21,7 @@ ms.locfileid: "74895234"
 大多数人为其全球 Azure 部署使用了 Azure 公有云。 但出于主权等方面的原因，还存在一些独立的 Microsoft Azure 部署。 这些独立部署称为“环境”。 以下列表详细说明了当前存在的独立云。
 
 * [Azure 政府云](https://azure.microsoft.com/features/gov/)
-* [中国世纪互联运营的 Azure 中国世纪互联云](http://www.windowsazure.cn/)
+* [由中国世纪互联运营的 Azure 中国世纪互联云](http://www.windowsazure.cn/)
 * [Azure 德国云](../../germany/germany-welcome.md)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "74895234"
 
 若要在某个独立云中使用 Azure 存储，需要连接到该云而不是 Azure 公有云。 若要使用某个独立云而不是 Azure 公有云，需要：
 
-* 指定要连接到的环境。
+* 指定要连接到的环境。**
 * 确定并使用可用的区域。
 * 使用正确的终结点后缀，它不同于 Azure 公有云。
 
@@ -60,7 +60,7 @@ Get-AzLocation | select Location, DisplayName
 
 下表显示了针对德国云返回的位置。
 
-|Location | 显示名称 |
+|位置 | 显示名称 |
 |----|----|
 | `germanycentral` | 德国中部|
 | `germanynortheast` | 德国东北部 |
@@ -74,7 +74,7 @@ Get-AzLocation | select Location, DisplayName
 
 使用 [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) 检索终结点后缀。 终结点是环境的 *StorageEndpointSuffix* 属性。
 
-下面的代码段演示如何检索终结点后缀。 所有这些命令返回类似于 "core.cloudapp.net" 或 "core.cloudapi.de" 等的内容。将后缀追加到存储服务以访问该服务。 例如，追加“queue.core.cloudapi.de”可访问德国云中的队列服务。
+下面的代码片段演示如何检索终结点后缀。 所有这些命令都会返回诸如"core.cloudapp.net"或"core.cloudapi.de"等内容。将后缀追加到存储服务以访问该服务。 例如，追加“queue.core.cloudapi.de”可访问德国云中的队列服务。
 
 此代码片段检索所有环境，以及每个环境的终结点后缀。
 
@@ -84,14 +84,14 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 此命令返回以下结果。
 
-| 名称| core.usgovcloudapi.net|
+| “属性”| core.usgovcloudapi.net|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-若要检索指定环境的所有属性，请调用 Get-AzEnvironment 并指定云名称。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix**。 以下示例适用于德国云。
+若要检索指定环境的所有属性，请调用 Get-AzEnvironment 并指定云名称****。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix**。 以下示例适用于德国云。
 
 ```powershell
 Get-AzEnvironment -Name AzureGermanCloud
@@ -99,9 +99,9 @@ Get-AzEnvironment -Name AzureGermanCloud
 
 结果类似于以下值：
 
-|属性名称|Value|
+|属性名称|“值”|
 |----|----|
-| 名称 | `AzureGermanCloud` |
+| “属性” | `AzureGermanCloud` |
 | EnableAdfsAuthentication | `False` |
 | ActiveDirectoryServiceEndpointResourceI | `http://management.core.cloudapi.de/` |
 | GalleryURL | `https://gallery.cloudapi.de/` |
@@ -125,7 +125,7 @@ Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix
 
 ### <a name="get-endpoint-from-a-storage-account"></a>从存储帐户获取终结点
 
-还可以检查存储帐户的属性以检索终结点：
+还可以通过检查存储帐户的属性来检索终结点：
 
 ```powershell
 # Get a reference to the storage account.
@@ -156,7 +156,7 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果在此练习中创建了新的资源组和存储帐户，则可以通过删除资源组来删除这两个资产。 删除资源组会删除其包含的所有资源。
+如果为本练习创建了新的资源组和存储帐户，可以通过删除资源组来删除这两个资产。 删除资源组会删除其包含的所有资源。
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
@@ -165,7 +165,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 ## <a name="next-steps"></a>后续步骤
 
 * [在不同的 PowerShell 会话中保留用户登录](/powershell/azure/context-persistence)
-* [Azure 政府版存储](../../azure-government/documentation-government-services-storage.md)
-* [Microsoft Azure 政府版开发人员指南](../../azure-government/documentation-government-developer-guide.md)。
-* [Azure 中国世纪互联应用程序开发人员说明](https://msdn.microsoft.com/library/azure/dn578439.aspx)
+* [Azure 政府存储](../../azure-government/documentation-government-services-storage.md)
+* [Microsoft Azure Government 开发人员指南](../../azure-government/documentation-government-developer-guide.md)
+* [Azure 中国 21Vianet 应用程序的开发人员说明](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 * [Azure 德国版文档](../../germany/germany-welcome.md)

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720973"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>使用 Azure 机器学习 Python 客户端库通过 Python 访问数据集
@@ -26,12 +26,12 @@ Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Pyth
 * 安装机器学习 Python 客户端库
 * 访问和上传数据集，包括如何获取授权以从本地 Python 环境访问 Azure 机器学习数据集的说明
 * 从实验访问中间数据集
-* 使用 Python 客户端库枚举数据集、访问元数据、读取数据集的内容、创建新的数据集和更新现有数据集
+* 使用 Python 客户端库枚举数据集、访问元数据、读取数据集的内容、创建新数据集和更新现有数据集
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a><a name="prerequisites"></a>先决条件
 已在以下环境下测试 Python 客户端库：
 
-* Windows、Mac 和 Linux
+* 视窗、Mac 和 Linux
 * Python 2.7、3.3 和 3.4
 
 在以下包中具有依赖项：
@@ -42,8 +42,8 @@ Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Pyth
 
 建议使用 Python 分发，如 Python 随附的 [Anaconda](http://continuum.io/downloads#all) 或 [Canopy](https://store.enthought.com/downloads/)，IPython 和上面列出的三个包已安装。 虽然 IPython 不是绝对必需的，但对于交互式操作和可视化数据，它是非常理想的环境。
 
-### <a name="installation"></a>如何安装 Azure 机器学习 Python 客户端库
-安装 Azure 机器学习 Python 客户端库来完成本主题中所述的任务。 此库可从[Python 包索引](https://pypi.python.org/pypi/azureml)中获取。 若要在 Python 环境中进行安装，请从本地 Python 环境中运行以下命令：
+### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>如何安装 Azure 机器学习 Python 客户端库
+安装 Azure 机器学习 Python 客户端库以完成本主题中概述的任务。 此库可从 Python[包索引](https://pypi.python.org/pypi/azureml)获得。 若要在 Python 环境中进行安装，请从本地 Python 环境中运行以下命令：
 
     pip install azureml
 
@@ -56,36 +56,36 @@ Microsoft Azure 机器学习 Python 客户端库的预览可允许从本地 Pyth
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-## <a name="datasetAccess"></a>使用代码段访问数据集
+## <a name="use-code-snippets-to-access-datasets"></a><a name="datasetAccess"></a>使用代码片段访问数据集
 通过 Python 客户端库，能够以编程方式从已运行的实验中访问现有的数据集。
 
-在 Azure 机器学习 Studio （经典） web 界面中，你可以生成代码段，其中包含在本地计算机上下载数据集并将其反序列化为 pandas 数据帧对象所需的所有必要信息。
+从 Azure 机器学习工作室（经典）Web 界面，可生成代码片段，其中包括下载和反序列化数据集作为本地计算机上 pandas DataFrame 对象的所有必要信息。
 
-### <a name="security"></a>数据访问的安全
-Azure 机器学习 Studio （经典）提供的用于 Python 客户端库的代码段包括你的工作区 ID 和授权令牌。 这些将提供工作区的完全访问，必须受到保护，如密码。
+### <a name="security-for-data-access"></a><a name="security"></a>数据访问的安全
+Azure 机器学习工作室（经典）提供的用于 Python 客户端库的代码片段包括工作区 ID 和授权令牌。 这些将提供工作区的完全访问，必须受到保护，如密码。
 
-出于安全原因，代码片段功能仅适用于其角色设置为工作区**所有者**的用户。 你的角色会显示在 "**用户**" 页上的 "**设置**" 中 Azure 机器学习 Studio （经典） "。
+出于安全原因，代码片段功能仅适用于其角色设置为工作区**所有者**的用户。 在“设置”**** 下“用户”**** 页面上的 Azure 机器学习工作室（经典）中会显示你的角色。
 
 ![安全性][security]
 
 如果角色未设置为**所有者**，可以请求重新邀请为所有者，或询问工作区所有者以提供代码片段。
 
-若要获取授权令牌，可以选择以下选项之一：
+要获取授权令牌，您可以选择以下选项之一：
 
-* 向所有者请求令牌。 所有者可以在 Azure 机器学习 Studio （经典）中从其工作区的 "设置" 页访问其授权令牌。 从左窗格中选择“设置”，单击“授权令牌”以查看主要和次要令牌。 尽管主要或次要授权都可在代码片段中使用，但是建议所有者只共享次要授权令牌。
+* 向所有者请求令牌。 所有者可在 Azure 机器学习工作室（经典）中其工作区的“设置”页面中访问授权令牌。 从左窗格中选择“设置”****，单击“授权令牌”**** 以查看主要和次要令牌。 尽管主要或次要授权都可在代码片段中使用，但是建议所有者只共享次要授权令牌。
 
    ![授权令牌](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* 要求升级为所有者的角色：工作区的当前所有者需要先将你从工作区中删除，然后将你 reinvite 为所有者。
+* 请求提升为所有者角色：工作区的当前所有者需要先将您从工作区中删除，然后以所有者身份重新邀请您加入该工作区。
 
-开发人员获取工作区 ID 和授权令牌后，就可以使用代码片段访问工作区，而不考虑其角色。
+开发人员获取工作区 ID 和授权令牌之后，能够使用代码片段访问工作区，无论其角色是什么。
 
-在“设置”下的“授权令牌”上托管授权令牌。 可以撤销它们，但是此过程会撤销上一个令牌的访问权限。
+在“设置”**** 下的“授权令牌”**** 上托管授权令牌。 可以撤销它们，但是此过程会撤销上一个令牌的访问权限。
 
-### <a name="accessingDatasets"></a>从本地 Python 应用程序访问数据集
-1. 在机器学习 Studio （经典）中，单击左侧导航栏中的 "**数据集**"。
-2. 选择想要访问的数据集。 可以从“我的数据集”列表或“示例”列表中选择任一数据集。
-3. 从底部工具栏，单击“生成数据访问代码”。 如果数据格式与 Python 客户端库不兼容，则禁用此按钮。
+### <a name="access-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>从本地 Python 应用程序访问数据集
+1. 在机器学习工作室（经典）中，单击左侧导航栏中的“数据集”****。
+2. 选择想要访问的数据集。 可以从“我的数据集”**** 列表或“示例”**** 列表中选择任一数据集。
+3. 从底部工具栏，单击“生成数据访问代码”****。 如果数据格式与 Python 客户端库不兼容，则禁用此按钮。
    
     ![数据集][datasets]
 4. 从显示的窗口中选择代码片段，并将其复制到剪贴板。
@@ -95,12 +95,12 @@ Azure 机器学习 Studio （经典）提供的用于 Python 客户端库的代�
    
     ![将代码粘贴到笔记本中][ipython-dataset]
 
-## <a name="accessingIntermediateDatasets"></a>从机器学习试验访问中间数据集
-在机器学习 Studio （经典）中运行试验后，可以从模块的输出节点访问中间数据集。 中间数据集是指模型工具运行后，已创建并用于中间步骤的数据。
+## <a name="access-intermediate-datasets-from-machine-learning-experiments"></a><a name="accessingIntermediateDatasets"></a>从机器学习试验访问中间数据集
+在机器学习工作室（经典）中运行实验之后，就可以从模块的输出节点中访问中间数据集。 中间数据集是指模型工具运行后，已创建并用于中间步骤的数据。
 
 只要数据格式符合 Python 客户端库，就可以访问中间数据集。
 
-支持以下格式（这些格式的常量位于 `azureml.DataTypeIds` 类中）：
+支持以下格式（这些格式的常量在类中`azureml.DataTypeIds`）：
 
 * PlainText
 * GenericCSV
@@ -110,23 +110,23 @@ Azure 机器学习 Studio （经典）提供的用于 Python 客户端库的代�
 
 将鼠标悬停在模块输出节点上，可确定格式。 工具提示中同时会显示节点名。
 
-某些模块（如[Split][split]模块）输出为名为 `Dataset`的格式，而 Python 客户端库不支持此格式。
+一些模块（如[拆分][split]模块）会输出名为 `Dataset` 的格式，而 Python 客户端库不支持此格式。
 
 ![数据集格式][dataset-format]
 
-需要使用转换模块，如[转换为 CSV][convert-to-csv]，以将输出获取为支持的格式。
+需要使用转换模块，如[转换为 CSV][convert-to-csv]，以将输出转换为受支持的格式。
 
 ![GenericCSV 格式][csv-format]
 
 以下步骤介绍创建实验、运行实验并访问中间数据集的示例。
 
 1. 创建新实验。
-2. 插入“成年人口收入二元分类数据集”模块。
+2. 插入“成年人口收入二元分类数据集”**** 模块。
 3. 插入[拆分][split]模块，并将其输入连接到数据集模块输出。
-4. 插入 "[转换为 CSV][convert-to-csv] " 模块，并将其输入连接到[拆分][split]模块输出之一。
-5. 保存试验，运行它并等待作业完成。
-6. 单击 "[转换为 CSV][convert-to-csv] " 模块上的 "输出" 节点。
-7. 上下文菜单出现时，选择“生成数据访问代码”。
+4. 插入[转换为 CSV][convert-to-csv] 模块，并将其输入连接到其中一个[拆分][split]模块输出。
+5. 保存实验，运行它，并等待作业完成。
+6. 单击[转换为 CSV][convert-to-csv] 模块上的输出节点。
+7. 上下文菜单出现时，选择“生成数据访问代码”****。
    
     ![上下文菜单][experiment]
 8. 从显示的窗口中选择代码片段，并将其复制到剪贴板。
@@ -139,9 +139,9 @@ Azure 机器学习 Studio （经典）提供的用于 Python 客户端库的代�
     
     ![直方图][ipython-histogram]
 
-## <a name="clientApis"></a>使用机器学习 Python 客户端库来访问、读取、创建和管理数据集
+## <a name="use-the-machine-learning-python-client-library-to-access-read-create-and-manage-datasets"></a><a name="clientApis"></a>使用机器学习 Python 客户端库来访问、读取、创建和管理数据集
 ### <a name="workspace"></a>工作区
-工作区是 Python 客户端库的入口点。 向 `Workspace` 类提供工作区 ID 和授权令牌来创建实例：
+工作区是 Python 客户端库的入口点。 向 `Workspace` 类提供工作区 ID 和授权令牌以创建实例：
 
     ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
                    authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')
@@ -191,7 +191,7 @@ Azure 机器学习 Studio （经典）提供的用于 Python 客户端库的代�
 请参阅 `SourceDataset` 类以获取关于可用元数据的详细信息。
 
 ### <a name="read-contents"></a>读取内容
-机器学习 Studio （经典）提供的代码段会自动下载数据集并将其反序列化为 pandas 数据帧对象。 通过 `to_dataframe` 方法完成此操作：
+机器学习工作室（经典）提供的代码片段会自动将数据集下载并反序列化到 pandas DataFrame 对象。 通过 `to_dataframe` 方法完成此操作：
 
     frame = ds.to_dataframe()
 
@@ -293,7 +293,7 @@ Python 客户端库可以将 pandas DataFrame 序列化为以下格式（这些�
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to feb 2015'
 
-（可选）可通过为 `name` 参数指定值来设置新的名称。 从现在起，将只使用新名称来检索数据集。 以下代码将更新数据、名称和说明。
+（可选）可通过为 `name` 参数指定值来设置新的名称。 从现在起，将只使用新名称来检索数据集。 以下代码更新数据、名称和说明。
 
     dataset = ws.datasets['existing dataset']
 

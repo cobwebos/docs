@@ -1,5 +1,5 @@
 ---
-title: 如何使用批处理来改善应用程序性能
+title: 如何使用批处理来改善应用程序的性能
 description: 本主题提供有关数据库批处理操作大幅改善 Azure SQL 数据库应用程序速度和缩放性的证据。 尽管这些批处理方法适用于任何 SQL Server 数据库，但本文将重点放在 Azure 上。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: cacc01151edaf31db938cf8abf3d46e75397758f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76545018"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>如何使用批处理来改善 SQL 数据库应用程序的性能
@@ -91,24 +91,24 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-事务实际在这两个示例中都用到了。 在第一个示例中，每个单个调用就是一个隐式事务。 在第二个示例中，用一个显式事务包装了所有调用。 按照[预写事务日志](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)的文档中所述，在事务提交时会日志记录刷新到磁盘。 因此通过在事务中包含更多调用，写入事务日志可能延迟，直到提交事务。 实际上，正在为写入服务器的事务日志启用批处理。
+事务实际在这两个示例中都用到了。 在第一个示例中，每个单个调用就是一个隐式事务。 在第二个示例中，用一个显式事务包装了所有调用。 按照[预写事务日志](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)的文档中所述，在事务提交时将日志记录刷新到磁盘。 因此通过在事务中包含更多调用，写入事务日志可能延迟，直到提交事务。 实际上，正在为写入服务器的事务日志启用批处理。
 
-下表显示了一些即席测试结果。 这些测试执行具有事务和不具有事务的相同的顺序插入。 为了更具对比性，第一组测试是从笔记本电脑针对 Microsoft Azure 中的数据库远程运行的。 第二组测试是从位于同一 Microsoft Azure 数据中心（美国西部）内的云服务和数据库运行的。 下表显示具有和不具有事务的一系列顺序插入所用的时间（毫秒）。
+下表显示了一些临时测试结果。 这些测试执行具有事务和不具有事务的相同的顺序插入。 为了更具对比性，第一组测试是从笔记本电脑针对 Microsoft Azure 中的数据库远程运行的。 第二组测试是从位于同一 Microsoft Azure 数据中心（美国西部）内的云服务和数据库运行的。 下表显示具有和不具有事务的一系列顺序插入所用的时间（毫秒）。
 
 **本地到 Azure**：
 
-| Operations | 无事务（毫秒） | 事务（毫秒） |
+| 操作 | 无事务（毫秒） | 事务（毫秒） |
 | --- | --- | --- |
-| 第 |130 |402 |
+| 1 |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure 到 Azure（同一数据中心）** ：
+**Azure 到 Azure（同一数据中心）**：
 
-| Operations | 无事务（毫秒） | 事务（毫秒） |
+| 操作 | 无事务（毫秒） | 事务（毫秒） |
 | --- | --- | --- |
-| 第 |21 |26 |
+| 1 |21 |26 |
 | 10 |220 |56 |
 | 100 |2145 |341 |
 | 1000 |21479 |2756 |
@@ -118,7 +118,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 根据前面的测试结果，在事务中包装一个操作实际上会降低性能。 但是，增加单个事务中的操作数时，性能提高将变得很明显。 当所有操作发生在 Microsoft Azure 数据中心内时，性能差异也更明显。 从 SQL 数据库数据中心外部使用 Microsoft Azure 增加的延迟时间将超过使用事务带来的性能提高。
 
-尽管使用事务可以提高性能，但还请继续[遵循事务和连接的最佳做法](https://msdn.microsoft.com/library/ms187484.aspx)。 使事务尽可能短，并在工作完成后关闭数据库连接。 前一个示例中的 using 语句可确保在后续代码阻塞完成时关闭连接。
+尽管使用事务可以提高性能，请继续[遵循事务和连接的最佳做法](https://msdn.microsoft.com/library/ms187484.aspx)。 使事务尽可能短，并在工作完成后关闭数据库连接。 前一个示例中的 using 语句可确保在后续代码阻塞完成时关闭连接。
 
 前一个示例演示可以将一个本地事务添加到任何具有两行的 ADO.NET 代码。 事务提供了一个快速提高代码性能的方法，这些代码用于执行顺序插入、更新和删除操作。 但是，为了实现最佳性能，请考虑进一步更改代码，以利用客户端批处理（如表值参数）。
 
@@ -167,7 +167,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-在上面的示例中， **SqlCommand**对象从表值参数插入行， **\@TestTvp**。 使用 **SqlCommand.Parameters.Add** 方法以前创建的 **DataTable** 对象分配到此参数。 对一个调用中的插入进行批处理将显著提高顺序插入的性能。
+在前一示例中，**SqlCommand** 对象从表值参数 **\@TestTvp** 插入行。 使用 **SqlCommand.Parameters.Add** 方法以前创建的 **DataTable** 对象分配到此参数。 对一个调用中的插入进行批处理将显著提高顺序插入的性能。
 
 若要进一步改进前一个示例，请使用存储过程来替代基于文本的命令。 以下 Transact-SQL 命令创建一个采用 **SimpleTestTableType** 表值参数的存储过程。
 
@@ -191,11 +191,11 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 在大多数情况下，表值参数具有与其他批处理方法等效或更高的性能。 人们通常使用表值参数，因为它们比其他选项更灵活。 例如，其他方法（如 SQL 大容量复制）仅允许插入新行。 但是使用表值参数，可以在存储过程中使用逻辑来决定更新哪些行和插入哪些行。 还可以修改表类型来包含“操作”列，该列指示指定的行应插入、更新还是删除。
 
-下表显示了使用表值参数的即席测试结果（以毫秒为单位）。
+下表显示使用表值参数的即席测试结果（毫秒）。
 
-| Operations | 本地到 Azure（毫秒） | 同一 Azure 数据中心（毫秒） |
+| 操作 | 本地到 Azure（毫秒） | 同一 Azure 数据中心（毫秒） |
 | --- | --- | --- |
-| 第 |124 |32 |
+| 1 |124 |32 |
 | 10 |131 |25 |
 | 100 |338 |51 |
 | 1000 |2615 |382 |
@@ -231,11 +231,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 在某些情况下，批量复制的效果好于表值参数。 请参阅文章[表值参数](https://msdn.microsoft.com/library/bb510489.aspx)中“表值参数与 BULK INSERT 操作的对比表”。
 
-以下即席测试结果显示**SqlBulkCopy**的批处理性能（以毫秒为单位）。
+以下即席测试结果显示具有 **SqlBulkCopy** 的批处理性能（毫秒）。
 
-| Operations | 本地到 Azure（毫秒） | 同一 Azure 数据中心（毫秒） |
+| 操作 | 本地到 Azure（毫秒） | 同一 Azure 数据中心（毫秒） |
 | --- | --- | --- |
-| 第 |433 |57 |
+| 1 |433 |57 |
 | 10 |441 |32 |
 | 100 |636 |53 |
 | 1000 |2535 |341 |
@@ -248,7 +248,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 在较小的批大小中，使用表值参数的效果好于使用 **SqlBulkCopy** 类的效果。 但是，对于涉及 1,000 和 10,000 行的测试，使用 **SqlBulkCopy** 时比使用表值参数时快 12-31%。 与表值参数一样，**SqlBulkCopy** 是执行批处理插入的一个可选方法，特别是在与非批处理操作的性能作对比时。
 
-有关 ADO.NET 中的批量复制的详细信息，请参阅 [SQL Server 中的批量复制操作](https://msdn.microsoft.com/library/7ek5da1a.aspx)。
+有关 ADO.NET 中的大容量复制的详细信息，请参阅 [SQL Server 中的大容量复制操作](https://msdn.microsoft.com/library/7ek5da1a.aspx)。
 
 ### <a name="multiple-row-parameterized-insert-statements"></a>多行参数化 INSERT 语句
 
@@ -276,11 +276,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 此示例用于演示基本概念。 一个更现实的方案是对所需的实体执行循环，以同时构造查询字符串和命令参数。 最多可使用 2100 个查询参数，因此这限制了可以此方式处理的总行数。
 
-以下即席测试结果显示此类插入语句的性能（以毫秒为单位）。
+以下即席测试结果显示此类插入语句的性能（毫秒）。
 
-| Operations | 表值参数（毫秒） | 单语句 INSERT（毫秒） |
+| 操作 | 表值参数（毫秒） | 单语句 INSERT（毫秒） |
 | --- | --- | --- |
-| 第 |32 |20 |
+| 1 |32 |20 |
 | 10 |30 |25 |
 | 100 |33 |51 |
 
@@ -327,7 +327,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 | 批大小 | 迭代 | 表值参数（毫秒） |
 | --- | --- | --- |
-| 1000 |第 |347 |
+| 1000 |1 |347 |
 | 500 |2 |355 |
 | 100 |10 |465 |
 | 50 |20 |630 |

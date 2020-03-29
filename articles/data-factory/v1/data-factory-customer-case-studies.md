@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 393a44201b0d4f1078a098a129cd628d727bdb02
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76290625"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure 数据工厂 - 客户案例研究
@@ -24,7 +24,7 @@ ms.locfileid: "76290625"
 ## <a name="milliman"></a>Milliman
 [顶级保险公司改变保险行业](https://customers.microsoft.com/en-us/story/732463-top-actuarial-firm-transforms-the-insurance-industry-w)
 
-## <a name="rockwell-automation"></a>Rockwell Automation
+## <a name="rockwell-automation"></a>罗克韦尔自动化
 [Industrial Automation Firm Cuts Costs up to 90 Percent with big data Solutions](https://customers.microsoft.com/en-us/story/726192-industrial-automation-firm-cuts-costs-up-to-90-percent)（工业自动化公司利用大数据解决方案节省 90% 的成本）
 
 ## <a name="microsoft-studio"></a>Microsoft Studio

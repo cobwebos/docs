@@ -1,5 +1,5 @@
 ---
-title: 不同 Azure 存储位置中的示例数据-团队数据科学流程
+title: 不同 Azure 存储位置中的样本数据 - 团队数据科学流程
 description: Azure blob 容器、SQL Server 和 Hive 表中的示例数据，可将其缩小为更小但更具代表性且更易于管理的大小。
 services: machine-learning
 author: marktab
@@ -12,13 +12,13 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 22e91d50227fcb44c7b90478d76379c14161ae05
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76718597"
 ---
-# <a name="heading"></a>对 Azure Blob 容器、SQL Server 和 Hive 表中的数据采样
+# <a name="sample-data-in-azure-blob-containers-sql-server-and-hive-tables"></a><a name="heading"></a>对 Azure Blob 容器、SQL Server 和 Hive 表中的数据采样
 
 以下文章介绍了如何对存储在三个不同 Azure 位置之一的数据进行采样：
 
@@ -30,5 +30,5 @@ ms.locfileid: "76718597"
 
 **为什么对数据采样？**
 
-如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 缩小可以简化数据理解、探索和特征工程。 Cortana Analytics 过程中的这一采样角色是启用数据处理功能和机器学习模型的快速原型设计。
+如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 缩减可能促进数据理解、探索和功能工程。 Cortana 分析流程中的此采样角色是支持快速原型化数据处理功能和机器学习模型。
 

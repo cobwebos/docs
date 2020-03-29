@@ -1,5 +1,5 @@
 ---
-title: Azure MFA 用户数据收集-Azure Active Directory
+title: Azure MFA 用户数据收集 - Azure 活动目录
 description: Azure 多重身份验证借助哪些信息来对用户进行身份验证？
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848283"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Microsoft Azure 多重身份验证用户数据收集
@@ -30,7 +30,7 @@ MFA 服务器、NPS 扩展和 Windows Server 2016 Azure MFA AD FS 适配器收�
 
 身份验证尝试（用于报告和故障排除）：
 
-- Timestamp
+- 时间戳
 - 用户名
 - 名字
 - 姓氏
@@ -71,7 +71,7 @@ MFA 服务器、NPS 扩展和 Windows Server 2016 Azure MFA AD FS 适配器收�
 激活（尝试在 Microsoft Authenticator 移动应用中激活帐户）：
 - 用户名
 - 帐户名
-- Timestamp
+- 时间戳
 - 获取激活码结果
 - 激活成功
 - 激活错误
@@ -89,7 +89,7 @@ MFA 服务器、NPS 扩展和 Windows Server 2016 Azure MFA AD FS 适配器收�
 - 国家/地区代码
 - 电话号码
 - 带格式的电话号码
-- 扩展
+- 分机
 - 清理分机号
 - 已阻止
 - 阻止原因
@@ -109,7 +109,7 @@ MFA 服务器、NPS 扩展和 Windows Server 2016 Azure MFA AD FS 适配器收�
 - 国家/地区代码
 - 电话号码
 - 带格式的电话号码
-- 扩展
+- 分机
 - 清理分机号
 - 绕过原因
 - 完成时间戳
@@ -135,12 +135,12 @@ MFA 服务器、NPS 扩展和 Windows Server 2016 Azure MFA AD FS 适配器收�
 
 在 MFA 服务器 8.0 或更高版本中，管理员可以使用以下过程导出用户的所有数据：
 
-- 登录到 MFA 服务器，导航到“用户”选项卡，选择相关的用户，然后单击“编辑”按钮。 拍摄每个选项卡的屏幕截图 (Alt-PrtScn)，为用户提供其当前 MFA 设置。
+- 登录到 MFA 服务器，导航到“用户”选项卡，选择相关的用户，然后单击“编辑”按钮。******** 拍摄每个选项卡的屏幕截图 (Alt-PrtScn)，为用户提供其当前 MFA 设置。
 - 在 MFA 服务器的命令行中运行以下命令（请根据安装更改路径 (`C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>`)），以生成 JSON 格式的文件。
 - 管理员也可以使用 Web 服务 SDK GetUserGdpr 操作作为选项，导出针对给定用户收集的所有 MFA 云服务信息，或将其合并到更大的报告解决方案。
-- 搜索 "\<用户名 >" 的 `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` 和任何备份（包括搜索中的引号）以查找正在添加或更改的用户记录的所有实例。
-   - 可以通过在 MFA 服务器 UX 的“日志记录”部分的“日志文件”选项卡中取消选中“记录用户更改”，来限制（但无法消除）这些记录。
-   - 如果已配置 syslog，并且在 MFA 服务器 UX 的“日志记录”部分的“Syslog”选项卡中选中了“记录用户更改”，则可以从 syslog 收集日志项。
+- 搜索`C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log`和"用户名>"（\<包括搜索中的报价）的任何备份，以查找要添加或更改的用户记录的所有实例。
+   - 可以通过在 MFA 服务器 UX 的“日志记录”部分的“日志文件”选项卡中取消选中“记录用户更改”，来限制（但无法消除）这些记录。****
+   - 如果已配置 syslog，并且在 MFA 服务器 UX 的“日志记录”部分的“Syslog”选项卡中选中了“记录用户更改”，则可以从 syslog 收集日志项。****
 - MultiFactorAuthSvc.log 和其他 MFA 服务器日志文件中出现的、与身份验证尝试相关的其他用户名被视为有效，并且与使用 MultiFactorAuthGdpr.exe 导出功能或 Web 服务 SDK GetUserGdpr 提供的信息重复。
 
 ## <a name="delete-data-from-mfa-server"></a>从 MFA 服务器删除数据

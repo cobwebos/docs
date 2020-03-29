@@ -1,35 +1,35 @@
 ---
-title: 连接体系结构-Azure Database for PostgreSQL-单服务器
-description: 描述 Azure Database for PostgreSQL 单服务器的连接体系结构。
+title: 连接体系结构 - Azure Database for PostgreSQL - 单一服务器
+description: 介绍 Azure Database for PostgreSQL 的连接体系结构 - 单一服务器。
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.openlocfilehash: b0af19ec740e96cd572ffe37285d7e58ead83b25
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774846"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的连接体系结构
-本文介绍 Azure Database for PostgreSQL 连接体系结构，以及从 Azure 内部和外部的客户端将流量定向到 Azure Database for PostgreSQL 数据库实例的方式。
+本文介绍 Azure Database for PostgreSQL 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for PostgreSQL 数据库实例。
 
 ## <a name="connectivity-architecture"></a>连接体系结构
-通过负责将传入连接路由到群集中服务器的物理位置的网关建立与 Azure Database for PostgreSQL 的连接。 下图说明了流量。
+可以通过网关连接到 Azure Database for PostgreSQL，该网关负责将传入连接路由到服务器在群集中的物理位置。 下图演示了流量流。
 
 ![连接体系结构概述](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
-当客户端连接到数据库时，它们会获得连接到网关的连接字符串。 此网关具有侦听端口5432的公共 IP 地址。 在数据库群集中，会将流量转发到相应的 Azure Database for PostgreSQL。 因此，若要连接到您的服务器（例如公司网络），必须打开客户端防火墙以允许出站流量访问我们的网关。 你可以在下面找到每个区域的网关使用的 IP 地址的完整列表。
+客户端在连接到数据库时，会获得一个用于连接到网关的连接字符串。 此网关有一个公共 IP 地址，用于侦听端口 5432。 在数据库群集中，流量将转发到相应的 Azure Database for PostgreSQL。 因此，为了通过某种方式（例如，通过公司网络）连接到服务器，必须打开客户端防火墙，使出站流量能够访问我们的网关。 下面是一个按区域分类的可供我们的网关使用的 IP 地址的完整列表。
 
 ## <a name="azure-database-for-postgresql-gateway-ip-addresses"></a>Azure Database for PostgreSQL 网关 IP 地址
-下表列出了适用于所有数据区域的 Azure Database for PostgreSQL 网关的主 Ip 和辅助 Ip。 主 IP 地址是网关的当前 IP 地址，第二个 IP 地址是故障转移 IP 地址（在主站点发生故障的情况下）。 如前所述，客户应该允许出站发送到两个 IP 地址。 第二个 IP 地址在激活之前不会在任何服务上进行侦听，Azure Database for PostgreSQL 接受连接。
+下表列出了所有数据区域的 Azure Database for PostgreSQL 网关的主要 IP 和次要 IP。 主 IP 地址是网关的当前 IP 地址，第二个 IP 地址是主 IP 地址故障时使用的故障转移 IP 地址。 如前所述，客户应该允许到这两个 IP 地址的出站流量。 第二个 IP 地址不侦听任何服务，除非 Azure Database for PostgreSQL 激活该地址，使之接受连接。
 
 | **区域名称** | **网关 IP 地址** |
 |:----------------|:-------------|
 | 澳大利亚中部| 20.36.105.0     |
-| 澳大利亚 Central2     | 20.36.113.0   |
+| 澳大利亚中部2     | 20.36.113.0   |
 | 澳大利亚东部 | 13.75.149.87, 40.79.161.1     |
 | 澳大利亚东南部 |191.239.192.109, 13.73.109.251   |
 | 巴西南部 | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
@@ -59,7 +59,7 @@ ms.locfileid: "76774846"
 | 南非西部 | 102.133.24.0   |
 | 美国中南部 |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
 | 东南亚 | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
-| 阿拉伯联合酋长国中部 | 20.37.72.64  |
+| 阿联酋中部 | 20.37.72.64  |
 | 阿拉伯联合酋长国北部 | 65.52.248.0    |
 | 英国南部 | 51.140.184.11   |
 | 英国西部 | 51.141.8.11  |

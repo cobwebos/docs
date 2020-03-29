@@ -1,7 +1,7 @@
 ---
-title: 调试和故障排除 ParallelRunStep
+title: 对 ParallelRunStep 进行调试和故障排除
 titleSuffix: Azure Machine Learning
-description: 用于 Python 的 Azure 机器学习 SDK 中的机器学习管道中的 ParallelRunStep 调试和故障排除。 了解有关通过管道进行开发的常见缺陷，以及帮助你在远程执行前后调试脚本的技巧。
+description: 在适用于 Python 的 Azure 机器学习 SDK 中的机器学习管道中调试和排除并行运行步骤。 了解通过管道进行开发的常见缺陷，以及有助于在远程执行之前和期间调试你的脚本的技巧。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,54 +11,54 @@ ms.author: trmccorm
 author: tmccrmck
 ms.date: 01/15/2020
 ms.openlocfilehash: ca50d70965d5edc4e31606e542ddf163fe3b0741
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122959"
 ---
-# <a name="debug-and-troubleshoot-parallelrunstep"></a>调试和故障排除 ParallelRunStep
+# <a name="debug-and-troubleshoot-parallelrunstep"></a>对 ParallelRunStep 进行调试和故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何从[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)调试[ParallelRunStep](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py)类并对其进行故障排除。
+本文介绍了如何通过 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)对 [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) 类进行调试和故障排除。
 
-## <a name="testing-scripts-locally"></a>本地测试脚本
+## <a name="testing-scripts-locally"></a>在本地测试脚本
 
-有关机器学习管道，请参阅[本地测试脚本部分](how-to-debug-pipelines.md#testing-scripts-locally)。 你的 ParallelRunStep 作为 ML 管道中的一个步骤运行，因此相同的答案同样适用于这两种情况。
+有关机器学习管道，请参阅[“在本地测试脚本”部分](how-to-debug-pipelines.md#testing-scripts-locally)。 ParallelRunStep 作为机器学习管道中的一个步骤运行，因此，同一答案同时适用于两者。
 
 ## <a name="debugging-scripts-from-remote-context"></a>从远程上下文调试脚本
 
-从本地调试评分脚本到在实际管道中调试评分脚本这一转换可能是一项困难的。 若要了解如何在门户中查找日志，请查看[从远程上下文调试脚本中的机器学习管道部分](how-to-debug-pipelines.md#debugging-scripts-from-remote-context)。 此部分中的信息也适用于并行步骤运行。
+从在本地调试评分脚本转变为在实际管道中调试评分脚本可能是一个困难的飞跃。 若要了解如何在门户中查找日志，请参阅[有关从远程上下文调试脚本的机器学习管道部分](how-to-debug-pipelines.md#debugging-scripts-from-remote-context)。 该部分中的信息也适用于并行步骤运行。
 
-例如，日志文件 `70_driver_log.txt` 包含用于启动并行运行步骤代码的控制器的信息。
+例如，日志文件`70_driver_log.txt`包含来自启动并行运行步骤代码的控制器的信息。
 
-由于并行运行作业的分布式特性，有多个不同源的日志。 但是，会创建两个合并文件来提供高级信息：
+由于并行运行作业的分布式特性，因此存在来自多个不同源的日志。 但是，会创建两个合并的文件来提供概要信息：
 
-- `~/logs/overview.txt`：此文件提供了到目前为止创建的最小批处理数（也称为任务数）以及到目前为止已处理的小批处理数的高级信息。 此时，它会显示作业的结果。 如果作业失败，它将显示错误消息以及从何处开始进行故障排除。
+- `~/logs/overview.txt`：此文件提供有关到目前为止创建的微型批处理（也称为任务）数以及到目前为止处理的小型批处理数的高级信息。 在该文件的末尾，它显示作业的结果。 如果作业失败，它将显示错误消息以及从何处开始排除故障。
 
-- `~/logs/sys/master.txt`：此文件提供正在运行的作业的主节点（也称为协调器）视图。 包含任务创建、进度监视和运行结果。
+- `~/logs/sys/master.txt`：此文件提供正在运行的作业的主节点（也称为协调器）视图。 包括任务创建、进度监视、运行结果。
 
-使用 EntryScript 和 print 语句从条目脚本生成的日志将在以下文件中找到：
+使用 EntryScript.logger 和打印语句从条目脚本生成的日志将在以下文件中找到：
 
-- `~/logs/user/<ip_address>/Process-*.txt`：此文件包含使用 EntryScript 从 entry_script 中写入的日志。 它还包含来自 entry_script 的打印语句（stdout）。
+- `~/logs/user/<ip_address>/Process-*.txt`：此文件包含使用 entryScript.logger 从 entry_script编写的日志。 它还包含entry_script的打印语句（stdout）。
 
-当你需要全面了解每个节点执行评分脚本的方式时，请查看每个节点的单独进程日志。 可在 `sys/worker` 文件夹中找到进程日志，按辅助角色节点分组：
+当需要全面了解每个节点如何执行了评分脚本时，请查看每个节点各自的进程日志。 可在 `sys/worker` 文件夹中找到进程日志，它们按工作器节点分组：
 
-- `~/logs/sys/worker/<ip_address>/Process-*.txt`：此文件提供了有关每个小型批处理的详细信息，因为它是由辅助角色选取或完成的。 对于每个小型批处理，此文件包括：
+- `~/logs/sys/worker/<ip_address>/Process-*.txt`：此文件提供有关每个微型批处理的详细信息，因为每个小批量是由工作人员拾取或完成的。 对于每个微型批处理，此文件包括：
 
     - 工作进程的 IP 地址和 PID。 
-    - 项的总数、成功处理的项计数和失败的项计数。
+    - 项目总数、成功处理的项目计数和失败项计数。
     - 开始时间、持续时间、处理时间和运行方法时间。
 
-你还可以找到有关每个工作进程的进程的资源使用情况的信息。 此信息采用 CSV 格式，位于 `~/logs/sys/perf/<ip_address>/`。 对于单个节点，作业文件将在 "`~logs/sys/perf`" 下提供。 例如，检查资源利用率时，查看以下文件：
+你还可以找到每个工作器进程的资源使用情况的相关信息。 此信息采用 CSV 格式，位于`~/logs/sys/perf/<ip_address>/`。 对于单个节点，作业文件将在 下`~logs/sys/perf`可用。 例如，检查资源利用率时，请查看以下文件：
 
-- `Process-*.csv`：每个工作进程的资源使用情况。 
+- `Process-*.csv`：每个工作人员处理资源使用情况。 
 - `sys.csv`：每个节点日志。
 
-### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>从远程上下文中的用户脚本如何实现日志？
-如下面的示例代码所示，可以从 EntryScript 获取记录器，以使日志显示在门户的 "**日志/用户**" 文件夹中。
+### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>如何从远程上下文通过我的用户脚本记录日志？
+您可以从 EntryScript 获取记录器，如下示例代码所示，以使日志显示在门户中的**日志/用户**文件夹中。
 
-**使用记录器的示例条目脚本：**
+**使用了记录器的一个示例入口脚本：**
 ```python
 from entry_script import EntryScript
 
@@ -80,9 +80,9 @@ def run(mini_batch):
     return mini_batch
 ```
 
-### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>如何将一方输入（如文件或包含查找表的文件）传递到所有工作线程？
+### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>如何将包含查找表的文件或文件等侧输入传递给所有工作人员？
 
-构造包含端输入的[数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)对象，并将其注册到你的工作区。 之后，你可以在推断脚本中访问它（例如，在 init （）方法中），如下所示：
+构造包含侧输入的[数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)对象，并将其注册到工作区。 之后，您可以在推理脚本中访问它（例如，在 init（） 方法中，如下所示：
 
 ```python
 from azureml.core.run import Run
@@ -95,6 +95,6 @@ lookup_ds.download(target_path='.', overwrite=True)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ParallelRunStep 类的[contrib](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps?view=azure-ml-py)的帮助，请参阅 SDK 参考，并提供类的[文档](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallelrunstep?view=azure-ml-py)。
+* 参阅 SDK 参考来获得 [azureml-contrib-pipeline-step](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps?view=azure-ml-py) 包的帮助信息，参阅此[文档](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallelrunstep?view=azure-ml-py)来了解 ParallelRunStep 类。
 
-* 按照[高级教程](tutorial-pipeline-batch-scoring-classification.md)，通过并行运行步骤使用管道。
+* 请按照有关使用具有并行运行步骤的管道[的高级教程](tutorial-pipeline-batch-scoring-classification.md)。

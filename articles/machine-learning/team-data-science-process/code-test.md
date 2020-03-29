@@ -12,17 +12,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721940"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>在 Azure 上使用 Team Data Science Process 和 Azure DevOps Services 进行数据科学代码测试
 本文提供的初步指导适用于在数据科学工作流中测试代码。 数据科学家可以通过此类测试以系统且有效的方式查看其代码的质量和预期结果。 我们使用的 Team Data Science Process (TDSP) [项目使用 UCI 成人收入数据集](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)，该数据集是我们以前发布的，目的是演示代码测试方法。 
 
 ## <a name="introduction-on-code-testing"></a>代码测试简介
-“单元测试”是一种长期存在的用于软件开发的做法。 但对于数据科学，通常并不清楚 "单元测试" 的含义，以及应该如何针对数据科学生命周期的不同阶段测试代码，例如：
+“单元测试”是一种长期存在的用于软件开发的做法。 但对于数据科学而言，通常不清楚"单元测试"的含义，以及如何测试数据科学生命周期的不同阶段的代码，例如：
 
 * 数据准备工作
 * 数据质量检查
@@ -100,7 +100,7 @@ ms.locfileid: "76721940"
     
     ![类中包含一系列测试的 Python 文件](./media/code-test/create_file_test1_class.PNG)
 
-1. 如果将 **codetest.testCase** 置于类名之后，则可自动发现这些测试。 打开右窗格中的测试资源管理器，然后选择“全部运行”。 所有测试都会按顺序运行，并且会告知测试是否成功。
+1. 如果将 **codetest.testCase** 置于类名之后，则可自动发现这些测试。 打开右窗格中的测试资源管理器，然后选择“全部运行”。**** 所有测试都会按顺序运行，并且会告知测试是否成功。
 
     ![运行测试](./media/code-test/run_tests.PNG)
 
@@ -112,37 +112,37 @@ ms.locfileid: "76721940"
 
 1. 在 Azure DevOps 中设置自动生成和测试：
 
-    a. 在项目存储库中选择“生成并发布”，然后选择“+新建”以创建新的生成过程。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在项目存储库中选择“生成并发布”，然后选择“+新建”以创建新的生成过程。********
 
     ![用于启动新生成过程的选择](./media/code-test/create_new_build.PNG)
 
-    b. 按提示选择源代码位置、项目名称、存储库和分库信息。
+    b.保留“数据库类型”设置，即设置为“共享”。 按提示选择源代码位置、项目名称、存储库和分库信息。
     
     ![源、名称、存储库和分库信息](./media/code-test/fill_in_build_info.PNG)
 
-    c. 选择模板。 由于没有 Python 项目模板，请一开始选择“空进程”。 
+    c. 选择模板。 由于没有 Python 项目模板，请一开始选择“空进程”****。 
 
     ![模板列表和“空进程”按钮](./media/code-test/start_empty_process_template.PNG)
 
-    d. 为生成命名并选择代理。 如果要使用 DSVM 来完成生成过程，则可以在此处选择默认值。 有关如何设置代理的详细信息，请参阅 [Build and release agents](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts)（生成并发布代理）。
+    d.单击“下一步”。 为生成命名并选择代理。 如果要使用 DSVM 完成生成过程，可以在此处选择默认值。 有关如何设置代理的详细信息，请参阅 [Build and release agents](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts)（生成并发布代理）。
     
     ![生成和代理选择](./media/code-test/select_agent.PNG)
 
-    e. 在左窗格中选择“ **”，+** 添加适合此生成阶段的任务。 由于我们要运行 Python 脚本**test1.py**来完成所有检查，因此此任务使用 PowerShell 命令来运行 Python 代码。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在**+** 左侧窗格中选择，以为此生成阶段添加任务。 由于我们将运行 Python 脚本**test1.py**以完成所有检查，因此此任务使用 PowerShell 命令运行 Python 代码。
     
     ![“添加任务”窗格，其中的 PowerShell 已选中](./media/code-test/add_task_powershell.PNG)
 
-    f. 在 PowerShell 详细信息中填写所需的信息，例如 PowerShell 的名称和版本。 选择“内联脚本”作为类型。 
+    f. 在 PowerShell 详细信息中填写所需的信息，例如 PowerShell 的名称和版本。 选择“内联脚本”**** 作为类型。 
     
-    在“内联脚本”下的框中，可以键入 **python test1.py**。 确保为 Python 正确设置环境变量。 如果需要其他版本或核心的 Python，可以显式指定路径，如图所示： 
+    在“内联脚本”**** 下的框中，可以键入 **python test1.py**。 确保为 Python 正确设置环境变量。 如果需要其他版本或核心的 Python，可以显式指定路径，如图所示： 
     
     ![PowerShell 详细信息](./media/code-test/powershell_scripts.PNG)
 
-    g. 选择 "**保存 & 队列**" 以完成生成管道过程。
+    g. 选择 **"保存&队列**以完成生成管道过程。
 
     ![“保存并排队”按钮](./media/code-test/save_and_queue_build_definition.PNG)
 
-现在，每次将新提交的内容推送到代码存储库时，生成过程就会自动启动。 （此处我们使用 master 作为存储库，但你可以定义任何分支。）此过程在代理计算机中运行**test1.py**文件，以确保代码中定义的所有内容都能正常运行。 
+现在，每次将新提交的内容推送到代码存储库时，生成过程就会自动启动。 （在这里，我们使用主存储库，但您可以定义任何分支。进程在代理计算机中运行**test1.py**文件，以确保代码中定义的所有内容都正确运行。 
 
 如果警报设置正确，系统会在生成完成以后通过电子邮件通知你。 也可在 Azure DevOps 中检查生成状态。 如果生成失败，则可检查生成的详细信息，找出出错的片段。
 
@@ -155,7 +155,7 @@ ms.locfileid: "76721940"
 * 请按你自己的数据科学项目的 UCI 收入预测方案中的上述大纲和示例进行操作。
 
 ## <a name="references"></a>参考
-* [团队数据科学过程](https://aka.ms/tdsp)
+* [Team Data Science Process](https://aka.ms/tdsp)
 * [Visual Studio 测试工具](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps 测试资源](https://www.visualstudio.com/team-services/)
 * [数据科学虚拟机](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

@@ -12,14 +12,14 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76719987"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>对 Azure HDInsight Hive 表中的数据进行采样
-本文介绍如何使用 Hive 查询向下采样存储在 Azure HDInsight Hive 表中的数据，以将其减至对于分析更易于管理的大小。 它包含三个一般使用的采样方法：
+本文介绍如何使用 Hive 查询向下采样存储在 Azure HDInsight Hive 表中的数据，以将其减至对于分析更易于管理的大小。 它包括三种常用的采样方法：
 
 * 统一随机采样
 * 按组随机采样
@@ -33,7 +33,7 @@ ms.locfileid: "76719987"
 ## <a name="how-to-submit-hive-queries"></a>如何提交 Hive 查询
 可从 Hadoop 群集头节点上的 Hadoop 命令行控制台中提交 Hive 查询。  登录到 Hadoop 群集的头节点，打开 Hadoop 命令行控制台，并从那里提交 Hive 查询。 有关在 Hadoop 命令行控制台中提交 Hive 查询的说明，请参阅[如何提交 Hive 查询](move-hive-tables.md#submit)。
 
-## <a name="uniform"></a>统一随机采样
+## <a name="uniform-random-sampling"></a><a name="uniform"></a>统一随机采样
 统一随机采样意味着数据集中的每一行都具有相同的采样机会。 通过将额外字段 rand() 添加到内部“select”查询中以及以该随机字段为条件的外部“select”查询中的数据集，可实现它。
 
 下面是一个示例查询：
@@ -51,8 +51,8 @@ ms.locfileid: "76719987"
 
 此处，`<sample rate, 0-1>` 指定用户要采样的记录部分。
 
-## <a name="group"></a>按组随机采样
-采样分类数据时，建议包括或排除分类变量的某些值的所有实例。 这一类采样称为“按组采样”。 例如，如果有一个分类变量“State”，其包含值例如 NY、MA、CA、NJ 和 PA，无论是否进行采样，都希望相同州的记录在一起。
+## <a name="random-sampling-by-groups"></a><a name="group"></a>按组随机采样
+采样分类数据时，建议包括或排除分类变量的某些值的所有实例。 这一类采样称为“按组采样”。 例如，如果有一个分类变量“State”，其包含值例如 NY、MA、CA、NJ 和 PA，无论是否进行采样，都希望相同州的记录在一起**。
 
 下面是按组采样的示例查询：
 
@@ -80,7 +80,7 @@ ms.locfileid: "76719987"
         )c
     on b.catfield=c.catfield
 
-## <a name="stratified"></a>分层采样
+## <a name="stratified-sampling"></a><a name="stratified"></a>分层采样
 如果获取的样本具有的分类值与父填充中该分类值所呈现的比率相同，则针对分类变量对随机采样进行分层。 同样使用与上述示例，假设数据具有按州分组的以下观察值：NJ 具有 100 个观察值，NY 具有 60 个观察值，WA 具有 300 个观察值。 如果指定分层采样率为 0.5，那么获取的 NJ、NY 和 WA 的样本应该分别具有大约 50、30 和 150 个观察值。
 
 下面是一个示例查询：

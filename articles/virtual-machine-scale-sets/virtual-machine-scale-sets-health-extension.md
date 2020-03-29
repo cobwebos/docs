@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 虚拟机规模集的应用程序运行状况扩展
+title: 将应用程序运行状况扩展与 Azure 虚拟机缩放集一起使用
 description: 了解如何使用应用程序运行状况扩展监视部署在虚拟机规模集上的应用程序的运行状况。
 author: mayanknayar
 tags: azure-resource-manager
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
 ms.openlocfilehash: 37d93b04e6755512eac6c2a168bd2a04f8ac298f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275878"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>配合使用虚拟机规模集和应用程序运行状况扩展
@@ -19,7 +19,7 @@ ms.locfileid: "76275878"
 
 本文介绍如何使用应用程序运行状况扩展监控部署在虚拟机规模集上的应用程序的运行状况。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 本文假定你熟悉以下内容：
 -   Azure 虚拟机[扩展](../virtual-machines/extensions/overview.md)
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虚拟机规模集
@@ -55,7 +55,7 @@ ms.locfileid: "76275878"
 
 ### <a name="property-values"></a>属性值
 
-| 名称 | 值/示例 | 数据类型
+| “属性” | 值/示例 | 数据类型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
 | 发布者 | `Microsoft.ManagedServices` | 字符串 |
@@ -64,7 +64,7 @@ ms.locfileid: "76275878"
 
 ### <a name="settings"></a>设置
 
-| 名称 | 值/示例 | 数据类型
+| “属性” | 值/示例 | 数据类型
 | ---- | ---- | ----
 | protocol | `http` 或 `tcp` | 字符串 |
 | port | 协议为 `http` 时为可选，协议为 `tcp` 时为必需 | int |
@@ -141,7 +141,7 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 
 使用 [az vmss 扩展集](/cli/azure/vmss/extension#az-vmss-extension-set)将应用程序运行状况扩展添加到规模集模型定义中。
 
-下面的示例将应用程序运行状况扩展添加到基于 Linux 的规模集的规模集模型。
+下面的示例将应用程序运行状况扩展添加到基于 Linux 的规模集的规模集模型中。
 
 ```azurecli-interactive
 az vmss extension set \
@@ -152,7 +152,7 @@ az vmss extension set \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
 ```
-扩展的 json 文件内容。
+extension.json 文件内容。
 
 ```json
 {
@@ -163,7 +163,7 @@ az vmss extension set \
 ```
 
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 扩展执行输出将记录到在以下目录中发现的文件：
 
 ```Windows

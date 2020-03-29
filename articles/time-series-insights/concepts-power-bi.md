@@ -1,5 +1,5 @@
 ---
-title: Power BI 集成-Azure 时序见解 |Microsoft Docs
+title: Power BI 集成 - Azure 时序见解 | Microsoft Docs
 description: 了解 Azure 时序见解中的 Power BI 集成。
 author: deepakpalled
 ms.author: dpalled
@@ -9,60 +9,60 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: ce566080c6ddbc4784365ceda6011c3f6612732a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76276870"
 ---
 # <a name="connect-time-series-insights-to-power-bi"></a>将时序见解连接到 Power BI  
 
-你是否正在寻找一种解决方案来帮助关联你的时序数据，创建鲜艳的可视化效果，并在你的组织内分享见解？
+你是否想要通过一个解决方案来关联时序数据、创建鲜艳的可视化效果，以及跨组织共享见解？
 
-Azure 时序见解现可与[Power BI](https://powerbi.microsoft.com/)无缝集成，为你提供更强大的可视化和仪表板建设功能，并可在你的组织中共享见解和结果。
+Azure 时间序列见解现在与 Power [BI](https://powerbi.microsoft.com/)无缝集成，可跨流数据为您提供更强大的可视化和仪表板功能，并允许您在整个组织中共享见解和结果。
 
 ## <a name="video"></a>视频
 
-### <a name="learn-more-about-integrating-azure-time-series-insights-with-power-bibr"></a>详细了解如何将 Azure 时序见解与 Power BI 集成。</br>
+### <a name="learn-more-about-integrating-azure-time-series-insights-with-power-bibr"></a>了解有关将 Azure 时间序列见解与 Power BI 集成的更多详细信息。</br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Power-BI-integration-with-TSI/player]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
-   [时序见解中的 ![导出选项](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
+   [![时间序列见解中的导出选项](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
 
-通过将数据连接到 Power BI，你现在可以：
+现在，将数据连接到 Power BI 后即可执行以下操作：
 
-* 与 Power BI 支持的其他数据源进行关联，并访问不同数据可视化选项的主机。 
-* 使用时序见解数据创建 Power BI 的仪表板和报表，并与你的组织共享这些数据。 
-* 使用简单、易用的方式解锁数据互操作方案，并比以往更快地获取 insights。
+* 与其他受 Power BI 支持的数据源关联，并访问大量不同的数据可视化选项。 
+* 使用时序见解数据创建 Power BI 仪表板和报表，并将其与组织共享。 
+* 以简单易用的方式解锁数据互操作方案，并以前所未有的速度获取见解。
 * 使用强大的高级编辑器在 Power BI 中修改时序见解数据。
 
 ## <a name="native-connector"></a>本机连接器
 
-连接数据花费的时间不到一分钟。 通过快速将视图从时序见解资源管理器导出到 Power BI，你的组织中的任何人都可以直观地访问和直观地转换数据。
+连接数据需时不到一分钟。 快速将视图从时序见解资源管理器导出到 Power BI 以后，组织中的任何人都可以直观地访问数据并以可视方式将其转换。
 
-配置选项包括在**原始**数据和**聚合级别**数据之间进行选择，并选择所需的时间范围。 
+配置选项包括在“原始”和“聚合级别”数据之间进行选择，以及选择所需时间范围。******** 
 
-数据连接完成后，就可以使用所有 Power BI 丰富的可视化和图表工具，进一步增强您的信息共享功能。 
+连接数据以后，即可使用 Power BI 的所有丰富的可视化和图表工具，进一步增强信息共享功能。 
 
-   [Power BI 中的 ![图表示例](./media/concepts-connect-power-bi/power-bi-tsi-example.png)](./media/concepts-connect-power-bi/power-bi-tsi-example.png#lightbox)
+   [![Power BI 中的图表示例](./media/concepts-connect-power-bi/power-bi-tsi-example.png)](./media/concepts-connect-power-bi/power-bi-tsi-example.png#lightbox)
 
-有关分步说明，请阅读[如何将时序见解连接到 Power BI](./how-to-connect-power-bi.md) 。
+请阅读[如何将时序见解连接到 Power BI](./how-to-connect-power-bi.md)，了解分步细节。
 
 ## <a name="flexible-workflow"></a>灵活的工作流
  
-在工作流中的任何位置使用连接器：
+从工作流中的任何位置使用连接器：
 
-* 如果在时序见解资源管理器中，可以快速将视图导出到 Power BI。 
-* 如果你已在 Power BI，请使用时序见解查询数据增强现有的可视化方案。
+* 如果已在时序见解资源管理器中，则可将视图快速导出到 Power BI。 
+* 如果已在 Power BI 中，请使用时序见解查询数据增强现有的可视化方案。
 
-若要在 Power BI 中进行高级查询和编辑功能，请使用 Power BI 的高级编辑器。
+如需 Power BI 中的高级查询和编辑功能，请使用 Power BI 的高级编辑器。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 阅读[如何将时序见解连接到 Power BI](./how-to-connect-power-bi.md)。
 
-* 详细了解[Power BI](https://docs.microsoft.com/power-bi/)。
+* 了解有关[Power BI](https://docs.microsoft.com/power-bi/)的更多。
 
-* 下载[Power BI 桌面](https://powerbi.microsoft.com/desktop/)并开始连接数据。
+* 下载 [Power BI Desktop](https://powerbi.microsoft.com/desktop/) 并开始连接数据。

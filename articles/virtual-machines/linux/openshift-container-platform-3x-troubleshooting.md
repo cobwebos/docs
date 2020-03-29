@@ -1,6 +1,6 @@
 ---
-title: 排查 Azure 中的 OpenShift 容器平台3.11 部署问题
-description: 排查 Azure 中的 OpenShift 容器平台3.11 部署问题。
+title: 在 Azure 中排除 OpenShift 容器平台 3.11 部署的疑难解答
+description: 在 Azure 中排除 OpenShift 容器平台 3.11 部署的疑难解答。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 1915cce1878b9b7ec058c13167e03c3c318f3668
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bd83a1ca731d81edb76a3c1bc07113ce96adb9ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035491"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066586"
 ---
-# <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>排查 Azure 中的 OpenShift 容器平台3.11 部署问题
+# <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>在 Azure 中排除 OpenShift 容器平台 3.11 部署的疑难解答
 
 如果 OpenShift 群集未成功部署，Azure 门户将提供错误输出。 该输出可能难以阅读，导致难以识别问题。 请在此输出中快速扫描退出代码 3、4 或 5。 下面提供了有关这三个退出代码的信息：
 
@@ -31,7 +31,7 @@ ms.locfileid: "74035491"
 
 对于其他所有退出代码，请通过 SSH 连接到主机，以查看日志文件。
 
-**OpenShift 容器平台3.11**
+**OpenShift 容器平台 3.11**
 
 通过 SSH 连接到 ansible playbook 主机。 对于模板或市场套餐，请使用守护主机。 在守护主机中，可以通过 SSH 连接到群集中的其他所有节点（主节点、infra、CNS、计算节点）。 需要以 root 用户身份查看日志文件。 默认禁止 root 进行 SSH 访问，因此，请不要使用 root 身份通过 SSH 连接到其他节点。
 
@@ -41,9 +41,9 @@ ms.locfileid: "74035491"
 
 ## <a name="log-files"></a>日志文件
 
-主机准备脚本的日志文件（stderr 和 stdout）位于所有主机上的 `/var/lib/waagent/custom-script/download/0` 中。 如果在准备主机期间出错，请查看这些日志文件以确定错误。
+主机准备脚本的日志文件（斯特和斯特和斯特处理）位于所有主机`/var/lib/waagent/custom-script/download/0`上。 如果在准备主机期间出错，请查看这些日志文件以确定错误。
 
-如果准备脚本已成功运行，则需要检查 ansible 操作手册宿主 `/var/lib/waagent/custom-script/download/1` 目录中的日志文件。 如果在实际安装 OpenShift 期间出错，stdout 文件将显示错误。 使用此信息来联系支持人员，以获得进一步的帮助。
+如果准备脚本成功运行，则需要检查易访问操作手册主机`/var/lib/waagent/custom-script/download/1`目录中的日志文件。 如果在实际安装 OpenShift 期间出错，stdout 文件将显示错误。 使用此信息来联系支持人员，以获得进一步的帮助。
 
 示例输出
 
@@ -92,17 +92,17 @@ Failure summary:
 
 ### <a name="private-key-has-a-passphrase"></a>私钥包含通行短语
 
-你将看到一个错误，指出拒绝了 ssh 的权限。 通过 ssh 连接到 ansible 操作手册主机以检查私钥上的通行短语。
+您将看到一个错误，该错误是 ssh 的权限被拒绝。 ssh 到可访问播放簿主机，以检查私钥上的密码。
 
 ### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>未正确创建包含私钥的 Key Vault 机密
 
-将私钥复制到 ansible 操作手册主机-~/.ssh/id_rsa。 确认此文件正确。 通过与 ansible playbook 主机中的某个群集节点建立 SSH 会话来进行测试。
+私钥被复制到可理解的玩法主机 - */.ssh/id_rsa。 确认此文件正确。 通过与 ansible playbook 主机中的某个群集节点建立 SSH 会话来进行测试。
 
 ### <a name="service-principal-credentials-were-entered-incorrectly"></a>输入的服务主体凭据不正确
 
 向模板或市场套餐提供输入时，提供了错误的信息。 请确保为服务主体使用正确的 appId (clientId) 和密码 (clientSecret)。 通过发出以下 Azure CLI 命令进行验证。
 
-```bash
+```azurecli
 az login --service-principal -u <client id> -p <client secret> -t <tenant id>
 ```
 
@@ -110,7 +110,7 @@ az login --service-principal -u <client id> -p <client secret> -t <tenant id>
 
 如果启用了 Azure 云提供程序，则使用的服务主体必须对资源组拥有参与者访问权限。 通过发出以下 Azure CLI 命令进行验证。
 
-```bash
+```azurecli
 az group update -g <openshift resource group> --set tags.sptest=test
 ```
 
@@ -118,5 +118,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 对于某些错误，还可以使用以下命令获取详细信息：
 
-1. service > \<systemctl 状态
+1. 系统状态\<服务>
 2. journalctl -xe

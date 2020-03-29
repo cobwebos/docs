@@ -14,10 +14,10 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897053"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影响 Azure AD Connect 性能的因素
@@ -27,15 +27,15 @@ Azure AD Connect 将 Active Directory 同步到 Azure AD。 此服务器是将�
 | **设计因素**| **定义** |
 |:-|-|
 | 拓扑| Azure AD Connect 必须在网络上管理的终结点和组件的分布。 |
-| 调整规模| 要由 Azure AD Connect 管理的用户、组和 OU 等对象的数量。 |
+| 缩放| 要由 Azure AD Connect 管理的用户、组和 OU 等对象的数量。 |
 | 硬件| 用于 Azure AD Connect 的硬件（物理或虚拟）以及各个硬件组件（包括 CPU、内存、网络和硬盘配置）的相关性能容量。 |
-| 配置| Azure AD Connect 处理目录和信息的方式。 |
+| Configuration| Azure AD Connect 处理目录和信息的方式。 |
 | 加载| 对象更改的频率。 一小时、一日或一周内的负载各不相同。 可能需要根据峰值负载或平均负载进行设计，具体取决于组件。 |
 
 本文档旨在介绍影响 Azure AD Connect 预配引擎性能的因素。 大规模或复杂的组织（预配超过 10 万个对象的组织）如果遇到此处所述的任何性能问题，可使用建议方法来优化其 Azure AD Connect 实现。 其他 Azure AD Connect 组件（例如 [Azure AD Connect Health](how-to-connect-health-agent-install.md)）以及代理不在本文讨论范围之内。
 
 > [!IMPORTANT]
-> Microsoft 不支持通过未正式记录的方法修改或操作 Azure AD Connect。 其中的任何操作都可能导致 Azure AD Connect 同步的状态不一致或不受支持。因此，Microsoft 无法为此类部署提供技术支持。
+> Microsoft 不支持通过未正式记录的方法修改或操作 Azure AD Connect。 这些操作中的任何一个都可能导致 Azure AD 连接同步的不一致或不受支持的状态。因此，Microsoft 无法为此类部署提供技术支持。
 
 ## <a name="azure-ad-connect-component-factors"></a>Azure AD Connect 组件因素
 
@@ -190,4 +190,4 @@ Azure AD 使用限制来防止云服务受到拒绝服务 (DoS) 攻击。 目前
 - 在 Azure AD 中监视 [Azure AD Connect 同步运行状况](how-to-connect-health-agent-install.md)。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。

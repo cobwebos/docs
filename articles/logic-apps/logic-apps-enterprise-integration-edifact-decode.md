@@ -9,10 +9,10 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 78c0d20c0f32a6d63d134e958b30d38fe11fcc5c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790667"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 EDIFACT 消息
@@ -24,17 +24,17 @@ ms.locfileid: "74790667"
 下面是需要准备好的项：
 
 * Azure 帐户；可以创建[免费帐户](https://azure.microsoft.com/free)
-* 已定义的与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用解码 EDIFACT 消息连接器。 
-* 已在集成帐户中定义了至少两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
+* 已定义并与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 必须拥有集成帐户，才能使用解码 EDIFACT 消息连接器。 
+* 已在集成帐户中至少定义了两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 * 已在集成帐户中定义了 [EDIFACT 协议](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="decode-edifact-messages"></a>为 EDIFACT 消息解码
 
 1. [创建逻辑应用](quickstart-create-first-logic-app-workflow.md)。
 
-2. 解码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，并将操作添加到逻辑应用。
+2. 解码 EDIFACT 消息连接器没有触发器，因此必须添加用于启动逻辑应用的触发器，如请求触发器。 在逻辑应用设计器中，添加触发器，然后将操作添加到逻辑应用。
 
-3. 在搜索框中，输入“EDIFACT”作为筛选器。 选择“解码 EDIFACT 消息”。
+3. 在搜索框中，输入“EDIFACT”作为筛选器。 选择**解码 EDIFACT 消息**。
    
     ![搜索 EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "74790667"
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
 
-4. 在完成连接创建时，选择“创建”。 连接详细信息应如此示例所示：
+4. 在完成连接创建时，选择“创建”****。 连接详细信息应如此示例所示：
 
     ![集成帐户详细信息](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 
@@ -95,5 +95,5 @@ ms.locfileid: "74790667"
 若要查看 EDIFACT 连接器的 Swagger 详细信息，请参阅 [EDIFACT](/connectors/edifact/)。
 
 ## <a name="next-steps"></a>后续步骤
-[了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack") 
+[了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解企业集成包") 
 

@@ -1,6 +1,6 @@
 ---
-title: 通过 Azure 事件网格中的 Azure AD 进行安全 WebHook 传递
-description: 介绍如何使用 Azure 事件网格将事件传递给受 Azure Active Directory 保护的 HTTPS 终结点
+title: 在 Azure 事件网格中使用 Azure AD 进行安全的 WebHook 传递
+description: 介绍如何将事件传递到受到 Azure Active Directory 通过 Azure 事件网格进行保护的 HTTPS 终结点
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,35 +8,35 @@ ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
 ms.openlocfilehash: 074378668b0516936e11968ea8c800d3daa667bb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931543"
 ---
-# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>将事件发布到 Azure Active Directory 受保护的终结点
+# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>将事件发布到受 Azure Active Directory 保护的终结点
 
-本文介绍如何利用 Azure Active Directory 来保护事件订阅和 webhook 终结点之间的连接。 有关 Azure AD 应用程序和服务主体的概述，请参阅[Microsoft 标识平台（v2.0）概述](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
+本文介绍如何利用 Azure Active Directory 来保护事件订阅和 Webhook 终结点之间的连接。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
 
-本文使用 Azure 门户演示，但也可以使用 CLI、PowerShell 或 Sdk 启用此功能。
+本文使用 Azure 门户进行演示，但也可通过 CLI、PowerShell 或 SDK 来启用此功能。
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="create-an-azure-ad-application"></a>创建 Azure AD 应用程序
 
-首先为受保护的终结点创建 Azure AD 应用程序。 请参阅 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview 。
-    - 配置要由后台程序应用调用的受保护 API。
+从为受保护的终结点创建 Azure AD 应用程序着手。 请参阅 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview。
+    - 将受保护的 API 配置为通过守护程序应用进行调用。
     
-## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>启用事件网格以使用 Azure AD 应用程序
+## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>允许事件网格使用 Azure AD 应用程序
 
-使用下面的 PowerShell 脚本在 Azure AD 应用程序中创建角色和服务主体。 你将需要 Azure AD 应用程序中的租户 ID 和对象 ID：
+使用下面的 PowerShell 脚本在 Azure AD 应用程序中创建角色和服务主体。 需要来自 Azure AD 应用程序的租户 ID 和对象 ID：
 
     > [!NOTE]
     > You must be a member of the [Azure AD Application Administrator role](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) to execute this script.
     
-1. 修改 PowerShell 脚本的 $myTenantId，以使用 Azure AD 租户 ID。
-1. 将 PowerShell 脚本的 $myAzureADApplicationObjectId 修改为使用 Azure AD 应用程序的对象 ID
-1. 运行修改后的脚本。
+1. 修改 PowerShell 脚本的 $myTenantId，以便使用 Azure AD 租户 ID。
+1. 修改 PowerShell 脚本的 $myAzureADApplicationObjectId，以便使用 Azure AD 应用程序的对象 ID。
+1. 运行修改的脚本。
 
 ```PowerShell
 # This is your Tenant Id. 
@@ -112,16 +112,16 @@ Write-Host $myApp.AppRoles
     
 ## <a name="configure-the-event-subscription"></a>配置事件订阅
 
-在事件订阅的创建流中，选择 "终结点类型" "Web 挂钩"。 提供终结点 URI 后，单击 "创建事件订阅" 边栏选项卡顶部的 "其他功能" 选项卡。
+在事件订阅的创建流中，选择终结点类型“Web Hook”。 给出终结点 URI 以后，请单击“创建事件订阅”边栏选项卡顶部的“其他功能”选项卡。
 
 ![选择终结点类型 webhook](./media/secure-webhook-delivery/select-webhook.png)
 
-在 "其他功能" 选项卡中，选中 "使用 AAD 身份验证" 复选框，并配置租户 ID 和应用程序 ID：
+在“其他功能”选项卡中，勾选“使用 AAD 身份验证”框并配置租户 ID 和应用程序 ID：
 
-* 从脚本的输出中复制 Azure AD 的租户 ID，并将其输入到 AAD 租户 ID 字段。
-* 从脚本的输出中复制 Azure AD 的应用程序 ID，并将其输入到 "AAD 应用程序 ID" 字段中。
+* 从脚本输出中复制 Azure AD 租户 ID，将其输入 AAD 租户 ID 字段中。
+* 从脚本输出中复制 Azure AD 应用程序 ID，将其输入 AAD 应用程序 ID 字段中。
 
-    ![安全 Webhook 操作](./media/secure-webhook-delivery/aad-configuration.png)
+    ![保护 Webhook 操作](./media/secure-webhook-delivery/aad-configuration.png)
 
 ## <a name="next-steps"></a>后续步骤
 

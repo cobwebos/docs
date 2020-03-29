@@ -1,6 +1,6 @@
 ---
-title: 使用呈现功能-Azure Batch
-description: 如何使用 Azure Batch 呈现功能。 尝试使用从客户端应用程序插件直接或调用的 Batch Explorer 应用程序。
+title: 使用渲染功能 - Azure Batch
+description: 如何使用 Azure Batch 渲染功能。 尝试使用 Batch Explorer 应用程序，可以直接使用，也可以从客户端应用程序插件调用。
 services: batch
 ms.service: batch
 author: mscurrell
@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: f3b2e641ab187514a7900b2ab7cc75068df00252
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672009"
 ---
 # <a name="using-azure-batch-rendering"></a>使用 Azure Batch 渲染
@@ -48,18 +48,18 @@ ms.locfileid: "78672009"
 
 提供的模板可以配合市场渲染 VM 映像中所有应用程序。  每个应用程序有多个模板，包括用于配合 CPU 和 GPU 池、Windows 和 Linux 池的池模板；作业模板包括完整的框架或平铺式 Blender 渲染，以及 V-Ray 分布式渲染。 提供的模板集将不断扩展，以配合其他 Batch 功能，例如池自动缩放。
 
-此外，可以从头开始或者通过修改提供的模板，来生成自定义模板。 可以通过在 Batch Explorer 的 "库" 部分选择 "本地模板" 项来使用自定义模板。
+此外，可以从头开始或者通过修改提供的模板，来生成自定义模板。 通过在批处理资源管理器的"库"部分中选择"本地模板"项，可以使用自定义模板。
 
 ### <a name="file-system-and-data-movement"></a>文件系统和数据移动
 
-Batch Explorer 中的 "Data" 部分允许在本地文件系统和 Azure 存储帐户之间复制文件。
+批处理资源管理器中的"数据"部分允许在本地文件系统和 Azure 存储帐户之间复制文件。
 
 ## <a name="client-application-plug-ins"></a>客户端应用程序插件
 
 我们为某些客户端应用程序提供了插件。  使用插件可以直接从应用程序创建池和作业，或调用 Batch Explorer。
 
-* [Blender 2.79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
-* [Blender 2.8 +](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
+* [搅拌机 2.79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [搅拌机 2.8°](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 

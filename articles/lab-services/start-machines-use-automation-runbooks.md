@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 开发测试实验室中的自动化 runbook 启动计算机
-description: 了解如何使用 Azure 自动化 runbook 在 Azure 开发测试实验室中的实验室中启动虚拟机。
+title: 使用 Azure 开发人员测试实验室中的自动化运行簿启动计算机
+description: 了解如何使用 Azure 自动化运行簿在 Azure 开发人员测试实验室的实验室中启动虚拟机。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,26 +13,26 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76166313"
 ---
-# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>使用 Azure 自动化 runbook 按顺序启动实验室中的虚拟机
-使用开发测试实验室的[自动](devtest-lab-set-lab-policy.md#set-autostart)启动功能，可以将 vm 配置为在指定时间自动启动。 但是，此功能不支持按特定顺序启动计算机。 在某些情况下，这种类型的自动化会很有用。  一种方案是，实验室中的 Jumpbox VM 首先需要在其他 Vm 之前启动，因为 Jumpbox 用作其他 Vm 的访问点。  本文介绍如何设置 Azure 自动化帐户，其中包含用于执行脚本的 PowerShell runbook。 此脚本使用实验室中的 Vm 上的标记来控制启动顺序，而无需更改脚本。
+# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>使用 Azure 自动化运行簿在实验室中按顺序启动虚拟机
+DevTest Labs 的[自动启动](devtest-lab-set-lab-policy.md#set-autostart)功能允许您配置 VM 在指定时间自动启动。 但是，此功能不支持按特定顺序启动的计算机。 在几种方案中，这种类型的自动化将很有用。  一种方案是，在实验室中需要先启动一个跳转盒 VM，然后再在其他 VM 之前启动，因为跳转盒用作对其他 VM 的接入点。  本文介绍如何使用执行脚本的 PowerShell Runbook 设置 Azure 自动化帐户。 该脚本使用实验室中 VM 上的标记来控制启动顺序，而无需更改脚本。
 
 ## <a name="setup"></a>设置
-在此示例中，实验室中的 Vm 需要使用适当的值（0、1、2等）添加标记**StartupOrder** 。 指定任何不需要作为-1 启动的计算机。
+在此示例中，实验室中的 VM 需要添加带有相应值（0，1，2 等）的标记**启动订单**。 指定不需要启动的任何计算机为 -1。
 
 ## <a name="create-an-azure-automation-account"></a>创建 Azure 自动化帐户
-按照[本文](../automation/automation-create-standalone-account.md)中的说明创建 Azure 自动化帐户。 创建帐户时，请选择 "**运行方式帐户**" 选项。 创建自动化帐户后，打开 "**模块**" 页，并在菜单栏上选择 "**更新 Azure 模块**"。 默认模块是多个旧版本，无需更新脚本即可工作。
+通过按照[本文](../automation/automation-create-standalone-account.md)中的说明创建 Azure 自动化帐户。 创建帐户时选择"**以帐户身份运行**"选项。 创建自动化帐户后，打开 **"模块"** 页，然后选择菜单栏上的 **"更新 Azure 模块**"。 默认模块是多个旧版本，如果没有更新，脚本可能无法正常工作。
 
-## <a name="add-a-runbook"></a>添加 runbook
-现在，若要将 runbook 添加到自动化帐户，请在左侧菜单中选择 " **runbook** "。 在菜单上选择 "**添加 runbook** "，并按照说明[创建 PowerShell runbook](../automation/automation-first-runbook-textual-powershell.md)。
+## <a name="add-a-runbook"></a>添加运行簿
+现在，要向自动化帐户添加 Runbook，请在左侧菜单上选择**Runbook。** 选择**在菜单上添加运行簿**，然后按照说明[创建 PowerShell Runbook](../automation/automation-first-runbook-textual-powershell.md)。
 
 ## <a name="powershell-script"></a>PowerShell 脚本
-以下脚本采用订阅名称，将实验室名称作为参数。 脚本的流是获取实验室中的所有 Vm，然后分析出标记信息，以创建 VM 名称及其启动顺序列表。 该脚本会按顺序遍历 Vm，并启动 Vm。 如果有多个 Vm 的特定订单号，它们将使用 PowerShell 作业异步启动。 对于没有标记的 Vm，请将 "启动值" 设置为最后一个（10），默认情况下，它们将启动。  如果实验室不希望 VM 自动安装，请将标记值设置为11，它将被忽略。
+以下脚本采用订阅名称，实验室名称作为参数。 脚本的流是获取实验室中的所有 VM，然后解析标记信息以创建 VM 名称及其启动顺序的列表。 脚本按顺序遍穿 VM 并启动 VM。 如果特定订单号中有多个 VM，则使用 PowerShell 作业异步启动它们。 对于没有标记的 VM，将启动值设置为最后一个 （10），默认情况下，它们将最后启动。  如果实验室不希望自动启动 VM，则将标记值设置为 11，并将忽略该标记值。
 
 ```powershell
 #Requires -Version 3.0
@@ -133,9 +133,9 @@ While ($current -le 10) {
 ```
 
 ## <a name="create-a-schedule"></a>创建计划
-若要每天执行此脚本，请在自动化帐户中[创建一个计划](../automation/shared-resources/schedules.md#creating-a-schedule)。 创建计划后，请将[其链接到 runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook)。 
+要让此脚本每天执行，请在自动化帐户中[创建计划](../automation/shared-resources/schedules.md#creating-a-schedule)。 创建计划后，[将其链接到 Runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook)。 
 
-在有多个具有多个实验室的订阅的大规模情况下，将参数信息存储在不同实验室的文件中，并将该文件传递给脚本，而不是单独的参数。 脚本需要修改，但核心执行将是相同的。 虽然此示例使用 Azure 自动化来执行 PowerShell 脚本，但还有其他一些选项，如在生成/发布管道中使用任务。
+在具有多个实验室的多个订阅的大规模情况下，将参数信息存储在不同实验室的文件中，并将文件传递给脚本而不是单个参数。 脚本需要修改，但核心执行将是相同的。 虽然此示例使用 Azure 自动化执行 PowerShell 脚本，但还有其他选项，如在生成/发布管道中使用任务。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章，了解有关 Azure 自动化的详细信息： [Azure 自动化简介](../automation/automation-intro.md)。
+请参阅以下文章以了解有关 Azure 自动化的更多详细信息[：Azure 自动化简介](../automation/automation-intro.md)。

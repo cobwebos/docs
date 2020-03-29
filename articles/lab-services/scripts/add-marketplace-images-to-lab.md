@@ -1,5 +1,5 @@
 ---
-title: PowerShell-将 marketplace 映像添加到 Azure 开发测试实验室中的实验室
+title: PowerShell - 将市场映像添加到 Azure 开发人员测试实验室中的实验室
 description: 此 PowerShell 脚本将市场映像添加到 Azure 开发测试实验室中的实验室。
 services: lab-services
 author: spelluru
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 3d699a22ed06022c6d9df12ade7f202fb304648c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76166444"
 ---
 # <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 将市场映像添加到 Azure 开发测试实验室中的实验室
@@ -27,8 +27,8 @@ ms.locfileid: "76166444"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-## <a name="prerequisites"></a>必备组件
-* 实验室。 此脚本要求拥有现有的实验室。 
+## <a name="prerequisites"></a>先决条件
+* 实验室****。 此脚本要求拥有现有的实验室。 
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -40,7 +40,7 @@ ms.locfileid: "76166444"
 
 | 命令 | 说明 |
 |---|---|
-| Find-AzResource | 基于指定参数搜索资源。 |
+| 查找-阿兹资源 | 基于指定参数搜索资源。 |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 获取资源。 |
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | 修改资源。 |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | 创建资源。 |

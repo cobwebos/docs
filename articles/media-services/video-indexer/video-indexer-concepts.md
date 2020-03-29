@@ -1,7 +1,7 @@
 ---
 title: 视频索引器概念
 titleSuffix: Azure Media Services
-description: 本文介绍 Azure 媒体服务视频索引器服务的一些概念。
+description: 本文介绍了 Azure 媒体服务视频索引器服务的一些概念。
 services: media-services
 author: Juliako
 manager: femila
@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: 73dad1db4f44134f871c9f3d6e7edcdd3bd1e2ea
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900680"
 ---
 # <a name="video-indexer-concepts"></a>视频索引器概念
@@ -29,7 +29,7 @@ ms.locfileid: "74900680"
 
 TimeRange 是原始视频中的时间范围。 AdjustedTimeRange 是相对于当前播放列表的时间范围。 由于可以从不同视频的不同行来创建播放列表，因此可以取一个 1 小时的视频，只使用其中的 1 行，例如 10:00-10:15。 在这种情况下，你会有一个只有 1 行的播放列表，其中的时间范围是 10:00-10:15，但 adjustedTimeRange 是 00:00-00:15。
  
-## <a name="blocks"></a>Blocks
+## <a name="blocks"></a>块
 
 可以通过块更轻松地浏览数据。 例如，可以在发言人换人或中断时间长时将块细分。
 
@@ -37,6 +37,6 @@ TimeRange 是原始视频中的时间范围。 AdjustedTimeRange 是相对于当
 
 若要了解如何入门，请参阅[如何注册并上传第一个视频](video-indexer-get-started.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [视频索引器概述](video-indexer-overview.md)

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 08/13/2018
 ms.author: shvija
 ms.openlocfilehash: b09f39f45936a7c43dbc1ef109780315d62c768f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60821911"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>事件中心 .NET Standard API 概述
@@ -21,7 +21,7 @@ ms.locfileid: "60821911"
 本文汇总了一些重要的 Azure 事件中心 [.NET Standard 客户端 API](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)。 目前有两个适用于事件中心的 .NET Standard 客户端库：
 
 * [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)：提供基本运行时的所有操作。
-* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)：添加了其他功能，可用于跟踪已处理的事件，并且是从事件中心读取数据的最简单方法。
+* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)：添加了其他功能，该功能可以跟踪处理的事件，并且是从事件中心读取数据的最简单方法。
 
 ## <a name="event-hubs-client"></a>事件中心客户端
 
@@ -48,7 +48,7 @@ var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringB
 
 ### <a name="send-events"></a>发送事件
 
-要将事件发送到事件中心，请使用 [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) 类。 主体必须是 `byte` 数组，或 `byte` 数组段。
+要将事件发送到事件中心，请使用[事件数据](/dotnet/api/microsoft.azure.eventhubs.eventdata)类。 主体必须是 `byte` 数组，或 `byte` 数组段。
 
 ```csharp
 // Create a new EventData object by encoding a string as a byte array
@@ -185,7 +185,7 @@ public class SimpleEventProcessor : IEventProcessor
 若要了解有关事件中心方案的详细信息，请访问以下链接：
 
 * [什么是 Azure 事件中心？](event-hubs-what-is-event-hubs.md)
-* [可用的事件中心 API](event-hubs-api-overview.md)
+* [可用事件中心 ais](event-hubs-api-overview.md)
 
 下面提供了 .NET API 参考：
 

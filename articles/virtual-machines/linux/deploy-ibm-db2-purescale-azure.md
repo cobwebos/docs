@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78968893"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
@@ -21,7 +21,7 @@ ms.locfileid: "78968893"
 
 ## <a name="get-started"></a>入门
 
-要部署此体系结构，请下载并运行 GitHub 上 [DB2onAzure](https://aka.ms/db2onazure) 存储库中的 deploy.sh 脚本。
+要部署此体系结构，请下载并运行在 GitHub 上的[DB2onAzure](https://aka.ms/db2onazure)存储库中找到的deploy.sh脚本。
 
 存储库还具有用于设置 Grafana 仪表板的脚本。 可以使用仪表板查询 Prometheus，后者是 DB2 中包含的开源监视和警报系统。
 
@@ -36,19 +36,19 @@ deploy.sh 脚本创建并配置此体系结构的 Azure 资源。 该脚本会�
 
 -   为环境设置网络安全组和 SSH。
 
--   在共享存储和 DB2 pureScale 虚拟机上设置多个 Nic。
+-   在共享存储和 DB2 纯Scale虚拟机上设置多个 NIC。
 
--   创建共享存储虚拟机。 如果使用存储空间直通或其他存储解决方案，请参阅[存储空间直通概述](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)。
+-   创建共享存储虚拟机。 如果使用存储空间直接或其他存储解决方案，请参阅[存储空间直接概述](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)。
 
 -   创建 jumpbox 虚拟机。
 
--   创建 DB2 pureScale 虚拟机。
+-   创建 DB2 纯缩放虚拟机。
 
--   创建 DB2 pureScale ping 的见证虚拟机。 如果 Db2 pureScale 的版本不需要见证服务器，请跳过此部分部署。
+-   创建 DB2 纯标级 ping 的见证虚拟机。 如果版本的 Db2 pureScale 不需要见证人，请跳过部署的此部分。
 
--   创建用于测试的 Windows 虚拟机，但不会在其上安装任何内容。
+-   创建用于测试的 Windows 虚拟机，但不会在它上安装任何内容。
 
-接下来，部署脚本为 Azure 上的共享存储设置 iSCSI 虚拟存储区域网络 (vSAN)。 在此示例中，iSCSI 连接到共享存储群集。 在原始客户解决方案中，使用了 GlusterFS。 然而，IBM 不再支持此方法。 若要维持 IBM 的支持，需要使用受支持的 iSCSI 兼容文件系统。 Microsoft 提供存储空间直通（S2D）作为选项。
+接下来，部署脚本为 Azure 上的共享存储设置 iSCSI 虚拟存储区域网络 (vSAN)。 在此示例中，iSCSI 连接到共享存储群集。 在原始客户解决方案中，使用了 GlusterFS。 但是，IBM 不再支持此方法。 要维护 IBM 的支持，您需要使用支持的 iSCSI 兼容文件系统。 微软提供存储空间直接 （S2D） 作为一个选项。
 
 此解决方案还提供了将 iSCSI 目标安装为单个 Windows 节点的选项。 iSCSI 通过 TCP/IP 提供共享块存储接口，允许 DB2 pureScale 设置过程使用设备接口连接到共享存储。
 
@@ -56,26 +56,26 @@ deploy.sh 脚本创建并配置此体系结构的 Azure 资源。 该脚本会�
 
 1.  在 Azure 上设置共享存储群集。 此步骤涉及至少两个 Linux 节点。
 
-2.  在目标 Linux 服务器上为共享存储群集设置 iSCSI 直接接口。
+2.  在共享存储群集的目标 Linux 服务器上设置 iSCSI 直接接口。
 
-3.  在 Linux 虚拟机上设置 iSCSI 发起程序。 发起程序将使用 iSCSI 目标访问共享存储群集。 有关设置详细信息，请参阅 RootUsers 文档中的[如何在 Linux 中配置 iSCSI 目标和发起程序](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/)。
+3.  在 Linux 虚拟机上设置 iSCSI 发起程序。 发出者将使用 iSCSI 目标访问共享存储群集。 有关设置详细信息，请参阅 RootUsers 文档中的[如何在 Linux 中配置 iSCSI 目标和发起程序](https://www.rootusers.com/how-to-configure-an-iscsi-target-and-initiator-in-linux/)。
 
 4.  安装 iSCSI 接口的共享存储层。
 
-脚本创建 iSCSI 设备后，最后一步是安装 DB2 pureScale。 在 DB2 pureScale 设置过程中，将在 GlusterFS 群集上编译并安装 [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html)（以前称为 GPFS）。 通过此群集文件系统，DB2 pureScale 可在运行 DB2 pureScale 引擎的虚拟机之间共享数据。 有关更多信息，请参阅 IBM 网站上的 [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) 文档。
+脚本创建 iSCSI 设备后，最后一步是安装 DB2 pureScale。 作为 DB2 纯 Scale 设置的一部分[，IBM 频谱缩放](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0057167.html)（以前称为 GPFS）编译并安装在 GlusterFS 群集上。 通过此群集文件系统，DB2 pureScale 可在运行 DB2 pureScale 引擎的虚拟机之间共享数据。 有关更多信息，请参阅 IBM 网站上的 [IBM Spectrum Scale](https://www.ibm.com/support/knowledgecenter/en/STXKQY_4.2.0/ibmspectrumscale42_welcome.html) 文档。
 
 ## <a name="db2-purescale-response-file"></a>DB2 pureScale 响应文件
 
 GitHub 存储库包含一个响应 (.rsp) 文件 DB2server.rsp，通过该文件可为 DB2 pureScale 安装生成自动脚本。 下表列出了响应文件用于设置的 DB2 pureScale 选项。 可根据需要为环境自定义响应文件。
 
 > [!NOTE]
-> 示例响应文件 DB2server.rsp 包含在 GitHub 上的 [DB2onAzure](https://aka.ms/db2onazure) 存储库中。 如果要使用此文件，必须先对其进行编辑，然后才能在环境中使用。
+> GitHub 上的[DB2onAzure](https://aka.ms/db2onazure)存储库中包含一个示例响应文件 DB2server.rsp。 如果要使用此文件，必须先对其进行编辑，然后才能在环境中使用。
 
-| 屏幕名称               | 字段                                        | 值                                                                                                 |
+| 屏幕名称               | 字段                                        | “值”                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | 欢迎使用                   |                                              | 新安装                                                                                           |
 | 选择产品          |                                              | DB2 版本 11.1.3.3。 带有 DB2 pureScale 的服务器版本                                              |
-| 配置             | 目录                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| Configuration             | 目录                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | 选择安装类型                 | 典型                                                                                               |
 |                           | 我同意 IBM 条款                     | 已选中                                                                                               |
 | 实例所有者            | 实例的现有用户、用户名        | DB2sdin1                                                                                              |
@@ -111,7 +111,7 @@ GitHub 存储库包含一个响应 (.rsp) 文件 DB2server.rsp，通过该文件
 
 - 设置脚本使用 iSCSI 磁盘的别名，以便可以轻松找到实际名称。
 
-- 在 d0 上运行设置脚本时，d1、cf0 和 cf1 上的 /dev/dm- **值可能不同\*** 。 值之间的差异不会影响 DB2 pureScale 设置。
+- 在 d0 上运行设置脚本时，d1、cf0 和 cf1 上的 /dev/dm-\* 值可能不同****。 值之间的差异不会影响 DB2 pureScale 设置。
 
 ## <a name="troubleshooting-and-known-issues"></a>故障排除和已知问题
 
@@ -135,11 +135,11 @@ GitHub 存储库包括由创建者维护的知识库。 该知识库列出了可
 
 ## <a name="next-steps"></a>后续步骤
 
--   [创建所需用户以安装 DB2 pureScale 功能](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
+-   [为 DB2 纯标尺功能安装创建所需的用户](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 
 -   [DB2icrt - 创建实例命令](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
 
--   [DB2 pureScale 群集数据解决方案](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+-   [DB2 纯标群集数据解决方案](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 
 -   [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 

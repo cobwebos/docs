@@ -1,13 +1,13 @@
 ---
 title: 父资源错误
-description: 介绍如何在 Azure 资源管理器模板中使用父资源时解决错误。
+description: 说明如何解决在 Azure 资源管理器模板中使用父资源时出现的错误。
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.openlocfilehash: f1847389d60ddf3c6abc70bc3309940c2246084e
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76154034"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>解决父资源的错误
@@ -78,4 +78,4 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 }
 ```
 
-有关详细信息，请参阅[定义 Azure 资源管理器模板中部署资源的顺序](define-resource-dependency.md)。
+有关详细信息，请参阅[定义在 Azure 资源管理器模板中部署资源的顺序](define-resource-dependency.md)。

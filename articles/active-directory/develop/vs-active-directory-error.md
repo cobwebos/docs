@@ -1,5 +1,5 @@
 ---
-title: 诊断 Azure AD 连接服务的错误（Visual Studio）
+title: 使用 Azure AD 连接的服务诊断错误（可视化工作室）
 description: Active Directory 连接服务可检测到不兼容的身份验证类型
 author: ghogen
 manager: jillfra
@@ -12,25 +12,25 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: a6ec31f0d60c7f6e3737dc4042b05a6d8bf3dd5e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76699965"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>使用 Azure Active Directory 连接服务诊断错误
 
-在检测以前的身份验证代码时，Azure Active Directory 连接的服务检测到不兼容的身份验证类型。
+检测以前的身份验证代码时，Azure Active Directory 连接服务检测到了不兼容的身份验证类型。
 
-若要正确检测项目中以前的身份验证代码，则必须重新生成该项目。 如果你看到此错误，并且项目中没有以前的身份验证代码，请重新生成并重试。
+若要正确检测某个项目中以前的身份验证代码，必须重新生成该项目。 如果看到此错误，并且项目中不存在以前的身份验证代码，请重新生成项目并重试。
 
 ## <a name="project-types"></a>项目类型
 
-连接服务会检查你正在开发的项目类型，以便可以将正确的身份验证逻辑注入到项目。 如果在项目中 `ApiController` 派生的任何控制器，则该项目将被视为 WebAPI 项目。 如果项目中的控制器均派生自 `MVC.Controller`，则项目会被视为 MVC 项目。 连接服务不支持任何其他项目类型。
+连接服务会检查你正在开发的项目类型，以便可以将正确的身份验证逻辑注入到项目。 如果项目中有控制器派生自 `ApiController`，则该项目会被视为 WebAPI 项目。 如果项目中的控制器均派生自 `MVC.Controller`，则项目会被视为 MVC 项目。 连接服务不支持任何其他项目类型。
 
 ## <a name="compatible-authentication-code"></a>兼容的身份验证代码
 
-连接服务还会检查是否存在以前配置的身份验证设置或与该服务兼容的身份验证设置。 如果所有设置都存在，则会将其视为可重入大小写，并且连接的服务将打开显示这些设置。  如果只存在某些设置，则将其视为错误。
+连接服务还会检查是否存在以前配置的身份验证设置或与该服务兼容的身份验证设置。 如果所有设置都存在，则会将其视为可重入情况，连接服务将打开并显示这些设置。  如果只存在某些设置，则会将其视为错误情况。
 
 在 MVC 项目中，连接服务会检查是否存在以下任何设置（这些设置是以前使用该服务生成的）：
 
@@ -39,7 +39,7 @@ ms.locfileid: "76699965"
     <add key="ida:AADInstance" value="" />
     <add key="ida:PostLogoutRedirectUri" value="" />
 
-而且，连接服务会检查 Web API 项目中是否存在以下任何设置，这是以前使用该服务引起的：
+此外，连接服务还会在 Web API 项目中检查是否存在以下任何设置（这些设置是以前使用该服务时生成的）：
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />
