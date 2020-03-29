@@ -1,5 +1,5 @@
 ---
-title: 常见问题（FAQ）-LUIS
+title: 常见问题解答 (FAQ) - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 author: diberry
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219705"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
@@ -24,7 +24,7 @@ ms.locfileid: "79219705"
 
 ## <a name="whats-new"></a>新增功能
 
-[详细了解](whats-new.md)语言理解中的新增功能（LUIS）。
+[详细了解](whats-new.md)语言理解 (LUIS) 中的新增功能。
 
 <a name="luis-authoring"></a>
 
@@ -53,7 +53,7 @@ ms.locfileid: "79219705"
 若要以编程方式编辑 LUIS 应用，请使用[创作 API](https://go.microsoft.com/fwlink/?linkid=2092087)。 请参阅[调用 LUIS 创作 API](./get-started-get-model-rest-apis.md) 和[使用 Node.js 以编程方式生成 LUIS 应用](./luis-tutorial-node-import-utterances-csv.md)，通过示例了解如何调用创作 API。 创作 API 要求使用[创作密钥](luis-concept-keys.md#azure-resources-for-luis)而不是终结点密钥。 编程创作最多允许每个月进行 1,000,000 次调用，每秒处理五个事务。 若要详细了解可与 LUIS 配合使用的密钥，请参阅[管理密钥](./luis-concept-keys.md)。
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>提供了正则表达式匹配的“模式”功能位于何处？
-以前的 **“模式”功能**目前已弃用，代之以现在的 **[模式](luis-concept-patterns.md)** 功能。
+以前的 **“模式”功能**目前已弃用，代之以现在的**[模式](luis-concept-patterns.md)** 功能。
 
 ### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>如何使用实体来拉取出正确的数据？
 请参阅[实体](luis-concept-entity-types.md)和[数据提取](luis-concept-data-extraction.md)。
@@ -68,13 +68,13 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>如何转让 LUIS 应用的所有权？
 若要将某个 LUIS 应用转让给另一 Azure 订阅，请导出该 LUIS 应用，然后使用新帐户来导入它。 在进行调用的客户端应用程序中更新 LUIS 应用 ID。 新应用返回的 LUIS 分数与原始应用返回的可能稍有不同。
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>预生成的实体在示例查询文本中进行了标记，而不是我的自定义实体。 如何解决此问题？ 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>预生成实体在示例话语中标记，而不是在我的自定义实体中标记。 如何修复此问题？ 
 
-在 LUIS 门户中，可以为要提取的确切实体标记文本。 如果 LUIS 门户未显示正确的实体预测，则您可能需要添加更多最谈话并在文本中添加实体的标签，或者添加一个描述符（如功能）。 
+在 LUIS 门户中，您可以为感兴趣的提取的确切实体标记文本。 如果 LUIS 门户未显示正确的实体预测，则可能需要添加更多陈述并在文本中标记实体或添加描述符（如功能）。 
 
-### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>我尝试导入应用程序或版本文件，但收到错误消息？ 
+### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>我尝试导入应用或版本文件，但收到了错误，发生了什么情况？ 
 
-阅读有关[版本导入错误](luis-how-to-manage-versions.md#import-errors)的详细信息。
+详细了解[版本导入错误](luis-how-to-manage-versions.md#import-errors)。
 
 <a name="luis-collaborating"></a>
 
@@ -86,32 +86,32 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 
 <a name="luis-endpoint"></a>
 
-## <a name="endpoint"></a>端点
+## <a name="endpoint"></a>终结点
 
 ### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>我收到了一个 HTTP 403 错误状态代码。 如何解决问题？
 
-当你的定价层超出每秒的事务数或每月的事务数时，将获得403和429错误状态代码。 增加定价层，或使用语言理解[容器](luis-container-howto.md)。
+当你超过你所在定价层的每秒事务数或每月事务数时，将收到 403 和 429 错误状态代码。 请提高你的定价层，或者使用语言理解[容器](luis-container-howto.md)。
 
-使用所有这些免费1000终结点查询或超出定价层的每月事务配额时，会收到 HTTP 403 错误状态代码。 
+当你使用了所有这些免费的 1000 个终结点查询或超出定价层的每月事务配额时，将收到 HTTP 403 错误状态代码。 
 
-若要修复此错误，需要[将定价层更改](luis-how-to-azure-subscription.md#change-pricing-tier)为较高的层，或者[创建新资源](get-started-portal-deploy-app.md#create-the-endpoint-resource)并[将其分配给应用](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)。
+若要修复此错误，需要[将定价层更改](luis-how-to-azure-subscription.md#change-pricing-tier)为更高层，或者[创建新资源](get-started-portal-deploy-app.md#create-the-endpoint-resource)并[将其分配给应用](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)。
 
-此错误的解决方案包括：
+此错误的解决方法包括：
 
-* 在[Azure 门户](https://portal.azure.com)的语言理解资源上，在**资源管理-> 定价层**上，将定价层更改为更高的 TPS 层。 如果资源已分配给语言理解应用，则无需在语言理解门户中执行任何操作。
-*  如果你的使用量超过了最高定价层，请在其前面添加更多语言理解资源和负载均衡器。 具有 Kubernetes 或 Docker Compose 的[语言理解容器](luis-container-howto.md)有助于此。
+* 在 [Azure 门户](https://portal.azure.com)中你的语言理解资源的“资源管理”->“定价层”**** 上，将定价层更改为更高的 TPS 层。 如果资源已分配给语言理解应用，则无需在语言理解门户中执行任何操作。
+*  如果使用量超过了最高定价层相应的使用量，请添加更多的语言理解资源，并在这些资源前面放置一个负载均衡器。 带有 Kubernetes 或 Docker Compose 的[“语言理解”容器](luis-container-howto.md)可以帮助解决此问题。
 
 ### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>我收到了一个 HTTP 429 错误状态代码。 如何解决问题？
 
-当你的定价层超出每秒的事务数或每月的事务数时，将获得403和429错误状态代码。 增加定价层，或使用语言理解[容器](luis-container-howto.md)。
+当你超过你所在定价层的每秒事务数或每月事务数时，将收到 403 和 429 错误状态代码。 请提高你的定价层，或者使用语言理解[容器](luis-container-howto.md)。
 
-每秒的事务数超过定价层时，将返回此状态代码。  
+当你的每秒事务数超过你的定价层的每秒事务数时，将返回此状态代码。  
 
-解决方案包括：
+解决方法包括：
 
-* 如果你不在最高层，可以[增加定价层](luis-how-to-azure-subscription.md#change-pricing-tier)。
-* 如果你的使用量超过了最高定价层，请在其前面添加更多语言理解资源和负载均衡器。 具有 Kubernetes 或 Docker Compose 的[语言理解容器](luis-container-howto.md)有助于此。
-* 你可以通过在收到此状态代码时自行实现的[重试策略来设置](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)客户端应用程序请求。 
+* 如果不在最高层，可以[提高定价层](luis-how-to-azure-subscription.md#change-pricing-tier)。
+* 如果使用量超过了最高定价层相应的使用量，请添加更多的语言理解资源，并在这些资源前面放置一个负载均衡器。 带有 Kubernetes 或 Docker Compose 的[“语言理解”容器](luis-container-howto.md)可以帮助解决此问题。
+* 收到此状态代码时，可以使用你自己实现的[重试策略](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)来限制客户端应用程序请求。 
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>我的终结点查询返回了意外的结果。 我该怎么办？
 
@@ -124,18 +124,18 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 有关其他提示，请查看[最佳做法](luis-concept-best-practices.md)。 
 
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>为什么 LUIS 向查询添加空格时，会将其添加到单词的周围或中间？
-LUIS 根据[区域性](luis-glossary.md#token)将表述[标记化](luis-language-support.md#tokenization)。 原始值和标记化值均可用于[数据提取](luis-concept-data-extraction.md#tokenized-entity-returned)。
+LUIS 根据[区域性](luis-language-support.md#tokenization)将表述[标记化](luis-glossary.md#token)。 原始值和标记化值均可用于[数据提取](luis-concept-data-extraction.md#tokenized-entity-returned)。
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>如何创建并分配 LUIS 终结点密钥？
-根据[服务](luis-how-to-azure-subscription.md)级别在 Azure 中[创建终结点密钥](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)。 在 " **[Azure 资源](luis-how-to-azure-subscription.md)** " 页上[分配密钥](luis-how-to-azure-subscription.md)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md)。
+根据[服务](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)级别在 Azure 中[创建终结点密钥](luis-how-to-azure-subscription.md)。 在**[Azure 资源](luis-how-to-azure-subscription.md)** 页上[分配密钥](luis-how-to-azure-subscription.md)。 此操作没有相应的 API。 然后，必须更改针对此终结点的 HTTP 请求才能[使用新终结点密钥](luis-concept-keys.md)。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>如何解释 LUIS 分数？
-系统应该使用最高得分意向，不管其值如何。 例如，分数低于 0.5（不到 50%）不一定意味着 LUIS 的置信度低。 提供更多训练数据有助于提高最可能意向的[分数](luis-concept-prediction-score.md)。
+系统应该使用最高得分意向，不管其值如何。 例如，分数低于 0.5（不到 50%）不一定意味着 LUIS 的置信度低。 提供更多的培训数据有助于提高最可能意图[的分数](luis-concept-prediction-score.md)。
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>为何在应用的“仪表板”中看不到终结点命中数？
 应用的“仪表板”中的终结点总命中数会定期更新，但 Azure 门户中与 LUIS 终结点密钥相关联的指标的更新频率更高。
 
-如果在“仪表板”中看不到更新的终结点命中数，请登录到 Azure 门户，找到与 LUIS 终结点密钥相关联的资源，然后打开“指标”以选择“总调用数”指标。 如果将终结点密钥用于多个 LUIS 应用，则 Azure 门户中的指标会显示使用该密钥的所有 LUIS 应用进行的调用的聚合数。
+如果在“仪表板”中看不到更新的终结点命中数，请登录到 Azure 门户，找到与 LUIS 终结点密钥相关联的资源，然后打开“指标”以选择“总调用数”指标********。 如果将终结点密钥用于多个 LUIS 应用，则 Azure 门户中的指标会显示使用该密钥的所有 LUIS 应用进行的调用的聚合数。
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>是否有 PowerShell 命令进入终结点？
 
@@ -148,7 +148,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>我的 LUIS 应用昨天还可以正常使用，但今天却出现 403 错误。 我没有更改应用。 如何解决问题？
-按照以下[说明](#how-do-i-create-and-assign-a-luis-endpoint-key)创建 LUIS 终结点密钥并将其分配给应用。 然后，必须将客户端应用程序的 HTTP 请求更改为终结点才能[使用新的终结点密钥](luis-concept-keys.md)。 如果在其他区域创建了新资源，则也要更改 HTTP 客户端请求的区域。
+按照这些[说明](#how-do-i-create-and-assign-a-luis-endpoint-key)创建一个 LUIS 终结点密钥，然后将其分配给应用。 然后，必须更改客户端应用程序对终结点的 HTTP 请求以[使用新的终结点密钥](luis-concept-keys.md)。 如果你在不同的区域中创建了新资源，那么也要更改 HTTP 客户端请求的区域。
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>如何保护 LUIS 终结点安全？
 请参阅[保护终结点安全](luis-concept-keys.md#securing-the-endpoint)。
@@ -193,7 +193,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ## <a name="app-publishing"></a>应用发布
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>“向应用添加密钥”窗口中的租户 ID 是什么？
-在 Azure 中，租户代表与服务关联的客户或组织。 若要在 Azure 门户的“目录 ID”框中查找租户 ID，请选择“Azure Active Directory” > “管理” > “属性”。
+在 Azure 中，租户代表与服务关联的客户或组织。 若要在 Azure 门户的“目录 ID”框中查找租户 ID，**** 请选择“Azure Active Directory”**** > “管理”**** > ****“属性”。
 
 ![Azure 门户中的租户 ID](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -210,24 +210,24 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>如何了解我需要什么密钥，从哪里获取它，以及使用它来做什么？ 
 
-请参阅[LUIS 中的创作和查询预测终结点密钥](luis-concept-keys.md)，了解创作密钥与预测运行时密钥之间的差异。 
+请参阅 [LUIS 中的创作密钥和查询预测终结点密钥](luis-concept-keys.md)，以了解创作密钥与预测运行时密钥之间的区别。 
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>我收到有关超出配额的错误。 如何解决问题？ 
 
-请参阅修复 HTTP 状态代码[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429](#i-received-an-http-429-error-status-code-how-do-i-fix-it)以了解详细信息。
+有关详细信息，请参阅修复 HTTP 状态代码[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429。](#i-received-an-http-429-error-status-code-how-do-i-fix-it)
 
 ### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>我需要处理更多的终结点查询。 我该怎么做？ 
 
-请参阅修复 HTTP 状态代码[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429](#i-received-an-http-429-error-status-code-how-do-i-fix-it)以了解详细信息。
+有关详细信息，请参阅修复 HTTP 状态代码[403](#i-received-an-http-403-error-status-code-how-do-i-fix-it)和[429。](#i-received-an-http-429-error-status-code-how-do-i-fix-it)
 
-### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>我创建了创作密钥，但它没有显示在 LUIS 门户中。 发生了什么情况？
+### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>我创建了一个创作密钥，但它未显示在 LUIS 门户中。 发生了什么情况？
 
-[迁移到创作密钥体验](luis-migration-authoring.md)后，创作密钥在 LUIS 门户中提供。  
+在[迁移到创作密钥体验](luis-migration-authoring.md)后，在 LUIS 门户中可以使用创作密钥。  
 
 ## <a name="app-management"></a>应用管理
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>如何下载用户表述的日志？
-默认情况下，LUIS 应用会记录用户提供的表述。 若要下载用户发送至 LUIS 应用的表述的日志，请转到“我的应用”，然后选择此应用。 在上下文工具栏中，选择“导出终结点日志”。 日志格式化为逗号分隔值 (CSV) 文件。
+默认情况下，LUIS 应用会记录用户提供的表述。 若要下载用户发送至 LUIS 应用的表述的日志，请转到“我的应用”****，然后选择此应用。 在上下文工具栏中，选择“导出终结点日志”****。 日志格式化为逗号分隔值 (CSV) 文件。
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>如何禁用表述的日志记录？
 若要关闭用户表述的日志记录，可以在客户端应用程序用来查询 LUIS 的终结点 URL 中设置 `log=false`。 但是，关闭日志记录会禁用 LUIS 应用提供表述建议或改进基于[主动学习](luis-concept-review-endpoint-utterances.md#what-is-active-learning)的性能的功能。 如果因为数据隐私顾虑而设置 `log=false`，则不能从 LUIS 下载这些用户表述的记录，也不能使用这些表述来改进应用。
@@ -242,7 +242,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ### <a name="can-i-delete-data-from-luis"></a>能否从 LUIS 中删除数据？
 
 * 可以随意删除用于训练 LUIS 的示例表述。 如果从 LUIS 应用中删除某个示例陈述，则会将其从 LUIS Web 服务中删除，导致其无法导出。
-* 可以从 LUIS 在“查看终结点表述”页中建议的用户表述列表中删除表述。 从此列表中删除表述可以防止系统再将其作为建议提出来，但不会将其从日志中删除。
+* 可以从 LUIS 在“查看终结点表述”页中建议的用户表述列表中删除表述。**** 从此列表中删除表述可以防止系统再将其作为建议提出来，但不会将其从日志中删除。
 * 如果删除某个帐户，则会删除所有应用及其示例表述和日志。 数据可以保留在服务器上 60 天，然后就会被永久删除。
 
 ### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>Microsoft 如何管理我发送给 LUIS 的数据？
@@ -275,13 +275,13 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>在 Azure 机器人服务中解决问题
 
-如果在使用 Azure 机器人服务时遇到“网上聊天中的测试”返回  **问题，请查看日志**`Sorry, my bot code is having an issue`：
+如果在使用 Azure 机器人服务时遇到“网上聊天中的测试”返回 `Sorry, my bot code is having an issue` 问题，请查看日志****：
 
-1. 在 Azure 门户中，对于机器人，从“机器人管理”部分选择“生成”。
+1. 在 Azure 门户中，对于机器人，从“机器人管理”部分选择“生成”********。
 1. 打开联机代码编辑器。 
 1. 在顶部的蓝色导航栏中，选择智能机器人名称（从右起的第二项）。
-1. 在生成的下拉列表中，选择“打开 Kudu 控制台”。
-1. 选择“LogFiles”，然后选择“应用程序”。 查看所有日志文件。 如果应用程序文件夹中没有错误，请查看“LogFiles”下的所有日志文件。 
+1. 在生成的下拉列表中，选择“打开 Kudu 控制台”****。
+1. 选择“LogFiles”，然后选择“应用程序”********。 查看所有日志文件。 如果应用程序文件夹中没有错误，请查看“LogFiles”下的所有日志文件****。 
 1. 如果使用经过编译的语言（如 C#），请记住重新生成项目。
 
 > [!Tip] 
@@ -294,7 +294,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ## <a name="integrating-luis"></a>集成 LUIS
 
 ### <a name="where-is-my-luis-app-created-during-the-azure-web-app-bot-subscription-process"></a>在 Azure Web 应用机器人订阅过程中创建的 LUIS 应用位于何处？
-如果选择一个 LUIS 模板，然后在模板窗格中选择“选择”按钮，则左侧窗格在更改后会包括模板类型，并询问在什么区域创建 LUIS 模板。 不过，Web 应用机器人过程不会创建 LUIS 订阅。
+如果选择一个 LUIS 模板，然后在模板窗格中选择“选择”按钮，**** 则左侧窗格在更改后会包括模板类型，并询问在什么区域创建 LUIS 模板。 不过，Web 应用机器人过程不会创建 LUIS 订阅。
 
 ![LUIS 模板 Web 应用机器人区域](./media/luis-faq/web-app-bot-location.png)
 
@@ -315,17 +315,17 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 ## <a name="migrating-to-the-next-version"></a>迁移到下一版本
 
-### <a name="how-do-i-migrate-to-preview-v3-api"></a>如何实现迁移到预览版 V3 API？ 
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>如何迁移到预览版 V3 API？ 
 
-[有关 LUIS 应用程序，请参阅 API v2 到 V3 迁移指南](luis-migration-api-v3.md)
+请参阅[适用于 LUIS 应用的 API v2 到 v3 迁移指南](luis-migration-api-v3.md)
 
-## <a name="build-2019-conference-announcements"></a>生成2019会议公告
+## <a name="build-2019-conference-announcements"></a>Build 2019 大会公告
 
-以下功能已在生成2019会议上发布：
+以下功能是在 Build 2019 大会上发布的：
 
-* [V3 API 迁移指南预览](luis-migration-api-v3.md)
+* [V3 API 预览版迁移指南](luis-migration-api-v3.md)
 * [改进的分析仪表板](luis-how-to-use-dashboard.md)
-* [改进的预构建域](luis-reference-prebuilt-domains.md) 
+* [改进的预生成域](luis-reference-prebuilt-domains.md) 
 * [动态列表实体](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [外部实体](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 

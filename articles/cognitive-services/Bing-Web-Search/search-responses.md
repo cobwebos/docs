@@ -1,7 +1,7 @@
 ---
 title: 必应 Web 搜索 API 响应结构和答案类型
 titleSuffix: Azure Cognitive Services
-description: 在发送必应 Web 搜索搜索请求时，它将在响应正文中返回一个 `SearchResponse` 对象。
+description: 向必应 Web 搜索发送搜索请求时，它会在响应正文中返回一个 `SearchResponse` 对象。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,15 +12,15 @@ ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 95ebfaef863a1fa05e8a5d3b46fca9659c61f6b7
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74110614"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>必应 Web 搜索 API 响应结构和答案类型  
 
-向必应 Web 搜索发送搜索请求时，它会在响应正文中返回一个 [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) 对象。 针对必应确定与查询相关的每个应答，该对象包含一个字段。 本示例演示当必应返回所有应答时的响应对象：
+当您向必应 Web 搜索发送搜索请求时，[`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse)它将返回响应正文中的对象。 针对必应确定与查询相关的每个应答，该对象包含一个字段。 本示例演示当必应返回所有应答时的响应对象：
 
 ```json
 {
@@ -38,7 +38,7 @@ ms.locfileid: "74110614"
 }, ...
 ```
 
-通常，必应 Web 搜索返回一部分应答。 例如，如果查询字词是 *sailing dinghies*，则响应可能包含 `webPages`、`images` 和 `rankingResponse`。 除非使用了 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) 来筛选出网页，否则响应始终包含 `webpages` 和 `rankingResponse` 应答。
+通常，必应 Web 搜索返回一部分应答。 例如，如果查询术语*正在航行，* 则响应可能包括`webPages`和`images`。 `rankingResponse` 除非使用了 [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) 来筛选出网页，否则响应始终包含 `webpages` 和 `rankingResponse` 应答。
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -222,9 +222,9 @@ The following shows an example of how you might display articles in a search res
 
 如果用户输入数学表达式或单位转换查询，响应可能包含 [Computation](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#computation) 应答。 `computation` 应答包含规范化表达式及其结果。
 
-单位转换查询是将一个单位转换为另一个单位的查询。 例如，“10 米是多少英尺？”或“1/4 杯有多少汤匙？”
+单位转换查询是将一个单位转换为另一个单位的查询。 例如，“10 米是多少英尺？”或“1/4 杯有多少汤匙？”****
 
-下面显示了“10 米是多少英尺？”的 `computation` 应答
+下面显示了“10 米是多少英尺？”的 `computation` 应答**
 
 ```json
 "computation": {
@@ -290,31 +290,31 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 数学表达式可包含以下符号：
 
-|符号|说明|
+|符号|描述|
 |------------|-----------------|
 |+|加|
 |-|减|
 |/|除|
 |*|乘|
-|^|幂|
+|^|电源|
 |!|阶乘|
-|。|小数|
+|.|Decimal|
 |()|优先级分组|
 |[]|函数|
 
 数学表达式可包含以下常量：
 
-|符号|说明|
+|符号|描述|
 |------------|-----------------|
 |Pi|3.14159...|
-|Degree|Degree|
+|度|度|
 |i|虚数|
 |e|e，2.71828...|
 |GoldenRatio|黄金比率，1.61803...|
 
 数学表达式可包含以下函数：
 
-|符号|说明|
+|符号|描述|
 |------------|-----------------|
 |排序|平方根|
 |Sin[x]、Cos[x]、Tan[x]<br />Csc[x]、Sec[x]、Cot[x]|三角函数（以弧度为单位的参数）|
@@ -328,11 +328,11 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 ## <a name="timezone-answer"></a>TimeZone 应答
 
-如果用户输入时间或日期查询，响应可能包含 [TimeZone](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) 应答。 此应答支持隐式或显式查询。 隐式查询（例如，“现在是几点”）基于用户的位置返回本地时间。 显式查询（例如，“西雅图现在是几点”）返回华盛顿州西雅图的本地时间。
+如果用户输入时间或日期查询，响应可能包含 [TimeZone](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) 应答。 此应答支持隐式或显式查询。 隐式查询（例如，“现在是几点”）基于用户的位置返回本地时间。** 显式查询（例如，“西雅图现在是几点”）返回华盛顿州西雅图的本地时间。**
 
 `timeZone` 应答提供位置的名称、指定位置的当前 UTC 日期和时间，以及 UTC 时差。 如果位置边界处于多个时区内，则该应答包含该边界内所有时区的当前 UTC 日期和时间。 例如，由于佛罗里达州跨两个时区，因此该应答包含这两个时区的本地日期和时间。  
 
-如果查询请求省/市/自治区或国家/地区的时间，必应确定该位置的地理边界内的主要城市，并将其返回 `primaryCityTime` 字段。 如果边界包含多个时区，则在 `otherCityTimes` 字段中返回剩余的时区。
+如果查询请求州或国家/地区的时间，必应确定位置地理边界内的主城市并在`primaryCityTime`字段中返回它。 如果边界包含多个时区，则在 `otherCityTimes` 字段中返回剩余的时区。
 
 下面显示了返回 `timeZone` 应答的示例查询。
 
@@ -445,9 +445,9 @@ Query: What time is it in the U.S.
 
 不过，通过 JavaScript 调用必应 Web 搜索 API 时，浏览器内置的安全功能 (CORS) 可能会阻止访问这些响应头的值。
 
-若要访问响应头，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应中有 `Access-Control-Expose-Headers` 标头，可以将响应头列入允许列表，让其可供 JavaScript 访问。
+若要访问响应头，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应中有 `Access-Control-Expose-Headers` 头，可以将响应头列入允许列表，让响应头可供 JavaScript 访问。
 
-可以轻松安装 CORS 代理，使我们的[教程应用](tutorial-bing-web-search-single-page-app.md)可以访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
+CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-web-search-single-page-app.md)访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
 
     npm install -g cors-proxy-server
 
@@ -477,6 +477,6 @@ Query: What time is it in the U.S.
 
 * 查看[请求限制](throttling-requests.md)文档。  
 
-## <a name="see-also"></a>另请参阅  
+## <a name="see-also"></a>请参阅  
 
 * [必应 Web 搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

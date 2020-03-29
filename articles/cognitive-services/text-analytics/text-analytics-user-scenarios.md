@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219243"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>文本分析 API 的示例用户方案
@@ -45,11 +45,11 @@ ms.locfileid: "79219243"
 
 ![描述如何使用关键短语提取在社交媒体上监视产品和公司反馈的插图](media/use-cases/social-feed.svg)
 
-## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>对包含敏感信息的文档进行分类和密文
+## <a name="classify-and-redact-documents-that-have-sensitive-information"></a>对具有敏感信息的文档进行分类和修订
 
-使用命名实体识别识别文档中的个人信息和敏感信息。 使用数据对文档进行分类或对它们进行标记，以便可以安全地共享它们。
+使用命名实体识别识别识别文档中的个人和敏感信息。 使用数据对文档进行分类或对其进行编辑，以便可以安全地共享文档。
 
-![描述如何使用 NER 检测个人信息以及对文档进行分类和密文的图像](media/use-cases/sensitive-docs.jpg)
+![描述如何使用 NER 检测个人信息以及对文档进行分类和编辑的图像](media/use-cases/sensitive-docs.jpg)
 
 ## <a name="next-steps"></a>后续步骤
 

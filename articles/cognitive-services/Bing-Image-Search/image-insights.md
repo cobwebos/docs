@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.openlocfilehash: f84c6329c2a4dd0a9ad9e81f3700c9e31de95a2a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68883434"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>使用必应图像搜索 API 获取图像见解
@@ -43,7 +43,7 @@ ms.locfileid: "68883434"
 
 接下来，调用“图像详细信息”终结点，并将 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 查询参数设置为 `imageInsightsToken` 中的令牌。  
 
-若要指定需获取的见解，请设置 `modules` 查询参数。 若要获取所有见解，请将 `modules` 设置为 `All`。 若只获取标题和集合见解，请将 `modules` 设置为 `Caption%2CCollection`。 如需可能的见解的完整列表，请参阅 [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)。 并不为所有图像提供所有见解。 响应包括请求的所有见解（如果提供）。
+若要指定需获取的见解，请设置 `modules` 查询参数。 若要获取所有见解，请将 `modules` 设置为 `All`。 若只获取标题和集合见解，请将 `modules` 设置为 `Caption%2CCollection`。 如需可能的见解的完整列表，请参阅 [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)。 并不为所有图像提供所有见解。 响应包括你请求的所有见解（如果可用）。
 
 以下示例请求提供给上一图像的所有见解。
 
@@ -191,7 +191,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```  
 
-以下示例演示对上一请求的响应。 由于图像包含两个人，响应会标识每个人的区域。 在此示例中，系统认为这两人属于 CelebrityAnnotations 和 CelebRecognitionAnnotations 组。 必应列出每个组中的人时，其依据是该人与原始图像中的人匹配的可能性。 列表按置信度以降序方式排列。 就匹配的正确性来说，CelebRecognitionAnnotations 组提供的置信度最高。  
+下面的示例展示了对上一请求的响应。 由于图像包含两个人，响应会标识每个人的区域。 在此示例中，系统认为这两人属于 CelebrityAnnotations 和 CelebRecognitionAnnotations 组。 必应列出每个组中的人时，其依据是该人与原始图像中的人匹配的可能性。 列表按置信度以降序方式排列。 就匹配的正确性来说，CelebRecognitionAnnotations 组提供的置信度最高。  
 
 ```json
 {
@@ -216,10 +216,10 @@ Host: api.cognitive.microsoft.com
 
 矩形的值是相对于原始图像的宽和高的，其范围为 0.0 到 1.0。 例如，如果图像为 300x200，该区域左上角所在的点为 (10, 20)，右下角所在的点为 (290, 150)，则规范化的矩形的指标如下：  
 
--   左：10/300 = 0.03333...  
--   上：20/200 = 0.1  
--   右：290/300 = 0.9667...  
--   下：150/200 = 0.75  
+-   左：10 / 300 = 0.03333...  
+-   上：20 / 200 = 0.1  
+-   右：290 / 300 = 0.9667...  
+-   下：150 / 200 = 0.75  
 
 可以在后续的见解调用中使用必应返回的此区域。 例如，可以使用此区域来获取在视觉上与识别的实体类似的图像。 有关详细信息，请参阅“裁剪图像”以便将其用于“视觉类似”模块和“实体识别”模块。 下面说明了如何在区域字段和将要用于裁剪图像的查询字符串之间进行映射。  
 
@@ -245,7 +245,7 @@ Host: api.cognitive.microsoft.com
 ```
 
 
-以下示例演示对上一请求的响应。  
+下面的示例展示了对上一请求的响应。  
 
 ```json
 {
@@ -374,7 +374,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="finding-visually-similar-products"></a>查找视觉类似的产品  
 
-若要查找包含与在原始图像中找到的产品外观相似的产品的图像, 请将 "[模块](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)" 查询参数设置为 "SimilarProducts"。  
+要查找包含视觉上与原始映像中找到的产品类似的产品的图像，请将[模块](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#modulesrequested)查询参数设置为"相似产品"。  
 
 以下请求演示如何获取视觉类似产品的图像。 此请求使用 [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken) 查询参数来标识在前面的一个请求中返回的原始图像。 若要提高相关性，则应包括用户的查询字符串。  
 
@@ -388,7 +388,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-以下示例演示对上一请求的响应。 响应包含一个类似产品的图像，并指出多少商家在线提供此产品、是否有产品评级，以及找到的最低价格（参见 `aggregateOffer` 字段）。  
+下面的示例展示了对上一请求的响应。 响应包含一个类似产品的图像，并指出多少商家在线提供此产品、是否有产品评级，以及找到的最低价格（参见 `aggregateOffer` 字段）。  
 
 ```json
 {
@@ -420,7 +420,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-以下示例是对上一请求的响应。  
+下面是对上一请求的响应。  
 
 ```json  
 {  

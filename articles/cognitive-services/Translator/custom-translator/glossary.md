@@ -1,7 +1,7 @@
 ---
 title: 词汇表 - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 自定义转换器术语表可帮助您了解在学习如何使用该服务时，文章中使用的术语。
+description: 自定义翻译术语表将帮助您了解如何使用服务时了解文章中使用的术语。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
 ms.openlocfilehash: caf4a4b038cab81333ca78cd355bb2033891da00
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73888145"
 ---
 # <a name="custom-translator-glossary"></a>自定义翻译词汇表

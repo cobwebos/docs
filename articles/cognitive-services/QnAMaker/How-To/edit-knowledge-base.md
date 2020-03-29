@@ -1,109 +1,79 @@
 ---
 title: 编辑知识库 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的内容。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: b5ee7f60eab0349378767473c9c80f035a65c9a5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/19/2020
+ms.openlocfilehash: 223ad3a607adc20bbe608598da9742d56788b2c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79220728"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131659"
 ---
-# <a name="edit-a-knowledge-base-in-qna-maker"></a>在 QnA Maker 中编辑知识库
+# <a name="edit-qna-sets-in-your-knowledge-base"></a>在知识库中编辑 QnA 集
 
 QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的内容。
 
-<a name="add-datasource"></a>
+QnA 集从数据源（如文件或 URL）添加，或添加为编辑源。 编辑源指示 QnA 集已手动添加到 QnA 门户中。 所有 QnA 集都可用于编辑。
 
-## <a name="edit-your-knowledge-base-content"></a>编辑知识库内容
+## <a name="add-an-editorial-qna-set"></a>添加编辑 QnA 集
+1. 登录到[QnA 门户](https://www.qnamaker.ai/)，然后选择知识库以将 QnA 集添加到 。
+1. 在知识库的**EDIT**页上，选择 **"添加 QnA 集**"以添加新的 QnA 集。
 
-1.  在顶部导航栏中选择“我的知识库”。 
+1. 在新的 QnA 设置行中，添加所需的**问答**字段 **。** 其他字段是可选的。 可以随时更改所有字段。
 
-    你可以按“上次修改时间”的降序排序，查看你创建或共享的所有服务。
+1. 可以选择添加**备用短语**。 替代措辞是与原始问题有显著差异但应提供相同答案的任何类型的问题。
 
-    ![我的知识库](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+    当您的知识库发布，并且您打开了主动学习时，QnA Maker 会收集备用短语选项，供您接受。 选择这些选项是为了提高预测精度。
 
-1. 选择特定的知识库以对其进行编辑。
- 
-1. 选择“设置”。 可以在此处编辑必填字段“服务名称”。
-  
-    |目标|操作|
-    |--|--|
-    |添加 URL|可以通过单击“管理知识库”- >“+ 添加 URL”链接，添加新的 URL，以便向知识库添加新的常见问题解答内容。|
-    |删除 URL|可以通过选择删除图标（垃圾桶）来删除现有 URL。|
-    |刷新内容|如果希望知识库抓取现有 URL 的最新内容，请选中“刷新”复选框。 这将更新包含最新 URL 内容一次的知识库。 这不会设置定期更新计划。|
-    |添加文件|可以通过选择“管理知识库”并选择“+ 添加文件”将受支持的文件文档添加为知识库的一部分。|
-    |Import|您还可以通过选择 "**导入知识库**" 按钮导入任何现有知识库。 |
-    |更新|知识库的更新取决于在创建与知识库关联的 QnA Maker 服务时使用的**管理定价层**。 如果需要，还可以从 Azure 门户更新管理层。
+1. 可以选择添加**元数据**。 要查看元数据，请在上下文菜单中选择 **"查看"选项**。 元数据提供客户端应用程序（如聊天机器人）提供答案的筛选器。
 
-1. 完成对知识库的更改后，选择页面右上角的“保存并训练”以保留更改。    
+1. 或者，添加**后续提示**。 后续提示为客户端应用程序提供了其他对话路径，以便向用户演示。
 
-    ![保存和训练](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+1. 选择 **"保存"并训练**以查看预测，包括新的 QnA 集。
 
-    >[!CAUTION]
-    >如果在选择“保存并训练”前离开页面，则所有更改都将丢失。
+## <a name="edit-a-qna-set"></a>编辑 QnA 集
 
-## <a name="add-a-qna-pair"></a>添加 QnA 对
+可以编辑任何 QnA 集中的任何字段，而不考虑原始数据源。 由于当前 **"视图选项**"设置（位于上下文工具栏中），某些字段可能不可见。
 
-在 "**编辑**" 页上，选择 "**添加 QnA 对**" 以将新行添加到知识库表。
+## <a name="delete-a-qna-set"></a>删除 QnA 集
 
-![添加 QnA 对](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
+要删除 QnA，请单击 QnA 行最右侧的**** 删除图标。 这是一项永久性操作。 无法撤消。 请考虑在删除集之前从 **"发布"** 页导出知识库。
 
-## <a name="delete-a-qna-pair"></a>删除 QnA 对
+![删除 QnA 集](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
-要删除 QnA，请单击 QnA 行最右侧的删除图标。 这是一项永久性操作。 无法撤消。 请考虑在删除对之前从“发布”页面导出知识库。 
+## <a name="find-the-qna-set-id"></a>查找 QnA 设置 ID
 
-![删除 QnA 对](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+如果需要查找 QnA 集 ID，可以在以下两个位置找到它：
+
+* 将鼠标悬停在您感兴趣的 QnA 设置行上的删除图标上。 悬停文本包括 QnA 设置 ID。
+* 导出知识库。 知识库中的每个 QnA 集都包括 QnA 集 ID。
 
 ## <a name="add-alternate-questions"></a>添加替代问题
 
-向现有 QnA 对添加替代问题，以提高与用户查询匹配的可能性。
+将备用问题添加到现有 QnA 集，以提高与用户查询匹配的可能性。
 
 ![添加替代问题](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
+## <a name="linking-qna-sets"></a>链接 QnA 集
+
+链接 QnA 集提供[后续提示](multiturn-conversation.md)。 这是在知识库级别管理的 QnA 集之间的逻辑连接。 您可以在 QnA Maker 门户中编辑后续提示。
+
+无法在答案的元数据中链接 QnA 集。
+
 ## <a name="add-metadata"></a>添加元数据
 
-首先选择 "**查看选项**"，然后选择 "**显示元数据**"，添加元数据对。 这会显示元数据列。 接下来，选择 **+** 签名以添加元数据对。 此对包含一个键和一个值。
+通过首先选择 **"查看"选项**，然后选择 **"显示元数据**"来添加元数据集。 这将显示元数据列。 接下来，选择添加**+** 元数据集的符号。 此集由一个键和一个值组成。
+
+## <a name="save-changes-to-the-qna-sets"></a>保存对 QnA 集的更改
+
+定期选择 **"保存"并在**进行编辑后进行训练，以避免丢失更改。
 
 ![添加元数据](../media/qnamaker-how-to-edit-kb/add-metadata.png)
-
-> [!TIP]
-> 确保在编辑后定期保存并定型知识库，以避免丢失更改。
-
-## <a name="manage-large-knowledge-bases"></a>管理大型知识库
-
-* **数据源组**： qna 按从中提取它们的数据源进行分组。 你可以展开或折叠数据源。
-
-    ![使用 QnA Maker 数据源栏来折叠和展开数据源问题和解答](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
-
-* **搜索知识库**：您可以通过在知识库表顶部的文本框中键入来搜索知识库。 单击 Enter 以搜索问题、答案或元数据内容。 单击 X 图标以删除搜索筛选器。
-
-    ![使用问题和解答上方的 QnA Maker 搜索框可将视图缩小为仅筛选匹配项](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
-
-* **分页**：在数据源中快速移动以管理大型知识库
-
-    ![使用问题和解答上方的 QnA Maker 分页功能可浏览问题和解答页面](../media/qnamaker-how-to-edit-kb/pagination.png)
-
-## <a name="delete-knowledge-bases"></a>删除知识库
-
-删除知识库 (KB) 是一项永久性操作， 无法撤消。 删除知识库之前，应该从 QnA Maker 门户的“设置”页导出知识库。 
-
-如果你与[协作者](collaborate-knowledge-base.md)共享知识库，然后将该知识库删除，则每个人都会失去对该知识库的访问权限。 
-
-## <a name="delete-azure-resources"></a>删除 Azure 资源 
-
-如果你删除了用于 QnA Maker 知识库的任何 Azure 资源，则知识库将不再工作。 在删除任何资源之前，请务必从“设置”页导出知识库。 
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [针对知识库进行协作](./collaborate-knowledge-base.md)
+
+* [管理 QnA 制造商使用的 Azure 资源](set-up-qnamaker-service-azure.md)

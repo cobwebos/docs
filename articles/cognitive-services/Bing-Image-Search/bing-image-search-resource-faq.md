@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 6841e573446103466e2719797da9e4161b70b5a6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68881696"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>有关必应图像搜索 API 的常见问题解答 (FAQ)
@@ -35,7 +35,7 @@ ms.locfileid: "68881696"
 
 不过，通过 JavaScript 调用必应图像搜索 API 时，浏览器内置的安全功能 (CORS) 可能会阻止访问这些标头的值。
 
-若要访问这些标头，可以通过 CORS 代理发出必应图像搜索 API 请求。 此类代理的响应中有 `Access-Control-Expose-Headers` 标头，可以将响应头列入允许列表，让其可供 JavaScript 访问。
+若要访问这些标头，可以通过 CORS 代理发出必应图像搜索 API 请求。 此类代理的响应中有 `Access-Control-Expose-Headers` 头，可以将响应头列入允许列表，让响应头可供 JavaScript 访问。
 
 CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-image-search-single-page-app.md)访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
 
@@ -65,4 +65,4 @@ CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-image-s
 
 ## <a name="see-also"></a>请参阅
 
- [堆栈溢出：认知服务](https://stackoverflow.com/questions/tagged/bing-api)
+ [Stack Overflow：认知服务](https://stackoverflow.com/questions/tagged/bing-api)

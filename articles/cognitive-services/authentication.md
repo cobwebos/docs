@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
 ms.openlocfilehash: 1c13c2cc4d4e562d3512de90338d874091dfeef6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74423947"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
@@ -23,11 +23,11 @@ ms.locfileid: "74423947"
 * [使用单服务订阅密钥进行身份验证](#authenticate-with-a-single-service-subscription-key)
 * [使用多服务订阅密钥进行身份验证](#authenticate-with-a-multi-service-subscription-key)
 * [使用令牌进行身份验证](#authenticate-with-an-authentication-token)
-* [在 Azure Active Directory （AAD）中进行身份验证](#authenticate-with-azure-active-directory)
+* [使用 Azure 活动目录 （AAD） 进行身份验证](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>先决条件
 
-在发出请求之前，需要具有 Azure 帐户和 Azure 认知服务订阅。 如果已有帐户，请继续并跳到下一节。 如果你没有帐户，可以在几分钟内完成设置：[为 Azure 创建认知服务帐户](cognitive-services-apis-create-account.md)。
+在发出请求之前，需要具有 Azure 帐户和 Azure 认知服务订阅。 如果已有帐户，请继续并跳到下一节。 如果您没有帐户，我们有一个指南，让您在几分钟内进行设置：[为 Azure 创建认知服务帐户](cognitive-services-apis-create-account.md)。
 
 创建帐户或激活[免费试用版](https://azure.microsoft.com/try/cognitive-services/my-apis)后，可以从[Azure 门户](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)获取订阅密钥。
 
@@ -35,7 +35,7 @@ ms.locfileid: "74423947"
 
 让我们快速查看可用于 Azure 认知服务的身份验证标头。
 
-| Header | 说明 |
+| 标头 | 描述 |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | 使用此标头通过特定服务订阅密钥或多服务订阅密钥进行身份验证。 |
 | Ocp-Apim-Subscription-Region | 只有在使用具有[文本翻译 API](./Translator/reference/v3-0-reference.md) 的多服务订阅密钥时才需要此标头。 使用此标头指定订阅区域。 |
@@ -66,7 +66,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>使用多服务订阅密钥进行身份验证
 
 >[!WARNING]
-> 目前，以下服务**不**支持多服务密钥： QnA Maker、语音服务、自定义视觉和异常检测程序。
+> 此时，这些服务**不支持**多服务密钥：QnA 制造商、语音服务、自定义视觉和异常检测器。
 
 此选项仍使用订阅密钥对请求进行身份验证。 主要区别在于订阅密钥未绑定到特定服务，而单个密钥可用于对多个认知服务的请求进行身份验证。 有关区域可用性、支持的功能和定价的信息，请参阅[认知服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 
@@ -119,7 +119,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 * 语音服务：文本到语音 REST API
 
 >[!NOTE]
-> QnA Maker 也使用授权标头，但需要终结点密钥。 有关详细信息，请参阅[QnA Maker：从知识库获取答案](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md)。
+> QnA Maker 也使用授权标头，但需要终结点密钥。 有关详细信息，请参阅[QnA 制造商：从知识库获取答案](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md)。
 
 >[!WARNING]
 > 支持身份验证令牌的服务可能会随时间而变化，请在使用此身份验证方法之前检查服务的 API 参考。

@@ -1,7 +1,7 @@
 ---
 title: 必应新闻搜索终结点
 titleSuffix: Azure Cognitive Services
-description: 本文提供新闻搜索 API 终结点的摘要;新闻、热门资讯和趋势新闻。
+description: 本文提供了新闻搜索 API 终结点的摘要;新闻、顶级新闻和趋势新闻。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: dc7d16fe809e3e324f384b0d9e088dd7e6ab261c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74111485"
 ---
 # <a name="bing-news-search-api-endpoints"></a>必应新闻搜索 API 终结点
 
-“新闻搜索 API”返回新闻文章、网页、图像、视频和[实体](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)。 实体包含有关人员、地点或主题的摘要信息。
+****“新闻搜索 API”返回新闻文章、网页、图像、视频和[实体](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)。 实体包含有关人员、地点或主题的摘要信息。
 
 ## <a name="endpoints"></a>终结点
 
@@ -39,7 +39,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-按类别返回热门新闻项。 可以使用 `category=business`、`category=sports` 或 `category=entertainment` 专门请求热门商业、体育或娱乐文章。  `category` 参数只能与 `/news` URL 一起使用。 指定类别有一些正式要求；请参阅`category`查询参数[文档中的 ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters)。 通过 URL 编码搜索术语发送查询并将其附加到 `q=""` 参数。 有关可用性，请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-endpoint)。
+按类别返回热门新闻项。 可以使用 `category=business`、`category=sports` 或 `category=entertainment` 专门请求热门商业、体育或娱乐文章。 `category` 参数只能与 `/news` URL 结合使用。 指定类别有一些正式要求；请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters)文档中的 `category`。 通过 URL 编码搜索术语发送查询并将其附加到 `q=""` 参数。 有关可用性，请参阅[支持的国家/地区和市场](language-support.md#supported-markets-for-news-endpoint)。
 
 ### <a name="trending-news-topics"></a>热门新闻主题 
 

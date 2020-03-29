@@ -1,5 +1,5 @@
 ---
-title: 如何执行批处理测试-LUIS
+title: 如何执行批处理测试 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用语言理解 (LUIS) 批处理测试集来查找意向和实体不正确的话语。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: bfef7eae7158a05b09a3534e8fb44335333d8cf1
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73904358"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
@@ -28,21 +28,21 @@ ms.locfileid: "73904358"
 
 ## <a name="import-a-dataset-file-for-batch-testing"></a>导入数据集文件以进行批处理测试
 
-1. 在顶栏上选择“测试”，然后选择“批处理测试面板”。
+1. 在顶栏上选择“测试”，然后选择“批处理测试面板”********。
 
     ![批处理测试链接](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. 选择“导入数据集”。 此时会显示“导入新数据集”对话框。 选择“选择文件”并找到具有正确 **JSON 格式**的 JSON 文件，该文件包含的待测试话语数量不超过 1,000[](luis-concept-batch-test.md#batch-file-format)。
+2. 选择“导入数据集”****。 此时会显示“导入新数据集”对话框****。 选择“选择文件”并找到具有正确 [JSON 格式](luis-concept-batch-test.md#batch-file-format)的 JSON 文件，该文件包含的待测试话语数量不超过 1,000******。
 
     浏览器顶部的红色通知栏中将报告导入错误。 导入出现错误时，不会创建任何数据集。 有关详细信息，请参阅[常见错误](luis-concept-batch-test.md#common-errors-importing-a-batch)。
 
-3. 在“数据集名称”字段中，输入数据集文件的名称。 数据集文件包括一个“陈述数组”，其中包括已标记的意向和实体。 请查看[示例批处理文件](luis-concept-batch-test.md#batch-file-format)，了解相应语法。 
+3. 在“数据集名称”字段中，输入数据集文件的名称****。 数据集文件包括一个“陈述数组”，其中包括已标记的意向和实体********。 请查看[示例批处理文件](luis-concept-batch-test.md#batch-file-format)，了解相应语法。 
 
-4. 选择“完成”。 数据集文件随即完成添加。
+4. 选择 **"完成**"。 数据集文件随即完成添加。
 
 ## <a name="run-rename-export-or-delete-dataset"></a>运行、重命名、导出或删除数据集
 
-若要运行、重命名、导出或删除数据集，请点击数据集行末尾的省略号 (...) 按钮。
+若要运行、重命名、导出或删除数据集，请点击数据集行末尾的省略号 (...) 按钮******。
 
 ![数据集操作](./media/luis-how-to-batch-test/batch-testing-options.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "73904358"
 
 ## <a name="view-batch-test-results"></a>查看批处理测试结果 
 
-若要查看批处理测试结果，请选择“查看结果”。
+若要查看批处理测试结果，请选择“查看结果”****。
 
 ![批处理测试结果](./media/luis-how-to-batch-test/run-test-results.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "73904358"
 
 ## <a name="view-section-data"></a>查看分区数据
 
-在此四分区图表中，选择分区名称，例如在图表右上角的“误报”。 该分区中的所有陈述都会显示在该图表下方的列表中。 
+在此四分区图表中，选择分区名称，例如在图表右上角的“误报”****。 该分区中的所有陈述都会显示在该图表下方的列表中。 
 
 ![按照分区所选的陈述](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
 

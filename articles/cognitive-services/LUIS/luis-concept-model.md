@@ -1,7 +1,7 @@
 ---
-title: 模型设计-LUIS
+title: 使用模型进行设计 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 语言理解提供多种类型的模型。 某些模型可以用多种方式使用。
+description: 语言理解提供多种类型的模型。 某些模型可以通过多种方式使用。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,148 +12,148 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: d721ceb25b3ce2408563a0bed16457d05affe7b4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219991"
 ---
-# <a name="design-with-intent-and-entity-models"></a>设计意向模型和实体模型 
+# <a name="design-with-intent-and-entity-models"></a>使用意向和实体模型进行设计 
 
-语言理解提供多种类型的模型。 某些模型可以用多种方式使用。 
+语言理解提供多种类型的模型。 某些模型可以通过多种方式使用。 
 
-## <a name="v3-authoring-uses-machine-teaching"></a>V3 创作使用机器教学
+## <a name="v3-authoring-uses-machine-teaching"></a>V3 Authoring 使用机器教学
 
-LUIS 使用户可以轻松地向计算机讲授概念。 然后，该计算机可以生成可用于对智能应用程序进行智能应用程序的模型（功能，如分类器和提取器的概念）。 尽管 LUIS 由机器学习提供支持，但不需要了解机器学习。 相反，machine 老师会显示概念的正面和负面示例，并说明如何使用其他相关概念对概念进行建模，从而将概念传达给 LUIS。 教师还可以通过识别和修复预测错误，以交互方式改进 LUIS 的模型。 
+LUIS 可让用户轻松地向机器传授概念。 然后，机器可以生成模型（分类器和提取器等概念的功能近似性），用于为智能应用程序赋能。 尽管 LUIS 由机器学习赋能，但使用 LUIS 却不必要熟悉机器学习。 机器教学器通过显示概念的积极和消极示例，并解释如何使用其他相关概念来为某个概念建模，将概念传达给 LUIS。 教学器还能以交互方式改善 LUIS 的模型，因为它可以识别和修复预测错误。 
 
-## <a name="v3-authoring-model-decomposition"></a>V3 创作模型分解
+## <a name="v3-authoring-model-decomposition"></a>V3 Authoring 模型分解
 
-LUIS 支持通过 V3 创作 Api 进行_模型分解_，并将模型分解为更小的部分。 这样一来，您就可以在构造和预测各个部分的方式上自信地构建模型。
+LUIS 支持使用 V3 创作 API 的模型分解，以便将模型分解成较小组成部分。__ 这样，你便可以生成自己的模型，并有把握地构造和预测各个组成部分。
 
-模型分解包含以下部分：
+模型分解包括以下组成部分：
 
-* [调色](#intents-classify-utterances)
-    * 功能提供的[描述符](#descriptors-are-features)
-* [计算机学习的实体](#machine-learned-entities)
-    * [子组件](#entity-subcomponents-help-extract-data)（也是机器学习的实体）
-        * 功能提供的[描述符](#descriptors-are-features) 
-        * 非计算机获知的实体（如正则表达式和列表）提供的[约束](#constraints-are-text-rules)
+* [意图](#intents-classify-utterances)
+    * 特征提供的[描述符](#descriptors-are-features)
+* [机器学习实体](#machine-learned-entities)
+    * [子组件](#entity-subcomponents-help-extract-data)（也是机器学习实体）
+        * 特征提供的[描述符](#descriptors-are-features) 
+        * 正则表达式和列表等非机器学习实体提供的[约束](#constraints-are-text-rules)
 
-## <a name="v2-authoring-models"></a>V2 创作模型
+## <a name="v2-authoring-models"></a>V2 Authoring 模型
 
-LUIS 支持包含 V2 创作 Api 的复合实体。 这会提供类似的模型分解，但与 V3 模型分解不同。 建议的模型体系结构将移到 V3 创作 Api 中的模型分解。 
+LUIS 支持使用 V2 创作 API 的复合实体。 此功能提供类似的模型分解，但不同于 V3 模型分解。 建议的模型体系结构是迁移到 V3 创作 API 中的模型分解。 
 
-## <a name="intents-classify-utterances"></a>对最谈话进行分类
+## <a name="intents-classify-utterances"></a>意向将言语分类
 
-目的是对示例最谈话进行分类，以教授 LUIS 的意图。 目的中的示例最谈话用作查询文本的正示例。 在所有其他方面，相同的最谈话用作负的示例。
+意向将示例言语分类，以便向 LUIS 传授意向。 意向中的示例言语用作言语的积极示例。 相同的这些言语用作所有其他意向中的消极示例。
 
-请考虑一个应用程序，该应用程序需要确定用户对书籍的意图以及需要客户发运地址的应用程序。 此应用有两种方法： `OrderBook` 和 `ShippingLocation`。
+假设某个应用需要确定用户的预订意向，另一个应用需要客户的交货地址。 此应用具有两个意向：`OrderBook` 和 `ShippingLocation`。
 
-下面的查询文本是 `OrderBook` 意向的**正示例**和 `ShippingLocation` 和 `None` 意向的**消极示例**： 
+以下言语是 `OrderBook` 意向的**积极示例**，以及 `ShippingLocation` 和 `None` 意向的**消极示例**： 
 
 `Buy the top-rated book on bot architecture.`
 
-设计良好的方法（及其示例最谈话）的结果是一项高意向预测。 
+合理设计意向及其示例言语可以提高意向预测准确度。 
 
 ## <a name="entities-extract-data"></a>实体提取数据
 
-实体表示你要从查询文本中提取的数据单元。 
+实体表示要从言语中提取的数据单位。 
 
-### <a name="machine-learned-entities"></a>计算机学习的实体
+### <a name="machine-learned-entities"></a>机器学习实体
 
-计算机学习的实体是包含子组件（也是机器学习的实体）的顶级实体。 
+机器学习实体是包含子组件（也是机器学习实体）的顶级实体。 
 
-**使用机器学习的实体**：
+**使用机器学习实体**：
 
 * 当客户端应用程序需要子组件时
 * 帮助机器学习算法分解实体
 
-每个子组件都可以：
+每个子组件可以包含：
 
-* 子
+* 子组件
 * 约束（正则表达式实体或列表实体）
-* 描述符（功能，如短语列表） 
+* 描述符（短语列表等特征） 
 
-机器学习实体的一个示例是为飞机票据提供订单。 从概念上讲，这是包含很多小型数据单元的单个事务，例如日期、时间、座位数量、座位类型（如第一类或教练、来源位置、目的地位置和餐费选项）。
+机票预订就是机器学习实体的一个例子。 从概念上讲，机票预测是包含许多较小数据单位（例如日期、时间、座位数、座位类型（头等舱或经济舱）、出发地、目的地和餐饮选项）的单笔交易。
 
 
-### <a name="entity-subcomponents-help-extract-data"></a>实体子组件有助于提取数据
+### <a name="entity-subcomponents-help-extract-data"></a>实体子组件帮助提取数据
 
-子组件是计算机获知的父实体内的计算机学习的子实体。 
+子组件是机器学习父实体中的机器学习子实体。 
 
 **使用子组件可以**：
 
-* 分解计算机学习的实体（父实体）的各个部分。
+* 分解机器学习实体（父实体）的各个组成部分。
 
-下面表示了一个机器学习的实体，其中包含所有这些单独的数据段：
+下面是包含所有这些独立数据片段的机器学习实体：
 
-* TravelOrder （机器学习的实体）
-    * DateTime （预生成的 datetimeV2）
-    * 位置（计算机学习的实体）
-        * 源（通过上下文找到的角色，如 `from`）
-        * 目标（通过上下文找到的角色，如 `to`）
-    * 席位（机器学习的实体）
-        * 数量（预建编号）
-        * 质量（带有短语列表描述符的计算机学习的实体）
-    * 餐费（具有作为食品选项的列表实体约束的计算机学习的实体）
+* TravelOrder（机器学习实体）
+    * DateTime（预生成的 datetimeV2）
+    * Location（机器学习实体）
+        * Origin（通过上下文找到的角色，例如 `from`）
+        * Destination（通过上下文找到的角色，例如 `to`）
+    * Seating（机器学习实体）
+        * Quantity（预生成的数字）
+        * Quality（机器学习实体，包含短语列表的描述符）
+    * Meals（机器学习实体，包含食品选项列表实体的约束）
 
-其中的某些数据（例如，源位置和目标位置）应从查询文本的上下文中获知，可能会用 `from` 和 `to`这样的措辞。 可以用精确的字符串匹配项（`Vegan`）或预生成的实体（geographyV2 的 `Seattle` 和 `Cairo`）来提取数据的其他部分。 
+其中的某些数据（例如，出发地和目的地）应从言语的上下文（也许是类似于 `from` 和 `to` 的单词）中习得。 其他数据部分可以通过精确字符串匹配 (`Vegan`) 或预生成的实体（`Seattle` 和 `Cairo` 的 geographyV2）来提取。 
 
-您可以通过所选的模型以及配置数据的方式来设计如何匹配和提取数据。
+应该设计好由哪些所选模型匹配和提取数据，以及如何配置这些模型。
 
 ### <a name="constraints-are-text-rules"></a>约束是文本规则
 
-约束是文本匹配规则，由非计算机学习的实体（如正则表达式实体或列表实体）提供。 约束在预测时间应用，以限制预测并提供客户端应用程序所需的实体解析。 在创作子组件时定义这些规则。 
+约束是正则表达式实体或列表实体等非机器学习实体提供的文本匹配规则。 约束在预测时应用，以限制预测并提供客户端应用程序所需的实体解析。 请在创作子组件时定义这些规则。 
 
 **使用约束**：
-* 知道要提取的确切文本。
+* 知道要提取的确切文本时。
 
 约束包括：
 
 * [正则表达式](reference-entity-regular-expression.md)实体
-* [列出](reference-entity-list.md)实体 
-* [预](luis-reference-prebuilt-entities.md)生成实体
+* [列表](reference-entity-list.md)实体 
+* [预构建](luis-reference-prebuilt-entities.md)实体
 
-继续使用飞机票据的示例，机场代码可以位于列表实体中，以精确地匹配文本。 
+沿用机票预订的示例，机场代码可能在列表实体中，需要对其进行精确文本匹配。 
 
-对于机场列表，西雅图的列表项是城市名称，`Seattle`，西雅图的同义词包括西雅图的机场代码以及周围的城镇和城市：
+对于机场列表，Seattle 的列表项是城市名称 `Seattle`，Seattle 的同义词包括 Seattle 的机场代码以及周边乡镇和城市：
 
-|`Seattle` 列出实体同义词|
+|`Seattle` 列表实体同义词|
 |--|
 |`Sea`|
 |`seatac`|
 |`Bellevue`|
 
-如果只希望识别机场代码的3个字母代码，请使用正则表达式作为约束。 
+如果只想识别机场代码的 3 字母代码，请使用正则表达式作为约束。 
 
 `/^[A-Z]{3}$/`
 
 ## <a name="intents-versus-entities"></a>意向与实体
 
-目的是_整个_查询文本的所需结果，而实体是从查询文本提取的数据片段。 通常，方法与客户端应用程序应采用的操作相关联，实体是执行此操作所需的信息。 从编程的角度来看，意图会触发方法调用，实体将用作该方法调用的参数。
+意向是整个言语的所需结果，而实体是从言语中提取的数据片段。__ 通常，意向与客户端应用程序应执行的操作相关联，而实体是执行此操作所需的信息。 从编程的角度讲，意向会触发方法调用，而实体将用作该方法调用的参数。
 
-此查询文本_必须_具有意向，并且_可能_具有实体：
+以下言语肯定包含意向，同时可能包含实体：____
 
 `Buy an airline ticket from Seattle to Cairo`
 
-此查询文本有一个意向：
+以下言语包含单个意向：
 
-* 购买飞机票据
+* 购买机票
 
-此查询文本_可能_具有多个实体：
+以下言语可能包含多个实体：__
 
-* 西雅图（源）和 Cairo （目标）的位置
-* 单个票证的数量
+* Seattle（出发地）和 Cairo（目的地）的地点
+* 数量为一张机票
 
-## <a name="descriptors-are-features"></a>描述符是功能
+## <a name="descriptors-are-features"></a>描述符是特征
 
-描述符是在定型时间应用于模型的一种功能，其中包括短语列表和实体。 
+描述符是在训练时应用到模型的特征，其中包含短语列表和实体。 
 
-若要执行以下操作，**请使用描述符**：
+**有以下需要时，请使用描述符**：
 
-* 提高由描述符标识的单词和短语的重要性
-* 让 LUIS 建议新的文本或短语，以建议用于说明符
-* 修复定型数据上的错误
+* 提升描述符标识的单词和短语的重要性
+* 让 LUIS 建议新的文本或短语，以便在描述符方面提供建议
+* 修复训练数据的错误
 
 ## <a name="next-steps"></a>后续步骤
 

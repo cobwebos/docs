@@ -1,7 +1,7 @@
 ---
-title: 提高终结点配额-LUIS
+title: 增加终结点配额 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 语言理解 (LUIS) 提供增加终结点请求配额的功能，可超出单个密钥的配额。 可通过以下方法实现此功能：为 LUIS 创建多个密钥，并在“资源和密钥”部分中的“发布”页面上将其添加到 LUIS 应用程序。
+description: 语言理解 (LUIS) 提供增加终结点请求配额的功能，可超出单个密钥的配额。 可通过以下方法实现此功能：为 LUIS 创建多个密钥，并在“资源和密钥”部分中的“发布”页面上将其添加到 LUIS 应用程序********。
 author: diberry
 manager: nitinme
 ms.custom: seodec18
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
 ms.openlocfilehash: c4ea9c5663755a4feb1693dd925d99b10c466140
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70256611"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>使用 Microsoft Azure 流量管理器管理密钥之间的终结点配额
-语言理解 (LUIS) 提供增加终结点请求配额的功能，可超出单个密钥的配额。 可通过以下方法实现此功能：为 LUIS 创建多个密钥，并在“资源和密钥”部分中的“发布”页面上将其添加到 LUIS 应用程序。 
+语言理解 (LUIS) 提供增加终结点请求配额的功能，可超出单个密钥的配额。 可通过以下方法实现此功能：为 LUIS 创建多个密钥，并在“资源和密钥”部分中的“发布”页面上将其添加到 LUIS 应用程序********。 
 
 客户端应用程序必须管理密钥之间的流量。 LUIS 不执行此操作。 
 
@@ -28,7 +28,7 @@ ms.locfileid: "70256611"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="connect-to-powershell-in-the-azure-portal"></a>在 Azure 门户中连接到 PowerShell
-在 [Azure][azure-portal] 门户中，打开 PowerShell 窗口。 PowerShell 窗口的图标是顶部导航栏中的“>_”。 从门户中使用 PowerShell，即表示已获得最新 PowerShell 版本并且通过了身份验证。 门户中的 PowerShell 需要 [Azure 存储](https://azure.microsoft.com/services/storage/)帐户。 
+在 [Azure][azure-portal] 门户中，打开 PowerShell 窗口。 PowerShell 窗口的图标是顶部导航栏中的“>_”****。 从门户中使用 PowerShell，即表示已获得最新 PowerShell 版本并且通过了身份验证。 门户中的 PowerShell 需要 [Azure 存储](https://azure.microsoft.com/services/storage/)帐户。 
 
 ![打开 Powershell 窗口的 Azure 门户的屏幕截图](./media/traffic-manager/azure-portal-powershell.png)
 
@@ -44,21 +44,21 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
 ```
 
 ## <a name="create-luis-keys-to-increase-total-endpoint-quota"></a>创建 LUIS 密钥以增加总终结点配额
-1. 在 Azure 门户中，创建两个语言理解密钥，一个位于 `West US`，一个位于 `East US`。 使用上一节中创建的名为 `luis-traffic-manager` 现有资源组。 
+1. 在 Azure 门户中，创建两个语言理解密钥，一个位于 `West US`，一个位于 `East US`****。 使用上一节中创建的名为 `luis-traffic-manager` 现有资源组。 
 
     ![luis-traffic-manager 资源组中带有两个 LUIS 密钥的 Azure 门户的屏幕截图](./media/traffic-manager/luis-keys.png)
 
-2. 在[LUIS][LUIS]网站的 "**管理**" 部分的 " **Azure 资源**" 页上，为应用分配密钥，并通过选择右上方菜单中的 "**发布**" 按钮重新发布应用。 
+2. 在 [LUIS][LUIS] 网站的“Azure 资源”**** 页上的“管理”**** 部分中，为应用分配密钥，然后通过选择右上方菜单中的“发布”**** 按钮重新发布应用。 
 
-    “终结点”列中的示例 URL 使用具有终结点密钥的 GET 请求作为查询参数。 复制这两个新密钥的终结点 URL。 本文后面的流量管理器配置中会用到它们。
+    “终结点”列中的示例 URL 使用具有终结点密钥的 GET 请求作为查询参数****。 复制这两个新密钥的终结点 URL。 本文后面的流量管理器配置中会用到它们。
 
 ## <a name="manage-luis-endpoint-requests-across-keys-with-traffic-manager"></a>使用流量管理器管理密钥之间的 LUIS 终结点请求
-流量管理器为终结点创建新的 DNS 访问点。 它并不充当网关或代理，而是严格处于 DNS 级别。 此示例不会更改任何 DNS 记录。 它使用 DNS 库与流量管理器进行通信，以获取该特定请求的正确终结点。 针对 LUIS 的每个请求首先需要流量管理器请求来确定使用哪个 LUIS 终结点。 
+流量管理器为终结点创建新的 DNS 访问点。 它并不充当网关或代理，而是严格处于 DNS 级别。 此示例不会更改任何 DNS 记录。 它使用 DNS 库与流量管理器进行通信，以获取该特定请求的正确终结点。 针对 LUIS 的每个请求首先需要流量管理器请求来确定使用哪个 LUIS 终结点__。 
 
 ### <a name="polling-uses-luis-endpoint"></a>轮询会使用 LUIS 终结点
-流量管理器定期轮询终结点，以确保终结点仍然可用。 轮询的流量管理器 URL 需要能够通过 GET 请求访问，并返回 200。 “发布”页上的终结点 URL 可执行此操作。 由于每个终结点密钥具有不同的路由和查询字符串参数，因此每个终结点密钥需要不同的轮询路径。 流量管理器每次轮询时都会使用一次配额请求。 LUIS 终结点的查询字符串参数“q”是发送给 LUIS 的陈述。 此参数不用于发送陈述，而是用于将流量管理器轮询添加到 LUIS 终结点日志，以用作调试技术并同时对流量管理器进行配置。
+流量管理器定期轮询终结点，以确保终结点仍然可用。 轮询的流量管理器 URL 需要能够通过 GET 请求访问，并返回 200。 “发布”页上的终结点 URL 可执行此操作****。 由于每个终结点密钥具有不同的路由和查询字符串参数，因此每个终结点密钥需要不同的轮询路径。 流量管理器每次轮询时都会使用一次配额请求。 LUIS 终结点的查询字符串参数“q”是发送给 LUIS 的陈述****。 此参数不用于发送陈述，而是用于将流量管理器轮询添加到 LUIS 终结点日志，以用作调试技术并同时对流量管理器进行配置。
 
-由于每个 LUIS 终结点需要自己的路径，因此也需要其自己的流量管理器配置文件。 若要跨配置文件进行管理，请创建[嵌套流量管理器](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-nested-profiles)体系结构。 一个父配置文件指向子配置文件，并管理它们之间的流量。
+由于每个 LUIS 终结点需要自己的路径，因此也需要其自己的流量管理器配置文件。 若要跨配置文件进行管理，请创建[嵌套流量管理器](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-nested-profiles)体系结构__。 一个父配置文件指向子配置文件，并管理它们之间的流量。
 
 配置流量管理器后，请记得更改路径以使用 logging = false 查询字符串参数，使日志不会被轮询填满。
 
@@ -325,7 +325,7 @@ $<variable-name> = Get-AzTrafficManagerProfile -Name <profile-name> -ResourceGro
 ![Azure 资源组 luis-traffic-manager 的屏幕截图](./media/traffic-manager/traffic-manager-profiles.png)
 
 ### <a name="verify-the-profile-status-is-online"></a>验证配置文件处于联机状态
-流量管理器轮询每个终结点的路径，确保其处于联机状态。 如果处于联机状态，则子配置文件的状态为 `Online`。 每个配置文件的“概述”页上会显示此信息。 
+流量管理器轮询每个终结点的路径，确保其处于联机状态。 如果处于联机状态，则子配置文件的状态为 `Online`。 每个配置文件的“概述”页上会显示此信息****。 
 
 ![显示联机监控状态的 Azure 流量管理器配置文件概述的屏幕截图](./media/traffic-manager/profile-status-online.png)
 
@@ -368,7 +368,7 @@ dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {
 
 为流量管理器启用[诊断日志](../../traffic-manager/traffic-manager-diagnostic-logs.md)，了解终结点状态降级的原因。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 删除两个 LUIS 终结点密钥、三个流量管理器配置文件以及包含这五个资源的资源组。 此操作在 Azure 门户中完成。 从资源列表中删除五个资源。 然后删除资源组。 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,43 +1,36 @@
 ### YamlMime:Landing
 title: 对话方案文档
-summary: 浏览各种对话方案、对话脚本或多设备对话。
+summary: 浏览各种对话方案。 了解如何在会议方案中使用对话转录或多设备对话，并在呼叫中心方案中使用转录。
 metadata:
-  title: 会话方案文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  title: 对话方案文档 - 教程，API 参考 - Azure 认知服务 |微软文档
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 03/10/2020
+  ms.date: 03/16/2020
   ms.author: dapine
-  ms.openlocfilehash: 0df2992564dcf90f6b927b5a917993caec18af45
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 75254b0b0b3afb391006a422300c0d4cb9d27fdb
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79365759"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79479682"
 landingContent:
-- title: 关于对话听录
+- title: 关于对话转录（会议场景）
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是对话脚本？
+    - text: 什么是会议中的对话转录？
       url: conversation-transcription.md
   - linkListType: how-to-guide
     links:
-    - text: 处理呼叫中心方案
-      url: call-center-transcription.md
-    - text: 实时对话脚本
+    - text: 实时对话转录
       url: how-to-use-conversation-transcription.md
     - text: 异步对话听录
       url: how-to-async-conversation-transcription.md
-  - linkListType: reference
-    links:
-    - text: 会话脚本语言支持
-      url: conversation-transcription.md#language-support
-- title: 关于多设备对话
+- title: 关于多设备对话（会议方案）
   linkLists:
   - linkListType: overview
     links:
@@ -47,13 +40,19 @@ landingContent:
     links:
     - text: 启动和加入对话
       url: quickstarts/multi-device-conversation.md
-  - linkListType: reference
+- title: 呼叫中心转录（自定义/代理方案）
+  linkLists:
+  - linkListType: overview
     links:
-    - text: 多设备对话语言支持
-      url: multi-device-conversation.md#language-support
+    - text: 处理呼叫中心方案
+      url: call-center-transcription.md
 - title: 参考
   linkLists:
   - linkListType: reference
     links:
-    - text: 语音脚本定价
+    - text: 对话转录语言支持
+      url: conversation-transcription.md#language-support
+    - text: 多设备会话语言支持
+      url: multi-device-conversation.md#language-support
+    - text: 语音转录定价
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

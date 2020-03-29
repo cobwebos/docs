@@ -1,5 +1,5 @@
 ---
-title: 可伸缩性和性能-Personalizer
+title: 可扩展性和性能 - 个性化
 titleSuffix: Azure Cognitive Services
 description: 对于高性能和高流量的网站和应用程序，个性化体验创建服务在可伸缩性和性能方面需要考虑两个主要因素：延迟和训练吞吐量。
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: diberry
 ms.openlocfilehash: 5ac9a870cb05328f040febd0f8161a97f0982e09
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73490775"
 ---
 # <a name="scalability-and-performance"></a>可伸缩性和性能
@@ -24,7 +24,7 @@ ms.locfileid: "73490775"
 * 在调用排名 API 时保持低延迟
 * 确保训练吞吐量与事件输入保持同步
 
-个性化设置可以快速返回排名，其中的大多数调用持续时间都专用于通过 REST API 进行通信。 Azure 将自动调整快速响应请求的能力。
+个性化可以快速返回排名，大多数呼叫持续时间都专用于通过 REST API 进行通信。 Azure 将自动调整快速响应请求的能力。
 
 ##  <a name="low-latency-scenarios"></a>低延迟方案
 

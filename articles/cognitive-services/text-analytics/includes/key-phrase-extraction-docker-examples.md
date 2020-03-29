@@ -10,15 +10,15 @@ ms.topic: include
 ms.date: 08/21/2019
 ms.author: dapine
 ms.openlocfilehash: bc0375369db351038c7ac550cbe51415a0b3e069
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71148367"
 ---
 ### <a name="key-phrase-extraction-container-docker-examples"></a>关键短语提取容器 docker 示例
 
-以下 docker 示例适用于关键短语提取容器。
+以下 docker 示例适用于密钥短语提取容器。
 
 #### <a name="basic-example"></a>基本示例 
 

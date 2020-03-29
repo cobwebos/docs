@@ -1,7 +1,7 @@
 ---
 title: 什么是 BLEU 分数？ - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: BLEU 是对计算机翻译和相同源句子的人工创建引用翻译之间的差异的度量。
+description: BLEU是同一源句子的机器翻译和人类创建的参考翻译之间的差异的度量。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.openlocfilehash: 85c4ee27a828a05c64ca6cbf84bff438535328be
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73647360"
 ---
 # <a name="what-is-a-bleu-score"></a>什么是 BLEU 分数？

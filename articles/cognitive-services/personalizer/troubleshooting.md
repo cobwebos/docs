@@ -1,33 +1,33 @@
 ---
-title: 故障排除-Personalizer
-description: 本文包含有关 Personalizer 的常见问题的解答。
+title: 故障排除 - 个性化程序
+description: 本文包含有关个人化器的常见问题解答解答。
 ms.topic: troubleshooting
 ms.date: 02/26/2020
 ms.author: diberry
-ms.openlocfilehash: 39db920b663ace12f2fc6ca35f9082a791da1541
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 904953f028eb31afe42cf477ac05be43e8b72a4d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228031"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336030"
 ---
-# <a name="personalizer-troubleshooting"></a>Personalizer 故障排除
+# <a name="personalizer-troubleshooting"></a>个性化故障排除
 
-本文包含有关 Personalizer 的常见问题的解答。
+本文包含有关个人化器的常见问题解答解答。
 
 ## <a name="transaction-errors"></a>事务错误
 
 <details>
-<summary><b>收到来自服务的 HTTP 429 （请求过多）响应。我该怎么办？</b></summary>
+<summary><b>我从服务收到 HTTP 429（请求太多）响应。我能做什么？</b></summary>
 
-**答**：如果在创建 Personalizer 实例时选择了免费价格层，则允许的排名请求数有配额限制。 查看排名 API 的 API 调用速率（在 Personalizer 资源的 Azure 门户中的 "度量值" 窗格中），并调整定价层（在 "定价层" 窗格中）（如果你的呼叫量预计超出所选定价层的阈值）。
+**答**：如果您在创建个人化实例时选择了免费价格层，则允许的 Rank 请求数存在配额限制。 查看 Rank API 的 API 调用速率（在个性化工具资源的 Azure 门户中的"指标"窗格中），并调整定价层（在定价层窗格中），如果呼叫量预计增长超过所选定价层的阈值。
 
 </details>
 
 <details>
-<summary><b>我在排名或奖励 Api 上收到5xx 错误。我该怎么办？</b></summary>
+<summary><b>我在排名或奖励 API 上收到 5xx 错误。我该怎么办？</b></summary>
 
-**答**：这些问题都应该是透明的。 如果他们继续，请通过在 "**支持 + 故障排除**" 部分中选择 "支持 + 故障排除" 部分中的 "**新支持请求**" 与 Personalizer 资源的 Azure 门户联系。
+**答**：这些问题应该是透明的。 如果它们继续，请在"**支持 + 故障排除**"部分中为个性化工具资源选择"支持 + 故障排除"部分中**的新支持请求**来联系支持人员。
 
 </details>
 
@@ -35,85 +35,85 @@ ms.locfileid: "78228031"
 
 <details>
 <summary>
-<b>在没有 Personalizer 的情况下，学习循环与系统之间的匹配不会达到100%。如何实现解决此问题？</b></summary>
+<b>如果没有个性化程序，学习循环不会达到与系统100%匹配。如何解决此问题？</b></summary>
 
-**答**：您无法通过学习循环实现您的目标的原因：
-* 通过排名 API 调用发送的功能不足
-* 发送的功能中的 bug，例如，将非聚合功能数据（如时间戳）发送到排名 API
-* 具有循环处理的 bug，如不将奖励数据发送给用于事件的奖励 API
+**答**：你通过学习循环没有达到目标的原因：
+* 使用 Rank API 调用发送的功能不足
+* 发送的功能中的 Bug - 例如将非聚合要素数据（如时间戳）发送到 Rank API
+* 具有循环处理的 Bug - 例如不向奖励 API 发送奖励数据的事件
 
-若要解决此问题，需要更改处理方式：更改发送到循环的功能，或确保奖励是排名响应质量的正确评估。
+要进行修复，您需要通过更改发送到循环的功能来更改处理，或者确保奖励是正确评估 Rank 响应的质量。
 
 </details>
 
 <details>
 <summary>
-<b>学习循环似乎没有学习。如何实现解决此问题？</b></summary>
+<b>学习循环似乎没有学习。如何解决此问题？</b></summary>
 
-**答**：学习循环需要几千个奖励调用才能有效地排定排名。
+**答**：在排名呼叫有效确定优先级之前，学习循环需要几千个奖励呼叫。
 
-如果不确定学习循环当前的行为方式，请运行[脱机评估](concepts-offline-evaluation.md)，并应用已更正的学习策略。
-
-</details>
-
-<details>
-<summary><b>我继续获得排名结果，所有项目的概率都相同。如何实现知道 Personalizer 是学习吗？</b></summary>
-
-**答**：当 Personalizer 刚刚启动并且具有_空_模型，或重置 Personalizer 循环，并且模型仍在**模型更新频率**期间内时，它将在排名 API 结果中返回相同的概率。
-
-新的更新周期开始时，将使用更新的模型，你会看到概率发生变化。
+如果您不确定学习循环当前的行为情况，请运行[脱机评估](concepts-offline-evaluation.md)，并应用已更正的学习策略。
 
 </details>
 
 <details>
-<summary><b>学习循环正在学习，但似乎不再了解，排名结果的质量并不好。我该怎么办？</b></summary>
+<summary><b>我不断获得所有项目相同的概率的排名结果。我如何知道个性化者正在学习？</b></summary>
+
+**答**：当排名 API 结果刚刚启动且具有_空_模型时，或者当您重置个性化器循环时，您的模型仍在**模型更新频率**期间内，则个性化程序在 Rank API 结果中返回相同的概率。
+
+当新的更新期间开始时，将使用更新的模型，您将看到概率更改。
+
+</details>
+
+<details>
+<summary><b>学习循环是学习，但似乎不再学习，排名结果的质量不是那么好。我该怎么办？</b></summary>
 
 **答**：
-* 请确保已在该 Personalizer 资源的 Azure 门户中完成和应用了一个评估（学习循环）。
-* 请确保通过奖励 API 发送所有回报，并进行处理。
+* 请确保在 Azure 门户中完成并应用了该个性化工具资源（学习循环）的一个评估。
+* 确保所有奖励都通过奖励 API 发送并处理。
 
 </details>
 
 
 <details>
-<summary><b>如何实现知道学习循环会定期更新，并用于评分我的数据？</b></summary>
+<summary><b>我如何知道学习循环正在定期更新，并用于对数据进行评分？</b></summary>
 
-**答**：您可以在 Azure 门户的 "**模型和学习设置**" 页中找到模型的上次更新时间。 如果你看到旧时间戳，则很可能是因为你未发送排名和奖励呼叫。 如果服务没有传入数据，则不会更新学习。 如果您看到学习循环的更新频率不够，则可以编辑该循环的**模型更新频率**。
+**答**：您可以在 Azure 门户的 **"模型和学习设置"** 页中找到模型上次更新的时间。 如果您看到旧的时间戳，则很可能是因为您没有发送"排名"和"奖励"呼叫。 如果服务没有传入数据，则不会更新学习。 如果您看到学习循环更新不够频繁，则可以编辑循环的**模型更新频率**。
 
 </details>
 
 ## <a name="offline-evaluations"></a>脱机评估
 
 <details>
-<summary><b>脱机评估的功能重要性会返回包含数百个或数千个项目的长列表。发生了什么事？</b></summary>
+<summary><b>脱机评估的功能重要性返回包含数百或数千个项目的长列表。发生了什么事？</b></summary>
 
-**答**：这通常是由中发送的时间戳、用户 id 或一些其他精细功能导致的。
+**答**：这通常是由于时间戳、用户 ID 或其他一些细粒度功能发送。
 
 </details>
 
 <details>
-<summary><b>我创建了脱机评估版，几乎立即成功了。为什么？我看不到任何结果？</b></summary>
+<summary><b>我创建了一个离线评估，它几乎立即成功。为什么？我没有看到任何结果？</b></summary>
 
-**答**：脱机计算使用该时间段内事件的定型模型数据。 如果在评估的开始时间和结束时间之间未发送任何数据，则它将在不进行任何结果的情况下完成。 通过选择已发送到 Personalizer 的事件的时间范围来提交新的脱机评估。
+**答**：脱机评估使用该时间段内事件训练的模型数据。 如果在评估开始和结束时间之间的时间段内未发送任何数据，则数据将完成，而不会产生任何结果。 通过选择已发送到个人化器的事件的时间范围，提交新的脱机评估。
 
 </details>
 
 
-## <a name="learning-policy"></a>学习策略
+## <a name="learning-policy"></a>学习政策
 
 <details>
-<summary><b>如何实现导入学习策略吗？</b></summary>
+<summary><b>如何导入学习策略？</b></summary>
 
-**解答**：了解有关[学习策略概念](concept-active-learning.md#understand-learning-policy-settings)以及[如何应用](how-to-manage-model.md)新学习策略的详细信息。 如果你不想要选择学习策略，可以根据当前事件，使用[脱机评估](how-to-offline-evaluation.md)建议学习策略。
+**答**：详细了解[学习策略概念](concept-active-learning.md#understand-learning-policy-settings)[以及如何应用](how-to-manage-model.md)新的学习策略。 如果不想选择学习策略，可以使用[脱机评估](how-to-offline-evaluation.md)根据当前事件建议学习策略。
 
 </details>
 
 ## <a name="security"></a>安全性
 
 <details>
-<summary><b>我的循环的 API 密钥已泄露。我该怎么办？</b></summary>
+<summary><b>我的循环的 API 密钥已泄露。我能做什么？</b></summary>
 
-**答**：在交换客户端以使用另一个密钥后，你可以重新生成一个密钥。 通过使用两个密钥，可以迟缓方式传播密钥，而无需停机。 建议定期执行此操作，作为一种安全措施。
+**答**：您可以在将客户端交换为使用另一个密钥后重新生成一个密钥。 具有两个键允许您以延迟的方式传播密钥，而无需有任何停机时间。 作为安全措施，我们建议在常规周期中执行此操作。
 
 </details>
 
