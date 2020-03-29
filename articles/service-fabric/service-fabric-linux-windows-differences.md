@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: sfrev
 ms.openlocfilehash: c064291491110b17c172a561afbd1e65d6c08d06
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75748534"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Linux 上的 Service Fabric 与 Windows 上的 Service Fabric 之间的差异
@@ -21,7 +21,7 @@ ms.locfileid: "75748534"
 * Linux 上的故障分析服务 (FAS)
 * 用于 Service Fabric 服务的 DNS 服务（Linux 上的容器支持 DNS 服务）
 * 某些 Powershell 命令的 CLI 命令等效项（下面已列出，其中的大多数命令仅适用于独立群集）
-* [可能影响可伸缩性的日志实现的差异](service-fabric-concepts-scalability.md#choosing-a-platform)
+* [可能影响可伸缩性的日志实现差异](service-fabric-concepts-scalability.md#choosing-a-platform)
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>不能对 Linux Service Fabric 群集使用的 Powershell cmdlet
 
@@ -83,6 +83,6 @@ ms.locfileid: "75748534"
 * [在 Linux 上准备开发环境](service-fabric-get-started-linux.md)
 * [在 OSX 上准备开发环境](service-fabric-get-started-mac.md)
 * [使用 Yeoman 在 Linux 上创建和部署第一个 Service Fabric Java 应用程序](service-fabric-create-your-first-linux-application-with-java.md)
-* [使用适用于 Eclipse 的 Service Fabric 插件在 Linux 上创建和部署第一个 Service Fabric Java 应用程序](service-fabric-get-started-eclipse.md)
+* [使用 Eclipse 的服务交换矩阵插件在 Linux 上创建和部署第一个服务交换矩阵 Java 应用程序](service-fabric-get-started-eclipse.md)
 * [在 Linux 上创建第一个 CSharp 应用程序](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [使用 Service Fabric CLI 管理应用程序](service-fabric-application-lifecycle-sfctl.md)

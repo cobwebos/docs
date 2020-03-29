@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d56007e5a196a0857f3b69ac51f5e3b5a88c4f6e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593493"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN 中的实时统计信息
@@ -35,14 +35,14 @@ ms.locfileid: "67593493"
 * [连接](#connections)
 
 ## <a name="accessing-real-time-stats"></a>访问实时统计信息
-1. 在 [Azure 门户](https://portal.azure.com)中，导航到 CDN 配置文件。
+1. 在[Azure 门户](https://portal.azure.com)中，浏览到 CDN 配置文件。
    
     ![CDN 配置文件边栏选项卡](./media/cdn-real-time-stats/cdn-profile-blade.png)
 2. 从 CDN 配置文件的边栏选项卡，单击“**管理**”按钮。
    
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-real-time-stats/cdn-manage-btn.png)
    
-    随即 CDN 管理门户打开。
+    CDN 管理门户打开。
 3. 将鼠标悬停在“**分析**”选项卡，然后悬停在“**实时统计信息**”浮出控件。  单击“**HTTP 大型对象**”。
    
     ![CDN 管理门户](./media/cdn-real-time-stats/cdn-premium-portal.png)

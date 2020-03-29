@@ -10,20 +10,20 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: e4e8dca6c5359e865e6a17fc47fe47802b0ee9e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386113"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>使用 PowerShell 为 Azure 云服务中的角色启用远程桌面连接
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](cloud-services-role-enable-remote-desktop-new-portal.md)
-> * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+> * [电源外壳](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
-可以通过远程桌面访问在 Azure 中运行的角色的桌面。 你可以使用远程桌面连接，在应用程序正在运行时排查和诊断其问题。
+可以通过远程桌面访问在 Azure 中运行的角色的桌面。 可以使用远程桌面连接，在应用程序正在运行时排查和诊断其问题。
 
 本文介绍如何使用 PowerShell 在云服务角色上启用远程桌面。 有关本文所需的先决条件，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 PowerShell 使用远程桌面扩展，使用户能够在部署应用程序之后启用远程桌面。
 

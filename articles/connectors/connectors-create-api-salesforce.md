@@ -1,5 +1,5 @@
 ---
-title: 从 Azure 逻辑应用连接到 Salesforce
+title: 从 Azure 逻辑应用连接到销售人员
 description: 使用 Azure 逻辑应用自动执行监视、创建和管理 Salesforce 记录和作业的任务和工作流
 services: logic-apps
 ms.suite: integration
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 000f4381ef2a7c0a2099a021b991087725ff2070
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789284"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视、创建和管理 Salesforce 资源
@@ -21,15 +21,15 @@ ms.locfileid: "74789284"
 * 监视何时创建或更改记录。 
 * 创建、获取和管理作业和记录，包括插入、更新和删除操作。
 
-可以使用 Salesforce 触发器从 Salesforce 获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作来执行 Salesforce 资源的任务。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+可以使用 Salesforce 触发器从 Salesforce 获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作来执行 Salesforce 资源的任务。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * 一个 [Salesforce 帐户](https://salesforce.com/)
 
-* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* [有关如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 要在其中访问 Salesforce 帐户的逻辑应用。 若要从 Salesforce 触发器开始，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Salesforce 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
 
@@ -37,7 +37,7 @@ ms.locfileid: "74789284"
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 选择一个路径： 
 
@@ -46,7 +46,7 @@ ms.locfileid: "74789284"
 
      -或-
 
-   * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”。 在搜索框中，输入“salesforce”作为筛选器。 在操作列表下，选择所需的操作。
+   * 对于现有逻辑应用，请在要添加操作的步骤下，选择“新建步骤”****。 在搜索框中，输入“salesforce”作为筛选器。 在操作列表下，选择所需的操作。
 
 1. 如果系统提示你登录 Salesforce，请立即登录并允许访问。
 

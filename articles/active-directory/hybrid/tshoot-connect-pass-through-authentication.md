@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：对直通身份验证进行故障排除 | Microsoft 文档
+title: Azure AD Connect：对直通身份验证进行故障排除 | Microsoft Docs
 description: 本文介绍如何对 Azure Active Directory (Azure AD) 直通身份验证进行故障排除。
 services: active-directory
 keywords: 对 Azure AD Connect 直通身份验证进行故障排除, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456092"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
@@ -28,13 +28,13 @@ ms.locfileid: "60456092"
 本文可帮助你找到有关 Azure AD 直通身份验证常见问题的故障排除信息。
 
 >[!IMPORTANT]
->如果使用直通身份验证时遇到用户登录问题，请在回退仅限云的全局管理员帐户后，再禁用此功能或卸载直通身份验证代理。 了解如何[添加仅限云的全局管理员帐户](../active-directory-users-create-azure-portal.md)。 此步骤至关重要，可确保你不被锁定在租户外部。
+>如果使用直通身份验证时遇到用户登录问题，请在回退仅限云的全局管理员帐户后，再禁用此功能或卸载直通身份验证代理。 了解如何[添加仅云全局管理员帐户](../active-directory-users-create-azure-portal.md)。 此步骤至关重要，可确保你不被锁定在租户外部。
 
 ## <a name="general-issues"></a>常规问题
 
 ### <a name="check-status-of-the-feature-and-authentication-agents"></a>检查功能和身份验证代理的状态
 
-确保租户中的直通身份验证功能仍为“已启用”  ，身份验证代理的状态显示“活动”  ，而不是“非活动”  。 转到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)上的“Azure AD Connect”  边栏选项卡，可以检查状态。
+确保租户中的直通身份验证功能仍为“已启用”****，身份验证代理的状态显示“活动”****，而不是“非活动”****。 转到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)上的“Azure AD Connect”**** 边栏选项卡，可以检查状态。
 
 ![Azure Active Directory 管理中心 - Azure AD Connect 边栏选项卡](./media/tshoot-connect-pass-through-authentication/pta7.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "60456092"
 
 ![Azure Active Directory 管理中心 - 登录报表](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-导航到 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)的“Azure Active Directory”   -> “登录”  ，然后单击特定用户的登录活动。 查找“登录错误代码”  字段。 使用下表将该字段的值映射到某个失败原因和解决方法：
+导航到[Azure 活动目录管理中心](https://aad.portal.azure.com/)上的**Azure 活动目录** -> **登录，** 然后单击特定用户的登录活动。 查找“登录错误代码”**** 字段。 使用下表将该字段的值映射到某个失败原因和解决方法：
 
 |登录错误代码|登录失败原因|解决方法
 | --- | --- | ---
@@ -67,13 +67,13 @@ ms.locfileid: "60456092"
 | 80002 | 身份验证代理的密码验证请求已超时。 | 检查是否可以从身份验证代理访问你的 Active Directory。
 | 80003 | 身份验证代理收到的响应无效。 | 如果在多个用户中均可重现此问题，请检查你的 Active Directory 配置。
 | 80004 | 在登录请求中使用的用户主体名称 (UPN) 不正确。 | 要求用户使用正确的用户名登录。
-| 80005 | 身份验证代理：出错。 | 暂时性的错误。 请稍后重试。
+| 80005 | 身份验证代理：出现错误。 | 暂时性的错误。 请稍后再试。
 | 80007 | 身份验证代理无法连接到 Active Directory。 | 检查是否可以从身份验证代理访问你的 Active Directory。
 | 80010 | 身份验证代理无法解密密码。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。 
 | 80011 | 身份验证代理无法检索到解密密钥。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。
 
 >[!IMPORTANT]
->通过调用验证用户名和密码对 Active Directory 直通身份验证代理身份验证的 Azure AD 用户[Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)。 因此，如果要限制工作站登录访问 Active Directory 中设置的"登录到"设置，将需要添加到列表的"登录到"服务器以及承载直通身份验证代理服务器。 如果不这样做将阻止你登录到 Azure AD 的用户。
+>通过身份验证代理通过调用[Win32 登录用户 API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)来验证其针对活动目录的用户名和密码，从而验证 Azure AD 用户。 因此，如果您在 Active Directory 中设置了"登录到"设置以限制工作站登录访问，则必须将托管直通身份验证代理的服务器添加到"登录到"服务器列表中。 如果不这样做，将阻止用户登录到 Azure AD。
 
 ## <a name="authentication-agent-installation-issues"></a>身份验证代理安装问题
 
@@ -99,7 +99,7 @@ ms.locfileid: "60456092"
 
 ### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>卸载 Azure AD Connect 时出现警告消息
 
-如果已在租户上启用直通身份验证并尝试卸载 Azure AD Connect，会收到以下警告消息：“用户将无法登录 Azure AD，除非你已在其他服务器上安装其他直通身份验证代理。”
+如果在租户中启用了直通身份验证，则当尝试卸载 Azure AD Connect 时，会显示以下警告消息：“除非已在其他服务器上安装其他直通身份验证代理，否则用户无法登录到 Azure AD。”
 
 在卸载 Azure AD Connect 之前，确保设置具有[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)，以免影响用户登录。
 
@@ -127,7 +127,7 @@ ms.locfileid: "60456092"
 
 ### <a name="authentication-agent-event-logs"></a>身份验证代理事件日志
 
-对于与身份验证代理相关的错误，请在服务器上打开“事件查看器”应用程序，然后在 Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin  下查看。
+对于与身份验证代理相关的错误，请在服务器上打开“事件查看器”应用程序，然后在 Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**** 下查看。
 
 要进行详细分析，请启用“会话”日志（在“事件查看器”应用程序内右键单击以查找此选项）。 在正常操作期间，请不要在启用此日志的情况下运行身份验证代理；仅用于故障排除。 日志内容只会在再次禁用日志后才可见。
 
@@ -141,11 +141,11 @@ ms.locfileid: "60456092"
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
 
-可以通过打开命令提示符并运行以下命令来获取错误（在前述示例中为错误“1328”）的描述性详细信息（注意：需要将“1328”替换为日志中显示的实际错误编号）：
+可以通过打开命令提示符并运行以下命令来获取错误（在上述示例中为错误“1328”）的描述性详细信息（注意：请将“1328”替换为在日志中看到的实际错误编号）：
 
 `Net helpmsg 1328`
 
-![传递身份验证](./media/tshoot-connect-pass-through-authentication/pta3.png)
+![直通身份验证](./media/tshoot-connect-pass-through-authentication/pta3.png)
 
 ### <a name="domain-controller-logs"></a>域控制器日志
 
@@ -161,9 +161,9 @@ ms.locfileid: "60456092"
 
 ## <a name="performance-monitor-counters"></a>性能监视计数器
 
-监视身份验证代理的另一种方法是跟踪安装有身份验证代理的每个服务器上特定的性能监视计数器。 使用以下全局计数器（# PTA 身份验证  #PTA 失败身份验证  和 #PTA 成功身份验证  ）和错误计数器（# PTA 身份验证错误  ：
+监视身份验证代理的另一种方法是跟踪安装有身份验证代理的每个服务器上特定的性能监视计数器。 使用以下全局计数器（# PTA 身份验证****#PTA 失败身份验证**** 和 #PTA 成功身份验证****）和错误计数器（# PTA 身份验证错误****：
 
 ![传递身份验证性能监视计数器](./media/tshoot-connect-pass-through-authentication/pta12.png)
 
 >[!IMPORTANT]
->传递身份验证使用多个身份验证代理提供高可用性，但不提供负载均衡  。 并非  所有身份验证代理都接收大致相等的请求数  ，这取决于你的配置。 特定的身份验证代理可能收不到任何流量。
+>传递身份验证使用多个身份验证代理提供高可用性，但不提供负载均衡__。 并非__ 所有身份验证代理都接收大致相等的请求数__，这取决于你的配置。 特定的身份验证代理可能收不到任何流量。

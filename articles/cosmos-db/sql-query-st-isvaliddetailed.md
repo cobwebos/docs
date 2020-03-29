@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9e640c223c2fef844b9b53e1f4afa3a5d398c8c0
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349350"
 ---
-# <a name="st_isvaliddetailed-azure-cosmos-db"></a>ST_ISVALIDDETAILED （Azure Cosmos DB）
+# <a name="st_isvaliddetailed-azure-cosmos-db"></a>ST_ISVALIDDETAILED (Azure Cosmos DB)
  如果指定的 GeoJSON 点、多边形或 LineString 表达式有效，则返回包含布尔值的 JSON 值；如果无效，则额外加上作为字符串值的原因。  
   
 ## <a name="syntax"></a>语法
@@ -23,10 +23,10 @@ ms.locfileid: "71349350"
 ST_ISVALIDDETAILED(<spatial_expr>)  
 ```  
   
-## <a name="arguments"></a>参数
+## <a name="arguments"></a>自变量
   
 *spatial_expr*  
-   是一个 GeoJSON 点或多边形表达式。  
+   是 GeoJSON 点或多边形表达式。  
   
 ## <a name="return-types"></a>返回类型
   
@@ -34,7 +34,7 @@ ST_ISVALIDDETAILED(<spatial_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例演示如何使用 `ST_ISVALIDDETAILED` 检查有效性。  
+  以下示例演示了如何使用 `ST_ISVALIDDETAILED` 检查有效性（带详细信息）。  
   
 ```sql
 SELECT ST_ISVALIDDETAILED({   
@@ -43,7 +43,7 @@ SELECT ST_ISVALIDDETAILED({
 }) AS b 
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{  
@@ -57,5 +57,5 @@ SELECT ST_ISVALIDDETAILED({
 ## <a name="next-steps"></a>后续步骤
 
 - [空间函数 Azure Cosmos DB](sql-query-spatial-functions.md)
-- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 简介](introduction.md)
+- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 简介](introduction.md)

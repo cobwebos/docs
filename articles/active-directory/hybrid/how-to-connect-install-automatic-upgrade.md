@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60349808"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
@@ -28,7 +28,7 @@ ms.locfileid: "60349808"
 
 ## <a name="overview"></a>概述
 使用**自动升级**功能是确保 Azure AD Connect 安装始终保持最新状态的最简单方法。 系统默认启用此功能，以便进行快速安装和 DirSync 升级。 发布新版本时，安装会自动升级。
-默认情况下，针对以下方案启用自动升级：
+默认情况下，将针对以下方案启用自动升级：
 
 * 快速设置安装和 DirSync 升级。
 * 使用 SQL Express LocalDB，这是快速设置始终使用的选项。 使用 SQL Express 的 DirSync 也将使用 LocalDB。
@@ -39,18 +39,18 @@ ms.locfileid: "60349808"
 
 | 状态 | 注释 |
 | --- | --- |
-| Enabled |自动升级已启用。 |
-| 已挂起 |只能由系统设置。 系统**目前没有**资格接收自动升级。 |
+| 已启用 |自动升级已启用。 |
+| Suspended |只能由系统设置。 系统**目前没有**资格接收自动升级。 |
 | 已禁用 |自动升级已禁用。 |
 
-可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。   应该只有系统才能设置“暂停”状态。   在 1.1.750.0 之前，如果自动升级状态设置为“已暂停”，则 Set-ADSyncAutoUpgrade cmdlet 会阻止自动升级。 此功能现已更改，不阻止自动升级。
+可以使用 `Set-ADSyncAutoUpgrade` 在“已启用”与“已禁用”之间切换。******** 应该只有系统才能设置“暂停”状态。****  在 1.1.750.0 之前，如果自动升级状态设置为“已暂停”，则 Set-ADSyncAutoUpgrade cmdlet 会阻止自动升级。 此功能现已更改，不阻止自动升级。
 
 自动升级使用 Azure AD Connect Health 作为升级基础结构。 为使自动升级正常工作，请确保根据 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述，在代理服务器中打开 **Azure AD Connect Health** 的 URL。
 
 
 如果服务器上正在运行**同步服务管理器** UI，则会暂停升级，直到 UI 关闭为止。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 如果 Connect 安装未按预期自动升级，请遵循以下步骤来找出可能的错误。
 
 首先，不建议在新版本发行的第一天就自动升级。 由于升级前有刻意设计的随机性，因此，不用担心安装没有立即升级。
@@ -91,17 +91,17 @@ ms.locfileid: "60349808"
 | **UpgradeNotSupported** | |
 | UpgradeNotSupportedAdfsSignInMethod | 已选择 Adfs 作为登录方法。 |
 | UpgradeNotSupportedCustomizedSyncRules |已将自己的自定义规则添加到配置中。 |
-| UpgradeNotSupportedDeviceWritebackEnabled |已启用[设备写回](how-to-connect-device-writeback.md)功能。 |
+| UpgradeNotSupportedDeviceWritebackEnabled |您已启用[设备回写](how-to-connect-device-writeback.md)功能。 |
 | UpgradeNotSupportedGroupWritebackEnabled |已启用[组写回](how-to-connect-preview.md#group-writeback)功能。 |
 | UpgradeNotSupportedInvalidPersistedState |安装不是快速设置或 DirSync 升级。 |
-| UpgradeNotSupportedMetaverseSizeExceeeded |metaverse 中的对象超过 100,000 个。 |
+| UpgradeNotSupportedMetaverseSizeExceeeded |Metaverse 中的对象超过 100,000 个。 |
 | UpgradeNotSupportedMultiForestSetup |正在连接到多个林。 快速安装只会连接到一个林。 |
 | UpgradeNotSupportedNonLocalDbInstall |使用的不是 SQL Server Express LocalDB 数据库。 |
 | UpgradeNotSupportedNonMsolAccount |[AD DS 连接器帐户](reference-connect-accounts-permissions.md#ad-ds-connector-account)不再是默认的 MSOL_ 帐户。 |
-| UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。  |
+| UpgradeNotSupportedNotConfiguredSignInMethod | 在设置 AAD Connect 期间，请在选择登录方法时选择“不配置”。** |
 | UpgradeNotSupportedPtaSignInMethod | 已选择“直通身份验证”作为登录方法。 |
-| UpgradeNotSupportedStagingModeEnabled |服务器已设置为[过渡模式](how-to-connect-sync-staging-server.md)。 |
-| UpgradeNotSupportedUserWritebackEnabled |已启用[用户写回](how-to-connect-preview.md#user-writeback)功能。 |
+| UpgradeNotSupportedStagingModeEnabled |服务器设置为处于[暂存模式](how-to-connect-sync-staging-server.md)。 |
+| UpgradeNotSupportedUserWritebackEnabled |您已启用[用户回写](how-to-connect-preview.md#user-writeback)功能。 |
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。

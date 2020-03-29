@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61244338"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>对设备到云的消息使用消息路由和自定义终结点
@@ -21,7 +21,7 @@ ms.locfileid: "61244338"
 
 借助 IoT 中心[消息路由](iot-hub-devguide-routing-query-syntax.md)，用户可将设备到云的消息路由到面向服务的终结点。 路由还提供了一种查询功能，让你先筛选数据，再将其路由到终结点。 所配置的每个路由查询包含以下属性：
 
-| 属性      | 说明 |
+| properties      | 描述 |
 | ------------- | ----------- |
 | **名称**      | 用于标识查询的唯一名称。 |
 | **源**    | 要处理的数据流的来源。 例如，设备遥测。 |
@@ -34,11 +34,11 @@ ms.locfileid: "61244338"
 
 IoT 中心具有默认的[内置终结点](iot-hub-devguide-messages-read-builtin.md)。 将订阅中的其他服务链接到中心可创建自定义终结点来路由消息。 IoT 中心目前支持将 Azure 存储容器、事件中心、服务总线队列和服务总线主题用作自定义终结点。
 
-使用路由和自定义终结点时，如果消息不与任何查询匹配，则只将其传送到内置终结点。 若要将消息传递到内置终结点以及自定义终结点，请添加用于将消息发送到内置事件终结点的路由  。
+使用路由和自定义终结点时，如果消息不与任何查询匹配，则只将其传送到内置终结点。 若要将消息传递到内置终结点以及自定义终结点，请添加用于将消息发送到内置事件终结点的路由****。
 
 > [!NOTE]
 > * IoT 中心仅支持将数据作为 blob 写入 Azure 存储容器。
-> * 不支持将启用“会话”或“重复检测”选项的服务总线队列和主题用作自定义终结点   。
+> * 不支持将启用“会话”或“重复检测”选项的服务总线队列和主题用作自定义终结点********。
 
 有关在 IoT 中心创建自定义终结点的详细信息，请参阅 [IoT 中心终结点](iot-hub-devguide-endpoints.md)。
 
@@ -46,9 +46,9 @@ IoT 中心具有默认的[内置终结点](iot-hub-devguide-messages-read-builti
 
 * 从 [Azure 存储容器](../storage/blobs/storage-blobs-introduction.md)读取。
 
-* 从[事件中心](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)读取。
+* 从[事件中心](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)读取 。
 
-* 从[服务总线队列](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)读取。
+* 从[服务总线队列中](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)读取 。
 
 * 从[服务总线主题](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md)读取。
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 0afad249f71a36bf7552da499e985b68d48ee7a9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721546"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>发布到 Azure 事件网格的自定义主题
@@ -21,7 +21,7 @@ ms.locfileid: "76721546"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="endpoint"></a>端点
+## <a name="endpoint"></a>终结点
 
 使用 URI 格式 `https://<topic-endpoint>?api-version=2018-01-01` 将 HTTP POST 发送到自定义主题。
 
@@ -76,10 +76,10 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 ]
 ```
 
-有关这些属性的说明，请参阅 [Azure 事件网格事件架构](event-schema.md)。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件都限制为 64 KB （公开上市）或 1 MB （预览）。
+有关这些属性的说明，请参阅 [Azure 事件网格事件架构](event-schema.md)。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件都限制为 64 KB（正式版）或 1 MB（预览版）。
 
 > [!NOTE]
-> 最大为 64 KB 的事件包含在公开上市（GA）服务级别协议（SLA）中。 最大为 1 MB 的事件支持目前处于预览状态。 超过 64 KB 的事件以 64-KB 为增量收费。 
+> 正式版服务级别协议 (GA) 涵盖了大小高达 64 KB 的事件。 预览版中目前支持最大为 1 MB 的事件。 超过 64 KB 的事件以 64 KB 为增量计费。 
 
 例如，有效的事件数据架构是：
 

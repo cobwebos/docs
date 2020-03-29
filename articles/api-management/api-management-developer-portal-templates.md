@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7a8c348340be143f7059ce7e64a1c66b66074a45
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430790"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API Management 开发人员门户
@@ -27,7 +27,7 @@ ms.locfileid: "75430790"
 
 * [编辑静态页面内容和页面布局元素][modify-content-layout]
 * [跨开发人员门户更新页面元素所用的样式][customize-styles]
-* [修改门户生成的页面所用的模板][portal-templates]（在本指南中介绍）
+* [修改门户生成的页面所用的模板][portal-templates]（在本指南中说明）
 
 模板用于自定义系统生成的开发人员门户页的内容（例如，API 文档、产品、用户身份验证等）。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和一组提供的本地化字符串资源、图标和页面控件，可根据需要非常灵活地配置页面内容。
 
@@ -37,9 +37,9 @@ ms.locfileid: "75430790"
 
 ## <a name="developer-portal-templates-overview"></a>开发人员门户模板概述
 
-在以管理员身份登录时，可从“开发人员门户”编辑模板。 若要首先打开 Azure 门户并单击 API 管理实例的服务工具栏中的 "**开发人员门户**"。
+在以管理员身份登录时，可从“开发人员门户”**** 编辑模板。 要首先打开 Azure 门户，然后从 API 管理实例的服务工具栏单击**开发人员门户**。
 
-要访问开发人员门户模板，请单击左侧的自定义图标显示自定义菜单，并单击“模板”。
+要访问开发人员门户模板，请单击左侧的自定义图标显示自定义菜单，并单击“模板”****。
 
 ![开发人员门户模板][api-management-customize-menu]
 
@@ -47,11 +47,11 @@ ms.locfileid: "75430790"
 
 ![开发人员门户模板][api-management-templates-menu]
 
-单击模板转到由该模板自定义的开发人员门户页面。 在此示例中，显示“产品列表”模板。 “产品列表”模板控制红色矩形所示的屏幕区域。
+单击模板转到由该模板自定义的开发人员门户页面。 在此示例中，将显示**产品列表**模板。 “产品列表”**** 模板控制红色矩形所示的屏幕区域。
 
 ![产品列表模板][api-management-developer-portal-templates-overview]
 
-某些模板（如“用户配置文件”模板）自定义同一页面的不同部分。
+某些模板（如“用户配置文件”**** 模板）自定义同一页面的不同部分。
 
 ![用户配置文件模板][api-management-user-profile-templates]
 
@@ -61,11 +61,11 @@ ms.locfileid: "75430790"
 
 ![模板标记][api-management-template]
 
-“模板数据”窗格提供可在特定模板中使用的实体的数据模型指南。 它通过显示当前在开发人员门户中显示的实时数据提供此指南。 可通过单击“模板数据”窗格右上角的矩形展开模板窗格。
+“模板数据”**** 窗格提供可在特定模板中使用的实体的数据模型指南。 它通过显示当前在开发人员门户中显示的实时数据提供此指南。 可通过单击“模板数据”**** 窗格右上角的矩形展开模板窗格。
 
 ![模板数据模型][api-management-template-data]
 
-在前面的示例中，开发人员门户中显示两个从“模板数据”窗格中显示的数据检索的产品，如以下示例所示：
+在前面的示例中，开发人员门户中显示的两个产品是从**模板数据**窗格中显示的数据中检索到的，如以下示例所示：
 
 ```json
 {
@@ -143,15 +143,15 @@ ms.locfileid: "75430790"
 
 ![发布模板][api-management-publish-template]
 
-单击“是”确认并使模板在开发人员门户中生效。
+单击“是”**** 确认并使模板在开发人员门户中生效。
 
 ![确认发布][api-management-publish-template-confirm]
 
-若要发布所有当前未发布的模板版本，请单击模板列表中的“发布”。 未发布的模板通过模板名称后跟星号来指定。 在此示例中，将发布“产品列表”和“产品”模板。
+若要发布所有当前未发布的模板版本，请单击模板列表中的“发布”****。 未发布的模板通过模板名称后跟星号来指定。 在此示例中，将发布“产品列表”**** 和“产品”**** 模板。
 
 ![发布模板][api-management-publish-templates]
 
-单击“发布自定义”确认。
+单击“发布自定义”**** 确认。
 
 ![确认发布][api-management-publish-customizations]
 
@@ -162,7 +162,7 @@ ms.locfileid: "75430790"
 
 ![还原模板][api-management-revert-template]
 
-单击“是”确认。
+单击“是”**** 以确认。
 
 ![确认][api-management-revert-template-confirm]
 
@@ -175,11 +175,11 @@ ms.locfileid: "75430790"
 
 ![还原模板][api-management-reset-template]
 
-单击“是”确认。
+单击“是”**** 以确认。
 
 ![确认][api-management-reset-template-confirm]
 
-要将所有模板还原到其默认版本，请单击模板列表中的“还原默认模板”。
+要将所有模板还原到其默认版本，请单击模板列表中的“还原默认模板”****。
 
 ![还原模板][api-management-restore-templates]
 

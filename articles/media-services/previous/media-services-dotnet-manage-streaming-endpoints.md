@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET SDK 管理流式处理终结点。 | Microsoft Docs
-description: 本文演示如何通过 Azure 门户管理流式处理终结点。
+description: 本文演示如何使用 Azure 门户管理流式处理终结点。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b6c6fccd473ae57139c0b46bf32dc9468a4ba1a8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74901273"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>使用 .NET SDK 管理流式处理终结点  
@@ -50,7 +50,7 @@ ms.locfileid: "74901273"
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，使用 连接信息填充 app.config 文件，如使用[.NET 的媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 ## <a name="add-code-that-manages-streaming-endpoints"></a>添加管理流式处理终结点的代码
     

@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.openlocfilehash: 0463e3297bbb2fda50adfeefaa89f0a7a3ef8b0a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72901530"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 概述
 
-Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。 HDInsight 4.0 是 Apache Hadoop 组件的云分发。 本文提供有关最新 Azure HDInsight 版本以及如何升级的信息。
+Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。 HDInsight 4.0 是 Apache Hadoop 组件的云分发版。 本文提供有关最新 Azure HDInsight 版本以及如何升级的信息。
 
 ## <a name="whats-new-in-hdinsight-40"></a>HDInsight 4.0 中有哪些新功能？
 
@@ -77,7 +77,7 @@ Apache Oozie 4.3.1 包含在 HDI 4.0 中，并进行了以下更改：
 
 * Oozie 不再运行 Hive 操作。 已删除 Hive CLI 并替换为 BeeLine。
 
-* 可通过在“job.properties”文件中包含排除模式，以从共享 lib 中排除不需要的依赖项。
+* 可通过在“job.properties”文件中包含排除模式，以从共享 lib 中排除不需要的依赖项****。
 
 详细了解 [Apache Oozie](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/patch_oozie.html)。
 
@@ -85,14 +85,14 @@ Apache Oozie 4.3.1 包含在 HDI 4.0 中，并进行了以下更改：
 
 对于任何主要版本，在生产环境中实现最新版本前，全面测试组件十分重要。 HDInsight 4.0 可供你开始升级过程，但 HDInsight 3.6 是默认选项，可防止意外事故。
 
-不支持从以前版本的 HDInsight 到 HDInsight 4.0 的升级途径。 由于元存储和 blob 数据格式已更改，因此 HDInsight 4.0 与以前的版本不兼容。 务必将新的 HDInsight 4.0 环境与当前生产环境分开，这一点很重要。 如果你将 HDInsight 4.0 部署到你当前的环境，你的元存储将进行升级，并且不能撤消。  
+从早期版本的 HDInsight 到 HDInsight 4.0，没有支持的升级路径。 由于 Metastore 和 Blob 数据格式已更改，因此 HDInsight 4.0 与以前的版本不兼容。 请务必将新的 HDInsight 4.0 环境与当前生产环境分开。 如果将 HDInsight 4.0 部署到当前环境，您的 Metastore 将被升级，无法反转。  
 
 ## <a name="limitations"></a>限制
 
-* HDInsight 4.0 不支持 Apache Hive 的 MapReduce。 改为使用 Apache Tez。 详细了解 [Apache Tez](https://tez.apache.org/)。
-* HDInsight 4.0 不支持 Apache Storm。
+* HDInsight 4.0 不支持 MapReduce 的 Apache 蜂巢。 改为使用 Apache Tez。 详细了解 [Apache Tez](https://tez.apache.org/)。
+* HDInsight 4.0 不支持阿帕奇风暴。
 * HDInsight 4.0 中不再提供 Hive 视图。
-* Spark 和交互式查询群集中不支持 Apache Zeppelin 中的 Shell 解释器。
+* 在 Spark 和交互式查询群集中不支持 Apache Zeppelin 中的 Shell 解释器。
 * 无法在 Spark-LLAP 群集上*禁用* LLAP。 只能关闭 LLAP。
 * Azure Data Lake Storage Gen2 无法在 Spark 群集中保存 Juypter Notebook。
 

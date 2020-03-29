@@ -1,6 +1,6 @@
 ---
 title: Azure 事件网格订阅架构
-description: 本文介绍使用 Azure 事件网格订阅事件的属性。 事件网格订阅架构。
+description: 本文介绍用于订阅具有 Azure 事件网格的事件的属性。 事件网格订阅架构。
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 01/23/2020
 ms.author: babanisa
 ms.openlocfilehash: 4bb04d22b762f31a02515549b698030a5267e4cd
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720752"
 ---
 # <a name="event-grid-subscription-schema"></a>事件网格订阅架构
@@ -22,7 +22,7 @@ ms.locfileid: "76720752"
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-例如，若要在名为 `examplestorage` 的资源组中创建名为 `examplegroup` 的存储帐户的事件订阅，请使用以下格式：
+例如，若要在名为 `examplegroup` 的资源组中创建名为 `examplestorage` 的存储帐户的事件订阅，请使用以下格式：
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
@@ -37,7 +37,7 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 | 目标 | 对象 (object) | 定义终结点的对象。 |
 | filter | 对象 (object) | 用于筛选事件类型的可选字段。 |
 
-### <a name="destination-object"></a>destination object
+### <a name="destination-object"></a>目标对象
 
 | properties | 类型 | 说明 |
 | -------- | ---- | ----------- |

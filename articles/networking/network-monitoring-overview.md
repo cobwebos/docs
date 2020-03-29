@@ -1,5 +1,5 @@
 ---
-title: 有关 Azure Monitor 中的网络监视日志 |Microsoft Docs
+title: 关于 Azure 监视器日志中的网络监视 |微软文档
 description: 概述了网络监视解决方案，包括 NPM，它们用来在云、本地和混合环境中管理网络。
 services: monitoring-and-diagnostics
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67672181"
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
@@ -37,7 +37,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 性能监视器、ExpressRoute 监视器和服务连接监视器是 NPM 中的监视功能，如下所述。
 
-## <a name="performance-monitor"></a>性能监视
+## <a name="performance-monitor"></a>性能监视器
 
 性能监视器是 NPM 的一部分，是适用于云、混合和本地环境的网络监视功能。 你可以跨远程分支和现场办事处、门店位置、数据中心和云来监视网络连接。 可以在你的用户产生抱怨之前检测到网络问题。 主要优势包括：
 
@@ -51,7 +51,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 有关详细信息，请查看以下文章：
 
-* [在 Azure Monitor 日志中配置网络性能监视器解决方案](../azure-monitor/insights/network-performance-monitor.md) 
+* [在 Azure 监视器日志中配置网络性能监视器解决方案](../azure-monitor/insights/network-performance-monitor.md) 
 * [用例](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
 * 产品更新：
   * [2017 年 2 月](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
@@ -122,6 +122,6 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 相关链接：
 * [博客文章](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/)、[文档](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="miscellaneous"></a>其他
+## <a name="miscellaneous"></a>杂项
 
 * [新定价](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)

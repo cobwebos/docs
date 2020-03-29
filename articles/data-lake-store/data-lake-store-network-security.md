@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60612532"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>用于 Azure Data Lake Storage Gen1 的虚拟网络集成
@@ -75,13 +75,13 @@ ms.locfileid: "60612532"
 
 - 在 Data Lake Storage Gen1 虚拟网络集成功能推出之前创建的 HDInsight 群集必须重新创建，否则不支持这项新功能。
  
-- 如果创建新的 HDInsight 群集且选择的 Data Lake Storage Gen1 帐户已启用虚拟网络集成功能，则此过程会失败。 首先，请禁用虚拟网络规则。 也可以在 Data Lake Storage 帐户的“防火墙和虚拟网络”边栏选项卡上选择“允许从所有网络和服务进行访问”。   然后，在最终重新启用虚拟网络规则或取消选择**允许来自所有网络和服务的访问**之前，创建 HDInsight 群集。 有关详细信息，请参阅[例外](#exceptions)部分。
+- 如果创建新的 HDInsight 群集且选择的 Data Lake Storage Gen1 帐户已启用虚拟网络集成功能，则此过程会失败。 首先，请禁用虚拟网络规则。 也可以在 Data Lake Storage 帐户的“防火墙和虚拟网络”边栏选项卡上选择“允许从所有网络和服务进行访问”。******** 然后，在最终重新启用虚拟网络规则或取消选择**允许来自所有网络和服务的访问**之前，创建 HDInsight 群集。 有关详细信息，请参阅[例外](#exceptions)部分。
 
 - Data Lake Storage Gen1 虚拟网络集成不适用于 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
   
 - 支持虚拟网络的 Data Lake Storage Gen1 帐户中的文件和文件夹数据不能从门户进行访问。 此限制包括从虚拟网络中的某个 VM 进行的访问，以及使用数据资源管理器之类的活动。 帐户管理活动仍可使用。 支持虚拟网络的 Data Lake Storage 帐户中的文件和文件夹数据可以通过所有非门户资源进行访问。 这些资源包括 SDK 访问权限、PowerShell 脚本以及其他 Azure 服务（不是源自门户时）。 
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>步骤 1：配置虚拟网络，以便使用 Azure AD 服务终结点
 
@@ -89,9 +89,9 @@ ms.locfileid: "60612532"
  
 2.  在订阅中[创建新的虚拟网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)。 也可转到现有的虚拟网络。 虚拟网络必须位于 Data Lake Storage Gen 1 帐户所在的区域。
  
-3.  在“虚拟网络”边栏选项卡中，选择“服务终结点”。  
+3.  在“虚拟网络”边栏选项卡中，选择“服务终结点”。********
  
-4.  选择“添加”，添加新的服务终结点。 
+4.  选择“添加”，添加新的服务终结点。****
 
     ![添加虚拟网络服务终结点](media/data-lake-store-network-security/config-vnet-1.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "60612532"
 
      ![选择 Microsoft.AzureActiveDirectory 服务终结点](media/data-lake-store-network-security/config-vnet-2.png)
 
-6.  选择要为其启用连接性的子网。 选择 **添加** 。
+6.  选择要为其启用连接性的子网。 选择“添加”****。
 
     ![选择子网](media/data-lake-store-network-security/config-vnet-3.png)
 
@@ -111,34 +111,34 @@ ms.locfileid: "60612532"
 
 1.  配置虚拟网络以后，请在订阅中[创建新的 Azure Data Lake Storage Gen1 帐户](data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)。 也可转到现有的 Data Lake Storage Gen1 帐户。 Data Lake Storage Gen 1 帐户必须位于虚拟网络所在的区域。
  
-2.  选择“防火墙和虚拟网络”。 
+2.  选择“防火墙和虚拟网络”。****
 
     > [!NOTE]
-    > 如果在设置中看不到“防火墙和虚拟网络”，则请注销门户。  关闭浏览器并清除浏览器缓存。 重启计算机并重试。
+    > 如果在设置中看不到“防火墙和虚拟网络”，则请注销门户。**** 关闭浏览器并清除浏览器缓存。 重启计算机并重试。
 
        ![向 Data Lake Storage 帐户添加虚拟网络规则](media/data-lake-store-network-security/config-adls-1.png)
 
-3.  选择“所选网络”。 
+3.  选择“所选网络”。****
  
-4.  选择“添加现有虚拟网络”。 
+4.  选择 **"添加现有虚拟网络**"。
 
     ![添加现有虚拟网络](media/data-lake-store-network-security/config-adls-2.png)
 
-5.  选择要启用连接性的虚拟网络和子网。 选择 **添加** 。
+5.  选择要启用连接性的虚拟网络和子网。 选择“添加”****。
 
     ![选择虚拟网络和子网](media/data-lake-store-network-security/config-adls-3.png)
 
-6.  确保虚拟网络和子网在列表中正确显示。 选择“保存”。 
+6.  确保虚拟网络和子网在列表中正确显示。 选择“保存”。****
 
     ![保存新规则](media/data-lake-store-network-security/config-adls-4.png)
 
     > [!NOTE]
     > 在保存以后，可能需要长达 5 分钟的时间设置才会生效。
 
-7.  [可选] 在“防火墙和虚拟网络”页的“防火墙”部分，可以允许从特定 IP 地址进行连接。   
+7.  [可选] 在“防火墙和虚拟网络”页的“防火墙”部分，可以允许从特定 IP 地址进行连接。******** 
 
-## <a name="exceptions"></a>例外
-可以允许从所选虚拟网络外部的 Azure 服务和 VM 进行连接。 在“防火墙和虚拟网络”边栏选项卡的“例外”区域中，从两个选项中进行选择：  
+## <a name="exceptions"></a>异常
+可以允许从所选虚拟网络外部的 Azure 服务和 VM 进行连接。 在“防火墙和虚拟网络”边栏选项卡的“例外”区域中，从两个选项中进行选择：********
  
 - **允许所有 Azure 服务访问此 Data Lake Storage Gen1 帐户**。 此选项允许 Azure 服务（例如 Azure 数据工厂、Azure 事件中心、所有 Azure VM）与 Data Lake Storage 帐户通信。
 

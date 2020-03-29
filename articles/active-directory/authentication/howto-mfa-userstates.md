@@ -1,6 +1,6 @@
 ---
-title: 每用户多重身份验证-Azure Active Directory
-description: 通过更改 Azure 多重身份验证中的用户状态来启用 MFA。
+title: 每用户多重身份验证 - Azure 活动目录
+description: 通过更改 Azure 多重身份验证中的用户状态启用 MFA。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,26 +12,26 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61d7227c57422cfe2228002750ec29bffa385d44
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76756754"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>如何要求对用户进行双重验证
 
-可以采用两种方法之一要求进行双重验证，这两种方法都需要使用全局管理员帐户。 第一个选项是为每个用户启用 Azure 多重身份验证 (MFA)。 逐个为用户启用此功能后，他们每次登录时都会执行双重验证（有一些例外情况，例如，当他们从受信任的 IP 地址登录时，或者开启了“记忆的设备”功能时）。 第二种方法是设置条件性访问策略，要求在某些情况下进行双重验证。
+可以采用两种方法之一要求进行双重验证，这两种方法都需要使用全局管理员帐户。 第一个选项是为每个用户启用 Azure 多重身份验证 (MFA)。 逐个为用户启用此功能后，他们每次登录时都会执行双重验证（有一些例外情况，例如，当他们从受信任的 IP 地址登录时，或者开启了“记忆的设备”__ 功能时）。 第二个选项是设置条件访问策略，该策略需要在特定条件下进行两步验证。
 
 > [!TIP]
-> 建议使用条件性访问策略启用 Azure 多重身份验证。 不建议更改用户状态，除非你的许可证不包含条件性访问，因为你的许可证会要求用户在每次登录时执行 MFA。
+> 建议使用条件访问策略启用 Azure 多重身份验证。 不再建议更改用户状态，除非您的许可证不包含条件访问，因为它要求用户在每次登录时执行 MFA。
 
 ## <a name="choose-how-to-enable"></a>选择启用方法
 
-**通过更改用户状态启用** - 这是需要进行双重验证的传统方法，本文将对此进行讨论。 它适用于云中的 Azure MFA 以及 Azure MFA 服务器。 使用此方法要求用户在**每次登录时**执行双重验证，并覆盖条件访问策略。
+**通过更改用户状态启用** - 这是需要进行双重验证的传统方法，本文将对此进行讨论。 它适用于云中的 Azure MFA 以及 Azure MFA 服务器。 使用此方法要求用户**在每次**登录并覆盖条件访问策略时执行两步验证。
 
-**启用条件访问策略**-这是为用户启用双重验证的最灵活的方式。 启用条件访问策略仅适用于云中的 Azure MFA，是 Azure AD 的一项高级功能。 有关此方法的详细信息，请参阅[部署基于云的 Azure 多重身份验证](howto-mfa-getstarted.md)。
+**由条件访问策略启用**- 这是为用户启用两步验证的最灵活方法。 启用"使用条件访问"策略仅适用于云中的 Azure MFA，是 Azure AD 的高级功能。 有关此方法的详细信息，请参阅[部署基于云的 Azure 多重身份验证](howto-mfa-getstarted.md)。
 
-通过“Azure AD 标识保护”启用 - 此方法使用“Azure AD 标识保护”风险策略，要求仅基于所有云应用程序的登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory 标识保护](../identity-protection/howto-sign-in-risk-policy.md)
+通过“Azure AD 标识保护”启用 - 此方法使用“Azure AD 标识保护”风险策略，要求仅基于所有云应用程序的登录风险进行双重验证。**** 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅[Azure 活动目录标识保护](../identity-protection/howto-sign-in-risk-policy.md)
 
 > [!Note]
 > 有关许可和定价的详细信息，请参见 [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
@@ -42,42 +42,42 @@ ms.locfileid: "76756754"
 Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 
 > [!IMPORTANT]
-> 通过条件性访问策略启用 Azure MFA 将不会更改用户的状态。 不会发出警报，用户显示为禁用状态。 条件访问不会更改状态。 **如果组织使用条件性访问策略，则不应启用或强制用户。**
+> 通过条件访问策略启用 Azure MFA 不会更改用户的状态。 不要惊慌用户显示为禁用。 条件访问不会更改状态。 **如果用户正在使用条件访问策略，则组织不应启用或强制用户。**
 
-| 状态 | Description | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
+| 状态 | 描述 | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
 |:---:| --- |:---:|:--:|:--:|
 | 已禁用 | 没有在 Azure MFA 中注册某个新用户的默认状态。 | 否 | 否 | 否 |
-| 已启用 | 用户已加入 Azure MFA 但尚未注册。 在用户下次登录时会提示他们进行注册。 | 不。  它们继续工作，直到注册过程完成。 | 可以。 会话过期后，会要求进行 Azure MFA 注册。| 可以。 访问令牌过期后，会要求进行 Azure MFA 注册。 |
-| 强制 | 用户已加入，并已完成 Azure MFA 的注册过程。 | 可以。 应用需要应用密码。 | 可以。 在登录时会要求进行 Azure MFA。 | 可以。 在登录时会要求进行 Azure MFA。 |
+| 已启用 | 用户已加入 Azure MFA 但尚未注册。 在用户下次登录时会提示他们进行注册。 | 不是。  它们继续工作，直到注册过程完成。 | 是的。 会话过期后，会要求进行 Azure MFA 注册。| 是的。 访问令牌过期后，会要求进行 Azure MFA 注册。 |
+| 强制 | 用户已加入，并已完成 Azure MFA 的注册过程。 | 是的。 应用需要应用密码。 | 是的。 在登录时会要求进行 Azure MFA。 | 是的。 在登录时会要求进行 Azure MFA。 |
 
 用户的状态反映管理员是否已在 Azure MFA 中登记用户以及用户是否已完成注册过程。
 
-所有用户的初始状态均为“已禁用”。 在 Azure MFA 中注册用户后，用户的状态将更改为“已启用”。 当已启用的用户登录并完成注册过程后，用户的状态将更改为“强制”。
+所有用户的初始状态均为“已禁用”**。 在 Azure MFA 中注册用户后，用户的状态将更改为“已启用”**。 当已启用的用户登录并完成注册过程后，用户的状态将更改为“强制”**。
 
 > [!NOTE]
-> 如果在已有注册详细信息的用户对象（如电话号码或电子邮件）上重新启用 MFA，则管理员需要通过 Azure 门户或 PowerShell 重新注册 MFA。 如果用户不重新注册，则其 MFA 状态不会从 "*已启用*" 转换为 "在 MFA 管理用户界面中*强制实施*"。
+> 如果在已具有注册详细信息（如电话或电子邮件）的用户对象上重新启用 MFA，则管理员需要让该用户通过 Azure 门户或 PowerShell 重新注册 MFA。 如果用户不重新注册，则其 MFA 状态不会在 MFA 管理 UI 中从 *"已启用"* 转换到*强制*。
 
 ### <a name="view-the-status-for-a-user"></a>查看用户状态
 
 使用以下步骤来访问可在其中查看和管理用户状态的页面：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 搜索并选择“Azure Active Directory”。 选择“用户” > “所有用户”。
-3. 选择“多重身份验证”。 可能需要向右滚动才能看到此菜单选项。 选择以下示例屏幕截图，查看完整的 Azure 门户窗口和菜单位置：[![](media/howto-mfa-userstates/selectmfa-cropped.png "从 "用户" 窗口中选择 "多重身份验证" Azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+2. 搜索并选择“Azure Active Directory”**。 选择**所有用户** > **所有用户**。
+3. 选择**多重身份验证**。 您可能需要向右滚动才能看到此菜单选项。 选择下面的示例屏幕截图以查看完整的 Azure 门户窗口和菜单位置：[![](media/howto-mfa-userstates/selectmfa-cropped.png "从 Azure AD 中的"用户"窗口选择多重身份验证")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 4. 此时会打开一个新页面，其中显示了用户状态。
    ![多重身份验证用户状态 - 屏幕截图](./media/howto-mfa-userstates/userstate1.png)
 
 ### <a name="change-the-status-for-a-user"></a>更改用户状态
 
-1. 使用前文的步骤访问 Azure 多重身份验证“用户”页面。
+1. 使用前文的步骤访问 Azure 多重身份验证“用户”**** 页面。
 2. 找到希望对其启用 Azure MFA 的用户。 可能需要在顶部更改视图。
-   ![在 "用户" 选项卡中选择要更改其状态的用户](./media/howto-mfa-userstates/enable1.png)
+   ![从“用户”选项卡选择要更改状态的用户](./media/howto-mfa-userstates/enable1.png)
 3. 勾选用户名称旁边的框。
-4. 在右侧，在“快速步骤”下，选择“启用”或“禁用”。
-   ![通过单击 "快速步骤" 菜单上的 "启用" 来启用选定的用户](./media/howto-mfa-userstates/user1.png)
+4. 在右侧，在“快速步骤”下，选择“启用”或“禁用”************。
+   ![通过在快速步骤菜单上单击“启用”来启用所选用户](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
-   > “已启用”的用户在注册 Azure MFA 后会自动切换到“强制”。 不应手动将用户状态更改为“强制”。
+   > “已启用”** 的用户在注册 Azure MFA 后会自动切换到“强制”**。 不应手动将用户状态更改为“强制”。**
 
 5. 在打开的弹出窗口中确认你的选择。
 
@@ -91,7 +91,7 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 * 强制
 * 已禁用  
 
-不要直接将用户移动到“强制”状态。 如果这样做了，则非基于浏览器的应用将停止工作，因为用户尚未完成 Azure MFA 注册并获得[应用密码](howto-mfa-mfasettings.md#app-passwords)。
+不要直接将用户移动到“强制”** 状态。 如果这样做了，则非基于浏览器的应用将停止工作，因为用户尚未完成 Azure MFA 注册并获得[应用密码](howto-mfa-mfasettings.md#app-passwords)。
 
 先使用以下命令安装模块：
 
@@ -144,11 +144,11 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
    Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
    ```
 
-### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>将用户从每用户 MFA 转换为基于条件访问的 MFA
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>将用户从每个用户 MFA 转换为基于条件访问的 MFA
 
-以下 PowerShell 可帮助你进行基于 Azure 多重身份验证的条件性访问。
+以下 PowerShell 可以帮助您转换为基于条件访问的 Azure 多重身份验证。
 
-在 ISE 窗口或 "另存为" 中运行此 PowerShell。PS1 要本地运行的文件。
+在 ISE 窗口中运行此 PowerShell 或另存为 。要在本地运行的 PS1 文件。
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -185,9 +185,9 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> 我们最近更改了上述行为和 PowerShell 脚本。 以前，该脚本保存在 MFA 方法之外，禁用了 MFA，并还原了这些方法。 现在不再需要此操作，因为默认情况下禁用不会清除这些方法。
+> 我们最近相应地更改了上述行为和 PowerShell 脚本。 以前，脚本保存了 MFA 方法、禁用 MFA 并还原了这些方法。 现在，禁用的默认行为未清除方法，这不再需要。
 >
-> 如果在已有注册详细信息的用户对象（如电话号码或电子邮件）上重新启用 MFA，则管理员需要通过 Azure 门户或 PowerShell 重新注册 MFA。 如果用户不重新注册，则其 MFA 状态不会从 "*已启用*" 转换为 "在 MFA 管理用户界面中*强制实施*"。
+> 如果在已具有注册详细信息（如电话或电子邮件）的用户对象上重新启用 MFA，则管理员需要让该用户通过 Azure 门户或 PowerShell 重新注册 MFA。 如果用户不重新注册，则其 MFA 状态不会在 MFA 管理 UI 中从 *"已启用"* 转换到*强制*。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
 ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60743066"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>带宽/吞吐量测试 (NTTTCP)
@@ -30,7 +30,7 @@ ms.locfileid: "60743066"
 
 记下接收方的 IP 地址。 暂且将该 IP 称为“a.b.c.r”
 
-记下 VM 上的核心数。 我们将其称为“\#num\_cores”
+记下 VM 上的核心数。 暂且将其称为“\#num\_cores”
 
 在发送方 VM 和接收方 VM 上运行 NTTTCP 测试 300 秒（5 分钟）。
 
@@ -46,7 +46,7 @@ ms.locfileid: "60743066"
 发送方参数：ntttcp -s10.27.33.7 -t 10 -n 1 -P 1
 
 > [!NOTE]
-> 以上示例应仅用于确认配置。 本文档稍后会介绍测试的有效示例。
+> 以上示例应仅用于确认配置。 本文档中稍后介绍测试的有效示例。
 
 ## <a name="testing-vms-running-windows"></a>测试运行 WINDOWS 的 VM：
 
@@ -128,17 +128,17 @@ ntttcp -s10.0.0.4 -t 300
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>测试在 Windows 和 Linux 之间运行的 VM：
 
-在此方案中，我们应启用非同步模式，以便可以运行测试。 通过对 Linux 使用“-N 标志”  ，对 Windows 使用“-ns 标志”  完成操作。
+在此方案中，我们应启用非同步模式，以便可以运行测试。 通过对 Linux 使用“-N 标志”****，对 Windows 使用“-ns 标志”**** 完成操作。
 
 #### <a name="from-linux-to-windows"></a>从 Linux 到 Windows：
 
-接收方\<Windows >:
+接收器\<窗口>：
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
 ```
 
-发件人\<Linux >:
+发件人\<Linux> ：
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
@@ -146,13 +146,13 @@ ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 
 #### <a name="from-windows-to-linux"></a>从 Windows 到 Linux：
 
-接收方\<Linux >:
+接收器\<Linux>：
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
 ```
 
-发件人\<Windows >:
+发件人\<窗口>：
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300

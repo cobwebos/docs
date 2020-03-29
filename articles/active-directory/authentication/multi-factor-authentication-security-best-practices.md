@@ -1,5 +1,5 @@
 ---
-title: Azure 多重身份验证的安全指南-Azure Active Directory
+title: Azure 多重身份验证的安全指南 - Azure 活动目录
 description: 本文档提供有关配合使用 Azure MFA 与 Azure 帐户的指导
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e42234e9fcdcfe3ee5ce975babbe03b64a750e36
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74846821"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>将 Azure 多重身份验证与 Azure AD 帐户配合使用时的安全指南
@@ -24,14 +24,14 @@ ms.locfileid: "74846821"
 
 ## <a name="deploy-azure-mfa-in-the-cloud"></a>在云中部署 Azure MFA
 
-可通过两种方法[为所有用户启用 Azure MFA](howto-mfa-getstarted.md)。
+有两种方法可以[为所有用户启用 Azure MFA。](howto-mfa-getstarted.md)
 
 * 为每个用户购买许可证（Azure MFA、Azure AD Premium 或企业移动性 + 安全性）
 * 创建一个多重身份验证提供程序并按用户或按身份验证付费
 
 ### <a name="licenses"></a>许可证
 
-![向用户应用许可证，启用，通知](./media/multi-factor-authentication-security-best-practices/ems.png)
+![向用户应用许可证、启用、通知](./media/multi-factor-authentication-security-best-practices/ems.png)
 
 如果拥有 Azure AD Premium 或企业移动性 + 安全性许可证，则已拥有了 Azure MFA。 组织无需使用任何其他组件便可将双重验证功能扩展到所有用户。 只需将许可证分配给用户，然后便可以启用 MFA。
 
@@ -45,14 +45,14 @@ ms.locfileid: "74846821"
 
 ![多重身份验证提供程序](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
-如果没有包含 Azure MFA 的许可证，可以[创建 MFA 身份验证提供程序](concept-mfa-authprovider.md)。
+如果您没有包含 Azure MFA 的许可证，则可以[创建 MFA 身份验证提供程序](concept-mfa-authprovider.md)。
 
 创建身份验证提供程序时，需要选择一个目录并考虑以下详细信息：
 
 * 无需拥有 Azure AD 目录，即可创建多重身份验证提供程序；但如果有，可以使用更多功能。 将身份验证提供程序与 Azure AD 目录关联后会实现以下功能：
   * 将双重验证功能扩展到所有用户
   * 为全局管理员提供其他功能，例如管理门户、自定义问候语和报告。
-* 如果将本地 Active Directory 环境与 Azure AD 目录同步，则需要 DirSync 或 Azure AD Sync。如果使用不与 Active Directory 的本地实例同步的 Azure AD 目录，则不需要 DirSync 或 Azure AD Sync。
+* 如果将本地活动目录环境与 Azure AD 目录同步，则需要 DirSync 或 Azure AD 同步。如果使用的 Azure AD 目录未与活动目录的本地实例同步，则不需要 DirSync 或 Azure AD 同步。
 * 选择最适合业务的消耗模型。 使用模型一旦选择之后，就无法对其更改。 有以下两个模型：
   * 按身份验证：针对每次验证收费。 如果要对访问某些应用的任何人（而不是特定用户）进行双重验证，请使用此模型。
   * 基于启用的用户：对启用 Azure MFA 的每个用户收费。 如果拥有一些使用 Azure AD Premium 或企业移动性套件许可证的用户，请使用此模型。
@@ -66,9 +66,9 @@ ms.locfileid: "74846821"
 
 ## <a name="best-practices-for-an-on-premises-deployment"></a>本地部署的最佳做法
 
-如果公司决定利用自己的基础结构来启用 MFA，则需要[在本地部署 Azure 多重身份验证服务器](howto-mfaserver-deploy.md)。 下图显示了 MFA 服务器的组件：
+如果您的公司决定利用自己的基础结构来启用 MFA，则需要[在本地部署 Azure 多重身份验证服务器](howto-mfaserver-deploy.md)。 下图显示了 MFA 服务器的组件：
 
-![默认的 MFA 服务器组件](./media/multi-factor-authentication-security-best-practices/server.png) 默认情况下 \*未安装 \** 默认情况下未安装，但默认情况下未启用
+![默认 MFA 服务器](./media/multi-factor-authentication-security-best-practices/server.png)\*组件默认\*未安装 *已安装，但默认情况下未启用
 
 Azure 多重身份验证服务器可以使用联合身份验证来保护云资源和本地资源。 必须安装 AD FS，并将它与 Azure AD 租户联合。
 设置多重身份验证服务器时，请注意以下详细信息：
@@ -94,7 +94,7 @@ Azure 多重身份验证服务器可以使用联合身份验证来保护云资�
 * 应用密码不遵循“本地客户端访问控制”设置。
 * 没有为应用密码提供本地身份验证日志记录/审核功能。
 * 在对客户端使用双重验证时，某些先进的体系结构设计可能需要将组织用户名和密码与应用密码结合使用，具体取决于进行身份验证的位置。 对于针对本地基础结构进行身份验证的客户端，会使用组织用户名和密码。 对于针对 Azure AD 进行身份验证的客户端，会使用应用密码。
-* 默认情况下，用户无法创建应用密码。 如果需要允许用户创建应用密码，请选择“允许用户创建应用密码来登录非浏览器应用程序”选项。
+* 默认情况下，用户无法创建应用密码。 如果需要允许用户创建应用密码，请选择“允许用户创建应用密码来登录非浏览器应用程序”**** 选项。
 
 ## <a name="additional-considerations"></a>其他注意事项
 

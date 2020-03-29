@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：使用 SAML 2.0 标识提供者进行单一登录 - Azure
+title: Azure AD 连接：使用 SAML 2.0 标识提供程序进行单一登录 - Azure
 description: 本文档介绍使用符合 SAML 2.0 的 Idp 进行单一登录。
 services: active-directory
 author: billmath
@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff4f1b81f476159c13d3725cd3cb1766aec7dc87
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70305100"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 标识提供者 (IdP) 进行单一登录
@@ -48,8 +48,8 @@ Microsoft 提供此登录体验，支持将 Microsoft 云服务（例如 Office 
 
 建议确保 SAML 2.0 标识提供者输出的消息尽量与提供的示例跟踪类似。 此外，尽可能使用提供的 Azure AD 元数据的特定属性值。 如果觉得对输出的消息满意，可以根据如下所述使用 Microsoft Connectivity Analyzer 进行测试。
 
-可以从此 URL 下载 Azure AD 元数据：[https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml)。
-对于使用中国特定的 Office 365 实例的中国客户而言，应使用以下联合终结点：[https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml)。
+可以从以下 URL 下载 Azure AD 元数据[https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml)： 。
+对于在中国使用 Office 365 特定中国实例的客户，应使用以下联合终结点： [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml)。
 
 ## <a name="saml-protocol-requirements"></a>SAML 协议需求
 本部分详细介绍如何将请求和响应消息对置于一起，以便正确设置消息格式。
@@ -168,7 +168,7 @@ SAML 2.0 标识提供者需要遵循有关 Azure AD 信赖方的信息。 Azure 
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>安装 Windows PowerShell 以使用 SAML 2.0 标识提供者登录
 配置用于 Azure AD 登录的 SAML 2.0 标识提供者后，下一步是下载并安装用于 Windows PowerShell 的 Azure Active Directory 模块。 安装后，需要使用这些 cmdlet 将 Azure AD 域配置为联合域。
 
-下载用于 Windows PowerShell 的 Azure Active Directory 模块是用来管理 Azure AD 中的组织数据。 此模块会将一组 cmdlet 安装到 Windows PowerShell；运行这些 cmdlet 以设置对 Azure AD 进行单一登录访问，然后转到订阅的所有云服务。 有关如何下载并安装 cmdlet 的说明，请参阅：[https://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx)
+下载用于 Windows PowerShell 的 Azure Active Directory 模块是用来管理 Azure AD 中的组织数据。 此模块会将一组 cmdlet 安装到 Windows PowerShell；运行这些 cmdlet 以设置对 Azure AD 进行单一登录访问，然后转到订阅的所有云服务。 有关如何下载和安装 cmdlet 的说明，请参阅[https://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx)
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>在 SAML 标识提供者和 Azure AD 之间设置信任
 在 Azure AD 域上配置联合前，必须先配置自定义域。 无法联合 Microsoft 提供的默认域。 Microsoft 的默认域以“onmicrosoft.com”结尾。
@@ -191,12 +191,12 @@ SAML 2.0 标识提供者需要遵循有关 Azure AD 信赖方的信息。 Azure 
 
     `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
-有关“Set-MsolDomainAuthentication”的详细信息，请参阅：[https://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx)。
+有关"设置-MsolDomain 身份验证"的详细信息，请参阅： [https://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx)。
 
 >[!NOTE]
 >仅当为标识提供者设置了 ECP 扩展时，才必须使用 `$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"` 来运行。 Exchange Online 客户端（不包括 Outlook Web 应用程序 (OWA)）依赖于基于 POST 的活动终结点。 如果 SAML 2.0 STS 实现的活动终结点类似于 Shibboleth 的 ECP 实现的活动终结点，这些富客户端则有可能与 Exchange Online 服务进行交互。
 
-配置联合后，可切换回“非联合”（或“托管”），但是此更改最长需要两个小时才能完成，并且需要为每个用户分配新的随机密码以用于基于云的登录。 某些情况下，可能需要切换回“托管”以重置设置中的错误。 有关域转换的详细信息，请参阅：[https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx)。
+配置联合后，可切换回“非联合”（或“托管”），但是此更改最长需要两个小时才能完成，并且需要为每个用户分配新的随机密码以用于基于云的登录。 某些情况下，可能需要切换回“托管”以重置设置中的错误。 有关域转换的详细信息，请参阅： [https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx)。
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>向 Azure AD/Office 365 预配用户主体
 在对 Office 365 进行用户身份验证之前，必须向 Azure AD 预配与 SAML 2.0 声明中的断言相对应的用户主体。 如果 Azure AD 事先无法识别这些用户主体，则它们无法用于联合登录。 Azure AD Connect 或 Windows PowerShell 都可以用来预设用户主体。
@@ -222,7 +222,7 @@ SAML 2.0 标识提供者需要遵循有关 Azure AD 信赖方的信息。 Azure 
       -UsageLocation "US" 
     ```
 
-有关“New-MsolUser”签出的详细信息，请参阅：[https://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx)
+有关"新 MsolUser"结帐的详细信息，[https://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx)
 
 >[!NOTE]
 >“UserPrinciplName”值必须与将为 SAML 2.0 声明中的“IDPEmail”发送的值相匹配，“ImmutableID”值必须与“NameID”断言中发送的值相匹配。
@@ -254,11 +254,11 @@ Microsoft 提供了一种工具，可用于测试基于 SAML 2.0 的标识提供
 
 
 
-1. 从 [https://testconnectivity.microsoft.com/?tabid=Client](https://testconnectivity.microsoft.com/?tabid=Client) 下载连接分析器。
+1. 从 下载连接分析器[https://testconnectivity.microsoft.com/?tabid=Client](https://testconnectivity.microsoft.com/?tabid=Client)。
 2.  单击“立即安装”开始下载并安装该工具。
 3.  选择“我无法设置与 Office 365、Azure 或其他使用 Azure Active Directory 的服务的联合”。
 4.  下载并运行该工具后，你将看到“连接性诊断”窗口。 该工具将逐步引导你测试联合连接。
-5.  Connectivity Analyzer 将开启 SAML 2.0 IDP 用以登录，请输入进行测试的用户主体凭据：![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  连接分析器将打开 SAML 2.0 IDP，供您登录，输入要测试的用户主体的凭据：SAML ![](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  在联合测试登录窗口，应为配置为与 SAML 2.0 标识提供者联合的 Azure AD 租户输入帐户名和密码。 该工具会尝试使用这些凭据进行登录，并提供登录尝试期间所执行的测试的详细结果作为输出。
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. 此窗口显示了测试失败的结果。 单击“查看详细结果”将显示执行的每个测试的结果信息。 还可以将结果保存到磁盘以便共享。
@@ -272,7 +272,7 @@ Microsoft 提供了一种工具，可用于测试基于 SAML 2.0 的标识提供
 
 
 1. 在已加入域的计算机上，使用用于公司凭据的相同登录名登录到云服务。
-2.  在密码框内单击。 如果设置了单一登录，密码框将会灰显，并且你将看到以下消息：“你现在需要登录 &lt;your company&gt;。”
+2.  在密码框内单击。 如果设置了单一登录，密码框将会灰显，并且你将看到以下消息：“你现在需要在&lt;你的公司&gt;登录。”
 3.  单击&lt;你的公司&gt;链接中的登录。 如果能够登录，则已设置好单一登录。
 
 ## <a name="next-steps"></a>后续步骤

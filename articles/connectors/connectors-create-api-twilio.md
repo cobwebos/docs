@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: e5b218efd9c8cfaad99d76d8118d181390a977c3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789097"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Twilio 中的消息
 
-使用 Azure 逻辑应用和 Twilio 连接器，可以创建用于获取、发送和列出 Twilio 中的消息（这包括全球短信、彩信和 IP 消息）的自动化任务和工作流。 可以使用这些操作通过 Twilio 帐户执行任务。 还可以让其他操作使用来自 Twilio 操作的输出。 例如，当有新消息到达时，你可以使用 Slack 连接器发送消息内容。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+使用 Azure 逻辑应用和 Twilio 连接器，可以创建用于获取、发送和列出 Twilio 中的消息（这包括全球短信、彩信和 IP 消息）的自动化任务和工作流。 可以使用这些操作通过 Twilio 帐户执行任务。 还可以让其他操作使用来自 Twilio 操作的输出。 例如，当有新消息到达时，你可以使用 Slack 连接器发送消息内容。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
@@ -27,13 +27,13 @@ ms.locfileid: "74789097"
   * 你的 Twilio 帐户 ID 和[身份验证令牌](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them)，这可以在 Twilio 仪表板上找到
 
     你的凭据授权逻辑应用创建连接并访问你的 Twilio 帐户。 
-    如果使用的是 Twilio 试用帐户，则只能向“已验证”的手机号码发送短信。
+    如果使用的是 Twilio 试用帐户，则只能向“已验证”** 的手机号码发送短信。
 
   * 已验证可以发送短信的 Twilio 手机号码
 
   * 已验证可以接收短信的 Twilio 手机号码
 
-* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* [有关如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 要在其中访问 Twilio 帐户的逻辑应用。 若要使用 Twilio 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
 
@@ -41,21 +41,21 @@ ms.locfileid: "74789097"
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 选择一个路径： 
 
-     * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
+     * 在要添加操作的最后一个步骤下，选择“新建步骤”。**** 
 
        -或-
 
      * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-     选择出现的加号 ( **+** )，然后选择“添加操作”。
+     选择显示的加号**+**（），然后选择 **"添加操作**"。
      
        在搜索框中，输入“twilio”作为筛选器。 
        在操作列表下，选择所需的操作。
 
-1. 为你的连接提供必要的详细信息，然后选择“创建”：
+1. 提供连接的必要详细信息，然后选择 **"创建**：
 
    * 要为你的连接使用的名称
    * 你的 Twilio 帐户 ID 

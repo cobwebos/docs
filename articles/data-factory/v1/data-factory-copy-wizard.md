@@ -1,5 +1,5 @@
 ---
-title: 利用复制向导轻松复制数据-Azure
+title: 使用复制向导轻松复制数据 - Azure
 description: 了解如何使用数据工厂复制向导将数据从支持的数据源复制到接收器。
 services: data-factory
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b872cc30ae66e83274f189138dad6d609e3f536
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927052"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>使用 Azure 数据工厂复制向导轻松复制或移动数据
@@ -25,7 +25,7 @@ ms.locfileid: "74927052"
 > 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[复制活动教程](../quickstart-create-data-factory-dot-net.md)。 
 
 
-Azure 数据工厂复制向导用于简化数据引入过程，这通常是端到端数据集成方案中的第一步。 使用 Azure 数据工厂复制向导时，不需要了解有关链接服务、数据集和管道的任何 JSON 定义。 但是，完成向导中的所有步骤后，向导会自动创建管道，将数据从所选数据源复制到所选目标。 此外，复制向导可帮助用户在创作时验证正在引入的数据，从而节省大量时间（尤其是第一次从数据源引入数据时）。 若要启动复制向导，请单击数据工厂主页上的“复制数据”磁贴。
+Azure 数据工厂复制向导用于简化数据引入过程，这通常是端到端数据集成方案中的第一步。 使用 Azure 数据工厂复制向导时，不需要了解有关链接服务、数据集和管道的任何 JSON 定义。 但是，完成向导中的所有步骤后，向导会自动创建管道，将数据从所选数据源复制到所选目标。 此外，复制向导可帮助用户在创作时验证正在引入的数据，从而节省大量时间（尤其是第一次从数据源引入数据时）。 若要启动复制向导，请单击数据工厂主页上的“复制数据”**** 磁贴。
 
 ![复制向导](./media/data-factory-copy-wizard/copy-data-wizard.png)
 
@@ -62,7 +62,7 @@ Azure 数据工厂复制向导用于简化数据引入过程，这通常是端�
 ![验证表达式](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Azure Blob 文件夹中的数据筛选
-可以使用文件夹路径中的变量，从运行时基于[系统变量](data-factory-functions-variables.md#data-factory-system-variables)确定的文件夹中复制数据。 支持的变量： **{year}** 、 **{month}** 、 **{day}** 、 **{hour}** 、 **{minute}** 和 **{custom}** 。 示例：inputfolder/{year}/{month}/{day}。
+可以使用文件夹路径中的变量，从运行时基于[系统变量](data-factory-functions-variables.md#data-factory-system-variables)确定的文件夹中复制数据。 支持的变量：**{year}**、**{month}**、**{day}**、**{hour}**、**{minute}** 和 **{custom}**。 示例：inputfolder/{year}/{month}/{day}。
 
 假设输入文件夹格式如下：
 
@@ -71,11 +71,11 @@ Azure 数据工厂复制向导用于简化数据引入过程，这通常是端�
     2016/03/01/03
     ...
 
-单击“文件或文件夹”的“浏览”按钮，找到其中一个文件夹（例如，2016-> 03-> 01-> 02），并单击“选择”。 文本框中应该会显示 `2016/03/01/02`。 现在，将**2016**替换为 **{year}** ，将**03**替换为 { **month}** ，将**01**替换为 **{day}** **，并按**tab。应看到下拉列表，以选择这四个变量的格式：
+单击“文件或文件夹”**** 的“浏览”**** 按钮，找到其中一个文件夹（例如，2016-> 03-> 01-> 02），并单击“选择”****。 应该会在文本框中看到 `2016/03/01/02`。 现在，将**2016**替换为 **{year}，03**替换为 **{month}，01**替换为 **{day}，02**替换为 **{小时}，** 然后按 Tab。 **03** **01** **02**您应该会看到下拉列表，以选择以下四个变量的格式：
 
 ![使用系统变量](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-如以下屏幕截图所示，还可以使用“自定义”变量和任何[支持格式的字符串](https://msdn.microsoft.com/library/8kb3ddd4.aspx)。 若要选择具有该结构的文件夹，请首先使用“浏览”按钮。 然后将值替换为 **{custom}** ，并按 Tab 键，查看可在其中键入格式字符串的文本框。     
+如以下屏幕截图所示，还可以使用“自定义”**** 变量和任何[支持格式的字符串](https://msdn.microsoft.com/library/8kb3ddd4.aspx)。 若要选择具有该结构的文件夹，请首先使用“浏览”**** 按钮。 然后将值替换为 **{custom}**，并按 Tab 键，查看可在其中键入格式字符串的文本框。     
 
 ![使用自定义变量](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ef8acf1c3c9211168ebacc8d62647f6789c745a2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60630538"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>使用 StorSimple 监视指示器管理设备
@@ -36,7 +36,7 @@ StorSimple 设备包括了发光二极管 (LED) 和警报，可以使用它们�
 本文的剩余部分介绍了各种监视指示器 LED、它们在 StorSimple 设备上的位置、基于 LED 状态的设备状态以及任何关联的有声警报。
 
 ## <a name="front-panel-indicator-leds"></a>前面板指示器 LED
-前面板（也称为*操作面板*）显示系统中所有模块的聚合状态。 StorSimple 主机箱和 EBOD 机箱的前面板是完全相同的，如下图所示。  
+前面板（也称为*操作面板***）显示系统中所有模块的聚合状态。 StorSimple 主机箱和 EBOD 机箱的前面板是完全相同的，如下图所示。  
 
    ![设备前面板][1]
 
@@ -55,13 +55,13 @@ StorSimple 设备包括了发光二极管 (LED) 和警报，可以使用它们�
 
 | 系统电源 | 模块故障 | 逻辑故障 | 警报 | 状态 |
 | --- | --- | --- | --- | --- |
-| 琥珀红 |OFF |OFF |不适用 |交流电源断开，正在以备用电源运行；或者交流电源接通，并且控制器模块已移除。 |
-| 绿色 |ON |ON |不适用 |操作面板通电 (5s) 测试状态 |
-| 绿色 |OFF |OFF |不适用 |已通电，所有功能良好 |
-| 绿色 |ON |不适用 |PCM 故障 LED、风扇故障 LED |任何 PCM 故障、风扇故障、温度过高或过低 |
-| 绿色 |ON |不适用 |I/O 模块 LED |任何控制器模块故障 |
-| 绿色 |ON |不适用 |不适用 |机箱逻辑故障 |
-| 绿色 |闪烁 |不适用 |控制器模块上的模块状态 LED。 PCM 故障 LED、风扇故障 LED |安装了未知类型的控制器模块、I2C 总线故障、控制器模块重要产品数据 (VPD) 配置错误 |
+| 琥珀红 |OFF |OFF |空值 |交流电源断开，正在以备用电源运行；或者交流电源接通，并且控制器模块已移除。 |
+| 绿色 |ON |ON |空值 |操作面板通电 (5s) 测试状态 |
+| 绿色 |OFF |OFF |空值 |已通电，所有功能良好 |
+| 绿色 |ON |空值 |PCM 故障 LED、风扇故障 LED |任何 PCM 故障、风扇故障、温度过高或过低 |
+| 绿色 |ON |空值 |I/O 模块 LED |任何控制器模块故障 |
+| 绿色 |ON |空值 |空值 |机箱逻辑故障 |
+| 绿色 |闪烁 |空值 |控制器模块上的模块状态 LED。 PCM 故障 LED、风扇故障 LED |安装了未知类型的控制器模块、I2C 总线故障、控制器模块重要产品数据 (VPD) 配置错误 |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>电源冷却模块 (PCM) 指示器 LED
 电源冷却模块 (PCM) 指示器 LED 位于主机箱或 EBOD 机箱的背部，在每个 PCM 模块上。 本主题讨论了如何使用以下 LED 监视 StorSimple 设备的状态。  
@@ -91,11 +91,11 @@ PCM 的状态是在 LED 面板上指示的。 设备 PCM LED 面板有六个 LED
 | 没有交流电（到机箱） |OFF |OFF |OFF |OFF |
 | 没有交流电（仅限此 PCM） |OFF |ON |OFF |ON |
 | 交流电源已向 PCM 供电 - 正常 |ON |OFF |OFF |OFF |
-| PCM 故障（风扇故障） |OFF |OFF |ON |不适用 |
-| PCM 故障（安培数过高、电压过高、电流过大） |OFF |ON |ON |亮起 |
+| PCM 故障（风扇故障） |OFF |OFF |ON |空值 |
+| PCM 故障（安培数过高、电压过高、电流过大） |OFF |ON |ON |ON |
 | PCM（风扇转速失调） |ON |OFF |OFF |ON |
 | 备用模式 |闪烁 |OFF |OFF |OFF |
-| PCM 固件下载 |熄灭 |闪烁 |闪烁 |闪烁 |
+| PCM 固件下载 |OFF |闪烁 |闪烁 |闪烁 |
 
 ### <a name="pcm-indicator-leds-for-the-backup-battery"></a>备用电池的 PCM 指示器 LED
 | 状态 | 电池良好（绿色） | 电池故障（琥珀色） |
@@ -120,10 +120,10 @@ EBOD 机箱有一个 580W PCM，没有额外的电池。 EBOD 机箱的 PCM 面�
 | 没有交流电（仅限此 PCM） |OFF |ON |OFF |ON |
 | 交流电源已向 PCM 供电 - 正常 |ON |OFF |OFF |OFF |
 | PCM 故障（风扇故障） |OFF |OFF |ON |X |
-| PCM 故障（安培数过高、电压过高、电流过大） |OFF |ON |ON |亮起 |
+| PCM 故障（安培数过高、电压过高、电流过大） |OFF |ON |ON |ON |
 | PCM（风扇转速失调） |ON |OFF |OFF |ON |
 | 备用模式 |闪烁 |OFF |OFF |OFF |
-| PCM 固件下载 |熄灭 |闪烁 |闪烁 |闪烁 |
+| PCM 固件下载 |OFF |闪烁 |闪烁 |闪烁 |
 
 ## <a name="controller-module-indicator-leds"></a>控制器模块指示器 LED
 StorSimple 设备包含了用于主控制器和 EBOD 控制器模块的 LED   
@@ -158,7 +158,7 @@ StorSimple 设备包含了用于主控制器和 EBOD 控制器模块的 LED
 可以使用下表来确定 EBOD 控制器模块是否正常运行。  
 
 ### <a name="ebod-controller-module-indicator-leds"></a>EBOD 控制器模块指示器 LED
-| 状态 | I/O 模块正常（绿色） | I/O 模块故障（琥珀色） | 主机端口处于活动（绿色） |
+| 状态 | I/O 模块正常（绿色） | I/O 模块故障（琥珀色） | 主机端口活动（绿色） |
 | --- | --- | --- | --- |
 | 控制器模块正常 |ON |OFF |- |
 | 控制器模块故障 |OFF |ON |- |
@@ -203,7 +203,7 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 | 警报状态 | 操作 | 按下了静音按钮时的操作 |
 | --- | --- | --- |
 | S0 |正常模式：静音 |鸣叫两声 |
-| S1 |故障模式：1 秒上/熄灭 1 秒 |转变为 S2 或 S3（请参阅“注意”部分） |
+| S1 |故障模式：亮起 1 秒/熄灭 1 秒 |转变为 S2 或 S3（请参阅“注意”部分） |
 | S2 |提醒模式：间歇性鸣叫 |无 |
 | S3 |静音模式：静音 |无 |
 | S4 |严重故障模式：持续告警 |不可用：静音未处于活动状态 |
@@ -219,7 +219,7 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 下表描述了各种警报状况。
 
 ### <a name="alarm-conditions"></a>警报状况
-| 状态 | Severity | 警报 | 操作面板 LED |
+| 状态 | 严重性 | 警报 | 操作面板 LED |
 | --- | --- | --- | --- |
 | PCM 警报 – 单个 PCM 的直流电源断开 |故障 – 未损失冗余 |S1 |模块故障 |
 | PCM 警报 – 单个 PCM 的直流电源断开 |故障 – 损失了冗余 |S1 |模块故障 |
@@ -239,7 +239,7 @@ StorSimple 设备包含了与主机箱和 EBOD 机箱关联的有声警报。 �
 | 驱动器电源控制故障 |警告 – 驱动器电源未断开 |S1 |模块故障 |
 | 驱动器电源控制故障 |故障 – 严重；驱动器电源断开 |S1 |模块故障 |
 | 移除了驱动器 |警告 |无 |模块故障 |
-| 电力不足 |警告 |无 |模块故障 |
+| 电力不足 |警告 |none |模块故障 |
 
 ## <a name="next-steps"></a>后续步骤
 详细了解 [StorSimple 硬件组件和状态](storsimple-8000-monitor-hardware-status.md)。

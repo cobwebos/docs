@@ -1,6 +1,6 @@
 ---
 title: H264 多比特率 16x9 SD | Microsoft 文档
-description: 本主题概述了 H264 多比特率 16x9 SD 任务预设  。
+description: 本主题概述了 H264 多比特率 16x9 SD 任务预设****。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: a0d272a01a6969f702ff4eedf05660833ba1f531
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463699"
 ---
 # <a name="h264-multiple-bitrate-16x9-sd"></a>H264 多比特率 16x9 SD
 `Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
   
- 本主题演示 XML 和 JSON 格式的 `H264 Multiple Bitrate 16x9 SD` 预设。  
+ 本主题介绍 XML 和 JSON 格式的 `H264 Multiple Bitrate 16x9 SD` 预设。  
   
  此预设产生一组 5 GOP 对齐的 MP4 文件，范围从 1900 kbps 到 400 kbps，以及立体声 AAC 音频。 有关此预设的配置文件、比特率、采样率等的详细信息，请观察下面定义的 XML 或 JSON。 有关这些预设中的每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)主题。  
   

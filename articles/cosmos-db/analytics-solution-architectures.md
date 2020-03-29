@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Cosmos DB 中的全局分布式分析的解决方案。
-description: 了解可使用 Azure Cosmos DB 中的全局分布式分析生成的解决方案。
+title: 在 Azure Cosmos DB 中使用全局分布式分析的解决方案。
+description: 了解可以使用 Azure Cosmos DB 中的全局分布式分析构建的解决方案。
 author: markjbrown
 ms.author: mjbrown
 ms.topic: conceptual
@@ -8,15 +8,15 @@ ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
 ms.openlocfilehash: d0b5042c1401a95cc75f4c01ace843659b6babfe
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73681749"
 ---
-# <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用全局分布式分析的解决方案
+# <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用全球分布式分析的解决方案
 
-本文介绍可使用 Azure Cosmos DB 中的全局分布式分析生成的解决方案。
+本文介绍了可以使用 Azure Cosmos DB 中的全局分布式分析构建的解决方案。
 
 ## <a name="retail-and-consumer-goods"></a>零售和日用消费品
 

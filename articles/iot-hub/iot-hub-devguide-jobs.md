@@ -9,15 +9,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 147dd0f454bd85673bcba5cd6148c5da9716c580
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65409063"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>在多个设备上计划作业
 
-Azure IoT 中心可启用多个构建基块（如[设备孪生属性和标记](iot-hub-devguide-device-twins.md)和[直接方法](iot-hub-devguide-direct-methods.md)）。 通常情况下，后端应用允许设备管理员和操作员在计划的时间批量更新 IoT 设备并与之交互。 作业在计划的时间针对一组设备执行设备孪生更新和直接方法。 例如，操作员可使用用于启动和跟踪作业的后端应用在不会中断大楼运作的时间重新启动 43 号大楼第 3 层中的一组设备。
+Azure IoT 中心可启用多个构建基块（如 [设备孪生属性和标记](iot-hub-devguide-device-twins.md)和[直接方法](iot-hub-devguide-direct-methods.md)）。 通常情况下，后端应用允许设备管理员和操作员在计划的时间批量更新 IoT 设备并与之交互。 作业在计划的时间针对一组设备执行设备孪生更新和直接方法。 例如，操作员可使用用于启动和跟踪作业的后端应用在不会中断大楼运作的时间重新启动 43 号大楼第 3 层中的一组设备。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -177,26 +177,26 @@ Content-Type: application/json; charset=utf-8
 
 以下列表显示了属性和相应说明，在查询作业或作业结果时可使用这些属性。
 
-| 属性 | 描述 |
+| properties | 描述 |
 | --- | --- |
-| **jobId** |应用程序提供的作业 ID。 |
-| **startTime** |应用程序提供的作业开始时间(ISO-8601)。 |
-| **endTime** |IoT 中心提供的作业完成时的日期(ISO-8601)。 只有在作业达到“完成”状态后才有效。 |
+| **工作Id** |应用程序提供的作业 ID。 |
+| **开始时间** |应用程序提供的作业开始时间(ISO-8601)。 |
+| **结束时间** |IoT 中心提供的作业完成时的日期(ISO-8601)。 只有在作业达到“完成”状态后才有效。 |
 | **type** |作业的类型： |
-| | **scheduleUpdateTwin**：用于更新一组所需属性或标记的作业。 |
-| | **scheduleDeviceMethod**：用于对一组设备孪生调用设备方法的作业。 |
-| **status** |作业的当前状态。 可能的状态值： |
+| | **计划更新孪生**：用于更新一组所需属性或标记的作业。 |
+| | **计划DeviceMethod：** 用于调用一组设备孪生上的设备方法的作业。 |
+| **状态** |作业的当前状态。 可能的状态值： |
 | | **挂起**：已计划并等待作业服务选取。 |
-| | **已计划**：计划将来的某个时间。 |
+| | **已计划**：计划在将来某个时间。 |
 | | **正在运行**：当前活动的作业。 |
-| | **已取消**：作业已取消。 |
+| | **已取消**：已取消作业。 |
 | | **失败**：作业失败。 |
 | | **完成**：作业已完成。 |
 | **deviceJobStatistics** |有关作业执行的统计信息。 |
-| | **deviceJobStatistics** 属性： |
+| | **设备作业统计信息**属性： |
 | | **deviceJobStatistics.deviceCount**：作业中的设备数。 |
 | | **deviceJobStatistics.failedCount**：作业失败的设备数。 |
-| | **deviceJobStatistics.succeededCount**:作业成功的设备数。 |
+| | **deviceJobStatistics.succeededCount**：作业成功的设备数。 |
 | | **deviceJobStatistics.runningCount**：当前正在运行作业的设备数。 |
 | | **deviceJobStatistics.pendingCount**：等待运行作业的设备数。 |
 
@@ -204,7 +204,7 @@ Content-Type: application/json; charset=utf-8
 
 IoT 中心开发人员指南中的其他参考主题包括：
 
-* [IoT 中心终结点](iot-hub-devguide-endpoints.md)介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
+* [IoT 中心终结点](iot-hub-devguide-endpoints.md)描述每个 IoT 中心为运行时和管理操作公开的各种终结点。
 
 * [限制和配额](iot-hub-devguide-quotas-throttling.md)介绍了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
 
@@ -212,7 +212,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 * [设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)介绍 IoT 中心查询语言。 使用此查询语言从 IoT 中心检索设备孪生和作业的相关信息。
 
-* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供了有关 IoT 中心对 MQTT 协议的支持的详细信息。
+* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

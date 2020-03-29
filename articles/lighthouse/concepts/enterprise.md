@@ -4,10 +4,10 @@ description: Azure Lighthouse 的功能可以简化使用多个 Azure AD 租户�
 ms.date: 09/25/2019
 ms.topic: conceptual
 ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75749212"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>企业应用场景中的 Azure Lighthouse
@@ -24,7 +24,7 @@ Azure Lighthouse 的最常见应用场景包括：服务提供商使用 [Azure L
 
 跨多个租户集中处理管理操作时，需要确定哪个租户包含要对其他租户执行管理操作的用户。 换言之，需要确定哪个租户是其他租户的管理租户。
 
-例如，假设你的组织有一个租户，我们将调用*租户 a*。然后，你的组织会获得两个其他租户：*租户 B*和*租户 C*，你的业务理由要求你将它们维护为单独的租户。
+例如，假设您的组织具有单个租户，我们将调用*租户 A*。然后，您的组织将获取两个额外的租户，*租户 B*和*租户 C，* 并且您有业务原因要求您将它们作为单独的租户进行维护。
 
 你的组织希望在所有租户中使用相同的策略定义、备份实践和安全流程。 由于已有用户（包括用户组和服务主体）负责在租户 A 中执行这些任务，因此，你可以登记租户 B 和租户 C 中的所有订阅，使租户 A 中的这些用户可以执行这些任务。
 
@@ -54,7 +54,7 @@ Azure Lighthouse 和 Azure 委托的资源管理只在管理租户和被管理�
 
 例如，在上述示例中，可将租户 A 视为服务提供商租户（管理租户），将租户 B 和租户 C 视为客户租户。
 
-在该示例中，具有相应权限的租户 A 用户可以在 Azure 门户的“我的客户”页中[查看和管理委托的资源](../how-to/view-manage-customers.md)。 同理，具有相应权限的租户 B 和租户 C 用户可以在 Azure 门户的“服务提供商”页中[查看和管理委托给租户 A 的资源](../how-to/view-manage-service-providers.md)。
+在该示例中，具有相应权限的租户 A 用户可以在 Azure 门户的“我的客户”页中[查看和管理委托的资源](../how-to/view-manage-customers.md)。**** 同理，具有相应权限的租户 B 和租户 C 用户可以在 Azure 门户的“服务提供商”页中[查看和管理委托给租户 A 的资源](../how-to/view-manage-service-providers.md)。****
 
 ## <a name="next-steps"></a>后续步骤
 

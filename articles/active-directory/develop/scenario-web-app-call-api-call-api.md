@@ -1,6 +1,6 @@
 ---
-title: 从 web 应用调用 web api-Microsoft 标识平台 |Microsoft
-description: 了解如何生成可调用 web Api 的 web 应用（调用受保护的 web API）
+title: 从 Web 应用调用 Web API - Microsoft 标识平台 | Azure
+description: 了解如何构建调用 Web API 的 Web 应用（调用受保护的 Web API）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,19 +15,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758965"
 ---
-# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>用于调用 web Api 的 web 应用：调用 web API
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>调用 Web API 的 Web 应用：调用 Web API
 
-现在，你已有了一个令牌，可以调用受保护的 web API。
+现在你已有令牌，可以调用受保护的 Web API 了。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-下面是 `HomeController`操作的简化代码。 此代码将获取一个令牌，以调用 Microsoft Graph。 添加了代码以演示如何以 REST API 的方式调用 Microsoft Graph。 Microsoft Graph API 的 URL 在 appsettings 文件中提供，并在名为 `webOptions`的变量中读取：
+下面是 `HomeController` 操作的简化代码。 此代码获取用于调用 Microsoft Graph 的令牌。 添加了代码以演示如何将 Microsoft Graph 作为 REST API 调用。 Microsoft Graph API 的 URL 在 appsettings.json 文件中提供，并在名为 `webOptions` 的变量中读取：
 
 ```JSon
 {
@@ -82,11 +82,11 @@ public async Task<IActionResult> Profile()
 ```
 
 > [!NOTE]
-> 可以使用相同的原则调用任何 web API。
+> 可以使用相同的原则来调用任何 Web API。
 >
-> 大多数 Azure web Api 都提供一个可简化对 API 的调用的 SDK。 这也适用 Microsoft Graph。 在下一篇文章中，你将了解如何查找阐释 API 使用的教程。
+> 大多数 Azure Web API 都提供了简化 API 调用的 SDK。 Microsoft Graph 也是如此。 下一篇文章介绍如何找到说明 API 用法的教程。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 private String getUserInfoFromGraph(String accessToken) throws Exception {
@@ -112,7 +112,7 @@ private String getUserInfoFromGraph(String accessToken) throws Exception {
 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 @app.route("/graphcall")
@@ -132,4 +132,4 @@ def graphcall():
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [转到生产](scenario-web-app-call-api-production.md)
+> [移到生产环境](scenario-web-app-call-api-production.md)

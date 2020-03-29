@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 188f5c6cfbb4650ad1ff767955d064f8e0c3cb70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60756728"
 ---
 # <a name="monitor-your-azure-data-box-edge"></a>监视 Azure Data Box Edge
@@ -36,7 +36,7 @@ ms.locfileid: "60756728"
 在本地 Web UI 中执行以下步骤可查看设备组件的硬件状态。
 
 1. 连接到设备的本地 Web UI。
-2. 单击“维护”>“硬件状态”  。 可查看各种设备组件的运行状况。
+2. 单击“维护”>“硬件状态”****。 可查看各种设备组件的运行状况。
 
     ![查看硬件状态](media/data-box-edge-monitor/view-hardware-status.png)
 

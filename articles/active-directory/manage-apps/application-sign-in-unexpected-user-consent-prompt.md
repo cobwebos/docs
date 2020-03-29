@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83d043ecef152f977437e21e2caec40d1c40ce0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65781156"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>登录到应用程序时出现的意外许可提示
@@ -33,7 +33,7 @@ ms.locfileid: "65781156"
 
 可能在各种情况下看到其他提示：
 
-* 更改应用程序所需的权限集。
+* 应用程序所需的权限集已更改。
 
 * 最初对应用程序进行许可的用户不是管理员，现在其他（非管理员）用户首次使用该应用程序。
 

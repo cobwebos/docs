@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 12/14/2016
 ms.author: tagore
 ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386334"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>为 Azure 中的角色实例启用通信
@@ -73,7 +73,7 @@ ms.locfileid: "75386334"
 ```
 
 
-## <a name="worker-roles-vs-web-roles"></a>辅助角色与 Web 角色
+## <a name="worker-roles-vs-web-roles"></a>辅助角色与Web 角色
 使用辅助角色和 web 角色时，在终结点方面需要注意一个细微的差别。 Web 角色必须至少有一个使用 **HTTP** 协议的输入终结点。
 
 ```xml

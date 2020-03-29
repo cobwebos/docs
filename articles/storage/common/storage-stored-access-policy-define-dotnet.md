@@ -1,5 +1,5 @@
 ---
-title: 使用 .NET 定义存储访问策略-Azure 存储
+title: 使用 .NET 定义储访问策略 - Azure 存储
 description: 了解如何使用 .NET 客户端库定义存储访问策略。
 services: storage
 author: tamram
@@ -10,17 +10,17 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 272d676d0a5a55262b1c68d0bae9a9ab229df72c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68990736"
 ---
 # <a name="define-a-stored-access-policy-with-net"></a>使用 .NET 定义存储访问策略
 
-存储访问策略在服务器端对服务级别的共享访问签名 (SAS) 提供额外的控制级别。 定义存储访问策略可将共享访问签名分组, 并为策略所绑定的共享访问签名提供额外限制。 你可以使用存储访问策略来更改 SAS 的开始时间、到期时间或权限, 或者在颁发 SAS 后对其进行撤消。
+存储访问策略对服务器端的服务级别共享访问签名 (SAS) 提供另一级别的控制。 定义存储访问策略可以将共享访问签名分组到一起，并为通过策略绑定的共享访问签名提供其他限制。 可以使用存储访问策略更改 SAS 的开始时间、到期时间或权限，或者在颁发 SAS 后将其吊销。
   
- 以下存储资源支持存储访问策略:  
+ 以下存储资源支持存储访问策略：  
   
 - Blob 容器  
 - 文件共享  
@@ -28,9 +28,9 @@ ms.locfileid: "68990736"
 - 表  
   
 > [!NOTE]
-> 容器上的存储访问策略可以与共享访问签名关联, 该签名授予对容器本身或它包含的 blob 的权限。 同样, 文件共享上的存储访问策略可以与为共享本身授予权限的共享访问签名或其包含的文件相关联。  
+> 容器上的存储访问策略可以与共享访问签名相关联，后者授予对容器本身的权限，或对它包含的 Blob 的权限。 类似地，文件共享上的存储访问策略可以与共享访问签名相关联，后者授予对共享本身的权限，或对它包含的文件的权限。  
 >
-> 仅服务 SAS 支持存储访问策略。 帐户 SAS 或用户委托 SAS 不支持存储访问策略。  
+> 仅服务 SAS 支持存储访问策略。 帐户 SAS 或用户委派 SAS 不支持存储的访问策略。  
 
 ## <a name="create-a-stored-access-policy"></a>创建存储访问策略
 
@@ -60,6 +60,6 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 
 ## <a name="see-also"></a>请参阅
 
-- [使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)
+- [使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限](storage-sas-overview.md)
 - [定义存储访问策略](/rest/api/storageservices/define-stored-access-policy)
 

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 3873b25394f91ce1c1601c348de2098198ba7fdd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74765477"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure 数据资源管理器中的时序分析
@@ -26,7 +26,7 @@ ADX 原生支持创建、操作和分析多个时序。 本主题介绍如何使
 
 输入表 *demo_make_series1* 包含任意 Web 服务流量的 60 万条记录。 使用以下命令对 10 条记录采样：
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03MTo0vTi3KTC02VKhRKAFyFQwNADOyzKUbAAAA)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03MTo0vTi3KTC02VKhRKAFyFQwNADOyzKUbAAAA)**\]**
 
 ```kusto
 demo_make_series1 | take 10 
@@ -37,20 +37,20 @@ demo_make_series1 | take 10
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
 |   | TimeStamp | BrowserVer | OsVer | 国家/地区 |
-|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | 英国 |
+|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | United Kingdom |
 |   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
-|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | 英国 |
-|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | 英国 |
+|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | United Kingdom |
+|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | United Kingdom |
 |   | 2016-08-25 09:12:46.5570000 | Chrome 52.0 | Windows 10 | 立陶宛共和国 |
 |   | 2016-08-25 09:12:47.0470000 | Chrome 52.0 | Windows 8.1 | 印度 |
-|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | 英国 |
+|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | United Kingdom |
 |   | 2016-08-25 09:12:51.6930000 | Chrome 52.0 | Windows 7 | 荷兰 |
-|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | 英国 |
+|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | United Kingdom |
 |   | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | 印度 |
 
 由于没有指标，我们只能生成一组时序，用于表示由 OS 使用以下查询分区的流量计数本身：
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPwQrCMBAE0Hu/Yo4NVLBn6Td4ULyWtV1tMJtIsoEq/XhbC4J48jgw+5h1rBDrW0UDDakjR7HsWUIrdOM2cbScakxIWYSiffJSL49W+KAkd2N2hVsMGv8yaPw2furFhCVu1gifpelC9loa9Hyh7LTZInh8FFiPSP7K5fufap1UoR4Mzg/s04njjEb2PUfofNYNFPUFtJiguAEBAAA=)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPwQrCMBAE0Hu/Yo4NVLBn6Td4ULyWtV1tMJtIsoEq/XhbC4J48jgw+5h1rBDrW0UDDakjR7HsWUIrdOM2cbScakxIWYSiffJSL49W+KAkd2N2hVsMGv8yaPw2furFhCVu1gifpelC9loa9Hyh7LTZInh8FFiPSP7K5fufap1UoR4Mzg/s04njjEb2PUfofNYNFPUFtJiguAEBAAA=)**\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -60,10 +60,10 @@ demo_make_series1
 | render timechart 
 ```
 
-- 使用 [`make-series`](/azure/kusto/query/make-seriesoperator) 运算符创建由三个时序组成的集，其中：
+- 使用[`make-series`](/azure/kusto/query/make-seriesoperator)运算符创建一组三个时间序列，其中：
     - `num=count()`：流量的时序
     - `range(min_t, max_t, 1h)`：时序是在时间范围（表记录的最旧和最新时间戳）的 1 小时箱中创建的
-    - `default=0`：指定缺失箱的填充方法，以创建正则时序。 或者，使用 [`series_fill_const()`](/azure/kusto/query/series-fill-constfunction)、[`series_fill_forward()`](/azure/kusto/query/series-fill-forwardfunction)、[`series_fill_backward()`](/azure/kusto/query/series-fill-backwardfunction) 和 [`series_fill_linear()`](/azure/kusto/query/series-fill-linearfunction) 进行更改
+    - `default=0`：指定缺失箱的填充方法，以创建正则时序。 或者，[`series_fill_const()`](/azure/kusto/query/series-fill-constfunction)使用[`series_fill_forward()`](/azure/kusto/query/series-fill-forwardfunction)[`series_fill_backward()`](/azure/kusto/query/series-fill-backwardfunction)和[`series_fill_linear()`](/azure/kusto/query/series-fill-linearfunction)进行更改
     - `byOsVer`：由 OS 分区
 - 实际时序数据结构是每个时间箱的聚合值的数值数组。 我们将使用 `render timechart` 进行可视化。
 
@@ -76,15 +76,15 @@ demo_make_series1
 在本部分，我们将执行典型的时序处理函数。
 创建一组时序后，ADX 支持使用[时序文档](/azure/kusto/query/machine-learning-and-tsa)中所述的一系列函数（该列表不断扩充）来处理和分析这些时序。 下面将介绍几个用于处理和分析时序的有代表性函数。
 
-### <a name="filtering"></a>Filtering
+### <a name="filtering"></a>筛选
 
 在信号处理中，筛选是常见的活动，可用于完成时序处理任务（例如，平滑化干扰信号、变化检测）。
 - 有两个泛型筛选函数：
-    - [`series_fir()`](/azure/kusto/query/series-firfunction)：应用 FIR 筛选器。 用于方便计算变化检测中时序的移动平均值和差异。
+    - [`series_fir()`](/azure/kusto/query/series-firfunction)：应用 FIR 滤波器。 用于方便计算变化检测中时序的移动平均值和差异。
     - [`series_iir()`](/azure/kusto/query/series-iirfunction)：应用 IIR 筛选器。 用于指数平滑与累计求和。
 - 通过将大小为 5 个箱的新移动平均时序（名为 *ma_num*）添加到查询，来 `Extend`（扩展）时序集：
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=)**\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -105,7 +105,7 @@ ADX 支持使用分段线性回归分析来评估时序的趋势。
 
 时序查询中 `series_fit_line()` 和 `series_fit_2lines()` 函数的示例：
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=)**\]**
 
 ```kusto
 demo_series2
@@ -128,7 +128,7 @@ demo_series2
 
 以下示例针对 Web 服务的一个月流量（2 小时箱）应用季节性检测：
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuaqUShKzUtJLVIoycxNTc5ILCoBAHrjE80fAAAA)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuaqUShKzUtJLVIoycxNTc5ILCoBAHrjE80fAAAA)**\]**
 
 ```kusto
 demo_series3
@@ -143,7 +143,7 @@ demo_series3
 > [!NOTE]
 > 如果特定的非重复周期不存在，则表示出现异常
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OwQ6CMBBE737FHKmpVtAr39IguwkYyzZ0IZj48TZSLx533szOEAfxieeR0/XwRpzlwb2iilkSShapl5mTQYvd5QvxxJqd1bQEi8vZor6RawaLxsA5FewcOjBKBOP0PXUMXL7lyrCeeIvdRPjrzIw35Qyoe6W2GY4qJMv9yb91xtX0AS7N323BAAAA)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OwQ6CMBBE737FHKmpVtAr39IguwkYyzZ0IZj48TZSLx533szOEAfxieeR0/XwRpzlwb2iilkSShapl5mTQYvd5QvxxJqd1bQEi8vZor6RawaLxsA5FewcOjBKBOP0PXUMXL7lyrCeeIvdRPjrzIw35Qyoe6W2GY4qJMv9yb91xtX0AS7N323BAAAA)**\]**
 
 ```kusto
 demo_series3
@@ -154,9 +154,9 @@ demo_series3
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | periods | 评分 | days |
+|   | periods | 评分 |  days |
 |   | 84 | 0.820622786055595 | 7 |
-|   | 12 | 0.764601405803502 | 第 |
+|   | 12 | 0.764601405803502 | 1 |
 
 该函数会检测每日和每周季节性。 每日评分小于每周评分，因为周末的天数不同于工作日天数。
 
@@ -164,7 +164,7 @@ demo_series3
 
 可针对时序执行算术和逻辑运算。 使用 [series_subtract()](/azure/kusto/query/series-subtractfunction) 可以计算残差时序（原始指标与平滑化指标之差），并查看剩留信号中的异常：
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=)**\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -187,7 +187,7 @@ demo_make_series1
 
 以下示例演示如何在几秒钟内针对数千个时序大规模运行这些函数，以进行异常情况检测。 若要查看 DB 服务的读取计数指标在过去四天的几个示例遥测记录，请运行以下查询：
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKEnMTlUwAQArfAiiGgAAAA==)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKEnMTlUwAQArfAiiGgAAAA==)**\]**
 
 ```kusto
 demo_many_series1
@@ -204,7 +204,7 @@ demo_many_series1
 
 和简单的统计信息：
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVcgrzbVNzi/NK9HQ1FHIzcyLL7EFkhohnr6uwSGOvgEg0cQKkGhiBZIoAEq2dK9VAAAA)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVcgrzbVNzi/NK9HQ1FHIzcyLL7EFkhohnr6uwSGOvgEg0cQKkGhiBZIoAEq2dK9VAAAA)**\]**
 
 ```kusto
 demo_many_series1
@@ -218,7 +218,7 @@ demo_many_series1
 
 在读取指标的 1 小时箱中生成时序（总共 4 天 * 24 小时 = 96 个点）会产生正态模式波动：
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBSE9/6KGxOoYGfpIOjgUBDtXh7twwabFF6ittIfb2rBQSfHg+8+7joOsMZVATlC72vqSFTDtq8subHyLIZ9hgn+Zi2JefKMq/JQ7M/ltjhqvQGSbrbQ8JeFhm/LTyGZInbl1RIhTI3P6X5ROwp0ikmjd/hYYByE3IXV+1G6TEqRtTqahF3DgmAs1y1JwMOEVo0Rzdf6BbBH5FAHAQAA)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBSE9/6KGxOoYGfpIOjgUBDtXh7twwabFF6ittIfb2rBQSfHg+8+7joOsMZVATlC72vqSFTDtq8subHyLIZ9hgn+Zi2JefKMq/JQ7M/ltjhqvQGSbrbQ8JeFhm/LTyGZInbl1RIhTI3P6X5ROwp0ikmjd/hYYByE3IXV+1G6TEqRtTqahF3DgmAs1y1JwMOEVo0Rzdf6BbBH5FAHAQAA)**\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -234,7 +234,7 @@ demo_many_series1
 
 可以创建多少个时序？
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVUiqVPDJT9ZR8C/QUXBxAkol55fmlQAAWEsFxjQAAAA=)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVUiqVPDJT9ZR8C/QUXBxAkol55fmlQAAWEsFxjQAAAA=)**\]**
 
 ```kusto
 demo_many_series1
@@ -244,12 +244,12 @@ demo_many_series1
 
 |   |   |
 | --- | --- |
-|   | 计数 |
+|   | Count |
 |   | 18339 |
 
 现在，我们将创建由读取计数指标的 18339 个时序组成的集。 将 `by` 子句添加到 make-series 语句，应用线性回归，并选择具有最明显递减趋势的前两个时序：
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsU7DQBBE+3zFdLmTTGHSgFAKUCiQiIKIe2u5rJ0T9l3YWwcH5eO5JBIFVJSzmnmz07Gi96FWzKExOepIzIb7WPcUDnVi8ZxKHJGGvifxX3yym+pp+biu7pcv1t4Bk+5EofFfFBp/U/4EJsdse+eri4QwbdKc9q1ZkNJrVhYx4IcCHyAUWjbnRcXlpQLl1uLtgOfoCqx2BRYPGcyjctjASPoYSLhA6uKObR5waasbr3XnA5tzrc0RjTtcn0hnKyg55KtkDAvU9+y2JIpPr1ujXjueT9cse+8YlVDTeIfVoNQymiiZ5ENSCi4vM3FQxAblzWx2a6f2G2UcBRyWAQAA)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsU7DQBBE+3zFdLmTTGHSgFAKUCiQiIKIe2u5rJ0T9l3YWwcH5eO5JBIFVJSzmnmz07Gi96FWzKExOepIzIb7WPcUDnVi8ZxKHJGGvifxX3yym+pp+biu7pcv1t4Bk+5EofFfFBp/U/4EJsdse+eri4QwbdKc9q1ZkNJrVhYx4IcCHyAUWjbnRcXlpQLl1uLtgOfoCqx2BRYPGcyjctjASPoYSLhA6uKObR5waasbr3XnA5tzrc0RjTtcn0hnKyg55KtkDAvU9+y2JIpPr1ujXjueT9cse+8YlVDTeIfVoNQymiiZ5ENSCi4vM3FQxAblzWx2a6f2G2UcBRyWAQAA)**\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -265,7 +265,7 @@ demo_many_series1
 
 显示实例：
 
-\[[单击以运行查询](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvW4CMRCEe55iSlsyBWkjChApIoESAb21udsQg38O26AD8fDx3SEUJVXKWc18s2M5wxmvM6bIIVVkKYqaXdCO/EUnjobTBDekk3MUzZU7u9i+rl4229nqXcpnYGQ7CrX/olD7m/InMLoV24HHg0RkqtOUzjuxoEzroiSCx4MC4xHJ71j0i9TwksLkS+LjgmWoFN4ahcW8gLnN7GuImI4niqyQbGhYlgFDm/40WVvjWfS1skRyaPDUkXorKFXl2MSw5yr/pN9Z31SyxuhbAQAA)\]
+**\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvW4CMRCEe55iSlsyBWkjChApIoESAb21udsQg38O26AD8fDx3SEUJVXKWc18s2M5wxmvM6bIIVVkKYqaXdCO/EUnjobTBDekk3MUzZU7u9i+rl4229nqXcpnYGQ7CrX/olD7m/InMLoV24HHg0RkqtOUzjuxoEzroiSCx4MC4xHJ71j0i9TwksLkS+LjgmWoFN4ahcW8gLnN7GuImI4niqyQbGhYlgFDm/40WVvjWfS1skRyaPDUkXorKFXl2MSw5yr/pN9Z31SyxuhbAQAA)**\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -289,5 +289,5 @@ demo_many_series1
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 Azure 数据资源管理器中的[时序异常检测和预测](/azure/data-explorer/anomaly-detection)。
+* 了解如何在 Azure 数据资源管理器中进行[时序异常情况检测和预测](/azure/data-explorer/anomaly-detection)。
 * 了解 Azure 数据资源管理器中的[机器学习功能](/azure/data-explorer/machine-learning-clustering)。

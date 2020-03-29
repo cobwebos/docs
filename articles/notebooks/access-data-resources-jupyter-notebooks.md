@@ -1,13 +1,13 @@
 ---
-title: 访问 Jupyter 笔记本中的数据-Azure Notebooks 预览
-description: 了解如何从 Jupyter 笔记本访问文件、REST Api、数据库和不同的 Azure 存储资源。
+title: 访问聚居笔记本中的数据 - Azure 笔记本预览
+description: 了解如何从 Jupyter 笔记本访问文件、REST API、数据库和不同的 Azure 存储资源。
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646341"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>在笔记本中访问云数据
@@ -47,7 +47,7 @@ if response.status_code == 200:
 
 [使用 Python 查询 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)介绍了如何创建包含 AdventureWorks 数据的数据库，并演示了如何查询该数据。 本文的示例 Notebook 中显示了相同的代码。
 
-## <a name="azure-storage"></a>Azure 存储器
+## <a name="azure-storage"></a>Azure 存储
 
 Azure 存储提供了几种不同类型的非关系存储，具体取决于你拥有的数据类型以及所需的访问方式：
 
@@ -63,8 +63,8 @@ Azure Cosmos DB 为 JSON 文档提供了完全索引的 NoSQL 存储。 以下�
 - [使用 Python 生成 SQL API 应用](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
 - [使用 Azure Cosmos DB 的 API for MongoDB 构建 Flask 应用](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [使用 Python 和 Gremlin API 创建图形数据库](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [使用 Python 和 Azure Cosmos DB 生成 Cassandra 应用](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
-- [使用 Python 和 Azure Cosmos DB 生成表 API 应用](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
+- [使用 Python 和 Azure 宇宙数据库构建卡桑德拉应用](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
+- [使用 Python 和 Azure 宇宙数据库构建表 API 应用](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
 使用 Cosmos DB 时，可以使用 [azure-cosmosdb-table](https://pypi.org/project/azure-cosmosdb-table/) 库。
 
@@ -80,4 +80,4 @@ Azure 提供了许多可以使用的其他数据库类型。 以下文章提供�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [如何：使用项目数据文件](work-with-project-data-files.md)
+- [操作方式：使用项目数据文件](work-with-project-data-files.md)

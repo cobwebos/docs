@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory 组合注册的疑难解答
-description: 排查 Azure AD 多重身份验证和自助密码重置组合注册（预览）
+title: 故障排除组合注册 - Azure 活动目录
+description: 故障排除 Azure AD 多重身份验证和自助服务密码重置组合注册（预览）
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,78 +12,78 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74847382"
 ---
-# <a name="troubleshooting-combined-security-information-registration-preview"></a>结合安全信息注册疑难解答（预览）
+# <a name="troubleshooting-combined-security-information-registration-preview"></a>故障排除组合安全信息注册（预览）
 
-本文中的信息旨在指导管理员对合并注册体验的用户所报告的问题进行故障排除。
+本文中的信息旨在指导正在排除用户报告的合并注册体验用户报告的问题的管理员。
 
 |     |
 | --- |
-| Azure 多重身份验证和 Azure Active Directory （Azure AD）自助服务密码重置的组合安全信息注册是 Azure AD 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| Azure 多重身份验证和 Azure 活动目录 （Azure AD） 自助服务密码重置的组合安全信息注册是 Azure AD 的公共预览功能。 有关预览的详细信息，请参阅 Microsoft [Azure 预览的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 ## <a name="audit-logs"></a>审核日志
 
-为组合注册记录的事件位于 Azure AD 审核日志的 "身份验证方法" 类别中。
+为合并注册而记录的事件位于 Azure AD 审核日志中的"身份验证方法"类别中。
 
-![显示注册事件 Azure AD 审核日志界面](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
+![Azure AD 审核日志界面，显示注册事件](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
-下表列出了通过组合注册生成的所有审核事件：
+下表列出了合并注册生成的所有审核事件：
 
 | 活动 | 状态 | 原因 | 描述 |
 | --- | --- | --- | --- |
-| 用户已注册所有必需的安全信息 | Success | 用户已注册所有必需的安全信息。 | 当用户成功完成注册时，将发生此事件。|
-| 用户已注册所有必需的安全信息 | 失败 | 用户取消了安全信息注册。 | 当用户取消注册中断模式时发生此事件。|
-| 用户已注册安全信息 | Success | 用户注册*方法*。 | 当用户注册单个方法时发生此事件。 *方法*可以是验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。| 
-| 用户审阅的安全信息 | Success | 用户已成功查看安全信息。 | 当用户在 "安全信息审阅" 页上选择 "**良好**" 时，将发生此事件。|
-| 用户审阅的安全信息 | 失败 | 用户无法查看安全信息。 | 当用户在 "安全信息审阅" 页上选择 "**良好**" 但在后端失败时，将发生此事件。|
-| 用户删除的安全信息 | Success | 用户删除*方法*。 | 当用户删除单个方法时发生此事件。 *方法*可以是验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。|
-| 用户删除的安全信息 | 失败 | 用户无法删除*方法*。 | 当用户尝试删除某方法，但出于某种原因尝试失败时，将发生此事件。 *方法*可以是验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。|
-| 用户更改的默认安全信息 | Success | 用户更改了*方法*的默认安全信息。 | 当用户更改默认方法时发生此事件。 *方法*可以是验证器应用通知、来自我的验证器应用或令牌的代码、调用 + x XXXXXXXXXX、将代码文本编码为 + x XXXXXXXXX 等等。|
-| 用户更改的默认安全信息 | 失败 | 用户无法更改*方法*的默认安全信息。 | 当用户尝试更改默认方法，但出于某种原因尝试失败时，将发生此事件。 *方法*可以是验证器应用通知、来自我的验证器应用或令牌的代码、调用 + x XXXXXXXXXX、将代码文本编码为 + x XXXXXXXXX 等等。|
+| 用户注册了所有必需的安全信息 | Success | 用户注册了所有必需的安全信息。 | 当用户成功完成注册时，将发生此事件。|
+| 用户注册了所有必需的安全信息 | 失败 | 用户已取消安全信息注册。 | 当用户取消中断模式的注册时，将发生此事件。|
+| 用户注册的安全信息 | Success | 用户注册*方法*. | 当用户注册单个方法时，将发生此事件。 *方法*可以是身份验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。| 
+| 用户查看的安全信息 | Success | 用户成功查看了安全信息。 | 当用户在安全信息审核页上选择 **"看起来不错"** 时，将发生此事件。|
+| 用户查看的安全信息 | 失败 | 用户无法查看安全信息。 | 当用户在安全信息审核页上选择 **"看起来不错"，** 但后端出现问题时，将发生此事件。|
+| 用户删除的安全信息 | Success | 用户删除*的方法*。 | 当用户删除单个方法时，将发生此事件。 *方法*可以是身份验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。|
+| 用户删除的安全信息 | 失败 | 用户未能删除*方法*。 | 当用户尝试删除方法但尝试由于某种原因失败时，将发生此事件。 *方法*可以是身份验证器应用、电话、电子邮件、安全问题、应用密码、备用电话等。|
+| 用户更改的默认安全信息 | Success | 用户更改了*方法*的默认安全信息。 | 当用户更改默认方法时，将发生此事件。 *方法*可以是身份验证器应用通知、来自验证器应用或令牌的代码、调用 #X XXXXXXXXXX、将代码文本到 #X XXXXXXXXX 等。|
+| 用户更改的默认安全信息 | 失败 | 用户未能更改*方法*的默认安全信息。 | 当用户尝试更改默认方法，但尝试由于某种原因失败时，将发生此事件。 *方法*可以是身份验证器应用通知、来自验证器应用或令牌的代码、调用 #X XXXXXXXXXX、将代码文本到 #X XXXXXXXXX 等。|
 
-## <a name="troubleshooting-interrupt-mode"></a>中断模式疑难解答
+## <a name="troubleshooting-interrupt-mode"></a>故障排除中断模式
 
-| 症状 | 故障排除步骤 |
+| 症状 | 疑难解答步骤 |
 | --- | --- |
-| 我看不到我希望看到的方法。 | 1. 检查用户是否具有 Azure AD 管理员角色。 如果是，请查看 SSPR 管理员策略差异。 <br> 2. 确定用户是否由于多重身份验证注册强制或 SSPR 注册强制而被中断。 请参阅 "组合注册模式" 下的[流程图](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes)，以确定应显示的方法。 <br> 3. 确定如何更改最近的多重身份验证或 SSPR 策略。 如果更改是最新的，则更新的策略可能需要一些时间才能传播。|
+| 我没有看到我期望看到的方法。 | 1. 检查用户是否具有 Azure AD 管理员角色。 如果是，请查看 SSPR 管理策略差异。 <br> 2. 确定用户是否因为多重身份验证注册实施或 SSPR 注册强制而中断。 请参阅"合并注册模式"下的[流程图](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes)，以确定应显示哪些方法。 <br> 3. 确定多因素身份验证或 SSPR 策略更改最近的方式。 如果更改是最近更改，则更新的策略可能需要一些时间才能传播。|
 
-## <a name="troubleshooting-manage-mode"></a>管理模式疑难解答
+## <a name="troubleshooting-manage-mode"></a>故障排除管理模式
 
-| 症状 | 故障排除步骤 |
+| 症状 | 疑难解答步骤 |
 | --- | --- |
-| 我没有添加特定方法的选项。 | 1. 确定是否为多因素身份验证或 SSPR 启用了方法。 <br> 2. 如果已启用此方法，请再次保存策略并等待1-2 小时，然后再进行测试。 <br> 3. 如果启用了此方法，请确保用户尚未设置允许其设置的该方法的最大数目。|
+| 我没有添加特定方法的选项。 | 1. 确定该方法是启用的，用于多重身份验证还是 SSPR。 <br> 2. 如果方法已启用，请再次保存策略，然后等待 1-2 小时再进行测试。 <br> 3. 如果启用了该方法，请确保用户尚未设置允许其设置的最大方法数。|
 
-## <a name="disable-combined-registration"></a>禁用组合注册
+## <a name="disable-combined-registration"></a>禁用合并注册
 
-当用户在新的组合体验中注册电话号码和/或移动应用程序时，我们的服务将为该用户的这些方法标记一组标志（StrongAuthenticationMethods）。 此功能允许用户在需要多重身份验证时，通过这些方法执行多重身份验证。
+当用户在新的组合体验中注册电话号码和/或移动应用时，我们的服务会为该用户上这些方法标记一组标志（强身份验证方法）。 此功能允许用户在需要多重身份验证时使用这些方法执行多重身份验证。
 
-如果管理员启用了预览，用户将通过新体验注册，然后管理员禁用预览版，用户可能也会在不知情的情况下注册多重身份验证。
+如果管理员启用预览，用户通过新体验注册，然后管理员禁用预览，则用户也可能在不知不觉中注册为多重身份验证。
 
-如果已完成组合注册的用户进入[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)上的 "当前自助服务密码重置（SSPR）" 注册页，则系统会提示用户执行多重身份验证，然后才能访问该页面。 此步骤应从技术角度来看，但对于之前仅注册了 SSPR 的用户来说，这是新的。 尽管这一额外步骤通过提供另一级别的安全性来改善用户的安全状况，但管理员可能希望回滚用户的用户，使他们不再能够执行多重身份验证。  
+如果已完成合并注册的用户转到 当前自助服务密码重置 （SSPR） 注册页，[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)系统将提示用户执行多重身份验证，然后才能访问该页面。 从技术角度来看，此步骤是预期的，但对于以前只为 SSPR 注册的用户来说，这是新的。 尽管此额外步骤通过提供另一级别的安全性来改善用户的安全状态，但管理员可能希望回滚其用户，以便他们不再能够执行多重身份验证。  
 
 ### <a name="how-to-roll-back-users"></a>如何回退用户
 
-如果你作为管理员，想要重置用户的多重身份验证设置，则可以使用下一部分中提供的 PowerShell 脚本。 此脚本将清除用户的移动应用和/或电话号码的 StrongAuthenticationMethods 属性。 如果你为用户运行此脚本，则他们需要重新注册多因素身份验证（如果需要）。 建议在回滚所有受影响的用户之前，为一个或两个用户测试回滚。
+如果您作为管理员想要重置用户的多重身份验证设置，则可以使用下一节中提供的 PowerShell 脚本。 该脚本将清除用户的移动应用和/或电话号码的"强身份验证方法"属性。 如果为用户运行此脚本，则如果需要，则需要重新注册多重身份验证。 我们建议在回滚所有受影响的用户之前，使用一个或两个用户测试回滚。
 
-接下来的步骤将帮助你回滚用户或用户组。
+以下步骤将帮助您回滚用户或用户组。
 
-#### <a name="prerequisites"></a>必备组件
+#### <a name="prerequisites"></a>先决条件
 
-1. 安装适当的 Azure AD PowerShell 模块。 在 PowerShell 窗口中，运行以下命令以安装模块：
+1. 安装相应的 Azure AD PowerShell 模块。 在 PowerShell 窗口中，运行以下命令以安装模块：
 
    ```powershell
    Install-Module -Name MSOnline
    Import-Module MSOnline
    ```
 
-1. 将受影响的用户对象 Id 列表保存到你的计算机上，作为一个文本文件，每行有一个 ID。 记下该文件的位置。
-1. 将以下脚本保存到计算机，并记下该脚本的位置：
+1. 将受影响的用户对象 ID 列表作为文本文件保存到您的计算机，每行包含一个 ID。 记下该文件的位置。
+1. 将以下脚本保存到计算机并记下该脚本的位置：
 
    ```powershell
    <# 
@@ -144,22 +144,22 @@ ms.locfileid: "74847382"
    }
    ```
 
-#### <a name="rollback"></a>回滚
+#### <a name="rollback"></a>回退
 
-在 PowerShell 窗口中运行以下命令，并提供脚本和用户文件位置。 出现提示时，输入全局管理员凭据。 该脚本将输出每个用户更新操作的结果。
+在 PowerShell 窗口中，运行以下命令，提供脚本和用户文件位置。 出现提示时，输入全局管理员凭据。 该脚本将输出每个用户更新操作的结果。
 
 `<script location> -path <user file location>`
 
 ### <a name="disable-the-preview-experience"></a>禁用预览体验
 
-若要禁用用户的预览体验，请完成以下步骤：
+要禁用用户的预览体验，请完成以下步骤：
 
 1. 以用户管理员身份登录到 Azure 门户。
-2. 请参阅**Azure Active Directory** > **用户设置** > **管理访问面板预览功能的设置**。
-3. 在 "**用户可以使用预览功能注册和管理安全信息**" 下，将选择器设置为 "**无**"，然后选择 "**保存**"。
+2. 转到**Azure 活动目录** > **用户设置** > **管理访问面板预览功能的设置**。
+3. **在"用户"下可以使用预览功能注册和管理安全信息**，将选择器设置为 **"无**"，然后选择"**保存**"。
 
-系统将不再提示用户使用预览体验进行注册。
+将不再提示用户使用预览体验进行注册。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [详细了解用于自助服务密码重置和 Azure 多重身份验证的组合注册的公共预览版](concept-registration-mfa-sspr-combined.md)
+* [了解有关自助服务密码重置和 Azure 多重身份验证组合注册的公共预览](concept-registration-mfa-sspr-combined.md)

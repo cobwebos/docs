@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61094639"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>适用于 .NET 的媒体服务 SDK 中的重试逻辑  
 
-使用 Microsoft Azure 服务时，可能发生暂时性故障。 如果发生暂时性故障，在大多数情况下，该操作会在几次重试后成功。 适用于 .NET 的媒体服务 SDK 执行重试逻辑以处理与异常和错误关联的暂时性故障，这些异常和错误由 Web 请求、执行查询、保存更改和存储操作导致。  默认情况下，适用于 .NET 的媒体服务 SDK 向应用程序重新引发异常前会执行四次重试。 应用程序中的代码稍后必须正确处理此异常。  
+使用 Microsoft Azure 服务时，可能发生暂时性故障。 如果发生暂时性故障，在大多数情况下，该操作会在几次重试后成功。 适用于 .NET 的媒体服务 SDK 执行重试逻辑以处理与异常和错误关联的暂时性故障，这些异常和错误由 Web 请求、执行查询、保存更改和存储操作导致。  默认情况下，适用于 .NET 的媒体服务 SDK 向应用程序重新引发异常前会执行四次重试。 然后，应用程序中的代码必须正确处理此异常。  
 
  下面为 Web 请求、存储、查询和 SaveChanges 策略的简要指南：  
 
@@ -37,7 +37,7 @@ ms.locfileid: "61094639"
 ## <a name="exception-types"></a>异常类型
 下表说明了适用于 .NET 的媒体服务 SDK 为可能导致暂时性故障的某些操作处理或不处理的异常。  
 
-| 异常 | Web 请求 | 存储 | Query | SaveChanges |
+| 异常 | Web 请求 | 存储 | 查询 | SaveChanges |
 | --- | --- | --- | --- | --- |
 | WebException<br/>有关详细信息，请参阅 [WebException 状态代码](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus)部分。 |是 |是 |是 |是 |
 | DataServiceClientException<br/> 有关详细信息，请参阅 [HTTP 错误和状态代码](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)。 |否 |是 |是 |是 |
@@ -49,10 +49,10 @@ ms.locfileid: "61094639"
 | StorageException |否 |是 |否 |否 |
 | IOException |否 |是 |否 |否 |
 
-### <a name="WebExceptionStatus"></a> WebException 状态代码
+### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a> WebException 状态代码
 下表显示了对其执行重试逻辑的 WebException 错误代码。 [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) 枚举定义状态代码。  
 
-| 状态 | Web 请求 | 存储 | Query | SaveChanges |
+| 状态 | Web 请求 | 存储 | 查询 | SaveChanges |
 | --- | --- | --- | --- | --- |
 | ConnectFailure |是 |是 |是 |是 |
 | NameResolutionFailure |是 |是 |是 |是 |
@@ -67,10 +67,10 @@ ms.locfileid: "61094639"
 | 超时 |是 |是 |是 |否 |
 | ProtocolError <br/>ProtocolError 上的重试由 HTTP 状态代码处理控制。 有关详细信息，请参阅 [HTTP 错误和状态代码](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)。 |是 |是 |是 |是 |
 
-### <a name="HTTPStatusCode"></a> HTTP 错误状态代码
-如果 Query 和 SaveChanges 操作引发 DataServiceClientException、DataServiceQueryException 或 DataServiceQueryException，则 StatusCode 属性中返回 HTTP 错误状态代码。  下表显示了对其执行重试逻辑的错误代码。  
+### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a> HTTP 错误状态代码
+查询和 SaveChanges 操作引发 DataServiceClientException、DataServiceQueryException 或 DataServiceQueryException 时，HTTP 错误状态代码将返回在 StatusCode 属性中。  下表显示了对其执行重试逻辑的错误代码。  
 
-| 状态 | Web 请求 | 存储 | Query | SaveChanges |
+| 状态 | Web 请求 | 存储 | 查询 | SaveChanges |
 | --- | --- | --- | --- | --- |
 | 401 |否 |是 |否 |否 |
 | 403 |否 |是<br/>处理等待时间较长的重试。 |否 |否 |

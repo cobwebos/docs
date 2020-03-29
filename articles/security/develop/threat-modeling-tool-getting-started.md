@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
 ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68728325"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>威胁建模工具入门
 
-Microsoft Threat Modeling Tool 2018 在 2018 年 9 月作为 GA 发布，是免费的[单击下载](https://aka.ms/threatmodelingtool)版本。 交付机制中的更改使我们能够在客户每次打开该工具时向他们推送最新的改进和 bug 修复，使其更易于维护和使用。
+Microsoft Threat Modeling Tool 2018 在 2018 年 9 月作为 GA 发布，是免费的[单击下载](https://aka.ms/threatmodelingtool)**** 版本。 交付机制中的更改使我们能够在客户每次打开该工具时向他们推送最新的改进和 bug 修复，使其更易于维护和使用。
 本文将指导你开始使用 Microsoft SDL 威胁建模方法的过程，并演示如何使用该工具来开发优秀的威胁模型，以作为安全进程的主干。
 
-本文基于 SDL 威胁建模方法的现有认知。 若要快速查看，请参阅 **[威胁建模 Web 应用程序](https://msdn.microsoft.com/library/ms978516.aspx)** 和 2006 年发布的 **[使用 STRIDE 方法发现安全漏洞](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** MSDN 文章的存档版本。
+本文基于 SDL 威胁建模方法的现有认知。 若要快速查看，请参阅**[威胁建模 Web 应用程序](https://msdn.microsoft.com/library/ms978516.aspx)** 和 2006 年发布的**[使用 STRIDE 方法发现安全漏洞](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** MSDN 文章的存档版本。
 
 简而言之，此方法涉及创建关系图、识别威胁、缓解问题和验证每个缓解操作。 下面的关系图重点突出了此过程：
 
@@ -43,9 +43,9 @@ Microsoft Threat Modeling Tool 2018 在 2018 年 9 月作为 GA 发布，是免�
 
 | 组件                                   | 详细信息                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **反馈、建议和问题按钮** | 会指向有关 SDL 所有各项的 **[MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** ， 让你有机会了解其他用户在执行哪些操作，以及解决方法和建议等信息。 如果仍然找不到想要寻找的内容，请发送电子邮件至 tmtextsupport@microsoft.com，让我们的支持团队帮助你。                                                                                                                            |
+| **反馈、建议和问题按钮** | 会指向有关 SDL 所有各项的 **[MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)**， 让你有机会了解其他用户在执行哪些操作，以及解决方法和建议等信息。 如果仍然找不到想要寻找的内容，请发送电子邮件至 tmtextsupport@microsoft.com，让我们的支持团队帮助你。                                                                                                                            |
 | **创建模型**                          | 为你打开空白画布以绘制关系图。 请确保选出想用于你的模型的模板                                                                                                                                                                                                                                                                                                                                                                       |
-| **新模型的模板**                 | 创建模型前，必须选出想要使用的模板。 我们的主要模板是 Azure 威胁模型模板，其中包含特定于 Azure 的模具、威胁和缓解操作。 对于通用模型，请从下拉菜单中选择 SDL TM 知识库。 想要创建自己的模板或为所有用户提交新的模板？ 查看我们的 **[模板存储库](https://github.com/Microsoft/threat-modeling-templates)** GitHub 页以了解详细信息                              |
+| **新模型的模板**                 | 创建模型前，必须选出想要使用的模板。 我们的主要模板是 Azure 威胁模型模板，其中包含特定于 Azure 的模具、威胁和缓解操作。 对于通用模型，请从下拉菜单中选择 SDL TM 知识库。 想要创建自己的模板或为所有用户提交新的模板？ 查看我们的**[模板存储库](https://github.com/Microsoft/threat-modeling-templates)** GitHub 页以了解详细信息                              |
 | **打开模型**                            | <p>打开以前保存的威胁模型。 如需打开最近经常使用的文件，“最近打开的模型”功能很实用。 将鼠标悬停在选项上方时，可以看到打开模型的两种方法：</p><p><ul><li>“从本计算机打开”  – 使用本地存储打开文件的经典方法</li><li>“从 OneDrive 打开” – 团队可以使用 OneDrive 中的文件夹在一个位置保存和共享他们的威胁模型，以帮助提升效率和协作</li></ul></p> |
 | **入门指南**                   | 打开 **[Microsoft 威胁建模工具](threat-modeling-tool.md)** 主页                                                                                                                                                                                                                                                                                                                                                                                            |
 
@@ -69,18 +69,18 @@ Microsoft Threat Modeling Tool 2018 在 2018 年 9 月作为 GA 发布，是免�
 他们将进行开发他的首个威胁模型的过程。
 
 > Ricardo：你好 Cristina，我在研究威胁模型关系图，想要确保我们所进行的细节都没有任何问题。 你可以帮我看一下吗？
-> Cristina：绝对是。 让我们一起看一下。
+> Cristina：没问题。 让我们一起看一下。
 > Ricardo 打开该工具并将他的屏幕与 Cristina 共享。
 
 ![基本威胁模型](./media/threat-modeling-tool-feature-overview/basictmt.png)
 
 > Cristina：好的，我们直接看，不过可以先向我介绍一下整体情况吗？
-> Ricardo：当然！ 这是结构细节：
+> Ricardo: 没问题！ 这是结构细节：
 > - 我们的用户被绘制为外部实体—正方形
 > - 他们正向我们的 Web 服务器发送命令—圆圈
 > - Web 服务器正向数据库发出请求（两条平行线）
 
-Ricardo 刚才向 Cristina 介绍的是 DFD，即 **[数据流关系图](https://en.wikipedia.org/wiki/Data_flow_diagram)** 的简写。 威胁建模工具可使用户指定信任边界（用红色虚线显示），以显示不同的实体被控制的位置。 例如，IT 管理员需要 Active Directory 系统以进行身份验证，因此 Active Directory 是不受其控制的。
+Ricardo 刚才向 Cristina 介绍的是 DFD，即**[数据流关系图](https://en.wikipedia.org/wiki/Data_flow_diagram)** 的简写。 威胁建模工具可使用户指定信任边界（用红色虚线显示），以显示不同的实体被控制的位置。 例如，IT 管理员需要 Active Directory 系统以进行身份验证，因此 Active Directory 是不受其控制的。
 
 > Cristina：我觉得没问题。 关于威胁呢？
 > Ricardo：让我给你看一下。

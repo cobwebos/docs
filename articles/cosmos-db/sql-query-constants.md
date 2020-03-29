@@ -7,29 +7,29 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873414"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL 查询常量  
 
- 常数也称为文本值或标量值，是表示特定数据值的符号。 常数的格式取决于它代表的值的数据类型。  
+ 常量，也称为文字值或标量值，是表示一个特定数据值的符号。 常量的格式取决于它所表示的值的数据类型。  
   
- 受支持的标量数据类型：  
+ 受支持的标量数据类型：****  
   
-|类型|值顺序|  
+|**类型**|值顺序****|  
 |-|-|  
-|未定义|单个值：未定义|  
-|Null|单个值：null|  
-|**布尔值**|值："false"、"true"。|  
-|**Number**|双精度浮点数，IEEE 754 标准。|  
+|**定义**|单个值：未定义****|  
+|**空**|单个值：null****|  
+|**布尔**|值："false"、"true"********。|  
+|**数量**|双精度浮点数，IEEE 754 标准。|  
 |**字符串**|零个或多个 Unicode 字符序列。 字符串必须用单引号或双引号括起来。|  
-|数组|零个或多个元素序列。 每个元素可以是任何标量数据类型的值，但**Undefined**除外。|  
-|**Object**|零个或多个名称/值对的无序集。 当名称为一个Unicode字符串，值可以属于任何标量数据类型，“未定义”除外。|  
+|数组****|零个或多个元素序列。 每个元素可以是任何标量数据类型的值，但 **"未定义"** 除外。|  
+|**对象**|零个或多个名称/值对的无序集。 当名称为一个Unicode字符串，值可以属于任何标量数据类型，“未定义”除外****。|  
   
-## <a name="bk_syntax"></a>语法
+## <a name="syntax"></a><a name="bk_syntax"></a>语法
   
 ```sql  
 <constant> ::=  
@@ -59,7 +59,7 @@ ms.locfileid: "74873414"
   
 ```  
   
-##  <a name="bk_arguments"></a> 参数
+##  <a name="arguments"></a><a name="bk_arguments"></a>参数
   
 * `<undefined_constant>; Undefined`  
   
@@ -67,7 +67,7 @@ ms.locfileid: "74873414"
   
 * `<null_constant>; null`  
   
-  表示 Null 类型的 null 值。  
+  表示 Null 类型的 null 值********。  
   
 * `<boolean_constant>`  
   
@@ -75,11 +75,11 @@ ms.locfileid: "74873414"
   
 * `false`  
   
-  表示 Boolean 类型的 false 值。  
+  表示 Boolean 类型的 false 值****。  
   
 * `true`  
   
-  表示 Boolean 类型的 true 值。  
+  表示 Boolean 类型的 true 值****。  
   
 * `<number_constant>`  
   

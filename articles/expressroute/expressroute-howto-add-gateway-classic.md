@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：向 VNet 添加网关：经典
+title: Azure 快速路由：向 VNet 添加网关：经典
 description: 在 ExpressRoute 配置中使用 PowerShell 配置经典部署模型 VNet 的 VNet 网关。
 services: expressroute
 author: charwen
@@ -9,10 +9,10 @@ ms.date: 12/06/2019
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: d7927af5b831dbe3294e1abc3a878e323bf1867e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928048"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>使用 PowerShell 配置 ExpressRoute 的虚拟网络网关（经典）
@@ -32,7 +32,7 @@ ms.locfileid: "74928048"
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-beginning"></a>开始之前
-验证是否已安装此配置所需的 Azure PowerShell cmdlet。
+确认已安装此配置所需的 Azure PowerShell cmdlet。
 
 [!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 

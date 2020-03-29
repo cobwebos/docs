@@ -7,19 +7,19 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68950219"
 ---
-# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中进行数据配置文件数据源
+# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中的数据配置文件数据源
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
-**Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，**Azure 数据目录**旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 数据源向 **Azure 数据目录**注册时，该服务将复制其元数据并为其建立索引，但并不仅仅只是这样。
+**Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换句话说 **，Azure 数据目录**是帮助人们发现、理解和使用数据源，以及帮助组织从现有数据中获取更多价值。 数据源向 **Azure 数据目录**注册时，该服务将复制其元数据并为其建立索引，但并不仅仅只是这样。
 
-**Azure 数据目录**的“数据分析”功能检查目录中受支持数据源的数据，并收集有关该数据的统计信息和信息。 想要包括数据资产的配置文件很简单。 注册数据资产时，在数据源注册工具中选择“包括数据配置文件”。
+**Azure 数据目录**的“数据分析”**** 功能检查目录中受支持数据源的数据，并收集有关该数据的统计信息和信息。 想要包括数据资产的配置文件很简单。 注册数据资产时，在数据源注册工具中选择“包括数据配置文件”****。
 
 ## <a name="what-is-data-profiling"></a>什么是数据分析
 
@@ -49,9 +49,9 @@ ms.locfileid: "68950219"
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>如何在注册数据源时包括数据配置文件
 
-想要包括数据源的配置文件很简单。 注册数据资产时，在数据源注册工具的“要注册的对象”面板中选择“包括数据配置文件”。
+想要包括数据源的配置文件很简单。 注册数据资产时，在数据源注册工具的“要注册的对象”**** 面板中选择“包括数据配置文件”****。
 
-!["包括数据配置文件" 复选框](media/data-catalog-data-profile/data-catalog-register-profile.png)
+![包括数据配置文件复选框](media/data-catalog-data-profile/data-catalog-register-profile.png)
 
 若要了解有关如何注册数据源的详细信息，请参阅[如何注册数据源](data-catalog-how-to-register.md)和 [Azure 数据目录入门](data-catalog-get-started.md)。
 
@@ -60,16 +60,16 @@ ms.locfileid: "68950219"
 若要发现包括数据配置文件的数据资产，可以包括 `has:tableDataProfiles` 或 `has:columnsDataProfiles` 作为搜索条件之一。
 
 > [!NOTE]
-> 在数据源注册工具中选择“包括数据配置文件”将包括表和列级配置文件信息。 但是，数据目录 API 允许数据资产在只包含一组配置文件信息的情况下进行注册。
+> 在数据源注册工具中选择“包括数据配置文件”**** 将包括表和列级配置文件信息。 但是，数据目录 API 允许数据资产在只包含一组配置文件信息的情况下进行注册。
 >
 
 ## <a name="viewing-data-profile-information"></a>查看数据配置文件信息
 
-找到含有配置文件的合适数据源后，就可以查看数据配置文件详细信息。 要查看数据配置文件，请在数据目录门户窗口选择数据资产，并选择“数据配置文件”。
+找到含有配置文件的合适数据源后，就可以查看数据配置文件详细信息。 要查看数据配置文件，请在数据目录门户窗口选择数据资产，并选择“数据配置文件”****。
 
 ![数据配置文件选项卡](media/data-catalog-data-profile/data-catalog-view.png)
 
-“Azure 数据目录”中的数据配置文件显示表和列配置文件信息，包括：
+“Azure 数据目录”**** 中的数据配置文件显示表和列配置文件信息，包括：
 
 ### <a name="object-data-profile"></a>对象数据配置文件
 
@@ -88,7 +88,7 @@ ms.locfileid: "68950219"
 
 数据分析提供有关已注册数据资产的统计信息和信息，帮助确定数据是否适用于解决业务问题。 连同批注和记录数据源一起，数据配置文件可以让用户深入了解数据。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [How to register data sources](data-catalog-how-to-register.md)
 * [Azure 数据目录入门](data-catalog-get-started.md)

@@ -1,6 +1,6 @@
 ---
 title: 将数据从 Logstash 引入 Azure 数据资源管理器
-description: 在本文中，您将学习如何将 （加载） 数据引入到 Azure 数据资源管理器从 Logstash
+description: 本文介绍如何将数据从 Logstash 引入（加载）到 Azure 数据资源管理器中
 author: tamirkamara
 ms.author: takamara
 ms.reviewer: orspodek
@@ -8,17 +8,17 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 86f6732cbf2409d3c79a3d7709100e8af24988a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66494544"
 ---
 # <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>将数据从 Logstash 引入 Azure 数据资源管理器
 
-[Logstash](https://www.elastic.co/products/logstash) 是一个开源服务器端数据处理管道，可以同时从多个源引入数据、转换数据，然后将数据发送到你偏好的“储存”中。 在本文中，您将该数据发送到 Azure 数据资源管理器，这是日志和遥测数据快速且高度可缩放的数据探索服务。 首先你将在测试群集中创建一个表和数据映射，然后指示 Logstash 将数据发送到该表，并验证结果。
+[Logstash](https://www.elastic.co/products/logstash) 是一个开源服务器端数据处理管道，可以同时从多个源引入数据、转换数据，然后将数据发送到你偏好的“储存”中。 在本文中，你要将该数据发送到 Azure 数据资源管理器 - 用于日志和遥测数据的快速且高度可缩放的数据探索服务。 首先你将在测试群集中创建一个表和数据映射，然后指示 Logstash 将数据发送到该表，并验证结果。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，请在开始之前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * Azure 数据资源管理器[测试群集和数据库](create-cluster-database-portal.md)
@@ -111,9 +111,9 @@ output {
 | **路径** | Logstash 插件会将事件写入临时文件，然后将其发送到 Azure 数据资源管理器。 此参数包含要将文件写入到的路径，以及一个用于轮转文件的时间表达式，该表达式可触发上传到 Azure 数据资源管理器服务的操作。|
 | **ingest_url** | 用于进行引入相关通信的 Kusto 终结点。|
 | **app_id**、**app_key** 和 **app_tenant**| 连接到 Azure 数据资源管理器所需的凭据。 请务必使用具有引入特权的应用程序。 |
-| **database**| 要将事件放入到的数据库的名称。 |
-| **table** | 要将事件放入到的目标表的名称。 |
-| **mapping** | mapping（映射）用于将传入事件的 json 字符串映射为正确的行格式（定义哪些属性要进入哪个列）。 |
+| **数据库**| 要将事件放入到的数据库的名称。 |
+| **表** | 要将事件放入到的目标表的名称。 |
+| **映射** | mapping（映射）用于将传入事件的 json 字符串映射为正确的行格式（定义哪些属性要进入哪个列）。 |
 
 ## <a name="run-logstash"></a>运行 Logstash
 

@@ -11,10 +11,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 04/06/2018
 ms.openlocfilehash: 28a4a53851155c56e8d34981862bf52a3a2cf15b
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72249181"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>使用 Microsoft 基因组学实现业务连续性的概述
@@ -30,7 +30,7 @@ ms.locfileid: "72249181"
 
 
 ### <a name="manually-failover-microsoft-genomics-workflows-to-another-region"></a>手动将 Microsoft 基因组学工作流故障转移到另一个区域
-如果发生区域数据中心中断，你可以选择根据你的个人数据主权和业务连续性要求在次要区域中提交 Microsoft 基因组学工作流。 若要手动故障转移 Microsoft 基因组学工作流，请使用不同的区域特定的 基因组学帐户，并使用相应的区域特定的基因组学和存储帐户凭据提交作业。
+如果发生区域数据中心中断，您可以选择根据您的个人数据主权和业务连续性要求在辅助区域提交 Microsoft 基因组工作流。 若要手动故障转移 Microsoft 基因组学工作流，请使用不同的区域特定的 基因组学帐户，并使用相应的区域特定的基因组学和存储帐户凭据提交作业。
 
 具体而言，需要：
 * 使用 Azure 门户在次要区域中创建基因组学帐户。 

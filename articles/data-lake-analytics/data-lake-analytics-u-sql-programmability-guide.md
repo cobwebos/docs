@@ -10,10 +10,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: dc55615d7a5c6ae9a393ed4fd5f49cd92aedc0f9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73162577"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可编程性指南
@@ -133,7 +133,7 @@ U-SQL 当前使用 .NET Framework 4.5 版本。 因此请确保自己的程序�
 
 每个上传的程序集 DLL、资源文件（如不同的运行时、本机程序集或配置文件）最大可为 400 MB。 部署的资源（通过 DEPLOY RESOURCE 或引用程序集部署）的总大小及其附加文件不能超过 3 GB。
 
-最后请注意，每个 U-SQL 数据库仅可包含任何给定程序集的一个版本。 例如，如果需要 Newtonsoft.json Json.NET 库的版本7和版本8，则需要将它们注册到两个不同的数据库中。 此外，每个脚本仅可引用给定程序集 DLL 的一个版本。 在这一方面，U-SQL 遵循 C# 程序集管理和版本控制语义。
+最后请注意，每个 U-SQL 数据库仅可包含任何给定程序集的一个版本。 例如，如果需要 NewtonSoft Json.NET库的版本 7 和版本 8，则需要将它们注册到两个不同的数据库中。 此外，每个脚本仅可引用给定程序集 DLL 的一个版本。 在这一方面，U-SQL 遵循 C# 程序集管理和版本控制语义。
 
 ## <a name="use-user-defined-functions-udf"></a>使用用户定义的函数 (UDF)
 U-SQL 用户定义的函数或 UDF 是编程例程，可接受参数、执行操作（例如复杂计算）并将操作的结果以值的形式返回。 UDF 的返回值只能是单个标量。 与任何其他 C# 标量函数相似，U-SQL UDF可在 U-SQL 基本脚本中进行调用。
@@ -496,7 +496,7 @@ using System.IO;
 
 * 使用 SqlUserDefinedType 属性定义用户定义的类型。
 
-**SqlUserDefinedType** 用于将程序集中的类型定义标记为 U-SQL 中的用户定义的类型 (UDT)。 特性上的属性反映 UDT 的物理特征。 此类不能继承。
+**SqlUserDefinedType** 用于将程序集中的类型定义标记为 U-SQL 中的用户定义的类型 (UDT)。 特性上的属性反映 UDT 的物理特征。 无法继承此类。
 
 SqlUserDefinedType 是 UDT 定义必需的特性。
 
@@ -912,7 +912,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
     }
 ```
 
-**SqlUserDefinedAggregate** 指示该类型应注册为用户定义的聚合。 此类不能继承。
+**SqlUserDefinedAggregate** 指示该类型应注册为用户定义的聚合。 无法继承此类。
 
 SqlUserDefinedType 属性对于 UDAGG 定义是**可选**的。
 
@@ -1057,7 +1057,7 @@ U-SQL 可让你定义自定义可编程性对象，此类对象称为用户定�
 
 * EXTRACT
 * OUTPUT
-* 流程
+* PROCESS
 * COMBINE
 * REDUCE
 
@@ -1067,11 +1067,11 @@ U-SQL 可让你定义自定义可编程性对象，此类对象称为用户定�
 ## <a name="use-user-defined-extractors"></a>使用用户定义的提取器
 U-SQL 允许通过使用 EXTRACT 语句导入外部数据。 EXTRACT 语句可以使用内置 UDO 提取器：  
 
-* *Extractors.Text()* ：提供从不同编码的分隔文本文件中进行的提取。
+* *Extractors.Text()*：提供从不同编码的分隔文本文件中进行的提取。
 
-* *Extractors.Csv()* ：提供从不同编码的逗号分隔值 (CSV) 文件中进行的提取。
+* *Extractors.Csv()*：提供从不同编码的逗号分隔值 (CSV) 文件中进行的提取。
 
-* *Extractors.Tsv()* ：提供从不同编码的制表符分隔值 (TSV) 文件中进行的提取。
+* *Extractors.Tsv()*：提供从不同编码的制表符分隔值 (TSV) 文件中进行的提取。
 
 它可用于开发自定义提取器。 可在数据导入期间借助此语句执行以下任何任务：
 
@@ -1093,7 +1093,7 @@ public class SampleExtractor : IExtractor
 }
 ```
 
-**SqlUserDefinedExtractor** 属性指示该类型应注册为用户定义的提取器。 此类不能继承。
+**SqlUserDefinedExtractor** 属性指示该类型应注册为用户定义的提取器。 无法继承此类。
 
 SqlUserDefinedExtractor 是 UDE 定义的可选特性。 用于定义 UDE 对象的 AtomicFileProcessing 属性。
 
@@ -1102,7 +1102,7 @@ SqlUserDefinedExtractor 是 UDE 定义的可选特性。 用于定义 UDE 对象
 * **true** = 指示此提取器需要原子输入文件（JSON、XML 等）
 * **false** = 指示此提取器可以处理拆分文件/分布式文件（CSV、SEQ 等）
 
-主要 UDE 可编程性对象包括输入和输出。 输入对象用于将输入数据枚举为 `IUnstructuredReader`。 输出对象用于将输出数据设置为提取器活动的结果。
+主要 UDE 可编程性对象包括输入**** 和输出****。 输入对象用于将输入数据枚举为 `IUnstructuredReader`。 输出对象用于将输出数据设置为提取器活动的结果。
 
 可通过 `System.IO.Stream` 和 `System.IO.StreamReader` 访问输入数据。
 
@@ -1219,9 +1219,9 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>使用用户定义的输出器
 用户定义的输出器是另一种 U-SQL UDO，允许扩展内置 U-SQL 功能。 与提取程序类似，内置输出器也有几种。
 
-* *Outputters.Text()* ：将数据写入不同编码的分隔文本文件中。
-* *Outputters.Csv()* ：将数据写入不同编码的逗号分隔值 (CSV) 文件中。
-* *Outputters.Tsv()* ：将数据写入不同编码的制表符分隔值 (TSV) 文件中。
+* *Outputters.Text()*：将数据写入不同编码的分隔文本文件中。
+* *Outputters.Csv()*：将数据写入不同编码的逗号分隔值 (CSV) 文件中。
+* *Outputters.Tsv()*：将数据写入不同编码的制表符分隔值 (TSV) 文件中。
 
 自定义输出器允许以自定义格式编写数据。 这有助于完成以下任务：
 
@@ -1271,7 +1271,7 @@ public class MyOutputter : IOutputter
 * 构造函数类用于将参数传递到用户定义的输出器。
 * `Close` 用于选择性地进行重写以发布开销状态或确定最后一行的写入时间。
 
-**SqlUserDefinedOutputter** 属性指示该类型应注册为用户定义的输出器。 此类不能继承。
+**SqlUserDefinedOutputter** 属性指示该类型应注册为用户定义的输出器。 无法继承此类。
 
 SqlUserDefinedOutputter 是用户定义的输出器定义的可选属性。 用于定义 AtomicFileProcessing 属性。
 
@@ -1280,7 +1280,7 @@ SqlUserDefinedOutputter 是用户定义的输出器定义的可选属性。 用�
 * **true** = 指示此输出器需要原子输出文件（JSON、XML 等）
 * **false** = 指示此输出器可以处理拆分文件/分布式文件（CSV、SEQ 等）
 
-主要可编程性对象是行和输出。 **row** 对象用于将输出数据枚举为 `IRow` 接口。 **Output** 用于将输出数据设置为目标文件。
+主要可编程性对象是行**** 和输出****。 **row** 对象用于将输出数据枚举为 `IRow` 接口。 **Output** 用于将输出数据设置为目标文件。
 
 可通过 `IRow` 接口访问输出数据。 一次将输出数据传递到一行。
 
@@ -1514,11 +1514,11 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-**SqlUserDefinedProcessor** 指示该类型应注册为用户定义的处理器。 此类不能继承。
+**SqlUserDefinedProcessor** 指示该类型应注册为用户定义的处理器。 无法继承此类。
 
 SqlUserDefinedProcessor 属性对于 UDP 定义是**可选**的。
 
-主要可编程性对象是输入和输出。 输入对象用于枚举输入列，输出对象用于将输出数据设置为处理器活动的结果。
+主要可编程性对象是输入**** 和输出****。 输入对象用于枚举输入列，输出对象用于将输出数据设置为处理器活动的结果。
 
 对于输入列枚举，此处使用 `input.Get` 方法。
 
@@ -1635,7 +1635,7 @@ public class ParserApplier : IApplier
 * 针对外部表的每一行进行调用。 返回 `IUpdatableRow` 输出行集。
 * 构造函数类用于将参数传递到用户定义的应用器。
 
-**SqlUserDefinedApplier** 指示该类型应注册为用户定义的应用器。 此类不能继承。
+**SqlUserDefinedApplier** 指示该类型应注册为用户定义的应用器。 无法继承此类。
 
 **SqlUserDefinedApplier** 对于用户定义的应用器是**可选**的。
 
@@ -1847,7 +1847,7 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-**SqlUserDefinedCombiner** 属性指示该类型应注册为用户定义的合并器。 此类不能继承。
+**SqlUserDefinedCombiner** 属性指示该类型应注册为用户定义的合并器。 无法继承此类。
 
 **SqlUserDefinedCombiner** 用于定义合并器模式属性。 它也是用户定义的合并器定义的可选属性。
 
@@ -1873,7 +1873,7 @@ CombinerMode 枚举可采用以下值：
         IUpdatableRow output
 ```
 
-输入行集作为左侧和右侧 `IRowset` 类型的接口进行传递。 必须同时枚举这两个行集以进行处理。 由于只能枚举每个接口一次，因此必须在必要时对其进行枚举和缓存。
+输入行集作为左侧**** 和右侧**** `IRowset` 类型的接口进行传递。 必须同时枚举这两个行集以进行处理。 由于只能枚举每个接口一次，因此必须在必要时对其进行枚举和缓存。
 
 为进行缓存，可创建 List\<T\> 类型的内存结构，作为 LINQ 查询执行的结果，具体而言就是 List<`IRow`>。 还可在枚举期间使用匿名数据类型。
 
@@ -2107,13 +2107,13 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-**SqlUserDefinedReducer** 属性指示该类型应注册为用户定义的化简器。 此类不能继承。
+**SqlUserDefinedReducer** 属性指示该类型应注册为用户定义的化简器。 无法继承此类。
 **SqlUserDefinedReducer** 是用户定义的化简器定义的可选属性。 可用于定义 IsRecursive 属性。
 
 * bool     IsRecursive    
 * **true** = 指示此化简器是否关联和可交换
 
-主要可编程性对象是输入和输出。 input 对象用于枚举输入行。 Output 用于将输出行设置为化简活动的结果。
+主要可编程性对象是输入**** 和输出****。 input 对象用于枚举输入行。 Output 用于将输出行设置为化简活动的结果。
 
 对于输入行枚举，需使用 `Row.Get` 方法。
 

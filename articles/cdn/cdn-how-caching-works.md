@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
 ms.openlocfilehash: 92d93fbf9fa2f8df15acb62802d7ac53db836dc1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593848"
 ---
 # <a name="how-caching-works"></a>缓存工作原理
@@ -76,7 +76,7 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 - 在从客户端发往 CDN POP 的 HTTP 响应中使用时：
      - **Verizon 推出的 Azure CDN 标准版/高级版**和 **Microsoft 推出的 Azure CDN 标准版**支持所有 `Cache-Control` 指令。
      - **Akamai 推出的 Azure CDN 标准版**仅支持以下 `Cache-Control` 指令，将忽略所有其他指令：
-         - `max-age`：缓存可存储指定秒数的内容。 例如， `Cache-Control: max-age=5` 。 此指令指定了被视为最新内容的最长时间。
+         - `max-age`：缓存可存储指定秒数的内容。 例如，`Cache-Control: max-age=5` 。 此指令指定了被视为最新内容的最长时间。
          - `no-cache`：缓存内容，但每次传送缓存中的内容前会对其进行验证。 等效于 `Cache-Control: max-age=0`。
          - `no-store`：从不缓存内容。 删除之前已存储的内容。
 
@@ -86,7 +86,7 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 - 类似于 `Cache-Control: max-age`。
 - 当 `Cache-Control` 不存在时使用。
 
-**Pragma：**
+**普拉格马：**
    - Azure CDN 默认情况下未采用。
    - HTTP 1.0 中引入的旧标头支持向后兼容性。
    - 用作具有以下指令的客户端请求标头：`no-cache`。 此指令指示服务器提供新的资源版本。
@@ -98,14 +98,14 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 
 **ETag：**
 - **Verizon 推出的 Azure CDN 标准版/高级版**默认支持 `ETag`，而 **Microsoft 推出的 Azure CDN 标准版**和 **Akamai 推出的 Azure CDN 标准版**则不。
-- `ETag` 为每个文件和文件版本定义唯一字符串。 例如， `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"` 。
+- `ETag` 为每个文件和文件版本定义唯一字符串。 例如，`ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"` 。
 - 在 HTTP 1.1 中引入，并且比 `Last-Modified` 更新。 当很难确定上次修改日期时，会非常有用。
 - 支持强验证和弱验证，不过，Azure CDN 仅支持强验证。 对于强验证，两种资源表示形式的每个字节都必须相同。 
-- 缓存通过在请求中发送带有一个或多个 `ETag` 验证程序的 `If-None-Match` 标头来验证使用 `ETag` 的文件。 例如， `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"` 。 如果服务器的版本与列表中的 `ETag` 验证程序相匹配，则在其响应中发送状态代码 304（未修改）。 如果版本不同，则服务器响应状态代码 200（确定）和更新后的资源。
+- 缓存通过在请求中发送带有一个或多个 `ETag` 验证程序的 `If-None-Match` 标头来验证使用 `ETag` 的文件。 例如，`If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"` 。 如果服务器的版本与列表中的 `ETag` 验证程序相匹配，则在其响应中发送状态代码 304（未修改）。 如果版本不同，则服务器响应状态代码 200（确定）和更新后的资源。
 
 **Last-Modified：**
 - 如果 `ETag` 不是 HTTP 响应的一部分，则使用 `Last-Modified`（仅限 **Verizon 推出的 Azure CDN 标准版/高级版**）。 
-- 指定源服务器已确定上次修改资源的日期和时间。 例如， `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT` 。
+- 指定源服务器已确定上次修改资源的日期和时间。 例如，`Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT` 。
 - 缓存通过在请求中发送带有日期和时间的 `If-Modified-Since` 标头来验证使用 `Last-Modified` 的文件。 源服务器将该日期与最新资源的 `Last-Modified` 标头进行比较。 如果自指定时间以来未修改该资源，则服务器在其响应中返回状态代码 304（未修改）。 如果已修改该资源，则服务器返回状态代码 200（确定）和更新后的资源。
 
 ## <a name="determining-which-files-can-be-cached"></a>确定可以缓存哪些文件
@@ -116,7 +116,7 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 |-------------------|-----------------------------------|------------------------|------------------------------|
 | HTTP 状态代码 | 200、203、206、300、301、410、416 | 200                    | 200、203、300、301、302、401 |
 | HTTP 方法      | GET、HEAD                         | GET                    | GET                          |
-| 文件大小限制  | 300 GB                            | 300 GB                 | - 常规 Web 传送优化：1.8 GB<br />- 媒体流式传输优化：1.8 GB<br />- 大型文件优化：150 GB |
+| 文件大小限制  | 300 GB                            | 300 GB                 | - 常规 Web 传递优化：1.8 GB<br />- 媒体流式处理优化：1.8 GB<br />- 大型文件优化：150 GB |
 
 若要在资源上使用 **Microsoft 推出的 Azure CDN 标准版**缓存，源服务器必须支持任何 HEAD 和 GET HTTP 请求，且资产的任何 HEAD 和 GET HTTP 响应的 content-length 值必须相同。 对于 HEAD 请求，源服务器必须支持 HEAD 请求，且必须使用接收 GET 请求时所使用的标头进行响应。
 
@@ -124,14 +124,14 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 
 下表介绍了 Azure CDN 产品的默认缓存行为及其优化。
 
-|    | Microsoft：常规 Web 传送 | Verizon：常规 Web 传送 | Verizon：DSA | Akamai：常规 Web 传送 | Akamai：DSA | Akamai：大文件下载 | Akamai：常规或 VOD 媒体流式处理 |
+|    | Microsoft：常规 Web 分发 | Verizon：常规 Web 分发 | Verizon：DSA | Akamai：常规 Web 分发 | Akamai：DSA | Akamai：大型文件下载 | Akamai：常规或 VOD 媒体流式处理 |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **优先处理源**       | 是    | 是   | 否   | 是    | 否   | 是   | 是    |
+| **荣誉起源**       | 是    | 是   | 否   | 是    | 否   | 是   | 是    |
 | **CDN 缓存持续时间** | 2 天 |7 天 | 无 | 7 天 | 无 | 1 天 | 1 年 |
 
 **优先处理源**：指定是否优先处理支持的缓存指令标头（如果它们存在于源服务器的 HTTP 响应中）。
 
-**CDN 缓存持续时间**：指定在 Azure CDN 上可缓存资源的时间。 然而，如果“优先处理源”  为“是”，并且源服务器的 HTTP 响应包括缓存指令标头 `Expires` 或 `Cache-Control: max-age`，则 Azure CDN 将改用由标头指定的持续时间值。 
+**CDN 缓存持续时间**：指定在 Azure CDN 上可缓存资源的时间。 然而，如果“优先处理源”**** 为“是”，并且源服务器的 HTTP 响应包括缓存指令标头 `Expires` 或 `Cache-Control: max-age`，则 Azure CDN 将改用由标头指定的持续时间值。 
 
 ## <a name="next-steps"></a>后续步骤
 

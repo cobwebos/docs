@@ -1,6 +1,6 @@
 ---
-title: 转到生产调用 web Api 的 web 应用-Microsoft 标识平台 |Microsoft
-description: 了解如何迁移到生产调用 web Api 的 web 应用。
+title: 将调用 Web API 的 Web 应用移到生产环境 - Microsoft 标识平台 | Azure
+description: 了解如何将调用 Web API 的 Web 应用移到生产环境。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,30 +15,30 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: b1307df8f6dfb0457719b13c9e5cd0bf28660caa
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758933"
 ---
-# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>用于调用 web Api 的 web 应用：移动到生产
+# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>调用 Web API 的 Web 应用：移动到生产
 
-了解如何获取令牌来调用 web Api 后，请了解如何迁移到生产。
+现在你已了解如何获取用于调用 Web API 的令牌，接下来了解如何移到生产环境。
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 ASP.NET Core web 应用，请参阅完整的渐进教程。 本教程：
+通过试用 ASP.NET Core Web 应用的完整渐进式教程了解更多信息。 本教程：
 
-- 演示如何将用户登录到多个受众或国家云，或使用社交标识。
+- 演示如何将用户登录到多个受众或国家云，或使用社交标识登录。
 - 调用 Microsoft Graph。
-- 调用多个 Microsoft Api。
+- 调用多个 Microsoft API。
 - 处理增量同意。
-- 调用你自己的 web API。
+- 调用自己的 Web API。
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core web 应用教程](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
+> [ASP.NET核心网络应用教程](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial#scope-of-this-tutorial)
 
 <!--- Removing this diagram as it's already shown from the next step linked tutorial
 

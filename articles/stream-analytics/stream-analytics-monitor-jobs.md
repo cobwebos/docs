@@ -8,21 +8,21 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75431672"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以编程方式创建流分析作业监视器
 
 本文说明如何为流分析作业启用监视功能。 通过 REST API、Azure SDK 或 PowerShell 创建的流分析作业默认不启用监视功能。 可以在 Azure 门户中手动启用此功能，只需转到作业的“监视”页并单击“启用”按钮即可；也可以按本文中所述步骤自动化此过程。 流分析作业的监视数据会显示在 Azure 门户的“指标”区域。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-在开始此过程之前，必须具备以下先决条件：
+在开始执行此过程之前，必须具备以下先决条件：
 
-* Visual Studio 2019 或2015
+* Visual Studio 2019 或 2015
 * 已下载并安装了 [Azure.NET SDK](https://azure.microsoft.com/downloads/)
 * 具有需要已启用监视功能的现有流分析作业
 
@@ -135,10 +135,10 @@ ms.locfileid: "75431672"
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>为现有流分析作业启用监视功能
 
-以下代码为现有流分析作业启用监视功能。 代码的第一部分针对流分析服务执行 GET 请求，目的是检索特定流分析作业的信息。 它在代码的后半部分使用*ID*属性（从 GET 请求检索）作为 put 方法的参数，将 put 请求发送到 Insights 服务以启用流分析作业监视。
+以下代码为现有**** 流分析作业启用监视功能。 代码的第一部分针对流分析服务执行 GET 请求，目的是检索特定流分析作业的信息。 它使用*ID*属性（从 GET 请求检索）作为代码后半部分的 Put 方法的参数，该方法向 Insights 服务发送 PUT 请求，以启用流分析作业的监视。
 
 > [!WARNING]
-> 如果此前为其他流分析作业启用了监视功能，那么不管是通过 Azure 门户进行还是通过以下代码以编程方式完成，我们都建议提供在之前启用监视功能时所使用的同一个存储帐户名称。
+> 如果此前为其他流分析作业启用了监视功能，那么不管是通过 Azure 门户进行还是通过以下代码以编程方式完成，我们都建议提供在之前启用监视功能时所使用的同一个存储帐户名称。****
 > 
 > 存储帐户将链接到创建流分析作业时所在的区域，并不特定于作业本身。
 > 
@@ -169,12 +169,12 @@ ms.locfileid: "75431672"
 
 ## <a name="get-support"></a>获取支持
 
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+有关进一步帮助，请尝试我们的[Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
+* [使用 Azure 流分析开始](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

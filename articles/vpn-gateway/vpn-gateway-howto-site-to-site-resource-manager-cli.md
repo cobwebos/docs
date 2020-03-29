@@ -1,5 +1,5 @@
 ---
-title: 将本地网络连接到虚拟网络：站点到站点 VPN： CLI
+title: 将本地网络连接到虚拟网络：站点到站点 VPN：CLI
 description: 通过公共 Internet 创建从本地网络到 Azure 虚拟网络的 IPsec 连接的步骤。 这些步骤将帮助你使用 CLI 创建跨界站点到站点 VPN 网关连接。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
 ms.openlocfilehash: 6d28a5a37be2947ea6cc7019d2b3cc73932c60d6
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75779087"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>使用 CLI 创建具有站点到站点 VPN 连接的虚拟网络
@@ -21,8 +21,8 @@ ms.locfileid: "75779087"
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-> * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
-> * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
+> * [电源外壳](vpn-gateway-create-site-to-site-rm-powershell.md)
+> * [Cli](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure 门户（经典）](vpn-gateway-howto-site-to-site-classic-portal.md)
 > 
 >
@@ -43,7 +43,7 @@ ms.locfileid: "75779087"
  
   [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-### <a name="example"></a>示例值
+### <a name="example-values"></a><a name="example"></a>示例值
 
 可使用以下值创建测试环境，或参考这些值以更好地理解本文中的示例：
 
@@ -68,13 +68,13 @@ GatewayType             = Vpn 
 ConnectionName          = VNet1toSite2
 ```
 
-## <a name="Login"></a>1. 连接到你的订阅
+## <a name="1-connect-to-your-subscription"></a><a name="Login"></a>1. 连接到您的订阅
 
 如果选择在本地运行 CLI，请连接到订阅。 如果是在浏览器中使用 Azure Cloud Shell，则无需连接到订阅。 将在 Azure Cloud Shell 中自动连接。 但是，你可能需要在连接后验证是否使用了正确的订阅。
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## <a name="rg"></a>2. 创建资源组
+## <a name="2-create-a-resource-group"></a><a name="rg"></a>2. 创建资源组
 
 以下示例在“eastus”位置创建名为“TestRG1”的资源组。 如果在需创建 VNet 的区域中已经有了一个资源组，则可改用该资源组。
 
@@ -82,7 +82,7 @@ ConnectionName          = VNet1toSite2
 az group create --name TestRG1 --location eastus
 ```
 
-## <a name="VNet"></a>3. 创建虚拟网络
+## <a name="3-create-a-virtual-network"></a><a name="VNet"></a>3. 创建虚拟网络
 
 如果还没有虚拟网络，请使用 [az network vnet create](/cli/azure/network/vnet) 命令创建一个。 创建虚拟网络时，请确保指定的地址空间不与本地网络的任一个地址空间相重叠。
 
@@ -97,7 +97,7 @@ az group create --name TestRG1 --location eastus
 az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefix 10.11.0.0/16 --location eastus --subnet-name Subnet1 --subnet-prefix 10.11.0.0/24
 ```
 
-## 4. <a name="gwsub"></a>创建网关子网
+## <a name="4-create-the-gateway-subnet"></a>4.<a name="gwsub"></a>创建网关子网
 
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
@@ -110,7 +110,7 @@ az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubn
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="localnet"></a>5. 创建本地网络网关
+## <a name="5-create-the-local-network-gateway"></a><a name="localnet"></a>5. 创建本地网络网关
 
 本地网络网关通常是指本地位置。 可以为站点提供一个名称供 Azure 引用，并指定本地 VPN 设备的 IP 地址，以便创建一个连接来连接到该设备。 此外还可指定 IP 地址前缀，以便通过 VPN 网关将其路由到 VPN 设备。 指定的地址前缀是位于本地网络的前缀。 如果本地网络出现变化，可以轻松更新这些前缀。
 
@@ -125,9 +125,9 @@ az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubn
 az network local-gateway create --gateway-ip-address 23.99.221.164 --name Site2 --resource-group TestRG1 --local-address-prefixes 10.0.0.0/24 20.0.0.0/24
 ```
 
-## <a name="PublicIP"></a>6. 请求公共 IP 地址
+## <a name="6-request-a-public-ip-address"></a><a name="PublicIP"></a>6. 请求公共 IP 地址
 
-VPN 网关必须具有公共 IP 地址。 请先请求 IP 地址资源，然后在创建虚拟网关时参阅该资源。 创建 VPN 网关时，IP 地址是动态分配给资源的。 VPN 网关当前仅支持动态公共 IP 地址分配。 不能请求静态公共 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
+VPN 网关必须具有公共 IP 地址。 请先请求 IP 地址资源，然后在创建虚拟网关时参阅该资源。 创建 VPN 网关时，IP 地址是动态分配给资源的。 VPN 网关当前仅支持动态** 公共 IP 地址分配。 不能请求静态公共 IP 地址分配。 但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 公共 IP 地址只在删除或重新创建网关时更改。 该地址不会因为 VPN 网关大小调整、重置或其他内部维护/升级而更改。
 
 使用 [az network public-ip create](/cli/azure/network/public-ip) 命令请求动态公共 IP 地址。
 
@@ -135,7 +135,7 @@ VPN 网关必须具有公共 IP 地址。 请先请求 IP 地址资源，然后�
 az network public-ip create --name VNet1GWIP --resource-group TestRG1 --allocation-method Dynamic
 ```
 
-## <a name="CreateGateway"></a>7. 创建 VPN 网关
+## <a name="7-create-the-vpn-gateway"></a><a name="CreateGateway"></a>7. 创建 VPN 网关
 
 创建虚拟网络 VPN 网关。 创建 VPN 网关可能需要长达 45 分钟或更长时间才能完成。
 
@@ -151,7 +151,7 @@ az network public-ip create --name VNet1GWIP --resource-group TestRG1 --allocati
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --resource-group TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait 
 ```
 
-## <a name="VPNDevice"></a>8. 配置 VPN 设备
+## <a name="8-configure-your-vpn-device"></a><a name="VPNDevice"></a>8. 配置 VPN 设备
 
 通过站点到站点连接连接到本地网络需要 VPN 设备。 在此步骤中，请配置 VPN 设备。 配置 VPN 设备时，需要以下项：
 
@@ -166,7 +166,7 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --re
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 
-## <a name="CreateConnection"></a>9. 创建 VPN 连接
+## <a name="9-create-the-vpn-connection"></a><a name="CreateConnection"></a>9. 创建 VPN 连接
 
 在虚拟网关和本地 VPN 设备之间创建站点到站点 VPN 连接。 请特别注意共享密钥值，该值必须与为 VPN 设备配置的共享密钥值相符。
 
@@ -178,17 +178,17 @@ az network vpn-connection create --name VNet1toSite2 --resource-group TestRG1 --
 
 在一小段时间后，将建立该连接。
 
-## <a name="toverify"></a>10. 验证 VPN 连接
+## <a name="10-verify-the-vpn-connection"></a><a name="toverify"></a>10. 验证 VPN 连接
 
 [!INCLUDE [verify connection](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
 若要使用其他方法来验证连接，请参阅[验证 VPN 网关连接](vpn-gateway-verify-connection-resource-manager.md)。
 
-## <a name="connectVM"></a>连接到虚拟机
+## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>连接到虚拟机
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
-## <a name="tasks"></a>常见任务
+## <a name="common-tasks"></a><a name="tasks"></a>常见任务
 
 本部分包含各种常用命令，这些命令在进行站点到站点配置时很有用。 有关 CLI 网络命令的完整列表，请参阅 [Azure CLI - 网络](/cli/azure/network)。
 

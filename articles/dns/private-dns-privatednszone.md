@@ -8,29 +8,29 @@ ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
 ms.openlocfilehash: a951bc07c4a8ed42b1c116332d13674656bbaafd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646789"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>什么是专用 Azure DNS 区域
 
 Azure 专用 DNS 提供可靠、安全的 DNS 服务来管理和解析虚拟网络中的域名，无需添加自定义 DNS 解决方案。 借助专用 DNS 区域，可以使用自定义域名而不使用当前可用的由 Azure 提供的名称。 
 
-专用 DNS 区域中包含的记录无法从 Internet 解析。 针对专用 DNS 区域的 DNS 解析仅适用于链接到它的虚拟网络。
+专用 DNS 区域中包含的记录无法在 Internet 中进行解析。 针对专用 DNS 区域的 DNS 解析只能在链接到它的虚拟网络中进行。
 
 可以通过创建[虚拟网络链接](./private-dns-virtual-network-links.md)，将专用 DNS 区域链接到一个或多个虚拟网络。
-你还可以启用[自动注册](./private-dns-autoregistration.md)功能，以自动管理虚拟网络中部署的虚拟机的 DNS 记录的生命周期。
+还可以启用 [自动注册](./private-dns-autoregistration.md)功能，以便为虚拟网络中部署的虚拟机自动管理 DNS 记录的生命周期。
 
 ## <a name="limits"></a>限制
 
-若要了解可以在一个订阅中创建的专用 DNS 区域数量以及专用 DNS 区域中支持的记录集数，请参阅[Azure DNS 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
+如下了解可以在订阅中创建的专用 DNS 区域数量以及专用 DNS 区域中支持的记录集数量，请参阅 [Azure DNS 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
 
 ## <a name="restrictions"></a>限制
 
-* 不支持单个标记专用 DNS 区域。 专用 DNS 区域必须有两个或两个以上的标签。 例如，contoso.com 包含两个用点分隔的标签。 专用 DNS 区域最多可以有34个标签。
-* 无法在专用 DNS 区域中创建区域委派（NS 记录）。 如果你打算使用子域，则可以直接创建域作为专用 DNS 区域，并将其链接到虚拟网络，无需从父区域设置 nameserver 委托。
+* 不支持单标签专用 DNS 区域。 专用 DNS 区域必须有两个或两个以上的标签。 例如，contoso.com 包含两个标签，使用句点分隔。 专用 DNS 区域最多可以有 34 个标签。
+* 无法在专用 DNS 区域中创建区域委派（NS 记录）。 如果打算使用子域，则可以直接创建域作为专用 DNS 区域，并将其链接到虚拟网络，而无需从父区域设置名称服务器委派。
 
 ## <a name="next-steps"></a>后续步骤
 

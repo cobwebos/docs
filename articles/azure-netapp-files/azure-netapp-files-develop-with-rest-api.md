@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: b-juche
 ms.openlocfilehash: 996fbcc7c3c9af0da9160216785ecd54840660e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65957038"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>使用 REST API 进行 Azure NetApp 文件开发 
 
 适用于 Azure NetApp 文件服务的 REST API 定义了针对 NetApp 帐户、容量池、卷和快照等资源执行的 HTTP 操作。 本文可帮助你开始使用 Azure NetApp 文件 REST API。
 
-## <a name="azure-netapp-files-rest-api-specification"></a>Azure 的 NetApp 文件 REST API 规范
+## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp 文件 REST API 规范
 
-通过发布 Azure NetApp 文件的 REST API 规范[GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager):
+Azure NetApp 文件的 REST API 规范通过[GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)发布：
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 

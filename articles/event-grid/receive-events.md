@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
 ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60803803"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>将事件接收到 HTTP 终结点
@@ -20,9 +20,9 @@ ms.locfileid: "60803803"
 本文介绍如何[验证 HTTP 终结点](security-authentication.md#webhook-event-delivery)以接收来自事件订阅的事件并随后接收和反序列化事件。 本文使用 Azure 函数进行演示，但无论应用程序托管在何处，这些概念都适用。
 
 > [!NOTE]
-> 强烈推荐在通过事件网格触发 Azure 函数时使用[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)  。 此处使用泛型 WebHook 触发器进行演示。
+> 强烈推荐在通过事件网格触发 Azure 函数时使用[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)****。 此处使用泛型 WebHook 触发器进行演示。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 需要包含 HTTP 触发函数的函数应用。
 

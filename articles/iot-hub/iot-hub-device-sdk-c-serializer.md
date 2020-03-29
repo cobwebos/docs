@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: robinsh
 ms.openlocfilehash: dfea53e62383409411925f2fe2f18d61a6855ec1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75429368"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>适用于 C 语言的 Azure IoT 设备 SDK - 有关序列化程序的详细信息
 
-本系列文章的第一篇文章介绍了[适用于 C 语言的 Azure IoT 设备 SDK 简介](iot-hub-device-sdk-c-intro.md)。下一篇文章提供了[适用于 C 的 Azure IoT 设备 SDK](iot-hub-device-sdk-c-iothubclient.md)的更详细说明--IoTHubClient。 此文章通过提供其余组件（**序列化程序**库）的更详细说明来完成 SDK 的覆盖范围。
+本系列的第一篇文章介绍了[C 的 Azure IoT 设备 SDK 简介](iot-hub-device-sdk-c-intro.md)。下一篇文章提供了[C -- IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)的 Azure IoT 设备 SDK 的更详细说明。 此文章通过提供其余组件（**序列化程序**库）的更详细说明来完成 SDK 的覆盖范围。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -64,14 +64,14 @@ END_NAMESPACE(WeatherStation);
 
 在使用**序列化程序**库创建的模型中支持以下数据类型：
 
-| 类型 | Description |
+| 类型 | 说明 |
 | --- | --- |
 | double |双精度浮点数 |
 | int |32-bit integer |
 | FLOAT |单精度浮点数 |
 | long |长整数 |
-| int8\_t |8位整数 |
-| int16\_t |16位整数 |
+| int8\_t |8 位整数 |
+| int16\_t |16 位整数 |
 | int32\_t |32-bit integer |
 | int64\_t |64-bit integer |
 | bool |boolean |
@@ -278,7 +278,7 @@ static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned 
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-我们发送的温度为**TemperatureEvent**类型，该结构包含**温度**和**时间**成员。 这直接反映在序列化数据中。
+我们发送的温度，这是**类型温度事件**，并且结构包含**温度**和**时间**成员。 这直接反映在序列化数据中。
 
 同样，我们可以使用以下代码发送湿度事件：
 
@@ -315,7 +315,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-在这种情况下，我们消除了**DECLARE\_结构**宏，只需使用建模语言中的简单类型从我们的方案定义数据项。
+在这种情况下，我们已消除**DECLARE\_STRUCT**宏，并且只是使用建模语言中的简单类型从方案中定义数据项。
 
 此时，可以忽略 **Time** 事件。 将其搁置在一边，下面是输入到 **Temperature** 的代码：
 
@@ -398,7 +398,7 @@ WITH_DATA(TemperatureAndHumidityEvent, TemperatureAndHumidity),
 
 如果我们使用此模型，则可以轻松地了解如何在同一序列化消息中发送 **Temperature** 和 **Humidity**。 但是可能不容易看出使用第二个模型将这两个数据事件传递到 **SERIALIZE** 时它的行为的原因。
 
-如果知道**序列化程序**库所做的假设，则更容易理解此行为。 要了解这一点，让我们返回到模型：
+如果知道**序列化程序**库所做的假设，则更容易理解此行为。 为了理解这一点，让我们回到我们的模型：
 
 ```C
 DECLARE_MODEL(Thermostat,
@@ -408,7 +408,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-请以对象定向的观点思考此模型。 在这种情况下，我们要对物理设备（恒温器）进行建模，并且该设备包含**温度**和**湿度**等属性。
+请以对象定向的观点思考此模型。 在这种情况下，我们正在对物理设备（恒温器）进行建模，该设备包括**温度**和**湿度**等属性。
 
 可以利用类似于下面的代码来发送模型的整个状态：
 
@@ -431,11 +431,11 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-这会生成完全相同的序列化的事件，就像我们在模型 1 中定义带有 **Temperature** 和 **Time** 成员的 **TemperatureEvent** 一样。 在这种情况下，我们可以通过使用不同的模型（模型2）来生成完全相同的序列化事件，因为我们以不同的方式调用了**序列化**事件。
+这会生成完全相同的序列化的事件，就像我们在模型 1 中定义带有 **Temperature** 和 **Time** 成员的 **TemperatureEvent** 一样。 在这种情况下，我们能够使用不同的模型（模型 2）生成完全相同的序列化事件，因为我们以不同的方式调用**SERIALIZE。**
 
-重点是，如果将多个数据事件传递给 **SERIALIZE,** ，则它会假设每个事件都是单个 JSON 对象中的一个属性。
+重点是，如果将多个数据事件传递给 **SERIALIZE,**，则它会假设每个事件都是单个 JSON 对象中的一个属性。
 
-最佳方法取决于自己以及对模型的思考方式。 如果要将“事件”发送到云，且每个事件都包含一组已定义的属性，则第一种方法较为适合。 在此情况下，使用 **DECLARE\_STRUCT** 定义每个事件的结构，并使用 **WITH\_DATA** 宏将它们包含在模型中。 然后根据上述第一个示例中使用的方法来发送每个事件。 在此方法中，只会将单个数据事件传递给**序列化程序**。
+最佳方法取决于自己以及对模型的思考方式。 如果要将“事件”发送到云，且每个事件都包含一组已定义的属性，则第一种方法较为适合。 在此情况下，使用 **DECLARE\_STRUCT** 定义每个事件的结构，并使用 **WITH\_DATA** 宏将它们包含在模型中。 然后根据上述第一个示例中使用的方法来发送每个事件。 在此方法中，您只会将单个数据事件传递给**SERIALIZER。**
 
 如果以对象定向的方式思考模型，则第二种方法可能比较适合。 在本例中，使用 **WITH\_DATA** 定义的元素是对象的“属性”。 可以根据想要发送到云的“对象”状态详细程度，将事件的任何子集传递给 **SERIALIZE**。
 
@@ -443,7 +443,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 
 ## <a name="message-handling"></a>消息处理
 
-到目前为止，本文只讨论了如何将事件发送到 IoT 中心，而尚未涉及到消息接收。 出现这种情况的原因是我们在[Azure IoT 设备 SDK For C](iot-hub-device-sdk-c-intro.md)一文中介绍了有关接收消息的详细信息。回忆一下，通过注册消息回调函数来处理消息：
+到目前为止，本文只讨论了如何将事件发送到 IoT 中心，而尚未涉及到消息接收。 原因是，关于接收消息我们需要了解的内容在 C 的[Azure IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)中已基本涵盖。从该文章中回顾，您通过注册消息回调函数来处理邮件：
 
 ```C
 IoTHubClient_SetMessageCallback(iotHubClientHandle, IoTHubMessage, myWeather)
@@ -537,7 +537,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 如果使用的是**序列化程序**库，那么可在 azure-c-shared-utility 库中找到要注意的 SDK 的重要组成部分。
 
-如果已从 GitHub 克隆了 Azure iot sdk-c 存储库并发出了 `git submodule update --init` 命令，则可在此处找到此共享的实用工具库：
+如果已从 GitHub 克隆了 Azure-iot-sdk-c 存储库并发出了 `git submodule update --init` 命令，则将在以下位置找到此共享实用程序库：
 
 ```C
 .\\c-utility
@@ -557,7 +557,7 @@ azure-c-shared-utility\\macro\_utils\_h\_generator.
 
 此解决方案中的程序将生成 **macro\_utils.h** 文件。 SDK 随附了一个默认的 macro\_utils.h 文件。 此解决方案可让用户修改某些参数，并根据这些参数重新创建标头文件。
 
-要考虑的两个关键参数是**nArithmetic**和**nMacroParameters**，它们是在宏\_utils.tt 中找到的这两行中定义的：
+要关注的两个关键参数是**n算术**参数和**nMacro 参数**，它们在宏\_utils.tt中的这两行中定义：
 
 ```C
 <#int nArithmetic=1024;#>
@@ -608,7 +608,7 @@ WITH_DATA(int, MyData)
 到目前为止，我们已经介绍了使用**序列化程序**库编写代码所需了解的所有内容。 结束前，来回顾下前面文章中可能感兴趣的一些主题。
 
 ## <a name="the-lower-level-apis"></a>较低级别 API
-这篇文章重点介绍的示例应用程序是 **simplesample\_amqp**。 此示例使用较高级别的（非 **LL**）API 来发送事件和接收消息。 如果使用这些 API，将运行后台线程来处理事件发送和消息接收。 不过，可以使用较低级别 (LL) API 以取消此后台线程，并在发送事件或接收来自云的消息时接管显式控制。
+这篇文章重点介绍的示例应用程序是 **simplesample\_amqp**。 此示例使用较高级别 （非**LL**） API 发送事件和接收消息。 如果使用这些 API，将运行后台线程来处理事件发送和消息接收。 不过，可以使用较低级别 (LL) API 以取消此后台线程，并在发送事件或接收来自云的消息时接管显式控制。
 
 如[上一篇文章](iot-hub-device-sdk-c-iothubclient.md)所述，还有一组函数包含较高级别的 API：
 
@@ -663,9 +663,9 @@ serializer_deinit();
 
 ## <a name="next-steps"></a>后续步骤
 
-本文详细介绍了**适用于 C 语言的 Azure IoT 设备 SDK**中包含的**序列化程序**库的独特方面。利用提供的信息，您应该能够充分了解如何使用模型来发送事件和从 IoT 中心接收消息。
+本文详细介绍了**Azure IoT 设备 SDK 中包含的序列****化器**库的独特方面。通过提供的信息，您应该能够很好地了解如何使用模型发送事件和接收来自 IoT 中心的消息。
 
-这还介绍了如何通过**适用于 C 语言的 Azure IoT 设备 SDK**开发应用程序的三部分系列。此信息应该足以满足您的需要，但您可以全面了解 Api 的工作原理。 请了解其他信息，因为还有一些 SDK 中的示例未涵盖在本文中。 除此之外，[Azure IoT SDK 文档](https://github.com/Azure/azure-iot-sdk-c)也是获取其他信息的绝佳资源。
+本文还总结了有关如何使用**Azure IoT 设备 SDK 为 C**开发应用程序的三部分系列。这应该足够获得足够的信息，不仅帮助您入门，而且让您全面了解 API 的工作原理。 请了解其他信息，因为还有一些 SDK 中的示例未涵盖在本文中。 除此之外，[Azure IoT SDK 文档](https://github.com/Azure/azure-iot-sdk-c)也是获取其他信息的绝佳资源。
 
 若要详细了解如何针对 IoT 中心进行开发，请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 

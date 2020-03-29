@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eeb80c3a94e63a886e4a16c0b8fa445b2a8a34e4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72515814"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect：配置 AD DS 连接器帐户权限 
@@ -25,7 +25,7 @@ ms.locfileid: "72515814"
 ## <a name="overview"></a>概述 
 对于选择要在 Azure AD Connect 中启用的每个功能，可以使用以下 PowerShell cmdlet 设置 AD DS Connector 帐户的 Active Directory 权限。 为了防止出现任何问题，每当要使用自定义域帐户安装 Azure AD Connect 以连接林时，都应提前准备 Active Directory 权限。 部署 Azure AD Connect 后，此 ADSyncConfig 模块还可用于配置权限。
 
-![ad ds 帐户概述](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
+![广告 ds 帐户概述](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 
 对于 Azure AD Connect 快速安装，将在 Active Directory 中创建一个具有所有必需权限的自动生成的帐户 (MSOL_nnnnnnnnnn)，因此除非你已阻止对组织单位或要同步到 Azure AD 的特定 Active Directory 对象的权限继承，否则无需使用此 ADSyncConfig 模块。 
  
@@ -34,12 +34,12 @@ ms.locfileid: "72515814"
 
 | Feature | 权限 |
 | --- | --- |
-| ms DS ConsistencyGuid 功能 |在设计概念中介绍的对 Msds-consistencyguid 属性的读写权限[-使用 msds-consistencyguid 作为 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)。 | 
+| ms DS ConsistencyGuid 功能 |读取和写入在设计概念中记录的 ms-DS-一致性 Guid 属性的权限[- 使用 ms-DS-一致性 Guid 作为源锚点](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)。 | 
 | 密码哈希同步 |<li>复制目录更改</li>  <li>复制所有目录更改 |
-| Exchange 混合部署 |针对用户、组和联系人的[Exchange 混合写回](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)中所述的属性的读取和写入权限。 |
+| Exchange 混合部署 |读取和写入对[Exchange 混合写回](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)中记录的用户、组和联系人的属性的权限。 |
 | Exchange 邮件公用文件夹 |对 [Exchange 邮件公用文件夹](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公用文件夹属性的读取权限。 | 
-| 密码写回 |用户的[密码管理](../authentication/howto-sspr-writeback.md)入门中所述的属性的读取和写入权限。 |
-| 设备写回 |设备对象和[设备写回](how-to-connect-device-writeback.md)中记录的容器的读取和写入权限。 |
+| 密码写回 |读取和写入用户[密码管理](../authentication/howto-sspr-writeback.md)中记录的属性的权限。 |
+| 设备写回 |读取和写入[设备写入中](how-to-connect-device-writeback.md)记录的设备对象和容器的权限。 |
 | 组写回 |读取、创建、更新和删除同步的 **Office 365 组**的组对象。  有关详细信息，请参阅[组写回](how-to-connect-preview.md#group-writeback)。|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>使用 ADSyncConfig PowerShell 模块 
@@ -81,7 +81,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <ADAccountName> -A
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
 ```
 
-请确保将 `<ADAccountName>`、`<ADDomainName>` 和 `<ADAccountDN>` 替换为环境的正确值。
+请确保替换`<ADAccountName>`，`<ADDomainName>`并`<ADAccountDN>`替换为适合您的环境的值。
 
 如果不想修改 AdminSDHolder 容器的权限，请使用开关 `-SkipAdminSdHolders`。 
 
@@ -110,7 +110,7 @@ Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' -Obje
 ```
  
 ### <a name="view-ad-ds-permissions-of-an-object"></a>查看对象的 AD DS 权限 
-你可以使用以下 cmdlet 来查看当前在 Active Directory 对象上设置的权限列表，方法是提供其 DistinguishedName： 
+您可以使用下面的 cmdlet 通过提供其可分辨名称来查看活动目录对象当前设置的权限列表： 
 
 ``` powershell
 Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>' 
@@ -136,15 +136,15 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 此 cmdlet 将设置以下权限： 
  
 
-|Type |名称 |访问 |应用于| 
+|类型 |“属性” |访问 |应用于| 
 |-----|-----|-----|-----|
-|允许 |AD DS 连接器帐户 |读取所有属性 |后代设备对象| 
-|允许 |AD DS 连接器帐户|读取所有属性 |后代 InetOrgPerson 对象| 
-|允许 |AD DS 连接器帐户 |读取所有属性 |后代计算机对象| 
-|允许 |AD DS 连接器帐户 |读取所有属性 |后代 foreignSecurityPrincipal 对象| 
-|允许 |AD DS 连接器帐户 |读取所有属性 |后代组对象| 
-|允许 |AD DS 连接器帐户 |读取所有属性 |后代用户对象| 
-|允许 |AD DS 连接器帐户 |读取所有属性 |后代联系人对象| 
+|Allow |AD DS 连接器帐户 |读取所有属性 |后代设备对象| 
+|Allow |AD DS 连接器帐户|读取所有属性 |后代 InetOrgPerson 对象| 
+|Allow |AD DS 连接器帐户 |读取所有属性 |后代计算机对象| 
+|Allow |AD DS 连接器帐户 |读取所有属性 |后代 foreignSecurityPrincipal 对象| 
+|Allow |AD DS 连接器帐户 |读取所有属性 |后代组对象| 
+|Allow |AD DS 连接器帐户 |读取所有属性 |后代用户对象| 
+|Allow |AD DS 连接器帐户 |读取所有属性 |后代联系人对象| 
 
  
 ### <a name="configure-ms-ds-consistency-guid-permissions"></a>配置 MS-DS-Consistency-Guid 权限 
@@ -162,9 +162,9 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 此 cmdlet 将设置以下权限： 
 
-|Type |名称 |访问 |应用于|
+|类型 |“属性” |访问 |应用于|
 |-----|-----|-----|-----| 
-|允许|AD DS 连接器帐户|读取/写入属性|后代用户对象|
+|Allow|AD DS 连接器帐户|读取/写入属性|后代用户对象|
 
 ### <a name="permissions-for-password-hash-synchronization"></a>密码哈希同步的权限 
 若要在使用密码哈希同步时为 AD DS 连接器帐户设置权限，请运行： 
@@ -182,10 +182,10 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 此 cmdlet 将设置以下权限： 
 
-|Type |名称 |访问 |应用于|
+|类型 |“属性” |访问 |应用于|
 |-----|-----|-----|-----| 
-|允许 |AD DS 连接器帐户 |复制目录更改 |仅限此对象（域根）| 
-|允许 |AD DS 连接器帐户 |复制所有目录更改 |仅限此对象（域根）| 
+|Allow |AD DS 连接器帐户 |复制目录更改 |仅限此对象（域根）| 
+|Allow |AD DS 连接器帐户 |复制所有目录更改 |仅限此对象（域根）| 
   
 ### <a name="permissions-for-password-writeback"></a>密码写回的权限 
 若要在使用密码写回时为 AD DS 连接器帐户设置权限，请运行： 
@@ -202,11 +202,11 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 此 cmdlet 将设置以下权限： 
 
-|Type |名称 |访问 |应用于|
+|类型 |“属性” |访问 |应用于|
 |-----|-----|-----|-----| 
-|允许 |AD DS 连接器帐户 |重置密码 |后代用户对象| 
-|允许 |AD DS 连接器帐户 |写入 lockoutTime 属性 |后代用户对象| 
-|允许 |AD DS 连接器帐户 |写入 pwdLastSet 属性 |后代用户对象| 
+|Allow |AD DS 连接器帐户 |重置密码 |后代用户对象| 
+|Allow |AD DS 连接器帐户 |写入 lockoutTime 属性 |后代用户对象| 
+|Allow |AD DS 连接器帐户 |写入 pwdLastSet 属性 |后代用户对象| 
 
 ### <a name="permissions-for-group-writeback"></a>组写回的权限 
 若要在使用组写回时为 AD DS 连接器帐户设置权限，请运行： 
@@ -222,11 +222,11 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 此 cmdlet 将设置以下权限： 
 
-|Type |名称 |访问 |应用于|
+|类型 |“属性” |访问 |应用于|
 |-----|-----|-----|-----| 
-|允许 |AD DS 连接器帐户 |一般读取/写入 |对象类型组和子对象的所有属性| 
-|允许 |AD DS 连接器帐户 |创建/删除子对象 |对象类型组和子对象的所有属性| 
-|允许 |AD DS 连接器帐户 |删除/删除树对象|对象类型组和子对象的所有属性|
+|Allow |AD DS 连接器帐户 |一般读取/写入 |对象类型组和子对象的所有属性| 
+|Allow |AD DS 连接器帐户 |创建/删除子对象 |对象类型组和子对象的所有属性| 
+|Allow |AD DS 连接器帐户 |删除/删除树对象|对象类型组和子对象的所有属性|
 
 ### <a name="permissions-for-exchange-hybrid-deployment"></a>Exchange 混合部署的权限 
 若要在使用 Exchange 混合部署时为 AD DS 连接器帐户设置权限，请运行： 
@@ -245,12 +245,12 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 此 cmdlet 将设置以下权限：  
  
 
-|Type |名称 |访问 |应用于|
+|类型 |“属性” |访问 |应用于|
 |-----|-----|-----|-----| 
-|允许 |AD DS 连接器帐户 |读取/写入所有用户属性 |后代用户对象| 
-|允许 |AD DS 连接器帐户 |读取/写入所有用户属性 |后代 InetOrgPerson 对象| 
-|允许 |AD DS 连接器帐户 |读取/写入所有用户属性 |后代组对象| 
-|允许 |AD DS 连接器帐户 |读取/写入所有用户属性 |后代联系人对象| 
+|Allow |AD DS 连接器帐户 |读取/写入所有用户属性 |后代用户对象| 
+|Allow |AD DS 连接器帐户 |读取/写入所有用户属性 |后代 InetOrgPerson 对象| 
+|Allow |AD DS 连接器帐户 |读取/写入所有用户属性 |后代组对象| 
+|Allow |AD DS 连接器帐户 |读取/写入所有用户属性 |后代联系人对象| 
 
 ### <a name="permissions-for-exchange-mail-public-folders-preview"></a>Exchange 邮件公用文件夹（预览版）的权限 
 若要在使用 Exchange 邮件公用文件夹功能时为 AD DS 连接器帐户设置权限，请运行： 
@@ -267,9 +267,9 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 此 cmdlet 将设置以下权限： 
 
-|Type |名称 |访问 |应用于|
+|类型 |“属性” |访问 |应用于|
 |-----|-----|-----|-----| 
-|允许 |AD DS 连接器帐户 |读取所有属性 |后代 PublicFolder 对象| 
+|Allow |AD DS 连接器帐户 |读取所有属性 |后代 PublicFolder 对象| 
 
 ### <a name="restrict-permissions-on-the-ad-ds-connector-account"></a>限制 AD DS 连接器帐户的权限 
 此 PowerShell 脚本将限制以参数提供的 AD 连接器帐户的权限。 限制权限操作包括以下步骤： 
@@ -292,18 +292,18 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 此 cmdlet 将设置以下权限： 
 
-|Type |名称 |访问 |应用于|
+|类型 |“属性” |访问 |应用于|
 |-----|-----|-----|-----| 
-|允许 |SYSTEM |完全控制 |此对象 
-|允许 |企业管理员 |完全控制 |此对象 
-|允许 |域管理员 |完全控制 |此对象 
-|允许 |管理员 |完全控制 |此对象 
-|允许 |企业域控制器 |列出内容 |此对象 
-|允许 |企业域控制器 |读取所有属性 |此对象 
-|允许 |企业域控制器 |读取权限 |此对象 
-|允许 |经过身份验证的用户 |列出内容 |此对象 
-|允许 |经过身份验证的用户 |读取所有属性 |此对象 
-|允许 |经过身份验证的用户 |读取权限 |此对象 
+|Allow |SYSTEM |完全控制 |此对象 
+|Allow |企业管理员 |完全控制 |此对象 
+|Allow |域管理员 |完全控制 |此对象 
+|Allow |管理员 |完全控制 |此对象 
+|Allow |企业域控制器 |列出内容 |此对象 
+|Allow |企业域控制器 |读取所有属性 |此对象 
+|Allow |企业域控制器 |读取权限 |此对象 
+|Allow |经过身份验证的用户 |列出内容 |此对象 
+|Allow |经过身份验证的用户 |读取所有属性 |此对象 
+|Allow |经过身份验证的用户 |读取权限 |此对象 
 
 ## <a name="next-steps"></a>后续步骤
 - [Azure AD Connect：帐户和权限](reference-connect-accounts-permissions.md)

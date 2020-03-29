@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: 60ec2b86e0205060f907f1fe39d084dca3aac1cd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68608228"
 ---
 # <a name="handle-duplicate-data-in-azure-data-explorer"></a>在 Azure 数据资源管理器中处理重复数据
@@ -41,13 +41,13 @@ _data
 
 ## <a name="solutions-for-handling-duplicate-data"></a>用于处理重复数据的解决方法
 
-### <a name="solution-1-dont-remove-duplicate-data"></a>解决方法 #1：不要删除重复数据
+### <a name="solution-1-dont-remove-duplicate-data"></a>解决方案#1：不要删除重复的数据
 
 了解业务要求以及对重复数据的容限。 某些数据集可以处理特定百分比的重复数据。 如果重复数据不会造成重大影响，可以忽略它的存在。 不删除重复数据的优点是，在引入过程中不会产生额外的开销，也不会影响查询性能。
 
-### <a name="solution-2-handle-duplicate-rows-during-query"></a>解决方法 #2：在查询过程中处理重复行
+### <a name="solution-2-handle-duplicate-rows-during-query"></a>解决方案#2：在查询期间处理重复行
 
-另一种做法是在查询过程中筛选出数据中的重复行。 使用 [`arg_max()`](/azure/kusto/query/arg-max-aggfunction) 聚合函数可以筛选出重复记录，并基于时间戳（或另一列）返回最后一条记录。 使用此方法的优点是引入速度更快，因为重复数据删除是在查询期间发生的。 此外，所有记录（包括重复项）都可用于审核和故障排除。 使用 `arg_max` 函数的缺点是，每次查询数据都会增大查询时间和 CPU 负载。 根据查询的数据量，此解决方法可能不起作用或者消耗过多的内存，因此需要改用其他做法。
+另一种做法是在查询过程中筛选出数据中的重复行。 聚合[`arg_max()`](/azure/kusto/query/arg-max-aggfunction)函数可用于筛选出重复记录，并根据时间戳（或其他列）返回最后一条记录。 使用此方法的优点是引入速度更快，因为重复数据删除是在查询期间发生的。 此外，所有记录（包括重复项）都可用于审核和故障排除。 使用 `arg_max` 函数的缺点是，每次查询数据都会增大查询时间和 CPU 负载。 根据查询的数据量，此解决方法可能不起作用或者消耗过多的内存，因此需要改用其他做法。
 
 在以下示例中，我们将查询针对一组列引入的最后一条记录来确定唯一的记录：
 
@@ -68,9 +68,9 @@ DeviceEventsAll
 }
 ```
 
-### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>解决方法 #3：在引入过程中筛选重复项
+### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>解决方案#3：在引入过程中筛选重复项
 
-另一种解决方法是在引入过程中筛选重复项。 在引入到 Kusto 表期间，系统将忽略重复数据。 删除重复行之后，将数据引入到临时表并复制到另一个表中。 此解决方法的优点是，相比前一种解决方法，查询性能可以得到明显的改善。 缺点包括增大引入时间和数据存储成本。 Additionaly, 仅当重复不同时引入时, 此解决方案才有效。 如果有多个并发 ingestions 包含重复记录, 则所有这些都可能是引入的, 因为重复数据删除过程将不会在表中找到任何现有的匹配记录。    
+另一种解决方法是在引入过程中筛选重复项。 在引入到 Kusto 表期间，系统将忽略重复数据。 删除重复行之后，将数据引入到临时表并复制到另一个表中。 此解决方法的优点是，相比前一种解决方法，查询性能可以得到明显的改善。 缺点包括增大引入时间和数据存储成本。 此外，仅当不同时引入重复项时，此解决方案才有效。 如果有多个并发引入包含重复记录，则可能会全部引入，因为重复数据消除过程将在表中找不到任何现有的匹配记录。    
 
 以下示例演示了此方法：
 
@@ -122,4 +122,4 @@ DeviceEventsAll
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Azure 数据资源管理器的编写查询](write-queries.md)
+> [为 Azure 数据资源管理器编写查询](write-queries.md)

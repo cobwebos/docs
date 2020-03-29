@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: 3313c9c362a9b82cf7ed8db63479aaa5cf0c777e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73683244"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用“更新资源”活动更新 Azure 机器学习模型
@@ -56,10 +56,10 @@ ms.locfileid: "73683244"
 }
 ```
 
-| 属性                      | 说明                              | 必选 |
+| properties                      | 描述                              | 必选 |
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | 管道中活动的名称     | 是      |
-| 说明                   | 描述活动用途的文本。  | 否       |
+| description                   | 描述活动用途的文本。  | 否       |
 | type                          | 对于 Azure 机器学习“更新资源”活动，活动类型为 **AzureMLUpdateResource**。 | 是      |
 | linkedServiceName             | 包含 updateResourceEndpoint 属性的 Azure 机器学习链接服务。 | 是      |
 | trainedModelName              | 将在 Web 服务实验中进行更新的“已训练模型”模块的名称 | 是      |
@@ -70,7 +70,7 @@ ms.locfileid: "73683244"
 
 对模型进行重新训练以及更新预测性 Web 服务的整个操作过程涉及以下步骤：
 
-- 使用 **“批处理执行”活动**调用**训练 Web 服务**。 调用训练 Web 服务与[使用 Azure 机器学习和数据工厂“批处理执行”活动创建预测性管道](transform-data-using-machine-learning.md)中所述的调用预测性 Web 服务相同。 定型 Web 服务的输出是一个 iLearner 文件，可用于更新预测 Web 服务。
+- 使用 **“批处理执行”活动**调用**训练 Web 服务**。 调用训练 Web 服务与[使用 Azure 机器学习和数据工厂“批处理执行”活动创建预测性管道](transform-data-using-machine-learning.md)中所述的调用预测性 Web 服务相同。 培训 Web 服务的输出是一个 iLearner 文件，可用于更新预测 Web 服务。
 - 通过使用 **“更新资源”活动**调用**预测性 Web 服务**的**更新资源终结点**来使用新训练的模型更新 Web 服务。
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure 机器学习链接服务
@@ -92,7 +92,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 在 [Azure 机器学习 Web 服务门户](https://services.azureml.net/)上查询 Web 服务时可获取 URL 中占位符的值。
 
-新类型的更新资源终结点要求执行服务主体身份验证。 若要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册应用程序实体，并向其授予 Web 服务所属的订阅或资源组的“参与者”或“所有者”角色。 请参阅[如何创建服务主体和分配权限来管理 Azure 资源](../active-directory/develop/howto-create-service-principal-portal.md)。 记下下面的值，这些值用于定义链接服务：
+新类型的更新资源终结点要求执行服务主体身份验证。 若要使用服务主体身份验证，请在 Azure Active Directory (Azure AD) 中注册应用程序实体，并向其授予 Web 服务所属的订阅或资源组的“参与者”或“所有者”角色。******** 请参阅[如何创建服务主体和分配权限来管理 Azure 资源](../active-directory/develop/howto-create-service-principal-portal.md)。 记下下面的值，这些值用于定义链接服务：
 
 - 应用程序 ID
 - 应用程序密钥
@@ -169,11 +169,11 @@ Azure 存储保留以下数据：
 
 在 **Azure 机器学习工作室**中，执行以下操作以获取 **mlEndpoint** 和 **apiKey** 的值：
 
-1. 在左侧菜单上，单击“Web 服务”。
-2. 在 Web 服务列表中，单击“定型 Web 服务”。
-3. 单击“API 密钥”文本框旁的“复制”。 将剪贴板中的密钥粘贴到数据工厂 JSON 编辑器。
-4. 在 **Azure 机器学习工作室**中，单击“批处理执行”链接。
-5. 从“请求”分区复制“请求 URI”，然后将其粘贴到数据工厂 JSON 编辑器。
+1. 在左侧菜单上，单击“Web 服务”****。
+2. 在 Web 服务列表中，单击“定型 Web 服务”****。
+3. 单击“API 密钥”**** 文本框旁的“复制”。 将剪贴板中的密钥粘贴到数据工厂 JSON 编辑器。
+4. 在 **Azure 机器学习工作室**中，单击“批处理执行”**** 链接。
+5. 从“请求”**** 分区复制“请求 URI”****，然后将其粘贴到数据工厂 JSON 编辑器。
 
 ### <a name="linked-service-for-azure-machine-learning-studio-updatable-scoring-endpoint"></a>Azure 机器学习工作室可更新评分终结点的链接服务：
 以下 JSON 代码片段定义了指向评分 Web 服务的可更新终结点的 Azure 机器学习链接服务。
@@ -267,13 +267,13 @@ Azure 存储保留以下数据：
 }
 ```
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章了解如何以其他方式转换数据：
+参阅以下文章了解如何以其他方式转换数据：
 
 * [U-SQL 活动](transform-data-using-data-lake-analytics.md)
 * [Hive 活动](transform-data-using-hadoop-hive.md)
-* [Pig 活动](transform-data-using-hadoop-pig.md)
+* [猪活动](transform-data-using-hadoop-pig.md)
 * [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
-* [Spark 活动](transform-data-using-spark.md)
+* [Hadoop 流活动](transform-data-using-hadoop-streaming.md)
+* [火花活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

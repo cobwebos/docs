@@ -17,10 +17,10 @@ ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67108462"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
@@ -29,7 +29,7 @@ ms.locfileid: "67108462"
 
 本文的目标读者为：
 - 想要通过远程桌面服务发布本地应用程序，为最终用户提供更多应用程序的当前应用程序代理客户。
-- 想要使用 Azure AD 应用程序代理减小其部署的受攻击面的当前远程桌面服务客户。 这种情况下为 rds 提供了一组有限的双重验证和条件性访问控制
+- 想要使用 Azure AD 应用程序代理减小其部署的受攻击面的当前远程桌面服务客户。 此方案为 RDS 提供了一组有限的两步验证和条件访问控制。
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>应用程序代理如何适应标准 RDS 部署
 
@@ -58,7 +58,7 @@ ms.locfileid: "67108462"
 
 - 在 Internet Explorer 中，启用 RDS ActiveX 外接程序。
 
-- 有关 Azure AD 预身份验证流，用户只能连接到发布给他们中的资源**RemoteApp 和桌面**窗格。 用户无法连接到桌面 using**连接到远程电脑**窗格。
+- 对于 Azure AD 预身份验证流，用户只能连接到**在"远程应用"和"桌面"** 窗格中发布到他们的资源。 用户无法使用"**连接到远程 PC"** 窗格连接到桌面。
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>部署 RDS 和应用程序代理联合方案
 
@@ -68,36 +68,36 @@ ms.locfileid: "67108462"
 
 1. 使用以下值[发布新的应用程序代理应用程序](application-proxy-add-on-premises-application.md)：
    - 内部 URL：`https://\<rdhost\>.com/`，其中，`\<rdhost\>` 是 RD Web 和 RD 网关共享的共用根。
-   - 外部 URL：系统会根据应用程序的名称自动填充此字段，但你可以修改它。 用户访问 RDS 时，会转到此 URL。
+   - 外部 URL：系统会根据应用程序的名称自动填充此字段，但可以修改它。 用户访问 RDS 时，会转到此 URL。
    - 预身份验证方法：Azure Active Directory
    - 转换 URL 标头：否
 2. 将用户分配到已发布的 RD 应用程序。 确保这些用户也都有权访问 RDS。
-3. 将应用程序的单一登录方法保留为“已禁用 Azure AD 单一登录”。  用户必须在 Azure AD 和 RD Web 上各执行身份验证一次，但可以单一登录到 RD 网关。
-4. 选择**Azure Active Directory**，然后**应用注册**。 从列表中选择您的应用程序。
-5. 下**管理**，选择**品牌**。
-6. 更新**主页 URL**字段为指向 RD Web 终结点 (如`https://\<rdhost\>.com/RDWeb`)。
+3. 将应用程序的单一登录方法保留为“已禁用 Azure AD 单一登录”。**** 用户必须在 Azure AD 和 RD Web 上各执行身份验证一次，但可以单一登录到 RD 网关。
+4. 选择**Azure 活动目录**，然后**选择应用注册**。 从列表中选择你的应用。
+5. 在 **"管理"** 下，选择 **"品牌**"。
+6. 更新**主页 URL**字段以指向 RD Web 终结点（`https://\<rdhost\>.com/RDWeb`如 ）。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>将 RDS 流量定向到应用程序代理
 
 以管理员身份连接到 RDS 部署，并更改部署的 RD 网关服务器名称。 此配置可确保连接通过 Azure AD 应用程序代理服务。
 
 1. 连接到运行 RD 连接代理角色的 RDS 服务器。
-2. 启动“服务器管理器”。 
-3. 在左侧窗格中选择“远程桌面服务”。 
-4. 选择“概述”。 
-5. 在“部署概述”部分中，选择下拉菜单并选择“编辑部署属性”。 
-6. 在“RD 网关”选项卡中，将“服务器名称”字段更改为针对应用程序代理中的 RD 主机终结点设置的外部 URL。 
-7. 将“登录方法”字段更改为“密码身份验证”。  
+2. 启动**服务器管理器**。
+3. 在左侧窗格中选择“远程桌面服务”。****
+4. 选择“概述”。****
+5. 在“部署概述”部分中，选择下拉菜单并选择“编辑部署属性”。****
+6. 在“RD 网关”选项卡中，将“服务器名称”字段更改为针对应用程序代理中的 RD 主机终结点设置的外部 URL。****
+7. 将“登录方法”字段更改为“密码身份验证”。********
 
    ![RDS 上的“部署属性”屏幕](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
-8. 为所有集合运行此命令。 用自己的信息替换 \<yourcollectionname\>  和 \<proxyfrontendurl\>  。 此命令在 RD Web 与 RD 网关之间启用单一登录并优化性能：
+8. 为所有集合运行此命令。 将*\<集合名称\>* 和*\<代理前名\>* 替换为您自己的信息。 此命令在 RD Web 与 RD 网关之间启用单一登录并优化性能：
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-   例如： 
+   **例如：**
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
@@ -129,13 +129,13 @@ ms.locfileid: "67108462"
 | 预身份验证    | 使用 Internet Explorer 和 RDS ActiveX 外接程序的 Windows 7/10 |
 | 传递 | 支持 Microsoft 远程桌面应用程序的任何其他操作系统 |
 
-相比传递流，预身份验证流可提供更多的安全优势。 使用预身份验证可以为你的本地资源使用单一登录、 条件性访问和双重验证等的 Azure AD 身份验证功能。 此外，你还可以确保只有经过身份验证的流量才能访问你的网络。
+相比传递流，预身份验证流可提供更多的安全优势。 通过预身份验证，您可以使用 Azure AD 身份验证功能，如本地资源的单一登录、条件访问和两步验证。 此外，你还可以确保只有经过身份验证的流量才能访问你的网络。
 
 若要使用传递身份验证，本文列出的步骤仅有下面两处修改：
-1. 在[发布 RD 主机终结点](#publish-the-rd-host-endpoint)步骤 1 中，将预身份验证方法设置为“传递”  。
+1. 在[发布 RD 主机终结点](#publish-the-rd-host-endpoint)步骤 1 中，将预身份验证方法设置为“传递”****。
 2. 在[使 RDS 流量直接流向应用程序代理](#direct-rds-traffic-to-application-proxy)中，完全跳过步骤 8。
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Azure AD 应用程序代理启用对 SharePoint 的远程访问](application-proxy-integrate-with-sharepoint-server.md)  
+[通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问](application-proxy-integrate-with-sharepoint-server.md)  
 [使用 Azure AD 应用程序代理远程访问应用时的安全注意事项](application-proxy-security.md)

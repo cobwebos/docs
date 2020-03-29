@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75348923"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Reliable Actors 框架中的多态性技术
 Reliable Actors 框架允许使用许多在面向对象的设计中使用的相同技术来生成执行组件。 其中一种技术是多态性技术，它允许类型和接口从多个通用父类中继承。 Reliable Actors 框架中的继承通常遵循 .NET 模型，并会受到一些附加限制。 在 Java/Linux 中，它遵循 Java 模型。
 
-## <a name="interfaces"></a>界面
+## <a name="interfaces"></a>接口
 Reliable Actors 框架要求至少定义一个要由执行组件类型实现的接口。 此接口用于生成代理类，客户端可以使用此代理类与执行组件进行通信。 只要由执行组件类型实现的每个接口及其所有父接口最终派生自 IActor(C#) 或 Actor(Java)，就可以从其他接口继承接口。 IActor(C#) 和 Actor(Java) 是平台定义的基接口，分别用于 .NET 和 Java 框架中的执行组件。 因此，使用形状的经典多态性示例可能如下所示：
 
 ![形状执行组件的接口层次结构][shapes-interface-hierarchy]

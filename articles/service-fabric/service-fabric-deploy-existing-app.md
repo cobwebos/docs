@@ -4,10 +4,10 @@ description: 了解如何将现有应用程序打包为来宾可执行文件，�
 ms.topic: conceptual
 ms.date: 07/02/2017
 ms.openlocfilehash: cdbc965d0e8ec4a8f42fbe438b8ac6ddfe05a1b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75377100"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>打包现有可执行文件并将其部署到 Service Fabric
@@ -20,8 +20,8 @@ ms.locfileid: "75377100"
 ## <a name="use-visual-studio-to-package-and-deploy-an-existing-executable"></a>使用 Visual Studio 打包和部署现有可执行文件
 Visual Studio 提供 Service Fabric 服务模板将来宾可执行文件部署到 Service Fabric 群集。
 
-1. 依次选择“**文件**” > “**新建项目**”，并创建一个 Service Fabric 应用程序。
-2. 选择“**来宾可执行文件**”作为服务模板。
+1. 选择 **"文件** > **新项目**"并创建服务结构应用程序。
+2. 选择 **"来宾可执行文件**"作为服务模板。
 3. 单击“**浏览**”，选择包含可执行文件的文件夹，并填充剩余参数，从而创建服务。
    * *代码包行为*。 可以设置为将文件夹中的所有内容复制到 Visual Studio 项目中，这在可执行文件不发生变化时很有用。 如果预期可执行文件会更改，并且希望能够动态选择新版本，则可以改为选择文件夹的链接。 在 Visual Studio 中创建应用程序项目时，可以使用链接的文件夹。 这样一来，可以从项目内链接到源位置，以便能够在来宾可执行文件的源目标中对它进行更新。 在生成时，应用程序包中包括这些更新。
    * *Program* 指定为了启动服务应运行的可执行文件。
@@ -30,7 +30,7 @@ Visual Studio 提供 Service Fabric 服务模板将来宾可执行文件部署�
      * `CodeBase` 指定将应用程序包中的 Code 目录（如上述文件结构中的 `Code` 目录所示）设为工作目录。
      * `CodePackage` 指定将应用程序包的根目录（如上述文件结构中的 `GuestService1Pkg` 目录所示）设为工作目录。
      * `Work` 指定文件会被置于名为 work 的子目录中。
-4. 为服务命名，并单击“**确定**”。
+4. 为服务命名，然后单击 **"确定**"。
 5. 如果服务需要通信终结点，现在可以在 ServiceManifest.xml 文件中添加协议、端口和类型。 例如：`<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`。
 6. 现在，可以通过在 Visual Studio 中调试解决方案，针对本地群集执行打包和发布操作。 完成后，可以将应用程序发布到远程群集，也可以将解决方案签入源控件。
 7. 请阅读[检查正在运行的应用程序](#check-your-running-application)，了解如何查看在 Service Fabric Explorer 中运行的来宾可执行服务。
@@ -62,7 +62,7 @@ Yeoman 创建应用程序包，其中包含相应的应用程序和清单文件�
 -->
 
 ### <a name="create-the-package-directory-structure"></a>创建包目录结构
-可以通过创建目录结构来开始，如[打包 Azure Service Fabric 应用](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps)中所述。
+可以首先创建目录结构，如[打包 Azure Service Fabric 应用](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps)中所述。
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>添加应用程序的代码和配置文件
 创建了目录结构之后，可以在 code 和 config 目录下添加应用程序的代码和配置文件。 还可以在 code 或 config 目录下创建其他目录或子目录。
@@ -260,15 +260,15 @@ New-ServiceFabricService -ApplicationName 'fabric:/nodeapp' -ServiceName 'fabric
 ```
 
 >[!TIP]
-> 如果包较大或包含多个文件，请先[压缩包](service-fabric-package-apps.md#compress-a-package)，然后将其复制到映像存储区。 在[此处](service-fabric-deploy-remove-applications.md#upload-the-application-package)了解详细信息。
+> 如果包较大或包含多个文件，请先[压缩包](service-fabric-package-apps.md#compress-a-package)，然后将其复制到映像存储区。 [在此处](service-fabric-deploy-remove-applications.md#upload-the-application-package)阅读更多内容。
 >
 
 Service Fabric 服务可以采用各种“配置”进行部署。 例如，可以部署为单个或多个实例，也可以部署为在 Service Fabric 群集的每个节点上都有一个服务实例。
 
 `New-ServiceFabricService` cmdlet 的 `InstanceCount` 参数用于指定应在 Service Fabric 群集中启动的服务实例的数量。 可以根据要部署的应用程序的类型来设置 `InstanceCount` 值。 最常见的两种方案是：
 
-* `InstanceCount = "1"`。 在此用例中，群集上只部署一个服务实例。 Service Fabric 的计划程序确定会在哪一个节点上部署服务。
-* `InstanceCount ="-1"`。 在此用例中，会在 Service Fabric 群集中的每个节点上部署一个服务实例。 结果是，群集中的每个节点都拥有一个（且只有一个）服务实例。
+* `InstanceCount = "1"`. 在此用例中，群集上只部署一个服务实例。 Service Fabric 的计划程序确定会在哪一个节点上部署服务。
+* `InstanceCount ="-1"`. 在此用例中，会在 Service Fabric 群集中的每个节点上部署一个服务实例。 结果是，群集中的每个节点都拥有一个（且只有一个）服务实例。
 
 这是适用于前端应用程序（例如，REST 终结点）的实用配置，因为客户端应用程序需要“连接”群集中的任意节点，即可使用终结点。 此配置也适用于其他应用场景，例如，当 Service Fabric 群集的所有节点都连接负载均衡器时。 然后，可将客户端流量分布到群集中所有节点上运行的服务中。
 

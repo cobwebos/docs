@@ -16,14 +16,14 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.openlocfilehash: 35307848c09391ae4468afc00adafd8171aaaa7b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67876477"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件
-以下示例演示如何能够使用 SendGrid 从在 Azure 中托管的网页上发送电子邮件。 生成的应用程序将提示用户提供电子邮件值, 如以下屏幕截图所示。
+以下示例演示如何能够使用 SendGrid 从在 Azure 中托管的网页上发送电子邮件。 生成的应用程序将提示用户输入电子邮件值，如下图所示。
 
 ![“电子邮件”窗体][emailform]
 
@@ -205,16 +205,16 @@ ms.locfileid: "67876477"
     </body>
     </html>
 
-除了发送电子邮件外, emailform.jsp 还提供用户的结果;下面的屏幕截图是一个示例:
+除了发送电子邮件外，emailform.jsp 还为用户提供了结果;因此，电子邮件表单.jsp 还为用户提供了结果。例如以下屏幕截图：
 
 ![发送邮件结果][emailresult]
 
 ## <a name="next-steps"></a>后续步骤
-将应用程序部署到计算模拟器，然后在浏览器内运行 emailform.jsp，在窗体中输入值，单击“发送此电子邮件”  ，然后在 sendemail.jsp 中查看结果。
+将应用程序部署到计算模拟器，然后在浏览器内运行 emailform.jsp，在窗体中输入值，单击“发送此电子邮件”****，然后在 sendemail.jsp 中查看结果。
 
 提供这段代码是为了向你演示如何在 Azure 上通过 Java 使用 SendGrid。 在生产中部署到 Azure 之前，可能希望添加更多错误处理或其他功能。 例如： 
 
-* 你可以使用 Azure 存储 BLOB 或 SQL 数据库（而不是使用 Web 窗体）存储电子邮件地址和电子邮件。 若要了解如何在 Java 中使用 Azure 存储 Blob，请参阅[如何从 Java 使用 Blob 存储服务](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/)。 若要了解如何在 Java 中使用 SQL 数据库，请参阅[在 Java 中使用 SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java)。
+* 你可以使用 Azure 存储 BLOB 或 SQL 数据库（而不是使用 Web 窗体）存储电子邮件地址和电子邮件。 有关通过 Java 使用 Azure Blob 存储 Blob 的信息，请参阅[如何从 Java 使用 Azure Blob 存储服务](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/)。 若要了解如何在 Java 中使用 SQL 数据库，请参阅[在 Java 中使用 SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java)。
 * 若要了解如何在 Java 中使用 SendGrid，请参阅[如何通过 Java 使用 SendGrid 发送电子邮件](store-sendgrid-java-how-to-send-email.md)。
 
 [emailform]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailform.jpg

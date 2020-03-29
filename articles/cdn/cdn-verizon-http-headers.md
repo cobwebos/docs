@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/16/2018
 ms.author: magattus
 ms.openlocfilehash: a5881bea578f2791f8dc0d6e760fd15c6f47e435
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593252"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 Verizon 特定的 HTTP 标头
@@ -27,22 +27,22 @@ ms.locfileid: "67593252"
 
 如果想要防止在发往源服务器的 Azure CDN（内容分发网络）POP 请求中添加其中的某个保留标头，必须使用规则引擎中的[代理特殊标头功能](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers)创建一个规则。 在此规则中，排除想要从标头字段的默认标头列表中删除的标头。 如果已启用[调试缓存响应标头功能](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers)，请务必添加所需的 `X-EC-Debug` 标头。 
 
-例如，若要删除`Via`标头，该规则的标头字段应包含以下标头列表：*X-转发-对于、 X-转发-Proto，X 主机、 X 发生 Midgress，X 网关列表中，X EC 名称，承载*。 
+例如，若要删除 `Via` 标头，规则的标头字段应包含以下标头列表：X-Forwarded-For、X-Forwarded-Proto、X-Host、X-Midgress、X-Gateway-List、X-EC-Name、Host。** 
 
 ![代理特殊标头规则](./media/cdn-http-headers/cdn-proxy-special-header-rule.png)
 
 下表描述了 Verizon CDN POP 可在请求中添加的标头：
 
-请求标头 | 描述 | 示例
+请求标头 | 说明 | 示例
 ---------------|-------------|--------
 [Via](#via-request-header) | 标识发往源服务器的请求的代理 POP 服务器。 | HTTP/1.1 ECS (dca/1A2B)
 X-Forwarded-For | 指示请求方的 IP 地址。| 10.10.10.10
 X-Forwarded-Proto | 指示请求的协议。 | http
 X-Host | 指示请求的主机名。 | cdn.mydomain.com
 X-Midgress | 指示是否通过附加的 CDN 服务器来代理请求。 例如，POP 服务器到源防护服务器，或 POP 服务器到 ADN 网关服务器。 <br />仅当发生 midgress 流量时，才将此标头添加到请求中。 在这种情况下，标头设置为 1，指示通过附加的 CDN 服务器代理了请求。| 1
-[主机](#host-request-header) | 标识可在其中找到所请求内容的主机和端口。 | marketing.mydomain.com:80
-[X-Gateway-List](#x-gateway-list-request-header) | ADN:标识分配给客户源服务器的 ADN 网关服务器故障转移列表。 <br />源防护：指示分配给客户源的源防护服务器组。 | `icn1,hhp1,hnd1`
-X-EC- _&lt;name&gt;_ | 以 *X-EC* 开头的请求标头（例如 X-EC-Tag、[X-EC-Debug](cdn-http-debug-headers.md)）保留给 CDN 使用。| waf-production
+[Host](#host-request-header) | 标识可在其中找到所请求内容的主机和端口。 | marketing.mydomain.com:80
+[X-Gateway-List](#x-gateway-list-request-header) | ADN：标识分配给客户源服务器的 ADN 网关服务器故障转移列表。 <br />源防护服务器：指示分配给客户源服务器的源防护服务器集。 | `icn1,hhp1,hnd1`
+X-EC-_&lt;名称&gt;_ | 以 *X-EC* 开头的请求标头（例如 X-EC-Tag、[X-EC-Debug](cdn-http-debug-headers.md)）保留给 CDN 使用。| waf-production
 
 ## <a name="via-request-header"></a>Via 请求标头
 `Via` 请求标头标识 POP 服务器所用的格式由以下语法指定：
@@ -50,19 +50,19 @@ X-EC- _&lt;name&gt;_ | 以 *X-EC* 开头的请求标头（例如 X-EC-Tag、[X-E
 `Via: Protocol from Platform (POP/ID)` 
 
 语法中使用的元素定义如下：
-- 协议：指示协议 (例如，HTTP/1.1) 的版本使用代理执行该请求。 
+- Protocol：指示用于代理请求的协议版本（例如 HTTP/1.1）。 
 
-- 平台:指示所请求内容的平台。 以下代码在此字段中有效： 
+- Platform：指示在其上请求内容的平台。 以下代码在此字段中有效： 
 
-    代码 | 平台
+    代码 | Platform
     -----|---------
     ECAcc | HTTP Large
     ECS   | HTTP Small
     ECD   | 应用程序传送网络 (ADN)
 
-- POP:指示[POP](cdn-pop-abbreviations.md)处理请求。 
+- POP：指示处理请求的 [POP](cdn-pop-abbreviations.md)。 
 
-- ID:仅供内部使用。
+- ID：仅供内部使用。
 
 ### <a name="example-via-request-header"></a>示例 Via 请求标头
 

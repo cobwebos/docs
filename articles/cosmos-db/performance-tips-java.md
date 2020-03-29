@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.openlocfilehash: 3b7d221c2afc952f40da035c6e2c282b3b932aa5
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69616757"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>适用于 Azure Cosmos DB 和 Java 的性能提示
@@ -57,9 +57,9 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
       ![Azure Cosmos DB 连接策略演示](./media/performance-tips-java/connection-policy.png)
 
    <a id="same-region"></a>
-2. **性能的（位于相同的 Azure 区域内）并置客户端**
+2. **将客户端位于同一 Azure 区域中以进行性能**
 
-    如果可能, 请将任何调用 Azure Cosmos DB 的应用程序放在与 Azure Cosmos 数据库相同的区域中。 通过大致的比较发现，在同一区域中对 Azure Cosmos DB 的调用可在 1-2 毫秒内完成，而美国西海岸和美国东海岸之间的延迟则大于 50 毫秒。 根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 通过确保在与预配 Azure Cosmos DB 终结点所在的同一 Azure 区域中调用应用程序，可能会实现最低的延迟。 有关可用区域的列表，请参阅[ Azure Regions（Azure 区域）](https://azure.microsoft.com/regions/#services)。
+    如果可能，请将任何调用 Azure Cosmos DB 的应用程序放在与 Azure Cosmos 数据库所在的相同区域中。 通过大致的比较发现，在同一区域中对 Azure Cosmos DB 的调用可在 1-2 毫秒内完成，而美国西海岸和美国东海岸之间的延迟则大于 50 毫秒。 根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 通过确保在与预配 Azure Cosmos DB 终结点所在的同一 Azure 区域中调用应用程序，可能会实现最低的延迟。 有关可用区域的列表，请参阅[Azure 区域](https://azure.microsoft.com/regions/#services)。
 
     ![Azure Cosmos DB 连接策略演示](./media/performance-tips/same-region.png)
    
@@ -67,20 +67,20 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 1. **安装最新的 SDK**
 
     Azure Cosmos DB SDK 正在不断改进以提供最佳性能。 请参阅 [Azure Cosmos DB SDK](documentdb-sdk-java.md) 页以了解最新的 SDK 并查看改进内容。
-2. **在应用程序生存期内使用单一实例 Azure Cosmos DB 客户端**
+2. **在应用程序的生存期内使用单一的 Azure Cosmos DB 客户端**
 
-    每个 [DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient) 实例都是线程安全的，在直接模式下运行时可执行高效的连接管理和地址缓存。 若要通过 DocumentClient 获得高效的连接管理和更好的性能，建议在应用程序生存期内对每个 AppDomain 使用单个 DocumentClient 实例。
+    每个[DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient)实例都是线程安全的，在直接模式下运行时执行高效的连接管理和地址缓存。 若要通过 DocumentClient 获得高效的连接管理和更好的性能，建议在应用程序生存期内对每个 AppDomain 使用单个 DocumentClient 实例。
 
    <a id="max-connection"></a>
 3. **使用网关模式时，增加每个主机的 MaxPoolSize**
 
-    使用网关模式时，Azure Cosmos DB 请求是通过 HTTPS/REST 发出的，并受制于每个主机名或 IP 地址的默认连接限制。 可能需要将 MaxPoolSize 设置为较大的值 (200-1000)，以便客户端库能够同时利用多个连接来访问 Azure Cosmos DB。 在 Java SDK 中，[ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) 的默认值为 100。 使用 [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) 可更改该值。
+    使用“网关”模式时，Azure Cosmos DB 请求是通过 HTTPS/REST 发出的，并且受制于每个主机名或 IP 地址的默认连接限制。 可能需要将 MaxPoolSize 设置为较大的值 (200-1000)，以便客户端库能够同时利用多个连接来访问 Azure Cosmos DB。 在 Java SDK 中，[ConnectionPolicy.getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) 的默认值为 100。 使用 [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) 可更改该值。
 
 4. **优化分区集合的并行查询。**
 
     Azure Cosmos DB SQL Java SDK 版本 1.9.0 和更高版本支持并行查询，使你能够并行查询分区集合。 有关详细信息，请参阅与使用这些 SDK 相关的[代码示例](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples)。 并行查询旨改善查询延迟和串行配对物上的吞吐量。
 
-    (a) ***优化 setMaxDegreeOfParallelism\:*** 并行查询的方式是并行查询多个分区。 但就查询本身而言，会按顺序提取单个已分区集合中的数据。 因此，通过使用 [setMaxDegreeOfParallelism](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) 设置分区数，最有可能实现查询的最高性能，但前提是所有其他系统条件仍保持不变。 如果不知道分区数，可使用 setMaxDegreeOfParallelism 设置一个较高的数值，系统会选择最小值（分区数、用户输入）作为最大并行度。 
+    (a) ***优化 setMaxDegreeOfParallelism\:*** 并行查询的方式是并行查询多个分区。 但就查询本身而言，会按顺序提取单个已分区集合中的数据。 因此，使用[setMaxAToParallelism](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism)设置具有最大实现最性能查询机会的分区数，前提是所有其他系统条件保持不变。 如果不知道分区数，可使用 setMaxDegreeOfParallelism 设置一个较高的数值，系统会选择最小值（分区数、用户输入）作为最大并行度。 
 
     请务必注意：如果数据能均匀地分散在与查询相关的所有分区上，并行查询就能带来最大的好处。 如果对分区集合进行分区，其中全部或大部分查询所返回的数据集中于几个分区（最坏的情况下为一个分区），则这些分区将遇到查询的性能瓶颈。
 
@@ -94,7 +94,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 6. **增大客户端工作负荷**
 
-    如果以高吞吐量级别（> 50,000 RU/s）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。 如果达到此限制，可以跨多个服务器横向扩展客户端应用程序，以进一步推送 Azure Cosmos DB 帐户。
+    如果以高吞吐量级别（> 50,000 RU/s）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。 如果达到此上限，可以跨多个服务器横向扩展客户端应用程序以继续进一步推送 Azure Cosmos DB 帐户。
 
 7. **使用基于名称的寻址**
 
@@ -103,7 +103,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
    <a id="tune-page-size"></a>
 8. **调整查询/读取源的页面大小以获得更好的性能**
 
-    使用读取源功能（例如 [readDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readdocuments)）执行批量文档读取时，或发出 SQL 查询时，如果结果集太大，则以分段方式返回结果。 默认情况下，以包括 100 个项的块或 1 MB 大小的块返回结果（以先达到的限制为准）。
+    使用读取源功能（例如，[读取文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readdocuments)）或发出 SQL 查询执行文档批量读取时，如果结果集太大，则以分段方式返回结果。 默认情况下，以包括 100 个项的块或 1 MB 大小的块返回结果（以先达到的限制为准）。
 
     若要减少检索所有适用结果所需的网络往返次数，可以使用 [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 请求标头将页面大小最大增加到 1000。 在只需要显示几个结果的情况下（例如，用户界面或应用程序 API 一次只返回 10 个结果），也可以将页面大小缩小为 10，以降低读取和查询所耗用的吞吐量。
 
@@ -113,7 +113,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
  
 1. **从索引中排除未使用的路径以加快写入速度**
 
-    Azure Cosmos DB 的索引策略允许使用索引路径（[setIncludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setincludedpaths) 和 [setExcludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setexcludedpaths)）指定要在索引中包括或排除的文档路径。 在事先知道查询模式的方案中，使用索引路径可改善写入性能并降低索引存储空间，因为索引成本与索引的唯一路径数目直接相关。  例如，以下代码演示了如何使用“*”通配符 从索引中排除文档的整个部分（也称为子树）。
+    Azure Cosmos DB 的索引策略允许您通过利用索引路径（[设置包含路径](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setincludedpaths)和[设置排除路径](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setexcludedpaths)）指定要包括或排除索引的文档路径。 在事先知道查询模式的方案中，使用索引路径可改善写入性能并降低索引存储空间，因为索引成本与索引的唯一路径数目直接相关。  例如，以下代码演示了如何使用“*”通配符 从索引中排除文档的整个部分（也称为子树）。
 
     ```Java
     Index numberIndex = Index.Range(DataType.Number);
@@ -138,7 +138,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     查询的复杂性会影响操作使用的请求单位数量。 谓词数、谓词性质、UDF 数目和源数据集的大小都会影响查询操作的成本。
 
-    若要测量任何操作 (创建、更新或删除) 的开销, 请检查[x-ms-请求费用](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)标头 (或[ResourceResponse\<t](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse)中的等效 RequestCharge 属性 > 或[FeedResponse\<T >](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse)来测量这些操作占用的请求单位数。
+    若要度量任何操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) 标头（或 [ResourceResponse\<T>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) 或 [FeedResponse\<T>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse) 中的等效 RequestCharge 属性）来度量这些操作占用的请求单位数。
 
     ```Java
     ResourceResponse<Document> response = client.createDocument(collectionLink, documentDefinition, null, false);
@@ -158,7 +158,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     SDK 全部都会隐式捕获此响应，并遵循服务器指定的 retry-after 标头，并重试请求。 除非多个客户端同时访问帐户，否则下次重试就会成功。
 
-    如果多个客户端一直以高于请求速率的方式累积运行，则客户端当前在内部设置为 9 的默认重试计数可能无法满足需要；在此情况下，客户端就会向应用程序引发 [DocumentClientException](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclientexception)，其状态代码为 429。 可以通过在 [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy) 实例上使用 [setRetryOptions](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setretryoptions) 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后将返回 DocumentClientException 和状态代码 429。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。
+    如果多个客户端累积操作始终高于请求速率，则客户端当前在内部设置为 9 的默认重试计数可能不足;在这种情况下，客户端向应用程序抛出具有状态代码 429 的[DocumentClientException。](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclientexception) 可以使用[连接策略](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy)实例上的["重试选项"](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setretryoptions)更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后将返回 DocumentClientException 和状态代码 429。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。
 
     尽管自动重试行为有助于改善大多数应用程序的复原能力和可用性，但是在执行性能基准测试时可能会造成冲突（尤其是在测量延迟时）。  如果实验达到服务器限制并导致客户端 SDK 静默重试，则客户端观测到的延迟会剧增。 若要避免性能实验期间出现延迟高峰，可以测量每个操作返回的费用，并确保请求以低于保留请求速率的方式运行。 有关详细信息，请参阅[请求单位](request-units.md)。
 3. **针对小型文档进行设计以提高吞吐量**
