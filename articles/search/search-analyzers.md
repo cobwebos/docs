@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75460715"
 ---
-# <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure 认知搜索中的文本处理分析器
+# <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>用于 Azure 认知搜索中文本处理的分析器
 
-分析器是[全文搜索引擎](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理。 不同的分析器根据具体的方案以不同的方式处理文本。 语言分析器使用语言规则处理文本，以提高搜索质量；其他分析器执行其他基本任务，例如，将字符转换为小写。 
+分析器是[全文搜索引擎](search-lucene-query-architecture.md)的组成部分，负责在查询字符串和带索引文档中进行文本处理**。 不同的分析器根据具体的方案以不同的方式处理文本。 语言分析器使用语言规则处理文本，以提高搜索质量；其他分析器执行其他基本任务，例如，将字符转换为小写。 
 
-语言分析器是最常使用的，默认语言分析器分配给 Azure 认知搜索索引中的每个可搜索字段。 下面是文本分析过程中的典型语言转换：
+语言分析器是用得最多的类型，Azure 认知搜索索引中的每个可搜索字段都分配有默认的语言分析器。 下面是文本分析过程中的典型语言转换：
 
 + 删除非必需字（非索引字）和标点。
 + 将短语和用连字符连接的词语分解为组成部分。
@@ -30,20 +30,20 @@ ms.locfileid: "75460715"
 
 ## <a name="default-analyzer"></a>默认分析器  
 
-Azure 认知搜索使用[Apache Lucene 标准分析器（Standard lucene）](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)作为默认值，这会将文本分为["Unicode 文本分段"](https://unicode.org/reports/tr29/)规则。 此外，标准分析器将所有字符转换为其小写形式。 已编入索引的文档和搜索词在索引和查询处理期间完成分析。  
+Azure 认知搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)，该分析器按照[“Unicode 文本分段”](https://unicode.org/reports/tr29/)规则将文本分解成多个元素。 此外，标准分析器将所有字符转换为其小写形式。 已编入索引的文档和搜索词在索引和查询处理期间完成分析。  
 
 将会针对每个可搜索字段使用此分析器。 你可以逐字段替代默认值。 替代的分析器可以是[语言分析器](index-add-language-analyzers.md)、[自定义分析器](index-add-custom-analyzers.md)，也可以是[可用分析器列表](index-add-custom-analyzers.md#AnalyzerTable)中的预定义分析器。
 
 
 ## <a name="types-of-analyzers"></a>分析器类型
 
-下面的列表介绍 Azure 认知搜索中可用的分析器。
+下表描述了 Azure 认知搜索中可用的分析器。
 
-| 类别 | Description |
+| 类别 | 描述 |
 |----------|-------------|
 | [标准 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和方案。|
-| 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 认知搜索支持 35 Lucene 语言分析器和 50 Microsoft 自然语言处理分析器。 |
-|[自定义分析器](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 称为结合了现有元素的用户定义配置，由一个 tokenizer（必需）和可选的筛选器（字符或词元）组成。|
+| 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace************************。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 认知搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
+|[自定义分析仪](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 称为结合了现有元素的用户定义配置，由一个 tokenizer（必需）和可选的筛选器（字符或词元）组成。|
 
 某些预定义分析器（例如 **Pattern** 或 **Stop**）支持有限的一组配置选项。 若要设置这些选项，请有效地创建一个自定义分析器，其中包括某个预定义分析器，以及[预定义分析器参考](index-add-custom-analyzers.md#AnalyzerTable)中所述的一个替代选项。 对于任何自定义配置，请为新配置提供一个名称，例如 *myPatternAnalyzer*，以便将它与 Lucene Pattern 分析器区分开来。
 
@@ -56,14 +56,14 @@ Azure 认知搜索使用[Apache Lucene 标准分析器（Standard lucene）](htt
 3. 或者，可以不使用单个 **analyzer** 属性，而使用 **indexAnalyzer** 和 **searchAnalyzer** 字段参数分别设置用于索引和查询的不同分析器。 如果其中的某个活动需要特定的转换，而其他活动不需要该转换，则你可以使用不同的分析器来准备和检索数据。
 
 > [!NOTE]
-> 在索引时，不能在索引时使用不同的[语言分析器](index-add-language-analyzers.md)，而不能在查询时使用。 为[自定义分析器](index-add-custom-analyzers.md)保留该功能。 出于此原因，如果尝试将**searchAnalyzer**或**indexAnalyzer**属性设置为语言分析器的名称，REST API 将返回错误响应。 您必须改用**analyzer**属性。
+> 在索引时间不能使用与字段查询时间不同的[语言分析器](index-add-language-analyzers.md)。 该功能是为[自定义分析器](index-add-custom-analyzers.md)保留的。 因此，如果尝试将 **searchAnalyzer** 或 **indexAnalyzer** 属性设为语言分析器的名称，REST API 将返回错误响应。 必须改用 **analyzer** 属性。
 
 不允许将 **analyzer** 或 **indexAnalyzer** 分配到实际已创建的字段。 如有任何疑问，请查看下表，其中列出了需要重新生成的操作详情以及原因。
  
  | 方案 | 影响 | 步骤 |
  |----------|--------|-------|
  | 添加新字段 | 轻微 | 如果字段尚不存在于架构中，则不需要进行任何字段修订，因为索引中尚不存在字段的物理形式。 可以使用 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) 将新字段添加到现有索引，使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 来填充字段。|
- | 将 **analyzer** 或 **indexAnalyzer** 添加到现有的已编制索引的字段。 | [rebuild](search-howto-reindex.md) | 该字段的倒排索引必须从头开始重新创建，并且必须对这些字段的内容重新编制索引。 <br/> <br/>对于正在开发中的索引，[删除](https://docs.microsoft.com/rest/api/searchservice/delete-index)并[创建](https://docs.microsoft.com/rest/api/searchservice/create-index)索引，以获得新的字段定义。 <br/> <br/>对于生产环境中的索引，可以创建一个新字段来提供修改后的定义并开始使用该字段取代旧字段，以推迟重新生成。 使用 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) 合并新字段，使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 填充该字段。 之后在计划索引服务中，可清除索引以删除过时字段。 |
+ | 将 **analyzer** 或 **indexAnalyzer** 添加到现有的已编制索引的字段。 | [重建](search-howto-reindex.md) | 该字段的倒排索引必须从头开始重新创建，并且必须对这些字段的内容重新编制索引。 <br/> <br/>对于正在开发中的索引，[删除](https://docs.microsoft.com/rest/api/searchservice/delete-index)并[创建](https://docs.microsoft.com/rest/api/searchservice/create-index)索引，以获得新的字段定义。 <br/> <br/>对于生产环境中的索引，可以创建一个新字段来提供修改后的定义并开始使用该字段取代旧字段，以推迟重新生成。 使用 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) 合并新字段，使用 [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) 填充该字段。 之后在计划索引服务中，可清除索引以删除过时字段。 |
 
 ## <a name="when-to-add-analyzers"></a>何时添加分析器
 
@@ -71,7 +71,7 @@ Azure 认知搜索使用[Apache Lucene 标准分析器（Standard lucene）](htt
 
 随着索引定义的固化，可将新的分析结构追加到某个索引，但是，若要避免以下错误，需将 **allowIndexDowntime** 标志传递给 [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index)：
 
-*不允许使用索引更新，因为这会导致停机。若要将新的分析器、tokenizer、标记筛选器或字符筛选器添加到现有索引，请将索引更新请求中的 "allowIndexDowntime" 查询参数设置为 "true"。请注意，此操作将使索引脱机至少几秒钟，从而导致索引和查询请求失败。索引更新后，可能会在数分钟内削弱索引的性能和写入可用性，或更长的索引。 "*
+*不允许进行索引更新，因为它会导致停机。为了向现有索引添加新分析器、标记器、令牌筛选器或字符筛选器，请在索引更新请求中将"允许IndexDowntime"查询参数设置为"true"。请注意，此操作将使索引脱机至少几秒钟，从而导致索引和查询请求失败。索引的性能和写入可用性可能会在更新索引后几分钟受损，对于非常大的索引可能会降低更长时间。*
 
 将分析器分配到某个字段时也是如此。 分析器是字段定义的不可或缺部分，因此，请只在创建字段时才添加分析器。 若要将分析器添加到现有字段，必须[删除并重新生成](search-howto-reindex.md)索引，或者添加包含所需分析器的新字段。
 
@@ -83,7 +83,7 @@ Azure 认知搜索使用[Apache Lucene 标准分析器（Standard lucene）](htt
 
 ### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>除非特别要求，否则读写操作使用一个分析器
 
-Azure 认知搜索允许通过附加的**indexAnalyzer**和**searchAnalyzer**字段参数为索引和搜索指定不同的分析器。 如果未指定，则使用 **analyzer** 属性设置的分析器将用于索引编制和搜索。 如果未指定 `analyzer`，将使用默认标准 Lucene 分析器。
+Azure 认知搜索允许通过附加的 **indexAnalyzer** 和 **searchAnalyzer** 字段参数来指定使用不同的分析器执行索引和搜索。 如果未指定，则使用 **analyzer** 属性设置的分析器将用于索引编制和搜索。 如果未指定 `analyzer`，将使用默认标准 Lucene 分析器。
 
 除非特别要求，否则索引和查询一般使用同一个分析器。 请务必全面测试。 如果搜索和索引时的文本处理不同，则当搜索和索引分析器配置不一致时，查询词和索引词可能会不匹配。
 
@@ -274,9 +274,9 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
   }
 ~~~~
 
-## <a name="c-examples"></a>C#示例
+## <a name="c-examples"></a>C# 示例
 
-如果你使用的是 .NET SDK 代码示例，则可以附加这些示例以使用或配置分析器。
+如果使用 .NET SDK 代码示例，则可追加这些示例，以便使用或配置分析器。
 
 + [分配内置分析器](#Assign-a-language-analyzer)
 + [配置分析器](#Define-a-custom-analyzer)
@@ -285,11 +285,11 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 ### <a name="assign-a-language-analyzer"></a>分配语言分析器
 
-按原样使用的任何分析器（无配置）都是在字段定义中指定的。 不需要创建分析器构造。 
+任何按原样使用且没有任何配置的分析器都是在字段定义中指定的。 没有创建分析器构造的要求。 
 
-此示例将 Microsoft 英语和法语分析器分配给说明字段。 这是来自更大的酒店索引定义的代码片段，使用[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)示例的 hotels.cs 文件中的酒店类创建。
+此示例将 Microsoft 英语和法语分析器分配给说明字段。 它是从更大的酒店索引定义中提取的代码片段，使用 [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) 示例的 hotels.cs 文件中的酒店类进行创建。
 
-调用[Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)，指定[AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet)类型，该类型提供 Azure 认知搜索中支持的文本分析器。
+调用[分析器](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)，指定 [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) 类型，提供在 Azure 认知搜索中受支持的文本分析器。
 
 ```csharp
     public partial class Hotel
@@ -313,9 +313,9 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 ### <a name="define-a-custom-analyzer"></a>定义自定义分析器
 
-需要自定义或配置时，需要将分析器构造添加到索引。 定义后，可以按照前面示例中所示，将其添加到字段定义。
+如果需要自定义或配置，则需向索引添加分析器构造。 定义以后，即可将其添加到字段定义，如上一示例所示。
 
-创建[CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet)对象。 有关更多示例，请参阅[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs)。
+创建 [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) 对象。 如需更多示例，请参阅 [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs)。
 
 ```csharp
 {
@@ -339,7 +339,7 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 ## <a name="next-steps"></a>后续步骤
 
-+ 查看[有关 Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)的综合说明。 本文通过示例来说明某些表面上看起来与预期不符的行为。
++ 请参阅 [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)获取全面的说明。 本文通过示例来说明某些表面上看起来与预期不符的行为。
 
 + 通过[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)示例部分或者通过门户中“搜索资源管理器”的[简单查询语法](query-simple-syntax.md)尝试其他查询语法。
 
@@ -347,11 +347,11 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
 
 + [配置自定义分析器](index-add-custom-analyzers.md)，针对单个字段尽量简化处理或者进行专门处理。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
  [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
- [简单的查询语法](query-simple-syntax.md) 
+ [简化的查询语法](query-simple-syntax.md) 
 
  [完整 Lucene 查询语法](query-lucene-syntax.md) 
  

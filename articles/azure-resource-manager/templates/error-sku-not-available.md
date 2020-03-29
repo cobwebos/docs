@@ -1,18 +1,18 @@
 ---
 title: SKU 不可用错误
-description: 介绍如何在使用 Azure 资源管理器部署资源时排除 "SKU 不可用" 错误。
+description: 介绍在使用 Azure 资源管理器部署资源时如何解决 SKU 不可用错误。
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: 3dcc26f2d74799a6d282ee4bd733d36bec7b05e4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942725"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用的错误
 
-本文介绍如何解决 SkuNotAvailable 错误。 如果在该区域/区域中找不到合适的 SKU 或满足业务需求的备用区域/区域，请将[SKU 请求](https://aka.ms/skurestriction)提交到 Azure 支持。
+本文介绍如何解决 SkuNotAvailable 错误****。 如果无法在该区域/区域或满足业务需求的替代区域/区域中找到合适的 SKU，请向 Azure 支持提交[SKU 请求](https://aka.ms/skurestriction)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -30,11 +30,11 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 当所选的资源 SKU（如 VM 大小）不可用于所选的位置时，会收到此错误。
 
-如果要部署 Azure 点 VM 或点规模集实例，此位置中的 Azure 位置没有任何容量。 有关详细信息，请参阅[污点错误消息](../../virtual-machines/error-codes-spot.md)。
+如果要部署 Azure Spot VM 或 Spot 比例集集实例，则此位置中没有任何 Azure Spot 的容量。 有关详细信息，请参阅[Spot 错误消息](../../virtual-machines/error-codes-spot.md)。
 
 ## <a name="solution-1---powershell"></a>解决方案 1 - PowerShell
 
-若要确定区域/区域中可用的 Sku，请使用[AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku)命令。 按位置筛选结果。 必须拥有最新版本 PowerShell 才能运行此命令。
+要确定区域/区域中哪些 SKU 可用，请使用[获取-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku)命令。 按位置筛选结果。 必须拥有最新版本 PowerShell 才能运行此命令。
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
@@ -51,14 +51,14 @@ virtualMachines       Standard_A2    centralus             NotAvailableForSubscr
 virtualMachines       Standard_D1_v2 centralus   {2, 1, 3}                                  MaxResourceVolumeMB
 ```
 
-一些其他示例：
+其他一些示例：
 
 ```azurepowershell-interactive
 Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
 Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
 ```
 
-在末尾追加 "fc" 会返回更多详细信息。
+在末尾追加"fc"将返回更多详细信息。
 
 ## <a name="solution-2---azure-cli"></a>解决方案 2 - Azure CLI
 
@@ -84,7 +84,7 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 
 要确定区域中可用的 SKU，请使用[门户](https://portal.azure.com)。 登录到门户，并通过接口添加资源。 设置值时，可看到该资源的可用 SKU。 不需要完成部署。
 
-例如，开始创建虚拟机的过程。 若要查看其他可用的大小，请选择“更改大小”。
+例如，开始创建虚拟机的过程。 若要查看其他可用的大小，请选择“更改大小”****。
 
 ![创建 VM](./media/error-sku-not-available/create-vm.png)
 

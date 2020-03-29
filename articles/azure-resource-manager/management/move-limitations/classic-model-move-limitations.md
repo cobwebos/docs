@@ -1,18 +1,18 @@
 ---
 title: 移动 Azure 经典部署资源
-description: 使用 Azure 资源管理器将经典部署资源移动到新的资源组或订阅。
+description: 使用 Azure 资源管理器将经典部署资源移到新的资源组或订阅。
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 78b9769a31fa0c96c12e18d05cb9c484aa52a1d5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75485281"
 ---
-# <a name="move-guidance-for-classic-deployment-model-resources"></a>经典部署模型资源的移动指南
+# <a name="move-guidance-for-classic-deployment-model-resources"></a>针对经典部署模型资源的移动指南
 
-移动通过经典模型部署的资源的步骤会有所不同，这取决于你是要将资源移动到订阅中，还是移动到新的订阅。
+移动通过经典模型部署的资源时，其步骤各不相同，具体取决于是在订阅内移动资源，还是将资源移到新的订阅。
 
 ## <a name="move-in-the-same-subscription"></a>在同一订阅中移动
 
@@ -25,7 +25,7 @@ ms.locfileid: "75485281"
 * 一次只能移动一个存储帐户（经典）。
 * 存储帐户（经典）与虚拟机或云服务不能在同一操作中移动。
 
-若要将经典资源移到同一订阅中的新资源组，请通过门户、Azure PowerShell、Azure CLI 或 REST API 使用[标准移动操作](../move-resource-group-and-subscription.md)。 使用的操作应与移动 Resource Manager 资源时所用的操作相同。
+要将经典资源移动到同一订阅中的新资源组，请使用通过门户、Azure PowerShell、Azure CLI 或 REST API[的标准移动操作](../move-resource-group-and-subscription.md)。 使用的操作应与移动 Resource Manager 资源时所用的操作相同。
 
 ## <a name="move-across-subscriptions"></a>跨订阅移动
 
@@ -96,6 +96,6 @@ ms.locfileid: "75485281"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果移动经典资源时遇到问题，请联系[支持人员](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
+如果移动经典资源时遇到问题，请与[支持部门](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)联系。
 
 有关移动资源的命令，请参阅[将资源移动至新资源组或订阅](../move-resource-group-and-subscription.md)。

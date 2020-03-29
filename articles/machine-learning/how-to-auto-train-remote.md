@@ -1,7 +1,7 @@
 ---
 title: 自动 ML 远程计算目标
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习的 Azure 机器学习远程计算目标上的自动机器学习生成模型
+description: 了解如何使用 Azure 机器学习在 Azure 机器学习远程目标上使用自动机器学习构建模型
 services: machine-learning
 author: cartacioS
 ms.author: sacartac
@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 9e499d609a3f78dc5f422b9ed90df09be30f2e7c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79080405"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>在云中使用自动化机器学习对模型进行训练
@@ -24,15 +24,15 @@ ms.locfileid: "79080405"
 
 在 Azure 机器学习中，我们在所管理的不同类型的计算资源上训练模型。 计算目标可以是本地计算机，也可以是云中的资源。
 
-可以通过添加更多计算目标（例如 Azure 机器学习计算（AmlCompute））来轻松增加或减少机器学习试验。 AmlCompute 是一个托管的计算基础结构，可让你轻松创建单节点或多节点计算。
+可以通过添加 Azure 机器学习计算 (AmlCompute) 等附加计算目标，轻松地纵向扩展或横向扩展机器学习试验。 AmlCompute 是一个托管的计算基础结构，可让你轻松创建单节点或多节点计算。
 
-本文介绍如何通过 AmlCompute 使用自动 ML 构建模型。
+在本文中，你将了解如何使用自动化 ML 和 AmlCompute 来构建模型。
 
 ## <a name="how-does-remote-differ-from-local"></a>远程与本地有何区别？
 
-本教程 "使用[自动机器学习训练分类模型](tutorial-auto-train-models.md)" 教程介绍了如何使用本地计算机通过自动 ML 训练模型。 本地培训的工作流同样适用于远程目标。 但是，使用远程计算，能够以异步方式执行自动化机器学习试验迭代。 此功能允许你取消特定迭代，观察执行状态，或继续在 Jupyter 笔记本的其他单元格上处理。 若要进行远程训练，请先创建一个远程计算目标，如 AmlCompute。 然后，配置远程资源，并在那里提交代码。
+教程“[使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)”讲授了如何使用本地计算机通过自动化机器学习来训练模型。 本地培训的工作流同样适用于远程目标。 但是，使用远程计算，能够以异步方式执行自动化机器学习试验迭代。 此功能允许你取消特定迭代，观察执行状态，或继续在 Jupyter 笔记本的其他单元格上处理。 若要进行远程训练，首先要创建一个远程计算目标，例如 AmlCompute。 然后，配置远程资源，并在那里提交代码。
 
-本文介绍了在远程 AmlCompute 目标上运行自动 ML 实验所需的额外步骤。 本教程中的工作区对象 `ws` 将会在此处的整个代码中使用。
+本文展示了在远程 AmlCompute 目标上运行自动化机器学习试验所需的额外步骤。 本教程中的工作区对象 `ws` 将会在此处的整个代码中使用。
 
 ```python
 ws = Workspace.from_config()
@@ -40,9 +40,9 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>创建资源
 
-在工作区中创建[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py)目标（`ws`）（如果尚未存在）。
+如果目标[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py)不存在，则在工作区`ws`中创建目标 。
 
-**估计时间**： AmlCompute 目标的创建时间大约为5分钟。
+**时间估计**： 创建 Aml 计算目标大约需要 5 分钟。
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -83,13 +83,13 @@ else:
 
 群集名称限制包括：
 + 必须小于 64 个字符。
-+ 不得包含以下任何字符：`\` ~ ! @ # $% ^ & * （） = + _ [] {} \\\\ |;： \' \\"，< >/？。`
++ 不得包含以下任何字符：`\` ~ ! [ % % ] & * [ ] \\ \\ * * * * * * * * * * * *："， < > /？。 \' \\`
 
 ## <a name="access-data-using-tabulardataset-function"></a>使用 TabularDataset 函数访问数据
 
-定义 training_data 作为[`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)和标签，在[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)中传递到自动 ML。 默认情况下，`TabularDataset` 方法 `from_delimited_files`将 `infer_column_types` 设置为 true，这将自动推断列类型。 
+定义为[`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)和 标签training_data，该标签在 中传递给自动[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)ML。 默认情况下`TabularDataset`，`from_delimited_files`该方法将`infer_column_types`设置为 true，这将自动推断列类型。 
 
-如果要手动设置列类型，可以将 `set_column_types` 参数设置为手动设置每个列的类型。 在下面的代码示例中，数据来自 sklearn 包。
+如果确实希望手动设置列类型，可以将`set_column_types`参数设置为手动设置每列的类型。 在下面的代码示例中，数据来自 sklearn 包。
 
 ```python
 from sklearn import datasets
@@ -196,7 +196,7 @@ remote_run = experiment.submit(automl_config, show_output=True)
 
 ## <a name="explore-results"></a>浏览结果
 
-您可以使用[培训教程](tutorial-auto-train-models.md#explore-the-results)中所示的相同[Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)来查看结果图和表。
+可以使用与[培训教程](tutorial-auto-train-models.md#explore-the-results)中显示的内容相同的 [Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)来查看图表和结果表格。
 
 ```python
 from azureml.widgets import RunDetails
@@ -216,7 +216,7 @@ RunDetails(remote_run).show()
 remote_run.get_portal_url()
 ```
 
-你的工作区中提供了相同的信息。  若要了解有关这些结果的详细信息，请参阅[了解自动化机器学习结果](how-to-understand-automated-ml.md)。
+工作区中提供了相同的信息。  若要了解有关这些结果的详细信息，请参阅[了解自动化机器学习结果](how-to-understand-automated-ml.md)。
 
 ## <a name="example"></a>示例
 
@@ -227,4 +227,4 @@ remote_run.get_portal_url()
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[如何为自动培训配置设置](how-to-configure-auto-train.md)。
-* 请参阅[如何](how-to-machine-learning-interpretability-automl.md)在自动 ML 试验中启用 model interpretability 功能。
+* 请参阅[操作说明](how-to-machine-learning-interpretability-automl.md)，了解如何启用自动 ML 试验中的模型可解释性功能。

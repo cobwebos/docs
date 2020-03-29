@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 60fd5476d687d9f44aec885cdf888572e8e523a4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78946120"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的用户
@@ -33,24 +33,24 @@ ms.locfileid: "78946120"
  - **全权用户** - 拥有完全访问权限的本地用户。
  - **只读用户** - 拥有只读访问权限的本地用户。 这些用户与允许只读操作的共享相关联。
 
-在创建共享期间创建用户时，首先会定义用户权限。 当前不支持修改共享级权限。
+在创建共享期间创建用户时，首先会定义用户权限。 当前不支持修改共享级别权限。
 
 ## <a name="add-a-user"></a>添加用户
 
 在 Azure 门户中执行以下步骤可以添加用户。
 
-1. 在 Azure 门户中，转到自己的 Data Box Gateway 资源，然后导航到“概述”。 单击命令栏上的“+ 添加用户”。
+1. 在 Azure 门户中，转到自己的 Data Box Gateway 资源，然后导航到“概述”。**** 单击命令栏上的“+ 添加用户”****。
 
     ![单击“添加用户”](media/data-box-gateway-manage-users/add-user-1.png)
 
-2. 指定要添加的用户的用户名和密码。 确认密码，然后单击“添加”。
+2. 指定要添加的用户的用户名和密码。 确认密码，然后单击“添加”。****
 
     ![单击“添加用户”](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
     > 以下用户由系统保留，不应使用：Administrator、EdgeUser、EdgeSupport、HcsSetupUser、WDAGUtilityAccount、CLIUSR、DefaultAccount、Guest。  
 
-3. 用户创建过程开始和完成后，你会收到通知。 创建用户后，在命令栏中单击“刷新”可查看更新的用户列表。
+3. 用户创建过程开始和完成后，你会收到通知。 创建用户后，在命令栏中单击“刷新”可查看更新的用户列表。****
 
 
 ## <a name="modify-user"></a>修改用户
@@ -64,7 +64,7 @@ ms.locfileid: "78946120"
 
 在 Azure 门户中执行以下步骤可以删除用户。
 
-1. 在用户列表中选择并单击该用户，然后单击“删除”。  
+1. 在用户列表中选择并单击该用户，然后单击“删除”。****  
 
    ![删除用户](media/data-box-gateway-manage-users/delete-user-1.png)
 

@@ -5,10 +5,10 @@ author: ecfan
 ms.author: estfan
 ms.date: 03/02/2018
 ms.openlocfilehash: 1aabc1b33722c571c6519b6620fb62211a44c2e8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789767"
 ---
 1. 在 [Azure 门户](https://portal.azure.com)中，创建一个空白逻辑应用。 
@@ -22,7 +22,7 @@ ms.locfileid: "74789767"
    > [!NOTE]
    > 所有逻辑应用工作流都必须以触发器开头。 仅当逻辑工作流已以触发器开头时，才可以选择操作。 
 
-4. 如果以前未创建连接，请选择“登录”以便在出现提示时提供 GitHub 凭据。  
+4. 如果以前未创建连接，请选择“登录”**** 以便在出现提示时提供 GitHub 凭据。  
 
    ![使用 GitHub 凭据登录](./media/connectors-create-api-github/github-connector-sign-in-credentials.png)
 

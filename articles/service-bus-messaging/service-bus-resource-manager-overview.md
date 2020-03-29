@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 9bc784ee57b9bde393408cbefa9a197aebc59b08
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264452"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建服务总线资源
@@ -28,7 +28,7 @@ ms.locfileid: "76264452"
 Azure 资源管理器模板可帮助你定义要为解决方案部署的资源，以及指定可用于为不同环境输入值的参数和变量。 此模板以 JSON 编写并包含可用于为部署构造值的表达式。 有关编写 Azure 资源管理器模板的详细信息，以及模板格式的讨论，请参阅 [Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)。
 
 > [!NOTE]
-> 本文中的示例演示如何使用 Azure 资源管理器来创建服务总线命名空间和消息实体（队列）。 有关其他模板示例，请访问[Azure 快速入门模板库][Azure Quickstart Templates gallery]并搜索**服务总线**。
+> 本文中的示例演示如何使用 Azure 资源管理器来创建服务总线命名空间和消息实体（队列）。 有关其他模板示例，请访问 [Azure 快速入门模板库][Azure Quickstart Templates gallery]并搜索“服务总线”****。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -42,7 +42,7 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
 * [创建包含队列和授权规则的服务总线命名空间](service-bus-resource-manager-namespace-auth-rule.md)
 * [创建包含主题、订阅和规则的服务总线命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
 
-## <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
+## <a name="deploy-with-powershell"></a>使用 PowerShell 部署
 
 以下过程描述如何使用 PowerShell 部署 Azure 资源管理器模板以创建“标准”层服务总线命名空间和该命名空间中的一个队列。 本示例基于[创建包含队列的服务总线命名空间](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue)模板。 大概的工作流如下所示：
 
@@ -181,7 +181,7 @@ Set-AzContext -SubscriptionID <YourSubscriptionId>
 
 ### <a name="set-the-resource-group"></a>设置资源组
 
-如果没有现有的资源组，请使用**AzResourceGroup**命令创建新的资源组。 提供资源组的名称，以及要使用的位置。 例如：
+如果没有现有的资源组，请使用 **New-AzResourceGroup** 命令创建新的资源组。 提供资源组的名称，以及要使用的位置。 例如：
 
 ```powershell
 New-AzResourceGroup -Name MyDemoRG -Location "West US"
@@ -207,7 +207,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path t
 
 ### <a name="create-the-deployment"></a>创建部署
 
-若要创建新部署，请运行 `New-AzResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 **Mode** 参数，将使用 **Incremental** 的默认值。 有关详细信息，请参阅[增量部署和完整部署](../azure-resource-manager/templates/deployment-modes.md)。
+若要创建新部署，请运行 `New-AzResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定**Mode**参数，则使用**增量**的默认值。 有关详细信息，请参阅[增量部署和完整部署](../azure-resource-manager/templates/deployment-modes.md)。
 
 以下命令会提示在 PowerShell 窗口中输入三个参数：
 

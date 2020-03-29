@@ -1,6 +1,6 @@
 ---
-title: 真实用户度量网页-Azure 流量管理器
-description: 本文介绍如何设置网页以将真实用户度量发送到 Azure 流量管理器。
+title: 使用网页进行真实用户度量 - Azure 流量管理器
+description: 在本文中，了解如何设置网页以向 Azure 流量管理器发送真实用户度量。
 services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
@@ -14,10 +14,10 @@ ms.date: 03/16/2018
 ms.author: rohink
 ms.custom: ''
 ms.openlocfilehash: 927d774ee30a291607a8a47fc2fd6878c1bc6fee
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938697"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>如何使用网页将实际用户度量发送到 Azure 流量管理器
@@ -31,8 +31,8 @@ ms.locfileid: "76938697"
 若要使用 Azure 门户获取 RUM 密钥，请执行以下操作：
 1. 在浏览器中，登录 Azure 门户。 如果还没有帐户，可以注册免费一个月试用版。
 2. 在门户的搜索栏中，搜索要修改的流量管理器配置文件名称，并在显示的结果中单击该流量管理器配置文件。
-3. 在“流量管理器配置文件”边栏选项卡中，单击“设置”下的“实际用户度量”。
-4. 单击“生成密钥”新建 RUM 密钥。
+3. 在“流量管理器配置文件”边栏选项卡中，单击“设置”**** 下的“实际用户度量”****。
+4. 单击“生成密钥”**** 新建 RUM 密钥。
  
    ![生成实际用户度量密钥](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "76938697"
 
     **图 2：实际用户度量密钥和度量 JavaScript**
  
-6. 单击“复制”按钮复制 JavaScript 代码。 
+6. 单击“复制”**** 按钮复制 JavaScript 代码。 
 
 >[!IMPORTANT]
 > 使用生成的 JavaScript 使“实际用户度量”功能正常工作。 对此脚本或“实际用户度量”使用的脚本进行任何更改可能会导致不可预知的行为。
@@ -66,7 +66,7 @@ ms.locfileid: "76938697"
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[实际用户度量](traffic-manager-rum-overview.md)
-- 了解[流量管理器工作原理](traffic-manager-overview.md)
+- 了解[流量管理器的工作原理](traffic-manager-overview.md)
 - 详细了解流量管理器支持的[流量路由方法](traffic-manager-routing-methods.md)
 - 了解如何[创建流量管理器配置文件](traffic-manager-create-profile.md)
 

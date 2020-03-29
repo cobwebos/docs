@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: fb0630f3f7a4acebcfe5dcad343030c9d1184263
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976394"
 ---
 # <a name="media-services-playready-license-template-overview"></a>媒体服务 PlayReady 许可证模板概述
@@ -32,7 +32,7 @@ Azure 媒体服务现在提供了用于交付 PlayReady 许可证的服务。 �
 * 要在客户端的永久性存储区保存的许可证。 永久性许可证通常用于允许脱机播放内容。
 * 播放器必须具有的要播放内容的最低安全级别。 
 * 音频\视频内容的输入控件的输出保护级别。 
-* 有关详细信息，请参阅 [PlayReady 符合性规则](https://www.microsoft.com/playready/licensing/compliance/)文档中的“输出控件”部分 (3.5)。
+* 有关详细信息，请参阅[PlayReady 合规性规则](https://www.microsoft.com/playready/licensing/compliance/)文档中的"输出控件"部分 （3.5）。
 
 > [!NOTE]
 > 目前，只能配置 PlayReady 许可证的 PlayRight。 此权限是必需的。 PlayRight 赋予客户端播放内容的权限。 还可以使用 PlayRight 配置特定于播放的限制。 有关详细信息，请参阅 [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight)。
@@ -60,7 +60,7 @@ XML 遵循“PlayReady 许可证模板 XML 架构”部分中定义的 PlayReady
 
 有关使用 .NET 类来配置 PlayReady 许可证模板的端到端示例，请参阅[使用 PlayReady 动态加密和许可证交付服务](media-services-protect-with-playready-widevine.md)。
 
-## <a id="classes"></a>用于配置许可证模板的媒体服务 .NET 类
+## <a name="media-services-net-classes-that-are-used-to-configure-license-templates"></a><a id="classes"></a>用于配置许可证模板的媒体服务 .NET 类
 下列类是用于配置媒体服务 PlayReady 许可证模板的主要 .NET 类。 这些类映射到 [PlayReady 许可证模板 XML 架构](media-services-playready-license-template-overview.md#schema)中定义的类型。
 
 [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) 类用于序列化到媒体服务许可证模板 XML 和从该 XML 进行反序列化。
@@ -73,7 +73,7 @@ XML 遵循“PlayReady 许可证模板 XML 架构”部分中定义的 PlayReady
 ### <a name="playreadylicensetemplate"></a>PlayReadyLicenseTemplate
 [PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx)：此类表示用于创建要返回给用户的 PlayReady 许可证的许可证模板。 它包含关于许可证中的内容密钥的数据。 它还包括当使用内容密钥时，PlayReady DRM 运行时必须强制实施的任何权限或限制。
 
-### <a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
+### <a name="playreadyplayright"></a><a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
 [PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx)：此类表示 PlayReady 许可证的 PlayRight。 它授权用户播放受许可证中和 PlayRight 本身（对于特定于播放的策略）配置的任何限制所制约的内容。 针对 PlayRight 的策略大部分涉及输出限制，这些限制控制在播放内容时可以使用的输出类型。 它还包括在使用给定输出时必须实施的任何限制。 例如，如果启用了 DigitalVideoOnlyContentRestriction，则 DRM 运行时仅允许以数字输出形式播放视频。 （不允许以模拟视频输出形式来传送内容。）
 
 > [!IMPORTANT]
@@ -83,7 +83,7 @@ XML 遵循“PlayReady 许可证模板 XML 架构”部分中定义的 PlayReady
 
 有关 Silverlight 支持的保护级别的示例，请参阅 [Silverlight 支持的输出保护](https://go.microsoft.com/fwlink/?LinkId=617318)。
 
-## <a id="schema"></a>PlayReady 许可证模板 XML 架构
+## <a name="playready-license-template-xml-schema"></a><a id="schema"></a>PlayReady 许可证模板 XML 架构
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
@@ -308,7 +308,7 @@ XML 遵循“PlayReady 许可证模板 XML 架构”部分中定义的 PlayReady
 
 ## <a name="additional-notes"></a>附加说明
 
-* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

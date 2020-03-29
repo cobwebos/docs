@@ -7,27 +7,27 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75397472"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用字符串
 
 
 > [!NOTE]
-> 在完成本教程之前，应完成[Azure Monitor Log Analytics](get-started-portal.md)和[Azure Monitor 日志查询](get-started-queries.md)入门。
+> 在完成本教程之前，应完成[Azure 监视器日志分析](get-started-portal.md)入门以及[Azure 监视器日志查询入门](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 本文介绍如何编辑、比较、搜索字符串以及对其执行其他各种操作。
 
-字符串中的每个字符都有一个与其位置相符的索引号。 第一个字符位于索引0，下一个字符为1，依此类推。 不同的字符串函数使用以下各部分所示的索引号。 下面的许多示例使用 **print** 命令来演示在不使用特定数据源的情况下如何处理字符串。
+字符串中的每个字符都有一个与其位置相符的索引号。 第一个字符位于索引 0 处，下一个字符位于索引 1 处，依此类推。 不同的字符串函数使用以下各部分所示的索引号。 下面的许多示例使用 **print** 命令来演示在不使用特定数据源的情况下如何处理字符串。
 
 
 ## <a name="strings-and-escaping-them"></a>字符串及其转义
-字符串值包装在单引号或双引号字符中。 反斜杠（\\）用于将字符转义为其后面的字符，如 "\t for tab"、"n" 表示 "换行符" 和 "\" 引号字符本身"。
+字符串值包装在单引号或双引号字符中。 反斜杠 (\\) 用于将字符转义为其后面的字符，例如，\t 表示 tab（制表符），\n 表示 newline（换行符），\" 表示引号字符本身。
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -46,7 +46,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>字符串比较
 
-操作员       |Description                         |区分大小写|示例（生成 `true`）
+运算符       |描述                         |区分大小写|示例（生成 `true`）
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |等于                              |是           |`"aBc" == "aBc"`
 `!=`           |不等于                          |是           |`"abc" != "ABC"`
@@ -93,7 +93,7 @@ countof(text, search [, kind])
 ### <a name="arguments"></a>参数：
 - `text` - 输入字符串 
 - `search` - 用于在文本内部匹配的纯字符串或正则表达式。
-- `kind` - _normal_ | _regex_（默认值：normal）。
+- `kind` - _正常_ | _正则表达式_（默认值：正常）。
 
 ### <a name="returns"></a>返回
 
@@ -122,7 +122,7 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 
 ## <a name="extract"></a>extract
 
-从给定的字符串中获取正则表达式的匹配项。 还可以选择将提取的子字符串转换为指定的类型。
+从给定的字符串中获取正则表达式的匹配项。 （可选）还可将提取的子字符串转换为指定的类型。
 
 ### <a name="syntax"></a>语法
 
@@ -130,7 +130,7 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 extract(regex, captureGroup, text [, typeLiteral])
 ```
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 - `regex` - 正则表达式。
 - `captureGroup` - 指示待提取的捕获组的正整数常量。 0 代表整个匹配项，1 代表正则表达式中第一个“(括号)”匹配的值，2 及以上数字代表后续括号。
@@ -161,7 +161,7 @@ Heartbeat
 | project ComputerIP, last_octet, next_ip
 ```
 
-以下示例在字符串 *Trace* 中搜索“Duration”的定义。 匹配项强制转换为 *real* 并与时间常量 (1 s) 相乘，该常量将 Duration 强制转换为 timespan 类型。
+以下示例在字符串 *Trace* 中搜索“Duration”的定义。 匹配项强制转换为 *real* 并与时间常量 (1 s) 相乘，该常量将 Duration 强制转换为 timespan 类型。**
 ```Kusto
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
@@ -237,7 +237,7 @@ print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
 replace(regex, rewrite, input_text)
 ```
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 - `regex` - 作为匹配依据的正则表达式。 可在“(括号)”中包含捕获组。
 - `rewrite` - 由匹配正则表达式匹配的任何匹配项的替换正则表达式。 使用 \0 引用整个匹配项，使用 \1 引用第一个捕获组，使用 \2 等引用后续捕获组。

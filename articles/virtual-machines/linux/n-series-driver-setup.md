@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.openlocfilehash: b424361f318504f96a57ee67722e725fbafc6561
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944562"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
@@ -145,7 +145,7 @@ sudo reboot
 
 要查询 GPU 设备状态，请建立到 VM 的 SSH 连接，并运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。 
 
-如果安装了驱动程序，将看到如下输出。 请注意，除非当前正在 VM 上运行 GPU 工作负荷，否则 GPU-Util 将显示 0%。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
+如果安装了驱动程序，将看到如下输出。 请注意，除非当前正在 VM 上运行 GPU 工作负荷，否则 GPU-Util**** 将显示 0%。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
 
 ![NVIDIA 设备状态](./media/n-series-driver-setup/smi.png)
 
@@ -163,9 +163,9 @@ sudo reboot
 
 * **基于 CentOS 的 7.4 HPC** - 在 VM 上安装 RDMA 驱动程序和 Intel MPI 5.1。
 
-## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>在 NV 或 NVv3 系列 Vm 上安装网格驱动程序
+## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>在 NV 或 NVv3 系列 VM 上安装 GRID 驱动程序
 
-若要在 NV 或 NVv3 系列 Vm 上安装 NVIDIA GRID 驱动程序，请与每个 VM 建立 SSH 连接，并按照 Linux 分发的步骤进行操作。 
+要在 NV 或 NVv3 系列 VM 上安装 NVIDIA GRID 驱动程序，请将 SSH 连接到每个 VM，然后按照 Linux 发行版的步骤操作。 
 
 ### <a name="ubuntu"></a>Ubuntu 
 
@@ -184,7 +184,7 @@ sudo reboot
    
    sudo apt-get install linux-azure -y
    ```
-3. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （仅在 NV 或 NVv2 Vm 上使用 NVIDIA 驱动程序。）为此，请在 `/etc/modprobe.d` 中创建一个名为 `nouveau.conf` 的文件，其中包含以下内容：
+3. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （仅在 NV 或 NVv2 VM 上使用 NVIDIA 驱动程序。为此，请创建`/etc/modprobe.d`一个带有以下内容`nouveau.conf`的命名文件：
 
    ```
    blacklist nouveau
@@ -209,7 +209,7 @@ sudo reboot
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
-6. 当系统询问你是否要运行 nvidia-xconfig 实用程序以更新 X 配置文件时，请选择“是”。
+6. 当系统询问你是否要运行 nvidia-xconfig 实用程序以更新 X 配置文件时，请选择“是”****。
 
 7. 完成安装后，将 /etc/nvidia/gridd.conf.template 复制到位于 /etc/nvidia/ 的新文件 gridd.conf
 
@@ -224,7 +224,7 @@ sudo reboot
    EnableUI=FALSE
    ```
    
-9. 如果存在以下情况，请从 `/etc/nvidia/gridd.conf` 中删除以下内容：
+9. 如果存在以下操作，`/etc/nvidia/gridd.conf`请从中删除以下内容：
  
    ```
    FeatureType=0
@@ -248,7 +248,7 @@ sudo reboot
    sudo yum install hyperv-daemons
    ```
 
-2. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （仅在 NV 或 NV2 Vm 上使用 NVIDIA 驱动程序。）为此，请在 `/etc/modprobe.d` 中创建一个名为 `nouveau.conf` 的文件，其中包含以下内容：
+2. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （仅在 NV 或 NV2 VM 上使用 NVIDIA 驱动程序。为此，请创建`/etc/modprobe.d`一个带有以下内容`nouveau.conf`的命名文件：
 
    ```
    blacklist nouveau
@@ -282,7 +282,7 @@ sudo reboot
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
-6. 当系统询问你是否要运行 nvidia-xconfig 实用程序以更新 X 配置文件时，请选择“是”。
+6. 当系统询问你是否要运行 nvidia-xconfig 实用程序以更新 X 配置文件时，请选择“是”****。
 
 7. 完成安装后，将 /etc/nvidia/gridd.conf.template 复制到位于 /etc/nvidia/ 的新文件 gridd.conf
   
@@ -296,7 +296,7 @@ sudo reboot
    IgnoreSP=FALSE
    EnableUI=FALSE 
    ```
-9. 如果存在以下情况，请从 `/etc/nvidia/gridd.conf` 中删除以下内容：
+9. 如果存在以下操作，`/etc/nvidia/gridd.conf`请从中删除以下内容：
  
    ```
    FeatureType=0
@@ -309,7 +309,7 @@ sudo reboot
 
 要查询 GPU 设备状态，请建立到 VM 的 SSH 连接，并运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。 
 
-如果安装了驱动程序，将看到如下输出。 请注意，除非当前正在 VM 上运行 GPU 工作负荷，否则 GPU-Util 将显示 0%。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
+如果安装了驱动程序，将看到如下输出。 请注意，除非当前正在 VM 上运行 GPU 工作负荷，否则 GPU-Util**** 将显示 0%。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
 
 ![NVIDIA 设备状态](./media/n-series-driver-setup/smi-nv.png)
  
@@ -353,10 +353,10 @@ fi
 
 然后，在 `/etc/rc.d/rc3.d` 中为更新脚本创建一个条目，以便在启动时以 root 身份调用该脚本。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 * 可以使用 `nvidia-smi` 设置持久性模式，以便在需要查询卡时该命令的输出更快。 若要设置持久性模式，请执行 `nvidia-smi -pm 1`。 请注意，如果重启 VM，此模式设置将消失。 你可以始终将该模式设置编写为在启动时执行。
-* 如果已将 NVIDIA CUDA 驱动程序更新到最新版本，并且找不到 RDMA connectivcity，请[重新安装 rdma 驱动程序](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity)以 reistablish 这种连接。 
+* 如果已将 NVIDIA CUDA 驱动程序更新到最新版本，并且发现 RDMA 连接不再工作，请[重新安装 RDMA 驱动程序](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity)以重新建立该连接。 
 
 ## <a name="next-steps"></a>后续步骤
 

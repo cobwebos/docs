@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464698"
 ---
 # <a name="performance-metrics"></a>性能指标
 
 应收集指标，以了解群集及其中运行的应用程序的性能。 对于 Service Fabric 群集，建议收集以下性能计数器。
 
-## <a name="nodes"></a>节点数
+## <a name="nodes"></a>Nodes
 
 对于群集中的计算机，建议收集以下性能计数器，以便更好地了解每台计算机上的负载，并制定相应的群集缩放决策。
 
@@ -25,8 +25,8 @@ ms.locfileid: "75464698"
 | 逻辑磁盘 | 逻辑磁盘可用空间 |
 | PhysicalDisk(per Disk) | 平均磁盘读取队列长度 |
 | PhysicalDisk(per Disk) | 平均磁盘写入队列长度 |
-| PhysicalDisk(per Disk) | 每次读取的平均磁盘扇区数 |
-| PhysicalDisk(per Disk) | 每次写入的平均磁盘扇区数 |
+| PhysicalDisk(per Disk) | 平均磁盘秒/读取 |
+| PhysicalDisk(per Disk) | 平均磁盘秒/写入 |
 | PhysicalDisk(per Disk) | 磁盘读取数/秒 |
 | PhysicalDisk(per Disk) | 磁盘读取字节数/秒 |
 | PhysicalDisk(per Disk) | 磁盘写入数/秒 |

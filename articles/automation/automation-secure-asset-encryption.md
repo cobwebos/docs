@@ -1,6 +1,6 @@
 ---
-title: 自动化中的安全资产加密
-description: Azure 自动化使用多个加密级别保护安全资产。 默认情况下，使用 Microsoft 托管的密钥进行加密。 客户可以将其自动化帐户配置为使用客户托管的密钥进行加密。 本文介绍两种方法的详细信息，以及如何在这两种模式之间进行切换。
+title: 自动化中安全资产加密
+description: Azure 自动化使用多级加密保护安全资产。 默认情况下，加密使用 Microsoft 管理的密钥完成。 客户可以将其自动化帐户配置为使用客户管理的密钥进行加密。 本文介绍了两种加密模式的详细信息以及如何在两种模式之间切换。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -10,57 +10,57 @@ ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
 ms.openlocfilehash: 3c21e2fcdde9bffac91af56d49dfa0bf336e8c0c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246232"
 ---
 # <a name="secure-assets-in-azure-automation"></a>Azure 自动化中的安全资产
 
-Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产在 Azure 自动化中使用多个加密级别进行保护。 根据用于加密的顶级密钥，有两种加密模型：
--   使用 Microsoft 托管密钥
--   使用客户托管的密钥
+Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产在 Azure 自动化中使用多级别的加密进行保护。 基于用于加密的顶级密钥，有两种加密模型：
+-   使用 Microsoft 管理的密钥
+-   使用客户管理的密钥
 
-## <a name="microsoft-managed-keys"></a>Microsoft 托管的密钥
+## <a name="microsoft-managed-keys"></a>微软管理的密钥
 
-默认情况下，你的 Azure 自动化帐户使用 Microsoft 托管密钥。
+默认情况下，Azure 自动化帐户使用 Microsoft 管理的密钥。
 
-每个安全资产均使用为每个自动化帐户生成的唯一密钥（数据加密密钥）进行加密并存储在 Azure 自动化中。 这些密钥本身使用另一个唯一密钥加密并存储在 Azure 自动化中，该密钥是为每个称为帐户加密密钥（AEK）的帐户生成的。 这些帐户加密密钥使用 Microsoft 托管的密钥加密并存储在 Azure 自动化中。 
+每个安全资产都使用为每个自动化帐户生成的唯一密钥（数据加密密钥）加密并存储在 Azure 自动化中。 这些密钥本身使用为每个帐户生成称为帐户加密密钥 （AEK） 的唯一密钥在 Azure 自动化中加密并存储。 这些帐户加密密钥使用 Microsoft 管理的密钥加密并存储在 Azure 自动化中。 
 
-## <a name="customer-managed-keys-with-key-vault-preview"></a>客户管理的密钥与 Key Vault （预览版）
+## <a name="customer-managed-keys-with-key-vault-preview"></a>带密钥保管库的客户管理密钥（预览）
 
-可以通过自己的密钥来管理自动化帐户的安全资产加密。 在自动化帐户级别指定客户托管密钥时，该密钥用于保护和控制对自动化帐户的帐户加密密钥的访问。 这反过来用于加密和解密所有安全资产。 客户管理的密钥提供更大的灵活性，以创建、轮换、禁用和撤消访问控制。 你还可以审核用于保护安全资产的加密密钥。
+您可以使用自己的密钥管理自动化帐户的安全资产加密。 在自动化帐户级别指定客户管理的密钥时，该密钥用于保护和控制对自动化帐户帐户帐户加密密钥的访问。 这反过来又用于加密和解密所有安全资产。 使用客户管理的密钥可以更灵活地创建、轮换、禁用和撤销访问控制。 您还可以审核用于保护安全资产的加密密钥。
 
-使用 Azure Key Vault 来存储客户管理的密钥。 你可以创建自己的密钥并将其存储在密钥保管库中，也可以使用 Azure Key Vault Api 来生成密钥。  有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)
+使用 Azure 密钥保管库存储客户管理的密钥。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。  有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)
 
 ## <a name="enable-customer-managed-keys-for-an-automation-account"></a>为自动化帐户启用客户管理的密钥
 
-使用自动化帐户的客户托管密钥启用加密时，Azure 自动化会使用关联的密钥保管库中客户托管的密钥包装帐户加密密钥。 启用客户管理的密钥不会影响性能，并且会立即用新密钥加密帐户，而不会有任何延迟。
+使用自动化帐户的客户托管密钥启用加密时，Azure 自动化使用关联的密钥保管库中的客户托管密钥包装帐户加密密钥。 启用客户管理的密钥不会影响性能，并且帐户将立即使用新密钥加密，不会有任何延迟。
 
-新的自动化帐户始终使用 Microsoft 托管的密钥进行加密。 创建帐户时，不能启用客户管理的密钥。 客户托管的密钥存储在 Azure Key Vault 中，并且必须使用访问策略对密钥保管库进行预配，此访问策略向与自动化帐户关联的托管标识授予密钥权限。 托管标识仅在创建存储帐户后可用。
+新的自动化帐户始终使用 Microsoft 管理的密钥进行加密。 当创建帐户时，无法启用客户管理的密钥。 客户管理的密钥存储在 Azure 密钥保管库中，密钥保管库必须预配访问策略，这些策略向与自动化帐户关联的托管标识授予密钥权限。 托管标识仅在存储帐户创建后可用。
 
-当你通过启用或禁用客户管理的密钥、更新密钥版本或指定其他密钥来修改用于 Azure 自动化的密钥时，请确保加密帐户加密密钥，但会更改安全资产。你的 Azure 自动化帐户无需重新加密。
+修改用于 Azure 自动化安全资产加密的密钥时，通过启用或禁用客户管理的密钥、更新密钥版本或指定其他密钥，帐户加密密钥的加密将更改Azure 自动化帐户不需要重新加密。
 
-以下三个部分介绍为自动化帐户启用客户管理的密钥的机制。 
+以下三节介绍了为自动化帐户启用客户管理密钥的机制。 
 
 > [!NOTE] 
-> 若要启用客户管理的密钥，需要使用 API 版本 2020-01-13-preview 进行 Azure 自动化 REST API 调用
+> 要启用客户管理的密钥，您需要使用 api 版本 2020-01-13 预览进行 Azure 自动化 REST API 调用
 
-### <a name="pre-requisites-for-using-customer-managed-keys-in-azure-automation"></a>在 Azure 自动化中使用客户托管密钥的先决条件
+### <a name="pre-requisites-for-using-customer-managed-keys-in-azure-automation"></a>在 Azure 自动化中使用客户管理密钥的先决条件
 
-为自动化帐户启用客户托管密钥之前，必须确保满足以下先决条件：
+在为自动化帐户启用客户管理的密钥之前，必须确保满足以下先决条件：
 
- - 托管密钥存储在 Azure Key Vault 中。 
- - 同时启用**软删除**和不**清除**密钥保管库中的属性。 需要这些功能才能在意外删除的情况下恢复密钥。
- - Azure 自动化加密仅支持 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)。
-- 自动化帐户和密钥保管库可以位于不同的订阅中，但需要位于同一个 Azure Active Directory 租户中。
+ - 客户管理密钥存储在 Azure 密钥保管库中。 
+ - 在密钥保管库中启用 **"软删除****"和"不清除"** 属性。 这些功能是必需的，以便在意外删除时恢复密钥。
+ - Azure 自动化加密仅支持 RSA 密钥。 有关密钥的详细信息，请参阅有关[Azure 密钥保管库密钥、机密和证书](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)。
+- 自动化帐户和密钥保管库可以位于不同的订阅中，但需要位于同一 Azure 活动目录租户中。
 
 ### <a name="assign-an-identity-to-the-automation-account"></a>将标识分配给自动化帐户
 
-若要将客户托管密钥与自动化帐户一起使用，你的自动化帐户需要针对存储客户管理密钥的密钥保管库进行身份验证。 Azure Automation 使用系统分配的托管标识，通过 Azure Key Vault 对帐户进行身份验证。 有关托管标识的详细信息，请参阅[什么是 Azure 资源的托管标识？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+要将客户管理的密钥与自动化帐户一起使用，自动化帐户需要针对存储客户管理的密钥的密钥保管库进行身份验证。 Azure 自动化使用系统分配的托管标识使用 Azure 密钥保管库对帐户进行身份验证。 有关托管标识的详细信息，请参阅[什么是 Azure 资源的托管标识？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-使用以下 REST API 调用为自动化帐户配置系统分配的托管标识：
+使用以下 REST API 调用将托管标识分配给自动化帐户的系统：
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
@@ -77,7 +77,7 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 }
 ```
 
-在如下响应中返回自动化帐户的系统分配的标识：
+自动化帐户的系统分配标识在响应中返回，类似于以下内容：
 
 ```json
 {
@@ -93,11 +93,11 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 }
 ```
 
-### <a name="configure-the-key-vault-access-policy"></a>配置 Key Vault 访问策略
+### <a name="configure-the-key-vault-access-policy"></a>配置密钥保管库访问策略
 
-将托管标识分配到自动化帐户后，可以配置对存储客户托管密钥的密钥保管库的访问权限。 Azure 自动化需要客户管理的密钥上的**get**、 **recover**、 **wrapKey**、 **UnwrapKey** 。
+将托管标识分配给自动化帐户后，将配置对存储客户托管密钥的密钥保管库的访问。 Azure 自动化要求在客户管理的密钥上**获取**、**恢复**、**包装键**、**解包密钥**。
 
-可以使用以下 REST API 调用来设置此类访问策略：
+此类访问策略可以使用以下 REST API 调用进行设置：
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-group/providers/Microsoft.KeyVault/vaults/sample-vault/accessPolicies/add?api-version=2018-02-14
@@ -129,11 +129,11 @@ PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 ```
 
 > [!NOTE]
-> **Tenantid**和**objectId**字段必须分别与 Automation 帐户的托管标识的响应一起提供**principalId 和 identity** **值。**
+> **租户 Id**和**objectId**字段必须分别从自动化帐户的托管标识响应中提供**标识.租户Id**和**标识.theid 的值**。
 
-### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>将自动化帐户的配置更改为使用客户托管的密钥
+### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>更改自动化帐户的配置以使用客户管理的密钥
 
-最后，你可以使用以下 REST API 调用将自动化帐户从 Microsft 管理的密钥切换到客户管理的密钥：
+最后，您可以使用以下 REST API 调用将自动化帐户从 Microsft 管理的密钥切换到客户管理的密钥：
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
@@ -178,21 +178,21 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 }
 ```
 
-## <a name="manage-customer-managed-keys-lifecycle"></a>管理客户管理的密钥生命周期
+## <a name="manage-customer-managed-keys-lifecycle"></a>管理客户管理密钥生命周期
 
 ### <a name="rotate-customer-managed-keys"></a>轮换客户管理的密钥
 
-你可以根据你的符合性策略，在 Azure Key Vault 中轮替客户管理的密钥。 当密钥旋转时，必须将自动化帐户更新为使用新的密钥 URI。
+可以根据自己的合规性策略，在 Azure 密钥保管库中轮换客户管理的密钥。 旋转密钥时，必须更新自动化帐户才能使用新的密钥 URI。
 
-轮换密钥不会触发自动化帐户中安全资产的重新加密。 无需执行其他操作。
+旋转密钥不会触发对自动化帐户中的安全资产进行重新加密。 无需采取进一步行动。
 
 ### <a name="revoke-access-to-customer-managed-keys"></a>撤消对客户管理的密钥的访问权限
 
-若要撤消对客户管理的密钥的访问权限，请使用 PowerShell 或 Azure CLI。 有关详细信息，请参阅[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/)或[Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 有效地吊销访问权限会阻止访问自动化帐户中的所有安全资产，因为 Azure 自动化无法访问加密密钥。
+要撤消对客户管理密钥的访问权限，请使用 PowerShell 或 Azure CLI。 有关详细信息，请参阅 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) 或 [Azure 密钥保管库 CLI](https://docs.microsoft.com/cli/azure/keyvault)。 由于 Azure 自动化无法访问加密密钥，因此撤消访问可有效地阻止对自动化帐户中的所有安全资产的访问。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure 密钥保管库？](../key-vault/key-vault-overview.md)
+- [什么是 Azure Key Vault？](../key-vault/key-vault-overview.md)
 
 - [Azure 自动化中的证书资产](shared-resources/certificates.md)
 

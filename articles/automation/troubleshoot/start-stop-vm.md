@@ -1,6 +1,6 @@
 ---
-title: 启动和停止 Vm 故障排除-Azure 自动化
-description: 本文提供有关在 Azure 自动化中启动和停止 Vm 的疑难解答的信息。
+title: 故障排除启动和停止 VM - Azure 自动化
+description: 本文提供有关在 Azure 自动化中启动和停止 VM 的故障排除信息。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -10,15 +10,15 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851384"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>排除“在空闲时间启动/停止 VM”解决方案的故障
 
-## <a name="deployment-failure"></a>方案：启动/停止 VM 解决方案未能正确部署
+## <a name="scenario-the-startstop-vm-solution-fails-to-properly-deploy"></a><a name="deployment-failure"></a>方案：启动/停止 VM 解决方案无法正确部署
 
 ### <a name="issue"></a>问题
 
@@ -60,7 +60,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 2. 存在禁止部署启动/停止 VM 解决方案的策略。
 3. `Microsoft.OperationsManagement`、`Microsoft.Insights` 或 `Microsoft.Automation` 资源类型未注册。
 4. Log Analytics 工作区对其进行锁定。
-5. 你的 AzureRM 模块或启动/停止解决方案版本已过时。
+5. 您有过时的 AzureRM 模块或开始/停止解决方案。
 
 ### <a name="resolution"></a>解决方法
 
@@ -75,9 +75,9 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
    若要详细了解注册提供程序时出现的错误，请参阅[解决资源提供程序注册错误](../../azure-resource-manager/templates/error-register-resource-provider.md)。
 4. 如果 Log Analytics 工作区中存在锁定，请转到 Azure 门户中的工作区并删除对资源的任何锁定。
-5. 如果上述解决方法不能解决问题，请按照[更新解决方案](../automation-solution-vm-management.md#update-the-solution)中的说明来重新部署启动/停止解决方案。
+5. 如果上述解决方案不能解决问题，请按照["更新解决方案"](../automation-solution-vm-management.md#update-the-solution)下的说明重新部署"开始/停止"解决方案。
 
-## <a name="all-vms-fail-to-startstop"></a>方案：所有 Vm 均无法启动/停止
+## <a name="scenario-all-vms-fail-to-startstop"></a><a name="all-vms-fail-to-startstop"></a>方案：所有 VM 无法启动/停止
 
 ### <a name="issue"></a>问题
 
@@ -98,7 +98,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 * 检查是否已正确配置“启动/停止 VM”解决方案的日程安排。 若要了解如何配置日程安排，请参阅[日程安排](../automation-schedules.md)一文。
 
-* 检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找是否有任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”下的“作业”。 在“作业”页中，查找以下一个 runbook 中的作业：
+* 检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”**** 下的“作业”****。 在“作业”**** 页中，查找以下一个 runbook 中的作业：
 
   * AutoStop_CreateAlert_Child
   * AutoStop_CreateAlert_Parent
@@ -110,15 +110,15 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
   * ScheduledStartStop_Parent
   * SequencedStartStop_Parent
 
-* 验证 [RunAs 帐户](../manage-runas-account.md)是否对你尝试启动或停止的 VM 拥有适当权限。 若要了解如何检查资源的权限，请参阅[快速入门：使用 Azure 门户查看分配给用户的角色](../../role-based-access-control/check-access.md)。 你需要提供运行方式帐户所使用的服务主体的应用程序 ID。 若要检索此值，可以在 Azure 门户中转到“自动化帐户”，选择“帐户设置”下的“RunAs 帐户”，再单击相应的 RunAs 帐户。
+* 验证 [RunAs 帐户](../manage-runas-account.md)是否对你尝试启动或停止的 VM 拥有适当权限。 要了解如何检查资源的权限，请参阅[快速入门：查看使用 Azure 门户分配给用户的角色](../../role-based-access-control/check-access.md)。 您需要为"运行为帐户"所使用的服务主体提供应用程序 ID。 若要检索此值，可以在 Azure 门户中转到“自动化帐户”，选择“帐户设置”**** 下的“RunAs 帐户”****，再单击相应的 RunAs 帐户。
 
-* 已明确排除的 VM 可能无法启动或停止。 已排除的 VM 是在解决方案部署到的自动化帐户的 External_ExcludeVMNames 变量中进行设置。 下面的示例展示了如何使用 PowerShell 查询此值。
+* 已明确排除的 VM 可能无法启动或停止。 已排除的 VM 是在解决方案部署到的自动化帐户的 External_ExcludeVMNames**** 变量中进行设置。 下面的示例展示了如何使用 PowerShell 查询此值。
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-## <a name="some-vms-fail-to-startstop"></a>方案：我的某些 Vm 无法启动或停止
+## <a name="scenario-some-of-my-vms-fail-to-start-or-stop"></a><a name="some-vms-fail-to-startstop"></a>方案：我的某些 VM 无法启动或停止
 
 ### <a name="issue"></a>问题
 
@@ -143,19 +143,19 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
   ```
 
-* 已明确排除的 VM 可能无法启动或停止。 已排除的 VM 是在解决方案部署到的自动化帐户的 External_ExcludeVMNames 变量中进行设置。 下面的示例展示了如何使用 PowerShell 查询此值。
+* 已明确排除的 VM 可能无法启动或停止。 已排除的 VM 是在解决方案部署到的自动化帐户的 External_ExcludeVMNames**** 变量中进行设置。 下面的示例展示了如何使用 PowerShell 查询此值。
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-* 自动化帐户的 RunAs 帐户必须对 VM 拥有适当权限，才能启动和停止 VM。 若要了解如何检查资源的权限，请参阅[快速入门：使用 Azure 门户查看分配给用户的角色](../../role-based-access-control/check-access.md)。 你需要提供运行方式帐户所使用的服务主体的应用程序 ID。 若要检索此值，可以在 Azure 门户中转到“自动化帐户”，选择“帐户设置”下的“RunAs 帐户”，再单击相应的 RunAs 帐户。
+* 自动化帐户的 RunAs 帐户必须对 VM 拥有适当权限，才能启动和停止 VM。 要了解如何检查资源的权限，请参阅[快速入门：查看使用 Azure 门户分配给用户的角色](../../role-based-access-control/check-access.md)。 您需要为"运行为帐户"所使用的服务主体提供应用程序 ID。 若要检索此值，可以在 Azure 门户中转到“自动化帐户”，选择“帐户设置”**** 下的“RunAs 帐户”****，再单击相应的 RunAs 帐户。
 
-* 如果 VM 无法启动或解除分配，此行为可能是由 VM 本身问题所致。 一些示例或潜在问题包括，正在尝试关闭、服务挂起等情况下应用更新。 请转到 VM 资源，并检查“活动日志”，以确定日志中是否有任何错误。 也可以尝试登录 VM，以确定“事件日志”中是否有任何错误。 若要详细了解如何对 VM 进行故障排除，请参阅[Azure 虚拟机故障排除](../../virtual-machines/troubleshooting/index.yml)
+* 如果 VM 无法启动或解除分配，此行为可能是由 VM 本身问题所致。 一些示例或潜在问题包括，正在尝试关闭、服务挂起等情况下应用更新。 请转到 VM 资源，并检查“活动日志”****，以确定日志中是否有任何错误。 也可以尝试登录 VM，以确定“事件日志”中是否有任何错误。 要了解有关 VM 故障排除的信息，请参阅[对 Azure 虚拟机进行故障排除](../../virtual-machines/troubleshooting/index.yml)
 
-* 检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找是否有任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”下的“作业”。
+* 检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”**** 下的“作业”****。
 
-## <a name="custom-runbook"></a>方案：我的自定义 runbook 无法启动或停止我的 Vm
+## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>方案：我的自定义 Runbook 无法启动或停止 VM
 
 ### <a name="issue"></a>问题
 
@@ -163,13 +163,13 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 ### <a name="cause"></a>原因
 
-导致此故障出现的原因可能有很多种。 在 Azure 门户中，转到“自动化帐户”，并选择“流程自动化”下的“作业”。 在“作业”页上，查找 runbook 中的作业，以确定是否有任何失败的作业。
+导致此故障出现的原因可能有很多种。 在 Azure 门户中，转到“自动化帐户”，并选择“流程自动化”**** 下的“作业”****。 在“作业”**** 页上，查找 runbook 中的作业，以确定是否有任何失败的作业。
 
 ### <a name="resolution"></a>解决方法
 
-建议使用[“在空闲时间启动/停止 VM”解决方案](../automation-solution-vm-management.md)，在 Azure 自动化中启动和停止 VM。 此解决方案由 Microsoft 创作。 Microsoft 不支持自定义 runbook。 若要查找适用于自定义 runbook 的解决方案，可以参阅 [runbook 故障排除](runbooks.md)一文。 这篇文章介绍了所有类型 runbook 的一般指导和故障排除。 检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找是否有任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”下的“作业”。
+建议使用[“在空闲时间启动/停止 VM”解决方案](../automation-solution-vm-management.md)，在 Azure 自动化中启动和停止 VM。 此解决方案由 Microsoft 创作。 Microsoft 不支持自定义 runbook。 若要查找适用于自定义 runbook 的解决方案，可以参阅 [runbook 故障排除](runbooks.md)一文。 这篇文章介绍了所有类型 runbook 的一般指导和故障排除。 检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”**** 下的“作业”****。
 
-## <a name="dont-start-stop-in-sequence"></a>方案： Vm 不会按正确的顺序启动或停止
+## <a name="scenario-vms-dont-start-or-stop-in-the-correct-sequence"></a><a name="dont-start-stop-in-sequence"></a>方案：VM 不会以正确的顺序启动或停止
 
 ### <a name="issue"></a>问题
 
@@ -189,7 +189,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 若要详细了解如何使用解决方案按顺序启动和停止 VM，请参阅[按顺序启动和停止 VM](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags)。
 
-## <a name="403"></a>方案：启动/停止 VM 作业失败并出现403禁用状态
+## <a name="scenario-startstop-vm-job-fails-with-403-forbidden-status"></a><a name="403"></a>方案：以 403 禁止状态启动/停止 VM 作业失败
 
 ### <a name="issue"></a>问题
 
@@ -201,15 +201,15 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 ### <a name="resolution"></a>解决方法
 
-若要检查 RunAs 帐户是否已正确配置，请在 Azure 门户中转到“自动化帐户”，并选择“帐户设置”下的“RunAs 帐户”。 其中显示 RunAs 帐户的状态，如果 RunAs 帐户未正确配置或已过期，状态会体现出这一点。
+若要检查 RunAs 帐户是否已正确配置，请在 Azure 门户中转到“自动化帐户”，并选择“帐户设置”**** 下的“RunAs 帐户”****。 其中显示 RunAs 帐户的状态，如果 RunAs 帐户未正确配置或已过期，状态会体现出这一点。
 
-如果运行方式帐户配置错误，则应删除并重新创建运行方式帐户。 请参阅[管理 Azure 自动化运行方式帐户](../manage-runas-account.md)。
+如果"运行作为"帐户配置错误，则应删除并重新创建"运行为"帐户。 请参阅[管理 Azure 自动化作为帐户运行](../manage-runas-account.md)。
 
 如果 RunAs 帐户的证书已过期，请按照[自签名证书续订](../manage-runas-account.md#cert-renewal)中列出的步骤操作，以续订证书。
 
-此问题可能是由于缺少权限所致。 若要了解如何检查资源的权限，请参阅[快速入门：使用 Azure 门户查看分配给用户的角色](../../role-based-access-control/check-access.md)。 你需要提供运行方式帐户所使用的服务主体的应用程序 ID。 若要检索此值，可以在 Azure 门户中转到“自动化帐户”，选择“帐户设置”下的“RunAs 帐户”，再单击相应的 RunAs 帐户。
+此问题可能是由于缺少权限所致。 要了解如何检查资源的权限，请参阅[快速入门：查看使用 Azure 门户分配给用户的角色](../../role-based-access-control/check-access.md)。 您需要为"运行为帐户"所使用的服务主体提供应用程序 ID。 若要检索此值，可以在 Azure 门户中转到“自动化帐户”，选择“帐户设置”**** 下的“RunAs 帐户”****，再单击相应的 RunAs 帐户。
 
-## <a name="other"></a>方案：上面未列出我的问题
+## <a name="scenario-my-problem-isnt-listed-above"></a><a name="other"></a>方案：上面未列出我的问题
 
 ### <a name="issue"></a>问题
 
@@ -220,16 +220,16 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 很多时候，错误可能是由于使用的解决方案过旧和过时所致。
 
 > [!NOTE]
-> 在部署解决方案时，已通过导入到自动化帐户中的 Azure 模块对在空闲时间启动/停止 VM 解决方案进行了测试。 此解决方案当前不适用于 Azure 模块的更新版本。 这只会影响用于运行在空闲时间启动/停止 VM 解决方案的自动化帐户。 你仍可以在其他自动化帐户中使用较新版本的 Azure 模块，如[如何在 Azure 自动化中更新 Azure PowerShell 模块](../automation-update-azure-modules.md)中所述。
+> 在非工作时间解决方案期间启动/停止 VM 已使用部署解决方案时导入到自动化帐户中的 Azure 模块进行测试。 该解决方案当前不适用于较新版本的 Azure 模块。 这仅影响用于在非工作时间解决方案期间运行开始/停止 VM 的自动化帐户。 您仍然可以在其他自动化帐户中使用较新版本的 Azure 模块，如如何在 Azure[自动化中更新 Azure PowerShell 模块](../automation-update-azure-modules.md)中所述
 
 ### <a name="resolution"></a>解决方法
 
-若要修复许多错误，建议删除并更新解决方案。 若要了解如何更新解决方案，请参阅[更新“在空闲时间启动/停止 VM”解决方案](../automation-solution-vm-management.md#update-the-solution)。 此外，还可以检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”下的“作业”。
+若要修复许多错误，建议删除并更新解决方案。 若要了解如何更新解决方案，请参阅[更新“在空闲时间启动/停止 VM”解决方案](../automation-solution-vm-management.md#update-the-solution)。 此外，您可以检查[作业流](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)以查找任何错误。 在门户中，转到“自动化帐户”，并选择“流程自动化”**** 下的“作业”****。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
-* 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+* 与[@AzureSupport](https://twitter.com/azuresupport)— 正式的 Microsoft Azure 帐户连接，通过将 Azure 社区连接到正确的资源（答案、支持和专家），从而改善客户体验。
+* 如需更多帮助，可以提交 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **"获取支持**"。

@@ -1,6 +1,6 @@
 ---
 title: 将应用从 BizTalk 服务迁移到 Azure 逻辑应用
-description: 如何将应用和解决方案从 Microsoft Azure BizTalk 服务（MABS）移到 Azure 逻辑应用
+description: 如何将应用和解决方案从 Microsoft Azure BizTalk 服务 （MABS） 移动到 Azure 逻辑应用
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -9,17 +9,17 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905432"
 ---
-# <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>将你的应用和解决方案从 BizTalk 服务迁移到 Azure 逻辑应用
+# <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>将应用和解决方案从 BizTalk 服务迁移到 Azure 逻辑应用
 
 Microsoft Azure BizTalk 服务 (MABS) 即将停用。 若要将 MABS 集成解决方案移动到 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)，请使用本文中的指南。 
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 BizTalk 服务由两个子服务组成：
 
@@ -32,10 +32,10 @@ BizTalk 服务由两个子服务组成：
 
 此表将 BizTalk 服务功能映射到逻辑应用。
 
-| BizTalk 服务   | Logic Apps            | 用途                      |
+| BizTalk 服务   | 逻辑应用            | 目的                      |
 | ------------------ | --------------------- | ---------------------------- |
 | 连接器          | 连接器             | 发送和接收数据   |
-| 网桥             | 逻辑应用程序             | 管道处理器           |
+| 网桥             | 逻辑应用             | 管道处理器           |
 | 验证阶段     | XML 验证操作 | 针对架构验证 XML 文档 | 
 | 扩充阶段       | 数据令牌           | 将属性升级为消息或升级属性供路由决策 |
 | 转换阶段    | 转换操作      | 将 XML 消息从一种格式转换为另一种格式 |
@@ -51,7 +51,7 @@ BizTalk 服务有几种类型的项目。
 
 ## <a name="connectors"></a>连接器
 
-BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于 HTTP 的请求/响应交互的双向网桥。 逻辑应用使用相同的术语，并具有数百个连接器，它们通过连接到各种技术和服务来实现相同的目的。 例如，连接器可用于云 SaaS 和 PaaS 服务（例如 OneDrive、Office365、Dynamics CRM 及其他服务）并可通过本地数据网关用于本地系统，本地数据网关替代了 BizTalk 服务的 BizTalk 适配器服务。 BizTalk 服务中的源仅限于 FTP、SFTP 和服务总线队列或主题订阅。
+BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于 HTTP 的请求/响应交互的双向网桥。 逻辑应用使用相同的术语，并且具有数百个连接器，通过连接到各种技术和服务，这些连接器具有相同的目的。 例如，连接器可用于云 SaaS 和 PaaS 服务（例如 OneDrive、Office365、Dynamics CRM 及其他服务）并可通过本地数据网关用于本地系统，本地数据网关替代了 BizTalk 服务的 BizTalk 适配器服务。 BizTalk 服务中的源仅限于 FTP、SFTP 和服务总线队列或主题订阅。
 
 ![](media/logic-apps-move-from-mabs/sources.png)
 
@@ -75,7 +75,7 @@ BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于
 
 ### <a name="message-processing-decoding-and-encoding"></a>消息处理、解码和编码
 
-在 BizTalk 服务中，可以接收不同类型的 XML 消息，并确定所接收消息的匹配架构。 此工作是在接收处理管道的“消息类型”阶段执行的。 然后，解码阶段通过提供的架构，使用检测到的消息类型对消息进行解码。 如果架构为平面文件架构，则此阶段会将传入的平面文件转换为 XML。 
+在 BizTalk 服务中，可以接收不同类型的 XML 消息，并确定所接收消息的匹配架构。 此工作是在接收处理管道的“消息类型”** 阶段执行的。 然后，解码阶段通过提供的架构，使用检测到的消息类型对消息进行解码。 如果架构为平面文件架构，则此阶段会将传入的平面文件转换为 XML。 
 
 逻辑应用提供类似的功能。 你使用不同的连接器触发器通过不同的协议（文件系统、FTP、HTTP，等等）接收平面文件，并使用[平面文件解码](../logic-apps/logic-apps-enterprise-integration-flatfile.md)操作将传入的数据转换为 XML。 无需进行任何更改即可将现有的平面文件架构直接移动到逻辑应用，然后再将架构上传到集成帐户。
 
@@ -87,13 +87,13 @@ BizTalk 服务连接器帮助网桥发送和接收数据，包括启用了基于
 
 在 BizTalk 服务中，转换阶段将一种基于 XML 的消息格式转换为另一种格式。 此工作是通过使用基于 TRFM 的映射程序来应用映射完成的。 在逻辑应用中，过程与此类似。 转换操作会从集成帐户执行映射。 主要区别是，逻辑应用中的映射是 XSLT 格式。 XSLT 能够重复使用现有 XSLT，包括为 BizTalk Server 创建的包含 functoid 的映射。 
 
-### <a name="routing-rules"></a>传递规则
+### <a name="routing-rules"></a>路由规则
 
 BizTalk 服务会做出路由决策，决定由哪个终结点或连接器来发送传入的消息或数据。 可以使用路由筛选器选项从预配置的终结点中进行选择：
 
 ![](media/logic-apps-move-from-mabs/route-filter.png)
 
-在 BizTalk 服务中，如果只有两个选项，则使用“条件”是用于转换 BizTalk 服务中的路由筛选器的最佳方式。 如果不止两个选项，则使用“切换”。
+在 BizTalk 服务中，如果只有两个选项，则使用“条件”** 是用于转换 BizTalk 服务中的路由筛选器的最佳方式。 如果不止两个选项，则使用“切换”****。
 
 逻辑应用通过[条件语句](../logic-apps/logic-apps-control-flow-conditional-statement.md)和 [switch 语句](../logic-apps/logic-apps-control-flow-switch-statement.md)提供更复杂的逻辑功能以及高级控制流和路由。
 
@@ -125,7 +125,7 @@ BizTalk 服务和逻辑应用包括 EDI 和 B2B 处理，并支持 AS2（适用�
 
 ## <a name="manage-and-monitor"></a>管理和监视
 
-在 BizTalk 服务中，专用门户提供了跟踪功能来监视和解决问题。 逻辑应用提供了更丰富的跟踪和监视功能，用于[监视 Azure 门户中的逻辑应用](../logic-apps/monitor-logic-apps.md)，并包含一个移动应用，用于在移动时保持注意力。
+在 BizTalk 服务中，专用门户提供了跟踪功能来监视和解决问题。 逻辑应用提供了更丰富的跟踪和监视功能，用于[监视 Azure 门户中的逻辑应用](../logic-apps/monitor-logic-apps.md)，并包括一个移动应用程序，用于在移动时密切关注事物。
 
 ## <a name="high-availability"></a>高可用性
 

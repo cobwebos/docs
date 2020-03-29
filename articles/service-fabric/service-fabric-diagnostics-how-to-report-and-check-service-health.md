@@ -1,18 +1,18 @@
 ---
-title: 通过 Azure Service Fabric 报告和检查运行状况
+title: 使用 Azure Service Fabric 报告和检查运行状况
 description: 了解如何通过服务代码发送运行状况报告，并使用 Azure Service Fabric 提供的运行状况监视工具来检查服务的运行状况。
 author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 2b7a9c44a84e3ce15eaec22c8f57bb48f79dae05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464636"
 ---
-# <a name="report-and-check-service-health"></a>报告并检查服务的运行情况
+# <a name="report-and-check-service-health"></a>报告和检查服务运行状况
 当服务发生问题时，必须能够快速检测问题，才能响应并修复所有事件和中断。 如果从服务代码向 Azure Service Fabric 运行状况管理器报告问题和失败，可以使用 Service Fabric 提供的标准运行状况监视工具来检查运行状况。
 
 可通过三种方式报告服务的运行状况：
@@ -25,7 +25,7 @@ ms.locfileid: "75464636"
 
 本文将引导完成从服务代码报告运行状况的示例。 本示例还演示如何使用 Service Fabric 提供的工具检查运行状况。 本文旨在快速介绍 Service Fabric 中的运行状况监视功能。 有关更多详细信息，可以从本文末尾的链接开始，阅读一系列有关运行状况的深入文章。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 必须已安装以下软件：
 
 * Visual Studio 2015 或 Visual Studio 2019
@@ -41,7 +41,7 @@ ms.locfileid: "75464636"
 1. 使用**有状态服务**模板创建一个项目。
    
     ![创建包含有状态服务的 Service Fabric 应用程序](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/create-stateful-service-application-dialog.png)
-1. 按 **F5** 以调试模式运行应用程序。 应用程序将部署到本地群集。
+1. 按**F5**以在调试模式下运行应用程序。 应用程序将部署到本地群集。
 1. 应用程序运行之后，在通知区域中的本地群集管理员图标上单击右键，并从快捷菜单中选择“**管理本地群集**”打开 Service Fabric Explorer。
    
     ![从通知区域打开 Service Fabric Explorer](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/LaunchSFX.png)
@@ -56,7 +56,7 @@ ms.locfileid: "75464636"
 Visual Studio 中的 Service Fabric 项目模板包含相同的代码。 以下步骤说明如何从服务代码报告自定义运行状况事件。 此类报告会自动显示在 Service Fabric 提供的标准运行状况监视工具中，例如 Service Fabric Explorer、Azure 门户运行状况视图以及 PowerShell。
 
 1. 在 Visual Studio 中重新打开前面创建的应用程序，或者使用**有状态服务** Visual Studio 模板创建新应用程序。
-1. 打开 Stateful1.cs 文件并在 `RunAsync` 方法中找到 `myDictionary.TryGetValueAsync` 调用。 可以看到，此方法将返回保存当前计数器值的 `result`，因为此应用程序中的关键逻辑是使计数保持运行。 如果此应用程序是实际的应用程序，并且如果缺少结果表示失败，则需要标记该事件。
+1. 打开 Stateful1.cs 文件并在 `RunAsync` 方法中找到 `myDictionary.TryGetValueAsync` 调用。 可以看到，此方法将返回保存当前计数器值的 `result`，因为此应用程序中的关键逻辑是使计数保持运行。 如果此应用程序是一个实际的应用程序，并且缺少结果即意味着失败，那么，可以标记该事件。
 1. 若要在缺少结果代表失败时报告运行状况事件，请添加以下步骤。
    
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将 `System.Fabric.Health` 命名空间添加到 Stateful1.cs 文件。
@@ -115,7 +115,7 @@ Visual Studio 中的 Service Fabric 项目模板包含相同的代码。 以下�
     }
     ```
    每当执行 `RunAsync` 时，此代码就会触发此运行状况报告。 完成更改后，按 **F5** 运行应用程序。
-1. 运行应用程序后，打开 Service Fabric Explorer 检查应用程序的运行状况。 这一次，Service Fabric Explorer 显示应用程序状况不正常。 由于先前添加的代码报告了错误，应用程序显示为 "不正常"。
+1. 运行应用程序后，打开 Service Fabric Explorer 检查应用程序的运行状况。 这一次，Service Fabric Explorer 显示应用程序状况不正常。 应用程序之所以显示为运行不正常是因为我们之前添加的代码报告了错误。
    
     ![Service Fabric Explorer 中运行状况不正常的应用程序](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-unhealthy-app.png)
 1. 如果在 Service Fabric Explorer 的树视图中选择主副本，会看到**运行状况**也显示为出错。 Service Fabric Explorer 还显示已添加到代码中 `HealthInformation` 参数的运行状况报告详细信息。 可以在 PowerShell 和 Azure 门户中查看相同的运行状况报告。

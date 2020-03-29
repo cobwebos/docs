@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 9ca033f6f786c0142261dafa31b93b71a8b3336a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277076"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>创建和管理 StorSimple 8000 系列支持包
@@ -64,14 +64,14 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 
 可将以下参数用于 Export-HcsSupportPackage cmdlet。
 
-| 参数 | 必需/可选 | Description |
+| 参数 | 必需/可选 | 描述 |
 | --- | --- | --- |
-| `-Path` |需要 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
-| `-EncryptionPassphrase` |需要 |用于提供一个密码，以便加密支持包。 |
+| `-Path` |必选 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
+| `-EncryptionPassphrase` |必选 |用于提供一个密码，以便加密支持包。 |
 | `-Credential` |可选 |用于提供网络共享文件夹的访问凭据。 |
 | `-Force` |可选 |用于跳过加密密码确认步骤。 |
-| `-PackageTag` |可选 |用于在“路径”下指定一个目录，以便放置支持包。 默认值为 [设备名称]-[当前日期和时间:yyyy-MM-dd-HH-mm-ss]。 |
-| `-Scope` |可选 |指定为“群集”（默认值），以便为两个控制器创建支持包。 如果只需为当前控制器创建包，请指定“控制器”。 |
+| `-PackageTag` |可选 |用于在“路径”下指定一个目录，以便放置支持包。** 默认值为 [设备名称]-[当前日期和时间:yyyy-MM-dd-HH-mm-ss]。 |
+| `-Scope` |可选 |指定为 **“Cluster”**（默认值），为两个控制器创建支持包。 如果你希望仅为当前控制器创建包，请指定 **“Controller”**。 |
 
 ## <a name="edit-a-support-package"></a>编辑支持包
 

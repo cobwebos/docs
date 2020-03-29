@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ae8c7c43ecbf9bc625e1e46be3e2c71c8d57b6f7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720089"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>浏览 Azure 上 SQL Server 虚拟机中的数据
 
-本文介绍如何浏览存储在 Azure 上 SQL Server VM 中的数据。 使用 SQL 或 Python 来检查数据。
+本文介绍如何浏览存储在 Azure 上 SQL Server VM 中的数据。 使用 SQL 或 Python 检查数据。
 
 此任务是[团队数据科学过程](overview.md)中的一个步骤。
 
@@ -29,7 +29,7 @@ ms.locfileid: "76720089"
 > 
 > 
 
-## <a name="sql-dataexploration"></a>使用 SQL 脚本浏览 SQL 数据
+## <a name="explore-sql-data-with-sql-scripts"></a><a name="sql-dataexploration"></a>使用 SQL 脚本浏览 SQL 数据
 以下是几个可用于浏览存储在 SQL Server 中的数据的示例 SQL 脚本。
 
 1. 获取每个工作日观测值的计数
@@ -50,8 +50,8 @@ ms.locfileid: "76720089"
 > 
 > 
 
-## <a name="python"></a>使用 Python 浏览 SQL 数据
-如果数据位于 SQL Server 中，使用 Python 浏览数据和生成功能类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的 Azure Blob 数据](data-blob.md)中所述。 将数据从数据库加载到 pandas 数据帧中，然后可以进一步处理。 在本部分中，我们记录连接到数据库并将数据加载到数据帧的过程。
+## <a name="explore-sql-data-with-python"></a><a name="python"></a>使用 Python 浏览 SQL 数据
+当 SQL Server 中的数据与使用 Python 处理 Azure Blob 中的数据（如[数据科学环境中处理 Azure Blob 数据](data-blob.md)中所述）中所述时，使用 Python 来浏览数据和生成功能。 将数据从数据库加载到熊猫数据帧中，然后可以进一步处理。 在本部分中，我们记录连接到数据库并将数据加载到数据帧的过程。
 
 以下连接字符串格式可用于使用 pyodbc 从 Python 连接到 SQL Server 数据库（具有特定值的替换服务器名、dbname、用户名和密码）：
 
@@ -59,7 +59,7 @@ ms.locfileid: "76720089"
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python 中的 [Pandas 库](https://pandas.pydata.org/)提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 以下代码读取从 SQL Server 数据库返回到 Pandas 数据帧的结果：
+Python 中的[Pandas 库](https://pandas.pydata.org/)为 Python 编程的数据操作提供了一组丰富的数据结构和数据分析工具。 以下代码读取从 SQL Server 数据库返回到 Pandas 数据帧的结果：
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)

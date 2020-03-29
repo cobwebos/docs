@@ -1,6 +1,6 @@
 ---
-title: Node.js 最佳实践和故障排除
-description: 了解 Azure App Service 中运行的 node.js 应用程序的最佳做法和故障排除步骤。
+title: Node.js 最佳做法和故障排除
+description: 了解 Azure 应用服务中运行的 Node.js 应用程序的最佳做法和故障排除步骤。
 author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
@@ -9,10 +9,10 @@ ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430569"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
@@ -205,7 +205,7 @@ http.createServer(function (req, res) {
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-请下载此文件，并使用 Chrome F12 工具将其打开。 在 Chrome 上按 F12，然后选择 "**配置文件**" 选项卡。选择 "**加载**" 按钮。 选择下载的 profile.cpuprofile 文件。 单击刚加载的配置文件。
+请下载此文件，并使用 Chrome F12 工具将其打开。 在 Chrome 上按 F12，然后选择 **"个人资料"** 选项卡。选择 **"加载**"按钮。 选择下载的 profile.cpuprofile 文件。 单击刚加载的配置文件。
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
@@ -251,7 +251,7 @@ node.exe 随机关闭的原因有多种：
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE http 状态和子状态
 
-`cnodeconstants`[源文件](https://github.com/Azure/iisnode/blob/master/src/iisnode/cnodeconstants.h)列出了由于错误，iisnode 可能返回的所有可能的状态/子状态组合。
+`cnodeconstants` [源文件](https://github.com/Azure/iisnode/blob/master/src/iisnode/cnodeconstants.h)列出了 iisnode 可在发生错误时返回的所有可能的状态/子状态组合。
 
 为应用程序启用 FREB 以查看 win32 错误代码（出于性能方面的原因，请确保只在非生产站点上启用 FREB）。
 
@@ -273,7 +273,7 @@ NODE.exe 具有名为 `NODE_PENDING_PIPE_INSTANCES` 的设置。 在 Azure 应�
 
 请访问以下链接，了解有关 Azure 应用服务上的 node.js 应用程序的详细信息。
 
-* [Azure 应用服务中的 Node.js Web 应用入门](app-service-web-get-started-nodejs.md)
+* [在 Azure 应用服务中开始使用 Node.js Web 应用](app-service-web-get-started-nodejs.md)
 * [如何在 Azure 应用服务中调试 Node.js Web 应用](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
 * [将 Node.js 模块与 Azure 应用程序一起使用](../nodejs-use-node-modules-azure-apps.md)
 * [Azure 应用服务 Web 应用：Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)

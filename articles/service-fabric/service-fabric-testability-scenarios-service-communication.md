@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465561"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric 可测试性方案：服务通信
@@ -19,7 +19,7 @@ ms.locfileid: "75465561"
 
 当这些服务边界在一个分布式系统中连接在一起时，需要考虑几个注意事项：
 
-* *传输协议*。 使用 HTTP 协议以提高互操作性，还是使用一个自定义二进制协议以获得最大吞吐量？
+* *传输协议*. 使用 HTTP 协议以提高互操作性，还是使用一个自定义二进制协议以获得最大吞吐量？
 * *错误处理*。 如何处理永久性错误和暂时性错误？ 服务转移到另一个节点时会发生什么情况？
 * *超时和延迟*。 在多层应用程序中，每个服务层如何处理堆栈直到用户的延迟？
 
@@ -35,7 +35,7 @@ ms.locfileid: "75465561"
 
 适当地处理这些方案对于系统的顺畅运行非常重要。 若要这样做，请记住：
 
-* 可以连接的每个服务都有一个它要侦听的*地址*（例如 HTTP 或 WebSockets）。 当服务实例或分区已经移动时，其地址终结点将改变。 （将移动到具有不同 IP 地址的其他节点。）如果使用内置通信组件，则它们将为你处理重新解析服务地址。
+* 可以连接的每个服务都有一个它要侦听的*地址*（例如 HTTP 或 WebSockets）。 当服务实例或分区已经移动时，其地址终结点将改变。 （它移动到具有不同 IP 地址的不同节点。如果您使用的是内置通信组件，它们将为您处理重新解析服务地址。
 * 服务延迟有可能暂时性增大，因为服务实例再次启动其侦听程序。 这取决于服务在移动之后有多快启动侦听程序。
 * 在服务打开新的节点后，任何现有连接都需要关闭并重新打开。 正常的节点关闭或重新启动会等待现有连接正常关闭。
 

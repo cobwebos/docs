@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943065"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>创建并测试新的模拟设备
@@ -24,13 +24,13 @@ ms.locfileid: "78943065"
 
 本操作说明指南介绍如何自定义设备模拟微服务。 此微服务是远程监视解决方案加速器的一部分。 为了演示设备模拟功能，本操作说明指南在 Contoso IoT 应用程序中使用了两个方案：
 
-在第一个方案中，我们将新的遥测类型添加到 Contoso 的现有“冷却器”设备类型。
+在第一个方案中，我们将新的遥测类型添加到 Contoso 的现有“冷却器”设备类型****。
 
 在第二个方案中，Contoso 想要测试新的智能灯泡设备。 为了运行测试，我们创建了具有以下特征的新模拟设备：
 
 *属性*
 
-| 名称                     | 值                      |
+| “属性”                     | 值                      |
 | ------------------------ | --------------------------- |
 | Color                    | 白、红、蓝            |
 | 亮度               | 0 到 100                    |
@@ -40,7 +40,7 @@ ms.locfileid: "78943065"
 
 下表显示了灯泡以数据流形式报告给云的数据：
 
-| 名称   | 值      |
+| “属性”   | 值      |
 | ------ | ----------- |
 | 状态 | "on"、"off" |
 | 温度 | 华氏度 |
@@ -53,7 +53,7 @@ ms.locfileid: "78943065"
 
 下表显示了新设备支持的操作：
 
-| 名称        |
+| “属性”        |
 | ----------- |
 | 打开   |
 | 关闭  |
@@ -62,7 +62,7 @@ ms.locfileid: "78943065"
 
 下表显示了设备的初始状态：
 
-| 名称                     | 值 |
+| “属性”                     | 值 |
 | ------------------------ | -------|
 | 初始颜色            | 白色  |
 | 初始亮度       | 75     |
@@ -72,18 +72,18 @@ ms.locfileid: "78943065"
 
 完成本操作方法指南中的步骤需要有效的 Azure 订阅。
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 按照本操作方法指南操作需要：
 
-* Visual Studio Code。 可以[下载适用于 Mac、Linux 和 Windows 的 Visual Studio Code](https://code.visualstudio.com/download)。
+* Visual Studio Code。 您可以[下载 Mac、Linux 和 Windows 的可视化工作室代码](https://code.visualstudio.com/download)。
 * .NET Core。 可以下载[适用于 Mac、Linux 和 Windows 的 .NET Core](https://www.microsoft.com/net/download)。
 * [适用于 Visual Studio Code 的 C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* Postman。 可以下载[适用于 Mac、Windows 或 Linux 的 Postman](https://www.getpostman.com/apps)。
+* Postman。 您可以下载[Mac、Windows 或 Linux 的邮递员](https://www.getpostman.com/apps)。
 * [部署到 Azure 订阅的 IoT 中心](../../articles/iot-hub/iot-hub-create-through-portal.md)。 需要 IoT 中心的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
 * 使用 SQL API 且配置为[强一致性](../../articles/cosmos-db/how-to-manage-database-account.md)的 Cosmos DB 数据库。 需要 Cosmos DB 数据库的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
 
@@ -99,27 +99,27 @@ ms.locfileid: "78943065"
 
 ### <a name="download-the-microservices"></a>下载微服务
 
-从 GitHub 下载[远程监视微服务](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip)并将其解压缩到本地计算机上的适当位置。 本文假设此文件夹的名称为 **remote-monitoring-services-dotnet-master**。
+将[远程监视微服务](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip)从 GitHub 下载并解压缩到本地计算机上的适当位置。 本文假设此文件夹的名称为 **remote-monitoring-services-dotnet-master**。
 
 从 GitHub 下载[设备模拟微服务](https://github.com/Azure/device-simulation-dotnet/archive/master.zip)并将其解压缩到本地计算机上的适当位置。 本文假设此文件夹的名称为 **device-simulation-dotnet-master**。
 
 ### <a name="run-the-storage-adapter-microservice"></a>运行存储适配器微服务
 
-在 Visual Studio Code 中打开 remote-monitoring-services-dotnet-master\storage-adapter 文件夹。 单击任意“还原”按钮，修复任何未解决的依赖项。
+在 Visual Studio Code 中打开 remote-monitoring-services-dotnet-master\storage-adapter 文件夹****。 单击任意“还原”按钮，修复任何未解决的依赖项****。
 
-打开**storage-adapter/WebService/appsettings**文件，并将 Cosmos DB 连接字符串分配到**documentDBConnectionString**变量。
+打开**存储适配器/WebService/appsettings.ini**文件，并将 Cosmos DB 连接字符串分配给**文档 DBConnectionString**变量。
 
-要在本地运行微服务，请单击“调试”>“启动调试”。
+要在本地运行微服务，请单击“调试”>“启动调试”****。
 
-Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输出，包括 Web 服务运行状况检查的 URL：[http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)。 导航到此地址时，状态应显示为“正常: 活动且正常”。
+Visual Studio 代码中的 **"终端**"窗口显示正在运行的微服务的输出，包括用于 Web 服务运行状况检查[http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)的 URL： 。 导航到此地址时，状态应显示为“正常: 活动且正常”。
 
 在完成后续步骤时，让存储适配器微服务继续在 Visual Studio Code 的此实例中运行。
 
 ## <a name="modify-the-chiller"></a>修改冷却器
 
-在本部分中，将新的“内部温度”遥测类型添加到现有“冷却器”设备类型：
+在本部分中，将新的“内部温度”遥测类型添加到现有“冷却器”设备类型********：
 
-1. 在本地计算机上创建一个新文件夹 C:\temp\devicemodelsc 中。
+1. 在本地计算机上创建一个新文件夹 C:\temp\devicemodelsc 中****。
 
 1. 将以下文件从设备模拟微服务的已下载副本复制到新文件夹：
 
@@ -132,9 +132,9 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
     | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
     | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
-1. 打开 C:\temp\devicemodels\chiller-01.json 文件。
+1. 打开 C:\temp\devicemodels\chiller-01.json**** 文件。
 
-1. 在 InitialState 部分中，添加以下两个定义：
+1. 在 InitialState 部分中，添加以下两个定义****：
 
     ```json
     "internal_temperature": 65.0,
@@ -158,9 +158,9 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
     },
     ```
 
-1. 保存 C:\temp\devicemodels\chiller-01.json 文件。
+1. 保存 C:\temp\devicemodels\chiller-01.json 文件****。
 
-1. 打开 C:\temp\devicemodels\scripts\chiller-01-state.js 文件。
+1. 打开 C:\temp\devicemodels\scripts\chiller-01-state.js 文件****。
 
 1. 将以下字段添加到 **state** 变量：
 
@@ -169,7 +169,7 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
     internal_temperature_unit: "F",
     ```
 
-1. 按如下所示更新 main 函数：
+1. 按如下所示更新 main 函数****：
 
     ```js
     function main(context, previousState, previousProperties) {
@@ -201,13 +201,13 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
     }
     ```
 
-1. 保存 C:\temp\devicemodels\scripts\chiller-01-state.js 文件。
+1. 保存 C:\temp\devicemodels\scripts\chiller-01-state.js 文件****。
 
 ## <a name="create-the-lightbulb"></a>创建灯泡
 
-在本部分中，定义新的“灯泡”设备类型：
+在本部分中，定义新的“灯泡”设备类型****：
 
-1. 创建文件 C:\temp\devicemodels\lightbulb-01.json 并添加以下内容：
+1. 创建文件 C:\temp\devicemodels\lightbulb-01.json 并添加以下内容****：
 
     ```json
     {
@@ -271,9 +271,9 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
     }
     ```
 
-    保存对 C:\temp\devicemodels\lightbulb-01.json 的更改。
+    保存对 C:\temp\devicemodels\lightbulb-01.json 的更改****。
 
-1. 创建文件 C:\temp\devicemodels\scripts\lightbulb-01-state.js 并添加以下内容：
+1. 创建文件 C:\temp\devicemodels\scripts\lightbulb-01-state.js 并添加以下内容****：
 
     ```javascript
     "use strict";
@@ -360,9 +360,9 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
     }
     ```
 
-    保存对 C:\temp\devicemodels\scripts\lightbulb-01-state.js 的更改。
+    保存对 C:\temp\devicemodels\scripts\lightbulb-01-state.js 的更改****。
 
-1. 创建文件 C:\temp\devicemodels\scripts\SwitchOn-method.js 并添加以下内容：
+1. 创建文件 C:\temp\devicemodels\scripts\SwitchOn-method.js 并添加以下内容****：
 
     ```javascript
     "use strict";
@@ -386,9 +386,9 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
     }
     ```
 
-    保存对 C:\temp\devicemodels\scripts\SwitchOn-method.js 的更改。
+    保存对 C:\temp\devicemodels\scripts\SwitchOn-method.js 的更改****。
 
-1. 创建文件 C:\temp\devicemodels\scripts\SwitchOff-method.js 并添加以下内容：
+1. 创建文件 C:\temp\devicemodels\scripts\SwitchOff-method.js 并添加以下内容****：
 
     ```javascript
     "use strict";
@@ -412,9 +412,9 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
     }
     ```
 
-    保存对 C:\temp\devicemodels\scripts\SwitchOff-method.js 的更改。
+    保存对 C:\temp\devicemodels\scripts\SwitchOff-method.js 的更改****。
 
-现在已创建自定义版本的“冷却器”设备类型和新的“灯泡”设备类型。
+现在已创建自定义版本的“冷却器”设备类型和新的“灯泡”设备类型********。
 
 ## <a name="test-the-devices"></a>测试设备
 
@@ -422,9 +422,9 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 
 ### <a name="run-the-device-simulation-microservice"></a>运行设备模拟微服务
 
-在 Visual Studio Code 的新实例中打开从 GitHub 下载的 device-simulation-dotnet-master 文件夹。 单击任意“还原”按钮，修复任何未解决的依赖项。
+在 Visual Studio Code 的新实例中打开从 GitHub 下载的 device-simulation-dotnet-master 文件夹****。 单击任意“还原”按钮，修复任何未解决的依赖项****。
 
-打开**WebService/appsettings**文件并将 Cosmos DB 连接字符串分配给**documentdb_connstring**变量，并按如下所述修改设置：
+打开**WebService/appsettings.ini**文件，并将 Cosmos DB 连接字符串分配给**documentdb_connstring**变量，并修改设置，如下所示：
 
 ```ini
 device_models_folder = C:\temp\devicemodels\
@@ -432,9 +432,9 @@ device_models_folder = C:\temp\devicemodels\
 device_models_scripts_folder = C:\temp\devicemodels\scripts\
 ```
 
-要在本地运行微服务，请单击“调试”>“启动调试”。
+要在本地运行微服务，请单击“调试”>“启动调试”****。
 
-Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输出。
+Visual Studio Code 中的“终端”**** 窗口显示正在运行的微服务的输出。
 
 在完成后续步骤时，让设备模拟微服务继续在 Visual Studio Code 的此实例中运行。
 
@@ -442,7 +442,7 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 
 在本部分中，使用 Azure CLI 设置事件监视器，以查看从连接到 IoT 中心的设备发送的遥测。
 
-以下脚本假定 IoT 中心的名称为 device-simulation-test。
+以下脚本假定 IoT 中心的名称为 device-simulation-test****。
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
@@ -456,29 +456,29 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 ### <a name="create-a-simulation-with-the-updated-chiller-device-type"></a>使用更新的冷却器设备类型创建模拟
 
-在本部分中，使用 Postman 工具请求设备模拟微服务利用更新的冷却器设备类型运行模拟。 Postman 是一种可实现将 REST 请求发送到 Web 服务的工具。 所需的 Postman 配置文件位于 device-simulation-dotnet 存储库的本地副本中。
+在本部分中，使用 Postman 工具请求设备模拟微服务利用更新的冷却器设备类型运行模拟。 Postman 是一种可实现将 REST 请求发送到 Web 服务的工具。 所需的 Postman 配置文件位于 device-simulation-dotnet 存储库的本地副本中****。
 
 要设置 Postman，请执行以下操作：
 
 1. 在本地计算机上打开 Postman。
 
-1. 单击“文件”>“导入”。 然后单击“选择文件”。
+1. 单击“文件”>“导入”****。 然后单击“选择文件”****。
 
-1. 导航到 device-simulation-dotnet-master/docs/postman 文件夹。 选择“Azure IoT 设备模拟解决方案 accelerator.postman_collection”和“Azure IoT 设备模拟解决方案 accelerator.postman_environment”，然后单击“打开”。
+1. 导航到 device-simulation-dotnet-master/docs/postman 文件夹****。 选择**Azure IoT 设备模拟解决方案加速器.postman_collection**和**Azure IoT 设备模拟解决方案加速器。postman_environment，** 然后单击 **"打开**"。
 
-1. 将“Azure IoT 设备模拟解决方案加速器”展开到可以发送的请求。
+1. 将“Azure IoT 设备模拟解决方案加速器”展开到可以发送的请求****。
 
-1. 单击“无环境”，然后选择“Azure IoT 设备模拟解决方案加速器”。
+1. 单击 **"无环境"** 并选择**Azure IoT 设备模拟解决方案加速器**。
 
 现在，已在 Postman 工作区中加载可用于与设备模拟微服务进行交互的集合和环境。
 
 要配置和运行模拟，请执行以下操作：
 
-1. 在 Postman 集合中，选择“创建修改的冷却器模拟”并单击“发送”。 此请求将创建模拟的冷却器设备类型的四个实例。
+1. 在 Postman 集合中，选择“创建修改的冷却器模拟”并单击“发送”********。 此请求将创建模拟的冷却器设备类型的四个实例。
 
-1. Azure CLI 窗口中的事件监视器输出显示来自模拟设备的遥测，包括新的 internal_temperature 值。
+1. Azure CLI 窗口中的事件监视器输出显示来自模拟设备的遥测，包括新的 internal_temperature 值****。
 
-要停止模拟，请选择 Postman 中的“停止模拟”请求并单击“发送”。
+要停止模拟，请选择 Postman 中的“停止模拟”请求并单击“发送”********。
 
 ### <a name="create-a-simulation-with-the-lightbulb-device-type"></a>使用灯泡设备类型创建模拟
 
@@ -486,15 +486,15 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 要配置和运行模拟，请执行以下操作：
 
-1. 在 Postman 集合中，选择“创建灯泡模拟”并单击“发送”。 此请求将创建模拟的灯泡设备类型的两个实例。
+1. 在 Postman 集合中，选择“创建灯泡模拟”并单击“发送”********。 此请求将创建模拟的灯泡设备类型的两个实例。
 
 1. Azure CLI 窗口中的事件监视器输出显示来自模拟灯泡的遥测。
 
-要停止模拟，请选择 Postman 中的“停止模拟”请求并单击“发送”。
+要停止模拟，请选择 Postman 中的“停止模拟”请求并单击“发送”********。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在本地运行的微服务的 Visual Studio Code 实例中可停止这两个本地运行的微服务（“调试”>“停止调试”）。
+在本地运行的微服务的 Visual Studio Code 实例中可停止这两个本地运行的微服务（“调试”>“停止调试”）****。
 
 如果不再需要 IoT 中心和 Cosmos DB 实例，请从 Azure 订阅中将其删除，以避免产生任何不必要的费用。
 

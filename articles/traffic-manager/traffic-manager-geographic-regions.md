@@ -1,5 +1,5 @@
 ---
-title: 地理路由使用的国家/地区层次结构-Azure 流量管理器
+title: 地理路由使用的国家/区域层次结构 - Azure 流量管理器
 description: 本文列出了 Azure 流量管理器地理路由类型使用的国家/地区层次结构
 services: traffic-manager
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: rohink
 ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938643"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Azure 流量管理器将国家/地区层次结构用于地理流量路由方法
 
-本文列出了 Azure 流量管理器中**地理**流量路由方法使用的国家和地区。 还可以通过调用 [Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 以编程方式获取此信息。 
+本文列出了 Azure 流量管理器中**地理**流量路由方法使用的国家和地区。 还可以通过调用 [ Azure 流量管理器 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 以编程方式获取此信息。 
 
 - WORLD(全球)
 
@@ -99,7 +99,7 @@ ms.locfileid: "76938643"
 
         - ME(黑山)
 
-        - MK （北马其顿共和国）
+        - MK(北马其顿)
 
         - MT(马耳他)
 
@@ -128,7 +128,7 @@ ms.locfileid: "76938643"
         - SM(圣马力诺)
 
         - UA(乌克兰)
-            - 克里米亚的区域
+            - 克里米亚区域
 
         - VA(梵蒂冈城)
 
@@ -270,7 +270,7 @@ ms.locfileid: "76938643"
 
         - TT(特立尼达和多巴哥)
 
-        - UM （美属外岛）
+        - UM（美国离岛）
 
         - US(美国)
 
@@ -380,7 +380,7 @@ ms.locfileid: "76938643"
 
         - VG(英属维尔京群岛)
 
-        - VI （美属维尔京群岛）
+        - 六（美属维尔京群岛）
 
         - XE(圣尤斯特歇斯)
 

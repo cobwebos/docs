@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 中的 LINQ to SQL 翻译
+title: Azure Cosmos DB 中的 LINQ to SQL 转换
 description: 了解支持的 LINQ 运算符，以及如何将 LINQ 查询映射到 Azure Cosmos DB 中的 SQL 查询。
 author: timsander1
 ms.service: cosmos-db
@@ -7,21 +7,21 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441255"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ 到 SQL 转换
 
-Azure Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最大工作量映射。 以下说明假定你基本熟悉 LINQ。
+Azure Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最有效映射。 以下内容假设你对 LINQ 有一个基本的了解。
 
-查询提供程序类型系统仅支持 JSON 基元类型：数字、布尔、字符串和 null。
+查询提供程序类型系统仅支持 JSON 基元类型：数字、布尔值、字符串和 null。
 
 查询提供程序支持以下标量表达式：
 
-- 常数值，包括查询计算时基元数据类型的常量值。
+- 常量值，包括评估查询时基元数据类型的常量值。
   
 - 引用对象或数组元素的属性的属性/数组索引表达式。 例如：
   
@@ -32,21 +32,21 @@ Azure Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询�
     family.children[n].grade; //n is an int variable
   ```
   
-- 算术表达式，包括数值和布尔值上的常用算术表达式。 有关完整列表，请参阅[AZURE COSMOS DB SQL 规范](https://go.microsoft.com/fwlink/p/?LinkID=510612)。
+- 算术表达式，包括针对数值和布尔值运行的常见算术表达式。 有关完整列表，请参阅 [Azure Cosmos DB SQL 规范](https://go.microsoft.com/fwlink/p/?LinkID=510612)。
   
   ```
     2 * family.children[0].grade;
     x + y;
   ```
   
-- 字符串比较表达式，其中包括将字符串值与某些常量字符串值进行比较。  
+- 字符串比较表达式，包括将字符串值与某些常量字符串值进行比较。  
   
   ```
     mother.familyName == "Wakefield";
     child.givenName == s; //s is a string variable
   ```
   
-- 对象/数组创建表达式，该表达式返回复合值类型或匿名类型的对象或此类对象的数组。 可以嵌套这些值。
+- 对象/数组创建表达式，返回复合值类型或匿名类型的对象，或此类对象组成的数组。 可以嵌套这些值。
   
   ```
     new Parent { familyName = "Wakefield", givenName = "Robin" };
@@ -54,33 +54,33 @@ Azure Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询�
     new int[] { 3, child.grade, 5 };
   ```
 
-## <a id="SupportedLinqOperators"></a>支持的 LINQ 运算符
+## <a name="supported-linq-operators"></a><a id="SupportedLinqOperators"></a>支持的 LINQ 运算符
 
 SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
 
-- **Select**：投影转换为 SQL Select （包括对象构造）。
-- **Where**：筛选器转换为 sql Where，并支持 `&&`、`||`和 `!` 之间的转换到 sql 运算符
-- **SelectMany**：允许将数组展开到 SQL JOIN 子句。 用于链接或嵌套表达式以对数组元素进行筛选。
-- **OrderBy**和**OrderByDescending**：转换为 ORDER BY with ASC 或 DESC。
+- **选择**：投影转换为 SQL SELECT，包括对象构造。
+- **其中**：筛选器转换为 SQL WHERE，并支持`&&`在`||`和`!`之间转换 。
+- **SelectMany**：允许将数组展开到 SQL JOIN 子句。 用于将表达式链接或嵌套到对数组元素应用的筛选器。
+- **订单乘****和订单分递**：使用 ASC 或 DESC 转换为 ORDER BY。
 - 用于聚合的 **Count**、**Sum**、**Min**、**Max** 和 **Average** 运算符及其异步等效项 **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync** 和 **AverageAsync**。
-- **CompareTo**：转换为范围比较。 通常用于字符串，因为它们在 .NET 中不可比较。
-- **Skip**和**Take**：转换为 SQL 偏移和限制，以限制查询中的结果并执行分页。
-- **数学函数**：支持从 .net `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan`和 `Truncate` 转换为等效的 SQL 内置函数。
-- **字符串函数**：支持从 .net `Concat`、`Contains`、`Count`、`EndsWith`、`IndexOf`、`Replace`、`Reverse`、`StartsWith`、`SubString`、`ToLower`、`ToUpper`、`TrimEnd`和 `TrimStart` 转换为等效的 SQL 内置函数。
-- **数组函数**：支持从 .net `Concat`、`Contains`和 `Count` 转换为等效的 SQL 内置函数。
-- **地理空间扩展函数**：支持从存根方法 `Distance`、`IsValid`、`IsValidDetailed`和 `Within` 转换为等效的 SQL 内置函数。
-- **用户定义的函数扩展函数**：支持从存根方法 `UserDefinedFunctionProvider.Invoke` 转换为相应的用户定义函数。
-- **其他**：支持 `Coalesce` 和条件运算符的转换。 可以将 `Contains` 转换为中的字符串包含、ARRAY_CONTAINS 或 SQL，具体取决于上下文。
+- **CompareTo**：转换为范围比较。 通常用于字符串，因为它们在 .NET 中不可比。
+- **跳过**和**获取**：转换为 SQL OFFSET 和 LIMIT，以限制查询的结果并执行分页。
+- **数学函数**：支持从`Abs``Acos``Asin``Atan``Ceiling``Cos``Exp``Floor``Log``Pow``Round``Sign``Sin``Sqrt``Tan``Truncate`.NET、、、、、、、、、、、、、、、、、、、以及等效 SQL 内置函数进行转换。 `Log10`
+- **字符串函数**：支持`Concat`从 .NET、、、、、、、、、、、、、、、、、、、`Contains``Count``EndsWith``IndexOf``Replace``Reverse``StartsWith``SubString``ToLower``ToUpper``TrimEnd`以及`TrimStart`等效 SQL 内置函数进行转换。
+- **数组函数**：支持从`Concat`.NET`Contains`转换`Count`和 到等效 SQL 内置函数。
+- **地理空间扩展函数**：支持从存根方法`Distance` `IsValid`、`IsValidDetailed`和`Within`转换到等效 SQL 内置函数。
+- **用户定义的函数扩展函数**：支持从存根方法`UserDefinedFunctionProvider.Invoke`转换到相应的用户定义的函数。
+- **杂项**：支持`Coalesce`和 条件运算符的转换。 可以根据上下文将 `Contains` 转换为字符串 CONTAINS、ARRAY_CONTAINS 或 SQL IN。
 
 ## <a name="examples"></a>示例
 
-下面的示例演示了一些标准 LINQ 查询运算符如何转换为 Cosmos DB 查询。
+以下示例演示了一些标准 LINQ 查询运算符如何转换为 Cosmos DB 查询。
 
-### <a name="select-operator"></a>选择运算符
+### <a name="select-operator"></a>Select 运算符
 
 语法为 `input.Select(x => f(x))`，其中 `f` 是一个标量表达式。
 
-**选择运算符，示例1：**
+**Select 运算符，示例 1：**
 
 - **LINQ Lambda 表达式**
   
@@ -95,7 +95,7 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
       FROM Families f
     ```
   
-**选择运算符，示例2：** 
+**Select 运算符，示例 2：** 
 
 - **LINQ Lambda 表达式**
   
@@ -110,7 +110,7 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
       FROM Families f
   ```
   
-**Select 运算符，示例3：**
+**Select 运算符，示例 3：**
 
 - **LINQ Lambda 表达式**
   
@@ -151,7 +151,7 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
 
 语法为 `input.Where(x => f(x))`，其中 `f` 是返回布尔值的标量表达式。
 
-**Where 运算符，示例1：**
+**Where 运算符，示例 1：**
 
 - **LINQ Lambda 表达式**
   
@@ -167,7 +167,7 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
       WHERE f.parents[0].familyName = "Wakefield"
   ```
   
-**Where 运算符，示例2：**
+**Where 运算符，示例 2：**
 
 - **LINQ Lambda 表达式**
   
@@ -188,13 +188,13 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
 
 ## <a name="composite-sql-queries"></a>复合 SQL 查询
 
-您可以编写上述运算符来形成功能更强大的查询。 由于 Cosmos DB 支持嵌套容器，因此可以连接或嵌套组合。
+将上述运算符组合到一起可以构成更强大的查询。 由于 Cosmos DB 支持嵌套的容器，因此你可以连接或嵌套这种组合。
 
 ### <a name="concatenation"></a>串联
 
-语法为 `input(.|.SelectMany())(.Select()|.Where())*`。 串联的查询可以从一个可选的 `SelectMany` 查询开始，后跟多个 `Select` 或 `Where` 运算符。
+语法为 `input(.|.SelectMany())(.Select()|.Where())*`。 连接的查询可以使用可选的 `SelectMany` 查询开头，后接多个 `Select` 或 `Where` 运算符。
 
-**串联，示例1：**
+**连接，示例 1：**
 
 - **LINQ Lambda 表达式**
   
@@ -211,7 +211,7 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
       WHERE f.parents[0].familyName = "Wakefield"
   ```
 
-**串联，示例2：**
+**连接，示例 2：**
 
 - **LINQ Lambda 表达式**
   
@@ -228,7 +228,7 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
       WHERE f.children[0].grade > 3
   ```
 
-**串联，示例3：**
+**连接，示例 3：**
 
 - **LINQ Lambda 表达式**
   
@@ -245,7 +245,7 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
       WHERE ({grade: f.children[0].grade}.grade > 3)
   ```
 
-**串联，示例4：**
+**连接，示例 4：**
 
 - **LINQ Lambda 表达式**
   
@@ -264,11 +264,11 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
 
 ### <a name="nesting"></a>嵌套
 
-语法为 `input.SelectMany(x=>x.Q())`，其中 `Q` 是 `Select`、`SelectMany`或 `Where` 运算符。
+语法为 `input.SelectMany(x=>x.Q())`，其中 `Q` 是 `Select`、`SelectMany` 或 `Where` 运算符。
 
-嵌套查询将内部查询应用到外部容器的每个元素。 一项重要的功能是内部查询可以引用外部容器中的元素字段，如自联接。
+嵌套查询会将内部查询应用到外部容器的每个元素。 一个重要的功能是内部查询可以引用外部容器（如自联接）中元素的字段。
 
-**嵌套，示例1：**
+**嵌套，示例 1：**
 
 - **LINQ Lambda 表达式**
   
@@ -285,7 +285,7 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
       JOIN p IN f.parents
   ```
 
-**嵌套，示例2：**
+**嵌套，示例 2：**
 
 - **LINQ Lambda 表达式**
   
@@ -303,7 +303,7 @@ SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
       WHERE c.familyName = "Jeff"
   ```
 
-**嵌套，示例3：**
+**嵌套，示例 3：**
 
 - **LINQ Lambda 表达式**
   

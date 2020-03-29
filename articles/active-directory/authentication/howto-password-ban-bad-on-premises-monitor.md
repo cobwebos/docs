@@ -1,6 +1,6 @@
 ---
 title: 监视本地 Azure AD 密码保护
-description: 了解如何监视和查看 Azure AD 本地 Active Directory 域服务环境的密码保护的日志
+description: 了解如何监视和查看本地活动目录域服务环境的 Azure AD 密码保护日志
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671654"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>监视和查看本地 Azure AD 密码保护环境的日志
 
 部署 Azure AD 密码保护后，监视和报告是至关重要的任务。 本文详细介绍了各种监视技术，包括每项服务在哪里记录信息，以及如何报告 Azure AD 密码保护使用情况。
 
-监视和报告是通过事件日志消息或通过运行 PowerShell cmdlet 来完成的。 DC 代理和代理服务都记录事件日志消息。 下面所述的所有 PowerShell cmdlet 仅可用于代理服务器（请参阅 AzureADPasswordProtection PowerShell 模块）。 DC 代理软件不安装 PowerShell 模块。
+监视和报告由事件日志消息或运行 PowerShell cmdlet 来完成。 DC 代理和代理服务都记录事件日志消息。 下面介绍的所有 PowerShell cmdlet 仅在代理服务器上可用（请参阅 AzureAD密码保护 PowerShell 模块）。 DC 代理软件不安装 PowerShell 模块。
 
 ## <a name="dc-agent-event-logging"></a>DC 代理事件日志记录
 
@@ -96,9 +96,9 @@ PasswordSetErrors               : 1
 
 可以使用 –Forest、-Domain 和 –DomainController 参数之一来影响 cmdlet 的报告范围。 不指定参数表示使用 –Forest。
 
-`Get-AzureADPasswordProtectionSummaryReport` cmdlet 的工作原理是，先查询 DC 代理管理事件日志，再计算所显示的每个结果类别对应的事件总数。 下表包含每个结果与其相应事件 ID 之间的映射：
+`Get-AzureADPasswordProtectionSummaryReport` cmdlet 的工作原理是，先查询 DC 代理管理事件日志，再计算所显示的每个结果类别对应的事件总数。 下表包含每个结果与其相应的事件 ID 之间的映射：
 
-|Get-AzureADPasswordProtectionSummaryReport property |对应的事件 ID|
+|Get-AzureADPasswordProtectionSummaryReport property |相应的事件 ID|
 | :---: | :---: |
 |PasswordChangesValidated |10014|
 |PasswordSetsValidated |10015|
@@ -233,9 +233,9 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Paramete
 
 ## <a name="dc-agent-performance-monitoring"></a>DC 代理性能监视
 
-DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器对象。 目前提供以下性能计数器：
+DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器对象。**** 目前提供以下性能计数器：
 
-|性能计数器名称 | 说明|
+|性能计数器名称 | 描述|
 | --- | --- |
 |处理的密码数 |此计数器显示自上次重启以来已处理的密码（接受或拒绝）总数。|
 |接受的密码数 |此计数器显示自上次重启以来已接受的密码总数。|
@@ -269,11 +269,11 @@ HeartbeatUTC          : 2/16/2018 8:35:02 AM
 
 如果 HeartbeatUTC 值过时，可能会有以下症状：相应域控制器上的 Azure AD 密码保护 DC 代理未运行或已卸载，或者计算机已降级，不再是域控制器。
 
-如果 PasswordPolicyDateUTC 值过时，这可能是因为该计算机上 Azure AD 的密码保护 DC 代理无法正常运行。
+如果密码策略DateUTC值过时，这可能是该计算机上的 Azure AD 密码保护 DC 代理无法正常工作的症状。
 
-## <a name="dc-agent-newer-version-available"></a>可用的 DC 代理更新版本
+## <a name="dc-agent-newer-version-available"></a>DC 代理较新版本可用
 
-检测到新版本的 DC 代理软件可用时，DC 代理服务会将30034警告事件记录到操作日志中，例如：
+DC 代理服务在检测到 DC 代理软件的较新版本可用后，将 30034 警告事件记录到操作日志，例如：
 
 ```text
 An update for Azure AD Password Protection DC Agent is available.
@@ -287,10 +287,10 @@ https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
 Current version: 1.2.116.0
 ```
 
-上面的事件未指定新版软件的版本。 应该在事件消息中找到该信息的链接。
+上述事件未指定较新版本的版本。 您应该转到事件消息中的链接以获取有关该信息。
 
 > [!NOTE]
-> 尽管上述事件消息中的 "自动升级" 引用，但 DC 代理软件当前不支持此功能。
+> 尽管上述事件消息中引用了"自动升级"，但 DC 代理软件当前不支持此功能。
 
 ## <a name="proxy-service-event-logging"></a>代理服务事件日志记录
 
@@ -335,7 +335,7 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters
 
 导致状态更改的 PowerShell cmdlet（例如，Register-AzureADPasswordProtectionProxy）通常会将结果事件记录到运行日志中。
 
-此外，大多数 Azure AD 密码保护 PowerShell cmdlet 会写入以下位置的文本日志：
+此外，大多数 Azure AD 密码保护 PowerShell cmdlet 将写入位于以下的文本日志：
 
 `%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
 
@@ -363,7 +363,7 @@ HeartbeatUTC          : 12/25/2018 6:35:02 AM
 
 ## <a name="proxy-agent-newer-version-available"></a>代理更新版本可用
 
-检测到较新版本的代理软件可用时，代理服务会将20002警告事件记录到操作日志中，例如：
+代理服务在检测到代理软件的较新版本可用后，将 20002 警告事件记录到操作日志，例如：
 
 ```text
 An update for Azure AD Password Protection Proxy is available.
@@ -378,9 +378,9 @@ Current version: 1.2.116.0
 .
 ```
 
-上面的事件未指定新版软件的版本。 应该在事件消息中找到该信息的链接。
+上述事件未指定较新版本的版本。 您应该转到事件消息中的链接以获取有关该信息。
 
-即使已将代理程序配置为启用了自动升级，也会发出此事件。
+即使启用了自动升级配置代理，也会发出此事件。
 
 ## <a name="next-steps"></a>后续步骤
 

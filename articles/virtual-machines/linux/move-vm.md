@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 移动 VM
-description: 使用 Azure CLI 将 VM 移到另一个 Azure 订阅或资源组。
+description: 使用 Azure CLI 将 VM 移动到其他 Azure 订阅或资源组。
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
 ms.openlocfilehash: ebcd5f166fd1876f67121787c23d23860c9fa4b6
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944587"
 ---
-# <a name="move-a-vm-to-another-subscription-or-resource-group"></a>将 VM 移到其他订阅或资源组
-本文逐步讲解如何在资源组或订阅之间移动虚拟机（VM）。 如果在个人订阅中创建了 VM，现在想要将其移到公司的订阅，则在订阅之间移动 VM 会很方便。
+# <a name="move-a-vm-to-another-subscription-or-resource-group"></a>将 VM 移动到其他订阅或资源组
+本文将介绍如何在资源组或订阅之间移动虚拟机 （VM）。 如果在个人订阅中创建了 VM，现在想要将其移到公司的订阅，则在订阅之间移动 VM 会很方便。
 
 > [!IMPORTANT]
 >在移动过程中将创建新的资源 ID。 移动 VM 后，需要更新工具和脚本以使用新的资源 ID。
@@ -57,7 +57,7 @@ az resource move \
 
 如果要将 VM 及其资源移到其他订阅，请添加 **--destination-subscriptionId** 参数来指定目标订阅。
 
-系统要求确认是否要移动指定的资源时，请输入“Y”进行确认。
+系统要求确认是否要移动指定的资源时，请输入“Y”进行确认****。
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 

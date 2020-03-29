@@ -1,5 +1,5 @@
 ---
-title: 自动转发 Azure 服务总线消息传送实体
+title: 自动转发 Azure 服务总线消息实体
 description: 本文介绍如何将 Azure 服务总线队列或订阅链接到另一个队列或主题。
 services: service-bus-messaging
 documentationcenter: na
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 8b8883b579233962de61e7247e6ac1cbcb2a6d80
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76761043"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自动转发链接服务总线实体
 
-通过服务总线自动转发功能可将队列或订阅链接到作为相同命名空间组成部分的另一个队列或主题。 启用自动转发时，服务总线会自动删除放置在第一个队列或订阅（源）中的消息，并将其放入第二个队列或主题（目标）中。 仍可将消息直接发送到目标实体。
+通过服务总线自动转发** 功能可将队列或订阅链接到作为相同命名空间组成部分的另一个队列或主题。 启用自动转发时，服务总线会自动删除放置在第一个队列或订阅（源）中的消息，并将其放入第二个队列或主题（目标）中。 仍可将消息直接发送到目标实体。
 
 ## <a name="using-autoforwarding"></a>使用自动转发
 
-可以通过在源的[ForwardTo][QueueDescription]或[QueueDescription][SubscriptionDescription]对象上设置[ForwardTo][QueueDescription.ForwardTo]或[SubscriptionDescription][SubscriptionDescription.ForwardTo]属性来启用自动转发，如下例所示：
+您可以通过设置[队列描述.转发或][QueueDescription.ForwardTo][订阅说明.转发到][SubscriptionDescription.ForwardTo]源[的队列描述][QueueDescription]或[订阅描述][SubscriptionDescription]对象的属性来启用自动转发，如以下示例所示：
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -48,10 +48,10 @@ namespaceManager.CreateSubscription(srcSubscription));
 如果 Alice 处于度假期间，则其个人队列（而不是 ERP）会填满。 此方案中，由于销售代表未接收到任何消息，因此没有任何 ERP 主题会达到配额。
 
 > [!NOTE]
-> 设置自动转发时，**源和目标**上的 AutoDeleteOnIdle 的值自动设置为数据类型的最大值。
+> 设置自动转发时，**源和目标**上的 AutoDeleteOnIdle 值自动设置为数据类型的最大值。
 > 
->   - 在源端，自动转发充当接收操作。 因此，具有自动转发设置的源绝不会真正 "空闲"。
->   - 在目标端，此操作可确保始终有要将消息转发到的目标。
+>   - 在源端，自动转发充当接收操作。 因此，具有自动转发设置的源从未真正“空闲”。
+>   - 在目标端，这样做是为了确保始终有要将消息转发到的目标。
 
 ## <a name="autoforwarding-considerations"></a>自动转发注意事项
 
@@ -61,7 +61,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 服务总线对于每条转发的消息收取一个操作的费用。 例如，将一条消息发送到一个包含 20 个订阅（每个订阅配置为将消息自动转发到另一队列或主题）的主题，如果所有第一级别的订阅都接收到此消息的副本，则会作为 21 次操作进行计费。
 
-若要创建链接到另一个队列或主题的订阅，则订阅创建者必须具有源和目标实体的**管理**权限。 将消息发送到源主题仅需要源主题的**发送**权限。
+要创建链接到其他队列或主题的订阅，订阅的创建者必须同时对源实体和目标实体具有 **"管理**"权限。 将消息发送到源主题仅需要源主题的**发送**权限。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -74,7 +74,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 若要深入了解服务总线性能提升，请参阅 
 
 * [使用服务总线消息传送改进性能的最佳做法](service-bus-performance-improvements.md)
-* [分区消息实体][Partitioned messaging entities]。
+* [分区的消息传递实体][Partitioned messaging entities]。
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
 [SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo

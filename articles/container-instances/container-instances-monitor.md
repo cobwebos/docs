@@ -4,10 +4,10 @@ description: 如何监视 Azure 容器实例中的容器消耗的计算资源，
 ms.topic: article
 ms.date: 04/24/2019
 ms.openlocfilehash: b4a66254c18d7e01b6d56e64e6b62721b620d499
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250030"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>监视 Azure 容器实例中的容器资源
@@ -35,14 +35,14 @@ Azure Monitor 提供下述 [Azure 容器实例指标][supported-metrics]。 这�
 
 ## <a name="get-metrics---azure-portal"></a>获取指标 - Azure 门户
 
-创建容器组时，Azure Monitor 数据在 Azure 门户中可用。 若要查看容器组的指标，请转到容器组的“概览”页。 在这里可以看到为每个可用指标预先创建的图表。
+创建容器组时，Azure Monitor 数据在 Azure 门户中可用。 若要查看容器组的指标，请转到容器组的“概览”页。**** 在这里可以看到为每个可用指标预先创建的图表。
 
 ![双图表][dual-chart]
 
-在包含多个容器的容器组中，使用[维度][monitor-dimension]按容器显示指标。 若要创建包含个体容器指标的图表，请执行以下步骤：
+在包含多个容器的容器组中，请使用[维度][monitor-dimension]来表示容器的指标。 若要创建包含个体容器指标的图表，请执行以下步骤：
 
-1. 在“概览”页中选择一个指标图表，例如“CPU”。 
-1. 选择“应用拆分”按钮，然后选择“容器名称”。
+1. 在“概览”页中选择一个指标图表，例如“CPU”。******** 
+1. 选择“应用拆分”按钮，然后选择“容器名称”****。****
 
 ![维度][dimension]
 
@@ -140,7 +140,7 @@ Timestamp            Name          Containername             Average
 
 从 [Azure 监视概述][azure-monitoring]详细了解 Azure 监视。
 
-了解如何创建[指标警报][metric-alert]，以便在 Azure 容器实例的指标超出阈值时获得通知。
+了解如何创建[指标图表][metric-alert]，在 Azure 容器实例的指标超出阈值时获得通知。
 
 <!-- IMAGES -->
 [cpu-chart]: ./media/container-instances-monitor/cpu-multi.png

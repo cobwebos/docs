@@ -8,10 +8,10 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277647"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>为 Windows 容器部署 Kubernetes 群集
@@ -34,7 +34,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南�
 
 使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 
 
-以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+下面的示例在*东部*位置创建名为*myResourceGroup*的资源组。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-kubernetes-cluster"></a>创建 Kubernetes 群集
 使用 [az acs create](/cli/azure/acs#az-acs-create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 
 
-以下示例创建名为 myK8sCluster 的群集，其中包含一个 Linux 主节点和两个 Windows 代理节点。 此示例创建连接到 Linux 主节点所需的 SSH 密钥。 此示例使用 azureuser 作为管理用户名，使用 myPassword12 作为 Windows 节点上的密码。 更新这些值，使其适用于环境。 
+以下示例创建名为 myK8sCluster** 的群集，其中包含一个 Linux 主节点和两个 Windows 代理节点。 此示例创建连接到 Linux 主节点所需的 SSH 密钥。 此示例使用 azureuser** 作为管理用户名，使用 myPassword12** 作为 Windows 节点上的密码。 更新这些值，使其适用于环境。 
 
 
 
@@ -61,7 +61,7 @@ az acs create --orchestrator-type=kubernetes \
 
 ## <a name="install-kubectl"></a>安装 kubectl
 
-若要从客户端计算机连接到 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)。 
+要从客户端计算机连接到库伯内斯群集，请使用[`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)Kubernetes 命令行客户端。 
 
 如果使用 Azure CloudShell，则 `kubectl` 已安装。 如果想在本地安装，可以使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) 命令。
 
@@ -98,7 +98,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.5.3
 
 ## <a name="deploy-a-windows-iis-container"></a>部署 Windows IIS 容器
 
-可在包含一个或多个容器的 Kubernetes Pod 内运行 Docker 容器。 
+可在包含一个或多个容器的 Kubernetes Pod 内运行 Docker 容器**。 
 
 此基本示例使用 JSON 文件指定 Microsoft Internet Information Server (IIS) 容器，然后使用 `kubctl apply` 命令创建 Pod。 
 

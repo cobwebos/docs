@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric CLI sfctl 网格 secretvalue
-description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于获取和删除 Service Fabric 网格 secretvalue 资源的命令的列表。
+title: Azure 服务结构 CLI-sfctl 网格机密值
+description: 了解 sfctl，Azure 服务结构命令行接口。 包括用于获取和删除服务结构网格机密值资源的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: b2fe3a7995cdd88a8f63d0d865e72e9f161cf9d7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905962"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
@@ -17,7 +17,7 @@ ms.locfileid: "76905962"
 
 ## <a name="commands"></a>命令
 
-|命令|Description|
+|命令|描述|
 | --- | --- |
 | delete | 删除已命名机密资源的指定值。 |
 | list | 列出指定的机密资源的所有值的名称。 |
@@ -28,16 +28,16 @@ ms.locfileid: "76905962"
 
 删除由名称标识的机密值资源。 资源的名称通常是与该值关联的版本。 如果指定的值在使用中，则删除将失败。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --secret-name -n [必需] | 机密资源的名称。 |
 | --version -v     [必需] | 机密版本的名称。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -50,15 +50,15 @@ ms.locfileid: "76905962"
 
 获取指定的机密资源的所有机密值资源的信息。 该信息包括机密值资源的名称，但不包括实际值。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --secret-name -n [必需] | 机密资源的名称。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -69,9 +69,9 @@ ms.locfileid: "76905962"
 ## <a name="sfctl-mesh-secretvalue-show"></a>sfctl mesh secretvalue show
 列出机密资源的指定值。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --secret-name -n [必需] | 机密资源的名称。 |
 | --version -v     [必需] | 机密版本的名称。 |
@@ -79,7 +79,7 @@ ms.locfileid: "76905962"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -89,5 +89,5 @@ ms.locfileid: "76905962"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [安装](service-fabric-cli.md) Service Fabric CLI。
+- [设置](service-fabric-cli.md)服务结构 CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

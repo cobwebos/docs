@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
 ms.openlocfilehash: b1e1402f58b103570d6a98a5f9a01c8168abf749
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77912354"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>了解 Azure 安全中心容器建议
@@ -35,14 +35,14 @@ Azure 安全中心提供以下功能来帮助保护容器：
 
     ![容器选项卡](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **实时容器威胁防护**<br> 安全中心通过审核组件为 Linux 计算机上的容器提供实时威胁保护。 警报中会指明多种可疑的 Docker 活动，例如，在主机上创建特权容器、指示安全外壳 (SSH) 服务器在 Docker 容器中运行，或使用加密货币采矿程序。 可以使用此信息快速补救安全问题，并提高容器的安全性。
+- **实时容器威胁保护**<br> 安全中心为具有 AuditD 组件的 Linux 计算机上容器提供实时威胁保护。 警报中会指明多种可疑的 Docker 活动，例如，在主机上创建特权容器、指示安全外壳 (SSH) 服务器在 Docker 容器中运行，或使用加密货币采矿程序。 可以使用此信息快速补救安全问题，并提高容器的安全性。
 
     ![容器选项卡](./media/security-center-container-recommendations/docker-threat-detection.png)
 
 ## <a name="recommendations"></a>建议
 使用下表作为参考，帮助了解 IaaS Linux 计算机上托管的可用容器以及 Docker 配置的安全性评估。
 
-| 建议 | 说明 | 补救 |
+| 建议 | 描述 | 补救 |
 | --- | --- | --- |
 |修复容器安全配置中的漏洞 |根据配置的最佳做法修复容器安全配置中的漏洞。| 修复容器安全配置中的漏洞：<br>1. 查看失败规则的列表。<br>2. 根据指定的说明修复每个规则。|
 
@@ -57,5 +57,5 @@ Azure 安全中心提供以下功能来帮助保护容器：
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)
-* [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
-* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
+* [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)-- 了解如何为 Azure 订阅和资源组配置安全策略。
+* [管理和响应 Azure 安全中心中的安全警报](security-center-managing-and-responding-alerts.md)-- 了解如何管理和响应安全警报。

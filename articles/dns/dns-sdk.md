@@ -1,7 +1,7 @@
 ---
 title: 使用 .NET SDK 创建 DNS 区域和记录集
 titleSuffix: Azure DNS
-description: 在此学习路径中，开始使用 .NET SDK 在 Azure DNS 中创建 DNS 区域和记录集。
+description: 在此学习路径中，使用 .NET SDK 开始在 Azure DNS 中创建 DNS 区域和记录集。
 services: dns
 documentationcenter: na
 author: rohinkoul
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
 ms.openlocfilehash: c497209e456ff838786edaa19e46ebc5c1858d5f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938858"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>使用 .NET SDK 创建 DNS 区域和记录集
@@ -43,8 +43,8 @@ ms.locfileid: "76938858"
 若要使用 Azure DNS .NET SDK，需要安装 **Azure DNS 管理库** NuGet 包和其他所需的 Azure 包。
 
 1. 在 **Visual Studio** 中，打开项目或新的项目。
-2. 请 **>** **NuGet 包管理器**"中的"**工具**" **>** **管理解决方案的 NuGet 包**..."。
-3. 单击“浏览”，启用“包括预发行版”复选框，并在搜索框中键入 **Microsoft.Azure.Management.Dns**。
+2. 转到**工具****>** **NuGet 包管理器****>****管理 NuGet 包的解决方案...**
+3. 单击“浏览”****，启用“包括预发行版”**** 复选框，并在搜索框中键入 **Microsoft.Azure.Management.Dns**。
 4. 选择此包，然后单击“**安装**”将其添加到 Visual Studio 项目中。
 5. 重复以上过程，还能安装以下包：**Microsoft.Rest.ClientRuntime.Azure.Authentication** 和 **Microsoft.Azure.Management.ResourceManager**。
 
@@ -146,7 +146,7 @@ recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zo
 
 ## <a name="list-zones-and-record-sets"></a>列出区域和记录集
 
-若要列出区域，请使用*DnsManagementClient* ... 方法，该方法支持列出给定资源组中的所有区域或给定 Azure 订阅中的所有区域（跨资源组）。若要列出记录集，请使用*DnsManagementClient* ... 方法，该方法支持列出给定区域中的所有记录集或仅列出特定类型的记录集。
+要列出区域，请使用*DnsManagementClient.Zones.list...* 要列出记录集，请使用*DnsManagementClient.RecordSet.list...*
 
 请注意，列出区域和记录集时，可能会对结果进行分页。  下面的示例演示如何循环访问各页结果。 （人为减小的‘2’页面大小用于强制分页；在实践中，应省略此参数并使用默认页面大小。）
 

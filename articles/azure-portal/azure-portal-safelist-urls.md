@@ -1,6 +1,6 @@
 ---
-title: 请在防火墙或代理服务器上为 Azure 门户 Url 启用安全
-description: 将这些 Url 添加到代理服务器旁路，以与 Azure 门户及其服务进行通信
+title: 在防火墙或代理服务器上将 Azure 门户 URL 加入安全列表
+description: 将这些 URL 添加到代理服务器旁路，以便与 Azure 门户及其服务通信
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -10,23 +10,23 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900660"
 ---
-# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>请在防火墙或代理服务器上为 Azure 门户 Url 启用安全
+# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>在防火墙或代理服务器上将 Azure 门户 URL 加入安全列表
 
-可以配置本地安全设备，绕过 Azure 门户 Url 的安全限制。 此配置可以提高本地网络或广域网络与 Azure 云之间的性能和连接性。
+可以配置本地安全设备，绕过针对 Azure 门户 URL 的安全限制。 此配置可以改进局域网或广域网和 Azure 云之间的性能和连接性。
 
-网络管理员通常会部署代理服务器、防火墙或其他设备。 这些设备有助于保护并控制用户访问 internet 的方式。 旨在保护用户的规则有时会阻止或减慢与合法业务相关的 internet 流量。 此流量包括你和 Azure 之间的通信。 若要优化网络与 Azure 门户及其服务之间的连接，建议将 Azure 门户 Url 添加到安全安全的安全服务。
+网络管理员经常会部署代理服务器、防火墙或其他设备。 这些设备有助于确保用户访问 Internet 时的安全性并控制其访问方式。 旨在保护用户的规则有时候可能会阻止合法的与业务相关的 Internet 流量或降低其速度。 该流量包括你与 Azure 之间的通信。 为了优化你的网络与 Azure 门户及其服务之间的连接，建议将 Azure 门户 URL 添加到安全列表。
 
-## <a name="azure-portal-urls-for-proxy-bypass"></a>代理绕过 Azure 门户 Url
+## <a name="azure-portal-urls-for-proxy-bypass"></a>用于跳过代理的 Azure 门户 URL
 
-要 Azure 门户的安全领域的 URL 终结点特定于部署组织的 Azure 云。 若要允许这些终结点的网络流量绕过限制，请选择云。 然后，将 Url 列表添加到代理服务器或防火墙。
+Azure 门户的安全列表的 URL 终结点特定于部署组织时所在的 Azure 云。 若要让发往这些终结点的网络流量绕过限制，请选择你的云。 然后，将 URL 列表添加到代理服务器或防火墙。
 
-#### <a name="public-cloudtabpublic-cloud"></a>[公有云](#tab/public-cloud)
+#### <a name="public-cloud"></a>[公共云](#tab/public-cloud)
 
 ```
 *.aadcdn.microsoftonline-p.com
@@ -50,7 +50,7 @@ ms.locfileid: "76900660"
 *.windows-int.net
 ```
 
-#### <a name="us-government-cloudtabus-government-cloud"></a>[美国政府云](#tab/us-government-cloud)
+#### <a name="us-government-cloud"></a>[美国政府云](#tab/us-government-cloud)
 
 ```
 *.azure.us
@@ -63,7 +63,7 @@ ms.locfileid: "76900660"
 *.windowsazure.us
 ```
 
-#### <a name="china-government-cloudtabchina-government-cloud"></a>[中国政府云](#tab/china-government-cloud)
+#### <a name="china-government-cloud"></a>[中国政府云](#tab/china-government-cloud)
 
 ```
 *.azure.cn
@@ -77,16 +77,16 @@ ms.locfileid: "76900660"
 ---
 
 > [!NOTE]
-> 到这些终结点的流量对 HTTP （80）和 HTTPS （443）使用标准 TCP 端口。
+> 发往这些终结点的流量使用标准的 TCP 端口：80 (HTTP) 和 443 (HTTPS)。
 >
 >
 ## <a name="next-steps"></a>后续步骤
 
-需要为 IP 地址创建安全代码？ 下载适用于你的云的 Microsoft Azure 数据中心 IP 范围的列表：
+需要将 IP 地址加入安全列表？ 下载适合你的云的 Microsoft Azure 数据中心 IP 范围的列表：
 
-* [范围](https://www.microsoft.com/download/details.aspx?id=56519)
+* [全球](https://www.microsoft.com/download/details.aspx?id=56519)
 * [美国政府](https://www.microsoft.com/download/details.aspx?id=57063)
 * [德国](https://www.microsoft.com/download/details.aspx?id=57064)
 * [中国](https://www.microsoft.com/download/details.aspx?id=57062)
 
-其他 Microsoft 服务使用其他 Url 和 IP 地址进行连接。 若要优化 Microsoft 365 services 的网络连接，请参阅为[Office 365 设置网络](/office365/enterprise/set-up-network-for-office-365)。
+其他 Microsoft 服务使用其他 URL 和 IP 地址进行连接。 若要优化 Microsoft 365 服务的网络连接，请参阅[为 Office 365 设置网络](/office365/enterprise/set-up-network-for-office-365)。

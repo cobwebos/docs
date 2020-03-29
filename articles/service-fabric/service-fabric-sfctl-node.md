@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric sfctl 节点
-description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理群集节点的命令的列表。
+title: Azure Service Fabric CLI - sfctl node
+description: 了解 sfctl，Azure 服务结构命令行接口。 包括用于管理群集节点的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 5881e6485003abd4fd23a7f6d06a428e768c00fa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905873"
 ---
 # <a name="sfctl-node"></a>sfctl node
@@ -17,40 +17,40 @@ ms.locfileid: "76905873"
 
 ## <a name="commands"></a>命令
 
-|命令|Description|
+|命令|描述|
 | --- | --- |
-| 添加-配置-参数-替代 | 将配置重写的列表添加到指定的节点上。 |
+| 附加配置参数覆盖 | 在指定的节点上添加配置覆盖的列表。 |
 | disable | 根据指定的停用意图停用 Service Fabric 群集节点。 |
 | enable | 激活当前已停用的 Service Fabric 群集节点。 |
-| 接收方配置-替代 | 获取指定节点上的配置重写的列表。 |
-| 健康 | 获取 Service Fabric 节点的运行状况。 |
+| 获取配置覆盖 | 获取指定节点上的配置覆盖列表。 |
+| health | 获取 Service Fabric 节点的运行状况。 |
 | info | 获取有关 Service Fabric 群集中特定节点的信息。 |
 | list | 获取 Service Fabric 群集中的节点的列表。 |
 | load | 获取 Service Fabric 节点的负载信息。 |
-| 删除-配置-替代 | 删除指定节点上的配置重写。 |
+| 删除配置覆盖 | 删除指定节点上的配置覆盖。 |
 | remove-state | 告知 Service Fabric，节点上的保留状态已被永久删除或丢失。 |
 | report-health | 发送有关 Service Fabric 节点的运行状况报告。 |
 | restart | 重启 Service Fabric 群集节点。 |
 | transition | 启动或停止群集节点。 |
 | transition-status | 获取使用 StartNodeTransition 启动的操作的进度。 |
 
-## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl 节点添加配置-参数-替代
-将配置重写的列表添加到指定的节点上。
+## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl 节点附加配置参数覆盖
+在指定的节点上添加配置覆盖的列表。
 
-此 api 允许在指定的节点上添加所有现有的配置重写。
+此 api 允许在指定的节点上添加所有现有配置覆盖。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
-| --config-参数-override [必需] | 添加配置替代列表的说明。 |
-| --node-name [必需] | 节点的名称。 |
-| --force | 在指定节点上强制添加配置重写。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --配置参数覆盖列表 [必需] | 用于添加配置覆盖列表的说明。 |
+| --节点名称 [必需] | 节点的名称。 |
+| --force | 强制添加配置覆盖指定节点。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -63,17 +63,17 @@ ms.locfileid: "76905873"
 
 根据指定的停用意图停用 Service Fabric 群集节点。 在停用的过程中，可以提高而不能降低停用意图（例如，根据 Pause 意图停用的节点可以进一步根据 Restart 停用，但反过来不行）。 停用节点后，随时可以使用“激活节点”操作将其重新激活。 如果停用操作未完成，则会取消停用。 在已关闭并在停用状态下恢复启动的节点上放置服务之前，仍需重新激活该节点，
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name [必需] | 节点的名称。 |
 | --deactivation-intent | 描述停用节点的意图或原因。 可能的值如下。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -86,16 +86,16 @@ ms.locfileid: "76905873"
 
 激活当前已停用的 Service Fabric 群集节点。 激活后，该节点再次成为可放置新副本的有效目标，该节点上剩余的所有已停用副本会重新激活。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name [必需] | 节点的名称。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -103,21 +103,21 @@ ms.locfileid: "76905873"
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
-## <a name="sfctl-node-get-configuration-overrides"></a>sfctl 节点 get-configuration-overrides
-获取指定节点上的配置重写的列表。
+## <a name="sfctl-node-get-configuration-overrides"></a>sfctl 节点获取配置覆盖
+获取指定节点上的配置覆盖列表。
 
-此 api 允许获取指定节点上的所有现有配置重写。
+此 api 允许在指定的节点上获取所有现有配置覆盖。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name [必需] | 节点的名称。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -130,17 +130,17 @@ ms.locfileid: "76905873"
 
 获取 Service Fabric 节点的运行状况。 使用 EventsHealthStateFilter 可以根据运行状态筛选针对节点报告的运行状况事件的集合。 如果按名称指定的节点不在运行状况存储中，则会返回错误。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name       [必需] | 节点的名称。 |
 | --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -153,16 +153,16 @@ ms.locfileid: "76905873"
 
 响应包括有关节点的名称、状态、ID、运行状况、运行时间和其他详细信息。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name [必需] | 节点的名称。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -175,18 +175,18 @@ ms.locfileid: "76905873"
 
 响应包括有关节点的名称、状态、ID、运行状况、运行时间和其他详细信息。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --max-results | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。 |
 | --node-status-filter | 用于根据 NodeStatus 筛选节点。 仅返回与指定的筛选器值匹配的节点。 筛选器值可以是下列项之一。  默认值\: default。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -199,16 +199,16 @@ ms.locfileid: "76905873"
 
 在 Service Fabric 节点的负载信息中检索已定义负载或容量的所有指标。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name [必需] | 节点的名称。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -216,21 +216,21 @@ ms.locfileid: "76905873"
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
 | --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
-## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl 节点删除-配置-替代
-删除指定节点上的配置重写。
+## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl 节点删除配置覆盖
+删除指定节点上的配置覆盖。
 
-此 api 允许删除指定节点上的所有现有配置替代。
+此 api 允许删除指定节点上的所有现有配置覆盖。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name [必需] | 节点的名称。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -241,18 +241,18 @@ ms.locfileid: "76905873"
 ## <a name="sfctl-node-remove-state"></a>sfctl node remove-state
 告知 Service Fabric，节点上的保留状态已被永久删除或丢失。
 
-这意味着无法恢复该节点的保留状态。 如果硬盘已擦除干净或者硬盘崩溃，通常会出现这种情况。 节点必须已关闭，此操作才能成功。 此操作让 Service Fabric 知道该节点上的副本不再存在，并且 Service Fabric 应停止等待这些副本恢复。 如果未删除节点上的状态并且节点能够以原状态恢复，则不要运行此 cmdlet。 从 Service Fabric 6.5 开始，为了将此 API 用于种子节点，请将种子节点更改为常规（非种子）节点，然后调用此 API 以删除节点状态。 如果在 Azure 上运行群集，则在种子节点出现故障后，Service Fabric 将尝试自动将其更改为非种子节点。 若要进行此操作，请确保主节点类型中的非种子节点数量不小于向下种子节点数。 如有必要，请将更多节点添加到主节点类型以实现此目的。 对于独立群集，如果不希望向下 seed 节点的状态保持不变，请从群集中删除节点，请参阅 https\://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes。
+这意味着无法恢复该节点的保留状态。 如果硬盘已擦除干净或者硬盘崩溃，通常会出现这种情况。 节点必须已关闭，此操作才能成功。 此操作让 Service Fabric 知道该节点上的副本不再存在，并且 Service Fabric 应停止等待这些副本恢复。 如果未删除节点上的状态并且节点能够以原状态恢复，则不要运行此 cmdlet。 自 Service Fabric 6.5 起，若要将此 API 用于种子节点，请将这些种子节点更改为常规节点（非种子节点），然后调用此 API 以删除节点状态。 如果群集正在 Azure 上运行，当种子节点发生故障后，Service Fabric 将尝试自动将其更改为非种子节点。 若要实现这一点，请确保主节点类型中的非种子节点数不少于“发生故障”的种子节点数。 如果需要，请将更多节点添加到主节点类型以实现这一目标。 对于独立群集，如果"向下"种子节点不能完整地恢复其状态，请从群集中删除该节点，请参阅 https\:/docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name [必需] | 节点的名称。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -265,9 +265,9 @@ ms.locfileid: "76905873"
 
 报告指定的 Service Fabric 节点的运行状况状态。 该报告必须包含有关运行状况报告及其所报告属性的源的信息。 该报告将发送到 Service Fabric 网关节点，后者会将其转发到运行状况存储。 该报告可能被网关接受但被运行状况存储在执行额外的验证后拒绝。 例如，运行状况存储可能会由于无效的参数（如过时的序列号）而拒绝该报告。 若要了解该报告是否已应用于运行状况存储中，请检查该报告是否显示在 HealthEvents 部分中。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --health-property [必需] | 运行状况信息的属性。 <br><br> 一个实体可以有不同属性的运行状况报告。 该属性是一个字符串，不是固定的枚举，因此可使报告器灵活地对触发报告的状态条件进行分类。 例如，SourceId 为“LocalWatchdog”的报告器可以监视节点上的可用磁盘的状态，因此它可以报告该节点的“AvailableDisk”属性。 同一报告器可以监视节点连接，因此它可以报告同一节点的“Connectivity”属性。 在运行状况存储中，这些报告均被视为指定节点的单独运行状况事件。 与 SourceId 一起，该属性唯一地标识运行状况信息。 |
 | --health-state    [必需] | 可能的值包括\:“Invalid”、“Ok”、“Warning”、“Error”、“Unknown”。 |
@@ -282,7 +282,7 @@ ms.locfileid: "76905873"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -295,18 +295,18 @@ ms.locfileid: "76905873"
 
 重启已启动的 Service Fabric 群集节点。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name [必需] | 节点的名称。 |
 | --create-fabric-dump | 指定 True 会创建结构节点进程的转储。 此参数区分大小写。  默认值\: false |
 | --node-instance-id | 目标节点的实例 ID。 如果指定了实例 ID，则仅当该 ID 与节点的当前实例匹配时，才重启该节点。 默认值“0”会匹配任何实例 ID。 可以使用 get node 查询获取实例 ID。  默认值\: 0。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -319,20 +319,20 @@ ms.locfileid: "76905873"
 
 启动或停止群集节点。  群集节点是一个进程，而不是 OS 实例本身。  若要启动节点，请为 NodeTransitionType 参数传入“Start”。 若要停止节点，请为 NodeTransitionType 参数传入“Stop”。 此 API 启动操作 - API 返回时，节点可能尚未完成转换。 结合相同的 OperationId 调用 GetNodeTransitionProgress 可获取操作进度。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-instance-id         [必需] | 目标节点的节点实例 ID。 可通过 GetNodeInfo API 确定此信息。 |
 | --node-name                [必需] | 节点的名称。 |
 | --node-transition-type     [必需] | 指示要执行的转换类型。  NodeTransitionType.Start 将启动已停止的节点。 NodeTransitionType.Stop 将停止已启动的节点。 |
 | --operation-id             [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
 | --stop-duration-in-seconds [必需] | 使节点保持停止状态的持续时间，以秒为单位。  最小值为 600，最大值为 14400。  此时间过后，节点将自动恢复启动状态。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -345,17 +345,17 @@ ms.locfileid: "76905873"
 
 使用提供的 OperationId 获取通过 StartNodeTransition 启动的操作的进度。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name    [必需] | 节点的名称。 |
 | --operation-id [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |

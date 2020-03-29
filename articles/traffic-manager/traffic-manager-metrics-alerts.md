@@ -1,6 +1,6 @@
 ---
 title: Azure 流量管理器中的指标和警报
-description: 本文介绍适用于 Azure 中的流量管理器的指标和警报。
+description: 在本文中，了解 Azure 中可用于流量管理器的指标和警报。
 services: traffic-manager
 author: rohinkoul
 ms.service: traffic-manager
@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: rohink
 ms.openlocfilehash: 521e6ac605d187c0f95545611a17a86cfda6e1dd
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938582"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>流量管理器指标和警报
@@ -43,10 +43,10 @@ ms.locfileid: "76938582"
 
 ## <a name="endpoint-status-by-endpoint"></a>按终结点显示的终结点状态
 使用[此指标](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles)可以了解配置文件中的终结点的运行状况状态。 它采用两个值：
- - 如果终结点正常运行，则使用 1。
+ - 如果终结点正常运行，则使用 1****。
  - 如果终结点发生故障，则使用 **0**。
 
-此指标可以显示为聚合值，表示所有指标的状态（图 3），也可以拆分（参见图 4）来显示特定终结点的状态。 如果为前者，聚合级别选择为“平均值”时，此指标的值是所有终结点的状态的算术平均值。 例如，如果某个配置文件具有两个终结点并且只有一个终结点正常，则此指标的值将是 0.50，如图 3 所示。 
+此指标可以显示为聚合值，表示所有指标的状态（图 3），也可以拆分（参见图 4）来显示特定终结点的状态。 如果为前者，聚合级别选择为“平均值”时，此指标的值是所有终结点的状态的算术平均值****。 例如，如果某个配置文件具有两个终结点并且只有一个终结点正常，则此指标的值将是 0.50，如图 3 所示****。 
 
 
 ![流量管理器指标 - 终结点状态的复合视图](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)

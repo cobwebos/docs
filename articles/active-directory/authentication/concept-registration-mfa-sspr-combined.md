@@ -1,5 +1,5 @@
 ---
-title: SSPR 和 MFA 的组合注册-Azure Active Directory
+title: SSPR 和 MFA 的组合注册 - Azure Active Directory
 description: Azure AD 多重身份验证和自助服务密码重置注册（预览版）
 services: active-directory
 ms.service: active-directory
@@ -12,45 +12,45 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942894"
 ---
 # <a name="combined-security-information-registration-preview"></a>组合安全信息注册（预览）
 
-在组合注册之前，用户单独注册了 Azure 多重身份验证和自助服务密码重置（SSPR）的身份验证方法。 人们搞糊涂，使用了类似的方法进行多重身份验证和 SSPR，但他们不得不注册这两种功能。 现在，通过组合注册，用户可以注册一次，并获得多重身份验证和 SSPR 的优势。
+在合并注册之前，用户分别注册了 Azure 多重身份验证和自助服务密码重置 （SSPR） 的身份验证方法。 人们感到困惑的是，类似的方法被用于多重身份验证和SSPR，但他们必须注册这两个功能。 现在，通过合并注册，用户可以注册一次，并获得多重身份验证和 SSPR 的优势。
 
-![我的配置文件显示用户的已注册安全信息](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![显示用户已注册安全信息的我的个人资料](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
-在启用新体验之前，请查看此以管理员为中心的文档和以用户为中心的文档，以确保你了解此功能的功能和效果。 根据[用户文档](../user-help/user-help-security-info-overview.md)的培训，为用户准备新体验，并帮助确保成功部署。
+在启用新体验之前，请查看此以管理员为中心的文档和以用户为中心的文档，以确保您了解此功能的功能和效果。 基于[用户文档](../user-help/user-help-security-info-overview.md)进行培训，为用户准备新体验，并帮助确保成功推出。
 
-Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美国政府版、Azure 德国或 Azure 中国世纪互联。
+Azure AD 组合安全信息注册目前不适用于 Azure 美国政府、Azure 德国或 Azure 中国 21Vianet 等国家云。
 
 |     |
 | --- |
-| 多重身份验证和 Azure Active Directory （Azure AD）自助服务密码重置的组合安全信息注册是 Azure AD 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
+| 多重身份验证和 Azure 活动目录 （Azure AD） 自助服务密码重置的组合安全信息注册是 Azure AD 的公共预览功能。 有关预览的详细信息，请参阅 Microsoft [Azure 预览的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 > [!IMPORTANT]
-> 同时启用了原始预览和增强组合注册体验的用户将看到新的行为。 同时启用这两种体验的用户只会看到新的 "我的个人资料" 体验。 新的 "我的个人资料" 与组合注册的外观一致，并为用户提供无缝体验。 用户可以通过转到[https://myprofile.microsoft.com](https://myprofile.microsoft.com)查看我的配置文件。
+> 启用原始预览和增强组合注册体验的用户将看到新行为。 启用两种体验的用户将仅看到新的"我的配置文件"体验。 新的"我的个人资料"与合并注册的外观保持一致，为用户提供无缝体验。 用户可以通过访问[https://myprofile.microsoft.com](https://myprofile.microsoft.com)查看我的个人资料。
 
 > [!NOTE] 
-> 尝试访问 "安全信息" 选项时，可能会遇到错误消息。 例如，"抱歉，我们无法登录"。 在这种情况下，请确认在 web 浏览器中没有任何配置或组策略对象阻止第三方 cookie。 
+> 在尝试访问安全信息选项时，可能会遇到错误消息。 例如，"对不起，我们无法登录"。 在这种情况下，请确认您没有任何阻止 Web 浏览器上第三方 Cookie 的配置或组策略对象。 
 
-根据访问页面的计算机的语言设置对配置文件页面进行本地化。 Microsoft 存储了浏览器缓存中使用的最新语言，因此后续尝试访问页面的操作将以最后使用的语言呈现。 如果清除缓存，则页面将重新呈现。 如果要强制使用特定语言，则可以将 `?lng=<language>` 添加到 URL 的末尾，其中 `<language>` 是要呈现的语言的代码。
+我的"配置文件"页面根据访问该页面的计算机的语言设置进行本地化。 Microsoft 存储浏览器缓存中使用的最新语言，因此后续访问页面的尝试将继续以使用的最后一种语言呈现。 如果清除缓存，页面将重新呈现。 如果要强制特定语言，可以添加到`?lng=<language>`URL 的末尾，其中要呈现的语言的代码。 `<language>`
 
 ![设置 SSPR 或其他安全验证方法](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
-## <a name="methods-available-in-combined-registration"></a>组合注册中的可用方法
+## <a name="methods-available-in-combined-registration"></a>组合注册中可用的方法
 
 组合注册支持以下身份验证方法和操作：
 
 |   | 注册 | 更改 | 删除 |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | 是（最多5个） | 否 | 是 |
-| 其他验证器应用 | 是（最多5个） | 否 | 是 |
+| Microsoft Authenticator | 是（最多 5 个） | 否 | 是 |
+| 其他验证器应用 | 是（最多 5 个） | 否 | 是 |
 | 硬件令牌 | 否 | 否 | 是 |
 | 电话 | 是 | 是 | 是 |
 | 备用号码 | 是 | 是 | 是 |
@@ -58,62 +58,62 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 | 电子邮件 | 是 | 是 | 是 |
 | 安全提问 | 是 | 否 | 是 |
 | 应用密码 | 是 | 否 | 是 |
-| FIDO2 安全密钥<br />*托管模式，仅从 "[安全信息](https://mysignins.microsoft.com/security-info)" 页*| 是 | 是 | 是 |
+| FIDO2 安全密钥<br />*仅从[安全信息](https://mysignins.microsoft.com/security-info)页面进行托管模式*| 是 | 是 | 是 |
 
 > [!NOTE]
-> 应用密码仅适用于已强制执行多重身份验证的用户。 对于通过条件性访问策略启用多重身份验证的用户，不能使用应用密码。
+> 应用密码仅适用于已强制实施多重身份验证的用户。 应用密码对于通过条件访问策略启用多重身份验证的用户不可用。
 
-用户可以将以下选项之一设置为默认多重身份验证方法：
+用户可以将以下选项之一设置为默认的多重身份验证方法：
 
-- Microsoft Authenticator –通知。
-- 验证器应用或硬件令牌-代码。
-- 电话呼叫。
+- 微软身份验证器 – 通知。
+- 身份验证器应用或硬件令牌 + 代码。
+- 电话。
 - 短信。
 
-由于我们继续将更多的身份验证方法添加到 Azure AD，因此这些方法将在组合注册中可用。
+随着我们继续向 Azure AD 添加更多身份验证方法，这些方法将在合并注册中可用。
 
 ## <a name="combined-registration-modes"></a>组合注册模式
 
-组合注册分为两种模式：中断和管理。
+合并注册有两种模式：中断和管理。
 
-- **中断模式**是一种类似于向导的体验，当用户在登录时注册或刷新其安全信息时，它会向用户提供。
+- **中断模式**是类似于向导的体验，在用户注册或刷新登录时呈现给用户。
 
 - **管理模式**是用户配置文件的一部分，允许用户管理其安全信息。
 
-对于这两种模式，先前注册了可用于多重身份验证的方法的用户需要先执行多重身份验证，然后才能访问其安全信息。
+对于这两种模式，以前注册了可用于多重身份验证的方法的用户在访问其安全信息之前需要执行多重身份验证。
 
 ### <a name="interrupt-mode"></a>中断模式
 
-如果同时为你的租户启用了多因素身份验证和 SSPR 策略，则组合注册会考虑这两个策略。 这些策略控制在登录期间用户是否被中断以便注册，以及哪些方法可用于注册。
+如果为租户启用了两种策略，则合并注册同时尊重多重身份验证和 SSPR 策略。 这些策略控制用户在登录期间是否中断注册，以及哪些方法可用于注册。
 
-在以下几种情况下，系统可能会提示用户注册或刷新其安全信息：
+以下是可能提示用户注册或刷新其安全信息的几个方案：
 
-- 通过 Identity Protection 强制实施多重身份验证注册：要求用户在登录时注册。 它们将注册多重身份验证方法和 SSPR 方法（如果为 SSPR 启用了用户）。
-- 通过每用户多重身份验证强制实施多重身份验证注册：用户需要在登录时注册。 它们将注册多重身份验证方法和 SSPR 方法（如果为 SSPR 启用了用户）。
-- 通过条件访问或其他策略强制实施多重身份验证注册：在用户使用需要多重身份验证的资源时要求用户进行注册。 它们将注册多重身份验证方法和 SSPR 方法（如果为 SSPR 启用了用户）。
-- 强制 SSPR 注册：用户需要在登录时注册。 它们只注册 SSPR 方法。
-- 强制执行 SSPR 刷新：用户需要在管理员设置的时间间隔内检查其安全信息。用户显示其信息，并可以确认当前信息，或在需要时进行更改。
+- 通过身份保护强制注册的多重身份验证注册：在登录期间要求用户注册。 它们注册多重身份验证方法和 SSPR 方法（如果用户启用了 SSPR）。
+- 通过每个用户多重身份验证强制进行多重身份验证注册：在登录期间要求用户注册。 它们注册多重身份验证方法和 SSPR 方法（如果用户启用了 SSPR）。
+- 通过条件访问或其他策略强制进行多重身份验证注册：当用户使用需要多重身份验证的资源时，系统将被要求进行注册。 它们注册多重身份验证方法和 SSPR 方法（如果用户启用了 SSPR）。
+- 实施 SSPR 注册：要求用户在登录期间注册。 它们仅注册 SSPR 方法。
+- 实施 SSPR 刷新：用户需要按管理员设置的时间间隔查看其安全信息。用户会显示其信息，并可以确认当前信息或根据需要进行更改。
 
-强制执行注册后，用户会看到所需的最小方法数必须符合多重身份验证和 SSPR 策略（从最高到最安全）。
+强制执行注册时，将显示用户从大多数到最低安全点，以符合多重身份验证和 SSPR 策略所需的最少方法数。
 
 例如：
 
-- 已为 SSPR 启用用户。 SSPR 策略需要两种方法来重置和启用移动应用代码、电子邮件和手机。
-   - 此用户需要注册两个方法。
-      - 默认情况下，用户显示为 "身份验证器应用和电话"。
-      - 用户可以选择注册电子邮件，而不是验证身份验证应用或电话。
+- 为 SSPR 启用了用户。 SSPR 策略需要两种方法来重置，并启用了移动应用代码、电子邮件和电话。
+   - 此用户需要注册两种方法。
+      - 默认情况下，用户将显示身份验证器应用和手机。
+      - 用户可以选择注册电子邮件，而不是验证器应用或电话。
 
-此流程图介绍了在登录期间中断注册时向用户显示的方法：
+此流程图描述在登录期间中断注册时向用户显示哪些方法：
 
 ![组合安全信息流程图](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
 
-如果同时启用了多重身份验证和 SSPR，我们建议强制实施多重身份验证注册。
+如果同时启用了多重身份验证和 SSPR，我们建议您强制实施多重身份验证注册。
 
-如果 SSPR 策略要求用户定期检查其安全信息，则用户会在登录期间中断，并显示其所有注册方法。 如果是最新的，他们可以确认当前信息，如果需要，也可以进行更改。 访问此页时，用户必须执行多重身份验证。
+如果 SSPR 策略要求用户定期查看其安全信息，则用户在登录过程中会中断并显示其所有注册方法。 如果当前信息是最新的，他们可以确认当前信息，也可以在需要时进行更改。 用户在访问此页面时必须执行多重身份验证。
 
 ### <a name="manage-mode"></a>管理模式
 
-用户可以通过转到[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)或从 "我的配置文件" 中选择 "**安全信息**" 来访问 "管理" 模式。 用户可以在该处添加方法、删除或更改现有方法、更改默认方法等。
+用户可以通过访问[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)或从"我的个人资料"中选择**安全信息**来访问管理模式。 从那里，用户可以添加方法、删除或更改现有方法、更改默认方法等。
 
 ## <a name="key-usage-scenarios"></a>关键使用方案
 
@@ -121,31 +121,31 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 
 管理员已强制执行注册。
 
-用户尚未设置所有所需的安全信息，并转到 Azure 门户。 输入用户名和密码后，系统会提示用户设置安全信息。 然后，用户按照向导中显示的步骤来设置所需的安全信息。 如果设置允许，则用户可以选择设置默认情况下显示的其他方法。 完成向导后，用户将查看他们设置的方法及其用于多重身份验证的默认方法。 若要完成安装过程，用户需要确认信息并继续 Azure 门户。
+用户尚未设置所有必需的安全信息并转到 Azure 门户。 输入用户名和密码后，系统会提示用户设置安全信息。 然后，用户按照向导中显示的步骤设置所需的安全信息。 如果您的设置允许，用户可以选择设置默认显示的方法以外的方法。 完成向导后，用户将查看他们设置的方法及其用于多重身份验证的默认方法。 要完成安装过程，用户将确认信息并继续访问 Azure 门户。
 
-### <a name="set-up-security-info-from-my-profile"></a>从 "我的配置文件" 设置安全信息
+### <a name="set-up-security-info-from-my-profile"></a>从"我的个人资料"设置安全信息
 
 管理员尚未强制执行注册。
 
-尚未设置所有必需的安全信息的用户会转到[https://myprofile.microsoft.com](https://myprofile.microsoft.com)。 用户在左窗格中选择 "**安全信息**"。 用户从此处选择添加方法，选择可用的任何方法，然后按照步骤设置该方法。 完成后，用户会看到刚在 "安全信息" 页上设置的方法。
+尚未设置所有必需的安全信息的用户将转到[https://myprofile.microsoft.com](https://myprofile.microsoft.com)。 用户选择左侧窗格中**的安全信息**。 从那里，用户选择添加方法，选择任何可用的方法，并按照步骤设置该方法。 完成后，用户将看到刚刚在"安全信息"页上设置的方法。
 
-### <a name="delete-security-info-from-my-profile"></a>从我的配置文件中删除安全信息
+### <a name="delete-security-info-from-my-profile"></a>从"我的个人资料"中删除安全信息
 
-以前设置了至少一个方法的用户将导航到[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)。 用户选择删除以前注册的方法之一。 完成后，用户将不再在 "安全信息" 页上看到该方法。
+以前至少设置一个方法的用户将导航到[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)。 用户选择删除以前注册的方法之一。 完成后，用户不再在"安全信息"页上看到该方法。
 
-### <a name="change-the-default-method-from-my-profile"></a>更改我的配置文件中的默认方法
+### <a name="change-the-default-method-from-my-profile"></a>从"我的配置文件"更改默认方法
 
-以前设置了至少一个可用于多重身份验证的方法的用户将导航到[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)。 用户将当前默认方法更改为其他默认方法。 完成后，用户将看到 "安全信息" 页上的新默认方法。
+以前至少设置一种可用于多重身份验证的方法的用户将导航到[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)。 用户将当前默认方法更改为其他默认方法。 完成后，用户在"安全信息"页上看到新的默认方法。
 
 ## <a name="next-steps"></a>后续步骤
 
 [强制用户重新注册身份验证方法](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 
-[启用租户中的组合注册](howto-registration-mfa-sspr-combined.md)
+[在租户中启用合并注册](howto-registration-mfa-sspr-combined.md)
 
 [SSPR 和 MFA 使用情况和见解报告](howto-authentication-methods-usage-insights.md)
 
-[多重身份验证和 SSPR 的可用方法](concept-authentication-methods.md)
+[多因素身份验证和 SSPR 的可用方法](concept-authentication-methods.md)
 
 [配置自助服务密码重置](howto-sspr-deployment.md)
 

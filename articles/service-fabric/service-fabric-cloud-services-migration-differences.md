@@ -1,15 +1,15 @@
 ---
-title: 云服务和 Service Fabric 之间的差异
+title: 云服务与 Service Fabric 之间的差异
 description: 有关将应用程序从云服务迁移到 Service Fabric 的概念性概述。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 283ad2c63bb59771dab7881522e737f773ab1705
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75463371"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>迁移应用程序之前了解云服务与 Service Fabric 之间的差异。
@@ -81,22 +81,22 @@ Service Fabric 提供服务发现机制（称为“命名服务”），用于�
 ![Service Fabric 直接通信][8]
 
 ## <a name="parity"></a>Parity
-[云服务在控制度和易用性方面与 Service Fabric 相似，但它现在是一种旧 Service Fabric 服务，建议用于新开发](https://docs.microsoft.com/azure/app-service/overview-compare);下面是一个 API 比较：
+[云服务在控制程度与易用性上与服务交换矩阵类似，但现在它是一种旧服务，并且服务交换矩阵被推荐用于新开发](https://docs.microsoft.com/azure/app-service/overview-compare);以下是 API 比较：
 
 
 | **云服务 API** | **Service Fabric API** | **说明** |
 | --- | --- | --- |
-| RoleInstance.GetID | FabricRuntime 或 GetNodeContext。NodeName | ID 是 NodeName 的属性 |
-| RoleInstance.GetFaultDomain | FabricClient.QueryManager.GetNodeList | 筛选 NodeName 并使用 FD 属性 |
-| RoleInstance.GetUpgradeDomain | FabricClient.QueryManager.GetNodeList | 在 NodeName 上筛选，并使用 Upgrade 属性 |
-| RoleInstance.GetInstanceEndpoints | FabricRuntime. GetActivationContext 或命名（ResolveService） | 运行状况通过 FabricRuntime 在中提供，由 GetActivationContext 和副本提供。初始化 |
-| RoleEnvironment.GetRoles | FabricClient.QueryManager.GetNodeList | 如果要按类型进行相同种类的筛选，可以通过 FabricClient ClusterManager. GetClusterManifest 获取群集清单中的节点类型列表，并从该处获取角色/节点类型。 |
-| RoleEnvironment.GetIsAvailable | WindowsFabricCluster 或创建指向特定节点的 FabricRuntime | * |
+| RoleInstance.GetID | FabricRuntime.GetNodeContext.NodeId 或 .NodeName | ID 是 NodeName 的属性 |
+| RoleInstance.GetFaultDomain | FabricClient.QueryManager.GetNodeList | 按 NodeName 筛选并使用 FD 属性 |
+| RoleInstance.GetUpgradeDomain | FabricClient.QueryManager.GetNodeList | 按 NodeName 筛选并使用 Upgrade 属性 |
+| RoleInstance.GetInstanceEndpoints | FabricRuntime.GetActivationContext 或 Naming (ResolveService) | CodePackageActivationContext，由 FabricRuntime.GetActivationContext 提供以及通过 ServiceInitializationParameters.CodePackageActivationContext provided during .Initialize 在副本中提供 |
+| RoleEnvironment.GetRoles | FabricClient.QueryManager.GetNodeList | 如果要按类型执行同种筛选，则可以通过 FabricClient.ClusterManager.GetClusterManifest 从群集清单获取节点类型列表，并从此处获取角色/节点类型。 |
+| RoleEnvironment.GetIsAvailable | Connect-WindowsFabricCluster 或创建指向特定节点的 FabricRuntime | * |
 | RoleEnvironment.GetLocalResource | CodePackageActivationContext.Log/Temp/Work | * |
 | RoleEnvironment.GetCurrentRoleInstance | CodePackageActivationContext.Log/Temp/Work | * |
 | LocalResource.GetRootPath | CodePackageActivationContext.Log/Temp/Work | * |
-| Role.GetInstances | FabricClient. Fabricclient.querymanager. GetNodeList 或 ResolveService | * |
-| RoleInstanceEndpoint.GetIPEndpoint | FabricRuntime. GetActivationContext 或命名（ResolveService） | * |
+| Role.GetInstances | FabricClient.QueryManager.GetNodeList 或 ResolveService | * |
+| RoleInstanceEndpoint.GetIPEndpoint | FabricRuntime.GetActivationContext 或 Naming (ResolveService) | * |
 
 ## <a name="next-steps"></a>后续步骤
 从云服务迁移到 Service Fabric 的最简单路径是只将云服务部署替换为 Service Fabric 应用程序，并将应用程序的整个基础结构保持大致相同。 以下文章提供了帮助将 Web 角色和辅助角色迁移到 Service Fabric 无状态服务的指导。

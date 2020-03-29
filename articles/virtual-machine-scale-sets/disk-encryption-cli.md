@@ -1,5 +1,5 @@
 ---
-title: 利用 Azure CLI 加密 Azure 规模集的磁盘
+title: 使用 Azure CLI 加密 Azure 规模集磁盘
 description: 了解如何使用 Azure PowerShell 来加密 Windows 虚拟机规模集中的 VM 实例和附加的磁盘
 author: msmbaldwin
 manager: rkarlin
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 557d5c023acbc7987d58c9e78bfe11e25f314879
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76279075"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 在虚拟机规模集中加密 OS 和附加的数据磁盘
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 对虚拟机规模集中的 OS 和附加数据磁盘进行加密
 
-Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门介绍如何使用 Azure CLI 来创建和加密虚拟机规模集。 有关将 Azure 磁盘加密应用到虚拟机规模集的详细信息，请参阅[虚拟机规模集的 Azure 磁盘加密](disk-encryption-overview.md)。
+Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门演示如何使用 Azure CLI 创建和加密虚拟机规模集。 有关如何将 Azure 磁盘加密应用到虚拟机规模集的详细信息，请参阅[虚拟机规模集的 Azure 磁盘加密](disk-encryption-overview.md)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-scale-set"></a>创建规模集
 
-使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+使用 [az group create](/cli/azure/group) 创建资源组，才能创建规模集。 下面的示例在*东部*位置创建名为*myResourceGroup*的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -60,7 +60,7 @@ az vmss extension set \
 
 Azure 密钥保管库可以存储能够在应用程序和服务中安全实现的密钥、机密或密码。 使用软件保护将加密密钥存储在 Azure 密钥保管库中，或者，可在已通过 FIPS 140-2 级别 2 标准认证的硬件安全模块 (HSM) 中导入或生成密钥。 这些加密密钥用于加密和解密附加到 VM 的虚拟磁盘。 可以控制这些加密密钥，以及审核对它们的使用。
 
-定义自己的唯一 keyvault_name。 然后，在规模集所在的同一订阅和区域中，通过 [az keyvault create](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) 创建 KeyVault，并设置 --enabled-for-disk-encryption 访问策略。
+定义自己的唯一 keyvault_name**。 然后，在规模集所在的同一订阅和区域中，通过 [az keyvault create](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-create) 创建 KeyVault，并设置 --enabled-for-disk-encryption 访问策略**。
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -74,7 +74,7 @@ az keyvault create --resource-group myResourceGroup --name $keyvault_name --enab
 
 仅当你要将现有的 Key Vault 用于磁盘加密时，才需要执行此步骤。 如果在上一部分中创建了 Key Vault，请跳过此步骤。
 
-定义自己的唯一 keyvault_name。 然后，通过 [az keyvault update](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update) 更新 KeyVault 并设置 --enabled-for-disk-encryption 访问策略。
+定义自己的唯一 keyvault_name**。 然后，通过 [az keyvault update](/cli/azure/ext/keyvault-preview/keyvault#ext-keyvault-preview-az-keyvault-update) 更新 KeyVault 并设置 --enabled-for-disk-encryption 访问策略**。
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -102,11 +102,11 @@ az vmss encryption enable \
 
 启动加密过程可能需要一到两分钟时间。
 
-因为之前步骤中创建的规模集上的升级策略设置为自动，所以 VM 实例将自动启动加密过程。 在升级策略设为手动的规模集上，通过 [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances) 在 VM 实例上启动加密策略。
+因为之前步骤中创建的规模集上的升级策略设置为自动，所以 VM 实例将自动启动加密过程**。 在升级策略设为手动的规模集上，通过 [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances) 在 VM 实例上启动加密策略。
 
 ### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>使用 KEK 启用加密以包装密钥
 
-加密虚拟机规模集时，还可以使用密钥加密密钥增加安全性。
+在加密虚拟机规模集时，还可以使用密钥加密密钥来增加安全性。
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault
@@ -123,10 +123,10 @@ az vmss encryption enable \
 ```
 
 > [!NOTE]
->  磁盘加密-keyvault 参数的值语法是完整的标识符字符串：</br>
+>  disk-encryption-keyvault 参数值的语法是完整的标识符字符串：</br>
 /subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
-> 密钥加密-密钥参数的值语法是 KEK 的完整 URI，如下所示：</br>
-https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
+> key-encryption-key 参数值的语法是 KEK 的完整 URI，如下所示：</br>
+https：//[钥匙库名称]vault.azure.net/键/[kekname]/[kek-唯一id]
 
 ## <a name="check-encryption-progress"></a>查看加密进度
 
@@ -136,7 +136,7 @@ https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
 az vmss encryption show --resource-group myResourceGroup --name myScaleSet
 ```
 
-加密 VM 实例后，状态代码将报告 EncryptionState/encrypted，如下面的示例输出所示：
+加密 VM 实例后，状态代码将报告 EncryptionState/encrypted，如下面的示例输出所示**：
 
 ```bash
 [
@@ -173,6 +173,6 @@ az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在本文中，已使用 Azure CLI 加密虚拟机规模集。 你还可以使用[Azure PowerShell](disk-encryption-powershell.md)或[Azure 资源管理器模板](disk-encryption-azure-resource-manager.md)。
-- 如果你想要在设置另一个扩展后应用 Azure 磁盘加密，则可以使用[扩展排序](virtual-machine-scale-sets-extension-sequencing.md)。 
+- 在本文中，已使用 Azure CLI 加密虚拟机规模集。 也可使用 [Azure PowerShell](disk-encryption-powershell.md) 或 [Azure 资源管理器模板](disk-encryption-azure-resource-manager.md)。
+- 如果希望在预配另一个扩展后应用 Azure 磁盘加密，可以使用[扩展排序](virtual-machine-scale-sets-extension-sequencing.md)。 
 - 可查看[此处](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat)，了解针对 Linux 规模集数据磁盘加密的端到端批处理文件示例。 此示例创建一个资源组（Linux 规模集），装载一个 5 GB 的数据磁盘，并对虚拟机规模集进行加密。

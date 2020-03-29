@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75360304"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>如何配置和运行云服务的启动任务
@@ -39,8 +39,8 @@ ms.locfileid: "75360304"
 1. 实例将标记为“**正在启动**”并且不接收流量。
 2. 所有启动任务均根据其 **taskType** 属性执行。
    
-   * **simple** 任务以同步方式执行（一次一个任务）。
-   * **background** 和 **foreground** 任务与启动任务并行，以异步方式启动。  
+   * 以同步方式执行 **simple** 任务（一次执行一个）。
+   * 在启动任务开始的同时，**background** 和 **foreground** 任务将以异步方式启动。  
      
      > [!WARNING]
      > 在启动过程中的启动任务阶段，IIS 可能未完全配置，因此角色特定的数据可能不可用。 需要角色特定数据的启动任务应使用 [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))。
@@ -54,7 +54,7 @@ ms.locfileid: "75360304"
 ## <a name="example-of-a-startup-task"></a>启动任务的示例
 启动任务在 [ServiceDefinition.csdef] 文件的 **任务** 元素中定义。 **commandLine** 属性指定启动批处理文件或控制台命令的名称和参数，**executionContext** 属性指定启动任务的权限级别，**taskType** 属性指定将如何执行该任务。
 
-在本示例中，将为启动任务创建环境变量 MyVersionNumber，并将该变量设为值“1.0.0.0”。
+在本示例中，将为启动任务创建环境变量 MyVersionNumber****，并将该变量设为值“1.0.0.0”****。
 
 **ServiceDefinition.csdef**：
 
@@ -68,7 +68,7 @@ ms.locfileid: "75360304"
 </Startup>
 ```
 
-在下面的示例中，Startup.cmd 批处理文件会将行“The current version is 1.0.0.0”写入到由 TEMP 环境变量指定的目录下的 StartupLog.txt 文件中。 `EXIT /B 0` 行确保启动任务以为零的 **errorlevel** 结束。
+在下面的示例中，Startup.cmd**** 批处理文件会将行“The current version is 1.0.0.0”写入到由 TEMP 环境变量指定的目录下的 StartupLog.txt 文件中。 `EXIT /B 0` 行确保启动任务以为零的 **errorlevel** 结束。
 
 ```cmd
 ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
@@ -104,7 +104,7 @@ EXIT /B 0
 
 **taskType** - 指定启动任务的执行方式。
 
-* **simple**  
+* **简单**  
   任务按照 [ServiceDefinition.csdef] 文件中指定的顺序一次一个地以同步方式执行。 当一个 **simple** 启动任务以为零的 **errorlevel** 结束时，将执行下一个 **simple** 启动任务。 如果没有更多 **simple** 启动任务要执行，则将启动角色本身。   
   
   > [!NOTE]
@@ -113,7 +113,7 @@ EXIT /B 0
   > 
   
     要确保批处理文件以为零的 **errorlevel** 结束，请在批处理文件进程结束时执行命令 `EXIT /B 0`。
-* **background**  
+* **背景**  
   任务与角色同时启动，并以异步方式执行。
 * **foreground**  
   任务与角色同时启动，并以异步方式执行。 **foreground** 任务与 **background** 任务之间的主要区别在于 **foreground** 任务阻止角色回收或关闭，直到任务结束。 **background** 任务没有此限制。
@@ -153,13 +153,13 @@ EXIT /B 0
 
 [打包](cloud-services-model-and-package.md)云服务。  
 
-[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
+[服务定义.csdef]: cloud-services-model-and-package.md#csdef
 [任务]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [启动]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [运行时]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [环境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [变量]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[角色实例值]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 
 

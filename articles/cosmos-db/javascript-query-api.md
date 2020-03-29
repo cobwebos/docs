@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Cosmos DB 存储过程和触发器中使用 JavaScript 集成查询 API
+title: 在 Azure Cosmos DB 存储过程和触发器中使用集成了 JavaScript 的查询 API
 description: 本文介绍了有关使用 JavaScript 语言集成式查询 API 在 Azure Cosmos DB 中创建存储过程和触发器的概念。
 author: markjbrown
 ms.service: cosmos-db
@@ -8,19 +8,19 @@ ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: 7b7ad470b3330224e80a7160fc1a37bb5ee1cde8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76901834"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 JavaScript 查询 API
 
-除了在 Azure Cosmos DB 中使用 SQL API 发出查询外， [Cosmos DB 服务器端 SDK](https://azure.github.io/azure-cosmosdb-js-server/)还提供了一个 JavaScript 接口，用于在 Cosmos DB 存储过程和触发器中执行优化查询。 你不需要了解 SQL 语言便可使用此 JavaScript 接口。 JavaScript 查询 API 允许使用与 ECMAScript5 的数组内置项类似的语法以及 Lodash 之类的热门 JavaScript 库，通过将谓词函数传递到函数调用序列中以编程方式生成查询。 查询将由 JavaScript 运行时进行分析并使用 Azure Cosmos DB 索引高效执行。
+除了使用 Azure Cosmos DB 中的 SQL API 发出查询外，[Cosmos DB 服务器端 SDK](https://azure.github.io/azure-cosmosdb-js-server/) 还提供了一个 JavaScript 接口，用于在 Cosmos DB 存储过程和触发器中执行优化查询。 你不需要了解 SQL 语言便可使用此 JavaScript 接口。 JavaScript 查询 API 允许使用与 ECMAScript5 的数组内置项类似的语法以及 Lodash 之类的热门 JavaScript 库，通过将谓词函数传递到函数调用序列中以编程方式生成查询。 查询将由 JavaScript 运行时进行分析并使用 Azure Cosmos DB 索引高效执行。
 
 ## <a name="supported-javascript-functions"></a>支持的 JavaScript 函数
 
-| **Function** | **说明** |
+| **函数** | **说明** |
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|发起一个必须用 value() 终止的连锁调用。|
 |`filter(predicateFunction [, options] [, callback])`|使用返回 true/false 的谓词函数对输入进行筛选，以便将输入文档筛选出或筛选到结果集。 此函数与 SQL 中的 WHERE 子句行为相似。|
@@ -33,7 +33,7 @@ ms.locfileid: "76901834"
 
 当其中包含谓词和/或选择器函数时，以下 JavaScript 构造将自动优化以在 Azure Cosmos DB 索引上直接运行：
 
-- 简单操作员： `=` `+` `-` `*` `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!` `~`
+- 简单运算符`=``+``-``*`： `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
 - 文本（包括对象文本）：{}
 - var, return
 

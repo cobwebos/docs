@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：配置对等互连：经典
+title: Azure 快速路由：配置对等互连：经典
 description: 本文指导完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。 本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。
 services: expressroute
 author: cherylmc
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: cherylmc
 ms.openlocfilehash: 05602538f206032d924b39a7dd8f4325c48a5224
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931380"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>创建和修改 ExpressRoute 线路的对等互连（经典）
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-routing-portal-resource-manager.md)
-> * [PowerShell](expressroute-howto-routing-arm.md)
+> * [电源外壳](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [视频 - 专用对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [视频 - 公共对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [视频 - Microsoft 对等互连](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
-> * [PowerShell（经典）](expressroute-howto-routing-classic.md)
+> * [电源外壳（经典）](expressroute-howto-routing-classic.md)
 > 
 
 本文指导执行相关步骤，以便使用 PowerShell 和经典部署模型创建和管理 ExpressRoute 线路的对等互连/路由配置。 下面的步骤还将说明如何查看状态，以及如何更新、删除和取消预配 ExpressRoute 线路的对等互连。 可以为 ExpressRoute 线路配置一到三个对等互连（Azure 专用、Azure 公共和 Microsoft）。 可以按照所选的任意顺序配置对等互连。 但是，必须确保一次只完成一个对等互连的配置。 
@@ -88,7 +88,7 @@ ms.locfileid: "74931380"
    * 辅助链路的 /30 子网。 它不能是保留给虚拟网络使用的任何地址空间的一部分。
    * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。 可以将专用 AS 编号用于此对等互连。 确认未使用 65515。
-   * MD5 哈希（如果选择使用）。 可选。
+   * MD5 哈希（如果选择使用）。 **可选**。
      
    可使用以下示例为线路配置 Azure 专用对等互连：
 
@@ -152,12 +152,12 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
 本部分说明如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 公共对等互连配置。
 
 > [!NOTE]
-> 新线路不推荐使用 Azure 公共对等互连。
+> Azure 公共对等互连被弃用用于新电路。
 >
 
 ### <a name="to-create-azure-public-peering"></a>创建 Azure 公共对等互连
 
-1. **创建 ExpressRoute 线路**
+1. **创建快速路由电路**
 
    请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 公共对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
 2. **检查 ExpressRoute 线路以确认它已预配**
@@ -195,7 +195,7 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
    * 辅助链路的 /30 子网。 这必须是有效的公共 IPv4 前缀。
    * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
-   * MD5 哈希（如果选择使用）。 可选。
+   * MD5 哈希（如果选择使用）。 **可选**。
 
    > [!IMPORTANT]
    > 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
@@ -261,7 +261,7 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
 
 ### <a name="to-create-microsoft-peering"></a>创建 Microsoft 对等互连
 
-1. **创建 ExpressRoute 线路**
+1. **创建快速路由电路**
   
    请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-classic.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不管理路由，请在创建线路之后遵循以下说明。
 2. **检查 ExpressRoute 线路以确认它已预配**
@@ -291,7 +291,7 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    ServiceProviderProvisioningState : Provisioned
    Status                           : Enabled
    ```
-3. **配置线路的 Microsoft 对等互连**
+3. **为电路配置 Microsoft 对等互连**
    
     在继续下一步之前，请确保已准备好以下信息。
    
@@ -300,9 +300,9 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
    * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。
-   * 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。 可选。
+   * 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。 **可选**。
    * 路由注册表名称：可以指定 AS 编号和前缀要注册到的 RIR/IRR。
-   * MD5 哈希（如果选择使用）。 **可选。**
+   * MD5 哈希（如果选择使用）。 **选。**
      
    运行以下 cmdlet 为线路配置 Microsoft 对等互连：
  

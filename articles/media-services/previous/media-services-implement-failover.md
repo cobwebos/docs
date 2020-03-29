@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务实现故障转移流式处理 | Microsoft 文档
-description: 本文介绍如何使用 Azure 媒体服务实现故障转移流式处理方案。
+description: 本文演示如何使用 Azure 媒体服务实现故障转移流方案。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: ae1371a8f025fd5e5722d483323fbe937538eb15
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78939213"
 ---
-# <a name="implement-failover-streaming-with-media-services-v2"></a>通过媒体服务 v2 实现故障转移流式处理
+# <a name="implement-failover-streaming-with-media-services-v2"></a>使用媒体服务 v2 实现故障转移流
 
 本演练演示如何将内容 (Blob) 从一个资产复制到另一个资产，以便处理按需流式处理的冗余。 如果想要将 Azure 内容分发网络设置为当某个数据中心发生中断时在两个数据中心之间故障转移，则很适合采用此方案。 本演练使用 Azure 媒体服务 SDK、Azure 媒体服务 REST API 和 Azure 存储 SDK 来演示以下任务：
 
@@ -48,9 +48,9 @@ ms.locfileid: "78939213"
 
 * 当前版本的媒体服务 SDK 不支持以编程方式生成会将资产与资产文件关联的 IAssetFile 信息。 应该使用 CreateFileInfos 媒体服务 REST API 来实现此目的。 
 * 不支持使用存储加密资产 (AssetCreationOptions.StorageEncrypted) 进行复制（因为两个媒体服务帐户中的加密密钥不同）。 
-* 若要使用动态打包，请确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。
+* 若要使用动态打包，请确保要从中流式传输内容的流式处理终结点处于“正在运行”**** 状态。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 在新的或现有的 Azure 订阅中拥有两个媒体服务帐户。 请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
 * 操作系统：Windows 7、Windows 2008 R2 或 Windows 8。
@@ -61,11 +61,11 @@ ms.locfileid: "78939213"
 
 在本部分，将要创建并设置一个 C# 控制台应用程序项目。
 
-1. 使用 Visual Studio 创建包含 C# 控制台应用程序项目的新解决方案。 输入 **HandleRedundancyForOnDemandStreaming** 作为名称，并单击“确定”。
-2. 在与 **HandleRedundancyForOnDemandStreaming.csproj** 项目文件相同的级别创建 **SupportFiles** 文件夹。 在 **SupportFiles** 文件夹下创建 **OutputFiles** 和 **MP4Files** 文件夹。 将一个 .mp4 文件复制到 **MP4Files** 文件夹。 （在此示例中，使用了**ignite**文件。） 
-3. 使用**NuGet**添加对媒体服务相关 dll 的引用。 在**Visual Studio 主菜单**中，选择 "**工具**" > **NuGet 包管理器**" > **程序包管理器控制台**"。 在控制台窗口中键入 **Install-Package windowsazure.mediaservices**，并按 Enter。
-4. 添加此项目所需的其他引用： "System.web" 和 "system.web"。
-5. 将默认添加到 **Programs.cs** 文件中的 **using** 语句替换为以下语句：
+1. 使用 Visual Studio 创建包含 C# 控制台应用程序项目的新解决方案。 输入名称的**句柄冗余OnDemand流**，然后单击 **"确定**"。
+2. 在与 **"处理冗余ForDemand流.csproj**项目文件"文件相同的级别上创建**支持文件**文件夹。 在 **"支持文件"** 文件夹下，创建 **"输出文件和** **MP4Files"** 文件夹。 将一个 .mp4 文件复制到 **MP4Files** 文件夹。 （在此示例中，使用**ignite.mp4**文件。 
+3. 使用**NuGet**添加对与媒体服务相关的 DLL 的引用。 在**视觉工作室主菜单**中，选择**TOOLS** > **NuGet 包管理器** > **管理器控制台**。 在控制台窗口中，键入**安装包窗口azure.媒体服务**，然后按 Enter。
+4. 添加此项目所需的其他引用：系统.运行时.序列化和系统.Web。
+5. 使用默认情况下添加到**Programs.cs**文件中**的语句替换为**以下语句：
 
 ```csharp
 using System;
@@ -205,7 +205,7 @@ using System.Runtime.Serialization.Json;
         }
     }
     ```
-3. 以下方法定义是从 Main 调用的。 有关每种方法的详细信息，请参阅注释。
+3. 以下方法定义是从 Main 调用的。 有关每种方法的更多详细信息，请参阅注释。
 
     >[!NOTE]
     >不同媒体服务策略的策略数限制为 1,000,000 个（例如，对于 Locator 策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的天数和访问权限，应使用相同的策略 ID。 例如，对于需要长期保留使用的定位符，请使用相同的策略 ID（非上传策略）。 有关详细信息，请参阅[此主题](media-services-dotnet-manage-entities.md#limit-access-policies)。
@@ -748,11 +748,11 @@ using System.Runtime.Serialization.Json;
     
 ## <a name="content-protection"></a>内容保护
 
-本主题中的示例演示了清除流式处理。 如果要执行受保护的流式处理，需要设置其他一些功能，需要使用相同的**AssetDeliveryPolicy**、相同的**ContentKeyAuthorizationPolicy**或外部密钥服务器 URL，并且需要复制具有相同标识符的内容密钥。
+本主题中的示例显示清除流。 如果要执行受保护的流式处理，您需要设置其他一些操作，您需要使用相同的**资产交付策略**、相同的**内容密钥授权策略**或外部密钥服务器 URL，并且需要使用相同的标识符复制内容密钥。
 
-有关内容保护的详细信息，请参阅[使用 AES-128 动态加密和密钥传送服务](media-services-protect-with-aes128.md)。
+有关内容保护的详细信息，请参阅使用[AES-128 动态加密和密钥传递服务](media-services-protect-with-aes128.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 [使用 Azure Webhook 监视媒体服务作业通知](media-services-dotnet-check-job-progress-with-webhooks.md)
 
