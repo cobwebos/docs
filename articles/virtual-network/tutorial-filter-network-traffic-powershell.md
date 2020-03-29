@@ -18,10 +18,10 @@ ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 08031bc2ac29ea77374e21c4ce6f7bcf6151bcad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66730030"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>在 PowerShell 中使用网络安全组筛选网络流量
@@ -97,7 +97,7 @@ $mgmtRule = New-AzNetworkSecurityRuleConfig `
   -DestinationPortRange 3389
 ```
 
-在本文中，将在 Internet 上为 *myAsgMgmtServers* VM 公开 RDP（端口 3389）。 在生产环境中，我们建议使用 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或[专用](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)网络连接来连接到要管理的 Azure 资源，而不要向 Internet 公开端口 3389。
+在本文中，将在 Internet 上为 *myAsgMgmtServers* VM 公开 RDP（端口 3389）。 对于生产环境，建议使用[VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或[专用](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)网络连接连接到要管理的 Azure 资源，而不是将端口 3389 公开到 Internet。
 
 ### <a name="create-a-network-security-group"></a>创建网络安全组
 
@@ -257,9 +257,9 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-打开下载的 RDP 文件。 出现提示时，选择“连接”。
+打开下载的 RDP 文件。 出现提示时，选择“连接”****。
 
-输入在创建 VM 时指定的用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后选择“确定”。 你可能会在登录过程中收到证书警告。 选择“是”以继续进行连接。
+输入在创建 VM 时指定的用户名和密码（可能需要选择“更多选择”，然后选择“使用其他帐户”，以便指定在创建 VM 时输入的凭据），然后选择“确定”。************ 你可能会在登录过程中收到证书警告。 选择“是”以继续进行连接。****
 
 连接将会成功，因为允许通过端口 3389 将入站流量从 Internet 发往已附加到 *myVmMgmt* VM 的网络接口所在的 *myAsgMgmtServers* 应用程序安全组。
 

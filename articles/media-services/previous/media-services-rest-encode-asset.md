@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 6854400f2152a5952a7b24dbd860d7ad4bfc943d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774921"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>如何使用 Media Encoder Standard 对资产进行编码
@@ -33,7 +33,7 @@ ms.locfileid: "76774921"
 
 若要通过 Internet 传送数字视频，必须压缩媒体文件。 数字视频文件较大，可能因过大而无法通过 Internet 传送或者无法在客户的设备上正常显示。 编码是压缩视频和音频以便客户能够查看媒体的过程。
 
-编码作业是 Azure 媒体服务中最常见的处理操作之一。 创建编码作业以便在不同编码之间转换媒体文件。 编码时，可以使用媒体服务的内置编码器（Media Encoder Standard）。 还可使用媒体服务合作伙伴提供的编码器。 可通过 Azure 市场获取第三方编码器。 可以使用为编码器定义的预设字符串或预设配置文件来指定编码任务的详细信息。 若要查看可用预设的类型，请参阅 [Media Encoder Standard 的任务预设](https://msdn.microsoft.com/library/mt269960)。
+编码作业是 Azure 媒体服务中最常见的处理操作之一。 可通过创建编码作业将媒体文件从一种编码转换为另一种编码。 编码时，可以使用媒体服务的内置编码器（Media Encoder Standard）。 还可使用媒体服务合作伙伴提供的编码器。 可通过 Azure 市场获取第三方编码器。 可以使用为编码器定义的预设字符串或预设配置文件来指定编码任务的详细信息。 若要查看可用预设的类型，请参阅 [Media Encoder Standard 的任务预设](https://msdn.microsoft.com/library/mt269960)。
 
 每个作业可以有一个或多个任务，具体因要完成的处理类型而异。 通过 REST API，可采用以下两种方式之一创建作业及相关任务：
 
@@ -59,7 +59,7 @@ ms.locfileid: "76774921"
 > [!NOTE]
 > 使用媒体服务 REST API 时，需注意以下事项：
 >
-> 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
+> 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发设置](media-services-rest-how-to-use.md)。
 >
 > 使用 JSON 并指定在请求（例如，引用某个链接对象的请求）中使用 **__metadata** 关键字时，必须将 **Accept** 标头设置为 [JSON 详细格式](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)：Accept: application/json;odata=verbose。
 >
@@ -279,5 +279,5 @@ ms.locfileid: "76774921"
 ## <a name="next-steps"></a>后续步骤
 了解如何创建对资产进行编码的作业后，请参阅[如何使用媒体服务检查作业进度](media-services-rest-check-job-progress.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 [获取媒体处理器](media-services-rest-get-media-processor.md)

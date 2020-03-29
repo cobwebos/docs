@@ -1,29 +1,29 @@
 ---
-title: 高级威胁防护-Azure Database for PostgreSQL-单服务器
-description: 了解如何使用高级威胁防护来检测异常的数据库活动，指示数据库存在潜在的安全威胁。
+title: 高级威胁防护 - Azure 数据库，用于后格雷SQL - 单个服务器
+description: 了解如何使用高级威胁防护来检测异常的数据库活动，这些活动表明数据库存在潜在的安全威胁。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 3d86c76472580567c95d285924761e1714465d6f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74768735"
 ---
-# <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 中的高级威胁防护-单服务器
+# <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Azure 数据库中的高级威胁保护，用于后格雷SQL - 单个服务器
 
-Azure Database for PostgreSQL 的高级威胁防护服务检测到异常活动，这表示有人在访问或利用数据库时行为异常且可能有害。
-
-> [!NOTE]
-> 高级威胁防护是公开预览版。
-
-威胁防护是高级威胁防护 (ATP) 产品/服务的一部分，后者是一个针对高级安全功能的统一软件包。 可以通过[Azure 门户](https://portal.azure.com)或使用[REST API](/rest/api/postgresql/serversecurityalertpolicies)来访问和管理高级威胁防护。 此功能可用于常规用途和内存优化服务器。
+Azure Database for PostgreSQL 的高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试。
 
 > [!NOTE]
-> 高级威胁防护功能在以下 Azure 政府和主权云区域中不可用：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
+> 高级威胁防护处于公共预览版。
+
+威胁防护是高级威胁防护 (ATP) 产品/服务的一部分，后者是一个针对高级安全功能的统一软件包。 高级威胁防护可以通过[Azure 门户](https://portal.azure.com)或使用[REST API](/rest/api/postgresql/serversecurityalertpolicies)进行访问和管理。 此功能可用于通用和内存优化服务器。
+
+> [!NOTE]
+> 高级威胁防护功能在以下 Azure 政府和主权云区域中不**** 可用：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
 
 ## <a name="what-is-advanced-threat-protection"></a>什么是高级威胁防护？
 
@@ -41,6 +41,6 @@ Azure Database for PostgreSQL 高级威胁防护可检测异常活动，指出�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
+* 了解有关[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * 有关定价的详细信息，请参阅 [Azure Database for PostgreSQL 定价页](https://azure.microsoft.com/pricing/details/postgresql/) 
 * 使用 Azure 门户配置 [Azure Database for PostgreSQL 高级威胁防护](howto-database-threat-protection-portal.md)  

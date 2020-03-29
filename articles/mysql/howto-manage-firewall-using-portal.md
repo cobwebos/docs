@@ -1,30 +1,30 @@
 ---
-title: 管理防火墙规则-Azure 门户-Azure Database for MySQL
+title: 管理防火墙规则 - Azure 门户 - MySQL 的 Azure 数据库
 description: 使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: b02bae528146a3f0c214b7fbb1d234c1a24b174f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: edd6403ed3d7607eb96bc7c6a603c3fef8a4f99e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74774234"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063550"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则
-服务器级防火墙规则可用于从指定的 IP 地址或一系列 IP 地址管理对 Azure Database for MySQL 服务器的访问。 
+可以使用服务器级防火墙规则，管理从指定的 IP 地址或某个范围的 IP 地址对 Azure Database for MySQL 服务器的访问。 
 
-虚拟网络（VNet）规则还可用于保护对服务器的访问。 详细了解如何[使用 Azure 门户创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-using-portal.md)。
+也可使用虚拟网络 (VNet) 规则来保护对服务器进行的访问。 详细了解如何[使用 Azure 门户创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-using-portal.md)。
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 门户中创建服务器级防火墙规则
 
-1. 在 MySQL 服务器页上的“设置”标题下，单击“连接安全性”，以打开 Azure Database for MySQL 的“连接安全性”页。
+1. 在 MySQL 服务器页上的“设置”标题下，单击“连接安全性”****，以打开 Azure Database for MySQL 的“连接安全性”页。
 
    ![Azure 门户 - 单击“连接安全性”](./media/howto-manage-firewall-using-portal/1-connection-security.png)
 
-2. 在工具栏上单击“添加我的 IP”。 该操作会自动创建一条防火墙规则，其中包含计算机的公共 IP 地址（由 Azure 系统标识）。
+2. 在工具栏上单击“添加我的 IP”****。 该操作会自动创建一条防火墙规则，其中包含计算机的公共 IP 地址（由 Azure 系统标识）。
 
    ![Azure 门户 - 单击“添加我的 IP”](./media/howto-manage-firewall-using-portal/2-add-my-ip.png)
 
@@ -36,12 +36,12 @@ ms.locfileid: "74774234"
 
    ![Azure 门户 - 防火墙规则](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
-5. 在工具栏上单击“保存”以保存此服务器级防火墙规则。 等待出现有关防火墙规则更新已成功的确认消息。
+5. 在工具栏上单击“保存”**** 以保存此服务器级防火墙规则。 等待出现有关防火墙规则更新已成功的确认消息。
 
    ![Azure 门户 - 单击“保存”](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
 
 ## <a name="connecting-from-azure"></a>从 Azure 连接
-若要允许来自 Azure 的应用程序连接到 Azure Database for MySQL 服务器，必须启用 Azure 连接。 例如，为了托管“Azure Web 应用”应用程序或 Azure VM 中运行的应用程序，或者为了从 Azure 数据工厂数据管理网关进行连接。 资源无需在同一虚拟网络 (VNet) 或资源组中，即可使用防火墙规则启用这些连接。 在应用程序尝试从 Azure 连接到数据库服务器时，防火墙会验证是否允许 Azure 连接。 有几种方法可启用这些类型的连接。 如果防火墙设置的开始地址和结束地址都等于 0.0.0.0，则表示允许这些连接。 或者，可以在门户中从“连接安全性”窗格将“允许访问 Azure 服务”选项设为“启用”并点击“保存”。 如果不允许该连接尝试，则该请求将不会访问 Azure Database for MySQL 服务器。
+若要允许来自 Azure 的应用程序连接到 Azure Database for MySQL 服务器，必须启用 Azure 连接。 例如，为了托管“Azure Web 应用”应用程序或 Azure VM 中运行的应用程序，或者为了从 Azure 数据工厂数据管理网关进行连接。 资源无需在同一虚拟网络 (VNet) 或资源组中，即可使用防火墙规则启用这些连接。 在应用程序尝试从 Azure 连接到数据库服务器时，防火墙会验证是否允许 Azure 连接。 有几种方法可启用这些类型的连接。 如果防火墙设置的开始地址和结束地址都等于 0.0.0.0，则表示允许这些连接。 或者，可以从连接安全窗格将"**允许访问 Azure 服务**"选项设置为 **"打开****"，** 然后点击 **"保存**"。 如果不允许该连接尝试，则该请求将不会访问 Azure Database for MySQL 服务器。
 
 > [!IMPORTANT]
 > 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
@@ -49,13 +49,13 @@ ms.locfileid: "74774234"
 
 ## <a name="manage-existing-server-level-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 门户管理现有的服务器级别防火墙规则
 重复这些步骤来管理防火墙规则。
-* 若要添加当前计算机，请单击“+ 添加我的 IP”。 单击“保存”以保存更改。
-* 若要添加其他 IP 地址，请键入“规则名称”、“起始 IP”和“结束 IP”。 单击“保存”以保存更改。
-* 若要修改现有规则，单击规则中的任意字段并修改。 单击“保存”以保存更改。
-* 若要删除现有规则，请单击省略号 […]，然后单击“删除”。 单击“保存”以保存更改。
+* 若要添加当前计算机，请单击“+ 添加我的 IP”****。 单击 **“确定”**，保存这些更改。
+* 若要添加其他 IP 地址，请键入“规则名称”****、“起始 IP”**** 和“结束 IP”****。 单击 **“确定”**，保存这些更改。
+* 若要修改现有规则，单击规则中的任意字段并修改。 单击 **“确定”**，保存这些更改。
+* 若要删除现有规则，请单击省略号 […]，然后单击“删除”****。 单击 **“确定”**，保存这些更改。
 
 
 ## <a name="next-steps"></a>后续步骤
-- 同样，可以编写脚本以[使用 Azure CLI 创建和管理 Azure Database for PostgreSQL 防火墙规则](howto-manage-firewall-using-cli.md)。
-- 通过[使用 Azure 门户创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-using-portal.md)，进一步加强对服务器的访问。
-- 有关连接到 Azure Database for MySQL 服务器的帮助，请参阅[Azure Database for MySQL 的连接库](./concepts-connection-libraries.md)。
+     Similarly, you can script to [Create and manage Azure Database for MySQL firewall rules using Azure CLI](howto-manage-firewall-using-cli.md).
+     Further secure access to your server by [creating and managing Virtual Network service endpoints and rules using the Azure portal](howto-manage-vnet-using-portal.md).
+        For help in connecting to an Azure     atabase for MySQL server, see [Connection libraries for Azure Database for MySQL](./concepts-connection-libraries.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        

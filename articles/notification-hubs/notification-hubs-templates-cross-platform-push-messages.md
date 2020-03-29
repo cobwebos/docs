@@ -1,6 +1,6 @@
 ---
 title: Azure 通知中心模板
-description: 了解如何使用 Azure 通知中心模板。
+description: 了解如何为 Azure 通知中心使用模板。
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263738"
 ---
 # <a name="templates"></a>模板
@@ -133,7 +133,7 @@ Windows 应用商店客户端应用的相应模板为：
 
 下表显示了模板中允许使用的语言：
 
-| Expression       | Description |
+| 表达式       | 描述 |
 | ---------------- | --- |
 | $(prop)          | 对具有给定名称的事件属性的引用。 属性名称不区分大小写。 此表达式将解析为属性的文本值，如果该属性不存在，则解析为空字符串。 |
 | $(prop, n)       | 同上，但会在 n 个字符处对文本进行显式剪切，例如，$(title, 20) 会在 20 个字符处对 title 属性的内容进行剪切。 |

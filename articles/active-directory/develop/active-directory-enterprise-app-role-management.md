@@ -1,5 +1,5 @@
 ---
-title: 配置企业 Azure AD 应用的角色声明 |Microsoft
+title: 为企业 Azure AD 应用配置角色声明 |蔚蓝
 titleSuffix: Microsoft identity platform
 description: 了解如何在 Azure Active Directory 中为企业应用程序配置 SAML 令牌中颁发的角色声明
 services: active-directory
@@ -14,17 +14,17 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.openlocfilehash: a70abd1cddb866037926bbbc881682d50599366b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76699251"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
 可以使用 Azure Active Directory (Azure AD) 为完成应用授权后收到的响应令牌中的角色声明自定义声明类型。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 安装了目录的 Azure AD 订阅。
 - 启用了单一登录 (SSO) 的订阅。 必须使用应用程序配置 SSO。
@@ -35,35 +35,35 @@ ms.locfileid: "76699251"
 
 ## <a name="create-roles-for-an-application"></a>为应用程序创建角色
 
-1. 在 [Azure 门户](https://portal.azure.com)的左窗格中，选择“Azure Active Directory”图标。
+1. 在 [Azure 门户](https://portal.azure.com)的左窗格中，选择“Azure Active Directory”**** 图标。
 
     ![Azure Active Directory 图标][1]
 
-2. 选择“企业应用程序”。 然后选择“所有应用程序”。
+2. 选择“企业应用程序”。**** 然后选择“所有应用程序”。****
 
     ![“企业应用程序”窗格][2]
 
-3. 若要添加新应用程序，请选择对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请选择对话框顶部的“新建应用程序”**** 按钮。
 
     ![“新建应用程序”按钮][3]
 
-4. 在搜索框中键入应用程序的名称，然后从结果面板中选择应用程序。 选择“添加”按钮，添加该应用程序。
+4. 在搜索框中键入应用程序的名称，然后从结果面板中选择应用程序。 选择“添加”按钮，添加该应用程序****。
 
     ![结果列表中的应用程序](./media/active-directory-enterprise-app-role-management/tutorial_app_addfromgallery.png)
 
-5. 添加应用程序后，转到“属性”页并复制对象 ID。
+5. 添加应用程序后，转到“属性”页并复制对象 ID。****
 
     ![“属性”页](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. 在另一个窗口中打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)，然后执行以下步骤：
+6. 在另一个窗口中打开[Microsoft 图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)，并采取以下步骤：
 
     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 需要足够的权限才能创建角色。 选择“修改权限”以获取权限。
+    b.保留“数据库类型”设置，即设置为“共享”。 需要足够的权限才能创建角色。 选择“修改权限”以获取权限。****
 
       ![“修改权限”按钮](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
 
-    c. 从列表中选择以下权限（如果还没有这些权限），然后选择“修改权限”。
+    c. 从列表中选择以下权限（如果还没有这些权限），然后选择“修改权限”。****
 
       ![权限列表和“修改权限”按钮](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "76699251"
 
     d.单击“下一步”。 接受许可。 此时会再次登录到系统。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 将版本更改为“beta”，然后使用以下查询从租户中提取服务主体列表：
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 将版本更改为“beta”****，然后使用以下查询从租户中提取服务主体列表：
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -83,7 +83,7 @@ ms.locfileid: "76699251"
       > [!Note]
       > 我们已经在升级 API，因此客户可能会看到服务中断。
 
-    f. 从提取的服务主体的列表中，获取需要修改的那一个。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 搜索从“属性”页复制的对象 ID，并使用以下查询转到服务主体：
+    f. 从提取的服务主体的列表中，获取需要修改的那一个。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 搜索从“属性”页复制的对象 ID，并使用以下查询转到服务主体：****
 
       `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
 
@@ -132,49 +132,49 @@ ms.locfileid: "76699251"
       > [!Note]
       > 对于修补操作，只能在 msiam_access 之后添加新角色。 此外，可以根据组织的需要添加任意数量的角色。 Azure AD 会在 SAML 响应中将这些角色的值作为声明值发送。 若要生成与新角色的 ID 相对应的 GUID 值，请使用类似[这样](https://www.guidgenerator.com/)的 Web 工具
 
-    i. 返回到 Graph 浏览器，将方法从 **GET** 更改为 **PATCH**。 通过更新 **appRoles** 属性（类似于前述示例中所示的属性）来修补服务主体对象以获取所需的角色。 选择“运行查询”以执行此修补操作。 一条成功消息会确认角色已创建。
+    i. 返回到 Graph 浏览器，将方法从 **GET** 更改为 **PATCH**。 通过更新 **appRoles** 属性（类似于前述示例中所示的属性）来修补服务主体对象以获取所需的角色。 选择“运行查询”以执行此修补操作。**** 一条成功消息会确认角色已创建。
 
       ![包含成功消息的修补操作](./media/active-directory-enterprise-app-role-management/graph-explorer-new11.png)
 
-7. 在使用更多角色修补服务主体后，可以将用户分配到相应的角色。 若要分配用户，可先转到门户，然后浏览到应用程序。 选择 "**用户和组**" 选项卡。此选项卡列出了已分配给该应用的所有用户和组。 可以在新角色上添加新用户。 还可以选择现有用户，然后再选择“编辑”来更改角色。
+7. 在使用更多角色修补服务主体后，可以将用户分配到相应的角色。 若要分配用户，可先转到门户，然后浏览到应用程序。 选择"**用户和组**"选项卡。此选项卡列出已分配给应用的所有用户和组。 可以在新角色上添加新用户。 还可以选择现有用户，然后再选择“编辑”来更改角色。****
 
     ![“用户和组”选项卡](./media/active-directory-enterprise-app-role-management/graph-explorer-new5.png)
 
-    若要将角色分配给任意用户，请选择新角色，然后选择页面底部的“分配”按钮。
+    若要将角色分配给任意用户，请选择新角色，然后选择页面底部的“分配”按钮。****
 
     ![“编辑分配”窗格和“选择角色”窗格](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
 
     > [!Note]
     > 需要在 Azure 门户中刷新会话才能看到新角色。
 
-8. 更新“属性”表以定义角色声明的自定义映射。
+8. 更新“属性”表以定义角色声明的自定义映射****。
 
-9. 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
+9. 在 **"用户属性**"对话框上的 **"用户声明"** 部分中，执行以下步骤以添加 SAML 令牌属性，如下表所示：
 
     | 属性名称 | 属性值 |
     | -------------- | ----------------|
     | 角色名称  | user.assignedroles |
 
     >[!NOTE]
-    >如果角色声明值为 null，则 Azure AD 将不会在令牌中发送此值，这是默认设置。
+    >如果角色声明值为空，则 Azure AD 将不会在令牌中发送此值，并且根据设计默认此值。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击 "**编辑**" 图标，打开 "& 声明" 对话框中的 "**用户属性**"。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击 **"编辑**"图标可打开**用户属性&声明**对话框。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在 "**管理用户声明**" 对话框中，单击 "**添加新声明**" 添加 "SAML 令牌" 属性。
+    b.保留“数据库类型”设置，即设置为“共享”。 在 **"管理用户声明"** 对话框中，通过单击"**添加新声明**"来添加 SAML 令牌属性。
 
       ![“添加属性”按钮](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
       ![“添加属性”窗格](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
 
-    c. 在“名称”框中，根据需要键入属性名称。 此示例中使用**角色名称**作为声明名称。
+    c. 在“名称”框中，根据需要键入属性名称。**** 此示例中使用**角色名称**作为声明名称。
 
-    d.单击“下一步”。 将“命名空间”框留空。
+    d.单击“下一步”。 将“命名空间”框留空****。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“源属性”列表中，键入为该行显示的属性值。
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 在“源属性”**** 列表中，键入为该行显示的属性值。
 
-    f. 选择“保存”。
+    f. 选择“保存”。****
 
 10. 若要在标识提供者启动的单一登录中测试应用程序，请登录到[访问面板](https://myapps.microsoft.com)，然后选择应用程序磁贴。 在 SAML 令牌中，应该会看到具有所提供的声明名称的用户的所有已分配角色。
 
@@ -182,11 +182,11 @@ ms.locfileid: "76699251"
 
 若要更新现有角色，请执行以下步骤：
 
-1. 打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)"。
+1. 打开[微软图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
 
 2. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
-3. 将版本更改为“beta”，然后使用以下查询从租户中提取服务主体列表：
+3. 将版本更改为“beta”****，然后使用以下查询从租户中提取服务主体列表：
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -194,7 +194,7 @@ ms.locfileid: "76699251"
 
     ![Graph 浏览器对话框，包含用于提取服务主体的查询](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
-4. 从提取的服务主体的列表中，获取需要修改的那一个。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 搜索从“属性”页复制的对象 ID，并使用以下查询转到服务主体：
+4. 从提取的服务主体的列表中，获取需要修改的那一个。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 搜索从“属性”页复制的对象 ID，并使用以下查询转到服务主体：****
 
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
 
@@ -208,23 +208,23 @@ ms.locfileid: "76699251"
 
     ![“PATCH”的请求正文，突出显示了“description”和“displayname”](./media/active-directory-enterprise-app-role-management/graph-explorer-patchupdate.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将方法从“GET”更改为“PATCH”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将方法从“GET”更改为“PATCH”********。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 复制现有角色，并将其粘贴到“请求正文”下。
+    b.保留“数据库类型”设置，即设置为“共享”。 复制现有角色，并将其粘贴到“请求正文”下****。
 
     c. 根据需要更新角色的值，具体说来就是更新角色说明、角色值或角色显示名称。
 
-    d.单击“下一步”。 更新所有要求的角色后，选择“运行查询”。
+    d.单击“下一步”。 更新所有要求的角色后，选择“运行查询”****。
 
 ## <a name="delete-an-existing-role"></a>删除现有角色
 
 若要删除现有角色，请执行以下步骤：
 
-1. 在另一个窗口中打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
+1. 在另一个窗口中打开[Microsoft 图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
 
 2. 使用租户的全局管理员或共同管理员凭据登录到 Graph 浏览器站点。
 
-3. 将版本更改为“beta”，然后使用以下查询从租户中提取服务主体列表：
+3. 将版本更改为“beta”****，然后使用以下查询从租户中提取服务主体列表：
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
@@ -232,7 +232,7 @@ ms.locfileid: "76699251"
 
     ![Graph 浏览器对话框，包含用于提取服务主体列表的查询](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
-4. 从提取的服务主体的列表中，获取需要修改的那一个。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 搜索从“属性”页复制的对象 ID，并使用以下查询转到服务主体：
+4. 从提取的服务主体的列表中，获取需要修改的那一个。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 搜索从“属性”页复制的对象 ID，并使用以下查询转到服务主体：****
 
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
 
@@ -246,18 +246,18 @@ ms.locfileid: "76699251"
 
     ![“PATCH”的请求正文，IsEnabled 设置为 false](./media/active-directory-enterprise-app-role-management/graph-explorer-new8.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将方法从“GET”更改为“PATCH”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将方法从“GET”更改为“PATCH”********。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 从应用程序中复制现有角色，并将其粘贴到“请求正文”下。
+    b.保留“数据库类型”设置，即设置为“共享”。 从应用程序中复制现有角色，并将其粘贴到“请求正文”下****。
 
-    c. 将想要删除的角色的“IsEnabled”值设置为“false”。
+    c. 将想要删除的角色的“IsEnabled”值设置为“false”。********
 
-    d.单击“下一步”。 选择“运行查询”。
+    d.单击“下一步”。 选择“运行查询”。****
 
     > [!NOTE]
     > 确保拥有 msiam_access 角色且 ID 在生成的角色中匹配。
 
-7. 在禁用角色后，从 **appRoles** 节删除该角色块。 将方法保留为 **PATCH**，然后选择“运行查询”。
+7. 在禁用角色后，从 **appRoles** 节删除该角色块。 将方法保留为 **PATCH**，然后选择“运行查询”。****
 
 8. 运行查询之后，角色就会被删除。
 

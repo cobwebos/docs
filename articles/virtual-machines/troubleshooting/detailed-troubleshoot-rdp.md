@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920138"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 中 Windows VM 远程桌面连接问题的详细故障排除步骤
@@ -31,7 +31,7 @@ ms.locfileid: "77920138"
 可能遇到不像[基本远程桌面故障排除指南](troubleshoot-rdp-connection.md)中所述的任何特定错误消息的远程桌面错误消息。 请遵循以下步骤来确定远程桌面 (RDP) 客户端为何无法连接到 Azure VM 上的 RDP 服务。
 
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并单击“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并单击“获取支持”。**** 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="components-of-a-remote-desktop-connection"></a>远程桌面连接的组件
 RDP 连接涉及以下组件：
@@ -114,7 +114,7 @@ RDP 连接涉及以下组件：
 ## <a name="source-4-network-security-groups"></a>来源 4：网络安全组
 使用网络安全组可以对允许的入站和出站流量进行更精细的控制。 可以创建跨 Azure 虚拟网络中的子网和云服务的规则。
 
-使用 [IP 流验证](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)来确认网络安全组中的规则是否阻止了传入或传出虚拟机的流量。 还可以查看有效的安全组规则，确保入站“允许”NSG 规则存在并已针对 RDP 端口（默认值 3389）进行优化。 有关详细信息，请参阅[使用有效的安全规则排查 VM 流量流问题](../../virtual-network/diagnose-network-traffic-filter-problem.md)。
+使用[IP 流验证](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)以确认网络安全组中的规则是否阻止进出虚拟机的流量。 还可以查看有效的安全组规则，确保入站“允许”NSG 规则存在并已针对 RDP 端口（默认值 3389）进行优化。 有关详细信息，请参阅[使用有效的安全规则来排除 VM 流量的故障](../../virtual-network/diagnose-network-traffic-filter-problem.md)。
 
 ## <a name="source-5-windows-based-azure-vm"></a>来源 5：基于 Windows 的 Azure VM
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)
@@ -146,9 +146,9 @@ $vmName="<Name of the target virtual machine>"
 .\InstallWinRMCertAzureVM.ps1 -SubscriptionName $subscr -ServiceName $serviceName -Name $vmName
 ```
 
-可以从 *Get-AzureSubscription* 命令显示的 **SubscriptionName** 属性获取正确的订阅名称。 可以从 *Get-AzureVM* 命令显示的 **ServiceName** 列中获取虚拟机的云服务名称。
+可以从 **Get-AzureSubscription** 命令显示的 *SubscriptionName* 属性获取正确的订阅名称。 可以从 **Get-AzureVM** 命令显示的 *ServiceName* 列中获取虚拟机的云服务名称。
 
-检查是否有新证书。 打开当前用户的“证书”管理单元，并在“受信任的根证书颁发机构\证书”文件夹中查找。 应看到在“颁发给”列中具有云服务的 DNS 名称的证书（示例：cloudservice4testing.cloudapp.net）。
+检查是否有新证书。 打开当前用户的“证书”管理单元，并在“受信任的根证书颁发机构\证书”文件夹中查找。**** 应看到在“颁发给”列中具有云服务的 DNS 名称的证书（示例：cloudservice4testing.cloudapp.net）。
 
 接下来，使用以下命令启动远程 Azure PowerShell 会话。
 

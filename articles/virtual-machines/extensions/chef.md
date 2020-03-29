@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure Vm 的 Chef 扩展
+title: Azure VM 的主长扩展
 description: 使用 Chef VM 扩展将 Chef 客户端部署到虚拟机。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
 ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76544712"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Chef VM 扩展
 
 Chef Software 为 Linux 和 Windows 提供了一个 DevOps 自动化平台，用于管理物理服务器配置和虚拟服务器配置。 Chef VM 扩展是一个用于在虚拟机上启用 Chef 的扩展。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -67,7 +67,7 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 
 ### <a name="core-property-values"></a>核心属性值
 
-| 名称 | 值/示例 | 数据类型
+| “属性” | 值/示例 | 数据类型
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | 字符串（日期） |
 | 发布者 | `Chef.Bootstrap.WindowsAzure` | 字符串 |
@@ -76,7 +76,7 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 
 ### <a name="settings"></a>设置
 
-| 名称 | 值/示例 | 数据类型 | 必需？
+| “属性” | 值/示例 | 数据类型 | 必需？
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | 字符串 (url) | Y |
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | 字符串 | Y |
@@ -84,7 +84,7 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 
 ### <a name="protected-settings"></a>受保护的设置
 
-| 名称 | 示例 | 数据类型 | 必需？
+| “属性” | 示例 | 数据类型 | 必需？
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | 字符串 | Y |
 
@@ -104,7 +104,7 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 
 可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以使用模板部署一台或多台虚拟机，安装 Chef 客户端，连接到 Chef 服务器并根据 [Run-list](https://docs.chef.io/run_lists.html) 定义的内容在服务器上执行初始配置。
 
-可以在[Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)中找到包含 Chef VM 扩展的示例资源管理器模板。
+在[Azure 快速入门库中](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)可以找到包含 Chef VM 扩展的示例资源管理器模板。
 
 虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/resource-manager-template-child-resource.md)。
 
@@ -153,8 +153,8 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 可以在 [Chef VM 扩展自述文件](https://github.com/chef-partners/azure-chef-extension)中找到更多故障排除信息。
 
 > [!NOTE]
-> 对于直接与 Chef 相关的任何其他内容，请联系[Chef 支持](https://www.chef.io/support/)。
+> 有关与厨师直接相关的任何其他内容，请联系[厨师支持](https://www.chef.io/support/)。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果本文中的任何一点都需要更多帮助，则可以在[MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上联系 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择"获取支持"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

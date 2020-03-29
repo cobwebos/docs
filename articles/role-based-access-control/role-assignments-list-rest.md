@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure RBAC 和 REST API 列出角色分配
-description: 了解如何使用 Azure 基于角色的访问控制（RBAC）和 REST API 来确定用户、组、服务主体或托管标识有权访问哪些资源。
+description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 REST API 来确定用户、组、服务主体和托管标识有权访问的资源内容。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,22 +12,22 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0db3e1b222aad7d2a5aa9fc20663fc6e17ea4f8c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a494e7fd4c9fb79faa6a1d8cb2c3c871796ccdc5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062159"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>使用 Azure RBAC 和 REST API 列出角色分配
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍了如何使用 REST API 列出角色分配。
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 REST API 列出角色分配。
 
 > [!NOTE]
-> 如果你的组织对使用[Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商具有外包管理功能，则此处将不会显示该服务提供商授权的角色分配。
+> 如果您的组织将管理功能外包给使用[Azure 委派资源的](../lighthouse/concepts/azure-delegated-resource-management.md)服务提供商，则该服务提供商授权的角色分配将不会在此处显示。
 
 ## <a name="list-role-assignments"></a>列出角色分配
 
@@ -39,24 +39,27 @@ ms.locfileid: "75981078"
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter={filter}
     ```
 
-1. 在 URI 中，将“{scope}”替换为要列出角色分配的范围。
+1. 在 URI 中，将“{scope}”** 替换为要列出角色分配的范围。
 
-    | 范围 | 类型 |
-    | --- | --- |
-    | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
-    | `subscriptions/{subscriptionId1}` | 订阅 |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+    > [!div class="mx-tableFixed"]
+    > | 范围 | 类型 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
+    > | `subscriptions/{subscriptionId1}` | 订阅 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 资源 |
 
-    在前面的示例中，microsoft 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅[Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)以及受支持的[azure 资源管理器资源提供程序操作](resource-provider-operations.md)。  
+    在前面的示例中，microsoft.web 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)和支持的 [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)。  
      
-1. 将“{filter}”替换为筛选角色分配列表时要应用的条件。
+1. 将“{filter}”** 替换为筛选角色分配列表时要应用的条件。
 
-    | 筛选 | Description |
-    | --- | --- |
-    | `$filter=atScope()` | 仅列出指定范围内的角色分配，不包括而处的角色分配。 |
-    | `$filter=principalId%20eq%20'{objectId}'` | 列出指定用户、组或服务主体的角色分配。 |
-    | `$filter=assignedTo('{objectId}')` | 列出指定用户或服务主体的角色分配。 如果用户是具有角色分配的组的成员，则还会列出该角色分配。 此筛选器可传递给组，这意味着，如果用户是组的成员，并且该组是具有角色分配的另一个组的成员，则还会列出该角色分配。 此筛选器仅接受用户或服务主体的对象 ID。 不能传递组的对象 ID。 |
+    > [!div class="mx-tableFixed"]
+    > | “筛选器” | 描述 |
+    > | --- | --- |
+    > | `$filter=atScope()` | 只列出指定范围内的角色分配，而不包括子范围内的角色分配。 |
+    > | `$filter=assignedTo('{objectId}')` | 列出指定用户或服务主体的角色分配。<br/>如果用户是具有角色分配的组的成员，则该角色分配也会列出。 此筛选器对于组是可传递的，这意味着如果用户是组的成员，并且该组是具有角色分配的另一个组的成员，则该角色分配也会列出。<br/>此筛选器仅接受用户或服务主体的对象 ID。 不能传递组的对象 ID。 |
+    > | `$filter=atScope()+and+assignedTo('{objectId}')` | 列出指定用户或服务主体和指定作用域的角色分配。 |
+    > | `$filter=principalId+eq+'{objectId}'` | 列出指定用户、组或服务主体的角色分配。 |
 
 ## <a name="next-steps"></a>后续步骤
 

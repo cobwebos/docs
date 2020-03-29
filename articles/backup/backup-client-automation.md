@@ -4,10 +4,10 @@ description: 本文介绍如何使用 PowerShell 在 Windows Server 或 Windows 
 ms.topic: conceptual
 ms.date: 12/2/2019
 ms.openlocfilehash: efe0b93fe1e37990422ffbd2256e38c12401dca5
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673189"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
@@ -18,7 +18,7 @@ ms.locfileid: "78673189"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-若要开始，请[安装最新的 PowerShell 版本](/powershell/azure/install-az-ps)。
+若要开始操作，请[安装最新的 PowerShell 版本](/powershell/azure/install-az-ps)。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -36,7 +36,7 @@ ms.locfileid: "78673189"
     New-AzResourceGroup –Name "test-rg" –Location "WestUS"
     ```
 
-3. 使用**AzRecoveryServicesVault** cmdlet 创建新的保管库。 确保为保管库指定的位置与用于资源组的位置是相同的。
+3. 使用 **New-AzRecoveryServicesVault** cmdlet 创建新的保管库。 确保为保管库指定的位置与用于资源组的位置是相同的。
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
@@ -56,9 +56,9 @@ ms.locfileid: "78673189"
 
 ## <a name="view-the-vaults-in-a-subscription"></a>在订阅中查看保管库
 
-使用**AzRecoveryServicesVault**查看当前订阅中所有保管库的列表。 可以使用此命令来查看是否创建了新的保管库，或者查看订阅中的可用保管库。
+使用 **Get-AzRecoveryServicesVault** 查看当前订阅中所有保管库的列表。 可以使用此命令来查看是否创建了新的保管库，或者查看订阅中的可用保管库。
 
-运行命令**AzRecoveryServicesVault**，并列出订阅中的所有保管库。
+运行命令"**获取-AzRecoveryServicesVault**"，并列出订阅中的所有保管库。
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -95,15 +95,15 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 MARSAgentInstaller.exe /q
 ```
 
-这以所有默认选项安装代理。 将在后台执行安装几分钟。 如果未指定 */nu*选项，则在安装结束时将打开 " **Windows 更新**" 窗口以检查是否有任何更新。 安装之后，代理会显示在已安装程序列表中。
+这以所有默认选项安装代理。 将在后台执行安装几分钟。 如果不指定 */nu*选项，则 Windows**更新**窗口将在安装结束时打开，以检查任何更新。 安装之后，代理会显示在已安装程序列表中。
 
-若要查看已安装的程序列表，请转到“**控制面板**”“ > **程序** > ”“**程序和功能**”。
+要查看已安装程序的列表，请转到**控制面板** > **程序和** > **功能**。
 
 ![已安装代理](./media/backup-client-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>安装选项
 
-若要查看通过命令行提供的所有选项，请使用以下命令：
+若要查看可通过命令行使用的所有选项，请使用以下命令：
 
 ```powershell
 MARSAgentInstaller.exe /?
@@ -133,12 +133,12 @@ $CredsPath = "C:\downloads"
 $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 -Path $CredsPath
 ```
 
-### <a name="registering-using-the-ps-az-module"></a>使用 PS Az module 注册
+### <a name="registering-using-the-ps-az-module"></a>使用 PS Az 模块注册
 
 > [!NOTE]
-> 用于生成保管库证书的 bug 在 Az 3.5.0 release 中已修复。 使用 Az 3.5.0 release 版本或更高版本下载保管库证书。
+> 在 Az 3.5.0 版本中修复了具有生成保管库证书的 Bug。 使用 Az 3.5.0 版本或更高版本下载保管库证书。
 
-由于基本平台限制，在 PowerShell 的最新 Az 模块中，下载保管库凭据需要自签名证书。 下面的示例演示如何提供自签名证书并下载保管库凭据。
+在 PowerShell 的最新 Az 模块中，由于基础平台的限制，下载保管库凭据需要自签名证书。 以下示例演示如何提供自签名证书并下载保管库凭据。
 
 ```powershell
 $dt = $(Get-Date).ToString("M-d-yyyy")
@@ -148,7 +148,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -
 ```
 
 在 Windows Server 或 Windows 客户端计算机上，运行 [Start-OBRegistration](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obregistration?view=winserver2012-ps) cmdlet 以将计算机注册到保管库。
-此操作以及用于备份的其他 cmdlet 来自 MSONLINE 模块，该模块是 Mars AgentInstaller 作为安装过程的一部分添加的。
+此 cmdlet 和用于备份的其他 cmdlet 都来自 Mars AgentInstaller 在安装过程中添加的 MSONLINE 模块。
 
 代理安装程序不会更新 $Env:PSModulePath 变量。 这意味着模块自动加载失败。 若要解决此问题，可以执行以下操作：
 
@@ -209,7 +209,7 @@ Server properties updated successfully.
 
 发送到 Azure 备份的备份数据会加密，以保护数据的机密性。 加密通行短语是在还原时用于解密数据的“密码”。
 
-你必须通过在 Azure 门户的 "**恢复服务保管库**" 部分中的 "**设置**" > **属性**" > **安全 pin** " 下选择 "**生成**" 生成安全 pin。 然后，将其用作命令中的 `generatedPIN`：
+必须在 Azure 门户的“恢复服务保管库”**** 部分的“设置”**** > “属性”**** > “安全 PIN”**** 下选择“生成”**** 来生成一个安全 PIN。 然后，将其用作命令中的 `generatedPIN`：
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force
@@ -243,10 +243,10 @@ $NewPolicy = New-OBPolicy
 
 ### <a name="configuring-the-backup-schedule"></a>配置备份计划
 
-策略的三个部分中的第一个部分是备份计划，该计划是使用[OBSchedule](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obschedule?view=winserver2012-ps) cmdlet 创建的。 备份计划将定义何时需要备份。 创建计划时，需要指定两个输入参数：
+在策略的 3 个组成部分中，第 1 个部分是备份计划，它是使用 [New-OBSchedule](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obschedule?view=winserver2012-ps) cmdlet 创建的。 备份计划将定义何时需要备份。 创建计划时，需要指定 2 个输入参数：
 
 * 应运行备份的**星期日期**。 可以只选一天或选择一周的每天运行备份作业，或选择星期日期的任意组合。
-* 应运行备份的**日期时间**。 最多可以定义一天中的三个不同时间来触发备份。
+* 应运行备份的**日期时间**。 最多可以定义一天中触发备份的三个不同时间。
 
 例如，可以配置在每个星期六和星期日下午 4 点运行备份策略。
 
@@ -266,7 +266,7 @@ BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName :
 
 ### <a name="configuring-a-retention-policy"></a>配置保留策略
 
-保留策略定义基于备份作业创建的恢复点的保留时间。 使用 [New-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obretentionpolicy?view=winserver2012-ps) cmdlet 创建新的保留策略时，可以使用 Azure 备份来指定需要保留备份恢复点的天数。 下面的示例将保留策略设置为7天。
+保留策略定义基于备份作业创建的恢复点的保留时间。 使用 [New-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obretentionpolicy?view=winserver2012-ps) cmdlet 创建新的保留策略时，可以使用 Azure 备份来指定需要保留备份恢复点的天数。 以下示例将保留策略设置为 7 天。
 
 ```powershell
 $RetentionPolicy = New-OBRetentionPolicy -RetentionDays 7
@@ -309,7 +309,7 @@ PolicyState     : Valid
 
 可以在 New-OBFileSpec 命令中使用 -NonRecursive 标志来完成后一种指定。
 
-在以下示例中，我们要备份卷 C: 和 D:，并排除 Windows 文件夹和任何临时文件夹中的操作系统二进制文件。 为此，我们将使用[OBFileSpec](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obfilespec?view=winserver2012-ps) cmdlet 创建两个文件规范-一个用于包含，一个用于排除。 创建文件规范后，使用 [Add-OBFileSpec](https://docs.microsoft.com/powershell/module/msonlinebackup/add-obfilespec?view=winserver2012-ps) cmdlet 将它们与策略相关联。
+在以下示例中，我们要备份卷 C: 和 D:，并排除 Windows 文件夹和任何临时文件夹中的操作系统二进制文件。 为此，我们将使用[New-OBFileSpec](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obfilespec?view=winserver2012-ps) cmdlet 创建两个文件规范 - 一个用于包含，一个用于排除。 创建文件规范后，使用 [Add-OBFileSpec](https://docs.microsoft.com/powershell/module/msonlinebackup/add-obfilespec?view=winserver2012-ps) cmdlet 将它们与策略相关联。
 
 ```powershell
 $Inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
@@ -405,7 +405,7 @@ PolicyState     : Valid
 
 ### <a name="applying-the-policy"></a>应用策略
 
-现在已完成策略对象，并且具有关联的备份计划、保留策略及文件包含/排除列表。 现在可以提交此策略以供 Azure 备份使用。 在应用新创建的策略之前，请使用[OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/remove-obpolicy?view=winserver2012-ps) cmdlet 确保没有任何现有备份策略与服务器相关联。 删除策略时，系统会提示确认。 若要跳过确认，请将 `-Confirm:$false` 标志与 cmdlet 一起使用。
+现在已完成策略对象，并且具有关联的备份计划、保留策略及文件包含/排除列表。 现在可以提交此策略以供 Azure 备份使用。 在应用新创建的策略之前，请确保没有使用[Remove-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/remove-obpolicy?view=winserver2012-ps) cmdlet 与服务器关联的现有备份策略。 删除策略时，系统会提示确认。 若要跳过确认，请在 cmdlet 中使用 `-Confirm:$false` 标志。
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy
@@ -415,7 +415,7 @@ Get-OBPolicy | Remove-OBPolicy
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
-使用 [Set-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obpolicy?view=winserver2012-ps) cmdlet 可以提交策略对象。 系统会提示确认。 若要跳过确认，请将 `-Confirm:$false` 标志与 cmdlet 一起使用。
+使用 [Set-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obpolicy?view=winserver2012-ps) cmdlet 可以提交策略对象。 系统会提示确认。 若要跳过确认，请在 cmdlet 中使用 `-Confirm:$false` 标志。
 
 ```powershell
 Set-OBPolicy -Policy $NewPolicy
@@ -518,7 +518,7 @@ IsRecursive : True
 
 ### <a name="performing-an-on-demand-backup"></a>执行按需备份
 
-设置备份策略后，将根据计划进行备份。 还可以使用[start-obbackup](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obbackup?view=winserver2012-ps) cmdlet 来触发按需备份：
+设置备份策略之后，会根据计划进行备份。 也可以使用 [Start-OBBackup](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obbackup?view=winserver2012-ps) cmdlet 触发按需备份：
 
 ```powershell
 Get-OBPolicy | Start-OBBackup
@@ -595,7 +595,7 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>选择要从中还原的备份点
 
-结合适当的参数运行 [Get-OBRecoverableItem](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obrecoverableitem?view=winserver2012-ps) cmdlet 可检索备份点列表。 在本示例中，我们将选择源卷*C：* 的最新备份点，并使用它来恢复特定文件。
+结合适当的参数运行 [Get-OBRecoverableItem](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obrecoverableitem?view=winserver2012-ps) cmdlet 可检索备份点列表。 在我们的示例中，我们将为源卷 C 选择最新的备份点 *：* 并用它来恢复特定文件。
 
 ```powershell
 $Rps = Get-OBRecoverableItem $Source[0]
@@ -631,7 +631,7 @@ ItemLastModifiedTime :
 
 ### <a name="specifying-an-item-to-restore"></a>指定要还原的项
 
-若要还原特定的文件，请指定与根卷相关的文件名。 例如，若要检索 C:\Test\Cat.job，请执行以下命令。
+若要还原特定文件，请指定与根卷相关的文件名。 例如，若要检索 C:\Test\Cat.job，请执行以下命令。
 
 ```powershell
 $Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE
@@ -654,13 +654,13 @@ ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 
 ### <a name="triggering-the-restore-process"></a>触发还原过程
 
-为了触发还原过程，首先需要指定恢复选项。 这可以使用 [New-OBRecoveryOption](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obrecoveryoption?view=winserver2012-ps) cmdlet 来完成。 对于本示例，假设我们想要将文件还原到*C：\temp*。我们还假设要跳过目标文件夹*C：\temp*中已存在的文件。若要创建此类恢复选项，请使用以下命令：
+为了触发还原过程，首先需要指定恢复选项。 这可以使用 [New-OBRecoveryOption](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obrecoveryoption?view=winserver2012-ps) cmdlet 来完成。 在此示例中，假设我们要将文件还原到*C：\temp*。我们还假设我们要跳过目标文件夹*C：\temp*上已经存在的文件。要创建此类恢复选项，请使用以下命令：
 
 ```powershell
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-现在，请对 [ cmdlet 输出中的选定 ](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obrecovery?view=winserver2012-ps) 使用 `$Item`Start-OBRecovery`Get-OBRecoverableItem` 命令来触发还原过程：
+现在，请对 `Get-OBRecoverableItem` cmdlet 输出中的选定 `$Item` 使用 [Start-OBRecovery](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obrecovery?view=winserver2012-ps) 命令来触发还原过程：
 
 ```powershell
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption
@@ -737,7 +737,7 @@ Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath
 
 ## <a name="next-steps"></a>后续步骤
 
-有关适用于 Windows Server/客户端的 Azure 备份的详细信息，请执行以下操作：
+有关适用于 Windows Server/客户端的 Azure 备份的详细信息，请参阅：
 
 * [Azure 备份简介](backup-introduction-to-azure-backup.md)
 * [备份 Windows Servers](backup-windows-with-mars-agent.md)

@@ -1,5 +1,5 @@
 ---
-title: 引用 Azure 规模集模板中的自定义映像
+title: 在 Azure 缩放集模板中引用自定义映像
 description: 了解如何向现有 Azure 虚拟机规模集模板添加自定义映像
 author: mayanknayar
 tags: azure-resource-manager
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: manayar
 ms.openlocfilehash: fd1a567af1c35cf6b659995e998b11a61a526508
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275591"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>向 Azure 规模集模板添加自定义映像
 
-本文介绍如何修改[基本规模集模板](virtual-machine-scale-sets-mvss-start.md)，以从自定义映像进行部署。
+本文介绍了如何修改[基本规模集模板](virtual-machine-scale-sets-mvss-start.md)，以便通过自定义映像进行部署。
 
 ## <a name="change-the-template-definition"></a>更改模板定义
-在[以前的文章](virtual-machine-scale-sets-mvss-start.md)中，我们已创建了一个基本规模集模板。 现在，我们将使用此早期模板，并对其进行修改，以创建从自定义映像部署规模集的模板。  
+在[此前的文章](virtual-machine-scale-sets-mvss-start.md)中，我们创建了基本的规模集模板。 我们现在将使用这个此前的模板并对其进行修改，以便创建一个模板来从自定义映像部署规模集。  
 
 ### <a name="creating-a-managed-disk-image"></a>创建托管磁盘映像
 

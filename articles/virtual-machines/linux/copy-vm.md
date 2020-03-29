@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.openlocfilehash: ed8574133eafe751699e90ea8cae832ee649fb00
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969588"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>使用 Azure CLI 和托管磁盘创建 Azure Linux VM 的副本
@@ -19,9 +19,9 @@ ms.locfileid: "78969588"
 
 还可以上传 [VHD 并从中创建 VM](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
--   安装 [Azure CLI](/cli/azure/install-az-cli2)。
+-   安装[Azure CLI](/cli/azure/install-az-cli2)。
 
 -   使用 [az login](/cli/azure/reference-index#az-login) 登录到一个 Azure 帐户。
 
@@ -125,4 +125,4 @@ az vm create --resource-group myResourceGroup \
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用[共享映像库](shared-images.md)管理 VM 映像。
+了解如何使用[共享映像库](shared-images.md)来管理 VM 映像。

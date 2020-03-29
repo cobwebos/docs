@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b36a3faab49ee8d51c25aa18879e6f5d1db8c2fb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76716757"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 和 Spark 展开数据科研
@@ -39,9 +39,9 @@ ms.locfileid: "76716757"
 > 
 > 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * 必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* 需要 Azure HDInsight 3.4 Spark 1.6 群集来完成以下过程。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的说明。 在“选择群集类型”菜单上设置群集类型和版本。
+* 需要 Azure HDInsight 3.4 Spark 1.6 群集来完成以下过程。 若要创建群集，请参阅[入门：在 Azure HDInsight 上创建 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的说明。 在“选择群集类型”**** 菜单上设置群集类型和版本。
 
 ![HDInsight 群集类型配置](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "76716757"
 有关 NYC 出租车行程数据说明以及如何从 Spark 群集上的 Jupyter notebook 执行代码的说明，请参阅[在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)中的相关部分。  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>从 Spark 群集上的 Jupyter notebook 执行 Scala 代码
-可以从 Azure 门户启动 Jupyter notebook。 在仪表板上找到 Spark 群集，并单击进入群集管理页面。 接下来，单击“群集仪表板”，再单击“Jupyter Notebook”打开与 Spark 群集关联的笔记本。
+可以从 Azure 门户启动 Jupyter notebook。 在仪表板上找到 Spark 群集，并单击进入群集管理页面。 接下来，单击“群集仪表板”****，再单击“Jupyter Notebook”**** 打开与 Spark 群集关联的笔记本。
 
 ![群集仪表板和 Jupyter notebook](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
@@ -60,9 +60,9 @@ ms.locfileid: "76716757"
 
 ![使用群集名称可转到 Jupyter notebook](./media/scala-walkthrough/spark-jupyter-notebook.png)
 
-选择“Scala”，查看包含数个使用 PySpark API 的预打包笔记本示例的目录。 浏览建模和评分可在 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala) 上获得，它使用 Scala.ipynb 笔记本，笔记本中包含此套 Spark 主题的代码示例。
+选择“Scala”****，查看包含数个使用 PySpark API 的预打包笔记本示例的目录。 浏览建模和评分可在 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala) 上获得，它使用 Scala.ipynb 笔记本，笔记本中包含此套 Spark 主题的代码示例。
 
-可以将笔记本直接从 GitHub 上传到 Spark 群集上的 Jupyter Notebook 服务器。 在 Jupyter 主页上，单击“上传”按钮。 在文件资源管理器中，粘贴 Scala notebook 的 GitHub（原始内容）URL，并单击“打开”。 可通过以下 URL 获取 Scala notebook:
+可以将笔记本直接从 GitHub 上传到 Spark 群集上的 Jupyter Notebook 服务器。 在 Jupyter 主页上，单击“上传”**** 按钮。 在文件资源管理器中，粘贴 Scala notebook 的 GitHub（原始内容）URL，并单击“打开”****。 可通过以下 URL 获取 Scala notebook:
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
@@ -254,13 +254,13 @@ Spark 可以读取和写入到 Azure Blob 存储。 可以使用 Spark 处理任
 |        10.5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>数据浏览和可视化
-将数据引入到 Spark 中后，数据科学过程的下一步是通过浏览和可视化更深入地了解数据。 在此部分中，可以使用 SQL 查询检查出租车数据。 然后，将结果导入到数据帧中，以便使用自动可视化 Jupyter 功能绘制目标变量和用于视觉检查的预期功能。
+将数据引入到 Spark 中后，数据科学过程的下一步是通过浏览和可视化更深入地了解数据。 在此部分中，可以使用 SQL 查询检查出租车数据。 然后，将结果导入数据框，使用自动可视化 Jupyter 功能绘制目标变量和预期要素以进行目视检查。
 
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>使用本地和 SQL magic 绘制数据
 默认情况下，从 Jupyter notebook 运行的任何代码片段的输出，在保留于辅助角色节点上的会话上下文中可用。 如果要将行程保存到辅助角色节点，以便每次计算，并且计算所需的所有数据都可以在 Jupyter 服务器节点（这是头节点）上本地可用，则可以使用 `%%local` magic 在 Jupyter 服务器上运行代码片段。
 
-* **SQL magic** (`%%sql`). HDInsight Spark 内核支持针对 SQLContext 的简单内联 HiveQL 查询。 （`-o VARIABLE_NAME`）参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 此设置表示输出将在本地模式下可用。
-* `%%local`**幻**数。 `%%local`magic 在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，将 `%%local` magic 与 `%%sql` magic 和 `-o` 参数结合使用。 `-o` 参数将本地保留 SQL 查询的输出，然后 `%%local` 将触发下一组代码片段，针对本地保留的 SQL 查询输出本地运行。
+* **SQL**魔法`%%sql`（ 。 HDInsight Spark 内核支持针对 SQLContext 的简单内联 HiveQL 查询。 （`-o VARIABLE_NAME`）参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 此设置表示输出将在本地模式下可用。
+* `%%local` **magic**。 `%%local`magic 在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，将 `%%local` magic 与 `%%sql` magic 和 `-o` 参数结合使用。 `-o` 参数将本地保留 SQL 查询的输出，然后 `%%local` 将触发下一组代码片段，针对本地保留的 SQL 查询输出本地运行。
 
 ### <a name="query-the-data-by-using-sql"></a>使用 SQL 查询数据
 此查询按费用金额、乘客数量和小费金额检索出租车行程。
@@ -535,9 +535,9 @@ MLlib 的建模和预测函数需要带有分类输入数据的特征在使用�
 ## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>二元分类模型：预测是否应支付小费
 在本部分中，创建三种类型的二元分类模型，用以预测是否应支付小费：
 
-* 使用 Spark ML  **函数创建**逻辑回归模型`LogisticRegression()`
-* 使用 Spark ML  **函数创建**随机林分类模型`RandomForestClassifier()`
-* 使用 MLlib  **函数创建**梯度提升树分类模型`GradientBoostedTrees()`
+* 使用 Spark ML `LogisticRegression()` 函数创建**逻辑回归模型**
+* 使用 Spark ML `RandomForestClassifier()` 函数创建**随机林分类模型**
+* 使用 MLlib `GradientBoostedTrees()` 函数创建**梯度提升树分类模型**
 
 ### <a name="create-a-logistic-regression-model"></a>创建逻辑回归模型
 下一步，使用 Spark ML `LogisticRegression()` 函数创建逻辑回归模型。 通过一系列步骤创建模型构建代码：
@@ -728,8 +728,8 @@ ROC 曲线为 0.9846895479241554 下的面积
 ## <a name="regression-model-predict-tip-amount"></a>回归模型：预测小费金额
 在本部分中，创建两种类型的回归模型，预测小费金额：
 
-* 使用 Spark ML  **函数创建**正则化线性回归模型`LinearRegression()`。 保存此模型，并根据测试数据评估模型。
-* 使用 Spark ML  **函数创建**梯度提升树回归模型`GBTRegressor()`。
+* 使用 Spark ML `LinearRegression()` 函数创建**正则化线性回归模型**。 保存此模型，并根据测试数据评估模型。
+* 使用 Spark ML `GBTRegressor()` 函数创建**梯度提升树回归模型**。
 
 ### <a name="create-a-regularized-linear-regression-model"></a>创建正则化线性回归模型
     # RECORD THE START TIME
@@ -853,7 +853,7 @@ ROC 曲线为 0.9846895479241554 下的面积
 ### <a name="create-a-gbt-regression-model"></a>创建 GBT 回归模型
 使用 Spark ML `GBTRegressor()` 函数创建 GBT 回归模型，并根据测试数据评估模型。
 
-[梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（gbt）是决策树的整体。 GBT 培训决策树，以最大程度地减少丢失函数。 您可以使用 GBT 进行回归和分类。 其可处理分类特征，不需要特征缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
+[渐变提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（GBTS） 是决策树的合奏。 GBTS 以迭代方式训练决策树，以尽量减少损失函数。 您可以使用 GBTS 进行回归和分类。 其可处理分类特征，不需要特征缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()

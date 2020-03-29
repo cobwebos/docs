@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944756"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>使用 REST API 获取虚拟机使用情况指标
 
-此示例演示如何使用 [Azure REST API](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) 检索 [Linux 虚拟机](/rest/api/azure/)的 CPU 使用情况。
+此示例演示如何使用 [Azure REST API](/rest/api/azure/) 检索 [Linux 虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/monitor)的 CPU 使用情况。
 
 [Azure Monitor REST 参考](/rest/api/monitor)中提供了完整的参考文档和 REST API 的其他示例。 
 
@@ -33,14 +33,14 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 以下标头是必需的： 
 
-|请求标头|说明|  
+|请求标头|描述|  
 |--------------------|-----------------|  
-|Content-Type：|必需。 设置为 `application/json`。|  
-|Authorization：|必需。 设置为有效的`Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
+|Content-Type：**|必需。 设置为 `application/json`。|  
+|*授权：*|必需。 设置为有效的`Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 参数
 
-| 名称 | 说明 |
+| “属性” | 描述 |
 | :--- | :---------- |
 | subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | resourceGroupName | 与资源相关的 Azure 资源组的名称。 可以从 Azure 资源管理器 API、CLI 或门户获取此值。 |

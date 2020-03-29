@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 9c05bddaeb3c34400db1ec75c624ef00a85d9444
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64720708"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>使用已连接到 StorSimple 虚拟阵列的 StorSimple Device Manager 的“服务摘要”边栏选项卡
@@ -32,19 +32,19 @@ StorSimple Device Manager 的“服务摘要”边栏选项卡提供连接到用
 
 使用这些选项可以执行各种操作，例如添加共享或卷，或者监视运行在虚拟阵列上的各种作业。
 
-概要区域捕获了一些重要的属性，例如资源组、位置，以及在其中创建了 StorSimple Device Manager 的订阅。
+概要区域捕获了一些重要的属性，例如资源组、位置，以及在其中创建了 StorSimple 设备管理器的订阅。
 
-## <a name="storsimple-device-manager-service-summary"></a>StorSimple Device Manager 服务摘要
-* “警报”磁贴提供对所有虚拟设备的所有活动警报的快照，并按警报的严重性进行分组。  单击该磁贴可打开“警报”边栏选项卡  ，在其中可单击单个警报以查看该警报的其他详细信息，包括任何建议的操作。 如果已解决此问题，还可清除警报。
-* “容量”磁贴  显示相对于所有虚拟设备可用的总存储，由所有虚拟设备预配的以及剩余的主存储。 “预配的”  是指已准备且已分配供使用的存储量，“剩余”  是指可以在所有虚拟设备上预配的剩余容量。 “剩余分层”容量是可以预配的可用容量（包括云），而“剩余本地”是附加到虚拟阵列的磁盘上剩余的容量。  
-* 在“使用情况”  图表中，可以看到虚拟设备的相关指标。 可查看所有虚拟设备使用的主存储，以及在过去 7 天（默认时间段）虚拟设备使用的云存储。 使用图表右上角的“编辑”  选项可选择其他时间范围。
-* “设备”  磁贴概述了 StorSimple Device Manager 中按设备状态分组的虚拟阵列的数目。 可以单击此磁贴打开“设备”列表边栏选项卡，再单击单个设备，查看特定于该设备的设备摘要。  也可以从给定的设备摘要边栏选项卡执行设备特定操作。 有关设备摘要边栏选项卡的详细信息，[请转到“设备摘要边栏选项卡”](storsimple-virtual-array-device-summary.md) 。
+## <a name="storsimple-device-manager-service-summary"></a>StorSimple 设备管理器服务摘要
+* “警报”磁贴提供对所有虚拟设备的所有活动警报的快照，并按警报的严重性进行分组。**** 单击该磁贴可打开“警报”边栏选项卡****，在其中可单击单个警报以查看该警报的其他详细信息，包括任何建议的操作。 如果已解决此问题，还可清除警报。
+* “容量”磁贴**** 显示相对于所有虚拟设备可用的总存储，由所有虚拟设备预配的以及剩余的主存储。 “预配的”**** 是指已准备且已分配供使用的存储量，“剩余”**** 是指可以在所有虚拟设备上预配的剩余容量。 “剩余分层”容量是可以预配的可用容量（包括云），而“剩余本地”是附加到虚拟阵列的磁盘上剩余的容量。********
+* 在“使用情况”**** 图表中，可以看到虚拟设备的相关指标。 可查看所有虚拟设备使用的主存储，以及在过去 7 天（默认时间段）虚拟设备使用的云存储。 使用图表右上角的“编辑”**** 选项可选择其他时间范围。
+* “设备”**** 磁贴概述了 StorSimple Device Manager 中按设备状态分组的虚拟阵列的数目。 可以单击此磁贴打开“设备”列表边栏选项卡，再单击单个设备，查看特定于该设备的设备摘要。**** 也可以从给定的设备摘要边栏选项卡执行设备特定操作。 有关设备摘要边栏选项卡的详细信息，[请转到“设备摘要边栏选项卡”](storsimple-virtual-array-device-summary.md) 。
 
 ## <a name="view-the-activity-logs"></a>查看活动日志
-若要查看在 StorSimple Device Manager 中执行的各种操作，请单击 StorSimple“服务摘要”边栏选项卡左侧的“活动日志”链接。  此时会转到“活动日志”边栏选项卡，其中会显示最近执行的操作的摘要。 
+若要查看在 StorSimple Device Manager 中执行的各种操作，请单击 StorSimple“服务摘要”边栏选项卡左侧的“活动日志”链接。**** 此时会转到“活动日志”边栏选项卡，其中会显示最近执行的操作的摘要。****
 
 ![活动日志](./media/storsimple-virtual-array-service-summary/activity-log.png)
 
 ## <a name="next-steps"></a>后续步骤
-了解如何[使用本地 Web UI 管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
+了解如何[使用本地 Web UI 来管理 StorSimple 虚拟阵列](storsimple-ova-web-ui-admin.md)。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务常见问题
-description: 本文提供了有关 Azure 媒体服务的常见问题的解答。
+description: 本文回答了有关 Azure 媒体服务的常见问题。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: bdb5a43ad6669bfcd6e93ef4e3bf1646314e4606
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705864"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>媒体服务 v2 常见问题
@@ -26,7 +26,7 @@ ms.locfileid: "76705864"
 
 ## <a name="general-ams-faqs"></a>一般性的 AMS 常见问题
 
-问：你如何流式传输到 Apple iOS 设备？
+问：如何流式传输到 Apple iOS 设备？
 
 答：向 URL 的“/Manifest”部分添加“(format=m3u8-aapl)”路径，告知流式处理源服务器返回供 Apple iOS 本机设备使用的 HLS 内容（有关详细信息，请参阅[传送内容](media-services-deliver-content-overview.md)）。
 
@@ -36,7 +36,7 @@ ms.locfileid: "76705864"
 
 问：我已经上传、编码并发布了视频。 为什么在我尝试对视频进行流式处理时，它不播放？
 
-答：最常见的原因之一是，你没有尝试**播放的流式**处理终结点。  
+答：最常见的原因之一是，您没有尝试在 **"运行"** 状态中播放的流式处理终结点。  
 
 问：我是否可以在实时流上进行合成操作？
 
@@ -56,7 +56,7 @@ ms.locfileid: "76705864"
 
 问：AMS 支持使用哪些字符来为文件命名？
 
-答：当为流内容生成 Url 时（例如，http：//{AMSAccount} windowsazure.mediaservices/{GUID}/{IAssetFile}/streamingParameters），媒体服务将使用 IAssetFile.Name 属性的值。出于此原因，不允许使用百分号编码。 **Name** 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!* '();:@&=+$,/?%#[]"。 此外，只能有一个“.” 文件名扩展名。
+答：媒体服务在为流内容构建 URL 时使用IAssetFile.Name属性的值（例如，http：//AMSAccount_.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/流式处理参数。因此，不允许进行百分比编码。 **Name**属性的值不能具有以下[编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)的任何：！*'（））;：&=$，/%*"。 此外，只能有一个“.” 文件名扩展名。
 
 问：如何使用 REST 进行连接？
 

@@ -14,15 +14,15 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/28/2019
 ms.openlocfilehash: eb382a66ac901853d28b4d63d31a30ed2f65b96c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263925"
 ---
 # <a name="azure-notification-hubs-samples"></a>Azure 通知中心示例
 
-本文提供一些示例链接，这些示例演示了 Azure 通知中心中的主要功能。
+本文提供示例链接，这些示例演示 Azure 通知中心的主要功能。
 
 ## <a name="samples"></a>示例
 
@@ -34,4 +34,4 @@ ms.locfileid: "76263925"
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅目录中 "**教程**" 部分的教程。
+请参阅**目录教程部分**中的教程。

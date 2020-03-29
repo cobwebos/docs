@@ -16,16 +16,16 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918308"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒体视频缩略图创建视频摘要  
 
 > [!NOTE]
-> **Azure Media Video Thumbnails**媒体处理器将停用。 有关停用日期，请参阅[旧组件](legacy-components.md)主题。
+> **Azure 媒体视频缩略图**媒体处理器将停用。 有关停用日期，请参阅[旧组件](legacy-components.md)主题。
 
 ## <a name="overview"></a>概述
 
@@ -33,7 +33,7 @@ ms.locfileid: "77918308"
 
 **Azure Media Video Thumbnail** MP 目前以预览版提供。
 
-本文详细介绍 Azure Media Video Thumbnail，并演示如何将它与用于 .NET 的媒体服务 SDK 配合使用。
+本文详细介绍 Azure Media Video Thumbnail，并演示如何将它与用于 .NET 的媒体服务 SDK 配合使用****。
 
 ## <a name="limitations"></a>限制
 
@@ -59,7 +59,7 @@ ms.locfileid: "77918308"
 
 当前你可更改以下参数：
 
-| Param | 说明 |
+| Param | 描述 |
 | --- | --- |
 | outputAudio |指定生成的视频是否包含音频。 <br/>允许的值为：True 或 False。 默认值为 True。 |
 | fadeInFadeOut |指定单独动态缩略图之间是否使用淡入淡出转换。  <br/>允许的值为：True 或 False。  默认值为 True。 |
@@ -107,7 +107,7 @@ ms.locfileid: "77918308"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，使用 连接信息填充 app.config 文件，如使用[.NET 的媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>示例
 

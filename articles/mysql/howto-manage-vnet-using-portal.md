@@ -1,17 +1,17 @@
 ---
-title: 管理 VNet 终结点-Azure 门户-Azure Database for MySQL
+title: 管理 VNet 终结点 - Azure 门户 - Azure Database for MySQL
 description: 使用 Azure 门户创建和管理 Azure Database for MySQL VNet 服务终结点和规则
 author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: ee1951de850e402721e0abb3e08a55b73f3eedfa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 3/18/2020
+ms.openlocfilehash: fec85f7d87bbfe0039744b9ea63239083ff1c8a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979355"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063538"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL VNet 服务终结点和 VNet 规则
 虚拟网络 (VNet) 服务终结点和规则将虚拟网络的专用地址空间扩展到 Azure Database for MySQL 服务器。 若要概览 Azure Database for MySQL VNet 服务终结点（包括限制），请参阅 [Azure Database for MySQL 服务器 VNet 服务终结点](concepts-data-access-and-security-vnet.md)。 在 Azure Database for MySQL 的所有支持区域中，VNet 服务终结点均可用。
@@ -23,18 +23,18 @@ ms.locfileid: "75979355"
 
 ## <a name="create-a-vnet-rule-and-enable-service-endpoints-in-the-azure-portal"></a>在 Azure 门户中创建 VNet 规则和启用服务终结点
 
-1. 在 MySQL 服务器页面上的“设置”标题下，单击“连接安全性”，以打开 Azure Database for MySQL 的“连接安全性”窗格。 
+1. 在 MySQL 服务器页面上的“设置”标题下，单击“连接安全性”****，以打开 Azure Database for MySQL 的“连接安全性”窗格。 
 
-2. 确保 "允许访问 Azure 服务" 控件设置为 "**关闭**"。
+2. 确保将“允许访问 Azure 服务”控件设置为“关闭”。****
 
 > [!Important]
-> 如果将控件设置为 ON，则 Azure MySQL 数据库服务器接受来自任何子网的通信。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 "Microsoft Azure 虚拟网络服务终结点" 功能与 Azure Database for MySQL 的虚拟网络规则功能一起，共同降低了安全面。
+> 如果将此控件设置为“启用”，则 Azure MySQL 数据库服务器接受来自任何子网的通信。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 Microsoft Azure 虚拟网络服务终结点功能与 MySQL Azure 数据库的虚拟网络规则功能协调，可共同减少安全表面积。
 
-3. 接下来，单击“+ 添加现有虚拟网络”。 若无现有 VNet，可以单击“+ 新建虚拟网络”来创建一个。 请参阅[快速入门：使用 Azure 门户创建虚拟网络](../virtual-network/quick-create-portal.md)
+3. 接下来，单击“+ 添加现有虚拟网络”****。 若无现有 VNet，可以单击“+ 新建虚拟网络”**** 来创建一个。 请参阅[快速入门：使用 Azure 门户创建虚拟网络](../virtual-network/quick-create-portal.md)
 
    ![Azure 门户 - 单击“连接安全性”](./media/howto-manage-vnet-using-portal/1-connection-security.png)
 
-4. 输入 VNet 规则名称，选择订阅、虚拟网络和子网名称，再单击“启用”。 这会使用 Microsoft.SQL 服务标记自动对子网启用 VNet 服务终结点。
+4. 输入 VNet 规则名称，选择订阅、虚拟网络和子网名称，再单击“启用”****。 这会使用 Microsoft.SQL**** 服务标记自动对子网启用 VNet 服务终结点。
 
    ![Azure 门户 - 配置 VNet](./media/howto-manage-vnet-using-portal/2-configure-vnet.png)
 
@@ -46,13 +46,13 @@ ms.locfileid: "75979355"
     
    详细了解[内置角色](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)以及将特定的权限分配到[自定义角色](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)。
     
-   VNet 和 Azure 服务资源可以位于相同或不同的订阅中。 如果 VNet 和 Azure 服务资源位于不同的订阅中，资源应在相同的 Active Directory (AD) 租户下。 确保两个订阅都注册了**Microsoft .sql**资源提供程序。 有关详细信息，请参阅[资源管理器-注册][resource-manager-portal]
+   VNet 和 Azure 服务资源可以位于相同或不同的订阅中。 如果 VNet 和 Azure 服务资源位于不同的订阅中，资源应在相同的 Active Directory (AD) 租户下。 确保两个订阅都注册了 **Microsoft.Sql** 资源提供程序。 有关详细信息，请参阅[资源管理器注册][resource-manager-portal]
 
    > [!IMPORTANT]
-   > 强烈建议在配置服务终结点前，先阅读本文介绍的服务终结点配置和注意事项。 虚拟网络服务终结点：[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 VNet 服务终结点使用服务类型名称 Microsoft.Sql，可引用名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure SQL 数据库、Azure Database for PostgreSQL 和 MySQL 服务。 请务必要注意，对 VNet 服务终结点应用 Microsoft.Sql 服务标记时，它会为所有 Azure 数据库服务配置服务终结点流量，其中包括 Azure SQL 数据库、Azure Database for PostgreSQL 和子网上的 Azure Database for MySQL 服务器。 
+   > 强烈建议在配置服务终结点前，先阅读本文介绍的服务终结点配置和注意事项。 **虚拟网络服务终结点：**[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)是属性值包含一个或多个正式 Azure 服务类型名称的子网。 VNet 服务终结点使用服务类型名称 Microsoft.Sql****，可引用名为“SQL 数据库”的 Azure 服务。 此服务标记也适用于 Azure SQL 数据库、Azure Database for PostgreSQL 和 MySQL 服务。 请务必要注意，对 VNet 服务终结点应用 Microsoft.Sql**** 服务标记时，它会为所有 Azure 数据库服务配置服务终结点流量，其中包括 Azure SQL 数据库、Azure Database for PostgreSQL 和子网上的 Azure Database for MySQL 服务器。 
    > 
 
-5. 启用后，单击“确定”即可看到 VNet 服务终结点与 VNet 规则一起启用。
+5. 启用后，单击“确定”**** 即可看到 VNet 服务终结点与 VNet 规则一起启用。
 
    ![VNet 服务终结点已启用，且 VNet 规则已创建](./media/howto-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918302"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>使用 Azure 媒体分析将视频文件中的文本内容转换为数字文本  
@@ -46,7 +46,7 @@ ms.locfileid: "77918302"
 >
 
 ### <a name="attribute-descriptions"></a>属性说明
-| 属性名称 | 说明 |
+| 属性名称 | 描述 |
 | --- | --- |
 |AdvancedOutput| 如果将 AdvancedOutput 设置为 true，则 JSON 输出将包含每个单词的位置数据（除了短语和区域以外）。 如果不想查看这些详细信息，请将标志设置为 false。 默认值是 False。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)。|
 | 语言 |（可选）描述要查找的文本的语言。 下列其中一项：“自动检测”（默认值）、“阿拉伯语”、“简体中文”、“繁体中文”、“捷克语”、“丹麦语”、“荷兰语”、“英语”、“芬兰语”、“法语”、“德语”、“希腊语”、“匈牙利语”、“意大利语”、“日语”、“韩语”、“挪威语”、“波兰语”、“葡萄牙语”、“罗马尼亚语”、“俄语”、“塞尔维亚语(西里尔文)”、“塞尔维亚语(拉丁语)”、“斯洛伐克语”、“西班牙语”、“瑞典语”、“土耳其语”。 |
@@ -107,7 +107,7 @@ OCR 媒体处理器的输出是一个 JSON 文件。
 
 输出包含以下属性：
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 | --- | --- |
 | 时间刻度 |视频每秒的“刻度”数 |
 | Offset |时间戳的时间偏移量。 在版本 1.0 的视频 API 中，此属性始终为 0。 |
@@ -193,7 +193,7 @@ OCR 媒体处理器的输出是一个 JSON 文件。
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，使用 连接信息填充 app.config 文件，如使用[.NET 的媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>示例
 

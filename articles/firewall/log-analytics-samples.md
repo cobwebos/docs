@@ -1,6 +1,6 @@
 ---
-title: Azure 防火墙 log analytics 示例
-description: Azure Monitor 日志可用于分析 Azure 防火墙。 示例文件是 Azure Monitor 中的视图设计器生成的。
+title: Azure 防火墙日志分析示例
+description: Azure Monitor 日志可用于分析 Azure 防火墙。 示例文件是在 Azure Monitor 的视图设计器中构建的。
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,29 +8,29 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: victorh
 ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705955"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Azure 防火墙 log analytics 示例
+# <a name="azure-firewall-log-analytics-samples"></a>Azure 防火墙日志分析示例
 
-以下 Azure Monitor 日志示例可用于分析你的 Azure 防火墙日志。 示例文件是 Azure Monitor 中的视图设计器生成的， [Azure Monitor 文章中的视图设计器](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer)包含有关视图设计概念的详细信息。
+以下 Azure Monitor 日志示例可用于分析 Azure 防火墙日志。 示例文件是在 Azure Monitor 的视图设计器中构建的，[Azure Monitor 中的视图设计器](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer)一文提供了有关视图设计概念的更多信息。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="azure-monitor-logs-view"></a>Azure Monitor 日志视图
 
-下面介绍了如何配置 Azure Monitor 日志可视化的示例。 可从 [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) 存储库下载可视化示例。 最简单的方法是右键单击此页面上的超链接，然后选择“另存为”，并提供类似“AzureFirewall.omsview”的名称。 
+下面是配置示例 Azure Monitor 日志可视化的方法。 可从 [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) 存储库下载可视化示例。 最简单的方法是右键单击此页面上的超链接，然后选择“另存为”，并提供类似“AzureFirewall.omsview”的名称******。 
 
-执行以下步骤，将视图添加到 Log Analytics 工作区：
+执行以下步骤以将视图添加到 Log Analytics 工作区中：
 
-1. 打开 Azure 门户中的 "Log Analytics" 工作区。
-2. 打开“常规”下的“视图设计器”。
-3. 单击“导入”。
-4. 浏览并选择之前下载的“AzureFirewall.omsview”文件。
-5. 单击“ **保存**”。
+1. 在 Azure 门户中打开 Log Analytics 工作区。
+2. 打开“常规”下的“视图设计器”********。
+3. 单击“导入”****。
+4. 浏览并选择之前下载的“AzureFirewall.omsview”文件****。
+5. 单击“保存”。****
 
 以下是视图查找应用程序规则日志数据的方式：
 
@@ -40,7 +40,7 @@ ms.locfileid: "76705955"
 
 ![网络规则日志数据]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Azure 防火墙将低于 AzureDiagnostics 的数据记录为**AzureFirewallApplicationRule**或**AzureFirewallNetworkRule**。 包含详细信息的数据存储在 msg_s 字段中。 借助[分析](https://docs.microsoft.com/azure/kusto/query/parseoperator)运算符，可从 msg_s 字段中提取各种相关属性。 以下查询提取两种类别的信息。
+AzureDiagnostics 下的 Azure 防火墙日志数据类别为“AzureFirewallApplicationRule”或“AzureFirewallNetworkRule”********。 包含详细信息的数据存储在 msg_s 字段中。 借助[分析](https://docs.microsoft.com/azure/kusto/query/parseoperator)运算符，可从 msg_s 字段中提取各种相关属性。 以下查询提取两种类别的信息。
 
 ## <a name="application-rules-log-data-query"></a>应用程序规则日志数据查询
 
@@ -100,7 +100,7 @@ RuleCollection = case(RuleCollection2b == "",case(RuleCollection2a == "","No rul
 
 ## <a name="network-rules-log-data-query"></a>网络规则日志数据查询
 
-下面的查询分析网络规则日志数据。 在不同的注释行中，有一些关于如何生成查询的指导：
+以下查询分析网络规则日志数据。 在不同的注释行中，有一些关于如何生成查询的指导：
 
 ```Kusto
 AzureDiagnostics
@@ -151,9 +151,9 @@ AzureDiagnostics
 | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action, NatDestination
 ```
 
-## <a name="threat-intelligence-log-data-query"></a>威胁情报日志数据查询
+## <a name="threat-intelligence-log-data-query"></a>威胁智能日志数据查询
 
-下面的查询分析威胁情报规则日志数据：
+以下查询分析威胁智能规则日志数据：
 
 ```Kusto
 AzureDiagnostics
@@ -168,7 +168,7 @@ AzureDiagnostics
 
 ## <a name="sample-logs"></a>示例日志
 
-以下日志示例显示了日志条目中包含的数据。
+以下日志示例显示日志条目中包含的数据。
 
 ![日志条目](media/log-analytics-samples/log1.png)
 

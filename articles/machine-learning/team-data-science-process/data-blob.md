@@ -12,19 +12,19 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4c47dfb8b221b6cb4b6237669ecd17c1637107a2
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721092"
 ---
-# <a name="heading"></a>使用高级分析处理 Azure Blob 数据
+# <a name="process-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>使用高级分析处理 Azure Blob 数据
 本文档介绍了如何浏览数据，以及如何从 Azure Blob 存储中存储的数据生成功能。 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>将数据加载到 Pandas 数据帧
-要浏览和操作数据集，必须将其从 blob 源下载到本地文件，然后可以将其加载到 Pandas 数据帧中。 下面是此过程的所需步骤：
+为了浏览和操作数据集，必须将其从 blob 源下载到本地文件，然后可以加载到 Pandas 数据框架中。 下面是此过程的所需步骤：
 
-1. 从 Azure blob 下载数据，其中包含使用 Blob 服务的以下示例 Python 代码。 使用特定值替代下方代码中的变量： 
+1. 使用 Blob 服务使用以下示例 Python 代码从 Azure Blob 下载数据。 使用特定值替代下方代码中的变量： 
    
         from azure.storage.blob import BlobService
         import tables
@@ -48,7 +48,7 @@ ms.locfileid: "76721092"
 
 现在可以准备浏览数据并在此数据集上生成功能了。
 
-## <a name="blob-dataexploration"></a>数据浏览
+## <a name="data-exploration"></a><a name="blob-dataexploration"></a>数据浏览
 下方为如何使用 Pandas 浏览数据的几个示例：
 
 1. 检查行数和列数 
@@ -94,10 +94,10 @@ ms.locfileid: "76721092"
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-## <a name="blob-featuregen"></a>功能生成
+## <a name="feature-generation"></a><a name="blob-featuregen"></a>功能生成
 可按如下所示使用 Python 生成功能：
 
-### <a name="blob-countfeature"></a>基于指示器值生成功能
+### <a name="indicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>基于指示器值生成功能
 可以按如下方式创建分类功能：
 
 1. 检查分类列的分布：
@@ -116,7 +116,7 @@ ms.locfileid: "76721092"
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="blob-binningfeature"></a>生成装箱功能
+### <a name="binning-feature-generation"></a><a name="blob-binningfeature"></a>生成装箱功能
 要生成装箱功能，请按如下所示操作：
 
 1. 添加一系列的列，量化数字列
@@ -130,8 +130,8 @@ ms.locfileid: "76721092"
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="sql-featuregen"></a>将数据写回 Azure blob 并在 Azure 机器学习中使用
-浏览数据并创建所需的功能后，可以使用以下步骤将数据（抽样或特征化）上传到 Azure blob 并在 Azure 机器学习中使用：其他功能可在 Azure 机器学习Studio （经典）。 
+## <a name="writing-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>将数据写回 Azure blob 并在 Azure 机器学习中使用
+浏览数据并创建必要的功能后，可以将数据（采样或已计算）上载到 Azure Blob，并使用以下步骤在 Azure 机器学习中使用：可以在 Azure 机器学习中创建其他功能工作室（经典）以及。 
 
 1. 将数据帧写入本地文件
    

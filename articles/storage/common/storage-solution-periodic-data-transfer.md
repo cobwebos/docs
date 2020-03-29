@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: fb49802adf6242f445b700d06622d7e6aa336b4d
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67357042"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期数据传输解决方案
@@ -25,10 +25,10 @@ ms.locfileid: "67357042"
 
 推荐的定期数据传输选项根据传输性质（定期或持续）分为两类。
 
-- 脚本/编程工具  - 对于定期发生的数据传输，请使用 AzCopy 和 Azure 存储 REST API 等脚本及编程工具。 这些工具均面向 IT 专业人员和开发人员。
+- 脚本/编程工具**** - 对于定期发生的数据传输，请使用 AzCopy 和 Azure 存储 REST API 等脚本及编程工具。 这些工具均面向 IT 专业人员和开发人员。
 
-    - AzCopy  - 使用此命令行工具在保证最佳性能的同时轻松向/从 Azure Blob、文件和表存储复制数据。 AzCopy 支持并发度和并行度，并且可以在复制操作中断后进行恢复。
-    - Azure 存储 REST API/SDK  - 生成应用程序时，可以对照着 Azure 存储 REST API 开发应用程序，并使用以多种语言提供的 Azure SDK。 REST API 还可以利用 Azure 存储数据移动库该库专为高性能设计，用于将数据复制到 Azure 和从 Azure 复制数据。
+    - AzCopy**** - 使用此命令行工具在保证最佳性能的同时轻松向/从 Azure Blob、文件和表存储复制数据。 AzCopy 支持并发度和并行度，并且可以在复制操作中断后进行恢复。
+    - Azure 存储 REST API/SDK**** - 生成应用程序时，可以对照着 Azure 存储 REST API 开发应用程序，并使用以多种语言提供的 Azure SDK。 REST API 还可以利用 Azure 存储数据移动库该库专为高性能设计，用于将数据复制到 Azure 和从 Azure 复制数据。
 
 - **连续数据引入工具** - 对于连续的持续数据引入，可以选择一个 Data Box 在线传输设备或 Azure 数据工厂。 这些工具是由 IT 专业人员设置的，能以透明的方式自动执行数据传输。
 
@@ -61,7 +61,7 @@ ms.locfileid: "67357042"
 | 数据预处理                           | 否                         | 是，通过 Edge 计算进行    | 是                                                           |
 | 本地缓存<br>（存储本地数据）    | 是                        | 是                      | 否                                                            |
 | 从其他云传输                    | 否                         | 否                       | 是                                                           |
-| 定价                                       | [定价](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [价格](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [定价](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
+| 定价                                       | [定价](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [定价](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [定价](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 诊断 Azure 开发测试实验室虚拟机中的项目失败
-description: 开发测试实验室提供了可用于诊断项目失败的信息。 本文介绍了如何对项目故障进行故障排除。
+title: 诊断 Azure 开发人员测试实验室虚拟机中的项目故障
+description: DevTest Labs 提供的信息可用于诊断项目故障。 本文介绍如何排除项目故障。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 7229f1ee4061eb38b7c6da09df21102ab302ab42
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760311"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>对实验室中的项目失败进行诊断 
@@ -34,11 +34,11 @@ ms.locfileid: "76760311"
 
 1. 在 Azure 门户中的资源列表中选择实验室。
 2. 选择包含想要调查的项目的 Windows VM。
-3. 在左侧面板中，在“常规”下选择“项目”。 随即会出现与该 VM 关联的项目的列表。 其中显示了项目的名称和状态。
+3. 在左侧面板中，在“常规”下选择“项目”********。 随即会出现与该 VM 关联的项目的列表。 其中显示了项目的名称和状态。
 
    ![项目状态](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure.png)
 
-4. 选择状态显示为“失败”的项目。 项目随即打开。 此时会显示一条扩展消息，其中包含有关项目失败的详细信息。
+4. 选择状态显示为“失败”的项目****。 项目随即打开。 此时会显示一条扩展消息，其中包含有关项目失败的详细信息。
 
    ![项目错误消息](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error.png)
 
@@ -46,13 +46,13 @@ ms.locfileid: "76760311"
 ## <a name="troubleshoot-artifact-failures-from-within-the-virtual-machine"></a>从虚拟机中对项目失败进行故障排除
 
 1. 登录到包含要诊断的项目的 VM。
-2. 转到 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\\1.9\Status，其中 1.9 为 Azure 自定义脚本扩展版本号。
+2. 转到 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\\1.9\Status，其中 1.9 为 Azure 自定义脚本扩展版本号****。
 
    ![状态文件](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error-vm-status.png)
 
-3. 打开状态文件。
+3. 打开状态文件****。
 
-有关在**linux** VM 上查找日志文件的说明，请参阅以下文章：[将 Azure 自定义脚本扩展版本2用于 linux 虚拟机](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
+有关在**Linux** VM 上查找日志文件的说明，请参阅以下文章：将[Azure 自定义脚本扩展版本 2 与 Linux 虚拟机一起使用](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
 
 
 ## <a name="related-blog-posts"></a>相关的博客文章

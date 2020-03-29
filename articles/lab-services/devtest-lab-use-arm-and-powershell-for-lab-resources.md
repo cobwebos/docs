@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 180081829387afeb7e63defe7a22378aa8d417d6
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170309"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>使用 Azure 资源管理器模板和 PowerShell 自动创建或修改实验室
@@ -49,4 +49,4 @@ ms.locfileid: "76170309"
 
 ### <a name="next-steps"></a>后续步骤
 * 了解如何创建存储自定义模板或脚本的[专用 Git 存储库](devtest-lab-add-artifact-repo.md)。
-* 浏览 [Azure 快速入门模板库中的 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates)。
+* 从[Azure 快速入门模板库中浏览 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates)。

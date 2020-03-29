@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561670"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure 事件网格用于订阅的事件架构
 
-本文提供 Azure 订阅事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+本文提供 Azure 订阅事件的属性和架构。有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
 Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资源更改或操作相关。 主要区别是资源组针对资源组中的资源发出事件，Azure 订阅针对跨订阅的资源发出事件。
 
@@ -48,7 +48,7 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 
 ## <a name="example-event"></a>示例事件
 
-以下示例展示了 ResourceWriteSuccess 事件的架构。 具有不同 `eventType` 值的 ResourceWriteFailure 和 ResourceWriteCancel 事件会使用相同的模式。
+以下示例展示了 ResourceWriteSuccess 事件的架构****。 具有不同 `eventType` 值的 ResourceWriteFailure 和 ResourceWriteCancel 事件会使用相同的模式********。
 
 ```json
 [{
@@ -108,7 +108,7 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 }]
 ```
 
-以下示例展示了 ResourceDeleteSuccess 事件的架构。 具有不同 `eventType` 值的 ResourceDeleteFailure 和 ResourceDeleteCancel 事件会使用相同的模式。
+以下示例展示了 ResourceDeleteSuccess 事件的架构****。 具有不同 `eventType` 值的 ResourceDeleteFailure 和 ResourceDeleteCancel 事件会使用相同的模式********。
 
 ```json
 [{
@@ -174,7 +174,7 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 }]
 ```
 
-以下示例展示了 ResourceActionSuccess 事件的架构。 具有不同 `eventType` 值的 ResourceActionFailure 和 ResourceActionCancel 事件会使用相同的模式。
+以下示例展示了 ResourceActionSuccess 事件的架构****。 具有不同 `eventType` 值的 ResourceActionFailure 和 ResourceActionCancel 事件会使用相同的模式********。
 
 ```json
 [{   
@@ -234,31 +234,31 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 
 事件具有以下顶级数据：
 
-| 属性 | Type | 描述 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| topic | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | string | 事件主题的发布者定义路径。 |
-| eventType | string | 此事件源的一个注册事件类型。 |
-| eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | string | 事件的唯一标识符。 |
-| data | object | 订阅事件数据。 |
-| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | 字符串 | 事件主题的发布者定义路径。 |
+| eventType | 字符串 | 此事件源的一个注册事件类型。 |
+| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | 字符串 | 事件的唯一标识符。 |
+| data | 对象 (object) | 订阅事件数据。 |
+| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| 属性 | Type | 描述 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| authorization | object | 操作请求的授权。 |
-| claims | object | 声明的属性。 有关详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
-| correlationId | string | 用于故障排除的操作 ID。 |
-| httpRequest | object | 操作的详细信息。 仅在更新现有资源或删除资源时才包含此对象。 |
-| resourceProvider | string | 操作的资源提供程序。 |
-| resourceUri | string | 操作中资源的 URI。 |
-| operationName | string | 执行的操作。 |
-| status | string | 操作状态。 |
-| subscriptionId | string | 资源的订阅 ID。 |
-| tenantId | string | 资源的租户 ID。 |
+| authorization | 对象 (object) | 操作请求的授权。 |
+| 声明 | 对象 (object) | 声明的属性。 有关详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
+| correlationId | 字符串 | 用于故障排除的操作 ID。 |
+| httpRequest | 对象 (object) | 操作的详细信息。 仅在更新现有资源或删除资源时才包含此对象。 |
+| resourceProvider | 字符串 | 操作的资源提供程序。 |
+| resourceUri | 字符串 | 操作中资源的 URI。 |
+| operationName | 字符串 | 执行的操作。 |
+| status | 字符串 | 操作状态。 |
+| subscriptionId | 字符串 | 资源的订阅 ID。 |
+| tenantId | 字符串 | 资源的租户 ID。 |
 
 ## <a name="next-steps"></a>后续步骤
 

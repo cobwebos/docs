@@ -1,5 +1,5 @@
 ---
-title: 使用C#和资源管理器模板部署 VM
+title: 使用 C# 和资源管理器模板部署 VM
 description: 了解如何使用 C# 和 Resource Manager 模板部署 Azure VM。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
 ms.openlocfilehash: 6d99c5ae91b80b9b6b9af08001b3a7c57bc7ca8f
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944526"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>使用 C# 和 Resource Manager 模板部署 Azure 虚拟机
@@ -33,15 +33,15 @@ ms.locfileid: "78944526"
 
 在此步骤中，请确保已安装 Visual Studio 并已创建用于部署模板的控制台应用程序。
 
-1. 如果尚未安装，请安装 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。 在“工作负荷”页上选择“.NET 桌面开发”，然后单击“安装”。 在摘要中，可以看到系统已自动选择“.NET Framework 4 4.6 开发工具”。 如果已安装 Visual Studio，则可以使用 Visual Studio 启动器添加 .NET 工作负荷。
-2. 在 Visual Studio 中，单击“文件” > “新建” > “项目”。
-3. 在“模板” **“Visual C#”中，选择“控制台应用(.NET Framework)”，输入** myDotnetProject >  作为项目名称，选择项目位置，然后单击“确定”。
+1. 如果尚未安装，请安装 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。 在“工作负荷”页上选择“.NET 桌面开发”****，然后单击“安装”****。 在摘要中，可以看到系统已自动选择“.NET Framework 4 4.6 开发工具”。**** 如果已安装 Visual Studio，则可以使用 Visual Studio 启动器添加 .NET 工作负荷。
+2. 在可视化工作室中，单击 **"文件** > **新项目** > **"。**
+3. 在**模板** > **可视化 C++** 中，选择**控制台应用 （.NET 框架），** 输入*myDotnetProject*以获取项目名称，选择项目的位置，然后单击"**确定**"。
 
 ## <a name="install-the-packages"></a>安装这些包
 
 使用 NuGet 包可以最轻松地安装完成这些步骤所需的库。 若要在 Visual Studio 中获取所需的库，请执行以下步骤：
 
-1. 单击“工具” **“Nuget 包管理器”，然后单击“包管理器控制台”**  > 。
+1. 单击**工具** > **Nuget 包管理器**，然后单击**包管理器控制台**。
 2. 在控制台中键入这些命令：
 
     ```powershell
@@ -55,7 +55,7 @@ ms.locfileid: "78944526"
 
 ### <a name="create-the-template-file"></a>创建模板文件
 
-1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击“添加** > **新建项**，然后在**Visual C# 项**中选择*文本文件*。 命名文件 CreateVMTemplate.json，然后单击“添加”。
+1. 在解决方案资源管理器中，右键单击*myDotnetProject* > **添加新** > **项目**，然后在*可视化 C# 项目中*选择**文本文件**。 命名文件 CreateVMTemplate.json，然后单击“添加”******。
 2. 将此 JSON 代码添加到创建的文件中：
 
     ```json
@@ -165,9 +165,9 @@ ms.locfileid: "78944526"
 
 ### <a name="create-the-parameters-file"></a>创建参数文件
 
-若要在模板中指定资源参数的值，请创建包含值的参数文件。
+若要为模板中的资源参数指定值，请创建包含值的参数文件。
 
-1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击“添加** > **新建项**，然后在**Visual C# 项**中选择*文本文件*。 命名文件 Parameters.json，然后单击“添加”。
+1. 在解决方案资源管理器中，右键单击*myDotnetProject* > **添加新** > **项目**，然后在*可视化 C# 项目中*选择**文本文件**。 命名文件 Parameters.json，然后单击“添加”******。
 2. 将此 JSON 代码添加到创建的文件中：
 
     ```json
@@ -187,7 +187,7 @@ ms.locfileid: "78944526"
 
 在可部署模板之前，请先确保能够访问 [Active Directory 服务主体](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。 从服务主体中，将获取对 Azure 资源管理器请求进行身份验证的令牌。 还应记录授权文件中所需的应用程序 ID、身份验证秘钥和的租户 ID。
 
-1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击“添加** > **新建项**，然后在**Visual C# 项**中选择*文本文件*。 命名文件 azureauth.properties，然后单击“添加”。
+1. 在解决方案资源管理器中，右键单击*myDotnetProject* > **添加新** > **项目**，然后在*可视化 C# 项目中*选择**文本文件**。 命名文件 azureauth.properties，然后单击“添加”******。
 2. 添加这些授权属性：
 
     ```
@@ -201,10 +201,10 @@ ms.locfileid: "78944526"
     graphURL=https://graph.microsoft.com/
     ```
 
-    将 **subscription-id&lt; 替换为订阅标识符，&gt;application-id** 替换为 Active Directory 应用程序标识符，**authentication-key&lt; 替换为授权密钥，&gt;tenant-id** 替换为租户标识符 **&lt;&gt;** **&lt;&gt;** 。
+    将**&lt;订阅 ID&gt;** 替换为订阅标识符，**&lt;将应用程序&gt;ID**替换为 Active Directory 应用程序标识符，**&lt;使用应用程序密钥进行身份验证密钥&gt;**，将**&lt;租户 ID&gt;** 替换为租户标识符。
 
 3. 保存 azureauth.properties 文件。
-4. 在名为 AZURE_AUTH_LOCATION 的 Windows 中，使用你创建的授权文件的完整路径设置环境变量，例如，你可以使用以下 PowerShell 命令：
+4. 在 Windows 中设置名为 AZURE_AUTH_LOCATION 的环境变量，其中包含创建的授权文件的完整路径，例如可以使用以下 PowerShell 命令：
 
     ```powershell
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
@@ -214,7 +214,7 @@ ms.locfileid: "78944526"
 
 ## <a name="create-the-management-client"></a>创建管理客户端
 
-1. 打开所创建项目的 Program.cs 文件。 然后，将这些 using 语句添加到文件顶部的现有语句：
+1. 打开创建的项目的 Program.cs 文件。 然后，将以下 using 语句添加到文件顶部的现有语句中：
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -325,7 +325,7 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 控制台应用程序从头到尾完成运行大约需要五分钟时间。 
 
-1. 若要运行控制台应用程序，请单击“开始”。
+1. 若要运行控制台应用程序，请单击“开始”****。
 
 2. 在按 **Enter** 开始删除资源之前，可能需要在 Azure 门户中花几分钟时间来验证资源的创建。 单击部署状态以查看有关部署的信息。
 

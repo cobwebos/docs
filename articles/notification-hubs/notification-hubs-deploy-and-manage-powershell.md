@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 部署和管理通知中心
-description: 如何使用 PowerShell 自动创建和管理通知中心
+description: 如何使用 PowerShell 创建和管理通知中心实现自动化
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 863fdb445cce41f0fe4cbee63a3d6198c0a79339
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264638"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>使用 PowerShell 部署和管理通知中心
@@ -36,7 +36,7 @@ ms.locfileid: "76264638"
 
 不支持直接使用 Azure PowerShell 随附的 cmdlet 来管理通知中心。 在 PowerShell 中，最佳方法是引用 Microsoft.Azure.NotificationHubs.dll 程序集。 该程序集是随 [Microsoft Azure 通知中心 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)一起分发的。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 Azure 是基于订阅的平台。 有关获取订阅的详细信息，请参阅[购买选项]、[会员套餐]或[免费试用]。
 - 配备 Azure PowerShell 的计算机。 有关说明，请参阅[安装和配置 Azure PowerShell]。
@@ -96,7 +96,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 1. `$Namespace`：将此变量设置为要在其中创建通知中心的命名空间的名称。
 2. `$Path`：将此路径设置为新通知中心的名称。  例如“MyHub”。
-3. `$WnsPackageSid`：从 [Windows 开发人员中心](https://developer.microsoft.com/en-us/windows)将此变量设置为 Windows 应用的包 SID。
+3. `$WnsPackageSid`：从[Windows 开发人员中心](https://developer.microsoft.com/en-us/windows)将此设置为 Windows 应用的包 SID。
 4. `$WnsSecretkey`：从 [Windows 开发人员中心](https://developer.microsoft.com/en-us/windows)将此变量设置为 Windows 应用的机密密钥。
 
 这些变量可用于连接命名空间，以及创建配置为使用 Windows 应用 Windows 通知中心 (WNS) 凭据处理 WNS 通知的新通知中心。 有关获取包 SID 和机密密钥的信息，请参阅[通知中心入门](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)教程。
@@ -158,7 +158,7 @@ else
 
 [购买选项]: https://azure.microsoft.com/pricing/purchase-options/
 [会员套餐]: https://azure.microsoft.com/pricing/member-offers/
-[免费试用]: https://azure.microsoft.com/pricing/free-trial/
+[免费试用版]: https://azure.microsoft.com/pricing/free-trial/
 [安装和配置 Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [通知中心的 .NET API]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace

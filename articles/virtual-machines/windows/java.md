@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 35d5569cb36cb538585b9d2c85a392b668e9fc34
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944489"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
@@ -39,7 +39,7 @@ ms.locfileid: "78944489"
 ## <a name="create-a-maven-project"></a>创建 Maven 项目
 
 1. 如果尚未安装 [Java](https://aka.ms/azure-jdks)，请安装。
-2. 安装 [Maven](https://maven.apache.org/download.cgi)。
+2. 安装[马文](https://maven.apache.org/download.cgi)。
 3. 创建新文件夹和项目：
     
     ```
@@ -133,14 +133,14 @@ ms.locfileid: "78944489"
     graphURL=https://graph.microsoft.com/
     ```
 
-    将 **subscription-id&lt; 替换为订阅标识符，&gt;application-id** 替换为 Active Directory 应用程序标识符，**authentication-key&lt; 替换为授权密钥，&gt;tenant-id** 替换为租户标识符 **&lt;&gt;** **&lt;&gt;** 。
+    将**&lt;订阅 ID&gt;** 替换为订阅标识符，**&lt;将应用程序&gt;ID**替换为 Active Directory 应用程序标识符，**&lt;使用应用程序密钥进行身份验证密钥&gt;**，将**&lt;租户 ID&gt;** 替换为租户标识符。
 
 2. 保存文件。
 3. 在 shell 中将包含完整路径的环境变量 AZURE_AUTH_LOCATION 设置为身份验证文件。
 
 ### <a name="create-the-management-client"></a>创建管理客户端
 
-1. 打开 `App.java` 下的 `src\main\java\com\fabrikam` 文件，确保此包语句处于顶部：
+1. 打开 `src\main\java\com\fabrikam` 下的 `App.java` 文件，确保此包语句处于顶部：
 
     ```java
     package com.fabrikam.testAzureApp;

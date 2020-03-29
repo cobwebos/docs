@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 81b53904f85e2ac936195b1e39d7586fd1d47524
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153779"
 ---
 # <a name="avere-cluster-dns-configuration"></a>Avere 群集 DNS 配置
 
 本节介绍配置 DNS 系统以对 Avere vFXT 群集进行负载均衡的基础知识。
 
-本文档不包含有关在 Azure 环境中设置和管理 DNS 服务器的说明。
+本文档不包含有关在 Azure 环境中设置和管理 DNS 服务器的说明**。
 
 不要使用轮询 DNS 对 Azure 中的 vFXT 群集进行负载均衡，而是考虑使用手动方法在客户端装载时均匀分配 IP 地址。 [装载 Avere 群集](avere-vfxt-mount-clients.md)中描述了几种方法。
 
@@ -29,7 +29,7 @@ ms.locfileid: "76153779"
 
 * 如果要使用 Kerberos 身份验证，则需要 DNS。
 
-## <a name="load-balancing"></a>负载平衡
+## <a name="load-balancing"></a>负载均衡
 
 要分发总体负载，请将 DNS 域配置为对面向客户端的 IP 地址使用轮询负载分配。
 
@@ -41,7 +41,7 @@ ms.locfileid: "76153779"
 
 左侧显示群集虚拟服务器，IP 地址显示在右侧中间。 如图所示，使用 A 记录和指针配置每个客户端接入点。
 
-![Avere 群集轮循机制 DNS 关系图](media/avere-vfxt-rrdns-diagram.png)
+![Avere 群集轮询 DNS 示意图](media/avere-vfxt-rrdns-diagram.png)
 <!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 每个面向客户端的 IP 地址必须具有唯一的名称供群集内部使用。 （在此图中，为了清楚起见，将客户端 IP 命名为 vs1-client-IP- *，但在生产中，应使用更简洁的名称，如 client*。）
@@ -74,7 +74,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>群集 DNS 设置
 
-在“群集” > “管理网络设置”页面中指定 vFXT 群集使用的 DNS 服务器。 该页面上的设置包括：
+指定 vFXT 群集在**群集** > **管理网络**设置页中使用的 DNS 服务器。 该页面上的设置包括：
 
 * DNS 服务器地址
 * DNS 域名

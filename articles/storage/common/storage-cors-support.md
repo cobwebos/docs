@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: bb296db0d97382deac984369704777de5d5cb362
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65147692"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>对 Azure 存储服务的跨域资源共享 (CORS) 支持
@@ -68,13 +68,13 @@ CORS 规则在服务级别设置，因此需要分别为每个服务（Blob、�
 
 下面描述了 CORS 规则中包含的每个元素：
 
-* **AllowedOrigins**：允许通过 CORS 发出存储服务请求的源域。 源域是从中发出请求的域。 请注意，来源必须与用户代理发送到服务的来源完全相同，包括大小写。 也可以使用通配符“*”允许所有源域通过 CORS 发出请求。 在上面的示例中，域 http:\//www.contoso.com 和 http:\//www.fabrikam.com 可以使用 CORS 发出服务请求。
+* **AllowedOrigins**：允许通过 CORS 对存储服务发出请求的源域。 源域是从中发出请求的域。 请注意，来源必须与用户代理发送到服务的来源完全相同，包括大小写。 也可以使用通配符“*”允许所有源域通过 CORS 发出请求。 在上面的示例中，域 http:\//www.contoso.com 和 http:\//www.fabrikam.com 可以使用 CORS 发出服务请求。
 * **AllowedMethods**：源域可用于 CORS 请求的方法（HTTP 请求谓词）。 在上面的示例中，只允许 PUT 和 GET 请求。
 * **AllowedHeaders**：源域可以在 CORS 请求上指定的请求标头。 在上面的示例中，允许所有以 x-ms-meta-data、x-ms-meta-target 和 x-ms-meta-abc 开头的元数据标头。 请注意，通配符“*”表示允许任何以指定前缀开头的标头。
 * **ExposedHeaders**：可以在 CORS 请求响应中发送并由浏览器向请求发出方公开的响应标头。 在上面的示例中，指示浏览器公开任何以 x-ms-meta 开头的标头。
 * **MaxAgeInSeconds**：浏览器应缓存预检 OPTIONS 请求的最长时间。
 
-Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元素指定带前缀的标头。 若要允许某个标头类别，可以为该类别指定一个通用前缀。 例如，如果指定 *x-ms-meta** 作为带前缀的标头，将会建立一条与 x-ms-meta 开头的所有标头相匹配的规则。
+Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元素指定带前缀的标头。 若要允许某个标头类别，可以为该类别指定一个通用前缀。 例如，如果指定 *x-ms-meta***作为带前缀的标头，会建立一条与 x-ms-meta 开头的所有标头相匹配的规则。
 
 以下限制适用于 CORS 规则：
 
@@ -131,9 +131,9 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 | 请求 |  |  | 响应 |  |
 | --- | --- | --- | --- | --- |
 | **方法** |**源** |**请求标头** |**规则匹配** |**结果** |
-| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |第一条规则 |Success |
-| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |第二条规则 |成功 |
-| **GET** |http:\//www.contoso.com |x-ms-client-request-id |第二条规则 |失败 |
+| **把** |http:\//www.contoso.com |x-ms-blob-content-type |第一条规则 |Success |
+| **获取** |http:\//www.contoso.com |x-ms-blob-content-type |第二条规则 |Success |
+| **获取** |http:\//www.contoso.com |x-ms-client-request-id |第二条规则 |失败 |
 
 第一个请求与第一条规则相匹配，源域与允许的来源相匹配，方法与允许的方法相匹配，标头与允许的标头相匹配，所以第一个请求成功。
 
@@ -164,7 +164,7 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 
 | 请求 | 帐户设置和规则评估结果 |  |  | 响应 |  |  |
 | --- | --- | --- | --- | --- | --- | --- |
-| **请求中存在 Origin 标头** |**为此服务指定了 CORS 规则** |**存在允许所有源 (*) 的匹配规则** |**存在精确匹配域的匹配规则** |**响应包含设置为 Origin 的 Vary 标头** |**响应包含 Access-Control-Allowed-Origin：“*”** |**响应包含 Access-Control-Exposed-Headers** |
+| **请求中存在 Origin 标头** |**为此服务指定了 CORS 规则** |**存在允许所有源 (*) 的匹配规则** |**存在精确匹配域的匹配规则** |**响应包含设置为 Origin 的 Vary 标头** |**响应包括访问-控制允许源："*"** |**响应包含 Access-Control-Exposed-Headers** |
 | 否 |否 |否 |否 |否 |否 |否 |
 | 否 |是 |否 |否 |是 |否 |否 |
 | 否 |是 |是 |否 |否 |是 |是 |
@@ -179,9 +179,9 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 将不会对失败的预检请求计费。
 
 ## <a name="next-steps"></a>后续步骤
-[Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)（设置 Blob 服务属性）
+[设置 Blob 服务属性](https://msdn.microsoft.com/library/hh452235.aspx)
 
-[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)（设置队列服务属性）
+[设置队列服务属性](https://msdn.microsoft.com/library/hh452232.aspx)
 
 [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)（设置表服务属性）
 

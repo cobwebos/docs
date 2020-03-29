@@ -1,6 +1,6 @@
 ---
 title: Azure 服务总线中的 SQLRuleAction 语法参考
-description: 本文提供 SQLRuleAction 语法参考。 操作用基于 SQL 语言的语法编写，该语法针对中转消息执行。
+description: 本文提供 SQLRuleAction 语法参考。 这些操作是以针对中转消息执行的基于 SQL 语言的语法编写的。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 37615e39577ef60cccc9df91b61a6aa24ca794d0
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759622"
 ---
 # <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure 服务总线的 SQLRuleAction 语法参考
@@ -63,7 +63,7 @@ ms.locfileid: "76759622"
     [<scope> .] <property_name>
 ``` 
   
-## <a name="arguments"></a>参数  
+## <a name="arguments"></a>自变量  
   
 -   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` 或 `user`。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的项。 `user` 范围是默认范围（如果 `<scope>` 未指定）。  
   
@@ -83,7 +83,7 @@ ms.locfileid: "76759622"
   
 ```  
   
-### <a name="arguments"></a>参数  
+### <a name="arguments"></a>自变量  
  `<regular_identifier>` 是一个字符串，由以下正则表达式表示：  
   
 ```  
@@ -147,7 +147,7 @@ ms.locfileid: "76759622"
       <integer_constant> | <decimal_constant> | <approximate_number_constant> | <boolean_constant> | NULL  
 ```  
   
-### <a name="arguments"></a>参数  
+### <a name="arguments"></a>自变量  
   
 -   `<integer_constant>` 是一个数字字符串，不使用引号，且不包含小数点。 这些值以 `System.Int64` 形式存储在内部，并具有相同的范围。  
   

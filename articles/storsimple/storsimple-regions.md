@@ -1,5 +1,5 @@
 ---
-title: StorSimple 地区可用性
+title: 斯托简单区域可用性
 description: 说明提供各种 StorSimple 设备模型的 Azure 区域。
 author: alkohli
 ms.service: storsimple
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
 ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275115"
 ---
 # <a name="available-regions-for-your-storsimple"></a>StorSimple 的可用区域
@@ -26,7 +26,7 @@ Azure 数据中心在全球多个地理位置运行，目的是满足客户对�
 具体说来，对于 StorSimple 解决方案，区域的选择取决于以下因素：
 
 - 提供 StorSimple 设备管理器服务的区域。
-- 提供 StorSimple 物理、云或虚拟设备的国家/地区。
+- StorSimple 物理设备、云或虚拟设备可用的国家/地区。
 - 存储 StorSimple 数据的存储帐户所在位置可以获得最佳性能的区域。
 
 本教程介绍 StorSimple 设备管理器服务、本地物理设备以及云设备的区域可用性。 本文中包含的信息适用于 StorSimple 8000 和 1200 系列设备。
@@ -55,42 +55,42 @@ StorSimple 数据以物理方式存储在 Azure 存储帐户中，这些帐户�
 
 ## <a name="availability-of-storsimple-device"></a>StorSimple 设备的可用性
 
-根据型号，StorSimple 设备可以在不同的地理位置或国家/地区可用。
+根据型号的不同，StorSimple 设备可以在不同的地理位置或国家/地区提供。
 
 ### <a name="storsimple-physical-device-models-81008600"></a>StorSimple 物理设备（型号：8100/8600）
 
-如果使用的是 StorSimple 8100 或8600物理设备，则可以在以下国家/地区使用该设备。
+如果使用 StorSimple 8100 或 8600 物理设备，该设备可在以下国家/地区使用。
 
 | #  | 国家/地区        | #  | 国家/地区     | #  | 国家/地区      | #  | 国家/地区             |
 |----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
-| 第  | 澳大利亚             | 16 | 香港特别行政区      | 31 | 新西兰         | 46 | 南非               |
+| 1  | 澳大利亚             | 16 | 香港特别行政区      | 31 | 新西兰         | 46 | 南非               |
 | 2  | 奥地利               | 17 | 匈牙利            | 32 | 尼日利亚             | 47 | 韩国                |
 | 3  | 巴林               | 18 | 冰岛            | 33 | 挪威              | 48 | 西班牙                      |
 | 4  | 比利时               | 19 | 印度              | 34 | 秘鲁                | 49 | 斯里兰卡                  |
 | 5  | 巴西                | 20 | 印度尼西亚          | 35 | 菲律宾         | 50 | 瑞典                     |
-| 6  | 加拿大                | 21 | 爱尔兰            | 36 | 波兰              | 51 | 瑞士                |
-| 7  | 智利                 | 22 | 以色列             | 37 | 葡萄牙            | 52 | 台湾                     |
+| 6  | Canada                | 21 | 爱尔兰            | 36 | 波兰              | 51 | 瑞士                |
+| 7  | 智利                 | 22 | 以色列             | 37 | 葡萄牙            | 52 | 中国台湾                     |
 | 8  | 哥伦比亚              | 23 | 意大利              | 38 | 波多黎各         | 53 | 泰国                   |
 | 9  | 捷克共和国        | 24 | 日本              | 39 | 卡塔尔               | 54 | 土耳其                     |
 | 10 | 丹麦               | 25 | 肯尼亚              | 40 | 罗马尼亚             | 55 | 乌克兰                    |
 | 11 | 埃及                 | 26 | 科威特             | 41 | 俄罗斯              | 56 | 阿拉伯联合酋长国       |
-| 12 | 芬兰               | 27 | 澳门特别行政区          | 42 | 沙特阿拉伯        | 57 | 英国             |
-| 13 | 法国                | 28 | 马来西亚           | 43 | 新加坡           | 58 | 美国              |
+| 12 | 芬兰               | 27 | 澳门特别行政区          | 42 | 沙特阿拉伯        | 57 | United Kingdom             |
+| 13 | 法国                | 28 | 马来西亚           | 43 | 新加坡           | 58 | United States              |
 | 14 | 德国               | 29 | 墨西哥             | 44 | 斯洛伐克            | 59 | 越南                    |
 | 15 | 希腊                | 30 | 荷兰        | 45 | 斯洛文尼亚            | 60 | 克罗地亚                    |
 
-添加的国家/地区越多，此列表也会随之更改。 如需地理位置的最新列表，请参阅[产品条款](https://www.microsoft.com/en-us/licensing/product-licensing/products)中的“存储阵列条款附录”。
+此列表会随着添加更多国家/地区而更改。 如需地理位置的最新列表，请参阅[产品条款](https://www.microsoft.com/en-us/licensing/product-licensing/products)中的“存储阵列条款附录”。
 
 Microsoft 可以向前述列表中的地理位置寄送 StorSimple 物理硬件并提供更换用的硬件备件。
 
 > [!IMPORTANT]
-> 请勿将 StorSimple 物理设备置于不支持 StorSimple 的区域。 对于不支持 StorSimple 的国家/地区，Microsoft 将无法向其交付任何更换部件。
+> 请勿将 StorSimple 物理设备置于不支持 StorSimple 的区域。 Microsoft 将无法将任何更换部件运送到不支持 StorSimple 的国家/地区。
 
 ### <a name="storsimple-cloud-appliance-models-80108020"></a>StorSimple 云设备（型号：8010/8020）
 
-如果使用 StorSimple 云设备 8010 或 8020，则支持基础 VM 的所有区域都会支持并提供该设备。 8010 使用在所有 Azure 区域都受支持的Standard_A3 VM。
+如果使用 StorSimple 云设备 8010 或 8020，则支持基础 VM 的所有区域都会支持并提供该设备。 8010 使用在所有 Azure 区域都受支持的 __ Standard_A3 VM。
 
-8020 使用高级存储和Standard_DS3 VM 来创建云设备。 8020 在支持高级存储和Standard_DS3 Azure VM 的 Azure 区域受支持。 请使用[此列表](https://azure.microsoft.com/regions/services/)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在区域是否均可用。
+8020 使用高级存储和 __ Standard_DS3 VM 来创建云设备。 8020 在支持高级存储和 __ Standard_DS3 Azure VM 的 Azure 区域受支持。 请使用[此列表](https://azure.microsoft.com/regions/services/)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在区域是否均可用。********
 
 ### <a name="storsimple-virtual-array-model-1200"></a>StorSimple 虚拟阵列（型号：1200）
 

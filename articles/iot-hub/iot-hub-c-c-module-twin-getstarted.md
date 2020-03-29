@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心模块身份 & 模块克隆入门（C）
+title: Azure IoT 中心模块标识和模块孪生 (C) 入门
 description: 了解如何使用用于 C 的 IoT SDK 创建模块标识和更新模块孪生。
 author: chrissie926
 ms.service: iot-hub
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
 ms.openlocfilehash: 095f6c6ab8395c4ab314fbe948cbc1fbd32cd510
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76719137"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>IoT 中心模块标识和模块克隆入门（C）
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>IoT 中心模块标识和模块孪生 (C) 入门
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
@@ -31,7 +31,7 @@ ms.locfileid: "76719137"
 > [!NOTE]
 > 有关 Azure IoT SDK 的信息（可以使用这些 SDK 构建可在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个 [Azure 免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
@@ -49,7 +49,7 @@ ms.locfileid: "76719137"
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>在 IoT 中心中创建设备标识和模块标识
 
-本部分将创建一个 C 应用，用于在 IoT 中心的标识注册表中创建设备标识和模块标识。 设备或模块无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide-identity-registry.md)中的“标识注册表”部分。 运行此控制台应用时，它会为设备和模块生成唯一的 ID 和密钥。 设备和模块在向 IoT 中心发送设备到云的消息时，使用这些值来标识自身。 ID 区分大小写。
+本部分将创建一个 C 应用，用于在 IoT 中心的标识注册表中创建设备标识和模块标识。 设备或模块无法连接到 IoT 中心，除非它在标识注册表中具有条目。 有关详细信息，请参阅[IoT 中心开发人员指南](iot-hub-devguide-identity-registry.md)的**标识注册表**部分。 运行此控制台应用时，它会为设备和模块生成唯一的 ID 和密钥。 设备和模块在向 IoT 中心发送设备到云的消息时，使用这些值来标识自身。 ID 区分大小写。
 
 将以下代码添加到 C 文件：
 
@@ -177,7 +177,7 @@ int main(void)
 }
 ```
 
-此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识。 （如果该模块 ID 已在标识注册表中，代码就只检索现有的模块信息。）然后，应用程序会显示该标识的主密钥。 在模拟模块应用中使用此密钥连接到 IoT 中心。
+此应用在设备“myFirstDevice”下创建 ID 为“myFirstDevice”的设备标识，以及 ID 为“myFirstModule”的模块标识************。 （如果标识注册表中已存在该模块 ID，则代码只需检索现有模块信息。然后，应用将显示该标识的主键。 在模拟模块应用中使用此密钥连接到 IoT 中心。
 
 > [!NOTE]
 > IoT 中心标识注册表只存储设备和模块标识，以启用对 IoT 中心的安全访问。 标识注册表存储用作安全凭据的设备 ID 和密钥。 标识注册表还为每个设备存储启用/禁用标志，该标志可以用于禁用对该设备的访问。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 没有针对模块标识的“已启用/已禁用”标记。 有关详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide-identity-registry.md)。
@@ -388,4 +388,4 @@ int main(void)
 若要继续了解 IoT 中心入门知识并浏览其他 IoT 方案，请参阅：
 
 * [设备管理入门](iot-hub-node-node-device-management-get-started.md)
-* [IoT Edge 入门](../iot-edge/tutorial-simulate-device-linux.md)
+* [IoT 边缘入门](../iot-edge/tutorial-simulate-device-linux.md)

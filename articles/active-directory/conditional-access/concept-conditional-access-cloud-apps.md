@@ -1,6 +1,6 @@
 ---
-title: 条件访问策略中的云应用或操作-Azure Active Directory
-description: 什么是 Azure AD 条件性访问策略中的云应用或操作
+title: 条件访问策略中的云应用或操作 - Azure 活动目录
+description: Azure AD 条件访问策略中的云应用或操作
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,46 +12,46 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69bdd2d6825427597e9030a03aae7d219361ba25
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671948"
 ---
-# <a name="conditional-access-cloud-apps-or-actions"></a>条件性访问：云应用或操作
+# <a name="conditional-access-cloud-apps-or-actions"></a>条件访问：云应用或操作
 
-在条件性访问策略中，云应用或操作是关键的信号。 使用条件性访问策略，管理员可以将控件分配给特定的应用程序或操作。
+云应用或操作是条件访问策略中的关键信号。 使用条件访问策略，管理员可以分配对特定应用程序或操作的控制。
 
-- 管理员可以从包含内置 Microsoft 应用程序的应用程序列表以及任何[Azure AD 集成的应用](../manage-apps/what-is-application-management.md)程序（包括库、非库和通过[应用程序代理](../manage-apps/what-is-application-proxy.md)发布的应用程序）中进行选择。
-- 管理员可以选择基于云应用程序而不是在用户操作上定义策略。 唯一受支持的操作是注册安全信息（预览版），允许条件性访问强制实施围绕[组合的安全信息注册体验](../authentication/howto-registration-mfa-sspr-combined.md)的控制。
+- 管理员可以从包含内置 Microsoft 应用程序的应用程序列表和任何[Azure AD 集成应用程序](../manage-apps/what-is-application-management.md)（包括库、非库和通过[应用程序代理](../manage-apps/what-is-application-proxy.md)发布的应用程序）中进行选择。
+- 管理员可以选择不基于云应用程序但基于用户操作来定义策略。 唯一支持的操作是注册安全信息（预览），允许条件访问强制实施围绕[组合安全信息注册体验](../authentication/howto-registration-mfa-sspr-combined.md)的控制。
 
 ![定义条件访问策略并指定云应用](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="microsoft-cloud-applications"></a>Microsoft 云应用程序
 
-许多现有的 Microsoft 云应用程序都包含在可从中进行选择的应用程序列表中。 
+许多现有的 Microsoft 云应用程序都包含在可以选择的应用程序列表中。 
 
-管理员可以将条件性访问策略分配给 Microsoft 的以下云应用。 某些应用（如 Office 365 （预览版）和 Microsoft Azure 管理）包含多个相关的子应用或服务。 以下列表并不完整，并且可能会发生更改。
+管理员可以为来自 Microsoft 的以下云应用分配条件访问策略。 某些应用（如 Office 365（预览版）和 Microsoft Azure 管理包括多个相关的子应用或服务。 以下列表不完整，并且可能会发生更改。
 
-- [Office 365 （预览版）](#office-365-preview)
+- [办公室 365 （预览版）](#office-365-preview)
 - Azure Analysis Services
 - Azure DevOps
 - [Azure SQL 数据库和数据仓库](../../sql-database/sql-database-conditional-access.md)
 - Dynamics CRM Online
-- Microsoft Application Insights Analytics
+- 微软应用程序洞察分析
 - [Microsoft Azure 信息保护](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - [Microsoft Azure 管理](#microsoft-azure-management)
-- Microsoft Azure 订阅管理
+- 微软 Azure 订阅管理
 - Microsoft Cloud App Security
-- Microsoft Commerce 工具访问控制门户
-- Microsoft Commerce 工具身份验证服务
+- Microsoft Commerce Tools 访问控制门户
+- Microsoft Commerce Tools 身份验证服务
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
 - [Microsoft Intune 注册](/intune/enrollment/multi-factor-authentication)
 - Microsoft Planner
 - Microsoft PowerApps
-- Microsoft Search in Bing
+- 必应中的 Microsoft 搜索
 - Microsoft StaffHub
 - Microsoft Stream
 - Microsoft Teams
@@ -67,15 +67,15 @@ ms.locfileid: "78671948"
 - 虚拟专用网络 (VPN)
 - Windows Defender ATP
 
-### <a name="office-365-preview"></a>Office 365 （预览版）
+### <a name="office-365-preview"></a>Office 365（预览版）
 
-Office 365 提供基于云的生产力和协作服务，如 Exchange、SharePoint 和 Microsoft 团队。 Office 365 云服务已深度集成，以确保顺利且协作体验。 在创建策略时，此集成可能会导致混淆，因为某些应用（如 Microsoft 团队）依赖于其他一些应用，例如 SharePoint 或 Exchange。
+Office 365 提供基于云的高效生产和协作服务，如 Exchange、SharePoint 和 Microsoft Teams。 Office 365 云服务已深度集成，以确保用户拥有顺畅的协作体验。 在创建策略时，此集成可能会导致混淆，因为某些应用（例如 Microsoft Teams）依赖于其他应用，例如 SharePoint 或 Exchange。
 
-Office 365 （预览版）应用使你可以一次同时定位这些服务。 建议使用新的 Office 365 （预览版）应用，而不是面向单个云应用。 面向此组应用程序有助于避免因策略和依赖关系不一致而导致的问题。
+使用 Office 365（预览版）应用可以一次同时将这些服务作为目标。 建议使用新的 Office 365（预览版）应用，而不是以个别云应用作为目标。 以此组应用程序作为目标有助于避免因策略和依赖关系不一致而导致的问题。
 
-管理员可以选择从策略中排除特定应用（如果需要），只需包括 Office 365 （预览版）应用，并排除在策略中选择的特定应用。
+如果需要，管理员可以选择从策略中排除特定应用，方法是在策略中包括 Office 365（预览版）应用并排除他们选择的特定应用。
 
-Office 365 （预览版）客户端应用程序中包含的关键应用程序：
+Office 365（预览版）客户端应用中包含的关键应用程序：
 
    - Microsoft Flow
    - Microsoft Forms
@@ -100,31 +100,31 @@ Microsoft Azure 管理应用程序包括多个基础服务。
 
    - Azure 门户
    - Azure 资源管理器提供程序
-   - 经典部署模型 Api
+   - 经典部署模型 API
    - Azure PowerShell
    - Visual Studio 订阅管理员门户
    - Azure DevOps
    - Azure 数据工厂门户
 
 > [!NOTE]
-> Microsoft Azure 管理应用程序适用于调用 Azure 资源管理器 API Azure PowerShell。 它不适用于调用 Microsoft Graph Azure AD PowerShell。
+> Microsoft Azure 管理应用程序应用于 Azure PowerShell，后者调用 Azure 资源管理器 API。 它不适用于调用 Microsoft Graph 的 Azure AD PowerShell。
 
 ## <a name="other-applications"></a>其他应用程序
 
-除 Microsoft 应用外，管理员还可以将任何 Azure AD 注册的应用程序添加到条件访问策略。 这些应用程序可能包括： 
+除了 Microsoft 应用之外，管理员还可以将任何 Azure AD 注册的应用程序添加到条件访问策略。 这些应用程序可能包括： 
 
-- 通过[Azure AD 应用程序代理](../manage-apps/what-is-application-proxy.md)发布的应用程序
+- 通过[Azure AD 应用程序代理发布的应用程序](../manage-apps/what-is-application-proxy.md)
 - [从库中添加的应用程序](../manage-apps/add-application-portal.md)
 - [不在库中的自定义应用程序](../manage-apps/add-non-gallery-app.md)
-- [通过应用传递控制器和网络发布的旧版应用程序](../manage-apps/secure-hybrid-access.md)
+- [通过应用交付控制器和网络发布的旧应用程序](../manage-apps/secure-hybrid-access.md)
 
 ## <a name="user-actions"></a>用户操作
 
-用户操作是可以由用户执行的任务。 当前支持的唯一操作是**注册安全信息（预览版）** ，这允许在启用了组合注册的用户注册其安全信息时，强制实施条件性访问策略。 有关详细信息，请参阅[合并安全信息注册（预览版）](../authentication/concept-registration-mfa-sspr-combined.md)一文。
+用户操作是可由用户执行的任务。 目前唯一支持的操作是“注册安全信息(预览版)”****。当启用了组合注册功能的用户尝试注册其安全信息时，此操作允许条件访问策略来强制实施。 更多信息请参阅文章，[组合安全信息注册（预览）。](../authentication/concept-registration-mfa-sspr-combined.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [条件性访问：条件](concept-conditional-access-conditions.md)
+- [条件访问：条件](concept-conditional-access-conditions.md)
 
-- [条件访问公用策略](concept-conditional-access-policy-common.md)
-- [客户端应用程序依赖关系](service-dependencies.md)
+- [条件访问常见策略](concept-conditional-access-policy-common.md)
+- [客户端应用程序依赖项](service-dependencies.md)

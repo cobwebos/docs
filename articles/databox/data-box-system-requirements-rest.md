@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61436488"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box Blob 存储要求
 
-本文列出了 Azure Api、 Azure 客户端库和工具使用数据框 Blob 存储支持的版本。 Data Box Blob 存储提供具有 Azure 一致语义的 blob 管理功能。 本文还总结了 Azure 存储服务中已知的 Azure Data Box Blob 存储差异。
+本文列出了 Data Box Blob 存储支持的 Azure API、Azure 客户端库和工具的版本。 Data Box Blob 存储提供具有 Azure 一致语义的 blob 管理功能。 本文还总结了 Azure 存储服务中已知的 Azure Data Box Blob 存储差异。
 
 建议在连接到 Data Box Blob 存储之前仔细查看这些信息，然后再根据需要重新参阅。
 
@@ -46,7 +46,7 @@ Azure Data Box 1.8 及更高版本
 - [2016-05-31](/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](/rest/api/storageservices/version-2015-12-11)
 - [2015-07-08](/rest/api/storageservices/version-2015-07-08)
-- [2015-04-05](/rest/api/storageservices/version-2015-04-05) |
+- [2015-04-05](/rest/api/storageservices/version-2015-04-05)|
 ## <a name="supported-azure-client-libraries"></a>支持的 Azure 客户端库
 
 对于 Data Box Blob 存储，需要提供特定的客户端库和特定的终结点后缀。 Data Box Blob 存储终结点与最新版本的 Azure Blob 存储 REST API 不完全相同，请参阅 [Azure Data Box 1.8 及更高版本支持的版本](#supported-api-versions)。 对于存储客户端库，需要了解与 REST API 兼容的版本。
@@ -55,13 +55,13 @@ Azure Data Box 1.8 及更高版本
 
 | 客户端库     |Data Box Blob 存储支持的版本     | 链接   |     终结点规范      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
-|    .NET                |    9.2.0                                           |    Nuget 包： https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>GitHub 版本： https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    app.config 文件                 |
-|    Java                |    7.0.0                                           |    Maven 包： https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub 版本： https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    连接字符串设置         |
-|    Node.js             |    2.8.3                                           |    NPM 链接： https://www.npmjs.com/package/azure-storage   (运行： `npm install azure-storage@2.7.0` )   <br>GitHub 版本： https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    服务实例声明    |
-|    C++                 |    5.2.0                                           |    Nuget 包： https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>GitHub 版本： https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    连接字符串设置         |
-|    PHP                 |    1.2.0                                           |    GitHub 版本：<br>通用： https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>Blob： https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>通过 Composer 安装（请参阅下面的详细信息）。                                                                                                             |    连接字符串设置         |
-|    Python              |    1.1.0                                           |    GitHub 版本：<br>通用： https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Blob： https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    服务实例声明    |
-|    Ruby                |    1.0.1                                           |    RubyGems 包：<br>通用： https://rubygems.org/gems/azure-storage-common/versions/1.0.1   <br>Blob： https://rubygems.org/gems/azure-storage-blob/versions/1.0.1         <br>GitHub 版本：<br>通用： https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common   <br>Blob： https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob          |    连接字符串设置         |
+|    .NET                |    9.2.0                                           |    Nuget 包：https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>GitHub 版本：https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    app.config 文件                 |
+|    Java                |    7.0.0                                           |    Maven 包：https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub 版本：https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    连接字符串设置         |
+|    Node.js             |    2.8.3                                           |    NPM 链接https://www.npmjs.com/package/azure-storage： （`npm install azure-storage@2.7.0`运行： ）   <br>GitHub 版本：https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    服务实例声明    |
+|    C++                 |    5.2.0                                           |    Nuget 包：https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>GitHub 版本：https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    连接字符串设置         |
+|    PHP                 |    1.2.0                                           |    GitHub 版本：<br>通用：https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>Blob：https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>通过 Composer 安装（请参阅下面的详细信息）。                                                                                                             |    连接字符串设置         |
+|    Python              |    1.1.0                                           |    GitHub 版本：<br>通用：https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Blob：https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    服务实例声明    |
+|    Ruby                |    1.0.1                                           |    RubyGems 包：<br>通用：https://rubygems.org/gems/azure-storage-common/versions/1.0.1   <br>Blob：https://rubygems.org/gems/azure-storage-blob/versions/1.0.1         <br>GitHub 版本：<br>通用：https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common   <br>Blob：https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob          |    连接字符串设置         |
 
 
 
@@ -83,7 +83,7 @@ Azure Data Box 1.8 及更高版本
 
 ### <a name="endpoint-declaration"></a>终结点声明
 
-Azure Data Box Blob 存储终结点包括两部分：区域名称和 Data Box 域。 在数据框 Blob 存储 SDK 中，默认终结点是`\<serial no. of the device>.microsoftdatabox.com`。  有关 blob 服务终结点的更多信息，请转至[通过 Data Box Blob 存储连接](data-box-deploy-copy-data-via-rest.md)。
+Azure Data Box Blob 存储终结点包括两部分：区域名称和 Data Box 域。 在 Data Box Blob 存储 SDK 中，默认终结点为 `\<serial no. of the device>.microsoftdatabox.com`。  有关 blob 服务终结点的更多信息，请转至[通过 Data Box Blob 存储连接](data-box-deploy-copy-data-via-rest.md)。
  
 ## <a name="examples"></a>示例
 

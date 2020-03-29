@@ -5,24 +5,24 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76261511"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的子业务流程 (Azure Functions)
 
-除了调用活动函数之外，业务流程协调程序函数还可以调用其他业务流程协调程序函数。 例如，可以从较小的业务流程协调程序函数库生成更大的业务流程。 或者，你可以并行运行某个业务流程协调程序函数的多个实例。
+除了调用活动函数之外，业务流程协调程序函数还可以调用其他业务流程协调程序函数。 例如，可以从较小的业务流程协调程序函数库构建较大的业务流程。 或者，你可以并行运行某个业务流程协调程序函数的多个实例。
 
-业务流程协调程序函数可以使用 `CallSubOrchestratorAsync` 或 .NET 中的 `CallSubOrchestratorWithRetryAsync` 方法或 JavaScript 中的 `callSubOrchestrator` 或 `callSubOrchestratorWithRetry` 方法调用另一个业务流程协调程序函数。 [错误处理和修正](durable-functions-error-handling.md#automatic-retry-on-failure)一文提供了有关自动重试的更多信息。
+一个业务流程协调程序函数可以使用 .NET 中的 `CallSubOrchestratorAsync` 或 `CallSubOrchestratorWithRetryAsync` 方法，或 JavaScript 中的 `callSubOrchestrator` 或 `callSubOrchestratorWithRetry` 方法来调用另一个业务流程协调程序函数。 [错误处理和修正](durable-functions-error-handling.md#automatic-retry-on-failure)一文提供了有关自动重试的更多信息。
 
 从调用方的角度来看，子业务流程协调程序函数的行为与活动函数相同。 它们可以返回值，引发异常，并且父业务流程协调程序函数可以等待它们。 
 ## <a name="example"></a>示例
 
-以下示例说明了一个需要预配多台设备的 IoT（物联网）方案。 以下函数表示需要为每个设备执行的设置工作流：
+以下示例说明了一个需要预配多台设备的 IoT（物联网）方案。 以下函数表示需要为每个设备执行的预配工作流：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
@@ -43,7 +43,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -66,11 +66,11 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-此业务流程协调程序函数可以按现样用于一次性设备预配，也可以用作大型业务流程的一部分。 在后一种情况下，父业务流程协调程序函数可以使用 `CallSubOrchestratorAsync` （.NET）或 `callSubOrchestrator` （JavaScript） API 来计划 `DeviceProvisioningOrchestration` 的实例。
+此业务流程协调程序函数可以按现样用于一次性设备预配，也可以用作大型业务流程的一部分。 在后一种情况下，父业务流程协调程序函数可以使用 `CallSubOrchestratorAsync` (.NET) 或 `callSubOrchestrator` (JavaScript) API 调度 `DeviceProvisioningOrchestration` 的实例。
 
 下面是一个示例，它展示了如何并行运行多个业务流程协调程序函数。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
@@ -94,9 +94,9 @@ public static async Task ProvisionNewDevices(
 ```
 
 > [!NOTE]
-> 前面C#的示例适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关不同版本之间的差异的详细信息，请参阅[持久函数版本](durable-functions-versions.md)一文。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -123,7 +123,7 @@ module.exports = df.orchestrator(function*(context) {
 ---
 
 > [!NOTE]
-> 子业务流程必须在与父业务流程相同的函数应用中定义。 如果需要在另一个函数应用中调用并等待业务流程，请考虑使用 HTTP Api 的内置支持和 HTTP 202 轮询使用者模式。 有关详细信息，请参阅[HTTP 功能](durable-functions-http-features.md)主题。
+> 子业务流程必须在与父业务流程相同的函数应用中定义。 如果需要在另一个函数应用中调用并等待业务流程，请考虑使用对 HTTP API 和 HTTP 202 轮询使用者模式的内置支持。 有关详细信息，请参阅 [HTTP 功能](durable-functions-http-features.md)主题。
 
 ## <a name="next-steps"></a>后续步骤
 

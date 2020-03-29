@@ -1,5 +1,5 @@
 ---
-title: Azure 中继混合连接-节点中的 Websocket
+title: Azure 中继混合连接 - 节点中的 WebSocket
 description: 为 Azure 中继混合连接 Websocket 编写 Node.js 控制台应用程序
 services: service-bus-relay
 documentationcenter: node
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 818db4db082a441877b573fd52361e63becce374
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75352673"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>开始在 Node.js 中使用中继混合连接 WebSocket
@@ -35,10 +35,10 @@ ms.locfileid: "75352673"
 4. 编写客户端（发送方）控制台应用程序，用于发送消息。
 5. 运行应用程序。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- [Node.js](https://nodejs.org/en/)。
-- Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+- [Node.js](https://nodejs.org/en/).
+- Azure 订阅。 如果没有，请先[创建一个免费帐户](https://azure.microsoft.com/free/)。"
 
 ## <a name="create-a-namespace"></a>创建命名空间
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.openlocfilehash: 15206f394f63e9373a4a0016588bc1e2e2c65d44
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76697704"
 ---
 # <a name="how-application-consent-works"></a>应用程序同意操作的工作原理

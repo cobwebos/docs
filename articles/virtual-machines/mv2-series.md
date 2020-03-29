@@ -1,6 +1,6 @@
 ---
-title: Mv2 系列-Azure 虚拟机
-description: Mv2 系列 Vm 的规格。
+title: Mv2 系列 - Azure 虚拟机
+description: Mv2 系列 VM 的规格。
 services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 6fb0f93d3ac124b21bbc52ddc57bc720de6406e6
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163890"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
-Mv2 系列提供高吞吐量、低延迟的平台，该平台在超线程 Intel®强®白金 GHz （Skylake）处理器上运行，所有核心基本频率为 2.5 GHz，最大 turbo 频率为 3.8 GHz。 所有 Mv2 系列虚拟机大小均可使用标准和高级永久性磁盘。 Mv2 系列实例是内存优化的 VM 大小，提供无与伦比的计算性能，可支持大型内存中数据库和工作负荷，并且非常适合用于关系数据库服务器、大型缓存和内存中的高内存学.
+Mv2 系列具有高吞吐量、低延迟平台，可在超线程英特尔® Xeon ®白金 8180M 2.5GHz（Skylake） 处理器上运行，所有核心基频率为 2.5 GHz，最大涡轮频率为 3.8 GHz。 所有 Mv2 系列虚拟机大小都可以使用标准和高级持久磁盘。 Mv2 系列实例是内存优化的 VM 大小，提供无与伦比的计算性能，支持大型内存数据库和工作负载，具有高内存与 CPU 的比率，非常适合关系数据库服务器、大型缓存和内存中分析。
 
-Mv2 系列 VM 的 Intel®超线程技术功能
+Mv2 系列 VM 的功能英特尔®超线程技术
 
 高级存储：支持
 
@@ -32,20 +32,20 @@ Mv2 系列 VM 的 Intel®超线程技术功能
 
 |大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
 |---|---|---|---|---|---|---|---|
-| Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000/800 （7040） | 40000/1000 | 8 / 16000 |
-| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000/800 （7040） | 40000/1000 | 8 / 16000 |
-| Standard_M416ms_v2<sup>1、2</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 （14080） | 80000 / 2000 | 8 / 32000 |
-| Standard_M416s_v2<sup>1、2</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 （14080） | 80000 / 2000 | 8 / 32000 |
+| Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16000 |
+| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16000 |
+| Standard_M416ms_v2<sup>1， 2</sup> | 416 | 11400 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
+| Standard_M416s_v2<sup>1， 2</sup> | 416 | 5700 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
 
-<sup>1</sup> Mv2 系列 vm 仅为第2代。 如果你使用的是 Linux，请参阅对[Azure 上的第2代 vm 的支持](./linux/generation-2.md)，了解有关如何查找并选择映像的说明。
+<sup>1</sup> Mv2 系列 VM 仅是第 2 代。 如果使用 Linux，请参阅 Azure[上支持第 2 代 VM](./linux/generation-2.md)了解如何查找和选择映像的说明。
 
-<sup>2</sup>对于 "M416ms_v2" 和 "M416s_v2" 大小，请注意，对于以下映像仅提供初始支持： "GEN2： SUSE LINUX ENTERPRISE SERVER （SLES） 12 SP4 For SAP 应用程序"。
+<sup>2</sup>对于M416ms_v2和M416s_v2大小，请注意，只有以下映像的初始支持："GEN2：用于 SAP 应用程序的 SUSE Linux 企业服务器 （SLES） 12 SP4。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="other-sizes"></a>其他大小
 
-- [常规用途](sizes-general.md)
+- [一般用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
 - [存储优化](sizes-storage.md)
 - [GPU 优化](sizes-gpu.md)

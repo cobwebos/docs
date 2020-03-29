@@ -1,6 +1,6 @@
 ---
 title: Azure 中继端口设置 | Microsoft Docs
-description: 本文包括一个表，该表描述 Azure 中继端口值所需的配置。
+description: 本文包括一个表，其中描述了 Azure 中继的端口值所需的配置。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 55bb6b620c7ba9ee13068213cbc867b165acc185
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514878"
 ---
 # <a name="azure-relay-port-settings"></a>Azure 中继端口设置
@@ -27,11 +27,11 @@ ms.locfileid: "76514878"
 
 ## <a name="hybrid-connections"></a>混合连接
 
-混合连接在端口 443 上结合使用 WebSocket 和 SSL，以用作仅使用 HTTPS 的基础传输机制。 
+混合连接在端口 443 上结合使用 WebSocket 和 SSL，以用作仅使用 HTTPS**** 的基础传输机制。 
 
 ## <a name="wcf-relays"></a>WCF 中继
   
-|绑定|传输安全|Port|  
+|绑定|传输安全|端口|  
 |-------------|------------------------|----------|  
 |[BasicHttpRelayBinding 类](/dotnet/api/microsoft.servicebus.basichttprelaybinding)（客户端）|是|HTTPS| 
 |" |否|HTTP|  

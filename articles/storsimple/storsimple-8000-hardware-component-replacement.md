@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60321679"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>更换 StorSimple 8000 系列设备上的硬件组件
@@ -37,9 +37,9 @@ ms.locfileid: "60321679"
 | 图标 | Text | 其他信息 |
 |:--- |:--- |:--- |
 | ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**危险!** |指示如果未能避免危险情况，将导致死亡或重伤。 此警示语仅限于最为极端的情况。 |
-| ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**警告!** |指示如果未能避免危险情况，可能导致死亡或重伤。 |
-| ![提醒图标](./media/storsimple-hardware-component-replacement/Caution.png) |**小心!** |指示如果未能避免危险情况，可能导致轻伤或重伤。 |
-| ![注意图标](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**注意:** |指示应该给予重视但不涉及危险情况的信息。 |
+| ![警告图标](./media/storsimple-hardware-component-replacement/Warning.png) |**警告！** |指示如果未能避免危险情况，可能导致死亡或重伤。 |
+| ![提醒图标](./media/storsimple-hardware-component-replacement/Caution.png) |**谨慎！** |指示如果未能避免危险情况，可能导致轻伤或重伤。 |
+| ![注意图标](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**通知：** |指示应该给予重视但不涉及危险情况的信息。 |
 | ![电击图标](./media/storsimple-hardware-component-replacement/Electric.png) |**点击危险** |指示高压电。 |
 | ![重物图标](./media/storsimple-hardware-component-replacement/Weight.png) |**重物** | |
 | ![无用户可维修部件图标](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png) |**无用户可维修部件** |除非经过适当的培训，否则请勿访问。 |
@@ -63,11 +63,11 @@ ms.locfileid: "60321679"
 ## <a name="hardware-component-replacement-procedures"></a>硬件组件更换过程
 StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模块。 8100 采用单个主机箱，而 8600 是配有主机箱和 EBOD 机箱的双机箱设备。
 
-下表总结了设备中的主要硬件组件。 单击“更换过程”栏中的链接即可转到关联的教程。 
+下表总结了设备中的主要硬件组件。 单击“更换过程”栏中的链接即可转到关联的教程。****
 
 | 组件 | # 存在 | 插件模块？ | 更换过程 |
 |:--- |:--- |:--- |:--- |
-| 底盘 |第 |否 |[更换 StorSimple 设备上的底盘](storsimple-8000-chassis-replacement.md) |
+| 底盘 |1 |否 |[更换 StorSimple 设备上的底盘](storsimple-8000-chassis-replacement.md) |
 | 主控制器 |2 |是 |[更换 StorSimple 设备上的控制器模块](storsimple-8000-controller-replacement.md) |
 | 764W 电源和散热模块 (PCM) |2 |是 |[更换 StorSimple 设备上的电源和散热模块](storsimple-8000-power-cooling-module-replacement.md) |
 | 备用电池 |2 |是 |[更换 StorSimple 设备上的备用电池模块](storsimple-8000-battery-replacement.md) |
@@ -79,7 +79,7 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 | 组件 | # 存在 | 插件模块？ | 更换过程 |
 |:--- |:--- |:--- |:--- |
-| 底盘 |第 |否 |[更换 StorSimple 设备上的底盘](storsimple-8000-chassis-replacement.md) |
+| 底盘 |1 |否 |[更换 StorSimple 设备上的底盘](storsimple-8000-chassis-replacement.md) |
 | EBOD 控制器 |2 |是 |[更换 StorSimple 设备上的 EBOD 控制器](storsimple-8000-ebod-controller-replacement.md) |
 | 580W 电源和散热模块 (PCM) |2 |是 |[更换 StorSimple 设备上的电源和散热模块](storsimple-8000-power-cooling-module-replacement.md) |
 | 磁盘驱动器 |12 |是 |[更换 StorSimple 设备上的磁盘驱动器](storsimple-8000-disk-drive-replacement.md) |
@@ -88,7 +88,7 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 以下正面图和背面图突出显示了设备上的插件模块。 在需要更换插件模块时，这些图可用于确定各种插件模块的位置。 EBOD 机箱和主机箱的正面图显示磁盘驱动器，背面图显示插件模块。
 
-![具有磁盘驱动器的设备的前面板](./media/storsimple-hardware-component-replacement/IC741028.png)
+![带磁盘驱动器的设备前面板](./media/storsimple-hardware-component-replacement/IC741028.png)
 
 **图 1** 设备的前面
 
@@ -104,7 +104,7 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 | Label | 描述 |
 |:--- |:--- |
-| 第 |PCM 0 |
+| 1 |PCM 0 |
 | 2 |PCM 1 |
 | 3 |控制器 0 |
 | 4 |控制器 1 |
@@ -115,7 +115,7 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 
 | Label | 描述 |
 |:--- |:--- |
-| 第 |PCM 0 |
+| 1 |PCM 0 |
 | 2 |PCM 1 |
 | 3 |EBOD 控制器 0 |
 | 4 |EBOD 控制器 1 |
@@ -132,7 +132,7 @@ StorSimple 8000 系列设备的主机箱和/或 EBOD 机箱包含多个插件模
 * 备用电池模块
 * 机架安装导轨套件
 
-若要订阅任何此类更换部件，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。
+如需订阅任何此类更换部件，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。
 
 ## <a name="next-steps"></a>后续步骤
 在尝试更换 StorSimple 硬件组件之前，请查看所有[安全信息](storsimple-safety.md)。

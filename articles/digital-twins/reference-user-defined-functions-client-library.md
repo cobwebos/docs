@@ -1,6 +1,6 @@
 ---
-title: 用户定义函数客户端库引用-Azure 数字孪生 |Microsoft Docs
-description: Azure 数字孪生用户定义函数客户端库参考文档。
+title: 用户定义的函数客户端库引用 - Azure 数字孪生 |微软文档
+description: Azure 数字双月用户定义的函数客户端库参考文档。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: bd6095daca51ddca0cfb4b34ca86e763df9a3d02
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76276815"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>用户定义函数客户端库参考
@@ -30,7 +30,7 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | 空间标识符 |
 
@@ -40,7 +40,7 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | 传感器标识符 |
 
@@ -50,7 +50,7 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *id* | `guid` | 设备标识符 |
 
@@ -60,7 +60,7 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *sensorId*  | `guid` | 传感器标识符 |
 | *dataType*  | `string` | 传感器数据类型 |
@@ -71,10 +71,10 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *spaceId*  | `guid` | 空间标识符 |
-| *valueName* | `string` | 空间属性名称 |
+| *值名称* | `string` | 空间属性名称 |
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues(sensorId, dataType) ⇒ `value[]`
 
@@ -82,7 +82,7 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | 传感器标识符 |
 | *dataType* | `string` | 传感器数据类型 |
@@ -93,10 +93,10 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
-| *valueName* | `string` | 空间属性名称 |
+| *值名称* | `string` | 空间属性名称 |
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
 
@@ -104,7 +104,7 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 
@@ -114,7 +114,7 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 
@@ -124,7 +124,7 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 
@@ -134,9 +134,9 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *deviceId* | `guid` | 设备标识符 |
+| *设备 Id* | `guid` | 设备标识符 |
 
 ### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
@@ -144,7 +144,7 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *childSpaceId* | `guid` | 空间标识符 |
 
@@ -154,7 +154,7 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | 传感器标识符 |
 
@@ -164,7 +164,7 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *childDeviceId* | `guid` | 设备标识符 |
 
@@ -174,7 +174,7 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | 传感器标识符 |
 
@@ -184,10 +184,10 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
-| *propertyName* | `string` | 空间属性名称 |
+| *属性名称* | `string` | 空间属性名称 |
 
 ### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty(sensorId, propertyName) ⇒ `extendedProperty`
 
@@ -195,10 +195,10 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | 传感器标识符 |
-| *propertyName* | `string` | 传感器属性名称 |
+| *属性名称* | `string` | 传感器属性名称 |
 
 ### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty(deviceId, propertyName) ⇒ `extendedProperty`
 
@@ -206,10 +206,10 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *deviceId* | `guid` | 设备标识符 |
-| *propertyName* | `string` | 设备属性名称 |
+| *设备 Id* | `guid` | 设备标识符 |
+| *属性名称* | `string` | 设备属性名称 |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue(sensorId, dataType, value)
 
@@ -217,11 +217,11 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | 传感器标识符 |
 | *dataType*  | `string` | 传感器数据类型 |
-| *value*  | `string` | 值 |
+| *value*  | `string` | “值” |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, value)
 
@@ -229,11 +229,11 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 | *dataType* | `string` | 数据类型 |
-| *value* | `string` | 值 |
+| *value* | `string` | “值” |
 
 ### <a name="logmessage"></a>log(message)
 
@@ -241,9 +241,9 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| message | `string` | 要记录的消息 |
+| *message* | `string` | 要记录的消息 |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification(topologyObjectId, topologyObjectType, payload)
 
@@ -251,7 +251,7 @@ ms.locfileid: "76276815"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *topologyObjectId*  | `guid` | 图形对象标识符。 例如，空格、传感器和设备 ID。|
 | *topologyObjectType*  | `string` | 例如，空格、传感器和设备。|
@@ -261,7 +261,7 @@ ms.locfileid: "76276815"
 
 下面介绍从客户端参考帮助器方法返回的响应模型。
 
-### <a name="space"></a>航天
+### <a name="space"></a>Space
 
 ```JSON
 {
@@ -292,31 +292,31 @@ ms.locfileid: "76276815"
 
 此函数将返回当前空间的扩展属性及其值。
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *propertyName* | `string` | 扩展属性的名称 |
+| *属性名称* | `string` | 扩展属性的名称 |
 
 #### <a name="valuevaluename--value"></a>Value(valueName) ⇒ `value`
 
 此函数将返回当前空间的值。
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *valueName* | `string` | 值的名称 |
+| *值名称* | `string` | 值的名称 |
 
 #### <a name="historyvaluename--value"></a>History(valueName) ⇒ `value[]`
 
 此函数将返回当前空间的历史值。
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *valueName* | `string` | 值的名称 |
+| *值名称* | `string` | 值的名称 |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
 此函数发送具有指定有效负载的通知。
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
@@ -352,15 +352,15 @@ ms.locfileid: "76276815"
 
 此函数返回当前设备的扩展属性及其值。
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *propertyName* | `string` | 扩展属性的名称 |
+| *属性名称* | `string` | 扩展属性的名称 |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
 此函数发送具有指定有效负载的通知。
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
@@ -400,9 +400,9 @@ ms.locfileid: "76276815"
 
 此函数返回当前传感器的扩展属性及其值。
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
-| *propertyName* | `string` | 扩展属性的名称 |
+| *属性名称* | `string` | 扩展属性的名称 |
 
 #### <a name="value--value"></a>Value() ⇒ `value`
 
@@ -416,11 +416,11 @@ ms.locfileid: "76276815"
 
 此函数发送具有指定有效负载的通知。
 
-| 参数  | 类型                | Description  |
+| 参数  | 类型                | 说明  |
 | ------ | ------------------- | ------------ |
 | *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
-### <a name="value"></a>值
+### <a name="value"></a>“值”
 
 ```JSON
 {

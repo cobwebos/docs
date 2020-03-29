@@ -1,6 +1,6 @@
 ---
 title: 将规模集模板转换为使用托管磁盘
-description: 将 Azure 资源管理器虚拟机规模集模板转换为托管磁盘规模集模板。
+description: 将 Azure 资源管理器虚拟机缩放集模板转换为托管磁盘规模集模板。
 keywords: 虚拟机规模集
 author: mayanknayar
 tags: azure-resource-manager
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 5/18/2017
 ms.author: manayar
 ms.openlocfilehash: 4ab5c48c6673a2353c70fe808d09aa15675e0424
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278131"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>将规模集模板转换为托管磁盘规模集模板
 
-使用 Resource Manager 模板创建不使用托管磁盘的规模集的客户可能希望修改该模板以使用托管磁盘。 本文演示如何使用托管磁盘，以 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)（适用于示例资源管理器模板的社区主导存储库）中的拉取请求为例。 可在此处查看完整的拉取请求：[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998)，差异的相关部分如下，并进行了说明：
+使用 Resource Manager 模板创建不使用托管磁盘的规模集的客户可能希望修改该模板以使用托管磁盘。 本文演示如何使用托管磁盘，以 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)（适用于示例资源管理器模板的社区主导存储库）中的拉取请求为例。 完整的拉取请求可以在此处看到：[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998)和差异的相关部分如下，以及说明：
 
 ## <a name="making-the-os-disks-managed"></a>将 OS 磁盘设为托管磁盘
 
@@ -137,7 +137,7 @@ ms.locfileid: "76278131"
 
 
 ## <a name="next-steps"></a>后续步骤
-有关使用规模集的示例资源管理器模板，请在 [Azure 快速入门模板 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)中搜索“vmss”。
+例如，使用比例集的资源管理器模板，在[Azure 快速入门模板 GitHub 存储库](https://github.com/Azure/azure-quickstart-templates)中搜索"vmss"。
 
 有关一般信息，请参阅[规模集的主要登陆页](https://azure.microsoft.com/services/virtual-machine-scale-sets/)。
 

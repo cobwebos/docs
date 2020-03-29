@@ -14,17 +14,17 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
 ms.openlocfilehash: f8b4063d87fa9a89dccd42eddea644609bd6ff27
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921243"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure 安全中心威胁智能报告
 本文档介绍 Azure 安全中心威胁智能报告如何能够帮助了解有关生成了安全警报的威胁的详细信息。
 
 ## <a name="what-is-a-threat-intelligence-report"></a>什么是威胁智能报告？
-安全中心威胁保护的工作原理是监视 Azure 资源、网络和连接的合作伙伴解决方案中的安全信息。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。 有关详细信息，请参阅[Azure 安全中心如何检测和响应威胁](security-center-alerts-overview.md#detect-threats)。
+安全中心威胁保护的工作原理是监视来自 Azure 资源、网络和连接的合作伙伴解决方案的安全信息。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。 有关详细信息，请参阅[Azure 安全中心如何检测和响应威胁](security-center-alerts-overview.md#detect-threats)。
 
 当安全中心识别到威胁时，它将触发[安全警报](security-center-managing-and-responding-alerts.md)，其中包含有关特定事件的详细信息，包括修复建议。 为帮助事件响应团队调查和修复威胁，安全中心包括了威胁智能报告，其中包含有关已检测到的威胁的信息，包括如下信息：
 
@@ -43,31 +43,31 @@ ms.locfileid: "77921243"
 
 安全中心有三种类型的威胁报告，可因攻击而异。 可用报告有：
 
-* **活动组报告**：深入分析攻击者、其目标和策略。
+* **活动组报告**：提供深入深入攻击者，他们的目标和战术。
 * **活动报告**：重点提供特定攻击活动的详细信息。
 * **威胁摘要报告**：包含前两个报告中的所有项目。
 
-在事件响应过程中，这种类型的信息非常有用，在这种情况下，将不断进行调查以了解攻击来源、攻击者的动机以及缓解此问题的方法。
+在事件响应过程中，进行调查以了解攻击来源、攻击者的动机以及将来可缓解此问题的操作时，这种类型的信息很有用。
 
 ## <a name="how-to-access-the-threat-intelligence-report"></a>如何访问威胁智能报告？
-可以通过查看“安全警报” 磁贴查看当前警报。 打开 Azure 门户，按照以下步骤查看每个警报的更多详细信息：
+可以通过查看“安全警报” **** 磁贴查看当前警报。 打开 Azure 门户，按照以下步骤查看每个警报的更多详细信息：
 
-1. 在安全中心仪表板中，可以看到“安全警报” 磁贴。
-2. 单击磁贴打开包含有关警报的更多详细信息的“安全警报”边栏选项卡，并单击要获取更多相关详细信息的安全警报。
+1. 在安全中心仪表板中，可以看到“安全警报” **** 磁贴。
+2. 单击磁贴打开包含有关警报的更多详细信息的“安全警报”**** 边栏选项卡，并单击要获取更多相关详细信息的安全警报。
 
     ![安全警报](./media/security-center-threat-report/security-center-threat-report-fig1.png)
-3. 在本例中，“已执行的可疑进程”边栏选项卡显示了有关警报的详细信息，如下图所示：
+3. 在本例中，“已执行的可疑进程”**** 边栏选项卡显示了有关警报的详细信息，如下图所示：
 
     ![安全警报详细信息](./media/security-center-threat-report/security-center-threat-report-fig2.png)
-4. 每个安全警报的可用信息量因警报类型而异。 “报表”字段包含威胁智能报告的链接。 单击它，另一个浏览器窗口会显示 PDF 文件。
+4. 每个安全警报的可用信息量因警报类型而异。 “报表”**** 字段包含威胁智能报告的链接。 单击它，另一个浏览器窗口会显示 PDF 文件。
 
    ![存储选择](./media/security-center-threat-report/security-center-threat-report-fig3.png)
 
 可从此处下载此报表的 PDF，阅读检测到的安全问题的详细信息，并根据提供的信息采取措施。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 在本文档中，了解了 Azure 安全中心威胁智能报告在有关安全警报调查中如何能够提供帮助。 若要了解更多有关 Azure 安全中心的详细信息，请参阅以下内容：
 
 * [Azure Security Center planning and operations guide](security-center-planning-and-operations-guide.md)（Azure 安全中心规划和操作指南）。 了解如何规划并理解设计注意事项，以便采用 Azure 安全中心。
-* [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)（管理和响应 Azure 安全中心的安全警报）。 了解如何管理和响应安全警报。
+* [管理和响应 Azure 安全中心中的安全警报](security-center-managing-and-responding-alerts.md)。 了解如何管理和响应安全警报。
 * [处理 Azure 安全中心的安全事件](security-center-incident.md)

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
 ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918234"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>无法通过远程桌面连接到 VM，因为网络接口被禁用
@@ -37,7 +37,7 @@ ms.locfileid: "77918234"
 ### <a name="use-serial-control"></a>使用串行控制台
 
 1. 连接到[串行控制台并打开 CMD 实例](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-)。 如果未在 VM 上启用串行控制台，请参阅[重置网络接口](#reset-network-interface)。
+)。 如果 VM 上未启用串行控制台，请参阅[重置网络接口](#reset-network-interface)。
 2. 检查网络接口的状态：
 
         netsh interface show interface

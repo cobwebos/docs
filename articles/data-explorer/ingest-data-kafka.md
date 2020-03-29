@@ -1,6 +1,6 @@
 ---
 title: 将数据从 Kafka 引入到 Azure 数据资源管理器
-description: 在本文中，您将了解如何将 （加载） 数据引入到 Azure 数据资源管理器从 Kafka。
+description: 本文介绍如何将数据从 Kafka 引入（加载）到 Azure 数据资源管理器中。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,23 +8,23 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66497279"
 ---
 # <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>将数据从 Kafka 引入到 Azure 数据资源管理器
  
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供从 Kafka 引入数据（加载数据）的功能。 Kafka 是一个分布式流式处理平台，可用于构建实时流式处理数据管道，在系统或应用程序之间可靠地移动数据。
  
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
  
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。 
  
-* [一个测试群集和数据库](create-cluster-database-portal.md)。
+* [测试群集和数据库](create-cluster-database-portal.md)。
  
-* 一个生成数据并将其发送到 Kafka 的[示例应用](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka)。
+* 生成数据并将其发送到卡夫卡[的示例应用](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka)。
 
 * 用于运行示例应用的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。
  
@@ -43,7 +43,7 @@ git clone git://github.com:Azure/kafka-sink-azure-kusto.git
 cd ./kafka-sink-azure-kusto/kafka/
 ```
 
-#### <a name="build"></a>Build
+#### <a name="build"></a>构建
 
 通过 Maven 进行本地构建，以便生成一个带依赖项的 `.jar`。
 
@@ -64,7 +64,7 @@ mvn clean compile assembly:single
 
 [Kafka Connect](https://kafka.apache.org/documentation/#connect) 中详细记录了 Kafka 连接器以及如何部署它们 
 
-### <a name="example-configuration"></a>示例配置 
+### <a name="example-configuration"></a>配置示例 
  
 ```config
 name=KustoSinkConnector 
@@ -85,13 +85,13 @@ kusto.sink.flush_size=1000
  
 ## <a name="create-a-target-table-in-adx"></a>在 ADX 中创建目标表
  
-在 ADX 中创建一个表，以便 Kafka 可以向其发送数据。 在“先决条件”  中预配的群集和数据库中创建表。
+在 ADX 中创建一个表，以便 Kafka 可以向其发送数据。 在“先决条件”**** 中预配的群集和数据库中创建表。
  
-1. 在 Azure 门户中导航到群集，然后选择“查询”。 
+1. 在 Azure 门户中导航到群集，然后选择“查询”。****
  
     ![查询应用程序链接](media/ingest-data-event-hub/query-explorer-link.png)
  
-1. 将以下命令复制到窗口中，然后选择“运行”  。
+1. 将以下命令复制到窗口中，然后选择“运行”****。
  
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
@@ -99,7 +99,7 @@ kusto.sink.flush_size=1000
  
     ![运行创建查询](media/ingest-data-event-hub/run-create-query.png)
  
-1. 将以下命令复制到窗口中，然后选择“运行”  。
+1. 将以下命令复制到窗口中，然后选择“运行”****。
  
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
@@ -162,4 +162,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
  
 ## <a name="next-steps"></a>后续步骤
  
-* [在 Azure 数据资源管理器中查询数据](web-query-data.md)
+* [Azure 数据资源管理器中的查询数据](web-query-data.md)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/05/2017
 ms.author: magattus
 ms.openlocfilehash: 238dea3c136daf13d3db7be41bed103a0cbf7636
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593687"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>分析 Azure CDN 使用模式
@@ -27,15 +27,15 @@ ms.locfileid: "67593687"
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>通过 Azure 诊断日志进行核心分析
 
-核心分析可用于所有定价层的 CDN 终结点。 Azure 诊断日志使核心分析导出到 Azure 存储中，事件中心或 Azure Monitor 日志。 Azure Monitor 日志提供了图形的用户配置和自定义解决方案。 有关 Azure 诊断日志的详细信息，请参阅 [Azure 诊断日志](cdn-azure-diagnostic-logs.md)。
+核心分析可用于所有定价层的 CDN 终结点。 Azure 诊断日志允许将核心分析导出到 Azure 存储、事件中心或 Azure 监视器日志。 Azure 监视器日志提供了一个包含可用户可配置和可自定义图形的解决方案。 有关 Azure 诊断日志的详细信息，请参阅 [Azure 诊断日志](cdn-azure-diagnostic-logs.md)。
 
 ## <a name="verizon-core-reports"></a>Verizon 核心报表
 
-作为具有 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** 配置文件的 Azure CDN 用户，可以在 Verizon 补充门户中查看 Verizon 核心报告。 可通过 Azure 门户的“管理”  选项访问 Verizon 核心报表，其中提供了各种各样的图和视图。 有关详细信息，请参阅 [Verizon 中的核心报表](cdn-analyze-usage-patterns.md)。
+作为具有 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** 配置文件的 Azure CDN 用户，可以在 Verizon 补充门户中查看 Verizon 核心报告。 Verizon 核心报告可通过 Azure 门户的 **"管理"** 选项访问，并提供各种图形和视图。 有关详细信息，请参阅 [Verizon 中的核心报表](cdn-analyze-usage-patterns.md)。
 
 ## <a name="verizon-custom-reports"></a>Verizon 自定义报表
 
-作为具有 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** 配置文件的 Azure CDN 用户，可以在 Verizon 补充门户中查看 Verizon 自定义报告。 可通过 Azure 门户的“管理”  选项访问 Verizon 自定义报表。 Verizon 自定义报表页显示属于 Azure CDN 配置文件的各个边缘 CName 的点击量或传输数据。 可以按照任意时间段内的 HTTP 响应代码或缓存状态将数据分组。 有关详细信息，请参阅 [Verizon 中的自定义报表](cdn-verizon-custom-reports.md)。
+作为具有 **Verizon 提供的标准 Azure CDN** 或 **Verizon 提供的高级 Azure CDN** 配置文件的 Azure CDN 用户，可以在 Verizon 补充门户中查看 Verizon 自定义报告。 Verizon 自定义报表可通过 Azure 门户的 **"管理**"选项进行访问。 Verizon 自定义报表页显示属于 Azure CDN 配置文件的各个边缘 CName 的点击量或传输数据。 可以按照任意时间段内的 HTTP 响应代码或缓存状态将数据分组。 有关详细信息，请参阅 [Verizon 中的自定义报表](cdn-verizon-custom-reports.md)。
 
 ## <a name="azure-cdn-premium-from-verizon-reports"></a>来自 Verizon 的高级 Azure CDN 报告
 
