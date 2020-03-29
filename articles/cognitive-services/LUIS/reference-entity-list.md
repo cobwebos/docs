@@ -1,33 +1,33 @@
 ---
-title: 列出实体类型-LUIS
-description: 列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用 "建议" 功能可查看基于当前列表的新词建议。
+title: 列出实体类型 - LUIS
+description: 列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议。
 ms.topic: reference
 ms.date: 03/12/2020
 ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79297231"
 ---
 # <a name="list-entity"></a>列表实体
 
-列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。
+列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议****。 如果存在多个具有相同值的列表实体，则终结点查询中会返回其中每个实体。
 
-列表实体不是计算机学习的实体。 它是确切的文本匹配。 LUIS 将任何列表中某个项的任何匹配项标记为响应中的实体。
+列表实体不进行机器学习。 它是确切的文本匹配。 LUIS 将任何列表中某个项的任何匹配项标记为响应中的实体。
 
-**当文本数据为时，实体非常适合：**
+**如果文本数据具有以下特征，则非常适合使用该实体：**
 
 * 是已知的集。
-* 不经常更改。 如果需要经常更改列表或希望列表自行展开，则使用短语列表提升的简单实体是更好的选择。
+* 不经常更改。 如果需要经常更改列表或希望列表自行扩展，则使用短语列表提升的简单实体是更好的选择。
 * 此集不超出此实体类型的最大 LUIS [边界](luis-boundaries.md)。
-* 查询文本中的文本是与同义词或规范名称不区分大小写的匹配项。 LUIS 不会使用超出匹配项的列表。 模糊匹配、词干分析、复数和其他变体不会使用列表实体进行解析。 若要管理变体，请考虑使用带有可选文本语法的[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)。
+* 话语中的文本与同义词或规范名称不区分大小写。 LUIS 不会使用超出匹配范围的列表。 模糊匹配、词干、复数和其他变体不会使用列表实体解析。 若要管理变体，请考虑使用带有可选文本语法的[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)。
 
 ![列表实体](./media/luis-concept-entities/list-entity.png)
 
-## <a name="example-json-to-import-into-list-entity"></a>要导入到列表实体的示例 json
+## <a name="example-json-to-import-into-list-entity"></a>用于导入到列表实体的示例 .json
 
-  您可以使用以下 json 格式将值导入现有列表实体：
+  可使用以下 .json 格式将值导入现有列表实体：
 
   ```JSON
   [
@@ -56,8 +56,8 @@ ms.locfileid: "79297231"
 
 |列表项|项同义词|
 |---|---|
-|`Seattle`|`sea-tac`、`sea`、`98101`、`206`、`+1` |
-|`Paris`|`cdg`、`roissy`、`ory`、`75001`、`1`、`+33`|
+|`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
+|`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
 
 `book 2 tickets to paris`
 
@@ -84,7 +84,7 @@ ms.locfileid: "79297231"
 #### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 
-如果在查询字符串中设置 `verbose=false`，则这是 JSON：
+如果在查询字符串中设置了 `verbose=false`，则这是 JSON：
 
 ```json
 "entities": {
@@ -96,7 +96,7 @@ ms.locfileid: "79297231"
 }
 ```
 
-如果在查询字符串中设置 `verbose=true`，则这是 JSON：
+如果在查询字符串中设置了 `verbose=true`，则这是 JSON：
 
 ```json
 "entities": {
@@ -125,11 +125,11 @@ ms.locfileid: "79297231"
 
 * * *
 
-|数据对象|实体名称|值|
+|数据对象|实体名称|“值”|
 |--|--|--|
-|列出实体|`Cities`|`paris`|
+|列表实体|`Cities`|`paris`|
 
 
 ## <a name="next-steps"></a>后续步骤
 
-在本[教程](tutorial-list-entity.md)中，了解如何使用**列表实体**从已知项列表中提取精确的文本匹配项。
+在本[教程](tutorial-list-entity.md)中，了解如何使用**列表实体**从已知项的列表中提取完全匹配的文本。

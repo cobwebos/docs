@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: pafarley
 ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72754162"
 ---
 # <a name="video-moderation-with-human-review"></a>通过人工评审审查视频
 
-使用内容审查器的计算机辅助[视频审核](video-moderation-api.md)和[人工审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)来为您的业务提供最佳结果，从而对成人（显式）和猥亵（暗示性）内容进行适中的视频和脚本。
+使用内容管理员的机器辅助[视频审核](video-moderation-api.md)和[人工审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)，对成人（显式）和淫秽（暗示性）内容的视频和脚本进行适度，以获得最适合您业务的效果。
 
 ## <a name="video-trained-classifier-preview"></a>视频定型分类器（预览）
 

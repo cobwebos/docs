@@ -1,5 +1,5 @@
 ---
-title: 配色方案检测-计算机视觉
+title: 配色方案检测 - 计算机视觉
 titleSuffix: Azure Cognitive Services
 description: 使用计算机视觉 API 检测图像中的配色方案的相关概念。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e0fa85b8a90ea57d9b81bd2eeaa6d080b7582acd
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: af0c39ed8211ac2041d143112437ad5d6b384259
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945277"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244726"
 ---
 # <a name="detect-color-schemes-in-images"></a>检测图像中的配色方案
 
@@ -75,9 +75,12 @@ ms.locfileid: "68945277"
 
 | 图像 | 黑色还是白色？ |
 |-------|----------------|
-|![曼哈顿建筑的黑白照片](./Images/bw_buildings.png) | 真 |
-|![一座蓝色的房子和前院](./Images/house_yard.png) | 假 |
+|![曼哈顿建筑的黑白照片](./Images/bw_buildings.png) | true |
+|![一座蓝色的房子和前院](./Images/house_yard.png) | false |
 
-## <a name="next-steps"></a>后续步骤
+## <a name="use-the-api"></a>使用 API
 
-了解[检测映像类型](concept-detecting-image-types.md)的概念。
+配色方案检测功能是[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的一部分。 可以通过本机 SDK 或 REST 调用来调用此 API。 将 `Color` 包括在 **visualFeatures** 查询参数中。 然后，在获取完整 JSON 响应时，就只需分析 `"color"` 部分内容的字符串。
+
+* [快速入门：计算机视觉 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [快速入门：分析图像（REST API）](./quickstarts/csharp-analyze.md)

@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68594905"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>如何使用 TransformText 方法
 
 > [!NOTE]
-> 此方法已弃用。 它在文本翻译 API V3.0 中不可用。
+> 不推荐使用此方法。 它在文本翻译 API V3.0 中不可用。
 
 TransformText 方法是用于社交媒体的文本规范化函数，它返回输入的规范化形式。 该方法可以用作机器翻译或其他需要干净输入文本（通常很难在社交媒体或用户生成的内容中找到）的应用程序中的预处理步骤。 该函数目前仅适用于英语输入。
 
 该方法是一种通过 HTTP 使用 GET 的 RESTful 服务。 它支持简单的 XML 和 JSON 序列化。
 
-## <a name="parameters"></a>Parameters
+## <a name="parameters"></a>参数
 
 | 参数 | 描述 |
 |:---|:---|
-| 授权标头 | **必需**：用于标识应用程序的 HTTP 标头。 使用密钥：“授权”和值：“持有者” + “ ” + 访问令牌。 有关详细信息，请转到此处。|
-| language | **必需**：一个表示语言代码的字符串。 此参数仅支持以 **en** 作为语言名称的英语。|
+| 授权标头 | **必需**：用于标识应用程序的 HTTP 标头。 使用键：“Authorization”和值："Bearer" + " " + access token。 有关详细信息，请转到此处。|
+| 语言 | **必需**：一个表示语言代码的字符串。 此参数仅支持以 **en** 作为语言名称的英语。|
 | category | **可选**：一个包含翻译类别或领域的字符串。 此参数仅支持默认选项 **general**。|
 | sentence | **必需**：要更正的句子。 |
 

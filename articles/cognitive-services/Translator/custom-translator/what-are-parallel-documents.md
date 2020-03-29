@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: d7c38a44e3111a319e4146b3c9b71a22b0d31bfd
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72675469"
 ---
 # <a name="what-are-parallel-documents"></a>什么是并行文档？
@@ -23,7 +23,7 @@ ms.locfileid: "72675469"
 
 ## <a name="requirements"></a>要求
 
-你将需要至少10000个唯一对齐的并行句子来训练系统。 此限制是一种安全网络，确保你的并行句子包含足够的独特词汇来成功地训练翻译模型。 最佳做法是，持续添加更多的并行内容和重新训练以提高翻译系统的质量。 请参阅[句子对齐](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment)。
+训练系统至少需要 10，000 个唯一对齐的并行句子。 此限制是一个安全网，以确保您的并行句子包含足够的唯一词汇，以成功训练翻译模型。 作为最佳实践，不断添加更多并行内容并重新培训以提高翻译系统的质量。 请参阅[句子对齐](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment)。
 
 Microsoft 要求上传到自定义翻译的文档不违反第三方的版权或知识产权。 有关详细信息，请参阅[使用条款](https://azure.microsoft.com/support/legal/cognitive-services-terms/)。
 使用门户上传文档不会改变文档本身的知识产权所有权。

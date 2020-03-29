@@ -1,23 +1,22 @@
 ### YamlMime:Landing
-title: 语音助手文档
-summary: 使用语音服务的语音助手使开发人员可以为其应用程序和体验创建自然、人为的对话接口。
+title: 语音助理文档
+summary: 使用语音服务的语音助理使开发人员能够为其应用程序和体验创建自然、类似人类的对话界面。
 metadata:
-  title: 语音助手文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  title: 语音助理文档 - 教程，API 参考 - Azure 认知服务 |微软文档
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 369213485934236a05ecb3fcb458bdd28fd76136
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 6ae919317269753cbc3c8bf5b0df11e19a47989f
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79365553"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415149"
 landingContent:
 - title: 关于语音助手
   linkLists:
@@ -33,9 +32,9 @@ landingContent:
     links:
     - text: 语音助手常见问题解答
       url: faq-voice-assistants.md
-    - text: 语音助手定价
+    - text: 语音助理定价
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
-- title: 用自定义命令进行开发
+- title: 使用自定义命令进行开发
   linkLists:
   - linkListType: quickstart
     links:
@@ -43,21 +42,21 @@ landingContent:
       url: quickstart-custom-speech-commands-create-new.md
     - text: 使用参数创建自定义命令
       url: quickstart-custom-speech-commands-create-parameters.md
-    - text: 使用自定义命令和自定义语音
+    - text: 将自定义命令与自定义语音一起使用
       url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: 结合使用自定义命令和语音 SDK
+    - text: 将自定义命令与语音 SDK 一起使用
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: 满足客户端的命令
+    - text: 从客户端执行命令
       url: how-to-custom-speech-commands-fulfill-sdk.md
     - text: 添加参数验证
       url: how-to-custom-speech-commands-validations.md
     - text: 添加确认
       url: how-to-custom-speech-commands-confirmations.md
-    - text: 添加单步更正
+    - text: 添加一步校正
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: 利用直接行语音进行开发
+- title: 使用直线语音进行开发
   linkLists:
   - linkListType: quickstart
     links:
@@ -71,7 +70,7 @@ landingContent:
     links:
     - text: 使用语音 SDK 为机器人启用语音
       url: tutorial-voice-enable-your-bot-speech-sdk.md
-- title: 用自定义关键字进行开发
+- title: 使用自定义关键字进行开发
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -79,5 +78,5 @@ landingContent:
       url: speech-devices-sdk-create-kws.md
   - linkListType: reference
     links:
-    - text: 自定义关键字命名准则
+    - text: 自定义关键字命名指南
       url: speech-devices-sdk-kws-guidelines.md

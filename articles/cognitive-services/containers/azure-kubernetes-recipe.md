@@ -1,5 +1,5 @@
 ---
-title: 在 Kubernetes Service 中运行语言检测容器
+title: 在 Kubernetes 服务中运行语言检测容器
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: 使用正在运行的示例将语言检测容器部署到 Azure Kubernetes 服务，并在 Web 浏览器中对其进行测试。
 services: cognitive-services
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
 ms.openlocfilehash: 1968bc03bfddb9d6f6c8fe743a2a1a99722c074d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399172"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>将文本分析语言检测容器部署到 Azure Kubernetes 服务
 
 了解如何部署语言检测容器。 此过程说明如何创建本地 Docker 容器，将容器推送到自己的专用容器注册表，在 Kubernetes 群集中运行容器，以及在 Web 浏览器中对其进行测试。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 此过程要求必须在本地安装和运行多个工具。 请勿使用 Azure Cloud Shell。
 
@@ -29,14 +29,14 @@ ms.locfileid: "78399172"
 * 适用于操作系统的 [Git](https://git-scm.com/downloads)，以便克隆此过程中使用的[示例](https://github.com/Azure-Samples/cognitive-services-containers-samples)。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Docker 引擎](https://www.docker.com/products/docker-engine)并验证 Docker CLI 是否可在控制台窗口中工作。
-* [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe)。
+* [库布克特尔](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe).
 * 具有适当定价层的 Azure 资源。 并非所有定价层都适用于此容器：
-  * 仅具有 F0 或标准定价层的文本分析资源。
-  * 具有 S0 定价层的认知服务资源。
+  * 仅具有 F0 或标准定价层的文本分析资源****。
+  * 具有 S0 定价层的认知服务资源****。
 
 ## <a name="running-the-sample"></a>运行示例
 
-此过程加载并运行认知服务容器示例以进行语言检测。 该示例有两个容器，一个用于客户端应用程序，另一个用于认知服务容器。 我们会将这两个映像推送到 Azure 容器注册表。 这些映像推送到自己的注册表后，请创建 Azure Kubernetes 服务来访问这些映像和运行容器。 容器在运行时，请使用 kubectl CLI，监视容器性能。 使用 HTTP 请求访问客户端应用程序，并查看结果。
+此过程加载并运行认知服务容器示例以进行语言检测。 该示例有两个容器，一个用于客户端应用程序，另一个用于认知服务容器。 我们将将这两个映像推送到 Azure 容器注册表。 这些映像推送到自己的注册表后，请创建 Azure Kubernetes 服务来访问这些映像和运行容器。 容器在运行时，请使用 kubectl CLI，监视容器性能****。 使用 HTTP 请求访问客户端应用程序，并查看结果。
 
 ![运行示例容器的概念性想法](../text-analytics/media/how-tos/container-instance-sample/containers.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "78399172"
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
-    保存结果，以获取 loginServer 属性。 这将是托管容器地址的一部分，稍后将在 `language.yml` 文件中使用。
+    保存结果，以获取 loginServer 属性****。 这将是托管容器地址的一部分，稍后将在 `language.yml` 文件中使用。
 
     ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
@@ -180,7 +180,7 @@ ms.locfileid: "78399172"
     az ad sp create-for-rbac --skip-assignment
     ```
 
-    为步骤 3 中代理人参数 `appId` 的保存结果 `<appId>` 值。 为下一节中 client-secret 参数 `password` 保存 `<client-secret>`。
+    为步骤 3 中代理人参数 `<appId>` 的保存结果 `appId` 值。 为下一节中 client-secret 参数 `<client-secret>` 保存 `password`。
 
     ```output
     {
@@ -289,9 +289,9 @@ ms.locfileid: "78399172"
 
 ## <a name="load-the-orchestration-definition-into-your-kubernetes-service"></a>将业务流程定义加载到 Kubernetes 服务中
 
-本部分使用 kubectl CLI 与 Azure Kubernetes 服务通信。
+本部分使用 kubectl CLI 与 Azure Kubernetes 服务通信****。
 
-1. 在加载业务流程定义之前，请检查 kubectl 是否有权访问节点。
+1. 在加载业务流程定义之前，请检查 kubectl 是否有权访问节点****。
 
     ```console
     kubectl get nodes
@@ -325,7 +325,7 @@ ms.locfileid: "78399172"
     |第 91 行<br> `apiKey` 属性|文本分析资源密钥|
     |第 92 行<br> `billing` 属性|文本分析资源的账单终结点。<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
-    由于 apiKey 和账单终结点已设置为 Kubernetes 业务流程定义的一部分，因此网站容器无需了解这些内容或将其作为请求的一部分传递。 网站容器按其业务流程协调程序名称 `language` 引用语言检测容器。
+    由于 apiKey 和账单终结点已设置为 Kubernetes 业务流程定义的一部分，因此网站容器无需了解这些内容或将其作为请求的一部分传递********。 网站容器按其业务流程协调程序名称 `language` 引用语言检测容器。
 
 1. 从创建和保存 `language.yml` 的文件夹中加载此示例的业务流程定义文件。
 

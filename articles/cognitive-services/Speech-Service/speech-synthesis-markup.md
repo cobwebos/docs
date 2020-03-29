@@ -1,5 +1,5 @@
 ---
-title: 语音合成标记语言（SSML）-语音服务
+title: 语音合成标记语言 (SSML) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音合成标记语言来控制文本到语音转换中的发音和韵律。
 services: cognitive-services
@@ -8,62 +8,62 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/23/2020
 ms.author: dapine
-ms.openlocfilehash: 68691ad60542c55db4d381e2923a9f928a22995a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 7d5dd79399b15ade90173a55aeb71dacbc61fa78
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79220497"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80365810"
 ---
-# <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言（SSML）改善合成
+# <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用语音合成标记语言 （SSML） 改进合成
 
-语音合成标记语言（SSML）是一种基于 XML 的标记语言，它允许开发人员使用文本到语音服务来指定如何将输入文本转换为合成语音。 与纯文本相比，SSML 允许开发人员精细调整文本到语音输出的音调、发音、语速、音量和更多内容。 正常标点，如在一个句点后暂停，或使用正确的 intonation，当以问号结束的句子将自动处理。
+语音合成标记语言 (SSML) 是一种基于 XML 的标记语言，可让开发人员指定如何使用文本转语音服务将输入文本转换为合成语音。 与纯文本相比，SSML 可让开发人员微调音节、发音、语速、音量以及文本转语音输出的其他属性。 SSML 可自动处理正常的停顿（例如，在句号后面暂停片刻），或者在以问号结尾的句子中使用正确的音调。
 
 SSML 的语音服务实现基于万维网联合会的[语音合成标记语言版本 1.0](https://www.w3.org/TR/speech-synthesis)。
 
 > [!IMPORTANT]
-> 中文、日语和朝鲜语字符作为两个字符进行计费。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+> 中文、日语和韩语字符按两个字符计费。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 ## <a name="standard-neural-and-custom-voices"></a>标准、神经和自定义语音
 
-选择 "标准" 和 "神经" 语音，或创建自己的产品或品牌独有的自定义声音。 75多个标准语音在45多种语言和区域设置中提供，5个神经声音提供四种语言和区域设置。 有关支持的语言、区域设置和语音（神经和标准）的完整列表，请参阅[语言支持](language-support.md)。
+从标准和神经语音中选择，或创建自己产品或品牌特有的自定义语音。 75+ 标准语音提供超过 45 种语言和区域设置，5 个神经语音提供四种语言和区域设置。 有关支持的语言、区域设置和语音（神经和标准）的完整列表，请参阅[语言支持](language-support.md)。
 
-若要了解有关标准、神经和自定义语音的详细信息，请参阅[文本到语音的概述](text-to-speech.md)。
+若要详细了解标准、神经和自定义语音，请参阅[文本转语音概述](text-to-speech.md)。
 
 ## <a name="special-characters"></a>特殊字符
 
-使用 SSML 时，请记住必须转义特殊字符，如引号、撇号和方括号。 有关详细信息，请参阅[可扩展标记语言（XML）1.0：附录 D](https://www.w3.org/TR/xml/#sec-entexpand)。
+使用 SSML 时，请记住必须转义特殊字符，如引号、撇号和括号。 有关详细信息，请参阅[可扩展标记语言 （XML） 1.0：附录 D](https://www.w3.org/TR/xml/#sec-entexpand)。
 
 ## <a name="supported-ssml-elements"></a>支持的 SSML 元素
 
-每个 SSML 文档都是通过 SSML 元素（或标记）创建的。 这些元素用于调整螺距、诗体论、成交量等。 以下各节详细说明了如何使用每个元素以及元素是必需的还是可选的。  
+每个 SSML 文档是使用 SSML 元素（或标记）创建的。 这些元素用于调整音节、韵律、音量等。 以下部分详细说明了每个元素的用法，以及该元素是必需的还是可选的。  
 
 > [!IMPORTANT]
-> 别忘了在属性值前后使用双引号。 格式正确的有效 XML 的标准要求将属性值括在双引号中。 例如，`<prosody volume="90">` 是格式正确的有效元素，但 `<prosody volume=90>` 不是。 SSML 无法识别不在引号中的属性值。
+> 不要忘记将属性值括在双引号中。 适当格式的有效 XML 的标准要求将属性值括在双引号中。 例如，`<prosody volume="90">` 是适当格式的有效元素，而 `<prosody volume=90>` 则不是。 SSML 无法识别未括在引号中的属性值。
 
 ## <a name="create-an-ssml-document"></a>创建 SSML 文档
 
-`speak` 是根元素，并且对于所有 SSML 文档都是**必需**的。 `speak` 元素包含重要信息，如版本、语言和标记词汇定义。
+`speak` 是根元素，对于所有 SSML 文档都是**必需的**。 `speak` 元素包含重要信息，例如版本、语言和标记词汇定义。
 
 **语法**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
 ```
 
 **属性**
 
-| Attribute | 说明 | 必需/可选 |
+| 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `version` | 指示用于解释文档标记的 SSML 规范的版本。 当前版本为1.0。 | 必选 |
-| `xml:lang` | 指定根文档的语言。 该值可以包含小写字母、两个字母的语言代码（例如 `en`）或语言代码和大写字母（如 `en-US`）。 | 必选 |
-| `xmlns` | 指定文档的 URI，该文档定义 SSML 文档的标记词汇（元素类型和属性名称）。 当前 URI 为 https://www.w3.org/2001/10/synthesis。 | 必选 |
+| `version` | 指示用于解释文档标记的 SSML 规范的版本。 当前版本为 1.0。 | 必选 |
+| `xml:lang` | 指定根文档的语言。 该值可能包含小写、双字母语言代码（例如`en`），或者语言代码和大写国家/区域（例如。 `en-US` | 必选 |
+| `xmlns` | 指定文档的 URI，用于定义 SSML 文档的标记词汇（元素类型和属性名称）。 当前 URI 为 http://www.w3.org/2001/10/synthesis。 | 必选 |
 
-## <a name="choose-a-voice-for-text-to-speech"></a>选择语音进行文本到语音转换
+## <a name="choose-a-voice-for-text-to-speech"></a>选择文本转语音所用的语音
 
-`voice` 元素是必需的。 它用于指定用于文本到语音转换的语音。
+`voice` 元素是必需的。 它用于指定文本转语音所用的语音。
 
 **语法**
 
@@ -75,18 +75,18 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| Attribute | 说明 | 必需/可选 |
+| 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `name` | 标识用于文本到语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必选 |
+| `name` | 标识用于文本转语音输出的语音。 有关支持语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必选 |
 
 **示例**
 
 > [!NOTE]
-> 此示例使用 `en-US-Jessa24kRUS` 语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
+> 本示例使用 `en-US-AriaRUS` 语音。 有关支持语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。
 
 ```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         This is the text that is spoken.
     </voice>
 </speak>
@@ -94,24 +94,24 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 ## <a name="use-multiple-voices"></a>使用多个语音
 
-在 `speak` 元素中，可以为文本到语音输出指定多个声音。 这些语音可以采用不同的语言。 对于每个声音，文本必须在 `voice` 元素中进行包装。 
+在 `speak` 元素中，可为文本转语音输出指定多种语音。 这些语音可以采用不同的语言。 对于每种语音，必须将文本包装在 `voice` 元素中。 
 
 **属性**
 
-| Attribute | 说明 | 必需/可选 |
+| 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `name` | 标识用于文本到语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必选 |
+| `name` | 标识用于文本转语音输出的语音。 有关支持语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必选 |
 
 > [!IMPORTANT]
-> 多个声音与单词边界功能不兼容。 需要禁用 word 边界功能才能使用多个声音。
+> 多个语音与单词边界功能不兼容。 需要禁用单词边界特征才能使用多个语音。
 
-### <a name="disable-word-boundary"></a>禁用 word 边界
+### <a name="disable-word-boundary"></a>禁用单词边界
 
-根据语音 SDK 语言，将 `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` 属性设置为 `SpeechConfig` 对象的实例上 `false`。
+根据语音 SDK 语言，您将在`"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"``false``SpeechConfig`对象的实例上将属性设置为。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-有关详细信息，请<a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank">参阅<span class="docon docon-navigate-external x-hidden-focus"> </span>`SetProperty` </a>。
+有关详细信息，请参阅<a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank">`SetProperty`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```csharp
 speechConfig.SetProperty(
@@ -120,7 +120,7 @@ speechConfig.SetProperty(
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-有关详细信息，请<a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank">参阅<span class="docon docon-navigate-external x-hidden-focus"> </span>`SetProperty` </a>。
+有关详细信息，请参阅<a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank">`SetProperty`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```cpp
 speechConfig->SetProperty(
@@ -129,7 +129,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-有关详细信息，请<a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank">参阅<span class="docon docon-navigate-external x-hidden-focus"> </span>`setProperty` </a>。
+有关详细信息，请参阅<a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank">`setProperty`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```java
 speechConfig.setProperty(
@@ -138,33 +138,33 @@ speechConfig.setProperty(
 
 # <a name="python"></a>[Python](#tab/python)
 
-有关详细信息，请<a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#set-property-by-name-property-name--str--value--str-" target="_blank">参阅<span class="docon docon-navigate-external x-hidden-focus"> </span>`set_property_by_name` </a>。
+有关详细信息，请参阅<a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#set-property-by-name-property-name--str--value--str-" target="_blank">`set_property_by_name`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```python
 speech_config.set_property_by_name(
     "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-有关详细信息，请<a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank">参阅<span class="docon docon-navigate-external x-hidden-focus"> </span>`setProperty` </a>。
+有关详细信息，请参阅<a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank">`setProperty`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```javascript
 speechConfig.setProperty(
     "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
 ```
 
-# <a name="objective-c"></a>[Objective-C](#tab/objectivec)
+# <a name="objective-c"></a>[目标C](#tab/objectivec)
 
-有关详细信息，请<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank">参阅<span class="docon docon-navigate-external x-hidden-focus"> </span>`setPropertyTo` </a>。
+有关详细信息，请参阅<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank">`setPropertyTo`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```objectivec
 [speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
 ```
 
-# <a name="swift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[迅速](#tab/swift)
 
-有关详细信息，请<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank">参阅<span class="docon docon-navigate-external x-hidden-focus"> </span>`setPropertyTo` </a>。
+有关详细信息，请参阅<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank">`setPropertyTo`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ```swift
 speechConfig!.setPropertyTo(
@@ -176,12 +176,12 @@ speechConfig!.setPropertyTo(
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         Good morning!
     </voice>
     <voice name="en-US-Guy24kRUS">
-        Good morning to you too Jessa!
+        Good morning to you too Aria!
     </voice>
 </speak>
 ```
@@ -189,51 +189,53 @@ speechConfig!.setPropertyTo(
 ## <a name="adjust-speaking-styles"></a>调整讲话风格
 
 > [!IMPORTANT]
-> 对讲话风格的调整只能与神经语音一起使用。
+> 说话风格的调整只能与神经声音一起工作。
 
-默认情况下，对于标准和神经声音，文本到语音服务合成文本使用非特定语言。 利用神经声音，你可以调整说话样式，使其与 `<mstts:express-as>` 元素表达 cheerfulness、理解或情绪。 这是语音服务独有的可选元素。
+默认情况下，对于标准和神经语音，文本转语音服务将使用中性讲话风格合成文本。 使用神经语音时，可以使用 `<mstts:express-as>` 元素调整讲话风格，以表达喜悦、同情或情绪。 这是语音服务独有的可选元素。
 
-目前，以下神经声音支持讲话风格调整：
-* `en-US-JessaNeural`
-* `pt-BR-FranciscaNeural`
+目前，支持调整以下神经语音的讲话风格：
+* `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
+* `pt-BR-FranciscaNeural`
 
-更改将应用于句子级别，样式因语音而异。 如果样式不受支持，则该服务将以默认的非特定语言方式返回语音。
+更改将在句子级别应用，风格因语音而异。 如果某种风格不受支持，该服务将以默认的中性讲话风格返回语音。
 
 **语法**
 
 ```xml
-<mstts:express-as type="string"></mstts:express-as>
+<mstts:express-as style="string"></mstts:express-as>
 ```
 
 **属性**
 
-| Attribute | 说明 | 必需/可选 |
+| 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `type` | 指定讲话样式。 目前，说出的样式是特定于语音的。 | 如果调整用于 "神经" 的说话风格，则需要。 如果使用 `mstts:express-as`，则必须提供类型。 如果提供了无效的值，则将忽略此元素。 |
+| `style` | 指定讲话风格。 目前，说话风格是特定于语音的。 | 如果调整神经语音的讲话风格，则此属性是必需的。 如果使用`mstts:express-as`，则必须提供样式。 如果提供无效的值，将忽略此元素。 |
 
-使用此表来确定每个神经语音支持的说话风格。
+参考下表来确定每种神经语音支持的讲话风格。
 
-| 语音 | 类型 | 说明 |
+| 语音 | Style | 描述 |
 |-------|------|-------------|
-| `en-US-JessaNeural` | `type="cheerful"` | 表达非常好的情感 |
-| | `type="empathy"` | 表达关心和理解 |
-| | `type="chat"` | 用一种偶然、宽松的音调说话 |
-| | `type="newscast"` | 表达与新闻广播类似的正式音调 |
-| | `type="customerservice"` | 以友好且患者的方式与客户服务交流 |
-| `pt-BR-FranciscaNeural` | `type="cheerful"` | 表达非常好的情感 |
-| `zh-CN-XiaoxiaoNeural` | `type="newscast"` | 表达与新闻广播类似的正式音调 |
-| | `type="sentiment"` | 传达触摸消息或故事 |
+| `en-US-AriaNeural` | `style="newscast"` | 表达正式和专业的语气，讲述新闻 |
+| | `style="customerservice"` | 为客户支持表达友好且有用的语气 |
+| | `style="chat"` | 表达一个随意和轻松的语气 |
+| | `style="cheerful"` | 表达积极和快乐的语气 |
+| | `style="empathetic"` | 表达关心和理解 |
+| `zh-CN-XiaoxiaoNeural` | `style="newscast"` | 表达正式和专业的语气，讲述新闻 |
+| | `style="customerservice"` | 为客户支持表达友好且有用的语气 |
+| | `style="assistant"` | 为数字助理表达温暖而轻松的语气  |
+| | `style="lyrical"` | 以旋律和感伤的方式表达情感 |
+| `pt-BR-FranciscaNeural` | `style="cheerful"` | 表达积极和快乐的语气 |
 
 **示例**
 
-此 SSML 代码段演示如何使用 `<mstts:express-as>` 元素将讲话样式更改为 `cheerful`。
+此 SSML 代码片段演示如何使用 `<mstts:express-as>` 元素将讲话风格更改为 `cheerful`。
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis"
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
-    <voice name="en-US-JessaNeural">
-        <mstts:express-as type="cheerful">
+    <voice name="en-US-AriaNeural">
+        <mstts:express-as style="cheerful">
             That'd be just amazing!
         </mstts:express-as>
     </voice>
@@ -242,10 +244,10 @@ speechConfig!.setPropertyTo(
 
 ## <a name="add-or-remove-a-breakpause"></a>添加或删除中断/暂停
 
-使用 `break` 元素可在单词之间插入暂停（或中断），或防止文本到语音服务自动添加暂停。
+使用元素 `break` 可在单词之间插入暂停（或中断），或者防止文本转语音服务自动添加暂停。
 
 > [!NOTE]
-> 如果此词或短语的合成语音非自然，请使用此元素替代单词或短语的文本到语音转换（TTS）的默认行为。 将 `strength` 设置为 "`none`" 以防止韵律中断，由文本到语音服务自动插入。
+> 如果某个单词或短语的合成语音听起来不自然，可以使用此元素来重写该单词或短语的默认文本转语音 (TTS) 行为。 将 `strength` 设置为 `none` 可防止文本转语音服务自动插入的韵律中断。
 
 **语法**
 
@@ -256,26 +258,26 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| Attribute | 说明 | 必需/可选 |
+| 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `strength` | 使用以下值之一指定暂停的相对持续时间：<ul><li>none</li><li>x 弱</li><li>薄弱</li><li>中（默认值）</li><li>强</li><li>x-强</li></ul> | 可选 |
-| `time` | 指定暂停的绝对持续时间（以秒或毫秒为单位）。 有效值的示例 `2s` 和 `500` | 可选 |
+| `strength` | 使用以下值之一指定暂停的相对持续时间：<ul><li>none</li><li>x-weak</li><li>weak</li><li>medium（默认值）</li><li>strong</li><li>x-strong</li></ul> | 可选 |
+| `time` | 指定暂停的绝对持续时间，以秒或毫秒为单位。 有效值的示例为`2s`和`500` | 可选 |
 
-| 程度 | 说明 |
+| Strength | 描述 |
 |----------|-------------|
-| 无; 如果未提供任何值，则为 | 0 毫秒 |
-| x 弱 | 250 ms |
-| 薄弱 | 500 毫秒 |
+| None，或者不提供任何值 | 0 毫秒 |
+| x-weak | 250 毫秒 |
+| weak | 500 毫秒 |
 | 中 | 750 毫秒 |
-| 强 | 1000 ms |
-| x-强 | 1250 ms |
+| strong | 1000 毫秒 |
+| x-strong | 1250 毫秒 |
 
 
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
@@ -283,11 +285,11 @@ speechConfig!.setPropertyTo(
 
 ## <a name="specify-paragraphs-and-sentences"></a>指定段落和句子
 
-`p` 和 `s` 元素分别用于表示段落和句子。 如果没有这些元素，则文本到语音服务会自动确定 SSML 文档的结构。
+`p` 和 `s` 元素分别用于表示段落和句子。 如果不指定这些元素，则文本转语音服务会自动确定 SSML 文档的结构。
 
-`p` 元素可以包含文本和以下元素： `audio`、`break`、`phoneme`、`prosody`、`say-as`、`sub`、`mstts:express-as`和 `s`。
+`p` 元素可包含文本和以下元素：`audio`、`break`、`phoneme`、`prosody`、`say-as`、`sub`、`mstts:express-as` 和 `s`。
 
-`s` 元素可以包含文本和以下元素： `audio`、`break`、`phoneme`、`prosody`、`say-as`、`mstts:express-as`和 `sub`。
+`s` 元素可包含文本和以下元素：`audio`、`break`、`phoneme`、`prosody`、`say-as`、`mstts:express-as` 和 `sub`。
 
 **语法**
 
@@ -299,8 +301,8 @@ speechConfig!.setPropertyTo(
 **示例**
 
 ```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <p>
             <s>Introducing the sentence element.</s>
             <s>Used to mark individual sentences.</s>
@@ -315,9 +317,9 @@ speechConfig!.setPropertyTo(
 
 ## <a name="use-phonemes-to-improve-pronunciation"></a>使用音素改善发音
 
-`ph` 元素用于在 SSML 文档中使用拼音。 `ph` 元素只能包含文本，不能包含其他元素。 始终提供可读的语音作为回退。
+`ph` 元素用于 SSML 文档中的发音。 `ph` 元素只能包含文本，而不能包含其他元素。 始终提供人类可读的语音作为回退。
 
-拼音字母由电话组成，这些电话由字母、数字或字符组成，有时也会组合在一起。 每个电话都说明了语音的独特声音。 这与拉丁字母不同，其中任何字母都可能表示多个口述声音。 请考虑单词 "糖果" 和 "停止" 中字母 "c" 的不同发音，或在单词 "事物" 和 "这两个词" 中的字母组合 "th" 的不同发音。
+音标由音素构成，而这些音素由字母、数字或字符（有时是它们的组合）构成。 每个音素描述独特的语音。 这与拉丁音标不同，其中的任一字母可以表示多种语音。 想像一下单词“candy”和“cease”中字母“c”的不同发音，或者字母组合“th”在单词“thing”和“those”中的不同发音。
 
 **语法**
 
@@ -327,32 +329,40 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| Attribute | 说明 | 必需/可选 |
+| 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `alphabet` | 指定综合属性 `ph` 中字符串的发音时要使用的拼音字母表。 指定字母表的字符串必须以小写字母指定。 下面是可以指定的可能字母表。<ul><li>`ipa` &ndash; 国际注音字母表</li><li>`sapi` &ndash; 语音服务注音</li><li>`ups` &ndash; 通用手机集</li></ul><br>字母表仅适用于元素中的 `phoneme`。 有关详细信息，请参阅[拼音字母参考](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet)。 | 可选 |
-| `ph` | 一个包含手机的字符串，该字符串指定 `phoneme` 元素中单词的发音。 如果指定的字符串包含无法识别的手机，则文本语音转换（TTS）服务将拒绝整个 SSML 文档并不生成文档中指定的任何语音输出。 | 如果使用音素，则是必需的。 |
+| `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa`&ndash;<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际拼音字母<span class="docon docon-navigate-external x-hidden-focus"></span>表</a></li><li>`sapi`&ndash;[语音服务拼音字母表](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;通用电话组</li></ul><br>字母表仅适用于`phoneme`元素中的 。 | 可选 |
+| `ph` | 一个字符串，包含用于在 `phoneme` 元素中指定单词发音的音素。 如果指定的字符串包含无法识别的音素，则文本转语音 (TTS) 服务将拒绝整个 SSML 文档，并且不会生成文档中指定的任何语音输出。 | 如果使用音素，则此属性是必需的。 |
 
 **示例**
 
-```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
-        <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
+        <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
     </voice>
 </speak>
 ```
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
-        <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
+    <voice name="en-US-AriaRUS">
+        <phoneme alphabet="sapi" ph="iy eh n y uw eh s"> en-US </phoneme>
     </voice>
 </speak>
 ```
 
-## <a name="use-custom-lexicon-to-improve-pronunciation"></a>使用自定义词典改善发音
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
+        <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
+    </voice>
+</speak>
+```
 
-TTS 有时不能准确地发音某个词，例如，公司或外部名称。 开发人员可以使用 `phoneme` 和 `sub` 标记在 SSML 中定义这些实体的读取，或使用 `lexicon` 标记来引用自定义词典文件来定义多个实体的读取。
+## <a name="use-custom-lexicon-to-improve-pronunciation"></a>使用自定义词典提高发音
+
+有时 TTS 不能准确发音一个单词，例如，公司或外国名称。 开发人员可以使用`phoneme`和`sub`标记在 SSML 中定义这些实体的读取，或者通过使用`lexicon`标记引用自定义词典文件的读取来定义多个实体的读取。
 
 **语法**
 
@@ -362,15 +372,15 @@ TTS 有时不能准确地发音某个词，例如，公司或外部名称。 开
 
 **属性**
 
-| Attribute | 说明 | 必需/可选 |
+| 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `uri` | 外部 PLS 文档的地址。 | 必需。 |
 
-**使用情况**
+**使用**
 
-步骤1：定义自定义词典 
+第 1 步：定义自定义词典 
 
-可以按自定义字典项的列表（存储为 .xml 或 pls 文件）定义实体的读取。
+您可以按自定义词典项列表定义实体的读取，这些自定义词典项存储为 .xml 或 .pls 文件。
 
 **示例**
 
@@ -393,15 +403,15 @@ TTS 有时不能准确地发音某个词，例如，公司或外部名称。 开
 </lexicon>
 ```
 
-每个 `lexeme` 元素都是一个词典项。 `grapheme` 包含描述 `lexeme`的 orthograph 的文本。 读出窗体可作为 `alias`提供。 可以在 `phoneme` 元素中提供手机字符串。
+每个`lexeme`元素都是一个词典项。 `grapheme`包含描述 的`lexeme`正交器的文本。 读出表单可以作为`alias`提供。 电话字符串可以在元素中`phoneme`提供。
 
-`lexicon` 元素包含至少一个 `lexeme` 元素。 每个 `lexeme` 元素都包含至少一个 `grapheme` 元素以及一个或多个 `grapheme`、`alais`和 `phoneme` 元素。 `grapheme` 元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography <span class="docon docon-navigate-external x-hidden-focus"> </span></a>的文本。 `alias` 元素用于指示首字母缩写词或缩写词的发音。 `phoneme` 元素提供了描述 `lexeme` 的发音方式的文本。
+该`lexicon`元素至少包含一个`lexeme`元素。 每个`lexeme`元素至少包含一`grapheme`个元素和一个或多个`grapheme`，`alais`以及`phoneme`元素。 元素`grapheme`包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">地势<span class="docon docon-navigate-external x-hidden-focus"></span></a>的文本。 元素`alias`用于表示首字母缩略词或缩写词的发音。 该`phoneme`元素提供描述如何`lexeme`发音的文本。
 
-有关自定义词典文件的详细信息，请参阅 W3C 网站上的[发音词典规范（PLS）版本 1.0](https://www.w3.org/TR/pronunciation-lexicon/) 。
+有关自定义词典文件的详细信息，请参阅 W3C 网站上的[发音词典规范 （PLS） 版本 1.0。](https://www.w3.org/TR/pronunciation-lexicon/)
 
-步骤2：上传在步骤1中创建的自定义词典文件，你可以将其存储在任何位置，并且建议将其存储在 Microsoft Azure 中，例如[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
+步骤 2：上传在步骤 1 中创建的自定义词典文件联机，您可以将其存储在任何位置，我们建议您将其存储在 Microsoft Azure 中，例如[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
 
-步骤3：在 SSML 中引用自定义词典文件
+第 3 步：请参阅 SSML 中的自定义词典文件
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
@@ -412,29 +422,29 @@ BTW, we will be there probably 8:00 tomorrow morning.
 Could you help leave a message to Robert Benigni for me?
 </speak>
 ```
-"顺便" 将以 "方式" 读取。 将用提供的 IPA "bɛˈ ni ː nji" 读取 "Benigni"。  
+"顺便说一下"将改为"BTW"。 "Benigni"将阅读提供IPA"b_ni_nji"。  
 
 **限制**
-- 文件大小：自定义词典文件大小最大限制为100KB，如果超过此大小，合成请求将会失败。
-- 词典缓存刷新：首次加载时，自定义词典将用 URI 作为其上的密钥来缓存该服务。 不会在15分钟内重新加载具有相同 URI 的字典，因此自定义词典更改需要等待15分钟才能生效。
+- 文件大小：自定义词典文件大小最大限制为 100KB，如果超出此大小，合成请求将失败。
+- Lexicon 缓存刷新：自定义词典将在首次加载时以 URI 作为 TTS 服务上的密钥进行缓存。 具有相同 URI 的词典不会在 15 分钟内重新加载，因此自定义词典更改最多需要等待 15 分钟才能生效。
 
-**语音服务拼音设置**
+**语音服务语音集**
 
-在上面的示例中，我们使用的是国际拼音字母，也称为 IPA 手机集。 我们建议开发人员使用 IPA，因为它是国际标准。 考虑到 IPA 不容易记住，语音服务将为七种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定义拼音集。
+在上面的示例中，我们使用的是国际拼音字母表，也称为 IPA 电话组。 我们建议开发人员使用 IPA，因为它是国际标准。 考虑到 IPA 不容易记住，语音服务为七种语言（、、、、、、、、、、`en-US``fr-FR``de-DE``es-ES``ja-JP``zh-CN`和`zh-TW`）定义了拼音集。
 
-您可以使用 "`sapi` 作为 `alphabet` 属性的 refreshtype 作为自定义词典，如下所示：
+您可以使用 作为`sapi``alphabet`属性的 vale，具有自定义词典，如下所示：
 
 ```xml
 <?xml version="1.0" encoding="UTF-16"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
         http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
       alphabet="sapi" xml:lang="en-US">
   <lexeme>
-    <grapheme>BTW</grapheme> 
-    <alias> By the way </alias> 
+    <grapheme>BTW</grapheme>
+    <alias> By the way </alias>
   </lexeme>
   <lexeme>
     <grapheme> Benigni </grapheme>
@@ -443,13 +453,13 @@ Could you help leave a message to Robert Benigni for me?
 </lexicon>
 ```
 
-有关详细的语音服务拼音字母的详细信息，请参阅[语音服务拼音设置](speech-ssml-phonetic-sets.md)。
+有关详细的语音服务拼音字母的详细信息，请参阅[语音服务拼音集](speech-ssml-phonetic-sets.md)。
 
-## <a name="adjust-prosody"></a>调整诗体论
+## <a name="adjust-prosody"></a>调整韵律
 
-`prosody` 元素用于指定文本到语音输出的音调、countour、范围、速率、持续时间和音量的更改。 `prosody` 元素可以包含文本和以下元素： `audio`、`break`、`p`、`phoneme`、`prosody`、`say-as`、`sub`和 `s`。
+该`prosody`元素用于指定文本到语音输出的间距、轮廓、范围、速率、持续时间和音量的更改。 `prosody` 元素可包含文本和以下元素：`audio`、`break`、`p`、`phoneme`、`prosody`、`say-as`、`sub` 和 `s`。
 
-由于韵律属性值在范围上可能会变化，因此语音识别器会将指定的值解释为所选语音的实际韵律值应该是什么。 文本到语音服务会限制或替换不受支持的值。 不受支持的值的示例为 1 MHz 或120卷的跨度。
+由于韵律属性值可在较大范围内变化，因此，语音识别器会将分配的值解释为所选语音的建议实际韵律值。 文本转语音服务将限制或替代不支持的值。 例如，音节 1 MHz 或音量 120 就是不支持的值。
 
 **语法**
 
@@ -459,23 +469,23 @@ Could you help leave a message to Robert Benigni for me?
 
 **属性**
 
-| Attribute | 说明 | 必需/可选 |
+| 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `pitch` | 指示文本的基线间距。 你可以表达以下内容：<ul><li>一个绝对值，以数字开头，后跟 "Hz" （赫兹）。 例如，600 Hz。</li><li>一个相对值，表示为以 "+" 或 "-" 开头、"Hz" 或 "st" 开头的数字，用于指定要更改的间距。 例如： + 80 Hz 或-2st。 "St" 表示变更单位为半音，这是标准 diatonic 比例的半色调（半步）。</li><li>常量值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul>。 | 可选 |
-| `contour` | 神经语音不支持等高线。 等高线表示螺距的变化。 这些更改表示为语音输出中指定时间位置的目标数组。 每个目标由参数对的集合定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每组参数中的第一个值指定间距更改的位置（以文本持续时间的百分比表示）。 第二个值指定升高或降低跨度的量，使用相对值或音调的枚举值（请参阅 `pitch`）。 | 可选 |
-| `range` | 一个值，该值表示文本的间距范围。 您可以使用相同的绝对值、相对值或用于描述 `pitch`的枚举值表示 `range`。 | 可选 |
-| `rate` | 指示文本的说话速率。 您可以将 `rate` 表达为：<ul><li>一个相对值，表示为作为默认值的倍数的数字。 例如，如果值为*1* ，则费率不会更改。 值*0.5*将导致一半。 如果值为*3* ，则会 tripling 速率。</li><li>常量值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-fast</li><li>default</li></ul></li></ul> | 可选 |
-| `duration` | 语音合成（TTS）服务读取文本时应经过的时间段（以秒或毫秒为单位）。 例如 *，2* /2 或*1800ms*。 | 可选 |
-| `volume` | 指示语音的音量级别。 你可以将卷表示为：<ul><li>一个绝对值，表示为0.0 到100.0 范围内的一个数字，从*quietest*到*loudest*。 例如，75。 默认值为100.0。</li><li>一个相对值，表示为以 "+" 或 "-" 开头的数字，用于指定更改卷的量。 例如，+ 10 或-5.5。</li><li>常量值：<ul><li>静音</li><li>x-soft</li><li>音</li><li>中</li><li>音量</li><li>大</li><li>default</li></ul></li></ul> | 可选 |
+| `pitch` | 指示文本的基线音节。 可将音节表述为：<ul><li>以某个数字后接“Hz”（赫兹）表示的绝对值。 例如，600 Hz。</li><li>以前面带有“+”或“-”的数字，后接“Hz”或“st”（用于指定音节的变化量）表示的相对值。 例如：+80 Hz 或 -2st。 “st”表示变化单位为半音，即，标准全音阶中的半调（半步）。</li><li>常量值：<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>default</li></ul></li></ul>. | 可选 |
+| `contour` | 神经语音不支持调型。 轮廓表示间距的变化。 这些更改在语音输出中指定的时间位置表示为目标数组。 每个目标由参数对的集定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每参数集中的第一个值以文本持续时间百分比的形式指定音节变化的位置。 第二个值使用音节的相对值或枚举值指定音节的升高或降低量（请参阅 `pitch`）。 | 可选 |
+| `range` | 表示文本音节范围的值。 可以使用用于描述 `pitch` 的相同绝对值、相对值或枚举值表示 `range`。 | 可选 |
+| `rate` | 指示文本的讲出速率。 可将 `rate` 表述为：<ul><li>以充当默认值倍数的数字表示的相对值。 例如，如果值为 *1*，则速率不会变化。 值*0.5*会导致速率减半。 如果值为 *3*，则速率为三倍。</li><li>常量值：<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>default</li></ul></li></ul> | 可选 |
+| `duration` | 语音合成 (TTS) 服务读取文本时应该消逝的时长，以秒或毫秒为单位。 例如 *2s* 或 *1800ms*。 | 可选 |
+| `volume` | 指示语音的音量级别。 可将音量表述为：<ul><li>以从 0.0 到 100.0（从最安静到最大声）的数字表示的绝对值。**** 例如 75。 默认值为 100.0。</li><li>以前面带有“+”或“-”的数字表示的相对值，指定音量的变化量。 例如，+10 或 -5.5。</li><li>常量值：<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | 可选 |
 
 ### <a name="change-speaking-rate"></a>更改语速
 
-可以在单词或句子级应用到标准语音。 而说速度只能应用于句子级别的神经语音。
+可以在单词或句子级别对标准语音应用语速。 只能在句子级别对神经语音应用语速。
 
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-Guy24kRUS">
         <prosody rate="+30.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
@@ -486,13 +496,13 @@ Could you help leave a message to Robert Benigni for me?
 
 ### <a name="change-volume"></a>更改音量
 
-卷更改可以应用于 word 或句子级别的标准语音。 卷更改只能应用于句子级别的神经声音。
+可以在单词或句子级别对标准语音应用音量变化。 只能在句子级别对神经语音应用音量变化。
 
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <prosody volume="+20.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -502,12 +512,12 @@ Could you help leave a message to Robert Benigni for me?
 
 ### <a name="change-pitch"></a>更改音高
 
-可以在单词或句子级将间距变化应用到标准语音。 而只能对句子级别的神经语音应用螺距更改。
+可以在单词或句子级别对标准语音应用音节变化。 只能在句子级别对神经语音应用音节变化。
 
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-Guy24kRUS">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
@@ -517,22 +527,22 @@ Could you help leave a message to Robert Benigni for me?
 ### <a name="change-pitch-contour"></a>更改音高升降曲线
 
 > [!IMPORTANT]
-> 神经语音不支持音调等高线更改。
+> 神经语音不支持音节调型变化。
 
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
     </voice>
 </speak>
 ```
-## <a name="say-as-element"></a>假设元素
+## <a name="say-as-element"></a>say-as 元素
 
-`say-as` 是一个可选元素，它指示元素文本的内容类型（如数字或日期）。 这为语音合成引擎提供有关如何发音文本的指导。
+`say-as` 是一个可选元素，指示元素文本的内容类型（例如数字或日期）。 它为语音合成引擎提供有关如何朗读文本的指导。
 
 **语法**
 
@@ -542,39 +552,39 @@ Could you help leave a message to Robert Benigni for me?
 
 **属性**
 
-| Attribute | 说明 | 必需/可选 |
+| 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `interpret-as` | 指示元素的文本的内容类型。 有关类型的列表，请参阅下表。 | 必选 |
-| `format` | 为可能具有不明确格式的内容类型提供有关元素文本的精确格式设置的其他信息。 SSML 为使用它们的内容类型定义格式（请参阅下表）。 | 可选 |
-| `detail` | 指示要口述的详细信息的级别。 例如，此属性可能会请求语音合成引擎发音标点标记。 没有为 `detail`定义标准值。 | 可选 |
+| `interpret-as` | 指示元素文本的内容类型。 有关类型列表，请参阅下表。 | 必选 |
+| `format` | 为可能具有不明确格式的内容类型提供有关元素文本的精确格式设置的更多信息。 SSML 为使用它们的内容类型定义格式（请参阅下表）。 | 可选 |
+| `detail` | 指示要朗读的详细信息的级别。 例如，此属性可以要求语音合成引擎朗读标点符号。 没有为 `detail` 定义标准值。 | 可选 |
 
 <!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
 
-下面是 `interpret-as` 和 `format` 属性支持的内容类型。 仅当 `interpret-as` 设置为日期和时间时，才包括 `format` 特性。
+下面是 `interpret-as` 和 `format` 属性支持的内容类型。 仅当 `interpret-as` 设置为日期和时间时，才包括 `format` 属性。
 
-| 解释为 | format | 解释 |
+| interpret-as | format | 解释 |
 |--------------|--------|----------------|
-| `address` | | 该文本称为地址。 语音合成引擎 pronounces：<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />作为 "我在150th 的法庭 redmond 华盛顿州"。 |
-| `cardinal`、`number` | | 此文本被称为基数数字。 语音合成引擎 pronounces：<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />如 "有三个替代方法。" |
-| `characters`、`spell-out` | | 此文本被称为单个字母（拼写出）。 语音合成引擎 pronounces：<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />作为 "T E S T"。 |
-| `date` | dmy、mdy、ymd、ydm、ym、my、md、dm、d、m、y | 文本被称为日期。 `format` 属性指定日期的格式（*d = day、m = month 和 y = year*）。 语音合成引擎 pronounces：<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"今天是10月第19个 2016"。 |
-| `digits`、`number_digit` | | 文本被称为单个数字的序列。 语音合成引擎 pronounces：<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />为 "1 2 3 4 5 6 7 8 9"。 |
-| `fraction` | | 该文本称为小数。 语音合成引擎 pronounces：<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />为 "八分之三英寸"。 |
-| `ordinal` | | 此文本被称为序号。 语音合成引擎 pronounces：<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />"选择第三个选项"。 |
-| `telephone` | | 此文本被称为电话号码。 `format` 属性可以包含表示国家/地区代码的数字。 例如，"1" 表示美国，"39" 表示意大利。 语音合成引擎可能会使用此信息来指导其电话号码的发音。 电话号码也可能包含国家/地区代码，如果是，则优先于 `format`中的国家/地区代码。 语音合成引擎 pronounces：<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />"我的数字是区域代码 8 8 8 5 5 5 1 2 1 2"。 |
-| `time` | hms12, hms24 | 该文本称为 "一次"。 `format` 属性指定时间是使用12小时制（hms12）还是24小时制（hms24）来指定。 使用冒号分隔表示小时、分钟和秒的数字。 下面是有效的时间示例：12:35、1:14:32、08:15 和02:50:45。 语音合成引擎 pronounces：<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />"训练离开为四个 A M"。 |
+| `address` | | 此文本朗读为地址。 语音合成引擎将以下内容：<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />作为"我在东北第150法院，雷德蒙德华盛顿。 |
+| `cardinal`, `number` | | 此文本朗读为基数。 语音合成引擎将以下内容：<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />朗读为“There are three alternatives.”。 |
+| `characters`, `spell-out` | | 此文本朗读为各个字符（拼读出来）。 语音合成引擎将以下内容：<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />朗读为“T E S T.” |
+| `date` | dmy, mdy, ymd, ydm, ym, my, md, dm, d, m, y | 此文本朗读为日期。 `format` 属性指定日期的格式 (*d=day, m=month, and y=year*)。 语音合成引擎将以下内容：<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />朗读为“Today is October nineteenth two thousand sixteen.” |
+| `digits`, `number_digit` | | 此文本朗读为个体数字的序列。 语音合成引擎将以下内容：<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />朗读为“1 2 3 4 5 6 7 8 9.” |
+| `fraction` | | 此文本朗读为分数。 语音合成引擎将以下内容：<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />朗读为“three eighths of an inch.” |
+| `ordinal` | | 此文本朗读为基数。 语音合成引擎将以下内容：<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />朗读为“Select the third option”。 |
+| `telephone` | | 此文本朗读为电话号码。 `format` 属性可以包含表示国家/地区代码的数字。 例如，“1”表示美国，“39”表示意大利。 语音合成引擎可以使用此信息来指导其电话号码的发音。 电话号码中也可能包含国家/地区代码，如果是，则它优先于 `format` 中的国家/地区代码。 语音合成引擎将以下内容：<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />朗读为“My number is area code eight eight eight five five five one two one two.” |
+| `time` | hms12, hms24 | 此文本朗读为时间。 `format` 属性指定时间是使用 12 小时制 (hms12) 还是 24 小时制 (hms24) 指定的。 请使用冒号分隔表示小时、分钟和秒的数字。 以下是有效的时间示例：12：35、1：14：32、08：15 和 02：50：45。 语音合成引擎将以下内容：<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />朗读为“The train departs at four A M.” |
 
-**使用情况**
+**使用**
 
 `say-as` 元素只能包含文本。
 
 **示例**
 
-语音合成引擎的示例如下所示： "第一次请求的时间是10月第19个 20 10 上的一个房间，早到 12 35 下午。"
+语音合成引擎讲了以下示例："您的第一个请求是在 10 月 19 日 20 点 10 分提前到达 1235 PM 的一个房间。
  
 ```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <p>
         Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
         on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
@@ -585,16 +595,16 @@ Could you help leave a message to Robert Benigni for me?
 
 ## <a name="add-recorded-audio"></a>添加录制的音频
 
-`audio` 是一个可选元素，可用于在 SSML 文档中插入 MP3 音频。 如果音频文件不可用或播放，则音频元素的正文可能包含明文或 SSML 标记。 此外，`audio` 元素可以包含文本和以下元素： `audio`、`break`、`p`、`s`、`phoneme`、`prosody`、`say-as`和 `sub`。
+`audio` 是一个可选元素，用于将 MP3 音频插入 SSML 文档。 如果音频文件不可用或不可播放，可在音频元素的正文中包含可讲述的纯文本或 SSML 标记。 此外，`audio` 元素可包含文本和以下元素：`audio`、`break`、`p`、`s`、`phoneme`、`prosody`、`say-as` 和 `sub`。
 
-SSML 文档中包含的任何音频都必须满足以下要求：
+包含在 SSML 文档中的任何音频必须满足以下要求：
 
-* MP3 必须托管在可通过 Internet 访问的 HTTPS 终结点上。 HTTPS 是必需的，托管 MP3 文件的域必须提供有效的、受信任的 SSL 证书。
-* MP3 必须是有效的 MP3 文件（MPEG v2）。
-* 比特率必须为 48 kbps。
-* 采样率必须为 16000 Hz。
-* 单个响应中所有文本和音频文件的总时间不能超过90（90）秒。
-* MP3 不得包含任何客户特定信息或其他敏感信息。
+* MP3 必须托管在可通过 Internet 访问的 HTTPS 终结点上。 需要 HTTPS，托管 MP3 文件的域必须出示有效的、受信任的 TLS/SSL 证书。
+* MP3 必须是有效的 MP3 文件 (MPEG v2)。
+* 比特率必须是 48 kbps。
+* 采样率必须为 16，000 Hz。
+* 单个响应中所有文本和音频文件的总时间不能超过 90 秒。
+* MP3 不得包含任何客户特定的信息或其他敏感信息。
 
 **语法**
 
@@ -604,15 +614,15 @@ SSML 文档中包含的任何音频都必须满足以下要求：
 
 **属性**
 
-| Attribute | 说明 | 必需/可选 |
+| 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `src` | 指定音频文件的位置/URL。 | 如果在 SSML 文档中使用音频元素，则是必需的。 |
+| `src` | 指定音频文件的位置/URL。 | 在 SSML 文档中使用音频元素时，此属性是必需的。 |
 
 **示例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <p>
             <audio src="https://contoso.com/opinionprompt.wav"/>
             Thanks for offering your opinion. Please begin speaking after the beep.
@@ -626,11 +636,11 @@ SSML 文档中包含的任何音频都必须满足以下要求：
 
 ## <a name="add-background-audio"></a>添加背景音频
 
-通过 `mstts:backgroundaudio` 元素，您可以将背景音频添加到 SSML 文档中（或将音频文件与文本到语音混合一起使用）。 使用 `mstts:backgroundaudio` 您可以在后台循环播放音频文件，在文本到语音转换的开头处淡入，并在文本到语音的结尾处淡出。
+使用 `mstts:backgroundaudio` 元素可将背景音频添加到 SSML 文档（或者使用文本转语音来混合音频文件）。 使用 `mstts:backgroundaudio` 可以在后台循环音频文件，在文本转语音的开头淡入，并在文本转语音的末尾淡出。
 
-如果提供的背景音频小于文本到语音转换或淡化，则会循环。 如果它的长度大于文本到语音转换的长度，它将在淡化完成后停止。
+如果提供的背景音频短于文本转语音或淡出持续时间，则会循环该音频。 如果其长度超过文本转语音的持续时间，则它在完成淡出后将会停止。
 
-每个 SSML 文档只允许一个背景音频文件。 但是，您可以点播 `voice` 元素中的 `audio` 标记，将其他音频添加到 SSML 文档中。
+每个 SSML 文档仅允许一个背景音频文件。 但是，可以在 `voice` 元素中散布 `audio` 标记，以将更多的音频添加到 SSML 文档。
 
 **语法**
 
@@ -640,19 +650,19 @@ SSML 文档中包含的任何音频都必须满足以下要求：
 
 **属性**
 
-| Attribute | 说明 | 必需/可选 |
+| 特性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `src` | 指定后台音频文件的位置/URL。 | 如果在 SSML 文档中使用背景音频，则是必需的。 |
-| `volume` | 指定后台音频文件的卷。 **接受的值**： `0` `100` 包含的值。 默认值是 `1`。 | 可选 |
-| `fadein` | 指定背景音频 "淡入" 的持续时间（以毫秒为单位）。 默认值为 `0`，这等同于不淡化。 **接受的值**： `0` `10000` 包含的值。  | 可选 |
-| `fadeout` | 指定背景音频的持续时间（以毫秒为单位）。 默认值为 `0`，这等效于不淡出。**接受的值**： `0` `10000` 包含的值。  | 可选 |
+| `src` | 指定背景音频文件的位置/URL。 | 如果在 SSML 文档中使用背景音频，则此属性是必需的。 |
+| `volume` | 指定背景音频文件的音量。 **接受的值** `0` ：`100`到包容性。 默认值为 `1`。 | 可选 |
+| `fadein` | 指定背景音频"淡入"的持续时间为毫秒。 默认值为 `0`，即，不淡入。 **接受的值** `0` ：`10000`到包容性。  | 可选 |
+| `fadeout` | 指定背景音频淡出的持续时间，以毫秒为单位。 默认值为`0`，这相当于不淡出。**接受的值** `0` ：`10000`到包容性。  | 可选 |
 
 **示例**
 
 ```xml
 <speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">
     <mstts:backgroundaudio src="https://contoso.com/sample.wav" volume="0.7" fadein="3000" fadeout="4000"/>
-    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)">
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, AriaRUS)">
         The text provided in this document will be spoken over the background audio.
     </voice>
 </speak>

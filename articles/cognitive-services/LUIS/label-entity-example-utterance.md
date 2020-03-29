@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: diberry
 ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898372"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>在示例言语中标记机器学习的实体
@@ -25,7 +25,7 @@ ms.locfileid: "78898372"
 
 不妨使用此短语：`hi, please I want a cheese pizza in 20 minutes`。
 
-1. 选择最左侧的文本，然后选择实体最右侧的文本，接下来选择想要进行标记的实体（在本例中为“完整订单”）。 下图中标记了完成顺序  。
+1. 选择最左侧的文本，然后选择实体最右侧的文本，接下来选择想要进行标记的实体（在本例中为“完整订单”）。 下图中标记了完成顺序__。
 
     > [!div class="mx-imgBorder"]
     > ![标记完整的机器学习实体](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
@@ -41,12 +41,12 @@ ms.locfileid: "78898372"
 
 ## <a name="confirm-predicted-entity"></a>确认预测的实体
 
-如果这一段文本被虚线框框起来，并且实体名称位于言语上方，则表示已预测文本，但_尚未标记_。 若要将预测转变为标签，依次选择该言语所在的行和“确认实体预测”  。
+如果这一段文本被虚线框框起来，并且实体名称位于言语上方，则表示已预测文本，但_尚未标记_。 若要将预测转变为标签，依次选择该言语所在的行和“确认实体预测”****。
 
 > [!div class="mx-imgBorder"]
 > ![预测完整的机器学习实体](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
 
-或者，可选择文本上方的实体名称，然后从显示的菜单中选择“确认预测”  。
+或者，可选择文本上方的实体名称，然后从显示的菜单中选择“确认预测”****。
 
 > [!div class="mx-imgBorder"]
 > ![使用菜单预测完整的机器习得实体](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
@@ -65,14 +65,14 @@ ms.locfileid: "78898372"
     > [!div class="mx-imgBorder"]
     > ![机器学习实体的实体调色板](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
 
-3. 在示例言语中，用光标绘制  实体。
+3. 在示例言语中，用光标绘制__ 实体。
 
     > [!div class="mx-imgBorder"]
     > ![机器学习实体的实体调色板](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
 
 ## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>标记机器习得实体的子组件
 
-实体中子组件的标记方式与顶级实体的标记方式完全相同。 选择文本时，弹出窗口中可用的实体是相对于文本出现的上下文而言的。 例如，如果你有一个 5 级机器习得实体，并选择标记为第 1 级和第 2 级的文本（通过示例言语下已标记的实体名称表示），则弹出窗口中可用的实体会被限制为第 3 级组件的上下文。 若要使用其他实体标记文本，请选择“标记为其他实体”选项  。
+实体中子组件的标记方式与顶级实体的标记方式完全相同。 选择文本时，弹出窗口中可用的实体是相对于文本出现的上下文而言的。 例如，如果你有一个 5 级机器习得实体，并选择标记为第 1 级和第 2 级的文本（通过示例言语下已标记的实体名称表示），则弹出窗口中可用的实体会被限制为第 3 级组件的上下文。 若要使用其他实体标记文本，请选择“标记为其他实体”选项****。
 
 > [!div class="mx-imgBorder"]
 > ![机器学习实体的实体调色板](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
@@ -83,14 +83,14 @@ ms.locfileid: "78898372"
 
 实体角色使用实体调色板进行标记。
 
-1. 在“意向详细信息”页上，从上下文工具栏中选择“实体调色板”  。
+1. 在“意向详细信息”页上，从上下文工具栏中选择“实体调色板”****。
 1. 在实体调色板打开后，从实体列表中选择实体。
-1. 转到“实体检查器”  ，选择现有角色或创建新角色。
+1. 转到“实体检查器”****，选择现有角色或创建新角色。
 1. 在示例言语文本中，使用实体角色标记文本。
 
 ## <a name="unlabel-entities"></a>取消标记实体
 
-若要取消标记实体，请选择文本下方的实体名称，然后选择“取消标记”  。 如果尝试取消标记的实体具有已标记的子组件，则必须先取消标记子组件。
+若要取消标记实体，请选择文本下方的实体名称，然后选择“取消标记”****。 如果尝试取消标记的实体具有已标记的子组件，则必须先取消标记子组件。
 
 ## <a name="editing-labels-using-the-entity-palette"></a>使用实体调色板编辑标签
 

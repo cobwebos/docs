@@ -1,7 +1,7 @@
 ---
-title: 序号 V2 预生成的实体-LUIS
+title: 序号 V2 预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 本文包含在语言理解中的序号为 V2 的实体信息（LUIS）。
+description: 本文包含了语言理解 (LUIS) 中序号 V2 预生成实体的信息。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,24 +12,24 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 5e852313db75e598da647ea0f985e2ee18af16de
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270486"
 ---
-# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的序号 V2 预构建实体
-[序数 V2 number 用于提供](luis-reference-prebuilt-ordinal.md)相对引用，如 `next`、`last`和 `previous`。 不使用序号预生成实体来提取这些。
+# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的序号 V2 预生成实体
+Ordinal V2 编号[扩展了 Ordinal](luis-reference-prebuilt-ordinal.md)以提供`next`相对`last`引用，`previous`如 、和 。 这些无法使用序号预生成实体提取。
 
-## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>预生成的序号 V2 实体的解析
+## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>序号 V2 预生成实体的解析
 
-为查询返回以下实体对象：
+查询返回以下实体对象：
 
 `what is the second to last choice in the list`
 
 #### <a name="v3-response"></a>[V3 响应](#tab/V3)
 
-以下 JSON 是将 `verbose` 参数设置为 `false`的：
+以下 JSON 的 `verbose` 参数设置为 `false`：
 
 ```json
 "entities": {
@@ -44,7 +44,7 @@ ms.locfileid: "78270486"
 
 #### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/V3-verbose)
 
-以下 JSON 是将 `verbose` 参数设置为 `true`的：
+以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
 "entities": {
@@ -73,7 +73,7 @@ ms.locfileid: "78270486"
 ```
 #### <a name="v2-response"></a>[V2 响应](#tab/V2)
 
-下面的示例演示**ordinalV2**实体的解析。
+以下示例展示了 **builtin.ordinalV2** 实体的解析。
 
 ```json
 "entities": [

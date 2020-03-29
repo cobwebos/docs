@@ -1,5 +1,5 @@
 ---
-title: LUIS 预生成实体电子邮件引用
+title: LUIS 预生成实体电子邮件参考
 titleSuffix: Azure Cognitive Services
 description: 本文包含了语言理解 (LUIS) 中的电子邮件预构建实体信息。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: f7aa2a341a82d30f7022af49e626a3cd358854b7
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273484"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的电子邮件预生成实体
@@ -23,13 +23,13 @@ ms.locfileid: "78273484"
 
 ## <a name="resolution-for-prebuilt-email"></a>预构建电子邮件解析
 
-为查询返回以下实体对象：
+查询返回以下实体对象：
 
 `please send the information to patti@contoso.com`
 
 #### <a name="v3-response"></a>[V3 响应](#tab/V3)
 
-以下 JSON 是将 `verbose` 参数设置为 `false`的：
+以下 JSON 的 `verbose` 参数设置为 `false`：
 
 ```json
 "entities": {
@@ -40,7 +40,7 @@ ms.locfileid: "78273484"
 ```
 #### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/V3-verbose)
 
-以下 JSON 是将 `verbose` 参数设置为 `true`的：
+以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
 "entities": {

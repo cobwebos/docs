@@ -1,5 +1,5 @@
 ---
-title: 自定义和建议图像搜索查询-必应图像搜索 API
+title: 自定义和建议图像搜索查询 - 必应图像搜索 API
 titleSuffix: Azure Cognitive Services
 description: 了解如何自定义发送到必应图像搜索 API 的搜索查询。
 services: cognitive-services
@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67542745"
 ---
 # <a name="customize-and-suggest-image-search-queries"></a>自定义和建议图像搜索查询
 
-使用本文章，了解如何自定义查询，并建议将发送到必应图像搜索 API 的搜索词。
+使用本文了解如何自定义查询，并建议将搜索词发送到必应图像搜索 API。
 
-## <a name="suggest-search-terms"></a>建议的搜索词
+## <a name="suggest-search-terms"></a>建议搜索词
 
 如果应用有一个可以在其中输入搜索词的搜索框，则可使用[必应自动推荐 API](../../bing-autosuggest/get-suggested-search-terms.md) 来改进体验。 该 API 可以实时显示建议的搜索词。 该 API 根据部分搜索词和认知服务返回建议的查询字符串。
 

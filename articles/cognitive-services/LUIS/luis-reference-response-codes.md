@@ -1,5 +1,5 @@
 ---
-title: API HTTP 响应代码-LUIS
+title: API HTTP 响应代码 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 了解从 LUIS 创作和终结点 API 返回的 HTTP 响应代码
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 03/04/2019
 ms.author: diberry
 ms.openlocfilehash: 405381a2d80ee6469b2b90bcb25923004fe55882
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270251"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>常见的 API 响应代码及其含义
@@ -35,9 +35,9 @@ ms.locfileid: "78270251"
 |401|创作|你不是所有者或协作者|
 |401|创作|API 调用的顺序无效|
 |403|创作、终结点|超出了每月密钥配额总限制|
-|409|端点|应用程序仍在加载|
-|410|端点|需要重新训练和重新发布应用程序|
-|414|端点|查询超过最大字符限制|
+|409|终结点|应用程序仍在加载|
+|410|终结点|需要重新训练和重新发布应用程序|
+|414|终结点|查询超过最大字符限制|
 |429|创作、终结点|超出速率限制（请求数/秒）|
 
 ## <a name="next-steps"></a>后续步骤

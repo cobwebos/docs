@@ -1,18 +1,18 @@
 ---
-title: 快速入门：通过适用于 node.js 的 REST Api QnA Maker
+title: 快速入门：带有 NODE.js REST API 的 QnA 制造商
 description: 本快速入门介绍如何开始使用适用于 Node.js 的 QnA Maker REST API。 请按照以下步骤安装程序包并试用基本任务的示例代码。  使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: ecc3fb144fb4b4e27182567925199f841b1c4357
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851670"
 ---
-# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入门：适用于 node.js 的 QnA Maker REST Api
+# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入门：QnA 制造商 REST API node.js
 
 适用于 Node.js 的 QnA Maker REST API 入门。 遵循以下步骤尝试学习基本任务的示例代码。  使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。
 
@@ -29,11 +29,11 @@ ms.locfileid: "78851670"
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版本的 [Node.js](https://nodejs.org)。
-* 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”。
+* 您必须具有[QnA 制造商服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
 
 ## <a name="setting-up"></a>设置
 
@@ -41,7 +41,7 @@ ms.locfileid: "78851670"
 
 Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于 QnA Maker 的资源。
 
-从资源获取密钥后，为资源[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)（名为 `QNAMAKER_RESOURCE_KEY` 和 `QNAMAKER_AUTHORING_ENDPOINT`）。 使用在 Azure 门户中资源的“快速入门”页中找到的密钥和终结点值。
+从资源获取密钥后，为资源[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)（名为 `QNAMAKER_RESOURCE_KEY` 和 `QNAMAKER_AUTHORING_ENDPOINT`）。 使用在 Azure 门户中资源的“快速入门”页中找到的密钥和终结点值****。
 
 ### <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
 
@@ -88,7 +88,7 @@ const request = require("requestretry");
 
 设置以下环境值：
 
-* `QNAMAKER_RESOURCE_KEY`-**密钥**为32字符串，可在 "**快速启动**" 页上的 "QnA Maker 资源" Azure 门户中找到。 这与预测终结点密钥不同。
+* `QNAMAKER_RESOURCE_KEY`-**该键**是一个 32 个字符的字符串，在 **"快速启动"** 页上的"QnA Maker"资源上的 Azure 门户中可用。 这与预测终结点密钥不同。
 * `QNAMAKER_AUTHORING_ENDPOINT` - 创作终结点的格式为 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`，其中包括**资源名称**。 这与用于查询预测终结点的 URL 不同。
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
@@ -162,7 +162,7 @@ node rest-apis.js
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
->[教程：创建和解答知识库](../tutorials/create-publish-query-in-portal.md)
+>[教程：创建并回答知识库](../tutorials/create-publish-query-in-portal.md)
 
 * [什么是 QnA Maker API？](../Overview/overview.md)
 * [编辑知识库](../how-to/edit-knowledge-base.md)

@@ -1,5 +1,5 @@
 ---
-title: 好示例最谈话-LUIS
+title: 良好的示例话语 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 话语是应用需要解释的用户输入。 收集你认为用户会输入的短语。 包括意思相同但在单词长度和单词位置上以不同方式构造的陈述。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
 ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219914"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
@@ -35,7 +35,7 @@ ms.locfileid: "79219914"
 
 ## <a name="how-to-choose-varied-utterances"></a>如何选择不同的陈述
 
-第一次开始[将示例话语 添加](luis-how-to-add-example-utterances.md)到 LUIS 模型时，请记住以下原则。
+当你第一次开始[将示例陈述添加](luis-how-to-add-example-utterances.md)到 LUIS 模型时，请记住以下一些原则。
 
 ### <a name="utterances-arent-always-well-formed"></a>陈述并非始终格式正确
 
@@ -60,11 +60,11 @@ ms.locfileid: "79219914"
 |我想要一台计算机，我该怎么做？|
 |我什么时候能有一台计算机？| 
 
-此处的核心术语 "计算机" 不会改变。 可以使用替代话语“台式电脑”、“笔记本电脑”、“工作站”，甚至是“机器”。 LUIS 可以智能地从上下文推断同义词，但在创建用于定型的最谈话时，更改它们的方式始终更好。
+这里的核心术语“计算机”没有变化。 可以使用替代话语“台式电脑”、“笔记本电脑”、“工作站”，甚至是“机器”。 LUIS 可以根据上下文智能地推断同义词，但当你创建用于训练的话语时，最好是改变它们。
 
 ## <a name="example-utterances-in-each-intent"></a>每个意向的示例陈述
 
-每个意向都需要有示例话语，至少 15 个。 如果你的意向没有任何示例陈述，则将无法训练 LUIS。 如果你有一个或多个示例最谈话，则 LUIS 可能无法准确预测意图。 
+每个意向都需要有示例话语，至少 15 个。 如果你的意向没有任何示例陈述，则将无法训练 LUIS。 如果你的意向仅包含一个或非常少的示例话语，LUIS 可能无法准确预测该意向。 
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>为每个创作迭代添加由 15 个话语构成的小组
 
@@ -74,13 +74,13 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 最好先从几个陈述开始，然后[审查终结点陈述](luis-how-to-review-endpoint-utterances.md)以进行正确的意向预测和实体提取。
 
-## <a name="utterance-normalization"></a>查询文本规范化
+## <a name="utterance-normalization"></a>话语规范化
 
-查询文本规范化是在训练和预测过程中忽略标点和音调符号效果的过程。
+话语规范化是指在训练和预测期间忽略标点和音调符号的影响这一过程。
 
-## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>音调符号和标点的查询文本规范化
+## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>音调符号和标点的话语规范化
 
-查询文本规范化是在你创建或导入应用时定义的，因为它是应用 JSON 文件中的一个设置。 默认情况下，查询文本标准化设置处于关闭状态。 
+话语规范化是在你创建或导入应用时定义的，因为它是应用 JSON 文件中的设置。 话语规范化设置默认关闭。 
 
 音调符号是文本中的标记或符号，例如： 
 
@@ -88,9 +88,9 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-如果你的应用程序启用规范化，则使用音调符号或标点的所有最谈话的 "**测试**" 窗格、"批处理测试" 和 "终结点" 查询都将更改。
+如果应用打开规范化，则对于使用音调符号或标点的所有话语来说，“测试”窗格、批量测试和终结点查询中的分数会变化。****
 
-在 `settings` 参数中，为 LUIS JSON 应用文件打开音调符号或标点的查询文本规范化。
+在 `settings` 参数中针对 LUIS JSON 应用文件的音调符号或标点打开话语规范化。
 
 ```JSON
 "settings": [
@@ -99,30 +99,30 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 ] 
 ```
 
-规范化**标点**表示在你的模型获得定型之前，在终结点查询获得预测之前，将从最谈话中删除标点符号。 
+规范化**标点**是指在训练模型和预测终结点查询之前，从话语中删除标点。 
 
-规范化**音调符号**用最谈话中的音调符号替换字符和常规字符。 例如： `Je parle français` 将变为 `Je parle francais`。 
+规范化**音调符号**是指将话语中带音调符号的字符替换为常规字符。 例如：`Je parle français` 变成了 `Je parle francais`。 
 
-规范化并不意味着在示例最谈话或预测响应中看不到标点符号和音调符号，只是在训练和预测期间将忽略它们。
+规范化不是指不会在示例话语或预测响应中看到标点和音调符号，而是指在训练和预测过程中会将其忽略。
 
 
 ### <a name="punctuation-marks"></a>标点符号
 
-标点是 LUIS 中单独的标记。 在结尾处包含句点和不包含句点的查询文本的查询文本为两个单独的最谈话，可能会获得两个不同的预测。 
+标点是 LUIS 中单独的标记。 在末尾包含句号的话语与末尾不包含句号的话语是两个单独话语并可能得到两种不同预测。 
 
-如果不规范化标点，则默认情况下 LUIS 不会忽略标点符号，因为某些客户端应用程序可能会对这些标记施加重要性。 确保示例话语使用“标点”和“无标点”，以便两种样式都返回相同的相对分数。 
+如果标点未规范化，则默认情况下，LUIS 不会忽略标点符号，因为某些客户端应用程序可能会对这些标记赋予含义。 确保示例话语使用“标点”和“无标点”，以便两种样式都返回相同的相对分数。 
 
-请确保该模型在示例最谈话（带有和不带标点符号）中或在能够更轻松地忽略带有特殊语法的标点的[模式](luis-concept-patterns.md)中处理标点符号： `I am applying for the {Job} position[.]`
+请确保模型在示例话语（有标点和没有标点）或在更容易使用特殊语法忽略标点的[模式](luis-concept-patterns.md)中处理标点：`I am applying for the {Job} position[.]`
 
-如果客户端应用程序中的标点没有特定意义，请考虑使用规范化标点符号来[忽略标点符号](#utterance-normalization)。 
+如果标点在客户端应用程序中没有特定含义，请考虑通过规范化标点来[忽略标点](#utterance-normalization)。 
 
 ### <a name="ignoring-words-and-punctuation"></a>忽略单词和标点
 
-如果要忽略模式中的特定词或标点，请使用带有方括号的_ignore_语法的[模式](luis-concept-patterns.md#pattern-syntax)`[]`。 
+若要忽略模式中的特定单词或标点，请将 [pattern](luis-concept-patterns.md#pattern-syntax) 与方括号 `[]` 的 _ignore_ 语法配合使用。 
 
 ## <a name="training-utterances"></a>训练陈述
 
-训练通常是非确定性的：在不同版本或应用中，陈述预测可能略有不同。 可以通过使用 [ 名称/值对更新](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)版本设置`UseAllTrainingData` API 来使用所有训练数据。
+训练通常是非确定性的：在不同版本或应用中，陈述预测可能略有不同。 可以通过使用 `UseAllTrainingData` 名称/值对更新[版本设置](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API 来使用所有训练数据。
 
 ## <a name="testing-utterances"></a>测试陈述 
 
@@ -151,5 +151,5 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 
 ## <a name="next-steps"></a>后续步骤
-有关定型 LUIS 应用以理解用户话语的信息，请参阅[添加示例话语](luis-how-to-add-example-utterances.md)。
+有关训练 LUIS 应用以理解用户陈述的信息，请参阅[添加示例陈述](luis-how-to-add-example-utterances.md)。
 

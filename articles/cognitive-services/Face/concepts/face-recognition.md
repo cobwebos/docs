@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73743075"
 ---
 # <a name="face-recognition-concepts"></a>人脸识别的概念
@@ -25,19 +25,19 @@ ms.locfileid: "73743075"
 
 识别操作主要使用以下数据结构。 这些对象存储在云中，可按其 ID 字符串引用。 ID 字符串在订阅中始终唯一。 名称字段可以重复。
 
-|名称|说明|
+|“属性”|描述|
 |:--|:--|
 |DetectedFace| 此单个人脸表示形式通过[人脸检测](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)操作检索。 其 ID 在创建 24 小时后过期。|
 |PersistedFace| 将 DetectedFace 对象添加到某个组（例如 FaceList 或 Person）后，它们将变成 PersistedFace 对象。 它们可以随时[检索](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c)，且不会过期。|
 |[FaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b) 或 [LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)| 此数据结构是 PersistedFace 对象的分类列表。 FaceList 具有唯一的 ID、名称字符串，以及（可选的）用户数据字符串。|
-|[Person](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)| 此数据结构是属于同一个人的 PersistedFace 对象列表。 它具有唯一的 ID、名称字符串，以及（可选的）用户数据字符串。|
+|[人](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)| 此数据结构是属于同一个人的 PersistedFace 对象列表。 它具有唯一的 ID、名称字符串，以及（可选的）用户数据字符串。|
 |[PersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) 或 [LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)| 此数据结构是 Person 对象的分类列表。 它具有唯一的 ID、名称字符串，以及（可选的）用户数据字符串。 PersonGroup 必须事先经过[训练](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)才能在识别操作中使用。|
 
 ## <a name="recognition-operations"></a>识别操作
 
 本部分详细说明四项识别操作如何使用上述数据结构。 [概述](../Overview.md)中详细介绍了每项识别操作。
 
-### <a name="verify"></a>验证
+### <a name="verify"></a>Verify
 
 [验证](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)操作采用人脸 ID（来自 DetectedFace 或 PersistedFace）以及另一个人脸 ID 或 Person 对象，并确定它们是否属于同一个人。 如果传入了 Person 对象，可以选择性地传入该 Person 所属的 PersonGroup 以提高性能。
 
@@ -71,4 +71,4 @@ ms.locfileid: "73743075"
 
 熟悉人脸识别的概念后，接下来请了解如何编写一个可以针对训练的 PersonGroup 识别人脸的脚本。
 
-* [识别图像中的人脸](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)
+* [在图像中识别人脸](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)

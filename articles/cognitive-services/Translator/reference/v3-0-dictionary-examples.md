@@ -1,7 +1,7 @@
 ---
 title: 文本翻译 API 字典示例方法
 titleSuffix: Azure Cognitive Services
-description: 文本翻译 API 字典示例方法提供的示例演示如何在上下文中使用字典中的字词。
+description: 翻译器文本 API 字典示例方法提供了示例，说明字典中术语在上下文中的使用方式。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: b3551a8df19e47178c7bacd9218cfa60b66d81f9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76548061"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>文本翻译 API 3.0：字典示例
@@ -33,19 +33,19 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 查询字符串上传递的请求参数如下：
 
-| 查询参数 | Description |
+| 查询参数 | 描述 |
 | --------- | ----------- |
-| api-version <img width=200/> | 必需参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。 |
-| 从 | 必需参数。<br/>指定输入文本的语言。 源语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。 |
-| to | 必需参数。<br/>指定输出文本的语言。 目标语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。  | 
+| api-version <img width=200/> | 必需参数****。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。 |
+| 从 | 必需参数****。<br/>指定输入文本的语言。 源语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。 |
+| to | 必需参数****。<br/>指定输出文本的语言。 目标语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。  | 
 
 请求标头包括：
 
-| 标头  | Description |
+| 标头  | 描述 |
 | ------ | ----------- |
-| 身份验证标头 <img width=200/>  | 必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
-| Content-Type | 必需的请求标头。<br/>指定有效负载的内容类型。 可能的值为：`application/json` |
-| Content-Length   | 必需的请求标头。<br/>请求正文的长度。 |
+| 身份验证标头 <img width=200/>  | **所需的请求标头**。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
+| Content-Type | **所需的请求标头**。<br/>指定有效负载的内容类型。 可能的值为：`application/json` |
+| Content-Length   | **所需的请求标头**。<br/>请求正文的长度。 |
 | X-ClientTraceId   | **可选**。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。 |
 
 ## <a name="request-body"></a>请求正文

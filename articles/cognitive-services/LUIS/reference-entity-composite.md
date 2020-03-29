@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71695168"
 ---
 # <a name="composite-entity"></a>复合实体 
@@ -37,11 +37,11 @@ ms.locfileid: "71695168"
 
 `book 2 tickets to cairo`
 
-注意数字 `2` 和 ToLocation `cairo` 之间有单词，这些单词不属于任何实体。 [LUIS](luis-reference-regions.md) 网站中的已标记话语中使用的绿色下划线指示复合实体。
+注意数字 `2` 和 ToLocation `cairo` 之间有单词，这些单词不属于任何实体。 [LUIS](luis-reference-regions.md) 网站中的已标记陈述中使用的绿色下划线指示复合实体。
 
 ![复合实体](./media/luis-concept-data-extraction/composite-entity.png)
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 复合实体返回在 `compositeEntities` 数组中，且该复合中的所有实体也都返回在 `entities` 数组中：
 
@@ -89,7 +89,7 @@ ms.locfileid: "71695168"
   ]
 ```    
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 如果在查询字符串中设置了 `verbose=false`，则这是 JSON：
 
@@ -172,11 +172,11 @@ ms.locfileid: "71695168"
 * * * 
 
 
-|数据对象|实体名称|ReplTest1|
+|数据对象|实体名称|“值”|
 |--|--|--|
 |预构建实体 - 数量|"builtin.number"|"2"|
-|预生成实体 - GeographyV2|"Location::ToLocation"|cairo|
+|预生成实体 - GeographyV2|"Location::ToLocation"|"cairo"|
 
 ## <a name="next-steps"></a>后续步骤
 
-在本[教程](luis-tutorial-composite-entity.md)中，添加**复合实体**来将提取的各种类型的数据捆绑到单个包含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
+在[本教程中](luis-tutorial-composite-entity.md)，添加一个**复合实体**，将各种类型的提取数据捆绑到单个包含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。

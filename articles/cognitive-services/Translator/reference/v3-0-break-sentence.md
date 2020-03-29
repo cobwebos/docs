@@ -1,7 +1,7 @@
 ---
 title: 文本翻译 API BreakSentence 方法
 titleSuffix: Azure Cognitive Services
-description: 文本翻译 API BreakSentence 方法标识句子边界在文本段中的位置。
+description: 翻译器文本 API Break句子方法标识句子边界在文本中的定位。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76548112"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>文本翻译 API 3.0：BreakSentence
@@ -33,19 +33,19 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 查询字符串上传递的请求参数如下：
 
-| 查询参数 | Description |
+| 查询参数 | 描述 |
 | -------| ----------- |
-| api-version <img width=200/>   | 必需的查询参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。 |
-| 语言 | 可选查询参数。<br/>语言标记，标识输入文本的语言。 如果未指定代码，则将应用自动语言检测。 |
-| 脚本    | 可选查询参数。<br/>脚本标记，标识输入文本使用的脚本。 如果未指定脚本，则将采用语言的默认脚本。  | 
+| api-version <img width=200/>   | 必需的查询参数****。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。 |
+| 语言 | 可选查询参数****。<br/>语言标记，标识输入文本的语言。 如果未指定代码，则将应用自动语言检测。 |
+| 脚本    | 可选查询参数****。<br/>脚本标记，标识输入文本使用的脚本。 如果未指定脚本，则将采用语言的默认脚本。  | 
 
 请求标头包括：
 
-| 标头 | Description |
+| 标头 | 描述 |
 | ------- | ----------- |
-| 身份验证标头 <img width=200/>  | 必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
-| Content-Type | 必需的请求标头。<br/>指定有效负载的内容类型。 可能的值为：`application/json` |
-| Content-Length    | 必需的请求标头。<br/>请求正文的长度。  | 
+| 身份验证标头 <img width=200/>  | **所需的请求标头**。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
+| Content-Type | **所需的请求标头**。<br/>指定有效负载的内容类型。 可能的值为：`application/json` |
+| Content-Length    | **所需的请求标头**。<br/>请求正文的长度。  | 
 | X-ClientTraceId   | **可选**。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。  | 
 
 ## <a name="request-body"></a>请求正文
@@ -97,7 +97,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>Description</th>
+  <th>描述</th>
   <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -110,7 +110,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>Description</th>
+  <th>描述</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -129,7 +129,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>服务器拒绝了请求，因为客户端已超出请求限制。</td>
+    <td>由于客户端已超出请求限制，服务器拒绝了请求。</td>
   </tr>
   <tr>
     <td>500</td>

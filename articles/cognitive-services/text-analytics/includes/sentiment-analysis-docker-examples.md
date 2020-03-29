@@ -1,7 +1,7 @@
 ---
-title: 情绪分析容器 docker 示例
+title: 情绪分析容器码头示例
 titleSuffix: Azure Cognitive Services
-description: 情绪分析容器 docker 示例
+description: 情绪分析容器码头示例
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 09/19/2019
 ms.author: dapine
 ms.openlocfilehash: c384d9d8af932db343aad106b6e89ea87821d900
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71148366"
 ---
-### <a name="sentiment-analysis-container-docker-examples"></a>情绪分析容器 docker 示例
+### <a name="sentiment-analysis-container-docker-examples"></a>情绪分析容器码头示例
 
 以下 docker 示例适用于情绪分析容器。
 

@@ -9,44 +9,44 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: 35f5cffdc644370082e229c88d67db33e853c446
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 20f78d9269d4b2270293c8746157ba495c694562
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499185"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80272873"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure 认知服务容器安全性
 
-无论何时开发应用程序，安全性都应该是主要关注点。 安全的重要性是成功的指标。 构建包含认知服务容器的软件解决方案时，请务必了解可用的限制和功能。 有关网络安全的详细信息，请参阅[配置 Azure 认知服务虚拟网络][az-security]。
+开发应用程序时，安全性是主要关注因素。 安全性重要是因为它是成功的指标。 构建包含认知服务容器的软件解决方案时，必须了解你所受的限制和能够使用的功能。 有关网络安全的详细信息，请参阅[配置 Azure 认知服务虚拟网络][az-security]。
 
 > [!IMPORTANT]
-> 默认情况下，认知服务容器 API*没有安全性*。 这样做的原因是：容器最常见的情况是，容器将作为 pod 的一部分运行，而该 pod 由网桥保护。 但是，可以启用与访问[基于云的认知服务][request-authentication]时所使用的身份验证相同的身份验证。
+> 默认情况下，认知服务容器 API 上没有安全措施。** 之所以这样设置，是因为大多数情况下容器会作为 Pod 的一部分运行，而 Pod 受网络桥的保护，与外部隔离。 但是，可以启用与访问[基于云的认知服务][request-authentication]时使用的身份验证相同的身份验证。
 
-下图说明了默认方法和**非安全**方法：
+下图演示了默认的**非安全**方法：
 
 ![容器安全性](../media/container-security.svg)
 
-认知服务容器的使用者是一种替代和*安全*的方法，可以使用正面组件扩充容器，使容器终结点专用。 让我们考虑一种方案，其中使用[Istio][istio]作为入口网关。 Istio 支持 HTTPS/SSL 和客户端证书身份验证。 在这种情况下，Istio 前端将公开容器访问权限，并在 Istio 的后面呈现客户端证书。
+认知服务容器的所有者可以通过一个前置组件来增强容器，让容器终结点保持专用，这是一种替代的安全** 方法。 让我们考虑一个方案，在该方案中，我们使用 [Istio][istio] 作为入口网关。 Istio 支持 HTTPS/TLS 和客户端证书身份验证。 在此方案中，Istio 前端会公开容器访问权限，提供的客户端证书已事先通过 Istio 加入允许列表。
 
-[Nginx][nginx]是同一类别中的另一种常用选择。 Istio 和 Nginx 都充当服务网格，提供其他功能，包括负载平衡、路由和速率控制等功能。
+在同一类别中，[Nginx][nginx] 是另一常用的选择。 Istio 和 Nginx 都充当服务网格，并提供其他功能，例如负载均衡、路由和速率控制。
 
 ### <a name="container-networking"></a>容器网络
 
-出于计费目的，需要认知服务容器来提交计量信息。 唯一的例外情况是*脱机容器*，因为它们遵循不同的计费方法。 如果无法允许列出认知服务容器所依赖的各种网络通道，则会阻止容器工作。
+若要提交计费所需的计量信息，则需要认知服务容器。 唯一例外是脱机容器，因为后者遵循不同的计费方法。** 如果无法允许列出认知服务容器依赖的各种网络通道，则容器不能正常运行。
 
 #### <a name="allow-list-cognitive-services-domains-and-ports"></a>允许列出认知服务域和端口
 
-主机应允许列出**端口 443**和以下域：
+主机应该允许列出**端口 443** 和以下域：
 
 * `*.cognitive.microsoft.com`
 * `*.cognitiveservices.azure.com`
 
-#### <a name="disable-deep-packet-inspection"></a>禁用深层数据包检查
+#### <a name="disable-deep-packet-inspection"></a>禁用深度行数据包检查
 
-> [深度数据包检查](https://en.wikipedia.org/wiki/Deep_packet_inspection)（DPI）是一种数据处理方式，用于检查通过计算机网络发送的数据，并且通常通过阻止、重新路由或记录它来采取措施。
+> [深度数据包检查](https://en.wikipedia.org/wiki/Deep_packet_inspection) (DPI) 是一种数据处理，它会详细检查通过计算机网络发送的数据，并且通常会对其采取阻止、重新路由或日志记录等相应操作。
 
-禁用认知服务容器为 Microsoft 服务器创建的安全通道上的 DPI。 否则，将无法正常运行容器。
+在认知服务容器创建的通往 Microsoft 服务器的安全通道上禁用 DPI。 如果不能这样做，则容器无法正常运行。
 
 [istio]: https://istio.io/
 [nginx]: https://www.nginx.com

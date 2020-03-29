@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: cf0d96414c40784210723e315da5d885d61198c5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68595577"
 ---
 # <a name="view-document-details"></a>查看文档详细信息
@@ -27,7 +27,7 @@ ms.locfileid: "68595577"
 
 ![文档详细信息](media/how-to/how-to-view-document-details.png)
 
-## <a name="delete-a-document"></a>删除一个文档
+## <a name="delete-a-document"></a>删除文档
 
 用户必须是工作区所有者才能删除文档。 此外，如果文档由翻译过程或部署过程中的某个模型使用，则无法删除该文档。
 

@@ -1,7 +1,7 @@
 ---
-title: 使用 Speech SDK 选择语音识别模式
+title: 使用语音 SDK 选择语音识别模式
 titleSuffix: Azure Cognitive Services
-description: 了解如何在使用 Speech SDK 时选择最佳的识别模式。
+description: 了解如何在使用语音 SDK 时选择最佳识别模式。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,25 +12,25 @@ ms.date: 03/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: d997cb592d9d648998f2b44d9f61f465f05faeb0
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79079821"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>选择语音识别模式
 
-考虑语音到文本识别操作时，[语音 SDK](speech-sdk.md)提供多种模式来处理语音。 从概念上讲，有时称为*识别模式*。 本文比较了各种识别模式。
+在考虑语音到文本识别操作时，[语音 SDK](speech-sdk.md)提供了多种处理语音的模式。 从概念上讲，有时称为*识别模式*。 本文比较了各种识别模式。
 
 ## <a name="recognize-once"></a>识别一次
 
-如果要一次处理每个查询文本一个 "句子"，请使用 "识别一次" 函数。 此方法将在从检测到的语音开始之前的输入中检测识别的查询文本，直到下一次暂停。 通常，暂停会标记句尾或想象的行。
+如果要一次处理一个"句子"，请使用"识别一次"功能。 此方法将从检测到的语音开始，直到下一次暂停，从输入中检测识别的说出。 通常，暂停标志着句子或思路的结束。
 
-在一个可识别的查询文本结束时，服务将停止处理来自该请求的音频。 识别的最大限制为每秒20秒。
+在一个可识别的话语结束时，服务将停止处理来自该请求的音频。 识别的最大限制是 20 秒的句子持续时间。
 
 ::: zone pivot="programming-language-csharp"
 
-有关使用 `RecognizeOnceAsync` 函数的详细信息，请参阅[.Net SPEECH SDK 文档](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)。
+有关使用 函数`RecognizeOnceAsync`的详细信息，请参阅[.NET 语音 SDK 文档](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)。
 
 ```csharp
 var result = await recognizer.RecognizeOnceAsync();
@@ -39,7 +39,7 @@ var result = await recognizer.RecognizeOnceAsync();
 ::: zone-end
 ::: zone pivot="programming-language-cpp"
 
-有关使用 `RecognizeOnceAsync` 函数的详细信息，请参阅[ C++语音 SDK 文档](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizeonceasync)。
+有关使用 函数`RecognizeOnceAsync`的详细信息，请参阅[C++语音 SDK 文档](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizeonceasync)。
 
 ```cpp
 auto result = recognize->RecognizeOnceAsync().get();
@@ -48,7 +48,7 @@ auto result = recognize->RecognizeOnceAsync().get();
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-有关使用 `recognizeOnceAsync` 函数的详细信息，请参阅[Java SPEECH SDK 文档](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechRecognizer.recognizeOnceAsync?view=azure-java-stable)。
+有关使用 函数`recognizeOnceAsync`的详细信息，请参阅 Java[语音 SDK 文档](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechRecognizer.recognizeOnceAsync?view=azure-java-stable)。
 
 ```java
 SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
@@ -57,7 +57,7 @@ SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
 ::: zone-end
 ::: zone pivot="programming-language-python"
 
-有关使用 `recognize_once` 函数的详细信息，请参阅[Python 语音 SDK 文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python#recognize-once------azure-cognitiveservices-speech-speechrecognitionresult)。
+有关使用 函数`recognize_once`的详细信息，请参阅 Python[语音 SDK 文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python#recognize-once------azure-cognitiveservices-speech-speechrecognitionresult)。
 
 ```python
 result = speech_recognizer.recognize_once()
@@ -72,7 +72,7 @@ result = speech_recognizer.recognize_once()
 
 ## <a name="continuous"></a>连续
 
-如果需要长时间运行的识别，请使用启动和相应的停止功能进行连续识别。 Start 函数将启动并继续处理所有最谈话，直到调用 stop 函数或过多的静默时间为止。 使用连续模式时，请确保注册到发生事件时将触发的各种事件。 例如，当发生语音识别时，将触发 "已识别" 事件。 需要有一个事件处理程序来处理识别。
+如果需要长时间运行的识别，请使用启动和相应的停止函数进行连续识别。 start 函数将开始并继续处理所有陈述，直到调用停止函数，或直到超过太多时间在沉默中过去。 使用连续模式时，请确保注册到发生时将触发的各种事件。 例如，当发生语音识别时，将触发"识别"事件。 您需要有一个事件处理程序来处理识别。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -160,11 +160,11 @@ speech_recognizer.stop_continuous_recognition()
 
 ## <a name="dictation"></a>听写
 
-使用连续识别时，可以使用相应的 "启用听写" 功能启用听写处理。 此模式将导致语音配置实例解释句子结构（如标点符号）的单词说明。 例如，"您居住于城镇问号" 的 "查询文本" 将被解释为文本 "您居住在城镇中"。
+使用连续识别时，可以使用相应的"启用听写"功能启用听写处理。 此模式将导致语音配置实例解释句子结构（如标点符号）的单词描述。 例如，"你住在城里问号"的话语将被解释为"你住在城里吗？
 
 ::: zone pivot="programming-language-csharp"
 
-有关使用 `EnableDictation` 函数的详细信息，请参阅[.Net SPEECH SDK 文档](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation)。
+有关使用 函数`EnableDictation`的详细信息，请参阅[.NET 语音 SDK 文档](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation)。
 
 ```csharp
 // Enable diction
@@ -174,7 +174,7 @@ SpeechConfig.EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-cpp"
 
-有关使用 `EnableDictation` 函数的详细信息，请参阅[ C++语音 SDK 文档](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)。
+有关使用 函数`EnableDictation`的详细信息，请参阅[C++语音 SDK 文档](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)。
 
 ```cpp
 // Enable diction
@@ -184,7 +184,7 @@ SpeechConfig->EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-有关使用 `enableDictation` 函数的详细信息，请参阅[Java SPEECH SDK 文档](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable)。
+有关使用 函数`enableDictation`的详细信息，请参阅 Java[语音 SDK 文档](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable)。
 
 ```java
 // Enable diction
@@ -194,7 +194,7 @@ SpeechConfig.enableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-python"
 
-有关使用 `enable_dictation` 函数的详细信息，请参阅[Python 语音 SDK 文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)。
+有关使用 函数`enable_dictation`的详细信息，请参阅 Python[语音 SDK 文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)。
 
 ```python
 # Enable diction
@@ -211,4 +211,4 @@ SpeechConfig.enable_dictation()
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解 GitHub 上的其他语音 SDK 示例](https://aka.ms/csspeech/samples)
+> [在 GitHub 上浏览其他语音 SDK 示例](https://aka.ms/csspeech/samples)

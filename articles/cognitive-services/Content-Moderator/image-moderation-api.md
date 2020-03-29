@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73044105"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解图像审查概念
 
-使用内容审查器的机器辅助图像审查和[人工循环评审工具](Review-Tool-User-Guide/human-in-the-loop.md)来调整具有成人和猥亵内容的图像。 扫描图像以查找文本内容并提取该文本，以及检测人脸。 可以将图像与自定义列表进行匹配，并执行进一步操作。
+使用内容审阅者的计算机辅助图像审核和[人循环审阅工具](Review-Tool-User-Guide/human-in-the-loop.md)来调节成人和淫秽内容的图像。 扫描图像以查找文本内容并提取该文本，以及检测人脸。 可以将图像与自定义列表进行匹配，并执行进一步操作。
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>评估成人和猥亵内容
 
@@ -66,7 +66,7 @@ ms.locfileid: "73044105"
 
 ## <a name="detecting-faces"></a>检测人脸
 
-检测人脸有助于检测个人数据，如图像中的人脸。 可以检测每个图像中的潜在人脸和潜在人脸的数量。
+检测人脸有助于检测个人数据，例如图像中的人脸。 可以检测每个图像中的潜在人脸和潜在人脸的数量。
 
 响应包括以下信息：
 
@@ -106,7 +106,7 @@ ms.locfileid: "73044105"
 可以将令人反感的图像添加到阻止内容的自定义列表中，而不是多次审核同一图像。 这样，内容审核系统就会将传入图像与自定义列表进行比较，并停止任何进一步处理。
 
 > [!NOTE]
-> 最多只能使用 5 个图像列表，每个列表中的图像数不得超过 10,000 张。
+> 最多只能使用 5 个图像列表****，每个列表中的图像数不得超过 10,000 张****。
 >
 
 内容审查器提供了完整的[图像列表管理 API](try-image-list-api.md)，其中包含用于管理自定义图像列表的操作。 从[图像列表 API 控制台](try-image-list-api.md)开始，使用 REST API 代码示例。 如果熟悉 Visual Studio 和 C#，还请参阅[图像列表 .NET 快速入门](image-lists-quickstart-dotnet.md)。
@@ -139,12 +139,12 @@ ms.locfileid: "73044105"
     ....
     }
 
-## <a name="human-review-tool"></a>人工审阅工具
+## <a name="human-review-tool"></a>人工评审工具
 
 对于更微妙的情况，请使用内容审查器[评审工具](Review-Tool-User-Guide/human-in-the-loop.md)及其 API 在人工审查方的评审中显示审核结果和内容。 他们检查机器分配的标记并确认其最终决定。
 
-![人工审查器的图像审查](images/moderation-reviews-quickstart-dotnet.PNG)
+![供人工审查方审阅的图像](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 
-试用[图像审查 API 控制台](try-image-api.md)并使用 REST API 代码示例。 如果熟悉 Visual Studio 和， C#还请查看[.net SDK 快速入门](dotnet-sdk-quickstart.md)的 "图像裁决" 部分。
+试用[图像审查 API 控制台](try-image-api.md)并使用 REST API 代码示例。 如果您熟悉 Visual Studio 和 C#，请查看[.NET SDK 快速入门](dotnet-sdk-quickstart.md)的映像审核部分。

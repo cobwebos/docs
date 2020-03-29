@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: diberry
 ms.openlocfilehash: f3c99856eaffc454754618a1eac34630b985a77e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73499481"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>使用列表实体提升实体检测 
@@ -29,11 +29,11 @@ ms.locfileid: "73499481"
 > * 添加规范化值和同义词
 > * 验证改进后的实体标识
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * 最新版 [Node.js](https://nodejs.org)
-> * [HomeAutomation LUIS 应用](luis-get-started-create-app.md)。 如果未创建主自动化应用，请新建一个，并添加预生成的域 HomeAutomation。 定型并发布应用。 
+> * [HomeAutomation LUIS 应用](luis-get-started-create-app.md)。 如果未创建主自动化应用，请新建一个，并添加预生成的域 HomeAutomation****。 定型并发布应用。 
 > * LUIS 应用的 [AuthoringKey](luis-concept-keys.md#authoring-key)、[EndpointKey](luis-concept-keys.md#endpoint-key)（若要多次查询的话）、应用 ID、版本 ID 和[区域](luis-reference-regions.md)。
 
 > [!Tip]
@@ -46,7 +46,7 @@ ms.locfileid: "73499481"
 
 一种跨不同文化和受众有多个名称的系统就是恒温调节器。 恒温调节器可以控制房屋或建筑物的供热制冷系统。
 
-理想情况下，以下陈述应当会解析为预生成实体 HomeAutomation.Device：
+理想情况下，以下陈述应当会解析为预生成实体 HomeAutomation.Device****：
 
 |#|话语|标识的实体|score|
 |--|--|--|--|
@@ -59,7 +59,7 @@ ms.locfileid: "73499481"
 ## <a name="use-a-list-entity"></a>使用列表实体
 HomeAutomation.Device 实体非常适用于数量较少的设备或几乎没有名称变体的设备。 对于办公楼或校园，设备名称有很多，HomeAutomation.Device 实体就不适用了。 
 
-在这种情况下，列表实体很适用，因为办公楼或校园中设备的术语集是已知的，即使这个集合很大，也不例外。 使用列表实体，LUIS 可以接收恒温调节器术语集中的任何可取值，并将它解析为同一个设备“恒温调节器”。 
+在这种情况下，列表实体**** 很适用，因为办公楼或校园中设备的术语集是已知的，即使这个集合很大，也不例外。 使用列表实体，LUIS 可以接收恒温调节器术语集中的任何可取值，并将它解析为同一个设备“恒温调节器”。 
 
 本文将创建包含恒温调节器的实体列表。 在本文中，恒温调节器的可选名称包括： 
 
@@ -93,7 +93,7 @@ npm install && node add-entity-list.js
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
 
-## <a name="train-the-model"></a>训练模型
+## <a name="train-the-model"></a>定型模型
 定型 LUIS，让新列表能够影响查询结果。 定型过程分为两部分，然后在定型完成后检查状态。 有多个模型的应用可能需要一段时间才能完成定型。 下面的代码先定型应用，然后等到定型成功完成。 此代码使用等待并重试策略，以免发生 429“请求次数过多”错误。 
 
 创建 Node.js 文件，并将下面的代码复制到其中。 更改 authoringKey、appId、versionId 和 region 值。
@@ -164,7 +164,7 @@ node publish.js
 node train.js
 ```
 
-输出的是查询结果。 因为此代码向查询字符串添加详细名称/值对，所以输出包括所有意向及其分数：
+输出的是查询结果。 因为此代码向查询字符串添加详细**** 名称/值对，所以输出包括所有意向及其分数：
 
 ```json
 {
@@ -210,11 +210,11 @@ node train.js
 }
 ```
 
-特定设备“恒温调节器”是通过面向结果的“turn up the heat（打开供热）”查询进行标识。 由于应用中仍有原始 HomeAutomation.Device 实体，因此还可以看到它的结果。 
+特定设备“恒温调节器”**** 是通过面向结果的“turn up the heat（打开供热）”查询进行标识。 由于应用中仍有原始 HomeAutomation.Device 实体，因此还可以看到它的结果。 
 
 尝试其他两个陈述，看看它们是否也作为“恒温调节器”返回。 
 
-|#|话语|实体|type|值|
+|#|话语|实体|type|value|
 |--|--|--|--|--|
 |1|turn on the ac（打开空调）| ac（空调） | DevicesList | 恒温调节器|
 |2|turn up the heat（打开供热）|heat（供热）| DevicesList |恒温调节器|
