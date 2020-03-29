@@ -1,5 +1,5 @@
 ---
-title: 编号预生成的实体-LUIS
+title: 数字预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含了语言理解 (LUIS) 中的数字预构建实体信息。
 services: cognitive-services
@@ -12,17 +12,17 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 85e3589d7467691e2b9a11879510ab980bbd875a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273462"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的数字预生成实体
 有许多方式使用数字值来量化、表达和描述信息片段。 本文仅包括了其中一些可能的示例。 LUIS 解释用户陈述中的变体并返回一致的数字值。 此实体已定型，因此不需要将包含数字的陈述示例添加到应用程序意向中。
 
 ## <a name="types-of-number"></a>数字类型
-数字托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) GitHub 存储库中
+编号从[识别器文本](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml)GitHub 存储库进行管理
 
 ## <a name="examples-of-number-resolution"></a>数字解析示例
 
@@ -38,17 +38,17 @@ ms.locfileid: "78273462"
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-LUIS 在它返回的 JSON 响应的  **字段中包括 `builtin.number`** `resolution` 实体的已识别值。
+LUIS 在它返回的**`builtin.number`** JSON`resolution`响应字段中包括实体的确认值。
 
 ## <a name="resolution-for-prebuilt-number"></a>预构建数字解析
 
-为查询返回以下实体对象：
+查询返回以下实体对象：
 
 `order two dozen eggs`
 
 #### <a name="v3-response"></a>[V3 响应](#tab/V3)
 
-以下 JSON 是将 `verbose` 参数设置为 `false`的：
+以下 JSON 的 `verbose` 参数设置为 `false`：
 
 ```json
 "entities": {
@@ -59,7 +59,7 @@ LUIS 在它返回的 JSON 响应的  **字段中包括 `builtin.number`** `resol
 ```
 #### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/V3-verbose)
 
-以下 JSON 是将 `verbose` 参数设置为 `true`的：
+以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
 "entities": {

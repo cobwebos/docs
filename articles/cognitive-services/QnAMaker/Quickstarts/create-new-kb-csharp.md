@@ -6,13 +6,13 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 78608d3acdfea07f21ccc42e8d530ff502fbb0b4
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851923"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>快速入门：使用C# REST 在 QnA Maker 中创建知识库
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c-with-rest"></a>快速入门：使用带有 REST 的 C# 在 QnA 制造商中创建知识库
 
 本快速入门将指导你完成以编程方式创建和发布示例 QnA Maker 知识库的过程。 QnA Maker 自动从[数据源](../Concepts/knowledge-base.md)中从半结构化内容（例如常见问题解答）中自动提取问题和解答。 用于知识库的模型是在 API 请求的正文中发送的 JSON 中定义的。
 
@@ -24,16 +24,16 @@ ms.locfileid: "78851923"
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
-* 必须已有一项 [QnA Maker 资源](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”。
+* [.NET 核心](https://dotnet.microsoft.com/download/dotnet-core)的当前版本 。
+* 必须已有一项 [QnA Maker 资源](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
 
 ### <a name="create-a-new-c-application"></a>新建 C# 应用程序
 
 在首选编辑器或 IDE 中创建新的 .NET Core 应用程序。
 
-在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `qna-maker-quickstart` 的新控制台应用。 此命令使用单个源文件创建一个简单C#的 "Hello World" 项目： *Program.cs*。
+在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `qna-maker-quickstart` 的新控制台应用。 此命令创建一个简单的"Hello World" C# 项目，该项目具有单个源文件 *：Program.cs*。
 
 ```dotnetcli
 dotnet new console -n qna-maker-quickstart

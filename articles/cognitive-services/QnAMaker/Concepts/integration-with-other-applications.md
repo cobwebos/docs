@@ -1,35 +1,35 @@
 ---
-title: 与其他应用程序集成-QnA Maker
-description: QnA Maker 集成到客户端应用程序（如聊天 bot）以及其他自然语言处理服务（如语言理解（LUIS））。
+title: 与其他应用集成 - QnA 制造商
+description: QnA Maker 集成到客户端应用程序（如聊天机器人）以及其他自然语言处理服务（如语言理解 （LUIS）） 中。
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300513"
 ---
-# <a name="design-knowledge-base-for-client-applications"></a>适用于客户端应用程序的设计知识库
+# <a name="design-knowledge-base-for-client-applications"></a>为客户应用程序设计知识库
 
-QnA Maker 集成到客户端应用程序（如聊天 bot）以及其他自然语言处理服务（如语言理解（LUIS））。
+QnA Maker 集成到客户端应用程序（如聊天机器人）以及其他自然语言处理服务（如语言理解 （LUIS）） 中。
 
 ## <a name="integration-with-a-conversational-client"></a>与对话客户端集成
 
-QnA Maker 与会话客户端应用程序（如[Microsoft Bot Framework](https://dev.botframework.com/)）集成。 不需要清除或转换发送到 QnA Maker 的文本。 QnA Maker 接受自然语言并返回最佳答案。
+QnA Maker 与会话客户端应用程序（如[微软机器人框架](https://dev.botframework.com/)）集成。 发送到 QnA Maker 的文本不需要清理或转换。 QnA Maker 接受自然语言并返回最佳答案。
 
-## <a name="create-a-bot-without-writing-any-code"></a>创建机器人，无需编写任何代码
+## <a name="create-a-bot-without-writing-any-code"></a>创建自动程序而不编写任何代码
 
-发布知识库后，通过选择 "**创建机器人**" 按钮，从 "**发布**" 页创建一个 bot。 使用[机器人教程](../Quickstarts/create-publish-knowledge-base.md)了解选择按钮后会发生的情况。
+发布知识库后，通过选择"**创建自动程序"** 按钮，从 **"发布"** 页创建自动程序。 使用[自动程序教程](../Quickstarts/create-publish-knowledge-base.md)了解选择按钮后会发生什么情况。
 
-## <a name="providing-multi-turn-conversations"></a>提供多轮对话
+## <a name="providing-multi-turn-conversations"></a>提供多转对话
 
-机器人客户端从您的知识库提供最佳选择的答案，如果答案是多轮 QnA 集的一部分，则可以提供跟进提示。 了解[如何](../how-to/multiturn-conversation.md)向知识库添加多轮会话问题和答案集。
+如果答案是多转 QnA 集的一部分，则自动程序客户端提供来自知识库中的最佳答案，并且可以提供后续提示。 [了解如何将](../how-to/multiturn-conversation.md)多转对话问题和答案集添加到您的知识库。
 
 ## <a name="natural-language-processing"></a>自然语言处理
 
-虽然 QnA Maker 处理使用自然语言处理的问题，但也可以将其用于从多个知识库回答问题的较大系统。 您可以将 QnA Maker 与另一种认知服务（语言理解（LUIS）结合使用，以便在获取特定知识库之前提供自然语言处理。 了解有关何时以及如何将[LUIS 和 QnA Maker](../../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json)一起使用的详细信息。
+虽然 QnA Maker 处理使用自然语言处理的问题，但它也可以使用一个更大的系统的一部分来回答来自多个知识库的问题。 您可以将 QnA Maker 与另一个认知服务（语言理解 （LUIS） 相结合，在到达特定知识库之前提供自然语言处理。 详细了解何时以及如何一起使用 LUIS[和 QnA 制造商](../../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json)。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 QnA Maker 的开发周期[概念](development-lifecycle-knowledge-base.md)。
+了解 QnA 制造商的开发周期[概念](development-lifecycle-knowledge-base.md)。

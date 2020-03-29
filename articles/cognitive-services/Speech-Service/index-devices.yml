@@ -2,22 +2,21 @@
 title: 语音设备文档
 summary: 语音设备 SDK 是与特制的麦克风阵列开发工具包配对的一个预优化库。
 metadata:
-  title: 语音设备文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  title: 语音设备文档 - 教程，API 参考 - Azure 认知服务 |微软文档
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: cbdbcce25d357530775140bc8b5fdf82808c64ad
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 5fc9e045162c03585f20e0b06a01524480070050
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79369244"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415353"
 landingContent:
 - title: 关于语音设备 SDK
   linkLists:
@@ -31,15 +30,15 @@ landingContent:
       url: speech-devices-sdk-quickstart.md?pivots=platform-windows
     - text: 使用语音设备 SDK （Linux）
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
-    - text: 使用语音设备 SDK （Android）
+    - text: 使用语音设备 SDK （安卓）
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: 通过语音设备 SDK 进行开发
+- title: 使用语音设备 SDK 进行开发
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 设计麦克风阵列
       url: speech-devices-sdk-microphone.md
-    - text: 设置 Roobo v1 工具包
+    - text: 设置 Roobo v1 套件
       url: speech-devices-sdk-roobo-v1.md
 - title: 参考
   linkLists:
@@ -49,5 +48,5 @@ landingContent:
       url: devices-sdk-release-notes.md
   - linkListType: reference
     links:
-    - text: 故障排除
+    - text: 疑难解答
       url: speech-devices-sdk-troubleshooting.md

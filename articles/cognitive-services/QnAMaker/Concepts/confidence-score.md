@@ -1,7 +1,7 @@
 ---
-title: 置信度分数-QnA Maker
+title: 置信度得分 - QnA 制造商
 titleSuffix: Azure Cognitive Services
-description: 必须发布知识库。 发布后，将使用 generateAnswer API 在运行时预测终结点上查询知识库。
+description: 必须发布知识库。 发布后，使用生成应答 API 在运行时预测终结点查询知识库。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,10 +12,10 @@ ms.date: 01/27/2020
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: d901a803311805825c22503af6098e805a67e8f6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76843446"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>答案的置信度分数
@@ -46,22 +46,22 @@ ms.locfileid: "76843446"
 |0|无匹配，因此未返回任何答案。|“服务费用是多少”|
 
 ## <a name="choose-a-score-threshold"></a>选择分数阈值
-上表指明了大多数知识库上应该会出现的分数。 不过，由于每个 KB 都不同，并且具有不同类型的词、意向和目标，因此我们建议你测试并选择最适合你的阈值。 默认情况下，阈值设置为0，以便返回所有可能的答案。 建议用于大多数 Kb 的阈值为**50**。
+上表指明了大多数知识库上应该会出现的分数。 但是，由于每个知识库都不同，并且具有不同类型的单词、意图和目标，我们建议您测试并选择最适合您的门槛。 默认情况下，阈值设置为 0，以便返回所有可能的答案。 建议对大多数 KB 起作用的阈值为**50**。
 
 选择阈值时，请务必平衡“准确度”和“覆盖率”，并根据自己的需求来调整阈值。
 
-- 如果“准确度”（或精准率）对方案更为重要，请提高阈值。 这样，每次返回的答案的置信度都会更高，且更有可能就是用户所要找的答案。 在这种情况下，最终可能会导致更多问题没有答案。 例如，如果将阈值设置为 70，可能会错过一些含糊不清的示例（例如，“什么是保存和定型？”）。
+- 如果“准确度”****（或精准率）对方案更为重要，请提高阈值。 这样，每次返回的答案的置信度都会更高，且更有可能就是用户所要找的答案。 在这种情况下，最终可能会导致更多问题没有答案。 例如，** 如果将阈值设置为 70****，可能会错过一些含糊不清的示例（例如，“什么是保存和定型？”）。
 
-- 如果“覆盖率”（或召回率）更为重要，且希望尽可能多地回答问题（即使答案与用户问题仅部分相关，也不例外），请降低阈值。 也就是说，可能会更多出现以下情况：答案并未回答用户实际查询，而是提供了其他一些相关答案。 *例如：* 如果你将阈值设置为**30**，则可能会提供类似于 "可以在何处编辑我的 KB？" 的查询的答案。
+- 如果“覆盖率”****（或召回率）更为重要，且希望尽可能多地回答问题（即使答案与用户问题仅部分相关，也不例外），请降低阈值。 也就是说，可能会更多出现以下情况：答案并未回答用户实际查询，而是提供了其他一些相关答案。 *例如：* 如果进行阈值**30，** 则可以为查询提供答案，例如"我在哪里可以编辑我的知识库？
 
 > [!NOTE]
 > 较新版本的 QnA Maker 包括对评分逻辑的改进，并可能影响你的阈值。 每次更新服务时，请务必测试阈值并在必要时调整阈值。 可以在[此处](https://www.qnamaker.ai/UserSettings)查看 QnA 服务版本，并在[此处](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)了解如何获取最新更新。
 
 ## <a name="set-threshold"></a>设置阈值
 
-将阈值评分设置为[GENERATEANSWER API JSON 主体](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)的属性。 这意味着你将其设置为每次调用 GenerateAnswer。
+将阈值分数设置为[生成应答 API JSON 正文](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)的属性。 这意味着您为每个调用将其设置为"生成应答"。
 
-在机器人框架中, 将分数设置为 options 对象的一部分, [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c)或 [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)。
+从自动程序框架中，使用[C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c)或[Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)将分数设置为选项对象的一部分。
 
 ## <a name="improve-confidence-scores"></a>提高置信度分数
 若要提高对用户查询的特定响应的置信度分数，可以将用户查询添加到知识库，作为该响应的备用问题。 还可以使用区分大小写的[字变更](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace)向知识库中的关键字添加同义词。
@@ -71,22 +71,22 @@ ms.locfileid: "76843446"
 当多个响应具有相似的置信度分数时，查询很可能过于通用，因此与多个答案匹配的可能性都相同。 尝试更好地构建 QnA，以便每个 QnA 实体都有不同的意向。
 
 
-## <a name="confidence-score-differences-between-test-and-production"></a>测试与生产之间的置信度得分差异
-即使内容相同，答案的置信度分数在知识库的测试版和发布版之间也可能有微不足道的差异。 这是因为测试内容和已发布的知识库位于不同的 Azure 认知搜索索引中。
+## <a name="confidence-score-differences-between-test-and-production"></a>测试和生产之间的置信度分数差异
+即使内容相同，答案的置信度分数在知识库的测试版和发布版之间也可能有微不足道的差异。 这是因为测试的内容和已发布的知识库位于不同的 Azure 认知搜索索引中。
 
-测试索引保存所有 QnA 对。 查询测试索引时，查询应用于整个索引，然后将结果限制为该特定知识库的分区。 如果测试查询结果对您验证知识库的能力产生负面影响，则可以：
-* 使用以下其中一项来组织知识库：
-    * 1个资源限制为 1 KB：将单个 QnA 资源（和生成的 Azure 认知搜索测试索引）限制为单个知识库。
-    * 2个资源-1 个用于测试，1个用于生产：有两个 QnA Maker 资源，一个用于测试（使用其自己的测试和生产索引），另一个用于产品（也有其自己的测试和生产索引）
-* 而且，始终使用相同的参数，如在查询测试和生产知识库时使用 **[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)**
+测试索引包含知识库的所有 QnA 对。 查询测试索引时，查询将应用于整个索引，然后结果将限制为该特定知识库的分区。 如果测试查询结果对验证知识库的能力产生负面影响，您可以：
+* 使用以下之一组织您的知识库：
+    * 1 资源限制为 1 KB：将单个 QnA 资源（以及生成的 Azure 认知搜索测试索引）限制为单个知识库。
+    * 2 资源 - 1 用于测试，1 个用于生产：具有两个 QnA 制造商资源，一个用于测试（有自己的测试和生产指标），另一个用于产品（也有其自己的测试和生产索引）
+* 并且，始终使用相同的参数，例如查询测试和生产知识库时**[的顶部](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)**
 
 发布知识库时，知识库的问答内容将从测试索引转移到 Azure 搜索中的生产索引。 请参阅[发布](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)操作的工作原理。
 
-如果在不同区域中有一个知识库，则每个区域都使用其自己的 Azure 认知搜索索引。 因为使用的索引不同，所以得分并不完全相同。
+如果在不同的区域有知识库，则每个区域都使用其自己的 Azure 认知搜索索引。 因为使用的索引不同，所以得分并不完全相同。
 
 
 ## <a name="no-match-found"></a>找不到匹配项
-当排名程序找不到良好匹配时，将返回置信度分数 0.0 或“None”，并且默认响应为“在知识库中找不到良好匹配”。 可以在调用终结点的机器人或应用程序代码中重写此[默认响应](../How-To/metadata-generateanswer-usage.md)。 或者，也可以在 Azure 中设置重写响应，这将更改在特定 QnA Maker 服务中部署的所有知识库的默认值。
+当排名程序找不到良好匹配时，将返回置信度分数 0.0 或“None”，并且默认响应为“在知识库中找不到良好匹配”。 您可以在调用终结点的自动程序或应用程序代码中重写此[默认响应](../How-To/metadata-generateanswer-usage.md)。 或者，也可以在 Azure 中设置重写响应，这将更改在特定 QnA Maker 服务中部署的所有知识库的默认值。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

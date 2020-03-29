@@ -1,23 +1,22 @@
 ### YamlMime:Landing
-title: “承载”文档
-summary: 语音服务容器适用于语音到文本和文本到语音方案，涵盖标准或自定义模型。
+title: 托管文档
+summary: 语音服务容器可用于语音到文本和文本到语音转换方案，包括标准模型或自定义模型。
 metadata:
-  title: 托管文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  title: 托管文档 - 教程，API 参考 - Azure 认知服务 |微软文档
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: ff12c357ba273c6965b11db4eabc1890925439be
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 8298a2e37520e7920f18b7ffd5b49074098e0243
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79366694"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415911"
 landingContent:
 - title: 关于托管
   linkLists:
@@ -25,7 +24,7 @@ landingContent:
     links:
     - text: 安装和运行语音容器
       url: speech-container-howto.md
-    - text: 具有 Kubernetes 和 Helm 的语音容器
+    - text: 与库伯奈斯和赫尔姆的语音容器
       url: speech-container-howto-on-premises.md
     - text: Azure 容器实例上的语音容器
       url: deploy-speech-on-container-instances.md

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71257625"
 ---
 # <a name="customize-your-text-translations"></a>自定义文本翻译
@@ -29,7 +29,7 @@ Microsoft 自定义翻译是 Microsoft Translator 服务的一项功能，它允
 
 ### <a name="how-does-it-work"></a>工作原理
 
-使用之前翻译的文档（leaflets、网页、文档等）构建一个翻译系统，该系统可反映与标准翻译系统更好的特定于域的术语和样式。 用户可以上传 TMX、XLIFF、TXT、DOCX 和 XLSX 文档。  
+使用以前翻译的文档（传单、网页、文档等）构建一个翻译系统，反映您的域特定术语和风格，比标准翻译系统更好。 用户可以上传 TMX、XLIFF、TXT、DOCX 和 XLSX 文档。  
 
 该系统还接受在文档级别并行但在句子级别尚未对齐的数据。 如果用户可以访问相同内容的多种语言版（但每种语言的内容都位于单独的文档中），自定义翻译将能够跨文档自动匹配句子。  该系统还可以使用一种或两种语言的单语数据来补充并行训练数据以改进翻译。
 
@@ -43,11 +43,11 @@ Microsoft 自定义翻译是 Microsoft Translator 服务的一项功能，它允
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
 > [!NOTE]
-> 旧版 Microsoft Translator 中心将在 2019 5 月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
+> 传统的微软翻译中心将于2019年5月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
 
 ## <a name="custom-translator-versus-hub"></a>自定义翻译与 Hub
 
-|   | **Hub** | **自定义翻译**|
+|   | **枢纽** | **自定义转换器**|
 |:-----|:----:|:----:|
 |自定义功能状态   | 正式版  | 正式版 |
 | 文本 API 版本  | 仅 V2   | 仅 V3 |

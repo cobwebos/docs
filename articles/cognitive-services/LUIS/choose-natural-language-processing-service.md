@@ -1,7 +1,7 @@
 ---
-title: 使用 NLP 认知服务充实对话
+title: 使用 NLP 认知服务扩充聊天
 titleSuffix: Azure Cognitive Services
-description: 认知服务提供两种自然语言处理服务，语言理解和 QnA Maker，每个服务都有不同的用途。 了解每个服务的使用时间及其相互补充的方式。
+description: 认知服务提供两个自然语言处理服务：语言理解和 QnA Maker，每个服务的用途不同。 本文介绍每个服务的使用时机，以及两者如何相辅相成。
 author: diberry
 ms.author: diberry
 manager: nitinme
@@ -9,85 +9,85 @@ ms.topic: conceptual
 ms.service: cognitive-services
 ms.date: 08/01/2019
 ms.openlocfilehash: 32159b37d3d1a8609181d81dc1a73f27177adb85
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73818198"
 ---
-# <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>使用认知服务和自然语言处理（NLP）来丰富机器人对话
+# <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>使用包含自然语言处理 (NLP) 的认知服务来扩充机器人聊天
 
-认知服务提供两种自然语言处理服务，[语言理解](what-is-luis.md)和[QnA Maker](../qnamaker/overview/overview.md)，每个服务都有不同的用途。 了解每个服务的使用时间及其相互补充的方式。 
+认知服务提供两种自然语言处理服务，[语言理解和](what-is-luis.md)[QnA制作器](../qnamaker/overview/overview.md)，每个服务都有不同的目的。 本文介绍每个服务的使用时机，以及两者如何相辅相成。 
 
-自然语言处理（NLP）允许你的客户端应用程序（如聊天机器人）使用自然语言处理你的用户。 用户输入句子或短语。 用户的文本可能具有不良语法、拼写和标点。 认知服务仍可以通过用户句子，返回聊天 bot 需要帮助用户的信息。 
+自然语言处理 (NLP) 可让客户端应用程序（例如聊天机器人）使用自然语言来与用户交互。 用户输入句子或短语。 用户输入的文本可能存在语法、拼写和标点符号不当的情况。 认知服务仍可以处理用户的句子，并返回聊天机器人为用户提供帮助所需的信息。 
 
-## <a name="cognitive-services-with-nlp"></a>NLP 的认知服务
+## <a name="cognitive-services-with-nlp"></a>包含 NLP 的认知服务
 
-语言理解（LUIS）和 QnA Maker 提供 NLP。 客户端应用程序提交自然语言文本。 服务获取文本，对其进行处理并返回结果。 
+语言理解 (LUIS) 和 QnA Maker 提供 NLP。 客户端应用程序提交自然语言文本。 服务提取文本，对其进行处理，然后返回结果。 
 
-## <a name="when-to-use-each-service"></a>何时使用每个服务
+## <a name="when-to-use-each-service"></a>每个服务的使用时机
 
-语言理解（LUIS）和 QnA Maker 解决了不同的问题。 LUIS 确定用户的文本用途（称为查询文本），QnA Maker 确定用户文本的答案（称为 "查询"）。 
+语言理解 (LUIS) 和 QnA Maker 解决不同的问题。 LUIS 确定用户文本（称为言语）的意向，QnA Maker 确定用户文本（称为查询）的答案。 
 
-为了选取正确的服务，您需要了解来自客户端应用程序的用户文本，以及客户端应用程序需要从认知服务获取哪些信息。
+若要选择正确的服务，需要理解来自客户端应用程序的用户文本，以及客户端应用程序需要从认知服务获取哪些信息。
 
-如果聊天机器人收到文本 `How do I get to the Human Resources building on the Seattle North campus?`，请使用下面的图表来了解每个服务如何处理文本。
+如果聊天机器人收到文本 `How do I get to the Human Resources building on the Seattle North campus?`，请使用以下图表来理解每个服务如何处理该文本。
 
 |服务|客户端应用程序确定|
 |--|--|
-|LUIS|**确定用户**的文本意向-服务不会将问题的答案返回给问题。 例如，此文本归类为匹配 `FindLocation` 意向。<br>|
-|QnA Maker|返回自定义知识库中**的问题的答案**。 例如，将此文本确定为 `Get on the #9 bus and get off at Franklin street`的静态文本应答的问题。|
+|LUIS|**确定文本中的用户意图** - 服务不会返回问题的答案。 例如，此文本分类为与 `FindLocation` 意向匹配。<br>|
+|QnA Maker|从自定义知识库**返回问题的答案**。 例如，此文本已确定为一个问题，其答案是静态文本 `Get on the #9 bus and get off at Franklin street`。|
 |||
 
 ## <a name="when-do-you-use-luis"></a>何时使用 LUIS？ 
 
-当你需要知道查询文本的意图作为聊天机器人中进程的一部分时，请使用 LUIS。 继续使用示例文本 `How do I get to the Human Resources building on the Seattle North campus?`，一旦知道用户的意图是查找位置，则可以将有关查询文本的详细信息（使用实体提取）传递到其他服务（例如运输服务器）以获取答案。 
+如果聊天机器人在处理过程中需要知道言语的意图，请使用 LUIS。 沿用示例文本 `How do I get to the Human Resources building on the Seattle North campus?`。知道用户的意图是查找某个地点后，可将有关言语的详细信息（使用实体提取）传递给另一服务（例如交通服务器）来获取答案。 
 
-无需结合 LUIS 和 QnA Maker 来确定目的。 
+无需结合使用 LUIS 和 QnA Maker 即可确定意向。 
 
-如果聊天机器人需要基于意向和实体处理文本（使用 LUIS），并查找特定静态文本答案（使用 QnA Maker），则可以将这两个服务组合在一起。
+如果聊天机器人需要根据意图和实体处理文本（使用 LUIS），并需要查找具体的静态文本答案（使用 QnA Maker），则你可以对言语结合使用这两个服务。
 
 ## <a name="when-do-you-use-qna-maker"></a>何时使用 QnA Maker？ 
 
-如果有一个静态知识库，请使用 QnA Maker。 此知识库根据你的需要进行了自定义，你可以通过 Pdf 和 Url 等文档来构建。 
+如果已有一个静态的答案知识库，请使用 QnA Maker。 此知识库是根据需要自定义的，其内容是使用 PDF 和 URL 等文档生成的。 
 
-继续使用示例查询文本 `How do I get to the Human Resources building on the Seattle North campus?`，将文本作为查询发送到已发布的 QnA Maker 服务，并获得最佳答案。 
+沿用示例言语 `How do I get to the Human Resources building on the Seattle North campus?`。将该文本作为查询发送到已发布的 QnA Maker 服务，然后接收最佳答案。 
 
-无需合并 LUIS 和 QnA Maker 来确定问题的答案。
+无需结合使用 LUIS 和 QnA Maker 即可确定问题的答案。
 
-如果聊天机器人需要基于意向和实体处理文本（使用 LUIS），并找到答案（使用 QnA Maker），则可以将这两个服务组合在一起。
+如果聊天机器人需要根据意图和实体处理文本（使用 LUIS），并需要查找答案（使用 QnA Maker），则你可以对言语结合使用这两个服务。
 
-## <a name="use-both-services-when-your-knowledge-base-is-incomplete"></a>如果知识库未完成，则使用这两项服务
+## <a name="use-both-services-when-your-knowledge-base-is-incomplete"></a>如果知识库不完整，请使用这两个服务
 
-如果你正在构建 QnA Maker 知识库，但知道使用者域正在更改（例如及时信息），则可以合并 LUIS 和 QnA Maker 服务。 这使您可以使用知识库中的信息，还可以使用 LUIS 来确定用户的意图。 客户端应用程序获得意图后，可以从另一个源请求相关信息。 
+如果你正在生成 QnA Maker 知识库，但知道主题域会发生更改（例如，需要及时提供信息），则可以结合使用 LUIS 和 QnA Maker 服务。 这样就可以使用知识库中的信息，同时还可以使用 LUIS 来确定用户的意图。 客户端应用程序获得意图后，可以从另一个源请求相关信息。 
 
-客户端应用程序需要监视评分的 LUIS 和 QnA Maker 响应。 如果 QnA Maker 的分数低于某些任意阈值，请使用从 LUIS 返回的意向和实体信息将信息传递给第三方服务。
+客户端应用程序需要监视 LUIS 和 QnA Maker 响应中的评分。 如果 QnA Maker 的评分低于某个任意阈值，请使用 LUIS 返回的意向和实体信息并将其传递给第三方服务。
 
-继续使用示例文本 `How do I get to the Human Resources building on the Seattle North campus?`，假设 QnA Maker 返回置信度较低的分数。 使用从 LUIS、`FindLocation` 和任何提取的实体（如 `Human Resources building` 和 `Seattle North campus`）返回的意向，将此信息发送到映射或搜索服务，以获得其他答案。 
+沿用示例文本 `How do I get to the Human Resources building on the Seattle North campus?`。假设 QnA Maker 返回了较低的置信度评分。 使用 LUIS 返回的意向、`FindLocation` 和提取的任何实体（例如 `Human Resources building` 和 `Seattle North campus`），将此信息发送到地图或搜索服务以获取其他答案。 
 
-您可以向用户提供此第三方的验证答案。 用户获得批准后，可以返回 QnA Maker 来添加信息，以扩大你的知识。 
+可将此第三方答案提供给用户进行验证。 获得的用户批准后，可以返回 QnA Maker 来添加信息，以扩充知识。 
 
-## <a name="use-both-services-when-your-chat-bot-needs-more-information"></a>当聊天机器人需要更多信息时，请使用这两项服务
+## <a name="use-both-services-when-your-chat-bot-needs-more-information"></a>当聊天机器人需要更多信息时，请使用这两个服务
 
-如果聊天机器人需要更多的信息，而不是提供服务，若要继续通过决策树，请在客户端应用程序中使用这两个服务并处理这两个响应。 
+如果聊天机器人所需的信息超过了服务能够提供的信息，请在客户端应用程序中使用这两个服务并处理两者的响应，这样才能在决策树中递进。 
 
-使用 Bot framework **[调度 CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** 工具来帮助生成用于处理这两种服务的过程。 此工具将生成一个 LUIS 的顶级应用程序，该应用程序在 LUIS 和 QnA Maker 之间调度为子应用。 
+借助 Bot Framework **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** 工具生成一个流程来处理这两个服务。 此工具将为意向生成一个顶层 LUIS 应用，用于调度充当子应用的 LUIS 和 QnA Maker。 
 
-使用 Bot 生成器示例, **使用NLP** [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch)和 [node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch) 实现此类聊天机器人。 
+使用以 [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) 或 [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch) 编写的机器人生成器示例**具有调度功能的 NLP** 可以实现此类聊天机器人。 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
-实现每个服务的最佳实践：
+实施适用于每个服务的最佳做法：
 
-* [LUIS](luis-concept-best-practices.md)最佳实践
-* [QnA Maker](../qnamaker/concepts/best-practices.md)最佳实践
+* [LUIS](luis-concept-best-practices.md) 最佳做法
+* [QnA 制造商](../qnamaker/concepts/best-practices.md)最佳实践
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-* [语言理解 (LUIS)](what-is-luis.md)
+* [语言理解（LUIS）](what-is-luis.md)
 * [QnA Maker](../qnamaker/overview/overview.md)
 * [调度 CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
-* [机器人框架示例](https://github.com/Microsoft/BotBuilder-Samples)
+* [Bot Framework 示例](https://github.com/Microsoft/BotBuilder-Samples)
 * [Azure 机器人服务](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
-* [Azure 机器人模拟器](https://github.com/Microsoft/BotFramework-Emulator)
-* [机器人 framework web 聊天](https://github.com/microsoft/BotFramework-WebChat)
+* [Azure 机器人仿真器](https://github.com/Microsoft/BotFramework-Emulator)
+* [Bot Framework 网上聊天](https://github.com/microsoft/BotFramework-WebChat)

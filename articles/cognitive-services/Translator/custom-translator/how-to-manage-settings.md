@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79219507"
 ---
 # <a name="how-to-manage-settings"></a>如何管理设置
@@ -103,4 +103,4 @@ ms.locfileid: "79219507"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何从 [Microsoft Translator Hub](how-to-migrate.md)[迁移工作区和项目](https://hub.microsofttranslator.com)
+- 了解如何从 [Microsoft Translator Hub](https://hub.microsofttranslator.com)[迁移工作区和项目](how-to-migrate.md)

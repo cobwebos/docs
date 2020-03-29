@@ -1,7 +1,7 @@
 ---
 title: 如何上传文档 - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 文档上传功能将并行文档（两个文档（其中一个是源，另一个是转换）上载到服务中。
+description: 文档上传功能将并行文档（其中一个是源的文档，另一个是翻译）上载到服务中。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73647381"
 ---
 # <a name="upload-a-document"></a>上传文档
@@ -35,7 +35,7 @@ ms.locfileid: "73647381"
 
 2.  在对话框中填充以下信息：
 
-    a.  文档类型：
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  文档类型：
 
     -  训练：这些文档将用于训练集。
     -  优化：这些文档将用于优化集。
@@ -43,11 +43,11 @@ ms.locfileid: "73647381"
     -  短语字典：这些文档将用于短语字典。
     -  句子字典：这些文档将用于句子字典。
 
-    b.  语言对
+    b.保留“数据库类型”设置，即设置为“共享”。  语言对
 
     c.  替代文档(如果存在)：若要覆盖同名的所有现有文档，请选中此复选框。
 
-    d.  填写并行数据或组合数据的相关部分。
+    d.单击“下一步”。  填写并行数据或组合数据的相关部分。
 
     -  并行数据：
         -  源文件：从本地计算机中选择源语言文件。
@@ -57,7 +57,7 @@ ms.locfileid: "73647381"
     - 组合数据：
         -  组合文件：从本地计算机中选择组合文件。 组合文件同时包含源语言句子和目标语言句子。 [命名约定](document-formats-naming-convention.md)对于组合文件而言非常重要。
 
-    e.  单击“上传”
+    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。  单击“上传”
 
     ![上传文档的对话框](media/how-to/how-to-upload-dialog.png)
 

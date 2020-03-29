@@ -1,7 +1,7 @@
 ---
-title: 情绪分析 Kubernetes 配置和部署步骤
+title: 情绪分析库伯内斯配置和部署步骤
 titleSuffix: Azure Cognitive Services
-description: 情绪分析 Kubernetes 配置和部署步骤
+description: 情绪分析库伯内斯配置和部署步骤
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,45 +10,45 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 2a99f85cf861c0c36ffac136cdf1f792b40719b2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78262683"
 ---
 ### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>将情绪分析容器部署到 AKS 群集
 
-1. 打开 Azure CLI，并登录到 Azure。
+1. 打开 Azure CLI，然后登录到 Azure。
 
     ```azurecli
     az login
     ```
 
-1. 登录到 AKS 群集。 用适当的值替换 `your-cluster-name` 和 `your-resource-group`。
+1. 登录到 AKS 群集。 使用`your-cluster-name`适当的`your-resource-group`值替换和替换。
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    运行此命令后，它将报告类似于以下内容的消息：
+    运行此命令后，它会报告类似于以下内容的消息：
 
     ```console
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > 如果你的 Azure 帐户上有多个订阅，并且 `az aks get-credentials` 命令返回错误，则会出现一个常见问题，即你正在使用错误的订阅。 将 Azure CLI 会话的上下文设置为使用创建资源时使用的同一订阅，然后重试。
+    > 如果在 Azure 帐户上有多个可用订阅，而 `az aks get-credentials` 命令返回错误，则表明你使用了错误的订阅，这是一个常见问题。 将 Azure CLI 会话的上下文设置为使用与创建资源相同的订阅，然后重试。
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. 打开所选的文本编辑器。 此示例使用 Visual Studio Code。
+1. 打开您选择的文本编辑器。 此示例使用可视化工作室代码。
 
     ```console
     code .
     ```
 
-1. 在文本编辑器中，创建一个名为*情绪. yaml*的新文件，并将以下 yaml 粘贴到其中。 请确保将 `billing/value` 和 `apikey/value` 替换为自己的信息。
+1. 在文本编辑器中，创建名为 *"情绪.yaml"* 的新文件，并将下面的 YAML 粘贴到其中。 请务必替换`billing/value`并`apikey/value`使用您自己的信息。
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -94,26 +94,26 @@ ms.locfileid: "78262683"
         app: sentiment-app
     ```
 
-1. 保存该文件并关闭文本编辑器。
-1. 运行 Kubernetes `apply` 命令，并将*情绪*文件作为其目标：
+1. 保存文件，然后关闭文本编辑器。
+1. 以*情绪.yaml* `apply`文件为目标运行 Kubernetes 命令：
 
     ```console
     kubectl apply -f sentiment.yaml
     ```
 
-    在该命令成功应用部署配置后，会显示一条类似于以下输出的消息：
+    命令成功应用部署配置后，将显示一条消息，类似于以下输出：
 
     ```output
     deployment.apps "sentiment" created
     service "sentiment" created
     ```
-1. 验证是否已部署 pod：
+1. 验证是否部署了该窗格：
 
     ```console
     kubectl get pods
     ```
 
-    Pod 的运行状态的输出：
+    窗格运行状态的输出：
 
     ```output
     NAME                         READY     STATUS    RESTARTS   AGE
@@ -126,7 +126,7 @@ ms.locfileid: "78262683"
     kubectl get services
     ```
 
-    Pod 中*情绪*服务的运行状态的输出：
+    窗格中*情绪*服务运行状态的输出：
 
     ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

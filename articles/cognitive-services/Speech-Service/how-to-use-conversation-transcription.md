@@ -1,7 +1,7 @@
 ---
-title: 实时对话脚本（预览）-语音服务
+title: 实时对话转录（预览） - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何通过语音 SDK 使用实时对话。 适用于C++、 C#和 Java。
+description: 了解如何将实时对话转录与语音 SDK 一起使用。 适用于 C++、C# 和 Java。
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
 ms.openlocfilehash: 64a9e11cec7164fb4421dd018238de9f0670382b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76263721"
 ---
-# <a name="real-time-conversation-transcription-preview"></a>实时对话脚本（预览）
+# <a name="real-time-conversation-transcription-preview"></a>实时对话转录（预览）
 
-通过语音 SDK 的**ConversationTranscriber** API，你可以通过使用 `PullStream` 或 `PushStream`将音频流式传输到语音服务，来转录会议和其他会话，并使其能够添加、删除和标识多个参与者。 本主题要求你了解如何在 Speech SDK （版本1.8.0 或更高版本）中使用语音到文本。 有关详细信息，请参阅[什么是语音服务](overview.md)。
+语音 SDK 的 **"对话转录器"API**允许您转录会议和其他对话，以便使用 或`PullStream``PushStream`将音频流式传输到语音服务，从而添加、删除和识别多个参与者。 本主题要求您了解如何将语音到文本与语音 SDK（版本 1.8.0 或更高版本）一起使用。 有关详细信息，请参阅[什么是语音服务](overview.md)。
 
 ## <a name="limitations"></a>限制
 
-- Windows、Linux 和 Android 上C++的C#、和 Java 支持 ConversationTranscriber API。
-- 目前在以下区域的 "en-us" 和 "zh-chs" 语言中提供： _centralus_和_eastasia_。
-- 需要一个带有播放引用流的7个 mic 循环多麦克风阵列。 麦克风阵列应满足[我们的规范](https://aka.ms/sdsdk-microphone)。
-- [语音设备 SDK](speech-devices-sdk.md)提供了合适的设备和演示会话脚本的示例应用。
+- 在 Windows、Linux 和 Android 上支持 C++、C# 和 Java 的会话转录器 API。
+- 目前在以下区域提供"en-US"和"zh-CN"语言：_中亚_和_东亚_。
+- 需要一个带播放参考流的 7 麦克风圆形多麦克风阵列。 麦克风阵列应符合[我们的规格](https://aka.ms/sdsdk-microphone)。
+- [语音设备 SDK](speech-devices-sdk.md)提供合适的设备和演示对话转录的示例应用。
 
 ## <a name="optional-sample-code-resources"></a>可选的示例代码资源
 
-语音设备 SDK 使用8个通道在 Java 中提供了用于实时音频捕获的示例代码。
+语音设备 SDK 在 Java 中提供示例代码，以便使用 8 个通道进行实时音频捕获。
 
 - [ROOBO 设备示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/Conversation.java)
-- [Azure Kinect 开发工具包示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
+- [Azure Kinect 开发人员工具包示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-语音服务订阅。 如果你没有[语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)，则可以获取它。
+语音服务订阅。 如果没有["语音试用版"订阅，则可以获取语音试用版订阅](https://azure.microsoft.com/try/cognitive-services/)。
 
 ## <a name="create-voice-signatures"></a>创建语音签名
 
-第一步是为会话参与者创建语音签名，以便进行有效的发言人标识。
+第一步是为对话参与者创建语音签名，以便有效地识别演讲者。
 
 ### <a name="audio-input-requirements"></a>音频输入要求
 
-- 用于创建语音签名的输入音频波形文件应为16位示例、16 kHz 采样率和单通道（单声道）格式。
-- 每个音频采样的建议长度介于30秒到2分钟之间。
+- 用于创建语音签名的输入音频波文件应采用 16 位采样、16 kHz 采样速率和单声道（单声道）格式。
+- 每个音频样本的建议长度在三十秒到两分钟之间。
 
-### <a name="sample-code"></a>代码示例
+### <a name="sample-code"></a>示例代码
 
-下面的示例演示了使用中C#[的 REST API](https://aka.ms/cts/signaturegenservice)创建语音签名的两种不同方法。 请注意，您需要将 "YourSubscriptionKey" 的实际信息、"speakerVoice" 的波形文件名和 "YourServiceRegion" （_centralus_或_eastasia_）的 `{region}` 区域替换为 ""。
+下面的示例显示了使用 C# 中的 REST [API](https://aka.ms/cts/signaturegenservice)创建语音签名的两种不同方法。 请注意，您需要将真实信息替换为"您的订阅密钥"，您的波文件名称为"扬声器Voice.wav"，以及您所在区域`{region}`和"您的服务区域"（_中央_或_东亚_）。
 
 ```csharp
 class Program
@@ -104,18 +104,18 @@ class Program
 
 ## <a name="transcribe-conversations"></a>转录对话
 
-下面的示例代码演示如何为三个扬声器实时转录对话。 假设已为每个扬声器创建了语音签名，如上所示。 创建 SpeechConfig 对象时，请将 "YourSubscriptionKey" 和 "YourServiceRegion" 替换为实际信息。
+以下示例代码演示如何实时转录三个扬声器的对话。 它假定您已经为每个扬声器创建了语音签名，如上所示。 创建语音配置对象时，将真实信息替换为"订阅密钥"和"您的服务区域"。
 
-示例代码重点包括：
+示例代码亮点包括：
 
-- 使用使用 `Guid.NewGuid()` 生成的会议标识符从 `SpeechConfig` 对象创建 `Conversation` 对象
-- 创建 `ConversationTranscriber` 对象并将会话加入 `JoinConversationAsync()` 以开始脚本
-- 注册相关事件
-- 使用会话对象在会话中添加或删除参与者
+- 使用使用`Conversation`使用会议标识符`SpeechConfig`生成的会议标识符从对象创建对象`Guid.NewGuid()`
+- 创建`ConversationTranscriber`对象并加入对话以`JoinConversationAsync()`开始转录
+- 注册感兴趣的事件
+- 使用对话对象向对话添加或删除参与者
 - 流式传输音频
-- 在语音 SDK 版本1.9.0 中，在语音签名版本字段中支持 `int` 和 `string` 值类型。
+- 在语音 SDK 版本 1.9.0`int`中`string`，语音签名版本字段中支持和值类型。
 
-脚本和发言人标识符会返回到已注册的事件中。
+转录和扬声器标识符在已注册的事件中返回。
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -218,4 +218,4 @@ public class MyConversationTranscriber
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [异步会话脚本](how-to-async-conversation-transcription.md)
+> [异步对话听录](how-to-async-conversation-transcription.md)

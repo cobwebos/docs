@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220849"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
@@ -30,10 +30,10 @@ LUIS 在服务中具有多种功能。 并非所有功能都会同等地以各�
 
 LUIS 理解以下语言：
 
-| 语言 |Locale  |  预生成域 | 预生成实体 | 短语列表建议 | \**[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>（情绪和<br>关键字）|
+| 语言 |Locale  |  预生成域 | 预生成实体 | 短语列表建议 | **[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>（情绪和<br>关键字）|
 |--|--|:--:|:--:|:--:|:--:|
 | 美国英语 |`en-US` | ✔ | ✔  |✔|✔|
-| 阿拉伯语（预览版-新式标准阿拉伯语） |`ar-AR`|-|-|-|-|
+| 阿拉伯语（预览版 - 现代标准阿拉伯语） |`ar-AR`|-|-|-|-|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | 荷兰语 |`nl-NL` |✔|  -   |-|✔|
 | 法语（法国） |`fr-FR` |✔| ✔ |✔ |✔|
@@ -77,7 +77,7 @@ LUIS 理解以下语言：
 ## <a name="tokenization"></a>词汇切分
 为了执行机器学习，LUIS 基于区域性将表述拆分成[词法单元](luis-glossary.md#token)。
 
-|语言|  每个空格或特殊字符 | 字符级|复合词|[返回的切分后的实体](luis-concept-data-extraction.md#tokenized-entity-returned)
+|语言|  每个空格或特殊字符 | 字符级|复合词|[已返回的令牌化实体](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
 |阿拉伯语|||||
 |中文||✔||✔|
@@ -94,16 +94,16 @@ LUIS 理解以下语言：
 |西班牙语 (es-ES)|✔||||
 |西班牙语 (es-MX)|✔||||
 
-### <a name="custom-tokenizer-versions"></a>自定义标记器版本
+### <a name="custom-tokenizer-versions"></a>自定义 tokenizer 版本
 
-以下区域性具有自定义标记器版本：
+以下区域性具有自定义 tokenizer 版本：
 
 |环境|版本|目的|
 |--|--|--|
-|德语<br>`de-de`|1.0.0|使用尝试将组合词分解为其单个组件的基于机器学习的标记器来切分单词。<br>如果用户以查询文本的形式输入 `Ich fahre einen krankenwagen`，则会将其转换为 `Ich fahre einen kranken wagen`。 允许标记 `kranken` 和 `wagen` 独立于不同的实体。|
-|德语<br>`de-de`|1.0.2|通过将单词拆分在空格上来切分。<br> 如果用户以查询文本的形式输入 `Ich fahre einen krankenwagen`，它将保持为单个令牌。 因此 `krankenwagen` 被标记为单个实体。 |
+|德语<br>`de-de`|1.0.0|通过使用基于机器学习的 tokenizer 将单词拆分，尝试将复合单词分解为它们的单个组件，从而对单词进行标记。<br>如果用户输入 `Ich fahre einen krankenwagen` 作为话语，它将转换为 `Ich fahre einen kranken wagen`。 允许将 `kranken` 和 `wagen` 分别标记为不同的实体。|
+|德语<br>`de-de`|1.0.2|通过基于空格拆分单词来标记单词。<br> 如果用户输入 `Ich fahre einen krankenwagen` 作为话语，则它仍然是单个标记。 因此 `krankenwagen` 标记为单个实体。 |
 
-### <a name="migrating-between-tokenizer-versions"></a>在标记器版本之间迁移
+### <a name="migrating-between-tokenizer-versions"></a>在 tokenizer 版本之间迁移
 <!--
 Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID.
 
@@ -206,6 +206,6 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 ```
 -->
 
-在应用程序级别进行词汇切分。 不支持版本级别的词汇切分。
+在应用级别进行词汇切分。 不支持版本级别的词汇切分。
 
-将[该文件作为新应用程序](luis-how-to-start-new-app.md)而不是版本导入。 此操作意味着新应用程序具有不同的应用程序 ID，但使用文件中指定的标记器版本。
+[将文件导入为新应用](luis-how-to-start-new-app.md)，而不是版本。 此操作意味着新应用具有不同的应用 ID，但使用文件中指定的 tokenizer 版本。

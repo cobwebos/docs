@@ -1,7 +1,7 @@
 ---
 title: 将请求发送到必应自动建议 API
 titleSuffix: Azure Cognitive Services
-description: 必应自动建议 API 根据搜索框中的部分查询字符串返回建议查询的列表。 了解有关发送请求的详细信息。
+description: 必应自动建议 API 根据搜索框中的部分查询字符串返回建议查询的列表。 了解有关发送请求的更多信息。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
 ms.openlocfilehash: d479548e682e814345e13d9416d08ec453f90304
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072848"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>将请求发送到必应自动建议 API。
@@ -23,11 +23,11 @@ ms.locfileid: "74072848"
 
 ## <a name="bing-autosuggest-api-endpoint"></a>必应自动建议 API 终结点
 
-必应自动推荐 API 包含一个终结点，这将从部分搜索词返回建议的查询列表。
+必应自动推荐 API**** 包含一个终结点，这将从部分搜索词返回建议的查询列表。
 
-若要使用必应 API 获取建议的查询，请向以下终结点发送 `GET` 请求。 使用请求标头和 URL 参数可以定义更多规范。
+若要使用必应 API 获取建议的查询，请向以下终结点发送 `GET` 请求。 使用标头和 URL 参数来定义更多规范。
 
-终结点：将搜索建议作为 JSON 结果返回，该结果与 `?q=""` 定义的用户输入相关。
+终结点：**** 将搜索建议作为 JSON 结果返回，该结果与 `?q=""` 定义的用户输入相关。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
@@ -35,7 +35,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
 有关标头、参数、市场代码、响应对象、错误等的详细信息，请参阅[必应自动建议 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) 参考。
 
-必应 API 支持根据其类型返回结果的搜索操作。 所有搜索终结点都将结果作为 JSON 响应对象返回。
+必应**** API 支持根据其类型返回结果的搜索操作。所有搜索终结点均将结果作为 JSON 响应对象返回。
 所有终结点支持后列查询：按经度、纬度和搜索半径返回特定语言和/或位置的查询。
 
 若要完整了解每个终结点支持的参数，请参阅每种类型对应的参考页面。
@@ -48,25 +48,25 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
 建议所有请求都源自服务器。 如果将密钥作为客户端应用程序的一部分进行分发，会让恶意的第三方有更多机会进行访问。 另外，从服务器执行调用还会提供未来更新的单一升级点。
 
-请求必须指定 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) 查询参数，该参数包含用户的部分搜索词。 尽管是可选的，但请求还应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) 查询参数，该参数标识你希望结果来自的市场。 有关可选查询参数列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters)。 所有查询参数值都必须是 URL 编码。
+请求必须指定 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) 查询参数，该参数包含用户的部分搜索词。 尽管是可选的，但请求还应该指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) 查询参数，该参数标识你希望结果来自的市场。 有关可选查询参数的列表，请参阅[查询参数](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters)。 所有查询参数值都必须是 URL 编码。
 
 请求必须指定 [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey) 请求头。 尽管可视需要添加，但仍建议还指定以下请求头：
 
-- [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
-- [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)
+- [用户代理](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
+- [X-MSEdge-客户端ID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)
 - [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
-- [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
+- [X-搜索位置](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
 
 客户端 IP 和位置请求头对返回位置感知内容非常重要。
 
-对于所有请求和响应头列表，请参阅[标头](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers)。
+有关所有请求头和响应头的列表，请参阅[头](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers)。
 
 > [!NOTE]
 > 从 JavaScript 调用必应自动建议 API 时，浏览器内置的安全功能可能会阻止你访问这些标头的值。
 
 若要解决此问题，可以通过 CORS 代理发出必应自动建议 API 请求。 来自此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，此标头将响应标头列入允许列表，并将它们提供给 JavaScript。
 
-可以轻松安装 CORS 代理，使我们的[教程应用](../tutorials/autosuggest.md)可以访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
+CORS 代理安装起来很简单，可便于[教程应用](../tutorials/autosuggest.md)访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
 
     npm install -g cors-proxy-server
 
@@ -93,7 +93,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 > Host: api.cognitive.microsoft.com
 > ```
 
-如果是第一次调用任何必应 API，请勿包括客户端 ID 标头。 只有在以前调用过必应 API 且必应针对用户和设备组合返回了客户端 ID 的情况下，才包括客户端 ID 标头。
+如果是首次调用任何必应 API，请勿添加客户端 ID 请求头。 只有在以前调用过必应 API 且必应针对用户和设备组合返回了客户端 ID 的情况下，才包括客户端 ID 标头。
 
 以下 Web 建议组是对上面请求的响应。 该组包含搜索查询建议的列表，每条建议包括 `displayText`、`query` 和 `url` 字段。
 

@@ -1,5 +1,5 @@
 ---
-title: URL 预生成实体-LUIS
+title: URL 预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含语言理解 (LUIS) 中的 URL 预构建实体信息。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: 49f145ce3e9022826abad5d274dd611bb2cc6530
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270353"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 URL 预生成实体
@@ -26,13 +26,13 @@ URL 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/b
 
 ## <a name="resolution-for-prebuilt-url-entity"></a>预构建 URL 实体解析
 
-为查询返回以下实体对象：
+查询返回以下实体对象：
 
 `https://www.luis.ai is a great cognitive services example of artificial intelligence`
 
 #### <a name="v3-response"></a>[V3 响应](#tab/V3)
 
-以下 JSON 是将 `verbose` 参数设置为 `false`的：
+以下 JSON 的 `verbose` 参数设置为 `false`：
 
 ```json
 "entities": {
@@ -43,7 +43,7 @@ URL 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/b
 ```
 #### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/V3-verbose)
 
-以下 JSON 是将 `verbose` 参数设置为 `true`的：
+以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
 "entities": {
@@ -69,7 +69,7 @@ URL 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/b
 ```
 #### <a name="v2-response"></a>[V2 响应](#tab/V2)
 
-下面的示例演示了如何解决 https://www.luis.ai 是一个出色的认知服务，例如人工智能
+以下示例显示了 https://www.luis.ai 的解析是人工智能的一个良好认知服务示例
 
 ```json
 "entities": [

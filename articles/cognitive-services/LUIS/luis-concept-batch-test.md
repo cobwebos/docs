@@ -1,5 +1,5 @@
 ---
-title: 批处理测试-LUIS
+title: 批处理测试 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 使用批处理测试持续优化应用程序并改进其语言理解能力。
 services: cognitive-services
@@ -12,23 +12,23 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: e9ad7c52af20762633c710b39a64fbebf0cf6213
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79220046"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>对 LUIS 门户中的 1000 个话语执行批处理测试
 
-批处理测试会验证您的活动定型版本，以测量其预测准确性。 批处理测试可帮助你查看活动版本中每个意向和实体的准确性，并使用图表显示结果。 查看批处理测试结果，以采取适当的措施来提高准确性，例如，如果应用程序经常无法识别查询文本内的正确意向或标签实体，请将更多示例最谈话添加到意向。
+批处理测试会验证活动训练版本，以判断其预测准确性。 批处理测试可帮助你查看活动版本中每个意向和实体的准确性，并使用图表显示结果。 查看批处理测试结果以采取适当的措施来提高准确性，例如，如果应用经常无法识别正确的意向或在话语中标记实体，则向意向添加更多示例话语。
 
 ## <a name="group-data-for-batch-test"></a>批处理测试的组数据
 
-对于 LUIS 来说，用于批处理测试的表达必须是全新，这一点很重要。 如果数据集为最谈话，则将最谈话划分为三个集：最谈话添加到意向、从发布的终结点接收最谈话，以及在训练后用于批处理测试最谈话的 LUIS。 
+对于 LUIS 来说，用于批处理测试的表达必须是全新，这一点很重要。 如果有话语数据集，请将话语划分为三个集：添加到意向的示例话语、从已发布的终结点接收的话语，以及在训练 LUIS 后用于对其进行批处理测试的话语。 
 
-## <a name="a-data-set-of-utterances"></a>最谈话的数据集
+## <a name="a-data-set-of-utterances"></a>话语数据集
 
-提交最谈话的批处理文件（称为 "*数据集*"）进行批处理测试。 数据集是 JSON 格式的文件，最多包含1000标记为**非重复**最谈话。 最多可以在一个应用中测试10个数据集。 如果需要进行更多的测试，请删除数据集，然后添加一个新数据集。
+提交话语批处理文件（称为数据集**），以用于批处理测试。 该数据集是一个 JSON 格式的文件，包含最多 1,000 个标记为非重复**** 的话语。 可以在一个应用中测试最多 10 个数据集。 如果需要测试更多数据集，请删除数据集，然后添加新数据集。
 
 |**规则**|
 |--|
@@ -74,7 +74,7 @@ ms.locfileid: "79220046"
 ]
 ```
 
-批处理文件使用 startPos 和 endPos 属性来记录实体的开始和结束。 值从零开始，不得以空格开始或结束。 这与使用 startIndex 和 endIndex 属性的查询日志不同。 
+批处理文件使用 startPos 和 endPos 属性来记录实体的开始和结束********。 值从零开始，不得以空格开始或结束。 这与使用 startIndex 和 endIndex 属性的查询日志不同。 
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
@@ -106,7 +106,7 @@ ms.locfileid: "79220046"
 
 ## <a name="batch-test-state"></a>批处理测试状态
 
-LUIS 跟踪每个数据集上一次测试的状态。 这包括大小（批处理中的表达数）、上次运行日期和最后结果（成功预测的表达数）。
+LUIS 跟踪每个数据集的最后一次测试的状态。 这包括大小（批处理中的表达数）、上次运行日期和最后结果（成功预测的表达数）。
 
 <a name="sections-of-the-results-chart"></a>
 
@@ -114,7 +114,7 @@ LUIS 跟踪每个数据集上一次测试的状态。 这包括大小（批处�
 
 批处理测试结果是散点图，称为错误矩阵。 此图表对批处理文件中的话语和当前模型的预测意向和实体进行四个方面的比较。 
 
-“假正”和“假负”部分上的数据点指示错误，应对其进行调查。 如果所有数据点都在**真正的正值**和**true**节上，则你的应用程序的准确性在此数据集上非常理想。
+“假正”**** 和“假负”**** 部分上的数据点指示错误，应对其进行调查。 如果所有数据点都在“真正”**** 和“真负”**** 部分上，则你的应用在此数据集上的准确性很好。
 
 ![图表的四个部分](./media/luis-concept-batch-test/chart-sections.png)
 

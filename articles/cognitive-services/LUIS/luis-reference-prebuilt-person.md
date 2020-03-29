@@ -1,5 +1,5 @@
 ---
-title: PersonName 预生成的实体-LUIS
+title: PersonName 预生成实体 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含了语言理解 (LUIS) 中的 personName 预构建实体信息。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 768c719211e8a8f2133d3798343d076e795a3da0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273424"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 PersonName 预生成实体
@@ -23,7 +23,7 @@ ms.locfileid: "78273424"
 
 ## <a name="resolution-for-personname-entity"></a>解析 personName 实体
 
-为查询返回以下实体对象：
+查询返回以下实体对象：
 
 `Is Jill Jones in Cairo?`
 
@@ -31,7 +31,7 @@ ms.locfileid: "78273424"
 #### <a name="v3-response"></a>[V3 响应](#tab/V3)
 
 
-以下 JSON 是将 `verbose` 参数设置为 `false`的：
+以下 JSON 的 `verbose` 参数设置为 `false`：
 
 ```json
 "entities": {
@@ -41,7 +41,7 @@ ms.locfileid: "78273424"
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/V3-verbose)
-以下 JSON 是将 `verbose` 参数设置为 `true`的：
+以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
 "entities": {
@@ -67,7 +67,7 @@ ms.locfileid: "78273424"
 ```
 #### <a name="v2-response"></a>[V2 响应](#tab/V2)
 
-以下示例显示了 builtin.personName 实体的解析。
+以下示例显示了 builtin.personName 实体的解析****。
 
 ```json
 "entities": [

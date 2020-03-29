@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: dapine
-ms.openlocfilehash: 63e6a2a47265eae08a653f3eadaf6bad86dd0635
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 79562049f48ba90a4f9a123919185521a82d7be6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119708"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80365790"
 ---
 # <a name="convert-text-to-speech-using-python"></a>使用 Python 将文本转换为语音
 
@@ -23,7 +23,7 @@ ms.locfileid: "77119708"
 
 在本文中，需要使用一个包含语音服务资源的 [Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)帐户。 如果没有帐户，可以使用[免费试用版](get-started.md)获取订阅密钥。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Python 2.7.x 或 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
@@ -99,7 +99,7 @@ def get_token(self):
 然后，使用语音合成标记语言 (SSML) 构造请求正文。 此示例将定义结构，并使用前面创建的 `tts` 输入。
 
 >[!NOTE]
-> 此示例使用 `Guy24KRUS` 语音字体。 如需 Microsoft 提供的语音/语言的完整列表，请参阅[语言支持](language-support.md)。
+> 此示例使用 `Guy24kRUS` 语音字体。 如需 Microsoft 提供的语音/语言的完整列表，请参阅[语言支持](language-support.md)。
 > 若要为品牌创建唯一且可识别的语音，请参阅[创建自定义语音字体](how-to-customize-voice-font.md)。
 
 最后，向服务发出请求。 如果该请求成功，则会返回 200 状态代码，语音响应将写入到带时间戳的文件。
@@ -122,7 +122,7 @@ def save_audio(self):
     voice = ElementTree.SubElement(xml_body, 'voice')
     voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
     voice.set(
-        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
+        'name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)')
     voice.text = self.tts
     body = ElementTree.tostring(xml_body)
 
@@ -168,7 +168,7 @@ python tts.py
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的 Python 示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [文本到语音 API 参考](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [使用 Python 和语音 SDK 文本到语音转换](quickstarts/speech-to-text-from-microphone.md)

@@ -1,23 +1,22 @@
 ### YamlMime:Landing
 title: 语音翻译文档
-summary: 语音服务的语音翻译实现了实时、多语言语音到语音和语音到文本的音频流转换
+summary: 语音服务的语音翻译支持音频流的实时、多语言语音语音和语音到文本的翻译
 metadata:
-  title: 语音翻译文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  title: 语音翻译文档 - 教程，API 参考 - Azure 认知服务 |微软文档
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 742b9710fc7ab396aa906c956d6809df9440c78e
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 75f620d5210f5ba0dc61ac1c5be2f30aa23dea9c
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79367969"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415318"
 landingContent:
 - title: 关于语音翻译
   linkLists:
@@ -29,7 +28,7 @@ landingContent:
     links:
     - text: 将语音翻译为文本
       url: quickstarts/translate-speech-to-text.md
-    - text: 将语音翻译为多种目标语言
+    - text: 将语音转换为多种目标语言
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: 将语音翻译为语音
       url: quickstarts/translate-speech-to-speech.md
@@ -41,7 +40,7 @@ landingContent:
       url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
   - linkListType: tutorial
     links:
-    - text: 翻译和合成文本与 REST Api
+    - text: 使用 REST API 翻译和合成文本
       url: ../translator/tutorial-build-flask-app-translation-synthesis.md
 - title: 参考
   linkLists:

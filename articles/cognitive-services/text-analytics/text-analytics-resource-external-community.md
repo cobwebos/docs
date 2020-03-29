@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
 ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78251307"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>适用于文本分析认知服务的外部和社区内容
@@ -33,9 +33,9 @@ ms.locfileid: "78251307"
 
 + [Dynamics 365 CRM Online 的情绪分析（MSDN 博客）](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
 
-+ Power BI 博客：从 Facebook 消息中提取关键短语：[第1部分](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483)和[第 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)部分
++ Power BI 博客：从 Facebook 消息中提取关键短语：[第 1 部分](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483)和第 2[部分](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
 
-+ [使用 MS Flow 识别 Yammer 组中的注释情绪（Microsoft 技术社区）](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
++ [使用 MS Flow（微软技术社区）识别 Yammer 组中的评论情绪](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
 
 
 
@@ -51,7 +51,7 @@ ms.locfileid: "78251307"
 
 你是否在寻找我们未涵盖的相关功能或用例信息？ 请考虑在我们的 [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics) 发起请求或投票。 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
- [StackOverflow：Azure 文本分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [堆栈溢出：Azure 文本分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow：Azure 认知服务](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

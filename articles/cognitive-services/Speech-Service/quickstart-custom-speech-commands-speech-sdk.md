@@ -1,7 +1,7 @@
 ---
-title: 快速入门：使用语音 SDK 连接到自定义命令应用-语音服务
+title: 快速入门：使用语音 SDK 连接到自定义命令应用 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 在本文中，你将使用自定义命令创建一个语音 SDK 客户端应用程序。
+description: 在本文中，您将使用自定义命令创建语音 SDK 客户端应用程序。
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,59 +11,59 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
 ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76156771"
 ---
-# <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>快速入门：使用 Speech SDK （预览版）连接到自定义命令应用程序
+# <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>快速入门：使用语音 SDK 连接到自定义命令应用程序（预览版）
 
-创建托管自定义命令应用程序后，可以从客户端设备开始与它进行通信。
+创建托管自定义命令应用程序后，可以从客户端设备开始与它进行对话。
 
-本文介绍如何执行以下操作：
+在本文中，您将：
 
 - 发布自定义命令应用程序并获取应用程序标识符（应用程序 ID）
-- 使用语音 SDK 创建一个客户端应用，以允许你与自定义命令应用程序对话
+- 使用语音 SDK 创建客户端应用，以允许您与自定义命令应用程序对话
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-需要自定义命令应用程序才能完成本文。 如果尚未创建自定义命令应用程序，可以在前面的快速入门中执行此操作：
+完成本文需要自定义命令应用程序。 如果您尚未创建自定义命令应用程序，则可以在以下快速启动中执行此操作：
 
 - [快速入门：创建自定义命令（预览）](./quickstart-custom-speech-commands-create-new.md)
 - [快速入门：使用参数创建自定义命令（预览）](./quickstart-custom-speech-commands-create-parameters.md)
 
-您还会需要：
+您还需要：
 
-- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或创建一个[Azure 门户](https://portal.azure.com)
+- [视觉工作室 2019](https://visualstudio.microsoft.com/downloads/)
+- 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或在[Azure 门户](https://portal.azure.com)上创建
 
 ## <a name="optional-get-started-fast"></a>可选：快速入门
 
-本快速入门分步介绍了如何使客户端应用程序连接到自定义命令应用。 [语音 SDK 示例](https://aka.ms/csspeech/samples)中的 `quickstart` 文件夹下提供了本快速入门使用的完整可编译源代码，供你直接学习。
+此快速入门逐步介绍了如何使客户端应用程序连接到自定义命令应用。 [语音 SDK 示例](https://aka.ms/csspeech/samples)中的 `quickstart` 文件夹下提供了本快速入门使用的完整可编译源代码，供你直接学习。
 
-## <a name="step-1-publish-custom-commands-application"></a>步骤1：发布自定义命令应用程序
+## <a name="step-1-publish-custom-commands-application"></a>第 1 步：发布自定义命令应用程序
 
-1. 打开[之前创建的自定义命令应用程序](./quickstart-custom-speech-commands-create-new.md)并选择 "**发布**"
+1. 打开[以前创建的自定义命令应用程序](./quickstart-custom-speech-commands-create-new.md)，然后选择 **"发布"**
 
    > [!div class="mx-imgBorder"]
    > ![发布应用程序](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
-1. 复制发布通知中的应用 ID 供以后使用
+1. 从发布通知中复制应用 ID，以便以后使用
 
-## <a name="step-2-create-a-visual-studio-project"></a>步骤2：创建 Visual Studio 项目
+## <a name="step-2-create-a-visual-studio-project"></a>第 2 步：创建可视化工作室项目
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="step-3-add-sample-code"></a>步骤3：添加示例代码
+## <a name="step-3-add-sample-code"></a>步骤 3：添加示例代码
 
-在此步骤中，我们将添加定义应用程序的用户界面的 XAML 代码，并添加C#代码隐藏实现。
+在此步骤中，我们添加定义应用程序的用户界面的 XAML 代码，并添加 C# 代码背后的实现。
 
 ### <a name="xaml-code"></a>XAML 代码
 
 通过添加 XAML 代码创建应用程序的用户界面。
 
-1. 在**解决方案资源管理器**中，打开 `MainPage.xaml`
+1. 在**解决方案资源管理器中**，打开`MainPage.xaml`
 
 1. 在设计器的 XAML 视图中，将整个内容替换为以下代码片段：
 
@@ -116,18 +116,18 @@ ms.locfileid: "76156771"
 
 ### <a name="c-code-behind-source"></a>C# 代码隐藏源
 
-添加代码隐藏源，以便应用程序按预期方式工作。 代码隐藏源包括：
+添加代码背后的源代码，以便应用程序按预期工作。 代码隐藏源包括：
 
-- `Speech` 和 `Speech.Dialog` 命名空间所需的 `using` 语句
+- 和命名空间所需的`using``Speech``Speech.Dialog`
 - 一个绑定到按钮处理程序的简单实现，用于确保麦克风访问
 - 基本的 UI 帮助程序，用于在应用程序中提供消息和错误
 - 初始化代码路径的登陆点，稍后将填充
 - 用于播放文本转语音的帮助程序（没有流式处理支持）
 - 一个用于启动侦听的空的按钮处理程序，稍后将填充
 
-按如下所示添加代码隐藏源：
+添加代码后面的源，如下所示：
 
-1. 在**解决方案资源管理器**中，打开代码隐藏源文件 `MainPage.xaml.cs` （在 `MainPage.xaml`下分组）
+1. 在**解决方案资源管理器**中，打开代码背后的源代码文件`MainPage.xaml.cs`（分组在`MainPage.xaml`）
 
 1. 将文件的内容替换为以下代码：
 
@@ -299,7 +299,7 @@ ms.locfileid: "76156771"
    }
    ```
 
-1. 将以下代码添加到的方法体中 `InitializeDialogServiceConnector`
+1. 将以下代码添加到`InitializeDialogServiceConnector`
 
    ```csharp
    // This code creates the `DialogServiceConnector` with your subscription information.
@@ -314,9 +314,9 @@ ms.locfileid: "76156771"
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
 
-1. 将字符串 `YourApplicationId`、`YourSpeechSubscriptionKey`和 `YourServiceRegion` 替换为你自己的应用、语音订阅和[区域](regions.md)的值
+1. 将字符串`YourApplicationId`替换为`YourSpeechSubscriptionKey`应用、`YourServiceRegion`语音订阅和[区域](regions.md)的您自己的值。
 
-1. 将以下代码片段追加到的方法体末尾 `InitializeDialogServiceConnector`
+1. 将以下代码段追加到`InitializeDialogServiceConnector`
 
    ```csharp
    //
@@ -374,7 +374,7 @@ ms.locfileid: "76156771"
    };
    ```
 
-1. 将以下代码片段添加到 `MainPage` 类中 `ListenButton_ButtonClicked` 方法的正文
+1. 将以下代码段添加到`ListenButton_ButtonClicked``MainPage`类中方法的正文
 
    ```csharp
    // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
@@ -398,24 +398,24 @@ ms.locfileid: "76156771"
    }
    ```
 
-1. 从菜单栏中，选择 "**文件**" > "**全部保存**" 以保存所做的更改
+1. 从菜单栏中，选择 **"全部文件** > **保存"** 以保存更改
 
 ## <a name="build-and-run-the-application"></a>构建并运行应用程序
 
-1. 从菜单栏中，选择“构建” > “构建解决方案”以构建应用程序。 编译代码时应不会出错。
+1. 在菜单栏中，选择**生成** > **生成解决方案**以生成应用程序。 编译代码时应不会出错。
 
-1. 选择“调试” > “开始调试”（或按 F5）以启动应用程序。 此时将显示“helloworld”窗口。
+1. 选择**调试** > **启动调试**（或按**F5**）以启动应用程序。 此时将显示“helloworld”**** 窗口。
 
    ![C# 中的示例 UWP 虚拟助手应用程序 - 快速入门](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. 选择“启用麦克风”。 如果弹出了访问权限请求，请选择 **"是"** 。
+1. 选择“启用麦克风”。**** 如果访问权限请求弹出，请选择"**是**"。
 
    ![麦克风访问权限请求](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. 选择 "**对话**"，并将英文短语或句子说入设备的麦克风。 你的语音将传输到 Direct Line 语音通道并转录为文本，该文本会显示在窗口中。
+1. 选择 **"说话**"，将英语短语或句子输入设备的麦克风。 你的语音将传输到 Direct Line 语音通道并转录为文本，该文本会显示在窗口中。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何：通过语音 SDK （预览版）在客户端上完成命令](./how-to-custom-speech-commands-fulfill-sdk.md)
-> [如何：向自定义命令参数添加验证（预览版）](./how-to-custom-speech-commands-validations.md)
+> [如何：使用语音 SDK（预览）](./how-to-custom-speech-commands-fulfill-sdk.md)
+> 实现客户端上的命令[如何：将验证添加到自定义命令参数（预览）](./how-to-custom-speech-commands-validations.md)

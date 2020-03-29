@@ -1,7 +1,7 @@
 ---
-title: 短语列表-语音服务
+title: 短语列表 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用 `PhraseListGrammar` 对象为语音服务提供短语列表，以改进语音到文本识别的结果。
+description: 了解如何使用 `PhraseListGrammar` 对象为语音服务提供短语列表，以便改进语音转文本的识别结果。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -12,26 +12,26 @@ ms.date: 02/04/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: f84ea6b2b0f1e8246e1d765e54f663cd01f29b1d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77560841"
 ---
-# <a name="phrase-lists-for-speech-to-text"></a>用于语音到文本的短语列表
+# <a name="phrase-lists-for-speech-to-text"></a>语音转文本的短语列表
 
-通过向语音服务提供短语列表，你可以提高语音识别的准确性。 短语列表用于标识音频数据中的已知短语，如人员姓名或特定位置。
+可以通过提供带短语列表的语音服务，改进语音识别的准确度。 短语列表用于确定音频数据中的已知短语，例如某个人的姓名或特定位置。
 
-例如，如果你有一个 "移动到" 命令和可能会说 "Ward" 的可能目标，则可以添加 "移动到 Ward" 的条目。 添加短语会增加识别音频时，将识别出 "移动到 Ward" 而不是 "移到" 的概率。
+例如，如果命令为“Move to”，可能的目标为可以说出来的“Ward”，则可添加条目“Move to Ward”。 添加短语以后，在识别该音频时，将其识别成“Move to Ward”而不是“Move toward”的可能性就会增加。
 
-可以将一个词或完整短语添加到短语列表。 在识别期间，如果整个短语的完全匹配项作为单独的短语包含在音频中，则将使用短语列表中的条目。 如果找不到与短语完全匹配的项，则识别将无法使用。
+可以向短语列表添加单个单词或完整短语。 在识别过程中，如果音频中包含与整个短语完全匹配的单独短语，则使用短语列表中的一个条目。 如果找不到与该短语的完全匹配项，则不会帮助识别。
 
 >[!Note]
-> 目前，短语列表仅支持用于语音到文本的英语。
+> 目前，短语列表仅支持英语版语音转文本。
 
 ## <a name="how-to-use-phrase-lists"></a>如何使用短语列表
 
-下面的示例演示如何使用 `PhraseListGrammar` 对象生成短语列表。
+以下示例演示了如何使用 `PhraseListGrammar` 对象构建短语列表。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -89,9 +89,9 @@ phraseListGrammar.addPhrase("Move to Ted");
 ::: zone-end
 
 >[!Note]
-> 语音服务将用于匹配语音的短语列表的最大数目为1024个短语。
+> 语音服务用于匹配语音的短语列表的最大数目为 1024 个短语。
 
-还可以通过调用 clear （）来清除与 `PhraseListGrammar` 关联的短语。
+也可通过调用 clear() 来清理与 `PhraseListGrammar` 关联的短语。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -134,7 +134,7 @@ phraseListGrammar.clear();
 ::: zone-end
 
 > [!NOTE]
-> 对 `PhraseListGrammar` 对象所做的更改将在下一次识别或重新连接到语音服务后生效。
+> 对 `PhraseListGrammar` 对象的更改会在下次识别时生效，或者会在重新连接到语音服务后生效。
 
 ## <a name="next-steps"></a>后续步骤
 

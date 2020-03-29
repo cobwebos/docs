@@ -1,23 +1,22 @@
 ### YamlMime:Landing
 title: 意向识别文档
-summary: 借助语音和语言理解（LUIS）服务的意向识别，可在识别意向和实体的同时，将音频流实时传输到文本中。
+summary: 使用语音和语言理解 （LUIS） 服务进行意向识别，可实时将音频流转录到文本中，同时识别意图和实体。
 metadata:
-  title: 意向识别文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  title: 意向识别文档 - 教程，API 参考 - Azure 认知服务 |微软文档
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 63c830b20ad5a3bf322fe2402d72230a80399d45
-  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+  ms.openlocfilehash: 87e698c2a9b09b54c6015293b5be26ea2006a786
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/14/2020
-  ms.locfileid: "79371454"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415166"
 landingContent:
 - title: 关于意向识别
   linkLists:
@@ -25,11 +24,11 @@ landingContent:
     links:
     - text: 识别语音、意向和实体
       url: quickstarts/intent-recognition.md
-- title: 通过意向识别进行开发
+- title: 意图识别
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 使用 LUIS 和 C# 识别语音意向
+    - text: 使用 LUIS 和 C 识别语音意图#
       url: how-to-recognize-intents-from-speech-csharp.md
 - title: 参考
   linkLists:

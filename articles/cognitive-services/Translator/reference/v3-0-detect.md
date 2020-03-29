@@ -1,7 +1,7 @@
 ---
 title: 文本翻译 API 检测方法
 titleSuffix: Azure Cognitive Services
-description: 使用 Azure 认知服务文本翻译 API 检测方法标识文本段的语言。
+description: 使用 Azure 认知服务转换器文本 API 检测方法标识文本文本的语言。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837300"
 ---
 # <a name="translator-text-api-30-detect"></a>文本翻译 API 3.0：检测
@@ -35,10 +35,10 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 <table width="100%">
   <th width="20%">查询参数</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
     <td>api-version</td>
-    <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
+    <td>必需参数**。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
   </tr>
 </table> 
 
@@ -46,28 +46,28 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
     <td>身份验证标头</td>
-    <td>必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
+    <td><em>所需的请求标头</em>。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>必需的请求标头。<br/>指定有效负载的内容类型。 可能的值为：`application/json`</td>
+    <td>*所需的请求标头*。<br/>指定有效负载的内容类型。 可能的值为：`application/json`</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>必需的请求标头。<br/>请求正文的长度。</td>
+    <td>*所需的请求标头*。<br/>请求正文的长度。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*可选*。<br/>客户端生成的 GUID，用于唯一地标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>*可选*。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>请求正文
 
-请求的正文是一个 JSON 数组。 每个数组元素都是一个 JSON 对象，具有名为 `Text` 的字符串属性。 语言检测应用于 `Text` 属性的值。 示例响应正文如下所示：
+请求的正文是一个 JSON 数组。 每个数组元素都是一个包含字符串属性名称为 `Text` 的 JSON 对象。 语言检测应用于 `Text` 属性的值。 示例响应正文如下所示：
 
 ```json
 [
@@ -79,7 +79,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 * 数组最多可具有 100 个元素。
 * 数组元素的文本值不能超过 10,000 个字符（包括空格）。
-* 包括空格在内，请求中包含的整个文本不能超过 50,000 个字符。
+* 请求中包含的整个文本不能超过 50,000 个字符（包括空格）。
 
 ## <a name="response-body"></a>响应正文
 
@@ -95,7 +95,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   
   * `alternatives`：其他可能语言的数组。 数组中的每个元素是上述所列相同属性的另一个对象：`language`、`score`、`isTranslationSupported` 和 `isTransliterationSupported`。
 
-JSON 响应示例：
+示例 JSON 响应如下：
 
 ```json
 [
@@ -126,7 +126,7 @@ JSON 响应示例：
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -139,7 +139,7 @@ JSON 响应示例：
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -162,11 +162,11 @@ JSON 响应示例：
   </tr>
   <tr>
     <td>500</td>
-    <td>发生了意外错误。 如果错误仍然存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>服务器暂不可用。 重试请求。 如果错误仍然存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
+    <td>服务器暂不可用。 重试请求。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
 </table> 
 

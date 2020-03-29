@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
 ms.openlocfilehash: 15e39eb9f5b8dd3556ea9ff8240bc2c9d252cd31
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73743053"
 ---
 # <a name="face-detection-and-attributes"></a>人脸检测和属性
@@ -29,30 +29,30 @@ ms.locfileid: "73743053"
 
 ## <a name="face-landmarks"></a>人脸特征点
 
-人脸特征点是人脸上的一组易于查找的点，例如瞳孔或鼻尖。 默认情况下，有 27 个预定义的特征点。 下图显示了所有 27 个点：
+人脸特征点是人脸上的一组易于查找的点，例如瞳孔或鼻尖。 默认有 27 个预定义的特征点。 下图显示了所有 27 个点：
 
 ![标有所有 27 个特征点的人脸插图](../Images/landmarks.1.jpg)
 
 以像素为单位返回的点坐标。
 
-## <a name="attributes"></a>属性
+## <a name="attributes"></a>特性
 
 属性是可由[人脸 - 检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API 选择性地检测到的一组特征。 以下属性可以检测到：
 
-* **Age**： 特定人脸的估计年龄（岁）。
+* **年龄**。 特定人脸的估计年龄（岁）。
 * **Blur**： 图像中人脸的模糊度。 此属性返回 0 到 1 的值，以及非正式分级：low、medium 或 high。
-* **Emotion**： 给定人脸的情感列表及其检测置信度。 置信度分数会进行标准化，所有情感的分数加起来后得到一个总的分数。 返回的情感包括快乐、悲伤、中性、愤怒、蔑视、厌恶、惊讶、恐惧。
-* **Exposure**： 图像中人脸的曝光度。 此属性返回 0 到 1 的值，以及非正式的分级：underExposure、goodExposure 或 overExposure。
-* **Facial hair**： 给定人脸的胡须状态和长度。
-* **Gender**： 给定人脸的估计性别。 可能的值为 male、female 和 genderless。
+* **情感**. 给定人脸的情感列表及其检测置信度。 置信度分数会进行标准化，所有情感的分数加起来后得到一个总的分数。 返回的情感包括快乐、悲伤、中性、愤怒、蔑视、厌恶、惊讶、恐惧。
+* **曝光**。 图像中人脸的曝光度。 此属性返回 0 到 1 的值，以及非正式的分级：underExposure、goodExposure 或 overExposure。
+* **面部毛发**。 给定人脸的胡须状态和长度。
+* **性别**. 给定人脸的估计性别。 可能的值为 male、female 和 genderless。
 * **Glasses**： 给定的人脸是否戴有眼镜。 可能的值为 NoGlasses、ReadingGlasses、Sunglasses 和 Swimming Goggles。
 * **Hair**： 人脸的发型。 此属性显示头发是否可见、是否检测到秃顶，以及检测到了哪种发色。
-* **Head pose**： 人脸在 3D 空间中的摆向。 此属性以俯仰角、翻滚角和偏航角（以度为单位）描述。 值的范围分别为 -90 度到 90 度、-180 度到 180 度，以及 -90 度到 90 度。 有关角度映射，请参阅以下示意图：
+* **头部姿势**。 人脸在 3D 空间中的摆向。 此属性以俯仰角、翻滚角和偏航角（以度为单位）描述。 值的范围分别为 -90 度到 90 度、-180 度到 180 度，以及 -90 度到 90 度。 有关角度映射，请参阅以下示意图：
 
     ![标有俯仰、翻滚和偏航轴的头部](../Images/headpose.1.jpg)
 * **Makeup**： 人脸是否有化妆。 此值返回 eyeMakeup 和 lipMakeup 的布尔值。
 * **Noise**： 在人脸图像中检测到的视觉噪点。 此属性返回 0 到 1 的值，以及非正式分级：low、medium 或 high。
-* **Occlusion**： 是否存在遮挡人脸部位的物体。 此属性返回 eyeOccluded、foreheadOccluded 和 mouthOccluded 的布尔值。
+* **遮挡**。 是否存在遮挡人脸部位的物体。 此属性返回 eyeOccluded、foreheadOccluded 和 mouthOccluded 的布尔值。
 * **Smile**： 给定人脸的微笑表情。 此值介于 0（未微笑）与 1（明确的微笑）之间。
 
 > [!IMPORTANT]
@@ -69,9 +69,9 @@ ms.locfileid: "73743053"
 
 若要检测视频源中的人脸，则可通过调整视频摄像头上的某些设置来改进性能：
 
-* **平滑**：许多视频相机会应用平滑效果。 在可能的情况下，应将此关闭，因为它会在帧之间产生模糊，降低清晰度。
-* **快门速度**：更快的快门速度可减少帧间的运动量，并使每个帧更清晰。 建议将快门速度设置为 1/60 秒或更快。
-* **快门角度**：某些照相机指定快门角度，而不是快门速度。 应该尽可能使用较低的快门角度。 这会增加视频帧的清晰度。
+* **平滑**：许多摄像机应用平滑效果。 在可能的情况下，应将此关闭，因为它会在帧之间产生模糊，降低清晰度。
+* **快门速度**：更快的快门速度可减少帧之间的运动量，并使每个帧更清晰。 建议将快门速度设置为 1/60 秒或更快。
+* **快门角度**：某些摄像机指定快门角度而不是快门速度。 应该尽可能使用较低的快门角度。 这会增加视频帧的清晰度。
 
     >[!NOTE]
     > 摄像头的快门角度较低时，每个帧收到的光线较少，因此图像会更黑。 需确定适合使用的级别。
@@ -80,4 +80,4 @@ ms.locfileid: "73743053"
 
 熟悉人脸检测的概念后，接下来请了解如何编写一个可在给定图像中检测人脸的脚本。
 
-* [在图像中检测人脸](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)
+* [检测图像中的人脸](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

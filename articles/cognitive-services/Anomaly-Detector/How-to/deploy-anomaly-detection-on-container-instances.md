@@ -1,7 +1,7 @@
 ---
-title: 在 Azure 容器实例中运行异常探测器容器
+title: 在 Azure 容器实例中运行异常检测器容器
 titleSuffix: Azure Cognitive Services
-description: 将异常探测器容器部署到 Azure 容器实例，并在 web 浏览器中对其进行测试。
+description: 将异常检测器容器部署到 Azure 容器实例，并在 Web 浏览器中测试它。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
 ms.openlocfilehash: 2fba0a0d64502a30b6dfbc9f4f109bca65cca8b9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76716349"
 ---
-# <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>将异常探测器容器部署到 Azure 容器实例
+# <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>将异常检测器容器部署到 Azure 容器实例
 
-了解如何将认知服务[异常检测](../anomaly-detector-container-howto.md)容器容器部署到 Azure[容器实例](https://docs.microsoft.com/azure/container-instances/)。 此过程演示如何创建异常探测器资源。 然后讨论如何拉取关联的容器映像。 最后，我们重点介绍了从浏览器中执行这两个业务流程的能力。 使用容器可以将开发人员的注意力转向管理基础结构，而不是专注于应用程序开发。
+了解如何将认知服务[异常检测器](../anomaly-detector-container-howto.md)容器部署到 Azure[容器实例](https://docs.microsoft.com/azure/container-instances/)。 此过程演示如何创建异常探测器资源。 然后讨论如何拉取关联的容器映像。 最后，我们重点介绍了从浏览器中执行这两个业务流程的能力。 使用容器可以将开发人员的注意力从管理基础结构转移到应用程序开发上。
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
 
-必须先完成并提交[异常探测器容器请求窗体](https://aka.ms/adcontainer)，才能请求访问容器。
+您必须首先填写并提交[异常检测器容器请求表单](https://aka.ms/adcontainer)，以请求访问容器。
 
 [!INCLUDE [Request access](../../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -37,6 +37,6 @@ ms.locfileid: "76716349"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[安装并运行](../anomaly-detector-container-configuration.md)容器以拉取容器映像并运行容器
-* 查看[配置容器](../anomaly-detector-container-configuration.md)了解配置设置
-* [详细了解异常探测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
+* 查看[安装和运行容器](../anomaly-detector-container-configuration.md)以拉取容器映像并运行容器
+* 查看[配置容器](../anomaly-detector-container-configuration.md)的配置设置
+* [了解有关异常检测器 API 服务的更多信息](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

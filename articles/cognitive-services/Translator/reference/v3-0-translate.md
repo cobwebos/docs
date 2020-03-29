@@ -1,21 +1,21 @@
 ---
 title: 文本翻译 API 翻译方法
 titleSuffix: Azure Cognitive Services
-description: 了解 Azure 认知服务文本翻译 API 转换方法转换文本的参数、标头和正文消息。
+description: 了解 Azure 认知服务翻译器文本 API 翻译方法的参数、标题和正文消息，以翻译文本。
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 11/12/2019
+ms.date: 03/20/2020
 ms.author: swmachan
-ms.openlocfilehash: d58383b20e4311f8ab9490dc241722eee2e44ad6
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1821623fbe2a22234af649934ac06e72897a19cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184809"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80052394"
 ---
 # <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：翻译
 
@@ -37,14 +37,14 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">查询参数</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
     <td>api-version</td>
-    <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 <code>3.0</code>。</td>
+    <td>必需参数<em></em>。<br/>客户端所请求的 API 的版本。 值必须是 <code>3.0</code>。</td>
   </tr>
   <tr>
     <td>to</td>
-    <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 <a href="./v3-0-languages.md"> 范围中包含的</a>支持的语言<code>translation</code>之一。 例如，若要翻译为德语，请使用 <code>to=de</code>。<br/>可以在查询字符串中重复使用此参数，这样就可以同时翻译为多种语言。 例如，若要翻译为德语和意大利语，请使用 <code>to=de&to=it</code>。</td>
+    <td>必需参数<em></em>。<br/>指定输出文本的语言。 目标语言必须是 <code>translation</code> 范围中包含的<a href="./v3-0-languages.md">支持的语言</a>之一。 例如，若要翻译为德语，请使用 <code>to=de</code>。<br/>可以在查询字符串中重复使用此参数，这样就可以同时翻译为多种语言。 例如，若要翻译为德语和意大利语，请使用 <code>to=de&to=it</code>。</td>
   </tr>
 </table>
 
@@ -52,50 +52,50 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">查询参数</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
-    <td>from</td>
-    <td>可选参数。<br/>指定输入文本的语言。 可以使用 <a href="./v3-0-languages.md"> 范围来查找</a>支持的语言<code>translation</code>，了解哪些语言可以翻译。 如果未指定 <code>from</code> 参数，则会应用自动语言检测来确定源语言。 <br/><br/>使用<code>from</code>动态字典<a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">功能时，必须使用 </a> 参数而不是自动检测。</td>
+    <td>从</td>
+    <td><em>可选参数</em>。<br/>指定输入文本的语言。 可以使用 <code>translation</code> 范围来查找<a href="./v3-0-languages.md">支持的语言</a>，了解哪些语言可以翻译。 如果未指定 <code>from</code> 参数，则会应用自动语言检测来确定源语言。 <br/><br/>使用<a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">动态字典</a>功能时，必须使用 <code>from</code> 参数而不是自动检测。</td>
   </tr>  
   <tr>
     <td>textType</td>
-    <td>可选参数。<br/>定义要翻译的文本是纯文本还是 HTML 文本。 HTML 必须是格式正确的完整元素。 可能的值为 <code>plain</code>（默认）<code>html</code>。</td>
+    <td><em>可选参数</em>。<br/>定义要翻译的文本是纯文本还是 HTML 文本。 HTML 必须是格式正确的完整元素。 可能的值为 <code>plain</code>（默认）<code>html</code>。</td>
   </tr>
   <tr>
     <td>category</td>
-    <td>可选参数。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用<a href="../customization.md">自定义翻译工具</a>构建的自定义系统获取翻译。 将自定义转换器<a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">项目详细信息</a>中的类别 ID 添加到此参数，以使用已部署的自定义系统。 默认值为 <code>general</code>。</td>
+    <td><em>可选参数</em>。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用<a href="../customization.md">自定义翻译工具</a>构建的自定义系统获取翻译。 将自定义翻译<a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">项目详细信息</a>中的类别 ID 添加到此参数，以使用已部署的自定义系统。 默认值为 <code>general</code>。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
-    <td>可选参数。<br/>指定在翻译时应如何处理不雅内容。 可能的值为 <code>NoAction</code>（默认）<code>Marked</code> 或 <code>Deleted</code>。 若要了解处理不雅内容的方式，请参阅<a href="#handle-profanity">处理不雅内容</a>。</td>
+    <td><em>可选参数</em>。<br/>指定在翻译时应如何处理不雅内容。 可能的值为 <code>NoAction</code>（默认）<code>Marked</code> 或 <code>Deleted</code>。 若要了解处理不雅内容的方式，请参阅<a href="#handle-profanity">处理不雅内容</a>。</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td>可选参数。<br/>指定在翻译时应如何标记不雅内容。 可能的值为 <code>Asterisk</code>（默认）<code>Tag</code>。 若要了解处理不雅内容的方式，请参阅<a href="#handle-profanity">处理不雅内容</a>。</td>
+    <td><em>可选参数</em>。<br/>指定在翻译时应如何标记不雅内容。 可能的值为 <code>Asterisk</code>（默认）<code>Tag</code>。 若要了解处理不雅内容的方式，请参阅<a href="#handle-profanity">处理不雅内容</a>。</td>
   </tr>
   <tr>
     <td>includeAlignment</td>
-    <td>可选参数。<br/>指定是否包括从源文本到翻译文本的比对投射。 可能的值为 <code>true</code> 或 <code>false</code>（默认）。 </td>
+    <td><em>可选参数</em>。<br/>指定是否包括从源文本到翻译文本的比对投射。 可能的值为 <code>true</code> 或 <code>false</code>（默认）。 </td>
   </tr>
   <tr>
     <td>includeSentenceLength</td>
-    <td>可选参数。<br/>指定是否包括输入文本和翻译文本的句子边界。 可能的值为 <code>true</code> 或 <code>false</code>（默认）。</td>
+    <td><em>可选参数</em>。<br/>指定是否包括输入文本和翻译文本的句子边界。 可能的值为 <code>true</code> 或 <code>false</code>（默认）。</td>
   </tr>
   <tr>
     <td>suggestedFrom</td>
-    <td>可选参数。<br/>在输入文本的语言无法确定的情况下，指定一种回退语言。 在省略 <code>from</code> 参数的情况下，应用语言自动检测功能。 如果检测失败，则采用 <code>suggestedFrom</code> 语言。</td>
+    <td><em>可选参数</em>。<br/>在输入文本的语言无法确定的情况下，指定一种回退语言。 在省略 <code>from</code> 参数的情况下，应用语言自动检测功能。 如果检测失败，则采用 <code>suggestedFrom</code> 语言。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>可选参数。<br/>指定输入文本的脚本。</td>
+    <td><em>可选参数</em>。<br/>指定输入文本的脚本。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>可选参数。<br/>指定翻译文本的脚本。</td>
+    <td><em>可选参数</em>。<br/>指定翻译文本的脚本。</td>
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td>可选参数。<br/>指定当自定义系统不存在时允许服务回退到一个常规系统。 可能的值为 <code>true</code>（默认）<code>false</code>。<br/><br/><code>allowFallback=false</code> 指定翻译应仅使用针对由此请求指定的 <code>category</code> 而训练的系统。 如果将语言 X 翻译成语言 Y 需要通过枢轴语言 E 进行链接，那么此链中的所有系统（X->E 和 E->Y）将需要进行自定义并且具有相同的类别。 如果未通过特定类别找到任何系统，此请求将返回 400 状态代码。 <code>allowFallback=true</code> 指定当自定义系统不存在时允许服务回退到一个常规系统。
+    <td><em>可选参数</em>。<br/>指定当自定义系统不存在时允许服务回退到一个常规系统。 可能的值为 <code>true</code>（默认）<code>false</code>。<br/><br/><code>allowFallback=false</code> 指定翻译应仅使用针对由此请求指定的 <code>category</code> 而训练的系统。 如果将语言 X 翻译成语言 Y 需要通过枢轴语言 E 进行链接，那么此链中的所有系统（X->E 和 E->Y）将需要进行自定义并且具有相同的类别。 如果未通过特定类别找到任何系统，此请求将返回 400 状态代码。 <code>allowFallback=true</code> 指定当自定义系统不存在时允许服务回退到一个常规系统。
 </td>
   </tr>
 </table> 
@@ -104,18 +104,18 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
     <td>身份验证标头</td>
-    <td>必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
+    <td><em>所需的请求标头</em>。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>必需的请求标头。<br/>指定有效负载的内容类型。<br/> 接受的值为 <code>application/json; charset=UTF-8</code>。</td>
+    <td><em>所需的请求标头</em>。<br/>指定有效负载的内容类型。<br/> 接受的值为<code>application/json; charset=UTF-8</code>。</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>必需的请求标头。<br/>请求正文的长度。</td>
+    <td><em>所需的请求标头</em>。<br/>请求正文的长度。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
@@ -182,7 +182,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>描述</th>
     <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -199,7 +199,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -214,7 +214,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>403</td>
-    <td>未对请求授权。 请检查详细错误消息。 这通常表示试用订阅提供的所有可用翻译已用完。</td>
+    <td>请求未经授权。 请检查详细错误消息。 这通常表示试用订阅提供的所有可用翻译已用完。</td>
   </tr>
   <tr>
     <td>408</td>
@@ -383,7 +383,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
     <td>不雅词语会在输出中使用标记进行替换。 标记取决于 <code>ProfanityMarker</code> 参数。<br/><br/>
 如果 <code>ProfanityMarker=Asterisk</code>，不雅词语会被替换为 <code>***</code>：<br/>
     <strong>示例源（日语）</strong>：彼はジャッカスです。<br/>
-    <strong>示例翻译（中文）</strong>：他是一个\*\*\*。<br/><br/>
+    <strong>翻译（英语）：</strong>他是一个\*\*\*。<br/><br/>
 如果 <code>ProfanityMarker=Tag</code>，则不雅词语会被括在 XML 标记 &lt;profanity&gt; 和 &lt;/profanity&gt; 中：<br/>
     <strong>示例源（日语）</strong>：彼はジャッカスです。<br/>
     <strong>示例翻译（中文）</strong>：他是一个&lt;profanity&gt;笨蛋&lt;/profanity&gt;。
@@ -479,14 +479,15 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 比对信息以 `0:2-0:1` 开头，这意味着源文本中的头三个字符 (`The`) 映射到翻译文本中的头两个字符 (`La`)。
 
 #### <a name="limitations"></a>限制
-请注意以下限制：
+获取对齐信息是一项实验功能，我们已启用该功能，用于原型设计和具有潜在短语映射的经验。 我们将来可能会选择停止支持这一点。 以下是不支持对齐的一些值得注意的限制：
 
-* 对齐方式不适用于 HTML 格式的文本，即 textType = html
+* 对齐不适用于 HTML 格式的文本，即文本类型_html
 * 仅针对一部分语言对返回比对内容：
   - 从英语到任何其他语言；
   - 从任何其他语言到英语，除了简体中文、繁体中文和拉脱维亚语到英语；
   - 从日语到韩语或从韩语到日语。
 * 如果句子是预录翻译，则不会收到比对内容。 预录翻译示例有“This is a test”、“I love you”，以及其他高频句子。
+* 应用任何方法防止翻译时，对齐方式不可用，[如下所述](../prevent-translation.md)
 
 ### <a name="obtain-sentence-boundaries"></a>获取句子边界
 

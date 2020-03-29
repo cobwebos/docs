@@ -1,25 +1,25 @@
 ---
-title: 文本到语音 API 参考（REST）-语音服务
+title: 文本转语音 API 参考 (REST) - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用文本到语音 REST API。 本文介绍授权选项、查询选项，以及如何构建请求和接收响应。
+description: 了解如何使用文本转语音 REST API。 本文介绍授权选项、查询选项，以及如何构建请求和接收响应。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.author: erhopf
-ms.openlocfilehash: ab0891653f449b13f50dc43b196cf16a2f71370e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 03/23/2020
+ms.author: dapine
+ms.openlocfilehash: 17b5e21291078f424ee775f21add181859dbbed5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975816"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131635"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
-语音服务允许使用一组 REST Api，[将文本转换为合成语音](#convert-text-to-speech)，并获取某个区域[支持的声音列表](#get-a-list-of-voices)。 每个可用终结点都与某个区域关联。 你计划使用的终结点/区域的订阅密钥是必需的。
+语音服务可让你使用一组 REST API [将文本转换为合成语音](#convert-text-to-speech)，并[获取某个区域支持的语音列表](#get-a-list-of-voices)。 每个可用终结点都与一个区域相关联。 需要计划使用的终结点/区域的订阅密钥。
 
 文本转语音 REST API 支持神经和标准文本转语音，每种语音支持区域设置标识的特定语言和方言。
 
@@ -37,11 +37,11 @@ ms.locfileid: "74975816"
 
 ## <a name="get-a-list-of-voices"></a>获取语音列表
 
-`voices/list` 终结点允许获取特定区域/终结点的完整声音列表。
+`voices/list` 终结点允许你获取特定区域/终结点的完整语音列表。
 
 ### <a name="regions-and-endpoints"></a>区域和终结点
 
-| 地区 | 终结点 |
+| 区域 | 终结点 |
 |--------|----------|
 | 澳大利亚东部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 巴西南部 | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -65,11 +65,11 @@ ms.locfileid: "74975816"
 
 ### <a name="request-headers"></a>请求标头
 
-此表列出了文本到语音请求的必需和可选标头。
+下表列出了文本转语音请求的必需和可选标头。
 
 | 标头 | 描述 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 需要 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必选 |
 
 ### <a name="request-body"></a>请求正文
 
@@ -77,7 +77,7 @@ ms.locfileid: "74975816"
 
 ### <a name="sample-request"></a>示例请求
 
-此请求仅需要 authorization 标头。
+此请求仅需要授权标头。
 
 ```http
 GET /cognitiveservices/voices/list HTTP/1.1
@@ -88,7 +88,7 @@ Authorization: Bearer [Base64 access_token]
 
 ### <a name="sample-response"></a>示例响应
 
-此响应已被截断，以说明响应的结构。
+为说明响应的结构，已将此响应截断。
 
 > [!NOTE]
 > 语音可用性因区域/终结点而异。
@@ -99,35 +99,44 @@ Authorization: Bearer [Base64 access_token]
         "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
         "ShortName": "ar-EG-Hoda",
         "Gender": "Female",
-        "Locale": "ar-EG"
+        "Locale": "ar-EG",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
         "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
         "ShortName": "ar-SA-Naayf",
         "Gender": "Male",
-        "Locale": "ar-SA"
+        "Locale": "ar-SA",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
         "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
         "ShortName": "bg-BG-Ivan",
         "Gender": "Male",
-        "Locale": "bg-BG"
+        "Locale": "bg-BG",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
         "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
         "ShortName": "ca-ES-HerenaRUS",
         "Gender": "Female",
-        "Locale": "ca-ES"
+        "Locale": "ca-ES",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)",
-        "ShortName": "cs-CZ-Jakub",
-        "Gender": "Male",
-        "Locale": "cs-CZ"
+        "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
+        "ShortName": "zh-CN-XiaoxiaoNeural",
+        "Gender": "Female",
+        "Locale": "zh-CN",
+        "SampleRateHertz": "24000",
+        "VoiceType": "Neural"
     },
 
     ...
-
 ]
 ```
 
@@ -137,16 +146,16 @@ Authorization: Bearer [Base64 access_token]
 
 | HTTP 状态代码 | 描述 | 可能的原因 |
 |------------------|-------------|-----------------|
-| 200 | 确定 | 请求已成功。 |
+| 200 | OK | 请求已成功。 |
 | 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |
 | 401 | 未授权 | 请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。 |
 | 429 | 请求过多 | 已经超过了订阅允许的配额或请求速率。 |
-| 502 | 错误的网关 | 网络或服务器端问题。 也可能表示标头无效。 |
+| 502 | 错误的网关    | 网络或服务器端问题。 也可能表示标头无效。 |
 
 
 ## <a name="convert-text-to-speech"></a>将文本转换到语音
 
-`v1` 终结点允许使用[语音合成标记语言（SSML）](speech-synthesis-markup.md)来转换文本到语音转换。
+`v1` 终结点允许你使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 将文本转换为语音。
 
 ### <a name="regions-and-endpoints"></a>区域和终结点
 
@@ -156,14 +165,14 @@ Authorization: Bearer [Base64 access_token]
 
 ### <a name="request-headers"></a>请求标头
 
-此表列出了文本到语音请求的必需和可选标头。
+下表列出了文本转语音请求的必需和可选标头。
 
 | 标头 | 描述 | 必需/可选 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 需要 |
-| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 需要 |
-| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 需要 |
-| `User-Agent` | 应用程序名称。 提供的值必须少于255个字符。 | 需要 |
+| `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必选 |
+| `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必选 |
+| `X-Microsoft-OutputFormat` | 指定音频输出格式。 有关接受值的完整列表，请参阅[音频输出](#audio-outputs)。 | 必选 |
+| `User-Agent` | 应用程序名称。 提供的值必须少于 255 个字符。 | 必选 |
 
 ### <a name="audio-outputs"></a>音频输出
 
@@ -191,7 +200,7 @@ Authorization: Bearer [Base64 access_token]
 
 ### <a name="sample-request"></a>示例请求
 
-此 HTTP 请求使用 SSML 指定语音和语言。 正文不能超过 1,000 个字符。
+此 HTTP 请求使用 SSML 指定语音和语言。 如果正文长度很长，并且生成的音频超过 10 分钟 - 则将其截断为 10 分钟。 换句话说，音频长度不能超过 10 分钟。
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
@@ -210,7 +219,7 @@ Authorization: Bearer [Base64 access_token]
 
 有关特定于语言的示例，请参阅快速入门：
 
-* [.NET Core, C#](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
+* [.NET Core、C#](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
 * [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python)
 * [Node.js](quickstart-nodejs-text-to-speech.md)
 
@@ -220,18 +229,18 @@ Authorization: Bearer [Base64 access_token]
 
 | HTTP 状态代码 | 描述 | 可能的原因 |
 |------------------|-------------|-----------------|
-| 200 | 确定 | 请求成功；响应正文是一个音频文件。 |
+| 200 | OK | 请求成功；响应正文是一个音频文件。 |
 | 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |
 | 401 | 未授权 | 请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。 |
 | 413 | 请求实体太大 | SSML 输入超过了 1024 个字符。 |
-| 415 | 不支持的介质类型 | 可能提供了错误的 `Content-Type`。 应将 `Content-Type` 设置为 `application/ssml+xml`。 |
+| 415 | 不支持的媒体类型 | 可能是提供了错误的 `Content-Type`。 `Content-Type` 应设置为 `application/ssml+xml`。 |
 | 429 | 请求过多 | 已经超过了订阅允许的配额或请求速率。 |
-| 502 | 错误的网关 | 网络或服务器端问题。 也可能表示标头无效。 |
+| 502 | 错误的网关    | 网络或服务器端问题。 也可能表示标头无效。 |
 
 如果 HTTP 状态为 `200 OK`，则响应正文包含采用所请求格式的音频文件。 可以一边传输一边播放此文件，或者将其保存到缓冲区或文件中。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-- [自定义声学模型](how-to-customize-acoustic-models.md)
-- [自定义语言模型](how-to-customize-language-model.md)
+- [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services)
+- [长形音频的异步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [自定义语音入门](how-to-custom-voice.md)

@@ -1,7 +1,7 @@
 ---
-title: 语音助手-语音服务
+title: 语音助理 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 概述使用 Speech 软件开发工具包（SDK）的语音助手的功能、功能和限制。
+description: 使用语音软件开发工具包 （SDK） 的语音助理的功能、功能和限制概述。
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -11,71 +11,71 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
 ms.openlocfilehash: 9219c9a72ce9e1cfba3504b0b8e16ade77f8a5e5
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79369890"
 ---
 # <a name="what-is-a-voice-assistant"></a>什么是语音助手？
 
-使用语音服务的语音助手使开发人员可以为其应用程序和体验创建自然、人为的对话接口。
+使用语音服务的语音助理使开发人员能够为其应用程序和体验创建自然、类似人类的对话界面。
 
-语音助手服务在设备和助手实现之间提供快速、可靠的交互，使用（1）机器人框架的直接线路语音通道或（2）用于任务完成的集成自定义命令（预览版）服务。
+语音助理服务在设备和辅助实现之间提供快速、可靠的交互，该实现使用 （1） Bot Framework 的直线语音通道或 （2） 集成的自定义命令（预览）服务来完成任务。
 
-应用程序通过语音软件开发工具包（SDK）连接到语音助手服务。
+应用程序使用语音软件开发工具包 （SDK） 连接到语音助理服务。
 
-   ![语音助手业务流程服务流的概念图](media/voice-assistants/overview.png "语音助手流")
+   ![语音助理业务流程的概念图](media/voice-assistants/overview.png "语音助理流")
 
-## <a name="choosing-an-assistant-solution"></a>选择助手解决方案
+## <a name="choosing-an-assistant-solution"></a>选择助理解决方案
 
-创建语音助手的第一步是确定其用途。 语音服务提供了多种补充性解决方案，用于编制助手交互。 无论你是否希望在简单的方案中，通过机器人框架的[直接线路语音](direct-line-speech.md)通道提供的灵活性和多功能性，还是简单的[自定义命令（预览）](custom-commands.md) ，选择合适的工具即可开始。
+创建语音助理的第一步是决定它应该做什么。 语音服务提供多个互补解决方案，用于制作您的助理交互。 无论您是想要机器人框架的[直线语音](direct-line-speech.md)通道提供的灵活性和多功能性，还是希望为简单方案提供[自定义命令（预览）](custom-commands.md)的简单性，选择正确的工具都将让您入门。
 
-| 如果你想要... | 然后考虑 。 | 例如 。 |
+| 如果你想要... | 然后考虑... | 例如... |
 |-------------------|------------------|----------------|
-|具有强大技能集成和完全部署控制的开放式对话 | 机器人框架的[直接连线语音](direct-line-speech.md)通道 | <ul><li>"我需要去西雅图"</li><li>"我可以订购哪种比萨饼？"</li></ul>
-|通过简化的创作和托管来进行命令和控制或面向任务的对话 | [自定义命令（预览）](custom-commands.md) | <ul><li>"打开高架灯"</li><li>"使其成为5度</ul>
+|具有强大技能集成和全面部署控制的开放式对话 | 机器人框架的[直线语音](direct-line-speech.md)通道 | <ul><li>"我需要去西雅图"</li><li>"我可以点什么样的披萨？</li></ul>
+|命令和控制或面向任务的对话，简化创作和托管 | [自定义命令（预览）](custom-commands.md) | <ul><li>"打开顶灯"</li><li>"让它温暖5度"</ul>
 
-如果你还不确定希望你的助手处理哪种情况，我们建议将[Line Speech](direct-line-speech.md)作为最佳的默认选择。 它与一组丰富的工具和创作辅助工具（例如[虚拟助手解决方案和企业模板](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)）以及用于基于常见模式构建并使用现有知识源的[QnA Maker 服务](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview)相集成。
+如果您还不确定您希望您的助手处理什么，我们建议您将[直接在线语音](direct-line-speech.md)作为最佳默认选择。 它提供了与一组丰富的工具和创作辅助工具（如[虚拟助理解决方案和企业模板](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)以及[QnA Maker 服务](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview)）的集成，以构建通用模式并使用现有知识源。
 
-[自定义命令（预览版）](custom-commands.md)提供专门为自然语言命令和控制方案量身打造的创作和托管体验。
+[自定义命令（预览版）](custom-commands.md)提供了专为自然语言命令和控制方案量身定制的简化的创作和托管体验。
 
-   ![助手解决方案的比较](media/voice-assistants/assistant-solution-comparison.png "助手解决方案的比较")
+   ![助理解决方案的比较](media/voice-assistants/assistant-solution-comparison.png "助理解决方案的比较")
 
 ## <a name="core-features"></a>核心功能
 
-无论你选择 "[直接行语音](direct-line-speech.md)" 还是 "[自定义命令" （预览版）](custom-commands.md)来创建助手交互，你都可以使用一组丰富的自定义功能来自定义你的助理、产品和个性。
+无论您选择["直线语音"](direct-line-speech.md)还是["自定义命令（预览"）](custom-commands.md)来创建助理交互，您都可以使用一组丰富的自定义功能来自定义您的助手，以满足您的品牌、产品和个性。
 
 | 类别 | 功能 |
 |----------|----------|
-|[Custom 关键字](speech-devices-sdk-create-kws.md) | 用户可以使用 "你好 Contoso" 等自定义关键字开始与助手对话。 应用使用 Speech SDK 中的自定义关键字引擎来完成此工作，可以使用[可在此处生成](speech-devices-sdk-create-kws.md)的自定义关键字对其进行配置。 语音助手可以使用服务端关键字验证来提高关键字激活的准确性（与设备独立）。
-|[语音到文本](speech-to-text.md) | 语音助手使用语音服务的[语音到文本](speech-to-text.md)将实时音频转换为识别的文本。 此文本在助手实现和客户端应用程序中转录。
-|[文本到语音转换](text-to-speech.md) | 使用来自语音服务的[文本到语音转换](text-to-speech.md)，来自助手的文本响应。 然后，此合成将作为音频流提供给客户端应用程序。 Microsoft 提供了构建你自己的自定义优质神经 TTS 声音的功能，可为你的品牌提供一种语音。 若要了解详细[信息，请联系我们。](mailto:mstts@microsoft.com)
+|[Custom 关键字](speech-devices-sdk-create-kws.md) | 用户可以使用自定义关键字（如"嘿 Contoso"）开始与助手对话。 应用使用语音 SDK 中的自定义关键字引擎进行此用，该引擎可以使用自定义关键字进行配置[，您可以在此处生成](speech-devices-sdk-create-kws.md)该关键字。 语音助理可以使用服务端关键字验证来提高关键字激活的准确性（与单独使用设备相比）。
+|[语音到文本](speech-to-text.md) | 语音助理使用语音服务[中的语音到文本](speech-to-text.md)将实时音频转换为识别的文本。 此文本可供助理实现和客户端应用程序使用，因为它已转录。
+|[文本到语音转换](text-to-speech.md) | 使用语音服务中的["文本到语音"](text-to-speech.md)来合成助手的文本响应。 然后，此合成将作为音频流提供给客户端应用程序。 Microsoft 提供构建您自己的自定义、高质量神经 TTS 语音的能力，为您的品牌提供语音。 要了解更多信息，[请联系我们](mailto:mstts@microsoft.com)。
 
-## <a name="getting-started-with-voice-assistants"></a>语音助手入门
+## <a name="getting-started-with-voice-assistants"></a>使用语音助理开始
 
-我们提供了快速入门，旨在让你在不到10分钟的时间内运行代码。 此表包含按语言组织的语音助手快速入门列表。
+我们专门提供了快速入门来帮助你在 10 分钟内运行代码。 此表包括按语言组织的语音助理快速入门列表。
 
-| 快速入门 | 平台 | API 参考 |
+| 快速入门 | Platform | API 参考 |
 |------------|----------|---------------|
-| C#，UWP | Windows | [“浏览”](https://aka.ms/csspeech/csharpref) |
-| Java | Windows、macOS、Linux | [“浏览”](https://aka.ms/csspeech/javaref) |
-| Java | Android | [“浏览”](https://aka.ms/csspeech/javaref) |
+| C#、UWP | Windows | [浏览](https://aka.ms/csspeech/csharpref) |
+| Java | Windows、macOS、Linux | [浏览](https://aka.ms/csspeech/javaref) |
+| Java | Android | [浏览](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>示例代码
 
-GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖了用几种常用编程语言连接到助手的客户端应用程序。
+在 GitHub 上提供了用于创建语音助理的示例代码。 这些示例涵盖客户端应用程序，用于以几种流行的编程语言连接到您的助手。
 
 * [语音助手示例 (SDK)](https://aka.ms/csspeech/samples)
-* [教程：通过语音 SDK 使用语音启用助手，C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [教程：语音启用您的助手与语音 SDK， C#](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="tutorial"></a>教程
 
-本教程介绍如何[使用语音 SDK 和直接语音通道来启用助手](tutorial-voice-enable-your-bot-speech-sdk.md)。
+有关如何[使用语音 SDK 和直拨语音通道使助手语音启用的](tutorial-voice-enable-your-bot-speech-sdk.md)教程。
 
 ## <a name="customization"></a>自定义
 
-使用语音服务构建的语音助手可以使用各种自定义选项，这些选项可用于[语音到文本](speech-to-text.md)、[文本到语音](text-to-speech.md)和[自定义关键字选择](speech-devices-sdk-create-kws.md)。
+使用语音服务构建的语音助手可以使用用于[语音到文本](speech-to-text.md)、[文本到语音](text-to-speech.md)和[自定义关键字选择](speech-devices-sdk-create-kws.md)的完整自定义选项。
 
 > [!NOTE]
 > 自定义选项因语言/区域设置而异（请参阅[支持的语言](supported-languages.md)）。
@@ -89,5 +89,5 @@ GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖
 
 * [免费获取语音服务订阅密钥](get-started.md)
 * [获取语音 SDK](speech-sdk.md)
-* [了解有关自定义命令的详细信息（预览版）](custom-commands.md)
-* [了解有关直接连线语音的详细信息](direct-line-speech.md)
+* [了解有关自定义命令（预览）的更多](custom-commands.md)
+* [了解有关直线语音的更多内容](direct-line-speech.md)
