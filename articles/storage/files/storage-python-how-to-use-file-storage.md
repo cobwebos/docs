@@ -8,10 +8,10 @@ ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 139e3009722761172b7bbd57805a7f5b07e55fc0
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68699395"
 ---
 # <a name="develop-for-azure-files-with-python"></a>使用 Python 针对 Azure 文件进行开发
@@ -44,10 +44,10 @@ pip install azure-storage-file
 > [!NOTE]
 > 如果要从适用于 Python 的 Azure 存储 SDK 版本 0.36 或更早版本升级，请在安装最新软件包之前使用 `pip uninstall azure-storage` 卸载旧版 SDK。
 
-有关备用安装方法，请访问 [Github 上用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python/)。
+有关其他安装方法，请访问[GitHub 上的 Python Azure 存储 SDK。](https://github.com/Azure/azure-storage-python/)
 
 ## <a name="view-the-sample-application"></a>查看示例应用程序
-若要查看和运行示例应用程序，该应用程序演示如何将 Python 与 Azure 文件存储配合使用，请参阅 [Azure Storage:Getting Started with Azure Files in Python](https://github.com/Azure-Samples/storage-file-python-getting-started)（Azure 存储：开始在 Python 中使用 Azure 文件存储）。 
+f 要查看和运行演示如何将 Python 与 Azure 文件配合使用的示例应用程序，请参阅[Azure 存储：在 Python 中开始使用 Azure 文件](https://github.com/Azure-Samples/storage-file-python-getting-started)。 
 
 若要运行示例应用程序，请确保已安装 `azure-storage-file` 和 `azure-storage-common` 软件包。
 
@@ -180,5 +180,5 @@ file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 了解如何使用 Python 操作 Azure 文件后，请单击以下链接了解更多信息。
 
 * [Python 开发人员中心](https://azure.microsoft.com/develop/python/)
-* [Azure 存储空间服务 REST API](https://msdn.microsoft.com/library/azure/dd179355)
-* [Microsoft Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python)
+* [Azure 存储服务 REST API](https://msdn.microsoft.com/library/azure/dd179355)
+* [用于 Python 的 Microsoft Azure 存储 SDK](https://github.com/Azure/azure-storage-python)

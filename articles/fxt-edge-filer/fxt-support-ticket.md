@@ -1,38 +1,38 @@
 ---
-title: 为 Microsoft Azure FXT Edge 文件服务器打开支持票证
-description: 使用 Azure FXT Edge 文件服务器系统的帮助打开票证的过程
+title: 打开微软 Azure FXT 边缘文件程序的支持票证
+description: 打开 Azure FXT 边缘文件器系统帮助票证的过程
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 292844f611008b6dafbed4e46cad07c45dbecc54
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72255980"
 ---
-# <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>为 Azure FXT Edge 文件服务器打开支持票证
+# <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>打开 Azure FXT 边缘文件器的支持票证
 
-本文介绍如何获取 Azure FXT Edge 文件服务器系统的帮助。
+本文介绍如何获取有关 Azure FXT 边缘文件器系统的帮助。
 
-使用 "Azure 门户"，通过 Microsoft 客户服务和支持部门提出支持票证。
+使用 Azure 门户使用 Microsoft 客户服务和支持打开支持票证。
 
 1. 打开[Azure 门户](https://portal.azure.com/)并登录。
-1. 在左侧面板中，滚动到底部，然后单击 "**帮助 + 支持**"。
-1. 单击“新建支持请求”。 
+1. 在左侧面板中，滚动到底部，然后单击 **"帮助 + 支持**"。
+1. 单击 **"新建支持请求**"。 
 
-   ![空白支持请求窗体的屏幕截图](media/fxt-support-blank.png)
+   ![空白支持请求表单的屏幕截图](media/fxt-support-blank.png)
 
-1. 填写请求窗体。  
-    1. 在 "**基本**信息" 选项卡中，选择 "**问题类型**" ``Technical``。 
+1. 填写申请表。  
+    1. 在 **"基本"** 选项卡中，选择 **"问题"类型**``Technical``。 
     1. 选择订阅。 
-    1. 在 "**服务**" 下，选择 " **Azure FXT Edge 文件服务器**"。 您可能需要单击 "**所有服务**" 筛选器控件才能找到它。 
-    1. 输入 "**摘要**"，并选择 "**问题类型**"。 
+    1. 在 **"服务**"下，选择**Azure FXT 边缘文件器**。 您可能需要单击 **"所有服务**筛选器"控件才能找到它。 
+    1. 输入**摘要**并选择**问题类型**。 
     ![空白支持请求表单的屏幕截图](media/fxt-support-populated.png) 
-    1. 单击“下一步”以继续。 
-1. 在 "**详细信息**" 选项卡中，添加有关问题的详细信息以及与你联系的方式。 你可以上传与问题相关的文件。 
-1. 在 "查看" 和 "**创建**" 中，查看信息，然后单击 "**创建**" 按钮提交请求。
+    1. 单击“下一步”继续。 
+1. 在 **"详细信息"** 选项卡中，添加有关问题以及如何与您联系的详细信息。 您可以上载与问题相关的文件。 
+1. 在 **"审阅 + 创建**"中，请检查信息，然后单击"**创建**"按钮以提交请求。
 
-提交请求后，将收到一封包含票证号的确认电子邮件。 支持人员成员将与你联系你的请求。
+提交请求后，您将收到一封包含机票号码的确认电子邮件。 支持人员将联系您了解该请求。

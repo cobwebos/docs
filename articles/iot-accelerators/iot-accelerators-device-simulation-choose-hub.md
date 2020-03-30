@@ -1,5 +1,5 @@
 ---
-title: 将现有 IoT 中心与设备模拟解决方案配合使用-Azure |Microsoft Docs
+title: 将现有的 IoT 中心与设备模拟解决方案一起使用 - Azure |微软文档
 description: 本文介绍如何配置设备模拟解决方案加速器以使用现有的 IoT 中心。
 author: dominicbetts
 manager: timlt
@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1f89e23d7bb279e7cce5c104060cc7898517f8b7
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889185"
 ---
 # <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>将现有的 IoT 中心与设备模拟解决方案加速器配合使用
@@ -23,11 +23,11 @@ ms.locfileid: "73889185"
 
 如果还没有 IoT 中心，则在 [Azure 门户](https://portal.azure.com)中新建一个即可。
 
-若要使用预先存在的 IoT 中心，则需要 iothubowner 共享访问策略的连接字符串。 可从 [Azure 门户](https://portal.azure.com)获取此连接字符串：
+若要使用预先存在的 IoT 中心，则需要 iothubowner**** 共享访问策略的连接字符串。 可从 [Azure 门户](https://portal.azure.com)获取此连接字符串：
 
-1. 在门户的 IoT 中心配置页上，单击“共享访问策略”。
+1. 在门户的 IoT 中心配置页上，单击“共享访问策略”****。
 
-1. 单击“iothubowner”。
+1. 单击“iothubowner”。****
 
 1. 复制主连接字符串或辅助连接字符串。
 

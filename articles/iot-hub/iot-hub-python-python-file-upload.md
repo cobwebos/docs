@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
 ms.openlocfilehash: f1c0c046c40ff8edbc33c5e93e4207d9fe2fc67a
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110744"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>用 IoT 中心（Python）将文件从设备上传到云
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中心将文件从设备上传到云 (Python)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
@@ -25,25 +25,25 @@ ms.locfileid: "77110744"
 
 * 使用 Python 客户端通过 IoT 中心上传文件。
 
-将[遥测数据从设备发送到 iot 中心](quickstart-send-telemetry-python.md)快速入门介绍 iot 中心的基本设备到云消息传送功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
+[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-python.md)快速入门演示了 IoT 中心基本的设备到云的消息传送功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
 
 > [!NOTE]
-> IoT 中心 Python SDK 目前仅支持上传基于字符的文件，如 .txt 文件。
+> IoT 中心 Python SDK 目前仅支持上传基于字符的文件，如 .txt 文件****。
 
 在本教程最后，会运行下述 Python 控制台应用：
 
-* FileUpload.py，该应用使用 Python 设备 SDK 将文件上传到存储中。
+* FileUpload.py，该应用使用 Python 设备 SDK 将文件上传到存储中****。
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
 > [!NOTE]
-> 本指南使用已弃用的 V1 Python SDK，因为尚未在新的 V2 SDK 中实现文件上传功能。
+> 本指南使用已弃用的 V1 Python SDK，因为新的 V2 SDK 中尚未实现“文件上传”功能。
 
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
-* 请确保已在防火墙中打开端口8883。 本文中的设备示例使用了 MQTT 协议，该协议通过端口8883进行通信。 此端口可能在某些企业和教育网络环境中被阻止。 有关此问题的详细信息和解决方法，请参阅[连接到 IoT 中心（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -60,11 +60,11 @@ ms.locfileid: "77110744"
 2. 使用文本编辑器创建将上传到 blob 存储的测试文件。
 
     > [!NOTE]
-    > IoT 中心 Python SDK 目前仅支持上传基于字符的文件，如 .txt 文件。
+    > IoT 中心 Python SDK 目前仅支持上传基于字符的文件，如 .txt 文件****。
 
-3. 使用文本编辑器，在工作文件夹中创建一个 FileUpload.py 文件。
+3. 使用文本编辑器，在工作文件夹中创建一个 FileUpload.py 文件****。
 
-4. 在 FileUpload.py 文件的开头添加以下 `import` 语句和变量。 
+4. 在 FileUpload.py 文件的开头添加以下 `import` 语句和变量****。 
 
     ```python
     import time
@@ -82,7 +82,7 @@ ms.locfileid: "77110744"
 
 5. 在文件中，将 `[Device Connection String]` 替换为 IoT 中心设备的连接字符串。 将 `[Full path to file]` 替换为创建的测试文件的路径，或是设备上要上传的任何文件的路径。 将 `[File name for storage]` 替换为要在文件上传到 blob 存储之后向它提供的名称。 
 
-6. 针对 upload_blob 函数创建一个回调：
+6. 针对 upload_blob 函数创建一个回调****：
 
     ```python
     def blob_upload_conf_callback(result, user_context):
@@ -128,7 +128,7 @@ ms.locfileid: "77110744"
         iothub_file_upload_sample_run()
     ```
 
-8. 保存并关闭 UploadFile.py 文件。
+8. 保存并关闭 UploadFile.py 文件****。
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -140,7 +140,7 @@ ms.locfileid: "77110744"
     python FileUpload.py
     ```
 
-2. 以下屏幕截图显示来自 FileUpload 应用的输出：
+2. 以下屏幕截图显示来自 FileUpload 应用的输出****：
 
     ![simulated-device 应用的输出](./media/iot-hub-python-python-file-upload/1.png)
 

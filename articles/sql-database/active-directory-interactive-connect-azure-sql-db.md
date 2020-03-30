@@ -1,5 +1,5 @@
 ---
-title: ActiveDirectoryInteractive 连接到 SQL
+title: ActiveDirectory 交互式连接到 SQL
 description: 使用 SqlAuthenticationMethod.ActiveDirectoryInteractive 模式连接到 Azure SQL 数据库的 C# 代码示例（附带说明）。
 services: sql-database
 ms.service: sql-database
@@ -12,40 +12,40 @@ ms.author: MirekS
 ms.reviewer: GeneMi, vanto
 ms.date: 10/11/2019
 ms.openlocfilehash: 5e7d58e5e0fc79e407e77ae9d73314a1d5d22666
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73692304"
 ---
-# <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>通过 Azure 多重身份验证连接到 Azure SQL 数据库
+# <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>使用 Azure 多重身份验证连接到 Azure SQL 数据库
 
-本文提供连接到C# Azure SQL 数据库的程序。 此程序使用支持[Azure 多重身份验证](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)的交互式模式身份验证。
+本文提供了连接到 Azure SQL 数据库的 C# 程序。 该程序使用交互式模式身份验证，支持[Azure 多重身份验证](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)。
 
-有关对 SQL 工具的多重身份验证支持的详细信息，请参阅[SQL Server Data Tools 中的 Azure Active Directory 支持（SSDT）](https://docs.microsoft.com/sql/ssdt/azure-active-directory)。
+有关 SQL 工具的多重身份验证支持的详细信息，请参阅[SQL 服务器数据工具 （SSDT） 中的 Azure 活动目录支持](https://docs.microsoft.com/sql/ssdt/azure-active-directory)。
 
-## <a name="multi-factor-authentication-for-azure-sql-database"></a>适用于 Azure SQL 数据库的多重身份验证
+## <a name="multi-factor-authentication-for-azure-sql-database"></a>Azure SQL 数据库的多重身份验证
 
-从 .NET Framework 版本4.7.2 开始，枚举[`SqlAuthenticationMethod`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod)具有新值： `ActiveDirectoryInteractive`。 在客户端C#程序中，枚举值指示系统使用支持多重身份验证的 Azure Active Directory （Azure AD）交互模式来连接到 Azure SQL 数据库。 然后，运行该程序的用户将看到以下对话框：
+从 .NET 框架版本 4.7.2 开始[`SqlAuthenticationMethod`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod)，枚举具有一`ActiveDirectoryInteractive`个新值： 。 在客户端 C# 程序中，枚举值指示系统使用 Azure 活动目录 （Azure AD） 交互式模式，该模式支持多重身份验证以连接到 Azure SQL 数据库。 然后，运行该程序的用户将看到以下对话框：
 
 * 一个显示 Azure AD 用户名并要求输入用户密码的对话框。
 
-   如果用户的域与 Azure AD 联合，则不会显示此对话框，因为无需密码。
+   如果用户的域与 Azure AD 联合，则不会出现此对话框，因为不需要密码。
 
-   如果 Azure AD 策略对用户施加多重身份验证，则会显示接下来的两个对话框。
+   如果 Azure AD 策略对用户施加多重身份验证，则显示接下来的两个对话框。
 
-* 用户第一次执行多重身份验证时，系统会显示一个对话框，要求提供用于发送短信的移动电话号码。 每条短信提供了用户必须在下一对话框中输入的验证码。
+* 用户首次通过多重身份验证时，系统将显示一个对话框，要求输入手机号码以向其发送短信。 每条短信提供了用户必须在下一对话框中输入的验证码。**
 
-* 要求提供多重身份验证验证码（系统已将系统发送到移动电话）的对话框。
+* 要求多因素身份验证验证码的对话框，系统已发送到移动电话。
 
-有关如何配置 Azure AD 以要求多重身份验证的信息，请参阅[云中的 Azure 多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud)入门。
+有关如何配置 Azure AD 以需要多重身份验证的信息，请参阅[在云中开始使用 Azure 多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud)。
 
-有关这些对话框的屏幕截图，请参阅[为 SQL Server Management Studio 和 Azure AD 配置多重身份验证](sql-database-ssms-mfa-authentication-configure.md)。
+有关这些对话框的屏幕截图，请参阅为[SQL 服务器管理工作室和 Azure AD 配置多重身份验证](sql-database-ssms-mfa-authentication-configure.md)。
 
 > [!TIP]
-> 可以通过[.NET API 浏览器工具页](https://docs.microsoft.com/dotnet/api/)搜索 .NET Framework api。
+> 您可以使用[.NET API 浏览器工具页搜索 .NET](https://docs.microsoft.com/dotnet/api/)框架 API。
 >
-> 你还可以直接搜索可选的[？ term =&lt;搜索值&gt; 参数](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod)。
+> 您也可以直接使用[可选的"术语]&lt;搜索值&gt;参数进行搜索](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod)。
 
 ## <a name="configure-your-c-application-in-the-azure-portal"></a>在 Azure 门户中配置 C# 应用程序
 
@@ -53,13 +53,13 @@ ms.locfileid: "73692304"
 
 ### <a name="register-your-app-and-set-permissions"></a>注册应用并设置权限
 
-若要使用 Azure AD 身份验证，必须将 C# 程序注册为 Azure AD 应用程序。 只有 Azure AD 管理员或者分配有 Azure AD“应用程序开发人员”角色的用户才能注册应用。 有关分配角色的详细信息，请参阅向[具有 Azure Active Directory 的用户分配管理员和非管理员角色](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
+若要使用 Azure AD 身份验证，必须将 C# 程序注册为 Azure AD 应用程序。 只有 Azure AD 管理员或者分配有 Azure AD“应用程序开发人员”角色的用户才能注册应用。** 有关分配角色的详细信息，请参阅[将管理员和非管理员角色分配给具有 Azure 活动目录 的用户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
-完成应用注册后，将生成并显示**应用程序 ID**。 程序中必须包含此 ID 才能建立连接。
+完成应用注册将生成并显示**应用程序 ID。** 程序中必须包含此 ID 才能建立连接。
 
 注册应用程序并为其设置所需的权限：
 
-1. 在 Azure 门户中，选择 " **Azure Active Directory** > **应用注册**" > **新注册**"。
+1. 在 Azure 门户中，选择**Azure 活动目录** > **应用注册** > **"新注册**"。
 
     ![应用注册](media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
@@ -67,45 +67,45 @@ ms.locfileid: "73692304"
 
     ![显示的应用 ID](media/active-directory-interactive-connect-azure-sql-db/image2.png)
 
-2. 选择 " **API 权限**" > "**添加权限**"。
+2. 选择**API 权限** > **添加权限**。
 
     ![已注册应用的权限设置](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
-3. 选择 "**我的组织使用**> 在搜索 > 中键入**azure sql 数据库**"，然后选择 " **azure sql 数据库**"。
+3. 选择**组织使用**>在搜索>中键入**Azure SQL 数据库**的 API，然后选择**Azure SQL 数据库**。
 
     ![为 Azure SQL 数据库添加对 API 的访问](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
-4.  > **user_impersonation** > "**添加权限**" 选择 "**委托的权限**"。
+4. 选择 **"添加权限** > **user_impersonation** > 委派**权限**。
 
     ![为 Azure SQL 数据库委托对 API 的权限](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
 ### <a name="set-an-azure-ad-admin-for-your-sql-database-server"></a>为 SQL 数据库服务器设置 Azure AD 管理员
 
-要使C#程序运行，Azure sql server 管理员需要为 SQL 数据库服务器指定 Azure AD 管理员。 
+要运行 C# 程序，Azure SQL 服务器管理员需要为 SQL 数据库服务器分配 Azure AD 管理员。 
 
-在 " **SQL Server** " 页上，选择 " **Active Directory 管理员** > **设置管理员**"。
+在**SQL 服务器**页上，**选择活动目录管理员** > **集管理员**。
 
-有关 Azure SQL 数据库 Azure AD 管理员和用户的详细信息，请参阅[配置和管理 Azure Active Directory 身份验证和 SQL 数据库](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)中的屏幕截图。
+有关 Azure AD 管理员和 Azure SQL 数据库用户的详细信息，请参阅使用[SQL 数据库 配置和管理 Azure 活动目录身份验证](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)中的屏幕截图。
 
 ### <a name="add-a-non-admin-user-to-a-specific-database-optional"></a>将非管理员用户添加到特定的数据库（可选）
 
 SQL 数据库服务器的 Azure AD 管理员可以运行 C# 示例程序。 数据库中的 Azure AD 用户可以运行该程序。 已在数据库中并对该数据库拥有 `ALTER ANY USER` 权限的 Azure AD SQL 管理员或 Azure AD 用户可以添加用户。
 
-可以使用 SQL [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) 命令将用户添加到数据库。 例如 `CREATE USER [<username>] FROM EXTERNAL PROVIDER`。
+您可以使用 SQL[`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql)命令将用户添加到数据库中。 示例为 `CREATE USER [<username>] FROM EXTERNAL PROVIDER`。
 
 有关详细信息，请参阅[将 Azure Active Directory 身份验证与 SQL 数据库、托管实例或 SQL 数据仓库结合使用](sql-database-aad-authentication.md)。
 
 ## <a name="new-authentication-enum-value"></a>新的身份验证枚举值
 
-该 C# 示例依赖于 [`System.Data.SqlClient`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) 命名空间。 对于多重身份验证特别感兴趣的是枚举 `SqlAuthenticationMethod`，它具有以下值：
+C# 示例依赖于[`System.Data.SqlClient`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient)命名空间。 对多重身份验证特别感兴趣的是枚举`SqlAuthenticationMethod`，它具有以下值：
 
 - `SqlAuthenticationMethod.ActiveDirectoryInteractive`
 
-   将此值与 Azure AD 的用户名结合使用，以实现多重身份验证。 此值是本文的重点。 它通过显示用户密码的对话框来生成交互式体验，然后在此用户上施加多重身份验证验证的情况下进行多重身份验证验证。 此值自 .NET Framework 版本 4.7.2 起提供。
+   使用具有 Azure AD 用户名的此值来实现多重身份验证。 此值是本文的重点。 它通过显示用户密码的对话框，然后用于多重身份验证验证（如果对此用户强制实施多重身份验证）来生成交互式体验。 此值自 .NET Framework 版本 4.7.2 起提供。
 
 - `SqlAuthenticationMethod.ActiveDirectoryIntegrated`
 
-  对联合帐户使用此值。 对于联合帐户，Windows 域已知用户名。 此身份验证方法不支持多重身份验证。
+  对联合帐户使用此值**。 对于联合帐户，Windows 域已知用户名。 此身份验证方法不支持多重身份验证。
 
 - `SqlAuthenticationMethod.ActiveDirectoryPassword`
 
@@ -113,41 +113,41 @@ SQL 数据库服务器的 Azure AD 管理员可以运行 C# 示例程序。 数�
 
 ## <a name="set-c-parameter-values-from-the-azure-portal"></a>在 Azure 门户中设置 C# 参数值
 
-要使 C# 程序成功运行，需将适当的值分配到静态字段。 此处显示了包含示例值的字段。 还显示了 Azure 门户位置，你可以在其中获取所需的值。
+要使 C# 程序成功运行，需将适当的值分配到静态字段。 此处显示了包含示例值的字段。 还显示的还有 Azure 门户位置，您可以在其中获取所需的值。
 
 | 静态字段名称 | 示例值 | Azure 门户中的位置 |
 | :---------------- | :------------ | :-------------------- |
-| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | “SQL 服务器” **“按名称筛选”**  >  |
-| AzureAD_UserID | "用户名\@abc.onmicrosoft.com" | “Azure Active Directory” > “用户” > “新建来宾用户” |
-| Initial_DatabaseName | "myDatabase" | “SQL 服务器” > “SQL 数据库” |
-| ClientApplicationID | “a94f9c62-97fe-4d19-b06d-111111111111” | “Azure Active Directory” **“应用注册”** “按名称搜索” > “应用程序 ID” >  >  |
-| RedirectUri | new Uri("https://mywebserver.com/") | **Azure Active Directory** > **应用注册** > **按名称搜索** *[应用注册]*  > **设置** > **RedirectURIs** > <br /><br />对于本文，任何有效的值都适用于 RedirectUri，因为此处没有使用它。 |
+| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | **SQL 服务器** > **按名称筛选** |
+| AzureAD_UserID | "用户\@abc.onmicrosoft.com" | **Azure 活动目录** > **用户** > **新来宾用户** |
+| Initial_DatabaseName | "myDatabase" | **SQL 服务器** > **SQL 数据库** |
+| ClientApplicationID | “a94f9c62-97fe-4d19-b06d-111111111111” | **Azure 活动目录** > **应用注册** > **按名称** > **应用程序 ID**搜索 |
+| RedirectUri | new Uri("https://mywebserver.com/") | **Azure 活动目录** > **应用注册** > **按名称** > 搜索 *[应用注册]* > **设置** > **重定向 URI**<br /><br />对于本文，任何有效值对于重定向 Uri 都很好，因为它不在此处使用。 |
 | &nbsp; | &nbsp; | &nbsp; |
 
-## <a name="verify-with-sql-server-management-studio"></a>验证 SQL Server Management Studio
+## <a name="verify-with-sql-server-management-studio"></a>使用 SQL 服务器管理工作室进行验证
 
-在运行C#程序之前，最好检查 SQL SERVER MANAGEMENT STUDIO （SSMS）中的设置和配置是否正确。 然后，可将任何 C# 程序错误范围缩小到源代码级别。
+在运行 C# 程序之前，最好在 SQL 服务器管理工作室 （SSMS） 中检查您的设置和配置是否正确。 然后，可将任何 C# 程序错误范围缩小到源代码级别。
 
 ### <a name="verify-sql-database-firewall-ip-addresses"></a>验证 SQL 数据库防火墙 IP 地址
 
-从同一建筑物中你要运行 C# 程序的同一台计算机运行 SSMS。 对于此测试，任何**身份验证**模式都是正常的。 如果有任何迹象表明数据库服务器防火墙不接受 IP 地址，请参阅 [Azure SQL 数据库服务器级和数据库级防火墙规则](sql-database-firewall-configure.md)获得帮助。
+从同一建筑物中你要运行 C# 程序的同一台计算机运行 SSMS。 对于此测试，任何**身份验证**模式都正常。 如果有任何迹象表明数据库服务器防火墙不接受 IP 地址，请参阅 [Azure SQL 数据库服务器级和数据库级防火墙规则](sql-database-firewall-configure.md)获得帮助。
 
-### <a name="verify-azure-active-directory-multi-factor-authentication"></a>验证 Azure Active Directory 多重身份验证
+### <a name="verify-azure-active-directory-multi-factor-authentication"></a>验证 Azure 活动目录多重身份验证
 
-再次运行 SSMS，这一次将“身份验证”设为“具有 MFA 支持的 Active Directory - 通用”。 此选项需要 SSMS 17.5 或更高版本。
+再次运行 SSMS，这一次将“身份验证”设为“具有 MFA 支持的 Active Directory - 通用”********。 此选项需要 SSMS 17.5 或更高版本。
 
-有关详细信息，请参阅[为 SSMS 和 Azure AD 配置多重身份验证](sql-database-ssms-mfa-authentication-configure.md)。
+有关详细信息，请参阅为[SSMS 和 Azure AD 配置多重身份验证](sql-database-ssms-mfa-authentication-configure.md)。
 
 > [!NOTE]
-> 如果你是数据库中的来宾用户，还需要为数据库提供 Azure AD 的域名：选择**选项** > **AD 域名或租户 ID**。 若要在 Azure 门户中查找域名，请选择“Azure Active Directory” **“自定义域名”。**  >  在 C# 示例程序中，不必要提供域名。
+> 如果您是数据库中的来宾用户，还需要为数据库提供 Azure AD 域名：选择**选项** > **AD 域名或租户 ID**。 要在 Azure 门户中查找域名，请选择**Azure 活动目录** > **自定义域名**。 在 C# 示例程序中，不必要提供域名。
 
 ## <a name="c-code-example"></a>C# 代码示例
 
 示例 C# 程序依赖于 [*Microsoft.IdentityModel.Clients.ActiveDirectory*](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory) DLL 程序集。
 
-若要安装此包，请在 Visual Studio 中选择“项目” **“管理 NuGet 包”。**  >  搜索并安装 **Microsoft.IdentityModel.Clients.ActiveDirectory**。
+要安装此包，请在可视化工作室中，选择 **"项目管理** > **NuGet 包**"。 搜索并安装 **Microsoft.IdentityModel.Clients.ActiveDirectory**。
 
-这是源代码的C#示例。
+这是 C# 源代码的示例。
 
 ```csharp
 
@@ -317,7 +317,7 @@ namespace ADInteractive5
 
 &nbsp;
 
-这是C#测试输出的示例。
+这是 C# 测试输出的示例。
 
 ```
 [C:\Test\VSProj\ADInteractive5\ADInteractive5\bin\Debug\]

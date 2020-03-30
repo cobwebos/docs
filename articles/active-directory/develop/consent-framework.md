@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.openlocfilehash: cb9441e6ce19094ff72e902cdeea151041ceb963
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161116"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 许可框架
@@ -44,23 +44,23 @@ ms.locfileid: "77161116"
 
     ![用户或管理员登录到 Azure AD](./media/consent-framework/usersignin.png)
 
-1. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。 此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。 如果尚未授予许可，Azure AD 会提示用户授予许可，并显示运行该应用程序所需的权限。 许可对话框中显示的权限集与在 Azure 门户中的“委托权限”中选择的权限集相匹配。
+1. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。 此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。 如果尚未授予许可，Azure AD 会提示用户授予许可，并显示运行该应用程序所需的权限。 许可对话框中显示的权限集与在 Azure 门户中的“委托权限”**** 中选择的权限集相匹配。
 
-    ![显示在许可对话框中显示的权限示例](./media/consent-framework/consent.png)
+    ![显示“同意”对话框中显示的权限的示例](./media/consent-framework/consent.png)
 
 1. 用户授予许可后，授权代码会返回到应用程序，应用程序可凭此获取访问令牌和刷新令牌。 有关此流的详细信息，请参阅[OAuth 2.0 授权代码流](v2-oauth2-auth-code-flow.md)。
 
-1. 作为管理员，还可以代表租户中的所有用户同意应用程序的委派权限。 管理许可可防止针对租户中的每个用户显示许可对话框，可通过具有管理员角色的用户在 [Azure 门户](https://portal.azure.com)中执行。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure AD 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。
+1. 作为管理员，还可以代表租户中的所有用户同意应用程序的委派权限。 管理同意可防止租户中的每个用户出现同意对话框，并且可以通过具有管理员角色的用户在 Azure[门户](https://portal.azure.com)中完成。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure AD 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。
 
     **同意应用的委托权限**
 
-   1. 请访问应用程序的**API 权限**页面
-   1. 单击 "**授予管理员同意**" 按钮。
+   1. 转到应用程序的“API 权限”**** 页
+   1. 单击“授予管理员同意”**** 按钮。
 
       ![授予显式管理许可权限](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
-   > 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可。 否则，在请求访问令牌时应用程序会失败。
+   > 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可****。 否则，在请求访问令牌时应用程序会失败。
 
 ## <a name="next-steps"></a>后续步骤
 

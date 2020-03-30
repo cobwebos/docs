@@ -14,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
 ms.openlocfilehash: 1b91a39e1297d8952da67a4f8d3b8568cefe04ce
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73620563"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>通过使用 Azure CLI 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
-如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。 本文详细介绍如何使用 Azure CLI 将虚拟硬盘连接到另一个 Linux VM，以修复任何错误，然后重新创建原始 VM。 
+如果 Linux 虚拟机 (VM) 遇到启动或磁盘错误，则可能需要对虚拟硬盘本身执行故障排除步骤。 一个常见示例是 `/etc/fstab` 中存在无效条目，使 VM 无法成功启动。 本文详细介绍如何使用 Azure CLI 将虚拟硬盘连接到另一个 Linux VM，以修复任何错误，然后重新创建原始 VM。 
 
 ## <a name="recovery-process-overview"></a>恢复过程概述
 故障排除过程如下：
@@ -44,7 +44,7 @@ ms.locfileid: "73620563"
 ## <a name="determine-boot-issues"></a>确定启动问题
 检查串行输出以确定 VM 不能正常启动的原因。 一个常见示例是 `/etc/fstab` 中存在无效条目，或底层虚拟硬盘已删除或移动。
 
-使用 [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics) 获取启动日志。 以下示例从名为 `myVM` 的资源组中名为 `myResourceGroup` 的 VM 获取串行输出：
+使用 [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics) 获取启动日志。 以下示例从名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM 获取串行输出：
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
@@ -54,7 +54,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 
 ## <a name="stop-the-vm"></a>停止 VM
 
-以下示例在名为 `myVM` 的资源组中停止名为 `myResourceGroup` 的 VM：
+以下示例在名为 `myResourceGroup` 的资源组中停止名为 `myVM` 的 VM：
 
 ```azurecli
 az vm stop --resource-group MyResourceGroup --name MyVm
@@ -72,7 +72,7 @@ az snapshot create --resource-group myResourceGroupDisk --source "$osdiskid" --n
 ```
 ## <a name="create-a-disk-from-the-snapshot"></a>从快照创建磁盘
 
-此脚本从名为 `myOSDisk` 的快照创建名为 `mySnapshot` 的托管磁盘。  
+此脚本从名为 `mySnapshot` 的快照创建名为 `myOSDisk` 的托管磁盘。  
 
 ```azurecli
 #Provide the name of your resource group
@@ -126,7 +126,7 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
 > [!NOTE]
 > 以下示例详细说明了在 Ubuntu VM 上需要执行的步骤。 如果使用不同的 Linux 分发版（如 Red Hat Enterprise Linux 或 SUSE）日志文件位置和 `mount` 命令可能稍有不同。 请参阅具体分发版的文档，了解命令中有哪些相应的变化。
 
-1. 使用相应的凭据通过 SSH 连接到故障排除 VM。 如果此磁盘是附加到故障排除 VM 的第一个数据磁盘，则此磁盘可能已连接到 `/dev/sdc`。 使用 `dmesg` 查看附加的磁盘：
+1. 使用适当的凭据通过 SSH 登录到故障排除 VM。 如果此磁盘是附加到故障排除 VM 的第一个数据磁盘，则此磁盘可能已连接到 `/dev/sdc`。 使用 `dmesg` 查看附加的磁盘：
 
     ```bash
     dmesg | grep SCSI
@@ -187,7 +187,7 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
 
 ## <a name="change-the-os-disk-for-the-affected-vm"></a>更改受影响 VM 的 OS 磁盘
 
-可以使用 Azure CLI 来交换 OS 磁盘。 你无需删除和重新创建 VM。
+可以使用 Azure CLI 来交换 OS 磁盘。 无需删除和重新创建 VM。
 
 此示例停止名为 `myVM` 的 VM，并将名为 `myNewOSDisk` 的磁盘分配为新的 OS 磁盘。
 

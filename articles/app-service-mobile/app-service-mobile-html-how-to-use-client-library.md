@@ -7,10 +7,10 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 029b01f3aacc928ebdae0e8fe90871437afccea5
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461515"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 JavaScript 客户端库
@@ -24,7 +24,7 @@ ms.locfileid: "77461515"
 
 由于包已被分发为通用 JavaScript 模块，因此它支持 globals、AMD 和 CommonJS 格式。
 
-## <a name="Setup"></a>安装与先决条件
+## <a name="setup-and-prerequisites"></a><a name="Setup"></a>设置和先决条件
 本指南假设已创建了包含表的后端。 本指南假设该表的架构与这些教程中的表相同。
 
 可以通过 `npm` 命令安装 Azure 移动应用 JavaScript SDK：
@@ -50,14 +50,14 @@ import * as WindowsAzure from 'azure-mobile-apps-client';
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>如何对用户进行身份验证
+## <a name="how-to-authenticate-users"></a><a name="auth"></a>如何对用户进行身份验证
 Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Google、Microsoft 帐户和 Twitter）对应用的用户进行身份验证和授权。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。 有关详细信息，请参阅[身份验证入门]教程。
 
 支持两种身份验证流：服务器流和客户端流。  服务器流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。 客户端流依赖于提供程序特定的 SDK，因此允许与设备特定的功能（例如单一登录）进行更深入的集成。
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>如何为外部重定向 URL 配置移动应用服务。
+### <a name="how-to-configure-your-mobile-app-service-for-external-redirect-urls"></a><a name="configure-external-redirect-urls"></a>如何为外部重定向 URL 配置移动应用服务。
 有多种类型的 JavaScript 应用程序使用环回功能来处理 OAuth UI 流。  这些功能包括：
 
 * 在本地运行服务
@@ -66,13 +66,13 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
 
 在本地运行可能会导致问题产生，因为默认情况下，应用服务身份验证只配置为允许从移动应用后端访问。 使用以下步骤更改应用服务设置，允许在本地运行服务器时进行身份验证：
 
-1. 登录到 [Azure 门户]
+1. 登录到 Azure[门户]
 2. 导航到移动应用后端。
-3. 在“开发工具”菜单中，选择“资源浏览器”。
-4. 单击“开始”在新选项卡或窗口中打开移动应用后端的资源管理器。
-5. 展开应用的“config” > “authsettings”节点。
-6. 单击“编辑”按钮可对资源进行编辑。
-7. 查找应为 null 的“allowedExternalRedirectUrls”元素。 在数组中添加 URL：
+3. 在“开发工具”**** 菜单中，选择“资源浏览器”****。
+4. 单击“开始”**** 在新选项卡或窗口中打开移动应用后端的资源管理器。
+5. 展开应用的 **"** > **配置"** 设置节点。
+6. 单击“编辑”**** 按钮可对资源进行编辑。
+7. 查找应为 null 的“allowedExternalRedirectUrls”**** 元素。 在数组中添加 URL：
 
          "allowedExternalRedirectUrls": [
              "http://localhost:3000",
@@ -80,15 +80,15 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
          ],
 
     将数组中的 URL 替换为服务的 URL，在本示例中为本地 Node.js 示例服务的 `http://localhost:3000`。 对于 Ripple 服务，也可以根据应用的配置方式，使用 `http://localhost:4400` 或其他某个 URL。
-8. 在页面顶部，单击“读/写”，并单击“PUT”保存更新。
+8. 在页面顶部，单击“读/写”****，并单击“PUT”**** 保存更新。
 
 还需要将相同的环回 URL 添加到 CORS 允许列表设置：
 
-1. 导航回到 [Azure 门户]。
+1. 导航回[Azure 门户]。
 2. 导航到移动应用后端。
-3. 在“API”菜单中单击“CORS”。
-4. 在空的“允许的来源”文本框中输入每个 URL。  将创建新的文本框。
-5. 单击“保存”
+3. 单击**API**菜单中的**CORS。**
+4. 在空的“允许的来源”**** 文本框中输入每个 URL。  将创建新的文本框。
+5. 单击 **"保存"**
 
 后端更新后，可以在应用中使用新的环回 URL。
 

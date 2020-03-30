@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: girobins
 ms.openlocfilehash: 48b9a67de5c870a187ee008bd97265760ca6c341
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70998368"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>使用 .NET SDK 获取 SQL 查询执行指标并分析查询性能
@@ -127,7 +127,7 @@ FeedResponse<Document> feedResponse = await linqQuery.ExecuteNextAsync<Document>
 IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetrics;
 ```
 
-## <a name="expensive-queries"></a>高开销的查询
+## <a name="expensive-queries"></a>耗费大量资源的查询
 
 可以捕获每个查询消耗的请求单位数，以调查高开销的查询，或者消耗了大量吞吐量的查询。 可以使用 `FeedResponse` 中的 [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) 属性获取请求费用。 若要详细了解如何使用 Azure 门户和不同的 SDK 获取请求费用，请参阅[查找请求单位费用](find-request-unit-charge.md)一文。
 
@@ -233,15 +233,15 @@ WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, 
 
 若要详细了解如何优化查询性能，请参阅[优化查询性能](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics)一文。
 
-## <a id="References"></a>参考
+## <a name="references"></a><a id="References"></a>引用
 
 - [Azure Cosmos DB SQL 规范](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
-- [JSON](https://json.org/)
+- [Json](https://json.org/)
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [优化查询性能](sql-api-query-metrics.md)
+- [调整查询性能](sql-api-query-metrics.md)
 - [索引概述](index-overview.md)
 - [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)

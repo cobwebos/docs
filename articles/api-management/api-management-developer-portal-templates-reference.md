@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73176790"
 ---
 # <a name="developer-portal-templates"></a>开发人员门户模板
@@ -30,34 +30,34 @@ ms.locfileid: "73176790"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-##  <a name="DeveloperPortalTemplates"></a> 开发人员门户模板  
+##  <a name="developer-portal-templates"></a><a name="DeveloperPortalTemplates"></a>开发人员门户模板  
   
--   [API](api-management-api-templates.md)  
+-   [Api](api-management-api-templates.md)  
     -   [API 列表](api-management-api-templates.md#APIList)  
     -   [操作](api-management-api-templates.md#Product)  
     -   [代码示例](api-management-api-templates.md#CodeSamples)  
-        -   [Curl](api-management-api-templates.md#Curl)  
+        -   [卷曲](api-management-api-templates.md#Curl)  
         -   [C#](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
-        -   [JavaScript](api-management-api-templates.md#JavaScript)  
-        -   [Objective C](api-management-api-templates.md#ObjectiveC)  
+        -   [Javascript](api-management-api-templates.md#JavaScript)  
+        -   [目标C](api-management-api-templates.md#ObjectiveC)  
         -   [PHP](api-management-api-templates.md#PHP)  
         -   [Python](api-management-api-templates.md#Python)  
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [产品](api-management-product-templates.md)  
     -   [产品列表](api-management-product-templates.md#ProductList)  
-    -   [产品](api-management-product-templates.md#Product)  
+    -   [Product](api-management-product-templates.md#Product)  
 -   [应用程序](api-management-application-templates.md)  
     -   [应用程序列表](api-management-application-templates.md#ProductList)  
     -   [应用程序](api-management-application-templates.md#Application)  
 -   [问题](api-management-issue-templates.md)  
     -   [问题列表](api-management-issue-templates.md#IssueList)  
 -   [用户配置文件](api-management-user-profile-templates.md)  
-    -   [配置文件](api-management-user-profile-templates.md#Profile)  
+    -   [配置 文件](api-management-user-profile-templates.md#Profile)  
     -   [订阅](api-management-user-profile-templates.md#Subscriptions)  
     -   [应用程序](api-management-user-profile-templates.md#Applications)  
     -   [更新帐户信息](api-management-user-profile-templates.md#UpdateAccountInfo)  
--   [页](api-management-page-templates.md)  
+-   [页面](api-management-page-templates.md)  
     -   [登录](api-management-page-templates.md#SignIn)  
     -   [注册](api-management-page-templates.md#SignUp)  
     -   [找不到页面](api-management-page-templates.md#PageNotFound)

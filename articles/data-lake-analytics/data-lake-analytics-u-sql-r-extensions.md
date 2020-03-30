@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Data Lake Analytics 中使用 R 扩展 U-SQL 脚本
-description: 了解如何使用 Azure Data Lake Analytics 在 U SQL 脚本中运行 R 代码。 嵌入 R 代码内联或从文件引用。
+description: 了解如何使用 Azure 数据湖分析在 U-SQL 脚本中运行 R 代码。 嵌入 R 代码内联或从文件中引用。
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,23 +10,23 @@ ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
 ms.openlocfilehash: c5dd3f493e85afc925b639c142a293eed1e8cbd7
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672695"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中使用 R 代码扩展 U-SQL 脚本
 
 以下示例演示了用于部署 R 代码的基本步骤：
 * 使用 `REFERENCE ASSEMBLY` 语句为 U-SQL 脚本启用 R 扩展。
-* 使用 `REDUCE` 操作对某个键的输入数据进行分区。
+* 使用`REDUCE`该操作对键上的输入数据进行分区。
 * U-SQL 的 R 扩展包括内置化简器 (`Extension.R.Reducer`)，可在分配给化简器的每个顶点上运行 R 代码。 
-* 使用称为 `inputFromUSQL` 和 `outputToUSQL` 的专用命名数据帧来在数据帧和 R 之间传递数据。输入和输出的标识符名称是固定的（即，用户无法更改输入和输出数据帧标识符的预定义名称）。
+* 使用分别调用`inputFromUSQL`的专用命名数据帧`outputToUSQL`，并在 U-SQL 和 R 之间传递数据， 输入和输出 DataFrame 标识符名称是固定的（即，用户不能更改这些预定义的输入和输出 DataFrame 标识符的名称）。
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>在 U-SQL 脚本中嵌入 R 代码
 
-可以使用 `Extension.R.Reducer` 的命令参数在 U-SQL 脚本中内嵌 R 代码。 例如，可以将 R 脚本声明为一个字符串变量，并将其作为参数传递给 Reducer。
+可以使用 `Extension.R.Reducer` 的命令参数在 U-SQL 脚本中内嵌 R 代码。 例如，可以将 R 脚本声明为一个字符串变量，然后将其作为参数传递给 Reducer。
 
 
     REFERENCE ASSEMBLY [ExtR];
@@ -42,7 +42,7 @@ ms.locfileid: "71672695"
     
     @RScriptOutput = REDUCE … USING new Extension.R.Reducer(command:@myRScript, rReturnType:"dataframe");
 
-## <a name="keep-the-r-code-in-a-separate-file-and-reference-it--the-u-sql-script"></a>将 R 代码保存在一个单独的文件中，并在 U-SQL 脚本中引用该文件
+## <a name="keep-the-r-code-in-a-separate-file-and-reference-it--the-u-sql-script"></a>将 R 代码保存在一个单独的文件中，然后在 U-SQL 脚本中引用该文件
 
 以下示例展示了更复杂的用法。 在本例中，R 代码部署为是一个 U-SQL 脚本的 RESOURCE。
 
@@ -167,7 +167,7 @@ ms.locfileid: "71672695"
 
 ## <a name="deploying-custom-r-modules-with-u-sql"></a>使用 U-SQL 部署自定义 R 模块
 
-首先，创建一个 R 自定义模块并将其压缩为 zip 文件，并将压缩后的 R 自定义模块文件上传到你的 ADL 存储。 在示例中，我们将 magittr_1.5.zip 上传到我们使用的 ADLA 帐户的默认 ADLS 帐户的根目录中。 将模块上传到 ADL 存储后，对其进行声明并使用 DEPLOY RESOURCE 使其在 U-SQL 脚本中可用，然后调用 `install.packages` 来安装它。
+首先，创建一个 R 自定义模块并将其压缩为 zip 文件，然后将压缩后的 R 自定义模块文件上传到 ADL 存储。 在示例中，我们将 magittr_1.5.zip 上传到我们使用的 ADLA 帐户的默认 ADLS 帐户的根目录中。 将模块上传到 ADL 存储后，对其进行声明并使用 DEPLOY RESOURCE 使其在 U-SQL 脚本中可用，然后调用 `install.packages` 来安装它。
 
     REFERENCE ASSEMBLY [ExtR];
     DEPLOY RESOURCE @"/magrittr_1.5.zip";
@@ -208,5 +208,5 @@ ms.locfileid: "71672695"
 
 ## <a name="next-steps"></a>后续步骤
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
-* [通过 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
+* [使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
 * [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)

@@ -5,17 +5,17 @@ ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: aa972e8ae486d181f0c48df72ec89c925c940451
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74324903"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench 体系结构
 
-Azure 区块链工作台预览版通过使用几个 Azure 组件提供解决方案来简化区块链应用程序的开发。 可以使用 Azure 市场中的解决方案模板部署 Blockchain Workbench。 该模板可用于选择要部署的模块和组件，包括区块链堆栈、客户端应用程序类型，以及对 IoT 集成的支持。 部署后，Blockchain Workbench 会提供对 Web 应用、iOS 应用和 Android 应用的访问权限。
+Azure 区块链工作台预览版通过使用多个 Azure 组件提供解决方案，简化了区块链应用程序开发。 可以使用 Azure 市场中的解决方案模板部署 Blockchain Workbench。 该模板可用于选择要部署的模块和组件，包括区块链堆栈、客户端应用程序类型，以及对 IoT 集成的支持。 部署后，Blockchain Workbench 会提供对 Web 应用、iOS 应用和 Android 应用的访问权限。
 
-![区块链工作台体系结构](./media/architecture/architecture.png)
+![区块链工作台架构](./media/architecture/architecture.png)
 
 ## <a name="identity-and-authentication"></a>标识和身份验证
 
@@ -78,7 +78,7 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 一种使用�
 
 ## <a name="transaction-builder-and-signer"></a>事务生成器和签名器
 
-如果需要将入站消息中转站中的消息写入区块链，DLT 使用者会处理此操作。 DLT 使用者是一个服务，它会检索包含需要执行的事务的元数据的消息，然后将信息发送到事务生成器和签名器。 事务生成器和签名器根据数据和所需的区块链目标汇编区块链事务。 汇编后，事务将被签名。 私钥存储在 Azure Key Vault 中。
+如果需要将入站消息中转站中的消息写入区块链，DLT 使用者会处理此操作。 DLT 使用者是一个服务，它会检索包含需要执行的事务的元数据的消息，然后将信息发送到事务生成器和签名器。** 事务生成器和签名器根据数据和所需的区块链目标汇编区块链事务。** 汇编后，事务将被签名。 私钥存储在 Azure Key Vault 中。
 
  Blockchain Workbench 从 Key Vault 检索相应的私钥，并对 Key Vault 外部的事务签名。 签名后，事务将发送到事务路由器和账本。
 
@@ -95,13 +95,13 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 一种使用�
 
 ## <a name="azure-sql-database"></a>Azure SQL 数据库
 
-附加到 Blockchain Workbench 的 Azure SQL 数据库存储合同定义、配置元数据，以及区块链中存储的数据的副本（可通过 SQL 访问）。 直接访问数据库即可轻松查询、可视化或分析这些数据。 开发人员和其他用户可以使用该数据库进行报告、分析或其他以数据为中心的集成。 例如，用户可以使用 Power BI 将事务数据可视化。
+附加到 Blockchain Workbench 的 Azure SQL 数据库存储合约定义、配置元数据，以及区块链中存储的数据的副本（可通过 SQL 访问）。 直接访问数据库即可轻松查询、可视化或分析这些数据。 开发人员和其他用户可以使用该数据库进行报告、分析或其他以数据为中心的集成。 例如，用户可以使用 Power BI 将事务数据可视化。
 
 此链外存储可让企业组织查询 SQL 中的数据，但不允许查询区块链账本中的数据。 此外，通过将区块链技术堆栈不可知的架构标准化，链外存储可让用户跨项目、方案和组织重复使用报告和其他项目。
 
-## <a name="azure-storage"></a>Azure 存储空间
+## <a name="azure-storage"></a>Azure 存储
 
-Azure 存储用于存储合同以及与合同关联的元数据。
+Azure 存储用于存储合约以及与合约关联的元数据。
 
 从采购订单和提单，到新闻和医疗成像使用的图像，再到源自连拍摄像（包括治安摄像头）的视频和大型动画，文档在许多以区块链为中心的方案中发挥作用。 文档不适合直接放入区块链。
 

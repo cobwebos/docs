@@ -1,5 +1,5 @@
 ---
-title: 如何通过 Ruby 使用队列存储-Azure 存储
+title: 如何通过 Ruby 使用队列存储 - Azure 存储
 description: 了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。 用 Ruby 编写的相关示例。
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.openlocfilehash: c7211bc805f4ed1d026faedbfdc9d53d3c1dfd93
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68721292"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>如何通过 Ruby 使用队列存储
@@ -32,7 +32,7 @@ ms.locfileid: "68721292"
 创建 Ruby 应用程序。 有关说明，请参阅[使用 Linux 应用服务创建 Ruby 应用](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby)。
 
 ## <a name="configure-your-application-to-access-storage"></a>配置应用程序以访问存储
-要使用 Azure 存储，需下载和使用 Ruby Azure 包，其中包括与存储 REST 服务进行通信的一组方便的库。
+要使用 Azure 存储，需要下载和使用 Ruby azure 包，其中包括一组便于与存储 REST 服务进行通信的库。
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>使用 RubyGems 获取该程序包
 1. 使用命令行接口，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
@@ -46,7 +46,7 @@ require "azure"
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>设置 Azure 存储连接
-Azure 模块会读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORAGE\_ACCESS_KEY** 以获取连接到 Azure 存储帐户所需的信息。 如果未设置这些环境变量，则在使用 **Azure::QueueService** 前必须通过以下代码指定帐户信息：
+Azure 模块将读取环境变量**AZURE\_存储\_帐户**和**\_AZURE\_存储ACCESS_KEY**以获取有关连接到 Azure 存储帐户所需的信息。 如果未设置这些环境变量，则在使用 **Azure::QueueService** 前必须通过以下代码指定帐户信息：
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
@@ -55,10 +55,10 @@ Azure.config.storage_access_key = "<your Azure storage access key>"
 
 从 Azure 门户中的经典或 Resource Manager 存储帐户中获取这些值：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到 Azure[门户](https://portal.azure.com)。
 2. 导航到要使用的存储帐户。
-3. 在右侧的“设置”边栏选项卡中，单击“访问密钥”。
-4. 在显示的“访问密钥”边栏选项卡中，可看到访问密钥 1 和访问密钥 2。 可以使用其中任意一个。 
+3. 在右侧的“设置”边栏选项卡中，单击“访问密钥”****。
+4. 在出现的“访问密钥”边栏选项卡中，将看到访问密钥 1 和访问密钥 2。 可以使用其中任意一个。 
 5. 单击复制图标以将键复制到剪贴板。 
 
 ## <a name="how-to-create-a-queue"></a>如何：创建队列
@@ -86,20 +86,20 @@ azure_queue_service.create_message("test-queue", "test message")
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>如何：扫视下一条消息
-可调用 **peek\_messages()** 方法，查看队列前面的消息，而不必从队列中将其删除。 默认情况下，**peek\_messages()** 扫视单条消息。 也可以指定要扫视的消息数。
+可调用 **peek\_messages()** 方法，查看队列前面的消息，而不必从队列中将其删除。 默认情况下，**查看\_消息（）** 会查看单个消息。 也可以指定要扫视的消息数。
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
   {:number_of_messages => 10})
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>如何：取消下一条消息的排队
+## <a name="how-to-dequeue-the-next-message"></a>如何：取消对下一条消息的排队
 可通过两个步骤从队列中删除消息。
 
 1. 在调用 **list\_messages()** 时，默认情况下会获取队列中的下一条消息。 也可以指定要获取的消息数。 从 **list\_messages()** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 将传递以秒为单位的可见性超时值作为参数。
-2. 还必须调用 **delete_message()** ，才能完成队列消息删除操作。
+2. 要完成从队列中删除消息，还必须调用**delete_message（）**。
 
-此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后会立即调用 **delete\_message()** 。
+此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在消息处理后立即调用**删除\_消息（）。**
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -117,7 +117,7 @@ pop_receipt, time_next_visible = azure_queue_service.update_message(
   30)
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>如何：取消消息排队的其他选项
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>如何：用于对消息取消排队的其他选项
 可以通过两种方式自定义队列中的消息检索。
 
 1. 可以获取一批消息。
@@ -149,9 +149,9 @@ azure_queue_service.delete_queue("test-queue")
 ```
 
 ## <a name="next-steps"></a>后续步骤
-既已了解有关队列存储的基础知识，可单击以下链接以了解更复杂的存储任务。
+现在，已了解有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
 
-* 访问 [Azure Storage Team Blog](https://blogs.msdn.com/b/windowsazurestorage/)（Azure 存储团队博客）
-* 访问 GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
+* 访问[Azure 存储团队博客](https://blogs.msdn.com/b/windowsazurestorage/)
+* 访问 GitHub 上的 Ruby 存储库[的 Azure SDK](https://github.com/WindowsAzure/azure-sdk-for-ruby)
 
 若要了解 Azure 队列服务（本文所述）和 Azure 服务总线队列（[如何使用服务总线队列](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/)文章中所述）之间的比较，请参阅 [Azure 队列和服务总线队列 - 比较与对照](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)

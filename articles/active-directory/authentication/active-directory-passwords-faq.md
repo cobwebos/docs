@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9e1cc9dde6bb2b6ae47affaed4c557f3746a681b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77061448"
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
@@ -36,7 +36,7 @@ ms.locfileid: "77061448"
 
 * **问：用户是否可以注册其自己的密码重置数据？**
 
-  > **答：** 是。 只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户(https://aka.ms/ssprsetup) 来注册其身份验证信息。 用户也可通过访问面板 (https://myapps.microsoft.com) 来注册。 若要通过访问面板来注册，需选择个人资料图片，然后选择“个人资料”，再选择“注册密码重置”选项。
+  > **答：** 是的。 只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户(https://aka.ms/ssprsetup) 来注册其身份验证信息。 用户也可通过访问面板 (https://myapps.microsoft.com) 来注册。 若要通过访问面板来注册，需选择个人资料图片，然后选择“个人资料”，再选择“注册密码重置”选项。********
   >
   >
 * **问：如果为某个组启用密码重置，然后决定为每个人启用它，我的用户是否需要重新注册？**
@@ -46,7 +46,7 @@ ms.locfileid: "77061448"
   >
 * **问：我能否代表用户定义密码重置数据？**
 
-  > **答：** 是的，可以 Azure AD Connect、PowerShell、 [Azure 门户](https://portal.azure.com)或[Microsoft 365 管理中心](https://admin.microsoft.com)执行此操作。 有关详细信息，请参阅 [Azure AD 自助密码重置使用的数据](howto-sspr-authenticationdata.md)。
+  > **答：** 是的，您可以使用 Azure AD 连接、PowerShell、Azure[门户](https://portal.azure.com)或 Microsoft [365 管理中心](https://admin.microsoft.com)执行此操作。 有关详细信息，请参阅 [Azure AD 自助密码重置使用的数据](howto-sspr-authenticationdata.md)。
   >
   >
 * **问：我能否从本地同步安全问题数据？**
@@ -56,7 +56,7 @@ ms.locfileid: "77061448"
   >
 * **问：用户在注册数据时能否选择不让其他用户看到？**
 
-  > **答：** 是。 当用户使用密码重置注册门户注册数据时，数据会保存到私有身份验证字段中，只有全局管理员和用户才能看到这些字段。
+  > **答：** 是的。 当用户使用密码重置注册门户注册数据时，数据会保存到私有身份验证字段中，只有全局管理员和用户才能看到这些字段。
   >
   >
 * **问：是否用户只有在注册之后才能使用密码重置功能？**
@@ -64,19 +64,19 @@ ms.locfileid: "77061448"
   > **答：** 不。 如果为他们定义了足够的身份验证信息，用户就不必进行注册。 只要已正确设置了目录中的相应字段中存储的数据的格式，密码重置将正常工作。
   >
   >
-* **问：我是否可以代表用户同步或设置“身份验证电话”、“身份验证电子邮件”或“备用身份验证电话”字段？**
+* **问：我能否代表用户同步或设置身份验证电话、身份验证电子邮件或备用身份验证电话字段？**
 
   > **答：** 在 [SSPR 数据要求](howto-sspr-authenticationdata.md)一文中定义了能够由全局管理员设置的字段。
   >
   >
 * **问：注册门户如何确定为用户显示哪些选项？**
 
-  > **答：** 密码重置注册门户只会显示为用户启用的选项。 可以在目录的“配置”选项卡的“用户密码重置策略”部分找到这些选项。例如，如果没有启用安全问题，则用户无法针对该选项进行注册。
+  > **答：** 密码重置注册门户只会显示为用户启用的选项。 这些选项位于目录的 **"配置"** 选项卡的 **"用户密码重置策略"** 部分下。例如，如果您不启用安全问题，则用户无法注册该选项。
   >
   >
 * **问：用户何时才会被视为已注册用户？**
 
-  > **答：** 如果用户已至少注册了在 [Azure 门户](https://portal.azure.com)中设置的“重置一个密码所需的方法数”，则此用户即会被视为已注册 SSPR。
+  > **答：** 如果用户已至少注册了在 [Azure 门户](https://portal.azure.com)中设置的“重置一个密码所需的方法数”，则此用户即会被视为已注册 SSPR。****
   >
   >
 
@@ -101,7 +101,7 @@ ms.locfileid: "77061448"
   > 如果在此时间范围内未收到通知：
   > * 请检查垃圾邮件文件夹。
   > * 请检查所联系的号码或电子邮件是否正确。
-  > * 检查目录中的身份验证数据的格式是否正确，例如 + 1 4255551234 或*user\@contoso.com*。 
+  > * 请检查是否对目录中的身份验证数据进行了正确的格式设置，例如，+1 4255551234 或 user\@contoso.com**。 
 * **问：密码重置支持哪些语言？**
 
   > **答：** 密码重置 UI、短信和语音呼叫实现了相同语言的本地化，这些语言与 Office 365 所支持的语言相同。
@@ -114,7 +114,7 @@ ms.locfileid: "77061448"
   >
 * **问：如何告知用户可在何处重置密码？**
 
-  > **答：** 请尝试 [SSPR 部署](howto-sspr-deployment.md#plan-communications)一文中的一些建议。
+  > **答：** 请尝试[SSPR 部署](howto-sspr-deployment.md#plan-communications)文章中的一些建议。
   >
   >
 * **问：能否在移动设备上使用此页面？**
@@ -122,9 +122,9 @@ ms.locfileid: "77061448"
   > **答：** 可以，此页面可以在移动设备上使用。
   >
   >
-* **问：当用户重置密码时是否支持解锁本地 Active Directory 帐户？**
+* **问：当用户重置密码时，您是否支持解锁本地活动目录帐户？**
 
-  > **答：** 是。 如果用户重置其密码且已通过 Azure AD Connect 部署密码写回，则当该用户重置其密码时，会自动解锁其帐户。
+  > **答：** 是的。 如果用户重置其密码且已通过 Azure AD Connect 部署密码写回，则当该用户重置其密码时，会自动解锁其帐户。
   >
   >
 * **问：如何将密码重置直接集成到用户的桌面登录体验中？**
@@ -174,15 +174,15 @@ ms.locfileid: "77061448"
   >
 * **问：如果用户注册的重置问题超出了所需的最大问题数量，如何在重置期间选择安全问题？**
 
-  > **答：** *N* 个安全问题是从用户已注册的所有问题中随机选择的，其中 *N* 是针对“重置所需的问题数”选项设置的一个数。 例如，如果用户注册了五个安全问题，但重置密码只需三个，则会从五个问题中随机选择三个在重置时提出。 为了防止 问题攻击，如果用户提供的问题答案不正确，则选择过程会从头开始。
+  > **答：** ** N 个安全问题是从用户已注册的所有问题中随机选择的，其中 ** N 是针对“重置所需的问题数”选项设置的一个数。**** 例如，如果用户注册了五个安全问题，但重置密码只需三个，则会从五个问题中随机选择三个在重置时提出。 为了防止 问题攻击，如果用户提供的问题答案不正确，则选择过程会从头开始。
   >
   >
 * **问：电子邮件和短信的一次性密码的有效期有多长？**
 
-  > **答：** 进行密码重置的会话生存期为 15 分钟。 从密码重置操作开始算，用户有 15 分钟的时间来重置其密码。 在密码重置会话期间，电子邮件和短信一次性密码有效期为5分钟。
+  > **答：** 进行密码重置的会话生存期为 15 分钟。 从密码重置操作开始算，用户有 15 分钟的时间来重置其密码。 电子邮件和 SMS 一次性密码在密码重置会话期间有效 5 分钟。
   >
   >
-* **问：可否阻止用户重置其密码？**
+* 问：可否阻止用户重置其密码？****
 
   > **答：** 可以。如果使用组来启用 SSPR，则可将用户从允许用户重置其密码的组中删除。 如果用户是全局管理员，他们将保留重置密码的权限，并且不能禁用此权限。
   >
@@ -195,14 +195,14 @@ ms.locfileid: "77061448"
   > **答：** 用户可以在能够看到其个人资料图片或图标的任何位置（例如在其 [Office 365](https://portal.office.com) 门户或[访问面板](https://myapps.microsoft.com)体验的右上角）更改其密码。 用户可以从[访问面板个人资料页](https://account.activedirectory.windowsazure.com/r#/profile)更改其密码。 如果用户的密码已过期，还可以在 Azure AD 登录页上自动要求他们更改其密码。 最后，如果用户希望更改其密码，可以直接浏览到 [Azure AD 密码更改门户](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)。
   >
   >
-* **问：当用户的本地密码过期时，他们是否可以在 Office 门户中收到通知？**
+* **问：当用户本地密码过期时，是否可以在 Office 门户中收到通知？**
 
   > **答：** 可以。如果使用 Active Directory 联合身份验证服务 (AD FS)，这在目前是可以的。 如果使用 AD FS，请按 [Sending password policy claims with AD FS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396)（使用 AD FS 发送密码策略声明）一文中的说明操作。 如果使用密码哈希同步，这在目前是不可以的。 我们不从本地目录同步密码策略，因此无法将过期通知发布到云体验。 在任一情况下，都还可以[通过 PowerShell 向其密码即将过期的用户发送通知](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx)。
   >
   >
-* **问：可否阻止用户更改其密码？**
+* 问：可否阻止用户更改其密码？****
 
-  > **答：** 对于仅限云的用户来说，不能阻止密码更改。 对于本地用户，可将“用户不能更改密码”选项设置为选定。 选定的用户不能更改其密码。
+  > **答：** 对于仅限云的用户来说，不能阻止密码更改。 对于本地用户，可将“用户不能更改密码”选项设置为选定。**** 选定的用户不能更改其密码。
   >
   >
 
@@ -230,12 +230,12 @@ ms.locfileid: "77061448"
   >
 * **问：密码管理报告中显示的行数是否存在上限？**
 
-  > **答：** 是。 任一密码管理报告都最多只能显示 75,000 行，不论是 UI 中正在显示的行数还是正在下载的行数都存在此限制。
+  > **答：** 是的。 任一密码管理报告都最多只能显示 75,000 行，不论是 UI 中正在显示的行数还是正在下载的行数都存在此限制。
   >
   >
 * **问：是否可以使用一个 API 来访问密码重置数据或注册报告数据？**
 
-  > **答：** 是。 若要了解如何才能访问密码重置报告数据流，请参阅[了解如何以编程方式访问密码重置报告事件](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent)。
+  > **答：** 是的。 若要了解如何才能访问密码重置报告数据流，请参阅[了解如何以编程方式访问密码重置报告事件](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent)。
   >
   >
 
@@ -246,7 +246,7 @@ ms.locfileid: "77061448"
   > **答：** 请参阅[密码写回的工作原理](howto-sspr-writeback.md)一文，了解有关启用密码写回时发生的情况以及数据如何通过系统流回本地环境的说明。
   >
   >
-* **问：密码写回需要多长时间才工作？是否和使用密码哈希同步一样也存在同步延迟？**
+* **问：密码写回需要多长时间才能工作？是否有同步延迟，就像密码哈希同步一样？**
 
   > **答：** 密码写回是即时的。 它是一种同步管道，其工作方式从根本上不同于密码哈希同步。 密码写回向用户提供关于其密码重置或更改操作成功的实时反馈。 成功的密码写回的平均时间少于 500 毫秒。
   >
@@ -268,10 +268,10 @@ ms.locfileid: "77061448"
   >
 * **问：密码写回是否会强制实施我的域密码策略？**
 
-  > **答：** 是。 密码写回会强制实施密码使用期限、历史记录、复杂性、筛选器以及可能对本地域密码实施的任何其他限制。
+  > **答：** 是的。 密码写回会强制实施密码使用期限、历史记录、复杂性、筛选器以及可能对本地域密码实施的任何其他限制。
   >
   >
-* **问：密码写回是否安全？如何确保我不会受到黑客攻击？**
+* **问：密码写回是否安全？ 我如何确保自己不会被黑客攻击？**
 
   > **答：** 是的。密码写回具有很高的安全性。 若要阅读有关密码写回服务实施的多个安全层的详细信息，请查看[密码写回概述](howto-sspr-writeback.md)一文中的[密码写回安全性](concept-sspr-writeback.md#password-writeback-security)部分。
   >
@@ -281,7 +281,7 @@ ms.locfileid: "77061448"
 
 * [如何成功推出 SSPR？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
-* [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
+* [注册进行自助服务密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
@@ -289,4 +289,4 @@ ms.locfileid: "77061448"
 * [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
-* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
+* [我觉得有些东西坏了。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)

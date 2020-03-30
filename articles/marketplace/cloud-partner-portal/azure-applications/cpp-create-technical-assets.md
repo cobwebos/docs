@@ -1,19 +1,18 @@
 ---
-title: 创建 Azure 应用程序技术资产 |Azure Marketplace
+title: 创建 Azure 应用程序技术资产 |Azure 应用商店
 description: 为 Azure 应用程序产品/服务创建技术资产。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: pabutler
-ms.openlocfilehash: c9abaab4597e9fea43a2f0dcabc0e4a527ed5a6a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 041b2133ed63a906d3fea3ab67890a0057151b9b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827603"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285259"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>准备 Azure 应用程序技术资产
 
@@ -31,7 +30,7 @@ ms.locfileid: "73827603"
 - [了解 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
 - 快速入门：
 
-  - [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates/)
+  - [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)
   - [GitHub Azure 快速入门模板](https://github.com/azure/azure-quickstart-templates)
   - [发布应用程序定义](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
   - [部署服务目录应用](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
@@ -45,7 +44,7 @@ ms.locfileid: "73827603"
   - 示例：
 
     - [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-    - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
+    - [Azure 电源外壳](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
     - [托管应用程序解决方案](https://docs.microsoft.com/azure/managed-applications/sample-projects)
 
 ## <a name="fundamental-technical-knowledge"></a>基础技术知识
@@ -64,7 +63,7 @@ ms.locfileid: "73827603"
 
 选择以下一种或两种脚本环境来帮助管理 Azure 应用程序：
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+- [Azure 电源外壳](https://docs.microsoft.com/powershell/azure/overview)
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 我们建议将以下工具添加到开发环境：

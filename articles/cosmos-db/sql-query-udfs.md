@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69614331"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB 中的用户定义函数 (UDF)
@@ -19,7 +19,7 @@ SQL API 支持用户定义函数 (UDF)。 使用标量 UDF，可以传入零个�
 
 API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 可将 UDF 注册到 SQL API，然后在 SQL 查询中引用它们。 事实上，UDF 经过精心设计，可从查询调用。 作为一种定理，UDF 不能像其他 JavaScript 类型（例如存储过程和触发器）一样访问上下文对象。 查询是只读的，可以在主要或次要副本上运行。 与其他 JavaScript 类型不同，UDF 只能在次要副本上运行。
 
-下面的示例在 Cosmos 数据库中的项容器下注册 UDF。 该示例创建了名为 `REGEX_MATCH` 的 UDF。 它接受两个 JSON 字符串值：`input` 和 `pattern`，并使用 JavaScript 的 `string.match()` 函数检查第一个值是否与第二个值中指定的模式相匹配。
+以下示例在 Cosmos 数据库中的某个项容器下注册一个 UDF。 该示例创建了名为 `REGEX_MATCH` 的 UDF。 它接受两个 JSON 字符串值：`input` 和 `pattern`，并使用 JavaScript 的 `string.match()` 函数检查第一个值是否与第二个值中指定的模式相匹配。
 
 ## <a name="examples"></a>示例
 
@@ -44,7 +44,7 @@ API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 �
     FROM Families
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -65,7 +65,7 @@ API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 �
     WHERE udf.REGEX_MATCH(Families.address.city, ".*eattle")
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -107,7 +107,7 @@ API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 �
     FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
      [
@@ -128,6 +128,6 @@ API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB 简介](introduction.md)
-- [系统函数](sql-query-system-functions.md)
-- [聚合](sql-query-aggregates.md)
+- [Azure 宇宙 DB 简介](introduction.md)
+- [系统功能](sql-query-system-functions.md)
+- [集 料](sql-query-aggregates.md)

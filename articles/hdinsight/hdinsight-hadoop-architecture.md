@@ -1,6 +1,6 @@
 ---
 title: Apache Hadoop 体系结构 - Azure HDInsight
-description: 介绍如何在 Azure HDInsight 群集上 Apache Hadoop 存储和处理。
+description: 描述 Azure HDInsight 群集上的 Apache Hadoop 存储和处理。
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
 ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162202"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 体系结构
 
-[Apache Hadoop](https://hadoop.apache.org/) 包括两个核心组件：提供存储的 [Apache Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html)，以及提供处理功能的 [Apache Hadoop Yet Another Resource Negotiator (YARN)](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)。 有了存储和处理功能，群集就可以运行 [MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) 程序来执行所需的数据处理。
+[Apache Hadoop](https://hadoop.apache.org/) 包括两个核心组件：提供存储的 [Apache Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html)，以及提供处理功能的 [Apache Hadoop Yet Another Resource Negotiator (YARN)](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)。 借助存储和处理功能，群集能够运行[MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)程序以执行所需的数据处理。
 
 > [!NOTE]  
 > 通常不会将 HDFS 部署在 HDInsight 群集中来提供存储， 而是由 Hadoop 组件来使用 HDFS 兼容接口层。 实际的存储功能由 Azure 存储或 Azure Data Lake Storage 提供。 就 Hadoop 来说，在 HDInsight 群集上执行的 MapReduce 作业运行起来就像 HDFS 存在一样，因此不需更改即可满足其存储需求。 在 Hadoop on HDInsight 中，存储是外包的，但 YARN 处理仍为核心组件。 有关详细信息，请参阅 [Azure HDInsight 简介](hadoop/apache-hadoop-introduction.md)。
@@ -37,7 +37,7 @@ ResourceManager 将群集计算资源授予 MapReduce 作业之类的应用程�
 
 ResourceManager 还运行一个 Web 服务器进程，该进程提供一个 Web 用户接口，用于监视应用程序的状态。
 
-当用户提交要在群集上运行的 MapReduce 应用程序时，该应用程序会提交给 ResourceManager。 反过来，ResourceManager 会在可用的 NodeManager 节点上分配一个容器。 NodeManager 节点是应用程序的实际执行位置。 第一个分配的容器运行名为 ApplicationMaster 的特殊应用程序。 该 ApplicationMaster 负责获取资源，这些资源采用后续容器的形式，是运行提交的应用程序所必需的。 ApplicationMaster 会检查应用程序的阶段（例如映射阶段和化简阶段），并会将需要处理的数据量考虑进去。 ApplicationMaster 然后会代表应用程序从 ResourceManager 请求（协商）资源。 ResourceManager 反过来会将群集中 NodeManager 提供的资源授予 ApplicationMaster，供其在执行应用程序时使用。
+当用户提交要在群集上运行的 MapReduce 应用程序时，该应用程序会提交给 ResourceManager。 反过来，ResourceManager 会在可用的 NodeManager 节点上分配一个容器。 NodeManager 节点是应用程序的实际执行位置。 第一个分配的容器运行名为 ApplicationMaster 的特殊应用程序。 该 ApplicationMaster 负责获取资源，这些资源采用后续容器的形式，是运行提交的应用程序所必需的。 ApplicationMaster 会检查应用程序的阶段（例如映射阶段和化简阶段），并会将需要处理的数据量考虑进去。 ApplicationMaster 然后会代表应用程序从 ResourceManager 请求（协商）** 资源。 ResourceManager 反过来会将群集中 NodeManager 提供的资源授予 ApplicationMaster，供其在执行应用程序时使用。
 
 NodeManagers 先运行应用程序包含的任务，然后将其进度和状态回头报告给 ApplicationMaster。 ApplicationMaster 则将应用程序的状态报告给 ResourceManager。 ResourceManager 将任何结果返回给客户端。
 
@@ -49,24 +49,24 @@ NodeManagers 先运行应用程序包含的任务，然后将其进度和状态�
 
 ## <a name="soft-delete"></a>软删除
 
-若要从存储帐户中删除文件，请参阅：
+要从存储帐户中删除文件，请参阅：
 
 ### <a name="azure-storage"></a>Azure 存储
 
 * [Azure 存储 Blob 的软删除](../storage/blobs/storage-blob-soft-delete.md)
-* [删除 Blob](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+* [取消删除 Blob](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
 
-### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage 第1代
+### <a name="azure-data-lake-storage-gen-1"></a>Azure 数据存储第 1 代
 
-[还原-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+[还原-阿兹达湖存储删除项目](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
 
 ### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
 
 [Azure Data Lake Storage Gen2 的已知问题](../storage/blobs/data-lake-storage-known-issues.md)
 
-## <a name="trash-purging"></a>清除清除
+## <a name="trash-purging"></a>垃圾清除
 
-**HDFS** > **高级核心站点**中的 `fs.trash.interval` 属性应该保留默认值 `0` 因为你不应将任何数据存储在本地文件系统上。 此值不影响远程存储帐户（WASB、ADLS GEN1、ABFS）
+`fs.trash.interval` **HDFS** > **高级核心站点**的属性应保留为默认值`0`，因为不应在本地文件系统上存储任何数据。 此值不会影响远程存储帐户（WASB、ADLS GEN1、ABFS）
 
 ## <a name="next-steps"></a>后续步骤
 

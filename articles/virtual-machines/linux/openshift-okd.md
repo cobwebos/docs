@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
 ms.openlocfilehash: 6ecae09b0efbc0e35e591b31dbb54fb49ce101b3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035405"
 ---
 # <a name="deploy-okd-in-azure"></a>在 Azure 中部署 OKD
 
 可使用两种方式之一在 Azure 中部署 OKD（以前称为 OpenShift Origin）：
 
-- 可以手动部署所有必要的 Azure 基础结构组件，然后按照 [OKD 文档](https://docs.okd.io)进行操作。
+- 您可以手动部署所有必要的 Azure 基础结构组件，然后按照[OKD 文档](https://docs.okd.io)操作。
 - 也可使用现有的[资源管理器模板](https://github.com/Microsoft/openshift-origin)，该模板可简化 OKD 群集的部署。
 
 ## <a name="deploy-using-the-okd-template"></a>使用 OKD 模板进行部署
@@ -40,7 +40,7 @@ ms.locfileid: "74035405"
 
 [OKD 模板](https://github.com/Microsoft/openshift-origin)具有可用于不同 OKD 版本的多个分支。  根据你的需求，可以直接从存储库进行部署，也可以将存储库进行分支，并在部署前进行自定义更改。
 
-对 `appId` 参数使用前面创建的服务主体中的 `aadClientId` 值。
+对 `aadClientId` 参数使用前面创建的服务主体中的 `appId` 值。
 
 下面是一个名为 azuredeploy.parameters.json 的参数文件示例，其中包含了所有必需的输入。
 
@@ -116,7 +116,7 @@ ms.locfileid: "74035405"
 }
 ```
 
-将参数替换为你的特定信息。
+请将参数替换为你的特定信息。
 
 不同的版本可能具有不同的参数，因此，请验证你使用的分支的必需参数。
 
@@ -143,7 +143,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
 }
 ```
 
-如果不想在命令行上呆着等待部署完成，请将 `--no-wait` 添加为组部署的选项之一。 可以从 Azure 门户中在资源组的部署部分中检索部署的输出。
+如果不想在命令行上等着部署完成，请将 `--no-wait` 添加为组部署的选项之一。 可以在 Azure 门户中资源组的部署部分检索部署的输出。
 
 ## <a name="connect-to-the-okd-cluster"></a>连接至 OKD 群集
 

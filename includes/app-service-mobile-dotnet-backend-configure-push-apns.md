@@ -5,23 +5,23 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 346f63109e673692d425ede6bdbcb6f633af80bb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857328"
 ---
-**.NET 后端 (C#)** ：
+**.NET 后端 (C#)**：
   
-1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”，搜索 `Microsoft.Azure.NotificationHubs`，并单击“安装”。 这会安装通知中心库，以便从后端发送通知。
-2. 在后端的 Visual Studio 项目中，依次打开“控制器” > “TodoItemController.cs”。 在文件的顶部，添加以下 `using` 语句：
+1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”****，搜索 `Microsoft.Azure.NotificationHubs`，并单击“安装”****。 这会安装通知中心库，以便从后端发送通知。
+2. 在后端的可视化工作室项目中，打开**控制器** > **TodoItemController.cs**。 在文件的顶部，添加以下 `using` 语句：
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
     using Microsoft.Azure.NotificationHubs;
     ```
 
-3. 将 `PostTodoItem` 方法替换为以下代码：  
+3. 将 `PostTodoItem`方法替换为以下代码：  
 
     ```csharp
     public async Task<IHttpActionResult> PostTodoItem(TodoItem item)

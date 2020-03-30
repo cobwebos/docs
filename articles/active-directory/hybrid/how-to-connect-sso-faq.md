@@ -17,64 +17,64 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7241c8dfbedb24f95c29ea9e1c3f763218a5668d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72025674"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
-本文解决了有关 Azure Active Directory 无缝单一登录（无缝 SSO）的常见问题。 请随时返回查看更新内容。
+本文解决了有关 Azure Active Directory 无缝单一登录（无缝 SSO）的常见问题。 请随时返回查看新内容。
 
-**问：无缝 SSO 使用的登录方法**
+**问：无缝 SSO 使用哪些登录方法**
 
 无缝 SSO 可与[密码哈希同步](how-to-connect-password-hash-synchronization.md)或[传递身份验证](how-to-connect-pta.md)登录方法结合使用。 但是，此功能不能用于 Active Directory 联合身份验证服务 (ADFS)。
 
-**问：无缝 SSO 是否为免费功能？**
+**问：无缝 SSO 是否是免费的功能？**
 
 Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure AD 即可使用此功能。
 
-**问：在[Microsoft Azure 德国云和](https://www.microsoft.de/cloud-deutschland) [Microsoft Azure 政府云中](https://azure.microsoft.com/features/gov/)是否提供无缝 SSO？**
+**问：[在微软 Azure 德国云](https://www.microsoft.de/cloud-deutschland)和 Microsoft Azure[政府云](https://azure.microsoft.com/features/gov/)中是否提供无缝 SSO？**
 
-不能。 无缝 SSO 只能在全球范围内的 Azure AD 实例中使用。
+不是。 无缝 SSO 只能在全球范围内的 Azure AD 实例中使用。
 
-**问：哪些应用程序利用无缝 SSO 的 `domain_hint` 或 `login_hint` 参数功能？**
+**问：哪些应用程序利用了无缝`domain_hint`SSO 的优势或`login_hint`参数功能？**
 
 以下非详尽列表列出了可将这些参数发送到 Azure AD 的部分应用程序，因此使用无缝 SSO 可为用户提供无提示登录体验（即用户无需输入其用户名或密码）：
 
 | 应用程序名称 | 可供使用的应用程序 URL |
 | -- | -- |
-| 访问面板 | https:\//myapps.microsoft.com/contoso.com |
+| 访问面板 | https：\//myapps.microsoft.com/contoso.com |
 | Outlook 网页版 | https：\//outlook.office365.com/contoso.com |
-| Office 365 门户 | https：\//portal.office.com？ domain_hint = contoso，https：\//www.office.com？ domain_hint = contoso .com |
+| Office 365 门户 | https：\//portal.office.com？domain_hint_contoso.com， https：\//www.office.com？domain_hint_contoso.com |
 
-此外, 如果应用程序将登录请求发送到 Azure AD 的终结点 (即, https:\//login.microsoftonline.com/contoso.com/<), 则用户将获得无提示登录体验。> 或 https:\//login.microsoftonline.com/<tenant_ID>/<..>-而不是 Azure AD 公用终结点, 即 https:\//login.microsoftonline.com/common/<...>。 以下为提出此类登录请求的应用程序的非详尽列表。
+此外，如果应用程序向 Azure AD 设置为租户的终结点（即 https：/login.microsoftonline.com/contoso.com/<..> 或 https：/login.microsoftonline.com/<tenant_ID>/<）\/\/发送登录请求，则用户可以获得静默登录体验。> - 而不是 Azure AD 的常见终结点 - 即\/https： /login.microsoftonline.com/common/<...>。 以下为提出此类登录请求的应用程序的非详尽列表。
 
 | 应用程序名称 | 可供使用的应用程序 URL |
 | -- | -- |
-| SharePoint Online | https:\//contoso.sharepoint.com |
-| Azure 门户 | https:\//portal.azure.com/contoso.com |
+| SharePoint Online | https：\//contoso.sharepoint.com |
+| Azure 门户 | https：\//portal.azure.com/contoso.com |
 
 在上述表中，将“contoso.com”替换为域名，为租户获取正确的应用程序 URL。
 
 如果希望其他应用程序具备无提示登录体验，请在反馈部分告知我们。
 
-**问：无缝 SSO 是否支持 `Alternate ID` 作为用户名，而不是 `userPrincipalName`？**
+**问：无缝 SSO`Alternate ID`支持作为用户名，而不是`userPrincipalName`？**
 
-可以。 在 Azure AD Connect 中进行配置时，无缝 SSO 支持将 `Alternate ID` 作为用户名，如[此处](how-to-connect-install-custom.md)所示。 并非所有 Office 365 应用程序都支持 `Alternate ID`。 有关支持声明，请参阅具体应用程序文档。
+是的。 在 Azure AD Connect 中进行配置时，无缝 SSO 支持将 `Alternate ID` 作为用户名，如[此处](how-to-connect-install-custom.md)所示。 并非所有 Office 365 应用程序都支持 `Alternate ID`。 有关支持声明，请参阅特定应用程序文档。
 
-**问： [Azure AD Join](../active-directory-azureadjoin-overview.md)和无缝 SSO 提供的单一登录体验有何区别？**
+**问[：Azure AD 联接](../active-directory-azureadjoin-overview.md)和无缝 SSO 提供的单一登录体验之间的区别是什么？**
 
-如果用户的设备注册了 Azure AD，[Azure AD 加入](../active-directory-azureadjoin-overview.md)会向用户提供 SSO。 这些设备不必已加入域。 使用主刷新令牌或 PRT（而非 Kerberos）提供 SSO。 用户体验在 Windows 10 设备上最佳。 在 Microsoft Edge 浏览器上，SSO 会自动实现。 也可在 Chrome 上实现，但需要使用浏览器扩展插件。
+如果用户的设备注册了 Azure AD，[Azure AD 加入](../active-directory-azureadjoin-overview.md)会向用户提供 SSO。 这些设备不必已加入域。 使用主刷新令牌或 PRT（而非 Kerberos）提供 SSO。**** 用户体验在 Windows 10 设备上最佳。 在 Microsoft Edge 浏览器上，SSO 会自动实现。 也可在 Chrome 上实现，但需要使用浏览器扩展插件。
 
 可同时在租户上使用 Azure AD 加入和无缝 SSO。 这两种功能互补。 如果同时开启这两项功能，将先通过 Azure AD 加入实现 SSO，再进行无缝 SSO。
 
-**问：我希望使用 Azure AD 注册非 Windows 10 设备，而无需使用 AD FS。是否可以改用无缝 SSO？**
+**问：我想使用 Azure AD 注册非 Windows 10 设备，而无需使用 AD FS。我可以改用无缝 SSO 吗？**
 
 可以，此方案需要版本 2.1 或更高版本的[工作区加入客户端](https://www.microsoft.com/download/details.aspx?id=53554)。
 
-**问：如何滚动 `AZUREADSSOACC` 计算机帐户的 Kerberos 解密密钥？**
+**问：如何滚动计算机帐户的 Kerberos 解密密钥`AZUREADSSOACC`？**
 
 请务必在本地 AD 林中频繁滚动更新 `AZUREADSSOACC` 计算机帐户（代表 Azure AD）的 Kerberos 解密密钥。
 
@@ -83,7 +83,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
 在运行 Azure AD Connect 的本地服务器上执行以下步骤：
 
-   **步骤1。获取已启用无缝 SSO 的 AD 林列表**
+   **步骤 1.获取已启用无缝 SSO 的 AD 林列表**
 
    1. 首先，下载并安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)。
    2. 导航到 `%programfiles%\Microsoft Azure Active Directory Connect` 文件夹。
@@ -91,30 +91,30 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
    4. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令可提供一个弹出窗口，用以输入租户的全局管理员凭据。
    5. 调用 `Get-AzureADSSOStatus | ConvertFrom-Json`。 此命令可提供已在其中启用了此功能的 AD 林列表（请查看“域”列表）。
 
-   **步骤2。在已设置的每个 AD 林上更新 Kerberos 解密密钥**
+   **步骤 2.更新设置它的每个 AD 林上的 Kerberos 解密密钥**
 
    1. 调用 `$creds = Get-Credential`。 出现提示时，输入目标 AD 林的域管理员凭据。
 
    > [!NOTE]
-   >必须以 SAM 帐户名称格式（contoso\johndoe 或 com\johndoe）输入域管理员凭据用户名。 我们使用用户名的域部分通过 DNS 查找域管理员的域控制器。
+   >域管理员凭据用户名必须以 SAM 帐户名称格式（contoso_johndoe 或 contoso.com_johndoe）输入。 我们使用用户名的域部分来查找使用 DNS 的域管理员的域控制器。
 
    >[!NOTE]
-   >使用的域管理员帐户不得是受保护用户组的成员。 如果是这样，则操作将失败。
+   >使用的域管理员帐户不能是受保护用户组的成员。 如果是这样，操作将失败。
 
    2. 调用 `Update-AzureADSSOForest -OnPremCredentials $creds`。 此命令会在此特定 AD 林中更新 `AZUREADSSOACC` 计算机帐户的 Kerberos 解密密钥，并在 Azure AD 中对其进行更新。
    3. 针对已设置了此功能的每个 AD 林重复上述步骤。
 
    >[!IMPORTANT]
-   >确保运行  _命令_没有`Update-AzureADSSOForest`超过一次。 否则，在用户的 Kerberos 票证过期并由本地 Active Directory 再次发布之前，此功能将停止运行。
+   >确保运行 `Update-AzureADSSOForest` 命令_没有_超过一次。 否则，在用户的 Kerberos 票证过期并由本地 Active Directory 再次发布之前，此功能将停止运行。
 
 **问：如何禁用无缝 SSO？**
 
-   **步骤1。在租户上禁用该功能**
+   **步骤 1.禁用租户上的功能**
 
-   **选项 A：使用 Azure AD Connect 禁用**
+   **选项 A：使用 Azure AD Connect 进行禁用**
     
-   1. 运行 Azure AD Connect，选择“更改用户登录页”，并单击“下一步”。
-   2. 取消选中“启用单一登录”选项。 在向导中继续操作。
+   1. 运行 Azure AD Connect，选择“更改用户登录页”，并单击“下一步”。********
+   2. 取消选中“启用单一登录”选项。**** 在向导中继续操作。
 
    完成向导后，将在租户上禁用无缝 SSO。 但是，屏幕上将显示以下消息：
 
@@ -122,7 +122,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
 
    若要完成清理过程，请在运行 Azure AD Connect 的本地服务器上执行步骤 2 和 3。
 
-   **选项 B：使用 PowerShell 禁用**
+   **选项 B：使用 PowerShell 进行禁用**
 
    在运行 Azure AD Connect 的本地服务器上运行以下步骤：
 
@@ -133,9 +133,9 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
    5. 调用 `Enable-AzureADSSO -Enable $false`。
 
    >[!IMPORTANT]
-   >使用 PowerShell 禁用无缝 SSO 不会更改 Azure AD Connect 中的状态。 无缝 SSO 在“更改用户登录”页面中将显示为已启用。
+   >使用 PowerShell 禁用无缝 SSO 不会更改 Azure AD Connect 中的状态。 无缝 SSO 在“更改用户登录”**** 页面中将显示为已启用。
 
-   **步骤2。获取已启用无缝 SSO 的 AD 林列表**
+   **步骤 2.获取已启用无缝 SSO 的 AD 林列表**
 
    如果已使用 Azure AD Connect 禁用了无缝 SSO，请依次执行下面的任务 1 到 4。 但是，如果是使用 PowerShell 禁用了无缝 SSO，请跳转到下面的任务 5。
 
@@ -145,11 +145,11 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
    4. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令可提供一个弹出窗口，用以输入租户的全局管理员凭据。
    5. 调用 `Get-AzureADSSOStatus | ConvertFrom-Json`。 此命令可提供已在其中启用了此功能的 AD 林列表（请查看“域”列表）。
 
-   **步骤3。从列出的每个 AD 林中手动删除 `AZUREADSSOACCT` 计算机帐户。**
+   **步骤 3.手动从您看到`AZUREADSSOACCT`列出的每个 AD 林中删除计算机帐户。**
 
 ## <a name="next-steps"></a>后续步骤
 
-- [**快速入门**](how-to-connect-sso-quick-start.md)-Azure AD 无缝 SSO 获取并运行。
-- [深入技术探究](how-to-connect-sso-how-it-works.md) - 了解此功能如何运作。
-- [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+- [**快速入门**](how-to-connect-sso-quick-start.md)- 启动并运行 Azure AD 无缝 SSO。
+- [深入技术探究****](how-to-connect-sso-how-it-works.md) - 了解此功能如何运作。
+- [**故障排除**](tshoot-connect-sso.md)- 了解如何使用该功能解决常见问题。
+- [UserVoice****](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。

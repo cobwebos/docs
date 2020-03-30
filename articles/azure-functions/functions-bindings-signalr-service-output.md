@@ -1,31 +1,31 @@
 ---
-title: Azure Functions SignalR 服务输出绑定
-description: 了解如何从 Azure Functions 发送 SignalR Service 消息。
+title: Azure 函数信令器服务输出绑定
+description: 了解如何从 Azure 函数发送 SignalR 服务消息。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77530245"
 ---
-# <a name="signalr-service-output-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务输出绑定
+# <a name="signalr-service-output-binding-for-azure-functions"></a>用于 Azure 函数的信号R服务输出绑定
 
-使用 Azure SignalR 服务，通过 *SignalR* 输出绑定发送一条或多条消息。 可以将消息广播到：
+使用 Azure SignalR 服务，通过 *SignalR* 输出绑定发送一条或多条消息。 您可以将消息广播到：
 
 - 所有连接的客户端
-- 已连接到特定用户的客户端
+- 已连接的客户端已验证给特定用户
 
-输出绑定还允许管理组。
+输出绑定还允许您管理组。
 
-有关设置和配置的详细信息，请参阅[概述](functions-bindings-signalr-service.md)。
+有关设置和配置详细信息的信息，请参阅[概述](functions-bindings-signalr-service.md)。
 
 ## <a name="broadcast-to-all-clients"></a>广播到所有客户端
 
-下面的示例演示一个函数，该函数使用输出绑定将消息发送到所有连接的客户端。 *目标*是要在每个客户端上调用的方法的名称。 *Arguments*属性是要传递给客户端方法的零个或多个对象的数组。
+以下示例演示使用输出绑定将一条消息发送给所有连接的客户端的函数。 target 是需要在每个客户端上调用的方法的名称**。 *参数*属性是要传递给客户端方法的零个或多个对象的数组。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -44,7 +44,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 下面是 *function.json* 文件中的绑定数据：
 
@@ -60,7 +60,7 @@ public static Task SendMessage(
 }
 ```
 
-脚本代码如下C#所示：
+C# 脚本代码如下所示：
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -79,7 +79,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 下面是 *function.json* 文件中的绑定数据：
 
@@ -155,7 +155,7 @@ public SignalRMessage sendMessage(
 
 ## <a name="send-to-a-user"></a>发送给用户
 
-可以通过在 SignalR 消息中设置*用户 ID* ，将消息只发送到已通过用户身份验证的连接。
+可以设置 SignalR 消息的用户 ID，以便将消息只发送给已针对某个用户进行身份验证的连接**。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -176,7 +176,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 示例 function.json：
 
@@ -190,7 +190,7 @@ public static Task SendMessage(
 }
 ```
 
-脚本代码如下C#所示：
+C# 脚本代码如下所示：
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -211,7 +211,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 示例 function.json：
 
@@ -288,9 +288,9 @@ public SignalRMessage sendMessage(
 
 ---
 
-## <a name="send-to-a-group"></a>发送到组
+## <a name="send-to-a-group"></a>发送给组
 
-您只能将消息发送到已添加到组的连接，方法是在 SignalR 消息中设置*组名称*。
+可以设置 SignalR 消息的组名称，以便将消息只发送给已添加到某个组的连接**。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -311,7 +311,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 示例 function.json：
 
@@ -325,7 +325,7 @@ public static Task SendMessage(
 }
 ```
 
-脚本代码如下C#所示：
+C# 脚本代码如下所示：
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -346,7 +346,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 示例 function.json：
 
@@ -425,13 +425,13 @@ public SignalRMessage sendMessage(
 
 ## <a name="group-management"></a>组管理
 
-SignalR 服务允许将用户添加到组。 然后，可以将消息发送到组。 你可以使用 `SignalR` 输出绑定来管理用户的组成员身份。
+SignalR 服务允许将用户添加到组。 然后即可将消息发送到组。 可以使用 `SignalR` 输出绑定来管理用户的组成员身份。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="add-user-to-a-group"></a>将用户添加到组
 
-下面的示例将用户添加到组。
+以下示例将用户添加到组。
 
 ```csharp
 [FunctionName("addToGroup")]
@@ -454,7 +454,7 @@ public static Task AddToGroup(
 
 ### <a name="remove-user-from-a-group"></a>从组中删除用户
 
-下面的示例从组中删除用户。
+以下示例从组中删除用户。
 
 ```csharp
 [FunctionName("removeFromGroup")]
@@ -476,15 +476,15 @@ public static Task RemoveFromGroup(
 ```
 
 > [!NOTE]
-> 为了正确绑定 `ClaimsPrincipal`，必须在 Azure Functions 中配置身份验证设置。
+> 若要正确绑定 `ClaimsPrincipal`，必须已经在 Azure Functions 中配置身份验证设置。
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 ### <a name="add-user-to-a-group"></a>将用户添加到组
 
-下面的示例将用户添加到组。
+以下示例将用户添加到组。
 
-示例*函数。 json*
+函数*示例函数.json*
 
 ```json
 {
@@ -496,7 +496,7 @@ public static Task RemoveFromGroup(
 }
 ```
 
-*运行 run.csx*
+*运行.csx*
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -520,9 +520,9 @@ public static Task Run(
 
 ### <a name="remove-user-from-a-group"></a>从组中删除用户
 
-下面的示例从组中删除用户。
+以下示例从组中删除用户。
 
-示例*函数。 json*
+函数*示例函数.json*
 
 ```json
 {
@@ -534,7 +534,7 @@ public static Task Run(
 }
 ```
 
-*运行 run.csx*
+*运行.csx*
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -557,15 +557,15 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> 为了正确绑定 `ClaimsPrincipal`，必须在 Azure Functions 中配置身份验证设置。
+> 若要正确绑定 `ClaimsPrincipal`，必须已经在 Azure Functions 中配置身份验证设置。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ### <a name="add-user-to-a-group"></a>将用户添加到组
 
-下面的示例将用户添加到组。
+以下示例将用户添加到组。
 
-示例*函数。 json*
+函数*示例函数.json*
 
 ```json
 {
@@ -591,9 +591,9 @@ module.exports = async function (context, req) {
 
 ### <a name="remove-user-from-a-group"></a>从组中删除用户
 
-下面的示例从组中删除用户。
+以下示例从组中删除用户。
 
-示例*函数。 json*
+函数*示例函数.json*
 
 ```json
 {
@@ -621,9 +621,9 @@ module.exports = async function (context, req) {
 
 ### <a name="add-user-to-a-group"></a>将用户添加到组
 
-下面的示例将用户添加到组。
+以下示例将用户添加到组。
 
-示例*函数。 json*
+函数*示例函数.json*
 
 ```json
 {
@@ -635,7 +635,7 @@ module.exports = async function (context, req) {
 }
 ```
 
-*\_\_init. py__*
+*\_\_py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -648,9 +648,9 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 
 ### <a name="remove-user-from-a-group"></a>从组中删除用户
 
-下面的示例从组中删除用户。
+以下示例从组中删除用户。
 
-示例*函数。 json*
+函数*示例函数.json*
 
 ```json
 {
@@ -662,7 +662,7 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 }
 ```
 
-*\_\_init. py__*
+*\_\_py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -677,7 +677,7 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 
 ### <a name="add-user-to-a-group"></a>将用户添加到组
 
-下面的示例将用户添加到组。
+以下示例将用户添加到组。
 
 ```java
 @FunctionName("addToGroup")
@@ -699,7 +699,7 @@ public SignalRGroupAction addToGroup(
 
 ### <a name="remove-user-from-a-group"></a>从组中删除用户
 
-下面的示例从组中删除用户。
+以下示例从组中删除用户。
 
 ```java
 @FunctionName("removeFromGroup")
@@ -721,32 +721,32 @@ public SignalRGroupAction removeFromGroup(
 
 ---
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-下表解释了在 function.json 文件和 `SignalRConnectionInfo` 特性中设置的绑定配置属性。
+下表介绍了您在*函数.json*文件和`SignalRConnectionInfo`属性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-|type| 不适用 | 必须设置为 `signalRConnectionInfo`。|
-|direction| 不适用 | 必须设置为 `in`。|
-|name| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
-|**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
-|**userId**|**UserId**| 可选：将要在访问密钥令牌中设置的用户标识符声明的值。 |
-|**connectionStringSetting**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
+|**type**| 不适用 | 必须设置为 `signalRConnectionInfo`。|
+|direction****| 不适用 | 必须设置为 `in`。|
+|**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
+|**中心名称**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
+|**用户 Id**|**用户 Id**| 可选：将要在访问密钥令牌中设置的用户标识符声明的值。 |
+|**连接字符串设置**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
 
 ### <a name="signalr"></a>SignalR
 
-下表解释了在 function.json 文件和 `SignalR` 特性中设置的绑定配置属性。
+下表介绍了您在*函数.json*文件和`SignalR`属性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-|type| 不适用 | 必须设置为 `signalR`。|
-|direction| 不适用 | 必须设置为 `out`。|
-|name| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
-|**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
-|**connectionStringSetting**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
+|**type**| 不适用 | 必须设置为 `signalR`。|
+|direction****| 不适用 | 必须设置为 `out`。|
+|**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
+|**中心名称**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
+|**连接字符串设置**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

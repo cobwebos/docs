@@ -1,5 +1,5 @@
 ---
-title: 跨横向扩展的云数据库进行报告
+title: 跨扩展云数据库进行报告
 description: 如何对横向分区设置弹性查询
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
 ms.openlocfilehash: 79abaade22fc107fa4c848607ff48232eeeb58ad
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823759"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>跨扩展云数据库进行报告（预览）
@@ -41,7 +41,7 @@ ms.locfileid: "73823759"
 
 1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)（创建外部数据源）
+3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
 4. [创建外部表](https://msdn.microsoft.com/library/dn935021.aspx)
 
 ## <a name="11-create-database-scoped-master-key-and-credentials"></a>1.1 创建数据库范围的主密钥和凭据
@@ -54,7 +54,7 @@ ms.locfileid: "73823759"
     [;]
 
 > [!NOTE]
-> 请确保“*username\<”\>* 中不包括任何“*servername”\@* 后缀。
+> 确保 *"\<\>用户名"* 不包含任何 *"\@服务器名称"* 后缀。
 
 ## <a name="12-create-external-data-sources"></a>1.2 创建外部数据源
 
@@ -85,7 +85,7 @@ ms.locfileid: "73823759"
 
     select * from sys.external_data_sources;
 
-外部数据源引用分片映射。 然后，弹性查询使用外部数据源和基础分片映射枚举参与数据层的数据库。
+外部数据源引用分片映射。 然后，弹性查询使用外部数据源和基础分片映射，枚举参与数据层的数据库。
 在弹性查询处理过程中，相同的凭据用于读取分片映射和访问上分片的数据。
 
 ## <a name="13-create-external-tables"></a>1.3 创建外部表
@@ -142,9 +142,9 @@ SCHEMA\_NAME 和 OBJECT\_NAME 子句将外部表定义映射到不同架构的�
 
 DISTRIBUTION 子句指定用于此表的数据分布。 查询处理器利用 DISTRIBUTION 子句中提供的信息来构建最有效的查询计划。
 
-1. **SHARDED** 表示数据在各数据库之间横向分区。 数据分布的分区键为 **<sharding_column_name>** 参数。
-2. **REPLICATED** 表示每个数据库都存在表的相同副本。 要负责确保各数据库上的副本是相同的。
-3. **ROUND\_ROBIN** 表示使用依赖于应用程序的分布方法对表进行横向分区。
+1. **SHARDED**表示数据在数据库中水平分区。 数据分布的分区键为 **<sharding_column_name>** 参数。
+2. **REPLICATED**表示每个数据库上都有表的相同副本。 要负责确保各数据库上的副本是相同的。
+3. **ROUND\_ROBIN**表示使用与应用程序相关的分发方法对表进行水平分区。
 
 **数据层引用**：外部表 DDL 引用外部数据源。 外部数据源指定分片映射，后者为外部表提供在数据层中找到所有数据库所需的信息。
 
@@ -184,7 +184,7 @@ DISTRIBUTION 子句指定用于此表的数据分布。 查询处理器利用 DI
 * 参数声明 (nvarchar) - 可选：在查询参数（如 sp_executesql）中使用的参数的字符串（包含数据类型定义）。
 * 参数值列表 - 可选：以逗号分隔的参数值（如 sp_executesql）的列表。
 
-sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到分片映射管理器数据库和远程数据库。  
+Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到分片映射管理器数据库和远程数据库。  
 
 示例：
 
@@ -198,7 +198,7 @@ sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 
 可以使用常规 SQL Server 连接字符串将应用程序、BI 和数据集成工具连接到具有外部表定义的数据库。 请确保支持将 SQL Server 用作工具的数据源。 然后，引用弹性查询数据库，就像引用连接到工具的其他任何 SQL Server 数据库一样，并从工具或应用程序使用外部表，就像使用本地表一样。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 * 确保已向弹性查询终结点数据库授予通过 SQL 数据库防火墙访问分片映射数据库和所有分片的权限。  
 * 验证或强制执行由外部表定义的数据分布。 如果实际的数据分布不同于表定义中指定的分布，查询可能会产生意外的结果。

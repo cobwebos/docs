@@ -1,6 +1,6 @@
 ---
 title: '从 Azure Databricks 连接到不同数据源 '
-description: 了解如何从 Azure Databricks 连接到 Azure SQL 数据库、Azure Data Lake Store、blob 存储、Cosmos DB、事件中心和 Azure SQL 数据仓库。
+description: 了解如何从 Azure 数据块连接到 Azure SQL 数据库、Azure 数据湖存储、Blob 存储、宇宙数据库、事件中心以及 Azure SQL 数据仓库。
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
 ms.openlocfilehash: 80ec9b2bbf10d8f500e7f9e0369faca3b9663633
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74129383"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>从 Azure Databricks 连接到数据源
@@ -31,9 +31,9 @@ ms.locfileid: "74129383"
 - [Azure SQL 数据库](/azure/databricks/data/data-sources/sql-databases)
 
     此链接提供了用于使用 JDBC 连接到 SQL 数据库的数据帧 API，并介绍了如何控制通过 JDBC 接口进行的读取操作的并行度。 本主题提供了使用 Scala API 的详细示例，并在末尾提供了 Python 和 Spark SQL 的简略示例。
-- [Azure Data Lake 存储](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)
+- [Azure Data Lake Storage](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)
 
-    此链接提供了有关如何使用 Azure Active Directory 服务主体向 Azure Data Lake Storage 进行身份验证的示例。 它还提供了有关如何从 Azure Databricks 访问 Azure Data Lake Storage 中的数据的说明。
+    此链接提供了如何使用 Azure 活动目录服务主体对 Azure 数据湖存储进行身份验证的示例。 它还提供有关如何从 Azure 数据块访问 Azure 数据湖存储中的数据的说明。
 
 - [Azure Blob 存储](/azure/databricks/data/data-sources/azure/azure-storage)
 

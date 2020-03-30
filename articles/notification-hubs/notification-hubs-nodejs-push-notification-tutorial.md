@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71213187"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
@@ -33,7 +33,7 @@ ms.locfileid: "71213187"
 > [!IMPORTANT]
 > 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，请通过 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)花费几分钟创建免费试用帐户。
 
-本指南介绍如何借助 Azure 通知中心，直接从 [Node.js](https://nodejs.org) 应用程序发送推送通知。
+本指南介绍如何在 Azure 通知中心的帮助下直接从[Node.js](https://nodejs.org)应用程序发送推送通知。
 
 涵盖的方案包括在下列平台将推送通知发送到应用程序：
 
@@ -48,7 +48,7 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
-本教程的第一步是创建新的空白 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][nodejswebsite]、使用 Windows PowerShell 创建 [Node.js 云服务][Node.js Cloud Service]或[使用 WebMatrix 创建网站][webmatrix]。
+本教程的第一步是创建新的空白 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][nodejswebsite]、使用 Windows PowerShell [创建 Node.js 云服务][Node.js Cloud Service]或[使用 WebMatrix 创建网站][webmatrix]。
 
 ## <a name="configure-your-application-to-use-notification-hubs"></a>将应用程序配置为使用通知中心
 
@@ -81,10 +81,10 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 
 通过执行以下步骤从 [Azure 门户] 获取连接 `connectionstring` 值：
 
-1. 在左侧导航窗格中，单击“浏览”。
-2. 选择“通知中心”，并找到要用于示例的中心。 如果在创建新通知中心时需要帮助，可以参阅 [Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
-3. 选择“设置”。
-4. 单击“访问策略”。 会看到共享连接字符串和完全访问连接字符串。
+1. 在左侧导航窗格中，单击“浏览”。****
+2. 选择“通知中心”，并找到要用于示例的中心。**** 如果在创建新通知中心时需要帮助，可以参阅 [Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
+3. 单击“设置”****。
+4. 单击“访问策略”。**** 会看到共享连接字符串和完全访问连接字符串。
 
 ![Azure 门户 — 通知中心](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
@@ -108,7 +108,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Payload** — 消息的 JSON 或原始字符串的有效负载。
 - **Callback** — 回调函数。
 
-有关负载格式的详细信息，请参阅[有效负载文档](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
+有关有效负载格式的详细信息，请参阅[有效负载文档](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
 
 以下代码使用由 `NotificationHubService` 公开的 `GcmService` 实例将推送通知发送到所有已注册的客户端。
 
@@ -131,7 +131,7 @@ notificationHubService.gcm.send(null, payload, function(error){
 
 - **Tags** — 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
 - **Payload** — 消息的 JSON 或字符串的有效负载。
-- **Callback** - 回调函数。
+- **Callback** — 回调函数。
 
 有关有效负载格式的详细信息，请参阅 [Local and Push Notification Programming Guide](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html)（本地通知和推送通知编程指南）文档中的 **Notification Payload**（通知有效负载）部分。
 
@@ -154,7 +154,7 @@ notificationHubService.apns.send(null, payload, function(error){
 
 - **Tags** — 标记标识符。 如果没有提供任何标记，通知会发送给所有客户端。
 - **Payload** — 消息的 XML 有效负载。
-- **TargetName** - `toast` 用于 toast 通知。 `token` 用于磁贴通知。
+- **Toast 通知的目标名称** - `toast`。 `token` 用于磁贴通知。
 - **NotificationClass** — 通知的优先级。 有关该参数的有效值，请参阅 [从服务器推送通知](https://msdn.microsoft.com/library/hh221551.aspx)文档中的 **HTTP Header Elements**（HTTP 标头元素）部分。
 - **Options** — 可选的请求标头。
 - **Callback** — 回调函数。
@@ -200,7 +200,7 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 使用上述示例代码段，可以轻松地构建服务基础结构，将推送通知传递到各种设备。 了解使用通知中心和 node.js 的基础知识之后，请参考下列链接以了解有关如何进一步扩展这些功能的详细信息。
 
 - 请参阅 MSDN 参考：[Azure 通知中心](https://msdn.microsoft.com/library/azure/jj927170.aspx)。
-- 请访问 GitHub 上的 [用于 Node 的 Azure SDK] 存储库以获取更多示例和实施详细信息。
+- 请访问 GitHub 上的 [Azure SDK for Node] 存储库以获取更多示例和实施详细信息。
 
 [用于 Node 的 Azure SDK]: https://github.com/WindowsAzure/azure-sdk-for-node
 [Next Steps]: #nextsteps

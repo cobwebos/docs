@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：配置 Global Reach
+title: Azure 快速路由：配置全局覆盖
 description: 本文介绍了如何将 ExpressRoute 线路链接到一起，以在本地网络之间建立专用网络并启用 Global Reach。
 services: expressroute
 author: jaredr80
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.openlocfilehash: 76de7a8854a58deb924cbbe3177ad5a7b5fd57a2
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083464"
 ---
 # <a name="configure-expressroute-global-reach"></a>配置 ExpressRoute Global Reach
@@ -22,10 +22,10 @@ ms.locfileid: "74083464"
 
 在开始配置之前，请确认以下事项：
 
-* 了解 ExpressRoute 线路预配[工作流](expressroute-workflows.md)。
-* ExpressRoute 线路处于预配状态。
-* 在 ExpressRoute 线路上配置了 Azure 专用对等互连。
-* 如果要在本地运行 PowerShell，请验证计算机上是否安装了 Azure PowerShell 的最新版本。
+* 您了解 ExpressRoute 电路预配[工作流](expressroute-workflows.md)。
+* 您的 ExpressRoute 电路处于预配状态。
+* Azure 专用对等互连在 ExpressRoute 电路上配置。
+* 如果要在本地运行 PowerShell，请验证计算机上是否安装了最新版本的 Azure PowerShell。
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
@@ -33,21 +33,21 @@ ms.locfileid: "74083464"
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="identify-circuits"></a>识别线路
+## <a name="identify-circuits"></a>识别电路
 
-1. 若要启动配置，请登录到 Azure 帐户，并选择要使用的订阅。
+1. 要启动配置，请登录到 Azure 帐户并选择要使用的订阅。
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. 确定要使用的 ExpressRoute 线路。 您可以在任意两个 ExpressRoute 线路之间启用 ExpressRoute Global Reach，只要它们位于受支持的国家/地区并且是在不同的对等位置创建的。 
+2. 确定要使用的快速路由电路。 只要两个 ExpressRoute 电路位于支持的国家/地区，并且创建在不同的对等位置，就可以在任意两个 ExpressRoute 电路之间启用 ExpressRoute 全球覆盖。 
 
    * 如果你的订阅同时拥有这两条线路，则可以选择其中任一条线路来运行以下各部分中的配置。
    * 如果两个线路位于不同的 Azure 订阅中，则你需要获得一个 Azure 订阅的授权。 然后，你在另一个 Azure 订阅中运行配置命令时传入授权密钥。
 
 ## <a name="enable-connectivity"></a>启用连接
 
-启用本地网络之间的连接。 对于同一 Azure 订阅中的线路以及不同订阅的线路，都有单独的说明集。
+启用本地网络之间的连接。 对于同一 Azure 订阅中的电路和不同订阅的电路，有单独的指令集。
 
-### <a name="expressroute-circuits-in-the-same-azure-subscription"></a>同一 Azure 订阅中的 ExpressRoute 线路
+### <a name="expressroute-circuits-in-the-same-azure-subscription"></a>同一 Azure 订阅中的快速路由电路
 
 1. 使用以下命令来获取线路 1 和线路 2。 这两条线路位于同一订阅中。
 
@@ -73,7 +73,7 @@ ms.locfileid: "74083464"
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
    ```
 
-在上一个操作完成后，你将在两个网络之间通过两个 ExpressRoute 线路连接到本地网络。
+完成上一个操作后，您将通过两个 ExpressRoute 电路在两侧的本地网络之间建立连接。
 
 ### <a name="expressroute-circuits-in-different-azure-subscriptions"></a>不同 Azure 订阅中的 ExpressRoute 线路
 
@@ -99,7 +99,7 @@ ms.locfileid: "74083464"
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
    ```
 
-在上一个操作完成后，你将在两个网络之间通过两个 ExpressRoute 线路连接到本地网络。
+完成上一个操作后，您将通过两个 ExpressRoute 电路在两侧的本地网络之间建立连接。
 
 ## <a name="verify-the-configuration"></a>验证配置
 
@@ -112,7 +112,7 @@ $ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName
 
 ## <a name="disable-connectivity"></a>禁用连接
 
-若要禁用本地网络之间的连接，请对进行配置的线路运行命令（例如，上一示例中的 "线路 1"）。
+要禁用本地网络之间的连接，请针对进行配置的电路（例如，上例中的电路 1）运行命令。
 
 ```azurepowershell-interactive
 $ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"

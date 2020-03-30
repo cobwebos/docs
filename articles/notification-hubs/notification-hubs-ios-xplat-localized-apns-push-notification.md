@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心向 iOS 发送本地化推送通知 |Microsoft Docs
+title: 使用 Azure 通知中心向 iOS 发送本地化的推送通知 |微软文档
 description: 了解如何使用 Azure 通知中心向 iOS 设备推送本地化通知。
 services: notification-hubs
 documentationcenter: ios
@@ -17,26 +17,26 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72385655"
 ---
-# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心将本地化推送通知发送到 iOS
+# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 iOS 发送本地化推送通知
 
 > [!div class="op_single_selector"]
 > * [Windows 应用商店 C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
-本教程介绍如何使用 Azure 通知中心的[模板](notification-hubs-templates-cross-platform-push-messages.md)功能广播已按语言和设备本地化的突发新闻通知。 在本教程中，将从在[Use Notification Hubs to send breaking news]中创建的 iOS 应用开始操作。 完成后，可以注册感兴趣的类别、指定接收通知的语言，以及仅接收该语言中所选类别的推送通知。
+本教程介绍如何使用 Azure 通知中心的[模板](notification-hubs-templates-cross-platform-push-messages.md)功能广播已按语言和设备本地化的突发新闻通知。 在本教程中，您从使用通知中心创建的 iOS 应用开始[发送突发新闻]。 完成后，可注册感兴趣的类别，指定接收通知的语言并仅接收采用该语言的所选类别的推送通知。
 
 此方案包含两个部分：
 
 * iOS 应用程序允许客户端设备指定一种语言并订阅不同的突发新闻类别；
-* 后端使用 Azure 通知中心的“标记”和“模板”功能广播通知。
+* 后端使用 Azure 通知中心的“标记”和“模板”功能广播通知********。
 
-在本教程中，请执行以下步骤：
+在本教程中，我们将执行以下步骤：
 
 > [!div class="checklist"]
 > * 更新应用用户界面
@@ -46,7 +46,7 @@ ms.locfileid: "72385655"
 
 ## <a name="overview"></a>概述
 
-在[Use Notification Hubs to send breaking news]中，生成了一个使用“标记”订阅不同新闻类别通知的应用。 但是，很多应用程序针对多个市场，需要本地化。 这意味着通知内容本身必须本地化且传递到正确的设备组。 本教程介绍如何使用通知中心的“模板”功能轻松传递本地化突发新闻通知。
+在["使用通知中心发送突发新闻]"中，您构建了一个应用，该应用程序使用**标记**订阅不同新闻类别的通知。 但是，很多应用程序针对多个市场，需要本地化。 这意味着通知内容本身必须本地化且传递到正确的设备组。 本教程介绍如何使用通知中心的“模板”功能轻松传递本地化突发新闻通知****。
 
 > [!NOTE]
 > 发送本地化通知的一种方式是创建每个标签的多个版本。 例如，要支持英语、法语和汉语，需要对世界新闻使用三种不同的标签：“world_en”、“world_fr”和“world_ch”。 然后必须将本地化版本的世界新闻分别发送到这些标签。 在本主题中，会使用模板来避免增生标签和发送多个消息的要求。
@@ -80,9 +80,9 @@ ms.locfileid: "72385655"
 
 ## <a name="update-the-app-user-interface"></a>更新应用用户界面
 
-本部分会修改在[Use Notification Hubs to send breaking news]主题中创建的“突发新闻”应用，以便使用模板发送本地化突发新闻。
+本部分会修改在[使用通知中心发送突发新闻]主题中创建的“突发新闻”应用，以便使用模板发送本地化突发新闻。
 
-在 `MainStoryboard_iPhone.storyboard`中，使用以下三种语言添加分段控件：英语、法语和普通话。
+在`MainStoryboard_iPhone.storyboard`中，添加分段控件，包括三种语言：英语、法语和普通话。
 
 ![创建 iOS UI 情节提要][13]
 
@@ -103,7 +103,7 @@ ms.locfileid: "72385655"
 
     - (int) retrieveLocale;
     ```
-    在 `Notification.m` 中，通过添加 `storeCategoriesAndSubscribe` 参数并将其存储在用户默认值中来修改 `locale` 方法：
+    在 `Notification.m` 中，通过添加 `locale` 参数并将其存储在用户默认值中来修改 `storeCategoriesAndSubscribe` 方法：
 
     ```objc
     - (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
@@ -116,7 +116,7 @@ ms.locfileid: "72385655"
     }
     ```
 
-    然后修改 subscribe 方法以包括该区域设置：
+    然后修改 subscribe** 方法以包括该区域设置：
 
     ```objc
     - (void) subscribeWithLocale: (int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion{
@@ -274,7 +274,7 @@ ms.locfileid: "72385655"
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: https://msdn.microsoft.com/library/jj927168.aspx
-[Use Notification Hubs to send breaking news]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
+[使用通知中心发送突发新闻]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs: ASP.NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Notify users with Notification Hubs: Mobile Services]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md

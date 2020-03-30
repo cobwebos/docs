@@ -12,10 +12,10 @@ ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/14/2019
 ms.openlocfilehash: 270fc157fa14efa19ed30d35b614fb769804b72e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73826457"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用异地还原通过数据库备份恢复多租户 SaaS 应用程序
@@ -42,7 +42,7 @@ ms.locfileid: "73826457"
 
 开始本教程之前，需具备以下先决条件：
 * 部署 Wingtip Tickets SaaS“每租户一个数据库”应用。 若要在五分钟内完成部署，请参阅[部署并探究 Wingtip Tickets SaaS“每租户一个数据库”应用程序](saas-dbpertenant-get-started-deploy.md)。 
-* 安装 Azure PowerShell 中的说明进行操作。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 安装 Azure PowerShell 中的说明进行操作。 有关详细信息，请参阅[使用 Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
 ## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>异地还原恢复模式简介
 
@@ -61,7 +61,7 @@ ms.locfileid: "73826457"
 
 本教程使用 Azure SQL 数据库和 Azure 平台的功能解决这些问题：
 
-* [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)：尽快预留全部所需容量。 Azure 资源管理器模板用于在恢复区域中预配原始服务器和弹性池的镜像。 预配新租户还需分别创建一个服务器和一个池。
+* [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)可用于尽快预留全部所需容量。 Azure 资源管理器模板用于在恢复区域中预配原始服务器和弹性池的镜像。 预配新租户还需分别创建一个服务器和一个池。
 * [弹性数据库客户端库](sql-database-elastic-database-client-library.md) (EDCL) 可用于创建和维护租户数据库目录。 扩展后的目录包含定期更新的池和数据库配置信息。
 * EDCL [分片管理恢复功能](sql-database-elastic-database-recovery-manager.md)可用于在恢复和遣返期间维护目录中的数据库位置条目。  
 * [异地还原](sql-database-disaster-recovery.md)可用于恢复自动维护的异地冗余备份中的目录和租户数据库。 
@@ -71,15 +71,15 @@ ms.locfileid: "73826457"
 
 ## <a name="get-the-disaster-recovery-scripts"></a>获取灾难恢复脚本
 
-可从 [Wingtip Tickets SaaS“每租户一个数据库”GitHub 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)获取本教程使用的 DR 脚本。 请查看[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)，获取下载和取消阻止 Wingtip Tickets 管理脚本的步骤。
+可从 [Wingtip Tickets SaaS“每租户一个数据库”GitHub 存储库](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)获取本教程使用的 DR 脚本。 请查看[通用指南](saas-tenancy-wingtip-app-guidance-tips.md)，获取下载和取消阻止 Wingtip Tickets 管理脚本的步骤。
 
 > [!IMPORTANT]
-> 与所有 Wingtip Tickets 管理脚本一样，灾难恢复脚本的质量仅适合用于演示，而不能在生产环境中使用。
+> 与所有 Wingtip Tickets 管理脚本一样，DR 脚本的质量仅适合用于演示，不能在生产环境中使用。
 
 ## <a name="review-the-healthy-state-of-the-application"></a>查看应用程序的健康状态
 启动恢复进程前，请查看应用程序的健康状态。
 
-1. 在 Web 浏览器中打开 Wingtip Tickets 事件中心（ http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net - 请将 &lt;user&gt; 替换为部署的用户值）。
+1. 在 Web 浏览器中打开 Wingtip Tickets 事件中心（http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net - 请将 &lt;user&gt; 替换为部署的用户值）。
     
    滚动到页面底部，注意页脚中的目录服务器名称和位置。 该位置是部署应用的区域。    
 
@@ -132,7 +132,7 @@ ms.locfileid: "73826457"
 
 恢复进程执行以下操作：
 
-1. 在原始区域中禁用 Web 应用的 Azure 流量管理器终结点。 禁用该终结点可以防止在恢复期间当原始区域恢复联机时，用户连接到处于无效状态的应用。
+1. 在原始区域中禁用 Web 应用的 Azure 流量管理器终结点。 通过禁用该终结点，当原始区域在恢复期间恢复联机时，可防止用户连接到处于无效状态的应用。
 
 2. 在恢复区域中预配恢复目录服务器，异地还原目录数据库，并将 activecatalog 别名更新为指向还原的目录服务器。 更改目录别名可确保目录同步进程始终同步到活动目录中。
 
@@ -181,7 +181,7 @@ ms.locfileid: "73826457"
 
     * 恢复区域是与部署应用程序的 Azure 区域相关联的配对区域。 有关详细信息，请参阅 [Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
 
-3. 在 PowerShell 窗口中监视恢复过程的状态。
+3. 在 PowerShell 窗口中监视恢复进程的状态。
 
     ![恢复进程](media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
 
@@ -189,7 +189,7 @@ ms.locfileid: "73826457"
 > 要了解恢复作业的代码，请查看 ...\Learning Modules\Business Continuity 和 Disaster Recovery\DR-RestoreFromBackup\RecoveryJobs 文件夹中的 PowerShell 脚本。
 
 ## <a name="review-the-application-state-during-recovery"></a>在恢复期间查看应用程序状态
-在流量管理器中禁用应用程序终结点时，应用程序不可用。 目录将会还原，所有租户都将标记为脱机。 随后，恢复区域中的应用程序终结点将会启用，应用程序恢复联机。 虽然应用程序可用，但事件中心的租户将显示为脱机，直至其数据库还原。 必须将应用程序设计为能够处理脱机租户数据库。
+在流量管理器中禁用应用程序终结点时，应用程序不可用。 目录将会还原，所有租户都将标记为脱机。 随后，恢复区域中的应用程序终结点将会启用，应用程序恢复联机。 虽然应用程序可用，但事件中心的租户将显示为脱机，直至其数据库还原。 务必将应用程序设计为能够处理脱机租户数据库。
 
 * 恢复目录数据库后但在租户恢复联机前，请在 Web 浏览器中刷新 Wingtip Tickets 事件中心。
 
@@ -272,7 +272,7 @@ ms.locfileid: "73826457"
 > [!NOTE]
 > 此示例中的其他教程不使用处于恢复状态的应用。 若要尝试其他教程，请务必首先遣返应用程序。
 
-## <a name="repatriation-process-overview"></a>遣返过程概述
+## <a name="repatriation-process-overview"></a>遣返进程概述
 
 中断解决后，遣返进程会将应用程序及其数据库还原到原始区域。
 
@@ -364,7 +364,7 @@ ms.locfileid: "73826457"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 > [!div class="checklist"]
 > 
 > * 使用租户目录保存定期更新的配置信息，以允许在其他区域中创建镜像恢复环境。

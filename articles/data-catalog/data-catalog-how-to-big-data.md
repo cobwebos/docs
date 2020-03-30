@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 数据目录中编录大数据
+title: 如何在 Azure 数据目录中编目大数据
 description: 操作指南文章着重说明通过“大数据”数据源使用 Azure 数据目录的模式，包括 Azure Blob 存储、Azure Data Lake 和 Hadoop HDFS。
 author: JasonWHowell
 ms.author: jasonh
@@ -7,13 +7,13 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 88dc85003fa2a3e41d8a31055ff8ba9b0fcc7492
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71300573"
 ---
-# <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>如何在 Azure 数据目录中编录大数据
+# <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>如何在 Azure 数据目录中编目大数据
 
 ## <a name="introduction"></a>介绍
 
@@ -60,11 +60,11 @@ ms.locfileid: "71300573"
 
 分析师或数据科学家处理较大目录结构中包含的数据时，这些参考文件中的数据可用于为在较大数据集中仅通过名称或 ID 指代的实体提供更详细的信息。
 
-在此模式中，使用 Azure 数据目录注册单个引用数据文件将有意义。 每个文件代表一个数据集且每个文件都可单独进行批注和发现。
+在此模式中，使用 Azure 数据目录**** 注册单个引用数据文件将有意义。 每个文件代表一个数据集且每个文件都可单独进行批注和发现。
 
 ## <a name="alternate-patterns"></a>备用模式
 
-上述模式只是大数据存储的两种可能的组织方式，但执行效果各不相同。 无论怎样构造你的数据源，使用 Azure 数据目录注册大数据源时，重点注册表示对组织中其他人有价值的数据集的文件和目录。 注册所有文件和目录会使目录变得混乱，用户难以找到所需内容。
+上述模式只是大数据存储的两种可能的组织方式，但执行效果各不相同。 无论怎样构造你的数据源，使用 Azure 数据目录**** 注册大数据源时，重点注册表示对组织中其他人有价值的数据集的文件和目录。 注册所有文件和目录会使目录变得混乱，用户难以找到所需内容。
 
 ## <a name="summary"></a>总结
 

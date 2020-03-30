@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.openlocfilehash: 75100b47ddf8f36ed9a22ff3073c439f8ad9040b
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083300"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>以 Java 语言创建 Apache Storm 拓扑
 
 了解如何为 [Apache Storm](https://storm.apache.org/) 创建基于 Java 的拓扑。 在此处，我们将创建一个实现单词计数应用程序的 Storm 拓扑。 将使用 [Apache Maven](https://maven.apache.org/) 构建并打包项目。 然后，了解如何使用 [Apache Storm Flux](https://storm.apache.org/releases/2.0.0/flux.html) 框架定义拓扑。
 
-完成本文档中的步骤之后，便可以将拓扑部署到 Apache Storm on HDInsight。
+完成本文档中的步骤之后，可将拓扑部署到 Apache Storm on HDInsight。
 
 > [!NOTE]  
-> [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount) 中提供了本文档中创建的 Storm 拓扑示例的完整版本。
+> 本文档中创建的 Storm 拓扑示例的已完成版本可在 。 [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount)
 
 ## <a name="prerequisites"></a>先决条件
 
 * [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)
 
-* 根据 Apache 要求正确[安装](https://maven.apache.org/download.cgi)的 [Apache Maven](https://maven.apache.org/install.html)。  Maven 是 Java 项目的项目生成系统。
+* 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
 
 ## <a name="test-environment"></a>测试环境
 
@@ -77,7 +77,7 @@ DEL src\test\java\com\microsoft\example\AppTest.java
 notepad pom.xml
 ```
 
-然后，在 `<url> https://maven.apache.org</url>` 行的后面添加以下 XML：
+然后，在 `<url>https://maven.apache.org</url>` 行的后面添加以下 XML：
 
 ```xml
 <repositories>
@@ -153,7 +153,7 @@ Maven 允许定义项目级的值，称为属性。 在 `pom.xml` 中的 `</repo
 
 ## <a name="build-configuration"></a>生成配置
 
-Maven 插件可用于自定义项目的生成阶段。 例如，如何编译项目或者如何将其打包到 JAR 文件中。 在 `pom.xml` 中，紧靠在 `</project>` 行的上面添加以下文本：
+Maven 插件允许自定义项目的构建阶段。 例如，如何编译项目或者如何将其打包到 JAR 文件中。 在 `pom.xml` 中，紧靠在 `</project>` 行的上面添加以下文本：
 
 ```xml
 <build>
@@ -164,13 +164,13 @@ Maven 插件可用于自定义项目的生成阶段。 例如，如何编译项�
 </build>
 ```
 
-此节用于添加插件、资源和其他生成配置选项。 有关 `pom.xml` 文件的完整参考，请参阅 [https://maven.apache.org/pom.html](https://maven.apache.org/pom.html)。
+此节用于添加插件、资源和其他生成配置选项。 有关文件的完整引用，`pom.xml`请参阅。 [https://maven.apache.org/pom.html](https://maven.apache.org/pom.html)
 
 ### <a name="add-plug-ins"></a>添加插件
 
 * **Exec Maven 插件**
 
-    对于以 Java 语言实现的 Apache Storm 拓扑，[Exec Maven 插件](https://www.mojohaus.org/exec-maven-plugin/)十分有用，因为它可让你轻松地在开发环境本地运行拓扑。 在 `<plugins>` 文件的 `pom.xml` 部分中添加以下内容，以包括 Exec Maven 插件：
+    对于以 Java 语言实现的 Apache Storm 拓扑，[Exec Maven 插件](https://www.mojohaus.org/exec-maven-plugin/)十分有用，因为它可让你轻松地在开发环境本地运行拓扑。 在 `pom.xml` 文件的 `<plugins>` 部分中添加以下内容，以包括 Exec Maven 插件：
 
     ```xml
     <plugin>
@@ -203,7 +203,7 @@ Maven 插件可用于自定义项目的生成阶段。 例如，如何编译项�
 
   * 对于 HDInsight __3.5__，请将源和目标 Java 版本设置为 __1.8__。
 
-  在 `<plugins>` 文件的 `pom.xml` 部分添加以下文本，以包括 Apache Maven Compiler 插件。 此示例指定 1.8，因此目标 HDInsight 版本为 3.5。
+  在 `pom.xml` 文件的 `<plugins>` 部分添加以下文本，以包括 Apache Maven Compiler 插件。 此示例指定 1.8，因此目标 HDInsight 版本为 3.5。
 
   ```xml
   <plugin>
@@ -219,7 +219,7 @@ Maven 插件可用于自定义项目的生成阶段。 例如，如何编译项�
 
 ### <a name="configure-resources"></a>配置资源
 
-使用 resources 节可以包含非代码资源，例如拓扑中组件所需的配置文件。 本示例在 `<resources>` 文件的 `pom.xml` 节中添加以下文本。 然后保存并关闭该文件。
+使用 resources 节可以包含非代码资源，例如拓扑中组件所需的配置文件。 本示例在 `pom.xml` 文件的 `<resources>` 节中添加以下文本。 然后保存并关闭该文件。
 
 ```xml
 <resource>
@@ -245,7 +245,7 @@ Maven 插件可用于自定义项目的生成阶段。 例如，如何编译项�
 
 ### <a name="create-the-spout"></a>创建 Spout
 
-为了降低设置外部数据源的要求，以下 Spout 只会发出随机句子。 它是随[风暴示例](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)一起提供的 spout 的修改版本。  虽然此拓扑只使用一个 Spout，但其他拓扑可能存在将数据从不同源送入拓扑的多个 Spout。
+为了降低设置外部数据源的要求，以下 Spout 只会发出随机句子。 这是一个修改版本的喷口，提供了[风暴启动示例](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)。  虽然此拓扑只使用一个 Spout，但其他拓扑可能存在将数据从不同源送入拓扑的多个 Spout。
 
 输入以下命令，以创建并打开新文件 `RandomSentenceSpout.java`：
 
@@ -320,8 +320,8 @@ public class RandomSentenceSpout extends BaseRichSpout {
 > [!NOTE]  
 > 有关从外部数据源读取的 Spout 的示例，请参阅以下示例之一：
 >
-> * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java)：从 Twitter 读取的示例 spout。
-> * [Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka)：从 Kafka 读取的 spout。
+> * [推特样本：](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java)从Twitter上读取的一个例子。
+> * [风暴卡夫卡](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka)：从卡夫卡读的壶嘴。
 
 ### <a name="create-the-bolts"></a>创建 Bolt
 
@@ -559,7 +559,7 @@ public class WordCountTopology {
 
 ### <a name="configure-logging"></a>配置日志记录
 
-Storm 使用 [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) 来记录信息。 如果未配置日志记录，拓扑将发出诊断信息。 若要控制所要记录的内容，请输入以下命令，在 `log4j2.xml` 目录中创建名为 `resources` 的文件：
+Storm 使用 [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) 来记录信息。 如果不配置日志记录，拓扑将发出诊断信息。 若要控制所要记录的内容，请输入以下命令，在 `resources` 目录中创建名为 `log4j2.xml` 的文件：
 
 ```cmd
 notepad resources\log4j2.xml
@@ -590,10 +590,10 @@ notepad resources\log4j2.xml
 
 `<Root level="error">` 部分将日志记录的根级别（不在 `com.microsoft.example` 中的所有内容）配置为只记录错误信息。
 
-有关为 Log4j 2 配置日志记录的详细信息，请参阅 [https://logging.apache.org/log4j/2.x/manual/configuration.html](https://logging.apache.org/log4j/2.x/manual/configuration.html)。
+有关配置 Log4j 2 日志记录的详细信息，请参阅[https://logging.apache.org/log4j/2.x/manual/configuration.html](https://logging.apache.org/log4j/2.x/manual/configuration.html)。
 
 > [!NOTE]  
-> Storm 0.10.0 版及更高版本使用 Log4j 2.x。 早期版本的 Storm 使用 Log4j 1.x（为日志配置使用的格式不同）。 有关较旧配置的信息，请参阅 [https://wiki.apache.org/logging-log4j/Log4jXmlFormat](https://wiki.apache.org/logging-log4j/Log4jXmlFormat)。
+> Storm 0.10.0 版及更高版本使用 Log4j 2.x。 早期版本的 Storm 使用 Log4j 1.x（为日志配置使用的格式不同）。 有关旧配置的信息，请参阅[https://wiki.apache.org/logging-log4j/Log4jXmlFormat](https://wiki.apache.org/logging-log4j/Log4jXmlFormat)。
 
 ## <a name="test-the-topology-locally"></a>在本地测试拓扑
 
@@ -615,7 +615,7 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
 
 此示例日志指示单词 'and' 已发出了 113 次。 只要拓扑运行，计数就会持续增加，因为 Spout 会连续发出相同的句子。
 
-发出单词和计数之间有5秒的间隔。 **WordCount** 组件配置为仅当 tick 元组到达时才发出信息。 它要求每五秒钟传送一次 tick 元组。
+单词和计数的发射间隔为 5 秒。 **WordCount** 组件配置为仅当 tick 元组到达时才发出信息。 它要求每五秒钟传送一次 tick 元组。
 
 ## <a name="convert-the-topology-to-flux"></a>将拓扑转换为 Flux
 
@@ -737,7 +737,7 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
         </plugin>
         ```
 
-   1. 对于 Exec Maven 插件部分，导航到 `<configuration>` > `<mainClass>` 并将 `${storm.topology}` 更改为 `org.apache.storm.flux.Flux`。 在开发环境中本地运行拓扑时，Flux 可以使用此设置处理拓扑运行。
+   1. 在“Exec Maven Plugin”节中，导航至 `<configuration>` > `<mainClass>`，并将 `${storm.topology}` 更改为 `org.apache.storm.flux.Flux`。 在开发环境中本地运行拓扑时，Flux 可以使用此设置处理拓扑运行。
 
    1. 将以下内容添加到 `<resources>` 节中的 `<includes>`。 此 XML 包括了将拓扑定义为项目一部分的 YAML 文件。
 
@@ -754,7 +754,7 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
     ```
 
     > [!WARNING]  
-    > 如果拓扑使用 Storm 1.0.1 位，此命令会失败。 此失败是由 [https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055) 导致的。 相反，[在开发环境中安装 Storm](https://storm.apache.org/releases/current/Setting-up-development-environment.html)，并按照以下步骤操作：
+    > 如果拓扑使用 Storm 1.0.1 位，此命令会失败。 此故障由 引起[https://issues.apache.org/jira/browse/STORM-2055](https://issues.apache.org/jira/browse/STORM-2055)。 相反，[在开发环境中安装 Storm](https://storm.apache.org/releases/current/Setting-up-development-environment.html)，并按照以下步骤操作：
     >
     > 如果已[在开发环境中安装 Storm](https://storm.apache.org/releases/current/Setting-up-development-environment.html)，则可以改用以下命令：
     >
@@ -776,7 +776,7 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     ```
 
-    记录的信息的批次之间存在10秒的延迟。
+    记录的信息批次之间有 10 秒的延迟。
 
 2. 基于项目创建新的拓扑 yaml。
 
@@ -820,13 +820,13 @@ YAML 文件定义了要用于拓扑的组件以及它们之间的数据流。 �
 
 [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) 是 Storm 提供的高级抽象。 它支持有状态处理。 Trident 的主要优点在于，它可以保证进入拓扑的每个消息只会处理一次。 如果不使用 Trident，则拓扑只能保证至少将消息处理一次。 两者还有其他方面的差异，例如，可以使用内置组件，而无需创建 Bolt。 事实上，可以使用低泛型组件（例如筛选、投影和函数）来取代 Bolt。
 
-可以使用 Maven 项目来创建 Trident 应用程序。 使用本文前面所述的相同基本步骤 - 只有代码不同。 Trident 也不能与 Flux 框架一起使用。
+可以使用 Maven 项目来创建 Trident 应用程序。 使用本文前面所述的相同基本步骤 - 只有代码不同。 三叉星也不能（当前）与 Flux 框架一起使用。
 
 有关 Trident 的详细信息，请参阅 [Trident API 概述](https://storm.apache.org/releases/current/Trident-API-Overview.html)。
 
 ## <a name="next-steps"></a>后续步骤
 
-已了解如何使用 Java 创建 Apache Storm 拓扑。 接下来，请学习如何：
+已学习如何使用 Java 创建 Apache Storm 拓扑。 接下来，请学习如何：
 
 * [在 HDInsight 上部署和管理 Apache Storm 拓扑](apache-storm-deploy-monitor-topology-linux.md)
 

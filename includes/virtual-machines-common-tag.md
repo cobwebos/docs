@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: f6bd574c83d309ce6d6f54fdb1c7d23cb713420d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73182177"
 ---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>通过模板标记虚拟机
@@ -31,11 +31,11 @@ ms.locfileid: "73182177"
 
 完成编辑后，使用选择的标记保存模板文件。
 
-接下来，在“编辑参数”部分中，可以填写标记的值。
+接下来，在“编辑参数”部分中，可以填写标记的值。****
 
 ![通过 Azure 门户编辑标记](./media/virtual-machines-common-tag/edit-tags-in-azure-portal.png)
 
-单击“创建”使用标记值部署此模板。
+单击****“创建”使用标记值部署此模板。
 
 ## <a name="tagging-through-the-portal"></a>通过门户进行标记
 使用标记创建资源后，可以在门户中查看、添加和删除该标记。

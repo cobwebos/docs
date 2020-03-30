@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 0cbd1a24f5c460e248d55777735da6809befba63
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72028795"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM 来宾 OS 防火墙阻止入站流量
@@ -43,9 +43,9 @@ ms.locfileid: "72028795"
 
 ## <a name="solution"></a>解决方案
 
-在执行这些步骤之前，请创建受影响 VM 的系统磁盘快照作为备份。 有关详细信息，请参阅 [拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
+在执行这些步骤之前，请创建受影响 VM 的系统磁盘快照作为备份。 有关详细信息，请参阅 [创建磁盘快照](../windows/snapshot-copy-managed-disk.md)。
 
-要解决此问题，请使用[如何使用远程工具解决 Azure VM 问题](remote-tools-troubleshoot-azure-vm-issues.md)中介绍的方法远程连接到 VM，然后将来宾操作系统防火墙规则编辑为“允许”RDP 流量。
+要解决此问题，请使用[如何使用远程工具解决 Azure VM 问题](remote-tools-troubleshoot-azure-vm-issues.md)中介绍的方法远程连接到 VM，然后将来宾操作系统防火墙规则编辑为“允许”RDP 流量****。
 
 ### <a name="online-troubleshooting"></a>联机故障排除
 
@@ -53,7 +53,7 @@ ms.locfileid: "72028795"
 
 #### <a name="mitigation-1"></a>缓解措施 1
 
-1.  如果已在 VM 上安装并正常运行 Azure 代理，则可以使用 VM 菜单上“支持 + 故障排除” > “重置密码”下的“仅重置配置”选项。
+1.  如果 Azure 代理已安装并在 VM 上正常工作，则可以使用"仅重置配置"选项，在 VM 菜单上使用 **"支持 + 故障排除** > **重置密码"选项**。
 
 2.  运行此恢复选项将执行以下操作：
 
@@ -102,7 +102,7 @@ ms.locfileid: "72028795"
 
 #### <a name="mitigation-2"></a>缓解措施 2
 
-1.  查询防火墙配置文件，以确定是否已将入站防火墙策略设置为*BlockInboundAlways*：
+1.  查询防火墙配置文件，以确定入站防火墙策略是否设置为 *"阻止入站始终*"：
 
     ```cmd
     netsh advfirewall show allprofiles | more
@@ -115,7 +115,7 @@ ms.locfileid: "72028795"
     >    * *BlockInbound*：除非存在有效规则允许该流量，否则将阻止所有入站流量。
     >    * *BlockInboundAlways*：忽略所有防火墙规则，并阻止所有流量。
 
-2.  编辑*DefaultInboundAction*以将这些配置文件设置为**允许**流量。 为此，请运行以下命令：
+2.  编辑*默认入行操作*以将这些配置文件设置为 **"允许**流量"。 为此，请运行以下命令：
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound
@@ -138,7 +138,7 @@ ms.locfileid: "72028795"
 
 2.  开始与恢复 VM 建立远程桌面连接。
 
-3.  确保磁盘在磁盘管理控制台中标记为“联机”。 请留意分配给附加系统磁盘的驱动器号。
+3.  确保磁盘在磁盘管理控制台中标记为“联机”。**** 请留意分配给附加系统磁盘的驱动器号。
 
 #### <a name="mitigation-1"></a>缓解措施 1
 
@@ -150,7 +150,7 @@ ms.locfileid: "72028795"
 
 2.  开始与恢复 VM 建立远程桌面连接。
 
-3.  将系统磁盘附加到恢复 VM 后，请确保磁盘在 "磁盘管理" 控制台中标记为 "**联机**"。 请注意分配给附加的 OS 磁盘的驱动器号。
+3.  将系统磁盘附加到恢复 VM 后，请确保磁盘在磁盘管理控制台中标记为“联机”****。 请注意分配给附加的 OS 磁盘的驱动器号。
 
 4.  打开提升后的 CMD 实例，然后运行以下脚本：
 

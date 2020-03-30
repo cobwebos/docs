@@ -1,5 +1,5 @@
 ---
-title: 使用模板端对端运行作业-Azure Batch
+title: 使用模板端到端运行作业 - Azure 批处理
 description: 只需使用 CLI 命令便可创建池、上传输入数据、创建作业和关联的任务，以及下载生成的输出数据。
 services: batch
 author: LauraBrenner
@@ -12,10 +12,10 @@ ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: c7459c4dc700f034feafbf133b831a52b9233d11
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77020159"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>使用 Azure Batch CLI 模板和文件传输
@@ -156,7 +156,7 @@ CLI 会提示你提供 `poolId` 和 `nodeCount` 参数的值。 也可以提供 
 }
 ```
 
-如果参数 JSON 文件名为 pool-parameters.json，请按以下所示调用该模板：
+如果参数 JSON 文件名为 pool-parameters.json，请按以下所示调用该模板**：
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
@@ -260,11 +260,11 @@ CLI 同样会提示你提供参数的值。 也可以提供 JSON 文件中的参
 
 上传模板：
 
-1. 在 Batch Explorer 中，选择“库” > “本地模板”。
+1. 在批处理资源管理器中，选择**库** > **本地模板**。
 
 2. 选择或拖放本地池或作业模板。
 
-3. 选择“使用此模板”，并按照屏幕上的提示操作。
+3. 选择“使用此模板”，并按照屏幕上的提示操作****。
 
 ## <a name="file-groups-and-file-transfer"></a>文件组和文件传输
 
@@ -282,9 +282,9 @@ az batch file download --file-group ffmpeg-output --local-path
     c:\output_lowres_videos
 ```
 
-通过池和作业模板，可将存储在文件组中的文件指定为复制到池节点或离开池节点返回到文件组。 例如，在之前指定的作业模板中，为任务工厂指定文件组 ffmpeg-input ，作为复制到节点以供转码的源视频文件的位置。 文件组 ffmpeg-output 是从运行每个任务的节点复制已转码输出文件的位置。
+通过池和作业模板，可将存储在文件组中的文件指定为复制到池节点或离开池节点返回到文件组。 例如，在之前指定的作业模板中，为任务工厂指定文件组 ffmpeg-input ，作为复制到节点以供转码的源视频文件的位置**。 文件组 ffmpeg-output 是从运行每个任务的节点复制已转码输出文件的位置**。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 目前仅对 Azure CLI 添加了模板和文件传输支持。 其目的在于，将可以使用 Batch 的受众扩大到无需使用 Batch API 开发代码的用户，例如研究人员和 IT 用户。 了解 Azure、Batch 和 Batch 运行的应用程序的用户无需编码即可创建模板以创建池和作业。 通过模板参数，对 Batch 和应用程序没有深入了解的用户也可使用这些模板。
 

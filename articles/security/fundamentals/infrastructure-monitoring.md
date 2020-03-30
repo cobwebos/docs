@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: af9c157b4644156edc6dcdb1b53c141263576500
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727155"
 ---
 # <a name="azure-infrastructure-monitoring"></a>Azure 基础结构监视   
@@ -58,6 +58,6 @@ Microsoft 实施安全事件管理过程，以在发生事件时加速对事件�
 - [Azure 网络体系结构](infrastructure-network.md)
 - [Azure 生产网络](production-network.md)
 - [Azure SQL 数据库安全功能](infrastructure-sql.md)
-- [Azure 生产运营和管理](infrastructure-operations.md)
+- [Azure 生产操作和管理](infrastructure-operations.md)
 - [Azure 基础结构完整性](infrastructure-integrity.md)
 - [Azure 客户数据保护](protection-customer-data.md)

@@ -9,15 +9,15 @@ ms.service: virtual-machines-windows
 ms.tgt_pltfrm: windows
 ms.subservice: disks
 ms.openlocfilehash: 33f107bfbd4cc96a1103f0a310125b6c2f7013e8
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014625"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>使用 Azure 存储资源管理器管理 Azure 托管磁盘
 [!INCLUDE [disks-upload-vhd-to-managed-disk-storage-explorer](../../../includes/disks-upload-vhd-to-managed-disk-storage-explorer.md)]
 
-了解如何[使用 Azure 门户从 VHD 创建 VM](create-vm-specialized-portal.md)。
+了解如何[使用 Azure 门户基于 VHD 创建 VM](create-vm-specialized-portal.md)。
 
-了解如何[使用 Azure 门户将托管数据磁盘附加到 WINDOWS VM](attach-managed-disk-portal.md)。
+了解如何[使用 Azure 门户将托管数据磁盘附加到 Windows VM](attach-managed-disk-portal.md)。

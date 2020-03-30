@@ -1,7 +1,7 @@
 ---
-title: 实例化公用客户端应用（MSAL.NET） |Microsoft
+title: 实例化公共客户端应用 （MSAL.NET） |蔚蓝
 titleSuffix: Microsoft identity platform
-description: 了解如何使用用于 .NET 的 Microsoft 身份验证库（MSAL.NET）的配置选项实例化公用客户端应用程序。
+description: 了解如何通过适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 使用配置选项实例化公共客户端应用程序。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,25 +14,25 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1dd06e139f931bbf8554f05f05c5d9b9ccf200e8
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083598"
 ---
-# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>使用 MSAL.NET 的配置选项实例化公用客户端应用程序
+# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化公共客户端应用程序
 
-本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）实例化[公用客户端应用程序](msal-client-applications.md)。  使用在设置文件中定义的配置选项对应用程序进行实例化。
+本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 实例化[公共客户端应用程序](msal-client-applications.md)。  应用程序使用设置文件中定义的配置选项进行实例化。
 
-在初始化应用程序之前，首先需要[注册](quickstart-register-app.md)它，以便您的应用程序可以与 Microsoft 标识平台集成。 注册后，你可能需要以下信息（可在 Azure 门户中找到）：
+在初始化应用程序之前，首先需要[注册](quickstart-register-app.md)它，以便应用可以与 Microsoft 标识平台集成。 注册后，可能需要以下信息（可在 Azure 门户中找到）：
 
-- 客户端 ID （表示 GUID 的字符串）
-- 应用程序的标识提供程序 URL （名为实例）和登录受众。 这两个参数统称为颁发机构。
-- 如果你只是为你的组织编写一个业务线应用程序（也称为单租户应用程序），则租户 ID。
-- 对于 web 应用，有时用于公共客户端应用程序（特别是当你的应用程序需要使用代理时），你还将设置 redirectUri，其中标识提供程序将使用安全令牌联系回你的应用程序。
+- 客户端 ID（表示 GUID 的字符串）
+- 标识提供者 URL（为实例命名）和应用程序的登录受众。 这两个参数统称为颁发机构。
+- 租户 ID：如果你编写的业务线应用程序（也称为单租户应用程序）专用于自己的组织。
+- 对于 Web 应用或者公共客户端应用（特别是当你的应用需要使用中转站时），还将需要设置 redirectUri，标识提供者将在其中使用安全令牌联系你的应用程序。
 
 
-.NET Core 控制台应用程序可以具有以下*appsettings*配置文件：
+.NET Core 控制台应用程序可以具有以下 *appsettings.json* 配置文件：
 
 ```json
 {
@@ -90,7 +90,7 @@ public class SampleConfiguration
 }
 ```
 
-下面的代码使用设置文件中的配置创建应用程序：
+以下代码使用设置文件中的配置创建应用程序：
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");

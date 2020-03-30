@@ -1,6 +1,6 @@
 ---
 title: Azure Analysis Services 数据库备份和还原 | Microsoft Docs
-description: 本文介绍了如何备份和还原 Azure Analysis Services 数据库中的模型元数据和数据。
+description: 本文介绍如何从 Azure Analysis Services 数据库备份和还原模型元数据和数据。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3f63ecf560a14248fed6dea53c30a27acdf9a938
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73573450"
 ---
 # <a name="backup-and-restore"></a>备份和还原
@@ -31,11 +31,11 @@ ms.locfileid: "73573450"
 
 
 ### <a name="to-configure-storage-settings"></a>配置存储设置
-1.  在 Azure 门户中，转到“设置”，单击“备份”。
+1.  在 Azure 门户中，转到“设置”****，单击“备份”****。
 
     ![设置中的备份](./media/analysis-services-backup/aas-backup-backups.png)
 
-2.  单击“已启用”，并单击“存储设置”。
+2.  单击“已启用”****，并单击“存储设置”****。
 
     ![启用](./media/analysis-services-backup/aas-backup-enable.png)
 
@@ -53,21 +53,21 @@ ms.locfileid: "73573450"
 
 ### <a name="to-backup-by-using-ssms"></a>使用 SSMS 备份
 
-1. 在 SSMS 中，右键单击某个数据库，转到“备份”。
+1. 在 SSMS 中，右键单击某个数据库，转到“备份”****。
 
-2. 在“备份数据库” > “备份文件”中，单击“浏览”。
+2. 在**备份数据库** > **备份文件中**，单击"**浏览**"。
 
-3. 在“文件另存为”对话框中，验证文件夹路径，并键入备份文件的名称。 
+3. 在“文件另存为”**** 对话框中，验证文件夹路径，并键入备份文件的名称。 
 
-4. 在“备份数据库”对话框中，选择选项。
+4. 在“备份数据库”**** 对话框中，选择选项。
 
-    “允许覆盖文件”- 选择此选项可覆盖具有相同名称的备份文件。 如果未选择此选项，则要保存的文件不能与同一位置中已存在的文件具有相同的名称。
+    “允许覆盖文件”****- 选择此选项可覆盖具有相同名称的备份文件。 如果未选择此选项，则要保存的文件不能与同一位置中已存在的文件具有相同的名称。
 
-    “应用压缩”- 选择此选项可压缩备份文件。 压缩的备份文件可节省磁盘空间，但需要稍高的 CPU 使用率。 
+    “应用压缩”****- 选择此选项可压缩备份文件。 压缩的备份文件可节省磁盘空间，但需要稍高的 CPU 使用率。 
 
-    “加密备份文件”- 选择此选项可加密备份文件。 此选项要求用户提供密码来保护备份文件。 密码可防止采用还原操作外的任何其他方式读取备份数据。 如果选择对备份加密，请将密码存储在安全位置。
+    “加密备份文件”****- 选择此选项可加密备份文件。 此选项要求用户提供密码来保护备份文件。 密码可防止采用还原操作外的任何其他方式读取备份数据。 如果选择对备份加密，请将密码存储在安全位置。
 
-5. 单击“确定”创建并保存备份文件。
+5. 单击“确定”**** 创建并保存备份文件。
 
 
 ### <a name="powershell"></a>PowerShell
@@ -79,19 +79,19 @@ ms.locfileid: "73573450"
 
 
 > [!NOTE]
-> 如果要从本地服务器还原，必须先从该模型的角色中删除所有域用户，并再将这些用户作为 Azure Active Directory 用户重新添加到这些角色。
+> 如果要从本地服务器还原，必须先从该模型的角色中删除所有域用户，然后再将这些用户作为 Azure Active Directory 用户重新添加到这些角色。
 > 
 > 
 
 ### <a name="to-restore-by-using-ssms"></a>使用 SSMS 还原
 
-1. 在 SSMS 中，右键单击某个数据库，转到“还原”。
+1. 在 SSMS 中，右键单击某个数据库，转到“还原”****。
 
-2. 在“备份文件”的“备份数据库”对话框中，单击“浏览”。
+2. 在“备份文件”**** 的“备份数据库”**** 对话框中，单击“浏览”****。
 
-3. 在“定位数据库文件”对话框中，选择要还原的文件。
+3. 在“定位数据库文件”**** 对话框中，选择要还原的文件。
 
-4. 在“还原数据库”，选择数据库。
+4. 在“还原数据库”****，选择数据库。
 
 5. 指定选项。 安全选项必须与备份时使用的备份选项相匹配。
 

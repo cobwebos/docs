@@ -1,6 +1,6 @@
 ---
-title: 选择时序 ID 的最佳实践-Azure 时序见解 |Microsoft Docs
-description: 了解在 Azure 时序见解预览中选择时序 ID 时的最佳实践。
+title: 有关选择时序 ID 的最佳做法 - Azure 时序见解 | Microsoft Docs
+description: 了解在 Azure 时序见解预览版中选择时序 ID 时的最佳做法。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -11,55 +11,55 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083532"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>选择时序 ID 的最佳做法
 
-本文总结了 Azure 时序见解预览环境的时序 ID 的重要性，以及选择其中的最佳实践。
+本文总结了 Azure 时序见解预览版环境的时序 ID 的重要性，以及有关选择时序 ID 的最佳做法。
 
 ## <a name="choose-a-time-series-id"></a>选择时间序列 ID
 
-选择适当的时序 ID 是至关重要的。 选择时序 ID 与为数据库选择分区键相同。 创建时序见解预览环境时，需要使用此方法。 
+选择适当的时序 ID 至关重要。 选择时序 ID 与为数据库选择分区键相同。 创建时序见解预览环境时，这是必需的。 
 
 > [!IMPORTANT]
-> 时序 Id 如下：
-> * *区分大小写*的属性：字母和字符大小写用于在搜索、比较、更新和分区时使用。
-> * *不可变*属性：创建后将无法更改。
+> 时序 ID 如下：
+> * 区分大小写的属性**：搜索、比较和更新以及分区都会用到字母和字符的大小写。
+> * 不可变属性**：一旦创建，无法更改。
 
 > [!TIP]
-> 如果事件源是 IoT 中心，则时序 ID 可能是***iothub***的。
+> 如果事件源是 IoT 中心，则时序 ID 可能是 iothub-connection-device-id******。
 
-要遵循的关键最佳实践包括：
+要遵守的主要最佳做法包括：
 
-* 选择包含多个非重复值的分区键（例如，成百上千个）。 在许多情况下，这可能是 JSON 中的设备 ID、传感器 ID 或标记 ID。
+* 选择具有许多（例如，几百甚至几千个）非重复值的分区键。 在许多情况下，该键可能是 JSON 中的设备 ID、传感器 ID 或标记 ID。
 * 在[时序模型](./time-series-insights-update-tsm.md)的叶节点级别，时序 ID 应是唯一的。
-* 时序 ID 的属性名称字符串的字符限制为128。 对于时序 ID 的属性值，字符限制为1024。
-* 如果缺少时序 ID 的唯一属性值，则将其视为 null 值并遵循相同的唯一性约束规则。
-* 你还可以选择最多*三个*键属性作为时序 ID。 它们的组合将是表示时序 ID 的组合键。  
+* 时序 ID 属性名称字符串的字符数限制为 128 个。 时序 ID 属性值的字符数限制为 1024 个。
+* 如果时序 ID 的某个唯一属性值缺失，该值将被视为 null 值，并遵循相同的唯一性约束规则。
+* 此外，最多可以选择三个键属性作为时序 ID。** 这些属性的组合将是表示时序 ID 的组合键。  
   > [!NOTE]
   > 三个键属性必须是字符串。
-  > 您必须一次对此复合键（而不是一个属性）进行查询。
+  > 必须针对此组合键运行查询，而不能每次查询一个属性。
 
 ## <a name="select-more-than-one-key-property"></a>选择多个键属性
 
-以下方案说明了如何选择多个键属性作为时序 ID。  
+以下方案描述如何选择多个键属性作为时序 ID。  
 
-### <a name="example-1-time-series-id-with-a-unique-key"></a>示例1：具有唯一键的时序 ID
+### <a name="example-1-time-series-id-with-a-unique-key"></a>示例 1：带唯一键的时间序列 ID
 
-* 你有一些旧群资产。 每个都有一个唯一键。
-* 一个汽油由属性**deviceId**唯一标识。 对于其他汽油，unique 属性为**objectId**。 这两个汽油都不包含其他汽油的唯一属性。 在此示例中，您将选择两个密钥： **deviceId**和**objectId**作为唯一键。
-* 我们接受 null 值，而事件负载中缺少属性的存在性将计为 null 值。 这也是处理发送到两个事件源的数据的适当方法，其中每个事件源中的数据具有唯一的时序 ID。
+* 你有两个传统的资产群。 每个群有一个唯一键。
+* 其中一个群以属性 **deviceId** 进行唯一标识。 另一个群的唯一属性为 **objectId**。 这两个群都不包含对方的唯一属性。 在此示例中，您可以选择两个键，**设备 Id**和**objectId**，作为唯一键。
+* 我们接受 null 值，且如果事件有效负载中缺少某个属性，则计为 null 值。 向两个事件源发送数据时，这种方法同样合适，其中每个事件源中的数据具有唯一的时序 ID。
 
-### <a name="example-2-time-series-id-with-a-composite-key"></a>示例2：具有组合键的时序 ID
+### <a name="example-2-time-series-id-with-a-composite-key"></a>示例 2：带复合键的时间序列 ID
 
 * 同一组资产中需要多个唯一的属性。 
-* 你是智能建筑的制造商，并在每个房间中部署传感器。 对于每个房间，你通常具有相同的**sensorId**值。 例如， **sensor1**、 **sensor2**和**sensor3**。
-* 您的大楼在**flrRm**属性中的站点之间有重叠的楼层和房间号。 这些数字的值如**1a**、 **2b**和**3a**。
-* 您有一个属性， **location**，其中包含**Redmond**、**巴塞罗纳**和**东京**等值。 若要创建唯一性，请指定以下三个属性作为时序 ID 键： **sensorId**、 **flrRm**和**location**。
+* 你是一家智能建筑制造商，希望在每个房间部署传感器。 对于每个房间，通常对 **sensorId** 使用相同的值。 例如，**sensor1**、**sensor2** 和 **sensor3**。
+* 建筑物在属性 **flrRm** 中包含不同场地的重叠楼层号和房间号。 这些数字使用类似于 **1a**、**2b** 和 **3a** 的值。
+* **location** 属性包含类似于 **Redmond**、**Barcelona** 和 **Tokyo** 的值。 若要实现唯一性，可将以下三个属性指定为时序 ID 键：**sensorId**、**flrRm** 和 **location**。
 
 示例原始事件：
 
@@ -72,7 +72,7 @@ ms.locfileid: "77083532"
 }
 ```
 
-在 Azure 门户中，可以输入组合键，如下所示： 
+然后，可在 Azure 门户中输入组合键，如下所示： 
 
 ```JSON
 [{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
@@ -80,6 +80,6 @@ ms.locfileid: "77083532"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 阅读有关[数据建模](./time-series-insights-update-tsm.md)的详细信息。
+* 阅读更多有关[数据建模](./time-series-insights-update-tsm.md)。
 
-* 规划[Azure 时序见解预览版环境](./time-series-insights-update-plan.md)。
+* 规划[Azure 时间序列见解预览环境](./time-series-insights-update-plan.md)。

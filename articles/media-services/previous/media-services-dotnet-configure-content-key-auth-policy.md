@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251201"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>配置内容密钥授权策略
@@ -41,7 +41,7 @@ ms.locfileid: "79251201"
 有关详细信息，请参阅以下文章：
 
 - [JWT 令牌身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
-- [将基于 Azure 媒体服务 OWIN MVC 的应用与 Azure Active Directory 相集成，并基于 JWT 声明限制内容密钥传送](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
+- [将 Azure 媒体服务 OWIN MVC 应用与 Azure 活动目录集成，并根据 JWT 声明限制内容密钥传递](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
 ### <a name="some-considerations-apply"></a>需要注意的一些事项
 * 创建媒体服务帐户后，一个处于“已停止”状态的默认流式处理终结点会添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。 
@@ -231,7 +231,7 @@ ms.locfileid: "79251201"
 ## <a name="playready-dynamic-encryption"></a>PlayReady 动态加密
 可以使用媒体服务配置相应的权限和限制，这样当用户尝试播放受保护的内容时，PlayReady DRM 运行时就会强制实施这些权限和限制。 
 
-使用 PlayReady 保护内容时，需要在授权策略中指定的项目之一是用于定义 [PlayReady 许可证模板](media-services-playready-license-template-overview.md)的 XML 字符串。 在用于 .NET 的媒体服务 SDK 中，PlayReadyLicenseResponseTemplate 和 PlayReadyLicenseTemplate 类有助于定义 PlayReady 许可证模板。
+当您使用 PlayReady 保护内容时，需要在授权策略中指定的内容之一是定义[PlayReady 许可证模板](media-services-playready-license-template-overview.md)的 XML 字符串。 在用于 .NET 的媒体服务 SDK 中，PlayReadyLicenseResponseTemplate 和 PlayReadyLicenseTemplate 类有助于定义 PlayReady 许可证模板。
 
 若要了解如何使用 PlayReady 和 Widevine 来加密内容，请参阅[使用 PlayReady 和/或 Widevine 动态通用加密](media-services-protect-with-playready-widevine.md)。
 
@@ -392,8 +392,8 @@ ms.locfileid: "79251201"
 
 若要获取基于令牌限制（用于密钥授权策略）的测试令牌，请参阅“[测试令牌](#test-token)”部分。 
 
-## <a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
-### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+## <a name="types-used-when-you-define-contentkeyauthorizationpolicy"></a><a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
+### <a name="contentkeyrestrictiontype"></a><a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
 
 ```csharp
     public enum ContentKeyRestrictionType
@@ -404,7 +404,7 @@ ms.locfileid: "79251201"
     }
 ```
 
-### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a name="contentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
 
 ```csharp 
     public enum ContentKeyDeliveryType
@@ -416,7 +416,7 @@ ms.locfileid: "79251201"
     }
 ```
 
-### <a id="TokenType"></a>TokenType
+### <a name="tokentype"></a><a id="TokenType"></a>令牌类型
 
 ```csharp
     public enum TokenType

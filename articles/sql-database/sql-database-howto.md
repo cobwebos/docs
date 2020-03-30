@@ -12,15 +12,15 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
 ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79209431"
 ---
 # <a name="how-to-use-azure-sql-database"></a>如何使用 Azure SQL 数据库
 
-在本部分中，你可以找到可帮助你管理和配置 Azure SQL 数据库的各种指南、脚本和说明。 还可以找到具体的[单一数据库](sql-database-howto-single-database.md)和[托管实例](sql-database-howto-managed-instance.md)操作指南。
+在本部分中，你可以找到可帮助你管理和配置 Azure SQL 数据库的各种指南、脚本和说明。 您还可以查找[单个数据库](sql-database-howto-single-database.md)和[托管实例](sql-database-howto-managed-instance.md)的具体使用指南。
 
 ## <a name="load-data"></a>加载数据
 
@@ -71,7 +71,7 @@ ms.locfileid: "79209431"
 
 - [连接](sql-database-libraries.md)
 - [使用 Spark 连接器](sql-database-spark-connector.md)
-- [对应用进行身份验证](sql-database-client-id-keys.md)
+- [应用身份验证](sql-database-client-id-keys.md)
 - [使用批处理提高性能](sql-database-use-batching-to-improve-performance.md)
 - [连接指南](sql-database-connectivity-issues.md)
 - [DNS 别名](dns-alias-overview.md)
@@ -82,9 +82,9 @@ ms.locfileid: "79209431"
 
 ## <a name="design-applications"></a>设计应用程序
 
-- [设计灾难恢复](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [灾难恢复设计](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 - [设计弹性池](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
-- [设计应用升级](sql-database-manage-application-rolling-upgrade.md)
+- [应用升级设计](sql-database-manage-application-rolling-upgrade.md)
 
 ### <a name="design-multi-tenant-saas-applications"></a>设计多租户 SaaS 应用程序
 
@@ -95,4 +95,4 @@ ms.locfileid: "79209431"
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[托管实例操作指南](sql-database-howto-managed-instance.md)。
-- 详细了解[单一数据库操作指南](sql-database-howto-single-database.md)。
+- 详细了解[单个数据库的"如何"指南](sql-database-howto-single-database.md)。

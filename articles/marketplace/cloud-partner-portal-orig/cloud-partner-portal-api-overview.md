@@ -1,19 +1,18 @@
 ---
-title: 云合作伙伴门户 API 参考 |Azure Marketplace
+title: 云合作伙伴门户 API 参考 |Azure 应用商店
 description: 市场 API 操作的说明、要使用的先决条件和列表。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b6591e1780d03cbfaff70fbd19ec3dfd274fae79
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 296c667876807bdd05a6281de461df76207b5490
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819637"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288540"
 ---
 <a name="cloud-partner-portal-api-reference"></a>云合作伙伴门户 API 参考
 ==================================
@@ -44,7 +43,7 @@ ms.locfileid: "73819637"
 -   [检索所有产品/服务](./cloud-partner-portal-api-retrieve-offers.md)
 -   [检索特定产品/服务](./cloud-partner-portal-api-retrieve-specific-offer.md)
 -   [检索产品/服务状态](./cloud-partner-portal-api-retrieve-offer-status.md)
--   [创建产品/服务](./cloud-partner-portal-api-creating-offer.md)
+-   [创建产品](./cloud-partner-portal-api-creating-offer.md)
 -   [发布产品/服务](./cloud-partner-portal-api-publish-offer.md)
 
 ### <a name="operations"></a>操作
@@ -60,6 +59,6 @@ ms.locfileid: "73819637"
 
 -   [设置虚拟机套餐的定价](./cloud-partner-portal-api-setting-price.md)
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 -   [排查身份验证错误](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)
