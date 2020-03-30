@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
 ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610057"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>规划和准备 Service Fabric 独立群集部署
@@ -20,7 +20,7 @@ ms.locfileid: "75610057"
 需要在所“拥有”的计算机上创建 Service Fabric 群集，以便确定群集需应对的故障类型。 例如，是否需要为这些计算机单独提供电源线或 Internet 连接？ 此外，还应考虑这些计算机的物理安全性。 计算机位于何处，谁需要访问它们？ 在做出这些决定后，可以采用逻辑方式将计算机映射到多个容错域（请参阅下一步骤）。 相比于测试群集，生产群集的基础结构规划要更复杂。
 
 ## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>确定容错域和升级域的数目
-[*容错域* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) 是故障的物理单元，与数据中心的物理基础结构直接相关。 容错域由共享单一故障点的硬件组件（计算机、交换机、网络等）组成。 尽管容错域与机架之间没有 1:1 映射，但是大致上，可将每个机架视为一个容错域。
+[*容错域*（FD）](service-fabric-cluster-resource-manager-cluster-description.md)是一个物理故障单元，与数据中心的物理基础结构直接相关。 容错域由共享单一故障点的硬件组件（计算机、交换机、网络等）组成。 尽管容错域与机架之间没有 1:1 映射，但是大致上，可将每个机架视为一个容错域。
 
 当在 ClusterConfig.json 中指定 FD 时，可以选择每个 FD 的名称。 Service Fabric 支持分层的 FD，因此，可以在 FD 中反映基础结构拓扑。  例如，以下 FD 是有效的：
 
@@ -57,10 +57,10 @@ ms.locfileid: "75610057"
 * 至少 40 GB 可用磁盘空间
 * 4 核或更高规格的 CPU
 * 所有计算机与安全网络连接
-* 已安装 Windows Server OS （有效版本： 2012 R2、2016、1709或1803）。 Service Fabric 版本6.4.654.9590 和更高版本还支持 Server 2019 和1809。
-* [.NET Framework 4.5.1 或更高版本](https://www.microsoft.com/download/details.aspx?id=40773)的完整安装版
-* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
-* 应在所有计算机上运行 [RemoteRegistry 服务](https://technet.microsoft.com/library/cc754820)
+* 安装了 Windows 服务器操作系统（有效版本：2012 R2、2016、1709 或 1803）。 Service Fabric 版本 6.4.654.9590 及更高版本还支持 Server 2019 和 1809。
+* [.NET 框架 4.5.1 或更高](https://www.microsoft.com/download/details.aspx?id=40773)版本，完全安装
+* [Windows 电源外壳 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
+* [远程注册服务](https://technet.microsoft.com/library/cc754820)应在所有计算机上运行
 * Service Fabric 安装驱动器必须是 NTFS 文件系统
 
 部署和配置群集的群集管理员必须拥有每台计算机的[管理员权限](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx)。 不能在域控制器上安装 Service Fabric。
@@ -101,8 +101,8 @@ ms.locfileid: "75610057"
 3. 所有群集节点计算机均不是域控制器。
 4. 如果要部署的群集是安全群集，需确保存在所需的安全先决条件，且已针对配置进行了正确配置。
 5. 如果群集计算机无法访问 Internet，请在群集配置中进行以下设置：
-   * 禁用遥测：在 "*属性*" 下，设置 *"enableTelemetry"： false*
-   * 禁用自动构造版本下载 & 通知当前群集版本已接近支持：在 "*属性*" 下，设置 *"fabricClusterAutoupgradeEnabled"： false*
+   * 禁用遥测：在*属性*设置 *"启用遥测"下：false*
+   * 禁用自动 Fabric 版本下载&通知，通知当前群集版本已接近支持结束：在*属性*设置*下"FabricCluster 自动升级启用"：false*
    * 或者，如果网络 Internet 访问仅限于允许列表中的域，则需要自动升级以下域：go.microsoft.com download.microsoft.com
 
 6. 设置适当的 Service Fabric 防病毒排除项：

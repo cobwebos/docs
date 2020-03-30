@@ -8,20 +8,20 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.openlocfilehash: 03dee0570faa863ca411ed91f2a6ec85a1e38380
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76985673"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>使用 Python 从 Azure Databricks 连接到 Azure 数据资源管理器
 
 [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) 是基于 Apache Spark 的分析平台，针对 Microsoft Azure 平台进行了优化。 本文介绍了如何通过 Azure Databricks 中的 Python 库访问 Azure 数据资源管理器中的数据。 可以使用 Azure 数据资源管理器通过多种方法进行身份验证，其中包括设备登录和 Azure Active Directory (Azure AD) 应用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - [创建 Azure 数据资源管理器群集和数据库](/azure/data-explorer/create-cluster-database-portal)。
-- [创建 Azure Databricks 工作区](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)。 在“Azure Databricks 服务”下的“定价层”下拉列表中，选择“高级”。 选择此项可以使用 Azure Databricks 机密来存储凭据并在笔记本和作业中引用它们。
+- [创建 Azure Databricks 工作区](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)。 在“Azure Databricks 服务”下的“定价层”下拉列表中，选择“高级”。************ 选择此项可以使用 Azure Databricks 机密来存储凭据并在笔记本和作业中引用它们。
 
 - 在 Azure Databricks 中[创建群集](https://docs.azuredatabricks.net/user-guide/clusters/create.html)，其规格如下（运行示例笔记本所需的最低设置）：
 
@@ -62,7 +62,7 @@ Azure 数据资源管理器使用 Azure AD 租户 ID，以对应用程序进行�
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-例如，如果域名为 contoso.com，则该 URL 将是：[https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/)。 选择此 URL 以查看结果。 第一行如下所示： 
+例如，如果域名为 contoso.com，则该 URL 将是：[https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/)**。 选择此 URL 以查看结果。 第一行如下所示： 
 
 ```
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"

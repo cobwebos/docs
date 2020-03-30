@@ -1,6 +1,6 @@
 ---
 title: IoT 中心的 Azure 事件网格架构 | Microsoft Docs
-description: 本文提供 Azure IoT 中心事件的属性和架构。 其中列出了可用的事件类型、示例事件和事件属性。
+description: 本文提供 Azure IoT 中心事件的属性和架构。 它列出了可用的事件类型、示例事件和事件属性。
 services: iot-hub
 documentationcenter: ''
 author: kgremban
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: kgremban
 ms.openlocfilehash: cfbd46ad961bd1dc914bae98e761cd83d445ff88
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513025"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>IoT 中心的 Azure 事件网格事件架构
@@ -27,15 +27,15 @@ ms.locfileid: "76513025"
 
 Azure IoT 中心发出以下事件类型：
 
-| 事件类型 | Description |
+| 事件类型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | 当设备注册到 IoT 中心时发布。 |
 | Microsoft.Devices.DeviceDeleted | 当设备从 IoT 中心删除时发布。 | 
 | Microsoft.Devices.DeviceConnected | 当设备连接到 IoT 中心时发布。 |
 | Microsoft.Devices.DeviceDisconnected | 当设备与 IoT 中心断开连接时发布。 | 
-| Microsoft.Devices.DeviceTelemetry | 在将遥测消息发送到 IoT 中心时发布。 |
+| Microsoft.Devices.DeviceTelemetry | 当遥测消息发送到 IoT 中心时发布。 |
 
-除设备遥测事件外的所有设备事件在事件网格支持的所有区域中都已正式发布。 设备遥测事件处于公共预览阶段，在美国东部、美国西部、西欧、 [Azure 政府](../azure-government/documentation-government-welcome.md)版、 [Azure 中国世纪互联](/azure/china/china-welcome)和[azure 德国](https://azure.microsoft.com/global-infrastructure/germany/)以外的所有区域提供。
+除设备遥测事件外，所有设备事件通常在所有事件网格支持的区域都可用。 设备遥测事件处于公共预览版中，除美国东部、美国西部、西欧[、Azure 政府](../azure-government/documentation-government-welcome.md)[、Azure 中国 21Vianet](/azure/china/china-welcome)和 Azure[德国](https://azure.microsoft.com/global-infrastructure/germany/)外，所有区域都可用。
 
 ## <a name="example-event"></a>示例事件
 
@@ -62,7 +62,7 @@ DeviceConnected 和 DeviceDisconnected 事件的架构具有相同结构。 此�
 }]
 ```
 
-向 IoT 中心发送遥测事件时，将引发 "Devicetelemetry" 事件。 此事件的示例架构如下所示。
+将遥测事件发送到 IoT 中心时，将引发 DeviceTelemetry 事件。 此事件的示例架构如下所示。
 
 ```json
 [{
@@ -148,20 +148,20 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 
 所有事件均包含相同的顶级数据： 
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | id | 字符串 | 事件的唯一标识符。 |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| data | 对象 | IoT 中心事件数据。  |
+| data | 对象 (object) | IoT 中心事件数据。  |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 对于所有 IoT 中心事件，数据对象包含以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | hubName | 字符串 | 已创建或已删除设备的 IoT 中心的名称。 |
 | deviceId | 字符串 | 设备的唯一标识符。 此区分大小写的字符串最多可长达 128 个字符，并支持 ASCII 7 位字母数字字符加上以下特殊字符：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |
@@ -170,25 +170,25 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 
 对于**设备已连接**和**设备已断开连接** IoT 中心事件，数据对象包含以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | moduleId | 字符串 | 模块的唯一标识符。 此字段是仅适用于模块设备的输出。 此区分大小写的字符串最多可长达 128 个字符，并支持 ASCII 7 位字母数字字符加上以下特殊字符：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |
-| deviceConnectionStateEventInfo | 对象 | 设备连接状态事件信息
+| deviceConnectionStateEventInfo | 对象 (object) | 设备连接状态事件信息
 | sequenceNumber | 字符串 | 一个数字，有助于指示设备已连接或设备已断开连接事件的顺序。 最新事件的序列号将大于上一个事件。 此数字可能会变化超过 1，但严格地说，是在增加。 请参阅[如何使用序列号](../iot-hub/iot-hub-how-to-order-connection-state-events.md)。 |
 
-对于**设备遥测**IoT 中心事件，数据对象包含[IoT 中心消息格式](../iot-hub/iot-hub-devguide-messages-construct.md)的设备到云消息，并具有以下属性：
+对于**设备遥测** IoT 中心事件，数据对象包含 [IoT 中心消息格式](../iot-hub/iot-hub-devguide-messages-construct.md)的设备到云消息，并具有以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| body | 字符串 | 来自设备的消息的内容。 |
+| body | 字符串 | 来自设备的消息内容。 |
 | properties | 字符串 | 应用程序属性是用户定义的字符串，可以添加到消息。 这些字段是可选的。 |
-| 系统属性 | 字符串 | [系统属性](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties)有助于识别消息的内容和源。 设备遥测消息必须是有效的 JSON 格式，其中 contentType 设置为 JSON，contentEncoding 设置为消息系统属性中的 UTF-8。 如果未设置此项，则 IoT 中心将以基本64编码格式编写消息。  |
+| 系统属性 | 字符串 | [系统属性](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties)有助于标识消息的内容和源。 设备遥测消息必须采用有效的 JSON 格式，并且在消息系统属性中将 contentType 设置为 JSON，将 contentEncoding 设置为 UTF-8。 如果未设置此项，则 IoT 中心将以 base 64 编码格式写入消息。  |
 
 对于**设备已创建**和**设备已删除** IoT 中心事件，数据对象包含以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| twin | 对象 | 有关设备克隆的信息，即应用程序设备元数据的云表示形式。 | 
+| twin | 对象 (object) | 有关设备孪生（即应用程序设备元数据的云表示形式）的信息。 | 
 | deviceID | 字符串 | 设备孪生的唯一标识符。 | 
 | etag | 字符串 | 用于确保设备孪生更新一致性的验证程序。 每个 etag 保证对于每个设备孪生是唯一的。 |  
 | deviceEtag| 字符串 | 用于确保设备注册表更新一致性的验证程序。 每个 deviceEtag 保证对于每个设备注册表是唯一的。 |
@@ -202,8 +202,8 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | primaryThumbprint | 字符串 | x509 证书的主要指纹。 |
 | secondaryThumbprint | 字符串 | x509 证书的次要指纹。 | 
 | 版本 | integer | 一个整数，每次更新设备孪生时递增 1。 |
-| desired | 对象 | 只能由应用程序后端写入并且由设备读取的属性部分。 | 
-| reported | 对象 | 只能由设备写入并且由应用程序后端读取的属性部分。 |
+| desired | 对象 (object) | 只能由应用程序后端写入并且由设备读取的属性部分。 | 
+| reported | 对象 (object) | 只能由设备写入并且由应用程序后端读取的属性部分。 |
 | lastUpdated | 字符串 | 上次设备孪生属性更新的 ISO8601 时间戳。 | 
 
 ## <a name="next-steps"></a>后续步骤

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: ef81e74b07a351139aa8feefbdf1b89ea7e4994f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727187"
 ---
 # <a name="azure-infrastructure-integrity"></a>Azure 基础结构完整性
@@ -64,6 +64,6 @@ Azure 确保可通过基于 Web 的标准协议来访问部署的应用程序或
 - [Azure 网络体系结构](infrastructure-network.md)
 - [Azure 生产网络](production-network.md)
 - [Azure SQL 数据库安全功能](infrastructure-sql.md)
-- [Azure 生产运营和管理](infrastructure-operations.md)
+- [Azure 生产操作和管理](infrastructure-operations.md)
 - [Azure 基础结构监视](infrastructure-monitoring.md)
 - [Azure 客户数据保护](protection-customer-data.md)

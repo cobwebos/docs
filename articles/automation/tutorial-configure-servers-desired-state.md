@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.openlocfilehash: 9e2f04f59a56be6c516eb90de45fdf7327673086
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75416589"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>将服务器配置到所需状态并管理偏移
@@ -23,7 +23,7 @@ ms.locfileid: "75416589"
 > - 将节点配置分配给托管节点
 > - 检查托管节点的符合性状态
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要：
 
@@ -61,7 +61,7 @@ configuration TestConfig {
 ```
 
 > [!NOTE]
-> 在更高级的方案中，若要导入提供 DSC 资源的多个模块，请确保每个模块在配置中都有唯一的 `Import-DscResource` 行。
+> 在需要导入多个提供 DSC 资源的模块的更高级方案中，请确保每个模块在配置中都有唯一的 `Import-DscResource` 行。
 
 调用 `Import-AzureRmAutomationDscConfiguration` cmdlet，将配置上传到自动化帐户：
 
@@ -128,18 +128,18 @@ Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAcc
 
 这会将名为 `TestConfig.WebServer` 的节点配置分配到名为 `DscVm` 的已注册 DSC 节点。
 默认情况下，每隔 30 分钟会检查一次 DSC 节点是否符合节点配置。
-有关如何更改符合性检查间隔的信息，请参阅[配置本地配置管理器](/powershell/scripting/dsc/managing-nodes/metaConfig)。
+有关如何更改合规性检查间隔的信息，请参阅[配置本地配置管理器](/powershell/scripting/dsc/managing-nodes/metaConfig)。
 
 ## <a name="working-with-partial-configurations"></a>使用部分配置
 
 Azure 自动化状态配置支持使用[部分配置](/powershell/scripting/dsc/pull-server/partialconfigs)。
-在此方案中，DSC 配置为独立管理多个配置，并且每个配置都是从 Azure 自动化检索的。
-但是，每个自动化帐户只能有一个配置分配给一个节点。
-这意味着，如果使用节点的两个配置，则需要两个自动化帐户。
+在此方案中，DSC 配置为独立管理多个配置，并且每个配置都从 Azure 自动化中检索。
+但是，每个自动化帐户只能为一个节点分配一个配置。
+这意味着，如果对节点使用两种配置，则需要两个自动化帐户。
 
 有关如何从请求服务注册部分配置的详细信息，请参阅[部分配置](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode)的文档。
 
-若要详细了解团队如何协同工作以协作管理使用配置作为代码的服务器，请参阅[了解 DSC 在 CI/CD 管道中的角色](/powershell/scripting/dsc/overview/authoringadvanced)。
+有关团队如何协作以代码形式使用配置来协作管理服务器的更多信息，请参见[了解 DSC 在 CI/CD 管道中的角色](/powershell/scripting/dsc/overview/authoringadvanced)。
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>检查托管节点的符合性状态
 
@@ -156,26 +156,26 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 $reports[0]
 ```
 
-## <a name="removing-nodes-from-service"></a>正在从服务中删除节点
+## <a name="removing-nodes-from-service"></a>从服务中删除节点
 
-将节点添加到 Azure 自动化状态配置时，本地 Configuration Manager 中的设置将设置为注册到服务，并使用请求配置和所需模块来配置计算机。
-如果选择从服务中删除节点，则可以使用 Azure 门户或 Az cmdlet 来执行此操作。
+当节点添加到 Azure 自动化 State Configuration 时，本地配置管理器中的设置会设置为注册到服务，并拉取配置和所需的模块，以配置计算机。
+如果选择从服务中删除节点，则可以使用 Azure 门户或 Az cmdlet 进行删除。
 
 > [!NOTE]
-> 从服务中注销节点仅设置本地 Configuration Manager 设置，使节点不再连接到服务。
-> 这不会影响当前应用到节点的配置。
-> 若要删除当前配置，请使用[PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1)或删除本地配置文件（这是适用于 Linux 节点的唯一选项）。
+> 从服务注销节点只会设置本地配置管理器设置，这样，该节点便不再连接到该服务。
+> 这不影响当前应用于该节点的配置。
+> 若要删除当前配置，请使用 [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) 或删除本地配置文件（这是适用于 Linux 节点的唯一选项）。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-在 Azure Automation 中，单击目录中的**状态配置（DSC）** 。
-接下来，单击 "**节点**" 以查看已向服务注册的节点的列表。
+在 Azure 自动化中，单击目录中的“状态配置(DSC)”****。
+接下来，单击“节点”****，以查看注册到服务的节点的列表。
 单击要删除的节点的名称。
-在打开的节点视图中，单击 "**注销**"。
+在打开的“节点”视图中，单击“注销”****。
 
 ### <a name="powershell"></a>PowerShell
 
-若要使用 PowerShell 从 Azure 自动化状态配置服务中注销节点，请遵循 cmdlet [AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0)的文档。
+若要使用 PowerShell 从 Azure 自动化 State Configuration 服务中注销节点，请按照 cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0) 的文档进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

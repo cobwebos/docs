@@ -9,13 +9,13 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67172889"
 ---
-Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和“电源”状态。   本文旨在介绍这些状态并专门突出显示了何时会对客户收取实例使用费用。 
+Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和“电源”状态。**** 本文旨在介绍这些状态并专门突出显示了何时会对客户收取实例使用费用。 
 
 ## <a name="power-states"></a>电源状态
 
@@ -40,7 +40,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 </tr>
 <tr>
 <td>
-<p><b>正在启动</b></p>
+<p><b>开始</b></p>
 </td>
 <td>
 <p>VM 正在启动。</p>
@@ -71,7 +71,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
  ]</code><br>
 </td>
 <td>
-<p><b>计费</b></p>
+<p><b>嘴</b></p>
 </td>
 </tr>
 <tr>
@@ -79,7 +79,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 <p><b>正在停止</b></p>
 </td>
 <td>
-<p>这是一种过渡性状态。 完成后，会显示为“已停止”。 </p>
+<p>这是一种过渡性状态。 完成后，会显示为“已停止”。****</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/stopping",<br>
@@ -89,12 +89,12 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
  ]</code><br>
 </td>
 <td>
-<p><b>计费</b></p>
+<p><b>嘴</b></p>
 </td>
 </tr>
 <tr>
 <td>
-<p><b>已停止</b></p>
+<p><b>停止</b></p>
 </td>
 <td>
 <p>VM 已在来宾 OS 中关闭，或者已使用 PowerOff API 关闭。</p>
@@ -116,7 +116,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 <p><b>正在解除分配</b></p>
 </td>
 <td>
-<p>过渡性状态。 完成后，VM 会显示为“已解除分配”。 </p>
+<p>过渡性状态。 完成后，VM 会显示为“已解除分配”。****</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/deallocating",<br>
@@ -131,7 +131,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 </tr>
 <tr>
 <td>
-<p><b>已解除分配</b></p>
+<p><b>交易</b></p>
 </td>
 <td>
 <p>VM 已成功停止并从主机中删除。 </p>
@@ -175,7 +175,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 <tbody>
 <tr>
 <td width="162">
-<p><b>状态</b></p>
+<p><b>States</b></p>
 </td>
 <td width="366">
 <p>描述</p>
@@ -183,7 +183,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 </tr>
 <tr>
 <td width="162">
-<p><b>正在创建</b></p>
+<p><b>Creating</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -210,7 +210,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 </tr>
 <tr>
 <td width="162">
-<p><b>正在删除</b></p>
+<p><b>删除</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -236,7 +236,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
  "displayStatus": "OS Provisioning In progress"<br>
  }<br>
 ]</code><br>
-<p>2. <b>OSProvisioningComplete</b> &ndash; 短时状态。 VM 会快速过渡到“成功”状态，除非需要安装扩展。  安装扩展可能需要一定的时间。 <br />
+<p>2. <b>OSProvisioningComplete</b> &ndash; 短时状态。 VM 会快速过渡到“成功”状态，除非需要安装扩展。**** 安装扩展可能需要一定的时间。 <br />
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningComplete",<br>
@@ -244,7 +244,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
  "displayStatus": "OS Provisioning Complete"<br>
  }<br>
 ]</code><br>
-<p><b>注意</b>：如果存在 OS 故障或者 OS 没有及时安装，则 OS 预配可能会过渡到“失败”状态  。 会根据部署在基础结构上的 VM 对客户收费。</p>
+<p><b>注意</b>：如果存在 OS 故障或者 OS 没有及时安装，则 OS 预配可能会过渡到“失败”状态。**** 会根据部署在基础结构上的 VM 对客户收费。</p>
 </td>
 </tr>
 </table>

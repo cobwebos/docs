@@ -1,24 +1,24 @@
 ---
 title: 定义变量的多个实例
-description: 在创建变量时，请使用 Azure 资源管理器模板中的复制操作多次迭代。
+description: 在 Azure 资源管理器模板中使用复制操作在创建变量时多次迭代。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: ea4caf3553b3cd14eec194b8cef0db59499a4f4c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: ed0c2d87c48a18b0a065f6c76e1e69142a9df048
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622885"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153295"
 ---
-# <a name="variable-iteration-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的变量迭代
+# <a name="variable-iteration-in-arm-templates"></a>ARM 模板中的可变迭代
 
-本文介绍如何为 Azure 资源管理器模板中的变量创建多个值。 通过将**copy**元素添加到模板的 variables 节，你可以在部署期间动态设置变量的项数。 还应避免重复模板语法。
+本文介绍如何在 Azure 资源管理器 （ARM） 模板中为变量创建多个值。 通过将**复制**元素添加到模板的变量部分，可以在部署期间动态设置变量的项数。 您还避免重复模板语法。
 
-你还可以使用包含[资源](copy-resources.md)的副本、[资源中的属性](copy-properties.md)和[输出](copy-outputs.md)。
+还可以将 copy 与[资源](copy-resources.md)、[资源中的属性](copy-properties.md)和[输出](copy-outputs.md)一起使用 。
 
 ## <a name="variable-iteration"></a>变量迭代
 
-Copy 元素具有以下常规格式：
+复制元素具有以下常规格式：
 
 ```json
 "copy": [
@@ -30,9 +30,9 @@ Copy 元素具有以下常规格式：
 ]
 ```
 
-**Name**属性是标识循环的任何值。 **Count**属性指定变量所需的迭代数。
+**名称**属性是标识循环的任何值。 **count**属性指定变量所需的迭代次数。
 
-**输入**属性指定要重复的属性。 创建一个由**input**属性中的值构造的元素数组。 它可以是单个属性（例如字符串），也可以是具有多个属性的对象。
+**输入**属性指定要重复的属性。 创建从**输入**属性中的值构造的元素数组。 它可以是单个属性（如字符串），也可以是具有多个属性的对象。
 
 下面的示例演示如何创建字符串值数组：
 
@@ -77,7 +77,7 @@ Copy 元素具有以下常规格式：
 ]
 ```
 
-下一个示例演示如何创建一个具有三个属性-name、diskSizeGB 和 diskIndex 的对象数组。
+下一个示例演示如何创建具有三个属性的对象数组 - 名称、磁盘大小GB 和 diskIndex。
 
 ```json
 {
@@ -145,10 +145,10 @@ Copy 元素具有以下常规格式：
 ```
 
 > [!NOTE]
-> 变量迭代支持 offset 参数。 偏移量必须晚于迭代的名称，如 copyIndex （' diskNames '，1）。 如果不提供 offset 值，则第一个实例的默认值将默认为0。
+> 变量迭代支持偏移参数。 偏移量必须以迭代的名称（如 copyIndex（"磁盘名称"1）之后提供。 如果不提供偏移值，则第一个实例默认为 0。
 >
 
-还可以在变量中使用 copy 元素。 下面的示例创建一个对象，该对象将数组作为其值之一。
+您还可以在变量中使用复制元素。 下面的示例创建一个对象，该对象具有数组作为其值之一。
 
 ```json
 {
@@ -221,7 +221,7 @@ Copy 元素具有以下常规格式：
 }
 ```
 
-下一个示例显示了可以使用变量的不同方式。
+下一个示例显示了将复制与变量一起使用的不同方法。
 
 ```json
 {
@@ -297,26 +297,26 @@ Copy 元素具有以下常规格式：
 
 ## <a name="copy-limits"></a>复制限制
 
-计数不能超过800。
+count 不能超过 800。
 
-计数不能为负数。 如果部署 Azure PowerShell 2.6 或更高版本的模板，Azure CLI 2.0.74 或更高版本，或者 REST API 版本**2019-05-10**或更高版本，则可以将 count 设置为零。 PowerShell、CLI 和 REST API 的早期版本不支持计数为零。
+count 不能为负数。 如果使用 Azure PowerShell 2.6 或更高版本、Azure CLI 2.0.74 或更高版本或者 REST API 版本 **2019-05-10** 或更高版本部署模板，则可以将 count 设置为零。 更早版本的 PowerShell、CLI 和 REST API 不支持将 count 设为零。
 
 ## <a name="example-templates"></a>示例模板
 
-下面的示例演示了为变量创建多个值的常见方案。
+以下示例显示了为变量创建多个值的常见方案。
 
-|模板  |说明  |
+|模板  |描述  |
 |---------|---------|
 |[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |演示对变量进行迭代的不同方法。 |
 |[多个安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |将多个安全规则部署到网络安全组。 这会从参数构造安全规则。 有关参数，请参阅[多个 NSG 参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要查看教程，请参阅[教程：使用资源管理器模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
-* 有关 copy 元素的其他用法，请参阅：
-  * [Azure 资源管理器模板中的资源迭代](copy-resources.md)
-  * [Azure 资源管理器模板中的属性迭代](copy-properties.md)
-  * [Azure 资源管理器模板中的输出迭代](copy-outputs.md)
-* 若要了解有关模板区段的信息，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
-* 若要了解如何部署模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
+* 要浏览教程，请参阅[教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
+* 有关复制元素的其他用途，请参阅：
+  * [ARM 模板中的资源迭代](copy-resources.md)
+  * [ARM 模板中的属性迭代](copy-properties.md)
+  * [ARM 模板中的输出迭代](copy-outputs.md)
+* 如果要了解模板的各个部分，请参阅[创作 ARM 模板](template-syntax.md)。
+* 要了解如何部署模板，请参阅[使用 ARM 模板部署应用程序](deploy-powershell.md)。
 

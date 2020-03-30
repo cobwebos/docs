@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3fde577a6b0efb7584e1c9efd57c95583ebe4ec9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70881426"
 ---
 # <a name="azure-dedicated-hsm-monitoring"></a>Azure 专用 HSM 监视
 
-Azure 专用 HSM 服务提供供单个客户使用的物理设备，由客户对设备进行完全的管理控制并承担管理责任。 提供的设备是 [Gemalto SafeNet Luna 7 HSM 型号 A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)。  在客户进行预配之后，Microsoft 将不能进行任何管理性访问，只有一个连接的物理串行端口，承担监视角色。 因此，客户将负责典型的运营活动，包括进行全面的监视和日志分析。
-客户将全权负责使用 HSM 的应用程序的一切，同时应该由 Gemalto 提供支持或咨询帮助。 考虑到客户对操作安全机制的责任程度，Microsoft 不可能为此服务提供任何类型的高可用性保证。 客户负责确保其应用程序得到正确的配置，以实现高可用性。 Microsoft 会监视并维护设备运行状况和网络连接性。
+Azure 专用 HSM 服务提供供单个客户使用的物理设备，由客户对设备进行完全的管理控制并承担管理责任。 提供的设备是 [Gemalto SafeNet Luna 7 HSM 型号 A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)。  在客户进行预配之后，Microsoft 没有任何管理访问权限，但可以连接一个充当监视角色的物理串行端口。 因此，客户将负责典型的运营活动，包括进行全面的监视和日志分析。
+客户将全权负责使用 HSM 的应用程序的一切，同时应该由 Gemalto 提供支持或咨询帮助。 考虑到客户对操作安全机制的责任程度，Microsoft 不可能为此服务提供任何类型的高可用性保证。 客户负责确保其应用程序得到正确的配置，以实现高可用性。 Microsoft 会监视并维护设备运行状况和网络连接。
 
 ## <a name="microsoft-monitoring"></a>Microsoft 监视
 
@@ -41,6 +41,6 @@ Azure 专用 HSM 服务提供供单个客户使用的物理设备，由客户对
 建议在进行任何设备预配和应用程序设计或部署之前，先深刻理解此服务的所有重要概念，例如高可用性和安全性。 更多概念级别的主题：
 
 * [高可用性](high-availability.md)
-* [物理安全性](physical-security.md)
-* [网络](networking.md)
+* [物理安全](physical-security.md)
+* [网络连接](networking.md)
 * [可支持性](supportability.md)

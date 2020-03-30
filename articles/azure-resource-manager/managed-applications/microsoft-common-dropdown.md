@@ -1,15 +1,15 @@
 ---
-title: 下拉 UI 元素
+title: DropDown UI 元素
 description: 介绍了 Azure 门户的 Microsoft.Common.DropDown UI 元素。 用于在部署托管应用程序时从可用选项中进行选择。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: a09f9695c18f368a585dbcd0d1e654dee4adfa03
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652380"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI 元素

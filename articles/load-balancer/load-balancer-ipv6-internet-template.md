@@ -1,7 +1,7 @@
 ---
 title: 使用 IPv6 部署面向 Internet 的负载均衡器 - Azure 模板
 titleSuffix: Azure Load Balancer
-description: 了解如何使用 Azure 模板为 Azure 负载均衡器和负载均衡的 Vm 部署 IPv6 支持。
+description: 了解如何使用 Azure 模板部署对 Azure 负载均衡器和负载平衡 VM 的 IPv6 支持。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -15,22 +15,22 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: eb9703a1944a650f41d76c05d79764f8bdf8cd52
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045447"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用模板部署分配了 IPv6 的面向 Internet 的负载均衡器解决方案
 
 > [!div class="op_single_selector"]
-> * [PowerShell](load-balancer-ipv6-internet-ps.md)
+> * [电源外壳](load-balancer-ipv6-internet-ps.md)
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [模板](load-balancer-ipv6-internet-template.md)
 
 
 >[!NOTE] 
->本文介绍了一个介绍性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。 使用[Azure vnet 的 ipv6](../virtual-network/ipv6-overview.md)可提供全面的 ipv6 连接，该功能可将 ipv6 连接与虚拟网络集成，并包含 Ipv6 网络安全组规则、ipv6 用户定义的路由、ipv6 基本和标准负载平衡等关键功能。  Azure Vnet 的 IPv6 是 Azure 中 IPv6 应用程序的建议标准。 请参阅[用于 AZURE VNET Powershell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)  
+>本文介绍了一个介绍性的 IPv6 功能，允许基本负载均衡器同时提供 IPv4 和 IPv6 连接。 适用于[Azure VNET 的 IPv6](../virtual-network/ipv6-overview.md)集成了 IPv6 连接，包括 IPv6 网络安全组规则、IPv6 用户定义的路由、IPv6 基本和标准负载平衡等关键功能。  Azure VNET 的 IPv6 是 Azure 中 IPv6 应用程序的建议标准。 [有关 Azure VNET 电源壳部署，请参阅 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)  
 
 Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
@@ -72,7 +72,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
     ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. 单击“编辑参数”。 在“参数”边栏选项卡中，根据指导在“模板参数”部分中指定值，并单击“保存”关闭“参数”边栏选项卡。 在“自定义部署”边栏选项卡中选择订阅、选择现有资源组或创建一个资源组。 如果要创建资源组，请选择资源组的位置。 接下来，单击“法律条款”，并单击法律条款后面的“购买”。 Azure 开始部署资源。 部署所有资源需要花费几分钟时间。
+6. 单击“编辑参数”。 在“参数”边栏选项卡中，根据指导在“模板参数”部分中指定值，并单击“保存”关闭“参数”边栏选项卡。 在“自定义部署”边栏选项卡中选择订阅、选择现有资源组或创建一个资源组。 如果要创建资源组，请选择资源组的位置。 接下来，单击“法律条款”****，并单击法律条款后面的“购买”****。 Azure 开始部署资源。 部署所有资源需要花费几分钟时间。
 
     ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 

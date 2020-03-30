@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: b7881d38e04f9b5793f61110e0e3e4c76baeddf2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70886507"
 ---
-安全控制是 Azure 服务的一项质量或功能，可为服务提供阻止、检测和响应安全漏洞的能力。
+安全控制是促使 Azure 服务能够防范、检测和响应安全漏洞的一种服务质量或功能。
 
-对于每个控件，我们使用 "是" 或 "否" 来指示它当前是否用于服务，对于不适用于该服务的控件，为 "N/A"。 我们还可能会提供备注或链接，以了解有关属性的详细信息。
+对于每项控制，我们使用“Yes”或“No”来指示它当前是否用于该服务，对于不适用于该服务的控制为“N/A”。 我们还可能会提供有关属性的更多信息的注释或链接。

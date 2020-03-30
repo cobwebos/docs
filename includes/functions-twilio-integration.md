@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 467e09f9bd46df6d888d82f2961c5aed9cca4ab5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67172751"
 ---
 此示例涉及使用 [Twilio](https://www.twilio.com/) 服务向移动电话发送短信。 Azure Functions 已通过 [Twilio 绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio)提供对 Twilio 的支持，此示例使用了这一功能。
@@ -17,6 +17,6 @@ ms.locfileid: "67172751"
 
 | 应用设置名称 | 值说明 |
 | - | - |
-| TwilioAccountSid   | Twilio 帐户的 SID |
-| TwilioAuthToken    | Twilio 帐户的身份验证令牌 |
-| TwilioPhoneNumber  | 与 Twilio 帐户关联的电话号码。 此电话号码用于发送短信。 |
+| TwilioAccountSid****  | Twilio 帐户的 SID |
+| TwilioAuthToken****   | Twilio 帐户的身份验证令牌 |
+| TwilioPhoneNumber**** | 与 Twilio 帐户关联的电话号码。 此电话号码用于发送短信。 |

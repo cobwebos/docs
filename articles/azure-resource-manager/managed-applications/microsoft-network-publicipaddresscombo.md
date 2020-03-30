@@ -1,15 +1,15 @@
 ---
-title: Microsoft.network.publicipaddresscombo UI 元素
+title: PublicIpAddressCombo UI 元素
 description: 介绍了 Azure 门户的 Microsoft.Network.PublicIpAddressCombo UI 元素。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 0393673663df8f3ca580ff34e16bee910b955f8d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651912"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI 元素
@@ -80,15 +80,15 @@ ms.locfileid: "75651912"
 }
 ```
 
-- 当 `options.hideNone` 指定为 **true** 时，`newOrExistingOrNone` 将仅具有值 **new** 或 **existing**。
-- 当 `options.hideDomainNameLabel` 指定为 **true** 时，将取消声明 `domainNameLabel`。
+- 当`options.hideNone`指定为**true**`newOrExistingOrNone`时，将仅具有**新**值或**现有**值。
+- 当`options.hideDomainNameLabel`指定为**true**`domainNameLabel`时，则未声明。
 
 ## <a name="remarks"></a>备注
 
 - 如果 `constraints.required.domainNameLabel` 设置为 **true**，则用户在创建新的公共 IP 地址时必须提供域名标签。 没有标签的现有公共 IP 地址不可供选择。
-- 如果 `options.hideNone` 设置为 **true**，则用于为公共 IP 地址选择 **None** 的选项会被隐藏。 默认值是 **false**秒。
-- 如果 `options.hideDomainNameLabel` 设置为 **true**，则域名标签的文本框会被隐藏。 默认值是 **false**秒。
-- 如果 `options.hideExisting` 为 true，则用户无法选择现有的公共 IP 地址。 默认值是 **false**秒。
+- 如果 `options.hideNone` 设置为 **true**，则用于为公共 IP 地址选择 **None** 的选项会被隐藏。 默认值为“false”****。
+- 如果 `options.hideDomainNameLabel` 设置为 **true**，则域名标签的文本框会被隐藏。 默认值为“false”****。
+- 如果 `options.hideExisting` 为 true，则用户无法选择现有的公共 IP 地址。 默认值为“false”****。
 - 对于 `zone`，仅指定区域的公共 IP 地址或区域复原公共 IP 地址可用。
 
 ## <a name="next-steps"></a>后续步骤

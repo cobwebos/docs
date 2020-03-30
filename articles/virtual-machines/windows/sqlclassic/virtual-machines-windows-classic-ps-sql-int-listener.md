@@ -1,6 +1,6 @@
 ---
 title: 为可用性组配置 ILB 侦听器（经典）
-description: 本教程使用通过经典部署模型创建的资源，并在中为使用内部负载均衡器的 Azure 中的 SQL Server VM 创建 Always On 可用性组侦听器。
+description: 本教程使用使用经典部署模型创建的资源，并为 Azure 中的 SQL Server VM 创建一个始终处于可用性组侦听器，该 VM 使用内部负载均衡器。
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -16,13 +16,13 @@ ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978174"
 ---
-# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>在 Azure SQL Server Vm 上配置可用性组的 ILB 侦听器
+# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>为 Azure SQL Server VM 上的可用性组配置 ILB 侦听器
 > [!div class="op_single_selector"]
 > * [内部侦听器](../classic/ps-sql-int-listener.md)
 > * [外部侦听器](../classic/ps-sql-ext-listener.md)
@@ -56,11 +56,11 @@ ms.locfileid: "75978174"
 
 1. 在 Azure 门户中，转到每个托管副本的 VM 查看详细信息。
 
-2. 单击每个 VM 的“终结点”选项卡。
+2. 单击每个 VM 的“终结点”选项卡。****
 
-3. 验证想要使用的侦听器终结点“名称”和“公用端口”是否已被使用。 在本部分的示例中，名称为“MyEndpoint”，端口为“1433”。
+3. 验证想要使用的侦听器终结点“名称”和“公用端口”是否已被使用。******** 在本部分的示例中，名称为“MyEndpoint”，端口为“1433”。****
 
-4. 在本地客户端上，下载并安装[最新的 PowerShell 模块](https://azure.microsoft.com/downloads/)。
+4. 在本地客户端上，下载并安装最新的[PowerShell 模块](https://azure.microsoft.com/downloads/)。
 
 5. 启动 Azure PowerShell。  
     将打开新 PowerShell 会话，其中加载了 Azure 管理模块。
@@ -105,7 +105,7 @@ ms.locfileid: "75978174"
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. 设置变量后，将脚本从文本编辑器复制到 PowerShell 会话中运行。 如果提示符仍然显示 **>>** ，请再次按 Enter，以确保脚本开始运行。
+13. 设置变量后，将脚本从文本编辑器复制到 PowerShell 会话中运行。 如果提示仍然显示**>>**，请再次按 Enter 以确保脚本开始运行。
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>如果需要，请验证是否已安装 KB2854082
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -151,7 +151,7 @@ ms.locfileid: "75978174"
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. 设置变量之后，打开提升的 Windows PowerShell 窗口，然后将文本编辑器中的脚本粘贴到 Azure PowerShell 会话中运行。 如果提示符仍然显示 **>>** ，请再次按 Enter，确保脚本开始运行。
+3. 设置变量之后，打开提升的 Windows PowerShell 窗口，然后将文本编辑器中的脚本粘贴到 Azure PowerShell 会话中运行。 如果提示仍然显示**>>**，请再次按 Enter 以确保脚本开始运行。
 
 4. 针对每个 VM 重复上述步骤。  
     此脚本将使用云服务的 IP 地址来配置 IP 地址资源，同时设置探测端口等其他参数。 在 IP 地址资源联机后，它可以响应我们前面创建的负载均衡终结点在探测端口上的轮询。

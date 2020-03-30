@@ -1,6 +1,6 @@
 ---
 title: B2B 方案中常见错误和问题的解决方案
-description: 查找在 Azure 逻辑应用中对 B2B 方案进行故障排除时常见错误和问题的解决方案
+description: 在 Azure 逻辑应用中排除 B2B 方案时的常见错误和问题查找解决方案
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: 38e281ce3d8117bff719b1bb572f09acbbb89669
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666680"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Azure 逻辑应用的 B2B 错误和解决方案

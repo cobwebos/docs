@@ -16,22 +16,22 @@ ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 90de49ae3137735683bae6a18b5f7c8951b021ae
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645865"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 上的 SAP MaxDB、liveCache 和内容服务器部署
 
-[767598]: https://launchpad.support.sap.com/#/notes/767598
+[767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
-[826037]: https://launchpad.support.sap.com/#/notes/826037
+[826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
-[1139904]: https://launchpad.support.sap.com/#/notes/1139904
-[1173395]: https://launchpad.support.sap.com/#/notes/1173395
+[1139904]:https://launchpad.support.sap.com/#/notes/1139904
+[1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
 [1409604]:https://launchpad.support.sap.com/#/notes/1409604
 [1558958]:https://launchpad.support.sap.com/#/notes/1558958
@@ -41,7 +41,7 @@ ms.locfileid: "75645865"
 [1597355]:https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
-[1619726]: https://launchpad.support.sap.com/#/notes/1619726
+[1619726]:https://launchpad.support.sap.com/#/notes/1619726
 [1619967]:https://launchpad.support.sap.com/#/notes/1619967
 [1750510]:https://launchpad.support.sap.com/#/notes/1750510
 [1752266]:https://launchpad.support.sap.com/#/notes/1752266
@@ -54,7 +54,7 @@ ms.locfileid: "75645865"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
@@ -319,7 +319,7 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>SAP MaxDB DBMS 支持的 Microsoft Windows 版本和 Azure VM 类型
 若要为 Azure 上的 SAP MaxDB DBMS 查找受支持的 Microsoft Windows 版本，请参阅：
 
-* [SAP 产品可用性对照表（PAM）][sap-pam]
+* [SAP 产品可用性对照表 (PAM)][sap-pam]
 * SAP 说明 [1928533]
 
 强烈建议使用最新版本的操作系统 Microsoft Windows，也就是 Microsoft Windows 2016。
@@ -328,7 +328,7 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 可以在 SAP 说明 [767598] 中找到更新的 SAP MaxDB 文档列表
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>在 Azure VM 中安装 SAP 的 SAP MaxDB 配置准则
-#### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>存储配置
+#### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>存储配置
 适用于 SAP MaxDB 的 Azure 存储最佳做法遵循[用于 RDBMS 部署的 VM 的存储结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)一章中所述的常规建议。
 
 > [!IMPORTANT]
@@ -338,7 +338,7 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 
 简而言之，必须：
 
-* 如果使用 Azure 存储帐户，请将保存 SAP MaxDB 数据和日志卷（数据和日志文件）的 Azure 存储帐户设置为本地冗余存储 (LRS)，如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述。
+* 如果使用 Azure 存储帐户，请将保存 SAP MaxDB 数据和日志卷（数据和日志文件）的 Azure 存储帐户设置为本地冗余存储 (LRS)****，如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述。
 * 将 SAP MaxDB 数据卷（数据文件）的 IO 路径与日志卷（日志文件）的 IO 路径隔开。 这表示 SAP MaxDB 数据卷（数据文件）必须安装在一个逻辑驱动器上，而 SAP MaxDB 日志卷（日志文件）必须安装在另一个逻辑驱动器上。
 * 根据[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中所述，为每个磁盘设置适当的缓存类型，具体取决于是将其用于 SAP MaxDB 数据卷还是日志卷（数据和日志文件），以及是使用 Azure 标准存储还是 Azure 高级存储。
 * 只要每个磁盘当前的 IOPS 配额能满足需求，就可以将所有数据卷存储在装载的单个磁盘上，同时将所有数据库日志卷存储在装载的另一个磁盘上。
@@ -348,12 +348,12 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 ![适用于 SAP MaxDB DBMS 的 Azure IaaS VM 的参考配置](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
 
 
-#### <a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>备份和还原
+#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>备份和还原
 将 SAP MaxDB 部署到 Azure 时，必须检查备份方法。 即使系统不是生产系统，也必须定期备份 SAP MaxDB 托管的 SAP 数据库。 由于 Azure 存储会保留三个映像，因此，在保护系统以免发生存储故障以及更严重的操作或管理故障方面，备份现在已变得不太重要。 维护适当备份和还原计划的主要原因是，可以通过提供时间点恢复功能来补救逻辑或人为错误。 因此，其目标是使用备份将数据库还原到某个时间点，或者通过复制现有数据库，在 Azure 中使用备份来植入另一个系统。 
 
 在 Azure 中备份和还原数据库的方式与在本地系统中一样，因此，可以使用标准的 SAP MaxDB 备份/还原工具，SAP 说明 [767598] 中列出的其中一个 SAP MaxDB 文档对这些工具进行了说明。 
 
-#### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>备份和还原的性能注意事项
+#### <a name="performance-considerations-for-backup-and-restore"></a><a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>备份和还原的性能注意事项
 与裸机部署一样，备份和还原的性能取决于可以并行读取的卷数目，以及这些卷的吞吐量。 因此，可以假设：
 
 * 存储数据库设备所用的磁盘数目越少，总体读取吞吐量就越低
@@ -370,9 +370,9 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 
 基于已装载的多个磁盘对卷划分带区，这之前已在[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中进行了讨论。 
 
-#### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>其他注意事项
+#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>其他注意事项
 如[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)所述，Azure 可用性集或 SAP 监视等所有其他常规领域也适用。  使用 SAP MaxDB 数据库进行 VM 部署。
-其他特定于 SAP MaxDB 的设置对 Azure VM 是透明的，相关介绍请参阅 SAP 说明 [767598] 以及下列 SAP 说明中列出的不同文档：
+其他特定于 SAP MaxDB 的设置对 Azure VM 是透明的，并在 SAP 注释[767598]和这些 SAP 说明中列出的不同文档中作了说明：
 
 * [826037] 
 * [1139904]
@@ -380,12 +380,12 @@ SAP 目前支持 SAP MaxDB 版本 7.9 或更高版本，该版本可以与 Azure
 
 ## <a name="specifics-for-sap-livecache-deployments-on-windows"></a>有关 Windows 上的 SAP liveCache 部署的具体信息
 ### <a name="sap-livecache-version-support"></a>SAP liveCache 版本支持
-Azure 虚拟机支持的 SAP liveCache 最低版本是针对 EhP 2 for SAP SCM 7.0 和更新版本发行的 SAP LC/LCAPPS 10.0 SP 25，其中包括 liveCache 7.9.08.31 和 LCA-Build 25。
+Azure 虚拟机支持的 SAP liveCache 最低版本是针对 EhP 2 for SAP SCM 7.0 和更新版本发行的 SAP LC/LCAPPS 10.0 SP 25，其中包括 liveCache 7.9.08.31 和 LCA-Build 25****************。
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>SAP liveCache DBMS 支持的 Microsoft Windows 版本和 Azure VM 类型
 若要为 Azure 上的 SAP liveCache DBMS 查找受支持的 Microsoft Windows 版本，请参阅：
 
-* [SAP 产品可用性对照表（PAM）][sap-pam]
+* [SAP 产品可用性对照表 (PAM)][sap-pam]
 * SAP 说明 [1928533]
 
 强烈建议使用最新版本的操作系统 Microsoft Windows Server。 
@@ -425,14 +425,14 @@ SAP 目前支持：
 * **SAP MaxDB 版本 7.9**
 * **Microsoft IIS (Internet Information Server) 版本 8.0（和更高版本）**
 
-强烈建议使用最新版的 SAP 内容服务器以及最新版的 Microsoft IIS。 
+强烈建议使用最新版的 SAP 内容服务器以及最新版的 Microsoft IIS****。 
 
-在[Sap 产品可用性矩阵（PAM）][sap-pam]中查看 Sap 内容服务器和 Microsoft IIS 的最新支持版本。
+在 [SAP 产品可用性对照表 (PAM)][sap-pam] 中查看支持的最新 SAP 内容服务器和 Microsoft IIS 版本。
 
 ### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>SAP 内容服务器支持的 Microsoft Windows 和 Azure VM 类型
 若要为 Azure 上的 SAP 内容服务器查找受支持的 Windows 版本，请参阅：
 
-* [SAP 产品可用性对照表（PAM）][sap-pam]
+* [SAP 产品可用性对照表 (PAM)][sap-pam]
 * SAP 说明 [1928533]
 
 强烈建议使用最新版本的 Microsoft Windows Server。

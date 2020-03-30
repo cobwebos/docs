@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75749899"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>由于 DHCP 客户端服务被禁用，因此无法对 Azure 虚拟机进行 RDP
@@ -34,7 +34,7 @@ ms.locfileid: "75749899"
 **任务类别**: 无 </br>
 **级别**: 错误 </br>
 **关键字**: 经典</br>
-**用户**：暂缺 </br>
+**用户**: 不适用 </br>
 **计算机**: myvm.cosotos.com</br>
 **说明**：DHCP 客户端服务在启动时挂起。</br>
 
@@ -60,7 +60,7 @@ DHCP 客户端服务未在 VM 上运行。
 ### <a name="use-serial-control"></a>使用串行控制台
 
 1. 连接到[串行控制台并打开 CMD 实例](serial-console-windows.md#use-cmd-or-powershell-in-serial-console)。
-）。 如果未在 VM 上启用串行控制台，请参阅[重置网络接口](reset-network-interface.md)。
+). 如果未在 VM 上启用串行控制台，请参阅[重置网络接口](reset-network-interface.md)。
 2. 在网络接口上检查是否禁用了 DHCP：
 
         sc query DHCP
@@ -107,7 +107,7 @@ DHCP 客户端服务未在 VM 上运行。
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML
    ```
-4. 通过启动生成“拒绝被访问”消息的服务来再现问题：
+4. 通过启动生成“拒绝被访问”消息的服务来再现问题****：
 
    ```
    sc start DHCP
@@ -118,14 +118,14 @@ DHCP 客户端服务未在 VM 上运行。
    ```
    procmon /Terminate
    ```
-5. 收集 c:\temp\ProcMonTrace.PML 文件：
+5. 收集 c:\temp\ProcMonTrace.PML 文件****：
 
     1. [将数据磁盘附加到 VM](../windows/attach-managed-disk-portal.md
 )。
     2. 使用串行控制台可将文件复制到新驱动器。 例如，`copy C:\temp\ProcMonTrace.PML F:\` 。 在此命令中，F 是附加的数据磁盘的驱动程序号。 使用正确的值适当地替换该字母。
     3. 分离数据驱动器，然后将其附加到已安装进程监视器 ubstakke 的正常 VM。
 
-6. 在正常的 VM 上使用进程监视器打开 ProcMonTrace.PML。 然后按“结果为‘访问被拒绝’”进行筛选，如以下屏幕截图所示 **：**
+6. 在正常的 VM 上使用进程监视器打开 ProcMonTrace.PML****。 然后按“结果为‘访问被拒绝’”进行筛选，如以下屏幕截图所示 **：**
 
     ![在进程监视器中按结果进行筛选](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
@@ -165,7 +165,7 @@ DHCP 客户端服务未在 VM 上运行。
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>DHCP 客户端服务崩溃或挂起
 
-1. 如果服务状态卡在“正在启动”或“正在停止”状态，请尝试停止服务：
+1. 如果服务状态卡在“正在启动”或“正在停止”状态，请尝试停止服务********：
 
         sc stop DHCP
 2. 在服务自身的“svchost”容器中隔离该服务：
@@ -180,9 +180,9 @@ DHCP 客户端服务未在 VM 上运行。
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
 
-1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
-2. 开始与恢复 VM 建立远程桌面连接。 确保附加的磁盘在磁盘管理控制台中标记为“联机”。 请注意分配给附加的 OS 磁盘的驱动器号。
-3.  打开权限提升的命令提示符实例（“以管理员身份运行”）。 然后运行以下脚本。 此脚本假设分配给附加 OS 磁盘的驱动器号为**F**。将相应的字母替换为 VM 中的值。
+1. [将操作系统磁盘附加到恢复 VM。](../windows/troubleshoot-recovery-disks-portal.md)
+2. 开始与恢复 VM 建立远程桌面连接。 确保附加的磁盘在磁盘管理控制台中标记为“联机”。**** 请注意分配给附加的 OS 磁盘的驱动器号。
+3.  打开一个提升的命令提示实例 （**以管理员身份运行**）。 然后运行以下脚本。 此脚本假定分配给附加的 OS 磁盘的驱动器号为**F**。将字母替换为 VM 中的值。
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM

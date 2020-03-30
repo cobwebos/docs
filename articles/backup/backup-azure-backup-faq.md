@@ -3,12 +3,12 @@ title: 常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: db09a31154b680097b6b46e8f9e2cce2ad09d108
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255018"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156049"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "78255018"
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>可针对每个保管库注册的服务器/计算机数量是否有限制？
 
-每个保管库最多可以注册 1000 个 Azure 虚拟机。 如果使用 Microsoft Azure 备份代理，每个保管库最多可以注册 50 个 MAB 代理。 可以将 50 个 MAB 服务器/DPM 服务器注册到一个保管库。
+每个保管库最多可以注册 1000 个 Azure 虚拟机。 如果使用 Microsoft Azure 备份代理，则每个保管库最多可以注册 50 个 MARS 代理。 您还可以将 50 台 MABS 服务器/DPM 服务器注册到保管库。
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>可以在保管库中保护多少数据源/项？
 
@@ -75,7 +75,7 @@ ms.locfileid: "78255018"
 
 Azure 备份支持操作系统对文件和文件夹以及使用 Azure 备份服务器和 DPM 保护的工作负载应用程序进行备份。
 
-**OS** | **SKU** | **详细信息**
+**操作系统** | **Sku** | **详细信息**
 --- | --- | ---
 工作站 | |
 Windows 10 64 位 | Enterprise、Pro、Home | 计算机应运行最新服务包和更新。
@@ -123,7 +123,7 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>使用恢复服务保管库备份的数据量是否有限制？
 
-可以使用恢复服务保管库备份的总数据量没有限制。 单个数据源（Azure Vm 除外）的大小最大可为 54400 GB。 有关限制的详细信息，请参阅[支持矩阵中的保管库限制部分](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)。
+您可以使用恢复服务保管库备份的数据总量没有限制。 单个数据源（Azure VM 以外的）的大小最多可为 54，400 GB。 有关限制的详细信息，请参阅[支持矩阵 中的保管库限制部分](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>为什么传输到恢复服务保管库的数据的大小小于选择进行备份的数据？
 
@@ -168,7 +168,7 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 典型的长期保留点产品将备份数据存储为完整的点。
 
 - 完整点的存储 *效率不高* ，但能使还原变得更方便和快速。
-- 增量复制为高效存储，但要求还原数据链，这会影响恢复时间
+- 增量副本具有存储*效率*，但需要还原数据链，这会影响您的恢复时间
 
 Azure 备份存储体系结构提供这两个领域的最佳产品，它以最佳方式用于快速恢复的数据存储中，产生较低的存储成本。 这种方法可确保提高（入口和出口）带宽使用效率。 数据存储量和恢复数据所需的时间都会尽量减少。 了解有关[增量备份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)的更多信息。
 

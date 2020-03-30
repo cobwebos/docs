@@ -1,6 +1,6 @@
 ---
 title: 使用 psql 将数据批量载入 Apache Phoenix - Azure HDInsight
-description: 使用 psql 工具将数据批量加载到 Azure HDInsight 中的 Apache Phoenix 表中
+description: 使用 psql 工具将批量加载数据加载到 Azure HDInsight 中的 Apache 凤凰表
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 845c4a62aee04a8acdc645ba4c41f1f5496537c3
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552604"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>使用 psql 将数据批量加载到 Apache Phoenix
@@ -27,13 +27,13 @@ ms.locfileid: "75552604"
 
 由于 MapReduce 使用多个线程，对于极大型的数据卷（通常用于生产方案），可以使用 MapReduce 执行批量加载。
 
-在开始加载数据之前，请先确认是否已启用 Phoenix，并且查询超时设置是否符合预期。  访问 HDInsight 群集[Apache Ambari](https://ambari.apache.org/)仪表板，选择 "HBase"，然后选择 "配置" 选项卡。 向下滚动以验证 Apache Phoenix 设置为 `enabled`，如下所示：
+在开始加载数据之前，请先确认是否已启用 Phoenix，并且查询超时设置是否符合预期。  访问 HDInsight 群集[Apache Ambari](https://ambari.apache.org/)仪表板，选择 HBase，然后选择"配置"选项卡。 向下滚动以验证阿帕奇凤凰是否设置为`enabled`所示：
 
 ![Apache Phoenix HDInsight 群集设置](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
 ### <a name="use-psql-to-bulk-load-tables"></a>使用 `psql` 批量加载表
 
-1. 创建一个名为 `createCustomersTable.sql`的文件，并将下面的代码复制到该文件中。 然后保存并关闭该文件。
+1. 创建名为 的文件`createCustomersTable.sql`，并将下面的代码复制到文件中。 然后保存并关闭该文件。
 
     ```sql
     CREATE TABLE Customers (
@@ -44,13 +44,13 @@ ms.locfileid: "75552604"
         Country varchar);
     ```
 
-1. 创建一个名为 `listCustomers.sql`的文件，并将下面的代码复制到该文件中。 然后保存并关闭该文件。
+1. 创建名为 的文件`listCustomers.sql`，并将下面的代码复制到文件中。 然后保存并关闭该文件。
 
     ```sql
     SELECT * from Customers;
     ```
 
-1. 创建一个名为 `customers.csv`的文件，并将下面的代码复制到该文件中。 然后保存并关闭该文件。
+1. 创建名为 的文件`customers.csv`，并将下面的代码复制到文件中。 然后保存并关闭该文件。
 
     ```txt
     1,Samantha,260000.0,18,US
@@ -58,7 +58,7 @@ ms.locfileid: "75552604"
     3,Anton,550150.0,42,Norway
     ```
 
-1. 创建一个名为 `customers2.csv`的文件，并将下面的代码复制到该文件中。 然后保存并关闭该文件。
+1. 创建名为 的文件`customers2.csv`，并将下面的代码复制到文件中。 然后保存并关闭该文件。
 
     ```txt
     4,Nicolle,180000.0,22,US
@@ -66,31 +66,31 @@ ms.locfileid: "75552604"
     6,Ben,45000.0,32,Poland
     ```
 
-1. 打开命令提示符并将目录更改为新创建的文件的位置。 将下面的 CLUSTERNAME 替换为 HBase 群集的实际名称。 然后执行代码，将文件上传到群集的头节点：
+1. 打开命令提示符并将目录更改为新创建文件的位置。 将下面的 CLUSTERNAME 替换为 HBase 群集的实际名称。 然后执行代码将文件上载到群集的头节点：
 
     ```cmd
     scp customers.csv customers2.csv createCustomersTable.sql listCustomers.sql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/tmp
     ```
 
-1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 将 CLUSTERNAME 替换为群集名称，然后输入以下命令，以编辑以下命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. 从 ssh 会话中，将目录更改为**psql**工具的位置。 执行以下命令：
+1. 从 ssh 会话，将目录更改为**psql**工具的位置。 执行以下命令：
 
     ```bash
     cd /usr/hdp/current/phoenix-client/bin
     ```
 
-1. 大容量加载数据。 下面的代码将创建**Customers**表，然后上传数据。
+1. 批量加载数据。 以下代码将同时创建**客户**表，然后上载数据。
 
     ```bash
     python psql.py /tmp/createCustomersTable.sql /tmp/customers.csv
     ```
 
-    `psql` 操作完成后，应会看到类似于下面的消息：
+    `psql`操作完成后，您应该会看到类似于以下消息的消息：
 
     ```output
     csv columns from database.
@@ -98,15 +98,15 @@ ms.locfileid: "75552604"
     Time: 0.081 sec(s)
     ```
 
-1. 您可以继续使用 `psql` 查看 Customers 表的内容。 执行下面的代码：
+1. 您可以继续使用`psql`来查看"客户"表的内容。 执行以下代码：
 
     ```bash
     python psql.py /tmp/listCustomers.sql
     ```
 
-    或者，可以使用[HBase shell](./query-hbase-with-hbase-shell.md)或[Apache Zeppelin](./apache-hbase-phoenix-zeppelin.md)来查询数据。
+    或者，您可以使用[HBase 外壳](./query-hbase-with-hbase-shell.md)或[Apache Zepelin](./apache-hbase-phoenix-zeppelin.md)来查询数据。
 
-1. 上传其他数据。 既然该表已经存在，则该命令将指定该表。 执行以下命令：
+1. 上传其他数据。 现在表已存在，该命令指定该表。 执行以下命令：
 
     ```bash
     python psql.py -t CUSTOMERS /tmp/customers2.csv
@@ -116,9 +116,9 @@ ms.locfileid: "75552604"
 
 若要进行遍布整个群集的更高吞吐量加载，可以使用 MapReduce 加载工具。 此加载程序先将所有数据转换为 HFile，然后将所创建的 HFile 提供给 HBase。
 
-1. 此部分继续执行 ssh 会话和前面创建的对象。 使用上面的步骤根据需要创建**customers**表和**customers .csv**文件。 如有必要，请重新建立 ssh 连接。
+1. 本节继续使用 ssh 会话和之前创建的对象。 使用上述步骤根据需要创建**客户**表和**客户.csv**文件。 如有必要，请重新建立 ssh 连接。
 
-1. 截断**Customers**表的内容。 在打开的 ssh 会话中，执行以下命令：
+1. 截图 **"客户**"表的内容。 从打开的 ssh 会话中，执行以下命令：
 
     ```bash
     hbase shell
@@ -126,7 +126,7 @@ ms.locfileid: "75552604"
     exit
     ```
 
-1. 将 `customers.csv` 文件从头节点复制到 Azure 存储。
+1. 将`customers.csv`文件从头节点复制到 Azure 存储。
 
     ```bash
     hdfs dfs -put /tmp/customers.csv wasbs:///tmp/customers.csv
@@ -144,7 +144,7 @@ ms.locfileid: "75552604"
     HADOOP_CLASSPATH=/usr/hdp/current/hbase-client/lib/hbase-protocol.jar:/etc/hbase/conf hadoop jar phoenix-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /tmp/customers.csv
     ```
 
-    上传完成后，应会看到类似如下的消息：
+    上传完成后，您应该会看到类似于以下消息的消息：
 
     ```output
     19/12/18 18:30:57 INFO client.ConnectionManager$HConnectionImplementation: Closing master protocol: MasterService
@@ -165,7 +165,7 @@ ms.locfileid: "75552604"
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/temp/input/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure --output  adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/output1
     ```
 
-1. 若要查询和查看数据，可以使用前面所述的**psql** 。 你还可以使用[HBase shell](./query-hbase-with-hbase-shell.md)或[Apache Zeppelin](./apache-hbase-phoenix-zeppelin.md)。
+1. 要查询和查看数据，可以使用前面描述的**psql。** 您也可以使用[HBase外壳](./query-hbase-with-hbase-shell.md)，或[阿帕奇泽佩林](./apache-hbase-phoenix-zeppelin.md)。
 
 ## <a name="recommendations"></a>建议
 
@@ -179,11 +179,11 @@ ms.locfileid: "75552604"
 
 * 将输入文件拆分成大约 10 GB 的区块。 批量加载是存储密集型操作，因此将输入文件拆分成多个区块可以提高性能。
 
-* 避免区域服务器作用点。 如果行键单调递增，HBase 顺序写入可能导致生成区域服务器作用点。 对行键进行加盐处理可以减少顺序写入。 Phoenix 提供一种可在后台以加盐字节对特定表的行键进行加盐处理的方法，如以下参考文档中所述。
+* 避免区域服务器作用点。 如果行键单调递增，HBase 顺序写入可能导致生成区域服务器作用点。 对行键进行加盐处理可以减少顺序写入。** Phoenix 提供一种可在后台以加盐字节对特定表的行键进行加盐处理的方法，如以下参考文档中所述。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Apache Phoenix 进行批量数据加载](https://phoenix.apache.org/bulk_dataload.html)
 * [将 Apache Phoenix 与 HDInsight 中基于 Linux 的 Apache HBase 群集配合使用](../hbase/apache-hbase-query-with-phoenix.md)
 * [加盐表](https://phoenix.apache.org/salted.html)
-* [Apache Phoenix 语法](https://phoenix.apache.org/language/index.html)
+* [阿帕奇凤凰语法](https://phoenix.apache.org/language/index.html)

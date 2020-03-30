@@ -1,5 +1,5 @@
 ---
-title: 使用模板创建 Apache Hadoop 群集-Azure HDInsight
+title: 使用模板创建 Apache Hadoop 群集 - Azure HDInsight
 description: 了解如何使用 Resource Manager 模板创建 HDInsight 的群集
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.openlocfilehash: 9498f2cf56f0bfe20d0806e5dc9872403dabb180
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979104"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>使用资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集
@@ -23,20 +23,20 @@ ms.locfileid: "75979104"
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* 一个 [Azure 订阅](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* [Azure 订阅](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * Azure PowerShell 和/或 Azure CLI。
 
 ### <a name="resource-manager-templates"></a>资源管理器模板
 
-使用资源管理器模板可以轻松地通过单个协调的操作为应用程序创建以下资源：
+通过资源管理器模板，可轻松地通过单个协调操作为应用程序创建以下资源：
 * HDInsight 群集及其依赖资源（例如默认存储帐户）。
 * 其他资源（例如要使用 [Apache Sqoop](https://sqoop.apache.org/) 的 Azure SQL 数据库）。
 
 在此模板中，定义应用程序所需的资源。 还可指定部署参数以输入不同环境的值。 模板中包含用于为部署构造值的 JSON 和表达式。
 
-可以在[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=hdinsight)中找到 HDInsight 模板示例。 将跨平台 [Visual Studio 代码](https://code.visualstudio.com/#alt-downloads)与 [Resource Manager 扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)或文本编辑器配合使用，将模板保存到工作站上的文件中。
+您可以在[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=hdinsight)中找到 HDInsight 模板示例。 将跨平台 [Visual Studio 代码](https://code.visualstudio.com/#alt-downloads)与 [Resource Manager 扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)或文本编辑器配合使用，将模板保存到工作站上的文件中。
 
 有关资源管理器模板的详细信息，请参阅以下文章和示例：
 
@@ -53,7 +53,7 @@ ms.locfileid: "75979104"
 
 可以使用 Azure 门户部署资源管理器模板。 有关详细信息，请参阅[从自定义模板部署资源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
-## <a name="deploy-using-powershell"></a>使用 PowerShell 部署
+## <a name="deploy-using-powershell"></a>使用 PowerShell 进行部署
 
 可以使用 Azure PowerShell 部署资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md)和[使用 SAS 令牌和 Azure PowerShell 部署专用资源管理器模板](../azure-resource-manager/resource-manager-powershell-sas-token.md)。
 
@@ -71,7 +71,7 @@ ms.locfileid: "75979104"
 
 有关将 Visual Studio 用于资源组的简介，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
 如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-hadoop-customize-cluster-linux.md#access-control)。
 
@@ -79,7 +79,7 @@ ms.locfileid: "75979104"
 
 在本文中，已经学习了几种创建 HDInsight 群集的方法。 若要了解详细信息，请参阅以下文章：
 
-* 有关 HDInsight 相关模板的详细信息，请参阅[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=hdinsight)。
+* 有关更多 HDInsight 相关模板，请参阅[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=hdinsight)。
 * 有关通过 .NET 客户端库部署资源的示例，请参阅[使用 .NET 库和模板部署资源](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 有关部署应用程序的详细示例，请参阅[按可预见的方式在 Azure 中预配和部署微服务](../app-service/deploy-complex-application-predictably.md)。
 * 有关将解决方案部署到不同环境的指南，请参阅 [Microsoft Azure 中的开发和测试环境](../solution-dev-test-environments.md)。

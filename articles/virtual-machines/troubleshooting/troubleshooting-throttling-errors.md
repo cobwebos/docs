@@ -14,10 +14,10 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045358"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>故障排除 API 限制错误 
@@ -32,10 +32,10 @@ Azure 计算请求可能会根据订阅和区域进行限制，以便优化服�
 
 ## <a name="call-rate-informational-response-headers"></a>调用速率信息响应标头 
 
-| 标头                            | 值格式                           | 示例                               | Description                                                                                                                                                                                               |
+| 标头                            | 值格式                           | 示例                               | 描述                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | 限制策略（涵盖资源 Bucket 或操作组，包括此请求的目标）的剩余 API 调用计数                                                                   |
-| x-ms-request-charge               | ```<count>```                             | 第                                     | 针对此 HTTP 请求进行的调用计数计入相应策略的限制。 这通常为 1。 针对特殊情况（例如针对虚拟机规模集的缩放）的批请求可以有多个计数。 |
+| x-ms-request-charge               | ```<count>```                             | 1                                     | 针对此 HTTP 请求进行的调用计数计入相应策略的限制。 这通常为 1。 针对特殊情况（例如针对虚拟机规模集的缩放）的批请求可以有多个计数。 |
 
 
 请注意，一个 API 请求可能受多个限制策略的约束。 每个策略会有单独的 `x-ms-ratelimit-remaining-resource` 标头。 
@@ -89,7 +89,7 @@ Content-Type: application/json; charset=utf-8
 PowerShell cmdlet 使用 REST 服务 API，客户端可以轻松直接调用该 API（但是尚未提供正式支持）。 若要查看 HTTP 请求格式，请在使用 -Debug 开关的情况下运行 cmdlet 或者使用 Fiddler 探查其执行。
 
 
-## <a name="best-practices"></a>最佳实践 
+## <a name="best-practices"></a>最佳做法 
 
 - 请勿无条件地以及（或者）立即地重试 Azure 服务 API 错误。 遇到不可重试的错误时，常见的情况是客户端代码会进入快速的重试循环。 重试最终会耗光目标操作对应的组的允许调用限制，影响订阅的其他客户端。 
 - 在大容量 API 自动化示例中，如果目标操作组的可用调用计数掉到某个较低的阈值以下，则可考虑实施前摄性客户端自动限制。 

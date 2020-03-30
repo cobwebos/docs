@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426229"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>流分析地理空间函数的简介
@@ -26,7 +26,7 @@ Azure 流分析中的地理空间函数支持对流式处理的地理空间数�
 * 地域隔离
 * 蜂窝站点之间的电话跟踪
 
-流分析查询语言具有七个内置的地理空间函数：CreateLineString、CreatePoint、CreatePolygon、ST_DISTANCE、ST_OVERLAPS、ST_INTERSECTS 和 ST_WITHIN。
+流分析查询语言具有七个内置的地理空间函数：CreateLineString、CreatePoint、CreatePolygon、ST_DISTANCE、ST_OVERLAPS、ST_INTERSECTS 和 ST_WITHIN****************************。
 
 ## <a name="createlinestring"></a>CreateLineString
 
@@ -57,7 +57,7 @@ FROM input
 
 ## <a name="createpoint"></a>CreatePoint
 
-`CreatePoint` 函数接受纬度和经度，并返回一个 GeoJSON 点，这可在地图上被标绘出来。 维度和精度必须为 float 数据类型。
+`CreatePoint` 函数接受纬度和经度，并返回一个 GeoJSON 点，这可在地图上被标绘出来。 维度和精度必须为 float 数据类型****。
 
 下面的示例查询使用 `CreatePoint` 创建使用流式处理输入数据中的纬度和经度的点。
 
@@ -159,12 +159,12 @@ FROM input
   
 |datacenterArea|stormArea|  
 |--------------------|---------------|  
-|{"type"： "LineString"，"坐标"： [[-10.0，0.0]，[0.0，0.0]，[10.0，0.0]]}|{"type"： "LineString"，"坐标"： [[0.0，10.0]，[0.0，0.0]，[0.0，-10.0]]}|  
-|{"type"： "LineString"，"坐标"： [[-10.0，0.0]，[0.0，0.0]，[10.0，0.0]]}|{"type"： "LineString"，"坐标"： [[-10.0，10.0]，[0.0，10.0]，[10.0，10.0]]}|  
+|{"type":"LineString", "coordinates": [ [-10.0, 0.0], [0.0, 0.0], [10.0, 0.0] ]}|{"type":"LineString", "coordinates": [ [0.0, 10.0], [0.0, 0.0], [0.0, -10.0] ]}|  
+|{"type":"LineString", "coordinates": [ [-10.0, 0.0], [0.0, 0.0], [10.0, 0.0] ]}|{"type":"LineString", "coordinates": [ [-10.0, 10.0], [0.0, 10.0], [10.0, 10.0] ]}|  
   
 ### <a name="output-example"></a>输出示例  
 
- 第  
+ 1  
   
  0  
 
@@ -185,21 +185,21 @@ FROM input
   
 |deliveryDestination|warehouse|  
 |-------------------------|---------------|  
-|{"type"： "Point"，"坐标"： [76.6，10.1]}|{"type"： "多边形"，"坐标"： [[0.0，0.0]，[10.0，0.0]，[10.0，10.0]，[0.0，10.0]，[0.0，0.0]]}|  
-|{"type"： "Point"，"坐标"： [15.0，15.0]}|{"type"： "多边形"，"坐标"： [[10.0，10.0]，[20.0，10.0]，[20.0，20.0]，[10.0，20.0]，[10.0，10.0]]}|  
+|{"type":"Point", "coordinates": [76.6, 10.1]}|{"type":"Polygon", "coordinates": [ [0.0, 0.0], [10.0, 0.0], [10.0, 10.0], [0.0, 10.0], [0.0, 0.0] ]}|  
+|{"type":"Point", "coordinates": [15.0, 15.0]}|{"type":"Polygon", "coordinates": [ [10.0, 10.0], [20.0, 10.0], [20.0, 20.0], [10.0, 20.0], [10.0, 10.0] ]}|  
   
 ### <a name="output-example"></a>输出示例  
 
  0  
   
- 第  
+ 1  
 
 若要了解详细信息，请访问 [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) 引用。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
+* [使用 Azure 流分析开始](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 4e640aa1cb02174c935c0f7c1d61ab2fca5ea046
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75974573"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的安全性
@@ -54,7 +54,7 @@ Azure Active Directory 对用户进行身份验证，以便用户可以访问 Da
 | 角色 | 管理权限 | 数据访问权限 | 说明 |
 | --- | --- | --- | --- |
 | 未分配角色 |无 |受 ACL 约束 |用户不能使用 Azure 门户或 Azure PowerShell cmdlet 来浏览 Data Lake Storage Gen1。 用户只可以使用命令行工具。 |
-| “所有者” |所有 |所有 |所有者角色为超级用户。 此角色可以管理所有内容，并具有对数据的完全访问权限。 |
+| “所有者” |All |All |所有者角色为超级用户。 此角色可以管理所有内容，并具有对数据的完全访问权限。 |
 | 读取器 |只读 |受 ACL 约束 |Reader 角色可以查看与帐户管理相关的所有内容，例如，向角色分配的用户。 Reader 角色不能进行任何更改。 |
 | 参与者 |除了添加和删除角色的所有角色 |受 ACL 约束 |参与者角色可以管理帐户的某些方面，如部署、创建和管理警报。 参与者角色不能添加或删除角色。 |
 | 用户访问管理员 |添加和删除角色 |受 ACL 约束 |用户访问管理角色可以管理对帐户的用户访问权限。 |
@@ -76,7 +76,7 @@ Data Lake Storage Gen1 是一个类似于 Hadoop 分布式文件系统 (HDFS) �
 ## <a name="data-protection"></a>数据保护
 Data Lake Storage Gen1 会在其整个生命周期中保护用户的数据。 对于传输过程中的数据，Data Lake Storage Gen1 使用符合行业标准的传输层安全性 (TLS 1.2) 协议来保护网络上的数据。
 
-![Data Lake Storage Gen1 中的加密](./media/data-lake-store-security-overview/adls-encryption.png "Data Lake Storage Gen1 中的加密")
+![数据存储单元1中的加密](./media/data-lake-store-security-overview/adls-encryption.png "数据存储单元1中的加密")
 
 Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以选择加密或不加密数据。 如果选择使用加密，可以先对存储在 Data Lake Storage Gen1 中的数据进行加密，然后再将其存储在持久性介质上。 在这种情况下，Data Lake Storage Gen1 会在保存数据前进行自动加密，在检索前进行自动解密，因此对于访问数据的客户端而言，它是完全透明的。 无需在客户端上进行代码更改，即可加密/解密数据。
 
@@ -98,18 +98,18 @@ Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以�
 若要深入了解如何使用活动日志，请参阅[查看活动日志以审核对资源的操作](../azure-resource-manager/management/view-activity-logs.md)。
 
 ### <a name="diagnostics-logs"></a>诊断日志
-可以在 Azure 门户中启用数据访问审核和诊断日志记录，并将日志发送到 Azure Blob 存储帐户、事件中心或 Azure Monitor 日志。
+您可以在 Azure 门户中启用数据访问审核和诊断日志记录，并将日志发送到 Azure Blob 存储帐户、事件中心或 Azure 监视器日志。
 
 ![诊断日志](./media/data-lake-store-security-overview/diagnostic-logs.png "诊断日志")
 
 有关如何使用 Data Lake Storage Gen1 的诊断日志的详细信息，请参阅[访问 Data Lake Storage Gen1 的诊断日志](data-lake-store-diagnostic-logs.md)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 企业客户需要安全、易用的数据分析云平台。 Data Lake Storage Gen1 旨在利用 Azure Active Directory 集成、基于 ACL 的授权、网络隔离、传输中的数据加密、静态数据加密和审核，通过标识管理和身份验证来满足这些需求。
 
 如果想要了解 Data Lake Storage Gen1 中的新功能，请在 [Data Lake Storage Gen1 UserVoice 论坛](https://feedback.azure.com/forums/327234-data-lake)中向我们发送反馈。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
