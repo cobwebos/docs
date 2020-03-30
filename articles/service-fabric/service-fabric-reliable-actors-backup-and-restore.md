@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vturecek
 ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75370453"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>实现 Reliable Actors 备份和还原
@@ -113,8 +113,8 @@ myActorServiceProxy.backupActorsAsync();
 * [执行组件状态管理](service-fabric-reliable-actors-state-management.md)
 * [执行组件生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
 * [执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET 代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [.NET 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Java 示例代码](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心常见问题解答-有关现有 Mma 的问题
-description: 此常见问题回答了已使用 Microsoft Monitoring Agent 的客户的问题，并考虑了 Azure 安全中心，这是一个可帮助你预防、检测和响应威胁的产品。
+title: Azure 安全中心常见问题 - 有关现有 MMA 的问题
+description: 此常见问题解答已使用 Microsoft 监视代理并考虑 Azure 安全中心的客户的问题，Azure 安全中心是一种可帮助您预防、检测和响应威胁的产品。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,27 +14,27 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 5c433140c3982813e372fd3f63243a96197d220c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77661883"
 ---
-# 已使用 Azure Monitor 日志的客户的常见问题<a name="existingloganalyticscust"></a>
+# <a name="faq-for-customers-already-using-azure-monitor-logs"></a>已使用 Azure 监视器日志的客户常见问题解答<a name="existingloganalyticscust"></a>
 
 ## <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>安全中心是否会覆盖 VM 和工作区之间的任何现有连接？
 
-如果 VM 已将 Microsoft Monitoring Agent 作为 Azure 扩展进行安装，则安全中心不会覆盖现有工作区连接。 相反，安全中心会使用现有工作区。 如果 "安全" 或 "SecurityCenterFree" 解决方案已安装在它所报告到的工作区中，则 VM 将受到保护。 
+如果 VM 已将 Microsoft Monitoring Agent 作为 Azure 扩展进行安装，则安全中心不会覆盖现有工作区连接。 相反，安全中心会使用现有工作区。 如果"安全"或"安全中心免费"解决方案已安装在要报告的工作区上，则 VM 将受到保护。 
 
-安全中心解决方案安装在 "数据收集" 屏幕中所选的工作区（如果尚未存在），并且该解决方案仅应用于相关的 Vm。 添加解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 工作区的所有 Windows 和 Linux 代理。 [解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)可用于限定解决方案的范围。
+将在“数据收集”屏幕中选择的工作区上安装一个安全中心解决方案（如果尚不存在），而该解决方案只会应用到相关的 VM。 添加解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 工作区的所有 Windows 和 Linux 代理。 [解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)可用于限定解决方案的范围。
 
 > [!TIP]
-> 如果 Microsoft Monitoring Agent 直接安装在 VM 上（而不是作为 Azure 扩展），则安全中心不会安装 Microsoft Monitoring Agent，安全监视会受到限制。
+> 如果 Microsoft 监视代理直接安装在 VM 上（不作为 Azure 扩展），则安全中心不会安装 Microsoft 监视代理，并且安全监视受到限制。
 
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>安全中心是否在现有 Log Analytics 工作区上安装解决方案？ 计费会产生什么影响？
 安全中心确定 VM 已连接到所创建的工作区时，会根据定价层启用此工作区上的解决方案。 由于[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)，解决方案仅应用于相关的 Azure VM，因此计费保持不变。
 
-- 免费层 – 安全中心在工作区中安装“SecurityCenterFree”解决方案。 免费层不会计费。
+- 免费层**** – 安全中心在工作区中安装“SecurityCenterFree”解决方案。 免费层不会产生费用。
 - **标准层** – 安全中心在工作区中安装“Security”解决方案。
 
    ![默认工作区上的解决方案](./media/security-center-platform-migration-faq/solutions.png)
@@ -45,4 +45,4 @@ ms.locfileid: "77661883"
 安全中心在 VM 上安装 Microsoft Monitoring Agent 时，会使用安全中心创建的默认工作区。
 
 ## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>工作区已存在安全解决方案。 计费会产生什么影响？
-Security & Audit 解决方案用于为 Azure Vm 启用安全中心标准层功能。 如果已在工作区上安装“安全性与审核”解决方案，则安全中心会使用现有解决方案。 计费方面没有任何更改。
+安全&审核解决方案用于为 Azure VM 启用安全中心标准层功能。 如果已在工作区上安装“安全性与审核”解决方案，则安全中心会使用现有解决方案。 计费方面没有任何更改。

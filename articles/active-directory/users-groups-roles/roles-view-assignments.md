@@ -1,6 +1,6 @@
 ---
-title: 在 Azure AD 门户中查看自定义角色分配 |Microsoft Docs
-description: 你现在可以在 "Azure AD 管理中心" 中查看和管理 Azure AD 管理员角色的成员。
+title: 在 Azure AD 门户中查看自定义角色分配 | Microsoft Docs
+description: 现在，你可以在 Azure AD 管理中心查看和管理 Azure AD 管理员角色的成员。
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,36 +14,36 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f04bd7788a9cc9657e14aedfb153182d6e53eb95
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259703"
 ---
-# <a name="view-custom-role-assignments-in-azure-active-directory"></a>查看 Azure Active Directory 中的自定义角色分配
+# <a name="view-custom-role-assignments-in-azure-active-directory"></a>在 Azure Active Directory 中查看自定义角色分配
 
-本文介绍如何查看在 Azure Active Directory （Azure AD）中分配的自定义角色。 在 Azure Active Directory （Azure AD）中，可在组织范围内或单应用程序范围内分配角色。
+本文介绍如何在 Azure Active Directory (Azure AD) 中查看已分配的自定义角色。 在 Azure Active Directory (Azure AD) 中，角色可以在组织范围内分配，也可以在单应用程序范围内分配。
 
-- 组织范围范围内的角色分配将添加到中，并可在单个应用程序角色分配列表中查看。
-- 单个应用程序范围内的角色分配不会添加到中，也不能在组织范围内范围的分配列表中显示。
+- 组织范围的角色分配会添加到单应用程序角色分配列表中，并可在其中查看它们。
+- 单应用程序范围的角色分配不会添加到组织范围的分配列表中，也不能在其中查看它们。
 
-## <a name="view-role-assignments-in-the-azure-portal"></a>查看 Azure 门户中的角色分配
+## <a name="view-role-assignments-in-the-azure-portal"></a>在 Azure 门户中查看角色分配
 
-此过程描述如何查看具有组织范围范围的角色分配。
+此过程介绍如何查看组织范围的角色分配。
 
-1. 在 Azure AD 组织中，以特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
-1. 选择 " **Azure Active Directory**"，选择 "**角色和管理员**"，然后选择要打开的角色，并查看其属性。
-1. 选择 "**分配**" 以查看角色的分配。
+1. 在 Azure [AD](https://aad.portal.azure.com) 组织中使用特权角色管理员或全局管理员权限登录到 Azure AD 管理中心。
+1. 依次选择“Azure Active Directory”、“角色和管理员”，然后选择一个角色，将其打开并查看其属性。********
+1. 选择“分配”，查看角色的分配****。
 
-    ![当你从列表中打开角色时，查看角色分配和权限](./media/roles-view-assignments/role-assignments.png)
+    ![从列表中打开一个角色时，查看角色分配和权限](./media/roles-view-assignments/role-assignments.png)
 
 ## <a name="view-role-assignments-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 查看角色分配
 
-本部分介绍如何查看具有组织范围范围的角色分配。 本文使用[Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles)模块。 若要使用 PowerShell 查看单应用程序范围分配，可以在使用[Powershell 分配自定义角色](roles-assign-powershell.md)中使用 cmdlet。
+此部分介绍如何查看组织范围的角色分配。 本文使用 [Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) 模块。 若要使用 PowerShell 查看单应用程序范围的分配，可以使用[通过 PowerShell 分配自定义角色](roles-assign-powershell.md)中的 cmdlet。
 
 ### <a name="prepare-powershell"></a>准备 PowerShell
 
-首先，必须[下载 Azure AD 预览版 PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/)。
+首先，必须[下载 Azure AD 预览 PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/)。
 
 若要安装 Azure AD PowerShell 模块，请使用以下命令：
 
@@ -63,7 +63,7 @@ get-module azuread
 
 ### <a name="view-the-assignments-of-a-role"></a>查看角色的分配
 
-查看角色分配的示例。
+示例：查看角色分配。
 
 ``` PowerShell
 # Fetch list of all directory roles with object ID
@@ -78,9 +78,9 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 
 ## <a name="view-role-assignments-using-microsoft-graph-api"></a>使用 Microsoft Graph API 查看角色分配
 
-本部分介绍如何查看具有组织范围范围的角色分配。  若要查看使用图形 API 的单应用程序范围分配，可以使用[将自定义角色分配给图形 API](roles-assign-graph.md)中的操作。
+此部分介绍如何查看组织范围的角色分配。  若要使用 Graph API 查看单应用程序范围的分配，可以使用[通过 Graph API 分配自定义角色](roles-assign-graph.md)中的操作。
 
-用于获取给定角色定义的角色分配的 HTTP 请求。
+HTTP 请求，用于获取给定角色定义的角色分配。
 
 GET
 
@@ -102,20 +102,20 @@ HTTP/1.1 200 OK
 
 ## <a name="view-assignments-of-single-application-scope"></a>查看单应用程序范围的分配
 
-本部分介绍如何查看具有单应用程序范围的角色分配。 此功能目前处于公开预览状态。
+此部分介绍如何查看单应用程序范围的角色分配。 此功能目前处于公开预览状态。
 
-1. 在 Azure AD 组织中，以特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
-1. 选择 "**应用注册**"，然后选择 "应用注册" 来查看其属性。 可能需要选择 "**所有应用程序**" 才能查看 Azure AD 组织中的应用注册的完整列表。
+1. 在 Azure [AD](https://aad.portal.azure.com) 组织中使用特权角色管理员或全局管理员权限登录到 Azure AD 管理中心。
+1. 选择“应用注册”，然后选择要查看其属性的应用注册。**** 可能必须选择“所有应用程序”，以便在 Azure AD 组织中查看应用注册的完整列表。****
 
-    ![从 "应用注册" 页创建或编辑应用注册](./media/roles-create-custom/appreg-all-apps.png)
+    ![在“应用注册”页中创建或编辑应用注册](./media/roles-create-custom/appreg-all-apps.png)
 
-1. 在应用注册中，选择 "**角色和管理员**"，然后选择要查看其属性的角色。
+1. 在应用注册中，选择“角色和管理员”，然后选择一个角色，以查看其属性。****
 
-    ![从 "应用注册" 页查看应用注册角色分配](./media/roles-view-assignments/appreg-assignments.png)
+    ![在“应用注册”页中查看应用注册角色分配](./media/roles-view-assignments/appreg-assignments.png)
 
-1. 选择 "**分配**" 以查看角色的分配。 从应用注册中打开 "分配" 视图会显示作用域为此 Azure AD 资源的分配。
+1. 选择“分配”，查看角色的分配****。 在应用注册中打开分配视图会显示局限于此 Azure AD 资源的分配。
 
-    ![查看应用注册的属性中的应用注册角色分配](./media/roles-view-assignments/appreg-assignments-2.png)
+    ![在应用注册的属性中查看应用注册角色分配](./media/roles-view-assignments/appreg-assignments-2.png)
 
 ## <a name="next-steps"></a>后续步骤
 

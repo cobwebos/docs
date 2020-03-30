@@ -5,23 +5,23 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
 ms.openlocfilehash: f5788f07dd4a4f03a95efaea4b741cd64c930ac5
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78251786"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>将 Linux Service Fabric 群集部署到 Azure 虚拟网络
 
 本文介绍了如何使用 Azure CLI 和模板将 Linux Service Fabric 群集部署到 [Azure 虚拟网络 (VNET)](../virtual-network/virtual-networks-overview.md) 中。 完成本教程后，云中会运行一个可在其中部署应用程序的群集。 若要使用 PowerShell 创建 Windows 群集，请参阅[在 Azure 上创建安全的 Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始之前：
 
-* 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* 如果没有 Azure 订阅，请创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * 安装 [Service Fabric CLI](service-fabric-cli.md)
-* 安装 [Azure CLI](/cli/azure/install-azure-cli)
+* 安装[Azure CLI](/cli/azure/install-azure-cli)
 * 若要了解群集的关键概念，请阅读 [Azure 群集概述](service-fabric-azure-clusters-overview.md)
 * 为生产群集部署[计划并准备](service-fabric-cluster-azure-deployment-preparation.md)。
 
@@ -31,10 +31,10 @@ ms.locfileid: "78251786"
 
 下载以下资源管理器模板文件：
 
-* [Azuredeploy.json][template]
-* [Azuredeploy.json][parameters]
+* [AzureDeploy.json][template]
+* [AzureDeploy.Parameters.json][parameters]
 
-此模板将包含七个虚拟机和三个节点类型的安全群集部署到虚拟网络中。  其他示例模板可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) 上找到。 [Azuredeploy.json][template]部署了数个资源，包括以下各项。
+此模板将包含七个虚拟机和三个节点类型的安全群集部署到虚拟网络中。  其他示例模板可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) 上找到。 [AzureDeploy.json][template]部署一些资源，包括以下内容。
 
 ### <a name="service-fabric-cluster"></a>Service Fabric 群集
 
@@ -70,7 +70,7 @@ ms.locfileid: "78251786"
 
 ## <a name="set-template-parameters"></a>设置模板参数
 
-[Azuredeploy.json][parameters]参数文件声明了许多用于部署群集和关联资源的值。 可能需要使用某些参数来修改部署：
+[AzureDeploy.Parameters][parameters] 参数文件声明用于部署群集和关联资源的多个值。 可能需要使用某些参数来修改部署：
 
 |参数|示例值|说明|
 |---|---||
@@ -86,9 +86,9 @@ ms.locfileid: "78251786"
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>部署虚拟网络和群集
 
-接下来，设置网络拓扑并部署 Service Fabric 群集。 [Azuredeploy.json][template]资源管理器模板为 Service Fabric 创建一个虚拟网络（VNET）和一个子网。 该模板还会部署一个已启用证书安全性的群集。  对于生产群集，请使用证书颁发机构 (CA) 提供的证书作为群集证书。 可以使用自签名证书来保护测试群集。
+接下来，设置网络拓扑并部署 Service Fabric 群集。 [AzureDeploy.json][template] 资源管理器模板为 Service Fabric 创建虚拟网络 (VNET) 和子网。 该模板还会部署一个已启用证书安全性的群集。  对于生产群集，请使用证书颁发机构 (CA) 提供的证书作为群集证书。 可以使用自签名证书来保护测试群集。
 
-本文中的模板部署一个群集，该群集使用证书指纹来标识群集证书。  两个证书不能有相同的指纹，否则会增加证书管理的难度。 将已部署的群集从使用证书指纹切换为使用证书公用名称会使证书管理更加简单。  若要了解如何更新群集，以便使用证书公用名称进行证书管理，请阅读[将群集更改为使用证书公用名称进行管理](service-fabric-cluster-change-cert-thumbprint-to-cn.md)。
+本文中的模板部署一个群集，该群集使用证书指纹来标识群集证书。  两个证书不能有相同的指纹，否则会增加证书管理的难度。 将已部署的群集从使用证书指纹切换为使用证书公用名称会使证书管理更加简单。  要了解如何更新群集，将证书通用名称用于证书管理，请阅读[更改群集到证书通用名称管理](service-fabric-cluster-change-cert-thumbprint-to-cn.md)。
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>使用现有证书创建群集
 
@@ -159,7 +159,7 @@ sfctl cluster health
 
 了解如何[缩放群集](service-fabric-tutorial-scale-cluster.md)。
 
-本文中的模板部署一个群集，该群集使用证书指纹来标识群集证书。  两个证书不能有相同的指纹，否则会增加证书管理的难度。 将已部署的群集从使用证书指纹切换为使用证书公用名称会使证书管理更加简单。  若要了解如何更新群集，以便使用证书公用名称进行证书管理，请阅读[将群集更改为使用证书公用名称进行管理](service-fabric-cluster-change-cert-thumbprint-to-cn.md)。
+本文中的模板部署一个群集，该群集使用证书指纹来标识群集证书。  两个证书不能有相同的指纹，否则会增加证书管理的难度。 将已部署的群集从使用证书指纹切换为使用证书公用名称会使证书管理更加简单。  要了解如何更新群集，将证书通用名称用于证书管理，请阅读[更改群集到证书通用名称管理](service-fabric-cluster-change-cert-thumbprint-to-cn.md)。
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json

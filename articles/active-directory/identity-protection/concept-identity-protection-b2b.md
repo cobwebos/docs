@@ -1,6 +1,6 @@
 ---
-title: 标识保护和 B2B 用户-Azure Active Directory
-description: 对 B2B 用户使用 Identity Protection 其工作原理和已知限制
+title: 标识保护和 B2B 用户 - Azure 活动目录
+description: 与 B2B 用户使用身份保护的工作原理和已知的限制
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,42 +12,42 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95ea7eb470a5880bc88b3df903d33854f363e974
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72881306"
 ---
 # <a name="identity-protection-and-b2b-users"></a>标识保护和 B2B 用户
 
-使用 Azure AD B2B 协作，组织可以使用 Identity Protection 为 B2B 用户强制实施基于风险的策略。 这些策略的配置方式有两种：
+借助 Azure AD B2B 协作，组织可以使用身份保护为 B2B 用户强制实施基于风险的策略。 这些策略的配置方式有两种：
 
-- 管理员可以配置适用于所有应用的内置 Identity Protection 基于风险的策略，包括来宾用户。
-- 管理员可以配置其条件性访问策略，并使用包括来宾用户的条件登录风险。
+- 管理员可以配置适用于所有应用（包括来宾用户）的基于身份验证保护风险的策略。
+- 管理员可以使用包含来宾用户的条件配置其条件访问策略，将登录风险作为条件。
 
 ## <a name="how-is-risk-evaluated-for-b2b-collaboration-users"></a>如何为 B2B 协作用户评估风险
 
-B2B 协作用户的用户风险在其主目录中进行评估。 用户尝试访问资源时，会在资源目录中评估这些用户的实时登录风险。
+B2B 协作用户的用户风险在其主目录中进行评估。 当这些用户尝试访问资源时，将在资源目录中评估他们的实时登录风险。
 
-## <a name="limitations-of-identity-protection-for-b2b-collaboration-users"></a>B2B 协作用户的标识保护限制
+## <a name="limitations-of-identity-protection-for-b2b-collaboration-users"></a>B2B 协作用户的身份保护限制
 
-由于资源目录中的 B2B 协作用户的标识已存在，因此在此实现中存在一些限制。 主要限制如下：
+资源目录中的 B2B 协作用户的身份保护实施存在限制，因为它们的标识存在于其主目录中。 主要限制如下：
 
-- 如果来宾用户触发 Identity Protection 用户风险策略来强制重置密码，则**将阻止**用户进行密码重置。 此块的原因是无法在资源目录中重置密码。
-- **来宾用户不会出现在有风险的用户报表中**。 此可见性损失是因为 B2B 用户的主目录中发生了风险评估。
-- 管理员无法在其资源目录中**消除或修正有风险的 B2B 协作用户**。 此功能损失是因为资源目录中的管理员无法访问 B2B 用户的主目录。
+- 如果来宾用户触发身份保护用户风险策略以强制重置密码，**则会阻止它们**。 此块是由于无法重置资源目录中的密码。
+- **来宾用户未显示在风险用户报告中**。 这种可见性损失是由于 B2B 用户主目录中发生的风险评估造成的。
+- 管理员**无法在其资源目录中关闭或修复风险的 B2B 协作用户**。 这种功能丢失是由于资源目录中的管理员无法访问 B2B 用户主目录造成的。
 
-### <a name="why-cant-i-remediate-risky-b2b-collaboration-users-in-my-directory"></a>为什么无法在目录中修正有风险的 B2B 协作用户？
+### <a name="why-cant-i-remediate-risky-b2b-collaboration-users-in-my-directory"></a>为什么我无法修复目录中有风险的 B2B 协作用户？
 
-B2B 用户的风险评估和修正发生在其主目录中。 由于此事实，来宾用户不会出现在资源目录中的 "有风险的用户" 报表中，并且资源目录中的管理员不能为这些用户强制进行安全密码重置。
+B2B 用户的风险评估和补救发生在其主目录中。 由于此事实，来宾用户未出现在资源目录中的风险用户报告中，资源目录中的管理员无法强制对这些用户进行安全密码重置。
 
 ### <a name="what-do-i-do-if-a-b2b-collaboration-user-was-blocked-due-to-a-risk-based-policy-in-my-organization"></a>如果 B2B 协作用户由于组织中基于风险的策略而被阻止，我该怎么办？
 
-如果你的基于风险的策略阻止了你的目录中有风险的 B2B 用户，则用户需要在其主目录中修正此风险。 用户可以通过在其主目录中执行安全的密码重置来修正他们的风险。 如果用户的主目录中没有启用自助密码重置，则他们需要联系其自己的组织的 IT 人员，以使管理员能够手动解除其风险或重置其密码。
+如果目录中的风险 B2B 用户被基于风险的策略阻止，则用户将需要在其主目录中修复该风险。 用户可以通过在主目录中执行安全密码重置来修复其风险。 如果他们在主目录中未启用自助服务密码重置，则需要联系自己组织的 IT 员工，让管理员手动消除其风险或重置密码。
 
-### <a name="how-do-i-prevent-b2b-collaboration-users-from-being-impacted-by-risk-based-policies"></a>如何实现阻止 B2B 协作用户受到基于风险的策略的影响吗？
+### <a name="how-do-i-prevent-b2b-collaboration-users-from-being-impacted-by-risk-based-policies"></a>如何防止 B2B 协作用户受到基于风险的策略的影响？
 
-从组织的基于风险的条件性访问策略中排除 B2B 用户会阻止 B2B 用户受到风险评估的影响或阻止。 若要排除这些 B2B 用户，请在 Azure AD 中创建一个包含组织的所有来宾用户的组。 然后，将此组添加为内置身份保护用户风险和登录风险策略的排除项，以及将登录风险作为条件的任何条件性访问策略。
+将 B2B 用户从组织的基于风险的条件访问策略中排除，将防止 B2B 用户受到其风险评估的影响或阻止。 要排除这些 B2B 用户，请在 Azure AD 中创建一个包含组织所有来宾用户的组。 然后，添加此组作为对内置身份保护用户风险和登录风险策略以及使用登录风险作为条件的任何条件访问策略的排除。
 
 ## <a name="next-steps"></a>后续步骤
 

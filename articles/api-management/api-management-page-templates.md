@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249537"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的页模板
@@ -38,10 +38,10 @@ ms.locfileid: "79249537"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="SignIn"></a>登录  
+##  <a name="sign-in"></a><a name="SignIn"></a>登录  
  **登录**模板用于自定义开发人员门户中的登录页面。  
   
- ![登录页](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM 登录页开发人员门户模板")  
+ ![登录页面](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM 登录页开发人员门户模板")  
   
 ### <a name="default-template"></a>默认模板  
   
@@ -99,12 +99,12 @@ ms.locfileid: "79249537"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
- 此模板使用以下[页面控件](api-management-page-controls.md)。  
+### <a name="controls"></a>控件  
+ 此模板可以使用以下[页面控件](api-management-page-controls.md)。  
   
--   [basic-signin](api-management-page-controls.md#basic-signin)  
+-   [基本登录](api-management-page-controls.md#basic-signin)  
   
--   [providers](api-management-page-controls.md#providers)  
+-   [供应商](api-management-page-controls.md#providers)  
   
 ### <a name="data-model"></a>数据模型  
  [用户登录](api-management-template-data-model-reference.md#UseSignIn)实体。  
@@ -137,10 +137,10 @@ ms.locfileid: "79249537"
 }
 ```  
   
-##  <a name="SignUp"></a>注册  
+##  <a name="sign-up"></a><a name="SignUp"></a>登记  
  **注册**模板用于自定义开发人员门户中的注册页面。  
   
- ![注册页面](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM 注册页开发人员门户模板")  
+ ![注册页](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM 注册页开发人员门户模板")  
   
 ### <a name="default-template"></a>默认模板  
   
@@ -158,10 +158,10 @@ ms.locfileid: "79249537"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
- 此模板使用以下[页面控件](api-management-page-controls.md)。  
+### <a name="controls"></a>控件  
+ 此模板可以使用以下[页面控件](api-management-page-controls.md)。  
   
--   [sign-up](api-management-page-controls.md#sign-up)  
+-   [注册](api-management-page-controls.md#sign-up)  
   
 ### <a name="data-model"></a>数据模型  
  [用户注册](api-management-template-data-model-reference.md#UserSignUp)实体。  
@@ -185,7 +185,7 @@ ms.locfileid: "79249537"
 }  
 ```  
   
-##  <a name="PageNotFound"></a>找不到页面  
+##  <a name="page-not-found"></a><a name="PageNotFound"></a>找不到页面  
  **找不到页面**模板用于自定义开发人员门户中的“找不到页面”页面。  
   
  ![找不到页面](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM 找不到页面开发人员门户模板")  
@@ -222,7 +222,7 @@ ms.locfileid: "79249537"
 </p>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控件  
  此模板可能不使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  

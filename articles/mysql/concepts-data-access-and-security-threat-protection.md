@@ -1,29 +1,29 @@
 ---
-title: 高级威胁防护-Azure Database for MySQL
-description: 了解有关高级威胁防护的概念，它会检测到异常数据库活动，指示数据库存在潜在的安全威胁。
+title: 高级威胁防护 - 适用于 MySQL 的 Azure 数据库
+description: 了解有关高级威胁防护的概念，该保护检测指示数据库潜在安全威胁的异常数据库活动。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 747e2f088b545026775feed45535b1f9bc90209f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 01ac6ccbc2789d2052bab07e2da51630b6dbf581
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770996"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537153"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>Azure Database for MySQL 高级威胁防护
 
-Azure Database for MySQL 的高级威胁防护服务检测到异常活动，这表示有人在访问或利用数据库时行为异常且可能有害。
+Azure Database for MySQL 的高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试。
 
 > [!NOTE]
-> 高级威胁防护是公开预览版。
+> 高级威胁防护处于公共预览版。
 
-高级威胁防护包含在高级数据安全产品/服务中，是一个针对高级安全功能的统一软件包。 可以通过[Azure 门户](https://portal.azure.com)或使用[REST API](/rest/api/mysql/serversecurityalertpolicies)来访问和管理高级威胁防护。 此功能可用于常规用途和内存优化服务器。
+高级威胁防护包含在高级数据安全产品/服务中，是一个针对高级安全功能的统一软件包。 高级威胁防护可以通过[Azure 门户](https://portal.azure.com)或使用[REST API](/rest/api/mysql/serversecurityalertpolicies)进行访问和管理。 此功能可用于通用和内存优化服务器。
 
 > [!NOTE]
-> 高级威胁防护功能在以下 Azure 政府和主权云区域中不可用：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
+> 高级威胁防护功能在以下 Azure 政府和主权云区域中不**** 可用：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
 
 
 ## <a name="what-is-advanced-threat-protection"></a>什么是高级威胁防护？
@@ -42,6 +42,6 @@ Azure Database for MySQL 高级威胁防护可检测异常活动，指出有人�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
+* 了解有关[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * 有关定价的详细信息，请参阅 [Azure Database for MySQL 定价页](https://azure.microsoft.com/pricing/details/mysql/) 
 * 使用 Azure 门户配置 [Azure Database for MySQL 高级威胁防护](howto-database-threat-protection-portal.md)  

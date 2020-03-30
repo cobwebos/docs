@@ -1,5 +1,5 @@
 ---
-title: 多租户交互的特征-Azure AD |Microsoft Docs
+title: 多个租户交互的特征 - Azure AD |微软文档
 description: 通过将租户视为完全独立的资源，管理 Azure Active 租户
 services: active-tenant
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4eb09ab7fa31af5edf14b113a6a88e08df2d115
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562252"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>了解多个 Azure Active Directory 租户的交互方式
@@ -43,10 +43,10 @@ ms.locfileid: "77562252"
 * 适用于 Forefront Identity Manager 的 Azure Active 租户连接器，用于将数据与一个或多个本地林和/或非 Azure AD 数据源同步。
 
 ## <a name="add-an-azure-ad-tenant"></a>添加 Azure AD 租户
-若要在 Azure 门户中添加 Azure AD 租户，请使用作为 Azure AD 全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)，然后选择左侧的“新建”。
+若要在 Azure 门户中添加 Azure AD 租户，请使用作为 Azure AD 全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)，然后选择左侧的“新建”****。
 
 > [!NOTE]
-> 与其他 Azure 资源不同，租户不是 Azure 订阅的子资源。 如果 Azure 订阅已取消或过期，仍可使用 Azure PowerShell、Microsoft Graph API 或 Microsoft 365 管理中心访问租户数据。 此外，还可以[将其他订阅与租户相关联](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+> 与其他 Azure 资源不同，租户不是 Azure 订阅的子资源。 如果 Azure 订阅已取消或过期，您仍可以使用 Azure PowerShell、Microsoft 图形 API 或 Microsoft 365 管理中心访问租户数据。 此外，还可以[将其他订阅与租户相关联](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 >
 
 ## <a name="next-steps"></a>后续步骤

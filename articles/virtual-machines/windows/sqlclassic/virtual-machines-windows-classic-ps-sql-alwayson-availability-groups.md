@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978147"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>使用 PowerShell 在 Azure VM 中配置 Always On 可用性组
@@ -30,7 +30,7 @@ ms.locfileid: "75978147"
 在开始之前，考虑到现在可以在 Azure Resource Manager 模型中完成此任务。 我们建议使用 Azure Resource Manager 模型来进行新的部署。 请参阅 [Azure 虚拟机上的 SQL Server Always On 可用性组](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)。
 
 > [!IMPORTANT]
-> 我们建议在大多数新部署中使用 Resource Manager 模型。 Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍使用经典部署模型。
+> 我们建议在大多数新部署中使用 Resource Manager 模型。 Azure 有两种不同的部署模型来创建和使用资源：[资源管理器和经典](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍使用经典部署模型。
 
 Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server 系统的成本。 本教程展示了如何在 Azure 环境中使用端到端 SQL Server Always On 实现可用性组。 在本教程结束时，Azure 中的 SQL Server Always On 解决方案将包括以下要素：
 
@@ -46,7 +46,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
 
 * 已经拥有一个带有虚拟机订阅的 Azure 帐户。
 * 已安装了 [Azure PowerShell cmdlet](/powershell/azure/overview)。
-* 已深入了解本地解决方案的 Always On 可用性组。 有关详细信息，请参阅 [Always On 可用性组 (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)。
+* 已深入了解本地解决方案的 Always On 可用性组。 有关详细信息，请参阅[始终打开可用性组 （SQL Server）。](https://msdn.microsoft.com/library/hh510230.aspx)
 
 ## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>连接到 Azure 订阅并创建虚拟网络
 1. 在本地计算机的 PowerShell 窗口中，导入 Azure 模块、将发布设置文件下载到计算机，然后通过导入已下载的发布设置将 PowerShell 会话连接到 Azure 订阅。
@@ -84,7 +84,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
 
    * 变量 **$storageAccountName** 和 **$dcServiceName** 分别用于标识 Internet 上的云存储帐户和云服务器，因此必须唯一。
    * 为变量 **$affinityGroupName** 和 **$virtualNetworkName** 指定的名称是在稍后将使用的虚拟网络配置文档中配置的。
-   * **$sqlImageName** 指定包含 SQL Server 2012 Service Pack 1 Enterprise Edition 的 VM 映像的更新名称。
+   * **$sqlImageName** 指定包含 SQL Server 2012 Service Pack 1 Enterprise Edition 的虚拟机映像的更新名称。
    * 为简单起见，在整个教程中使用同一密码 **Contoso!000**。
 
 3. 创建地缘组
@@ -226,7 +226,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
             -ChangePasswordAtLogon $false `
             -Enabled $true
 
-    **CORP\Install** 用于配置与 SQL Server 服务实例、故障转移群集和可用性组有关的一切。 **CORP\SQLSvc1** 和 **CORP\SQLSvc2** 用作两个 SQL Server VM 的 SQL Server 服务帐户。
+    **CORP\Install** 用于配置与 SQL Server 服务实例、故障转移群集和可用性组有关的一切。 **CORP\SQLSvc1** 和 **CORP\SQLSvc2** 用作两个 SQL Server 虚拟机的 SQL Server 服务帐户。
 7. 接下来，运行以下命令为 **CORP\Install** 提供在域中创建计算机对象的权限。
 
         Cd ad:
@@ -238,7 +238,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    上面指定的 GUID 是计算机对象类型的 GUID。 **CORP\Install** 帐户需要“读取所有属性”和“创建计算对象”权限才能为故障转移群集创建 Active Direct 对象。 默认情况下，已经将“读取所有属性”权限授予 CORP\Install，因此无需显式授予该权限。 有关创建故障转移群集所需权限的详细信息，请参阅[故障转移群集循序渐进指南：在 Active Directory 中配置帐户](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)。
+    上面指定的 GUID 是计算机对象类型的 GUID。 **CORP\Install** 帐户需要“读取所有属性”**** 和“创建计算对象”**** 权限才能为故障转移群集创建 Active Direct 对象。 默认情况下，已经将“读取所有属性”**** 权限授予 CORP\Install，因此无需显式授予该权限。 有关创建故障转移群集所需权限的详细信息，请参阅[故障转移群集循序渐进指南：在 Active Directory 中配置帐户](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)。
 
     现在已完成了 Active Directory 和用户对象的配置，接下来，将创建两个 SQL Server VM 并将其加入到此域中。
 
@@ -289,7 +289,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
    * **Add-AzureProvisioningConfig** 将 VM 加入你创建的 Active Directory 域中。
    * **Set-AzureSubnet** 将 VM 放入后端子网。
    * **New-AzureVM** 创建新的云服务，并在新的云服务中创建新的 Azure VM。 **DnsSettings** 参数指定新云服务中的服务器的 DNS 服务器具有 IP 地址 **10.10.0.4**。 这是域控制器服务器的 IP 地址。 需要该参数来启用云服务中的新 VM 才能成功加入 Active Directory 域。 如果没有该参数，预配 VM 后必须在 VM 中手动设置 IPv4 设置才能将域控制器服务器作为主 DNS 服务器，然后 VM 才能加入 Active Directory 域。
-3. 运行以下管接命令来创建名为 **ContosoSQL1** 和 **ContosoSQL2** 的 SQL Server VM。
+3. 运行以下管接命令来创建名为 **ContosoSQL1** 和 **ContosoSQL2** 的 SQL Server 虚拟机。
 
         # Create ContosoSQL1...
         New-AzureVMConfig `
@@ -377,21 +377,21 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
     这些 SQL Server VM 现在已预配并正在运行，但它们是使用默认选项与 SQL Server 一同安装的。
 
 ## <a name="initialize-the-failover-cluster-vms"></a>初始化故障转移群集 VM
-在本部分中，需要修改会在故障转移群集和 SQL Server 安装中使用的三个服务器。 具体如下：
+在本部分中，需要修改会在故障转移群集和 SQL Server 安装中使用的三个服务器。 具体来说：
 
 * 所有服务器：需要安装**故障转移群集**功能。
-* 所有服务器：需要添加 **CORP\Install** 作为计算机**管理员**。
-* 仅限 ContosoSQL1 和 ContosoSQL2：需要将 **CORP\Install** 添加为默认数据库中的 **sysadmin** 角色。
+* 所有服务器：您需要添加**CORP_安装**作为计算机**管理员**。
+* 仅 ContosoSQL1 和 ContosoSQL2：您需要在默认数据库中添加**CORP_Install**作为**系统管理员**角色。
 * 仅限 ContosoSQL1 和 ContosoSQL2：需要将 **NT AUTHORITY\System** 添加为具有以下权限的登录名：
 
   * 更改任何可用性组
   * 连接 SQL
   * 查看服务器状态
-* 仅限 ContosoSQL1 和 ContosoSQL2：在 SQL Server VM 上已启用了 **TCP** 协议。 但是，仍需打开防火墙以便远程访问 SQL Server。
+* 仅限 ContosoSQL1 和 ContosoSQL2：已在 SQL Server VM 上启用**了 TCP**协议。 但是，仍需打开防火墙以便远程访问 SQL Server。
 
 现在，已准备就绪，可以执行启动操作了。 从 **ContosoQuorum** 开始，执行以下步骤：
 
-1. 通过启动远程桌面文件连接到 **ContosoQuorum**。 使用创建 VM 时指定的计算机管理员用户名 **AzureAdmin** 和密码 **Contoso!000**。
+1. 通过启动远程桌面文件，连接到 **ContosoQuorum**。 使用创建 VM 时指定的计算机管理员用户名 **AzureAdmin** 和密码 **Contoso!000**。
 2. 验证计算机是否已成功加入 **corp.contoso.com**。
 3. 等待 SQL Server 安装完成自动初始化任务，并继续。
 4. 在管理员模式下打开 PowerShell 窗口。
@@ -399,14 +399,14 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
-6. 将 **CORP\Install** 添加为本地管理员。
+6. 添加 **CORP\Install** 作为本地管理员。
 
         net localgroup administrators "CORP\Install" /Add
 7. 从 ContosoQuorum 注销。 现已完成此服务器的操作。
 
         logoff.exe
 
-接下来，请初始化 **ContosoSQL1** 和 **ContosoSQL2**。 执行以下步骤，对于这两个 SQL Server VM，这些步骤相同。
+下一步，初始化 **ContosoSQL1** 和 **ContosoSQL2**。 执行以下步骤，对于这两个 SQL Server VM，这些步骤相同。
 
 1. 通过启动远程桌面文件连接到这两个 SQL Server VM。 使用创建 VM 时指定的计算机管理员用户名 **AzureAdmin** 和密码 **Contoso!000**。
 2. 验证计算机是否已成功加入 **corp.contoso.com**。
@@ -416,7 +416,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
-6. 将 **CORP\Install** 添加为本地管理员。
+6. 添加 **CORP\Install** 作为本地管理员。
 
         net localgroup administrators "CORP\Install" /Add
 7. 导入 SQL Server PowerShell 提供程序。
@@ -486,7 +486,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
 
         Set-ExecutionPolicy Unrestricted -Force
         .\CreateAzureFailoverCluster.ps1 -ClusterName "$clusterName" -ClusterNode "$server1","$server2","$serverQuorum"
-9. 为 **ContosoSQL1** 和 **ContosoSQL2** 上的默认 SQL Server 实例启用 Always On 可用性组。
+9. 启用**ContosoSQL1 和 ContosoSQL2**上默认**ContosoSQL2**SQL Server 实例的"始终打开可用性组"。
 
         Enable-SqlAlwaysOn `
             -Path SQLSERVER:\SQL\$server1\Default `
@@ -504,7 +504,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
          New-Item $backup -ItemType directory
          net share backup=$backup "/grant:$acct1,FULL" "/grant:$acct2,FULL"
          icacls.exe "$backup" /grant:r ("$acct1" + ":(OI)(CI)F") ("$acct2" + ":(OI)(CI)F")
-11. 在 **ContosoSQL1** 上创建一个名为 **MyDB1** 的数据库，创建完整备份和日志备份，并使用 **WITH NORECOVERY** 选项在 **ContosoSQL2** 上还原它们。
+11. 在**ContosoSQL1**上创建一个名为**MyDB1**的数据库，进行完整备份和日志备份，并在**ContosoSQL2**上使用 **"无恢复"** 选项还原它们。
 
          Invoke-SqlCmd -Query "CREATE database $db"
          Backup-SqlDatabase -Database $db -BackupFile "$backupShare\db.bak" -ServerInstance $server1
@@ -567,4 +567,4 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
 ## <a name="next-steps"></a>后续步骤
 现在，已通过在 Azure 中创建可用性组成功实现了 SQL Server Always On。 若要为此可用性组配置侦听器，请参阅[在 Azure 中配置 Always On 可用性组的 ILB 侦听器](../classic/ps-sql-int-listener.md)。
 
-有关在 Azure 中使用 SQL Server 的其他信息，请参阅 [SQL Server on Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)（Azure 虚拟机上的 SQL Server）。
+有关在 Azure 中使用 SQL Server 的其他信息，请参阅[Azure 虚拟机上的 SQL Server。](../sql/virtual-machines-windows-sql-server-iaas-overview.md)

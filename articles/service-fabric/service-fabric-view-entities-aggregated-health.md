@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: d02d8f717801bf51e43c9dafa5eb9379d0737674
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464129"
 ---
 # <a name="view-service-fabric-health-reports"></a>查看 Service Fabric 运行状况报告
@@ -19,7 +19,7 @@ Azure Service Fabric 引入了一种具有运行状况实体的[运行状况模�
 
 Service Fabric 提供多种方式来获取实体聚合运行状况：
 
-* [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 或其他可视化工具
+* [服务结构资源管理器](service-fabric-visualizing-your-cluster.md)或其他可视化工具
 * 运行状况查询（通过 PowerShell、API 或 REST）
 * 常规查询，返回将运行状况作为属性之一的实体的列表（通过 PowerShell、API 或 REST）
 
@@ -58,7 +58,7 @@ Service Fabric Explorer 提供群集的更直观展示。 在下图中，可以�
 Service Fabric 为每个支持的[实体类型](service-fabric-health-introduction.md#health-entities-and-hierarchy)提供运行状况查询。 可以通过 API（使用 [FabricClient.HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet) 上的方法）、PowerShell cmdlet 和 REST 访问它们。 这些查询返回有关实体的完整运行状况信息：聚合运行状况、实体运行状况事件、子运行状况（在适用时）、不正常评估（实体不正常时）以及子集运行状况统计信息（在适用时）。
 
 > [!NOTE]
-> 填满运行状况存储时，将返回运行状况实体。 实体必须是作用中（未删除），并且具有系统报告。 层次结构链上其父实体还必须有系统报告。 如果未满足这些条件中的任何一个，则运行状况查询将返回[FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) ，其中包含[FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound` 显示未返回实体的原因。
+> 填满运行状况存储时，将返回运行状况实体。 实体必须是作用中（未删除），并且具有系统报告。 层次结构链上其父实体还必须有系统报告。 如果不满足以上任何条件，则运行状况查询返回 [FabricErrorCode 为 ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) `FabricHealthEntityNotFound`（显示未返回实体的原因）的 [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception)。
 >
 >
 
@@ -1044,7 +1044,7 @@ ApplicationHealthStateChunks :
   * PowerShell：Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
-> 有些查询会返回已分页的结果。 这些查询的返回是从[PagedList\<t >](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1)派生的列表。 如果一条消息无法容纳这些结果，则仅返回一页，以及一个用于跟踪枚举停止位置的 ContinuationToken。 继续调用相同的查询，并从先前的查询传入继续标记以获取后续结果。
+> 有些查询会返回已分页的结果。 这些查询的返回结果是派生自 [PagedList\<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1) 的列表。 如果一条消息无法容纳这些结果，则仅返回一页，以及一个用于跟踪枚举停止位置的 ContinuationToken。 继续调用相同的查询，并从先前的查询传入继续标记以获取后续结果。
 
 ### <a name="examples"></a>示例
 以下代码获取群集中不正常的应用程序：

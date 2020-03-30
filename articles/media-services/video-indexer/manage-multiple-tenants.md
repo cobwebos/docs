@@ -14,10 +14,10 @@ ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
 ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76990498"
 ---
 # <a name="manage-multiple-tenants"></a>管理多个租户
@@ -68,7 +68,7 @@ ms.locfileid: "76990498"
 
 ## <a name="azure-subscription-per-tenant"></a>每个租户都有 Azure 订阅 
 
-使用此体系结构时，每个租户都有自己的 Azure 订阅。 对于每个用户，需在租户订阅中创建新的视频索引器帐户。
+使用此体系结构时，每个租户都将有自己的 Azure 订阅。 对于每个用户，需在租户订阅中创建新的视频索引器帐户。
 
 ![每个租户都有 Azure 订阅](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 

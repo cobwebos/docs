@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: e8912ef5bc0fd6009443b736031fc9af57ab6c5b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465648"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric 独立群集概述
@@ -42,7 +42,7 @@ Service Fabric 还支持使用访问控制限制对不同用户组的某些群�
 
 有关详细信息，请阅读[基于角色的访问控制 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)。
 
-## <a name="scaling"></a>缩放
+## <a name="scaling"></a>扩展
 
 应用程序的需求会不断变化。 可能需要增加群集资源来满足更多的应用程序工作负荷或网络流量，或者在需求下降时减少群集资源。 创建 Service Fabric 群集后，可以群集横向缩放（更改节点数）或纵向缩放（更改节点资源）该群集。 随时可以缩放群集，即使该群集上正在运行工作负荷。 在缩放群集的同时，应用程序也会随之自动缩放。
 

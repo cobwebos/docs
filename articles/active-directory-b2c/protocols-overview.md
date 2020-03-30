@@ -11,10 +11,10 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ed393f721d4461ebadea41f8dad707d4881865cd
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183898"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C：身份验证协议
@@ -28,7 +28,7 @@ ms.locfileid: "78183898"
 每个使用 Azure AD B2C 的应用都需要在 [Azure 门户](https://portal.azure.com)的 B2C 目录中注册。 应用注册过程将收集一些值并将其分配给应用：
 
 * 用于唯一标识应用的 **应用程序 ID** 。
-* 用于将响应定向回应用的**重定向 URI** 或**包标识符**。
+* 可用于将响应定向回应用的**重定向 URI**或**包标识符**。
 * 其他一些特定于方案的值。 有关详细信息，请了解[如何注册应用程序](tutorial-register-applications.md)。
 
 注册应用后，应用将通过向终结点发送请求来与 Azure Active Directory (Azure AD) 通信：
@@ -40,9 +40,9 @@ https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token
 
 几乎在所有的 OAuth 和 OpenID Connect 流中，都有四个参与交换的对象：
 
-![显示四个 OAuth 2.0 角色的关系图](./media/protocols-overview/protocols_roles.png)
+![显示四个 OAuth 2.0 角色的示意图](./media/protocols-overview/protocols_roles.png)
 
-* 授权服务器是 Azure AD 终结点。 它可安全处理与用户信息和访问相关的任何内容。 还可以处理流中参与方之间的信任关系。 它负责验证用户的标识、授予和吊销对资源的访问权限，以及颁发令牌。 也被称作标识提供者。
+* 授权服务器**** 是 Azure AD 终结点。 它可安全处理与用户信息和访问相关的任何内容。 还可以处理流中参与方之间的信任关系。 它负责验证用户的标识、授予和吊销对资源的访问权限，以及颁发令牌。 也被称作标识提供者。
 
 * **资源所有者**通常是最终用户。 它是拥有数据的一方，并且有权允许第三方访问该数据或资源。
 
@@ -53,7 +53,7 @@ https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token
 ## <a name="policies-and-user-flows"></a>策略和用户流
 可以说，Azure AD B2C 策略是服务最重要的功能。 Azure AD B2C 通过引入策略来扩展标准 OAuth 2.0 和 OpenID Connect 协议。 这些协议允许 Azure AD B2C 执行简单身份验证和授权以外的更多功能。
 
-若要帮助设置最常见的标识任务，Azure AD B2C 门户应包括名为“用户流”的预定义且可配置的策略。 用户流充分描述了使用者标识体验，包括注册、登录和配置文件编辑。 可以在管理 UI 中定义用户流。 通过在 HTTP 认证请求中使用特殊的查询参数来执行策略。
+若要帮助设置最常见的标识任务，Azure AD B2C 门户应包括名为“用户流”**** 的预定义且可配置的策略。 用户流充分描述了使用者标识体验，包括注册、登录和配置文件编辑。 可以在管理 UI 中定义用户流。 通过在 HTTP 认证请求中使用特殊的查询参数来执行策略。
 
 策略和用户流不是 OAuth 2.0 和 OpenID Connect 的标准功能，因此应该花时间去了解它们。 有关详细信息，请参阅 [Azure AD B2C 用户流参考指南](user-flow-overview.md)。
 

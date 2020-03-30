@@ -1,5 +1,5 @@
 ---
-title: 通过 Visual Studio 开始使用 Azure 队列存储（ASP.NET）
+title: 使用可视化工作室 （ASP.NET） 开始使用 Azure 队列存储
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 ASP.NET 项目中使用 Azure 队列存储
 services: storage
 author: ghogen
@@ -14,10 +14,10 @@ ms.date: 12/23/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: f229661ca78dc75adbc0b49073dc6f0feaf2ba22
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75980757"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务 (ASP.NET)
@@ -26,11 +26,11 @@ ms.locfileid: "75980757"
 
 ## <a name="overview"></a>概述
 
-Azure 队列存储用于在应用程序组件之间进行云消息传送。 设计可缩放的应用程序时，应用程序组件通常是分离的，各组件可以独立缩放。 队列存储提供的异步消息传送适用于在应用程序组件之间进行通信，无论这些应用程序组件是运行在云中、桌面上、本地服务器上还是移动设备上。 队列存储还支持管理异步任务以及构建过程工作流。
+Azure 队列存储用于在应用程序组件之间进行云消息传送。 在设计应用程序以实现伸缩性时，通常要将各个应用程序组件分离，使其可以独立地进行伸缩。 队列存储提供的异步消息传送适用于在应用程序组件之间进行通信，无论这些应用程序组件是运行在云中、桌面上、本地服务器上还是移动设备上。 队列存储还支持管理异步任务以及构建过程工作流。
 
 本教程介绍如何针对 Azure 队列存储实体的一些常见使用方案编写 ASP.NET 代码。 这些方案包括一些常见任务，如创建 Azure 队列，添加、修改、读取和删除队列消息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 存储帐户](../storage/common/storage-account-create.md)
@@ -43,15 +43,15 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 ### <a name="create-an-mvc-controller"></a>创建 MVC 控制器 
 
-1. 在“解决方案资源管理器”中右键单击“控制器”，并从上下文菜单中选择“添加”->“控制器”。
+1. 在“解决方案资源管理器”**** 中右键单击“控制器”****，并从上下文菜单中选择“添加”->“控制器”****。
 
     ![将控制器添加到 ASP.NET MVC 应用](./media/vs-storage-aspnet-getting-started-queues/add-controller-menu.png)
 
-1. 在“添加基架”对话框中选择“MVC 5 控制器 - 空”，并选择“添加”。
+1. 在“添加基架”**** 对话框中选择“MVC 5 控制器 - 空”****，并选择“添加”****。
 
     ![指定 MVC 控制器类型](./media/vs-storage-aspnet-getting-started-queues/add-controller.png)
 
-1. 在“添加控制器”对话框中，将控制器命名为“QueuesController”，然后选择“添加”。
+1. 在“添加控制器”对话框中，将控制器命名为“QueuesController”，然后选择“添加”**********。
 
     ![命名 MVC 控制器](./media/vs-storage-aspnet-getting-started-queues/add-controller-name.png)
 
@@ -84,7 +84,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     }
     ```
 
-1. 在 **CreateQueue** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置中获取存储连接字符串和存储帐户信息：（请将 *&lt;storage-account-name>* 更改为正在访问的 Azure 存储帐户的名称。）
+1. 在 **CreateQueue** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置获取存储连接字符串和存储帐户信息：（将*&lt;存储帐户名称>* 更改为要访问的 Azure 存储帐户的名称。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -114,9 +114,9 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     ViewBag.QueueName = queue.Name;
     ```
 
-1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“队列”，并从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“队列”，并从上下文菜单中选择“添加”->“视图”。****************
 
-1. 在“添加视图”对话框中，输入 **CreateQueue** 作为视图名称，并选择“添加”。
+1. 在“添加视图”对话框中，输入 **CreateQueue** 作为视图名称，并选择“添加”。********
 
 1. 打开 `CreateQueue.cshtml`，并按以下代码片段所示对其进行修改：
 
@@ -130,7 +130,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     Creation of @ViewBag.QueueName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”**** 中，展开“Views”->“Shared”**** 文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -138,7 +138,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     <li>@Html.ActionLink("Create queue", "CreateQueue", "Queues")</li>
     ```
 
-1. 运行应用程序，并选择 "**创建队列**" 以查看类似于以下屏幕截图的结果：
+1. 运行应用程序，然后选择 **"创建队列"** 以查看类似于以下屏幕截图的结果：
   
     ![创建队列](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
@@ -165,7 +165,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     }
     ```
  
-1. 在 **AddMessage** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置中获取存储连接字符串和存储帐户信息：（请将 *&lt;storage-account-name>* 更改为正在访问的 Azure 存储帐户的名称。）
+1. 在 **AddMessage** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置获取存储连接字符串和存储帐户信息：（将*&lt;存储帐户名称>* 更改为要访问的 Azure 存储帐户的名称。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -203,9 +203,9 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     ViewBag.Message = message.AsString;
     ```
 
-1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“队列”，并从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“队列”，并从上下文菜单中选择“添加”->“视图”。****************
 
-1. 在“添加视图”对话框中，输入 **AddMessage** 作为视图名称，并选择“添加”。
+1. 在“添加视图”对话框中，输入 **AddMessage** 作为视图名称，并选择“添加”。********
 
 1. 打开 `AddMessage.cshtml`，并按以下代码片段所示对其进行修改：
 
@@ -219,7 +219,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     The message '@ViewBag.Message' was added to the queue '@ViewBag.QueueName'.
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”**** 中，展开“Views”->“Shared”**** 文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -227,7 +227,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     <li>@Html.ActionLink("Add message", "AddMessage", "Queues")</li>
     ```
 
-1. 运行应用程序，并选择 "**添加消息**" 以查看类似于以下屏幕截图的结果：
+1. 运行应用程序，并选择 **"添加消息**"以查看类似于以下屏幕截图的结果：
   
     ![添加消息](./media/vs-storage-aspnet-getting-started-queues/add-message-results.png)
 
@@ -254,7 +254,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     }
     ```
  
-1. 在 **PeekMessage** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置中获取存储连接字符串和存储帐户信息：（请将 *&lt;storage-account-name>* 更改为正在访问的 Azure 存储帐户的名称。）
+1. 在 **PeekMessage** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置获取存储连接字符串和存储帐户信息：（将*&lt;存储帐户名称>* 更改为要访问的 Azure 存储帐户的名称。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -286,9 +286,9 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     ViewBag.Message = (message != null ? message.AsString : "");
     ```
 
-1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“队列”，并从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“队列”，并从上下文菜单中选择“添加”->“视图”。****************
 
-1. 在“添加视图”对话框中，输入 **PeekMessage** 作为视图名称，并选择“添加”。
+1. 在“添加视图”对话框中，输入 **PeekMessage** 作为视图名称，并选择“添加”。********
 
 1. 打开 `PeekMessage.cshtml`，并按以下代码片段所示对其进行修改：
 
@@ -305,7 +305,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     </table>    
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”**** 中，展开“Views”->“Shared”**** 文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -313,7 +313,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     <li>@Html.ActionLink("Peek message", "PeekMessage", "Queues")</li>
     ```
 
-1. 运行应用程序，并选择 "**速览消息**" 以查看类似于以下屏幕截图的结果：
+1. 运行应用程序，并选择**Peek 消息**以查看类似于以下屏幕截图的结果：
   
     ![速览消息](./media/vs-storage-aspnet-getting-started-queues/peek-message-results.png)
 
@@ -338,7 +338,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     }
     ```
  
-1. 在 **ReadMessage** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置中获取存储连接字符串和存储帐户信息：（请将 *&lt;storage-account-name>* 更改为正在访问的 Azure 存储帐户的名称。）
+1. 在 **ReadMessage** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置获取存储连接字符串和存储帐户信息：（将*&lt;存储帐户名称>* 更改为要访问的 Azure 存储帐户的名称。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -377,9 +377,9 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     ViewBag.Message = message.AsString;
     ```
  
-1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“队列”，并从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“队列”，并从上下文菜单中选择“添加”->“视图”。****************
 
-1. 在“添加视图”对话框中，输入 **ReadMessage** 作为视图名称，并选择“添加”。
+1. 在“添加视图”对话框中，输入 **ReadMessage** 作为视图名称，并选择“添加”。********
 
 1. 打开 `ReadMessage.cshtml`，并按以下代码片段所示对其进行修改：
 
@@ -396,7 +396,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     </table>
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”**** 中，展开“Views”->“Shared”**** 文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -404,7 +404,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     <li>@Html.ActionLink("Read/Delete message", "ReadMessage", "Queues")</li>
     ```
 
-1. 运行应用程序，并选择 "**读取/删除消息**" 以查看类似于以下屏幕截图的结果：
+1. 运行应用程序，并选择 **"读取/删除"消息**以查看类似于以下屏幕截图的结果：
   
     ![读取并删除消息](./media/vs-storage-aspnet-getting-started-queues/read-message-results.png)
 
@@ -429,7 +429,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     }
     ```
  
-1. 在 **ReadMessage** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置中获取存储连接字符串和存储帐户信息：（请将 *&lt;storage-account-name>* 更改为正在访问的 Azure 存储帐户的名称。）
+1. 在 **ReadMessage** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置获取存储连接字符串和存储帐户信息：（将*&lt;存储帐户名称>* 更改为要访问的 Azure 存储帐户的名称。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -467,9 +467,9 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     ViewBag.Length = nMessages;
     ```
  
-1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“队列”，并从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“队列”，并从上下文菜单中选择“添加”->“视图”。****************
 
-1. 在“添加视图”对话框中，输入 **GetQueueLength** 作为视图名称，并选择“添加”。
+1. 在“添加视图”对话框中，输入 **GetQueueLength** 作为视图名称，并选择“添加”。********
 
 1. 打开 `GetQueueLengthMessage.cshtml`，并按以下代码片段所示对其进行修改：
 
@@ -483,7 +483,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     The queue '@ViewBag.QueueName' has a length of (number of messages): @ViewBag.Length
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”**** 中，展开“Views”->“Shared”**** 文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -491,7 +491,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     <li>@Html.ActionLink("Get queue length", "GetQueueLength", "Queues")</li>
     ```
 
-1. 运行应用程序，并选择 "**获取队列长度**" 以查看类似于以下屏幕截图的结果：
+1. 运行应用程序，然后选择 **"获取队列长度**以查看类似于以下屏幕截图的结果：
   
     ![获取队列长度](./media/vs-storage-aspnet-getting-started-queues/get-queue-length-results.png)
 
@@ -516,7 +516,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     }
     ```
  
-1. 在 **DeleteQueue** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置中获取存储连接字符串和存储帐户信息：（请将 *&lt;storage-account-name>* 更改为正在访问的 Azure 存储帐户的名称。）
+1. 在 **DeleteQueue** 方法中，获取表示存储帐户信息的 **CloudStorageAccount** 对象。 使用以下代码从 Azure 服务配置获取存储连接字符串和存储帐户信息：（将*&lt;存储帐户名称>* 更改为要访问的 Azure 存储帐户的名称。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -547,9 +547,9 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     ViewBag.QueueName = queue.Name;
     ```
  
-1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“队列”，并从上下文菜单中选择“添加”->“视图”。
+1. 在“解决方案资源管理器”中展开“视图”文件夹，右键单击“队列”，并从上下文菜单中选择“添加”->“视图”。****************
 
-1. 在“添加视图”对话框中，输入 **DeleteQueue** 作为视图名称，并选择“添加”。
+1. 在“添加视图”对话框中，输入 **DeleteQueue** 作为视图名称，并选择“添加”。********
 
 1. 打开 `DeleteQueue.cshtml`，并按以下代码片段所示对其进行修改：
 
@@ -563,7 +563,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     @ViewBag.QueueName deleted.
     ```
 
-1. 在“解决方案资源管理器”中，展开“Views”->“Shared”文件夹，并打开 `_Layout.cshtml`。
+1. 在“解决方案资源管理器”**** 中，展开“Views”->“Shared”**** 文件夹，并打开 `_Layout.cshtml`。
 
 1. 在最后一个 **Html.ActionLink** 的后面，添加以下 **Html.ActionLink**：
 
@@ -571,12 +571,12 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
     <li>@Html.ActionLink("Delete queue", "DeleteQueue", "Queues")</li>
     ```
 
-1. 运行应用程序，并选择 "**获取队列长度**" 以查看类似于以下屏幕截图的结果：
+1. 运行应用程序，然后选择 **"获取队列长度**以查看类似于以下屏幕截图的结果：
   
     ![删除队列](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
 
 ## <a name="next-steps"></a>后续步骤
 查看更多功能指南，以了解在 Azure 中存储数据的其他方式。
 
-  * [Azure Blob 存储和 Visual Studio 连接服务入门 (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
+  * [开始使用 Azure Blob 存储和可视化工作室连接服务（ASP.NET）](../storage/vs-storage-aspnet-getting-started-blobs.md)
   * [开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET)](vs-storage-aspnet-getting-started-tables.md)

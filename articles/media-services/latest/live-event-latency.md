@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务中的 LiveEvent 低延迟设置 |Microsoft Docs
+title: Azure 媒体服务中的 LiveEvent 低延迟设置 |微软文档
 description: 本主题概述了 LiveEvent 低延迟设置，并演示如何设置低延迟。
 services: media-services
 documentationcenter: ''
@@ -14,20 +14,20 @@ ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
 ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78199642"
 ---
 # <a name="live-event-low-latency-settings"></a>实时事件低延迟设置
 
 本文展示了如何在[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)上设置较低的延迟。 它还讨论了在各种播放器中使用低延迟设置时看到的典型结果。 结果因 CDN 和网络延迟而异。
 
-若要使用新的 **LowLatency** 功能，请在 **LiveEvent** 上将 **StreamOptionsFlag** 设置为 **LowLatency**。 为 HLS 播放创建 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) 时，将 [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 设置为 1。 流启动并运行后，可以使用 [Azure Media Player](https://ampdemo.azureedge.net/)（AMP 演示页），并设置播放选项以使用“低延迟启发式配置文件”。
+若要使用新的 **LowLatency** 功能，请在 **LiveEvent** 上将 **StreamOptionsFlag** 设置为 **LowLatency**。 为 HLS 播放创建 [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) 时，将 [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 设置为 1。 启动并运行流后，可以使用[Azure 媒体播放器](https://ampdemo.azureedge.net/)（AMP 演示页），并将播放选项设置为使用"低延迟启发式配置文件"。
 
 > [!NOTE]
-> 目前，Azure Media Player 中的 LowLatency HeuristicProfile 设计用于在 MPEG-短划线协议中播放后流，采用 CSF 或 CMAF 格式（例如 `format=mdp-time-csf` 或 `format=mdp-time-cmaf`）。 
+> 目前，Azure Media Player 中的“低延迟启发式配置文件”设计用于在 MPEG-DASH 协议中播放采用 CSF 或 CMAF 格式（例如，`format=mdp-time-csf` 或 `format=mdp-time-cmaf`）的流。 
 
 以下 .NET 示例展示了如何在 **LiveEvent** 上设置 **LowLatency**：
 

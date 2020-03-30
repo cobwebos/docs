@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: areddish
 ms.openlocfilehash: 78db95240974d1c9ca07546f8237eca2b564ecb2
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77616332"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>快速入门：使用适用于 Java 的自定义视觉 SDK 创建对象检测项目
@@ -97,7 +97,7 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 ## <a name="run-the-application"></a>运行应用程序
 
-若要使用 maven 编译并运行解决方案，请在命令提示符下导航到项目目录 (**Vision/CustomVision**)，并执行运行命令：
+若要使用 maven 编译并运行解决方案，请在命令提示符下导航到项目目录 (**Vision/CustomVision**)，并执行 run 命令：
 
 ```bash
 mvn compile exec:java

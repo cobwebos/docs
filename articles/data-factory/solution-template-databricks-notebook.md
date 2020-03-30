@@ -1,5 +1,5 @@
 ---
-title: 与 Azure Databricks 转换
+title: 使用 Azure 数据块进行转换
 description: 了解如何使用解决方案模板，通过在 Azure 数据工厂中使用 Databricks 笔记本转换数据。
 services: data-factory
 ms.author: abnarain
@@ -11,45 +11,51 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
-ms.openlocfilehash: e771bc152ab50f907a8f2ad384e887c00d3f627a
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.openlocfilehash: 9a05b09f958d741fa56c586fbc7f5c5908dbbce6
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933851"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384375"
 ---
-# <a name="transformation-with-azure-databricks"></a>与 Azure Databricks 转换
+# <a name="transformation-with-azure-databricks"></a>使用 Azure 数据块进行转换
 
-在本教程中，将创建一个端到端管道，其中包含数据工厂中的**验证**、**复制**和**笔记本**活动。
+在本教程中，您将创建一个端到端管道，其中包含 Azure 数据工厂中的**验证**、**复制数据和****笔记本**活动。
 
--   **验证**活动用于确保源数据集可供下游消耗，在触发复制和分析作业之前。
+- **在**触发复制和分析作业之前，验证可确保源数据集已准备好用于下游使用。
 
--   **复制**活动将源文件/数据集复制到接收器存储。 接收器存储作为 DBFS 装载在 Databricks笔记本中，因此 Spark 可以直接使用数据集。
+- **复制数据**将源数据集复制到接收器存储，该存储作为 DBFS 装载在 Azure 数据块笔记本中。 这样，Spark 可以直接使用数据集。
 
--   **Databricks 笔记本**活动触发转换数据集的 Databricks 笔记本，并将其添加到已处理的文件夹/SQL DW。
+- **笔记本**将触发转换数据集的数据砖笔记本。 它还将数据集添加到已处理的文件夹或 Azure SQL 数据仓库。
 
-模板不会创建计划的触发器，以确保此模板简单好用。 如有必要，可添加触发器。
+为简单起见，本教程中的模板不会创建计划触发器。 如有必要，可以添加一个。
 
-![1](media/solution-template-Databricks-notebook/pipeline-example.png)
+![管道图](media/solution-template-Databricks-notebook/pipeline-example.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-1. 创建一个“blob 存储帐户”和一个将用作“接收器”的名为  **的容器**`sinkdata`。 记下“存储帐户名称”、“容器名称”和“访问密钥”，因为稍后将在模板中引用它们。
+- 具有用作`sinkdata`接收器的容器的 Azure Blob 存储帐户。
 
-2. 确保已拥有“Azure Databricks 工作区”或创建一个新工作区。
+  记下存储帐户名称、容器名称和访问密钥。 稍后将需要在模板中使用这些值。
 
-3. **导入笔记本以进行转换**。 
-    1. 在 Azure Databricks 中，请参考以下屏幕截图，将**转换**笔记本导入到 Databricks 工作区。 它不必与下面的位置相同，但请记住你稍后选择的路径。
-   
-       ![2](media/solution-template-Databricks-notebook/import-notebook.png)    
-    
-    1. 选择 "导入源： **URL**"，然后在文本框中输入以下 URL：
-    
-       * `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`
-        
-       ![3](media/solution-template-Databricks-notebook/import-from-url.png)    
+- Azure 数据块工作区。
 
-4. 现在，让我们用存储连接信息更新**转换**笔记本。 在上面导入的笔记本中，切换到**命令 5** （如以下代码片段所示），并将 `<storage name>`和 `<access key>` 替换为你自己的存储连接信息。 确保此帐户就是先前创建的存储帐户，并确保它包含 `sinkdata` 容器。
+## <a name="import-a-notebook-for-transformation"></a>导入用于转换的笔记本
+
+要将**转换**笔记本导入数据砖块工作区，请：
+
+1. 登录到 Azure 数据块工作区，然后选择 **"导入**"。
+       ![用于导入工作区](media/solution-template-Databricks-notebook/import-notebook.png)的菜单命令您的工作区路径可能不同于显示的路径，但请稍后记住它。
+1. 选择**从：URL**导入。 在文本框中，输入`https://adflabstaging1.blob.core.windows.net/share/Transformations.html`。
+
+   ![导入笔记本的选择](media/solution-template-Databricks-notebook/import-from-url.png)
+
+1. 现在，让我们使用存储连接信息更新**转换**笔记本。
+
+   在导入的笔记本中，转到**命令 5，** 如以下代码段所示。
+
+   - 替换`<storage name>`并`<access key>`使用您自己的存储连接信息。
+   - 将存储帐户与容器一`sinkdata`起使用。
 
     ```python
     # Supply storageName and accessKey values  
@@ -73,95 +79,104 @@ ms.locfileid: "78933851"
       print e \# Otherwise print the whole stack trace.  
     ```
 
-5.  为数据工厂生成“Databricks 访问令牌”以访问 Databricks。 **保存访问令牌**供以后用于创建 Databricks 链接服务，其外观类似于 "dapi32db32cbb4w6eee18b7d87e45exxxxxx"。
+1. 为数据工厂生成“Databricks 访问令牌”以访问 Databricks****。
+   1. 在 DataBRICKS 工作区中，选择右上角的用户配置文件图标。
+   1. 选择**用户设置**。
+    ![用户设置的菜单命令](media/solution-template-Databricks-notebook/user-setting.png)
+   1. 在 **"访问令牌"** 选项卡下选择 **"生成新令牌**"。
+   1. 然后选择“生成”****。
 
-    ![4](media/solution-template-Databricks-notebook/user-setting.png)
+    !["生成"按钮](media/solution-template-Databricks-notebook/generate-new-token.png)
 
-    ![5](media/solution-template-Databricks-notebook/generate-new-token.png)
+   *保存访问令牌*以供以后用于创建数据砖块链接服务。 访问令牌类似于`dapi32db32cbb4w6eee18b7d87e45exxxxxx`。
 
 ## <a name="how-to-use-this-template"></a>如何使用此模板
 
-1.  转到 "**转换" Azure Databricks**模板。 为以下连接创建新的链接服务。 
-    
-    ![连接设置](media/solution-template-Databricks-notebook/connections-preview.png)
+1. 转到使用**Azure 数据砖块模板的转换**，并创建用于以下连接的新链接服务。
 
-    1.  **源 Blob 连接**–用于访问源数据。 
-        
-        可以使用包含此示例的源文件的公共 Blob 存储。 参考下面的配置屏幕截图。 使用以下**SAS URL**连接到源存储（只读访问）： 
-        * `https://storagewithdata.blob.core.windows.net/data?sv=2018-03-28&si=read%20and%20list&sr=c&sig=PuyyS6%2FKdB2JxcZN0kPlmHSBlD8uIKyzhBWmWzznkBw%3D`
+   ![连接设置](media/solution-template-Databricks-notebook/connections-preview.png)
 
-        ![6](media/solution-template-Databricks-notebook/source-blob-connection.png)
+    - **源 Blob 连接**- 访问源数据。
 
-    1.  **目标 Blob 连接**-用于将数据复制到中。 
-        
-        在接收器链接服务中，选择在**必备组件**1 中创建的存储。
+       在本练习中，可以使用包含源文件的公共 Blob 存储。 参考以下配置屏幕截图。 使用以下**SAS URL**连接到源存储（只读访问）：
 
-        ![7](media/solution-template-Databricks-notebook/destination-blob-connection.png)
+       `https://storagewithdata.blob.core.windows.net/data?sv=2018-03-28&si=read%20and%20list&sr=c&sig=PuyyS6%2FKdB2JxcZN0kPlmHSBlD8uIKyzhBWmWzznkBw%3D`
 
-    1.  **Azure Databricks** –用于连接到 Databricks 群集。
+        ![身份验证方法和 SAS URL 的选择](media/solution-template-Databricks-notebook/source-blob-connection.png)
 
-        使用在**必备组件**中生成的访问密钥创建 Databricks 链接服务。 如果有交互式群集，可以选择该群集。 （此示例使用“新建作业群集”选项。）
+    - **目标 Blob 连接**- 存储复制的数据。
 
-        ![8](media/solution-template-Databricks-notebook/databricks-connection.png)
+       在 **"新建链接服务"** 窗口中，选择接收器存储 Blob。
 
-1. 选择 "**使用此模板**"，将会看到创建的管道，如下所示：
-    
-    ![创建管道](media/solution-template-Databricks-notebook/new-pipeline.png)   
+       ![将存储 Blob 作为新的链接服务](media/solution-template-Databricks-notebook/destination-blob-connection.png)
 
-## <a name="pipeline-introduction-and-configuration"></a>管道简介和配置
+    - **Azure 数据块**- 连接到数据砖群集。
 
-在创建的新管道中，大多数设置都是使用默认值自动配置的。 查看配置并根据需要进行更新，以适合自己的设置。 有关详细信息，请查看以下说明和屏幕截图以了解参考。
+        使用以前生成的访问密钥创建与 Databricks 链接的服务。 如果您有*交互式群集*，可以选择选择交互式群集。 此示例使用 **"新建作业群集"** 选项。
 
-1.  为执行源可用性检查而创建了验证活动**可用性标志**。 在上一步中创建的*SourceAvailabilityDataset*被选为数据集。
+        ![连接到群集的选择](media/solution-template-Databricks-notebook/databricks-connection.png)
 
-    ![12](media/solution-template-Databricks-notebook/validation-settings.png)
+1. 选择“使用此模板”****。 您将看到已创建的管道。
 
-1.  将创建复制活动**文件到 blob** ，以将数据集从源复制到接收器。 请参阅以下屏幕截图，了解复制活动中的源和接收器配置。
+    ![创建管道](media/solution-template-Databricks-notebook/new-pipeline.png)
 
-    ![13](media/solution-template-Databricks-notebook/copy-source-settings.png)
+## <a name="pipeline-introduction-and-configuration"></a>管道介绍和配置
 
-    ![14](media/solution-template-Databricks-notebook/copy-sink-settings.png)
+在新管道中，大多数设置都自动配置默认值。 查看管道的配置并进行任何必要的更改。
 
-1.  将创建一个笔记本活动**转换**，并选择在上一步中创建的链接服务。
-    ![16](media/solution-template-Databricks-notebook/notebook-activity.png)
+1. 在**验证**活动**可用性标志**中，验证源**数据集**值是否设置为`SourceAvailabilityDataset`您之前创建的。
 
-     1. 选择 "**设置**" 选项卡。对于*笔记本路径*，模板默认情况下会定义一个路径。 你可能需要浏览并选择在**必备组件**2 中上传的正确笔记本路径。 
+   ![源数据集值](media/solution-template-Databricks-notebook/validation-settings.png)
 
-         ![17](media/solution-template-Databricks-notebook/notebook-settings.png)
-    
-     1. 查看创建的*基本参数*，如屏幕截图中所示。 它们将从数据工厂传递到 Databricks 笔记本。 
+1. 在 **"将数据**活动**文件复制到 blob"** 中，检查 **"源**"和"**接收器"** 选项卡。 如有必要，更改设置。
 
-         ![基本参数](media/solution-template-Databricks-notebook/base-parameters.png)
+   - **源**选项卡!["源"选项卡](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-1.  **管道参数**的定义如下。
+   - **接收器**选项卡!["接收器"选项卡](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
-    ![15](media/solution-template-Databricks-notebook/pipeline-parameters.png)
+1. 在**笔记本**活动**转换中**，根据需要查看和更新路径和设置。
 
-1. 设置数据集。
-    1.  创建**SourceAvailabilityDataset**以检查源数据是否可用。
+   **数据砖链接服务**应预填充上一步的值，如图所示：![数据砖块链接服务的填充值](media/solution-template-Databricks-notebook/notebook-activity.png)
 
-        ![9](media/solution-template-Databricks-notebook/source-availability-dataset.png)
+   要检查**笔记本**设置：
+  
+    1. 选择 **"设置"** 选项卡。对于**笔记本路径**，验证默认路径是否正确。 您可能需要浏览并选择正确的笔记本路径。
 
-    1.  **SourceFilesDataset** -用于复制源数据。
+       ![笔记本路径](media/solution-template-Databricks-notebook/notebook-settings.png)
 
-        ![10](media/solution-template-Databricks-notebook/source-file-dataset.png)
+    1. 展开**基本参数**选择器并验证参数是否与以下屏幕截图中显示的参数匹配。 这些参数从数据工厂传递到数据砖块笔记本。
 
-    1.  **DestinationFilesDataset** -用于复制到接收器/目标位置。
+       ![基本参数](media/solution-template-Databricks-notebook/base-parameters.png)
 
-        1.  链接服务- *sinkBlob_LS*在上一步中创建的。
+1. 验证**管道参数**与以下屏幕截图中显示的内容匹配：![管道参数](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
-        2.  文件路径- *sinkdata/staged_sink*。
+1. 连接到数据集。
 
-            ![11](media/solution-template-Databricks-notebook/destination-dataset.png)
+   - **源可用性数据集**- 检查源数据是否可用。
 
+     ![源可用性数据集的链接服务和文件路径的选择](media/solution-template-Databricks-notebook/source-availability-dataset.png)
 
-1.  选择 "**调试**" 以运行管道。 可以找到 Databricks 日志的链接以获取更详细的 Spark 日志。
+   - **源文件数据集**- 访问源数据。
 
-    ![18](media/solution-template-Databricks-notebook/pipeline-run-output.png)
+       ![源文件数据集的链接服务和文件路径的选择](media/solution-template-Databricks-notebook/source-file-dataset.png)
 
-    还可以使用存储资源管理器验证数据文件。 （为了与数据工厂管道运行相关联，此示例将管道运行 ID 从数据工厂附加到输出文件夹。 这样，就可以追溯每次运行生成的文件。）
+   - **目标文件数据集**- 将数据复制到接收器目标位置。 使用以下值：
 
-    ![19](media/solution-template-Databricks-notebook/verify-data-files.png)
+     - **链接服务** - `sinkBlob_LS`，在上一步中创建。
+
+     - **文件路径** - `sinkdata/staged_sink`。
+
+       ![目标文件数据集的链接服务和文件路径的选择](media/solution-template-Databricks-notebook/destination-dataset.png)
+
+1. 选择**调试**以运行管道。 您可以找到指向 Databricks 日志的链接，以获取更详细的 Spark 日志。
+
+    ![从输出链接到数据砖块日志](media/solution-template-Databricks-notebook/pipeline-run-output.png)
+
+    您还可以使用 Azure 存储资源管理器验证数据文件。
+
+    > [!NOTE]
+    > 对于与数据工厂管道运行相关的操作，此示例将管道运行 ID 从数据工厂追加到输出文件夹。 这有助于跟踪每次运行生成的文件。
+    > ![附加管道运行 ID](media/solution-template-Databricks-notebook/verify-data-files.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
 ms.openlocfilehash: 16c7af4d66bd550eb4a286de7c86c436b1fe10e2
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75922665"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使数据分析管道可操作化
 
-数据管道构成多个数据分析解决方案的基础。 顾名思义，数据管道采用原始数据、清除数据，并根据需要对其进行重新定形，然后通常在存储已处理的数据之前执行计算或聚合。 处理的数据供客户端、报表或 API 使用。 数据管道必须提供可重复的结果，无论是按计划还是由新数据触发。
+数据管道构成多个数据分析解决方案的基础**。 顾名思义，数据管道会根据需要获取原始数据、清理和重塑原始数据，然后通常在存储已处理的数据之前执行计算或聚合。 处理的数据供客户端、报表或 API 使用。 数据管道必须提供可重复的结果，无论是按计划还是由新数据触发。
 
 本文介绍如何使用 HDInsight Hadoop 群集上运行的 Oozie 让数据管道可操作化，以实现可重复性。 示例方案演示的数据管道用于准备和处理航班时间序列数据。
 
@@ -25,37 +25,37 @@ ms.locfileid: "75922665"
 
 | 年 | 月 | DAY_OF_MONTH | 承运商 |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2017 | 第 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
-| 2017 | 第 | 3 | AS | 9.435449 | 5.482143 | 572289 |
-| 2017 | 第 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
+| 2017 | 1 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
+| 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
+| 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
-示例管道等待一个新时间段的航班数据到达，然后将详细航班信息存储到 Apache Hive 数据仓库，用于长期分析。 管道还创建一个较小的数据集，用于汇总每日航班数据。 此每日航班摘要数据会发送到 SQL 数据库，以便提供报表，例如网站的。
+示例管道等待一个新时间段的航班数据到达，然后将详细航班信息存储到 Apache Hive 数据仓库，用于长期分析。 管道还创建一个较小的数据集，用于汇总每日航班数据。 此每日航班摘要数据将发送到 SQL 数据库以提供报告，例如用于网站。
 
 下图展示了此示例管道。
 
-![HDI 航班示例数据管道概述](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
+![HDI 飞行示例数据管道概述](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
 
 ## <a name="apache-oozie-solution-overview"></a>Apache Oozie 解决方案概述
 
 此管道使用 HDInsight Hadoop 群集上运行的 Apache Oozie。
 
-Oozie 根据操作、工作流和协调器对管道进行描述。 操作决定要执行的实际工作，例如运行 Hive 查询。 工作流定义操作序列。 协调器定义工作流运行的时间计划。 协调器还可依照新数据的可用性情况来启动工作流的实例。
+Oozie 根据操作、工作流和协调器对管道进行描述******。 操作决定要执行的实际工作，例如运行 Hive 查询。 工作流定义操作序列。 协调器定义工作流运行的时间计划。 协调器还可依照新数据的可用性情况来启动工作流的实例。
 
 下图展示此示例 Oozie 管道的高级设计。
 
-![Oozie 航班示例数据管道](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+![Oozie 飞行示例数据管道](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
 
 ## <a name="provision-azure-resources"></a>预配 Azure 资源
 
-此管道要求 Azure SQL 数据库和 HDInsight Hadoop 群集位于同一位置。 Azure SQL 数据库存储管道生成的汇总数据和 Oozie 元数据存储。
+此管道要求 Azure SQL 数据库和 HDInsight Hadoop 群集位于同一位置。 Azure SQL 数据库同时存储管道和 Oozie 元数据存储生成的摘要数据。
 
 ### <a name="provision-azure-sql-database"></a>预配置 Azure SQL 数据库
 
-1. 创建 Azure SQL 数据库。 请参阅[在 Azure 门户中创建 AZURE SQL 数据库](../sql-database/sql-database-single-database-get-started.md)。
+1. 创建 Azure SQL 数据库。 请参阅[在 Azure 门户中创建 Azure SQL 数据库](../sql-database/sql-database-single-database-get-started.md)。
 
-1. 若要确保 HDInsight 群集可以访问已连接的 Azure SQL 数据库，请配置 Azure SQL 数据库防火墙规则，以允许 Azure 服务和资源访问服务器。 可以通过选择 "**设置服务器防火墙**" 在 Azure 门户中启用此选项，然后**在**"**允许 azure 服务和资源" 下选择 "允许 azure 服务和资源" 访问**azure SQL 数据库服务器或数据库的此服务器。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)。
+1. 若要确保 HDInsight 群集能够访问连接的 Azure SQL 数据库，请配置 Azure SQL 数据库防火墙规则，允许 Azure 服务和资源访问服务器。 您可以通过选择 **"设置服务器防火墙"** 和选择"**在**Azure 服务和资源下方允许 Azure 服务和资源访问 Azure SQL 数据库服务器或数据库**的此服务器"，** 在 Azure 门户中启用此选项。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](../sql-database/sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)。
 
-1. 使用[查询编辑器](../sql-database/sql-database-single-database-get-started.md#query-the-database)来执行以下 SQL 语句，以创建将存储每次运行管道的汇总数据的 `dailyflights` 表。
+1. 使用[查询编辑器](../sql-database/sql-database-single-database-get-started.md#query-the-database)执行以下 SQL 语句以创建将存储`dailyflights`管道每次运行的汇总数据的表。
 
     ```sql
     CREATE TABLE dailyflights
@@ -76,18 +76,18 @@ Oozie 根据操作、工作流和协调器对管道进行描述。 操作决定�
 
 Azure SQL 数据库现已准备就绪。
 
-### <a name="provision-an-apache-hadoop-cluster"></a>预配 Apache Hadoop 群集
+### <a name="provision-an-apache-hadoop-cluster"></a>预配阿帕奇哈达普群集
 
-使用自定义元存储创建 Apache Hadoop 群集。 在通过门户创建群集期间，从 "**存储**" 选项卡中，确保在 "**元存储设置**" 下选择 SQL 数据库。 有关选择元存储的详细信息，请参阅[在群集创建过程中选择自定义元存储](./hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation)。 有关创建群集的详细信息，请参阅[Linux 上的 HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
+使用自定义元存储创建 Apache Hadoop 群集。 在从门户（从 **"存储"** 选项卡）创建群集期间，请确保在**Metastore 设置**下选择 SQL 数据库。 有关选择元存储的详细信息，请参阅在[群集创建期间选择自定义元存储](./hdinsight-use-external-metadata-stores.md#select-a-custom-metastore-during-cluster-creation)。 有关群集创建的详细信息，请参阅在[Linux 上使用 HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
-## <a name="verify-ssh-tunneling-set-up"></a>验证是否已设置 SSH 隧道
+## <a name="verify-ssh-tunneling-set-up"></a>验证 SSH 隧道设置
 
 若要使用 Oozie Web 控制台查看协调器和工作流实例的状态，请将 SSH 隧道设为 HDInsight 群集。 有关详细信息，请参阅 [SSH 隧道](hdinsight-linux-ambari-ssh-tunnel.md)。
 
 > [!NOTE]  
 > 还可以结合使用 Chrome 和 [Foxy Proxy](https://getfoxyproxy.org/) 扩展，跨 SSH 隧道浏览群集的 Web 资源。 将其配置为通过隧道端口 9876 上的主机 `localhost` 代理所有请求。 此方法与适用于 Linux 的 Windows 子系统（也称为 Windows 10 上的 Bash）兼容。
 
-1. 运行以下命令以打开到群集的 SSH 隧道，其中 `CLUSTERNAME` 是群集的名称：
+1. 运行以下命令以打开群集的 SSH 隧道，群集的名称`CLUSTERNAME`在哪里：
 
     ```cmd
     ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -97,13 +97,13 @@ Azure SQL 数据库现已准备就绪。
 
     `http://headnodehost:8080`
 
-1. 若要从 Ambari 中访问**Oozie Web 控制台**，请导航到**Oozie** > **快速链接**> [ACTIVE server] > **Oozie Web UI**。
+1. 要从 Ambari 内部访问**Oozie Web 控制台**，请导航到**oozie** > **快速链接**> [活动服务器] > **Oozie Web UI**。
 
 ## <a name="configure-hive"></a>配置 Hive
 
-### <a name="upload-data"></a>上载数据
+### <a name="upload-data"></a>上传数据
 
-1. 下载包含一个月航班数据的示例 CSV 文件。 从 [HDInsight GitHub 存储库](https://github.com/hdinsight/hdinsight-dev-guide)下载其 ZIP 文件 `2017-01-FlightData.zip`，并将其解压到 CSV 文件 `2017-01-FlightData.csv`。
+1. 下载包含一个月航班数据的示例 CSV 文件。 从`2017-01-FlightData.zip`[HDInsight GitHub 存储库](https://github.com/hdinsight/hdinsight-dev-guide)下载其 ZIP 文件，并将其解压缩到`2017-01-FlightData.csv`CSV 文件。
 
 1. 将此 CSV 文件复制到附加到 HDInsight 群集的 Azure 存储帐户，并将其置于 `/example/data/flights` 文件夹中。
 
@@ -113,13 +113,13 @@ Azure SQL 数据库现已准备就绪。
         scp ./2017-01-FlightData.csv sshuser@CLUSTERNAME-ssh.azurehdinsight.net:2017-01-FlightData.csv
         ```
 
-    1. 使用[ssh 命令](./hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 `CLUSTERNAME` 替换为群集的名称，然后输入该命令：
+    1. 使用 [ssh 命令](./hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 `CLUSTERNAME` 替换为群集的名称，然后输入该命令：
 
         ```cmd
         ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
         ```
 
-    1. 在 ssh 会话中，使用 HDFS 命令将文件从头节点本地存储复制到 Azure 存储。
+    1. 从 ssh 会话中，使用 HDFS 命令将文件从头节点本地存储复制到 Azure 存储。
 
         ```bash
         hadoop fs -mkdir /example/data/flights
@@ -130,15 +130,15 @@ Azure SQL 数据库现已准备就绪。
 
 示例数据现在可用。 但是，管道需要两个用于处理的 Hive 表，一个用于传入数据 (`rawFlights`)，一个用于汇总数据 (`flights`)。 在 Ambari 中创建这些表，如下所示。
 
-1. 通过导航到 `http://headnodehost:8080`登录到 Ambari。
+1. 通过导航到 `http://headnodehost:8080` 登录 Ambari。
 
-2. 从服务列表选择“Hive”。
+2. 从服务列表选择“Hive”****。
 
-    ![Apache Ambari services 列表选择 Hive](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    ![阿帕奇·安巴里服务列表选择蜂巢](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
-3. 选择 Hive 视图 2.0 标签旁的“转到视图”。
+3. 选择 Hive 视图 2.0 标签旁的“转到视图”****。
 
-    ![Ambari Apache Hive 摘要列表](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    ![安巴里·阿帕奇·希奇摘要列表](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
 4. 在查询文本区域中，粘贴以下语句以创建 `rawFlights` 表。 `rawFlights` 表在 Azure 存储的 `/example/data/flights` 文件夹内为 CSV 文件提供读取时架构。
 
@@ -165,11 +165,11 @@ Azure SQL 数据库现已准备就绪。
     LOCATION '/example/data/flights'
     ```
 
-5. 选择“执行”以创建表。
+5. 选择“执行”以创建表****。
 
-    ![hdi ambari services hive 查询](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    ![hdi ambari 服务蜂巢查询](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
-6. 若要创建 `flights` 表，请使用以下语句替换查询文本区域中的文本。 `flights` 表是一个由 Hive 管理的表，它将按年、月和日的日期对加载到其中的数据进行分区。 此表将包含全部历史航班数据，其中原始数据的呈现采用最小粒度，达到每个航班一行数据。
+6. 若要创建 `flights` 表，请使用以下语句替换查询文本区域中的文本。 该`flights`表是一个 Hive 管理的表，用于按年、月和月数对加载到其中的数据进行分区。 此表将包含全部历史航班数据，其中原始数据的呈现采用最小粒度，达到每个航班一行数据。
 
     ```sql
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -195,7 +195,7 @@ Azure SQL 数据库现已准备就绪。
     );
     ```
 
-7. 选择“执行”以创建表。
+7. 选择“执行”以创建表****。
 
 ## <a name="create-the-oozie-workflow"></a>创建 Oozie 工作流
 
@@ -209,8 +209,8 @@ Azure SQL 数据库现已准备就绪。
 
 这三个步骤由 Oozie 工作流进行协调。
 
-1. 在本地工作站上，创建名为 `job.properties`的文件。 使用以下文本作为文件的起始内容。
-然后更新特定环境的值。 文本下表汇总了每个属性，并指示可在何处找到你自己的环境的值。
+1. 从本地工作站创建名为 的文件`job.properties`。 使用下面的文本作为文件的起始内容。
+然后更新特定环境的值。 文本下方的表总结了每个属性，并指示在哪里可以找到您自己的环境的值。
 
     ```text
     nameNode=wasbs://[CONTAINERNAME]@[ACCOUNTNAME].blob.core.windows.net
@@ -230,7 +230,7 @@ Azure SQL 数据库现已准备就绪。
     day=03
     ```
 
-    | 属性 | 值源 |
+    | properties | 值源 |
     | --- | --- |
     | nameNode | 附加到 HDInsight 群集的 Azure 存储容器的完整路径。 |
     | jobTracker | 活动群集的 YARN 头节点的内部主机名。 在 Ambari 主页上，从服务列表中选择 YARN，然后选择“活动资源管理器”。 主机名 URI 显示在页面顶部。 追加端口 8050。 |
@@ -244,11 +244,11 @@ Azure SQL 数据库现已准备就绪。
     | hiveDataFolder | Azure 存储中指向临时表包含的数据的路径。 |
     | sqlDatabaseConnectionString | 指向 Azure SQL 数据库的 JDBC 语法连接字符串。 |
     | sqlDatabaseTableName | Azure SQL 数据库中插入了汇总行的表的名称。 保留为 `dailyflights`。 |
-    | 年 | 用于计算航班汇总的日期的年份部分。 原样保留。 |
-    | month | 用于计算航班汇总的日期的月份部分。 原样保留。 |
+    | year | 用于计算航班汇总的日期的年份部分。 原样保留。 |
+    | 月份 | 用于计算航班汇总的日期的月份部分。 原样保留。 |
     | day | 用于计算航班汇总的日期的月份部分的日期。 原样保留。 |
 
-1. 在本地工作站上，创建名为 `hive-load-flights-partition.hql`的文件。 使用以下代码作为该文件的内容。
+1. 从本地工作站创建名为 的文件`hive-load-flights-partition.hql`。 使用以下代码作为文件的内容。
 
     ```sql
     SET hive.exec.dynamic.partition.mode=nonstrict;
@@ -272,9 +272,9 @@ Azure SQL 数据库现已准备就绪。
     WHERE year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
 
-    Oozie 变量使用语法 `${variableName}`。 这些变量在 `job.properties` 文件中设置。 Oozie 在运行时替换实际值。
+    Oozie 变量使用语法 `${variableName}`。 这些变量在`job.properties`文件中设置。 Oozie 在运行时替换实际值。
 
-1. 在本地工作站上，创建名为 `hive-create-daily-summary-table.hql`的文件。 使用以下代码作为该文件的内容。
+1. 从本地工作站创建名为 的文件`hive-create-daily-summary-table.hql`。 使用以下代码作为文件的内容。
 
     ```sql
     DROP TABLE ${hiveTableName};
@@ -300,7 +300,7 @@ Azure SQL 数据库现已准备就绪。
 
     此查询创建一个仅将汇总数据存储一天的临时表，请注意 SELECT 语句，该语句按承运商计算每日平均延迟和总飞行距离。 插入到此表的数据存储在已知位置（路径由 hiveDataFolder 变量指示），以便用作下一步骤中 Sqoop 的源。
 
-1. 在本地工作站上，创建名为 `workflow.xml`的文件。 使用以下代码作为该文件的内容。 上述步骤在 Oozie 工作流文件中表示为单独的操作。
+1. 从本地工作站创建名为 的文件`workflow.xml`。 使用以下代码作为文件的内容。 上述步骤在 Oozie 工作流文件中表示为单独的操作。
 
     ```xml
     <workflow-app name="loadflightstable" xmlns="uri:oozie:workflow:0.5">
@@ -378,25 +378,25 @@ Azure SQL 数据库现已准备就绪。
     </workflow-app>
     ```
 
-这两个 Hive 查询按其在 Azure 存储中的路径进行访问，其余变量值由 `job.properties` 文件提供。 此文件将工作流配置为在2017年1月3日运行。
+两个 Hive 查询由其路径在 Azure 存储中访问，其余变量值由`job.properties`文件提供。 此文件将工作流配置为在 2017 年 1 月 3 日运行。
 
 ## <a name="deploy-and-run-the-oozie-workflow"></a>部署和运行 Oozie 工作流
 
-使用 bash 会话中的 SCP 部署 Oozie 工作流（`workflow.xml`）、Hive 查询（`hive-load-flights-partition.hql` 和 `hive-create-daily-summary-table.hql`）和作业配置（`job.properties`）。  在 Oozie 中，仅 `job.properties` 文件可位于头节点的本地存储上。 所有其他文件必须存储在 HDFS 中，在此例中为 Azure 存储。 工作流使用的 Sqoop 操作取决于用于与 SQL 数据库进行通信的 JDBC 驱动程序，必须从头节点将其复制到 HDFS。
+使用 bash 会话中的 SCP 部署 Oozie`workflow.xml`工作流 （）、Hive`hive-load-flights-partition.hql` `hive-create-daily-summary-table.hql`查询 （和 ）`job.properties`和作业配置 （）。  在 Oozie 中，仅 `job.properties` 文件可位于头节点的本地存储上。 所有其他文件必须存储在 HDFS 中，在此例中为 Azure 存储。 工作流使用的 Sqoop 操作取决于用于与 SQL 数据库进行通信的 JDBC 驱动程序，必须从头节点将其复制到 HDFS。
 
-1. 在头节点本地存储的用户路径下创建 `load_flights_by_day` 子文件夹。 在打开的 ssh 会话中，执行以下命令：
+1. 在头节点本地存储的用户路径下创建 `load_flights_by_day` 子文件夹。 从打开的 ssh 会话中，执行以下命令：
 
     ```bash
     mkdir load_flights_by_day
     ```
 
-1. 将当前目录中的所有文件（`workflow.xml` 和 `job.properties` 文件）复制到 `load_flights_by_day` 子文件夹。 在本地工作站上，执行以下命令：
+1. 将当前目录中的所有文件（`workflow.xml` 和 `job.properties` 文件）复制到 `load_flights_by_day` 子文件夹。 从本地工作站执行以下命令：
 
     ```cmd
     scp ./* sshuser@CLUSTERNAME-ssh.azurehdinsight.net:load_flights_by_day
     ```
 
-1. 将工作流文件复制到 HDFS。 在打开的 ssh 会话中，执行以下命令：
+1. 将工作流文件复制到 HDFS。 从打开的 ssh 会话中，执行以下命令：
 
     ```bash
     cd load_flights_by_day
@@ -404,23 +404,23 @@ Azure SQL 数据库现已准备就绪。
     hdfs dfs -put ./* /oozie/load_flights_by_day
     ```
 
-1. 将 `mssql-jdbc-7.0.0.jre8.jar` 从本地头节点复制到 HDFS 中的工作流文件夹。 如果群集包含不同的 jar 文件，则根据需要修改命令。 根据需要修改 `workflow.xml` 以反映不同的 jar 文件。 在打开的 ssh 会话中，执行以下命令：
+1. 从`mssql-jdbc-7.0.0.jre8.jar`本地头节点复制到 HDFS 中的工作流文件夹。 如果群集包含其他 jar 文件，则根据需要修改命令。 根据需要`workflow.xml`进行修订以反映不同的 jar 文件。 从打开的 ssh 会话中，执行以下命令：
 
     ```bash
     hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /oozie/load_flights_by_day
     ```
 
-1. 运行工作流。 在打开的 ssh 会话中，执行以下命令：
+1. 运行工作流。 从打开的 ssh 会话中，执行以下命令：
 
     ```bash
     oozie job -config job.properties -run
     ```
 
-1. 使用 Oozie Web 控制台观察状态。 从 Ambari 内部，依次选择“Oozie”、“快速链接”和“Oozie Web 控制台”。 在“工作流作业”选项卡下，选择“所有作业”。
+1. 使用 Oozie Web 控制台观察状态。 从 Ambari 内部，依次选择“Oozie”、“快速链接”和“Oozie Web 控制台”************。 在“工作流作业”选项卡下，选择“所有作业”********。
 
-    ![hdi oozie web 控制台工作流](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    ![hdi oozie Web 控制台工作流](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
-1. 当状态为 "成功" 时，查询 SQL 数据库表以查看插入的行。 使用 Azure 端口，导航到 SQL 数据库的窗格，选择“工具”，然后打开“查询编辑器”。
+1. 当状态为"成功"时，查询 SQL 数据库表以查看插入的行。 使用 Azure 端口，导航到 SQL 数据库的窗格，选择“工具”，然后打开“查询编辑器”********。
 
         SELECT * FROM dailyflights
 
@@ -505,7 +505,7 @@ Azure SQL 数据库现已准备就绪。
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    协调器负责按照 `frequency` 属性指定的间隔，在 `start` 和 `end` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上述协调器定义中，协调器配置为运行从2017年1月1日到2017年1月5日的操作。 频率设置为一天，由[Oozie Expression Language](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) frequency 表达式 `${coord:days(1)}`。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”。 例如，若要处理2017年1月1日的数据，协调员将使用 2017-01-01T00：00： 00 GMT 的名义时间安排操作。
+    协调器负责按照 `frequency` 属性指定的间隔，在 `start` 和 `end` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上面的协调员定义中，协调员配置为从 2017 年 1 月 1 日至 2017 年 1 月 5 日运行操作。 频率由[Oozie 表达式语言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)频率表达式`${coord:days(1)}`设置为一天。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”**。 例如，要处理 2017 年 1 月 1 日的数据，协调员将安排标称时间为 2017-01-01T00：00：00 GMT 的操作。
 
 * 第 2 点：在工作流的日期范围内，`dataset` 元素指定 HDFS 中查找特定日期范围的数据的位置，并配置 Oozie 如何确定数据是否可进行处理。
 
@@ -516,9 +516,9 @@ Azure SQL 数据库现已准备就绪。
     </dataset>
     ```
 
-    HDFS 中数据的路径根据 `uri-template` 元素中提供的表达式动态生成。 在此协调器中，一天的频率也用于数据集。 协调器元素上的开始和结束日期控制操作的计划时间（并定义它们的名义时间），而数据集上的 `initial-instance` 和 `frequency` 控制构建 `uri-template` 时使用的日期的计算。 在此情况下，在协调器启动前将初始实例设为一天以确保它选取第一天 (1/1/2017) 的数据。 数据集的日期计算从 `initial-instance` （12/31/2016）的值中向前滚动，以数据集频率（一天）为增量向前推进，直到它找到最近的日期，该日期未通过协调器（2017-01-01T00：00：00：00：00：00：00：00：00：00：00：00：00：00：00
+    HDFS 中数据的路径根据 `uri-template` 元素中提供的表达式动态生成。 在此协调器中，一天的频率也用于数据集。 协调器元素上的开始和结束日期控制操作的计划时间（并定义它们的名义时间），而数据集上的 `initial-instance` 和 `frequency` 控制构建 `uri-template` 时使用的日期的计算。 在此情况下，在协调器启动前将初始实例设为一天以确保它选取第一天 (1/1/2017) 的数据。 数据集的日期计算从`initial-instance`（12/31/2016） 的值向前滚动，以数据集频率（一天）的增量前进，直到找到未通过协调器设置的名义时间（第一个操作的 2017-01-01T00：00：00 GMT）的最新日期。
 
-    空 `done-flag` 元素指示当 Oozie 在指定时间检查输入数据是否存在时，Oozie 通过目录或文件的存在情况确定数据是否可用。 在这种情况下，它是 csv 文件的状态。 如果存在 csv 文件，则 Oozie 假设数据已准备就绪并启动工作流实例以处理文件。 如果不存在 csv 文件，Oozie 将假定数据尚未就绪，并且工作流的运行将进入等待状态。
+    空 `done-flag` 元素指示当 Oozie 在指定时间检查输入数据是否存在时，Oozie 通过目录或文件的存在情况确定数据是否可用。 在这种情况下，它是 csv 文件的存在。 如果存在 csv 文件，则 Oozie 假设数据已准备就绪并启动工作流实例以处理文件。 如果没有 csv 文件存在，Oozie 假定数据尚未就绪，并且工作流的运行进入等待状态。
 
 * 第 3 点：`data-in` 元素指定在 `uri-template` 中替换关联数据集的值时，要用作名义时间的特定时间戳。
 
@@ -558,7 +558,7 @@ sqlDatabaseTableName=dailyflights
 
 在此 `job.properties` 文件中引入的新属性为：
 
-| 属性 | 值源 |
+| properties | 值源 |
 | --- | --- |
 | oozie.coord.application.path | 指示 `coordinator.xml` 文件的位置，其中包含要运行的 Oozie 协调器。 |
 | hiveDailyTableNamePrefix | 动态创建临时表表名时使用的前缀。 |
@@ -592,7 +592,7 @@ sqlDatabaseTableName=dailyflights
     oozie job -config job.properties -run
     ```
 
-5. 使用 Oozie Web 控制台验证状态，这一次选择“协调器作业”选项卡，然后选择“全部作业”。
+5. 使用 Oozie Web 控制台验证状态，这一次选择“协调器作业”选项卡，然后选择“全部作业”********。
 
     ![Oozie Web 控制台协调器作业](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
 

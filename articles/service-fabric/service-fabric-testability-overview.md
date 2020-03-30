@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d5c770a4d823ebe9b2700b081c407c54dd1d18a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465568"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>故障分析服务介绍
@@ -83,7 +83,7 @@ Service Fabric 让编写和管理分布式可扩展应用程序的工作变得�
 
 故障分析服务功能位于 Microsoft.ServiceFabric NuGet 包中的 System.Fabric 命名空间中。 要使用故障分析服务功能，请在项目中作为一个引用包含 nuget 程序包。
 
-**PowerShell**
+**电源外壳**
 
 若要使用 PowerShell，必须安装 Service Fabric SDK。 安装 SDK 后，ServiceFabric PowerShell 模块会自动加载以供使用。
 
