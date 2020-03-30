@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 8d1349c096b6a6c9bffef38a8b8b3c7ea6bbd432
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 0be98ac60e11b3e21a864aa4ca18fcac2c7f014c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301805"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053403"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入门：使用人脸 REST API 和 C# 检测图像中的人脸
 
@@ -23,7 +23,7 @@ ms.locfileid: "78301805"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 人脸订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸服务并获取密钥。
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。
@@ -77,11 +77,6 @@ namespace DetectFace
 ```csharp
         static void Main(string[] args)
         {
-
-            // Explicitly set TLS 1.2.
-            ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol |
-                SecurityProtocolType.Tls12;
-
             // Get the path and filename to process from the user.
             Console.WriteLine("Detect faces:");
             Console.Write(

@@ -1,17 +1,17 @@
 ---
 title: 客户端和服务器 SDK 版本控制
-description: 客户端 Sdk 列表，以及移动服务与 Azure 移动应用的服务器 SDK 版本兼容性。
+description: 客户端 SDK 以及与移动服务和 Azure 移动应用的服务器 SDK 版本兼容性的列表。
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: f24ae0a48b835785a2e000210f3609b82d42d0f6
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: a9ba442c00ec2498139ee34a1ff7497c98f17ede
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461549"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293485"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>移动应用和移动服务中的客户端与服务器版本控制
 
@@ -27,11 +27,11 @@ Azure 移动服务的最新版本是 Azure 应用服务的**移动应用**功能
 
 例如：
 
-GET https://service.azurewebsites.net/tables/TodoItem
+`GET https://service.azurewebsites.net/tables/TodoItem`
 
 HEADERS: ZUMO-API-VERSION: 2.0.0
 
-POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
+`POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0`
 
 ## <a name="opting-out-of-version-checking"></a>选择不进行版本检查
 可以将应用设置 **MS_SkipVersionCheck** 的值设置为 **true**，选择不进行版本检查。 在 web.config 中或在 Azure 门户的“应用程序设置”部分中可以指定此设置。
@@ -39,8 +39,8 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 > [!NOTE]
 > 移动服务和移动应用之间有许多行为发生了变化，尤其是在脱机同步、身份验证和推送通知方面。 应该在完成测试之后才选择不要进行版本检查，确保这些行为的更改不会影响应用功能。
 
-## <a name="2.0.0"></a>Azure 移动应用客户端和服务器
-### <a name="MobileAppsClients"></a>移动*应用*客户端 SDK
+## <a name="azure-mobile-apps-client-and-server"></a><a name="2.0.0"></a>Azure 移动应用客户端和服务器
+### <a name="mobile-apps-client-sdks"></a><a name="MobileAppsClients"></a>*移动应用*客户端 SDK
 版本检查从 **Azure 移动应用**以下版本的客户端 SDK 开始引入：
 
 | 客户端平台 | 版本 | 版本标头值 |
@@ -55,7 +55,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 | 服务器平台 | SDK 中 IsInRole 中的声明 | 接受的版本标头 |
 | --- | --- | --- |
 | .NET |[Microsoft.Azure.Mobile.Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
-| Node.js |[azure-mobile-apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
+| Node.js |[azure-移动应用）](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
 
 ### <a name="behavior-of-mobile-apps-backends"></a>移动应用后端的行为
 | ZUMO-API-VERSION | MS_SkipVersionCheck 的值 | 响应 |

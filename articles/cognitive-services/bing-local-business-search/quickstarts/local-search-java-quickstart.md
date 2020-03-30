@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: 8ff70bea8d0e4810b6d5a0d35853077ed0a630cd
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74665179"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>快速入门：使用 Java 将查询发送到必应当地企业搜索 API
@@ -23,7 +23,7 @@ ms.locfileid: "74665179"
 
 此示例应用程序从 API 获取搜索查询 `hotel in Bellevue` 的本地响应数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
@@ -54,7 +54,7 @@ ms.locfileid: "74665179"
 必应当地企业搜索 API 从必应搜索引擎返回结果。
 1. 下载或安装 gson 库。
 2. 在最喜爱的 IDE 或编辑器中新建一个 Java 项目。
-3. 添加下方提供的代码。
+3. 添加以下提供的代码。
 4. 使用对订阅有效的访问密钥替换 subscriptionKey 值。
 5. 运行该程序。
 

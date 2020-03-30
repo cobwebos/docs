@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: c4d136eaf0f6c4ac64093f417f144e422e2da52f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74977907"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>快速入门：使用人脸 REST API 和 Python 检测图像中的人脸
@@ -26,7 +26,7 @@ ms.locfileid: "74977907"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 人脸 API 订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
 
@@ -45,7 +45,7 @@ ms.locfileid: "74977907"
     1. 将 `subscription_key` 的值替换为你的订阅密钥。
     1. 编辑 `face_api_url` 的值，以包含人脸 API 资源的终结点 URL。
     1. （可选）将 `image_url` 的值替换为要分析的其他图像的 URL。
-1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`detect-face.py`。
+1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`detect-face.py` 。
 1. 打开命令提示符窗口。
 1. 在提示符处，使用 `python` 命令运行示例。 例如，`python detect-face.py` 。
 

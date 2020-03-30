@@ -1,5 +1,5 @@
 ---
-title: 使我保持登录 Azure Active Directory B2C
+title: 在 Azure Active Directory B2C 中使我保持登录状态
 description: 了解如何在 Azure Active Directory B2C 中设置“使我保持登录状态 (KMSI)”。
 services: active-directory-b2c
 author: msmimart
@@ -7,25 +7,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a27487fa69888b02883c3d9a2151887f41afc45
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a0de94cdce1d7f0e9da9d2844b300956ad6f6970
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189372"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330841"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中启用“使我保持登录状态 (KMSI)”
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-对于在 Azure Active Directory B2C （Azure AD B2C）目录中具有本地帐户的 web 和本机应用程序的用户，可以启用 "使我保持登录（KMSI）" 功能。 此功能为返回到应用程序的用户授予访问权限，而不会提示用户重新输入其用户名和密码。 当用户注销时，会撤销此访问权限。
+你可以为在 Azure Active Directory B2C (Azure AD B2C) 目录中拥有本地帐户的 Web 和本机应用程序的用户启用“使我保持登录状态 (KMSI)”功能。 此功能会向返回到应用程序的用户授予访问权限，而不会提示他们重新输入用户名和密码。 当用户注销时，会撤销此访问权限。
 
 用户不应在公用计算机上启用此选项。
 
-![显示 "使我保持登录状态" 复选框的示例注册登录页](./media/custom-policy-keep-me-signed-in/kmsi.PNG)
+![显示“使我保持登录状态”复选框的示例注册登录页](./media/custom-policy-keep-me-signed-in/kmsi.PNG)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,13 +34,13 @@ ms.locfileid: "78189372"
 
 ## <a name="configure-the-page-identifier"></a>配置页面标识符
 
-若要启用 KMSI，请将内容定义 `DataUri` 元素设置为[页标识符](contentdefinitions.md#datauri)`unifiedssp` 和[页版本](page-layout.md) *1.1.0*或更高版本。
+要启用 KMSI，将内容定义`DataUri`元素设置为[页面标识符](contentdefinitions.md#datauri)`unifiedssp`和[页面版本](page-layout.md) *1.1.0*或以上。
 
-1. 打开策略的扩展文件。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>  。 此扩展文件是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取[自定义策略入门](custom-policy-get-started.md)。
-1. 搜索 BuildingBlocks 元素。 如果该元素不存在，请添加该元素。
-1. 将**ContentDefinitions**元素添加到策略的**BuildingBlocks**元素中。
+1. 打开策略的扩展文件。 例如， <em> `SocialAndLocalAccounts/` </em>. 此扩展文件是自定义策略初学者包中包含的策略文件之一，您应该在先决条件中获取，[从自定义策略开始](custom-policy-get-started.md)。
+1. 搜索 BuildingBlocks**** 元素。 如果该元素不存在，请添加该元素。
+1. 将**内容定义**元素添加到策略的**构建块**元素。
 
-    自定义策略应类似于以下代码片段：
+    自定义策略应类似于以下代码段：
 
     ```xml
     <BuildingBlocks>
@@ -52,16 +52,34 @@ ms.locfileid: "78189372"
     </BuildingBlocks>
     ```
 
+## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>将元数据添加到自断言技术配置文件
+
+要将 KMSI 复选框添加到注册和登录页面，请将`setting.enableRememberMe`元数据设置为 false。 覆盖扩展文件中的自断言-本地帐户Signin-电子邮件技术配置文件。
+
+1. 找到 ClaimsProviders 元素。 如果该元素不存在，请添加该元素。
+1. 将以下声明提供程序添加到声明提供程序元素：
+
+```XML
+<ClaimsProvider>
+  <DisplayName>Local Account</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+      <Metadata>
+        <Item Key="setting.enableRememberMe">True</Item>
+      </Metadata>
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
+
 1. 保存扩展文件。
 
-
-
-## <a name="configure-a-relying-party-file"></a>配置信赖方文件
+## <a name="configure-a-relying-party-file"></a>配置依赖方文件
 
 更新用于启动创建的用户旅程的信赖方 (RP) 文件。
 
-1. 打开自定义策略文件。 例如，SignUpOrSignin.xml。
-1. 如果它尚不存在，请将 `<UserJourneyBehaviors>` 子节点添加到 `<RelyingParty>` 节点。 它必须立即位于 `<DefaultUserJourney ReferenceId="User journey Id" />`之后，例如： `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`。
+1. 打开自定义策略文件。 例如，SignUpOrSignin.xml**。
+1. 如果不存在，请向`<UserJourneyBehaviors>``<RelyingParty>`节点添加子节点。 它必须立即位于`<DefaultUserJourney ReferenceId="User journey Id" />`之后，例如： `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`。
 1. 将以下节点添加为 `<UserJourneyBehaviors>` 元素的子级。
 
     ```XML
@@ -72,15 +90,15 @@ ms.locfileid: "78189372"
     </UserJourneyBehaviors>
     ```
 
-    - **Ssosession** -指示会话在 `SessionExpiryInSeconds` 和 `KeepAliveInDays`中指定的时间的扩展方式。 "`Rolling` 值" （默认值）指示每次用户执行身份验证时会话都将扩展。 `Absolute` 值指示用户在指定的时间段后被迫重新进行身份验证。
+    - **会话过期类型**- 指示如何在 和`SessionExpiryInSeconds``KeepAliveInDays`中指定的时间延长会话。 该`Rolling`值（默认值）表示每次用户执行身份验证时都会扩展会话。 该`Absolute`值指示用户在指定的时间段后强制重新进行身份验证。
 
-    - **SessionExpiryInSeconds** -未启用 "*使我保持登录*状态" 时会话 cookie 的生存期，或用户未选择 "*使我保持登录*状态"。 会话在 `SessionExpiryInSeconds` 过去之后过期，或浏览器已关闭。
+    - **会话过期时间**-*保持登录*时会话 Cookie 的生存期未启用，或者如果用户未选择*保持我登录*。 会话在通过后`SessionExpiryInSeconds`过期，或者浏览器关闭。
 
-    - **KeepAliveInDays** -启用 "*使我保持登录*状态" 时会话 cookie 的生存期，用户选择 "*使我保持登录*状态"。  `KeepAliveInDays` 的值优先于 `SessionExpiryInSeconds` 值，并指示会话到期时间。 如果用户关闭浏览器并稍后重新打开它，则只要它在 KeepAliveInDays 时间段内，它们仍可无提示登录。
+    - **保持AliveInDays** -*保持登录*时会话 Cookie 的生存期已启用，用户选择*保持我登录*。  的值`KeepAliveInDays`优先于`SessionExpiryInSeconds`值，并指示会话到期时间。 如果用户关闭浏览器并在以后重新打开浏览器，则只要浏览器处于"保持 AliveInDays"时间段内，他们仍然可以静默登录。
 
     有关详细信息，请参阅[用户旅程行为](relyingparty.md#userjourneybehaviors)。
 
-建议将 SessionExpiryInSeconds 的值设置为短时间（1200秒），而 KeepAliveInDays 的值可以设置为相对较长的时间（30天），如下面的示例中所示：
+我们建议您将 Session 过期的"秒"值设置为短时间（1200 秒），而 KeepAliveInDays 的值可以设置为相对长的周期（30 天），如以下示例所示：
 
 ```XML
 <RelyingParty>
@@ -107,7 +125,15 @@ ms.locfileid: "78189372"
 </RelyingParty>
 ```
 
-4. 保存更改，然后上传文件。
-5. 若要测试所上传的自定义策略，请在 Azure 门户中转到策略页，并选择“立即运行”。
+## <a name="test-your-policy"></a>测试策略
 
-可在[此处](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in)找到示例策略。
+1. 保存更改，然后上传文件。
+1. 要测试您上传的自定义策略，请在 Azure 门户中转到策略页，然后选择 **"立即运行**"。
+1. 键入您的**用户名和密码**，**password**选择 **"保持我登录**"，然后单击 **"登录**"。
+1. 返回到 Azure 门户。 转到策略页，然后选择 **"复制"** 以复制登录 URL。
+1. 在浏览器地址栏中，删除`&prompt=login`查询字符串参数，该参数强制用户在该请求上输入其凭据。
+1. 在浏览器中，单击"**转到**"。 现在，Azure AD B2C 将发出访问令牌，而不会提示您再次登录。 
+
+## <a name="next-steps"></a>后续步骤
+
+[在此处](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in)查找示例策略。

@@ -15,24 +15,24 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
 ms.openlocfilehash: 46fad0dd2e39f1f563ed248458da622ad83f061e
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78161110"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的大小
 
 本文介绍可用于运行 Linux 应用和工作负荷的 Azure 虚拟机的可用大小与选项。 此外，还提供了你在计划使用这些资源时要考虑的部署注意事项。 本文也适用于 [Windows 虚拟机](../windows/sizes.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)。
 
-| 类型 | 大小 | 说明 |
+| 类型 | 大小 | 描述 |
 |------|-------|-------------|
-| [常规用途](../sizes-general.md)   | B、Dsv3、Dv3、Dasv4、Dav4、DSv2、Dv2、Av2、DC、DCv2  | CPU 与内存之比平衡。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 |
+| [一般用途](../sizes-general.md)   | B， Dsv3， Dv3， Dasv4， 达夫4， DSv2， Dv2， Av2， DC， DCv2  | CPU 与内存之比平衡。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 |
 | [计算优化](../sizes-compute.md) | Fsv2 | 高 CPU 与内存之比。 适用于中等流量的 Web 服务器、网络设备、批处理和应用程序服务器。 |
-| [内存优化](../sizes-memory.md) | Esv3、Ev3、Easv4、Eav4、Mv2、M、DSv2、Dv2 | 高内存与 CPU 之比。 适用于关系数据库服务器、中到大型规模的缓存和内存中分析。                 |
+| [内存优化](../sizes-memory.md) | Esv3， Ev3， Easv4， Eav4， Mv2， M， DSv2， Dv2 | 高内存与 CPU 之比。 适用于关系数据库服务器、中到大型规模的缓存和内存中分析。                 |
 | [存储优化](../sizes-storage.md) | Lsv2 | 较高的磁盘吞吐量和 IO，是大数据、SQL、NoSQL 数据库、数据仓库和大型事务数据库的理想之选。  |
-| [GPU](../sizes-gpu.md) | NC、NCv2、NCv3、ND、NDv2 （预览版）、NV、NVv3、NVv4 | 针对大量图形绘制和视频编辑的专用虚拟机，以及带有深度学习功能的模型定型和推断 (ND)。 可选择单个或多个 GPU。 |
-| [高性能计算](../sizes-hpc.md) | HB-ACCT-WC、HBv2、HC、H | 速度最快、功能最强大的 CPU 虚拟机具有可选的高吞吐量网络接口 (RDMA)。 |
+| [GPU](../sizes-gpu.md) | NC、 NCv2、 NCv3、 ND、 NDv2 （预览）、 NV、 NVv3、 NVv4 | 针对大量图形绘制和视频编辑的专用虚拟机，以及带有深度学习功能的模型定型和推断 (ND)。 可选择单个或多个 GPU。 |
+| [高性能计算](../sizes-hpc.md) | HB， HBv2， HC， H | 速度最快、功能最强大的 CPU 虚拟机具有可选的高吞吐量网络接口 (RDMA)。 |
 
 - 有关不同大小的定价信息，请参阅[虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)。 
 - 有关各 Azure 区域中推出的 VM 大小，请查看[可用产品(按区域)](https://azure.microsoft.com/regions/services/)。
@@ -59,7 +59,7 @@ ms.locfileid: "78161110"
 
 了解关于可用的各种 VM 大小的详细信息：
 
-- [常规用途](../sizes-general.md)
+- [一般用途](../sizes-general.md)
 - [计算优化](../sizes-compute.md)
 - [内存优化](../sizes-memory.md)
 - [存储优化](../sizes-storage.md)

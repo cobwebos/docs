@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943135"
 ---
 # <a name="tutorial-single-page-web-app"></a>教程：单页 Web 应用
@@ -56,7 +56,7 @@ ms.locfileid: "78943135"
 > [!NOTE]
 > 本教程大致类似于[单页必应 Web 搜索应用教程](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)，但只涉及实体搜索结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要继续学习本教程，需要必应搜索 API 和必应地图 API 的订阅密钥。 如果没有这些密钥，可以使用[试用密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)和[基本必应地图密钥](https://www.microsoft.com/maps/create-a-bing-maps-key)。
 
@@ -90,7 +90,7 @@ HTML 还包含部门（HTML `<div>` 标记），其中显示搜索结果。
 
 为了避免必须将必应搜索和必应地图 API 订阅密钥包含在代码中这种情形，请使用浏览器的持久性存储来存储它们。 如果任何一种密钥尚未存储，我们会提示你进行存储，以备后用。 如果该密钥随后被 API 拒绝，我们会使已存储的密钥失效，并会在用户下次进行搜索时要求其提供密钥。
 
-我们定义使用 `localStorage` 对象（如果浏览器支持它）或 Cookie 的 `storeValue` 和 `retrieveValue` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+我们定义使用 `storeValue` 对象（如果浏览器支持它）或 Cookie 的 `retrieveValue` 和 `localStorage` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
 ```javascript
 // cookie names for data we store
@@ -124,7 +124,7 @@ function getSearchSubscriptionKey() {
 }
 ```
 
-在页面完成加载后，HTML `<body>` 标记包括名为 `getSearchSubscriptionKey()` 和 `getMapsSubscriptionKey()` 的 `onload` 属性。 这些调用的作用是在用户未输入其密钥的情况下立即提示用户输入密钥。
+在页面完成加载后，HTML `<body>` 标记包括名为 `onload` 和 `getSearchSubscriptionKey()` 的 `getMapsSubscriptionKey()` 属性。 这些调用的作用是在用户未输入其密钥的情况下立即提示用户输入密钥。
 
 ```html
 <body onload="document.forms.bing.query.focus(); getSearchSubscriptionKey(); getMapsSubscriptionKey();">

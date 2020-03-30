@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: a9519be591581fa434825f1a1fb31749788a21a8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78395721"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e51f6ad25ca81431eab0561926b6bf065abaa508
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6bd8c472aa659bec31440292e20328865b1cb531
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75383769"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79134521"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>什么是必应图像搜索 API？
 
@@ -33,7 +33,7 @@ ms.locfileid: "75383769"
 | [筛选和限制图像结果](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)                       | 通过编辑查询参数筛选必应返回的图像。                                                                                                       |
 | [缩略图的裁剪、重设大小和显示](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/resize-and-crop-thumbnails)                                                | 编辑和显示必应图像搜索返回的图像的缩略图预览。                                                                                      |
 | [用户搜索查询的分段和扩展](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)               | 通过包括和显示必应建议的查询搜索词，扩展搜索功能。                                                                    |
-| [获取热门图像](https://review.docs.microsoft.com/azure/cognitive-services/bing-image-search/trending-images)                                                                     | 自定义一个搜罗全世界热门图像的搜索。                                                                                                          |
+| [获取热门图像](trending-images.md)                                                                     | 自定义一个搜罗全世界热门图像的搜索。                                                                                                          |
 
 ## <a name="workflow"></a>工作流
 

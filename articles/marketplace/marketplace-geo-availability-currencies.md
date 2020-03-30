@@ -1,23 +1,22 @@
 ---
-title: 地理可用性和货币支持 |Microsoft
-description: Azure Marketplace 和 AppSource 中的地理可用性
-services: Azure, Marketplace, Compute, Storage, Networking
+title: 地理可用性和货币支持 |蔚蓝
+description: Azure 应用商店和应用程序源中的地理可用性
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/29/2020
-ms.author: ellacroi
-ms.openlocfilehash: f2369388f00f6a023ac77865ab8e3540bc35de70
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.author: dsindona
+ms.openlocfilehash: 79965180d897b91afc1fb1a27e777e385108d2c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905666"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288421"
 ---
 # <a name="geographic-availability-and-currency-support"></a>地理可用性和货币支持
 
-Azure Marketplace 和 AppSource 产品/服务可在141地理位置（由客户的帐单地址定义）购买，并可使用17个币种完成交易。 下表列出了每个受支持的地理位置、其[ISO 3166 2 位字母代码](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)和分配的货币。
+Azure 应用商店和 AppSource 产品可以在客户帐单地址定义的 141 个地理位置购买，并且事务可以以 17 种货币完成。 下表列出了每个支持的地理位置[、ISO 3166 两位数字 alpha 代码](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)和分配的货币。
 
 |   国家/地区名称               |   ISO-2   |   货币   |
 |-------------------------------------|-----------|--------------|
@@ -37,7 +36,7 @@ Azure Marketplace 和 AppSource 产品/服务可在141地理位置（由客户�
 | 白俄罗斯                             | BY        | USD          |
 | 比利时                             | BE        | EUR          |
 | 伯利兹                              | BZ        | USD          |
-| 百慕大群岛                             | BM.EXE        | USD          |
+| 百慕大群岛                             | BM        | USD          |
 | 玻利维亚                             | BO        | USD          |
 | 波斯尼亚和黑塞哥维那              | BA        | USD          |
 | 博茨瓦纳                            | BW        | USD          |
@@ -45,16 +44,16 @@ Azure Marketplace 和 AppSource 产品/服务可在141地理位置（由客户�
 | 文莱                              | BN        | USD          |
 | 保加利亚                            | BG        | EUR          |
 | 喀麦隆                            | CM        | USD          |
-| 加拿大                              | CA        | CAD          |
+| Canada                              | CA        | CAD          |
 | 佛得角                          | CV        | USD          |
 | 开曼群岛                      | KY        | USD          |
 | 智利                               | CL        | USD          |
-| 中国\**                            | CN        | N/A          |
+| 中国\**                            | CN        | 空值          |
 | 哥伦比亚                            | CO        | USD          |
 | 哥斯达黎加                          | CR        | USD          |
 | 科特迪瓦                       | CI        | USD          |
 | 克罗地亚                             | HR        | EUR          |
-| 库拉索岛                             | CW        | USD          |
+| 库拉索岛                             | 连续        | USD          |
 | 塞浦路斯                              | CY        | EUR          |
 | 捷克共和国                      | CZ        | EUR          |
 | 丹麦                             | DK        | DKK          |
@@ -69,7 +68,7 @@ Azure Marketplace 和 AppSource 产品/服务可在141地理位置（由客户�
 | 芬兰                             | FI        | EUR          |
 | 法国                              | FR        | EUR          |
 | 格鲁吉亚                             | GE        | USD          |
-| 德国                             | 德国        | EUR          |
+| 德国                             | DE        | EUR          |
 | 加纳                               | GH        | USD          |
 | 希腊                              | GR        | EUR          |
 | 危地马拉                           | GT        | USD          |
@@ -88,7 +87,7 @@ Azure Marketplace 和 AppSource 产品/服务可在141地理位置（由客户�
 | 约旦                              | JO        | USD          |
 | 哈萨克斯坦                          | KZ        | USD          |
 | 肯尼亚                               | KE        | USD          |
-| 韩国（南部）                       | KR        | KRW          |
+| 韩国（韩国）                       | KR        | KRW          |
 | 科威特                              | KW        | USD          |
 | 吉尔吉斯斯坦                          | KG        | USD          |
 | 拉脱维亚                              | LV        | EUR          |
@@ -108,7 +107,7 @@ Azure Marketplace 和 AppSource 产品/服务可在141地理位置（由客户�
 | 蒙古                            | MN        | USD          |
 | 黑山                          | ME        | USD          |
 | 摩洛哥                             | MA        | USD          |
-| 纳米比亚                             | 不可用        | USD          |
+| 纳米比亚                             | NA        | USD          |
 | 尼泊尔                               | NP        | USD          |
 | 荷兰                         | NL        | EUR          |
 | 尼加拉瓜                           | NI        | USD          |
@@ -141,21 +140,21 @@ Azure Marketplace 和 AppSource 产品/服务可在141地理位置（由客户�
 | 斯里兰卡                           | LK        | USD          |
 | 瑞典                              | SE        | SEK          |
 | 瑞士                         | CH        | CHF          |
-| 台湾                              | TW        | TWD          |
+| 中国台湾                              | TW        | TWD          |
 | 塔吉克斯坦                          | TJ        | USD          |
 | 坦桑尼亚                            | TZ        | USD          |
 | 泰国                            | TH        | USD          |
 | 特立尼达和多巴哥                 | TT        | USD          |
 | 突尼斯                             | TN        | USD          |
 | 土耳其                              | TR        | USD          |
-| 土库曼斯坦                        | 费        | USD          |
-| 梵蒂冈城国（圣见）             | VA        | EUR          |
+| 土库曼斯坦                        | TM        | USD          |
+| 梵蒂冈城（罗马教廷）             | VA        | EUR          |
 | 美属维尔京群岛 | VI        | USD          |
 | 乌干达                              | UG        | USD          |
 | 乌克兰                             | UA        | USD          |
 | 阿拉伯联合酋长国                | AE        | USD          |
-| 英国                      | GB        | GBP          |
-| 美国                       | 美国        | USD          |
+| United Kingdom                      | GB        | GBP          |
+| United States                       | 美国        | USD          |
 | 乌拉圭                             | UY        | USD          |
 | 乌兹别克斯坦                          | UZ        | USD          |
 | 委内瑞拉                           | VE        | USD          |
@@ -165,6 +164,6 @@ Azure Marketplace 和 AppSource 产品/服务可在141地理位置（由客户�
 | 津巴布韦                            | ZW        | USD          |
 |   |   |   |
 
-对于巴西的客户 \*，通过云解决方案提供商（CSP）提供的 Marketplace 使用 USD。
+\*对于巴西的客户，通过云解决方案提供商 （CSP） 的应用商店使用 USD。
 
-仅 \** 免费和 BYOL VM 映像。
+\** 仅限免费和 BYOL VM 映像。

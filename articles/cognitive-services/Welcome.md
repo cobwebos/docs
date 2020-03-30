@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
 ms.openlocfilehash: 332f33bb4046a9ca9d6abf9bec75f60bb4ca9e32
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169096"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？

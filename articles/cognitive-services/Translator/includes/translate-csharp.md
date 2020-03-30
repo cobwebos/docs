@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 64a934196bb964561f36b9d95a2467b149847225
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906718"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
@@ -212,7 +212,7 @@ foreach (TranslationResult o in deserializedOutput)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是在 `Main` 函数中调用 `TranslateTextRequest()`。 在此示例中，我们将翻译为德语 (`de`)、意大利语 (`it`)、日语 (`ja`) 和泰语 (`th`)。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
+最后一步是在 `TranslateTextRequest()` 函数中调用 `Main`。 在此示例中，我们将翻译为德语 (`de`)、意大利语 (`it`)、日语 (`ja`) 和泰语 (`th`)。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
 
 ```csharp
 static async Task Main(string[] args)

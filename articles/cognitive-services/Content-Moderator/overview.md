@@ -10,14 +10,16 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: c1ff74bc358f167612b2bfe05ca47e21203d8702
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 570d55c8523e1c1deca3242a8841b0cc34322786
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973486"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053877"
 ---
 # <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure 内容审查器是一项认知服务，用于检查文本、图像和视频中是否存在可能的冒犯性内容、有风险内容或其他令人不适的内容。 找到此类内容时，此服务会将相应的标签（标记）应用到该内容。 然后，应用会处理标记的内容，使之符合法规的要求，或者为用户维持一个理想的环境。 请参阅[审查 API](#moderation-apis) 部分，详细了解不同内容标记表示的意思。
 

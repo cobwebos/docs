@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: diberry
 ms.openlocfilehash: 53e6382cf8d046b2c9818b906890bc64642fd2ed
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77371669"
 ---
 使用适用于 .NET 的语言理解 (LUIS) 创作客户端库可以：
@@ -190,7 +190,7 @@ LUIS 应用模型中的主要对象是意向。 意向与用户言语意向的�
 
 必须知道，实体不会使用意向进行标记。 它们可以并且通常应用到多个意向。 只会为特定的单个意向标记示例用户言语。
 
-实体的创建方法属于 [Model](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet) 类的一部分。 每个实体类型有自身的数据转换对象 (DTO) 模型，该模型通常在 [Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models?view=azure-dotnet) 命名空间中包含单词 `model`。
+实体的创建方法属于 [Model](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet) 类的一部分。 每个实体类型有自身的数据转换对象 (DTO) 模型，该模型通常在 `model`Models[ 命名空间中包含单词 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models?view=azure-dotnet)。
 
 [!code-csharp[Create entities](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringAddEntities)]
 

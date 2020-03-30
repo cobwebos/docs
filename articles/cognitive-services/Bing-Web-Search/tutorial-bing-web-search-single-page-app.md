@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943878"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教程：使用必应 Web 搜索 API 创建单页应用
@@ -32,7 +32,7 @@ ms.locfileid: "78943878"
 
 要使用此应用，需具备带必应搜索 API 的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)获取订阅密钥。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需具备以下几项才可运行应用：
 
@@ -66,7 +66,7 @@ npm install
 
 ## <a name="html-form"></a>HTML 表单
 
-`index.html` 包含一个让用户能够搜索和选择搜素选项的表单。 提交表单时会触发 `onsubmit` 属性，从而调用在 `scripts.js` 中定义的 `bingWebSearch()` 方法。 该脚本使用了三个参数：
+`index.html` 包含一个让用户能够搜索和选择搜素选项的表单。 提交表单时会触发 `onsubmit` 属性，从而调用在 `bingWebSearch()` 中定义的 `scripts.js` 方法。 该脚本使用了三个参数：
 
 * 搜索查询
 * 所选选项
@@ -129,7 +129,7 @@ function bingSearchOptions(form) {
 
 可将 `SafeSearch` 设置为 `strict`、`moderate` 或 `off`，其中 `moderate` 是必应 Web 搜索的默认值。 此表单使用一个复选框，它有两种状态：`strict` 或 `moderate`。
 
-如果选择任一“提升”复选框，则向查询添加 `answerCount` 参数  。 使用 `promote` 参数时，`answerCount` 是必需的。 在此片段中，将值设置为 `9`，以返回所有可用的结果类型。
+如果选择任一“提升”复选框，则向查询添加  **参数**`answerCount`。 使用 `answerCount` 参数时，`promote` 是必需的。 在此片段中，将值设置为 `9`，以返回所有可用的结果类型。
 > [!NOTE]
 > 提升结果类型后，该类型不一定会包含在搜索结果中  。 不过，提升可以提高此类结果的排名（相对于其通常的排名而言）。 若要将搜索限制为特定类型的结果，请使用 `responseFilter` 查询参数，或者调用更具体的终结点，例如必应图像搜索或必应新闻搜索。
 
@@ -331,7 +331,7 @@ function renderSearchResults(results) {
 }
 ```
 
-`renderResultsItems()` 函数会循环访问每个 `RankingResponse` 集合中的项目，使用 `answerType` 和 `resultIndex` 字值将每个排名结果映射到一个搜索结果，并调用相应的呈现函数来生成 HTML。 如果未向项目指定 `resultIndex`，则 `renderResultsItems()` 会循环访问该类型的所有结果，并为每个项目调用呈现函数。 生成的 HTML 将插入到 `index.html` 中相应的 `<div>` 元素中。
+`renderResultsItems()` 函数会循环访问每个 `RankingResponse` 集合中的项目，使用 `answerType` 和 `resultIndex` 字值将每个排名结果映射到一个搜索结果，并调用相应的呈现函数来生成 HTML。 如果未向项目指定 `resultIndex`，则 `renderResultsItems()` 会循环访问该类型的所有结果，并为每个项目调用呈现函数。 生成的 HTML 将插入到 `<div>` 中相应的 `index.html` 元素中。
 
 ```javascript
 // Render search results from the RankingResponse object per rank response and

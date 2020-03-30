@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: dapine
 ms.openlocfilehash: 2f029725ff53c6bf01481f7a188e070cf84550c9
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79082468"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
@@ -31,7 +31,7 @@ ms.locfileid: "79082468"
 
 1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“区域标识符”（例如，对于免费试用版订阅，为 `westus`）。 
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的**区域**中的“区域标识符”（例如，对于免费试用版订阅，为 [）。](https://aka.ms/speech/sdkregion)`westus`
 
 1. 将 `whatstheweatherlike.wav` 字符串替换为你自己的文件名。
 

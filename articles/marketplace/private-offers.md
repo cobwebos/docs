@@ -1,20 +1,18 @@
 ---
-title: 专用产品/服务 |Azure Marketplace
+title: 私人优惠 |Azure 应用商店
 description: Azure 市场中面向应用和服务发布者的专用套餐。
-services: Azure, Marketplace, Compute
 author: qianw211
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/1/2018
-ms.author: pabutler
-ms.openlocfilehash: 16903d4f9b1bad8a588b1a234ac84bc9c0150c4a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 67aba077304117ad357d4e004ce7bdb25ac58352
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827842"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285038"
 ---
 # <a name="private-offers"></a>专用产品/服务
 
@@ -24,9 +22,9 @@ ms.locfileid: "73827842"
 
 有越来越多的企业客户正在使用网上市场查找、试用和购买云解决方案。 借助专用套餐，发布者可以使用市场以私密方式与目标客户共享自定义的解决方案，为企业提供以下功能：
 
-- 议价：让发布者进一步开放公开销售套餐的折扣和还价。
-- 专属条款和条件：让发布者针对特定的客户定制条款和条件。
-- 专业配置：让发布者根据单个客户的需求定制其虚拟机、Azure 应用程序和 SaaS 应用套餐。 在向所有客户全面推出新产品之前，此选项还可让发布者提供产品功能的预览访问。
+- 议价：让发布者进一步开放公开销售套餐的折扣和还价。**
+- 专属条款和条件：让发布者针对特定的客户定制条款和条件。**
+- 专业配置：让发布者根据单个客户的需求定制其虚拟机、Azure 应用程序和 SaaS 应用套餐。** 在向所有客户全面推出新产品之前，此选项还可让发布者提供产品功能的预览访问。
 
 专用套餐使发布者能够利用公开市场的规模和全球可用性，使用所需的控制机制灵活协商和提供自定义的交易方式与配置。 这些功能共同开启了一扇大门，让企业自信地采用云市场。  现在，企业可根据自己的预期与需求采购和销售解决方案。
 
@@ -34,9 +32,9 @@ ms.locfileid: "73827842"
 
 ## <a name="creating-private-offers-using-skus-and-plans"></a>使用 SKU 和计划创建专用套餐
 
-对于包含公共 SKU 或计划的新套餐或现有套餐，发布者可以通过创建新的 SKU 或计划轻松创建新的专用变体，并将其标记为专用。  [专用 SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) 和计划是套餐的组成部分，只能由目标客户看到和购买。 专用 SKU 和计划可以重复使用已为公共 SKU 或计划发布的基本映像和/或套餐元数据。 此选项可让发布者创建公共套餐的多个专用变体，而无需发布相同基本映像和套餐元数据的多个版本。 仅适用于虚拟机和 Azure 应用程序，当私有 SKU 与公共 SKU 共享基本映像时，对产品/服务基本映像所做的任何更改都将使用该基本映像传播到所有公共和私有 Sku。
+对于包含公共 SKU 或计划的新套餐或现有套餐，发布者可以通过创建新的 SKU 或计划轻松创建新的专用变体，并将其标记为专用。**  [专用 SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) 和计划是套餐的组成部分，只能由目标客户看到和购买。 专用 SKU 和计划可以重复使用已为公共 SKU 或计划发布的基本映像和/或套餐元数据。 此选项可让发布者创建公共套餐的多个专用变体，而无需发布相同基本映像和套餐元数据的多个版本。 对于虚拟机和 Azure 应用程序，仅当专用 SKU 与公共 SKU 共享基本映像时，对产品/服务基本映像的任何更改都将使用该基本映像在所有公共和私有 SKU 中传播。
 
-对于仅包含专用 SKU 或计划的新套餐，发布者可与往常一样创建套餐，然后将 SKU 或计划标记为专用。 与套餐不关联的客户无法通过 [Azure 市场](https://azuremarketplace.microsoft.com)或 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)发现或访问仅包含专用 SKU 或计划的套餐。
+对于仅包含专用 SKU 或计划的新套餐，发布者可与往常一样创建套餐，然后将 SKU 或计划标记为专用。** 与套餐不关联的客户无法通过 [Azure 市场](https://azuremarketplace.microsoft.com)或 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)发现或访问仅包含专用 SKU 或计划的套餐。
 
 ## <a name="targeting-customers-with-private-offers"></a>确定专用套餐的目标客户
 对于新的和现有的专用套餐，发布者可以使用订阅标识符来确定目标客户。 使用虚拟机或 Azure 应用程序套餐的发布者可将专用 SKU 的可用性限制为单个 Azure 订阅 ID，或上传最多包含 20,000 个 Azure 订阅 ID 的 CSV。 使用 SaaS 应用专用套餐时，发布者可以关联 Azure 订阅 ID 或租户 ID，以通过手动方法或 CSV 上传方法来限制专用计划的可用性。
@@ -49,11 +47,11 @@ ms.locfileid: "73827842"
 
 ![[专用套餐]](./media/marketplace-publishers-guide/private-offer.png)
 
-专用套餐也会显示在搜索结果中。 只需查看 "专用" 徽章即可。
+专用套餐也会显示在搜索结果中。 只要留意"私人"徽章。
 
 >[!Note]
->通过云解决方案提供商计划（CSP）的分销商建立的订阅不支持专用产品/服务。
+>通过云解决方案提供商计划 （CSP） 的经销商建立的订阅不支持私人优惠。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用专用产品/服务，请按照[私有 sku 和计划](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)指南中的步骤进行操作。
+要开始使用私人优惠，请按照["私人 SKU"和"计划](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)"指南中的步骤操作。

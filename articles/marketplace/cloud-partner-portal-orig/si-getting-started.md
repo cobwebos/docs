@@ -1,19 +1,18 @@
 ---
 title: Seller Insights 入门
 description: 云合作伙伴门户的 Seller Insights 功能简介。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: d335525a23ca2e1442ae009dcfbc062bff8cc77d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b86c2c8b8d0e44adffa0411799b9be01b9f54a9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824769"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285344"
 ---
 <a name="getting-started-with-seller-insights"></a>Seller Insights 入门
 ====================================
@@ -29,7 +28,7 @@ ms.locfileid: "73824769"
 <a name="top-navigation-bar"></a>导航栏
 ------------------
 
-从左侧菜单栏中选择“见解”后，你会在顶部看到一个导航栏，其中指示了你有权访问哪些见解模块。
+从左侧菜单栏中选择“见解”**** 后，你会在顶部看到一个导航栏，其中指示了你有权访问哪些见解模块。
 
 1.  **摘要** - 此选项卡显示发布者最关心的数据的图形、趋势和值。
 
@@ -44,7 +43,7 @@ ms.locfileid: "73824769"
 6.  **下载** - 使用新的下载体验，可以更容易地下载大数据集，并且破坏性更小。
 
 你可能会发现，你只能看到上面列出的有限的一组模块。
-由于涉及到敏感的客户和公司信息，因此只有具有“所有者”权限的用户才能够看到“支出”和“客户”模块。 如果你需要访问这些模块，请与你的组织内具有“所有者”权限的人员合作来更改你的权限。
+由于涉及到敏感的客户和公司信息，因此只有具有“所有者”** 权限的用户才能够看到“支出”**** 和“客户”**** 模块。 如果你需要访问这些模块，请与你的组织内具有“所有者”权限的人员合作来更改你的权限。
 
 
 <a name="tips"></a>提示：

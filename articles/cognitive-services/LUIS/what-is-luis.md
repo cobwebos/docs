@@ -3,14 +3,16 @@ title: 什么是语言理解 (LUIS)？
 description: 语言理解 (LUIS) 是一种基于云的 API 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。
 ms.topic: overview
 ms.date: 02/23/2020
-ms.openlocfilehash: c74b842d27146683ef3168a534b9a012ae48fcad
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 98fb936422f8e23e728efea19fa2cd75d90fac57
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587033"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053351"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 语言理解 (LUIS) 是一种基于云的 API 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。
 

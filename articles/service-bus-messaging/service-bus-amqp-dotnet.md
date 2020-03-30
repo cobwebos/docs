@@ -1,6 +1,6 @@
 ---
 title: .NET 和 AMQP 1.0 中的 Azure 服务总线 | Microsoft Docs
-description: 本文介绍如何使用 AMQP （高级消息队列协议）从 .NET 应用程序使用 Azure 服务总线。
+description: 本文介绍如何使用 AMQP（高级消息队列协议）通过 .NET 应用程序使用 Azure 服务总线。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 536c315077cb74a1dfa8db457f0f0b3725edf7a1
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 8157efac5ff1fc135659a84b4f4825ff36307480
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759241"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297655"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
 
@@ -49,7 +49,7 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 
 `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=Amqp`
 
-在创建服务总线命名空间时从[Azure 门户][Azure portal]获取 `namespace` 和 `SAS key`。 有关详细信息，请参阅[使用 Azure 门户创建服务总线命名空间][Create a Service Bus namespace using the Azure portal]。
+其中 `namespace` 和 `SAS key` 是在创建服务总线命名空间时从 [Azure 门户][Azure portal]获取的。 有关详细信息，请参阅[使用 Azure 门户创建服务总线命名空间][Create a Service Bus namespace using the Azure portal]。
 
 使用 AMQP 时，在连接字符串后面追加 `;TransportType=Amqp`。 此表示法使客户端库使用 AMQP 1.0 连接到服务总线。
 
@@ -76,8 +76,8 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 | double |double |AMQP 值 |
 | Decimal |decimal128 |AMQP 值 |
 | char |char |AMQP 值 |
-| 日期/时间 |timestamp |AMQP 值 |
-| GUID |uuid |AMQP 值 |
+| DateTime |timestamp |AMQP 值 |
+| Guid |uuid |AMQP 值 |
 | byte[] |binary |AMQP 值 |
 | 字符串 |字符串 |AMQP 值 |
 | System.Collections.IList |list |AMQP 值：集合中包含的项只能是此表中定义的类型。 |
@@ -105,19 +105,19 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 
 ## <a name="control-amqp-protocol-settings"></a>控制 AMQP 协议设置
 
-[.NET API](/dotnet/api/) 公开了几项设置以控制 AMQP 协议的行为：
+[.NET API](/dotnet/api/)公开多个设置来控制 AMQP 协议的行为：
 
-* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)** ：控制应用于链接的初始信用额度。 默认值为 0。
-* [MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)：控制在打开连接时协商期间提供的最大 AMQP 帧大小。 默认值为 65,536 字节。
-* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)** ：如果传输可以分批进行，此值确定发送处置的最大延迟。 默认情况下由发送方/接收方继承。 单个发送方/接收方可以覆盖默认值（即 20 毫秒）。
-* **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)** ：控制是否通过 SSL 连接建立 AMQP 连接。 默认值为 **true**。
+* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**：控制应用于链接的初始信用额度。 默认值为 0。
+* **[消息工厂设置.Amqp 传输设置.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**：控制在连接打开时协商期间提供的最大 AMQP 帧大小。 默认值为 65,536 字节。
+* **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**：如果传输可以分批进行，此值确定发送处置的最大延迟。 默认情况下由发送方/接收方继承。 单个发送方/接收方可以覆盖默认值（即 20 毫秒）。
+* **[消息工厂设置.Amqp 传输设置.使用 SslStream 安全性](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**：控制是否通过 TLS 连接建立 AMQP 连接。 默认值为**true**。
 
 ## <a name="next-steps"></a>后续步骤
 
 准备好了解详细信息？ 请访问以下链接：
 
 * [服务总线 AMQP 概述]
-* [AMQP 1.0 protocol guide]
+* [AMQP 1.0 协议指南]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
 [DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
@@ -127,5 +127,5 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 [NuGet]: https://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure portal]: https://portal.azure.com
 [服务总线 AMQP 概述]: service-bus-amqp-overview.md
-[AMQP 1.0 protocol guide]: service-bus-amqp-protocol-guide.md
+[AMQP 1.0 协议指南]: service-bus-amqp-protocol-guide.md
 

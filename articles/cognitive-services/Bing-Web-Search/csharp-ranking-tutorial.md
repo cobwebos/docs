@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75382321"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>使用 C# 生成控制台应用搜索客户端
@@ -47,9 +47,9 @@ ms.locfileid: "75382321"
 JSON.net 允许使用 API 返回的 JSON 响应。 将其 NuGet 包添加到项目中：
 
 - 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包...”   。
-- 在“浏览”选项卡中，搜索 `Newtonsoft.Json`  。 选择最新版本，然后单击“安装”  。
+- 在“浏览”选项卡中，搜索  `Newtonsoft.Json`。 选择最新版本，然后单击“安装”  。
 - 单击“查看更改”窗口中的“确定”按钮   。
-- 关闭标题为“NuGet:  MyConsoleSearchApp”的 Visual Studio 选项卡。
+- 关闭标题为“NuGet: MyConsoleSearchApp”的 Visual Studio 选项卡  。
 
 ## <a name="add-a-reference-to-systemweb"></a>添加对 System.Web 的引用
 
@@ -61,7 +61,7 @@ JSON.net 允许使用 API 返回的 JSON 响应。 将其 NuGet 包添加到项�
 
 ## <a name="add-some-necessary-using-statements"></a>添加一些必要的 using 语句
 
-本教程中的代码还需要三个 using 语句。 在 **Program.cs** 顶部的现有 `using` 语句下面添加这些语句：
+本教程中的代码还需要三个 using 语句。 在 `using`Program.cs**顶部的现有** 语句下面添加这些语句：
 
 ```csharp
 using System.Web;
@@ -223,9 +223,9 @@ static void RunQueryAndDisplayResults(string userQuery)
 
 `rankingResponse` JSON 对象（[文档](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)）描述了搜索结果的相应显示顺序。 它包括以下一个或多个按优先级排列的组：
 
-- `pole`设置用户帐户 ：要获得最明显的处理（例如，显示在主线和边栏上方）的搜索结果。
-- `mainline`设置用户帐户 ：要显示在主线中的搜索结果。
-- `sidebar`设置用户帐户 ：要显示在边栏中的搜索结果。 如果没有边栏，则在主线下方显示结果。
+- `pole`：要获得最明显的处理（例如，显示在主线和边栏上方）的搜索结果。
+- `mainline`：要显示在主线中的搜索结果。
+- `sidebar`：要显示在边栏中的搜索结果。 如果没有边栏，则在主线下方显示结果。
 
 排名响应 JSON 可能包括一个或多个组。
 

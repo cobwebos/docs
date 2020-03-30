@@ -1,29 +1,28 @@
 ---
-title: Azure 容器映像的 Sku |Azure Marketplace
+title: Azure 容器映像的 SKU |Azure 应用商店
 description: 配置 Azure 容器的 SKU。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 5b69eea8ad7fd4c62925b50434b653118890e280
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: adbe3d4c498c8f4e4968ca903f78c34aedca9a4d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823148"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279991"
 ---
 # <a name="container-skus-tab"></a>“容器 SKU”选项卡
 
-在“新建套餐”页的“SKU”选项卡中，可以创建一个或多个 SKU 并将其关联到新套餐。  可以使用不同的 SKU 按功能集、计费模型或其他特征来区分解决方案。
+在“新建套餐”页的“SKU”选项卡中，可以创建一个或多个 SKU 并将其关联到新套餐。********  可以使用不同的 SKU 按功能集、计费模型或其他特征来区分解决方案。
 
 ## <a name="sku-settings"></a>SKU 设置
 
 开始创建新套餐时，该套餐没有任何关联的 SKU。 若要创建新 SKU，请执行以下步骤：
 
-1. 在“SKU”选项卡中，选择“新建 SKU”
+1. 在“SKU”选项卡中，选择“新建 SKU”****
 
    ![新建 SKU 提示](./media/containers-sku-settings.png)
 
@@ -46,14 +45,14 @@ SKU 元数据包含用于列出容器的店面显示信息。
 
 ![容器元数据](./media/containers-image-repository.png)
     
-上一个屏幕捕获中的**映像存储库详细信息**包含以下字段。  必填字段用星号 (*) 表示。
+上一个屏幕捕获中**的图像存储库详细信息**包含以下字段。  必填字段用星号 (*) 表示。
 
--   **订阅 id\*** -其中存在 ACR 的 AZURE 订阅 ID。
--   **资源组名称\*** -ACR 的资源组名称。
--   **注册表名称\*** -ACR 名称。
--   **存储库名称\*** -存储库名称。 设置此名称后，无法更改此值。 请使用唯一名称以避免与你的帐户中的其他产品/服务冲突。
--   **用户名\*** -与 ACR 图像关联的用户名（管理员用户名）。
--   **Password\*** -与 ACR 图像关联的密码。
+-   **订阅\*ID** - 存在 ACR 的 Azure 订阅 ID。
+-   **资源组名称\***- ACR 的资源组名称。
+-   **注册表项\***- ACR 名称。
+-   **存储库名称\***- 存储库名称。 设置此名称后，无法更改此值。 请使用唯一名称以避免与你的帐户中的其他产品/服务冲突。
+-   **用户名\***- 与 ACR 映像关联的用户名（管理员用户名）。
+-   **密码\***- 与 ACR 映像关联的密码。
 
     >[!NOTE]
     >必须指定用户名和密码，以确保合作伙伴在发布过程中能够访问所述的 ACR。
@@ -63,7 +62,7 @@ SKU 元数据包含用于列出容器的店面显示信息。
 
 在发布容器映像时，可以提供一个或多个映像标记和 SHA 摘要。
 
-**Image 标记\* 或 Digest**
+**图像标记\*或摘要**
  
 - 此标记或摘要必须包括一个 `latest` 标记和一个版本标记（例如，从 `xx.xx.xx-` 开始，其中 xx 是一个数字）。 它们应是面向多个平台的[清单标记](https://github.com/estesp/manifest-tool)。 还必须添加清单标记引用的所有标记，使我们能够上传这些映像。 
 - 可以使用标记添加容器的多个版本。 所有清单标记（`latest` 除外）必须以 `X.Y-` 或 `X.Y.Z-` 开头，其中，X、Y、Z 为整数。 <br/> 例如，如果 `latest` 标记指向 `1.0.1-linux-x64`、`1.0.1-linux-arm32` 和 `1.0.1-windows-arm32`，则需要在此处添加这些标记。

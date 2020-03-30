@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: beab594126ce292ea1fc47e399a12274dbb31aa3
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74665687"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>快速入门：使用 Node.js 将查询发送到必应当地企业搜索 API
@@ -23,7 +23,7 @@ ms.locfileid: "74665687"
 
 此示例应用程序从 API 获取搜索查询 `hotel in Bellevue` 的本地响应数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 最新版本的 [Node.js](https://nodejs.org/en/download/)。
 

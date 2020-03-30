@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67ae5d2661371c256f753d05eb496d2cd53a0017
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0518c58abf156c718ee083ffadb0ef8e0a590252
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350484"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331538"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect 和联合身份验证
 Azure Active Directory (Azure AD) Connect 可让你配置使用本地 Active Directory 联合身份验证服务 (AD FS) 和 Azure AD 进行的联合身份验证。 通过联合身份验证登录，可以让用户能够使用本地密码登录基于 Azure AD 的服务；使用公司网络时，无需再次输入密码就可登录服务。 使用 AD FS 的联合身份验证选项，可以部署 AD FS 的新安装，也可以在 Windows Server 2012 R2 场中指定现有安装。
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) Connect 可让你配置使用本地 Active Dir
 | [新增 AD FS 服务器](how-to-connect-fed-management.md#addadfsserver) |初始安装后，使用其他 AD FS 服务器扩展 AD FS 场。 |
 | [新增 AD FS WAP 服务器](how-to-connect-fed-management.md#addwapserver) |初始安装后，使用其他 Web 应用程序代理 (WAP) 服务器扩展 AD FS 场。 |
 | [添加新的联合域](how-to-connect-fed-management.md#addfeddomain) |添加其他要与 Azure AD 联合的域。 |
-| [更新 SSL 证书](how-to-connect-fed-ssl-update.md)| 更新 AD FS 场的 SSL 证书。 |
+| [更新 TLS/SSL 证书](how-to-connect-fed-ssl-update.md)| 更新 AD FS 场的 TLS/SSL 证书。 |
 | [续订 Office 365 和 Azure AD 的联合身份验证证书](how-to-connect-fed-o365-certs.md)|使用 Azure AD 续订 O365 证书。|
 | **其他联合配置** | |
 | [将 Azure AD 的多个实例与 AD FS 的单个实例联合](how-to-connect-fed-single-adfs-multitenant-federation.md) | 联合多个 Azure AD 与单个 AD FS 场| 

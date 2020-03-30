@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 21b46ba0012b71ed0e09dc09d041ceb020824843
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c32fdc67c74e100e0e31dad3afde128c05c356d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79259352"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335972"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
@@ -40,8 +40,8 @@ ms.locfileid: "79259352"
 * [是否可以使用 AD FS 安全配置 OAuth 2.0 授权服务器？](#can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security)
 * [API 管理使用何种路由方法部署到多个地理位置？](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [是否可以使用 Azure 资源管理器模板创建 API 管理服务实例？](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
-* [是否可以为后端使用自签名 SSL 证书？](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
-* [为何在尝试克隆 GIT 存储库时得到身份验证失败？](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
+* [是否可以将自签名 TLS/SSL 证书用于后端？](#can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end)
+* [为什么在尝试克隆 GIT 存储库时出现身份验证失败？](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [API 管理是否适用于 Azure ExpressRoute ？](#does-api-management-work-with-azure-expressroute)
 * [为什么在 Resource Manager 样式 VNET 中部署 API 管理时需要专用子网？](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
 * [在 VNET 中部署 API 管理时所需的最小子网大小是多少？](#what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet)
@@ -62,8 +62,8 @@ ms.locfileid: "79259352"
 有多个选项可确保 API 管理网关和后端服务之间的连接安全。 可以：
 
 * 使用 HTTP 基本身份验证。 有关详细信息，请参阅[导入并发布第一个 API](import-and-publish.md)。
-* 使用[如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全](api-management-howto-mutual-certificates.md)中所述的 SSL 相互身份验证。
-* 在后端服务上使用 IP 允许列表。 在 API 管理的所有层中（消耗层除外），网关的 IP 地址仍保持不变，并在[IP 文档一文](api-management-howto-ip-addresses.md)中介绍了几个注意事项。
+* 使用 TLS 相互身份验证，[如如何在 Azure API 管理中使用客户端证书身份验证来保护后端服务](api-management-howto-mutual-certificates.md)。
+* 在后端服务上使用 IP 允许列表。 在 API 管理的所有层中，除消耗层外，网关的 IP 地址保持不变[，IP 文档一文](api-management-howto-ip-addresses.md)中介绍了一些注意事项。
 * 将 API 管理实例连接到 Azure 虚拟网络。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>如何将 API 管理服务实例复制到新实例？
@@ -83,9 +83,9 @@ ms.locfileid: "79259352"
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>如何向管理员组添加用户？
 下面是向管理员组添加用户的方法：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 Azure[门户](https://portal.azure.com)。
 2. 转到具有要更新的 API 管理实例的资源组。
-3. 在 API 管理中，将**Api 管理服务参与者**角色分配给用户。
+3. 在 API 管理中，将“API 管理服务参与者”**** 角色分配给该用户。
 
 现在，新添加的参与者可以使用 Azure PowerShell [cmdlet](https://docs.microsoft.com/powershell/azure/overview)。 下面是以管理员身份登录的方法：
 
@@ -113,13 +113,13 @@ ms.locfileid: "79259352"
 API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-routing-methods.md#performance)部署到多个地理位置。 传入流量路由到最近的 API 网关。 如果一个区域处于脱机状态，则传入流量自动路由到下一个最近的网关。 在[流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)中了解有关路由方法的详细信息。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>是否可以使用 Azure 资源管理器模板创建 API 管理服务实例？
-是的。 请参阅[AZURE API 管理服务](https://aka.ms/apimtemplate)快速入门模板。
+是的。 请参阅[Azure API 管理服务](https://aka.ms/apimtemplate)快速入门模板。
 
-### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>是否可以为后端使用自签名 SSL 证书？
+### <a name="can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end"></a>是否可以将自签名 TLS/SSL 证书用于后端？
 是的。 可以通过 PowerShell 或直接提交到 API 完成此操作。 这将禁用证书链验证，并允许在从 API 管理与后端服务进行通信时使用自签名证书或私人签名证书。
 
 #### <a name="powershell-method"></a>Powershell 方法 ####
-使用 [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend)（适用于新后端）或 [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend)（适用于现有后端）PowerShell cmdlet 并将 `-SkipCertificateChainValidation` 参数设置为 `True`。
+使用[`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend)（对于新的后端） 或[`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend)（对于现有后端） PowerShell cmdlet`-SkipCertificateChainValidation`并将参数`True`设置为 。
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
@@ -128,8 +128,8 @@ New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -
 
 #### <a name="direct-api-update-method"></a>直接 API 更新方法 ####
 1. 使用 API 管理创建[后端](/rest/api/apimanagement/)实体。     
-2. 将“skipCertificateChainValidation”属性设置为“true”。     
-3. 如果不再希望允许自签名证书，请删除后端实体，或将“skipCertificateChainValidation”属性设置为“false”。
+2. 将“skipCertificateChainValidation”**** 属性设置为“true”****。     
+3. 如果不再希望允许自签名证书，请删除后端实体，或将“skipCertificateChainValidation”**** 属性设置为“false”****。
 
 ### <a name="why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository"></a>为何在尝试克隆 Git 存储库时得到身份验证失败？
 如果使用 Git 凭据管理器，或者正在尝试使用 Visual Studio 克隆 Git 存储库，可能遇到“Windows 凭据”对话框的已知问题。 该对话框将密码长度限制为 127 个字符，并截断 Microsoft 生成的密码。 我们正致力于缩短密码。 暂时请使用 Git Bash 克隆 Git 存储库。

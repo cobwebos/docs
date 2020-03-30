@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 03311cb873420f741ca0150dde59fb27eaa5d76f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378750"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Go 调用文本分析认知服务 
 <a name="HOLTop"></a>
 
-本文展示了如何将 [文本分析 API](//go.microsoft.com/fwlink/?LinkID=759711) 与 Go 配合使用来[检测语言](#Detect)、[分析情绪](#SentimentAnalysis)、[提取关键短语](#KeyPhraseExtraction)以及[识别链接的实体](#Entities)。
+本文展示了如何将[文本分析 API](#Detect)[与 Go 配合使用来](#SentimentAnalysis)检测语言[、](#KeyPhraseExtraction)分析情绪[、](#Entities)提取关键短语 [以及](//go.microsoft.com/fwlink/?LinkID=759711)识别链接的实体 。
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 

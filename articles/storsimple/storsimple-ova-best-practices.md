@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: a8aed646f03b777722518152354cfe80cea043a0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5da0297dd97c8263bdc47f1d5a3d7d2d1f835e4b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002805"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298835"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple 虚拟阵列最佳实践
 
@@ -36,7 +36,7 @@ Microsoft Azure StorSimple 虚拟阵列是一个集成式存储解决方案，�
 ## <a name="configuration-best-practices"></a>配置最佳实践
 这些最佳实践涵盖初始设置和部署虚拟阵列时遵循的指导原则。 其中包括与虚拟机预配、组策略设置、调整大小、设置网络、配置存储帐户以及创建虚拟阵列的共享和卷相关的最佳实践。 
 
-### <a name="provisioning"></a>预配
+### <a name="provisioning"></a>设置
 StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 VMware）上预配的虚拟机 (VM)。 预配虚拟机时，请确保主机能够提供足够的资源。 有关详细信息，请转到预配阵列所要满足的[最低资源要求](storsimple-virtual-array-deploy2-provision-hyperv.md#step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements)。
 
 预配虚拟阵列时，请实施以下最佳实践：
@@ -48,7 +48,7 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 | **数据磁盘类型** |预配为**动态扩展**。<br></br> 预配**固定大小**需要很长时间。 <br></br> 不要使用**差异**选项。 |使用**精简预配**选项。 |
 | **数据磁盘修改** |不允许扩展或收缩。 尝试这样做造成设备上的本地数据丢失。 |不允许扩展或收缩。 尝试这样做造成设备上的本地数据丢失。 |
 
-### <a name="sizing"></a>大小调整
+### <a name="sizing"></a>调整大小
 调整 StorSimple 虚拟阵列的大小时，请考虑以下因素：
 
 * 卷或共享的本地预留空间。 在本地层保留大约 12% 的空间给每个预配的分层卷或共享。 另外，大约保留 10% 的空间给本地固定卷用于保存文件系统。
@@ -81,7 +81,7 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 
 到目前为止，本地层所需的总空间是：240 GB + 120 GB + 330 GB = 690 GB。
 
-其次，本地层所需的空间至少要与最大的单个预留空间一样大。 需要从云快照还原时，就要用到此额外空间量。 在此示例中，最大本地预订为 330 GB （包括文件系统的保留），因此你可以将其添加到 690 GB：690 GB + 330 GB = 1020 GB。
+其次，本地层所需的空间至少要与最大的单个预留空间一样大。 需要从云快照还原时，就要用到此额外空间量。 在本示例中，最大本地预留空间是 330 GB （包括文件系统的预留空间），因此，要为 690 GB 加上该空间量：690 GB + 330 GB = 1020 GB。
 在执行其他后续还原操作时，始终可以释放以前还原操作的空间。
 
 第三，需要本地总空间的 15% 来存储本地快照，因此只剩 85% 的空间可供使用。 在本示例中，这大约是 1020 GB，即 0.85 &ast; 预配的数据磁盘 TB 数。 因此，预配的数据磁盘是 (1020&ast;(1/0.85))= 1200 GB = 1.20 TB ~ 1.25 TB（四舍五入为最接近的四分位数）
@@ -133,11 +133,11 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 * 确保随时都可以连接到 Internet。 设备的 Internet 连接如果断断续续或不可靠，可能导致无法访问云数据，并可能导致配置不受支持。
 * 如果打算将设备部署为 iSCSI 服务器：
   
-  * 建议禁用“自动获取 IP 地址”选项 (DHCP)。
+  * 建议禁用“自动获取 IP 地址”选项 (DHCP)。****
   * 配置静态 IP 地址。 必须配置主要和辅助 DNS 服务器。
   * 如果在虚拟阵列上定义多个网络接口，只有第一个网络接口（默认情况下，此接口是**以太网**接口）可以连接到云。 要控制流量类型，可以在虚拟阵列上创建多个虚拟网络接口（配置为 iSCSI 服务器），并将这些接口连接到不同的子网。
 * 若只要限制云带宽（由虚拟阵列使用），可以在路由器或防火墙中配置限制。 如果在虚拟机监控程序中定义限制，它会限制所有协议（包括 iSCSI 和 SMB），而不只是限制云带宽。
-* 确保启用虚拟机监控程序的时间同步。 如果使用 Hyper-V，请在 Hyper-V 管理器选择虚拟阵列，转到“设置”&gt;“集成服务”，并确保已选中“时间同步”。
+* 确保启用虚拟机监控程序的时间同步。 如果使用 Hyper-V，请在 Hyper-V 管理器选择虚拟阵列，转到“设置”&gt;“集成服务”，并确保已选中“时间同步”。********
 
 ### <a name="storage-accounts"></a>存储帐户
 StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以是自动生成的存储帐户、位于服务所在的同一订阅中的帐户，也可以是与另一个订阅相关的存储帐户。 有关详细信息，请参阅有关如何[管理虚拟阵列的存储帐户](storsimple-virtual-array-manage-storage-accounts.md)的主题。
@@ -159,7 +159,7 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 
 在虚拟设备上预配共享或卷时，请记住以下最佳实践。
 
-* 相对于已预配分层共享大小的文件大小可能影响分层性能。 处理大型文件可能会导致分层速度变慢。处理大型文件时，建议最大的文件应小于共享大小的 3%。
+* 相对于已预配分层共享大小的文件大小可能影响分层性能。 使用大型文件可能会导致层数变慢。使用大型文件时，我们建议最大文件小于共享大小的 3%。
 * 虚拟阵列上最多可以创建 16 个卷/共享。 有关在本地固定和分层的卷/共享的大小限制，请始终参阅 [StorSimple 虚拟阵列限制](storsimple-ova-limits.md)。
 * 创建卷时，请将预期的数据使用量以及将来的增长量包含考虑。 稍后将无法扩展卷。
 * 创建卷后，无法缩小 StorSimple 上的卷大小。
@@ -167,7 +167,7 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 * 对于灾难恢复用例，可允许的共享/卷数为 16 个，可并行处理的共享/卷数上限也是 16 个，因此共享/卷数并不影响 RPO 和 RTO。
 
 #### <a name="volumeshare-type"></a>卷/共享类型
-根据用途，StorSimple 支持两种类型的卷/共享：本地固定和分层。 本地固定卷/共享是丰富预配的，分层卷/共享是精简预配的。 创建后，便无法将本地固定的卷/共享转换为分层卷/共享，反之亦然。
+根据用途，StorSimple 支持两种类型的卷/共享：本地固定和分层。 本地固定卷/共享是丰富预配的，分层卷/共享是精简预配的。 创建后，便无法将本地固定的卷/共享转换为分层卷/共享，反之亦然**。
 
 配置 StorSimple 卷/共享时，建议实施以下最佳实践：
 
@@ -200,14 +200,14 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机密性和完整性。 使用这些功能时，建议遵循以下最佳实践： 
 
 * 先定义用于生成 AES-256 加密的云存储加密密钥，然后将数据从虚拟阵列发送到云。 如果数据一开始就已加密，则不需要此密钥。 使用密钥管理系统（例如 [Azure 密钥保管库](../key-vault/key-vault-overview.md)）可以生成并妥善保存密钥。
-* 在通过 StorSimple Manager 服务配置存储帐户时，请务必启用 SSL 模式来创建用于在 StorSimple 设备与云之间实现网络通信的安全隧道。
+* 通过 StorSimple Manager 服务配置存储帐户时，请确保启用 TLS 模式，以便在 StorSimple 设备和云之间创建用于网络通信的安全通道。
 * 定期重新生成存储帐户的密钥（通过访问 Azure 存储服务），反映管理员列表更改造成的访问权限更改。
 * 虚拟阵列上的数据先压缩并进行重复数据删除，再发送到 Azure。 不建议在 Windows Server 主机上使用“重复数据删除”角色服务。
 
 ## <a name="operational-best-practices"></a>操作最佳实践
 操作最佳实践是指在虚拟阵列的日常管理或操作期间应遵循的指导原则。 这些最佳实践涵盖特定的管理任务，例如备份、从备份集还原、执行故障转移、禁用和删除阵列、监视系统使用情况和运行状况，以及在虚拟阵列上运行病毒扫描。
 
-### <a name="backups"></a>备用
+### <a name="backups"></a>备份
 虚拟阵列上的数据通过两种方式备份到云：默认在每天 22:30 自动启动的全设备备份，或者手动按需备份。 默认情况下，设备会自动创建其上所有数据的每日云快照。 有关详细信息，请转到 [back up your StorSimple Virtual Array](storsimple-virtual-array-backup.md)（备份 StorSimple 虚拟阵列）。
 
 与默认备份关联的频率和保留期无法更改，但可以配置每天启动每日备份的时间。 在配置自动备份的开始时间时，我们建议：
@@ -242,7 +242,7 @@ StorSimple 虚拟阵列具有数据安全和加密功能，可确保数据的机
   * 故障转移已完成，随后删除了源设备，但目标设备有问题，无法访问任何数据。 云中的数据仍保持安全，只要创建另一个虚拟阵列，然后将它用作 DR 的目标设备，即可轻松检索数据。
 
 ### <a name="deactivate"></a>停用
-停用 StorSimple 虚拟阵列时，会断开设备与相应 StorSimple Manager 服务之间的连接。 停用是不可撤消的**永久性**操作。 停用的设备不再能够注册到 StorSimple Manager 服务。 有关详细信息，请转到 [deactivate and delete your StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md)（停用和删除 StorSimple 虚拟阵列）。
+停用 StorSimple 虚拟阵列时，会断开设备与相应 StorSimple Manager 服务之间的连接。 停用是一项**永久**操作，无法撤消。 停用的设备不再能够注册到 StorSimple Manager 服务。 有关详细信息，请转到 [deactivate and delete your StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md)（停用和删除 StorSimple 虚拟阵列）。
 
 停用虚拟阵列时，请记住以下最佳实践：
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 3d92d3f959e2ad44daa82d6b609b9357cee969c9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906863"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
@@ -24,7 +24,7 @@ dotnet new console -o sentences-sample
 cd sentences-sample
 ```
 
-第一个命令执行两项操作。 它创建新的 .NET 控制台应用程序，并创建名为 `sentences-sample` 的目录。 第二个目录转到项目的目录。
+第一个命令执行两项操作。 它创建新的 .NET 控制台应用程序，并创建名为 `sentences-sample` 的目录。 第二个命令是切换至项目目录。
 
 接下来需安装 Json.Net。 在项目的目录中，运行以下命令：
 
@@ -177,7 +177,7 @@ foreach (BreakSentenceResult o in deserializedOutput)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是在 `Main` 函数中调用 `BreakSentenceRequest()`。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
+最后一步是在 `BreakSentenceRequest()` 函数中调用 `Main`。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
 
 ```csharp
 static async Task Main(string[] args)

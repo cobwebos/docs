@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure Active Directory 凭据登录到 Linux VM
-description: 了解如何创建和配置 Linux VM，以使用 Azure Active Directory 身份验证进行登录。
+title: 使用 Azure 活动目录凭据登录到 Linux VM
+description: 了解如何创建和配置 Linux VM 以使用 Azure 活动目录身份验证登录。
 author: iainfoulds
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: eb303ecb5657e9312445093841cfa6c501efda18
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944801"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366489"
 ---
-# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
+# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure 活动目录身份验证登录到 Azure 中的 Linux 虚拟机
 
 若要改进 Azure 中 Linux 虚拟机 (VM) 的安全性，可以与 Azure Active Directory (AD) 身份验证集成。 将 Azure AD 身份验证用于 Linux VM 时，可以通过集中控制和强制实施策略来允许或拒绝对 VM 的访问。 本文介绍如何创建和配置 Linux VM，以便使用 Azure AD 身份验证。
 
 
 > [!IMPORTANT]
-> Azure Active Directory authentication 目前为公共预览版。
+> Azure 活动目录身份验证当前处于公共预览版中。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 > 请在测试后就丢弃的测试性虚拟机上使用此功能。
 >
@@ -28,7 +28,7 @@ ms.locfileid: "78944801"
 
 在 Azure 中使用 Azure AD 身份验证登录到 Linux VM 有许多好处，其中包括：
 
-- **提高安全性：**
+- **提高了安全性：**
   - 可以使用公司 AD 凭据登录到 Azure Linux VM。 不需创建本地管理员帐户并管理凭据生存期。
   - 减少对本地管理员帐户的依赖以后，就不需要担心凭据丢失/失窃、用户配置的凭据过弱，等等。
   - 针对 Azure AD 目录配置的密码复杂性和密码生存期策略也有助于维护 Linux VM 安全性。
@@ -57,22 +57,25 @@ ms.locfileid: "78944801"
 
 >[!IMPORTANT]
 > 若要使用此预览版功能，请只部署受支持的 Linux 发行版，并且只在受支持的 Azure 区域部署。 此功能在 Azure 政府版或主权云中不受支持。
+>
+> 不支持在 Azure 库伯奈斯服务 （AKS） 群集上使用此扩展。 有关详细信息，请参阅[AKS 的支持策略](../../aks/support-policies.md)。
 
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="network-requirements"></a>网络要求
 
-若要为 Azure 中的 Linux Vm 启用 Azure AD 身份验证，需要确保 Vm 网络配置允许通过 TCP 端口443对以下终结点进行出站访问：
+要为 Azure 中的 Linux VM 启用 Azure AD 身份验证，需要确保 VM 网络配置允许通过 TCP 端口 443 对以下终结点进行出站访问：
 
 * https:\//login.microsoftonline.com
+* https:\//login.windows.net
 * https：\//device.login.microsoftonline.com
 * https：\//pas.windows.net
 * https:\//management.azure.com
 * https：\//packages.microsoft.com
 
 > [!NOTE]
-> 目前，不能为启用了 Azure AD 身份验证的 Vm 配置 Azure 网络安全组。
+> 目前，无法为使用 Azure AD 身份验证启用的 VM 配置 Azure 网络安全组。
 
 ## <a name="create-a-linux-virtual-machine"></a>创建 Linux 虚拟机
 
@@ -94,9 +97,9 @@ az vm create \
 ## <a name="install-the-azure-ad-login-vm-extension"></a>安装 Azure AD 登录 VM 扩展
 
 > [!NOTE]
-> 如果将此扩展部署到以前创建的 VM，请确保计算机至少分配了1GB 的内存，否则将无法安装扩展
+> 如果将此扩展部署到以前创建的 VM，请确保计算机至少分配了 1GB 的内存，否则扩展将无法安装
 
-若要使用 Azure AD 凭据登录到 Linux VM，请安装 Azure Active Directory 登录 VM 扩展。 VM 扩展是小型应用程序，可在 Azure 虚拟机上提供部署后配置和自动化任务。 请使用 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 在 *myResourceGroup* 资源组中名为 *myVM* 的 VM 上安装 *AADLoginForLinux* 扩展：
+要使用 Azure AD 凭据登录到 Linux VM，请安装 Azure 活动目录登录 VM 扩展。 VM 扩展是小型应用程序，可在 Azure 虚拟机上提供部署后配置和自动化任务。 请使用 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 在 *myResourceGroup* 资源组中名为 *myVM* 的 VM 上安装 *AADLoginForLinux* 扩展：
 
 ```azurecli-interactive
 az vm extension set \
@@ -106,7 +109,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-成功将扩展安装到 VM 后，会显示 "*成功*" 的*provisioningState* 。 VM 需要运行的 VM 代理来安装扩展。 有关详细信息，请参阅[VM 代理概述](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
+成功安装扩展后，将显示 *"成功*"的*预配状态*。 VM 需要正在运行的 VM 代理来安装扩展。 有关详细信息，请参阅[VM 代理概述](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
 
 ## <a name="configure-role-assignments-for-the-vm"></a>为 VM 配置角色分配
 
@@ -116,9 +119,9 @@ Azure 基于角色的访问控制 (RBAC) 策略决定了谁能登录到 VM。 �
 - **虚拟机用户登录名**：分配了此角色的用户可以使用常规用户权限登录到 Azure 虚拟机。
 
 > [!NOTE]
-> 若要允许用户通过 SSH 登录到 VM，必须分配“虚拟机管理员登录名”或“虚拟机用户登录名”角色。 分配了 VM“所有者”或“参与者”角色的 Azure 用户不会自动获得通过 SSH 登录到 VM 的权限。
+> 若要允许用户通过 SSH 登录到 VM，必须分配“虚拟机管理员登录名”或“虚拟机用户登录名”角色。**** 分配了 VM“所有者”或“参与者”角色的 Azure 用户**** 不会自动获得通过 SSH 登录到 VM 的权限。
 
-以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 *scope* 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 也可在资源组或订阅级别设置 scope，这种情况下会应用正常的 RBAC 继承权限。 有关详细信息，请参阅[基于角色的访问控制](../../role-based-access-control/overview.md)
+以下示例使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 为当前的 Azure 用户分配登录到 VM 所需的“虚拟机管理员登录名”角色。** 活动 Azure 帐户的用户名是使用 [az account show](/cli/azure/account#az-account-show) 获得的，而 *scope* 则设置为在前面的步骤中使用 [az vm show](/cli/azure/vm#az-vm-show) 创建的 VM。 也可在资源组或订阅级别设置 scope，这种情况下会应用正常的 RBAC 继承权限。 有关详细信息，请参阅[基于角色的访问控制](../../role-based-access-control/overview.md)
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -145,21 +148,21 @@ az role assignment create \
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-使用 Azure AD 凭据登录到 Azure Linux 虚拟机。 可以通过 `-l` 参数指定自己的 Azure AD 帐户地址。 将示例帐户替换为自己的帐户。 应以全小写的形式输入帐户地址。 将示例 IP 地址替换为上一命令中 VM 的公共 IP 地址。
+使用 Azure AD 凭据登录到 Azure Linux 虚拟机。 可以通过 `-l` 参数指定自己的 Azure AD 帐户地址。 将示例帐户替换为您自己的示例帐户。 应以全小写的形式输入帐户地址。 将示例 IP 地址替换为上一命令中的 VM 的公共 IP 地址。
 
-```azurecli-interactive
+```console
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-系统会提示你在 [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) 中使用一次性的使用代码登录到 Azure AD。 将一次性使用代码复制并粘贴到 "设备登录" 页。
+系统将提示您使用 中的[https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)一次性使用代码登录到 Azure AD。 复制一次性使用代码并将其粘贴到设备登录页中。
 
 出现提示时，请在登录页中输入 Azure AD 登录凭据。 
 
-成功通过身份验证后，web 浏览器中会显示以下消息： `You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
+成功验证后，Web 浏览器中将显示以下消息：`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
 关闭浏览器窗口，返回到 SSH 提示符窗口，然后按 **Enter** 键。 
 
-现在，你已使用分配的角色权限（例如“VM 用户”或“VM 管理员”）登录到 Azure Linux 虚拟机。 如果为用户帐户分配了*虚拟机管理员登录*角色，则可以使用 `sudo` 来运行需要 root 权限的命令。
+现在，你已使用分配的角色权限（例如“VM 用户”或“VM 管理员”）登录到 Azure Linux 虚拟机。**** 如果您的用户帐户已分配*虚拟机管理员登录*角色，则可以使用`sudo`运行需要根权限的命令。
 
 ## <a name="sudo-and-aad-login"></a>Sudo 和 AAD 登录名
 
@@ -168,6 +171,7 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```bash
 %aad_admins ALL=(ALL) ALL
 ```
+
 替换为以下行：
 
 ```bash
@@ -181,9 +185,9 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 
 ### <a name="access-denied-rbac-role-not-assigned"></a>访问被拒绝：未分配 RBAC 角色
 
-如果在 SSH 提示符窗口中看到以下错误，请验证是否已为授予用户*虚拟机管理员登录名*或*虚拟机用户登录名*角色的 VM 配置 RBAC 策略：
+如果在 SSH 提示符窗口中看到以下错误，请验证是否已为授予用户“虚拟机管理员登录名”或“虚拟机用户登录名”角色的 VM 配置 RBAC 策略：****
 
-```bash
+```output
 login as: azureuser@contoso.onmicrosoft.com
 Using keyboard-interactive authentication.
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FJX327AXD to authenticate. Press ENTER when ready.
@@ -196,13 +200,13 @@ Access denied
 
 如果你在 Web 浏览器中成功完成了身份验证步骤，系统会立即提示你使用新的代码再次登录。 出现此错误通常是由于在 SSH 提示符窗口中指定的登录名称与登录到 Azure AD 时使用的帐户不符。 若要纠正此问题，请执行以下操作：
 
-- 验证在 SSH 提示符窗口中指定的登录名是否正确。 登录名拼写错误可能导致在 SSH 提示符窗口中指定的登录名称与登录到 Azure AD 时使用的帐户不符。 例如，你键入了*azuresuer\@contoso.onmicrosoft.com*而不是*azureuser\@contoso.onmicrosoft.com*。
+- 验证在 SSH 提示符窗口中指定的登录名是否正确。 登录名拼写错误可能导致在 SSH 提示符窗口中指定的登录名称与登录到 Azure AD 时使用的帐户不符。 例如，键入*azuresuer\@contoso.onmicrosoft.com*而不是*azureuser\@contoso.onmicrosoft.com*。
 - 如果有多个用户帐户，请确保登录到 Azure AD 时在浏览器窗口中提供的用户帐户是相同的。
 - Linux 是区分大小写的操作系统。 “Azureuser@contoso.onmicrosoft.com”和“azureuser@contoso.onmicrosoft.com”是不同的，会导致不匹配。 请确保在 SSH 提示符窗口中使用正确的大小写指定 UPN。
 
 ### <a name="other-limitations"></a>其他限制
 
-当前不支持通过嵌套组或角色分配继承访问权限的用户。 必须直接向用户或组分配[所需的角色分配](#configure-role-assignments-for-the-vm)。 例如，使用管理组或嵌套组角色分配不会授予允许用户登录的正确权限。
+当前不支持通过嵌套组或角色分配继承访问权限的用户。 必须直接分配用户或组[所需的角色分配](#configure-role-assignments-for-the-vm)。 例如，使用管理组或嵌套组角色分配不会授予允许用户登录的正确权限。
 
 ## <a name="preview-feedback"></a>预览功能反馈
 

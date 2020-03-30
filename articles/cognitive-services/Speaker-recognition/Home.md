@@ -12,10 +12,10 @@ ms.date: 10/01/2018
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: f354793e3779f4d9f7be9bae8a21545a15ed1c4c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73464918"
 ---
 # <a name="speaker-recognition-api---preview"></a>说话人识别 API - 预览版

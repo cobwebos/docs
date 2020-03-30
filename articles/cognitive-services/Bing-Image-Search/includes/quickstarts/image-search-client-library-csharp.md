@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 9e74742858c5de2abf56b80ea4e4f275bc2c9b23
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78899376"
 ---
 在本快速入门中，你将使用必应图像搜索客户端库（它是 API 的包装器并包含相同的功能）进行你的第一次图像搜索。 这个简单的 C# 应用程序会发送图像搜索查询、分析 JSON 响应，并显示所返回的第一个图像的 URL。
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) 上提供了此示例的源代码以及附加的错误处理和注释。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 任何版本的 [Visual Studio 2017 或更高版本](https://visualstudio.microsoft.com/vs/whatsnew/)。
 * [认知图像搜索 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/)。
 

@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: 4e08596e8cf71bbb0e88abdc51f5d8e69972464d
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74665249"
 ---
 # <a name="what-is-bing-local-business-search"></a>什么是必应当地企业搜索？
@@ -23,7 +23,7 @@ ms.locfileid: "74665249"
 ## <a name="features"></a>功能
 | Feature | 说明 |  
 | -- | -- | 
-| [查找当地企业和位置](quickstarts/local-quickstart.md) | 必应当地企业搜索 API 通过查询获取本地化的结果。 结果包括企业网站的 URL 和显示文本、电话号码以及地理位置，包括：GPS 坐标、城市、街道地址 |  
+| [查找当地企业和位置](quickstarts/local-quickstart.md) | 必应当地企业搜索 API 通过查询获取本地化的结果。 结果包括企业的网站 URL，并显示文本、电话号码和地理位置，包括：GPS 坐标、城市、街道地址 |  
 | [使用地理边界筛选当地结果](specify-geographic-search.md) | 添加坐标作为搜索参数，以将结果限制到由圆形区域或方框指定的特定地理区域。 | 
 | [按类别筛选当地企业结果](local-categories.md) | 按类别搜索当地企业结果 此选项使用调用方的反向 IP 地址或 GPS 坐标来返回各种企业类别的本地化结果。|
 
@@ -31,7 +31,7 @@ ms.locfileid: "74665249"
 可以通过任何编程语言调用必应当地企业搜索 API，只要该语言能够发出 HTTP 请求并分析 JSON 响应即可。 可以使用 REST API 访问此服务。
  
 1. 创建可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。   
-2. URL 对 `q=""` 查询参数的搜索词进行编码。 例如 `q=nearby+restaurant` 或 `q=nearby%20restaurant`。 如果需要，还要设置分页。 
+2. URL 对 `q=""` 查询参数的搜索词进行编码。 例如，`q=nearby+restaurant` 或 `q=nearby%20restaurant`。 如果需要，还要设置分页。 
 3. [向必应当地企业搜索 API 发送请求](quickstarts/local-quickstart.md) 
 4. 分析 JSON 响应 
 

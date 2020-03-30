@@ -1,18 +1,18 @@
 ---
 title: 创建 ILB ASE v1
-description: 创建和使用 ILB 的 ASE。 此文档仅为使用旧版 v1 ASE 的客户提供。
+description: 使用 ILB 创建和使用 ASE。 此文档仅提供给使用旧版 v1 ASE 的客户。
 author: ccompy
 ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d8ed6b1806e1cbb0ca7419c5892a4a84bc62e541
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 0c03905017629e28e41cce2adaa65eac347b8185
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688727"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294721"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>搭配应用服务环境使用内部负载均衡器
 
@@ -20,7 +20,7 @@ ms.locfileid: "74688727"
 > 本文介绍应用服务环境 v1。 应用服务环境有一个较新版本，此版本更易于使用并在更强大的基础结构上运行。 若要深入了解新版本，请先参阅[应用服务环境简介](intro.md)。
 >
 
-应用服务环境 (ASE) 功能是 Azure App Service 的一个高级服务选项，可提供多租户戳记中不会提供的增强型配置功能。 ASE 功能实质上是在 Azure 虚拟网络 (VNet) 中部署 Azure 应用服务。 若要更好地了解应用服务环境提供的功能，请阅读[什么是应用服务环境][WhatisASE]文档。 如果你不知道在 VNet 中操作的优点，请阅读[Azure 虚拟网络常见问题解答][virtualnetwork]。 
+应用服务环境 (ASE) 功能是 Azure App Service 的一个高级服务选项，可提供多租户戳记中不会提供的增强型配置功能。 ASE 功能实质上是在 Azure 虚拟网络 (VNet) 中部署 Azure 应用服务。 若要更好地理解 App Service 环境所提供的功能，请阅读文档：[什么是 App Service 环境][WhatisASE]。 如果不了解在 VNet 中操作的优点，请阅读 [Azure 虚拟网络常见问题解答][virtualnetwork]。 
 
 ## <a name="overview"></a>概述
 可以使用可访问 Internet 的终结点或 VNet 中的 IP 地址部署 ASE。 要将 IP 地址设置为 VNet 地址，需搭配内部负载均衡器 (ILB) 来部署 ASE。 使用 ILB 配置 ASE 时，需提供：
@@ -43,16 +43,16 @@ ms.locfileid: "74688727"
 * 通过门户购买证书并搭配应用使用。 当然也可以直接通过证书颁发机构获取证书并搭配应用使用，但是无法通过 Azure 门户这样做。
 
 ## <a name="creating-an-ilb-ase"></a>创建 ILB ASE
-创建 ILB ASE 通常与创建 ASE 没有太大差异。 有关创建 ASE 的更深入讨论，请参阅[如何创建应用服务环境][HowtoCreateASE]。 无论是在 ASE 创建期间创建 VNet 还是选择现有 VNet，创建 ILB ASE 的过程是相同的。 若要创建 ILB ASE，请执行以下操作： 
+创建 ILB ASE 通常与创建 ASE 没有太大差异。 有关创建 ASE 的深入讨论，请参阅[如何创建应用服务环境][HowtoCreateASE]。 无论是在 ASE 创建期间创建 VNet 还是选择现有 VNet，创建 ILB ASE 的过程是相同的。 若要创建 ILB ASE，请执行以下操作： 
 
-1. 在 Azure 门户中选择“创建资源”->“Web + 移动”->“应用服务环境”。
+1. 在 Azure 门户中选择“创建资源”->“Web + 移动”->“应用服务环境”。****
 2. 选择订阅。
 3. 选择或创建资源组。
 4. 选择或创建 VNet。
 5. 创建子网（如果选择 VNet）。
-6. 选择“虚拟网络/位置”->“VNet 配置”，并将“VIP 类型”设置为“内部”。
+6. 选择**虚拟网络/位置 -> VNet 配置**并将 VIP 类型设置为内部。
 7. 提供子域名称（此名称是一个子域，用于此 ASE 中创建的应用）。
-8. 选择“确定”，然后选择“创建”。
+8. 选择“确定”，然后选择“创建”。********
 
 ![][1]
 
@@ -63,12 +63,12 @@ ms.locfileid: "74688727"
 ## <a name="apps-in-an-ilb-ase"></a>ILB ASE 中的应用
 在 ILB ASE 中创建应用通常与在 ASE 中创建应用相同。 
 
-1. 在 Azure 门户中选择“创建资源”->“Web + 移动”->“Web”、“移动”或“API 应用”。
+1. 在 Azure 门户中选择“创建资源”->“Web + 移动”->“Web”、“移动”或“API 应用”。************
 2. 输入应用的名称。
 3. 选择订阅。
 4. 选择或创建资源组。
 5. 选择或创建应用服务计划 (ASP)。 如果创建新的 ASP，请选择 ASE 作为位置并选择希望在其中创建 ASP 的工作线程池。 创建该 ASP 时，请选择 ASE 作为位置并选择工作线程池。 指定应用的名称时，会看到应用名称下面的子域替换为 ASE 的子域。 
-6. 选择**创建**。 如果希望应用显示在仪表板上，请确保选中“固定到仪表板”复选框。 
+6. 选择 **“创建”**。 如果希望应用显示在仪表板上，请确保选中“固定到仪表板”复选框。**** 
 
 ![][2]
 
@@ -77,7 +77,7 @@ ms.locfileid: "74688727"
 ## <a name="post-ilb-ase-creation-validation"></a>ILB ASE 创建后验证
 ILB ASE 与非 ILB ASE 稍有不同。 如先前所述，除了管理自己的 DNS，还需提供自己的 HTTPS 连接证书。 
 
-创建 ASE 之后，你会注意到子域显示指定的子域，且“设置”菜单中有一个名为“ILB 证书”的新项。 使用自签名证书创建 ASE，使测试 HTTPS 更加轻松。 门户会告知你需要提供自己的用于 HTTPS 的证书，但这是促使你拥有与子域搭配的证书。 
+创建 ASE 之后，你会注意到子域显示指定的子域，且“设置”菜单中有一个名为“ILB 证书”的新项。******** 使用自签名证书创建 ASE，使测试 HTTPS 更加轻松。 门户会告知你需要提供自己的用于 HTTPS 的证书，但这是促使你拥有与子域搭配的证书。 
 
 ![][3]
 
@@ -87,14 +87,14 @@ ILB ASE 与非 ILB ASE 稍有不同。 如先前所述，除了管理自己的 D
 
 使用自己的证书试用流并测试对 ASE 的 HTTP 和 HTTPS 访问：
 
-1. 在创建 ASE 后转到 ASE UI（“ASE”->“设置”->“ILB 证书”）。
+1. 在创建 ASE 后转到 ASE UI（“ASE”->“设置”->“ILB 证书”）****。
 2. 通过选择证书 pfx 文件来设置 ILB 证书，并提供密码。 此步骤需要一些时间来处理，并且会显示正在进行缩放操作的消息。
-3. 获取 ASE 的 ILB 地址（“ASE”->“属性”->“虚拟 IP 地址”）。
+3. 获取 ASE 的 ILB 地址（“ASE”->“属性”->“虚拟 IP 地址”）****。
 4. 创建后，在 ASE 中创建 Web 应用。 
 5. 如果该 VNET 中没有 VM，则创建一个（不是在与 ASE 相同的子网中，否则会无法运作）。
 6. 设置子域的 DNS。 可以在 DNS 中将通配符与子域结合使用，或者如果想要执行一些简单测试，可编辑 VM 上的主机文件，将 Web 应用名称设置为 VIP IP 地址。 如果 ASE 的子域名称为 .ilbase.com，而 Web 应用名称为 mytestapp，则 mytestapp.ilbase.com 为寻址地址，请在主机文件中进行相应的设置。 （在 Windows 上，主机文件位于 C:\Windows\System32\drivers\etc\)
-7. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com （或者任何 Web 应用名称与子域组成的地址）。
-8. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com 。 如果使用自签名证书，则必须接受安全性不足的缺点。 
+7. 在该 VM 上使用浏览器并转到 `https://mytestapp.ilbase.com`（或者任何 Web 应用名称与子域组成的地址）。
+8. 在该 VM 上使用浏览器并转到 `https://mytestapp.ilbase.com` 。 如果使用自签名证书，则必须接受安全性不足的缺点。 
 
 ILB 的 IP 地址在“属性”中列为“虚拟 IP 地址”。
 
@@ -104,9 +104,9 @@ ILB 的 IP 地址在“属性”中列为“虚拟 IP 地址”。
 #### <a name="network-security-groups"></a>网络安全组
 可以使用 ILB ASE 针对应用进行网络隔离。 无法通过 Internet 来访问应用，甚至无法通过 Internet 来感知应用。 此方法非常适用于托管 Intranet 站点，例如业务线应用程序。 当需要更进一步地限制访问时，仍然可以使用网络安全组 (NSG) 来控制网络级别的访问。 
 
-如果想使用 NSG 进一步限制访问，则必须确保不会中断 ASE 运行所需的通信。 即使 HTTP/HTTPS 访问只通过 ASE 所使用的 ILB 进行，ASE 仍需依赖 VNet 外部资源。 若要查看仍需要哪些网络访问权限，请参阅使用 ExpressRoute[控制到应用服务环境的入站流量][ControlInbound]和[应用服务环境的网络配置详细信息][ExpressRoute]。 
+如果想使用 NSG 进一步限制访问，则必须确保不会中断 ASE 运行所需的通信。 即使 HTTP/HTTPS 访问只通过 ASE 所使用的 ILB 进行，ASE 仍需依赖 VNet 外部资源。 若要查看仍需何种网络访问权限，请参阅[控制到应用服务环境的入站流量][ControlInbound]和[使用 ExpressRoute 的应用服务环境的网络配置详细信息][ExpressRoute]。 
 
-若要配置 NSG，必须知道 Azure 所使用的 IP 地址，以管理 ASE。 如果该 IP 地址发出 Internet 请求，它也会成为 ASE 的出站 IP 地址。 ASE 的出站 IP 地址在 ASE 的生命周期中保持静态。 删除并重新创建 ASE 后，将获得新的 IP 地址。 若要查找此 IP 地址，请转到“设置”->“属性”并查找“出站 IP 地址”。 
+若要配置 NSG，必须知道 Azure 所使用的 IP 地址，以管理 ASE。 如果该 IP 地址发出 Internet 请求，它也会成为 ASE 的出站 IP 地址。 ASE 的出站 IP 地址在 ASE 的生命周期中保持静态。 删除并重新创建 ASE 后，将获得新的 IP 地址。 若要查找此 IP 地址，请转到“设置”->“属性”并查找“出站 IP 地址”。******** 
 
 ![][5]
 
@@ -123,7 +123,7 @@ ILB 的 IP 地址在“属性”中列为“虚拟 IP 地址”。
 
 
 ## <a name="getting-started"></a>入门
-若要开始应用服务环境，请参阅[应用服务环境简介][WhatisASE]
+若要开始使用应用服务环境，请参阅[应用服务环境简介][WhatisASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

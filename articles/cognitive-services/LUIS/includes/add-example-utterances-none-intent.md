@@ -11,10 +11,10 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.author: diberry
 ms.openlocfilehash: 956aa308bf1cb3736c491031239661ec6b295ddb
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77279541"
 ---
 客户端应用程序需要知道某个话语是否对应用程序没有意义或不合适。 在创建过程中，**None** 意向会添加到每个应用程序，以确定客户端应用程序是否不应回答某个言语。

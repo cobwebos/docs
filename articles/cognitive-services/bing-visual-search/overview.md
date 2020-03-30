@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
 ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446658"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>什么是必应视觉搜索 API？
@@ -57,7 +57,7 @@ ms.locfileid: "75446658"
 首先，请尝试必应视觉搜索 API [交互式演示](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/)。
 该演示介绍如何快速自定义搜索查询并在 Web 中搜索图像。
 
-若要快速了解如何使用第一个请求，请参阅快速入门：[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)。
+要快速了解如何使用第一个请求，请参阅快速入门：[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)。
 
 ## <a name="see-also"></a>另请参阅
 

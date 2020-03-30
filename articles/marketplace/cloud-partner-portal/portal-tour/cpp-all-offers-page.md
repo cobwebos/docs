@@ -1,28 +1,27 @@
 ---
-title: Azure Marketplace 的所有产品/服务页
-description: Azure Marketplace 的云合作伙伴门户中的 "所有产品/服务" 页面的概述。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Azure 应用商店的所有优惠页面
+description: Azure 应用商店云合作伙伴门户中"所有产品/服务"页的概述。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: pabutler
-ms.openlocfilehash: cb67ac44ee73d4d8074b577b2157f5846f451210
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e4001651d422d9197a849be5e7985107f9bf43dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821587"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288982"
 ---
 # <a name="all-offers-page"></a>全部产品/服务页
 
-通过[“全部产品/服务”**页，合作伙伴可查看创建的产品/服务列表（包括其名称、类型、发布者和当前状态）** ](https://cloudpartner.azure.com/#alloffers)。  可以指定字符串来筛选结果。   页面底部的状态区域显示聚合和页计数，并使你能够在列表页面之间导航。 选择此列表中的产品/服务，这将显示关联的产品/服务编辑器中的产品/服务。 
+通过[“全部产品/服务”](https://cloudpartner.azure.com/#alloffers)页，合作伙伴可查看创建的产品/服务列表（包括其名称、类型、发布者和当前状态）****。  可以指定字符串来筛选结果。   页面底部的状态区域显示聚合和页计数，并使你能够在列表页面之间导航。 选择此列表中的产品/服务，这将显示关联的产品/服务编辑器中的产品/服务。 
 
 
 ## <a name="example-page"></a>示例页
 
-下图显示根据字符串  **筛选的“全部产品/服务”页**`Contoso`。
+下图显示根据字符串 `Contoso` 筛选的“全部产品/服务”页****。
 
 ![全部产品/服务页](./media/all-offers-page1.png)
 

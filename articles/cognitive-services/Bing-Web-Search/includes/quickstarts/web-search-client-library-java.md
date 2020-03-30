@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: c204f8482d46d6586d490cb2bd3dd1a4cddac682
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925474"
 ---
 使用必应 Web 搜索客户端库可以轻松地将必应 Web 搜索集成到 Java 应用程序中。 本快速入门介绍了如何发送请求、接收 JSON 响应以及筛选和分析结果。
 
 想要马上查看代码？ GitHub 上提供了[适用于 Java 的必应搜索客户端库](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search)的示例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 下面是在开始本快速入门之前需要准备好的项目：
 

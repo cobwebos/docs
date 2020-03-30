@@ -1,36 +1,36 @@
 ---
 title: 索引器中的字段映射
 titleSuffix: Azure Cognitive Search
-description: 在索引器中配置字段映射，以考虑字段名称和数据表示形式之间的差异。
+description: 针对字段名称和数据表示的差异配置帐户索引器中的字段映射。
 manager: nitinme
-author: mgottein
+author: mattmsft
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 72623787cdb27c568fe2b4ec075010674a3996ef
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 3e09741e841897032b8146dee67b79e0c26ea5cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123995"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275146"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器进行字段映射和转换
 
-使用 Azure 认知搜索索引器时，有时会发现输入数据与目标索引的架构不完全匹配。 在这种情况下，可以在索引编制过程中使用**字段映射**来调整数据的形状。
+使用 Azure 认知搜索索引器时，你有时会发现，输入数据与目标索引的架构不完全匹配。 在这种情况下，可以在索引编制过程中使用**字段映射**来调整数据的形状。
 
 在某些情况下，字段映射会很有用：
 
-* 数据源具有一个名为 "`_id`" 的字段，但 Azure 认知搜索不允许以下划线开头的字段名称。 使用字段映射可以有效地为字段重命名。
+* 数据源具有名为 `_id` 的字段，但 Azure 认知搜索不允许字段名称以下划线开头。 使用字段映射可以有效地为字段重命名。
 * 你希望使用同一数据源数据填充索引中的多个字段。 例如，你可能想要将不同的分析器应用到这些字段。
 * 你希望使用多个数据源中的数据填充索引字段，而每个数据源使用不同的字段名称。
 * 需要对数据进行 Base64 编码或解码。 字段映射支持多个**映射函数**，包括用于 Base64 编码和解码的函数。
 
 > [!NOTE]
-> Azure 认知搜索索引器的字段映射功能提供了一种简单的方法来将数据字段映射到索引字段，并提供用于数据转换的几个选项。 较复杂的数据可能需要经过预处理，才能将形状调整为易于编制索引的形式。
+> Azure 认知搜索索引器的字段映射功能提供一种简单的方法用于将数据字段映射到索引字段，并提供几个用于数据转换的选项。 较复杂的数据可能需要经过预处理，才能将形状调整为易于编制索引的形式。
 >
-> Microsoft Azure 数据工厂是一个功能强大的基于云的解决方案，可用于导入和转换数据。 你也可以在编制索引之前编写代码来转换源数据。 有关代码示例，请参阅[为关系数据建模](search-example-adventureworks-modeling.md)和[为多级分面建模](search-example-adventureworks-multilevel-faceting.md)。
+> Microsoft Azure 数据工厂是功能强大的基于云的解决方案，可用于导入和转换数据。 你也可以在编制索引之前编写代码来转换源数据。 有关代码示例，请参阅[为关系数据建模](search-example-adventureworks-modeling.md)和[为多级分面建模](search-example-adventureworks-multilevel-faceting.md)。
 >
 
 ## <a name="set-up-field-mappings"></a>设置字段映射
@@ -72,7 +72,7 @@ api-key: [admin key]
 ```
 
 > [!NOTE]
-> Azure 认知搜索使用不区分大小写的比较来解析字段映射中的字段和函数名称。 此操作很方便（大小写无需全都正确），但这表示数据源或索引无法具有仅大小写不同的字段。  
+> Azure 认知搜索使用不区分大小写的比较，来解析字段映射中的字段和函数名称。 此操作很方便（大小写无需全都正确），但这表示数据源或索引无法具有仅大小写不同的字段。  
 >
 >
 
@@ -123,7 +123,7 @@ api-key: [admin key]
 
 #### <a name="example---document-key-lookup"></a>示例 - 文档键查找
 
-只有 URL 安全字符才能出现在 Azure 认知搜索文档密钥中（因为客户必须能够使用[查找 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document)来处理文档）。 如果键的源字段包含 URL 不安全的字符，在编制索引时，你可以使用 `base64Encode` 函数来转换该字段。
+Azure 认知搜索文档键中只能使用 URL 安全字符（因为客户必须能够使用[查找 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 来寻址文档）。 如果键的源字段包含 URL 不安全的字符，在编制索引时，你可以使用 `base64Encode` 函数来转换该字段。 但是，文档密钥（转换之前和之后）不能超过 1，024 个字符。
 
 在搜索时检索编码的键时，可以使用 `base64Decode` 函数获取原始键值，然后使用该值来检索源文档。
 
@@ -142,13 +142,13 @@ api-key: [admin key]
 
 如果未包含映射函数的 parameters 属性，该属性的默认值为 `{"useHttpServerUtilityUrlTokenEncode" : true}`。
 
-Azure 认知搜索支持两个不同的 Base64 编码。 在编码和解码同一字段时，应使用相同的参数。 在决定要使用哪些参数时，请参阅 [base64 编码选项](#base64details)了解详细信息。
+Azure 认知搜索支持两种不同的 Base64 编码： 在编码和解码同一字段时，应使用相同的参数。 在决定要使用哪些参数时，请参阅 [base64 编码选项](#base64details)了解详细信息。
 
 <a name="base64DecodeFunction"></a>
 
 ### <a name="base64decode-function"></a>base64Decode 函数
 
-执行输入字符串的 Base64 解码。 假设输入是 URL 安全的 Base64 编码字符串。
+执行输入字符串的 Base64 解码。 假设输入是 URL 安全的 Base64 编码字符串。**
 
 #### <a name="example---decode-blob-metadata-or-urls"></a>示例 - 解码 Blob 元数据或 URL
 
@@ -169,20 +169,20 @@ Azure 认知搜索支持两个不同的 Base64 编码。 在编码和解码同�
 
 如果未包含 parameters 属性，该属性的默认值为 `{"useHttpServerUtilityUrlTokenEncode" : true}`。
 
-Azure 认知搜索支持两个不同的 Base64 编码。 在编码和解码同一字段时，应使用相同的参数。 在决定要使用哪些参数时，请参阅 [base64 编码选项](#base64details)了解更多详细信息。
+Azure 认知搜索支持两种不同的 Base64 编码： 在编码和解码同一字段时，应使用相同的参数。 在决定要使用哪些参数时，请参阅 [base64 编码选项](#base64details)了解更多详细信息。
 
 <a name="base64details"></a>
 
 #### <a name="base64-encoding-options"></a>base64 编码选项
 
-Azure 认知搜索支持 URL 安全 base64 编码和常规 base64 编码。 应在以后使用相同的编码选项对在索引过程中进行 base64 编码的字符串进行解码，否则结果与原始的结果不匹配。
+Azure 认知搜索支持 URL 安全的 base64 编码和正常的 base64 编码。 在索引编制期间经过 base64 编码的字符串在以后应使用相同的编码选项进行解码，否则结果将与原始字符串不匹配。
 
 如果将用于编码或解码的 `useHttpServerUtilityUrlTokenEncode` 或 `useHttpServerUtilityUrlTokenDecode` 参数分别设置为 `true`，则 `base64Encode` 的行为与 [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) 类似，`base64Decode` 的行为与 [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx) 类似。
 
 > [!WARNING]
-> 如果 `base64Encode` 用于生成键值，则 `useHttpServerUtilityUrlTokenEncode` 必须设置为 true。 只有 URL 安全 base64 编码可用于键值。 请参阅[命名&#40;规则 Azure&#41;认知搜索](https://docs.microsoft.com/rest/api/searchservice/naming-rules)以获取对键值中字符的完整限制集。
+> 如果使用 `base64Encode` 来生成密钥值，则必须将 `useHttpServerUtilityUrlTokenEncode` 设置为 true。 只能将 URL 安全的 base64 编码用于密钥值。 请参阅[命名规则（Azure 认知搜索）](https://docs.microsoft.com/rest/api/searchservice/naming-rules)，了解对密钥值中字符的整套限制。
 
-Azure 认知搜索中的 .NET 库采用 .NET Framework 提供内置编码的完整。 `useHttpServerUtilityUrlTokenEncode` 和 `useHttpServerUtilityUrlTokenDecode` 选项利用此内置 functionaity。 如果你使用的是 .NET Core 或其他框架，我们建议将这些选项设置为 `false` 并直接调用框架的编码和解码函数。
+Azure 认知搜索中的 .NET 库采用完整的 .NET 框架来提供内置编码。 `useHttpServerUtilityUrlTokenEncode` 和 `useHttpServerUtilityUrlTokenDecode` 选项利用了此内置功能。 如果使用 .NET Core 或其他框架，建议将这些选项设置为 `false` 并直接调用框架的编码和解码函数。
 
 下表比较了对字符串 `00>00?00` 进行不同的 base64 编码的结果。 若要确定 base64 函数所需的其他处理（如有），请对字符串 `00>00?00` 应用库编码函数，然后比较输出和预期的输出 `MDA-MDA_MDA`。
 
@@ -235,7 +235,7 @@ Azure 认知搜索中的 .NET 库采用 .NET Framework 提供内置编码的完�
 
 #### <a name="example---populate-collection-from-relational-data"></a>示例 - 使用关系数据填充集合
 
-Azure SQL 数据库没有内置的数据类型，该数据类型自然映射到 Azure 认知搜索中 `Collection(Edm.String)` 字段。 若要填充字符串集合字段，可将源数据预处理成 JSON 字符串数组，然后使用 `jsonArrayToStringCollection` 映射函数。
+Azure SQL 数据库不具有能自然映射到 Azure 认知搜索中 `Collection(Edm.String)` 字段的内置数据类型。 若要填充字符串集合字段，可将源数据预处理成 JSON 字符串数组，然后使用 `jsonArrayToStringCollection` 映射函数。
 
 ```JSON
 
@@ -292,6 +292,28 @@ Azure SQL 数据库没有内置的数据类型，该数据类型自然映射到 
     "targetFieldName" : "SearchableMetadata",
     "mappingFunction" : {
       "name" : "urlDecode"
+    }
+  }]
+ ```
+ 
+ <a name="fixedLengthEncodeFunction"></a>
+ 
+ ### <a name="fixedlengthencode-function"></a>固定长度编码功能
+ 
+ 此函数将任何长度的字符串转换为固定长度字符串。
+ 
+ ### <a name="example---map-document-keys-that-are-too-long"></a>示例 - 映射太长的文档键
+ 
+当遇到抱怨文档密钥长度超过 1024 个字符的错误时，可以应用此功能来缩短文档密钥的长度。
+
+ ```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "metadata_storage_path",
+    "targetFieldName" : "your key field",
+    "mappingFunction" : {
+      "name" : "fixedLengthEncode"
     }
   }]
  ```

@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 07/17/2019
 ms.author: pafarley
 ms.openlocfilehash: ce67062f83ad10703dfb1f0ee1f3741e698fb450
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70130064"
 ---
 作为最低要求，我们建议在初始训练集中每个标记使用至少 30 张图像。 此外还需要收集一些额外的图像，以便在训练模型后测试模型。
@@ -20,7 +20,7 @@ ms.locfileid: "70130064"
 * background
 * 视觉样式
 * 个人/分组主题
-* size
+* 大小
 * type
 
 此外，请确保所有训练图像满足以下条件：

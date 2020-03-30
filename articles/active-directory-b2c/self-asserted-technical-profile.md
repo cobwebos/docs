@@ -1,5 +1,5 @@
 ---
-title: 在自定义策略中定义自断言技术配置文件
+title: 定义自定义策略中的自断言技术配置文件
 titleSuffix: Azure AD B2C
 description: 定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件。
 services: active-directory-b2c
@@ -8,25 +8,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e0a282be9b8a20c64cd3e74e7860a289baa5aec6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2b29b8b0975639e5c5315a55e1382794d7662665
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183799"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332510"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-需要用户提供输入的 Azure Active Directory B2C （Azure AD B2C）中的所有交互均为自断言技术配置文件。 例如，注册页面、登录页面或密码重置页面。
+在 Azure Active Directory B2C (Azure AD B2C) 中用户需要提供输入的所有交互都属于自我断言技术配置文件。 例如，注册页面、登录页面或密码重置页面。
 
 ## <a name="protocol"></a>协议
 
-“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 “handler”属性必须包含 Azure AD B2C 用来自断言的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+"**Name****协议"** 元素的名称属性需要设置为`Proprietary`。 “handler”**** 属性必须包含 Azure AD B2C 用来自断言的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 下面的示例显示了电子邮件注册的自断言技术配置文件：
 
@@ -38,7 +38,7 @@ ms.locfileid: "78183799"
 
 ## <a name="input-claims"></a>输入声明
 
-在自断言技术配置文件中，可以使用**InputClaims**和**InputClaimsTransformations**元素来预填充出现在自断言页面（显示声明）上的声明的值。 例如，在编辑配置文件策略中，用户旅程首先从 Azure AD B2C 目录服务读取用户配置文件，然后自断言技术配置文件使用用户配置文件中存储的用户数据设置输入声明。 这些声明是从用户配置文件中收集的，然后呈现给可以编辑现有数据的用户。
+在自断言技术配置文件中，你可以使用“InputClaims”和“InputClaimsTransformations”元素预填充自断言页面上出现的声明的值（显示声明）********。 例如，在编辑配置文件策略中，用户旅程首先从 Azure AD B2C 目录服务读取用户配置文件，然后自断言技术配置文件使用用户配置文件中存储的用户数据设置输入声明。 这些声明是从用户配置文件中收集的，然后呈现给可以编辑现有数据的用户。
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -53,23 +53,23 @@ ms.locfileid: "78183799"
 
 ## <a name="display-claims"></a>显示声明
 
-显示声明功能目前处于**预览阶段**。
+此显示声明功能目前以预览版提供****。
 
-**DisplayClaims**元素包含用于从用户收集数据的声明的列表。 若要预填充显示声明的值，请使用前面介绍的输入声明。 另外，此元素还可能包含默认值。
+“DisplayClaims”元素包含要呈现在屏幕上用于从用户处收集数据的声明列表****。 要预填充显示声明的值，请使用前面描述的输入声明。 另外，此元素还可能包含默认值。
 
-**DisplayClaims**中声明的顺序指定 Azure AD B2C 在屏幕上呈现声明的顺序。 若要强制用户为特定声明提供值，请将**DisplayClaim**元素的**Required**特性设置为 `true`。
+“DisplayClaims”中的声明顺序指定 Azure AD B2C 在屏幕上呈现声明的顺序****。 若要强制用户提供特定声明的值，请将“DisplayClaim”元素的“Required”属性设置为 `true`********。
 
-**DisplayClaims**集合中的**ClaimType**元素需要将**UserInputType**元素设置为 Azure AD B2C 支持的任何用户输入类型。 例如，`TextBox` 或 `DropdownSingleSelect`。
+“DisplayClaims”集合中的“ClaimType”元素需要将“UserInputType”元素设置为 Azure AD B2C 支持的任意用户输入类型************。 例如，`TextBox` 或 `DropdownSingleSelect`。
 
-### <a name="add-a-reference-to-a-displaycontrol"></a>添加对控件的引用
+### <a name="add-a-reference-to-a-displaycontrol"></a>添加对 DisplayControl 的引用
 
-在 "显示声明" 集合中，可以包含对已创建的显示[控件](display-controls.md)的引用。 显示控件是一个具有特殊功能并与 Azure AD B2C 后端服务进行交互的用户界面元素。 它允许用户在页面上执行在后端调用验证技术配置文件的操作。 例如，验证电子邮件地址、电话号码或客户会员号。
+在显示声明集合中，可以包含对已创建的 [DisplayControl](display-controls.md) 的引用。 显示控件是一个具有特殊功能的用户界面元素，可以与 Azure AD B2C 后端服务进行交互。 它允许用户在页面上执行某些操作，这些操作在后端调用验证技术配置文件。 例如，验证电子邮件地址、电话号码或客户会员号。
 
-下面的示例 `TechnicalProfile` 阐释了如何将显示声明用于显示控件。
+以下示例 `TechnicalProfile` 阐释了如何配合使用显示声明和显示控件。
 
-* 第一个显示声明将对收集和验证电子邮件地址的 `emailVerificationControl` 显示控件进行引用。
-* 第五个显示声明将对收集和验证电话号码的 `phoneVerificationControl` 显示控件进行引用。
-* 其他显示声明是从用户收集的 ClaimTypes。
+* 第一个显示声明引用`emailVerificationControl`显示控件，该控件收集和验证电子邮件地址。
+* 第五个显示声明引用`phoneVerificationControl`显示控件，该控件收集和验证电话号码。
+* 其他显示声明为 ClaimTypes，要从用户处收集。
 
 ```XML
 <TechnicalProfile Id="Id">
@@ -85,13 +85,13 @@ ms.locfileid: "78183799"
 </TechnicalProfile>
 ```
 
-如前所述，引用显示控件的显示声明可能会运行其自己的验证，例如，验证电子邮件地址。 此外，自断言页面支持使用验证技术配置文件来验证整个页面，包括任何用户输入（声明类型或显示控件），然后再继续执行下一个业务流程步骤。
+如上所述，引用显示控件的显示声明可以自己运行验证，例如，验证电子邮件地址。 此外，自断言页面支持在执行下一个业务流程步骤之前使用验证技术配置文件来验证整个页面，包括任何用户输入（声明类型或显示控件）。
 
-### <a name="combine-usage-of-display-claims-and-output-claims-carefully"></a>仔细组合显示声明和输出声明的使用情况
+### <a name="combine-usage-of-display-claims-and-output-claims-carefully"></a>谨慎细心地配合使用显示声明和输出声明
 
-如果在自断言技术配置文件中指定一个或多个**DisplayClaim**元素，则必须对要在屏幕上显示并从用户收集的*每个*声明使用 DisplayClaim。 自断言技术配置文件中不显示任何输出声明，其中至少包含一个显示声明。
+如果在自断言技术配置文件中指定一个或多个“DisplayClaim”元素，则必须对要从用户处收集的、要在屏幕上显示的每个声明使用 DisplayClaim******。 至少包含一个显示声明的自断言技术配置文件中不显示任何输出声明。
 
-请考虑以下示例，其中 `age` 声明在基本策略中定义为**输出**声明。 在将任何显示声明添加到自断言技术配置文件之前，将在屏幕上显示 `age` 声明，以便从用户收集数据：
+请思考以下示例，其中 `age` 声明被定义为基本策略中的输出声明****。 在将任何显示声明添加到自断言技术配置文件之前，屏幕上会显示 `age` 声明，用于从用户处收集数据：
 
 ```XML
 <TechnicalProfile Id="id">
@@ -101,7 +101,7 @@ ms.locfileid: "78183799"
 </TechnicalProfile>
 ```
 
-如果继承该基准的叶策略随后将 `officeNumber` 指定为**显示**声明：
+如果继承了该基本策略的叶策略随后指定 `officeNumber` 作为显示声明****：
 
 ```XML
 <TechnicalProfile Id="id">
@@ -114,14 +114,16 @@ ms.locfileid: "78183799"
 </TechnicalProfile>
 ```
 
-基本策略中的 `age` 声明在屏幕上不再向用户显示-它实际上是 "隐藏"。 若要显示 `age` 声明并从用户收集 age 值，你必须添加一个 `age` **DisplayClaim**。
+屏幕上不再向用户显示基本策略中的 `age` 声明 - 它实际上处于“隐藏”状态。 若要显示 `age` 声明并从用户处收集“年龄”值，需要将  添加到 DisplayClaim`age` ****。
 
 ## <a name="output-claims"></a>输出声明
 
-**OutputClaims**元素包含要返回到下一个业务流程步骤的声明列表。 **DefaultValue**特性仅在从未设置该声明时才会生效。 如果在上一个业务流程步骤中设置了此值，则即使用户将值保留为空，默认值也不会生效。 若要强制使用默认值，请将“AlwaysUseDefaultValue”属性设置为 `true`。
+“OutputClaims”元素包含要返回到下一个业务流程步骤的的声明列表****。 “DefaultValue”属性只有在从未设置过声明的情况下才会生效****。 如果在上一业务流程步骤中设置过，即使用户将值留空，默认值也不会生效。 若要强制使用默认值，请将“AlwaysUseDefaultValue”**** 属性设置为 `true`。
+
+出于安全原因，密码声明值 （`UserInputType`设置为`Password`） 仅适用于自断言的技术配置文件的验证技术配置文件。 您不能在下一个业务流程步骤中使用密码声明。 
 
 > [!NOTE]
-> 在以前版本的标识体验框架（IEF）中，输出声明用于从用户那里收集数据。 若要从用户那里收集数据，请改用**DisplayClaims**集合。
+> 在以前的 Identity Experience Framework (IEF) 版本中，输出声明用于从用户处收集数据。 若要从用户处收集数据，请改用“DisplayClaims”集合****。
 
 **OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
@@ -129,14 +131,14 @@ ms.locfileid: "78183799"
 
 在自断言技术配置文件中，输出声明集合将声明返回到下一个业务流程步骤。
 
-在以下情况时，应使用输出声明：
+在：
 
-- **声明由输出声明转换输出**。
-- **在输出声明中设置默认值**，而不从用户那里收集数据或返回验证技术配置文件中的数据。 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件将“executed-SelfAsserted-Input”声明设置为 `true`。
+- 声明由输出声明转换输出****。
+- 在输出声明中设置默认值无需从用户处收集数据或从验证技术配置文件返回数据****。 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件将“executed-SelfAsserted-Input”**** 声明设置为 `true`。
 - **验证技术配置文件返回输出声明** - 你的技术配置文件可以调用返回某些声明的验证技术配置文件。 你需要发出声明并将其返回到用户旅程中的下一个业务流程步骤。 例如，当使用本地帐户登录时，名为 `SelfAsserted-LocalAccountSignin-Email` 的自断言技术配置文件会调用名为 `login-NonInteractive` 的验证技术配置文件。 此技术配置文件将验证用户凭据，并返回用户配置文件。 例如“userPrincipalName”、“displayName”、“givenName”和“surName”。
-- **显示控件返回输出声明**-技术配置文件可能具有对[显示控件](display-controls.md)的引用。 显示控件返回一些声明，如已验证的电子邮件地址。 你需要发出声明并将其返回到用户旅程中的下一个业务流程步骤。 显示控件功能目前处于**预览阶段**。
+- **显示控件返回输出声明** - 技术配置文件可能引用[显示控件](display-controls.md)。 显示控件返回某些声明，如已验证的电子邮件地址。 你需要发出声明并将其返回到用户旅程中的下一个业务流程步骤。 此显示控件功能目前以预览版提供****。
 
-下面的示例演示如何使用自断言技术配置文件，该配置文件使用显示声明和输出声明。
+以下示例演示如何使用同时包含显示声明和输出声明的自断言技术配置文件。
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -175,7 +177,7 @@ ms.locfileid: "78183799"
 
 ## <a name="persist-claims"></a>保存声明
 
-如果“PersistedClaims”元素不存在，则自断言技术配置文件不会将数据保存到 Azure AD B2C。 而是改为调用负责保留数据的验证技术配置文件。 例如，注册策略使用 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件来收集新用户配置文件。 `LocalAccountSignUpWithLogonEmail` 技术配置文件调用验证技术配置文件来在 Azure AD B2C 中创建帐户。
+不使用持久声明元素。 自断言的技术配置文件不会将数据保存到 Azure AD B2C。 而是改为调用负责保留数据的验证技术配置文件。 例如，注册策略使用 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件来收集新用户配置文件。 `LocalAccountSignUpWithLogonEmail` 技术配置文件调用验证技术配置文件来在 Azure AD B2C 中创建帐户。
 
 ## <a name="validation-technical-profiles"></a>验证技术配置文件
 
@@ -187,24 +189,25 @@ ms.locfileid: "78183799"
 
 ## <a name="metadata"></a>元数据
 
-| Attribute | 必选 | 说明 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
-| 设置。 operatingMode <sup>1</sup>| 否 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。  |
-| AllowGenerationOfClaimsWithNullValues| 否| 允许生成 null 值声明。 例如，如果用户未选中复选框，则为。|
+| 设置.操作模式<sup>1</sup>| 否 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。  |
+| 允许生成具有空值的 claims| 否| 允许生成具有 null 值的声明。 例如，在这种情况下，用户不选择复选框。|
 | ContentDefinitionReferenceId | 是 | 与此技术配置文件关联的[内容定义](contentdefinitions.md)的标识符。 |
 | EnforceEmailVerification | 否 | 对于注册或配置文件编辑，强制实施电子邮件验证。 可能的值为 `true`（默认）或 `false`。 |
-| setting.retryLimit | 否 | 控制用户可以尝试提供数据的次数，所提供数据将根据验证技术配置文件进行检查。 例如，用户尝试注册已经存在的帐户，而且一直尝试，直到达到限制。
-| SignUpTarget <sup>1</sup>| 否 | 注册目标交换标识符。 当用户单击“注册”按钮时，Azure AD B2C 将执行指定的交换标识符。 |
+| setting.retryLimit | 否 | 控制用户可以尝试提供针对验证技术配置文件检查的数据的次数。 例如，用户尝试注册已经存在的帐户，而且一直尝试，直到达到限制。
+| 注册目标<sup>1</sup>| 否 | 注册目标交换标识符。 当用户单击“注册”按钮时，Azure AD B2C 将执行指定的交换标识符。 |
 | setting.showCancelButton | 否 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
-| 设置。 showSignupLink <sup>2</sup>| 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
-| 设置。 forgotPasswordLinkLocation <sup>2</sup>| 否| 显示 "忘记密码" 链接。 可能的值： `AfterInput` （默认值）该链接显示在页面底部，或者 `None` 删除 "忘记密码" 链接。|
-| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项设置为 `true`。 |
+| 设置.showSignupLink <sup>2</sup>| 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
+| 设置.忘记密码链接位置<sup>2</sup>| 否| 显示忘记的密码链接。 可能的值：（`AfterInput`默认）链接显示在页面底部，或删除`None`忘记的密码链接。|
+| 设置.启用记住Me <sup>2</sup>| 否| 显示"[让我登录](custom-policy-keep-me-signed-in.md)"复选框。 可能的值：`true`或`false`（默认值）。 |
+| 包括索赔解决索赔处理  | 否 | 对于输入和输出声明，指定[索赔解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true`或`false` （默认值）。 如果要在技术配置文件中使用声明解析器，则将此解决方案设置为`true`。 |
 
 说明：
-1. 可用于内容定义[DataUri](contentdefinitions.md#datauri)类型的 `unifiedssp`或 `unifiedssd`。
-1. 可用于内容定义[DataUri](contentdefinitions.md#datauri)类型的 `unifiedssp`或 `unifiedssd`。 [页面布局版本](page-layout.md)1.1.0 及更高版本。
+1. 可用于 内容定义[DataUri](contentdefinitions.md#datauri) `unifiedssp`类型`unifiedssd`。
+1. 可用于 内容定义[DataUri](contentdefinitions.md#datauri) `unifiedssp`类型`unifiedssd`。 [页面布局版本](page-layout.md)1.1.0 及以上。
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
-不使用“CryptographicKeys”元素。
+不使用“CryptographicKeys”**** 元素。

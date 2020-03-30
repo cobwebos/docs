@@ -10,14 +10,16 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 829921ae5600873fdc8f2946ae3ff355bffb06a8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a48c553f1c96b8777e0a591f428dca3f15d7d30e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978588"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053644"
 ---
 # <a name="what-is-custom-vision"></a>什么是自定义视觉？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 自定义视觉是一种认知服务，用于生成、部署和改进自己的图像分类器。 图像分类器是一种 AI 服务，可以根据视觉特征为图像应用标签（代表类  ）。 与[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)服务不同，自定义视觉允许你确定要应用的标签。
 
@@ -29,7 +31,7 @@ ms.locfileid: "74978588"
 
 可以将自定义视觉功能分为两种功能。 **图像分类**可将一个或多个标签应用到图像。 **对象检测**与之类似，但还在图像中返回坐标，坐标中可以找到应用的标签。
 
-### <a name="optimization"></a>优化
+### <a name="optimization"></a>Optimization
 
 自定义视觉服务经过优化，可以快速识别图像之间的主要差异，因此你可以使用少量数据开始原型制作。 开始时，每个标签通常可以包含 50 个图像。 此服务不适用于检测图像中的细微差异（例如，在质量保证方案中检测细微裂纹或凹陷）。
 

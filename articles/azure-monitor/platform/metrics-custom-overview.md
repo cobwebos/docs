@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 0050112dc7d9d2fa20da612691f1ff0927df93fb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e104877ef641a87eac4ba19bb3342c6e029bf80c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79274367"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294597"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor 中的自定义指标
 
@@ -24,18 +24,18 @@ ms.locfileid: "79274367"
 - 使用 Azure Application Insights SDK 检测应用程序并将自定义遥测数据发送到 Azure Monitor。 
 - 在 [Azure VM](collect-custom-metrics-guestos-resource-manager-vm.md)、[虚拟机规模集](collect-custom-metrics-guestos-resource-manager-vmss.md)、[经典 VM](collect-custom-metrics-guestos-vm-classic.md) 或[经典云服务](collect-custom-metrics-guestos-vm-cloud-service-classic.md)上安装 Windows Azure 诊断 (WAD) 扩展，并将性能计数器发送到 Azure Monitor。 
 - 在 Azure Linux VM 上安装 [InfluxData Telegraf 代理](collect-custom-metrics-linux-telegraf.md)，并使用 Azure Monitor 输出插件发送指标。
-- 将自定义指标[直接发送到 Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)：`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
+- 将自定义指标[直接发送到 Azure 监视器 REST](../../azure-monitor/platform/metrics-store-custom-rest-api.md) `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`API 。
 
 将自定义指标发送到 Azure Monitor 时，报告的每个数据点或值必须包括以下信息。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 若要将自定义指标提交到 Azure Monitor，提交指标的实体需在请求的 **Bearer** 标头中提供有效的 Azure Active Directory (Azure AD) 令牌。 可通过几种支持的方法获取有效的持有者令牌：
-1. [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 为 Azure 资源本身（例如 VM）提供一个标识。 托管服务标识 (MSI) 旨在授予资源权限来执行特定的操作。 例如，允许资源发出有关其自身的指标。 可为某个资源或其 MSI 授予针对另一个资源的“监视指标发布者”权限。 获取此权限后，该 MSI 也能发出其他资源的指标。
+1. [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 为 Azure 资源本身（例如 VM）提供一个标识。 托管服务标识 (MSI) 旨在授予资源权限来执行特定的操作。 例如，允许资源发出有关其自身的指标。 可为某个资源或其 MSI 授予针对另一个资源的“监视指标发布者”权限。**** 获取此权限后，该 MSI 也能发出其他资源的指标。
 2. [Azure AD 服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。 在此方案中，可向某个 Azure AD 应用程序或服务分配发出有关 Azure 资源的指标的权限。
-为了对请求进行身份验证，Azure Monitor 将使用 Azure AD 公钥来验证应用程序令牌。 现有的“监视指标发布者”角色已拥有此权限。 可在 Azure 门户中使用此权限。 可以根据服务主体要发出哪些资源的自定义指标，在所需的范围为该服务主体授予“监视指标发布者”角色。 范围的示例包括订阅、资源组或特定资源。
+为了对请求进行身份验证，Azure Monitor 将使用 Azure AD 公钥来验证应用程序令牌。 现有的“监视指标发布者”角色已拥有此权限。**** 可在 Azure 门户中使用此权限。 可以根据服务主体要发出哪些资源的自定义指标，在所需的范围为该服务主体授予“监视指标发布者”角色。**** 范围的示例包括订阅、资源组或特定资源。
 
 > [!NOTE]  
-> 请求用于发出自定义指标的 Azure AD 令牌时，请确保请求该令牌的受众或资源是 https://monitoring.azure.com/。 请务必包含尾部的“/”。
+> 请求用于发出自定义指标的 Azure AD 令牌时，请确保请求该令牌的受众或资源是 `https://monitoring.azure.com/`。 请务必包含尾部的“/”。
 
 ### <a name="subject"></a>主题
 此属性捕获自定义指标报告的 Azure 资源 ID。 将在 API 调用的 URL 中为此信息编码。 每个 API 只能提交单个 Azure 资源的指标值。
@@ -57,24 +57,24 @@ ms.locfileid: "79274367"
 发送到 Azure Monitor 的每个数据点必须带有时间戳标记。 此时间戳捕获测量或收集指标值的日期时间。 Azure Monitor 接受带有过去最多 20 分钟和将来最多 5 分钟时间戳的指标数据。 时间戳必须采用 ISO 8601 格式。
 
 ### <a name="namespace"></a>命名空间
-命名空间可将类似的指标分类或分组到一起。 使用命名空间能够在可收集不同见解或性能指标的指标组之间实现隔离。 例如，你可能有一个名为**contosomemorymetrics**的命名空间，用于跟踪分析你的应用程序的内存使用度量值。 另一个名为**contosoapptransaction**的命名空间可能会跟踪有关应用程序中的用户事务的所有指标。
+命名空间可将类似的指标分类或分组到一起。 使用命名空间能够在可收集不同见解或性能指标的指标组之间实现隔离。 例如，您可能有一个称为 **"同体记忆度量"** 的命名空间，用于跟踪配置文件应用的内存使用指标。 另一个称为**contosoapp 事务的**命名空间可能会跟踪有关应用程序中用户事务的所有指标。
 
-### <a name="name"></a>名称
-“名称”是正在报告的指标的名称。 通常，该名称具有足够的自述性，可帮助识别所要测量的指标。 以测量给定 VM 上所用内存字节数的指标为例， 该指标可以使用类似于“已使用内存字节数”的名称。
+### <a name="name"></a>“属性”
+“名称”是正在报告的指标的名称。**** 通常，该名称具有足够的自述性，可帮助识别所要测量的指标。 以测量给定 VM 上所用内存字节数的指标为例， 该指标可以使用类似于“已使用内存字节数”的名称。****
 
 ### <a name="dimension-keys"></a>维度键
-维度是一个键/值对，帮助描述有关收集的指标的附加特征。 使用附加特征可以收集用于提供更深入见解的指标的详细信息。 例如，“已使用内存字节数”指标可以包含名为“进程”的维度键，用于捕获 VM 上的每个进程消耗的内存字节数。 使用此键可以筛选指标，以查看特定的进程使用了多少内存，或者识别内存用量最高的 5 个进程。
-维度是可选的，并非所有指标都可以有维度。 自定义指标最多可以有10个维度。
+维度是一个键/值对，帮助描述有关收集的指标的附加特征。 使用附加特征可以收集用于提供更深入见解的指标的详细信息。 例如，“已使用内存字节数”指标可以包含名为“进程”的维度键，用于捕获 VM 上的每个进程消耗的内存字节数。******** 使用此键可以筛选指标，以查看特定的进程使用了多少内存，或者识别内存用量最高的 5 个进程。
+维度是可选的，并非所有指标都可能包含维度。 一个自定义指标最多可以包含 10 个维度。
 
 ### <a name="dimension-values"></a>维度值
 报告指标数据点时，所报告的指标的每个维度键都有一个对应的维度值。 例如，可以报告 VM 上 ContosoApp 使用的内存：
 
-* 指标名称是“已使用内存字节数”。
-* 维度键是“进程”。
-* 维度值是“ContosoApp.exe”。
+* 指标名称是“已使用内存字节数”。****
+* 维度键是“进程”。****
+* 维度值是“ContosoApp.exe”。****
 
-发布指标值时，只能为每个维度键指定一个维度值。 如果收集 VM 上多个进程的相同“内存使用率”指标，则可以报告该时间戳的多个指标值。 每个指标值将为“进程”维度键指定不同的维度值。
-维度是可选的，并非所有指标都可以有维度。 如果度量值后定义了维度键，则相应的维度值是必需的。
+发布指标值时，只能为每个维度键指定一个维度值。 如果收集 VM 上多个进程的相同“内存使用率”指标，则可以报告该时间戳的多个指标值。 每个指标值将为“进程”维度键指定不同的维度值。****
+维度是可选的，并非所有指标都可能包含维度。 如果指标帖子定义维度键，则相应的维度值是必需的。
 
 ### <a name="metric-values"></a>指标值
 Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在给定的分钟内，某个指标可能需要多次采样， 例如 CPU 利用率。 或者，可能需要针对多个离散事件进行测量， 例如登录事务延迟。 若要在 Azure Monitor 中限制发出和支付的原始值数目，可在本地预先聚合并发出值：
@@ -106,7 +106,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 使用此过程可以发出在给定的分钟内，相同指标与维度的组合的多个值。 然后，Azure Monitor 将会提取在给定分钟内发出的所有原始值，并将其聚合在一起。
 
 ### <a name="sample-custom-metric-publication"></a>样本自定义指标发布
-以下示例在虚拟机的“内存分析”指标命名空间下创建名为“已使用内存字节数”的自定义指标。 该指标包含名为“进程”的单个维度。 对于给定的时间戳，我们将发出两个不同进程的指标值：
+以下示例在虚拟机的“内存分析”指标命名空间下创建名为“已使用内存字节数”的自定义指标。******** 该指标包含名为“进程”的单个维度。**** 对于给定的时间戳，我们将发出两个不同进程的指标值：
 
 ```json
 {
@@ -152,18 +152,18 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 在发出自定义指标之前，无需在 Azure Monitor 中预定义该指标。 发布的每个指标数据点包含命名空间、名称和维度信息。 因此，首次将自定义指标发送到 Azure Monitor 时，会自动创建指标定义。 然后，可在通过指标定义发出其指标的任何资源上发现此指标定义。
 
 > [!NOTE]  
-> Azure Monitor 尚不支持定义自定义指标的**单位**。
+> Azure 监视器还不支持为自定义指标定义**单位**。
 
 ## <a name="using-custom-metrics"></a>使用自定义指标
 将自定义指标提交到 Azure Monitor 之后，可以通过 Azure 门户浏览它们，以及通过 Azure Monitor REST API 查询它们。 还可以对其创建警报，以便在满足特定的条件时收到通知。
 
 > [!NOTE]
-> 你需要成为 "读者" 或 "参与者" 角色才能查看自定义指标。
+> 您需要是读取器或参与者角色才能查看自定义指标。
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>通过 Azure 门户浏览自定义指标
-1.    转到 [Azure 门户](https://portal.azure.com)。
-2.    选择“监视”窗格。
-3.    选择“指标”。
+1.    转到[Azure 门户](https://portal.azure.com)。
+2.    选择“监视”窗格。****
+3.    选择“指标”****。
 4.    选择已针对其发出自定义指标的资源。
 5.    选择自定义指标的指标命名空间。
 6.    选择自定义指标。
@@ -179,7 +179,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 |美国中北部 | https：\//northcentralus.monitoring.azure.com
 |美国中南部| https：\//southcentralus.monitoring.azure.com/ |
 |美国中部      | https：\//centralus.monitoring.azure.com |
-|加拿大中部 | https：\//canadacentral.monitoring.azure.comc
+|加拿大中部 | https：\//加拿大中心.监视.azure.comc
 |美国东部| https：\//eastus.monitoring.azure.com/ |
 | **欧洲** | |
 |北欧    | https：\//northeurope.monitoring.azure.com/ |
