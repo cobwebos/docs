@@ -1,6 +1,6 @@
 ---
-title: ExpressRoute：将 VNet 链接到线路： Azure 门户
-description: 将 VNet 连接到 Azure ExpressRoute 线路。 操作步骤。
+title: 快速路由：将 VNet 链接到电路：Azure 门户
+description: 将 VNet 连接到 Azure 快速路由电路。 操作步骤。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -9,19 +9,19 @@ ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272911"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>使用门户将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [PowerShell](expressroute-howto-linkvnet-arm.md)
+> * [电源外壳](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [PowerShell（经典）](expressroute-howto-linkvnet-classic.md)
+> * [电源外壳（经典）](expressroute-howto-linkvnet-classic.md)
 > 
 
 本文可帮助你使用 Azure 门户创建连接来将虚拟网络链接到 Azure ExpressRoute 线路。 连接到 Azure ExpressRoute 线路的虚拟网络可以在同一订阅中，也可以属于另一订阅。
@@ -32,7 +32,7 @@ ms.locfileid: "79272911"
 
 * 必须有一个活动的 ExpressRoute 线路。
   * 请按说明[创建 ExpressRoute 线路](expressroute-howto-circuit-portal-resource-manager.md)，并通过连接提供商启用该线路。
-  * 请确保为线路配置 Azure 专用对等互连。 有关对等互连和路由说明，请参阅[创建和修改 ExpressRoute 线路的对等互连一](expressroute-howto-routing-portal-resource-manager.md)文。
+  * 请确保为线路配置 Azure 专用对等互连。 有关对等互连和路由说明，请参阅[为 ExpressRoute 线路创建和修改对等互连](expressroute-howto-routing-portal-resource-manager.md)一文。
   * 确保配置 Azure 专用对等互连并运行网络和 Microsoft 之间的 BGP 对等互连，以便启用端到端连接。
   * 确保已创建并完全预配一个虚拟网络和一个虚拟网络网关。 按照说明[创建 ExpressRoute 的虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)。 ExpressRoute 虚拟网络网关使用的 GatewayType 是“ExpressRoute”而非 VPN。
 
@@ -52,12 +52,12 @@ ms.locfileid: "79272911"
 
 ### <a name="to-create-a-connection"></a>创建连接
 
-1. 确保已成功配置 ExpressRoute 线路和 Azure 专用对等互连。 按照[创建 expressroute 线路](expressroute-howto-circuit-arm.md)中的说明进行操作，并[为 ExpressRoute 线路创建和修改对等互连](expressroute-howto-routing-arm.md)。 ExpressRoute 线路应如下图所示：
+1. 确保已成功配置 ExpressRoute 线路和 Azure 专用对等互连。 按照[创建 ExpressRoute 电路](expressroute-howto-circuit-arm.md)中的说明操作，[并为 ExpressRoute 电路创建和修改对等互连](expressroute-howto-routing-arm.md)。 ExpressRoute 线路应如下图所示：
 
-   [![ExpressRoute 线路屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "查看线路")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
-2. 现在可以开始预配连接，以便将虚拟网络网关链接到 ExpressRoute 线路。 单击“连接” **“添加”以打开“添加连接”页面，然后配置值。**  > 
+   [![ExpressRoute 线路屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "视图电路")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
+2. 现在可以开始预配连接，以便将虚拟网络网关链接到 ExpressRoute 线路。 单击"**连接** > **添加**"以打开 **"添加连接**"页，然后配置这些值。
 
-   [![添加连接屏幕快照](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "添加连接屏幕快照")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
+   [![添加连接屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "添加连接屏幕截图")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. 成功配置连接之后，连接对象会显示连接的信息。
 
    ![连接对象屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
@@ -94,16 +94,16 @@ ms.locfileid: "79272911"
 > 每个连接都需要单独授权。
 >
 
-1. 在 ExpressRoute 页面中，单击“授权”，键入授权的**名称**并单击“保存”。
+1. 在 ExpressRoute 页面中，单击“授权”，键入授权的**名称**并单击“保存”。********
 
    ![授权](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
-2. 保存配置后，复制“资源 ID”和“授权密钥”。
+2. 保存配置后，复制“资源 ID”和“授权密钥”。********
 
    ![授权密钥](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
 **若要删除连接授权**
 
-可以通过在你的连接的页面上单击“删除”图标来删除连接。
+可以通过在你的连接的页面上单击“删除”**** 图标来删除连接。
 
 ### <a name="circuit-user-operations"></a>线路用户操作
 
@@ -111,21 +111,21 @@ ms.locfileid: "79272911"
 
 **若要兑换连接授权**
 
-1. 单击“+新建”按钮。
+1. 单击 **"新建"** 按钮。
 
    ![单击“新建”](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
-2. 在市场中搜索“连接”，选择它并单击“创建”。
+2. 在市场中搜索“连接”****，选择它并单击“创建”****。
 
    ![搜索连接](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
-3. 确保“连接类型”设置为“ExpressRoute”。
-4. 在“基本信息”页面中填写详细信息，然后单击“确定”。
+3. 确保“连接类型”设置为“ExpressRoute”。****
+4. 在“基本信息”页面中填写详细信息，然后单击“确定”****。
 
    ![“基本信息”页面](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
-5. 在“设置”页面中，选择“虚拟网络网关”并选中“兑换授权”复选框。
-6. 输入“授权密钥”和“对等线路 URI”，并为连接命名。 单击“确定”。 **对等线路 URI**是 expressroute 线路的资源 ID （可以在 expressroute 线路的 "属性" 设置窗格下找到）。
+5. 在“设置”页面中，选择“虚拟网络网关”并选中“兑换授权”复选框。************
+6. 输入“授权密钥”和“对等线路 URI”，并为连接命名。******** 单击“确定”。 **对等线路 URI** 是 ExpressRoute 线路的资源 ID（可以在 ExpressRoute 线路的“属性设置”窗格下找到）。
 
    ![“设置”页](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
-7. 在“摘要”页面中复查信息，并单击“确定”。
+7. 在“摘要”页面中复查信息，并单击“确定”。********
 
 **若要释放连接授权**
 
@@ -133,7 +133,7 @@ ms.locfileid: "79272911"
 
 ## <a name="delete-a-connection-to-unlink-a-vnet"></a>删除连接以取消链接 VNet
 
-可以通过在你的连接的页面上单击“删除”图标来取消 VNet 到 ExpressRoute 的链接。
+可以通过在你的连接的页面上单击“删除”**** 图标来取消 VNet 到 ExpressRoute 的链接。
 
 ## <a name="next-steps"></a>后续步骤
 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。

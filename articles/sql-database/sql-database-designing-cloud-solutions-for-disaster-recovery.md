@@ -1,5 +1,5 @@
 ---
-title: 设计全局可用服务
+title: 设计全球可用的服务
 description: 了解使用 Azure SQL 数据库对应用程序设计高可用性服务。
 keywords: 云灾难恢复, 灾难恢复解决方案, 应用数据备份, 异地复制, 业务连续性规划
 services: sql-database
@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
 ms.openlocfilehash: 348bd2b92801217a5aea2ef4d1426c020085e4c1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269063"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>使用 Azure SQL 数据库设计全球可用的服务
@@ -35,7 +35,7 @@ ms.locfileid: "79269063"
 * 必须并置 Web 层和数据层以减少延迟和流量成本
 * 从根本上讲，相比数据丢失，停机时间对于那些应用程序来说是更高的业务风险
 
-在这种情况下，当所有应用程序组件需要一同故障转移时，将针对处理区域灾难对应用程序部署拓扑进行优化。 下图展示了此拓扑。 对于地理冗余，应用程序的资源部署到区域 A 和 B。但是，只有当区域 A 失败后才会利用区域 B 中的资源。 两个区域之间会配置故障转移组，用于管理数据库连接、复制和故障转移。 两个区域中的 Web 服务配置为通过读写侦听器 **failover-group-name&lt;.database.windows.net 访问数据库 (1)。&gt;** 设置流量管理器以使用[优先级路由方法](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2)。  
+在这种情况下，当所有应用程序组件需要一同故障转移时，将针对处理区域灾难对应用程序部署拓扑进行优化。 下图展示了此拓扑。 对于地理冗余，应用程序的资源部署到区域 A 和 B。但是，只有当区域 A 失败后才会利用区域 B 中的资源。 两个区域之间会配置故障转移组，用于管理数据库连接、复制和故障转移。 两个区域中的 Web 服务配置为通过读写侦听器**&lt;故障转移组&gt;名称 .database.windows.net** （1） 访问数据库。 设置流量管理器以使用[优先级路由方法](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2)。  
 
 > [!NOTE]
 > [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)在这篇文章中仅供说明之用。 可以使用任何支持优先级路由方法的负载均衡解决方案。
@@ -66,7 +66,7 @@ ms.locfileid: "79269063"
 * 将同一 Web 应用程序部署到两个区域中时无需任何特定于区域的配置，也无需使用更多逻辑来管理故障转移。
 * 应用程序性能不受故障转移影响，因为 Web 应用程序和数据库始终共存。
 
-区域 B 中的应用程序资源大多时间利用不足，这是需要进行权衡的主要考量。
+区域 B 中的应用程序资源大多时间利用不足，这是需要进行权衡的主要考量。****
 
 ## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>方案 2：可实现业务连续性并提供最高数据保存性能的 Azure 区域
 
@@ -99,7 +99,7 @@ ms.locfileid: "79269063"
 * 它在临时服务中断期间可避免数据丢失。
 * 停机时间仅取决于流量管理器检测到连接故障的速度，此速度是可配置的。
 
-权衡是应用程序必须能够在只读模式下运行。
+权衡是应用程序必须能够在只读模式下运行。****
 
 ## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>方案 3：应用程序重新定位到其他地理位置而不发生数据丢失，且停机时间几乎为零
 
@@ -110,16 +110,16 @@ ms.locfileid: "79269063"
 * 应针对大多用户支持同一地理位置的数据写入访问权限
 * 读取延迟对最终用户体验而言很关键
 
-为了满足这些要求，你需要确保用户设备**始终**连接到在同一地理位置部署的应用程序以执行只读操作，如浏览数据、分析等。然而，在**大多数情况**下，在同一地理位置处理 OLTP 操作。 例如，工作时间在同一个地理位置处理 OLTP 操作，而非工作时间可能会在另一个地理位置处理这些操作。 如果终端用户活动大多发生在工作时间，那么可以保证大多时间对于大多用户，均可实现最佳性能。 下图显示了此拓扑。
+为了满足这些要求，您需要确保用户设备**始终**连接到部署在同一地理位置中的用于只读操作的应用程序，例如浏览数据、分析等。而 OLTP 操作**大多数时候**都在同一地理位置进行处理。 例如，工作时间在同一个地理位置处理 OLTP 操作，而非工作时间可能会在另一个地理位置处理这些操作。 如果终端用户活动大多发生在工作时间，那么可以保证大多时间对于大多用户，均可实现最佳性能。 下图显示了此拓扑。
 
-应用程序的资源应部署到每个有大量使用需求的地理位置。 例如，如果在美国、欧盟和东南亚，应用程序使用率很高，则应在所有这些区域部署该应用程序。 主数据库应在工作时间结束时从一个地理区域动态转至下一个区域。 此方法称为“循日”。 OLTP 工作负载始终通过读写侦听器 **failover-group-name&lt;.database.windows.net 连接到数据库 (1)。&gt;** 只读工作负载直接使用数据库服务器终结点 **server-name&lt;.database.windows.net 连接到本地数据库 (2)。&gt;** 使用[性能路由方法](../traffic-manager/traffic-manager-configure-performance-routing-method.md)配置流量管理器。 它确保最终用户设备连接到最近的 Web 服务。 设置流量管理器时应为每个 Web 服务终结点启用终结点监视 (3)。
+应用程序的资源应部署到每个有大量使用需求的地理位置。 例如，如果在美国、欧盟和东南亚，应用程序使用率很高，则应在所有这些区域部署该应用程序。 主数据库应在工作时间结束时从一个地理区域动态转至下一个区域。 此方法称为“循日”。 OLTP 工作负荷始终通过读写侦听器**&lt;故障转移组&gt;名称 .database.windows.net** （1） 连接到数据库。 只读工作负荷直接使用数据库服务器终结点**&lt;服务器&gt;名称 .database.windows.net** （2） 连接到本地数据库。 使用[性能路由方法](../traffic-manager/traffic-manager-configure-performance-routing-method.md)配置流量管理器。 它确保最终用户设备连接到最近的 Web 服务。 设置流量管理器时应为每个 Web 服务终结点启用终结点监视 (3)。
 
 > [!NOTE]
 > 故障转移组配置定义要用于故障转移的区域。 由于新的主区域位于另一个地理位置，所以对于 OLTP 和只读工作负载，故障转移会导致更长的延迟，直到受影响的区域恢复联机状态为止。
 
 ![方案 3. 美国东部主服务器配置。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-在一天结束时（例如，本地时间为11：11：晚上11：1），活动数据库应切换到下一个区域（北欧）。 此任务可通过使用[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)来实现完全自动化。 此任务涉及以下步骤：
+在一天结束时，例如当地时间晚上 11 点，活动数据库应切换到下一个区域（北欧）。 此任务可以使用[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)完全自动化。 此任务涉及以下步骤：
 
 * 使用友好故障转移将故障转移组中的主服务器切换至北欧 (1)
 * 删除美国东部和北欧之间的故障转移组
@@ -137,13 +137,13 @@ ms.locfileid: "79269063"
 > [!NOTE]
 > 可减少欧洲最终用户体验因长时间延迟而降级的时间。 为此，应该积极部署应用程序副本并在另一个本地区域（西欧）创建辅助数据库，作为北欧脱机应用程序实例的替换方案。 当后者回到联机状态时，可以决定是继续使用西欧还是删除当地应用程序副本并重新使用北欧。
 
-此设计的关键优势是：
+此设计的关键优势是：****
 
 * 只读应用程序工作负载可以随时访问最近区域的数据。
 * 读写应用程序工作负载在每个区域活动最频繁的时段可访问最近区域的数据
 * 由于应用程序被部署到多个区域，所以能够在一个区域中断后继续运行，而不产生显著的停运时间。
 
-但存在一些需要权衡的考量因素：
+但存在一些需要权衡的考量因素：****
 
 * 区域中断导致地理位置受延迟的影响时间更长。 读写工作负载和只读工作负载均由另一个地理位置的应用程序提供。
 * 只读工作负载须连接到每个区域中的另一个终结点。
@@ -165,4 +165,4 @@ ms.locfileid: "79269063"
 * 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)
 * 若要了解活动异地复制，请参阅[活动异地复制](sql-database-active-geo-replication.md)。
 * 若要了解自动故障转移组，请参阅[自动故障转移组](sql-database-auto-failover-group.md)。
-* 有关弹性池的活动异地复制的信息，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。
+* 有关使用弹性池的活动异地复制的信息，请参阅[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。

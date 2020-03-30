@@ -1,6 +1,6 @@
 ---
 title: Azure 公有云中的隔离 | Microsoft Docs
-description: 了解 Azure 如何针对恶意和非恶意用户提供隔离，并为架构师提供各种隔离选项。
+description: 了解 Azure 如何针对恶意和非恶意用户提供隔离，并为架构师提供各种隔离选择。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280308"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
-Azure 允许你在共享物理基础结构上运行应用程序和虚拟机（Vm）。 在云环境中运行应用程序的一个主要经济动机是可由多个客户分摊共享资源的成本。 这种多租户的做法在不同客户间多路复用资源，提高了效率并降低了成本。 遗憾的是，这种做法也带来了风险，会导致通过共享物理服务器和其他基础结构资源来运行敏感应用程序和 VM，而这些 VM 可能属于任意或潜在恶意用户。
+Azure 允许您在共享物理基础结构上运行应用程序和虚拟机 （VM）。 在云环境中运行应用程序的一个主要经济动机是可由多个客户分摊共享资源的成本。 这种多租户的做法在不同客户间多路复用资源，提高了效率并降低了成本。 遗憾的是，这种做法也带来了风险，会导致通过共享物理服务器和其他基础结构资源来运行敏感应用程序和 VM，而这些 VM 可能属于任意或潜在恶意用户。
 
-本文概述了 Azure 如何针对恶意和非恶意用户提供隔离，并通过为架构师提供各种隔离选项来构建云解决方案的指南。
+本文概述了 Azure 如何针对恶意和非恶意用户提供隔离，并通过向架构师提供各种隔离选择，作为构建云解决方案的指南。
 
 ## <a name="tenant-level-isolation"></a>租户级别隔离
 云计算的一个主要优势是同时跨多位客户使用共享的通用基础结构的概念，可带来规模效益。 这种概念称为多租户。 Microsoft 始终致力于确保 Microsoft Cloud Azure 的多租户体系结构支持安全、保密性、隐私、完整性和可用性标准。
@@ -35,7 +35,7 @@ Azure 允许你在共享物理基础结构上运行应用程序和虚拟机（Vm
 每个 Azure AD 目录都是独特的，独立于其他 Azure AD 目录。 就像公司办公大楼是组织特有的安全资产一样，根据设计，Azure AD 目录也是仅供组织使用的安全资产。 Azure AD 体系结构隔离了客户数据和身份信息，避免混合存放。 这意味着，一个 Azure AD 目录的用户和管理员不可能意外或恶意性地访问另一目录中的数据。
 
 ### <a name="azure-tenancy"></a>Azure 租户
-Azure 租户（Azure 订阅）是指 [Azure Active Directory](../../active-directory/develop/quickstart-create-new-tenant.md) 中的“客户/账单”关系和唯一的[租户](../../active-directory/fundamentals/active-directory-whatis.md)。 Microsoft Azure 中的租户级别隔离是使用 Azure Active Directory 及其提供的[基于角色的控制](../../role-based-access-control/overview.md)实现的。 每个 Azure 订阅都会与一个 Azure Active Directory (AD) 目录关联。
+Azure 租户（Azure 订阅）是指 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 中的“客户/账单”关系和唯一的[租户](../../active-directory/develop/quickstart-create-new-tenant.md)。 Microsoft Azure 中的租户级别隔离是使用 Azure Active Directory 及其提供的[基于角色的控制](../../role-based-access-control/overview.md)实现的。 每个 Azure 订阅都会与一个 Azure Active Directory (AD) 目录关联。
 
 该目录中的用户、组和应用程序可以管理 Azure 订阅中的资源。 可以使用 Azure 门户、Azure 命令行工具及 Azure 管理 API 来分配这些访问权限。 从逻辑上讲，Azure AD 租户是使用安全边界隔离的，这样，任何客户都不能访问或入侵联合租户，而无论其行为是恶意的还是偶然的。 在“裸机”服务器上运行的 Azure AD 是在分隔的网络段中隔离的，主机级别数据包筛选和 Windows 防火墙在该网络段中阻止不需要的连接和流量。
 
@@ -52,7 +52,7 @@ Azure 租户（Azure 订阅）是指 [Azure Active Directory](../../active-direc
 
 - Azure AD 用户无权访问物理资产或位置，因此他们不可能绕过下述逻辑 RBAC 策略检查。
 
-为了满足诊断和维护需求，需要使用采用实时特权提升系统的操作模型。 Azure AD Privileged Identity Management （PIM）介绍了有资格管理员的概念。[符合条件的管理员](../../active-directory/privileged-identity-management/pim-configure.md)应该是现在需要特权访问的用户，而不是每天都需要。 该角色处于非活动状态，直到用户需要访问权限，然后他们完成激活过程，并在预定的时间内成为活动管理员。
+为了满足诊断和维护需求，需要使用采用实时特权提升系统的操作模型。 Azure AD 特权标识管理 （PIM） 引入了符合条件的管理员的概念。[符合条件的管理员](../../active-directory/privileged-identity-management/pim-configure.md)应该是时不时地需要特权访问的用户，但不是每天都需要特权访问的用户。 该角色处于非活动状态，直到用户需要访问权限，然后他们完成激活过程，并在预定的时间内成为活动管理员。
 
 ![Azure AD 特权标识管理](./media/isolation-choices/azure-isolation-fig2.png)
 
@@ -67,9 +67,9 @@ Azure Active Directory 在其自己受保护的容器中托管每个租户，使
 
 Azure RBAC 有三种适用于所有资源类型的基本角色：
 
-- **所有者**具有对所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。
+- **所有者**可以完全访问所有资源，包括将访问权限委派给其他人的权利。
 
-- **参与者**可以创建和管理所有类型的 Azure 资源，但不能将访问权限授予其他用户。
+- **参与者**可以创建和管理所有类型的 Azure 资源，但不能向其他人授予访问权限。
 
 - **读取器**可以查看现有 Azure 资源。
 
@@ -77,10 +77,10 @@ Azure RBAC 有三种适用于所有资源类型的基本角色：
 
 Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例如，虚拟机参与者角色允许用户创建和管理虚拟机。 但不会向用户授予对虚拟机连接的 Azure 虚拟网络或子网的访问权限。
 
-[RBAC 内置角色](../../role-based-access-control/built-in-roles.md)列出了 Azure 中可用的角色。 它指定每个内置角色向用户授予的操作和范围。 若要定义自己的角色以便进一步控制，请参阅如何生成 [Azure RBAC 中的自定义角色](../../role-based-access-control/custom-roles.md)。
+[RBAC 内置角色](../../role-based-access-control/built-in-roles.md)列出了 Azure 中可用的角色。 它指定每个内置角色向用户授予的操作和范围。 如果要定义自己的角色以进行更多控制，请参阅如何在[Azure RBAC 中构建自定义角色](../../role-based-access-control/custom-roles.md)。
 
 Azure Active Directory 的其他部分功能包括:
-- 使用 Azure AD 即可对 SaaS 应用程序启用 SSO，不管这些应用程序在何处托管。 某些应用程序会与 Azure AD 联合起来进行身份验证，其他应用程序则使用密码 SSO。 联合应用程序还可以支持用户预配和[密码存储](https://www.techopedia.com/definition/31415/password-vault)。
+- 使用 Azure AD 即可对 SaaS 应用程序启用 SSO，不管这些应用程序在何处托管。 某些应用程序会与 Azure AD 联合起来进行身份验证，其他应用程序则使用密码 SSO。 联合应用程序还可以支持用户预配和[密码保管](https://www.techopedia.com/definition/31415/password-vault)。
 
 - 对 [Azure 存储](https://azure.microsoft.com/services/storage/)中的数据进行访问可以通过身份验证来控制。 每个存储帐户都有一个主密钥（[存储帐户密钥](../../storage/common/storage-create-storage-account.md)，简称 SAK）和一个辅助密钥（共享访问签名，简称 SAS）。
 
@@ -113,7 +113,7 @@ Microsoft Azure 提供各种基于云的计算服务，包括大量计算实例�
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
 
 ### <a name="dedicated-hosts"></a>专用主机
-除了前面的部分中所述的独立主机以外，Azure 还提供了专用主机。 Azure 中的专用主机是一项服务，可提供可托管一台或多台虚拟机的物理服务器，以及专用于单个 Azure 订阅的物理服务器。 专用主机在物理服务器级别提供硬件隔离。 不会在主机上放置任何其他 Vm。 专用主机部署在同一数据中心内，与其他非独立主机主机共享相同的网络和底层存储基础结构。 有关详细信息，请参阅[Azure 专用主机](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)的详细概述。
+除了上一节中描述的独立主机外，Azure 还提供专用主机。 Azure 中的专用主机是一种服务，它提供物理服务器，这些服务器可以承载一个或多个虚拟机，并且这些服务器专用于单个 Azure 订阅。 专用主机在物理服务器级别提供硬件隔离。 主机上不会放置其他 VM。 专用主机部署在同一数据中心中，并与其他非隔离主机共享相同的网络和基础存储基础结构。 有关详细信息，请参阅[Azure 专用主机](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)的详细概述。
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>根 VM 和来宾 VM 之间的 Hyper-V 和根 OS 隔离
 Azure 的计算平台以计算机虚拟化为基础，这意味着所有客户代码都在 Hyper-V 虚拟机中执行。 在每个 Azure 节点（或网络终结点）上，都有一个虚拟机监控程序在硬件上直接运行，并将节点分为数目不定的来宾虚拟机 (VM)。
@@ -160,9 +160,9 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 
 进行编程的规则有两类：
 
--   **计算机配置或基础结构规则**：默认情况下，将阻止所有通信。 在例外情况下，可以允许虚拟机发送和接收 DHCP 和 DNS 流量。 虚拟机还可以将流量发送到“公共”Internet 以及同一 Azure 虚拟网络和 OS 激活服务器内的其他虚拟机。 虚拟机的传出目标允许列表不包括 Azure 路由器子网、Azure 管理以及其他 Microsoft 属性。
+-   **机器配置或基础结构规则：** 默认情况下，所有通信都被阻止。 在例外情况下，可以允许虚拟机发送和接收 DHCP 和 DNS 流量。 虚拟机还可以将流量发送到“公共”Internet 以及同一 Azure 虚拟网络和 OS 激活服务器内的其他虚拟机。 虚拟机的传出目标允许列表不包括 Azure 路由器子网、Azure 管理以及其他 Microsoft 属性。
 
--   **角色配置文件**：根据租户的服务模型定义入站访问控制列表 (ACL)。
+-   **角色配置文件：** 这将基于租户的服务模型定义入站访问控制列表 （ACL）。
 
 ### <a name="vlan-isolation"></a>VLAN 隔离
 每个群集中有三个 VLAN：
@@ -182,13 +182,13 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 ### <a name="logical-isolation-between-compute-and-storage"></a>计算和存储之间的逻辑隔离
 作为其基本设计的一部分，Microsoft Azure 将基于 VM 的计算与存储分隔开。 这种分隔可实现计算和存储的自主扩展，使提供多租户和隔离变得更简单。
 
-因此，Azure 存储在单独的硬件上运行，且没有与 Azure 计算建立网络连接，从逻辑上讲时例外。 这意味着，当创建虚拟磁盘时，不会为其整个容量分配磁盘空间。 而是会创建一个表格，用于将虚拟磁盘上的地址映射到物理磁盘上的区域中，且该表最初为空。 **客户首次在虚拟磁盘上写入数据时，将分配物理磁盘上的空间，且指向它的指针将位于表中。**
+因此，Azure 存储在单独的硬件上运行，且没有与 Azure 计算建立网络连接，从逻辑上讲时例外。 这意味着，创建虚拟磁盘后，不会针对整体容量分配磁盘空间。 而是会创建一个表格，用于将虚拟磁盘上的地址映射到物理磁盘上的区域中，且该表最初为空。 **客户首次在虚拟磁盘上写入数据时，将分配物理磁盘上的空间，且指向它的指针将位于表中。**
 ### <a name="isolation-using-storage-access-control"></a>使用存储访问控制的隔离
 **Azure 存储中的访问控制**具有简单的访问控制模型。 每个 Azure 订阅都可以创建一个或多个存储帐户。 每个存储帐户都具有一个密钥，用于控制对该存储帐户中所有数据的访问权限。
 
 ![使用存储访问控制的隔离](./media/isolation-choices/azure-isolation-fig9.png)
 
-可以通过 **SAS（共享访问签名）** 令牌来控制[对 Azure 存储数据（包括表）的访问权限](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)，该令牌可授予限定的访问权限。 SAS 是根据查询模板 (URL) 创建的，且使用 [SAK（存储帐户密钥）](https://msdn.microsoft.com/library/azure/ee460785.aspx)进行签名。 可以将该[签名 URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 提供给另一个进程（即委托进程），后者随后可以填充查询的详细信息并发出存储服务请求。 使用 SAS，可以向客户端授予基于时间的访问权限，无需泄露存储帐户的密钥。
+可以通过 [SAS（共享访问签名）](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)令牌来控制**对 Azure 存储数据（包括表）的访问权限**，该令牌可授予限定的访问权限。 SAS 是根据查询模板 (URL) 创建的，且使用 [SAK（存储帐户密钥）](https://msdn.microsoft.com/library/azure/ee460785.aspx)进行签名。 可以将该[签名 URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 提供给另一个进程（即委托进程），后者随后可以填充查询的详细信息并发出存储服务请求。 使用 SAS，可以向客户端授予基于时间的访问权限，无需泄露存储帐户的密钥。
 
 使用 SAS，意味着可以授权客户端在指定时间段内，以一组指定权限有限访问存储帐户中的对象。 可以授予这些有限的权限，而不必共享帐户访问密钥。
 
@@ -206,18 +206,18 @@ Azure 提供了以下加密类型来保护数据：
 #### <a name="encryption-in-transit"></a>传输中加密
 传输中加密是通过网络传输数据时用于保护数据的一种机制。 在 Azure 存储中，可以使用以下加密方式来保护数据：
 
--   [传输级别加密](../../storage/blobs/security-recommendations.md)，例如从 Azure 存储传入或传出数据时使用的 HTTPS。
+-   [传输级加密](../../storage/blobs/security-recommendations.md)，例如将数据传输到 Azure 存储或传输到 Azure 存储时 HTTPS。
 
 -   [线路加密](../../storage/blobs/security-recommendations.md)，例如 Azure 文件共享的 SMB 3.0 加密。
 
--   [客户端加密](../../storage/blobs/security-recommendations.md)，在将数据传输到存储之前加密数据，以及从存储传出数据后解密数据。
+-   [客户端加密](../../storage/blobs/security-recommendations.md)，在将数据传输到存储之前对其进行加密，并在数据从存储中转移出去后解密数据。
 
 #### <a name="encryption-at-rest"></a>静态加密
-对许多组织而言，[静态数据加密](isolation-choices.md)是实现数据隐私性、合规性和数据所有权的必要措施。 有三项 Azure 功能可提供“静态”数据加密：
+对于许多组织来说，[静态数据加密](isolation-choices.md)是实现数据隐私、合规性和数据主权的必修步骤。 有三项 Azure 功能可提供“静态”数据加密：
 
 -   [存储服务加密](../../storage/blobs/security-recommendations.md)可以请求存储服务在将数据写入 Azure 存储时自动加密数据。
 
--   [客户端加密](../../storage/blobs/security-recommendations.md)也提供静态加密功能。
+-   [客户端加密](../../storage/blobs/security-recommendations.md)还提供静态加密功能。
 
 -   [Azure 磁盘加密](../azure-security-disk-encryption-overview.md)允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘。
 
@@ -310,7 +310,7 @@ SQL Azure 服务器不是物理实例或 VM 实例，而是数据库、共享管
 通常，作为安全预防措施，后端系统不会与其他系统进行出站通信。 这会保留到前端（网关）层中的系统。 作为深层防御机制，网关层计算机对后端计算机具有有限的特权，可最大限度减少攻击。
 
 ### <a name="isolation-by-machine-function-and-access"></a>按计算机功能和访问权限的隔离
-SQL Azure（由针对不同计算机功能运行的服务组成。 SQL Azure 分为 "后端" 云数据库和 "前端" （网关/管理）环境，一般的流量原则是仅进入后端，而不是传出。前端环境可以与其他服务的外部进行通信，一般情况下，仅在后端具有有限的权限（足以调用需要调用的入口点）。
+SQL Azure（由针对不同计算机功能运行的服务组成。 SQL Azure 分为"后端"云数据库和"前端"（网关/管理）环境，流量的一般原则仅进入后端，而不是退出。前端环境可以与其他服务与外界通信，通常后端的权限有限（足以调用需要调用的入口点）。
 
 ## <a name="networking-isolation"></a>网络隔离
 Azure 部署具有多层网络隔离。 下图显示了 Azure 提供给客户的各种网络隔离层。 这些层同时属于 Azure 平台本身的本机功能和客户定义的功能。 对于来自 Internet 的入站流量，Azure DDoS 提供针对 Azure 的大规模攻击的隔离。 下一层隔离是客户定义的公共 IP 地址（终结点），可以根据这些终结点确定哪些流量可以通过云服务进入虚拟网络。 本机 Azure 虚拟网络隔离可确保与其他所有网络完全隔离，而且流量只能流经用户配置的路径和方法。 这些路径和方法就是下一个安全层，在该层中，可以使用 NSG、UDR 和网络虚拟设备来创建隔离边界，以保护受保护网络中的应用程序部署。
@@ -323,6 +323,6 @@ Azure 部署具有多层网络隔离。 下图显示了 Azure 提供给客户的
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[Windows Azure 虚拟网络中的计算机的网络隔离选项](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)。 这包括经典的前端和后端方案，其中特定后端网络或子网中的计算机可能只允许某些客户端或其他计算机根据 IP 地址的允许列表连接到特定终结点。
+- 了解[Windows Azure 虚拟网络中计算机的网络隔离选项](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)。 这包括典型的前端和后端方案，其中特定后端网络或子网络中的计算机可能只允许某些客户端或其他计算机基于允许的 IP 地址列表连接到特定终结点。
 
-- 了解[Azure 中的虚拟机隔离](../../virtual-machines/windows/isolation.md)。 Azure 计算提供隔离于特定硬件类型并专用于单个客户的虚拟机大小。
+- 了解[Azure 中的虚拟机隔离](../../virtual-machines/windows/isolation.md)。 Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟机大小。

@@ -1,19 +1,19 @@
 ---
 title: 删除资源组和资源
-description: 介绍如何删除资源组和资源。 本文介绍 Azure 资源管理器如何在删除资源组时对资源的删除进行排序。 它描述响应代码以及资源管理器如何处理它们以确定是否成功删除。
+description: 介绍如何删除资源组和资源。 它介绍删除资源组时 Azure 资源管理器如何为资源的删除排序。 它描述响应代码以及资源管理器如何处理它们以确定是否成功删除。
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
 ms.openlocfilehash: db56cf0897cd90f1e6e51199032d0d9712530f1c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274016"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure 资源管理器资源组和资源删除
 
-本文介绍如何删除资源组和资源。 本文介绍 Azure 资源管理器如何在删除资源组时对资源的删除进行排序。
+本文介绍如何删除资源组和资源。 它介绍在删除资源组时 Azure 资源管理器如何为资源的删除排序。
 
 ## <a name="how-order-of-deletion-is-determined"></a>如何确定删除顺序
 
@@ -56,9 +56,9 @@ ms.locfileid: "79274016"
 
 ## <a name="delete-resource-group"></a>删除资源组
 
-使用以下方法之一来删除资源组。
+使用以下方法之一删除资源组。
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name ExampleResourceGroup
@@ -74,7 +74,7 @@ az group delete --name ExampleResourceGroup
 
 1. 在[门户](https://portal.azure.com)中，选择要删除的资源组。
 
-1. 选择“删除资源组”。
+1. 选择“删除资源组”****。
 
    ![删除资源组](./media/delete-resource-group/delete-group.png)
 
@@ -86,7 +86,7 @@ az group delete --name ExampleResourceGroup
 
 使用以下方法之一删除资源。
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResource `
@@ -108,7 +108,7 @@ az resource delete \
 
 1. 在[门户](https://portal.azure.com)中，选择要删除的资源。
 
-1. 选择“删除”。 以下屏幕截图显示了虚拟机的管理选项。
+1. 选择 **"删除**"。 以下屏幕截图显示了虚拟机的管理选项。
 
    ![删除资源](./media/delete-resource-group/delete-resource.png)
 

@@ -7,10 +7,10 @@ ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 65abc9c7153aaf2973d5927400e27467066098f9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275836"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中基于日志的指标和预先聚合的指标
@@ -19,7 +19,7 @@ ms.locfileid: "79275836"
 
 ## <a name="log-based-metrics"></a>基于日志的指标
 
-最近，Application Insights 中的应用程序监视遥测数据模型仅基于少量的预定义类型的事件，例如请求、异常、依赖项调用、页面视图等。开发人员可以使用 SDK 手动发出这些事件（通过编写显式调用 SDK 的代码），也可以从自动检测来依赖自动收集事件。 在任一情况下，Application Insights 后端都会将所有收集的事件存储为日志。可以使用 Azure 门户中的 Application Insights 边栏选项卡作为分析和诊断工具来可视化日志中基于事件的数据。
+直到最近，应用程序监视应用程序见解中的遥测数据模型仅基于少量预定义的事件类型，如请求、异常、依赖项调用、页面视图等。开发人员可以使用 SDK 手动发出这些事件（通过编写显式调用 SDK 的代码），也可以依赖自动检测事件自动集合。 在任一情况下，Application Insights 后端都会将所有收集的事件存储为日志。可以使用 Azure 门户中的 Application Insights 边栏选项卡作为分析和诊断工具来可视化日志中基于事件的数据。
 
 使用日志保留完整事件集能够为分析和诊断带来很大的帮助。 例如，可以获取对特定 URL 发出的确切请求计数，以及发出这些调用的非重复用户数。 或者，可以获取详细的诊断跟踪，包括任何用户会话的异常和依赖项调用。 获取此类信息能够明显提高应用程序运行状况和使用情况的可见性，从而可以缩短诊断应用问题所需的时间。 
 
@@ -59,7 +59,7 @@ ms.locfileid: "79275836"
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>创建图表和浏览基于日志的指标与预先聚合的标准指标
 
-使用[Azure Monitor 指标资源管理器](../platform/metrics-getting-started.md)从预聚合和基于日志的度量值绘制图表，并使用图表创作面板。 选择所需的 Application Insights 资源后，使用命名空间选取器在标准指标（预览版）和基于日志的指标之间切换，或选择自定义指标命名空间：
+使用[Azure 监视器指标资源管理器](../platform/metrics-getting-started.md)从预聚合和基于日志的指标绘制图表，并使用图表创作仪表板。 选择所需的 Application Insights 资源后，使用命名空间选取器在标准指标（预览版）和基于日志的指标之间切换，或选择自定义指标命名空间：
 
 ![指标命名空间](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 

@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric 网格上的状态存储选项
+title: Azure 服务结构网格上的状态存储选项
 description: 了解 Azure Service Fabric 网格上运行的 Service Fabric 网格应用程序的可靠存储状态。
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259092"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric 的状态管理
@@ -26,7 +26,7 @@ Service Fabric 支持用于状态存储的许多不同选项。 有关状态管�
 
 ### <a name="service-fabric-reliable-volume"></a>Service Fabric Reliable Volume
 
-Service Fabric Reliable Volume 是用于将本地卷装载到容器的 Docker 卷驱动程序。 读取和写入是本地操作，非常快速。 数据将复制到辅助节点，使其高度可用。 故障转移也非常快速。 当容器崩溃时，将故障转移到已具有数据的副本的节点。 有关示例，请参阅[如何使用 Service Fabric Reliable Volume 部署应用](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md)。
+Service Fabric Reliable Volume 是用于将本地卷装载到容器的 Docker 卷驱动程序。 读取和写入是本地操作，非常快速。 数据将复制到辅助节点，使其高度可用。 故障转移也非常快速。 当容器崩溃时，将故障转移到已具有数据的副本的节点。 例如，请参阅[如何部署具有 Service Fabric 可靠卷的应用](service-fabric-mesh-howto-deploy-app-sfreliable-disk-volume.md)。
 
 ### <a name="azure-files-volume"></a>Azure 文件卷
 

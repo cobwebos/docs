@@ -1,5 +1,5 @@
 ---
-title: 基于组的许可的其他方案-Azure AD |Microsoft Docs
+title: 基于组的许可附加方案 - Azure AD |微软文档
 description: 有关基于 Azure Active Directory 组的许可的更多方案
 services: active-directory
 keywords: Azure AD 许可
@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266281"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
@@ -28,16 +28,16 @@ ms.locfileid: "79266281"
 
 ## <a name="usage-location"></a>使用位置
 
-某些 Microsoft 服务不能在所有位置使用。 在将许可证分配给用户之前，管理员必须为该用户指定“使用位置”属性。 在[Azure 门户](https://portal.azure.com)中，你可以在**用户**&gt;**配置文件**&gt;**设置**中指定使用位置。
+某些 Microsoft 服务不能在所有位置使用。 在将许可证分配给用户之前，管理员必须为该用户指定“使用位置”属性。**** [在 Azure 门户中](https://portal.azure.com)，可以在**用户**&gt;**配置文件**&gt;**设置**中指定使用位置。
 
-对于组许可证分配，任何没有指定使用位置的用户将继承该目录的位置。 如果用户位于多个位置，请确保在将用户添加到具有许可证的组之前，在用户资源中正确地反映了这些用户。
+对于组许可证分配，任何没有指定使用位置的用户将继承该目录的位置。 如果用户位于多个位置，请确保在将用户添加到具有许可证的组之前，在用户资源中正确反映这一点。
 
 > [!NOTE]
 > 组许可证分配永远不会修改用户的现有使用位置值。 建议你始终在 Azure AD 中的用户创建流程中设置使用位置（例如通过 AAD Connect 配置），这可确保许可证分配的结果始终正确，并且用户不会在不允许的位置收到服务。
 
 ## <a name="use-group-based-licensing-with-dynamic-groups"></a>对动态组使用基于组的许可
 
-可对任何安全组使用基于组的许可，这意味着，可将它与 Azure AD 动态组组合使用。 动态组对用户资源属性运行规则，以自动在组中添加和删除用户。
+可对任何安全组使用基于组的许可，这意味着，可将它与 Azure AD 动态组组合使用。 动态组针对用户资源属性运行规则，以自动从组中添加和删除用户。
 
 例如，可以为要分配给用户的某些产品组创建动态组。 每个组都按照规则进行填充，根据用户属性添加用户，并且向每个组分配了你希望其接收的许可证。 可在本地分配属性并将它与 Azure AD 同步，或者直接在云中管理属性。
 
@@ -70,13 +70,13 @@ ms.locfileid: "79266281"
 
 用户可能是具有许可证的多个组的成员。 下面是需要注意的事项：
 
-- 相同产品的多个许可证可能重叠，从而导致向用户应用所有已启用的服务。 以下示例显示了两个许可组：*E3 基本服务*包含首先向所有用户部署的基础服务。 *E3 扩展服务*包含只向某些用户部署的其他服务（Sway 和 Planner）。 在本示例中，用户已添加到两个组：
+- 相同产品的多个许可证可能重叠，从而导致向用户应用所有已启用的服务。 以下示例显示了两个许可组：*E3 基本服务*包含首先向用户部署的基础服务。 *E3 扩展服务*包含只向某些用户部署的其他服务（Sway 和 Planner）。 在本示例中，用户已添加到两个组：
 
   ![启用的服务的屏幕截图](./media/licensing-group-advanced/view-enabled-services.png)
 
   因此，该用户获得了已启用产品的 12 个服务中的 7 个，同时只需为此产品使用 1 个许可证。
 
-- 选择*E3*许可证可显示更多详细信息，包括组许可证分配为用户启用了哪些服务的相关信息。
+- 选择*E3*许可证将显示更多详细信息，包括组许可证分配为用户启用哪些服务的信息。
 
 ## <a name="direct-licenses-coexist-with-group-licenses"></a>直接许可证与组许可证共存
 
@@ -86,39 +86,39 @@ ms.locfileid: "79266281"
 
 可以删除直接分配的许可证，不会影响继承的许可证。 假设用户从某个组继承了 Office 365 企业版 E3 许可证。
 
-最初，该用户只从*E3 基本服务*组继承许可证，这将启用四个服务计划。
+最初，用户仅从*E3 基本服务*组继承许可证，该组启用四个服务计划。
 
-1. 选择 "**分配**"，将 E3 许可证直接分配给用户。 在本例中，我们要禁用除 Yammer Enterprise 以外的所有服务计划。
+1. 选择 **"分配**"可直接向用户分配 E3 许可证。 在本例中，我们要禁用除 Yammer Enterprise 以外的所有服务计划。
 
-    因此，该用户仍然只会使用 E3 产品的 1 个许可证。 但是，直接分配只会为该用户启用 Yammer Enterprise 服务。 可以查看组成员身份和直接分配启用了哪些服务。
+    因此，该用户仍然只会使用 E3 产品的 1 个许可证。 但是，直接分配只会为该用户启用 Yammer Enterprise 服务。 您可以看到组成员身份与直接分配启用的服务。
 
 1. 使用直接分配时，允许执行以下操作：
 
-   - 可以直接在用户资源上关闭 Yammer Enterprise。 插图中此服务的“开/关”切换器的启用方式与其他服务相反。 这是因为此服务是直接对用户启用的，因此可以修改。
+   - Yammer 企业可以直接关闭用户资源。 插图中此服务的“开/关”**** 切换器的启用方式与其他服务相反。 这是因为此服务是直接对用户启用的，因此可以修改。
    - 也可以将其他服务启用为直接分配的许可证的一部分。
-   - 可以使用“删除”按钮删除用户的直接许可证。 可以看到，该用户现在只拥有继承的组许可证，并且只有原始服务保持启用状态：
+   - 可以使用“删除”按钮删除用户的直接许可证。**** 可以看到，该用户现在只拥有继承的组许可证，并且只有原始服务保持启用状态：
 
 ## <a name="managing-new-services-added-to-products"></a>管理添加到产品的新服务
 
-当 Microsoft 向产品许可计划中添加新服务时，默认情况下，该服务在已向其分配了产品许可证的所有组中启用。 租户中订阅了有关产品更改通知的用户将提前收到电子邮件，通知他们即将推出的服务添加件。
+当 Microsoft 将新服务添加到产品许可证计划时，默认情况下，在您已为其分配产品许可证的所有组中启用该服务。 租户中订阅了有关产品更改通知的用户将提前收到电子邮件，通知他们即将推出的服务添加件。
 
 作为管理员，你可以查看受更改影响的所有组并执行操作，例如在每个组中禁用新服务。 例如，如果已创建的组仅面向部署的特定服务，则可以重新访问这些组，并确保禁用任何新添加的服务。
 
 此过程如以下示例所示：
 
-1. 最初，将 Office 365 企业版 E5产品分配给多个组。 其中一个名为 O365 E5 - Exchange only 的组旨在仅为其成员启用 Exchange Online（计划 2）服务。
+1. 最初，将 Office 365 企业版 E5 ** 产品分配给多个组。 其中一个名为 O365 E5 - Exchange only** 的组旨在仅为其成员启用 Exchange Online（计划 2）** 服务。
 
-2. Microsoft 向你发送通知，告知 E5 产品将使用 Microsoft Stream这项新服务进行扩展。 当该服务在你的租户中可用时，可以执行以下操作：
+2. Microsoft 向你发送通知，告知 E5 产品将使用 Microsoft Stream ** 这项新服务进行扩展。 当该服务在你的租户中可用时，可以执行以下操作：
 
-3. 转到 [“Azure Active Directory”>“许可证”>“所有产品”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)边栏选项卡，选择“Office 365 企业版 E5”，然后选择“许可的组”以查看具有该产品的所有组的列表。
+3. 转到 [“Azure Active Directory”>“许可证”>“所有产品”****](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)边栏选项卡，选择“Office 365 企业版 E5”**，然后选择“许可的组”**** 以查看具有该产品的所有组的列表。
 
-4. 单击要查看的组（此处为 O365 E5 - Exchange only）。 随后将打开“许可证”选项卡。单击 E5 许可证会打开一个列出所有已启用服务的边栏选项卡。
+4. 单击要查看的组（此处为 O365 E5 - Exchange only**）。 这将打开 **"许可证"** 选项卡。单击 E5 许可证将打开一个刀片式服务器，列出所有已启用的服务。
    > [!NOTE]
-   > 除了 Exchange Online服务外，Microsoft Stream服务也已自动添加到此组中并已启用：
+   > 除了 Exchange Online ** 服务外，Microsoft Stream ** 服务也已自动添加到此组中并已启用：
 
    ![添加到组许可证的新服务的屏幕截图](./media/licensing-group-advanced/manage-new-services.png)
 
-5. 如果要禁用此组中的新服务，请单击服务旁边的“开/关”切换器，然后单击“保存”按钮确认更改。 Azure AD 现在将处理组中的所有用户以应用更改；添加到该组的任何新用户均不会启用 Microsoft Stream服务。
+5. 如果要禁用此组中的新服务，请单击服务旁边的“开/关”**** 切换器，然后单击“保存”**** 按钮确认更改。 Azure AD 现在将处理组中的所有用户以应用更改；添加到该组的任何新用户均不会启用 Microsoft Stream ** 服务。
 
    > [!NOTE]
    > 用户仍然可以通过一些其他许可证分配（用户作为成员的其他组或直接许可证分配）启用该服务。
@@ -134,7 +134,7 @@ ms.locfileid: "79266281"
 
    ![Get-Msolaccountsku cmdlet 的屏幕截图](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
-3. 通过[此 PowerShell 脚本](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)将 AccountSkuId值用于感兴趣的许可证。 这会生成具有此许可证的用户列表以及如何分配此许可证的信息。
+3. 通过[此 PowerShell 脚本](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)将 AccountSkuId ** 值用于感兴趣的许可证。 这会生成具有此许可证的用户列表以及如何分配此许可证的信息。
 
 ## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>使用审核日志来监视基于组的许可活动
 
@@ -144,16 +144,16 @@ ms.locfileid: "79266281"
 - 基于组合许可证分配，对用户进行了哪些许可证更改。
 
 >[!NOTE]
-> 在门户的 Azure Active Directory 部分中大多数边栏选项卡上可以获取审计日志。 根据你访问筛选器的位置，可能会预应用筛选器，以仅显示与边栏选项卡的上下文相关的活动。 如果未看到所期望的结果，请检查[筛选选项](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs)，或访问[“Azure Active Directory”>“活动”>“审核日志”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit)下未经筛选的审核日志。
+> 在门户的 Azure Active Directory 部分中大多数边栏选项卡上可以获取审计日志。 根据你访问筛选器的位置，可能会预应用筛选器，以仅显示与边栏选项卡的上下文相关的活动。 如果未看到所期望的结果，请检查[筛选选项](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs)，或访问[“Azure Active Directory”>“活动”>“审核日志”****](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit)下未经筛选的审核日志。
 
 ### <a name="find-out-who-modified-a-group-license"></a>确定组许可证的修改者
 
-1. 将“活动”筛选器设置为“设置组许可证”，然后单击“应用”。
+1. 将“活动”**** 筛选器设置为“设置组许可证”**，然后单击“应用”****。
 2. 结果包括在组中设置或修改的许可证的所有情况。
    >[!TIP]
-   > 你还可以在“目标”筛选器中键入组的名称，以确定结果范围。
+   > 你还可以在“目标”** 筛选器中键入组的名称，以确定结果范围。
 
-3. 在列表中选择一项以查看已更改内容的详细信息。 在“修改的属性”下，列出了许可证分配的旧值和新值。
+3. 选择列表中的项目以查看已更改的内容的详细信息。 在“修改的属性”** 下，列出了许可证分配的旧值和新值。
 
 下面是最新组许可证更改的详细信息示例：
 
@@ -163,13 +163,13 @@ ms.locfileid: "79266281"
 
 如果组许可证发生更改，Azure AD 会开始将更改应用到所有用户。
 
-1. 若要查看组何时开始处理，请将“活动”筛选器设置为“开始将基于组的许可证应用到用户”。 请注意，操作的执行组件是 Microsoft Azure AD 基于组的许可，这是用于执行所有组许可证更改的系统帐户。
+1. 若要查看组何时开始处理，请将“活动”**** 筛选器设置为“开始将基于组的许可证应用到用户”**。 请注意，操作的执行组件是 Microsoft Azure AD 基于组的许可**，这是用于执行所有组许可证更改的系统帐户。
    >[!TIP]
-   > 单击列表中的项，查看“修改的属性”字段，它显示经过选择进行处理的许可证更改。 如果对组进行多次更改，并且不确定处理了哪次更改，则该字段很有用。
+   > 单击列表中的项，查看“修改的属性”** 字段，它显示经过选择进行处理的许可证更改。 如果对组进行多次更改，并且不确定处理了哪次更改，则该字段很有用。
 
-2. 同样，若要查看组完成处理的时间，可使用筛选器值“完成将基于组的许可证应用到用户”。
+2. 同样，若要查看组完成处理的时间，可使用筛选器值“完成将基于组的许可证应用到用户”**。
    > [!TIP]
-   > 在这种情况下，“修改的属性”字段包含结果摘要，这对于快速检查处理是否会导致任何错误而言非常有用。 示例输出：
+   > 在这种情况下，“修改的属性”** 字段包含结果摘要，这对于快速检查处理是否会导致任何错误而言非常有用。 示例输出：
    > ```
    > Modified Properties
    > ...
@@ -179,7 +179,7 @@ ms.locfileid: "79266281"
    > ```
 
 3. 若要查看如何处理组的完整日志（包括所有用户更改），请设置以下筛选器：
-   - **启动者（执行组件）** ：“Microsoft Azure AD 基于组的许可”
+   - **启动者（执行组件）**：“Microsoft Azure AD 基于组的许可”
    - **日期范围**（可选）：你知道特定组开始处理和完成处理的自定义时间范围
 
 此示例输出显示处理开始时间、产生的所有用户更改以及处理完成时间。
@@ -187,7 +187,7 @@ ms.locfileid: "79266281"
 ![组许可证更改屏幕截图](./media/licensing-group-advanced/audit-group-processing-log.png)
 
 >[!TIP]
-> 单击与“更改用户许可证”相关的项可显示应用于单个用户的许可证更改的详细信息。
+> 单击与“更改用户许可证”相关的项** 可显示应用于单个用户的许可证更改的详细信息。
 
 ## <a name="deleting-a-group-with-an-assigned-license"></a>使用分配的许可证删除组
 
@@ -195,7 +195,7 @@ ms.locfileid: "79266281"
 
 在 Azure 门户中尝试删除组时可能会看到如下错误通知：![屏幕截图“组删除失败”](./media/licensing-group-advanced/groupdeletionfailed.png)
 
-请转到组的“许可证”选项卡，查看是否分配有任何许可证。 如果是，请删除这些许可证，然后再重试删除组。
+请转到组的“许可证”**** 选项卡，查看是否分配有任何许可证。 如果是，请删除这些许可证，然后再重试删除组。
 
 尝试通过 PowerShell 或图形 API 删除组时，可能会看到类似的错误。 使用的是从本地同步的组时，如果无法在 Azure AD 中删除组，Azure AD Connect 也可能会报告错误。 在所有此类情况下，请务必检查是否有任何许可证分配给组，并先删除这些许可证。
 
@@ -217,7 +217,7 @@ ms.locfileid: "79266281"
 
 - 许可证管理自动化不会自动根据环境中的所有更改类型做出反应。 例如，可能会用完许可证，导致某些用户进入错误状态。 若要释放可用的许可席位计数，可以删除其他用户的某些直接分配的许可证。 但是，系统不会自动对此项更改做出反应，也不会修复处于该错误状态的用户。
 
-  此类限制的解决方法之一是转到 Azure AD 中的“组”边栏选项卡，并单击“重新处理”。 在可能的情况下，此命令会处理该组中的所有用户并修复错误状态。
+  此类限制的解决方法之一是转到 Azure AD 中的“组”边栏选项卡，并单击“重新处理”。******** 在可能的情况下，此命令会处理该组中的所有用户并修复错误状态。
 
 ## <a name="next-steps"></a>后续步骤
 

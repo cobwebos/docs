@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中设置 Windows Vm 的 Key Vault 资源管理器
+title: 在 Azure 资源管理器中为 Windows VM 设置密钥保管库
 description: 如何设置与 Azure 资源管理器虚拟机搭配使用的密钥保管库。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
 ms.openlocfilehash: a64163da1dee2bceb567436dc18ba0fa5274cfcb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243141"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>在 Azure 资源管理器中为虚拟机设置密钥保管库
@@ -51,7 +51,7 @@ ms.locfileid: "79243141"
 
     az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
     
-然后，若要启用用于模板部署的 Key Vault，请运行以下命令：
+然后，要启用密钥保管库以用于模板部署，请运行以下命令：
 
     az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 

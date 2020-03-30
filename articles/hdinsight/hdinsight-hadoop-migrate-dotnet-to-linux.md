@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.openlocfilehash: 4b402975a151d26e8f335c07930274c156ac52fb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272365"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>将基于 Windows 的 HDInsight 的 .NET 解决方案迁移到基于 Linux 的 HDInsight
@@ -34,15 +34,15 @@ HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关包含在 HDInsight �
 
 1. 安装 [.NET Portability Analyzer](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)。 在安装期间，选择要使用的 Visual Studio 版本。
 
-2. 在 Visual Studio 2015 中，依次选择“分析” > “可移植性分析器设置”，并确保在“Mono”部分选中了“4.5”。
+2. 从 Visual Studio 2015 中，选择 __"分析__ > __可移植性分析器设置__"，并确保在 __"单声道"__ 部分中选中__4.5。__
 
     ![在分析器设置的 Mono 部分选中了 4.5](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
-    选择“确定”以保存配置。
+    选择“确定”____ 以保存配置。
 
-3. 依次选择“分析” > “分析程序集可移植性”。 选择包含解决方案的程序集，并选择“打开”以开始分析。
+3. 选择 __"分析__ > __装配体可移植性__"。 选择包含解决方案的程序集，并选择“打开”____ 以开始分析。
 
-4. 分析完成后，依次选择“分析” > “查看分析报表”。 在“可移植性分析结果”中，选择“打开报表”以打开某个报表。
+4. 分析完成后，选择 __"分析__ > __视图分析报告__"。 在“可移植性分析结果”____ 中，选择“打开报表”____ 以打开某个报表。
 
     ![可移植性分析器结果对话框](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 

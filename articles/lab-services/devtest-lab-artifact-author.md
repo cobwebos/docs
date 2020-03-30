@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66399203"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>为开发测试实验室虚拟机创建自定义项目
@@ -30,7 +30,7 @@ ms.locfileid: "66399203"
 >
 
 ## <a name="overview"></a>概述
-预配 VM 后，可使用项目来部署和设置应用程序。 项目由项目定义文件和存储在 Git 存储库的文件夹中的其他脚本文件组成。 项目定义文件包含 JSON 和可用于指定要在 VM 上安装的内容的表达式。 例如，可以定义项目名称、要运行的命令，以及运行命令时可用的参数。 可以按名称引用项目定义文件中的其他脚本文件。
+预配 VM 后，可使用项目来部署和设置应用程序**。 项目由项目定义文件和存储在 Git 存储库的文件夹中的其他脚本文件组成。 项目定义文件包含 JSON 和可用于指定要在 VM 上安装的内容的表达式。 例如，可以定义项目名称、要运行的命令，以及运行命令时可用的参数。 可以按名称引用项目定义文件中的其他脚本文件。
 
 ## <a name="artifact-definition-file-format"></a>项目定义文件格式
 以下示例显示组成定义文件基本结构的各个部分：
@@ -89,8 +89,8 @@ ms.locfileid: "66399203"
 * bool（任何有效的 JSON 布尔值）
 * 数组（任何有效的 JSON 数组）
 
-## <a name="secrets-as-secure-strings"></a>作为安全字符串的机密
-声明为安全字符串的机密。 下面是用于声明中的一个安全字符串参数语法`parameters`一部分**artifactfile.json**文件：
+## <a name="secrets-as-secure-strings"></a>机密作为安全字符串
+将机密声明为安全字符串。 下面是在`parameters`**工件文件.json**文件部分中声明安全字符串参数的语法：
 
 ```json
 
@@ -102,7 +102,7 @@ ms.locfileid: "66399203"
     },
 ```
 
-为项目安装命令，运行 PowerShell 脚本会使用 Convertto-securestring 命令创建的安全字符串。 
+对于项目安装命令，请运行使用 Convert 到 SecureString 命令创建的安全字符串的 PowerShell 脚本。 
 
 ```json
   "runCommand": {
@@ -110,19 +110,19 @@ ms.locfileid: "66399203"
   }
 ```
 
-有关完整示例 artifactfile.json 和 artifact.ps1 （PowerShell 脚本），请参阅[GitHub 上的此示例](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)。
+有关完整的示例工件file.json 和工件.ps1（PowerShell 脚本），请参阅[GitHub 上的此示例](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)。
 
-另一个要注意的重要一点是不记录到控制台输出捕获的用户调试的机密。 
+需要注意的另一个重要点是，在捕获输出以进行用户调试时，不要将机密记录到控制台。 
 
 ## <a name="artifact-expressions-and-functions"></a>项目表达式和函数
 可以使用表达式和函数构建项目安装命令。
 表达式用方括号（[和]）括起来，并在安装项目时求值。 表达式可以出现在 JSON 字符串值的任何位置。 表达式始终返回另一个 JSON 值。 如果需要使用以方括号 ([) 开头的文本字符串，则必须使用两个方括号 ([[)。
-通常情况下，使用具有函数的表达式来构造值。 与在 JavaScript 中一样，函数调用的格式为 **functionName(arg1, arg2, arg3)** 。
+通常情况下，使用具有函数的表达式来构造值。 与在 JavaScript 中一样，函数调用的格式为 **functionName(arg1, arg2, arg3)**。
 
 以下列表显示常见函数：
 
-* **parameters(parameterName)** ：返回运行项目命令时提供的参数值。
-* **concat(arg1, arg2, arg3,….. )** ：合并多个字符串值。 此函数可结合使用各种类型的参数。
+* parameters(parameterName)：返回运行项目命令时提供的参数值****。
+* **concat(arg1, arg2, arg3,….. )**：合并多个字符串值。 此函数可结合使用各种类型的参数。
 
 以下示例显示如何使用表达式和函数构造值：
 
@@ -137,7 +137,7 @@ ms.locfileid: "66399203"
 
 1. 安装 JSON 编辑器。 需要一个 JSON 编辑器来处理项目定义文件。 建议使用 [Visual Studio Code](https://code.visualstudio.com/)，它适用于 Windows、Linux 和 OS X。
 2. 获取示例 artifactfile.json 定义文件。 查看开发测试实验室团队在我们的 [GitHub 存储库](https://github.com/Azure/azure-devtestlab)中创建的项目。 我们已创建资源丰富的项目库，可帮助你创建自己的项目。 下载项目定义文件并对其进行更改以创建自己的项目。
-3. 利用 IntelliSense。 使用 IntelliSense 查看可用于构建项目定义文件的有效元素。 此外还可以查看元素值的不同选项。 例如，编辑“targetOsType”元素时，IntelliSense 显示 Windows 或 Linux 两种选择。
+3. 利用 IntelliSense。 使用 IntelliSense 查看可用于构建项目定义文件的有效元素。 此外还可以查看元素值的不同选项。 例如，编辑“targetOsType”元素时，IntelliSense 显示 Windows 或 Linux 两种选择****。
 4. 将项目存储在[开发测试实验室的公共 Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)或[自己的 Git 存储库](devtest-lab-add-artifact-repo.md)中。 在公共存储库中，可以查看他人共享的项目，可以直接使用或自定义它们来满足自己的需求。
    
    1. 为每个项目创建单独的目录。 目录名称应与项目名称相同。

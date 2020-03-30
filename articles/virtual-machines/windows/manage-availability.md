@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中管理 Windows Vm 的可用性
+title: 管理 Azure 中 Windows VM 的可用性
 description: 了解如何使用多个虚拟机来确保 Windows 应用程序在 Azure 中的高可用性
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/27/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ae5d60f77319a6590807ae0b18a0c07c116e128b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267438"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>在 Azure 中管理 Windows 虚拟机的可用性 
@@ -31,7 +31,7 @@ ms.locfileid: "79267438"
 ## <a name="next-steps"></a>后续步骤
 若要了解有关对虚拟机进行负载均衡的详细信息，请参阅[对虚拟机进行负载均衡](tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-查看在 IaaS 中 SQL Server 上运行 N 层应用程序的参考体系结构
+查看在 IaaS 中的 SQL Server 上运行 N 层应用程序的参考体系结构
 
-* [具有 SQL Server 的 Azure 上的 Windows N 层应用程序](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [在多个 Azure 区域中运行 N 层应用程序以实现高可用性](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [Azure 上包含 SQL Server 的 Windows N 层应用程序](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [在多个 Azure 区域中运行 N 层应用程序以确保高可用性](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

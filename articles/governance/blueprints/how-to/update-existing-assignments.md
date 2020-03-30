@@ -1,13 +1,13 @@
 ---
 title: 从门户更新现有分配
-description: 了解在 Azure 蓝图中通过门户更新现有蓝图分配的机制。
+description: 了解从 Azure 蓝图中的门户更新现有蓝图分配的机制。
 ms.date: 11/21/2019
 ms.topic: how-to
 ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264656"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
@@ -16,28 +16,28 @@ ms.locfileid: "79264656"
 
 - 添加或删除[资源锁定](../concepts/resource-locking.md)
 - 更改[动态参数](../concepts/parameters.md#dynamic-parameters)的值
-- 将分配升级到新发布的蓝图版本
+- 将分配升级到新发布的蓝图版本****
 
 ## <a name="updating-assignments"></a>更新分配
 
-1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
+1. 在左侧窗格中，选择“所有服务”****。 搜索并选择“蓝图”****。
 
-1. 从左侧页面选择“分配的蓝图”。
+1. 从左侧的页面选择 **"已分配的蓝图**"。
 
-1. 在蓝图列表中，左键单击蓝图分配。 然后单击 "**更新分配**" 按钮，或右键单击蓝图分配，然后选择 "**更新分配**"。
+1. 在蓝图列表中，左键单击蓝图分配。 然后单击 **"更新分配"** 按钮或右键单击蓝图分配并选择 **"更新分配**"。
 
    ![更新现有蓝图分配](../media/update-existing-assignments/update-assignment.png)
 
-1. "**分配蓝图**" 页将加载原始赋值中的所有值。
-   可以更改“蓝图定义版本”、“锁定分配”状态，以及蓝图定义上存在的任何动态参数。 完成更改时，单击“分配”。
+1. "**分配蓝图"** 页将预先加载原始分配中的所有值。
+   可以更改“蓝图定义版本”****、“锁定分配”**** 状态，以及蓝图定义上存在的任何动态参数。 完成更改时，单击“分配”****。
 
-1. 在更新后的分配详细信息页上，查看新状态。 在此示例中，我们向分配添加了“锁定”。
+1. 在更新后的分配详细信息页上，查看新状态。 在此示例中，我们向分配添加了“锁定”****。
 
-   ![更新了现有蓝图分配锁模式](../media/update-existing-assignments/updated-assignment.png)
+   ![更新了现有蓝图分配 - 锁定模式已更改](../media/update-existing-assignments/updated-assignment.png)
 
-1. 使用下拉菜单浏览有关其他**分配操作**的详细信息。 **托管资源**的表由所选的分配操作更新。
+1. 使用下拉列表浏览有关其他**分配操作**的详细信息。 **托管资源**表按选定的分配操作更新。
 
-   ![蓝图赋值的赋值运算](../media/update-existing-assignments/assignment-operations.png)
+   ![蓝图分配的分配操作](../media/update-existing-assignments/assignment-operations.png)
 
 ## <a name="rules-for-updating-assignments"></a>更新分配规则
 
@@ -51,7 +51,7 @@ ms.locfileid: "79264656"
     以前部署的策略分配将会保留。
   - 如果从蓝图中删除策略分配项目，已部署的策略分配将会保留。
 - Azure 资源管理器模板
-  - 该模板通过资源管理器作为 PUT 处理。 由于每个资源类型以不同的方式处理此操作，因此请查看包含的每个资源的文档，以确定在蓝图运行时该操作的影响。
+  - 该模板通过资源管理器作为 PUT**** 处理。 由于每个资源类型以不同的方式处理此操作，因此请查看包含的每个资源的文档，以确定在蓝图运行时该操作的影响。
 
 ## <a name="possible-errors-on-updating-assignments"></a>更新分配上可能出现的错误
 
@@ -67,6 +67,6 @@ ms.locfileid: "79264656"
 
 - 了解[蓝图生命周期](../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../concepts/parameters.md)。
-- 了解如何自定义[蓝图排序顺序](../concepts/sequencing-order.md)。
+- 学习自定义[蓝图排序顺序](../concepts/sequencing-order.md)。
 - 了解如何利用[蓝图资源锁定](../concepts/resource-locking.md)。
-- 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。
+- 在分配蓝图期间使用[常规故障排除时](../troubleshoot/general.md)解决问题。

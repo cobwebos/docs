@@ -1,5 +1,5 @@
 ---
-title: 在虚拟机计算节点上运行 Linux - Azure Batch | Microsoft 文档
+title: '在虚拟机计算节点上运行 Linux - Azure Batch | Microsoft 文档 '
 description: 了解如何处理 Azure Batch 中 Linux 虚拟机池上的并行计算工作负荷。
 services: batch
 documentationcenter: python
@@ -15,15 +15,15 @@ ms.date: 06/01/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 977504f41e93e37ae2c5ce9bdb1182a1cfe0a3fd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252280"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>在 Batch 池中预配 Linux 计算节点
 
-可以使用 Azure Batch 在 Linux 和 Windows 虚拟机上运行并行计算工作负荷。 本文详细介绍如何使用[Batch Python][py_batch_package]和[batch .net][api_net]客户端库在 Batch 服务中创建 Linux 计算节点池。
+可以使用 Azure Batch 在 Linux 和 Windows 虚拟机上运行并行计算工作负荷。 本文详细介绍如何使用 [Batch Python][py_batch_package] 和 [Batch .NET][api_net] 客户端库在 Batch 服务中创建 Linux 计算节点池。
 
 > [!NOTE]
 > 在 2017 年 7 月 5 日以后创建的所有 Batch 池都支持应用程序包。 在 2016 年 3 月 10 日和 2017 年 7 月 5 日期间创建的 Batch 池也支持应用程序包，但前提是该池是使用云服务配置创建的。 在 2016 年 3 月 10 日以前创建的 Batch 池不支持应用程序包。 若要详细了解如何使用应用程序包将应用程序部署到 Batch 节点，请参阅[使用 Batch 应用程序包将应用程序部署到计算节点](batch-application-packages.md)。
@@ -33,13 +33,13 @@ ms.locfileid: "79252280"
 ## <a name="virtual-machine-configuration"></a>虚拟机配置
 在 Batch 中创建计算节点池时，可以使用两个选项来选择节点大小和操作系统：“云服务配置”和“虚拟机配置”。
 
-“云服务配置”**只**提供 Windows 计算节点。 [Sizes for Cloud Services](../cloud-services/cloud-services-sizes-specs.md)（云服务的大小）中列出了可用的计算节点大小，[Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md)（Azure 来宾 OS 版本和 SDK 兼容性对照表）中列出了可用的操作系统。 创建包含 Azure 云服务节点的池时，需指定上述文章中所述的节点大小和 OS 系列。 对于 Windows 计算节点池，最常使用的是云服务。
+“云服务配置”*只*提供 Windows 计算节点。**** [Sizes for Cloud Services](../cloud-services/cloud-services-sizes-specs.md)（云服务的大小）中列出了可用的计算节点大小，[Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md)（Azure 来宾 OS 版本和 SDK 兼容性对照表）中列出了可用的操作系统。 创建包含 Azure 云服务节点的池时，需指定上述文章中所述的节点大小和 OS 系列。 对于 Windows 计算节点池，最常使用的是云服务。
 
-“虚拟机配置”为计算节点提供 Linux 和 Windows 映像。 [Sizes for virtual machines in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（Azure 中虚拟机的大小）(Linux) 和  [Sizes for virtual machines in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（Azure 中虚拟机的大小）(Windows) 中列出了可用的计算节点大小。 创建包含虚拟机配置节点的池时，必须指定节点的大小、虚拟机映像引用，以及要在节点上安装的 Batch 节点代理 SKU。
+“虚拟机配置”**** 为计算节点提供 Linux 和 Windows 映像。 [Sizes for virtual machines in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（Azure 中虚拟机的大小）(Linux) 和  [Sizes for virtual machines in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（Azure 中虚拟机的大小）(Windows) 中列出了可用的计算节点大小。 创建包含虚拟机配置节点的池时，必须指定节点的大小、虚拟机映像引用，以及要在节点上安装的 Batch 节点代理 SKU。
 
 ### <a name="virtual-machine-image-reference"></a>虚拟机映像引用
 
-Batch 服务使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)提供虚拟机配置中的计算节点。 可以指定[Azure Marketplace][vm_marketplace]中的映像，或提供已准备好的自定义映像。 有关自定义映像的详细信息，请参阅[使用共享映像库创建池](batch-sig-images.md)。
+Batch 服务使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)提供虚拟机配置中的计算节点。 可指定 [Azure 市场][vm_marketplace]中的一个映像，或者提供一个准备好的自定义映像。 有关自定义映像的更多详细信息，请参阅[使用共享映像库创建池](batch-sig-images.md)。
 
 配置虚拟机映像引用时，需指定虚拟机映像的属性。 创建虚拟机映像引用时，需提供以下属性：
 
@@ -58,7 +58,7 @@ Batch 服务使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-mac
 ### <a name="node-agent-sku"></a>节点代理 SKU
 Batch 节点代理是一个程序，它在池中的每个节点上运行，并在节点与 Batch 服务之间提供命令和控制接口。 节点代理对于不同操作系统有不同的实现（称为 SKU）。 从根本上讲，在创建虚拟机配置时，需要先指定虚拟机映像引用，然后指定要在其上安装映像的代理节点。 通常，每个节点代理 SKU 与多个虚拟机映像兼容。 下面是节点代理 SKU 的几个示例：
 
-* batch. node.js 18.04
+* 批处理.node.ubuntu 18.04
 * batch.node.centos 7
 * batch.node.windows amd64
 
@@ -68,9 +68,9 @@ Batch 节点代理是一个程序，它在池中的每个节点上运行，并�
 >
 
 ## <a name="create-a-linux-pool-batch-python"></a>创建 Linux 池：Batch Python
-以下代码片段演示了如何使用[适用于 Python 的 Microsoft Azure Batch 客户端库][py_batch_package]创建 Ubuntu Server 计算节点池。 有关 Batch Python 模块的参考文档，请参阅 azure 上的[azure batch 包][py_batch_docs]。
+下面的代码片段示范如何使用[用于 Python 的 Microsoft Azure Batch 客户端库][py_batch_package]创建 Ubuntu Server 计算节点池。 Batch Python 模块的参考文档可以在读取文档的[azure.batch 包][py_batch_docs]中找到。
 
-此代码片段显式创建[ImageReference][py_imagereference] ，并指定其每个属性（发布者、产品/服务、SKU 和版本）。 但在生产代码中，我们建议使用[list_supported_images][py_list_supported_images]方法在运行时从可用映像和节点代理 SKU 组合中进行确定和选择。
+此代码片段显式创建 [ImageReference][py_imagereference]，并指定它的每个属性（publisher、offer、SKU、version）。 但是，在生产代码中，我们建议您使用[list_supported_images][py_list_supported_images]方法在运行时从可用映像和节点代理 SKU 组合中确定和选择。
 
 ```python
 # Import the required modules from the
@@ -126,7 +126,7 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-如前所述，我们建议你使用[list_supported_images][py_list_supported_images]方法从当前支持的节点代理/应用商店映像组合中动态选择，而不是显式创建[ImageReference][py_imagereference] 。 以下 Python 代码片段演示如何使用此方法。
+如前所述，我们建议不要显式创建[ImageReference，][py_imagereference]而是使用[list_supported_images][py_list_supported_images]方法从当前支持的节点代理/商城映像组合中动态选择。 以下 Python 代码片段演示如何使用此方法。
 
 ```python
 # Get the list of supported images from the Batch service
@@ -152,9 +152,9 @@ vmc = batchmodels.VirtualMachineConfiguration(
 ```
 
 ## <a name="create-a-linux-pool-batch-net"></a>创建 Linux 池：Batch .NET
-下面的代码片段演示了如何使用[Batch .net][nuget_batch_net]客户端库创建 Ubuntu Server 计算节点池的示例。 可以在 docs.microsoft.com 上找到[Batch .net 参考文档][api_net]。
+以下代码片段示范如何使用 [Batch .NET][nuget_batch_net] 客户端库创建 Ubuntu Server 计算节点池。 可以在 docs.microsoft.com 上找到 [Batch .NET 参考文档][api_net]。
 
-下面的代码段使用[PoolOperations][net_pool_ops]。要从当前支持的 Marketplace 映像和节点代理 SKU 组合列表中选择的[ListSupportedImages][net_list_supported_images]方法。 这种做法非常有效，因为支持的组合列表可能随着时间改变。 通常情况下，添加支持的组合。
+以下代码段使用[池操作][net_pool_ops]。[List 支持图像][net_list_supported_images]方法，从当前支持的应用商店映像和节点代理 SKU 组合列表中选择。 这种做法非常有效，因为支持的组合列表可能随着时间改变。 通常情况下，添加支持的组合。
 
 ```csharp
 // Pool settings
@@ -198,7 +198,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 await pool.CommitAsync();
 ```
 
-尽管前面的代码段使用[PoolOperations][net_pool_ops]。[ListSupportedImages][net_list_supported_images]方法若要动态列出并从支持的映像和节点代理 SKU 组合中进行选择（建议使用），还可以显式配置[ImageReference][net_imagereference] ：
+尽管前面的代码段使用[池操作][net_pool_ops]。[List 支持图像][net_list_supported_images]方法可动态列出和选择支持的图像和节点代理 SKU 组合（建议），还可以显式配置[ImageReference：][net_imagereference]
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -209,7 +209,7 @@ ImageReference imageReference = new ImageReference(
 ```
 
 ## <a name="list-of-virtual-machine-images"></a>虚拟机映像列表
-若要获取 Batch 服务及其相应节点代理的所有支持的 Marketplace 虚拟机映像的列表，请在所选的相应语言 SDK 中利用[list_supported_images][py_list_supported_images] （Python）、 [ListSupportedImages][net_list_supported_images] （Batch .net）或相应的 API。
+要获取 Batch 服务及其相应节点代理的所有受支持的应用商店虚拟机映像的列表，请使用您选择的相应语言 SDK 中的[list_supported_images][py_list_supported_images] （Python）、[列表支持图像][net_list_supported_images]（Batch .NET） 或相应的 API。
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>使用 SSH 连接到 Linux 节点
 在开发期间或进行故障排除时，可能会发现需要登录到池中的节点。 不同于 Windows 计算节点，无法使用远程桌面协议 (RDP) 连接到 Linux 节点。 相反，Batch 服务在每个节点上启用 SSH 访问以建立远程连接。
@@ -283,16 +283,16 @@ tvm-1219235766_3-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50002
 tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 ```
 
-在节点上创建用户时不需要指定密码，而可以指定 SSH 公钥。 在 Python SDK 中，使用[ComputeNodeUser][py_computenodeuser]上的**ssh_public_key**参数。 在 .NET 中，使用[ComputeNodeUser][net_computenodeuser]。[SshPublicKey][net_ssh_key]属性。
+在节点上创建用户时不需要指定密码，而可以指定 SSH 公钥。 在 Python SDK 中，请在 [ComputeNodeUser][py_computenodeuser] 上使用 ssh_public_key**** 参数。 在 .NET 中，请使用 [ComputeNodeUser][net_computenodeuser].[SshPublicKey][net_ssh_key] 属性。
 
 ## <a name="pricing"></a>定价
-Azure Batch 构建在 Azure 云服务和 Azure 虚拟机技术基础之上。 Batch 服务本身是免费提供的，这意味着你只需为你的 Batch 解决方案使用的计算资源（以及需要的相关成本）收费。 选择 "**云服务配置**" 时，会根据[云服务定价][cloud_services_pricing]结构收费。 选择 "**虚拟机配置**" 时，将根据[虚拟机定价][vm_pricing]结构收费。
+Azure Batch 构建在 Azure 云服务和 Azure 虚拟机技术基础之上。 Batch 服务本身免费提供，这意味着您仅对 Batch 解决方案消耗的计算资源（以及所需的相关成本）收费。 如果选择“云服务配置”****，系统会根据[云服务定价][cloud_services_pricing]结构收费。 如果选择“虚拟机配置”****，系统会根据[虚拟机定价][vm_pricing]结构收费。
 
 如果使用[应用程序包](batch-application-packages.md)将应用程序部署到 Batch 节点，系统还会对应用程序包使用的 Azure 存储资源收费。
 
 ## <a name="next-steps"></a>后续步骤
 
-GitHub 上的[azure 批处理][github_samples]存储库中的[Python 代码示例][github_samples_py]包含用于展示如何执行常见批处理操作（例如池、作业和任务创建）的脚本。 Python 示例随附的[自述文件][github_py_readme]提供了有关如何安装所需包的详细信息。
+GitHub 上 [azure-batch-samples][github_samples] 存储库中的 [Python 代码示例][github_samples_py]包含演示如何执行常见 Batch 操作（例如创建池、作业和任务）的多个脚本。 Python 示例随附的 [README][github_py_readme] 文件包含有关如何安装所需包的详细信息。
 
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx

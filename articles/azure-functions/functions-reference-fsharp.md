@@ -1,5 +1,5 @@
 ---
-title: Azure Functions F#开发人员参考
+title: Azure Functions F# 开发人员参考
 description: 了解如何使用 F# 脚本开发 Azure Functions。
 author: sylvanc
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276759"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
@@ -18,7 +18,7 @@ ms.locfileid: "79276759"
 Azure Functions F# 是用于在云中轻松运行小段代码或“函数”的一个解决方案。 数据通过函数参数流入 F # 函数。 在 `function.json`指定参数名称，没有访问函数记录器和取消令牌等的预定义的名称。 
 
 >[!IMPORTANT]
->仅 Azure Functions 运行时的[版本 1.x](functions-versions.md#creating-1x-apps) 支持 F# 脚本 (.fsx)。 如果要使用F#版本 2. x 和更高版本的运行时，则必须使用预编译F#的类库项目（. fs）。 就像 [C# 类库项目](functions-dotnet-class-library.md)那样，使用 Visual Studio 创建、管理和发布 F# 类库项目。 有关 Functions 版本的详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)。
+>仅 Azure Functions 运行时的[版本 1.x](functions-versions.md#creating-1x-apps) 支持 F# 脚本 (.fsx)。 若要将 F# 与版本 2.x 及更高版本运行时结合使用，必须使用预编译的 F# 类库项目 (.fs)。 就像 [C# 类库项目](functions-dotnet-class-library.md)那样，使用 Visual Studio 创建、管理和发布 F# 类库项目。 有关 Functions 版本的详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)。
 
 本文假定已阅读 [Azure Functions 开发人员参考](functions-reference.md)。
 
@@ -48,7 +48,7 @@ FunctionsProject
 
 存在共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都有自己的代码文件 (.fsx) 和绑定配置文件 (function.json)。
 
-在 `extensions.csproj` 文件中定义了[版本2.x 和更高版本](functions-versions.md)的函数运行时中所需的绑定扩展，其中实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
+[2.x 版及更高版本](functions-versions.md)的 Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
 ## <a name="binding-to-arguments"></a>绑定到参数
 对于每个绑定支持某些参数，请参阅 [Azure 函数触发器和绑定开发人员参考](functions-triggers-bindings.md)。 例如，blob 触发器支持的其中一个参数绑定是 POCO，可以使用 F # 记录来表示。 例如：
@@ -63,7 +63,7 @@ let Run(blob: string, output: byref<Item>) =
 
 F # Azure 函数采用一个或多个参数。 所谓 Azure 函数参数时，指的是 *输入* 参数和 *输出* 参数。 顾名思义，输入参数就是输入到 F # Azure 函数的参数。 *输出* 参数是可变的数据或 `byref<>` 参数就是*从*返回数据的参数。
 
-在以上示例中，`blob` 是输入参数，`output` 是输出参数。 注意，针对 `byref<>`，请使用 `output` （无需添加 `[<Out>]` 批注）。 使用 `byref<>` 类型允许函数更改参数所引用的记录或对象。
+在以上示例中，`blob` 是输入参数，`output` 是输出参数。 注意，针对 `output`，请使用 `byref<>` （无需添加 `[<Out>]` 批注）。 使用 `byref<>` 类型允许函数更改参数所引用的记录或对象。
 
 作为输入类型使用 F # 记录时，必须使用 `[<CLIMutable>]`标记的记录定义，以便在记录传递给函数之前让 Azure 功能框架设置相应字段。 实质上， `[<CLIMutable>]` 生成记录属性的 setter。 例如：
 
@@ -89,7 +89,7 @@ let Run(input: string, item: byref<Item>) =
     item <- result
 ```
 
-## <a name="logging"></a>日志记录
+## <a name="logging"></a>Logging
 若要使用 F# 将输出记录到[流式处理日志](../app-service/troubleshoot-diagnostic-logs.md)中，函数应带有 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 为了保持一致，我们建议参数名为 `log`。 例如：
 
 ```fsharp
@@ -98,7 +98,7 @@ let Run(blob: string, output: byref<string>, log: ILogger) =
     output <- input
 ```
 
-## <a name="async"></a>异步
+## <a name="async"></a>Async
 可使用 `async` 工作流，但结果需要返回 `Task`。 使用 `Async.StartAsTask` 可实现此目的，例如：
 
 ```fsharp
@@ -109,7 +109,7 @@ let Run(req: HttpRequestMessage) =
 ```
 
 ## <a name="cancellation-token"></a>取消令牌
-如果函数需要正常地处理关闭，可指定 [`CancellationToken`](/dotnet/api/system.threading.cancellationtoken) 参数。 联合 `async` 可实现此目的，例如：
+如果函数需要正常处理关机，则可以给它一个[`CancellationToken`](/dotnet/api/system.threading.cancellationtoken)参数。 联合 `async` 可实现此目的，例如：
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -141,7 +141,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host` 列中的一个值匹配。
+* `Microsoft.Azure.WebJobs.Host`.
 
 ## <a name="referencing-external-assemblies"></a>引用外部程序集
 与此类似，可以使用 `#r "AssemblyName"` 指令添加框架程序集引用。
@@ -160,7 +160,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 
 由 Azure 函数主机环境自动添加以下程序集：
 
-* `mscorlib`、
+* `mscorlib`,
 * `System`
 * `System.Core`
 * `System.Xml`
@@ -169,7 +169,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting` 列中的一个值匹配。
+* `System.Net.Http.Formatting`.
 
 此外，以下程序集比较特殊，可能由 simplename 引用 (例如 `#r "AssemblyName"`)：
 
@@ -177,7 +177,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* `Microsoft.AspNEt.WebHooks.Common` 列中的一个值匹配。
+* `Microsoft.AspNEt.WebHooks.Common`.
 
 如果需要引用私有程序集，可以将程序集文件上传到  `bin` 与功能相关的文件，并通过使用文件名（例如`#r "MyAssembly.dll"`）来引用它. 有关如何将文件上传到函数文件夹的信息，请参阅下一部分中有关程序包管理的信息。
 
@@ -258,7 +258,7 @@ let Run(timer: TimerInfo, log: ILogger) =
 ```
 
 ## <a name="reusing-fsx-code"></a>重用.fsx 代码
-可以通过 `.fsx` 指令使用其他 `#load` 文件中的代码。 例如：
+可以通过 `#load` 指令使用其他 `.fsx` 文件中的代码。 例如：
 
 `run.fsx`
 
@@ -280,17 +280,17 @@ let mylog(log: ILogger, text: string) =
 
 * `#load "logger.fsx"` 加载函数文件夹中的文件。
 * `#load "package\logger.fsx"` 加载文件 `package` 函数文件夹中的文件夹。
-* `#load "..\shared\mylogger.fsx"` 在同一级别（即 `shared` 的正下方）加载 `wwwroot` 文件夹中的文件，使其成为函数文件夹。
+* `#load "..\shared\mylogger.fsx"` 在同一级别（即 `wwwroot` 的正下方）加载 `shared` 文件夹中的文件，使其成为函数文件夹。
 
 `#load` 指令只适用于 `.fsx`（F # 脚本）文件，而不适用于 `.fs` 文件。
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅以下资源：
+有关更多信息，请参见以下资源：
 
-* [F # 指南](/dotnet/articles/fsharp/index)
-* [Azure Functions 最佳实践](functions-best-practices.md)
-* [Azure Functions 开发人员参考](functions-reference.md)
-* [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
+* [F# 指南](/dotnet/articles/fsharp/index)
+* [Azure 函数的最佳做法](functions-best-practices.md)
+* [Azure Functions developer reference（Azure Functions 开发人员参考）](functions-reference.md)
+* [Azure 函数触发器和绑定](functions-triggers-bindings.md)
 * [ Azure Functions 测试](functions-test-a-function.md)
 * [Azure Functions 缩放](functions-scale.md)
 

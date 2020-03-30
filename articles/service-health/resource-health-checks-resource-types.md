@@ -4,10 +4,10 @@ description: 通过 Azure 资源运行状况支持的资源类型
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258299"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
@@ -26,7 +26,7 @@ ms.locfileid: "79258299"
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 |执行的检查|
 |---|
-|<ul><li>批处理帐户是否已启动并正在运行？</li><li>此批处理帐户是否超出了池配额？</li></ul>|
+|<ul><li>Batch 帐户是否已启动并正在运行？</li><li>此 Batch 帐户是否超出了池配额？</li></ul>|
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |执行的检查|
@@ -41,7 +41,7 @@ ms.locfileid: "79258299"
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |执行的检查|
 |---|
-|<ul><li>主机服务器是否已启动并正在运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否降级并预测到很快会失败？</li></ul>|
+|<ul><li>主机服务器是否已启动并正在运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否降级并预计很快会失败？</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |执行的检查|
@@ -51,17 +51,17 @@ ms.locfileid: "79258299"
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |执行的检查|
 |---|
-|<ul><li>托管此虚拟机的服务器是否已启动并运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否降级并预测到很快会失败？</li></ul>|
+|<ul><li>托管此虚拟机的服务器是否已启动并运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否降级并预计很快会失败？</li></ul>|
 
-## <a name="microsoftdatafactoryfactories"></a>datafactory/工厂
+## <a name="microsoftdatafactoryfactories"></a>微软.数据工厂/工厂
 |执行的检查|
 |---|
-|<ul><li>是否有管道运行失败？</li><li>承载数据工厂的群集是否正常？</li></ul>|
+|<ul><li>是否有管道运行失败？</li><li>托管数据工厂的群集是否正常？</li></ul>|
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |执行的检查|
 |---|
-|<ul><li>是否有用户无法提交或列出 Data Lake Analytics 作业？</li><li>Data Lake Analytics 作业是否因系统错误而无法完成？</li></ul>|
+|<ul><li>是否有用户无法提交或列出 Data Lake Analytics 作业？</li><li>是否因系统错误而无法完成 Data Lake Analytics 作业？</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
@@ -69,30 +69,30 @@ ms.locfileid: "79258299"
 |---|
 |<ul><li>是否有用户无法将数据上传到 Data Lake Store？</li><li>是否有用户无法从 Data Lake Store 下载数据？</li></ul>|
 
-## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/services
+## <a name="microsoftdatamigrationservices"></a>微软.数据迁移/服务
 |执行的检查|
 |---|
-|<ul><li>数据库迁移服务是否无法预配？</li><li>数据库迁移服务是否由于不活动或用户请求而停止？</li></ul>|
+|<ul><li>数据库迁移服务没有预配？</li><li>数据库迁移服务是否由于不活动或用户请求而停止？</li></ul>|
 
-## <a name="microsoftdatashareaccounts"></a>DataShare/帐户
+## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
 |执行的检查|
 |---|
-|<ul><li>数据共享帐户是否已启动并正在运行？</li><li>托管数据共享的群集是否可用？</li></ul>|
+|<ul><li>数据共享帐户是否启动并运行？</li><li>托管数据共享的群集是否可用？</li></ul>|
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 |执行的检查|
 |---|
-|<ul><li>服务器是否因维护而不可用？</li><li>由于重新配置，服务器是否不可用？</li></ul>|
+|<ul><li>服务器是否因维护而不可用？</li><li>服务器是否因重新配置而不可用？</li></ul>|
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 |执行的检查|
 |---|
-|<ul><li>服务器是否因维护而不可用？</li><li>由于重新配置，服务器是否不可用？</li></ul>|
+|<ul><li>服务器是否因维护而不可用？</li><li>服务器是否因重新配置而不可用？</li></ul>|
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 |执行的检查|
 |---|
-|<ul><li>服务器是否因维护而不可用？</li><li>由于重新配置，服务器是否不可用？</li></ul>|
+|<ul><li>服务器是否因维护而不可用？</li><li>服务器是否因重新配置而不可用？</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 |执行的检查|
@@ -104,15 +104,15 @@ ms.locfileid: "79258299"
 |---|
 |<ul><li>是否存在因 Azure Cosmos DB 服务不可用而未处理的数据库或集合请求？</li><li>是否存在因 Azure Cosmos DB 服务不可用而未处理的文档请求？</li></ul>|
 
-## <a name="microsofteventhubnamespaces"></a>node.js/命名空间
+## <a name="microsofteventhubnamespaces"></a>Microsoft.eventhub/namespaces
 |执行的检查|
 |---|
-|<ul><li>事件中心命名空间是否遇到用户生成的错误？</li><li>当前是否正在升级事件中心命名空间？</li></ul>|
+|<ul><li>事件中心命名空间是否遇到用户生成的错误？</li><li>事件中心命名空间当前是否正在升级？</li></ul>|
 
-## <a name="microsofthdinsightclusters"></a>microsoft hdinsight/群集
+## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clusters
 |执行的检查|
 |---|
-|<ul><li>在 HDInsight 群集上是否提供核心服务？</li><li>HDInsight 群集是否可以访问静态 BYOK 加密的密钥？</li></ul>|
+|<ul><li>HDInsight 群集上是否提供核心服务？</li><li>HDInsight 群集是否可以访问用于 BYOK 静态加密的密钥？</li></ul>|
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |执行的检查|
@@ -124,7 +124,7 @@ ms.locfileid: "79258299"
 |---|
 |<ul><li>Web 服务是否已启动并正在运行？</li></ul>|
 
-## <a name="microsoftmediamediaservices"></a>Microsoft. Media/windowsazure.mediaservices
+## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
 |执行的检查|
 |---|
 |<ul><li>媒体服务是否已启动并正在运行？</li></ul>|
@@ -132,7 +132,7 @@ ms.locfileid: "79258299"
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
 |执行的检查|
 |---|
-|<ul><li>应用程序网关性能是否下降？</li><li>应用程序网关是否可用？</li></ul>|
+|<ul><li>应用程序网关的性能是否下降了？</li><li>应用程序网关是否可用？</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |执行的检查|
@@ -142,17 +142,17 @@ ms.locfileid: "79258299"
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.network/expressroutecircuits
 |执行的检查|
 |---|
-|<ul><li>ExpressRoute 线路是否正常？</li></ul>|
+|<ul><li>ExpressRoute 线路是否正常运行？</li></ul>|
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
 |执行的检查|
 |---|
-|<ul><li>前门后端是否响应了运行状况探测的错误？</li><li>配置更改是否延迟？</li></ul>|
+|<ul><li>Front Door 后端是否以错误向运行状况探测做出响应？</li><li>配置更改是否延迟了？</li></ul>|
 
-## <a name="microsoftnetworkloadbalancers"></a>LoadBalancers/网络
+## <a name="microsoftnetworkloadbalancers"></a>Microsoft.network/LoadBalancers
 |执行的检查|
 |---|
-|<ul><li>负载平衡终结点是否可用？</li></ul>|
+|<ul><li>负载均衡终结点是否可用？</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |执行的检查|
@@ -177,7 +177,7 @@ ms.locfileid: "79258299"
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |执行的检查|
 |---|
-|<ul><li>主机 OS 是否已启动并正在运行？</li><li>是否可从数据中心外部访问 workspaceCollection？</li><li>Power BI 的资源提供程序是否可用？</li><li>Power BI 服务在相应区域中是否可用？</li></ul>|
+|<ul><li>主机 OS 是否已启动并正在运行？</li><li>是否可从数据中心外部访问 workspaceCollection？</li><li>电源 BI 资源提供程序是否可用？</li><li>电源 BI 服务是否在相应区域可用？</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |执行的检查|
@@ -189,17 +189,17 @@ ms.locfileid: "79258299"
 |---|
 |<ul><li>客户是否遇到用户生成的服务总线错误？</li><li>用户是否遇到由于服务总线命名空间升级导致的暂时性错误增加？</li></ul>|
 
-## <a name="microsoftservicefabricclusters"></a>ServiceFabric/群集
+## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
 |执行的检查|
 |---|
-|<ul><li>Service Fabric 群集是否已启动并正在运行？</li><li>Service Fabric 群集是否可以通过 Azure 资源管理器来管理？</li></ul>|
+|<ul><li>服务结构群集是否启动并运行？</li><li>服务结构群集能否通过 Azure 资源管理器进行管理？</li></ul>|
 
-## <a name="microsoftsqlmanagedinstancesdatabases"></a>ManagedInstances/数据库
+## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
 |执行的检查|
 |---|
 |<ul><li>数据库是否已启动并正在运行？</li></ul>|
 
-## <a name="microsoftsqlserverdatabases"></a>Microsoft .SQL/服务器/数据库
+## <a name="microsoftsqlserverdatabases"></a>Microsoft.SQL/Server/databases
 |执行的检查|
 |---|
 |<ul><li>是否存在到数据库的登录？</li></ul>|

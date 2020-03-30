@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: d9283a36d5f7ccb82b2cc211485487d5a3dcce7b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79201019"
 ---
 # <a name="azure-database-security-checklist"></a>Azure 数据库安全性清单
 
 为了帮助提高安全性，Azure 数据库包括大量可用于限制和控制访问的内置安全控件。
 
-其中包括：
+其中包括:
 
 -    防火墙，可用于创建[防火墙规则](../../sql-database/sql-database-firewall-configure.md)，以便根据IP 地址限制连接，
 -    可从 Azure 门户访问的服务器级防火墙
@@ -41,10 +41,10 @@ ms.locfileid: "79201019"
 云计算需使用许多应用程序用户、数据库管理员和程序员不熟悉的新安全范例。 由于这个原因，一些组织对于是否要出于安全风险因素实现云基础结构以进行数据管理犹豫不决。 但是，通过更好地了解 Microsoft Azure 和 Microsoft Azure SQL 数据库中内置的安全功能，可极大减缓这方面的担忧。
 
 ## <a name="checklist"></a>清单
-查看此清单之前，建议阅读 [Azure 数据库安全性最佳做法](database-best-practices.md)一文。 了解最佳做法后，便能够充分利用此清单。 然后，你可以使用此清单来确保你已解决 Azure 数据库安全性中的重要问题。
+查看此清单之前，建议阅读 [Azure 数据库安全性最佳做法](database-best-practices.md)一文。 了解最佳做法后，便能够充分利用此清单。 然后，可以使用此检查表来确保已解决 Azure 数据库安全性中的重要问题。
 
 
-|清单类别| 说明|
+|清单类别| 描述|
 | ------------ | -------- |
 |**保护数据**||
 | <br> 动态加密/传输中加密| <ul><li>[传输层安全性](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol)，用于数据移动到网络时的数据加密。</li><li>数据库要求来自于客户端的通信是基于 [TDS（表格格式数据流）](https://msdn.microsoft.com/library/dd357628.aspx)协议、通过 TLS（传输层安全性）实现的安全通信。</li></ul> |

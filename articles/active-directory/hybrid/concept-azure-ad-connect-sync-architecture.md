@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect 同步：了解体系结构-Azure
+title: Azure AD 连接同步：了解体系结构 - Azure
 description: 本主题介绍 Azure AD Connect 同步的体系结构，并解释使用的术语。
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261614"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect 同步：了解体系结构
-本主题介绍 Azure AD Connect 同步的基本体系结构。在许多方面，它类似于其前置任务2003、ILM 2007 和 FIM 2010。 Azure AD Connect 同步是这些技术的演进。 如果熟悉上述任何早期技术，则也会熟悉本主题的内容。 本主题很适合同步功能的新手。 但是，不一定要了解本主题的详细信息才能成功自定义 Azure AD Connect 同步（在本主题中称为“同步引擎”）。
+本主题介绍 Azure AD 连接同步的基本体系结构。在许多方面，它类似于其前身MIIS 2003、ILM 2007和FIM2010。 Azure AD Connect 同步是这些技术的演进。 如果熟悉上述任何早期技术，则也会熟悉本主题的内容。 本主题很适合同步功能的新手。 但是，不一定要了解本主题的详细信息才能成功自定义 Azure AD Connect 同步（在本主题中称为“同步引擎”）。
 
 ## <a name="architecture"></a>体系结构
 同步引擎为多个连接的数据源中存储的对象创建集成视图，并管理这些数据源中的标识信息。 此集成视图的具体内容取决于从连接的数据源检索的标识信息，以及一组用于确定如何处理此信息的规则。
@@ -204,7 +204,7 @@ Metaverse 对象包含同步引擎具有的连接器空间中暂存对象的聚�
 入站同步包括以下过程：
 
 * **预配**（也称为**投影**，如果一定要将此过程与出站同步预配进行区分的话）。 同步引擎根据暂存对象创建新的 Metaverse 对象并链接它们。 预配是对象级的操作。
-* **联接**。 同步引擎将暂存对象链接到现有的 Metaverse 对象。 联接是对象级的操作。
+* **加入**。 同步引擎将暂存对象链接到现有的 Metaverse 对象。 联接是对象级的操作。
 * **导入属性流**。 同步引擎更新 Metaverse 中对象的属性值（称为属性流）。 导入属性流是需要暂存对象与 Metaverse 对象之间的链接的属性级操作。
 
 预配是唯一可在 Metaverse 中创建对象的过程。 预配只影响属于脱离对象的导入对象。 在预配期间，同步引擎将创建 Metaverse 对象（其对应于导入对象的对象类型），并创建这两个对象间的链接，从而创建联接的对象。
@@ -223,7 +223,7 @@ Metaverse 对象包含同步引擎具有的连接器空间中暂存对象的聚�
 
 出站同步有三个过程：
 
-* **预配**
+* **设置**
 * **取消预配**
 * **导出属性流**
 
@@ -259,5 +259,5 @@ Metaverse 对象包含同步引擎具有的连接器空间中暂存对象的聚�
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
 

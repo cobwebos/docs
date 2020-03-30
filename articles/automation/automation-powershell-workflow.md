@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278683"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>了解自动化 runbook 的关键 PowerShell 工作流概念
@@ -31,7 +31,7 @@ Workflow Test-Workflow
 }
 ```
 
-工作流名称与自动化 Runbook 的名称匹配。 如果正在导入某个 Runbook，其文件名必须与工作流名称匹配，并且必须以 *.ps1* 结尾。
+工作流名称与自动化 Runbook 的名称匹配。 如果正在导入 Runbook，则文件名必须与工作流名称匹配，并且必须以 *.ps1*结尾。
 
 要将参数添加到工作流，请使用 **Param** 关键字，与使用脚本时相同。
 
@@ -222,7 +222,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>检查点
 
-“检查点”是工作流当前状态的快照，其中包括变量的当前值以及到该点为止生成的任何输出。 如果工作流以错误结束或暂停，则其下次运行时会从其上一个检查点开始，而不是从工作流的起点开始。  可以使用 **Checkpoint-Workflow** 活动在工作流中设置一个检查点。 Azure 自动化具有称为[公平共享](automation-runbook-execution.md#fair-share)的功能，其中，运行3小时的任何 runbook 将被卸载，以允许运行其他 runbook。 最终，卸载的 runbook 将被重新加载，当它为时，它将从 runbook 中的最后一个检查点继续执行。 为了保证 runbook 最终能够完成，你必须以运行时间间隔不到3小时的时间间隔添加检查点。 如果在每次运行期间添加了新的检查点，并且在3小时后由于错误而收回 runbook，则 runbook 将会无限期地恢复。
+“检查点”** 是工作流当前状态的快照，其中包括变量的当前值以及到该点为止生成的任何输出。 如果工作流以错误结束或暂停，则其下次运行时会从其上一个检查点开始，而不是从工作流的起点开始。  可以使用 **Checkpoint-Workflow** 活动在工作流中设置一个检查点。 Azure 自动化有一项名叫[公平共享](automation-runbook-execution.md#fair-share)的功能，即系统会卸载任何已运行 3 小时的 runbook，让其他 runbook 有机会运行。 最终，卸载的 runbook 会重新加载，并从上一个检查点处继续执行原来的操作。 为了确保 runbook 最终能够完成，必须按时间间隔（不到 3 小时）添加检查点。 如果在每次运行过程中添加了新的检查点，则当 runbook 在 3 小时后因错误而被系统逐出时，系统会恢复该 runbook，没有限期。
 
 在以下示例代码中，Activity2 后发生的异常导致工作流结束。 当工作流再次运行时，它会通过运行 Activity2 来启动，因为此活动刚好在设置的上一个检查点之后。
 
@@ -254,7 +254,7 @@ Workflow Copy-Files
 }
 ```
 
-由于调用 [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) 活动后或在最后一个检查点之后，将不保留用户名凭据，所以需要在调用 **Suspend-Workflow** 或检查点后将凭据设置为 null，然后再从资产存储重新检索凭据。  否则，你可能会收到以下错误消息：*无法继续执行工作流作业，原因是无法完全保存持久性数据或保存的持久性数据已损坏。您必须重新启动工作流。*
+由于调用 [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) 活动后或在最后一个检查点之后，将不保留用户名凭据，所以需要在调用 **Suspend-Workflow** 或检查点后将凭据设置为 null，然后再从资产存储重新检索凭据。  否则，您可能会收到以下错误消息：*无法恢复工作流作业，因为持久性数据无法完全保存，或者保存的持久性数据已损坏。您必须重新启动工作流。*
 
 下面的相同代码演示如何在 PowerShell 工作流 Runbook 中处理此问题。
 
@@ -283,7 +283,7 @@ workflow CreateTestVms
 ```
 
 > [!IMPORTANT]
-> Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名。 搜索库项时，如果未看到 Connect-AzureRMAccount，可以使用 Add-AzureRmAccount，或更新自动化帐户中的模块。
+> Add-AzureRmAccount 现在是 Connect-AzureRMAccount 的别名********。 搜索库项时，如果未看到 Connect-AzureRMAccount，可以使用 Add-AzureRmAccount，或更新自动化帐户中的模块********。
 
 此外，如果使用配置了服务主体的运行方式帐户进行身份验证，则不需要此处理。
 
@@ -291,5 +291,5 @@ workflow CreateTestVms
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
+* 要开始使用 PowerShell 工作流运行簿，请参阅[我的第一个 PowerShell 工作流运行簿](automation-first-runbook-textual.md)
 

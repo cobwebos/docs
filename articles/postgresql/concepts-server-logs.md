@@ -1,35 +1,35 @@
 ---
-title: 日志-Azure Database for PostgreSQL-单服务器
-description: 介绍 Azure Database for PostgreSQL-单服务器中的日志记录配置、存储和分析
+title: 日志 - Azure Database for PostgreSQL - 单一服务器
+description: 介绍 Azure Database for PostgreSQL 中的日志记录配置、存储和分析 - 单一服务器
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280490"
 ---
-# <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 单服务器中的日志
-Azure Database for PostgreSQL 允许配置和访问 Postgres 的标准日志。 日志可用于识别、排除和修复配置错误和性能不佳。 可以配置和访问的日志记录信息包括错误、查询信息、autovacuum 记录、连接和检查点。 （对事务日志的访问不可用）。
+# <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的日志
+Azure Database for PostgreSQL 允许配置和访问 Postgres 的标准日志。 这些日志可用于识别、排除和修复配置错误和性能不佳问题。 可以配置和访问的日志信息包括错误、查询信息、autovacuum 记录、连接和检查点。 （无法访问事务日志）。
 
-审核日志记录通过 Postgres 扩展 pgaudit 提供。 若要了解详细信息，请访问[审核概念](concepts-audit.md)一文。
+审核日志是通过 Postgres 扩展 pgaudit 提供的。 有关详细信息，请访问[审核的概念](concepts-audit.md)一文。
 
 
 ## <a name="configure-logging"></a>配置日志记录 
-可以使用日志记录服务器参数在服务器上配置 Postgres 标准日志记录。 在每个 Azure Database for PostgreSQL 服务器上，默认情况下 `log_checkpoints` 和 `log_connections`。 还有一些其他参数，你可以调整它们来满足你的日志记录需求： 
+可以使用日志记录服务器参数在服务器上配置 Postgres 标准日志记录。 在每个 Azure Database for PostgreSQL 服务器上，默认已启用 `log_checkpoints` 和 `log_connections`。 还有一些其他参数，你可以调整它们来满足你的日志记录需求： 
 
 ![Azure Database for PostgreSQL - 日志记录参数](./media/concepts-server-logs/log-parameters.png)
 
-若要了解有关 Postgres 日志参数的详细信息，请访问 Postgres 文档的 "[记录时间](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN)" 和 "[记录内容](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT)" 部分。 大多数（但不是全部） Postgres 日志记录参数都可在 Azure Database for PostgreSQL 中进行配置。
+若要详细了解 Postgres 日志参数，请访问 Postgres 文档的[何时记录日志](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN)和[记录哪些内容](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT)部分。 可以在 Azure Database for PostgreSQL 中配置大部分（但并非所有）PostgreSQL 日志记录参数。
 
-若要了解如何在 Azure Database for PostgreSQL 中配置参数，请参阅[门户文档](howto-configure-server-parameters-using-portal.md)或[CLI 文档](howto-configure-server-parameters-using-cli.md)。 
+若要了解如何在 Azure Database for PostgreSQL 中配置参数，请参阅[门户文档](howto-configure-server-parameters-using-portal.md)或 [CLI 文档](howto-configure-server-parameters-using-cli.md)。 
 
 > [!NOTE]
-> 配置大量日志（例如，语句日志记录）可以增加显著的性能开销。 
+> 配置大量日志（例如，语句日志记录）可能会显著增大性能开销。 
 
 ## <a name="access-log-files"></a>访问 .log 文件
 Azure Database for PostgreSQL 中的默认日志格式为 .log。 此日志中的示例行如下所示：
@@ -38,44 +38,44 @@ Azure Database for PostgreSQL 中的默认日志格式为 .log。 此日志中�
 2019-10-14 17:00:03 UTC-5d773cc3.3c-LOG: connection received: host=101.0.0.6 port=34331 pid=16216
 ```
 
-Azure Database for PostgreSQL 为 .log 文件提供短期存储位置。 新文件每1小时或 100 MB 开始一次，以先达到的条件为准。 在从 Postgres 发出日志时，会将日志追加到当前文件。  
+Azure Database for PostgreSQL 为 .log 文件提供短期存储位置。 每隔 1 小时或每达到 100 MB（以先达到的条件为准），就会开始创建一个新文件。 从 Postgres 发出日志后，这些日志将追加到当前文件。  
 
-您可以使用 `log_retention_period` 参数设置此短期日志存储的保持期。 默认值为 3 天；最大值为 7 天。 短期存储位置可以容纳多达 1 GB 的日志文件。 1 GB 后，将删除最旧的文件，而不考虑保留期，以便为新日志腾出空间。 
+可以使用 `log_retention_period` 参数设置此短期日志存储的保留期。 默认值为 3 天；最大值为 7 天。 短期存储位置最多可以存储 1 GB 日志文件。 达到 1 GB 后，无论保留期有多长，都会删除最旧的文件，以便为新日志腾出空间。 
 
-对于日志和日志分析的长期保留，你可以下载 .log 文件并将它们移动到第三方服务。 您可以使用[Azure 门户](howto-configure-server-logs-in-portal.md) [Azure CLI](howto-configure-server-logs-using-cli.md)下载文件。 此外，还可以配置 Azure Monitor 诊断设置，这些设置会自动将日志（JSON 格式）发送到长期位置。 在以下部分中了解有关此选项的详细信息。 
+对于长期保留的日志和日志分析，可以下载 .log 文件并将其移到第三方服务。 可以使用 [Azure 门户](howto-configure-server-logs-in-portal.md)或 [Azure CLI](howto-configure-server-logs-using-cli.md) 下载文件。 此外，还可以配置 Azure Monitor 诊断设置，用于自动将日志（JSON 格式）发送到长期保留位置。 以下部分详细介绍了此选项。 
 
-可以通过将参数 `logging_collector` 设置为 OFF，停止生成 .log 文件。 如果使用 Azure Monitor 诊断设置，则建议使用 "关闭日志文件"。 此配置将减少其他日志记录对性能的影响。
+可以通过将参数 `logging_collector` 设置为 OFF 来停止生成 .log 文件。 如果使用 Azure Monitor 诊断设置，则我们建议禁用 .log 文件生成。 此配置可以减轻附加的日志记录对性能造成的影响。
 
 ## <a name="diagnostic-logs"></a>诊断日志
-Azure Database for PostgreSQL 与 Azure Monitor 诊断设置集成。 通过诊断设置，可以将 Postgres 日志以 JSON 格式发送到 Azure Monitor 日志进行分析和警报、用于流式处理的事件中心以及用于存档的 Azure 存储。 
+Azure Database for PostgreSQL 与 Azure Monitor 诊断日志设置相集成。 使用诊断设置可将 JSON 格式的 Postgres 日志发送到 Azure Monitor 日志用于分析和警报、发送到事件中心进行流式处理，或者发送到 Azure 存储进行存档。 
 
 > [!IMPORTANT]
-> 服务器日志的此诊断功能仅在 "常规用途" 和 "内存优化"[定价层](concepts-pricing-tiers.md)中提供。
+> 服务器日志的此诊断功能仅适用于“常规用途”和“内存优化”的[定价层](concepts-pricing-tiers.md)。
 
 
 ### <a name="configure-diagnostic-settings"></a>配置诊断设置
-你可以使用 Azure 门户、CLI、REST API 和 Powershell 为你的 Postgres 服务器启用诊断设置。 要选择的日志类别为**PostgreSQLLogs**。 （如果使用[查询存储](concepts-query-store.md)，还可以配置其他日志。）
+可以使用 Azure 门户、CLI、REST API 和 Powershell 为 Postgres 服务器启用诊断设置。 要选择的日志类别为“PostgreSQLLogs”。**** （如果使用[查询存储](concepts-query-store.md)，则还可以配置其他日志。）
 
-使用 Azure 门户启用诊断日志：
+若要使用 Azure 门户启用诊断日志：
 
-   1. 在门户中，在 Postgres 服务器的导航菜单中转到 "*诊断设置*"。
-   2. 选择 "*添加诊断设置*"。
+   1. 在门户上 Postgres 服务器的导航菜单中，转到“诊断设置”。**
+   2. 选择 *"添加诊断设置*"。
    3. 为此设置命名。 
-   4. 选择首选终结点（存储帐户、事件中心、log analytics）。 
-   5. 选择日志类型**PostgreSQLLogs**。
+   4. 选择首选的终结点（存储帐户、事件中心、Log Analytics）。 
+   5. 选择日志类型“PostgreSQLLogs”。****
    7. 保存设置。
 
 若要使用 Powershell、CLI 或 REST API 启用诊断日志，请访问[诊断设置](../azure-monitor/platform/diagnostic-settings.md)一文。
 
 ### <a name="access-diagnostic-logs"></a>访问诊断日志
 
-访问日志的方式取决于所选择的终结点。 对于 Azure 存储，请参阅[日志存储帐户](../azure-monitor/platform/resource-logs-collect-storage.md)一文。 对于事件中心，请参阅[流式传输 Azure 日志](../azure-monitor/platform/resource-logs-stream-event-hubs.md)一文。
+访问日志的方式取决于所选的终结点。 有关 Azure 存储，请参阅[日志存储帐户](../azure-monitor/platform/resource-logs-collect-storage.md)一文。 有关事件中心，请参阅[流式传输 Azure 日志](../azure-monitor/platform/resource-logs-stream-event-hubs.md)一文。
 
-对于 Azure Monitor 日志，会将日志发送到所选的工作区。 Postgres 日志使用**AzureDiagnostics**收集模式，因此可以从 AzureDiagnostics 表中查询它们。 表中的字段如下所述。 详细了解[Azure Monitor 日志查询](../azure-monitor/log-query/log-query-overview.md)概述中的查询和警报。
+Azure Monitor 日志将发送到所选的工作区。 Postgres 日志使用 **AzureDiagnostics** 收集模式，因此可以从 AzureDiagnostics 表查询它们。 下面描述了该表中的字段。 在 [Azure Monitor 日志查询](../azure-monitor/log-query/log-query-overview.md)概述中详细了解查询和警报。
 
-下面是可以尝试开始的查询。 您可以基于查询配置警报。
+下面是可帮助你入门的查询。 可以基于查询配置警报。
 
-在过去一天搜索特定服务器的所有 Postgres 日志
+搜索特定的服务器在过去一天生成的所有 Postgres 日志
 ```
 AzureDiagnostics
 | where LogicalServerName_s == "myservername"
@@ -88,11 +88,11 @@ AzureDiagnostics
 | where Message contains "connection received" and Message !contains "host=127.0.0.1"
 | where Category == "PostgreSQLLogs" and TimeGenerated > ago(6h)
 ```
-上面的查询将在此工作区中的任何 Postgres 服务器日志记录的过去6小时显示结果。
+上面的查询将显示在此工作区中记录的任何 Postgres 服务器在过去 6 小时内的结果。
 
 ### <a name="log-format"></a>日志格式
 
-下表描述了**PostgreSQLLogs**类型的字段。 包括的字段以及它们的出现顺序可能有所不同，具体取决于你选择的输出终结点。 
+下表描述了 **PostgreSQLLogs** 类型的字段。 包括的字段以及它们的出现顺序可能有所不同，具体取决于你选择的输出终结点。 
 
 |**字段** | **说明** |
 |---|---|
@@ -123,4 +123,4 @@ AzureDiagnostics
 ## <a name="next-steps"></a>后续步骤
 - 详细了解如何通过 [Azure 门户](howto-configure-server-logs-in-portal.md)或 [Azure CLI](howto-configure-server-logs-using-cli.md) 访问日志。
 - 详细了解 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
-- 了解有关[审核日志](concepts-audit.md)的详细信息
+- 详细了解[审核日志](concepts-audit.md)

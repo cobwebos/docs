@@ -1,5 +1,5 @@
 ---
-title: Stackify 回顾 Azure Linux 代理扩展
+title: 堆叠回溯 Azure Linux 代理扩展
 description: 在 Linux 虚拟机上部署 Stackify Retrace Linux 代理。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253788"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux 代理扩展
@@ -37,7 +37,7 @@ Retrace 是唯一可以在单一平台中的所有环境下提供以下所有功
 
 此扩展提供了适用于 Retrace 的 Linux 代理的安装路径。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统 
 

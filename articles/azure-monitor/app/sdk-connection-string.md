@@ -1,5 +1,5 @@
 ---
-title: Azure 应用程序 Insights 中的连接字符串 |Microsoft Docs
+title: Azure 应用程序见解中的连接字符串 |微软文档
 description: 如何使用连接字符串。
 ms.topic: conceptual
 author: timothymothra
@@ -7,43 +7,43 @@ ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7b049c04913d3415074f46b9d90ec34be874a2da
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136700"
 ---
 # <a name="connection-strings"></a>连接字符串
 
 ## <a name="overview"></a>概述
 
-连接字符串使用单个配置设置为应用程序提供见解，从而无需使用多个代理设置。 对于想要将数据发送到监视服务的 intranet web 服务器、主权或混合云环境非常有用。
+连接字符串为应用程序洞察用户提供单个配置设置，无需多个代理设置。 对于希望将数据发送到监视服务的 Intranet Web 服务器、主权或混合云环境非常有用。
 
-键值对为用户提供了一种简单的方式来为每个 Application Insights （AI）服务/产品定义前缀后缀组合。
+键值对为用户提供了一种为每个应用程序见解 （AI） 服务/产品定义前缀后缀组合的简单方法。
 
 > [!IMPORTANT]
-> 不建议同时设置连接字符串和检测密钥。 如果用户进行了设置，则最后设置的将优先。 
+> 我们不建议同时设置连接字符串和检测密钥。 如果用户同时设置两者，则以上次设置者为准。 
 
 
 ## <a name="scenario-overview"></a>方案概述 
 
-我们直观显示这种影响最大的客户方案：
+我们可视化的为客户情景具有最大影响：
 
-- 防火墙例外或代理重定向 
+- 防火墙异常或代理重定向 
 
-    在需要监视 intranet web 服务器的情况下，我们的早期解决方案要求客户将单独的服务终结点添加到你的配置中。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)。 
-    通过减少对单个设置的这一努力，连接字符串提供了更好的替代方法。 后缀修正允许将所有终结点的自动填充和重定向到正确的服务。 
+    如果需要对 Intranet Web 服务器进行监视，我们较早的解决方案要求客户将单个服务终结点添加到您的配置中。 有关详细信息，请参阅[此处](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)。 
+    通过将此工作量减少到单个设置，连接字符串提供了更好的替代方法。 一个简单的前缀，后缀修正允许自动填充和重定向所有终结点到正确的服务。 
 
-- 主权或混合云环境
+- 主权云或混合云环境
 
-    用户可以将数据发送到定义的[Azure 政府区域](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)。
-    可以通过连接字符串定义 intranet 服务器或混合云设置的终结点设置。 
+    用户可以将数据发送到定义的 Azure[政府区域](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)。
+    连接字符串允许您为 Intranet 服务器或混合云设置定义终结点设置。 
 
 ## <a name="getting-started"></a>入门
 
-### <a name="finding-my-connection-string"></a>查找我的连接字符串？
+### <a name="finding-my-connection-string"></a>正在查找连接字符串？
 
-你的连接字符串将显示在 Application Insights 资源的 "概述" 边栏选项卡上。
+连接字符串显示在应用程序见解资源的"概述"边栏选项卡上。
 
 ![概述边栏选项卡上的连接字符串](media/overview-dashboard/overview-connection-string.png)
 
@@ -51,46 +51,46 @@ ms.locfileid: "79136700"
 
 #### <a name="max-length"></a>最大长度
 
-连接的最大支持长度为4096个字符。
+连接的最大支持长度为 4096 个字符。
 
 #### <a name="key-value-pairs"></a>键值对
 
-连接字符串由以分号分隔的键/值对表示的设置列表组成： `key1=value1;key2=value2;key3=value3`
+连接字符串由表示为按分号分隔的键值对的设置列表组成：`key1=value1;key2=value2;key3=value3`
 
 #### <a name="syntax"></a>语法
 
-- `InstrumentationKey` （例如：00000000-0000-0000-0000-000000000000）连接字符串为**必填**字段。
-- `Authorization` （例如： ikey）（此设置是可选的，因为今天我们仅支持 ikey 授权。）
-- `EndpointSuffix` （例如： applicationinsights.azure.cn）设置终结点后缀将指示 SDK 要连接到的 Azure 云。 SDK 将为各个服务组装其余的终结点。
+- `InstrumentationKey`（如：00000-000-000-000-00000000000000） 连接字符串是**必填**字段。
+- `Authorization`（例如：伊基）（此设置是可选的，因为今天我们仅支持 ikey 授权。
+- `EndpointSuffix`（例如：applicationinsights.azure.cn）设置终结点后缀将指示要连接到哪个 Azure 云的 SDK。 SDK 将组装各个服务的终结点的其余部分。
 - 显式终结点。
-  任何服务都可以在连接字符串中显式重写。
-   - `IngestionEndpoint` （例如： https://dc.applicationinsights.azure.com)
-   - `LiveEndpoint` （例如： https://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint` （例如： https://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint` （例如： https://snapshot.applicationinsights.azure.com)
+  可以在连接字符串中显式重写任何服务。
+   - `IngestionEndpoint`（例如：https://dc.applicationinsights.azure.com)
+   - `LiveEndpoint`（例如：https://live.applicationinsights.azure.com)
+   - `ProfilerEndpoint`（例如：https://profiler.applicationinsights.azure.com)
+   - `SnapshotEndpoint`（例如：https://snapshot.applicationinsights.azure.com)
 
-#### <a name="endpoint-schema"></a>终结点架构
+#### <a name="endpoint-schema"></a>端点架构
 
 `<prefix>.<suffix>`
-- Prefix：定义服务。 
+- 前缀：定义服务。 
 - 后缀：定义公共域名。
 
-##### <a name="valid-suffixes"></a>有效后缀
+##### <a name="valid-suffixes"></a>有效的后缀
 
-下面是有效后缀的列表 
+下面是有效的后缀列表 
 - applicationinsights.azure.cn
 - applicationinsights.us
 
 
-另请参阅： https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
+另请参阅：https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
 
 
 ##### <a name="valid-prefixes"></a>有效的前缀
 
-- [遥测引入](./app-insights-overview.md)： `dc`
-- [实时指标](./live-stream.md)： `live`
-- [Profiler](./profiler-overview.md)： `profiler`
-- [快照](./snapshot-debugger.md)： `snapshot`
+- [遥测引入](./app-insights-overview.md)：`dc`
+- [实时指标](./live-stream.md)：`live`
+- [探查器](./profiler-overview.md)：`profiler`
+- [快照](./snapshot-debugger.md)：`snapshot`
 
 
 
@@ -103,57 +103,57 @@ ms.locfileid: "79136700"
 
 在此示例中，仅设置了检测密钥。
 
-- 授权方案默认为 "ikey" 
-- 检测密钥：00000000-0000-0000-0000-000000000000
-- 区域服务 Uri 基于[SDK 默认设置](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6)，将连接到公共全局 Azure：
-   - 引入： https://dc.services.visualstudio.com/
-   - 实时指标： https://rt.services.visualstudio.com/
-   - Profiler： https://agent.azureserviceprofiler.net/
-   - 调试器： https://agent.azureserviceprofiler.net/  
+- 授权方案默认为"ikey" 
+- 仪器检测密钥：0000000-0000-0000-000000000000000000
+- 区域服务 URI 基于 SDK[默认值](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6)，并将连接到公共全局 Azure：
+   - 摄入：https://dc.services.visualstudio.com/
+   - 实时指标：https://rt.services.visualstudio.com/
+   - 分析器：https://agent.azureserviceprofiler.net/
+   - 调试：https://agent.azureserviceprofiler.net/  
 
 
 
-### <a name="connection-string-with-endpoint-suffix"></a>带有终结点后缀的连接字符串
+### <a name="connection-string-with-endpoint-suffix"></a>具有终结点后缀的连接字符串
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;EndpointSuffix=ai.contoso.com;`
 
 在此示例中，此连接字符串指定终结点后缀，SDK 将构造服务终结点。
 
-- 授权方案默认为 "ikey" 
-- 检测密钥：00000000-0000-0000-0000-000000000000
-- 区域服务 Uri 基于提供的终结点后缀： 
-   - 引入： https://dc.ai.contoso.com
-   - 实时指标： https://live.ai.contoso.com
-   - Profiler： https://profiler.ai.contoso.com 
-   - 调试器： https://snapshot.ai.contoso.com   
+- 授权方案默认为"ikey" 
+- 仪器检测密钥：0000000-0000-0000-000000000000000000
+- 区域服务 URI 基于提供的终结点后缀： 
+   - 摄入：https://dc.ai.contoso.com
+   - 实时指标：https://live.ai.contoso.com
+   - 分析器：https://profiler.ai.contoso.com 
+   - 调试：https://snapshot.ai.contoso.com   
 
 
 
-### <a name="connection-string-with-explicit-endpoint-overrides"></a>具有显式终结点重写的连接字符串 
+### <a name="connection-string-with-explicit-endpoint-overrides"></a>具有显式终结点覆盖的连接字符串 
 
 `InstrumentationKey=00000000-0000-0000-0000-000000000000;IngestionEndpoint=https://custom.com:111/;LiveEndpoint=https://custom.com:222/;ProfilerEndpoint=https://custom.com:333/;SnapshotEndpoint=https://custom.com:444/;`
 
-在此示例中，此连接字符串指定每个服务的显式重写。 SDK 将使用提供的确切终结点而不进行修改。
+在此示例中，此连接字符串为每个服务指定显式覆盖。 SDK 将使用未经修改提供的确切终结点。
 
-- 授权方案默认为 "ikey" 
-- 检测密钥：00000000-0000-0000-0000-000000000000
-- 区域服务 Uri 基于显式重写值： 
-   - 引入： https：\//custom.com:111/
+- 授权方案默认为"ikey" 
+- 仪器检测密钥：0000000-0000-0000-000000000000000000
+- 区域服务 URI 基于显式覆盖值： 
+   - 摄入： https：\//custom.com:111/
    - 实时指标： https：\//custom.com:222/
-   - Profiler： https：\//custom.com:333/ 
+   - 探查器： https：\//custom.com:333/ 
    - 调试器： https：\//custom.com:444/   
 
 
 ## <a name="how-to-set-a-connection-string"></a>如何设置连接字符串
 
 以下 SDK 版本支持连接字符串：
-- .NET 和 .NET Core 2.12。0
-- Java 2.5。1
-- Javascript v 2.3。0
-- NodeJS v 1.5。0
-- Python 1.0。0
+- .NET 和 .NET 核心 v2.12.0
+- Java v2.5.1
+- Javascript v2.3.0
+- NodeJS v1.5.0
+- Python v1.0.0
 
-可以通过代码、环境变量或配置文件设置连接字符串。
+连接字符串可以通过代码、环境变量或配置文件进行设置。
 
 
 
@@ -161,9 +161,9 @@ ms.locfileid: "79136700"
 
 - 连接字符串： `APPLICATIONINSIGHTS_CONNECTION_STRING`
 
-### <a name="net-sdk-example"></a>.Net SDK 示例
+### <a name="net-sdk-example"></a>.网络 SDK 示例
 
-TelemetryConfiguration： https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
+遥测配置.连接字符串：https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
 .Net 显式设置：
 ```csharp
@@ -173,7 +173,7 @@ var configuration = new TelemetryConfiguration
 };
 ```
 
-.Net 配置文件：
+.净配置文件：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -183,7 +183,7 @@ var configuration = new TelemetryConfiguration
 ```
 
 
-NetCore： 
+NetCore 配置.json： 
 
 ```json
 {
@@ -212,9 +212,9 @@ ApplicationInsights.xml
 
 ### <a name="javascript-sdk-example"></a>Javascript SDK 示例
 
-重要提示： Javascript 不支持使用环境变量。
+重要提示：Javascript 不支持使用环境变量。
 
-使用代码片段：
+使用代码段：
 
 ```javascript
 <script type="text/javascript">
@@ -239,7 +239,7 @@ appInsights.loadAppInsights();
 appInsights.trackPageView();
 ```
 
-### <a name="node-sdk-example"></a>Node SDK 示例
+### <a name="node-sdk-example"></a>节点 SDK 示例
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -249,9 +249,9 @@ appInsights.start();
 
 ### <a name="python-sdk-example"></a>Python SDK 示例
 
-建议用户设置环境变量。
+我们建议用户设置环境变量。
 
-若要显式设置连接字符串：
+要显式设置连接字符串：
 
 ```python
 from opencensus.ext.azure.trace_exporter import AzureExporter

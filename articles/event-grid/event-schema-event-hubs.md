@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561822"
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>事件中心的 Azure 事件网格事件架构
 
-本文提供事件中心事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
+本文提供事件中心事件的属性和架构。有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
 有关示例脚本和教程的列表信息，请参阅[事件中心事件源](event-sources.md#event-hubs)。
 
@@ -57,30 +57,30 @@ ms.locfileid: "60561822"
 
 事件具有以下顶级数据：
 
-| 属性 | Type | 描述 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| topic | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | string | 事件主题的发布者定义路径。 |
-| eventType | string | 此事件源的一个注册事件类型。 |
-| eventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | string | 事件的唯一标识符。 |
-| data | object | 事件中心事件数据。 |
-| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | 字符串 | 事件主题的发布者定义路径。 |
+| eventType | 字符串 | 此事件源的一个注册事件类型。 |
+| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | 字符串 | 事件的唯一标识符。 |
+| data | 对象 (object) | 事件中心事件数据。 |
+| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| 属性 | Type | 描述 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| fileUrl | string | 捕获文件的路径。 |
-| fileType | string | 捕获文件的文件类型。 |
-| partitionId | string | 分片 ID。 |
+| fileUrl | 字符串 | 捕获文件的路径。 |
+| fileType | 字符串 | 捕获文件的文件类型。 |
+| partitionId | 字符串 | 分片 ID。 |
 | sizeInBytes | integer | 文件大小。 |
 | eventCount | integer | 文件中的事件数。 |
 | firstSequenceNumber | integer | 队列中的最小序列号。 |
 | lastSequenceNumber | integer | 队列中的最后一个序列号。 |
-| firstEnqueueTime | string | 队列中的第一个时间。 |
-| lastEnqueueTime | string | 队列中的最后一个时间。 |
+| firstEnqueueTime | 字符串 | 队列中的第一个时间。 |
+| lastEnqueueTime | 字符串 | 队列中的最后一个时间。 |
 
 ## <a name="next-steps"></a>后续步骤
 

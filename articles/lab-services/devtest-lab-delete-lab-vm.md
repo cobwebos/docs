@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 开发测试实验室的实验室中删除实验室或 VM
-description: 本文介绍如何使用 Azure 门户（Azure 开发测试实验室）在实验室中删除实验室或删除 VM。
+description: 本文演示如何使用 Azure 门户（Azure 开发人员测试实验室）在实验室中删除实验室或删除 VM。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 28fb464714f464a4c0a8f5eaf304dcdd5d603c90
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79270805"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的实验室中删除实验室或 VM
@@ -31,17 +31,17 @@ ms.locfileid: "79270805"
 
 要删除实验室，请执行以下操作： 
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在左侧的菜单中选择“所有资源”，选择“开发测试实验室”服务类型，然后选择实验室。
+1. 登录到 Azure[门户](https://portal.azure.com)。
+2. 在左侧的菜单中选择“所有资源”，选择“开发测试实验室”服务类型，然后选择实验室********。
 
     ![选择实验室](media/devtest-lab-delete-lab-vm/select-lab.png)
-3. 在“开发测试实验室”页上的工具栏中单击“删除”。 
+3. 在“开发测试实验室”页上的工具栏中单击“删除”********。 
 
     ![“删除”按钮](media/devtest-lab-delete-lab-vm/delete-button.png)
-4. 在“确认”页上，输入实验室的名称，然后选择“删除”。 
+4. 在“确认”页上，输入实验室的名称，然后选择“删除”************。 
 
     ![确认](media/devtest-lab-delete-lab-vm/confirm-delete.png)
-5. 要查看操作状态，请选择“通知”图标（铃铛）。 
+5. 要查看操作状态，请选择“通知”图标（铃铛）****。 
 
     ![通知](media/devtest-lab-delete-lab-vm/delete-status.png)
 
@@ -56,17 +56,17 @@ ms.locfileid: "79270805"
 
 要删除实验室中的 VM，请执行以下操作： 
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在左侧的菜单中选择“所有资源”，选择“开发测试实验室”服务类型，然后选择实验室。
+1. 登录到 Azure[门户](https://portal.azure.com)。
+2. 在左侧的菜单中选择“所有资源”，选择“开发测试实验室”服务类型，然后选择实验室********。
 
     ![选择实验室](media/devtest-lab-delete-lab-vm/select-lab.png)
-3. 在 VM 列表中为 VM 选择“...(省略号)”，然后选择“删除”。 
+3. 在 VM 列表中为 VM 选择“...(省略号)”，然后选择“删除”********。 
 
     ![在菜单中删除 VM](media/devtest-lab-delete-lab-vm/delete-vm-menu-in-list.png)
-4. 在“确认”对话框中，选择“确定”。 
-5. 要查看操作状态，请选择“通知”图标（铃铛）。 
+4. 在“确认”对话框中，选择“确定”********。 
+5. 要查看操作状态，请选择“通知”图标（铃铛）****。 
 
-要从“虚拟机页”删除 VM，请选择下图中显示的工具栏中的“删除”：
+要从“虚拟机页”删除 VM，请选择下图中显示的工具栏中的“删除”********：
 
 ![从 VM 页中删除 VM](media/devtest-lab-delete-lab-vm/delete-from-vm-page.png) 
 

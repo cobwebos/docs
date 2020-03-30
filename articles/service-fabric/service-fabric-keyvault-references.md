@@ -1,30 +1,30 @@
 ---
-title: Azure Service Fabric-使用 Service Fabric application KeyVault 引用
-description: 本文介绍如何使用 service fabric KeyVaultReference 支持应用程序机密。
+title: Azure Service Fabric - 使用 Service Fabric 应用程序 KeyVault 引用
+description: 本文介绍如何使用应用程序机密的 Service Fabric KeyVaultReference 支持。
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76545477"
 ---
-#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>对 Service Fabric 应用程序（预览版）的 KeyVaultReference 支持
+#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric 应用程序的 KeyVaultReference 支持（预览版）
 
-构建云应用程序时，常见的难题是如何安全地存储应用程序所需的机密。 例如，你可能想要将容器存储区凭据存储在 keyvault 中，并在应用程序清单中引用它。 Service Fabric KeyVaultReference 使用 Service Fabric 管理的标识，并使其易于引用 keyvault 的机密。 本文的其余部分详细介绍了如何使用 Service Fabric KeyVaultReference，并提供了一些典型的用法。
+构建云应用程序时，一个常见的难题是如何安全存储应用程序所需的机密。 例如，你可能想要将容器存储库凭据存储在 keyvault 中，并在应用程序清单中引用它。 Service Fabric KeyVaultReference 使用 Service Fabric 托管标识，并为引用 keyvault 机密提供方便。 本文的余下内容将详细介绍如何使用 Service Fabric KeyVaultReference，并提供一些典型用法。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 应用程序的托管标识（MIT）
+- 应用程序的托管标识 (MIT)
     
-    Service Fabric KeyVaultReference 支持使用应用程序的托管标识，因此 planing 使用 KeyVaultReferences 的应用程序应使用托管标识。 按照此[文档](concepts-managed-identity.md)为应用程序启用托管标识。
+    Service Fabric KeyVaultReference 支持使用应用程序的托管标识，因此，计划使用 KeyVaultReferences 的应用程序应使用托管标识。 可遵循[此文档](concepts-managed-identity.md)为应用程序启用托管标识。
 
-- 中央机密存储区（CSS）。
+- 中心机密存储 (CSS)。
 
-    中央机密存储区（CSS） Service Fabric 加密的本地机密缓存。 CSS 是本地密钥存储缓存，用于保留在内存中加密的敏感数据，例如密码、令牌和密钥。 KeyVaultReference 在提取后会缓存在 CSS 中。
+    中央机密存储 （CSS） 是服务结构加密的本地机密缓存。 CSS 是本地机密存储缓存，用于在内存中加密敏感数据（如密码、令牌和密钥）。 密钥库引用（一旦提取）将缓存在 CSS 中。
 
-    将以下字段添加到 `fabricSettings` 下的群集配置，以启用 KeyVaultReference 支持所需的所有功能。
+    将以下内容添加到群集配置中的 `fabricSettings` 下，即可为 KeyVaultReference 支持启用所需的所有功能。
 
     ```json
     "fabricSettings": 
@@ -60,7 +60,7 @@ ms.locfileid: "76545477"
     ```
 
     > [!NOTE] 
-    > 建议为 CSS 使用单独的加密证书。 可以将其添加到 "CentralSecretService" 部分。
+    > 建议对 CSS 使用单独的加密证书。 可将此证书添加到“CentralSecretService”节下。
     
 
     ```json
@@ -69,7 +69,7 @@ ms.locfileid: "76545477"
             "value": "<EncryptionCertificateThumbprint for CSS>"
         }
     ```
-为了使更改生效，你还需要更改升级策略，以便在升级通过群集时，在每个节点上指定 Service Fabric 运行时的强制重新启动。 此重新启动可确保新启用的系统服务在每个节点上启动并运行。 在下面的代码片段中，forceRestart 是基本设置;对其余设置使用现有值。
+若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码段中，力重新启动是基本设置;将现有值用于其余设置。
 ```json
 "upgradeDescription": {
     "forceRestart": true,
@@ -81,23 +81,23 @@ ms.locfileid: "76545477"
     "upgradeTimeout": "12:00:00"
 }
 ```
-- 向应用程序授予对 keyvault 的托管标识访问权限
+- 向应用程序的托管标识授予对 keyvault 的访问权限
 
-    参考本[文档](how-to-grant-access-other-resources.md)，了解如何向托管标识授予对 keyvault 的访问权限。 另请注意，如果使用系统分配的托管标识，则仅在部署应用程序后创建托管标识。
+    参考[此文档](how-to-grant-access-other-resources.md)来了解如何向托管标识授予对 keyvault 的访问权限。 另请注意，如果使用系统分配的托管标识，则只会在部署应用程序之后才创建托管标识。
 
-## <a name="keyvault-secret-as-application-parameter"></a>Keyvault secret 作为应用程序参数
-假设应用程序需要读取存储在 keyvault 中的后端数据库密码，Service Fabric KeyVaultReference 支持使其变得简单。 以下示例使用 Service Fabric KeyVaultReference 支持从 keyvault 读取 `DBPassword` 机密。
+## <a name="keyvault-secret-as-application-parameter"></a>用作应用程序参数的 Keyvault 机密
+假设应用程序需要读取存储在 keyvault 中的后端数据库密码，Service Fabric KeyVaultReference 支持可以轻松实现此目的。 以下示例使用 Service Fabric KeyVaultReference 支持从 keyvault 中读取 `DBPassword` 机密。
 
-- 将节添加到 settings .xml
+- 将一个节添加到 settings.xml
 
-    定义类型 `KeyVaultReference` 和值 `DBPassword` 参数 `<KeyVaultURL>`
+    定义类型为 `KeyVaultReference`、值为 `<KeyVaultURL>` 的 `DBPassword` 参数
 
     ```xml
     <Section Name="dbsecrets">
         <Parameter Name="DBPassword" Type="KeyVaultReference" Value="https://vault200.vault.azure.net/secrets/dbpassword/8ec042bbe0ea4356b9b171588a8a1f32"/>
     </Section>
     ```
-- 引用 Applicationmanifest.xml 中的新节 `<ConfigPackagePolicies>`
+- 在 `<ConfigPackagePolicies>` 中引用 ApplicationManifest.xml 中的新节
 
     ```xml
     <ServiceManifestImport>
@@ -115,7 +115,7 @@ ms.locfileid: "76545477"
 
 - 在应用程序中使用 KeyVaultReference
 
-    Service Fabric 服务实例化时，将使用应用程序的托管标识解析 KeyVaultReference 参数。 `<Section  Name=dbsecrets>` 下列出的每个参数将是 Value SecretPath 指向的文件夹下的文件。 下面C#的代码段演示如何在应用程序中读取 this->dbpassword。
+    服务实例化时，Service Fabric 将使用应用程序的托管标识来解析 KeyVaultReference 参数。 `<Section  Name=dbsecrets>` 下面列出的每个参数将是 EnvironmentVariable SecretPath 指向的文件夹下的某个文件。 以下 C# 代码片段演示如何在应用程序中读取 DBPassword。
 
     ```C#
     string secretPath = Environment.GetEnvironmentVariable("SecretPath");
@@ -126,11 +126,11 @@ ms.locfileid: "76545477"
     }
     ```
     > [!NOTE] 
-    > 对于容器方案，可以使用装入点来控制将 `secrets` 装载到的位置。
+    > 对于容器方案，可以使用 MountPoint 来控制 `secrets` 的装载位置。
 
-## <a name="keyvault-secret-as-environment-variable"></a>Keyvault secret 作为环境变量
+## <a name="keyvault-secret-as-environment-variable"></a>用作环境变量的 Keyvault 机密
 
-Service Fabric 环境变量现在支持 KeyVaultReference 类型，下面的示例演示如何将环境变量绑定到 KeyVault 中存储的机密。
+Service Fabric 环境变量现在支持 KeyVaultReference 类型。以下示例演示如何将环境变量绑定到 KeyVault 中存储的机密。
 
 ```xml
 <EnvironmentVariables>
@@ -141,20 +141,20 @@ Service Fabric 环境变量现在支持 KeyVaultReference 类型，下面的示�
 ```C#
 string eventStorePassword =  Environment.GetEnvironmentVariable("EventStorePassword");
 ```
-## <a name="keyvault-secret-as-container-repository-password"></a>Keyvault secret 作为容器存储库密码
-KeyVaultReference 是容器 RepositoryCredentials 支持的类型，下面的示例演示如何使用 keyvault 引用作为容器存储库密码。
+## <a name="keyvault-secret-as-container-repository-password"></a>用作容器存储库密码的 Keyvault 机密
+KeyVaultReference 是容器 RepositoryCredentials 支持的类型。以下示例演示如何使用 keyvault 引用作为容器存储库密码。
 ```xml
  <Policies>
       <ContainerHostPolicies CodePackageRef="Code">
         <RepositoryCredentials AccountName="user1" Type="KeyVaultReference" Password="https://ttkvault.vault.azure.net/secrets/containerpwd/e225bd97e203430d809740b47736b9b8"/>
       </ContainerHostPolicies>
 ```
-## <a name="faq"></a>常见问题
-- 需要为 KeyVaultReference 支持启用托管标识，如果在不启用托管标识的情况下使用 KeyVaultReference，应用程序激活将会失败。
+## <a name="faq"></a>FAQ
+- 需要为 KeyVaultReference 支持启用托管标识，如果在未启用托管标识的情况下使用 KeyVaultReference，应用程序激活将会失败。
 
-- 如果使用系统分配的标识，则它仅在部署应用程序后创建，这将创建循环依赖项。 部署应用程序后，可以将系统分配的标识访问权限授予 keyvault。 可以按名称 {cluster}/{application name}/{servicename} 查找系统分配的标识。
+- 如果使用系统分配的标识，则只会在部署应用程序之后才创建该标识，而这会造成循环依赖关系。 部署应用程序后，可向系统分配的标识授予对 keyvault 的访问权限。 可按名称 {cluster}/{application name}/{servicename} 查找系统分配的标识。
 
-- Keyvault 需要与 service fabric 群集位于同一订阅中。 
+- keyvault 需与 Service Fabric 群集位于同一订阅中。 
 
 ## <a name="next-steps"></a>后续步骤
 

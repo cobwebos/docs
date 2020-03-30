@@ -1,14 +1,14 @@
 ---
 title: 入站/出站 IP 地址
-description: 了解如何在 Azure App Service 中使用入站和出站 IP 地址，以及如何使用它们来查找应用程序的地址。
+description: 了解如何在 Azure 应用服务中使用入站和出站 IP 地址、这些地址何时更改以及如何查找应用的地址。
 ms.topic: article
 ms.date: 06/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: aebce04fe2f1b055a4d498021dcd25144cd122a9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279203"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure 应用服务中的入站和出站 IP 地址
@@ -22,10 +22,10 @@ ms.locfileid: "79279203"
 不管横向扩展的实例数如何，每个应用只有一个入站 IP 地址。 执行以下操作之一时，入站 IP 地址可能会更改：
 
 - 删除应用，然后在不同的资源组中重新创建它。
-- 删除资源组和区域组合中的最后一个应用，然后重新创建它。
-- 删除现有的 SSL 绑定，如证书续订期间（请参阅[续订证书](configure-ssl-certificate.md#renew-certificate)）。
+- 删除资源组和区域组合中的最后一个应用，然后重新创建它。__
+- 删除现有的 SSL 绑定，例如在证书续订期间（请参阅[续订证书](configure-ssl-certificate.md#renew-certificate)）。
 
-## <a name="find-the-inbound-ip"></a>查找入站 IP
+## <a name="find-the-inbound-ip"></a>找到入站 IP
 
 只需在本地终端中运行以下命令：
 
@@ -41,13 +41,13 @@ nslookup <app-name>.azurewebsites.net
 
 不管横向扩展的实例数如何，每个应用在任意给定时间具有指定数目的出站 IP 地址。 从应用服务应用发起的任何出站连接（例如，与后端数据库的连接）使用某个出站 IP 地址作为源 IP 地址。 无法预先知道给定的应用实例要使用哪个 IP 地址来发起出站连接，因此，后端服务必须向应用的所有出站 IP 地址开放其防火墙。
 
-在较低层（“基本”、“标准”和“高级”）与“高级 V2”层之间缩放应用时，应用的出站 IP 地址集会发生更改。
+在较低层（“基本”、“标准”和“高级”）与“高级 V2”层之间缩放应用时，应用的出站 IP 地址集会发生更改。****************
 
-通过在 Azure 门户的 "属性" 边栏选项卡的 "**属性**" 边栏选项卡中查找 "`possibleOutboundIpAddresses`" 或 "**其他出站 ip 地址**" 字段，你可以查找应用可以使用的所有可能的出站 ip 地址集，而不考虑定价层。 请参阅[查找出站 IP](#find-outbound-ips)。
+无论是哪个定价层，你都可以通过查找 `possibleOutboundIpAddresses` 属性或者在 Azure 门户的“属性”边栏选项卡中的“其他出站 IP 地址”**** 字段中查找你的应用可以使用的所有可能的出站 IP 地址。**** 请参阅[查找出站 IP](#find-outbound-ips)。
 
 ## <a name="find-outbound-ips"></a>查找出站 IP
 
-若要在 Azure 门户中查找应用当前使用的出站 IP 地址，请单击应用左侧导航窗格中的“属性”。 它们列在 "**出站 IP 地址**" 字段中。
+若要在 Azure 门户中查找应用当前使用的出站 IP 地址，请单击应用左侧导航窗格中的“属性”。**** 它们列出在“出站 IP 地址”**** 字段中。
 
 在 [Cloud Shell](../cloud-shell/quickstart.md) 中运行以下命令也可以找到相同的信息。
 
@@ -59,7 +59,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-若要查找应用的_所有_可能的出站 IP 地址，而不考虑定价层，请单击应用左侧导航栏中的 "**属性**"。 它们列在 "**其他出站 IP 地址**" 字段中。
+若要查找你的应用可能使用的所有出站 IP 地址（无论是哪个定价层），请在你的应用的左侧导航栏中单击“属性”。__**** 它们列出在“其他出站 IP 地址”**** 字段中。
 
 在 [Cloud Shell](../cloud-shell/quickstart.md) 中运行以下命令也可以找到相同的信息。
 

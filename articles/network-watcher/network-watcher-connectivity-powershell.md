@@ -1,5 +1,5 @@
 ---
-title: 排查连接问题-Azure PowerShell
+title: 排查连接问题 - Azure PowerShell
 titleSuffix: Azure Network Watcher
 description: 了解如何通过 PowerShell 使用 Azure 网络观察程序的排查连接问题功能。
 services: network-watcher
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: abc9389c2c5fd5576795c26a89e3941b6eb5a939
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842829"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>通过 PowerShell 使用 Azure 网络观察程序排查连接问题
 
 > [!div class="op_single_selector"]
 > - [门户](network-watcher-connectivity-portal.md)
-> - [PowerShell](network-watcher-connectivity-powershell.md)
+> - [电源外壳](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
@@ -64,7 +64,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>响应
 
-以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可访问”。 可以看到所有探测都发送失败。 由于用户配置的名为 **UserRule_Port80** 的 `NetworkSecurityRule` 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
+以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可访问”****。 可以看到所有探测都发送失败。 由于用户配置的名为 **UserRule_Port80** 的 `NetworkSecurityRule` 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
 
 ```
 ConnectionStatus : Unreachable
@@ -155,7 +155,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>响应
 
-在以下示例中，`ConnectionStatus` 显示为“不可访问”。 在 `Hops` 详细信息中，可以在 `Issues` 下看到由于 `UserDefinedRoute` 流量已被阻止。 
+在以下示例中，`ConnectionStatus` 显示为“不可访问”****。 在 `Hops` 详细信息中，可以在 `Issues` 下看到由于 `UserDefinedRoute` 流量已被阻止。 
 
 ```
 ConnectionStatus : Unreachable
@@ -219,7 +219,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>响应
 
-在以下响应中，可以看到 `ConnectionStatus` 显示为“可以访问”。 连接成功后，提供了延迟值。
+在以下响应中，可以看到 `ConnectionStatus` 显示为“可以访问”****。 连接成功后，提供了延迟值。
 
 ```
 ConnectionStatus : Reachable
@@ -271,7 +271,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>响应
 
-以下 json 是运行前面 cmdlet 的示例响应。 因为目标可访问，`ConnectionStatus` 属性显示为“可以访问”。  提供了有关到达存储 Blob 所需的跃点数和延迟的详细信息。
+以下 json 是运行前面 cmdlet 的示例响应。 因为目标可访问，`ConnectionStatus` 属性显示为“可以访问”****。  提供了有关到达存储 Blob 所需的跃点数和延迟的详细信息。
 
 ```json
 ConnectionStatus : Reachable

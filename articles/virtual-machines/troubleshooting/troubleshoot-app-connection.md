@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: caf73ffbc18a603ace22acfbd0da490048da698a
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71058123"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>排查 Azure 中虚拟机上的应用程序连接问题
@@ -28,10 +28,10 @@ ms.locfileid: "71058123"
 
 如果在使用 RDP 或 SSH 连接到 VM 时发生问题，请先参阅以下文章之一：
 
-* [对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](troubleshoot-rdp-connection.md)
-* [对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](troubleshoot-ssh-connection.md)。
+* [排除与基于 Windows 的 Azure 虚拟机的远程桌面连接的故障](troubleshoot-rdp-connection.md)
+* [排除与基于 Linux 的 Azure 虚拟机的安全外壳 （SSH） 连接的故障。](troubleshoot-ssh-connection.md)
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **"获取支持**"。
 
 ## <a name="quick-start-troubleshooting-steps"></a>快速入门故障排除步骤
 如果在连接到应用程序时发生问题，请尝试以下一般故障排除步骤。 执行每个步骤之后，尝试重新连接到应用程序：
@@ -84,7 +84,7 @@ ms.locfileid: "71058123"
 
 在基于 Windows 和基于 Linux 的虚拟机上，使用 **netstat -a** 命令显示活动的侦听端口。 检查应用程序应侦听的预期端口的输出。 重新启动应用程序，或根据需要将其配置为使用预期的端口，然后尝试在本地重新访问应用程序。
 
-## <a id="step2"></a>步骤 2：从同一虚拟网络中的另一个 VM 访问应用程序
+## <a name="step-2-access-application-from-another-vm-in-the-same-virtual-network"></a><a id="step2"></a>步骤 2：从同一虚拟网络中的另一个 VM 访问应用程序
 使用 VM 的主机名或其 Azure 分配的公共、专用或提供程序 IP 地址尝试访问位于不同 VM 但相同虚拟网络中的应用程序。 对于使用经典部署模型创建的虚拟机，请不要使用云服务的公共 IP 地址。
 
 ![从不同的 VM 启动应用程序](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
@@ -104,7 +104,7 @@ ms.locfileid: "71058123"
 
 在基于 Windows 的虚拟机上，使用具有高级安全性的 Windows 防火墙确定防火墙规则是否排除应用程序的入站和出站流量。
 
-## <a id="step3"></a>步骤 3：从虚拟网络外部访问应用程序
+## <a name="step-3-access-application-from-outside-the-virtual-network"></a><a id="step3"></a>步骤 3：从虚拟网络外部访问应用程序
 尝试通过虚拟网络之外的计算机访问应用程序，作为应用程序运行的 VM。 使用其他网络作为原始客户端计算机。
 
 ![从虚拟网络外部的计算机启动应用程序。](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
@@ -117,7 +117,7 @@ ms.locfileid: "71058123"
   
   * 确保 VM 的终结点配置允许传入流量，尤其是协议（TCP 或 UDP）及公用和专用端口号。
   * 确保终结点上的访问控制列表 (ACL) 不会阻止来自 Internet 的传入流量。
-  * 有关详细信息，请参阅[如何对虚拟机设置终结点](../windows/classic/setup-endpoints.md)。
+  * 有关详细信息，请参阅[如何将终结点设置为虚拟机](../windows/classic/setup-endpoints.md)。
 * 对于使用 Resource Manager 部署模型创建的 VM：
   
   * 确保 VM 的入站 NAT 规则配置允许传入流量，尤其是协议（TCP 或 UDP）及公用和专用端口号。
@@ -141,8 +141,8 @@ ms.locfileid: "71058123"
 有关详细信息，请参阅 [Azure network monitoring overview](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)（Azure 网络监视概述）。 
 
 ## <a name="additional-resources"></a>其他资源
-[对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](troubleshoot-rdp-connection.md)
+[排除与基于 Windows 的 Azure 虚拟机的远程桌面连接的故障](troubleshoot-rdp-connection.md)
 
-[对与基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](troubleshoot-ssh-connection.md)
+[对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](troubleshoot-ssh-connection.md)
 
 

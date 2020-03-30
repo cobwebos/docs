@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor 中的 Azure Active Directory 活动日志 |Microsoft Docs
-description: Azure Active Directory 中的活动日志简介 Azure Monitor
+title: Azure 活动目录活动日志在 Azure 监视器 |微软文档
+description: Azure 监视器中的 Azure 活动目录活动日志简介
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46e29fff3308f35b16dbff2f9cead82abc222a5c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266541"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD 中的活动日志 Azure Monitor
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure 监视中的 Azure AD 活动日志
 
-可以将 Azure Active Directory （Azure AD）活动日志路由到多个终结点，以实现长期保留和数据见解。 此功能可让你：
+您可以将 Azure 活动目录 （Azure AD） 活动日志路由到多个终结点，以便进行长期保留和数据洞察。 可以使用此功能实现以下操作：
 
 * 将 Azure AD 活动日志存档到 Azure 存储帐户，以便长期保留数据
 * 使用常用的安全信息和事件管理 (SIEM) 工具（例如 Splunk 和 QRadar）将 Azure AD 活动日志流式传输到 Azure 事件中心进行分析。
@@ -48,14 +48,14 @@ ms.locfileid: "79266541"
 > 目前不支持 B2C 相关的审核和登录活动日志。
 >
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要使用此功能，需满足以下条件:
 
 * Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * 在 Azure 门户中访问 Azure AD 审核日志所需的 Azure AD Free、Basic、Premium 1 或 Premium 2 [许可证](https://azure.microsoft.com/pricing/details/active-directory/)。 
 * Azure AD 租户。
-* 一个是 Azure AD 租户的全局管理员或安全管理员的用户。
+* 一个是 Azure AD 租户的全局管理员或安全管理员的用户。********
 * 在 Azure 门户中访问 Azure AD 登录日志所需的 Azure AD Premium 1 或 Premium 2 [许可证](https://azure.microsoft.com/pricing/details/active-directory/)。 
 
 根据审核日志数据要路由到的位置，需满足以下条件之一:
@@ -110,7 +110,7 @@ ms.locfileid: "79266541"
 
 
 
-| 日志类别       | 用户数 | 每日事件数 | 每月事件数（30天） | 每月成本（est） |
+| 日志类别       | 用户数 | 每日事件数 | 每月活动（30天） | 每月成本（美元）（最） |
 | :--                | ---             | ---            | ---                        | --:                          |
 | 审核和登录 | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
 | 审核              | 100,000         | 1,500,000      | 45,000,000                 |  $246.66                     |
@@ -149,9 +149,9 @@ ms.locfileid: "79266541"
 
 ---
 
-**问：如果管理员更改了诊断设置的保持期，会发生什么情况？**
+**问：如果管理员更改诊断设置的保留期，会发生什么情况？**
 
-**答**：新的保留策略将应用于更改后收集的日志。 策略更改前收集的日志将不会受到影响。
+**A**： 新的保留策略将应用于更改后收集的日志。 策略更改前收集的日志将不会受到影响。
 
 ---
 
@@ -197,7 +197,7 @@ ms.locfileid: "79266541"
 
 **问: 是否可以在不使用外部 SIEM 工具的情况下，从事件中心访问数据？** 
 
-**答**: 可以。 若要通过自定义应用程序来访问日志，可以使用[事件中心 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
+**答**：是的。 若要通过自定义应用程序来访问日志，可以使用[事件中心 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
 
 ---
 

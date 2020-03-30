@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Site Recovery 中管理 Azure 基于角色的访问控制
+title: 在 Azure 站点恢复中管理基于 Azure 角色的访问控制
 description: 本文介绍如何应用基于角色的访问控制 (RBAC) 以管理 Azure Site Recovery 访问。
 ms.service: site-recovery
 ms.date: 04/08/2019
@@ -7,15 +7,15 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257571"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>使用基于角色的访问控制 (RBAC) 管理 Site Recovery 访问
 
-Azure 基于角色的访问控制（RBAC）可用于对 Azure 进行细致的访问管理。 通过 RBAC 可分离团队中的职责，并按需仅向用户授予执行特定作业的特定访问权限。
+基于 Azure 角色的访问控制 （RBAC） 支持 Azure 的细粒度访问管理。 通过 RBAC 可分离团队中的职责，并按需仅向用户授予执行特定作业的特定访问权限。
 
 Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内置角色。 详细了解 [Azure RBAC 内置角色](../role-based-access-control/built-in-roles.md)
 
@@ -39,9 +39,9 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 >确保根据用于资源部署的部署模型（Resource Manager/经典）添加相关权限。
 
 > [!NOTE]
-> 如果要为 Azure VM 启用复制，并希望允许 Site Recovery 管理更新，则在启用复制时，可能还需要创建一个新的自动化帐户，在这种情况下，你需要具有在同一中创建自动化帐户的权限作为保管库的订阅。
+> 如果要为 Azure VM 启用复制，并且希望允许站点恢复管理更新，则在启用复制时，您可能还需要创建新的自动化帐户，在这种情况下，您需要获得在同一情况下创建自动化帐户的权限订阅作为保管库以及。
 
-| **资源类型** | 部署模型 | **权限** |
+| **资源类型** | **部署模型** | **权限** |
 | --- | --- | --- |
 | 计算 | 资源管理器 | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |
@@ -74,7 +74,7 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 ## <a name="next-steps"></a>后续步骤
 * [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)：Azure 门户中的 RBAC 入门。
 * 了解如何通过以下方式管理访问权限：
-  * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
+  * [电源外壳](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
 * [基于角色的访问控制故障排除](../role-based-access-control/troubleshooting.md)：获取解决常见问题的建议。

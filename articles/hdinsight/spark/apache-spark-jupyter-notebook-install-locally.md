@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.openlocfilehash: 225ee7028b9610a4974f9bee05da667d78d3355e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73903736"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在计算机上安装 Jupyter 笔记本并连接到 HDInsight 上的 Apache Spark
@@ -30,7 +30,7 @@ ms.locfileid: "73903736"
 
 ## <a name="prerequisites"></a>先决条件
 
-* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。 这是安装笔记本之后将 Jupyter 笔记本连接到 HDInsight 群集的先决条件。
+* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。 这是在安装笔记本后将 Jupyter 笔记本连接到 HDInsight 群集的先决条件。
 
 * 熟悉 Jupyter Notebook 和 Spark on HDInsight 的结合使用。
 
@@ -132,7 +132,7 @@ ms.locfileid: "73903736"
     |---|---|
     |{USERNAME}|群集登录名，默认为 `admin`。|
     |{CLUSTERDNSNAME}|群集名称|
-    |{BASE64ENCODEDPASSWORD}|实际密码的 base64 编码密码。  可在 [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/) 中生成 base64 密码。|
+    |{BASE64ENCODEDPASSWORD}|实际密码的 base64 编码密码。  您可以在 生成[https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/)base64 密码。|
     |`"livy_server_heartbeat_timeout_seconds": 60`|如果使用 `sparkmagic 0.12.7`（群集 v3.5 和 v3.6），请保留此值。  如果使用 `sparkmagic 0.2.3`（群集 v3.4），请替换为 `"should_heartbeat": true`。|
 
     可在[示例 config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json) 中查看完整的示例文件。
@@ -148,14 +148,14 @@ ms.locfileid: "73903736"
 
 6. 验证是否可以使用内核随附的 Spark magic。 执行以下步骤。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 创建新的笔记本。 在右侧一角选择“新建”。 应会看到默认内核 **Python 2** 和 **Python 3**，以及安装的内核。 实际值根据安装时所做的选择而有所不同。  选择“PySpark”。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 创建新的笔记本。 在右侧一角选择“新建”****。 应会看到默认内核 **Python 2** 和 **Python 3**，以及安装的内核。 实际值根据安装时所做的选择而有所不同。  选择“PySpark”。****
 
-    ![Jupyter 笔记本中的可用内核](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter notebook 中的内核")
+    ![犹太笔记笔记本中的可用内核](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter notebook 中的内核")
 
     > [!IMPORTANT]  
-    > 选择“新建”后，检查 shell 中是否出现任何错误。  如果看到错误 `TypeError: __init__() got an unexpected keyword argument 'io_loop'`，原因可能是遇到了某些 Tornado 版本中的已知问题。  如果出现此情况，请停止内核，然后使用以下命令降级 Tornado 安装：`pip install tornado==4.5.3`。
+    > 选择“新建”后，检查 shell 中是否出现任何错误。****  如果看到错误 `TypeError: __init__() got an unexpected keyword argument 'io_loop'`，原因可能是遇到了某些 Tornado 版本中的已知问题。  如果出现此情况，请停止内核，然后使用以下命令降级 Tornado 安装：`pip install tornado==4.5.3`。
 
-    b. 运行以下代码片段。
+    b.保留“数据库类型”设置，即设置为“共享”。 运行以下代码片段。
 
     ```sql
     %%sql
@@ -170,11 +170,11 @@ ms.locfileid: "73903736"
 
 你可能会出于多种原因而要在计算机上安装 Jupyter，然后将其连接到 HDInsight 上的 Apache Spark 群集。
 
-* 尽管 Azure HDInsight 中的 Spark 群集上已提供 Jupyter 笔记本，但在计算机上安装 Jupyter 可以选择在本地创建笔记本，根据正在运行的群集测试应用程序，并将笔记本上载到群集。 要将笔记本上传到群集，可以使用群集上运行的 Jupyter 笔记本来上传，或者将它们保存到与群集关联的存储帐户中的 /HdiNotebooks 文件夹。 有关如何在群集上存储笔记本的详细信息，请参阅 [Where are Jupyter notebooks stored？](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)（Jupyter 笔记本存储在何处？）
+* 尽管 Azure HDInsight 中的 Spark 群集上已提供 Jupyter 笔记本，但在计算机上安装 Jupyter 可以选择在本地创建笔记本，根据正在运行的群集测试应用程序，然后将笔记本上传到群集。 要将笔记本上传到群集，可以使用群集上运行的 Jupyter 笔记本来上传，或者将它们保存到与群集关联的存储帐户中的 /HdiNotebooks 文件夹。 有关如何在群集上存储笔记本的详细信息，请参阅 [Where are Jupyter notebooks stored？](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)（Jupyter 笔记本存储在何处？）
 * 使用本地提供的笔记本可以根据应用程序要求连接到不同的 Spark 群集。
 * 可以使用 GitHub 实施源代码管理系统，并对笔记本进行版本控制。 此外，还可以建立一个协作环境，其中的多个用户可以使用同一个笔记本。
 * 甚至不需要启动群集就能在本地使用笔记本。 只需创建一个群集以根据它来测试笔记本，而不需要手动管理笔记本或开发环境。
-* 配置自己的本地开发环境比在群集上配置 Jupyter 安装更容易。  你可以利用本地安装的所有软件，无需配置一个或多个远程群集。
+* 配置自己的本地开发环境可能比在群集上配置 Jupyter 安装更容易。  您可以利用您在本地安装的所有软件，而无需配置一个或多个远程群集。
 
 > [!WARNING]  
 > 在本地计算机上安装 Jupyter 后，多个用户可以同时在同一个 Spark 群集上运行同一个笔记本。 在这种情况下，会创建多个 Livy 会话。 如果遇到问题并想要调试，则跟踪哪个 Livy 会话属于哪个用户将是一项复杂的任务。  

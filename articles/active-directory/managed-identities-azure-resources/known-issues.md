@@ -1,5 +1,5 @@
 ---
-title: 托管标识的常见问题和已知问题-Azure AD
+title: 常见问题解答和托管标识的已知问题 - Azure AD
 description: Azure 资源托管标识的已知问题。
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0f0c678f2426d9de58d2ab337c56243394b4d0f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266528"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
@@ -38,7 +38,7 @@ ms.locfileid: "79266528"
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Azure 资源托管标识能否用于 Active Directory 身份验证库 (ADAL) 或 Microsoft 身份验证库 (MSAL)？
 
-否，Azure 资源托管标识尚未与 ADAL 或 MSAL 集成。 有关使用 REST 终结点为 Azure 资源的托管标识获取令牌的详细信息，请参阅[如何在 AZURE VM 上使用 azure 资源的托管标识获取访问令牌](how-to-use-vm-token.md)。
+否，Azure 资源托管标识尚未与 ADAL 或 MSAL 集成。 有关使用 REST 终结点获取 Azure 资源托管标识的令牌的详细信息，请参阅[如何在 Azure VM 上使用 Azure 资源托管标识来获取访问令牌](how-to-use-vm-token.md)。
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>什么是 Azure 资源托管标识的安全边界？
 
@@ -50,25 +50,25 @@ ms.locfileid: "79266528"
 - 如果未启用系统分配的托管标识并且仅存在一个用户分配的托管标识，则 IMDS 将默认采用该单一用户分配的托管标识。 
 - 如果未启用系统分配的托管的标识，并且存在多个用户分配的托管标识，则必须在请求中指定一个托管标识。
 
-### <a name="should-i-use-the-managed-identities-for-azure-resources-imds-endpoint-or-the-vm-extension-endpoint"></a>是否应将托管标识用于 Azure 资源 IMDS 终结点或 VM 扩展终结点？
+### <a name="should-i-use-the-managed-identities-for-azure-resources-imds-endpoint-or-the-vm-extension-endpoint"></a>我应该使用 Azure 资源托管标识 IMDS 终结点还是 VM 扩展终结点？
 
-使用 Vm 的 Azure 资源的托管标识时，建议使用 IMDS 终结点。 Azure 实例元数据服务是一个 REST 终结点，可供通过 Azure 资源管理器创建的所有 IaaS VM 使用。 
+将 Azure 资源托管标识与 VM 一起使用时，我们建议使用 IMDS 终结点。 Azure 实例元数据服务是一个 REST 终结点，可供通过 Azure 资源管理器创建的所有 IaaS VM 使用。 
 
 通过 IMDS 使用 Azure 资源托管标识的好处包括：
 - 所有 Azure IaaS 支持的操作系统都可以通过 IMDS 使用 Azure 资源托管标识。
 - 不再需要在 VM 上安装扩展即可启用 Azure 资源托管标识。 
 - Azure 资源托管标识使用的证书将不再出现在 VM 中。
 - IMDS 终结点是一个已知不可路由的 IP 地址，该地址只能在 VM 中访问。
-- 1000用户分配的托管标识可以分配给单个 VM。 
+- 可以为单个 VM 分配 1000 个用户分配的托管标识。 
 
-Azure 资源 VM 扩展的托管标识仍可用;但是，我们不再开发新的功能。 建议切换到使用 IMDS 终结点。 
+Azure 资源托管标识 VM 扩展目前仍可使用，但我们再也不会在其上开发新功能。 建议改用 IMDS 终结点。 
 
-使用 VM 扩展终结点的一些限制如下：
-- 对 Linux 分发的有限支持： CoreOS 稳定，CentOS 7.1，Red Hat 7.2，Ubuntu 15.04，Ubuntu 16.04
-- 只能向 VM 分配32用户分配的托管标识。
+使用 VM 扩展终结点的部分限制如下：
+- 对 Linux 发行版的有限支持： CoreOS 稳定， CentOS 7.1， 红帽 7.2， Ubuntu 15.04， Ubuntu 16.04
+- 只能为 VM 分配 32 个用户分配的托管标识。
 
 
-注意： Azure 资源 VM 扩展的托管标识将不受2019年1月的支持。 
+注意：Azure 资源 VM 扩展的托管标识将在 2019 年 1 月退出支持。 
 
 有关 Azure 实例元数据服务的详细信息，请参阅 [IMDS 文档](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
@@ -82,10 +82,10 @@ Azure 资源 VM 扩展的托管标识仍可用;但是，我们不再开发新的
 
 不是。 托管标识当前不支持跨目录方案。 
 
-### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>资源的托管标识需要哪些 Azure RBAC 权限？ 
+### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>在资源上进行标识托管需要什么 Azure RBAC 权限？ 
 
-- 系统分配的托管标识：需要对资源具有写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write 权限。 此操作包含在特定于资源的内置角色中，如[虚拟机参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)。
-- 用户分配的托管标识：需要对资源具有写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write 权限。 除了托管标识以外，还可以分配[托管标识运算符](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色。
+- 系统分配的托管标识：您需要对资源的写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write 权限。 此操作包含在特定于资源的内置角色中，如[虚拟机参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)。
+- 用户分配的托管标识：您需要对资源的写入权限。 例如，对于虚拟机，你需要 Microsoft.Compute/virtualMachines/write 权限。 此外还需要针对托管标识的[托管标识操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色分配。
 
 ### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>如何重启 Azure 资源托管标识扩展？
 在 Windows 和某些 Linux 版本中，如果该扩展停止，可使用以下 cmdlet 手动重启该扩展：
@@ -114,7 +114,7 @@ Azure 资源托管标识 VM 扩展（计划在 2019 年 1 月弃用）当前不�
 
 如果迁移处于运行状态的 VM，它将在迁移期间继续运行。 不过，如果在迁移后停止并重启 VM，那么它将无法启动。 导致此问题发生的原因是，VM 未更新对 Azure 资源托管标识的标识的引用，仍然继续指向旧资源组中的标识。
 
-**解决方法** 
+**解决 方案** 
  
 在 VM 上触发更新，以便它可以获取正确的 Azure 资源托管标识的值。 可以更改 VM 属性，从而更新对 Azure 资源托管标识的标识的引用。 例如，可以运行下列命令，在 VM 上设置新的标记值：
 
@@ -143,11 +143,11 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 
 将订阅移动/转移到另一个目录时，托管标识不会更新。 因此，任何现存的系统分配的或用户分配的托管标识将被破坏。 
 
-已移动到另一个目录的订阅中的托管标识的解决方法：
+对于已移到另一目录的订阅中的托管标识，解决方法是：
 
  - 对于系统分配的托管标识：禁用并重新启用。 
  - 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
 
-### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>将用户分配的托管标识移动到不同的资源组/订阅
+### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>将用户分配的托管标识移到另一个资源组/订阅
 
-将用户分配的托管标识移动到另一个资源组将导致标识被破坏。 因此，使用该标识的资源（例如 VM）将不能为其请求令牌。 
+将用户分配的托管标识移动到另一个资源组将导致标识被破坏。 因此，使用该标识的资源（例如 VM）将无法请求该标识的令牌。 

@@ -1,21 +1,21 @@
 ---
 title: 排查 Azure Cache for Redis 服务器端问题
-description: 了解如何解决用于 Redis 的 Azure 缓存的常见服务器端问题，例如内存压力、高 CPU、长时间运行的命令或带宽限制。
+description: 了解如何使用 Redis 的 Azure 缓存解决常见的服务器端问题，例如内存压力、CPU 高、长时间运行的命令或带宽限制。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277929"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>排查 Azure Cache for Redis 服务器端问题
 
-本部分讨论如何排查由于 Azure Cache for Redis 或托管它的虚拟机上出现的问题。
+此部分讨论由于 Azure Cache for Redis 或托管它的虚拟机上出现状况而导致的故障排除问题。
 
 - [Redis 服务器上的内存压力](#memory-pressure-on-redis-server)
 - [CPU 使用率或服务器负载过高](#high-cpu-usage-or-server-load)
@@ -28,50 +28,50 @@ ms.locfileid: "79277929"
 
 ## <a name="memory-pressure-on-redis-server"></a>Redis 服务器上的内存压力
 
-服务器端的内存压力会导致各种性能问题，从而延缓对请求的处理。 当内存压力命中时，系统可能会将数据分页到磁盘。 此分页错误导致系统性能显著下降。 这种内存压力可能有多个原因：
+服务器端的内存压力会导致各种性能问题，从而延缓对请求的处理。 出现内存压力时，系统可能会将数据分页到磁盘。 此分页错误__ 导致系统性能显著下降。 这种内存压力可能有多个原因：
 
-- 缓存中填充的数据接近其最大容量。
-- Redis 看到的内存碎片较高。 此碎片最常见的原因是存储大型对象，因为 Redis 是针对小型对象进行优化的。
+- 缓存中填充的数据即将达到其最大容量。
+- Redis 出现大量内存碎片。 这种碎片往往是存储大型对象造成的，因为 Redis 已针对小型对象进行优化。
 
-Redis 通过 INFO 命令公开两个统计信息，这些统计[信息](https://redis.io/commands/info)可帮助你确定此问题： "used_memory" 和 "used_memory_rss"。 可以使用门户[查看这些指标](cache-how-to-monitor.md#view-metrics-with-azure-monitor)。
+Redis 通过 [INFO](https://redis.io/commands/info) 命令公开以下两项统计信息来帮助你识别此问题：“used_memory”和“used_memory_rss”。 可以使用门户[查看这些指标](cache-how-to-monitor.md#view-metrics-with-azure-monitor)。
 
-可以进行几项可能的更改，以确保内存使用率正常：
+可以通过多种可能的更改来帮助确保内存用量正常：
 
-- [配置内存策略](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)，对密钥设置过期时间。 如果有碎片，此策略可能不足以满足需要。
+- [配置内存策略](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)，对密钥设置过期时间。 如果存在内存碎片，则此策略可能还不足够。
 - [配置 maxmemory-reserved 值](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)，该值应足够大，可以抵消内存碎片造成的影响。
 - 将大型缓存对象分解成小型相关对象。
-- [创建](cache-how-to-monitor.md#alerts)有关指标的警报，如使用的内存，在提前通知潜在影响。
-- [缩放](cache-how-to-scale.md)到更大的缓存大小，具有更多内存容量。
+- 基于指标（例如已用内存）[创建警报](cache-how-to-monitor.md#alerts)，以提前收到有关潜在影响的通知。
+- [扩展](cache-how-to-scale.md)到可提供更多内存容量的更大缓存大小。
 
 ## <a name="high-cpu-usage-or-server-load"></a>CPU 使用率或服务器负载过高
 
-服务器负载过高或 CPU 使用意味着服务器无法及时处理请求。 服务器响应速度太慢，无法跟上请求速率。
+服务器负载或 CPU 使用率偏高意味着服务器无法及时处理请求。 服务器可能会减慢响应速度，且无法跟上请求速率。
 
-[监视](cache-how-to-monitor.md#view-metrics-with-azure-monitor)CPU 或服务器负载等指标。 注意与超时相对应的 CPU 使用率峰值。
+[监视指标](cache-how-to-monitor.md#view-metrics-with-azure-monitor)，例如 CPU 或服务器负载。 注意与超时相对应的 CPU 使用率峰值。
 
-可以进行几项更改，以缓解高服务器负载：
+可以通过做出几项更改来缓解较高的服务器负载：
 
-- 调查导致 CPU 峰值的原因，如下面所述的[长时间运行命令](#long-running-commands)，或由于内存不足导致的页错误。
-- [创建](cache-how-to-monitor.md#alerts)有关 CPU 或服务器负载等指标的警报，以提前通知潜在影响。
-- [缩放](cache-how-to-scale.md)到更大的缓存大小，具有更多的 CPU 容量。
+- 调查导致 CPU 峰值的原因，例如下面提到的[长时间运行的命令](#long-running-commands)或由于内存压力大而导致的页面错误。
+- 基于指标（例如 CPU 或服务器负载）[创建警报](cache-how-to-monitor.md#alerts)，以提前收到有关潜在影响的通知。
+- [扩展](cache-how-to-scale.md)到可提供更多 CPU 容量的更大缓存大小。
 
 ## <a name="long-running-commands"></a>长时间运行的命令
 
-某些 Redis 命令比其他命令更昂贵。 [Redis 命令文档](https://redis.io/commands)显示每个命令的时间复杂性。 由于 Redis 命令处理是单线程的，因此，运行时间的命令会阻止其后的所有其他命令。 你应该查看正在向 Redis 服务器发出的命令，以了解其对性能的影响。 例如，通常使用[KEYS](https://redis.io/commands/keys)命令，而无需知道它是 O （N）操作。 可以通过使用[扫描](https://redis.io/commands/scan)来减少 CPU 高峰。
+某些 Redis 命令的执行开销比其他命令高。 [Redis 命令文档](https://redis.io/commands)介绍了每个命令的时间复杂性。 由于 Redis 命令处理是单线程的，因此需要时间运行的命令将阻塞其后的所有其他命令。 你应该查看正在向 Redis 服务器发出的命令，以了解它们对性能的影响。 例如，我们经常使用 [KEYS](https://redis.io/commands/keys) 命令，但事先并不知道它是一个 O(N) 操作。 可以使用 [SCAN](https://redis.io/commands/scan) 来避免 KEYS，以降低 CPU 峰值。
 
-使用[SLOWLOG](https://redis.io/commands/slowlog)命令，可以度量对服务器执行的昂贵命令。
+使用 [SLOWLOG](https://redis.io/commands/slowlog) 命令可以测量正在对服务器执行的命令的开销。
 
 ## <a name="server-side-bandwidth-limitation"></a>服务器端带宽限制
 
-不同的缓存大小具有不同的网络带宽容量。 如果服务器超出可用带宽，则数据不会迅速发送到客户端。 由于服务器无法将数据推送到客户端，因此客户端请求可能会超时。
+不同的缓存大小具有不同的网络带宽容量。 如果服务器超出可用带宽，则数据无法快速发送到客户端。 客户端请求可能会超时，因为服务器无法以足够快的速度将数据推送到客户端。
 
-可以使用 "缓存读取" 和 "缓存写入" 指标来查看正在使用的服务器端带宽量。 可以在门户中[查看这些指标](cache-how-to-monitor.md#view-metrics-with-azure-monitor)。
+可以使用“缓存读取”和“缓存写入”指标来查看使用的服务器端带宽量。 可以在门户中[查看这些指标](cache-how-to-monitor.md#view-metrics-with-azure-monitor)。
 
-缓解网络带宽使用量接近最大容量的情况：
+缓解网络带宽用量即将达到最大容量的情况：
 
-- 更改客户端调用行为以减少网络需求。
-- 针对诸如缓存读取或缓存写入等指标[创建警报](cache-how-to-monitor.md#alerts)，以提前通知潜在影响。
-- [缩放](cache-how-to-scale.md)到更大的缓存大小，具有更多网络带宽容量。
+- 更改客户端调用行为，以降低网络需求。
+- 基于指标（例如缓存读取或缓存写入）[创建警报](cache-how-to-monitor.md#alerts)，以提前收到有关潜在影响的通知。
+- [扩展](cache-how-to-scale.md)到可提供更高网络带宽容量的更大缓存大小。
 
 ## <a name="additional-information"></a>其他信息
 

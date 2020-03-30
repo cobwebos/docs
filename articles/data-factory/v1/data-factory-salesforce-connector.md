@@ -1,5 +1,5 @@
 ---
-title: 使用数据工厂从 Salesforce 移动数据
+title: 使用数据工厂从销售人员中移动数据
 description: 了解如何使用 Azure 数据工厂从 Salesforce 移动数据。
 services: data-factory
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281127"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce 移动数据
@@ -27,14 +27,14 @@ ms.locfileid: "79281127"
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅 [V2 中的 Salesforce 连接器](../connector-salesforce.md)。
 
-本文概括介绍了如何使用 Azure 数据工厂中的复制活动将数据从本地 Salesforce 移动到[支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表中的接收器列下所列出的任何数据存储。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何结合使用复制活动和受支持的数据存储进行数据移动。
+本文概括介绍了如何使用 Azure 数据工厂中的复制活动将数据从本地 Salesforce 移动到[支持的源和接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表中的接收器列下所列出的任何数据存储。 本文基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中概述了使用复制活动和支持的数据存储组合进行的数据移动。
 
 Azure 数据工厂当前仅支持将数据从 Salesforce 移动到[支持的接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)，不支持将数据从其他数据存储移动到 Salesforce。
 
 ## <a name="supported-versions"></a>支持的版本
 此连接器支持以下版本的 Salesforce：开发人员版、专业版、企业版或不受限制版。 并支持从 Salesforce 生产、沙盒和自定义域进行复制。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * 必须启用 API 权限。 请参阅 [How do I enable API access in Salesforce by permission set?](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)（如何通过权限集启用 Salesforce 中的 API 访问权限？）
 * 要将数据从 Salesforce 复制到本地数据存储，必须在本地环境中至少安装有数据管理网关 2.0。
 
@@ -49,15 +49,15 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以从 Salesforce 移动数据。
 
-创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+您还可以使用以下工具创建管道：**可视化工作室****、Azure PowerShell、Azure****资源管理器模板** **、.NET API**和 REST **API**。 有关创建具有复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
-1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集以表示复制操作的输入和输出数据。
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。
+1. 创建**链接服务**，将输入和输出数据存储链接到数据工厂。
+2. 创建**数据集**以表示复制操作的输入和输出数据。
+3. 创建具有将数据集作为输入和数据集作为输出的复制活动的**管道**。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于从 Salesforce 复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 Salesforce 复制到 Azure Blob](#json-example-copy-data-from-salesforce-to-azure-blob) 部分。
 
@@ -66,10 +66,10 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了针对 Salesforce 链接服务的 JSON 元素说明。
 
-| properties | 说明 | 必选 |
+| properties | 描述 | 必选 |
 | --- | --- | --- |
-| type |类型属性必须设置为：**Salesforce** |是 |
-| environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> -默认值为 "https：\//login.salesforce.com"。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
+| type |类型属性必须设置为 **：Salesforce**。 |是 |
+| environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> - 默认值为"https：/login.salesforce.com"。\/ <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
 | username |为用户帐户指定用户名。 |是 |
 | password |指定用户帐户的密码。 |是 |
 | securityToken |为用户帐户指定安全令牌。 请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)了解有关如何重置/获取安全令牌的说明。 若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。 |是 |
@@ -77,9 +77,9 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的各节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure blob、Azure 表等），数据集 JSON 的结构、可用性和策略这些部分类似。
 
-每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型的数据集的 typeProperties 部分具有以下属性：
+每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **RelationalTable** 类型的数据集的 typeProperties 部分具有以下属性：
 
-| properties | 说明 | 必选 |
+| properties | 描述 | 必选 |
 | --- | --- | --- |
 | tableName |在 Salesforce 中表的名称。 |否（如果指定了 **RelationalSource** 的**query**） |
 
@@ -95,7 +95,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 Salesforce）时，以下属性在 typeProperties 部分中可用：
 
-| properties | 说明 | 允许的值 | 必选 |
+| properties | 描述 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | query |使用自定义查询读取数据。 |SQL 92 查询或 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询。 例如：`select * from MyTable__c`。 |否（如果指定了**数据集**的 **tableName**） |
 
@@ -108,29 +108,29 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>使用 DateTime 列上的 where 子句检索数据
 当指定 SOQL 或 SQL 查询时，请注意 DateTime 的格式差异。 例如：
 
-* **SOQL 示例**：`$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **SOQL 样本**：`$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
 * **SQL 示例**：
     * **使用复制向导指定查询：** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
     * **使用 JSON 编辑指定查询（正确转义字符）：** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
 ### <a name="retrieving-data-from-salesforce-report"></a>从 Salesforce 报表检索数据
-可通过将查询指定为 `{call "<report name>"}` 从 Salesforce 报表检索数据，例如， `"query": "{call \"TestReport\"}"` 列中的一个值匹配。
+可通过将查询指定为 `{call "<report name>"}` 从 Salesforce 报表检索数据，例如， `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>从 Salesforce 回收站中检索删除的记录
-若要从 Salesforce 回收站中检索软删除的记录，需要在查询中指定 **“IsDeleted = 1”** 。 例如，
+若要从 Salesforce 回收站中检索软删除的记录，需要在查询中指定 **“IsDeleted = 1”**。 例如，
 
-* 若要仅查询已删除的记录，请指定“select * from MyTable__c **where IsDeleted= 1**”
-* 若要查询包括现有和已删除记录的所有记录，请指定“select * from MyTable__c **where IsDeleted = 0 or IsDeleted = 1**”
+* 要仅查询已删除的记录，请指定"从**isDeleted= 1 所在的**MyTable__c中选择 * "
+* 要查询所有记录，包括现有记录和已删除记录，请指定"从**isDeleted = 0 或 IsDeleted = 1 的**MyTable__c中选择 * "
 
 ## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON 示例：将数据从 Salesforce 复制到 Azure Blob
-下面的示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示了如何将数据从 Salesforce 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
+下面的示例提供了使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道的示例 JSON 定义。 它们演示了如何将数据从 Salesforce 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
 
 以下是要实现方案需要创建的数据工厂项目。 列表后面的部分介绍了有关这些步骤的详细信息。
 
 * [Salesforce](#linked-service-properties) 类型的链接服务
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务
-* [RelationalTable](data-factory-create-datasets.md) 类型的输入[数据集](#dataset-properties)
-* [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)
+* [RelationalTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)
 * 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)
 
 **Salesforce 链接服务**
@@ -192,7 +192,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 }
 ```
 
-将“external”设置为“true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
+设置为**true** **外部**会通知数据工厂服务数据集是数据工厂的外部，并且不是由数据工厂中的活动生成的。
 
 > [!IMPORTANT]
 > 任何自定义对象均需要 API 名称的“__c”部分。
@@ -298,7 +298,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 | 百分比 |Decimal |
 | 电话 |String |
 | 选择列表 |String |
-| 文本 |String |
+| Text |String |
 | 文本区域 |String |
 | 文本区域（长型值） |String |
 | 文本区域（丰富） |String |

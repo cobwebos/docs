@@ -9,10 +9,10 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4b61caecd67881eb08c82ea0c26522c63c3e8396
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254607"
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>适用于 StorSimple 8000 系列设备的 Update 3 发行说明
@@ -47,7 +47,7 @@ Update 3 中以下重大改进和 Bug 修复。
 | 2 |本地固定卷 |在以前的版本中，本地固定卷存在与 I/O 失败、卷转换失败和数据路径失败相关的问题。 在此版本中已找到这些问题的根本原因并进行了修复。 |是 |否 |
 | 3 |监视 |有多个与报告单位和监视以及设备仪表板图表相关的问题，其中针对本地固定卷显示了不正确的信息。 在此版本中已修复这些问题。 |是 |否 |
 | 4 |大量写入 I/O |使用 StorSimple 时处理涉及大量写入操作的工作负荷时，用户会遇到工作集被分层到云中罕见错误。 在此版本中已修复这一 bug。 |是 |是 |
-| 5 |备份 |在某些极少数情况下，在以前版本的软件中，当用户备份远程克隆时，它们将会出现云错误，操作将会出现错误。在此版本中，此问题已修复，并且操作已成功完成。 |是 |是 |
+| 5 |备份 |在某些极少数情况下，在以前的软件版本中，当用户备份远程克隆时，它们将遇到云错误，操作将错误。在此版本中，问题已修复，操作成功完成。 |是 |是 |
 | 6 |备份策略 |在某些极少数情况下，在早期版本的软件中，存在与删除备份策略相关的错误。 在此版本中已修复了此问题。 |是 |是 |
 
 ## <a name="known-issues-in-update-3"></a>Update 3 中的已知问题
@@ -63,7 +63,7 @@ Update 3 中以下重大改进和 Bug 修复。
 | 6 |Web 代理 |如果 Web 代理配置将 HTTPS 作为指定的协议，则设备到服务通信将受到影响，并且设备将进入脱机状态。 在此过程中会生成支持包，从而耗用设备上的大量资源。 |请确保 Web 代理 URL 将 HTTP 作为指定的协议。 有关详细信息，请转到[配置设备的 Web 代理](storsimple-8000-configure-web-proxy.md)。 |是 |否 |
 | 7 |Web 代理 |如果在注册的设备上配置并启用 Web 代理，将需要重新启动设备上的主动控制器。 | |是 |否 |
 | 8 |云高延迟和高 I/O 工作负载 |当 StorSimple 设备同时遇到非常高的云延迟（秒级）和高 I/O 工作负载情况时，设备卷将进入降级状态，并且 I/O 可能会出现故障，发生“设备未就绪”错误。 |需要手动重新启动设备控制器或执行设备故障转移，才可以从这种情况中恢复。 |是 |否 |
-| 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |将该 cmdlet 放在括号中，如下所示： **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
+| 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |将该 cmdlet 放在括号中，如下所示：**(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
 | 10 |迁移 |当传递多个卷容器进行迁移时，只有第一个卷容器的最新备份的 ETA 准确。 此外，在迁移第一个卷容器中的前 4 个备份后，将开始并行迁移。 |建议一次迁移一个卷容器。 |是 |否 |
 | 11 |迁移 |还原后，不会将卷添加到备份策略或虚拟磁盘组。 |需要将这些卷添加到备份策略以创建备份。 |是 |是 |
 | 12 |迁移 |迁移完成后，5000/7000 系列设备不得访问已迁移的数据容器。 |建议在迁移完成并提交之后删除迁移的数据容器。 |是 |否 |
@@ -76,7 +76,7 @@ Update 3 中以下重大改进和 Bug 修复。
 | 19 |本地固定卷 |如果取消还原作业，或者如果恢复失败，且发生控制器故障转移，“**作业**”页上会显示其他还原作业。 |如果还原作业仅具有本地固定卷或混合了本地固定卷与分层卷，则可能发生此问题。 如果还原作业仅包含分层卷，不会发生此问题。 无需用户干预。 |是 |否 |
 | 20 |本地固定卷 |如果尝试将分层卷（通过更新 1.2 或更早版本创建和克隆）转换为本地固定卷，并且设备空间不足或云服务中断，则克隆会受损。 |仅通过更新 2.1 前的软件创建和克隆的卷会发生该问题。 这种情况应该很少见。 | | |
 | 21 |卷转换 |卷转换正在进行时（分层到本地固定，反之亦然），请勿更新连接到此卷上的 ACR。 更新 ACR 可能导致数据损坏。 |如果需要，请在卷转换之前更新 ACR，不要在转换进行时执行任何进一步的 ACR 更新。 | | |
-| 22 |更新 |应用 Update 3 时，Azure 经典门户的“维护”页会显示以下与 Update 2 相关的消息 -“StorSimple 8000 系列 Update 2 包括适用于 Microsoft 的功能，当我们检测到潜在问题时，Microsoft 会主动收集设备的日志信息”。 该消息可能会产生误导，因为它指示设备会被更新到 Update 2。 设备成功更新到 Update 3 后，此消息将消失。 |未来版本中将解决此行为。 |是 |否 |
+| 22 |更新 |应用 Update 3 时，Azure 经典门户的“维护”**** 页会显示以下与 Update 2 相关的消息 -“StorSimple 8000 系列 Update 2 包括适用于 Microsoft 的功能，当我们检测到潜在问题时，Microsoft 会主动收集设备的日志信息”。 该消息可能会产生误导，因为它指示设备会被更新到 Update 2。 设备成功更新到 Update 3 后，此消息将消失。 |未来版本中将解决此行为。 |是 |否 |
 
 ## <a name="controller-and-firmware-updates-in-update-3"></a>Update 3 中的控制器和固件更新
 此版本包含 LSI 驱动程序和固件更新。 有关如何安装 LSI 驱动程序和固件更新的详细信息，请参阅在 StorSimple 设备上[安装 Update 3](storsimple-install-update-3.md)。

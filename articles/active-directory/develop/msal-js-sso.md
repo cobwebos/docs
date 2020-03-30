@@ -1,7 +1,7 @@
 ---
-title: 单一登录（MSAL） |Microsoft
+title: 单一登录 （MSAL.js） |蔚蓝
 titleSuffix: Microsoft identity platform
-description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库（MSAL）构建单一登录体验。
+description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 构建单一登录体验。
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,23 +14,23 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262849"
 ---
 # <a name="single-sign-on-with-msaljs"></a>使用 MSAL.js 的单一登录
 
-通过单一登录（SSO），用户可以输入自己的凭据一次登录并建立会话，该会话可在多个应用程序之间重复使用，而无需再次进行身份验证。 这为用户提供了无缝体验，并减少了凭据的重复提示。
+借助单一登录 (SSO)，用户只需输入其凭据一次即可登录，并建立可在多个应用程序中重复使用的会话，而无需再次进行身份验证。 这样可为用户提供无缝的体验，并减少重复提示用户输入凭据的次数。
 
-Azure AD 通过在用户首次进行身份验证时设置会话 cookie 来向应用程序提供 SSO 功能。 MSAL 库允许应用程序以几种方式利用此功能。
+当用户首次进行身份验证时，Azure AD 将设置会话 Cookie，以此在应用程序中提供 SSO 功能。 MSAL.js 库允许应用程序以多种方式利用此功能。
 
-## <a name="sso-between-browser-tabs"></a>浏览器选项卡之间的 SSO
+## <a name="sso-between-browser-tabs"></a>浏览器标签页之间的 SSO
 
-当应用程序在多个选项卡中打开并且首次在一个选项卡上登录用户时，用户也会在其他选项卡上登录，而不会出现提示。 MSAL 在浏览器中缓存用户的 ID 标记 `localStorage`，并在其他打开的选项卡上将用户登录到应用程序。
+如果应用程序已在多个标签页中打开，当你首次在一个标签页中将用户登录时，该用户也会在其他标签页中登录，而不会看到提示。 MSAL.js 会在浏览器 `localStorage` 中缓存用户的 ID 令牌，并在其他打开的标签页中将用户登录到应用程序。
 
-默认情况下，MSAL 使用不允许在选项卡之间共享会话的 `sessionStorage`。 若要获取选项卡之间的 SSO，请确保将 MSAL 中的 `cacheLocation` 设置为 `localStorage`，如下所示。
+默认情况下，MSAL.js 使用 `sessionStorage`（不允许在标签页之间共享会话）。 若要在标签页之间实现 SSO，请务必将 MSAL.js 中的 `cacheLocation` 设置为 `localStorage`，如下所示。
 
 ```javascript
 const config = {
@@ -47,25 +47,25 @@ const myMSALObj = new UserAgentApplication(config);
 
 ## <a name="sso-between-apps"></a>应用之间的 SSO
 
-用户进行身份验证时，会在浏览器中的 Azure AD 域上设置会话 cookie。 MSAL 依赖此会话 cookie 为用户提供不同应用程序之间的 SSO。 MSAL 还会在每个应用程序域的浏览器存储中缓存用户的 ID 令牌和访问令牌。 因此，不同情况下 SSO 行为会有所不同：  
+当用户进行身份验证时，将在浏览器中的 Azure AD 域上设置会话 Cookie。 MSAL.js 依赖于此会话 Cookie 来为不同应用程序之间的用户提供 SSO。 MSAL.js 还会在每个应用程序域的浏览器存储中缓存用户的 ID 令牌和访问令牌。 因此，SSO 行为根据不同的情况而异：  
 
 ### <a name="applications-on-the-same-domain"></a>同一域中的应用程序
 
-当应用程序托管在同一个域中时，用户可以登录到应用一次，然后在不提示的情况下对其他应用进行身份验证。 MSAL 利用为域中的用户缓存的令牌来提供 SSO。
+如果应用程序托管在同一个域中，则用户可以登录到应用一次，然后可在其他应用中完成身份验证，而不会看到提示。 MSAL.js 利用域中为用户缓存的令牌来提供 SSO。
 
-### <a name="applications-on-different-domain"></a>不同域上的应用程序
+### <a name="applications-on-different-domain"></a>不同域中的应用程序
 
-当应用程序托管在不同的域中时，域 A 中缓存的令牌无法通过域 B 中的 MSAL 访问。
+如果应用程序托管在不同的域中，则域 B 中的 MSAL.js 无法访问域 A 中缓存的令牌。
 
-这意味着，当用户登录到域 A 时，将导航到域 B 上的应用程序，这些用户将被重定向或提示 Azure AD 页面。 由于 Azure AD 仍具有用户会话 cookie，因此它将以用户身份登录，并且不需要重新输入凭据。 如果用户在与 Azure AD 的会话中有多个用户帐户，则系统将提示用户选择用于登录的相关帐户。
+这意味着，当已登录到域 A 的用户导航到域 B 中的应用程序时，他们将被重定向，或者在 Azure AD 页面中看到提示。 由于 Azure AD 仍包含用户会话 Cookie，它会将用户登录，而用户不需要重新输入凭据。 如果用户在 Azure AD 的会话中包含多个用户帐户，则系统会提示用户选择相关的帐户用于登录。
 
-### <a name="automatically-select-account-on-azure-ad"></a>自动选择 Azure AD 上的帐户
+### <a name="automatically-select-account-on-azure-ad"></a>自动在 Azure AD 上选择帐户
 
-在某些情况下，应用程序有权访问用户的身份验证上下文，并且想要在登录多个帐户时避免 Azure AD 帐户选择提示。  可以通过几种不同的方式完成此操作：
+在某些情况下，应用程序有权访问用户的身份验证上下文，并希望避免在登录了多个帐户时出现 Azure AD 帐户选择提示。  可通过多种不同的方式实现此目的：
 
-**使用会话 ID （SID）**
+**使用会话 ID (SID)**
 
-会话 ID 是可以在 ID 令牌中配置的[可选声明](active-directory-optional-claims.md)。 此声明允许应用程序独立于用户的帐户名或用户名识别用户的 Azure AD 会话。 可以将请求参数中的 SID 传递到 `acquireTokenSilent` 调用。 这将允许 Azure AD 绕过帐户选择。 SID 绑定到会话 cookie，而不会跨浏览器上下文。
+会话 ID 是可以在 ID 令牌中配置的[可选声明](active-directory-optional-claims.md)。 不管用户的帐户名或用户名是什么，应用程序都可以使用此声明识别用户的 Azure AD 会话。 可将请求参数中的 SID 传递给 `acquireTokenSilent` 调用。 这样，Azure AD 就可以绕过帐户选择。 SID 绑定到会话 Cookie，不会跨越浏览器上下文。
 
 ```javascript
 var request = {
@@ -82,12 +82,12 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 ```
 
 > [!Note]
-> SID 只能与 MSAL 中 `acquireTokenSilent` 调用发出的无提示身份验证请求一起使用。
-可在[此处](active-directory-optional-claims.md)找到配置应用程序清单中的可选声明的步骤。
+> SID 只能与 MSAL.js 中的 `acquireTokenSilent` 调用发出的静默身份验证请求配合使用。
+可在[此处](active-directory-optional-claims.md)找到有关在应用程序清单中配置可选声明的步骤。
 
 **使用登录提示**
 
-如果未配置 SID 声明，或需要在交互式身份验证调用中跳过帐户选择提示，则可以通过在 MSAL 交互式方法（`loginPopup`、`loginRedirect`、`acquireTokenPopup` 和 `acquireTokenRedirect`）中提供 `login_hint`，在请求参数中提供一个，并根据需要提供一个 `extraQueryParameters` `domain_hint`。 例如：
+如果未配置 SID 声明或者需要在交互式身份验证调用中绕过帐户选择提示，可以在请求参数中提供 `login_hint`，并选择性地在 MSAL.js 交互式方法（`loginPopup`、`loginRedirect`、`acquireTokenPopup` 和 `acquireTokenRedirect`）中提供 `extraQueryParameters` 形式的 `domain_hint`。 例如：
 
 ```javascript
 var request = {
@@ -99,28 +99,28 @@ var request = {
 userAgentApplication.loginRedirect(request);
 ```
 
-可以通过读取在用户的 ID 令牌中返回的声明来获取 login_hint 和 domain_hint 的值。
+可以通过读取用户 ID 令牌中返回的声明来获取 login_hint 和 domain_hint 的值。
 
-* 应将**loginHint**设置为 ID 令牌中的 `preferred_username` 声明。
+* **loginHint** 应设置为 ID 令牌中的 `preferred_username` 声明。
 
-* 只需要在使用/common 机构时传递**domain_hint** 。 域提示由租户 ID （tid）决定。  如果 ID 令牌中的 `tid` 声明 `9188040d-6c67-4c5b-b112-36a304b66dad` 则使用者。 否则为组织。
+* 仅当使用 /common 颁发机构时，才需要传递 **domain_hint**。 域提示按租户 ID (TID) 确定。  如果 ID 令牌中的 `tid` 声明为 `9188040d-6c67-4c5b-b112-36a304b66dad`，则域提示为使用者。 否则为组织。
 
-请参阅[此处](v2-oauth2-implicit-grant-flow.md)，了解有关登录提示和域提示的值的详细信息。
+有关登录提示和域提示的值的详细信息，请参阅[此文](v2-oauth2-implicit-grant-flow.md)。
 
 > [!Note]
-> 不能同时传递 SID 和 login_hint。 这将导致错误响应。
+> 不能同时传递 SID 和 login_hint。 这会导致错误响应。
 
-## <a name="sso-without-msaljs-login"></a>不带 MSAL 登录名的 SSO
+## <a name="sso-without-msaljs-login"></a>不使用 MSAL.js 登录名进行 SSO
 
-按照设计，MSAL 要求在获取 Api 令牌之前调用登录方法来建立用户上下文。 由于登录方法是交互式的，因此用户会看到一条提示。
+根据设计，在获取 API 的令牌之前，MSAL.js 需要调用某个登录方法来建立用户上下文。 由于登录方法是交互式的，用户会看到提示。
 
-在某些情况下，应用程序可以通过在另一应用程序中启动的身份验证访问经过身份验证的用户的上下文或 ID 令牌，并希望利用 SSO 获取令牌，而无需首先通过 MSAL 登录。
+在某些情况下，应用程序有权通过另一应用程序中启动的身份验证访问经过身份验证的用户的上下文或 ID 令牌，并希望在不先通过 MSAL.js 登录的情况下，利用 SSO 获取令牌。
 
-这种情况的一个示例是：用户登录到一个父 web 应用程序，该应用程序作为另一个作为加载项或插件运行的 JavaScript 应用程序。
+例如：用户被登录到父 Web 应用程序，该应用程序承载另一个作为加载项或插件运行的 JavaScript 应用程序。
 
-在此方案中，可按如下所示实现 SSO 体验：
+可按如下所述实现此方案中的 SSO 体验：
 
-如果可用（或 `login_hint`，`domain_hint`）作为 MSAL `acquireTokenSilent` 调用的请求参数，请将 `sid` 传递给，如下所示：
+将可用的 `sid`（或 `login_hint` 和可选的 `domain_hint`）作为请求参数传递给 MSAL.js `acquireTokenSilent` 调用，如下所示：
 
 ```javascript
 var request = {
@@ -137,11 +137,11 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 });
 ```
 
-## <a name="sso-in-adaljs-to-msaljs-update"></a>将 ADAL 中的 SSO 升级到 MSAL
+## <a name="sso-in-adaljs-to-msaljs-update"></a>从 ADAL.js 更新到 MSAL.js 之后的 SSO
 
-MSAL 为 Azure AD 身份验证方案引入了针对 ADAL 的功能奇偶校验。 若要使从 ADAL 到 MSAL 的迁移变得很简单，并避免提示用户重新登录，库将在 ADAL 缓存中读取代表用户会话的 ID 令牌，并在 MSAL 中无缝地登录用户。  
+对于 Azure AD 身份验证方案，MSAL.js 引入了与 ADAL.js 的功能奇偶一致性。 为了轻松从 ADAL.js 迁移到 MSAL.js 并避免再次提示用户登录，库会在 ADAL.js 缓存中读取代表用户会话的 ID 令牌，并在 MSAL.js 中无缝地将用户登录。  
 
-若要利用从 ADAL 进行更新时的单一登录（SSO）行为，需确保库使用 `localStorage` 来缓存令牌。 将 `cacheLocation` 设置为在初始化时在 MSAL 和 ADAL 配置中 `localStorage`，如下所示：
+若要在从 ADAL.js 更新时利用单一登录 (SSO) 行为，需确保库使用 `localStorage` 来缓存令牌。 在初始化时，将 MSAL.js 和 ADAL.js 配置中的 `cacheLocation` 设置为 `localStorage`，如下所示：
 
 
 ```javascript
@@ -167,7 +167,7 @@ const config = {
 const myMSALObj = new UserAgentApplication(config);
 ```
 
-完成此配置后，MSAL 将能够读取 ADAL 中经过身份验证的用户的缓存状态，并使用该状态在 MSAL 中提供 SSO。
+完成配置后，MSAL.js 可以在 ADAL.js 中读取经过身份验证的用户的缓存状态，并使用该状态在 MSAL.js 中提供 SSO。
 
 ## <a name="next-steps"></a>后续步骤
 

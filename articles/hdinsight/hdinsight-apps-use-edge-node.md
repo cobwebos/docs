@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/27/2020
 ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272599"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点
 
 了解如何将空边缘节点添加到 HDInsight 群集。 空边缘节点是安装并配置了与头节点中相同的客户端工具，但未运行 [Apache Hadoop](https://hadoop.apache.org/) 服务的 Linux 虚拟机。 可以使用该边缘节点来访问群集、测试客户端应用程序和托管客户端应用程序。
 
-可以将空边缘节点添加到现有 HDInsight 群集，或者在创建群集时将此类节点添加到新群集。 添加空边缘节点的操作是使用 Azure 资源管理器模板完成的。  下面的示例演示如何使用模板执行此操作：
+可以将空边缘节点添加到现有 HDInsight 群集，或者在创建群集时将此类节点添加到新群集。 添加空边缘节点的操作是使用 Azure 资源管理器模板完成的。  以下示例演示如何使用模板完成：
 
     "resources": [
         {
@@ -50,58 +50,58 @@ ms.locfileid: "79272599"
         }
     ],
 
-如示例中所示，可以选择性地调用[脚本操作](hdinsight-hadoop-customize-cluster-linux.md)来执行其他配置，例如，在边缘节点中安装 [Apache Hue](hdinsight-hadoop-hue-linux.md)。 脚本操作脚本必须可在 Web 上公开访问。  例如，如果该脚本存储在 Azure 存储中，请使用公共容器或公共 blob。
+如示例中所示，可以选择性地调用[脚本操作](hdinsight-hadoop-customize-cluster-linux.md)来执行其他配置，例如，在边缘节点中安装 [Apache Hue](hdinsight-hadoop-hue-linux.md)。 脚本操作脚本必须可在 Web 上公开访问。  例如，如果脚本存储在 Azure 存储中，请使用公共容器或公共 Blob。
 
 边缘节点虚拟机大小必须满足 HDInsight 群集工作节点 vm 的大小要求。 有关建议的工作节点 vm 的大小信息，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md#cluster-type)。
 
-创建边缘节点后，可以使用 SSH 连接到边缘节点，并运行客户端工具访问 HDInsight 中的 Hadoop 群集。
+创建边缘节点后，可以使用 SSH 连接到边缘节点，并运行客户端工具以访问 HDInsight 中的 Hadoop 群集。
 
 > [!WARNING]
 > 安装在空边缘节点上的自定义组件将从 Microsoft 得到商业上合理的支持。 这或许可解决遇到的问题。 或者也可参考社区资源，获取更多帮助。 以下是一些可获得社区帮助的最活跃站点：
 >
 > * [面向 HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
-> * [https://stackoverflow.com](https://stackoverflow.com)：
+> * [https://stackoverflow.com](https://stackoverflow.com).
 >
-> 如果在使用 Apache 技术，可通过 [https://apache.org](https://apache.org) 上的 Apache 项目站点（如 [Apache Hadoop](https://hadoop.apache.org/) 站点）获取帮助。
+> 如果您使用的是 Apache 技术，则可以通过 上的[https://apache.org](https://apache.org)Apache 项目站点（如 Apache [Hadoop](https://hadoop.apache.org/)站点）找到帮助。
 
 > [!IMPORTANT]
-> Ubuntu 映像可在发布后的 3 个月内用于创建新的 HDInsight 群集。 自 2019 年 1 月起，运行的群集（包括边缘节点）不进行自动修补。 客户必须使用脚本操作或其他机制来修补正在运行的群集。  有关详细信息，请参阅[针对 HDInsight 的 OS 修补](./hdinsight-os-patching.md)。
+> Ubuntu 映像可在发布后的 3 个月内用于创建新的 HDInsight 群集。 自 2019 年 1 月起，运行的群集（包括边缘节点）不进行自动修补****。 客户必须使用脚本操作或其他机制来修补正在运行的群集。  有关详细信息，请参阅[针对 HDInsight 的 OS 修补](./hdinsight-os-patching.md)。
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>将边缘节点添加到现有群集
 
-本部分介绍如何使用 Resource Manager 模板将边缘节点添加到现有 HDInsight 群集。  可以在 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/) 中找到 Resource Manager 模板。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh的脚本操作。脚本不执行任何操作。  演示如何从资源管理器模板调用脚本操作。
+本部分介绍如何使用 Resource Manager 模板将边缘节点添加到现有 HDInsight 群集。  资源管理器模板可以在[GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/)中找到。 资源管理器模板调用位于 的https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh脚本操作。脚本不执行任何操作。  它是演示从资源管理器模板调用脚本操作。
 
-1. 选择以下图像登录到 Azure，并在 Azure 门户中打开 Azure 资源管理器模板。
+1. 选择以下映像登录到 Azure 并在 Azure 门户中打开 Azure 资源管理器模板。
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 1. 配置以下属性：
 
-    |properties |说明 |
+    |properties |描述 |
     |---|---|
     |订阅|选择用于创建群集的 Azure 订阅。|
     |资源组|选择用于现有 HDInsight 群集的资源组。|
     |位置|选择现有 HDInsight 群集的位置。|
     |群集名称|输入现有 HDInsight 群集的名称。|
 
-1. 选中 **"我同意上述条款和条件**"，然后选择 "**购买**" 创建边缘节点。
+1. 检查**我同意上述条款和条件**，然后选择 **"购买"** 以创建边缘节点。
 
 > [!IMPORTANT]  
 > 请确保选择现有 HDInsight 群集的 Azure 资源组。  否则，会收到错误消息“无法对嵌套资源执行请求的操作。 父资源 '&lt;ClusterName>' 未找到。”
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>创建群集时添加边缘节点
 
-本部分介绍如何使用 Resource Manager 模板创建包含边缘节点的 HDInsight 群集。  可以在[Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)中找到资源管理器模板。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh的脚本操作。脚本不执行任何操作。  演示如何从资源管理器模板调用脚本操作。
+本部分介绍如何使用 Resource Manager 模板创建包含边缘节点的 HDInsight 群集。  资源管理器模板可以在[Azure 快速入门模板库中](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)找到。 资源管理器模板调用位于 的https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh脚本操作。脚本不执行任何操作。  它是演示从资源管理器模板调用脚本操作。
 
 1. 创建一个 HDInsight 群集（如果没有）。  请参阅 [开始使用 HDInsight 中的 Hadoop](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
-1. 选择以下图像登录到 Azure，并在 Azure 门户中打开 Azure 资源管理器模板。
+1. 选择以下映像登录到 Azure 并在 Azure 门户中打开 Azure 资源管理器模板。
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 1. 配置以下属性：
 
-    |properties |说明 |
+    |properties |描述 |
     |---|---|
     |订阅|选择用于创建群集的 Azure 订阅。|
     |资源组|创建用于该群集的新资源组。|
@@ -109,13 +109,13 @@ ms.locfileid: "79272599"
     |群集名称|输入要创建的新群集的名称。|
     |群集登录用户名|输入 Hadoop HTTP 用户名。  默认名称为 **admin**。|
     |群集登录密码|输入 Hadoop HTTP 用户密码。|
-    |Ssh 用户名|输入 SSH 用户名。 默认名称为 **sshuser**。|
-    |Ssh 密码|输入 SSH 用户密码。|
-    |安装脚本操作|保留此文章的默认值。|
+    |SSH 用户名|输入 SSH 用户名。 默认名称为 **sshuser**。|
+    |SSH 密码|输入 SSH 用户密码。|
+    |安装脚本操作|保留默认值以在本文的所有操作中使用。|
 
     模板中已硬编码某些属性：群集类型、群集辅助角色节点计数、边缘节点大小和边缘节点名称。
 
-1. 选中 "**我同意上述条款和条件**"，然后选择 "**购买**"，以创建具有边缘节点的群集。
+1. 检查**我同意上述条款和条件**，然后选择 **"购买"** 以创建具有边缘节点的群集。
 
 ## <a name="add-multiple-edge-nodes"></a>添加多个边缘节点
 
@@ -129,16 +129,16 @@ ms.locfileid: "79272599"
 
 **验证边缘节点 SSH 终结点**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到 Azure[门户](https://portal.azure.com)。
 2. 打开包含边缘节点的 HDInsight 群集。
-3. 选择“应用程序”。 此时会显示该边缘节点。  默认名称为 **new-edgenode**。
+3. 选择“应用程序”。**** 此时会显示该边缘节点。  默认名称为 **new-edgenode**。
 4. 选择边缘节点。 此时会显示 SSH 终结点。
 
 **在边缘节点上使用 Hive**
 
 1. 使用 SSH 连接到边缘节点。 有关信息，请参阅[将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-2. 使用 SSH 连接到边缘节点后，使用以下命令打开 Hive 控制台：
+2. 使用 SSH 连接到边缘节点后，请使用以下命令打开 Hive 控制台：
 
         hive
 
@@ -150,15 +150,15 @@ ms.locfileid: "79272599"
 
 可以在 Azure 门户中删除边缘节点。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到 Azure[门户](https://portal.azure.com)。
 2. 打开包含边缘节点的 HDInsight 群集。
-3. 选择“应用程序”。 此时会显示边缘节点的列表。  
-4. 右键单击要删除的边缘节点，然后选择 "**删除**"。
-5. 请选择“是”以确认。
+3. 选择“应用程序”。**** 此时会显示边缘节点的列表。  
+4. 右键单击要删除的边缘节点，然后选择 **"删除**"。
+5. 请选择“是”以确认。****
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何添加边缘节点以及如何访问边缘节点。 若要了解详细信息，请参阅以下文章：
+在本文中，您学习了如何添加边缘节点以及如何访问边缘节点。 若要了解详细信息，请参阅以下文章：
 
 * [安装 HDInsight 应用程序](hdinsight-apps-install-applications.md)：了解如何将 HDInsight 应用程序安装到群集。
 * [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)：了解如何将未发布的 HDInsight 应用程序部署到 HDInsight。

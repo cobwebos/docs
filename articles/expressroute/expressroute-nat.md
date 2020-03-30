@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：线路的 NAT 要求
+title: Azure 快速路由：电路的 NAT 要求
 description: 本页提供有关为 ExpressRoute 线路配置和管理 NAT 的详细要求。
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9f5c5cc3a943ad4a8882a91ffdcee89c2ad39743
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272963"
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT 要求
@@ -35,7 +35,7 @@ Microsoft 对等互连路径用于连接到不支持通过 Azure 公共对等互
 
 ### <a name="traffic-originating-from-microsoft-destined-to-your-network"></a>从 Microsoft 发起的，目标为网络的流量
 * 某些方案需要 Microsoft 启动到网络中托管的服务终结点的连接。 一个典型的示例就是从 Office 365 连接到网络中托管的 ADFS 服务器。 在这种情况下，必须将网络中相应的前缀透露给 Microsoft 对等互连。 
-* 必须在 Internet 边缘为网络中的服务终结点进行 Microsoft 流量的 SNAT 转换，避免[非对称路由](expressroute-asymmetric-routing.md)。 只要目标 IP 地址与通过 ExpressRoute 接收的路由匹配，将始终通过 ExpressRoute 发送请求和回复。 如果请求是通过 Internet 接收的，而回复是通过 ExpressRoute 发送的，则会存在非对称路由。 在 Internet 边缘对传入的 Microsoft 流量进行 SNAT 转换 可以强制回复流量回到 Internet 边缘，从而解决此问题。
+* 必须在 Internet 边缘为网络中的服务终结点进行 Microsoft 流量的 SNAT 转换，避免[非对称路由](expressroute-asymmetric-routing.md)。 只要目标 IP 地址与通过 ExpressRoute 接收的路由匹配，将始终通过 ExpressRoute 发送请求和回复。**** 如果请求是通过 Internet 接收的，而回复是通过 ExpressRoute 发送的，则会存在非对称路由。 在 Internet 边缘对传入的 Microsoft 流量进行 SNAT 转换 可以强制回复流量回到 Internet 边缘，从而解决此问题。
 
 ![非对称路由与 ExpressRoute](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
@@ -70,7 +70,7 @@ Azure 公共对等互连路径用于连接到托管于 Azure 中的所有服务�
 * 有关工作流信息，请参阅 [ExpressRoute 线路预配工作流和线路状态](expressroute-workflows.md)。
 * 配置 ExpressRoute 连接。
   
-  * [创建 ExpressRoute 线路](expressroute-howto-circuit-portal-resource-manager.md)
+  * [创建快速路由电路](expressroute-howto-circuit-portal-resource-manager.md)
   * [配置路由](expressroute-howto-routing-portal-resource-manager.md)
   * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-portal-resource-manager.md)
 

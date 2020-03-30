@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: c4798fa9140f277d5383d2830eefb9bcc8d7c984
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72598329"
 ---
 # <a name="azure-media-services-community"></a>Azure 媒体服务社区  
@@ -40,23 +40,23 @@ ms.locfileid: "72598329"
 
 ### <a name="twitter"></a>Twitter
 
-使用 [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter 句柄，请与我们联系，或在 Twitter 上关注更新。 可以在 Twitter 上使用 [@AzureSupport](https://twitter.com/azuresupport) Twitter 用户名请求支持。  
+使用[@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia)推特句柄与我们联系或关注 Twitter 上的更新。 您可以使用[@AzureSupport](https://twitter.com/azuresupport)推特句柄在 Twitter 上请求支持。  
 
-### <a name="online-forums"></a>联机论坛
+### <a name="online-forums"></a>在线论坛
 
 可以使用以下论坛提问有关当前产品和功能的问题。
 
 目前，MSDN 为媒体服务团队的主社区论坛。
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![Msdn](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
 团队还可以监控使用 Azure 媒体服务标记 Stack Overflow 的问题。
 
-[![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
+[![堆栈溢出](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="need-help"></a>需要帮助？
 
-可以通过导航到 "[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)" 来打开支持票证
+您可以通过导航到["新建支持"请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来打开支持票证
 
 ## <a name="next-steps"></a>后续步骤
 

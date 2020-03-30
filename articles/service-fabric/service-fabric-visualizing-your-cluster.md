@@ -1,15 +1,15 @@
 ---
-title: 使用 Azure Service Fabric Explorer 可视化群集
+title: 使用 Azure Service Fabric Explorer 将群集可视化
 description: Service Fabric Explorer 是一个用于检验和管理 Microsoft Azure Service Fabric 群集中的云应用程序和节点的应用程序。
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
 ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258182"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
@@ -37,7 +37,7 @@ Service Fabric Explorer (SFX) 是一种用于检验和管理 Azure Service Fabri
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>从群集运行 Service Fabric Explorer
 
-Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点中进行托管。 若要在 web 浏览器中启动 SFX，请从任何浏览器浏览到该群集的 HTTP 管理终结点，例如，https：\//clusterFQDN：19080。
+Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点中进行托管。 若要在 Web 浏览器中启动 SFX，请从任意浏览器浏览到群集的 HTTP 管理终结点（例如 https:\//clusterFQDN:19080）。
 
 对于开发人员工作站设置，可以通过导航到 https://localhost:19080/Explorer 在本地群集上启动 Service Fabric Explorer。 阅读本文，了解如何[准备开发环境](service-fabric-get-started.md)。
 
@@ -47,12 +47,12 @@ Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点�
 >
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>连接到 Service Fabric 群集
-若要连接到 Service Fabric 群集，需要群集管理终结点 (FQDN/IP) 和 HTTP 管理终结点端口（默认情况下为 19080）。 例如，https\://mysfcluster.westus.cloudapp.azure.com:19080。 使用“连接到 localhost”复选框，连接到工作站上的本地群集。
+若要连接到 Service Fabric 群集，需要群集管理终结点 (FQDN/IP) 和 HTTP 管理终结点端口（默认情况下为 19080）。 例如 https\:/mysfcluster.westus.cloudapp.azure.com:19080。 使用“连接到 localhost”复选框，连接到工作站上的本地群集。
 
 ### <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 可以使用证书或 Azure Active Directory (AAD) 控制客户端对 Service Fabric 群集的访问。
 
-如果尝试连接到安全群集，则需要提供客户端证书或使用 AAD 登录，具体取决于群集的配置。
+如果尝试连接到安全群集，则将需提供客户端证书或使用 AAD 登录，具体取决于群集的配置。
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>了解 SService Fabric Explorer 的布局
 可以使用左侧的树来导航 Service Fabric Explorer。 在树根中，群集仪表板提供了群集的概述，包括应用程序和节点运行状况的摘要。
@@ -83,7 +83,7 @@ Service Fabric 群集中的节点横跨容错域和升级域的二维网格放�
 ## <a name="actions"></a>操作
 Service Fabric Explorer 提供用于对群集中的节点、应用程序和服务快速调用操作的方式。
 
-例如，要删除某应用程序实例，只需从左侧树中选择该应用程序，并选择“操作” > “删除应用程序”。
+例如，要删除应用程序实例，请从左侧的树中选择应用程序，然后选择 **"操作** > **删除应用程序**"。
 
 ![Service Fabric Explorer 中删除应用程序][sfx-delete-application]
 
@@ -104,7 +104,7 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 >
 
 ## <a name="event-store"></a>事件存储
-EventStore 是该平台提供的一项功能，它通过 REST API 提供可在 Service Fabric Explorer 中使用的 Service Fabric 平台事件。 可以查看群集中每个实体的动态快照视图，例如节点、服务、应用程序和基于事件时间的查询。 还可以从 [EventStore 概述](service-fabric-diagnostics-eventstore.md)了解有关 EventStore 的详细信息。   
+EventStore 是该平台提供的一项功能，它通过 REST API 提供可在 Service Fabric Explorer 中使用的 Service Fabric 平台事件。 可以查看群集中每个实体的动态快照视图，例如节点、服务、应用程序和基于事件时间的查询。 您还可以在[事件商店概述中阅读有关事件存储的详细信息](service-fabric-diagnostics-eventstore.md)。   
 
 ![EventStore][sfx-eventstore]
 
@@ -115,12 +115,12 @@ EventStore 是该平台提供的一项功能，它通过 REST API 提供可在 S
 >从 Service Fabric 版本 6.4 开始。 EventStore API 仅可用于在 Azure 上运行的 Windows 群集。 我们正在将此功能移植到 Linux 以及我们的独立群集。
 
 ## <a name="image-store-viewer"></a>映像存储查看器
-映像存储查看器是在使用本机映像存储时提供的一项功能，它允许查看映像存储的当前内容并获取文件和文件夹信息以及删除文件/文件夹。
+映像存储查看器是使用本机映像存储时提供的一项功能，使用它可以查看映像存储的当前内容、获取文件和文件夹信息，以及删除文件/文件夹。
 
 ![Service Fabric Explorer 群集图][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>备份和还原
-Service Fabric Explorer 提供与[备份和还原](./service-fabric-reliable-services-backup-restore.md)接口的功能。 若要查看 SFX 中的备份和还原功能，必须启用高级模式。
+Service Fabric Explorer 提供了与[备份和还原](./service-fabric-reliable-services-backup-restore.md)进行交互的功能。 若要查看 SFX 中的备份和还原功能，必须启用高级模式。
 
 ![启用高级模式][0]
  
@@ -128,11 +128,11 @@ Service Fabric Explorer 提供与[备份和还原](./service-fabric-reliable-ser
 
 * 创建、编辑和删除备份策略。
 * 为应用程序、服务或分区启用和禁用备份。
-* 挂起和恢复应用程序、服务或分区的备份。
-* 触发和跟踪分区的备份。
-* 为分区触发和跟踪还原。
+* 为应用程序、服务或分区暂停和恢复备份。
+* 触发和跟踪分区备份。
+* 触发和跟踪分区还原。
 
-有关备份和还原服务的详细信息，请参阅[REST API 引用](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)。
+有关备份和还原服务的详细信息，请参阅 [REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)。
 ## <a name="next-steps"></a>后续步骤
 * [在 Visual Studio 中管理 Service Fabric 应用程序](service-fabric-manage-application-in-visual-studio.md)
 * [使用 PowerShell 部署 Service Fabric 应用程序](service-fabric-deploy-remove-applications.md)

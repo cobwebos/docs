@@ -12,18 +12,18 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
 ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73819940"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL 数据库中的 JSON 功能入门
-使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](https://www.json.org/) 格式表示的数据，并将关系数据导出为 JSON 文本。 以下 JSON 方案在 Azure SQL 数据库中可用：
-- 使用 [ 字句](#formatting-relational-data-in-json-format)将关系数据设置为 JSON 格式`FOR JSON`。
+使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](https://www.json.org/) 格式表示的数据，然后将关系数据导出为 JSON 文本。 以下 JSON 方案在 Azure SQL 数据库中可用：
+- 使用 `FOR JSON` 字句[将关系数据设置为 JSON 格式](#formatting-relational-data-in-json-format)。
 - [处理 JSON 数据](#working-with-json-data)
 - 使用 JSON 标量函数[查询 JSON 数据](#querying-json-data)。
-- 使用 [ 函数](#transforming-json-into-tabular-format)将 JSON 转换为表格格式`OPENJSON`。
+- 使用 `OPENJSON` 函数[将 JSON 转换为表格格式](#transforming-json-into-tabular-format)。
 
 ## <a name="formatting-relational-data-in-json-format"></a>将关系数据设置为 JSON 格式
 如果 Web 服务从数据库层提取数据并以 JSON 格式提供响应，或者客户端 JavaScript 框架或库接受 JSON 格式的数据，则可以直接在 SQL 查询中将数据库内容格式化为 JSON。 不再需要编写应用程序代码将 Azure SQL 数据库中的结果格式化为 JSON，也不再需要包含一些 JSON 序列化库来转换表格查询结果，然后将对象序列化为 JSON 格式。 可以使用 FOR JSON 子句将 Azure SQL 数据库中的 SQL 查询结果格式化为 JSON，然后直接在应用程序中使用这种格式。
@@ -69,9 +69,9 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 }
 ```
 
-在本示例中，通过指定 [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) 选项返回了单个 JSON 对象而不是数组。 如果确定要返回单个对象作为查询结果，可以使用此选项。
+在此示例中，我们通过指定[WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx)选项返回单个 JSON 对象而不是数组。 如果确定要返回单个对象作为查询结果，可以使用此选项。
 
-FOR JSON 子句的主要作用是从数据库返回格式化为嵌套 JSON 对象或数组的复杂分层数据。 以下示例显示如何将属于 `Orders` 的 `Customer` 表中的行包含为嵌套的 `Orders` 数组：
+FOR JSON 子句的主要作用是从数据库返回格式化为嵌套 JSON 对象或数组的复杂分层数据。 以下示例显示如何将属于 `Customer` 的 `Orders` 表中的行包含为嵌套的 `Orders` 数组：
 
 ```
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
@@ -184,7 +184,7 @@ AS BEGIN
 
 END
 ```
-可以分析采用 JSON 数组格式并作为参数提供给存储过程的订单集合，并将它插入 Orders 表。
+可以分析采用 JSON 数组格式并作为参数提供给存储过程的订单集合，然后将它插入 Orders 表。
 
 ## <a name="next-steps"></a>后续步骤
 要了解如何将 JSON 集成到应用程序中，请参阅以下资源：

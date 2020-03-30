@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据工厂中创建 Azure 集成运行时
+title: 在 Azure 数据工厂中创建 Azure Integration Runtime
 description: 了解如何在 Azure 数据工厂中创建 Azure 集成运行时，用于复制数据并调度转换活动。
 services: data-factory
 documentationcenter: ''
@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 87633abaaae1f6034709c6e552be6647533115ec
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260756"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>如何创建和配置 Azure 集成运行时
@@ -30,14 +30,14 @@ Azure IR 提供完全托管的计算，以本机执行数据移动和调度数�
 默认情况下，每个数据工厂在后端都有 Azure IR，支持云数据存储上的操作和公共网络中的计算服务。 该 Azure IR 的位置自动解析。 如果链接服务定义中未指定 **connectVia** 属性，则会使用默认的 Azure IR。 如果想要显式定义 IR 的位置，或对不同 IR 上的活动执行进行虚拟分组以进行管理，只需显式创建 Azure IR。 
 
 ## <a name="create-azure-ir"></a>创建 Azure IR
-可以使用**AzDataFactoryV2IntegrationRuntime** PowerShell cmdlet 创建 Integration Runtime。 若要创建 Azure IR，请指定命令的名称、位置和类型。 下面的示例命令创建了位置设为“西欧”的 Azure IR。
+可以使用 **Set-AzDataFactoryV2IntegrationRuntime** PowerShell cmdlet 创建集成运行时。 若要创建 Azure IR，请指定命令的名称、位置和类型。 下面的示例命令创建了位置设为“西欧”的 Azure IR。
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
 ```  
 Azure IR 的类型必须设置为**托管**。 无需指定计算详细信息，因为它在云中是完全弹性托管的。 如果要创建 Azure-SSIS IR，请指定计算详细信息，如节点大小和节点数量。 有关详细信息，请参阅[创建和配置 Azure-SSIS IR](create-azure-ssis-integration-runtime.md)。
 
-可以使用 AzDataFactoryV2IntegrationRuntime PowerShell cmdlet 配置现有 Azure IR 以更改其位置。 有关 Azure IR 的位置的详细信息，请参阅[集成运行时简介](concepts-integration-runtime.md)。
+可以使用 Set-AzDataFactoryV2IntegrationRuntime PowerShell cmdlet 来配置现有 Azure IR 以更改其位置。 有关 Azure IR 的位置的详细信息，请参阅[集成运行时简介](concepts-integration-runtime.md)。
 
 ## <a name="use-azure-ir"></a>使用 Azure IR
 
@@ -63,6 +63,6 @@ Azure IR 的类型必须设置为**托管**。 无需指定计算详细信息，
 ## <a name="next-steps"></a>后续步骤
 有关如何创建其他类型的集成运行时，请参阅以下文章：
 
-- [创建自承载集成运行时](create-self-hosted-integration-runtime.md)
+- [创建自托管集成运行时](create-self-hosted-integration-runtime.md)
 - [创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)
  
