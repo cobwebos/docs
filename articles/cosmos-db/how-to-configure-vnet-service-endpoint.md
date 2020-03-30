@@ -1,17 +1,17 @@
 ---
-title: 为 Azure Cosmos 帐户配置基于虚拟网络的访问权限
+title: 为 Azure Cosmos 帐户配置基于虚拟网络的访问
 description: 本文档介绍为 Azure Cosmos DB 设置虚拟网络服务终结点所要执行的步骤。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 03/26/2020
 ms.author: mjbrown
-ms.openlocfilehash: 36f6152e52d6cb45d0a30b385678596331232560
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 442623880c1b95f3d7e038ae44832b74853d2c4a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980675"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366237"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>配置从虚拟网络 (VNet) 访问
 
@@ -30,17 +30,17 @@ ms.locfileid: "75980675"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a id="configure-using-portal"></a>使用 Azure 门户配置服务终结点
+## <a name="configure-a-service-endpoint-by-using-the-azure-portal"></a><a id="configure-using-portal"></a>使用 Azure 门户配置服务终结点
 
 ### <a name="configure-a-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>为现有的 Azure 虚拟网络和子网配置服务终结点
 
-1. 在“所有资源”边栏选项卡中，找到想要保护的 Azure Cosmos DB 帐户。
+1. 在“所有资源”边栏选项卡中，找到想要保护的 Azure Cosmos DB 帐户。****
 
-1. 从设置菜单中选择“防火墙和虚拟网络”，然后选择允许从“选定的网络”进行访问。
+1. 从设置菜单中选择“防火墙和虚拟网络”，然后选择允许从“选定的网络”进行访问。********
 
-1. 若要授予对现有虚拟网络子网的访问权限，请在“虚拟网络”下面选择“添加现有的 Azure 虚拟网络”。
+1. 若要授予对现有虚拟网络子网的访问权限，请在“虚拟网络”下面选择“添加现有的 Azure 虚拟网络”。********
 
-1. 选择要从中添加 Azure 虚拟网络的**订阅**。 选择要向其提供 Azure Cosmos DB 帐户访问权限的 Azure **虚拟网络**和**子网**。 接下来选择“启用”，以便为“Microsoft.AzureCosmosDB”启用包含服务终结点的选定网络。 完成后，选择“添加”。
+1. 选择要从中添加 Azure 虚拟网络的**订阅**。 选择要向其提供 Azure Cosmos DB 帐户访问权限的 Azure **虚拟网络**和**子网**。 接下来选择“启用”，以便为“Microsoft.AzureCosmosDB”启用包含服务终结点的选定网络。**** 完成后，选择 **"添加**"。
 
    ![选择虚拟网络和子网](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
 
@@ -52,39 +52,39 @@ ms.locfileid: "75980675"
 > 若要启用虚拟网络服务终结点，需要以下订阅权限：
 >   * 使用虚拟网络的订阅：网络参与者
 >   * 使用 Azure Cosmos DB 帐户的订阅：DocumentDB 帐户参与者
->   * 如果虚拟网络和 Azure Cosmos DB 帐户在不同的订阅中，请确保具有虚拟网络的订阅也已注册 `Microsoft.DocumentDB` 资源提供程序。 若要注册资源提供程序，请参阅[Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)一文。
+>   * 如果虚拟网络与 Azure Cosmos DB 帐户位于不同的订阅中，请确保包含虚拟网络的订阅还注册了 `Microsoft.DocumentDB` 资源提供程序。 若要注册资源提供程序，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)一文。
 
-下面是有关向资源提供程序注册订阅的说明。
+以下是向资源提供程序注册订阅的说明。
 
 ### <a name="configure-a-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>为新的 Azure 虚拟网络和子网配置服务终结点
 
-1. 在“所有资源”边栏选项卡中，找到想要保护的 Azure Cosmos DB 帐户。  
+1. 在“所有资源”边栏选项卡中，找到想要保护的 Azure Cosmos DB 帐户。****  
 
-1. 从设置菜单中选择“防火墙和 Azure 虚拟网络”，然后选择允许从“选定的网络”进行访问。  
+1. 从设置菜单中选择“防火墙和 Azure 虚拟网络”，然后选择允许从“选定的网络”进行访问。********  
 
-1. 若要授予对新 Azure 虚拟网络的访问权限，请在“虚拟网络”下面选择“添加新虚拟网络”。  
+1. 若要授予对新 Azure 虚拟网络的访问权限，请在“虚拟网络”下面选择“添加新虚拟网络”。********  
 
-1. 提供创建新虚拟网络所需的详细信息，然后选择“创建”。 随后将为启用的“Microsoft.AzureCosmosDB”创建包含服务终结点的子网。
+1. 提供创建新虚拟网络所需的详细信息，然后选择“创建”。**** 随后将为启用的“Microsoft.AzureCosmosDB”创建包含服务终结点的子网。
 
    ![为新虚拟网络选择虚拟网络和子网](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-如果你的 Azure Cosmos DB 帐户被其他 Azure 服务（如 Azure 认知搜索）使用，或者从流分析或 Power BI 访问，你可以通过**从全球 Azure 数据中心内选择 "接受连接**" 来允许访问。
+如果 Azure Cosmos DB 帐户由 Azure 认知搜索等其他 Azure 服务使用，或者从流分析或 Power BI 访问，则可以通过选择**从全局 Azure 数据中心中的"接受连接**"来允许访问。
 
-为确保能够从门户访问 Azure Cosmos DB 指标，需要启用“允许从 Azure 门户访问”选项。 有关这些选项的详细信息，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)一文。 启用访问后，选择“保存”以保存设置。
+为确保能够从门户访问 Azure Cosmos DB 指标，需要启用“允许从 Azure 门户访问”选项。**** 有关这些选项的详细信息，请参阅[配置 IP 防火墙](how-to-configure-firewall.md)一文。 启用访问后，选择“保存”以保存设置。****
 
-## <a id="remove-vnet-or-subnet"></a>删除虚拟网络或子网
+## <a name="remove-a-virtual-network-or-subnet"></a><a id="remove-vnet-or-subnet"></a>删除虚拟网络或子网
 
-1. 在“所有资源”边栏选项卡中，找到为其分配了服务终结点的 Azure Cosmos DB 帐户。  
+1. 在“所有资源”边栏选项卡中，找到为其分配了服务终结点的 Azure Cosmos DB 帐户。****  
 
-2. 从设置菜单中选择“防火墙和虚拟网络”。  
+1. 从设置菜单中选择“防火墙和虚拟网络”****。  
 
-3. 若要删除某个虚拟网络或子网规则，请选择虚拟网络或子网旁边的“...”，然后选择“删除”。
+1. 若要删除某个虚拟网络或子网规则，请选择虚拟网络或子网旁边的“...”，然后选择“删除”。********
 
    ![删除虚拟网络](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
 
-4. 单击“保存”应用所做的更改。
+1. 单击“保存”应用所做的更改。****
 
-## <a id="configure-using-powershell"></a>使用 Azure PowerShell 配置服务终结点
+## <a name="configure-a-service-endpoint-by-using-azure-powershell"></a><a id="configure-using-powershell"></a>使用 Azure PowerShell 配置服务终结点
 
 > [!NOTE]
 > 使用 PowerShell 或 Azure CLI 时，请务必在参数中指定 IP 筛选器和虚拟网络 ACL 的完整列表，而不仅仅是需要添加的项。
@@ -96,100 +96,67 @@ ms.locfileid: "75980675"
 1. 为虚拟网络的现有子网启用服务终结点。  
 
    ```powershell
-   $rgname = "<Resource group name>"
-   $vnName = "<Virtual network name>"
-   $sname = "<Subnet name>"
+   $resourceGroupName = "<Resource group name>"
+   $vnetName = "<Virtual network name>"
+   $subnetName = "<Subnet name>"
    $subnetPrefix = "<Subnet address range>"
+   $serviceEndpoint = "Microsoft.AzureCosmosDB"
 
    Get-AzVirtualNetwork `
-    -ResourceGroupName $rgname `
-    -Name $vnName | Set-AzVirtualNetworkSubnetConfig `
-    -Name $sname  `
-    -AddressPrefix $subnetPrefix `
-    -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzVirtualNetwork
+      -ResourceGroupName $resourceGroupName `
+      -Name $vnetName | Set-AzVirtualNetworkSubnetConfig `
+      -Name $subnetName `
+      -AddressPrefix $subnetPrefix `
+      -ServiceEndpoint $serviceEndpoint | Set-AzVirtualNetwork
    ```
 
 1. 获取虚拟网络信息。
 
    ```powershell
-   $vnProp = Get-AzVirtualNetwork `
-     -Name $vnName `
-     -ResourceGroupName $rgName
+   $vnet = Get-AzVirtualNetwork `
+      -ResourceGroupName $resourceGroupName `
+      -Name $vnetName
+
+   $subnetId = $vnet.Id + "/subnets/" + $subnetName
    ```
 
-1. 运行以下 cmdlet 获取 Azure Cosmos DB 帐户的属性：  
+1. 准备宇宙数据库虚拟网络规则
 
    ```powershell
-   $apiVersion = "2015-04-08"
-   $acctName = "<Azure Cosmos DB account name>"
-
-   $cosmosDBConfiguration = Get-AzResource `
-     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-     -ApiVersion $apiVersion `
-     -ResourceGroupName $rgName `
-     -Name $acctName
+   $vnetRule = New-AzCosmosDBVirtualNetworkRule `
+      -Id $subnetId
    ```
 
-1. 初始化变量以供稍后使用。 设置现有帐户定义中的所有变量。
+1. 使用新的虚拟网络终结点配置更新 Azure Cosmos DB 帐户属性： 
 
    ```powershell
-   $locations = @()
+   $accountName = "<Cosmos DB account name>"
 
-   foreach ($readLocation in $cosmosDBConfiguration.Properties.readLocations) {
-      $locations += , @{
-         locationName     = $readLocation.locationName;
-         failoverPriority = $readLocation.failoverPriority;
-      }
-   }
-
-   $virtualNetworkRules = @(@{
-      id = "$($vnProp.Id)/subnets/$sname";
-   })
-
-   if ($cosmosDBConfiguration.Properties.isVirtualNetworkFilterEnabled) {
-      $virtualNetworkRules = $cosmosDBConfiguration.Properties.virtualNetworkRules + $virtualNetworkRules
-   }
-   ```
-
-1. 运行以下 cmdlet，使用新配置更新 Azure Cosmos DB 帐户属性： 
-
-   ```powershell
-   $cosmosDBProperties = @{
-      databaseAccountOfferType      = $cosmosDBConfiguration.Properties.databaseAccountOfferType;
-      consistencyPolicy             = $cosmosDBConfiguration.Properties.consistencyPolicy;
-      ipRangeFilter                 = $cosmosDBConfiguration.Properties.ipRangeFilter;
-      locations                     = $locations;
-      virtualNetworkRules           = $virtualNetworkRules;
-      isVirtualNetworkFilterEnabled = $True;
-   }
-
-   Set-AzResource `
-     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-     -ApiVersion $apiVersion `
-     -ResourceGroupName $rgName `
-     -Name $acctName `
-     -Properties $CosmosDBProperties
+   Update-AzCosmosDBAccount `
+      -ResourceGroupName $resourceGroupName `
+      -Name $accountName `
+      -EnableVirtualNetwork $true `
+      -VirtualNetworkRuleObject @($vnetRule)
    ```
 
 1. 运行以下命令，验证是否已使用上一步骤中配置的虚拟网络服务终结点更新 Azure Cosmos DB 帐户：
 
    ```powershell
-   $UpdatedcosmosDBConfiguration = Get-AzResource `
-     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-     -ApiVersion $apiVersion `
-     -ResourceGroupName $rgName `
-     -Name $acctName
+   $account = Get-AzCosmosDBAccount `
+      -ResourceGroupName $resourceGroupName `
+      -Name $accountName
 
-   $UpdatedcosmosDBConfiguration.Properties
+   $account.IsVirtualNetworkFilterEnabled
+   $account.VirtualNetworkRules
    ```
 
-## <a id="configure-using-cli"></a>使用 Azure CLI 配置服务终结点
+## <a name="configure-a-service-endpoint-by-using-the-azure-cli"></a><a id="configure-using-cli"></a>使用 Azure CLI 配置服务终结点
 
-如果已为 Azure Cosmos 帐户配置了子网，则可以在以后创建或更新这些服务终结点。 还可以在尚未为子网配置子网的 Cosmos 帐户上启用服务终结点，然后在以后配置子网时开始工作。 这种灵活性允许无需访问 Cosmos 帐户和虚拟网络资源的管理员相互独立地进行配置。
+Azure Cosmos 帐户可以在以后创建或更新服务终结点时针对服务终结点进行配置（如果已经为其配置了子网）。 还可以在尚未为其配置子网的 Cosmos 帐户上启用服务终结点，然后这些服务终结点在以后配置子网时开始工作。 这种灵活性允许无法同时访问 Cosmos 帐户和虚拟网络资源的管理员将其配置设为彼此独立。
 
 ### <a name="create-a-new-cosmos-account-and-connect-it-to-a-back-end-subnet-for-a-new-virtual-network"></a>创建新的 Cosmos 帐户并将其连接到新虚拟网络的后端子网
 
-在此示例中，将创建虚拟网络和子网，同时为其创建服务终结点。
+在此示例中，创建虚拟网络和子网时会同时为它们启用服务终结点。
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
@@ -233,9 +200,9 @@ az cosmosdb create \
    --virtual-network-rules $svcEndpoint
 ```
 
-### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>独立连接并配置 Cosmos 帐户到后端子网
+### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>将 Cosmos 帐户独立连接并配置到后端子网
 
-本示例旨在演示如何将 Azure Cosmos 帐户连接到现有新虚拟网络，该虚拟网络尚未针对服务终结点配置子网。 这可以通过使用 `--ignore-missing-vnet-service-endpoint` 参数来完成。 这允许 Cosmos 帐户的配置在完成虚拟网络子网配置之前不会发生任何错误。 子网配置完成后，便可通过配置的子网访问 Cosmos 帐户。
+此示例旨在说明如何将 Azure Cosmos 帐户连接到尚未为服务终结点配置子网的现有新虚拟网络。 这是通过使用 `--ignore-missing-vnet-service-endpoint` 参数完成的。 这样就可以在完成对虚拟网络的子网的配置之前，完成 Cosmos 帐户的配置而不会出现错误。 子网配置完成后，便可通过配置的子网访问 Cosmos 帐户。
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
@@ -291,90 +258,49 @@ az network vnet subnet update \
    --service-endpoints Microsoft.AzureCosmosDB
 ```
 
-## <a id="migrate-from-firewall-to-vnet"></a>从 IP 防火墙规则迁移到虚拟网络 ACL
+## <a name="migrating-from-an-ip-firewall-rule-to-a-virtual-network-acl"></a><a id="migrate-from-firewall-to-vnet"></a>从 IP 防火墙规则迁移到虚拟网络 ACL
 
-仅当你要使用基于虚拟网络和子网的 ACL 而不是 IP 防火墙规则时，才需要对包含允许子网的现有 IP 防火墙规则的 Azure Cosmos DB 帐户执行以下步骤。
+要将 Azure Cosmos DB 帐户从使用 IP 防火墙规则迁移到使用虚拟网络服务终结点，请使用以下步骤。
 
-为子网启用 Azure Cosmos DB 帐户的服务终结点后，将使用包含虚拟网络和子网信息而不是公共 IP 的源发送请求。 这些请求与 IP 筛选器不匹配。 从启用了服务终结点的子网访问的所有 Azure Cosmos DB 帐户会发生这种源切换。 为防止停机，请使用以下步骤：
+为子网的服务终结点配置 Azure Cosmos DB 帐户后，来自该子网的请求将发送到 Azure Cosmos DB，其中包含虚拟网络和子网源信息，而不是源公共 IP 地址。 这些请求将不再与 Azure Cosmos DB 帐户上配置的 IP 筛选器匹配，因此需要以下步骤来避免停机。
 
-1. 运行以下 cmdlet 获取 Azure Cosmos DB 帐户的属性：
+在继续操作之前，请使用上面显示的步骤在虚拟网络和子网上启用 Azure Cosmos DB 服务终结点，这些步骤"为虚拟网络的现有子网启用服务终结点"。
 
-   ```powershell
-   $apiVersion = "2015-04-08"
-   $acctName = "<Azure Cosmos DB account name>"
-
-   $cosmosDBConfiguration = Get-AzResource `
-     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-     -ApiVersion $apiVersion `
-     -ResourceGroupName $rgName `
-     -Name $acctName
-   ```
-
-1. 初始化变量供稍后使用。 设置现有帐户定义中的所有变量。 将所有虚拟网络 ACL 添加到从具有 `ignoreMissingVNetServiceEndpoint` 标志的子网访问的所有 Azure Cosmos DB 帐户。
+1. 获取虚拟网络和子网信息：
 
    ```powershell
-   $locations = @()
+   $resourceGroupName = "myResourceGroup"
+   $accountName = "mycosmosaccount"
+   $vnetName = "myVnet"
+   $subnetName = "mySubnet"
 
-   foreach ($readLocation in $cosmosDBConfiguration.Properties.readLocations) {
-      $locations += , @{
-         locationName     = $readLocation.locationName;
-         failoverPriority = $readLocation.failoverPriority;
-      }
-   }
+   $vnet = Get-AzVirtualNetwork `
+      -ResourceGroupName $resourceGroupName `
+      -Name $vnetName
 
-   $subnetID = "Subnet ARM URL" e.g "/subscriptions/f7ddba26-ab7b-4a36-a2fa-7d01778da30b/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/subnet1"
-
-   $virtualNetworkRules = @(@{
-      id = $subnetID;
-      ignoreMissingVNetServiceEndpoint = "True";
-   })
-
-   if ($cosmosDBConfiguration.Properties.isVirtualNetworkFilterEnabled) {
-      $virtualNetworkRules = $cosmosDBConfiguration.Properties.virtualNetworkRules + $virtualNetworkRules
-   }
+   $subnetId = $vnet.Id + "/subnets/" + $subnetName
    ```
 
-1. 运行以下 cmdlet，使用新配置更新 Azure Cosmos DB 帐户属性：
+1. 为 Azure Cosmos DB 帐户准备新的虚拟网络规则对象：
 
    ```powershell
-   $cosmosDBProperties = @{
-      databaseAccountOfferType      = $cosmosDBConfiguration.Properties.databaseAccountOfferType;
-      consistencyPolicy             = $cosmosDBConfiguration.Properties.consistencyPolicy;
-      ipRangeFilter                 = $cosmosDBConfiguration.Properties.ipRangeFilter;
-      locations                     = $locations;
-      virtualNetworkRules           = $virtualNetworkRules;
-      isVirtualNetworkFilterEnabled = $True;
-   }
-
-   Set-AzResource `
-      -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-      -ApiVersion $apiVersion `
-      -ResourceGroupName $rgName `
-      -Name $acctName `
-      -Properties $CosmosDBProperties
+   $vnetRule = New-AzCosmosDBVirtualNetworkRule `
+      -Id $subnetId
    ```
 
-1. 针对从子网访问的所有 Azure Cosmos DB 帐户重复步骤 1-3。
+1. 更新 Azure Cosmos DB 帐户以启用从子网访问服务终结点：
 
-1.  等待 15 分钟，然后更新子网以启用服务终结点。
+   ```powershell
+   Update-AzCosmosDBAccount `
+      -ResourceGroupName $resourceGroupName `
+      -Name $accountName `
+      -EnableVirtualNetwork $true `
+      -VirtualNetworkRuleObject @($vnetRule)
+   ```
 
-1.  为虚拟网络的现有子网启用服务终结点。
+1. 对从子网访问的所有 Azure Cosmos DB 帐户重复上述步骤。
 
-    ```powershell
-    $rgname= "<Resource group name>"
-    $vnName = "<virtual network name>"
-    $sname = "<Subnet name>"
-    $subnetPrefix = "<Subnet address range>"
-
-    Get-AzVirtualNetwork `
-       -ResourceGroupName $rgname `
-       -Name $vnName | Set-AzVirtualNetworkSubnetConfig `
-       -Name $sname `
-       -AddressPrefix $subnetPrefix `
-       -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzVirtualNetwork
-    ```
-
-1. 删除子网的 IP 防火墙规则。
+1. 从 Azure Cosmos DB 帐户的防火墙规则中删除子网的 IP 防火墙规则。
 
 ## <a name="next-steps"></a>后续步骤
 

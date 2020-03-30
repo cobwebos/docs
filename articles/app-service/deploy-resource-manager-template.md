@@ -1,16 +1,16 @@
 ---
-title: 部署具有模板的应用
-description: 查找有关创建 Azure 资源管理器模板来预配和部署应用服务应用的指南。
+title: 使用模板部署应用
+description: 查找有关创建 Azure 资源管理器模板以预配和部署应用服务应用的指南。
 author: tfitzmac
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77211696"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板部署 Web 应用的指南
@@ -41,7 +41,7 @@ ms.locfileid: "77211696"
 **第 3 层**
 * 源代码管理 - 依赖于 Web 应用。
 * MSDeploy 站点扩展 - 依赖于 Web 应用。
-* 针对 web 应用的 Azure 应用程序 Insights 实例-依赖于 web 应用。
+* 以 Web 应用为目标的 Azure Application Insights 实例 - 依赖于 Web 应用。
 
 **第 4 层**
 * 应用服务证书 - 依赖于存在的源代码管理或 MSDeploy； 若都不存在，则依赖于 Web 应用。
@@ -90,7 +90,7 @@ ms.locfileid: "77211696"
 
 1. 转到站点的 [Kudu 控制台](https://github.com/projectkudu/kudu/wiki/Kudu-console)。
 2. 浏览到 D:\home\LogFiles\SiteExtensions\MSDeploy 上的文件夹。
-3. 查找 appManagerStatus.xml 和 appManagerLog.xml 文件。 第一个文件记录了状态。 第二个文件记录了有关错误的信息。 如果不清楚此错误，你可以在获取有关[论坛](https://docs.microsoft.com/answers/topics/azure-webapps.html)的帮助时将其包含在内。
+3. 查找 appManagerStatus.xml 和 appManagerLog.xml 文件。 第一个文件记录了状态。 第二个文件记录了有关错误的信息。 如果您不清楚错误，您可以在论坛中寻求帮助时包括该[错误](https://docs.microsoft.com/answers/topics/azure-webapps.html)。
 
 ## <a name="choose-a-unique-web-app-name"></a>选择唯一的 Web 应用名称
 
@@ -111,7 +111,7 @@ Web 应用的名称必须全局唯一。 可以使用某个可能唯一的命名
 
 如果模板包括用于 SSL 绑定的 [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) 资源，且证书存储在 Key Vault 中，则须确保应用服务标识可以访问该证书。
 
-在全球版 Azure 中，应用服务服务主体所拥有的 ID 为 abfa0a7c-a6b6-4736-8310-5855508787cd。 若要为应用服务服务主体授予对 Key Vault 的访问权限，请使用：
+在全球版 Azure 中，应用服务服务主体所拥有的 ID 为 abfa0a7c-a6b6-4736-8310-5855508787cd****。 若要为应用服务服务主体授予对 Key Vault 的访问权限，请使用：
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy `
@@ -121,9 +121,9 @@ Set-AzKeyVaultAccessPolicy `
   -PermissionsToCertificates get
 ```
 
-在 Azure 政府中，应用服务服务主体所拥有的 ID 为 6a02c803-dafd-4136-b4c3-5a6f318b4714。 使用上一示例中的 ID。
+在 Azure 政府中，应用服务服务主体所拥有的 ID 为 6a02c803-dafd-4136-b4c3-5a6f318b4714****。 使用上一示例中的 ID。
 
-在 Key Vault 中，选择“证书”和“生成/导入”以上传证书。
+在 Key Vault 中，选择“证书”和“生成/导入”以上传证书********。
 
 ![导入证书](media/web-sites-rm-template-guidance/import-certificate.png)
 

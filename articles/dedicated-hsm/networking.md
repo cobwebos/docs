@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70881281"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 专用 HSM 网络
@@ -39,7 +39,7 @@ Azure 专用 HSM 需要高度安全的网络环境。 无论是要 Azure 云连�
 
 ### <a name="subnets"></a>子网
 
-子网将部署资源的虚拟网络分段成可由 Azure 资源使用的独立地址空间。 专用 HSM 部署在虚拟网络的子网中。 客户子网中部署的每个专用 HSM 设备将从此子网接收专用 IP 地址。 需将部署 HSM 设备的子网显式委托给服务：Microsoft.HardwareSecurityModules/dedicatedHSMs。 这会向 HSM 服务授予特定的权限，使其可部署到该子网中。 专用 HSM 委托会对子网施加特定的策略限制。 委托的子网目前不支持网络安全组 (NSG) 和用户定义的路由 (UDR)。 因此，将某个子网委托给专用 HSM 后，该子网只可用于部署 HSM 资源。 将其他任何客户资源部署到该子网都会失败。
+子网将部署资源的虚拟网络分段成可由 Azure 资源使用的独立地址空间。 专用 HSM 部署在虚拟网络的子网中。 客户子网中部署的每个专用 HSM 设备将从此子网接收专用 IP 地址。 需将部署 HSM 设备的子网显式委托给服务 Microsoft.HardwareSecurityModules/dedicatedHSMs。 这会向 HSM 服务授予特定的权限，使其可部署到该子网中。 专用 HSM 委托会对子网施加特定的策略限制。 委托的子网目前不支持网络安全组 (NSG) 和用户定义的路由 (UDR)。 因此，将某个子网委托给专用 HSM 后，该子网只可用于部署 HSM 资源。 将其他任何客户资源部署到该子网都会失败。
 
 
 ### <a name="expressroute-gateway"></a>ExpressRoute 网关
@@ -60,7 +60,7 @@ Azure 专用 HSM 需要高度安全的网络环境。 无论是要 Azure 云连�
 
 ### <a name="site-to-site-vpn"></a>站点到站点 VPN
 
-使用站点到站点虚拟专用网络可在基于 Azure 的专用 HSM 与本地 IT 之间实现安全通信。 这样做的一个原因是，在本地有一个用于 HSM 的备份设备，并且需要两个连接才能运行备份。
+使用站点到站点虚拟专用网络可在基于 Azure 的专用 HSM 与本地 IT 之间实现安全通信。 这样做的一个原因是为 HSM 的本地提供了备份设施，并且需要两者之间的连接才能运行备份。
 
 ## <a name="connecting-virtual-networks"></a>连接虚拟网络
 
@@ -90,6 +90,6 @@ HSM 设备可以通过软件库将流量重定向到备用 HSM。 如果设备�
 - [常见问题](faq.md)
 - [可支持性](supportability.md)
 - [高可用性](high-availability.md)
-- [物理安全性](physical-security.md)
-- [监视](monitoring.md)
+- [物理安全](physical-security.md)
+- <bpt i="1000001" x="1000001" type="formatting">{b&gt;</bpt>监视<ept i="1000001">&lt;b}</ept>
 - [部署体系结构](deployment-architecture.md)

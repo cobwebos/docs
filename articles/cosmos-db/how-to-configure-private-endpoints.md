@@ -1,85 +1,85 @@
 ---
-title: 为 Azure Cosmos 帐户配置 Azure 专用链接
-description: 了解如何使用虚拟网络中的专用 IP 地址设置 Azure 专用链接来访问 Azure Cosmos 帐户。
+title: 为 Azure 宇宙帐户配置 Azure 专用链接
+description: 了解如何设置 Azure 专用链接，以便使用虚拟网络中的专用 IP 地址访问 Azure Cosmos 帐户。
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 466f870f257ca4d93764cbfdb4208e8cf1f75553
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 944341b1ef88c7e3d64a74536720eb9fb1d17321
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79205047"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80152734"
 ---
-# <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>为 Azure Cosmos 帐户配置 Azure 专用链接
+# <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>为 Azure 宇宙帐户配置 Azure 专用链接
 
-使用 Azure 专用链接，可以通过专用终结点连接到 Azure Cosmos 帐户。 专用终结点是虚拟网络内子网中的一组专用 IP 地址。 然后，可以通过专用 IP 地址限制对 Azure Cosmos 帐户的访问。 当私有链接与受限制的 NSG 策略结合时，它有助于降低数据渗透的风险。 若要了解有关专用终结点的详细信息，请参阅[Azure 专用链接](../private-link/private-link-overview.md)一文。
+通过使用 Azure 专用链接，可以通过专用终结点连接到 Azure Cosmos 帐户。 专用终结点是虚拟网络中子网中的一组专用 IP 地址。 然后，您可以通过专用 IP 地址限制对 Azure Cosmos 帐户的访问。 当私有链路与受限的 NSG 策略结合使用时，它有助于减少数据外泄的风险。 要了解有关私有终结点的更多详细信息，请参阅[Azure 专用链接](../private-link/private-link-overview.md)一文。
 
-私有链接允许用户从虚拟网络或任何对等互连虚拟网络访问 Azure Cosmos 帐户。 映射到专用链接的资源也可通过 VPN 或 Azure ExpressRoute 通过专用对等互连在本地访问。 
+专用链接允许用户从虚拟网络内或任何对等虚拟网络访问 Azure Cosmos 帐户。 通过 VPN 或 Azure ExpressRoute 通过专用对等互连，映射到专用链接的资源也可在本地访问。 
 
-你可以使用 "自动" 或 "手动" 审批方法连接到使用 "专用" 链接配置的 Azure Cosmos 帐户。 若要了解详细信息，请参阅专用链接文档的 "[批准工作流](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)" 部分。 
+您可以使用自动或手动审批方法连接到使用专用链接配置的 Azure Cosmos 帐户。 要了解更多信息，请参阅专用链接文档的[审批工作流](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)部分。 
 
-本文介绍创建专用终结点的步骤。 它假定您使用的是自动批准方法。
+本文介绍了创建专用终结点的步骤。 它假定您使用的是自动审批方法。
 
 > [!NOTE]
-> 专用终结点支持目前在仅适用于网关连接模式的支持区域中已正式发布。 对于直接模式，它作为预览功能提供。
+> 专用终结点支持目前通常仅在支持区域中用于网关连接模式。 对于直接模式，它可作为预览功能提供。
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>使用 Azure 门户创建专用终结点
 
-使用以下步骤，通过 Azure 门户创建现有 Azure Cosmos 帐户的专用终结点：
+使用以下步骤使用 Azure 门户为现有 Azure Cosmos 帐户创建专用终结点：
 
-1. 从 "**所有资源**" 窗格中，选择 Azure Cosmos 帐户。
+1. 在"**所有资源**"窗格中，选择 Azure Cosmos 帐户。
 
-1. 从 "设置" 列表中选择 "**专用终结点连接**"，然后选择 "**专用终结点**"：
+1. 从设置列表中选择**专用终结点连接**，然后选择**专用终结点**：
 
-   ![用于在 Azure 门户中创建专用终结点的选择](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
+   ![在 Azure 门户中创建专用终结点的选择](./media/how-to-configure-private-endpoints/create-private-endpoint-portal.png)
 
-1. 在 "**创建专用终结点-基本**信息" 窗格中，输入或选择以下详细信息：
+1. 在 **"创建专用终结点 - 基础知识"** 窗格中，输入或选择以下详细信息：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
-    | **项目详细信息** | |
+    | **项目详情** | |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选一个择资源组。|
     | **实例详细信息** |  |
-    | 名称 | 输入专用终结点的任意名称。 如果使用此名称，请创建一个唯一的名称。 |
-    |区域| 选择要在其中部署专用链接的区域。 在虚拟网络所在的同一位置创建专用终结点。|
+    | “属性” | 输入专用终结点的任何名称。 如果获取此名称，请创建唯一的名称。 |
+    |区域| 选择要部署专用链接的区域。 在虚拟网络所在的同一位置创建专用终结点。|
     |||
-1. 选择 "**下一步：资源**"。
-1. 在“创建专用终结点 - 资源”中，输入或选择以下信息：
+1. 选择 **"下一步"：资源**。
+1. 在“创建专用终结点 - 资源”中，输入或选择以下信息：****
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
-    |连接方法  | 选择 **"连接到我的目录中的 Azure 资源"** 。 <br/><br/> 然后，可以选择其中一个资源来设置专用链接。 或者，你可以使用与你共享的资源 ID 或别名连接到其他人的资源。|
+    |连接方法  | 选择 **"连接到目录中的 Azure 资源**"。 <br/><br/> 然后，您可以选择一个资源来设置专用链接。 或者，您可以使用与其他人共享的资源 ID 或别名连接到其他人的资源。|
     | 订阅| 选择订阅。 |
-    | 资源类型 | 选择 " **AzureCosmosDB/databaseAccounts**"。 |
-    | 资源 |选择你的 Azure Cosmos 帐户。 |
-    |目标子资源 |选择要映射的 Azure Cosmos DB API 类型。 默认情况下，对于 SQL、MongoDB 和 Cassandra Api，这是唯一的选择。 对于 Gremlin 和表 Api，还可以选择**sql** ，因为这些 api 可与 sql API 进行互操作。 |
+    | 资源类型 | 选择**微软.AzureCosmosDB/数据库帐户**。 |
+    | 资源 |选择 Azure 宇宙帐户。 |
+    |目标子资源 |选择要映射的 Azure 宇宙 DB API 类型。 这默认为 SQL、MongoDB 和 Cassandra API 的一个选项。 对于 Gremlin 和表 API，您还可以选择**Sql，** 因为这些 API 与 SQL API 可互操作。 |
     |||
 
-1. 选择**下一步：配置**。
-1. 在 "**创建专用终结点-配置**" 中，输入或选择以下信息：
+1. 选择 **"下一步"：配置**。
+1. 在 **"创建专用终结点 - 配置**"中，输入或选择此信息：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
-    |**网络**| |
+    |**网络连接**| |
     | 虚拟网络| 选择虚拟网络。 |
     | 子网 | 选择子网。 |
     |**专用 DNS 集成**||
-    |与专用 DNS 区域集成 |请选择“是”。 <br><br/> 若要与专用终结点建立私下连接，需要 DNS 记录。 建议将专用终结点与专用 DNS 区域集成。 你还可以使用自己的 DNS 服务器，或使用虚拟机上的主机文件创建 DNS 记录。 |
-    |专用 DNS 区域 |选择**privatelink.documents.azure.com**。 <br><br/> 专用 DNS 区域是自动确定的。 不能使用 Azure 门户对其进行更改。|
+    |与专用 DNS 区域集成 |选择 **“是”**。 <br><br/> 要与专用终结点私下连接，您需要 DNS 记录。 我们建议您将专用终结点与专用 DNS 区域集成。 您还可以使用自己的 DNS 服务器或使用虚拟机上的主机文件创建 DNS 记录。 |
+    |专用 DNS 区域 |选择**privatelink.documents.azure.com**。 <br><br/> 将自动确定专用 DNS 区域。 不能使用 Azure 门户来更改它。|
     |||
 
-1. 选择“查看 + 创建”。 在 "**查看**" 和 "创建" 页上，Azure 会验证你的配置。
-1. 看到“验证通过”消息时，选择“创建”。
+1. 选择“查看 + 创建”****。 在 **"审核 + 创建"** 页上，Azure 验证配置。
+1. 当您看到**验证传递**的消息时，选择 **"创建**"。
 
-如果已批准 Azure Cosmos 帐户的专用链接，请在 Azure 门户中的 "**防火墙和虚拟网络**" 窗格中的 "**所有网络**" 选项不可用。
+在 Azure 门户中批准 Azure Cosmos 帐户的专用链接后，"**防火墙"和"虚拟网络**"窗格中的 **"所有网络"** 选项不可用。
 
-下表显示了不同的 Azure Cosmos 帐户 API 类型、支持的子资源与相应的专用区域名称之间的映射。 你还可以通过 SQL API 访问 Gremlin 和表 API 帐户，因此这些 Api 有两个条目。
+下表显示了不同 Azure Cosmos 帐户 API 类型、支持的子资源与相应的专用区域名称之间的映射。 您还可以通过 SQL API 访问 Gremlin 和表 API 帐户，因此这些 API 有两个条目。
 
-|Azure Cosmos 帐户 API 类型  |支持的子资源（或组 Id） |专用区域名称  |
+|Azure 宇宙帐户 API 类型  |支持的子资源（或组指示项） |专用区域名称  |
 |---------|---------|---------|
 |Sql    |   Sql      | privatelink.documents.azure.com   |
 |Cassandra    | Cassandra        |  privatelink.cassandra.cosmos.azure.com    |
@@ -89,24 +89,24 @@ ms.locfileid: "79205047"
 |表    |    表     |   privatelink.table.cosmos.azure.com    |
 |表     |   Sql      |  privatelink.documents.azure.com    |
 
-### <a name="fetch-the-private-ip-addresses"></a>提取专用 IP 地址
+### <a name="fetch-the-private-ip-addresses"></a>获取专用 IP 地址
 
-预配专用终结点后，可以查询 IP 地址。 查看 Azure 门户中的 IP 地址：
+预配专用终结点后，可以查询 IP 地址。 要查看 Azure 门户中的 IP 地址，
 
-1. 选择“所有资源”，
-1. 搜索之前创建的专用终结点。 在这种情况下，它是**cdbPrivateEndpoint3**。
-1. 选择 "**概览**" 选项卡以查看 DNS 设置和 IP 地址。
+1. 选择“所有资源”，****
+1. 搜索您之前创建的私有终结点。 在这种情况下，它是**bbPrivateEndpoint3**。
+1. 选择 **"概述**"选项卡以查看 DNS 设置和 IP 地址。
 
 ![Azure 门户中的专用 IP 地址](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
 
 每个专用终结点创建多个 IP 地址：
 
-* 一个用于 Azure Cosmos 帐户的全局（区域不可知）终结点
-* 一个用于部署 Azure Cosmos 帐户的每个区域。
+* 一个用于 Azure Cosmos 帐户的全局（与区域无关）终结点
+* 部署 Azure Cosmos 帐户的每个区域一个
 
 ## <a name="create-a-private-endpoint-by-using-azure-powershell"></a>使用 Azure PowerShell 创建专用终结点
 
-运行以下 PowerShell 脚本，为现有的 Azure Cosmos 帐户创建名为 "MyPrivateEndpoint" 的专用终结点。 将变量值替换为你的环境的详细信息。
+运行以下 PowerShell 脚本，为现有 Azure Cosmos 帐户创建名为"MyPrivateEndpoint"的专用终结点。 将变量值替换为环境的详细信息。
 
 ```azurepowershell-interactive
 $SubscriptionId = "<your Azure subscription ID>"
@@ -172,12 +172,11 @@ New-AzPrivateDnsRecordSet -Name $recordName `
 }
 ```
 
-### <a name="fetch-the-private-ip-addresses"></a>提取专用 IP 地址
+### <a name="fetch-the-private-ip-addresses"></a>获取专用 IP 地址
 
 预配专用终结点后，可以使用以下 PowerShell 脚本查询 IP 地址和 FQDN 映射：
 
 ```azurepowershell-interactive
-
 $pe = Get-AzPrivateEndpoint -Name MyPrivateEndpoint -ResourceGroupName myResourceGroup
 $networkInterface = Get-AzNetworkInterface -ResourceId $pe.NetworkInterfaces[0].Id
 foreach ($IPConfiguration in $networkInterface.IpConfigurations)
@@ -186,11 +185,88 @@ foreach ($IPConfiguration in $networkInterface.IpConfigurations)
 }
 ```
 
+## <a name="create-a-private-endpoint-by-using-azure-cli"></a>使用 Azure CLI 创建专用终结点
+
+运行以下 Azure CLI 脚本，为现有 Azure Cosmos 帐户创建名为"myPrivateEndpoint"的专用终结点。 将变量值替换为环境的详细信息。
+
+```azurecli-interactive
+# Resource group where the Azure Cosmos account and virtual network resources are located
+ResourceGroupName="myResourceGroup"
+
+# Subscription ID where the Azure Cosmos account and virtual network resources are located
+SubscriptionId="<your Azure subscription ID>"
+
+# Name of the existing Azure Cosmos account
+CosmosDbAccountName="mycosmosaccount"
+
+# API type of your Azure Cosmos account: Sql, MongoDB, Cassandra, Gremlin, or Table
+CosmosDbApiType="Sql"
+
+# Name of the virtual network to create
+VNetName="myVnet"
+
+# Name of the subnet to create
+SubnetName="mySubnet"
+
+# Name of the private endpoint to create
+PrivateEndpointName="myPrivateEndpoint"
+
+# Name of the private endpoint connection to create
+PrivateConnectionName="myConnection"
+
+az network vnet create \
+ --name $VNetName \
+ --resource-group $ResourceGroupName \
+ --subnet-name $SubnetName
+
+az network vnet subnet update \
+ --name $SubnetName \
+ --resource-group $ResourceGroupName \
+ --vnet-name $VNetName \
+ --disable-private-endpoint-network-policies true
+
+az network private-endpoint create \
+    --name $PrivateEndpointName \
+    --resource-group $ResourceGroupName \
+    --vnet-name $VNetName  \
+    --subnet $SubnetName \
+    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/$CosmosDbAccountName" \
+    --group-ids $CosmosDbApiType \
+    --connection-name $PrivateConnectionName
+```
+
+### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>将专用终结点与专用 DNS 区域集成
+
+创建专用终结点后，可以使用以下 Azure CLI 脚本将其与专用 DNS 区域集成：
+
+```azurecli-interactive
+zoneName="privatelink.documents.azure.com"
+
+az network private-dns zone create --resource-group $ResourceGroupName \
+   --name  $zoneName
+
+az network private-dns link vnet create --resource-group $ResourceGroupName \
+   --zone-name  $zoneName\
+   --name myzonelink \
+   --virtual-network $VNetName \
+   --registration-enabled false 
+
+#Query for the network interface ID  
+networkInterfaceId=$(az network private-endpoint show --name $PrivateEndpointName --resource-group $ResourceGroupName --query 'networkInterfaces[0].id' -o tsv)
+ 
+# Copy the content for privateIPAddress and FQDN matching the Azure Cosmos account 
+az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json 
+ 
+#Create DNS records 
+az network private-dns record-set a create --name recordSet1 --zone-name privatelink.documents.azure.com --resource-group $ResourceGroupName
+az network private-dns record-set a add-record --record-set-name recordSet2 --zone-name privatelink.documents.azure.com --resource-group $ResourceGroupName -a <Private IP Address>
+```
+
 ## <a name="create-a-private-endpoint-by-using-a-resource-manager-template"></a>使用资源管理器模板创建专用终结点
 
-可以通过在虚拟网络子网中创建专用终结点来设置专用链接。 可以通过使用 Azure 资源管理器模板来实现此目的。
+您可以通过在虚拟网络子网中创建专用终结点来设置专用链接。 通过使用 Azure 资源管理器模板来实现此目的。
 
-使用以下代码创建名为 "PrivateEndpoint_template 资源管理器" 的模板。 此模板在现有虚拟网络中创建现有 Azure Cosmos SQL API 帐户的专用终结点。
+使用以下代码创建名为"PrivateEndpoint_template.json"的资源管理器模板。 此模板为现有虚拟网络中的现有 Azure Cosmos SQL API 帐户创建专用终结点。
 
 ```json
 {
@@ -251,7 +327,7 @@ foreach ($IPConfiguration in $networkInterface.IpConfigurations)
 
 **定义模板的参数文件**
 
-为该模板创建一个参数文件，并将其命名为 "PrivateEndpoint_parameters json"。 将以下代码添加到参数文件：
+为模板创建参数文件，并将其命名为"PrivateEndpoint_parameters.json"。 将以下代码添加到参数文件：
 
 ```json
 {
@@ -276,7 +352,7 @@ foreach ($IPConfiguration in $networkInterface.IpConfigurations)
 
 **使用 PowerShell 脚本部署模板**
 
-使用以下代码创建 PowerShell 脚本。 在运行该脚本之前，请将订阅 ID、资源组名称和其他变量值替换为你的环境的详细信息。
+使用以下代码创建 PowerShell 脚本。 在运行脚本之前，请将订阅 ID、资源组名称和其他变量值替换为环境的详细信息。
 
 ```azurepowershell-interactive
 ### This script creates a private endpoint for an existing Azure Cosmos account in an existing virtual network
@@ -325,22 +401,22 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-在 PowerShell 脚本中，`GroupId` 变量只能包含一个值。 该值是帐户的 API 类型。 允许的值为： `Sql`、`MongoDB`、`Cassandra`、`Gremlin`和 `Table`。 某些 Azure Cosmos 帐户类型可通过多个 Api 访问。 例如：
+在 PowerShell 脚本中`GroupId`，变量只能包含一个值。 该值是帐户的 API 类型。 允许的值是： `Sql` `MongoDB`、 `Cassandra` `Gremlin`、 `Table`、 和 。 某些 Azure Cosmos 帐户类型可通过多个 API 访问。 例如：
 
 * 可以从 Gremlin 和 SQL API 帐户访问 Gremlin API 帐户。
 * 可以从表和 SQL API 帐户访问表 API 帐户。
 
-对于这些帐户，你必须为每个 API 类型创建一个专用终结点。 在 `GroupId` 数组中指定了相应的 API 类型。
+对于这些帐户，必须为每个 API 类型创建一个专用终结点。 相应的 API 类型在数组中`GroupId`指定。
 
-成功部署模板后，可以看到类似于下图所示的输出。 如果正确设置了专用终结点，则 `Succeeded` `provisioningState` 值。
+成功部署模板后，可以看到类似于下图所示的输出。 `provisioningState`值是`Succeeded`私有终结点设置正确。
 
 ![资源管理器模板的部署输出](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
 
-部署模板后，子网中会保留专用 IP 地址。 Azure Cosmos 帐户的防火墙规则配置为仅接受来自专用终结点的连接。
+部署模板后，专用 IP 地址将保留在子网中。 Azure Cosmos 帐户的防火墙规则配置为仅接受来自专用终结点的连接。
 
 ### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>将专用终结点与专用 DNS 区域集成
 
-使用以下代码创建名为 "PrivateZone_template 资源管理器" 的模板。 此模板为现有虚拟网络中的现有 Azure Cosmos SQL API 帐户创建专用 DNS 区域。
+使用以下代码创建名为"PrivateZone_template.json"的资源管理器模板。 此模板为现有虚拟网络中的现有 Azure Cosmos SQL API 帐户创建专用 DNS 区域。
 
 ```json
 {
@@ -382,7 +458,7 @@ $deploymentOutput
 }
 ```
 
-使用以下代码创建名为 "PrivateZoneRecords_template 资源管理器" 的模板。
+使用以下代码创建名为"PrivateZoneRecords_template.json"的资源管理器模板。
 
 ```json
 {
@@ -416,7 +492,7 @@ $deploymentOutput
 
 **定义模板的参数文件**
 
-为模板创建以下两个参数文件。 创建 "PrivateZone_parameters json"。 替换为以下代码：
+为模板创建以下两个参数文件。 创建"PrivateZone_parameters.json"。 替换为以下代码：
 
 ```json
 {
@@ -433,7 +509,7 @@ $deploymentOutput
 }
 ```
 
-创建 "PrivateZoneRecords_parameters json"。 替换为以下代码：
+创建"PrivateZoneRecords_parameters.json"。 替换为以下代码：
 
 ```json
 {
@@ -452,7 +528,7 @@ $deploymentOutput
 
 **使用 PowerShell 脚本部署模板**
 
-使用以下代码创建 PowerShell 脚本。 在运行该脚本之前，请将订阅 ID、资源组名称和其他变量值替换为你的环境的详细信息。
+使用以下代码创建 PowerShell 脚本。 在运行脚本之前，请将订阅 ID、资源组名称和其他变量值替换为环境的详细信息。
 
 ```azurepowershell-interactive
 ### This script:
@@ -535,70 +611,70 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="configure-custom-dns"></a>配置自定义 DNS
 
-应在创建专用终结点的子网中使用专用 DNS 区域。 配置终结点，以便将每个专用 IP 地址映射到 DNS 条目。 （请参阅前面所示响应中的 `fqdns` 属性。）
+应在创建专用终结点的子网中使用专用 DNS 区域。 配置终结点，以便将每个专用 IP 地址映射到 DNS 条目。 （请参阅前面`fqdns`显示的响应中的属性。
 
-创建专用终结点时，可以将其与 Azure 中的专用 DNS 区域集成。 如果选择改为使用自定义 DNS 区域，则必须将其配置为为专用终结点保留的所有专用 IP 地址添加 DNS 记录。
+创建专用终结点时，可以将其与 Azure 中的专用 DNS 区域集成。 如果选择改用自定义 DNS 区域，则必须将其配置为为专用终结点保留的所有专用 IP 地址添加 DNS 记录。
 
-## <a name="private-link-combined-with-firewall-rules"></a>与防火墙规则结合的专用链接
+## <a name="private-link-combined-with-firewall-rules"></a>专用链接与防火墙规则相结合
 
-结合使用专用链接和防火墙规则时，可能会出现以下情况和结果：
+当您将专用链接与防火墙规则结合使用时，可能会出现以下情况和结果：
 
-* 如果未配置任何防火墙规则，则默认情况下，所有流量都可以访问 Azure Cosmos 帐户。
+* 如果不配置任何防火墙规则，则默认情况下，所有流量都可以访问 Azure Cosmos 帐户。
 
-* 如果配置公共流量或服务终结点，并创建私有终结点，则会通过相应类型的防火墙规则授权不同类型的传入流量。
+* 如果配置公共流量或服务终结点并创建专用终结点，则不同类型的传入流量将由相应类型的防火墙规则授权。
 
-* 如果未配置任何公用流量或服务终结点，并且创建专用终结点，则只能通过专用终结点访问 Azure Cosmos 帐户。 如果未配置公共流量或服务终结点，则在拒绝或删除所有已批准的专用终结点后，该帐户将对整个网络开放。
+* 如果不配置任何公共流量或服务终结点，并且创建专用终结点，则 Azure Cosmos 帐户只能通过专用终结点访问。 如果不配置公共流量或服务终结点，则在所有已批准的专用终结点被拒绝或删除后，帐户将对整个网络开放。
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>添加或删除区域时更新专用终结点
 
-若要在 Azure Cosmos 帐户中添加或删除区域，需要在该帐户中添加或删除 DNS 条目。 添加或删除区域后，可以更新子网的专用 DNS 区域，以反映已添加或已删除的 DNS 条目及其相应的专用 IP 地址。
+向 Azure Cosmos 帐户添加或删除区域需要添加或删除该帐户的 DNS 条目。 添加或删除区域后，可以更新子网的专用 DNS 区域，以反映添加或删除的 DNS 条目及其相应的专用 IP 地址。
 
-例如，假设你在三个区域部署 Azure Cosmos 帐户： "美国西部"、"美国中部" 和 "西欧"。 为帐户创建专用终结点时，子网中会保留四个专用 Ip。 这三个区域中的每一个都有一个 IP，并且与全局/地区无关的终结点有一个 IP。
+例如，假设您在三个区域部署 Azure Cosmos 帐户："美国西部"、"美国中部"和"西欧"。 为帐户创建专用终结点时，子网中会保留四个专用 IP。 三个区域各有一个 IP，全局/区域无关端点有一个 IP。
 
-稍后，你可以将新区域（例如 "美国东部"）添加到 Azure Cosmos 帐户。 添加新区域后，需要将相应的 DNS 记录添加到专用 DNS 区域或自定义 DNS。
+稍后，您可以将新区域（例如"美国东部"）添加到 Azure Cosmos 帐户。 添加新区域后，您需要向专用 DNS 区域或自定义 DNS 添加相应的 DNS 记录。
 
-删除区域时，可以使用相同的步骤。 删除区域后，需要从专用 DNS 区域或自定义 DNS 中删除相应的 DNS 记录。
+删除区域时，可以使用相同的步骤。 删除该区域后，您需要从专用 DNS 区域或自定义 DNS 中删除相应的 DNS 记录。
 
 ## <a name="current-limitations"></a>当前限制
 
-使用 Azure Cosmos 帐户的私有链接时，有以下限制：
+当您使用具有 Azure Cosmos 帐户的专用链接时，以下限制适用：
 
-* 仅在特定区域提供对 Azure Cosmos 帐户和虚拟网络的专用链接支持。 有关支持的区域的列表，请参阅私有链接文章的 "[可用区域](../private-link/private-link-overview.md#availability)" 部分。 
+* Azure Cosmos 帐户和虚拟网络的专用链接支持仅在特定区域提供。 有关受支持区域的列表，请参阅"专用链接"一文的["可用区域](../private-link/private-link-overview.md#availability)"部分。 
 
   > [!NOTE]
-  > 若要创建专用终结点，请确保虚拟网络和 Azure Cosmos 帐户都在支持的区域中。
+  > 要创建专用终结点，请确保虚拟网络和 Azure Cosmos 帐户都位于受支持的区域。
 
-* 使用直接模式连接将专用链接与 Azure Cosmos 帐户一起使用时，只能使用 TCP 协议。 目前尚不支持 HTTP 协议。
+* 使用直接模式连接使用与 Azure Cosmos 帐户的专用链接时，只能使用 TCP 协议。 HTTP 协议尚不受支持。
 
-* 专用终结点支持目前在仅适用于网关连接模式的支持区域中已正式发布。 对于直接模式，它作为预览功能提供。
+* 专用终结点支持目前通常仅在支持区域中用于网关连接模式。 对于直接模式，它可作为预览功能提供。
 
-* 当你使用 Azure Cosmos DB 的适用于 MongoDB 帐户的 API 时，仅支持服务器版本3.6 上的帐户的专用终结点（即，以 `*.mongo.cosmos.azure.com`格式使用终结点的帐户）。 服务器版本3.2 上的帐户不支持专用链接（即，使用该终结点的帐户格式 `*.documents.azure.com`）。 若要使用专用链接，你应该将旧帐户迁移到新版本。
+* 当您使用 Azure Cosmos DB 的 MongoDB 帐户 API 时，仅支持服务器版本 3.6 上的帐户（即，使用格式`*.mongo.cosmos.azure.com`中的终结点的帐户）的专用终结点。 服务器版本 3.2 上的帐户不支持专用链接（即，使用终结点的帐户格式`*.documents.azure.com`）。 要使用专用链接，应将旧帐户迁移到新版本。
 
-* 如果 Azure Cosmos DB 使用的是具有私有链接的 MongoDB 帐户的 API，则无法使用 Robo 3T、Studio 3T 和 Mongoose 等工具。 仅当指定了 `appName=<account name>` 参数时，终结点才能具有专用链接支持。 示例为 `replicaSet=globaldb&appName=mydbaccountname`。 由于这些工具不会在连接字符串中将应用名称传递到服务，因此不能使用 "专用链接"。 但你仍可以通过使用3.6 版本的 SDK 驱动程序来访问这些帐户。
+* 当您使用 Azure Cosmos DB 的 API 时，对于具有专用链接的 MongoDB 帐户，不能使用 Robo 3T、Studio 3T 和 Mongoose 等工具。 仅当指定了参数时，`appName=<account name>`终结点才能具有专用链接支持。 示例为 `replicaSet=globaldb&appName=mydbaccountname`。 由于这些工具不会将连接字符串中的应用名称传递给服务，因此无法使用专用链接。 但是，您仍可以通过使用带有 3.6 版本的 SDK 驱动程序来访问这些帐户。
 
-* 如果虚拟网络包含 "专用" 链接，则无法移动或删除该网络。
+* 如果虚拟网络包含专用链接，则无法移动或删除虚拟网络。
 
-* 如果 Azure Cosmos 帐户已附加到专用终结点，则无法将其删除。
+* 如果 Azure Cosmos 帐户附加到专用终结点，则无法删除该帐户。
 
-* 无法将 Azure Cosmos 帐户故障转移到未映射到附加到该帐户的所有专用终结点的区域。
+* 不能将 Azure Cosmos 帐户故障转移到未映射到附加到该帐户的所有专用终结点的区域。
 
-* 应至少向网络管理员授予 Azure Cosmos 帐户范围内的 "*/PrivateEndpointConnectionsApproval" 权限，才能创建自动批准的专用终结点。
+* 应至少授予 Azure Cosmos 帐户作用域中的"*/私有终结点连接审批"权限，以创建自动批准的专用终结点。
 
-### <a name="limitations-to-private-dns-zone-integration"></a>专用 DNS 区域集成的限制
+### <a name="limitations-to-private-dns-zone-integration"></a>对专用 DNS 区域集成的限制
 
-当你删除专用终结点或从 Azure Cosmos 帐户中删除某个区域时，专用 DNS 区域中的 DNS 记录不会自动删除。 必须先手动删除 DNS 记录，然后才能执行以下操作：
+当您删除专用终结点或从 Azure Cosmos 帐户中删除区域时，不会自动删除专用 DNS 区域中的 DNS 记录。 您必须在以下之前手动删除 DNS 记录：
 
 * 添加链接到此专用 DNS 区域的新专用终结点。
-* 将新区域添加到具有链接到此专用 DNS 区域的专用终结点的任何数据库帐户。
+* 向链接到此专用 DNS 区域的专用终结点的任何数据库帐户添加新区域。
 
-如果不清理 DNS 记录，则可能会出现意外的数据平面问题。 这些问题包括在删除私有终结点或删除区域后添加到区域的数据中断。
+如果不清理 DNS 记录，则可能会出现意外的数据平面问题。 这些问题包括数据中断到私有终结点删除或区域删除后添加的区域。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure Cosmos DB 安全功能，请参阅以下文章：
+要了解有关 Azure Cosmos DB 安全功能的更多，请参阅以下文章：
 
-* 若要为 Azure Cosmos DB 配置防火墙，请参阅[防火墙支持](firewall-support.md)。
+* 要为 Azure Cosmos DB 配置防火墙，请参阅[防火墙支持](firewall-support.md)。
 
-* 若要了解如何为 Azure Cosmos 帐户配置虚拟网络服务终结点，请参阅[配置来自虚拟网络的访问权限](how-to-configure-vnet-service-endpoint.md)。
+* 要了解如何为 Azure Cosmos 帐户配置虚拟网络服务终结点，请参阅[配置来自虚拟网络的访问](how-to-configure-vnet-service-endpoint.md)。
 
-* 若要了解有关专用链接的详细信息，请参阅[Azure 专用链接](../private-link/private-link-overview.md)文档。
+* 要了解有关私有链接的更多详细信息，请参阅[Azure 专用链接](../private-link/private-link-overview.md)文档。

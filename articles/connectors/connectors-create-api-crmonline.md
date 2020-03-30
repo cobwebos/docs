@@ -1,5 +1,5 @@
 ---
-title: 连接到 Dynamics 365
+title: 连接到动态 365
 description: 使用 Dynamics 365（联机）REST API 和 Azure 逻辑应用创建和管理记录
 services: logic-apps
 ms.suite: integration
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/18/2018
 tags: connectors
 ms.openlocfilehash: 9837b68fbfba783a468712d8ba1883b198af4954
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789885"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Dynamics 365 记录
@@ -21,15 +21,15 @@ ms.locfileid: "74789885"
 使用 Azure 逻辑应用和 Dynamics 365 连接器，可以基于 Dynamics 365 中的记录创建自动化的任务和工作流。 工作流可在 Dynamics 365 帐户中创建记录、更新项、返回记录以及执行其他操作。 可在逻辑应用中包含操作，用于从 Dynamics 365 获取响应，并使输出可供其他操作使用。 例如，在 Dynamics 365 中更新项后，可以使用 Office 365 发送一封电子邮件。
 
 本文介绍如何生成一个逻辑应用，每当在 Dynamics 365 中创建新的潜在顾客记录时，该逻辑应用就会在 Dynamics 365 中创建一个任务。
-如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。
+如果您是逻辑应用的新功能，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 一个 [Dynamics 365 帐户](https://dynamics.microsoft.com)
 
-* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
+* [有关如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 要在其中访问 Dynamics 365 帐户的逻辑应用。 若要通过 Dynamics 365 触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "74789885"
 
 1. 在 [Azure 门户](https://portal.azure.com)上的逻辑应用设计器中打开空白逻辑应用（如果尚未打开）。
 
-1. 在搜索框中，输入“Dynamics 365”作为筛选器。 对于本示例，请在触发器列表中选择以下触发器：“创建记录时”
+1. 在搜索框中，输入“Dynamics 365”作为筛选器。 对于本示例，请在触发器列表中选择以下触发器：“创建记录时”****
 
    ![选择触发器](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
@@ -49,12 +49,12 @@ ms.locfileid: "74789885"
 
 1. 提供以下触发器详细信息：
 
-   | properties | 需要 | 描述 |
+   | properties | 必选 | 描述 |
    |----------|----------|-------------|
    | **组织名称** | 是 | 要监视的组织 Dynamics 365 实例的名称，例如“Contoso” |
    | **实体名称** | 是 | 要监视的实体的名称，例如“Leads” | 
    | **频率** | 是 | 检查触发器相关的更新时，对时间间隔使用的时间单位 |
-   | 间隔 | 是 | 下一次检查之前所要经过的秒数、分钟数、小时数、天数、周数或月数。 |
+   | **区间** | 是 | 下一次检查之前所要经过的秒数、分钟数、小时数、天数、周数或月数。 |
    ||| 
 
    ![触发器详细信息](./media/connectors-create-api-crmonline/trigger-details.png)
@@ -63,15 +63,15 @@ ms.locfileid: "74789885"
 
 现在添加 Dynamics 365 操作，用于创建新潜在顾客记录的任务记录。
 
-1. 在触发器下，选择“新建步骤”。
+1. 在触发器下，选择“新建步骤”。****
 
-1. 在搜索框中，输入“Dynamics 365”作为筛选器。 在操作列表中选择以下操作：“创建新记录”
+1. 在搜索框中，输入“Dynamics 365”作为筛选器。 在操作列表中选择以下操作：“创建新记录”****
 
    ![选择操作](./media/connectors-create-api-crmonline/select-action.png)
 
 1. 提供以下操作详细信息：
 
-   | properties | 需要 | 描述 |
+   | properties | 必选 | 描述 |
    |----------|----------|-------------|
    | **组织名称** | 是 | 要在其中创建记录的 Dynamics 365 实例，不一定是触发器中的同一实例；在本示例中为“Contoso” |
    | **实体名称** | 是 | 要在其中创建记录的实体，例如“Tasks” |
@@ -79,7 +79,7 @@ ms.locfileid: "74789885"
 
    ![操作详细信息](./media/connectors-create-api-crmonline/action-details.png)
 
-1. 操作中显示“主题”框后，请在“主题”框中单击，以显示动态内容列表。 在此列表中，选择要包含在与新潜在顾客记录关联的任务记录中的字段值：
+1. 操作中显示“主题”框后，请在“主题”框中单击，以显示动态内容列表。******** 在此列表中，选择要包含在与新潜在顾客记录关联的任务记录中的字段值：
 
    | 字段 | 描述 |
    |-------|-------------|
@@ -89,9 +89,9 @@ ms.locfileid: "74789885"
 
    ![任务记录详细信息](./media/connectors-create-api-crmonline/create-record-details.png)
 
-1. 在设计器工具栏上，选择逻辑应用旁边的“保存”。 
+1. 在设计器工具栏上，选择逻辑应用旁边的“保存”。**** 
 
-1. 若要手动启动逻辑应用，请在设计器工具栏上选择“运行”。
+1. 若要手动启动逻辑应用，请在设计器工具栏上选择“运行”****。
 
    ![运行逻辑应用](./media/connectors-create-api-crmonline/designer-toolbar-run.png)
 
@@ -99,12 +99,12 @@ ms.locfileid: "74789885"
 
 ## <a name="add-filter-or-query"></a>添加筛选器或查询
 
-若要指定如何在 Dynamics 365 操作中筛选数据，请在该操作中选择“显示高级选项”。 然后可以添加筛选器，或按查询排序。
+若要指定如何在 Dynamics 365 操作中筛选数据，请在该操作中选择“显示高级选项”。**** 然后可以添加筛选器，或按查询排序。
 例如，可以使用筛选器查询来只获取活动帐户，并按帐户名将这些记录排序。 对于此任务，请执行以下步骤：
 
-1. 在“筛选器查询”下，输入以下 OData 筛选器查询：`statuscode eq 1`
+1. 在“筛选器查询”下，输入以下 OData 筛选器查询：`statuscode eq 1`****
 
-2. 显示动态内容列表时，请在“排序依据”下选择“帐户名”。 
+2. 显示动态内容列表时，请在“排序依据”下选择“帐户名”。******** 
 
    ![指定筛选器和顺序](./media/connectors-create-api-crmonline/advanced-options.png)
 
@@ -121,9 +121,9 @@ ms.locfileid: "74789885"
 
 | 字段类型 | 所需数据类型 | 描述 | 
 |------------|--------------------|-------------|
-| 文本字段 | 单个文本行 | 这些字段需要单行文本，或者文本类型的动态内容。 <p><p>示例字段：“说明”和“类别” | 
-| 整数字段 | 整数 | 某些字段需要整数，或者整数类型的动态内容。 <p><p>示例字段：“完成百分比”和“持续时间” | 
-| 数据字段 | 日期和时间 | 某些字段需要 mm/dd/yyyy 格式的日期，或者日期类型的动态内容。 <p><p>示例字段：“创建日期”、“开始日期”、“实际开始日期”、“实际结束日期”和“截止日期” | 
+| 文本字段 | 单个文本行 | 这些字段需要单行文本，或者文本类型的动态内容。 <p><p>示例字段：“说明”和“类别”********** | 
+| 整数字段 | 整数 | 某些字段需要整数，或者整数类型的动态内容。 <p><p>示例字段：“完成百分比”和“持续时间”********** | 
+| 数据字段 | 日期和时间 | 某些字段需要 mm/dd/yyyy 格式的日期，或者日期类型的动态内容。 <p><p>示例字段：“创建日期”、“开始日期”、“实际开始日期”、“实际结束日期”和“截止日期”********************** | 
 | 需要记录 ID 和查找类型的字段 | 主密钥 | 某些引用另一实体记录的字段需要记录 ID 和查找类型。 | 
 ||||
 
@@ -132,22 +132,22 @@ ms.locfileid: "74789885"
 | 字段 | 描述 |
 |-------|-------------|
 | **所有者** | 必须是有效的用户 ID 或团队记录 ID。 |
-| **所有者类型** | 必须是 `systemusers` 或 `teams`。 |
+| **所有者类型** | 必须为`systemusers`或`teams`。 |
 | **相关** | 必须是有效的记录 ID，例如帐户 ID 或联系人记录 ID。 |
-| **相关类型** | 必须是查找类型，如 `accounts` 或 `contacts`。 |
+| **相关类型** | 必须是查找类型，如`accounts`或`contacts`。 |
 | **客户** | 必须是有效的记录 ID，例如帐户 ID 或联系人记录 ID。 |
-| **客户类型** | 必须是查找类型，如 `accounts` 或 `contacts`。 |
+| **客户类型** | 必须是查找类型，如`accounts`或`contacts`。 |
 |||
 
-在本示例中，名为“创建新记录”的操作将创建新的任务记录：
+在本示例中，名为“创建新记录”的操作将创建新的任务记录：****
 
 ![创建具有记录 ID 和查找类型的任务记录](./media/connectors-create-api-crmonline/create-record-advanced.png)
 
-此操作基于“所有者”字段中的记录 ID 以及“所有者类型”字段中的查找类型，将任务记录分配到特定的用户 ID 或团队记录 ID：
+此操作基于“所有者”字段中的记录 ID 以及“所有者类型”字段中的查找类型，将任务记录分配到特定的用户 ID 或团队记录 ID：********
 
 ![所有者记录 ID 和查找类型](./media/connectors-create-api-crmonline/owner-record-id-and-lookup-type.png)
 
-此操作还会添加与“相关”字段中的记录 ID 以及“相关类型”字段中的查找类型相关联的帐户记录：
+此操作还会添加与“相关”字段中的记录 ID 以及“相关类型”字段中的查找类型相关联的帐户记录：********
 
 ![相关记录 ID 和查找类型](./media/connectors-create-api-crmonline/regarding-record-id-lookup-type-account.png)
 
@@ -159,8 +159,8 @@ ms.locfileid: "74789885"
 
 2. 在操作工具栏上选择以下步骤之一：
 
-   * 选择“弹出”。![弹出记录](./media/connectors-create-api-crmonline/popout-record.png) 
-   * 选择“通过电子邮件发送链接”，以便将完整的 URL 复制到默认的电子邮件程序中。
+   * 选择**弹出**。![弹出记录](./media/connectors-create-api-crmonline/popout-record.png) 
+   * 选择“通过电子邮件发送链接”，以便将完整的 URL 复制到默认的电子邮件程序中。****
 
    记录 ID 显示在 URL 中的 `%7b` 与 `%7d` 编码字符之间：
 
@@ -170,7 +170,7 @@ ms.locfileid: "74789885"
 
 若要查找并检查逻辑应用中失败的步骤，可以查看逻辑应用的运行历史记录、状态、输入、输出等等。
 
-1. 在 Azure 门户上的逻辑应用主菜单中，选择“概述”。 在显示了逻辑应用的所有运行状态的“运行历史记录”部分，选择一个失败的运行以查看详细信息。
+1. 在 Azure 门户上的逻辑应用主菜单中，选择“概述”。**** 在显示了逻辑应用的所有运行状态的“运行历史记录”部分，选择一个失败的运行以查看详细信息。****
 
    ![逻辑应用运行状态](./media/connectors-create-api-crmonline/run-history.png)
 
@@ -186,7 +186,7 @@ ms.locfileid: "74789885"
 
 ## <a name="connector-reference"></a>连接器参考
 
-如连接器的 OpenAPI （以前的 Swagger）文件所述的技术详细信息（如触发器、操作和限制），请参阅[连接器的参考页](/connectors/dynamicscrmonline/)。
+如需技术详细信息（例如触发器、操作和限制，如连接器的 OpenAPI（以前为 Swagger）文件所述），请参阅[连接器的参考页](/connectors/dynamicscrmonline/)。
 
 ## <a name="next-steps"></a>后续步骤
 

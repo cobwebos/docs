@@ -1,5 +1,5 @@
 ---
-title: 故障排除：下载的活动日志中缺少数据 |Microsoft Docs
+title: 故障排除：下载的活动日志中缺少数据 |微软文档
 description: 提供了一种解决方法，用于解决在下载的 Azure Active Directory 活动日志中缺少数据的问题。
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ee07fdb6f8a4e69600297bdb16b6ad74793f10c9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74007720"
 ---
 # <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>无法在已下载的 Azure Active Directory 活动日志中找到所有数据
@@ -30,11 +30,11 @@ ms.locfileid: "74007720"
 
 我下载了活动日志（审核日志或登录日志），但发现所选时间范围内的记录不全。 为什么？ 
 
- ![报告](./media/troubleshoot-missing-data-download/01.png)
+ ![报表](./media/troubleshoot-missing-data-download/01.png)
  
 ## <a name="cause"></a>原因
 
-下载 Azure 门户中的活动日志时，会将扩展限制为250000个记录，并按最新的顺序进行排序。 
+在 Azure 门户中下载活动日志时，我们将规模限制为 250，000 条记录，按最近一次排序。 
 
 ## <a name="resolution"></a>解决方法
 

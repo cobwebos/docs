@@ -1,265 +1,284 @@
 ---
 title: Azure Migrate 设备
-description: 提供服务器评估和迁移中所使用的 Azure Migrate 设备的概述。
+description: 提供服务器评估和迁移中使用的 Azure 迁移设备的概述。
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 1b1e35c3b7a9d98e57ec4261f6f913c370bbb365
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/23/2020
+ms.openlocfilehash: 1bb3372467919f1471fa9577cd60e9cecaf1750d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79269570"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336946"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
-本文介绍 Azure Migrate 设备。 使用[Azure Migrate：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具来发现和评估要迁移到 Microsoft Azure 的应用、基础结构和工作负载时，可以部署设备。 将 VMware Vm 迁移到 Azure 时，还可以使用 Azure Migrate：使用[无代理迁移](server-migrate-overview.md)的[服务器评估](migrate-services-overview.md#azure-migrate-server-migration-tool)将 VMware vm 迁移到 Azure。
+本文总结了 Azure 迁移设备的先决条件和支持要求。 
 
-## <a name="appliance-overview"></a>设备概述
+## <a name="deployment-scenarios"></a>部署方案
 
-在以下方案中使用 Azure Migrate 设备。
+Azure 迁移设备用于以下方案。
 
 **方案** | **工具** | **用于** 
 --- | --- | ---
-VMware VM | Azure Migrate：服务器评估<br/><br/> Azure Migrate：服务器迁移 | 发现 VMware Vm<br/><br/> 发现计算机应用和依赖项<br/><br/> 收集计算机元数据和性能元数据以进行评估。<br/><br/> 复制 VMware Vm 和无代理迁移。
-Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收集计算机元数据和性能元数据以进行评估。
-物理机 |  Azure Migrate：服务器评估 |  发现物理服务器<br/><br/> 收集计算机元数据和性能元数据以进行评估。
+**VMware VM 评估** | Azure 迁移：服务器评估 | 发现 VMware VM<br/><br/> 发现计算机应用和依赖项<br/><br/> 收集机器元数据和性能元数据进行评估。
+**VMware VM 无代理迁移** | Azure 迁移：服务器迁移 | 发现 VMware VM <br/><br/> 使用无代理迁移复制 VMware VM。
+**超 V VM 评估** | Azure 迁移：服务器评估 | 发现超虚拟机<br/><br/> 收集机器元数据和性能元数据进行评估。
+**物理机器评估** |  Azure 迁移：服务器评估 |  发现物理服务器（或您视为物理服务器的 VM）。<br/><br/> 收集机器元数据和性能元数据进行评估。
 
-## <a name="appliance---vmware"></a>设备-VMware 
+## <a name="appliance---vmware"></a>设备 - VMware 
 
-**要求** | **VMware** 
+下表总结了 VMware 的 Azure 迁移设备要求。
+
+**要求** | **Vmware** 
 --- | ---
-**下载格式** | ..OVA 
-**下载链接** | https://aka.ms/migrate/appliance/vmware 
-**下载大小** | 11.2 GB
-**许可证** | 下载的设备模板附带了 Windows Server 2016 评估版许可证，该许可证在180天内有效。 如果评估期接近过期，我们建议你下载并部署新设备，或者激活设备 VM 的操作系统许可证。
-**部署** | 将设备部署为 VMware VM。 VCenter Server 上需要足够的资源来分配具有 32 GB RAM 的 VM、8个 vcpu、大约 80 GB 的磁盘存储和外部虚拟交换机。<br/> 设备需要直接或通过代理访问 internet。<br/> 设备可以连接到单个 vCenter Server。
-**硬件** | VCenter 上的资源，用于分配含 32 GB RAM 8 个 vcpu 的 VM、大约 80 GB 的磁盘存储和外部虚拟交换机。 
-**哈希值** | 查看[此处](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security)
-**vCenter 服务器/主机** | 设备 VM 必须部署在运行版本5.5 或更高版本的 ESXi 主机上。<br/><br/> 运行5.5、6.0、6.5 或 6.7 vCenter Server。
-**Azure Migrate 项目** | 设备可以与单个项目关联。 <br/> 可以将任意数量的设备与单个项目相关联。<br/> 
-**发现** | 设备最多可在 vCenter Server 上发现 10000 VMware Vm。<br/> 设备可以连接到单个 vCenter Server。
-**设备组件** | 管理应用：部署期间用于用户输入的设备中的 Web 应用。<br/> 发现代理：收集计算机配置数据。<br/> 评估代理：收集性能数据。<br/> DRA：协调 VM 复制，并协调计算机/Azure 之间的通信。<br/> 网关：将复制的数据发送到 Azure。<br/> 自动更新服务：更新组件（每24小时运行一次）。
-**VDDK （无代理迁移）** | 如果在 Azure Migrate 服务器迁移的情况下运行无代理迁移，则必须在设备 VM 上安装 VMware vSphere VDDK。
+**设备组件** | 产品具有以下组件：<br/><br/> - **管理应用**：这是一个 Web 应用程序，用于在设备部署期间用户输入。 用于评估计算机以迁移到 Azure 时使用。<br/> - **发现代理**：代理收集计算机配置数据。 用于评估计算机以迁移到 Azure 时使用。<br/>- **评估代理**：代理收集性能数据。 用于评估计算机以迁移到 Azure 时使用。<br/>- **自动更新服务**：更新设备组件（每 24 小时运行一次）。<br/>- **DRA 代理**：协调 VM 复制，并协调复制的计算机和 Azure 之间的通信。 仅在使用无代理迁移将 VMware VM 复制到 Azure 时使用。<br/>- **网关**：向 Azure 发送复制的数据。 仅在使用无代理迁移将 VMware VM 复制到 Azure 时使用。
+**支持部署** | 使用 OVA 模板部署为 VMware VM。<br/><br/> 使用 PowerShell 安装脚本部署为 VMware VM 或物理计算机。
+**项目支持** |  设备可以与单个项目关联。 <br/> 任意数量的设备都可以与单个项目关联。<br/> 
+**发现限制** | 设备可以在 vCenter 服务器上发现多达 10，000 个 VMware VM。<br/> 设备可以连接到单个 vCenter 服务器。
+**OVA 模板** | 从门户或 从https://aka.ms/migrate/appliance/vmware下载。<br/><br/> 下载大小为 11.2 GB。<br/><br/> 下载的设备模板附带 Windows Server 2016 评估许可证，有效期为 180 天。 如果评估期接近到期，我们建议您下载并部署新设备，或者激活设备 VM 的操作系统许可证。
+**电源外壳脚本** | 脚本[下载](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
+**软件/硬件** |  设备应在具有 Windows Server 2016、32 GB RAM、8 个 vCPU、大约 80 GB 磁盘存储和外部虚拟交换机的计算机上运行。<br/> 本产品需要直接或通过代理进行互联网接入。<br/><br/> 如果在 VMware VM 上运行设备，则在 vCenter 服务器上需要足够的资源来分配满足要求的 VM。<br/><br/> 如果在物理计算机上运行设备，请确保它运行 Windows Server 2016，并满足硬件要求。 
+**VMware 要求** | 如果将设备部署为 VMware VM，则必须将其部署在运行版本 5.5 或更高版本的 ESXi 主机上。<br/><br/> vCenter 服务器运行 5.5、6.0、6.5 或 6.7。
+**VDDK（无代理迁移）** | 如果将设备部署为 VMware VM，并且正在运行无代理迁移，则必须在设备 VM 上安装 VMware vSphere VDDK。
+**哈希值-OVA** | [验证](tutorial-assess-vmware.md#verify-security)OVA 模板哈希值。
+**哈希值-电源外壳脚本** | [验证](deploy-appliance-script.md#verify-file-security)PowerShell 脚本哈希值。
 
 
-## <a name="appliance---hyper-v"></a>设备-Hyper-v
+
+
+## <a name="appliance---hyper-v"></a>设备 - 超 V
 
 **要求** | **Hyper-V** 
 --- | ---
-**下载格式** | 压缩文件夹（包含 VHD）
-**下载链接** | https://aka.ms/migrate/appliance/hyperv 
-**下载大小** | 10 GB
-**许可证** | 下载的设备模板附带了 Windows Server 2016 评估版许可证，该许可证在180天内有效。 如果评估期接近过期，我们建议你下载并部署新设备，或者激活设备 VM 的操作系统许可证。
-**设备部署**   |  将设备部署为 Hyper-v VM。<br/> Azure Migrate 提供的设备 VM 为 Hyper-v VM 版本5.0。<br/> Hyper-v 主机必须运行 Windows Server 2012 R2 或更高版本。<br/> 主机需要足够的空间来分配 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间，以及设备 VM 的外部交换机。<br/> 设备需要静态或动态 IP 地址以及 internet 访问。
-**硬件** | Hyper-v 主机上的资源，用于分配 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间，以及设备 VM 的外部交换机。
-**哈希值** | 查看[此处](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security)
-**Hyper-V 主机** | 正在运行 Windows Server 2012 R2 或更高版本。
-**Azure Migrate 项目** | 设备可以与单个项目关联。 <br/> 可以将任意数量的设备与单个项目相关联。<br/> 
-**发现** | 一个设备最多可以发现5000个 Hyper-v Vm。<br/> 一个设备最多可以连接到300个 Hyper-v 主机。
-**设备组件** | 管理应用：部署期间用于用户输入的设备中的 Web 应用。<br/> 发现代理：收集计算机配置数据。<br/> 评估代理：收集性能数据。<br/>  自动更新服务：更新组件（每24小时运行一次）。
+**设备组件** | 产品具有以下组件：<br/><br/>- **管理应用**：这是一个 Web 应用程序，用于在设备部署期间用户输入。 用于评估计算机以迁移到 Azure 时使用。<br/> - **发现代理**：代理收集计算机配置数据。 用于评估计算机以迁移到 Azure 时使用。<br/>- **评估代理**：代理收集性能数据。 用于评估计算机以迁移到 Azure 时使用。<br/>- **自动更新服务**：更新设备组件（每 24 小时运行一次）。
+**支持部署** | 使用 VHD 模板部署为 Hyper-V VM。<br/><br/> 使用 PowerShell 安装脚本部署为 Hyper-V VM 或物理计算机。
+**项目支持** |  设备可以与单个项目关联。 <br/> 任意数量的设备都可以与单个项目关联。<br/> 
+**发现限制** | 设备可以发现多达 5000 个超 V VM。<br/> 设备可连接到多达 300 台 Hyper-V 主机。
+**VHD 模板** | 压缩文件夹，包括 VHD。 从门户或 从https://aka.ms/migrate/appliance/hyperv下载。<br/><br/> 下载大小为 10 GB。<br/><br/> 下载的设备模板附带 Windows Server 2016 评估许可证，有效期为 180 天。 如果评估期接近到期，我们建议您下载并部署新设备，或者激活设备 VM 的操作系统许可证。
+**电源外壳脚本** | 脚本[下载](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 
+**软件/硬件***   |  设备应在具有 Windows Server 2016、32 GB RAM、8 个 vCPU、大约 80 GB 磁盘存储和外部虚拟交换机的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接或通过代理进行 Internet 访问。<br/><br/> 如果将设备作为 Hyper-V VM 运行，则 Hyper-V 主机上需要足够的资源来分配 16 GB RAM、8 个 vCPU、大约 80 GB 的存储空间以及设备 VM 的外部交换机。<br/><br/> 如果在物理计算机上运行设备，请确保它运行 Windows Server 2016，并满足硬件要求。 
+**超 V 要求** | 如果使用 VHD 模板部署设备，Azure 迁移提供的设备 VM 是 Hyper-V VM 版本 5.0。<br/><br/> Hyper-V 主机必须运行 Windows Server 2012 R2 或更高版本。 
+**哈希值-VHD** | [验证](tutorial-assess-hyper-v.md#verify-security)VHD 模板哈希值。
+**哈希值-电源外壳脚本** | [验证](deploy-appliance-script.md#verify-file-security)PowerShell 脚本哈希值。
 
 
-## <a name="appliance---physical"></a>设备-物理
+## <a name="appliance---physical"></a>设备 - 物理
 
 **要求** | **物理** 
 --- | ---
-**下载格式** | 压缩文件夹（包含基于 PowerShell 的安装程序脚本）
-**下载链接** | [下载链接](https://go.microsoft.com/fwlink/?linkid=2105112)
-**下载大小** | 59.7 MB
-**硬件** | 专用物理计算机，或使用虚拟机。 运行设备的计算机需要 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间和一个外部交换机。<br/> 设备需要静态或动态 IP 地址以及 internet 访问。
-**哈希值** | 查看[此处](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security)
-**操作系统** | 设备计算机应运行 Windows Server 2016。 
-**设备部署**   |  设备安装程序脚本是从门户下载的（在压缩文件夹中）。 <br/> 解压文件夹，并运行 PowerShell 脚本（AzureMigrateInstaller）。
-**发现** | 一个设备最多可以发现250个物理服务器。
-**设备组件** | 管理应用：部署期间用于用户输入的设备中的 Web 应用。<br/> 发现代理：收集计算机配置数据。<br/> 评估代理：收集性能数据。<br/>  自动更新服务：更新组件（每24小时运行一次）。
-
+**设备组件** | 产品具有以下组件： <br/><br/> - **管理应用**：这是一个 Web 应用程序，用于在设备部署期间用户输入。 用于评估计算机以迁移到 Azure 时使用。<br/> - **发现代理**：代理收集计算机配置数据。 用于评估计算机以迁移到 Azure 时使用。<br/>- **评估代理**：代理收集性能数据。 用于评估计算机以迁移到 Azure 时使用。<br/>- **自动更新服务**：更新设备组件（每 24 小时运行一次）。
+**支持部署** | 使用 PowerShell 安装脚本部署为专用物理计算机或 VM。
+**项目支持** |  设备可以与单个项目关联。 <br/> 任意数量的设备都可以与单个项目关联。<br/> 
+**发现限制** | 设备可以发现多达 250 台物理服务器。
+**电源外壳脚本** | 从门户将脚本 （AzureMigrate 安装程序.ps1） 下载到压缩文件夹中。 [了解详情](tutorial-assess-physical.md#set-up-the-appliance)。 或者，[直接下载](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 下载大小为 59.7 MB。
+**软件/硬件** |  设备应在具有 Windows Server 2016、32 GB RAM、8 个 vCPU、大约 80 GB 磁盘存储和外部虚拟交换机的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接或通过代理进行 Internet 访问。<br/><br/> 如果在物理计算机上运行设备，请确保它运行 Windows Server 2016，并满足硬件要求。 
+**哈希值** | [验证](deploy-appliance-script.md#verify-file-security)PowerShell 脚本哈希值。
 
 ## <a name="url-access"></a>URL 访问
 
-Azure Migrate 设备需要连接到 internet。
+Azure 迁移设备需要连接到 Internet。
 
-- 部署设备时，Azure Migrate 会对下表中汇总的 Url 进行连接性检查。
-- 如果使用基于 URL 的代理连接到 internet，则允许访问这些 Url，确保代理解析查找 Url 时收到的任何 CNAME 记录。
+- 部署设备时，Azure 迁移对下表中总结的 URL 执行连接检查。
+- 如果您使用的是基于 URL 的代理连接到 Internet，则允许访问这些 URL，确保代理解析在查找 URL 时收到的任何 CNAME 记录。
 
-**URL** | **详细信息**  
+**Url** | **详细信息**  
 --- | --- |
 *.portal.azure.com  | 导航到 Azure 门户。
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | 登录到 Azure 订阅。
-*.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备创建 Active Directory 应用程序，以便与 Azure Migrate 通信。
-management.azure.com | 为设备创建 Active Directory 应用程序，以便与 Azure Migrate 服务通信。
+*.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备创建活动目录应用，以便与 Azure 迁移通信。
+management.azure.com | 为设备创建活动目录应用，以便与 Azure 迁移服务进行通信。
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
-*.vault.azure.net | 管理 Azure Key Vault 中的机密。
-aka.ms/* | 允许访问称为 "链接"。 用于 Azure Migrate 设备更新。
-download.microsoft.com/download | 允许从 Microsoft 下载下载。
-*.servicebus.windows.net | 设备与 Azure Migrate 服务之间的通信。
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | 连接到 Azure Migrate 服务 Url。
-*.hypervrecoverymanager.windowsazure.com | **用于 VMware 无代理迁移**<br/><br/> 连接到 Azure Migrate 服务 Url。
-\* .blob.core.windows.net |  **用于 VMware 无代理迁移**<br/><br/>将数据上传到存储进行迁移。
+*.vault.azure.net | 在 Azure 密钥保管库中管理机密。
+aka.ms/* | 允许访问也称为链接。 用于 Azure 迁移设备更新。
+download.microsoft.com/download | 允许从微软下载下载。
+*.servicebus.windows.net | 设备和 Azure 迁移服务之间的通信。
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | 连接到 Azure 迁移服务 URL。
+*.hypervrecoverymanager.windowsazure.com | **用于无 VMware 无代理迁移**<br/><br/> 连接到 Azure 迁移服务 URL。
+* .blob.core.windows.net |  **用于无 VMware 无代理迁移**<br/><br/>将数据上载到存储以进行迁移。
 
 
 
 
-## <a name="collected-data---vmware"></a>收集的数据-VMware
+## <a name="collected-data---vmware"></a>收集的数据 - VMware
 
-### <a name="collected-performance-data-vmware"></a>收集的性能数据-VMware
+设备收集元数据、性能数据和依赖关系分析数据（如果使用无代理[依赖关系分析](concepts-dependency-visualization.md)）。
 
-下面是设备收集并发送到 Azure 的 VMware VM 性能数据。
+### <a name="metadata"></a>元数据
 
-**数据** | **计数器** | **评估影响**
---- | --- | ---
-CPU 使用率 | cpu.usage.average | 建议的 VM 大小/成本
-内存利用率 | mem.usage.average | 建议的 VM 大小/成本
-磁盘读取吞吐量（MB/秒） | virtualDisk.read.average | 磁盘大小、存储成本、VM 大小的计算
-磁盘写入吞吐量（MB/秒） | virtualDisk.write.average | 磁盘大小、存储成本、VM 大小的计算
-每秒磁盘读取操作数 | virtualDisk.numberReadAveraged.average | 磁盘大小、存储成本、VM 大小的计算
-磁盘写入操作数/秒 | virtualDisk.numberWriteAveraged.average  | 磁盘大小、存储成本、VM 大小的计算
-NIC 读取吞吐量（MB/秒） | net.received.average | VM 大小的计算
-NIC 写入吞吐量（MB/秒） | net.transmitted.average  |VM 大小的计算
+Azure 迁移应用发现元数据可帮助您确定计算机和应用是否已准备好迁移到 Azure、大小合适的计算机和应用、计划成本并分析应用程序依赖项。 Microsoft 不会在任何许可证合规性审核中使用此数据。
 
-
-### <a name="collected-metadata-vmware"></a>收集的元数据-VMware
-
-> [!NOTE]
-> Azure Migrate 设备发现的元数据用于在将应用程序迁移到 Azure、执行 Azure 适用性分析、应用程序依赖关系分析和成本规划时，帮助你适当调整应用程序的大小。 Microsoft 不会将此数据与任何许可证相容性审核相对使用。
-
-下面是设备收集并发送到 Azure 的 VMware VM 元数据的完整列表。
+下面是设备收集和发送到 Azure 的 VMware VM 元数据的完整列表。
 
 **数据** | **计数器**
 --- | --- 
-**计算机详细信息** | 
+**机器详细信息** | 
 VM ID | vm.Config.InstanceUuid 
 VM 名称 | vm.Config.Name
-vCenter Server ID | VMwareClient.Instance.Uuid
+vCenter Server ID | VMwareClient.实例.Uuid
 VM 说明 | vm.Summary.Config.Annotation
 许可证产品名称 | vm.Client.ServiceContent.About.LicenseProductName
-操作系统类型 | vm.SummaryConfig.GuestFullName
+操作系统类型 | Vm。摘要配置.来宾全名
 启动类型 | vm.Config.Firmware
 内核数 | vm.Config.Hardware.NumCPU
 内存(MB) | vm.Config.Hardware.MemoryMB
-磁盘数目 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk).count
-磁盘大小列表 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
-网络适配器列表 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualEthernet).count
+磁盘数目 | Vm。配置.硬件.设备.列表。）查找全部（x =>是虚拟磁盘）。
+磁盘大小列表 | Vm。配置.硬件.设备.列表。）查找全部（x =>是虚拟磁盘）
+网络适配器列表 | Vm。配置.硬件.设备.列表。）查找全部（x =>是虚拟以太网）。
 CPU 使用率 | cpu.usage.average
 内存利用率 |mem.usage.average
-**每磁盘详细信息** | 
+**每个磁盘详细信息** | 
 磁盘密钥值 | disk.Key
-Dikunit 号 | disk.UnitNumber
+迪库奈特编号 | disk.UnitNumber
 磁盘控制器密钥值 | disk.ControllerKey.Value
 预配量 (GB) | virtualDisk.DeviceInfo.Summary
-磁盘名称 | 使用磁盘生成的值。UnitNumber，磁盘。密钥和磁盘。ControllerKey
+磁盘名称 | 使用磁盘生成的值。单位编号，磁盘。钥匙，磁盘控制器键.VAlue
 每秒读取操作数 | virtualDisk.numberReadAveraged.average
 每秒写入操作数 | virtualDisk.numberWriteAveraged.average
-读取吞吐量（MB/秒） | virtualDisk.read.average
-写入吞吐量（MB/秒） | virtualDisk.write.average
-**每 NIC 详细信息** | 
+读取吞吐量（每秒 MB） | virtualDisk.read.average
+写入吞吐量（每秒 MB） | virtualDisk.write.average
+**每个 NIC 详细信息** | 
 网络适配器名称 | nic.Key
 MAC 地址 | ((VirtualEthernetCard)nic).MacAddress
 IPv4 地址 | vm.Guest.Net
 IPv6 地址 | vm.Guest.Net
-读取吞吐量（MB/秒） | net.received.average
-写入吞吐量（MB/秒） | net.transmitted.average
-**清单路径详细信息** | 
-名称 | container.GetType().Name
+读取吞吐量（每秒 MB） | net.received.average
+写入吞吐量（每秒 MB） | net.transmitted.average
+**库存路径详细信息** | 
+“属性” | container.GetType().Name
 子对象类型 | container.ChildType
 引用详细信息 | container.MoRef
 父级详细信息 | Container.Parent
 每个 VM 的文件夹详细信息 | ((Folder)container).ChildEntity.Type
 每个 VM 的数据中心详细信息 | ((Datacenter)container).VmFolder
 每个主机文件夹的数据中心详细信息 | ((Datacenter)container).HostFolder
-每个主机的群集详细信息 | （（ClusterComputeResource）容器。主持人
-每个 VM 的主机详细信息 | （（HostSystem）容器。VMNETWORK
+每个主机的群集详细信息 | （（群集计算资源）容器）。主机
+每个 VM 的主机详细信息 | （（主机系统）容器）。Vm
 
-## <a name="collected-data---hyper-v"></a>收集的数据-Hyper-v
+### <a name="performance-data"></a>性能数据
 
-### <a name="collected-performance-data-hyper-v"></a>收集的性能数据-Hyper-v
 
-> [!NOTE]
-> Azure Migrate 设备发现的元数据用于在将应用程序迁移到 Azure、执行 Azure 适用性分析、应用程序依赖关系分析和成本规划时，帮助你适当调整应用程序的大小。 Microsoft 不会将此数据与任何许可证相容性审核相对使用。
+以下是设备收集和发送到 Azure 的 VMware VM 性能数据。
 
-下面是设备收集并发送到 Azure 的超级 VM 性能数据。
-
-**性能计数器类** | **计数器** | **评估影响**
+**数据** | **计数器** | **评估影响**
 --- | --- | ---
-Hyper-v 虚拟机监控程序虚拟处理器 | % Guest 运行时间 | 建议的 VM 大小/成本
-Hyper-v 动态内存 VM | 当前压力（%）<br/> 来宾可见物理内存（MB） | 建议的 VM 大小/成本
-Hyper-v 虚拟存储设备 | 每秒读取的字节数 | 磁盘大小、存储成本、VM 大小的计算
-Hyper-v 虚拟存储设备 | 每秒写入的字节数 | 磁盘大小、存储成本、VM 大小的计算
-Hyper-V 虚拟网络适配器 | 每秒接收的字节数 | VM 大小的计算
-Hyper-V 虚拟网络适配器 | 发送的字节数/秒 | VM 大小的计算
+CPU 使用率 | cpu.usage.average | 推荐的 VM 大小/成本
+内存利用率 | mem.usage.average | 推荐的 VM 大小/成本
+磁盘读取吞吐量（MB/秒） | virtualDisk.read.average | 计算磁盘大小、存储成本、VM 大小
+磁盘写入吞吐量（MB/秒） | virtualDisk.write.average | 计算磁盘大小、存储成本、VM 大小
+每秒磁盘读取操作 | virtualDisk.numberReadAveraged.average | 计算磁盘大小、存储成本、VM 大小
+每秒磁盘写入操作 | virtualDisk.numberWriteAveraged.average  | 计算磁盘大小、存储成本、VM 大小
+NIC 读取吞吐量（MB/秒） | net.received.average | 计算 VM 大小
+NIC 写入吞吐量（MB/秒） | net.transmitted.average  |计算 VM 大小
 
-- "CPU 使用率" 是所有附加到 VM 的虚拟处理器的所有使用量之和。
-- 内存使用率为（当前压力 * 来宾可见物理内存）/100。
-- 磁盘和网络利用率值从列出的 Hyper-v 性能计数器中收集。
+### <a name="app-dependencies-metadata"></a>应用依赖项元数据
 
-### <a name="collected-metadata-hyper-v"></a>收集的元数据-Hyper-v
+无代理依赖项分析收集连接和处理数据。
 
-下面是设备收集并发送到 Azure 的 Hyper-v VM 元数据的完整列表。
+#### <a name="connection-data"></a>连接数据
+
+以下是设备从启用用于无代理依赖项分析的每个 VM 中收集的连接数据。 此数据将发送到 Azure。
+
+**数据** | **使用的命令** 
+--- | --- 
+本地端口 | netstat
+本地 IP 地址 | netstat
+远程端口 | netstat
+远程 IP 地址 | netstat
+TCP 连接状态 | netstat
+进程 ID | netstat
+不是。 活动连接 | netstat
+
+#### <a name="process-data"></a>处理数据
+以下是设备从启用的无代理依赖项分析的每个 VM 收集的进程数据。 此数据将发送到 Azure。
 
 **数据** | **WMI 类** | **WMI 类属性**
 --- | --- | ---
-**计算机详细信息** | 
-BIOS Msvm_BIOSElement 的序列号 | BIOSSerialNumber
-VM 类型（第1代或第2代） | Msvm_VirtualSystemSettingData | VirtualSystemSubType
+进程名称 | Win32_Process | 可执行路径
+进程参数 | Win32_Process | CommandLine
+应用程序名称 | Win32_Process | 可执行路径属性的版本信息.产品名称参数
+
+#### <a name="linux-vm-data"></a>Linux VM 数据
+
+以下是设备从启用的无代理依赖项分析的每个 Linux VM 中收集的连接和处理数据。 此数据将发送到 Azure。
+
+**数据** | **使用的命令** 
+--- | ---
+本地端口 | netstat 
+本地 IP 地址 | netstat 
+远程端口 | netstat 
+远程 IP 地址 | netstat 
+TCP 连接状态 | netstat 
+不是。 活动连接 | netstat
+进程 ID  | netstat 
+进程名称 | ps
+进程参数 | ps
+应用程序名称 | dpkg 或 rpm
+
+
+
+## <a name="collected-data---hyper-v"></a>收集的数据 - 超 V
+
+设备收集元数据、性能数据和依赖关系分析数据（如果使用无代理[依赖关系分析](concepts-dependency-visualization.md)）。
+
+### <a name="metadata"></a>元数据
+Azure 迁移应用发现元数据可帮助您确定计算机和应用是否已准备好迁移到 Azure、大小合适的计算机和应用、计划成本并分析应用程序依赖项。 Microsoft 不会在任何许可证合规性审核中使用此数据。
+
+下面是设备收集和发送到 Azure 的 Hyper-V VM 元数据的完整列表。
+
+**数据* | **WMI CLASS** | **WMI CLASS 属性**
+--- | --- | ---
+**机器详细信息** | 
+BIOS 的序列号 = Msvm_BIOSElement | BIOS序列编号
+VM 类型（第 1 代或第 2 代） | Msvm_VirtualSystemSettingData | 虚拟系统子类型
 VM 显示名称 | Msvm_VirtualSystemSettingData | ElementName
-VM 版本 | Msvm_ProcessorSettingData | VirtualQuantity
-内存（字节） | Msvm_MemorySettingData | VirtualQuantity
+VM 版本 | Msvm_ProcessorSettingData | 虚拟数量
+内存（字节） | Msvm_MemorySettingData | 虚拟数量
 VM 可使用的最大内存 | Msvm_MemorySettingData | 限制
-已启用动态内存 | Msvm_MemorySettingData | DynamicMemoryEnabled
-操作系统名称/版本/FQDN | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems 名称数据
+启用动态内存 | Msvm_MemorySettingData | DynamicMemoryEnabled
+操作系统名称/版本/FQDN | Msvm_KvpExchangeComponent | 来宾内部交换项目名称数据
 VM 电源状态 | Msvm_ComputerSystem | EnabledState
-**每磁盘详细信息** | 
-磁盘标识符 | Msvm_VirtualHardDiskSettingData | VirtualDiskId
+**每个磁盘详细信息** | 
+磁盘标识符 | Msvm_VirtualHardDiskSettingData | 虚拟磁盘Id
 虚拟硬盘类型 | Msvm_VirtualHardDiskSettingData | 类型
-虚拟硬盘大小 | Msvm_VirtualHardDiskSettingData | MaxInternalSize
-虚拟硬盘父项 | Msvm_VirtualHardDiskSettingData | ParentPath
-**每 NIC 详细信息** | 
-IP 地址（合成 Nic） | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
-DHCP 已启用（合成 Nic） | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
-NIC ID （合成 Nic） | Msvm_SyntheticEthernetPortSettingData | InstanceID
-NIC MAC 地址（合成 Nic） | Msvm_SyntheticEthernetPortSettingData | 地址
-NIC ID （旧 Nic） | MsvmEmulatedEthernetPortSetting 数据 | InstanceID
-NIC MAC ID （旧 Nic） | MsvmEmulatedEthernetPortSetting 数据 | 地址
+虚拟硬盘大小 | Msvm_VirtualHardDiskSettingData | 最大内部大小
+虚拟硬盘父级 | Msvm_VirtualHardDiskSettingData | 父路径
+**每个 NIC 详细信息** | 
+IP 地址（合成 NIC） | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
+启用 DHCP（合成 NIC） | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
+NIC ID（合成 NIC） | Msvm_SyntheticEthernetPortSettingData | InstanceID
+NIC MAC 地址（合成 NIC） | Msvm_SyntheticEthernetPortSettingData | 地址
+NIC ID（旧 NIC） | Ms模拟以太网端口设置数据 | InstanceID
+NIC MAC ID（旧 NIC） | Ms模拟以太网端口设置数据 | 地址
 
+### <a name="performance-data"></a>性能数据
 
+以下是设备收集和发送到 Azure 的 Hyper VM 性能数据。
 
+**性能计数器类** | **计数器** | **评估影响**
+--- | --- | ---
+超V虚拟机管理程序虚拟处理器 | 百分比来宾运行时间 | 推荐的 VM 大小/成本
+超 V 动态内存 VM | 电流压力 （%）<br/> 访客可见物理内存 （MB） | 推荐的 VM 大小/成本
+超V虚拟存储设备 | 读取字节/秒 | 计算磁盘大小、存储成本、VM 大小
+超V虚拟存储设备 | 写入字节/秒 | 计算磁盘大小、存储成本、VM 大小
+Hyper-V 虚拟网络适配器 | 接收字节/秒 | 计算 VM 大小
+Hyper-V 虚拟网络适配器 | 发送字节/秒 | 计算 VM 大小
 
-## <a name="discovery-and-collection-process"></a>发现和收集过程
-
-设备使用以下过程与 vCenter 服务器和 Hyper-v 主机/群集通信。
-
-1. **开始发现**：
-    - 当你在 Hyper-v 设备上启动发现时，它会与 WinRM 端口5985（HTTP）和5986（HTTPS）上的 Hyper-v 主机通信。
-    - 在 VMware 设备上启动发现时，默认情况下，它会与 TCP 端口443上的 vCenter 服务器通信。 如果 vCenter 服务器侦听其他端口，则可以在设备 web 应用中进行配置。
-2. **收集元数据和性能数据**：
-    - 设备使用通用信息模型（CIM）会话来收集端口5985和5986上的 Hyper-v 主机上的 Hyper-v VM 数据。
-    - 默认情况下，设备与端口443通信，以便从 vCenter Server 收集 VMware VM 数据。
-3. **发送数据**：设备将收集的数据发送到 Azure Migrate 服务器评估，并通过 SSL 端口 443 Azure Migrate 服务器迁移。 设备可以通过 internet 连接到 Azure，也可以将 ExpressRoute 用于公共/Microsoft 对等互连。
-    - 对于性能数据，设备会收集实时利用率数据。
-        - 对于 VMware，每隔20秒收集一次性能数据，对于每个性能指标，将每30秒收集一次。
-        - 收集的数据将汇总到10分钟后创建单个数据点。
-        - 峰值利用率值是从所有 20/30 秒数据点中选择的，并发送到 Azure 进行评估计算。
-        - 根据在评估属性（第 50/90/95/99%）中指定的百分位值，按升序对十分钟点进行排序，并使用适当的百分位值计算评估
-    - 对于服务器迁移，设备会开始收集 VM 数据，并将其复制到 Azure。
-4. **评估和迁移**：你现在可以使用 Azure Migrate Server 评估从设备收集的元数据中创建评估。 此外，还可以使用 Azure Migrate Server 迁移开始迁移 VMware Vm，以安排无代理 VM 复制。
-
-
-![体系结构](./media/migrate-appliance/architecture.png)
-
+- CPU 利用率是连接到 VM 的所有虚拟处理器的所有使用情况的总和。
+- 内存利用率为（当前压力 = 来宾可见物理内存）/ 100。
+- 磁盘和网络利用率值从列出的 Hyper-V 性能计数器收集。
 
 ## <a name="appliance-upgrades"></a>设备升级
 
-在设备上运行的 Azure Migrate 代理更新时，会升级设备。
+随着在设备上运行的 Azure 迁移代理更新，设备将升级。 这是自动发生的，因为默认情况下在设备上启用了自动更新。 您可以更改此默认设置以手动更新代理。
 
-- 这会自动发生，因为默认情况下在设备上启用了自动更新。
-- 您可以更改此默认设置以手动更新代理。
-- 若要禁用自动更新，请在 "注册表编辑器" > HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance "，并将注册表项" 自动更新 "设置为0（DWORD）。
- 
-### <a name="set-agent-updates-to-manual"></a>将代理更新设置为手动
+- **关闭自动更新**：通过将HKEY_LOCAL_MACHINE_SOFTWARE_Microsoft_AzureAppliance"自动更新"键设置为 0 （DWORD）来关闭注册表中的自动更新。 如果您决定使用手动更新，请务必同时更新设备上的所有代理，使用设备上每个过期代理的 **"更新**"按钮。
+- **手动更新**：对于手动更新，请确保使用设备上每个过期代理的 **"更新**"按钮更新设备上的所有代理。 您可以随时将更新设置切换回自动更新。
 
-对于手动更新，请确保在设备上使用每个过时代理的 "**更新**" 按钮同时更新设备上的所有代理。 你可以随时将更新设置切换回自动更新。
+![自动更新设备](./media/migrate-appliance/autoupdate.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解如何](tutorial-assess-vmware.md#set-up-the-appliance-vm)为 VMware 设置设备。
-[了解如何](tutorial-assess-hyper-v.md#set-up-the-appliance-vm)为 hyper-v 设置设备。
+- [了解如何](how-to-set-up-appliance-vmware.md)为 VMware 设置设备。
+- [了解如何](how-to-set-up-appliance-hyper-v.md)为 Hyper-V 设置产品。
+- [了解如何](how-to-set-up-appliance-physical.md)为物理服务器设置设备。
 

@@ -1,41 +1,40 @@
 ---
-title: Marketplace 计量服务 Api |Azure Marketplace
-description: Azure Marketplace 中 SaaS 产品/服务的使用情况事件。
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: 应用商店计量服务 API |Azure 应用商店
+description: Azure 应用商店中 SaaS 提供的使用事件。
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: dea950ff72eff2372fc10f989d4ce77fa746c4bf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 315f36e5aed9dee0a89e1f9f504b18a6bed806e0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933578"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275741"
 ---
 # <a name="marketplace-metering-service-apis"></a>Azure 市场计量服务 API
 
-使用情况事件 API 允许您为特定购买的实体发出使用事件。 使用情况事件请求引用发布产品时发布者定义的计数服务维度。
+使用事件 API 允许您为特定采购的实体发出使用事件。 使用事件请求引用发布者在发布产品/服务时定义的计量服务维度。
 
-## <a name="usage-event"></a>使用情况事件
+## <a name="usage-event"></a>使用事件
 
-**POST**： `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**帖子**：`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *查询参数：*
 
 |            |          |
 | ---------- | ---------------------- |
-| `ApiVersion` | 用于此请求的操作的版本。 最新 API 版本为2018-08-31。 |
+| `ApiVersion` | 用于此请求的操作的版本。 最新 API 版本为 2018-08-31。 |
 
 *请求标头：*
 
 | Content-type       | `application/json`    |
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | 用于跟踪来自客户端的请求的唯一字符串值，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
-| `x-ms-correlationid` | 客户端上的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值，将在响应标头中生成并提供一个值。 |
-| `authorization`   | [获取 JSON web 令牌（JWT）持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) 注意：发出 HTTP 请求时，前缀 `Bearer` 从引用的链接获取的令牌。 |
+| `x-ms-correlationid` | 用于客户端操作的唯一字符串值。 此参数将客户端操作中的所有事件与服务器端的事件相关联。 如果未提供此值，将在响应标头中生成并提供此值。 |
+| `authorization`   | [获取 JSON Web 令牌 （JWT） 无记名令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) 注意：在发出 HTTP 请求时`Bearer`，前缀从引用的链接获取的令牌。 |
 
 *请求：*
 
@@ -51,8 +50,8 @@ ms.locfileid: "75933578"
 
 ### <a name="responses"></a>响应
 
-代码：200<br>
-确定 
+代码： 200<br>
+OK 
 
 ```json
 {
@@ -67,8 +66,8 @@ ms.locfileid: "75933578"
 }
 ```
 
-代码：400 <br>
-错误的请求、所提供或已过期的数据缺失或无效
+代码： 400 <br>
+请求错误、提供或无效的数据或过期
 
 ```json
 {
@@ -85,8 +84,8 @@ ms.locfileid: "75933578"
 }
 ```
 
-代码：403<br>
-错误的请求、所提供或已过期的数据缺失或无效
+代码： 403<br>
+请求错误、提供或无效的数据或过期
 
 ```json
 {
@@ -95,8 +94,8 @@ ms.locfileid: "75933578"
 }
 ```
 
-代码：409<br>
-冲突，当我们接收到使用情况资源 ID 的使用情况，并且有效使用已存在的情况下。 响应将包含 `additionalInfo` 字段，其中包含有关已接受的消息的信息。
+代码： 409<br>
+冲突，当我们收到使用资源 ID 的使用调用时，以及已经存在的有效使用情况。 响应将包含`additionalInfo`包含有关接受邮件的信息的字段。
 
 ```json
 {
@@ -114,28 +113,28 @@ ms.locfileid: "75933578"
 }
 ```
 
-## <a name="batch-usage-event"></a>批次使用事件
+## <a name="batch-usage-event"></a>批处理使用事件
 
-使用 batch 用量事件 API，可以一次为多个已购买的实体发出使用事件。 批次使用情况事件请求引用发布产品时发布者定义的计数服务维度。
+批处理使用事件 API 允许您一次为多个采购实体发出使用事件。 批处理使用情况事件请求引用发布者在发布产品/服务时定义的计量服务维度。
 
 >[!Note]
->你可以在 Microsoft 的商业应用商店中注册多个 SaaS 产品/服务。 每个注册的 SaaS 产品都有一个唯一的 Azure AD 应用程序，该应用程序注册用于身份验证和授权。 在批次中发出的事件应该属于具有相同 Azure AD 应用程序的产品/服务。
+>您可以在 Microsoft 的商业市场注册多个 SaaS 产品/ 每个已注册的 SaaS 产品/服务都有一个为身份验证和授权目的注册的唯一 Azure AD 应用程序。 在注册产品/服务时，批量发出的事件应属于具有相同 Azure AD 应用程序的优惠。
 
-**POST：** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
+**帖子：**`https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
 
 *查询参数：*
 
 |            |     |
 | ---------- | -------------------- |
-| `ApiVersion` | 用于此请求的操作的版本。 最新 API 版本为2018-08-31。 |
+| `ApiVersion` | 用于此请求的操作的版本。 最新 API 版本为 2018-08-31。 |
 
 *请求标头：*
 
 | Content-type       | `application/json`       |
 | ------------------ | ------ |
-| `x-ms-requestid`     | 用于跟踪来自客户端的请求的唯一字符串值，最好是 GUID。 如果未提供此值，则会生成一个值，并在响应标头中提供该值。 |
-| `x-ms-correlationid` | 客户端上的操作的唯一字符串值。 此参数将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值，则将生成一个，并在响应标头中提供。 |
-| `authorization`      | [获取 JSON web 令牌（JWT）持有者令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) 注意：发出 HTTP 请求时，前缀 `Bearer` 从引用的链接获取的令牌。  |
+| `x-ms-requestid`     | 用于跟踪来自客户端的请求的唯一字符串值，最好是 GUID。 如果未提供此值，将生成一个值，并在响应标头中提供。 |
+| `x-ms-correlationid` | 用于客户端操作的唯一字符串值。 此参数将客户端操作中的所有事件与服务器端的事件相关联。 如果未提供此值，将生成一个值，并在响应标头中提供。 |
+| `authorization`      | [获取 JSON Web 令牌 （JWT） 无记名令牌。](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) 注意：在发出 HTTP 请求时`Bearer`，前缀从引用的链接获取的令牌。  |
 
 *请求：*
 ```json
@@ -160,8 +159,8 @@ ms.locfileid: "75933578"
 ```
 ### <a name="responses"></a>响应
 
-代码：200<br>
-确定
+代码： 200<br>
+OK
 
 ```json
 {
@@ -193,22 +192,22 @@ ms.locfileid: "75933578"
 }
 ```
 
-`BatchUsageEvent` API 响应中引用的状态代码的说明：
+API 响应中`BatchUsageEvent`引用的状态代码的说明：
 
-| 状态代码  | Description |
+| 状态代码  | 描述 |
 | ---------- | -------------------- |
-| `Accepted` | 接受的代码。 |
-| `Expired` | 使用已过期。 |
-| `Duplicate` | 提供了重复的用法。 |
+| `Accepted` | 已接受代码。 |
+| `Expired` | 过期使用。 |
+| `Duplicate` | 提供重复用法。 |
 | `Error` | 错误代码。 |
 | `ResourceNotFound` | 提供的使用资源无效。 |
-| `ResourceNotAuthorized` | 你无权提供此资源的使用情况。 |
-| `InvalidDimension` | 对于此产品/计划，使用的维度无效。 |
-| `InvalidQuantity` | 传递的数量为 < 0。 |
-| `BadArgument` | 输入缺少或格式不正确。 |
+| `ResourceNotAuthorized` | 您无权提供此资源的使用情况。 |
+| `InvalidDimension` | 传递使用量的维度对于此产品/计划无效。 |
+| `InvalidQuantity` | 通过的数量为 0 <。 |
+| `BadArgument` | 输入丢失或格式不正确。 |
 
-代码：400<br>
-错误的请求、所提供或已过期的数据缺失或无效
+代码： 400<br>
+错误请求、提供的数据丢失或无效或已过期
 
 ```json
 {
@@ -224,8 +223,8 @@ ms.locfileid: "75933578"
   "code": "BadArgument"
 }
 ```
-代码：403<br>
-用户未经授权，无法进行此调用
+代码： 403<br>
+用户未经授权进行此呼叫
 
 ```json
 {
@@ -236,4 +235,4 @@ ms.locfileid: "75933578"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅[SaaS](./saas-metered-billing.md)计费。
+有关详细信息，请参阅[SaaS 计量计费](./saas-metered-billing.md)。

@@ -1,24 +1,24 @@
 ---
-title: 模板函数-逻辑
+title: 模板函数 - 逻辑
 description: 介绍 Azure 资源管理器模板中用于确定逻辑值的函数。
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: aef520a26124a85f414c4f4aa1a3e307d383c29b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f058baa32e5f93a4177913287a5e9873fa7a9acb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248679"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156304"
 ---
-# <a name="logical-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的逻辑函数
+# <a name="logical-functions-for-arm-templates"></a>ARM 模板的逻辑函数
 
-Resource Manager 提供了多个用于在模板中进行比较的函数。
+资源管理器提供了多个功能，用于在 Azure 资源管理器 （ARM） 模板中进行比较。
 
-* [and](#and)
+* [和](#and)
 * [bool](#bool)
 * [if](#if)
-* [not](#not)
-* [or](#or)
+* [不](#not)
+* [或](#or)
 
 ## <a name="and"></a>and
 
@@ -26,7 +26,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 检查所有参数值是否均为 true。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -36,7 +36,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="return-value"></a>返回值
 
-如果所有值均为 true，则返回 True；否则返回 False。
+如果所有值均为 true，则返回 True；否则返回 False********。
 
 ### <a name="examples"></a>示例
 
@@ -66,7 +66,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -78,7 +78,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 将参数转换为布尔值。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -119,7 +119,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -132,21 +132,21 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 根据条件为 true 或 false 返回值。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| 条件 (condition) |是 |boolean |要检查其是否为 true 或 false 的值。 |
+| 条件 (condition) |是 |boolean |要检查是为 true 还是为 false 的值。 |
 | trueValue |是 | 字符串、int、对象或数组 |条件为 true 时返回的值。 |
 | falseValue |是 | 字符串、int、对象或数组 |条件为 false 时返回的值。 |
 
 ### <a name="return-value"></a>返回值
 
-如果第一个参数为 True，则返回第二个参数；否则返回第三个参数。
+如果第一个参数为 True，则返回第二个参数；否则返回第三个参数****。
 
 ### <a name="remarks"></a>备注
 
-当条件为**true**时，只计算 true 值。 如果条件为**false**，则只计算 false 值。 对于**if**函数，可以包括仅有条件地有效的表达式。 例如，您可以引用在一个条件下存在但不在其他条件下的资源。 下一节中显示了有条件地计算表达式的示例。
+条件为 **True** 时，仅评估 true 值。 条件为 **False** 时，仅评估 false 值。 使用 **if** 函数时，可以包含仅在特定条件下有效的表达式。 例如，可以引用一个资源，该资源在某个条件下存在，在另一个条件下不存在。 以下部分显示了一个条件性评估表达式的示例。
 
 ### <a name="examples"></a>示例
 
@@ -177,13 +177,13 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | yesOutput | String | 是 |
 | noOutput | String | 否 |
 | objectOutput | Object | { "test": "value1" } |
 
-以下[示例模板](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)演示了如何将此函数用于仅有条件地有效的表达式。
+以下[示例模板](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)演示了如何将此函数与仅在特定条件下有效的表达式配合使用。
 
 ```json
 {
@@ -237,7 +237,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 将布尔值转换为其相反值。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -245,7 +245,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="return-value"></a>返回值
 
-参数为 False 时返回 True。 参数为 True 时返回 False。
+参数为 False 时返回 True********。 参数为 True 时返回 False********。
 
 ### <a name="examples"></a>示例
 
@@ -275,7 +275,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -299,7 +299,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -309,7 +309,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 检查任何参数值是否为 true。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -319,7 +319,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 ### <a name="return-value"></a>返回值
 
-如果任何值为 true，则返回 True；否则返回 False。
+如果任何值为 true，则返回 True；否则返回 False********。
 
 ### <a name="examples"></a>示例
 
@@ -349,7 +349,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -358,7 +358,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
-* 要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
-* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
+* 要合并多个模板，请参阅[使用 Azure 资源管理器使用链接模板](linked-templates.md)。
+* 要迭代创建资源类型时指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 

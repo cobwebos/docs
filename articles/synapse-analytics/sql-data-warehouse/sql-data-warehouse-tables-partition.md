@@ -1,0 +1,335 @@
+---
+title: 分区表
+description: 在 SQL 分析中使用表分区的建议和示例
+services: synapse-analytics
+author: XiaoyuMSFT
+manager: craigg
+ms.service: synapse-analytics
+ms.topic: conceptual
+ms.subservice: ''
+ms.date: 03/18/2019
+ms.author: xiaoyul
+ms.reviewer: igorstan
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: c40198225535fb79053773fb8c04d48253008912
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80351235"
+---
+# <a name="partitioning-tables-in-sql-analytics"></a>在 SQL 分析中分区表
+在 SQL 分析中使用表分区的建议和示例。
+
+## <a name="what-are-table-partitions"></a>什么是表分区？
+表分区可将数据分成更小的数据组。 大多数情况下，表分区都是根据日期列进行创建。 所有 SQL 分析表类型都支持分区;包括群集列存储、群集索引和堆。 所有分布类型（包括哈希分布或轮循机制分布）也都支持分区。  
+
+分区可能有利于数据维护和查询性能。 分区是对二者都有利还是只对其中之一有利取决于数据加载方式，以及是否可以将同一个列用于两种目的，因为只能根据一个列来进行分区。
+
+### <a name="benefits-to-loads"></a>对加载的好处
+SQL Analytics 中分区的主要好处是通过使用分区删除、切换和合并来提高加载数据的效率和性能。 大多数情况下，数据是根据日期列来分区的，而日期列与数据加载到数据库中的顺序密切相关。 使用分区来维护数据的最大好处之一是可以避免事务日志记录。 虽然直接插入、更新或删除数据可能是最直接的方法，但如果在加载过程中使用分区，则只需付出一点点思考和努力就可以大大改进性能。
+
+可以使用分区切换来快速删除或替换表的一部分。  例如，销售事实表可能仅包含过去 36 个月的数据。 在每个月月底，便从表删除最旧月份的销售数据。  删除该数据时，可以使用 delete 语句删除最旧月份的数据。 但是，使用 delete 语句逐行删除大量数据可能需要极长的时间，同时还会有执行大型事务的风险，这些大型事务在出现错误时进行回退的时间会很长。 更理想的方式是删除最旧的数据分区。 如果在某种情况下删除各个行可能需要数小时，则删除整个分区可能只需数秒钟。
+
+### <a name="benefits-to-queries"></a>对查询的好处
+分区还可用来提高查询性能。 对分区数据应用筛选器的查询可以将扫描限制在合格的分区上。 此筛选方法可以避免全表扫描且仅扫描数据的一个较小子集。 引入聚集列存储索引以后，谓词消除的性能好处不再那么明显，但在某些情况下，可能会对查询有好处。 例如，如果使用销售日期字段将销售事实表分区成 36 个月，以销售日期进行筛选的查询便可以跳过对不符合筛选条件的分区的搜索。
+
+## <a name="sizing-partitions"></a>调整分区大小
+虽然在某些情况下可以使用分区来改进性能，但如果在创建表时使用**过多**分区，则在某些情况下可能会降低性能。  对于聚集列存储表，尤其要考虑到这一点。 若要使数据分区有益于性能，务必了解使用数据分区的时机，以及要创建的分区的数目。 对于多少分区属于分区过多并没有简单的硬性规定，具体取决于数据，以及要同时加载多少分区。 一个成功的分区方案通常只有数十到数百的分区，没有数千个。
+
+在“聚集列存储”表上创建分区时，务请考虑每个分区可容纳的行数****。 对于聚集列存储表来说，若要进行最合适的压缩并获得最佳性能，则每个分布和分区至少需要 1 百万行。 在创建分区之前，SQL Analytics 已经将每个表划分为 60 个分布式数据库。 向表添加的任何分区都是基于在后台创建的分布。 使用此示例，如果销售事实表包含 36 个每月分区，并且 SQL Analytics 数据库包含 60 个分布，则销售事实表应包含每月 6000 万行，或者填充所有月份时包含 21 亿行。 如果表包含的行数少于每个分区行数的最小建议值，可考虑使用较少的分区，以增加每个分区的行数。 有关详细信息，请参阅[索引编制](sql-data-warehouse-tables-index.md)一文，其中包含的查询可用于评估群集列存储索引的质量。
+
+## <a name="syntax-differences-from-sql-server"></a>与 SQL Server 的语法差异
+SQL Analytics 引入了一种定义比 SQL Server 更简单的分区的方法。 在 SQL 分析中不使用分区函数和方案，因为它们在 SQL Server 中。 只需识别分区列和边界点。 尽管分区的语法可能与 SQL Server 稍有不同，但基本概念是相同的。 SQL Server 和 SQL 分析支持每个表一个分区列，可以进行范围分区。 若要详细了解分区，请参阅[已分区表和已分区索引](/sql/relational-databases/partitions/partitioned-tables-and-indexes)。
+
+下例使用 [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) 语句根据 OrderDateKey 列对 FactInternetSales 表进行分区：
+
+```sql
+CREATE TABLE [dbo].[FactInternetSales]
+(
+    [ProductKey]            int          NOT NULL
+,   [OrderDateKey]          int          NOT NULL
+,   [CustomerKey]           int          NOT NULL
+,   [PromotionKey]          int          NOT NULL
+,   [SalesOrderNumber]      nvarchar(20) NOT NULL
+,   [OrderQuantity]         smallint     NOT NULL
+,   [UnitPrice]             money        NOT NULL
+,   [SalesAmount]           money        NOT NULL
+)
+WITH
+(   CLUSTERED COLUMNSTORE INDEX
+,   DISTRIBUTION = HASH([ProductKey])
+,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
+                    (20000101,20010101,20020101
+                    ,20030101,20040101,20050101
+                    )
+                )
+)
+;
+```
+
+## <a name="migrating-partitioning-from-sql-server"></a>从 SQL Server 迁移分区
+要将 SQL Server 分区定义迁移到 SQL 分析，只需：
+
+- 消除 SQL Server [分区方案](/sql/t-sql/statements/create-partition-scheme-transact-sql)。
+- 将[分区函数](/sql/t-sql/statements/create-partition-function-transact-sql)定义添加到 CREATE TABLE。
+
+如果要从 SQL Server 实例迁移分区的表，则可使用以下 SQL 来算出每个分区中的行数。 请记住，如果在 SQL Analytics 上使用相同的分区粒度，则每个分区的行数将减少 60 倍。  
+
+```sql
+-- Partition information for a SQL Server Database
+SELECT      s.[name]                        AS      [schema_name]
+,           t.[name]                        AS      [table_name]
+,           i.[name]                        AS      [index_name]
+,           p.[partition_number]            AS      [partition_number]
+,           SUM(a.[used_pages]*8.0)         AS      [partition_size_kb]
+,           SUM(a.[used_pages]*8.0)/1024    AS      [partition_size_mb]
+,           SUM(a.[used_pages]*8.0)/1048576 AS      [partition_size_gb]
+,           p.[rows]                        AS      [partition_row_count]
+,           rv.[value]                      AS      [partition_boundary_value]
+,           p.[data_compression_desc]       AS      [partition_compression_desc]
+FROM        sys.schemas s
+JOIN        sys.tables t                    ON      t.[schema_id]         = s.[schema_id]
+JOIN        sys.partitions p                ON      p.[object_id]         = t.[object_id]
+JOIN        sys.allocation_units a          ON      a.[container_id]      = p.[partition_id]
+JOIN        sys.indexes i                   ON      i.[object_id]         = p.[object_id]
+                                            AND     i.[index_id]          = p.[index_id]
+JOIN        sys.data_spaces ds              ON      ds.[data_space_id]    = i.[data_space_id]
+LEFT JOIN   sys.partition_schemes ps        ON      ps.[data_space_id]    = ds.[data_space_id]
+LEFT JOIN   sys.partition_functions pf      ON      pf.[function_id]      = ps.[function_id]
+LEFT JOIN   sys.partition_range_values rv   ON      rv.[function_id]      = pf.[function_id]
+                                            AND     rv.[boundary_id]      = p.[partition_number]
+WHERE       p.[index_id] <=1
+GROUP BY    s.[name]
+,           t.[name]
+,           i.[name]
+,           p.[partition_number]
+,           p.[rows]
+,           rv.[value]
+,           p.[data_compression_desc]
+;
+```
+
+## <a name="partition-switching"></a>分区切换
+SQL 分析支持分区拆分、合并和切换。 这些函数每个都使用 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) 语句执行。
+
+若要在两个表之间切换分区，必须确保分区对齐其各自的边界，并且表定义匹配。 由于检查约束不可用于强制实施表中的值范围，因此源表必须包含与目标表相同的分区边界。 如果那时分区边界不相同，则分区切换会失败，因为分区元数据不会同步。
+
+### <a name="how-to-split-a-partition-that-contains-data"></a>如何拆分包含数据的分区
+使用 `CTAS` 语句是拆分包含数据的分区的最有效方法。 如果分区表是群集列存储，则表分区必须为空才能拆分。
+
+下面的示例创建分区列存储表。 它将一行插入到每个分区：
+
+```sql
+CREATE TABLE [dbo].[FactInternetSales]
+(
+        [ProductKey]            int          NOT NULL
+    ,   [OrderDateKey]          int          NOT NULL
+    ,   [CustomerKey]           int          NOT NULL
+    ,   [PromotionKey]          int          NOT NULL
+    ,   [SalesOrderNumber]      nvarchar(20) NOT NULL
+    ,   [OrderQuantity]         smallint     NOT NULL
+    ,   [UnitPrice]             money        NOT NULL
+    ,   [SalesAmount]           money        NOT NULL
+)
+WITH
+(   CLUSTERED COLUMNSTORE INDEX
+,   DISTRIBUTION = HASH([ProductKey])
+,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
+                    (20000101
+                    )
+                )
+)
+;
+
+INSERT INTO dbo.FactInternetSales
+VALUES (1,19990101,1,1,1,1,1,1);
+INSERT INTO dbo.FactInternetSales
+VALUES (1,20000101,1,1,1,1,1,1);
+```
+
+以下查询使用 `sys.partitions` 目录视图查找行计数：
+
+```sql
+SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
+,       i.[name] as Index_name
+,       p.partition_number as Partition_nmbr
+,       p.[rows] as Row_count
+,       p.[data_compression_desc] as Data_Compression_desc
+FROM    sys.partitions p
+JOIN    sys.tables     t    ON    p.[object_id]   = t.[object_id]
+JOIN    sys.schemas    s    ON    t.[schema_id]   = s.[schema_id]
+JOIN    sys.indexes    i    ON    p.[object_id]   = i.[object_Id]
+                            AND   p.[index_Id]    = i.[index_Id]
+WHERE t.[name] = 'FactInternetSales'
+;
+```
+
+以下拆分命令会收到一条错误消息：
+
+```sql
+ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
+```
+
+消息 35346，级别 15，状态 1，行 44: ALTER PARTITION 语句的 SPLIT 子句失败，因为分区不为空。 如果表中存在列存储索引，则只能拆分空的分区。 请考虑在发出 ALTER PARTITION 语句前禁用列存储索引，并在 ALTER PARTITION 完成后重建列存储索引。
+
+但是，可以使用 `CTAS` 创建新表以保存数据。
+
+```sql
+CREATE TABLE dbo.FactInternetSales_20000101
+    WITH    (   DISTRIBUTION = HASH(ProductKey)
+            ,   CLUSTERED COLUMNSTORE INDEX
+            ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
+                                (20000101
+                                )
+                            )
+            )
+AS
+SELECT *
+FROM    FactInternetSales
+WHERE   1=2
+;
+```
+
+由于分区边界已对齐，因此允许切换。 这将给源表留下空白分区可供我们以后拆分。
+
+```sql
+ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 PARTITION 2;
+
+ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
+```
+
+接下来只需使用 `CTAS` 将数据对齐新的分区边界，然后将数据切换回到主表。
+
+```sql
+CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
+    WITH    (   DISTRIBUTION = HASH([ProductKey])
+            ,   CLUSTERED COLUMNSTORE INDEX
+            ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
+                                (20000101,20010101
+                                )
+                            )
+            )
+AS
+SELECT  *
+FROM    [dbo].[FactInternetSales_20000101]
+WHERE   [OrderDateKey] >= 20000101
+AND     [OrderDateKey] <  20010101
+;
+
+ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 TO dbo.FactInternetSales PARTITION 2;
+```
+
+完成数据移动后，最好刷新有关目标表的统计信息。 更新统计信息可确保统计信息准确地反映数据在其各自的分区中的新分布。
+
+```sql
+UPDATE STATISTICS [dbo].[FactInternetSales];
+```
+
+### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>通过一个步骤将新数据加载到包含数据的分区中
+将数据加载到使用分区开关的分区中可以很方便地将新数据暂存在对用户不可见的表中，然后将新数据切换进来。  在繁忙且需要处理与分区切换相关联的锁定争用的系统中，这可能很具挑战性。  在过去，若要清除分区中的现有数据，需要使用 `ALTER TABLE` 将数据切换出来，  然后需要使用另一 `ALTER TABLE` 将新数据切换进去。  在 SQL 分析`TRUNCATE_TARGET`中，`ALTER TABLE`命令中支持该选项。  带 `TRUNCATE_TARGET` 的 `ALTER TABLE` 命令会使用新数据覆盖分区中的现有数据。  下面是一个示例。此示例使用 `CTAS` 创建一个包含现有数据的新表，插入新数据，然后将所有数据切换回目标表中，覆盖现有的数据。
+
+```sql
+CREATE TABLE [dbo].[FactInternetSales_NewSales]
+    WITH    (   DISTRIBUTION = HASH([ProductKey])
+            ,   CLUSTERED COLUMNSTORE INDEX
+            ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
+                                (20000101,20010101
+                                )
+                            )
+            )
+AS
+SELECT  *
+FROM    [dbo].[FactInternetSales]
+WHERE   [OrderDateKey] >= 20000101
+AND     [OrderDateKey] <  20010101
+;
+
+INSERT INTO dbo.FactInternetSales_NewSales
+VALUES (1,20000101,2,2,2,2,2,2);
+
+ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInternetSales PARTITION 2 WITH (TRUNCATE_TARGET = ON);  
+```
+
+### <a name="table-partitioning-source-control"></a>表分区源代码管理
+为了避免表定义在源代码管理系统中**生锈**，您可能需要考虑以下方法：
+
+1. 将表创建为分区表，但不包含分区值
+
+    ```sql
+    CREATE TABLE [dbo].[FactInternetSales]
+    (
+        [ProductKey]            int          NOT NULL
+    ,   [OrderDateKey]          int          NOT NULL
+    ,   [CustomerKey]           int          NOT NULL
+    ,   [PromotionKey]          int          NOT NULL
+    ,   [SalesOrderNumber]      nvarchar(20) NOT NULL
+    ,   [OrderQuantity]         smallint     NOT NULL
+    ,   [UnitPrice]             money        NOT NULL
+    ,   [SalesAmount]           money        NOT NULL
+    )
+    WITH
+    (   CLUSTERED COLUMNSTORE INDEX
+    ,   DISTRIBUTION = HASH([ProductKey])
+    ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES () )
+    )
+    ;
+    ```
+
+1. 在部署过程中 `SPLIT` 表：
+
+    ```sql
+     -- Create a table containing the partition boundaries
+
+    CREATE TABLE #partitions
+    WITH
+    (
+        LOCATION = USER_DB
+    ,   DISTRIBUTION = HASH(ptn_no)
+    )
+    AS
+    SELECT  ptn_no
+    ,       ROW_NUMBER() OVER (ORDER BY (ptn_no)) as seq_no
+    FROM    (
+        SELECT CAST(20000101 AS INT) ptn_no
+        UNION ALL
+        SELECT CAST(20010101 AS INT)
+        UNION ALL
+        SELECT CAST(20020101 AS INT)
+        UNION ALL
+        SELECT CAST(20030101 AS INT)
+        UNION ALL
+        SELECT CAST(20040101 AS INT)
+    ) a
+    ;
+
+     -- Iterate over the partition boundaries and split the table
+
+    DECLARE @c INT = (SELECT COUNT(*) FROM #partitions)
+    ,       @i INT = 1                                 --iterator for while loop
+    ,       @q NVARCHAR(4000)                          --query
+    ,       @p NVARCHAR(20)     = N''                  --partition_number
+    ,       @s NVARCHAR(128)    = N'dbo'               --schema
+    ,       @t NVARCHAR(128)    = N'FactInternetSales' --table
+    ;
+
+    WHILE @i <= @c
+    BEGIN
+        SET @p = (SELECT ptn_no FROM #partitions WHERE seq_no = @i);
+        SET @q = (SELECT N'ALTER TABLE '+@s+N'.'+@t+N' SPLIT RANGE ('+@p+N');');
+
+        -- PRINT @q;
+        EXECUTE sp_executesql @q;
+        SET @i+=1;
+    END
+
+     -- Code clean-up
+
+    DROP TABLE #partitions;
+    ```
+
+使用这种方法，源代码管理中的代码保持静态，并且允许分区边界值是动态的;随着时间的推移，随着数据库的发展。
+
+## <a name="next-steps"></a>后续步骤
+有关开发表的详细信息，请参阅[表概述](sql-data-warehouse-tables-overview.md)上的文章。
+

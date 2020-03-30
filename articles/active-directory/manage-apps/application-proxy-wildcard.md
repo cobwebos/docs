@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5a9e7be5f582051e03cba08733fcbfa697cc8f5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3ad2032497b4b01476389428f5a2ef4a3961a1c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275033"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481239"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 应用程序代理中的通配符应用程序
 
@@ -55,14 +55,14 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 ## <a name="prerequisites"></a>先决条件
 
-若要开始，请确保满足这些要求。
+要开始，请确保您已满足这些要求。
 
 ### <a name="custom-domains"></a>自定义域
 
 尽管[自定义域](application-proxy-configure-custom-domain.md)对于其他所有应用程序是可选的，但它们是通配符应用程序的先决条件。 创建自定义域时需要：
 
 1. 在 Azure 中创建已验证的域。
-1. 将 PFX 格式的 SSL 证书上传到应用程序代理。
+1. 以 PFX 格式将 TLS/SSL 证书上载到应用程序代理。
 
 应考虑使用通配符证书来匹配打算创建的应用程序。 或者，还可以使用仅列出特定应用程序的证书。 在这种情况下，只能通过此通配符应用程序访问证书中列出的应用程序。
 
@@ -78,17 +78,17 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 ## <a name="considerations"></a>注意事项
 
-下面是你应考虑的通配符应用程序的一些注意事项。
+以下是通配符应用程序的一些注意事项。
 
 ### <a name="accepted-formats"></a>接受的格式
 
 对于通配符应用程序，**内部 URL** 的格式必须为 `http(s)://*.<domain>`。
 
-![对于内部 URL，请使用 http （s）：//* 格式。\<域 >](./media/application-proxy-wildcard/22.png)
+![对于内部 URL，请使用格式 http（s）：//*。\<域>](./media/application-proxy-wildcard/22.png)
 
 配置**外部 URL** 时，必须使用以下格式：`https://*.<custom domain>`
 
-![对于外部 URL，请使用格式 https://*。\<自定义域 >](./media/application-proxy-wildcard/21.png)
+![对于外部 URL，请使用https://*格式。\<自定义域>](./media/application-proxy-wildcard/21.png)
 
 通配符的其他位置、多个通配符或其他正则表达式字符串不受支持，并且会导致错误。
 
@@ -101,18 +101,18 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 将应用程序发布为普通应用程序是从通配符中排除应用程序的首选方法。 应在通配符应用程序之前发布排除的应用程序，以确保首先实施例外的项。 最具体的应用程序始终优先 – 发布为 `budgets.finance.adventure-works.com` 的应用程序优先于应用程序 `*.finance.adventure-works.com`，而后者又优先于应用程序 `*.adventure-works.com`。
 
-还可以通过 DNS 管理将通配符限制为仅对特定的应用程序起作用。 最佳做法是，创建一个包含通配符的 CNAME 条目，并匹配已配置的外部 URL 的格式。 但是，可将特定应用程序的 URL 改为指向通配符。 而不是，将 `*.adventure-works.com`、`hr.adventure-works.com` 和 `expenses.adventure-works.com` 指向 `travel.adventure-works.com individually`，而不是 `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`。
+还可以通过 DNS 管理将通配符限制为仅对特定的应用程序起作用。 最佳做法是，创建一个包含通配符的 CNAME 条目，并匹配已配置的外部 URL 的格式。 但是，可将特定应用程序的 URL 改为指向通配符。 而不是，将 `hr.adventure-works.com`、`expenses.adventure-works.com` 和 `travel.adventure-works.com individually` 指向 `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net`，而不是 `*.adventure-works.com`。
 
 如果使用此选项，则还需要为值 `AppId.domain` 创建另一个 CNAME 条目，例如，同样指向相同位置的 `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`。 可以在通配符应用程序的应用程序属性页上找到 **AppId**：
 
-![在应用的属性页上找到应用程序 ID](./media/application-proxy-wildcard/01.png)
+![在应用的属性页上查找应用程序 ID](./media/application-proxy-wildcard/01.png)
 
 ### <a name="setting-the-homepage-url-for-the-myapps-panel"></a>设置 MyApps 面板的主页 URL
 
 在 [MyApps 面板](https://myapps.microsoft.com)中，通配符应用程序只是以一个磁贴表示。 此磁贴默认已隐藏。 若要显示该磁贴并让用户首先看到特定的页面：
 
 1. 遵照有关[设置主页 URL](application-proxy-configure-custom-home-page.md) 的指导。
-1. 在应用程序属性页上将“显示应用程序”设置为“true”。
+1. 在应用程序属性页上将“显示应用程序”设置为“true”。********
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos 约束委派
 
@@ -136,7 +136,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 - 具有以下 ID 租户：`000aa000-11b1-2ccc-d333-4444eee4444e`
 - 已配置一个名为 `adventure-works.com` 的验证域。
-- 已创建将 **指向** 的 `*.adventure-works.com`CNAME`000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` 条目。
+- 已创建将 `*.adventure-works.com` 指向 `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` 的 **CNAME** 条目。
 
 可以遵照[所述的步骤](application-proxy-add-on-premises-application.md)，在租户中创建新的应用程序代理应用程序。 在此示例中，通配符位于以下字段中：
 
@@ -150,7 +150,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 - 内部应用程序 SPN：
 
-    ![示例： SPN 配置中的通配符](./media/application-proxy-wildcard/44.png)
+    ![示例：SPN 配置中的通配符](./media/application-proxy-wildcard/44.png)
 
 发布通配符应用程序后，可以通过导航到过去经常使用的 URL（例如 `travel.adventure-works.com`）来访问上述三个应用程序。
 
@@ -158,9 +158,9 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 ![显示示例配置实现的结构](./media/application-proxy-wildcard/05.png)
 
-| 颜色 | 说明 |
+| Color | 描述 |
 | ---   | ---         |
-| 蓝色  | 在 Azure 门户中显式发布并可见的应用程序。 |
+| 蓝色  | 应用程序在 Azure 门户中显式发布和可见。 |
 | 灰色  | 可通过父应用程序访问的应用程序。 |
 
 ## <a name="scenario-2-general-wildcard-application-with-exception"></a>方案 2：带有例外项的常规通配符应用程序
@@ -171,13 +171,13 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 根据[所述的步骤](application-proxy-add-on-premises-application.md)，此方案需要以下设置：
 
-- 在“内部 URL”中，设置 **finance** 而不是通配符。
+- 在“内部 URL”中，设置 **finance** 而不是通配符。****
 
-    ![示例：在内部 URL 中设置财务，而不是通配符](./media/application-proxy-wildcard/52.png)
+    ![示例：在内部 URL 中设置财务而不是通配符](./media/application-proxy-wildcard/52.png)
 
-- 在“外部 URL”中，设置 **finance** 而不是通配符。
+- 在“外部 URL”中，设置 **finance** 而不是通配符。****
 
-    ![示例：设置外部 URL 中的财务，而不是通配符](./media/application-proxy-wildcard/53.png)
+    ![示例：在外部 URL 中设置财务而不是通配符](./media/application-proxy-wildcard/53.png)
 
 - 在“内部应用程序 SPN”中，设置 **finance** 而不是通配符。
 
@@ -193,5 +193,5 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关**自定义域**的详细信息，请参阅使用[Azure AD 应用程序代理中的自定义域](application-proxy-configure-custom-domain.md)。
-- 若要了解有关**发布应用程序**的详细信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)
+- 要了解有关**自定义域**的更多信息，请参阅[在 Azure AD 应用程序代理中使用自定义域](application-proxy-configure-custom-domain.md)。
+- 要了解有关**发布应用程序**的更多信息，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)
