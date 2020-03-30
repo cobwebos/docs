@@ -1,7 +1,7 @@
 ---
-title: 'Net # 自定义神经网络'
+title: Net# 自定义神经网络
 titleSuffix: ML Studio (classic) - Azure
-description: Net# 神经网络规范语言的语法指南。 了解如何在 Azure 机器学习 Studio （经典）中创建自定义神经网络模型。
+description: Net# 神经网络规范语言的语法指南。 了解如何在 Azure 机器学习工作室（经典）中创建自定义神经网络模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,13 +11,13 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
 ms.openlocfilehash: c1912e670a9cf1c178b58cefbd33171f15be2483
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218251"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>适用于 Azure 机器学习 Studio 的 Net # 神经网络规范语言指南（经典）
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>有关 Azure 机器学习工作室（经典）的 Net# 神经网络规范语言的指南
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -25,8 +25,8 @@ Net# 是由 Microsoft 开发的用于定义复杂神经网络体系结构（例�
 
 在下列上下文中，可以使用 Net# 体系结构规范：
 
-+ Microsoft Azure 机器学习工作室（经典）中的所有神经网络模块：[多类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[两类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Microsoft ML Server 中的神经网络函数： [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet)和[RxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)（用于 R 语言）以及用于 Python 的[rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) 。
++ 微软 Azure 机器学习工作室中的所有神经网络模块（经典）：[多类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[双类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ 神经网络在 Microsoft ML 服务器中功能：R 语言[的神经网](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet)和[rxNeuralNet，](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)以及 Python [rx_neural_network。](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)
 
 
 本文介绍了使用 Net# 开发自定义神经网络的基本概念和所需语法：
@@ -51,14 +51,14 @@ Net# 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射
 
 + **筛选捆绑**。 可通过使用源层节点和目标层节点的位置来定义谓词。 每当谓词为 True，节点即连接。
 
-+ **卷积捆绑**。 可在源层中定义节点的小范围邻域。 目标层中的每个节点连接到源层中节点的一个邻域。
++ **卷积包**。 可在源层中定义节点的小范围邻域。 目标层中的每个节点连接到源层中节点的一个邻域。
 
 + **池捆绑**和**响应规范化**捆绑。 这些与卷积捆绑类似，用户可在其中定义源层中小范围的邻域。 不同之处在于这些捆绑中边缘的权重不可训练。 相反，为源节点值应用预定义的函数可确定目标节点值。
 
 
 ## <a name="supported-customizations"></a>支持的自定义项
 
-可以使用 Net # 广泛地自定义在 Azure 机器学习 Studio （经典）中创建的神经网络模型的体系结构。 可以：
+在 Azure 机器学习工作室（经典）中创建的神经网络模型的体系结构可通过使用 Net# 广泛自定义。 可以：
 
 + 创建隐藏层并控制每层的节点数。
 + 指定如何相互连接层。
@@ -177,7 +177,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 或者，可以为筛选的捆绑指定一组权重。 **Weights** 属性的值必须是浮点值的元组，其长度与捆绑定义的连接数匹配。 默认情况下，权重是随机生成的。
 
-权重值按照目标节点索引进行分组。 也就是说，在源索引顺序中，如果第一个目标节点连接到 K 源节点，则 `K`Weights**元组的前** 个元素为第一个目标节点的权重。 这同样适用于其他目标节点。
+权重值按照目标节点索引进行分组。 也就是说，在源索引顺序中，如果第一个目标节点连接到 K 源节点，则 **Weights** 元组的前 `K` 个元素为第一个目标节点的权重。 这同样适用于其他目标节点。
 
 可直接将权重指定为常量值。 例如，如果以前了解权重，则可以使用此语法将其指定为常量：
 
@@ -215,7 +215,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
     如果维度值为 False，则将定义内核，使留出的每个端上的节点数都相同（最大差值为 1）。 此属性的默认值为一个元组，其所有组件都等于 False。
 
-+ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当**没有**定义上述的 ***Padding*** 属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。
++ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当***没有***定义上述的 **Padding** 属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。
 
     若要确保内核只对应“真实”节点而不是“虚拟”节点，则必须符合以下条件：
   - **LowerPad** 的每个组件必须严格小于 `KernelShape[d]/2`。
@@ -253,7 +253,7 @@ hidden P1 [5, 12, 12]
 
 有关池层的详细信息，请参阅这些文章：
 
-+ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（第 3.4 节）
++ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（第3.4节）
 + [https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
 + [https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
@@ -452,7 +452,7 @@ output Digit [10] from Hid3 all;
 + 关键字 `convolve` 指示名为 `Conv1` 和 `Conv2` 的层是卷积层。 每个这些层声明都后跟一个卷积属性列表。
 + Net 具有第三个隐藏层 `Hid3`，该层完全连接到第二个隐藏层 `Conv2`。
 + 输出层 `Digit` 仅连接到第三个隐藏层 `Hid3`。 关键字 `all` 指示输出层完全连接到 `Hid3`。
-+ 卷积的实参数量为三：元组的长度 `InputShape`、`KernelShape`、`Stride`和 `Sharing`。
++ 卷积的参数数量为 3：元组 `InputShape`、`KernelShape`、`Stride` 和 `Sharing` 的长度。
 + 每个内核的权重数为 `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26` 或 `26 * 50 = 1300`。
 + 可以计算每个隐藏层中的节点，如下所示：
 
@@ -460,7 +460,7 @@ output Digit [10] from Hid3 all;
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
 + 可通过使用层的声明维数 [50, 5, 5] 来计算节点总数，如下所示：`MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
-+ 因为只有 `Sharing[d]` 时 `d == 0` 为 False，因此内核数为 `MapCount * NodeCount\[0] = 10 * 5 = 50`。
++ 因为只有 `d == 0` 时 `Sharing[d]` 为 False，因此内核数为 `MapCount * NodeCount\[0] = 10 * 5 = 50`。
 
 ## <a name="acknowledgements"></a>致谢
 

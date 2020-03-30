@@ -1,6 +1,6 @@
 ---
-title: FAQ-适用于 Windows Vm 的 Azure 磁盘加密
-description: 本文提供了有关 Microsoft Azure Windows IaaS Vm 的磁盘加密的常见问题的解答。
+title: 常见问题解答 - 适用于 Windows VM 的 Azure 磁盘加密
+description: 本文提供了有关 Windows IaaS VM 的 Microsoft Azure 磁盘加密的常见问题的解答。
 author: msmbaldwin
 ms.service: security
 ms.topic: article
@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: ea2a66a6b012664a9596a02ea32c1a0b677ee3ea
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74384266"
 ---
 # <a name="azure-disk-encryption-for-windows-vms-faq"></a>适用于 Windows VM 的 Azure 磁盘加密常见问题解答
@@ -53,7 +53,7 @@ Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell
 若要轮换机密，只需调用你一开始在启用磁盘加密时使用的命令并指定另一 Key Vault 即可。 若要轮换密钥加密密钥，只需调用你一开始在启用磁盘加密时使用的命令并指定新的密钥加密方法即可。 
 
 >[!WARNING]
-> - 如果之前是通过指定 Azure AD 凭据使用 [Azure 磁盘加密与 Azure AD 应用](disk-encryption-windows-aad.md)选项来加密此 VM，则必须继续使用此选项来加密 VM。 无法在此加密的 VM 上使用 Azure 磁盘加密，因为这不是受支持的方案，但目前不支持切换到此加密 VM 的 AAD 应用程序。
+> - 如果之前是通过指定 Azure AD 凭据使用 [Azure 磁盘加密与 Azure AD 应用](disk-encryption-windows-aad.md)选项来加密此 VM，则必须继续使用此选项来加密 VM。 无法在此加密的 VM 上使用 Azure 磁盘加密，因为不支持此方案，这意味着尚不支持为此加密的 VM 实施 AAD 应用程序切换操作。
 
 ## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>如何在一开始并没有使用密钥加密密钥的情况下添加或删除该密钥？
 
@@ -65,7 +65,7 @@ Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell
 
 ## <a name="can-i-use-an-azure-created-key-encryption-key"></a>是否可以使用 Azure 创建的密钥加密密钥？
 
-是的，可以使用 Azure Key Vault 来生成密钥加密密钥供 Azure 磁盘加密使用。 这些密钥在 Azure Key Vault（Azure 磁盘加密的密钥存储）中受保护。 有关密钥加密密钥的详细信息，请参阅[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。
+是的，可以使用 Azure Key Vault 来生成密钥加密密钥供 Azure 磁盘加密使用。 这些密钥在 Azure Key Vault（Azure 磁盘加密的密钥存储）中受保护。 有关密钥加密密钥的详细信息，请参阅[创建和配置用于 Azure 磁盘加密的 Key Vault](disk-encryption-key-vault.md)。
 
 ## <a name="can-i-use-an-on-premises-key-management-service-or-hsm-to-safeguard-the-encryption-keys"></a>是否可以使用本地密钥管理服务或 HSM 来保护加密密钥？
 
@@ -80,14 +80,14 @@ Azure 磁盘加密具有先决条件。 若要创建新的 Key Vault 或设置�
 Azure 磁盘加密具有先决条件。 请参阅[使用 Azure AD 的 Azure 磁盘加密](disk-encryption-windows-aad.md)内容，创建 Azure Active Directory 应用程序、创建新的 Key Vault 或设置现有 Key Vault 进行磁盘加密访问，以启用加密并保护机密和密钥。 有关密钥加密密钥支持方案的详细信息，请参阅[创建和配置可将 Azure 磁盘加密和 Azure AD 配合使用的 Key Vault](disk-encryption-key-vault-aad.md)。
 
 ## <a name="is-azure-disk-encryption-using-an-azure-ad-app-previous-release-still-supported"></a>是否仍然支持使用 Azure AD 应用（早期版本）进行 Azure 磁盘加密？
-可以。 仍然支持使用 Azure AD 应用进行磁盘加密。 不过，当加密新的 VM 时，建议使用新方法而不是使用 Azure AD 应用进行加密。 
+是的。 仍然支持使用 Azure AD 应用进行磁盘加密。 不过，当加密新的 VM 时，建议使用新方法而不是使用 Azure AD 应用进行加密。 
 
 ## <a name="can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app"></a>是否可以在不使用 Azure AD 应用的情况下将通过 Azure AD 应用加密的 VM 迁移到此加密？
   当前，对于通过 Azure AD 应用加密的计算机，没有直接迁移路径可用来在不使用 Azure AD 应用的情况下迁移到此加密。 此外，也没有直接路径用来将未使用 Azure AD 应用的加密迁移到使用 AD 应用的加密。 
 
 ## <a name="what-version-of-azure-powershell-does-azure-disk-encryption-support"></a>Azure 磁盘加密支持哪些 Azure PowerShell 版本？
 
-使用最新版的 Azure PowerShell SDK 来配置 Azure 磁盘加密。 下载最新版本的 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。 Azure SDK 版本 1.1.0 不支持 Azure 磁盘加密。
+使用最新版的 Azure PowerShell SDK 来配置 Azure 磁盘加密。 下载最新版本的 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。 Azure SDK 版本 1.1.0*不支持*Azure 磁盘加密。
 
 ## <a name="what-is-the-disk-bek-volume-or-mntazure_bek_disk"></a>磁盘“Bek 卷”或“/mnt/azure_bek_disk”是什么？
 
@@ -98,17 +98,17 @@ Azure 磁盘加密具有先决条件。 请参阅[使用 Azure AD 的 Azure 磁�
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Azure 磁盘加密使用何种加密方法？
 
-Azure 磁盘加密基于 Windows 版本选择 BitLocker 中的加密方法，如下所示：
+Azure 磁盘加密根据 Windows 版本在 BitLocker 中选择加密方法，如下所示：
 
-| Windows 版本                 | 版本 | 加密方法        |
+| 窗口版本                 | 版本 | 加密方法        |
 |----------------------------------|--------|--------------------------|
-| Windows Server 2012、Windows 10 或更高版本  | > = 1511 |XTS-AES 256 位           |
-| Windows Server 2012、Windows 8、8.1、10 | < 1511 |AES 256 位 *              |
-| Windows Server 2008R2            |        |带有扩散器的 AES 256 位 |
+| Windows 服务器 2012、Windows 10 或更高  | >#1511 |XTS-AES 256 位           |
+| Windows 服务器 2012， Windows 8， 8.1， 10 | < 1511 |AES 256 位 |              |
+| Windows Server 2008R2            |        |AES 256 位，带扩散器 |
 
-Windows 2012 和更高版本不支持带有扩散器 \* AES 256 位。
+\*Windows 2012 及更高版本不支持具有漫反射器的 AES 256 位。
 
-若要确定 Windows OS 版本，请在虚拟机中运行 "winver" 工具。
+要确定 Windows 操作系统版本，请运行虚拟机中的"winver"工具。
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>如果我使用 EncryptFormatAll 并指定了所有卷类型，它是否会擦除我们已加密的数据驱动器上的数据？
 否，不会擦除已使用 Azure 磁盘加密进行了加密的数据驱动器上的数据。 与 EncryptFormatAll 不重新加密 OS 驱动器类似，它也不会重新加密已加密的数据驱动器。 

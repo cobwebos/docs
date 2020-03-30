@@ -9,13 +9,13 @@ ms.date: 03/11/2020
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 0090f02382e024e5539383328b55d58798002d63
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
-ms.translationtype: HT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79117141"
 ---
-| 资源 | 基本 | Standard | Premium |
+| 资源 | Basic | Standard | Premium |
 |---|---|---|---|
 | 存储<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
 | 最大映像层大小 | 200 GiB | 200 GiB | 200 GiB |
@@ -27,21 +27,21 @@ ms.locfileid: "79117141"
 | 异地复制 | 空值 | 空值 | [支持][geo-replication] |
 | 内容信任 | 空值 | 空值 | [支持][content-trust] |
 | 虚拟网络访问 | 空值 | 空值 | [预览][vnet] |
-| 专用链接集成 | 空值 | 空值 | [预览][plink] |
+| 专用链路集成 | 空值 | 空值 | [预览][plink] |
 | 客户管理的密钥 | 空值 | 空值 | [预览][cmk] |
-| 存储库范围内的权限 | 空值 | 空值 | [预览][token]|
-| &bull; 令牌 | 空值 | 空值 | 20,000 |
-| &bull; 范围映射 | 空值 | 空值 | 20,000 |
-| &bull; 每个范围映射的存储库 | 空值 | 空值 | 500 |
+| 存储库范围权限 | 空值 | 空值 | [预览][token]|
+| &bull;令 牌 | 空值 | 空值 | 20,000 |
+| &bull;范围映射 | 空值 | 空值 | 20,000 |
+| &bull;每个范围映射的存储库 | 空值 | 空值 | 500 |
 
 
-<sup>1</sup>指定的存储空间上限是每层包含  的存储量。 对于超出这些限制的图像存储，将每日针对每 GiB 进行额外收费。 有关费率的信息，请参阅 [Azure 容器注册表定价][pricing]。
+<sup>1</sup> 指定的存储上限是每层包含** 的存储量。 对于超出这些限制的图像存储，将每日针对每 GiB 进行额外收费。 有关费率的信息，请参阅 [Azure 容器注册表定价][pricing]。
 
-<sup>2</sup>读取操作数  、写入操作数  和带宽  是最小估计值。 Azure 容器注册表致力于根据使用情况来提高性能。
+<sup>2</sup>读取操作数**、写入操作数** 和带宽** 是最小估计值。 Azure 容器注册表根据使用需求努力提高性能。
 
-<sup>3</sup>[docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) 将根据映像中的层数和清单检索行为转换为多个读取操作。
+<sup>3</sup>[docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) 根据映像中的层数和清单检索行为转换为多个读取操作。
 
-<sup>4</sup>[docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) 将根据必须推送的层数转换为多个写入操作。 `docker push` 包含 ReadOps  ，用于检索现有映像的清单。
+<sup>4</sup>[docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) 根据必须推送的层数转换为多个写入操作。 `docker push` 包含 ReadOps**，用于检索现有映像的清单。
 
 <!-- LINKS - External -->
 [pricing]: https://azure.microsoft.com/pricing/details/container-registry/

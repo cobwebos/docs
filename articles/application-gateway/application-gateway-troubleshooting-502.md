@@ -1,6 +1,6 @@
 ---
-title: 排查网关错误错误-Azure 应用程序网关
-description: 了解如何排查应用程序网关服务器错误： 502-Web 服务器在充当网关或代理服务器时收到了无效响应。
+title: 排除错误网关错误 - Azure 应用程序网关
+description: 了解如何排除应用程序网关服务器错误：502 - Web 服务器在充当网关或代理服务器时收到无效响应。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 17bed17b536f6e88fc821fd83e09a1d6ea218bc3
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74130472"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>排查应用程序网关中的网关无效错误
@@ -22,14 +22,14 @@ ms.locfileid: "74130472"
 
 ## <a name="overview"></a>概述
 
-配置应用程序网关后，你可能会看到 "服务器错误： 502-Web 服务器在作为网关或代理服务器时收到了无效响应" 的一个错误。 此错误可能是以下主要原因造成的：
+配置应用程序网关后，您可能会看到一个错误是"服务器错误：502 - Web 服务器在充当网关或代理服务器时收到无效响应"。 此错误可能是以下主要原因造成的：
 
 * NSG、UDR 或自定义 DNS 阻止了对后端池成员的访问。
 * 虚拟机规模集的后端 VM 或实例未响应默认的运行状况探测。
 * 自定义运行状况探测的配置无效或不正确。
 * Azure 应用程序网关的[后端池未配置或为空](#empty-backendaddresspool)。
 * [虚拟机规模集](#unhealthy-instances-in-backendaddresspool)中没有正常运行的 VM 或实例。
-* 用户请求出现[请求超时或连接问题](#request-time-out)。
+* [请求超时或用户请求的连接问题](#request-time-out)。
 
 ## <a name="network-security-group-user-defined-route-or-custom-dns-issue"></a>网络安全组、用户定义的路由或自定义 DNS 问题
 
@@ -82,12 +82,12 @@ DhcpOptions            : {
 
 下表列出了与默认运行状况探测关联的值：
 
-| 探测属性 | 值 | 说明 |
+| 探测属性 | “值” | 描述 |
 | --- | --- | --- |
 | 探测 URL |`http://127.0.0.1/` |URL 路径 |
 | 时间间隔 |30 |探测间隔（秒） |
 | 超时 |30 |探测超时（秒） |
-| 不正常阈值 |3 |探测重试计数。 连续探测失败计数达到不正常阈值后，后端服务器标记为故障。 |
+| 不正常阈值 |3 |探测重试计数。 连续探测失败计数达到不正常阈值后，将后端服务器标记为故障。 |
 
 ### <a name="solution"></a>解决方案
 
@@ -106,15 +106,15 @@ DhcpOptions            : {
 
 添加了以下附加属性：
 
-| 探测属性 | 说明 |
+| 探测属性 | 描述 |
 | --- | --- |
-| 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
+| “属性” |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
 | 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
 | 主机 |用于发送探测的主机名。 仅当应用程序网关上配置了多站点时才适用。 这与 VM 主机名不同。 |
 | 路径 |探测的相对路径。 有效路径以“/”开头。 将探测发送到 \<protocol\>://\<host\>:\<port\>\<path\> |
 | 时间间隔 |探测间隔（秒）。 这是每两次连续探测之间的时间间隔。 |
 | 超时 |探测超时（秒）。 如果在此超时期间内未收到有效响应，则将探测标记为失败。 |
-| 不正常阈值 |探测重试计数。 连续探测失败计数达到不正常阈值后，后端服务器标记为故障。 |
+| 不正常阈值 |探测重试计数。 连续探测失败计数达到不正常阈值后，将后端服务器标记为故障。 |
 
 ### <a name="solution"></a>解决方案
 

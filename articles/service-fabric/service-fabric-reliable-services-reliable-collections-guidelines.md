@@ -1,13 +1,13 @@
 ---
-title: 可靠集合的指南
-description: 有关在 Azure Service Fabric 应用程序中使用 Service Fabric 可靠集合的指导原则和建议。
+title: 可靠收集指南
+description: 在 Azure 服务结构应用程序中使用服务结构可靠集合的指南和建议。
 ms.topic: conceptual
 ms.date: 12/10/2017
 ms.openlocfilehash: 37c734205877f9e0cb98ef2834462691e8e483d9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645474"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collections 的相关指导原则和建议
@@ -21,7 +21,7 @@ ms.locfileid: "75645474"
 * 切勿在已提交、中止或释放一个事务之后使用该事务。
 * 切勿在对其创建的事务范围之外使用枚举。
 * 切勿在另一个事务的 `using` 语句内创建事务，因为它可能会导致死锁。
-* 不要使用 `IReliableStateManager.GetOrAddAsync` 创建可靠状态，并使用同一事务中的可靠状态。 这将导致 InvalidOperationException。
+* 不要通过 `IReliableStateManager.GetOrAddAsync` 创建可靠状态，请在同一事务中使用可靠状态。 这会导致 InvalidOperationException。
 * 务必确保 `IComparable<TKey>` 实现正确。 系统依赖 `IComparable<TKey>` 进行检查点和行的合并。
 * 意图更新某项而读取该项时，切勿更新锁以防止出现某类死锁。
 * 请考虑将每个分区的可靠集合数保持在 1000 个以下。 最好使用包含较多项的可靠集合，而不是可靠性更高但所含项目较少的集合。
@@ -48,7 +48,7 @@ ms.locfileid: "75645474"
   * [备份和还原](service-fabric-reliable-services-backup-restore.md)
   * [通知](service-fabric-reliable-services-notifications.md)
   * [序列化和升级](service-fabric-application-upgrade-data-serialization.md)
-  * [可靠状态管理器和配置](service-fabric-reliable-services-configuration.md)
+  * [可靠的状态管理器配置](service-fabric-reliable-services-configuration.md)
 * 其他
-  * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
-  * [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [可靠的服务快速启动](service-fabric-reliable-services-quick-start.md)
+  * [可靠集合的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

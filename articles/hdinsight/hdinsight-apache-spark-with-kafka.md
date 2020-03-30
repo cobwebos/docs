@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: d868cdd346c79cf77d4f8c1ea6e4b20adcd99b6c
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327397"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight 的 Apache Spark 流式处理 (DStream) 示例
 
-了解如何使用 [Apache Spark](https://spark.apache.org/) 通过 [DStreams](https://kafka.apache.org/) 将数据流式传入或流式传出 [Apache Kafka](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html) on HDInsight。 本示例使用在 Spark 群集上运行的 [Jupyter Notebook](https://jupyter.org/)。
+了解如何使用[Apache Spark](https://spark.apache.org/)在 HDInsight 上使用[DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html)流式传输数据到或流出[Apache Kafka。](https://kafka.apache.org/) 本示例使用在 Spark 群集上运行的 [Jupyter Notebook](https://jupyter.org/)。
 
 > [!NOTE]  
 > 本文档中的步骤创建了一个包含 Spark on HDInsight 和 Kafka on HDInsight 群集的 Azure 资源组。 这些群集都位于 Azure 虚拟网络中，允许 Spark 群集直接与 Kafka 群集进行通信。
@@ -29,7 +29,7 @@ ms.locfileid: "74327397"
 
 ## <a name="create-the-clusters"></a>创建群集
 
-HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的访问权限。 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
+HDInsight上的ApacheKafka不提供通过公共互联网访问卡夫卡经纪人。 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
 
 ![Azure 虚拟网络中的 Spark 和 Kafka 群集图表](./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png)
 
@@ -42,20 +42,20 @@ HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Azure 资源管理器模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** 。
+    Azure 资源管理器模板位于**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**。
 
     > [!WARNING]  
     > 若要确保 Kafka on HDInsight 的可用性，群集必须至少包含 3 个辅助节点。 此模板创建的 Kafka 群集包含三个辅助角色节点。
 
     此模板为 Kafka 和 Spark 创建 HDInsight 3.6 群集。
 
-1. 使用以下信息填充“自定义部署”部分中的条目：
+1. 使用以下信息填充“自定义部署”部分中的条目****：
 
-    |属性 |值 |
+    |properties |“值” |
     |---|---|
     |资源组|创建一个组或选择有个现有的组。|
     |位置|选择在地理上邻近的位置。|
-    |基本群集名称|此值将用作 Spark 和 Kafka 群集的基名称。 例如，输入 **hdistreaming** 将创建名为 __spark-hdistreaming__ 的 Spark 群集和名为 **kafka-hdistreaming** 的 Kafka 群集。|
+    |基群集名称|此值将用作 Spark 和 Kafka 群集的基名称。 例如，输入 **hdistreaming** 将创建名为 __spark-hdistreaming__ 的 Spark 群集和名为 **kafka-hdistreaming** 的 Kafka 群集。|
     |群集登录用户名|Spark 和 Kafka 群集的管理员用户名。|
     |群集登录密码|Spark 和 Kafka 群集的管理员用户密码。|
     |SSH 用户名|创建 Spark 和 Kafka 群集的 SSH 用户。|
@@ -63,9 +63,9 @@ HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的
 
     ![HDInsight 自定义部署参数](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
 
-1. 阅读“条款和条件”，并选择“我同意上述条款和条件”。
+1. 阅读**条款和条件**，然后选择**我同意上述条款和条件**。
 
-1. 最后，选择“购买”。 创建群集大约需要 20 分钟时间。
+1. 最后，选择“购买”****。 创建群集大约需要 20 分钟时间。
 
 创建资源后，会显示摘要页面。
 
@@ -76,7 +76,7 @@ HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的
 
 ## <a name="use-the-notebooks"></a>使用笔记本
 
-可在 [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) 处查看本文档所描述示例的代码。
+本文档中描述的示例的代码可在 。 [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka)
 
 ## <a name="delete-the-cluster"></a>删除群集
 

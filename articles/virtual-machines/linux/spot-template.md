@@ -1,6 +1,6 @@
 ---
-title: 使用模板部署 Azure 点 Vm （预览版）
-description: 了解如何使用模板部署专色 Vm 以节省成本。
+title: 使用模板部署 Azure Spot VM（预览）
+description: 了解如何使用模板部署 Spot VM 以节省成本。
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,29 +15,29 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: cynthn
 ms.openlocfilehash: 0e635fe7ce9b442a9cc8f0fdf614feef5a3a756a
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79082789"
 ---
-# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>使用资源管理器模板部署专色 Vm
+# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>使用资源管理器模板部署 Spot VM
 
-使用[污点 vm](spot-vms.md) ，你可以显著节省成本。 当 Azure 需要恢复容量时，Azure 基础结构将逐出点 Vm。 因此，专色 Vm 非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。
+使用[Spot VM](spot-vms.md)使您能够利用我们未使用的容量，从而显著节省成本。 在 Azure 需要返回容量的任何时间点，Azure 基础结构将驱逐 Spot VM。 因此，Spot VM 非常适合处理批处理作业、开发/测试环境、大型计算工作负载等中断的工作负载。
 
-基于区域和 SKU，污点 Vm 的定价是可变的。 有关详细信息，请参阅适用于[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定价。
+现货 VM 的定价基于区域和 SKU 是可变的。 有关详细信息，请参阅[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定价。
 
-你可以选择为 VM 设置你愿意支付的最大价格（每小时）。 可使用最多5个小数位来设置专色 VM 的最大价格（美元）。 例如，值 `0.98765`的最大价格为 $0.98765 美元/小时。 如果将最大价格设置为 `-1`，则不会根据价格收回 VM。 VM 的价格将是当前的价格价格或标准 VM 的价格，只要容量和配额可用，此价格就越小。 有关设置最大价格的详细信息，请参阅[污点 vm-定价](spot-vms.md#pricing)。
+您可以选择为 VM 设置您愿意每小时支付的最高价格。 Spot VM 的最高价格可以用美元 （USD） 设置，最多使用 5 个小数位。 例如，该值`0.98765`将是每小时 0.98765 美元的最高价格。 如果将最高价格设置为`-1`，则 VM 不会根据价格被逐出。 VM 的价格将是 Spot 的当前价格或标准 VM 的价格，只要容量和配额可用，标准 VM 的价格就更少了。 有关设置最高价格的详细信息，请参阅[现货 VM - 定价](spot-vms.md#pricing)。
 
 > [!IMPORTANT]
-> 污点实例当前为公共预览版。
-> 不建议将此预览版本用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 竞价实例当前处于公共预览版中。
+> 不建议生产工作负载使用此预览版本。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
 
 ## <a name="use-a-template"></a>使用模板
 
-对于 "部署点模板"，请使用`"apiVersion": "2019-03-01"` 或更高版本。 将 `priority`、`evictionPolicy` 和 `billingProfile` 属性添加到模板中：
+对于 Spot 模板部署，`"apiVersion": "2019-03-01"`请使用或更高版本。 在模板`priority`中`evictionPolicy`添加`billingProfile`和 属性：
 
 ```json
 "priority": "Spot",
@@ -47,7 +47,7 @@ ms.locfileid: "79082789"
 }
 ```
 
-下面是一个示例模板，其中包含为专色 VM 添加的属性。 将资源名称替换为自己的名称，将 `<password>` 替换为 VM 上本地管理员帐户的密码。
+下面是一个示例模板，其中包含 Spot VM 的添加属性。 将资源名称替换为您自己的资源名称，`<password>`并在 VM 上用本地管理员帐户的密码替换资源名称。
 
 ```json
 {
@@ -186,6 +186,6 @@ ms.locfileid: "79082789"
 
 ## <a name="next-steps"></a>后续步骤
 
-你还可以使用[Azure PowerShell](../windows/spot-powershell.md)或[Azure CLI](spot-cli.md)创建一个专色 VM。
+您还可以使用[Azure PowerShell](../windows/spot-powershell.md)或[Azure CLI](spot-cli.md)创建 Spot VM。
 
 如果遇到错误，请参阅[错误代码](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

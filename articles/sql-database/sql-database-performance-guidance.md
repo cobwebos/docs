@@ -1,6 +1,6 @@
 ---
-title: 应用程序和数据库的性能优化指南
-description: 了解如何在 Azure SQL 数据库中优化数据库应用程序和数据库的性能。
+title: 应用程序和数据库的性能调优指南
+description: 了解如何调整数据库应用程序和数据库以在 Azure SQL 数据库中进行性能调整。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,13 +12,13 @@ ms.author: carlrab
 ms.reviewer: carlrab; jrasnick
 ms.date: 03/10/2020
 ms.openlocfilehash: 4f30ebe39d86db7076baa8c29b2a5cf060b07bf5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255946"
 ---
-# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>优化 Azure SQL 数据库中的应用程序和数据库的性能
+# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>调整应用程序和数据库以在 Azure SQL 数据库中执行性能
 
 如果你确定遇到了与 SQL 数据库相关的性能问题，则以下文章可为你提供帮助：
 
@@ -37,9 +37,9 @@ ms.locfileid: "79255946"
 
 - **因“闲聊”行为而性能变慢的应用程序**
 
-  闲聊应用程序会进行过多的对网络延迟敏感的数据访问操作。 可能需要修改这些类型的应用程序，以减少对 SQL 数据库进行的数据访问操作的数量。 例如，你可以使用批处理即席查询或将查询移至存储过程等技术来提高应用程序性能。 有关详细信息，请参阅[批处理查询](#batch-queries)。
+  闲聊应用程序会进行过多的对网络延迟敏感的数据访问操作。 可能需要修改这些类型的应用程序，以减少对 SQL 数据库进行的数据访问操作的数量。 例如，可使用将即席查询成批处理或将查询移至存储过程等方法，提高应用程序性能。 有关详细信息，请参阅[批处理查询](#batch-queries)。
 
-- **具有不受整台计算机支持的密集型工作负荷的数据库**
+- **具有整个单台计算机无法支持的密集型工作负载的数据库**
 
    超过最高“高级”计算大小的资源的数据库可能受益于横向扩展工作负荷。 有关详细信息，请参阅[跨数据库分片](#cross-database-sharding)和[功能分区](#functional-partitioning)。
 
@@ -234,7 +234,7 @@ ORDER BY start_time DESC
 
 ### <a name="very-large-database-architectures"></a>非常大的数据库体系结构
 
-在 Azure SQL 数据库中的单个数据库的[超大规模](sql-database-service-tier-hyperscale.md)服务层发布之前，客户需要针对单个数据库命中容量限制。 这些容量限制仍适用于托管实例中的弹性池和实例数据库中的已入池数据库。 以下两节讨论了在无法使用超大规模服务层的情况下，在 Azure SQL 数据库中解决非常大的数据库问题的两个选项。
+在 Azure SQL 数据库中单个数据库发布[超大规模](sql-database-service-tier-hyperscale.md)服务层之前，客户曾用于达到单个数据库的容量限制。 这些容量限制仍然存在，用于弹性池中的池数据库和托管实例中的实例数据库。 以下两节将讨论两个选项，用于在无法使用超大规模服务层时解决 Azure SQL 数据库中非常大的数据库的问题。
 
 ### <a name="cross-database-sharding"></a>跨数据库分片
 

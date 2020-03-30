@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Data Box Disk 安全功能 |数据 Microsoft Docs
-description: 介绍为 Azure Data Box Disk 实施的安全功能，这是一个云解决方案，可用于将大量数据传输到 Azure 中
+title: Microsoft Azure Data Box Disk 安全功能 | 关于数据的 Microsoft Docs
+description: 介绍针对 Azure Data Box Disk 实现的安全功能，Azure Data Box Disk 是一种云解决方案，用于将大量数据传输到 Azure
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79117263"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk 安全性和数据保护
@@ -26,7 +26,7 @@ Microsoft Azure Data Box 解决方案由四个彼此交互的主要组件构成�
 - **Azure 中托管的 Azure Data Box 服务** – 用于创建磁盘订单、配置磁盘，然后跟踪订单完成状态的管理服务。
 - **Data Box 磁盘** – 寄送给你的，用于将本地数据导入 Azure 的物理磁盘。 
 - **连接到磁盘的客户端/主机** – 基础结构中的客户端，它们通过 USB 连接到 Data Box 磁盘，并包含需要保护的数据。
-- **云存储** – Azure 云中存储数据的位置。 这通常是链接到所创建的 Azure Data Box 资源的存储帐户。
+- **云存储** – Azure 云中的存储数据的位置。 这通常是链接到所创建的 Azure Data Box 资源的存储帐户。
 
 下图指示了通过 Azure Data Box 磁盘解决方案运行的从本地到 Azure 的数据流。
 

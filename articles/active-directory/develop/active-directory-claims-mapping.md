@@ -14,10 +14,10 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263187"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
@@ -44,7 +44,7 @@ ms.locfileid: "79263187"
 
 有一些可定义如何以及何时在令牌中使用它们的特定声明集。
 
-| 声明集 | 说明 |
+| 声明集 | 描述 |
 |---|---|
 | 核心声明集 | 存在于每个令牌中，与策略无关。 这些声明也被视为受限制的，无法修改。 |
 | 基本声明集 | 包括默认情况下为令牌发出的声明（除了核心声明集之外）。 可以省略或通过使用声明映射策略来修改基本声明。 |
@@ -284,7 +284,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3：每个 Source 的有效 ID 值
 
-| 源 | ID | 说明 |
+| 源 | ID | 描述 |
 |-----|-----|-----|
 | 用户 | surname | 姓氏 |
 | 用户 | givenname | 名字 |
@@ -293,7 +293,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | 用户 | mail | 电子邮件地址 |
 | 用户 | userprincipalname | 用户主体名称 |
 | 用户 | department|部门|
-| 用户 | onpremisessamaccountname | 本地 SAM 帐户名 |
+| 用户 | onpremisessamaccountname | 本地 SAM 帐户名称 |
 | 用户 | netbiosname| NetBios 名称 |
 | 用户 | dnsdomainname | DNS 域名 |
 | 用户 | onpremisesecurityidentifier | 本地安全标识符 |
@@ -334,7 +334,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 - 此元素必须与 **ClaimsTransformation** 属性（定义如何生成此声明的数据）中的转换条目的 ID 元素匹配。
 
-**声明类型：** **JwtClaimType** 和 **SamlClaimType** 元素定义此声明架构条目引用的声明。
+**声明类型：****JwtClaimType** 和 **SamlClaimType** 元素定义此声明架构条目引用的声明。
 
 - JwtClaimType 必须包含要在 JWT 中发出的声明的名称。
 - SamlClaimType 必须包含要在 SAML 令牌中发出的声明的 URI。
@@ -358,9 +358,9 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4：转换方法以及预期输入和输出
 
-|TransformationMethod|预期输入|预期输出|说明|
+|TransformationMethod|预期输入|预期输出|描述|
 |-----|-----|-----|-----|
-|Join|string1、string2、separator|outputClaim|联接输入字符串（之间使用分隔符）。 例如：string1：“foo@bar.com”、string2：“sandbox”、separator：“.”会生成 outputClaim：“foo@bar.com.sandbox”|
+|联接|string1、string2、separator|outputClaim|联接输入字符串（之间使用分隔符）。 例如：string1：“foo@bar.com”、string2：“sandbox”、separator：“.”会生成 outputClaim：“foo@bar.com.sandbox”|
 |ExtractMailPrefix|mail|outputClaim|提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
 
 **InputClaims：** 使用 InputClaims 元素可将数据从声明架构条目传递给转换。 它具有两个属性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
@@ -384,7 +384,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允许作为 SAML NameID 数据源的属性
 
-|源|ID|说明|
+|源|ID|描述|
 |-----|-----|-----|
 | 用户 | mail|电子邮件地址|
 | 用户 | userprincipalname|用户主体名称|
@@ -411,13 +411,13 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | TransformationMethod | 限制 |
 | ----- | ----- |
 | ExtractMailPrefix | 无 |
-| Join | 所联接的后缀必须是资源租户的已验证域。 |
+| 联接 | 所联接的后缀必须是资源租户的已验证域。 |
 
 ### <a name="custom-signing-key"></a>自定义签名密钥
 
-自定义签名密钥必须分配给服务主体对象，才能使声明映射策略生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure PowerShell cmdlet `new-azureadapplicationkeycredential` 为应用程序对象创建对称密钥凭据。 有关此 Azure PowerShell cmdlet 的详细信息，请参阅[get-azureadapplicationkeycredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
+自定义签名密钥必须分配给服务主体对象，才能使声明映射策略生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 为了添加自定义签名密钥，可以使用 Azure PowerShell cmdlet`new-azureadapplicationkeycredential`为应用程序对象创建对称密钥凭据。 有关此 Azure PowerShell cmdlet 的详细信息，请参阅[新 AzureAD 应用程序密钥凭据](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
 
-启用了声明映射的应用必须通过将 `appid={client_id}` 追加到[OpenID connect 元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证其令牌签名密钥。 下面是应使用的 OpenID Connect 元数据文档的格式： 
+启用了声明映射的应用必须通过将 `appid={client_id}` 追加到其 [OpenID 连接元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证其令牌签名密钥。 下面是你应该使用的 OpenID 连接元数据文档的格式： 
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
@@ -435,13 +435,13 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 在 Azure AD 中，在可以为特定服务主体自定义令牌中发出的声明时，可以实现许多方案。 在此部分中，我们会演练几个常见方案，它们可帮助你理解如何使用声明映射策略类型。
 
-#### <a name="prerequisites"></a>必备条件
+#### <a name="prerequisites"></a>先决条件
 
-在以下示例中，会为服务主体创建、更新、链接和删除策略。 如果你是 Azure AD 新手，我们建议在继续学习这些示例之前，先[了解如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。
+在以下示例中，会为服务主体创建、更新、链接和删除策略。 如果您是 Azure AD 的新增产品，我们建议您在继续执行这些示例之前[了解如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。
 
 若要开始，请执行以下步骤：
 
-1. 首先请下载最新的 [Azure AD PowerShell 模块公共预览版](https://www.powershellgallery.com/packages/AzureADPreview)。
+1. 下载最新的[Azure AD PowerShell 模块公共预览版](https://www.powershellgallery.com/packages/AzureADPreview)。
 1. 运行 Connect 命令登录到你的 Azure AD 管理员帐户。 每次启动新会话都需要运行此命令。
 
    ``` powershell
@@ -453,7 +453,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
    Get-AzureADPolicy
    ```
 
-#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>示例：创建并分配一个策略，以忽略颁发给服务主体的令牌中的基本声明
+#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>示例：创建并分配策略以省略从颁发给服务主体的令牌中的基本声明
 
 在此示例中创建一个策略，它会从颁发给链接的服务主体的令牌中删除基本声明集。
 
@@ -469,7 +469,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。
-   1. 若要查看组织的所有服务主体，可以[查询 MICROSOFT GRAPH API](/graph/traverse-the-graph)。 或者，在[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登录到 Azure AD 帐户。
+   1. 要查看组织的所有服务主体，可以[查询 Microsoft 图形 API](/graph/traverse-the-graph)。 或者，在[Microsoft 图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令：  
      
       ``` powershell
@@ -493,7 +493,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。 
-   1. 若要查看组织的所有服务主体，可以[查询 MICROSOFT GRAPH API](/graph/traverse-the-graph)。 或者，在[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登录到 Azure AD 帐户。
+   1. 要查看组织的所有服务主体，可以[查询 Microsoft 图形 API](/graph/traverse-the-graph)。 或者，在[Microsoft 图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令：  
      
       ``` powershell
@@ -517,13 +517,13 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。 
-   1. 若要查看组织的所有服务主体，可以[查询 MICROSOFT GRAPH API](/graph/traverse-the-graph)。 或者，在[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登录到 Azure AD 帐户。
+   1. 要查看组织的所有服务主体，可以[查询 Microsoft 图形 API](/graph/traverse-the-graph)。 或者，在[Microsoft 图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令： 
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-若要了解如何通过 Azure 门户自定义 SAML 令牌中颁发的声明，请参阅[如何：自定义用于企业应用程序的 saml 令牌中颁发的声明](active-directory-saml-claims-customization.md)
+要了解如何自定义通过 Azure 门户在 SAML 令牌中发出的声明，请参阅[如何：自定义在企业应用程序的 SAML 令牌中发出的声明](active-directory-saml-claims-customization.md)

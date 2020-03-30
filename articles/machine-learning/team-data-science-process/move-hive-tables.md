@@ -12,25 +12,25 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 625d9d5c5ecf095d4acbff625754b2065f184536
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251656"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>从 Blob 存储创建 Hive 表和加载数据
 
 本文介绍通用 Hive 查询，该查询可创建 Hive 表并从 Azure Blob 存储加载数据。 同时提供了一些如何对 Hive 表进行分区和使用优化行纵栏表 (ORC) 格式来增强查询性能的指南。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本文假设用户具备以下条件：
 
-* 已创建 Azure 存储帐户。 如果需要说明，请参阅[关于 Azure 存储帐户](../../storage/common/storage-introduction.md)。
+* 创建了 Azure 存储帐户。 如果需要说明，请参阅[有关 Azure 存储帐户](../../storage/common/storage-introduction.md)。
 * 已预配具有 HDInsight 服务的自定义 Hadoop 群集。  如果需要说明，请参阅[在 HDInsight 中设置群集](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)。
 * 已启用了对群集的远程访问，登录并打开了 Hadoop 命令行控制台。 如果需要说明，请参阅[管理 Apache Hadoop 群集](../../hdinsight/hdinsight-administer-use-portal-linux.md)。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>将数据上传到 Azure Blob 存储
-如果按照[设置 Azure 虚拟机以进行高级分析](../../machine-learning/data-science-virtual-machine/overview.md)中提供的说明创建 Azure 虚拟机，那么此脚本文件应已下载到了虚拟机上的 *C:\\Users\\\<用户名\>\\Documents\\Data Science Scripts* 目录中。 这些 Hive 查询只要求在准备好提交的相应字段中提供数据架构和 Azure blob 存储配置。
+如果按照[设置 Azure 虚拟机以进行高级分析](../../machine-learning/data-science-virtual-machine/overview.md)中提供的说明创建 Azure 虚拟机，那么此脚本文件应已下载到了虚拟机上的 *C:\\Users\\\<用户名\>\\Documents\\Data Science Scripts* 目录中。 这些 Hive 查询仅要求您在适当的字段中提供数据架构和 Azure Blob 存储配置，以便随时提交。
 
 假设 Hive 表的数据是**未压缩**的表格格式，并且该数据已上传至 Hadoop 群集所使用的存储帐户的默认或其他容器。
 
@@ -38,9 +38,9 @@ ms.locfileid: "79251656"
 
 * **下载** 24 个 [NYC 出租车行程数据](https://www.andresmh.com/nyctaxitrips)文件（12 个行程文件和 12 个费用文件），
 * 将所有文件**解压缩**为 .csv 文件，然后
-* 将这些文件**上传**到 Azure 存储帐户的默认（或适当的容器）;有关此类帐户的选项，[请参阅将 Azure 存储与 Azure HDInsight 群集配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)主题。 可在此[文章](hive-walkthrough.md#upload)中找到将 .csv 文件上传到存储帐户的默认容器的流程。
+* **将它们上载**到 Azure 存储帐户的默认（或适当的容器）;将它们上载到 Azure 存储帐户的默认（或适当的容器）;此类帐户的选项显示在["使用 Azure 存储与 Azure HDInsight 群集"主题](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)中。 可在此[文章](hive-walkthrough.md#upload)中找到将 .csv 文件上传到存储帐户的默认容器的流程。
 
-## <a name="submit"></a>如何提交 Hive 查询
+## <a name="how-to-submit-hive-queries"></a><a name="submit"></a>如何提交 Hive 查询
 可通过以下方法提交 Hive 查询：
 
 * [在 Hadoop 群集的头节点中通过 Hadoop 命令行提交 Hive 查询](#headnode)
@@ -51,7 +51,7 @@ Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用
 
 提交 Hive 查询时，还可控制 Hive 查询的输出目标，无论是输出到屏幕上还是头节点上的本地文件，或是输入到 Azure blob。
 
-### <a name="headnode"></a>在 Hadoop 群集的头节点中通过 Hadoop 命令行提交 Hive 查询
+### <a name="submit-hive-queries-through-hadoop-command-line-in-headnode-of-hadoop-cluster"></a><a name="headnode"></a>在 Hadoop 群集的头节点中通过 Hadoop 命令行提交 Hive 查询
 如果是复杂的 Hive 查询，在 Hadoop 群集的头节点中直接提交通常比使用 Hive 编辑器或 Azure PowerShell 脚本进行提交的处理速度更快。
 
 登录到 Hadoop 群集的头节点，在头节点的桌面上打开 Hadoop 命令行，并输入命令 `cd %hive_home%\bin`。
@@ -59,7 +59,7 @@ Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用
 有三种方法可在 Hadoop 命令行中提交 Hive 查询：
 
 * 直接提交
-* 使用 "hql" 文件
+* 使用".hql"文件
 * 使用 Hive 命令控制台
 
 #### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>直接在 Hadoop 命令行中提交 Hive 查询。
@@ -67,12 +67,12 @@ Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用
 
 ![用于提交 Hive 查询的命令以及来自 Hive 查询的输出](./media/move-hive-tables/run-hive-queries-1.png)
 
-#### <a name="submit-hive-queries-in-hql-files"></a>在 "hql" 文件中提交 Hive 查询
-如果 Hive 查询更加复杂并且具有多个行，那么在命令行或 Hive 命令控制台中编辑查询的方法并不可行。 一种替代方法是在 Hadoop 群集的头节点中使用文本编辑器，将 Hive 查询保存在头节点的本地目录中的 "hql" 文件中。 然后，可以使用 `-f` 参数提交 "hql" 文件中的 Hive 查询，如下所示：
+#### <a name="submit-hive-queries-in-hql-files"></a>在".hql"文件中提交 Hive 查询
+如果 Hive 查询更加复杂并且具有多个行，那么在命令行或 Hive 命令控制台中编辑查询的方法并不可行。 另一种方法是在 Hadoop 群集的头节点中使用文本编辑器，将 Hive 查询保存在头节点的本地目录中的".hql"文件中。 然后，可以使用如下`-f`参数提交".hql"文件中的 Hive 查询：
 
     hive -f "<path to the '.hql' file>"
 
-!["Hql" 文件中的 Hive 查询](./media/move-hive-tables/run-hive-queries-3.png)
+![".hql"文件中的 Hive 查询](./media/move-hive-tables/run-hive-queries-3.png)
 
 **取消在屏幕上打印 Hive 查询的进度状态**
 
@@ -93,7 +93,7 @@ Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用
 
     hive -e "<hive query>" > <local path in the head node>
 
-在下面的示例中，Hive 查询的输出将写入到目录 `hivequeryoutput.txt` 中的文件 `C:\apps\temp` 中。
+在下面的示例中，Hive 查询的输出将写入到目录 `C:\apps\temp` 中的文件 `hivequeryoutput.txt` 中。
 
 ![Hive 查询的输出](./media/move-hive-tables/output-hive-results-1.png)
 
@@ -111,14 +111,14 @@ Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用
 
 ![显示 Hive 查询输出的 Azure 存储资源管理器](./media/move-hive-tables/output-hive-results-3.png)
 
-### <a name="hive-editor"></a>用 Hive 编辑器提交 Hive 查询
-还可以通过在 web 浏览器中输入以下格式的 URL *： https：\//\<Hadoop 群集名称 >* ，使用查询控制台（Hive 编辑器）。 必须先登录才能查看此控制台，因此需要使用 Hadoop 群集凭据进行登录。
+### <a name="submit-hive-queries-with-the-hive-editor"></a><a name="hive-editor"></a>使用 Hive 编辑器提交 Hive 查询
+您还可以使用查询控制台（Hive 编辑器）在 Web 浏览器中输入表单*https\//\<的 URL：hadoop 群集名称>.azurehdinsight.net/Home/HiveEditor。* 必须先登录才能查看此控制台，因此需要使用 Hadoop 群集凭据进行登录。
 
-### <a name="ps"></a>通过 Azure PowerShell 命令提交 Hive 查询
+### <a name="submit-hive-queries-with-azure-powershell-commands"></a><a name="ps"></a>使用 Azure PowerShell 命令提交 Hive 查询
 也可以使用 PowerShell 来提交 Hive 查询。 有关说明，请参阅[使用 PowerShell 提交 Hive 作业](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)。
 
-## <a name="create-tables"></a>创建 Hive 数据库和表
-Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql)中共享，并可从该处下载。
+## <a name="create-hive-database-and-tables"></a><a name="create-tables"></a>创建 Hive 数据库和表
+Hive 查询在[GitHub 存储库](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql)中共享，并可从那里下载。
 
 以下是创建一个 Hive 表的 Hive 查询。
 
@@ -137,26 +137,26 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
 
 以下是需要插入的字段以及其他配置的说明：
 
-* **\<数据库名称\>** ：要创建的数据库的名称。 如果只想使用默认数据库，则可以省略查询 "*创建数据库 ...* "。
-* **\<表名称\>** ：要在指定的数据库内创建的表的名称。 如果你要使用默认的数据库，则该表可通过 *\<表名称\>* 而非 \<数据库名称\> 直接引用。
-* **\<字段分隔符\>** ：用于分隔数据文件（要上传到 Hive 表）中的字段的分隔符。
-* **\<行分隔符\>** ：用于分隔数据文件中的行的分隔符。
-* **\<存储位置\>** ：保存 Hive 表数据的 Azure 存储位置。 如果你未指定 *LOCATION \<存储位置\>* ，则默认情况下，数据库和表存储在 Hive 群集的默认容器的 hive/warehouse/ 目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 必须将此位置称为相对于群集默认容器的位置，格式为 *"wasb:///\<directory 1 >/"* 或 *"wasb:///\<directory 1 >/\<directory 2 >/"* 等。执行查询后，将在默认容器中创建相对目录。
-* **TBLPROPERTIES("skip.header.line.count"="1")** ：如果数据文件具有标题行，则必须在 **create table** 查询的*末尾处*添加此属性。 否则，标题行将作为记录加载到表。 如果数据文件没有标题行，则可以在查询中省略此配置。
+* **数据库名称\>：要创建的数据库\<** 的名称。 如果只想使用默认数据库，则可以省略查询"*创建数据库..."。*
+* **表名称\>：要在指定数据库中创建的表\<** 的名称。 如果要使用默认数据库，可以通过*\<表名\>* 直接引用该表，而无需\<数据库名称\>。
+* **字段分隔符\>：分隔要上载到 Hive 表的数据文件中的字段的分隔符。 \<**
+* **行分隔符\>：分隔数据文件中的行的分隔符。 \<**
+* **存储位置\>：用于保存 Hive 表数据的 Azure 存储\<** 位置。 如果你未指定 *LOCATION \<存储位置\>*，则默认情况下，数据库和表存储在 Hive 群集的默认容器的 hive/warehouse/** 目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 此位置必须称为与群集的默认容器相对的位置，其格式为 *"wasb:///\<目录 1>/"* 或*\<"wasb:///目录 1>/\<目录 2>/'* 等。执行查询后，将在默认容器中创建相对目录。
+* **TBLPROPERTIES("skip.header.line.count"="1")**：如果数据文件具有标题行，则必须在 *create table* 查询的**末尾处**添加此属性。 否则，标题行将作为记录加载到表。 如果数据文件没有标题行，则可以在查询中省略此配置。
 
-## <a name="load-data"></a>将数据加载到 Hive 表
+## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>将数据加载到 Hive 表
 以下是将数据加载到 Hive 表的 Hive 查询。
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **\<blob 数据的路径\>** ：如果要上传到 Hive 表的 blob 文件位于 HDInsight Hadoop 群集的默认容器中，则*blob 数据\>的\<路径*应采用以下格式： *"wasb://\<directory in 此容器 >/\<blob 文件名 >"* 。 blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下， *\<blob 数据路径\>* 的格式应为 *"wasb://\<容器名称 >\<>/\<blob 文件名 >"* 。
+* blob**数据的\>路径：如果要上载到 Hive 表的 Blob 文件位于 HDInsight Hadoop 群集的默认容器中，则 blob 数据的路径应采用"此容器中的wasb://目录>/blob 文件名>"。。 \<** * \<\> * *\<\<* blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下*\<，blob\>数据的路径*应采用 *"wasb://\<容器名称>\<存储帐户名称>.blob.core.net/\<blob 文件名>"* 的格式。
 
   > [!NOTE]
   > 要上传到 Hive 表的 blob 数据必须位于 Hadoop 群集存储帐户的默认或其他容器中。 否则，*LOAD DATA* 查询会失败，并声称它无法访问数据。
   >
   >
 
-## <a name="partition-orc"></a>高级主题：已分区表以及将 Hive 数据存储为 ORC 格式
+## <a name="advanced-topics-partitioned-table-and-store-hive-data-in-orc-format"></a><a name="partition-orc"></a>高级主题：已分区表以及将 Hive 数据存储为 ORC 格式
 如果数据较大，对表进行分区则有利于仅需要对表的少量分区进行扫描的查询。 例如，可以将网站的日志数据按照日期进行分区，这是合理的。
 
 除了对 Hive 表进行分区以外，还有益于以优化行纵栏表 (ORC) 格式存储 Hive 数据。 有关 ORC 格式设置的详细信息，请参阅<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles" target="_blank">使用 ORC 文件提高 Hive 读取、写入和处理数据时的性能</a>。
@@ -174,14 +174,14 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
     LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
         PARTITION (<partitionfieldname>=<partitionfieldvalue>);
 
-查询已分区表时，建议在 `where` 子句的**开头**添加分区条件，这样可提高搜索效率。
+查询分区表时，建议在`where`子句**的开头**添加分区条件，从而提高搜索效率。
 
     select
         field1, field2, ..., fieldN
     from <database name>.<partitioned table name>
     where <partitionfieldname>=<partitionfieldvalue> and ...;
 
-### <a name="orc"></a>将 Hive 数据存储为 ORC 格式
+### <a name="store-hive-data-in-orc-format"></a><a name="orc"></a>将 Hive 数据存储为 ORC 格式
 不能直接将 Blob 存储中的数据加载到存储为 ORC 格式的 Hive 表中。 下面的步骤介绍了如何将 Azure blob 中的数据加载到存储为 ORC 格式的 Hive 表中。
 
 创建外部表 **STORED AS TEXTFILE**，然后将 Blob 存储中的数据加载到此表。
@@ -216,7 +216,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> 如果 TEXTFILE 表 *\<数据库名称\>.\<外部 textfile 表名称\>* 具有分区，则在步骤 3 中，`SELECT * FROM <database name>.<external textfile table name>` 命令会选择分区变量作为返回的数据集中的字段。 将数据插入 *\<数据库名称\>.\<ORC 表名称\>* 失败，因为 *\<数据库名称\>.\<ORC 表名称\>* 没有将分区变量作为表架构中的字段。 在这种情况下，需要专门选择要插入到 *\<数据库名称\>.\<ORC 表名称\>* 的字段，如下所示：
+> 如果 TEXTFILE 表*\<数据库\>名称\<。外部文本文件表名称\>* 具有分区，在 STEP 3`SELECT * FROM <database name>.<external textfile table name>`中，命令选择分区变量作为返回的数据集中的字段。 将其插入到*\<数据库\>名称 中。\<ORC 表\>名称*由于*\<数据库名称\>而\<失败。ORC 表\>名称*在表架构中没有分区变量作为字段。 在这种情况下，您需要特别选择要插入到*\<数据库名称 的\>字段。\<ORC 表\>名称*如下：
 >
 >
 
@@ -225,7 +225,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-在将所有数据插入到\<数据库名称\>中后，使用以下查询时，可以安全地删除 *\<外部文本文件表名称\>* *。\<ORC 表名称\>* ：
+在所有数据都*\<\>* 插入到*\<数据库名称\>后，使用以下查询时，可以安全地删除外部文本文件表\<名。ORC 表\>名称*：
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

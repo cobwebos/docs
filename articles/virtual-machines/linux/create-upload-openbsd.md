@@ -1,28 +1,28 @@
 ---
-title: 创建并上传 OpenBSD 映像
+title: 创建和上传 OpenBSD 图像
 description: 了解如何通过 Azure CLI 创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD) 以创建 Azure 虚拟机
-author: thomas1206
+author: gbowerman
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 05/24/2017
-ms.author: huishao
-ms.openlocfilehash: d4ecc539d71933c4aecc9124b903c57cb72838de
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.author: guybo
+ms.openlocfilehash: 1ad1a66d67be7aefe4d9a7acae993e8788cbb193
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969486"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066742"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>创建 OpenBSD 磁盘映像并上传到 Azure
 本文说明如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)。 将其上传后，可以通过 Azure CLI 使用它作为你自己的映像在 Azure 中创建虚拟机 (VM)。
 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 本文假设拥有以下项目：
 
 * **Azure 订阅** - 如果没有帐户，只需几分钟即可创建一个。 如果有 MSDN 订阅，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 否则，请了解如何[创建一个免费试用帐户](https://azure.microsoft.com/pricing/free-trial/)。  
-* Azure CLI - 确保已安装了最新的 [Azure CLI](/cli/azure/install-azure-cli) 并已使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
-* **安装在 .vhd 文件中的 OpenBSD 操作系统**-必须将受支持的 OpenBSD 操作系统（[6.6 版 AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)）安装到虚拟硬盘。 可使用多个工具创建 .vhd 文件。 例如，可使用虚拟化解决方案（如 Hyper-V）创建 .vhd 文件并安装操作系统。 有关如何安装和使用 Hyper-V 的说明，请参阅[安装 Hyper-V 和创建虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
+* Azure CLI - 确保已安装了最新的 [Azure CLI](/cli/azure/install-azure-cli) 并已使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户****。
+* **安装在 .vhd 文件中的 OpenBSD 操作系统**- 支持的 OpenBSD 操作系统[（6.6 版本 AMD64）](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)必须安装到虚拟硬盘上。 可使用多个工具创建 .vhd 文件。 例如，可使用虚拟化解决方案（如 Hyper-V）创建 .vhd 文件并安装操作系统。 有关如何安装和使用 Hyper-V 的说明，请参阅[安装 Hyper-V 和创建虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 
 ## <a name="prepare-openbsd-image-for-azure"></a>为 Azure 准备 OpenBSD 映像
@@ -94,13 +94,13 @@ Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed
 ```
 
 ## <a name="create-storage-resources-and-upload"></a>创建存储资源并上传
-首先，使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
+首先，使用 [az group create](/cli/azure/group) 创建资源组。 下面的示例在*东部*位置创建名为*myResourceGroup*的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-若要上传 VHD，请使用 [az storage account create](/cli/azure/storage/account) 创建存储帐户。 存储帐户名称必须唯一，因此请提供自己的名称。 以下示例创建一个名为 mystorageaccount 的存储帐户：
+若要上传 VHD，请使用 [az storage account create](/cli/azure/storage/account) 创建存储帐户。 存储帐户名称必须唯一，因此请提供自己的名称。 以下示例创建一个名为 mystorageaccount** 的存储帐户：
 
 ```azurecli
 az storage account create --resource-group myResourceGroup \

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253827"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
@@ -29,7 +29,7 @@ ms.locfileid: "79253827"
 
 下面是本文中的图片图例：
 
-| 说明 | 符号 |
+| 描述 | 符号 |
 | --- | --- |
 | 本地 Active Directory 林 |![本地 Active Directory 林](./media/plan-connect-topologies/LegendAD1.png) |
 | 包含筛选导入的本地 Active Directory |![包含筛选导入的 Active Directory](./media/plan-connect-topologies/LegendAD2.png) |
@@ -42,7 +42,7 @@ ms.locfileid: "79253827"
 
 
 > [!IMPORTANT]
-> Microsoft 不支持在正式记录的配置或操作之外修改或操作 Azure AD Connect 同步。 任何这些配置或操作都可能导致 Azure AD Connect 同步的状态不一致或不受支持。因此，Microsoft 无法为此类部署提供技术支持。
+> Microsoft 不支持在正式记录的配置或操作之外修改或操作 Azure AD Connect 同步。 这些配置或操作中的任何一种都可能导致 Azure AD 连接同步出现不一致或不受支持的状态。因此，Microsoft 无法为此类部署提供技术支持。
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>单个林，单个 Azure AD 租户
@@ -62,9 +62,9 @@ ms.locfileid: "79253827"
 
 如果使用多个林，所有林必须可由单个 Azure AD Connect 同步服务器访问。 服务器必须加入域。 如果需要访问所有林，可将服务器放在外围网络（也称为 DMZ、外围安全区域或屏蔽子网）中。
 
-Azure AD Connect 安装向导提供多个选项用于合并多个林中显示的用户。 目标是一个用户只在 Azure AD 中显示一次。 可以在安装向导的自定义安装路径中配置某些常见拓扑。 在“唯一标识用户”页上选择表示拓扑的相应选项。 只对用户配置合并。 复制的组不会与默认配置合并。
+Azure AD Connect 安装向导提供多个选项用于合并多个林中显示的用户。 目标是一个用户只在 Azure AD 中显示一次。 可以在安装向导的自定义安装路径中配置某些常见拓扑。 在“唯一标识用户”页上选择表示拓扑的相应选项。**** 只对用户配置合并。 复制的组不会与默认配置合并。
 
-有关独立的拓扑、[完整网格](#multiple-forests-full-mesh-with-optional-galsync)和[帐户资源拓扑](#multiple-forests-account-resource-forest)的部分讨论了常见拓扑。
+有关单独的拓扑、[全网格](#multiple-forests-full-mesh-with-optional-galsync)和[帐户资源拓扑](#multiple-forests-account-resource-forest)的部分将讨论常见拓扑。
 
 Azure AD Connect 同步中的默认配置假设：
 
@@ -113,7 +113,7 @@ Azure AD Connect 同步中的默认配置假设：
 
 ![多个林的帐户资源林拓扑](./media/plan-connect-topologies/MultiForestAccountResource.png)
 
-在帐户资源林拓扑中，有一个或多个包含活动用户帐户的*帐户*林。 此外，还有一个或多个包含已禁用帐户的*资源*林。
+在帐户资源林拓扑中，您有一个或多个具有活动用户帐户*的帐户*林。 您还有一个或多个具有禁用帐户*的资源*林。
 
 在此方案中，一个（或多个）资源林信任所有帐户林。 资源林通常包含装有 Exchange 和 Lync 的扩展 Active Directory 架构。 所有 Exchange 和 Lync 服务以及其他共享服务都位于此林中。 用户在此林中具有一个禁用的用户帐户，并且邮箱被链接到帐户林。
 

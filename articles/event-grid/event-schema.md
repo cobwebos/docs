@@ -1,6 +1,6 @@
 ---
 title: Azure 事件网格事件架构
-description: 描述所有事件的属性和架构。 事件包含一组五个必需的字符串属性和一个必需的数据对象。
+description: 介绍所有事件都存在的属性和架构。事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。
 services: event-grid
 author: banisadr
 manager: timlt
@@ -9,20 +9,20 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: babanisa
 ms.openlocfilehash: 35cea2e6df311d2f4071686c21c8e4c36477abc1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244831"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
-本文介绍为所有事件提供的属性和架构。 事件包含一组五个必需的字符串属性和一个必需的数据对象。 这些属性在任何发布服务器的所有事件中通用。 数据对象具有特定于每个发布者的属性。 对于系统主题，这些属性特定于资源提供程序，例如 Azure 存储或 Azure 事件中心。
+本文介绍为所有事件提供的属性和架构。事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。 这些属性在任何发布服务器的所有事件中通用。 数据对象具有特定于每个发布者的属性。 对于系统主题，这些属性特定于资源提供程序，例如 Azure 存储或 Azure 事件中心。
 
-事件源会将事件发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件都限制为 64 KB （公开上市）或 1 MB （预览）。 事件或数组超出大小限制时会收到响应“413 有效负载太大”。
+事件源会将事件发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件都限制为 64 KB（正式版）或 1 MB（预览版）。 事件或数组超出大小限制时会收到响应“413 有效负载太大”****。
 
 > [!NOTE]
-> 最大为 64 KB 的事件包含在公开上市（GA）服务级别协议（SLA）中。 最大为 1 MB 的事件支持目前处于预览状态。 超过 64 KB 的事件以 64-KB 为增量收费。 
+> 正式版服务级别协议 (GA) 涵盖了大小高达 64 KB 的事件。 预览版中目前支持最大为 1 MB 的事件。 超过 64 KB 的事件以 64 KB 为增量计费。 
 
 事件网格会将事件发送给具有单个事件的数组中的订阅者。 此行为在将来可能会更改。
 
@@ -83,16 +83,16 @@ ms.locfileid: "79244831"
 
 所有事件均具有以下相同的顶级数据：
 
-| properties | 类型 | 必选 | 说明 |
+| properties | 类型 | 必选 | 描述 |
 | -------- | ---- | -------- | ----------- |
-| 主题 | 字符串 | 否，但如果包含，则必须与事件网格主题 Azure 资源管理器 ID 完全匹配。 如果不包含，事件网格将标记到事件。 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| 主题 | 字符串 | 否，但如果包含，则必须与事件网格主题 Azure 资源管理器 ID 完全匹配。 如果未包括，事件网格将标记到事件上。 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 是 | 事件主题的发布者定义路径。 |
 | eventType | 字符串 | 是 | 此事件源的一个注册事件类型。 |
 | EventTime | 字符串 | 是 | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | 字符串 | 是 | 事件的唯一标识符。 |
 | data | 对象 (object) | 否 | 特定于资源提供程序的事件数据。 |
-| dataVersion | 字符串 | 不，但将使用空值进行标记。 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 不是必需的，但如果包含，则必须与事件网格架构 `metadataVersion` 完全匹配（目前仅 `1`）。 如果不包含，事件网格将标记到事件。 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| dataVersion | 字符串 | 否，但将加盖空值。 | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | 字符串 | 不需要，但如果包含，则必须与事件网格架构`metadataVersion`完全匹配（目前，仅`1`）。 如果未包括，事件网格将标记到事件上。 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 若要了解数据对象中的属性，请参阅事件源：
 
@@ -100,7 +100,7 @@ ms.locfileid: "79244831"
 * [容器注册表](event-schema-container-registry.md)
 * [Blob 存储](event-schema-blob-storage.md)
 * [事件中心](event-schema-event-hubs.md)
-* [IoT 中心](event-schema-iot-hub.md)
+* [物联网中心](event-schema-iot-hub.md)
 * [媒体服务](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [资源组（管理操作）](event-schema-resource-groups.md)
 * [服务总线](event-schema-service-bus.md)
@@ -111,7 +111,7 @@ ms.locfileid: "79244831"
 
 将事件发布到自定义主题时，可为事件创建主题，便于订阅者们了解他们是否对该事件感兴趣。 订阅者使用主题来筛选和路由事件。 请考虑为事件发生的位置提供路径，以便订阅者可根据该路径的片段进行筛选。 通过路径，订阅者可精确或宽泛地筛选事件。 例如，如果在主题中提供一个由三个片段构成的路径（如 `/A/B/C`），订阅者可根据第一个片段 `/A` 进行筛选，获取范围较宽泛的一组事件。 这些订阅者会获取主题为 `/A/B/C` 或 `/A/D/E` 这样的事件。 其他订阅者可通过 `/A/B` 进行筛选，这样可以获取范围更精确的一组事件。
 
-有时，需要提供有关发生事件更详细的信息才能查找到所需主题。 例如，将文件添加到容器时，“存储帐户”发布服务器提供主题`/blobServices/default/containers/<container-name>/blobs/<file>`。 订阅者可以按路径 `/blobServices/default/containers/testcontainer` 进行筛选，获取有关该容器而非存储帐户中其他容器的所有事件。 订阅者还可通过使用后缀 `.txt` 进行筛选或路由，来达到仅处理文本文件的目的。
+有时，需要提供有关发生事件更详细的信息才能查找到所需主题。 例如，将文件添加到容器时，“存储帐户”发布服务器提供主题 `/blobServices/default/containers/<container-name>/blobs/<file>`****。 订阅者可以按路径 `/blobServices/default/containers/testcontainer` 进行筛选，获取有关该容器而非存储帐户中其他容器的所有事件。 订阅者还可通过使用后缀 `.txt` 进行筛选或路由，来达到仅处理文本文件的目的。
 
 ## <a name="next-steps"></a>后续步骤
 

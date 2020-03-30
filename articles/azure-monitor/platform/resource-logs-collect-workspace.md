@@ -1,5 +1,5 @@
 ---
-title: Log Analytics 工作区收集 Azure 资源日志
+title: 在 Log Analytics 工作区中收集 Azure 资源日志
 description: 了解如何将 Azure 资源日志流式传输到 Azure Monitor 中的 Log Analytics 工作区。
 author: bwren
 services: azure-monitor
@@ -8,68 +8,68 @@ ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248588"
 ---
-# <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>在 Azure Monitor 中 Log Analytics 工作区收集 Azure 平台日志
-Azure 中的[平台日志](platform-logs-overview.md)，包括 azure 活动日志和资源日志，提供 azure 资源及其所依赖的 azure 平台的详细诊断和审核信息。 本文介绍如何在 Log Analytics 工作区中收集资源日志，以便使用功能强大的日志查询在 Azure Monitor 日志中收集的其他监视数据对其进行分析，还可以 Azure Monitor 利用警报和可视化效果. 
+# <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>在 Azure Monitor 的 Log Analytics 工作区中收集 Azure 平台日志
+Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 本文介绍如何收集 Log Analytics 工作区中的资源日志，以便可以结合通过强大的日志查询在 Azure Monitor 日志中收集的其他监视数据对其进行分析，并利用其他 Azure Monitor 功能，例如警报和可视化。 
 
 
-## <a name="what-you-can-do-with-platform-logs-in-a-workspace"></a>如何在工作区中使用平台日志
-通过将平台日志收集到 Log Analytics 工作区中，可以分析所有 Azure 资源的日志，并利用可用于[Azure Monitor 日志](data-platform-logs.md)的所有功能，包括以下内容：
+## <a name="what-you-can-do-with-platform-logs-in-a-workspace"></a>如何处理工作区中的平台日志
+将平台日志收集到 Log Analytics 工作区中可以统一分析所有 Azure 资源的日志，并利用适用于 [Azure Monitor 日志](data-platform-logs.md)的所有功能，包括：
 
-* **日志查询**-使用强大的查询语言创建[日志查询](../log-query/log-query-overview.md)，以快速分析和获取诊断数据的见解，并使用从 Azure Monitor 中的其他源收集的数据对其进行分析。
-* **警报**-使用[Azure Monitor 中的日志警报](alerts-log.md)，获取资源日志中标识的关键条件和模式的主动通知。
-* **可视化效果**-将日志查询的结果固定到 Azure 仪表板，或将其作为交互式报表的一部分包含在工作簿中。
+* **日志查询** - 使用强大的查询语言创建[日志查询](../log-query/log-query-overview.md)，以快速分析和洞察诊断数据，并结合从 Azure Monitor 中的其他源收集的数据对其进行分析。
+* **警报** - 使用 [Azure Monitor 中的日志警报](alerts-log.md)获取在资源日志中识别到的关键状况和模式的主动通知。
+* **可视化** - 将日志查询的结果固定到 Azure 仪表板，或将其作为交互式报告的一部分包含在工作簿中。
 
-## <a name="prerequisites"></a>必备条件
-如果尚未[创建新的工作区](../learn/quick-create-workspace.md)，则需要创建一个。 只要配置设置的用户具有对这两个订阅的相应 RBAC 访问权限，工作区就不必与资源发送日志位于同一订阅中。
+## <a name="prerequisites"></a>先决条件
+如果没有工作区，需要[创建新的工作区](../learn/quick-create-workspace.md)。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，工作区就不必位于发送日志的资源所在的订阅中。
 
 ## <a name="create-a-diagnostic-setting"></a>创建诊断设置
 通过创建 Azure 资源的诊断设置，将平台日志发送到 Log Analytics 工作区和其他目标。 有关详细信息，请参阅[创建诊断设置以收集 Azure 中的日志和指标](diagnostic-settings.md)。
 
 
 ## <a name="activity-log-collection"></a>活动日志集合
-可以将任何单个订阅中的活动日志发送到最多五个 Log Analytics 工作区。 Log Analytics 工作区中收集的资源日志数据存储在**AzureActivity**表中。 
+可以将任一订阅中的活动日志发送到最多五个 Log Analytics 工作区。 Log Analytics 工作区中收集的资源日志数据存储在 AzureActivity 表中****。 
 
 ## <a name="resource-log-collection-mode"></a>资源日志收集模式
-Log Analytics 工作区中收集的资源日志数据存储在表中，如[Azure Monitor 日志的结构](../log-query/logs-structure.md)所述。 资源日志使用的表取决于资源使用的集合类型：
+如 [Azure Monitor 日志的结构](../log-query/logs-structure.md)中所述，在 Log Analytics 工作区中收集的资源日志存储在表中。 资源日志使用的表取决于资源使用的收集类型：
 
-- Azure 诊断-写入的所有数据都在_AzureDiagnostics_表中。
-- 特定于资源的数据将写入每个资源类别的单独表中。
+- Azure 诊断 - 所有数据将写入到 _AzureDiagnostics_ 表中。
+- 特定于资源 - 每个类别的资源的数据将写入到单独的表中。
 
 ### <a name="azure-diagnostics-mode"></a>Azure 诊断模式 
-在此模式下，将在_AzureDiagnostics_表中收集所有[诊断设置](diagnostic-settings.md)中的所有数据。 这是当今大多数 Azure 服务使用的传统方法。
+在此模式下，任何[诊断设置](diagnostic-settings.md)中的所有数据将收集到 _AzureDiagnostics_ 表中。 这是当今大多数 Azure 服务使用的传统方法。
 
-由于多个资源类型将数据发送到同一个表，因此其架构是所收集的所有不同数据类型的架构的超集。
+由于多个资源类型会将数据发送到同一个表，因此其架构是所收集的所有不同数据类型的架构的超集。
 
-请考虑以下示例，其中在以下数据类型的相同工作区中收集了诊断设置：
+在以下示例中，以下数据类型的诊断设置将收集到同一个工作区中：
 
-- 服务1的审核日志（架构中包含列 A、B 和 C）  
-- 服务1的错误日志（架构中包含列 D、E 和 F）  
-- 服务2（具有由 G、H 和 I 列组成的架构）的审核日志  
+- 服务 1 的审核日志（架构由列 A、B 和 C 组成）  
+- 服务 1 的错误日志（架构由列 D、E 和 F 组成）  
+- 服务 2 的审核日志（架构由列 G、H 和 I 组成）  
 
-AzureDiagnostics 表将如下所示：  
+AzureDiagnostics 表的外观如下所示：  
 
 | ResourceProvider    | 类别     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
-| Service1 | ErrorLogs    |    |    |    | q1 | w1 | e1 |    |    |    |
-| Service2 | AuditLogs    |    |    |    |    |    |    | j1 | k1 | l1 |
-| Service1 | ErrorLogs    |    |    |    | q2 | w2 | e2 |    |    |    |
-| Service2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | l3 |
-| Service1 | AuditLogs    | x5 | y5 | z5 |    |    |    |    |    |    |
+| Microsoft.Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
+| Microsoft.Service1 | ErrorLogs    |    |    |    | q1 | w1 | e1 |    |    |    |
+| Microsoft.Service2 | AuditLogs    |    |    |    |    |    |    | j1 | k1 | l1 |
+| Microsoft.Service1 | ErrorLogs    |    |    |    | q2 | w2 | e2 |    |    |    |
+| Microsoft.Service2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | l3 |
+| Microsoft.Service1 | AuditLogs    | x5 | y5 | z5 |    |    |    |    |    |    |
 | ... |
 
 ### <a name="resource-specific"></a>特定于资源
-在此模式下，将为在 "诊断" 设置中选择的每个类别创建所选工作区中的各个表。 建议使用此方法，因为这样可以更轻松地处理日志查询中的数据、提供架构及其结构的更好发现，提高引入延迟和查询时间的性能，并能够在特定表。 所有 Azure 服务最终将迁移到特定于资源的模式。 
+在此模式下，将会根据在诊断设置中选择的每个类别，在所选工作区中创建各个表。 建议使用此方法，因为它可以大幅简化日志查询中数据的处理、更好地发现架构及其结构、改善引入延迟和查询时间方面的性能、可以授予针对特定表的 RBAC 权限，等等。 所有 Azure 服务最终都会迁移到特定于资源的模式。 
 
-上面的示例将生成三个表：
+以上示例会创建三个表：
  
-- 表*Service1AuditLogs*如下所示：
+- 如下所示的表 *Service1AuditLogs*：
 
     | 资源提供程序 | 类别 | A | B | C |
     | -- | -- | -- | -- | -- |
@@ -77,7 +77,7 @@ AzureDiagnostics 表将如下所示：
     | Service1 | AuditLogs | x5 | y5 | z5 |
     | ... |
 
-- 表*Service1ErrorLogs*如下所示：  
+- 如下所示的表 *Service1ErrorLogs*：  
 
     | 资源提供程序 | 类别 | D | E | F |
     | -- | -- | -- | -- | -- | 
@@ -85,7 +85,7 @@ AzureDiagnostics 表将如下所示：
     | Service1 | ErrorLogs |  q2 | w2 | e2 |
     | ... |
 
-- 表*Service2AuditLogs*如下所示：  
+- 如下所示的表 *Service2AuditLogs*：  
 
     | 资源提供程序 | 类别 | G | H | I |
     | -- | -- | -- | -- | -- |
@@ -96,7 +96,7 @@ AzureDiagnostics 表将如下所示：
 
 
 ### <a name="select-the-collection-mode"></a>选择收集模式
-大多数 Azure 资源会将数据写入**Azure 诊断**或**特定于资源的模式下**的工作区，而无需作出选择。 请参阅[每个服务的文档](diagnostic-logs-schema.md)以了解其使用的模式的详细信息。 所有 Azure 服务最终将使用特定于资源的模式。 在此转换过程中，某些资源将允许您在 "诊断" 设置中选择一种模式。 你应为任何新的诊断设置指定特定于资源的模式，因为这样可以更轻松地管理数据，并可帮助你在以后避免复杂的迁移。
+大多数 Azure 资源在“Azure 诊断”或“特定于资源”模式下将数据写入工作区，而不允许用户选择模式。******** 有关使用哪种模式的详细信息，请参阅[每个服务的文档](diagnostic-logs-schema.md)。 所有 Azure 服务最终都会使用特定于资源的模式。 在进行这种过渡期间，某些资源允许在诊断设置中选择模式。 应该为任何新的诊断设置指定特定于资源的模式，因为这可以更轻松地管理数据，并可帮助你在今后避免复杂的迁移。
   
    ![诊断设置模式选择器](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
@@ -104,24 +104,24 @@ AzureDiagnostics 表将如下所示：
 
 
 > [!NOTE]
-> 目前，在 Azure 门户中配置诊断设置时，只能选择**Azure 诊断**和**特定于资源**的模式。 如果使用 CLI、PowerShell 或 Rest API 配置设置，则默认为**Azure 诊断**。
+> 目前，只能在 Azure 门户中配置诊断设置时选择“Azure 诊断”和“特定于资源”模式。******** 如果使用 CLI、PowerShell 或 REST API 配置设置，则模式默认为“Azure 诊断”。****
 
-可以将现有诊断设置修改为特定于资源的模式。 在这种情况下，已收集的数据将保留在_AzureDiagnostics_表中，直到根据工作区的保留设置将其删除。 新数据将收集到专用表中。 使用[union](https://docs.microsoft.com/azure/kusto/query/unionoperator)运算符跨两个表查询数据。
+可将现有的诊断设置修改为特定于资源的模式。 在这种情况下，已收集的数据将保留在 _AzureDiagnostics_ 表中，直到根据工作区的保留设置删除了这些数据。 新数据将收集到专用表中。 可以使用 [union](https://docs.microsoft.com/azure/kusto/query/unionoperator) 运算符跨两个表查询数据。
 
-继续观看[Azure 更新](https://azure.microsoft.com/updates/)博客，了解有关支持特定于资源模式的 azure 服务的公告。
+有关支持特定于资源模式的 Azure 服务的公告，请继续阅读 [Azure 更新](https://azure.microsoft.com/updates/)博客。
 
 ### <a name="column-limit-in-azurediagnostics"></a>AzureDiagnostics 中的列限制
-对于 Azure Monitor 日志中的任何表，都存在500的属性限制。 达到此限制后，将在引入时删除任何包含第一个500之外的属性的数据的行。 *AzureDiagnostics*表特别受此限制的限制，因为它包含向其写入的所有 Azure 服务的属性。
+Azure Monitor 日志中的任何一个表限制为 500 个属性。 一旦达到该限制，在引入时，包含不属于前 500 个属性的数据的所有行将被删除。 *AzureDiagnostics* 表特别容易超过此限制，因为它包含写入到其中的所有 Azure 服务的属性。
 
-如果要从多个服务收集资源日志， _AzureDiagnostics_可能超过此限制，将丢失数据。 在所有 Azure 服务都支持特定于资源的模式之前，应将资源配置为写入多个工作区，以降低达到500列限制的可能性。
+如果从多个服务收集资源日志，__ AzureDiagnostics 可能会超过此限制，因此数据将会丢失。 在所有 Azure 服务都支持特定于资源的模式之前，应将资源配置为写入到多个工作区，以减少达到 500 列限制的可能性。
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
-Azure 数据工厂是一组非常详细的日志，它是已知写入大量列并可能导致_AzureDiagnostics_超出其限制的一种服务。 对于在启用特定于资源的模式之前配置的任何诊断设置，将为任何活动的每个唯一命名的 user 参数创建一个新列。 由于活动输入和输出的详细特性，将创建更多列。
+Azure 数据工厂包含非常详细的日志集，已知它是一个写入大量列的服务，可能会导致 _AzureDiagnostics_ 超过其限制。 对于在支持特定于资源的模式之前配置的任何诊断设置，将会针对任一活动，为每个唯一命名的用户参数创建一个新列。 由于活动输入和输出的详细特性，将会创建更多列。
  
-应尽可能快地迁移日志，以使用特定于资源的模式。 如果无法立即执行此操作，则一种临时替代方法是将 Azure 数据工厂日志隔离到自己的工作区中，以最大程度地减少这些日志影响在工作区中收集的其他日志类型的几率。
+应尽快迁移日志，以使用特定于资源的模式。 如果无法立即做到这一点，一种临时的替代方案是将 Azure 数据工厂日志隔离到其自身的工作区，以尽量减少这些日志影响工作区中收集的其他日志类型的可能性。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [阅读有关资源日志的详细信息](platform-logs-overview.md)。
-* [创建诊断设置以收集 Azure 中的日志和指标](diagnostic-settings.md)。
+* [详细阅读资源日志](platform-logs-overview.md)。
+* [创建诊断设置以在 Azure 中收集日志和指标](diagnostic-settings.md)。
