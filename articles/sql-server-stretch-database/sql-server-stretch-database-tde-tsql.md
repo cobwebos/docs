@@ -1,5 +1,5 @@
 ---
-title: 为 Stretch Database 启用透明数据加密（T-sql）
+title: 为 Stretch Database 启用透明数据加密 (T-SQL)
 description: 为 Azure TSQL 上的 SQL Server Stretch Database 启用透明数据加密 (TDE)
 services: sql-server-stretch-database
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 6f1f5f55348069dbfe11b4d5857d93f8ba8c9b19
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033957"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>为 Azure 上的 Stretch Database 启用透明数据加密 (TDE) (Transact-SQL)
@@ -30,12 +30,12 @@ ms.locfileid: "74033957"
 
 透明数据加密 (TDE) 无需更改应用程序，即可对静止的数据库、关联的备份和事务日志执行实时加密和解密，帮助防止恶意活动的威胁。
 
-TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 数据库加密密钥由内置服务器证书保护。 内置服务器证书对每个 Azure 服务器都是唯一的。 Microsoft 每隔 90 天自动轮换这些证书至少一次。 有关 TDE 的一般描述，请参阅[透明数据加密 (TDE)]。
+TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 数据库加密密钥由内置服务器证书保护。 内置服务器证书对每个 Azure 服务器都是唯一的。 Microsoft 至少每 90 天自动轮换这些证书。 有关 TDE 的一般说明，请参阅[透明数据加密 (TDE)]。
 
 ## <a name="enabling-encryption"></a>启用加密
 对于存储从启用延伸的 SQL Server 数据库迁移的数据的 Azure 数据库，若要启用 TDE，请执行以下操作：
 
-1. 使用在 master 数据库中是管理员或 *dbmanager* 角色成员的登录名，连接到托管数据库的 Azure 服务器上的 **master** 数据库
+1. 使用在 master 数据库中是管理员或 **dbmanager** 角色成员的登录名，连接到托管数据库的 Azure 服务器上的 *master* 数据库
 2. 执行以下语句来加密数据库。
 
 ```sql
@@ -45,7 +45,7 @@ ALTER DATABASE [database_name] SET ENCRYPTION ON;
 ## <a name="disabling-encryption"></a>禁用加密
 对于存储从启用延伸的 SQL Server 数据库迁移的数据的 Azure 数据库，若要禁用 TDE，请执行以下操作：
 
-1. 使用在 master 数据库中充当管理员或 *dbmanager* 角色成员的登录名，连接到 **master** 数据库
+1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到 *master* 数据库
 2. 执行以下语句来加密数据库。
 
 ```sql
@@ -55,7 +55,7 @@ ALTER DATABASE [database_name] SET ENCRYPTION OFF;
 ## <a name="verifying-encryption"></a>验证加密
 若要验证存储从启用延伸的 SQL Server 数据库迁移的数据的 Azure 数据库的加密状态，请执行以下操作：
 
-1. 使用在 master 数据库中充当管理员或 *dbmanager* 角色成员的登录名，连接到 **master** 数据库或实例数据库
+1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到 *master* 数据库或实例数据库
 2. 执行以下语句来加密数据库。
 
 ```sql
@@ -69,7 +69,7 @@ FROM
 结果 ```1``` 表示数据库已加密，```0``` 表示数据库未加密。
 
 <!--Anchors-->
-[透明数据加密 (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[透明数据加密 （TDE）]: https://msdn.microsoft.com/library/bb934049.aspx
 
 
 <!--Image references-->

@@ -1,5 +1,5 @@
 ---
-title: 解析 T-sql 差异-迁移
+title: 解决 T-SQL 差异 -迁移
 description: 在 Azure SQL 数据库中不完全支持的 Transact-SQL 语句
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
 ms.openlocfilehash: e0870ac9dc818ca07e149421b486136c76dd61a4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79208821"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异
@@ -38,7 +38,7 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 - CREATE 和 ALTER DATABASE 语句具有超过 36 个的选项。 这些语句包括文件定位、FILESTREAM 以及仅适用于 SQL Server 的服务中转站选项。 如果在迁移前创建数据库，这可能不是问题，但如果要迁移用于创建数据库的 T-SQL 代码，应将 [CREATE DATABASE（Azure SQL 数据库）](https://msdn.microsoft.com/library/dn268335.aspx)与 [CREATE DATABASE (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) 中的 SQL Server 语法进行比较，以确保所用的所有选项都受支持。 Azure SQL 数据库的 CREATE DATABASE 语句还具有服务目标和仅适用于 SQL 数据库的弹性缩放选项。
 - CREATE 和 ALTER TABLE 语句具有不能在 SQL 数据库上使用的 FileTable 选项，因为不支持 FILESTREAM。
-- SQL 数据库支持 CREATE 和 ALTER login 语句，但未提供所有选项。 要使数据库更易于移植，SQL 数据库建议尽可能使用包含的数据库用户，而不是使用登录名。 有关详细信息，请参阅[创建/更改登录名](https://docs.microsoft.com/sql/t-sql/statements/alter-login-transact-sql)和[管理登录名和用户](sql-database-manage-logins.md)。
+- SQL 数据库支持 CREATE 和 ALTER login 语句，但未提供所有选项。 要使数据库更易于移植，SQL 数据库建议尽可能使用包含的数据库用户，而不是使用登录名。 有关详细信息，请参阅[创建/更改登录](https://docs.microsoft.com/sql/t-sql/statements/alter-login-transact-sql)[和管理登录名和用户](sql-database-manage-logins.md)。
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Azure SQL 数据库不支持的 Transact-SQL 语法
 
@@ -78,13 +78,13 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 ## <a name="full-transact-sql-reference"></a>完整的 Transact-SQL 引用
 
-有关 Transact-SQL 语法、用法和示例的详细信息，请参阅 SQL Server 联机丛书中的  [Transact-SQL 参考（数据库引擎）](https://msdn.microsoft.com/library/bb510741.aspx) 。
+有关 Transact-SQL 语法、使用情况和示例的详细信息，请参阅 SQL 服务器帐簿联机中的 [Transact-SQL 引用（数据库引擎）。](https://msdn.microsoft.com/library/bb510741.aspx) 
 
 ### <a name="about-the-applies-to-tags"></a>有关“适用于”标记
 
-Transact-SQL 参考包含从 SQL Server 2008 到最新版本的相关文章。 文章标题下面有一个图标栏，其中列出了四个 SQL Server 平台，并指明了适用性。 例如，SQL Server 2012 中引入了可用性组。 " [创建可用性组](https://msdn.microsoft.com/library/ff878399.aspx) " 一文指示该语句适用于**SQL Server （从2012开始）** 。 该语句不适用于 SQL Server 2008、SQL Server 2008 R2、Azure SQL 数据库、Azure SQL 数据仓库或并行数据仓库。
+Transact-SQL 参考包含从 SQL Server 2008 到最新版本的相关文章。 文章标题下面有一个图标栏，其中列出了四个 SQL Server 平台，并指明了适用性。 例如，SQL Server 2012 中引入了可用性组。  [创建可用性组](https://msdn.microsoft.com/library/ff878399.aspx) 文章指示该语句适用于 SQL **Server（从 2012 年开始）。** 该语句不适用于 SQL Server 2008、SQL Server 2008 R2、Azure SQL 数据库、Azure SQL 数据仓库或并行数据仓库。
 
-在某些情况下，可以在产品中使用文章的一般主题，但产品之间存在细微的差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 在某些情况下，可以在产品中使用文章的一般主题，但产品之间存在细微的差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 例如，CREATE TRIGGER 文章在 SQL 数据库中可用。 但服务器级触发器的 **ALL SERVER** 选项指示不能在 SQL 数据库中使用服务器级触发器。 请改用数据库级触发器。
+在某些情况下，产品中可能使用了某篇文章的常规主旨，但产品之间存在细微差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 在某些情况下，产品中可能使用了某篇文章的常规主旨，但产品之间存在细微差异。 在适当的情况下，我们会在文章的中间位置指出该差异。 例如，CREATE TRIGGER 文章在 SQL 数据库中可用。 但服务器级触发器的 **ALL SERVER** 选项指示不能在 SQL 数据库中使用服务器级触发器。 请改用数据库级触发器。
 
 ## <a name="next-steps"></a>后续步骤
 

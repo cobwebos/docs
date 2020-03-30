@@ -1,5 +1,5 @@
 ---
-title: 启用脱机同步（Cordova）
+title: 启用脱机同步 (Cordova)
 description: 了解如何在 Cordova 应用程序中使用应用服务移动应用来缓存和同步脱机数据。
 ms.assetid: 1a3f685d-f79d-4f8b-ae11-ff96e79e9de9
 ms.tgt_pltfrm: mobile-cordova-ios
@@ -7,10 +7,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 5a2d5ec8da5c1a317039e656f6df884a10efe7c3
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459412"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>为 Cordova 移动应用启用脱机同步
@@ -59,7 +59,7 @@ ms.locfileid: "77459412"
         // Get the sync context from the client
         syncContext = client.getSyncContext();
 
-    前面增加的代码会初始化本地存储，并定义与 Azure 后端中使用的列值匹配的本地表。 （无需在此代码中包含所有列值。）`version` 字段由移动后端维护，并且用于解决冲突。
+    前面增加的代码会初始化本地存储，并定义与 Azure 后端中使用的列值匹配的本地表。 （您不需要在此代码中包含所有列值。 该`version`字段由移动后端维护，用于解决冲突。
 
     调用 **getSyncContext** 可获取对同步上下文的引用。 对于调用 `.push()` 时客户端应用修改的所有表，此同步上下文通过跟踪和推送这些表中的更改来帮助保持表关系。
 
@@ -129,7 +129,7 @@ ms.locfileid: "77459412"
 
 对具有由上下文跟踪的未完成本地更新的表执行拉取操作时，该拉取操作会自动触发推送操作。 在此示例中刷新、添加和完成项目时，可省略显式 **push** 调用，因为它可能是冗余的。
 
-在所提供的代码中，查询远程 todoItem 表中的所有记录，也可以筛选记录，只需将查询 ID 和查询传递给 **push** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分。
+在所提供的代码中，查询远程 todoItem 表中的所有记录，也可以筛选记录，只需将查询 ID 和查询传递给 **push** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步** 部分。
 
 ## <a name="optional-disable-authentication"></a>（可选）禁用身份验证
 
@@ -166,7 +166,7 @@ ms.locfileid: "77459412"
 
 5. （可选）使用 Visual Studio 查看 Azure SQL 数据库表，以了解后端数据库中的数据是否未更改。
 
-    在 Visual Studio 中，打开“服务器资源管理器”。 导航到“Azure”->“SQL 数据库”中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”。 现在便可以浏览 SQL 数据库表及其内容。
+    在 Visual Studio 中，打开“服务器资源管理器”****。 在**Azure**->**SQL 数据库中**导航到数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”****。 现在便可以浏览 SQL 数据库表及其内容。
 
 ## <a name="optional-test-the-reconnection-to-your-mobile-backend"></a>（可选）测试与移动后端的重新连接
 
@@ -181,7 +181,7 @@ ms.locfileid: "77459412"
 
 ## <a name="additional-resources"></a>其他资源
 * [Azure 移动应用中的脱机数据同步]
-* [用于 Apache Cordova 的 Visual Studio 工具]
+* [阿帕奇·科尔多瓦的视觉工作室工具]
 
 ## <a name="next-steps"></a>后续步骤
 * 查看[脱机同步示例]中更高级的脱机同步功能，例如冲突解决
@@ -200,7 +200,7 @@ ms.locfileid: "77459412"
 [authentication]: app-service-mobile-cordova-get-started-users.md
 [Work with the .NET backend server SDK for Azure Mobile Apps]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Visual Studio Community 2015]: https://www.visualstudio.com/
-[用于 Apache Cordova 的 Visual Studio 工具]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
+[阿帕奇·科尔多瓦的视觉工作室工具]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md

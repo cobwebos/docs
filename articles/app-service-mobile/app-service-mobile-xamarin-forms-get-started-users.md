@@ -1,16 +1,16 @@
 ---
-title: Xamarin 窗体应用中的身份验证入门
-description: 了解如何使用移动应用通过 AAD、Google、Facebook、Twitter 和 Microsoft 等标识提供者对 Xamarin Forms 应用的用户进行身份验证。
+title: Xamarin Forms 应用中的身份验证入门
+description: 了解如何使用移动应用通过标识提供者（如 AAD、Google、Facebook、Twitter 和 Microsoft）对 Xamarin Forms 应用的用户进行身份验证。
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 4788aa50074016a34d906353f5b37dbba85ef104
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77458760"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>向 Xamarin Forms 应用添加身份验证
@@ -19,42 +19,42 @@ ms.locfileid: "77458760"
 ## <a name="overview"></a>概述
 本主题演示如何从客户端应用程序对应用服务移动应用的用户进行身份验证。 在本教程中，使用应用服务支持的标识提供者向 Xamarin Forms 快速入门项目添加身份验证。 移动应用成功进行身份验证和授权后，会显示用户 ID 值，该用户能够访问受限制的表数据。
 
-## <a name="prerequisites"></a>必备条件
-为了在本教程中获得最佳效果，我们建议你先完成[创建 Xamarin Forms 应用][1]教程。 完成此教程后，用户会获得一个 Xamarin Forms 项目，它是一个多平台 TodoList 应用。
+## <a name="prerequisites"></a>先决条件
+为了使本教程达到最佳效果，建议用户先完成[创建 Xamarin.Forms 应用][1]教程。 完成此教程后，用户会获得一个 Xamarin Forms 项目，它是一个多平台 TodoList 应用。
 
 如果不使用下载的快速入门服务器项目，必须将身份验证扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][2]。
 
 ## <a name="register-your-app-for-authentication-and-configure-app-services"></a>注册应用以进行身份验证并配置应用服务
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
 
 安全身份验证要求为应用定义新的 URL 方案。 这允许身份验证系统在身份验证过程完成后，重定向回应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，可以使用所选择的任何 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
 
-1. 在 [Azure 门户][8]中，选择“应用服务”。
+1. 在 [Azure 门户][8]中，选择应用服务。
 
-2. 单击“身份验证/授权”菜单选项。
+2. 单击“身份验证/授权”**** 菜单选项。
 
-3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
+3. 在“允许的外部重定向 URL”**** 中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案****。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
 4. 单击“确定”。
 
-5. 单击“保存”。
+5. 单击“保存”。****
 
 ## <a name="restrict-permissions-to-authenticated-users"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>向可移植类库添加身份验证
-移动应用使用[MobileServiceClient][4]上的[LoginAsync][3]扩展方法通过应用服务身份验证登录用户。 此示例使用服务器托管的身份验证流，在应用中显示提供程序的登录界面。 有关详细信息，请参阅[服务器托管的身份验证][5]。 若要在生产应用中提供更好的用户体验，应考虑改用[客户端托管的身份验证][6]。
+移动应用使用 [MobileServiceClient][4] 的 [LoginAsync][3] 扩展方法通过应用服务身份验证登录用户。 此示例使用服务器托管的身份验证流，在应用中显示提供程序的登录界面。 有关详细信息，请参阅[服务器托管的身份验证][5]。 若要在生产应用中提供更好的用户体验，应考虑改用[客户端托管的身份验证][6]。
 
-若要使用 Xamarin Forms 项目进行身份验证，请在可移植类库中为应用定义 **IAuthenticate** 接口。 然后，将“登录”按钮添加到可移植类库中定义的用户界面，用户单击此按钮即可开始进行身份验证。 身份验证成功后，将从移动应用后端加载数据。
+若要使用 Xamarin Forms 项目进行身份验证，请在可移植类库中为应用定义 **IAuthenticate** 接口。 然后，将“登录”**** 按钮添加到可移植类库中定义的用户界面，用户单击此按钮即可开始进行身份验证。 身份验证成功后，将从移动应用后端加载数据。
 
 为应用支持的每个平台实现 **IAuthenticate** 接口。
 
 1. 在 Visual Studio 或 Xamarin Studio 中，从名称中包含 **Portable** 的项目（该项目是可移植类库项目）中打开 App.cs，并添加以下 `using` 语句：
 
         using System.Threading.Tasks;
-2. 在 App.cs 中，在 `IAuthenticate` 类定义前添加以下 `App` 接口定义。
+2. 在 App.cs 中，在 `App` 类定义前添加以下 `IAuthenticate` 接口定义。
 
         public interface IAuthenticate
         {
@@ -68,7 +68,7 @@ ms.locfileid: "77458760"
         {
             Authenticator = authenticator;
         }
-4. 从可移植类库项目中打开 TodoList.xaml，在 **buttonsPanel** 布局元素中现有按钮之后添加以下 *Button* 元素：
+4. 从可移植类库项目中打开 TodoList.xaml，在 *buttonsPanel* 布局元素中现有按钮之后添加以下 **Button** 元素：
 
           <Button x:Name="loginButton" Text="Sign-in" MinimumHeightRequest="30"
             Clicked="loginButton_Clicked"/>
@@ -113,7 +113,7 @@ ms.locfileid: "77458760"
 ## <a name="add-authentication-to-the-android-app"></a>向 Android 应用添加身份验证
 本部分演示如何在 Android 应用项目中实现 **IAuthenticate** 接口。 如果不要支持 Android 设备，请跳过本部分。
 
-1. 在 Visual Studio 或 Xamarin Studio 中，右键单击 **droid** 项目，并单击“设为启动项目”。
+1. 在 Visual Studio 或 Xamarin Studio 中，右键单击 **droid** 项目，并单击“设为启动项目”****。
 2. 按 F5 在调试器中启动项目，并验证启动该应用后，是否会引发状态代码为 401（“未授权”）的未处理异常。 因为后端上的访问仅限于授权用户，因此会生成 401 代码。
 3. 在 Android 项目中打开 MainActivity.cs，并添加以下 `using` 语句：
 
@@ -159,7 +159,7 @@ ms.locfileid: "77458760"
 
     如果使用的是 Facebook 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider][7] 选择不同的值。
 
-6. 在 **元素内添加以下 XML，更新**AndroidManifest.xml`<application>` 文件：
+6. 在 `<application>` 元素内添加以下 XML，更新 **AndroidManifest.xml** 文件：
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
@@ -172,7 +172,7 @@ ms.locfileid: "77458760"
     </activity>
     ```
     将 `{url_scheme_of_your_app}` 替换为 URL 方案。
-7. 调用 **之前，向**MainActivity**类的**OnCreate`LoadApplication()` 方法添加以下代码：
+7. 调用 `LoadApplication()` 之前，向 **MainActivity** 类的 **OnCreate** 方法添加以下代码：
 
         // Initialize the authenticator before loading the app.
         App.Init((IAuthenticate)this);
@@ -180,7 +180,7 @@ ms.locfileid: "77458760"
     此代码可确保验证器在应用加载前进行初始化。
 8. 重新生成应用，运行它，使用所选的身份验证提供者登录，并验证是否能够以通过身份验证的用户身份访问数据。
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 **应用程序崩溃并显示 `Java.Lang.NoSuchMethodError: No static method startActivity`**
 
@@ -189,7 +189,7 @@ ms.locfileid: "77458760"
 ## <a name="add-authentication-to-the-ios-app"></a>向 iOS 应用添加身份验证
 本部分演示如何在 iOS 应用项目中实现 **IAuthenticate** 接口。 如果不要支持 iOS 设备，请跳过本部分。
 
-1. 在 Visual Studio 或 Xamarin Studio 中，右键单击 **iOS** 项目，并单击“设为启动项目”。
+1. 在 Visual Studio 或 Xamarin Studio 中，右键单击 **iOS** 项目，并单击“设为启动项目”****。
 2. 按 F5 在调试器中启动项目，并验证启动该应用后，是否会引发状态代码为 401（“未授权”）的未处理异常。 因为后端上的访问仅限于授权用户，因此会生成 401 响应。
 3. 打开 iOS 项目中的 AppDelegate.cs，并添加以下 `using` 语句：
 
@@ -244,20 +244,20 @@ ms.locfileid: "77458760"
             return TodoItemManager.DefaultManager.CurrentClient.ResumeWithURL(url);
         }
    
-7. 调用 **之前，向**FinishedLaunching`LoadApplication()` 方法添加以下代码行：
+7. 调用 `LoadApplication()` 之前，向 **FinishedLaunching** 方法添加以下代码行：
 
         App.Init(this);
 
     此代码可确保验证器在应用加载前进行初始化。
 
-8. 打开 Info.plist 并添加 **URL 类型**。 将“标识符”设置为所选的名称，将“URL 方案”设置为应用的 URL 方案，将“角色”设置为“无”。
+8. 打开 Info.plist 并添加 **URL 类型**。 将“标识符”设置**** 为所选的名称，将“URL 方案”**** 设置为应用的 URL 方案，将“角色”**** 设置为“无”。
 
 9. 重新生成应用，运行它，使用所选的身份验证提供者登录，并验证是否能够以通过身份验证的用户身份访问数据。
 
 ## <a name="add-authentication-to-windows-10-including-phone-app-projects"></a>向 Windows 10（包括 Phone）应用项目添加身份验证
-本部分演示如何在 Windows 10 应用项目中实现“IAuthenticate”接口。 此相同的步骤适用于通用 Windows 平台 (UWP) 项目，但使用的是 **UWP** 项目（具有已注明的更改）。 如果不要支持 Windows 设备，请跳过本部分。
+本部分演示如何在 Windows 10 应用项目中实现“IAuthenticate”接口。**** 此相同的步骤适用于通用 Windows 平台 (UWP) 项目，但使用的是 **UWP** 项目（具有已注明的更改）。 如果不要支持 Windows 设备，请跳过本部分。
 
-1. 在 Visual Studio 中，右键单击“UWP”项目，然后单击“设为启动项目”。
+1. 在 Visual Studio 中，右键单击“UWP”项目，然后单击“设为启动项目”。********
 2. 按 F5 在调试器中启动项目，并验证启动该应用后，是否会引发状态代码为 401（“未授权”）的未处理异常。 因为后端上的访问仅限于授权用户，因此会发生 401 响应。
 3. 打开 Windows 应用项目的 MainPage.xaml.cs，并添加以下 `using` 语句：
 
@@ -308,14 +308,14 @@ ms.locfileid: "77458760"
 
     如果使用的是 Facebook 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider][7] 选择不同的值。
 
-1. 调用 **之前，在**MainPage`LoadApplication()` 类的构造函数中添加以下代码行：
+1. 调用 `LoadApplication()` 之前，在 **MainPage** 类的构造函数中添加以下代码行：
 
         // Initialize the authenticator before loading the app.
         <your_Portable_Class_Library_namespace>.App.Init(this);
 
     将 `<your_Portable_Class_Library_namespace>` 替换为可移植类库的命名空间。
 
-3. 如果使用的是“UWP”，则将以下“OnActivated”方法重写添加到“App”类：
+3. 如果使用的是“UWP”，则将以下“OnActivated”方法重写添加到“App”类：************
 
        protected override void OnActivated(IActivatedEventArgs args)
        {
@@ -328,7 +328,7 @@ ms.locfileid: "77458760"
             }
        }
 
-3. 打开 Package.appxmanifest，添加 **Protocol** 声明。 将“显示名称”设置为所选的名称，将“名称”设置为应用的 URL 方案。
+3. 打开 Package.appxmanifest，添加 **Protocol** 声明。 将“显示名称”设置**** 为所选的名称，将“名称”**** 设置为应用的 URL 方案。
 
 4. 重新生成应用，运行它，使用所选的身份验证提供者登录，并验证是否能够以通过身份验证的用户身份访问数据。
 
@@ -337,7 +337,7 @@ ms.locfileid: "77458760"
 
 * [向应用添加推送通知](app-service-mobile-xamarin-forms-get-started-push.md)
 
-  了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
+   了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
 * [为应用启用脱机同步](app-service-mobile-xamarin-forms-get-started-offline-data.md)
 
   了解如何使用移动应用后端向应用添加脱机支持。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。

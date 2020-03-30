@@ -16,10 +16,10 @@ ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
 ms.openlocfilehash: ab1eba3de474d9ff985e62f491c24fa63be0fa63
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77069619"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>媒体服务平台上的媒体分析 
@@ -27,7 +27,7 @@ ms.locfileid: "77069619"
 ## <a name="retirement-plans"></a>停用计划
 
 > [!IMPORTANT]
-> 某些媒体处理器即将停用。 有关停用日期和详细信息，请参阅[旧组件](legacy-components.md)主题。 
+> 某些媒体处理器正在停用。 有关停用日期和详细信息，请参阅[旧组件](legacy-components.md)主题。 
 
 ## <a name="overview"></a>概述
 
@@ -45,14 +45,14 @@ ms.locfileid: "77069619"
 
 ## <a name="media-analytics-services"></a>媒体分析服务
 
-### <a name="indexer"></a>索引
-借助 Azure Media Indexer 可使内容可搜索并生成隐藏式字幕跟踪。 有关详细信息和示例，请参阅[在 Azure Media Indexer 中为媒体文件编制索引](media-services-index-content.md)。
+### <a name="indexer"></a>索引器
+借助 Azure Media Indexer 可使内容可搜索并生成隐藏式字幕跟踪。 有关详细信息和示例，请参阅使用[Azure 媒体索引器索引媒体文件](media-services-index-content.md)索引。
 
 ### <a name="motion-detector"></a>动作检测器
-可以使用移动探测器来检测背景平稳的视频中的动作。 这样，便可以检查监控摄像机所检测到的动作事件是否存在误报。 有关详细信息和示例，请参阅 [Azure 媒体分析的动作检测](media-services-motion-detection.md)。
+可以使用移动探测器来检测背景平稳的视频中的动作。 这样，便可以检查监控摄像机所检测到的动作事件是否存在误报。 有关详细信息和示例，请参阅[Azure 媒体分析的运动检测](media-services-motion-detection.md)。
 
 ### <a name="face-detector"></a>面部检测器
-使用面部检测器可以检测人脸及情绪，包括快乐、悲伤和惊讶。 此服务具有多个有用行业应用程序（稍后将进行介绍），包括聚合与分析参与事件的人员的反应。 有关详细信息和示例，请参阅 [Azure 媒体分析的人脸和情绪检测](media-services-face-and-emotion-detection.md)。
+使用面部检测器可以检测人脸及情绪，包括快乐、悲伤和惊讶。 此服务具有多个有用行业应用程序（稍后将进行介绍），包括聚合与分析参与事件的人员的反应。 有关详细信息和示例，请参阅[Azure 媒体分析的人脸和情感检测](media-services-face-and-emotion-detection.md)。
 
 ### <a name="video-summarization"></a>视频摘要
 视频摘要可通过自动选择来自源视频的有趣片段帮助你创建长视频的摘要。 如果想要提供有关长视频内容的快速概述，此功能会很有用。 有关详细信息和示例，请参阅[使用 Azure Media Video Thumbnails 创建视频摘要](media-services-video-summarization.md)。
@@ -132,7 +132,7 @@ Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中�
        ]
     }
 
-## <a name="demos"></a>演示版
+## <a name="demos"></a>演示
 请参阅 [Azure 媒体分析演示](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)。
 
 ## <a name="provide-feedback"></a>提供反馈

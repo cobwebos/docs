@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77048555"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure 专用 HSM 部署体系结构
@@ -70,7 +70,7 @@ HSM 设备最佳位置是最接近执行加密操作的应用程序的位置。 
 更多概念级别的主题：
 
 * [高可用性](high-availability.md)
-* [物理安全性](physical-security.md)
-* [网络](networking.md)
+* [物理安全](physical-security.md)
+* [网络连接](networking.md)
 * [可支持性](supportability.md)
-* [Monitoring](monitoring.md)
+* <bpt i="1000001" x="1000001" type="formatting">{b&gt;</bpt>监视<ept i="1000001">&lt;b}</ept>

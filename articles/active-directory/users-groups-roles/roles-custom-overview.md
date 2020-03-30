@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 中的自定义管理员角色 |Microsoft Docs
+title: Azure 活动目录中的自定义管理员角色 |微软文档
 description: 预览用于委托标识管理权的自定义 Azure AD 角色。 在 Azure 门户、PowerShell 或图形 API 中管理 Azure 角色。
 services: active-directory
 author: curtand
@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5c7919dcc89e34831cb4cae7921b60b35eb4c69
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74024966"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory 中的自定义管理员角色（预览）
@@ -26,7 +26,7 @@ ms.locfileid: "74024966"
 
 此外，Azure AD 自定义角色支持按资源分配，此外还支持更传统的组织范围分配。 此方法可让你授予管理某些资源（例如一个应用注册）的访问权限，而无需授予对所有资源（所有应用注册）的访问权限。
 
-Azure AD 基于角色的访问控制是 Azure AD 的一项公共预览版功能，可通过任何付费 Azure AD 许可计划获得。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Azure AD 基于角色的访问控制是 Azure AD 的一项公共预览版功能，可通过任何付费 Azure AD 许可计划获得。 有关预览的详细信息，请参阅 Microsoft [Azure 预览的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="understand-azure-ad-role-based-access-control"></a>了解 Azure AD 基于角色的访问控制
 
@@ -52,7 +52,7 @@ Azure AD 内置自定义角色的运作思路类似于 [Azure 基于角色的访
 
 ### <a name="security-principal"></a>安全主体
 
-安全主体表示有权访问 Azure AD 资源的用户。 “用户”是在 Azure Active Directory 中具有用户配置文件的个人。
+安全主体表示有权访问 Azure AD 资源的用户。 “用户”是在 Azure Active Directory 中具有用户配置文件的个人。**
 
 ### <a name="role"></a>角色
 
@@ -61,7 +61,7 @@ Azure AD 内置自定义角色的运作思路类似于 [Azure 基于角色的访
 - Microsoft 创建的内置角色（不可更改）。
 - 由组织创建和管理的自定义角色。
 
-### <a name="scope"></a>作用域
+### <a name="scope"></a>范围
 
 范围是指允许对角色分配中的特定 Azure AD 资源执行的操作的限制。 分配角色时，可以指定一个范围来限制管理员对特定资源的访问。 例如，若要为开发人员授予某个自定义角色，但仅允许该开发人员管理特定的应用程序注册，则你可以在角色分配中包含特定的应用程序注册作为范围。
 

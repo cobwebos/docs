@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB：批量执行器 Java API、SDK & 资源
+title: Azure 宇宙数据库：批量执行器 Java API、SDK &资源
 description: 了解有关批量执行程序 Java API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB 批量执行程序 Java SDK 各版本之间所做的更改。
 author: tknandu
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
 ms.openlocfilehash: 3dc2a2d7c0e9fae425340ab1aa91790070708cd1
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73606186"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java 批量执行程序库：下载信息
@@ -28,8 +28,8 @@ ms.locfileid: "73606186"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
+> * [批量执行器 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行器 - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
@@ -38,5 +38,5 @@ ms.locfileid: "73606186"
 |**GitHub 中的批量执行程序库**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API 文档**| [Java API 参考文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**入门**|[批量执行程序库 Java SDK 入门](bulk-executor-java.md)|
-|受支持的最小运行时|[Java 开发工具包 (JDK) 7+](https://aka.ms/azure-jdks)|
+|受支持的最小运行时****|[Java 开发工具包 （JDK） 7+](https://aka.ms/azure-jdks)|
 

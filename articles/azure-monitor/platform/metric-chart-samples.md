@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor 指标图表示例
+title: Azure 监视器指标图表示例
 description: 了解如何可视化 Azure Monitor 数据。
 author: vgorbenko
 services: azure-monitor
@@ -8,10 +8,10 @@ ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 1aaeb853a67b36a21a09db57e015029d10cd0c36
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660864"
 ---
 # <a name="metric-chart-examples"></a>指标图表示例 
@@ -28,7 +28,7 @@ Azure 平台提供了[一千多个指标](https://docs.microsoft.com/azure/azure
 
 ### <a name="how-to-configure-this-chart"></a>如何配置此图表？
 
-选择应用服务资源，并找到“CPU 百分比”指标。 然后单击“应用拆分”，并选择“实例”维度。
+选择应用服务资源，并找到“CPU 百分比”**** 指标。 然后单击“应用拆分”****，并选择“实例”**** 维度。
 
 ## <a name="application-availability-by-region"></a>各个区域的应用程序可用性
 
@@ -38,7 +38,7 @@ Azure 平台提供了[一千多个指标](https://docs.microsoft.com/azure/azure
 
 ### <a name="how-to-configure-this-chart"></a>如何配置此图表？
 
-首先需要启用网站的 [Application Insights 可用性](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability)监视。 在此之后，选择 Application Insights 资源并选择可用性指标。 在“运行位置”维度上应用拆分。
+首先需要启用网站的 [Application Insights 可用性](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability)监视。 在此之后，选择 Application Insights 资源并选择可用性指标。 在“运行位置”**** 维度上应用拆分。
 
 ## <a name="volume-of-storage-account-transactions-by-api-name"></a>按 API 名称划分的存储帐户事务量
 
@@ -48,7 +48,7 @@ Azure 平台提供了[一千多个指标](https://docs.microsoft.com/azure/azure
 
 ### <a name="how-to-configure-this-chart"></a>如何配置此图表？
 
-在指标选取器中，选择你的存储帐户和“事务”指标。 将图表类型切换为“条形图”。 单击“应用拆分”并选择“API 名称”维度。 然后单击“添加筛选器”，再次选择“API 名称”维度。 在筛选器对话框中，选择要在图表上显示的 API。
+在指标选取器中，选择你的存储帐户和“事务”**** 指标。 将图表类型切换为“条形图”****。 单击“应用拆分”**** 并选择“API 名称”**** 维度。 然后单击“添加筛选器”****，再次选择“API 名称”**** 维度。 在筛选器对话框中，选择要在图表上显示的 API。
 
 ## <a name="next-steps"></a>后续步骤
 

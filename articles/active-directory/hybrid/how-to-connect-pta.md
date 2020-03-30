@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d4b52a3025bfb15e2679709353cebf28254a75c2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77185502"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
@@ -39,11 +39,11 @@ ms.locfileid: "77185502"
 
 ## <a name="key-benefits-of-using-azure-ad-pass-through-authentication"></a>使用 Azure AD 传递身份验证的主要优势
 
-- 出色的用户体验
+- 出色的用户体验**
   - 用户使用同样的密码登录本地和基于云的应用程序。
   - 用户花费在联系 IT 支持人员解决密码相关问题上的时间更少。
   - 用户可以完成云中的[自助服务密码管理](../authentication/active-directory-passwords-overview.md)任务。
-- 易于部署和管理
+- 易于部署和管理**
   - 无需复杂的本地部署或网络配置。
   - 仅需在本地安装一个轻型代理。
   - 无管理开销。 代理会自动获得改进和 bug 修复。
@@ -52,31 +52,31 @@ ms.locfileid: "77185502"
   - 可通过与 [Azure AD 条件访问策略](../active-directory-conditional-access-azure-portal.md)（包括多重身份验证 (MFA)、[阻止旧式身份验证](../conditional-access/concept-conditional-access-conditions.md)）无缝协作，也可通过[筛选暴力破解密码攻击](../authentication/howto-password-smart-lockout.md)来保护用户帐户。
   - 代理只从网络内部建立出站连接。 因此，无需在外围网络（也称为 DMZ）中安装代理。
   - 使用基于证书的身份验证保护代理与 Azure AD 之间的通信。 这些证书每隔几个月由 Azure AD 自动续订。
-- 高可用性
+- *高度可用*
   - 可在多台本地服务器上安装其他代理，提供登录请求的高可用性。
 
 ## <a name="feature-highlights"></a>功能特点
 
 - 支持用户登录到所有基于 Web 浏览器的应用程序和使用[新式身份验证](https://aka.ms/modernauthga)的 Microsoft Office 客户端应用程序。
 - 登录用户名可以是本地默认用户名 (`userPrincipalName`)，也可以是 Azure AD Connect 中配置的另一个属性（称为 `Alternate ID`）。
-- 此功能可与[条件性访问](../active-directory-conditional-access-azure-portal.md)功能（例如多重身份验证（MFA））无缝结合使用，以帮助保护用户。
+- 该功能与[条件访问](../active-directory-conditional-access-azure-portal.md)功能（如多重身份验证 （MFA））无缝配合，可帮助保护用户。
 - 与基于云的[自助密码管理](../authentication/active-directory-passwords-overview.md)集成，包括本地 Active Directory 的密码写回和通过禁止常用密码的密码保护。
 - 如果 AD 林之间存在信任关系并且正确配置了名称后缀路由，则支持多林环境。
 - 这是一项免费功能，不需要拥有任何付费版本的 Azure AD 即可使用此功能。
-- 可通过 [Azure AD Connect](whatis-hybrid-identity.md) 启用它。
+- 它可以通过 Azure [AD 连接](whatis-hybrid-identity.md)启用。
 - 该功能使用轻型本地代理侦听和响应密码验证请求。
 - 安装多个代理可提供登录请求的高可用性。
 - 该功能[保护](../authentication/howto-password-smart-lockout.md)云中的本地帐户免受密码搜索攻击。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门](how-to-connect-pta-quick-start.md)-Azure AD 直通身份验证获取并运行。
+- [快速入门](how-to-connect-pta-quick-start.md)- 启动并运行 Azure AD 直通身份验证。
 - [从 AD FS 迁移到传递身份验证](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md) - 在租户中配置智能锁定功能以保护用户帐户。
 - [当前限制](how-to-connect-pta-current-limitations.md) - 了解支持和不支持的方案。
-- [深入技术探究](how-to-connect-pta-how-it-works.md) - 了解此功能如何运作。
+- 深入技术探究[](how-to-connect-pta-how-it-works.md) - 了解此功能如何运作。
 - [常见问题](how-to-connect-pta-faq.md) - 常见问题解答。
 - [故障排除](tshoot-connect-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。
 - [深入了解安全性](how-to-connect-pta-security-deep-dive.md) - 有关该功能的其他深入技术信息。
 - [Azure AD 无缝 SSO](how-to-connect-sso.md) - 深入了解此补充功能。
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+- UserVoice[](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。

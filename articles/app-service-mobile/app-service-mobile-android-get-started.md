@@ -1,16 +1,16 @@
 ---
 title: 创建 Android 应用
-description: 按照本教程开始使用适用于 Android 应用开发 Azure 移动应用后端。
+description: 按照本教程开始使用 Azure 移动应用后端进行 Android 应用开发。
 ms.assetid: 355f0959-aa7f-472c-a6c7-9eecea3a34a9
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 9be9402bff1a1263de3c6f21b78899464c50c823
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459560"
 ---
 # <a name="create-an-android-app"></a>创建 Android 应用
@@ -21,7 +21,7 @@ ms.locfileid: "77459560"
 
 只有在完成本教程后，才可以学习有关使用 Azure 应用服务中的移动应用功能的所有其他 Android 教程。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 要完成本教程，需要以下各项：
 
 * [Android 开发人员工具](https://developer.android.com/sdk/index.html)，其中包含 Android Studio 集成开发环境和最新的 Android 平台。

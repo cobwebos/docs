@@ -4,10 +4,10 @@ description: 了解如何在本地计算机上对 Azure 函数进行编码和测
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 835edcb94b294d93cab41ea51b88ac38db71d95e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74230638"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>在本地对 Azure Functions 进行编码和测试
@@ -18,11 +18,11 @@ ms.locfileid: "74230638"
 
 在本地计算机开发函数的方式取决于[语言](supported-languages.md)和工具偏好。 下表中的环境支持本地开发：
 
-|环境                              |语言         |说明|
+|环境                              |Languages         |描述|
 |-----------------------------------------|------------|---|
-|[Visual Studio Code](functions-develop-vs-code.md)| [](functions-create-first-function-powershell.md) [](functions-reference-python.md) [](functions-reference-node.md) [ C# （类库）](functions-dotnet-class-library.md)， [ C#脚本（. run.csx）](functions-reference-csharp.md)，JavaScript，PowerShell，Python | [适用于 VS Code 的 Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)在 VS Code 中添加了 Functions 支持。 需要 Core Tools。 使用 2.x 版 Core Tools 时，支持 Linux、MacOS 和 Windows 上的开发。 若要了解详细信息，请参阅[使用 Visual Studio Code 创建第一个函数](functions-create-first-function-vs-code.md)。 |
-| [命令提示符或终端](functions-run-local.md) | [](functions-reference-powershell.md) [](functions-reference-python.md) [](functions-reference-node.md) [ C# （类库）](functions-dotnet-class-library.md)， [ C#脚本（. run.csx）](functions-reference-csharp.md)，JavaScript，PowerShell，Python | [Azure Functions Core Tools] 提供核心运行时和模板用于创建函数，以实现本地开发。 版本 2.x 支持 Linux、MacOS 和 Windows 上的开发。 所有环境依赖于 Core Tools 提供本地 Functions 运行时。 |
-| [Visual Studio 2019](functions-develop-vs.md) | [C#（类库）](functions-dotnet-class-library.md) | Azure Functions 工具包含在 **Visual Studio 2019** 和更高版本的 [Azure 开发](https://www.visualstudio.com/vs/)工作负荷中。 可以编译类库中的函数，并将 .dll 文件发布到 Azure。 包含用于本地测试的 Core Tools。 有关详细信息，请参阅[使用 Visual Studio 开发 Azure Functions](functions-develop-vs.md)。 |
+|[视觉工作室代码](functions-develop-vs-code.md)| [C# （类库）](functions-dotnet-class-library.md)， [C# 脚本 （.csx）](functions-reference-csharp.md)， [JavaScript，](functions-reference-node.md) [PowerShell，](functions-create-first-function-powershell.md) [Python](functions-reference-python.md) | [适用于 VS Code 的 Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)在 VS Code 中添加了 Functions 支持。 需要 Core Tools。 使用 2.x 版 Core Tools 时，支持 Linux、MacOS 和 Windows 上的开发。 若要了解详细信息，请参阅[使用 Visual Studio Code 创建第一个函数](functions-create-first-function-vs-code.md)。 |
+| [命令提示符或终端](functions-run-local.md) | [C# （类库）](functions-dotnet-class-library.md)， [C# 脚本 （.csx）](functions-reference-csharp.md)， [JavaScript，](functions-reference-node.md) [PowerShell，](functions-reference-powershell.md) [Python](functions-reference-python.md) | [Azure Functions Core Tools] 提供核心运行时和模板用于创建函数，以实现本地开发。 版本 2.x 支持 Linux、MacOS 和 Windows 上的开发。 所有环境依赖于 Core Tools 提供本地 Functions 运行时。 |
+| [视觉工作室 2019](functions-develop-vs.md) | [C#（类库）](functions-dotnet-class-library.md) | Azure Functions 工具包含在 [Visual Studio 2019](https://www.visualstudio.com/vs/) 和更高版本的 **Azure 开发**工作负荷中。 可以编译类库中的函数，并将 .dll 文件发布到 Azure。 包含用于本地测试的 Core Tools。 有关详细信息，请参阅[使用 Visual Studio 开发 Azure Functions](functions-develop-vs.md)。 |
 | [Maven](functions-create-first-java-maven.md)（不同的） | [Java](functions-reference-java.md) | 与 Core Tools 集成以实现 Java 函数的开发。 版本 2.x 支持 Linux、MacOS 和 Windows 上的开发。 有关详细信息，请参阅[使用 Java 和 Maven 创建第一个函数](functions-create-first-java-maven.md)。 还支持使用 [Eclipse](functions-create-maven-eclipse.md) 和 [IntelliJ IDEA](functions-create-maven-intellij.md) 进行开发 |
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
@@ -37,6 +37,6 @@ ms.locfileid: "74230638"
 
 <!-- LINKS -->
 
-[Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
+[Azure 函数核心工具]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure 门户]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

@@ -1,5 +1,5 @@
 ---
-title: 关于 Azure 点到站点 VPN 连接 |VPN 网关
+title: 关于 Azure 点对点 VPN 连接 |VPN 网关
 description: 可以借助本文了解点到站点连接，并确定要使用的 P2S VPN 网关身份验证类型。
 services: vpn-gateway
 author: cherylmc
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77500605"
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
 
 点到站点 (P2S) VPN 网关连接用于创建从单个客户端计算机到虚拟网络的安全连接。 可通过从客户端计算机启动连接来建立 P2S 连接。 对于要从远程位置（例如从家里或会议室）连接到 Azure VNet 的远程工作者，此解决方案很有用。 如果只有一些客户端需要连接到 VNet，则还可以使用 P2S VPN 这一解决方案来代替 S2S VPN。 本文适用于 Resource Manager 部署模型。
 
-## <a name="protocol"></a>P2S 使用哪种协议？
+## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S 使用哪种协议？
 
 点到站点 VPN 可使用以下协议之一：
 
-* **OpenVPN®协议**，一种基于 SSL/TLS 的 VPN 协议。 SSL VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 SSL 使用的 TCP 端口443出站。 OpenVPN 可用于从 Android、iOS （版本11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 版本10.13 及更高版本）进行连接。
+* **OpenVPN® 协议**，一种基于 SSL/TLS 的 VPN 协议。 由于大多数防火墙都会打开 SSL 所用的出站 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 10.13 及更高版本）进行连接。
 
-* 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 SSL VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 SSL 使用的 TCP 端口443出站。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
+* 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 由于大多数防火墙都会打开 SSL 所用的出站 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
 
 * IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（OSX 10.11 和更高版本）。
 
@@ -33,7 +33,7 @@ ms.locfileid: "77500605"
 >P2S 的 IKEv2 和 OpenVPN 仅可用于资源管理器部署模型。 它们不可用于经典部署模型。
 >
 
-## <a name="authentication"></a>如何对 P2S VPN 客户端进行身份验证？
+## <a name="how-are-p2s-vpn-clients-authenticated"></a><a name="authentication"></a>如何对 P2S VPN 客户端进行身份验证？
 
 在 Azure 接受 P2S VPN 连接之前，必须先对用户进行身份验证。 Azure 提供两种机制用于对连接方用户进行身份验证。
 
@@ -45,30 +45,30 @@ ms.locfileid: "77500605"
 
 ### <a name="authenticate-using-native-azure-active-directory-authentication"></a>使用本机 Azure Active Directory 身份验证进行身份验证
 
-Azure AD 身份验证允许用户使用其 Azure Active Directory 凭据连接到 Azure。 仅 OpenVPN 协议和 Windows 10 支持本机 Azure AD 身份验证，并且需要使用[AZURE VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)。
+Azure AD 身份验证允许用户使用其 Azure Active Directory 凭据连接到 Azure。 本机 Azure AD 身份验证仅支持 OpenVPN 协议和 Windows 10，并且需要使用[Azure VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)。
 
-使用本机 Azure AD 身份验证，可以利用 Azure AD 的条件性访问和 VPN 的多重身份验证（MFA）功能。
+有了本机 Azure AD 身份验证，就可以利用 Azure AD 的条件访问和针对 VPN 的多重身份验证 (MFA) 功能。
 
-在高级别上，你需要执行以下步骤来配置 Azure AD 身份验证：
+大致说来，需要执行以下步骤来配置 Azure AD 身份验证：
 
 1. [配置 Azure AD 租户](openvpn-azure-ad-tenant.md)
 
 2. [在网关上启用 Azure AD 身份验证](openvpn-azure-ad-tenant.md#enable-authentication)
 
-3. [下载和配置 Azure VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)
+3. [下载并配置 Azure VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>使用 Active Directory (AD) 域服务器进行身份验证
 
 AD 域身份验证可让用户使用其组织域凭据连接到 Azure。 它需要一台与 AD 服务器集成的 RADIUS 服务器。 组织也可以利用其现有的 RADIUS 部署。
   
-RADIUS 服务器可以部署在本地，也可以部署在 Azure VNet 中。 在身份验证期间，Azure VPN 网关充当传递设备，在 RADIUS 服务器与连接方设备之间来回转发身份验证消息。 因此，RADIUS 服务器必须能够访问网关。 如果 RADIUS 服务器位于本地，需要建立从 Azure 到本地站点的 VPN S2S 连接，才能实现这种访问。  
+RADIUS 服务器可以部署在本地或 Azure VNet 中。 在身份验证期间，Azure VPN 网关充当传递设备，在 RADIUS 服务器与连接方设备之间来回转发身份验证消息。 因此，RADIUS 服务器必须能够访问网关。 如果 RADIUS 服务器位于本地，需要建立从 Azure 到本地站点的 VPN S2S 连接，才能实现这种访问。  
   
 RADIUS 服务器还能与 AD 证书服务集成。 这样，便可以使用 RADIUS 服务器以及用于 P2S 证书身份验证的企业证书部署，作为 Azure 证书身份验证的替代方法。 此方法的优点是不需要将根证书和吊销的证书上传到 Azure。
 
 RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 提供了大量的身份验证选项，包括多重身份验证选项。
 
-![点到站点](./media/point-to-site-about/p2s.png "点到站点")
+![点对点](./media/point-to-site-about/p2s.png "点到站点")
 
 ## <a name="what-are-the-client-configuration-requirements"></a>客户端配置要求是什么？
 
@@ -87,7 +87,7 @@ RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 
 >[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="gwsku"></a>哪些网关 SKU 支持 P2S VPN？
+## <a name="which-gateway-skus-support-p2s-vpn"></a><a name="gwsku"></a>哪个网关 SKU 支持 P2S VPN？
 
 [!INCLUDE [aggregate throughput sku](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -97,12 +97,12 @@ RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 
 >基本 SKU 不支持 IKEv2 或 RADIUS 身份验证。
 >
 
-## <a name="IKE/IPsec policies"></a>哪些 IKE/IPsec 策略在 P2S 的 VPN 网关上进行了配置？
+## <a name="what-ikeipsec-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="IKE/IPsec policies"></a>在 P2S 的 VPN 网关上配置了哪些 IKE/IPsec 策略？
 
 
 **IKEv2**
 
-|**密码** | **完整性** | **PRF** | **DH 组** |
+|**Cipher** | **诚信** | **PRF** | **DH 组** |
 |---        | ---           | ---       | ---   |
 |GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_24 |
 |GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_14 |
@@ -122,9 +122,9 @@ RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 
 |AES256     |   SHA256      | SHA256    | GROUP_ECP256 |
 |AES256     |   SHA256      | SHA256    | GROUP_2 |
 
-**IPsec**
+**Ipsec**
 
-|**密码** | **完整性** | **PFS 组** |
+|**Cipher** | **诚信** | **PFS 组** |
 |---        | ---           | ---       |
 |GCM_AES256 | GCM_AES256 | GROUP_NONE |
 |GCM_AES256 | GCM_AES256 | GROUP_24 |
@@ -138,7 +138,7 @@ RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 
 | AES256    | SHA256 | GROUP_ECP256 |
 | AES256    | SHA1 | GROUP_NONE |
 
-## <a name="TLS policies"></a>在 P2S 的 VPN 网关上配置了哪些 TLS 策略？
+## <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>在 P2S 的 VPN 网关上配置了哪些 TLS 策略？
 **TLS**
 
 |**策略** |
@@ -156,7 +156,7 @@ RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-## <a name="configure"></a>如何配置 P2S 连接？
+## <a name="how-do-i-configure-a-p2s-connection"></a><a name="configure"></a>如何配置 P2S 连接？
 
 P2S 配置需要相当多的特定步骤。 以下文章包含引导你完成 P2S 配置的步骤，以及用于配置 VPN 客户端设备的链接：
 
@@ -170,11 +170,11 @@ P2S 配置需要相当多的特定步骤。 以下文章包含引导你完成 P2
 
 有关步骤，请参阅下面的[常见问题解答](#removeconfig)。
  
-## <a name="faqcert"></a>本机 Azure 证书身份验证常见问题解答
+## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>本机 Azure 证书身份验证常见问题解答
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="faqradius"></a>RADIUS 身份验证常见问题解答
+## <a name="faq-for-radius-authentication"></a><a name="faqradius"></a>RADIUS 身份验证常见问题解答
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
@@ -184,4 +184,4 @@ P2S 配置需要相当多的特定步骤。 以下文章包含引导你完成 P2
 
 * [配置 P2S 连接 - Azure 本机证书身份验证](vpn-gateway-howto-point-to-site-rm-ps.md)
 
-**"OpenVPN" 是 OpenVPN Inc. 的商标。**
+**“OpenVPN”是 OpenVPN Inc. 的商标。**

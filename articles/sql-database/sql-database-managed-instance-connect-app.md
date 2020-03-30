@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
 ms.openlocfilehash: 9f592c345b7cfcf5f21d816fde1fae6b8e6b98c7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823384"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>将应用程序连接到 Azure SQL 数据库托管实例
@@ -67,10 +67,10 @@ ms.locfileid: "73823384"
 
 ![VNet 对等互连](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 
-设置基本的体系结构以后，需修改某些设置，使 VPN 网关能够看到承载托管实例的虚拟网络中的 IP 地址。 为此，请在“对等互连设置”下进行下述很具体的更改。
+设置基本的体系结构以后，需修改某些设置，使 VPN 网关能够看到承载托管实例的虚拟网络中的 IP 地址。 为此，请在“对等互连设置”下进行下述很具体的更改。****
 
-1. 在承载 VPN 网关的 VNet 中，转到“对等互连”，然后转到进行托管实例对等互连的 VNet 连接，再单击“允许网关传输”。
-2. 在承载托管实例的 VNet 中，转到“对等互连”，然后转到进行 VPN 网关对等互连的 VNet 连接，再单击“使用远程网关”。
+1. 在承载 VPN 网关的 VNet 中，转到“对等互连”，**** 然后转到进行托管实例对等互连的 VNet 连接，再单击“允许网关传输”。****
+2. 在承载托管实例的 VNet 中，转到“对等互连”，**** 然后转到进行 VPN 网关对等互连的 VNet 连接，再单击“使用远程网关”。****
 
 ## <a name="connect-an-azure-app-service-hosted-application"></a>连接 Azure 应用服务托管应用程序
 
@@ -96,8 +96,8 @@ ms.locfileid: "73823384"
 若要排查连接问题，请查看以下内容：
 
 - 如果无法从同一 VNet 的不同子网中的 Azure 虚拟机连接到托管实例，请检查是否在 VM 子网上设置了可能会阻止访问的网络安全组。另请注意，需在 SQL 端口 1433 上以及 11000-11999 范围的端口上打开出站连接，因为在 Azure 边界内通过重定向进行连接时，这些都是必需的。
-- 对于与 VNet 关联的路由表，请确保将“BGP 传播”设置为“启用”。
-- 如果使用 P2S VPN，请在 Azure 门户中检查配置，确定能否看到“入口/出口”编号。 如果编号不为零，则表示 Azure 在本地进行流量的出入路由。
+- 对于与 VNet 关联的路由表，请确保将“BGP 传播”设置为“启用”。****
+- 如果使用 P2S VPN，请在 Azure 门户中检查配置，确定能否看到“入口/出口”编号。**** 如果编号不为零，则表示 Azure 在本地进行流量的出入路由。
 
    ![入口/出口编号](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
 
@@ -139,14 +139,14 @@ ms.locfileid: "73823384"
 
 | 驱动程序/工具 | 版本 |
 | --- | --- |
-|.NET framework | 4.6.1（或 .NET Core） |
+|.NET Framework | 4.6.1（或 .NET Core） |
 |ODBC 驱动程序| v17 |
 |PHP 驱动程序| 5.2.0 |
 |JDBC 驱动程序| 6.4.0 |
 |Node.js 驱动程序| 2.1.1 |
 |OLEDB 驱动程序| 18.0.2.0 |
 |SSMS| 18.0 或[更高版本](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 或更高版本 |
+|[Smo](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 或更高版本 |
 
 ## <a name="next-steps"></a>后续步骤
 

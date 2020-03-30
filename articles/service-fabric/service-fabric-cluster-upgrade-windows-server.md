@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 489a90180454e2b4a9dad34730fbd3c4f235a2ad
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598096"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>升级群集上运行的 Service Fabric 版本 
@@ -26,10 +26,10 @@ ms.locfileid: "77598096"
 可以使用两个不同的工作流将群集升级至最新版本或受支持的 Service Fabric 版本。 其中一个工作流适用于已建立网络连接，可自动下载最新版本的群集。 另一个工作流适用于未建立网络连接，无法下载最新 Service Fabric 版本的群集。
 
 ## <a name="enable-auto-upgrade-of-the-service-fabric-version-of-your-cluster"></a>支持自动升级群集的 Service Fabric 版本
-要将群集设置为在 Microsoft 发布新版本时下载 Service Fabric 的更新，可将 `fabricClusterAutoupgradeEnabled` 群集配置设置为 true。 若要手动选择希望群集一直使用的某个受支持的 Service Fabric 版本，可将 `fabricClusterAutoupgradeEnabled` 群集配置设置为 false。
+要将群集设置为在 Microsoft 发布新版本时下载 Service Fabric 的更新，可将 `fabricClusterAutoupgradeEnabled` 群集配置设置为 true**。 若要手动选择希望群集一直使用的某个受支持的 Service Fabric 版本，可将 `fabricClusterAutoupgradeEnabled` 群集配置设置为 false**。
 
 ## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>升级已建立网络连接，可下载最新代码和配置的群集
-如果群集节点可以通过 Internet 连接到 [Microsoft 下载中心](https://download.microsoft.com)，则使用以下步骤将群集升级至支持的版本。
+如果您的群集节点与[Microsoft 下载中心](https://download.microsoft.com)具有互联网连接，请使用以下步骤将群集升级到受支持的版本。
 
 对于可以连接到 [Microsoft 下载中心](https://download.microsoft.com)的群集，Microsoft 会定期检查新的 Service Fabric 版本是否已发布。
 
@@ -94,11 +94,11 @@ ms.locfileid: "77598096"
 >
 
 ### <a name="auto-provisioning-vs-manual-provisioning"></a>自动预配与手动预配
-若要为最新代码版本启用自动下载和注册，请设置 Service Fabric 更新服务。 有关说明，请参阅[独立包](service-fabric-cluster-standalone-package-contents.md)中的 Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt。
+若要为最新代码版本启用自动下载和注册，请设置 Service Fabric 更新服务。 有关说明，请参阅[独立包](service-fabric-cluster-standalone-package-contents.md)中的 Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt**。
 
 对于手动步骤，请根据以下说明操作。
 
-在启动配置升级之前，请修改群集配置，将以下属性设置为 *false*。
+在开始配置升级之前，修改群集配置以将以下属性设置为*false：*
 
 ```json
 "fabricClusterAutoupgradeEnabled": false,

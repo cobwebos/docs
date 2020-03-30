@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor 中的高级查询 |Microsoft Docs
+title: Azure 监视器中的高级查询 |微软文档
 description: 本文提供有关在 Azure Monitor 中使用 Analytics 门户编写查询的教程。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
 ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670281"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>在 Azure Monitor 中编写高级查询
 
 > [!NOTE]
-> 完成本课程之前，应完成[Azure Monitor Log Analytics](get-started-portal.md)和[查询](get-started-queries.md)入门。
+> 在完成本课程之前，应完成[Azure 监视器日志分析](get-started-portal.md)入门和[开始查询](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -94,7 +94,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 | summarize avg(usage_percent) by bin(TimeGenerated, 1h)
 ```
 
-创建查找表时，Datatable 构造也非常有用。 例如，要将表数据（如事件 ID）从 SecurityEvent 表映射到其他位置列出的事件类型，请使用  _创建包含事件类型的查找表，并将此数据表与 SecurityEvent 数据联接_`datatable`：
+创建查找表时，Datatable 构造也非常有用。 例如，要将表数据（如事件 ID）从 SecurityEvent 表映射到其他位置列出的事件类型，请使用 `datatable` 创建包含事件类型的查找表，并将此数据表与 SecurityEvent 数据联接____：
 
 ```Kusto
 let eventCodes = datatable (EventID: int, EventType:string)
@@ -126,7 +126,7 @@ SecurityEvent
 请参阅有关将 [Kusto 查询语言](/azure/kusto/query/)与 Azure Monitor 日志数据配合使用的其他课程：
 
 - [字符串操作](string-operations.md)
-- [时间和日期操作](datetime-operations.md)
+- [日期和时间操作](datetime-operations.md)
 - [聚合函数](aggregations.md)
 - [高级聚合](advanced-aggregations.md)
 - [JSON 和数据结构](json-data-structures.md)

@@ -1,16 +1,16 @@
 ---
-title: 启用脱机同步（Xamarin） |Microsoft Docs
-description: 了解如何使用应用服务移动应用在 Xamarin. Forms 应用程序中缓存和同步脱机数据。
+title: 启用脱机同步 (Xamarin.Forms) | Microsoft Docs
+description: 了解如何在 Xamarin.Forms 应用程序中使用应用服务移动应用缓存和同步脱机数据。
 ms.assetid: acf0f874-3ea5-4410-bd22-b0e72140f3b5
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 57776073ef7e2760b308df22280faf1d65b8d104
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77458845"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>为 Xamarin.Forms 移动应用启用脱机同步
@@ -26,18 +26,18 @@ ms.locfileid: "77458845"
 ## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>启用快速入门解决方案中的脱机同步功能
 脱机同步代码使用 C# 预处理器指令，包含在项目中。 定义 **OFFLINE\_SYNC\_ENABLED** 符号时，这些代码路径包含在生成中。 对于 Windows 应用，还必须安装 SQLite 平台。
 
-1. 在 Visual Studio 中，右键单击解决方案 >“管理解决方案的 NuGet 包…”，并在解决方案的所有项目中搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
+1. 在 Visual Studio 中，右键单击解决方案 >“管理解决方案的 NuGet 包…”****，并在解决方案的所有项目中搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
 2. 在解决方案资源管理器中，从名称中包含 **Portable** 的项目（该项目是可移植类库项目）中打开 TodoItemManager.cs 文件，并取消注释以下预处理器指令：
 
         #define OFFLINE_SYNC_ENABLED
 3. （可选）若要支持 Windows 设备，请安装以下 SQLite 运行时包之一：
 
-   * **Windows 8.1 运行时：** [为 Windows 8.1 安装 SQLite][3]。
-   * **Windows Phone 8.1：** [为 Windows Phone 8.1 安装 SQLite][4]。
-   * **通用 Windows 平台**安装[适用于通用 Windows 通用的 SQLite][5]。
+   * **Windows 8.1 运行时：** 安装 [SQLite for Windows 8.1][3]。
+   * **Windows Phone 8.1：** 安装 [SQLite for Windows Phone 8.1][4]。
+   * **通用 Windows 平台**安装[适用于通用 Windows 平台的 SQLite][5]。
 
      尽管快速入门中不包含通用 Windows 项目，但通用 Windows 平台支持 Xamarin Forms。
-4. （可选）在每个 Windows 应用项目中，右键单击“引用” > “添加引用...”，展开 **Windows** 文件夹 >“扩展”。
+4. （可选）在每个 Windows 应用项目中，右键单击 **"引用** > **添加参考..."，** 展开**Windows**文件夹>**扩展。**
     启用合适的 **SQLite for Windows** SDK 以及 **Visual C++ 2013 Runtime for Windows** SDK。
     每个 Windows 平台的 SQLite SDK 名称略有不同。
 
@@ -106,11 +106,11 @@ ms.locfileid: "77458845"
     此示例使用默认同步处理程序的简单错误处理。 实际应用程序将使用自定义的 **IMobileServiceSyncHandler** 实现处理各种错误，如网络状况和服务器冲突。
 
 ## <a name="offline-sync-considerations"></a>脱机同步注意事项
-在此示例中，仅在启动时和请求同步时才调用 **SyncAsync** 方法。  若要在 Android 或 iOS 应用中启动同步，请下拉项目列表；对于 Windows，请使用“同步”按钮。 在实际应用程序中，还可以在网络状态发生更改时触发同步。
+在此示例中，仅在启动时和请求同步时才调用 **SyncAsync** 方法。  若要在 Android 或 iOS 应用中启动同步，请下拉项目列表；对于 Windows，请使用“同步”**** 按钮。 在实际应用程序中，还可以在网络状态发生更改时触发同步。
 
 对具有由上下文跟踪的未完成本地更新的表执行拉取操作时，该拉取操作会自动触发在前面执行的上下文推送操作。 在此示例中刷新、添加和完成项目时，可省略显式 **PushAsync** 调用。
 
-在所提供的代码中，查询远程 TodoItem 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 **PushAsync** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步][2]中的增量同步部分。
+在所提供的代码中，查询远程 TodoItem 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 **PushAsync** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步][2]中的增量同步** 部分。
 
 ## <a name="run-the-client-app"></a>运行客户端应用
 现已启用脱机同步，可在每个平台上至少运行一次客户端应用程序，以填充本地存储数据库。 然后模拟脱机情况，并在应用处于脱机状态时修改本地存储中的数据。
@@ -131,20 +131,20 @@ ms.locfileid: "77458845"
 4. 关闭应用程序并重新启动它，以验证你创建的新项目是否已永久保存到本地存储中。
 5. （可选）使用 Visual Studio 查看 Azure SQL 数据库表，以了解后端数据库中的数据是否未更改。
 
-    在 Visual Studio 中，打开“服务器资源管理器”。 导航到“Azure”->“SQL 数据库”中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”。 现在便可以浏览 SQL 数据库表及其内容。
+    在 Visual Studio 中，打开“服务器资源管理器”****。 在**Azure**->**SQL 数据库中**导航到数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”****。 现在便可以浏览 SQL 数据库表及其内容。
 
 ## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>更新客户端应用以重新连接移动后端
 在本部分中，将应用重新连接到移动后端，以模拟重新回到联机状态的应用。 执行刷新手势时，数据将同步到移动后端。
 
 1. 重新打开 Constants.cs。 更正 `applicationURL`，使其指向正确的 URL。
 2. 重新生成并运行客户端应用。 该应用在启动后将尝试与移动应用后端进行同步。 验证调试控制台中是否未记录任何异常。
-3. 可有可无使用 SQL Server 对象资源管理器或 REST 工具（如 Fiddler 或[Postman][6]）查看更新后的数据。 请注意，数据已在后端数据库和本地存储之间进行同步。
+3. （可选）使用 SQL Server 对象资源管理器或 REST 工具（如 Fiddler 或 [Postman][6] ）查看更新后的数据。 请注意，数据已在后端数据库和本地存储之间进行同步。
 
     请注意，数据已在数据库和本地存储之间进行同步，并包含在应用断开连接时添加的项目。
 
 ## <a name="additional-resources"></a>其他资源
 * [Azure 移动应用中的脱机数据同步][2]
-* [Azure 移动应用 .NET SDK 如何][8]
+* [Azure 移动应用：.NET SDK 操作方法][8]
 
 <!-- URLs. -->
 [1]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure MQTT 客户端库向 MQTT 服务器发送消息
-description: 了解如何使用 MQTT 客户端库将消息发送到 MQTT broker。 还将了解如何将 mXChip IoT DevKit 配置为 MQTT 客户端。
+title: 使用 Azure MQTT 客户端库将消息发送到 MQTT 服务器
+description: 了解如何使用 MQTT 客户端库向 MQTT 代理发送消息。 还了解如何将 mXChip IoT 开发 Kit 配置为 MQTT 客户端。
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.openlocfilehash: 14feb02fbac800cd37da882a1872beb8269d9938
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954245"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>向 MQTT 服务器发送消息
@@ -28,7 +28,7 @@ ms.locfileid: "73954245"
 - 如何使用 MQTT 客户端库向 MQTT 代理发送消息。
 - 如何将 MXChip Iot DevKit 配置为 MQTT 客户端。
 
-## <a name="what-you-need"></a>需要什么
+## <a name="what-you-need"></a>所需条件
 
 完成[入门指南](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)来实现以下目的：
 
@@ -45,10 +45,10 @@ ms.locfileid: "73954245"
 
 ## <a name="open-the-mqttclient-sample"></a>打开 MQTTClient 示例
 
-展开左侧的“ARDUINO 示例”部分，浏览到“MXCHIP AZ3166 的示例 > MQTT”，然后选择“MQTTClient”。 此时会打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
+展开左侧的“ARDUINO 示例”**** 部分，浏览到****“MXCHIP AZ3166 的示例 > MQTT”，然后选择“MQTTClient”****。 此时会打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
 
 > [!NOTE]
-> 也可以从命令面板打开示例。 使用 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”。
+> 也可以从命令面板打开示例。 使用 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”********。
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>生成 Arduino 草图并将其上传到 DevKit
 
@@ -78,9 +78,9 @@ ms.locfileid: "73954245"
 如果遇到问题，请参阅 [IoT DevKit 常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)或通过以下渠道进行联系：
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
-* [堆栈溢出](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [将 IoT DevKit AZ3166 连接到云中的 Azure IoT 中心](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 * [摇一摇，摇一摇搜推文](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)

@@ -9,13 +9,13 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
 ms.openlocfilehash: 4e07334e859f2c1401547cc3f88988830b71c5e1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77193148"
 ---
-本文介绍如何将基础结构即服务 (IaaS) 资源从经典部署模型迁移到资源管理器部署模型，并详细说明如何使用虚拟网络站点到站点网关连接两个在订阅中共存的两个部署模型的资源。 用户可以阅读有关 [Azure 资源管理器功能和优点](../articles/azure-resource-manager/management/overview.md)的更多内容。 
+本文介绍如何将基础结构即服务 (IaaS) 资源从经典部署模型迁移到资源管理器部署模型，并详细说明如何使用虚拟网络站点到站点网关连接两个在订阅中共存的两个部署模型的资源。 您可以阅读有关[Azure 资源管理器功能和优势的更多](../articles/azure-resource-manager/management/overview.md)内容。 
 
 ## <a name="goal-for-migration"></a>迁移目标
 资源管理器除了可让你通过模板部署复杂的应用程序之外，还可使用 VM 扩展来配置虚拟机，并且纳入访问管理和标记。 Azure 资源管理器将虚拟机的可缩放并行部署包含在可用性集内。 新部署模型还针对计算、网络和存储单独提供生命周期管理。 最后，将重点介绍为了默认启用安全性而要在虚拟网络中实施虚拟机的做法。
@@ -73,13 +73,13 @@ ms.locfileid: "77193148"
 > [!NOTE]
 > Resource Manager 部署模型没有经典映像和磁盘的概念。 迁移存储帐户时，经典映像和磁盘不在 Resource Manager 堆栈中可见，但后备 VHD 保留在存储帐户中。
 
-以下屏幕截图演示如何使用 Azure 门户将经典存储帐户升级到 Azure 资源管理器存储帐户：
-1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 导航到你的存储帐户。
-3. 在 "**设置**" 部分中，单击 "**迁移到 ARM**"。
-4. 单击 "**验证**" 以确定迁移可行性。
-5. 如果验证通过，则单击 "**准备**" 以创建迁移的存储帐户。
-6. 键入 **"是"** 以确认迁移，并单击 "**提交**" 完成迁移。
+以下屏幕截图演示了如何使用 Azure 门户将经典存储帐户升级到 Azure 资源管理器存储帐户：
+1. 登录到 Azure[门户](https://portal.azure.com)。
+2. 导航到存储帐户。
+3. 在“设置”部分单击“迁移到 ARM”。********
+4. 单击“验证”，确定迁移可行性。****
+5. 如果验证通过，请单击“准备”****，以便创建迁移的存储帐户。
+6. 键入“是”对迁移进行确认，然后单击“提交”******** 完成迁移。
 
     ![验证存储帐户](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
     
@@ -100,7 +100,7 @@ ms.locfileid: "77193148"
 ### <a name="unsupported-features"></a>不支持的功能
 目前不支持以下功能。 可以选择删除这些设置、迁移 VM，然后在 Resource Manager 部署模型中重新启用这些设置。
 
-| 资源提供程序 | 功能 | 建议 |
+| 资源提供程序 | Feature | 建议 |
 | --- | --- | --- |
 | 计算 | 不关联的虚拟机磁盘。 | 迁移存储帐户时，将迁移这些磁盘后面的 VHD blob |
 | 计算 | 虚拟机映像。 | 迁移存储帐户时，将迁移这些磁盘后面的 VHD blob |
@@ -111,9 +111,9 @@ ms.locfileid: "77193148"
 ### <a name="unsupported-configurations"></a>不支持的配置
 目前不支持以下配置。
 
-| 服务 | 配置 | 建议 |
+| 服务 | Configuration | 建议 |
 | --- | --- | --- |
-| 资源管理器 |经典资源的基于角色的访问控制（RBAC） |由于资源的 URI 在迁移后会进行修改，因此建议用户规划需要在迁移后进行的 RBAC 策略更新。 |
+| 资源管理器 |经典资源的基于角色的访问控制 (RBAC) |由于资源的 URI 在迁移后会进行修改，因此建议用户规划需要在迁移后进行的 RBAC 策略更新。 |
 | 计算 |与 VM 关联的多个子网 |将子网配置更新为只引用一个子网。 这可能需要从 VM 中删除辅助 NIC（该 NIC 引用另一个子网） ，完成迁移后再将其重新附加。 |
 | 计算 |属于虚拟网络，但未分配显式子网的虚拟机 |可以选择性地删除 VM。 |
 | 计算 |具有警报、自动缩放策略的虚拟机 |迁移进行下去时，这些设置会删除。 强烈建议用户在进行迁移之前先评估其环境。 或者，也可以在迁移完成之后重新配置警报设置。 |
@@ -123,7 +123,7 @@ ms.locfileid: "77193148"
 | 计算 | 云服务包含一个以上可用性集或多个可用性集。 |目前不支持。 在迁移之前，请将虚拟机移到同一可用性集中。 |
 | 计算 | 带 Azure 安全中心扩展的 VM | Azure 安全中心在虚拟机上自动安装扩展，用于监视其安全性并引发警报。 如果在订阅上启用了 Azure 安全中心策略，通常会自动安装这些扩展。 若要迁移虚拟机，则禁用订阅上的安全中心策略，这将从虚拟机删除监视扩展的安全中心。 |
 | 计算 | 带备份或快照扩展的 VM | 这些扩展安装在配置有 Azure 备份服务的虚拟机上。 当不支持迁移这些 VM 时，请按照[此处](/azure/virtual-machines/windows/migration-classic-resource-manager-faq#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault)的指导，在迁移前保留备份。  |
-| 计算 | 具有 Azure Site Recovery 扩展的 VM | 这些扩展安装在配置有 Azure Site Recovery 服务的虚拟机上。 尽管迁移与 Site Recovery 一起使用的存储将起作用，但当前复制会受到影响。 在存储迁移后，需要禁用并启用 VM 复制。 |
+| 计算 | 具有 Azure 站点恢复扩展名的 VM | 这些扩展安装在配置 Azure 站点恢复服务的虚拟机上。 虽然与站点恢复一起使用的存储的迁移将起作用，但当前复制将受到影响。 您需要在存储迁移后禁用并启用 VM 复制。 |
 | 网络 |包含虚拟机和 Web 角色/辅助角色的虚拟网络 |目前不支持。 在迁移之前，请将 Web/辅助角色移动到其自己的虚拟网络。 一旦迁移经典虚拟网络，就可以将迁移的 Azure 资源管理器虚拟网络与经典虚拟网络对等，从而实现与以前类似的配置。|
 | 网络 | 经典 Express Route 线路 |目前不支持。 这些线路需要在开始迁移 IaaS 之前迁移到 Azure 资源管理器。 有关详细信息，请参阅[将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型](../articles/expressroute/expressroute-move.md)。|
 | Azure 应用服务 |包含应用服务环境的虚拟网络 |目前不支持。 |

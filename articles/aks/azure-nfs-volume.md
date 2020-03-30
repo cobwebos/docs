@@ -1,37 +1,37 @@
 ---
-title: 创建由 Azure Kubernetes Service （AKS）的 pod 使用的 NFS （网络文件系统） Ubuntu 服务器
-description: 了解如何在 Azure Kubernetes Service （AKS）中手动创建 NFS Ubuntu Linux 服务器卷以用于 pod
+title: 创建可供 Azure Kubernetes 服务 (AKS) 的 Pod 使用的 NFS（网络文件系统）Ubuntu 服务器
+description: 了解如何手动创建可供 Azure Kubernetes 服务 (AKS) 中的 Pod 使用的 NFS Ubuntu Linux 服务器卷
 services: container-service
 author: ozboms
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
 ms.openlocfilehash: e5676710bc47557318f3e2adcf36ec0ed13d47de
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596617"
 ---
-# <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）手动创建和使用 NFS （网络文件系统） Linux 服务器卷
-在容器之间共享数据通常是基于容器的服务和应用程序的必需组件。 通常有各种 pod 需要访问外部永久性卷上的相同信息。    
-虽然可以选择 Azure 文件，但在 Azure VM 上创建 NFS 服务器是另一种持久共享存储。 
+# <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中手动创建和使用 NFS（网络文件系统）Linux 服务器卷
+基于容器的服务和应用程序往往需要在容器之间共享数据。 通常，会有各种 Pod 需要访问外部持久性卷上的相同信息。    
+Azure 文件是一个选项，而在 Azure VM 上创建的 NFS 服务器是持久性共享存储的另一种形式。 
 
-本文介绍如何在 Ubuntu 虚拟机上创建 NFS 服务器。 同时，还可让 AKS 容器访问此共享文件系统。
+本文将介绍如何在 Ubuntu 虚拟机上创建 NFS 服务器。 另外，将介绍 AKS 容器如何访问此共享文件系统。
 
 ## <a name="before-you-begin"></a>开始之前
-本文假定你已有一个 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门，并[使用 Azure CLI][aks-quickstart-cli]或[使用 Azure 门户][aks-quickstart-portal]。
+本文假设你已有一个 AKS 群集。 如果需要 AKS 群集，请参阅[使用 Azure CLI][aks-quickstart-cli]或使用[Azure 门户的][aks-quickstart-portal]AKS 快速入门。
 
-AKS 群集将需要与 NFS 服务器位于同一虚拟网络或对等互连虚拟网络中。 群集必须在现有的 VNET 中创建，该 VNET 可以是与 VM 相同的 VNET。
+AKS 群集需要驻留在 NFS 服务器所在的相同或对等互连的虚拟网络中。 该群集必须在现有的 VNET 中创建，该 VNET 可以是 VM 所在的同一 VNET。
 
-文档：在[现有 vnet 中创建 AKS 群集][aks-virtual-network]和[使用 VNET 对等互连连接虚拟网络][peer-virtual-networks]中介绍了使用现有 vnet 进行配置的步骤。
+本文档介绍了使用现有 VNET 进行配置的步骤：[在现有 VNET 中创建 AKS 群集][aks-virtual-network]，[并将虚拟网络与 VNET 对等互连连接起来][peer-virtual-networks]
 
-它还假定已创建 Ubuntu Linux 虚拟机（例如，18.04 LTS）。 设置和大小可以根据自己的喜好，也可以通过 Azure 部署。 有关 Linux 快速入门，请参阅[LINUX VM 管理][linux-create]。
+本文还假设你已创建一个 Ubuntu Linux 虚拟机（例如 18.04 LTS）。 可以使用任意设置和大小，并可以通过 Azure 部署该虚拟机。 有关 Linux 快速入门，请参阅[Linux VM 管理][linux-create]。
 
-如果首先部署 AKS 群集，则在部署 Ubuntu 计算机时，Azure 会自动填充虚拟网络字段，使其在同一 VNET 中运行。 但是，如果你想要改为使用对等互连网络，请参阅上面的文档。
+如果你是首次部署 AKS 群集，在部署 Ubuntu 计算机时，Azure 会自动填充虚拟网络字段，使该计算机驻留在同一 VNET 中。 但是，如果你想要改用对等互连网络，请参阅上述文档。
 
-## <a name="deploying-the-nfs-server-onto-a-virtual-machine"></a>在虚拟机上部署 NFS 服务器
-下面是在 Ubuntu 虚拟机中设置 NFS 服务器的脚本：
+## <a name="deploying-the-nfs-server-onto-a-virtual-machine"></a>将 NFS 服务器部署到虚拟机
+下面是用于在 Ubuntu 虚拟机中设置 NFS 服务器的脚本：
 ```bash
 #!/bin/bash
 
@@ -73,32 +73,32 @@ echo "/export        localhost(rw,async,insecure,fsid=0,crossmnt,no_subtree_chec
 
 nohup service nfs-kernel-server restart
 ```
-服务器将重新启动（由于脚本），可以将 NFS 服务器装载到 AKS。
+服务器将重新启动（由于脚本），您可以将 NFS 服务器装载到 AKS。
 
 >[!IMPORTANT]  
->请确保将**AKS_SUBNET**替换为群集中的正确一个，否则 "*" 会将 NFS 服务器打开到所有端口和连接。
+>请务必将 **AKS_SUBNET** 替换为群集中的适当子网；如果使用“*”，则会在 NFS 服务器中打开所有端口和连接。
 
-创建 VM 后，将上面的脚本复制到一个文件中。 然后，你可以使用以下方法将其从本地计算机或脚本中的任何位置移动到 VM： 
+创建 VM 后，将上述脚本复制到某个文件中。 然后可以使用以下命令，将该脚本从本地计算机或其所在的任意位置移到 VM 中： 
 ```console
 scp /path/to/script_file username@vm-ip-address:/home/{username}
 ```
-一旦你的脚本位于 VM 中，你就可以通过 ssh 连接到 VM 并通过命令执行它：
+将脚本移到 VM 后，可以通过 SSH 连接到 VM，并通过以下命令执行该脚本：
 ```console
 sudo ./nfs-server-setup.sh
 ```
-如果因权限拒绝错误而导致其执行失败，请通过命令设置执行权限：
+如果脚本由于权限被拒绝错误而执行失败，请通过以下命令设置执行权限：
 ```console
 chmod +x ~/nfs-server-setup.sh
 ```
 
 ## <a name="connecting-aks-cluster-to-nfs-server"></a>将 AKS 群集连接到 NFS 服务器
-可以通过预配永久性卷和指定如何访问卷的永久卷声明，将 NFS 服务器连接到群集。
+可以通过预配一个持久性卷，以及一个指定如何访问该卷的持久性卷声明，将 NFS 服务器连接到群集。
 
-需要将两个服务连接到相同或对等互连的虚拟网络中。 在同一 VNET 中设置群集的说明如下所示：[在现有 VNET 中创建 AKS 群集][aks-virtual-network]
+必须连接相同或对等互连的虚拟网络中的两个服务。 有关在同一 VNET 中设置群集的说明：[在现有 VNET 中创建 AKS 群集][aks-virtual-network]
 
-一旦它们位于同一个虚拟网络（或对等互连）中，你需要在 AKS 群集中预配一个永久性卷和一个永久性卷声明。 然后，容器可以将 NFS 驱动器装载到本地目录。
+将这些服务放入同一虚拟网络（或对等互连的虚拟网络）后，需要在 AKS 群集中预配持久性卷和持久性卷声明。 然后，容器可将 NFS 驱动器装载到其本地目录。
 
-下面是永久性卷的示例 Kubernetes 定义（此定义假定群集和 VM 位于同一 VNET 中）：
+下面是持久卷的 Kubernetes 定义示例（此定义假定群集和 VM 位于同一 VNET 中）：
 
 ```yaml
 apiVersion: v1
@@ -116,12 +116,12 @@ spec:
     server: <NFS_INTERNAL_IP>
     path: <NFS_EXPORT_FILE_PATH>
 ```
-将**NFS_INTERNAL_IP**、 **NFS_NAME**和**NFS_EXPORT_FILE_PATH**替换为 NFS 服务器信息。
+请将 **NFS_INTERNAL_IP**、**NFS_NAME** 和 **NFS_EXPORT_FILE_PATH** 替换为 NFS 服务器信息。
 
-还需要一个永久性卷声明文件。 下面是包含内容的示例：
+还需要一个持久性卷声明文件。 下面是该文件的内容示例：
 
 >[!IMPORTANT]  
->**"storageClassName"** 需要保留空字符串或声明不起作用。
+>**"storageClassName"** 需保留为空字符串，否则声明不起作用。
 
 ```yaml
 apiVersion: v1
@@ -140,23 +140,23 @@ spec:
       type: nfs
 ```
 
-## <a name="troubleshooting"></a>故障排除
-如果无法从群集连接到服务器，则问题可能是导出的目录或其父目录没有足够的权限访问服务器。
+## <a name="troubleshooting"></a>疑难解答
+如果无法从群集连接到服务器，问题的原因可能是导出的目录或其父级没有足够的权限，因此无法访问服务器。
 
-检查导出目录及其父目录是否具有777权限。
+请检查导出的目录及其父目录是否具有 777 权限。
 
-你可以通过运行以下命令来检查权限，并且目录应具有 *"drwxrwxrwx"* 权限：
+可运行以下命令来检查权限，目录应有 *'drwxrwxrwx'* 权限：
 ```console
 ls -l
 ```
 
 ## <a name="more-information"></a>详细信息
-若要获取完整的演练或帮助调试 NFS 服务器安装程序，请参阅下面的详细教程：
+如需完整的演练，或者在调试 NFS 服务器设置时需要帮助，请查看以下深度教程：
   - [NFS 教程][nfs-tutorial]
 
 ## <a name="next-steps"></a>后续步骤
 
-有关相关的最佳实践，请参阅[AKS 中存储和备份的最佳实践][operator-best-practices-storage]。
+如需相关的最佳做法，请参阅 [AKS 中的存储和备份最佳做法][operator-best-practices-storage]。
 
 <!-- LINKS - external -->
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/

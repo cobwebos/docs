@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 04/05/2018
 ms.author: labrenne
 ms.openlocfilehash: b1f4fb0207d4f659861dbd3fdfd1b2d502409935
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022454"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>使用 Application Insights 监视和调试 Azure Batch .NET 应用程序
@@ -30,14 +30,14 @@ ms.locfileid: "77022454"
 > 或者，配置 Batch 解决方案以在 Batch Explorer 中显示 Application Insights 数据，例如 VM 性能计数器。 [Batch Explorer](https://github.com/Azure/BatchExplorer) 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 下载适用于 Mac、Linux 或 Windows 的[安装包](https://azure.github.io/BatchExplorer/)。 有关在 Batch Explorer 中启用 Application Insights 数据的快速步骤，请参阅 [batch-insights 存储库](https://github.com/Azure/batch-insights)。 
 >
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 * [Visual Studio 2017 或更高版本](https://www.visualstudio.com/vs)
 
 * [Batch 帐户和链接的存储帐户](batch-account-create-portal.md)
 
 * [Application Insights 资源](../azure-monitor/app/create-new-resource.md )
   
-   * 使用 Azure 门户创建一个 Application Insights 资源。 选择 "*常规*"**应用程序类型**。
+   * 使用 Azure 门户创建一个 Application Insights 资源。** 为“应用程序类型”选择“常规”。** ****
 
    * 从门户中复制[检测密钥](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)。 本文稍后会用到此密钥。
   
@@ -45,7 +45,7 @@ ms.locfileid: "77022454"
   > Application Insights 中存储的数据可能会产生[费用](https://azure.microsoft.com/pricing/details/application-insights/)。 这包括本文中所述的诊断和监视数据。
   > 
 
-## <a name="add-application-insights-to-your-project"></a>将 Application Insights 添加到你的项目
+## <a name="add-application-insights-to-your-project"></a>将 Application Insights 添加到项目
 
 项目需要 **Microsoft.ApplicationInsights.WindowsServer** NuGet 包及其依赖项。 请将其添加或还原到应用程序的项目。 若要安装此包，请使用 `Install-Package` 命令或 NuGet 包管理器。
 
@@ -265,13 +265,13 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 
 ### <a name="view-live-stream-data"></a>查看实时流数据
 
-若要查看 Application Insights 资源中的跟踪日志，请单击“实时流”。 以下屏幕截图显示如何查看来自池中计算节点的实时数据，例如每个计算节点的 CPU 使用率。
+若要查看 Application Insights 资源中的跟踪日志，请单击“实时流”。**** 以下屏幕截图显示如何查看来自池中计算节点的实时数据，例如每个计算节点的 CPU 使用率。
 
 ![实时流计算节点数据](./media/monitor-application-insights/applicationinsightslivestream.png)
 
 ### <a name="view-trace-logs"></a>查看跟踪日志
 
-若要查看 Application Insights 资源中的跟踪日志，请单击“搜索”。 此视图显示 Application Insights 捕获的诊断数据列表，包括跟踪、事件和异常。 
+若要查看 Application Insights 资源中的跟踪日志，请单击“搜索”。**** 此视图显示 Application Insights 捕获的诊断数据列表，包括跟踪、事件和异常。 
 
 以下屏幕截图显示如何记录某个任务的单个跟踪，并随后对其进行查询以实现调试目的。
 
@@ -288,14 +288,14 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 自定义指标也是门户中的一个有用工具。 例如，可以显示每个计算节点下载其处理的所需文本文件平均花费的时间。
 
 创建示例图表：
-1. 在 Application Insights 资源中，单击“指标资源管理器” > “添加图表”。
-2. 在添加的图表上单击“编辑”。
+1. 在应用程序见解资源中，单击 **"指标资源管理器** > **添加图表**"。
+2. 在添加的图表上单击“编辑”。****
 2. 按如下所示更新图表详细信息：
-   * 将“图表类型”设置为“网格”。
-   * 将“聚合”设置为“平均”。
-   * 将“分组依据”设置为“NodeId”。
-   * 在“指标”中，选择“自定义” > “Blob 下载时间(秒)”。
-   * 根据偏好调整“调色板”的显示。 
+   * 将“图表类型”设置为“网格”。********
+   * 将“聚合”设置为“平均”。********
+   * 将“分组依据”设置为“NodeId”。********
+   * 在“指标”中，选择“自定义” > “Blob 下载时间(秒)”。************
+   * 根据偏好调整“调色板”的显示。**** 
 
 ![每个节点的 Blob 下载时间](./media/monitor-application-insights/blobdownloadtime.png)
 

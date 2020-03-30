@@ -1,14 +1,14 @@
 ---
-title: 通过多步骤 web 测试进行监视-Azure 应用程序 Insights
-description: 设置多步骤 web 测试，以便通过 Azure 应用程序 Insights 监视 web 应用程序
+title: 通过多步骤 Web 测试进行监视 - Azure Application Insights
+description: 设置多步骤 Web 测试以通过 Azure Application Insights 监视 Web 应用程序
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 3b8baad127b16a1bd9d071d0c3d4df68da8c3304
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655934"
 ---
 # <a name="multi-step-web-tests"></a>多步骤 Web 测试
@@ -16,14 +16,14 @@ ms.locfileid: "77655934"
 可以通过多步骤 Web 测试监视记录的一系列 URL 以及与网站的交互。 本文将详细介绍使用 Visual Studio Enterprise 创建多步骤 Web 测试的过程。
 
 > [!NOTE]
-> 多步骤 web 测试依赖于 Visual Studio webtest 文件。 已[公布](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/)，Visual Studio 2019 将是具有 webtest 功能的最新版本。 必须了解的是，尽管不会添加任何新功能，但目前仍支持 Visual Studio 2019 中的 webtest 功能，并且在产品的支持生命周期内仍将继续提供支持。 Azure Monitor 产品团队已经解决了有关将来的多步骤[可用性测试的](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)问题。  
+> 多步 Web 测试取决于 Visual Studio Web 测试文件。 我们已[宣布](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/)，Visual Studio 2019 将是包含 Web 测试功能的最后一个版本。 必须指出的是，虽然 Visual Studio 2019 中不会添加新功能，但 Web 测试功能目前仍受支持，并且会在产品的支持生命周期中继续受到支持。 Azure Monitor 产品团队已解决了有关多步可用性测试的未来的问题，详见[此文](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)。  
 
 ## <a name="pre-requisites"></a>先决条件
 
 * Visual Studio 2017 Enterprise 或更高版本。
 * Visual Studio Web 性能和负载测试工具。
 
-查找测试工具先决条件。 启动**Visual Studio 安装程序** > **各个组件**， > **调试和测试** > **Web 性能和负载测试工具**。
+查找测试工具先决条件。 启动**可视化工作室安装程序** > **单个组件** > **调试和测试** > **Web 性能和负载测试工具**。
 
 ![Visual Studio 安装程序 UI 的屏幕截图，已选中“各个组件”，并且在“Web 性能和负载测试工具”对应的项旁白有一个复选框](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -33,13 +33,13 @@ ms.locfileid: "77655934"
 ## <a name="record-a-multi-step-web-test"></a>记录多步骤 Web 测试 
 
 > [!WARNING]
-> 我们不再建议使用多步骤记录器。 记录器是为具有基本交互的静态 HTML 页面开发的，不提供新式网页的功能体验。
+> 我们不再建议使用多步骤记录器。 记录器是为具有基本交互的静态 HTML 页开发的，不为新式网页提供功能体验。
 
-有关创建 Visual Studio web 测试的指南，请参阅[官方 Visual studio 2019 文档](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)。
+有关创建 Visual Studio Web 测试的指南，请参阅[官方 Visual Studio 2019 文档](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)。
 
 ## <a name="upload-the-web-test"></a>上传 Web 测试
 
-1. 在 Application Insights 门户中的 "可用性" 窗格上，选择 "**创建测试** > **测试类型** > **多步骤 web 测试**"。
+1. 在"可用性"窗格上的"应用程序见解"门户中，选择 **"创建测试** > **测试类型** > **多步骤 Web 测试**"。
 
 2. 设置测试位置、频率和警报参数。
 
@@ -48,13 +48,13 @@ ms.locfileid: "77655934"
 |设置| 说明
 |----|----|----|
 |**测试频率**| 设置从每个测试位置运行测试的频率。 如果有五个测试位置，且默认频率为五分钟，则平均每隔一分钟测试站点一次。|
-|**测试位置**| 是服务器从其将 Web 请求发送到 URL 的位置。 **建议的最小测试位置数为 5** ，以确保可以将网站中的问题与网络问题区分开来。 最多可以选择 16 个位置。
+|**测试位置**| 是服务器从其将 Web 请求发送到 URL 的位置。 **我们推荐的测试位置最少为 5**个，以确保您可以将网站中的问题与网络问题区分开来。 最多可以选择 16 个位置。
 
-### <a name="success-criteria"></a>成功条件
+### <a name="success-criteria"></a>成功标准
 
 |设置| 说明
 |----|----|----|
-| **测试超时** |减少此值可以接收有关响应变慢的警报。 如果未在这段时间内收到站点的响应，则将测试视为失败。 如果选择了“分析依赖请求”，则必须在这段时间内收到所有图像、样式文件、脚本和其他依赖资源。|
+| **测试超时** |减少此值可以接收有关响应变慢的警报。 如果未在这段时间内收到站点的响应，则将测试视为失败。 如果选择了“分析依赖请求”，则必须在这段时间内收到所有图像、样式文件、脚本和其他依赖资源****。|
 | **HTTP 响应** | 视为成功的返回状态代码。 代码 200 指示返回了正常网页。|
 | **内容匹配** | 类似于“欢迎!”的字符串。 我们测试区分大小写的匹配项是否出现在每个响应中。 它必须是不带通配符的纯字符串。 别忘了，如果页面内容更改，可能需要更新。 **内容匹配仅支持英文字符** |
 
@@ -62,11 +62,11 @@ ms.locfileid: "77655934"
 
 |设置| 说明
 |----|----|----|
-|**近乎实时（预览）** | 我们建议使用近实时警报。 在创建可用性测试后会配置此类警报。  |
+|**近实时（预览）** | 我们建议使用近实时警报。 在创建可用性测试后会配置此类警报。  |
 |**经典** | 我们不再建议对新的可用性测试使用经典警报。|
-|**警报位置阈值**|建议最少 3/5 个位置。 警报位置阈值和测试位置数量之间的最佳关系是**警报位置阈值** = **测试位置数-2，最少有5个测试位置。**|
+|**警报位置阈值**|建议最少 3/5 个位置。 警报位置阈值与测试位置数之间的最优关系是测试位置的**警报位置阈值** = **数 - 2，至少为 5 个测试位置。**|
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ### <a name="plugging-time-and-random-numbers-into-your-test"></a>将时间和随机数插入测试
 
@@ -78,7 +78,7 @@ ms.locfileid: "77655934"
 
 Web 测试日期时间插件提供处理时间参数化的方式。
 
-1. 针对所需的每个变量参数值添加一个 Web 测试插件。 在 Web 测试工具栏中，选择“添加 Web 测试插件”。
+1. 针对所需的每个变量参数值添加一个 Web 测试插件。 在 Web 测试工具栏中，选择“添加 Web 测试插件”****。
     
     ![添加 Web 测试插件](./media/availability-multistep/app-insights-72webtest-plugin-name.png)
     
@@ -92,7 +92,7 @@ Web 测试日期时间插件提供处理时间参数化的方式。
 
     ![StartTime](./media/availability-multistep/app-insights-72webtest-plugins.png)
 
-现在，将测试上传到门户。 它会在每次运行测试时使用动态值。
+现在，将测试上传到门户。 每次运行测试时，它将使用动态值。
 
 ### <a name="dealing-with-sign-in"></a>处理登录
 
@@ -100,22 +100,22 @@ Web 测试日期时间插件提供处理时间参数化的方式。
 
 在所有情况下，应该只针对测试目的在应用程序中创建帐户。 如果可能，请限制此测试帐户的权限，以便 Web 测试不会影响实际用户。
 
-**简单的用户名和密码**以常规方式记录 web 测试。 先删除 Cookie。
+**简单的用户名和密码** 以普通方式录制 Web 测试。 先删除 Cookie。
 
 **SAML 身份验证**
 
-|属性名称| 说明|
+|属性名称| 描述|
 |----|-----|
-| 受众 Uri | SAML 标记的受众 URI。  这是访问控制服务（ACS）的 URI，包括 ACS 命名空间和主机名。 |
-| 证书密码 | 将授予对嵌入私钥的访问权限的客户端证书的密码。 |
-| 客户端证书  | 具有 Base64 编码格式的私钥的客户端证书值。 |
-| 名称标识符 | 标记的名称标识符 |
-| 不晚 | 标记有效的时间跨度。  默认为 5 分钟。 |
-| 不早于 | 在过去创建的标记将有效的时间跨度（用于处理时间偏差）。  默认值为（负）5分钟。 |
-| 目标上下文参数名称 | 将接收生成的断言的上下文参数。 |
+| 受众 Uri | SAML 令牌的受众 URI。  这是访问控制服务 (ACS) 的 URI – 包括 ACS 命名空间和主机名。 |
+| 证书密码 | 客户端证书的密码，用于授予对已嵌入私钥的访问权限。 |
+| 客户端证书  | 客户端证书值，其中的私钥采用 Base64 编码格式。 |
+| 名称标识符 | 令牌的名称标识符 |
+| 不晚于 | 令牌生效的时间范围。  默认为 5 分钟。 |
+| 不早于 | 在过去创建的令牌生效的时间范围（用于解决时间偏差）。  默认值为（负）5 分钟。 |
+| 目标上下文参数名称 | 上下文参数，用于接收生成的断言。 |
 
 
-**客户端密码**如果你的应用有涉及客户端机密的登录路由，请使用该路由。 例如，Azure Active Directory (AAD) 就是提供客户端机密登录的服务。 在 AAD 中，客户端机密是应用密钥。
+**客户端机密** 如果应用的某个登录路由涉及到客户端机密，请使用该路由。 例如，Azure Active Directory (AAD) 就是提供客户端机密登录的服务。 在 AAD 中，客户端机密是应用密钥。
 
 下面是使用应用密钥的 Azure Web 应用的 Web 测试示例：
 
@@ -137,11 +137,11 @@ Web 测试日期时间插件提供处理时间参数化的方式。
 使用 Visual Studio 录制 Web 测试。
 参数化令牌，设置参数来指定从验证器返回令牌的时间，并在站点查询中使用该参数。 （Visual Studio 会尝试参数化测试，但无法正确参数化令牌。）
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 专用[故障排除文章](troubleshoot-availability.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [可用性警报](availability-alerts.md)
-* [Url ping web 测试](monitor-web-app-availability.md)
+* [URL ping Web 测试](monitor-web-app-availability.md)

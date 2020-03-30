@@ -1,6 +1,6 @@
 ---
-title: 向 Microsoft Graph API 分配 Azure AD 管理员角色 |Microsoft Docs
-description: 分配和删除 Azure Active Directory 中图形 API 的 Azure AD 管理员角色
+title: 使用 Microsoft 图形 API 分配 Azure AD 管理员角色 |微软文档
+description: 在 Azure Active Directory 中使用 Graph API 分配和删除 Azure AD 管理员角色
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,23 +14,23 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3632f8a360df8837569104232b7380fdc8383953
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77559141"
 ---
-# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>使用 Azure Active Directory 中的 Microsoft Graph API 分配自定义管理员角色 
+# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>使用 Azure 活动目录中的 Microsoft 图形 API 分配自定义管理员角色 
 
-你可以使用 Microsoft Graph API 自动执行将角色分配给用户帐户的方式。 本文介绍了 roleAssignments 上的 POST、GET 和 DELETE 操作。
+您可以使用 Microsoft 图形 API 自动分配角色的方式。 本文介绍在 roleAssignments 上进行的 POST、GET 和 DELETE 操作。
 
 ## <a name="required-permissions"></a>所需的权限
 
-使用全局管理员帐户或特权标识管理员连接到 Azure AD 租户，以分配或删除角色。
+连接到 Azure AD 租户，使用全局管理员帐户或特权标识管理员分配或删除角色。
 
-## <a name="post-operations-on-roleassignment"></a>RoleAssignment 上的 POST 操作
+## <a name="post-operations-on-roleassignment"></a>在 RoleAssignment 上进行的 POST 操作
 
-用于在用户和角色定义之间创建角色分配的 HTTP 请求。
+HTTP 请求，用于创建在用户和角色定义之间的角色分配。
 
 POST
 
@@ -55,7 +55,7 @@ Body
 HTTP/1.1 201 Created
 ```
 
-用于创建不存在主体或角色定义的角色分配的 HTTP 请求
+HTTP 请求，用于创建在其中不存在主体或角色定义的角色分配
 
 POST
 
@@ -79,10 +79,10 @@ Body
 HTTP/1.1 404 Not Found
 ```
 
-用于在内置角色定义上创建单个资源范围内角色分配的 HTTP 请求。
+HTTP 请求，用于在内置角色定义上创建单资源范围的角色分配。
 
 > [!NOTE] 
-> 目前，内置角色的限制仅限于 "/" 组织范围范围或 "/AU/*" 范围。 单个资源范围不适用于内置角色，但适用于自定义角色。
+> 内置角色目前有一个限制，即，它们只能局限于“/”组织范围或“/AU/*”范围。 单资源范围不适用于内置角色，但适用于自定义角色。
 
 POST
 
@@ -124,9 +124,9 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-## <a name="get-operations-on-roleassignment"></a>RoleAssignment 上的 GET 操作
+## <a name="get-operations-on-roleassignment"></a>在 RoleAssignment 上进行的 GET 操作
 
-用于获取给定主体的角色分配的 HTTP 请求
+HTTP 请求，用于获取给定主体的角色分配。
 
 GET
 
@@ -152,7 +152,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-用于获取给定角色定义的角色分配的 HTTP 请求。
+HTTP 请求，用于获取给定角色定义的角色分配。
 
 GET
 
@@ -172,7 +172,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-按 ID 获取角色分配的 HTTP 请求。
+HTTP 请求，用于按 ID 获取角色分配。
 
 GET
 
@@ -192,9 +192,9 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="delete-operations-on-roleassignment"></a>RoleAssignment 上的 DELETE 操作
+## <a name="delete-operations-on-roleassignment"></a>在 RoleAssignment 上进行的 DELETE 操作
 
-用于删除用户和角色定义之间的角色分配的 HTTP 请求。
+HTTP 请求，用于删除在用户和角色定义之间的角色分配。
 
 DELETE
 
@@ -207,7 +207,7 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lA
 HTTP/1.1 204 No Content
 ```
 
-删除不再存在的角色分配的 HTTP 请求
+HTTP 请求，用于删除不再存在的角色分配
 
 DELETE
 
@@ -221,7 +221,7 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lA
 HTTP/1.1 404 Not Found
 ```
 
-用于删除自助和内置角色定义之间的角色分配的 HTTP 请求
+HTTP 请求，用于删除在自身和内置角色定义之间的角色分配
 
 DELETE
 

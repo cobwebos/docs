@@ -1,5 +1,5 @@
 ---
-title: 体系结构-使用 Azure Site Recovery 的 Hyper-v 灾难恢复到辅助站点
+title: 使用 Azure 站点恢复的体系结构-Hyper-V 灾难恢复到辅助站点
 description: 本文概述使用 Azure Site Recovery 将本地 Hyper-V VM 灾难恢复到辅助 System Center VMM 站点所用的体系结构。
 author: rayne-wiselman
 manager: carmonm
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 3e81e353d2912f56a932ce118a0424e45e758df7
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74133015"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>体系结构 - 从 Hyper-V 复制到辅助站点
 
 本文介绍如何通过 Azure 门户在 System Center Virtual Machine Manager (VMM) 云中使用 [Azure Site Recovery](site-recovery-overview.md) 服务将本地 Hyper-V 虚拟机 (VM) 复制到辅助 VMM 站点时涉及的组件和进程。
-a
+（英文）。
 
 ## <a name="architectural-components"></a>体系结构组件
 
@@ -36,7 +36,7 @@ a
 
 ## <a name="replication-process"></a>复制过程
 
-1. 当触发初始复制时，系统会拍摄一个 [Hyper-V VM 快照](https://technet.microsoft.com/library/dd560637.aspx)。
+1. 触发初始复制时，将拍摄[Hyper-V VM 快照](https://technet.microsoft.com/library/dd560637.aspx)。
 2. VM 上的虚拟硬盘会逐一复制到辅助位置。
 3. 如果在初始复制期间发生磁盘更改，Hyper-V 副本复制跟踪器将跟踪这些更改，并将其记录在 Hyper-V 复制日志 (.hrl) 中。 这些日志文件位于与磁盘相同的文件夹中。 每个磁盘都有一个关联的 .hrl 文件，该文件将发送到辅助位置。 当初始复制正在进行时，快照和日志将占用磁盘资源。
 4. 当初始复制完成时，将删除 VM 快照，并开始增量复制。
@@ -52,7 +52,7 @@ a
 - 在初始故障转移运行后，可提交它来开始访问副本 VM 中的工作负载。
 - 当主位置再次可用时，可以进行故障回复。
     - 启动反向复制以开始从辅助站点到主站点的复制。 反向复制会使虚拟机进入受保护状态，但辅助数据中心仍是活动位置。
-    - 如果要使主站点再次成为活动位置，可以启动从辅助站点到主站点的计划内故障转移，并再次启动反向复制。
+    - 要使主站点再次成为活动位置，可以启动从辅助站点到主站点的计划内故障转移，再次启动反向复制。
 
 
 

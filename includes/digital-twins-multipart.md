@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 02/07/2020
 ms.custom: include file
 ms.openlocfilehash: 0e7cb7e4aaa9862a2b4af51593c29793ea54dd14
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77111231"
 ---
 > [!NOTE]
@@ -21,7 +21,7 @@ ms.locfileid: "77111231"
 > * **Content-Type** 标头：
 >   * `application/json; charset=utf-8`
 >   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
-> * **Content-Disposition**：
+> * **内容处置**：
 >   * `form-data; name="metadata"`
 > * 要上传的文件内容
 >
@@ -34,6 +34,6 @@ ms.locfileid: "77111231"
 > * 由 **Content-Type** 和/或 **Content-Disposition** 声明的 Blob 元数据（例如关联的 MIME 类型）
 > * 包括要上传的文件的非结构化内容的 Blob 内容
 >
-> 对于 PATCH 请求，上述两个部分都不是必需的。 对于 **POST** 请求或 create 操作，两者都是必需的。
+> 对于 PATCH**** 请求，上述两个部分都不是必需的。 对于 **POST** 请求或 create 操作，两者都是必需的。
 
 [采用快速入门源代码](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/api/update.cs)包含完整的 C# 示例，其中展示了如何针对 Azure 数字孪生管理 API 进行多部分请求。

@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 设计模式：社交媒体应用
+title: Azure 宇宙 DB 设计模式：社交媒体应用
 description: 利用 Azure Cosmos DB 的存储灵活性和其他 Azure 服务了解社交网络的设计模式。
 author: ealsur
 ms.service: cosmos-db
@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.openlocfilehash: 8428e417f5f86edca77edae6ca4b7ef84e5ff425
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73827301"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 进行社交
 
-生活在大规模互连的社会中，这意味着有时候你也成了社交网络中的一部分。 使用社交网络与朋友、同事和家人保持联系，有时还会与有共同兴趣的人分享我们的激情。
+生活在大规模互连的社会中，这意味着有时候你也成了社交网络中的一部分****。 使用社交网络与朋友、同事和家人保持联系，有时还会与有共同兴趣的人分享我们的激情。
 
 作为工程师或开发者，你可能想知道这些网络如何存储和互连数据。 或者，你甚至可能承担着为特定利基市场创建或构建新社交网络的任务。 这时就会产生一个大问题：所有这些数据是如何存储的？
 
@@ -98,7 +98,7 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
 
 可拥有“最新”的流，其中包含按创建日期排序的帖子。 或者可拥有一个“最热门”的流，其中包含过去 24 小时内点赞数较多的帖子。 甚至可以根据关注者和兴趣等逻辑为每个用户实现自定义流。 它仍然是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能不会受到阻碍。 在获得其中一个列表之后，使用 [IN 关键字](sql-query-keywords.md#in)向 Cosmos DB 发出单个查询以一次获取帖子页面。
 
-可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Web 作业](../app-service/webjobs-create.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储](https://azure.microsoft.com/services/storage/)[队列](../storage/queues/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 触发）触发后台处理，从而根据自己的自定义逻辑实现流内的帖子传播。
+可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/) 的后台进程 - [Web 作业](../app-service/webjobs-create.md) - 来构建源流。 创建一个帖子后，可以通过使用 [Azure 存储](https://azure.microsoft.com/services/storage/) [队列](../storage/queues/storage-dotnet-how-to-use-queues.md)和 Web 作业（通过 [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 触发）触发后台处理，从而根据自己的自定义逻辑实现流内的帖子传播。
 
 通过使用这种相同的技术创建最终一致性环境还可以以延迟方式处理评分和点赞。
 
@@ -194,13 +194,13 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
 
 幸运的是，用户将生成许多内容。 并且你应能够提供搜索和查找可能在其内容流中不直接显示的内容的能力，也许是由于未关注创建者，或者也许是因为只是想要尽力找到六个月之前发布的旧帖子。
 
-由于使用的是 Azure Cosmos DB，因此你可以在几分钟内轻松地使用[Azure 认知搜索](https://azure.microsoft.com/services/search/)实现搜索引擎，而无需键入除搜索过程和 UI 之外的任何代码。
+由于您使用的是 Azure Cosmos DB，因此在几分钟内可以轻松地使用[Azure 认知搜索](https://azure.microsoft.com/services/search/)实现搜索引擎，而无需键入任何代码，但搜索过程和 UI。
 
 为什么此过程如此简单？
 
-Azure 认知搜索实现其调用[索引器](https://msdn.microsoft.com/library/azure/dn946891.aspx)的内容、在数据存储库中挂钩的后台进程，以及自动添加、更新或删除索引中的对象。 它们支持 [Azure SQL 数据库索引器](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure Blobs 索引器](../search/search-howto-indexing-azure-blob-storage.md)和 [Azure Cosmos DB 索引器](../search/search-howto-index-documentdb.md)。 从 Cosmos DB 到 Azure 认知搜索的信息的过渡非常简单。 这两种技术都以 JSON 格式存储信息，因此只需[创建索引](../search/search-create-index-portal.md)并从要编制索引的文档中映射属性。 就这么简单！ 根据数据大小，可在几分钟内通过云基础结构中的最佳搜索即服务解决方案搜索所有内容。
+Azure 认知搜索实现他们所谓的[索引器](https://msdn.microsoft.com/library/azure/dn946891.aspx)，后台进程在数据存储库中挂钩，并自动添加、更新或删除索引中的对象。 它们支持 [Azure SQL 数据库索引器](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure Blobs 索引器](../search/search-howto-indexing-azure-blob-storage.md)和 [Azure Cosmos DB 索引器](../search/search-howto-index-documentdb.md)。 信息从 Cosmos DB 到 Azure 认知搜索的转换非常简单。 这两种技术都以 JSON 格式存储信息，因此只需[创建索引](../search/search-create-index-portal.md)并从要编制索引的文档中映射属性。 就这么简单！ 根据数据大小，可在几分钟内通过云基础结构中的最佳搜索即服务解决方案搜索所有内容。
 
-有关 Azure 认知搜索的详细信息，可以访问[Hitchhiker 的指南进行搜索](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)。
+有关 Azure 认知搜索的详细信息，请访问[希奇克的搜索指南](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)。
 
 ## <a name="the-underlying-knowledge"></a>基础知识
 
@@ -220,21 +220,21 @@ Azure 认知搜索实现其调用[索引器](https://msdn.microsoft.com/library/
 
 ## <a name="a-planet-scale-social-experience"></a>全球范围内的社交体验
 
-最后，还必须说明一个非常重要的项目：可伸缩性。 设计体系结构时，每个组件都应该自行缩放。 你最终将需要处理更多数据，或者希望拥有更大的地理覆盖范围。 幸运的是，使用 Cosmos DB 完成这两项任务是一种统包体验。
+最后，还必须说明一个非常重要的项目：可伸缩性****。 设计体系结构时，每个组件都应该自行缩放。 你最终将需要处理更多数据，或者希望拥有更大的地理覆盖范围。 幸运的是，使用 Cosmos DB 完成这两项任务是一种统包体验****。
 
-Cosmos DB 支持现成的动态分区。 它会根据给定的分区键自动创建分区，分区键在文档中定义为属性。 定义正确的分区键操作必须在设计时完成。 有关详细信息，请参阅 [Azure Cosmos DB 分区](partitioning-overview.md)。
+Cosmos DB 支持现成的动态分区。 它会根据给定的分区键自动创建分区，分区键在文档中定义为属性****。 定义正确的分区键操作必须在设计时完成。 有关详细信息，请参阅 [Azure Cosmos DB 分区](partitioning-overview.md)。
 
-对于社交体验，必须将分区策略与查询和写入方式保持一致。 （例如，需要在同一分区内进行读取，并通过在多个分区上分散写入来避免 "热点"。）某些选项包括：基于临时键（日/月/周）、按内容类别、地理区域或用户划分的分区。 这一切都取决于查询数据并在社交体验中显示数据的方式。
+对于社交体验，必须将分区策略与查询和写入方式保持一致。 （例如，在同一分区内读取是可取的，并且通过在多个分区上展开写入来避免"热点"。某些选项包括：基于时态键（天/月/周）、按内容类别、地理区域或按用户划分的分区。 这一切都取决于查询数据并在社交体验中显示数据的方式。
 
 Cosmos DB 以透明方式在所有分区中运行查询（包括[聚合](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)），因此无需在数据增长过程中添加任何逻辑。
 
-一段时间后，最终流量会增加，资源消耗（通过 [RU](request-units.md) 即“请求单位”进行度量）也会增加。 随着用户群体的增长，你将更频繁地进行读取和写入操作。 用户群体将开始创建和阅读更多内容。 因此，缩放吞吐量的能力至关重要。 增加 RU 非常容易。 可以通过在 Azure 门户中单击几次或[通过 API 发出命令](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer)来实现。
+一段时间后，最终流量会增加，资源消耗（通过 [RU](request-units.md) 即“请求单位”进行度量）也会增加。 随着用户群体的增长，你将更频繁地进行读取和写入操作。 用户群体将开始创建和阅读更多内容。 因此，缩放吞吐量的能力至关重要****。 增加 RU 非常容易。 可以通过在 Azure 门户中单击几次或[通过 API 发出命令](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer)来实现。
 
 ![扩展和定义分区键](./media/social-media-apps/social-media-apps-scaling.png)
 
 如果情况不断好转会怎样？ 假设来自其他区域、国家/地区或大洲的用户注意到你的平台并开始使用。 真是太棒了！
 
-可是等等！ 你很快就会发现他们使用平台的体验并不是最佳体验。 他们距离你的运营区域太远，会出现非常严重的延迟情况。 你显然不希望他们放弃使用。 要是有一种简单的方法可以扩大全球覆盖范围呢？ 方法就在这里！
+可是等等！ 你很快就会发现他们使用平台的体验并不是最佳体验。 他们距离你的运营区域太远，会出现非常严重的延迟情况。 你显然不希望他们放弃使用。 要是有一种简单的方法可以扩大全球覆盖范围呢****？ 方法就在这里！
 
 通过 Cosmos DB，只需单击数次即可通过透明方式[全局复制数据](../cosmos-db/tutorial-global-distribution-sql-api.md)，并从[客户端代码](../cosmos-db/tutorial-global-distribution-sql-api.md)中自动选择可用区域。 此进程还意味着可以拥有[多个故障转移区域](high-availability.md)。
 
@@ -248,7 +248,7 @@ Cosmos DB 以透明方式在所有分区中运行查询（包括[聚合](https:/
 
 ![社交网络中各 Azure 服务之间的交互关系图](./media/social-media-apps/social-media-apps-azure-solution.png)
 
-事实上，对于此类方案并没有万能方法。 这是由强大服务的组合创建的协作，使我们能够构建出色的体验： Azure Cosmos DB 的速度和自由，提供出色的社交应用程序，在 Azure 认知搜索等第一类搜索解决方案之后的智能。Azure 应用服务的灵活性，甚至不是语言无关的应用程序，而且功能强大的后台进程，以及可扩展的 Azure 存储和 Azure SQL 数据库来存储大量数据，以及 Azure 机器学习的分析能力创建可向你的流程提供反馈的知识和智能，并帮助我们向适当的用户提供适当的内容。
+事实上，对于此类方案并没有万能方法。 正是由卓越服务组合所创造的协同效应，使我们能够构建出色的体验：Azure Cosmos DB 提供出色的社交应用程序的速度和自由性，Azure 认知搜索等一流搜索解决方案背后的智能，Azure 应用服务能够灵活地承载甚至不与语言无关的应用程序，而是强大的后台进程和可扩展的 Azure 存储和 Azure SQL 数据库，用于存储大量数据以及 Azure 机器学习的分析功能，创造知识和智能，为您的流程提供反馈，并帮助我们向正确的用户提供正确的内容。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,31 +1,31 @@
 ---
-title: 备份和还原-Azure Database for PostgreSQL-单服务器
-description: 了解自动备份并还原 Azure Database for PostgreSQL server-单台服务器。
+title: 备份和还原 - Azure Database for PostgreSQL - 单一服务器
+description: 了解如何自动备份和还原 Azure Database for PostgreSQL 服务器 - 单一服务器。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 3e6dfd5882e49ad903e8cff6f0ec7f3d6bd4a8b7
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77619629"
 ---
-# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-单服务器中的备份和还原
+# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
 
 Azure Database for PostgreSQL 可自动创建服务器备份并将其存储在用户配置的本地冗余或异地冗余存储中。 备份可以用来将服务器还原到某个时间点。 备份和还原是任何业务连续性策略的基本组成部分，因为它们可以保护数据免遭意外损坏或删除。
 
 ## <a name="backups"></a>备份
 
-Azure Database for PostgreSQL 获取数据文件和事务日志的备份。 根据所支持的最大存储大小，我们可以进行完整备份和差异备份（4 TB 最大存储服务器）或快照备份（最多 16 TB 的存储服务器）。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以选择将其配置为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
+Azure Database for PostgreSQL 对数据文件和事务日志进行备份。 根据支持的最大存储大小，我们要么进行完整备份和差分备份（最多 4 TB 存储服务器）或快照备份（最多 16 TB 存储服务器）。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以选择将其配置为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
 
-无法导出这些备份文件。 备份仅可用于 Azure Database for PostgreSQL 中的还原操作。 您可以使用[pg_dump](howto-migrate-using-dump-and-restore.md)来复制数据库。
+无法导出这些备份文件。 备份只能用于 PostgreSQL 的 Azure 数据库中的还原操作。 您可以使用[pg_dump](howto-migrate-using-dump-and-restore.md)复制数据库。
 
 ### <a name="backup-frequency"></a>备份频率
 
-通常情况下，完整备份每周进行一次，对于最大支持存储空间为 4 TB 的服务器，每日执行一次差异备份。 对于支持的最大存储为 16 TB 的服务器，快照备份每天至少进行一次。 两种情况下，事务日志备份每五分钟进行一次。 创建服务器后，立即计划完整备份的第一个快照。 在较大的还原服务器上，初始完整备份的时间可能更长。 新服务器可以还原到的最早时间点是完成初始完整备份的时间。 因为快照是瞬时的，所以最多可以将支持 16 TB 存储的服务器还原到创建时间。
+通常，每周进行一次完整备份，对于最多支持存储 4 TB 的服务器，每天进行两次差异备份。 对于支持的最大存储为 16 TB 的服务器，快照备份每天至少进行一次。 两种情况下，事务日志备份每五分钟进行一次。 创建服务器后立即计划完全备份的第一个快照。 在大型还原服务器上，初始完整备份可能需要更长的时间。 新服务器可以还原到的最早时间点是完成初始完整备份的时间。 由于快照是瞬时的，因此支持高达 16 TB 存储的服务器可以一直还原到创建时间。
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 
@@ -52,7 +52,7 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 估计的恢复时间取决于若干因素，包括数据库大小、事务日志大小、网络带宽，以及在同一区域同时进行恢复的数据库总数。 恢复时间通常少于 12 小时。
 
 > [!IMPORTANT]
-> 删除的服务器无法还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
+> 删除的服务器无法还原****。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
 
 ### <a name="point-in-time-restore"></a>时点还原
 
@@ -64,7 +64,7 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 
 ### <a name="geo-restore"></a>地域恢复
 
-如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 支持多达 4 TB 存储的服务器可以还原到异地配对区域，也可以还原到支持高达 16 TB 存储的任何区域。 对于支持高达 16 TB 存储空间的服务器，还可以在支持 16 TB 服务器的任何区域还原异地备份。 查看[Azure Database For PostgeSQL 定价层](concepts-pricing-tiers.md)以获取受支持区域的列表。
+如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 支持最多 4 TB 存储的服务器可以还原到地理配对区域，也可以还原到支持最多 16 TB 存储的任何区域。 对于支持高达 16 TB 存储的服务器，可以在支持 16 TB 服务器的任何区域恢复异地备份。 查看 [Azure Database for PostgeSQL 定价层](concepts-pricing-tiers.md)，以获取受支持区域的列表。
 
 当服务器因其所在的区域发生事故而不可用时，异地还原是默认的恢复选项。 如果区域中出现的大规模事件导致数据库应用程序不可用，可以根据异地冗余备份将服务器还原到任何其他区域中的服务器。 提取备份后，会延迟一段时间才会将其复制到其他区域中。 此延迟可能长达一小时，因此发生灾难时，会有长达 1 小时的数据丢失风险。
 
@@ -75,12 +75,12 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 从任一恢复机制还原后，都应执行以下任务，然后用户和应用程序才能重新运行：
 
 - 如果需要使用新服务器来替换原始服务器，则请将客户端和客户端应用程序重定向到新服务器
-- 确保用户可以连接到适当的服务器级防火墙和 VNet 规则。 不会从原始服务器复制这些规则。
+- 确保为用户提供适当的服务器级防火墙和 VNet 规则进行连接。 这些规则不会从原始服务器复制。
 - 确保设置适当的登录名和数据库级权限
 - 视情况配置警报
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用 [Azure 门户](howto-restore-server-portal.md)进行还原。
-- 了解如何使用 [Azure CLI](howto-restore-server-cli.md)进行还原。
+- 了解如何使用  [Azure 门户](howto-restore-server-portal.md)进行还原。
+- 了解如何使用  [Azure CLI](howto-restore-server-cli.md) 进行还原。
 - 若要详细了解业务连续性，请参阅 [业务连续性概述](concepts-business-continuity.md)。

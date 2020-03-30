@@ -1,22 +1,22 @@
 ---
-title: Azure 应用程序 Insights 代理 API 参考
-description: Application Insights 代理 API 参考。 Get-ApplicationInsightsMonitoringConfig. 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
+title: Azure Application Insights 代理 API 参考
+description: Application Insights 代理 API 参考。 Get-ApplicationInsightsMonitoringConfig。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 93ab8f613e5634b2eabe7c02189e223d3dfbb0a8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671267"
 ---
-# <a name="application-insights-agent-api-get-applicationinsightsmonitoringconfig"></a>Application Insights 代理 API： ApplicationInsightsMonitoringConfig
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringconfig"></a>应用程序见解代理 API：获取应用程序见解监控配置
 
-本文介绍了一个 cmdlet，它是[ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成员。
+本文介绍属于 [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的 cmdlet。
 
-## <a name="description"></a>说明
+## <a name="description"></a>描述
 
 获取配置文件并将值输出到控制台。
 
@@ -29,7 +29,7 @@ ms.locfileid: "77671267"
 PS C:\> Get-ApplicationInsightsMonitoringConfig
 ```
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 不需要参数。
 
@@ -49,16 +49,16 @@ Filters:
 ## <a name="next-steps"></a>后续步骤
 
   查看遥测：
- - [探索指标](../../azure-monitor/app/metrics-explorer.md)来监视性能和使用情况。
+ - [浏览指标](../../azure-monitor/app/metrics-explorer.md)以监视性能和使用情况。
 - [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
-- 将[分析](../../azure-monitor/app/analytics.md)用于更高级的查询。
+- 使用[分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询。
 - [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
  
  添加更多遥测：
- - [创建 web 测试](monitor-web-app-availability.md)，确保网站保持活动。
-- [添加 web 客户端遥测](../../azure-monitor/app/javascript.md)，查看网页代码中的异常并启用跟踪调用。
-- [将 APPLICATION INSIGHTS SDK 添加到你的代码](../../azure-monitor/app/asp-net.md)中，以便可以插入跟踪和日志调用。
+ - [创建 Web 测试](monitor-web-app-availability.md)，确保站点保持活动状态。
+- [添加 Web 客户端遥测](../../azure-monitor/app/javascript.md)，以查看网页代码中的异常并启用跟踪调用。
+- [将 Application Insights SDK 添加到代码](../../azure-monitor/app/asp-net.md)，以便插入跟踪和日志调用。
  
- Application Insights 代理中执行更多操作：
- - 使用本指南来对 Application Insights 代理[进行故障排除](status-monitor-v2-troubleshoot.md)。
- - 使用[Set config](status-monitor-v2-api-set-config.md) cmdlet 对配置进行更改。
+ 使用 Application Insights 代理执行更多操作：
+ - 使用我们的指南对 Application Insights 代理进行[故障排除](status-monitor-v2-troubleshoot.md)。
+ - 使用 [Set config](status-monitor-v2-api-set-config.md) cmdlet 更改此配置。

@@ -1,15 +1,15 @@
 ---
 title: 异地复制注册表
-description: 开始创建和管理异地复制的 Azure 容器注册表，使注册表能够为多个具有多主机区域副本的区域提供服务。
+description: 开始创建和管理异地复制的 Azure 容器注册表，这使注册表能够通过多主区域副本为多个区域提供服务。
 author: stevelas
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
 ms.openlocfilehash: d238de30e458261a11c941c03ac127c732ca8d3d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456441"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
@@ -28,7 +28,7 @@ ms.locfileid: "74456441"
 >
 
 ## <a name="example-use-case"></a>示例用例
-Contoso 在美国、加拿大和欧洲各地运行着一个公开展示网站。 为了向这些市场提供本地近网络内容，Contoso 在美国西部、美国东部、加拿大和西欧都运行着 [Azure Kubernetes 服务](/azure/aks/) (AKS) 群集。 部署为 Docker 映像的网站应用程序在所有区域中均使用相同的代码和映像。 从在每个区域独特部署的数据库检索该区域的本地内容。 对于本地数据库这样的资源，每个区域部署均有其唯一配置。
+Contoso 在美国、加拿大和欧洲各地运行着一个公开展示网站。 为了向这些市场提供本地近网络内容，Contoso 在美国西部、美国东部、加拿大中部和西欧都运行着 [Azure Kubernetes 服务](/azure/aks/) (AKS) 群集。 部署为 Docker 映像的网站应用程序在所有区域中均使用相同的代码和映像。 从在每个区域独特部署的数据库检索该区域的本地内容。 对于本地数据库这样的资源，每个区域部署均有其唯一配置。
 
 开发团队位于华盛顿州西雅图市，使用美国西部数据中心。
 
@@ -69,9 +69,9 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 
 若要为高级注册表配置异地复制，可通过 https://portal.azure.com 登录到 Azure 门户。
 
-导航到 Azure 容器注册表，然后选择“复制”：
+导航到 Azure 容器注册表，然后选择“复制”****：
 
-![Azure 门户容器注册表 UI 中的“复制项”](media/container-registry-geo-replication/registry-services.png)
+![Azure 门户容器注册表 UI 中的副本](media/container-registry-geo-replication/registry-services.png)
 
 地图中显示了所有当前的 Azure 区域：
 
@@ -81,13 +81,13 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 * 绿色六边形表示可能的复制区域
 * 灰色六边形表示尚不可复制的 Azure 区域
 
-若要配置副本，请选择一个绿色六边形，然后选择“创建”：
+若要配置副本，请选择一个绿色六边形，然后选择“创建”****：
 
- ![Azure 门户中的“创建复制项”UI](media/container-registry-geo-replication/create-replication.png)
+ ![Azure 门户中的“创建副本”UI](media/container-registry-geo-replication/create-replication.png)
 
-若要创建其他副本，请选择表示其他区域的绿色六边形，然后单击“创建”。
+若要创建其他副本，请选择表示其他区域的绿色六边形，然后单击“创建”****。
 
-ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“就绪”。 门户中的副本状态不会自动更新。 使用刷新按钮查看更新状态。
+ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“就绪”**。 门户中的副本状态不会自动更新。 使用刷新按钮查看更新状态。
 
 ## <a name="considerations-for-using-a-geo-replicated-registry"></a>使用异地复制注册表的注意事项
 
@@ -102,8 +102,8 @@ ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“
 
 若要在 Azure 门户中删除副本，请执行以下操作：
 
-1. 导航到 Azure 容器注册表，然后选择“复制”。
-1. 选择副本的名称，然后选择“删除”。 确认要删除该副本。
+1. 导航到 Azure 容器注册表，然后选择**复制**。
+1. 选择副本的名称，然后选择“删除”****。 确认要删除该副本。
 
 > [!NOTE]
 > 无法删除注册表的*主区域*（即创建注册表的位置）中的注册表副本。 只能通过删除注册表本身来删除主副本。

@@ -1,5 +1,5 @@
 ---
-title: 使用 Python 创建 Azure 数据资源管理器群集 & DB
+title: 使用 Python &数据库创建 Azure 数据资源管理器群集
 description: 了解如何使用 Python 创建 Azure 数据资源管理器群集和数据库。
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
@@ -8,31 +8,31 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 8425058c9f6ac5b90c37a99f749a810672b406fc
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560501"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>使用 Python 创建 Azure 数据资源管理器群集和数据库
 
 > [!div class="op_single_selector"]
 > * [门户](create-cluster-database-portal.md)
-> * [CLI](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
+> * [Cli](create-cluster-database-cli.md)
+> * [电源外壳](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [ARM 模板](create-cluster-database-resource-manager.md)
 
-本文介绍如何使用 Python 创建 Azure 数据资源管理器群集和数据库。 Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，然后在该群集中创建一个或多个数据库。 然后，将数据导入或加载到数据库，以便可以对其运行查询。
+在本文中，可以使用 Python 创建 Azure 数据资源管理器群集和数据库。 Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 要使用 Azure 数据资源管理器，请先创建群集，并在该群集中创建一个或多个数据库。 然后将数据引入或加载到数据库中，以便您可以针对数据库运行查询。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 * [Python 3.4+](https://www.python.org/downloads/)。
 
-* [可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。 获取 `Directory (tenant) ID`、`Application ID`和 `Client Secret`的值。
+* [可以访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。 获取`Directory (tenant) ID`的值`Application ID`。 `Client Secret`
 
 ## <a name="install-python-package"></a>安装 Python 包
 
@@ -42,8 +42,8 @@ ms.locfileid: "77560501"
 pip install azure-common
 pip install azure-mgmt-kusto
 ```
-## <a name="authentication"></a>Authentication
-为了运行本文中的示例，我们需要 Azure AD 应用程序和可访问资源的服务主体。 选中 "[创建 Azure AD 应用程序](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)" 以创建免费的 Azure AD 应用程序，并在订阅范围内添加角色分配。 它还演示如何获取 `Directory (tenant) ID`、`Application ID`和 `Client Secret`。
+## <a name="authentication"></a>身份验证
+为了运行本文中的示例，我们需要可以访问资源的 Azure AD 应用程序和服务主体。 查看[创建 Azure AD 应用程序](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)以创建免费的 Azure AD 应用程序，并在订阅范围内添加角色分配。 它还演示如何获取 `Directory (tenant) ID`、`Application ID` 和 `Client Secret`。
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>创建 Azure 数据资源管理器群集
 
@@ -84,14 +84,14 @@ pip install azure-mgmt-kusto
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | cluster_name | mykustocluster | 所需的群集名称。|
+   | cluster_name | mykustocluster** | 所需的群集名称。|
    | sku_name | *Standard_D13_v2* | 将用于群集的 SKU。 |
-   | 层 | *Standard* | SKU 层。 |
-   | capacity | *数字* | 群集实例的数目。 |
+   | 层 | *标准* | SKU 层。 |
+   | 容量 | *数量* | 群集实例的数目。 |
    | resource_group_name | *testrg* | 将在其中创建群集的资源组名称。 |
 
     > [!NOTE]
-    > **创建群集**是一个长时间运行的操作。 方法**create_or_update**返回 LROPoller 的实例，请参阅[LROPoller 类](/python/api/msrest/msrest.polling.lropoller?view=azure-python)以获取详细信息。
+    > **创建群集**是一个长时间运行的操作。 **create_or_update** 方法返回 LROPoller 的实例，请参阅 [LROPoller 类](/python/api/msrest/msrest.polling.lropoller?view=azure-python)获取详细信息。
 
 1. 运行以下命令，检查群集是否已成功创建：
 
@@ -99,7 +99,7 @@ pip install azure-mgmt-kusto
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
     ```
 
-如果结果包含带 `provisioningState` 值的 `Succeeded`，则表示已成功创建群集。
+如果结果包含带 `Succeeded` 值的 `provisioningState`，则表示已成功创建群集。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>在 Azure 数据资源管理器群集中创建数据库
 
@@ -127,11 +127,11 @@ pip install azure-mgmt-kusto
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | cluster_name | mykustocluster | 将在其中创建数据库的群集的名称。|
-   | database_name | mykustodatabase | 数据库名称。|
+   | cluster_name | mykustocluster** | 将在其中创建数据库的群集的名称。|
+   | database_name | mykustodatabase** | 数据库名称。|
    | resource_group_name | *testrg* | 将在其中创建群集的资源组名称。 |
-   | soft_delete_period | 3650 天，0:00:00 | 供查询使用的数据的保留时间。 |
-   | hot_cache_period | 3650 天，0:00:00 | 数据将在缓存中保留的时间。 |
+   | soft_delete_period | *3650 天，0:00:00* | 供查询使用的数据的保留时间。 |
+   | hot_cache_period | *3650 天，0:00:00* | 数据将在缓存中保留的时间。 |
 
 1. 若要查看已创建的数据库，请运行以下命令：
 
@@ -143,7 +143,7 @@ pip install azure-mgmt-kusto
 
 ## <a name="clean-up-resources"></a>清理资源
 
-* 如果你打算追随我们的其他文章，请保留你创建的资源。
+* 如果计划学习我们的其他文章，请保留已创建的资源。
 * 若要清理资源，请删除群集。 删除群集时，也会删除其中的所有数据库。 使用以下命令删除群集：
 
     ```Python

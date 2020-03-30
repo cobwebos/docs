@@ -1,45 +1,45 @@
 ---
-title: 在 Azure Kubernetes Service （AKS）中安装 Linkerd
-description: 了解如何安装并使用 Linkerd 在 Azure Kubernetes 服务（AKS）群集中创建服务网格
+title: 在 Azure Kubernetes 服务 (AKS) 中安装 Linkerd
+description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和使用 Linkerd 来创建服务网格
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593699"
 ---
-# <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中安装 Linkerd
+# <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装 Linkerd
 
-[Linkerd][linkerd-github]是开源服务网格和[CNCF 孵化项目][linkerd-cncf]。 Linkerd 是一种 ultralight 服务网格，提供的功能包括流量管理、服务标识和安全性、可靠性和可观察性。 有关 Linkerd 的详细信息，请参阅官方[LINKERD FAQ][linkerd-faq]和[Linkerd 体系结构][linkerd-architecture]文档。
+[Linkerd][linkerd-github] 是一种开源服务网格和 [CNCF 孵化项目][linkerd-cncf]。 Linkerd 是一种超轻型服务网格，其提供的功能包括流量管理、服务标识和安全性、可靠性以及可观测性。 有关 Linkerd 的详细信息，请参阅官方的 [Linkerd 常见问题解答][linkerd-faq]和 [Linkerd 体系结构][linkerd-architecture]文档。
 
-本文介绍如何安装 Linkerd。 Linkerd `linkerd` 客户端二进制文件安装在客户端计算机上，Linkerd 组件安装在 AKS 上的 Kubernetes 群集。
+本文介绍如何安装 Linkerd。 Linkerd `linkerd` 客户端二进制文件安装到客户端计算机上，Linkerd 组件安装到 AKS 上的 Kubernetes 群集中。
 
 > [!NOTE]
 > 这些说明引用 Linkerd 版本 `stable-2.6.0`。
 >
-> 可针对 Kubernetes 版本 `1.13+`运行 Linkerd `stable-2.6.x`。 你可以在[GitHub-Linkerd 版本][linkerd-github-releases]中找到其他稳定的 Linkerd 版本。
+> 可针对 Kubernetes 版本 `1.13+` 运行 Linkerd `stable-2.6.x`。 可以在 [GitHub - Linkerd 版本][linkerd-github-releases]中找到 Stable 和 Edge 的其他 Linkerd 版本。
 
 在本文中，学习如何：
 
 > [!div class="checklist"]
-> * 下载并安装 Linkerd Linkerd 客户端二进制文件
+> * 下载并安装 Linkerd linkerd 客户端二进制文件
 > * 在 AKS 上安装 Linkerd
 > * 验证 Linkerd 安装
 > * 访问仪表板
-> * 从 AKS 卸载 Linkerd
+> * 从 AKS 中卸载 Linkerd
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文详细介绍了如何创建 AKS 群集（Kubernetes `1.13` 及更高版本，启用 RBAC），并已与群集建立了 `kubectl` 连接。 如果需要有关这些项的帮助，请参阅[AKS 快速入门][aks-quickstart]。
+本文中详述的步骤假设已创建 AKS 群集（已启用 RBAC 的 Kubernetes `1.13` 及更高版本）并已与该群集建立 `kubectl` 连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。
 
-必须将所有 Linkerd pod 计划为在 Linux 节点上运行-此设置是下面详细说明的默认安装方法，不需要其他配置。
+必须对所有 Linkerd Pod 进行计划，使之在 Linux 节点上运行 - 在下面详述的安装方法中，此安装是默认设置，不需其他配置。
 
-本文将 Linkerd 安装指南分为几个不同的步骤。 结果与官方 Linkerd 入门[指南][linkerd-getting-started]的结构相同。
+本文将 Linkerd 安装指南分为多个独立步骤。 结果的结构与官方 Linkerd 入门[指南][linkerd-getting-started]相同。
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -61,13 +61,13 @@ ms.locfileid: "77593699"
 
 ## <a name="install-linkerd-on-aks"></a>在 AKS 上安装 Linkerd
 
-安装 Linkerd 之前，我们将运行预安装检查以确定是否可以在我们的 AKS 群集上安装控制平面：
+在安装 Linkerd 之前，我们将运行预安装检查，确定能否在 AKS 群集上安装控制平面：
 
 ```console
 linkerd check --pre
 ```
 
-应会看到如下所示的内容，指示 AKS 群集是 Linkerd 的有效安装目标：
+应该会看到如下所示内容，表明 AKS 群集是 Linkerd 的有效安装目标：
 
 ```console
 kubernetes-api
@@ -117,26 +117,26 @@ linkerd-version
 Status check results are √
 ```
 
-现在可以安装 Linkerd 组件了。 使用 `linkerd` 和 `kubectl` 二进制文件将 Linkerd 组件安装到 AKS 群集中。 将自动创建 `linkerd` 命名空间，组件将安装到此命名空间中。
+现在可以安装 Linkerd 组件了。 请使用 `linkerd` 和 `kubectl` 二进制文件将 Linkerd 组件安装到 AKS 群集中。 将会自动创建 `linkerd` 命名空间，并会将组件安装到此命名空间中。
 
 ```console
 linkerd install | kubectl apply -f -
 ```
 
-Linkerd 部署多个对象。 你将在上面的 `linkerd install` 命令的输出中看到列表。 部署 Linkerd 组件需要大约1分钟的时间才能完成，具体取决于群集环境。
+Linkerd 部署许多对象。 上述 `linkerd install` 命令的输出会显示对象列表。 部署 Linkerd 组件应该需要大约 1 分钟才能完成，具体取决于群集环境。
 
-此时，已将 Linkerd 部署到 AKS 群集。 若要确保成功部署 Linkerd，请转到下一节，[验证 Linkerd 安装](#validate-the-linkerd-installation)。
+此时已将 Linkerd 部署到 AKS 群集。 为确保成功部署 Linkerd，让我们转到[验证 Linkerd 安装](#validate-the-linkerd-installation)部分。
 
 ## <a name="validate-the-linkerd-installation"></a>验证 Linkerd 安装
 
-确认已成功创建资源。 使用[kubectl get svc][kubectl-get]和[kubectl get pod][kubectl-get]命令来查询 `linkerd` 命名空间，该命名空间由 `linkerd install` 命令安装 Linkerd 组件：
+确认已成功创建资源。 使用 [kubectl get svc][kubectl-get] 和 [kubectl get pod][kubectl-get] 命令查询 `linkerd` 命名空间，在其中通过 `linkerd install` 命令安装了 Linkerd 组件：
 
 ```console
 kubectl get svc --namespace linkerd --output wide
 kubectl get pod --namespace linkerd --output wide
 ```
 
-以下示例输出显示现在应正在运行的服务和 pod （在 Linux 节点上计划）：
+以下示例输出显示了现在应该正在运行的服务和 Pod（安排在 Linux 节点上）：
 
 ```console
 NAME                     TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)             AGE  SELECTOR
@@ -163,13 +163,13 @@ linkerd-tap-5cd9fc566-ct988               2/2     Running   0          64s   10.
 linkerd-web-774c79b6d5-dhhwf              2/2     Running   0          65s   10.240.0.70   aks-linux-16165125-vmss000002   <none>           <none>
 ```
 
-Linkerd 通过 `linkerd` 的客户端二进制文件提供了一个命令，用于验证是否已成功安装并配置了 Linkerd 控制平面。
+Linkerd 通过 `linkerd` 客户端二进制文件提供了一个命令，用于验证是否已成功安装并配置 Linkerd 控制平面。
 
 ```console
 linkerd check
 ```
 
-你应看到类似于下面的内容，指示你的安装已成功：
+应该会看到如下所示内容，表明安装已成功：
 
 ```console
 kubernetes-api
@@ -226,13 +226,13 @@ Status check results are √
 
 ## <a name="access-the-dashboard"></a>访问仪表板
 
-Linkerd 附带了一个仪表板，可用于深入了解服务网格和工作负荷。 若要访问仪表板，请使用 `linkerd dashboard` 命令。 此命令利用[kubectl 端口转发][kubectl-port-forward]，在你的客户端计算机与 AKS 群集中的相关 pod 之间创建安全连接。 然后，它会自动在默认浏览器中打开仪表板。
+Linkerd 带有一个说明服务网格和工作负荷情况的仪表板。 若要访问该仪表板，请使用 `linkerd dashboard` 命令。 此命令利用 [kubectl port-forward][kubectl-port-forward] 在客户端计算机与 AKS 群集中相关 Pod 之间建立安全连接。 然后，它会在默认浏览器中自动打开仪表板。
 
 ```console
 linkerd dashboard
 ```
 
-此命令还会创建端口转发，并返回 Grafana 仪表板的链接。
+此命令还会创建端口转发并返回一个用于 Grafana 仪表板的链接。
 
 ```console
 Linkerd dashboard available at:
@@ -242,14 +242,14 @@ http://127.0.0.1:50750/grafana
 Opening Linkerd dashboard in the default browser
 ```
 
-## <a name="uninstall-linkerd-from-aks"></a>从 AKS 卸载 Linkerd
+## <a name="uninstall-linkerd-from-aks"></a>从 AKS 中卸载 Linkerd
 
 > [!WARNING]
-> 删除正在运行的系统中的 Linkerd 可能会导致服务之间出现与流量相关的问题。 在继续操作之前，请确保您的系统的预配仍可正常运行，而无需 Linkerd。
+> 从正在运行的系统中删除 Linkerd 可能会导致服务之间出现流量相关的问题。 在继续之前，请确保对系统进行预配，以便在没有 Linkerd 的情况下系统仍可正常运行。
 
-首先需要删除数据平面代理。 从工作负荷命名空间中删除任何自动代理注入[批注][linkerd-automatic-proxy-injection]，并汇总工作负荷部署。 工作负荷将不再具有任何关联的数据平面组件。
+首先，需删除数据平面代理。 从工作负载命名空间中删除任何自动代理注入[注释][linkerd-automatic-proxy-injection]，并推出工作负载部署。 工作负荷不应该再有任何关联的数据平面组件。
 
-最后，按如下所示删除控制平面：
+最后，请删除控制平面，如下所示：
 
 ```console
 linkerd install --ignore-cluster | kubectl delete -f -
@@ -257,15 +257,15 @@ linkerd install --ignore-cluster | kubectl delete -f -
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Linkerd 的更多安装和配置选项，请参阅以下官方 Linkerd 指南：
+若要了解 Linkerd 的更多安装和配置选项，请参阅以下官方 Linkerd 指南：
 
-- [Linkerd-Helm 安装][linkerd-install-with-helm]
-- [Linkerd-针对角色权限的多阶段安装][linkerd-multi-stage-installation]
+- [Linkerd - Helm 安装][linkerd-install-with-helm]
+- [Linkerd - 针对角色权限的多阶段安装][linkerd-multi-stage-installation]
 
-你还可以使用以下方案：
+也可以使用以下示例应用程序按照其他方案操作：
 
 - [Linkerd emojivoto 演示][linkerd-demo-emojivoto]
-- [Linkerd 书籍演示][linkerd-demo-books]
+- [Linkerd books 演示][linkerd-demo-books]
 
 <!-- LINKS - external -->
 

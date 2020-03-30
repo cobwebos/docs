@@ -1,5 +1,5 @@
 ---
-title: PIM 中的访问评审的资源仪表板-Azure AD |Microsoft Docs
+title: 用于 PIM 中访问审核的资源仪表板 - Azure AD |微软文档
 description: 介绍如何使用资源仪表板在 Azure AD Privileged Identity Management (PIM) 中执行访问评审。
 services: active-directory
 documentationcenter: ''
@@ -17,18 +17,18 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6affa2ecc8919dabeb6173622b525280ce96bcfe
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73847028"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review-in-privileged-identity-management"></a>使用资源仪表板在 Privileged Identity Management 中执行访问评审
 
-可以使用资源仪表板在 Privileged Identity Management （PIM）中执行访问评审。 Azure Active Directory （Azure AD）中的 "管理员视图" 仪表板具有三个主要组件：
+可以使用资源仪表板在 Privileged Identity Management (PIM) 中执行访问评审。 Azure Active Directory (Azure AD) 中的“管理员视图”仪表板有三个主要组件：
 
-- 资源角色激活的图形表示形式
-- 按分配类型显示角色分配分布的图表
+- 资源角色激活操作的图形表示形式
+- 按分配类型显示角色分配分布情况的图表
 - 一个数据区域，其中包含有关新角色分配的信息
 
 ![管理员视图仪表板的屏幕截图，显示图形和图表](media/pim-resource-roles-overview-dashboards/rbac-overview-top.png)
@@ -37,10 +37,10 @@ ms.locfileid: "73847028"
 
 过去七天执行的资源角色激活操作的图形表示形式。 此数据对应于选定的资源，显示最常见角色（所有者、参与者、用户访问管理员）以及所有角色的激活情况。
 
-在激活关系图的一侧，两个图表显示了用户和组的按分配类型分配的角色分配。 选择图表中的切片会将值更改为百分比（或相反）。
+在激活图形的一侧，有两个图表按分配类型显示了用户和组的角色分配分布情况。 选择图表中的切片会将值更改为百分比（或相反）。
 
-下表列出了过去30天内具有新角色分配的用户和组的数量，以及按总计分配按降序排序的角色。
+图表下方列出了过去 30 天获得了新角色分配的用户和组的数量，以及按分配总数以降序排列的角色。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Privileged Identity Management 中启动 Azure 资源角色的访问评审](pim-resource-roles-start-access-review.md)
+- [在特权标识管理中启动 Azure 资源角色的访问审查](pim-resource-roles-start-access-review.md)

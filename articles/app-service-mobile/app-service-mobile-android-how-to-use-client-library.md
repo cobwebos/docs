@@ -1,5 +1,5 @@
 ---
-title: 如何使用适用于 Android 的 SDK
+title: 如何使用 Android 版 SDK
 description: 如何使用用于 Android 的 Azure 移动应用 SDK
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
 ms.tgt_pltfrm: mobile-android
@@ -7,10 +7,10 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 52e91d900ce0f22862904695ba8adf463219c469
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249381"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>如何使用用于 Android 的 Azure 移动应用 SDK
@@ -22,11 +22,11 @@ ms.locfileid: "79249381"
 * 处理错误。
 * 自定义客户端。
 
-本指南侧重于客户端 Android SDK。  若要了解有关适用于移动应用的服务器端 Sdk 的详细信息，请参阅[使用 .net 后端 sdk][10]或[如何使用 NODE.JS 后端 sdk][11]。
+本指南侧重于客户端 Android SDK。  若要详细了解移动应用的服务器端 SDK，请参阅 [Work with .NET backend SDK][10]（使用 .NET 后端）或 [How to use the Node.js backend SDK][11]（如何使用 Node.js 后端 SDK）。
 
 ## <a name="reference-documentation"></a>参考文档
 
-可在 GitHub 上找到 Android 客户端库的[JAVADOCS API 参考][12]。
+可以在 GitHub 上找到有关 Android 客户端库的 [Javadocs API 参考][12]。
 
 ## <a name="supported-platforms"></a>支持的平台
 
@@ -38,15 +38,15 @@ ms.locfileid: "79249381"
 
 如果决定不完成快速入门教程，请完成以下任务：
 
-* 创建用于 Android 应用程序[的移动应用后端][13]。
+* [创建移动应用后端][13]，以与 Android 应用配合使用。
 * 在 Android Studio 中，[更新 Gradle 生成文件](#gradle-build)。
 * [启用 Internet 权限](#enable-internet)。
 
-### <a name="gradle-build"></a>更新 Gradle 生成文件
+### <a name="update-the-gradle-build-file"></a><a name="gradle-build"></a>更新 Gradle 生成文件
 
 更改以下两个 **build.gradle** 文件：
 
-1. 将以下代码添加到*项目*级别的**gradle**文件中：
+1. 将以下代码添加到项目** 级别的 **build.gradle** 文件：
 
     ```gradle
     buildscript {
@@ -64,15 +64,15 @@ ms.locfileid: "79249381"
     }
     ```
 
-2. 将以下代码添加到*依赖关系*标记内**模块应用**级别的 *build.gradle* 文件：
+2. 将以下代码添加到*依赖关系*标记内*模块应用*级别的 **build.gradle** 文件：
 
     ```gradle
     implementation 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
-    目前的最新版本为 3.4.0。 [Bintray 上][14]列出了支持的版本。
+    目前的最新版本为 3.4.0。 [bintray][14] 中列出了支持的版本。
 
-### <a name="enable-internet"></a>启用 Internet 权限
+### <a name="enable-internet-permission"></a><a name="enable-internet"></a>启用互联网权限
 
 若要访问 Azure，应用中必须已启用 Internet 权限。 如果尚未启用，请将以下代码行添加到 **AndroidManifest.xml** 文件：
 
@@ -99,7 +99,7 @@ MobileServiceClient mClient = new MobileServiceClient(
 
 `<MobileAppUrl>` 是一个字符串，或者是指向移动后端的 URL 对象。  如果使用 Azure 应用服务来托管移动后端，请确保使用 URL 的安全 `https://` 版本。
 
-客户端还需要能够访问活动或上下文 - 本示例中的 `this` 参数。  MobileServiceClient 构造应发生在 `onCreate()` 文件中引用的活动的 `AndroidManifest.xml` 方法内。
+客户端还需要能够访问活动或上下文 - 本示例中的 `this` 参数。  MobileServiceClient 构造应发生在 `AndroidManifest.xml` 文件中引用的活动的 `onCreate()` 方法内。
 
 最佳做法是将服务器通信抽象化为其自身的（单一实例模式）类。  在本例中，应该传递构造函数中的活动，以便适当地配置服务。  例如：
 
@@ -143,7 +143,7 @@ public class AzureServiceAdapter {
 }
 ```
 
-现在，可以调用主活动的 `AzureServiceAdapter.Initialize(this);` 方法中的 `onCreate()`。  需要访问客户端的其他任何方法使用 `AzureServiceAdapter.getInstance();` 获取对服务适配器的引用。
+现在，可以调用主活动的 `onCreate()` 方法中的 `AzureServiceAdapter.Initialize(this);`。  需要访问客户端的其他任何方法使用 `AzureServiceAdapter.getInstance();` 获取对服务适配器的引用。
 
 ## <a name="data-operations"></a>数据操作
 
@@ -190,17 +190,17 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-若要了解如何在移动应用后端中创建其他表，请参阅[如何：定义表控制器][15]（.net 后端）或[使用动态架构定义表][16]（node.js 后端）。
+若要了解如何在移动应用后端中创建更多表，请参阅[如何定义表控制器][15]（.NET 后端）或[使用动态架构定义表][16]（Node.js 后端）。
 
 Azure 移动应用后端表定义了五个特殊字段，其中四个字段可用于客户端：
 
-* `String id`：记录的全局唯一 ID。  最佳做法是将 id 设置为[UUID][17]对象的字符串表示形式。
+* `String id`：记录的全局唯一 ID。  最佳做法是将 ID 设置为 [UUID][17] 对象的字符串表示形式。
 * `DateTimeOffset updatedAt`：上次更新日期/时间。  updatedAt 字段由服务器设置，永远不可由客户端代码设置。
 * `DateTimeOffset createdAt`：对象的创建日期/时间。  createdAt 字段由服务器设置，永远不可由客户端代码设置。
 * `byte[] version`：通常以字符串表示，版本也由服务器设置。
 * `boolean deleted`：指示记录已被删除，但尚未清除。  不要使用 `deleted` 作为类中的属性。
 
-`id` 字段是必填的。  `updatedAt` 字段和 `version` 字段用于脱机同步（分别用于增量同步和冲突解决）。  `createdAt` 字段是一个引用字段，客户端不会使用它。  名称是属性的“全局”名称且不可调整。  但是，可以使用[gson][3]库在对象和 "跨线" 名称之间创建映射。  例如：
+`id` 字段是必填的。  `updatedAt` 字段和 `version` 字段用于脱机同步（分别用于增量同步和冲突解决）。  `createdAt` 字段是一个引用字段，客户端不会使用它。  名称是属性的“全局”名称且不可调整。  但是，可以使用 [gson][3] 库在对象与“全局”名称之间创建映射。  例如：
 
 ```java
 package com.example.zumoappname;
@@ -260,7 +260,7 @@ public class ToDoItem
 
 ### <a name="create-a-table-reference"></a>创建表引用
 
-若要访问表，请先通过对[MobileServiceClient][9]调用**getTable**方法来创建一个[MobileServiceTable][8]对象。  此方法有两个重载：
+若要访问表，请先通过对 [MobileServiceClient][9] 调用 **getTable** 方法来创建一个 [MobileServiceTable][8] 对象。  此方法有两个重载：
 
 ```java
 public class MobileServiceClient {
@@ -281,18 +281,18 @@ MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable(ToDoItem.class);
 MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
 ```
 
-## <a name="query"></a>查询后端表
+## <a name="query-a-backend-table"></a><a name="query"></a>查询后端表
 
 首先，请获取表引用。  然后对表引用执行查询。  查询是以下元素的任意组合：
 
-* `.where()`[筛选子句](#filtering)。
-* `.orderBy()` 的[排序子句](#sorting)。
-* 一个 `.select()`[字段选择子句](#selection)。
-* `.skip()`分页结果`.top()`的 [ 和 ](#paging)。
+* `.where()` [筛选子句](#filtering)。
+* `.orderBy()` [排序子句](#sorting)。
+* `.select()` [字段选择子句](#selection)。
+* [分页结果](#paging)的 `.skip()` 和 `.top()`。
 
 子句必须按上述顺序提供。
 
-### <a name="filter"></a>筛选结果
+### <a name="filtering-results"></a><a name="filter"></a>筛选结果
 
 查询的一般形式为：
 
@@ -303,9 +303,9 @@ List<MyDataTable> results = mDataTable
     .get()              // Converts the async into a sync result
 ```
 
-上面的示例返回所有结果（结果数上限为服务器设置的最大页面大小）。  `.execute()` 方法在后端上执行查询。  在传输到移动应用后端之前，查询将转换为[OData v3][19]查询。  移动应用后端收到查询后，会先将查询转换为 SQL 语句，然后在 SQL Azure 实例上执行该语句。  由于网络活动会耗费一些时间，因此 `.execute()` 方法返回一个[`ListenableFuture<E>`][18]。
+上面的示例返回所有结果（结果数上限为服务器设置的最大页面大小）。  `.execute()` 方法在后端上执行查询。  查询先转换为 [OData v3][19] 查询，再传输到移动应用后端。  移动应用后端收到查询后，会先将查询转换为 SQL 语句，然后在 SQL Azure 实例上执行该语句。  由于网络活动需要一些时间，因此`.execute()`该方法将[`ListenableFuture<E>`][18]返回 。
 
-### <a name="filtering"></a>筛选返回的数据
+### <a name="filter-returned-data"></a><a name="filtering"></a>筛选返回的数据
 
 以下查询执行从 **complete** 等于 **false** 的 **ToDoItem** 表返回所有项目。
 
@@ -377,7 +377,7 @@ List<ToDoItem> results = mToDoTable
 
 有关筛选操作的更详细介绍和示例，请参阅 [Exploring the richness of the Android client query model][20]（探索 Android 客户端查询模型的丰富功能）。
 
-### <a name="sorting"></a>对返回的数据进行排序
+### <a name="sort-returned-data"></a><a name="sorting"></a>对返回的数据进行排序
 
 下面的代码返回 **ToDoItems** 表中的所有项目，并按 *text* 字段升序排列。 *mToDoTable* 是对前面创建的后端表的引用：
 
@@ -390,7 +390,7 @@ List<ToDoItem> results = mToDoTable
 
 **orderBy** 方法的第一个参数是与要排序的字段名称相同的字符串。 第二个参数使用 **QueryOrder** 枚举来指定是按升序还是按降序排序。  如果使用 ***where*** 方法筛选，则必须在调用 ***orderBy*** 方法之前调用 ***where*** 方法。
 
-### <a name="selection"></a>选择特定列
+### <a name="select-specific-columns"></a><a name="selection"></a>选择特定列
 
 以下代码演示了如何返回 **ToDoItems** 表中的所有项，但只显示 **complete** 和 **text** 字段。 **mToDoTable** 是对前面创建的后端表的引用。
 
@@ -403,7 +403,7 @@ List<ToDoItemNarrow> result = mToDoTable
 
 select 函数的参数是要返回的表列的字符串名称。  **select** 方法需要接在 **where** 和 **orderBy** 等方法的后面。 它可以后接 **skip** 和 **top** 等分页方法。
 
-### <a name="paging"></a>在页中返回数据
+### <a name="return-data-in-pages"></a><a name="paging"></a>在页中返回数据
 
 数据**始终**在页面中返回。  返回的最大记录数由服务器设置。  如果客户端请求更多记录，服务器将返回最大记录数。  默认情况下，服务器上的最大页面大小为 50 个记录。
 
@@ -447,7 +447,7 @@ do {
 > [!TIP]
 > 选择适当的页面大小可在执行请求时使用的内存量、带宽用量以及完全接收数据时产生的延迟之间进行平衡。  默认值（50 个记录）适用于所有设备。  如果以独占方式在较大的内存设备上运行，最高可将页面大小增大到 500。  我们发现，将页面大小增大到超过 500 条记录会导致出现不可接受的延迟，以及消耗大量内存的问题。
 
-### <a name="chaining"></a>如何连接查询方法
+### <a name="how-to-concatenate-query-methods"></a><a name="chaining"></a>如何连接查询方法
 
 用于查询后端表的方法是可以连接的。 链接查询方法使你能够选择已排序并分页的筛选行的特定列。 可以创建复杂的逻辑筛选器。  每个查询方法将返回一个查询对象。 若要结束方法序列并真正运行查询，可以调用 **execute** 方法。 例如：
 
@@ -472,7 +472,7 @@ List<ToDoItem> results = mToDoTable
 3. 选择 (**select**) 方法。
 4. 分页（**skip** 和 **top**）方法。
 
-## <a name="binding"></a>将数据绑定到用户界面
+## <a name="bind-data-to-the-user-interface"></a><a name="binding"></a>将数据绑定到用户界面
 
 数据绑定涉及到三个组件：
 
@@ -482,7 +482,7 @@ List<ToDoItem> results = mToDoTable
 
 以下示例代码将移动应用 SQL Azure 表 **ToDoItem** 中的数据返回到一个数组中。 该活动是数据应用程序经常使用的一种模式。  数据库查询通常将客户端所获得的行集合返回到列表或数组中。 在此示例中，该数组就是数据源。  代码将指定屏幕布局，用于定义设备中显示的数据视图。  这两者与适配器绑定在一起，在此代码中，适配器是 **ArrayAdapter&lt;ToDoItem&gt;** 类的扩展。
 
-#### <a name="layout"></a>定义布局
+#### <a name="define-the-layout"></a><a name="layout"></a>定义布局
 
 布局由多个 XML 代码段定义。 以某个现有布局为例，我们假设以下代码表示了要在其中填充服务器数据的 **ListView**。
 
@@ -511,7 +511,7 @@ List<ToDoItem> results = mToDoTable
 </LinearLayout>
 ```
 
-#### <a name="adapter"></a>定义适配器
+#### <a name="define-the-adapter"></a><a name="adapter"></a>定义适配器
 由于视图的数据源是 **ToDoItem** 的数组，因此我们需要基于 **ArrayAdapter&lt;ToDoItem&gt;** 类子类化适配器。 此子类将使用 **row_list_to_do** 布局为每个 **ToDoItem** 生成一个视图。  在代码中，可以定义以下类作为 **ArrayAdapter&lt;E&gt;** 类的扩展：
 
 ```java
@@ -569,7 +569,7 @@ ToDoItemAdapter 构造函数的第二个参数是对布局的引用。 我们现
     listViewToDo.setAdapter(mAdapter);
 ```
 
-#### <a name="use-adapter"></a>使用适配器绑定到 UI
+#### <a name="use-the-adapter-to-bind-to-the-ui"></a><a name="use-adapter"></a>使用适配器绑定到 UI
 
 现在，可以使用数据绑定了。 以下代码演示了如何获取表中的项，并使用返回项填充本地适配器。
 
@@ -602,9 +602,9 @@ ToDoItemAdapter 构造函数的第二个参数是对布局的引用。 我们现
 
 每当修改 **ToDoItem** 表时，请调用该适配器。 由于修改是按记录完成的，因此要处理的是单个行而不是一个集合。 插入项时，需要对适配器调用 **add** 方法；删除项时，需要调用 **remove** 方法。
 
-可以在[Android 快速入门项目][21]中找到完整的示例。
+可以在 [Android 快速入门项目][21]中找到完整示例。
 
-## <a name="inserting"></a>将数据插入后端
+## <a name="insert-data-into-the-backend"></a><a name="inserting"></a>将数据插入后端
 
 实例化 *ToDoItem* 类的实例并设置该实例的属性。
 
@@ -624,7 +624,7 @@ ToDoItem entity = mToDoTable
 
 返回的实体将匹配插入后端表的数据，包括 ID 和后端上设置的任何其他值（例如 `createdAt`、`updatedAt` 和 `version` 字段）。
 
-移动应用表需要名为**id**的主键列。此列必须是字符串。 ID 列的默认值是 GUID。  可以提供其他唯一值，如电子邮件地址或用户名。 如果没有为插入的记录提供字符串 ID 值，后端将生成新的 GUID。
+移动应用表需要名为**ID**的主键列。此列必须是字符串。 ID 列的默认值是 GUID。  可以提供其他唯一值，如电子邮件地址或用户名。 如果没有为插入的记录提供字符串 ID 值，后端将生成新的 GUID。
 
 字符串 ID 值提供以下优势：
 
@@ -634,7 +634,7 @@ ToDoItem entity = mToDoTable
 
 对于脱机同步支持，字符串 ID 值为 **REQUIRED**。  将 ID 存储到后端数据库后，无法对它进行更改。
 
-## <a name="updating"></a>更新移动应用中的数据
+## <a name="update-data-in-a-mobile-app"></a><a name="updating"></a>更新移动应用中的数据
 
 要更新表中的数据，请将新对象传递给 **update()** 方法。
 
@@ -646,7 +646,7 @@ mToDoTable
 
 在此示例中，*item* 是对 *ToDoItem* 表中某个行的引用，该表包含一些更改。  已更新具有相同 **ID** 的行。
 
-## <a name="deleting"></a>删除移动应用中的数据
+## <a name="delete-data-in-a-mobile-app"></a><a name="deleting"></a>删除移动应用中的数据
 
 以下代码演示如何通过指定数据对象来删除表中的数据。
 
@@ -663,7 +663,7 @@ mToDoTable
     .delete(myRowId);
 ```
 
-## <a name="lookup"></a>按 ID 查找特定项
+## <a name="look-up-a-specific-item-by-id"></a><a name="lookup"></a>按 ID 查找特定项
 
 使用 **lookUp()** 方法查找具有特定 **ID** 字段的项：
 
@@ -673,11 +673,11 @@ ToDoItem result = mToDoTable
     .get();
 ```
 
-## <a name="untyped"></a>如何处理非类型化数据
+## <a name="how-to-work-with-untyped-data"></a><a name="untyped"></a>如何处理非类型化数据
 
 非类型化编程模型可以提供对 JSON 序列化的完全控制。  但有时可能想要使用非类型化编程模型，这种情况也是比较常见的。 例如，如果后端表包含很多列，并且只需引用列的子集。  类型化模型需要在数据类中定义移动应用后端中定义的所有列。  用于访问数据的大多数 API 调用都与类型化编程调用类似。 主要差别在于，在非类型化模型中，要对 **MobileServiceJsonTable** 对象而不是 **MobileServiceTable** 对象调用方法。
 
-### <a name="json_instance"></a>创建非类型化表的实例
+### <a name="create-an-instance-of-an-untyped-table"></a><a name="json_instance"></a>创建非类型化表的实例
 
 与使用类型化模型相似，首先需要获取表引用，不过，此时该引用的是一个 **MobileServicesJsonTable** 对象。 对客户端的实例调用 **getTable** 方法可获取该引用：
 
@@ -689,8 +689,8 @@ mJsonToDoTable = mClient.getTable("ToDoItem");
 
 创建 **MobileServiceJsonTable** 的实例后，它几乎具有与类型化编程模型相同的可用 API。 在某些情况下，这些方法采用非类型化参数而不是类型化参数。
 
-### <a name="json_insert"></a>插入到非类型化表
-以下代码演示了如何执行插入。 第一步是创建[JsonObject][1]，它是[gson][3]库的一部分。
+### <a name="insert-into-an-untyped-table"></a><a name="json_insert"></a>插入到非类型化表
+以下代码演示了如何执行插入。 第一步是创建属于 [gson][3] 库的 [JsonObject][1]。
 
 ```java
 JsonObject jsonItem = new JsonObject();
@@ -711,8 +711,8 @@ JsonObject insertedItem = mJsonToDoTable
 ```java
 String id = insertedItem.getAsJsonPrimitive("id").getAsString();
 ```
-### <a name="json_delete"></a>从非类型化表中删除
-以下代码演示了如何删除一个实例，在本例中，该实例就是我们在前一个 **insert** 示例中创建的 *JsonObject* 的实例。 该代码与类型化案例相同，但方法具有不同的签名，因为它引用了 **JsonObject**。
+### <a name="delete-from-an-untyped-table"></a><a name="json_delete"></a>从非类型化表中删除
+以下代码演示了如何删除一个实例，在本例中，该实例就是我们在前一个 *insert* 示例中创建的 **JsonObject** 的实例。 该代码与类型化案例相同，但方法具有不同的签名，因为它引用了 **JsonObject**。
 
 ```java
 mToDoTable
@@ -725,7 +725,7 @@ mToDoTable
 mToDoTable.delete(ID);
 ```
 
-### <a name="json_get"></a>从非类型化表中返回所有行
+### <a name="return-all-rows-from-an-untyped-table"></a><a name="json_get"></a>从非类型化表中返回所有行
 以下代码演示了如何检索整个表。 由于使用的是 Json 数据表，可以选择性地只检索某些表的列。
 
 ```java
@@ -764,7 +764,7 @@ public void showAllUntyped(View view) {
 
 类型化模型使用的相同筛选设置（筛选和分页方法）适用于非类型化模型。
 
-## <a name="offline-sync"></a>实现脱机同步
+## <a name="implement-offline-sync"></a><a name="offline-sync"></a>实现脱机同步
 
 Azure 移动应用客户端 SDK 还可使用 SQLite 数据库在本地存储服务器数据的副本，从而实现脱机数据同步。  无需建立移动连接即可针对脱机表执行操作。  脱机同步有助于提高恢复能力和性能，代价是用于解决冲突的逻辑变得更复杂。  Azure 移动应用客户端 SDK 实现以下功能：
 
@@ -863,7 +863,7 @@ private AsyncTask<Void, Void, Void> sync(MobileServiceClient mClient) {
 
 根据需要标记所有冲突后，可以再次调用 `.push()` 来解决所有冲突。
 
-## <a name="custom-api"></a>调用自定义 API
+## <a name="call-a-custom-api"></a><a name="custom-api"></a>调用自定义 API
 
 自定义 API 可让你定义自定义终结点，这些终结点会公开不映射到插入、更新、删除或读取操作的服务器功能。 使用自定义 API 能够以更大的力度控制消息传送，包括读取和设置 HTTP 消息标头，以及定义除 JSON 以外的消息正文格式。
 
@@ -889,7 +889,7 @@ public void completeItem(View view) {
 
 **invokeApi** 方法在客户端上调用，该客户端向新的自定义 API 发送 POST 请求。 与任何错误相同，自定义 API 返回的结果也显示在消息对话框中。 使用其他版本的 **invokeApi** 可以选择性地在请求正文中发送对象、指定 HTTP 方法，以及随请求一起发送查询参数。 此外还提供了非类型化的 **invokeApi** 版本。
 
-## <a name="authentication"></a>向应用添加身份验证
+## <a name="add-authentication-to-your-app"></a><a name="authentication"></a>向应用添加身份验证
 
 教程已详细说明如何添加这些功能。
 
@@ -908,7 +908,7 @@ public void completeItem(View view) {
 
 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以使用已经过身份验证的用户的 SID 来修改请求。  有关详细信息，请参阅[身份验证入门]和“如何使用服务器 SDK”文档。
 
-### <a name="caching"></a>身份验证：服务器流
+### <a name="authentication-server-flow"></a><a name="caching"></a>身份验证：服务器流
 
 以下代码使用 Google 提供程序启动服务器流登录过程。  由于 Google 提供程序的安全要求，需要指定其他配置：
 
@@ -994,13 +994,13 @@ dependencies {
 > [!WARNING]
 > 所述的 URL 方案区分大小写。  请确保出现的所有 `{url_scheme_of_you_app}` 的大小写匹配。
 
-### <a name="caching"></a>缓存身份验证令牌
+### <a name="cache-authentication-tokens"></a><a name="caching"></a>缓存身份验证令牌
 
-缓存身份验证令牌需要将用户 ID 和身份验证令牌存储在设备本地。 下一次启动应用程序时，只需检查缓存，如果这些值存在，则可以跳过登录过程，并使用这些数据重新进入客户端。 但是，这些数据是敏感的，为安全起见，应该以加密形式存储，以防手机失窃。  可以在[缓存身份验证令牌部分][7]中看到如何缓存身份验证令牌的完整示例。
+缓存身份验证令牌需要将用户 ID 和身份验证令牌存储在设备本地。 下一次启动应用程序时，只需检查缓存，如果这些值存在，则可以跳过登录过程，并使用这些数据重新进入客户端。 但是，这些数据是敏感的，为安全起见，应该以加密形式存储，以防手机失窃。  可以在[缓存身份验证令牌][7]部分中了解有关如何缓存身份验证令牌的完整示例。
 
-尝试使用过期的令牌时，将收到“401 未授权”响应。 可以使用筛选器处理身份验证错误。  筛选器可截获到应用服务后端的请求。 此时，筛选器代码将测试 401 响应，根据需要触发登录进程，并恢复生成 401 响应的请求。
+尝试使用过期的令牌时，将收到“401 未授权”** 响应。 可以使用筛选器处理身份验证错误。  筛选器可截获到应用服务后端的请求。 此时，筛选器代码将测试 401 响应，根据需要触发登录进程，并恢复生成 401 响应的请求。
 
-### <a name="refresh"></a>使用刷新令牌
+### <a name="use-refresh-tokens"></a><a name="refresh"></a>使用刷新令牌
 
 Azure 应用服务身份验证和授权返回的令牌定义了一小时的生存期。  在此期限过后，必须重新验证用户的身份。  如果使用通过客户端流身份验证收到的长生存期令牌，则可以使用相同的令牌在 Azure 应用服务身份验证和授权中重新进行身份验证。  另外，还会生成一个具有新生存期的 Azure 应用服务令牌。
 
@@ -1070,7 +1070,7 @@ MobileServiceUser user = mClient
 
 将 `onSuccess()` 方法替换为成功登录后要使用的任何代码。  `{provider}` 字符串是有效的提供程序：**aad** (Azure Active Directory)、**facebook**、**google**、**microsoftaccount** 或 **twitter**。  如果已实现自定义身份验证，则还可以使用自定义身份验证提供程序标记。
 
-### <a name="adal"></a>使用 Active Directory 身份验证库 (ADAL) 对用户进行身份验证
+### <a name="authenticate-users-with-the-active-directory-authentication-library-adal"></a><a name="adal"></a>使用 Active Directory 身份验证库 (ADAL) 对用户进行身份验证
 
 可以借助 Active Directory 身份验证库 (ADAL) 使用 Azure Active Directory 将用户登录到应用程序。 使用客户端流登录通常比使用 `loginAsync()` 方法更有利，因为它提供更直观的 UX 风格，并允许进行其他自定义。
 
@@ -1103,9 +1103,9 @@ MobileServiceUser user = mClient
 3. 将以下代码添加到应用程序并进行以下替换：
 
     * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com。
-    * 将 **INSERT-RESOURCE-ID-HERE** 替换移动应用后端的客户端 ID。 可以在门户中“Azure Active Directory 设置”下面的“高级”选项卡获取此客户端 ID。
+    * 将 **INSERT-RESOURCE-ID-HERE** 替换移动应用后端的客户端 ID。 可以在门户中“Azure Active Directory 设置”**** 下面的“高级”**** 选项卡获取此客户端 ID。
     * 将 **INSERT-CLIENT-ID-HERE** 替换为从本机客户端应用程序复制的客户端 ID。
-    * 使用 HTTPS 方案将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点。 此值应类似于 *https://contoso.azurewebsites.net/.auth/login/done* 。
+    * 使用 HTTPS 方案将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点。 此值应类似于*https://contoso.azurewebsites.net/.auth/login/done*。
 
 ```java
 private AuthenticationContext mContext;
@@ -1170,7 +1170,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
-## <a name="filters"></a>调整客户端与服务器之间的通信
+## <a name="adjust-the-client-server-communication"></a><a name="filters"></a>调整客户端与服务器之间的通信
 
 客户端连接通常是使用 Android SDK 随附的基础 HTTP 库实现的基本 HTTP 连接。  更改这种连接的原因有多种：
 
@@ -1267,9 +1267,9 @@ private class CustomHeaderFilter implements ServiceFilter {
 }
 ```
 
-### <a name="conversions"></a>配置自动序列化
+### <a name="configure-automatic-serialization"></a><a name="conversions"></a>配置自动序列化
 
-您可以使用[gson][3] API 指定应用于每个列的转换策略。 Android 客户端库在幕后使用[gson][3]将 Java 对象序列化为 JSON 数据，然后将数据发送到 Azure App Service。  下面的代码使用 **setFieldNamingStrategy()** 方法设置策略。 此示例删除初始字符（“m”），并将每个字段名称的下一个字符小写。 例如，它将“mId”变为“id”。  实现转换策略，减少在大多数字段中使用 `SerializedName()` 批注的需求。
+可以使用 [gson][3] API，指定适用于每个列的转换策略。 在将数据发送到 Azure 应用服务之前，Android 客户端库会在后台使用 [gson][3] 将 Java 对象序列化为 JSON 数据。  下面的代码使用 **setFieldNamingStrategy()** 方法设置策略。 此示例删除初始字符（“m”），并将每个字段名称的下一个字符小写。 例如，它将“mId”变为“id”。  实现转换策略，减少在大多数字段中使用 `SerializedName()` 批注的需求。
 
 ```java
 FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {

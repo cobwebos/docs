@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d7938f7db22f004a0bf6cdf2e22dc8e103896719
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617397"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>创建 SAP NetWeaver 多 SID 配置
@@ -49,14 +49,14 @@ ms.locfileid: "77617397"
 
 2016 年 9 月，Microsoft 推出了一项功能，可用于通过 Azure 内部负载均衡器管理多个虚拟 IP 地址。 Azure 外部负载均衡器已包含此功能。
 
-如果有 SAP 部署，则可以使用内部负载均衡器为 SAP ASCS/SCS 创建 Windows 群集配置，如[Windows vm 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中所述。
+在 SAP 部署中，可以根据 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中所述，使用内部负载均衡器创建 SAP ASCS/SCS 的 Windows 群集配置。
 
 本文重点介绍如何通过在现有 Windows Server 故障转移群集 (WSFC) 中安装附加的 SAP ASCS/SCS 群集实例，从单一 ASCS/SCS 安装转移到 SAP 多 SID 配置。 完成此过程后，即已配置一个 SAP 多 SID 群集。
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
-你已配置了用于一个 SAP ASCS/SCS 实例的 WSFC 群集，如[Windows vm 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中所述，如图所示。
+## <a name="prerequisites"></a>先决条件
+已根据 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中的介绍和下图所示，配置了用于一个 SAP ASCS/SCS 实例的 WSFC 群集。
 
 ![高可用性 SAP ASCS/SCS 实例][sap-ha-guide-figure-6001]
 
@@ -72,7 +72,7 @@ ms.locfileid: "77617397"
 >一个 WSFC 群集中的最大 SAP ASCS/SCS 实例数等于每个 Azure 内部负载均衡器的最大专用前端 IP 数。
 >
 
-有关负载均衡器限制的详细信息，请参阅[网络限制： Azure 资源管理器][networking-limits-azure-resource-manager]中的 "每个负载均衡器的专用前端 IP"。
+有关负载均衡器限制的详细信息，请参阅 [网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]中的“每个负载均衡器的专用前端 IP”。
 
 包含两个高可用性 SAP 系统的完整布局如下所示：
 
@@ -88,7 +88,7 @@ ms.locfileid: "77617397"
 ## <a name="prepare-the-infrastructure"></a>准备基础结构
 若要准备基础结构，可以使用以下参数安装附加的 SAP ASCS/SCS 实例：
 
-| 参数名称 | 值 |
+| 参数名称 | “值” |
 | --- | --- |
 | SAP ASCS/SCS SID |pr1-lb-ascs |
 | SAP DBMS 内部负载均衡器 | PR5 |
@@ -121,7 +121,7 @@ ms.locfileid: "77617397"
 
 ![DNS 管理器列表，其中突出显示了新 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的已定义 DNS 项][sap-ha-guide-figure-6004]
 
-[Windows vm 上的高可用性 SAP NetWeaver][sap-ha-guide-9.1.1]的主要指南中详细介绍了创建 DNS 条目的步骤。
+有关 DNS 项的详细创建过程，请参阅主要文档 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-9.1.1]。
 
 > [!NOTE]
 > 分配给附加 ASCS/SCS 实例虚拟主机名的新 IP 地址必须与分配给 SAP Azure 负载均衡器的新 IP 地址相同。
@@ -223,7 +223,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 1. 将一个或多个相同大小的附加磁盘（需要条带化）添加到每个群集节点，然后将其格式化。
 2. 使用 SIOS DataKeeper 配置存储复制。
 
-此过程假设已在 WSFC 群集计算机上安装 SIOS DataKeeper。 如果已安装，现在必须配置计算机之间的复制。 [有关 Windows vm 上的高可用性 SAP NetWeaver][sap-ha-guide-8.12.3.3]的主要指南中详细介绍了该过程。  
+此过程假设已在 WSFC 群集计算机上安装 SIOS DataKeeper。 如果已安装，现在必须配置计算机之间的复制。 有关此过程的详细信息，请参阅主要文档 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-8.12.3.3]。  
 
 ![新 SAP ASCS/SCS 共享磁盘的 DataKeeper 同步镜像][sap-ha-guide-figure-6006]
 
@@ -237,12 +237,12 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 ## <a name="install-the-second-sap-sid2-netweaver-system"></a>安装第二个 SAP SID2 NetWeaver 系统
 
-[Windows vm 上的高可用性 Sap NetWeaver 指南][sap-ha-guide-9]中介绍了安装第二个 sap SID2 系统的完整过程。
+有关第二个 SAP SID2 系统的完整安装过程，请参阅主要文档 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-9]。
 
 概要过程如下所述：
 
 1. [安装 SAP 第一个群集节点][sap-ha-guide-9.1.2]。  
- 此步骤在**现有 WSFC 群集节点 1** 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。
+ 在此步骤中，您将在**存在 WSFC 群集节点 1**上安装具有高可用性 ASCS/SCS 实例的 SAP。
 
 2. [修改 ASCS/SCS 实例的 SAP 配置文件][sap-ha-guide-9.1.3]。
 
@@ -256,10 +256,10 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
  此步骤在现有 WSFC 群集节点 2 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。
 
 6. 打开 SAP ASCS/SCS 实例的 Windows 防火墙端口和探测端口。  
- 在用于 SAP ASCS/SCS 实例的两个群集节点上，打开 SAP ASCS/SCS 使用的所有 Windows 防火墙端口。 [Windows vm 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-8.8]中列出了这些端口。  
+ 在用于 SAP ASCS/SCS 实例的两个群集节点上，打开 SAP ASCS/SCS 使用的所有 Windows 防火墙端口。 有关这些端口，请参阅 [Windows VM 上的高可用性的 SAP NetWeaver 指南][sap-ha-guide-8.8]。  
  此外，打开 Azure 内部负载均衡器探测端口，在本例中为 62350。
 
-7. [更改 SAP ERS Windows 服务实例的启动类型][sap-ha-guide-9.4]。
+7. [更改 SAP ERS Windows 服务实例的开始类型][sap-ha-guide-9.4]。
 
 8. 在新的专用 VM 上[安装 SAP 主应用程序服务器][sap-ha-guide-9.5]。
 
@@ -269,6 +269,6 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 ## <a name="next-steps"></a>后续步骤
 
-- [网络限制： Azure 资源管理器][networking-limits-azure-resource-manager]
-- [Azure 负载均衡器的多个 Vip][load-balancer-multivip-overview]
-- [Windows Vm 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]
+- [网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]
+- [Azure 负载均衡器的多个 VIP][load-balancer-multivip-overview]
+- [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]

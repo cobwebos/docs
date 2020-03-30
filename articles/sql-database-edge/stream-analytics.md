@@ -1,7 +1,7 @@
 ---
-title: 通过 Azure SQL 数据库边缘使用 SQL 数据库 DAC 包和流分析作业 |Microsoft Docs
+title: 使用 SQL 数据库 DAC 包和流分析作业与 Azure SQL 数据库边缘 |微软文档
 description: 了解如何在 SQL 数据库边缘中使用流分析作业
-keywords: sql 数据库边缘，流分析，sqlpackage
+keywords: sql 数据库边缘、流分析、sql 包
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: conceptual
@@ -10,19 +10,19 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 21a8bb6953fd879b17816361f536596571678697
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74384156"
 ---
-# <a name="using-sql-database-dac-packages-and-stream-analytics-jobs-with-sql-database-edge"></a>在 SQL 数据库边缘中使用 SQL 数据库 DAC 包和流分析作业
+# <a name="using-sql-database-dac-packages-and-stream-analytics-jobs-with-sql-database-edge"></a>使用 SQL 数据库 DAC 包和具有 SQL 数据库边缘的流分析作业
 
-Azure SQL 数据库边缘预览版是一种优化的关系数据库引擎，适用于 IoT 和边缘部署。 它建立在最新版本的 Microsoft SQL Server 数据库引擎上，提供行业领先的性能、安全性和查询处理功能。 除了 SQL Server 的业界领先的关系数据库管理功能之外，Azure SQL 数据库边缘还提供内置的流式处理功能，可用于实时分析和复杂的事件处理。
+Azure SQL 数据库边缘预览是一个优化的关系数据库引擎，适用于 IoT 和边缘部署。 它基于最新版本的 Microsoft SQL Server 数据库引擎，它提供了业界领先的性能、安全性和查询处理功能。 除了 SQL Server 业界领先的关系数据库管理功能外，Azure SQL 数据库边缘还提供内置流式处理功能，用于实时分析和复杂的事件处理。
 
-Azure SQL 数据库边缘还提供 SqlPackage 的本机实现，使你能够在 SQL 数据库边缘部署过程中部署[Sql 数据库 DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications)包。
+Azure SQL 数据库边缘还提供 SqlPackage.exe 的本机实现，使您能够在 SQL 数据库边缘部署期间部署[SQL 数据库 DAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications)包。
 
-Azure SQL 数据库边缘通过 IoT Edge 模块的 `module twin's desired properties` 选项公开两个可选参数：
+Azure SQL 数据库边缘通过 IoT 边缘`module twin's desired properties`模块的选项公开两个可选参数：
 
 ```json
 {
@@ -34,37 +34,37 @@ Azure SQL 数据库边缘通过 IoT Edge 模块的 `module twin's desired proper
 }
 ```
 
-|字段 | 说明 |
+|字段 | 描述 |
 |------|-------------|
-| SqlPackage | 包含 SQL 数据库 DAC 包的 * .zip 文件的 Azure Blob 存储 URI。
-| ASAJobInfo | ASA Edge 作业的 Azure Blob 存储 URI。 有关详细信息，请参阅[为 SQL 数据库边缘发布 ASA Edge 作业](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)。
+| SqlPackage | 包含 SQL 数据库 DAC 包的 @.zip 文件的 Azure Blob 存储 URI。
+| ASAJobInfo | 用于 ASA 边缘作业的 Azure Blob 存储 URI。 有关详细信息，请参阅为[SQL 数据库边缘发布 ASA 边缘作业](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)。
 
-## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>结合使用 SQL 数据库 DAC 包和 SQL 数据库边缘
+## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>将 SQL 数据库 DAC 包与 SQL 数据库边缘一起使用
 
-若要将 SQL 数据库 DAC 包（* .dacpac）用于 SQL 数据库边缘，请执行以下步骤：
+要将 SQL 数据库 DAC 包 （*.dacpac） 与 SQL 数据库边缘一起使用，请执行以下步骤：
 
-1. 创建或提取 SQL 数据库 DAC 包。 有关如何为现有 SQL Server 数据库生成 DAC 包的信息，请参阅[从数据库中提取 dac](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) 。
+1. 创建或提取 SQL 数据库 DAC 包。 有关如何为现有 SQL Server 数据库生成 DAC 包的信息，请参阅[从数据库中提取 DAC。](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/)
 
-2. 压缩 * .dacpac，并将其上传到 Azure Blob 存储帐户。 有关将文件上传到 Azure Blob 存储的详细信息，请参阅[上传、下载和列出 Azure 门户的 blob](../storage/blobs/storage-quickstart-blobs-portal.md)。
+2. 压缩 @.dacpac 并将其上载到 Azure Blob 存储帐户。 有关将文件上载到 Azure Blob 存储的详细信息，请参阅[使用 Azure 门户上载、下载和列出 Blob。](../storage/blobs/storage-quickstart-blobs-portal.md)
 
-3. 使用 Azure 门户为 zip 文件生成共享访问签名。 有关详细信息，请参阅[使用共享访问签名（SAS）委派访问权限](../storage/common/storage-sas-overview.md)。
+3. 使用 Azure 门户为 zip 文件生成共享访问签名。 有关详细信息，请参阅[使用共享访问签名 （SAS） 委派访问权限](../storage/common/storage-sas-overview.md)。
 
-4. 更新 SQL 数据库边缘模块配置，使其包含 DAC 包的共享访问 URI。 若要更新 SQL 数据库边缘模块，请执行以下步骤：
+4. 更新 SQL 数据库边缘模块配置以包括 DAC 包的共享访问 URI。 要更新 SQL 数据库边缘模块，请执行以下步骤：
 
-    1. 在 Azure 门户中，请切换到 IoT 中心部署。
+    1. 在 Azure 门户中，转到 IoT 中心部署。
 
-    2. 在左窗格中，选择“IoT Edge”。
+    2. 在左窗格中，选择“IoT Edge”****。
 
-    3. 在 " **IoT Edge** " 页上，找到并选择部署 SQL 数据库边缘模块的 IoT Edge。
+    3. 在**IoT 边缘**页上，查找并选择部署 SQL 数据库边缘模块的 IoT 边缘。
 
-    4. 在 " **IoT Edge 设备**设备" 页上，选择 "**设置模块**"。
+    4. 在**IoT 边缘设备**设备页面上，选择 **"设置模块**"。
 
-    5. 在 "**设置模块**" 页上，针对 SQL 数据库边缘模块选择 "**配置**"。
+    5. 在 **"设置模块"** 页上，选择针对 SQL 数据库边缘模块**进行配置**。
 
-    6. 在**IoT Edge 自定义模块**"窗格中，选择"**设置模块克隆的所需属性**"。 更新所需属性以包括 `SQLPackage` 选项的 URI，如以下示例中所示。
+    6. 在**IoT 边缘自定义模块**窗格中，选择 **"设置模块孪生"所需的属性**。 更新所需属性以包括选项的`SQLPackage`URI，如以下示例所示。
 
         > [!NOTE]
-        > 下面的 JSON 中的 SAS URI 就是一个示例。 将 URI 替换为部署中的实际 URI。
+        > 以下 JSON 中的 SAS URI 只是一个示例。 将 URI 替换为部署中的实际 URI。
 
         ```json
             {
@@ -75,40 +75,40 @@ Azure SQL 数据库边缘通过 IoT Edge 模块的 `module twin's desired proper
             }
         ```
 
-    7. 选择“保存”。
+    7. 选择“保存”。****
 
-    8. 在 "**设置模块**" 页上，选择 "**下一步**"。
+    8. 在 **"设置模块"** 页上，选择 **"下一步**"。
 
-    9. 在 "**设置模块**" 页上，选择 "**下一步**"，然后**提交**。
+    9. 在 **"设置模块"** 页上，选择 **"下一步**"，然后**提交**。
 
-5. 模块更新后，会下载、解压缩 DAC 包文件，并将其部署在 SQL 数据库边缘实例上。
+5. 模块更新后，将下载、解压缩 DAC 包文件，并针对 SQL 数据库边缘实例部署该文件。
 
-## <a name="using-streaming-jobs-with-sql-database-edge"></a>在 SQL 数据库边缘中使用流式处理作业
+## <a name="using-streaming-jobs-with-sql-database-edge"></a>使用具有 SQL 数据库边缘的流式处理作业
 
-Azure SQL 数据库边缘具有流分析运行时的本机实现。 此实现允许你创建 Azure 流分析边缘作业并将该作业部署为 SQL 数据库边缘流式处理作业。 若要创建流分析边缘作业，请完成以下步骤：
+Azure SQL 数据库边缘具有流分析运行时的本机实现。 此实现使您能够创建 Azure 流分析边缘作业，并将该作业部署为 SQL 数据库边缘流作业。 要创建流分析边缘作业，请完成以下步骤：
 
-1. 使用预览[URL](https://portal.azure.com/?microsoft_azure_streamanalytics_edgeadapterspreview=true)中转到 Azure 门户。 使用此预览 URL，可以为流分析边缘作业配置 SQL 数据库输出。
+1. 使用预览[URL](https://portal.azure.com/?microsoft_azure_streamanalytics_edgeadapterspreview=true)转到 Azure 门户。 此预览 URL 使您能够为流分析边缘作业配置 SQL 数据库输出。
 
-2. 创建新的**Azure IoT Edge 流分析**作业。 选择面向**边缘**的宿主环境。
+2. 在**IoT 边缘作业上创建新的 Azure 流分析**。 选择面向**边缘的**托管环境。
 
-3. 定义 Azure 流分析作业的输入和输出。 你将在此处设置的每个 SQL 输出都绑定到数据库中的一个表。 如果需要将数据流式传输到多个表，则需要创建多个 SQL 数据库输出。 你可以将 SQL 输出配置为指向不同的数据库。
+3. 为 Azure 流分析作业定义输入和输出。 您将在此处设置的每个 SQL 输出都绑定到数据库中的单个表。 如果需要将数据流式传输到多个表，则需要创建多个 SQL 数据库输出。 您可以将 SQL 输出配置为指向不同的数据库。
 
     **输入**。 选择 EdgeHub 作为边缘作业的输入，并提供资源信息。
 
-    **输出**。 选择 "SQL 数据库" 作为输出。 选择 "**手动提供 SQL 数据库设置**"。 提供数据库和表的配置详细信息。
+    **输出**。 选择 SQL 数据库作为输出。 选择**手动提供 SQL 数据库设置**。 提供数据库和表的配置详细信息。
 
-    |字段      | 说明 |
+    |字段      | 描述 |
     |---------------|-------------|
     |输出别名 | 输出别名的名称。|
-    |数据库 | SQL 数据库的名称。 它必须是 SQL 数据库边缘实例上存在的数据库的有效名称。|
-    |服务器名称 | SQL 实例的名称（或 IP 地址）和端口号详细信息。 对于 SQL 数据库边缘部署，你可以使用**tcp：.、1433**作为服务器名称。|
-    |用户名 | SQL 登录帐户，它具有对您之前指定的数据库的数据读取器和数据写入程序的访问权限。|
-    |密码 | 你前面指定的 SQL 登录帐户的密码。|
-    |表 | 将为流式处理作业输出的表的名称。|
-    |继承分区| 启用继承上一个查询步骤或输入的分区方案。 如果启用此选项，则在写入基于磁盘的表并为作业提供完全并行拓扑时，可能会看到更好的吞吐量。|
-    |批大小| 每个大容量插入事务发送的最大记录数。|
+    |数据库 | SQL 数据库的名称。 它需要是 SQL 数据库边缘实例上存在的数据库的有效名称。|
+    |服务器名称 | SQL 实例的名称（或 IP 地址）和端口号详细信息。 对于 SQL 数据库边缘部署，可以使用**tcp：.，1433**作为服务器名称。|
+    |用户名 | SQL 登录帐户，该帐户具有数据读取器和数据编写器对前面指定的数据库的访问权限。|
+    |密码 | 您之前指定的 SQL 登录帐户的密码。|
+    |表 | 将输出的流作业的表的名称。|
+    |继承分区| 启用继承上一个查询步骤或输入的分区方案。 启用此选项后，在写入基于磁盘的表并为作业提供完全并行拓扑时，可以预期会看到更好的吞吐量。|
+    |批大小| 随每个批量插入事务一起发送的最大记录数。|
 
-    下面是一个输入/输出配置示例：
+    下面是一个示例输入/输出配置：
 
     ```txt
         Input:
@@ -130,32 +130,32 @@ Azure SQL 数据库边缘具有流分析运行时的本机实现。 此实现允
     ```
 
     > [!NOTE]
-    > 有关 Azure 流分析的 SQL 输出适配器的详细信息，请参阅 azure[流分析输出到 AZURE SQL Database](../stream-analytics/stream-analytics-sql-output-perf.md)。
+    > 有关 Azure 流分析的 SQL 输出适配器的详细信息，请参阅[Azure 流分析输出到 Azure SQL 数据库](../stream-analytics/stream-analytics-sql-output-perf.md)。
 
-4. 定义 edge 作业的 ASA 作业查询。 此查询应使用定义的输入/输出别名作为查询中的输入和输出名称。 有关详细信息，请参阅[流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)。
+4. 为边缘作业定义 ASA 作业查询。 此查询应使用定义的输入/输出别名作为查询中的输入和输出名称。 有关详细信息，请参阅[流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)。
 
 5. 设置边缘作业的存储帐户设置。 存储帐户用作边缘作业的发布目标。
 
-6. 在 "**配置**" 下，选择 "**发布**"，然后选择 "**发布**" 按钮。 保存 SAS URI 以用于 SQL 数据库边缘模块。
+6. 在 **"配置**"**下，选择"发布**"，然后选择 **"发布**"按钮。 保存 SAS URI 以与 SQL 数据库边缘模块一起使用。
 
 ### <a name="deploy-the-stream-analytics-edge-job-to-sql-database-edge"></a>将流分析边缘作业部署到 SQL 数据库边缘
 
-若要将流式处理作业部署到 SQL 数据库边缘模块，请更新 SQL 数据库边缘模块配置，使其包括之前步骤中流式处理作业的 SAS URI。 若要更新 SQL 数据库边缘模块：
+要将流式处理作业部署到 SQL 数据库边缘模块，请更新 SQL 数据库边缘模块配置，以包括前面步骤中流作业的 SAS URI。 要更新 SQL 数据库边缘模块：
 
-1. 在 Azure 门户中，请切换到 IoT 中心部署。
+1. 在 Azure 门户中，转到 IoT 中心部署。
 
-2. 在左窗格中，选择“IoT Edge”。
+2. 在左窗格中，选择“IoT Edge”****。
 
-3. 在 " **IoT Edge** " 页上，找到并选择部署 SQL 数据库边缘模块的 IoT Edge。
+3. 在**IoT 边缘**页上，查找并选择部署 SQL 数据库边缘模块的 IoT 边缘。
 
-4. 在 " **IoT Edge 设备**设备" 页上，选择 "**设置模块**"。
+4. 在**IoT 边缘设备**设备页面上，选择 **"设置模块**"。
 
-5. 在 "**设置模块**" 页上，针对 SQL 数据库边缘模块选择 "**配置**"。
+5. 在 **"设置模块"** 页上，选择针对 SQL 数据库边缘模块**进行配置**。
 
-6. 在**IoT Edge 自定义模块**"窗格中，选择"**设置模块克隆的所需属性**"。 更新所需属性以包括 `ASAJobInfo` 选项的 URI，如以下示例中所示。
+6. 在**IoT 边缘自定义模块**窗格中，选择 **"设置模块孪生"所需的属性**。 更新所需属性以包括选项的`ASAJobInfo`URI，如以下示例所示。
 
     > [!NOTE]
-    > 下面的 JSON 中的 SAS URI 就是一个示例。 将 URI 替换为部署中的实际 URI。
+    > 以下 JSON 中的 SAS URI 只是一个示例。 将 URI 替换为部署中的实际 URI。
 
     ```json
         {
@@ -166,16 +166,16 @@ Azure SQL 数据库边缘具有流分析运行时的本机实现。 此实现允
         }
     ```
 
-7. 选择“保存”。
+7. 选择“保存”。****
 
-8. 在 "**设置模块**" 页上，选择 "**下一步**"。
+8. 在 **"设置模块"** 页上，选择 **"下一步**"。
 
-9. 在 "**设置模块**" 页上，选择 "**下一步**"，然后**提交**。
+9. 在 **"设置模块"** 页上，选择 **"下一步**"，然后**提交**。
 
-10. 模块更新后，流分析作业文件将下载、解压缩并部署到 SQL 数据库边缘实例。
+10. 模块更新后，将下载、解压缩和部署针对 SQL 数据库边缘实例的流分析作业文件。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关定价和可用性的详细信息，请参阅[AZURE SQL 数据库边缘](https://azure.microsoft.com/services/sql-database-edge/)。
-- 请求为你的订阅启用 Azure SQL 数据库边缘。
-- 若要开始使用，请参阅[通过 Azure 门户部署 SQL 数据库边缘](deploy-portal.md)。
+- 有关定价和可用性详细信息，请参阅[Azure SQL 数据库边缘](https://azure.microsoft.com/services/sql-database-edge/)。
+- 请求为订阅启用 Azure SQL 数据库边缘。
+- 要开始，请参阅[通过 Azure 门户部署 SQL 数据库边缘](deploy-portal.md)。

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
 ms.openlocfilehash: 6d6a50db42924d868b57cacc415246ee6990859c
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110471"
 ---
 # <a name="get-started-with-device-management-python"></a>设备管理入门 (Python)
@@ -39,7 +39,7 @@ ms.locfileid: "77110471"
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-* 请确保已在防火墙中打开端口8883。 本文中的设备示例使用了 MQTT 协议，该协议通过端口8883进行通信。 此端口可能在某些企业和教育网络环境中被阻止。 有关此问题的详细信息和解决方法，请参阅[连接到 IoT 中心（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -59,15 +59,15 @@ ms.locfileid: "77110471"
 
 * 通过报告的属性，设备孪生查询可标识设备及设备上次重新启动的时间
 
-1. 在命令提示符下，运行以下命令以安装**azure iot-设备**包：
+1. 在命令提示符处，运行以下命令以安装 **azure-iot-device** 包：
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-2. 使用文本编辑器，在工作目录中创建一个名为**dmpatterns_getstarted_device**的文件。
+2. 使用文本编辑器，在工作目录中创建名为 **dmpatterns_getstarted_device.py** 的文件。
 
-3. 在 `import`dmpatterns_getstarted_device.py**文件开头添加以下** 语句。
+3. 在 **dmpatterns_getstarted_device.py** 文件开头添加以下 `import` 语句。
 
     ```python
     import threading
@@ -76,7 +76,7 @@ ms.locfileid: "77110471"
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
     ```
 
-4. 添加**CONNECTION_STRING**变量。 将 `{deviceConnectionString}` 占位符值替换为设备连接字符串。 你之前在[IoT 中心内注册了](#register-a-new-device-in-the-iot-hub)此连接字符串。  
+4. 添加 **CONNECTION_STRING** 变量。 将 `{deviceConnectionString}` 占位符值替换为设备连接字符串。 你先前在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中复制了此连接字符串。  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -152,15 +152,15 @@ ms.locfileid: "77110471"
 
 此部分将创建一个 Python 控制台应用，以使用直接方法在设备上启动远程重新启动。 该应用使用设备孪生查询来搜索该设备的上次重新启动时间。
 
-1. 在命令提示符下，运行以下命令以安装**azure iot 中心**包：
+1. 在命令提示符处，运行以下命令以安装 **azure-iot-hub** 包：
 
     ```cmd/sh
     pip install azure-iot-hub
     ```
 
-2. 使用文本编辑器，在工作目录中创建一个名为**dmpatterns_getstarted_service**的文件。
+2. 使用文本编辑器，在工作目录中创建名为 **dmpatterns_getstarted_service.py** 的文件。
 
-3. 在 `import`dmpatterns_getstarted_service.py**文件开头添加以下** 语句。
+3. 在 **dmpatterns_getstarted_service.py** 文件开头添加以下 `import` 语句。
 
     ```python
     import sys, time
@@ -169,7 +169,7 @@ ms.locfileid: "77110471"
     from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult, Twin
     ```
 
-4. 添加以下变量声明。 将 `{IoTHubConnectionString}` 占位符值替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。 将 `{deviceId}` 占位符值替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
+4. 添加以下变量声明。 将`{IoTHubConnectionString}`占位符值替换为以前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。 将 `{deviceId}` 占位符值替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -238,7 +238,7 @@ ms.locfileid: "77110471"
 
 ## <a name="run-the-apps"></a>运行应用
 
-你现在已准备好运行应用。
+现已准备好运行应用。
 
 1. 在命令提示符处，运行以下命令以开始侦听重新启动直接方法。
 
@@ -254,11 +254,11 @@ ms.locfileid: "77110471"
 
 3. 可在控制台查看对直接方法的设备响应。
 
-   下面显示了对重新启动直接方法的设备响应：
+   下面显示了设备对重新启动直接方法的响应：
 
    ![模拟设备应用输出](./media/iot-hub-python-python-device-management-get-started/device.png)
 
-   下面显示了调用 reboot 直接方法并轮询设备克隆状态的服务：
+   下面显示了调用重新启动直接方法并轮询设备孪生状态的服务：
 
    ![触发重新启动服务输出](./media/iot-hub-python-python-device-management-get-started/service.png)
 

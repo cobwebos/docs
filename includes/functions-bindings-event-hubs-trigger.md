@@ -5,34 +5,34 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
 ms.openlocfilehash: 438e3166e27511780dd871b5076a7b28ebade052
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589709"
 ---
-使用函数触发器来响应发送到事件中心事件流的事件。 若要设置触发器，你必须对基础事件中心具有读取访问权限。 触发函数时，传递给函数的消息将类型化为字符串。
+使用函数触发器来响应发送到事件中心事件流的事件。 若要设置触发器，必须具有基础事件中心的读取访问权限。 触发函数时，传递给函数的消息充当字符串类型。
 
-## <a name="scaling"></a>缩放
+## <a name="scaling"></a>扩展
 
-事件触发函数的每个实例都由单个[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)实例支持。 触发器（由事件中心提供支持）可确保只有一个[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)实例可以获得给定分区上的租约。
+事件触发的函数的每个实例由单个 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例提供支持。 触发器（由事件中心提供支持）确保只有一个 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例能够在给定分区上获得租约。
 
 例如，考虑如下所述的一个事件中心：
 
-* 10个分区
-* 1000在所有分区上均匀分布的事件，每个分区中包含100条消息
+* 10 个分区
+* 在所有分区之间平均分配 1000 个事件，每个分区中有 100 条消息
 
-首次启用函数时，只有一个函数实例。 让我们调用第一个函数实例 `Function_0`。 `Function_0` 函数具有[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)的单个实例，该实例持有所有10个分区的租约。 此实例从分区 0-9 读取事件。 从此时开始，将发生下列情况之一：
+首次启用函数时，只有一个函数实例。 我们将第一个函数实例命名为 `Function_0`。 `Function_0` 函数具有单个 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例，此实例在所有十个分区上都有租约。 此实例从分区 0-9 读取事件。 从此时开始，将发生下列情况之一：
 
-* **不需要新的函数实例**：在函数缩放逻辑生效之前，`Function_0` 能够处理所有1000事件。 在这种情况下，将 `Function_0`处理所有1000消息。
+* **不需要新的函数实例**：`Function_0`能够在函数缩放逻辑生效之前处理所有 1，000 个事件。 在这种情况下，所有 1,000 条消息都由 `Function_0` 处理。
 
-* **添加其他函数实例**：如果函数缩放逻辑确定 `Function_0` 的消息数超过其处理能力，则会创建一个新的 function app 实例（`Function_1`）。 此新函数也具有[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)的关联实例。 当基础事件中心检测到新的主机实例正在尝试读取消息时，它会在主机实例之间负载平衡分区。 例如，可以将分区 0-4 分配给 `Function_0`，将分区 5-9 分配给 `Function_1`。
+* **添加了一个额外的函数实例**：如果函数缩放逻辑确定`Function_0`其消息数超过其处理时间，则将创建新的函数应用实例 （`Function_1`） 。 此新函数也有一个关联的 [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) 实例。 当基础事件中心检测到新的主机实例正在尝试读取消息时，它将跨主机实例的分区进行负载平衡。 例如，可以将分区 0-4 分配给 `Function_0`，将分区 5-9 分配给 `Function_1`。
 
-* **额外添加 N 个函数实例**：如果函数缩放逻辑确定 `Function_0` 和 `Function_1` 包含的消息超过其处理的数目，则将创建新的 `Functions_N` function app 实例。  将为 `N` 大于事件中心分区数的点创建应用。 在我们的示例中，事件中心再次对分区进行负载均衡，在本例中是在实例 `Function_0`...`Functions_9` 之间进行的。
+* **添加了 N 个函数实例**：如果函数缩放逻辑确定两者兼`Function_0``Function_1`包含的消息数超过其处理时间，则创建新`Functions_N`的函数应用实例。  会一直创建应用，直到 `N` 大于事件中心分区数为止。 在我们的示例中，事件中心再次对分区进行负载均衡，在本例中是在实例 `Function_0`...`Functions_9` 之间进行的。
 
-进行缩放时，`N` 实例是大于事件中心分区数的数字。 此模式用于确保在分区从其他实例中变得可用时，可以使用[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)实例获取这些分区中的锁。 只需为函数实例执行时所使用的资源付费。 换句话说，这种过度预配无需支付费用。
+当进行缩放时`N`，实例的数量大于事件中心分区的数量。 此模式用于确保[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)实例可用于获取分区上的锁，因为它们从其他实例变为可用。 你只需为执行函数实例时使用的资源付费。 换句话说，不需要为过度预配的资源付费。
 
-当所有函数执行都完成时（不管是否有错误），则会将检查点添加到关联的存储帐户。 如果检查指针成功，则永远不会再次检索1000的所有消息。
+当所有函数执行都完成时（不管是否有错误），则会将检查点添加到关联的存储帐户。 检查点设置成功后，永远不会再次检索所有 1,000 条消息。
 
 <a id="example" name="example"></a>
 
@@ -88,13 +88,13 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [C# 脚本函数](../articles/azure-functions/functions-reference-csharp.md)。 该函数记录事件中心触发器的消息正文。
 
 以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
-### <a name="version-2x-and-higher"></a>版本2.x 和更高版本
+### <a name="version-2x-and-higher"></a>版本 2.x 及更高版本
 
 ```json
 {
@@ -169,13 +169,13 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [JavaScript 函数](../articles/azure-functions/functions-reference-node.md)。 此函数将读取[事件元数据](#event-metadata)并记录消息。
 
 以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
-### <a name="version-2x-and-higher"></a>版本2.x 和更高版本
+### <a name="version-2x-and-higher"></a>版本 2.x 及更高版本
 
 ```json
 {
@@ -212,9 +212,9 @@ module.exports = function (context, myEventHubMessage) {
 };
 ```
 
-若要批量接收事件，请将 function.json 文件中的 `cardinality` 设为 `many`，如以下示例所示。
+若要批量接收事件，请将 function.json 文件中的 `cardinality` 设为 `many`**，如以下示例所示。
 
-### <a name="version-2x-and-higher"></a>版本2.x 和更高版本
+### <a name="version-2x-and-higher"></a>版本 2.x 及更高版本
 
 ```json
 {
@@ -259,7 +259,7 @@ module.exports = function (context, eventHubMessages) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)。 此函数将读取[事件元数据](#event-metadata)并记录消息。
+以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)**。 此函数将读取[事件元数据](#event-metadata)并记录消息。
 
 以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
@@ -289,7 +289,7 @@ def main(event: func.EventHubEvent):
 
 # <a name="java"></a>[Java](#tab/java)
 
-下面的示例演示了记录事件中心触发器消息正文的事件中心触发器绑定。
+下面的示例显示了一个事件中心触发器绑定，该绑定记录事件中心触发器的消息正文。
 
 ```java
 @FunctionName("ehprocessor")
@@ -307,7 +307,7 @@ public void eventHubProcessor(
 
  ---
 
-## <a name="attributes-and-annotations"></a>特性和批注
+## <a name="attributes-and-annotations"></a>特性和注释
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -325,46 +325,46 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 有关完整示例，请参阅[触发器 - C# 示例](#example)。
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-C#脚本不支持特性。
+C# 脚本不支持特性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 JavaScript 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支持特性。
+Python 不支持属性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在 Java[函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值来自事件中心的参数使用[EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger)批注。 带有这些注释的参数会导致函数在事件到达时运行。 可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
+从 Java[函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)，对值来自事件中心的参数使用[EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger)注释。 带有这些注释的参数会导致函数在事件到达时运行。 可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
 ---
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
-下表解释了在 function.json 文件和 `EventHubTrigger` 特性中设置的绑定配置属性。
+下表介绍了您在*函数.json*文件和`EventHubTrigger`属性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为 `eventHubTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|direction**** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 | 在函数代码中表示事件项的变量的名称。 |
-|**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
-|**eventHubName** |**EventHubName** | 函数1.x 和更高版本。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 可以通过应用设置% eventHubName% 引用 |
-|**consumerGroup** |**ConsumerGroup** | 一个可选属性，用于设置[使用者组](../articles/event-hubs/event-hubs-features.md#event-consumers)，该组用于订阅事件中心中的事件。 如果将其省略，则会使用 `$Default` 使用者组。 |
-|**基数** | 不适用 | 适用于 JavaScript。 设为 `many` 以启用批处理。  如果省略或设置为 `one`，则会将单个消息传递给函数。 |
-|连接 |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。|
+|**路径** |**事件中心名称** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
+|**eventHubName** |**事件中心名称** | Functions 2.x 及更高版本。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 可以通过应用设置 %eventHubName% 引用 |
+|**消费者群体** |**消费者群体** | 一个可选属性，用于设置[使用者组](../articles/event-hubs/event-hubs-features.md#event-consumers)，该组用于订阅事件中心中的事件。 如果将其省略，则会使用 `$Default` 使用者组。 |
+|**基数** | 不适用 | 适用于 JavaScript。 设为 `many` 以启用批处理。  如果省略或设为 `one`，将向函数传递一条消息。 |
+|**连接** |**连接** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) （而不是事件中心本身）**** 的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
 ## <a name="event-metadata"></a>事件元数据
 
-事件中心触发器提供了几个[元数据属性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 元数据属性可用作其他绑定中的绑定表达式的一部分，或者用作代码中的参数。 属性来自[EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata)类。
+事件中心触发器提供了几个[元数据属性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 元数据属性可用作其他绑定中的绑定表达式的一部分或代码中的参数。 属性来自[事件数据](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata)类。
 
-|properties|Type|说明|
+|properties|类型|说明|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` 实例。|
 |`EnqueuedTimeUtc`|`DateTime`|排队时间 (UTC)。|
@@ -376,7 +376,7 @@ Python 不支持特性。
 
 请参阅在本文的前面部分使用这些属性的[代码示例](#example)。
 
-## <a name="hostjson-properties"></a>host json 属性
+## <a name="hostjson-properties"></a>host.json 属性
 
 [host.json](../articles/azure-functions/functions-host-json.md#eventhub) 文件包含控制事件中心触发器行为的设置。
 

@@ -1,5 +1,5 @@
 ---
-title: ExpressRoute：路由筛选器-Microsoft 对等互连： Azure PowerShell
+title: 快速路由：路由筛选器- 微软对等互连：Azure 电源外壳
 description: 本文介绍如何使用 PowerShell 配置用于 Microsoft 对等互连的路由筛选器
 services: expressroute
 author: ganesr
@@ -9,22 +9,22 @@ ms.date: 02/25/2019
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: cade33e77eb0d3ddd818a6ce3dbd7c6cf72811d4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74037408"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>配置用于 Microsoft 对等互连的路由筛选器：PowerShell
 > [!div class="op_single_selector"]
 > * [Azure 门户](how-to-routefilter-portal.md)
-> * [Azure PowerShell](how-to-routefilter-powershell.md)
+> * [Azure 电源外壳](how-to-routefilter-powershell.md)
 > * [Azure CLI](how-to-routefilter-cli.md)
 > 
 
 路由筛选器是通过 Microsoft 对等互连使用部分受支持服务的一种方法。 本文中的步骤可帮助配置和管理 ExpressRoute 线路的路由筛选器。
 
-Office 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Business）以及 Azure 公共服务（如存储和 SQL 数据库）可通过 Microsoft 对等互连进行访问。 Azure 公共服务可按区域选择，但不能针对每个公共服务定义。
+Office 365 服务（如交换联机、SharePoint 在线和 Skype 业务）以及 Azure 公共服务（如存储和 SQL DB）可通过 Microsoft 对等互连访问。 Azure 公共服务可按区域选择，但不能针对每个公共服务定义。
 
 如果在 ExpressRoute 线路中配置了 Microsoft 对等互连并附加了路由筛选器，则会通过建立的 BGP 会话播发为这些服务选择的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
 
@@ -34,11 +34,11 @@ Office 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Busine
 
 - 定义路由筛选器，并将其应用于 ExpressRoute 线路。 路由筛选器是一种新资源，可让你选择计划通过 Microsoft 对等互连使用的服务列表。 ExpressRoute 路由器仅发送属于路由筛选器中所标识服务的前缀列表。
 
-### <a name="about"></a>关于路由筛选器
+### <a name="about-route-filters"></a><a name="about"></a>关于路由筛选器
 
-当在 ExpressRoute 线路上配置了 Microsoft 对等互连时，Microsoft 网络边缘路由器将与边缘路由器（你或连接提供商的）建立一对 BGP 会话。 不会将任何路由播发到网络。 若要能够将路由播发到网络，必须关联路由筛选器。
+在 ExpressRoute 线路上配置 Microsoft 对等互连后，Microsoft 网络边缘路由器将与边缘路由器（你的或连接提供商的）建立一对 BGP 会话。 不会将任何路由播发到网络。 若要能够将路由播发到网络，必须关联路由筛选器。
 
-使用路由筛选器可标识要通过 ExpressRoute 线路的 Microsoft 对等互连使用的服务。 它实质上是所有 BGP 团体值的允许列表。 定义路由筛选器资源并将其附加到 ExpressRoute 线路后，映射到 BGP 团体值的所有前缀均会播发到网络。
+使用路由筛选器可标识要通过 ExpressRoute 线路的 Microsoft 对等互连使用的服务。 它实质上是所有 BGP 社区值的允许列表。 定义路由筛选器资源并将其附加到 ExpressRoute 线路后，映射到 BGP 团体值的所有前缀均会播发到网络。
 
 为了能够将 Office 365 服务的路由筛选器附加到线路，必须具备通过 ExpressRoute 使用 Office 365 服务的权限。 如果未被授权通过 ExpressRoute 使用 Office 365 服务，则附加路由筛选器的操作将失败。 若要深入了解授权过程，请参阅[适用于 Office 365 的 Azure ExpressRoute](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)。
 
@@ -47,7 +47,7 @@ Office 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Busine
 > 
 > 
 
-### <a name="workflow"></a>工作流
+### <a name="workflow"></a><a name="workflow"></a>流程
 
 若要通过 Microsoft 对等互连成功连接服务，必须完成以下配置步骤：
 
@@ -68,7 +68,7 @@ Office 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Busine
 
  - 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 
- - 必须有一个活动的 ExpressRoute 线路。 在继续下一步之前，请按说明 [创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md) ，并通过连接提供商启用该线路。 ExpressRoute 线路必须处于已预配且已启用状态。
+ - 必须有一个活动的 ExpressRoute 线路。 按照说明[创建 ExpressRoute 电路](expressroute-howto-circuit-arm.md)，并在继续操作之前由连接提供商启用该电路。 ExpressRoute 线路必须处于已预配且已启用状态。
 
  - 必须有活动的 Microsoft 对等互连。 按照[创建和修改对等互连配置](expressroute-circuit-peerings.md)一文中的说明操作。
 
@@ -79,7 +79,7 @@ Office 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Busine
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-### <a name="log-in-to-your-azure-account"></a>登录到 Azure 帐户
+### <a name="log-in-to-your-azure-account"></a>登录 Azure 帐户
 
 在开始此配置之前，必须登录到 Azure 帐户。 该 cmdlet 会提示提供 Azure 帐户的登录凭据。 登录后它会下载帐户设置，供 Azure PowerShell 使用。
 
@@ -101,20 +101,20 @@ Get-AzSubscription
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="prefixes"></a>步骤 1：获取前缀和 BGP 团体值的列表
+## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>步骤 1：获取前缀和 BGP 团体值的列表
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. 获取 BGP 团体值的列表
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. 获取 BGP 社区价值观列表
 
 使用以下 cmdlet 获取与通过 Microsoft 对等互连可访问服务相关联的 BGP 团体值列表，以及与之关联的前缀列表：
 
 ```azurepowershell-interactive
 Get-AzBgpServiceCommunity
 ```
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. 创建要使用的值的列表
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. 列出要使用的值
 
 列出要在路由筛选器中使用的 BGP 团体值列表。
 
-## <a name="filter"></a>步骤 2：创建路由筛选器和筛选规则
+## <a name="step-2-create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>步骤 2：创建路由筛选器和筛选规则
 
 1 个路由筛选器只能有 1 个规则，并且规则类型必须是“允许”。 此规则可以有与之关联的 BGP 团体值列表。
 
@@ -126,7 +126,7 @@ Get-AzBgpServiceCommunity
 New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
 ```
 
-### <a name="2-create-a-filter-rule"></a>2. 创建筛选规则
+### <a name="2-create-a-filter-rule"></a>2. 创建筛选器规则
 
 可将一组 BGP 团体指定为逗号分隔列表，如示例所示。 运行以下命令来创建新规则：
  
@@ -144,7 +144,7 @@ $routefilter.Rules.Add($rule)
 Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="attach"></a>步骤 3：将路由筛选器附加到 ExpressRoute 线路
+## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>步骤 3：将路由筛选器附加到 ExpressRoute 线路
 
 运行以下命令将路由筛选器附加到 ExpressRoute 线路，假设你只有 Microsoft 对等互连：
 
@@ -154,9 +154,9 @@ $ckt.Peerings[0].RouteFilter = $routefilter
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="tasks"></a>常见任务
+## <a name="common-tasks"></a><a name="tasks"></a>常见任务
 
-### <a name="getproperties"></a>获取路由筛选器的属性
+### <a name="to-get-the-properties-of-a-route-filter"></a><a name="getproperties"></a>获取路由筛选器的属性
 
 若要获取路由筛选器的属性，请使用以下步骤：
 
@@ -172,7 +172,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    $rule = $routefilter.Rules[0]
    ```
 
-### <a name="updateproperties"></a>更新路由筛选器的属性
+### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>更新路由筛选器的属性
 
 如果路由筛选器已附加到线路，则 BGP 社区列表的更新会通过建立的 BGP 会话自动传播相应的前缀播发更改。 可使用以下命令更新路由筛选器的 BGP 团体列表：
 
@@ -182,7 +182,7 @@ $routefilter.rules[0].Communities = "12076:5030", "12076:5040"
 Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
-### <a name="detach"></a>从 ExpressRoute 线路分离路由筛选器
+### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>从 ExpressRoute 线路分离路由筛选器
 
 从 ExpressRoute 线路分离路由筛选器后，BGP 会话不会播发任何前缀。 可使用以下命令从 ExpressRoute 线路分离路由筛选器：
   
@@ -191,7 +191,7 @@ $ckt.Peerings[0].RouteFilter = $null
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="delete"></a>删除路由筛选器
+### <a name="to-delete-a-route-filter"></a><a name="delete"></a>删除路由筛选器
 
 只有在路由筛选器未附加到任何线路时，才能将其删除。 尝试删除路由筛选器之前，请确保其未附加到任何线路。 可使用以下命令删除路由筛选器：
 

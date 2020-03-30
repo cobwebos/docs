@@ -1,5 +1,5 @@
 ---
-title: 通过 PowerShell 加入 Azure 安全中心
+title: 使用 PowerShell 连接到 Azure 安全中心
 description: 本文档将指导你完成通过 PowerShell cmdlet 开始使用 Azure 安全中心的过程。
 services: security-center
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
 ms.openlocfilehash: 5aaaf539c07a7ba2c2463d5bfd1f452853f52379
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603687"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>使用 PowerShell 自动载入 Azure 安全中心
@@ -31,17 +31,17 @@ ms.locfileid: "77603687"
 
 在此示例中，通过实施安全中心的标准层，提供高级威胁防护和检测功能，我们将对 ID 为 d07c0080-170c-4c24-861d-9c817742786c 的订阅启用安全中心，并应用提供高级别保护的建议设置：
 
-1. 设置[安全中心的标准保护级别](https://azure.microsoft.com/pricing/details/security-center/)。 
+1. 设置[安全中心标准保护级别](https://azure.microsoft.com/pricing/details/security-center/)。 
  
 2. 将 Log Analytics 工作区设置为 Microsoft Monitoring Agent 将发送其在与订阅关联的 VM 上收集的数据位置，在此示例中，是现有用户定义的工作区 (myWorkspace)。
 
 3. 激活[部署 Microsoft Monitoring Agent](security-center-enable-data-collection.md#auto-provision-mma) 的安全中心的自动代理预配。
 
-5. 将组织的[安全官设置为安全中心警报和值得注意的事件的安全联系人](security-center-provide-security-contact-details.md)。
+5. 将组织的[CISO 设置为安全中心警报和显著事件的安全联系人](security-center-provide-security-contact-details.md)。
 
 6. 分配安全中心的[默认安全策略](tutorial-security-policy.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 这些步骤应在运行安全中心 cmdlet 前执行：
 
@@ -97,12 +97,12 @@ ms.locfileid: "77603687"
 
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 若要详细了解如何通过 PowerShell 来自动开始使用安全中心，请参阅以下文章：
 
 * [Az.Security](https://docs.microsoft.com/powershell/module/az.security)。
 
 若要详细了解安全中心，请参阅以下文章：
 
-* [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
-* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
+* [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)-- 了解如何为 Azure 订阅和资源组配置安全策略。
+* [管理和响应 Azure 安全中心中的安全警报](security-center-managing-and-responding-alerts.md)-- 了解如何管理和响应安全警报。
