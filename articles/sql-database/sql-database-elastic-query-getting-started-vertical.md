@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: af93035766eaf1afa12d124b8379ee55c5567260
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823796"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>跨数据库查询（纵向分区）入门（预览）
@@ -32,7 +32,7 @@ ms.locfileid: "73823796"
 
 ## <a name="create-the-sample-databases"></a>创建示例数据库
 
-首先，我们在相同或不同 SQL 数据库服务器中创建两个数据库：Customers 和 Orders。
+首先，我们在相同或不同 SQL 数据库服务器中创建两个数据库：Customers**** 和 Orders****。
 
 在 **Orders** 数据库中执行以下查询以创建 **OrderInformation** 表并输入示例数据。
 

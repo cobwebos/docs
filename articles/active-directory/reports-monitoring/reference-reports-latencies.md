@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74007706"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 报告延迟
@@ -52,7 +52,7 @@ ms.locfileid: "74007706"
 
 ## <a name="security-reports"></a>安全报表
 
-有两种类型的安全报告：
+有两种类型的安全报表：
 
 - [风险登录](concept-risky-sign-ins.md) - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 
 - [已标记为存在风险的用户](concept-user-at-risk.md) - 风险用户是指可能已泄露的用户帐户。 
@@ -68,7 +68,7 @@ ms.locfileid: "74007706"
 
 Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 每个检测到的可疑操作都存储在称为**风险检测**的记录中。
 
-下表列出了风险检测的滞后时间信息。
+下表列出了风险检测的延迟信息。
 
 | 报表 | 最小值 | 平均值 | 最大值 |
 | :-- | --- | --- | --- |
@@ -84,4 +84,4 @@ Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户�
 
 * [Azure AD 报告概述](overview-reports.md)
 * [以编程方式访问 Azure AD 报告](concept-reporting-api.md)
-* [Azure Active Directory 风险检测](concept-risk-events.md)
+* [Azure 活动目录风险检测](concept-risk-events.md)

@@ -1,6 +1,6 @@
 ---
-title: 自助注册电子邮件验证的用户-Azure AD |Microsoft Docs
-description: 在 Azure Active Directory （Azure AD）租户中使用自助服务注册
+title: 电子邮件验证用户的自助服务注册 - Azure AD |微软文档
+description: 在 Azure 活动目录 （Azure AD） 租户中使用自助服务注册
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,10 +16,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 953837e22cdd3ba8a54d702eac61461739db82d2
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74027637"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>什么是 Azure Active Directory 的自助注册？
@@ -33,8 +33,8 @@ ms.locfileid: "74027637"
 * 通过自助服务创建的 Azure AD 目录可转变为托管目录，以供其他服务使用
 
 ## <a name="terms-and-definitions"></a>术语和定义
-* **自助注册**：用户注册云服务并基于其电子邮件域在 Azure AD 中自动为其创建标识的方法是使用此方法。
-* 非托管 Azure AD 目录：在其中创建标识的目录。 非托管目录是没有全局管理员的目录。
+* **自助服务注册**：这是用户注册云服务的方法，并根据其电子邮件域在 Azure AD 中自动为其创建标识。
+* 非托管 Azure AD 目录：在其中创建标识的目录****。 非托管目录是没有全局管理员的目录。
 * **电子邮件验证的用户**：Azure AD 中的一种用户帐户类型。 在注册自助服务产品后自动创建标识的用户称为电子邮件验证的用户。 电子邮件验证的用户是目录的常规成员，带有 creationmethod=EmailVerified 标记。
 
 ## <a name="how-do-i-control-self-service-settings"></a>如何控制自助服务设置？
@@ -47,17 +47,17 @@ ms.locfileid: "74027637"
 管理员可以使用以下 Azure AD cmdlet Set-MsolCompanySettings 参数配置这些功能：
 
 * **AllowEmailVerifiedUsers** 控制用户是否可以创建或加入目录。 如果将该参数设置为 $false，则电子邮件验证的用户不可以加入目录。
-* **AllowAdHocSubscriptions** 控制用户执行自助注册的能力。 如果将该参数设置为 $false，则任何用户都无法执行自助注册。
+* **允许AdHoc订阅**控制用户执行自助服务注册的能力。 如果将该参数设置为 $false，则任何用户都无法执行自助注册。
   
 AllowEmailVerifiedUsers 和 AllowAdHocSubscriptions 是可应用于托管或非托管目录的目录范围的设置。 此处有一个示例，其中：
 
 * 你管理具有已验证域（例如 contoso.com）的目录
-* 使用其他目录中的 B2B 协作邀请 contoso.com 的主目录中尚不存在的用户（userdoesnotexist@contoso.com）
+* 您可以使用来自不同目录中的 B2B 协作来邀请contoso.com主目录中不存在的用户 （userdoesnotexist@contoso.com）
 * 主目录已开启 AllowEmailVerifiedUsers
 
 如果满足上述条件，那么将在主目录中创建成员用户，并在邀请目录中创建 B2B 来宾用户。
 
-流和 PowerApps 试用版登录不受**AllowAdHocSubscriptions**设置控制。 有关详细信息，请参阅以下文章：
+流和 PowerApps 试用注册不受 **"允许AdHoc订阅"** 设置的控制。 有关详细信息，请参阅以下文章：
 
 * [如何禁止现有用户开始使用 Power BI？](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
 * [组织中 Flow 问答](https://docs.microsoft.com/flow/organization-q-and-a)
@@ -79,7 +79,7 @@ AllowEmailVerifiedUsers 和 AllowAdHocSubscriptions 是可应用于托管或非�
 
 * [向 Azure AD 添加自定义域名](../fundamentals/add-custom-domain.md)
 * [如何安装和配置 Azure PowerShell](/powershell/azure/overview)
-* [Azure PowerShell](/powershell/azure/overview)
+* [Azure 电源外壳](/powershell/azure/overview)
 * [Azure Cmdlet 参考](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 * [关闭非托管目录中的工作或学校帐户](users-close-account.md)

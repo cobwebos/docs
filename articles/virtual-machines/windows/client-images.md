@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 812e6d251943d4418666f221ad8b5d2b6e501736
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74039503"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 客户端实现开发/测试方案
@@ -26,8 +26,8 @@ ms.locfileid: "74039503"
 ![Azure 门户中的映像详细信息](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> 有关 Azure 库中的 Windows 10 专业版和 Windows 10 专业版 N 映像，请参阅[如何使用多租户托管权限在 Azure 上部署 Windows 10](windows-desktop-multitenant-hosting-deployment.md)
->![Azure 门户中的专业版映像详细信息](./media/client-images/windows-client-pro-images.png) 
+> 有关 Azure 库中的 Windows 10 专业版和 Windows 10 专业版 N 映像，请参阅[如何在 Azure 上部署 Windows 10，以及](windows-desktop-multitenant-hosting-deployment.md)
+>![Azure 门户中的多租户托管权限专业映像详细信息](./media/client-images/windows-client-pro-images.png) 
 >
 
 ## <a name="subscription-eligibility"></a>订阅条件
@@ -52,11 +52,11 @@ ms.locfileid: "74039503"
 ## <a name="check-your-azure-subscription"></a>检查 Azure 订阅
 如果不知道自己的产品 ID，可以使用以下两种方式之一通过 Azure 门户获取：  
 
-- 在“订阅”窗口上：
+- 在“订阅”** 窗口上：
 
   ![Azure 门户中的产品 ID 详细信息](./media/client-images/offer-id-azure-portal.png) 
 
-- 或者，单击“计费”，并单击订阅 ID。 产品 ID 会显示在“计费”窗口中。
+- 或者，单击“计费”****，并单击订阅 ID。 产品 ID 会显示在“计费”** 窗口中。
 
 也可以从 Azure 帐户门户的 [订阅](https://account.windowsazure.com/Subscriptions) 选项卡查看产品 ID：
 

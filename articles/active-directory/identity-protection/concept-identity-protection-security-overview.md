@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Identity Protection 安全性概述
-description: 了解安全概述如何使你了解组织的安全状况。
+title: Azure 活动目录标识保护安全概述
+description: 了解"安全概述"如何让您深入了解组织的安全状况。
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74382187"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory 标识保护 - 安全概览
 
-Azure 门户中的[安全性概述](https://aka.ms/IdentityProtectionRefresh)使你能够深入了解你的组织的安全状况。 它有助于发现潜在攻击，并了解策略有效性。
+Azure 门户中[的安全概述](https://aka.ms/IdentityProtectionRefresh)让您深入了解组织的安全状况。 它有助于发现潜在攻击，并了解策略有效性。
 
 “安全概览”大致分为以下两部分：
 
@@ -52,7 +52,7 @@ Azure 门户中的[安全性概述](https://aka.ms/IdentityProtectionRefresh)使
 
 ### <a name="unprotected-risky-sign-ins"></a>未保护的有风险登录
 
-"未受保护的有风险的登录" 磁贴显示最后一周的成功、实时风险登录的计数，这些问题不受条件访问策略、Identity Protection 风险策略或每用户 MFA 的阻止或 MFA 质询。 这些是成功但没有接受 MFA 质询的潜在遭入侵登录。 为了今后保护此类登录，请应用登录风险策略。 单击“未保护的有风险登录”磁贴会重定向到“登录风险策略配置”边栏选项卡，在其中可以将登录风险策略配置为，必须对指定风险级别的登录进行 MFA。
+"未受保护的风险登录"磁贴显示上周成功的实时风险登录计数，这些登录未被条件访问策略、身份保护风险策略或每个用户 MFA 阻止或 MFA 提出质疑。 这些是成功但没有接受 MFA 质询的潜在遭入侵登录。 为了今后保护此类登录，请应用登录风险策略。 单击“未保护的有风险登录”磁贴会重定向到“登录风险策略配置”边栏选项卡，在其中可以将登录风险策略配置为，必须对指定风险级别的登录进行 MFA。
 
 ### <a name="legacy-authentication"></a>旧式身份验证
 
@@ -60,7 +60,7 @@ Azure 门户中的[安全性概述](https://aka.ms/IdentityProtectionRefresh)使
 
 ### <a name="identity-secure-score"></a>标识安全评分
 
-“标识安全功能分数”衡量并比较你的安全状态与行业模式。 如果单击 "标识安全分数（预览版）" 磁贴，它会重定向到 "标识安全分数" 边栏选项卡，可以在其中了解有关改善安全状况的详细信息。
+“标识安全功能分数”衡量并比较你的安全状态与行业模式。 如果您单击"身份安全分数（预览）"磁贴，它将重定向到"身份安全分数"边栏选项卡，您可以在其中了解有关改善安全状态的更多信息。
 
 ## <a name="next-steps"></a>后续步骤
 

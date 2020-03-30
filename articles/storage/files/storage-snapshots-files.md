@@ -8,10 +8,10 @@ ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c05b79d2f1da8076b507ca9ee7a06504de21d5ea
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72333183"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 文件的共享快照概述 
@@ -37,7 +37,7 @@ Azure 文件提供了获取文件共享的共享快照的功能。 共享快照�
 
 共享快照功能是在文件共享级别提供的。 检索是在单个文件级别提供的，可用于还原单个文件。 可以使用 SMB、REST API、门户、客户端库或 PowerShell/CLI 工具还原整个文件共享。
 
-文件共享的共享快照与其基本文件共享相同。 唯一的差别在于，共享 URI 的后面追加了一个 **DateTime** 值，用于指示共享快照的创建时间。 例如，如果文件共享 URI 为 http://storagesample.core.file.windows.net/myshare ，则共享快照 URI 将类似于：
+文件共享的共享快照与其基本文件共享相同。 唯一的差别在于，共享 URI 的后面追加了一个 **DateTime** 值，用于指示共享快照的创建时间。 例如，如果文件共享 URI 为 http://storagesample.core.file.windows.net/myshare，则共享快照 URI 将类似于：
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -57,7 +57,7 @@ http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.
 
 快照不计入 5-TB 共享限制。 共享快照占用的总空间没有限制。 存储帐户限制仍然适用。
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>限制
 Azure 文件目前允许的共享快照的上限是 200 个。 在 200 个共享快照之后，必须删除旧的共享快照，以便创建新的共享快照。 
 
 对创建共享快照的同时调用没有限制。 特定文件共享所能占用的共享快照空间没有限制。 
@@ -71,7 +71,7 @@ Azure 文件目前允许的共享快照的上限是 200 个。 在 200 个共享
 
 复制后共享快照保持不变，但基本文件共享将被共享快照中可用的数据副本覆盖。 所有还原后的文件会计入“已更改内容”。
 
-可以将共享快照中的文件复制到另一个具有不同名称的目标。 生成的目标文件是可写文件，而不是共享快照。 在这种情况下，基本文件共享将保持不变。
+可将共享快照中的文件复制到具有不同名称的不同目标。 生成的目标文件是可写文件，而不是共享快照。 在这种情况下，基本文件共享将保持不变。
 
 使用副本覆盖目标文件时，与原始目标文件关联的所有共享快照均将保持不变。
 
@@ -84,7 +84,7 @@ Azure 文件目前允许的共享快照的上限是 200 个。 在 200 个共享
 
 ## <a name="next-steps"></a>后续步骤
 - 在以下环境中使用共享快照：
-    - [PowerShell](storage-how-to-use-files-powershell.md)
-    - [CLI](storage-how-to-use-files-cli.md)
+    - [电源外壳](storage-how-to-use-files-powershell.md)
+    - [Cli](storage-how-to-use-files-cli.md)
     - [Windows](storage-how-to-use-files-windows.md#accessing-share-snapshots-from-windows)
     - [共享快照常见问题解答](storage-files-faq.md#share-snapshots)

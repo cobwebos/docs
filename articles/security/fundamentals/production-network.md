@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 7c0748e4ff1531649274834cb1e602c228f102e8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726691"
 ---
 # <a name="the-azure-production-network"></a>Azure 生产网络
@@ -55,16 +55,16 @@ Azure 在各个级别实现可靠的软件安全性和防火墙功能来强制�
 ### <a name="azure-security-features"></a>Azure 安全功能
 Azure 在生产网络内实现基于主机的软件防火墙。 核心 Azure 环境中包含多种核心安全性和防火墙功能。 这些安全功能反映了 Azure 环境中的深层防御策略。 Azure 中的客户数据受以下防火墙的保护：
 
-**虚拟机监控程序防火墙（数据包筛选器）** ：在虚拟机监控程序中实现此防火墙并由结构控制器 (FC) 代理配置。 此防火墙可保护在 VM 内运行的租户免受未经授权的访问。 默认情况下，创建 VM 时，将阻止所有流量，然后 FC 代理在筛选器中添加规则和例外，以允许获得授权的流量。
+**虚拟机监控程序防火墙（数据包筛选器）**：在虚拟机监控程序中实现此防火墙并由结构控制器 (FC) 代理配置。 此防火墙可保护在 VM 内运行的租户免受未经授权的访问。 默认情况下，创建 VM 时，将阻止所有流量，然后 FC 代理在筛选器中添加规则和例外，以允许获得授权的流量。
 
 此处对两类规则进行了编程：
 
-- **计算机配置或基础结构规则**：默认情况下，将阻止所有通信。 但也存在例外情况，可允许 VM 发送和接收动态主机配置协议 (DHCP) 通信和 DNS 信息，并将流量发送到“公共”Internet 并出站到 FC 群集与 OS 激活服务器内的其他 VM。 由于 VM 允许的传出目标列表不包括 Azure 路由器子网和其他 Microsoft 属性，因此这些规则将充当它们的一道防御层。
+- **机器配置或基础结构规则**：默认情况下，所有通信都被阻止。 但也存在例外情况，可允许 VM 发送和接收动态主机配置协议 (DHCP) 通信和 DNS 信息，并将流量发送到“公共”Internet 并出站到 FC 群集与 OS 激活服务器内的其他 VM。 由于 VM 允许的传出目标列表不包括 Azure 路由器子网和其他 Microsoft 属性，因此这些规则将充当它们的一道防御层。
 - **角色配置文件规则**：根据租户的服务模型定义入站 ACL。 例如，如果某个租户在某个特定 VM 的端口 80 上有一个 Web 前端，则会向所有 IP 地址开放端口 80。 如果 VM 上正在运行某个辅助角色，则只向同一租户中的 VM 开放该辅助角色。
 
 **本机主机防火墙**：Azure Service Fabric 和 Azure 存储在本机 OS 上运行，其中没有虚拟机监控程序，因此会使用上述两组规则配置 Windows 防火墙。
 
-**主机防火墙**：主机防火墙保护运行虚拟机监控程序的主机分区。 可以通过编程方式对规则进行设置，只允许 FC 和跳转盒在特定端口上与主机分区通信。 其他例外包括允许 DHCP 响应和 DNS 回复。 Azure 使用计算机配置文件，其中包括主机分区的防火墙规则模板。 还有一种主机防火墙例外情况，可允许 VM 通过特定协议/端口与主机组件、网络服务器和元数据服务器进行通信。
+**主机防火墙**：主机防火墙保护运行虚拟机管理程序的主机分区。 可以通过编程方式对规则进行设置，只允许 FC 和跳转盒在特定端口上与主机分区通信。 其他例外包括允许 DHCP 响应和 DNS 回复。 Azure 使用计算机配置文件，其中包括主机分区的防火墙规则模板。 还有一种主机防火墙例外情况，可允许 VM 通过特定协议/端口与主机组件、网络服务器和元数据服务器进行通信。
 
 **来宾防火墙**：来宾 OS 的 Windows 防火墙部分，可由客户在客户 VM 和存储中配置。
 
@@ -86,7 +86,7 @@ Azure 在生产网络内实现基于主机的软件防火墙。 核心 Azure 环
 - [Azure 信息系统的组件和边界](infrastructure-components.md)
 - [Azure 网络体系结构](infrastructure-network.md)
 - [Azure SQL 数据库安全功能](infrastructure-sql.md)
-- [Azure 生产运营和管理](infrastructure-operations.md)
+- [Azure 生产操作和管理](infrastructure-operations.md)
 - [Azure 基础结构监视](infrastructure-monitoring.md)
 - [Azure 基础结构完整性](infrastructure-integrity.md)
 - [Azure 客户数据保护](protection-customer-data.md)

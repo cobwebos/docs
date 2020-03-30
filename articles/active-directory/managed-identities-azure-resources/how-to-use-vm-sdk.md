@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Sdk 通过 Azure VM 使用托管标识-Azure AD
+title: 在 Azure VM 上使用 Azure SDK 上的托管标识 - Azure AD
 description: 将 Azure SDK 与具有 Azure 资源的托管标识的 Azure VM 配合使用的代码示例。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 422b4c63a86904721fc6910193ffa63a8fe46f0a
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74184155"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>如何在 Azure VM 上将 Azure 资源的托管标识与 Azure SDK 配合使用 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/24/2019
 ms.author: allensu
 ms.openlocfilehash: 5fd68f4559420ca688b3f4d6f6d66ee52db5191e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74225445"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-azure-powershell"></a>使用 Azure PowerShell 在标准负载均衡器中配置负载均衡和出站规则
@@ -39,13 +39,13 @@ Connect-AzAccount
 
 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) 创建资源组。 Azure 资源组是在其中部署 Azure 资源的逻辑容器。 然后可从该组管理资源。
 
-以下示例在“eastus2”位置创建名为“myresourcegroupoutbound”的资源组：
+以下示例在“eastus2”** 位置创建名为“myresourcegroupoutbound”的资源组**：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myresourcegroupoutbound -Location eastus
 ```
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
-创建名为 *myvnetoutbound* 的虚拟网络。 将其子网命名为 *mysubnetoutbound*。 使用 *New-AzVirtualNetwork* 和 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=azps-2.6.0) 将此网络放入 [myresourcegroupoutbound](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=azps-2.6.0)。
+创建名为 *myvnetoutbound* 的虚拟网络。 将其子网命名为 *mysubnetoutbound*。 使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=azps-2.6.0) 和 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=azps-2.6.0) 将此网络放入 *myresourcegroupoutbound*。
 
 ```azurepowershell-interactive
 $subnet = New-AzVirtualNetworkSubnetConfig -Name mysubnetoutbound -AddressPrefix "192.168.0.0/24"
@@ -122,7 +122,7 @@ $probe = New-AzLoadBalancerProbeConfig -Name http -Protocol "http" -Port 80 -Int
 
 负载均衡器规则定义传入流量的前端 IP 配置，以及用于接收流量的后端池。 它还定义所需的源端口和目标端口。 
 
-使用 *New-AzLoadBalancerRuleConfig* 创建名为 [myinboundlbrule](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig?view=azps-2.6.0) 的负载均衡器规则。 此规则侦听前端池 *myfrontendinbound* 中的端口 80。 它还使用端口 80 将负载均衡的网络流量发送到后端地址池 *bepoolinbound*。 
+使用 [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig?view=azps-2.6.0) 创建名为 *myinboundlbrule* 的负载均衡器规则。 此规则侦听前端池 *myfrontendinbound* 中的端口 80。 它还使用端口 80 将负载均衡的网络流量发送到后端地址池 *bepoolinbound*。 
 
 ```azurepowershell-interactive
 $inboundRule = New-AzLoadBalancerRuleConfig -Name inboundlbrule -FrontendIPConfiguration $frontendIPin -BackendAddressPool $bepoolin -Probe $probe -Protocol "Tcp" -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP -DisableOutboundSNAT
@@ -144,7 +144,7 @@ $inboundRule = New-AzLoadBalancerRuleConfig -Name inboundlbrule -FrontendIPConfi
 
 ### <a name="create-a-load-balancer"></a>创建负载均衡器
 
-使用以下 [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer?view=azps-2.6.0) 命令为入站 IP 地址创建负载均衡器。 将负载均衡器的名称命名为*lb*。它应包括入站前端 IP 配置。 应将其后端池 *bepoolinbound* 关联到在上一步骤中创建的公共 IP 地址 *mypublicipinbound*。
+使用以下 [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer?view=azps-2.6.0) 命令为入站 IP 地址创建负载均衡器。 命名负载均衡器*磅*。它应包括入站前端 IP 配置。 应将其后端池 *bepoolinbound* 关联到在上一步骤中创建的公共 IP 地址 *mypublicipinbound*。
 
 ```azurepowershell-interactive
 New-AzLoadBalancer -Name lb -Sku Standard -ResourceGroupName myresourcegroupoutbound -Location eastus -FrontendIpConfiguration $frontendIPin,$frontendIPout -BackendAddressPool $bepoolin,$bepoolout -Probe $probe -LoadBalancingRule $inboundrule -OutboundRule $outboundrule 
@@ -161,6 +161,6 @@ New-AzLoadBalancer -Name lb -Sku Standard -ResourceGroupName myresourcegroupoutb
 ```
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何创建标准负载均衡器、配置入站和出站负载平衡器流量规则，并为后端池中的 Vm 配置了运行状况探测。 
+在本文中，您创建了一个标准负载均衡器，配置了入站和出站负载平衡器流量规则，并为后端池中的 VM 配置了运行状况探测。 
 
-若要了解详细信息，请继续阅读[有关 Azure 负载均衡器的教程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)。
+要了解更多信息，请继续访问[Azure 负载均衡器](tutorial-load-balancer-standard-public-zone-redundant-portal.md)的教程。

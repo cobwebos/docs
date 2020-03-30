@@ -15,10 +15,10 @@ ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 15696469ca3861586617e9f418f8a55a7ea90467
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034795"
 ---
 # <a name="create-a-snapshot"></a>创建快照 
@@ -41,7 +41,7 @@ osDiskId=$(az vm show \
    -o tsv)
 ```
 
-使用 *az snapshot create* 创建名为 [osDisk-backup](/cli/azure/snapshot#az-snapshot-create) 的快照。
+使用 [az snapshot create](/cli/azure/snapshot#az-snapshot-create) 创建名为 *osDisk-backup* 的快照。
 
 ```azurecli-interactive
 az snapshot create \
@@ -63,14 +63,14 @@ az snapshot list \
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 首先在左上角单击“创建资源”并搜索“快照”。 从搜索结果中选择“快照”。
-3. 在“快照”边栏选项卡中，单击“创建”。
-4. 输入快照的“名称”。
+1. 登录到 Azure[门户](https://portal.azure.com)。
+2. 首先在左上角单击“创建资源”**** 并搜索“快照”****。 从搜索结果中选择“快照”****。
+3. 在**快照**边栏选项卡中，单击"**创建**"。
+4. 输入快照的“名称”****。
 5. 选择现有的资源组，或键入新资源组的名称。 
-7. 对于**源磁盘**，选择要获取其快照的托管磁盘。
-8. 选择用于存储快照的“帐户类型”。 使用 **Standard HDD**，除非需要将其存储在高性能 SSD 上。
-9. 单击“**创建**”。
+7. 对于**源磁盘**，选择要快照的托管磁盘。
+8. 选择用于存储快照的“帐户类型”****。 使用 **Standard HDD**，除非需要将其存储在高性能 SSD 上。
+9. 单击 **“创建”**。
 
 
 ## <a name="next-steps"></a>后续步骤

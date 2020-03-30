@@ -8,26 +8,26 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74069630"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight 支持的高可用性服务
 
- 为了向你提供分析组件的最佳可用性级别，HDInsight 是使用独特的体系结构开发的，目的是确保关键服务的高可用性（HA）。 此体系结构的某些组件是由 Microsoft 开发的，用于提供自动故障转移。 其他组件是为了支持特定服务而部署的标准 Apache 组件。 本文介绍了 HDInsight 中 HA 服务模型的体系结构，HDInsight 如何支持 HA 服务的故障转移，以及如何从其他服务中断中恢复。
+ 为了给分析组件提供最佳的可用性级别，我们使用独特的体系结构开发了 HDInsight，以确保关键服务的高可用性 (HA)。 此体系结构的某些组件由 Microsoft 开发，旨在提供自动故障转移。 其他组件是为了支持特定的服务而部署的标准 Apache 组件。 本文介绍 HDInsight 中 HA 服务模型的体系结构，HDInsight 如何支持 HA 服务的故障转移，以及在其他服务发生中断后如何进行恢复。
 
 ## <a name="high-availability-infrastructure"></a>高可用性基础结构
 
-HDInsight 提供自定义的基础结构，以确保四项主要服务具有自动故障转移功能的高可用性：
+HDInsight 提供自定义的基础结构，以确保四个主要服务具有高可用性和自动故障转移功能：
 
 - Apache Ambari 服务器
 - 适用于 Apache YARN 的应用程序时间线服务器
-- Hadoop MapReduce 的作业历史记录服务器
+- 适用于 Hadoop MapReduce 的作业历史记录服务器
 - Apache Livy
 
-此基础结构由许多服务和软件组件组成，其中一些组件由 Microsoft 设计。 以下组件对于 HDInsight 平台是唯一的：
+此基础结构由许多服务和软件组件构成，其中的一些组件由 Microsoft 设计。 下面是 HDInsight 平台中特有的组件：
 
 - 从属故障转移控制器
 - 主故障转移控制器
@@ -36,100 +36,100 @@ HDInsight 提供自定义的基础结构，以确保四项主要服务具有自�
 
 ![高可用性基础结构](./media/hdinsight-high-availability-components/high-availability-architecture.png)
 
-另外还有其他高可用性服务，即开源 Apache 可靠性组件所支持的服务。 这些组件还存在于 HDInsight 群集上：
+此外，还有开源 Apache 可靠性组件支持的其他一些高可用性服务。 HDInsight 群集中还包含以下组件：
 
-- Hadoop 文件系统（HDFS） NameNode
+- Hadoop 文件系统 (HDFS) NameNode
 - YARN ResourceManager
 - HBase Master
 
-以下部分将提供有关这些服务如何协同工作的详细信息。
+以下部分将详细介绍这些服务如何协同工作。
 
 ## <a name="hdinsight-high-availability-services"></a>HDInsight 高可用性服务
 
-Microsoft 为 HDInsight 群集中下表中的四个 Apache 服务提供支持。 为了将它们与 Apache 中组件支持的高可用性服务区分开来，它们被称为*HDINSIGHT HA 服务*。
+Microsoft 为下表中所述的 HDInsight 群集中的四个 Apache 服务提供支持。 为了将这些服务与 Apache 组件支持的高可用性服务区分开来，下表中将它们称作“HDInsight HA 服务”。**
 
 | 服务 | 群集节点 | 群集类型 | 目的 |
 |---|---|---|---|
 | Apache Ambari 服务器| 活动头节点 | All | 监视和管理群集。|
-| 适用于 Apache YARN 的应用程序时间线服务器 | 活动头节点 | 除 Kafka 之外的所有 | 维护有关在群集上运行的 YARN 作业的调试信息。|
-| Hadoop MapReduce 的作业历史记录服务器 | 活动头节点 | 除 Kafka 之外的所有 | 维护 MapReduce 作业的调试数据。|
-| Apache Livy | 活动头节点 | Spark | 允许通过 REST 接口与 Spark 群集轻松交互 |
+| 适用于 Apache YARN 的应用程序时间线服务器 | 活动头节点 | 除 Kafka 以外的所有服务 | 维护有关群集上运行的 YARN 作业的调试信息。|
+| 适用于 Hadoop MapReduce 的作业历史记录服务器 | 活动头节点 | 除 Kafka 以外的所有服务 | 维护 MapReduce 作业的调试数据。|
+| Apache Livy | 活动头节点 | Spark | 用于通过 REST 接口轻松与 Spark 群集交互 |
 
 >[!Note]
-> HDInsight 企业安全性套餐（ESP）群集目前仅提供 Ambari 服务器高可用性。
+> HDInsight 企业安全包 （ESP） 群集目前仅提供 Ambari 服务器高可用性。
 
 ### <a name="architecture"></a>体系结构
 
-每个 HDInsight 群集分别有两个处于活动状态和备用模式下的头节点。 HDInsight HA 服务仅在头节点上运行。 这些服务应始终在活动头节点上运行，并在备用头节点上停止并置于维护模式。
+每个 HDInsight 群集有两个头节点，这些节点分别处于活动状态和待机模式。 HDInsight HA 服务仅在头节点上运行。 这些服务应始终在活动头节点上运行，在待机头节点上应将其停止并置于维护模式。
 
-为了保持有效的 HA 服务状态并提供快速故障转移，HDInsight 利用了 Apache ZooKeeper，这是分布式应用程序的协调服务，用于执行活动的头节点选举。 HDInsight 还预配了几个后台 Java 进程，用于协调 HDInsight HA 服务的故障转移过程。 这些服务如下所示：主故障转移控制器、从属故障转移控制器、*主-ha 服务*和*从属 ha 服务*。
+为了保持 HA 服务的正常状态并提供快速故障转移，HDInsight 利用 Apache ZooKeeper（分布式应用程序的协调服务）来执行活动头节点的选举。 HDInsight 还会预配几个后台 Java 进程，用于协调 HDInsight HA 服务的故障转移过程。 这些服务包括：主故障转移控制器、从属故障转移控制器、*master-ha-service* 和 *slave-ha-service*。
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 
-Apache ZooKeeper 是适用于分布式应用程序的高性能协调服务。 在生产环境中，ZooKeeper 通常在复制模式下运行，其中 ZooKeeper 服务器的复制组构成仲裁。 每个 HDInsight 群集都有三个 ZooKeeper 节点，它们允许三台 ZooKeeper 服务器形成仲裁。 HDInsight 有两个相互并行运行的 ZooKeeper 仲裁。 一个仲裁决定了 HDInsight HA 服务应在其上运行的群集中的活动头节点。 使用另一个仲裁来协调 Apache 提供的 HA 服务，如后面的部分中所述。
+Apache ZooKeeper 是分布式应用程序的高性能协调服务。 在生产环境中，ZooKeeper 通常在复制模式下运行，其中的 ZooKeeper 服务器复制组构成了仲裁。 每个 HDInsight 群集包含三个 ZooKeeper 节点，这些节点允许三个 ZooKeeper 服务器构成仲裁。 HDInsight 的两个 ZooKeeper 仲裁以相互并行的方式运行。 其中一个仲裁确定了群集中应运行 HDInsight HA 服务的活动头节点。 另一个仲裁用于协调 Apache 提供的 HA 服务，后续部分将会详述。
 
 ### <a name="slave-failover-controller"></a>从属故障转移控制器
 
-从属故障转移控制器在 HDInsight 群集中的每个节点上运行。 此控制器负责在每个节点上启动 Ambari 代理和*从属 ha 服务*。 它会定期查询有关活动头节点的第一个 ZooKeeper 仲裁。 当活动和备用头节点发生变化时，从属故障转移控制器会执行以下操作：
+从属故障转移控制器在 HDInsight 群集中的每个节点上运行。 此控制器负责在每个节点上启动 Ambari 代理和 *slave-ha-service*。 它定期在第一个 ZooKeeper 仲裁中查询有关活动头节点的信息。 当活动和待机头节点发生变化时，从属故障转移控制器将执行以下操作：
 
 1. 更新主机配置文件。
-1. 重新启动 Ambari 代理。
+1. 重启 Ambari 代理。
 
-*从属 ha-服务*负责停止备用头节点上的 HDInsight ha 服务（Ambari 服务器除外）。
+*slave-ha-service* 负责停止待机头节点上的 HDInsight HA 服务（Ambari 服务器除外）。
 
 ### <a name="master-failover-controller"></a>主故障转移控制器
 
-主故障转移控制器在这两个头节点上运行。 这两个主故障转移控制器都与第一个 ZooKeeper 仲裁通信，以将它们正在运行的头节点表示为活动头节点。
+主故障转移控制器在两个头节点上运行。 这两个主故障转移控制器与第一个 ZooKeeper 仲裁通信，以将它们运行所在的头节点指定为活动头节点。
 
-例如，如果头节点0上的主故障转移控制器入选选举，则会发生以下更改：
+例如，如果头节点 0 上的主故障转移控制器赢得选举，则会发生以下更改：
 
-1. 头节点0变为活动状态。
-1. 主故障转移控制器在头节点0上启动 Ambari server 和*master-ha 服务*。
-1. 其他主故障转移控制器在头节点1上停止 Ambari 服务器和*主-ha 服务*。
+1. 头节点 0 变为活动头节点。
+1. 主故障转移控制器在头节点 0 上启动 Ambari 服务器和 *master-ha-service*。
+1. 另一个主故障转移控制器在头节点 1 上停止 Ambari 服务器和 *master-ha-service*。
 
-Master-ha 服务仅在活动头节点上运行，它会停止备用头节点上的 HDInsight HA 服务（Ambari 服务器除外），并在活动头节点上启动它们。
+master-ha-service 仅在活动头节点上运行，它会停止待机头节点上的 HDInsight HA 服务（Ambari 服务器除外），并在活动头节点上启动这些服务。
 
 ### <a name="the-failover-process"></a>故障转移过程
 
 ![故障转移过程](./media/hdinsight-high-availability-components/failover-steps.png)
 
-运行状况监视器在每个头节点上运行，并将检测信号通知发送到 Zookeeper 仲裁。 在此方案中，头节点被视为 HA 服务。 运行状况监视器会检查每个高可用性服务是否正常运行，以及是否已准备好加入领导选举。 如果是，则此头节点将在选举中竞争。 如果不是，则会退出选举，直到它再次就绪。
+运行状况监视器在每个头节点上连同主故障转移控制器一起运行，将检测信号通知发送到 Zookeeper 仲裁。 在此方案中，头节点被视为 HA 服务。 运行状况监视器检查每个高可用性服务是否正常，以及该服务是否已准备好参与领导选举。 如果是，则此头节点将参与竞选。 否则，它将退出选举，直到再次准备就绪。
 
-如果备用头节点实现了领导，并且变为活动状态（例如，在以前的活动节点出现故障的情况下），则其主故障转移控制器将在其上启动所有 HDInsight HA 服务。 主故障转移控制器还将在其他头节点上停止这些服务。
+如果待机头节点赢得领导选举并变为活动头节点（例如，在前一个活动节点发生故障时），则其主故障转移控制器将启动其上的所有 HDInsight HA 服务。 主故障转移控制器还会停止另一头节点上的这些服务。
 
-对于 HDInsight HA 服务故障（如服务关闭或运行不正常），主故障转移控制器应根据头节点状态自动重新启动或停止服务。 用户不应在这两个头节点上手动启动 HDInsight HA 服务。 相反，允许自动或手动故障转移来帮助服务恢复。
+HDInsight HA 服务发生故障（例如，服务关闭或不正常）时，主故障转移控制器应根据头节点的状态自动重启或停止服务。 用户不应在这两个头节点上手动启动 HDInsight HA 服务， 而应通过自动或手动故障转移来帮助恢复服务。
 
-### <a name="inadvertent-manual-intervention"></a>意外手动干预
+### <a name="inadvertent-manual-intervention"></a>意外的手动干预
 
-HDInsight HA 服务应仅在活动头节点上运行，并在必要时自动重新启动。 由于单个 HA 服务没有自己的运行状况监视器，因此无法在单个服务级别触发故障转移。 在节点级别（而不是服务级别）确保故障转移。
+HDInsight HA 服务只应在活动头节点上运行，并在必要时自动重启。 由于单个 HA 服务没有自身的运行状况监视器，因此无法在单个服务的级别触发故障转移。 可以确保故障转移在节点级别发生，但不能确保在服务级别发生。
 
-### <a name="some-known-issues"></a>一些已知问题
+### <a name="some-known-issues"></a>某些已知问题
 
-- 在备用头节点上手动启动 HA 服务时，它不会停止，直到下一次故障转移。 当 HA 服务同时在这两个头节点上运行时，一些潜在问题包括： Ambari UI 不可访问、Ambari 引发错误、YARN、Spark 和 Oozie 作业可能会停滞。
+- 在待机节点上手动启动某个 HA 服务时，在发生下一次故障转移之前该服务不会停止。 当两个头节点上运行 HA 服务时，一些潜在问题包括：Ambari UI 无法访问，Ambari 引发错误，YARN、Spark 和 Oozie 作业可能会卡住。
 
-- 当活动头节点上的 HA 服务停止时，它不会重新启动，直到下一次故障转移或主故障转移控制器/主-HA 服务重新启动。 当活动头节点上的一个或多个 HA 服务停止时，尤其是当 Ambari 服务器停止时，Ambari UI 不可访问，其他潜在问题包括 YARN、Spark 和 Oozie 作业故障。
+- 当活动头节点上的某个 HA 服务停止时，在发生下一次故障转移或者主故障转移控制器/master-ha-service 重启之前，该服务不会重启。 当活动头节点上的一个或多个 HA 服务停止时（尤其是当 Ambari 服务器停止时），Ambari UI 将不可访问，其他潜在问题包括 YARN、Spark 和 Oozie 作业失败。
 
 ## <a name="apache-high-availability-services"></a>Apache 高可用性服务
 
-Apache 为 HDFS NameNode、YARN ResourceManager 和 HBase Master 提供高可用性，这些功能在 HDInsight 群集中也可用。 与 HDInsight HA 服务不同，它们在 ESP 群集中受支持。 Apache HA 服务与第二个 ZooKeeper 仲裁（如上一节所述）进行通信，以选择活动/待机状态并执行自动故障转移。 以下部分详细说明了这些服务的工作原理。
+Apache 为 HDFS NameNode、YARN ResourceManager 和 HBase Master（在 HDInsight 群集中也可用）提供高可用性。 与 HDInsight HA 服务不同，这些组件在 ESP 群集中受支持。 Apache HA 服务与第二个 ZooKeeper 仲裁通信（如上一部分所述），以选择活动/待机状态并执行自动故障转移。 以下部分将详细说明这些服务的工作原理。
 
-### <a name="hadoop-distributed-file-system-hdfs-namenode"></a>Hadoop 分布式文件系统（HDFS） NameNode
+### <a name="hadoop-distributed-file-system-hdfs-namenode"></a>Hadoop 分布式文件系统 (HDFS) NameNode
 
-基于 Apache Hadoop 2.0 或更高版本的 HDInsight 群集提供 NameNode 高可用性。 头节点上运行了两个 Namenode，它们配置为自动故障转移。 Namenode 使用*ZKFailoverController*与 Zookeeper 进行通信，以选择活动/备用状态。 *ZKFailoverController*在这两个头节点上运行，其工作方式与上述主故障转移控制器相同。
+基于 Apache Hadoop 2.0 或更高版本的 HDInsight 群集提供 NameNode 高可用性。 有两个为自动故障转移配置的 NameNode 在头节点上运行。 这些 NameNode 使用 *ZKFailoverController* 来与 Zookeeper 通信，以选择活动/待机状态。 *ZKFailoverController* 在两个头节点上运行，其工作方式与上述主故障转移控制器相同。
 
-第二个 Zookeeper 仲裁独立于第一个仲裁，因此活动 NameNode 不能在活动头节点上运行。 当活动 NameNode 处于不正常状态或不正常时，备用 NameNode 将入选选举并变成活动状态。
+第二个 Zookeeper 仲裁独立于第一个仲裁，因此活动 NameNode 不能在活动头节点上运行。 当活动 NameNode 处于死机或不正常状态时，待机 NameNode 将赢得选举并变为活动头节点。
 
 ### <a name="yarn-resourcemanager"></a>YARN ResourceManager
 
-基于 Apache Hadoop 2.4 或更高版本的 HDInsight 群集支持 YARN ResourceManager 高可用性。 在头节点0和头节点1上分别运行了两个 ResourceManagers： rm1 和 rm2。 与 NameNode 一样，YARN ResourceManager 还配置为自动故障转移。 当当前的活动 ResourceManager 关闭或不响应时，会自动选择另一个 ResourceManager 处于活动状态。
+基于 Apache Hadoop 2.4 或更高版本的 HDInsight 群集支持 YARN ResourceManager 高可用性。 有两个 ResourceManager（rm1 和 rm2）分别在头节点 0 和头节点 1 上运行。 与 NameNode 一样，YARN ResourceManager 也是为自动故障转移配置的。 如果当前活动 ResourceManager 关闭或无响应，将自动选择另一个 ResourceManager 作为活动头节点。
 
-YARN ResourceManager 使用其嵌入的*ActiveStandbyElector*作为故障检测器和领导者 elector。 与 HDFS NameNode 不同，YARN ResourceManager 不需要单独的 ZKFC 守护程序。 活动 ResourceManager 将其状态写入 Apache Zookeeper。
+YARN ResourceManager 使用其嵌入式 *ActiveStandbyElector* 作为故障检测器和领导选举器。 与 HDFS NameNode 不同，YARN ResourceManager 不需要独立的 ZKFC 守护程序。 活动的 ResourceManager 将其状态写入 Apache Zookeeper。
 
-YARN ResourceManager 的高可用性与 NameNode 和其他 HDInsight HA 服务无关。 活动 ResourceManager 可能不会在活动 NameNode 正在运行的活动头节点或头节点上运行。 有关 YARN ResourceManager 高可用性的详细信息，请参阅[Resourcemanager 高可用性](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/ResourceManagerHA.html)。
+YARN ResourceManager 的高可用性独立于 NameNode 和其他 HDInsight HA 服务。 活动的 ResourceManager 不可以在头节点上运行，也不可以在正在运行活动 NameNode 的头节点上运行。 有关 YARN ResourceManager 高可用性的详细信息，请参阅 [ResourceManager 高可用性](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/ResourceManagerHA.html)。
 
 ### <a name="hbase-master"></a>HBase Master
 
-HDInsight HBase 群集支持 HBase Master 高可用性。 与在头节点上运行的其他 HA 服务不同，HBase 主机在三个 Zookeeper 节点上运行，其中一个节点是活动的主节点，另两个节点是备用的。 与 NameNode 一样，HBase Master 与 Apache Zookeeper 进行领导选举，并在当前活动的主节点出现问题时进行自动故障转移。 在任何时候都只有一个活动 HBase Master。
+HDInsight HBase 群集支持 HBase Master 高可用性。 与头节点上运行的其他 HA 服务不同，HBase 主机在三个 Zookeeper 节点上运行，其中一个节点是活动主节点，另外两个节点是待机节点。 与 NameNode 一样，HBase Master 将与 Apache Zookeeper 协调以进行领导选举，并在当前活动主节点出现问题时执行自动故障转移。 无论何时，都只有一个活动的 HBase Master。
 
 ## <a name="next-steps"></a>后续步骤
 

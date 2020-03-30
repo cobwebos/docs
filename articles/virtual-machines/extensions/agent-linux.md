@@ -16,10 +16,10 @@ ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073852"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
@@ -42,7 +42,7 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
   * 资源磁盘管理
   * 格式化并安装资源磁盘
   * 配置交换空间
-* **网络**
+* **网络连接**
   
   * 管理路由以提高与平台 DHCP 服务器的兼容性
   * 确保网络接口名称的稳定性
@@ -60,19 +60,19 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
 * **VM 扩展**
   
   * 将 Microsoft 和合作伙伴授权的组件注入 Linux VM (IaaS)，以便实现软件和配置的自动化
-  * [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions) 上的 VM 扩展参考实现
+  * VM 扩展引用实现[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>通信
 从平台到代理的信息流通过两个通道进行：
 
-* 用于 IaaS 部署的附加了启动时间的 DVD。 此 DVD 包含一个与 OVF 兼容的配置文件，该文件包括除实际的 SSH 密钥对之外的所有预配信息。
+* 用于 IaaS 部署的附加了启动时间的 DVD。 此 DVD 包含一个与 OVF 兼容的配置文件，该文件包括除 SSH 密钥对之外的所有配置信息。
 * 用于获取部署和拓扑配置的一个公开 REST API 的 TCP 终结点。
 
 ## <a name="requirements"></a>要求
-以下系统已经过测试并确认兼容 Azure Linux 代理：
+下列系统已经过测试并确认兼容 Azure Linux 代理：
 
 > [!NOTE]
-> 此列表可能不同于 Microsoft Azure 平台所支持系统的官方列表，如以下文章所述：[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> 此列表可能与 Microsoft Azure 平台上受支持系统的官方列表不同，如下所示：[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -85,11 +85,11 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
 * SLES 11 SP3+
 * Oracle Linux 6.4+
 
-其他受支持的系统：
+其他支持的系统：
 
 * FreeBSD 10+（Azure Linux 代理 v2.0.10+）
 
-正常运行 Linux 代理所依赖的一些系统包：
+Linux 代理的正常运行依赖一些系统程序包：
 
 * Python 2.6+
 * OpenSSL 1.0+
@@ -121,7 +121,7 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
   * 将主机名重置为 localhost.localdomain
 
 > [!WARNING]
-> 取消预配无法保证清除映像中的所有敏感信息且适用于分发版。
+> 取消预配无法保证清除映像中的所有敏感信息且适用于重新分发。
 > 
 > 
 
@@ -131,7 +131,7 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
 * daemon：将 waagent 作为 daemon 运行以管理与平台的交互。 在 waagent init 脚本中为 waagent 指定此参数。
 * 开始：将 waagent 作为后台进程运行
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 配置文件 (/etc/waagent.conf) 可控制 waagent 的操作。 下面显示了示例配置文件：
 
     ```
@@ -160,14 +160,14 @@ Microsoft Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，�
     AutoUpdate.Enabled=y
     ```
 
-下面描述了各种配置选项。 配置选项分为三种类型：布尔值、字符串或整数。 布尔值配置选项可指定为“y”或“n”。 特殊关键字“无”可用于某些字符串类型配置条目，详细信息如下所示：
+下面描述了各种配置选项。 配置选项分为三种类型：布尔值、字符串或整数。 布尔配置选项可指定为“y”或“n”。 特殊关键字“无”可用于某些字符串类型配置条目，详细信息如下所示：
 
 **Provisioning.Enabled：**  
 ```
 Type: Boolean  
 Default: y
 ```
-这允许用户在代理中启用或禁用预配功能。 有效值为“y”或“n”。 如果禁用预配，则会保留映像中的 SSH 主机和用户密钥，并忽略 Azure 预配 API 中指定的所有配置。
+这允许用户在代理中启用或禁用设置功能。 有效值为“y”或“n”。 如果禁用设置，则会保留映像中的 SSH 主机和用户密钥，并忽略 Azure 设置 API 中指定的所有配置。
 
 > [!NOTE]
 > `Provisioning.Enabled` 参数在使用 cloud-init 进行预配的 Ubuntu 云映像上默认为“n”。
@@ -179,7 +179,7 @@ Default: y
 Type: Boolean  
 Default: n
 ```
-如果设置此参数，则会在预配过程中清除 /etc/shadow 文件中的根密码。
+如果设置此参数，则会在设置过程中清除 /etc/shadow 文件中的根密码。
 
 **Provisioning.RegenerateSshHostKeyPair：**  
 ```
@@ -188,7 +188,7 @@ Default: y
 ```
 如果设置此参数，则会在预配过程中从 /etc/ssh/ 中删除所有 SSH 主机密钥对（ecdsa、dsa 和 rsa）。 并且会生成一个全新的密钥对。
 
-此全新密钥对的加密类型可通过 Provisioning.SshHostKeyPairType 项进行配置。 重启 SSH 守护程序时（例如，重启时），某些分发将为任何缺失的加密类型重新创建 SSH 密钥对。
+此全新密钥对的加密类型可由 Provisioning.SshHostKeyPairType 项进行配置。 重启 SSH 守护程序时（例如，重启时），某些分发将为任何缺失的加密类型重新创建 SSH 密钥对。
 
 **Provisioning.SshHostKeyPairType：**  
 ```
@@ -243,26 +243,26 @@ Default: 10
 ```
 生成密码哈希时使用的随机 salt 长度。
 
-**ResourceDisk.Format：**  
+**资源磁盘格式：**  
 ```
 Type: Boolean  
 Default: y
 ```
 如果设置此参数，则当“ResourceDisk.Filesystem”中用户请求的 filesystem 类型是“ntfs”之外的任何值时，平台提供的资源磁盘通过 waagent 进行格式化和安装。 在磁盘上提供类型 Linux (83) 的单个分区。 如果可以成功安装此分区，不会对其进行格式化。
 
-**ResourceDisk.Filesystem：**  
+**资源磁盘.文件系统：**  
 ```
 Type: String  
 Default: ext4
 ```
-这会指定资源磁盘的 filesystem 类型。 受支持的值因 Linux 分发而异。 如果字符串为 X，则 mkfs.X 应呈现在 Linux 映像上。 SLES 11 映像通常应使用“ext3”。 FreeBSD 映像在此处应使用“ufs2”。
+这会指定资源磁盘的 filesystem 类型。 支持的值随 Linux 分发的不同而不同。 如果字符串为 X，则 mkfs.X 应呈现在 Linux 映像上。 SLES 11 映像通常应使用“ext3”。 FreeBSD 映像在此处应使用“ufs2”。
 
 **ResourceDisk.MountPoint：**  
 ```
 Type: String  
 Default: /mnt/resource 
 ```
-这会指定资源磁盘的安装路径。 资源磁盘是临时磁盘，可能在取消预配 VM 时被清空。
+这会指定资源磁盘的安装路径。 资源磁盘是临时** 磁盘，可能在取消预配 VM 时被清空。
 
 **ResourceDisk.MountOptions**  
 ```
@@ -283,7 +283,7 @@ Default: n
 Type: Integer  
 Default: 0
 ```
-交换文件的大小（以兆字节为单位）。
+交换文件的大小，以兆字节为单位。
 
 **Logs.Verbose：**  
 ```
@@ -337,12 +337,12 @@ Ubuntu 云映像利用 [cloud-init](https://launchpad.net/ubuntu/+source/cloud-i
   
   * **ResourceDisk.Format**
   * **ResourceDisk.Filesystem**
-  * **ResourceDisk.MountPoint**
-  * **ResourceDisk.EnableSwap**
-  * **ResourceDisk.SwapSizeMB**
+  * **资源磁盘.安装点**
+  * **资源磁盘.启用交换**
+  * **资源磁盘.交换大小MB**
 
 * 有关详细信息，请参阅以下资源来配置资源磁盘装入点，并在预配期间交换 Ubuntu 云映像上的空间：
   
   * [Ubuntu Wiki：配置交换分区](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [将自定义数据注入到 Azure 虚拟机中](../windows/classic/inject-custom-data.md)
+  * [将自定义数据注入 Azure 虚拟机](../windows/classic/inject-custom-data.md)
 

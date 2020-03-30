@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68965286"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple 设备的技术规格和符合性
@@ -39,12 +39,12 @@ EBOD 机箱使用 580 W PCM，而主机箱使用 764 W PCM。 下表列出了与
 | --- | --- | --- |
 | 最大输出功率 |580 W |764 |
 | 频率 |50/60 Hz |50/60 Hz |
-| 电压范围选择 |自动范围:90– 264 V AC, 47/63 Hz |自动范围:90-264 V AC、47/63 Hz |
+| 电压范围选择 |自动范围：90 – 264 V 交流，47/63 Hz |自动范围：90 – 264 V 交流，47/63 Hz |
 | 最大浪涌电流 |20 A |20 A |
 | 功率因数校正 |>95% 标称输入电压 |>95% 标称输入电压 |
 | 谐波 |符合 EN61000-3-2 |符合 EN61000-3-2 |
-| Output |5V 备用电压 \@ 2.0 A |5V 备用电压 \@ 2.7 A |
-| \+ 5V \@ 42 A |+5V \@ 40 A | |
+| 输出 |5V 备用电压 \@ 2.0 A |5V 备用电压 \@ 2.7 A |
+| + 5V \@ 42 A |+5V \@ 40 A | |
 | +12V \@ 38 A |+12V \@ 38 A | |
 | 可热插拔 |是 |是 |
 | 开关和 LED |交流 ON/OFF 开关和四个状态指示器 LED |交流 ON/OFF 开关和六个状态指示器 LED |
@@ -83,7 +83,7 @@ StorSimple 设备 8100 和 8600 都是硬盘驱动器和固态硬盘的混合。
 | 总可用容量* |~ 15 TB |~ 38 TB |
 | 最大解决方案容量（包括云） |200 TB |500 TB |
 
-<sup>* </sup>- *总可用容量包括数据、元数据和缓冲区的可用容量。可以在 8100 设备上预配高达 8.5 TB 的本地固定卷，或者在更大的 8600 设备上预配高达 22.5 TB 的本地固定卷。有关详细信息，请转到 [StorSimple 本地固定卷](storsimple-8000-local-volume-faq.md)。*
+<sup>* </sup>- *总可用容量包括可用于数据、元数据和缓冲区的容量。您可以在 8100 设备上预配本地固定卷，最多为 8100 TB，在较大的 8600 设备上预配高达 22.5 TB 的卷。有关详细信息，请访问[StorSimple 本地固定卷](storsimple-8000-local-volume-faq.md)。*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>机箱尺寸和重量规格
 
@@ -151,8 +151,8 @@ Microsoft Azure StorSimple 设备符合以下国际标准：
 
 Microsoft Azure StorSimple 设备满足以下安全评级要求：
 
-* 系统产品类型批准:UL、cUL、CE
-* 安全符合性:UL 60950、IEC 60950、EN 60950
+* 系统产品类型审批：UL、cUL、CE
+* 安全符合性：UL 60950、IEC 60950、EN 60950
 
 ## <a name="emc-compliance"></a>EMC 符合性
 
@@ -162,8 +162,8 @@ Microsoft Azure StorSimple 设备满足以下 EMC 评级要求。
 
 该设备符合 EMC 标准的传导和辐射发射水平。
 
-* 已执行发射限制级别:CFR 47 Part 15B Class A EN55022 A 类 a CISPR A 类 a
-* 辐射发射限制级别:CFR 47 Part 15B Class A EN55022 A 类 a CISPR A 类 a
+* 传导发射限值：CFR 47 第 15B 部分 A 类 EN55022 A 类 CISPR A类
+* 辐射发射限值：CFR 47 第 15B 部分 A 类 EN55022 A 类 CISPR A类
 
 ### <a name="harmonics-and-flicker"></a>谐波和闪烁
 
@@ -175,7 +175,7 @@ Microsoft Azure StorSimple 设备满足以下 EMC 评级要求。
 
 ## <a name="ac-power-cord-compliance"></a>交流电源线符合性
 
-插头和完整电源线组装人员必须满足使用设备的国家/地区的标准, 并且必须具有该国家/地区可接受的安全审批。 下表列出了美国和欧洲的标准。
+插头和完整的电源线组件必须符合适用于设备使用的国家/地区的标准，并且必须具有该国家/地区可接受的安全批准。 下表列出了美国和欧洲的标准。
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>交流电源线 - 美国（必须在 NRTL 登记）
 
@@ -190,7 +190,7 @@ Microsoft Azure StorSimple 设备满足以下 EMC 评级要求。
 | 组件 | 规格 |
 | --- | --- |
 | 电源线类型 |谐振线，H05-VVF-3G1.0 |
-| 套接字 |IEC 320 C-13，250 V，10 A |
+| 插座 |IEC 320 C-13，250 V，10 A |
 
 ## <a name="supported-network-cables"></a>支持的网络电缆
 

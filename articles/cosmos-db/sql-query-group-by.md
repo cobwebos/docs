@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: tisande
 ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73819109"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 GROUP BY 子句
@@ -18,8 +18,8 @@ ms.locfileid: "73819109"
 GROUP BY 子句按照一个或多个指定属性的值来拆分查询的结果。
 
 > [!NOTE]
-> Azure Cosmos DB 当前在 .NET SDK 3.3 及更高版本以及 JavaScript SDK 3.4 及更高版本中支持 GROUP BY。
-> 对其他语言 SDK 的支持目前不可用，但已计划。
+> Azure Cosmos DB 当前在 .NET SDK 3.3 及更高版本和 JavaScript SDK 3.4 及更高版本中支持 GROUP BY。
+> 对其他语言 SDK 的支持目前尚未提供，但已计划提供。
 
 ## <a name="syntax"></a>语法
 
@@ -31,7 +31,7 @@ GROUP BY 子句按照一个或多个指定属性的值来拆分查询的结果�
         | <scalar_expression_list>, <scalar_expression>
 ```  
 
-## <a name="arguments"></a>参数
+## <a name="arguments"></a>自变量
 
 - `<scalar_expression_list>`
 
@@ -156,7 +156,7 @@ FROM Food f
 GROUP BY ARRAY_CONTAINS(f.tags, {name: 'orange'}), f.version BETWEEN 0 AND 2
 ```
 
-其结果是：
+结果有：
 
 ```json
 [{
@@ -173,6 +173,6 @@ GROUP BY ARRAY_CONTAINS(f.tags, {name: 'orange'}), f.version BETWEEN 0 AND 2
 
 ## <a name="next-steps"></a>后续步骤
 
-- [入门](sql-query-getting-started.md)
-- [SELECT 子句](sql-query-select.md)
+- [开始](sql-query-getting-started.md)
+- [选择子句](sql-query-select.md)
 - [聚合函数](sql-query-aggregates.md)

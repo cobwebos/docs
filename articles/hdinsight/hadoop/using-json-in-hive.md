@@ -1,6 +1,6 @@
 ---
-title: 分析 Apache Hive & 进程 JSON-Azure HDInsight
-description: 了解如何使用 JSON 文档，以及如何使用 Azure HDInsight 中的 Apache Hive 分析它们。
+title: 使用 Apache 蜂巢分析&进程 JSON - Azure HDInsight
+description: 了解如何在 Azure HDInsight 中使用 Apache Hive 使用 JSON 文档并对其进行分析。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 1c519533625835677ddae0a274c9ce9f10edc6dd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73097999"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Hive 分析和处理 JSON 文档
@@ -82,7 +82,7 @@ SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 SELECT * FROM StudentsOneLine
 ```
 
-原始 JSON 文件位于 `wasb://processjson@hditutorialdata.blob.core.windows.net/`。 **StudentsRaw** Hive 表指向未平展的原始 JSON 文档。
+原始 JSON 文件位于 `wasb://processjson@hditutorialdata.blob.core.windows.net/`。 **学生原始**Hive 表指向未拼合的原始 JSON 文档。
 
 **StudentsOneLine** Hive 表将数据存储在 HDInsight 默认文件系统中的 **/json/students/** 路径下。
 
@@ -92,7 +92,7 @@ SELECT * FROM StudentsOneLine
 
 下面是 **SELECT** 语句的输出：
 
-![HDInsight 平展 JSON 文档](./media/using-json-in-hive/hdinsight-flatten-json.png)
+![HDInsight 拼平 JSON 文档](./media/using-json-in-hive/hdinsight-flatten-json.png)
 
 ## <a name="analyze-json-documents-in-hive"></a>在 Hive 中分析 JSON 文档
 
@@ -118,14 +118,14 @@ FROM StudentsOneLine;
 
 这是在控制台窗口中运行此查询时的输出：
 
-![Apache Hive 获取 json 对象 UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
+![阿帕奇·希奇获取json对象UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
 get_json_object UDF 有限制：
 
 * 由于查询中的每个字段都需要重新分析查询，因此会影响性能。
-* **GET\_JSON_OBJECT()** 返回数组的字符串表示形式。 要将此数组转换为 Hive 数组，必须使用正则表达式来替换方括号“[”和“]”，然后调用拆分来获取数组。
+* **GET\_JSON_OBJECT（）** 返回数组的字符串表示形式。 要将此数组转换为 Hive 数组，必须使用正则表达式来替换方括号“[”和“]”，然后调用拆分来获取数组。
 
-这就是 Hive wiki 建议使用**json_tuple**的原因。  
+这就是为什么Hive wiki建议你使用**json_tuple。**  
 
 ### <a name="use-the-json_tuple-udf"></a>使用 json_tuple UDF
 
@@ -140,17 +140,17 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 此脚本在 Hive 控制台中的输出：
 
-![Apache Hive json 查询结果](./media/using-json-in-hive/hdinsight-json-tuple.png)
+![阿帕奇·希夫·杰森查询结果](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-json_tuple UDF 在 Hive 中使用了[横向视图](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView)语法，使 json\_tuple 能够通过将 UDT 函数应用于原始表的每一行来创建虚拟表。 由于重复使用**横向视图**，复杂的 JSON 会变得过于庞大。 此外， **JSON_TUPLE**无法处理嵌套的 json。
+json_tuple UDF 在 Hive 中使用了[横向视图](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView)语法，使 json\_tuple 能够通过将 UDT 函数应用于原始表的每一行来创建虚拟表。 由于重复使用**横向视图**，复杂的 JSON 会变得过于庞大。 此外 **，JSON_TUPLE**无法处理嵌套的 JSON。
 
 ### <a name="use-a-custom-serde"></a>使用自定义 SerDe
 
 SerDe 是用于分析嵌套 JSON 文档的最佳选择。 使用它可以定义 JSON 架构，然后使用该架构来分析文档。 有关说明，请参阅[如何将自定义 JSON SerDe 与 Microsoft Azure HDInsight 配合使用](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
-总之，在 Hive 中选择的 JSON 运算符类型取决于方案。 如果你有一个简单的 JSON 文档，并且只有一个要查找的字段，则可以选择使用 Hive UDF **get_json_object**。 如果你有多个要查找的键，则可以使用**json_tuple**。 如果有嵌套的文档，则应使用**JSON SerDe**。
+总之，在 Hive 中选择的 JSON 运算符类型取决于方案。 如果您有一个简单的 JSON 文档，并且只有一个字段需要查找，则可以选择使用 Hive UDF **get_json_object**。 如果您有多个键要查找，则可以使用**json_tuple**。 如果您有嵌套文档，则应使用**JSON SerDe**。
 
 ## <a name="next-steps"></a>后续步骤
 

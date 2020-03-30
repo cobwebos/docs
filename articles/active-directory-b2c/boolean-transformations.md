@@ -1,28 +1,28 @@
 ---
-title: 自定义策略的布尔声明转换示例
+title: 自定义策略的布尔型声明转换示例
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C 的标识体验框架（IEF）架构的布尔声明转换示例。
+description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的布尔型声明转换示例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/03/2020
+ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e470ea65085bf71f0052567d5bf367661852d1cb
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: ea3b273070702144d5296d07cb8712da044819a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268021"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471959"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文提供了有关在 Azure Active Directory B2C （Azure AD B2C）中使用标识体验框架架构的布尔声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
+本文提供了在 Azure Active Directory B2C (Azure AD B2C) 中使用 Identity Experience Framework 架构的布尔型声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="andclaims"></a>AndClaims
 
@@ -34,7 +34,7 @@ ms.locfileid: "78268021"
 | InputClaim | inputClaim2  | boolean | 第二个要评估的 ClaimType。 |
 |OutputClaim | outputClaim | boolean | 调用此声明转换后将生成的 ClaimTypes（true 或 false）。 |
 
-以下声明转换演示如何执行两个布尔型 ClaimTypes 的 And 运算：`isEmailNotExist` 和 `isSocialAccount`。 如果这两个输入声明的值为 `presentEmailSelfAsserted`，则输出声明 `true` 设置为 `true`。 在业务流程步骤中，只有在社交帐户电子邮件为空的情况下，才可以使用前置条件来预设自断言页。
+以下声明转换演示如何执行两个布尔型 ClaimTypes 的 And 运算：`isEmailNotExist` 和 `isSocialAccount`。 如果这两个输入声明的值为 `true`，则输出声明 `presentEmailSelfAsserted` 设置为 `true`。 在业务流程步骤中，只有在社交帐户电子邮件为空的情况下，才可以使用前置条件来预设自断言页。
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
@@ -66,7 +66,7 @@ ms.locfileid: "78268021"
 | inputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
 
-AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationBooleanValueIsNotEqual 自断言技术配置文件元数据控制向用户显示的技术配置文件。
+AssertBooleanClaimIsEqualToValue**** 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationBooleanValueIsNotEqual**** 自断言技术配置文件元数据控制向用户显示的技术配置文件。 错误消息可以[本地化](localization-string-ids.md#claims-transformations-error-messages)。
 
 ![AssertStringClaimsAreEqual 执行](./media/boolean-transformations/assert-execution.png)
 
@@ -94,7 +94,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 </TechnicalProfile>
 ```
 
-自断言技术配置文件调用验证 login-NonInteractive 技术配置文件。
+自断言技术配置文件调用验证 login-NonInteractive**** 技术配置文件。
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -114,18 +114,18 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
     - **valueToCompareTo**: true
 - 结果：引发错误
 
-## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
+## <a name="comparebooleanclaimtovalue"></a>比较布尔索赔值
 
-检查声明的布尔值是否等于 `true` 或 `false`，并返回压缩的结果。
+检查声明的布尔值等于`true`或`false`，并返回压缩的结果。
 
 | Item | TransformationClaimType  | 数据类型  | 说明 |
 | ---- | ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
-| OutputClaim | compareResult | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+| OutputClaim | 比较结果 | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
 
-以下声明转换演示如何检查带 `true` 值的布尔型 ClaimType 的值。 如果 `IsAgeOver21Years` ClaimType 的值等于 `true`，则声明转换返回 `true`，否则 `false`。
+以下声明转换演示如何检查带 `true` 值的布尔型 ClaimType 的值。 如果`IsAgeOver21Years`声明类型的值等于`true`，则声明转换将返回，否则`true``false`将返回 。
 
 ```XML
 <ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
@@ -148,7 +148,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 - 输入参数：
     - **valueToCompareTo**: true
 - 输出声明：
-    - **compareResult**： false
+    - **比较结果**： 假
 
 
 

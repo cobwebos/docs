@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 782240c51833fc841af9f4260860db4c03897c03
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71086452"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>在 Azure VM 来宾 OS 中启用或禁用防火墙规则
@@ -97,7 +97,7 @@ ms.locfileid: "71086452"
 
 如果 VM 处于联机状态且可以在同一虚拟网络中的另一个 VM 上对其进行访问，则可以在另一个 VM 上使用[远程注册表](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在故障排除 VM 上启动注册表编辑器 (regedit.exe)，然后选择“文件” > “连接网络注册表”。
+1.  在故障排除 VM 上，启动注册表编辑器 （regedit.exe），然后选择**文件** > **连接网络注册表**。
 
 2.  打开 *TARGET MACHINE*\SYSTEM 分支，然后指定以下值：
 
@@ -129,20 +129,20 @@ ms.locfileid: "71086452"
 
 2.  开始与恢复 VM 建立远程桌面连接。
 
-3.  确保磁盘在磁盘管理控制台中标记为“联机”。 请注意分配给附加的系统磁盘的驱动器号。
+3.  确保磁盘在磁盘管理控制台中标记为“联机”。**** 请注意分配给附加的系统磁盘的驱动器号。
 
 4.  在进行任何更改之前，请创建 \windows\system32\config 文件夹的副本，以防需要回退更改。
 
 5.  在故障排除 VM 上，启动注册表编辑器 (regedit.exe)。
 
-6.  突出显示 **HKEY_LOCAL_MACHINE** 项，然后从菜单中选择“文件” > “加载配置单元”。
+6.  突出显示 **HKEY_LOCAL_MACHINE** 项，然后从菜单中选择“文件” > “加载配置单元”。********
 
     ![Regedit](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
 7.  找到并打开 \windows\system32\config\SYSTEM 文件。 
 
     > [!Note]
-    > 系统会提示输入名称。 输入 **BROKENSYSTEM**，然后展开 **HKEY_LOCAL_MACHINE**。 现在会看到一个名为 " **BROKENSYSTEM**" 的附加密钥。 为了进行故障排除，我们将这些有问题的配置单元装载为 **BROKENSYSTEM**。
+    > 系统会提示输入名称。 输入 **BROKENSYSTEM**，然后展开 **HKEY_LOCAL_MACHINE**。 现在您将看到一个名为 **"BROKENSYSTEM"** 的附加密钥。 为了进行故障排除，我们将这些有问题的配置单元装载为 **BROKENSYSTEM**。
 
 8.  对 BROKENSYSTEM 分支进行以下更改：
 
@@ -164,7 +164,7 @@ ms.locfileid: "71086452"
         
         **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
 
-9.  突出显示 BROKENSYSTEM，然后选择菜单中的“文件” > “卸载配置单元”。
+9.  突出显示 BROKENSYSTEM，然后选择菜单中的“文件” > “卸载配置单元”************。
 
 10. [拆离系统磁盘并重新创建 VM](troubleshoot-recovery-disks-portal-windows.md)。
 

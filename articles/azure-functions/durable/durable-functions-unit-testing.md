@@ -4,18 +4,18 @@ description: 了解如何进行 Durable Functions 单元测试。
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74231229"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions 单元测试
 
-单元测试是现代软件开发实践中的重要组成部分。 单元测试可验证业务逻辑行为，防止将来引入无法察觉的中断性变更。 Durable Functions 的复杂性很容易增大，因此，引入单元测试有助于避免中断性变更。 以下各节说明如何单元测试三个函数类型-业务流程客户端、业务流程协调程序和活动函数。
+单元测试是现代软件开发实践中的重要组成部分。 单元测试可验证业务逻辑行为，防止将来引入无法察觉的中断性变更。 Durable Functions 的复杂性很容易增大，因此，引入单元测试有助于避免中断性变更。 以下部分介绍如何对三种函数类型执行单元测试 - 业务流程客户端、业务流程协调程序和活动函数。
 
 > [!NOTE]
-> 本文提供针对 Durable Functions 1.x Durable Functions 应用的单元测试的指南。 尚未对其进行更新，以考虑 Durable Functions 1.x 中引入的更改。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+> 本文提供了针对 Durable Functions 1.x 的 Durable Functions 应用的单元测试指南。 它尚未更新，以考虑到 Durable Functions 2.x 中引入的更改。 有关不同版本之间的差异的详细信息，请参阅[持久函数版本](durable-functions-versions.md)一文。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,7 +31,7 @@ ms.locfileid: "74231229"
 
 ## <a name="base-classes-for-mocking"></a>用于模拟的基类
 
-在 Durable Functions 1.x 中，通过三个抽象类支持模拟：
+通过 Durable Functions 1.x 中的三个抽象类来支持模拟：
 
 * `DurableOrchestrationClientBase`
 
@@ -39,9 +39,9 @@ ms.locfileid: "74231229"
 
 * `DurableActivityContextBase`
 
-这些类是用于定义业务流程客户端、Orchestrator 和活动方法的 `DurableOrchestrationClient`、`DurableOrchestrationContext`和 `DurableActivityContext` 的基类。 模拟将会设置基类方法的预期行为，使单元测试能够验证业务逻辑。 可以通过一个两步工作流对业务流程客户端和业务流程协调程序中的业务逻辑进行单元测试：
+这些类是定义业务流程客户端、业务流程协调程序和活动方法的 `DurableOrchestrationClient`、`DurableOrchestrationContext` 和 `DurableActivityContext` 的基类。 模拟将会设置基类方法的预期行为，使单元测试能够验证业务逻辑。 可以通过一个两步工作流对业务流程客户端和业务流程协调程序中的业务逻辑进行单元测试：
 
-1. 在定义业务流程客户端和业务流程协调程序函数签名时，使用基类而不是具体的实现。
+1. 定义业务流程客户端和业务流程协调程序函数签名时，使用基类而不是具体的实现。
 2. 在单元测试中模拟基类的行为，并验证业务逻辑。
 
 在以下段落中，可以找到有关对使用业务流程客户端绑定和业务流程协调程序触发器绑定的函数进行测试的更多详细信息。
@@ -52,9 +52,9 @@ ms.locfileid: "74231229"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-单元测试任务是验证响应有效负载中提供的 `Retry-After` 标头的值。 因此单元测试将模拟某些 `DurableOrchestrationClientBase` 方法，以确保行为可预测。
+单元测试任务是验证响应有效负载中提供的 `Retry-After` 标头的值。 因此，单元测试将模拟某些 `DurableOrchestrationClientBase` 方法，以确保行为可预测。
 
-首先，需要将基类模拟 `DurableOrchestrationClientBase`。 模拟可以是实现 `DurableOrchestrationClientBase`的新类。 但是，使用 [moq](https://github.com/moq/moq4) 之类的模拟框架可以简化过程：
+首先，需要模拟基类 `DurableOrchestrationClientBase`。 该模拟可以是实现 `DurableOrchestrationClientBase` 的新类。 但是，使用 [moq](https://github.com/moq/moq4) 之类的模拟框架可以简化过程：
 
 ```csharp
     // Mock DurableOrchestrationClientBase

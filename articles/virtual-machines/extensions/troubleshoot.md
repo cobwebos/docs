@@ -1,5 +1,5 @@
 ---
-title: Windows VM 扩展故障排除
+title: 解决 Windows VM 扩展故障
 description: 了解如何进行 Azure Windows VM 扩展故障排除
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
 ms.openlocfilehash: bc99a9c9e9ff985730ec97dbacd1d7c1de06a45e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073655"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 扩展故障排除
@@ -27,7 +27,7 @@ ms.locfileid: "74073655"
 ## <a name="viewing-extension-status"></a>查看扩展状态
 可以从 Azure PowerShell 执行 Azure 资源管理器模板。 一旦执行该模板，就可以从 Azure 资源浏览器或命令行工具查看扩展状态。
 
-下面是一个示例：
+以下是示例：
 
 Azure PowerShell：
 
@@ -66,5 +66,5 @@ Azure PowerShell：
 #### <a name="remove-the-extension-from-azure-powershell"></a>从 Azure PowerShell 删除扩展
     Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
-删除该扩展后，可以重新执行模板以在 VM 上运行脚本。
+删除该扩展后，可以重新执行模板在 VM 上运行脚本。
 

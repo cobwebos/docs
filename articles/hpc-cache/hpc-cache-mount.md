@@ -7,35 +7,35 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: d906ed9a1a55e936c6374806a9037085c47e3b01
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73582215"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>装载 Azure HPC 缓存
 
-创建缓存后，NFS 客户端可以使用简单的装载命令来访问它。
+创建缓存后，NFS 客户端可以使用简单的装载命令访问它。
 
-Mount 命令由两个元素组成：
+装载命令由两个元素组成：
 
-* 缓存的装入地址之一（列在 "缓存概述" 页上）
+* 缓存的装载地址之一（列在缓存概述页上）
 * 创建存储目标时设置的虚拟命名空间路径
 
-![Azure HPC 缓存实例的 "概述" 页的屏幕截图，右下方的 "装入地址" 列表周围有一个突出显示框](media/hpc-cache-mount-addresses.png)
+![Azure HPC 缓存实例的"概述"页面的屏幕截图，右下角的装载地址列表周围有一个突出显示框](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
-> 缓存装入地址对应于缓存的子网中的网络接口。 在资源组中，这些 Nic 的名称以 `-cluster-nic-` 和数字结尾。 请勿更改或删除这些接口，否则缓存将不可用。
+> 缓存装载地址对应于缓存子网中的网络接口。 在资源组中，这些 NIC 列出的名称以 结尾`-cluster-nic-`，以数字结尾。 不要更改或删除这些接口，否则缓存将不可用。
 
-虚拟命名空间路径显示在 "**存储目标**" 页中。 单击单个存储目标名称可查看其详细信息，包括关联的聚合命名空间路径。
+虚拟命名空间路径显示在 **"存储目标"** 页中。 单击单个存储目标名称以查看其详细信息，包括与其关联的聚合命名空间路径。
 
-![缓存的 "存储目标" 面板的屏幕截图，表的 "路径" 列中的条目周围有一个突出显示框](media/hpc-cache-view-namespace-paths.png)
+![缓存存储目标面板的屏幕截图，在表的 Path 列中条目周围有一个突出显示框](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="mount-command-syntax"></a>装载命令语法
 
-使用如下所示的装载命令：
+使用安装命令，如下所示：
 
-> sudo mount *cache_mount_address*：/*namespace_path* *local_path* {*options*}
+> 苏多安装*cache_mount_address*：/*namespace_pathlocal_path* *local_path* [*选项*]
 
 示例：
 
@@ -45,24 +45,24 @@ root@test-client:/tmp# sudo mount 10.0.0.28:/blob-demo-0722 ./hpccache/ -orw,tcp
 root@test-client:/tmp# 
 ```
 
-此命令成功之后，存储导出的内容应显示在客户端上的 ``hpccache`` 目录中。
+此命令成功后，存储导出的内容应在客户端的``hpccache``目录中可见。
 
 > [!NOTE] 
-> 你的客户端必须能够访问包含缓存的虚拟网络和子网。 例如，在同一虚拟网络中创建客户端 Vm，或者使用终结点、网关或虚拟网络中的其他解决方案从外部访问。 请记住，不能将其他内容托管在缓存的子网中。
+> 客户端必须能够访问存放缓存的虚拟网络和子网。 例如，在同一虚拟网络中创建客户端 VM，或使用虚拟网络中的终结点、网关或其他解决方案从外部访问。 请记住，在缓存的子网内无法托管任何其他内容。
 
 ### <a name="mount-command-options"></a>装载命令选项
 
-对于可靠的客户端装载，请在 mount 命令中传递这些设置和参数： 
+对于可靠的客户端装载，在装载命令中传递这些设置和参数： 
 
 ``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${CACHE_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| 建议装载命令设置 | |
+| 建议的装载命令设置 | |
 --- | --- 
-``hard`` | 软装载到 Azure HPC 缓存与应用程序故障和可能的数据丢失相关联。 
+``hard`` | Azure HPC 缓存的软装载与应用程序故障和可能的数据丢失相关联。 
 ``proto=netid`` | 此选项支持适当处理 NFS 网络错误。
 ``mountproto=netid`` | 此选项支持对装载操作的网络错误进行适当处理。
 ``retry=n`` | 设置 ``retry=30`` 以避免瞬时装载失败。 （建议在前景装载中使用不同的值。）
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要将数据移到缓存的存储目标，请阅读[填充新的 Azure Blob 存储](hpc-cache-ingest.md)。
+* 要将数据移动到缓存的存储目标，请阅读[填充新的 Azure Blob 存储](hpc-cache-ingest.md)。

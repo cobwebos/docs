@@ -1,6 +1,6 @@
 ---
-title: 分析 HDInsight Apache Spark Azure Data Lake Storage Gen1
-description: 运行 Apache Spark 作业来分析存储在 Azure Data Lake Storage Gen1 中的数据
+title: 使用 HDInsight 阿帕奇火花分析 Azure 数据存储第 1 代
+description: 运行 Apache Spark 作业以分析存储在 Azure 数据湖存储第 1 代中的数据
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: f7a6ab954aff1bcc2e3dae3fc035db4b136ccbbe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73818168"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>使用 HDInsight Spark 群集分析 Data Lake Storage Gen1 中的数据
 
-本文介绍如何使用 HDInsight Spark 群集可用[Jupyter Notebook](https://jupyter.org/)来运行从 Data Lake Storage 帐户读取数据的作业。
+在本文中，您可以使用带有 HDInsight Spark 群集的[Jupyter 笔记本](https://jupyter.org/)来运行从数据湖存储帐户读取数据的作业。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "73818168"
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
 
-    将 /HdiSamples/HdiSamples/SensorSampleData/hvac/ 中的 HVAC.csv 示例数据文件复制到 Azure Data Lake Storage 帐户。 代码段应如下所示：
+    将 /HdiSamples/HdiSamples/SensorSampleData/hvac/ 中的 HVAC.csv 示例数据文件复制到 Azure Data Lake Storage 帐户********。 代码段应如下所示：
 
         AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
@@ -52,20 +52,20 @@ ms.locfileid: "73818168"
         100% data copied.
         Copy Completed. 1 file copied.
 
-    会将数据文件 (HVAC.csv) 复制到 Data Lake Storage 帐户中的 /hvac 文件夹下。
+    会将数据文件 (HVAC.csv) 复制到 Data Lake Storage 帐户中的 /hvac 文件夹下********。
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>使用包含 Data Lake Store Gen1 的 HDInsight Spark 群集
 
-1. 在[Azure 门户](https://portal.azure.com/)的启动板中，单击 Apache Spark 群集的磁贴（如果已将它固定到启动板）。 也可以单击“全部浏览” > “HDInsight 群集”导航到群集。
+1. 从[Azure 门户](https://portal.azure.com/)（从起始板）单击 Apache Spark 群集的磁贴（如果将其固定到启动板）。 您还可以在 **"浏览所有** > **HDInsight 群集**"下导航到群集。
 
-2. 在 Spark 群集边栏选项卡中单击“快速链接”，并在“群集仪表板”边栏选项卡中单击“Jupyter 笔记本”。 出现提示时，请输入群集的管理员凭据。
+2. 在 Spark 群集边栏选项卡中单击“快速链接”****，并在“群集仪表板”**** 边栏选项卡中单击“Jupyter 笔记本”****。 出现提示时，请输入群集的管理员凭据。
 
    > [!NOTE]  
-   > 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。 将 **CLUSTERNAME** 替换为群集的名称：
+   > 也可以在浏览器中打开以下 URL 来访问群集的 Jupyter 笔记本。 将**CLUSTERNAME**替换为群集的名称：
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-3. 创建新的笔记本。 单击“新建”，并单击“PySpark”。
+3. 创建新的笔记本。 单击“新建”****，并单击“PySpark”****。
 
     ![创建新的 Jupyter 笔记本](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "创建新的 Jupyter 笔记本")
 
@@ -73,7 +73,7 @@ ms.locfileid: "73818168"
 
         from pyspark.sql.types import *
 
-    每次在 Jupyter 中运行作业时，Web 浏览器窗口标题中都会显示“(繁忙)”状态和笔记本标题。 右上角“PySpark”文本的旁边还会出现一个实心圆。 作业完成后，实心圆将变成空心圆。
+    每次在 Jupyter 中运行作业时，Web 浏览器窗口标题中都会显示“(繁忙)”**** 状态和笔记本标题。 右上角“PySpark”**** 文本的旁边还会出现一个实心圆。 作业完成后，实心圆将变成空心圆。
 
      ![Jupyter 笔记本作业的状态](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter 笔记本作业的状态")
 
@@ -91,7 +91,7 @@ ms.locfileid: "73818168"
 
            adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
 
-     在空白单元格中，粘贴以下代码示例，将 MYDATALAKESTORE 替换为自己的 Data Lake Storage 帐户名称，然后按 Shift + Enter。 此代码示例会将数据注册到名为 **hvac**的临时表中。
+     在空白单元格中，粘贴以下代码示例，将 MYDATALAKESTORE 替换为自己的 Data Lake Storage 帐户名称，然后按 Shift + Enter********。 此代码示例会将数据注册到名为 **hvac**的临时表中。
 
            # Load the data. The path below assumes Data Lake Storage is default storage for the Spark cluster
            hvacText = sc.textFile("adl://MYDATALAKESTORE.azuredatalakestore.net/cluster/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -108,7 +108,7 @@ ms.locfileid: "73818168"
            # Register the data fram as a table to run queries against
            hvacdf.registerTempTable("hvac")
 
-6. 由于使用的是 PySpark 内核，因此现在可直接在刚才使用 **magic 创建的临时表**hvac`%%sql` 上运行 SQL 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Apache Spark HDInsight clusters](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)（包含 Apache Spark HDInsight 群集的 Jupyter notebook 上可用的内核）。
+6. 由于使用的是 PySpark 内核，因此现在可直接在刚才使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。 有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Apache Spark HDInsight clusters](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)（包含 Apache Spark HDInsight 群集的 Jupyter notebook 上可用的内核）。
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
@@ -119,9 +119,9 @@ ms.locfileid: "73818168"
 
      也可以在其他视觉效果中查看结果。 例如，同一输出的分区图看起来如下所示。
 
-     ![查询结果的面积图](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "查询结果分区图")
+     ![查询结果分区图](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "查询结果分区图")
 
-8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”菜单中，单击“关闭并停止”。 这会关闭笔记本。
+8. 完成运行应用程序之后，应该要关闭笔记本以释放资源。 为此，请在笔记本的“文件”**** 菜单中，单击“关闭并停止”****。 这会关闭笔记本。
 
 
 ## <a name="next-steps"></a>后续步骤

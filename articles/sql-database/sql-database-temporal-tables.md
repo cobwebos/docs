@@ -1,5 +1,5 @@
 ---
-title: 与时态表入门
+title: 开始使用临时表
 description: 了解如何开始使用 Azure SQL 数据库中的临时表。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
 ms.openlocfilehash: 98fd2658f3fbcb0e7e29114d29f8dc6ed39eedf2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820725"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL 数据库中的临时表入门
@@ -24,7 +24,7 @@ ms.locfileid: "73820725"
 
 ## <a name="temporal-scenario"></a>临时表方案
 
-本文演示了在应用程序方案中使用临时表的步骤。 假设要跟踪从头开始开发的新网站上的用户活动，或要通过用户活动分析扩展的现有网站上的用户活动。 在这个简化的示例中，我们假设一段时间内浏览过的网页数是需要在托管于 Azure SQL 数据库上的网站数据库中捕获和监视的指标。 用户活动历史分析的目标是获取有关重新设计网站的意见，并为访客提供更好的体验。
+本文演示了在应用程序方案中使用临时表的步骤。 假设你想要从头开始跟踪开发中的新网站上的用户活动，或跟踪要使用用户活动分析扩展的现有网站上的用户活动。 在这个简化的示例中，我们假设一段时间内浏览过的网页数是需要在托管于 Azure SQL 数据库上的网站数据库中捕获和监视的指标。 用户活动历史分析的目标是获取有关重新设计网站的意见，并为访客提供更好的体验。
 
 此场景的数据库模型非常简单 - 用户活动指标以一个整数字段 **PageVisited** 表示，并与用户配置文件中的基本信息一起捕获。 此外，对于基于时间的分析，需要为每个用户保留一系列的行，其中每行代表特定时间段内特定用户访问过的网页数。
 
@@ -33,7 +33,7 @@ ms.locfileid: "73820725"
 幸运的是，无需在应用上花费过多的精力就能维护此活动信息。 可以使用临时表将过程自动化：使你在网站设计过程中保有完全的弹性并节省更多的时间，从而将重心放在数据分析本身。 唯一要做的事就是确保将 **WebSiteInfo** 表配置为[版本由系统控制的临时表](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0)。 下面描述了在此方案中使用临时表的确切步骤。
 
 ## <a name="step-1-configure-tables-as-temporal"></a>步骤 1：将表配置为临时表
-根据是要开始新的开发工作，还是升级现有的应用程序，可以创建临时表，或者通过添加临时属性来修改现有表。 在一般情况下，方案可能混用了这两个选项。 使用 [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS)、[SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) 或其他任何 Transact-SQL 开发工具执行以下操作。
+根据是要开始新的开发工作，还是升级现有的应用程序，可以创建时态表，或者通过添加临时属性来修改现有表。 在一般情况下，方案可能混用了这两个选项。 使用 [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS)、[SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) 或其他任何 Transact-SQL 开发工具执行以下操作。
 
 > [!IMPORTANT]
 > 建议始终使用最新版本的 Management Studio 以保持与 Microsoft Azure 和 SQL 数据库的更新同步。 [更新 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)。
@@ -108,7 +108,7 @@ WITH (DROP_EXISTING = ON);
 ## <a name="step-2-run-your-workload-regularly"></a>步骤 2：定期运行工作负荷
 临时表的主要优点是不需要以任何方式更改或调整网站就可以执行更改跟踪。 创建临时表后，每对数据进行修改时，会自动保存以前的行版本。 
 
-若要对此特定方案使用自动更改跟踪，只需在每次用户结束网站上的会话时更新列**PagesVisited** ：
+为了利用此特定方案的自动更改跟踪，让我们在每次用户结束其网站上的会话时更新 **"访问"** 列：
 
 ```
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5 

@@ -4,23 +4,23 @@ description: 使用 PowerShell 脚本可以无提示方式安装 Azure 备份服
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74172244"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>运行 Azure 备份服务器的无人参与安装
 
 了解如何运行 Azure 备份服务器的无人参与安装。
 
-如果要安装 Azure 备份服务器 V1，则这些步骤不适用。
+如果是安装 Azure 备份服务器 V1，则这些步骤不适用。
 
 ## <a name="install-backup-server"></a>安装备份服务器
 
-1. 在承载 Azure 备份服务器 V2 或更高版本的服务器上，创建一个文本文件。 （可以在记事本或其他文本编辑器中创建该文件。）将该文件另存为 Mabssetup.ini。
+1. 在承载 Azure 备份服务器 V2 或更高版本的服务器上，创建一个文本文件。 （您可以在记事本或其他文本编辑器中创建该文件。将文件保存为 MABSSetup.ini。
 
-2. 将以下代码粘贴在 MABSSetup.ini 文件中。 将括号 (\< \>) 内的文本替换为来自你环境的值。 以下文本是一个示例：
+2. 将以下代码粘贴在 MABSSetup.ini 文件中。 将括号内的文本 （）\<\>替换为环境中的值。 以下文本是一个示例：
 
    ```text
    [OPTIONS]
@@ -50,10 +50,10 @@ ms.locfileid: "74172244"
    ```
 
 可以将以下这些标志用于安装：</br>
-/f：.ini 文件路径</br>
-/l：日志路径</br>
-/i：安装路径</br>
-/x：卸载路径</br>
+/f****：.ini 文件路径</br>
+/l****：日志路径</br>
+/i****：安装路径</br>
+/x****：卸载路径</br>
 
 ## <a name="next-steps"></a>后续步骤
 

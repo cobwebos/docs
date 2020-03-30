@@ -1,5 +1,5 @@
 ---
-title: 用于管理组的 PowerShell V2 示例-Azure AD |Microsoft Docs
+title: 管理组的 PowerShell V2 示例 - Azure AD | Microsoft Docs
 description: 本页提供的 PowerShell 示例适用于在 Azure Active Directory 中管理组
 keywords: Azure AD, Azure Active Directory, PowerShell, 组, 组管理
 services: active-directory
@@ -15,17 +15,17 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a218e956c72f8005e533db7b8800e98ee72ce223
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74233115"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
 
 > [!div class="op_single_selector"]
 > - [Azure 门户](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
-> - [PowerShell](groups-settings-v2-cmdlets.md)
+> - [电源外壳](groups-settings-v2-cmdlets.md)
 >
 >
 
@@ -54,7 +54,7 @@ ms.locfileid: "74233115"
 
 ## <a name="connect-to-the-directory"></a>连接到目录
 
-在开始使用 Azure AD PowerShell cmdlet 管理组之前，必须将 PowerShell 会话连接到要管理的目录。 请使用以下命令：
+在开始使用 Azure AD PowerShell cmdlet 管理组之前，必须将 PowerShell 会话连接到要管理的目录。 使用以下命令：
 
 ```powershell
     PS C:\Windows\system32> Connect-AzureAD
@@ -130,7 +130,7 @@ ms.locfileid: "74233115"
 ```
 
 > [!NOTE]
-> Azure AD PowerShell cmdlet 实现 OData 查询标准。 有关详细信息，请参阅**使用 OData 终结点的 OData 系统查询选项**中的 $filter[](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)。
+> Azure AD PowerShell cmdlet 实现 OData 查询标准。 有关详细信息，请参阅[使用 OData 终结点的 OData 系统查询选项](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)中的 $filter****。
 
 ## <a name="create-groups"></a>创建组
 
@@ -142,7 +142,7 @@ ms.locfileid: "74233115"
 
 ## <a name="update-groups"></a>更新组
 
-若要更新现有组，请使用 Set-AzureADGroup cmdlet。 在此示例中，我们将更改“Intune 管理员”组的 DisplayName 属性。 首先，我们发现使用 Get-AzureADGroup cmdlet 的组和使用 DisplayName 属性的筛选器：
+若要更新现有组，请使用 Set-AzureADGroup cmdlet。 在此示例中，我们将更改“Intune 管理员”组的 DisplayName 属性。 首先，我们将使用 Get-AzureADGroup cmdlet 查找该组，然后使用 DisplayName 属性进行筛选：
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -308,7 +308,7 @@ ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要�
 
 ## <a name="reserved-aliases"></a>保留的别名
 
-创建组后，某些终结点允许最终用户指定一个 mailNickname 或别名，用作组的电子邮件地址的一部分。 具有以下高度特权电子邮件别名的组只能由 Azure AD 全局管理员创建。 
+创建组后，某些终结点允许最终用户指定一个 mailNickname 或别名，用作组的电子邮件地址的一部分。仅 Azure AD 全局管理员可以创建具有以下权限较高的电子邮件别名的组。 
   
 * abuse
 * admin
@@ -322,19 +322,19 @@ ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要�
 * ssl-admin
 * webmaster
 
-## <a name="group-writeback-to-on-premises-preview"></a>组写回到本地（预览）
+## <a name="group-writeback-to-on-premises-preview"></a>将写回本地（预览）
 
-如今，许多组仍在本地 Active Directory 管理。 为了应答将云组同步回本地的请求，Office 365 组写回功能 Azure AD 现在可供预览。
+今天，许多组仍在本地活动目录中进行管理。 为了响应将云组同步回本地的请求，Office 365 组为 Azure AD 编写回写功能现在可用于预览。
 
-Office 365 组在云中创建和管理。 使用写回功能，可以将 Office 365 组作为分发组写入到安装了 Exchange 的 Active Directory 林。 然后，具有本地 Exchange 邮箱的用户可以从这些组发送和接收电子邮件。 组写回功能不支持 Azure AD 安全组或通讯组。
+Office 365 组在云中创建和管理。 通过写回功能，您可以将 Office 365 组作为通讯组写回到已安装 Exchange 的 Active Directory 林。 然后，具有本地 Exchange 邮箱的用户可以发送和接收来自这些组的电子邮件。 组回写功能不支持 Azure AD 安全组或通讯组。
 
-有关更多详细信息，请参阅[Azure AD Connect 同步服务](../hybrid/how-to-connect-syncservice-features.md)的文档。
+有关详细信息，请参阅[Azure AD 连接同步服务的文档](../hybrid/how-to-connect-syncservice-features.md)。
 
-Office 365 组写回是 Azure Active Directory （Azure AD）的公共预览功能，适用于任何付费的 Azure AD 许可计划。 有关预览的一些法律信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Office 365 组写回是 Azure 活动目录 （Azure AD） 的公共预览功能，可用于任何付费 Azure AD 许可证计划。 有关预览的一些法律信息，请参阅[Microsoft Azure 预览的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="next-steps"></a>后续步骤
 
 如需更多 Azure Active Directory PowerShell 文档，可参阅 [Azure Active Directory Cmdlet](/powershell/azure/install-adv2?view=azureadps-2.0)。
 
 * [使用 Azure Active Directory 组管理对资源的访问](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
-* [将本地标识与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+* [将本地标识与 Azure 活动目录集成](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

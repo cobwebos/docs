@@ -1,5 +1,5 @@
 ---
-title: 可用的自定义管理员角色权限-Azure AD |Microsoft Docs
+title: 可用的自定义管理员角色权限 - Azure AD |微软文档
 description: 用于委托标识管理的自定义管理员角色权限。
 services: active-directory
 author: curtand
@@ -14,21 +14,21 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6156857202c1cca94df6d70ec2059daf55178f1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025150"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory 中的应用程序注册子类型和权限
 
 本文包含 Azure Active Directory (Azure AD) 中的自定义角色定义当前可用的应用注册权限。
 
-## <a name="permissions-for-managing-single-directory-applications"></a>管理单目录应用程序的权限
+## <a name="permissions-for-managing-single-directory-applications"></a>用于管理单目录应用程序的权限
 
-选择自定义角色的权限时，你可以选择授予访问权限，以便仅管理单一目录应用程序。 单目录应用程序仅可用于注册了应用程序的 Azure AD 组织中的用户。 单目录应用程序定义为仅在此组织目录中将**受支持的帐户类型**设置为 "帐户"。 在图形 API 中，单目录应用程序的 signInAudience 属性设置为 "AzureADMyOrg"。
+选择自定义角色的权限时，可以选择授予仅管理单目录应用程序的访问权限。 单目录应用程序仅适用于该应用程序已注册到的 Azure AD 组织中的用户。 单目录应用程序定义为将“支持的帐户类型”设置为“仅限此组织目录中的帐户”。**** 在图形 API 中，单目录应用程序的 signInAudience 属性设置为“AzureADMyOrg”。
 
-若要授予访问权限以仅管理单一目录应用程序，请将下面的权限用于子类型**myOrganization**。 例如 microsoft.directory/applications.myOrganization/basic/update。
+若要授予仅管理单目录应用程序的访问权限，请对子类型 **applications.myOrganization** 使用以下权限。 例如 microsoft.directory/applications.myOrganization/basic/update。
 
 有关一般术语“子类型”、“权限”和“属性集”的含义，请参阅[自定义角色概述](roles-custom-overview.md)。 以下信息特定于应用程序注册。
 
@@ -46,7 +46,7 @@ ms.locfileid: "74025150"
 
 如果同时分配上述两个权限，/create 权限优先。 尽管 /createAsOwner 权限不会自动将创建者添加为第一个所有者，但使用图形 API 或 PowerShell cmdlet 时，可以在创建应用注册期间指定所有者。
 
-create 权限授予对“新建注册”命令的访问权限。
+create 权限授予对“新建注册”命令的访问权限。****
 
 [这些权限授予对“新建注册”门户命令的访问权限](./media/roles-create-custom/new-custom-role.png)
 
@@ -71,7 +71,7 @@ create 权限授予对“新建注册”命令的访问权限。
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesread"></a>microsoft.directory/applications/allProperties/read
 
-能够读取无法在任何情况下（如凭据）读取的属性之外的单租户应用程序和多租户应用程序的所有属性。
+能够读取单租户和多租户应用程序在任何情况下都无法读取的属性（如凭据）之外的所有属性。
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesread"></a>microsoft.directory/applications.myOrganization/allProperties/read
 
@@ -83,7 +83,7 @@ create 权限授予对“新建注册”命令的访问权限。
 
 ![此权限授予对应用注册所有者页的访问权限](./media/roles-custom-available-permissions/app-registration-owners.png)
 
-#### <a name="microsoftdirectoryapplicationsstandardread"></a>microsoft 目录/应用程序/标准/读取
+#### <a name="microsoftdirectoryapplicationsstandardread"></a>microsoft.directory/applications/standard/read
 
 授予读取标准应用程序注册属性的访问权限。 这包括跨应用程序注册页的属性。
 
@@ -95,7 +95,7 @@ create 权限授予对“新建注册”命令的访问权限。
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>microsoft.directory/applications/allProperties/update
 
-能够更新单个目录和多目录应用程序上的所有属性。
+能够更新单目录和多目录应用程序的所有属性。
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>microsoft.directory/applications.myOrganization/allProperties/update
 
@@ -103,9 +103,9 @@ create 权限授予对“新建注册”命令的访问权限。
 
 #### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>microsoft.directory/applications/audience/update
 
-能够更新单个目录和多目录应用程序上支持的帐户类型（signInAudience）属性。
+能够更新单目录和多目录应用程序支持的帐户类型 (SignInAudience) 属性。
 
-![此权限在 "身份验证" 页上授予对应用注册支持的帐户类型属性的访问权限](./media/roles-custom-available-permissions/supported-account-types.png)
+![此权限授予对身份验证页上应用注册支持的帐户类型属性的访问权限](./media/roles-custom-available-permissions/supported-account-types.png)
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationaudienceupdate"></a>microsoft.directory/applications.myOrganization/audience/update
 

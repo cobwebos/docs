@@ -1,6 +1,6 @@
 ---
-title: 查看 Azure Site Recovery 部署规划器中的成本估算
-description: 本文介绍如何在 Azure Site Recovery 部署规划器中查看 VMware 灾难恢复的成本估计。
+title: 查看 Azure 站点恢复部署规划器中的成本估算
+description: 本文介绍如何查看 VMware 灾难恢复的 Azure 站点恢复部署规划器中的成本估算。
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
 ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953343"
 ---
-# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>查看 VMware 中的成本估算部署规划器 
+# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>查看 VMware 部署规划器中的成本估算 
 
 部署规划器报表以[建议](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)表的形式提供成本估算摘要，以“成本估算”表的形式提供详细的成本分析。 它按 VM 提供详细的成本分析。 
 
@@ -104,7 +104,7 @@ ms.locfileid: "73953343"
 * 源计算机的 VM 总存储大小 (GB)
 * 一年的 DR 演练次数 
 * 每次 DR 演练的持续时间(天) 
-* OS 类型
+* 操作系统类型
 * 数据冗余 
 * Azure 混合权益
 
@@ -116,17 +116,17 @@ ms.locfileid: "73953343"
 
 **VM 数**：与配置相符的 VM 数。 可以更新现有 VM 的数目，前提是不对类似的配置 VM 进行分析，而会对其进行保护。
 
-**IaaS 大小(建议)** ：此工具建议的兼容 VM 的 VM 角色大小。 
+**IaaS 大小(建议)**：此工具建议的兼容 VM 的 VM 角色大小。 
 
-**IaaS 大小(你的选择)** ：默认情况下与建议的 VM 角色大小相同。 可以根据需要更改角色。 计算成本取决于所选 VM 角色大小。
+**IaaS 大小(你的选择)**：默认情况下与建议的 VM 角色大小相同。 可以根据需要更改角色。 计算成本取决于所选 VM 角色大小。
 
 **存储类型**：VM 使用的存储类型， 可以是标准存储或高级存储。
 
-**VM 总存储大小（GB）** ：源 vm 的总存储空间。
+**VM 总存储大小 （GB）**：源 VM 的总存储。
 
 **一年的 DR 演练次数**：一年中进行 DR 演练的次数， 默认为一年 4 次。 可以修改特定 VM 的持续时间或将新值应用到所有 VM，只需在顶部行中输入新值，然后单击“应用到所有项”按钮即可。 可以根据一年的 DR 演练次数和每次 DR 演练的持续时间来计算总 DR 演练成本。  
 
-**每次 DR 演练的持续时间(天)** ：每次 DR 演练的持续时间。 默认情况下，根据[灾难恢复软件保障权益](https://azure.microsoft.com/pricing/details/site-recovery)的规定，每 90 天演练一次，每次演练的持续时间为 7 天。 可以修改特定 VM 的持续时间或将新值应用到所有 VM，只需在顶部行中输入新值，然后单击“应用到所有项”按钮即可。 可以根据一年的 DR 演练次数和每次 DR 演练的持续时间来计算总 DR 演练成本。
+**每次 DR 演练的持续时间(天)**：每次 DR 演练的持续时间。 默认情况下，根据[灾难恢复软件保障权益](https://azure.microsoft.com/pricing/details/site-recovery)的规定，每 90 天演练一次，每次演练的持续时间为 7 天。 可以修改特定 VM 的持续时间或将新值应用到所有 VM，只需在顶部行中输入新值，然后单击“应用到所有项”按钮即可。 可以根据一年的 DR 演练次数和每次 DR 演练的持续时间来计算总 DR 演练成本。
   
 **OS 类型**：VM 的 OS 类型。 可以是 Windows 或 Linux。 如果 OS 类型为 Windows，则可将 Azure 混合使用权益应用到该 VM。 
 
@@ -138,7 +138,7 @@ ms.locfileid: "73953343"
 
 **稳定状态复制成本**：包括复制的存储成本。
 
-**总 DR 演练成本(平均)** ：包括 DR 演练的计算和存储成本。
+**总 DR 演练成本(平均)**：包括 DR 演练的计算和存储成本。
 
 **ASR 许可证成本**：Azure Site Recovery 许可证成本。
 
@@ -150,7 +150,7 @@ eastus、eastus2、westus、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>支持的货币
 Azure Site Recovery 部署规划器可以使用以下任何货币生成成本报表。
 
-|货币|名称||货币|名称||货币|名称|
+|货币|“属性”||货币|“属性”||货币|“属性”|
 |---|---|---|---|---|---|---|---|
 |ARS|阿根廷比索 ($)||AUD|澳大利亚元 ($)||BRL|巴西雷亚尔 (R$)|
 |CAD|加拿大元 ($)||CHF|瑞士法郎 (chf)||DKK|丹麦克朗 (kr)|

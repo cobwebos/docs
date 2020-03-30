@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 9/5/2019
 ms.author: eamono
 ms.openlocfilehash: 36fc4c873dccfe9fa814bddccd829ed04207f095
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74226939"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>在 Azure Functions 和应用服务混合连接中使用 PowerShell 管理混合环境
@@ -50,64 +50,64 @@ cmd.exe /C $Cmd
 
 应用服务混合连接功能只能在“基本”、“标准”和“隔离”定价计划中使用。 使用 PowerShell 创建函数应用时，请创建或选择上述计划中的一项。
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单上选择“+ 创建资源”，然后选择“函数应用”。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单上选择“+ 创建资源”，然后选择“函数应用”。********
 
-1. 对于“托管计划”，请选择“应用服务计划”，然后选择“应用服务计划/位置”。
+1. 对于“托管计划”，请选择“应用服务计划”，然后选择“应用服务计划/位置”。************
 
-1. 选择“新建”，键入一个**应用服务计划**名称，在靠近自己或靠近函数访问的其他服务的**区域**中选择一个[位置](https://azure.microsoft.com/regions/)，然后选择“定价层”。
+1. 选择“新建”，**** 键入一个**应用服务计划**名称，在靠近自己或靠近函数访问的其他服务的[区域](https://azure.microsoft.com/regions/)中选择一个**位置**，然后选择“定价层”。****
 
-1. 选择“S1 标准”计划，然后选择“应用”。
+1. 选择“S1 标准”计划，然后选择“应用”。****
 
-1. 选择“确定”以创建该计划，然后配置以下屏幕截图后面紧跟的表中指定的剩余“函数应用”设置：
+1. 选择“确定”以创建该计划，然后配置以下屏幕截图后面紧跟的表中指定的剩余“函数应用”设置：********
 
     ![PowerShell Core 函数应用](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
 
-    | 设置      | 建议的值  | 说明                                        |
+    | 设置      | 建议的值  | 描述                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **应用名称** | 全局唯一名称 | 用于标识新 Function App 的名称。 有效的字符是 `a-z`、`0-9` 和 `-`。  | 
     | **订阅** | 订阅 | 要在其下创建此新函数应用的订阅。 |
     | **资源组** |  myResourceGroup | 要在其中创建 Function App 的新资源组的名称。 还可以使用建议的值。 |
-    | **OS** | 首选操作系统 | 选择 "窗口"。 |
+    | **操作系统** | 首选操作系统 | 选择“Windows”。 |
     | **运行时堆栈** | 首选语言 | 选择 PowerShell Core。 |
     | **存储** |  全局唯一名称 |  创建函数应用使用的存储帐户。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 也可以使用现有帐户。
-    | **Application Insights** | 默认 | 在最近的受支持的区域中，创建一个具有相同应用名称的 Application Insights 资源。 通过展开此设置，你可以更改**新的资源名称**，或在要存储数据的[Azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/)区域中选择其他**位置**。 |
+    | **Application Insights** | 默认 | 在最近的受支持的区域中，创建一个具有相同应用名称** 的 Application Insights 资源。 通过展开此设置，可以更改 **"新建资源"名称**，或在要存储数据的 Azure[地理](https://azure.microsoft.com/global-infrastructure/geographies/)区域中选择其他**位置**。 |
 
-1. 验证设置后，选择“创建”。
+1. 验证设置后，选择“创建”。****
 
-1. 选择门户右上角的“通知”图标，然后等待“部署成功”消息。
+1. 选择门户右上角的“通知”图标，然后等待“部署成功”消息。****
 
-1. 选择“转到资源”，查看新的函数应用。 还可选择“固定到仪表板”。 固定可以更轻松地从仪表板返回此函数应用资源。
+1. 选择“转到资源”****，查看新的函数应用。 还可选择“固定到仪表板”****。 固定可以更轻松地从仪表板返回此函数应用资源。
 
 ## <a name="create-a-hybrid-connection-for-the-function-app"></a>为函数应用创建混合连接
 
 混合连接在函数应用的网络部分配置：
 
-1. 选择函数应用中的“平台功能”选项卡，然后选择“网络”。 
+1. 选择函数应用中的“平台功能”选项卡，然后选择“网络”。******** 
    ![平台网络应用概览](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
-1. 选择“配置混合连接终结点”。
+1. 选择“配置混合连接终结点”。****
    ![网络](./media/functions-hybrid-powershell/select-network-feature.png)  
-1. 选择“添加混合连接”。
+1. 选择“添加混合连接”。****
    ![混合连接](./media/functions-hybrid-powershell/hybrid-connection-overview.png)  
-1. 输入混合连接的相关信息，如以下屏幕截图后面的内容所示。 可以选择让“终结点主机”设置与本地服务器的主机名匹配。这样，在以后运行远程命令时，就可以更容易地记住此服务器。 端口与此前在服务器上定义的默认 Windows 远程管理服务端口匹配。
+1. 输入混合连接的相关信息，如以下屏幕截图后面的内容所示。 可以选择让“终结点主机”设置与本地服务器的主机名匹配。这样，在以后运行远程命令时，就可以更容易地记住此服务器。**** 端口与此前在服务器上定义的默认 Windows 远程管理服务端口匹配。
   ![添加混合连接](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
 
-    **混合连接名称**： ContosoHybridOnPremisesServer
+    **混合连接名称**： Contoso 混合本地服务器
     
     **终结点主机**：finance1
     
-    **终结点端口**：5986
+    **端点端口**： 5986
     
-    **空间空间命名空间**：新建
+    **服务总线命名空间**： 创建新
     
-    **位置**：选取可用位置
+    **位置**： 选择可用位置
     
     **名称**：contosopowershellhybrid
 
-5. 选择“确定”，创建此混合连接。
+5. 选择“确定”，创建此混合连接。****
 
 ## <a name="download-and-install-the-hybrid-connection"></a>下载并安装安装混合连接
 
-1. 选择“下载连接管理器”，将 .msi 文件保存到计算机本地。
+1. 选择“下载连接管理器”，将 .msi 文件保存到计算机本地。****
 ![下载安装程序](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
 1. 将 .msi 文件从本地计算机复制到本地服务器。
 1. 运行混合连接管理器安装程序，在本地服务器上安装此服务。
@@ -116,7 +116,7 @@ cmd.exe /C $Cmd
 ![复制混合连接字符串](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
 1. 在本地服务器上打开“混合连接管理器 UI”。
 ![打开混合连接 UI](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
-1. 选择“手动输入”按钮，从剪贴板粘贴连接字符串。
+1. 选择“手动输入”按钮，从剪贴板粘贴连接字符串。****
 ![粘贴连接](./media/functions-hybrid-powershell/enter-manual-connection.png)  
 1. 在 PowerShell 中重启混合连接管理器（如果它没有显示为已连接）。
     ```powershell
@@ -125,12 +125,12 @@ cmd.exe /C $Cmd
 
 ## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>针对管理员帐户的密码创建应用设置
 
-1. 选择函数应用中的“平台功能”选项卡。
-1. 在“常规设置”下，选择“配置”。
+1. 选择函数应用中的“平台功能”选项卡。****
+1. 在“常规设置”下，选择“配置”********。
 ![选择平台配置](./media/functions-hybrid-powershell/select-configuration.png)  
-1. 展开“新建应用程序设置”，针对密码创建新设置。
+1. 展开“新建应用程序设置”，针对密码创建新设置。****
 1. 将设置命名为 _ContosoUserPassword_，然后输入密码。
-1. 选择“确定”，然后选择“保存”，将密码存储在函数应用程序中。
+1. 选择“确定”，然后选择“保存”，将密码存储在函数应用程序中。****
 ![为密码添加应用设置](./media/functions-hybrid-powershell/add-appsetting-password.png)  
 
 ## <a name="create-a-function-http-trigger-to-test"></a>创建用于测试的函数 Http 触发器
@@ -172,7 +172,7 @@ cmd.exe /C $Cmd
                    -SessionOption (New-PSSessionOption -SkipCACheck)
     ```
 
-3. 选择“保存”，然后选择“运行”，对函数进行测试。
+3. 选择“保存”，然后选择“运行”，对函数进行测试。********
 ![测试函数应用](./media/functions-hybrid-powershell/test-function-hybrid.png)  
 
 ## <a name="managing-other-systems-on-premises"></a>在本地管理其他系统
@@ -248,11 +248,11 @@ Invoke-Command -ComputerName $HybridEndpoint `
 * $HybridEndpoint
 * $RemoteServer
 
-在上面的两个方案中，可以在 Azure Functions 和混合连接中使用 PowerShell 连接和管理本地环境。 建议[在函数中](./functions-reference-powershell.md)详细了解[混合连接](../app-service/app-service-hybrid-connections.md)和 PowerShell。
+在上面的两个方案中，可以在 Azure Functions 和混合连接中使用 PowerShell 连接和管理本地环境。 我们鼓励您在功能中了解有关[混合连接](../app-service/app-service-hybrid-connections.md)和[PowerShell](./functions-reference-powershell.md)的更多。
 
-还可以通过 Azure Functions 使用 Azure[虚拟网络](./functions-create-vnet.md)连接到本地环境。
+您还可以使用 Azure[虚拟网络](./functions-create-vnet.md)通过 Azure 函数连接到本地环境。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"] 
-> [了解有关使用 PowerShell 函数的详细信息](functions-reference-powershell.md)
+> [了解有关使用 PowerShell 功能的更多详细信息](functions-reference-powershell.md)

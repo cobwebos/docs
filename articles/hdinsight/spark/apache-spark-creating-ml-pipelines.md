@@ -1,5 +1,5 @@
 ---
-title: 创建 Apache Spark 机器学习管道-Azure HDInsight
+title: 创建阿帕奇火花机器学习管道 - Azure HDInsight
 description: 使用 Apache Spark 机器学习库在 Azure HDInsight 中创建数据管道。
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73494671"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>创建 Apache Spark 机器学习管道
 
-Apache Spark 的可缩放机器学习库 (MLlib) 向分布式环境引入了建模功能。 Spark 包 [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) 是一套基于数据帧的高级 API。 借助这些 API，可创建和调整实际的机器学习管道。  Spark 机器学习引用此基于 MLlib 数据帧的 API，而不是旧的基于 RDD 的管道 API。
+Apache Spark 的可缩放机器学习库 (MLlib) 向分布式环境引入了建模功能。 Spark 包[`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html)是一组基于 DataFrame 构建的高级 API。 借助这些 API，可创建和调整实际的机器学习管道。  Spark 机器学习** 引用此基于 MLlib 数据帧的 API，而不是旧的基于 RDD 的管道 API。
 
 机器学习 (ML) 管道是结合了多种机器学习算法的完整工作流。 处理和了解数据需要许多步骤，需要一系列算法。 管道定义机器学习过程的阶段和顺序。 在 MLlib 中，管道的阶段由特定的 PipelineStages 序列表示，其中转换器和估算器各自执行任务。
 
@@ -29,7 +29,7 @@ Apache Spark 的可缩放机器学习库 (MLlib) 向分布式环境引入了建�
 
 ## <a name="pipeline-example"></a>管道示例
 
-为了演示 ML 管道的实际用途，此示例使用预加载在 HDInsight 群集默认存储（Azure 存储或 Data Lake Storage）上的示例 `HVAC.csv` 数据文件。 若要查看文件的内容，导航到 `/HdiSamples/HdiSamples/SensorSampleData/hvac` 目录。 `HVAC.csv` 包含一组时间和各种建筑物中 HVAC（供暖、通风和空调）系统的目标温度和实际温度。 其目标是使用数据来训练模型，并生成给定建筑物的预测温度。
+为了演示 ML 管道的实际用途，此示例使用预加载在 HDInsight 群集默认存储（Azure 存储或 Data Lake Storage）上的示例 `HVAC.csv` 数据文件。 若要查看文件的内容，导航到 `/HdiSamples/HdiSamples/SensorSampleData/hvac` 目录。 `HVAC.csv` 包含一组时间和各种建筑物中 HVAC（供暖、通风和空调**）系统的目标温度和实际温度。 其目标是使用数据来训练模型，并生成给定建筑物的预测温度。
 
 以下代码：
 
@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-若要查看由 `words` 和 `features` 转换器添加的新的 `Tokenizer` 和 `HashingTF` 列以及 `LogisticRegression` 估算器示例，在原始数据帧上运行 `PipelineModel.transform()` 方法。 在生产代码中，下一步为传入测试数据帧，以验证培训。
+若要查看由 `Tokenizer` 和 `HashingTF` 转换器添加的新的 `words` 和 `features` 列以及 `LogisticRegression` 估算器示例，在原始数据帧上运行 `PipelineModel.transform()` 方法。 在生产代码中，下一步为传入测试数据帧，以验证培训。
 
 ```python
 peek = model.transform(training)
@@ -132,6 +132,6 @@ only showing top 20 rows
 
 现在可以使用 `model` 对象来进行预测。 有关此机器学习应用程序的完整示例以及运行此应用程序的分步说明，请参阅[在 Azure HDInsight 上生成 Apache Spark 机器学习应用程序](apache-spark-ipython-notebook-machine-learning.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [在 Azure 上使用 Scala 和 Apache Spark 展开数据科研](../../machine-learning/team-data-science-process/scala-walkthrough.md)

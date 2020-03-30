@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fd016e02c579f4e7230bd18d363cfe9a64c88eb
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 6fd6794bafc3c209032f32626e8c46b51769d05e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79366098"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481222"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理远程访问应用时的安全注意事项
 
@@ -47,9 +47,9 @@ Azure AD 应用程序代理依赖于使用 Azure AD 安全令牌服务 (STS) 执
 
 在与网络建立连接之前应用更丰富的策略控制。
 
-使用[条件性访问](../conditional-access/overview.md)，你可以定义允许哪些流量访问后端应用程序的限制。 可以基于位置、身份验证强度和用户风险配置文件，创建限制登录的策略。
+使用[条件访问](../conditional-access/overview.md)，您可以定义允许访问后端应用程序的流量的限制。 可以基于位置、身份验证强度和用户风险配置文件，创建限制登录的策略。
 
-你还可以使用条件性访问来配置多重身份验证策略，并为用户身份验证添加另一个安全层。 此外，你的应用程序还可以通过 Azure AD 条件访问路由到 Microsoft Cloud App Security，通过[访问](https://docs.microsoft.com/cloud-app-security/access-policy-aad)和[会话](https://docs.microsoft.com/cloud-app-security/session-policy-aad)策略来提供实时监视和控制
+您还可以使用条件访问配置多重身份验证策略，为用户身份验证添加另一层安全性。 此外，还可以通过 Azure AD 条件访问将应用程序路由到 Microsoft 云应用安全，通过[访问](https://docs.microsoft.com/cloud-app-security/access-policy-aad)和[会话](https://docs.microsoft.com/cloud-app-security/session-policy-aad)策略提供实时监视和控制
 
 ### <a name="traffic-termination"></a>流量终止
 
@@ -69,7 +69,7 @@ Azure AD 应用程序代理是一个反向代理，因此，发往后端应用�
 
 获得一流的安全保护。
 
-由于属于 Azure Active Directory，因此应用程序代理可以利用 [Azure AD 标识保护](../active-directory-identityprotection.md)（数据由 Microsoft 安全响应中心和反数字犯罪部门提供）。 同时，我们主动识别受攻击的帐户并提供保护，使其免受高风险的登录。我们考虑了许多因素来确定哪些登录尝试是高风险的。 这些因素包括标记为受感染设备、对网络进行匿名化处理，以及非典型或不太可能的位置。
+由于属于 Azure Active Directory，因此应用程序代理可以利用 [Azure AD 标识保护](../active-directory-identityprotection.md)（数据由 Microsoft 安全响应中心和反数字犯罪部门提供）。 我们共同识别受攻击的帐户，并提供高风险登录保护。我们考虑了许多因素，以确定哪些登录尝试是高风险的。 这些因素包括标记为受感染设备、对网络进行匿名化处理，以及非典型或不太可能的位置。
 
 其中的许多报告与事件已通过某个 API 提供，便于与安全信息与事件管理 (SIEM) 系统集成。
 
@@ -83,7 +83,7 @@ Azure AD 应用程序代理是一个反向代理，因此，发往后端应用�
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS 保护服务
 
-通过应用程序代理发布的应用程序受分布式拒绝服务（DDoS）攻击的保护。 **Azure DDoS 保护**是一种与 azure 平台一起提供的服务，用于保护 azure 资源免受拒绝服务攻击。 **基本**服务层会自动启用，可提供始终可用的流量监控和常见网络级别攻击的实时缓解措施。 还提供了**标准**层，提供了专门针对 Azure 虚拟网络资源优化的其他缓解功能。 有关详细信息，请参阅[Azure DDoS 保护标准概述](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。
+通过应用程序代理发布的应用程序受到保护，免受分布式拒绝服务 （DDoS） 攻击。 **Azure DDoS 保护**是 Azure 平台提供的一项服务，用于保护 Azure 资源免受拒绝服务攻击。 **基本服务**层自动启用，提供始终打开的流量监视和实时缓解常见的网络级攻击。 **标准**层也可用，提供专门针对 Azure 虚拟网络资源的其他缓解功能。 有关详细信息，请参阅[Azure DDoS 保护标准概述](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。
 
 ## <a name="under-the-hood"></a>揭秘
 
@@ -99,7 +99,7 @@ Azure AD 应用程序代理由两个部分组成：
 * 用户访问发布的应用程序时。
 
 >[!NOTE]
->所有通信通过 SSL 发生，始终从连接器发起，目标为应用程序代理服务。 该服务只会建立出站连接。
+>所有通信都通过 TLS 进行，并且始终源自应用程序代理服务的连接器。 该服务只会建立出站连接。
 
 连接器在执行几乎所有的调用时，都会使用客户端证书向应用程序代理服务进行身份验证。 只有在执行初始设置步骤时，此过程才有所不同，因为客户端证书是在此步骤中建立的。
 
@@ -107,8 +107,8 @@ Azure AD 应用程序代理由两个部分组成：
 
 首次设置连接器时会发生以下流量事件：
 
-1. 在安装连接器的过程中，将连接器注册到服务。 系统会提示用户输入其 Azure AD 管理员凭据。 从此身份验证获取的令牌随后将呈现给 Azure AD 应用程序代理服务。
-2. 应用程序代理服务评估该令牌。 它检查用户是否为租户中的公司管理员。 如果用户不是管理员，将终止该进程。
+1. 在安装连接器的过程中，将连接器注册到服务。 系统会提示用户输入其 Azure AD 管理员凭据。从此身份验证获取令牌，并将其提供给 Azure AD 应用程序代理服务。
+2. 应用程序代理服务评估该令牌。 它检查用户是否为租户中的公司管理员。如果用户不是管理员，则终止此过程。
 3. 连接器生成客户端证书请求，并将此请求连同令牌一起传递给应用程序代理服务。 该服务转而验证令牌并为客户端证书请求签名。
 4. 以后，连接器将使用此客户端证书来与应用程序代理服务通信。
 5. 连接器使用其客户端证书从服务执行初始的系统配置数据提取，并准备好接收请求。
@@ -134,13 +134,13 @@ Azure AD 应用程序代理由两个部分组成：
 若要深入了解其中每个步骤的具体内容，请继续阅读下文。
 
 
-#### <a name="1-the-service-authenticates-the-user-for-the-app"></a>1. 服务对应用程序的用户进行身份验证
+#### <a name="1-the-service-authenticates-the-user-for-the-app"></a>1. 服务对应用的用户进行身份验证
 
 如果已将应用配置为使用“直通”作为其预身份验证方法，则跳过此部分中的步骤。
 
 如果已将应用配置为使用 Azure AD 进行预身份验证，则会将用户重定向到 Azure AD STS 进行身份验证，并且发生以下步骤：
 
-1. 应用程序代理会检查特定应用程序的任何条件访问策略要求。 此步骤可确保将用户分配到该应用程序。 如果需要双重验证，身份验证序列会提示用户执行第二个身份验证方法。
+1. 应用程序代理检查特定应用程序的任何条件访问策略要求。 此步骤可确保将用户分配到该应用程序。 如果需要双重验证，身份验证序列会提示用户执行第二个身份验证方法。
 
 2. 所有检查都通过后，Azure AD STS 将为应用程序颁发已签名的令牌，并将用户重定向回应用程序代理服务。
 
@@ -153,7 +153,7 @@ Azure AD 应用程序代理由两个部分组成：
 如果预身份验证步骤的任何一个环节失败，用户的请求会被拒绝，并向用户显示一条消息指出问题的起源。
 
 
-#### <a name="2-the-service-places-a-request-in-the-connector-queue"></a>2. 服务在连接器队列中放置请求
+#### <a name="2-the-service-places-a-request-in-the-connector-queue"></a>2. 服务在连接器队列中发出请求
 
 连接器向应用程序代理服务保持打开出站连接。 传入某个请求时，服务会在一个打开的连接上将该请求排入队列，等待连接器提取。
 
@@ -167,7 +167,7 @@ Azure AD 应用程序代理由两个部分组成：
 
 * 如果请求的正文中包含关联的数据（例如 RESTful *POST* 操作），连接器将使用客户端证书来与应用程序代理实例建立出站连接。 建立此连接是为了请求数据，并打开与内部资源的连接。 收到来自连接器的请求后，应用程序代理服务开始接受用户的内容并将数据转发到连接器。 连接器随之将数据转发到内部资源。
 
-#### <a name="4-the-connector-waits-for-a-response"></a>4. 连接器将等待响应。
+#### <a name="4-the-connector-waits-for-a-response"></a>4. 连接器等待响应。
 
 完成向后端发送请求并传输所有内容后，连接器将等待响应。
 

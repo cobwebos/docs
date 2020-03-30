@@ -9,15 +9,15 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
 ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72299674"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>使用 Azure Data Lake Storage Gen2 的最佳做法
 
-在本文中，你将了解 Azure Data Lake Storage Gen2 使用方面的最佳做法和注意事项。 本文介绍 Data Lake Storage Gen2 的安全性、性能、复原能力和监视。 在 Data Lake Storage Gen2 出现之前，在 Azure HDInsight 之类的服务中使用真正大型的数据是很复杂的事情。 必须将数据在多个 Blob 存储帐户中分片，才能实现 PB 级的存储以及在该规模下的性能优化。 Data Lake Storage Gen2 支持单个文件大小（高达5TB），并且已删除大多数性能限制。 但是，若要充分利用 Data Lake Storage Gen2 的性能，仍有一些需要本文讨论的注意事项。
+在本文中，你将了解 Azure Data Lake Storage Gen2 使用方面的最佳做法和注意事项。 本文介绍 Data Lake Storage Gen2 的安全性、性能、复原能力和监视。 在 Data Lake Storage Gen2 出现之前，在 Azure HDInsight 之类的服务中使用真正大型的数据是很复杂的事情。 必须将数据在多个 Blob 存储帐户中分片，才能实现 PB 级的存储以及在该规模下的性能优化。 Data Lake Storage Gen2 支持高达 5TB 的单个文件大小，并且对性能的大多数硬限制都已消除。 但是，若要充分利用 Data Lake Storage Gen2 的性能，仍有一些需要本文讨论的注意事项。
 
 ## <a name="security-considerations"></a>安全注意事项
 
@@ -39,9 +39,9 @@ Azure Active Directory 服务主体通常可供 Azure Databricks 之类的服务
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>启用 Data Lake Storage Gen2 防火墙，允许 Azure 服务访问
 
-Data Lake Storage Gen2 支持启用防火墙并仅限 Azure 服务进行访问的选项。如果需要限制外部攻击途径，建议使用这一选项。 可以通过“防火墙” > “启用防火墙(启用)” > “允许 Azure 服务访问”选项在 Azure 门户的存储帐户上启用防火墙。
+Data Lake Storage Gen2 支持启用防火墙并仅限 Azure 服务进行访问的选项。如果需要限制外部攻击途径，建议使用这一选项。 防火墙可以通过**防火墙** > **启用防火墙 （ON）** > **允许访问 Azure 服务**选项在 Azure 门户中的存储帐户上启用。
 
-若要从 Azure Databricks 访问你的存储帐户，请将 Azure Databricks 部署到你的虚拟网络，然后将该虚拟网络添加到防火墙。 请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
+要从 Azure 数据块访问存储帐户，请将 Azure 数据块部署到虚拟网络，然后将该虚拟网络添加到防火墙。 请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
 
 ## <a name="resiliency-considerations"></a>复原注意事项
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen2 支持启用防火墙并仅限 Azure 服务进行访问�
 
 ### <a name="high-availability-and-disaster-recovery"></a>高可用性和灾难恢复
 
-高可用性 (HA) 和灾难恢复 (DR) 有时可以组合在一起，虽然每个的策略稍有不同，尤其是在涉及到数据的时候。 Data Lake Storage Gen2 已经可以在后台处理 3 个副本形式的复制，来应对局部硬件故障。 此外，其他复制选项（如 ZRS 或 GZRS （预览版））提高了 HA，而 GRS & RA-GRS 改善了 DR。 在制定计划以确保 HA 时，应考虑到在发生服务中断的情况下，工作负荷需尽快切换到在本地或新区域中单独复制的实例，以便访问最新数据。
+高可用性 (HA) 和灾难恢复 (DR) 有时可以组合在一起，虽然每个的策略稍有不同，尤其是在涉及到数据的时候。 Data Lake Storage Gen2 已经可以在后台处理 3 个副本形式的复制，来应对局部硬件故障。 此外，其他复制选项（如 ZRS 或 GZRS（预览））改进 HA，而 GRS & RA-GRS 改进 DR。 在制定计划以确保 HA 时，应考虑到在发生服务中断的情况下，工作负荷需尽快切换到在本地或新区域中单独复制的实例，以便访问最新数据。
 
 在 DR 策略中，为了应对某个区域发生灾难性故障这种不太可能的事件，必须使用 GRS 或 RA-GRS 复制选项将数据复制到其他区域，这也很重要。 此外，还必须考虑到在出现数据损坏这样的极端例子时的要求，因此需要创建可供回退的定期快照。 根据数据的重要性和大小，可以考虑每隔 1 小时、6 小时、24 小时创建滚动性的增量快照，具体取决于风险承受能力。
 
@@ -89,7 +89,7 @@ Data Lake Storage Gen2 提供了一些指标。这些指标可以在 Azure 门�
 
 概括地讲，在批处理中，常用的方法是先将数据置于“in”目录中。 然后，当数据处理完以后，再将新数据置于“out”目录中，供下游进程使用。 有的作业需要对单个文件进行处理，但可能不需要对大型数据集进行大规模并行处理。对于这种作业，有时候会使用此目录结构。 与上面建议的 IoT 结构一样，好的目录结构会设置父级目录，用于存储区域和主题之类的内容（例如，组织、产品/制造者）。 此结构有助于确保组织数据的安全，并可更好地管理工作负荷中的数据。 另外，可以考虑在结构中添加日期和时间，以便更好地在处理过程中进行组织和筛选式搜索，增强安全性并提高自动化程度。 日期结构的粒度级别取决于上传或处理数据的时间间隔，例如每小时、每天甚至每月。
 
-有时候，数据损坏或格式异常会导致文件处理失败。 在这种情况下，可以将这些文件移到 **/bad** 文件夹中进一步进行检查，这样的目录结构更有效。 还可以通过批处理作业将这些损坏的文件报告或通知给相关人员，要求其进行人工干预。 请考虑以下模板结构：
+有时候，数据损坏或格式异常会导致文件处理失败。 在这种情况下，可以将这些文件移到 **/bad** 文件夹中进一步进行检查，这样的目录结构更有效。 还可以通过批处理作业将这些损坏的文件报告或通知给相关人员，要求其进行人工干预。** 请考虑以下模板结构：
 
     {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
     {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/

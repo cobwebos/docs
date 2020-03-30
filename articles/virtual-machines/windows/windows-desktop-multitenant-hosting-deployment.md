@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: 9ff8cc64266375a2d439763b222870843136f67a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101493"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租户托管权限在 Azure 上部署 Windows 10 
@@ -32,7 +32,7 @@ ms.locfileid: "70101493"
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>通过 Azure 市场部署 Windows 10 映像 
 对于 Powershell、CLI 和 Azure 资源管理器模板部署，可使用以下 publishername、产品/服务及 sku 找到 Windows 10 映像。
 
-| OS  |      PublisherName      |  套餐 | Sku |
+| OS  |      PublisherName      |  产品/服务 | SKU |
 |:----------|:-------------:|:------|:------|
 | Windows 10 专业版    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
 | Windows 10 专业版 N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
@@ -69,7 +69,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**使用 Azure 资源管理器模板部署进行部署** 在资源管理器模板中，可为 `licenseType` 指定一个附加参数。 可以阅读有关[创作 Azure 资源管理器模板](../../resource-group-authoring-templates.md)的详细信息。 将 VHD 上传到 Azure 之后，请编辑 Resource Manager 模板以将许可证类型包含为计算提供程序的一部分，然后照常部署模板：
+**使用 Azure 资源管理器模板部署进行部署** 在资源管理器模板中，可为 `licenseType` 指定一个附加参数。 您可以阅读有关创作[Azure 资源管理器模板的更多内容](../../resource-group-authoring-templates.md)。 将 VHD 上传到 Azure 之后，请编辑 Resource Manager 模板以将许可证类型包含为计算提供程序的一部分，然后照常部署模板：
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -107,7 +107,7 @@ LicenseType              :
 
 ## <a name="additional-information-about-joining-azure-ad"></a>有关联接 Azure AD 的其他信息
 >[!NOTE]
->Azure 使用内置 Administrator 帐户预配所有 Windows，但不能使用此方法联接 AAD。 例如，“设置”>“帐户”>“访问工作或学校帐户”>“+连接”将不起作用。 若要手动加入 Azure AD，必须创建另一个管理员帐户并以其身份登录。 还可以使用预配包配置 Azure AD，使用“后续步骤”部分中的链接了解详细信息。
+>Azure 使用内置 Administrator 帐户预配所有 Windows，但不能使用此方法联接 AAD。 例如，“设置”>“帐户”>“访问工作或学校帐户”>“+连接”将不起作用**。 若要手动加入 Azure AD，必须创建另一个管理员帐户并以其身份登录。 还可以使用预配包配置 Azure AD，使用“后续步骤”部分中的链接了解详细信息**。
 >
 >
 

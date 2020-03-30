@@ -1,6 +1,6 @@
 ---
 title: '从 Azure Cloud Shell 中使用 Databricks CLI '
-description: 了解如何使用 Azure Cloud Shell 的 Databricks CLI 对 Azure Databricks 执行操作。
+description: 了解如何使用 Azure 云外壳的数据块 CLI 对 Azure 数据块执行操作。
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: mamccrea
 ms.openlocfilehash: efb0d3222bfd98b15502163979425d47fa459e07
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73605722"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>从 Azure Cloud Shell 中使用 Databricks CLI
@@ -28,7 +28,7 @@ ms.locfileid: "73605722"
 
 ## <a name="use-the-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到 Azure[门户](https://portal.azure.com)。
  
 2. 在右上角单击 **Cloud Shell** 图标。
 
@@ -36,7 +36,7 @@ ms.locfileid: "73605722"
 
 3. 请确保已选择 **Bash** 作为 Cloud Shell 环境。 可以从下拉列表选项中进行选择，如以下屏幕截图中所示。
 
-   ![为 Cloud Shell 环境选择 Bash](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "选择 Bash") 
+   ![为云壳环境选择 Bash](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "选择 Bash") 
 
 4. 创建可在其中安装 Databricks CLI 的虚拟环境。 在下面的代码片段中，将创建一个名为 `databrickscli` 的虚拟环境。
 
@@ -50,7 +50,7 @@ ms.locfileid: "73605722"
 
        pip install databricks-cli
 
-7. 使用访问令牌通过 Databricks 设置身份验证，该访问令牌必须已创建并已作为先决条件的一部分列出。 请使用以下命令：
+7. 使用访问令牌通过 Databricks 设置身份验证，该访问令牌必须已创建并已作为先决条件的一部分列出。 使用以下命令：
 
        databricks configure --token
 

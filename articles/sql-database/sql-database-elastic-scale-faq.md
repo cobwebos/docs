@@ -1,5 +1,5 @@
 ---
-title: 弹性缩放常见问题
+title: 弹性缩放常见问题解答
 description: 有关 Azure SQL 数据库弹性缩放的常见问题。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 3eedfb1e9ec59fbe12ee94a65d3702a7ef8ca95a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823643"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>弹性数据库工具常见问题解答 (FAQ)
@@ -54,6 +54,6 @@ ms.locfileid: "73823643"
 
 ## <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>在拆分或合并操作期间，“拆分/合并”工具是否会设置（或删除）数据库
 
-不能。 对于**拆分**操作，必须存在目标数据库和相应的架构，并且必须注册到分片映射管理器。  对于**合并**操作，必须从分片映射管理器中删除分片，并删除数据库。
+不是。 对于**拆分**操作，必须存在目标数据库和相应的架构，并且必须注册到分片映射管理器。  对于**合并**操作，必须从分片映射管理器中删除分片，并删除数据库。
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 资源管理器模板为 Azure 数据资源管理器创建事件网格数据连接
-description: 本文介绍如何使用 Azure 资源管理器模板为 Azure 数据资源管理器创建事件网格数据连接。
+description: 在本文中，您将了解如何通过使用 Azure 资源管理器模板为 Azure 数据资源管理器创建事件网格数据连接。
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,34 +8,34 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/28/2019
 ms.openlocfilehash: a2e29b9811ab163642e7f65ded584c4889c199db
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74669254"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板为 Azure 数据资源管理器创建事件网格数据连接
 
 > [!div class="op_single_selector"]
-> * [Portal](ingest-data-event-grid.md)
+> * [门户](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager 模板](data-connection-event-grid-resource-manager.md)
 
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供从事件中心、IoT 中心和写入 blob 容器的 blob 的引入（数据加载）。 本文介绍如何使用 Azure 资源管理器模板为 Azure 数据资源管理器创建事件网格数据连接。
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供了从事件中心、IoT 中心和写入 blob 容器的 blob 引入数据（数据加载）的功能。 在本文中，通过使用 Azure 资源管理器模板为 Azure 数据资源管理器创建事件网格数据连接。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
-* 创建[群集和数据库](create-cluster-database-portal.md)
+* [创建群集和数据库](create-cluster-database-portal.md)
 * 创建[表和列映射](ingest-data-event-grid.md#create-a-target-table-in-azure-data-explorer)
-* 创建[事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
+* [创建事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
 * [使用事件网格订阅创建存储帐户](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account)。
 
 ## <a name="azure-resource-manager-template-for-adding-an-event-grid-data-connection"></a>用于添加事件网格数据连接的 Azure 资源管理器模板
 
-下面的示例演示用于添加事件网格数据连接的 Azure 资源管理器模板。  您可以使用窗体[在 Azure 门户中编辑和部署模板](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)。
+下面的示例显示了用于添加事件网格数据连接的 Azure 资源管理器模板。  可以使用此窗体[在 Azure 门户中编辑和部署模板](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)。
 
 ```json
 {

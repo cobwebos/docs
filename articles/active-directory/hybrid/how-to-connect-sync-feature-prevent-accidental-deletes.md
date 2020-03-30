@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48f3109b4c87e25444629ca25411894eab8a9d56
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71827127"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect 同步：防止意外删除
@@ -41,7 +41,7 @@ ms.locfileid: "71827127"
 
 ![有关防止意外删除的电子邮件](./media/how-to-connect-sync-feature-prevent-accidental-deletes/email.png)
 
-> *你好（技术联系人）。标识同步服务在（时间）检测到删除数目超过了为（组织名称）配置的删除阈值。在此次标识同步运行期间，总共已发送（数目）个对象进行删除。这达到或超过了配置的删除阈值，即（数目）个对象。在继续之前，我们需要你确认应该处理这些删除。有关此电子邮件中所列错误的详细信息，请参阅“防止意外删除”。*
+> *您好（技术联系人）。在（时间）标识同步服务检测到删除数超过（组织名称）的已配置删除阈值。在此标识同步运行中，共发送了（数字）对象以进行删除。这达到或超过（数字）对象的已配置删除阈值。我们需要您提供确认，这些删除应处理之前，我们将继续。有关此电子邮件中列出的错误的详细信息，请参阅防止意外删除。*
 >
 > 
 
@@ -50,27 +50,27 @@ ms.locfileid: "71827127"
 
 如果这是意外情况，请进行调查，并采取纠正措施。 要查看哪些对象即将被删除，请执行以下操作：
 
-1. 从“开始”菜单启动“同步服务”。
-2. 转到“连接器”。
+1. 从"开始"菜单开始**同步服务**。
+2. 转到“连接器”。****
 3. 选择 **Azure Active Directory** 类型的连接器。
-4. 在右侧的“操作”下，选择“搜索连接器空间”。
-5. 在“范围”下的弹出框中选择“连接断开起始时间”，并选择过去的一个时间。 单击“搜索”。 可以在此页上查看所有即将删除的对象。 单击每个项可以获取有关该对象的更多信息。 也可以单击“列设置”，添加要在网格中显示的其他属性。
+4. 在右侧的“操作”下，选择“搜索连接器空间”。********
+5. 在“范围”下的弹出框中选择“连接断开起始时间”，并选择过去的一个时间。******** 单击“搜索”****。 此页提供所有即将删除的对象的视图。 单击每个项可以获取有关该对象的更多信息。 也可以单击“列设置”，添加要在网格中显示的其他属性。****
 
 ![搜索连接器空间](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 
-[!NOTE] 如果你不确定所有删除都是必需的，并且希望关闭更安全的路由。 你可以使用 PowerShell cmdlet： `Enable-ADSyncExportDeletionThreshold` 设置新阈值，而不是禁用可能会导致不需要的删除的阈值。 
+[!NOTE] 如果你不确定所有删除是否都是必需的，并且希望使用更安全的方法。 可以使用 PowerShell cmdlet：`Enable-ADSyncExportDeletionThreshold` 来设置新阈值，而不是禁用可能允许不需要的删除的阈值。 
 
-## <a name="if-all-deletes-are-desired"></a>如果需要所有删除
+## <a name="if-all-deletes-are-desired"></a>如果需要所有删除项
 如果想要查看所有删除项，请执行以下操作：
 
 1. 若要检索当前的删除阈值，请运行 PowerShell cmdlet `Get-ADSyncExportDeletionThreshold`。 提供 Azure AD 全局管理员帐户和密码。 默认值为 500。
-2. 若要暂时禁用此保护并允许删除这些项，请运行 PowerShell cmdlet： `Disable-ADSyncExportDeletionThreshold`。 提供 Azure AD 全局管理员帐户和密码。
+2. 若要暂时禁用此保护并允许删除这些项，请运行 PowerShell cmdlet：`Disable-ADSyncExportDeletionThreshold`。 提供 Azure AD 全局管理员帐户和密码。
    ![凭据](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
-3. 如果 Azure Active Directory 连接器仍被选中，请选择“运行”操作，再选择“导出”。
-4. 若要重新启用保护，请运行 PowerShell cmdlet： `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`。 检索当前的删除阈值时，请将 500 替换成看到的值。 提供 Azure AD 全局管理员帐户和密码。
+3. 如果 Azure Active Directory 连接器仍被选中，请选择“运行”操作，再选择“导出”。********
+4. 若要重新启用保护，请运行 PowerShell cmdlet：`Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`。 检索当前的删除阈值时，请将 500 替换成看到的值。 提供 Azure AD 全局管理员帐户和密码。
 
 ## <a name="next-steps"></a>后续步骤
 **概述主题**
 
-* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
-* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
+* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
+* [将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)

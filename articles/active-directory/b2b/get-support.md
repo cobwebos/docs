@@ -1,5 +1,5 @@
 ---
-title: 获取对 B2B 协作的支持-Azure Active Directory
+title: 获取对 B2B 协作的支持 - Azure 活动目录
 description: 什么是 Azure Active Directory B2B 协作的支持体验？
 services: active-directory
 ms.service: active-directory
@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00817acf93295becefab2d1a61de84a3f5519338
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272759"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>获取对 B2B 协作的支持

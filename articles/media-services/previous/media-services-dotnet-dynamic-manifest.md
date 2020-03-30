@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: cenkdin
 ms.openlocfilehash: c60b223f91a151bf63cabc5e95816f2545022503
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69016610"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 创建筛选器 
@@ -38,11 +38,11 @@ ms.locfileid: "69016610"
 请注意，如果更新筛选器，则流式处理终结点需要两分钟的时间来刷新规则。 如果内容是通过使用此筛选器提供的（并在代理和 CDN 缓存中缓存），则更新此筛选器会导致播放器失败。 请始终在更新筛选器之后清除缓存。 如果此选项不可用，请考虑使用其他筛选器。 
 
 ## <a name="types-used-to-create-filters"></a>用于创建筛选器的类型
-创建筛选器时使用以下类型： 
+创建筛选器时会使用以下类型： 
 
 * **IStreamingFilter**。  此类型基于以下 REST API [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
 * **IStreamingAssetFilter**。 此类型基于以下 REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* **PresentationTimeRange**。 此类型基于以下 REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
+* **演示时间范围**. 此类型基于以下 REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
 * **FilterTrackSelectStatement** 和 **IFilterTrackPropertyCondition**。 这些类型基于以下 REST API [FilterTrackSelect 和 FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
 ## <a name="createupdatereaddelete-global-filters"></a>创建/更新/读取/删除全局筛选器
@@ -116,7 +116,7 @@ ms.locfileid: "69016610"
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
-**Apple HTTP Live Streaming (HLS) V4**
+**Apple HTTP 实时流 (HLS) V4**
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
 
@@ -135,6 +135,6 @@ ms.locfileid: "69016610"
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 [动态清单概述](media-services-dynamic-manifest-overview.md)
 

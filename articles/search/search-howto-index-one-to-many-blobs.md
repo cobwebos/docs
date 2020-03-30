@@ -1,7 +1,7 @@
 ---
 title: 包含多个文档的索引 blob
 titleSuffix: Azure Cognitive Search
-description: 使用 Azure 认知搜索 Blob 索引器对用于文本内容的 Azure blob 进行爬网，其中每个 blob 可能会生成一个或多个搜索索引文档。
+description: 使用 Azure 认知搜索 Blob 索引器抓取 Azure Blob 以获取文本内容，该索引器中的每个 blob 可能会生成一个或多个搜索索引文档。
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -10,26 +10,26 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74112264"
 ---
-# <a name="indexing-blobs-to-produce-multiple-search-documents"></a>为生成多个搜索文档的 blob 编制索引
+# <a name="indexing-blobs-to-produce-multiple-search-documents"></a>为可以生成多个搜索文档的 Blob 编制索引
 默认情况下，Blob 索引器将一个 Blob 的内容视为单个搜索文档。 某些 **parsingMode** 值支持单个 Blob 导致多个搜索文档的方案。 允许索引器从一个 Blob 提取多个搜索文档的不同类型的 **parsingMode** 包括：
 + `delimitedText`
 + `jsonArray`
 + `jsonLines`
 
 ## <a name="one-to-many-document-key"></a>一对多文档键
-Azure 认知搜索索引中显示的每个文档都由文档键唯一标识。 
+Azure 认知搜索索引中显示的每个文档由一个文档键唯一标识。 
 
-如果未指定任何分析模式，并且索引中没有键字段的显式映射，Azure 认知搜索会自动将 `metadata_storage_path` 属性[映射](search-indexer-field-mappings.md)为键。 这种映射确保每个 Blob 显示为不同的搜索文档。
+如果未指定分析模式，并且索引中的键字段不存在显式映射，Azure 认知搜索会自动将 `metadata_storage_path` 属性[映射](search-indexer-field-mappings.md)为键。 这种映射确保每个 Blob 显示为不同的搜索文档。
 
-使用上面所列的任一分析模式时，一个 Blob 将映射到“多个”搜索文档，因此，一个文档键仅基于 Blob 元数据是不适当的。 若要克服此限制，Azure 认知搜索可以为从 blob 中提取的每个单独实体生成 "一对多" 文档键。 此属性名为 `AzureSearch_DocumentKey`，将添加到从 Blob 提取的每个实体。 系统保证此属性的值对于各 Blob 中的每个实体唯一，而实体将显示为独立的搜索文档。
+使用上面所列的任一分析模式时，一个 Blob 将映射到“多个”搜索文档，因此，一个文档键仅基于 Blob 元数据是不适当的。 为了克服这种约束，Azure 认知搜索能够为从 Blob 提取的每个单个实体生成“一对多”的文档键。 此属性名为 `AzureSearch_DocumentKey`，将添加到从 Blob 提取的每个实体。 系统保证此属性的值对于各 Blob 中的每个实体唯一，而实体将显示为独立的搜索文档。__
 
-默认情况下，如果未指定键索引字段的显式字段映射，系统会使用 `AzureSearch_DocumentKey` 字段映射函数将 `base64Encode` 映射到该字段。
+默认情况下，如果未指定键索引字段的显式字段映射，系统会使用 `base64Encode` 字段映射函数将 `AzureSearch_DocumentKey` 映射到该字段。
 
 ## <a name="example"></a>示例
 假设某个索引定义包含以下字段：
@@ -58,14 +58,14 @@ _Blob2.json_
         "mappingFunction": { "name" : "base64Encode" }
     }
 
-此设置将导致 Azure 认知搜索索引包含以下信息（为简洁起见，将 base64 编码的 id 缩短）
+此设置会生成包含以下信息的 Azure 认知搜索索引（为简洁起见，base64 编码的 ID 已缩短）
 
-| id | 温度 | 压强 | timestamp |
+| id | 温度 | 压力 | timestamp |
 |----|-------------|----------|-----------|
-| aHR0 ...YjEuanNvbjsx | 100 个 | 100 个 | 2019-02-13T00:00:00Z |
-| aHR0 ...YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |
-| aHR0 ...YjIuanNvbjsx | 1 个 | 1 个 | 2018-01-12T00:00:00Z |
-| aHR0 ...YjIuanNvbjsy | 120 | 3 | 2013-05-11T00:00:00Z |
+| aHR0 ...伊尤恩·恩夫比克斯 | 100 | 100 | 2019-02-13T00:00:00Z |
+| aHR0 ...伊尤恩·恩布西 | 33 | 30 | 2019-02-14T00:00:00Z |
+| aHR0 ...伊尤安·恩夫比克斯 | 1 | 1 | 2018-01-12T00:00:00Z |
+| aHR0 ...伊扬·恩夫比西 | 120 | 3 | 2013-05-11T00:00:00Z |
 
 ## <a name="custom-field-mapping-for-index-key-field"></a>索引键字段的自定义字段映射
 
@@ -90,7 +90,7 @@ _Blob2.json_
         "targetFieldName": "id"
     }
 
-但是，此映射不会生成索引中显示的 4 个文档，因为  _字段在各 Blob 中不是唯一的。_ `recordid` 因此，我们建议对“一对多”分析模式，应用从 `AzureSearch_DocumentKey` 属性到键索引字段的隐式字段映射。
+但是，此映射不会生成索引中显示的 4 个文档，因为 `recordid` 字段在各 Blob 中不是唯一的。____ 因此，我们建议对“一对多”分析模式，应用从 `AzureSearch_DocumentKey` 属性到键索引字段的隐式字段映射。
 
 如果确实想要设置显式字段映射，请确保 _sourceField_ 对于**所有 Blob** 中的每个实体都是不同的。
 
@@ -99,8 +99,8 @@ _Blob2.json_
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你尚不熟悉 blob 索引的基本结构和工作流，则应首先查看[为 Azure Blob 存储编制索引认知搜索](search-howto-index-json-blobs.md)。 有关不同 blob 内容类型的分析模式的详细信息，请参阅以下文章。
+如果尚未熟悉 blob 索引编制的基本结构和工作流，则应先[使用 Azure 认知搜索为 Azure Blob 存储编制索引](search-howto-index-json-blobs.md)。 请查看以下文章，详细了解不同 blob 内容类型的分析模式。
 
 > [!div class="nextstepaction"]
-> 为[JSON](search-howto-index-json-blobs.md) blob 编制索引
-> [索引 CSV blob](search-howto-index-csv-blobs.md)
+> [索引 CSV Blob](search-howto-index-csv-blobs.md)
+> [索引 JSON blob](search-howto-index-json-blobs.md)

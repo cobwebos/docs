@@ -9,115 +9,115 @@ ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79129383"
 ---
 ## <a name="limitations"></a>限制
 
-- 虚拟机规模集目前在专用主机上不受支持。
+- 专用主机当前不支持虚拟机缩放集。
 
 ## <a name="benefits"></a>优点 
 
-保留整个主机具有以下优势：
+保留整个主机具有以下好处：
 
--   物理服务器级别的硬件隔离。 不会在主机上放置任何其他 Vm。 专用主机部署在相同的数据中心内，与其他非独立主机主机共享相同的网络和底层存储基础结构。
--   控制由 Azure 平台启动的维护事件。 尽管大部分维护事件对虚拟机的影响不大，但在某些情况下，暂停的每秒都会产生影响。 使用专用主机时，可以选择维护时段，以降低对服务的影响。
--   利用 Azure 混合权益，你可以将自己的 Windows 和 SQL 许可证带到 Azure。 使用混合权益可提供额外的好处。 有关详细信息，请参阅[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)。
+-   物理服务器级别的硬件隔离。 主机上不会放置其他 VM。 专用主机部署在同一数据中心，并与其他非隔离主机共享相同的网络和基础存储基础结构。
+-   控制由 Azure 平台启动的维护事件。 虽然大多数维护事件对虚拟机的影响很小或没有影响，但有些敏感的工作负载会影响每一秒的暂停。 使用专用主机，您可以选择加入维护窗口，以减少对服务的影响。
+-   借助 Azure 混合权益，您可以将自己的 Windows 和 SQL 许可证带到 Azure。 使用混合权益可为您提供其他好处。 有关详细信息，请参阅[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)。
 
 
-## <a name="groups-hosts-and-vms"></a>组、主机和 Vm  
+## <a name="groups-hosts-and-vms"></a>组、主机和 VM  
 
 ![查看专用主机的新资源。](./media/virtual-machines-common-dedicated-hosts/dedicated-hosts2.png)
 
-**主机组**是代表专用主机集合的资源。 在区域和可用性区域中创建主机组，并向其添加主机。
+**主机组**是表示专用主机集合的资源。 在区域和可用性区域中创建主机组，并将主机添加到其中。
 
-**主机**是映射到 Azure 数据中心中的物理服务器的资源。 创建主机时，会分配物理服务器。 主机是在主机组中创建的。 主机提供一个 SKU，用于描述可以创建的 VM 大小。 每个主机可以托管多个不同大小的 Vm，前提是它们来自相同的大小系列。
+**主机**是一种资源，映射到 Azure 数据中心中的物理服务器。 创建主机时分配物理服务器。 在主机组中创建主机。 主机具有 SKU，用于描述可以创建哪些 VM 大小。 每个主机可以承载多个不同大小的 VM，只要它们来自同一大小系列。
 
-在 Azure 中创建 VM 时，可以选择要用于 VM 的专用主机。 你可以完全控制哪些 Vm 放置在主机上。
+在 Azure 中创建 VM 时，可以选择用于 VM 的专用主机。 您可以完全控制将哪些 VM 放置在主机上。
 
 
 ## <a name="high-availability-considerations"></a>高可用性注意事项 
 
-为实现高可用性，应该部署多个 Vm，并将其分布到多个主机（最少2个）。 使用 Azure 专用主机时，可以使用多个选项来预配基础结构，从而形成故障隔离边界。
+为获得高可用性，应部署多个 VM，分布在多个主机（至少 2 个）。 使用 Azure 专用主机，您可以预配基础结构以形成故障隔离边界。
 
 ### <a name="use-availability-zones-for-fault-isolation"></a>使用可用性区域进行故障隔离
 
-可用性区域是 Azure 区域内的唯一物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 在单个可用性区域中创建主机组。 创建后，所有主机都将放置在该区域中。 要实现跨区域的高可用性，需要创建多个主机组（每个区域一个），并相应地分散主机。
+可用性区域是 Azure 区域中唯一的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 在单个可用性区域中创建主机组。 创建后，所有主机都将放置在该区域内。 要跨区域实现高可用性，您需要创建多个主机组（每个区域一个），并相应地扩展主机。
 
-如果向可用性区域分配主机组，则必须在同一区域中创建在该主机上创建的所有 Vm。
+如果将主机组分配给可用性区域，则必须在同一区域中创建在该主机上创建的所有 VM。
 
-### <a name="use-fault-domains-for-fault-isolation"></a>使用容错域实现故障隔离
+### <a name="use-fault-domains-for-fault-isolation"></a>使用容错域进行故障隔离
 
-可以在特定的容错域中创建主机。 与规模集或可用性集中的 VM 一样，不同容错域中的主机将放置在数据中心的不同物理机架上。 创建主机组时，需要指定容错域计数。 在主机组中创建主机时，会为每个主机分配容错域。 Vm 不需要任何容错域分配。
+可以在特定的容错域中创建主机。 与规模集或可用性集中的 VM 一样，不同容错域中的主机将放置在数据中心的不同物理机架上。 创建主机组时，需要指定容错域计数。 在主机组中创建主机时，会为每个主机分配容错域。 VM 不需要任何容错域分配。
 
-容错域不同于归置。 两个主机具有相同的容错域并不意味着它们彼此接近。
+容错域与配置不同。 两个主机具有相同的容错域并不意味着它们彼此接近。
 
-容错域的作用域限定为主机组。 不应在两个主机组之间进行反相关性假设，除非它们在不同的可用性区域中。
+容错域的范围为主机组。 不应对两个主机组之间的反关联进行任何假设（除非它们位于不同的可用性区域）。
 
-部署到具有不同容错域的主机的 Vm 将在多个存储戳记上具有其基本托管磁盘服务，以提高故障隔离保护。
+部署到具有不同容错域的主机的 VM 将在多个存储戳上具有其基础托管磁盘服务，以提高故障隔离保护。
 
 ### <a name="using-availability-zones-and-fault-domains"></a>使用可用性区域和容错域
 
-可以同时使用这两项功能来实现更好的故障隔离。 在这种情况下，你将在中为每个主机组指定可用性区域和容错域计数，将容错域分配给组中的每个主机，并为每个 Vm 分配一个可用性区域
+可以同时使用这两种功能来实现更多的故障隔离。 在这种情况下，您将为每个主机组指定可用性区和容错域计数，将容错域分配给组中的每个主机，并为每个 VM 分配一个可用性区域
 
-[此处](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)提供的资源管理器示例模板使用区域和容错域传播主机以实现区域中的最大复原能力。
+[此处](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)找到的资源管理器示例模板使用区域和容错域来扩展主机，以实现区域中的最大恢复能力。
 
 ## <a name="maintenance-control"></a>维护控制
 
-有时可能会更新支持虚拟机的基础结构，以提高可靠性、性能和安全性，并启动新功能。 Azure 平台会尽可能最大程度地减少平台维护的影响，但具有*维护敏感*工作负荷的客户不能容忍需要冻结或断开 VM 维护的时间。
+支持虚拟机的基础结构可能会偶尔更新，以提高可靠性、性能、安全性并启动新功能。 Azure 平台尝试尽可能将平台维护的影响降至最低，但具有*维护敏感*工作负荷的客户甚至无法容忍 VM 需要冻结或断开连接进行维护的几秒钟。
 
-**维护控制**向客户提供一个选项，用于跳过在其专用主机上计划的定期平台更新，并在35天滚动窗口中进行选择时应用。
+**维护控制**为客户提供一个选项，可以跳过计划在其专用主机上安排的常规平台更新，然后在他们选择的时间在 35 天的滚动窗口中应用它。
 
 > [!NOTE]
->  维护控制目前为公共预览版。 有关详细信息，请参阅**使用[CLI](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)或[PowerShell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)控制使用维护控制的更新**。
+>  维护控制当前处于公共预览版中。 有关详细信息，请参阅使用**[CLI](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)或[PowerShell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)使用维护控制的控制更新**。
 
 ## <a name="capacity-considerations"></a>容量注意事项
 
-预配专用主机之后，Azure 会将其分配给物理服务器。 当你需要预配 VM 时，这可保证容量的可用性。 Azure 使用区域（或区域）中的全部容量为主机选择物理服务器。 这也意味着，客户可以在不考虑群集中用尽空间的情况下，增加其专用主机占用量。
+预配专用主机后，Azure 会将其分配给物理服务器。 这保证了在需要预配 VM 时容量的可用性。 Azure 使用区域（或区域）中的整个容量为主机选择物理服务器。 这也意味着客户能够扩展其专用主机占用空间，而不必担心群集中空间不足。
 
 ## <a name="quotas"></a>配额
 
-对于专用主机，每个区域的默认配额限制为3000个 vcpu。 但对于主机使用的 VM 大小系列的配额，还会限制可以部署的主机数。 例如，"即**用即付**" 订阅在 "美国东部" 区域中只能有10个个 vcpu 的配额，适用于 Dsv3 大小系列。 在这种情况下，你需要将配额增加到至少64个 vcpu，然后才能部署专用主机。 如果需要，请选择右上角的 "**请求增加**" 按钮以进行请求。
+每个区域的专用主机的默认配额限制为 3000 vCPU。 但是，可以部署的主机数也受到用于主机的 VM 大小系列的配额的限制。 例如，在美国东部区域，即**用即付**订阅可能只有 10 个 vCPU 的配额可用于 Dsv3 大小系列。 在这种情况下，您需要请求将配额增加到至少 64 个 vCPU，然后才能部署专用主机。 选择右上角的请求**增加**按钮，根据需要提交请求。
 
-![门户中的 "使用情况和配额" 页的屏幕截图](./media/virtual-machines-common-dedicated-hosts/quotas.png)
+![门户中使用和配额页的屏幕截图](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
-有关详细信息，请参阅[Virtual Machine vCPU 配额](/azure/virtual-machines/windows/quotas)。
+有关详细信息，请参阅虚拟机[vCPU 配额](/azure/virtual-machines/windows/quotas)。
 
-免费试用版和 MSDN 订阅没有 Azure 专用主机的配额。
+免费试用和 MSDN 订阅没有 Azure 专用主机的配额。
 
 ## <a name="pricing"></a>定价
 
-无论部署多少个 Vm，都按专用主机对用户收费。 在你的月度语句中，你将看到新的可计费资源类型。 专用主机上的 Vm 仍会显示在你的声明中，但将具有0价格。
+无论部署的 VM 数是多少，用户都会按专用主机付费。 在每月对帐单中，您将看到新的计费资源类型的主机。 专用主机上的 VM 仍将显示在您的语句中，但价格为 0。
 
-主机价格根据 VM 系列、类型（硬件大小）和区域设置。 主机价格相对于主机支持的最大 VM 大小。
+主机价格基于 VM 系列、类型（硬件大小）和地区设置。 主机价格相对于主机上支持的最大 VM 大小相关。
 
-软件许可、存储和网络使用情况与主机和 Vm 分开计费。 不会更改这些可计费项。
+软件许可、存储和网络使用情况与主机和 VM 分开计费。 这些可计费项目没有变化。
 
 有关详细信息，请参阅[Azure 专用主机定价](https://aka.ms/ADHPricing)。
 
-你还可以使用[Azure 专用主机的保留实例](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)节省成本。
+您还可以使用[Azure 专用主机的预留实例](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)来节省成本。
  
-## <a name="sizes-and-hardware-generations"></a>大小和硬件代
+## <a name="sizes-and-hardware-generations"></a>尺寸和硬件代数
 
-SKU 是为主机定义的，它表示 VM 大小系列和类型。 可以在单个主机内混合使用不同大小的多个 Vm，只要它们属于相同的大小系列。 
+SKU 为主机定义，它表示 VM 大小系列和类型。 您可以在单个主机中混合多个不同大小的 VM，只要它们的大小相同。 
 
-*类型*为硬件生成。 同一 VM 系列的不同硬件类型将来自不同的 CPU 供应商，并且具有不同的 CPU 生成和核心数。 
+*类型*是硬件生成。 同一 VM 系列的不同硬件类型将来自不同的 CPU 供应商，并且具有不同的 CPU 代和内核数。 
 
-大小和硬件类型因区域而异。 若要了解详细信息，请参阅 "主机[定价" 页](https://aka.ms/ADHPricing)。
+大小和硬件类型因地区而异。 请参阅主机[定价页面](https://aka.ms/ADHPricing)以了解更多信息。
 
 
 ## <a name="host-life-cycle"></a>主机生命周期
 
 
-Azure 监视和管理主机的运行状况状态。 查询主机时，将返回以下状态：
+Azure 监视和管理主机的运行状况。 查询主机时，将返回以下状态：
 
-| 运行状况状态   | 说明       |
+| 运行状况状态   | 描述       |
 |----------|----------------|
 | 主机可用     | 主机没有已知问题。   |
-| 正在调查的主机  | 我们正在寻找的主机遇到一些问题。 这是 Azure 尝试并确定确定的问题的范围和根本原因所需的过渡状态。 主机上运行的虚拟机可能会受到影响。 |
-| 主机挂起解除分配   | Azure 无法将主机恢复回正常状态，要求你将虚拟机从此主机中重新部署。 如果启用 `autoReplaceOnFailure`，则虚拟机将在*修复*硬件上进行服务。 否则，虚拟机可能在即将失败的主机上运行。|
-| 主机解除分配  | 所有虚拟机都已从主机中删除。 由于硬件是从轮换中取出的，因此不再向此主机收费。   |
+| 主机正在调查中  | 我们正在调查的主机有一些问题。 这是 Azure 尝试确定所识别问题的范围和根本原因所需的过渡状态。 在主机上运行的虚拟机可能会受到影响。 |
+| 主机挂起的取消分配   | Azure 无法将主机还原到正常状态，并要求您将虚拟机从此主机中重新部署。 如果`autoReplaceOnFailure`启用，您的虚拟机将*修复为*健康的硬件。 否则，虚拟机可能在即将发生故障的主机上运行。|
+| 主机交易  | 所有虚拟机都已从主机中删除。 由于硬件已退出旋转，因此不再为此主机向您收费。   |
 

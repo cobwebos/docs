@@ -10,10 +10,10 @@ ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136221"
 ---
 # <a name="deprecated-container-management-with-docker-swarm"></a>（已弃用）使用 Docker Swarm 管理容器

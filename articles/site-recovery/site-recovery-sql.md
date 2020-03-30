@@ -1,5 +1,5 @@
 ---
-title: 为具有 Azure Site Recovery 的 SQL Server 设置灾难恢复
+title: 使用 Azure 站点恢复为 SQL Server 设置灾难恢复
 description: 本文介绍如何使用 SQL Server 和 Azure Site Recovery 为 SQL Server 设置灾难恢复。
 services: site-recovery
 author: sujayt
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
 ms.openlocfilehash: 429f46156da728bbc24108090eac8c04f68da71c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74084737"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>为 SQL Server 设置灾难恢复
@@ -45,7 +45,7 @@ Azure IaaS VM 上的或本地的 SQL Server。| 使用 Azure Site Recovery 进�
 > 使用 Site Recovery 帮助保护 SQL 工作负荷时需要考虑到几个重要因素：
 > * Site Recovery 是应用程序不可知的。 Azure Site Recovery 可帮助保护部署在受支持操作系统上的任何 SQL Server 版本。 有关详细信息，请参阅复制的计算机的[恢复支持矩阵](vmware-physical-azure-support-matrix.md#replicated-machines)。
 > * 对于 Azure、Hyper-V、VMware 或物理基础结构中的任何部署，都可以选择使用 Site Recovery。 请遵照本文档末尾的指导来了解[如何使用 Site Recovery 帮助保护 SQL Server 群集](#how-to-help-protect-a-sql-server-cluster)。
-> * 确保在计算机上观测到的数据更改率在 [Site Recovery 限制](vmware-physical-azure-support-matrix.md#churn-limits)范围内。 更改率以每秒写入字节数度量。 对于运行 Windows 的计算机，可以选择任务管理器中的“性能”选项卡来查看此更改率。 观测每个磁盘的写入速度。
+> * 确保在计算机上观测到的数据更改率在 [Site Recovery 限制](vmware-physical-azure-support-matrix.md#churn-limits)范围内。 更改率以每秒写入字节数度量。 对于运行 Windows 的计算机，可以选择任务管理器中的“性能”选项卡来查看此更改率。**** 观测每个磁盘的写入速度。
 > * Site Recovery 支持复制存储空间直通上的故障转移群集实例。 有关详细信息，请参阅[如何启用存储空间直通复制](azure-to-azure-how-to-enable-replication-s2d-vms.md)。
 
 ## <a name="disaster-recovery-of-an-application"></a>应用程序的灾难恢复
@@ -54,18 +54,18 @@ Site Recovery 借助恢复计划来协调整个应用程序的测试故障转移
 
 需要满足一些先决条件才能确保根据需要完全自定义恢复计划。 任何 SQL Server 部署通常都需要一个 Active Directory 部署。 它还需要应用层的连接。
 
-### <a name="step-1-set-up-active-directory"></a>步骤1：设置 Active Directory
+### <a name="step-1-set-up-active-directory"></a>第 1 步：设置活动目录
 
 在辅助恢复站点上安装 Active Directory，使 SQL Server 能够正常运行。
 
-* **小型企业**：你有少量的应用程序和用于本地站点的单个域控制器。 若要故障转移整个站点，请使用 Site Recovery 复制。 此服务会将域控制器复制到辅助数据中心或 Azure。
-* **大中型企业**：可能需要设置其他域控制器。
+* **小型企业**：您有少量的应用程序和一个本地站点的域控制器。 若要故障转移整个站点，请使用 Site Recovery 复制。 此服务会将域控制器复制到辅助数据中心或 Azure。
+* **大中型企业**：您可能需要设置其他域控制器。
   - 如果你有大量的应用程序、使用 Active Directory 林，并且想要按应用程序或工作负荷进行故障转移，请在辅助数据中心或 Azure 中设置另一个域控制器。
   -  如果你使用 Always On 可用性组恢复到远程站点，请在辅助站点或 Azure 中设置另一个域控制器。 此域控制器供已恢复的 SQL Server 实例使用。
 
 本文中的说明假设辅助位置中提供了域控制器。 有关详细信息，请参阅[使用 Site Recovery 帮助保护 Active Directory](site-recovery-active-directory.md) 的过程。
 
-### <a name="step-2-ensure-connectivity-with-other-tiers"></a>步骤2：确保与其他层的连接
+### <a name="step-2-ensure-connectivity-with-other-tiers"></a>第 2 步：确保与其他层连接
 
 在目标 Azure 区域中运行数据库层后，确保与应用层和 Web 层建立连接。 提前采取必要的步骤来验证与测试故障转移建立的连接。
 
@@ -74,7 +74,7 @@ Site Recovery 借助恢复计划来协调整个应用程序的测试故障转移
 * [根据云灾难恢复设计应用程序](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 * [弹性池灾难恢复策略](../sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 
-### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>步骤3：与 Always On、活动异地复制和自动故障转移组进行互操作
+### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>步骤 3：与"始终打开"、活动异地复制和自动故障转移组互操作
 
 BCDR 技术 Always On、活动异地复制和自动故障转移组为目标 Azure 区域中运行的 SQL Server 提供辅助副本。 应用程序故障转移的第一步是将此副本指定为主副本。 此步骤假设次要区域中已有一个域控制器。 如果你选择执行自动故障转移，则可能不需要执行该步骤。 只有在完成数据库故障转移后，才故障转移 Web 层和应用层。
 
@@ -85,15 +85,15 @@ BCDR 技术 Always On、活动异地复制和自动故障转移组为目标 Azur
 
 1. 导入相应的脚本，用于在[资源管理器虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)和[经典虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)中对 SQL 可用性组进行故障转移。 将脚本导入到 Azure 自动化帐户中。
 
-    [![“部署到 Azure”徽标图像](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [!["部署到 Azure"徽标的图像](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. 将 ASR-SQL-FailoverAG 脚本添加为恢复计划的第一个组的准备操作。
 
 1. 遵照脚本中的说明创建自动化变量。 此变量提供可用性组的名称。
 
-### <a name="step-4-conduct-a-test-failover"></a>步骤4：执行测试故障转移
+### <a name="step-4-conduct-a-test-failover"></a>第 4 步：执行测试故障转移
 
-某些 BCDR 技术（例如 SQL Always On）本身不支持测试故障转移。 我们建议仅在使用此类技术时才运用以下方法。
+某些 BCDR 技术（如 SQL 始终打开）不支持本机测试故障转移。 我们建议仅在使用此类技术时才运用以下方法。**
 
 1. 在 Azure 中托管可用性组副本的 VM 上设置 [Azure 备份](../backup/backup-azure-arm-vms.md)。
 
@@ -161,7 +161,7 @@ Site Recovery 是应用程序不可知的。 Azure Site Recovery 可帮助保护
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 [Site Recovery 体系结构](site-recovery-components.md)。
+* 了解有关[站点恢复体系结构](site-recovery-components.md)的更多。
 * 对于 Azure 中的 SQL 服务器，请详细了解适用于次要 Azure 区域中的恢复的[高可用性解决方案](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)。
 * 对于 SQL 数据库，请详细了解适用于次要 Azure 区域中的恢复的[业务连续性](../sql-database/sql-database-business-continuity.md)和[高可用性](../sql-database/sql-database-high-availability.md)选项。
 * 对于本地的 SQL Server 计算机，请详细了解适用于 Azure 虚拟机中的恢复的[高可用性选项](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#hybrid-it-disaster-recovery-solutions)。

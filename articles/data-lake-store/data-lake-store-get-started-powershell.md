@@ -1,41 +1,41 @@
 ---
-title: Azure Data Lake Storage Gen1 入门-PowerShell |Microsoft Docs
-description: 使用 Azure PowerShell 创建 Azure Data Lake Storage Gen1 帐户并执行基本操作。
+title: 开始使用 Azure 数据存储第 1 代 - PowerShell |微软文档
+description: 使用 Azure PowerShell 创建 Azure 数据存储库存储第 1 代帐户并执行基本操作。
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 42ddab6991b418af3e41da9966cdab69ded87461
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73837898"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>通过 Azure PowerShell 开始使用 Azure Data Lake Storage Gen1
 
 > [!div class="op_single_selector"]
 > * [门户](data-lake-store-get-started-portal.md)
-> * [PowerShell](data-lake-store-get-started-powershell.md)
+> * [电源外壳](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
 >
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-了解如何使用 Azure PowerShell 创建 Azure Data Lake Storage Gen1 帐户并执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关 Data Lake Storage Gen1 的详细信息，请参阅[Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
+了解如何使用 Azure PowerShell 创建 Azure 数据湖存储 Gen1 帐户，并执行基本操作，如创建文件夹、上载和下载数据文件、删除帐户等。有关数据存储第 1 代的详细信息，请参阅[数据存储库第 1 代概述](data-lake-store-overview.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure PowerShell 1.0 或更高版本**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="authentication"></a>身份验证
 
-本文使用的是一种更简单的身份验证方法，Data Lake Storage Gen1 会提示输入 Azure 帐户凭据。 系统会根据登录用户的访问级别约束对 Data Lake Storage Gen1 帐户和文件系统的访问权限。 但是，还可以通过其他方法对 Data Lake Storage Gen1 进行身份验证，即最终用户身份验证或服务到服务身份验证。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
+本文使用更简单的身份验证方法处理 Data Lake 存储 Gen1，提示您输入 Azure 帐户凭据。 系统会根据登录用户的访问级别约束对 Data Lake Storage Gen1 帐户和文件系统的访问权限。 但是，还有其他方法使用 Data Lake 存储 Gen1 进行身份验证，这些方法是最终用户身份验证或服务到服务身份验证。 有关如何进行身份验证的说明和详细信息，请参阅[最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)或[服务到服务身份验证](data-lake-store-authenticate-using-active-directory.md)。
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>创建 Data Lake Storage Gen1 帐户
 
@@ -79,7 +79,7 @@ ms.locfileid: "73837898"
     Test-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
     ```
 
-    cmdlet 的输出应为 True。
+    cmdlet 的输出应为 True****。
 
 ## <a name="create-directory-structures"></a>创建目录结构
 
@@ -111,7 +111,7 @@ ms.locfileid: "73837898"
 
 可以直接将数据上传到 Data Lake Store Gen1 的根级别，也可以上传到在帐户中创建的目录。 此节中的代码片段演示了如何将一些示例数据上传到上一节中创建的目录 (**mynewdirectory**)。
 
-如果正在查找一些示例数据进行上传，可以从 Azure Data Lake Git 存储库 获取 Ambulance Data文件夹。 下载文件，并将其存储在计算机的本地目录中，如 C:\sampledata\。
+如果正在查找一些示例数据进行上传，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。 下载文件，并将其存储在计算机的本地目录中，如 C:\sampledata\。
 
 ```PowerShell
 Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name `
@@ -166,5 +166,5 @@ Remove-AzDataLakeStoreAccount -Name $dataLakeStorageGen1Name
 * [将 PowerShell 与 Azure Data Lake Store Gen1 配合使用的性能优化指南](data-lake-store-performance-tuning-powershell.md)
 * [使用 Azure Data Lake Storage Gen1 满足大数据要求](data-lake-store-data-scenarios.md)
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
-* [配合使用 Azure Data Lake Analytics 和 Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [将 Azure Data Lake Analytics 与 Data Lake Storage Gen1 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)

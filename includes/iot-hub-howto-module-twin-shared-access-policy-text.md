@@ -9,12 +9,12 @@ ms.date: 07/17/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: fe3d47d41d10a3abc8c9c889081af2db337963ad
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68883761"
 ---
 <!-- This contains intro text for the "Get an IoT hub connection string" section in the iot-hub-lang-lang-module-twin-getstarted.md files-->
 
-在本文中, 将创建一个后端服务, 该服务在标识注册表中添加设备, 然后将模块添加到该设备。 你的服务需要**注册表写入**权限。 默认情况下, 每个 IoT 中心都是使用名为**registryReadWrite**的共享访问策略创建的, 该策略授予此权限。
+在本文中，将创建一个后端服务，该服务在标识注册表中添加一个设备，然后向该设备添加一个模块。 你的服务需要“注册表写入”**** 权限。 默认情况下，每个 IoT 中心都使用名为 **registryReadWrite** 的共享访问策略创建，该策略授予此权限。

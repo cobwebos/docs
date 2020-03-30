@@ -1,7 +1,7 @@
 ---
 title: 在多个 IP 配置上进行负载均衡 - Azure CLI
 titleSuffix: Azure Load Balancer
-description: 本文介绍如何使用 Azure CLI 跨主要和辅助 IP 配置进行负载均衡。
+description: 在本文中，了解使用 Azure CLI 在主 IP 和辅助 IP 配置之间负载平衡。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,21 +14,21 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 6ac9e362314cc45e6adbdcf1390f70cbe6b05de8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075965"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>使用 PowerShell 在多个 IP 配置上进行负载均衡
 
 > [!div class="op_single_selector"]
-> * [Portal](load-balancer-multiple-ip.md)
-> * [CLI](load-balancer-multiple-ip-cli.md)
-> * [PowerShell](load-balancer-multiple-ip-powershell.md)
+> * [门户](load-balancer-multiple-ip.md)
+> * [Cli](load-balancer-multiple-ip-cli.md)
+> * [电源外壳](load-balancer-multiple-ip-powershell.md)
 
 
-本文介绍如何将 Azure 负载均衡器用于辅助网络接口 (NIC) 的多个 IP 地址。 在此方案中，有两个运行 Windows 的 VM，每个 VM 有一个主 NIC 和一个辅助 NIC。 每个辅助 NIC 具有两个 IP 配置。 每个 VM 托管网站 contoso.com 和 fabrikam.com。 每个网站都绑定到辅助 NIC 的一个 IP 配置。 我们使用 Azure 负载均衡器公开两个前端 IP 地址，每个地址分别对应于一个网站，从而将流量分发到网站的各个 IP 配置。 此场景中两个前端以及两个后端池 IP 地址都使用相同的端口号。
+本文介绍如何将 Azure 负载均衡器用于辅助网络接口 (NIC) 的多个 IP 地址。 在此方案中，有两个运行 Windows 的 VM，每个 VM 有一个主 NIC 和一个辅助 NIC。 每个辅助 NIC 都有两个 IP 配置。 每个 VM 托管网站 contoso.com 和 fabrikam.com。 每个网站都绑定到辅助 NIC 的一个 IP 配置。 我们使用 Azure 负载均衡器公开两个前端 IP 地址，每个地址分别对应于一个网站，从而将流量分发到网站的各个 IP 配置。 此场景中两个前端以及两个后端池 IP 地址都使用相同的端口号。
 
 ![负载均衡应用场景图像](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
@@ -122,7 +122,7 @@ ms.locfileid: "74075965"
     Add-AzLoadBalancerRuleConfig -Name HTTP -LoadBalancer $mylb -FrontendIpConfiguration $frontendIP2 -BackendAddressPool $beaddresspool2 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80 | Set-AzLoadBalancer
     ```
 
-12. 下面的命令获取 NIC，并将每个辅助 NIC 的两个 IP 配置添加到负载均衡器的后端地址池：
+12. 下面的命令获取 NIC，然后将每个辅助 NIC 的两个 IP 配置添加到负载均衡器的后端地址池：
 
     ```powershell
     $nic1 = Get-AzNetworkInterface -Name "VM1-NIC2" -ResourceGroupName "MyResourcegroup";
@@ -143,4 +143,4 @@ ms.locfileid: "74075965"
 
 ## <a name="next-steps"></a>后续步骤
 - 若要深入了解如何在 Azure 中结合使用负载均衡服务，请参阅[在 Azure 中使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)。
-- 了解如何在 azure 中使用不同类型的日志对[Azure 负载均衡器 Azure Monitor 日志中的](../load-balancer/load-balancer-monitor-log.md)负载均衡器进行管理和故障排除。
+- 了解如何在 Azure 中使用不同类型的日志来管理[Azure 负载均衡器的 Azure 监视器日志中的负载均衡器](../load-balancer/load-balancer-monitor-log.md)。

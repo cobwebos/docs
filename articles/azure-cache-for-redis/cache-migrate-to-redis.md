@@ -1,5 +1,5 @@
 ---
-title: 将托管缓存服务应用程序迁移到 Redis-Azure
+title: 将托管缓存服务应用程序迁移到雷瑞斯 - Azure
 description: 了解如何将托管缓存服务和角色中缓存应用程序迁移到 Azure Redis 缓存
 author: yegu-ms
 ms.service: cache
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
 ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74122689"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>从托管缓存服务迁移到 Azure Redis 缓存
@@ -72,13 +72,13 @@ Microsoft Azure Redis 缓存在下述层中提供：
 ### <a name="remove-the-managed-cache-service-configuration"></a>删除托管缓存服务配置
 要将客户端应用程序配置为使用 Azure Redis 缓存，必须先卸载托管缓存服务 NuGet 包，以便删除现有托管缓存服务的配置和组件引用。
 
-要卸载托管缓存服务 NuGet 包，请在“解决方案资源管理器”中右键单击客户端项目，并选择“管理 NuGet 程序包”。 选择“已安装的包”节点，并在“搜索已安装的包”框中键入 **WindowsAzure.Caching**。 选择“Windows Azure Cache”（或“Windows Azure Caching”，视 NuGet 包的版本而定）、单击“卸载”，并单击“关闭”。
+要卸载托管缓存服务 NuGet 包，请在“解决方案资源管理器”**** 中右键单击客户端项目，并选择“管理 NuGet 程序包”****。 选择“已安装的包”**** 节点，并在“搜索已安装的包”框中键入 **WindowsAzure.Caching**。 选择“Windows Azure Cache”**** ****（或“Windows Azure Caching”**** ****，视 NuGet 包的版本而定）、单击“卸载”****，并单击“关闭”****。
 
 ![卸载 Azure 托管缓存服务 NuGet 包](./media/cache-migrate-to-redis/IC757666.jpg)
 
 卸载托管缓存服务 NuGet 包时，会删除客户端应用程序的 app.config 或 web.config 中的托管缓存服务组件和托管缓存服务条目。 卸载 NuGet 包时可能不会删除部分自定义设置，因此请打开 web.config 或 app.config，确保已删除以下元素。
 
-确保已从 `dataCacheClients` 元素中删除 `configSections` 条目。 请勿删除整个 `configSections` 元素，只需删除 `dataCacheClients` 条目（如果存在）。
+确保已从 `configSections` 元素中删除 `dataCacheClients` 条目。 请勿删除整个 `configSections` 元素，只需删除 `dataCacheClients` 条目（如果存在）。
 
 ```xml
 <configSections>
@@ -122,7 +122,7 @@ StackExchange.Azure Redis 缓存客户端的 API 与托管缓存服务类似。 
 using StackExchange.Redis
 ```
 
-如果此命名空间未解析，请确保已添加 Stackexchange.redis NuGet 包，如[快速入门：将 Azure Cache For Redis 用于 .net 应用程序](cache-dotnet-how-to-use-azure-redis-cache.md)中所述。
+如果此命名空间无法解决，请确保已添加 StackExchange.Redis NuGet 包，如[快速入门：使用 Azure 缓存进行 .NET 应用程序](cache-dotnet-how-to-use-azure-redis-cache.md)。
 
 > [!NOTE]
 > 请注意，StackExchange.Redis 客户端需要 .NET Framework 4 或更高版本。
@@ -146,7 +146,7 @@ public static ConnectionMultiplexer Connection
 }
 ```
 
-可以从缓存实例的“Azure Redis 缓存”边栏选项卡中获取缓存终结点、密钥和端口。 有关详细信息，请参阅 [Azure Redis 缓存属性](cache-configure.md#properties)。
+可以从缓存实例的“Azure Redis 缓存”**** 边栏选项卡中获取缓存终结点、密钥和端口。 有关详细信息，请参阅 [Azure Redis 缓存属性](cache-configure.md#properties)。
 
 建立连接后，通过调用 `ConnectionMultiplexer.GetDatabase` 方法返回对 Azure Redis 缓存数据库的引用。 从 `GetDatabase` 方法返回的对象是一个轻型直通对象，不需要存储。
 
@@ -169,7 +169,7 @@ StackExchange.Redis 客户端使用 `RedisKey` 和 `RedisValue` 类型在缓存�
 
 调用 `StringGet` 时，如果该对象存在，则返回它，如果该对象不存在，则返回 null。 在这种情况下，可以从所需的数据源检索值，并将其存储在缓存中供后续使用。 此模式称为缓存端模式。
 
-要在缓存中指定项的过期时间，请使用 `TimeSpan` 的 `StringSet` 参数。
+要在缓存中指定项的过期时间，请使用 `StringSet` 的 `TimeSpan` 参数。
 
 ```csharp
 cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));

@@ -13,35 +13,35 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74703156"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>从数据工厂调用 MapReduce 程序
-> [!div class="op_single_selector" title1="转换活动"]
-> * [Hive 活动](data-factory-hive-activity.md) 
+> [!div class="op_single_selector" title1="转型活动"]
+> * [蜂巢活动](data-factory-hive-activity.md) 
 > * [Pig 活动](data-factory-pig-activity.md)
-> * [MapReduce 活动](data-factory-map-reduce.md)
-> * [Hadoop Streaming 活动](data-factory-hadoop-streaming-activity.md)
+> * [映射减少活动](data-factory-map-reduce.md)
+> * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
 > * [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
 > * [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
 > * [存储过程活动](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
+> * [数据湖分析 U-SQL 活动](data-factory-usql-activity.md)
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[在数据工厂中使用 MapReduce 活动转换数据](../transform-data-using-hadoop-map-reduce.md)。
 
 
-数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight MapReduce 活动会在[自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 MapReduce 程序。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
+HDInsight MapReduce 数据工厂[管道](data-factory-create-pipelines.md)中的活动将[自行](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或按需基于 Windows/Linux[的](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)HDInsight 群集执行 MapReduce 程序。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 
 > [!NOTE] 
 > 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。  
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 Azure 数据工厂中的管道通过使用链接计算服务来处理链接存储服务中的数据。 它包含一系列活动，其中每个活动执行特定的处理操作。 本文介绍如何使用 HDInsight MapReduce 活动。
 
 请参阅 [Pig](data-factory-pig-activity.md) 和 [Hive](data-factory-hive-activity.md)，深入了解如何通过使用 HDInsight Pig 和 Hive 活动在管道中基于 Windows/Linux 的 HDInsight 群集上运行 Pig/Hive 脚本。 
@@ -51,9 +51,9 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 
 1. 将**活动**的**类型**设置为 **HDInsight**。
 2. 为 **className** 属性指定类名。
-3. 为 **jarFilePath** 属性指定 JAR 文件的路径（包含文件名）。
-4. 为 **jarLinkedService** 属性指定指向 Azure Blob 存储（包含 JAR 文件）的链接服务。   
-5. 在**参数**部分为 MapReduce 程序指定任意参数。 运行时，可在 MapReduce 框架中看到几个额外的参数（例如：mapreduce.job.tags）。 要区分自己的参数和 MapReduce 参数，请考虑将选项和值同时作为参数使用，如下例所示（-s、--input、--output 等选项后紧跟有相应的值）。
+3. 为 **jarFilePath** 属性指定 JAR 文件的路径（包括文件名）。
+4. 为 **jarLinkedService** 属性指定引用包含 JAR 文件的 Azure Blob 存储的链接服务。   
+5. 在 **arguments** 部分中为 MapReduce 程序指定任何参数。 运行时，可在 MapReduce 框架中看到几个额外的参数（例如：mapreduce.job.tags）。 要区分自己的参数和 MapReduce 参数，请考虑将选项和值同时作为参数使用，如下例所示（-s、--input、--output 等选项后紧跟有相应的值）。
 
     ```JSON   
     {
@@ -118,7 +118,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 此示例中的管道在 Azure HDInsight 群集上运行字数统计 Map/Reduce 程序。   
 
 ### <a name="linked-services"></a>链接服务
-首先，创建一个链接服务，将 Azure HDInsight 群集使用的 Azure 存储链接到 Azure 数据工厂。 如果要复制/粘贴下面的代码，请不要忘记将“帐户名”和“帐户密钥”替换为自己的 Azure 存储 的名称和密钥。 
+首先，创建一个链接服务，将 Azure HDInsight 群集使用的 Azure 存储链接到 Azure 数据工厂。 如果要复制/粘贴下面的代码，请不要忘记将“帐户名”**** 和“帐户密钥”**** 替换为自己的 Azure 存储 的名称和密钥。 
 
 #### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 
@@ -135,7 +135,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 ```
 
 #### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight 链接服务
-接下来，创建一个链接服务，将 Azure HDInsight 群集链接到 Azure 数据工厂。 如果要复制/粘贴下面的代码，请将 **HDInsight 群集名称**替换为自己的 HDInsight 群集的名称，并更改用户名和密码值。   
+接下来，创建一个链接服务，将 Azure HDInsight 群集链接到 Azure 数据工厂。 如果复制/粘贴以下代码，请将**HDInsight 群集名称**替换为 HDInsight 群集的名称，并更改用户名和密码值。   
 
 ```JSON
 {
@@ -187,7 +187,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 | className |类名为：**wordcount** |
 | jarFilePath |包含该类的 jar 文件的路径。 如果要复制/粘贴下面的代码，请不要忘记更改群集的名称。 |
 | jarLinkedService |包含 jar 文件的 Azure 存储链接服务。 此链接服务指与 HDInsight 群集关联的存储。 |
-| arguments |字数统计程序具有两个参数（一个输入和一个输出）。 输入文件是 davinci.txt 文件。 |
+| 参数 |字数统计程序具有两个参数（一个输入和一个输出）。 输入文件是 davinci.txt 文件。 |
 | frequency/interval |这些属性的值与输出数据集匹配。 |
 | linkedServiceName |指先前创建的 HDInsight 链接服务。 |
 
@@ -246,9 +246,9 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 [Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>另请参阅
-* [Hive 活动](data-factory-hive-activity.md)
+* [蜂巢活动](data-factory-hive-activity.md)
 * [Pig 活动](data-factory-pig-activity.md)
-* [Hadoop Streaming 活动](data-factory-hadoop-streaming-activity.md)
+* [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 * [调用 Spark 程序](data-factory-spark.md)
 * [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

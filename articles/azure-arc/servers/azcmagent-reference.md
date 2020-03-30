@@ -1,6 +1,6 @@
 ---
 title: Azure 连接的计算机代理 CLI 接口
-description: Azure 连接的计算机代理 CLI 的参考文档
+description: Azure 连接计算机代理 CLI 的参考文档
 author: bobbytreed
 manager: carmonm
 services: azure-arc
@@ -10,19 +10,19 @@ ms.topic: reference
 ms.date: 11/04/2019
 ms.author: robreed
 ms.openlocfilehash: d35c5e283f2e1e2f8afd431d83775167dc2a531a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73513193"
 ---
 # <a name="azure-connected-machine-agent-cli-interface"></a>Azure 连接的计算机代理 CLI 接口
 
-`Azcmagent` （Azure 连接的计算机代理）工具用于配置与 Azure 的非 azure 计算机连接并对其进行故障排除。
+`Azcmagent` （Azure 连接的计算机代理）工具用于配置和排除与 Azure 连接的非 azure 计算机。
 
-代理本身是在 Linux 上称为 `himdsd` 的后台程序进程，以及 Windows 上名为 `himds` 的 Windows 服务。
+代理本身是在 Linux 上调用`himdsd`的守护进程，以及 Windows 上`himds`调用的 Windows 服务。
 
-在正常使用中，`azcmagent connect` 用于建立此计算机与 Azure 之间的连接，并且 `azcmagent disconnect` 确定不再需要该连接。 其他命令用于疑难解答或其他特殊情况。
+在正常使用中，`azcmagent connect`用于在此计算机和 Azure 之间建立连接，`azcmagent disconnect`如果您决定不再需要该连接。 其他命令用于故障排除或其他特殊情况。
 
 ## <a name="options"></a>选项
 
@@ -33,13 +33,13 @@ ms.locfileid: "73513193"
 
 ## <a name="see-also"></a>另请参阅
 
-* [azcmagent connect-将](#azcmagent-connect)此计算机连接到 Azure
-* [azcmagent 断开](#azcmagent-disconnect)-从 Azure 断开连接此计算机
-* [重新连接 azcmagent](#azcmagent-reconnect) -将此计算机重新连接到 Azure
-* [azcmagent show](#azcmagent-show) -获取计算机元数据和代理状态。 这主要用于排查问题。
-* [azcmagent 版本](#azcmagent-version)-显示混合管理代理版本
+* [阿兹cmagent连接](#azcmagent-connect)- 将此计算机连接到 Azure
+* [阿兹cmagent断开连接](#azcmagent-disconnect)- 断开此计算机与 Azure 的连接
+* [阿兹cmagent重新连接](#azcmagent-reconnect)- 将此计算机重新连接到 Azure
+* [阿兹cmagent 显示](#azcmagent-show)- 获取计算机元数据和代理状态。 这主要可用于故障排除。
+* [阿兹cmagent版本](#azcmagent-version)- 显示混合管理代理版本
 
-## <a name="azcmagent-connect"></a>azcmagent 连接
+## <a name="azcmagent-connect"></a>阿兹cmagent连接
 
 将此计算机连接到 Azure
 
@@ -47,16 +47,16 @@ ms.locfileid: "73513193"
 
 在 Azure 中创建表示此计算机的资源。
 
-这会使用提供的身份验证选项在 Azure 中创建资源，资源管理器表示此计算机。 资源位于请求的订阅和资源组中，计算机上的数据存储在 location 参数指定的 Azure 区域中。
-如果未重写，则默认资源名称是此计算机的主机名。
+这将使用提供的身份验证选项在 Azure 资源管理器中创建表示此计算机的资源。 资源位于请求的订阅和资源组中，有关计算机的数据存储在位置参数指定的 Azure 区域中。
+默认资源名称是此计算机的主机名（如果不是重写）。
 
-然后，将下载和存储此计算机的系统分配标识的证书。 此步骤完成后， **Azure 连接的计算机元数据**服务和来宾配置代理开始与 azure 云同步。
+然后，将下载与此计算机的系统分配标识对应的证书，并将其存储在本地。 完成此步骤后 **，Azure 连接的计算机元数据**服务和来宾配置代理开始与 Azure 云同步。
 
 身份验证选项：
 
-* 访问令牌 `azcmagent connect --access-token <> --subscription-id <> --resource-group <> --location <>`
-* 服务主体 ID 和机密 `azcmagent connect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid> --subscription-id <> --resource-group <> --location <>`
-* 设备登录（交互） `azcmagent connect --tenant-id <> --subscription-id <> --resource-group <> --location <>`
+* 访问令牌`azcmagent connect --access-token <> --subscription-id <> --resource-group <> --location <>`
+* 服务主体 ID 和机密`azcmagent connect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid> --subscription-id <> --resource-group <> --location <>`
+* 设备登录（交互式）`azcmagent connect --tenant-id <> --subscription-id <> --resource-group <> --location <>`
 
 ### <a name="syntax"></a>语法
 
@@ -80,25 +80,25 @@ azcmagent connect [flags]
       --tenant-id string                  Tenant Id
 ```
 
-## <a name="azcmagent-disconnect"></a>azcmagent 断开连接
+## <a name="azcmagent-disconnect"></a>阿兹cmagent断开
 
-从 Azure 断开连接此计算机
+断开此计算机与 Azure 的连接
 
 ### <a name="synopsis"></a>概要
 
-删除代表此服务器的 Azure 中的资源。
+删除 Azure 中表示此服务器的资源。
 
-此命令使用提供的身份验证选项来删除代表此计算机的 Azure 资源管理器资源。 此后， **Azure 连接的计算机元数据服务**和来宾配置代理将断开连接。 此命令不会停止或删除服务：删除包，以便执行此操作。
+此命令使用提供的身份验证选项来删除表示此计算机的 Azure 资源管理器资源。 在此之后，将断开**Azure 连接的计算机元数据服务和**来宾配置代理。 此命令不会停止或删除服务：删除包以便执行此操作。
 
-此命令需要比 "Azure 连接的计算机载入" 角色更高的特权。
+此命令需要比"Azure 连接的计算机载入"角色更高的权限。
 
-计算机断开连接后，如果想要在 Azure 中为其创建新资源，请使用 `azcmagent connect`，而不是 `azcmagent reconnect`。
+断开计算机后，如果要在`azcmagent connect`Azure`azcmagent reconnect`中为其创建新资源，请使用 。
 
 身份验证选项：
 
-* 访问令牌 `azcmagent disconnect --access-token <>`
-* 服务主体 ID 和机密 `azcmagent disconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
-* 交互式设备登录 `azcmagent disconnect --tenant-id <>`
+* 访问令牌`azcmagent disconnect --access-token <>`
+* 服务主体 ID 和机密`azcmagent disconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
+* 交互式设备登录`azcmagent disconnect --tenant-id <>`
 
 ### <a name="syntax"></a>语法
 
@@ -119,27 +119,27 @@ azcmagent disconnect [flags]
   -t, --tenant-id string                  Tenant Id
 ```
 
-## <a name="azcmagent-reconnect"></a>重新连接 azcmagent
+## <a name="azcmagent-reconnect"></a>阿兹cmagent重新连接
 
 将此计算机重新连接到 Azure
 
 ### <a name="synopsis"></a>概要
 
-将具有无效凭据的计算机重新连接到 Azure。
+将凭据无效的计算机重新连接到 Azure。
 
-如果计算机已有 Azure 中的资源，但无法对其进行身份验证，则可以使用此命令进行重新连接。 如果计算机关闭的时间足以使其证书过期（至少45天），则可能会发生这种情况。
+如果计算机已在 Azure 中具有资源，但无法对其进行身份验证，则可以使用此命令重新连接它。 如果计算机关闭足够长的时间使其证书过期（至少 45 天），则可以这样做。
 
-如果计算机与 `azcmagent disconnect`断开连接，请改用 `azcmagent connect`。
+如果计算机与`azcmagent disconnect`断开连接，则改`azcmagent connect`用。
 
-此命令使用提供的身份验证选项来检索与表示此计算机的 Azure 资源管理器资源相对应的新凭据。
+此命令使用提供的身份验证选项来检索对应于表示此计算机的 Azure 资源管理器资源的新凭据。
 
-此命令需要比**Azure 连接的计算机加入**角色更高的特权。
+此命令需要比**Azure 连接的计算机载入**角色更高的权限。
 
 身份验证选项
 
-* 访问令牌 `azcmagent reconnect --access-token <>`
-* 服务主体 ID 和机密 `azcmagent reconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
-* 交互式设备登录 `azcmagent reconnect --tenant-id <>`
+* 访问令牌`azcmagent reconnect --access-token <>`
+* 服务主体 ID 和机密`azcmagent reconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
+* 交互式设备登录`azcmagent reconnect --tenant-id <>`
 
 ### <a name="syntax"></a>语法
 
@@ -161,13 +161,13 @@ azcmagent reconnect [flags]
       --tenant-id string                  tenant id
 ```
 
-## <a name="azcmagent-show"></a>azcmagent show
+## <a name="azcmagent-show"></a>阿兹cmagent显示
 
-获取计算机元数据和代理状态。 这主要用于排查问题。
+获取计算机元数据和代理状态。 这主要可用于故障排除。
 
 ### <a name="synopsis"></a>概要
 
-获取计算机元数据和代理状态。 这主要用于排查问题。
+获取计算机元数据和代理状态。 这主要可用于故障排除。
 
 
 ### <a name="syntax"></a>语法
@@ -182,7 +182,7 @@ azcmagent show [flags]
   -h, --help   help for show
 ```
 
-## <a name="azcmagent-version"></a>azcmagent 版本
+## <a name="azcmagent-version"></a>阿兹cmagent版本
 
 显示混合管理代理版本
 

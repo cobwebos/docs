@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
 ms.openlocfilehash: 096fe779c077424b01df3ead5965cb799866a03b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033525"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>加密 Windows VM 上的虚拟磁盘
-为了增强虚拟机 (VM) 的安全性以及符合性，可以加密 Azure 中的虚拟磁盘。 磁盘是使用 Azure Key Vault 中受保护的加密密钥加密的。 可以控制这些加密密钥，以及审核对它们的使用。 本文介绍如何使用 Azure PowerShell 加密 Windows VM 上的虚拟磁盘。 你还可以[对 Linux 虚拟机进行加密](../linux/disk-encryption-overview.md)。
+为了增强虚拟机 (VM) 的安全性以及符合性，可以加密 Azure 中的虚拟磁盘。 磁盘是使用 Azure Key Vault 中受保护的加密密钥加密的。 可以控制这些加密密钥，以及审核对它们的使用。 本文介绍如何使用 Azure PowerShell 加密 Windows VM 上的虚拟磁盘。 还可以[加密 Linux 虚拟机](../linux/disk-encryption-overview.md)。
 
  
 
@@ -64,7 +64,7 @@ Windows VM 上的虚拟磁盘使用 BitLocker 进行静态加密。 加密 Azure
 
 第一步是创建用于存储加密密钥的 Azure 密钥保管库。 Azure Key Vault 可以存储能够在应用程序和服务中安全实现的密钥、机密或密码。 对于虚拟磁盘加密，可以创建 Key Vault 来存储用于加密或解密虚拟磁盘的加密密钥。 
 
-在 Azure 订阅中使用 [Register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider) 启用 Azure 密钥保管库提供程序，然后使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在美国东部位置创建名为 myResourceGroup 的资源组：
+在 Azure 订阅中使用 [Register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider) 启用 Azure 密钥保管库提供程序，然后使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在美国东部** 位置创建名为 myResourceGroup** 的资源组：
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
@@ -74,7 +74,7 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"
 New-AzResourceGroup -Location $location -Name $rgName
 ```
 
-包含加密密钥和关联的计算资源（例如存储和 VM 本身）的 Azure Key Vault 必须位于同一区域。 使用 [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) 创建 Azure 密钥保管库，并启用该密钥保管库进行磁盘加密。 指定 keyVaultName 的唯一 Key Vault 名称，如下所示：
+包含加密密钥和关联的计算资源（例如存储和 VM 本身）的 Azure Key Vault 必须位于同一区域。 使用 [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) 创建 Azure 密钥保管库，并启用该密钥保管库进行磁盘加密。 为*密钥库名称*指定唯一的密钥保管库名称，如下所示：
 
 ```azurepowershell-interactive
 $keyVaultName = "myKeyVault$(Get-Random)"
@@ -86,7 +86,7 @@ New-AzKeyVault -Location $location `
 
 可以使用软件或硬件安全模型 (HSM) 保护来存储加密密钥。  标准 Key Vault 仅存储受软件保护的密钥。 使用 HSM 时需要高级 Key Vault，这会产生额外的费用。 若要创建高级 Key Vault，请在上一步中添加 *-Sku "Premium"* 参数。 由于我们创建的是标准密钥保管库，以下示例使用了受软件保护的密钥。 
 
-对于这两种保护模型，在启动 VM 解密虚拟磁盘时，都需要向 Azure 平台授予请求加密密钥的访问权限。 使用 [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey) 在 Key Vault 中创建加密密钥。 以下示例创建名为 myKey 的密钥：
+对于这两种保护模型，在启动 VM 解密虚拟磁盘时，都需要向 Azure 平台授予请求加密密钥的访问权限。 使用 [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey) 在 Key Vault 中创建加密密钥。 以下示例创建名为 myKey** 的密钥：
 
 ```azurepowershell-interactive
 Add-AzKeyVaultKey -VaultName $keyVaultName `
@@ -95,7 +95,7 @@ Add-AzKeyVaultKey -VaultName $keyVaultName `
 ```
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
-若要测试加密过程，请使用 [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM。 以下示例使用 Windows Server 2016 Datacenter 映像创建名为 myVM 的 VM。 系统提示输入凭据时，请输入用于 VM 的用户名和密码：
+若要测试加密过程，请使用 [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM。 以下示例使用 Windows Server 2016 Datacenter** 映像创建名为 myVM** 的 VM。 系统提示输入凭据时，请输入用于 VM 的用户名和密码：
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -113,7 +113,7 @@ New-AzVm `
 
 
 ## <a name="encrypt-a-virtual-machine"></a>加密虚拟机
-使用 Azure 密钥保管库密钥通过 [Set-AzVMDiskEncryptionExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiskencryptionextension) 加密 VM。 以下示例将检索所有密钥信息，然后对名为 myVM 的 VM 进行加密：
+使用 Azure 密钥保管库密钥通过 [Set-AzVMDiskEncryptionExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiskencryptionextension) 加密 VM。 以下示例将检索所有密钥信息，然后对名为 myVM** 的 VM 进行加密：
 
 ```azurepowershell-interactive
 $keyVault = Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $rgName;
@@ -146,4 +146,4 @@ ProgressMessage            : OsVolume: Encrypted, DataVolumes: Encrypted
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure Key Vault 管理的详细信息，请参阅[为虚拟机设置 Key Vault](key-vault-setup.md)。
-* 有关磁盘加密的详细信息，例如准备要上传到 Azure 的已加密自定义 VM，请参阅 Azure Disk Encryption（Azure 磁盘加密）。
+* 有关磁盘加密的详细信息，例如准备要上载到 Azure 的已加密自定义 VM，请参阅 [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md)\（Azure 磁盘加密）。

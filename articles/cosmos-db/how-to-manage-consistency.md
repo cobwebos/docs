@@ -1,16 +1,16 @@
 ---
-title: 管理 Azure Cosmos DB 中的一致性
-description: 了解如何使用 Azure 门户、.Net SDK、Java SDK 和其他各种 Sdk 在 Azure Cosmos DB 中配置和管理一致性级别
+title: 在 Azure Cosmos DB 中管理一致性
+description: 了解如何使用 Azure 门户、.Net SDK、Java SDK 和各种其他 SDK 在 Azure Cosmos DB 中配置和管理一致性级别
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 651daa0af8188b386220d97390e7a61615f94120
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79369397"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理一致性级别
@@ -21,7 +21,7 @@ ms.locfileid: "79369397"
 
 ## <a name="configure-the-default-consistency-level"></a>配置默认一致性级别
 
-[默认一致性级别](consistency-levels.md)是客户端默认情况下使用的一致性级别。 客户端总是可以替代它。
+[默认一致性级别](consistency-levels.md)是客户端默认使用的一致性级别。 客户端总是可以替代它。
 
 ### <a name="cli"></a>CLI
 
@@ -35,7 +35,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-此示例创建在“美国东部”和“美国西部”区域中启用了多个写入区域的一个新 Azure Cosmos 帐户。 默认一致性级别设置为“会话”一致性。
+此示例创建在“美国东部”和“美国西部”区域中启用了多个写入区域的一个新 Azure Cosmos 帐户。 默认一致性级别设置为“会话”一致性**。
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -61,7 +61,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要查看或修改默认一致性级别，请登录到 Azure 门户。 找到你的 Azure Cosmos 帐户，打开“默认一致性”窗格。 选择你希望用作新的默认值的一致性级别，然后选择“保存”。 Azure 门户还使用音符提供了不同一致性级别的可视化效果。 
+若要查看或修改默认一致性级别，请登录到 Azure 门户。 找到你的 Azure Cosmos 帐户，打开“默认一致性”窗格****。 选择你希望用作新的默认值的一致性级别，然后选择“保存”****。 Azure 门户还使用音符提供了不同一致性级别的可视化效果。 
 
 ![Azure 门户中的一致性菜单](./media/how-to-manage-consistency/consistency-settings.png)
 
@@ -69,7 +69,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 客户端可以重写由服务设置的默认一致性级别。 可以在每个请求上设置一致性级别，这将替代在帐户级别设置的默认一致性级别。
 
-### <a id="override-default-consistency-dotnet"></a>.NET SDK V2
+### <a name="net-sdk-v2"></a><a id="override-default-consistency-dotnet"></a>.NET SDK V2
 
 ```csharp
 // Override consistency at the client level
@@ -81,7 +81,7 @@ RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = Consiste
 var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
 ```
 
-### <a id="override-default-consistency-dotnet-v3"></a>.NET SDK V3
+### <a name="net-sdk-v3"></a><a id="override-default-consistency-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 // Override consistency at the request level via request options
@@ -94,7 +94,7 @@ var response = await client.GetContainer(databaseName, containerName)
         requestOptions);
 ```
 
-### <a id="override-default-consistency-java-async"></a>Java 异步 SDK
+### <a name="java-async-sdk"></a><a id="override-default-consistency-java-async"></a>Java 异步 SDK
 
 ```java
 // Override consistency at the client level
@@ -108,7 +108,7 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-### <a id="override-default-consistency-java-sync"></a>Java 同步 SDK
+### <a name="java-sync-sdk"></a><a id="override-default-consistency-java-sync"></a>Java 同步 SDK
 
 ```java
 // Override consistency at the client level
@@ -116,7 +116,7 @@ ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Eventual);
 ```
 
-### <a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Override consistency at the client level
@@ -129,7 +129,7 @@ const client = new CosmosClient({
 const { body } = await item.read({ consistencyLevel: ConsistencyLevel.Eventual });
 ```
 
-### <a id="override-default-consistency-python"></a>Python SDK
+### <a name="python-sdk"></a><a id="override-default-consistency-python"></a>Python SDK
 
 ```python
 # Override consistency at the client level
@@ -140,11 +140,11 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 
 ## <a name="utilize-session-tokens"></a>利用会话令牌
 
-Azure Cosmos DB 中的一致性级别之一是“会话”一致性。 这是默认情况下应用于 Cosmos 帐户的默认级别。 使用“会话”一致性时，客户端将在内部的每个读取/查询请求中使用会话令牌，以确保维持设置的一致性级别。
+Azure Cosmos DB 中的一致性级别之一是“会话”一致性**。 这是默认情况下应用于 Cosmos 帐户的默认级别。 使用“会话”一致性时，客户端将在内部的每个读取/查询请求中使用会话令牌，以确保维持设置的一致性级别**。
 
 若要手动管理会话令牌，请从响应中获取会话令牌并针对每个请求设置它们。 如果不需手动管理会话令牌，则不需要使用这些示例。 SDK 会自动跟踪会话令牌。 如果未手动设置会话令牌，则默认情况下，SDK 使用最新的会话令牌。
 
-### <a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
+### <a name="net-sdk-v2"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
 
 ```csharp
 var response = await client.ReadDocumentAsync(
@@ -157,7 +157,7 @@ var response = await client.ReadDocumentAsync(
                 UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"), options);
 ```
 
-### <a id="utilize-session-tokens-dotnet-v3"></a>.NET SDK V3
+### <a name="net-sdk-v3"></a><a id="utilize-session-tokens-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 Container container = client.GetContainer(databaseName, collectionName);
@@ -169,7 +169,7 @@ options.SessionToken = sessionToken;
 ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(salesOrder.Id, new PartitionKey(salesOrder.PartitionKey), options);
 ```
 
-### <a id="utilize-session-tokens-java-async"></a>Java 异步 SDK
+### <a name="java-async-sdk"></a><a id="utilize-session-tokens-java-async"></a>Java 异步 SDK
 
 ```java
 // Get session token from response
@@ -191,7 +191,7 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-### <a id="utilize-session-tokens-java-sync"></a>Java 同步 SDK
+### <a name="java-sync-sdk"></a><a id="utilize-session-tokens-java-sync"></a>Java 同步 SDK
 
 ```java
 // Get session token from response
@@ -204,7 +204,7 @@ options.setSessionToken(sessionToken);
 ResourceResponse<Document> response = client.readDocument(documentLink, options);
 ```
 
-### <a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Get session token from response
@@ -215,7 +215,7 @@ const sessionToken = headers["x-ms-session-token"];
 const { body } = await item.read({ sessionToken });
 ```
 
-### <a id="utilize-session-tokens-python"></a>Python SDK
+### <a name="python-sdk"></a><a id="utilize-session-tokens-python"></a>Python SDK
 
 ```python
 // Get the session token from the last response headers
@@ -231,7 +231,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>监视概率有限过期 (PBS) 指标
 
-最终一致性的最终程度如何？ 对于普通情况，我们是否可以提供版本历史和时间方面的过期限度。 [**概率有限过期 (PBS)** ](https://pbs.cs.berkeley.edu/) 指标尝试量化过期的概率并将其显示为指标。 若要查看 PBS 指标，请在 Azure 门户中转到你的 Cosmos 帐户。 打开 "**度量值**" 窗格，并选择 "**一致性**" 选项卡。根据工作负荷，查看名为**严格一致读取的关系图（请参阅 PBS）** 。
+最终一致性的最终程度如何？ 对于普通情况，我们是否可以提供版本历史和时间方面的过期限度。 [**概率有限过期 (PBS)**](https://pbs.cs.berkeley.edu/) 指标尝试量化过期的概率并将其显示为指标。 若要查看 PBS 指标，请在 Azure 门户中转到你的 Cosmos 帐户。 打开 **"指标"** 窗格，然后选择 **"一致性**"选项卡。**查看基于工作负荷（请参阅 PBS）的强一致性读取概率的**图表。
 
 ![Azure 门户中的 PBS 图](./media/how-to-manage-consistency/pbs-metric.png)
 
@@ -243,6 +243,6 @@ item = client.ReadItem(doc_link, options)
 * [Azure Cosmos DB 中的一致性级别](consistency-levels.md)
 * [管理区域之间的冲突](how-to-manage-conflicts.md)
 * [分区和数据分布](partition-data.md)
-* [现代分布式数据库系统设计中的一致性利弊](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+* [现代分布式数据库系统设计的一致性权衡](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [高可用性](high-availability.md)
 * [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

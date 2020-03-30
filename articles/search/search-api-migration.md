@@ -1,7 +1,7 @@
 ---
 title: 升级 REST API 版本
 titleSuffix: Azure Cognitive Search
-description: 查看 API 版本中的差异并了解将现有代码迁移到最新的 Azure 认知搜索服务 REST API 版本所需的操作。
+description: 查看 API 版本的差异，了解将现有代码迁移到最新 Azure 认知搜索服务 REST API 版本所需的操作。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -9,37 +9,37 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edb45eebc2c4eacc2f30d13988943f097a7190fa
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74112167"
 ---
 # <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>升级到最新的 Azure 认知搜索服务 REST API 版本
 
-如果你使用的是早期版本的[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)，本文将帮助你升级应用程序以使用最新的已正式发布的 API 版本2019-05-06。
+如果使用的是早期版本的[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)，本文有助于升级应用程序，以便使用正式发布的最新 API 版本 2019-05-06。
 
 REST API 版本 2019-05-06 包含某些针对早期版本进行的更改。 这些更改主要涉及向后兼容性，因此更改代码只需最小的工作量，具体取决于之前使用的是哪个版本。 [升级步骤](#UpgradeSteps)概述了使用新功能所要做出的代码更改。
 
 > [!NOTE]
-> Azure 认知搜索服务实例支持一系列 REST API 版本，包括早期版本。 你可以继续使用这些 API 版本，但我们建议将代码迁移到最新版本，以便可以访问新功能。
+> Azure 认知搜索服务实例支持各种 REST API 版本，包括以前的版本。 你可以继续使用这些 API 版本，但我们建议将代码迁移到最新版本，以便可以访问新功能。
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-2019-05-06"></a>版本 2019-05-06 中的新增功能
-版本2019-05-06 是 REST API 的最新公开发布版本。 此 API 版本中已正式发布的功能包括：
+版本 2019-05-06 是 REST API 的最新正式版。 此 API 版本中已正式发布的功能包括：
 
 * [自动完成](index-add-suggesters.md)是一项自动提示功能，可以完成部分指定的字词输入。
 
-* [复杂类型](search-howto-complex-data-types.md)为搜索索引中的结构化对象数据提供本机支持。
+* [复杂类型](search-howto-complex-data-types.md)原生支持搜索索引中的结构化对象数据。
 
 * [JsonLines 分析模式](search-howto-index-json-blobs.md)（Azure Blob 编制索引的一部分）可为每个 JSON 实体创建以换行符分隔的搜索文档。
 
-* [Ai 扩充](cognitive-search-concept-intro.md)提供的索引利用了认知服务的 AI 扩充引擎。
+* [AI 扩充](cognitive-search-concept-intro.md)提供索引，利用认知服务的 AI 扩充引擎。
 
 有多个预览版功能版本与此正式版更新相一致。 若要查看新的预览版功能列表，请参阅[搜索 REST API 版本 2019-05-06-Preview](search-api-preview.md)。
 
-## <a name="breaking-changes"></a>重大变化
+## <a name="breaking-changes"></a>重大更改
 
 在 api-version=2019-05-06 中，包含以下功能的现有代码将会中断。
 
@@ -53,7 +53,7 @@ REST API 版本 2019-05-06 包含某些针对早期版本进行的更改。 这�
 
 ### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>索引器数据源 API 不再返回连接字符串
 
-从 API 版本 2019-05-06 和 2019-05-06-Preview 开始，数据源 API 不再在任何 REST 操作的响应中返回连接字符串。 在以前的 API 版本中，对于使用 POST 创建的数据源，Azure 认知搜索返回**201** ，后跟 OData 响应，其中包含纯文本形式的连接字符串。
+从 API 版本 2019-05-06 和 2019-05-06-Preview 开始，数据源 API 不再在任何 REST 操作的响应中返回连接字符串。 在以前的 API 版本中，对于使用 POST 创建的数据源，Azure 认知搜索会返回 **201** 后接 OData 响应，该响应包含纯文本格式的连接字符串。
 
 ### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>“命名实体识别”认知技能现已停用
 
@@ -66,7 +66,7 @@ REST API 版本 2019-05-06 包含某些针对早期版本进行的更改。 这�
 
 * 当 API 响应中返回无法识别的属性时，代码失效。 默认情况下，应用程序应忽略无法理解的属性。
 
-* 代码仍坚持 API 请求，并尝试将其重新发送到新 API 版本。 例如，如果应用程序仍存留从搜索 API 返回的延续标记（有关详细信息，请查找`@search.nextPageParameters`搜索 API 参考[中的 ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)）。
+* 代码仍坚持 API 请求，并尝试将其重新发送到新 API 版本。 例如，如果应用程序仍存留从搜索 API 返回的延续标记（有关详细信息，请查找[搜索 API 参考](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)中的 `@search.nextPageParameters`）。
 
 如果任一种情况适用，都可能需要更改相应代码。 否则，如果不是要开始使用版本 2019-05-06 的[新功能](#WhatsNew)，便无需进行任何更改。
 
@@ -90,7 +90,7 @@ REST API 版本 2019-05-06 包含某些针对早期版本进行的更改。 这�
 
 + API 版本 2019-05-06 对每个文档的复杂集合元素数目施加了新的限制。 如果使用预览版 API 创建了文档超出这些限制的索引，尝试使用 API 版本 2019-05-06 重建该数据的索引将会失败。 如果遇到这种情况，需要在重建数据的索引之前，减少每个文档的复杂集合元素数目。
 
-有关详细信息，请参阅[Azure 认知搜索的服务限制](search-limits-quotas-capacity.md)。
+有关详细信息，请参阅 [Azure 认知搜索的服务限制](search-limits-quotas-capacity.md)。
 
 ### <a name="how-to-upgrade-an-old-complex-type-structure"></a>如何升级旧的复杂类型结构
 

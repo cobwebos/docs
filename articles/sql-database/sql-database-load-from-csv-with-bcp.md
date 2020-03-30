@@ -1,5 +1,5 @@
 ---
-title: 将数据从 CSV 文件加载到数据库（bcp）
+title: 将数据从 CSV 文件加载到数据库 （bcp）
 description: 对于较小的数据，请使用 bcp 将数据导入到 Azure SQL 数据库。
 services: sql-database
 ms.service: sql-database
@@ -12,13 +12,13 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/25/2019
 ms.openlocfilehash: b0df3d588f1d9b0a50c3ea7a583b0704e7e85c39
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73827490"
 ---
-# <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>将数据从 CSV 加载到 Azure SQL 数据库（平面文件）
+# <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>将数据从 CSV 载入 Azure SQL 数据库（平面文件）
 
 可以使用 bcp 命令行实用程序将数据从 CSV 文件导入 Azure SQL 数据库。
 
@@ -32,7 +32,7 @@ ms.locfileid: "73827490"
 * 已安装 bcp 命令行实用工具
 * 已安装 sqlcmd 命令行实用工具
 
-可以从 [Microsoft 下载中心][Microsoft Download Center]下载 bcp 和 sqlcmd 实用程序。
+可以从 [Microsoft 下载中心][Microsoft Download Center]下载 bcp 和 sqlcmd 实用工具。
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>采用 ASCII 或 UTF-16 格式的数据
 

@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：向 VNet 添加网关： PowerShell
+title: Azure 快速路由：向 VNet 添加网关：电源外壳
 description: 本文指导你将 VNet 网关添加到已为 ExpressRoute 创建的资源管理器 VNet 中。
 services: expressroute
 author: charwen
@@ -9,10 +9,10 @@ ms.date: 02/21/2019
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: 6e6d79afa1126acb26cb8856c39ba486cce31a5e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74037431"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 的虚拟网络网关

@@ -1,7 +1,7 @@
 ---
 title: OData 表达式语法参考
 titleSuffix: Azure Cognitive Search
-description: Azure 中的 OData 表达式的正式语法和语法规范认知搜索查询。
+description: Azure 认知搜索查询中 OData 表达式的正式语法和语法规范。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,28 +20,28 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72793234"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>适用于 Azure 认知搜索的 OData 表达式语法参考
+# <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Azure 认知搜索的 OData 表达式语法参考
 
-Azure 认知搜索在整个 API 中使用[OData 表达式](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)作为参数。 最常见的情况是，OData 表达式用于 `$orderby` 和 `$filter` 参数。 这些表达式可能很复杂，其中包含多个子句、函数和运算符。 但是，甚至简单的 OData 表达式（如属性路径）都在 Azure 认知搜索 REST API 的许多部分中使用。 例如，路径表达式用于引用 API 中任何位置的复杂字段的子字段，例如，在[建议器](index-add-suggesters.md)中列出子字段、[计分函数](index-add-scoring-profiles.md)、`$select` 参数，甚至是[在 Lucene 查询中现场搜索](query-lucene-syntax.md).
+Azure 认知搜索在整个 API 中使用 [OData 表达式](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html)作为参数。 最常见的是，OData 表达式用于 `$orderby` 和 `$filter` 参数。 这些表达式可能很复杂，包含多个子句、函数和运算符。 但是，甚至简单的 OData 表达式（如属性路径）都在 Azure 认知搜索 REST API 的许多部分中使用。 例如，路径表达式用于引用 API 中各处的复杂字段的子字段，例如在[建议器](index-add-suggesters.md)、[评分函数](index-add-scoring-profiles.md)、`$select` 参数，甚至在 [Lucene 查询中的字段搜索](query-lucene-syntax.md)中列出子字段。
 
-本文介绍使用正式语法的所有这些形式的 OData 表达式。 此外，还提供了一个[交互式关系图](#syntax-diagram)来帮助你直观地了解语法。
+本文使用正式语法描述所有这些形式的 OData 表达式。 还有一个[交互式图表](#syntax-diagram)，以帮助直观地探索语法。
 
 ## <a name="formal-grammar"></a>正式语法
 
-我们可以使用 EBNF （[扩展巴科斯-诺尔范式形式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）语法描述 Azure 认知搜索支持的 OData 语言的子集。 规则按 "自上而下" 列出，从最复杂的表达式开始，然后细分为更多的基元表达式。 顶部是对应于 Azure 认知搜索 REST API 的特定参数的语法规则：
+我们可以使用 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）语法描述 Azure 认知搜索支持的 OData 语言的子集。 规则以“自上而下”的方式列出，从最复杂的表达式开始，并将其分解为更原始的表达式。 顶部是与 Azure 认知搜索 REST API 的特定参数相对应的语法规则：
 
-- [`$filter`](search-query-odata-filter.md)，由 `filter_expression` 规则定义。
-- [`$orderby`](search-query-odata-orderby.md)，由 `order_by_expression` 规则定义。
-- [`$select`](search-query-odata-select.md)，由 `select_expression` 规则定义。
-- 字段路径，由 `field_path` 规则定义。 在整个 API 中使用字段路径。 它们可以引用索引的顶级字段或具有一个或多个[复杂字段](search-howto-complex-data-types.md)上级的子字段。
+- [`$filter`](search-query-odata-filter.md)，由`filter_expression`规则定义。
+- [`$orderby`](search-query-odata-orderby.md)，由`order_by_expression`规则定义。
+- [`$select`](search-query-odata-select.md)，由`select_expression`规则定义。
+- 字段路径，由 `field_path` 规则定义。 在整个 API 中使用字段路径。 它们可以引用索引的顶级字段，也可以引用具有一个或多个[复杂字段](search-howto-complex-data-types.md)祖先的子字段。
 
-EBNF 是一个可浏览的[语法关系图](https://en.wikipedia.org/wiki/Syntax_diagram)，可用于以交互方式浏览语法以及其规则之间的关系。
+EBNF 之后是一个可浏览的[语法图](https://en.wikipedia.org/wiki/Syntax_diagram)，可用于交互式地探索语法及其规则之间的关系。
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -207,16 +207,16 @@ query_type ::= "'full'" | "'simple'"
 search_mode ::= "'any'" | "'all'"
 ```
 
-## <a name="syntax-diagram"></a>语法关系图
+## <a name="syntax-diagram"></a>语法图
 
-若要直观地了解 Azure 认知搜索支持的 OData 语言语法，请尝试交互式语法关系图：
+若要直观地探索 Azure 认知搜索支持的 OData 语言语法，请尝试交互式语法图：
 
 > [!div class="nextstepaction"]
-> [适用于 Azure 认知搜索的 OData 语法关系图](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/)
 
-## <a name="see-also"></a>另请参阅  
+## <a name="see-also"></a>请参阅  
 
 - [Azure 认知搜索中的筛选器](search-filters.md)
-- [搜索文档&#40;Azure 认知搜索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene 查询语法](query-lucene-syntax.md)
 - [Azure 认知搜索中的简单查询语法](query-simple-syntax.md)

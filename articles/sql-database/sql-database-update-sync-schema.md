@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
 ms.openlocfilehash: 639901975bbb66b9f410bea297d9e48cd96d6d1b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822434"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>在 Azure SQL 数据同步中自动复制架构更改
@@ -31,7 +31,7 @@ SQL 数据同步可让用户在 Azure SQL 数据库与本地 SQL Server 之间�
 本文使用 ALTER TABLE 作为架构更改的示例，但此解决方案也适用于其他类型的架构更改。
 
 > [!IMPORTANT]
-> 我们建议仔细阅读本文，尤其是[故障排除](#troubleshoot)和[其他注意事项](#other)部分，然后在同步环境中开始实现自动架构更改复制。 此外，我们还建议你[通过 SQL 数据同步在多个云和本地数据库中读取同步数据](sql-database-sync-data.md)。某些数据库操作可能会破坏本文中所述的解决方案。 可能需要有 SQL Server 和 Transact-SQL 领域的其他知识才能排查这些问题。
+> 我们建议仔细阅读本文，尤其是[故障排除](#troubleshoot)和[其他注意事项](#other)部分，然后在同步环境中开始实现自动架构更改复制。 我们还建议使用 SQL[数据同步读取跨多个云和本地数据库的同步数据](sql-database-sync-data.md)。某些数据库操作可能会破坏本文中描述的解决方案。 可能需要有 SQL Server 和 Transact-SQL 领域的其他知识才能排查这些问题。
 
 ![自动复制架构更改](media/sql-database-update-sync-schema/automate-schema-changes.png)
 
@@ -171,7 +171,7 @@ END
 
 对于其他类型的架构更改 - 例如，创建存储过程或删除索引 - 不需要更新同步架构。
 
-## <a name="troubleshoot"></a>排查自动架构更改复制问题
+## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a>排查自动架构更改复制问题
 
 在某些情况下，本文所述的复制逻辑会停止工作 - 例如，如果在 Azure SQL 数据库不支持的本地数据库中进行架构更改。 在这种情况下，同步架构更改跟踪表会失败。 需要手动解决此问题：
 
@@ -185,9 +185,9 @@ END
 
 1.  查询架构更改跟踪表，以列出 ID 大于上一步骤中检索到的 ID 的所有命令。
 
-    a.  忽略无法在终结点数据库中执行的命令。 需要处理架构不一致情况。 如果不一致性影响了应用程序，请还原原始架构更改。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  忽略无法在终结点数据库中执行的命令。 需要处理架构不一致情况。 如果不一致性影响了应用程序，请还原原始架构更改。
 
-    b.  手动应用这些命令。
+    b.保留“数据库类型”设置，即设置为“共享”。  手动应用这些命令。
 
 1.  更新架构更改历史记录表，并将上次应用的 ID 设置为正确值。
 
@@ -199,7 +199,7 @@ END
 
 如果想要清理架构更改跟踪表中的记录，请使用 DELETE 而不是 TRUNCATE。 切勿使用 DBCC CHECKIDENT 在架构更改跟踪表中重新植入标识列。 如果需要重新植入，可以创建新的架构更改跟踪表，并更新 DDL 触发器中的表名称。
 
-## <a name="other"></a>其他注意事项
+## <a name="other-considerations"></a><a name="other"></a>其他注意事项
 
 -   配置中心和成员数据库的数据库用户需有足够的权限才能执行架构更改命令。
 

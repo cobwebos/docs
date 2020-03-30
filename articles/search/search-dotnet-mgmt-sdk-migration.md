@@ -1,5 +1,5 @@
 ---
-title: 升级到 Azure 搜索 .NET 管理 SDK 版本2
+title: 升级到 Azure 搜索 .NET 管理 SDK 版本 2
 titleSuffix: Azure Cognitive Search
 description: 从以前版本升级到 Azure 搜索 .NET 管理 SDK 版本 2。 了解新增功能和所需的代码更改。
 manager: nitinme
@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b18e9688141ee64eb7dfcb82ce58db198e324b5b
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73847536"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>升级 Azure 搜索 .NET 管理 SDK 的版本
@@ -47,4 +47,4 @@ ms.locfileid: "73847536"
 在修复了任何生成错误后，可以对应用程序进行更改，以利用新功能（如果愿意）。 有关 SDK 中的新功能的详细信息，请参阅[版本 2 中的新增功能](#WhatsNew)。
 
 ## <a name="next-steps"></a>后续步骤
-我们欢迎你对 SDK 提供反馈。 如果遇到问题，请将问题发布到[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest)。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 请确保用 "[search]" 为问题标题添加标签。
+我们欢迎你对 SDK 提供反馈。 如果遇到问题，请将问题发布到 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest)。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 请务必使用“[search]”来标记问题标题。

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 设置故障转移/故障回复到辅助 Hyper-v 站点
+title: 使用 Azure 站点恢复将故障转移/故障恢复设置到辅助 Hyper-V 站点
 description: 了解如何在灾难恢复期间使用 Azure Site Recovery 将 Hyper-V VM 故障转移到辅助本地站点以及故障回复到主站点。
 services: site-recovery
 author: rayne-wiselman
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082599"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>对复制到辅助本地站点的 Hyper-V VM 进行故障转移和故障回复
 
-[Azure Site Recovery](site-recovery-overview.md) 服务管理和安排本地计算机和 Azure 虚拟机 (VM) 的复制、故障转移和故障回复。
+[Azure Site Recovery](site-recovery-overview.md) 服务可管理和协调本地计算机和 Azure 虚拟机 (VM) 的复制、故障转移和故障回复。
 
 本文介绍如何将 System Center Virtual Machine Manager (VMM) 云中托管的 Hyper-V VM 故障转移到辅助 VMM 站点。 故障转移后，可故障回复到本地站点（若可行）。 在本文中，学习如何：
 
@@ -52,13 +52,13 @@ ms.locfileid: "74082599"
   本过程介绍如何运行常规故障转移。
 
 
-1. 在“设置” **“复制的项”中，单击“VM”>“故障转移”**  > 。
-1. 如果希望 Site Recovery 在触发故障转移之前尝试关闭源 VM，请选择“在开始故障转移前关闭计算机”。 在触发故障转移前，Site Recovery 还会尝试同步尚未发送到辅助站点的本地数据。 请注意：即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。
+1. 在 **"设置** > **复制"项**中，单击 VM >**故障转移**。
+1. 如果希望 Site Recovery 在触发故障转移之前尝试关闭源 VM，请选择“在开始故障转移前关闭计算机”****。 在触发故障转移前，Site Recovery 还会尝试同步尚未发送到辅助站点的本地数据。 请注意：即使关机失败，故障转移也仍会继续。 您可以按照 **"作业**"页上的故障转移进度进行操作。
 2. 你现在应能够在辅助 VMM 云中看到 VM。
-3. 验证 VM 后，“提交”故障转移。 这会删除所有可用的恢复点。
+3. 验证 VM 后，“提交”**** 故障转移。 这会删除所有可用的恢复点。
 
 > [!WARNING]
-> 请勿在进行时取消故障转移：在故障转移开始前，将停止 VM 复制。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。  
+> **不要取消正在进行的故障转移**：在启动故障转移之前，VM 复制将停止。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。  
 
 
 ## <a name="reverse-replicate-and-failover"></a>反向复制和故障转移
@@ -66,11 +66,11 @@ ms.locfileid: "74082599"
 开始从辅助站点复制到主站点，并故障回复到主站点。 VM 在主站点中再次运行之后，可以将它们复制到辅助站点。  
 
  
-1. 单击“VM”> 单击“反向复制”。
-2. 在完成作业后，单击“VM”，在“故障转移”中确认故障转移方向（从辅助 VMM 云），并选择源和目标位置。 
+1. 单击“VM”> 单击****“反向复制”。
+2. 在完成作业后，单击“VM”，在“故障转移”**** 中确认故障转移方向（从辅助 VMM 云），并选择源和目标位置。 
 4. 启动故障转移。 可以在“**作业**”选项卡上跟踪故障转移进度。
 5. 在主 VMM 云中，检查 VM 是否可用。
-6. 如果要再次开始将主 VM 复制回辅助站点，请单击“反向复制”。
+6. 如果要再次开始将主 VM 复制回辅助站点，请单击“反向复制”****。
 
 ## <a name="next-steps"></a>后续步骤
 [查看将 Hyper-V VM 复制到辅助站点的步骤](hyper-v-vmm-disaster-recovery.md)。

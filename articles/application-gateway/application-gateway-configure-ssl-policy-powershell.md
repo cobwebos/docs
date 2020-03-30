@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 105b0b3e40e6e9433ee456914cd5babc1d17d036
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075235"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>在应用程序网关上配置 SSL 策略版本和密码套件
 
-了解如何在应用程序网关上配置 SSL 策略版本和密码套件。 预定义策略列表中包含各种 SSL 策略版本配置和启用的密码套件，你可从中进行选择。 此外，还可基于自身需求定义[自定义 SSL 策略](#configure-a-custom-ssl-policy)。
+了解如何在应用程序网关上配置 SSL 策略版本和密码套件。 预定义策略列表中包含各种 SSL 策略版本配置和启用的密码套件，你可从中进行选择。 您还可以根据您的要求定义自定义 SSL[策略](#configure-a-custom-ssl-policy)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -73,7 +73,7 @@ AvailableProtocols:
 
 ## <a name="list-pre-defined-ssl-policies"></a>列出预定义 SSL 策略
 
-应用程序网关包含 3 个可使用的预定义策略。 `Get-AzApplicationGatewaySslPredefinedPolicy` cmdlet 会检索这些策略。 每个策略启用不同的协议版本和密码套件。 这些预定义策略可用于在应用程序网关上快速配置 SSL 策略。 如果未定义特定 SSL 策略，则默认选择 AppGwSslPolicy20150501。
+应用程序网关包含 3 个可使用的预定义策略。 `Get-AzApplicationGatewaySslPredefinedPolicy` cmdlet 会检索这些策略。 每个策略启用不同的协议版本和密码套件。 这些预定义策略可用于在应用程序网关上快速配置 SSL 策略。 如果未定义特定 SSL 策略，则默认选择 AppGwSslPolicy20150501****。
 
 以下输出为运行 `Get-AzApplicationGatewaySslPredefinedPolicy` 的示例。
 
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>使用预定义 SSL 策略更新现有应用程序网关
 
-要设置自定义 SSL 策略，请传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway。 要设置预定义 SSL 策略，请传递以下参数：PolicyType、PolicyName 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。
+要设置自定义 SSL 策略，请传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway****************。 要设置预定义 SSL 策略，请传递以下参数：PolicyType、PolicyName 和 ApplicationGateway************。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。
 
 以下示例中提供了自定义策略和预定义策略的代码示例。 取消注释要使用的策略。
 

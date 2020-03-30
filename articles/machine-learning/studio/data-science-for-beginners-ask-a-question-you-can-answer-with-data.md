@@ -10,10 +10,10 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
 ms.openlocfilehash: 26837337b49d79a26404fd6709b036f6907720f8
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73838840"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
@@ -28,13 +28,13 @@ ms.locfileid: "73838840"
 >
 
 ## <a name="other-videos-in-this-series"></a>本系列中的其他视频
-“适合初学者的数据科学”对数据科学进行简要介绍，共五个短视频。
+“适合初学者的数据科学”** 对数据科学进行简要介绍，共五个短视频。
 
-* 视频 1：[数据科学可解答的 5 个问题](data-science-for-beginners-the-5-questions-data-science-answers.md)（5 分 14 秒）
-* 视频 2：[数据是否可用于数据科学？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒）
+* 视频 1：[数据科学可解答的 5 个问题（5 分 14 秒）](data-science-for-beginners-the-5-questions-data-science-answers.md) **
+* 视频 2：[您的数据是否已为数据科学做好准备？](data-science-for-beginners-is-your-data-ready-for-data-science.md) （4 分 56 秒）**
 * 视频 3：提出可用数据回答的问题
-* 视频 4：[使用简单的模型预测答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md)（7 分 42 秒）
-* 视频 5：[复制他人的工作以研究数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)（3 分 18 秒）
+* 视频 4：[使用简单的模型预测答案（7 分 42 秒）](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) **
+* 视频 5：[复制他人的工作以研究数据科学（3 分 18 秒）](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) **
 
 ## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>脚本：提出可用数据回答的问题
 欢迎观看“适合初学者的数据科学”系列中的第二个视频。  
@@ -44,11 +44,11 @@ ms.locfileid: "73838840"
 如果先观看了本系列中的前两个视频：“5 个数据科学可以解答的问题”和“数据是否可用于数据科学？”，可能会从此视频中了解更多的内容。
 
 ## <a name="ask-a-sharp-question"></a>提出尖锐问题
-我们已经探讨过数据科学如何使用名称（也称为类别或标签）和数字预测某个问题的答案的过程。 但这个问题并不指代任何问题；它必须是一个清晰具体的问题。
+我们已经探讨过数据科学如何使用名称（也称为类别或标签）和数字预测某个问题的答案的过程。 但这个问题并不指代任何问题；它必须是一个清晰具体的问题。**
 
 模糊问题不必用名称或数字来回答。 必须是清晰具体的问题。
 
-想象一下，发现了一盏神灯，里面的精灵会如实地回答你问的任何问题。 但这是一个非常的精灵，它会尝试将其答案视为含糊和混乱，因为他们可能会消失。 你需要将其固定在一起，使无懈可击无法提供帮助，但会告诉你想要了解的内容。
+想象一下，发现了一盏神灯，里面的精灵会如实地回答你问的任何问题。 但这个精灵非常淘气，它会试图给出模糊混淆的回答，以免受错误的惩罚。 需要提出一个无懈可击的问题，阻止它的上述行为，迫使它只能告诉你想要知道的答案。
 
 如果问它一个模糊的问题，比如“我的股票接下来如何？”，精灵可能会回答，“价格会改变”。 这是一个真实的答案，但不是非常有帮助。
 
@@ -70,9 +70,9 @@ ms.locfileid: "73838840"
 ## <a name="reformulate-your-question"></a>重新制定问题
 有时可以改写问题，获得更有用的答案。
 
-问题“此数据指向 A 还是 B？” 预测事物类别（或名称/标签）。 若要回答此问题，请使用分类算法。
+问题“此数据指向 A 还是 B？” 预测事物类别（或名称/标签）。 若要回答此问题，请使用分类算法**。
 
-问题“多少？” 或“数量？” 可对量进行预测。 若要回答此问题，请使用回归算法。
+问题“多少？” 或“数量？” 可对量进行预测。 若要回答此问题，请使用回归算法**。
 
 若要了解如何转换这些问题，让我们来看看这个问题：“读者最感兴趣的是哪个新闻故事？” 这要求从多种可能性中预测某个单一选择 - 换句话说，“这是 A 还是 B 或 C 或 D？” - 这将使用分类算法。
 
@@ -88,8 +88,8 @@ ms.locfileid: "73838840"
 
 我们已经探讨了一些有关如何提出可用数据回答的问题的基本原则。
 
-请务必查看 "适用于初学者的数据科学" 中的其他视频，Microsoft Azure 机器学习工作室（经典）。
+务必观看 Microsoft Azure 机器学习工作室（经典）“适合初学者的数据科学”中的其他视频。
 
 ## <a name="next-steps"></a>后续步骤
-* [试用机器学习 Studio （经典）进行第一次数据科学试验](create-experiment.md)
-* [获取 Microsoft Azure 上的机器学习的简介](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [使用机器学习工作室（经典）尝试第一个数据科学试验](create-experiment.md)
+* [在 Microsoft Azure 上获取机器学习简介](/azure/machine-learning/preview/overview-what-is-azure-ml)

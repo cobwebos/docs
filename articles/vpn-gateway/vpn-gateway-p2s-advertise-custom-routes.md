@@ -1,6 +1,6 @@
 ---
-title: Azure VPN 网关：播发 P2S VPN 客户端的自定义路由
-description: 将自定义路由播发到点到站点客户端的步骤
+title: Azure VPN 网关：为 P2S VPN 客户端通告自定义路由
+description: 向点到站点客户端播发自定义路由的步骤
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 11/11/2019
 ms.author: cherylmc
 ms.openlocfilehash: 7a904857b8aa0ed2aa18fc2a1b81fe31541e6f9e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74151906"
 ---
-# <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>播发 P2S VPN 客户端的自定义路由
+# <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>为 P2S VPN 客户端播发自定义路由
 
-你可能想要将自定义路由播发到你的所有点到站点 VPN 客户端。 例如，你在 VNet 中启用了存储终结点，并且希望远程用户能够通过 VPN 连接访问这些存储帐户。 可以将存储终结点的 IP 地址播发到所有远程用户，以便到存储帐户的流量通过 VPN 隧道，而不是公共 Internet。
+你可能想要向所有点到站点 VPN 客户端播发自定义路由。 例如，当你在 VNet 中启用了存储终结点并希望远程用户能够通过 VPN 连接访问这些存储帐户时。 可以向所有远程用户播发存储终结点的 IP 地址，以使到存储帐户的流量通过 VPN 隧道，而不是公共 Internet。
 
 ![Azure VPN 网关多站点连接示例](./media/vpn-gateway-p2s-advertise-custom-routes/custom-routes.png)
 
-## <a name="to-advertise-custom-routes"></a>公布自定义路由
+## <a name="to-advertise-custom-routes"></a>播发自定义路由
 
-若要播发自定义路由，请使用 `Set-AzVirtualNetworkGateway cmdlet`。 下面的示例演示如何为[Contoso 存储帐户表](https://contoso.table.core.windows.net)公布 IP。
+若要播发自定义路由，请使用 `Set-AzVirtualNetworkGateway cmdlet`。 以下示例演示如何播发 [Contoso 存储帐户表](https://contoso.table.core.windows.net)的 IP。
 
-1. Ping *contoso.table.core.windows.net*并记录 IP 地址。 例如：
+1. ping *contoso.table.core.windows.net*并记下 IP 地址。 例如：
 
     ```cmd
     C:\>ping contoso.table.core.windows.net

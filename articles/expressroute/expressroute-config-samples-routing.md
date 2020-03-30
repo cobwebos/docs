@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：路由器配置示例
+title: Azure 快速路由：路由器配置示例
 description: 本页提供 Cisco 和 Juniper 路由器的路由器配置示例。
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076666"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>用于设置和管理路由的路由器配置示例
@@ -63,7 +63,7 @@ ms.locfileid: "74076666"
      exit-address-family
     !
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. 设置要通过 BGP 会话播发的前缀
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. 设置要在 BGP 会话上播发的前缀
 可以配置路由器，以将所选前缀播发给 Microsoft。 可以使用以下示例来执行此操作。
 
     router bgp <Customer_ASN>
@@ -76,7 +76,7 @@ ms.locfileid: "74076666"
      exit-address-family
     !
 
-### <a name="4-route-maps"></a>4. 路由映射
+### <a name="4-route-maps"></a>4. 路线图
 可以使用路由映射和前缀列表来筛选已传播到网络中的前缀。 可以使用以下示例来完成此任务。 确保已设置适当的前缀列表。
 
     router bgp <Customer_ASN>
@@ -148,7 +148,7 @@ ms.locfileid: "74076666"
         }                                   
     }
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. 设置要通过 BGP 会话播发的前缀
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3. 设置要在 BGP 会话上播发的前缀
 可以配置路由器，以将所选前缀播发给 Microsoft。 可以使用以下示例来执行此操作。
 
     policy-options {
@@ -173,7 +173,7 @@ ms.locfileid: "74076666"
     }
 
 
-### <a name="4-route-maps"></a>4. 路由映射
+### <a name="4-route-maps"></a>4. 路线图
 可以使用路由映射和前缀列表来筛选已传播到网络中的前缀。 可以使用以下示例来完成此任务。 确保已设置适当的前缀列表。
 
     policy-options {

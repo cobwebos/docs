@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 创建自定义探测
+title: 使用 PowerShell 创建自定义探测器
 titleSuffix: Azure Application Gateway
 description: 了解如何使用 Resource Manager 中的 PowerShell 创建应用程序网关的自定义探测
 services: application-gateway
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075273"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用适用于 Azure 资源管理器的 PowerShell 创建 Azure 应用程序网关的自定义探测
@@ -20,7 +20,7 @@ ms.locfileid: "74075273"
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-probe-portal.md)
 > * [Azure 资源管理器 PowerShell](application-gateway-create-probe-ps.md)
-> * [Azure 经典 PowerShell](application-gateway-create-probe-classic-ps.md)
+> * [Azure 经典电源外壳](application-gateway-create-probe-classic-ps.md)
 
 在本文中，将使用 PowerShell 向现有应用程序网关添加自定义探测。 如果应用程序包含特定运行状况检查页面。或者未在默认 Web 应用程序上提供成功的响应，那么它们非常适合使用自定义探测。
 
@@ -58,7 +58,7 @@ ms.locfileid: "74075273"
 
 Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 请确保用于创建应用程序网关的所有命令都使用相同的资源组。
 
-在上述示例中，我们创建了名为“appgw-RG”的资源组，位置为“美国西部”。
+在上述示例中，我们创建了名为“appgw-RG”**** 的资源组，位置为“美国西部”****。
 
 ### <a name="create-a-virtual-network-and-a-subnet"></a>创建虚拟网络和子网
 
@@ -77,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>创建前端配置的公共 IP 地址
 
-在 West US 区域的 **appgw-rg** 资源组中创建公共 IP 资源 **publicIP01**。 此示例使用公共 IP 地址作为应用程序网关的前端 IP 地址。  应用程序网关要求公共 IP 地址具有动态创建的 DNS 名称，因此在公共 IP 地址创建过程中不能指定 `-DomainNameLabel`。
+在资源组**appgw-rg**中为美国西部区域创建公共 IP 资源**公共 IP01。** 此示例使用公共 IP 地址作为应用程序网关的前端 IP 地址。  应用程序网关要求公共 IP 地址具有动态创建的 DNS 名称，因此在公共 IP 地址创建过程中不能指定 `-DomainNameLabel`。
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -89,12 +89,12 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 
 | **组件** | **说明** |
 |---|---|
-| 网关 IP 配置 | 应用程序网关的 IP 配置。|
-| 后端池 | 由 IP 地址、FQDN 或 NIC 组成的池，这些池成员供托管 Web 应用程序的应用程序服务器使用|
-| 运行状况探测 | 用于监视后端池成员运行状况的自定义探测|
-| HTTP 设置 | 端口、协议、基于 cookie 的相关性、探测和超时等一系列设置。  这些设置决定将流量路由到后端池成员的方式|
-| 前端端口 | 应用程序网关在该端口上侦听流量|
-| 侦听器 | 协议、前端 IP 配置和前端端口的组合。 侦听器用于侦听传入请求。
+| 网关 IP 配置**** | 应用程序网关的 IP 配置。|
+| **后端池** | 由 IP 地址、FQDN 或 NIC 组成的池，这些池成员供托管 Web 应用程序的应用程序服务器使用|
+| **健康探头** | 用于监视后端池成员运行状况的自定义探测|
+| **HTTP 设置** | 端口、协议、基于 cookie 的相关性、探测和超时等一系列设置。  这些设置决定将流量路由到后端池成员的方式|
+| 前端端口**** | 应用程序网关在该端口上侦听流量|
+| **侦听器** | 协议、前端 IP 配置和前端端口的组合。 侦听器用于侦听传入请求。
 |**规则**| 基于 HTTP 设置将流量路由到相应的后端。|
 
 ```powershell
@@ -197,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>后续步骤
 
-访问[配置 SSL 卸载](application-gateway-ssl-arm.md)，了解如何配置 SSL 卸载
+通过访问了解如何配置 SSL 卸载：[配置 SSL 卸载](application-gateway-ssl-arm.md)
 

@@ -1,5 +1,5 @@
 ---
-title: 为 Azure 应用程序网关迁移 WAF 策略
+title: 迁移 Azure 应用程序网关的 WAF 策略
 description: 了解如何使用 Azure PowerShell 迁移 Azure Web 应用程序防火墙策略。
 services: web-application-firewall
 ms.topic: conceptual
@@ -8,26 +8,26 @@ ms.service: web-application-firewall
 ms.date: 11/19/2019
 ms.author: ant
 ms.openlocfilehash: 1fac524af4b69f8e35934840643c6d3ad99fe1cd
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74174598"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>使用 Azure PowerShell 迁移 Web 应用程序防火墙策略
 
-使用此脚本可以轻松地从 WAF config 或自定义规则-仅 WAF 策略转换为完整的 WAF 策略。 你可能会在门户中看到一条警告，其中显示了 "*迁移到 WAF" 策略*，或者你可能想要新的公共预览版 WAF 功能，如 Geomatch 自定义规则、每个站点和每个 URI WAF 策略或 bot 缓解规则集。 若要使用这些功能中的任何一种，需要有与应用程序网关关联的完整 WAF 策略。 
+此脚本可轻松从 WAF 配置或仅自定义规则 WAF 策略转换为完整的 WAF 策略。 您可能会在门户中看到一条警告，指出*迁移到 WAF 策略*，或者您可能希望新的公共预览 WAF 功能，如 Geomatch 自定义规则、每个站点和每个 URI WAF 策略或自动程序缓解规则集。 要使用这些功能中的任何一个，您需要与应用程序网关关联的完整 WAF 策略。 
 
-有关创建新的 WAF 策略的详细信息，请参阅[创建应用程序网关的 Web 应用程序防火墙策略](create-waf-policy-ag.md)。 有关迁移的信息，请参阅[迁移到 WAF 策略](create-waf-policy-ag.md#migrate-to-waf-policy)。
+有关创建新 WAF 策略的详细信息，请参阅[为应用程序网关创建 Web 应用程序防火墙策略](create-waf-policy-ag.md)。 有关迁移的信息，请参阅迁移到[WAF 策略](create-waf-policy-ag.md#migrate-to-waf-policy)。
 
 ## <a name="to-migrate-to-waf-policy-using-the-migration-script"></a>使用迁移脚本迁移到 WAF 策略
 
-使用以下步骤来运行迁移脚本： 
+使用以下步骤运行迁移脚本： 
 
-1. 打开以下 cloud shell 窗口，或从门户中打开一个。
-2. 将脚本复制到 cloud shell 窗口并运行它。
-3. 该脚本要求提供订阅 ID、资源组名称、与 WAF config 关联的应用程序网关的名称，以及要创建的新 WAF 策略的名称。 输入这些输入后，脚本会运行并创建新的 WAF 策略
-4. 将新的 WAF 策略与应用程序网关相关联。 在门户中，单击 "WAF" 策略，并选择 "**关联的应用程序**网关" 选项卡。选择 "**关联应用程序网关**"，然后选择要将 WAF 策略关联到的应用程序网关。
+1. 打开以下云外壳窗口，或从门户中打开一个云壳窗口。
+2. 将脚本复制到云外壳窗口中并运行它。
+3. 脚本要求订阅 ID、资源组名称、WAF 配置关联的应用程序网关的名称以及要创建的新 WAF 策略的名称。 输入这些输入后，脚本将运行并创建新的 WAF 策略
+4. 将新的 WAF 策略与您的应用程序网关相关联。 转到门户中的 WAF 策略并选择 **"关联应用程序网关**"选项卡。选择 **"关联应用程序网关**"，然后选择应用程序网关将 WAF 策略关联到。
 
 ```azurepowershell-interactive
 <#PSScriptInfo
@@ -212,4 +212,4 @@ Main
 ```
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[Web 应用程序防火墙 CRS 规则组和规则](application-gateway-crs-rulegroups-rules.md)的详细信息。
+了解有关[Web 应用程序防火墙 CRS 规则组和规则](application-gateway-crs-rulegroups-rules.md)的更多内容。

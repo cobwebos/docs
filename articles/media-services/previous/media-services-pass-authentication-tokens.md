@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 15d4cbc372f5d5ec0d323170189329152ed436e3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73684939"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>了解客户端如何将令牌传递到 Azure 媒体服务密钥传送服务
@@ -29,7 +29,7 @@ ms.locfileid: "73684939"
 
 - 通过 HTTP 授权标头。
     > [!NOTE]
-    > 根据 OAuth 2.0 规格，应使用“Bearer”前缀。 Azure 媒体播放器[演示页面](https://ampdemo.azureedge.net/)上提供了一个具有令牌配置的示例播放器。 若要设置视频源，请选择“AES（JWT 令牌）”或“AES（SWT 令牌）”。 令牌是通过授权标头传递的。
+    > 根据 OAuth 2.0 规格，应使用“Bearer”前缀。 Azure 媒体播放器[演示页面](https://ampdemo.azureedge.net/)上提供了一个具有令牌配置的示例播放器。 若要设置视频源，请选择“AES（JWT 令牌）”或“AES（SWT 令牌）”。******** 令牌是通过授权标头传递的。
 
 - 通过使用“token=tokenvalue”添加一个 URL 查询参数。  
     > [!NOTE]

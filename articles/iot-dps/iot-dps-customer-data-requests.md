@@ -1,6 +1,6 @@
 ---
 title: Azure DPS 设备的客户数据请求功能
-description: 对于在 Azure 设备预配服务（DPS）中托管的设备，本文介绍如何导出或删除个人数据。
+description: 对于在 Azure 设备配置服务 （DPS） 中管理的个人设备，本文介绍管理员如何导出或删除个人数据。
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/16/2018
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 1dcf1b9f62f94b8f75ef2fe77f3e237a387c53eb
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73890649"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
@@ -62,6 +62,6 @@ Azure IoT 中心设备预配服务是一项基于 REST API 的云服务，其目
 
 ## <a name="links-to-additional-documentation"></a>其他文档的链接
 
-设备预配服务 API 的完整文档位于 [https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps)。
+设备预配服务 API 的完整文档位于[https://docs.microsoft.com/rest/api/iot-dps](https://docs.microsoft.com/rest/api/iot-dps)。
 
 Azure IoT 中心[客户数据请求功能](../iot-hub/iot-hub-customer-data-requests.md)。

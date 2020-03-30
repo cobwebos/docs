@@ -1,23 +1,23 @@
 ---
-title: 出错时回滚以成功部署
-description: 指定失败的部署应回滚到成功的部署。
+title: 出错时回退以成功部署
+description: 指定失败的部署应回退到成功的部署。
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 32ba5485e1980eb819bf5429fbfbb597dfe75c2a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 206c794996f58a4c5b6982c551ae50128ed4f5eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484293"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460137"
 ---
-# <a name="rollback-on-error-to-successful-deployment"></a>发生错误时回滚到成功部署
+# <a name="rollback-on-error-to-successful-deployment"></a>出错时回退以成功部署
 
-部署失败时，可以自动重新部署部署历史记录中先前成功的部署。 如果你已经为基础结构部署提供了已知的良好状态，并且想要恢复到此状态，则此功能非常有用。 有一些注意事项和限制：
+部署失败时，可以自动重新部署部署历史记录中先前成功的部署。 如果基础结构部署存在一个已知良好的状态，并且你希望还原到此状态，则此功能非常有用。 有许多需要注意的问题和限制：
 
-- 重新部署的运行与以前用相同参数运行的重新部署完全相同。 不能更改参数。
-- 先前的部署是使用[完整模式](./deployment-modes.md#complete-mode)运行的。 将删除以前的部署中未包含的任何资源，并将所有资源配置设置为以前的状态。 请确保完全了解[部署模式](./deployment-modes.md)。
-- 重新部署只会影响资源，任何数据更改不会受到影响。
-- 此功能只能用于资源组部署，不能与订阅或管理组级别部署一起使用。 有关订阅级别部署的详细信息，请参阅[在订阅级别创建资源组和资源](./deploy-to-subscription.md)。
+- 重新部署使用与以前运行它时相同的参数以相同的方式运行。 无法更改参数。
+- 以前的部署是使用[完整模式](./deployment-modes.md#complete-mode)运行的。 以前的部署中未包括的任何资源都将被删除，任何资源配置都将设置为以前的状态。 请确保你完全理解[部署模式](./deployment-modes.md)。
+- 重新部署只会影响资源，而不会影响任何数据更改。
+- 只能将此功能用于资源组部署，而不能用于订阅或管理组级别部署。 有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](./deploy-to-subscription.md)。
 - 只能将此选项用于根级别部署。 从嵌套模板进行的部署不可用于重新部署。
 
 若要使用此选项，部署必须具有唯一的名称，以便可以在历史记录中标识它们。 如果没有唯一名称，则当前失败的部署可能会覆盖历史记录中以前成功的部署。
@@ -47,7 +47,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
 若要重新部署最后一个成功的部署，请将 `--rollback-on-error` 参数添加为标志。
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
   --template-file storage.json \
@@ -58,7 +58,7 @@ az group deployment create \
 若要重新部署某个特定部署，请使用 `--rollback-on-error` 参数并提供部署名称。 指定的部署必须已成功。
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment02 \
   --resource-group ExampleGroup \
   --template-file storage.json \

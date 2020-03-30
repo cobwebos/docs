@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
 ms.openlocfilehash: 2e8519fa8d96b7fe016b9da4ba84ce481a57d94e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73802819"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL 数据库的多模型功能
@@ -29,7 +29,7 @@ Azure SQL 数据库设计为使用关系模型，在大多数情况下，该模�
 - 某些信息或结构更适合 NoSQL 模型，并且你不想要使用独立的 NoSQL 数据库。
 - 大部分数据适合关系模型，并且你需要以 NoSQL 形式为某些数据部分建模。
 - 希望利用丰富的 Transact-SQL 语言来查询和分析关系数据与 NoSQL 数据，并将其集成到可以使用 SQL 语言的各种工具和应用程序。
-- 你想要应用数据库功能（如[内存中技术](sql-database-in-memory.md)）来提高分析或处理 NoSQL 数据结构的性能，请使用[事务复制](sql-database-managed-instance-transactional-replication.md)或[可读副本](sql-database-read-scale-out.md)在上创建数据的副本其他位置，并从主数据库中卸载一些分析工作负荷。
+- 希望应用[内存中技术](sql-database-in-memory.md)等数据库功能来改善 NoSQL 数据结构的分析或处理性能，使用[事务复制](sql-database-managed-instance-transactional-replication.md)或[可读副本](sql-database-read-scale-out.md)在其他位置创建数据的副本，并减轻主数据库中的某些分析工作负荷。
 
 ## <a name="overview"></a>概述
 
@@ -38,7 +38,7 @@ Azure SQL 提供以下多模型功能：
 - [JSON 功能](#json-features)：在表中插入 JSON 文档，将关系数据转换为 JSON 文档，或反之。 可以使用通过 JSON 函数增强的标准 Transact-SQL 语言来分析文档，并使用非聚集索引、列存储索引或内存优化表来优化查询。
 - [空间功能](#spatial-features)：存储地理或几何图形数据、使用空间索引为其编制索引，并使用空间查询检索数据。
 - [XML 功能](#xml-features)：在数据库中存储 XML 数据并为其编制索引，并使用本机 XQuery/XPath 运算来处理 XML 数据。 Azure SQL 数据库提供专用的内置 XML 查询引擎用于处理 XML 数据。
-- [键-值对](#key-value-pairs)不是显式支持的特殊功能，因为键值对可以作为两个列的表本机建模。
+- [键值对](#key-value-pairs)未明确作为特殊功能受到支持，因为键值对本身可作为包含两个列的表建模。
 
   > [!Note]
   > 可以在同一个 Transact-SQL 查询中使用 JSON Path 表达式、XQuery/XPath 表达式、空间函数和图形查询表达式来访问数据库中存储的任何数据。 此外，可执行 Transact-SQL 查询的任何工具或编程语言也可以使用该查询接口来访问多模型数据。 这是与 [Azure Cosmos DB](/azure/cosmos-db/) 等多模型数据库之间的主要差别，后者为不同的数据模型提供专用的 API。
@@ -66,9 +66,9 @@ Azure SQL 数据库提供图形数据库功能，用于对数据库中的多对�
 
 ## <a name="json-features"></a>JSON 功能
 
-使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](https://www.json.org/) 格式表示的数据，并将关系数据导出为 JSON 文本。
+使用 Azure SQL 数据库可以分析和查询以 JavaScript 对象表示法 [(JSON)](https://www.json.org/) 格式表示的数据，然后将关系数据导出为 JSON 文本。
 
-JSON 是用于在新式 Web 与移动应用程序中交换数据的流行数据格式。 JSON 还用于将半结构化数据存储在日志文件或 NoSQL 数据库（例如 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)）中。 许多 REST Web 服务返回采用 JSON 文本格式的结果，或接受采用 JSON 格式的数据。 大多数 Azure 服务（例如[azure 认知搜索](https://azure.microsoft.com/services/search/)、 [azure 存储](https://azure.microsoft.com/services/storage/)和[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) ）都具有返回或使用 JSON 的 REST 终结点。
+JSON 是用于在新式 Web 与移动应用程序中交换数据的流行数据格式。 JSON 还用于将半结构化数据存储在日志文件或 NoSQL 数据库（例如 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)）中。 许多 REST Web 服务以 JSON 文本格式返回结果，或接受采用 JSON 格式的数据。 大多数 Azure 服务（如[Azure 认知搜索](https://azure.microsoft.com/services/search/)[、Azure 存储](https://azure.microsoft.com/services/storage/)和[Azure 宇宙数据库](https://azure.microsoft.com/services/cosmos-db/)）具有返回或使用 JSON 的 REST 终结点。
 
 使用 Azure SQL 数据库可以轻松处理 JSON 数据，将数据库与新式服务集成。 Azure SQL 数据库提供以下函数用于处理 JSON 数据：
 

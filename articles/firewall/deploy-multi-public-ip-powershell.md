@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 部署包含多个公共 IP 地址的 Azure 防火墙
+title: 使用 PowerShell 部署具有多个公共 IP 地址的 Azure 防火墙
 description: 本文介绍如何使用 Azure PowerShell 部署具有多个公共 IP 地址的 Azure 防火墙。
 services: firewall
 author: vhorne
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: ad54b60d8f15e36636f887015d97967740123669
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74195863"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>使用 Azure PowerShell 部署具有多个公共 IP 地址的 Azure 防火墙
@@ -30,7 +30,7 @@ ms.locfileid: "74195863"
 
 ## <a name="create-a-firewall-with-two-or-more-public-ip-addresses"></a>创建具有两个或更多公共 IP 地址的防火墙
 
-此示例创建一个附加到具有两个公共 IP 地址的虚拟网络 vNet 的防火墙。
+此示例创建一个附加到具有两个公共 IP 地址的虚拟网络 vNet** 的防火墙。
 
 ```azurepowershell
 $rgName = "resourceGroupName"
@@ -63,7 +63,7 @@ New-AzFirewall `
 
 ## <a name="add-a-public-ip-address-to-an-existing-firewall"></a>将公共 IP 地址添加到现有防火墙
 
-在此示例中，公共 IP 地址 azFwPublicIp1 将附加到防火墙。
+在此示例中，公共 IP 地址 azFwPublicIp1** 将附加到防火墙。
 
 ```azurepowershell
 $pip = New-AzPublicIpAddress `
@@ -84,7 +84,7 @@ $azFw | Set-AzFirewall
 
 ## <a name="remove-a-public-ip-address-from-an-existing-firewall"></a>从现有防火墙中删除公共 IP 地址
 
-在此示例中，公共 IP 地址 azFwPublicIp1 将与防火墙分离。
+在此示例中，公共 IP 地址 azFwPublicIp1** 将与防火墙分离。
 
 ```azurepowershell
 $pip = Get-AzPublicIpAddress `

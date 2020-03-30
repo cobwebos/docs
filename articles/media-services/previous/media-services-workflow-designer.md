@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
 ms.openlocfilehash: 4dceb558532305c6d2e84563e25ab05508423090
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72801957"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>使用工作流设计器创建高级编码工作流  
@@ -41,7 +41,7 @@ ms.locfileid: "72801957"
 
 创建工作流文件后，可将其作为资产上传，然后用于对媒体文件编码。 有关如何使用 **.NET** 通过**媒体编码器高级工作流**编码的信息，请参阅[使用媒体编码器高级工作流进行高级编码](media-services-encode-with-premium-workflow.md)。
 
-## <a id="existing_workflows"></a>修改现有工作流
+## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>修改现有工作流
 可以使用设计器工具修改默认的[已发布工作流](media-services-workflow-designer.md#existing_workflows)。 可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认工作流文件。 该文件夹还包含这些文件的相关说明。
 
 以下视频演示如何使用设计器。
@@ -81,7 +81,7 @@ ms.locfileid: "72801957"
 
 ## <a name="need-help"></a>需要帮助？
 
-可以通过导航到 "[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)" 来打开支持票证
+您可以通过导航到["新建支持"请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来打开支持票证
 
 ## <a name="next-step"></a>后续步骤
 查看媒体服务学习路径。
