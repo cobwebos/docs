@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: e4c126bbac73accb984f1040a7fea1740d919233
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249771"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的备份和还原
@@ -31,7 +31,7 @@ ms.locfileid: "79249771"
 
 下表提供有关适用于 Azure VM 上运行的 SQL Server 的各种备份和还原选项的信息：
 
-| 策略 | SQL 版本 | 说明 |
+| 策略 | SQL 版本 | 描述 |
 |---|---|---|
 | [自动备份](#automated) | 2014<br/> 2016<br/> 2017 | 使用自动备份可以针对 SQL Server VM 上的所有数据库计划定期备份。 备份在 Azure 存储中最多存储 30 天。 从 SQL Server 2016 开始，自动备份 v2 提供更多选项，例如，配置手动计划，以及完整备份和日志备份的频率。 |
 | [适用于 SQL VM 的 Azure 备份](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | Azure 备份为 Azure VM 中运行的 SQL Server 提供企业级备份功能。 使用此服务，可以集中管理多个服务器和数千个数据库的备份。 可在门户中将数据库还原到特定的时间点。 此服务提供可将备份保留数年之久的可自定义保留策略。 |
@@ -39,7 +39,7 @@ ms.locfileid: "79249771"
 
 以下部分更详细地介绍了每个选项。 本文的最后一个部分以功能矩阵的形式提供了摘要。
 
-## <a id="automated"></a>自动备份
+## <a name="automated-backup"></a><a id="automated"></a>自动备份
 
 自动备份为 Azure Windows VM 中运行的 SQL Server Standard 和 Enterprise 版本提供自动备份服务。 此服务由 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)提供。该扩展已自动安装在 Azure 门户中的 SQL Server Windows 虚拟机映像上。
 
@@ -55,10 +55,10 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 有关如何为 SQL VM 配置自动备份的详细信息，请参阅以下文章之一：
 
-- **SQL Server 2016/2017**：[适用于 Azure 虚拟机的自动备份 v2](virtual-machines-windows-sql-automated-backup-v2.md)
+- **SQL 服务器 2016/2017**： [Azure 虚拟机的自动备份 v2](virtual-machines-windows-sql-automated-backup-v2.md)
 - **SQL Server 2014**：[适用于 SQL Server 2014 虚拟机的自动备份](virtual-machines-windows-sql-automated-backup.md)
 
-## <a id="azbackup"></a>适用于 SQL Vm 的 Azure 备份
+## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a>用于 SQL VM 的 Azure 备份
 
 [Azure 备份](/azure/backup/)为 Azure VM 中运行的 SQL Server 提供企业级备份功能。 在恢复服务保管库中存储和管理所有备份。 此解决方案提供许多优势，尤其是针对企业：
 
@@ -68,7 +68,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 - **集中式管理和监视**：通过 Azure 中的单个仪表板集中管理所有备份，包括 Azure 备份支持的其他工作负荷。
 - **策略驱动的备份和保留**：为定期备份创建标准备份策略。 建立保留策略，将备份保留数年之久。
 - **支持 SQL Always On**：检测和保护 SQL Server Always On 配置，并遵循备份可用性组的备份首选项。
-- **15 分钟恢复点目标 (RPO)** ：最多可将 SQL 事务日志备份频率配置为每隔 15 分钟备份一次。
+- **15 分钟恢复点目标 (RPO)**：最多可将 SQL 事务日志备份频率配置为每隔 15 分钟备份一次。
 - **时间点还原**：使用门户将数据库恢复到特定的时间点，无需手动还原多个完整备份、差异备份和日志备份。
 - **合并的故障电子邮件警报**：针对任何故障配置合并的电子邮件通知。
 - **基于角色的访问控制**：确定谁可以通过门户管理备份和还原操作。
@@ -77,9 +77,9 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 > [!VIDEO https://www.youtube.com/embed/wmbANpHos_E]
 
-此适用于 SQL Vm 的 Azure 备份解决方案已正式发布。 有关详细信息，请参阅[将 SQL Server 数据库备份到 Azure](../../../backup/backup-azure-sql-database.md)。
+这种适用于 SQL VM 的 Azure 备份解决方案已正式发布。 有关详细信息，请参阅[将 SQL Server 数据库备份到 Azure](../../../backup/backup-azure-sql-database.md)。
 
-## <a id="manual"></a>手动备份
+## <a name="manual-backup"></a><a id="manual"></a>手动备份
 
 若要手动管理 SQL VM 上的备份和还原操作，可以根据所用的 SQL Server 版本使用多个选项。 有关备份和还原的概述，请根据所用的 SQL Server 版本参阅以下文章之一：
 
@@ -143,7 +143,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 | 备份到 VM 上附加的磁盘 |   |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | 集中式可自定义备份报告 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 合并的故障电子邮件警报 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| 基于 Azure Monitor 日志自定义监视 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| 基于 Azure 监视器日志自定义监视 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 使用 SSMS 或 Transact-SQL 脚本监视备份作业 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | 使用 SSMS 或 Transact-SQL 脚本还原数据库 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 

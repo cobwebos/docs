@@ -1,7 +1,7 @@
 ---
 title: 分析客户流失
 titleSuffix: ML Studio (classic) - Azure
-description: 使用 Azure 机器学习 Studio （经典）来开发用于分析和评分客户流失的集成模型的案例研究。
+description: 使用 Azure 机器学习工作室（经典版）开发集成模型对客户流失进行分析和评分的案例研究。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,24 +11,24 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/18/2017
 ms.openlocfilehash: 4cf918abae51ca330054ef86e57095d29a21a37a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204522"
 ---
-# <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>使用 Azure 机器学习 Studio （经典）分析客户流失
+# <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>使用 Azure 机器学习工作室（经典版）分析客户流失
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 ## <a name="overview"></a>概述
-本文介绍了使用 Azure 机器学习 Studio （经典）生成的客户流失分析项目的参考实现。 本文讨论用于整体解决行业客户流失问题的关联通用模型。 还将衡量使用机器学习生成的模型的准确性，并对进一步开发方向进行评估。  
+本文介绍使用 Azure 机器学习工作室（经典版）生成的客户流失分析项目的参考实现。 本文讨论用于整体解决行业客户流失问题的关联通用模型。 还将衡量使用机器学习生成的模型的准确性，并对进一步开发方向进行评估。  
 
 ### <a name="acknowledgements"></a>致谢
-此试验由 Serge Berger、Microsoft 的主要数据科研人员和 Roger Barga，以前的产品经理（经典） Microsoft Azure 机器学习工作室进行开发和测试。 Azure 文档团队有幸确认了他们的专业知识，感谢他们分享了这份白皮书。
+Serge Berger（Microsoft 首席数据科学家）和 Roger Barga（Microsoft Azure 机器学习工作室（经典版）前产品经理）对此试验进行了开发和测试。 Azure 文档团队有幸确认了他们的专业知识，感谢他们分享了这份白皮书。
 
 > [!NOTE]
-> 用于此实验的数据不会公开提供。 有关如何生成流失分析的机器学习模型示例，请参阅：[Azure AI 库](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)中的[零售流失模型模板](https://gallery.azure.ai/)
+> 用于此实验的数据不会公开提供。 有关如何生成流失分析的机器学习模型示例，请参阅：[Azure AI 库](https://gallery.azure.ai/)中的[零售流失模型模板](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)
 > 
 > 
 
@@ -73,29 +73,29 @@ ms.locfileid: "79204522"
 
  
 
-## <a name="implementing-the-modeling-archetype-in-machine-learning-studio-classic"></a>在机器学习 Studio （经典）中实现建模原型
-根据描述的问题，实现集成建模和评分的最佳方式是什么？ 在本部分中，我们将演示如何使用 Azure 机器学习 Studio （经典）完成此操作。  
+## <a name="implementing-the-modeling-archetype-in-machine-learning-studio-classic"></a>在机器学习工作室（经典版）中实现建模原型
+根据描述的问题，实现集成建模和评分的最佳方式是什么？ 在本部分中，将演示如何使用 Azure 机器学习工作室（经典版）完成操作。  
 
 多模型方法是为流失问题设计全局原型所必不可少的。 甚至方法的评分（预测）部分也应该是多模型。  
 
-下图显示了我们创建的原型，它采用机器学习 Studio （经典）中的四个计分算法来预测变动。 使用多模型方法的原因不仅是为了创建集成分类器来提高准确性，还为了防止过度拟合，从而改善规范性功能选择。  
+下图显示了创建的原型，使用了四种机器学习工作室（经典版）中的评分算法来预测流失。 使用多模型方法的原因不仅是为了创建集成分类器来提高准确性，还为了防止过度拟合，从而改善规范性功能选择。  
 
-![描述包含多个相互关联模块的复杂 Studio （经典）工作区的屏幕截图](./media/azure-ml-customer-churn-scenario/churn-3.png)
+![屏幕截图描绘了具有许多互连模块的复杂工作室（经典版）工作区](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
 *图 5：流失建模方法的原型*  
 
-以下各节提供了有关使用机器学习 Studio （经典）实现的原型评分模型的更多详细信息。  
+以下部分提供了关于原型评分模型（使用机器学习工作室（经典版）实现）的详细信息。  
 
 ### <a name="data-selection-and-preparation"></a>数据选择和准备
 从 CRM 垂直解决方案中获取用于生成模型和对客户评分的数据，对数据进行模糊处理以保护客户隐私。 数据包括美国大约 8,000 个订阅的信息，其中包含三个源：预配数据（订阅源数据）、活动数据（系统的使用情况），以及客户支持数据。 数据不包括任何与客户信息相关的业务；例如，不包括会员元数据或信用评分。  
 
 为简单起见，ETL 和数据清理进程不在范围内，因为我们假定数据准备已在其他位置完成。
 
-建模的功能选择基于因素集的初步意义评分，包括在使用随机林模型的进程中。 对于机器学习 Studio （经典）中的实现，我们为代表功能计算平均值、中间值和范围。 例如，为定型数据添加了聚合值，如用于用户活动的最小或最大值。
+建模的功能选择基于因素集的初步意义评分，包括在使用随机林模型的进程中。 对于机器学习工作室（经典版）中的实现，计算了具有代表性的功能的平均值、中间值和范围。 例如，为定型数据添加了聚合值，如用于用户活动的最小或最大值。
 
 还捕获了最近六个月的临时数据。 我们分析了一年的数据并确立了：即使有统计意义上的重要趋势，对流失的影响也会在六个月后大大降低。  
 
-最重要的一点是，在机器学习 Studio （经典）中使用 Microsoft Azure 中的数据源实现了整个过程，包括 ETL、功能选择和建模。   
+最重要的一点是，整个流程（包括 ETL、功能选择和建模）都会使用 Microsoft Azure 中的数据源在机器学习工作室（经典版）中实现。   
 
 下图显示了所使用的数据。  
 
@@ -127,18 +127,18 @@ ms.locfileid: "79204522"
 
 ![工作室试验画布的一小部分的屏幕截图](./media/azure-ml-customer-churn-scenario/churn-6.png)  
 
-*图8：在机器学习 Studio （经典）中创建模型*  
+*图 8：在机器学习工作室中创建模型（经典）*  
 
 ### <a name="scoring-methods"></a>评分方法
 使用标记的训练数据集对四种模型进行评分。  
 
-也会将评分数据集提交到可比较模型（使用桌面版 SAS 企业挖掘程序 12 生成）。 我们测量了 SAS 模型和所有四个机器学习 Studio （经典）模型的准确性。  
+也会将评分数据集提交到可比较模型（使用桌面版 SAS 企业挖掘程序 12 生成）。 将衡量 SAS 模型和所有四种机器学习工作室（经典版）模型的准确性。  
 
 ## <a name="results"></a>结果
 在本部分中，会根据评分数据集，介绍关于模型的准确性的查找结果。  
 
 ### <a name="accuracy-and-precision-of-scoring"></a>评分的准确性和精度
-通常情况下，Azure 机器学习 Studio （经典）中的实现在 SAS 后精确到10-15% （曲线或 AUC 下的区域）。  
+通常情况下，Azure 机器学习工作室（经典版）中的实现在准确性方面比 SAS 低 10-15%左右（曲线下面积或 AUC）。  
 
 但是，流失中最重要的指标是错误分类率：即，根据分类器预测的前 N 个流失者，其中哪些实际**不会**流失，但尚未收到特殊处理方式？ 下图比较了所有模型的错误分类率：  
 
@@ -155,9 +155,9 @@ AUC 用作不同算法（或不同系统）的价值衡量，因为其允许根�
 通过使用大约 8,000 个订阅的 CRM 数据，比较了正在讨论的数据集上的错误分类率。  
 
 * SAS 错误分类率是 10-15%。
-* 前200-300 倾向性的机器学习 Studio （经典）错误分类率为15-20%。  
+* 针对前 200-300 位流失者，机器学习工作室（经典版）错误分类率是 15-20%。  
 
-在电信行业中，重要的一点是，通过为其提供接待服务或其他特殊处理方式，只为那些具有最高流失风险的客户解决问题。 就这一点而言，机器学习 Studio （经典）实现实现了与 SAS 模型相同的结果。  
+在电信行业中，重要的一点是，通过为其提供接待服务或其他特殊处理方式，只为那些具有最高流失风险的客户解决问题。 在这方面，机器学习工作室（经典版）实现获得了可与 SAS 模型相媲美的结果。  
 
 使用相同令牌的情况下，准确性比精度更重要，因为我们针对的正是对潜在流失者进行分类。  
 
@@ -175,24 +175,24 @@ AUC 用作不同算法（或不同系统）的价值衡量，因为其允许根�
 *图 11：提升决策树模型特征*
 
 ## <a name="performance-comparison"></a>性能比较
-我们比较了使用机器学习 Studio （经典）模型对数据进行评分的速度，以及使用 SAS Enterprise 挖掘器12.1 的桌面版创建的可比较模型。  
+我们比较了使用机器学习工作室（经典版）模型评分的数据的速度，以及通过使用桌面版 SAS 企业挖掘程序 12.1 创建的可比较模型。  
 
 下表总结了这些算法的性能：  
 
-*表1。算法的常规性能（准确性）*
+*表1.算法的一般性能（准确性）*
 
 | LR | BT | AP | SVM |
 | --- | --- | --- | --- |
 | 平均模型 |最佳模型 |表现不佳 |平均模型 |
 
-在机器学习 Studio （经典）效果好 SAS 中托管的模型的执行速度为15-25%，但准确性主要在 par。  
+机器学习工作室（经典版）中托管的模型的执行速度比 SAS 快 15-25%，但是准确性在很大程度上不相上下。  
 
 ## <a name="discussion-and-recommendations"></a>讨论和建议
 在电信行业中，一些用于分析流失的做法应运而生，包括：  
 
 * 四种基本类别的派生指标：
-  * **实体（例如，订阅）** 。 预配关于订阅和/或客户（流失主体）的基本信息。
-  * **活动**。 获取所有与实体相关的可能使用情况信息，例如，登录数量。
+  * **实体（例如，订阅）**。 预配关于订阅和/或客户（流失主体）的基本信息。
+  * **活动**. 获取所有与实体相关的可能使用情况信息，例如，登录数量。
   * **客户支持**。 从客户支持日志中获取信息，指示订阅是否有问题或是否与客户支持进行交互。
   * **竞争和业务数据**。 获取有关客户的任何可能信息（例如，不可跟踪或难以跟踪）。
 * 使用重要事项来驱动功能选择。 这意味着，提升决策树模型始终是一种可行的方法。  
@@ -201,20 +201,20 @@ AUC 用作不同算法（或不同系统）的价值衡量，因为其允许根�
 
 这点需要重点注意，但在商业中却常常被忽视，商业中通常更偏向于以商业智能为导向的分析方式，主要是因为这样更易销售并且可以实现简单自动化。  
 
-不过，通过使用机器学习 Studio （经典）实现自助分析的承诺，这四个类别的信息（按部门或部门评分）成为了机器学习对变动的重要来源。  
+但是，通过使用机器学习工作室（经典版）实现的自服务分析的承诺是，通过分支机构或部门进行分级的四种信息成为了关于流失的机器学习的价值来源。  
 
-Azure 机器学习 Studio （经典）中的另一个令人兴奋的功能是将自定义模块添加到已有的预定义模块的存储库中。 从根本上来说，此功能创造了一种机会，可选择库并为垂直市场创建模板。 它是市场领域 Azure 机器学习 Studio （经典）的重要区别。  
+Azure 机器学习工作室（经典版）中即将推出的另一项令人兴奋的功能是，可将自定义模块添加到已有的预定义模块的存储库中。 从根本上来说，此功能创造了一种机会，可选择库并为垂直市场创建模板。 这是 Azure 机器学习工作室（经典版）在市场中的一大特色。  
 
 希望将来能继续本主题，尤其是与大数据分析相关的部分。
   
 
 ## <a name="conclusion"></a>结束语
-此白皮书介绍了一种明智的方法，可通过使用通用框架来处理客户流失的常见问题。 我们被视为评分模型的原型，并通过使用 Azure 机器学习 Studio （经典）实现它。 最后，评估了关于 SAS 中可比较算法的原型解决方案的准确性和性能。  
+此白皮书介绍了一种明智的方法，可通过使用通用框架来处理客户流失的常见问题。 确定了评分模型的原型，并使用 Azure 机器学习工作室（经典版）来实现它。 最后，评估了关于 SAS 中可比较算法的原型解决方案的准确性和性能。  
 
  
 
 ## <a name="references"></a>参考
-[1] 预测分析：除预测、McKnight、信息管理、7月/8 月2011、18-20 的预测。  
+[1] 预测分析：超出预测范围，W. McKnight，信息管理，2011 年 7 月/8 月，第 18-20 页。  
 
 [2] 维基百科文章：[准确性和精度](https://en.wikipedia.org/wiki/Accuracy_and_precision)
 
@@ -222,7 +222,7 @@ Azure 机器学习 Studio （经典）中的另一个令人兴奋的功能是将
 
 [4] [Big Data Marketing: Engage Your Customers More Effectively and Drive Value](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)（大数据市场营销：更有效地吸引客户并创造价值）
 
-[5] [Azure AI 库](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) 中的 [电信流失模型模板](https://gallery.azure.ai/) 
+[5] [Azure AI 库](https://gallery.azure.ai/) 中的 [电信流失模型模板](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) 
  
 
 ## <a name="appendix"></a>附录

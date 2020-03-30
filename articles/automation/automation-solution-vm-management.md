@@ -1,23 +1,23 @@
 ---
 title: 在空闲时间启动/停止 VM 解决方案
-description: 此 VM 管理解决方案按计划启动和停止 Azure 资源管理器虚拟机，并主动监视 Azure Monitor 日志。
+description: 此 VM 管理解决方案按计划启动并停止 Azure 资源管理器虚拟机，并从 Azure 监视器日志主动监视。
 services: automation
 ms.subservice: process-automation
 ms.date: 02/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: cbf181b9a6d3860854c7b61cca0e6c50810cced9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278540"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
-在空闲时间启动/停止 VM 解决方案根据用户定义的计划启动和停止 Azure 虚拟机，通过 Azure Monitor 日志提供见解，并通过使用[操作组](../azure-monitor/platform/action-groups.md)发送可选电子邮件。 它在大多数情况下都支持 Azure 资源管理器和经典 VM。 若要将此解决方案与经典 Vm 一起使用，需要使用经典运行方式帐户，该帐户默认情况下不会创建。 有关创建经典运行方式帐户的说明，请参阅[经典运行方式帐户](automation-create-standalone-account.md#classic-run-as-accounts)。
+在非工作时间启动/停止 VM 解决方案启动并停止 Azure 虚拟机的用户定义计划，通过 Azure 监视器日志提供见解，并使用[操作组](../azure-monitor/platform/action-groups.md)发送可选电子邮件。 它在大多数情况下都支持 Azure 资源管理器和经典 VM。 要将此解决方案与经典 VM 一起使用，您需要一个经典 RunAs 帐户，默认情况下不创建该帐户。 有关创建经典 RunAs 帐户的说明，请参阅[经典运行帐户](automation-create-standalone-account.md#classic-run-as-accounts)。
 
 > [!NOTE]
-> 在部署解决方案时，已通过导入到自动化帐户中的 Azure 模块对在空闲时间启动/停止 VM 解决方案进行了测试。 此解决方案当前不适用于 Azure 模块的更新版本。 这只会影响用于运行在空闲时间启动/停止 VM 解决方案的自动化帐户。 你仍可以在其他自动化帐户中使用较新版本的 Azure 模块，如[如何在 Azure 自动化中更新 Azure PowerShell 模块](automation-update-azure-modules.md)中所述。
+> 在非工作时间解决方案期间启动/停止 VM 已使用部署解决方案时导入到自动化帐户中的 Azure 模块进行测试。 该解决方案当前不适用于较新版本的 Azure 模块。 这仅影响用于在非工作时间解决方案期间运行开始/停止 VM 的自动化帐户。 您仍然可以在其他自动化帐户中使用较新版本的 Azure 模块，如如何在 Azure[自动化中更新 Azure PowerShell 模块](automation-update-azure-modules.md)中所述
 
 对于想要优化 VM 成本的用户，此解决方案提供分散式的低成本自动化选项。 使用此解决方案可以：
 
@@ -25,31 +25,31 @@ ms.locfileid: "79278540"
 - 使用 Azure 标记按升序计划要启动和停止的 VM（不支持经典 VM）。
 - 根据 CPU 低使用率自动停止 VM。
 
-下面是对当前解决方案的限制：
+以下是当前解决方案的限制：
 
 - 此解决方案可管理任何区域中的 VM，但只能在 Azure 自动化帐户所在的同一订阅中使用。
 - 此解决方案可在支持 Log Analytics 工作区、Azure 自动化帐户和警报的任何 Azure 和 AzureGov 区域中使用。 AzureGov 区域目前不支持电子邮件功能。
 
 > [!NOTE]
-> 如果使用的是经典 VM 解决方案，则每个云服务将按顺序处理所有 VM。 虚拟机仍然可以跨不同的云服务并行处理。 如果每个云服务的 Vm 超过20个，我们建议使用父 runbook **ScheduledStartStop_Parent**创建多个计划，并为每个计划指定20个 vm。 在计划属性中，在**VMList**参数中指定作为以逗号分隔的列表、VM 名称。 否则，如果此解决方案的自动化作业的运行时间超过3小时，则会根据[公平份额](automation-runbook-execution.md#fair-share)限制暂时卸载或停止此解决方案。
+> 如果使用的是经典 VM 解决方案，则每个云服务将按顺序处理所有 VM。 虚拟机仍然可以跨不同的云服务并行处理。 如果每个云服务的 VM 超过 20 个，我们建议使用父 runbook 创建多个计划**ScheduledStartStop_Parent**并指定每个计划 20 个 VM。 在计划属性中，在**VMList**参数中指定为逗号分隔列表的 VM 名称。 否则，如果此解决方案的自动化作业运行超过三个小时，则根据[公平共享](automation-runbook-execution.md#fair-share)限制暂时卸载或停止该作业。
 >
-> Azure 云解决方案提供商 (Azure CSP) 订阅仅支持 Azure 资源管理器模型，因此非 Azure 资源管理器服务在计划中不可用。 启动/停止解决方案运行时可能会出现错误，因为它使用 cmdlet 来管理经典资源。 若要了解有关 CSP 的详细信息，请参阅 [CSP 订阅中可用的服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)。 如果使用 CSP 订阅，则应在部署之后将 [External_EnableClassicVMs](#variables) 变量修改为 False。
+> Azure 云解决方案提供商 (Azure CSP) 订阅仅支持 Azure 资源管理器模型，因此非 Azure 资源管理器服务在计划中不可用。 启动/停止解决方案运行时可能会出现错误，因为它使用 cmdlet 来管理经典资源。 若要了解有关 CSP 的详细信息，请参阅 [CSP 订阅中可用的服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)。 如果使用 CSP 订阅，则应在部署之后将 [External_EnableClassicVMs](#variables)**** 变量修改为 False****。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 此解决方案的 Runbook 使用 [Azure 运行方式帐户](automation-create-runas-account.md)。 运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。
 
-建议为启动/停止 VM 解决方案使用单独的自动化帐户。 这是因为 Azure 模块版本经常升级，其参数可能会更改。 启动/停止 VM 解决方案不是在同一节奏上升级的，因此它可能不适用于它所使用的更新版本的 cmdlet。 我们还建议你先在测试自动化帐户中测试模块更新，然后再将其导入到生产自动化帐户中。
+我们建议您对启动/停止 VM 解决方案使用单独的自动化帐户。 这是因为 Azure 模块版本经常升级，并且其参数可能会更改。 启动/停止 VM 解决方案不会以相同的节奏升级，因此它可能无法使用它使用的较新版本的 cmdlet。 我们还建议您在在生产自动化帐户中导入模块更新之前，在测试自动化帐户中测试这些更新。
 
 ### <a name="permissions-needed-to-deploy"></a>部署所需的权限
 
-在非工作时间解决方案中，用户必须具备某些权限才能部署启动/停止 Vm。 如果使用预先创建的自动化帐户，并在部署过程中创建新的工作区或创建新帐户 Log Analytics，则这些权限会有所不同。 如果你是 Azure Active Directory 租户中的订阅和全局管理员的参与者，则无需配置以下权限。 如果你没有这些权限或需要配置自定义角色，请参阅下面所需的权限。
+用户必须在非工作时间解决方案期间部署"开始/停止 VM"的某些权限。 如果使用预先创建的自动化帐户和日志分析工作区或在部署期间创建新权限，则这些权限是不同的。 如果您是订阅的参与者，并且是 Azure 活动目录租户中的全局管理员，则无需配置以下权限。 如果您没有这些权限或需要配置自定义角色，请参阅下面的权限。
 
-#### <a name="pre-existing-automation-account-and-log-analytics-workspace"></a>预先存在的自动化帐户和 Log Analytics 工作区
+#### <a name="pre-existing-automation-account-and-log-analytics-workspace"></a>预先存在的自动化帐户和日志分析工作区
 
-若要在非工作时间将启动/停止 Vm 解决方案部署到现有自动化帐户并 Log Analytics 工作区，则部署解决方案的用户需要对**资源组**具有以下权限。 若要了解有关角色的详细信息，请参阅[Azure 资源的自定义角色](../role-based-access-control/custom-roles.md)。
+要将"开始/停止 VM"解决方案在非工作时间将解决方案部署到现有的自动化帐户和日志分析工作区，部署该解决方案的用户需要在**资源组**上具有以下权限。 要了解有关角色的更多信息，请参阅[Azure 资源的自定义角色](../role-based-access-control/custom-roles.md)。
 
 | 权限 | 范围|
 | --- | --- |
@@ -61,28 +61,28 @@ ms.locfileid: "79278540"
 | Microsoft.Automation/automationAccounts/certificates/write | 资源组 |
 | Microsoft.Automation/automationAccounts/modules/write | 资源组 |
 | Microsoft.Automation/automationAccounts/modules/read | 资源组 |
-| Microsoft.automation/automationAccounts/jobSchedules/write | 资源组 |
+| 微软.自动化/自动化会计/作业计划/写入 | 资源组 |
 | Microsoft.Automation/automationAccounts/jobs/write | 资源组 |
 | Microsoft.Automation/automationAccounts/jobs/read | 资源组 |
 | Microsoft.OperationsManagement/solutions/write | 资源组 |
-| Microsoft.OperationalInsights/workspaces/* | 资源组 |
-| Microsoft.Insights/diagnosticSettings/write | 资源组 |
+| 微软.操作见解/工作空间/* | 资源组 |
+| 微软.见解/诊断设置/写入 | 资源组 |
 | Microsoft.Insights/ActionGroups/Write | 资源组 |
-| Microsoft.Insights/ActionGroups/read | 资源组 |
+| 微软.见解/行动组/阅读 | 资源组 |
 | Microsoft.Resources/subscriptions/resourceGroups/read | 资源组 |
 | Microsoft.Resources/deployments/* | 资源组 |
 
-#### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>新的自动化帐户和新的 Log Analytics 工作区
+#### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>新的自动化帐户和新的日志分析工作区
 
-若要在非工作时间将启动/停止 Vm 解决方案部署到新的自动化帐户并 Log Analytics 工作区，部署解决方案的用户需要在上一节中定义的权限以及以下权限：
+要将非工作时间启动/停止 VM 解决方案部署到新的自动化帐户和日志分析工作区，部署解决方案的用户需要上一节中定义的权限以及以下权限：
 
-- 订阅上的共同管理员-如果要管理经典 Vm，只需创建经典运行方式帐户。 默认情况下不再创建[经典运行方式帐户](automation-create-standalone-account.md#classic-run-as-accounts)。
-- [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **应用程序开发人员**角色的成员。 有关配置运行方式帐户的详细信息，请参阅[配置运行方式帐户的权限](manage-runas-account.md#permissions)。
-- 订阅上的参与者或以下权限。
+- 订阅时的共同管理员 - 仅当您要管理经典 VM 时，才需要创建经典运行帐户。 默认情况下不再创建[经典 RunAs 帐户](automation-create-standalone-account.md#classic-run-as-accounts)。
+- [Azure 活动目录](../active-directory/users-groups-roles/directory-assign-admin-roles.md)**应用程序开发人员**角色的成员。 有关配置"以帐户身份运行"的详细信息，请参阅[配置"以帐户身份运行"的权限](manage-runas-account.md#permissions)。
+- 订阅或以下权限上的参与者。
 
 | 权限 |范围|
 | --- | --- |
-| Microsoft.Authorization/Operations/read | 订阅|
+| 微软.授权/操作/读取 | 订阅|
 | Microsoft.Authorization/permissions/read |订阅|
 | Microsoft.Authorization/roleAssignments/read | 订阅 |
 | Microsoft.Authorization/roleAssignments/write | 订阅 |
@@ -96,86 +96,86 @@ ms.locfileid: "79278540"
 
 执行以下步骤可将非工作时间启动/停止 VM 解决方案添加到自动化帐户，然后配置变量来自定义该解决方案。
 
-1. 在自动化帐户中，选择“相关资源”下的“启动/停止 VM”。 在此处，可以单击“详细了解和启用解决方案”。 如果已部署“启动/停止 VM”解决方案，可单击“管理解决方案”，在列表中找到并选择它。
+1. 从自动化帐户中，选择 **"相关资源**"下的 **"开始/停止 VM"。** 在此处，可以单击“详细了解和启用解决方案”。**** 如果已部署“启动/停止 VM”解决方案，可单击“管理解决方案”，在列表中找到并选择它****。
 
    ![从自动化帐户启用](./media/automation-solution-vm-management/enable-from-automation-account.png)
 
    > [!NOTE]
-   > 也可以单击“创建资源”，在 Azure 门户中的任意位置创建该解决方案。 在“市场”页面中，键入类似于“启动”或“启动/停止”的关键字。 当你开始键入时，该列表会基于你的输入进行筛选。 或者，可以键入解决方案完整名称中的一个或多个关键，然后按 Enter。 在搜索结果中选择“在空闲时间启动/停止 VM”。
+   > 也可以单击“创建资源”，在 Azure 门户中的任意位置创建该解决方案。**** 在“市场”页面中，键入类似于“启动”或“启动/停止”的关键字********。 开始键入时，会根据输入筛选该列表。 或者，可以键入解决方案完整名称中的一个或多个关键，然后按 Enter。 在搜索结果中选择“在空闲时间启动/停止 VM”****。
 
-2. 在所选解决方案的“在空闲时间启动/停止 VM”页中查看摘要信息，并单击“创建”。
+2. 在所选解决方案的“在空闲时间启动/停止 VM”页中查看摘要信息，并单击“创建”********。
 
    ![Azure 门户](media/automation-solution-vm-management/azure-portal-01.png)
 
-3. 此时会显示“添加解决方案”页面。 系统会提示先要配置解决方案，然后才可以将它导入自动化订阅。
+3. 将显示 **"添加解决方案**"页。 系统会提示先要配置解决方案，然后才可以将它导入自动化订阅。
 
    ![VM 管理中的“添加解决方案”页面](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-4. 在“添加解决方案”页面上，选择“工作区”。 选择链接到自动化帐户所在的同一个 Azure 订阅的 Log Analytics 工作区。 如果没有工作区，请选择“新建工作区”。 在 " **Log Analytics 工作区**" 页上，执行以下步骤：
-   - 指定新**Log Analytics 工作区**的名称，如 "ContosoLAWorkspace"。
+4. 在“添加解决方案”页面上，选择“工作区”********。 选择链接到自动化帐户所在的同一个 Azure 订阅的 Log Analytics 工作区。 如果没有工作区，请选择“新建工作区”****。 在**日志分析工作区**页上，执行以下步骤：
+   - 为新**日志分析工作区**指定名称，例如"ContosoLA工作区"。
    - 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
-   - 对于“资源组”，可以创建新资源组，或选择现有的资源组。
-   - 选择“位置”。
-   - 选择“定价层”。 选择“每 GB (独立)”选项。 Azure Monitor 日志具有更新的[定价](https://azure.microsoft.com/pricing/details/log-analytics/)，并且每 GB 的级别是唯一的选择。
+   - 对于“资源组”****，可以创建新资源组，或选择现有的资源组。
+   - 选择**位置**。
+   - 选择**定价层**。 选择“每 GB (独立)”选项****。 Azure 监视器日志已更新[定价](https://azure.microsoft.com/pricing/details/log-analytics/)，并且"每 GB"层是唯一的选项。
 
    > [!NOTE]
    > 在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
    >
-   > 有关支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](how-to/region-mappings.md)。
+   > 有关支持的映射对的列表，请参阅[自动化帐户和日志分析工作区的区域映射](how-to/region-mappings.md)。
 
-5. 在“Log Analytics 工作区”页上提供所需信息后，单击“创建”。 可以在菜单中的“通知”下面跟踪操作进度，完成后将返回到“添加解决方案”页面。
-6. 在“添加解决方案”页面中，选择“自动化帐户”。 如果要创建新的 Log Analytics 工作区，可以创建与它关联的新自动化帐户，或选择尚未链接到 Log Analytics 工作区的现有自动化帐户。 选择现有的自动化帐户，或者单击“创建自动化帐户”，并在“添加自动化帐户”页上提供以下信息：
-   - 在“名称”字段中输入自动化帐户的名称。
+5. 在“Log Analytics 工作区”页上提供所需信息后，单击“创建”********。 可以在菜单中的“通知”下面跟踪操作进度，完成后将返回到“添加解决方案”页面。********
+6. 在“添加解决方案”页面中，选择“自动化帐户”********。 如果要创建新的 Log Analytics 工作区，可以创建与它关联的新自动化帐户，或选择尚未链接到 Log Analytics 工作区的现有自动化帐户。 选择现有的自动化帐户，或者单击“创建自动化帐户”，并在“添加自动化帐户”页上提供以下信息：********
+   - 在“名称”字段中输入自动化帐户的名称****。
 
-     系统会根据所选的 Log Analytics 工作区自动填充所有其他选项。 无法修改这些选项。 “Azure 运行方式帐户”是此解决方案为 Runbook 包含的默认身份验证方法。 单击“确定”后，系统会验证配置选项并创建自动化帐户。 可以在菜单中的“通知”下面跟踪操作进度。
+     系统会根据所选的 Log Analytics 工作区自动填充所有其他选项。 无法修改这些选项。 “Azure 运行方式帐户”是此解决方案为 Runbook 包含的默认身份验证方法。 单击“确定”后，系统会验证配置选项并创建自动化帐户。**** 可以在菜单中的“通知”下面跟踪操作进度****。
 
-7. 最后，在“添加解决方案”页面上，选择“配置”。 此时会显示“参数”页面。
+7. 最后，在“添加解决方案”页面上，选择“配置”。******** 此时会显示“参数”页面。****
 
    ![解决方案的“参数”页面](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
    在此处，系统会提示：
-   - 指定“目标资源组名称”。 这些值是包含此解决方案要管理的 VM 的资源组名称。 可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 如果想要针对订阅中的所有资源组内的 VM，可以使用通配符。 此值存储在 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupNames** 变量中。
-   - 指定“VM 排除列表(字符串)”。 该值是目标资源组中的一个或多个虚拟机的名称。 可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 支持使用通配符。 此值存储在 **External_ExcludeVMNames** 变量中。
-   - 选择“计划”。 选择计划的日期和时间。 将从所选时间开始，创建重复每日计划。 无法选择其他区域。 若要在配置解决方案后将计划配置为特定时区，请参阅[修改启动和关闭计划](#modify-the-startup-and-shutdown-schedules)。
-   - 要从操作组接收“电子邮件通知”，请接受默认值“是”，并提供有效的电子邮件地址。 如果选择了“否”，但后来想要接收电子邮件通知，则可以使用有效的电子邮件地址（以逗号分隔）更新创建的[操作组](../azure-monitor/platform/action-groups.md)。 还需要启用以下警报规则：
+   - 指定“目标资源组名称”。**** 这些值是包含此解决方案要管理的 VM 的资源组名称。 可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 如果想要针对订阅中的所有资源组内的 VM，可以使用通配符。 此值存储在 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupNames** 变量中。
+   - 指定“VM 排除列表(字符串)”。**** 该值是目标资源组中的一个或多个虚拟机的名称。 可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 支持使用通配符。 此值存储在 **External_ExcludeVMNames** 变量中。
+   - 选择“计划”。**** 选择日程安排的日期和时间。 将从您选择的时间开始创建重复发生的每日计划。 无法选择其他区域。 若要在配置解决方案后将计划配置为特定时区，请参阅[修改启动和关闭计划](#modify-the-startup-and-shutdown-schedules)。
+   - 要从操作组接收“电子邮件通知”，请接受默认值“是”，并提供有效的电子邮件地址********。 如果选择了“否”，但后来想要接收电子邮件通知，则可以使用有效的电子邮件地址（以逗号分隔）更新创建的[操作组](../azure-monitor/platform/action-groups.md)****。 还需要启用以下警报规则：
 
      - AutoStop_VM_Child
      - Scheduled_StartStop_Parent
      - Sequenced_StartStop_Parent
 
      > [!IMPORTANT]
-     > “目标资源组名称”的默认值是 &ast;。 这面向订阅中的所有 VM。 如果不希望解决方案面向订阅中的所有 VM，则需要在启用计划前，将此值更新到资源组名称列表。
+     > “目标资源组名称”的默认值是 &ast;********。 这面向订阅中的所有 VM。 如果不希望解决方案面向订阅中的所有 VM，则需要在启用计划前，将此值更新到资源组名称列表。
 
-8. 配置解决方案所需的初始设置后，单击“确定”以关闭“参数”页面并选择“创建”。 系统会验证所有设置，然后在订阅中部署该解决方案。 此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。
+8. 配置解决方案所需的初始设置后，单击“确定”以关闭“参数”页面并选择“创建”。************ 系统会验证所有设置，然后在订阅中部署该解决方案。 此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度****。
 
 > [!NOTE]
-> 如果你有 Azure 云解决方案提供商（Azure CSP）订阅，则在部署完成后，在你的自动化帐户中，请参阅 "**共享资源**" 下的 "**变量**"，并将 " [**External_EnableClassicVMs**](#variables) " 变量设置为**False**。 这会使解决方案停止查找经典 VM 资源。
+> 如果您有 Azure 云解决方案提供程序 （Azure CSP） 订阅，则在部署完成后，在自动化帐户中转到 **"共享资源**"下的**变量**，并将[**External_EnableClassicVMs**](#variables)变量设置为**False**。 这会使解决方案停止查找经典 VM 资源。
 
 ## <a name="scenarios"></a>方案
 
 该解决方案包含三个不同的方案。 这些方案为：
 
-### <a name="scenario-1-startstop-vms-on-a-schedule"></a>应用场景 1：按计划启动/停止 VM
+### <a name="scenario-1-startstop-vms-on-a-schedule"></a>方案 1：按计划启动/停止 VM
 
 此方案是首次部署解决方案时的默认配置。 例如，你可以将其配置为在下班时晚上停止订阅中的所有 VM，并在早上回到办公室时启动它们。 在部署期间配置计划 **Scheduled-StartVM** 和 **Scheduled-StopVM** 时，它们启动和停止目标 VM。 支持将此解决方案配置为仅停止 VM，若要了解如何配置自定义计划，请参阅[修改启动和关闭计划](#modify-the-startup-and-shutdown-schedules)。
 
 > [!NOTE]
 > 时区是你配置计划时间参数时的当前时区。 但是它以 UTC 格式存储在 Azure 自动化中。 你不必执行任何时区转换，因为这是在部署过程中处理的。
 
-可通过配置以下变量来控制哪些 VM 在范围内：“External_Start_ResourceGroupNames”、“External_Stop_ResourceGroupNames”和“External_ExcludeVMNames”。
+可以通过配置以下变量控制哪些 VM 位于范围中：**External_Start_ResourceGroupNames**、**External_Stop_ResourceGroupNames** 和 **External_ExcludeVMNames**。
 
 可以启用针对订阅和资源组的操作，或者针对特定虚拟机的列表，但不能同时启用两者。
 
 #### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>针对订阅和资源组确定启动和停止操作的目标
 
-1. 配置 External_Stop_ResourceGroupNames 和 External_ExcludeVMNames 变量以指定目标 VM。
+1. 配置 External_Stop_ResourceGroupNames**** 和 External_ExcludeVMNames**** 变量以指定目标 VM。
 2. 启用并更新 **Scheduled-StartVM** 和 **Scheduled-StopVM** 计划。
 3. 在将 ACTION 参数设置为 **start** 且将 WHATIF 参数设置为 **True** 的情况下运行 **ScheduledStartStop_Parent** runbook 来预览更改。
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>根据 VM 列表确定启动和停止操作的目标
 
 1. 在 ACTION 参数设置为 **start** 的情况下运行 **ScheduledStartStop_Parent** runbook，在 *VMList* 参数中添加以逗号分隔的 VM 列表，然后将 WHATIF 参数设置为 **True**。 预览更改。
-1. 通过逗号分隔 VM 列表 (VM1, VM2, VM3) 配置 External_ExcludeVMNames 参数。
+1. 通过逗号分隔 VM 列表 (VM1, VM2, VM3) 配置 External_ExcludeVMNames 参数****。
 1. 此方案使用 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupnames** 变量。 对于此方案，需要创建自己的自动化计划。 有关详细信息，请参阅[在 Azure 自动化中计划 Runbook](../automation/automation-schedules.md)。
 
 > [!NOTE]
@@ -187,7 +187,7 @@ ms.locfileid: "79278540"
 
 #### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>针对订阅和资源组确定启动和停止操作的目标
 
-1. 将具有正整数值的 sequencestart 和 sequencestop 标记添加到 External_Start_ResourceGroupNames 和 External_Stop_ResourceGroupNames 变量中的目标 VM。 按升序执行启动和停止操作。 若要了解如何标记 VM，请参阅[在 Azure 中标记 Windows 虚拟机](../virtual-machines/windows/tag.md)和[在 Azure 中标记 Linux 虚拟机](../virtual-machines/linux/tag.md)。
+1. 向**External_Start_ResourceGroupNames**变量和**External_Stop_ResourceGroupNames**变量中为目标的 VM 添加序列**启动**和序列**停止**标记，该标记具有正整数值。 按升序执行启动和停止操作。 若要了解如何标记 VM，请参阅[在 Azure 中标记 Windows 虚拟机](../virtual-machines/windows/tag.md)和[在 Azure 中标记 Linux 虚拟机](../virtual-machines/linux/tag.md)。
 1. 修改计划 **Sequenced-StartVM** 和 **Sequenced-StopVM** 的日期和时间，以满足要求并启用计划。
 1. 在将 ACTION 参数设置为 **start** 且将 WHATIF 参数设置为 **True** 的情况下运行 **SequencedStartStop_Parent** runbook 来预览更改。
 1. 预览操作，并根据需要进行任何更改，然后对生产 VM 执行操作。 准备就绪后，可以手动执行参数设置为 **False** 的 Runbook，或让自动化计划 **Sequenced-StartVM** 和 **Sequenced-StopVM** 在规定的计划之后自动运行。
@@ -196,15 +196,15 @@ ms.locfileid: "79278540"
 
 1. 向计划添加到 **VMList** 参数的 VM 添加具有正整数值的 **sequencestart** 和 **sequencestop** 标记。
 1. 在 ACTION 参数设置为 **start** 的情况下运行 **SequencedStartStop_Parent** runbook，在 *VMList* 参数中添加以逗号分隔的 VM 列表，然后将 WHATIF 参数设置为 **True**。 预览更改。
-1. 通过逗号分隔 VM 列表 (VM1, VM2, VM3) 配置 External_ExcludeVMNames 参数。
+1. 通过逗号分隔 VM 列表 (VM1, VM2, VM3) 配置 External_ExcludeVMNames 参数****。
 1. 此方案使用 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupnames** 变量。 对于此方案，需要创建自己的自动化计划。 有关详细信息，请参阅[在 Azure 自动化中计划 Runbook](../automation/automation-schedules.md)。
-1. 预览操作，并根据需要进行任何更改，然后对生产 VM 执行操作。 准备就绪后，可以手动执行参数设置为 False 的 monitoring-and-diagnostics/monitoring-action-groupsrunbook，或让自动化计划 Sequenced-StartVM 和 Sequenced-StopVM 在规定的计划之后自动运行。
+1. 预览操作，并根据需要进行任何更改，然后对生产 VM 执行操作。 准备就绪后，可以手动执行参数设置为 False 的 monitoring-and-diagnostics/monitoring-action-groupsrunbook，或让自动化计划 Sequenced-StartVM 和 Sequenced-StopVM 在规定的计划之后自动运行************。
 
 ## <a name="solution-components"></a>解决方案组件
 
-此解决方案包括预配置的 runbook、计划以及与 Azure Monitor 日志的集成，因此你可以定制虚拟机的启动和关闭以满足你的业务需求。
+此解决方案包括预配置的 Runbook、计划和与 Azure 监视器日志的集成，以便您可以定制虚拟机的启动和关闭以满足业务需求。
 
-### <a name="runbooks"></a>runbook
+### <a name="runbooks"></a>Runbook
 
 下表列出了此解决方案部署到你的自动化帐户的 Runbook。 请勿对 Runbook 代码进行更改。 应该对新功能编写自己的 Runbook。
 
@@ -213,22 +213,22 @@ ms.locfileid: "79278540"
 
 所有父 Runbook 都包含 _WhatIf_ 参数。 设置为 **True** 时，_WhatIf_ 支持详细说明在无 _WhatIf_ 参数的情况下运行时 Runbook 的确切行为，并验证是否以正确 VM 为目标。 仅当 _WhatIf_ 参数设置为 **False** 时，Runbook 才执行其定义的操作。
 
-|Runbook | 参数 | 说明|
+|Runbook | 参数 | 描述|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 从父 runbook 调用。 此 runbook 为 AutoStop 方案按每个资源创建警报。|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：是或否  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> VMList：以逗号分隔的 VM 列表。 例如“vm1, vm2, vm3”。<br> *WhatIf* 对 runbook 逻辑进行验证但不执行。|
-|AutoStop_Disable | 无 | 禁用 AutoStop 警报和默认计划。|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> VMList：以逗号分隔的 VM 列表。 例如“vm1, vm2, vm3”__。<br> *WhatIf* 对 runbook 逻辑进行验证但不执行。|
+|AutoStop_Disable | none | 禁用 AutoStop 警报和默认计划。|
 |AutoStop_StopVM_Child | WebHookData | 从父 runbook 调用。 警报规则调用此 Runbook 以停止 VM。|
-|Bootstrap_Main | 无 | 使用一次来设置启动配置，例如通常无法从 Azure 资源管理器访问的 webhookURI。 部署成功后，将自动删除此 Runbook。|
-|ScheduledStartStop_Child | VMName <br> 操作：启动或停止 <br> ResourceGroupName | 从父 runbook 调用。 针对计划的停止执行启动或停止操作。|
-|ScheduledStartStop_Parent | 操作：启动或停止 <br>VMList <br> WhatIf：是或否 | 此设置会影响订阅中的所有 VM。 将 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupNames** 编辑为仅在这些目标资源组上执行。 此外，还可以通过更新External_ExcludeVMNames 变量排除特定 VM。<br> VMList：以逗号分隔的 VM 列表。 例如“vm1, vm2, vm3”。<br> _WhatIf_ 对 runbook 逻辑进行验证但不执行。|
-|SequencedStartStop_Parent | 操作：启动或停止 <br> WhatIf：是或否<br>VMList| 在要确定启动/停止活动序列的每个 VM 上，创建名为 sequencestart 和 sequencestop 的标记。 这些标记名称区分大小写。 标记的值应为一个正整数（1、2、3），对应于启动或停止的顺序。 <br> VMList：以逗号分隔的 VM 列表。 例如“vm1, vm2, vm3”。 <br> _WhatIf_ 对 runbook 逻辑进行验证但不执行。 <br> **注意**：VM 必须位于 Azure 自动化变量中定义的 External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames 和 External_ExcludeVMNames 资源组中。 它们必须具有相应的标记才能使操作生效。|
+|Bootstrap_Main | none | 使用一次来设置启动配置，例如通常无法从 Azure 资源管理器访问的 webhookURI。 部署成功后，将自动删除此 Runbook。|
+|ScheduledStartStop_Child | VMName <br> Action：Start 或 Stop <br> ResourceGroupName | 从父 runbook 调用。 针对计划的停止执行启动或停止操作。|
+|ScheduledStartStop_Parent | Action：Start 或 Stop <br>VMList <br> WhatIf：True 或 False | 此设置会影响订阅中的所有 VM。 将 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupNames** 编辑为仅在这些目标资源组上执行。 此外，还可以通过更新 **** External_ExcludeVMNames 变量排除特定 VM。<br> VMList：以逗号分隔的 VM 列表。 例如“vm1, vm2, vm3”__。<br> _WhatIf_ 对 runbook 逻辑进行验证但不执行。|
+|SequencedStartStop_Parent | Action：Start 或 Stop <br> WhatIf：True 或 False<br>VMList| 在要为其排序开始/停止活动的每个 VM 上创建名为**序列启动**和**序列停止**的标记。 这些标记名称区分大小写。 标记的值应为一个正整数（1、2、3），对应于启动或停止的顺序。 <br> VMList：以逗号分隔的 VM 列表。 例如“vm1, vm2, vm3”__。 <br> _WhatIf_ 对 runbook 逻辑进行验证但不执行。 <br> **注意**：VM 必须位于 Azure 自动化变量中定义的 External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames 和 External_ExcludeVMNames 资源组中。 它们必须具有相应的标记才能使操作生效。|
 
 ### <a name="variables"></a>变量
 
-下表列出了在自动化帐户中创建的变量。 仅修改以 External 为前缀的变量。 修改以 **Internal** 为前缀的变量将导致不利影响。
+下表列出了在自动化帐户中创建的变量。 仅修改以 External 为前缀的变量****。 修改以 **Internal** 为前缀的变量将导致不利影响。
 
-|变量 | 说明|
+|变量 | 描述|
 |---------|------------|
 |External_AutoStop_Condition | 在触发警报之前配置条件时所需的条件运算符。 可接受的值包括：**GreaterThan**、**GreaterThanOrEqual**、**LessThan** 和 **LessThanOrEqual**。|
 |External_AutoStop_Description | CPU 百分比超过阈值时停止 VM 的警报。|
@@ -236,8 +236,8 @@ ms.locfileid: "79278540"
 |External_AutoStop_Threshold | 在变量 _External_AutoStop_MetricName_ 中指定的 Azure 警报规则的阈值。 百分比值的范围是从 1 到 100。|
 |External_AutoStop_TimeAggregationOperator | 将应用到所选窗口大小以计算条件的时间聚合运算符。 可接受的值包括：**Average**、**Minimum**、**Maximum**、**Total** 和 **Last**。|
 |External_AutoStop_TimeWindow | Azure 将分析用于触发警报的选定指标的窗口大小。 此参数接受 timespan 格式的输入。 可能的值为 5 分钟到 6 小时。|
-|External_EnableClassicVMs| 指定解决方案是否针对经典 VM。 默认值为 True。 对于 CSP 订阅，这应设置为 False。 经典 Vm 需要[经典运行方式帐户](automation-create-standalone-account.md#classic-run-as-accounts)。|
-|External_ExcludeVMNames | 输入要排除的 VM 名称，使用逗号分隔名称，不带空格。 限制为 140 个 VM。 如果将超过140个 Vm 添加到以逗号分隔的列表，则设置为要排除的 Vm 可能会在无意中启动或停止。|
+|External_EnableClassicVMs| 指定解决方案是否针对经典 VM。 默认值为 True。 对于 CSP 订阅，这应设置为 False。 经典 VM 需要[经典运行帐户](automation-create-standalone-account.md#classic-run-as-accounts)。|
+|External_ExcludeVMNames | 输入要排除的 VM 名称，使用逗号分隔名称，不带空格。 限制为 140 个 VM。 如果将超过 140 个 VM 添加到此逗号分隔列表中，则设置为排除的 VM 可能会无意中启动或停止。|
 |External_Start_ResourceGroupNames | 指定针对启动操作的一个或多个资源组，使用逗号分隔值。|
 |External_Stop_ResourceGroupNames | 指定针对停止操作的一个或多个资源组，使用逗号分隔值。|
 |Internal_AutomationAccountName | 指定自动化帐户的名称。|
@@ -249,17 +249,17 @@ ms.locfileid: "79278540"
 
 ### <a name="schedules"></a>计划
 
-下表列出了在自动化帐户中创建的每个默认计划。 你可以修改默认计划或创建自己的自定义计划。 默认情况下，除了 Scheduled_StartVM 和 Scheduled-StopVM，所有计划都是禁用的。
+下表列出了在自动化帐户中创建的每个默认计划。你可以修改默认计划或创建自己的自定义计划。默认情况下，除了 Scheduled_StartVM 和 Scheduled-StopVM，所有计划都是禁用的********。
 
 不应启用所有计划，因为这可能会创建重叠的计划操作。 最好确定希望执行哪些优化，然后再进行相应的修改。 请参阅概述部分的示例方案以查看进一步解释。
 
-|计划名称 | 频率 | 说明|
+|计划名称 | 频率 | 描述|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 每隔 8 小时 | 每隔 8 小时运行一次 AutoStop_CreateAlert_Parent Runbook，它将基于 Azure 自动化变量中的 External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames 和 External_ExcludeVMNames 的值依次停止 VM。 或者，可以使用 VMList 参数指定用逗号分隔的 VM 列表。|
-|Scheduled_StopVM | 用户定义，每天 | 每天在指定的时间运行带有 _Stop_ 参数的 Scheduled_Parent Runbook。 自动停止所有满足通过资产变量定义的规则 VM。 启用相关计划 Scheduled-StartVM。|
-|Scheduled_StartVM | 用户定义，每天 | 每天在给定的时间运行带有 _Start_ 参数的 Scheduled_Parent Runbook。 自动启动所有满足相应变量定义的规则的 VM。 启用相关计划 Scheduled-StopVM。|
-|Sequenced-StopVM | 凌晨 1:00 (UTC)，每星期五 | 每星期五在指定的时间运行带有 _Stop_ 参数的 Sequenced_Parent Runbook。 将按顺序（升序）停止具有相应变量定义的 **SequenceStop** 标记的所有 VM。 有关标记值和资产变量的详细信息，请参阅“Runbook”部分。 启用相关计划 Sequenced-StartVM。|
-|Sequenced-StartVM | 下午 1:00 (UTC)，每星期一 | 每星期一在给定的时间运行带有 Start 参数的 Sequenced_Parent runbook。 按顺序（降序）启动具有相应变量定义的 **SequenceStart** 标记的所有 VM。 有关标记值和资产变量的详细信息，请参阅“Runbook”部分。 启用相关计划 Sequenced-StopVM。|
+|Scheduled_StopVM | 用户定义，每天 | 每天在指定的时间运行带有 _Stop_ 参数的 Scheduled_Parent Runbook。自动停止所有满足通过资产变量定义的规则 VM。启用相关计划 Scheduled-StartVM****。|
+|Scheduled_StartVM | 用户定义，每天 | 每天在给定的时间运行带有 _Start_ 参数的 Scheduled_Parent Runbook。 自动启动所有满足相应变量定义的规则的 VM。启用相关计划 Scheduled-StopVM****。|
+|Sequenced-StopVM | 凌晨 1:00 (UTC)，每星期五 | 每星期五在指定的时间运行带有 _Stop_ 参数的 Sequenced_Parent Runbook。将按顺序（升序）停止具有相应变量定义的 **SequenceStop** 标记的所有 VM。 有关标记值和资产变量的详细信息，请参阅“Runbook”部分。启用相关计划 Sequenced-StartVM****。|
+|Sequenced-StartVM | 下午 1:00 (UTC)，每星期一 | 每星期一在给定的时间运行带有 Start__ 参数的 Sequenced_Parent runbook。 按顺序（降序）启动具有相应变量定义的 **SequenceStart** 标记的所有 VM。 有关标记值和资产变量的详细信息，请参阅“Runbook”部分。 启用相关计划 Sequenced-StopVM****。|
 
 ## <a name="azure-monitor-logs-records"></a>Azure Monitor 日志记录
 
@@ -269,8 +269,8 @@ ms.locfileid: "79278540"
 
 |properties | 描述|
 |----------|----------|
-|Caller |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
-|Category | 数据类型的分类。 对于自动化，该值为 JobLogs。|
+|调用方 |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
+|类别 | 数据类型的分类。 对于自动化，该值为 JobLogs。|
 |CorrelationId | 用作 Runbook 作业相关性 ID 的 GUID。|
 |JobId | 用作 Runbook 作业 ID 的 GUID。|
 |operationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。|
@@ -278,20 +278,20 @@ ms.locfileid: "79278540"
 |ResourceGroup | 指定 Runbook 作业的资源组名称。|
 |ResourceProvider | 指定  Azure 服务，它提供可部署和管理的资源。 对于自动化，该值为 Azure Automation。|
 |ResourceType | 指定 Azure 中的资源类型。 对于自动化，该值是与 Runbook 关联的自动化帐户。|
-|resultType | Runbook 作业的状态。 可能的值有：<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Succeeded（成功）|
-|resultDescription | 描述 Runbook 作业结果状态。 可能的值有：<br>- 作业已启动<br>- 作业失败<br>- 作业已完成|
+|resultType | Runbook 作业的状态。 可能的值包括：<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Succeeded（成功）|
+|resultDescription | 描述 Runbook 作业结果状态。 可能的值包括：<br>- 作业已启动<br>- 作业失败<br>- 作业已完成|
 |RunbookName | 指定 Runbook 的名称。|
 |SourceSystem | 指定所提交数据的源系统。 对于自动化，值为 OpsManager|
-|StreamType | 指定事件的类型。 可能的值有：<br>- Verbose（详细）<br>- Output（输出）<br>- Error（错误）<br>- Warning（警告）|
+|StreamType | 指定事件的类型。 可能的值包括：<br>- Verbose（详细）<br>- Output（输出）<br>- Error（错误）<br>- Warning（警告）|
 |SubscriptionId | 指定作业的订阅 ID。
-|Time | 执行 Runbook 作业的日期和时间。|
+|时间 | 执行 Runbook 作业的日期和时间。|
 
 ### <a name="job-streams"></a>作业流
 
 |properties | 描述|
 |----------|----------|
-|Caller |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
-|Category | 数据类型的分类。 对于自动化，该值为 JobStreams。|
+|调用方 |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
+|类别 | 数据类型的分类。 对于自动化，该值为 JobStreams。|
 |JobId | 用作 Runbook 作业 ID 的 GUID。|
 |operationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。|
 |ResourceGroup | 指定 Runbook 作业的资源组名称。|
@@ -302,8 +302,8 @@ ms.locfileid: "79278540"
 |resultDescription | 包括来自 Runbook 的输出流。|
 |RunbookName | Runbook 的名称。|
 |SourceSystem | 指定所提交数据的源系统。 对于自动化，值为 OpsManager。|
-|StreamType | 作业流的类型。 可能的值有：<br>- Progress（进度）<br>- Output（输出）<br>- Warning（警告）<br>- Error（错误）<br>- Debug（调试）<br>- Verbose（详细）|
-|Time | 执行 Runbook 作业的日期和时间。|
+|StreamType | 作业流的类型。 可能的值包括：<br>- Progress（进度）<br>- Output（输出）<br>- Warning（警告）<br>- Error（错误）<br>- Debug（调试）<br>- Verbose（详细）|
+|时间 | 执行 Runbook 作业的日期和时间。|
 
 如果执行的日志搜索返回 **JobLogs** 或 **JobStreams** 类别的记录时，可以选择 **JobLogs** 或 **JobStreams** 视图，其中显示了一组汇总搜索所返回的更新的磁贴。
 
@@ -311,20 +311,20 @@ ms.locfileid: "79278540"
 
 下表提供了此解决方案收集的作业记录的示例日志搜索。
 
-|查询 | 说明|
+|查询 | 描述|
 |----------|----------|
 |查找已成功完成 Runbook ScheduledStartStop_Parent 的作业 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |查找已成功完成 Runbook SequencedStartStop_Parent 的作业 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 
 ## <a name="viewing-the-solution"></a>查看解决方案
 
-若要访问解决方案，请导航到你的自动化帐户，在“相关资源”下选择“工作区”。 在 log analytics 页上，选择 "**常规**" 下的 "**解决方案**"。 在“解决方案”页上，从列表中选择解决方案“Start-Stop-VM[workspace]”。
+若要访问解决方案，请导航到你的自动化帐户，在“相关资源”下选择“工作区”。******** 在日志分析页面上，在 **"GENERAL "** 下选择**解决方案**。 在 **"解决方案**"页上，从列表中选择"**开始-停止-VM_工作区]** 解决方案。
 
-选择该解决方案会显示“Start-Stop-VM[workspace]”解决方案页面。 在此处可以查看重要详细信息，例如 **StartStopVM** 磁贴。 如同在 Log Analytics 工作区中一样，此磁贴显示解决方案中已成功启动和完成的 Runbook 作业计数与图形表示。
+选择该解决方案会显示“Start-Stop-VM[workspace]”解决方案页面。**** 在此处可以查看重要详细信息，例如 **StartStopVM** 磁贴。 如同在 Log Analytics 工作区中一样，此磁贴显示解决方案中已成功启动和完成的 Runbook 作业计数与图形表示。
 
 ![自动化更新管理解决方案页面](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
 
-在此处，可以通过单击圆环磁贴对作业记录执行进一步的分析。 解决方案仪表板显示作业历史记录和预定义的日志搜索查询。 切换到 log analytics 高级门户，以根据搜索查询进行搜索。
+在此处，可以通过单击圆环磁贴对作业记录执行进一步的分析。 解决方案仪表板显示作业历史记录和预定义的日志搜索查询。 切换到日志分析高级门户，以便根据您的搜索查询进行搜索。
 
 ## <a name="configure-email-notifications"></a>配置电子邮件通知
 
@@ -333,11 +333,11 @@ ms.locfileid: "79278540"
 > [!NOTE]
 > Azure 政府云中的订阅不支持此解决方案的电子邮件功能。
 
-在 Azure 门户中，导航到“监视”->“操作组”。 选择名为“StartStop_VM_Notication”的操作组。
+在 Azure 门户中，导航到“监视”->“操作组”。 选择名为“StartStop_VM_Notication”的操作组****。
 
 ![自动化更新管理解决方案页面](media/automation-solution-vm-management/azure-monitor.png)
 
-在“StartStop_VM_Notification”页上，单击“详细信息”下的“编辑详细信息”。 “电子邮件/短信/推送/语音”页面随即打开。 更新电子邮件地址，并单击“确定”以保存更改。
+在“StartStop_VM_Notification”页上，单击“详细信息”下的“编辑详细信息”************。 ****“电子邮件/短信/推送/语音”页面随即打开。 更新电子邮件地址，并单击“确定”以保存更改****。
 
 ![自动化更新管理解决方案页面](media/automation-solution-vm-management/change-email.png)
 
@@ -347,7 +347,7 @@ ms.locfileid: "79278540"
 
 ![自动化更新管理解决方案页面](media/automation-solution-vm-management/email.png)
 
-## <a name="add-exclude-vms"></a>添加/排除 VM
+## <a name="addexclude-vms"></a><a name="add-exclude-vms"></a>添加/排除 VM
 
 借助该解决方案，可添加要作为该解决方案的目标的 VM，或者专门从该解决方案中排除计算机。
 
@@ -355,13 +355,13 @@ ms.locfileid: "79278540"
 
 可以使用以下几个选项来确保 VM 在启动/停止解决方案运行时包含在该解决方案中。
 
-* 解决方案的每个父[runbook](#runbooks)都有一个**VMList**参数。 在为你的情况安排适当的父 runbook 时，可以将以逗号分隔的 VM 名称列表传递到此参数，在解决方案运行时这些 Vm 将包括在内。
+* 解决方案的每个父[运行簿](#runbooks)都有一个**VMList**参数。 在为情况安排适当的父 Runbook 时，可以将 VM 名称的逗号分隔列表传递给此参数，并且这些 VM 将在解决方案运行时包含。
 
 * 若要选择多个 VM，请将 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupNames** 设置为包含要启动或停止的 VM 的资源组名称。 也可以将此值设置为 `*`，使该解决方案针对订阅中的所有资源组运行。
 
 ### <a name="exclude-a-vm"></a>排除 VM
 
-若要将某个 VM 从该解决方案中排除，可以将其添加到 **External_ExcludeVMNames** 变量中。 此变量是要从启动/停止解决方案中排除的特定 Vm 的逗号分隔列表。 此列表限制为 140 个 VM。 如果将超过140个 Vm 添加到以逗号分隔的列表，则设置为要排除的 Vm 可能会在无意中启动或停止。
+若要将某个 VM 从该解决方案中排除，可以将其添加到 **External_ExcludeVMNames** 变量中。 此变量是要从"开始/停止"解决方案中排除的特定 VM 的逗号分隔列表。 此列表限制为 140 个 VM。 如果将超过 140 个 VM 添加到此逗号分隔列表中，则设置为排除的 VM 可能会无意中启动或停止。
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>修改启动和关闭计划
 
@@ -371,8 +371,8 @@ ms.locfileid: "79278540"
 
 1. 确保已在 **External_Stop_ResourceGroupNames** 变量中添加了要关闭的 VM 的资源组。
 2. 针对要关闭 VM 的时间创建你自己的计划。
-3. 导航到 **ScheduledStartStop_Parent** runbook，然后单击“计划”。 这允许你选择在上一步中创建的计划。
-4. 选择“参数和运行设置”并将 ACTION 参数设置为“Stop”。
+3. 导航到 **ScheduledStartStop_Parent** runbook，然后单击“计划”。**** 这允许你选择在上一步中创建的计划。
+4. 选择“参数和运行设置”**** 并将 ACTION 参数设置为“Stop”。
 5. 单击 **“确定”** 以保存你的更改。
 
 ## <a name="update-the-solution"></a>更新解决方案
@@ -385,23 +385,23 @@ ms.locfileid: "79278540"
 
 若要删除解决方案，请执行以下步骤：
 
-1. 在自动化帐户的 "**相关资源**" 下，选择 "**链接的工作区**"。
-1. 选择 "**移到工作区**"。
-1. 在 "**常规**" 下，选择 "**解决方案**"。 
-1. 在“解决方案”页中，请选择解决方案 Start-Stop-VM[Workspace]。 在“VMManagementSolution[Workspace]”页上，从菜单中选择“删除”。<br><br> ![删除 VM 管理解决方案](media/automation-solution-vm-management/vm-management-solution-delete.png)
-1. 在“删除解决方案”窗口中，确认要删除该解决方案。
-1. 在验证信息和删除解决方案期间，可以在菜单中的“通知”下面跟踪操作进度。 删除解决方案的进程启动后，系统会返回“解决方案”页。
+1. 从您的自动化帐户中，在 **"相关资源**"下，选择 **"链接工作区**"。
+1. 选择 **"转到工作区**"。
+1. 在 **"常规"** 下，选择 **"解决方案**"。 
+1. 在“解决方案”页中，请选择解决方案 Start-Stop-VM[Workspace]********。 在“VMManagementSolution[Workspace]”页上，从菜单中选择“删除”。********<br><br> ![删除 VM 管理解决方案](media/automation-solution-vm-management/vm-management-solution-delete.png)
+1. 在“删除解决方案”**** 窗口中，确认要删除该解决方案。
+1. 在验证信息和删除解决方案期间，可以在菜单中的“通知”**** 下面跟踪操作进度。 删除解决方案的进程启动后，系统会返回“解决方案”页****。
 
 此进程不会删除自动化帐户和 Log Analytics 工作区。 如果不想保留 Log Analytics 工作区，则需要手动删除。 可以通过 Azure 门户完成此操作。
 
-1. 在 Azure 门户中，搜索并选择 " **Log Analytics 工作区**"。
-1. 在 " **Log Analytics 工作区**" 页上，选择工作区。
-1. 从工作区设置页面上的菜单中选择“删除”。
+1. 在 Azure 门户中，搜索并选择**日志分析工作区**。
+1. 在**日志分析工作区**页面上，选择工作区。
+1. 从工作区设置页面上的菜单中选择“删除”。****
 
 如果不想要保留 Azure 自动化帐户组件，可以手动删除每个组件。 有关该解决方案创建的 Runbook、变量和计划的列表，请参阅[解决方案组件](#solution-components)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解如何构建不同的搜索查询，以及如何在 Azure Monitor 日志中查看自动化作业日志，请参阅[Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-searches.md)。
+- 若要详细了解如何使用 Azure Monitor 日志构造不同的搜索查询和查看自动化作业日志，请参阅 [Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-searches.md)。
 - 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅[跟踪 Runbook 作业](automation-runbook-execution.md)。
-- 若要详细了解 Azure Monitor 日志和数据收集源，请参阅[在 Azure Monitor 日志中收集 Azure 存储数据概述](../azure-monitor/platform/collect-azure-metrics-logs.md)。
+- 若要了解有关 Azure Monitor 日志和数据收集源的详细信息，请参阅[在 Azure Monitor 日志中收集 Azure 存储数据概述](../azure-monitor/platform/collect-azure-metrics-logs.md)。

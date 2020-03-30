@@ -1,16 +1,16 @@
 ---
 title: 向 Xamarin.Android 应用添加推送通知
-description: 了解如何使用 Azure App Service 和 Azure 通知中心向 Xamarin Android 应用程序发送推送通知。
+description: 了解如何使用 Azure 应用服务和 Azure 通知中心向 Xamarin.Android 应用发送推送通知。
 ms.assetid: 6f7e8517-e532-4559-9b07-874115f4c65b
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 5657be0dbaeb46f8f899a9b4a2f8ba9b4fe9ebaa
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249303"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>向 Xamarin.Android 应用添加推送通知
@@ -23,18 +23,18 @@ ms.locfileid: "79249303"
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) 指南。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程需要设置：
 
 * 有效的 Google 帐户 可以在 [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302) 注册 Google 帐户。
 * [Google Cloud Messaging 客户端组件](https://components.xamarin.com/view/GCMClient/)。
 
-## <a name="configure-hub"></a>配置通知中心
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>配置通知中心
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a id="register"></a>启用 Firebase Cloud Messaging
+## <a name="enable-firebase-cloud-messaging"></a><a id="register"></a>启用 Firebase Cloud Messaging
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
@@ -42,19 +42,19 @@ ms.locfileid: "79249303"
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
-## <a id="update-server"></a>更新服务器项目以发送推送通知
+## <a name="update-the-server-project-to-send-push-notifications"></a><a id="update-server"></a>更新服务器项目以发送推送通知
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a id="configure-app"></a>针对推送通知配置客户端项目
+## <a name="configure-the-client-project-for-push-notifications"></a><a id="configure-app"></a>针对推送通知配置客户端项目
 
 [!INCLUDE [mobile-services-xamarin-android-push-configure-project](../../includes/mobile-services-xamarin-android-push-configure-project.md)]
 
-## <a id="add-push"></a>向应用添加推送通知代码
+## <a name="add-push-notifications-code-to-your-app"></a><a id="add-push"></a>向应用添加推送通知代码
 
 [!INCLUDE [app-service-mobile-xamarin-android-push-add-to-app](../../includes/app-service-mobile-xamarin-android-push-add-to-app.md)]
 
-## <a name="test"></a>在应用中测试推送通知
+## <a name="test-push-notifications-in-your-app"></a><a name="test"></a>在应用程序中测试推送通知
 
 可以使用模拟器中的虚拟设备测试应用。 在模拟器中运行时，还需要其他配置步骤。
 
@@ -62,7 +62,7 @@ ms.locfileid: "79249303"
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/google-apis-avd-settings.png)
 
-2. 单击“应用” > “设置” > “添加帐户”，然后按提示操作将 Google 帐户添加到 Android 设备。
+2. 通过单击 **"应用** > **设置** > **添加帐户**"，将 Google 帐户添加到 Android 设备，然后按照提示进行操作。
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/add-google-account.png)
 
