@@ -1,6 +1,6 @@
 ---
 title: 动态数据掩码
-description: 动态数据掩码通过对 SQL 数据库和 Azure Synapse 的非特权用户屏蔽敏感数据来限制敏感数据的公开
+description: 动态数据屏蔽通过屏蔽敏感数据暴露到 SQL 数据库和 Azure Synapse 的非特权用户来限制其暴露
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -14,13 +14,13 @@ ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synpase
 ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78192908"
 ---
-# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>适用于 Azure SQL 数据库和 Azure Synapse Analytics 的动态数据掩码
+# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>用于 Azure SQL 数据库和 Azure 突触分析的动态数据掩蔽
 
 SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来限制此类数据的泄露。 
 
@@ -30,7 +30,7 @@ SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来�
 
 ## <a name="dynamic-data-masking-basics"></a>动态数据掩码基础知识
 
-通过在 SQL 数据库配置边栏选项卡或设置边栏选项卡中选择“动态数据掩码”操作，在 Azure 门户中设置动态数据掩码策略。 不能使用 Azure Synapse 的门户设置此功能（请使用 Powershell 或 REST API）
+通过在 SQL 数据库配置边栏选项卡或设置边栏选项卡中选择“动态数据掩码”操作，在 Azure 门户中设置动态数据掩码策略。 无法使用 Azure 突触门户设置此功能（请使用电源壳或 REST API）
 
 ### <a name="dynamic-data-masking-permissions"></a>动态数据屏蔽权限
 
@@ -44,9 +44,9 @@ Azure SQL 数据库管理员、服务器管理员或 [SQL 安全管理员](https
 
 | 屏蔽函数 | 屏蔽逻辑 |
 | --- | --- |
-| **Default** |**根据指定字段的数据类型完全屏蔽**<br/><br/>对于字符串数据类型（nchar、ntext、nvarchar），将使用 XXXX；如果字段大小小于 4 个字符，则使用更少的 X。<br/>• 对于数字数据类型（bigint、bit、decimal、int、money、numeric、smallint、smallmoney、tinyint、float、real），将使用零值。<br/>对于日期/时间数据类型（date、datetime2、datetime、datetimeoffset、smalldatetime、time），将使用 1900-01-01。<br/>• 对于 SQL 变量，将使用当前类型的默认值。<br/>•对于 XML，将使用 \<掩码/> 的文档。<br/>• 对于特殊数据类型（timestamp、table、hierarchyid、GUID、binary、image、varbinary 空间类型），将使用空值。 |
+| **默认** |**根据指定字段的数据类型完全屏蔽**<br/><br/>对于字符串数据类型（nchar、ntext、nvarchar），将使用 XXXX；如果字段大小小于 4 个字符，则使用更少的 X。<br/>• 对于数字数据类型（bigint、bit、decimal、int、money、numeric、smallint、smallmoney、tinyint、float、real），将使用零值。<br/>对于日期/时间数据类型（date、datetime2、datetime、datetimeoffset、smalldatetime、time），将使用 1900-01-01。<br/>• 对于 SQL 变量，将使用当前类型的默认值。<br/>• 对于 XML，使用文档 \<masked/>。<br/>• 对于特殊数据类型（timestamp、table、hierarchyid、GUID、binary、image、varbinary 空间类型），将使用空值。 |
 | **信用卡** |**此屏蔽方法公开指定字段的最后四位数**，并添加一个信用卡格式的常量字符串作为前缀。<br/><br/>XXXX-XXXX-XXXX-1234 |
-| **电子邮件** |**此屏蔽方法公开第一个字母并将域替换为 XXX.com**，并使用一个电子邮件地址格式的常量字符串作为前缀。<br/><br/>aXX@XXXX.com |
+| **电子邮件** |**掩蔽方法，它公开第一个字母，并使用**电子邮件地址形式的常量字符串前缀用XXX.com替换域。<br/><br/>aXX@XXXX.com |
 | **随机数** |**此屏蔽方法根据选定边界和实际数据类型生成随机数**。 如果指定的边界相等，则屏蔽函数将是常数。<br/><br/>![导航窗格](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
 | **自定义文本** |**此屏蔽方法公开第一个和最后一个字符**，并在中间添加一个自定义填充字符串。 如果原始字符串短于公开的前缀和后缀，则只使用填充字符串。 <br/>前缀 [填充] 后缀<br/><br/>![导航窗格](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
 
@@ -54,7 +54,7 @@ Azure SQL 数据库管理员、服务器管理员或 [SQL 安全管理员](https
 
 ### <a name="recommended-fields-to-mask"></a>建议进行屏蔽的字段
 
-DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段，可以考虑对这些字段进行屏蔽。 在门户的“动态数据屏蔽”边栏选项卡中，会看到针对数据库建议的列。 只需针对一个或多个列单击“添加屏蔽”，并单击“保存”，即可对这些字段应用屏蔽。
+DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段，可以考虑对这些字段进行屏蔽。 在门户的“动态数据屏蔽”边栏选项卡中，会看到针对数据库建议的列。 只需针对一个或多个列单击“添加屏蔽”****，并单击“保存”****，即可对这些字段应用屏蔽。
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>使用 PowerShell cmdlet 为数据库设置动态数据掩码
 

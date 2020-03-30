@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: b9ff80275cc89dde0db215856c2e134c4b273020
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78199727"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>监视和管理证书创建
@@ -414,7 +414,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-|元素名称|必选|类型|版本|说明|
+|元素名称|必选|类型|版本|描述|
 |------------------|--------------|----------|-------------|-----------------|
 |x5c|是|array|\<引入版本>|Base 64 字符串数组形式的 X509 证书链。|
 
@@ -477,4 +477,4 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1?api-version
 ```
 
 ## <a name="see-also"></a>另请参阅
-- [关于键、密钥和证书](about-keys-secrets-and-certificates.md)
+- [关于密钥、机密和证书](about-keys-secrets-and-certificates.md)

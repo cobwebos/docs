@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: c27cde85952ca6d982accddad59eceae76e3f1e8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194451"
 ---
 # <a name="certificate-creation-methods"></a>证书创建方法
@@ -32,7 +32,7 @@ ms.locfileid: "78194451"
 1. 上图中，通过在密钥保管库中创建密钥，应用程序可从内部开始创建证书。
 2. Key Vault 将证书签名请求 (CSR) 返回给应用程序
 3. 应用程序将 CSR 传递给所选 CA。
-4. 你选择的 CA 使用 X509 证书进行响应。
+4. 所选 CA 以 X509 证书进行响应。
 5. 应用程序通过合并 CA 中的 X509 证书来完成新证书创建过程。
 
 -   **使用已知的证书颁发者提供者创建证书：** 此方法要求你执行一项一次性任务，即创建一个证书颁发者对象。 在密钥保管库中创建证书颁发者对象以后，即可在 KV 证书的策略中引用其名称。 请求创建此类 KV 证书时，将在保管库中创建一个密钥对，并使用所引用的证书颁发者对象中的信息与证书颁发者提供者服务通信，以便获取 x509 证书。 从证书颁发者服务中检索 x509 证书并将其与密钥对合并以完成 KV 证书创建过程。  
@@ -42,10 +42,10 @@ ms.locfileid: "78194451"
 以下说明对应于上图中绿色字母代表的步骤。
 
 1. 上图中，通过在密钥保管库中创建密钥，应用程序可从内部开始创建证书。
-2. Key Vault 将 TLS/SSL 证书请求发送到 CA。
+2. Key Vault 向 CA 发送 TLS/SSL 证书请求。
 3. 应用程序会在循环和等待过程中轮询 Key Vault 至证书完成。 当 Key Vault 通过 x509 证书收到 CA 的响应时，证书创建完成。
-4. CA 使用 TLS/SSL x.509 证书响应 Key Vault 的 TLS/SSL 证书请求。
-5. 新证书的创建过程完成，并合并了 CA 的 TLS/SSL x.509 证书。
+4. CA 通过 TLS/SSL X.509 证书对 Key Vault 的 TLS/SSL 证书请求进行响应。
+5. 与 CA 的 TLS/SSL X.509 证书合并以后，新证书的创建过程即告完成。
 
 ## <a name="asynchronous-process"></a>异步过程
 KV 证书创建是一个异步过程。 此操作会创建 KV 证书请求并返回一个 http 状态代码“202 (已接受)”。 可以通过轮询此操作创建的挂起对象来跟踪请求的状态。 挂起对象的完整 URI 返回在 LOCATION 标头中。  

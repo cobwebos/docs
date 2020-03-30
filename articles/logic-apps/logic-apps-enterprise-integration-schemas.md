@@ -1,5 +1,5 @@
 ---
-title: 用架构验证 XML
+title: 使用架构验证 XML
 description: 添加架构以便在带有 Enterprise Integration Pack 的 Azure 逻辑应用中验证 XML 文档
 services: logic-apps
 ms.suite: integration
@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979380"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中使用架构验证 XML
@@ -21,7 +21,7 @@ ms.locfileid: "75979380"
 
 有关集成帐户和架构等项目的限制，请参阅 [Azure 逻辑应用的限制和配置信息](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，可以<a href="https://azure.microsoft.com/free/" target="_blank">注册免费的 Azure 帐户</a>。
 
@@ -40,11 +40,11 @@ ms.locfileid: "75979380"
   若要使用存储资源管理器，请选择以下任一选项：
   
     * 在 Azure 门户中找到并选择你的存储帐户。 
-    在存储帐户菜单中选择“存储资源管理器”。
+    在存储帐户菜单中选择“存储资源管理器”。****
 
     * 对于桌面版本，请[下载并安装 Azure 存储资源管理器](https://www.storageexplorer.com/)。 
     然后，遵循[存储资源管理器入门](../vs-azure-tools-storage-manage-with-storage-explorer.md)中的步骤将存储资源管理器连接到存储帐户。 
-    若要了解详细信息，请参阅[快速入门：使用 Azure 存储资源管理器在对象存储中创建 blob](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。
+    要了解更多信息，请参阅[快速入门：使用 Azure 存储资源管理器在对象存储中创建 Blob。](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)
 
 创建和添加架构时不需要逻辑应用。 但是，若要使用架构，逻辑应用需要链接到存储该架构的集成帐户。 了解[如何将逻辑应用链接到集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。 如果没有逻辑应用，请了解[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "75979380"
 
 1. 使用 Azure 帐户凭据登录到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>。
 
-1. 若要查找并打开集成帐户，请在 Azure 主菜单中选择“所有服务”。 在搜索框中，输入“集成帐户”。 选择“集成帐户”。
+1. 若要查找并打开集成帐户，请在 Azure 主菜单中选择“所有服务”。**** 在搜索框中，输入“集成帐户”。 选择**集成帐户**。
 
    ![查找集成帐户](./media/logic-apps-enterprise-integration-schemas/find-integration-account.png)
 
@@ -60,11 +60,11 @@ ms.locfileid: "75979380"
 
    ![选择“集成帐户”](./media/logic-apps-enterprise-integration-schemas/select-integration-account.png)
 
-1. 在集成帐户的“概述”页上的“组件”下，选择“架构”磁贴。
+1. 在集成帐户的“概述”页上的“组件”下，选择“架构”磁贴。************
 
    ![选择“架构”](./media/logic-apps-enterprise-integration-schemas/select-schemas.png)
 
-1. “架构”页打开后，请选择“添加”。
+1. “架构”页打开后，请选择“添加”。********
 
    ![选择“添加”](./media/logic-apps-enterprise-integration-schemas/add-schema.png)
 
@@ -74,34 +74,34 @@ ms.locfileid: "75979380"
 
 ### <a name="add-schemas-up-to-2-mb"></a>添加不超过 2 MB 的架构
 
-1. 在“添加架构”下，输入架构的名称。 
-   将“小文件”保持选定状态。 选择“架构”框旁边的文件夹图标。 找到并选择要上传的架构，例如：
+1. 在“添加架构”下，输入架构的名称。**** 
+   将“小文件”保持选定状态。**** 选择“架构”框旁边的文件夹图标。**** 找到并选择要上传的架构，例如：
 
    ![上传小型架构](./media/logic-apps-enterprise-integration-schemas/upload-smaller-schema-file.png)
 
-1. 准备就绪后，选择“确定”。
+1. 准备就绪后，选择“确定”****。
 
-   完成架构上传后，该架构将显示在“架构”列表中。
+   完成架构上传后，该架构将显示在“架构”列表中。****
 
 <a name="larger-schema"></a>
 
 ### <a name="add-schemas-more-than-2-mb"></a>添加 2 MB 以上的架构
 
-若要添加更大的架构，可将架构上传到 Azure 存储帐户中的 Azure Blob 容器。 根据 blob 容器是否具有公共读取访问权限，添加架构的步骤会有所不同。 首先，检查你的 blob 容器是否具有公共读取访问权限，请执行以下步骤：[设置 blob 容器的公共访问级别](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+若要添加更大的架构，可将架构上传到 Azure 存储帐户中的 Azure Blob 容器。 添加架构的步骤因 Blob 容器是否具有公共读取访问权限而异。 因此，首先，按照以下步骤检查 Blob 容器是否具有公共读取访问权限：为[Blob 容器设置公共访问级别](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
 #### <a name="check-container-access-level"></a>检查容器访问级别
 
 1. 打开 Azure 存储资源管理器。 在“资源管理器”窗口中展开你的 Azure 订阅（如果尚未展开）。
 
-1. 展开“存储帐户”>“{你的存储帐户}”>“Blob 容器”。 选择你的 Blob 容器。
+1. 展开“存储帐户”>“{你的存储帐户}”>“Blob 容器”。********** 选择你的 Blob 容器。
 
-1. 在 Blob 容器的快捷菜单中，选择“设置公共访问级别”。
+1. 在 Blob 容器的快捷菜单中，选择“设置公共访问级别”。****
 
-   * 如果 blob 容器至少具有公共访问权限，请选择 "**取消**"，并按照以下步骤在此页上执行以下步骤：上[传到具有公共访问权限的容器](#public-access)
+   * 如果 Blob 容器至少具有公共访问权限，请选择 **"取消**"，然后按照本页后面的以下步骤操作：[上载到具有公共访问权限的容器](#public-access)
 
      ![公共访问权限](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * 如果 blob 容器没有公共访问权限，请选择 "**取消**"，并在此页后面的步骤中执行以下步骤：上[传到无公共访问权限的容器](#public-access)
+   * 如果 Blob 容器没有公共访问权限，请选择 **"取消**"，然后按照本页后面的以下步骤操作：[上载到没有公共访问权限的容器](#public-access)
 
      ![没有公共访问权限](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
@@ -110,41 +110,41 @@ ms.locfileid: "75979380"
 #### <a name="upload-to-containers-with-public-access"></a>上传到具有公共访问权限的容器
 
 1. 将架构上传到存储帐户。 
-   在右侧窗口中，选择“上传”。
+   在右侧窗口中，选择“上传”。****
 
-1. 完成上传后，选择上传的架构。 在工具栏中，选择“复制 URL”以复制架构的 URL。
+1. 完成上传后，选择上传的架构。 在工具栏中，选择“复制 URL”以复制架构的 URL。****
 
-1. 返回 Azure 门户，其中已打开“添加架构”窗格。 
+1. 返回 Azure 门户，其中已打开“添加架构”窗格。**** 
    输入程序集的名称。 
-   选择“大文件(大于 2 MB)”。 
+   选择“大文件(大于 2 MB)”。**** 
 
-   此时会显示“内容 URI”框而不是“架构”框。
+   此时会显示“内容 URI”框而不是“架构”框。********
 
-1. 在“内容 URI”框中，粘贴架构的 URL。 
+1. 在“内容 URI”框中，粘贴架构的 URL。**** 
    完成添加架构。
 
-完成架构上传后，该架构将显示在“架构”列表中。 在集成帐户的“概述”页上的“组件”下，“架构”磁贴现在会显示已上传的架构数目。
+完成架构上传后，该架构将显示在“架构”列表中。**** 在集成帐户的“概述”页上的“组件”下，“架构”磁贴现在会显示已上传的架构数目。************
 
 <a name="no-public-access"></a>
 
 #### <a name="upload-to-containers-without-public-access"></a>上传到没有公共访问权限的容器
 
 1. 将架构上传到存储帐户。 
-   在右侧窗口中，选择“上传”。
+   在右侧窗口中，选择“上传”。****
 
 1. 上传完成后，为架构生成共享访问签名 (SAS)。 
-   在架构的快捷菜单中，选择“获取共享访问签名”。
+   在架构的快捷菜单中，选择“获取共享访问签名”。****
 
-1. 在“共享访问签名”窗格中，选择“生成容器级共享访问签名 URI” > “创建”。 
-   生成 SAS URL 后，选择“URL”框旁边的“复制”。
+1. 在“共享访问签名”窗格中，选择“生成容器级共享访问签名 URI” > “创建”。************ 
+   生成 SAS URL 后，选择“URL”框旁边的“复制”。********
 
-1. 返回 Azure 门户，其中已打开“添加架构”窗格。 选择“大文件”。
+1. 返回 Azure 门户，其中已打开“添加架构”窗格。**** 选择“大文件”。****
 
-   此时会显示“内容 URI”框而不是“架构”框。
+   此时会显示“内容 URI”框而不是“架构”框。********
 
-1. 在“内容 URI”框中，粘贴前面生成的 SAS URI。 完成添加架构。
+1. 在“内容 URI”框中，粘贴前面生成的 SAS URI。**** 完成添加架构。
 
-完成架构上传后，该架构将显示在“架构”列表中。 在集成帐户的“概述”页上的“组件”下，“架构”磁贴现在会显示已上传的架构数目。
+完成架构上传后，该架构将显示在“架构”列表中。**** 在集成帐户的“概述”页上的“组件”下，“架构”磁贴现在会显示已上传的架构数目。************
 
 ## <a name="edit-schemas"></a>编辑架构
 
@@ -152,37 +152,37 @@ ms.locfileid: "75979380"
 
 1. 在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>中，找到并打开你的集成帐户（如果尚未打开）。
 
-1. 在 Azure 主菜单中，选择“所有服务”。 
+1. 在 Azure 主菜单中，选择“所有服务”****。 
    在搜索框中，输入“集成帐户”。 
-   选择“集成帐户”。
+   选择**集成帐户**。
 
 1. 选择要在其中更新架构的集成帐户。
 
-1. 在集成帐户的“概述”页上的“组件”下，选择“架构”磁贴。
+1. 在集成帐户的“概述”页上的“组件”下，选择“架构”磁贴。************
 
-1. “架构”页打开后，请选择你的架构。 
-   若要先下载并编辑架构，请选择“下载”，然后保存架构。
+1. “架构”页打开后，请选择你的架构。**** 
+   若要先下载并编辑架构，请选择“下载”，然后保存架构。****
 
-1. 准备好上传更新的架构时，请在“架构”页上选择要更新的架构，然后选择“更新”。
+1. 准备好上传更新的架构时，请在“架构”页上选择要更新的架构，然后选择“更新”。********
 
 1. 找到并选择要上传的已更新架构。 
-   完成架构文件的上传后，更新的架构将显示在“架构”列表中。
+   完成架构文件的上传后，更新的架构将显示在“架构”列表中。****
 
 ## <a name="delete-schemas"></a>删除架构
 
 1. 在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>中，找到并打开你的集成帐户（如果尚未打开）。
 
-1. 在 Azure 主菜单中，选择“所有服务”。 
+1. 在 Azure 主菜单中，选择“所有服务”****。 
    在搜索框中，输入“集成帐户”。 
-   选择“集成帐户”。
+   选择**集成帐户**。
 
 1. 选择要在其中删除架构的集成帐户。
 
-1. 在集成帐户的“概述”页上的“组件”下，选择“架构”磁贴。
+1. 在集成帐户的“概述”页上的“组件”下，选择“架构”磁贴。************
 
-1. “架构”页打开后，请选择你的架构，然后选择“删除”。
+1. “架构”页打开后，请选择你的架构，然后选择“删除”。********
 
-1. 若要确认删除该架构，请选择“是”。
+1. 若要确认删除该架构，请选择“是”****。
 
 ## <a name="next-steps"></a>后续步骤
 

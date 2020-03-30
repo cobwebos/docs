@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：验证连接-故障排除指南
+title: Azure 快速路由：验证连接 - 故障排除指南
 description: 本页说明如何对 ExpressRoute 线路的端到端连接进行故障排除和验证。
 services: expressroute
 author: rambk
@@ -9,28 +9,28 @@ ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 58ae39e8dfdf918ae14ca9bb8dac28405828999e
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78330951"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
-本文可帮助验证 ExpressRoute 连接并对其进行故障排除。 ExpressRoute 通过专用连接将本地网络扩展到 Microsoft 云，此连接通常由连接提供商提供。 通常，ExpressRoute 连接涉及三个不同的网络区域，如下所示：
+本文可帮助验证 ExpressRoute 连接并对其进行故障排除。 ExpressRoute 可以通过往往已由连接服务提供商优化的专用连接，将本地网络扩展到 Microsoft 云中。 在传统上，ExpressRoute 连接涉及到三个不同的网络区域，如下所述：
 
 -   客户网络
 -   提供商网络
 -   Microsoft 数据中心
 
 > [!NOTE]
-> 在 ExpressRoute 直接连接模型（10/100 Gbps 带宽提供）中，客户可以直接连接到 Microsoft 企业边缘（MSEE）路由器的端口。 因此，在直接连接模式下，只有客户和 Microsoft 网络区域。
+> 在 ExpressRoute 直接连接模型中（以 10/100 Gbps 带宽提供），客户可以直接连接到 Microsoft 企业边缘 （MSEE） 路由器的端口。 因此，直接连接模型中只有客户和 Microsoft 网络区域。
 >
 
 
-本文档的目的是帮助用户确定是否存在连接问题。 因此，为了帮助从适当的团队寻求支持来解决问题。 如果需要 Microsoft 支持才能解决问题，请使用[Microsoft 支持部门][Support]打开支持票证。
+本文档旨在帮助用户确定是否存在连接问题，以及出现问题的位置。 因此，本文档可为相应的团队提供支持，帮助他们解决问题。 如果需要 Microsoft 的支持才能解决问题，请开具一张 [Microsoft 支持部门][Support]的支持票证。
 
 > [!IMPORTANT]
-> 本文档旨在帮助用户诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果无法使用所提供的指南解决问题，请使用[Microsoft 支持部门][Support]打开支持票证。
+> 本文档旨在帮助用户诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果无法通过所提供的指南解决问题，则请开具一张 [Microsoft 支持部门][Support]的支持票证。
 >
 >
 
@@ -38,7 +38,7 @@ ms.locfileid: "78330951"
 下图显示了客户网络通过 ExpressRoute 连接到 Microsoft 网络时的逻辑连接。
 [![1]][1]
 
-在上图中，数字表示关键网络点。 这些网络点将在本文中按其关联的数字进行多次引用。 网络点3和4可以是交换机（第2层设备），也可以是交换机（第3层设备），具体取决于 ExpressRoute 连接模型（云交换归置、点到点以太网连接或任意到任意（IPVPN））。 直接连接模型中没有网络点3和 4;相反，CEs （2）通过暗程直接连接到 Msee。 上述关键网络点详述如下：
+在上图中，数字表示关键网络点。 本文中不时提到的“网络点”将按其关联的编号来表示。 网络点 3 和 4 可以是交换机（第 2 层设备）或路由器（第 3 层设备），具体取决于 ExpressRoute 连接模型 -- 云交换归置、点到点以太网连接，或任意两点之间的连接 (IPVPN)。 直接连接模型中没有网络点 3 和 4；CE (2) 通过暗光纤直接连接到 MSEE。 上述关键网络点详述如下：
 
 1.  客户计算设备（例如服务器或电脑）
 2.  CE：客户边缘路由器 
@@ -48,16 +48,16 @@ ms.locfileid: "78330951"
 6.  虚拟网络 (VNet) 网关
 7.  Azure VNet 上的计算设备
 
-如果使用了云交换归置、点到点以太网或直接连接模型，则 CEs （2）使用 Msee （5）建立 BGP 对等互连。 
+如果使用云交换归置、点到点以太网或直接连接模型，则 CE (2) 将与 MSEE (5) 建立 BGP 对等互连。 
 
-如果使用了 "任意到任意（IPVPN）" 连接模型，Msee （4）与 Msee （5）建立 BGP 对等互连。 Msee 通过 IPVPN 服务提供商网络将从 Microsoft 收到的路由传播回客户网络。
+如果使用任意两点之间的连接 (IPVPN) 模型，则 PE-MSEE (4) 将与 MSEE (5) 建立 BGP 对等互连。 PE-MSEE 通过 IPVPN 服务提供商网络将从 Microsoft 收到的路由传播回到客户网络。
 
 > [!NOTE]
->为实现高可用性，Microsoft 在 Msee （5）和 Msee （4）对之间建立完全冗余的并行连接。 还建议在客户网络和 PE CEs 对之间使用完全冗余的并行网络路径。 有关高可用性的详细信息，请参阅[通过 ExpressRoute 设计高可用性][HA]一文
+>为了实现高可用性，Microsoft 将在 MSEE (5) 和 PE-MSEE (4) 对之间建立完全冗余的并行连接。 另外，我们建议在客户网络和 PE-CE 对之间建立完全冗余的并行网络路径。 有关高可用性的详细信息，请参阅[使用 ExpressRoute 进行高可用性设计][HA]一文
 >
 >
 
-下面是针对 ExpressRoute 线路进行故障排除的逻辑步骤：
+下面是排查 ExpressRoute 线路问题的逻辑步骤：
 
 * [验证线路预配和状态](#verify-circuit-provisioning-and-state)
   
@@ -65,30 +65,30 @@ ms.locfileid: "78330951"
   
 * [验证 ARP](#validate-arp)
   
-* [验证 MSEE 上的 BGP 和路由](#validate-bgp-and-routes-on-the-msee)
+* [验证 BGP 以及 MSEE 上的路由](#validate-bgp-and-routes-on-the-msee)
   
-* [确认流量](#confirm-the-traffic-flow)
+* [确认流量流](#confirm-the-traffic-flow)
 
 
 ## <a name="verify-circuit-provisioning-and-state"></a>验证线路预配和状态
-预配 ExpressRoute 线路会在 CEs/Msee （2）/（4）和 Msee （5）之间建立冗余的第2层连接。 有关如何创建、修改、预配和验证 ExpressRoute 线路的详细信息，请参阅[创建和修改 expressroute 线路][CreateCircuit]一文。
+预配 ExpressRoute 线路可在 CE/PE-MSEE (2)/(4) 与 MSEE (5) 之间建立冗余的第 2 层连接。 如需详细了解如何创建、修改、预配和验证 ExpressRoute 线路，请参阅[创建和修改 ExpressRoute 线路][CreateCircuit]一文。
 
 >[!TIP]
->服务密钥可以唯一地标识 ExpressRoute 线路。 如果需要 Microsoft 或 ExpressRoute 合作伙伴提供的帮助来排查 ExpressRoute 问题，请提供服务密钥来轻松地识别线路。
+>服务密钥可以唯一地标识 ExpressRoute 线路。 如果需要 Microsoft 或 ExpressRoute 合作伙伴的帮助来排查 ExpressRoute 问题，请提供服务密钥以识别线路。
 >
 >
 
 ### <a name="verification-via-the-azure-portal"></a>通过 Azure 门户进行验证
-在 Azure 门户中，打开 "ExpressRoute 线路" 边栏选项卡。 在边栏选项卡的 " ![3][3] " 部分中，列出了 ExpressRoute 概要，如以下屏幕截图所示：
+在 Azure 门户中打开 ExpressRoute 线路边栏选项卡。 该边栏选项卡的“3”部分列出了 ExpressRoute 概要，如以下屏幕截图所示：![][3]
 
 ![4][4]    
 
-在 ExpressRoute 的“概要”中，“线路状态”表示 Microsoft 这一侧线路的状态。 “提供商状态”表示线路在服务提供商这一侧的状态是“已预配”还是“未预配”。 
+在 ExpressRoute 的“概要”中，“线路状态”表示 Microsoft 这一侧线路的状态。** “提供商状态”** 表示线路在服务提供商这一侧的状态是“已预配”还是“未预配”。** 
 
-若要确保 ExpressRoute 线路正常运行，“线路状态”必须为“已启用”，“提供商状态”必须为“已预配”。
+若要确保 ExpressRoute 线路正常运行，“线路状态”必须为“已启用”，“提供商状态”必须为“已预配”。********
 
 > [!NOTE]
-> 配置 ExpressRoute 线路后，如果*线路状态*处于 "未启用" 状态，请联系[Microsoft 支持部门][Support]。 另一方面，如果*提供程序状态*为 "未设置" 状态，请与服务提供商联系。
+> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。** 另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。**
 >
 >
 
@@ -98,7 +98,7 @@ ms.locfileid: "78330951"
     Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
 
 >[!TIP]
->如果你正在寻找资源组的名称，则可以通过使用命令*AzResourceGroup*来列出你的订阅中的所有资源组，以获取该资源组的名称。
+>查找资源组的名称时，可以使用命令 *Get-AzResourceGroup* 列出订阅中的所有资源组，然后即可获取该名称。
 >
 
 
@@ -137,31 +137,31 @@ ms.locfileid: "78330951"
     ServiceProviderProvisioningState : Provisioned
 
 > [!NOTE]
-> 配置 ExpressRoute 线路后，如果*线路状态*处于 "未启用" 状态，请联系[Microsoft 支持部门][Support]。 另一方面，如果*提供程序状态*为 "未设置" 状态，请与服务提供商联系。
+> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。** 另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。**
 >
 >
 
 ## <a name="validate-peering-configuration"></a>验证对等互连配置
-在服务提供商完成预配 ExpressRoute 线路后，可以通过 CEs/MSEE （2）/（4）和 Msee （5）之间的 ExpressRoute 线路创建多个基于 eBGP 的路由配置。 每个 ExpressRoute 线路都可以具有： Azure 专用对等互连（Azure 中到专用虚拟网络的流量）和/或 Microsoft 对等互连（到 PaaS 和 SaaS 的公共终结点的流量）。 有关如何创建和修改路由配置的详细信息，请参阅[创建和修改 ExpressRoute 线路的路由一][CreatePeering]文。
+在服务提供商完成 ExpressRoute 线路的预配后，可以通过 CE/MSEE-PE (2)/(4) 与 MSEE (5) 之间的 ExpressRoute 线路创建多个基于 eBGP 的路由配置。 每个 ExpressRoute 电路可以具有：Azure 专用对等互连（Azure 中专用虚拟网络的流量）和/或 Microsoft 对等互连（PaS 和 SaaS 的公共终结点的流量）。 有关如何创建和修改路由配置的详细信息，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]一文。
 
 ### <a name="verification-via-the-azure-portal"></a>通过 Azure 门户进行验证
 
 > [!NOTE]
-> 在 IPVPN 连接模型中，服务提供商负责处理对等互连（第3层服务）的配置。 在这种模型中，在服务提供商配置对等互连后，如果对等互连在门户中为空，请尝试使用门户上的 "刷新" 按钮刷新线路配置。 此操作将从线路中拉取当前路由配置。 
+> 在 IPVPN 连接模型中，服务提供商将负责处理对等互连（第 3 层服务）的配置。 在此类模型中，如果在服务提供商配置对等互连后，对等互连在门户中是空白的，请尝试使用门户上的刷新按钮刷新线路配置。 此操作会从线路中提取当前路由配置。 
 >
 
-在 Azure 门户中，可在 "ExpressRoute 线路" 边栏选项卡下检查 ExpressRoute 线路对等互连的状态。 在边栏选项卡的 " ![3][3] " 部分，ExpressRoute 对等互连会列出，如以下屏幕截图所示：
+可以在 Azure 门户中的 ExpressRoute 线路边栏选项卡下检查 ExpressRoute 线路对等互连的状态。 该边栏选项卡的“3”部分将会列出 ExpressRoute 对等互连，如以下屏幕截图所示：![][3]
 
 ![5][5]
 
-在前面的示例中，如预配了 Azure 专用对等互连，而未预配 Azure 公共和 Microsoft 对等互连。 成功设置的对等互连上下文还会列出主要的和辅助的点到点子网。 /30 子网用于 Msee 和 CEs/Msee 的接口 IP 地址。 对于预配的对等互连，此列表还指示上次修改配置的用户。 
+在前面的示例中，可以注意到已预配 Azure 专用对等互连，但尚未预配 Azure 公共对等互连和 Microsoft 对等互连。 成功预配的对等互连上下文还会列出主要和辅助的点到点子网。 /30 子网用于 MSEE 和 CE/PE-MSEE 的接口 IP 地址。 对于已预配的对等互连，列表中还会指示上次修改配置的用户。 
 
 > [!NOTE]
-> 如果启用对等互连失败，请检查分配的主要子网和辅助子网是否符合链接的 CE/MSEE 上的配置。 另外，请检查是否在 Msee 上使用了正确的*VlanId*、 *AzureASN*和*PeerASN* ，以及这些值是否映射到链接的 CE/PE-MSEE 上使用的值。 如果选择了 MD5 哈希，则 MSEE 和 MSEE/CE 对共享密钥应相同。 出于安全原因，将不会显示以前配置的共享密钥。 如果需要在 MSEE 路由器上更改这些配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。  
+> 如果启用对等互连失败，请检查分配的主要子网和辅助子网是否与链接的 CE/PE-MSEE 上的配置相匹配。 另请检查是否在 MSEE 上使用了正确的 *VlanId*、*AzureASN* 和 *PeerASN*，以及这些值是否映射到链接的 CE/PE-MSEE 上使用的对应项。 如果选择了 MD5 哈希，则 MSEE 和 PE-MSEE/CE 对上的共享密钥应相同。 出于安全原因，不会显示以前配置的共享密钥。 如果需要在 MSEE 路由器上更改其中的任何配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。  
 >
 
 > [!NOTE]
-> 在为接口分配的/30 子网中，Microsoft 将为 MSEE 接口选择子网的第二个可用 IP 地址。 因此，请确保已在对等互连 CE/MSEE 上分配子网的第一个可用 IP 地址。
+> 在为接口分配的 /30 子网中，Microsoft 将为 MSEE 接口选择该子网的第二个可用 IP 地址。 因此，请确保已在对等互连的 CE/PE-MSEE 上分配该子网的第一个可用 IP 地址。
 >
 
 
@@ -188,7 +188,7 @@ ms.locfileid: "78330951"
     MicrosoftPeeringConfig     : null
     ProvisioningState          : Succeeded
 
- 成功启用的对等互连上下文会列出主要的和辅助的地址前缀。 /30 子网用于 Msee 和 CEs/Msee 的接口 IP 地址。
+ 成功启用的对等互连上下文会列出主要的和辅助的地址前缀。 /30 子网用于 MSEE 和 CE/PE-MSEE 的接口 IP 地址。
 
 若要获取 Azure 公共对等互连配置详细信息，请使用以下命令：
 
@@ -211,28 +211,28 @@ ms.locfileid: "78330951"
 
 
 > [!NOTE]
-> 如果启用对等互连失败，请检查分配的主要子网和辅助子网是否符合链接的 CE/MSEE 上的配置。 另外，请检查是否在 Msee 上使用了正确的*VlanId*、 *AzureASN*和*PeerASN* ，以及这些值是否映射到链接的 CE/PE-MSEE 上使用的值。 如果选择了 MD5 哈希，则 MSEE 和 MSEE/CE 对共享密钥应相同。 出于安全原因，将不会显示以前配置的共享密钥。 如果需要在 MSEE 路由器上更改这些配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。  
+> 如果启用对等互连失败，请检查分配的主要子网和辅助子网是否与链接的 CE/PE-MSEE 上的配置相匹配。 另请检查是否在 MSEE 上使用了正确的 *VlanId*、*AzureASN* 和 *PeerASN*，以及这些值是否映射到链接的 CE/PE-MSEE 上使用的对应项。 如果选择了 MD5 哈希，则 MSEE 和 PE-MSEE/CE 对上的共享密钥应相同。 出于安全原因，不会显示以前配置的共享密钥。 如果需要在 MSEE 路由器上更改其中的任何配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。  
 >
 >
 
 > [!NOTE]
-> 在为接口分配的/30 子网中，Microsoft 将为 MSEE 接口选择子网的第二个可用 IP 地址。 因此，请确保已在对等互连 CE/MSEE 上分配子网的第一个可用 IP 地址。
+> 在为接口分配的 /30 子网中，Microsoft 将为 MSEE 接口选择该子网的第二个可用 IP 地址。 因此，请确保已在对等互连的 CE/PE-MSEE 上分配该子网的第一个可用 IP 地址。
 >
 
 ## <a name="validate-arp"></a>验证 ARP
 
-ARP 表提供了特定对等互连的 IP 地址和 MAC 地址的映射。 用于 ExpressRoute 线路对等互连的 ARP 表为每个接口（主接口和辅助接口）提供以下信息：
+ARP 表为特定的对等互连提供 IP 地址和 MAC 地址的映射。 用于 ExpressRoute 线路对等互连的 ARP 表为每个接口（主接口和辅助接口）提供以下信息：
 * 将本地路由器接口 IP 地址映射到 MAC 地址
 * 将 ExpressRoute 路由器接口 IP 地址映射到 MAC 地址
-* 映射 ARP 表的使用期限可帮助验证第2层配置和排查基本第2层连接问题。
+* 映射 ARP 表的期限可帮助验证第 2 层配置，并可帮助排查第 2 层基本连接的问题。
 
 
-若要查看 ExpressRoute 对等互连的 ARP 表以及如何使用该信息对第2层连接问题进行故障排除，请参阅[获取资源管理器部署模型文档中的 arp 表][ARP]。
+请参阅[在资源管理器部署模型中获取 ARP 表][ARP]文档，了解如何查看 ExpressRoute 对等互连的 ARP 表，以及如何使用该信息排查第 2 层连接问题。
 
 
 ## <a name="validate-bgp-and-routes-on-the-msee"></a>验证 BGP 以及 MSEE 上的路由
 
-若要从*专用*路由上下文的*主*路径上的 MSEE 中获取路由表，请使用以下命令：
+对于“专用”路由上下文，若要获取“主要”路径上的 MSEE 的路由表，请使用以下命令：****
 
     Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
 
@@ -258,21 +258,21 @@ ARP 表提供了特定对等互连的 IP 地址和 MAC 地址的映射。 用于
 
 
 > [!NOTE]
-> 如果 MSEE 与 CE/eBGP 之间的对等互连的状态为 "活动" 或 "空闲"，请检查分配的主要对等子网和辅助对等子网是否符合链接的 CE/PE-MSEE 上的配置。 另外，请检查是否在 Msee 上使用了正确的*VlanId*、 *AzureAsn*和*PeerAsn* ，以及这些值是否映射到链接的 PE-MSEE/CE 上使用的值。 如果选择了 MD5 哈希，则 MSEE 和 CE/MSEE 对上的共享密钥应相同。 如果需要在 MSEE 路由器上更改这些配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。
+> 如果 MSEE 与 CE/PE-MSEE 之间的 eBGP 对等互连状态为“活动”或“空闲”，请检查分配的主要和辅助对等子网是否与链接的 CE/PE-MSEE 上的配置相匹配。 另请检查是否在 MSEE 上使用了正确的 *VlanId*、*AzureAsn* 和 *PeerAsn*，以及这些值是否映射到链接的 PE-MSEE/CE 上使用的对应项。 如果选择了 MD5 哈希，则 MSEE 和 CE/PE-MSEE 对上的共享密钥应相同。 如果需要在 MSEE 路由器上更改其中的任何配置，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]。
 >
 
 
 > [!NOTE]
-> 如果某些目标无法通过对等互连访问，请检查 Msee 的路由表中对应的对等互连上下文。 如果路由表中存在匹配的前缀（可以是/Nsg/acl IP），则检查在阻止流量的路径上是否有防火墙/NSG/Acl。
+> 如果无法通过某个对等互连访问某些目标，请检查相应对等互连上下文的 MSEE 的路由表。 如果路由表中存在匹配的前缀（可能是 NAT 处理后的 IP），请检查路径中是否存在阻止流量的防火墙/NSG/ACL。
 >
 
 
-下面的示例演示对不存在的对等互连的命令响应：
+以下示例显示某个对等互连的命令响应不存在：
 
     Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
     StatusCode: 400
 
-## <a name="confirm-the-traffic-flow"></a>确认流量
+## <a name="confirm-the-traffic-flow"></a>确认流量流
 若要获取对等互连上下文在主要路径和辅助路径上的综合流量统计信息（出入字节数），请使用以下命令：
 
     Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
@@ -291,9 +291,9 @@ ARP 表提供了特定对等互连的 IP 地址和 MAC 地址的映射。 用于
 ## <a name="next-steps"></a>后续步骤
 有关详细信息或帮助，请查看以下链接：
 
-- [Microsoft 支持][Support]
+- [微软支持][Support]
 - [创建和修改 ExpressRoute 线路][CreateCircuit]
-- [为 ExpressRoute 线路创建和修改路由][CreatePeering]
+- [创建和修改 ExpressRoute 线路的路由][CreatePeering]
 
 <!--Image References-->
 [1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "逻辑 ExpressRoute 连接"

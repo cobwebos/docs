@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 上选择实时和流处理解决方案
-description: 了解如何选择正确的实时分析和流式处理技术，以便在 Azure 上生成应用程序。
+description: 了解如何选择适当的实时分析和流式处理技术，以便在 Azure 上构建应用程序。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,51 +8,51 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 2146b1bd782aba5d98729a2d37d956744e469ba1
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75860242"
 ---
-# <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>选择 Azure 上的实时分析和流式处理技术
+# <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>在 Azure 上选择实时分析和流式处理技术
 
-Azure 上的实时分析和流式处理可以使用多个服务。 本文提供了决定哪种技术最适合你的应用程序所需的信息。
+Azure 上提供了用于实时分析和流式处理的多种服务。 本文中的信息可帮助你确定哪种技术最适合你的应用程序。
 
 ## <a name="when-to-use-azure-stream-analytics"></a>何时使用 Azure 流分析
 
-Azure 流分析是 Azure 上的流分析的建议服务。 这适用于包括但不限于的各种方案：
+Azure 流分析是 Azure 上提供的建议用于流分析的服务。 该服务适用于多种方案，包括但不限于：
 
-* 用于数据可视化的仪表板
-* 临时和空间模式或异常的实时[警报](stream-analytics-set-up-alerts.md)
+* 数据可视化仪表板
+* 针对时态和空间模式或异常生成实时[警报](stream-analytics-set-up-alerts.md)
 * 提取、转换、加载 (ETL)
-* [事件溯源模式](/azure/architecture/patterns/event-sourcing)
-* [IoT Edge](stream-analytics-edge.md)
+* [事件采购模式](/azure/architecture/patterns/event-sourcing)
+* [物联网边缘](stream-analytics-edge.md)
 
-将 Azure 流分析作业添加到您的应用程序是在 Azure 中使用您已知道的 SQL 语言启动和运行流式处理分析的最快方法。 Azure 流分析是一种作业服务，因此你无需花费时间管理群集，并且你无需担心在作业级别出现 99.9% SLA 的停机时间。 还可以在作业级别进行计费，使启动成本降低（一个流式处理单位），但可缩放（最多192个流式处理单位）。 运行几个流分析作业比运行和维护群集更加经济高效。
+将 Azure 流分析作业添加到应用程序，是在 Azure 中使用熟悉的 SQL 语言启动和运行流分析的最快捷方法。 Azure 流分析是一个作业服务，因此你无需花费时间来管理群集，也无需担心出现停机，因为它在作业级别提供 99.9% SLA。 还可以在作业级别进行计费，使创业成本降低（只需一个流单元），但流单元可缩放（最多可以购买 192 个）。 运行少量的流分析作业比运行并维护群集要经济高效得多。
 
-Azure 流分析具有全新的全新体验。 你可以立即利用以下功能，而无需进行任何其他设置：
+Azure 流分析提供丰富的全新体验。 无需进行任何额外的设置，就能立即利用以下功能：
 
-* 内置临时运算符，如[开窗聚合](stream-analytics-window-functions.md)、临时联接和临时分析函数。
-* 本机 Azure[输入](stream-analytics-add-inputs.md)适配器和[输出](stream-analytics-define-outputs.md)适配器
-* 支持慢速更改[引用数据](stream-analytics-use-reference-data.md)（也称为查找表），包括与地理围栏的地理空间引用数据加入。
-* 集成解决方案，如[异常检测](stream-analytics-machine-learning-anomaly-detection.md)
+* 内置时态运算符，例如[开窗聚合](stream-analytics-window-functions.md)、时态联接和时态分析函数。
+* 本机 Azure [输入](stream-analytics-add-inputs.md)和[输出](stream-analytics-define-outputs.md)适配器
+* 支持慢速变化的[参考数据](stream-analytics-use-reference-data.md)（也称为查找表），包括与地理围栏的地理空间参考数据相联接。
+* 集成的解决方案，例如[异常情况检测](stream-analytics-machine-learning-anomaly-detection.md)
 * 同一查询中的多个时间窗口
-* 能够在任意序列中组合多个时态运算符。
-* 从事件中心到达的输入到100毫秒的端到端延迟，以便在事件中心（包括从和到事件中心的网络延迟）中输出登陆
+* 可按任意顺序编写多个时态运算符。
+* 从输入抵达事件中心到输出进入事件中心的端到端延迟不超过 100 毫秒（包括与事件中心之间的网络延迟），且能保持较高的吞吐量
 
 ## <a name="when-to-use-other-technologies"></a>何时使用其他技术
 
-### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>要使用 JavaScript 以外的语言编写 Udf、Uda 和自定义反C#
+### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>要使用除 JavaScript 以外的语言编写 UDF、UDA 和自定义反序列化程序
 
-Azure 流分析支持适用于云作业的 JavaScript 中的用户定义函数（UDF）或用户定义聚合（UDA） C# ，以及用于 IoT Edge 作业。 C#还支持用户定义的反。 如果要在其他语言（如 Java 或 Python）中实现反序列化程序、UDF 或 UDA，可以使用 Spark 结构化流式处理。 你还可以在自己的虚拟机上运行事件中心**EventProcessorHost** ，以执行任意流式处理。
+Azure 流分析支持在适用于云作业的 JavaScript 中以及适用于 IoT Edge 作业的 C# 中使用用户定义的函数 (UDF) 或用户定义的聚合 (UDA)。 还支持 C# 用户定义的反序列化程序。 若要在其他语言（例如 Java 或 Python）中实现反序列化程序、UDF 或 UDA，可以使用 Spark 结构化流。 还可以在自己的虚拟机上运行事件中心 **EventProcessorHost**，以执行任意流式处理。
 
-### <a name="your-solution-is-in-a-multi-cloud-or-on-premises-environment"></a>你的解决方案位于多云或本地环境中
+### <a name="your-solution-is-in-a-multi-cloud-or-on-premises-environment"></a>解决方案位于多云环境或本地环境中
 
-Azure 流分析是 Microsoft 的专有技术，只能在 Azure 上使用。 如果你需要解决方案可跨云或本地移植，请考虑开源技术，例如 Spark 结构化流式处理或风暴。
+Azure 流分析是 Microsoft 的专属技术，只能在 Azure 上使用。 如果需要在云之间或本地位置之间移植解决方案，请考虑使用 Spark 结构化流或 Storm 等开源技术。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Azure 门户创建流分析作业](stream-analytics-quick-create-portal.md)
 * [使用 Azure PowerShell 创建流分析作业](stream-analytics-quick-create-powershell.md)
-* [使用 Visual Studio 创建流分析作业](stream-analytics-quick-create-vs.md)
-* [使用 Visual Studio Code 创建流分析作业](quick-create-vs-code.md)
+* [使用可视化工作室创建流分析作业](stream-analytics-quick-create-vs.md)
+* [使用可视化工作室代码创建流分析作业](quick-create-vs-code.md)

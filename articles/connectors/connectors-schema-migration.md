@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 ms.openlocfilehash: cef0fcb990cd2c5c6583822d4dc4c6993c52eac2
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666782"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>将逻辑应用迁移到最新架构版本
@@ -19,22 +19,22 @@ ms.locfileid: "75666782"
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
-2. 在逻辑应用的菜单中，选择“概述”。 在工具栏上，选择“更新架构”。
+2. 在逻辑应用的菜单中，选择“概述”****。 在工具栏上，选择“更新架构”****。
 
    > [!NOTE]
-   > 当你选择“更新架构”时，Azure 逻辑应用会自动运行迁移步骤并为你提供代码输出。 可以使用此输出更新逻辑应用定义。 但是，请确保遵循以下**最佳做法**部分中所述的最佳做法。
+   > 当你选择“更新架构”**** 时，Azure 逻辑应用会自动运行迁移步骤并为你提供代码输出。 可以使用此输出更新逻辑应用定义。 但是，请确保遵循以下**最佳做法**部分中所述的最佳做法。
 
    ![更新架构](./media/connectors-schema-migration/update-schema.png)
 
    此时将显示“更新架构”页，并显示指向描述新架构中的改进的文档的链接。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 下面是将逻辑应用迁移到最新架构版本的一些最佳做法：
 
 * 将已迁移的脚本复制到新的逻辑应用。 在完成测试并确认迁移的应用按预期工作之前，请勿覆盖旧版本。
 
-* 在投入生产**之前**，测试逻辑应用。
+* 在投入生产**之前**测试逻辑应用。
 
 * 完成迁移后，开始更新逻辑应用，以便在可能的情况下使用[托管 API](../connectors/apis-list.md)。 例如，在使用 DropBox v1 的任何地方开始使用 Dropbox v2。
 

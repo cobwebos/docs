@@ -1,5 +1,5 @@
 ---
-title: 定义声明转换技术配置文件
+title: 定义索赔转换技术配置文件
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 的自定义策略中定义声明转换技术配置文件。
 services: active-directory-b2c
@@ -12,10 +12,10 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84c1cf798e88e4067da8a495c1591143d2ee1bd0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189780"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义声明转换技术配置文件
@@ -26,7 +26,7 @@ ms.locfileid: "78189780"
 
 ## <a name="protocol"></a>协议
 
-“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
+"**Name****协议"** 元素的名称属性需要设置为`Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
 以下示例演示了一个声明转换技术配置文件：
 
@@ -82,7 +82,7 @@ TransformationClaimType="collection" />
 </TechnicalProfile>
 ```
 
-使用声明转换技术配置文件，可以在任何用户旅程的业务流程步骤中执行声明转换。 在以下示例中，业务流程步骤调用取消链接技术配置文件中的一个，例如 **UnLink-Facebook-OAUTH**。 在从集合中删除 Facebook 标识时，此技术配置文件调用声明转换技术配置文件 RemoveAlternativeSecurityIdByIdentityProvider，后者生成一个新的 AlternativeSecurityIds2 声明，该声明包含用户社交标识的列表。
+使用声明转换技术配置文件，可以在任何用户旅程的业务流程步骤中执行声明转换。 在以下示例中，业务流程步骤调用取消链接技术配置文件中的一个，例如 **UnLink-Facebook-OAUTH**。 在从集合中删除 Facebook 标识时，此技术配置文件调用声明转换技术配置文件 RemoveAlternativeSecurityIdByIdentityProvider，后者生成一个新的 AlternativeSecurityIds2 声明，该声明包含用户社交标识的列表********。
 
 ```XML
 <UserJourney Id="AccountUnLink">
@@ -102,13 +102,13 @@ TransformationClaimType="collection" />
 
 ## <a name="metadata"></a>元数据
 
-| Attribute | 必选 | 说明 |
+| 特性 | 必选 | 描述 |
 | --------- | -------- | ----------- |
-| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项设置为 `true`。 |
+| 包括索赔解决索赔处理  | 否 | 对于输入和输出声明，指定[索赔解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true`或`false` （默认值）。 如果要在技术配置文件中使用声明解析器，则将此解决方案设置为`true`。 |
 
 ## <a name="use-a-validation-technical-profile"></a>使用验证技术配置文件
 
-声明转换技术配置文件可以用来验证信息。 在以下示例中，名为 [LocalAccountSignUpWithLogonEmail](self-asserted-technical-profile.md) 的**自断言技术配置文件**要求用户输入电子邮件两次，然后调用名为 [Validate-Email](validation-technical-profile.md) 的**验证技术配置文件**，对电子邮件进行验证。 **Validate-Email** 技术配置文件调用声明转换 **AssertEmailAreEqual** 来比较两个声明（**email** 和 **emailRepeat**）。如果在进行指定的比较后确定这两个声明不相同，则会引发异常。
+声明转换技术配置文件可以用来验证信息。 在以下示例中，名为 **LocalAccountSignUpWithLogonEmail** 的[自断言技术配置文件](self-asserted-technical-profile.md)要求用户输入电子邮件两次，然后调用名为 **Validate-Email** 的[验证技术配置文件](validation-technical-profile.md)，对电子邮件进行验证。 **Validate-Email** 技术配置文件调用声明转换 **AssertEmailAreEqual** 来比较两个声明（**email** 和 **emailRepeat**）。如果在进行指定的比较后确定这两个声明不相同，则会引发异常。
 
 ```XML
 <ClaimsTransformations>

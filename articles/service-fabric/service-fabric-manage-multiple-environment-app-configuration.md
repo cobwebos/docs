@@ -1,15 +1,15 @@
 ---
-title: 管理多个环境的应用
+title: 管理适用于多个环境的应用
 description: Azure Service Fabric 应用程序可以在规模为一台计算机到数千台计算机的群集上运行。 在某些情况下，需要以不同的方式针对各种环境配置应用程序。 本文介绍如何为每个环境定义不同的应用程序参数。
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: 0bca690fd585b288f15cbab21c1c951474390318
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78196973"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>管理多个环境的应用程序
@@ -33,16 +33,16 @@ ms.locfileid: "78196973"
 
 > [!NOTE]
 > 并非应用程序和服务清单文件中的所有属性都支持参数。
-> 在这些情况下，用户必须依赖于将字符串替换为部署工作流的一部分。 在 Azure DevOps 中，可以使用类似于替换令牌： https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens 的扩展，或者在 Jenkins 中通过运行脚本任务来替换值。
+> 在这些情况下，用户必须依赖于将字符串替换为部署工作流的一部分。 在 Azure DevOps 中，可以使用类似于替换令牌：https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens 的扩展，或者在 Jenkins 中通过运行脚本任务来替换值。
 >
 
 ## <a name="specifying-parameters-during-application-creation"></a>在应用程序创建期间指定参数
 
 在 Service Fabric 中创建命名的应用程序实例时，可以选择传入参数。 执行此操作的方式取决于创建应用程序实例的方式。
 
-  - 在 PowerShell 中，[`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 将应用程序参数作为哈希表。
-  - 借助 sfctl，[`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) 命令将参数作为 JSON 字符串。 Install.sh 脚本使用 sfctl。
-  - Visual Studio 在应用程序项目的参数文件夹中提供一组参数文件。 从 Visual Studio 发布时，使用 Azure DevOps Services 或 Azure DevOps Server 时，将使用这些参数文件。 在 Visual Studio 中，参数文件会传递给 Deploy-FabricApplication.ps1 脚本。
+  - 在 PowerShell[`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)中，cmdlet 将应用程序参数视为可哈希。
+  - 使用 sfctl，[`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create)该命令将参数作为 JSON 字符串。 Install.sh 脚本使用 sfctl。
+  - Visual Studio 在应用程序项目的参数文件夹中提供一组参数文件。 使用 Azure DevOps 服务或 Azure DevOps 服务器从 Visual Studio 发布时，使用这些参数文件。 在 Visual Studio 中，参数文件会传递给 Deploy-FabricApplication.ps1 脚本。
 
 ## <a name="next-steps"></a>后续步骤
 以下文章演示如何使用此处所述的某些概念：

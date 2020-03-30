@@ -1,13 +1,13 @@
 ---
 title: 使用可靠集合
-description: 了解有关在 Azure Service Fabric 应用程序中使用可靠集合的最佳实践。
+description: 了解在 Azure 服务结构应用程序中使用可靠集合的最佳做法。
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.openlocfilehash: 4a1f48d9523e5d753c222f0526e210a30e1927e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645967"
 ---
 # <a name="working-with-reliable-collections"></a>使用可靠集合
@@ -132,7 +132,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>定义不可变的数据类型以防止编程器错误
-理想情况下，我们希望编译器能够在意外生成改变对象状态的代码、而此对象又不该改变时报告错误。 但是 C# 编译器做不到这一点。 因此，为了避免潜在的编程器错误，我们强烈建议将可靠集合使用的类型定义为不可变类型。 具体而言，这意味着要坚持使用核心值类型（例如数字 [Int32、UInt64 等]、DateTime、Guid、TimeSpan 等）。 也可以使用 String。 最好是避免集合属性，因为将其序列化和反序列化经常会降低性能。 但是，如果希望使用集合属性，强烈建议使用 .NET 的不可变集合库 ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/))。 此库可从 https://nuget.org 下载。我们还建议尽可能地密封类并使字段成为只读字段。
+理想情况下，我们希望编译器能够在意外生成改变对象状态的代码、而此对象又不该改变时报告错误。 但是 C# 编译器做不到这一点。 因此，为了避免潜在的编程器错误，我们强烈建议将可靠集合使用的类型定义为不可变类型。 具体而言，这意味着要坚持使用核心值类型（例如数字 [Int32、UInt64 等]、DateTime、Guid、TimeSpan 等）。 也可以使用 String。 最好是避免集合属性，因为将其序列化和反序列化经常会降低性能。 但是，如果要使用集合属性，我们强烈建议使用 。NET 的不可变集合库 （[系统.集合.不可改变](https://www.nuget.org/packages/System.Collections.Immutable/)）。 此库可从 下载https://nuget.org。我们还建议尽可能密封类并使字段为只读。
 
 以下 UserInfo 类型演示如何利用上述建议定义不可变类型。
 
@@ -196,9 +196,9 @@ public struct ItemId
 
 > [!WARNING]
 > 尽管可以修改键的架构，但必须确保键哈希代码和相等算法是稳定的。 如果更改其中任一算法的工作方式，再也无法在可靠字典中查询键。
-> .NET 字符串可以用作键，但使用字符串本身作为键--不要将 GetHashCode 的结果用作键。
+> .NET 字符串可以用作键，但请使用字符串本身作为键，不要使用 String.GetHashCode 的结果作为键。
 
-另外，也可以执行通称为两阶段升级的功能。 通过两阶段升级，将服务从 V1 升级到 V2： V2 包含知道如何处理新架构更改的代码，但此代码不会执行。 当 V2 代码读取 V1 数据时，它在其上操作并写入 V1 数据。 然后，在跨所有升级域的升级都完成之后，就可以通知运行中的 V2 实例，升级已完成。 （发出通知的一种方法是推出配置升级; 这就是两阶段升级的方法。）现在，V2 实例可以读取 V1 数据，将其转换为 V2 数据，对其进行操作，并将其写出为 V2 数据。 当其他实例读取 V2 数据时，不需要转换它，只要操作并写出 V2 数据即可。
+另外，也可以执行通称为两阶段升级的功能。 通过两阶段升级，您可以将服务从 V1 升级到 V2：V2 包含知道如何处理新架构更改但此代码未执行的代码。 当 V2 代码读取 V1 数据时，它在其上操作并写入 V1 数据。 然后，在跨所有升级域的升级都完成之后，就可以通知运行中的 V2 实例，升级已完成。 （发出信号的一个方法是推出配置升级;这就是进行两阶段升级的原因。现在，V2 实例可以读取 V1 数据、将其转换为 V2 数据、对它进行操作，并将其写入 V2 数据。 当其他实例读取 V2 数据时，不需要转换它，只要操作并写出 V2 数据即可。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解如何创建向前兼容的数据约定，请参阅[向前兼容的数据协定](https://msdn.microsoft.com/library/ms731083.aspx)

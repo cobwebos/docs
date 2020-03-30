@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 11/03/2019
 ms.author: orspodek
 ms.openlocfilehash: 3cd9d017429b629acad39f5b902e842886c3c818
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78304966"
 ---
 ## <a name="configure-the-data-source"></a>配置数据源
 
-执行以下步骤，将 Azure 数据资源管理器配置为你的仪表板工具的数据源。 我们将在本节中更详细地介绍这些步骤：
+执行以下步骤将 Azure 数据资源管理器配置为仪表板工具的数据源。 我们将在本节中更详细地介绍这些步骤：
 
-1. 创建 Azure Active Directory (Azure AD) 服务主体。 您的仪表板工具使用该服务主体来访问 Azure 数据资源管理器服务。
+1. 创建 Azure Active Directory (Azure AD) 服务主体。 仪表板工具使用服务主体访问 Azure 数据资源管理器服务。
 
-1. 将 Azure AD 服务主体添加到 Azure 数据资源管理器数据库中的“查看者”角色。
+1. 将 Azure AD 服务主体添加到 Azure 数据资源管理器数据库中的“查看者”角色**。
 
-1. 根据 Azure AD 服务主体中的信息指定仪表板工具连接属性，并测试连接。
+1. 根据 Azure AD 服务主体中的信息指定仪表板工具连接属性，然后测试连接。
 
 ### <a name="create-a-service-principal"></a>创建服务主体
 
@@ -29,11 +29,11 @@ ms.locfileid: "78304966"
 
 1. 要创建服务主体，请按照 [Azure 门户文档](/azure/active-directory/develop/howto-create-service-principal-portal)中的说明进行操作。
 
-    1. 在[将应用程序分配给角色](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)部分，将“读取者”的角色类型分配给 Azure 数据资源管理器群集。
+    1. 在[将应用程序分配给角色](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)部分，将“读取者”的角色类型分配给 Azure 数据资源管理器群集****。
 
-    1. 在 "[获取登录的值](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)" 部分中，复制 "步骤：**目录 ID** （租户 id）"、"**应用程序 id**" 和 "**密码**" 中介绍的三个属性值。
+    1. 在["获取登录值](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)"部分中，复制步骤中涵盖的三个属性值：**目录 ID（** 租户 ID）、**应用程序 ID**和**密码**。
 
-1. 在 Azure 门户中，选择“订阅”，然后复制在其中创建服务主体的订阅的 ID。
+1. 在 Azure 门户中，选择“订阅”，然后复制在其中创建服务主体的订阅的 ID****。
 
     ![订阅 ID - 门户](media/data-explorer-configure-data-source/subscription-id-portal.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "78304966"
 
     有关详细信息，请参阅[使用 Azure CLI 创建 Azure 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)。
 
-1. 该命令返回如下结果集。 复制三个属性值：appID、密码和租户。
+1. 该命令返回如下结果集。 复制三个属性值：appID、密码和租户************。
 
 
     ```json
@@ -73,35 +73,35 @@ ms.locfileid: "78304966"
 
 ### <a name="add-the-service-principal-to-the-viewers-role"></a>将服务主体添加到查看者角色
 
-现在已有服务主体，可将其添加到 Azure 数据资源管理器数据库中的“查看者”角色。 可在 Azure 门户中的“权限”下执行此任务，也可以使用管理命令在“查询”下执行此任务。
+现在已有服务主体，可将其添加到 Azure 数据资源管理器数据库中的“查看者”角色**。 可在 Azure 门户中的“权限”下执行此任务，也可以使用管理命令在“查询”下执行此任务********。
 
 #### <a name="azure-portal---permissions"></a>Azure 门户 - 权限
 
 1. 在 Azure 门户中，转到 Azure 数据资源管理器群集。
 
-1. 在“概述”部分中，选择包含 StormEvents 样本数据的数据库。
+1. 在“概述”部分中，选择包含 StormEvents 样本数据的数据库****。
 
     ![选择数据库](media/data-explorer-configure-data-source/select-database.png)
 
-1. 选择“权限”，然后选择“添加”。
+1. 选择“权限”，然后选择“添加”********。
 
     ![数据库权限](media/data-explorer-configure-data-source/database-permissions.png)
 
-1. 在“添加数据库权限”下，选择“查看者”角色，然后选择“选择主体”。
+1. 在“添加数据库权限”下，选择“查看者”角色，然后选择“选择主体”************。
 
     ![添加数据库权限](media/data-explorer-configure-data-source/add-permission.png)
 
-1. 搜索你创建的服务主体。 选择主体，然后单击“选择”。
+1. 搜索已创建的服务主体。 选择主体，然后单击“选择”****。
 
     ![在 Azure 门户中管理权限](media/data-explorer-configure-data-source/new-principals.png)
 
-1. 选择“保存”。
+1. 选择“保存”。****
 
     ![在 Azure 门户中管理权限](media/data-explorer-configure-data-source/save-permission.png)
 
 #### <a name="management-command---query"></a>管理命令 - 查询
 
-1. 在 Azure 门户中，转到 Azure 数据资源管理器群集，然后选择“查询”。
+1. 在 Azure 门户中，转到 Azure 数据资源管理器群集，然后选择“查询”****。
 
     ![查询](media/data-explorer-configure-data-source/query.png)
 

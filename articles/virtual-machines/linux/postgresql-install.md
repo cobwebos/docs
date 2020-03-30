@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
 ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75747803"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>在 Azure 上安装和配置 PostgreSQL
@@ -63,7 +63,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. 如果要生成可以生成的所有内容，包括文档（HTML 和手册页）和其他模块（`contrib`），请改为运行以下命令：
+5. 如果要构建可以构建的所有内容，包括文档（HTML 和人页）和其他模块 （），`contrib`请改为运行以下命令：
    
         # gmake install-world
    
@@ -78,7 +78,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 2. 为数据库创建一个目录：
    
         # mkdir -p /opt/pgsql_data
-3. 创建一个非根用户并修改该用户的配置文件。 然后，切换到该新用户（在我们的示例中称为“postgres”）：
+3. 创建一个非根用户并修改该用户的配置文件。 然后，切换到该新用户（在我们的示例中称为“postgres”**）：
    
         # useradd postgres
    
@@ -135,7 +135,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
     # cp linux /etc/init.d/postgresql
 
-修改 /etc/init.d/postgresql 文件中的两个变量。 前缀设置为 PostgreSQL 的安装路径： **/opt/pgsql**。 PGDATA 设置为 PostgreSQL 的数据存储路径： **/opt/pgsql_data**。
+修改 /etc/init.d/postgresql 文件中的两个变量。 前缀设置为 PostgreSQL 的安装路径：**/opt/pgsql**。 PGDATA 设置为 PostgreSQL 的数据存储路径：**/opt/pgsql_data**。
 
     # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
@@ -155,7 +155,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 
     # netstat -tunlp|grep 1999
 
-应该会看到以下输出：
+您应看到以下输出：
 
 ![image](./media/postgresql-install/no3.png)
 
@@ -230,7 +230,7 @@ PostgreSQL 是一种类似于 Oracle 和 DB2 的高级开放源代码数据库�
 ![image](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>更新表中的数据
-使用以下命令来更新表中的数据。 对于这种情况，Sandy 已确认它们正在参加，因此，我们会将 RSVP 从 "N" 更改为 "Y"：
+使用以下命令来更新表中的数据。 在此示例中，Sandy 已经确认将参加该活动，因此我们将 RSVP 从“N”更改为“Y”：
 
      UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 

@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
 ms.openlocfilehash: 8fcd85a42deab2ea5f7d8587b276eca106f6dd97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67172938"
 ---
-**标准非托管虚拟机磁盘：每个磁盘的限制**
+**标准非托管虚拟机磁盘：每磁盘限制**
 
 | VM 层 | 基本层 VM | 标准层 VM |
 | --- | --- | --- |
-| 磁盘大小 |4,095 GB |4,095 GB |
-| 每个持久性磁盘最大 8 KB IOPS |300 |500 |
+| 磁盘大小 |4，095 GB |4，095 GB |
+| 每个持久磁盘的最大 8 KB IOPS |300 |500 |
 | 执行最大 IOPS 的最大磁盘数 |66 |40 |
 

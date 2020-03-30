@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d0ada9c1e6b45b1be17b15b67f67fc64fc266203
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78197583"
 ---
 # <a name="common-parameters-and-headers"></a>常见参数和标头
@@ -26,7 +26,7 @@ ms.locfileid: "78197583"
 - 将 `{resource-group-name}` 替换为资源组。 有关详细信息，请参阅“使用资源组管理 Azure 资源”。
 - 将 `{vault-name}` 替换为 URI 中 Key Vault 的名称。
 - 将 Content-Type 表头设置为 application/json。
-- 将授权标头设置为从 Azure Active Directory (AAD) 获取的 JSON Web 令牌。 有关详细信息，请参阅[对 Azure 资源管理器请求进行身份验证](authentication-requests-and-responses.md)。
+- 将授权标头设置为从 Azure Active Directory (AAD) 获取的 JSON Web 令牌。 有关详细信息，请参阅身份验证[Azure 资源管理器](authentication-requests-and-responses.md)请求。
 
 ## <a name="common-error-response"></a>常见错误响应
 服务使用 HTTP 状态代码指示成功或失败。 此外，失败还会包含采用以下格式的响应：

@@ -1,13 +1,13 @@
 ---
-title: 滚动 Azure Service Fabric 群集证书
-description: 了解如何滚动使用由证书公用名标识的 Service Fabric 群集证书。
+title: 滚动更新 Azure Service Fabric 群集证书
+description: 了解如何滚动更新由证书公用名称标识的 Service Fabric 群集证书。
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 94cc6841886b1b0eb4271ac0f727a2e3561e0081
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451966"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>手动滚动更新 Service Fabric 群集证书

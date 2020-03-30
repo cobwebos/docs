@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.openlocfilehash: 8c180cfc597c0ade27b1fe8cca5a8751176ea12e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75460128"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Windows 虚拟机从非托管磁盘转换为托管磁盘
@@ -28,7 +28,7 @@ ms.locfileid: "75460128"
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
-* 不会删除在转换之前由 VM 使用的原始 VHD 和存储帐户。 它们会继续产生费用。 若要避免这些项目产生的费用，请在验证转换已完成后删除原始的 VHD Blob。 如果你需要查找这些未附加的磁盘来删除它们，请参阅我们的文章[查找并删除未连接的 Azure 托管和非托管磁盘](find-unattached-disks.md)。
+* 不会删除在转换之前由 VM 使用的原始 VHD 和存储帐户。 它们会继续产生费用。 若要避免这些项目产生的费用，请在验证转换已完成后删除原始的 VHD Blob。 如果需要找到这些未附加的磁盘以删除它们，请参阅我们的文章[查找并删除未附加的 Azure 托管和非托管磁盘](find-unattached-disks.md)。
 
 
 ## <a name="convert-single-instance-vms"></a>转换单实例 VM
@@ -85,7 +85,7 @@ ms.locfileid: "75460128"
    ```
 
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果转换过程中出现错误，或先前转换中的问题导致 VM 处于“失败”状态，请再次运行 `ConvertTo-AzVMManagedDisk` cmdlet。 通常只需简单的重试即可解决这一问题。
 在转换之前，确保所有 VM 扩展都处于“配置成功”状态，否则转换将失败，并出现错误代码 409。
@@ -94,17 +94,17 @@ ms.locfileid: "75460128"
 
 还可以使用 Azure 门户将非托管磁盘转换为托管磁盘。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 Azure[门户](https://portal.azure.com)。
 2. 从门户的 VM 列表中选择 VM。
-3. 在 VM 的边栏选项卡中，从菜单中选择“磁盘”。
-4. 在“磁盘”边栏选项卡的顶部，选择“迁移到托管磁盘”。
-5. 如果 VM 位于可用性集中，则“迁移到托管磁盘”边栏选项卡上会出现“首先需要转换可用性集”的警告。 此警告应该有一个链接，单击该链接即可转换可用性集。 转换可用性集后，或者如果 VM 不在可用性集中，请单击“迁移”以启动将磁盘迁移到托管磁盘的过程。
+3. 在 VM 的边栏选项卡中，从菜单中选择“磁盘”****。
+4. 在“磁盘”**** 边栏选项卡的顶部，选择“迁移到托管磁盘”****。
+5. 如果 VM 位于可用性集中，则“迁移到托管磁盘”**** 边栏选项卡上会出现“首先需要转换可用性集”的警告。 此警告应该有一个链接，单击该链接即可转换可用性集。 转换可用性集后，或者如果 VM 不在可用性集中，请单击“迁移”**** 以启动将磁盘迁移到托管磁盘的过程。
 
 VM 将会停止并在完成迁移后重新启动。
 
 ## <a name="next-steps"></a>后续步骤
 
-[将标准托管磁盘转换为高级托管磁盘](convert-disk-storage.md)
+[将标准托管磁盘转换为高级磁盘](convert-disk-storage.md)
 
 使用[快照](snapshot-copy-managed-disk.md)获取 VM 的只读副本。
 

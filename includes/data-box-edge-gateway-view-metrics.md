@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67173401"
 ---
 还可以查看指标以监视设备的性能，并在某些情况下排除设备故障。
 
 在 Azure 门户中执行以下步骤，为所选择的设备指标创建图表。
 
-1. 在 Azure 门户中的资源处，转到“监视”>“指标”，然后选择“添加指标”   。
+1. 在 Azure 门户中的资源处，转到“监视”>“指标”，然后选择“添加指标”********。
 
     ![添加指标](media/data-box-edge-gateway-view-metrics/view-metrics-1.png)
 
@@ -23,11 +23,11 @@ ms.locfileid: "67173401"
 
     ![当前资源](media/data-box-edge-gateway-view-metrics/view-metrics-2.png)
 
-    若要指定其他资源，请选择该资源。 在“选择资源”边栏选项卡上，选择想查看其指标的订阅、资源组、资源类型和特定的资源，然后选择“应用”   。
+    若要指定其他资源，请选择该资源。 在“选择资源”边栏选项卡上，选择想查看其指标的订阅、资源组、资源类型和特定的资源，然后选择“应用”********。
 
     ![选择其他资源](media/data-box-edge-gateway-view-metrics/view-metrics-3.png)
 
-3. 在下拉列表中选择用于监视设备的指标。 指标可以是“容量指标”或“事务指标”   。 容量指标与设备的容量有关。 事务指标与对 Azure 存储执行的读取和写入操作有关。
+3. 在下拉列表中选择用于监视设备的指标。 指标可以是“容量指标”或“事务指标”********。 容量指标与设备的容量有关。 事务指标与对 Azure 存储执行的读取和写入操作有关。
 
     |容量度量值                     |描述  |
     |-------------------------------------|-------------|
@@ -51,11 +51,11 @@ ms.locfileid: "67173401"
 
     ![查看图表](media/data-box-edge-gateway-view-metrics/view-metrics-4.png)
 
-5. 如果所选指标有多个实例，则可以使用拆分选项。 选择“应用拆分”，然后选择要按其显示明细图表的值  。
+5. 如果所选指标有多个实例，则可以使用拆分选项。 选择“应用拆分”，然后选择要按其显示明细图表的值****。
 
     ![应用拆分](media/data-box-edge-gateway-view-metrics/view-metrics-5.png)
 
-6. 如果现在只想查看少数实例的明细图表，可以对数据进行筛选。 例如，在这种情况下，如果想查看两个连接到设备的网络接口的网络吞吐量，可以筛选这些接口。 选择“添加筛选器”，并指定要筛选的网络接口名称  。
+6. 如果现在只想查看少数实例的明细图表，可以对数据进行筛选。 例如，在这种情况下，如果想查看两个连接到设备的网络接口的网络吞吐量，可以筛选这些接口。 选择“添加筛选器”，并指定要筛选的网络接口名称****。
 
     ![添加筛选器](media/data-box-edge-gateway-view-metrics/view-metrics-6.png)
 

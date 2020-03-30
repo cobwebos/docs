@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 1/24/2020
+ms.date: 3/13/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c6ed72e5c94191411572c6ab67533141e2fe47d6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1248063c1b4c1b1e124ff671797450dd5c1b8727
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185807"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050176"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能 
 
@@ -40,96 +40,118 @@ ms.locfileid: "77185807"
 
 ## <a name="upcoming-changes"></a>即将推出的更改
 
-目前没有计划。  请参阅下面的，了解或即将进入生产环境中的更改。 
+目前没有计划。  请参阅下面的内容，了解已经进入或即将进入生产环境中的变更。 
+
+## <a name="march-2020"></a>2020 年 3 月 
+
+### <a name="user-passwords-will-be-restricted-to-256-characters"></a>用户密码将限制为 256 个字符。
+
+**生效日期**：2020年3月13日
+
+**受影响的终结点**：v1.0 和 v2.0
+
+**协议影响**：所有用户流。 
+
+从 2020 年 3 月 13 日起，密码长度超过 256 个字符登录到 Azure AD 的用户（相对于 ADFS 等联合 IDP）将无法登录，并被要求重置其密码。  管理员可能会收到帮助重置用户密码的请求。 
+
+登录日志中的错误将是 AADSTS 50052：无效密码超过最大值长度
+
+消息：`The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
+
+补救措施：
+
+用户无法登录，因为他们的密码超过允许的最大长度。 他们应该联系他们的管理员重置密码。 如果为其租户启用了 SSPR，则可以按照"忘记密码"链接重置密码。
+
+
 
 ## <a name="february-2020"></a>2020 年 2 月 
 
-### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>空片段将追加到登录终结点的每个 HTTP 重定向。 
+### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>会将空片段追加到来自登录终结点的每个 HTTP 重定向。 
 
 **生效日期**：2020年2月8日
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：使用 response_type = query 的 OAUTH 和 OIDC 流-这涵盖了某些情况下的[授权代码流](v2-oauth2-auth-code-flow.md)和[隐式流](v2-oauth2-implicit-grant-flow.md)。 
+**受影响的协议**：使用response_type_查询的 OAuth 和 OIDC 流 - 这在某些情况下涵盖了[授权代码流](v2-oauth2-auth-code-flow.md)和[隐式流](v2-oauth2-implicit-grant-flow.md)。 
 
-当通过 HTTP 重定向将身份验证响应从 login.microsoftonline.com 发送到应用程序时，该服务会将一个空片段追加到回复 URL。  这可以确保浏览器擦除身份验证请求中的任何现有片段，从而防止出现重定向攻击的类。  任何应用程序都不应依赖于此行为。 
+当身份验证响应通过 HTTP 重定向从 login.microsoftonline.com 发送到应用程序时，服务将附加一个空片段到答复 URL。  这可以确保浏览器擦除身份验证请求中的任何现有片段，防止出现重定向攻击类。  任何应用都不应依赖于此行为。 
 
 
 ## <a name="august-2019"></a>2019 年 8 月
 
-### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>将强制执行 POST 窗体语义，将忽略更严格的空格和引号
+### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>POST 表单语义会更严格地实施 - 空格和引号会被忽略
 
 **生效日期**：2019年9月2日
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：使用任何地方 POST （[客户端凭据](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)、[授权代码兑换](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)、 [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)、 [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)和[刷新令牌兑换](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)）
+**协议影响**：使用 POST 的任何地方（[客户端凭据](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)、[授权代码兑换](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)[、ROPC、OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)和[刷新令牌兑换](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)） [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)
 
-从9/2 开始，使用 POST 方法的身份验证请求将使用更严格的 HTTP 标准进行验证。  具体而言，将不再从请求窗体值中删除空格和双引号（""）。 这些更改不会中断任何现有的客户端，并且将确保发送到 Azure AD 的请求可以每次可靠地处理。 将来（请参阅上文）我们计划再次拒绝重复参数，并忽略请求中的 BOM。 
+从 9 月 2 日那一周开始，使用 POST 方法的身份验证请求会按更严格的 HTTP 标准进行验证。  具体说来，空格和双引号 (“) 将不再从请求表单值中删除。 这些更改不应造成任何现有客户端出现中断，将确保发送到 Azure AD 的请求每次都能够得到可靠的处理。 在将来（见上），我们计划还要拒绝重复参数并忽略请求中的 BOM。 
 
 示例：
 
-目前，`?e=    "f"&g=h` 的分析方式与 `?e=f&g=h` 相同-因此 `e` == `f`。  进行这种更改后，现在将对其进行分析，以便 `e` == `    "f"`-这不太可能是有效的参数，请求现在会失败。 
+目前，`?e=    "f"&g=h` 的分析与 `?e=f&g=h` 相同，因此 `e` == `f`。  进行此更改后，它现在可以进行分析，使得 `e` == `    "f"` - 这不可能成为一个有效的参数，请求会失败。 
 
 
 ## <a name="july-2019"></a>2019 年 7 月
 
-### <a name="app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant"></a>仅当资源租户中存在客户端应用时，才会发出单租户应用程序的仅限应用的令牌
+### <a name="app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant"></a>仅当客户端应用在资源租户中存在时，才为单租户应用程序颁发仅限应用的令牌
 
 **生效日期**：2019年7月26日
 
-**受影响的终结点**： [1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)版和 v2.0[版](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+**受影响的终结点**： [v1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)和[v2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
 
-**受影响的协议**：[客户端凭据（仅限应用的令牌）](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+**协议受影响的**：[客户端凭据（仅限应用令牌）](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 
-安全更改在7月26日生效，更改了应用程序令牌（通过客户端凭据授予）的颁发方式。 以前，允许应用程序获取令牌，以调用任何其他应用，无论该应用程序的租户或角色是否存在。  此行为已更新，使得资源（有时称为 Web Api）设置为单租户（默认值）时，客户端应用程序必须存在于资源租户中。  请注意，客户端与 API 之间的现有同意仍不是必需的，应用程序仍应执行其自己的授权检查，以确保 `roles` 声明存在并且包含 API 的预期值。
+一项安全更改已在 7 月 26 日上线，它会更改颁发仅限应用的令牌的方式（通过客户端凭据授予）。 以前，允许应用程序获取令牌来调用任何其他应用，无论该应用程序是否在租户中存在或者是否向其许可了角色。  此行为现已更新，对于设置为单租户（默认值）的资源（有时称为 Web API），客户端应用程序必须在资源租户中存在。  请注意，仍不需要客户端与 API 之间的现有许可，应用应该仍会执行其自身的授权检查，以确保 `roles` 声明存在并且包含 API 所需的值。
 
-此方案的错误消息当前指出： 
+此方案的错误消息目前会指出： 
 
 `The service principal named <appName> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.`
 
-若要解决此问题，请使用管理员同意体验在租户中创建客户端应用程序服务主体，或手动创建。  此要求确保租户已提供应用程序在租户内操作的权限。  
+若要解决此问题，请使用管理员许可体验在租户中创建客户端应用程序服务主体，或手动创建该服务主体。  此项要求可确保租户授予应用程序在租户中操作的权限。  
 
 #### <a name="example-request"></a>示例请求
 
-`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...` 在此示例中，资源租户（颁发机构）为 contoso.com，则资源应用是一个名为 `gateway.contoso.com/api` 用于 Contoso 租户的单租户应用，并且 `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`客户端应用。  如果客户端应用在 Contoso.com 中有服务主体，此请求可以继续。  但如果不是这样，则请求将失败，并出现上面的错误。  
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...` 在此示例中，资源租户（颁发机构）是 contoso.com，资源应用是 Contoso 租户的某个单租户应用（名为 `gateway.contoso.com/api`），客户端应用是 `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`。  如果客户端应用在 Contoso.com 中有服务主体，则此请求可以继续。  不过，如果没有服务主体，则请求将会失败并出现上面所示的错误。  
 
-但是，如果 Contoso 网关应用是多租户应用程序，则无论客户端应用在 Contoso.com 中有服务主体，请求都将继续。  
+但是，如果 Contoso 网关应用是多租户应用程序，则无论客户端应用是否在 Contoso.com 中有服务主体，请求都会继续。  
 
-### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>重定向 Uri 现在可以包含查询字符串参数
+### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>重定向 URI 现在可以包含查询字符串参数
 
 **生效日期**：2019年7月22日
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：所有流
+**协议影响**：所有流
 
-按照[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)，Azure AD 应用程序现在可以注册并使用具有静态查询参数的重定向（回复） uri （例如，OAuth 2.0 请求 https://contoso.com/oauth2?idp=microsoft)。  动态重定向 Uri 仍处于禁用状态，因为它们表示安全风险，这不能用于在身份验证请求中保留状态信息-对于这种情况，请使用 `state` 参数。
+根据[RFC 6749，Azure](https://tools.ietf.org/html/rfc6749#section-3.1.2)AD 应用程序现在可以注册和使用具有静态查询参数（如`https://contoso.com/oauth2?idp=microsoft`） 的重定向（回复）URI的 OAuth 2.0 请求。  动态重定向 URI 仍旧受禁用，因为它们表示存在安全风险，不可将其用于保留身份验证请求的状态信息 - 为此，请使用 `state` 参数。
 
-与重定向 URI 的任何其他部分一样，静态查询参数会服从重定向 uri 的字符串匹配-如果没有注册与 URI 解码 redirect_uri 匹配的字符串，则会拒绝该请求。  如果在应用程序注册中找到了 URI，则将使用整个字符串来重定向用户，包括静态查询参数。 
+与重定向 URI 的任何其他部分一样，静态查询参数需要接受重定向 URI 的字符串匹配 - 如果未注册与 URI 解码的 redirect_uri 匹配的字符串，则会拒绝请求。  如果在应用注册中找到了 URI，则会使用整个字符串（包括静态查询参数）来重定向用户。 
 
-请注意，在此时间（2019年7月结束），应用注册 UX Azure 门户仍会阻止查询参数。  不过，您可以手动编辑应用程序清单，以添加查询参数并在应用程序中对其进行测试。  
+请注意，目前（2019 年 7 月底），Azure 门户中的应用注册 UX 仍会阻止查询参数。  不过，你可以手动编辑应用程序清单，以添加查询参数并在应用中对其进行测试。  
 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-### <a name="looping-clients-will-be-interrupted"></a>循环客户端将中断
+### <a name="looping-clients-will-be-interrupted"></a>循环客户端将会中断
 
 **生效日期**：2019年3月25日
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：所有流
+**协议影响**：所有流
 
-通常，客户端应用程序可以错误行为，在短时间内发出数百个相同的登录请求。  这些请求可能会也可能不会成功，但它们都影响到 IDP 的用户体验和提升的工作负荷，增加了所有用户的延迟，降低了 IDP 的可用性。  这些应用程序在正常使用范围外运行，应更新为正确的行为。  
+客户端应用程序有时可能会出现行为异常，在短时间内发出数百个相同的登录请求。  这些请求不一定会成功，但会导致用户体验变得糟糕，增大 IDP 的工作负荷，增大所有用户的延迟，并降低 IDP 的可用性。  这些应用程序的工作范围超过了正常的使用边界，应予以更新才能让其保持正常的行为。  
 
-多次发出重复请求的客户端将收到 `invalid_grant` 错误： `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`。 
+将为多次发出重复请求的客户端设置 `invalid_grant` 错误：`AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`。 
 
-大多数客户端无需更改行为即可避免此错误。  只有配置错误的客户端（未使用令牌缓存的客户端或那些状态提示循环）会受到此错误的影响。  客户端在本地（通过 cookie）按实例跟踪，原因如下：
+大多数客户端无需改变行为即可避免此错误。  此错误只会影响配置不当的客户端（没有令牌缓存的客户端，或已经出现提示循环的客户端）。  根据以下因素，在本地按实例跟踪客户端（通过 Cookie）：
 
 * 用户提示（如果有）
 
-* 请求的作用域或资源
+* 请求的范围或资源
 
 * 客户端 ID
 
@@ -137,9 +159,9 @@ ms.locfileid: "77185807"
 
 * 响应类型和模式
 
-在较短的一段时间（5分钟）内发出多个请求（15 +）的应用程序将收到一个 `invalid_grant` 错误，该错误说明它们是循环的。  请求的令牌具有足够长的生存期（默认为10分钟60，默认为10分钟），因此在此时间段内重复的请求是不必要的。  
+在短时间（5 分钟）内发出多个请求（15 个以上）的应用将会收到 `invalid_grant` 错误，指出它们正在循环。  所请求的令牌具有足够长的生存期（最短 10 分钟，默认为 60 分钟），因此，在此时间段内发出的重复请求都是没有必要的。  
 
-所有应用都应该通过显示交互式提示符来处理 `invalid_grant`，而不是以无提示方式请求令牌。  若要避免此错误，客户端应确保它们正确地缓存接收到的令牌。
+所有应用应该通过显示交互式提示来处理 `invalid_grant`，而不是以静默方式请求令牌。  若要避免此错误，客户端应确保正确缓存它们收到的令牌。
 
 
 ## <a name="october-2018"></a>2018 年 10 月
@@ -166,7 +188,7 @@ ms.locfileid: "77185807"
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：隐式流和代理[流](v2-oauth2-on-behalf-of-flow.md)
+**受影响的协议**：隐式流和[代表流](v2-oauth2-on-behalf-of-flow.md)
 
 在 2018 年 5 月 1 日之后，id_token 不能用作新应用程序的 OBO 流中的断言。 应改为使用访问令牌来保护 API，即使在同一应用程序的客户端和中间层之间也是如此。 在 2018 年 5 月 1 日之前注册的应用将继续有效，并能够使用 id_tokens 交换访问令牌；但是，此模式并不是最佳做法。
 

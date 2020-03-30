@@ -1,7 +1,7 @@
 ---
 title: 自定义策略的 JSON 声明转换示例
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C 的标识体验框架（IEF）架构的 JSON 声明转换示例。
+description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的 JSON 声明转换示例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,29 +12,29 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187587"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文提供了有关在 Azure Active Directory B2C （Azure AD B2C）中使用标识体验框架架构的 JSON 声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
+本文提供了在 Azure Active Directory B2C (Azure AD B2C) 中使用标识体验框架架构的 JSON 声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="generatejson"></a>GenerateJson
 
-使用声明值或常量生成 JSON 字符串。 后随点表示法的路径字符串用于指示将数据插入 JSON 字符串的位置。 按点拆分后，任何整数被解释为 JSON 数组的索引，而非整数被解释为 JSON 对象的索引。
+使用声明值或常量生成 JSON 字符串。 点表示法后面的路径字符串用于指示将数据插入 JSON 字符串的位置。 按点拆分后，任何整数都解释为 JSON 数组的索引，而非整数则解释为 JSON 对象的索引。
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | 后随点表示法的任何字符串 | 字符串 | JSON 的 JsonPath，声明值将插入到其中。 |
-| InputParameter | 后随点表示法的任何字符串 | 字符串 | 要将常量字符串值插入到其中的 JSON 的 JsonPath。 |
+| InputClaim | 点表示法后面的任何字符串 | 字符串 | JSON 的 JsonPath，声明值将插入到其中。 |
+| InputParameter | 点表示法后面的任何字符串 | 字符串 | JSON 的 JsonPath，常量字符串值将插入到其中。 |
 | OutputClaim | outputClaim | 字符串 | 生成的 JSON 字符串。 |
 
-下面的示例基于 "email" 和 "otp" 的声明值以及常量字符串生成 JSON 字符串。
+以下示例基于“email”和“otp”的声明值以及常量字符串生成 JSON 字符串。
 
 ```XML
 <ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
@@ -55,17 +55,17 @@ ms.locfileid: "78187587"
 
 ### <a name="example"></a>示例
 
-下面的声明转换输出将作为发送到 SendGrid （第三方电子邮件提供程序）的请求正文的 JSON 字符串声明。 JSON 对象的结构由 InputClaims 的输入参数和 TransformationClaimTypes 的点表示法中的 Id 定义。 点表示法中的数字表示数组。 值来自 "InputClaims" 值和 "输入参数" "值" 属性。
+以下声明转换输出一个 JSON 字符串声明，该声明将作为发送到 SendGrid （第三方电子邮件提供程序）的请求正文。 JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimTypes 的点表示法中的 ID 定义。 点表示法中的数字表示数组。 值来自 InputClaims 的值和 InputParameters 的“Value”属性。
 
 - 输入声明：
-  - **电子邮件**，转换声明类型**个性化. 0. 发. 0. email**： "someone@example.com"
-  - **otp**，转换声明类型**个性化. 0. dynamic_template_data** "346349"
+  - **email**,  转换声明类型  **personalizations.0.to.0.email**: "someone@example.com"
+  - **otp**, 转换声明类型 **personalizations.0.dynamic_template_data.otp** "346349"
 - 输入参数：
-  - **template_id**： "4c56ffb40fa648b1aa6822283df94f60"
-  - **自. email**： "service@contoso.com"
-  - **个性化。 0. 使用者**"Contoso 帐户电子邮件验证码"
+  - **template_id**: "d-4c56ffb40fa648b1aa6822283df94f60"
+  - **从.email**："service@contoso.com"
+  - **personalizations.0.subject** "Contoso 帐户电子邮件验证码"
 - 输出声明：
-  - **requestBody**： JSON 值
+  - **请求正文**： JSON 值
 
 ```JSON
 {
@@ -98,7 +98,7 @@ ms.locfileid: "78187587"
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | 字符串 | 由声明转换用于获取项的 ClaimTypes。 |
 | InputParameter | claimToExtract | 字符串 | 要提取的 JSON 元素的名称。 |
-| OutputClaim | extractedClaim | 字符串 | 调用此声明转换后生成的 ClaimType，即 claimToExtract 输入参数中指定的元素值。 |
+| OutputClaim | extractedClaim | 字符串 | 调用此声明转换后生成的 ClaimType，即 claimToExtract__ 输入参数中指定的元素值。 |
 
 在以下示例中，声明转换提取 JSON 数据中的 `emailAddress` 元素：`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
@@ -121,9 +121,9 @@ ms.locfileid: "78187587"
 - 输入声明：
   - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Someone"}
 - 输入参数：
-    - claimToExtract: emailAddress
+    - **** claimToExtract: emailAddress
 - 输出声明：
-  - extractedClaim: someone@example.com
+  - **提取索赔**：someone@example.com
 
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
@@ -137,7 +137,7 @@ ms.locfileid: "78187587"
 | InputParameter | includeEmptyClaims | 字符串 | 指定是否包含空声明。 |
 | InputParameter | jsonSourceKeyName | 字符串 | 元素键名称 |
 | InputParameter | jsonSourceValueName | 字符串 | 元素值名称 |
-| OutputClaim | 集合 | 字符串、int、布尔值，和日期时间 |要提取的声明列表。 声明名称应等于 jsonSourceClaim 输入声明中指定的名称。 |
+| OutputClaim | 集合 | 字符串、int、布尔值，和日期时间 |要提取的声明列表。 声明名称应等于 jsonSourceClaim__ 输入声明中指定的名称。 |
 
 在以下示例中，声明转换从 JSON 数据中提取以下声明：email（字符串）、displayName（字符串）、membershipNum (int)、active（布尔值）和 birthdate（日期时间）。
 
@@ -167,18 +167,18 @@ ms.locfileid: "78187587"
 ```
 
 - 输入声明：
-  - jsonSourceClaim: [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value": true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
+  - **** jsonSourceClaim: [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value": true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
 - 输入参数：
-    - errorOnMissingClaims: false
-    - includeEmptyClaims: false
-    - jsonSourceKeyName: key
-    - jsonSourceValueName: value
+    - **** errorOnMissingClaims: false
+    - **** includeEmptyClaims: false
+    - **** jsonSourceKeyName: key
+    - **** jsonSourceValueName: value
 - 输出声明：
-  - email: "someone@example.com"
-  - displayName: "Someone"
-  - membershipNum: 6353399
-  - active: true
-  - birthdate: 1980-09-23T00:00:00Z
+  - **电子邮件**："someone@example.com"
+  - **** displayName: "Someone"
+  - **** membershipNum: 6353399
+  - **** active: true
+  - **** birthdate: 1980-09-23T00:00:00Z
 
 ## <a name="getnumericclaimfromjson"></a>GetNumericClaimFromJson
 
@@ -188,7 +188,7 @@ ms.locfileid: "78187587"
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | 字符串 | 由声明转换用于获取声明的 ClaimTypes。 |
 | InputParameter | claimToExtract | 字符串 | 要提取的 JSON 元素的名称。 |
-| OutputClaim | extractedClaim | long | 调用此 ClaimsTransformation 后生成的 ClaimType，即 claimToExtract 输入参数中指定的元素值。 |
+| OutputClaim | extractedClaim | long | 调用此 ClaimsTransformation 后生成的 ClaimType，即 claimToExtract__ 输入参数中指定的元素值。 |
 
 在以下示例中，声明转换提取 JSON 数据中的 `id` 元素。
 
@@ -217,11 +217,11 @@ ms.locfileid: "78187587"
 ### <a name="example"></a>示例
 
 - 输入声明：
-  - inputJson: {"emailAddress": "someone@example.com", "displayName": "Someone", "id" : 6353399}
+  - **** inputJson: {"emailAddress": "someone@example.com", "displayName": "Someone", "id" : 6353399}
 - 输入参数
-    - claimToExtract:  id
+    - **** claimToExtract:  id
 - 输出声明：
-    - extractedClaim: 6353399
+    - **** extractedClaim: 6353399
 
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
@@ -248,9 +248,9 @@ ms.locfileid: "78187587"
 ### <a name="example"></a>示例
 
 - 输入声明：
-  - inputJsonClaim: ["someone@example.com", "Someone", 6353399]
+  - **输入JonClaim：**["，"someone@example.com某人"，6353399]
 - 输出声明：
-  - extractedClaim: someone@example.com
+  - **提取索赔**：someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
 

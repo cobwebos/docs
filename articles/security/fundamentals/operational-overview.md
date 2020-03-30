@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
 ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443885"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
@@ -30,13 +30,13 @@ ms.locfileid: "75443885"
 
 IT 运营团队负责管理数据中心基础结构、应用程序和数据，包括这些系统的稳定性和安全性。 但是，若要获得日益增多的复杂 IT 环境的安全洞察信息，通常需要组织从多个安全性和管理系统收集数据。
 
-[Microsoft Azure 监视器日志](/azure/operations-management-suite/operations-management-suite-overview)是一种基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 其核心功能由在 Azure 中运行的以下服务提供。 Azure 包含多个服务，这些服务可帮助你管理和保护本地和云基础结构。 每项服务都提供特定的管理功能。 可合并服务，实现不同的管理方案。 
+[Microsoft Azure 监视器日志](/azure/operations-management-suite/operations-management-suite-overview)是一种基于云的 IT 管理解决方案，可帮助您管理和保护本地和云基础结构。 其核心功能由在 Azure 中运行的以下服务提供。 Azure 包含多个服务，这些服务可帮助你管理和保护本地和云基础结构。 每项服务都提供特定的管理功能。 可合并服务，实现不同的管理方案。 
 
-### <a name="azure-monitor"></a>Azure 监视器
+### <a name="azure-monitor"></a>Azure Monitor
 
 [Azure Monitor](/azure/azure-monitor/overview) 可将来自托管源的数据收集到中央数据存储中。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集数据后，可分析、导出数据或发出警报。
 
-可整合来自各种源的数据，并将 Azure 服务中的数据合并到现有的本地环境。 Azure Monitor 日志还清楚地将数据收集与对数据执行的操作进行分隔，以便所有操作都可用于所有类型的数据。
+可整合来自各种源的数据，并将 Azure 服务中的数据合并到现有的本地环境。 Azure 监视器日志还清楚地将数据收集与对该数据执行的操作分开，以便所有操作都可用于所有类型的数据。
 
 ### <a name="automation"></a>自动化
 
@@ -50,7 +50,7 @@ Azure 备份提供多个组件，可将其下载并部署到适当计算机、�
 
 有关详细信息，请参阅 [Azure 备份组件表](/azure/backup/backup-overview#what-can-i-back-up)。
 
-### <a name="site-recovery"></a>Azure Site Recovery
+### <a name="site-recovery"></a>Site Recovery
 
 [Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) 通过协调本地虚拟机和物理机到 Azure 或辅助站点的复制来提供业务连续性。 如果主站点不可用，可故障转移到辅助位置，使用户能够继续工作。 系统恢复正常后可故障回复。 使用 Azure 安全中心执行更智能和更有效的威胁检测。
 
@@ -94,9 +94,9 @@ Azure AD 中还包括了整套[标识管理功能](/azure/security/security-iden
 >[!Note]
 >若要深入了解安全中心中的角色和允许的操作，请参阅 [Azure 安全中心中的权限](/azure/security-center/security-center-permissions)。
 
-安全中心使用 Microsoft Monitoring Agent。 此代理与 Azure Monitor 服务使用的相同。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](/azure/log-analytics/log-analytics-manage-access)或新工作区中，具体取决于 VM 的地理位置。
+安全中心使用 Microsoft Monitoring Agent。 这与 Azure 监视器服务使用的代理相同。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](/azure/log-analytics/log-analytics-manage-access)或新工作区中，具体取决于 VM 的地理位置。
 
-## <a name="azure-monitor"></a>Azure 监视器
+## <a name="azure-monitor"></a>Azure Monitor
 
 云应用中的性能问题可能会影响业务。 使用多个互连的组件和频繁发布版本时，性能随时可能会下降。 开发一款应用后，用户通常会发现其中的问题，而你在测试时却找不到这样的问题。 应该立即发现这些问题，并使用工具来诊断和解决问题。
 
@@ -118,7 +118,7 @@ Windows 事件系统日志是一种 VM 诊断日志类别。 Blob、表和队列
 
 诊断日志与[活动日志](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)不同。 活动日志提供针对订阅中的资源执行的操作的深入信息。 诊断日志提供资源本身执行的操作的深入信息。
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 
 Azure Monitor 可提供遥测数据，以便用户了解 Azure 上工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的[指标](/azure/monitoring-and-diagnostics/monitoring-overview-metrics)（也称为性能计数器）。 Azure 监视器提供多种方式来配置和使用这些指标，以便进行监视与故障排除。
 
@@ -169,7 +169,7 @@ Azure 诊断可在部署的应用程序上启用诊断数据收集功能。 可�
 - Azure 资源管理器模板
 - 资源组
 
-## <a name="devops"></a>开发运营
+## <a name="devops"></a>DevOps
 
 在采用[ Developer Operations (DevOps)](https://www.visualstudio.com/learn/what-is-devops/) 应用程序开发前，团队需要负责收集软件程序的业务要求和编写代码。 然后由一个单独的 QA 团队在独立的开发环境中测试该程序。 如果满足要求，则 QA 团队发布要部署的操作代码。 部署团队进一步划分为小组，例如网络小组和数据库小组。 每次将软件程序投放到独立的团队时，就会增加一些瓶颈。
 
@@ -191,6 +191,6 @@ Microsoft Azure 等云平台消除了传统的瓶颈，帮助将基础结构商�
 
 若要了解有关安全和审核解决方案的信息，请参阅以下文章：
 
-- [安全性和符合性](https://azure.microsoft.com/overview/trusted-cloud/)
+- [安全性和合规性](https://azure.microsoft.com/overview/trusted-cloud/)
 - [Azure 安全中心](/azure/security-center/security-center-intro)
 - [Azure Monitor](/azure/azure-monitor/overview)
