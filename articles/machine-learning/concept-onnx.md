@@ -1,7 +1,7 @@
 ---
 title: ONNX：高性能、跨平台推理
 titleSuffix: Azure Machine Learning
-description: 了解如何使用开放式神经网络交换（ONNX）来帮助优化机器学习模型的推理。
+description: 了解如何使用 Open Neural Network Exchange (ONNX) 来帮助优化机器学习模型的推理。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,43 +12,43 @@ author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 98aebb4733c2aa2a6d0b0217f1f437bcea1992e9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79270168"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure 机器学习：创建并加速 ML 模型
 
-了解如何使用[开放式神经网络交换](https://onnx.ai)（ONNX）来帮助优化机器学习模型的推理。 推理或模型计分是部署模型用于预测的阶段，最常见的是生产数据。 
+了解使用[开放神经网络交换](https://onnx.ai)（ONNX） 如何帮助优化机器学习模型的推理。 推理或模型评分是将部署的模型用于预测（通常针对生产数据）的阶段。 
 
-优化用于推理（或模型评分）的机器学习模型非常困难，因为您需要优化模型和推理库，以充分利用硬件功能。 如果要在不同类型的平台（云/边缘、CPU/GPU 等）上获得最佳性能，则问题会变得非常困难，因为每个平台都有不同的功能和特性。 如果模型来自需要在各种平台上运行的各种框架，则复杂性会提高。 优化框架和硬件的所有不同组合非常耗时。 一种解决方案是在首选框架中训练一次，并在云或边缘上的任意位置运行。 这就是 ONNX 的位置。
+优化用于推理（或模型评分）的机器学习模型非常困难，因为需要调整模型和推理库，充分利用硬件功能。 如果想要在不同类型的平台（云/Edge、CPU/GPU 等）上获得最佳性能，实现起来会异常困难，因为每个平台都有不同的功能和特性。 如果模型来自需要在各种平台上运行的多种框架，会极大增加复杂性。 优化框架和硬件的所有不同组合非常耗时。 这就需要一种解决方案，在首选框架中训练一次后能在云或 Edge 上的任意位置运行。 此时 ONNX 便派上了用场。
 
-Microsoft 和合作伙伴社区创建 ONNX 作为表示机器学习模型的开放标准。 [许多框架](https://onnx.ai/supported-tools)（包括 TensorFlow、PyTorch、Scikit-learn、Keras、Chainer、MXNET 和 MATLAB）中的模型都可以导出或转换为标准 ONNX 格式。 在模型采用 ONNX 格式后，即可在各种平台和设备上运行。
+Microsoft 和合作伙伴社区创建了 ONNX 作为表示机器学习模型的开放标准。 [许多框架](https://onnx.ai/supported-tools)（包括 TensorFlow、PyTorch、SciKit-Learn、Keras、Chainer、MXNet 和 MATLAB）中的模型都可以导出或转换为标准 ONNX 格式。 模型采用 ONNX 格式后，可在各种平台和设备上运行。
 
-[ONNX 运行时](https://github.com/Microsoft/onnxruntime)是用于将 ONNX 模型部署到生产环境的高性能推理引擎。 它针对云和边缘进行了优化，适用于 Linux、Windows 和 Mac。 编写C++，它还具有 C、Python 和C# api。 ONNX 运行时为所有 ONNX 规范提供支持，并与不同硬件（如 TensorRT 上的 NVidia Gpu）上的加速器集成。
+[ONNX 运行时](https://github.com/Microsoft/onnxruntime)是一种用于将 ONNX 模型部署到生产环境的高性能推理引擎。 它针对云和 Edge 进行了优化，适用于 Linux、Windows 和 Mac。 它以 C++ 编写，还具有 C、Python 和 C# API。 ONNX 运行时为所有 ONNX 机器学习规范提供支持，并与不同硬件（如 NVidia GPU 上的 TensorRT）上的加速器集成。
 
-ONNX 运行时用于高规模 Microsoft 服务，如必应、Office 和认知服务。 性能提升取决于许多因素，但这些 Microsoft 服务已看到__CPU 平均性能__大幅提高。 ONNX 运行时也用作数百个设备上 Windows ML 的一部分。 可以在 Azure 机器学习中使用运行时。 通过使用 ONNX 运行时，您可以从广泛的生产级优化、测试和不断改进中受益。
+ONNX 运行时用于大规模 Microsoft 服务，如必应、Office 和认知服务。 性能提升取决于许多因素，但这些 Microsoft 服务的 CPU 性能平均提高了 2 倍____。 ONNX 运行时同时作为 Windows 机器学习的一部分应用于数亿台设备。 可以将运行时与 Azure 机器学习配合使用。 通过使用 ONNX 运行时，可以从大量的生产级优化、测试和不断改进中受益。
 
-[显示培训、转换器和部署的 ![ONNX 流程图](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
+[![ONNX 流程图，显示培训、转换器和部署](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>获取 ONNX 模型
 
 可通过以下几种方式获取 ONNX 模型：
-+ 在 Azure 机器学习中训练新的 ONNX 模型（请参阅本文底部的示例）
-+ 将其他格式的现有模型转换为 ONNX （请参阅[教程](https://github.com/onnx/tutorials)） 
-+ 从[ONNX 模型 Zoo](https://github.com/onnx/models)获取预先训练的 ONNX 模型（请参阅本文底部的示例）
++ 在 Azure 机器学习中将新的 ONNX 模型定型（请参阅本文底部的示例）
++ 将现有模型从其他格式转换为 ONNX（请参阅 [教程](https://github.com/onnx/tutorials)） 
++ 从 [ONNX 模型 Zoo](https://github.com/onnx/models) 获取预先定型的 ONNX 模型（请参阅本文底部的示例）
 + 从 [Azure 自定义影像服务](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/)生成自定义 ONNX 模型 
 
-许多模型（包括图像分类、对象检测和文本处理）都可以表示为 ONNX 模型。 但某些模型可能无法成功转换。 如果遇到这种情况，请在使用的相应转换器的 GitHub 中指出问题。 您可以继续使用现有的格式模型，直到问题得到解决。
+许多模型（包括图像分类、对象检测和文本处理）都可以表示为 ONNX 模型。 但某些模型可能无法成功转换。 如果遇到这种情况，请在 GitHub 中提交有关使用的相应转换器的问题。 可以继续使用现有的格式模型，直到问题得到解决。
 
 ## <a name="deploy-onnx-models-in-azure"></a>在 Azure 中部署 ONNX 模型
 
-利用 Azure 机器学习，你可以部署、管理和监视 ONNX 模型。 使用标准[部署工作流](concept-model-management-and-deployment.md)和 ONNX 运行时，可以创建在云中托管的 REST 终结点。 请参阅本文末尾的 Jupyter 笔记本示例，亲自尝试一下。 
+使用 Azure 机器学习，可以部署、管理和监视 ONNX 模型。 使用标准[部署工作流](concept-model-management-and-deployment.md)和 ONNX 运行时，可以创建在云中托管的 REST 终结点。 请参阅本文末尾的 Jupyter 笔记本示例，亲自试用。 
 
-### <a name="install-and-use-onnx-runtime-with-python"></a>使用 Python 安装和使用 ONNX 运行时
+### <a name="install-and-use-onnx-runtime-with-python"></a>安装 ONNX 运行时并与 Python 配合使用
 
-[PyPi.org](https://pypi.org) （[CPU](https://pypi.org/project/onnxruntime)、 [GPU](https://pypi.org/project/onnxruntime-gpu)）上提供了适用于 ONNX 运行时的 Python 包。 请先阅读[系统要求](https://github.com/Microsoft/onnxruntime#system-requirements)，然后再安装。 
+ONNX 运行时的Python 包可用于 [PyPi.org](https://pypi.org)（[CPU](https://pypi.org/project/onnxruntime) 和 [GPU](https://pypi.org/project/onnxruntime-gpu)）。 安装之前，请阅读[系统要求](https://github.com/Microsoft/onnxruntime#system-requirements)。 
 
  若要安装适用于 Python 的 ONNX 运行时，请使用以下命令之一： 
 ```python   

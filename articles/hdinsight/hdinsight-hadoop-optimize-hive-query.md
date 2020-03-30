@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272326"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Apache Hive 查询
 
 在 Azure HDInsight 中，有多种群集类型和技术可以运行 Apache Hive 查询。 创建 HDInsight 群集时，选择适当的群集类型有助于根据工作负荷的需求优化性能。
 
-例如，选择 "**交互式查询**群集类型" 以优化即席的交互式查询。 选择 Apache **Hadoop** 群集类型可以优化用作批处理的 Hive 查询。 **Spark** 和 **HBase** 群集类型也可以运行 Hive 查询。 有关针对不同 HDInsight 群集类型运行 Hive 查询的详细信息，请参阅[ Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？](hadoop/hdinsight-use-hive.md)。
+例如，选择“交互式查询”**** 群集类型可以优化即席的交互式查询。 选择 Apache **Hadoop** 群集类型可以优化用作批处理的 Hive 查询。 **Spark** 和 **HBase** 群集类型也可以运行 Hive 查询。 有关针对不同 HDInsight 群集类型运行 Hive 查询的详细信息，请参阅[ Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？](hadoop/hdinsight-use-hive.md)。
 
 默认情况下，Hadoop 群集类型的 HDInsight 群集未针对性能进行优化。 本文介绍可应用于查询的一些最常见 Hive 性能优化方法。
 
@@ -41,12 +41,12 @@ ms.locfileid: "79272326"
 
 [Apache Tez](https://tez.apache.org/) 是 MapReduce 引擎的替代执行引擎。 基于 Linux 的 HDInsight 群集在默认情况下会启用 Tez。
 
-![HDInsight Apache Tez 概述关系图](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
+![HDInsight 阿帕奇 Tez 概述图](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
 
 Tez 速度更快，因为：
 
-* **作为 MapReduce 引擎中的单个作业执行有向无环图 (DAG)** 。 DAG 要求每组映射器后接一组化简器。 这会导致针对每个 Hive 查询运行多个 MapReduce 作业。 Tez 没有此类限制，可将复杂 DAG 作为一个作业处理，从而最大程度地减少了作业启动开销。
-* **避免不必要的写入**。 多个作业用于处理 MapReduce 引擎中的同一 Hive 查询。 每个 MapReduce 作业的输出将作为中间数据写入 HDFS。 由于 Tez 会将每个 Hive 查询的作业数降到最低，因此可以避免不必要的写入。
+* **作为 MapReduce 引擎中的单个作业执行有向无环图 (DAG)**。 DAG 要求每组映射器后接一组化简器。 这会导致针对每个 Hive 查询运行多个 MapReduce 作业。 Tez 没有这样的约束，可以将复杂的 DAG 作为一个作业来处理，从而最大限度地减少作业启动开销。
+* **避免不必要的写入**。 多个作业用于处理 MapReduce 引擎中的同一 Hive 查询。 每个 MapReduce 作业的输出将作为中间数据写入 HDFS。 由于 Tez 将每个 Hive 查询的作业数降至最低，因此它能够避免不必要的写入。
 * **最大限度地降低启动延迟**。 Tez 可以减少需要启动的映射器数目，同时还能提高优化吞吐量，因此，更有利于最大限度地降低启动延迟。
 * **重复使用容器**。 Tez 会尽可能地重复使用容器，以确保降低由于启动容器而产生的延迟。
 * **连续优化技术**。 传统上，优化是在编译阶段完成的。 但是，这可以提供有关输入的详细信息，以便在运行时更好地进行优化。 Tez 使用连续优化技术，从而可以在运行时阶段进一步优化计划。
@@ -63,15 +63,15 @@ set hive.execution.engine=tez;
 
 I/O 操作是运行 Hive 查询的主要性能瓶颈。 如果可以减少需要读取的数据量，即可改善性能。 默认情况下，Hive 查询扫描整个 Hive 表。 但是，对于只需扫描少量数据的查询（例如，使用筛选进行查询），此行为会产生不必要的开销。 使用 Hive 分区，Hive 查询只需访问 Hive 表中必要的数据量。
 
-Hive 分区的实现方法是将原始数据重新组织成新目录。 每个分区都有自身的文件目录。 分区由用户定义。 下图说明如何根据年列来分区 Hive 表。 每年都会创建新的目录。
+Hive 分区的实现方法是将原始数据重新组织成新目录。 每个分区都有自身的文件目录。 分区由用户定义。 下图说明如何根据年** 列来分区 Hive 表。 每年都会创建新的目录。
 
-![HDInsight Apache Hive 分区](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
+![HDInsight 阿帕奇蜂巢分区](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
 
 一些分区注意事项：
 
 * **不要分区不足** - 根据仅包含少量值的列进行分区可能会导致创建很少的分区。 例如，根据性别（男性和女性）分区只会创建两个分区，从而最多只会将延迟降低一半。
 * **不要创建过多分区** - 另一种极端情况是，根据包含唯一值的列（例如，userid）创建分区会导致创建多个分区。 创建过多分区会给群集 namenode 带来很大压力，因为它必须处理大量的目录。
-* **避免数据偏斜** - 明智选择分区键，以便所有分区的大小均等。 例如，按“州”列分区可能会导致数据分布出现偏斜。 因为加利福尼亚州的人口几乎是佛蒙特州的 30 倍，分区大小可能会出现偏差，性能可能有极大的差异。
+* **避免数据偏斜** - 明智选择分区键，以便所有分区的大小均等。 例如，按“州”列分区可能会导致数据分布出现偏斜。** 因为加利福尼亚州的人口几乎是佛蒙特州的 30 倍，分区大小可能会出现偏差，性能可能有极大的差异。
 
 若要创建分区表，请使用 *Partitioned By* 子句：
 
@@ -101,7 +101,7 @@ STORED AS TEXTFILE;
    LOCATION 'wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
    ```
 
-* **动态分区**表示希望 Hive 自动创建分区。 由于您已经从临时表创建了分区表，因此您只需将数据插入到已分区表中：
+* **动态分区**表示希望 Hive 自动创建分区。 由于您已经从暂存表创建了分区表，因此只需将数据插入分区表：
   
    ```hive
    SET hive.exec.dynamic.partition = true;
@@ -125,8 +125,8 @@ STORED AS TEXTFILE;
 Hive 支持不同的文件格式。 例如：
 
 * **文本**：默认的文件格式，适用于大多数情况。
-* **Avro**：非常适合互操作性方案。
-* **ORC/Parquet**：最适合用于提高性能。
+* **Avro**： 适用于互操作性方案。
+* **ORC/Parquet**：最适合性能。
 
 ORC（优化行纵栏式）格式是存储 Hive 数据的高效方式。 与其他格式相比，ORC 具有以下优点：
 
@@ -191,7 +191,7 @@ set hive.vectorized.execution.enabled = true;
 
 * **Hive 存储桶：** 将大型数据集群集化或分段以优化查询性能的技术。
 * **联接优化**：Hive 的查询执行计划优化，可改善联接的效率并减少用户提示的需要。 有关详细信息，请参阅[联接优化](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)。
-* **增加化简器**。
+* **增加减少器**。
 
 ## <a name="next-steps"></a>后续步骤
 

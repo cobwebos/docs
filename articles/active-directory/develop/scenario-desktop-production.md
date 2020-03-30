@@ -1,6 +1,6 @@
 ---
-title: 将桌面应用程序调用 web Api 移动到生产环境-Microsoft 标识平台 |Microsoft
-description: 了解如何将用于调用 web Api 的桌面应用移动到生产环境
+title: 将调用 Web API 的桌面应用移到生产环境 - Microsoft 标识平台 | Azure
+description: 了解如何将调用 Web API 的桌面应用移到生产环境
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,31 +17,31 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: c8a9cf0c05d8af14d52bb1efb536dc8bbe7db84d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262563"
 ---
-# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>用于调用 web Api 的桌面应用：移动到生产环境
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>调用 Web API 的桌面应用：移动到生产
 
-本文介绍如何将用于调用 web Api 的桌面应用移动到生产环境。
+本文介绍如何将调用 Web API 的桌面应用移到生产环境。
 
-## <a name="handle-errors-in-desktop-applications"></a>处理桌面应用程序中的错误
+## <a name="handle-errors-in-desktop-applications"></a>在桌面应用程序中处理错误
 
-在不同的流中，你已了解如何处理无提示流的错误，如代码段中所示。 你还发现存在需要交互的情况，如增量许可和条件访问。
+你已了解，在不同的流中如何处理静默流的错误，如代码片段所示。 您还看到，在某些情况下需要交互，如增量同意和条件访问。
 
-## <a name="have-the-user-consent-upfront-for-several-resources"></a>让用户提前获取几个资源的许可
+## <a name="have-the-user-consent-upfront-for-several-resources"></a>让用户提前许可多个资源
 
 > [!NOTE]
-> 多个资源的同意适用于 Microsoft 标识平台，但不适用于 Azure Active Directory （Azure AD） B2C。 Azure AD B2C 仅支持管理员许可，而不支持用户同意。
+> 获得多个资源的同意适用于 Microsoft 标识平台，但不适用于 Azure Active Directory (Azure AD) B2C。 Azure AD B2C 仅支持管理员同意，不支持用户同意。
 
-你不能使用 Microsoft 标识平台（v2.0）终结点一次获取多个资源的令牌。 `scopes` 参数只能包含单个资源的作用域。 可以通过使用 `extraScopesToConsent` 参数，确保用户预先同意多个资源。
+不能使用 Microsoft 标识平台 (v2.0) 终结点一次获取多个资源的令牌。 `scopes` 参数只能包含单个资源的范围。 可以使用 `extraScopesToConsent` 参数确保用户预先同意多个资源。
 
-例如，你可能有两个资源，每个资源有两个作用域：
+例如，你可能有两个资源（每个资源有两个范围）：
 
-- `https://mytenant.onmicrosoft.com/customerapi` 范围 `customer.read` 和 `customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi` 范围 `vendor.read` 和 `vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi`，范围为 `customer.read` 和 `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi`，范围为 `vendor.read` 和 `vendor.write`
 
 在此示例中，请使用具有 `extraScopesToConsent` 参数的 `.WithAdditionalPromptToConsent` 修饰符。
 
@@ -68,7 +68,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-### <a name="in-msal-for-ios-and-macos"></a>适用于 iOS 和 macOS 的 MSAL
+### <a name="in-msal-for-ios-and-macos"></a>在适用于 iOS 和 macOS 的 MSAL 中
 
 Objective-C：
 
@@ -98,17 +98,17 @@ interactiveParameters.extraScopesToConsent = scopesForVendorApi
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
 ```
 
-此调用会获取第一个 web API 的访问令牌。
+此调用为你获得第一个 Web API 的访问令牌。
 
-如果需要调用第二个 web API，请调用 `AcquireTokenSilent` API。
+如果需要调用第二个 Web API，请调用 `AcquireTokenSilent` API。
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>每次应用运行时，Microsoft 个人帐户都需要 reconsent
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>每次应用运行时，Microsoft 个人帐户都需要重新批准
 
-对于 Microsoft 个人帐户用户，针对每个本机客户端（桌面或移动应用）的同意调用的 reprompting 是预期的行为。 本机客户端标识本质上是不安全的，这与机密客户端应用程序标识相反。 机密客户端应用程序通过 Microsoft 标识平台交换机密，以证明其身份。 Microsoft 标识平台选择通过在应用程序每次获得授权时提示用户进行同意，来缓解消费者服务的安全。
+对于 Microsoft 个人帐户用户，在授权的每个本机客户端（桌面或移动应用）调用上重新提示同意是预期行为。 本机客户端标识本质上是不安全的，这与机密客户端应用程序标识相悖。 机密客户端应用程序与 Microsoft 标识平台交换机密，以证明其身份。 Microsoft 标识平台选择在每次授权应用程序时提示用户同意，以减轻消费者服务的这种不安全。
 
 ## <a name="next-steps"></a>后续步骤
 

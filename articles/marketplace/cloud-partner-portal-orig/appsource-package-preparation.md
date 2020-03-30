@@ -1,20 +1,18 @@
 ---
-title: AppSource 包准备 |Azure Marketplace
+title: 应用程序源软件包准备 |Azure 应用商店
 description: 介绍如何准备和生成 AppSource 包。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 2c6b78e62afb43562910c872d31e2c9f564040da
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 76f8cbd6cb16b585a7dbda7b2ffa5eeeeb1b68d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806101"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280603"
 ---
 # <a name="appsource-package-preparation"></a>AppSource 包准备
 
@@ -28,11 +26,11 @@ ms.locfileid: "73806101"
 
 以下步骤可帮助你创建 AppSource 包。
 
-## <a name="a-create-a-package-for-the-package-deployer"></a>a. 创建 Package Deployer 的包
+## <a name="a-create-a-package-for-the-package-deployer"></a>a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 创建 Package Deployer 的包
 
 Package Deployer 的包是 AppSource 包的一部分。
 
-若要创建 Package Deployer 的包，请参考以下说明：[https://msdn.microsoft.com/library/dn688182.aspx](https://msdn.microsoft.com/library/dn688182.aspx)。 完成后，该包将包括以下资产：
+要为包部署器创建包，请使用以下说明： [https://msdn.microsoft.com/library/dn688182.aspx](https://msdn.microsoft.com/library/dn688182.aspx)。 完成后，该包将包括以下资产：
 
 1. 包文件夹：包含所有解决方案、配置数据、平面文件和包的内容。 _注意：在以下示例中，我们假设包文件夹名为“PkgFolder”_
 2. dll：该程序集包含包的自定义代码。 _注意：在以下示例中，我们假设此文件名为“MicrosoftSample.dll”。_
@@ -74,7 +72,7 @@ Package Deployer 的包是 AppSource 包的一部分。
 
 ![CRMScreenShot4](media/CRMScreenShot4.png)
 
-## <a name="b-create-an-appsource-package"></a>b. 创建 AppSource 包
+## <a name="b-create-an-appsource-package"></a>b.保留“数据库类型”设置，即设置为“共享”。 创建 AppSource 包
 
 AppSource 包需要几个附加的文件。
 
@@ -103,7 +101,7 @@ AppSource 包需要几个附加的文件。
         </Locales>
     </PvsPackageData>
  
-**其中：**
+**地点：**
 
 |字段|详细信息|
 |---|---|
@@ -112,7 +110,7 @@ AppSource 包需要几个附加的文件。
 |SolutionAnchorName |Package Deployer 中用于显示名称和解决方案资产说明的解决方案 zip 文件的名称。|
 | StartDate| 这是解决方案包可供使用的日期。 格式为 MM/DD/YYYY|
 |EndDate|这是解决方案包不再可供使用的日期。 格式为 MM/DD/YYYY |
-|SupportedCountries |这是应看到此包的以逗号分隔的国家/地区列表。 请联系联机服务部门获取所有最新国家/地区代码的列表。 在撰写本文时，该列表为：AE,AL,AM,AO,AR,AT,AU,AZ,BA,BB,BD,BE,BG,BH,BM,BN,BO,BR,BY,CA,CH,CI,CL,CM,CO,CR,CV,CW,CY,CZ,DE,DK,DO,DZ,EC,EE,EG,ES,FI,FR,GB,GE,GH,GR,GT,HK,HN,HR,HU,ID,IE,IL,IN,IQ,IS,IT,JM,JO,JP,KE,KG,KN,KR,KW,KY,KZ,LB,LK,LT,LU,LV,LY,MA,MC,MD,ME,MK,MN,MO,MT,MU,MX,MY,NG,NI,NL,NO,NZ,OM,PA,PE,PH,PK,PL,PR,PS,PT,PY,QA,RO,RS,RU,RW,SA,SE,SG,SI,SK,SN,SV,TH,TM,TN,TR,TT,TW,UA,US,UY,UZ,VE,VI,VN,ZA,ZW |
+|SupportedCountries |这是应看到此包的国家/地区（由逗号分隔的列表）。 请联系联机服务部门获取所有最新国家/地区代码的列表。 在撰写本文时，该列表为：AE,AL,AM,AO,AR,AT,AU,AZ,BA,BB,BD,BE,BG,BH,BM,BN,BO,BR,BY,CA,CH,CI,CL,CM,CO,CR,CV,CW,CY,CZ,DE,DK,DO,DZ,EC,EE,EG,ES,FI,FR,GB,GE,GH,GR,GT,HK,HN,HR,HU,ID,IE,IL,IN,IQ,IS,IT,JM,JO,JP,KE,KG,KN,KR,KW,KY,KZ,LB,LK,LT,LU,LV,LY,MA,MC,MD,ME,MK,MN,MO,MT,MU,MX,MY,NG,NI,NL,NO,NZ,OM,PA,PE,PH,PK,PL,PR,PS,PT,PY,QA,RO,RS,RU,RW,SA,SE,SG,SI,SK,SN,SV,TH,TM,TN,TR,TT,TW,UA,US,UY,UZ,VE,VI,VN,ZA,ZW |
 |LearnMoreLink | 此包的详细信息页的 URL。 |
 |Locales|此节点的一个实例，适用于你要在首选解决方案 UX 中支持的每种 UX 语言。 此节点包含描述每种语言的区域设置、徽标和条款的子级|
 |区域设置：PackageLocale.Code|此节点的语言 LCID。 示例：“美国英语”为 1033|
@@ -134,4 +132,4 @@ AppSource 包需要几个附加的文件。
 
 ![CRMScreenShot6](media/CRMScreenShot6.png)
 
-将文件重命名为适合应用的名称。 最好是包括公司名称和应用名称。 例如： **_Microsoft_SamplePackage.zip**。
+将文件重命名为适合应用的名称。 最好是包括公司名称和应用名称。 例如：**_Microsoft_SamplePackage.zip**。

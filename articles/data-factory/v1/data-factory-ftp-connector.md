@@ -13,10 +13,10 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281400"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器移动数据
@@ -27,7 +27,7 @@ ms.locfileid: "79281400"
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果正在使用当前版本数据工厂服务，请参阅 [V2 中的 FTP 连接器](../connector-ftp.md)。
 
-本文介绍如何使用 Azure 数据工厂中的复制活动从 FTP 服务器移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，该文章总体概述了如何使用复制活动移动数据。
+本文介绍如何使用 Azure 数据工厂中的复制活动从 FTP 服务器移动数据。 它基于["数据移动活动"](data-factory-data-movement-activities.md)一文，其中概述了复制活动的数据移动。
 
 可以将数据从 FTP 服务器复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 FTP 服务器移至其他数据存储，但不支持将数据从其他数据存储移至 FTP 服务器。 它支持本地和云 FTP 服务器。
 
@@ -44,13 +44,13 @@ ms.locfileid: "79281400"
 
 创建管道的最简单方法是使用**数据工厂复制向导**。 有关快速演练，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
 
-你还可以使用以下工具创建管道： **Visual Studio**、 **PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+您还可以使用以下工具创建管道：**可视化工作室****、PowerShell、Azure****资源管理器模板** **、.NET API**和**REST API**。 有关创建具有复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建将数据从源数据存储移至接收器数据存储的管道：
 
-1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集以表示复制操作的输入和输出数据。
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。
+1. 创建**链接服务**，将输入和输出数据存储链接到数据工厂。
+2. 创建**数据集**以表示复制操作的输入和输出数据。
+3. 创建具有将数据集作为输入和数据集作为输出的复制活动的**管道**。
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具或 API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于从 FTP 数据存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例：将数据从 FTP 服务器复制到 Azure blob](#json-example-copy-data-from-ftp-server-to-azure-blob) 部分。
 
@@ -62,7 +62,7 @@ ms.locfileid: "79281400"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表描述了特定于 FTP 链接服务的 JSON 元素。
 
-| properties | 说明 | 必选 | 默认 |
+| properties | 描述 | 必选 | 默认 |
 | --- | --- | --- | --- |
 | type |将此类型设置为 FtpServer。 |是 |&nbsp; |
 | host |指定 FTP 服务器的名称或 IP 地址。 |是 |&nbsp; |
@@ -152,18 +152,18 @@ ms.locfileid: "79281400"
 
 每个数据集类型的 **typeProperties** 节都不同。 它提供特定于数据集类型的信息。 **FileShare** 类型的数据集的 **typeProperties** 部分具有以下属性：
 
-| properties | 说明 | 必选 |
+| properties | 描述 | 必选 |
 | --- | --- | --- |
 | folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 组合在一起，基于切片开始和结束的日期时间构成文件夹路径。 |是 |
-| fileName |如果希望表引用文件夹中的特定文件，请在 **folderPath** 中指定文件名。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 **fileName**，生成文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
-| fileFilter |指定在 **folderPath** 中选择一部分文件而不是所有文件时要使用的筛选器。<br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1：`"fileFilter": "*.log"`<br/>示例 2：`"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter** 适用于 FileShare 输入数据集。 Hadoop 分布式文件系统 (HDFS) 不支持此属性。 |否 |
+| fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 **fileName**，生成文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
+| fileFilter |指定在 **folderPath** 中选择一部分文件而不是所有文件时要使用的筛选器。<br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1：`"fileFilter": "*.log"`<br/>示例 2：`"fileFilter": 2014-1-?.txt"`<br/><br/> **文件筛选器**适用于输入文件共享数据集。 Hadoop 分布式文件系统 (HDFS) 不支持此属性。 |否 |
 | partitionedBy |用于指定时序数据的动态 **folderPath** 和 **fileName**。 例如，可以指定每小时参数化以形成数据的 **folderPath**。 |否 |
-| format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式部分。 |否 |
-| compression | 指定数据的压缩类型和级别。 支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**；支持的级别为：**Optimal** 和 **Fastest**。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一****。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式部分。 |否 |
+| compression | 指定数据的压缩类型和级别。 支持的类型是**GZip，Deflate，BZip2**和**ZipDeflate，** 并且支持的水平是**最佳**和**最快的**。 **Deflate** **BZip2** 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 | useBinaryTransfer |指定是否使用二进制传输模式。 这些值在二进制模式下为 true（这是默认值），在 ASCII 模式下为 false。 仅当关联的链接服务类型为 FtpServer 时，才可以使用此属性。 |否 |
 
 > [!NOTE]
-> **fileName** 和 **fileFilter** 不能同时使用。
+> **文件名**和**文件筛选器**不能同时使用。
 
 ### <a name="use-the-partionedby-property"></a>使用 partionedBy 属性
 如上一部分所述，可以使用 **partitionedBy** 属性指定时序数据的动态 **folderPath** 和 **fileName**。
@@ -203,20 +203,20 @@ ms.locfileid: "79281400"
 
 在复制活动中，如果源的类型为 **FileSystemSource**，则 **typeProperties** 部分将具有以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| properties | 描述 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON 示例：将数据从 FTP 服务器复制到 Azure Blob
 此示例演示如何将数据从 FTP 服务器复制到 Azure Blob 存储。 但是，使用数据工厂中的复制活动，可以直接将数据复制到[支持的数据存储和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中所述的任何接收器。
 
-下面的示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道：
+以下示例提供了使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道的示例 JSON 定义：
 
 * [FtpServer](#linked-service-properties) 类型的链接服务
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务
-* [FileShare](data-factory-create-datasets.md) 类型的输入[数据集](#dataset-properties)
-* [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)
-* 包含使用 [FileSystemSource](data-factory-create-pipelines.md) 和 [BlobSink](#copy-activity-properties) 的复制活动的[管道](data-factory-azure-blob-connector.md#copy-activity-properties)
+* [文件共享](#dataset-properties)类型的输入[数据集](data-factory-create-datasets.md)
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)
+* 具有使用[文件系统源](#copy-activity-properties)和[BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)的复制活动的[管道](data-factory-create-pipelines.md)
 
 此示例每小时将数据从 FTP 服务器复制到 Azure blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
@@ -261,7 +261,7 @@ ms.locfileid: "79281400"
 
 此数据集是指 FTP 文件夹 `mysharedfolder` 和文件 `test.csv`。 该管道将文件复制到目标。
 
-将“external”设置为“true”将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
+将“external”**** 设置为“true”**** 将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
 
 ```JSON
 {

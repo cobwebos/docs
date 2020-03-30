@@ -1,14 +1,14 @@
 ---
-title: 身份验证/AuthO 的高级用法
-description: 了解如何在应用服务中为不同方案自定义身份验证和授权功能，以及获取用户声明和不同令牌。
+title: AuthN/AuthO 的高级用法
+description: 了解如何针对不同情况自定义应用服务中的身份验证和授权功能，并获取用户声明和不同令牌。
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280828"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
@@ -29,9 +29,9 @@ ms.locfileid: "79280828"
 
 门户配置不会向用户全面提供多个登录提供程序（例如 Facebook 和 Twitter）。 但是，将此功能添加到应用并不困难。 步骤概括如下：
 
-首先，在 Azure 门户中的“身份验证/授权”页上，配置想要启用的每个标识提供者。
+首先，在 Azure 门户中的“身份验证/授权”页上，配置想要启用的每个标识提供者。****
 
-在“请求未经身份验证时需执行的操作”中，选择“允许匿名请求(无操作)”。
+在“请求未经身份验证时需执行的操作”中，选择“允许匿名请求(无操作)”。********
 
 在登录页、导航栏或应用的其他任何位置中，将一个登录链接添加到已启用的每个提供程序 (`/.auth/login/<provider>`)。 例如：
 
@@ -95,7 +95,7 @@ X-ZUMO-AUTH: <authenticationToken_value>
 
 ## <a name="sign-out-of-a-session"></a>注销会话
 
-用户可通过向应用的 `GET` 终结点发送 `/.auth/logout` 请求来启动注销。 `GET` 请求可执行以下操作：
+用户可通过向应用的 `/.auth/logout` 终结点发送 `GET` 请求来启动注销。 `GET` 请求可执行以下操作：
 
 - 清除当前会话中的身份验证 Cookie。
 - 从令牌存储中删除当前用户的令牌。
@@ -113,7 +113,7 @@ X-ZUMO-AUTH: <authenticationToken_value>
 GET /.auth/logout?post_logout_redirect_uri=/index.html
 ```
 
-建议对 [ 的值进行](https://wikipedia.org/wiki/Percent-encoding)编码`post_logout_redirect_uri`。
+建议对 `post_logout_redirect_uri` 的值进行[编码](https://wikipedia.org/wiki/Percent-encoding)。
 
 使用完全限定的 URL 时，URL 必须托管在同一域中，或配置为允许应用访问的外部重定向 URL。 在以下示例中，若要重定向到未托管在同一域中的 `https://myexternalurl.com`：
 
@@ -121,7 +121,7 @@ GET /.auth/logout?post_logout_redirect_uri=/index.html
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-在[Azure Cloud Shell](../cloud-shell/quickstart.md)中运行以下命令：
+在[Azure 云外壳](../cloud-shell/quickstart.md)中运行以下命令 ：
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -144,7 +144,7 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 * X-MS-CLIENT-PRINCIPAL-NAME
 * X-MS-CLIENT-PRINCIPAL-ID
 
-使用任何语言或框架编写的代码均可从这些标头获取所需信息。 对于 ASP.NET 4.6 应用，**ClaimsPrincipal** 会自动设置为相应的值。 但 ASP.NET Core 不提供与应用服务用户声明集成的身份验证中间件。 有关解决方法，请参阅[MaximeRouiller. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)。
+使用任何语言或框架编写的代码均可从这些标头获取所需信息。 对于 ASP.NET 4.6 应用，**ClaimsPrincipal** 会自动设置为相应的值。 但是，ASP.NET Core 不提供与应用服务用户声明集成的身份验证中间件。 有关解决方法，请参阅 [MaximeRouiller.Azure.AppService.EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)。
 
 应用程序也可以通过调用 `/.auth/me` 来获取有关经过身份验证的用户的其他详细信息。 移动应用服务器 SDK 提供处理该数据的帮助器方法。 有关详细信息，请参阅[如何使用 Azure 移动应用 Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)和[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)。
 
@@ -168,27 +168,27 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 
 ## <a name="refresh-identity-provider-tokens"></a>刷新标识提供程序令牌
 
-当提供程序的访问令牌（而不是[会话令牌](#extend-session-token-expiration-grace-period)）到期时，需要在再次使用该令牌之前重新验证用户。 向应用程序的 `GET` 终结点发出 `/.auth/refresh` 调用可以避免令牌过期。 调用应用服务时，应用服务会自动刷新已身份验证用户的令牌存储中的访问令牌。 应用代码发出的后续令牌请求将获取刷新的令牌。 但是，若要正常刷新令牌，令牌存储必须包含提供程序的[刷新令牌](https://auth0.com/learn/refresh-tokens/)。 每个提供程序会阐述获取刷新令牌的方式。以下列表提供了简短摘要：
+当提供程序的访问令牌（而不是[会话令牌](#extend-session-token-expiration-grace-period)）到期时，需要在再次使用该令牌之前重新验证用户。 向应用程序的 `/.auth/refresh` 终结点发出 `GET` 调用可以避免令牌过期。 调用应用服务时，应用服务会自动刷新已身份验证用户的令牌存储中的访问令牌。 应用代码发出的后续令牌请求将获取刷新的令牌。 但是，若要正常刷新令牌，令牌存储必须包含提供程序的[刷新令牌](https://auth0.com/learn/refresh-tokens/)。 每个提供程序会阐述获取刷新令牌的方式。以下列表提供了简短摘要：
 
 - **Google**：将一个 `access_type=offline` 查询字符串参数追加到 `/.auth/login/google` API 调用。 如果使用移动应用 SDK，可将该参数添加到 `LogicAsync` 重载之一（请参阅 [Google 刷新令牌](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)）。
 - **Facebook**：不提供刷新令牌。 生存期较长的令牌在 60 天后过期（请参阅 [Facebook 访问令牌的过期和延期](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)）。
 - **Twitter**：访问令牌不会过期（请参阅 [Twitter OAuth 常见问题解答](https://developer.twitter.com/en/docs/basics/authentication/FAQ)）。
 - **Microsoft 帐户**：[配置 Microsoft 帐户身份验证设置](configure-authentication-provider-microsoft.md)时，请选择 `wl.offline_access` 范围。
 - **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中执行以下步骤：
-    1. 在页面顶部，选择“读/写”。
-    2. 在左侧浏览器中，导航到 **subscriptions** >  **_\<subscription\_name_**  > **resourceGroups** >  **_\<resource\_group\_name>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\<app\_name>_**  > **config** > **authsettings**。 
-    3. 单击 **“编辑”** 。
-    4. 修改以下属性。 将 _\<app\_id>_ 替换为要访问的服务的 Azure Active Directory 应用程序 ID。
+    1. 在页面顶部，选择“读/写”。****
+    2. 在左侧浏览器中，导航到**subscriptions** > **_\<订阅\_名称_** > **providers** >  > **sites** >  > **config** > **resourceGroups** >  > 资源组**_\<\_资源组\_名称>_** 提供程序**Microsoft.Web**网站**_\<应用\_名称>_** 配置**身份验证**。 
+    3. 单击 **“编辑”**。
+    4. 修改以下属性。 将_\<应用\_id>_ 替换为要访问的服务的 Azure 活动目录应用程序 ID。
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    5. 单击“放置”。 
+    5. 单击“放置”。**** 
 
 配置提供程序后，可以在令牌存储区[查找刷新令牌和访问令牌的过期时间](#retrieve-tokens-in-app-code)。 
 
-若要随时刷新访问令牌，只需以任意语言调用 `/.auth/refresh`。 以下代码片段从 JavaScript 客户端使用 jQuery 刷新访问令牌。
+若要随时刷新访问令牌，只需以任何语言调用 `/.auth/refresh`。 以下代码片段从 JavaScript 客户端使用 jQuery 刷新访问令牌。
 
 ```JavaScript
 function refreshTokens() {
@@ -221,25 +221,25 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>限制登录帐户的域
 
-Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如，Microsoft 帐户允许 _outlook.com_、_live.com_ 和 _hotmail.com_ 帐户。 Azure AD 允许登录帐户拥有任意数量的自定义域。 不过，你可能想要将用户直接转到你自己的品牌 Azure AD 登录页面（如 `contoso.com`）。 若要建议登录帐户的域名，请执行以下步骤。
+Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如，Microsoft 帐户允许 _outlook.com_、_live.com_ 和 _hotmail.com_ 帐户。 Azure AD 允许登录帐户的任意数量的自定义域。 但是，您可能希望将用户直接加速到自己的品牌 Azure AD 登录页（如`contoso.com`）。 要建议登录帐户的域名，请按照以下步骤操作。
 
-在 [https://resources.azure.com](https://resources.azure.com) 中，导航到 **subscriptions** >  **_\<subscription\_name_**  > **resourceGroups** >  **_\<resource\_group\_name>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\<app\_name>_**  > **config** > **authsettings**。 
+在[https://resources.azure.com](https://resources.azure.com)中 导航到**订阅** > **_\<\_名称_** > **资源** > **_\<\_组资源组\_名称>_****providers** >  > **sites** >  > **config** > **Microsoft.Web** > 提供程序 Microsoft.Web 网站**_\<应用\_名称>_** 配置**身份验证**。 
 
-单击“编辑”，修改以下属性，然后单击“放置”。 请务必将 _\<domain\_name>_ 替换为所需的域。
+单击“编辑”，修改以下属性，然后单击“放置”。******** 请确保将_\<域名\_>_ 替换为所需的域。
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
 
-此设置将 `domain_hint` 查询字符串参数追加到登录重定向 URL。 
+此设置将`domain_hint`查询字符串参数追加到登录重定向 URL。 
 
 > [!IMPORTANT]
-> 在接收重定向 URL 之后，客户端可能会删除 `domain_hint` 参数，然后使用不同的域登录。 所以虽然此功能非常方便，但它并不是一项安全功能。
+> 客户端可以在收到重定向 URL 后删除`domain_hint`参数，然后使用其他域登录。 因此，虽然此功能很方便，但它不是一个安全功能。
 >
 
 ## <a name="authorize-or-deny-users"></a>授权或拒绝用户
 
-应用服务负责处理最简单的授权情况（即拒绝未经身份验证的请求），应用可能需要更精细的授权行为，例如仅限特定用户组的访问权限。 在某些情况下，你需要编写自定义应用程序代码以允许或拒绝对已登录用户的访问。 在其他情况下，应用服务或标识提供者可能能够帮助，而无需更改代码。
+尽管应用服务会处理最简单的授权问题（例如，拒绝未经身份验证的请求），但应用可能需要更精细的授权行为，例如，仅将访问权限限制给特定的一组用户。 在某些情况下，需要编写自定义应用程序代码以允许或拒绝已登录用户的访问。 在其他情况下，应用服务或标识提供者可能无需进行代码更改即可提供帮助。
 
 - [服务器级别](#server-level-windows-apps-only)
 - [标识提供者级别](#identity-provider-level)
@@ -247,13 +247,13 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
 ### <a name="server-level-windows-apps-only"></a>服务器级别（仅限 Windows 应用）
 
-对于任何 Windows 应用，都可以通过编辑*web.config*文件来定义 IIS web 服务器的授权行为。 Linux 应用不使用 IIS，因此不*能通过 web.config 进行配置。*
+对于任何 Windows 应用，可以通过编辑 *Web.config* 文件来定义 IIS Web 服务器的授权行为。 Linux 应用程序不使用 IIS，并且无法通过*Web.config*进行配置。
 
 1. 导航到 `https://<app-name>.scm.azurewebsites.net/DebugConsole`
 
-1. 在应用服务文件的浏览器资源管理器中，导航到*site/wwwroot*。 如果*web.config*不存在，请通过选择 " **+** " > **新文件**来创建它。 
+1. 在打开应用服务文件的浏览器资源管理器中，导航到“site/wwwroot”。** 如果*Web.config*不存在，请通过选择**+** > **"新文件**"来创建它。 
 
-1. 选择用于*web.config*的铅笔以对其进行编辑。 添加以下配置代码，并单击 "**保存**"。 如果*web.config*已经存在，只需添加包含其中所有内容的 `<authorization>` 元素。 在 `<allow>` 元素中添加想要允许的帐户。
+1. 选择“Web.config”旁边的铅笔图标对其进行编辑。** 添加以下配置代码，然后单击“保存”。**** 如果 *Web.config* 已存在，则只需在其中添加包含任何内容的 `<authorization>` 元素即可。 在 `<allow>` 元素中添加要允许的帐户。
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -269,17 +269,17 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
 ### <a name="identity-provider-level"></a>标识提供者级别
 
-标识提供者可能会提供某些密钥授权。 例如：
+标识提供程序可能会提供某些交钥匙授权。 例如：
 
-- 对于[Azure App Service](configure-authentication-provider-aad.md)，你可以直接在 Azure AD 中[管理企业级访问权限](../active-directory/manage-apps/what-is-access-management.md)。 有关说明，请参阅[如何删除用户对应用程序的访问权限](../active-directory/manage-apps/methods-for-removing-user-access.md)。
-- 对于[google](configure-authentication-provider-google.md)，可以将属于某个[组织](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)的 Google API 项目配置为仅允许你的组织中的用户访问（请参阅[Google 的**设置 OAuth 2.0**支持页面](https://support.google.com/cloud/answer/6158849?hl=en)）。
+- 对于[Azure 应用服务](configure-authentication-provider-aad.md)，可以直接在 Azure AD 中[管理企业级访问](../active-directory/manage-apps/what-is-access-management.md)。 有关说明，请参阅[如何删除用户对应用程序的访问](../active-directory/manage-apps/methods-for-removing-user-access.md)。
+- 对于[Google，](configure-authentication-provider-google.md)可以配置属于[组织的](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)Google API 项目，以便仅允许组织中的用户访问（请参阅 Google[设置**OAuth 2.0**支持页面](https://support.google.com/cloud/answer/6158849?hl=en)）。
 
 ### <a name="application-level"></a>应用程序级别
 
-如果任何一个级别未提供所需的授权，或者如果平台或标识提供者不受支持，则必须编写自定义代码，以根据[用户声明](#access-user-claims)向用户授权。
+如果其他任何级别不提供所需的授权，或者平台或标识提供者不受支持，则必须编写自定义代码，以基于[用户声明](#access-user-claims)为用户授权。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：对用户进行端到端身份验证和授权 (Windows)](app-service-web-tutorial-auth-aad.md)
-> [教程：对用户进行端到端身份验证和授权 (Linux)](containers/tutorial-auth-aad.md)
+> [教程：对用户进行端到端（Windows）](app-service-web-tutorial-auth-aad.md)
+> [教程的身份验证和授权：对用户进行端到端身份验证和授权 （Linux）](containers/tutorial-auth-aad.md)

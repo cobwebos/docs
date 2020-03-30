@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277461"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
@@ -24,7 +24,7 @@ ms.locfileid: "79277461"
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x-and-higher"></a>包-函数2.x 和更高版本
+## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
 [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet 包 3.x 版本中提供了 SendGrid 绑定。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub 存储库中提供了此包的源代码。
 
@@ -100,11 +100,11 @@ public class OutgoingEmail
 
 如果在应用设置中指定了名为“AzureWebJobsSendGridApiKey”的 API 密钥，则可以不设置特性的 `ApiKey` 属性。
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json** 文件中的绑定数据：
 
 ```json 
 {
@@ -159,11 +159,11 @@ public class Message
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个 SendGrid 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json** 文件中的绑定数据：
 
 ```json 
 {
@@ -203,7 +203,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示了一个使用 SendGrid 绑定发送电子邮件的 HTTP 触发的函数。 可以在绑定配置中提供默认值。 例如，"*发件人*电子邮件地址" 在*函数 json*中进行配置。 
+下面的示例显示了使用 SendGrid 绑定发送电子邮件的 HTTP 触发函数。 您可以在绑定配置中提供默认值。 例如，在*函数.json*中配置*了 from*电子邮件地址。 
 
 ```json
 {
@@ -232,7 +232,7 @@ module.exports = function (context, input) {
 }
 ```
 
-以下函数说明了如何为可选属性提供自定义值。
+以下函数演示如何为可选属性提供自定义值。
 
 ```python
 import logging
@@ -260,7 +260,7 @@ def main(req: func.HttpRequest, sendGridMessage: func.Out[str]) -> func.HttpResp
 
 # <a name="java"></a>[Java](#tab/java)
 
-下面的示例使用[Java 函数运行时库](/java/api/overview/azure/functions/runtime)中的 `@SendGridOutput` 注释，通过 SendGrid 输出绑定发送电子邮件。
+以下示例使用 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中的 `@SendGridOutput` 注释来发送使用 SendGrid 输出绑定的电子邮件。
 
 ```java
 package com.function;
@@ -312,7 +312,7 @@ public class HttpTriggerSendGrid {
 
 ---
 
-## <a name="attributes-and-annotations"></a>特性和批注
+## <a name="attributes-and-annotations"></a>特性和注释
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -332,29 +332,29 @@ public static void Run(
 
 有关完整示例，请参阅 [C# 示例](#example)。
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-C#脚本不支持特性。
+C# 脚本不支持特性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 JavaScript 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支持特性。
+Python 不支持属性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/SendGridOutput.java)批注允许您通过提供配置值以声明方式配置 SendGrid 绑定。 有关更多详细信息，请参阅[示例](#example)和[配置](#configuration)部分。
+使用 [SendGridOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/SendGridOutput.java) 注释，可以通过提供配置值以声明方式配置 SendGrid 绑定。 有关更多详细信息，请参阅[示例](#example)和[配置](#configuration)部分。
 
 ---
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
-下表列出了*函数 json*文件中可用的绑定配置属性以及 `SendGrid` 特性/批注。
+下表列出了在 function.json 文件和 `SendGrid` 特性/注释中可用的绑定配置属性**。
 
-| *函数 json*属性 | 属性/批注属性 | 说明 | 可选 |
+| *函数.json*属性 | 特性/注释属性 | 描述 | 可选 |
 |--------------------------|-------------------------------|-------------|----------|
 | type |不适用| 必须设置为 `sendGrid`。| 否 |
 | direction |不适用| 必须设置为 `out`。| 否 |
@@ -362,10 +362,10 @@ Python 不支持特性。
 | apiKey | ApiKey | 包含 API 密钥的应用设置的名称。 如果未设置，则默认应用设置名称为*AzureWebJobsSendGridApiKey*。| 否 |
 | to| 目标 | 收件人的电子邮件地址。 | 是 |
 | 从| 源 | 发件人的电子邮件地址。 |  是 |
-| subject| 主题 | 电子邮件的主题。 | 是 |
-| text| 文本 | 电子邮件内容。 | 是 |
+| subject| 主题 | 电子邮件主题。 | 是 |
+| text| Text | 电子邮件内容。 | 是 |
 
-可选属性可能具有在绑定中定义的默认值，并以编程方式添加或重写。
+在绑定中可能会定义可选属性的默认值，并以编程方式添加或重写这些值。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -373,7 +373,7 @@ Python 不支持特性。
 
 ## <a name="hostjson-settings"></a>host.json 设置
 
-本部分介绍此绑定在版本2.x 和更高版本中可用的全局配置设置。 下面的示例 host json 文件仅包含此绑定的版本 2.x + 设置。 有关版本2.x 和更高版本中的全局配置设置的详细信息，请参阅[host json reference for Azure Functions](functions-host-json.md)。
+本部分介绍版本 2.x 及更高版本中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版及更高版本设置。 若要详细了解 2.x 版及更高版本中的全局配置设置，请参阅 [Azure Functions 的 host.json 参考](functions-host-json.md)。
 
 > [!NOTE]
 > 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
@@ -389,7 +389,7 @@ Python 不支持特性。
 }
 ```  
 
-|properties  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------| 
 |从|不适用|所有函数的发件人电子邮件地址。| 
 

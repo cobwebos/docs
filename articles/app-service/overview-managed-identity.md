@@ -1,16 +1,16 @@
 ---
 title: 托管标识
-description: 了解托管标识如何在 Azure App Service 和 Azure Functions 中工作，如何配置托管标识并为后端资源生成令牌。
+description: 了解托管标识在 Azure 应用服务和 Azure 函数中的工作方式，以及如何配置托管标识并为后端资源生成令牌。
 author: mattchenderson
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.openlocfilehash: 6e3169f2bfcba0a02af1490f875cbab8a14d02f6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280022"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
@@ -18,11 +18,11 @@ ms.locfileid: "79280022"
 > [!Important] 
 > 如果应用跨订阅/租户迁移，应用服务和 Azure Functions 的托管标识将不会按预期工作。 应用将需要获取新标识，这可以通过禁用并重新启用该功能来完成。 请参阅下面的[删除标识](#remove)。 下游资源还需要更新访问策略才能使用新标识。
 
-本主题介绍如何为应用服务和 Azure Functions 应用程序创建托管标识，以及如何使用它来访问其他资源。 通过 Azure Active Directory （AAD）中的托管标识，你的应用可以轻松访问其他受 AAD 保护的资源，例如 Azure Key Vault。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关 AAD 中的托管标识的详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
+本主题介绍如何为应用服务和 Azure Functions 应用程序创建托管标识，以及如何使用它来访问其他资源。 Azure 活动目录 （AAD） 的托管标识允许应用轻松访问其他受 AAD 保护的资源，如 Azure 密钥保管库。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关 AAD 中的托管标识的详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 你的应用程序可以被授予两种类型的标识： 
-- 系统分配的标识与你的应用程序相绑定，如果删除应用，标识也会被删除。 一个应用只能具有一个系统分配的标识。
-- **用户分配的标识**是可以分配给你的应用程序的独立 Azure 资源。 一个应用可以具有多个用户分配的标识。
+- 系统分配的标识与你的应用程序相绑定，如果删除应用，标识也会被删除****。 一个应用只能具有一个系统分配的标识。
+- **用户分配的标识**是可以分配给应用的独立 Azure 资源。 一个应用可以具有多个用户分配的标识。
 
 ## <a name="add-a-system-assigned-identity"></a>添加系统分配的标识
 
@@ -34,11 +34,11 @@ ms.locfileid: "79280022"
 
 1. 按常规在门户中创建应用。 在门户中导航到该应用。
 
-2. 如果使用函数应用，请导航到“平台功能”。 对于其他应用类型，请在左侧导航区域向下滚动到“设置”组。
+2. 如果使用函数应用，请导航到“平台功能”。**** 对于其他应用类型，请在左侧导航区域向下滚动到“设置”组。****
 
-3. 选择 "**标识**"。
+3. 选择“标识”。****
 
-4. 在“系统分配的”选项卡中，将“状态”切换为“启用”。 单击“ **保存**”。
+4. 在“系统分配的”选项卡中，将“状态”切换为“启用”************。 单击“保存”。****
 
     ![应用服务中的托管标识](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
@@ -47,12 +47,12 @@ ms.locfileid: "79280022"
 若要使用 Azure CLI 设置托管标识，需要针对现有应用程序使用 `az webapp identity assign` 命令。 运行本部分中的示例有三个选项：
 
 - 在 Azure 门户中使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
-- 通过以下每个代码块右上角的 "试用" 按钮，使用嵌入的 Azure Cloud Shell。
+- 通过位于下面每个代码块右上角的"试用"按钮使用嵌入的 Azure 云外壳。
 - 如果喜欢使用本地 CLI 控制台，请[安装最新版 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.31 或更高版本）。 
 
 以下步骤将指导你完成使用 CLI 创建 Web 应用并为其分配标识的操作：
 
-1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure。 使用与你想要在其上部署应用程序的 Azure 订阅关联的帐户：
+1. 如果在本地控制台中使用 Azure CLI，首先请使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure。 使用与 Azure 订阅关联的帐户，您可以在该订阅下部署应用程序：
 
     ```azurecli-interactive
     az login
@@ -77,7 +77,7 @@ ms.locfileid: "79280022"
 
 以下步骤将指导你完成使用 Azure PowerShell 创建 Web 应用并为其分配标识的操作：
 
-1. 如果需要，请使用[Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，然后运行 `Login-AzAccount` 以创建与 Azure 的连接。
+1. 如果需要，请使用 Azure PowerShell 指南中的说明安装 Azure [PowerShell，](/powershell/azure/overview)然后运行`Login-AzAccount`以创建与 Azure 的连接。
 
 2. 使用 Azure PowerShell 创建 Web 应用程序。 有关如何将 Azure PowerShell 用于应用服务的更多示例，请参阅[应用服务 PowerShell 示例](../app-service/samples-powershell.md)：
 
@@ -161,13 +161,13 @@ tenantId 属性标识该标识所属的 AAD 租户。 principalId 是应用程�
 
 2. 按常规在门户中创建应用。 在门户中导航到该应用。
 
-3. 如果使用函数应用，请导航到“平台功能”。 对于其他应用类型，请在左侧导航区域向下滚动到“设置”组。
+3. 如果使用函数应用，请导航到“平台功能”。**** 对于其他应用类型，请在左侧导航区域向下滚动到“设置”组。****
 
-4. 选择 "**标识**"。
+4. 选择“标识”。****
 
-5. 在 "**用户分配**" 选项卡中，单击 "**添加**"。
+5. 在“用户分配”选项卡中，单击“添加”********。
 
-6. 搜索之前创建的标识并选择它。 单击“添加”。
+6. 搜索之前创建的标识并选择它。 单击 **“添加”**。
 
     ![应用服务中的托管标识](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
@@ -175,7 +175,7 @@ tenantId 属性标识该标识所属的 AAD 租户。 principalId 是应用程�
 
 Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详细了解如何部署到应用服务和 Functions，请参阅[在应用服务中自动执行资源部署](../app-service/deploy-complex-application-predictably.md)和[在 Azure Functions 中自动执行资源部署](../azure-functions/functions-infrastructure-as-code.md)。
 
-通过在资源定义中包含以下块，然后将 `Microsoft.Web/sites` 替换为所需标识的资源 ID，就可以创建带有标识的任何 `<RESOURCEID>` 类型的资源：
+通过在资源定义中包含以下块，然后将 `<RESOURCEID>` 替换为所需标识的资源 ID，就可以创建带有标识的任何 `Microsoft.Web/sites` 类型的资源：
 ```json
 "identity": {
     "type": "UserAssigned",
@@ -188,7 +188,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 > [!NOTE] 
 > 一个应用程序可以同时具有系统分配的标识和用户分配的标识。 在这种情况下，`type` 属性将为 `SystemAssigned,UserAssigned`
 
-添加用户分配的类型会告知 Azure 使用为应用程序指定的用户分配的标识。
+添加用户分配的类型即告知 Azure 使用为应用程序指定的用户分配的标识。
 
 例如，Web 应用可能如下所示：
 ```json
@@ -230,19 +230,19 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 }
 ```
 
-PrincipalId 是用于 AAD 管理的标识的唯一标识符。 ClientId 是应用程序新标识的唯一标识符，用于指定运行时调用期间要使用的标识。
+主体 Id 是用于 AAD 管理的标识的唯一标识符。 clientId 是应用程序新标识的唯一标识符，用于指定在运行时调用期间要使用的标识。
 
 
 ## <a name="obtain-tokens-for-azure-resources"></a>获取 Azure 资源的令牌
 
-应用可以使用其托管标识来获取令牌，以访问由 AAD 保护的其他资源，如 Azure Key Vault。 这些令牌代表访问资源的应用程序，而不是应用程序的任何特定用户。 
+应用可以使用其托管标识获取令牌来访问受 AAD 保护的其他资源，如 Azure 密钥保管库。 这些令牌代表访问资源的应用程序，而不是应用程序的任何特定用户。 
 
-可能需要配置目标资源，允许从应用程序进行访问。 例如，如果请求令牌来访问 Key Vault，则需要确保已添加包含应用程序标识的访问策略。 否则，对 Key Vault 的调用将被拒绝，即使其中包含令牌。 若要详细了解支持 Azure Active Directory 令牌的资源，请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
+可能需要配置目标资源，允许从应用程序进行访问。 例如，如果请求令牌访问密钥保管库，则需要确保添加了包含应用程序标识的访问策略。 否则，对 Key Vault 的调用将被拒绝，即使其中包含令牌。 若要详细了解支持 Azure Active Directory 令牌的资源，请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
 > [!IMPORTANT]
-> 托管标识的后端服务在大约8小时内维护每个资源 URI 的缓存。 如果更新特定目标资源的访问策略，并立即检索该资源的令牌，则可能会继续获取具有过时权限的缓存令牌，直到该令牌过期。 目前没有办法强制进行令牌刷新。
+> 托管标识的后端服务可为每个资源 URI 保持大约 8 小时的缓存。 如果更新特定目标资源的访问策略并立即检索该资源的令牌，则可以继续获取具有过时权限的缓存令牌，直到该令牌过期。 当前无法强制刷新令牌。
 
-在应用服务和 Azure Functions 中，使用简单的 REST 协议获取令牌。 这可用于所有应用程序和语言。 对于 .NET 和 Java，Azure SDK 通过此协议提供抽象，并促进本地开发体验。
+在应用服务和 Azure Functions 中，使用简单的 REST 协议获取令牌。 此协议可用于所有应用程序和语言。 对于 .NET 和 Java，Azure SDK 在此协议上提供了抽象，并有助于本地开发体验。
 
 ### <a name="using-the-rest-protocol"></a>使用 REST 协议
 
@@ -251,26 +251,26 @@ PrincipalId 是用于 AAD 管理的标识的唯一标识符。 ClientId 是应�
 - MSI_ENDPOINT - 本地令牌服务的 URL。
 - MSI_SECRET - 用于帮助缓解服务器端请求伪造 (SSRF) 攻击的标头。 该值由平台轮换。
 
-“MSI_ENDPOINT”是一本地 URL，应用可向其请求令牌。 若要获取资源的令牌，请对此终结点发起 HTTP GET 请求，并包括以下参数：
+“MSI_ENDPOINT”是一本地 URL，应用可向其请求令牌。**** 若要获取资源的令牌，请对此终结点发起 HTTP GET 请求，并包括以下参数：
 
-> |参数名称|In|说明|
+> |参数名称|In|描述|
 > |-----|-----|-----|
 > |resource|查询|应获取其令牌的资源的 AAD 资源 URI。 这可以是[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)或任何其他资源 URI 之一。|
 > |api-version|查询|要使用的令牌 API 版本。 目前唯一支持的版本是 "2017-09-01"。|
 > |secret|标头|MSI_SECRET 环境变量的值。 此标头用于帮助缓解服务器端请求伪造 (SSRF) 攻击。|
-> |clientid|查询|（除非用户分配，否则为可选）要使用的用户分配的标识的 ID。 如果省略，则将使用系统分配的标识。|
+> |clientid|查询|（除非是用户分配的，否则为可选）要使用的用户分配的标识的 ID。 如果省略，则将使用系统分配的标识。|
 
 > [!IMPORTANT]
-> 如果尝试获取用户分配的标识的令牌，则必须包含 `clientid` 属性。 否则，令牌服务将尝试为系统分配的标识获取令牌，这可能存在也可能不存在。
+> 如果正在尝试获取用户分配的标识令牌，则必须包含 `clientid` 属性。 否则，令牌服务将尝试获取系统分配的标识令牌，该令牌不一定存在。
 
 成功的 200 OK 响应包括具有以下属性的 JSON 正文：
 
-> |属性名称|说明|
+> |属性名称|描述|
 > |-------------|----------|
 > |access_token|请求的访问令牌。 调用 Web 服务可以使用此令牌向接收 Web 服务进行身份验证。|
 > |expires_on|访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。|
 > |resource|接收 Web 服务的应用 ID URI。|
-> |token_type|指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。|
+> |token_type|指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 有关无记名令牌的详细信息，请参阅[OAuth 2.0 授权框架：无记名令牌使用 （RFC 6750）。](https://www.rfc-editor.org/rfc/rfc6750.txt)|
 
 此响应与 [AAD 服务到服务访问令牌请求的响应](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token)相同。
 
@@ -319,7 +319,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');
@@ -354,7 +354,7 @@ def get_bearer_token(resource_uri):
     return access_token
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[电源外壳](#tab/powershell)
 
 ```powershell
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -365,7 +365,7 @@ $accessToken = $tokenResponse.access_token
 
 ---
 
-### <a name="asal"></a>使用用于.NET 的 Microsoft.Azure.Services.AppAuthentication 库
+### <a name="using-the-microsoftazureservicesappauthentication-library-for-net"></a><a name="asal"></a>使用用于.NET 的 Microsoft.Azure.Services.AppAuthentication 库
 
 对于 .NET 应用程序和函数，使用托管标识最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 有关此库的本地开发选项的详细信息，请参阅 [Microsoft.Azure.Services.AppAuthentication 参考]。 本部分演示如何开始在代码中使用此库。
 
@@ -387,9 +387,9 @@ $accessToken = $tokenResponse.access_token
 
 ### <a name="using-the-azure-sdk-for-java"></a>使用用于 Java 的 Azure SDK
 
-对于 Java 应用程序和函数，使用托管标识的最简单方法是使用[AZURE SDK For Java](https://github.com/Azure/azure-sdk-for-java)。 本部分演示如何开始在代码中使用此库。
+对于 Java 应用程序和函数，使用托管标识的最简单方法是通过[用于 Java 的 Azure SDK](https://github.com/Azure/azure-sdk-for-java)。 本部分演示如何开始在代码中使用此库。
 
-1. 添加对[AZURE SDK 库](https://mvnrepository.com/artifact/com.microsoft.azure/azure)的引用。 对于 Maven 项目，可以将此代码片段添加到项目 POM 文件的 `dependencies` 部分：
+1. 添加对 [Azure SDK 库](https://mvnrepository.com/artifact/com.microsoft.azure/azure)的引用。 对于 Maven 项目，可以将此代码片段添加到项目的 POM 文件的 `dependencies` 节：
 
     ```xml
     <dependency>
@@ -413,9 +413,9 @@ $accessToken = $tokenResponse.access_token
     ```
 
 
-## <a name="remove"></a>删除标识
+## <a name="remove-an-identity"></a><a name="remove"></a>删除标识
 
-可以使用门户、PowerShell 或 CLI 以与创建时相同的方式禁用此功能，从而删除系统分配的标识。 可以单独删除用户分配的标识。 若要删除所有标识，请在[ARM 模板](#using-an-azure-resource-manager-template)中将类型设置为 "无"：
+可以使用门户、PowerShell 或 CLI 以与创建时相同的方式禁用此功能，从而删除系统分配的标识。 可以单独删除用户分配的标识。 要删除所有标识，请将类型设置为[ARM 模板](#using-an-azure-resource-manager-template)中的"无"：
 
 ```json
 "identity": {

@@ -14,12 +14,12 @@ ms.custom:
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: e0d42a3ce1dd9deb5e73500371c367134ca852e1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3cae005b76ccce7e2b21a392841e781a6a7eb780
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619963"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79289112"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK 硬件规格
 
@@ -150,7 +150,7 @@ Azure Kinect DK 中嵌入了被视为标准 USB 音频类 2.0 设备的优质七
 
 Azure Kinect DK 是一个 USB3 组合设备，它会向操作系统公开以下硬件终结点：
 
-供应商 ID 为 0x045E (Microsoft)，产品 ID 如下表所示：
+供应商 ID 为0x045E (Microsoft)。 产品 ID 表如下所示：
 
 |    USB 接口        |    PNP IP    |     说明            |
 |-------------------------|--------------|----------------------|
@@ -190,7 +190,7 @@ Azure Kinect DK 未随附 Type-C 转 Type-C 线缆。
 > 选择良好的 Type-C 转 Type-C 线缆：
 > - [USB 认证的线缆](https://www.usb.org/products)必须支持供电和数据传输。
 > - 无源线缆的长度应小于 1.5 米。 如果更长，请使用有源线缆。 
-> - 线缆需要能够支持 1.5A 以上的电流。 否则，需要连接外部电源。
+> - 线缆至少需要能够支持 1.5A 的电流。 否则，需要连接外部电源。
 
 检查线缆：
 

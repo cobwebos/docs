@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248445"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函数
@@ -48,7 +48,7 @@ ms.locfileid: "79248445"
 ### <a name="steps"></a>steps
 返回在指定步骤中定义的元素的输出值。 若要获取 Basics 步骤中的元素的输出值，请改用 `basics()`。
 
-下面的示例返回 `bar` 步骤中名为 `foo` 的元素的输出：
+下面的示例返回 `foo` 步骤中名为 `bar` 的元素的输出：
 
 ```json
 "[steps('foo').bar]"
@@ -462,7 +462,7 @@ ms.locfileid: "79248445"
 ```
 
 ### <a name="not"></a>not
-如果参数的计算结果为 `true`，则返回 `false`。 此函数仅支持布尔类型的参数。
+如果参数的计算结果为 `false`，则返回 `true`。 此函数仅支持布尔类型的参数。
 
 以下示例返回 `true`：
 

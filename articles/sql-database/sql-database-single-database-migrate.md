@@ -1,5 +1,5 @@
 ---
-title: 将数据库迁移到单个/共用数据库 SQL Server
+title: 将 SQL Server 数据库迁移到单一/共用数据库
 description: 了解如何将 SQL Server 数据库迁移到 Azure SQL 数据库中的单一数据库或弹性池。
 keywords: 数据库迁移, SQL Server 数据库迁移, 数据库迁移工具, 迁移数据库, 迁移 SQL 数据库
 services: sql-database
@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
 ms.openlocfilehash: 9cec91ccc80b9072b1a3da756f26f47eb88b951c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268608"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>将 SQL Server 数据库迁移到 Azure SQL 数据库
@@ -40,7 +40,7 @@ ms.locfileid: "79268608"
 
   ![VSSSDT 迁移示意图](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
-1. 使用最新版[数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)[评估](https://www.microsoft.com/download/details.aspx?id=53595)数据库的兼容性。
+1. 使用最新版[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)[评估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)数据库的兼容性。
 2. 以 Transact-SQL 脚本形式准备任何必需的修补程序。
 3. 进行迁移时，创建正在迁移的源数据库的事务一致副本，或暂停源数据库中发生的新事务。 实现后一种选择的方法包括禁用客户端连接或创建[数据库快照](https://msdn.microsoft.com/library/ms175876.aspx)。 迁移后，可以使用事务复制来更新已迁移的数据库，该数据库包含迁移的截止时间点后发生的更改。 请参阅[使用事务迁移进行迁移](sql-database-single-database-migrate.md#method-2-use-transactional-replication)。  
 4. 部署 Transact-SQL 脚本，将修补程序应用到数据库副本。
@@ -84,14 +84,14 @@ ms.locfileid: "79268608"
 
 1. 设置分发
    - [使用 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_1)
-   - [使用 Transact-SQL](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_2)
+   - [使用交易-SQL](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_2)
 
 2. 创建发布
    - [使用 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_1)
-   - [使用 Transact-SQL](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_2)
+   - [使用交易-SQL](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_2)
 3. 创建订阅
    - [使用 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_0)
-   - [使用 Transact-SQL](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
+   - [使用交易-SQL](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
 
 迁移到 SQL 数据库的一些提示和差异
 
@@ -108,8 +108,8 @@ ms.locfileid: "79268608"
 
 - [Azure SQL 数据库中不支持的 SQL Server 数据库功能](sql-database-transact-sql-information.md)
 - [SQL Server 2016 中废止的数据库引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.130%29)
-- [SQL Server 2014 中废止的数据库引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.120%29)
-- [SQL Server 2012 中废止的数据库引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.110%29)
+- [SQL Server 2014 中已停用的数据库引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.120%29)
+- [SQL Server 2012 中已停用的数据库引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.110%29)
 - [SQL Server 2008 R2 中已停用的数据库引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.105%29)
 - [SQL Server 2005 中已停用的数据库引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
 

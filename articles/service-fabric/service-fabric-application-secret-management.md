@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
 ms.openlocfilehash: 4a489993f982993d5703a9b46d42fffaa6134038
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259053"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的已加密机密
@@ -22,13 +22,13 @@ ms.locfileid: "79259053"
 
 ## <a name="set-up-an-encryption-certificate-and-encrypt-secrets"></a>设置加密证书并对机密进行加密
 设置加密证书和使用它来加密机密在 Windows 与 Linux 之间所有不同。
-* [设置加密证书并加密 Windows 群集上的机密。][secret-management-windows-specific-link]
-* [设置加密证书并加密 Linux 群集上的机密。][secret-management-linux-specific-link]
+* [在 Windows 群集上设置加密证书并对机密进行加密。][secret-management-windows-specific-link]
+* [在 Linux 群集上设置加密证书并对机密进行加密。][secret-management-linux-specific-link]
 
 ## <a name="specify-encrypted-secrets-in-an-application"></a>在应用程序中指定加密的机密
-上一步骤介绍了如何使用证书来加密机密，并生成要在应用程序中使用的 base-64 编码的字符串。 此64编码字符串可在服务的 Settings .xml 中指定为加密[参数][parameters-link]，或在服务的 servicemanifest.xml 中指定为加密的[环境变量][environment-variables-link]。
+上一步骤介绍了如何使用证书来加密机密，并生成要在应用程序中使用的 base-64 编码的字符串。 可以在服务的 Settings.xml 中将此 base-64 编码的字符串指定为加密的[参数][parameters-link]，也可以在服务的 ServiceManifest.xml 中将其指定为加密的[环境变量][environment-variables-link]。
 
-在服务的 Settings .xml 配置文件中指定加密[参数][parameters-link]，将 `IsEncrypted` 特性设置为 `true`：
+通过在服务的 Settings.xml 配置文件中将  属性设置为  来指定加密的[参数`IsEncrypted``true`][parameters-link]：
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -38,7 +38,7 @@ ms.locfileid: "79259053"
   </Section>
 </Settings>
 ```
-在服务的 Servicemanifest.xml 文件中指定已加密的[环境变量][environment-variables-link]，并将 `Type` 特性设置为 `Encrypted`：
+通过在服务的 ServiceManifest.xml 文件中将  属性设置为  来指定加密的[环境变量`Type``Encrypted`][environment-variables-link]：
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -47,7 +47,7 @@ ms.locfileid: "79259053"
 </CodePackage>
 ```
 
-还应通过在应用程序清单中指定证书，将机密包含在 Service Fabric 的应用程序中。 将**SecretsCertificate**元素添加到**applicationmanifest.xml** ，并包括所需证书的指纹。
+机密也应包括在 Service Fabric 应用程序中，只需在应用程序清单中指定证书即可。 将 **SecretsCertificate** 元素添加到 **ApplicationManifest.xml**，并包括所需证书的指纹。
 
 ```xml
 <ApplicationManifest … >
@@ -96,13 +96,13 @@ Settings.xml 配置文件允许使用可在创建应用程序时提供的可重�
 
 现在，可以在创建应用程序实例时会值指定为*应用程序参数*。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
 
-使用 PowerShell 时，参数以`New-ServiceFabricApplication`哈希表[的形式提供给 ](https://technet.microsoft.com/library/ee692803.aspx)：
+使用 PowerShell 时，参数以[哈希表](https://technet.microsoft.com/library/ee692803.aspx)的形式提供给 `New-ServiceFabricApplication`：
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-使用 C# 时，应用程序参数以 `ApplicationDescription` 的形式在 `NameValueCollection` 中指定：
+使用 C# 时，应用程序参数以 `NameValueCollection` 的形式在 `ApplicationDescription` 中指定：
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -121,7 +121,7 @@ await fabricClient.ApplicationManager.CreateApplicationAsync(applicationDescript
 ```
 
 ## <a name="decrypt-encrypted-secrets-from-service-code"></a>对服务代码中的已加密机密进行解密
-通过用于访问[参数][parameters-link]和[环境变量][environment-variables-link]的 api，可以轻松地对加密值进行解密。 由于加密的字符串包含用于加密的证书的相关信息，因此不需要手动指定证书。 只需在运行服务的节点上安装该证书。
+用于访问[参数][parameters-link]和[环境变量][environment-variables-link]的 API 使已加密的值可以轻松解密。 由于加密的字符串包含用于加密的证书的相关信息，因此不需要手动指定证书。 只需在运行服务的节点上安装该证书。
 
 ```csharp
 // Access decrypted parameters from Settings.xml
@@ -138,7 +138,7 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* Service Fabric[密钥存储](service-fabric-application-secret-store.md) 
+* 服务结构[机密存储](service-fabric-application-secret-store.md) 
 * 深入了解[应用程序和服务安全性](service-fabric-application-and-service-security.md)
 
 <!-- Links -->

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: victorh
 ms.openlocfilehash: 550d9f4f5396b2165260e39cd28222b083dd6756
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279983"
 ---
 # <a name="azure-application-gateway-features"></a>Azure 应用程序网关功能
@@ -20,10 +20,10 @@ ms.locfileid: "79279983"
 
 ![应用程序网关概念](media/overview/figure1-720.png)
 
-应用程序网关包含以下功能：
+应用程序网关包括以下功能：
 
-- [安全套接字层（SSL/TLS）终止](#secure-sockets-layer-ssltls-termination)
-- [自动](#autoscaling)
+- [安全套接字层 (SSL/TLS) 终止](#secure-sockets-layer-ssltls-termination)
+- [自动缩放](#autoscaling)
 - [区域冗余](#zone-redundancy)
 - [静态 VIP](#static-vip)
 - [Web 应用程序防火墙](#web-application-firewall)
@@ -33,43 +33,43 @@ ms.locfileid: "79279983"
 - [重定向](#redirection)
 - [会话相关性](#session-affinity)
 - [Websocket 和 HTTP/2 流量](#websocket-and-http2-traffic)
-- [连接排出](#connection-draining)
+- [连接排水](#connection-draining)
 - [自定义错误页](#custom-error-pages)
 - [重写 HTTP 标头](#rewrite-http-headers)
 - [大小调整](#sizing)
 
 ## <a name="secure-sockets-layer-ssltls-termination"></a>安全套接字层 (SSL/TLS) 终止
 
-应用程序网关支持在网关上终止 SSL/TLS，之后，流量通常会以未加密状态流到后端服务器。 此功能让 Web 服务器不用再负担昂贵的加密和解密开销。 但有时与服务器的未加密通信不是可以接受的选项。 这可能是因为安全要求、符合性要求，或者应用程序可能仅接受安全连接。 对于这些应用程序，应用程序网关支持端到端 SSL/TLS 加密。
+应用程序网关支持在网关上终止 SSL/TLS，之后，流量通常会以未加密状态流到后端服务器。 此功能让 Web 服务器不用再负担昂贵的加密和解密开销。 但有时与服务器进行未加密的通信不是可接受的选项。 这可能是因为安全要求、符合性要求，或者应用程序可能仅接受安全连接。 对于这些应用程序，应用程序网关支持端到端 SSL/TLS 加密。
 
-有关详细信息，请参阅[ssl 终止概述和应用程序网关的端到端 ssl](ssl-overview.md)
+有关详细信息，请参阅[SSL 终止概述以及使用应用程序网关端到端 SSL 的概述](ssl-overview.md)
 
 ## <a name="autoscaling"></a>自动缩放
 
-应用程序网关 Standard_v2 支持自动缩放，并且可以根据不断变化的流量负载模式增加或缩减。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 
+应用程序网关Standard_v2支持自动缩放，并可根据不断变化的流量负载模式进行扩展或缩减。 自动缩放还无需在预配期间要求选择部署大小或实例计数。 
 
-有关应用程序网关 Standard_v2 功能的详细信息，请参阅自动[缩放 V2 SKU](application-gateway-autoscaling-zone-redundant.md)。
+有关应用程序网关Standard_v2功能的详细信息，请参阅[自动缩放 v2 SKU](application-gateway-autoscaling-zone-redundant.md)。
 
 ## <a name="zone-redundancy"></a>区域冗余
 
-Standard_v2 应用程序网关可跨多个可用性区域，提供更好的容错能力，并且无需在每个区域中预配单独的应用程序网关。
+Standard_v2应用程序网关可以跨多个可用性区域，提供更好的故障恢复能力，并无需在每个区域中预配单独的应用程序网关。
 
 ## <a name="static-vip"></a>静态 VIP
 
-应用程序网关 Standard_v2 SKU 以独占方式支持静态 VIP 类型。 这样可确保与应用程序网关关联的 VIP 在应用程序网关的整个生存期内都不会更改。
+SKUStandard_v2应用程序网关专门支持静态 VIP 类型。 这样可确保与应用程序网关关联的 VIP 在应用程序网关的整个生存期内都不会更改。
 
 ## <a name="web-application-firewall"></a>Web 应用程序防火墙
 
-Web 应用程序防火墙（WAF）是一种服务，可提供对 web 应用程序的集中保护，并防范常见的漏洞。 WAF 基于 [OWASP（开放 Web 应用程序安全项目）核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.1（仅限 WAF_v2）、3.0 和 2.2.9 中的规则。 
+Web 应用程序防火墙 （WAF） 是一种服务，它为您的 Web 应用程序提供集中保护，防止常见的漏洞和漏洞。 WAF 基于 [OWASP（开放 Web 应用程序安全项目）核心规则集](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.1（仅限 WAF_v2）、3.0 和 2.2.9 中的规则。 
 
-Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 这些攻击中最常见的攻击包括 SQL 注入攻击、跨站点脚本攻击等。 防止应用程序代码中的此类攻击颇具挑战性，可能需要在应用程序拓扑的多个层进行严格的维护、修补和监视。 集中式 Web 应用程序防火墙有助于大幅简化安全管理，为抵卸威胁或入侵的应用程序管理员提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 可以轻松地将现有应用程序网关转换为启用了 Web 应用程序防火墙的应用程序网关。
+Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 这些攻击中最常见的攻击包括 SQL 注入攻击、跨站点脚本攻击等。 防止应用程序代码中的此类攻击颇具挑战性，可能需要在应用程序拓扑的多个层进行严格的维护、修补和监视。 集中式 Web 应用程序防火墙有助于大幅简化安全管理，为抵卸威胁或入侵的应用程序管理员提供更好的保障。 相较保护每个单独的 Web 应用程序，WAF 解决方案还可通过在中央位置修补已知漏洞，更快地响应安全威胁。 现有应用程序网关可以轻松地转换为启用 Web 应用程序防火墙的应用程序网关。
 
 有关详细信息，请参阅[什么是 Azure Web 应用程序防火墙？](../web-application-firewall/overview.md)。
 
 ## <a name="ingress-controller-for-aks"></a>AKS 的入口控制器
 应用程序网关入口控制器 (AGIC) 允许你使用应用程序网关作为 [Azure Kubernetes 服务 (AKS)](https://azure.microsoft.com/services/kubernetes-service/) 群集的入口。 
 
-入口控制器在 AKS 群集中运行为 pod，并使用[Kubernetes 入口资源](https://kubernetes.io/docs/concepts/services-networking/ingress/)，并将其转换为应用程序网关配置，使网关能够将流量负载均衡到 Kubernetes pod。 入口控制器仅支持应用程序网关 Standard_v2 和 WAF_v2 SKUs。 
+入口控制器作为 AKS 群集中的窗格运行，并消耗[Kubernetes 入口资源](https://kubernetes.io/docs/concepts/services-networking/ingress/)并将其转换为应用程序网关配置，这允许网关将流量加载到 Kubernetes pod。 入口控制器仅支持应用程序网关 Standard_v2 和 WAF_v2 SKUs。 
 
 有关详细信息，请参阅[应用程序网关入口控制器 (AGIC)](ingress-controller-overview.md)。
 
@@ -79,17 +79,17 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 
 例如，将 `http://contoso.com/video/*` 的请求路由到 VideoServerPool，将 `http://contoso.com/images/*` 的请求路由到 ImageServerPool。 如果没有任何路径模式匹配，则选择 DefaultServerPool。
 
-有关详细信息，请参阅[基于 URL 路径的路由概述](url-route-overview.md)。
+有关详细信息，请参阅基于[URL 路径的路由概述](url-route-overview.md)。
 
 ## <a name="multiple-site-hosting"></a>多站点托管
 
-使用多站点托管可以在同一应用程序网关实例上配置多个网站。 此功能使你可以为部署配置更有效的拓扑，方法是将最多100个网站添加到一个应用程序网关（以获得最佳性能）。 每个网站都可以定向到自己的池。 例如，应用程序网关可以通过两个名为 ContosoServerPool 和 FabrikamServerPool 的服务器池分别处理 `contoso.com` 和 `fabrikam.com` 的流量。
+使用多站点托管可以在同一应用程序网关实例上配置多个网站。 此功能允许您通过将多达 100 个网站添加到一个应用程序网关（以实现最佳性能）来为部署配置更高效的拓扑。 每个网站都可以定向到自己的池。 例如，应用程序网关可以通过两个名为 ContosoServerPool 和 FabrikamServerPool 的服务器池分别处理 `contoso.com` 和 `fabrikam.com` 的流量。
 
 对 `http://contoso.com` 的请求路由到 ContosoServerPool，对 `http://fabrikam.com` 的请求路由到 FabrikamServerPool。
 
 同样，可以将同一父域的两个子域托管在同一应用程序网关部署中。 例如，在单个应用程序网关部署中托管的 `http://blog.contoso.com` 和 `http://app.contoso.com` 都是使用子域。
 
-有关详细信息，请参阅[应用程序网关多站点托管](multiple-site-overview.md)。
+有关详细信息，请参阅[应用程序网关多个站点托管](multiple-site-overview.md)。
 
 ## <a name="redirection"></a>重定向
 
@@ -109,19 +109,19 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 
 需要在同一服务器上保留用户会话时，可以使用基于 Cookie 的会话相关性功能。 借助网关托管的 Cookie，应用程序网关可以将来自用户会话的后续流量定向到同一服务器进行处理。 在用户会话的会话状态在服务器上进行本地保存的情况下，此功能十分重要。
 
-有关详细信息，请参阅[应用程序网关的工作](how-application-gateway-works.md#modifications-to-the-request)原理。
+有关详细信息，请参阅[应用程序网关的工作原理](how-application-gateway-works.md#modifications-to-the-request)。
 
 ## <a name="websocket-and-http2-traffic"></a>Websocket 和 HTTP/2 流量
 
 应用程序网关为 WebSocket 和 HTTP/2 协议提供本机支持。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。
 
-WebSocket 和 HTTP/2 协议通过长时间运行的 TCP 连接，在服务器和客户端之间实现全双工通信。 此功能让 Web 服务器和客户端之间能够进行交互性更强的通信。这种通信可以是双向的，而且不像基于 HTTP 的实现那样需要轮询。 与 HTTP 不同，这些协议的开销较低，并且可以对多个请求/响应重复使用同一 TCP 连接，从而提高资源利用率。 这些协议设计为通过传统 HTTP 端口 80 和 443 运行。
+WebSocket 和 HTTP/2 协议通过长时间运行的 TCP 连接，在服务器和客户端之间实现全双工通信。 此功能让 Web 服务器和客户端之间能够进行交互性更强的通信。这种通信可以是双向的，而且不像基于 HTTP 的实现那样需要轮询。 这些协议具有较低的开销，与 HTTP 不同，它可以为多个请求/响应重用相同的 TCP 连接，从而更有效地利用资源。 这些协议设计为通过传统 HTTP 端口 80 和 443 运行。
 
 有关详细信息，请参阅 [WebSocket 支持](application-gateway-websocket.md)和 [HTTP/2 支持](configuration-overview.md#http2-support)。
 
 ## <a name="connection-draining"></a>连接清空
 
-连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 此设置是通过后端 http 设置启用的，并且可以在创建规则期间应用于后端池的所有成员。 启用后，应用程序网关可确保后端池的所有取消注册实例不会收到任何新请求，同时允许现有请求在配置的时间限制内完成。 这适用于通过用户配置更改显式从后端池中删除的后端实例，以及所报告的由运行状况探测确定为不正常的后端实例。 这种情况的唯一例外是绑定到已显式取消注册的注销实例的请求，因为网关托管会话相关性，并继续代理到注销实例。
+连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 此设置是通过后端 http 设置启用的，并且可以在创建规则期间应用于后端池的所有成员。 启用后，应用程序网关可确保后端池的所有注销实例不会收到任何新请求，同时允许现有请求在配置的时间限制内完成。 这适用于通过用户配置更改显式从后端池中删除的后端实例，以及所报告的由运行状况探测确定为不正常的后端实例。 唯一的例外是绑定用于取消注册实例的请求，这些请求已显式取消注册，因为网关托管的会话关联性并继续接近取消注册实例。
 
 有关详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#connection-draining)。
 
@@ -145,9 +145,9 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 ## <a name="sizing"></a>调整大小
 
-可以为自动缩放或固定大小部署配置应用程序网关 Standard_v2。 此 SKU 不提供不同的实例大小。 有关 v2 性能和定价的详细信息，请参阅[自动缩放 v2 SKU](application-gateway-autoscaling-zone-redundant.md#pricing)。
+应用程序网关Standard_v2可以配置为自动缩放或固定大小部署。 此 SKU 不提供不同的实例大小。 有关 v2 性能和定价的详细信息，请参阅[自动缩放 v2 SKU](application-gateway-autoscaling-zone-redundant.md#pricing)。
 
-应用程序网关标准提供三种大小：**小型**、**中型**和**大型**。 小型实例大小适用于开发和测试方案。
+应用程序网关标准有三种尺寸：**小**、**中**、**大**。 小型实例大小适用于开发和测试方案。
 
 有关应用程序网关限制的完整列表，请参阅[应用程序网关服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)。
 
@@ -163,4 +163,4 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解应用程序网关的工作原理-[应用程序网关的工作](how-application-gateway-works.md)原理
+- 了解应用程序网关的工作原理 -[应用程序网关的工作原理](how-application-gateway-works.md)

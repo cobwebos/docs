@@ -9,17 +9,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.openlocfilehash: 419a71acbca59c00bd0ffecf39d5d1ff38833b08
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284585"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
 有两种类别的软件开发工具包 (SDK) 适用于 IoT 中心：
 
-* **IoT 中心设备 SDK**：可用于使用设备客户端或模块客户端构建在 IoT 设备上运行的应用。 这些应用将遥测发送到 IoT 中心，并可以选择从 IoT 中心接收消息、作业、方法或孪生更新。  还可以使用模块客户端，为 [Azure IoT Edge 运行时](../iot-edge/iot-edge-modules.md)创建[模块](../iot-edge/about-iot-edge.md)。
+* **IoT 中心设备 SDK**使您能够使用设备客户端或模块客户端构建在 IoT 设备上运行的应用。 这些应用将遥测发送到 IoT 中心，并可以选择从 IoT 中心接收消息、作业、方法或孪生更新。  还可以使用模块客户端，为 [Azure IoT Edge 运行时](../iot-edge/about-iot-edge.md)创建[模块](../iot-edge/iot-edge-modules.md)。
 
 * **IoT 中心服务 SDK**：可用于构建后端应用程序来管理 IoT 中心，并视需要发送消息、计划作业、调用直接方法或向 IoT 设备或模块发送相应属性更新。
 
@@ -37,7 +37,7 @@ ms.locfileid: "79284585"
 
 有关受支持的 SDK 平台，可访问 [Azure IoT SDK 平台支持](iot-hub-device-sdk-platform-support.md)。
 
-若要详细了解 SDK 与特定硬件设备的兼容性，请参阅 [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)或各个存储库。
+有关与特定硬件设备的 SDK 兼容性的详细信息，请参阅 [Azure IoT 认证设备目录](https://catalog.azureiotsolutions.com/)或个体存储库。
 
 ## <a name="azure-iot-hub-device-sdks"></a>Azure IoT 中心设备 SDK
 
@@ -45,7 +45,7 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 适用于 .NET 的 Azure IoT 中心设备 SDK： 
 
-* 通过 [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) 下载。  命名空间是 Microsoft.Azure.Devices.Clients，其中包含 IoT 中心设备客户端（DeviceClient、ModuleClient）。
+* 从[Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)下载 。  命名空间是 Microsoft.Azure.Devices.Clients，其中包含 IoT 中心设备客户端（DeviceClient、ModuleClient）。
 * [源代码](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
 * [模块参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
@@ -83,7 +83,7 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 适用于 iOS 的 Azure IoT 中心设备 SDK： 
 
-* 通过 [CocoaPod](https://cocoapods.org/pods/AzureIoTHubClient) 安装
+* 从 [CocoaPod](https://cocoapods.org/pods/AzureIoTHubClient) 安装
 * [示例](https://github.com/Azure-Samples/azure-iot-samples-ios)
 * API 参考：请参阅 [C API 参考](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
@@ -93,7 +93,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 适用于 .NET 的 Azure IoT 中心服务 SDK：
 
-* 通过 [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices/) 下载。  命名空间是 Microsoft.Azure.Devices，其中包含 IoT 中心服务客户端（RegistryManager、ServiceClients）。
+* 从[Nuget](https://www.nuget.org/packages/Microsoft.Azure.Devices/)下载 。  命名空间是 Microsoft.Azure.Devices，其中包含 IoT 中心服务客户端（RegistryManager、ServiceClients）。
 * [源代码](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices)
 
@@ -121,7 +121,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 适用于 iOS 的 Azure IoT 中心服务 SDK： 
 
-* 通过 [CocoaPod](https://cocoapods.org/pods/AzureIoTHubServiceClient) 安装
+* 从 [CocoaPod](https://cocoapods.org/pods/AzureIoTHubServiceClient) 安装
 * [示例](https://github.com/Azure-Samples/azure-iot-samples-ios)
 
 > [!NOTE]
@@ -164,7 +164,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 Azure IoT SDK 还提供了一组工具来帮助开发：
 * [iothub-diagnostics](https://github.com/Azure/iothub-diagnostics)：一个跨平台的命令行工具，用于帮助诊断与 IoT Hub 连接相关的问题。
-* [azure iot 管理器](https://github.com/Azure/azure-iot-explorer)：一种跨平台的桌面应用程序，用于连接到 iot 中心并添加/管理/与 iot 设备通信。
+* [azure-iot-explorer](https://github.com/Azure/azure-iot-explorer)：一个跨平台的桌面应用程序，用于连接到 IoT 中心并添加/管理 IoT 设备及与其通信。
 
 与使用 Azure IoT SDK 进行开发相关的文档：
 * 了解如何使用 IoT 中心 SDK [管理连接和可靠的消息传送](iot-hub-reliability-features-in-sdks.md)。
@@ -178,4 +178,4 @@ Azure IoT SDK 还提供了一组工具来帮助开发：
 * [用于设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)
 * [配额和限制](iot-hub-devguide-quotas-throttling.md)
 * [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)
-* [IoT 中心 REST API 参考](/rest/api/iothub/)
+* [物联网中心 REST API 参考](/rest/api/iothub/)

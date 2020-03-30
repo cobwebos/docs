@@ -1,5 +1,5 @@
 ---
-title: Azure 中 Linux Vm 的 Scheduled Events
+title: Azure 中 Linux VM 的计划事件
 description: 通过为 Linux 虚拟机使用 Azure 元数据服务来计划事件。
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
 ms.openlocfilehash: dbea68f5699f26b866d2e22c960c0359bcb3479b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267191"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 元数据服务：适用于 Linux VM 的计划事件
@@ -45,10 +45,10 @@ ms.locfileid: "79267191"
 
 预定事件提供以下用例中的事件：
 
-- [平台启动的维护](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates)（例如，VM 重新启动、实时迁移或保留主机更新的内存）
-- 虚拟机正在降级的[主机硬件](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上运行，这些硬件预测很快就会失败
+- [平台启动的维护](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates)（例如 VM 重启、主机的实时迁移或内存保留更新）
+- 虚拟机在[降级的主机硬件](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上运行，预计该硬件将很快出现故障
 - 用户启动的维护（例如，用户重启或重新部署 VM）
-- [点 VM](spot-vms.md)和[点规模集](../../virtual-machine-scale-sets/use-spot.md)实例逐出。
+- [Spot VM](spot-vms.md)和[Spot 缩放集](../../virtual-machine-scale-sets/use-spot.md)实例逐出。
 
 ## <a name="the-basics"></a>基础知识  
 
@@ -76,8 +76,8 @@ ms.locfileid: "79267191"
 
 | 版本 | 发布类型 | 区域 | 发行说明 | 
 | - | - | - | - | 
-| 2019-01-01 | 正式版 | All | <li> 添加了对虚拟机规模集事件 \ "终止" 的支持 |
-| 2017-11-01 | 正式版 | All | <li> 添加了对点 VM 逐出事件 \ "Preempt" 的支持<br> | 
+| 2019-01-01 | 正式版 | All | <li> 添加了对虚拟机规模集事件类型"终止"的支持 |
+| 2017-11-01 | 正式版 | All | <li> 添加了对 Spot VM 逐出事件类型"抢占"的支持<br> | 
 | 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
 | 2017-03-01 | 预览 | All | <li>初始版本 |
 
@@ -127,10 +127,10 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 ```
 
 ### <a name="event-properties"></a>事件属性
-|properties  |  说明 |
+|properties  |  描述 |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停几秒。 CPU 和网络连接可能会挂起，但不会影响内存或打开的文件。<li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘丢失）。 <li>`Preempt`：正在删除点虚拟机（临时磁盘将丢失）。 <li> `Terminate`：计划删除虚拟机。 |
+| EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停几秒钟。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。<li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘丢失）。 <li>`Preempt`：正在删除 Spot 虚拟机（临时磁盘丢失）。 <li> `Terminate`：计划删除虚拟机。 |
 | ResourceType | 此事件影响的资源的类型。 <br><br> 值： <ul><li>`VirtualMachine`|
 | 资源| 此事件影响的资源的列表。 此列表确保包含来自最多一个[更新域](manage-availability.md)的计算机，但可能不包含 UD 中的所有计算机。 <br><br> 示例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 从不提供 `Completed` 或类似状态。 事件完成后不再返回事件。
@@ -144,15 +144,15 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | 冻结| 15 分钟 |
 | 重新启动 | 15 分钟 |
 | 重新部署 | 10 分钟 |
-| 优先于 | 30 秒 |
-| Terminate | [用户可配置](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications)：5至15分钟 |
+| Preempt | 30 秒 |
+| 终止 | [用户可配置 ：5](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications)到 15 分钟 |
 
 > [!NOTE] 
-> 在某些情况下，由于硬件降级，Azure 能够预测主机故障，并通过计划迁移来尝试缓解服务中断。 受影响的虚拟机将收到计划事件，该事件的 `NotBefore` 通常是将来几天的时间。 实际时间取决于预测的失败风险评估。 Azure 会在可能的情况下尝试提前7天的提前通知，但实际时间会变化，如果预测是即将的硬件发生故障，可能会更小。 为了最大程度地降低服务的风险，以防硬件在系统启动的迁移之前出现故障，我们建议你尽快自行重新部署虚拟机。
+> 在某些情况下，Azure 能够预测由于硬件降级而导致的主机故障，并且将尝试通过调度迁移来缓解对服务的中断。 受影响的虚拟机将收到计划事件，`NotBefore`事件通常为将来几天。 实际时间因预测故障风险评估而异。 Azure 尝试在可能的情况下提前 7 天通知，但如果预测硬件即将出现故障，则实际时间会有所不同，并且可能较小。 为了在系统启动的迁移之前硬件出现故障，请最大程度地降低服务风险，我们建议您尽快自行重新部署虚拟机。
 
 ### <a name="start-an-event"></a>启动事件 
 
-了解即将发生的事件并完成正常关闭的逻辑后，可通过使用 `POST` 对元数据服务进行 `EventId` 调用，批准未完成事件。 此调用向 Azure 指示可缩短最短通知时间（如有可能）。 
+了解即将发生的事件并完成正常关闭的逻辑后，可通过使用 `EventId` 对元数据服务进行 `POST` 调用，批准未完成事件。 此调用向 Azure 指示可缩短最短通知时间（如有可能）。 
 
 下面是 `POST` 请求正文中所需的 JSON 示例。 请求应包含 `StartRequests` 列表。 每个 `StartRequest` 包含想要加速的事件的 `EventId`：
 ```
@@ -223,4 +223,4 @@ if __name__ == '__main__':
 - 观看 [Azure Friday 上的计划事件](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)以查看演示。 
 - 在 [Azure 实例元数据计划事件 GitHub 存储库](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)中查看计划事件代码示例。
 - 详细了解[实例元数据服务](instance-metadata-service.md)中可用的 API。
-- 了解 [Azure 中 Linux 虚拟机的计划内维护](planned-maintenance.md)。
+- 了解[Azure 中 Linux 虚拟机的计划维护](planned-maintenance.md)。

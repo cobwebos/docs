@@ -1,19 +1,18 @@
 ---
-title: 创建 Azure 虚拟机后配置 WinRM |Azure Marketplace
+title: 在 Azure 虚拟机创建后配置 WinRM |Azure 应用商店
 description: 介绍了在创建 Azure 托管虚拟机后如何配置 Windows 远程管理 (WinRM)。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: pabutler
-ms.openlocfilehash: 7d050b32b212f66623a24bcf87d40111fc5973a5
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.author: dsindona
+ms.openlocfilehash: 673fe1f31f6a8602225e7cde3bf1eb4c3b28b8a3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77481368"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278138"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>在创建虚拟机后配置 WinRM
 
@@ -25,19 +24,19 @@ ms.locfileid: "77481368"
 
 ## <a name="enabling-port-traffic"></a>启用端口流量
 
-WinRM over HTTPS 协议使用端口5986，默认情况下，在 Azure Marketplace 中提供的预配置 Windows Vm 上不启用此端口。 若要启用此协议，请使用以下步骤通过 [Azure 门户](https://portal.azure.com)向网络安全组 (NSG) 中添加一个新规则。  有关 NSG 的详细信息，请参阅[安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)。
+WINRM 超过 HTTPS 协议使用端口 5986，默认情况下，在 Azure 应用商店上提供的预先配置的 Windows VM 上不会启用端口 5986。 若要启用此协议，请使用以下步骤通过 [Azure 门户](https://portal.azure.com)向网络安全组 (NSG) 中添加一个新规则。  有关 NSG 的详细信息，请参阅[安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)。
 
-1.  导航到“虚拟机”>vm-name  < *>“设置/网络”边栏选项卡。* >  
+1.  导航到刀片**虚拟机>**   < *vm 名称*>  **> 设置/网络**。
 2.  单击 NSG 名称（在此示例中为 **testvm11002**）以显示其属性：
 
     ![网络安全组属性](./media/nsg-properties.png)
  
-3. 在“设置”下，选择“入站安全规则”以显示此边栏选项卡。
-4. 单击“+添加”来为 TCP 端口 5986 创建名为 `WinRM_HTTPS` 的新规则。
+3. 在“设置”下，选择“入站安全规则”以显示此边栏选项卡。********
+4. 单击“+添加”**** 来为 TCP 端口 5986 创建名为 `WinRM_HTTPS` 的新规则。
 
     ![添加入站网络安全规则](./media/nsg-new-rule.png)
 
-5. 提供值后，单击“确定”。  入站安全规则的列表应包含以下新条目。
+5. 提供值后，单击“确定”。****  入站安全规则的列表应包含以下新条目。
 
     ![入站网络安全规则的列表](./media/nsg-new-inbound-listing.png)
 

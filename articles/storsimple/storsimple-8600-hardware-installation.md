@@ -1,5 +1,5 @@
 ---
-title: 安装 Microsoft Azure StorSimple 8600 设备
+title: 安装微软 Azure StorSimple 8600 设备
 description: 介绍如何在部署和配置软件之前打开 StorSimple 8600 设备的包装并进行机架安装和布线。
 author: alkohli
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254750"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打开 StorSimple 8600 设备的包装并进行机架安装和布线
@@ -27,7 +27,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
 ### <a name="prepare-to-unpack-your-device"></a>准备打开设备的包装
 打开设备包装之前，请查看以下信息。
 
-![警告图标](./media/storsimple-safety/IC740879.png)![重度权重图标](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png)**警告！**
+![警告图标](./media/storsimple-safety/IC740879.png)![重物图标](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **警告！**
 
 1. 若要手动装卸机箱，请确保有两名人员分担设备重量。 配置完整的机箱重达 32 kg（70 磅）。
 2. 将箱子放在平坦的水平表面上。
@@ -42,7 +42,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **存储设备解包后的视图**
    
-   | Label | 说明 |
+   | Label | 描述 |
    | --- | --- |
    |   1 |包装箱 |
    |   2 |SAS 电缆（位于配件和电缆槽中） |
@@ -85,7 +85,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
 2. 确认要布置的安装位置具有来自独立源的标准交流电，或具有带不间断电源 (UPS) 的机架电源分配单元 (PDU)。
 3. 确保要安装机箱的机架上有 1 个 4U (2 X 2U) 插槽。
 
-![警告图标](./media/storsimple-safety/IC740879.png)![重度权重图标](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png)**警告！**
+![警告图标](./media/storsimple-safety/IC740879.png)![重物图标](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **警告！**
 
  若要手动安装设备，请确保有两名人员分担设备重量。 配置完整的机箱重达 32 kg（70 磅）。
 
@@ -106,7 +106,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **在机箱侧面安装导轨**
    
-   | Label | 说明 |
+   | Label | 描述 |
    | --- | --- |
    |  1 |M 3x4 圆头螺丝 |
    |  2 |底架滑轨 |
@@ -119,7 +119,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **将导轨组件固定到机架上**
    
-   | Label | 说明 |
+   | Label | 描述 |
    | --- | --- |
    |   1 |旋紧螺丝 |
    |   2 |方孔前机架立柱螺丝 |
@@ -145,7 +145,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **安装法兰帽**
    
-   | Label | 说明 |
+   | Label | 描述 |
    | --- | --- |
    |   1 |机箱紧固螺丝 |
 
@@ -164,7 +164,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 ## <a name="cable-your-storsimple-8600-device"></a>进行 StorSimple 8600 设备布线
 以下过程阐释了如何针对电源、网络和串行连接进行 StorSimple 8600 设备布线。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 在开始设备布线之前，需要：
 
 * 主机箱和 EBOD 机箱（完全解包）
@@ -198,7 +198,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
    
     **设备背面显示数据端口**
    
-   | Label | 说明 |
+   | Label | 描述 |
    | --- | --- |
    |   0,1,4,5 |1 GbE 网络接口 |
    |   2,3 |10 GbE 网络接口 |
@@ -209,7 +209,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 
 **设备网络布线**
 
-| Label | 说明 |
+| Label | 描述 |
 | --- | --- |
 | A |具有 Internet 访问的 LAN |
 | B |控制器 0 |
@@ -231,7 +231,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 对于高可用性和性能，请记住：
 
 * 如果可能，可在每个控制器上配置一对用于云访问的网络接口 (1 GbE) 和另一对用于 iSCSI 的网络接口（推荐 10 GbE）。
-* 如果可能，可将每个控制器的网络接口连接到两台不同的交换机上，确保其中一台发生故障时设备仍可用。 上图展示了连接到两台不同交换机的每个控制器上的两个 10 GbE 网络接口（DATA 2 和 DATA 3）。 有关详细信息，请参阅 **StorSimple 设备高可用性要求**下的[网络接口](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple)。
+* 如果可能，可将每个控制器的网络接口连接到两台不同的交换机上，确保其中一台发生故障时设备仍可用。 上图展示了连接到两台不同交换机的每个控制器上的两个 10 GbE 网络接口（DATA 2 和 DATA 3）。 有关详细信息，请参阅 [StorSimple 设备高可用性要求](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple)下的**网络接口**。
 
 > [!NOTE]
 > 如果在 10 GbE 网络接口上使用 SFP+ 收发器，请使用提供的 QSFP-SFP+ 适配器。 有关详细信息，请转到 [StorSimple 设备上适用于 10 GbE 网络接口的支持硬件](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)。
@@ -252,7 +252,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
    * 8 数据位
    * 1 停止位
    * 无奇偶校验位
-   * 流控制设置为“无”
+   * 流控制设置为“无”****
 6. 在控制台中按 Enter 键确认连接是否正常。 将出现串行控制台菜单。
 
 > [!NOTE]

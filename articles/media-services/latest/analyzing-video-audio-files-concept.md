@@ -1,7 +1,7 @@
 ---
 title: 分析视频和音频文件
 titleSuffix: Azure Media Services
-description: 了解如何在 Azure 媒体服务中使用 AudioAnalyzerPreset 和 VideoAnalyzerPreset 分析音频和视频内容。
+description: 了解如何使用 Azure 媒体服务中的 AudioAnalyzerPreset 和 VideoAnalyzerPreset 分析音频与视频内容。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269882"
 ---
-# <a name="analyze-video-and-audio-files-with-azure-media-services"></a>通过 Azure 媒体服务分析视频和音频文件
+# <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒体服务分析视频和音频文件
 
-Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件中提取见解。 本文介绍用于提取这些见解的媒体服务 v3 分析器预设。 如果需要更详细的见解，请直接使用视频索引器。 若要了解何时使用视频索引器与媒体服务分析器预设，请查看[比较文档](../video-indexer/compare-video-indexer-with-media-services-presets.md)。
+在 Azure 媒体服务 v3 中，可以使用视频索引器从视频和音频文件中提取见解。 本文介绍用于提取这些见解的媒体服务 v3 分析器预设。 如果需要更详细的见解，请直接使用视频索引器。 要了解何时使用视频索引器与媒体服务分析器预设，请查看[比较文档](../video-indexer/compare-video-indexer-with-media-services-presets.md)。
 
-若要使用媒体服务 v3 预设来分析内容，请创建一个**转换**，并提交使用以下预设之一的**作业**： [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)或**AudioAnalyzerPreset**。 有关演示如何使用**VideoAnalyzerPreset**的教程，请参阅[使用 Azure 媒体服务分析视频](analyze-videos-tutorial-with-api.md)。
+要使用媒体服务 v3 预设分析内容，请创建**一个转换**并提交使用这些预设之一的**作业**：[视频分析器预设](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)或**音频分析预设**。 有关演示如何使用 **VideoAnalyzerPreset** 的教程，请参阅[使用 Azure 媒体服务分析视频](analyze-videos-tutorial-with-api.md)。
 
 > [!NOTE]
 > 使用视频或音频分析器预设时，请通过 Azure 门户将帐户设置为具有 10 个 S3 媒体预留单位。 有关详细信息，请参阅[缩放媒体处理](media-reserved-units-cli-how-to.md)。
@@ -38,36 +38,36 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 |**预设名称**|**方案**|**详细信息**|
 |---|---|---|
-|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音频|该预设应用一组基于 AI 的预定义分析操作，其中包括语音听录。 目前，该预设支持处理包含单个音轨的内容且音轨应仅包含一种语言的语音。 可以使用 BCP-47 格式“language tag-region”为输入中的音频有效负载指定语言。 支持的语言为英语（"en-us" 和 "en-us"）、西班牙语（"es" 和 "es-MX"）、法语（"fr"）、意大利语（"it"）、日语（"ja-jp"）、葡萄牙语（"pt-BR"）、中文（"zh-chs"）、德语（"de"）、阿拉伯语（"ar-示例" 和 "ar-SY"）、俄语（"ru-RU"）、印地语（"hi"）和朝鲜语（"ko-KR"）。<br/><br/> 如果未指定语言或未将其设置为 null，则自动语言检测会选择检测到的第一种语言，并在文件的持续时间内继续选择所选语言。 自动语言检测功能目前支持英语、中文、法语、德语、意大利语、日语、西班牙语、俄语和葡萄牙语。 它不支持在检测到第一种语言后动态切换语言。 自动语言检测功能最适用于包含清晰可辨的语音的录音。 如果自动语言检测无法找到语言，则脚本会退回到英语。|
+|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音频|该预设应用一组基于 AI 的预定义分析操作，其中包括语音听录。 目前，该预设支持处理包含单个音轨的内容且音轨应仅包含一种语言的语音。 可以使用 BCP-47 格式“language tag-region”为输入中的音频有效负载指定语言。 支持的语言包括英语（en-US 和 en-GB）、西班牙语（es-ES 和 es-MX）、法语 (fr-FR)、意大利语 (it-IT)、日语 (ja-JP)、葡萄牙语 (pt-BR)、中文 (zh-CN)、德语 (de-DE)、阿拉伯语（ar-EG 和 ar-SY）、俄语 (ru-RU)、印地语 (hi-IN) 和韩语 (ko-KR)。<br/><br/> 如果未指定语言或将语言设置为 null，自动语言检测将选择检测到的第一种语言并继续使用所选语言处理整个文件。 自动语言检测功能目前支持英语、中文、法语、德语、意大利语、日语、西班牙语、俄语和葡萄牙语。 它不支持在检测到第一种语言后在各语言之间进行动态切换。 自动语言检测功能最适用于包含清晰可辨的语音的录音。 如果自动语言检测未能找到语言，脚本将回退到英语。|
 |[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|分析音频和视频|从音频和视频中提取见解（丰富的元数据），并输出 JSON 格式的文件。 可以指定在处理视频文件时是否只想提取音频见解。 有关详细信息，请参阅[分析视频](analyze-videos-tutorial-with-api.md)。|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|检测视频中的人脸|描述在分析视频时要使用的设置，以检测当前存在的所有表面。|
+|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|检测视频中的人脸|描述在分析视频时要使用的设置，以便检测出现的所有人脸。|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
 使用此预设，可以从音频或视频文件中提取多个音频见解。 输出包括一个 JSON 文件（包含所有见解）和该音频脚本的 VTT 文件。 此预设接受 [BCP47](https://tools.ietf.org/html/bcp47) 字符串格式的属性，该属性用于指定输入文件的语言。 音频见解包括：
 
-* **音频**脚本：带有时间戳的口述字词的脚本。 支持多种语言。
-* **演讲者索引**：扬声器的映射和相应的口述字词。
-* **语音情绪分析**：对音频操作执行的情绪分析的输出。
-* **关键字**：从音频脚本中提取的关键字。
+* **音频转录**：带时间戳的口语的脚本。 支持多种语言。
+* **扬声器索引**：扬声器和相应口语的映射。
+* **言语情绪分析**：对音频转录进行情绪分析的输出。
+* **关键字**：从音频转录中提取的关键字。
 
 ### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
 使用此预设，可以从视频中提取多个音频和视频见解。 输出包括一个 JSON 文件（包含所有见解）、该视频脚本的 VTT 文件以及视频缩略图集合。 此预设还接受 [BCP47](https://tools.ietf.org/html/bcp47) 字符串格式的属性，该属性表示视频的语言。 视频见解包括上述所有音频见解，此外还包含以下项：
 
-* **面部跟踪**：视频中出现面部的时间。 每个面部都有一个人脸 ID 和一个对应的缩略图集。
-* **视觉对象文本**：通过光学字符识别检测到的文本。 文本带有时间戳，还用于提取关键字（除了音频脚本之外）。
+* **人脸跟踪**：视频中存在人脸的时间。 每张人脸都有一个面部 ID 和对应的视频缩略图集合。
+* **可视文本**：通过光学字符识别检测到的文本。 该文本带有时间戳，也用于提取关键字（以及音频脚本）。
 * **关键帧**：从视频中提取的关键帧的集合。
-* **视觉对象内容裁决**：本质上标记为成人或猥亵的视频部分。
-* **批注**：基于预定义的对象模型对视频进行批注的结果
+* **视觉内容适度**：在本质上标记为成人或花哨的视频部分。
+* **注释**：基于预定义对象模型对视频进行批注的结果
 
 ## <a name="insightsjson-elements"></a>insights.json 元素
 
-输出包括一个 JSON 文件（insights），其中包含在视频或音频中找到的所有见解。 JSON 可能包含以下元素：
+输出包括一个 JSON 文件 (insights.json)，其中包含从音频或视频发现的所有见解。 JSON 可以包含以下元素：
 
 ### <a name="transcript"></a>脚本
 
-|名称|说明|
+|“属性”|描述|
 |---|---|
 |id|行 ID。|
 |text|脚本本身。|
@@ -105,7 +105,7 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ### <a name="ocr"></a>ocr
 
-|名称|说明|
+|“属性”|描述|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR 文本。|
@@ -148,19 +148,19 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ### <a name="faces"></a>人脸
 
-|名称|说明|
+|“属性”|描述|
 |---|---|
 |id|人脸 ID。|
-|name|人脸姓名。 它可以是 "Unknown #0"、标识名人或客户训练的人员。|
+|name|人脸姓名。 可以为“Unknown #0”、公认的名人或经过客户培训的人员。|
 |confidence|人脸识别置信度。|
 |description|名人的说明。 |
 |thumbnailId|该人脸的缩略图 ID。|
-|knownPersonId|内部 ID （如果是已知的人员）。|
-|referenceId|必应 ID （如果是必应名人）。|
+|knownPersonId|内部 ID（如果是已知人员）。|
+|referenceId|必应 ID（如果是必应名人）。|
 |referenceType|当前仅限必应。|
-|title|标题（如果是名人，如 "Microsoft CEO"）。|
-|imageUrl|如果是名人，则为图像 URL。|
-|instances|人脸出现在给定时间范围内的实例。 每个实例还具有一个 thumbnailsId。 |
+|title|头衔（如果是名人 — 例如“Microsoft CEO”）。|
+|imageUrl|图像 URL（如果是名人）。|
+|instances|在给定时间范围内出现该人脸的实例。 每个实例还具有一个 thumbnailsId。 |
 
 ```json
 "faces": [{
@@ -193,7 +193,7 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ### <a name="shots"></a>截图
 
-|名称|说明|
+|“属性”|描述|
 |---|---|
 |id|截图 ID。|
 |keyFrames|截图内的关键帧列表（每个关键帧都有一个 ID 和实例时间范围列表）。 关键帧实例具有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
@@ -250,12 +250,12 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ### <a name="statistics"></a>statistics
 
-|名称|说明|
+|“属性”|描述|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
 |WordCount|每个发言人的单词数。|
 |SpeakerNumberOfFragments|发言人在视频中的片段数量。|
-|SpeakerLongestMonolog|发言人的最长独白。 如果演讲者在包含的 monolog 内有静默处理。 删除独白开头和结尾的沉默期。|
+|SpeakerLongestMonolog|发言人的最长独白。 如果说话人在独白中有沉默，则会将沉默期包含在内。 删除独白开头和结尾的沉默期。|
 |SpeakerTalkToListenRatio|计算方式为将发言人的独白时间（开头和结尾之间没有沉默期）除以视频总时间。 时间将四舍五入为三位小数。|
 
 
@@ -263,7 +263,7 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
 
-|名称|说明|
+|“属性”|描述|
 |---|---|
 |id|情绪 ID。|
 |averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
@@ -298,7 +298,7 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ### <a name="labels"></a>标签
 
-|名称|说明|
+|“属性”|描述|
 |---|---|
 |id|标签 ID。|
 |name|标签名称（例如“计算机”、“电视”）。|
@@ -356,7 +356,7 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 ### <a name="keywords"></a>关键字
 
-|名称|说明|
+|“属性”|描述|
 |---|---|
 |id|关键字 ID。|
 |text|关键字文本。|
@@ -403,11 +403,11 @@ Azure 媒体服务 v3 使你可以通过视频索引器从视频和音频文件�
 
 #### <a name="visualcontentmoderation"></a>visualContentModeration
 
-visualContentModeration 块包含视频索引器找到的、可能具有成人内容的时间范围。 如果 visualContentModeration 为空，则不会识别成人内容。
+visualContentModeration 块包含视频索引器找到的、可能具有成人内容的时间范围。 如果 visualContentModeration 为空，则表示未识别到成人内容。
 
-被确定包含成人或不雅内容的视频可能仅可供私人观看。 用户可以提交内容的人工审阅请求，在这种情况下，`IsAdult` 属性将包含人工审阅的结果。
+被确定包含成人或不雅内容的视频可能仅可供私人观看。 用户可以请求人工审查内容，在这种情况下，`IsAdult` 属性将包含人工审查的结果。
 
-|名称|说明|
+|“属性”|描述|
 |---|---|
 |id|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|

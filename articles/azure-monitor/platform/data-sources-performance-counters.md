@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274757"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 和 Linux 性能数据源
@@ -25,7 +25,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 对于 Windows 性能计数器，可以为每个性能计数器选择一个特定实例。 对于 Linux 性能计数器，选择的每个计数器的实例会应用于父计数器的所有子计数器。 下表显示 Linux 和 Windows 性能计数器的可用通用实例。
 
-| 实例名称 | 说明 |
+| 实例名称 | 描述 |
 | --- | --- |
 | \_Total |所有实例的总计 |
 | \* |所有实例 |
@@ -39,9 +39,9 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 1. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  还可以通过指定 *object\counter* 返回特定计数器的所有实例。  
 
-    在从命名实例中收集 SQL Server 性能计数器时，所有命名实例计数器以 MSSQL$ 开头，并且后面接实例的名称。  例如，若要从命名 SQL 实例 INST2 的数据库性能对象收集所有数据库的“日志缓存命中率”计数器，请指定 `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`。
+    在从命名实例中收集 SQL Server 性能计数器时，所有命名实例计数器以 MSSQL$** 开头，并且后面接实例的名称。  例如，若要从命名 SQL 实例 INST2 的数据库性能对象收集所有数据库的“日志缓存命中率”计数器，请指定 `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`。
 
-2. 单击 **+** 或按 **Enter** 将计数器添加到列表中。
+2. 单击**+** 或按**Enter**将计数器添加到列表中。
 3. 添加计数器后，计数器将把 10 秒作为“**采样间隔**”的默认时间。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
 4. 添加完计数器后，单击屏幕顶部的“**保存**”按钮保存配置。
 
@@ -51,14 +51,14 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 遵循以下步骤添加要收集的新 Linux 性能计数器。
 
-1. 默认情况下，所有配置更改均会自动推送到所有代理。  对于 Linux 代理，配置文件会发送到 Fluentd 数据收集器。  如果想在每个 Linux 代理上手动修改此文件，请取消选中“将下面的配置应用到我的 Linux 计算机”框并遵循下面的指南。
+1. 默认情况下，所有配置更改均会自动推送到所有代理。  对于 Linux 代理，配置文件会发送到 Fluentd 数据收集器。  如果想在每个 Linux 代理上手动修改此文件，请取消选中“将下面的配置应用到我的 Linux 计算机”框并遵循下面的指南。**
 2. 按照 *object(instance)\counter* 格式在文本框中键入计数器的名称。  开始键入时，会显示通用计数器的匹配列表。  可以选择列表中的计数器或者键入自己的计数器。  
-3. 单击 **+** 或按 **Enter** 将计数器添加到此对象的其他计数器列表中。
+3. 单击**+** 或按**Enter**将计数器添加到对象的其他计数器列表中。
 4. 一个对象的所有计数器使用相同的“**采样间隔**”。  默认为 10 秒。  如果想要降低收集的性能数据的存储要求，可以将此值更改为更高值，最高可达 1800 秒（30 分钟）。
 5. 添加完计数器后，单击屏幕顶部的“**保存**”按钮保存配置。
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>在配置文件中配置 Linux 性能计数器
-可以不使用 Azure 门户配置 Linux 性能计数器，而是在 Linux 代理上编辑配置文件。  要收集的性能指标由 **/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** 中的配置进行控制。
+可以不使用 Azure 门户配置 Linux 性能计数器，而是在 Linux 代理上编辑配置文件。  要收集的性能指标由 **/etc/opt/microsoft/omsagent/\<工作区 ID\>/conf/omsagent.conf**中的配置控制。
 
 要收集的性能指标的每个对象或类别应在配置文件中作为单个 `<source>` 元素进行定义。 语法遵循下面的模式。
 
@@ -73,7 +73,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 下表介绍了此元素中的参数。
 
-| parameters | 说明 |
+| 参数 | 描述 |
 |:--|:--|
 | object\_name | 收集的对象名称。 |
 | instance\_regex |  用于定义要收集的实例的*正则表达式*。 值 `.*` 指定所有实例。 要仅收集 \_Total 实例的处理器指标，可以指定 `_Total`。 要仅收集 crond 或 sshd 实例的进程指标，可以指定 `(crond\|sshd)`。 |
@@ -115,9 +115,9 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 | 网络 | Rx 错误数总计 |
 | 网络 | Tx 错误数总计 |
 | 网络 | 冲突数总计 |
-| 物理磁盘 | Avg. Disk sec/Read |
-| 物理磁盘 | Avg. Disk sec/Transfer |
-| 物理磁盘 | Avg. Disk sec/Write |
+| 物理磁盘 | 平均磁盘秒/读取 |
+| 物理磁盘 | 平均磁盘秒/传输 |
+| 物理磁盘 | 平均磁盘秒/写入 |
 | 物理磁盘 | 物理磁盘字节数/秒 |
 | 进程 | 特权时间百分比 |
 | 进程 | 用户时间百分比 |
@@ -131,13 +131,13 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 | 处理器 | 特权时间百分比 |
 | 处理器 | 处理器时间百分比 |
 | 处理器 | 用户时间百分比 |
-| 系统 | 可用物理内存 |
-| 系统 | 分页文件中的可用空间 |
-| 系统 | 可用虚拟内存 |
-| 系统 | 进程 |
-| 系统 | 分页文件中存储的大小 |
-| 系统 | 运行时间 |
-| 系统 | 用户 |
+| System | 可用物理内存 |
+| System | 分页文件中的可用空间 |
+| System | 可用虚拟内存 |
+| System | 进程 |
+| System | 分页文件中存储的大小 |
+| System | 运行时间 |
+| System | 用户 |
 
 
 下面是性能指标的默认配置。
@@ -180,7 +180,7 @@ Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理
 ## <a name="performance-record-properties"></a>性能记录属性
 性能记录具有 **Perf** 类型，并且具有下表中的属性。
 
-| properties | 说明 |
+| properties | 描述 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机。 |
 | CounterName |性能计数器的名称 |
@@ -199,15 +199,15 @@ Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理
 ## <a name="log-queries-with-performance-records"></a>使用性能记录的日志查询
 下表提供了检索性能记录的不同日志查询的示例。
 
-| 查询 | 说明 |
+| 查询 | 描述 |
 |:--- |:--- |
 | 性能 |所有性能数据 |
 | Perf &#124; where Computer == "MyComputer" |特定计算机中的所有性能数据 |
 | Perf &#124; where CounterName == "Current Disk Queue Length" |特定计数器的所有性能数据 |
-| Perf &#124; where ObjectName = = "Processor" and CounterName = = "% Processor Time" and InstanceName = = "_Total" &#124;按计算机汇总 AVGCPU = avg （CounterValue） |所有计算机的平均 CPU 使用率 |
-| Perf &#124; ，其中 CounterName = = "% Processor Time &#124; " 汇总 AggregatedValue = max （CounterValue） by Computer |所有计算机的最大 CPU 使用率 |
-| Perf &#124; where ObjectName = = "逻辑磁盘"，CounterName = = "当前磁盘队列长度" 和 Computer = = "MyComputerName" &#124;汇总 AggregatedValue = avg （CounterValue） by InstanceName |指定计算机的所有实例上的当前磁盘队列平均长度 |
-| Perf &#124; ，其中 CounterName = = "Disk 传输/sec &#124; " 汇总 AggregatedValue = 百分位（CounterValue，95） by Computer |每秒所有计算机上磁盘传输的第 95 百分位数 |
+| Perf &#124; where ObjectName == "Processor" and CounterName == "% Processor Time" and InstanceName == "_Total" &#124; summarize AVGCPU = avg(CounterValue) by Computer |所有计算机的平均 CPU 使用率 |
+| Perf &#124; where CounterName == "% Processor Time" &#124; summarize AggregatedValue = max(CounterValue) by Computer |所有计算机的最大 CPU 使用率 |
+| Perf &#124; where ObjectName == "LogicalDisk" and CounterName == "Current Disk Queue Length" and Computer == "MyComputerName" &#124; summarize AggregatedValue = avg(CounterValue) by InstanceName |指定计算机的所有实例上的当前磁盘队列平均长度 |
+| Perf &#124; where CounterName == "Disk Transfers/sec" &#124; summarize AggregatedValue = percentile(CounterValue, 95) by Computer |每秒所有计算机上磁盘传输的第 95 百分位数 |
 | Perf &#124; where CounterName == "% Processor Time" and InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), Computer |每小时所有计算机 CPU 使用率的平均值 |
 | Perf &#124; where Computer == "MyComputer" and CounterName startswith_cs "%" and InstanceName == "_Total" &#124; summarize AggregatedValue = percentile(CounterValue, 70) by bin(TimeGenerated, 1h), CounterName | 每小时特定计算机的每个 % 百分比计数器的第 70 百分位数 |
 | Perf &#124; where CounterName == "% Processor Time" and InstanceName == "_Total" and Computer == "MyComputer" &#124; summarize ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentile(CounterValue, 75), ["max(CounterValue)"] = max(CounterValue) by bin(TimeGenerated, 1h), Computer |每小时特定计算机的 CPU 使用率的平均值、最小值、最大值和第 75 百分位数 |

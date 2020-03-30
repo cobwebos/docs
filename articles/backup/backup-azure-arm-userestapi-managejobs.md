@@ -5,15 +5,15 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: 628569c547aa776ec2fbb7ec7e32edad7c1fe7dd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273522"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>使用 REST API 跟踪备份和还原作业
 
-Azure 备份服务在各种情况下触发后台运行的作业，例如触发备份、还原操作、禁用备份。 可以使用作业的 ID 跟踪这些作业。
+Azure 备份服务会触发各种情况下在后台运行的作业，例如触发备份、执行还原操作以及禁用备份。 可以使用作业的 ID 跟踪这些作业。
 
 ## <a name="fetch-job-information-from-operations"></a>从操作中提取作业信息
 
@@ -45,7 +45,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="response"></a>响应
 
-|名称  |类型  |说明  |
+|“属性”  |类型  |说明  |
 |---------|---------|---------|
 |200 正常     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

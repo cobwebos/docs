@@ -19,14 +19,14 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261562"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 AD FS
-以下文档专门介绍如何使用 Azure AD Connect Health 来监视 AD FS 基础结构。 有关使用 Azure AD Connect Health 监视 Azure AD Connect （同步）的信息，请参阅[使用同步 Azure AD Connect Health](how-to-connect-health-sync.md)。此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅将[Azure AD Connect Health 与 AD DS 一起使用](how-to-connect-health-adds.md)。
+以下文档专门介绍如何使用 Azure AD Connect Health 来监视 AD FS 基础结构。 有关监视 Azure AD 连接（同步）与 Azure AD 连接运行状况的信息，请参阅[使用 Azure AD 连接运行状况进行同步](how-to-connect-health-sync.md)。此外，有关使用 Azure AD 连接运行状况监视活动目录域服务的信息，请参阅[使用 Azure AD 将运行状况与 AD DS 连接](how-to-connect-health-adds.md)。
 
 ## <a name="alerts-for-ad-fs"></a>AD FS 的警报
 Azure AD Connect Health 警报部分将提供活动警报列表。 每个警报均包含相关信息、解决方法步骤和相关文档的链接。
@@ -108,7 +108,7 @@ Azure AD Connect Health for ADFS 提供一份报告，内容有关因为用户�
 
 该报告提供以下信息：
 
-| 报告项 | 说明 |
+| 报告项 | 描述 |
 | --- | --- |
 | 用户 ID |显示使用的用户 ID。 此值是用户键入的内容，在某些情况下是使用的错误用户 ID。 |
 | 失败尝试次数 |显示该特定用户 ID 的尝试失败总次数。 该表已按最多失败尝试次数的降序排序。 |
@@ -121,5 +121,5 @@ Azure AD Connect Health for ADFS 提供一份报告，内容有关因为用户�
 ## <a name="related-links"></a>相关链接
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)
-* [有风险的 IP 报表](how-to-connect-health-adfs-risky-ip.md)
+* [风险 IP 报告](how-to-connect-health-adfs-risky-ip.md)
 

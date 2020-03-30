@@ -1,6 +1,6 @@
 ---
 title: Azure 磁盘加密示例脚本
-description: 本文是适用于 Windows Vm Microsoft Azure 磁盘加密的附录。
+description: 本文是适用于 Windows VM 的 Microsoft Azure 磁盘加密的附录。
 author: msmbaldwin
 ms.service: security
 ms.topic: article
@@ -8,28 +8,28 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 50addbec1717c7bb76a248053dd889b09441f6f6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266723"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本 
 
-本文提供了用于准备预加密的 Vhd 和其他任务的示例脚本。
+本文提供了用于准备预加密 VHD 和其他任务的示例脚本。
 
  
 
-## <a name="list-vms-and-secrets"></a>列出 Vm 和机密
+## <a name="list-vms-and-secrets"></a>列出 VM 和机密
 
-列出订阅中的所有加密 Vm：
+列出订阅中所有已加密的 VM：
 
 ```azurepowershell-interactive
 $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
 $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
 Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
 ```
-列出密钥保管库中用于加密 Vm 的所有磁盘加密机密：
+列出密钥保管库中用于加密 VM 的所有磁盘加密机密：
 
 ```azurepowershell-interactive
 Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
@@ -40,7 +40,7 @@ Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('Disk
 
 下表显示了可在 PowerShell 脚本中使用的参数： 
 
-|参数|说明|必需？|
+|参数|描述|必需？|
 |------|------|------|
 |$resourceGroupName| KeyVault 所属的资源组的名称。  如果不存在具有此名称的资源组，则会新建一个资源组。| True|
 |$keyVaultName|要将加密密钥放到的 KeyVault 的名称。 如果不存在具有此名称的保管库，则会新建一个保管库。| True|
@@ -68,7 +68,7 @@ Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('Disk
 以下部分介绍了必要操作，让你在 Azure IaaS 中准备将预加密的 Windows VHD 部署为加密 VHD。 使用该信息在 Azure Site Recovery 或 Azure 上准备和启动全新的 Windows VM (VHD)。 有关如何准备和上传 VHD 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](upload-generalized-managed.md)。
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>更新组策略以允许使用非 TPM 保护 OS
-在“本地计算机策略” **“计算机设置”**  >  **“管理模板”**  >  **“Windows 组件”**  > 下配置名为“BitLocker 驱动器加密”的 BitLocker 组策略设置。 如下图所示，将此设置更改为“操作系统驱动器” > “启动时需要附加身份验证” > “没有兼容的 TPM 时允许 BitLocker”：
+在“本地计算机策略”**** > “计算机设置”**** > “管理模板”**** > “Windows 组件”**** 下配置名为“BitLocker 驱动器加密”**** 的 BitLocker 组策略设置。 将此设置更改为**操作系统驱动器** >  > **需要在启动时进行额外的身份验证****，允许 BitLocker 没有兼容的 TPM**，如下图所示：
 
 ![Azure 中的 Microsoft Antimalware](../media/disk-encryption/disk-encryption-fig8.png)
 
@@ -87,7 +87,7 @@ Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('Disk
     bdehdcfg -target c: shrink -quiet 
 
 ### <a name="protect-the-os-volume-by-using-bitlocker"></a>使用 BitLocker 保护 OS 卷
-使用 [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) 命令在使用外部密钥保护程序的引导卷上启用加密。 此外将外部密钥（.bek 文件）放在外部驱动器或卷上。 下次重启后，会在系统/引导卷上启用加密。
+使用[`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx)命令使用外部密钥保护器在引导卷上启用加密。 此外将外部密钥（.bek 文件）放在外部驱动器或卷上。 下次重启后，会在系统/引导卷上启用加密。
 
     manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
     reboot
@@ -96,13 +96,13 @@ Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('Disk
 > 使用独立的数据/资源 VHD 准备 VM，以使用 BitLocker 获取外部密钥。
 
 ## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>将加密的 VHD 上传到 Azure 存储帐户
-启用 DM Dm-crypt 加密后，需要将本地加密的 VHD 上传到存储帐户。
+启用 DM-Crypt 加密后，需要将本地加密的 VHD 上传到存储帐户。
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
 
-## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>将预加密的 VM 的机密上传到密钥保管库
-你之前获取的磁盘加密机密必须上传为密钥保管库中的机密。  这要求向将上传密钥的帐户授予 set secret 权限和 wrapkey 权限。
+## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>将预加密 VM 的机密上传到密钥保管库
+必须将前面获取的磁盘加密机密作为机密上传到密钥保管库中。  这需要向将上传机密的帐户授予 set secret 权限和 wrapkey 权限。
 
 ```powershell 
 # Typically, account Id is the user principal name (in user@domain.com format)
@@ -121,7 +121,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $kvname -UserPrincipalName $acctid -Permis
 ```
 
 ### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>未使用 KEK 加密的磁盘加密机密
-若要在密钥保管库中设置机密，请使用[AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)。 该通行短语编码为 base64 字符串，然后上传到密钥保管库。 此外，请确保在 Key Vault 中创建机密时设置以下标记。
+若要在密钥保管库中设置机密，请使用 [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)。 将密码编码为 base64 字符串，然后将其上传到密钥保管库。 此外，请确保在 Key Vault 中创建机密时设置以下标记。
 
 ```powershell
 
@@ -141,7 +141,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $kvname -UserPrincipalName $acctid -Permis
 在下一步中使用 `$secretUrl` 以便[在不使用 KEK 的情况下附加 OS 磁盘](#without-using-a-kek)。
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>使用 KEK 加密的磁盘加密机密
-将机密上传到 Key Vault 之前，可根据需要使用密钥加密密钥对其进行加密。 先使用包装 [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 加密使用密钥加密密钥的机密。 此包装操作的输出是 base64 URL 编码的字符串，可以使用 [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet 将其作为机密上传。
+将机密上传到 Key Vault 之前，可根据需要使用密钥加密密钥对其进行加密。 先使用包装 [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 加密使用密钥加密密钥的机密。 此换行操作的输出是 base64 URL 编码字符串，然后可以使用[`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret)cmdlet 将其上载为机密。
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation
