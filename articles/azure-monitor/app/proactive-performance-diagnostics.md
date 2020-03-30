@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671726"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
@@ -40,7 +40,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 ![下面是“服务器响应时间延长”检测的示例](media/proactive-performance-diagnostics/server_response_time_degradation.png)
 
 1. **会审**。 通知会显示有多少用户或多少操作受到影响。 这可以帮助你对问题分配优先级。
-2. **范围**。 该问题是影响所有流量，还是只影响某些页面？ 它是否只出现在特定的浏览器或位置中？ 可以从通知中获取此信息。
+2. **范围**. 该问题是影响所有流量，还是只影响某些页面？ 它是否只出现在特定的浏览器或位置中？ 可以从通知中获取此信息。
 3. **诊断**。 通常，通知的诊断信息会提示问题的性质。 例如，如果请求率较高时响应速度变慢，则表示服务器或依赖项过载。 
 
     否则，可在 Application Insights 中打开“性能”边栏选项卡， 在其中可以找到[探查器](profiler.md)数据。 如果引发了异常，还可以尝试[快照调试器](../../azure-monitor/app/snapshot-debugger.md)。
@@ -49,15 +49,15 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 ## <a name="configure-email-notifications"></a>配置电子邮件通知
 
-智能检测通知默认情况下处于启用状态，并被发送到具有[监视读取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)的用户并[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)对 Application Insights 资源所在订阅的访问。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。 
+默认情况下，智能检测通知将启用，并发送给具有[监视读取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)和[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)访问应用程序见解资源所在的订阅的用户。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。**** 
   
   ![智能检测设置](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
-  * 可使用“智能检测”电子邮件中的“取消订阅”链接来停止接收电子邮件通知。
+  * 可使用“智能检测”电子邮件中的“取消订阅”链接来停止接收电子邮件通知。****
 
 每天只会针对每个 Application Insights 资源发送一封有关智能检测性能异常的电子邮件。 只有当天至少检测到一个新问题时，才会发送电子邮件。 将不会收到任何重复的消息。 
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 
 * *那么，Microsoft 员工会查看我的数据？*
   * 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
@@ -70,19 +70,19 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 * *是否可以创建自己的异常检测规则或自定义现有的规则？*
 
   * 目前不可以，但可以：
-    * [设置警报](../../azure-monitor/app/alerts.md)，以便在指标超出阈值时告知用户。
+    * [设置警报](../../azure-monitor/app/alerts.md)，告诉指标何时超过阈值。
     * [将遥测导出到](../../azure-monitor/app/export-telemetry.md)[数据库](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或 [PowerBI](../../azure-monitor/app/export-power-bi.md )，可自行在其中进行分析。
 * *执行分析的频率是多少？*
 
   * 我们每天针对前一天（UTC 时区整天）的遥测数据运行分析。
-* *那么这是否会替换[指标警报](../../azure-monitor/app/alerts.md)？*
+* *那么，这是否取代了[指标警报](../../azure-monitor/app/alerts.md)？*
   * 不是。  我们不确定检测用户视为异常的每个行为。
 
 
 * *如果不执行任何操作来响应通知，是否会收到提醒？*
   * 否，仅会收到关于每个问题的消息一次。 如果问题持续出现，它会在“智能检测源”边栏选项卡中更新。
 * *我丢失了电子邮件。在哪里可以找到门户中的通知？*
-  * 在应用的 Application Insights 概述中，单击“智能检测”磁贴。 在该磁贴中可以找到过去最长 90 天的所有通知。
+  * 在应用的 Application Insights 概述中，单击“智能检测”**** 磁贴。 在该磁贴中可以找到过去最长 90 天的所有通知。
 
 ## <a name="how-can-i-improve-performance"></a>如何提高性能？
 正如你从自己的经验所知，缓慢和失败的响应对于网站用户而言是最大的困扰之一。 因此，必须解决问题。
@@ -160,7 +160,7 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 ![从电子邮件警报，单击链接以在 Azure 中打开诊断报告](./media/proactive-performance-diagnostics/03.png)
 
 * **When** 显示检测到问题的时间。
-* **What** 描述：
+* **描述内容**：
 
   * 检测到的问题；
   * 我们发现显示问题行为的事件集的特征。
@@ -173,7 +173,7 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 ## <a name="next-steps"></a>后续步骤
 这些诊断工具可帮助检查应用中的遥测数据：
 
-* [探查器](profiler.md) 
+* [分析器](profiler.md) 
 * [快照调试器](../../azure-monitor/app/snapshot-debugger.md)
 * [分析](../../azure-monitor/log-query/get-started-portal.md)
 * [分析智能诊断](../../azure-monitor/app/analytics.md)

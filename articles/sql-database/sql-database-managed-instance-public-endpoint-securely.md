@@ -11,10 +11,10 @@ ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
 ms.openlocfilehash: 6dfeab3530445f8f9a102f47039d15b04fdf134a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821737"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>在公共终结点中安全使用 Azure SQL 数据库托管实例

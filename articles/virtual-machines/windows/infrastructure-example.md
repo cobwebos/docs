@@ -1,5 +1,5 @@
 ---
-title: 示例 Azure 基础结构演练
+title: Azure 基础结构演练示例
 description: 了解用于在 Azure 中部署示例基础结构的关键设计和实施准则。
 documentationcenter: ''
 services: virtual-machines-windows
@@ -16,10 +16,10 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ab6f304d78357e261c68ebbcfcb3746844edce8a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038565"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>适用于 Windows VM 的 Azure 示例基础结构演练
@@ -52,10 +52,10 @@ Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序�
 以上各项都将遵循以下命名约定：
 
 * Adventure Works Cycles 使用 **[IT 工作负荷]-[位置]-[Azure 资源]** 作为前缀
-  * 在本示例中，IT 工作负荷名为 **azos**（Azure 在线商店），位置为 **use**（美国东部 2）
+  * 对于此示例 **，"azos"（Azure**在线商店）是 IT 工作负载名称，"**使用**"（东 US 2）是位置
 * 虚拟网络使用 AZOS-USE-VN **[数字]**
-* 可用性集使用 use azos-use-as- **[角色]**
-* 虚拟机名称使用 azos-use-vm- **[VM 名称]**
+* 可用性集使用 use azos-use-as-**[角色]**
+* 虚拟机名称使用 azos-use-vm-**[VM 名称]**
 
 ## <a name="azure-subscriptions-and-accounts"></a>Azure 订阅和帐户
 Adventure Works Cycles 使用名为 Adventure Works 企业订阅的企业订阅为此 IT 工作负荷提供计费。

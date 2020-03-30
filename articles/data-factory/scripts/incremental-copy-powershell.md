@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 以增量方式加载数据
-description: 此 PowerShell 脚本演示如何使用 Azure 数据工厂以增量方式将数据从 Azure SQL 数据库复制到 Azure Blob 存储。
+title: 使用 PowerShell 增量加载数据
+description: 此 PowerShell 脚本演示如何使用 Azure 数据工厂将数据从 Azure SQL 数据库增量复制到 Azure Blob 存储。
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
-ms.date: 10/31/2017
-ms.openlocfilehash: 9a488fb2c4f7f3390fc0ac0e11cdf57bbf030bf6
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.date: 03/12/2020
+ms.openlocfilehash: 1919f89d2e39981effe14c1203446f8f9d930f41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255961"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79462483"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell 脚本 - 使用 Azure 数据工厂以增量方式加载数据
 
@@ -51,15 +51,15 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 此脚本使用以下命令： 
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
-| [AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | 创建数据工厂。 |
-| [AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | 在数据工厂中创建链接服务。 链接服务可将数据存储或计算链接到数据工厂。 |
-| [AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | 在数据工厂中创建数据集。 数据集表示管道中活动的输入/输出。 | 
-| [AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | 在数据工厂中创建管道。 一个管道包含一个或多个执行某项操作的活动。 在此管道中，复制活动在 Azure Blob 存储中将数据从一个位置复制到另一个位置。 |
-| [AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | 为管道创建运行。 换而言之，就是运行管道。 |
-| [AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | 获取管道中活动的运行（活动运行）的相关详细信息。 
+| [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | 创建数据工厂。 |
+| [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/Set-Azdatafactoryv2linkedservice) | 在数据工厂中创建链接服务。 链接服务可将数据存储或计算链接到数据工厂。 |
+| [Set-AzDataFactoryV2Dataset](/powershell/module/az.datafactory/Set-Azdatafactoryv2dataset) | 在数据工厂中创建数据集。 数据集表示管道中活动的输入/输出。 | 
+| [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Set-Azdatafactoryv2pipeline) | 在数据工厂中创建管道。 管道包含执行特定操作的一个或多个活动。 在此管道中，复制活动在 Azure Blob 存储中将数据从一个位置复制到另一个位置。 |
+| [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/Invoke-Azdatafactoryv2pipeline) | 为管道创建运行。 换而言之，就是运行管道。 |
+| [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | 获取管道中活动的运行（活动运行）的相关详细信息。 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||
 

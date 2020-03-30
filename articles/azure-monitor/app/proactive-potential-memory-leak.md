@@ -1,13 +1,13 @@
 ---
-title: 检测内存泄漏-Azure 应用程序 Insights 智能检测
+title: 检测内存泄漏 - Azure Application Insights 智能检测
 description: 使用 Azure Application Insights 监视应用程序是否存在可能的内存泄漏。
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.openlocfilehash: 85d138518dfb1313a810657016e9fe3143887b6d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671692"
 ---
 # <a name="memory-leak-detection-preview"></a>内存泄漏检测（预览）
@@ -25,5 +25,5 @@ Application Insights 自动分析应用程序中每个进程的内存消耗量�
 ## <a name="how-do-i-fix-it"></a>如何解决问题？
 通知包括诊断信息，以在诊断分析进程中提供支持：
 1. **会审。** 通知显示增加的内存量（以 GB 为单位），以及内存增加的时间范围。 这可以帮助你对问题分配优先级。
-2. **划分范围。** 多少台计算机表现出内存泄漏模式？ 可能内存泄漏期间触发了多少个异常？ 可以从通知中获取此信息。
+2. **范围。** 多少台计算机表现出内存泄漏模式？ 可能内存泄漏期间触发了多少个异常？ 可以从通知中获取此信息。
 3. **诊断。** 检测包含内存泄漏模式，该模式显示随时间推移进程的内存消耗量。 还可以使用链接到支持信息的相关项和报告，帮助进一步诊断问题。

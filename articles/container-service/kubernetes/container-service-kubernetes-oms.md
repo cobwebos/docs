@@ -8,10 +8,10 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 02d04076ccc41d243a493838667f5e8cc6bfa5ac
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371148"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Azure 容器服务群集
@@ -21,7 +21,7 @@ ms.locfileid: "79371148"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本演练假定用户已[使用 Azure 容器服务创建 Kubernetes 群集](container-service-kubernetes-walkthrough.md)，
 
 并假设已安装 `az` Azure CLI 和 `kubectl` 工具。
@@ -33,7 +33,7 @@ az --version
 ```
 
 如果尚未安装 `az` 工具，请参阅[此处](https://github.com/azure/azure-cli#installation)的说明。
-或者，可以使用已安装 [ Azure CLI 和 ](https://docs.microsoft.com/azure/cloud-shell/overview) 工具的 `az`Azure Cloud Shell`kubectl`。
+或者，可以使用已安装 `az` Azure CLI 和 `kubectl` 工具的 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
 
 可以通过运行以下语句测试是否已安装 `kubectl` 工具：
 
@@ -63,7 +63,7 @@ az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUST
 
 ## <a name="monitoring-containers-with-log-analytics"></a>使用 Log Analytics 监视容器
 
-Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 容器解决方案是 Log Analytics 中的一种解决方案，可帮助您查看单个位置中的容器库存、性能和日志。 通过查看集中位置中的日志，可以审核、排查容器问题，并查找主机上干扰性消耗过多的容器。
+Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。容器解决方案是 Log Analytics 中的一种解决方案，有助于查看单个位置中的容器库存、性能和日志。 通过查看集中位置中的日志，可以审核、排查容器问题，并查找主机上干扰性消耗过多的容器。
 
 ![](media/container-service-monitoring-oms/image1.png)
 
@@ -73,7 +73,7 @@ Log Analytics 是 Microsoft 的基于云的 IT 管理解决方案，可帮助你
 
 ### <a name="obtain-your-workspace-id-and-key"></a>获取工作区 ID 和密钥
 为了使 Log Analytics 代理与服务进行通信，需要为其配置工作区 ID 和工作区密钥。 若要获取工作区 ID 和密钥，需要在 <https://mms.microsoft.com> 创建帐户。
-请按照步骤创建帐户。 创建帐户后，可以通过单击“Log Analytics”边栏选项卡，然后单击工作区名称来获取 ID 和密钥。 然后，在“高级设置”下，依次单击“连接源”、“Linux 服务器”，将发现所需的信息，如下所示。
+请按照步骤创建帐户。 创建帐户后，可以通过单击“Log Analytics”**** 边栏选项卡，然后单击工作区名称来获取 ID 和密钥。 然后，在“高级设置”**** 下，依次单击“连接源”****、“Linux 服务器”****，将发现所需的信息，如下所示。
 
  ![](media/container-service-monitoring-oms/image5.png)
 
@@ -92,7 +92,7 @@ kubectl create -f oms-daemonset.yaml
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>使用 Kubernetes 机密安装 Log Analytics 代理
 若要保护 Log Analytics 工作区 ID 和密钥，可以使用 Kubernetes 机密作为 DaemonSet YAML 文件的一部分。
 
-- （从[存储库](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)）复制脚本、机密模板文件和 DaemonSet YAML 文件，并确保它们位于同一目录中。
+- 复制脚本、机密模板文件和守护进程 YAML 文件（来自[存储库](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)），并确保它们位于同一目录中。
   - 机密生成脚本 - secret-gen.sh
   - 机密模板 - secret-template.yaml
     - DaemonSet YAML 文件 - omsagent-ds-secrets.yaml
@@ -132,7 +132,7 @@ kubectl create -f oms-daemonset.yaml
   KEY:    88 bytes
   ```
 
-  - 通过运行以下内容创建 omsagent 守护程序集：
+  - 通过运行以下内容创建 omsagent 守护进程集：
   
   ```console
   kubectl create -f omsagent-ds-secrets.yaml

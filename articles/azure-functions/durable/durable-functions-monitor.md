@@ -5,15 +5,15 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562116"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
 
-监视模式是工作流中灵活的重复过程 - 例如，反复轮询，直到满足特定的条件为止。 本文介绍使用 [Durable Functions](durable-functions-overview.md) 实现监视的示例。
+监视模式是工作流中灵活的重复过程 - 例如，反复轮询，直到满足特定的条件为止。** 本文介绍使用 [Durable Functions](durable-functions-overview.md) 实现监视的示例。
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -21,14 +21,14 @@ ms.locfileid: "77562116"
 
 此示例监视某个地点的当前天气状况，如果是晴天，则通过短信通知用户。 可以使用常规的计时器触发函数来检查天气和发送提醒。 但是，此方法存在**生存期管理**方面的问题。 如果只应发送一条提醒，则在检测到晴天后，监视器需要禁用自身。 监视模式可以结束自身的执行，同时还具有其他优点：
 
-* 监视器按时间间隔而不是计划运行：计时器触发器每隔一小时运行；监视器等待一小时，然后执行下一项操作。 除非有指定，否则监视器的操作不会重叠，这对于长时间运行的任务可能很重要。
+* 监视器按时间间隔而不是计划运行：计时器触发器每隔一小时运行；监视器等待一小时，然后执行下一项操作。**** 除非有指定，否则监视器的操作不会重叠，这对于长时间运行的任务可能很重要。
 * 监视器可以使用动态时间间隔：可以根据某种条件更改等待时间。
 * 监视器可以在满足某种条件时终止，或者由其他进程终止。
 * 监视器可以采用参数。 此示例演示如何将同一个天气监视进程应用到任何请求的地点和电话号码。
 * 监视器可缩放。 由于每个监视器是一个业务流程实例，因此可以创建多个监视器，而无需创建新函数或定义更多的代码。
 * 监视器可轻松集成到更大的工作流。 监视器可以是更复杂业务流程函数或[子业务流程](durable-functions-sub-orchestrations.md)的一部分。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 ### <a name="configuring-twilio-integration"></a>配置 Twilio 集成
 
@@ -38,7 +38,7 @@ ms.locfileid: "77562116"
 
 此示例涉及到使用 Weather Underground API 来检查某个地点的当前天气状况。
 
-首先需要创建一个 Weather Underground 帐户。 可以通过 [https://www.wunderground.com/signup](https://www.wunderground.com/signup) 免费创建一个帐户。 创建帐户后，需要获取 API 密钥。 可以访问 [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)，然后选择“密钥设置”来获取此密钥。 Stratus Developer 计划是免费的，足以用于运行此示例。
+首先需要创建一个 Weather Underground 帐户。 您可以在 创建一个免费在[https://www.wunderground.com/signup](https://www.wunderground.com/signup)。 创建帐户后，需要获取 API 密钥。 您可以通过访问 （）[https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)然后选择"键设置"来执行此操作。 Stratus Developer 计划是免费的，足以用于运行此示例。
 
 获取 API 密钥后，将以下**应用设置**添加到函数应用。
 
@@ -50,19 +50,19 @@ ms.locfileid: "77562116"
 
 本文介绍示例应用中的以下函数：
 
-* `E3_Monitor`：定期调用 `E3_GetIsClear` 的业务流程[协调程序函数](durable-functions-bindings.md#orchestration-trigger)。 如果 `E3_SendGoodWeatherAlert` 返回 true，则此函数会调用 `E3_GetIsClear`。
-* `E3_GetIsClear`：检查位置当前天气情况的[活动函数](durable-functions-bindings.md#activity-trigger)。
+* `E3_Monitor`：定期调用`E3_GetIsClear`的[业务流程函数](durable-functions-bindings.md#orchestration-trigger)。 如果 `E3_GetIsClear` 返回 true，则此函数会调用 `E3_SendGoodWeatherAlert`。
+* `E3_GetIsClear`： 检查位置的当前天气状况[的活动函数](durable-functions-bindings.md#activity-trigger)。
 * `E3_SendGoodWeatherAlert`：通过 Twilio 发送短信的活动函数。
 
-### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor orchestrator 函数
+### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor协调器功能
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=41-78,97-115)]
 
-Orchestrator 需要监视位置，并需要一个电话号码，以便在该位置上是否明确时向发送消息。 此数据作为强类型 `MonitorRequest` 对象传递到业务流程协调程序。
+协调器需要一个位置来监视，并且需要电话号码才能在位置是否变得清晰时发送消息。 此数据作为强类型`MonitorRequest`对象传递给协调器。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 **E3_Monitor** 函数对业务流程协调程序函数使用标准的 *function.json*。
 
@@ -76,16 +76,16 @@ Orchestrator 需要监视位置，并需要一个电话号码，以便在该位�
 
 此业务流程协调程序函数执行以下操作：
 
-1. 获取 **MonitorRequest**，其中包括要监视的地点，以及要将短信通知发送到的电话号码。
+1. 获取 **MonitorRequest**，其中包括要监视的地点，以及要将短信通知发送到的电话号码。****
 2. 确定监视器的过期时间。 为简便起见，本示例使用了硬编码值。
 3. 调用 **E3_GetIsClear** 来确定请求的地点是否为晴天。
 4. 如果是晴天，则调用 **E3_SendGoodWeatherAlert** 将短信通知发送到请求的电话号码。
 5. 创建一个持久计时器，以便在下一个轮询间隔恢复业务流程。 为简便起见，本示例使用了硬编码值。
-6. 继续运行，直到当前 UTC 时间经过监视器的过期时间或发送短信警报。
+6. 继续运行，直到当前 UTC 时间超过监视器的过期时间，或发送 SMS 警报。
 
-多个 orchestrator 实例可以通过多次调用 orchestrator 函数来运行。 可以指定要监视的地点，以及要将短信提醒发送到的电话号码。
+多个协调器实例可以通过多次调用协调器函数同时运行。 可以指定要监视的地点，以及要将短信提醒发送到的电话号码。
 
-### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear 活动函数
+### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear活动功能
 
 与其他示例一样，帮助器活动函数是使用 `activityTrigger` 触发器绑定的正则函数。 **E3_GetIsClear** 函数使用 Weather Underground API 获取当前天气状况并确定是否为晴天。
 
@@ -93,9 +93,9 @@ Orchestrator 需要监视位置，并需要一个电话号码，以便在该位�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=80-85)]
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-function.json 定义如下：
+function.json 定义如下**：
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/function.json)]
 
@@ -105,7 +105,7 @@ function.json 定义如下：
 
 ---
 
-### <a name="e3_sendgoodweatheralert-activity-function"></a>E3_SendGoodWeatherAlert 活动函数
+### <a name="e3_sendgoodweatheralert-activity-function"></a>E3_SendGoodWeatherAlert活动功能
 
 **E3_SendGoodWeatherAlert** 函数使用 Twilio 绑定来发送短信，告知最终用户目前的天气适合散步。
 
@@ -114,9 +114,9 @@ function.json 定义如下：
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=87-96,140-205)]
 
 > [!NOTE]
-> 你将需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 包以运行示例代码。
+> 您需要安装`Microsoft.Azure.WebJobs.Extensions.Twilio`Nuget 包才能运行示例代码。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 该函数的 *function.json* 十分简单：
 

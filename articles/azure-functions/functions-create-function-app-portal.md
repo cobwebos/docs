@@ -1,19 +1,19 @@
 ---
-title: 从 Azure 门户创建 function app
-description: 通过门户在 Azure 中创建新的 function app。
+title: 从 Azure 门户创建函数应用
+description: 通过门户在 Azure 中创建新的函数应用。
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.custom: mvc
 ms.openlocfilehash: 086a543e75d083094d4dfa789e71afaba5da6d6e
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79368734"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>通过 Azure 门户创建 Function App
 
-本主题说明如何使用 Azure Functions 在 Azure 门户中创建函数应用。 Function App 是托管各个函数执行的容器。 
+本主题演示如何使用 Azure Functions 在 Azure 门户中创建函数应用。 Function App 是托管各个函数执行的容器。 
 
 ## <a name="create-a-function-app"></a>创建函数应用
 
@@ -23,20 +23,20 @@ ms.locfileid: "79368734"
 
 ## <a name="service-plans"></a>服务计划
 
-Azure Functions 有三个不同的服务计划： "消耗计划"、"高级计划" 和 "专用（应用服务）" 计划。 创建 function app 时，必须选择服务计划，并且以后无法更改它。 有关详细信息，请参阅[选择 Azure Functions 托管计划](functions-scale.md)。
+Azure 函数有三种不同的服务计划：消耗计划、高级计划和专用（应用服务）计划。 必须在创建函数应用时选择服务计划，并且随后无法更改。 有关详细信息，请参阅[选择 Azure Functions 托管计划](functions-scale.md)。
 
-如果打算在专用（应用服务）计划上运行 JavaScript 函数，则应选择具有较少核心的计划。 有关详细信息，请参阅[函数的 JavaScript 参考](functions-reference-node.md#choose-single-vcpu-app-service-plans)。
+如果计划在专用（应用服务）计划上运行 JavaScript 函数，则应选择具有较少核心的计划。 有关详细信息，请参阅[函数的 JavaScript 参考](functions-reference-node.md#choose-single-vcpu-app-service-plans)。
 
 <a name="storage-account-requirements"></a>
 
 ## <a name="storage-account-requirements"></a>存储帐户要求
 
-创建 function app 时，必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 Azure Functions 内部使用存储以进行管理触发器和记录函数执行等操作。 某些存储帐户不支持队列和表，例如仅限 blob 的存储帐户、Azure 高级存储和使用 ZRS 复制的常规用途的存储帐户。 创建 Function App 时，将从“存储帐户”边栏选项卡中筛选出这些帐户。
+创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 Azure Functions 内部使用存储以进行管理触发器和记录函数执行等操作。 某些存储帐户不支持队列和表，例如仅限 blob 的存储帐户、Azure 高级存储和使用 ZRS 复制的常规用途的存储帐户。 创建 Function App 时，将从“存储帐户”边栏选项卡中筛选出这些帐户。
 
 >[!NOTE]
 >使用消耗托管计划时，函数代码和绑定配置文件存储在主存储帐户的 Azure 文件存储中。 删除主存储帐户时，此内容将随之删除且无法恢复。
 
-若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#azure-storage-services)。 
+要了解有关存储帐户类型详细信息，请参阅[介绍 Azure 存储服务](../storage/common/storage-introduction.md#azure-storage-services)。 
 
 ## <a name="next-steps"></a>后续步骤
 

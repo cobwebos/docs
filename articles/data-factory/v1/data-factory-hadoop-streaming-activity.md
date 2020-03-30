@@ -1,5 +1,5 @@
 ---
-title: 使用 Hadoop 流式处理活动转换数据-Azure
+title: 使用 Hadoop 流活动转换数据 - Azure
 description: 了解如何使用 Azure 数据工厂中的 Hadoop 流式处理活动通过运行 Hadoop 流式处理程序在按需的/自己的 HDInsight 群集上转换数据。
 services: data-factory
 documentationcenter: ''
@@ -13,23 +13,23 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: a7f07365da699a40f5b51917104a68a62affa3d9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74703366"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
-> [!div class="op_single_selector" title1="转换活动"]
-> * [Hive 活动](data-factory-hive-activity.md) 
+> [!div class="op_single_selector" title1="转型活动"]
+> * [蜂巢活动](data-factory-hive-activity.md) 
 > * [Pig 活动](data-factory-pig-activity.md)
-> * [MapReduce 活动](data-factory-map-reduce.md)
-> * [Hadoop Streaming 活动](data-factory-hadoop-streaming-activity.md)
+> * [映射减少活动](data-factory-map-reduce.md)
+> * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
 > * [机器学习批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
 > * [机器学习更新资源活动](data-factory-azure-ml-update-resource-activity.md)
 > * [存储过程活动](data-factory-stored-proc-activity.md)
-> * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
+> * [数据湖分析 U-SQL 活动](data-factory-usql-activity.md)
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
 
 > [!NOTE]
@@ -38,7 +38,7 @@ ms.locfileid: "74703366"
 
 可使用 HDInsightStreamingActivity 活动调用 Azure 数据工厂管道中的 Hadoop Streaming 作业。 以下 JSON 片段显示在管道 JSON 文件中使用 HDInsightStreamingActivity 的语法。 
 
-数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight Streaming 活动会在[自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 HDInsight Streaming 程序。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
+数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight 流式处理活动可[自行](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)基于 Windows/Linux 的 HDInsight 群集执行 Hadoop 流式处理程序。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 
 > [!NOTE] 
 > 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。 
@@ -92,17 +92,17 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
 }
 ```
 
-注意以下几点：
+请注意以下几点：
 
 1. 将 **linkedServiceName** 设置为链接服务的名称，该服务指向运行流式处理 MapReduce 作业的 HDInsight 群集。
 2. 将活动的类型设置为 **HDInsightStreaming**。
-3. 对于 **mapper** 属性，指定映射器可执行文件的名称。 在示例中，cat.exe 即是映射器可执行文件。
+3. 对于 **mapper** 属性，请指定映射器可执行文件的名称。 在示例中，cat.exe 即是映射器可执行文件。
 4. 对于 **reducer** 属性，指定减压器可执行文件的名称。 在示例中，wc.exe 即是减压器可执行文件。
 5. 对于 **input** 类型属性，指定映射器的输入文件（包括位置）。 在示例 `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` 中：adfsample 是 blob 容器，example/data/Gutenberg 是文件夹，davinci.txt 是 blob。
 6. 对于 **output** 类型属性，指定减压器的输出文件（包括位置）。 将 Hadoop Streaming 作业的输出写入到为该属性指定的位置。
-7. 在“filePaths”部分，指定映射器和减压器可执行文件的路径。 在此示例中：blob 容器为 "adfsample/example/apps/wc.exe"adfsample，文件夹为 example/apps，可执行文件为 wc.exe。
+7. 在 **filePaths** 节中，指定映射器和化简器可执行文件的路径。 在此示例中：blob 容器为 "adfsample/example/apps/wc.exe"adfsample，文件夹为 example/apps，可执行文件为 wc.exe。
 8. 对于 **fileLinkedService** 属性，指定表示 Azure 存储（包含“filePaths”部分中指定的文件）的 Azure 存储链接服务。
-9. 对于 **arguments** 属性，指定流式处理作业的参数。
+9. 对于 **arguments** 属性，请指定流式处理作业的参数。
 10. **getDebugInfo** 属性是可选元素。 将其设置为“Failure”时，仅针对失败下载日志。 如果设置为“Always”，将始终下载日志，无论执行状态如何。
 
 > [!NOTE]
@@ -223,9 +223,9 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
 }
 ```
 ## <a name="see-also"></a>另请参阅
-* [Hive 活动](data-factory-hive-activity.md)
+* [蜂巢活动](data-factory-hive-activity.md)
 * [Pig 活动](data-factory-pig-activity.md)
-* [MapReduce 活动](data-factory-map-reduce.md)
+* [映射减少活动](data-factory-map-reduce.md)
 * [调用 Spark 程序](data-factory-spark.md)
 * [调用 R 脚本](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

@@ -1,28 +1,28 @@
 ---
-title: Azure 应用程序 Insights 中通过 OpenCensus Python 进行传入请求跟踪 |Microsoft Docs
-description: 通过 OpenCensus Python 监视对你的 Python 应用的请求调用。
+title: 使用 OpenCensus Python 在 Azure 应用程序洞察中进行传入请求跟踪 |微软文档
+description: 通过 OpenCensus Python 监视 Python 应用的请求呼叫。
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.openlocfilehash: 0396bd8d150c6145a39f36e7be9e6e2dcacef2c4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669941"
 ---
-# <a name="track-incoming-requests-with-opencensus-python"></a>通过 OpenCensus Python 跟踪传入请求
+# <a name="track-incoming-requests-with-opencensus-python"></a>使用 OpenCensus Python 跟踪传入请求
 
-传入请求数据是使用 OpenCensus Python 及其各种集成收集的。 跟踪发送到 web 应用程序的传入请求数据，这些数据是在常用 web 框架之上构建的 `django`，`flask` 和 `pyramid`。 然后，将数据发送到 Azure Monitor 下作为 `requests` 遥测 Application Insights。
+传入请求数据使用 OpenCensus Python 及其各种集成进行收集。 跟踪发送到在常用 Web 框架`django``flask`和 之上构建的 Web 应用程序的传入请求`pyramid`数据。 然后，数据作为`requests`遥测数据发送到 Azure 监视器下的应用程序见解。
 
-首先，通过最新的[OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md)检测你的 Python 应用程序。
+首先，使用最新的[OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md)来检测您的 Python 应用程序。
 
 ## <a name="tracking-django-applications"></a>跟踪 Django 应用程序
 
-1. 从[PyPI](https://pypi.org/project/opencensus-ext-django/)下载并安装 `opencensus-ext-django`，并通过 `django` 中间件来检测应用程序。 将跟踪发送到你的 `django` 应用程序的传入请求。
+1. 从[PyPI](https://pypi.org/project/opencensus-ext-django/)下载和安装`django``opencensus-ext-django`，使用中间件检测您的应用程序。 发送到您的`django`应用程序的传入请求将被跟踪。
 
-2. 将 `opencensus.ext.django.middleware.OpencensusMiddleware` 包含在 `settings.py` 文件中的 `MIDDLEWARE`下。
+2. 包括在`opencensus.ext.django.middleware.OpencensusMiddleware`您的`settings.py`文件下`MIDDLEWARE`。
 
     ```python
     MIDDLEWARE = (
@@ -32,7 +32,7 @@ ms.locfileid: "77669941"
     )
     ```
 
-3. 请确保在 `OPENCENSUS`下的 `settings.py` 中正确配置了 AzureExporter。
+3. 确保 Azure 导出器在 下`settings.py`已`OPENCENSUS`正确配置。
 
     ```python
     OPENCENSUS = {
@@ -45,7 +45,7 @@ ms.locfileid: "77669941"
     }
     ```
 
-4. 你还可以将 url 添加到不想跟踪的请求 `BLACKLIST_PATHS` 下的 `settings.py`。
+4. 您还可以为`settings.py`不想跟踪的请求向下`BLACKLIST_PATHS`添加 URL。
 
     ```python
     OPENCENSUS = {
@@ -59,9 +59,9 @@ ms.locfileid: "77669941"
     }
     ```
 
-## <a name="tracking-flask-applications"></a>跟踪 Flask 应用程序
+## <a name="tracking-flask-applications"></a>跟踪烧瓶应用
 
-1. 从[PyPI](https://pypi.org/project/opencensus-ext-flask/)下载并安装 `opencensus-ext-flask`，并通过 `flask` 中间件来检测应用程序。 将跟踪发送到你的 `flask` 应用程序的传入请求。
+1. 从[PyPI](https://pypi.org/project/opencensus-ext-flask/)下载和安装`flask``opencensus-ext-flask`，使用中间件检测您的应用程序。 发送到您的`flask`应用程序的传入请求将被跟踪。
 
     ```python
     
@@ -86,7 +86,7 @@ ms.locfileid: "77669941"
     
     ```
 
-2. 您可以直接在代码中配置 `flask` 中间件。 对于不希望跟踪的 url 发出的请求，请将它们添加到 `BLACKLIST_PATHS`。
+2. 您可以直接在代码`flask`中配置中间件。 对于来自不希望跟踪的 URL 的请求，请将它们添加到`BLACKLIST_PATHS`。
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -100,9 +100,9 @@ ms.locfileid: "77669941"
     }
     ```
 
-## <a name="tracking-pyramid-applications"></a>跟踪棱锥应用程序
+## <a name="tracking-pyramid-applications"></a>跟踪金字塔应用程序
 
-1. 从[PyPI](https://pypi.org/project/opencensus-ext-pyramid/)下载并安装 `opencensus-ext-django`，并通过 `pyramid` 补间来检测应用程序。 将跟踪发送到你的 `pyramid` 应用程序的传入请求。
+1. 从[PyPI](https://pypi.org/project/opencensus-ext-pyramid/)下载和安装`pyramid``opencensus-ext-django`，用补间检测您的应用程序。 发送到您的`pyramid`应用程序的传入请求将被跟踪。
 
     ```python
     def main(global_config, **settings):
@@ -112,7 +112,7 @@ ms.locfileid: "77669941"
                          '.pyramid_middleware.OpenCensusTweenFactory')
     ```
 
-2. 您可以直接在代码中配置 `pyramid` 的补间。 对于不希望跟踪的 url 发出的请求，请将它们添加到 `BLACKLIST_PATHS`。
+2. 可以直接在代码中`pyramid`配置补间。 对于来自不希望跟踪的 URL 的请求，请将它们添加到`BLACKLIST_PATHS`。
 
     ```python
     settings = {
@@ -131,7 +131,7 @@ ms.locfileid: "77669941"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [应用程序映射](../../azure-monitor/app/app-map.md)
+* [应用程序地图](../../azure-monitor/app/app-map.md)
 * [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
 * [搜索](../../azure-monitor/app/diagnostic-search.md)
 * [日志（分析）查询](../../azure-monitor/log-query/log-query-overview.md)

@@ -1,25 +1,25 @@
 ---
-title: 推送 & 拉取 Docker 映像
+title: 推&拉 Docker 映像
 description: 使用 Docker CLI 在 Azure 的专用容器注册表中推送和拉取 Docker 映像
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
 ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456352"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
 
-Azure 容器注册表存储和管理专用 [Docker](https://hub.docker.com) 容器映像，其方式类似于 [Docker Hub](https://hub.docker.com/) 存储公共 Docker 映像。 可以使用 [Docker 命令行接口](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) 对容器注册表执行[登录](https://docs.docker.com/engine/reference/commandline/login/)、[推送](https://docs.docker.com/engine/reference/commandline/push/)、[提取](https://docs.docker.com/engine/reference/commandline/pull/)和其他操作。
+Azure 容器注册表存储和管理专用[Docker](https://hub.docker.com)容器映像，类似于[Docker Hub](https://hub.docker.com/)存储公共 Docker 映像的方式。 可以使用 [Docker 命令行接口](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) 对容器注册表执行[登录](https://docs.docker.com/engine/reference/commandline/login/)、[推送](https://docs.docker.com/engine/reference/commandline/push/)、[提取](https://docs.docker.com/engine/reference/commandline/pull/)和其他操作。
 
 以下步骤从公共 Docker 中心注册表下载正式的 [Nginx 映像](https://store.docker.com/images/nginx)，为专用 Azure 容器注册表标记该映像，将其推入到注册表，然后从注册表提取。
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
+* **Azure 容器注册表**- 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
 * **Docker CLI** - 还必须在本地安装 Docker。 Docker 提供的包可在任何 [macOS][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
 
 ## <a name="log-in-to-a-registry"></a>登录到注册表
@@ -30,7 +30,7 @@ Azure 容器注册表存储和管理专用 [Docker](https://hub.docker.com) 容�
 az acr login --name myregistry
 ```
 
-也可以使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 登录。 例如，你可能在自动化方案中向注册表[分配了服务主体](container-registry-authentication.md#service-principal)。 运行以下命令时，收到提示后，请以交互方式提供服务主体 appID（用户名）和密码。 有关管理登录凭据的最佳做法，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考：
+也可以使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 登录。 例如，您可能为自动化方案[为注册表分配了服务主体](container-registry-authentication.md#service-principal)。 运行以下命令时，收到提示后，请以交互方式提供服务主体 appID（用户名）和密码。 有关管理登录凭据的最佳做法，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考：
 
 ```
 docker login myregistry.azurecr.io
@@ -57,7 +57,7 @@ docker pull nginx
 docker run -it --rm -p 8080:80 nginx
 ```
 
-浏览到 `http://localhost:8080`，查看由正在运行的容器中的 Nginx 提供服务的默认网页。 应出现类似于下面的页面：
+浏览到 `http://localhost:8080`，查看由正在运行的容器中的 Nginx 提供服务的默认网页。 应看到类似于下面的页面：
 
 ![本地计算机上的 Nginx](./media/container-registry-get-started-docker-cli/nginx.png)
 
@@ -73,7 +73,7 @@ docker run -it --rm -p 8080:80 nginx
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```
 
-有关使用命名空间进行标记的详细信息，请参阅 [Azure 容器注册表的最佳做法](container-registry-best-practices.md#repository-namespaces)的[存储库命名空间](container-registry-best-practices.md)部分。
+有关使用命名空间进行标记的详细信息，请参阅 [Azure 容器注册表的最佳做法](container-registry-best-practices.md)的[存储库命名空间](container-registry-best-practices.md#repository-namespaces)部分。
 
 ## <a name="push-the-image-to-your-registry"></a>将映像推送到注册表
 
@@ -121,9 +121,9 @@ az acr repository delete --name myregistry --image samples/nginx:latest
 
 了解基础知识后，便可以开始使用注册表了！ 例如，将容器映像从注册表部署到：
 
-* [Azure Kubernetes 服务 (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
+* [Azure 库伯奈斯服务 （AKS）](../aks/tutorial-kubernetes-prepare-app.md)
 * [Azure 容器实例](../container-instances/container-instances-tutorial-prepare-app.md)
-* [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)
+* [服务结构](../service-fabric/service-fabric-tutorial-create-container-images.md)
 
 可以选择安装[适用于 Visual Studio Code 的 Docker 扩展](https://code.visualstudio.com/docs/azure/docker)以及适用于 Azure 容器注册表的 [Azure 帐户](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)扩展。 通过 Azure 容器注册表拉取和推送映像，或者运行 ACR 任务，这一切都可以在 Visual Studio Code 中进行。
 

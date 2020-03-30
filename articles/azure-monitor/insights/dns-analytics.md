@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
 ms.openlocfilehash: 2471c29f559df5c347c62ceb4c7fd9b4ae1e5eec
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657327"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
@@ -33,7 +33,7 @@ DNS Analytics 可帮助：
 
 下表介绍了该解决方案支持的连接的源：
 
-| **连接的源** | **支持** | **说明** |
+| **连接源** | **支持** | **说明** |
 | --- | --- | --- |
 | [Windows 代理](../platform/agent-windows.md) | 是 | 解决方案会从 Windows 代理收集 DNS 信息。 |
 | [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
@@ -44,7 +44,7 @@ DNS Analytics 可帮助：
 
 解决方案从安装有 Log Analytics 代理的 DNS 服务器收集 DNS 清单以及与 DNS 事件相关的数据。 此数据稍后将上传到 Azure Monitor，之后会显示在解决方案仪表板中。 通过运行 DNS PowerShell cmdlet 收集与清单相关的数据，如 DNS 服务器的数量、区域和资源记录。 该数据每两天更新一次。 与事件相关的数据几乎是从由 Windows Server 2012 R2 中增强的 DNS 日志记录和诊断提供的[分析和审核日志](https://technet.microsoft.com/library/dn800669.aspx#enhanc)中实时收集的。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 使用以下信息配置解决方案：
 
@@ -55,13 +55,13 @@ DNS Analytics 可帮助：
 
 ### <a name="configure-the-solution"></a>配置解决方案
 
-在解决方案仪表板上，单击“配置”打开 DNS Analytics 配置页面。 可进行两种类型的配置更改：
+在解决方案仪表板上，单击“配置”**** 打开 DNS Analytics 配置页面。 可进行两种类型的配置更改：
 
 - **列入允许列表的域名**。 解决方案不会处理所有查找查询。 这样可保留域名后缀允许列表。 查找查询会解析为匹配此允许列表中域名后缀的域名，但不由解决方案处理。 不处理列入允许列表的域名有助于优化发送到 Azure Monitor 的数据。 默认允许列表包括常用的公共域名，例如 www.google.com 和 www.facebook.com。 可以滚动查看完整的默认列表。
 
   可以修改列表，添加任何想要查看的域名后缀，从而查看查找见解。 还可以删除任何不感兴趣的域名后缀，从而查看查找见解。
 
-- **频繁通信的客户端阈值**。 DNS 客户端超出查找请求数的阈值时，将突出显示在“DNS 客户端”边栏选项卡中。 默认阈值为 1,000。 可以编辑该阈值。
+- **频繁通信的客户端阈值**。 DNS 客户端超出查找请求数的阈值时，将突出显示在“DNS 客户端”边栏选项卡中。**** 默认阈值为 1,000。 可以编辑该阈值。
 
     ![列入允许列表的域名](./media/dns-analytics/dns-config.png)
 
@@ -147,11 +147,11 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 - **DNS 服务器列表**。 显示所有 DNS 服务器及其关联的 FQDN、域名、林名和服务器 IP 的列表。
 - **DNS 区域列表**。 显示所有 DNS 区域及其关联的区域名称、动态更新状态、名称服务器和 DNSSEC 签名状态的的列表。
 - **未使用的资源记录**。 显示所有未使用/过时的资源记录的列表。 此列表包含资源记录名称、资源记录类型、关联的 DNS 服务器、记录生成时间和区域名称。 可使用此列表确定不再使用的 DNS 资源记录。 然后可以根据此信息从 DNS 服务器中删除这些条目。
-- **DNS 服务器查询负载**。 显示可从中了解 DNS 服务器上的 DNS 负载的信息。 此信息可帮助你规划服务器的容量。 可以转到“指标”选项卡，将视图更改为图形可视化效果。 此视图可帮助了解 DNS 负载在 DNS 服务器上的分布方式。 它显示每个服务器的 DNS 查询速率趋势。
+- **DNS 服务器查询负载**。 显示可从中了解 DNS 服务器上的 DNS 负载的信息。 此信息可帮助你规划服务器的容量。 可以转到“指标”**** 选项卡，将视图更改为图形可视化效果。 此视图可帮助了解 DNS 负载在 DNS 服务器上的分布方式。 它显示每个服务器的 DNS 查询速率趋势。
 
     ![DNS 服务器查询日志搜索结果](./media/dns-analytics/dns-servers-query-load.png)
 
-- **DNS 区域查询负载**。 显示该解决方案管理的 DNS 服务器上所有区域的 DNS 每秒区域查询统计信息。 单击“指标”选项卡，将视图从详细记录更改为结果的图形可视化效果。
+- **DNS 区域查询负载**。 显示该解决方案管理的 DNS 服务器上所有区域的 DNS 每秒区域查询统计信息。 单击“指标”**** 选项卡，将视图从详细记录更改为结果的图形可视化效果。
 - **配置事件**。 显示所有 DNS 配置更改事件和相关消息。 然后可以按照事件时间、事件 ID、DNS 服务器或任务类别筛选这些事件。 该数据有助于审核在特定时间对特定的 DNS 服务器所做的更改。
 - **DNS 分析日志**。 显示解决方案管理的所有 DNS 服务器上的所有分析事件。 然后可以按照事件时间、事件 ID、DNS 服务器、进行查找查询的客户端 IP 和查询类型任务类别，对这些事件进行筛选。 DNS 服务器分析事件允许对 DNS 服务器进行活动跟踪。 每次服务器发送或接收 DNS 信息时，都将记录一个分析事件。
 
@@ -159,29 +159,29 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 
 可在“日志搜索”页上创建查询。 可使用分面控件筛选搜索结果。 还可创建高级查询以转换、筛选和报告结果。 通过执行以下查询进行启动：
 
-1. 在“搜索查询”框中，键入 `DnsEvents`，查看由该解决方案托管的 DNS 服务器生成的所有 DNS 事件。 结果中将列出与查找查询、动态注册和配置更改相关的所有事件的日志数据。
+1. 在“搜索查询”框中****，键入 `DnsEvents`，查看由该解决方案托管的 DNS 服务器生成的所有 DNS 事件。 结果中将列出与查找查询、动态注册和配置更改相关的所有事件的日志数据。
 
     ![DnsEvents 日志搜索](./media/dns-analytics/log-search-dnsevents.png)  
 
-    a. 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有查找查询事件。
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。******** 此时会显示一个表格，其中列出了所选时间段内的所有查找查询事件。
 
-    b. 若要查看动态注册的日志数据，请在左侧的分面控件中选择“DynamicRegistration”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有动态注册事件。
+    b.保留“数据库类型”设置，即设置为“共享”。 若要查看动态注册的日志数据，请在左侧的分面控件中选择“DynamicRegistration”作为“子类型”筛选器。******** 此时会显示一个表格，其中列出了所选时间段内的所有动态注册事件。
 
-    c. 若要查看配置更改的日志数据，请在左侧的分面控件中选择“ConfigurationChange”作为“子类型”筛选器。 此时会显示一个表格，其中列出了所选时间段内的所有配置更改事件。
+    c. 若要查看配置更改的日志数据，请在左侧的分面控件中选择“ConfigurationChange”作为“子类型”筛选器。******** 此时会显示一个表格，其中列出了所选时间段内的所有配置更改事件。
 
-1. 在“搜索查询”框中，键入 `DnsInventory`，查看由该解决方案托管的 DNS 服务器中所有与 DNS 清单相关数据。 结果中列出 DNS 服务器的日志数据、DNS 区域和资源记录。
+1. 在“搜索查询”框中，**** 键入 `DnsInventory`，查看由该解决方案托管的 DNS 服务器中所有与 DNS 清单相关数据。 结果中列出 DNS 服务器的日志数据、DNS 区域和资源记录。
 
     ![DnsInventory 日志搜索](./media/dns-analytics/log-search-dnsinventory.png)
     
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
-常见的故障排除步骤：
+常见故障排除步骤：
 
-1. 缺少 DNS 查找数据-若要解决此问题，请尝试重置配置，或在门户中仅加载一次配置页面。 若要重置，只需将设置更改为其他值，然后将其更改回原始值，并保存配置。
+1. 缺少 DNS 查找数据 - 要解决此问题，请尝试在门户中重置配置或仅加载一次配置页。 若要重置，只需将设置更改为其他值，然后将其更改回原始值并保存配置。
 
 ## <a name="feedback"></a>反馈
 
-若要提供反馈，请访问[Log Analytics UserVoice 页面](https://aka.ms/dnsanalyticsuservoice)，发布用于处理 DNS Analytics 功能的想法。 
+若要提供反馈，请访问 [Log Analytics UserVoice 页](https://aka.ms/dnsanalyticsuservoice)以发布有关要使用的 DNS Analytics 功能的想法。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,23 +13,23 @@ ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
 ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484394"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中创建、重启 VM 或重设其大小时排查分配失败
 
 创建虚拟机 (VM)、重新启动已停止（解除分配）的 VM 和重设 VM 大小时，Microsoft Azure 会为订阅分配计算资源。 我们会不断投入其他基础结构和功能，确保始终提供可用于支持客户需求的所有 VM 类型。 但是，偶尔可能因特定区域中前所未有的 Azure 服务需求增长而遇到资源分配失败的情况。 当尝试在区域中创建或启动 VM，同时 VM 显示以下错误代码和消息时，会出现此问题：
 
-错误代码：AllocationFailed 或 ZonalAllocationFailed
+错误代码：AllocationFailed 或 ZonalAllocationFailed****
 
-错误消息：“分配失败。 对于此区域中请求的 VM 大小，我们的容量不够。 详细了解如何通过 https：\//aka.ms/allocation-guidance "提高分配成功的可能性：
+错误消息：“分配失败****。 对于此区域中请求的 VM 大小，我们的容量不够。 在 https:\//aka.ms/allocation-guidance 阅读有关提高分配成功可能性的详细信息”
 
 本文说明一些常见分配故障的原因，并建议可能的补救方法。
 
-如果本文未解决 Azure 问题，请访问 [MSDN 和 Stack Overflow](https://azure.microsoft.com/support/forums/) 上的 Azure 论坛。 可以将问题发布到这些论坛上，或者发布到 Twitter 上的 @AzureSupport。 此外，还可以通过在 [Azure 支持](https://azure.microsoft.com/support/options/)站点上选择“获取支持”来发出 Azure 支持请求。
+如果本文未解决 Azure 问题，请访问[MSDN 和堆栈溢出上的 Azure 论坛](https://azure.microsoft.com/support/forums/)。 可以将问题发布到这些论坛上，或者发布到 Twitter 上的 @AzureSupport。 此外，还可以通过在 [Azure 支持](https://azure.microsoft.com/support/options/)站点上选择“获取支持”来发出 Azure 支持请求。
 
 在你首选的 VM 类型在首选区域中提供前，建议遇到部署问题的客户考虑下表中的指南，作为临时解决办法。 
 
@@ -79,7 +79,7 @@ ms.locfileid: "77484394"
 
 如果分配请求较大（超过 500 个内核），请参阅下节中的指南，将请求分解为较小的部署。
 
-请尝试重新[部署 VM](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows)。 重新部署 VM 会将 VM 分配到该区域中的新群集。
+尝试[重新部署 VM](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows)。 重新部署 VM 会将 VM 分配给区域内的新群集。
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>针对较旧 VM 大小（Av1、Dv1、DSv1、D15v2、DS15v2 等）的分配失败
 

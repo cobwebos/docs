@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190016"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>通过 Azure API 管理服务使用外部服务
@@ -68,7 +68,7 @@ Slack 具有入站 Web Hook 的概念。 配置入站 Web Hook 时，Slack 将�
 `send-request` 策略能够使用外部服务来执行复杂的处理函数，并将数据返回到 API 管理服务，此服务可用于进一步处理策略。
 
 ### <a name="authorizing-reference-tokens"></a>授权引用令牌
-API 管理的主要功能是保护后端资源。 如果 API 使用的授权服务器可以像 [Azure Active Directory](https://jwt.io/) 一样创建 [JWT 令牌](../active-directory/hybrid/whatis-hybrid-identity.md)作为其 OAuth2 流程的一部分，则可以使用 `validate-jwt` 策略来验证令牌的有效性。 某些授权服务器创建所谓的[引用令牌](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)，这些令牌无法在不对授权服务器进行回调的情况下进行验证。
+API 管理的主要功能是保护后端资源。 如果 API 使用的授权服务器可以像 [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) 一样创建 [JWT 令牌](https://jwt.io/)作为其 OAuth2 流程的一部分，则可以使用 `validate-jwt` 策略来验证令牌的有效性。 某些授权服务器创建所谓的[引用令牌](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)，这些令牌无法在不对授权服务器进行回调的情况下进行验证。
 
 ### <a name="standardized-introspection"></a>标准化自检
 对于使用授权服务器来验证引用令牌，过去一直没有标准化的方式。 但是，IETF 最近发布的提议标准 [RFC 7662](https://tools.ietf.org/html/rfc7662) 定义了资源服务器如何验证令牌的有效性。
@@ -102,9 +102,9 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 
 从响应对象中可以检索主体，RFC 7622 会告知 API 管理，响应必须是 JSON 对象，并且必须至少包含一个名为 `active` 的属性（布尔值）。 当 `active` 为 true，则令牌被视为有效。
 
-或者，如果授权服务器不包含用于指示令牌是否有效的 "活动" 字段，请使用 Postman 等工具来确定有效令牌中设置的属性。 例如，如果有效的令牌响应中包含一个名为 "expires_in" 的属性，请按照以下方式检查授权服务器响应中是否存在此属性名称：
+或者，如果授权服务器不包含"活动"字段以指示令牌是否有效，请使用 Postman 等工具确定在有效令牌中设置的属性。 例如，如果有效的令牌响应包含名为"expires_in"的属性，请选中此属性名称是否存在于授权服务器响应中，这样：
 
-当条件 = "@ （（IResponse）上下文时，<。变量 ["tokenstate"]）。Body.As<JObject>（）。Property （"expires_in"） = = null） ">
+<条件="（（（IResponse））上下文"。变量["令牌状态"*）。Body.As（）。<JObject>属性（"expires_in"） = 空）">
 
 ### <a name="reporting-failure"></a>报告失败
 可以使用 `<choose>` 策略来检测令牌是否无效，如果无效，则返回 401 响应。
@@ -285,6 +285,6 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 
 在配置占位符操作时，可以将仪表板资源配置为至少缓存一小时。 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 Azure API 管理服务提供可根据需要应用到 HTTP 流量的灵活策略，并支持后端服务的组合。 不管是要使用警报、校验、验证功能还是基于多个后端服务创建新的复合资源来增强 API 网关，`send-request` 和相关策略都能使这种想法成为可能。
 

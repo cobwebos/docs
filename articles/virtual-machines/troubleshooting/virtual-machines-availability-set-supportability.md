@@ -1,6 +1,6 @@
 ---
 title: 将 Azure VM 添加到现有可用性集的可支持性 | Microsoft Docs
-description: 本文提供了有关可在同一可用性集中混合的 VM 系列的可支持性矩阵
+description: 本文提供了一个可支持性矩阵，介绍可以在同一可用性集中混合哪些 VM 系列
 documentationcenter: ''
 author: Deland-Han
 manager: dcscontentpm
@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.openlocfilehash: a9ca8f219bef787de04b51600209bfd3a24dd166
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77122917"
 ---
 # <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>将 Azure VM 添加到现有可用性集的可支持性
@@ -24,12 +24,12 @@ ms.locfileid: "77122917"
 系列和可用性集|第二个 VM|A|Av2|D|Dv2|Dv3|
 |---|---|---|---|---|---|---|
 |第一个 VM|||||||
-|A||确定|确定|确定|确定|确定|
-|Av2||确定|确定|确定|确定|确定|
-|D||确定|确定|确定|确定|确定|
-|Dv2||确定|确定|确定|确定|确定|
-|Dv3||确定|确定|确定|确定|确定|
+|A||OK|OK|OK|OK|OK|
+|Av2||OK|OK|OK|OK|OK|
+|D||OK|OK|OK|OK|OK|
+|Dv2||OK|OK|OK|OK|OK|
+|Dv3||OK|OK|OK|OK|OK|
 
 所有其他系列都不能在同一可用性集中，因为它们需要特定的硬件。
 
-由于需要专用 RDMA 后端网络，因此无法混合 A8/A9 VM 大小。
+A8/A9 VM 大小不能混合，因为专用 RDMA 后端网络的要求。

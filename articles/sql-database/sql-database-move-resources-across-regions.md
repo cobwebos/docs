@@ -1,5 +1,5 @@
 ---
-title: 如何将资源移到另一个区域
+title: 如何将资源移动到其他区域
 description: 了解如何将 Azure SQL 数据库、Azure SQL 弹性池或 Azure SQL 托管实例移到另一个区域。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 06/25/2019
 ms.openlocfilehash: 851ef49a5c066f12a95baa54daf5e267cb4278c5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821435"
 ---
 # <a name="how-to-move-azure-sql-resources-to-another-region"></a>如何将 Azure SQL 资源移到另一个区域
@@ -37,7 +37,7 @@ ms.locfileid: "73821435"
 
 
 > [!NOTE]
-> 本文适用于 Azure 公有云内或同一主权云中的迁移。 
+> 本文适用于 Azure 公共云中的迁移，或在同一主权云中的迁移。 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -57,7 +57,7 @@ ms.locfileid: "73821435"
 1. 如果实例具有长期保留策略 (LTR)，则现有的 LTR 备份将与当前服务器保持关联。 由于目标服务器不同，因此你可以使用源服务器访问源区域中的旧 LTR 备份，即使删除了该服务器，也是如此。 
 
   > [!NOTE]
-  > 这将无法在主权云和公共区域之间移动。 此类迁移需要将 LTR 备份移动到当前不支持的目标服务器。 
+  > 这不足以在主权云和公共区域之间移动。 此类迁移需要将 LTR 备份移动到目标服务器，而目标服务器当前不受支持。 
 
 ### <a name="prepare-resources"></a>准备资源
 
@@ -106,7 +106,7 @@ ms.locfileid: "73821435"
 1. 如果实例具有长期保留策略 (LTR)，则现有的 LTR 备份将与当前服务器保持关联。 由于目标服务器不同，因此你可以使用源服务器访问源区域中的旧 LTR 备份，即使删除了该服务器，也是如此。 
 
   > [!NOTE]
-  > 这将无法在主权云和公共区域之间移动。 此类迁移需要将 LTR 备份移动到当前不支持的目标服务器。 
+  > 这不足以在主权云和公共区域之间移动。 此类迁移需要将 LTR 备份移动到目标服务器，而目标服务器当前不受支持。 
 
 ### <a name="prepare-to-move"></a>准备移动
  
@@ -156,7 +156,7 @@ ms.locfileid: "73821435"
 1. 如果实例具有长期保留策略 (LTR)，则现有的 LTR 备份将与当前服务器保持关联。 由于目标服务器不同，因此你可以使用源服务器访问源区域中的旧 LTR 备份，即使删除了该服务器，也是如此。 
 
   > [!NOTE]
-  > 这将无法在主权云和公共区域之间移动。 此类迁移需要将 LTR 备份移动到当前不支持的目标服务器。 
+  > 这不足以在主权云和公共区域之间移动。 此类迁移需要将 LTR 备份移动到目标服务器，而目标服务器当前不受支持。 
 
 ### <a name="prepare-resources"></a>准备资源
 

@@ -1,7 +1,7 @@
 ---
 title: 技能集中的自定义 Web API 技能
 titleSuffix: Azure Cognitive Search
-description: 通过调用 Web Api 来扩展 Azure 认知搜索技能集的功能。 使用自定义 Web API 技能集成自定义代码。
+description: 通过调用 Web API 扩展 Azure 认知搜索技能集的功能。 使用自定义 Web API 技能集成自定义代码。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 29928d78c2cfc2f21def363341f8383c4efa89d2
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74484122"
 ---
-# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure 认知搜索扩充管道中的自定义 Web API 技能
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure 认知搜索丰富管道中的自定义 Web API 技能
 
-**自定义 WEB api**技能使你可以通过调用提供自定义操作的 Web API 终结点来扩展 AI 扩充。 与内置技能类似，“自定义 Web API”技能也有输入和输出。 Web API 根据输入在索引器运行时接收 JSON 有效负载，并输出 JSON 有效负载作为响应，以及成功状态代码。 响应应包含自定义技能指定的输出。 其他任何响应都被视为错误，并且不会执行任何扩充。
+**自定义 Web API**技能允许您通过调用提供自定义操作的 Web API 终结点来扩展 AI 充实。 与内置技能类似，“自定义 Web API”**** 技能也有输入和输出。 Web API 根据输入在索引器运行时接收 JSON 有效负载，并输出 JSON 有效负载作为响应，以及成功状态代码。 响应应包含自定义技能指定的输出。 其他任何响应都被视为错误，并且不会执行任何扩充。
 
 本文档进一步详细介绍了 JSON 有效负载的结构。
 
@@ -34,22 +34,22 @@ Microsoft.Skills.Custom.WebApiSkill
 
 参数区分大小写。
 
-| 参数名称     | 说明 |
+| 参数名称     | 描述 |
 |--------------------|-------------|
-| uri | 将 _JSON_ 有效负载发送到的 Web API 的 URI。 只允许使用 https URI 方案 |
+| uri | _将 JSON_负载发送到的 Web API 的 URI。 只允许使用 https**** URI 方案 |
 | httpMethod | 发送有效负载时使用的方法。 允许使用的方法为 `PUT` 或 `POST` |
 | httpHeaders | 键值对集合，其中键表示头名称，值表示发送到 Web API 的头值以及有效负载。 此集合中禁止使用以下头：`Accept`、`Accept-Charset`、`Accept-Encoding`、`Content-Length`、`Content-Type`、`Cookie`、`Host`、`TE`、`Upgrade`、`Via` |
 | timeout | （可选）如果指定，表明执行 API 调用的 http 客户端的超时值。 必须将其格式化为 XSD“dayTimeDuration”值（[ISO 8601 持续时间](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)值的受限子集）。 例如，`PT60S` 表示 60 秒。 如果未设置，选择的是默认值 30 秒。 超时可以设置为最大 230 秒和最小 1 秒。 |
-| batchSize | （可选）表示每 API 调用发送多少个“数据记录”（请参阅下面的 JSON 有效负载结构）。 如果未设置，选择的是默认值 1000。 建议使用此参数在索引编制吞吐量和 API 负载之间进行适当取舍 |
-| degreeOfParallelism | 可有可无如果指定此值，则指示索引器将与提供的终结点并行进行的调用数。 如果终结点的请求负载过高，则可以减小此值，如果终结点能够接受更多的请求，并且需要提高索引器的性能，则可以将其引发。  如果未设置，则使用默认值5。 DegreeOfParallelism 最大可以设置为10，最小值为1。 |
+| batchSize | （可选）表示每 API 调用发送多少个“数据记录”（请参阅下面的 JSON__ 有效负载结构）。 如果未设置，选择的是默认值 1000。 建议使用此参数在索引编制吞吐量和 API 负载之间进行适当取舍 |
+| degreeOfParallelism | （可选）指定后，指示索引器将与您提供的终结点并行发出的呼叫数。 如果终结点在请求负载过高的情况下出现故障，则可以降低此值;如果终结点能够接受更多请求，并且希望提高索引器的性能，则可以将其调高。  如果未设置，则使用默认值 5。 并行度最多可设置为 10 和最小 1。 |
 
 ## <a name="skill-inputs"></a>技能输入
 
-此技能没有“预定义”输入。 可以选择在执行此技能时已提供的一个或多个字段作为输入，发送到 Web API 的 JSON 有效负载将会有不同的字段。
+此技能没有“预定义”输入。 可以选择在执行此技能时已提供的一个或多个字段作为输入，发送到 Web API 的 JSON__ 有效负载将会有不同的字段。
 
 ## <a name="skill-outputs"></a>技能输出
 
-此技能没有“预定义”输出。 根据 Web API 将返回的响应，添加输出字段，以便能够从 JSON 响应中选择这些字段。
+此技能没有“预定义”输出。 根据 Web API 将返回的响应，添加输出字段，以便能够从 JSON__ 响应中选择这些字段。
 
 
 ## <a name="sample-definition"></a>示例定义
@@ -84,13 +84,13 @@ Microsoft.Skills.Custom.WebApiSkill
 ```
 ## <a name="sample-input-json-structure"></a>示例输入 JSON 结构
 
-此 JSON 结构表示将发送到 Web API 的有效负载。
+此 JSON__ 结构表示将发送到 Web API 的有效负载。
 它始终遵循以下约束：
 
 * 顶级实体名为 `values`，并且是对象数组。 此类对象的数量最多为 `batchSize`
 * `values` 数组中的每个对象都有
-    * `recordId` 属性，用于标识相应记录的唯一字符串。
-    * `data` 属性，它是 JSON 对象。 `data` 属性的字段对应于技能定义的 `inputs` 部分中指定的“名称”。 这些字段的值将来自这些字段的 `source`（可能来自文档中的字段，也可能来自另一个技能）
+    * `recordId` 属性，用于标识相应记录的唯一**** 字符串。
+    * `data` 属性，它是 JSON__ 对象。 `data` 属性的字段对应于技能定义的 `inputs` 部分中指定的“名称”。 这些字段的值将来自这些字段的 `source`（可能来自文档中的字段，也可能来自另一个技能）
 
 ```json
 {
@@ -137,7 +137,7 @@ Microsoft.Skills.Custom.WebApiSkill
 
 ## <a name="sample-output-json-structure"></a>示例输出 JSON 结构
 
-“输出”对应于 Web API 返回的响应。 Web API 应仅返回 _JSON_ 有效负载（通过查看 `Content-Type` 响应头进行验证），并且应遵循以下约束：
+“输出”对应于 Web API 返回的响应。 Web API 应仅返回_JSON_负载（通过查看`Content-Type`响应标头进行验证），并应满足以下约束：
 
 * 应有名为 `values` 且是对象数组的顶级实体。
 * 数组中的对象数量应与发送到 Web API 的对象数量相同。
@@ -197,12 +197,12 @@ Microsoft.Skills.Custom.WebApiSkill
 除了 Web API 不可用或发送出非成功状态代码以外，还会将以下情况视为出错：
 
 * 如果 Web API 返回成功状态代码，但响应指明它不是 `application/json`，那么响应会被视为无效，并且不会执行任何扩充。
-* 如果响应  **数组中有无效**`recordId`记录（包含不属于原始请求的 `values`，或值重复），则不会对这些记录执行任何扩充。
+* 如果响应 `values` 数组中有无效**** 记录（包含不属于原始请求的 `recordId`，或值重复），则不会对这些**** 记录执行任何扩充。
 
 在 Web API 不可用或返回 HTTP 错误的情况下，包含 HTTP 错误的任何可用详细信息的易记错误都会添加到索引器执行历史记录。
 
 ## <a name="see-also"></a>请参阅
 
 + [如何定义技能集](cognitive-search-defining-skillset.md)
-+ [向 AI 扩充管道添加自定义技能](cognitive-search-custom-skill-interface.md)
++ [将自定义技能添加到 AI 扩充管道](cognitive-search-custom-skill-interface.md)
 + [示例：为 AI 扩充创建自定义技能](cognitive-search-create-custom-skill-example.md)

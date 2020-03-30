@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671857"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遥测上下文：Application Insights 数据模型
@@ -74,7 +74,7 @@ ms.locfileid: "77671857"
 
 ## <a name="anonymous-user-id"></a>匿名用户 ID
 
-匿名用户 id。表示应用程序的最终用户。 从服务发送遥测时，用户上下文与在服务中启用操作的用户有关。
+匿名用户 ID。表示应用程序的最终用户。 从服务发送遥测时，用户上下文与在服务中启用操作的用户有关。
 
 [采样](../../azure-monitor/app/sampling.md)是最小化遥测收集量的一种技术。 采样算法尝试在所有相关遥测内部或外部采样。 匿名用户 ID 用于生成采样得分。 所以匿名用户 ID 应为随机值。 
 
@@ -85,14 +85,14 @@ ms.locfileid: "77671857"
 
 ## <a name="authenticated-user-id"></a>已经过身份验证的用户 ID
 
-经过身份验证的用户 id。与匿名用户 id 相反，此字段表示具有友好名称的用户。 由于其 PII 信息，默认情况下，大多数 SDK 不收集它。
+经过身份验证的用户 ID。此字段与匿名用户 ID 相反，表示具有友好名称的用户。 由于其 PII 信息，默认情况下，大多数 SDK 不收集它。
 
 最大长度：1024
 
 
 ## <a name="account-id"></a>帐户 ID
 
-在多租户应用程序中，这是用户使用的帐户 ID 或名称。 示例可以是博客平台的 Azure 门户或博客名称的订阅 ID。
+在多租户应用程序中，这是用户使用的帐户 ID 或名称。 示例可以是 Azure 门户的订阅 ID 或博客平台的博客名称。
 
 最大长度：1024
 
@@ -113,7 +113,7 @@ ms.locfileid: "77671857"
 
 ## <a name="internal-sdk-version"></a>内部：SDK 版本
 
-SDK 版本。 有关信息，请参阅[此文](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md)。
+SDK 版本。 有关详细信息，请参阅[此文章](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md)。
 
 最大长度：64
 

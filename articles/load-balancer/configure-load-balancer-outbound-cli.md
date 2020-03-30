@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: allensu
 ms.openlocfilehash: 7230b0c2b80137b068bbeacf43ab2133491a69b0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74225471"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>使用 Azure CLI 在标准负载均衡器中配置负载均衡和出站规则
@@ -28,13 +28,13 @@ ms.locfileid: "74225471"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.28 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-resource-group"></a>创建资源组
 
 使用 [az group create](https://docs.microsoft.com/cli/azure/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在“eastus2”位置创建名为“myresourcegroupoutbound”的资源组：
+以下示例在“eastus2”** 位置创建名为“myresourcegroupoutbound”的资源组**：
 
 ```azurecli-interactive
   az group create \
@@ -42,7 +42,7 @@ ms.locfileid: "74225471"
     --location eastus2
 ```
 ## <a name="create-virtual-network"></a>创建虚拟网络
-使用 *az network vnet create* 在 *myresourcegroupoutbound* 中创建名为 *myvnetoutbound* 的虚拟网络，该虚拟网络包含名为 [mysubnetoutbound](https://docs.microsoft.com/cli/azure/network/vnet) 的子网。
+使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) 在 *myresourcegroupoutbound* 中创建名为 *myvnetoutbound* 的虚拟网络，该虚拟网络包含名为 *mysubnetoutbound* 的子网。
 
 ```azurecli-interactive
   az network vnet create \
@@ -118,7 +118,7 @@ ms.locfileid: "74225471"
 
 ### <a name="create-health-probe"></a>创建运行状况探测
 
-运行状况探测器会检查所有虚拟机实例，以确保它们可以发送网络流量。 探测器检查失败的虚拟机实例将从负载均衡器中删除，直到它恢复联机状态并且探测器检查确定它运行正常。 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) 创建运行状况探测，以监视虚拟机的运行状况。 
+运行状况探测器会检查所有虚拟机实例，以确保它们可以发送网络流量。 探测器检查失败的虚拟机实例将从负载均衡器中删除，直到它恢复联机状态并且探测器检查确定它运行正常。 创建使用 az[网络 lb 探测器创建的](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest)运行状况探测，以监视虚拟机的运行状况。 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -132,7 +132,7 @@ ms.locfileid: "74225471"
 
 ### <a name="create-load-balancing-rule"></a>创建负载均衡规则
 
-负载均衡器规则定义传入流量的前端 IP 配置和后端池以接收流量，同时定义所需源和目标端口。 使用 *az network lb rule create* 创建负载均衡器规则 [myinboundlbrule](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest)，以便侦听前端池 *myfrontendinbound* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *bepool*。 
+负载均衡器规则定义传入流量的前端 IP 配置和后端池以接收流量，同时定义所需源和目标端口。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) 创建负载均衡器规则 *myinboundlbrule*，以便侦听前端池 *myfrontendinbound* 中的端口 80，并且将经过负载均衡的网络流量发送到也使用端口 80 的后端地址池 *bepool*。 
 
 >[!NOTE]
 >此负载均衡规则通过其 --disable-outbound-snat 参数禁用自动出站 (S)NAT。 出站 NAT 仅通过出站规则提供。
@@ -169,7 +169,7 @@ az network lb outbound-rule create \
 
 如果你不想要使用独立的出站池，可以更改上述命令中的地址池参数，以指定 *bepoolinbound*。  我们建议使用独立的池，以提高灵活性，并方便阅读最终的配置。
 
-此时，可以使用 *az network nic ip-config address-pool add*，通过更新相应 NIC 资源的 IP 配置来继续将 VM 添加到后端池 __bepoolinbound__ *和* [bepooloutbound](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest)。
+此时，可以使用 [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest)，通过更新相应 NIC 资源的 IP 配置来继续将 VM 添加到后端池 *bepoolinbound* __和__ *bepooloutbound*。
 
 ## <a name="clean-up-resources"></a>清理资源
 

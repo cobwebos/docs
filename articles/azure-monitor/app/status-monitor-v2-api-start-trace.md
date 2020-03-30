@@ -1,28 +1,28 @@
 ---
-title: Azure 应用程序 Insights 代理 API 参考
-description: Application Insights 代理 API 参考。 开始跟踪。 从状态监视器和 Application Insights SDK 收集 ETW 日志。
+title: Azure Application Insights 代理 API 参考
+description: Application Insights 代理 API 参考。 Start-Trace。 从状态监视器和 Application Insights SDK 收集 ETW 日志。
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: b9680101f1a22dd6d9c1617c8afc13a10ad1c594
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671216"
 ---
-# <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights 代理 API： ApplicationInsightsMonitoringTrace
+# <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>应用程序见解代理 API：启动应用程序见解监视跟踪
 
-本文介绍了一个 cmdlet，它是[ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成员。
+本文介绍属于 [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的 cmdlet。
 
-## <a name="description"></a>说明
+## <a name="description"></a>描述
 
-从无代码置备附加运行时收集[ETW 事件](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal)。 此 cmdlet 是运行[PerfView](https://github.com/microsoft/perfview)的替代方法。
+从无代码附加运行时收集 [ETW 事件](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal)。 此 cmdlet 是运行 [PerfView](https://github.com/microsoft/perfview) 的替代方法。
 
-收集的事件将实时打印到控制台并保存到 ETL 文件中。 [PerfView](https://github.com/microsoft/perfview)可以打开输出 ETL 文件以进行进一步调查。
+收集的事件将实时输出到控制台，并保存到 ETL 文件。 可以通过 [PerfView](https://github.com/microsoft/perfview) 打开该输出 ETL 文件，以用于进一步的调查。
 
-此 cmdlet 将一直运行，直到它达到超时持续时间（默认为5分钟）或手动停止（`Ctrl + C`）。
+此 cmdlet 将一直运行到它达到超时持续时间（默认值为 5 分钟）或被手动停止 (`Ctrl + C`)。
 
 > [!IMPORTANT] 
 > 此 cmdlet 需要具有管理员权限的 PowerShell 会话。
@@ -31,43 +31,43 @@ ms.locfileid: "77671216"
 
 ### <a name="how-to-collect-events"></a>如何收集事件
 
-通常，我们会要求你收集事件以调查应用程序未被检测的原因。
+通常，我们会要求你收集事件，以调查未检测应用程序的原因。
 
-当 IIS 启动和应用程序启动时，无代码置备附加运行时将发出 ETW 事件。
+在 IIS 启动时以及在应用程序启动时，无代码附加运行时将发出 ETW 事件。
 
-若要收集这些事件：
-1. 在具有管理员权限的 cmd 控制台中，执行 `iisreset /stop` 以关闭 IIS 和所有 web 应用。
+若要收集这些事件，请执行以下操作：
+1. 在具有管理权限的 cmd 控制台中，执行 `iisreset /stop` 以关闭 IIS 和所有 Web 应用。
 2. 执行此 cmdlet
-3. 在具有管理员权限的 cmd 控制台中，执行 `iisreset /start` 以启动 IIS。
-4. 尝试浏览到您的应用程序。
-5. 应用完成加载后，可以手动停止（`Ctrl + C`）或等待超时。
+3. 在具有管理权限的 cmd 控制台中，执行 `iisreset /start` 以启动 IIS。
+4. 尝试浏览到你的应用。
+5. 在应用完成加载后，你可以手动停止它 (`Ctrl + C`) 或等待超时。
 
 ### <a name="what-events-to-collect"></a>要收集的事件
 
-收集事件时有三个选项：
+收集事件时，你有下面三个选择：
 1. 使用开关 `-CollectSdkEvents` 收集从 Application Insights SDK 发出的事件。
-2. 使用开关 `-CollectRedfieldEvents` 收集状态监视器和 Redfield 运行时发出的事件。 当诊断 IIS 和应用程序启动时，这些日志非常有用。
-3. 使用这两个开关来收集两个事件类型。
-4. 默认情况下，如果未指定任何开关，则将收集两个事件类型。
+2. 使用开关 `-CollectRedfieldEvents` 收集由状态监视器和 Redfield 运行时发出的事件。 在诊断 IIS 和应用程序启动时，这些日志非常有用。
+3. 使用这两个开关可收集这两种事件类型。
+4. 默认情况下，如果未指定任何开关，将收集这两种事件类型。
 
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 ### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
-**可选。** 使用此参数可设置此脚本应收集事件的时间长度。 默认值为 5 分钟。
+**选。** 使用此参数可设置此脚本应收集事件的时长。 默认值为 5 分钟。
 
 ### <a name="-logdirectory"></a>-LogDirectory
-**可选。** 使用此开关可以设置 ETL 文件的输出目录。 默认情况下，将在 PowerShell 模块目录中创建此文件。 脚本执行过程中将显示完整路径。
+**选。** 使用此开关可设置 ETL 文件的输出目录。 默认情况下，此文件将在 PowerShell 模块目录中创建。 完整路径将在脚本执行期间显示。
 
 
 ### <a name="-collectsdkevents"></a>-CollectSdkEvents
-**可选。** 使用此开关收集 Application Insights SDK 事件。
+**选。** 使用此开关可收集 Application Insights SDK 事件。
 
 ### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
-**可选。** 使用此开关可以从状态监视器和 Redfield 运行时收集事件。
+**选。** 使用此开关可从状态监视器和 Redfield 运行时收集事件。
 
 ### <a name="-verbose"></a>-Verbose
-**通用参数。** 使用此开关输出详细日志。
+**通用参数。** 使用此开关输出详细的日志。
 
 
 
@@ -106,15 +106,15 @@ Timeout Reached. Stopping...
 
 ## <a name="next-steps"></a>后续步骤
 
-其他故障排除：
+其他故障排除方法：
 
-- 在此处查看其他故障排除步骤： https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
-- 查看[API 参考](status-monitor-v2-overview.md#powershell-api-reference)，了解可能缺少的参数。
-- 如果需要更多帮助，可以在[GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues)上联系我们。
+- 在此处查看其他故障排除步骤：https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
+- 请查看 [API 参考](status-monitor-v2-overview.md#powershell-api-reference)，以了解你可能错过的参数。
+- 如果需要更多帮助，可以通过 [GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues) 联系我们。
 
 
 
- Application Insights 代理中执行更多操作：
- - 使用本指南来对 Application Insights 代理[进行故障排除](status-monitor-v2-troubleshoot.md)。
- - [获取配置](status-monitor-v2-api-get-config.md)以确认正确地记录了设置。
+ 使用 Application Insights 代理执行更多操作：
+ - 使用我们的指南对 Application Insights 代理进行[故障排除](status-monitor-v2-troubleshoot.md)。
+ - [获取配置](status-monitor-v2-api-get-config.md)以确认是否正确记录了你的设置。
  - [获取状态](status-monitor-v2-api-get-status.md)以检查监视。

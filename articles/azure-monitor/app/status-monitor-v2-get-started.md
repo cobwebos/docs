@@ -1,28 +1,28 @@
 ---
-title: Azure 应用程序 Insights 代理-入门 |Microsoft Docs
-description: Application Insights 代理的快速入门指南。 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
+title: Azure Application Insights 代理 - 入门 | Microsoft Docs
+description: Application Insights 代理的快速入门指南。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 7819de1f3dfab7f934421de86c0481d2e063f7a4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671182"
 ---
-# <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>开始 Azure Monitor 本地服务器 Application Insights 代理
+# <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>本地服务器的 Azure Monitor Application Insights 代理入门
 
-本文包含了预计适用于大多数环境的快速入门命令。
-说明取决于分发更新的 PowerShell 库。
+本文包含应适用于大多数环境的快速入门命令。
+这些说明依赖于 PowerShell 库来分发更新。
 这些命令支持 PowerShell `-Proxy` 参数。
 
-有关这些命令、自定义说明以及有关故障排除的信息的说明，请参阅[详细说明](status-monitor-v2-detailed-instructions.md)。
+有关这些命令的说明、自定义说明以及有关故障排除的信息，请参阅[详细说明](status-monitor-v2-detailed-instructions.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="download-and-install-via-powershell-gallery"></a>通过 PowerShell 库下载和安装
+## <a name="download-and-install-via-powershell-gallery"></a>通过 PowerShell 库下载并安装
 
 ### <a name="install-prerequisites"></a>安装先决条件
 以管理员身份运行 PowerShell。
@@ -50,7 +50,7 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
         
 ## <a name="download-and-install-manually-offline-option"></a>手动下载并安装（脱机选项）
 ### <a name="download-the-module"></a>下载模块
-手动从[PowerShell 库](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)下载模块的最新版本。
+从 [PowerShell 库](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)手动下载最新版本的模块。
 
 ### <a name="unzip-and-install-application-insights-agent"></a>解压缩并安装 Application Insights 代理
 ```powershell
@@ -71,18 +71,18 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 
  查看遥测：
 
-- [探索指标](../../azure-monitor/app/metrics-explorer.md)来监视性能和使用情况。
+- [浏览指标](../../azure-monitor/app/metrics-explorer.md)以监视性能和使用情况。
 - [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
-- [将分析](../../azure-monitor/app/analytics.md)用于更高级的查询。
+- 对更高级的查询[使用分析](../../azure-monitor/app/analytics.md)。
 - [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
 
  添加更多遥测：
 
-- [创建 web 测试](monitor-web-app-availability.md)，确保网站保持活动。
-- [添加 web 客户端遥测](../../azure-monitor/app/javascript.md)，查看网页代码中的异常并启用跟踪调用。
-- [将 APPLICATION INSIGHTS SDK 添加到你的代码](../../azure-monitor/app/asp-net.md)中，以便可以插入跟踪和日志调用。
+- [创建 Web 测试](monitor-web-app-availability.md)，确保站点保持活动状态。
+- [添加 Web 客户端遥测](../../azure-monitor/app/javascript.md)，以查看网页代码中的异常并启用跟踪调用。
+- [将 Application Insights SDK 添加到代码](../../azure-monitor/app/asp-net.md)，以便插入跟踪和日志调用。
 
-Application Insights 代理中执行更多操作：
+使用 Application Insights 代理执行更多操作：
 
-- 查看[详细说明，详细](status-monitor-v2-detailed-instructions.md)了解此处提供的命令。
-- 使用本指南来对 Application Insights 代理[进行故障排除](status-monitor-v2-troubleshoot.md)。
+- 有关此处找到的命令的说明，请查看[详细说明](status-monitor-v2-detailed-instructions.md)。
+- 使用我们的指南对 Application Insights 代理进行[故障排除](status-monitor-v2-troubleshoot.md)。

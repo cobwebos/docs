@@ -1,14 +1,14 @@
 ---
 title: 使用 Log Analytics 警报 REST API
-description: Log Analytics 警报 REST API 使你可以在 Log Analytics 中创建和管理 Log Analytics 中的警报。  本文提供了用于执行不同操作的 API 和几个示例的详细信息。
+description: 使用 Log Analytics 警报 REST API 可以在 Log Analytics 中创建和管理警报。  本文提供了用于执行不同操作的 API 和几个示例的详细信息。
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
 ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77664994"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>在 Log Analytics 中通过 REST API 创建和管理警报规则 
@@ -16,18 +16,18 @@ ms.locfileid: "77664994"
 使用 Log Analytics 警报 REST API 可以在 Log Analytics 中创建和管理警报。  本文提供了用于执行不同操作的 API 和几个示例的详细信息。
 
 > [!IMPORTANT]
-> 如[前文所](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)述，在*2019 年6月 1*日之后创建的 log analytics 工作区，将**只能使用 Azure** ScheduledQueryRules [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)、 [azure Resource manange 模板](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template)和[PowerShell cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)来管理警报规则。 对于较旧的工作区，客户可以轻松地[切换其首选的警报规则管理方法](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)，以利用 Azure Monitor scheduledQueryRules 作为默认功能，并获得许多[新的好处](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api)，例如使用本机 PowerShell cmdlet、在规则中增加 lookback 时间段、在单独的资源组或订阅中创建规则，等等。
+> 如[前所述](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)*，2019 年 6 月 1*日之后创建的日志分析工作区将能够**仅**使用 Azure 计划查询规则[REST API、Azure](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)[资源马纳格模板](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template)和[PowerShell cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)来管理警报规则。 客户可以轻松地为较旧的工作区[切换其首选的警报规则管理方法](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)，以利用 Azure 监视器计划查询规则作为默认值，并获得许多[新优势](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api)，如使用本机 PowerShell cmdlet 的能力、增加规则中的回顾时间、在单独的资源组或订阅中创建规则等等。
 
-Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST API 访问。 在此文档中，你会发现使用 [ARMClient](https://github.com/projectkudu/ARMClient) 通过 PowerShell 命令行访问 API 的示例。ARMClient 是可简化 Azure 资源管理器 API 调用的开源命令行工具。 ARMClient 和 PowerShell 的使用是访问 Log Analytics 搜索 API 的许多选项之一。 借助这些工具，可以利用 RESTful Azure 资源管理器 API 对 Log Analytics 工作区进行调用并在其中执行搜索命令。 API 以 JSON 格式输出搜索结果，从而允许通过编程以许多不同的方式来使用搜索结果。
+Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST API 访问。 在本文中，您将找到使用[ARMClient（](https://github.com/projectkudu/ARMClient)一种简化调用 Azure 资源管理器 API 的开源命令行工具）从 PowerShell 命令行访问 API 的示例。 ARMClient 和 PowerShell 的使用是访问 Log Analytics 搜索 API 的许多选项之一。 借助这些工具，可以利用 RESTful Azure 资源管理器 API 对 Log Analytics 工作区进行调用并在其中执行搜索命令。 API 以 JSON 格式输出搜索结果，从而允许通过编程以许多不同的方式来使用搜索结果。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 目前，仅可以使用 Log Analytics 中已保存的搜索来创建警报。  有关详细信息，请参阅[日志搜索 REST API](../../azure-monitor/log-query/log-query-overview.md)。
 
 ## <a name="schedules"></a>计划
 已保存的搜索可以有一个或多个计划。 计划定义搜索的运行频率以及进行条件识别的时间间隔。
 计划具有下表中的属性。
 
-| properties | 说明 |
+| properties | 描述 |
 |:--- |:--- |
 | 时间间隔 |搜索的运行频率。 以分钟为度量单位。 |
 | QueryTimeSpan |计算条件的时间间隔。 必须等于或大于间隔。 以分钟为度量单位。 |
@@ -61,7 +61,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
 ```
 
 ### <a name="creating-a-schedule"></a>创建计划
-结合使用 Put 方法和唯一计划 ID 创建一个新计划。  即使两个计划与不同的已保存搜索关联，也不能具有相同的 ID。  在 Log Analytics 控制台中创建计划时，将为计划 ID 创建一个 GUID。
+结合使用 Put 方法和唯一计划 ID 创建一个新计划。  两个计划的 ID 不能相同，即使它们与不同的已保存搜索关联，也是如此。  在 Log Analytics 控制台中创建计划时，将为计划 ID 创建一个 GUID。
 
 > [!NOTE]
 > 所有已保存的搜索、计划和使用 Log Analytics API 创建的操作的名称必须小写。
@@ -70,7 +70,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
 ### <a name="editing-a-schedule"></a>编辑计划
-结合使用 Put 方法和相同已保存搜索的现有计划 ID 来修改该计划；在下面的示例中，该计划被禁用。 请求正文必须包含该计划的 *etag*。
+结合使用 Put 方法和相同已保存搜索的现有计划 ID 来修改该计划；在下面的示例中，该计划被禁用。 请求正文必须包括计划的*etag。*
 
       $scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'false' } }"
       armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
@@ -87,7 +87,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
 
 所有操作具有下表中的属性。  不同类型的警报具有不同的其他属性，如下所述。
 
-| properties | 说明 |
+| properties | 描述 |
 |:--- |:--- |
 | `Type` |操作的类型。  目前可能的值为警报和 Webhook。 |
 | `Name` |警报的显示名称。 |
@@ -122,7 +122,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
 ### <a name="alert-actions"></a>警报操作
 一个计划应具有一个且只能有一个警报操作。  警报操作具有下表中的一个或多个部分。  下面对各部分进行了详细描述。
 
-| 部分 | 说明 | 使用情况 |
+| 部分 | 描述 | 使用情况 |
 |:--- |:--- |:--- |
 | 阈值 |用于确定何时运行操作的条件。| 每个警报所必需的，无论是在警报扩展到 Azure 之前还是之后。 |
 | 严重性 |当触发时用来对警报进行分类的标签。| 每个警报所必需的，无论是在警报扩展到 Azure 之前还是之后。 |
@@ -135,7 +135,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
 
 阈值具有下表中的属性。
 
-| properties | 说明 |
+| properties | 描述 |
 |:--- |:--- |
 | `Operator` |阈值比较运算符。 <br> gt = 大于 <br> lt = 小于 |
 | `Value` |阈值的数值。 |
@@ -200,7 +200,7 @@ Log Analytics 允许你将警报归类到各个类别，以便更轻松地进行
 #### <a name="suppress"></a>取消
 每次达到或超过阈值时，都会触发基于 Log Analytics 的查询警报。 根据查询中隐含的逻辑，这可能会导致警报在一系列时间间隔触发，进而导致通知不断发送。 为了防止这种情况发生，用户可以设置“取消”选项，以指示 Log Analytics 在根据预警规则第二次发送通知之前等待规定的时间。 所以，如果“取消”设置为 30 分钟，那么警报在第一次触发时发送配置的通知。 不过，在根据预警规则再次发送通知之前，需要先等待 30 分钟。 在过渡期间，预警规则会继续运行，Log Analytics 在指定时间仅取消通知，无论在此期间内预警规则触发了多少次，也不例外。
 
-Log Analytics 预警规则的“取消”属性是使用 Throttling 值指定，取消时间段是使用 DurationInMinutes 值指定。
+Log Analytics 预警规则的“取消”属性是使用 Throttling** 值指定，取消时间段是使用 DurationInMinutes** 值指定。
 
 下面的示例展示了仅包含“阈值”、“严重性”和“取消”属性的操作响应
 
@@ -267,7 +267,7 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
 默认情况下，操作遵循用于通知的标准模板和格式。 但是，用户可以自定义某些操作，即使它们是由操作组控制的。 目前可以自定义电子邮件主题和 Webhook 有效负载。
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>自定义操作组的电子邮件主题
-默认情况下，警报的电子邮件主题是：`<AlertName>` 的警报通知 `<WorkspaceName>`。 但这可以自定义，因此你可以指定词语或标签，以便轻松在收件箱中利用筛选规则。 自定义的电子邮件标题详细信息需要随操作组详细信息一起发送，如以下示例中所示。
+默认情况下，警报的电子邮件主题是：`<WorkspaceName>` 的警报通知 `<AlertName>`。 但这可以自定义，因此你可以指定词语或标签，以便轻松在收件箱中利用筛选规则。 自定义的电子邮件标题详细信息需要随操作组详细信息一起发送，如以下示例中所示。
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -337,6 +337,6 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
 ## <a name="next-steps"></a>后续步骤
 
 * 在 Log Analytics 中使用 [REST API 执行日志搜索](../../azure-monitor/log-query/log-query-overview.md)。
-* 了解[Azure monitor 中的日志警报](../../azure-monitor/platform/alerts-unified-log.md)
+* 了解[Azure 监视器中的日志警报](../../azure-monitor/platform/alerts-unified-log.md)
 * 如何[在 Azure monitor 中创建、编辑或管理日志警报规则](../../azure-monitor/platform/alerts-log.md)
 

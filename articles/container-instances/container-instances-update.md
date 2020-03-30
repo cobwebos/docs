@@ -4,26 +4,26 @@ description: 了解如何更新 Azure 容器实例容器组中正在运行的容
 ms.topic: article
 ms.date: 09/03/2019
 ms.openlocfilehash: f57ebcf050b5563b45f10af57c1721338df88ff9
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533306"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>更新 Azure 容器实例中的容器
 
-在容器实例的正常操作期间，你可能会发现需要更新[容器组](container-instances-container-groups.md)中正在运行的容器。 例如，你可能想要更新映像版本、更改 DNS 名称、更新环境变量，或刷新其应用程序已崩溃的容器的状态。
+在正常操作容器实例期间，你可能认为有必要更新[容器组](container-instances-container-groups.md)中正在运行的容器。 例如，你可能想要更新映像版本、更改 DNS 名称、更新环境变量，或刷新其应用程序已崩溃的容器的状态。
 
 > [!NOTE]
-> 已终止或已删除的容器组无法更新。 一旦容器组终止（处于成功或失败状态）或已被删除，该组必须部署为新组。
+> 已终止或已删除的容器组无法更新。 某个容器组已终止（处于“成功”或“失败”状态）或已删除后，必须将该组作为新组进行部署。
 
 ## <a name="update-a-container-group"></a>更新容器组
 
-通过重新部署包含至少一个已修改属性的现有组来更新正在运行的容器组中的容器。 更新容器组时，组中的所有正在运行的容器（通常在同一基础容器主机上）都将重新启动。
+通过使用至少一个已修改的属性重新部署现有组，来更新正在运行的容器组中的容器。 更新某个容器组时，该组中所有正在运行的容器均会就地重启（通常在同一基础容器主机上）。
 
-通过发出 create 命令（或使用 Azure 门户）并指定现有组的名称，来重新部署现有的容器组。 发出 create 命令以触发重新部署时，至少修改组的一个有效属性，并使其余的属性保持不变（或继续使用默认值）。 并非所有容器组属性都可用于重新部署。 有关不支持的属性列表，请参阅[需要删除操作的属性](#properties-that-require-container-delete)。
+通过发出 create 命令（或使用 Azure 门户）并指定现有组的名称，来重新部署现有的容器组。 发出 create 命令以触发重新部署时，至少修改组的一个有效属性，并使其余属性保持不变（或继续使用默认值）。 并非所有容器组属性都可用于重新部署。 有关不支持的属性列表，请参阅[需要删除操作的属性](#properties-that-require-container-delete)。
 
-以下 Azure CLI 示例更新具有新 DNS 名称标签的容器组。 因为组的 DNS 名称标签属性是可以更新的，所以会重新部署容器组，并重新启动其容器。
+以下 Azure CLI 示例更新具有新 DNS 名称标签的容器组。 由于该组的 DNS 名称标签属性可以更新，因此会重新部署容器组，并重启其容器。
 
 具有 DNS 名称标签 *myapplication-staging* 的初始部署：
 
@@ -33,7 +33,7 @@ az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication-staging
 ```
 
-使用新的 DNS 名称标签*myapplication*更新容器组，并保持其余属性不变：
+使用新的 DNS 名称标签 *myapplication* 更新容器组，并使其余属性保持不变：
 
 ```azurecli-interactive
 # Update DNS name label (restarts container), leave other properties unchanged
@@ -55,7 +55,7 @@ az container create --resource-group myResourceGroup --name mycontainer \
 
 每次更新后，容器的 IP 地址通常不会更改，但也不能保证该地址保持不变。 只要将容器组部署到相同的基础主机，容器组就会保留其 IP 地址。 尽管 Azure 容器实例会尽量重新部署到同一主机，但某些 Azure 内部事件可能导致重新部署到不同的主机（这种情况很少见）。 为了避免此问题，请始终对容器实例使用 DNS 名称标签。
 
-已终止或已删除的容器组无法更新。 停止（处于“已终止”状态）或删除某个容器组后，将全新部署该组。
+已终止或已删除的容器组无法更新。 停止（处于“已终止”状态）或删除某个容器组后，将全新部署该组。**
 
 ## <a name="properties-that-require-container-delete"></a>需要容器删除操作的属性
 

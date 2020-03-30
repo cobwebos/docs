@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74085223"
 ---
 若要诊断 Microsoft Azure 云服务的问题，需要在问题发生时收集虚拟机上该服务的日志文件。 可以使用 AzureLogCollector 扩展按需从一个或多个云服务 VM（通过 Web 角色和辅助角色）执行一次性日志收集，并将收集到的文件传输到 Azure 存储帐户 - 所有这些操作都无需远程登录到任何 VM。
 
 > [!NOTE]
-> 有关大多数记录的信息的说明，请参阅 https://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
+> 大多数记录信息的说明可在以下处找到：https://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/
 > 
 > 
 
 有两种收集模式，其使用取决于要收集的文件的类型。
 
-* **仅 Azure 来宾代理日志 (GA)** 。 此收集模式包括与 Azure 来宾代理以及其他 Azure 组件相关的所有日志。
-* **所有日志（完整）** 。 此收集模式会收集 GA 模式下的所有文件以及：
+* **Azure 来宾代理仅日志 （GA）。** 此收集模式包括与 Azure 来宾代理以及其他 Azure 组件相关的所有日志。
+* **所有日志（完整）**。 此收集模式会收集 GA 模式下的所有文件以及：
   
   * 系统和应用程序事件日志
   * HTTP 错误日志
@@ -86,7 +86,7 @@ ms.locfileid: "74085223"
 ```
 
 > [!NOTE]
-> 此扩展不需要 **privateConfiguration**。 可以只为 **–PrivateConfiguration** 参数提供一个空的结构。
+> 此扩展不需要 privateConfiguration****。 可以只为 **–PrivateConfiguration** 参数提供一个空的结构。
 > 
 > 
 
@@ -139,7 +139,7 @@ ms.locfileid: "74085223"
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-5. 按如下所示调用 SetAzureServiceLogCollector.ps1（本文末尾提供），以便为云服务启用 AzureLogCollector 扩展。 执行完以后，可以在  下找到上传的文件
+5. 按如下所示调用 SetAzureServiceLogCollector.ps1（本文末尾提供），以便为云服务启用 AzureLogCollector 扩展。 执行完以后，可以在 `https://YourStorageAccountName.blob.core.windows.net/vmlogs` 下找到上传的文件
 
    ```powershell
    .\SetAzureServiceLogCollector.ps1 -ServiceName YourCloudServiceName  -Roles $roles  -Instances $instances –Mode $mode -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey -AdditionDataLocationList $AdditionalDataList
@@ -177,14 +177,14 @@ param (
 )
 ```
 
-* **ServiceName**：云服务名称。
+* **服务名称**：您的云服务名称。
 * **Roles**：角色列表，例如“WebRole1”或“WorkerRole1”。
 * **Instances**：逗号分隔的角色实例名称的列表 -- 使用通配符字符串（“*”）代表所有角色实例。
 * **Slot**：槽名称。 “生产”或“过渡”。
-* **Mode**：收集模式。 “完整”或“GA”。
-* **StorageAccountName**：用于存储所收集数据的 Azure 存储帐户的名称。
-* **StorageAccountKey**：Azure 存储帐户密钥的名称。
-* **AdditionalDataLocationList**：以下结构的列表：
+* **模式**：收集模式。 “完整”或“GA”。
+* **存储帐户名称**：用于存储收集的数据的 Azure 存储帐户的名称。
+* **存储帐户密钥**：Azure 存储帐户密钥的名称。
+* **附加数据定位列表**：以下结构的列表：
 
   ```powershell
   {
@@ -231,7 +231,7 @@ param (
    $StorageAccountKey  = 'YourStorageAccountKey'
    ```
 
-3. 按如下所示调用 SetAzureVMLogCollector.ps1（本文末尾提供），以便为云服务启用 AzureLogCollector 扩展。 执行完以后，可以在  下找到上传的文件
+3. 按如下所示调用 SetAzureVMLogCollector.ps1（本文末尾提供），以便为云服务启用 AzureLogCollector 扩展。 执行完以后，可以在 `https://YourStorageAccountName.blob.core.windows.net/vmlogs` 下找到上传的文件
 
 下面是传递给脚本的参数的定义。 （也在下面复制。）
 
@@ -259,12 +259,12 @@ param (
 )
 ```
 
-* **ServiceName**：云服务名称。
-* **VMName**：VM 的名称。
-* **Mode**：收集模式。 “完整”或“GA”。
-* **StorageAccountName**：用于存储所收集数据的 Azure 存储帐户的名称。
-* **StorageAccountKey**：Azure 存储帐户密钥的名称。
-* **AdditionalDataLocationList**：以下结构的列表：
+* **服务名称**：您的云服务名称。
+* **VM 名称**：VM 的名称。
+* **模式**：收集模式。 “完整”或“GA”。
+* **存储帐户名称**：用于存储收集的数据的 Azure 存储帐户的名称。
+* **存储帐户密钥**：Azure 存储帐户密钥的名称。
+* **附加数据定位列表**：以下结构的列表：
 
   ```
   {

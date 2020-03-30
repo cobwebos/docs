@@ -1,5 +1,5 @@
 ---
-title: 与内部负载均衡器一起使用-Azure 应用程序网关
+title: 与内部负载均衡器搭配使用 | Azure 应用程序网关
 description: 本页提供有关使用 Azure 资源管理器创建、配置、启动和删除具有内部负载均衡器 (ILB) 的 Azure 应用程序网关的说明
 services: application-gateway
 author: vhorne
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 9fbde84c499ba5b086ce812de63602c626b416b0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74179334"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>创建具有内部负载均衡器 (ILB) 的应用程序网关
@@ -31,7 +31,7 @@ ms.locfileid: "74179334"
 ## <a name="what-is-required-to-create-an-application-gateway"></a>创建应用程序网关需要什么？
 
 * **后端服务器池：** 后端服务器的 IP 地址列表。 列出的 IP 地址应属于虚拟网络子网但位于应用程序网关的不同子网中，或者是公共 IP/VIP。
-* **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置绑定到池，并会应用到池中的所有服务器。
+* **后端服务器池设置：** 每个池都有端口、协议和基于 Cookie 的关联等设置。 这些设置绑定到池，并会应用到池中的所有服务器。
 * **前端端口：** 此端口是应用程序网关上打开的公共端口。 流量将抵达此端口，并重定向到后端服务器之一。
 * **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
 * **规则：** 规则会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 目前仅支持 *基本* 规则。 *基本* 规则是一种轮循负载分发模式。
@@ -132,7 +132,7 @@ $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $
 $pool = New-AzApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
 ```
 
-此步骤配置名为“pool01”、IP 地址为“10.1.1.8, 10.1.1.9, 10.1.1.10”的后端 IP 地址池。 这些 IP 地址将接收来自前端 IP 终结点的网络流量。 替换上述 IP 地址，添加用户自己的应用程序 IP 地址终结点。
+此步骤配置名为“pool01”、IP 地址为“10.1.1.8, 10.1.1.9, 10.1.1.10”的后端 IP 地址池。 这些 IP 地址将接收来自前端 IP 终结点的网络流量。 替换上述 IP 地址，添加自己的应用程序 IP 地址终结点。
 
 ### <a name="step-3"></a>步骤 3
 

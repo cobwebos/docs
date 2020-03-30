@@ -1,20 +1,20 @@
 ---
 title: 身份验证和授权
-description: Azure App Service 的身份验证/授权功能的概念参考和概述，专用于移动应用。
+description: Azure 应用服务的身份验证/授权功能的概念性参考和概述，尤其是针对移动应用。
 ms.topic: article
 ms.date: 10/01/2016
 ms.openlocfilehash: 4a9ef62178b9a58fa8703413a09114a617d1d239
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459457"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Azure 应用服务中针对移动应用的身份验证和授权
 
 本文介绍了在开发具有应用服务后端的原生移动应用时身份验证和授权功能如何工作。 应用服务提供了集成的身份验证和授权，因此，移动应用可以在不更改应用服务中的任何代码的情况下让用户登录。 该功能可以方便地保护应用程序和处理每个用户的数据。 
 
-本文重点介绍了移动应用开发。 若要快速开始处理移动应用的应用服务身份验证和授权，请参阅以下教程之一：向[iOS 应用添加身份验证][iOS]（或[android]、 [Windows]、 [Xamarin.iOS] [Xamarin.Android]xamarin [Xamarin.Forms] [Cordova]）。 
+本文重点介绍了移动应用开发。 若要快速了解如何将应用服务身份验证和授权用于移动应用，请参阅以下教程之一：[向 iOS 应用添加身份验证][iOS]（或 [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms] 或 [Cordova]）。 
 
 有关应用服务中的身份验证和授权如何工作的信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/overview-authentication-authorization.md)。
 
@@ -47,12 +47,12 @@ ms.locfileid: "77459457"
 
 以下教程展示了如何通过[服务器定向流](../app-service/overview-authentication-authorization.md#authentication-flow)向移动客户端添加身份验证：
 
-* [将身份验证添加到 iOS 应用][iOS]
-* [向 Android 应用添加身份验证][Android]
-* [将身份验证添加到 Windows 应用][Windows]
+* [Add authentication to your iOS app（将身份验证添加到 iOS 应用）][iOS]
+* [将身份验证添加到 Android 应用][Android]
+* [向 Windows 应用添加身份验证][Windows]
 * [将身份验证添加到 Xamarin.iOS 应用][Xamarin.iOS]
 * [将身份验证添加到 Xamarin.Android 应用][Xamarin.Android]
-* [向 Xamarin 应用程序添加身份验证][Xamarin.Forms]
+* [向 Xamarin.Forms 应用添加身份验证][Xamarin.Forms]
 * [向 Cordova 应用添加身份验证][Cordova]
 
 若要为 Azure Active Directory 使用[客户端定向流](../app-service/overview-authentication-authorization.md#authentication-flow)，请参阅以下资源：
@@ -65,11 +65,11 @@ ms.locfileid: "77459457"
 
 * [使用 Facebook SDK for iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
 
-若要为 Twitter 使用[客户端定向流](../app-service/overview-authentication-authorization.md#authentication-flow)，请参阅以下资源：
+如果要为 Twitter 使用[客户端导向流](../app-service/overview-authentication-authorization.md#authentication-flow)，请使用以下资源：
 
 * [使用 Twitter Fabric for iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
 
-若要为 Google 使用[客户端定向流](../app-service/overview-authentication-authorization.md#authentication-flow)，请参阅以下资源：
+如果要为 Google 使用[客户端导向流](../app-service/overview-authentication-authorization.md#authentication-flow)，请使用以下资源：
 
 * [使用适用于 iOS 的 Google 登录 SDK](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 

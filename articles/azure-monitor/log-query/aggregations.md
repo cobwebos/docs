@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670298"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的聚合
@@ -25,7 +25,7 @@ ms.locfileid: "77670298"
 ## <a name="counts"></a>计数
 
 ### <a name="count"></a>count
-在应用任一筛选器后，计算结果集中的行数。 以下示例返回过去 30 分钟内 Perf 表中的总行数。 结果将在名为“count_”的列中返回，除非为其指定特定名称：
+在应用任一筛选器后，计算结果集中的行数。 以下示例返回过去 30 分钟内 Perf 表中的总行数__。 结果将在名为“count_”的列中返回，除非为其指定特定名称**：
 
 
 ```Kusto
@@ -72,7 +72,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>计算子组
-要在数据中的子组上执行计数或其他聚合，请使用 `by` 关键字。 例如，若要计算在每个国家/地区发送检测信号的不同 Linux 计算机的数量，请执行以下操作：
+要在数据中的子组上执行计数或其他聚合，请使用 `by` 关键字。 例如，要计算每个国家/地区发送检测信号的非重复 Linux 计算机的数量：
 
 ```Kusto
 Heartbeat 
@@ -89,7 +89,7 @@ Heartbeat
 |荷兰      | 2                   |
 
 
-要分析更小的数据子组，请在 `by` 部分中添加其他列名称。 例如，你可能想要从每个 OSType 的每个国家/地区计算不同的计算机：
+要分析更小的数据子组，请在 `by` 部分中添加其他列名称。 例如，想要根据每个 OSType 来计算来自每个国家/地区的非重复计算机的数量：
 
 ```Kusto
 Heartbeat 
@@ -143,7 +143,7 @@ Perf
 请参阅有关将 [Kusto 查询语言](/azure/kusto/query/)与 Azure Monitor 日志数据配合使用的其他课程：
 
 - [字符串操作](string-operations.md)
-- [时间和日期操作](datetime-operations.md)
+- [日期和时间操作](datetime-operations.md)
 - [高级聚合](advanced-aggregations.md)
 - [JSON 和数据结构](json-data-structures.md)
 - [高级查询编写](advanced-query-writing.md)

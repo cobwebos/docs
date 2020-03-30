@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
 ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623334"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>停用 S1、S2 和 S3 性能级别
@@ -26,7 +26,7 @@ ms.locfileid: "77623334"
 - [我需要做些什么才能确保不间断地访问我的数据？](#uninterrupted-access)
 - [迁移后我的集合会发生怎样的变化？](#collection-change)
 - [迁移到单分区集合后，帐单会发生怎样的变化？](#billing-change)
-- [如果需要超过 20 GB 的存储，应该怎么办？](#more-storage-needed)
+- [如果我需要超过 20 GB 的存储空间，该怎么办？](#more-storage-needed)
 - [在计划的迁移期限之前，是否可以在 S1、S2 和 S3 性能级别之间切换？](#change-before)
 - [如何自行从 S1、S2、S3 性能级别迁移到单分区集合？](#migrate-diy)
 - [如果我是 EA 客户，我会受到怎样的影响？](#ea-customer)
@@ -80,9 +80,9 @@ S1、S2 和 S3 性能级别无法提供标准 Azure Cosmos DB 服务可提供的
 
 <a name="more-storage-needed"></a>
 
-## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>如果需要超过 20 GB 的存储，应该怎么办？
+## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>如果我需要超过 20 GB 的存储空间，该怎么办？
 
-无论你具有 S1、S2 或 S3 性能级别的集合，还是具有单个分区集合（所有这些集合都具有 20 GB 的存储空间），都可以使用 Azure Cosmos DB 数据迁移工具将数据迁移到已分区集合无限制存储。 有关分区集合优势的信息，请参阅 [Azure Cosmos DB 中的分区和缩放](sql-api-partition-data.md)。 
+无论是具有具有 S1、S2 或 S3 性能级别的集合，还是具有单个分区集合（所有分区集合都可用 20 GB 的存储空间），都可以使用 Azure Cosmos DB 数据迁移工具将数据迁移到具有虚拟分区集合的数据无限存储空间。 有关分区集合优势的信息，请参阅 [Azure Cosmos DB 中的分区和缩放](sql-api-partition-data.md)。 
 
 <a name="change-before"></a>
 

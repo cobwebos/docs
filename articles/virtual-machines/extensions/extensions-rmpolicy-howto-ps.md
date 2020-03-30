@@ -14,10 +14,10 @@ ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.openlocfilehash: 428db340ce43463939ce71ffadd4188060f3e732
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073113"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure Policy 限制 Windows VM 上的扩展安装
@@ -141,7 +141,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>测试策略
 
-若要测试策略，请尝试使用 VM 访问扩展。 以下内容应失败，并出现消息 "AzVMAccessExtension：资源 ' myVMAccess ' 被策略禁止 '"。
+若要测试策略，请尝试使用 VM 访问扩展。 以下消息"设置-AzVMAccess扩展：策略不允许资源'myVMAccess"）失败。
 
 ```azurepowershell-interactive
 Set-AzVMAccessExtension `

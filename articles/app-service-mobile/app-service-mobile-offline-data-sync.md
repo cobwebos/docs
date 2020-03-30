@@ -7,10 +7,10 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.openlocfilehash: 0cc4309fa57a29997bdd2f650634efd0723e6965
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77458743"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure 移动应用中的脱机数据同步
@@ -46,22 +46,22 @@ ms.locfileid: "77458743"
 ## <a name="what-is-a-local-store"></a>什么是本地存储？
 本地存储是客户端设备上的数据持久层。 Azure 移动应用客户端 SDK 提供默认的本地存储实现。 在 Windows、Xamarin 和 Android 上，它基于 SQLite。 在 iOS 上，它基于 Core Data。
 
-若要在 Windows Phone 或 Microsoft Store 中使用基于 SQLite 的实现，需要安装 SQLite 扩展。 有关详细信息，请参阅[通用 Windows 平台：启用脱机同步]。Android 和 iOS 的设备操作系统本身附带了一个 SQLite 版本，因此不需要引用自己的 SQLite 版本。
+若要在 Windows Phone 或 Microsoft Store 中使用基于 SQLite 的实现，需要安装 SQLite 扩展。 有关详细信息，请参阅通用[Windows 平台：启用脱机同步]。Android 和 iOS 随附在设备操作系统本身中的 SQLite 版本，因此无需引用您自己的版本的 SQLite。
 
 开发人员也可以实现自己的本地存储。 例如，如果希望将数据以加密格式存储在移动客户端上，可以定义使用 SQLCipher 进行加密的本地存储。
 
 ## <a name="what-is-a-sync-context"></a>什么是同步上下文？
-*同步上下文*与移动客户端对象（例如 `IMobileServiceClient` 或 `MSClient`）关联，并跟踪对同步表所做的更改。 同步上下文维护操作队列，其中保留了 CUD 操作（Create、Update、Delete）的顺序列表，该列表稍后发送到服务器。
+*同步上下文*与移动客户端对象（例如 `IMobileServiceClient` 或 `MSClient`）关联，并跟踪对同步表所做的更改。 同步上下文维护操作队列**，其中保留了 CUD 操作（Create、Update、Delete）的顺序列表，该列表稍后发送到服务器。
 
-本地存储使用初始化方法（例如 `IMobileServicesSyncContext.InitializeAsync(localstore)`.NET 客户端 SDK[.NET 客户端 SDK]）来与同步上下文关联。
+本地存储使用初始化方法（例如 [.NET 客户端 SDK] 中的 `IMobileServicesSyncContext.InitializeAsync(localstore)`）来与同步上下文关联。
 
-## <a name="how-sync-works"></a>脱机同步的工作原理
+## <a name="how-offline-synchronization-works"></a><a name="how-sync-works"></a>脱机同步的工作原理
 使用同步表时，客户端代码将控制本地更改与 Azure 移动应用后端同步的时机。 在发生*推送*本地更改的调用之前，不会向后端发送任何内容。 同样，仅当发生了*提取*数据的调用时，才在本地存储中填充新数据。
 
 * **推送**：推送是对同步上下文的操作，发送自上一次推送之后的所有 CUD 更改。 请注意，无法做到只发送单个表的更改，否则操作发送顺序可能出错。 推送对 Azure 移动应用后端执行一系列 REST 调用，而这会修改服务器数据库。
 * **提取**：提取是根据每个表执行的，可以使用查询来自定义，以便只检索服务器数据的子集。 然后，Azure 移动客户端 SDK 会将最终数据插入本地存储。
 * **隐式推送**：如果提取针对包含挂起本地更新的表执行，则提取操作先对同步上下文执行 `push()`。 此推送有助于最大程度减少已排队的更改与服务器中新数据之间的冲突。
-* **增量同步**：提取操作的第一个参数是*查询名称*，此参数只在客户端上使用。 如果使用非 null 查询名称，Azure 移动 SDK 将执行*增量同步*。每次拉取操作返回一组结果时，该结果集中最新的 `updatedAt` 时间戳将存储在 SDK 本地系统表中。 后续提取操作只检索该时间戳以后的记录。
+* **增量同步**：提取操作的第一个参数是*查询名称*，此参数只在客户端上使用。 如果使用非空查询名称，Azure 移动 SDK 将执行*增量同步*。每次拉取操作返回一组结果时，该结果集中`updatedAt`的最新时间戳都存储在 SDK 本地系统表中。 后续提取操作只检索该时间戳以后的记录。
 
   若要使用增量同步，服务器必须返回有意义的 `updatedAt` 值，并且必须支持按此字段排序。 但是，由于 SDK 在 updatedAt 字段中添加了自身的排序，因此无法使用本身具有 `orderBy` 子句的提取查询。
 

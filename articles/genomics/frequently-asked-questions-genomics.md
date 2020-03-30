@@ -1,7 +1,7 @@
 ---
-title: 常见问题-常见问题
+title: 常见问题 - 常见问题解答
 titleSuffix: Microsoft Genomics
-description: 获取与使用 Microsoft 基因组学 service 相关的常见问题的解答，包括技术信息、SLA 和计费。
+description: 获取有关使用 Microsoft 基因组服务（包括技术信息、SLA 和计费）的常见问题的解答。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,22 +10,22 @@ ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
 ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76986030"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft 基因组学：常见问题
 
-本文列出了用户可能会遇到的与 Microsoft 基因组学相关的几大疑问。 有关 Microsoft 基因组学服务的详细信息，请参阅[什么是 Microsoft 基因组学？](overview-what-is-genomics.md)。 有关故障排除的详细信息，请参阅我们的[故障排除指南](troubleshooting-guide-genomics.md)。 
+本文列出了用户可能会遇到的与 Microsoft 基因组学相关的几大疑问。 有关微软基因组学服务的更多信息，请参阅[什么是微软基因组学？](overview-what-is-genomics.md) 有关故障排除的详细信息，请参阅我们的[故障排除指南](troubleshooting-guide-genomics.md)。 
 
 
-## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>如何实现在 Microsoft 基因组学上运行 GATK4 工作流？
-在 Microsoft 基因组学服务的 config.xml 文件中，指定要 `gatk4`的 process_name。 请注意，将按定期计费费率计费。
+## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>如何在 Microsoft 基因组上运行 GATK4 工作流？
+在 Microsoft 基因组服务的 config.txt 文件中，指定到`gatk4`process_name。 请注意，您将以常规计费费率计费。
 
-## <a name="how-do-i-enable-output-compression"></a>如何实现启用输出压缩？
-可以使用可选的输出压缩参数压缩输出的 .vcf 或 gvcf。 这等效于运行 `-bgzip` 然后 `-tabix` .vcf 或 gvcf 输出上，以生成 `.gz` （bgzip 输出）和 `.tbi` （tabix 输出）文件。 `bgzip` 压缩 .vcf 或 gvcf 文件，并且 `tabix` 为压缩文件创建索引。 参数是一个布尔值，默认情况下，它设置为默认 `false` 用于默认值以 `true` 用于 gcvf 输出。 若要在命令行中使用，请将 `-bz` 或 `--bgzip-output` 指定为 `true` （运行 bgzip 和 tabix）或 `false`。 若要在 config.xml 文件中使用此参数，请将 `bgzip_output: true` 或 `bgzip_output: false` 添加到该文件中。
+## <a name="how-do-i-enable-output-compression"></a>如何启用输出压缩？
+您可以使用输出压缩的可选参数压缩输出 vcf 或 gvcf。 这相当于在 vcf`-bgzip`或`-tabix`gvcf 输出上运行，以生成`.gz`（bgzip 输出）和`.tbi`（tabix 输出）文件。 `bgzip`压缩 vcf 或 gvcf 文件`tabix`，并为压缩文件创建索引。 参数是布尔，默认情况下设置为`false`vcf 输出，默认情况下设置为`true`gcvf 输出。 要在命令行上使用，请`-bz`指定`--bgzip-output`或`true`指定 （运行 bgzip 和`false`tabix） 或 。 要在 config.txt 文件中使用此参数，请使用`bgzip_output: true``bgzip_output: false`或 添加到文件中。
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>什么是 Microsoft 基因组学的 SLA？
 我们保证 Microsoft 基因组学服务 99.9% 的时间均可用于接收工作流 API 请求。 有关详细信息，请参阅 [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/)。
@@ -48,10 +48,10 @@ Microsoft 基因组学将按每个工作流处理的千兆碱基数计费。 有
  |`cancel`             |发送请求来取消由 `--workflow-id` 指定的工作流进程。 另请参阅 `msgen help cancel`。 |
 
 ## <a name="where-do-i-get-the-value-for---api-url-base"></a>在何处获取 `--api-url-base` 的值？
-请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
+请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”********。 可在此处找到 API URL 和访问密钥。
 
 ## <a name="where-do-i-get-the-value-for---access-key"></a>在何处获取 `--access-key` 的值？
-请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
+请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”********。 可在此处找到 API URL 和访问密钥。
 
 ## <a name="why-do-i-need-two-access-keys"></a>为什么需要两个访问密钥？
 如果想更新（重新生成）密钥而不中断对服务的使用，则需要两个访问密钥。 例如，若要更新第一个密钥，则应该让所有新工作流使用第二个密钥。 等待使用第一个密钥的所有工作流完成，然后再更新第一个密钥。
@@ -80,13 +80,13 @@ msgen 可识别采用以下格式的配置文件：
 
   |命令行参数            | 配置文件行 |
   |:-------------                   |:-------------                 |
-  |`-u/--api-url-base https://url`  | api_url_base: https://url    |
-  |`-k/--access-key KEY`            | access_key:KEY              |      
-  |`-pa/--process-args R=B37m1`     | process_args:R-b37m1        |  
+  |`-u/--api-url-base https://url`  | api_url_base:https://url**    |
+  |`-k/--access-key KEY`            | access_key:KEY**              |      
+  |`-pa/--process-args R=B37m1`     | process_args:R-b37m1**        |  
 
 ## <a name="next-steps"></a>后续步骤
 
 使用以下资源进行 Microsoft 基因组学入门：
 - 通过 Microsoft 基因组学服务开始运行第一个工作流。 [通过 Microsoft 基因组学服务运行工作流](quickstart-run-genomics-workflow-portal.md)
-- 提交自己的数据并通过以下 Microsoft 基因组学服务进行处理：[配对 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM ](quickstart-input-BAM.md) | [多个 FASTQ 或 BAM](quickstart-input-multiple.md) 
+- 提交您自己的数据，供 Microsoft 基因组服务处理：[配对 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [多个 FASTQ 或 BAM](quickstart-input-multiple.md) 
 

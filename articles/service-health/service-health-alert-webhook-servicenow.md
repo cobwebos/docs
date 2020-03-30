@@ -1,16 +1,16 @@
 ---
-title: 用 ServiceNow 发送 Azure 服务运行状况警报
+title: 立即使用服务发送 Azure 服务运行状况警报
 description: 获取有关发送到 ServiceNow 实例的服务运行状况事件的个性化通知。
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77654097"
 ---
-# <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 webhook 通过 ServiceNow 发送 Azure 服务运行状况警报
+# <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 Webhook 通过 ServiceNow 发送 Azure 服务运行状况警报
 
 本文介绍如何使用 Webhook 将 Azure 服务运行状况警报与 ServiceNow 集成。 设置与 ServiceNow 实例的 Webhook 集成以后，当 Azure 服务问题影响你时，你会通过现有的通知基础结构获得警报。 Azure 服务运行状况警报在每次触发时，会通过 ServiceNow 的脚本 REST API 调用 Webhook。
 
@@ -18,27 +18,27 @@ ms.locfileid: "77654097"
 
 1.  请确保已注册并登录到 [ServiceNow](https://www.servicenow.com/) 帐户。
 
-1.  在 ServiceNow 中导航到“系统 Web 服务”部分，然后选择“脚本 REST API”。
+1.  在 ServiceNow 中导航到“系统 Web 服务”**** 部分，然后选择“脚本 REST API”。****
 
     ![ServiceNow 中的“脚本 Web 服务”部分](./media/webhook-alerts/servicenow-sws-section.png)
 
-1.  选择“新建”，创建新的脚本 REST 服务。
+1.  选择“新建”，**** 创建新的脚本 REST 服务。
  
     ![ServiceNow 中的“新建脚本 REST API”按钮](./media/webhook-alerts/servicenow-new-button.png)
 
-1.  为 REST API 添加“名称”，然后将“API ID”设置为 **。** `azureservicehealth`
+1.  为 REST API 添加“名称”，然后将“API ID”设置为 `azureservicehealth`。********
 
-1.  选择“提交”。
+1.  选择“提交”****。
 
     ![ServiceNow 中的“REST API 设置”](./media/webhook-alerts/servicenow-restapi-settings.png)
 
-1.  选择已创建的 REST API，然后在“资源”选项卡下选择“新建”。
+1.  选择已创建的 REST API，然后在“资源”选项卡下选择“新建”。********
 
     ![ServiceNow 中的“资源选项卡”](./media/webhook-alerts/servicenow-resources-tab.png)
 
-1.  为新资源命名`event`，然后将“HTTP 方法”更改为 **。** `POST`
+1.  为新资源 `event`**命名**，然后将“HTTP 方法”更改为 `POST`。****
 
-1.  在“脚本”部分，添加以下 JavaScript 代码：
+1.  在“脚本”**** 部分，添加以下 JavaScript 代码：
 
     >[!NOTE]
     >需要在下面的脚本中更新 `<secret>`、`<group>` 和 `<email>` 值。
@@ -131,11 +131,11 @@ ms.locfileid: "77654097"
     })(request, response);
     ```
 
-1.  在安全性选项卡中，取消选择“要求身份验证”，然后选择“提交”。 所设置的 `<secret>` 改为保护此 API。
+1.  在安全性选项卡中，取消选择“要求身份验证”，然后选择“提交”。******** 所设置的 `<secret>` 改为保护此 API。
 
     ![ServiceNow 中的“要求身份验证”复选框](./media/webhook-alerts/servicenow-resource-settings.png)
 
-1.  回到“脚本 REST API”部分，此时会找到新 REST API 的“基础 API 路径”：
+1.  回到“脚本 REST API”部分，此时会找到新 REST API 的“基础 API 路径”：****
 
      ![ServiceNow 中的“基础 API 路径”](./media/webhook-alerts/servicenow-base-api-path.png)
 
@@ -148,35 +148,35 @@ ms.locfileid: "77654097"
 ### <a name="for-a-new-action-group"></a>对于新操作组：
 1. 按[此文](../azure-monitor/platform/alerts-activity-log-service-notifications.md)中的步骤 1-8 操作，使用新操作组创建警报。
 
-1. 在“操作”列表中定义：
+1. 在“操作”**** 列表中定义：
 
-    a. **操作类型：** *Webhook*
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **操作类型：** *Webhook*
 
-    b. **详细信息：** 前面保存的 ServiceNow **集成 URL**。
+    b.保留“数据库类型”设置，即设置为“共享”。 **详细信息：** 前面保存的 ServiceNow **集成 URL**。
 
     c. **名称：** Webhook 的名称、别名或标识符。
 
-1. 警报创建完成后，选择“保存”。
+1. 警报创建完成后，选择“保存”****。
 
 ### <a name="for-an-existing-action-group"></a>对于现有操作组：
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择“监视”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择“监视”****。
 
-1. 在“设置”部分中，选择“操作组”。
+1. 在“设置”**** 部分中，选择“操作组”****。
 
 1. 找到要编辑的操作组并选择它。
 
-1. 添加到“操作”列表：
+1. 添加到“操作”**** 列表：
 
-    a. **操作类型：** *Webhook*
+    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **操作类型：** *Webhook*
 
-    b. **详细信息：** 前面保存的 ServiceNow **集成 URL**。
+    b.保留“数据库类型”设置，即设置为“共享”。 **详细信息：** 前面保存的 ServiceNow **集成 URL**。
 
     c. **名称：** Webhook 的名称、别名或标识符。
 
-1. 操作组更新完成后，选择“保存”。
+1. 操作组更新完成后，选择“保存”****。
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>通过 HTTP POST 请求测试 Webhook 集成
-1. 创建要发送的服务运行状况有效负载。 可以在 [Azure 活动日志警报的 Webhook](../azure-monitor/platform/activity-log-alerts-webhook.md) 中找到示例服务运行状况 Webhook 有效负载。
+1. 创建要发送的服务运行状况有效负载。 您可以在[Webhook 中为 Azure 活动日志警报](../azure-monitor/platform/activity-log-alerts-webhook.md)找到一个示例服务运行状况 Webhook 负载。
 
 1. 按如下所示创建 HTTP POST 请求：
 
@@ -195,4 +195,4 @@ ms.locfileid: "77654097"
 - 了解如何[为现有问题管理系统配置 Webhook 通知](service-health-alert-webhook-guide.md)。
 - 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
 - 了解[服务运行状况通知](../azure-monitor/platform/service-notifications.md)。
-- 详细了解[操作组](../azure-monitor/platform/action-groups.md)。
+- 了解有关[操作组](../azure-monitor/platform/action-groups.md)的更多。

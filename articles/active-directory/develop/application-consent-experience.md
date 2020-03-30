@@ -1,5 +1,5 @@
 ---
-title: Azure AD 应用许可体验
+title: Azure AD 应用同意体验
 titleSuffix: Microsoft identity platform
 description: 详细了解 Azure AD 许可体验，以便了解如何在 Azure AD 上管理和开发应用程序时使用它
 services: active-directory
@@ -15,10 +15,10 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.openlocfilehash: c9b449b65a8f8def9dc28a668cd9ee3671124cb0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484496"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 应用程序许可体验
@@ -45,7 +45,7 @@ ms.locfileid: "77484496"
 | # | 组件 | 目的 |
 | ----- | ----- | ----- |
 | 1 | 用户标识符 | 此标识符表示客户端应用程序正在请求代表其访问受保护资源的用户。 |
-| 2 | 标题 | 标题根据用户是完成用户许可流还是管理员许可流而变化。 在用户许可流中，标题将为“请求的权限”，而在管理员许可流中，标题还有额外的一行“为组织接受”。 |
+| 2 | Title | 标题根据用户是完成用户许可流还是管理员许可流而变化。 在用户许可流中，标题将为“请求的权限”，而在管理员许可流中，标题还有额外的一行“为组织接受”。 |
 | 3 | 应用徽标 | 此图像应帮助用户直观地了解此应用是否是他们打算访问的应用。 此图像由应用程序开发人员提供，并且未验证此图像的所有权。 |
 | 4 | 应用程序名称 | 此值应告知用户哪个应用程序正在请求访问其数据。 请注意，此名称由开发人员提供，并且未验证此应用名称的所有权。 |
 | 5 | 发布者域 | 此值应该为用户提供他们可以评估可信度的域。 此域由开发人员提供，并且已验证此发布者域的所有权。 |
@@ -84,4 +84,4 @@ ms.locfileid: "77484496"
 ## <a name="next-steps"></a>后续步骤
 - 获取有关 [Azure AD 同意框架如何实现同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)的分步概述。
 - 有关详细信息，请参阅[多租户应用程序如何使用同意框架](active-directory-devhowto-multi-tenant-overview.md)实现“用户”和“管理员”同意（支持更多高级多层应用程序模式）。
-- 了解[如何配置应用的发布服务器域](howto-configure-publisher-domain.md)。
+- 了解[如何配置应用的发布者域](howto-configure-publisher-domain.md)。

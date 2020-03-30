@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77662172"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的高级聚合
@@ -40,7 +40,7 @@ Event
 
 `makelist` 根据数据的传入顺序生成列表。 若要以最旧到最新的顺序排序事件，请在 order 语句中使用 `asc`，而不要使用 `desc`。 
 
-创建只包含非重复值的列表也很有用。 此列表称为“集”，它是使用  _生成的：_ `makeset`
+创建只包含非重复值的列表也很有用。 此列表称为“集”，它是使用 `makeset` 生成的：__
 
 ```Kusto
 Event
@@ -58,7 +58,7 @@ Event
 与 `makelist` 一样，`makeset` 也能处理有序数据，并可基于行的传入顺序生成数组。
 
 ## <a name="expanding-lists"></a>展开列表
-`makelist` 或 `makeset` 的反向操作是 `mvexpand`，该操作将值列表展开为单独的行。 它可以展开任意数目的动态列（包括 JSON 和数组）。 例如，可以在“检测信号”表中检查在过去一小时发送了检测信号的计算机中发送数据的解决方案：
+`makelist` 或 `makeset` 的反向操作是 `mvexpand`，该操作将值列表展开为单独的行。 它可以展开任意数目的动态列（包括 JSON 和数组）。 例如，可以在“检测信号”表中检查在过去一小时发送了检测信号的计算机中发送数据的解决方案：**
 
 ```Kusto
 Heartbeat
@@ -113,7 +113,7 @@ Heartbeat
 | ... | ... |
 
 ## <a name="handling-missing-bins"></a>处理缺失的 bin
-`mvexpand` 的有用应用就是需要为缺少的箱填充默认值。例如，假设您正在查找特定计算机的正常运行时间，通过浏览其检测信号。 此外，你想要查看 _category_ 列中检测信号的源。 通常，我们会使用一个简单的 summarize 语句，如下所示：
+一个有用的应用程序`mvexpand`是需要填充缺少的条柱的默认值。例如，假设您通过探索特定计算机的心跳来查找其停机时间。 此外，你想要查看 _category_ 列中检测信号的源。 通常，我们会使用一个简单的 summarize 语句，如下所示：
 
 ```Kusto
 Heartbeat
@@ -182,7 +182,7 @@ WindowsFirewall
 请参阅有关将 [Kusto 查询语言](/azure/kusto/query/)与 Azure Monitor 日志数据配合使用的其他课程：
 
 - [字符串操作](string-operations.md)
-- [时间和日期操作](datetime-operations.md)
+- [日期和时间操作](datetime-operations.md)
 - [聚合函数](aggregations.md)
 - [高级聚合](advanced-aggregations.md)
 - [JSON 和数据结构](json-data-structures.md)

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
 ms.openlocfilehash: fcf31fcc266358911612c25e0b73a0a9de696b1d
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77539004"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>在 Azure 实验室服务中创建和管理课堂模板
@@ -28,41 +28,41 @@ ms.locfileid: "77539004"
 ## <a name="set-or-update-template-title-and-description"></a>设置或更新模板标题和说明
 使用以下步骤来首次设置标题和说明，并在之后更新。 
 
-1. 在 "**模板**" 页上，输入实验室的新**标题**。  
-2. 输入模板的新**说明**。 将焦点移出文本框时，它会自动保存。 
+1. 在 **"模板"** 页上，输入实验室的新**标题**。  
+2. 输入模板的新**说明**。 当您将焦点移出文本框时，它会自动保存。 
 
     ![模板名称和说明](../media/how-to-create-manage-template/template-name-description.png)
 
 ## <a name="update-a-template-vm"></a>更新模板 VM
 使用以下步骤更新模板 VM。  
 
-1. 等待模板 VM 开始，然后选择工具栏上的 "**连接到模板**" 以连接到模板 vm，并按照说明进行操作。 如果是 Windows 计算机，你将看到一个用于下载 RDP 文件的选项。 
-1. 一旦你连接到模板并进行了更改，它将不再与上次发布到用户的虚拟机具有相同的设置。 在再次发布后，模板更改将不会反映在用户的现有虚拟机上。
+1. 等待模板 VM 启动，然后选择工具栏上的 **"连接到模板**"以连接到模板 VM，然后按照说明操作。 如果是 Windows 计算机，您将看到下载 RDP 文件的选项。 
+1. 连接到模板并进行更改后，该模板将不再具有与上次发布到用户的虚拟机相同的设置。 模板更改不会反映在用户的现有虚拟机上，直到您再次发布之后。
 
     ![连接到模板 VM](../media/how-to-create-manage-template/connect-template-vm.png)
     
 1. 安装学生进行实验室操作所需的任何软件（例如，Visual Studio、Azure 存储资源管理器，等等）。 
 1. 断开与模板 VM 的连接（关闭远程桌面会话）。 
-1. 通过选择 "**停止模板**"**停止**模板 VM。 
-1. 按照下一节中的步骤来**发布**更新的模板 VM。 
+1. 通过选择 **"停止"模板**停止模板，**停止**模板 VM。 
+1. 按照下一节中的步骤**发布**更新的模板 VM。 
 
 ## <a name="publish-the-template-vm"></a>发布模板 VM  
-在此步骤中，将发布模板 VM。 发布模板 VM 时，Azure 实验室服务使用模板在实验室中创建 Vm。 所有虚拟机的配置都与模板相同。
+在此步骤中，我们发布模板 VM。 发布模板 VM 时，Azure 实验室服务使用模板在实验室中创建 VM。 所有虚拟机的配置都与模板相同。
 
 
-1. 在 "**模板**" 页上，选择工具栏上的 "**发布**"。 
+1. 在“模板”页上的工具栏中选择“发布”****。**** 
 
     ![“发布模板”按钮](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
     > [!WARNING]
     > 发布后无法取消发布。 
-2. 在“发布模板”页上，输入要在实验室中创建的虚拟机的数目，然后选择“发布”。 
+2. 在“发布模板”**** 页上，输入要在实验室中创建的虚拟机的数目，然后选择“发布”。**** 
 
     ![发布模板 - VM 数](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
 3. 可以在页面上查看模板的**发布状态**。 此过程最长可能需要花费一小时。 
 
     ![发布模板 - 进度](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-4. 等待发布完成，然后在左侧菜单中选择 "**虚拟机**" 或选择 "**虚拟机**" 磁贴，切换到 "**虚拟机池**" 页。 确认看到这些虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 它们应该处于“已停止”状态。 可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 你可以在此页中启动这些 VM，也可以让你的学生启动它们。 
+4. 等待发布完成，然后选择左侧菜单上的“虚拟机”或选择“虚拟机”磁贴，切换到“虚拟机池”页。************ **** 确认看到这些虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 它们应该处于“已停止”状态。**** 可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 你可以在此页中启动这些 VM，也可以让你的学生启动它们。 
 
     ![处于已停止状态的虚拟机](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 ## <a name="next-steps"></a>后续步骤

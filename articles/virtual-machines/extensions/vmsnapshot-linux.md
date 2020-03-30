@@ -10,12 +10,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: d2af6b6c981a2fcbce38546196aa84f1e6be4e38
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d0ad54c19749d670f9ab753e1e6d8eb130475ffc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79250343"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79415096"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Azure 备份的 VM 快照 Linux 扩展
 
@@ -23,7 +23,9 @@ ms.locfileid: "79250343"
 
 Azure 备份支持从本地将工作负载备份到云以及将云资源备份到恢复服务保管库。 Azure 备份使用 VM 快照扩展即可获取 Azure 虚拟机的应用程序一致性备份，而无需关闭 VM。 Microsoft 将 VM 快照 Linux 扩展作为 Azure 备份服务的一部分发布并提供支持。 Azure 备份将安装该扩展，使其作为启用备份后触发的首个计划备份的一部分。 本文档详细介绍适用于 VM 快照扩展的受支持平台、配置和部署选项。
 
-## <a name="prerequisites"></a>必备条件
+VMSnapshot 扩展仅在 Azure 门户中显示，仅适用于非托管 VM。
+
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 有关支持的操作系统的列表，请参阅 [Azure 备份支持的操作系统](../../backup/backup-azure-arm-vms-prepare.md#before-you-start)
@@ -60,7 +62,7 @@ Azure 备份支持从本地将工作负载备份到云以及将云资源备份�
 
 ### <a name="property-values"></a>属性值
 
-| 名称 | 值/示例 | 数据类型 |
+| “属性” | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | 字符串 |
@@ -91,7 +93,7 @@ az backup protection enable-for-vm \
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 
@@ -111,4 +113,4 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果本文中的任何一点都需要更多帮助，则可以在[MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上联系 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择"获取支持"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

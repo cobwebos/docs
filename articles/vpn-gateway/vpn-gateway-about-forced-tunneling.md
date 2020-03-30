@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 网关：配置强制隧道-站点到站点连接：经典
+title: Azure VPN 网关：配置强制隧道 - 站点到站点连接：经典
 description: 如何重定向或“强制”所有 Internet 绑定的流量路由回本地位置。
 services: vpn-gateway
 author: cherylmc
@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 08/01/2017
 ms.author: cherylmc
 ms.openlocfilehash: fe06257127ff352f68fb27d3507cee0229e31498
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77201571"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>使用经典部署模型配置强制隧道
 
-借助强制隧道，可以通过站点到站点 VPN 隧道，将全部 Internet 绑定流量重定向或“强制”返回到本地位置，以进行检查和审核。 这是很多企业 IT 策略的关键安全要求。 没有强制隧道，来自 Azure 中虚拟机的 Internet 绑定流量会始终通过 Azure 网络基础设施直接连接到 Internet。没有该选项，您无法对流量进行检查或审核。 未经授权的 Internet 访问可能会导致信息泄漏或其他类型的安全漏洞。
+借助强制隧道，可以通过站点到站点 VPN 隧道，将全部 Internet 绑定流量重定向或“强制”返回到本地位置，以进行检查和审核。 这是很多企业 IT 策略的关键安全要求。 没有强制隧道，来自 Azure 中虚拟机的 Internet 绑定流量会始终通过 Azure 网络基础设施直接连接到 Internet。如果没有该选项，则无法对流量进行检查或审核。 未经授权的 Internet 访问可能会导致信息泄漏或其他类型的安全漏洞。
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-本文将逐步演示如何配置虚拟网络（使用经典部署模型创建）的强制隧道。 强制隧道可以使用 PowerShell（不通过门户）来配置。 如果要为资源管理器部署模型配置强制隧道，请从下面的下拉列表中选择资源管理器文章：
+本文将逐步演示如何配置虚拟网络（使用经典部署模型创建）的强制隧道。 强制隧道可以使用 PowerShell（不通过门户）来配置。 如果想要配置用于资源管理器部署模型的强制隧道，请从下面的下拉列表中选择与资源管理器模型相关的文章：
 
 > [!div class="op_single_selector"]
 > * [PowerShell - 经典](vpn-gateway-about-forced-tunneling.md)
@@ -33,13 +33,13 @@ ms.locfileid: "77201571"
 
 * 每个虚拟网络子网具有内置的系统路由表。 系统路由表具有以下三组路由：
 
-  * 本地 VNet 路由：直接路由到同一个虚拟网络中的目标 VM。
-  * 本地路由：路由到 Azure VPN 网关。
+  * 本地 VNet 路由：直接路由到同一个虚拟网络中的目标 VM****。
+  * 本地路由：路由到 Azure VPN 网关****。
   * **默认路由：** 直接路由到 Internet。 如果要将数据包发送到不包含在前面两个路由中的专用 IP 地址，数据包会被删除。
 * 随着用户定义路由的发布，可以创建路由表来添加默认路由，然后将路由表关联到 VNet 子网，在这些子网启用强制隧道。
-* 您需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
+* 需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
 * 强制隧道必须关联到具有动态路由 VPN 网关的 VNet，不能是静态网关。
-* ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。 有关详细信息，请参阅[ExpressRoute 文档](https://azure.microsoft.com/documentation/services/expressroute/)。
+* ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。 有关详细信息，请参阅[快速路由文档](https://azure.microsoft.com/documentation/services/expressroute/)。
 
 ## <a name="configuration-overview"></a>配置概述
 在以下示例中，前端子网没有使用强制隧道。 前端子网中的工作负载可以继续直接接受并响应来自 Internet 的客户请求。 中间层和后端子网会使用强制隧道。 任何从这两个子网到 Internet 的出站连接将通过一个 S2S VPN 隧道重定向或强制返回到本地站点。
@@ -51,13 +51,13 @@ ms.locfileid: "77201571"
 ## <a name="before-you-begin"></a>开始之前
 在开始配置之前，请确认具有以下各项：
 
-* 一个 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 * 已配置虚拟网络。 
 * [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ### <a name="to-sign-in"></a>登录
 
-1. 通过提升的权限打开 PowerShell 控制台。 若要切换到服务管理，请使用以下命令：
+1. 使用提升权限打开 PowerShell 控制台。 若要切换到服务管理，请使用以下命令：
 
    ```powershell
    azure config mode asm

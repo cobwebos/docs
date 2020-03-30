@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: yushwang
 ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198083"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>将站点到站点连接添加到包含现有 VPN 网关连接的 VNet（经典）
@@ -21,7 +21,7 @@ ms.locfileid: "77198083"
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
-> * [PowerShell（经典）](vpn-gateway-multi-site.md)
+> * [电源外壳（经典）](vpn-gateway-multi-site.md)
 >
 >
 
@@ -37,17 +37,17 @@ ms.locfileid: "77198083"
 
 ## <a name="about-connecting"></a>关于连接
 
-你可以将多个本地站点连接到单个虚拟网络。 在构建混合云解决方案时，这种做法特别有用。 创建到 Azure 虚拟网络网关的多站点连接时，其操作与创建其他站点到站点连接的操作类似。 事实上，可以使用现有的 Azure VPN 网关，只要该网关是动态的（基于路由）即可。
+可以将多个本地站点连接到单个虚拟网络。 在构建混合云解决方案时，这种做法特别有用。 创建到 Azure 虚拟网络网关的多站点连接时，其操作与创建其他站点到站点连接的操作类似。 事实上，可以使用现有的 Azure VPN 网关，只要该网关是动态的（基于路由）即可。
 
 如果已经有连接到虚拟网络的静态网关，可以将网关类型更改为动态，而不需要为了适应多站点而重建虚拟网络。 在更改路由类型之前，请确保本地 VPN 网关支持基于路由的 VPN 配置。
 
-![多站点关系图](./media/vpn-gateway-multi-site/multisite.png "多站点")
+![多站点示意图](./media/vpn-gateway-multi-site/multisite.png "多站点")
 
 ## <a name="points-to-consider"></a>考虑的要点
 
-不可通过门户更改此虚拟网络。 需更改网络配置文件，而不是使用门户。 若在门户中进行更改，更改将覆盖此虚拟网络的多站点引用设置。
+不可通过门户更改此虚拟网络。**** 需更改网络配置文件，而不是使用门户。 若在门户中进行更改，更改将覆盖此虚拟网络的多站点引用设置。
 
-在完成多站点过程后，便可轻松自如地使用网络配置文件。 但是，如果有多个人在处理你的网络配置，你需要确保每个人都知道这个限制。 这并不意味着完全不能使用门户。 除了无法对此特定虚拟网络进行配置更改以外，可以使用它来完成其他任何操作。
+在完成多站点过程后，便可轻松自如地使用网络配置文件。 但是，如果有多个人在处理网络配置，需要确保每个人都知道这个限制。 这并不意味着完全不能使用门户。 除了无法对此特定虚拟网络进行配置更改以外，可以使用它来完成其他任何操作。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -57,7 +57,7 @@ ms.locfileid: "77198083"
 * 每个 VPN 设备都有一个面向外部的公共 IPv4 IP 地址。 该 IP 地址不能位于 NAT 后面， 必须满足这一要求。
 * 有人能够熟练地配置 VPN 硬件。 必须非常了解如何配置 VPN 设备，或者与具有此能力的人员合作。
 * 要用于虚拟网络（如果尚未创建）的 IP 地址范围。
-* 要连接到的每个本地网络站点的 IP 地址范围。 需确保要连接到的每个本地网络站点的 IP 地址范围不重叠。 否则，门户或 REST API 将拒绝上传配置。<br>例如，如果两个本地网络站点都包含 IP 地址范围 10.2.3.0/24，并且某个包包含目标地址 10.2.3.3，则 Azure 将不知道你要将该包发送到哪个站点，因为地址范围是重叠的。 为了防止路由问题，Azure 不允许你上载具有重叠范围的配置文件。
+* 要连接到的每个本地网络站点的 IP 地址范围。 需确保要连接到的每个本地网络站点的 IP 地址范围不重叠。 否则，门户或 REST API 将拒绝上传配置。<br>例如，如果两个本地网络站点都包含 IP 地址范围 10.2.3.0/24，并且某个包包含目标地址 10.2.3.3，则 Azure 将不知道要将该包发送到哪个站点，因为地址范围是重叠的。 为了防止路由问题，Azure 不允许上传具有重叠范围的配置文件。
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
@@ -67,16 +67,16 @@ ms.locfileid: "77198083"
 如果已有使用动态路由网关的站点到站点 VPN，那太好了！ 可以转到[导出虚拟网络配置设置](#export)。 否则，请执行以下操作：
 
 ### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>如果已有一个站点到站点虚拟网络，但该虚拟网络使用静态（基于策略的）路由网关：
-1. 将网关类型更改为动态路由。 多站点 VPN 需要动态（也称为基于路由的）路由网关。 若要更改网关类型，首先需要删除现有网关，然后创建新网关。
+1. 将网关类型更改为动态路由。 多站点 VPN 需要动态（也称为基于路由的）路由网关。 要更改网关类型，首先需要删除现有网关，然后创建新网关。
 2. 配置新网关并创建 VPN 隧道。 有关说明，请参阅[指定 SKU 和 VPN 类型](vpn-gateway-howto-site-to-site-classic-portal.md#sku)。 请确保将“路由类型”指定为“动态”。
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>如果没有站点到站点虚拟网络：
 1. 按照以下说明创建站点到站点虚拟网络：[创建使用站点到站点 VPN 连接的虚拟网络](vpn-gateway-site-to-site-create.md)。  
 2. 按照以下说明配置动态路由网关：[配置 VPN 网关](vpn-gateway-configure-vpn-gateway-mp.md)。 请务必为网关类型选择“**动态路由**”。
 
-## <a name="export"></a>2. 导出网络配置文件
+## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. 导出网络配置文件
 
-通过提升的权限打开 PowerShell 控制台。 若要切换到服务管理，请使用以下命令：
+使用提升权限打开 PowerShell 控制台。 若要切换到服务管理，请使用以下命令：
 
 ```powershell
 azure config mode asm
@@ -95,7 +95,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
 ## <a name="3-open-the-network-configuration-file"></a>3. 打开网络配置文件
-打开你在执行上一步时下载的网络配置文件。 使用你偏好的任何 xml 编辑器。 该文件的内容类似于：
+打开上一步骤中下载的网络配置文件。 使用偏好的任何 xml 编辑器。 该文件的内容类似于：
 
         <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -145,7 +145,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
         </NetworkConfiguration>
 
 ## <a name="4-add-multiple-site-references"></a>4. 添加多个站点引用
-在添加或删除站点引用信息时，将会对 ConnectionsToLocalNetwork/LocalNetworkSiteRef 进行配置更改。 添加新的本地站点引用会触发 Azure 来创建新隧道。 在以下示例中，网络配置适用于单站点连接。 更改完后，请保存该文件。
+在添加或删除站点引用信息时，会对 ConnectionsToLocalNetwork/LocalNetworkSiteRef 进行配置更改。 添加新的本地站点引用会触发 Azure 来创建新隧道。 在以下示例中，网络配置适用于单站点连接。 更改完后，请保存该文件。
 
 ```xml
   <Gateway>
@@ -155,7 +155,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
   </Gateway>
 ```
 
-若要添加更多的站点引用（创建多站点配置），只需添加更多的“LocalNetworkSiteRef”行，如以下示例所示：
+若要添加其他站点引用（创建多站点配置），只需添加其他“LocalNetworkSiteRef”行，如下例所示：
 
 ```xml
   <Gateway>
@@ -167,7 +167,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
 ## <a name="5-import-the-network-configuration-file"></a>5. 导入网络配置文件
-导入网络配置文件。 在导入这个包含更改的文件时，将会添加新的隧道。 这些隧道将使用你前面创建的动态网关。 可以使用 PowerShell 导入文件。
+导入网络配置文件。 在导入这个包含更改的文件时，会添加新的隧道。 这些隧道将使用前面创建的动态网关。 可以使用 PowerShell 导入文件。
 
 ## <a name="6-download-keys"></a>6. 下载密钥
 添加新的隧道后，使用 PowerShell cmdlet“Get-AzureVNetGatewayKey”获取每个隧道的 IPsec/IKE 预共享密钥。
@@ -181,7 +181,7 @@ Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site2"
 
 如果需要，也可以使用*获取虚拟网络网关共享密钥* REST API 来获取预共享密钥。
 
-## <a name="7-verify-your-connections"></a>7. 验证连接
+## <a name="7-verify-your-connections"></a>7. 验证您的连接
 检查多站点隧道状态。 下载每个隧道的密钥后，需要验证连接。 使用“Get-AzureVnetConnection”获取虚拟网络隧道的列表，如下例所示。 VNet1 是 VNet 的名称。
 
 ```powershell

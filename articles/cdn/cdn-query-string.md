@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
 ms.openlocfilehash: 6471241527dd9b594eaaca20ebc75cacb27f8f72
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083030"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>使用查询字符串控制 Azure CDN 缓存行为 - 标准层
@@ -49,11 +49,11 @@ ms.locfileid: "74083030"
    
    ![CDN 配置文件终结点](./media/cdn-query-string/cdn-endpoints.png)
    
-2. 在左窗格中的“设置”下面，单击“缓存规则”。
+2. 在左窗格中的“设置”下面，单击“缓存规则”。****
    
     ![CDN 缓存规则按钮](./media/cdn-query-string/cdn-caching-rules-btn.png)
    
-3. 在“查询字符串缓存行为”列表中，选择查询字符串模式，然后单击“保存”。
+3. 在“查询字符串缓存行为”**** 列表中，选择查询字符串模式，然后单击“保存”****。
    
    ![CDN 查询字符串缓存选项](./media/cdn-query-string/cdn-query-string.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "74083030"
 > 由于注册需要一段时间才能在整个 Azure CDN 内传播，因此缓存字符串设置更改可能不会立即显示：
 > - 对于 **Microsoft 推出的 Azure CDN 标准版**配置文件，传播通常可在 10 分钟内完成。 
 > - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
-> - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 10 分钟内完成。 
+> - 对于“Verizon 提供的 Azure CDN 标准版”**** 和“Verizon 提供的 Azure CDN 高级版”**** 配置文件，传播通常在 10 分钟内完成。 
 
 
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77050002"
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>使用 REST 发布 Azure 媒体服务内容 
@@ -29,33 +29,33 @@ ms.locfileid: "77050002"
 > 
 > 
 
-你可以通过创建 OnDemand 流式处理定位符并生成流 URL 来流式传输自适应比特率 MP4 集。 [对资产进行编码](media-services-rest-encode-asset.md)一文说明了如何编码成自适应比特率 MP4 集。 如果内容已加密，则在创建定位符之前配置资产传送策略（如[此文](media-services-rest-configure-asset-delivery-policy.md)中所述）。 
+可以通过创建 OnDemand 流式处理定位符并生成流 URL 来流式传输自适应比特率 MP4 集。 [对资产进行编码](media-services-rest-encode-asset.md)一文说明了如何编码成自适应比特率 MP4 集。 如果内容已加密，则在创建定位符之前配置资产传送策略（如[此文](media-services-rest-configure-asset-delivery-policy.md)中所述）。 
 
-你也可以使用 OnDemand 流式处理定位符生成指向可渐进式下载的 MP4 文件的 URL。  
+也可以使用 OnDemand 流式处理定位符生成指向可渐进式下载的 MP4 文件的 URL。  
 
-本文说明如何创建 OnDemand 流式处理定位符，以发布资产及生成平滑流、MPEG DASH 和 HLS 流式处理 URL。 它还演示如何生成渐进式下载 Url。
+本文说明如何创建 OnDemand 流式处理定位符，以发布资产及生成平滑流、MPEG DASH 和 HLS 流式处理 URL。 它还演示如何构建渐进式下载 URL。
 
 [以下](#types)部分显示了其值会在 REST 调用中使用的枚举类型。   
 
 > [!NOTE]
-> 访问 Media Services 中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
+> 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
 > 
 
-## <a name="connect-to-media-services"></a>连接到 Media Services
+## <a name="connect-to-media-services"></a>连接到媒体服务
 
 若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
 >[!NOTE]
->成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 你必须对这个新 URI 进行后续调用。
+>成功连接到 https://media.windows.net 后，将收到指定另一个媒体服务 URI 的 301 重定向。 必须对这个新 URI 进行后续调用。
 
 ## <a name="create-an-ondemand-streaming-locator"></a>创建 OnDemand 流式处理定位符
 要创建 OnDemand 流式处理定位符并获取 URL，需要执行以下操作：
 
 1. 如果内容已加密，则定义访问策略。
 2. 创建 OnDemand 流式处理定位符。
-3. 如果你想要流式处理，请获取资产中的流式处理清单文件 (.ism)。 
+3. 如果想要流式处理，请获取资产中的流式处理清单文件 (.ism)。 
    
-   如果你想要渐进式下载，请获取资产中的 MP4 文件名。 
+   如果想要渐进式下载，请获取资产中的 MP4 文件名。 
 4. 生成清单文件或 MP4 文件的 URL。 
 5. 无法使用包含写入或删除权限的 AccessPolicy 创建流式处理定位符。
 
@@ -169,7 +169,7 @@ URL：**路径** + 资产文件 mp4 名称
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-## <a id="types"></a>枚举类型
+## <a name="enum-types"></a><a id="types"></a>枚举类型
     [Flags]
     public enum AccessPermissions
     {
@@ -193,7 +193,7 @@ URL：**路径** + 资产文件 mp4 名称
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 [媒体服务操作 REST API 概述](media-services-rest-how-to-use.md)
 
 [配置资产传送策略](media-services-rest-configure-asset-delivery-policy.md)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/20/2019
 ms.author: magattus
 ms.openlocfilehash: 476779eff41cb9ce1c0a9c79430813ce9a39e91f
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74286659"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>使用 PowerShell 管理 Azure CDN
@@ -250,8 +250,8 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Stop-AzCdnEndpoint
 Get-AzCdnProfile | Get-AzCdnEndpoint | Start-AzCdnEndpoint
 ```
 
-## <a name="creating-standard-rules-engine-policy-and-applying-to-an-existing-cdn-endpoint"></a>创建标准规则引擎策略并将其应用于现有 CDN 终结点
-`New-AzCdnDeliveryRule`、`New=AzCdnDeliveryRuleCondition`和 `New-AzCdnDeliveryRuleAction` 可用于在 Microsoft 配置文件 Azure CDN 上配置 Azure CDN 标准规则引擎。 
+## <a name="creating-standard-rules-engine-policy-and-applying-to-an-existing-cdn-endpoint"></a>创建标准规则引擎策略并应用于现有 CDN 终结点
+`New-AzCdnDeliveryRule``New=AzCdnDeliveryRuleCondition`，`New-AzCdnDeliveryRuleAction`并可用于从 Microsoft 配置文件在 Azure CDN 上配置 Azure CDN 标准规则引擎。 
 
 ```powershell
 # Create a new http to https redirect rule

@@ -1,5 +1,5 @@
 ---
-title: Azure HPC 缓存数据引入-手动复制
+title: Azure HPC 缓存数据引入 - 手动复制
 description: 如何使用 cp 命令将数据移动到 Azure HPC 缓存中的 Blob 存储目标
 author: ekpgh
 ms.service: hpc-cache
@@ -7,23 +7,23 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: fc397088e46f0d2b623080f3deed24c386e7d8b4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168483"
 ---
-# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC 缓存数据引入-手动复制方法
+# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC 缓存数据引入 - 手动复制方法
 
-本文提供了有关将数据手动复制到 Blob 存储容器以用于 Azure HPC 缓存的详细说明。 它使用多线程并行操作来优化副本速度。
+本文详细介绍了手动将数据复制到 Blob 存储容器以与 Azure HPC 缓存一起使用。 它使用多线程并行操作来优化复制速度。
 
-若要详细了解如何将数据移到 Azure HPC 缓存的 Blob 存储，请参阅[将数据移到 Azure blob 存储](hpc-cache-ingest.md)。
+要了解有关将数据移动到 Azure HPC 缓存的 Blob 存储的详细信息，请阅读[将数据移动到 Azure Blob 存储](hpc-cache-ingest.md)。
 
 ## <a name="simple-copy-example"></a>简单复制示例
 
 可以通过针对预定义的文件或路径集在后台一次性运行多个复制命令，在客户端上手动创建多线程复制。
 
-Linux/UNIX ``cp`` 命令包含用于保留所有权和 mtime 元数据的 ``-p`` 参数。 可以选择性地将此参数添加到以下命令。 （添加参数会将从客户端发送到目标文件系统的文件系统调用数增加到修改元数据。）
+Linux/UNIX ``cp`` 命令包含用于保留所有权和 mtime 元数据的 ``-p`` 参数。 可以选择性地将此参数添加到以下命令。 （添加参数会增加从客户端发送到目标文件系统进行元数据修改的文件系统调用数。
 
 此简单示例将并行复制两个文件：
 
@@ -33,9 +33,9 @@ cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1
 
 发出此命令后，`jobs` 命令将显示有两个线程正在运行。
 
-## <a name="copy-data-with-predictable-file-names"></a>复制具有可预测文件名的数据
+## <a name="copy-data-with-predictable-file-names"></a>使用可预测的文件名复制数据
 
-如果文件名称是可预测的，则可以使用表达式来创建并行复制线程。 
+如果文件名是可预测的，则可以使用表达式创建并行复制线程。 
 
 例如，如果目录包含 1000 个按顺序从 `0001` 到 `1000` 编号的文件，则你可以使用以下表达式创建 10 个并行线程，其中每个线程可以复制 100 个文件：
 
@@ -52,9 +52,9 @@ cp /mnt/source/file8* /mnt/destination1/ & \
 cp /mnt/source/file9* /mnt/destination1/
 ```
 
-## <a name="copy-data-with-unstructured-file-names"></a>复制包含非结构化文件名称的数据
+## <a name="copy-data-with-unstructured-file-names"></a>使用非结构化文件名复制数据
 
-如果文件命名结构不可预测，则可以按目录名称对文件进行分组。 
+如果文件命名结构无法预测，则可以按目录名称对文件进行分组。 
 
 此示例收集要发送到作为后台任务运行的 ``cp`` 命令的整个目录：
 
@@ -81,9 +81,9 @@ cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 
 ## <a name="when-to-add-mount-points"></a>何时添加装入点
 
-在针对单个目标文件系统装入点执行足够的并行线程后，添加更多线程并不会给出更多吞吐量。 （吞吐量将按每秒的文件数或字节数/秒来度量，具体取决于你的数据类型。）或者更糟的是，超线程可能会导致吞吐量下降。  
+在对单个目标文件系统装载点进行足够的并行线程后，将存在添加更多线程不会带来更多吞吐量的点。 （吞吐量将以文件/秒或字节/秒为单位进行测量，具体取决于数据类型。或者更糟的是，过线程有时会导致吞吐量下降。  
 
-发生这种情况时，可以使用相同的远程文件系统装载路径，将客户端装入点添加到其他 Azure HPC 缓存装载点：
+发生这种情况时，可以使用相同的远程文件系统装载路径将客户端装载点添加到其他 Azure HPC 缓存装载地址：
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -136,7 +136,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>创建文件清单
 
-了解以上方法之后（每个目标多个复制线程，每个客户端多个目标，每个网络可访问的源文件系统有多个客户端），请考虑此建议：生成文件清单，然后将其用于复制跨多个客户端的命令。
+在了解了上述方法（每个目标有多个复制线程、每个客户端多个目标、每个网络可访问的源文件系统多个客户端）后，请考虑以下建议：生成文件清单，然后将它们与副本一起使用跨多个客户端的命令。
 
 此方案使用 UNIX ``find`` 命令创建文件或目录的清单：
 
@@ -208,13 +208,13 @@ for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-六 ...。根据需要推断。
+而对于六个...根据需要进行推断。
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-你将获得 *N* 个生成的文件，包含 *命令输出中获取的四级目录的路径名称的每个（共*N`find` 个）客户端各有一个生成的文件。 
+你将获得 *N* 个生成的文件，包含 `find` 命令输出中获取的四级目录的路径名称的每个（共 *N* 个）客户端各有一个生成的文件。 
 
 使用每个文件生成复制命令：
 

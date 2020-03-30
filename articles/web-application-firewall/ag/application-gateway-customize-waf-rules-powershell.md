@@ -1,7 +1,7 @@
 ---
 title: 使用 PowerShell 自定义规则
 titleSuffix: Azure Web Application Firewall
-description: 本文提供了有关如何通过 PowerShell 在应用程序网关上自定义 Web 应用程序防火墙规则的信息。
+description: 本文将介绍如何使用 PowerShell 自定义应用程序网关的 Web 应用程序防火墙规则。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,15 +9,15 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: 55eea15da8c3a10b0421ff1576082d6b42fc7c56
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048512"
 ---
 # <a name="customize-web-application-firewall-rules-using-powershell"></a>使用 PowerShell 自定义 Web 应用程序防火墙规则
 
-Azure 应用程序网关 Web 应用程序防火墙（WAF）为 Web 应用程序提供保护。 这些保护通过打开 Web 应用程序安全性项目 (OWASP) 核心规则集 (CRS) 来提供。 某些规则可能会导致误报，并会阻止实际流量。 出于此原因，应用程序网关提供了自定义规则组和规则的功能。 有关特定规则组和规则的详细信息，请参阅[Web 应用程序防火墙 CRS 规则组和规则列表](application-gateway-crs-rulegroups-rules.md)。
+Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 这些保护通过打开 Web 应用程序安全性项目 (OWASP) 核心规则集 (CRS) 来提供。 某些规则可能会导致误报，并会阻止实际流量。 出于此原因，应用程序网关提供了自定义规则组和规则的功能。 有关特定规则组和规则的详细信息，请参阅 Web[应用程序防火墙 CRS 规则组和规则列表](application-gateway-crs-rulegroups-rules.md)。
 
 ## <a name="view-rule-groups-and-rules"></a>查看规则组和规则
 

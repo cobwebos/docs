@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09fa612e7e5c681da16bf19e94c626ae14a3b8a1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77590739"
 ---
 将数据磁盘添加到 Linux VM 时，如果 LUN 0 位置没有磁盘，则你可能会遇到错误。 如果使用 `az vm disk attach -new` 命令并指定 LUN (`--lun`) 来手动添加磁盘，而不是让 Azure 平台确定适当的 LUN，则请注意，LUN 0 已经有磁盘或者将有磁盘。 

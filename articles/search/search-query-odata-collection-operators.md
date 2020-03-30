@@ -1,7 +1,7 @@
 ---
-title: OData 集合运算符引用
+title: OData 集合运算符参考
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 认知搜索查询中创建筛选表达式时，如果筛选器位于集合或复杂集合字段，请使用 lambda 表达式中的 "any" 和 "all" 运算符。
+description: 在 Azure 认知搜索查询中创建筛选器表达式时，如果筛选器基于某个集合或复杂集合字段，请在 lambda 表达式中使用“any”和“all”运算符。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113232"
 ---
-# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure 认知搜索中的 OData 集合运算符-`any` 和 `all`
+# <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure 认知搜索中的 OData 集合运算符 - `any` 和 `all`
 
-编写要用于 Azure 认知搜索的[OData 筛选器表达式](query-odata-filter-orderby-syntax.md)时，对集合字段进行筛选通常很有用。 可以使用 `any` 和 `all` 运算符实现这一点。
+在编写 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)以用于 Azure 认知搜索时，对集合字段进行筛选通常很有用。 可以使用 `any` 和 `all` 运算符实现这一点。
 
 ## <a name="syntax"></a>语法
 
@@ -48,10 +48,10 @@ lambda_expression ::= identifier ':' boolean_expression
 下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
-> [适用于 Azure 认知搜索的 OData 语法关系图](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)，了解完整的 EBNF。
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
 有三种形式的表达式可以筛选集合。
 
@@ -90,11 +90,11 @@ lambda_expression ::= identifier ':' boolean_expression
 
 [!INCLUDE [Limitations on OData lambda expressions in Azure Cognitive Search](../../includes/search-query-odata-lambda-limitations.md)]
 
-有关这些限制以及示例的更多详细信息，请参阅[Azure 认知搜索中的集合筛选器疑难解答](search-query-troubleshoot-collection-filters.md)。 有关为何存在这些限制的详细信息，请参阅[了解 Azure 认知搜索中的集合筛选器](search-query-understand-collection-filters.md)。
+若要更详细地了解这些限制和相关示例，请参阅[排查 Azure 认知搜索中的集合筛选器问题](search-query-troubleshoot-collection-filters.md)。 若要更深入地了解为何存在这些限制，请参阅[了解 Azure 认知搜索中的集合筛选器](search-query-understand-collection-filters.md)。
 
 ## <a name="next-steps"></a>后续步骤  
 
 - [Azure 认知搜索中的筛选器](search-filters.md)
 - [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档&#40;Azure 认知搜索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

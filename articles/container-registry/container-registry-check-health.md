@@ -4,24 +4,24 @@ description: 了解如何运行快速诊断命令，以便确定使用 Azure 容
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456411"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>检查 Azure 容器注册表的运行状况
 
 使用 Azure 容器注册表时，可能会偶尔遇到问题。 例如，由于本地环境中的 Docker 出现问题，可能无法拉取容器映像。 或者，可能会因网络问题而无法连接到注册表。 
 
-进行诊断时，首先请运行 [az acr check-health][az-acr-check-health] 命令，了解环境的运行状况，并可选择访问目标注册表。 此命令可在 Azure CLI 2.0.67 或更高版本中使用。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+进行诊断时，首先请运行 [az acr check-health][az-acr-check-health] 命令，了解环境的运行状况，并可选择访问目标注册表。 此命令可在 Azure CLI 2.0.67 或更高版本中使用。 如果需要安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 ## <a name="run-az-acr-check-health"></a>运行 az acr check-health
 
 下述示例演示了如何通过不同方式运行 `az acr check-health` 命令。
 
 > [!NOTE]
-> 如果在 Azure Cloud Shell 中运行命令，则不会检查本地环境。 不过，您可以检查对目标注册表的访问权限。
+> 如果在 Azure 云壳中运行该命令，则不会检查本地环境。 但是，您可以检查对目标注册表的访问。
 
 ### <a name="check-the-environment-only"></a>仅检查环境
 

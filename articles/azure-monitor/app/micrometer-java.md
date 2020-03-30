@@ -6,10 +6,10 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
 ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670060"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
@@ -17,7 +17,7 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 
 ## <a name="using-spring-boot-15x"></a>使用 Spring Boot 1.5x
 将以下依赖项添加到 pom.xml 或 build.gradle 文件： 
-* [Application Insights 春季 boot](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 或更高版本
+* [Application Insights spring-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 或更高版本
 * Micrometer Azure Registry 1.1.0 或更高版本
 * [Micrometer Spring Legacy](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 或更高版本（用于向后移植 Spring 框架中的自动配置代码）。
 * [ApplicationInsights 资源](../../azure-monitor/app/create-new-resource.md )
@@ -57,8 +57,8 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 将以下依赖项添加到 pom.xml 或 build.gradle 文件：
 
 * Application Insights Spring-boot-starter 2.1.2 或更高版本
-* 2\.0.7-boot-boot 或更高版本
-* [Application Insights 资源](../../azure-monitor/app/create-new-resource.md )
+* Azure-spring-boot-metrics-starters 2.0.7 或更高版本
+* [应用程序见解资源](../../azure-monitor/app/create-new-resource.md )
 
 步骤：
 
@@ -80,7 +80,7 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 默认指标：
 
 *    为 Tomcat、JVM 自动配置的指标、Logback 指标、Log4J 指标、运行时间指标、处理器指标、FileDescriptorMetrics。
-*    例如，如果类路径上存在 Netflix Hystrix，我们也会获得这些指标。 
+*    例如，如果类路径上存在 Netflix Hystrix，则我们也会获取这些指标。 
 *    可通过添加相应的 bean 来获取以下指标。 
         - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcastCache, JCache)     
         - DataBaseTableMetrics 
@@ -115,9 +115,9 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 
 将以下依赖项添加到 pom.xml 或 build.gradle 文件：
 
-* Application Insights Web 自动2.5.0 或更高版本
+* Application Insights Web Auto 2.5.0 或更高版本
 * Micrometer Azure Registry 1.1.0 或更高版本
-* [Application Insights 资源](../../azure-monitor/app/create-new-resource.md )
+* [应用程序见解资源](../../azure-monitor/app/create-new-resource.md )
 
 步骤：
 
@@ -137,7 +137,7 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
         </dependency>
      ```
 
-2. 将 `ApplicationInsights.xml` 文件放在 resources 文件夹中：
+2. 将 `ApplicationInsights.xml` 文件放入 resources 文件夹中：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -270,5 +270,5 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关 Micrometer 的详细信息，请参阅官方[Micrometer 文档](https://micrometer.io/docs)。
-* 若要了解有关 Azure 的弹簧，请参阅[azure 上的官方春季文档](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)。
+* 要了解有关微米数的更多，请参阅官方[微数文档](https://micrometer.io/docs)。
+* 要了解 Azure 上的 Spring，请参阅[Azure 文档上的正式 Spring。](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)

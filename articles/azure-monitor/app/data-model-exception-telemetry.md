@@ -1,14 +1,14 @@
 ---
-title: Azure 应用程序 Insights 异常遥测数据模型
+title: Azure Application Insights 异常遥测数据模型
 description: 适用于异常遥测的 Application Insights 数据模型
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: fa9bc4efd9549cbcb1d50439989c5dea79d9d60c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671930"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>异常遥测：Application Insights 数据模型

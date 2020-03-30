@@ -1,7 +1,7 @@
 ---
-title: OData 比较运算符引用
+title: OData 比较运算符参考
 titleSuffix: Azure Cognitive Search
-description: Azure 认知搜索查询中使用 OData 比较运算符（eq、ne、gt、lt、ge 和 le）的语法和参考文档。
+description: 用于在 Azure 认知搜索查询中使用 OData 比较运算符（eq、ne、gt、lt、ge 和 le）的语法和参考文档。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,27 +20,27 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113222"
 ---
-# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure 认知搜索中的 OData 比较运算符-`eq`、`ne`、`gt`、`lt`、`ge`和 `le`
+# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure 认知搜索中的 OData 比较运算符 - `eq`、`ne`、`gt`、`lt`、`ge` 和 `le`
 
-Azure 认知搜索中[OData 筛选器表达式](query-odata-filter-orderby-syntax.md)中的最基本操作是将字段与给定值进行比较。 可进行两种类型的比较 -- 相等性比较和范围比较。 可以使用以下运算符将字段与常量值进行比较：
+在 Azure 认知搜索的 [OData 筛选表达式](query-odata-filter-orderby-syntax.md)中的最基本运算是将某个字段与给定的值进行比较。 可进行两种类型的比较 -- 相等性比较和范围比较。 可以使用以下运算符将字段与常量值进行比较：
 
 相等性运算符：
 
-- `eq`：测试字段是否**等于**常数值
-- `ne`：测试字段是否**不等于**常数值
+- `eq`：测试字段是否**等于**常量值
+- `ne`：测试字段**是否不等于**常量值
 
 范围运算符：
 
-- `gt`：测试字段是否**大于**常数值
-- `lt`：测试字段是否**小于**常数值
-- `ge`：测试字段是否**大于或等于**常数值
-- `le`：测试字段是否**小于或等于**常数值
+- `gt`：测试字段是否**大于**常量值
+- `lt`：测试字段是否**小于**常量值
+- `ge`： 测试字段是否**大于或等于**常量值
+- `le`： 测试字段是否**小于或等于**常量值
 
 可以结合使用范围运算符和[逻辑运算符](search-query-odata-logical-operators.md)来测试某个字段是否在特定的值范围内。 请参阅本文稍后提供的[示例](#examples)。
 
@@ -66,10 +66,10 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
-> [适用于 Azure 认知搜索的 OData 语法关系图](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
+> [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)，了解完整的 EBNF。
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
 比较表达式有两种形式。 它们之间的唯一差别在于，常量是显示在运算符的左侧还是右侧。 运算符另一侧的表达式必须是**变量**或函数调用。 变量可以是字段名称，或者 [Lambda 表达式](search-query-odata-collection-operators.md)中的范围变量。
 
@@ -89,7 +89,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 | `Edm.Int32` | `Edm.Int64` | 不适用 |
 | `Edm.Int32` | `Edm.Int32` | 不适用 |
 
-对于不允许的比较（如将类型 `Edm.Int64` 的字段与 `NaN`进行比较），Azure 认知搜索 REST API 将返回 "HTTP 400：错误的请求" 错误。
+对于不允许的比较，例如将类型`Edm.Int64`字段与`NaN`比较 Azure 认知搜索 REST API 将返回"HTTP 400：错误请求"错误。
 
 > [!IMPORTANT]
 > 尽管数字类型比较非常灵活，但我们强烈建议在筛选器中编写比较表达式，使常量值的数据类型与要比较的变量或函数的数据类型相同。 混合使用浮点值和整数值时（在这种情况下，隐式转换可能会损失精度），这一点尤其重要。
@@ -98,20 +98,20 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 ### <a name="special-cases-for-null-and-nan"></a>`null` 和 `NaN` 的特殊情况
 
-使用比较运算符时，务必记住，Azure 认知搜索中的所有非集合字段都可能会 `null`。 下表显示了任何一侧可为 `null` 的比较表达式的所有可能结果：
+使用比较运算符时，请务必记住，Azure 认知搜索中的所有非集合字段都有可能为 `null`。 下表显示了任何一侧可为 `null` 的比较表达式的所有可能结果：
 
 | 运算符 | 只有字段或变量为 `null` 时的结果 | 只有常量为 `null` 时的结果 | 字段或变量和常量都为 `null` 时的结果 |
 | --- | --- | --- | --- |
-| `gt` | `false` | HTTP 400：错误的请求错误 | HTTP 400：错误的请求错误 |
-| `lt` | `false` | HTTP 400：错误的请求错误 | HTTP 400：错误的请求错误 |
-| `ge` | `false` | HTTP 400：错误的请求错误 | HTTP 400：错误的请求错误 |
-| `le` | `false` | HTTP 400：错误的请求错误 | HTTP 400：错误的请求错误 |
+| `gt` | `false` | HTTP 400： 错误请求错误 | HTTP 400： 错误请求错误 |
+| `lt` | `false` | HTTP 400： 错误请求错误 | HTTP 400： 错误请求错误 |
+| `ge` | `false` | HTTP 400： 错误请求错误 | HTTP 400： 错误请求错误 |
+| `le` | `false` | HTTP 400： 错误请求错误 | HTTP 400： 错误请求错误 |
 | `eq` | `false` | `false` | `true` |
 | `ne` | `true` | `true` | `false` |
 
 总而言之，`null` 仅等于自身，而不小于或大于任何其他值。
 
-如果索引包含 `Edm.Double` 类型的字段，而你将 `NaN` 值上传到这些字段，则在编写筛选器时需要考虑到这种情况。 Azure 认知搜索实现 IEEE 754 标准来处理 `NaN` 值，并且具有此类值的比较产生不明显的结果，如下表所示。
+如果索引包含 `Edm.Double` 类型的字段，而你将 `NaN` 值上传到这些字段，则在编写筛选器时需要考虑到这种情况。 Azure 认知搜索实现 IEEE 754 标准来处理 `NaN` 值，使用此类值的比较将生成不明确的结果，如下表所示。
 
 | 运算符 | 至少有一个操作数为 `NaN` 时的结果 |
 | --- | --- |
@@ -158,5 +158,5 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 - [Azure 认知搜索中的筛选器](search-filters.md)
 - [Azure 认知搜索的 OData 表达式语言概述](query-odata-filter-orderby-syntax.md)
-- [适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
-- [搜索文档&#40;Azure 认知搜索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)
+- [搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

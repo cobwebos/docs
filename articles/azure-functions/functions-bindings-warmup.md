@@ -1,55 +1,55 @@
 ---
-title: Azure Functions 预热触发器
-description: 了解如何在 Azure Functions 中使用预热触发器。
+title: Azure 函数预热触发器
+description: 了解如何在 Azure 函数中使用预热触发器。
 documentationcenter: na
 author: alexkarcher-msft
 manager: gwallace
-keywords: azure 函数，函数，事件处理，预热，冷启动，高级，动态计算，无服务器体系结构
+keywords: azure 函数、功能、事件处理、预热、冷启动、高级、动态计算、无服务器体系结构
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
 ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77167314"
 ---
-# <a name="azure-functions-warm-up-trigger"></a>Azure Functions 预热触发器
+# <a name="azure-functions-warm-up-trigger"></a>Azure 函数预热触发器
 
-本文介绍如何在 Azure Functions 中使用预热触发器。 预热触发器仅支持[高级计划](functions-premium-plan.md)中运行的函数应用。 添加实例以缩放正在运行的函数应用时，将调用预热触发器。 您可以使用预热触发器在[预处理过程](./functions-premium-plan.md#pre-warmed-instances)中预先加载自定义依赖项，以便您的函数可以立即开始处理请求。 
+本文介绍如何使用 Azure 函数中的预热触发器。 预热触发器仅支持在[高级计划中](functions-premium-plan.md)运行的函数应用。 当添加实例以缩放正在运行的函数应用时，将调用预热触发器。 您可以使用预热触发器在[预热过程](./functions-premium-plan.md#pre-warmed-instances)期间预加载自定义依赖项，以便函数可以立即开始处理请求。 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x-and-higher"></a>包-函数2.x 和更高版本
+## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
-需要**3.0.5 或更高**版本的[Microsoft Azure web 作业](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions)包。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub 存储库中提供了此包的源代码。 
+[需要 Microsoft.Azure.WebJobs.扩展](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions)NuGet 包，版本**3.0.5 或更高**版本。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub 存储库中提供了此包的源代码。 
 
 [!INCLUDE [functions-package](../../includes/functions-package-auto.md)]
 
 ## <a name="trigger"></a>触发器
 
-使用预热触发器可以定义一个函数，该函数将在添加到正在运行的应用程序的新实例上运行。 你可以使用预热函数在应用开始接收流量之前打开连接、加载依赖项或运行任何其他自定义逻辑。 
+预热触发器允许您定义一个函数，该函数将在新实例添加到正在运行的应用时运行。 在应用开始接收流量之前，可以使用预热函数打开连接、加载依赖项或运行任何其他自定义逻辑。 
 
-预热触发器用于创建将由应用中的其他函数使用的共享依赖项。 [请参阅此处的共享依赖项的示例](./manage-connections.md#client-code-examples)。
+预热触发器旨在创建共享依赖项，这些依赖项将由应用中的其他函数使用。 [在此处查看共享依赖项的示例](./manage-connections.md#client-code-examples)。
 
-请注意，预热触发器仅在向外扩展操作期间调用，而不是在重新启动或其他非缩放启动过程中调用。 您必须确保您的逻辑可以加载所有必要的依赖项，而无需使用预热触发器。 延迟加载是实现此目的的一个好模式。
+请注意，预热触发器仅在横向扩展操作期间调用，而不是在重新启动或其他非规模启动期间调用。 您必须确保逻辑可以加载所有必要的依赖项，而无需使用预热触发器。 延迟加载是实现这一点的良好模式。
 
 ## <a name="trigger---example"></a>触发器 - 示例
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-下面的示例演示一个[ C#函数](functions-dotnet-class-library.md)，该函数将在添加到应用时每个新实例上运行。 不需要返回值特性。
+下面的示例显示了一个[C# 函数](functions-dotnet-class-library.md)，该函数在添加到应用时将在每个新实例上运行。 不需要返回值属性。
 
 
-* 函数必须命名为 ```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
-* 若要使用预热作为 .NET 类库功能，请确保具有对3.0.5 的包引用 **> =**
+* 您的函数必须命名```warmup```（不区分大小写），并且每个应用可能只有一个预热功能。
+* 要将预热用作 .NET 类库函数，请确保对**Microsoft.Azure.WebJobs.扩展>= 3.0.5**
     * ```<PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="3.0.5" />```
 
 
-占位符注释显示了应用程序中声明和初始化共享依赖项的位置。 
-[在此处了解有关共享依赖项的详细信息](./manage-connections.md#client-code-examples)。
+占位符注释显示应用程序中声明和初始化共享依赖项的位置。 
+[在此处了解有关共享依赖项的更多。](./manage-connections.md#client-code-examples)
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -73,14 +73,14 @@ namespace WarmupSample
     }
 }
 ```
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 
-下面的示例演示*函数 json*文件中的预热触发器，以及将在添加到应用时每个新实例上运行的[ C#脚本函数](functions-reference-csharp.md)。
+下面的示例显示*函数.json*文件中的预热触发器和一个[C# 脚本函数](functions-reference-csharp.md)，该函数在添加到应用时将在每个新实例上运行。
 
-函数必须命名为 ```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
+您的函数必须命名```warmup```（不区分大小写），并且每个应用可能只有一个预热功能。
 
-function.json 文件如下所示：
+下面是*函数.json*文件：
 
 ```json
 {
@@ -105,13 +105,13 @@ public static void Run(ILogger log)
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-下面的示例演示*函数 json*文件中的预热触发器，以及将在添加到应用时每个新实例上运行的[JavaScript 函数](functions-reference-node.md)。
+下面的示例显示*函数.json*文件中的预热触发器和[JavaScript 函数](functions-reference-node.md)，该函数在添加到应用时将在每个新实例上运行。
 
-函数必须命名为 ```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
+您的函数必须命名```warmup```（不区分大小写），并且每个应用可能只有一个预热功能。
 
-function.json 文件如下所示：
+下面是*函数.json*文件：
 
 ```json
 {
@@ -136,13 +136,13 @@ module.exports = async function (context, warmupContext) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示*函数 json*文件中的预热触发器，以及将在添加到应用时每个新实例上运行的[Python 函数](functions-reference-python.md)。
+下面的示例显示*函数.json*文件中的预热触发器和[Python 函数](functions-reference-python.md)，该函数在添加到应用时将在每个新实例上运行。
 
-函数必须命名为 ```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
+您的函数必须命名```warmup```（不区分大小写），并且每个应用可能只有一个预热功能。
 
-function.json 文件如下所示：
+下面是*函数.json*文件：
 
 ```json
 {
@@ -169,11 +169,11 @@ def main(warmupContext: func.Context) -> None:
     logging.info('Function App instance is warm 🌞🌞🌞')
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-下面的示例演示了在将每个新实例添加到应用程序时运行的预热触发器。
+下面的示例显示一个预热触发器，该触发器在将每个新实例添加到应用时运行。
 
-函数必须命名为 `warmup` （不区分大小写），并且每个应用程序只能有一个预热函数。
+您的函数必须命名`warmup`（不区分大小写），并且每个应用可能只有一个预热功能。
 
 ```java
 @FunctionName("Warmup")
@@ -186,13 +186,13 @@ public void run( ExecutionContext context) {
 
 ## <a name="trigger---attributes"></a>触发器 - 特性
 
-在[ C#类库](functions-dotnet-class-library.md)中，`WarmupTrigger` 属性可用于配置函数。
+在[C# 类库中](functions-dotnet-class-library.md)，`WarmupTrigger`属性可用于配置函数。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-此示例演示如何使用[预热](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs)特性。
+此示例演示如何使用[预热](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs)属性。
 
-请注意，必须 ```Warmup``` 调用函数，并且每个应用只能有一个预热函数。
+请注意，必须调用```Warmup```函数，并且每个应用只能有一个预热函数。
 
 ```csharp
  [FunctionName("Warmup")]
@@ -205,44 +205,44 @@ public void run( ExecutionContext context) {
 
 有关完整示例，请参阅[触发器示例](#trigger---example)。
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-C#脚本不支持特性。
+C# 脚本不支持特性。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 JavaScript 不支持特性。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Python 不支持特性。
+Python 不支持属性。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-不支持在 Java 中将预热触发器用作特性。
+Java 中不支持作为属性的预热触发器。
 
 ---
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
-下表解释了在 function.json 文件和 `WarmupTrigger` 特性中设置的绑定配置属性。
+下表介绍了您在*函数.json*文件和`WarmupTrigger`属性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-| type | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
-| direction | 不适用| 必需 - 必须设置为 `in`。 |
-| name | 不适用| 必需-在函数代码中使用的变量名称。|
+| **type** | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
+| direction**** | 不适用| 必需 - 必须设置为 `in`。 |
+| **name** | 不适用| 必需 - 函数代码中使用的变量名称。|
 
 ## <a name="trigger---usage"></a>触发器 - 用法
 
-调用预热触发函数时，不会向其提供附加信息。
+调用预热触发函数时，不会向该函数提供其他信息。
 
 ## <a name="trigger---limits"></a>触发器 - 限制
 
-* 预热触发器仅适用于[高级计划](./functions-premium-plan.md)中运行的应用程序。
-* 预热触发器仅在向上缩放操作期间调用，而不是在重新启动期间或其他非缩放启动过程中调用。 您必须确保您的逻辑可以加载所有必要的依赖项，而无需使用预热触发器。 延迟加载是实现此目的的一个好模式。
-* 如果实例已在运行，则无法调用预热触发器。
-* 每个 function 应用只能有一个预热触发器函数。
+* 预热触发器仅适用于在[高级计划](./functions-premium-plan.md)上运行的应用。
+* 预热触发器仅在扩展操作期间调用，而不是在重新启动或其他非规模启动期间调用。 您必须确保逻辑可以加载所有必要的依赖项，而无需使用预热触发器。 延迟加载是实现这一点的良好模式。
+* 实例已运行后，无法调用预热触发器。
+* 每个函数应用只能有一个预热触发器函数。
 
 ## <a name="next-steps"></a>后续步骤
 

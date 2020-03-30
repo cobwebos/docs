@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: fff8a19d5643f7ce866c9eb9c57486340b6f8a50
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624138"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 调试 Service Fabric 应用程序
@@ -20,7 +20,7 @@ ms.locfileid: "77624138"
 
 
 ## <a name="debug-a-local-service-fabric-application"></a>调试本地 Service Fabric 应用程序
-可以通过在本地计算机开发群集中部署和调试 Azure Service Fabric 应用程序来节省时间和资金。 Visual Studio 2019 或2015可以将应用程序部署到本地群集并自动将调试器连接到应用程序的所有实例。 必须以管理员身份运行 Visual Studio 才能连接调试器。
+可以通过在本地计算机开发群集中部署和调试 Azure Service Fabric 应用程序来节省时间和资金。 Visual Studio 2019 或 2015 可以将应用程序部署到本地群集，并将调试器自动连接到应用程序的所有实例。 可视工作室必须以管理员身份运行才能连接调试器。
 
 1. 按照[设置 Service Fabric 开发环境](service-fabric-get-started.md)中的步骤启动本地开发群集。
 2. 按 **F5** 或单击“**调试**” > **开始调试**。
@@ -32,37 +32,37 @@ ms.locfileid: "77624138"
    > Visual Studio 将附加到应用程序的所有实例。 单步执行代码时，断点可能被多个进程命中，从而产生并发会话。 尝试通过在线程 ID 上设置每个断点条件，或使用诊断事件，在命中后禁用断点、。
    > 
    > 
-4. “诊断事件”窗口将自动打开，以实时查看诊断事件。
+4. “诊断事件”**** 窗口将自动打开，以实时查看诊断事件。
    
     ![查看实时诊断事件][diagnosticevents]
-5. 也可以在 Cloud Explorer 中打开“**诊断事件**”窗口。  在“**Service Fabric**”下，右键单击任何节点，并选择“**查看流式跟踪”** 。
+5. 也可以在 Cloud Explorer 中打开“**诊断事件**”窗口。  在“**Service Fabric**”下，右键单击任何节点，并选择“**查看流式跟踪”**。
    
     ![打开“诊断事件”窗口][viewdiagnosticevents]
    
-    如果要将跟踪筛选为特定的服务或应用程序，请对该特定服务或应用程序启用流式跟踪。
+    如果要筛选对特定服务或应用程序的跟踪，请在该特定服务或应用程序上启用流式跟踪。
 6. 可以在自动生成的 **ServiceEventSource.cs** 文件中看到诊断事件，并且可从应用程序节点中进行调用。
    
     ```csharp
     ServiceEventSource.Current.ServiceMessage(this, "My ServiceMessage with a parameter {0}", result.Value.ToString());
     ```
-7. “诊断事件”窗口支持实时筛选、暂停和检查事件。  筛选是对事件消息及其内容进行的简单字符串搜索。
+7. “诊断事件”**** 窗口支持实时筛选、暂停和检查事件。  筛选是对事件消息及其内容进行的简单字符串搜索。
    
     ![实时筛选、暂停和恢复或检查事件][diagnosticeventsactions]
-8. 调试服务与调试任何其他应用程序类似。 通常通过 Visual Studio 设置断点以方便调试。 即使可靠集合在多个节点间进行复制，它们仍会实现 IEnumerable。 此实现意味着可以在调试时使用 Visual Studio 中的结果视图来查看存储的内容。 为此，请在代码中的任意位置设置一个断点。
+8. 调试服务与调试任何其他应用程序类似。 通常，将通过 Visual Studio 设置断点，以便轻松调试。 即使可靠集合在多个节点间进行复制，它们仍会实现 IEnumerable。 此实现意味着，可以在调试时使用 Visual Studio 中的结果视图来查看其中存储的内容。 为此，可以在代码中的任意位置设置断点。
    
     ![开始调试应用程序][breakpoint]
 
 
 ### <a name="running-a-script-as-part-of-debugging"></a>在调试过程中运行脚本
-在某些情况下，您可能需要在启动调试会话的过程中（例如，在未使用默认服务时）运行脚本。
+某些情况下，可能需要在启动调试会话的过程中运行脚本（例如，在不使用默认服务时）。
 
-在 Visual Studio 中，可以在 Service Fabric 应用程序项目的**Scripts**文件夹中添加名为**Start-Service**的文件（.sfproj）。 在本地群集中创建应用程序后，将调用此脚本。
+在 Visual Studio 中，可以将名为 **Start-Service.ps1** 的文件添加到 Service Fabric 应用程序项目 (.sfproj) 的 **Scripts** 文件夹中。 在本地群集中创建完应用程序以后，就会调用该脚本。
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 ## <a name="debug-a-remote-service-fabric-application"></a>调试远程 Service Fabric 应用程序
-如果 Service Fabric 的应用程序在 Azure 中的 Service Fabric 群集上运行，则可以直接从 Visual Studio 远程调试这些应用程序。
+如果 Service Fabric 应用程序正在 Azure 中的 Service Fabric 群集上运行，你可以直接从 Visual Studio 远程调试这些应用程序。
 
 > [!NOTE]
 > 此功能需要 [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) 和 [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/)。    
@@ -71,11 +71,11 @@ ms.locfileid: "77624138"
 > [!WARNING]
 > 远程调试适用于开发/测试方案，而非用于生产环境中，因为它会对运行中的应用程序造成影响。
 
-1. 在**Cloud Explorer**中导航到群集。 右键单击并选择 "**启用调试**"
+1. 在“云资源管理器”中导航到群集****。 右键单击并选择“启用调试”****
    
     ![启用远程调试][enableremotedebugging]
    
-    此操作将启动在群集节点上启用远程调试扩展的过程，以及所需的网络配置。
+    此操作将启动在群集节点和所需的网络配置上启用远程调试扩展的过程。
 2. 右键单击“**Cloud Explorer**”中的群集节点，并选择“**附加调试器**”。
    
     ![附加调试程序][attachdebugger]
@@ -87,9 +87,9 @@ ms.locfileid: "77624138"
    
     调试器将复制到运行进程的所有节点。
    
-   * 在调试无状态服务的情况下，所有节点上的服务的所有实例都是调试会话的一部分。
-   * 如果正在调试有状态服务，则只有任何分区的主副本都将处于活动状态，因而由调试器捕获。 如果在调试会话期间移动主副本，仍在调试会话中处理该副本。
-   * 若要仅捕获给定服务的相关分区或实例，可以使用条件断点仅中断特定的分区或实例。
+   * 如果调试的是无状态服务，所有节点上的该服务的所有实例都是调试会话的一部分。
+   * 如果调试的是有状态服务，则只有任何分区的主副本才将处于活动状态并因此会被调试器捕获。 如果在调试会话期间移动主副本，仍在调试会话中处理该副本。
+   * 若要仅捕获给定服务的相关分区或实例，可以使用条件断点，以仅中断特定的分区或实例。
      
      ![条件性断点][conditionalbreakpoint]
      
@@ -102,7 +102,7 @@ ms.locfileid: "77624138"
     ![禁用远程调试][disableremotedebugging]
 
 ## <a name="streaming-traces-from-a-remote-cluster-node"></a>从远程群集节点流式传输跟踪
-你还可以直接从远程群集节点将跟踪流式传输到 Visual Studio。 借助此功能，可以流式传输在 Service Fabric 群集节点上生成的 ETW 跟踪事件。
+也可直接从远程群集节点将跟踪流式传输到 Visual studio。 借助此功能，可以流式传输在 Service Fabric 群集节点上生成的 ETW 跟踪事件。
 
 > [!NOTE]
 > 此功能需要 [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) 和 [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/)。
@@ -115,11 +115,11 @@ ms.locfileid: "77624138"
 > 流跟踪适用于开发/测试方案，而非用于生产环境中，因为它会对运行中的应用程序造成影响。
 > 在生产方案中，应依赖于使用 Azure 诊断转发事件。
 
-1. 在**Cloud Explorer**中导航到群集。 右键单击并选择 "**启用流式跟踪**"
+1. 在“云资源管理器”中导航到群集****。 右键单击并选择“启用流式跟踪”****
    
     ![启用远程流跟踪][enablestreamingtraces]
    
-    此操作将启动在群集节点上启用流式跟踪扩展的过程，以及所需的网络配置。
+    此操作将启动在群集节点以及所需的网络配置上启用流式跟踪扩展的过程。
 2. 在“**Cloud Explorer**”中展开“**节点**”元素，右键单击想要进行流式跟踪的节点，并选择“**查看流式跟踪**”
    
     ![查看远程流跟踪][viewremotestreamingtraces]

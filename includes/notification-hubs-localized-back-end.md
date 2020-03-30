@@ -9,10 +9,10 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 520a0b4ec42b9a32fbd30c28c7ce311b5445f23d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74260659"
 ---
 发送模板通知时，只需提供一组属性。 在此方案中，这组属性包含当前新闻的本地化版本。
@@ -66,7 +66,7 @@ private static async void SendTemplateNotificationAsync()
 }
 ```
 
-无论使用何种平台，SendTemplateNotificationAsync 方法都会将本地化新闻传送到所有设备。 通知中心生成正确的本机有效负载并将其传送到已订阅特定标记的所有设备。
+无论使用何种平台，SendTemplateNotificationAsync 方法都会将本地化新闻传送到所有设备****。 通知中心生成正确的本机有效负载并将其传送到已订阅特定标记的所有设备。
 
 ### <a name="sending-notification-with-mobile-services"></a>使用移动服务发送通知
 

@@ -1,6 +1,6 @@
 ---
-title: 通过 Batch 服务 API 将输出数据保存到 Azure 存储-Azure Batch
-description: 了解如何使用 Batch 服务 API 将 Batch 任务和作业输出数据持久保存到 Azure 存储。
+title: 使用批处理服务 API 将输出数据持久化到 Azure 存储 - Azure 批处理
+description: 了解如何使用批处理服务 API 将批处理任务和作业输出数据保存到 Azure 存储。
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -13,10 +13,10 @@ ms.date: 03/05/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 11bd8bc427dd3da35ec5aa0f728f6b04b7d4527d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022845"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>使用 Batch 服务 API 将任务数据保存到 Azure 存储
@@ -71,7 +71,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 若要指定任务的输出文件，请创建 [OutputFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) 对象的集合，并在创建任务时将该集合分配到 [CloudTask.OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) 属性。
 
-以下 C# 代码示例创建可将随机数写入名为 `output.txt` 的文件的任务。 该示例为要写入容器的 `output.txt` 创建输出文件。 该示例还为匹配文件模式 `std*.txt`（例如 `stdout.txt` 和 `stderr.txt`）的所有日志文件创建输出文件。 容器 URL 需要先前为容器创建的 SAS。 Batch 服务使用 SAS 对容器的访问进行身份验证：
+以下 C# 代码示例创建可将随机数写入名为 `output.txt` 的文件的任务。 该示例为要写入容器的 `output.txt` 创建输出文件。 该示例还为与文件`std*.txt`模式匹配的任何日志文件（_例如_和`stdout.txt` `stderr.txt`）创建输出文件。 容器 URL 需要先前为容器创建的 SAS。 Batch 服务使用 SAS 对容器的访问进行身份验证：
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")

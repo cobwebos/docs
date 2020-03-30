@@ -10,13 +10,13 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: fa3888d28c52625684676036def7e2920b77b5ca
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77202107"
 ---
-可以为触发 blob 使用以下参数类型：
+可以将以下参数类型用于触发 blob：
 
 * `Stream`
 * `TextReader`
@@ -28,7 +28,7 @@ ms.locfileid: "77202107"
 * `CloudPageBlob`<sup>1</sup>
 * `CloudAppendBlob`<sup>1</sup>
 
-<sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有`FileAccess.ReadWrite`。
+<sup>1</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`**。
 
 如果尝试绑定到某个存储 SDK 类型并收到错误消息，请确保已引用[正确的存储 SDK 版本](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)。
 
