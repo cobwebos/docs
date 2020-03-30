@@ -9,15 +9,15 @@ ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: d2404ee58f5f44fbe5625f267e6d1c504d0bd237
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465088"
 ---
-# <a name="using-azure-powershell-with-azure-storage"></a>将 Azure PowerShell 与 Azure 存储器一起使用
+# <a name="using-azure-powershell-with-azure-storage"></a>对 Azure 存储 使用 Azure PowerShell
 
-Azure PowerShell 用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 针对 Azure 存储，将这些 cmdlet 划分为两个类别 -- 控制平面和数据平面。 控制平面 cmdlet 用于管理存储帐户，即创建存储帐户、设置属性、删除存储帐户、轮换访问密钥等。 数据平面 cmdlet 用于管理存储帐户中存储的数据。 例如，上传 blob、创建文件共享以及将消息添加到队列。
+Azure PowerShell 用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 针对 Azure 存储，将这些 cmdlet 划分为两个类别 -- 控制平面和数据平面。 控制平面 cmdlet 用于管理存储帐户，即创建存储帐户、设置属性、删除存储帐户、轮换访问密钥等。 数据平面 cmdlet 用于管理存储帐户中** 存储的数据。 例如，上传 blob、创建文件共享以及将消息添加到队列。
 
 本操作说明文章介绍了使用管理平面 cmdlet 管理存储帐户的常见操作。 学习如何：
 
@@ -127,13 +127,13 @@ SKU 名称指示用于存储帐户的复制类型，如 LRS（本地冗余存储
 
 若要更改存储帐户的设置，请使用 [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount)。 虽然无法更改存储帐户的位置或该帐户所在的资源组，但可以更改许多其他属性。 下面列出一些可使用 PowerShell 更改的属性。
 
-* 分配给存储帐户的自定义域。
+* 分配给存储帐户的自定义域****。
 
-* 分配给存储帐户的标记。 标记通常用于分类资源以进行计费。
+* 分配给存储帐户的标记****。 标记通常用于分类资源以进行计费。
 
-* SKU 是存储帐户的复制设置，例如 LRS（对于本地冗余存储）。 例如，可能会从标准\_LRS 更改为标准\_GRS 或标准\_RAGRS。 请注意，不能将标准\_ZRS、Standard\_GZRS、Standard\_RAGZRS 或 Premium\_LRS 更改为其他 Sku，或将其他 Sku 更改为这些 Sku。
+* SKU**** 是存储帐户的复制设置，例如 LRS（对于本地冗余存储）。 例如，可能会从标准\_LRS 更改为标准\_GRS 或标准\_RAGRS。 请注意，您\_无法将标准 ZRS、标准\_GZRS、标准\_RAGZRS 或\_高级 LRS 更改为其他 SKU，也不能将其他 SKU 更改为这些 SKU。
 
-* Blob 存储帐户的访问层。 将访问层的值设置为“热”或“冷”，并允许用户通过选择符合存储帐户使用方式的访问层来最大限度地降低成本。 有关详细信息，请参阅[热、冷存储层和存档存储层](../blobs/storage-blob-storage-tiers.md)。
+* Blob 存储帐户的访问层****。 将访问层的值设置为“热”**** 或“冷”****，并允许用户通过选择符合存储帐户使用方式的访问层来最大限度地降低成本。 有关详细信息，请参阅[热、冷存储层和存档存储层](../blobs/storage-blob-storage-tiers.md)。
 
 * 仅允许 HTTPS 流量。
 
@@ -178,7 +178,7 @@ Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccou
 
 ### <a name="protect-your-storage-account-using-vnets-and-firewalls"></a>使用 VNet 和防火墙保护存储帐户
 
-默认情况下，所有存储帐户均可通过任何有权访问 Internet 的网络进行访问。 但是，可以配置网络规则，仅允许来自特定虚拟网络的应用程序访问存储帐户。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](storage-network-security.md)。
+默认情况下，所有存储帐户均可通过任何有权访问 Internet 的网络进行访问。 但是，可以配置网络规则，仅允许来自特定虚拟网络的应用程序访问存储帐户。 有关详细信息，请参阅配置[Azure 存储防火墙和虚拟网络](storage-network-security.md)。
 
 本文将演示如何使用以下 PowerShell cmdlet 管理这些设置：
 * [Add-AzStorageAccountNetworkRule](/powershell/module/az.Storage/Add-azStorageAccountNetworkRule)
@@ -189,9 +189,9 @@ Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccou
 
 [Azure 存储分析](storage-analytics.md)由[存储分析度量值](/rest/api/storageservices/about-storage-analytics-metrics)和[存储分析日志记录](/rest/api/storageservices/about-storage-analytics-logging)组成。
 
-存储分析度量值用于收集 Azure 存储帐户的度量值，可用于监视存储帐户的运行情况。 可针对 blob、文件、表和队列启用度量值。
+存储分析度量值**** 用于收集 Azure 存储帐户的度量值，可用于监视存储帐户的运行情况。 可针对 blob、文件、表和队列启用度量值。
 
-存储分析日志记录在服务器端执行，可用于记录对存储帐户的成功和失败请求的相关详细信息。 使用这些日志，可以查看针对表、队列和 Blob 的读取、写入和删除操作的详细信息，以及请求失败的原因。 日志记录不可用于 Azure 文件。
+存储分析日志记录**** 在服务器端执行，可用于记录对存储帐户的成功和失败请求的相关详细信息。 使用这些日志，可以查看针对表、队列和 Blob 的读取、写入和删除操作的详细信息，以及请求失败的原因。 日志记录不可用于 Azure 文件。
 
 可以使用 [Azure 门户](https://portal.azure.com)或 PowerShell 配置监视，也可以使用存储客户端库以编程方式配置监视。
 
@@ -199,7 +199,7 @@ Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccou
 > 可以使用 PowerShell 启用分钟分析。 此功能在门户中不可用。
 >
 
-* 若要了解如何使用 PowerShell 启用和查看存储度量值数据，请参阅[存储分析度量值](storage-analytics-metrics.md)。
+* 若要了解如何使用 PowerShell 启用和查看存储指标数据，请参阅[存储分析指标](storage-analytics-metrics.md)。
 
 * 若要了解如何使用 PowerShell 启用和检索存储日志记录数据，请参阅[如何使用 PowerShell 启用存储日志记录](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)和[查找存储日志记录的日志数据](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)。
 
@@ -223,7 +223,7 @@ Azure Cosmos DB 表 API 提供了用于表存储的高级功能，如统包全�
 大多数人为其全球 Azure 部署使用了 Azure 公有云。 但出于主权等方面的原因，还存在一些独立的 Microsoft Azure 部署。 这些独立部署称为“环境”。 可用环境如下：
 
 * [Azure 政府云](https://azure.microsoft.com/features/gov/)
-* [中国世纪互联运营的 Azure 中国世纪互联云](http://www.windowsazure.cn/)
+* [由中国世纪互联运营的 Azure 中国世纪互联云](http://www.windowsazure.cn/)
 * [Azure 德国云](../../germany/germany-welcome.md)
 
 有关如何使用 PowerShell 访问这些云及其存储的信息，请参阅[使用 PowerShell 管理 Azure 独立云中的存储](storage-powershell-independent-clouds.md)。

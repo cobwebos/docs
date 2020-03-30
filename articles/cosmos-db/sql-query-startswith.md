@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9ed49c067946186f8b79f67bad0a460113eacb73
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78295702"
 ---
-# <a name="startswith-azure-cosmos-db"></a>STARTSWITH （Azure Cosmos DB）
+# <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
  返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式开头。  
   
 ## <a name="syntax"></a>语法
@@ -23,13 +23,13 @@ ms.locfileid: "78295702"
 STARTSWITH(<str_expr1>, <str_expr2>)  
 ```  
   
-## <a name="arguments"></a>参数
+## <a name="arguments"></a>自变量
   
 *str_expr1*  
-   字符串表达式。
+   是一个字符串表达式。
   
 *str_expr2*  
-   要与*str_expr1*的开头进行比较的字符串表达式。
+   是要与 *str_expr1* 的开头进行比较的字符串表达式。
 
 ## <a name="return-types"></a>返回类型
   
@@ -51,10 +51,10 @@ SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2
 
 ## <a name="remarks"></a>备注
 
-此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
+该系统功能将受益于[范围索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [字符串函数 Azure Cosmos DB](sql-query-string-functions.md)
-- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 简介](introduction.md)
+- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 简介](introduction.md)

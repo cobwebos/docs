@@ -1,6 +1,6 @@
 ---
-title: IPv6 概述-Azure 负载均衡器
-description: 利用此学习路径，开始对 Azure 负载均衡器和负载平衡 Vm 进行 IPv6 支持。
+title: IPv6 概述 - Azure 负载均衡器
+description: 通过此学习路径，开始使用对 Azure 负载均衡器和负载平衡 VM 的 IPv6 支持。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,22 +14,22 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
 ms.openlocfilehash: 6bc7f45d84d525156a3d25bdceef4d1012844afa
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931991"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure 负载均衡器的 IPv6 概述
 
 
 >[!NOTE] 
->此内容已由[Azure VNet 的 IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)取代。 Azure 建议新的 IPv6 部署使用适用于 Azure 虚拟网络的新 IPv6 功能。
+>此内容已被[IPv6 取代，用于 Azure VNet 概述](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)。 Azure 建议使用新的 IPv6 进行新的 IPv6 部署，用于 Azure 虚拟网络功能。
 
 >[!NOTE]
 >Azure 负载均衡器支持两种不同的类型：“基本”和“标准”。 本文介绍基本负载均衡器。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](load-balancer-standard-overview.md)。
 
-基本 SKU 面向 Internet 的负载均衡器可与 IPv6 地址一起部署。 除了 IPv4 连接以外，这还可以实现以下功能：
+基本 SKU 面向 Internet 的负载均衡器可以使用 IPv6 地址进行部署。 除了 IPv4 连接以外，这还可以实现以下功能：
 
 * 通过负载均衡器在公共 Internet 客户端与 Azure 虚拟机 (VM) 之间建立本机端到端 IPv6 连接。
 * 在 VM 与公共 Internet 上已启用 IPv6 的客户端之间建立本机端到端 IPv6 输出连接。
@@ -49,7 +49,7 @@ ms.locfileid: "75931991"
 3. 提供入站和出站流量发起的本机 IPv6 连接
 4. 支持的协议（如 TCP、UDP 和 HTTP(S)）可以启用各种服务体系结构
 
-## <a name="benefits"></a>优势
+## <a name="benefits"></a>优点
 
 此功能具有以下主要优点：
 

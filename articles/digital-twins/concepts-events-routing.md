@@ -1,5 +1,5 @@
 ---
-title: 路由事件和消息-Azure 数字孪生 |Microsoft Docs
+title: 路由事件和消息 - Azure 数字孪生 |微软文档
 description: 使用 Azure 数字孪生将事件和消息路由到服务终结点的概述
 ms.author: alinast
 author: alinamstanciu
@@ -9,19 +9,19 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 65b760eaf28d907fab3654ed92f960be7556b0d6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75862350"
 ---
 # <a name="routing-iot-events-and-messages"></a>路由 IoT 事件和消息
 
-物联网解决方案通常会合并几项功能强大的服务，其中包括存储、分析等。 本文介绍如何将 Azure 数字孪生应用连接到 Azure分析、AI 和存储服务，以便为它们提供更深入的见解和功能。
+物联网解决方案通常将多个功能强大的服务（包括存储、分析等）结合起来。 本文介绍如何将 Azure 数字孪生应用连接到 Azure分析、AI 和存储服务，以便为它们提供更深入的见解和功能。
 
 ## <a name="route-types"></a>路由类型  
 
-Azure 数字孪生提供了两种连接 IoT 事件与其他 Azure 服务或业务应用程序的方式：
+Azure 数字孪生提供了两种将 IoT 事件与其他 Azure 服务或业务应用程序连接的方法：
 
 * **路由 Azure 数字孪生事件**：当空间图中的对象发生更改、收到遥测数据或用户定义的函数根据预定义的条件创建通知时，可以触发 Azure 数字孪生事件。 用户可以将这些事件发送到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)、[Azure 服务总线主题](https://azure.microsoft.com/services/service-bus/)或 [Azure 事件网格](https://azure.microsoft.com/services/event-grid/)以进一步进行处理。
 
@@ -37,23 +37,23 @@ Azure 数字孪生提供了两种连接 IoT 事件与其他 Azure 服务或业�
 
 ## <a name="route-implementation"></a>路由实现
 
-Azure 数字孪生服务当前支持以下 EndpointTypes：
+Azure 数字孪生服务当前支持以下 EndpointTypes****：
 
 * **EventHub** 是事件中心连接字符串终结点。
-* **ServiceBus** 是服务总线连接字符串终结点。
-* **EventGrid** 是事件网格连接字符串终结点。
+* **服务总线**是服务总线连接字符串终结点。
+* **事件网格**是事件网格连接字符串终结点。
 
-Azure 数字孪生当前支持以下将发送到所选终结点的 EventTypes：
+Azure 数字孪生当前支持以下将发送到所选终结点的 EventTypes****：
 
-* **DeviceMessages** 是从用户的设备发送并由系统转发的遥测消息。
+* **设备消息**是从用户设备发送并由系统转发的遥测消息。
 * **TopologyOperation** 是更改图或图的元数据的操作。 例如，添加或删除实体（如空间）。
 * **SpaceChange** 是设备遥测消息生成的空间计算值的更改。
 * **SensorChange** 是设备遥测消息生成的传感器计算值的更改。
 * **UdfCustom** 是来自用户定义的函数的自定义通知。
 
 > [!IMPORTANT]  
-> 不是所有 EndpointTypes 都支持所有 EventTypes。
-> 查看下表，了解每个**EndpointType**允许使用的**EventTypes** 。
+> 不是所有 EndpointTypes 都支持所有 EventTypes********。
+> 查看下表中允许每个**终结点类型**的事件**类型**。
 
 |             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
 | ----------- | -------------- | ----------------- | ----------- | ------------ | --------- |
@@ -62,10 +62,10 @@ Azure 数字孪生当前支持以下将发送到所选终结点的 EventTypes：
 | EventGrid|               |         X         |     X       |      X       |   X       |
 
 >[!NOTE]  
->有关如何创建事件架构的终结点和示例的详细信息，请参阅[出口和终结点](how-to-egress-endpoints.md)。
+>有关如何创建终结点和事件架构示例的详细信息，请阅读[Egress 和终结点](how-to-egress-endpoints.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解 Azure 数字孪生预览版限制，请阅读[公共预览版服务限制](concepts-service-limits.md)。
+- 要了解 Azure 数字孪生预览限制，请阅读[公共预览服务限制](concepts-service-limits.md)。
 
-- 若要试用 Azure 数字孪生示例，请参阅[快速入门，查找可用聊天室](quickstart-view-occupancy-dotnet.md)。
+- 要尝试 Azure 数字孪生示例，请阅读[快速入门以查找可用房间](quickstart-view-occupancy-dotnet.md)。
