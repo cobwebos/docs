@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 0014b67443797f45de51ec1bc459f71bde55cdc9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774427"
 ---
-下面的示例演示如何在西雅图的 Equinix Internet Exchange 上创建 Exchange 连接。 如果使用的是其他提供商和其他设置，请在发出请求时替换该信息。
+下面的示例演示如何在西雅图的 Equinix 互联网交易所创建 Exchange 连接。 如果使用的是其他提供商和其他设置，请在发出请求时替换该信息。
 
-使用 PowerShell cmdlet **AzPeeringExchangeConnectionObject**创建将用于生成新的对等互连请求的 Powershell 连接对象：
+使用 PowerShell cmdlet**新-Az 对等互连连接对象**创建 PowerShell 连接对象，该对象将用于生成新的对等请求：
 
-下面是创建 Exchange 连接的示例：
+下面是创建交换连接的示例：
 
 ```powershell
 $connection1 = New-AzPeeringExchangeConnectionObject `
@@ -30,7 +30,7 @@ $connection1 = New-AzPeeringExchangeConnectionObject `
     -MaxPrefixesAdvertisedIPv6 2000 `
 ```
 
-如果需要在给定对等位置进行冗余，请创建另一个连接：
+创建另一个连接，以防在给定对等位置需要冗余：
 
 ```powershell
 $connection2 = New-AzPeeringExchangeConnectionObject `
@@ -41,7 +41,7 @@ $connection2 = New-AzPeeringExchangeConnectionObject `
     -MaxPrefixesAdvertisedIPv6 2000 `
 ```
 
-PowerShell cmdlet **AzPeering**可用于创建新的 Exchange 对等互连：
+PowerShell cmdlet**新阿兹对等互连**可用于创建新的 Exchange 对等互连：
 
 ```powershell
 $asn = Get-AzPeerAsn
@@ -73,10 +73,10 @@ Tags              : {}
 ```
 
 > [!IMPORTANT]
-> Microsoft 将开始预配请求的对等互连，`ConnectionState` 将反映进度。
-> 有关设置相关步骤，请参阅[Exchange 对等互连演练](../walkthrough-exchange-all.md)文档。
+> Microsoft 将开始预配请求的对等互连，`ConnectionState`并将反映进度。
+> 有关预配相关步骤，请参阅[Exchange 对等演练文档](../walkthrough-exchange-all.md)。
 
-可以按如下所示检查 ConnectionState：
+您可以检查连接状态，如下所示：
 
 ```powershell
 

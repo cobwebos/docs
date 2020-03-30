@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75980635"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务部署问题：常见问题解答 (FAQ)
@@ -32,22 +32,22 @@ ms.locfileid: "75980635"
 
 当云服务所在的群集没有可满足部署请求的足够物理计算资源时，就会出现分配失败的情况。
 
-有关减轻此类分配失败的帮助，请参阅[云服务分配失败：解决方案](cloud-services-allocation-failures.md#solutions)。
+有关缓解此类分配失败的帮助，请参阅[云服务分配失败：解决方案](cloud-services-allocation-failures.md#solutions)。
 
 ## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>为什么缩放或扩展云服务部署有时会导致分配失败？
 当部署云服务时，通常会将其固定到特定集群。 这表示缩放/扩展现有云服务必须在同一群集中分配新实例。 如果群集容量趋于饱和或所需的虚拟机大小/类型不可用，则请求可能会失败。
 
-有关减轻此类分配失败的帮助，请参阅[云服务分配失败：解决方案](cloud-services-allocation-failures.md#solutions)。
+有关缓解此类分配失败的帮助，请参阅[云服务分配失败：解决方案](cloud-services-allocation-failures.md#solutions)。
 
 ## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>为什么将云服务部署到地缘组有时会导致分配失败？
 进行新的目标为空云服务的部署时，可以通过该区域任何群集中的结构对部署进行分配，除非已将云服务固定到地缘组。 会在相同的群集中尝试部署到相同的地缘组。 如果群集已接近容量，则请求可能失败。
 
-有关减轻此类分配失败的帮助，请参阅[云服务分配失败：解决方案](cloud-services-allocation-failures.md#solutions)。
+有关缓解此类分配失败的帮助，请参阅[云服务分配失败：解决方案](cloud-services-allocation-failures.md#solutions)。
 
 ## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>为什么更改虚拟机大小或将新的虚拟机添加到现有云服务有时会导致分配失败？
-数据中心内的群集可能具有不同的计算机类型配置（例如，系列、Av2 系列、D 系列、Dv2 系列、G 系列、H 系列，等等）。 但并不是所有的群集都必须拥有所有类型的虚拟机。 例如，如果尝试将 D 系列虚拟机添加到仅部署在 A 系列群集中的云服务，则会出现分配失败。 尝试更改 VM SKU 大小（例如，从 A 系列切换到 D 系列）也会导致这种情况的发生。
+数据中心中的群集可能具有不同的机器类型配置（例如，A 系列、Av2 系列、D 系列、Dv2 系列、G 系列、H 系列等）。 但并不是所有的群集都必须拥有所有类型的虚拟机。 例如，如果尝试将 D 系列虚拟机添加到仅部署在 A 系列群集中的云服务，则会出现分配失败。 尝试更改 VM SKU 大小（例如，从 A 系列切换到 D 系列）也会导致这种情况的发生。
 
-有关减轻此类分配失败的帮助，请参阅[云服务分配失败：解决方案](cloud-services-allocation-failures.md#solutions)。
+有关缓解此类分配失败的帮助，请参阅[云服务分配失败：解决方案](cloud-services-allocation-failures.md#solutions)。
 
 要查看你所在区域的可用大小，请参阅 [Microsoft Azure：产品区域可用性](https://azure.microsoft.com/regions/services)。
 
@@ -65,7 +65,7 @@ ms.locfileid: "75980635"
 
 ## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>使用 Azure 资源管理器存储帐户时，为什么不能够通过服务管理 API 或 PowerShell 部署云服务？ 
 
-由于云服务是与 Azure 资源管理器模型不直接兼容的经典资源，因此不能将其与 Azure 资源管理器存储帐户相关联。 下面是几个选项： 
+由于云服务不是直接与 Azure 资源管理器模型兼容的经典资源，因此不能将其与 Azure 资源管理器存储帐户相关联。 下面是几个选项： 
 
 - 通过 REST API 部署。
 
@@ -73,7 +73,7 @@ ms.locfileid: "75980635"
 
 - 通过 [Azure 门户](https://portal.azure.com)部署。
 
-    这将从[Azure 门户](https://portal.azure.com)处理，因为调用通过允许 Azure 资源管理器和经典资源之间通信的代理/填充程序来完成。 
+    这将从 [Azure 门户](https://portal.azure.com)进行，因为调用将通过一个代理/填充程序完成，该代理/填充程序使得 Azure 资源管理器可以与经典资源通信。 
 
 ## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>为什么 Azure 门户要求我提供部署所需的存储帐户？
 

@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric 执行组件中的重入
-description: Service Fabric Reliable Actors 的重入性简介，一种基于调用上下文以逻辑方式避免阻塞的方式。
+title: Azure Service Fabric 执行组件中的可重入性
+description: Service Fabric 可靠参与者的重入性介绍，这是一种基于调用上下文从逻辑上避免阻塞的方法。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645525"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors 可重入性

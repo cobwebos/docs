@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric 事件存储
-description: 了解 Azure Service Fabric EventStore，它是一种了解和监视群集或工作负载的状态的方法。
+description: 了解 Azure 服务结构的 EventStore，这是一种随时了解和监视群集或工作负荷状态的方法。
 author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
 ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645729"
 ---
 # <a name="eventstore-overview"></a>EventStore 概述
@@ -31,7 +31,7 @@ EventStore 是有状态 Service Fabric 服务，它维护群集中的事件。 �
 若要查看 EventStore 中可用的事件的完整列表，请参阅 [Service Fabric 事件](service-fabric-diagnostics-event-generation-operational.md)。
 
 >[!NOTE]
->从 Service Fabric 版本 6.4 开始。 EventStore Api 和 UX 一般适用于 Azure Windows 群集。 我们正在将此功能移植到 Linux 以及我们的独立群集。
+>从 Service Fabric 版本 6.4 开始。 EventStore API 和 UX 已正式发布，适用于 Azure Windows 群集。 我们正在将此功能移植到 Linux 以及我们的独立群集。
 
 可以向 EventStore 服务查询可用于群集中的每个实体和实体类型的事件。 这意味着可以在以下级别查询事件：
 * 群集：特定于群集本身的事件（例如群集升级）
@@ -46,7 +46,7 @@ EventStore 是有状态 Service Fabric 服务，它维护群集中的事件。 �
 * 分区副本：来自所有副本的事件/特定分区中的实例，由 `partitionId` 标识
 * 分区副本：来自特定副本的事件/实例，由 `replicaId` 和 `partitionId` 标识
 
-若要了解有关 API 的详细信息，请查看 [EventStore API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)。
+要了解有关 API 的更多信息，请签出[事件存储 API 引用](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)。
 
 EventStore 服务还能够将群集中的事件相关联。 通过查看在同一时间从可能已相互影响的不同实体写入的事件，EventStore 服务能够将这些事件进行关联来帮助查明群集中发生各项活动的原因。 例如，如果某个应用程序变得不正常且没有诱发任何变化，则 EventStore 将查看由平台公开的其他事件并且可能会将此情况与 `Error` 或 `Warning` 事件相关联。 这有助于更快地进行故障检测和根本原因分析。
 
@@ -62,10 +62,10 @@ EventStore 服务还能够将群集中的事件相关联。 通过查看在同�
     ],
 ```
 
-### <a name="azure-cluster-version-65"></a>Azure 群集版本 6.5 +
-如果 Azure 群集升级到版本6.5 或更高版本，则会在群集上自动启用 EventStore。 若要选择退出，你需要更新你的群集模板，如下所示：
+### <a name="azure-cluster-version-65"></a>Azure 群集版本 6.5+
+如果 Azure 群集已升级到版本 6.5 或更高版本，则 EventStore 将在该群集上自动启用。 若要选择退出，需要执行以下操作更新群集模板：
 
-* 使用 `2019-03-01` 或更高版本的 API 版本 
+* 使用 `2019-03-01` 的 API 版本或更高版本 
 * 将以下代码添加到群集中的属性部分
   ```json  
     "fabricSettings": [
@@ -74,9 +74,9 @@ EventStore 服务还能够将群集中的事件相关联。 通过查看在同�
     "eventStoreServiceEnabled": false
   ```
 
-### <a name="azure-cluster-version-64"></a>Azure 群集版本6。4
+### <a name="azure-cluster-version-64"></a>Azure 群集版本 6.4
 
-如果你使用版本6.4，则可以编辑 Azure 资源管理器模板来启用 EventStore 服务。 这是通过执行[群集配置升级](service-fabric-cluster-config-upgrade-azure.md)并添加以下代码来完成的：你可以使用 PlacementConstraints 将 EventStore 服务的副本放在特定的 NodeType 上，例如，针对系统服务的节点。 `upgradeDescription` 部分配置配置升级，以触发节点上的重新启动。 可以在其他更新中删除该部分。
+如果使用的是版本 6.4，则可以编辑 Azure 资源管理器模板，以启用 EventStore 服务。 这是通过执行[群集配置升级](service-fabric-cluster-config-upgrade-azure.md)并添加以下代码来完成的，您可以使用放置约束将 EventStore 服务的副本放在特定的 NodeType 上，例如专用于系统服务的 NodeType。 `upgradeDescription` 部分配置配置升级，以触发节点上的重新启动。 可以在其他更新中删除该部分。
 
 ```json
     "fabricSettings": [

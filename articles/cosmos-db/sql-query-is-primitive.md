@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 04c8e41f1a431b329f2093851e4430e69ab6aee3
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303777"
 ---
-# <a name="is_primitive-azure-cosmos-db"></a>IS_PRIMITIVE （Azure Cosmos DB）
+# <a name="is_primitive-azure-cosmos-db"></a>IS_PRIMITIVE (Azure Cosmos DB)
  返回一个布尔值，指示指定表达式的类型是否为一个（字符串、布尔、数值或 null）。  
   
 ## <a name="syntax"></a>语法
@@ -23,7 +23,7 @@ ms.locfileid: "78303777"
 IS_PRIMITIVE(<expr>)  
 ```  
   
-## <a name="arguments"></a>参数
+## <a name="arguments"></a>自变量
   
 *expr*  
    是任何表达式。  
@@ -34,7 +34,7 @@ IS_PRIMITIVE(<expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例使用 `IS_PRIMITIVE` 函数检查 JSON 布尔、数字、字符串、null、对象、数组和未定义类型的对象。  
+  以下示例使用 `IS_PRIMITIVE` 函数检查 JSON 布尔、数字、字符串、null、对象、数组和 undefined 类型的对象。  
   
 ```sql
 SELECT   
@@ -55,10 +55,10 @@ SELECT
 
 ## <a name="remarks"></a>备注
 
-此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
+该系统功能将受益于[范围索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [类型检查函数 Azure Cosmos DB](sql-query-type-checking-functions.md)
-- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 简介](introduction.md)
+- [类型检查功能 Azure 宇宙数据库](sql-query-type-checking-functions.md)
+- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 简介](introduction.md)

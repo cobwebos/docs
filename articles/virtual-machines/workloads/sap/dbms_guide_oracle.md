@@ -16,10 +16,10 @@ ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a23fb981e24f6152d99b76bd72115f8159f5d60f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645838"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署
@@ -29,7 +29,7 @@ ms.locfileid: "75645838"
 [826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
-[1114181]: https://launchpad.support.sap.com/#/notes/1114181
+[1114181]:https://launchpad.support.sap.com/#/notes/1114181
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
@@ -38,7 +38,7 @@ ms.locfileid: "75645838"
 [1585981]:https://launchpad.support.sap.com/#/notes/1585981
 [1588316]:https://launchpad.support.sap.com/#/notes/1588316
 [1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]: https://launchpad.support.sap.com/#/notes/1597355
+[1597355]:https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
@@ -54,23 +54,23 @@ ms.locfileid: "75645838"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2039619]: https://launchpad.support.sap.com/#/notes/2039619
-[2069760]: https://launchpad.support.sap.com/#/notes/2069760
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2039619]:https://launchpad.support.sap.com/#/notes/2039619
+[2069760]:https://launchpad.support.sap.com/#/notes/2069760
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2171857]: https://launchpad.support.sap.com/#/notes/2171857
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2171857]:https://launchpad.support.sap.com/#/notes/2171857
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
@@ -318,14 +318,14 @@ Oracle 支持在 Microsoft Azure 上运行 Oracle 软件。 有关 Windows Hyper
 
 以下 SAP 说明与 Azure 上的 SAP 相关。
 
-| 说明文档编号 | 标题 |
+| 说明文档编号 | Title |
 | --- | --- |
-| [1928533] |Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型 |
-| [2015553] |Microsoft Azure 上的 SAP：支持先决条件 |
+| [1928533] |Azure 上的 SAP 应用程序：受支持的产品和 Azure VM 类型 |
+| [2015553] |微软 Azure 上的 SAP：支持先决条件 |
 | [1999351] |适用于 SAP 的增强型 Azure 监视故障排除 |
 | [2178632] |Microsoft Azure 上的 SAP 关键监视指标 |
-| [2191498] |带有 Azure 的 Linux 上的 SAP：增强型监视 |
-| [2039619] |使用 Oracle 数据库 Microsoft Azure 上的 SAP 应用程序：支持的产品和版本 |
+| [2191498] |使用 Azure 在 Linux 上 SAP：增强的监视 |
+| [2039619] |使用 Oracle 数据库在 Microsoft Azure 上的 SAP 应用程序：支持的产品和版本 |
 | [2243692] |Microsoft Azure (IaaS) VM 上的 Linux：SAP 许可证问题 |
 | [2069760] |Oracle Linux 7.x SAP 安装和升级 |
 | [1597355] |适用于 Linux 的交换空间建议 |
@@ -366,18 +366,18 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 如果使用基于 Azure 页 Blob 存储或托管磁盘的磁盘时，[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的表述也适用于利用 Oracle Database 进行的部署。
 
-存在 Azure 磁盘的 IOPS 吞吐量的配额。 [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)中解释了此概念。 确切的配额因所用 VM 类型而异。 可以在[Azure 中的 Windows 虚拟机的大小][virtual-machines-sizes-windows]找到 VM 类型及其配额的列表。
+存在 Azure 磁盘的 IOPS 吞吐量的配额。 [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)中解释了此概念。 确切的配额因所用 VM 类型而异。 可在 [Azure 中 Windows 虚拟机大小][virtual-machines-sizes-windows]中找到 VM 类型及其配额的列表。
 
 若要确定支持的 Azure VM 类型，请参阅 SAP 说明 [1928533]。
 
 最低配置如下： 
 
-| 组件 | 磁盘 | 缓存 | 存储池 |
+| 组件 | 磁盘 | Caching | 存储池 |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA & mirrlogB | 高级 | 无 | 无需 |
-| \oracle\<SID>\origlogaB & mirrlogA | 高级 | 无 | 无需 |
-| \oracle\<SID>\sapdata1...n | 高级 | 只读 | 可使用 |
-| \oracle\<SID>\oraarch | 标准 | 无 | 无需 |
+| \oracle\<SID>\origlogaA & mirrlogB | Premium | 无 | 无需 |
+| \oracle\<SID>\origlogaB & mirrlogA | Premium | 无 | 无需 |
+| \oracle\<SID>\sapdata1...n | Premium | 只读 | 可使用 |
+| \oracle\<SID>\oraarch | Standard | 无 | 无需 |
 | Oracle 主页, saptrace, ... | OS 磁盘 | | 无需 |
 
 
@@ -385,15 +385,15 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 性能配置如下：
 
-| 组件 | 磁盘 | 缓存 | 存储池 |
+| 组件 | 磁盘 | Caching | 存储池 |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA | 高级 | 无 | 可使用  |
-| \oracle\<SID>\origlogaB | 高级 | 无 | 可使用 |
-| \oracle\<SID>\mirrlogAB | 高级 | 无 | 可使用 |
-| \oracle\<SID>\mirrlogBA | 高级 | 无 | 可使用 |
-| \oracle\<SID>\sapdata1...n | 高级 | 只读 | 推荐  |
-| \oracle\SID\sapdata(n+1)* | 高级 | 无 | 可使用 |
-| \oracle\<SID>\oraarch* | 高级 | 无 | 无需 |
+| \oracle\<SID>\origlogaA | Premium | 无 | 可使用  |
+| \oracle\<SID>\origlogaB | Premium | 无 | 可使用 |
+| \oracle\<SID>\mirrlogAB | Premium | 无 | 可使用 |
+| \oracle\<SID>\mirrlogBA | Premium | 无 | 可使用 |
+| \oracle\<SID>\sapdata1...n | Premium | 只读 | 建议  |
+| \oracle\SID\sapdata(n+1)* | Premium | 无 | 可使用 |
+| \oracle\<SID>\oraarch* | Premium | 无 | 无需 |
 | Oracle 主页, saptrace, ... | OS 磁盘 | 无需 |
 
 *(n+1)：托管 SYSTEM、TEMP 和 UNDO 表空间。 系统和撤消表空间的 I/O 模式与托管应用程序数据的其他表空间不同。 无缓存是系统和撤消表空间性能的最佳选择。
@@ -456,18 +456,18 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 如果使用基于 Azure 页 Blob 存储或托管磁盘的磁盘，[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的表述也适用于利用 Oracle Database 进行的部署。
 
- 存在 Azure 磁盘的 IOPS 吞吐量的配额。 [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)中解释了此概念。确切的配额因所用 VM 类型而异。 有关其配额的 VM 类型的列表，请参阅[Azure 中 Linux 虚拟机的大小][virtual-machines-sizes-linux]。
+ 存在 Azure 磁盘的 IOPS 吞吐量的配额。 [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署注意事项](dbms_guide_general.md)中解释了此概念。确切的配额因所用 VM 类型而异。 有关 VM 类型及其配额的列表，请参阅 [Azure 中的 Linux 虚拟机大小][virtual-machines-sizes-linux]。
 
 若要确定支持的 Azure VM 类型，请参阅 SAP 说明 [1928533]。
 
 最低配置：
 
-| 组件 | 磁盘 | 缓存 | 撤消* |
+| 组件 | 磁盘 | Caching | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID >/origlogaA & mirrlogB | 高级 | 无 | 无需 |
-| /oracle/\<SID >/origlogaB & mirrlogA | 高级 | 无 | 无需 |
-| /oracle/\<SID >/sapdata1...北 | 高级 | 只读 | 可使用 |
-| /oracle/\<SID >/oraarch | 标准 | 无 | 无需 |
+| /oracle/\<SID>/奥里格洛加A & mirrlogB | Premium | 无 | 无需 |
+| /oracle/\<SID>/奥里格洛加B & mirrlogA | Premium | 无 | 无需 |
+| /oracle/\<SID>/数据1...n | Premium | 只读 | 可使用 |
+| /oracle/\<SID>/兽人 | Standard | 无 | 无需 |
 | Oracle 主页, saptrace, ... | OS 磁盘 | | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM
@@ -476,20 +476,20 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 性能配置：
 
-| 组件 | 磁盘 | 缓存 | 撤消* |
+| 组件 | 磁盘 | Caching | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID >/origlogaA | 高级 | 无 | 可使用  |
-| /oracle/\<SID >/origlogaB | 高级 | 无 | 可使用 |
-| /oracle/\<SID >/mirrlogAB | 高级 | 无 | 可使用 |
-| /oracle/\<SID>/mirrlogBA | 高级 | 无 | 可使用 |
-| /oracle/\<SID >/sapdata1...北 | 高级 | 只读 | 推荐  |
-| /oracle/\<SID >/sapdata （n + 1） * | 高级 | 无 | 可使用 |
-| /oracle/\<SID >/oraarch * | 高级 | 无 | 无需 |
+| /oracle/\<SID>/奥里格洛加 | Premium | 无 | 可使用  |
+| /oracle/\<SID>/奥里格洛加B | Premium | 无 | 可使用 |
+| /oracle/\<SID>/mirrlogAB | Premium | 无 | 可使用 |
+| /oracle/\<SID>/mirrlogBA | Premium | 无 | 可使用 |
+| /oracle/\<SID>/数据1...n | Premium | 只读 | 建议  |
+| /oracle/\<SID>/数据（n+1）] | Premium | 无 | 可使用 |
+| /oracle/\<SID>/兽人* | Premium | 无 | 无需 |
 | Oracle 主页, saptrace, ... | OS 磁盘 | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM
 
-\* （n + 1）：宿主系统、TEMP 和 UNDO 表空间：系统和撤消表空间的 i/o 模式不同于承载应用程序数据的其他表空间。 无缓存是系统和撤消表空间性能的最佳选择。
+*（n+1）：托管 SYSTEM、TEMP 和 UNDO 表空间：系统和撤消表空间的 I/O 模式不同于托管应用程序数据的其他表空间。 无缓存是系统和撤消表空间性能的最佳选择。
 
 *oraarch：性能视图中不需要存储池。
 

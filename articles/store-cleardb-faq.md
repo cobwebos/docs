@@ -1,5 +1,5 @@
 ---
-title: Azure App Service 针对 ClearDB MySql 数据库的常见问题解答
+title: ClearDB MySql 数据库搭配 Azure 应用服务的 FAQ
 description: 解答将 ClearDB MySQL 数据库与 Azure 应用服务搭配使用时的常见问题。
 documentationcenter: php
 services: mysql
@@ -12,13 +12,13 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ddbf1eb960a24cfaa8d09ab45b6febca07e6d504
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979913"
 ---
-# <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service 针对 ClearDB MySql 数据库的常见问题解答
+# <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySql 数据库搭配 Azure 应用服务的 FAQ
 此 FAQ 解答了为 Azure Web 应用使用和购买 ClearDB MySQL 数据库的常见问题。
 
 > [!IMPORTANT]
@@ -30,7 +30,7 @@ ms.locfileid: "75979913"
 有关该服务的最新信息，请参阅 [ClearDB](https://w2.cleardb.net/)。 ClearDB 是一种 MySQL 托管服务，可管理 MySQL 基础结构。 
 
 还可以使用其他几种可用于在 Azure 中托管 MySQL 的选项：
-* [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)
+* [MySQL 的 Azure 数据库](https://azure.microsoft.com/services/mysql/)
 * [Azure VM 上运行的 MySQL 群集](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
 * [Azure VM 上运行的单个 MySQL 实例](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
@@ -44,12 +44,12 @@ ms.locfileid: "75979913"
 * [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)：每季以单独的合并发票按照 EA 向客户从 Azure 市场（第三方）购买的所有商品收费。 针对任何市场购买，以货币承诺付款以外的方式收费。 请注意，Azure 应用商店目前无法供在阿塞拜疆、克罗地亚、挪威和波多黎各注册的客户使用。 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>为什么我要为 Azure 市场中的 Web 应用和 MySQL 付 3.50 美元的费用？
-默认数据库选项是 Titan，需 3.50 美元。 创建数据库时我们不会显示成本，可能会错误地购买不想要的数据库。 我们正在设法改善此体验，但在那之前，需要先检查为 Web 应用和数据库选择的定价层，然后再单击“创建”并开始部署资源。
+默认数据库选项是 Titan，需 3.50 美元。 创建数据库时我们不会显示成本，可能会错误地购买不想要的数据库。 我们正在设法改善此体验，但在那之前，需要先检查为 Web 应用和数据库选择的定价层，然后再单击“创建”**** 并开始部署资源。
 
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>我在自己的 Azure 虚拟机上运行 MySQL。 我是否可以将 Azure Web 应用连接到数据库？
-可以。 只要 Azure VM 已向 Web 应用授予远程访问权限，Web 应用就能连接到数据库。 有关详细信息，请参阅[在虚拟机上安装 MySQL](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+是的。 只要 Azure VM 已向 Web 应用授予远程访问权限，Web 应用就能连接到数据库。 有关详细信息，请参阅[在虚拟机上安装 MySQL](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
-## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>支持哪些国家/地区的 ClearDB Premium MySQL 群集？
+## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>在哪些国家/地区支持 ClearDB 高级 MySQL 群集？
 除印度、澳大利亚、巴西南部和中国之外的所有 Azure 区域都可以使用 ClearDB 高级 MySQL 群集。
 
 ## <a name="can-i-create-a-new-cluster-prior-to-creating-a-database-with-cleardb-premium-cluster-solution"></a>是否可以在创建数据库之前使用 ClearDB Premium 群集解决方案创建新群集？
@@ -68,13 +68,13 @@ Azure 市场无法供在阿塞拜疆、克罗地亚、挪威或波多黎各注�
 在 [Azure 门户](https://portal.azure.com)中，可以纵向扩展 ClearDB 共享的托管数据库。 请阅读本篇[文章](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/)，了解详细信息。 当前不支持在 Azure 门户中升级 ClearDB 高级群集。
 
 ## <a name="i-cant-see-my-cleardb-database-in-azure-portal"></a>在 Azure 门户中看不到我的 ClearDB 数据库？
-如果创建的是典型的 ClearDB 数据库，将无法在[Azure 门户](https://portal.azure.com)中看到您的数据库。 对于这种情况，目前没有解决方法。
+如果在经典中创建了 ClearDB 数据库，您将无法在[Azure 门户](https://portal.azure.com)中看到数据库。 对于这种情况，目前没有解决方法。
 
 ## <a name="who-do-i-contact-for-support-when-my-database-is-down"></a>数据库关闭时应联系谁寻求支持？
 如有任何数据库相关问题，请联系 [ClearDB 支持人员](https://www.cleardb.com/developers/help/support)。 准备好向其提供 Azure 订阅信息。
 
 ## <a name="can-i-create-additional-users-for-my-cleardb-mysql-database-cluster-solution"></a>我是否可以为自己的 ClearDB MySQL 数据库群集解决方案创建其他用户？
-不。 无法创建其他用户，但可以在自己的 ClearDB 数据库群集上创建其他数据库。  
+不是。 无法创建其他用户，但可以在自己的 ClearDB 数据库群集上创建其他数据库。  
 
 ## <a name="can-basicpro-series-databases-be-upgraded-in-place-similar-to-planetary-plans-today-on-cleardb-portal"></a>是否可以像 ClearDB 门户上目前的 Planetary 计划一样，就地升级 Basic/Pro 系列数据库？
 是，可以就地升级 Basic 系列数据库（Basic 60 到 Basic 500）。 可以就地升级 Pro 系列（Pro 125 到 Pro 1000），但 Pro 60 除外。 我们目前不支持升级 Pro 60 数据库。 
@@ -98,7 +98,7 @@ Azure 市场无法供在阿塞拜疆、克罗地亚、挪威或波多黎各注�
 ## <a name="where-can-i-see-the-charges-for-cleardb-resources-in-an-ea-subscription"></a>在何处可查看 EA 订阅中 ClearDB 资源的计费情况？
 直接 EA 客户可以在企业门户上看到 Azure 市场费用。 请注意，所有市场购买和使用均会在每季季末就货币承诺付款以外收费。 EA 客户需要直接付费给第三方服务提供商，或者通过启用其 EA 帐户的付款方式（例如信用卡）完成付费。
 
-间接 EA 客户可以在企业门户的“管理订阅”页上找到其 Azure 市场订阅，但定价处于隐藏状态。 客户应该联系其 LSP 以了解市场费用的相关信息。
+间接 EA 客户可以在企业门户的“管理订阅”**** 页上找到其 Azure 市场订阅，但定价处于隐藏状态。 客户应该联系其 LSP 以了解市场费用的相关信息。
 
 EA Azure 注册管理员可以管理 Azure 市场第三方服务的访问权限。 在企业门户中，管理员可在“帐户”部分下的“管理帐户和订阅”中禁用或重新启用对应用商店内所购第三方服务的访问权限。
 

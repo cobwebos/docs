@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric 监视合作伙伴
-description: 了解如何通过合作伙伴监视解决方案监视 Azure Service Fabric 应用程序、群集和基础结构。
+description: 了解如何使用合作伙伴监视解决方案监视 Azure 服务结构应用程序、群集和基础结构。
 author: srrengar
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: srrengar
 ms.openlocfilehash: fd24d65ebdf4e458870819286024d1ea2e13d83e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645712"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric 监视合作伙伴
@@ -18,7 +18,7 @@ ms.locfileid: "75645712"
 
 ## <a name="dynatrace"></a>Dynatrace
 
-与 Dynatrace 的集成可提供许多现成的功能用于监视 Service Fabric 群集。 在 VMSS 实例上安装 Dynatrace OneAgent 可以提供性能计数器，并实现应用级别的 Service Fabric 部署拓扑。 此外，Dynatrace 非常适合用于本地监视。 查看[公告](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/)中列出的更多功能，以及在群集上启用 Dynatrace 的[说明](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/)。 
+与 Dynatrace 的集成可提供许多现成的功能用于监视 Service Fabric 群集。 在 VMSS 实例上安装 Dynatrace OneAgent 可以提供性能计数器，并实现应用级别的 Service Fabric 部署拓扑。 此外，Dynatrace 非常适合用于本地监视。 请查看[通告](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/)和[说明](https://www.dynatrace.com/news/blog/automatic-end-to-end-service-fabric-monitoring-with-dynatrace/)中所列的，用于在群集上启用 Dynatrace 的其他功能。 
 
 ## <a name="datadog"></a>Datadog
 
@@ -34,11 +34,11 @@ New Relic 是与 Service Fabric 应用程序完美集成的另一个应用程序
 
 ## <a name="elk"></a>ELK 
 
-ELK stack 是开放源代码技术的集合： Elasticsearch、Logstash 和 Kibana。 结合使用这些技术，您可以收集、存储和分析 Service Fabric 监视和诊断数据。 我们在[此处](service-fabric-tutorial-java-elk.md)提供了有关如何对 Service Fabric 本机 Java 应用程序执行此操作的教程。 
+ELK 堆栈是开源技术的集合：弹性搜索、Logstash 和 Kibana。 通过结合使用这些技术，您可以收集、存储和分析 Service Fabric 监视和诊断数据。 我们在[此处](service-fabric-tutorial-java-elk.md)提供了有关如何对 Service Fabric 本机 Java 应用程序执行此操作的教程。 
 
 ## <a name="humio"></a>Humio
 
-Humio 是一种日志收集服务，它可以在云中或本地 Service Fabric 从应用程序和事件收集日志。 除了实时可观察性外，Humio 还提供了一些先进的分析和可视化功能，可用于查看和收集诊断信息。 Humio 提供经济高效的定价计划，并可进行扩展，同时保持速度快。 它直接与 Service Fabric 平台事件和应用程序遥测集成。 可在[此处](https://github.com/humio/service-fabric-humio)阅读有关 Humio 和 Service Fabric 集成的详细信息。
+Humio 是一项日志收集服务，可以通过实时方式在云中或本地收集应用程序中的日志以及 Service Fabric 中的事件。 除了实时可观测性外，Humio 还提供最先进的分析和可视化功能，用于查看和收集诊断信息。 Humio 具有经济有效的定价计划，构建后可以在保持超高速度的同时进行缩放。 它直接集成 Service Fabric 平台事件和应用程序遥测。 可以在[此处](https://github.com/humio/service-fabric-humio)详细了解 Humio 和 Service Fabric 集成。
 
 ## <a name="next-steps"></a>后续步骤
 

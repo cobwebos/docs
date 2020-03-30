@@ -1,24 +1,24 @@
 ---
-title: 模板项目引用
-description: 提供 Azure 托管应用程序的部署模板项目的示例。
+title: 模板项目参考
+description: 提供 Azure 托管应用程序的部署模板项目示例。
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 2bc0017d71e159ac490041494bcf37db035ef421
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651457"
 ---
 # <a name="reference-deployment-template-artifact"></a>参考：部署模板项目
 
-本文是 Azure 托管应用程序中*maintemplate.json*项目的参考。 有关创作部署模板的详细信息，请参阅[Azure 资源管理器模板](../templates/template-syntax.md)。
+本文是 Azure 托管应用程序中 mainTemplate.json** 项目的参考。 有关创作部署模板的详细信息，请参阅 [Azure 资源管理器模板](../templates/template-syntax.md)。
 
 ## <a name="deployment-template"></a>部署模板
 
-以下 JSON 显示了 Azure 托管应用程序的*maintemplate.json*文件示例：
+以下 JSON 演示了 Azure 托管应用程序的 mainTemplate.json** 文件的示例：
 
 ```json
 {
@@ -189,6 +189,6 @@ ms.locfileid: "75651457"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：创建包含自定义操作和资源的托管应用程序](tutorial-create-managed-app-with-custom-provider.md)
+- [教程：使用自定义操作和资源创建托管应用程序](tutorial-create-managed-app-with-custom-provider.md)
 - [参考：用户界面元素项目](reference-createuidefinition-artifact.md)
 - [参考：查看定义项目](reference-view-definition-artifact.md)

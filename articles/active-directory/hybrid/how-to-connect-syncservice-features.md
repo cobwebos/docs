@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300530"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步服务功能
@@ -41,7 +41,7 @@ Azure AD Connect 的同步功能有两个组件：
 
 `Set-MsolDirSyncFeature` 可以配置以下设置：
 
-| DirSyncFeature | 备注 |
+| DirSyncFeature | 注释 |
 | --- | --- |
 | [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |除了允许对象加入主 SMTP 地址，还允许对象加入 userPrincipalName。 |
 | [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |允许同步引擎更新托管/许可（非联合）用户的 userPrincipalName 属性。 |
@@ -55,13 +55,13 @@ Azure AD Connect 的同步功能有两个组件：
 
 以下设置是由 Azure AD Connect 配置，无法通过 `Set-MsolDirSyncFeature` 修改：
 
-| DirSyncFeature | 备注 |
+| DirSyncFeature | 注释 |
 | --- | --- |
 | DeviceWriteback |[Azure AD Connect：启用设备写回](how-to-connect-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect 同步：目录扩展](how-to-connect-sync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |如果某些属性是另一个对象的副本而不会在导出期间导致整个对象失败，则允许隔离该属性。 |
 | 密码哈希同步 |[使用 Azure AD Connect 同步实现密码哈希同步](how-to-connect-password-hash-synchronization.md) |
-|直通身份验证|[使用 Azure Active Directory 直通身份验证的用户登录](how-to-connect-pta.md)|
+|直通身份验证|[使用 Azure Active Directory 传递身份验证的用户登录](how-to-connect-pta.md)|
 | UnifiedGroupWriteback |[预览：组写回](how-to-connect-preview.md#group-writeback) |
 | UserWriteback |当前不支持。 |
 
@@ -96,7 +96,7 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 有关详细信息，请参阅 [Office 365、Azure 或 Intune 中的用户名与本地 UPN 或备用登录 ID 不匹配](https://support.microsoft.com/kb/2523192)。
 
-如果启用此功能，则在本地更改 userPrincipalName 并使用密码哈希同步或直通身份验证时，同步引擎可以更新 userPrincipalName。
+启用此功能允许同步引擎在用户主体名称在本地更改并使用密码哈希同步或传递身份验证时更新用户主体名称。
 
 在新建的 Azure AD 目录中，默认已打开此功能。 可以运行以下命令查看是否已启用此功能：  
 
@@ -112,7 +112,7 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 
 启用此功能后，现有的 userPrincipalName 值将保持不变。 下一次在本地更改 userPrincipalName 属性时，对用户进行正常的增量同步会更新 UPN。  
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-* [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
-* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。
+* [Azure AD 连接同步](how-to-connect-sync-whatis.md)
+* [将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。

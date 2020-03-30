@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: b657ee32e76dd90671f7e91337ced01b925889a1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67173409"
 ---
-如果遇到任何设备问题，您可以从系统日志中创建支持包。 Microsoft 支持部门使用此包的问题进行疑难解答。 请按照下列步骤以创建支持包：
+如果遇到任何设备问题，可以从系统日志创建支持包。 Microsoft 支持使用此包来解决问题。 按照以下步骤创建支持包：
 
-1. [连接到你的设备的 PowerShell 接口](#connect-to-the-powershell-interface)。
-2. 使用`Get-HcsNodeSupportPackage`命令以创建支持包。 Cmdlet 的用法如下所示：
+1. [连接到设备的 PowerShell 接口](#connect-to-the-powershell-interface)。
+2. 使用`Get-HcsNodeSupportPackage`命令创建支持包。 cmdlet 的用法如下：
 
     ```powershell
     Get-HcsNodeSupportPackage [-Path] <string> [-Zip] [-ZipFileName <string>] [-Include {None | RegistryKeys | EtwLogs
@@ -27,15 +27,15 @@ ms.locfileid: "67173409"
             [-IncludeArchived] [-IncludePeriodicStats] [-Credential <pscredential>]  [<CommonParameters>]
     ```
 
-    该 cmdlet 从你的设备收集日志并将这些日志复制到指定的网络或本地共享。
+    cmdlet 从您的设备收集日志，并将这些日志复制到指定的网络或本地共享。
 
-    使用的参数如下所示：
+    使用的参数如下：
 
-    - `-Path` -指定的网络或本地路径复制到支持包。 （需要的）
-    - `-Credential` -指定用于访问受保护的路径的凭据。
-    - `-Zip` -指定要生成的 zip 文件。
-    - `-Include` -指定包含要包括在支持包的组件。 如果未指定，`Default`假定。
-    - `-IncludeArchived` -指定要包括在支持包中的已存档的日志。
-    - `-IncludePeriodicStats` -指定要包括在支持包中的定期统计信息日志。
+    - `-Path`- 指定要将支持包复制到的网络或本地路径。 （必需）
+    - `-Credential`- 指定访问受保护路径的凭据。
+    - `-Zip`- 指定以生成 zip 文件。
+    - `-Include`- 指定以包括要包含在支持包中的组件。 如果未指定，`Default`则假定为。
+    - `-IncludeArchived`- 指定在支持包中包含存档日志。
+    - `-IncludePeriodicStats`- 指定在支持包中包括定期统计日志。
 
     

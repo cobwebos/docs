@@ -1,6 +1,6 @@
 ---
-title: Microsoft Threat Modeling Tool 概述-Azure
-description: Microsoft Threat Modeling Tool 概述，其中包含有关工具入门的信息，包括威胁建模过程。
+title: 微软威胁建模工具概述 - Azure
+description: Microsoft 威胁建模工具概述，包含有关开始使用该工具的信息，包括威胁建模过程。
 author: jegeib
 ms.author: jegeib
 ms.service: security
@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
 ms.openlocfilehash: 0d800102b6f6ff77944a2b625d3bcecef69c1ee9
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75548752"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft 威胁建模工具
@@ -37,7 +37,7 @@ ms.locfileid: "75548752"
 
 下表包含可帮助你开始使用此威胁建模工具的重要链接：
 
-| 步骤  | Description                                                                                   |
+| 步骤  | 描述                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
 | **1** | [下载威胁建模工具](https://aka.ms/threatmodelingtool)                                |
 | **2** | [阅读入门指南](threat-modeling-tool-getting-started.md)    |

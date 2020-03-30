@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 5e3f25727204343de107bacb9fc99d6cfb77d76f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76021200"
 ---
 请务必了解 Azure 中虚拟机 (VM) 运行的方式和位置，以及最大化性能、可用性和冗余的选项。 本文提供了 Azure 的可用性和冗余功能的概述。
@@ -29,7 +29,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 * **US Gov 弗吉尼亚州**和 **US Gov 爱荷华州**
   * 适用于美国政府代理和合作伙伴的 Azure 物理和逻辑网络隔离实例，由甄选出来的美国公民操作。 包括其他合规认证，例如 [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) 和 [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA)。 详细了解 [Azure Government](https://azure.microsoft.com/features/gov/)。
 * **中国东部**和**中国北部**
-  * 这些区域在 Microsoft 和 21Vianet 达成唯一合作关系之后可供用户使用，有了这种关系，Microsoft 就不需直接维护相关数据中心。 详细了解[Azure 中国世纪互联](https://www.windowsazure.cn/)。
+  * 这些区域在 Microsoft 和 21Vianet 达成唯一合作关系之后可供用户使用，有了这种关系，Microsoft 就不需直接维护相关数据中心。 查看有关[Azure 中国 21Vianet 的更多。](https://www.windowsazure.cn/)
 * **德国中部**和**德国东北部**
   * 用户可以通过数据信托模式来使用这些区域。这种方式将客户数据保留在德国，由 T-Systems（一家德国电信公司）充当德国的数据受托方来控制数据。
 
@@ -42,13 +42,13 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 区域对的示例包括：
 
-| 主 | 辅助副本 |
+| 基本 | 辅助副本 |
 |:--- |:--- |
 | 美国西部 |美国东部 |
 | 北欧 |西欧 |
 | 东南亚 |东亚 |
 
-可以在[此处](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions)查看完整的区域对列表。
+你可以[在这里看到区域对的完整列表](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions)。
 
 ## <a name="feature-availability"></a>功能可用性
 某些服务或 VM 功能（例如特定的 VM 大小或存储类型）仅在特定区域提供。 也有一些全球性 Azure 服务不需要用户选择特定的区域，例如 [Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md)、[流量管理器](../articles/traffic-manager/traffic-manager-overview.md)或 [Azure DNS](../articles/dns/dns-overview.md)。 若要更好地设计应用程序环境，可查看 [Azure 服务在每个区域的可用性](https://azure.microsoft.com/regions/#services)。 此外，还可以[以编程方式查询受支持的 VM 大小和每个区域中的限制](../articles/azure-resource-manager/templates/error-sku-not-available.md)。

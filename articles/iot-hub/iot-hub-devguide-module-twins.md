@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/01/2020
 ms.author: menchi
 ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303590"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>在 IoT 中心内了解并使用模块孪生
@@ -26,7 +26,7 @@ ms.locfileid: "78303590"
 
 本文介绍：
 
-* 模块孪生的结构：标记、所需的属性和报告的属性。
+* 模块孪生的结构：标记、所需的属性和报告的属性******。
 * 模块和后端可在模块孪生上执行的操作。
 
 有关使用报告的属性、设备到云的消息或文件上传的指导，请参阅[设备到云的通信指南](iot-hub-devguide-d2c-guidance.md)。
@@ -51,7 +51,7 @@ ms.locfileid: "78303590"
 
 * **报告属性**。 与所需的属性结合使用，同步模块配置或状态。 模块应用可设置报告的属性，并且解决方案后端可进行读取和查询。
 
-* **模块标识属性**。 模块孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应模块标识的只读属性。
+* **模块标识属性**. 模块孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应模块标识的只读属性。
 
 ![设备孪生的架构表示形式](./media/iot-hub-devguide-device-twins/module-twin.jpg)
 
@@ -176,7 +176,7 @@ ms.locfileid: "78303590"
 
   - 属性
 
-    | 名称 | 值 |
+    | “属性” | “值” |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  发送通知的时间 |
@@ -193,7 +193,7 @@ ms.locfileid: "78303590"
 
   - Body
         
-    本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，应用于对象的
+    本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，
 
     ```json
     {
@@ -214,7 +214,7 @@ ms.locfileid: "78303590"
     }
     ```
 
-上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ServiceConnect 权限。
+上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ServiceConnect 权限****。
 
 除了上述操作以外，解决方案后端还可以使用类似于 SQL 的 [IoT 中心查询语言](iot-hub-devguide-query-language.md)查询模块孪生。
 
@@ -228,7 +228,7 @@ ms.locfileid: "78303590"
 
 * **观察所需属性**。 当前连接的模块可以选择在所需属性发生更新时接收通知。 模块收到的更新格式与解决方案后端执行的更新格式相同（部分或完全替换）。
 
-上述所有操作都需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ModuleConnect 权限。
+上述所有操作都需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)文章中定义的 ModuleConnect 权限****。
 
 借助 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md)，可通过多种语言和平台轻松使用上述操作。
 
@@ -236,15 +236,15 @@ ms.locfileid: "78303590"
 
 标记、所需的属性和报告的属性是具有以下限制的 JSON 对象：
 
-* **密钥**：JSON 对象中的所有键是区分大小写的 64 字节 UTF-8 UNICODE 字符串。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、SP 和 `$`。
+* **键**：JSON 对象中的所有键都是区分大小写的 64 字节 UTF-8 UNICODE 字符串。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、SP 和 `$`。
 
-* **值**：JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 不允许数组。
+* **值**：JSON 对象中的所有值都可以具有以下 JSON 类型：布尔、数字、字符串、对象。 不允许数组。
 
-    * 整数的最小值可为-4503599627370496，最大值为4503599627370495。
+    * 整数的最小值为 -4503599627370496，最大值为 4503599627370495。
 
-    * 字符串值是 UTF-8 编码的，最大长度为512字节。
+    * 字符串值是 UTF-8 编码的，最大长度为 512 字节。
 
-* **深度**：标记、所需属性和报告属性中的所有 JSON 对象的最大嵌套深度为 5 层。 例如，以下对象是有效的：
+* **深度**：标记、所需属性和报告属性中的所有 JSON 对象的最大深度为 5。 例如，以下对象是有效的：
 
     ```json
     {
@@ -268,19 +268,19 @@ ms.locfileid: "78303590"
 
 ## <a name="module-twin-size"></a>模块孪生大小
 
-IoT 中心对 `tags`的值强制使用 8 KB 的大小限制，并对 `properties/desired` 和 `properties/reported`的值限制每个大小的大小限制为 32 KB。 这些总计与只读元素（例如 `$etag`、`$version`和 `$metadata/$lastUpdated`）不相容。
+IoT 中心对 `tags` 的值实施 8 KB 大小限制，对 `properties/desired` 和 `properties/reported` 的值分别实施 32 KB 大小限制。 这些总计不包括只读元素，如`$etag`和`$version`。 `$metadata/$lastUpdated`
 
-克隆大小的计算方式如下：
+双大小按如下方式计算：
 
-* 对于 JSON 文档中的每个属性，IoT 中心累积计算并添加属性的键和值的长度。
+* 对于 JSON 文档中的每个属性，IoT 中心会累积计算并添加属性的键和值的长度。
 
 * 属性键被视为 UTF8 编码的字符串。
 
-* 简单属性值被视为 UTF8 编码的字符串、数字值（8字节）或布尔值（4字节）。
+* 简单属性值被视为 UTF8 编码字符串、数值（8 字节）或布尔值 （4 字节）。
 
-* UTF8 编码字符串的大小通过对所有字符进行计数计算，不包括 UNICODE 控制字符（段 C0 和 C1）。
+* UTF8 编码字符串的大小是通过计算所有字符（不包括 UNICODE 控制字符（段 C0 和 C1）来计算的。
 
-* 复杂属性值（嵌套对象）根据它们所包含的属性键和属性值的聚合大小进行计算。
+* 复杂属性值（嵌套对象）是根据属性键及其包含的属性值的聚合大小计算的。
 
 IoT 中心拒绝将这些文档的大小增加到超出限制的所有操作，在这种情况下还会返回错误。
 
@@ -339,7 +339,7 @@ IoT 中心保留模块孪生所需属性和报告属性中每个 JSON 对象的�
 ## <a name="optimistic-concurrency"></a>乐观并发
 
 标记、所需的属性和报告的属性都支持乐观并发。
-标记包含一个符合 [RFC7232](https://tools.ietf.org/html/rfc7232) 规范的 ETag，它是标记的 JSON 表示形式。 可在解决方案后端上的条件更新操作中使用 ETag 来确保一致性。
+标记具有一个 ETag，如[RFC7232](https://tools.ietf.org/html/rfc7232)，表示标记的 JSON 表示形式。 可在解决方案后端上的条件更新操作中使用 ETag 来确保一致性。
 
 模块孪生所需的属性和报告的属性不包含 ETag，但包含一个保证可递增的 `$version` 值。 更新方可以使用类似于 ETag 的版本来强制实施更新一致性。 例如，报告的属性的模块应用，或者所需的属性的解决方案后端。
 

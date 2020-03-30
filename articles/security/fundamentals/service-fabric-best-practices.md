@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure Service Fabric 安全性的最佳做法
+title: Azure 服务交换矩阵安全性的最佳做法
 description: 本文提供有关 Azure Service Fabric 安全性的一套最佳做法。
 author: unifycloud
 ms.author: tomsh
@@ -8,10 +8,10 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75548813"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
@@ -99,7 +99,7 @@ Service Fabric 还可保护应用程序使用的资源。 在应用程序部署�
 
 -   使用 Active Directory 域组或用户：使用 Active Directory 用户或组帐户的凭据运行服务。 请务必在域中使用本地 Active Directory，而不是 Azure Active Directory。 使用域用户或组，访问域中已被授予权限的其他资源。 例如，文件共享等资源。
 
--   为 HTTP 和 HTTPS 终结点分配安全访问策略：指定 SecurityAccessPolicy 属性，在服务清单使用 HTTP 协议声明终结点资源时，向服务应用 RunAs 策略。 分配给 HTTP 终结点的端口是，运行服务所用的 RunAs 用户帐户的正确访问控制列表。 如果未设置此策略，http.sys 将无权访问服务，并且用户也无法从客户端进行调用。
+-   为 HTTP 和 HTTPS 终结点分配安全访问策略：指定 SecurityAccessPolicy**** 属性，在服务清单使用 HTTP 协议声明终结点资源时，向服务应用 RunAs**** 策略。 分配给 HTTP 终结点的端口是，运行服务所用的 RunAs 用户帐户的正确访问控制列表。 如果未设置此策略，http.sys 将无权访问服务，并且用户也无法从客户端进行调用。
 
 若要了解如何在 Service Fabric 群集中使用安全策略，请参阅[配置应用程序的安全策略](../../service-fabric/service-fabric-application-runas-security.md)。
 
@@ -113,13 +113,13 @@ Service Fabric Reliable Actors 是执行组件设计模式的实现。 与所有
 
 在 Service Fabric 中，执行组件是在 Reliable Actors 应用程序框架中实现。 此框架以执行组件模式为依据，在 [Service Fabric Reliable Services](../../service-fabric/service-fabric-reliable-services-introduction.md) 的基础之上构建而成。 编写的每个可靠执行组件服务都是一个已分区的有状态可靠服务。
 
-每个执行组件都定义为执行组件类型的一个实例，类似于 .NET 对象是 .NET 类型的一个实例。 例如，用于实现计算器功能的执行组件类型可能包含此类型的多个执行组件，这些执行组件跨群集中的各个节点进行分布。 分布的每个执行组件都通过执行组件标识符进行唯一标识。
+每个执行组件都定义为执行组件类型的一个实例，类似于 .NET 对象是 .NET 类型的一个实例。 例如，用于实现计算器功能的执行组件类型**** 可能包含此类型的多个执行组件，这些执行组件跨群集中的各个节点进行分布。 分布的每个执行组件都通过执行组件标识符进行唯一标识。
 
-[复制器安全配置](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)用于保护在复制过程中使用的信道的安全。 此配置可阻止服务相互窥探复制流量，并确保可用性很高的数据安全。 默认情况下，空的安全配置节会影响复制安全。
+[复制器安全配置](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)用于保护复制期间使用的通信通道。 此配置可阻止服务相互窥探复制流量，并确保可用性很高的数据安全。 默认情况下，空的安全配置节会影响复制安全。
 复制器配置用于配置负责使执行组件状态提供程序状态高度可靠的复制器。
 
 ## <a name="configure-ssl-for-azure-service-fabric"></a>配置适用于 Azure Service Fabric 的 SSL
-服务器身份验证流程向管理客户端[验证](../../service-fabric/service-fabric-cluster-creation-via-arm.md)群集管理终结点。 然后，管理客户端确定它在与真正的群集通信。 此证书还通过 HTTPS 为 HTTPS 管理 API 和 Service Fabric Explorer 提供 [SSL](../../service-fabric/service-fabric-cluster-creation-via-arm.md)。
+服务器身份验证流程向管理客户端[验证](../../service-fabric/service-fabric-cluster-creation-via-arm.md)群集管理终结点。 然后，管理客户端确定它在与真正的群集通信。 此证书还为 HTTPS 管理 API 和 HTTPS 中的服务结构资源管理器提供[SSL。](../../service-fabric/service-fabric-cluster-creation-via-arm.md)
 必须获取群集的自定义域名。 从证书颁发机构请求获取证书时，证书的使用者名称必须与用于群集的自定义域名匹配。
 
 若要为应用程序配置 SSL，首先需要获取已由 CA 签名的 SSL 证书。 CA 是受信任的第三方，负责颁发证书，以提高 SSL 安全性。 如果尚无 SSL 证书，需要从销售 SSL 证书的公司购买一个。
@@ -132,10 +132,10 @@ Service Fabric Reliable Actors 是执行组件设计模式的实现。 与所有
 -   证书的使用者名称必须与用于访问云服务的域名匹配。
 
     - 获取用于访问云服务的自定义域名。
-    - 请求从 CA 获取证书，其中使用者名称与服务的自定义域名匹配。 例如，如果自定义域名为 __contoso__.com，CA 颁发的证书应包含使用者名称 .contoso.com 或 __www__.contoso.com。
+    - 请求从 CA 获取证书，其中使用者名称与服务的自定义域名匹配。 例如，如果自定义域名为 __contoso__.com****，CA 颁发的证书应包含使用者名称 .contoso.com**** 或 __www__.contoso.com****。
 
     >[!NOTE]
-    >无法从 CA 获取 __cloudapp__.net 域的 SSL 证书。
+    >无法从 CA 获取 __cloudapp__.net**** 域的 SSL 证书。
 
 -   证书至少必须使用 2,048 位加密。
 
@@ -169,7 +169,7 @@ Service Fabric 使用 X.509 证书保护群集，并提供应用程序安全功�
 若要详细了解如何设置密钥保管库，请参阅[什么是 Azure 密钥保管库？](../../key-vault/key-vault-overview.md)。
 
 ## <a name="assign-users-to-roles"></a>将用户分配到角色
-创建用于表示群集的应用程序后，请将用户分配到 Service Fabric 支持的角色：只读和管理员。您可以使用 Azure 门户分配这些角色。
+创建表示群集的应用程序后，将用户分配给 Service Fabric 支持的角色：只读和管理员。可以使用 Azure 门户分配这些角色。
 
 >[!NOTE]
 > 若要详细了解如何在 Service Fabric 使用角色，请参阅[适用于 Service Fabric 客户端的基于角色的访问控制](../../service-fabric/service-fabric-cluster-security-roles.md)。

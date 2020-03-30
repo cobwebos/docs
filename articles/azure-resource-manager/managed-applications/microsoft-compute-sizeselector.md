@@ -1,15 +1,15 @@
 ---
-title: Microsoft.compute.sizeselector UI 元素
+title: SizeSelector UI 元素
 description: 介绍了 Azure 门户的 Microsoft.Compute.SizeSelector UI 元素。 用于选择虚拟机的大小。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: d98ddbb09ac4f1f933237b3288db7a0cb78380b5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652042"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI 元素
@@ -72,9 +72,9 @@ ms.locfileid: "75652042"
 - `constraints.allowedSizes` 和 `constraints.excludedSizes` 都是可选的，并且不能同时使用。 可以通过调用[为订阅列出可用虚拟机大小](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)来确定可用大小的列表。 将隐藏未在 `constraints.allowedSizes` 中指定的任何大小，会显示未在 `constraints.excludedSizes` 中指定的任何大小。
 - 必须指定 `osPlatform`，它可以是 **Windows** 或 **Linux**。 它用来确定虚拟机的硬件成本。
 - 对于第一方映像，将省略 `imageReference`，对于第三方映像，将提供此参数。 它用来确定虚拟机的软件成本。
-- `count` 用来为元素设置合适的乘数。 它支持静态值（例如 **2**），也支持来自其他元素的动态值（例如 `[steps('step1').vmCount]`）。 默认值是 **1**秒。
+- `count` 用来为元素设置合适的乘数。 它支持静态值（例如 **2**），也支持来自其他元素的动态值（例如 `[steps('step1').vmCount]`）。 默认值为**1**。
 - `numAvailabilityZonesRequired` 可以是 1、2 或 3。
-- 默认情况下，`hideDiskTypeFilter` 为 false。 磁盘类型筛选器允许用户查看所有磁盘类型，或者只查看 SSD。
+- 默认情况下，`hideDiskTypeFilter` 为 false****。 磁盘类型筛选器允许用户查看所有磁盘类型，或者只查看 SSD。
 
 ## <a name="next-steps"></a>后续步骤
 

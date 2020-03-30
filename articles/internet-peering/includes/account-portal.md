@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 7316dba7559c4a50e94771d69ce03bac51c0f3c2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774531"
 ---
-在浏览器中导航到[门户](https://portal.azure.com/)，并使用 Azure 帐户登录。
+从浏览器导航到[门户](https://portal.azure.com/)并使用 Azure 帐户登录。
 
-如果有多个订阅并且需要切换订阅：
+如果您有多个订阅，并且需要切换订阅：
 
-1. 单击 "配置文件" 按钮，然后选择 "**切换目录**"。
+1. 单击配置文件按钮，然后选择 **"切换目录**"。
 
     > [!div class="mx-imgBorder"]
     > ![选择交换机目录](../media/choose-subscription-2.png)

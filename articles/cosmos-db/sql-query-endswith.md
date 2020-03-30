@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 查询语言中的 ENDSWITH
-description: 了解 Azure Cosmos DB 中的 ENDSWITH SQL 系统函数，以返回一个布尔值，指示第一个字符串表达式是否以第二个结束
+description: 了解 Azure Cosmos DB 中的 ENDSWITH SQL 系统函数，该函数返回一个布尔值指示第一个字符串表达式是否以第二个字符串表达式结尾
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 37c5a8b3c44c5ac46b837e4d851d22f85aeaf39c
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78299442"
 ---
-# <a name="endswith-azure-cosmos-db"></a>ENDSWITH （Azure Cosmos DB）
+# <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
  返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式结尾。  
   
 ## <a name="syntax"></a>语法
@@ -23,13 +23,13 @@ ms.locfileid: "78299442"
 ENDSWITH(<str_expr1>, <str_expr2>)  
 ```  
   
-## <a name="arguments"></a>参数
+## <a name="arguments"></a>自变量
   
 *str_expr1*  
-   字符串表达式。  
+   是一个字符串表达式。  
   
 *str_expr2*  
-   要与*str_expr1*末尾进行比较的字符串表达式。  
+   是要与 *str_expr1* 的结尾进行比较的字符串表达式。  
   
 ## <a name="return-types"></a>返回类型
   
@@ -51,10 +51,10 @@ SELECT ENDSWITH("abc", "b") AS e1, ENDSWITH("abc", "bc") AS e2
 
 ## <a name="remarks"></a>备注
 
-此系统函数不会使用索引。
+此系统功能不会利用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [字符串函数 Azure Cosmos DB](sql-query-string-functions.md)
-- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 简介](introduction.md)
+- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 简介](introduction.md)

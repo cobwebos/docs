@@ -9,37 +9,37 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 2e8938f270ed175c687d975b0b248275ad92f8e4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75775077"
 ---
-1. 请在创建对**等互连**资源时，单击 "**资源组**" 并单击所选的资源组。 如果资源组太多，则可以使用*筛选器*字段。
+1. 转到**资源组**，然后单击创建**对等资源**时选择的资源组。 如果资源组太多，则可以使用 *"筛选器"* 字段。
 
     > [!div class="mx-imgBorder"]
-    > ![对等互连资源组](../media/setup-direct-get-resourcegroup.png)
+    > ![对等资源组](../media/setup-direct-get-resourcegroup.png)
 
-1. 单击创建的对**等互连**资源。
-
-    > [!div class="mx-imgBorder"]
-    > ![对等互连资源视图](../media/setup-direct-get-open.png)
-
-1. "**概述**" 页显示高级信息。 观察下面突出显示的信息。
+1. 单击您创建的**对等资源**。
 
     > [!div class="mx-imgBorder"]
-    > ![对等互连资源视图](../media/setup-direct-get-overview.png)
+    > ![对等资源视图](../media/setup-direct-get-open.png)
 
-1. 在左侧，单击 " **ASN 信息**" 查看创建 PeerAsn 时提交的信息
-
-    > [!div class="mx-imgBorder"]
-    > ![对等互连资源视图](../media/setup-direct-get-asninfo.png)
-
-1. 在左侧，单击 "**连接**"。 请查看你的 ASN 与 Microsoft 之间的对等互连连接的摘要，并跨地铁中的不同设施。 还可以通过单击前面突出显示的中心窗格中的 "**连接**"，在 "**概述**" 页上看到 "连接摘要"。
+1. **"概述"** 页显示高级信息。 请遵守下面突出显示的信息。
 
     > [!div class="mx-imgBorder"]
-    > ![对等互连资源视图](../media/setup-direct-get-connectionssummary.png)
+    > ![对等资源视图](../media/setup-direct-get-overview.png)
 
-    * **连接状态**对应于对等互连连接设置的状态。 此字段中显示的状态遵循[直接对等演练](../walkthrough-direct-all.md)中显示的状态图
-    * **Ipv4 会话状态**和**ipv6 会话状态**分别对应于 ipv4 和 ipv6 BGP 会话状态。  
-    * 选择顶部的行时，底部的 "***连接***" 部分会显示每个连接的详细信息。 可以单击箭头标记展开子节***配置***、 ***IPv4 地址***和***IPv6 地址***
+1. 在左侧，单击**ASN 信息**以查看创建 PeerAsn 时提交的信息
+
+    > [!div class="mx-imgBorder"]
+    > ![对等资源视图](../media/setup-direct-get-asninfo.png)
+
+1. 在左侧，单击**连接**。 在上面查看 ASN 和 Microsoft 之间跨地铁内不同设施的对等互连连接的摘要。 您还可以通过单击中心窗格中的**连接**（如上所示）从 **"概述"** 页面到达连接摘要。
+
+    > [!div class="mx-imgBorder"]
+    > ![对等资源视图](../media/setup-direct-get-connectionssummary.png)
+
+    * **连接状态**对应于建立的对等互连连接的状态。 此字段中显示的状态遵循[直接对等演练](../walkthrough-direct-all.md)中显示的状态图
+    * **IPv4 会话状态**和**IPv6 会话状态**分别对应于 IPv4 和 IPv6 BGP 会话状态。  
+    * 选择顶部的行时，底部的 ***"连接***"部分将显示每个连接的详细信息。 您可以单击箭头标记来展开子节***配置******、IPv4 地址***和***IPv6 地址***

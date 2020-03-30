@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
 ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67173410"
 ---
-1. [连接到 PowerShell 界面](#connect-to-the-powershell-interface)。
-2. 使用`Get-HcsApplianceInfo`若要获取你的设备的信息。
+1. [连接到 PowerShell 接口](#connect-to-the-powershell-interface)。
+2. 使用`Get-HcsApplianceInfo`获取设备的信息。
 
     下面的示例显示了此 cmdlet 的用法：
 
@@ -43,16 +43,16 @@ ms.locfileid: "67173410"
     IsRegistered                  : False
     ```
 
-    以下是表汇总一些重要的设备信息：
+    下表总结了一些重要的设备信息：
     
     | 参数                             | 描述                                                                                                                                                  |   |
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    | FriendlyName                   | 部署设备期间通过本地 web UI 配置的设备友好名称。 默认的友好名称为设备序列号。  |   |
-    | 序列号                   | 设备序列号是出厂分配的唯一编号。                                                                             |   |
-    | 模型                          | 数据框的边缘或数据框网关设备的模型。 该模型是数据框网关的虚拟和物理数据框的边缘。                   |   |
-    | FriendlySoftwareVersion        | 对应于设备软件版本的友好字符串。 对于运行预览版的系统，友好的软件版本为数据框边缘 1902年。 |   |
-    | HcsVersion                     | 设备上运行的 HCS 软件版本。 例如，对应于数据框边缘 1902年的 HCS 软件版本是 1.4.771.324。            |   |
-    | LocalCapacityInMb              | 单位为兆位的设备的本地总容量。                                                                                                        |   |
-    | IsRegistered                   | 此值指示是否与服务激活你的设备。                                                                                         |   |
+    | FriendlyName                   | 设备部署期间通过本地 Web UI 配置的设备友好名称。 默认的友好名称为设备序列号。  |   |
+    | SerialNumber                   | 设备序列号是在工厂分配的唯一编号。                                                                             |   |
+    | “模型”                          | 数据框边缘或数据框网关设备的模型。 该模型对于数据框网关是虚拟的，对于数据框边缘是物理的。                   |   |
+    | FriendlySoftwareVersion        | 对应于设备软件版本的友好字符串。 对于运行预览的系统，友好的软件版本将是数据框边缘 1902。 |   |
+    | HcsVersion                     | 设备上运行的 HCS 软件版本。 例如，与数据框边缘 1902 对应的 HCS 软件版本是 1.4.771.324。            |   |
+    | 本地容量InMb              | 以兆位表示设备的总本地容量。                                                                                                        |   |
+    | 已注册                   | 此值指示您的设备是否已随服务激活。                                                                                         |   |
 
 

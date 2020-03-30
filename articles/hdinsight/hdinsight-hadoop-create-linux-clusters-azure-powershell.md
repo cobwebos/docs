@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 3c93eca493275612ac14a995140b2e91cc40fe98
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644658"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>使用 Azure PowerShell 在 HDInsight 中创建基于 Linux 的群集
@@ -23,11 +23,11 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/install-Az-ps)Az module。
+[Azure PowerShell](/powershell/azure/install-Az-ps) Az 模块。
 
 ## <a name="create-cluster"></a>创建群集
 
@@ -41,7 +41,7 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 * 创建 HDInsight 群集
 
 > [!NOTE]
-> 当前不支持使用 PowerShell 创建具有 Azure Data Lake Storage Gen2 的 HDInsight 群集。
+> 当前不支持使用 PowerShell 创建具有 Azure 数据湖存储 Gen2 的 HDInsight 群集。
 
 以下脚本演示了如何创建新群集：
 
@@ -60,7 +60,7 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 
 ## <a name="create-cluster-configuration-object"></a>创建群集：配置对象
 
-你还可以使用[`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) cmdlet 来创建 HDInsight 配置对象。 然后，可以修改此配置对象，为群集启用其他配置选项。 最后，使用[`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 的 `-Config` 参数来使用该配置。
+您还可以使用[`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig)cmdlet 创建 HDInsight 配置对象。 然后，可以修改此配置对象，为群集启用其他配置选项。 最后，`-Config`使用 cmdlet[`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)的参数使用配置。
 
 下面的脚本创建了一个配置对象，用于在 HDInsight 群集类型上配置 R Server。 该配置支持边缘节点、RStudio 和其他存储帐户。
 
@@ -78,13 +78,13 @@ Azure PowerShell 是强大的脚本环境，可以用于在 Microsoft Azure 中�
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
 如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-成功创建 HDInsight 群集后，请使用以下资源来了解如何使用群集。
+现在您已成功创建了 HDInsight 群集，请使用以下资源了解如何使用群集。
 
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop 群集
 

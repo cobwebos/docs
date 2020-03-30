@@ -1,6 +1,6 @@
 ---
-title: Azure 开发测试实验室中的应用程序迁移和集成
-description: 本文提供了有关在应用程序迁移和集成环境中管理 Azure 开发测试实验室基础结构的指导。
+title: Azure 开发人员测试实验室中的应用程序迁移和集成
+description: 本文提供有关在应用程序迁移和集成上下文中治理 Azure DevTest Labs 基础结构的指导。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644880"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure 开发测试实验室基础结构的监管 - 应用程序迁移和集成
@@ -31,7 +31,7 @@ ms.locfileid: "75644880"
 ### <a name="question"></a>问题
 何时应使用 Azure 市场映像以及自己的自定义组织映像？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 除非有特定考虑或组织要求，否则默认情况下应使用 Azure 市场映像。 一些常见示例包括：
 
 - 复杂的软件设置，需要将应用程序作为基本映像的一部分包含在内。
@@ -46,7 +46,7 @@ ms.locfileid: "75644880"
 ### <a name="question"></a>问题
 何时应使用公式以及自定义映像？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 通常，此方案中的决定因素是成本和重用。
 
 如果你的方案中有许多用户/实验室需要在基础映像之上使用具有大量软件的映像，则可以通过创建自定义映像来降低成本。 这意味着该映像创建一次。 它减少了虚拟机设置时间以及由于在设置时运行虚拟机而产生的成本。
@@ -58,13 +58,13 @@ ms.locfileid: "75644880"
 ### <a name="question"></a>问题
 如何设置一个易于重复的过程以便将我的自定义组织映像导入开发测试实验室环境？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 请观看[这一有关映像工厂模式的视频](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)。 此方案是一个高级方案，提供的脚本都只是示例脚本。 如果需要进行任何更改，则需要管理和维护在环境中使用的脚本。
 
 使用开发测试实验室在 Azure Pipelines 中创建自定义映像管道：
 
 - [Introduction: Get VMs ready in minutes by setting up an image factory in Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)（简介：通过在 Azure 开发测试实验室中设置映像工厂即可在几分钟内准备好虚拟机）
-- [映像工厂–第2部分！安装 Azure Pipelines 和工厂实验室来创建 Vm](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
+- [图像工厂 = 第 2 部分！设置 Azure 管道和工厂实验室以创建 VM](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
 - [Image Factory – Part 3: Save Custom Images and Distribute to Multiple Labs](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)（映像工厂 – 第 3 部分：保存自定义映像并分发到多个实验室）
 - [Video: Custom Image Factory with Azure DevTest Labs](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)（视频：Azure 开发测试实验室的自定义映像工厂）
 
@@ -73,12 +73,12 @@ ms.locfileid: "75644880"
 ### <a name="question"></a>问题
 如何确保开发和测试虚拟机无法访问公共 Internet？ 是否有任何建议的模式来设置网络配置？
 
-### <a name="answer"></a>答案
-可以。 有两个方面需要考虑，即入站和出站流量。
+### <a name="answer"></a>Answer
+是的。 有两个方面需要考虑，即入站和出站流量。
 
-入站流量 – 如果虚拟机没有公共 IP 地址，则无法通过 Internet 访问它。 一种常见方法是确保设置订阅级别的策略，以便任何用户都不能创建公共 IP 地址。
+**** 入站流量 – 如果虚拟机没有公共 IP 地址，则无法通过 Internet 访问它。 一种常见方法是确保设置订阅级别的策略，以便任何用户都不能创建公共 IP 地址。
 
-出站流量 – 如果要防止虚拟机直接访问公共 Internet 并强制流量通过企业防火墙，则可以使用强制路由通过快速路由或 VPN 在本地路由流量。
+**** 出站流量 – 如果要防止虚拟机直接访问公共 Internet 并强制流量通过企业防火墙，则可以使用强制路由通过快速路由或 VPN 在本地路由流量。
 
 > [!NOTE]
 > 如果你的代理服务器在没有代理设置的情况下阻止流量，则不要忘记向实验室的项目存储帐户添加例外。
@@ -90,7 +90,7 @@ ms.locfileid: "75644880"
 ### <a name="question"></a>问题
 何时应该为开发测试实验室环境创建新的虚拟网络以及使用现有的虚拟网络？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 如果你的 VM 需要与现有基础结构进行交互，则应考虑使用开发测试实验室环境中的现有虚拟网络。 此外，如果使用 ExpressRoute，则可能需要最大限度减少 VNet/子网的数量，以便不会分割已分配供在订阅中使用的 IP 地址空间。 另外，还应该考虑在此处使用 VNet 对等互连模式（中心辐射型模型）。 此方法支持在给定区域内跨订阅进行 VNet/子网通信，但跨区域对等互连是 Azure 网络中的一项即将推出的新功能。
 
 除此之外，每个开发测试实验室环境可以有其自己的虚拟网络。 但请注意，每个订阅的虚拟网络数量有[限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。 默认数量为 50，但此限制可以提高到 100。
@@ -100,7 +100,7 @@ ms.locfileid: "75644880"
 ### <a name="question"></a>问题
 何时应使用共享 IP 与公用 IP 与专用 IP？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 如果使用站点到站点 VPN 或快速路由，则考虑使用专用 IP，以便你的计算机可通过内部网络访问，并且无法通过公共 Internet 访问。
 
 > [!NOTE]
@@ -113,19 +113,19 @@ ms.locfileid: "75644880"
 ### <a name="question"></a>问题
 在为每个用户或每个实验室应该设置多少个虚拟机方面是否有相应的规则？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 在考虑每个用户或每个实验室的虚拟机数量时，主要有三个考虑因素：
 
-- 团队在实验室资源上花费的总成本。 运行很多计算机很容易。 为了控制成本，一种机制是限制每个用户和/或每个实验室的 VM 数量
-- 实验室中的虚拟机总数受可用[订阅级别配额](../azure-resource-manager/management/azure-subscription-service-limits.md)的影响。 其中一个上限是每个订阅 800 个资源组。 开发测试实验室当前为每个 VM 创建一个新的资源组（除非使用共享的公用 IP）。 如果订阅中有10个实验室，实验室可能会在每个实验室中容纳大约79的虚拟机（10个实验室自身的800上限–10个资源组） = 79 每个实验室的虚拟机数。
-- 举例来说，如果实验室通过 Express Route 连接到本地，则可以为 VNet/子网定义可用的 IP 地址空间。 为了确保能够在实验室中创建 VM（出现“无法获取 IP 地址”错误时无法创建），实验室所有者可以根据可用的 IP 地址空间指定每个实验室的最大 VM 数量。
+- 团队在实验室资源上花费的总成本****。 运行很多计算机很容易。 为了控制成本，一种机制是限制每个用户和/或每个实验室的 VM 数量
+- 实验室中的虚拟机总数受可用[订阅级别配额](../azure-resource-manager/management/azure-subscription-service-limits.md)的影响。 其中一个上限是每个订阅 800 个资源组。 开发测试实验室当前为每个 VM 创建一个新的资源组（除非使用共享的公用 IP）。 如果订阅中有 10 个实验室，则每个实验室中可以容纳大约 79 个虚拟机（800 个上限 = 10 个实验室本身的 10 个资源组） = 每个实验室 79 个虚拟机。
+- 举例来说，如果实验室通过 Express Route 连接到本地，则可以为 VNet/子网定义可用的 IP 地址空间****。 为了确保能够在实验室中创建 VM（出现“无法获取 IP 地址”错误时无法创建），实验室所有者可以根据可用的 IP 地址空间指定每个实验室的最大 VM 数量。
 
-## <a name="use-resource-manager-templates"></a>使用资源管理器模板
+## <a name="use-resource-manager-templates"></a>使用 Resource Manager 模板
 
 ### <a name="question"></a>问题
 如何在开发测试实验室环境中使用资源管理器模板？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 可以使用[开发测试实验室中的环境功能](devtest-lab-test-env.md)一文中所述的步骤，将资源管理器模板部署到开发测试实验室环境中。 从根本上说，将资源管理器模板签入 Git 存储库（Azure Repos 或 GitHub），并将[模板的专用存储库](devtest-lab-test-env.md)添加到实验室。
 
 如果使用开发测试实验室托管开发计算机，则此方案可能没有用；但如果要构建具有生产代表性的过渡环境，则此方案可能很有用。

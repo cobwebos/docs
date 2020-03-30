@@ -1,26 +1,26 @@
 ---
-title: 向 Azure REST API 添加自定义操作
-description: 了解如何向 Azure REST API 添加自定义操作。 本文将指导你要实现自定义操作的终结点的要求和最佳实践。
+title: 将自定义操作添加到 Azure REST API
+description: 了解如何将自定义操作添加到 Azure REST API。 本文将介绍希望实现自定义操作的终结点的要求和最佳实践。
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650391"
 ---
-# <a name="adding-custom-actions-to-azure-rest-api"></a>向 Azure REST API 添加自定义操作
+# <a name="adding-custom-actions-to-azure-rest-api"></a>将自定义操作添加到 Azure REST API
 
-本文将介绍创建实现自定义操作的 Azure 自定义资源提供程序终结点的要求和最佳实践。 如果不熟悉 Azure 自定义资源提供程序，请参阅[自定义资源提供程序概述](overview.md)。
+本文将介绍创建实现自定义操作的 Azure 自定义资源提供程序终结点的要求和最佳实践。 如果您不熟悉 Azure 自定义资源提供程序，请参阅[自定义资源提供程序的概述](overview.md)。
 
 ## <a name="how-to-define-an-action-endpoint"></a>如何定义操作终结点
 
-**终结点**是指向服务的 URL，该服务在其和 Azure 之间实现基础协定。 终结点在自定义资源提供程序中定义，可以是任何可公开访问的 URL。 下面的示例包含一个名为 `myCustomAction` 由 `endpointURL`实现的**操作**。
+**终结点**是指向服务的 URL，该服务在它与 Azure 之间实现基础协定。 终结点在自定义资源提供程序中定义，可以是任何可公开访问的 URL。 下面的示例具有称为`myCustomAction`由`endpointURL`实现**的操作**。
 
-示例**ResourceProvider**：
+示例**资源提供程序**：
 
 ```JSON
 {
@@ -42,7 +42,7 @@ ms.locfileid: "75650391"
 
 ## <a name="building-an-action-endpoint"></a>构建操作终结点
 
-实现**操作**的**终结点**必须处理 Azure 中新 API 的请求和响应。 当创建具有**操作**的自定义资源提供程序时，它将在 Azure 中生成一组新的 api。 在这种情况下，该操作将为 `POST` 调用生成新的 Azure 操作 API：
+实现**操作**的**终结点**必须处理 Azure 中新 API 的请求和响应。 创建具有**操作**的自定义资源提供程序时，它将在 Azure 中生成一组新的 API。 在这种情况下，该操作将为`POST`调用生成新的 Azure 操作 API：
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomAction
@@ -63,7 +63,7 @@ Content-Type: application/json
 }
 ```
 
-然后，此请求将转发到以下形式的**终结点**：
+然后，此请求将以以下形式转发到**终结点**：
 
 ``` HTTP
 POST https://{endpointURL}/?api-version=2018-09-01-preview
@@ -78,10 +78,10 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-同样，将**终结点**的响应转发回客户。 终结点的响应应返回：
+同样，从**端点**的响应然后转发回客户。 来自终结点的响应应返回：
 
-- 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在 top 对象下。
-- `Content-Type` 标头应设置为 "application/json;字符集 = utf-8 "。
+- 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在顶部对象下。
+- 标头`Content-Type`应设置为"应用程序/json;"字符_utf-8"。
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -111,7 +111,7 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="calling-a-custom-action"></a>调用自定义操作
 
-可以通过两种主要方法来调用自定义资源提供程序的自定义操作：
+从自定义资源提供程序调用自定义操作有两种主要方法：
 
 - Azure CLI
 - Azure 资源管理器模板
@@ -130,18 +130,18 @@ az resource invoke-action --action {actionName} \
                             }'
 ```
 
-参数 | 需要 | Description
+参数 | 必选 | 描述
 ---|---|---
-action | 是 | 在**ResourceProvider**中定义的操作的名称。
-ids | 是 | **ResourceProvider**的资源 ID。
-request-body | 否 | 将发送到**终结点**的请求正文。
+action | *是的* | 资源**提供程序**中定义的操作的名称。
+ids | *是的* | **资源提供程序**的资源 ID 。
+request-body | *不* | 将发送到**终结点**的请求正文。
 
 ### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
 > [!NOTE]
-> 操作在 Azure 资源管理器模板中具有有限的支持。 若要在模板中调用操作，它必须在名称中包含[`list`](../templates/template-functions-resource.md#list)前缀。
+> 操作在 Azure 资源管理器模板中的支持有限。 为了在模板中调用操作，它必须在其名称中包含[`list`](../templates/template-functions-resource.md#list)前缀。
 
-包含 List 操作的示例**ResourceProvider** ：
+具有列表操作的示例**资源提供程序**：
 
 ```JSON
 {
@@ -184,15 +184,15 @@ request-body | 否 | 将发送到**终结点**的请求正文。
 }
 ```
 
-参数 | 需要 | Description
+参数 | 必选 | 描述
 ---|---|---
-resourceIdentifier | 是 | **ResourceProvider**的资源 ID。
-apiVersion | 是 | 资源运行时的 API 版本。 应始终为 "2018-09-01-preview"。
-functionValues | 否 | 将发送到**终结点**的请求正文。
+资源标识符 | *是的* | **资源提供程序**的资源 ID 。
+apiVersion | *是的* | 资源运行时的 API 版本。 这应始终为"2018-09-01 预览"。
+functionValues | *不* | 将发送到**终结点**的请求正文。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 自定义资源提供程序概述](overview.md)
-- [快速入门：创建 Azure 自定义资源提供程序和部署自定义资源](./create-custom-provider.md)
+- [快速入门：创建 Azure 自定义资源提供程序并部署自定义资源](./create-custom-provider.md)
 - [教程：在 Azure 中创建自定义操作和资源](./tutorial-get-started-with-custom-providers.md)
 - [如何：将自定义资源添加到 Azure REST API](./custom-providers-resources-endpoint-how-to.md)

@@ -1,5 +1,5 @@
 ---
-title: Microsoft Threat Modeling Tool 功能概述-Azure
+title: 微软威胁建模工具功能概述 - Azure
 description: 了解威胁建模工具中提供的所有功能
 author: jegeib
 ms.author: jegeib
@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552111"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>威胁建模工具功能概述
@@ -21,7 +21,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 > [!NOTE]
 >Threat Modeling Tool 会频繁更新，因此请经常查看本指南，以了解我们的最新功能和改进。
 
-若要打开一个空页面，请选择“创建模型”。
+若要打开一个空页面，请选择“创建模型”****。
 
 ![空页面](./media/threat-modeling-tool-feature-overview/tmtstart.png)
 
@@ -39,13 +39,13 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ![菜单项](./media/threat-modeling-tool-feature-overview/menuitems.png)
 
-| 标签                               | 详细信息      |
+| Label                               | 详细信息      |
 | --------------------------------------- | ------------ |
-| **File** | <ul><li>打开、保存和关闭文件</li><li>登录和注销 OneDrive 帐户。</li><li>共享链接（视图和编辑）。</li><li>查看文件信息。</li><li>将新模板应用于现有模型。</li></ul> |
+| **文件** | <ul><li>打开、保存和关闭文件</li><li>登录和注销 OneDrive 帐户。</li><li>共享链接（视图和编辑）。</li><li>查看文件信息。</li><li>将新模板应用于现有模型。</li></ul> |
 | **编辑** | 撤消和重做操作，以及复制、粘贴和删除。 |
-| **视图** | <ul><li>在“分析”和“设计”视图之间进行切换。</li><li>打开已关闭的窗口（例如模具、元素属性和消息）。</li><li>将布局重置为默认设置。</li></ul> |
-| **关系图** | 添加和删除关系图，及浏览关系图的“选项卡”。 |
-| **报表** | 创建与他人共享的 HTML 报告。 |
+| **视图** | <ul><li>在“分析”**** 和“设计”**** 视图之间进行切换。</li><li>打开已关闭的窗口（例如模具、元素属性和消息）。</li><li>将布局重置为默认设置。</li></ul> |
+| **图** | 添加和删除关系图，及浏览关系图的“选项卡”。 |
+| **报告** | 创建与他人共享的 HTML 报告。 |
 | **帮助** | 查看帮助使用工具的指南。 |
 
 符号是指顶级菜单的快捷方式：
@@ -54,7 +54,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 | --------------------------------------- | ------------ |
 | **打开** | 打开新文件。 |
 | **保存** | 保存当前文件。 |
-| **设计** | 打开设计视图，可以在其中创建模型。 |
+| **设计** | 打开设计**** 视图，可以在其中创建模型。 |
 | **分析** | 显示已发生的威胁及其属性。 |
 | **添加关系图** | 添加新关系图（类似于 Excel 中的新选项卡）。 |
 | **删除关系图** | 删除当前关系图。 |
@@ -63,7 +63,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 | **放大/缩小** | 放大和缩小关系图以便获得更好的视觉效果。 |
 | **反馈** | 打开 MSDN 论坛。 |
 
-### <a name="canvas"></a>画布
+### <a name="canvas"></a>Canvas
 
 画布是用于在其中拖放元素的空间。 拖放是生成模型的最快且最有效的方法。 也可以右键单击，然后选择菜单中的项，添加常规的元素版本，如下所示：
 
@@ -81,7 +81,7 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 | 模具名称                               | 详细信息      |
 | --------------------------------------- | ------------ |
-| **处理** | 应用程序、浏览器插件、线程、虚拟机 |
+| **进程** | 应用程序、浏览器插件、线程、虚拟机 |
 | **外部交互方** | 身份验证提供程序、浏览器、用户、Web 应用程序 |
 | **数据存储** | 缓存、存储、配置文件、数据库、注册表 |
 | **数据流** | 二进制、ALPC、HTTP、HTTPS/TLS/SSL、IOCTL、IPSec、命名管道、RPC/DCOM、SMB、UDP |
@@ -108,11 +108,11 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ## <a name="welcome-screen"></a>欢迎屏幕
 
-打开应用时，将看到“欢迎使用”屏幕。
+打开应用时，将看到“欢迎使用”**** 屏幕。
 
 ### <a name="open-a-model"></a>打开模型
 
-将鼠标悬停在“打开模型”上会显示 2 个选项：“从计算机打开”和“从 OneDrive 打开”。 第一个选项将打开“文件打开”屏幕。 第二个选项会将你转到 OneDrive 的登录过程。 身份验证成功后，可以选择文件夹和文件。
+将鼠标悬停在“打开模型”**** 上会显示 2 个选项：“从计算机打开”**** 和“从 OneDrive 打开”****。 第一个选项将打开“文件打开”**** 屏幕。 第二个选项会将你转到 OneDrive 的登录过程。 身份验证成功后，可以选择文件夹和文件。
 
 ![打开模型](./media/threat-modeling-tool-feature-overview/openmodel.png)
 
@@ -120,31 +120,31 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ### <a name="feedback-suggestions-and-issues"></a>反馈、建议和问题
 
-选择“反馈、建议和问题”后，将转到 SDL 工具的 MSDN 论坛。 可以在其中阅读其他用户对该工具的看法，包括变通方法和新的想法。
+选择“反馈、建议和问题”**** 后，将转到 SDL 工具的 MSDN 论坛。 可以在其中阅读其他用户对该工具的看法，包括变通方法和新的想法。
 
 ![反馈](./media/threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>设计视图
 
-打开或新建模型时，会打开“设计”视图。
+打开或新建模型时，会打开“设计”**** 视图。
 
 ### <a name="add-elements"></a>添加元素
 
 可以使用以下两种方法在网格上添加元素：
 
-- 拖放：将所需元素拖到网格中。 然后使用元素属性提供其他信息。
-- 右键单击：右键单击网格上的任意位置，然后从下拉菜单中选择项。 所选元素的通用表示将显示在屏幕上。
+- 拖放****：将所需元素拖到网格中。 然后使用元素属性提供其他信息。
+- 右键单击****：右键单击网格上的任意位置，然后从下拉菜单中选择项。 所选元素的通用表示将显示在屏幕上。
 
 ### <a name="connect-elements"></a>连接元素
 
 可以使用以下两种方法连接元素：
 
-- 拖放：将所需的数据流拖至网格中，并将两端连接到相应的元素。
-- 单击 + Shift：单击第一个元素（发送数据），按住 Shift 键，然后选择第二个元素（接收数据）。 右键单击并选择“连接”。 如果你使用的是双向数据流，顺序就不那么重要了。
+- **** 拖放：将所需的数据流拖至网格中，并将两端连接到相应的元素。
+- **** 单击 + Shift：单击第一个元素（发送数据），按住 Shift 键，然后选择第二个元素（接收数据）。 右键单击并选择“连接”****。 如果你使用的是双向数据流，顺序就不那么重要了。
 
 ### <a name="properties"></a>属性
 
- 若要查看模具上可供修改的属性，请选择相应的模具，然后会填充相应的信息。 以下示例显示“数据库”模具拖动到关系图前后的情况：
+ 若要查看模具上可供修改的属性，请选择相应的模具，然后会填充相应的信息。 以下示例显示“数据库”**** 模具拖动到关系图前后的情况：
 
 #### <a name="before"></a>之前
 
@@ -154,19 +154,19 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ![之后](./media/threat-modeling-tool-feature-overview/properties2.png)
 
-### <a name="messages"></a>消息数
+### <a name="messages"></a>消息
 
 如果在创建威胁模型时忘记将数据流连接到元素，则会收到一个通知。 可忽略此消息，或按照说明进行操作以解决此问题。 
 
-![消息数](./media/threat-modeling-tool-feature-overview/messages.png)
+![消息](./media/threat-modeling-tool-feature-overview/messages.png)
 
 ### <a name="notes"></a>说明
 
-若要向关系图添加说明，请从“消息”选项卡切换到“说明”选项卡。
+若要向关系图添加说明，请从“消息”**** 选项卡切换到“说明”**** 选项卡。
 
 ## <a name="analysis-view"></a>分析视图
 
-生成关系图后，在快捷方式工具栏上选择“分析”符号（放大镜）可切换到“分析”视图。
+生成关系图后，在快捷方式工具栏上选择“分析”**** 符号（放大镜）可切换到“分析”**** 视图。
 
 ![分析视图](./media/threat-modeling-tool-feature-overview/analysisview.png)
 
@@ -174,11 +174,11 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 选择威胁后，可以使用三种不同的功能：
 
-| 功能                               | 信息      |
+| Feature                               | 信息      |
 | --------------------------------------- | ------------ |
 | **已读指示器** | <p>将威胁标记为已读，可帮助你跟踪已查看的项。</p><p>![已读/未读指示器](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **交互焦点** | <p>关系图中属于威胁的交互会突出显示。</p><p>![交互焦点](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
-| **威胁属性** | <p>有关威胁的其他信息显示在“威胁属性”窗口中。</p><p>![威胁属性](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
+| **威胁属性** | <p>有关威胁的其他信息显示在“威胁属性”**** 窗口中。</p><p>![威胁属性](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>优先级更改
 
@@ -194,9 +194,9 @@ Threat Modeling Tool 可帮助满足你的威胁建模需求。 若要获取此�
 
 ## <a name="reports"></a>报表
 
-完成优先级更改并更新每个已发生威胁的状态后，就可以保存文件和/或打印报表。 转到“报表” > “创建完整报表”。 为报表命名，然后应会看到类似于下图的信息：
+完成优先级更改并更新每个已发生威胁的状态后，就可以保存文件和/或打印报表。 转到**报表** > **创建完整报表**。 为报表命名，然后应会看到类似于下图的信息：
 
-![报告](./media/threat-modeling-tool-feature-overview/report.png)
+![报表](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>后续步骤
 

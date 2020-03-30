@@ -9,10 +9,10 @@ ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, Open Service Broker, 用于 Azure 的 Open Service Broker
 ms.openlocfilehash: ddaa3b9aa198bc142e1bcbcab6b7b1e028eff2aa
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78247922"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>将现有的 MongoDB 应用程序与用于 MongoDB 的 Azure Cosmos DB API 和用于 Azure 的 Open Service Broker (OSBA) 集成
@@ -21,13 +21,13 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 它还提供
 
 本文使用现有的 Java 应用程序，该应用程序使用 MongoDB 数据库并对其进行更新，以便使用 Cosmos DB 数据库，而后者又使用 Open Service Broker for Azure。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在继续操作之前，必须满足以下条件：
     
 * 创建 [Azure Kubernetes 服务群集](kubernetes-walkthrough.md)。
 * [在 AKS 群集上安装并配置 Open Service Broker for Azure](integrate-azure.md)。 
-* 安装并配置运行 [ 命令所需的](https://svc-cat.io/docs/install/)服务目录 CLI`svcat`。
+* 安装并配置运行 `svcat` 命令所需的[服务目录 CLI](https://svc-cat.io/docs/install/)。
 * 有一个现有的 [MongoDB](https://www.mongodb.com/) 数据库。 例如，可以让 MongoDB 在[开发计算机](https://docs.mongodb.com/manual/administration/install-community/)上或 [Azure VM](../virtual-machines/linux/install-mongodb.md) 中运行。
 * 通过某种方式（例如 [mongo shell](https://docs.mongodb.com/manual/mongo/)）连接到 MongoDB 数据库并对其进行查询。
 
@@ -127,7 +127,7 @@ $ svcat get instance musicdb
   musicdb   default     azure-cosmosdb-mongo-account   account   Ready
 ```
 
-如果在“状态”下看到“就绪”，则表明数据库已准备就绪。
+如果在“状态”下看到“就绪”，则表明数据库已准备就绪。****
 
 数据库完成预配以后，需将其元数据绑定到 [Kubernetes 机密](https://kubernetes.io/docs/concepts/configuration/secret/)。 在将该数据绑定到机密以后，其他应用程序就可以访问该数据。 若要将数据库的元数据绑定到某个机密，请使用 `svcat bind` 命令：
 
@@ -187,7 +187,7 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>在 AKS 群集上运行应用程序
 
-可以使用 [Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md) 将应用程序部署到 AKS 群集。 Azure Dev Spaces 可帮助你生成项目（如 Dockerfile 和 Helm 图），并在 AKS 中部署和运行应用程序。
+可以使用 [Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md) 将应用程序部署到 AKS 群集。 Azure 开发人员空间可帮助您生成项目（如 Dockerfile 和 Helm 图表），并在 AKS 中部署和运行应用程序。
 
 若要在 AKS 群集中启用 Azure Dev Spaces，请执行以下操作：
 
@@ -265,7 +265,7 @@ press Ctrl+C to detach
 ...
 ```
 
-导航到日志中显示的 URL。 在上一示例中，应使用 *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/* 。 
+导航到日志中显示的 URL。 在前面的示例中，您将使用*http://spring-music.1234567890abcdef1234.eastus.aksapp.io/*。 
 
 验证是否可以看到应用程序以及你所做的更改。
 

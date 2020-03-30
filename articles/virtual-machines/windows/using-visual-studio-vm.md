@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 虚拟机上使用 Visual Studio
+title: 在 Azure 虚拟机上使用可视化工作室
 description: 在 Azure 虚拟机上使用 Visual Studio。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,30 +16,30 @@ ms.date: 12/04/2019
 ms.author: cathys
 keywords: visualstudio
 ms.openlocfilehash: 2977fb6f14468429eb651e4f8a6034c060cdee2f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895950"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上的 Visual Studio 映像
 使用预配置的 Azure 虚拟机 (VM) 中的 Visual Studio 是从无到启动并运行的开发环境的简单快捷方法。 具有不同 Visual Studio 配置的系统映像位于 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)。
 
-是 Azure 的新手？ [创建免费 Azure 帐户](https://azure.microsoft.com/free)。
+不熟悉 Azure？ [创建一个免费的 Azure 帐户](https://azure.microsoft.com/free)。
 
 > [!NOTE]
-> 并非所有订阅都有资格部署 Windows 10 映像。 有关详细信息，请参阅[在 Azure 中使用 Windows 客户端实现开发/测试方案](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)
+> 并非所有订阅都有资格部署 Windows 10 映像。 有关详细信息，请参阅[在 Azure 中使用 Windows 客户端进行开发/测试方案](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)
 
 ## <a name="what-configurations-and-versions-are-available"></a>提供了哪些配置和版本？
-在 Azure 市场中，可以找到最新主版本的映像：Visual Studio 2019、Visual Studio 2017 和 Visual Studio 2015。  对于每个发布的主版本，可以看到最初“发布到 Web”(RTW) 版本和最新更新的版本。  其中每个版本都提供 Visual Studio Enterprise 和 Visual Studio Community 版本。  这些映像至少每个月更新一次，以包括最新的 Visual Studio 和 Windows 更新。  尽管映像的名称保持不变，但每个映像的说明包括已安装的产品版本和映像的截止日期。
+在 Azure 市场中，可找到最新主版本的映像：Visual Studio 2019、Visual Studio 2017 和 Visual Studio 2015。  对于发布的每个主版本，可看到最初的“发布到 Web”(RTW) 版本和最新更新版本。  其中每个版本都提供 Visual Studio Enterprise 和 Visual Studio Community 版本。  这些映像至少每个月更新一次，以包括最新的 Visual Studio 和 Windows 更新。  尽管映像的名称保持不变，但每个映像的说明包括已安装的产品版本和映像的截止日期。
 
 | 发行版本                                                                                                                                                | 版本              | 产品版本   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019：最新版本（版本16.4）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise、Community | 版本 16.4.0    |
-| [Visual Studio 2019： RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enterprise、Community | 版本 16.0.9    |
-| [Visual Studio 2017：最新版本（版本15.9）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enterprise、Community | 版本 15.9.17   |
-| [Visual Studio 2017： RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enterprise、Community | 版本 15.0.27  |
-| [Visual Studio 2015：最新（Update 3）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Enterprise、Community | 版本 14.0.25431.01 |
+| [视觉工作室 2019： 最新 （版本 16.4）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise、Community | 版本 16.4.0    |
+| [视觉工作室 2019： RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enterprise，Community | 版本 16.0.9    |
+| [Visual Studio 2017：最新（版本 15.9）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enterprise，Community | 版本 15.9.17   |
+| [Visual Studio 2017：RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enterprise，Community | 版本 15.0.27  |
+| [Visual Studio 2015：最新 (Update 3)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Enterprise、Community | 版本 14.0.25431.01 |
 
 > [!NOTE]
 > 根据 Microsoft 服务策略，Visual Studio 2015 最初发布的 (RTW) 版本已过期，无法提供服务。 Visual Studio 2015 Update 3 是为 Visual Studio 2015 产品线提供的唯一剩余版本。
@@ -97,9 +97,9 @@ Visual Studio 遵循 Azure 中的“自带许可”模式。 与专有硬件上�
 
 开发环境的种类繁多，构建更复杂的环境需要付出实际成本。 不管环境如何配置，都可以将已配置的 VM 保存为或捕获为“基础映像”供将来使用或供团队的其他成员使用。 然后，启动新的 VM 时，从基础映像（而不是 Azure 市场映像）对其进行预配。
 
-快速摘要：使用系统准备工具 (Sysprep) 关闭正在运行的 VM，然后通过 Azure 门户的 UI 将 VM 捕获为映像（图 1）。 Azure 会将包含该映像的 `.vhd` 文件保存在所选存储帐户中。 然后，新映像在订阅的资源列表中显示为映像资源。
+快速摘要：使用系统准备工具 (Sysprep) 关闭正在运行的 VM，然后通过 Azure 门户的 UI 将 VM 捕获为映像（图 1）**。 Azure 会将包含该映像的 `.vhd` 文件保存在所选存储帐户中。 然后，新映像在订阅的资源列表中显示为映像资源。
 
-<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *（图 1）通过 Azure 门户 UI 捕获映像。* </center>
+<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*（图 1）通过 Azure 门户 UI 捕获映像。*</center>
 
 有关详细信息，请参阅[在 Azure 中创建通用 VM 的托管映像](/azure/virtual-machines/windows/capture-image-resource)。
 
@@ -109,7 +109,7 @@ Visual Studio 遵循 Azure 中的“自带许可”模式。 与专有硬件上�
 > [!NOTE]
 > 仍需花费一些成本来存储映像，但与从头开始重建 VM 的开销成本相比，对每个需要 VM 的团队成员而言，这种增量成本可能微不足道。 例如，创建和存储 127 GB 的映像每月只需几美元，整个团队都可重复使用该映像。 但是，与每位员工为构建和验证正确配置的开发箱以供个人使用而投入的时间相比，这些成本微不足道。
 
-此外，开发任务或技术可能需要更大的规模，如各种开发配置和多种计算机配置。 可使用 Azure 开发测试实验室，创建可自动构造“黄金映像”的配方。 还可以使用开发测试实验室管理团队正在运行的 VM 策略。 [使用面向开发人员的 Azure 开发测试实验室](/azure/devtest-lab/devtest-lab-developer-lab)是获取有关开发测试实验室更多信息的最佳来源。
+此外，开发任务或技术可能需要更大的规模，如各种开发配置和多种计算机配置。 可使用 Azure 开发测试实验室，创建可自动构造“黄金映像”的配方__。 还可以使用开发测试实验室管理团队正在运行的 VM 策略。 [使用面向开发人员的 Azure 开发测试实验室](/azure/devtest-lab/devtest-lab-developer-lab)是获取有关开发测试实验室更多信息的最佳来源。
 
 ## <a name="next-steps"></a>后续步骤
 了解预配置的 Visual Studio 映像后，下一步是创建新 VM：

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 6156d689a29ee348f9b1974d1520eb7d186a8d8d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78331343"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>使用 Azure 门户创建基于路由的 VPN 网关
@@ -21,11 +21,11 @@ ms.locfileid: "78331343"
 
 本文中的步骤将创建 VNet、子网、网关子网和基于路由的 VPN 网关（虚拟网络网关）。 完成网关创建后，可以创建连接。 执行这些步骤需要 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="vnet"></a>创建虚拟网络
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>创建虚拟网络
 
 [!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="gwvalues"></a>配置和创建网关
+## <a name="configure-and-create-the-gateway"></a><a name="gwvalues"></a>配置和创建网关
 
 在此步骤中，为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
@@ -38,11 +38,11 @@ ms.locfileid: "78331343"
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="viewgw"></a>查看 VPN 网关
+## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>查看 VPN 网关
 
 1. 创建网关后，请在门户中导航到 VNet1。 VPN 网关将作为已连接的设备显示在概述页上。
 
-   ![连接的设备](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "已连接的设备")
+   ![已连接的设备](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "已连接的设备")
 
 2. 在设备列表中，单击 **VNet1GW** 可查看详细信息。
 

@@ -1,15 +1,15 @@
 ---
 title: 删除 Azure Service Fabric 执行组件
-description: 了解如何在 Azure Service Fabric 应用程序中手动和完全删除 Reliable Actors 及其状态。
+description: 了解如何在 Azure 服务结构应用程序中手动和完全删除可靠参与者及其状态。
 author: amanbha
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: amanbha
 ms.openlocfilehash: b90c5a10c64e273f1c8f48c7bf5713859796db65
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645610"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>删除 Reliable Actors 及其状态
@@ -46,11 +46,11 @@ myActorServiceProxy.deleteActorAsync(actorToDelete);
 
 有关 Reliable Actors 的详细信息，请阅读以下内容：
 * [执行组件计时器和提醒](service-fabric-reliable-actors-timers-reminders.md)
-* [执行组件事件](service-fabric-reliable-actors-events.md)
+* [参与者事件](service-fabric-reliable-actors-events.md)
 * [执行组件可重入性](service-fabric-reliable-actors-reentrancy.md)
 * [执行组件诊断和性能监视](service-fabric-reliable-actors-diagnostics.md)
 * [执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# 代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [C# 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

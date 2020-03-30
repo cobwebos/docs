@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
 ms.openlocfilehash: 42c637839172dab09a8721a93a67785a748afd2f
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75708896"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动的容错
@@ -31,24 +31,24 @@ ms.locfileid: "75708896"
 ## <a name="supported-scenarios"></a>支持的方案
 复制活动支持三种检测、跳过和记录不兼容数据的方案：
 
-- **源数据类型与接收器本机类型不兼容**。 
+- **源数据类型和接收器本机类型之间的不兼容**。 
 
     例如：将数据从 Blob 存储中的 CSV 文件复制到具有架构定义的包含三个 INT 类型列的 SQL 数据库。 包含数值数据的 CSV 文件行（如 123,456,789）成功复制到接收器存储。 但是，包含非数字值的行（如 123,456, abc ）检测为不兼容，并被跳过。
 
-- **源与接收器之间的列数不匹配**。
+- **源和接收器之间的列数不匹配**。
 
-    例如：使用包含六个列的架构定义，将数据从 Blob 存储中的 CSV 文件复制到 SQL 数据库。 包含六个列的 CSV 文件行会成功复制到接收器存储。 包含六个以上列的 CSV 文件行被检测为不兼容，并被跳过。
+    例如：使用包含六个列的架构定义，将数据从 Blob 存储中的 CSV 文件复制到 SQL 数据库。 包含六个列的 CSV 文件行会成功复制到接收器存储。 包含六列以上的 CSV 文件行将检测为不兼容，并跳过。
 
-- 写入 SQL Server/Azure SQL 数据库/Azure Cosmos DB 时发生主键冲突。
+- **写入 SQL 服务器/Azure SQL 数据库/Azure 宇宙数据库 时的主要密钥冲突**。
 
     例如：将数据从 SQL 服务器复制到 SQL 数据库。 接收器 SQL 数据库中定义了主键，但源 SQL 服务器中未定义此类主键。 源中的重复行无法复制到接收器。 复制活动仅将源数据的第一行复制到接收器。 包含重复主键值的后续源行会被检测为不兼容，并被跳过。
 
 >[!NOTE]
 >- 若要使用 PolyBase 将数据加载到 SQL 数据仓库中，请配置 PolyBase 的本机容错设置，方法是在复制活动中通过“[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)”指定拒绝策略。 同时，仍然可以正常启用将 PolyBase 不兼容行重定向到 Blob 或 ADLS，如下所示。
 >- 将复制活动配置为调用 [AmazonRedShift 卸载](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift)时，此功能不适用。
->- 当复制活动配置为[从 SQL 接收器调用存储过程](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)时，此功能不适用。
+>- 当复制活动配置为调用 [SQL 接收器中的存储过程](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)时，此功能不适用。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 下面的 JSON 定义示例用于配置在复制活动中跳过不兼容行：
 
 ```json
@@ -70,9 +70,9 @@ ms.locfileid: "75708896"
 }
 ```
 
-属性 | Description | 允许的值 | 需要
+properties | 描述 | 允许的值 | 必选
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | 正确<br/>False（默认值） | 否
+enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 redirectIncompatibleRowSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否
 linkedServiceName | [Azure 存储](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) 的链接服务，用于存储包含跳过的行的记录。 | `AzureStorage` 或 `AzureDataLakeStore` 类型链接服务的名称，指代要用于存储日志文件的实例。 | 否
 路径 | 包含跳过行的日志文件的路径。 | 指定要用于记录不兼容数据的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否

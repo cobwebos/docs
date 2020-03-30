@@ -1,15 +1,15 @@
 ---
-title: 更改 KVSActorStateProvider 设置
+title: 更改 KVSActor 国家提供程序设置
 description: 了解有关配置类型为 KVSActorStateProvider 的 Azure Service Fabric 有状态执行组件的信息
 author: sumukhs
 ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609768"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>配置 Reliable Actors - KVSActorStateProvider
@@ -41,14 +41,14 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>配置名称
-| 名称 | 单位 | 默认值 | 备注 |
+| “属性” | 单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
-| BatchAcknowledgementInterval |秒数 |0.015 |收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。 为在此间隔内处理的操作发送的任何其他确认都作为响应发送。 |
-| ReplicatorEndpoint |N/A |无默认值--必选参数 |主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。 这应该引用服务清单中的 TCP 资源终结点。 有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](service-fabric-service-manifest-resources.md)。 |
-| RetryInterval |秒数 |5 |如果复制器未收到操作的确认信息而进行重新传输之后的时间段。 |
+| BatchAcknowledgementInterval |秒 |0.015 |收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。 为在此间隔内处理的操作发送的任何其他确认都作为响应发送。 |
+| ReplicatorEndpoint |空值 |无默认值--必选参数 |主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。 这应该引用服务清单中的 TCP 资源终结点。 有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](service-fabric-service-manifest-resources.md)。 |
+| RetryInterval |秒 |5 |如果复制器未收到操作的确认信息而进行重新传输之后的时间段。 |
 | MaxReplicationMessageSize |字节 |50 MB |可以在单个消息中传输的复制数据的最大大小。 |
-| MaxPrimaryReplicationQueueSize |操作数量 |1024 |主要队列中的操作的最大数目。 主复制器接收到来自所有辅助复制器的确认之后，将释放一个操作。 此值必须大于 64 和 2 的幂。 |
-| MaxSecondaryReplicationQueueSize |操作数量 |2048 |辅助队列中的操作的最大数目。 将在使操作的状态在暂留期间高度可用后释放该操作。 此值必须大于 64 和 2 的幂。 |
+| MaxPrimaryReplicationQueueSize |操作的数量 |1024 |主要队列中的操作的最大数目。 主复制器接收到来自所有辅助复制器的确认之后，将释放一个操作。 此值必须大于 64 和 2 的幂。 |
+| MaxSecondaryReplicationQueueSize |操作的数量 |2048 |辅助队列中的操作的最大数目。 将在使操作的状态在暂留期间高度可用后释放该操作。 此值必须大于 64 和 2 的幂。 |
 
 ## <a name="store-configuration"></a>存储配置
 存储配置用于配置本地存储，该存储用于保留正在复制的状态。
@@ -58,7 +58,7 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 &lt;ActorName&gt;ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>配置名称
-| 名称 | 单位 | 默认值 | 备注 |
+| “属性” | 单位 | 默认值 | 备注 |
 | --- | --- | --- | --- |
 | MaxAsyncCommitDelayInMilliseconds |毫秒 |200 |设置持久的本地存储提交的最大批处理间隔。 |
 | MaxVerPages |页数 |16384 |本地存储数据库中的最大版本页数。 它确定未完成事务的最大数目。 |

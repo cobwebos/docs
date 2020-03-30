@@ -1,5 +1,5 @@
 ---
-title: 使用旧版从 MongoDB 复制数据
+title: 使用旧版复制蒙戈DB的数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Mongo DB 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: 0bdd8d454b979250b57cf657d347309b99a86ede
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892554"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
@@ -37,9 +37,9 @@ ms.locfileid: "75892554"
 具体而言，此 MongoDB 连接器支持：
 
 - MongoDB **版本 2.4、2.6、3.0、3.2、3.4 和 3.6**。
-- 使用基本或匿名身份验证复制数据。
+- 使用基本**** 或匿名**** 身份验证复制数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -55,21 +55,21 @@ ms.locfileid: "75892554"
 
 MongoDB 链接的服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**MongoDb** |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
 | port |MongoDB 服务器用于侦听客户端连接的 TCP 端口。 |否（默认值为 27017） |
 | databaseName |要访问的 MongoDB 数据库名称。 |是 |
-| authenticationType | 用于连接 MongoDB 数据库的身份验证类型。<br/>允许的值为：Basic 和 Anonymous。 |是 |
+| authenticationType | 用于连接 MongoDB 数据库的身份验证类型。<br/>允许的值是：**基本**和**匿名**。 |是 |
 | username |用于访问 MongoDB 的用户帐户。 |是（如果使用基本身份验证）。 |
 | password |用户密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（如果使用基本身份验证）。 |
-| authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |不。 对于基本身份验证，默认使用管理员帐户和使用 databaseName 属性指定的数据库。 |
+| authSource |要用于检查身份验证凭据的 MongoDB 数据库名称。 |不是。 对于基本身份验证，默认使用管理员帐户和使用 databaseName 属性指定的数据库。 |
 | enableSsl | 指定是否使用 SSL 加密到服务器的连接。 默认值是 False。  | 否 |
 | allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值是 False。  | 否 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
-**示例：**
+**例子：**
 
 ```json
 {
@@ -98,12 +98,12 @@ MongoDB 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**MongoDbCollection** | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
 
-**示例：**
+**例子：**
 
 ```json
 {
@@ -127,14 +127,14 @@ MongoDB 链接的服务支持以下属性：
 
 ### <a name="mongodb-as-source"></a>以 MongoDB 作为源
 
-复制活动源部分支持以下属性：
+复制活动**源**部分支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**MongoDbSource** | 是 |
 | query |使用自定义 SQL-92 查询读取数据。 例如：从 MyTable 中选择 *。 |否（如果指定了数据集中的“collectionName”） |
 
-**示例：**
+**例子：**
 
 ```json
 "activities":[
@@ -171,7 +171,7 @@ MongoDB 链接的服务支持以下属性：
 
 ## <a name="schema-by-data-factory"></a>数据工厂的构架
 
-Azure 数据工厂服务通过使用 MongoDB 集合中**最新的 100 个文档**来推断该集合的架构。 如果这 100 个文档不包含完整架构，则在复制操作期间可能忽略某些列。
+Azure 数据工厂服务使用集合中**最新的 100 个文档**从 MongoDB 集合推断架构。 如果这 100 个文档不包含完整架构，则在复制操作期间可能忽略某些列。
 
 ## <a name="data-type-mapping-for-mongodb"></a>MongoDB 的数据类型映射
 
@@ -181,14 +181,14 @@ Azure 数据工厂服务通过使用 MongoDB 集合中**最新的 100 个文档*
 |:--- |:--- |
 | Binary |Byte[] |
 | Boolean |Boolean |
-| Date |日期/时间 |
+| Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
 | String |String |
-| UUID |GUID |
-| 对象 |重新标准化为平展列，以“_”作为嵌套分隔符 |
+| UUID |Guid |
+| Object |重新标准化为平展列，以“_”作为嵌套分隔符 |
 
 > [!NOTE]
 > 要了解对使用虚拟表的数组的支持，请参阅[支持使用虚拟表的复杂类型](#support-for-complex-types-using-virtual-tables)一节。
@@ -226,22 +226,22 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 * 原始数组中数据位置的指示
 * 该数组中每个元素展开的数据
 
-**“ExampleTable_Invoices”表：**
+**表"ExampleTable_Invoices"：**
 
 | _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | 折扣 |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |吐司炉 |456 |0.2 |
-| 1111 |第 |124 |烤箱 |1235 |0.2 |
+| 1111 |1 |124 |烤箱 |1235 |0.2 |
 | 2222 |0 |135 |冰箱 |12543 |0.0 |
 
-**“ExampleTable_Ratings”表：**
+**表"ExampleTable_Ratings"：**
 
 | _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
 | --- | --- | --- |
 | 1111 |0 |5 |
-| 1111 |第 |6 |
-| 2222 |0 |第 |
-| 2222 |第 |2 |
+| 1111 |1 |6 |
+| 2222 |0 |1 |
+| 2222 |1 |2 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动作为源和接收器支持的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

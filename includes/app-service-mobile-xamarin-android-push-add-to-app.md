@@ -5,10 +5,10 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67173457"
 ---
 1. 在名为 `ToDoBroadcastReceiver` 的项目中创建一个新类。
@@ -49,7 +49,7 @@ ms.locfileid: "67173457"
     }
     ```
 
-    在上述代码中，必须将 *`<PROJECT_NUMBER>`* 替换为你在 Google 开发人员门户中设置应用程序时 Google 分配的项目编号。 
+    在上述代码中，当您在*`<PROJECT_NUMBER>`* Google 开发人员门户中预配应用时，您必须替换为 Google 分配的项目编号。 
 
 5. 在 ToDoBroadcastReceiver.cs 项目文件中，添加定义 **PushHandlerService** 类的以下代码：
 
@@ -63,10 +63,10 @@ ms.locfileid: "67173457"
     }
     ```
 
-    请注意，此类派生自 **GcmServiceBase**，必须对此类应用 **Service** 属性。
+    请注意，此类派生自 **GcmServiceBase**，“服务”属性必须应用于此类。****
 
     > [!NOTE]
-    > **GcmServiceBase** 类实现 **OnRegistered()** 、**OnUnRegistered()** 、**OnMessage()** 和 **OnError()** 方法。 必须在 **PushHandlerService** 类中重写这些方法。
+    > **GcmServiceBase** 类实现 **OnRegistered()**、**OnUnRegistered()**、**OnMessage()** 和 **OnError()** 方法。 必须在 **PushHandlerService** 类中重写这些方法。
 
 6. 将以下代码添加到 **PushHandlerService** 类，以便重写 **OnRegistered** 事件处理程序。
 
@@ -109,7 +109,7 @@ ms.locfileid: "67173457"
     }
     ```
 
-    此方法使用返回的 GCM 注册 ID 向 Azure 注册以获取推送通知。 仅能在创建注册后向其添加标记。 有关更多信息，请参阅[如何：将标记添加到设备安装，以启用推送标记](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)。
+    此方法使用返回的 GCM 注册 ID 向 Azure 注册以获取推送通知。 仅能在创建注册后向其添加标记。 有关详细信息，请参阅[如何：将标记添加到设备安装以启用“推送到标记”](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)。
 
 7. 在 **PushHandlerService** 中使用以下代码重写 **OnMessage** 方法：
 

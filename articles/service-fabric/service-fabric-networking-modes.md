@@ -1,32 +1,32 @@
 ---
-title: 配置容器服务的网络模式
+title: 为容器服务配置网络模式
 description: 了解如何设置 Azure Service Fabric 支持的不同网络模式。
 author: athinanthny
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
 ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639796"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric 容器网络模式
 
-容器服务的 Azure Service Fabric 群集默认使用 nat 网络模式。 使用 nat 模式时，如果多个容器服务在相同端口上进行侦听，则会发生部署错误。 为了支持在相同端口上进行多个容器服务侦听，Service Fabric 提供开放网络模式（版本 5.7 和更高版本）。 在开放模式下，每个容器服务都具有动态分配的内部 IP 地址，支持在相同端口上同时侦听多个服务。  
+容器服务的 Azure Service Fabric 群集默认使用 nat 网络模式****。 使用 nat 模式时，如果多个容器服务在相同端口上进行侦听，则会发生部署错误。 为了支持在相同端口上进行多个容器服务侦听，Service Fabric 提供开放网络模式（版本 5.7 和更高版本）****。 在开放模式下，每个容器服务都具有动态分配的内部 IP 地址，支持在相同端口上同时侦听多个服务。  
 
 如果在服务清单中有一个带静态终结点的容器服务，则可以使用开放模式创建和删除新服务，这不会造成部署错误。 相同的 docker-compose.yml 文件还可结合使用静态端口映射，创建多个服务。
 
 容器服务重启或移动到群集中的另一个节点时，IP 地址会发生更改。 为此，不建议使用动态分配的 IP 地址来发现容器服务。 应仅使用 Service Fabric 命名服务或 DNS 服务来发现服务。 
 
 >[!WARNING]
->Azure 允许每个虚拟网络总共65356个 Ip。 节点数和容器服务实例数的总和（使用开放模式）在虚拟网络中不能超过 65356 Ip。 对于高密度方案，建议使用 nat 网络模式。 此外，其他依赖项（例如负载均衡器）将具有其他需要考虑的[限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。 目前，每个节点最多可以有50个 Ip 经过测试和证实稳定。 
+>Azure 允许每个虚拟网络总共 65,356 个 IP。 因此，在一个虚拟网络中，节点数和容器服务实例数的总和（使用开放模式）不能超过 65,356 个 IP。 对于高密度方案，建议使用 nat 网络模式。 此外，其他依赖项（例如负载均衡器）也有要考虑的其他[限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。 当前，已测试了每个节点最多 50 个 IP 并且已证明了稳定性。 
 >
 
 ## <a name="set-up-open-networking-mode"></a>设置开放网络模式
 
-1. 设置 Azure 资源管理器模板。 在群集资源的 fabricSettings 部分中，启用 DNS 服务和 IP 提供程序： 
+1. 设置 Azure 资源管理器模板。 在群集资源的 fabricSettings**** 部分中，启用 DNS 服务和 IP 提供程序： 
 
     ```json
     "fabricSettings": [
@@ -191,17 +191,17 @@ ms.locfileid: "75639796"
  
 3. 仅对于 Windows 群集，请使用以下值设置 Azure 网络安全组 (NSG) 规则，以便为虚拟网络打开端口 UDP/53：
 
-   |设置 |值 | |
+   |设置 |“值” | |
    | --- | --- | --- |
-   |优先级 |2000 | |
-   |名称 |Custom_Dns  | |
+   |优先度 |2000 | |
+   |“属性” |Custom_Dns  | |
    |源 |VirtualNetwork | |
    |目标 | VirtualNetwork | |
    |服务 | DNS (UDP/53) | |
-   |行动 | 允许  | |
+   |操作 | Allow  | |
    | | |
 
-4. 在应用程序清单中为每个服务指定网络模式 `<NetworkConfig NetworkType="Open">`。 开放网络模式使服务获得专用 IP 地址。 如果未指定模式，服务默认使用 nat 模式。 在以下清单示例中，`NodeContainerServicePackage1` 和 `NodeContainerServicePackage2` 服务均可在相同端口上进行侦听（这两个服务都在 `Endpoint1` 上进行侦听）。 如果指定了开放网络模式，便无法指定 `PortBinding` 配置。
+4. 在应用程序清单中为每个服务指定网络模式 `<NetworkConfig NetworkType="Open">`。 开放网络模式使服务获得专用 IP 地址****。 如果未指定模式，服务默认使用 nat 模式****。 在以下清单示例中，`NodeContainerServicePackage1` 和 `NodeContainerServicePackage2` 服务均可在相同端口上进行侦听（这两个服务都在 `Endpoint1` 上进行侦听）。 如果指定了开放网络模式，便无法指定 `PortBinding` 配置。
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -236,7 +236,7 @@ ms.locfileid: "75639796"
     >Linux 群集上不支持混合不同服务的网络模式。 
     >
 
-5. 选择“打开”模式时，服务清单中的**终结点**定义应显式指向终结点所对应的代码包，即使服务包中只有一个代码包，也是如此。 
+5. 选择“打开”**** 模式时，服务清单中的**终结点**定义应显式指向终结点所对应的代码包，即使服务包中只有一个代码包，也是如此。 
    
    ```xml
    <Resources>

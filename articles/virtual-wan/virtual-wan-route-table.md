@@ -1,5 +1,5 @@
 ---
-title: 虚拟 WAN：创建虚拟中心路由表到 NVA： Azure PowerShell
+title: 虚拟广域网：创建虚拟中心路由表到 NVA：Azure PowerShell
 description: 虚拟 WAN 虚拟中心路由表，用于将流量引导到网络虚拟设备。
 services: virtual-wan
 author: cherylmc
@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
 ms.openlocfilehash: a55e1453fe7fe4d135286b22dabf58d434762581
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645100"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>创建一个虚拟中心路由表来将流量引导到网络虚拟设备。
@@ -36,14 +36,14 @@ ms.locfileid: "75645100"
 
 验证是否符合以下条件：
 
-1. 你拥有网络虚拟设备（NVA）。 这是所选的第三方软件，通常是从虚拟网络中的 Azure Marketplace 进行预配的。
+1. 已有一个网络虚拟设备 (NVA)。 它是所选的第三方软件，通常是通过虚拟网络中的 Azure 市场预配的。
 2. 你向 NVA 网络接口分配了一个专用 IP。 
-3. 无法在虚拟中心部署 NVA。 它必须部署在单独的 VNet 中。 在本文中，NVA VNet 称为“DMZ VNet”。
+3. NVA 不能部署在虚拟中心内。 它必须部署在单独的 VNet 中。 在本文中，NVA VNet 称为“DMZ VNet”。
 4. “DMZ VNet”可以有一个或多个虚拟网络连接到它。 在本文中，此 VNet 称为“间接辐射 VNet”。 这些 VNet 可以使用 VNet 对等互连连接到 DMZ VNet。
 5. 验证已创建了 2 个 VNet。 它们将用作辐射 VNet。 对于本文，VNet 辐射地址空间是 10.0.2.0/24 和 10.0.3.0/24。 如果需要有关如何创建 VNet 的信息，请参阅[使用 PowerShell 创建虚拟网络](../virtual-network/quick-create-powershell.md)。
 6. 请确保任何 VNet 中都没有虚拟网络网关。
 
-## <a name="signin"></a>1. 登录
+## <a name="1-sign-in"></a><a name="signin"></a>1. 登录
 
 确保安装最新版本的资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/install-az-ps)。 这很重要，因为早期版本的 cmdlet 不包含本练习所需的最新值。
 
@@ -63,7 +63,7 @@ ms.locfileid: "75645100"
    Select-AzSubscription -SubscriptionName "Name of subscription"
    ```
 
-## <a name="rg"></a>2. 创建资源
+## <a name="2-create-resources"></a><a name="rg"></a>2. 创建资源
 
 1. 创建资源组。
 
@@ -81,7 +81,7 @@ ms.locfileid: "75645100"
    New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -Location "West US"
    ```
 
-## <a name="connections"></a>3. 创建连接
+## <a name="3-create-connections"></a><a name="connections"></a>3. 创建连接
 
 创建从间接辐射 VNet 和 DMZ VNet 到虚拟中心的中心虚拟网络连接。
 
@@ -95,7 +95,7 @@ ms.locfileid: "75645100"
   New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "westushub" -Name  "testvnetconnection3" -RemoteVirtualNetwork $remoteVirtualNetwork3
   ```
 
-## <a name="route"></a>4. 创建虚拟中心路由
+## <a name="4-create-a-virtual-hub-route"></a><a name="route"></a>4. 创建虚拟中心路由
 
 对于本文，间接辐射 VNet 地址空间是 10.0.2.0/24 和 10.0.3.0/24，DMZ NVA 网络接口专用 IP 地址是 10.0.4.5。
 
@@ -103,7 +103,7 @@ ms.locfileid: "75645100"
 $route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/24") -NextHopIpAddress "10.0.4.5"
 ```
 
-## <a name="applyroute"></a>5. 创建虚拟中心路由表
+## <a name="5-create-a-virtual-hub-route-table"></a><a name="applyroute"></a>5. 创建虚拟中心路由表
 
 创建一个虚拟中心路由表，然后将所创建的路由应用于它。
  
@@ -111,7 +111,7 @@ $route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/24") -
 $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 ```
 
-## <a name="commit"></a>6. 提交更改
+## <a name="6-commit-the-changes"></a><a name="commit"></a>6. 提交更改
 
 将更改提交到虚拟中心。
 

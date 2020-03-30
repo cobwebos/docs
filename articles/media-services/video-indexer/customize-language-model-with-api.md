@@ -1,7 +1,7 @@
 ---
-title: 使用视频索引器 Api 自定义语言模型-Azure
+title: 使用视频索引器 API 自定义语言模型
 titlesuffix: Azure Media Services
-description: 本文介绍如何使用视频索引器 API 自定义语言模型。
+description: 了解如何使用视频索引器 API 自定义语言模型。
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: anzaman
-ms.openlocfilehash: 01ea4d9ef943183f09baa86b729ec69344d4309e
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049028"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127980"
 ---
-# <a name="customize-a-language-model-with-the-video-indexer-apis"></a>使用视频索引器 API 自定义语言模型
+# <a name="customize-a-language-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义语言模型
 
-视频索引器可以让你通过上传自适应文本（即其词汇需要引擎来适应的领域中的文本）创建自定义语言模型来自定义语音识别。 训练模型后，可以识别自适应文本中显示的新单词。 
+视频索引器可以让你通过上传自适应文本（即其词汇需要引擎来适应的领域中的文本）创建自定义语言模型来自定义语音识别。 训练模型后，可以识别自适应文本中显示的新单词。
 
 有关自定义语言模型的详细概述和最佳做法，请参阅[使用视频索引器自定义语言模型](customize-language-model-overview.md)。
 
@@ -27,19 +27,19 @@ ms.locfileid: "77049028"
 
 ## <a name="create-a-language-model"></a>创建语言模型
 
-[创建语言模型](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?)API 将在指定的帐户中创建一个新的自定义语言模型。 可以在此调用中上传语言模型的文件。 或者，可以在此处创建语言模型，稍后再通过更新语言模型上传模型的文件。
+[创建语言模型](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?)API 在指定的帐户中创建新的自定义语言模型。 可以在此调用中上传语言模型的文件。 或者，可以在此处创建语言模型，稍后再通过更新语言模型上传模型的文件。
 
 > [!NOTE]
 > 仍必须使用模型的已启用文件来训练该模型，以学习其文件的内容。 下一部分提供了有关训练语言的指导。
 
-若要上传要添加到语言模型的文件，必须使用表单数据在正文中上传文件，此外，必须为上述所需参数提供值。 可通过两种方式实现此目的： 
+要上载要添加到语言模型的文件，除了提供上述所需参数的值外，还必须使用 FormData 在正文中上载文件。 执行此任务的方法有两种：
 
-1. 密钥是文件名，值是 txt 文件
-2. 密钥是文件名，值是 txt 文件的 URL
+* 键将是文件名，值将是 txt 文件。
+* 密钥将是文件名，值将是 txt 文件的 URL。
 
 ### <a name="response"></a>响应
 
-响应提供有关新建的语言模型的元数据，以及有关每个模型的文件的元数据（遵循示例 JSON 输出的格式）。
+响应提供新创建的语言模型上的元数据，以及以下示例 JSON 输出的格式的每个模型文件的元数据：
 
 ```json
 {
@@ -70,14 +70,14 @@ ms.locfileid: "77049028"
 
 ## <a name="train-a-language-model"></a>训练语言模型
 
-[训练语言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train)API 使用上传到并在语言模型中启用的文件中的内容训练指定帐户中的自定义语言模型。 
+[训练语言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train)API 在指定帐户中训练自定义语言模型，其中的内容在语言模型中上载并启用。
 
 > [!NOTE]
-> 必须先创建语言模型并上传其文件。 可以在创建语言模型时或者通过更新语言模型来上传文件。 
+> 必须先创建语言模型并上传其文件。 您可以在创建语言模型或更新语言模型时上载文件。
 
 ### <a name="response"></a>响应
 
-响应提供有关新训练的语言模型的元数据，以及有关每个模型的文件的元数据（遵循示例 JSON 输出的格式）。
+响应提供新培训的语言模型上的元数据，以及以下示例 JSON 输出的格式的每个模型文件的元数据：
 
 ```json
 {
@@ -105,32 +105,31 @@ ms.locfileid: "77049028"
 }
 ```
 
-返回的**id**是用于区分语言模型的唯一 id，而**languageModelId**用于[上传视频来索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)和重新索引[视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)api （在视频索引器上传/重新索引 api 中也称为**linguisticModelId** ）。
+返回`id`的标识是用于区分语言模型的唯一 ID，同时`languageModelId`用于[将视频上载到索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)和[重新索引视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)API（也称为`linguisticModelId`视频索引器上载/重新索引 API）。
 
 ## <a name="delete-a-language-model"></a>删除语言模型
 
-[删除语言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete)API 将从指定的帐户中删除自定义语言模型。 使用已删除语言模型的任何视频会保留相同的索引，直到为该视频重新编制索引为止。 如果重新为视频编制索引，可为视频分配新的语言模型。 否则，视频索引器会使用其默认模型重新为视频编制索引。
+[删除语言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete)API 将从指定的帐户中删除自定义语言模型。 使用已删除的语言模型的任何视频都将保留相同的索引，直到重新索引视频。 如果重新对视频进行索引，则可以为视频分配新的语言模型。 否则，视频索引器将使用其默认模型重新索引视频。
 
 ### <a name="response"></a>响应
 
-成功删除语言模型后不会返回内容。
+成功删除语言模型时，没有返回的内容。
 
 ## <a name="update-a-language-model"></a>更新语言模型
 
-[更新语言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update)API 会更新指定帐户中的自定义语言用户模型。
+[更新语言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update)API 更新指定帐户中的自定义语言人员模型。
 
 > [!NOTE]
 > 必须事先创建一个语言模型。 可以使用此调用来启用或禁用模型下的所有文件、更新语言模型的名称，以及上传要添加到语言模型的文件。
 
-若要上传要添加到语言模型的文件，必须使用表单数据在正文中上传文件，此外，必须为上述所需参数提供值。 可通过两种方式实现此目的： 
+要上载要添加到语言模型的文件，除了提供上述所需参数的值外，还必须使用 FormData 在正文中上载文件。 执行此任务的方法有两种：
 
-1. 密钥是文件名，值是 txt 文件
-2. 密钥是文件名，值是 txt 文件的 URL
-
+* 键将是文件名，值将是 txt 文件。
+* 密钥将是文件名，值将是 txt 文件的 URL。
 
 ### <a name="response"></a>响应
 
-响应提供有关新训练的语言模型的元数据，以及有关每个模型的文件的元数据（遵循示例 JSON 输出的格式）。
+响应提供新培训的语言模型上的元数据，以及以下示例 JSON 输出的格式的每个模型文件的元数据：
 
 ```json
 {
@@ -158,11 +157,11 @@ ms.locfileid: "77049028"
 }
 ```
 
-使用响应中返回的文件的**id**下载文件的内容。
+`id`使用响应中返回的文件下载文件的内容。
 
 ## <a name="update-a-file-from-a-language-model"></a>更新语言模型中的文件
 
-使用[更新文件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)可以更新指定帐户的自定义语言模型中的文件的名称和**启用**状态。
+文件[的更新](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)允许您更新指定帐户中自定义语言模型中的文件`enable`的名称和状态。
 
 ### <a name="response"></a>响应
 
@@ -177,15 +176,16 @@ ms.locfileid: "77049028"
   "creationTime": "2018-04-27T20:10:10.5233333"
 }
 ```
-使用在响应中返回的文件的**id**下载文件的内容。
+
+`id`使用响应中返回的文件下载文件的内容。
 
 ## <a name="get-a-specific-language-model"></a>获取特定的语言模型
 
-[Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API 返回指定帐户中指定语言模型的信息，如语言和语言模型中的文件。 
+[get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API 返回指定帐户中指定语言模型的信息，如语言和语言模型中的文件。
 
 ### <a name="response"></a>响应
 
-响应提供有关指定的语言模型的元数据，以及有关每个模型的文件的元数据（遵循以下示例 JSON 输出的格式）。
+响应提供指定语言模型上的元数据，以及以下示例 JSON 输出的格式的每个模型文件的元数据：
 
 ```json
 {
@@ -213,15 +213,15 @@ ms.locfileid: "77049028"
 }
 ```
 
-使用在响应中返回的文件的**id**下载文件的内容。
+`id`使用响应中返回的文件下载文件的内容。
 
 ## <a name="get-all-the-language-models"></a>获取所有语言模型
 
-"[获取所有](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get)API" 返回列表中指定帐户的所有自定义语言模型。
+[获取所有](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get)API 返回列表中指定帐户中的所有自定义语言模型。
 
 ### <a name="response"></a>响应
 
-响应提供一个列表，其中包含帐户中的所有语言模型，以及这些模型的每个元数据和文件（遵循以下示例 JSON 输出的格式）。
+响应提供帐户中所有语言模型的列表及其每个元数据和文件，遵循此示例 JSON 输出的格式：
 
 ```json
 [
@@ -261,19 +261,19 @@ ms.locfileid: "77049028"
 
 ## <a name="delete-a-file-from-a-language-model"></a>从语言模型中删除文件
 
-[删除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete)API 将从指定帐户中的指定语言模型删除指定的文件。 
+[删除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete)API 从指定帐户中的指定语言模型中删除指定的文件。
 
 ### <a name="response"></a>响应
 
-成功从语言模型中删除文件后不会返回内容。
+当文件从语言模型成功删除时，没有返回的内容。
 
 ## <a name="get-metadata-on-a-file-from-a-language-model"></a>获取有关语言模型中的文件的元数据
 
-文件 API 的[get 元数据](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model)从你的帐户中所选的语言模型返回指定文件上的内容和元数据。
+文件 API[的获取元数据](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model)从帐户中所选的语言模型返回指定文件的内容和元数据。
 
 ### <a name="response"></a>响应
 
-响应提供文件的 JSON 格式内容和元数据，如下所示：
+响应以 JSON 格式提供文件的内容和元数据，类似于以下示例：
 
 ```json
 {
@@ -291,11 +291,11 @@ ms.locfileid: "77049028"
 
 ## <a name="download-a-file-from-a-language-model"></a>从语言模型下载文件
 
-"[下载文件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?)API" 下载一个文本文件，其中包含指定帐户中指定语言模型的指定文件的内容。 此文本文件应与最初上传的文本文件的内容相匹配。
+[下载文件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?)API 从指定帐户中的指定语言模型中下载包含指定文件内容的文本文件。 此文本文件应与最初上传的文本文件的内容相匹配。
 
 ### <a name="response"></a>响应
 
-响应是下载的文本文件，其中包含该文件的 JSON 格式内容。 
+响应是下载的文本文件，其中包含该文件的 JSON 格式内容。
 
 ## <a name="next-steps"></a>后续步骤
 

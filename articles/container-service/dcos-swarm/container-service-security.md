@@ -8,10 +8,10 @@ ms.date: 03/28/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: d90d872175febf775e7d0892e133883f1a8ff8a2
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552372"
 ---
 # <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>（已弃用）保护 Azure 容器服务中的 Docker 容器
@@ -27,7 +27,7 @@ ms.locfileid: "75552372"
 ### <a name="public-and-private-images"></a>公共和专用映像
 一般情况下，与任何公开发布的软件包一样，公用容器映像不提供安全保证。 容器映像包括多个软件层，每个软件层可能有漏洞。 了解容器映像的来源至关重要，包括映像的所有者（确定源是否可靠）、映像包括的软件层和软件版本。 
 
-例如，在 Docker Hub 中心转到官方 [nginx 存储库](https://hub.docker.com/_/nginx/)并导航到“标记”选项卡后，可以看到每个映像中带有颜色编码的漏洞。 每种颜色描绘了映像某个软件层的漏洞。 有关在 Docker 中心扫描漏洞的详细信息，请参阅[在 Docker 中心了解官方存储库](https://blog.docker.com/2015/06/understanding-official-repos-docker-hub/)。
+例如，在 Docker Hub 中心转到官方 [nginx 存储库](https://hub.docker.com/_/nginx/)并导航到“标记”选项卡后，可以看到每个映像中带有颜色编码的漏洞。**** 每种颜色描绘了映像某个软件层的漏洞。 有关在 Docker 中心扫描漏洞的详细信息，请参阅[在 Docker 中心了解官方存储库](https://blog.docker.com/2015/06/understanding-official-repos-docker-hub/)。
 
 ![Docker 中心上的 Nginx 映像](./media/container-service-security/docker-hub-nginx.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "75552372"
 ## <a name="host-level-container-isolation"></a>主机级容器隔离
 当客户在 Azure 资源中部署容器应用程序时，这些应用程序将部署在资源组中的订阅级别，并且不属于多租户应用程序。 这意味着，如果客户与其他人共享某个订阅，则无法在同一个订阅中的两个部署之间构建边界。 因此，无法保证容器级安全性。 
 
-此外，必须知道，容器共享主机的内核和资源（即，Azure 容器服务包含群集中的 Azure VM）。 因此，在生产环境中运行的容器必须以非特权用户模式运行。 使用 root 特权运行容器可能会危害整个环境。 获得容器中的 root 级访问权限后，黑客便获得了主机上的完全 root 特权。 此外，必须使用只读的文件系统运行容器。 这可以防止有权访问已遭入侵容器的人员在文件系统中写入恶意脚本，获取对其他文件的访问权限。 同样，必须限制分配给容器的资源（例如内存、CPU 和网络带宽）。 这有助于防止黑客占用资源并利用非法活动，如信用卡欺诈或位硬币挖掘，这会阻止其他容器在主机或群集上运行。
+此外，必须知道，容器共享主机的内核和资源（即，Azure 容器服务包含群集中的 Azure VM）。 因此，在生产环境中运行的容器必须以非特权用户模式运行。 使用 root 特权运行容器可能会危害整个环境。 获得容器中的 root 级访问权限后，黑客便获得了主机上的完全 root 特权。 此外，必须使用只读的文件系统运行容器。 这可以防止有权访问已遭入侵容器的人员在文件系统中写入恶意脚本，获取对其他文件的访问权限。 同样，必须限制分配给容器的资源（例如内存、CPU 和网络带宽）。 这有助于防止黑客占用资源和进行非法活动，如信用卡欺诈或位硬币挖掘，这可能会阻止其他容器在主机或群集上运行。
 
 ## <a name="orchestrator-considerations"></a>协调器注意事项
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: d71d52257b6e8cfa243207c9bfdb5c7de7d3dd37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67173631"
 ---
 1. 在 MainPage.xaml.cs 项目文件中，添加以下 **using** 语句：
@@ -92,5 +92,5 @@ ms.locfileid: "67173631"
    > 
 3. 两次重新启动此应用。
    
-    请注意，在第一次启动时，再次需要使用此提供商进行登录。 但是，在第二次重新启动时，将使用缓存的凭据，而绕过登录。 
+    请注意，在第一次启动时，再次需要使用此提供商进行登录。 但是，在第二次重新启动时，将使用缓存的凭证，而绕过登录。 
 

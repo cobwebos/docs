@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 86e1a9cce1864ce259fe07b6949be2e32be242a8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774414"
 ---
-Exchange 对等互连支持以下修改操作
+支持对等互连进行后续修改操作
 1. 添加 Exchange 对等互连连接
 1. 删除 Exchange 对等互连连接
 1. 在活动连接上添加 IPv4/IPv6 会话。
-1. 删除活动连接上的 IPv4/IPv6 会话。
+1. 在活动连接上删除 IPv4/IPv6 会话。
 
 
 ### <a name="add-exchange-peering-connections"></a>添加 Exchange 对等互连连接
 
-下面的示例介绍如何将连接添加到现有 Exchange 对等互连
+下面的示例介绍如何向现有 Exchange 对等互连添加连接
 
 ```powershell
 
@@ -53,7 +53,7 @@ $exchangePeering = Get-AzPeering -Name "SeattleExchangePeering" -ResourceGroupNa
 
 ```
 
-查看所有连接，并选择要删除的连接。 
+查看所有连接并选择要删除的连接。 
 
 ```powershell
 
@@ -73,7 +73,7 @@ Tags              : {}
 
 ```
 
-在下面的命令中，输入要删除的连接的索引号，而不是0。
+在下面的命令中，输入要删除的连接的索引号，而不是 0。
 
 ```powershell
 
@@ -87,7 +87,7 @@ $exchangePeering | Update-AzPeering
 
 ### <a name="add-ipv4ipv6-session-on-active-connections"></a>在活动连接上添加 IPv4/IPv6 会话
 
-下面的示例介绍如何将 IPv6 会话添加到现有 exchange 连接。
+下面的示例介绍如何将 IPv6 会话添加到现有交换连接。
 
 ```powershell
 
@@ -99,6 +99,6 @@ $exchangePeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>删除活动连接上的 IPv4/IPv6 会话
+### <a name="remove-ipv4ipv6-session-on-active-connections"></a>在活动连接上删除 IPv4/IPv6 会话
 
-PowerShell 当前不支持从现有连接中删除 IPv4/IPv6 会话。 请联系[Microsoft 对等互连](mailto:peeringexperience@microsoft.com)。
+PowerShell 目前不支持从现有连接中删除 IPv4/IPv6 会话。 联系[微软对等互连](mailto:peeringexperience@microsoft.com)。

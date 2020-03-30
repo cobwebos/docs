@@ -1,15 +1,15 @@
 ---
 title: Reliable Services 通知
-description: 适用于可靠状态管理器和可靠字典的 Service Fabric Reliable Services 通知的概念文档
+description: 服务结构可靠服务通知的概念文档，用于可靠状态管理器和可靠词典
 author: mcoskun
 ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.openlocfilehash: 1f3239ea1da252ccd84c6572b562756c8fd1677d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639558"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services 通知
@@ -28,7 +28,7 @@ ms.locfileid: "75639558"
 * 事务
   * Commit
 * 状态管理器
-  * 重新生成
+  * “重新生成”
   * 添加可靠状态
   * 删除可靠状态
 
@@ -158,7 +158,7 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 
 * **NotifyDictionaryChangedAction.Rebuild**：**NotifyDictionaryRebuildEventArgs**
 * **NotifyDictionaryChangedAction.Clear**：**NotifyDictionaryClearEventArgs**
-* **Notifydictionarychangedaction.remove**： **NotifyDictionaryItemAddedEventArgs**
+* **通知词典更改操作.添加**：**通知字典项目添加事件**
 * **NotifyDictionaryChangedAction.Update**：**NotifyDictionaryItemUpdatedEventArgs**
 * **NotifyDictionaryChangedAction.Remove**：**NotifyDictionaryItemRemovedEventArgs**
 
@@ -207,8 +207,8 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 * 在处理错误进度的过程中，某些操作可能会恢复。 通知会针对这类恢复操作加以触发，将副本状态回滚到稳定的时间点。 恢复通知的一个重要区别，是具有重复键的事件会聚合在一起。 例如，如果恢复事务 T1，会看到一条针对 Delete(X) 的通知。
 
 ## <a name="next-steps"></a>后续步骤
-* [Reliable Collections](service-fabric-work-with-reliable-collections.md)
-* [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
+* [可靠的收藏](service-fabric-work-with-reliable-collections.md)
+* [可靠的服务快速启动](service-fabric-reliable-services-quick-start.md)
 * [Reliable Services 备份和还原（灾难恢复）](service-fabric-reliable-services-backup-restore.md)
-* [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [可靠集合的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
 

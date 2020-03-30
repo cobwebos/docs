@@ -1,15 +1,15 @@
 ---
 title: Reliable Actors 计时器和提醒
-description: 针对 Service Fabric Reliable Actors 的计时器和提醒简介，其中包括有关何时使用各个内容的指导。
+description: 介绍服务提供商和提醒服务结构可靠参与者，包括有关何时使用每个角色的指导。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 02d6220b31ee9c991e8450759bf46759af6177a3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639609"
 ---
 # <a name="actor-timers-and-reminders"></a>执行组件计时器和提醒
@@ -220,5 +220,5 @@ CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 
 ## <a name="next-steps"></a>后续步骤
 了解 Reliable Actor 事件和可重入性：
-* [执行组件事件](service-fabric-reliable-actors-events.md)
+* [参与者事件](service-fabric-reliable-actors-events.md)
 * [执行组件可重入性](service-fabric-reliable-actors-reentrancy.md)

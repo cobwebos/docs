@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 机器学习中启用日志记录
-description: 了解如何使用默认的 Python 日志记录包和使用 SDK 特定功能在 Azure 机器学习中启用日志记录。
+description: 了解如何使用默认的 Python 日志记录包以及 SDK 特定的功能，在 Azure 机器学习中启用日志记录。
 ms.author: trbye
 author: trevorbye
 services: machine-learning
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 03/05/2020
 ms.openlocfilehash: 73b9ae6bc3c15526bfdafd74330c7b86286631b1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78396139"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>在 Azure 机器学习中启用日志记录
@@ -31,7 +31,7 @@ ms.locfileid: "78396139"
 
 ## <a name="training-models-and-compute-target-logging"></a>训练模型和计算目标日志记录
 
-在模型训练过程中，可通过多种方法启用日志记录，示例将演示常用设计模式。 可以使用 `start_logging` 类中的 `Experiment` 函数，将运行相关的数据轻松记录到云中的工作区。
+在模型训练过程中，可通过多种方法启用日志记录，示例将演示常用设计模式。 可以使用 `Experiment` 类中的 `start_logging` 函数，将运行相关的数据轻松记录到云中的工作区。
 
 ```python
 from azureml.core import Experiment
@@ -41,7 +41,7 @@ run = exp.start_logging()
 run.log("test-val", 10)
 ```
 
-有关其他日志记录功能，请参阅[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)类的参考文档。
+有关其他日志记录函数，请参见 [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) 类的参考文档。
 
 若要在训练过程中启用应用程序状态的本地日志记录，请使用 `show_output` 参数。 启用详细日志记录可以查看训练过程的详细信息，以及有关任何远程资源或计算目标的信息。 提交试验时使用以下代码启用日志记录。
 
@@ -58,7 +58,7 @@ run = experiment.submit(config=run_config_object, show_output=True)
 run.wait_for_completion(show_output=True)
 ```
 
-在某些训练场景中，SDK 还支持使用默认的 Python 日志记录包。 以下示例在 `INFO` 对象中启用日志记录级别 `AutoMLConfig`。
+在某些训练场景中，SDK 还支持使用默认的 Python 日志记录包。 以下示例在 `AutoMLConfig` 对象中启用日志记录级别 `INFO`。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -101,7 +101,7 @@ logs = service.get_logs()
 service.update(enable_app_insights=True)
 ```
 
-有关详细信息，请参阅[从 ML web 服务终结点监视和收集数据](how-to-enable-app-insights.md)。
+有关详细信息，请参阅[监视和从 ML Web 服务终结点收集数据](how-to-enable-app-insights.md)。
 
 ## <a name="python-native-logging-settings"></a>Python 本机日志记录设置
 
@@ -114,4 +114,4 @@ logging.basicConfig(level=logging.DEBUG)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [监视和收集 ML web 服务终结点中的数据](how-to-enable-app-insights.md)
+* [监视机器学习 Web 服务终结点以及从中收集数据](how-to-enable-app-insights.md)

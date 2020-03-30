@@ -1,6 +1,6 @@
 ---
 title: IoT 解决方案加速器常见问题解答 - Azure | Microsoft Docs
-description: 本文解答了 IoT 解决方案加速器的常见问题。 它包括 GitHub 存储库的链接。
+description: 本文回答了 IoT 解决方案加速器的常见问题。 它包括指向 GitHub 存储库的链接。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75647707"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT 解决方案加速器常见问题解答
 
-另请参阅[特定于连接工厂的常见问题解答](iot-accelerators-faq-cf.md)和[特定于远程监视的常见问题解答](iot-accelerators-faq-rm-v2.md)。
+另请参阅[连接工厂特定的常见问题解答](iot-accelerators-faq-cf.md)和[特定于远程监控的常见问题解答](iot-accelerators-faq-rm-v2.md)。
 
-### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>在哪里可以找到解决方案加速器的源代码？
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>在哪里可以找到此解决方案加速器的源代码？
 
 源代码存储在以下 GitHub 存储库中：
 
@@ -65,20 +65,20 @@ ms.locfileid: "75647707"
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>在哪里可以找到有关以前版本的远程监视解决方案的信息？
 
-以前版本的远程监视解决方案加速器称为 IoT 套件远程监视预配置解决方案。 可以在 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) 中找到已存档文档。
+以前版本的远程监视解决方案加速器称为 IoT 套件远程监视预配置解决方案。 您可以在 中找到 存档的文档。 [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/)
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>新的解决方案加速器是否在现有解决方案所在的同一地理区域中可用？
 
 是的，新的远程监视解决方案可在同一地理区域中使用。
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>删除 Azure 门户中的资源组与在 azureiotsolutions.com 中的解决方案加速器上单击 "删除" 之间有何区别？
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>在 Azure 门户中删除资源组和单击azureiotsolutions.com中的解决方案加速器上的删除之间的区别是什么？
 
-* 如果删除[azureiotsolutions.com](https://www.azureiotsolutions.com/)中的解决方案加速器，则会删除在创建解决方案加速器时部署的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。
+* 如果在[azureiotsolutions.com](https://www.azureiotsolutions.com/)中删除解决方案加速器，则删除创建解决方案加速器时部署的所有资源。 如果向资源组添加了其他资源，则也会删除这些资源。
 * 如果在 [Azure 门户](https://portal.azure.com)中删除资源组，则只会删除该资源组中的资源。 此外还需要删除与解决方案加速器关联的 Azure Active Directory 应用程序。
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>是否可以继续利用 Azure IoT 解决方案加速器中的现有投资？
 
-可以。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
+是的。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>在一个订阅中可以设置多少个 IoT 中心实例？
 
@@ -107,7 +107,7 @@ ms.locfileid: "75647707"
 
 还可以浏览 IoT 解决方案加速器的一些其他特性和功能：
 
-* [探索远程监视解决方案加速器的功能](quickstart-remote-monitoring-deploy.md)
+* [探索远程监控解决方案加速器的功能](quickstart-remote-monitoring-deploy.md)
 * [预测性维护解决方案加速器概述](iot-accelerators-predictive-overview.md)
 * [部署连接的工厂解决方案加速器](quickstart-connected-factory-deploy.md)
 * [从头保障 IoT 的安全](/azure/iot-fundamentals/iot-security-ground-up)

@@ -17,13 +17,13 @@ ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: 1c2d5ae5d85624ea172eb9a95d4086dd71287c4f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978210"
 ---
-# <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>连接到 Azure（经典部署）上的 SQL Server 虚拟机
+# <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>连接到 Azure 上的 SQL Server 虚拟机（经典部署）
 > [!div class="op_single_selector"]
 > * [资源管理器](../sql/virtual-machines-windows-sql-connect.md)
 > * [经典](../classic/sql-connect.md)
@@ -34,7 +34,7 @@ ms.locfileid: "75978210"
 本主题介绍如何连接到 Azure 中虚拟机上运行的 SQL Server 实例。 介绍一些[常规连接方案](#connection-scenarios)，并提供[在 Azure VM 中配置 SQL Server 连接的详细步骤](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)。
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 如果使用的是 Resource Manager VM，请参阅[使用 Resource Manager 连接到 Azure 上的 SQL Server 虚拟机](../sql/virtual-machines-windows-sql-connect.md)。
+> Azure 有两种不同的部署模型来创建和使用资源：[资源管理器和经典](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 如果使用的是 Resource Manager VM，请参阅[使用 Resource Manager 连接到 Azure 上的 SQL Server 虚拟机](../sql/virtual-machines-windows-sql-connect.md)。
 
 ## <a name="connection-scenarios"></a>连接方案
 客户端连接虚拟机上运行的 SQL Server 的方式取决于客户端的位置与计算机/网络配置。 这些方案包括：
@@ -58,7 +58,7 @@ ms.locfileid: "75978210"
 ### <a name="connect-to-sql-server-over-the-internet"></a>通过 Internet 连接到 SQL Server
 如果想要通过 Internet 连接到 SQL Server 数据库引擎，则必须创建虚拟机终结点以进行传入 TCP 通信。 此 Azure 配置步骤将传入 TCP 端口通信定向到虚拟机可以访问的 TCP 端口。
 
-若要通过 Internet 进行连接，必须使用 VM 的 DNS 名称和（本文中稍后配置的）VM 终结点端口号。 要查找 DNS 名称，请导航到 Azure 门户，并选择“虚拟机(经典)”。 然后选择虚拟机。 “DNS 名称”显示在“概述”部分。
+若要通过 Internet 进行连接，必须使用 VM 的 DNS 名称和（本文中稍后配置的）VM 终结点端口号。 要查找 DNS 名称，请导航到 Azure 门户，并选择“虚拟机(经典)”。**** 然后选择虚拟机。 “DNS 名称”**** 显示在“概述”**** 部分。
 
 例如，假设一个名为 **mysqlvm** 的经典虚拟机，其 DNS 名称为 **mysqlvm7777.cloudapp.net**，VM 终结点为 **57500**。 假设正确配置了连接性，则可从 Internet 上的任意位置使用以下连接字符串访问该虚拟机：
 
@@ -91,7 +91,7 @@ ms.locfileid: "75978210"
 * [配置混合模式的 SQL Server 身份验证](#configure-sql-server-for-mixed-mode-authentication)
 * [创建 SQL Server 身份验证登录名](#create-sql-server-authentication-logins)
 * [确定虚拟机的 DNS 名称](#determine-the-dns-name-of-the-virtual-machine)
-* [从其他计算机连接到数据库引擎](#connect-to-the-database-engine-from-another-computer)
+* [从另一台计算机连接到数据库引擎](#connect-to-the-database-engine-from-another-computer)
 
 下图概述了连接路径：
 

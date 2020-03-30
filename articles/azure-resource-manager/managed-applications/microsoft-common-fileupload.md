@@ -1,15 +1,15 @@
 ---
 title: FileUpload UI 元素
-description: 介绍了 Azure 门户的 Microsoft.Common.FileUpload UI 元素。 允许用户在部署托管应用程序时上载文件。
+description: 介绍了 Azure 门户的 Microsoft.Common.FileUpload UI 元素。 使用户在部署托管应用程序时需要上传文件。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: 61e1c9fe07fdd29ebc00e7e3491472d073bc4e5d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652484"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI 元素
@@ -81,8 +81,8 @@ ms.locfileid: "75652484"
 ## <a name="remarks"></a>备注
 
 - `constraints.accept` 指定在浏览器的文件对话框中显示的文件类型。 有关允许的值，请参阅 [HTML5 规范](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept)。 默认值为 **null**。
-- 如果 `options.multiple` 设置为 **true**，则会允许用户在浏览器的文件对话框中选择多个文件。 默认值是 **false**秒。
-- 此元素支持基于 `options.uploadMode` 的值以两种模式上传文件。 如果指定了 **file**，则输出会以 blob 形式包含文件的内容。 如果指定了 **url**，则文件会被上传到一个临时位置，并且输出会包含 blob 的 URL。 临时 blob 在 24 小时后会被清除。 默认值为 **file**。
+- 如果 `options.multiple` 设置为 **true**，则会允许用户在浏览器的文件对话框中选择多个文件。 默认值为“false”****。
+- 此元素支持基于 `options.uploadMode` 的值以两种模式上传文件。 如果指定了 **file**，则输出会以 blob 形式包含文件的内容。 如果指定了 **url**，则文件会被上传到一个临时位置，并且输出会包含 blob 的 URL。 临时 blob 在 24 小时后会被清除。 默认值为**文件**。
 - 上传的文件受到保护。 输出 URL 包括用于在部署期间访问文件的 [SAS 令牌](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 - `options.openMode` 的值决定了如何读取文件。 如果文件应当为纯文本，请指定 **text**；否则，请指定 **binary**。 默认值为 **text**。
 - 如果 `options.uploadMode` 设置为 **file** 并且 `options.openMode` 设置为 **binary**，则输出将是 base64 编码的。

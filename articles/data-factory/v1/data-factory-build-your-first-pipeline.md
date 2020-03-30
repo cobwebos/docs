@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 80644ed2d655544fa176a7be92aec3c01aa3bf14
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966075"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>教程：使用 Hadoop 群集构建用于转换数据的第一个管道
 > [!div class="op_single_selector"]
 > * [概述与先决条件](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-> * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [电源外壳](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [资源管理器模板](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
@@ -32,7 +32,7 @@ ms.locfileid: "75966075"
 
 在本教程中，将使用数据管道生成第一个 Azure 数据工厂。 管道通过在 Azure HDInsight (Hadoop) 群集上运行 Hive 脚本转换输入数据以生成输出数据。  
 
-本文提供了此教程的概述和先决条件。 完成先决条件后，可以使用以下工具之一来完成教程： Visual Studio、PowerShell、资源管理器模板 REST API。 在本文开头的下拉列表中选择一个选项，或者选择本文末尾的链接以使用其中一个选项完成此教程。    
+本文提供了此教程的概述和先决条件。 完成先决条件后，可以使用以下工具/SDK之一完成本教程：可视化工作室、PowerShell、资源管理器模板、REST API。 在本文开头的下拉列表中选择一个选项，或者选择本文末尾的链接以使用其中一个选项完成此教程。    
 
 ## <a name="tutorial-overview"></a>教程概述
 将在本教程中执行以下步骤：
@@ -43,7 +43,7 @@ ms.locfileid: "75966075"
 2. 创建**管道**。 管道可以具有一个或多个活动（示例：复制活动、HDInsight Hive 活动）。 此示例使用的是 HDInsight Hive 活动，在 HDInsight Hadoop 群集上运行 Hive 脚本。 该脚本首先创建表，以引用存储在 Azure Blob 存储中的原始 Web 日志数据，然后按年和月对原始数据进行分区。
 
     在本教程中，管道通过在 Azure HDInsight Hadoop 群集上运行 Hive 查询使用 Hive 活动转换数据。
-3. 创建**链接服务**。 创建一个链接服务，将数据存储或计算服务链接到数据工厂。 数据存储（如 Azure 存储）会将输入/输出数据保留在管道中。 计算服务（如 HDInsight Hadoop 群集）会处理/转换数据。
+3. 创建**链接的服务**。 创建一个链接服务，将数据存储或计算服务链接到数据工厂。 数据存储（如 Azure 存储）会将输入/输出数据保留在管道中。 计算服务（如 HDInsight Hadoop 群集）会处理/转换数据。
 
     在本教程中，将创建两个链接服务：**Azure 存储**和 **Azure HDInsight**。 Azure 存储链接服务将保存输入/输出数据的 Azure 存储帐户链接到数据工厂。 Azure HDInsight 链接服务用于转换数据的 Azure HDInsight 群集链接到数据工厂。
 3. 创建输入和输出**数据集**。 输入数据集表示管道中活动的输入，输出数据集表示活动的输出。
@@ -76,13 +76,13 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 
 如上所示的示例行中，第行（具有 2016-01-01）会写入 month = 1 文件夹中的 000000_0 文件。 同样，第二行会写入 month = 2 文件夹中的文件，第三行会写入 month = 3 文件夹中的文件。  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 开始本教程之前，必须具有以下先决条件：
 
 1. **Azure 订阅** - 如果没有 Azure 订阅，只需几分钟就能创建一个免费试用帐户。 如需了解如何获取免费试用帐户，请参阅[免费试用](https://azure.microsoft.com/pricing/free-trial/)一文。
 2. **Azure 存储** - 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文。 创建存储帐户后，记下**帐户名称**和**访问密钥**。 有关如何检索存储帐户访问密钥的信息，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
-3. 下载并查看位于 [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) 的 Hive 查询文件 (HQL)。 此查询转换输入数据以生成输出数据。
-4. 下载并查看位于 [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log) 的示例输入文件 (input.log)。
+3. 下载并查看位于 [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) 的 Hive 查询文件 (HQL)****。 此查询转换输入数据以生成输出数据。
+4. 下载并查看位于 [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log) 的示例输入文件 (input.log)****。
 5. 在 Azure Blob 存储中创建一个名为 **adfgetstarted** 的 blob 容器。
 6. 将 **partitionweblogs.hql** 文件上传到 **adfgetstarted** 容器中的 **script** 文件夹。 使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)等工具。
 7. 将 **input.log** 文件上传到 **adfgetstarted** 容器中的 **inputdata** 文件夹。
@@ -90,11 +90,11 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 具备先决条件之后，选择以下工具/SDK 之一完成本教程：
 
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-- [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
+- [电源外壳](data-factory-build-your-first-pipeline-using-powershell.md)
 - [资源管理器模板](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-Visual Studio 提供了一种 GUI 方式来构建你的数据工厂。 而 PowerShell、Resource Manager 模板和 REST API 选项提供了生成数据工厂的脚本/编程方式。
+Visual Studio 提供了构建数据工厂的 GUI 方法。 而 PowerShell、Resource Manager 模板和 REST API 选项提供了生成数据工厂的脚本/编程方式。
 
 > [!NOTE]
 > 本教程中的数据管道可以转换输入数据，以便生成输出数据。 它不是将数据从源数据存储复制到目标数据存储。 有关如何使用 Azure 数据工厂复制数据的教程，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。

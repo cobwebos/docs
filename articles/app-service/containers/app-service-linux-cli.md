@@ -1,15 +1,15 @@
 ---
-title: 通过 CLI 管理自定义 Linux 容器
-description: 了解如何在 Azure App Service 从命令行管理自定义 Linux 容器。 自动执行应用预配或维护。
+title: 使用 CLI 管理自定义 Linux 容器
+description: 了解如何从命令行管理 Azure 应用服务中的自定义 Linux 容器。 自动执行应用预配或维护。
 keywords: azure app service、Web 应用、cli、linux、oss
 ms.topic: article
 ms.date: 08/22/2017
 ms.custom: seodec18
 ms.openlocfilehash: 5ca5322467402af710df68c82d747f8f8d65e142
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255927"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>使用 Azure CLI 管理用于容器的 Web 应用

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.openlocfilehash: d6734f5da0fb7e5c9052b26b55b2d90b068bdbbf
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614326"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>使用 Visual Studio 简化 Service Fabric 应用程序的编写和管理
@@ -24,28 +24,28 @@ ms.locfileid: "75614326"
 4. 删除任何正在运行的应用程序实例
 5. 删除应用程序实例
 
-在 Visual Studio 中，按 F5 部署应用程序，然后将调试程序附加到所有应用程序实例。 可以按 **Ctrl+F5** 部署应用程序而不进行调试，也可以使用发布配置文件将应用程序发布到本地或远程群集。
+在 Visual Studio 中，按 F5**** 部署应用程序，然后将调试程序附加到所有应用程序实例。 可以按 **Ctrl+F5** 部署应用程序而不进行调试，也可以使用发布配置文件将应用程序发布到本地或远程群集。
 
 ### <a name="application-debug-mode"></a>应用程序调试模式
-Visual Studio 提供一个名为“应用程序调试模式”的属性，它控制 Visual Studio 在调试时如何处理应用程序部署。
+Visual Studio 提供一个名为“应用程序调试模式”**** 的属性，它控制 Visual Studio 在调试时如何处理应用程序部署。
 
 #### <a name="to-set-the-application-debug-mode-property"></a>设置“应用程序调试模式”属性
-1. 在 Service Fabric 应用程序项目 (*.sfproj) 的快捷菜单上，选择“属性”（或按 F4 键）。
+1. 在 Service Fabric 应用程序项目 (*.sfproj) 的快捷菜单上，选择“属性”****（或按 F4**** 键）。
 2. 在“**属性**”窗口中，设置“**应用程序调试模式**”属性。
 
 ![设置“应用程序调试模式”属性][debugmodeproperty]
 
 #### <a name="application-debug-modes"></a>应用程序调试模式
 
-1. 刷新应用程序此模式能快速更改和调试代码并支持调试时编辑静态 Web 文件。 此模式只有在本地开发群集处于 1 节点模式下时有效。 这是默认的应用程序调试模式。
+1. 刷新应用程序**** 此模式能快速更改和调试代码并支持调试时编辑静态 Web 文件。 此模式只有在本地开发群集处于 1 节点模式下时有效。 这是默认的应用程序调试模式。
 2. **删除应用程序**：在调试会话结束后，删除应用程序。
-3. 自动升级调试会话结束时，应用程序继续运行。 下一个调试会话将部署视为升级。 此升级过程会暂留用户在上一个调试会话中输入的所有数据。
-4. 保留应用程序调试会话结束时，应用程序在群集中继续运行。 在下一个调试会话开始时将删除应用程序。
+3. 自动升级**** 调试会话结束时，应用程序继续运行。 下一个调试会话将部署视为升级。 此升级过程会暂留用户在上一个调试会话中输入的所有数据。
+4. 保留应用程序**** 调试会话结束时，应用程序在群集中继续运行。 在下一个调试会话开始时将删除应用程序。
 
-对于自动升级，数据是通过应用 Service Fabric 的应用程序升级功能予以保留。 若要详细了解如何升级应用程序，以及如何在真实环境中执行升级，请参阅 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)。
+对于自动升级****，数据是通过应用 Service Fabric 的应用程序升级功能予以保留。 若要详细了解如何升级应用程序，以及如何在真实环境中执行升级，请参阅 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)。
 
 ## <a name="add-a-service-to-your-service-fabric-application"></a>向 Service Fabric 应用程序添加服务
-可以向应用程序中添加新的服务来扩展其功能。 为了确保应用程序包中包含服务，请通过“**新建 Fabric 服务...** ”菜单项添加服务。
+可以向应用程序中添加新的服务来扩展其功能。 为了确保应用程序包中包含服务，请通过“**新建 Fabric 服务...**”菜单项添加服务。
 
 ![添加新的 Service Fabric 服务][newservice]
 

@@ -1,15 +1,15 @@
 ---
-title: Service Fabric 群集简介资源管理器
-description: 了解 Service Fabric 群集资源管理器，它是管理应用程序服务的业务流程的一种方法。
+title: Service Fabric 群集资源管理器简介
+description: 了解服务结构群集资源管理器，这是一种管理应用程序服务的业务流程的方法。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: da9205f5d95eaf1b4dc655ee727ab8a4fe90893d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75563320"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Service Fabric 群集 Resource Manager 简介
@@ -45,7 +45,7 @@ ms.locfileid: "75563320"
 由于群集资源管理器负责移动服务，因此它提供一个不同于网络负载均衡器的功能集。 这是因为，网络负载均衡器将网络流量传送到服务所在位置，即使这个位置并不适合运行该服务。 Service Fabric 群集资源管理器使用本质上不同的策略来确保可以高效利用群集中的资源。
 
 ## <a name="next-steps"></a>后续步骤
-- 有关群集中资源管理器的体系结构和信息流的信息，请参阅[此文](service-fabric-cluster-resource-manager-architecture.md)
+- 有关群集资源管理器中的体系结构和信息流的信息，请查看[本文](service-fabric-cluster-resource-manager-architecture.md)
 - 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些指标，请查看这篇[描述 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章
 - 有关配置服务的详细信息，请参阅[了解如何配置服务](service-fabric-cluster-resource-manager-configure-services.md)
 - 指标是 Service Fabric 群集资源管理器在群集中管理消耗和容量的方式。 若要详细了解指标及其配置方式，请查看[本文](service-fabric-cluster-resource-manager-metrics.md)
