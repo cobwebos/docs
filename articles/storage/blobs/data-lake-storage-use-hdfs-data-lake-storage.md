@@ -10,22 +10,22 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
 ms.openlocfilehash: 1d5313f3f0fff128dd09f9c9857b7dd9921ea4f8
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69992224"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>将 HDFS CLI 与 Data Lake Storage Gen2 配合使用
 
 可以使用命令行界面来访问并管理存储帐户中的数据，就像像使用 [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样。 本文提供了一些有助于入门的示例。
 
-HDInsight 提供对在本地附加到计算节点的分布式容器的访问权限。 可以通过使用与 HDFS 和 Hadoop 支持的其他文件系统直接交互的 shell 访问此容器。
+HDInsight 可以访问在本地附加到计算节点的分布式容器。 可以使用与 HDFS 以及 Hadoop 支持的其他文件系统直接交互的 shell 来访问此容器。
 
-有关 HDFS CLI 的详细信息，请参阅[官方文档](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)和 [HDFS 权限指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+有关 HDFS CLI 的详细信息，请参阅[官方文档](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)和[HDFS 权限指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
 >[!NOTE]
->如果你使用的是 Azure Databricks 而不是 HDInsight, 并且想要通过使用命令行界面与数据进行交互, 则可以使用 Databricks CLI 与 Databricks 文件系统进行交互。 请参阅[DATABRICKS CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)。
+>如果使用 Azure 数据砖而不是 HDInsight，并且希望使用命令行接口与数据进行交互，则可以使用 DataBRICKS CLI 与 Databricks 文件系统进行交互。 请参阅[数据砖 CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)。
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>在 Linux 上结合使用 HDFS CLI 和 HDInsight Hadoop 群集
 
@@ -48,7 +48,7 @@ hdfs dfs -mkdir /samplefolder
 
     hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
 
-* 将`<container-name>`占位符替换为要为容器提供的名称。
+* 将 `<container-name>` 占位符替换为你要为容器指定的名称。
 
 * 将 `<storage-account-name>` 占位符替换为存储帐户的名称。
 
@@ -56,7 +56,7 @@ hdfs dfs -mkdir /samplefolder
 
     hdfs dfs -ls <path>
 
-`<path>`将占位符替换为容器或容器文件夹的 URI。
+将 `<path>` 占位符替换为容器或容器文件夹的 URI。
 
 例如： `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
@@ -64,7 +64,7 @@ hdfs dfs -mkdir /samplefolder
 
     hdfs dfs -mkdir [-p] <path>
 
-`<path>`将占位符替换为容器内的根容器名称或文件夹。
+将 `<path>` 占位符替换为根容器名称或容器中的文件夹。
 
 例如： `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
@@ -80,7 +80,7 @@ hdfs dfs -mkdir /samplefolder
 
     hdfs dfs -getfacl [-R] <path>
 
-例如：
+示例：
 
 `hdfs dfs -getfacl -R /dir`
 
@@ -90,7 +90,7 @@ hdfs dfs -mkdir /samplefolder
 
     hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]
 
-例如：
+示例：
 
 `hdfs dfs -setfacl -m user:hadoop:rw- /file`
 

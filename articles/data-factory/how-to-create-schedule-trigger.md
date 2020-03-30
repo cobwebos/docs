@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.openlocfilehash: 127db8a484b9624586dea70c44af3bc84b3fc84e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73673770"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>创建按计划运行管道的触发器
@@ -31,36 +31,36 @@ ms.locfileid: "73673770"
 > [!NOTE]
 > 有关创建管道和计划触发器、将触发器与管道相关联，以及运行和监视管道的完整演练，请参阅[快速入门：使用数据工厂 UI 创建数据工厂](quickstart-create-data-factory-portal.md)。
 
-1. 切换到“编辑”选项卡。 
+1. 切换到“编辑”**** 选项卡。 
 
     ![切换到“编辑”选项卡](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
-1. 单击菜单上的“触发器”，然后单击“新建/编辑”。 
+1. 单击菜单上的“触发器”****，然后单击“新建/编辑”****。 
 
     ![“新建触发器”菜单](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
-2. 在“添加触发器”页中单击“选择触发器...”，然后单击“新建”。 
+2. 在“添加触发器”页中单击“选择触发器...”，然后单击“新建”。************ 
 
     ![添加触发器 - 新建触发器](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
-3. 在“新建触发器”页中执行以下步骤： 
+3. 在“新建触发器”**** 页中执行以下步骤： 
 
-    1. 确认在“类型”中选择了“计划”。 
-    2. 在“开始日期(UTC)”中指定触发器的开始日期时间。 此值默认设置为当前日期时间。 
-    3. 指定触发器的“重复周期”。 从下拉列表中选择一个值（“每分钟”、“每小时”、“每日”、“每周”和“每月”）。 在文本框中输入乘数。 例如，如果希望触发器每隔 15 分钟运行一次，请选择“每分钟”，并在文本框中输入 **15**。 
-    4. 对于“结束”字段，如果不想要指定触发器的结束日期时间，请选择“不结束”。 若要指定结束日期时间，请选择“日期”并指定结束日期时间，然后单击“应用”。 每次管道运行都需要付出相关成本。 若要进行测试，需确保只触发管道几次。 但是，请确保在发布时间和结束时间之间有足够的时间来运行管道。 只有在将解决方案发布到数据工厂之后，触发器才会生效，而不是在 UI 中保存触发器就会使该触发器生效。
+    1. 确认在“类型”中选择了“计划”。******** 
+    2. 在“开始日期(UTC)”中指定触发器的开始日期时间。**** 此值默认设置为当前日期时间。 
+    3. 指定触发器的“重复周期”。**** 从下拉列表中选择一个值（“每分钟”、“每小时”、“每日”、“每周”和“每月”）。 在文本框中输入乘数。 例如，如果希望触发器每隔 15 分钟运行一次，请选择“每分钟”，并在文本框中输入 **15**。**** 
+    4. 对于“结束”字段，如果不想要指定触发器的结束日期时间，请选择“不结束”。******** 若要指定结束日期时间，请选择“日期”并指定结束日期时间，然后单击“应用”。******** 每次管道运行都需要付出相关成本。 若要进行测试，需确保只触发管道几次。 但是，请确保在发布时间和结束时间之间有足够的时间来运行管道。 只有在将解决方案发布到数据工厂之后，触发器才会生效，而不是在 UI 中保存触发器就会使该触发器生效。
 
         ![触发器设置](./media/how-to-create-schedule-trigger/trigger-settings.png)
-4. 在“新建触发器”窗口中，选中“已激活”选项，然后单击“下一步”。 以后，可以使用此复选框停用该触发器。 
+4. 在“新建触发器”窗口中，选中“已激活”选项，然后单击“下一步”。************ 以后，可以使用此复选框停用该触发器。 
 
     ![触发器设置 -“下一步”按钮](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
-5. 在“新建触发器”页中查看警告消息，然后单击“完成”。
+5. 在“新建触发器”页中查看警告消息，然后单击“完成”。********
 
     ![触发器设置 -“完成”按钮](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
-6. 单击“发布”，将所做的更改发布到数据工厂。 在将更改发布到数据工厂之前，触发器不会开始触发管道运行。 
+6. 单击“发布”****，将所做的更改发布到数据工厂。 在将更改发布到数据工厂之前，触发器不会开始触发管道运行。 
 
     ![发布按钮](./media/how-to-create-schedule-trigger/publish-2.png)
-8. 在左侧切换到“监视”选项卡。 单击“刷新”可刷新列表。 可以看到计划的触发器触发的管道运行。 请注意“触发因素”列中的值。 如果使用“立即触发”选项，将在列表中看到手动触发器运行。 
+8. 在左侧切换到“监视”选项卡。**** 单击“刷新”可刷新列表****。 可以看到计划的触发器触发的管道运行。 请注意“触发因素”列中的值。**** 如果使用“立即触发”选项，将在列表中看到手动触发器运行。**** 
 
     ![监视触发的运行](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
-9. 单击“管道运行”旁边的向下箭头，切换到“触发器运行”视图。 
+9. 单击“管道运行”旁边的向下箭头，切换到“触发器运行”视图。******** 
 
     ![监视触发器运行](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "73673770"
 
 本部分介绍如何使用 Azure PowerShell 创建、启动和监视计划触发器。 若要查看此示例的运行过程，请先完成[快速入门：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。 然后，将以下代码添加到 main 方法，该代码用于创建并启动一个每 15 分钟运行一次的计划触发器。 该触发器与快速入门中创建的名为 **Adfv2QuickStartPipeline** 的管道相关联。
 
-1. 在 C:\ADFv2QuickStartPSH\ 文件夹中创建一个名为 **MyTrigger.json** 的且包含以下内容的 JSON 文件：
+1. 在 C：_ADFv2QuickStartPSH_ 文件夹中创建名为**MyTrigger.json**的 JSON 文件，内容如下：
 
     > [!IMPORTANT]
     > 保存 JSON 文件之前，请将 **startTime** 元素的值设置为当前 UTC 时间。 将 **endTime** 元素的值设置为比当前 UTC 时间早一小时。
@@ -122,7 +122,7 @@ ms.locfileid: "73673770"
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. 使用 **Start-AzDataFactoryV2Trigger** cmdlet 启动触发器：
+4. 使用**启动-AzDataFactoryV2触发器**cmdlet 启动触发器：
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
@@ -309,36 +309,36 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 ### <a name="schema-overview"></a>架构概述
 下表概述了与触发器的定期触发和计划相关的主要架构元素：
 
-| JSON 属性 | 说明 |
+| JSON 属性 | 描述 |
 |:--- |:--- |
-| **startTime** | 一个日期/时间值。 对于简单的计划，**startTime** 属性的值适用于第一个匹配项。 对于复杂的计划，触发器的启动时间不早于指定的 **startTime** 值。 |
-| **endTime** | 触发器的结束日期和时间。 该触发器不在指定的结束日期和时间之后执行。 属性的值不能是过去的时间。 此属性是可选的。 |
-| **timeZone** | 时区。 目前仅支持 UTC 时区。 |
-| **recurrence** | 一个 recurrence 对象，指定触发器的定期触发规则。 recurrence 对象支持 **frequency**、**interval**、**endTime**、**count** 和 **schedule** 元素。 定义 recurrence 对象时，**frequency** 元素是必需的。 recurrence 对象的其他元素为可选元素。 |
+| **开始时间** | 一个日期/时间值。 对于简单的计划，**startTime** 属性的值适用于第一个匹配项。 对于复杂的计划，触发器的启动时间不早于指定的 **startTime** 值。 |
+| **结束时间** | 触发器的结束日期和时间。 该触发器不在指定的结束日期和时间之后执行。 属性的值不能是过去的时间。 此属性是可选的。 |
+| **时区** | 时区。 目前仅支持 UTC 时区。 |
+| **复发** | 一个 recurrence 对象，指定触发器的定期触发规则。 recurrence 对象支持 **frequency**、**interval**、**endTime**、**count** 和 **schedule** 元素。 定义 recurrence 对象时，**frequency** 元素是必需的。 recurrence 对象的其他元素为可选元素。 |
 | **频率** | 触发器定期触发的频率单位。 支持的值包括 "minute"、"hour"、"day"、"week" 和 "month"。 |
-| **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔，决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为“week”，则触发器每 3 周定期触发一次。 |
-| **schedule** | 触发器的定期触发计划。 指定了 **frequency** 值的触发器会根据定期触发计划更改其定期触发。 **schedule** 属性包含对定期触发的修改，这些修改是按分钟、小时、工作日、月份日期和周次进行的。
+| **区间** | 一个正整数，表示 **frequency** 值对应的时间间隔，决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为“week”，则触发器每 3 周定期触发一次。 |
+| **附表** | 触发器的定期触发计划。 指定了 **frequency** 值的触发器会根据定期触发计划更改其定期触发。 **schedule** 属性包含对定期触发的修改，这些修改是按分钟、小时、工作日、月份日期和周次进行的。
 
 
 ### <a name="schema-defaults-limits-and-examples"></a>架构默认值、限制和示例
 
 | JSON 属性 | 类型 | 必选 | 默认值 | 有效值 | 示例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | String | 是 | 无 | ISO-8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | 对象 | 是 | 无 | Recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | Number | 否 | 1 | 1 到 1,000 | `"interval":10` |
-| **endTime** | String | 是 | 无 | 代表将来某个时间的日期/时间值。 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | 对象 | 否 | 无 | Schedule 对象 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **开始时间** | String | 是 | 无 | ISO-8601 日期时间 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **复发** | Object | 是 | 无 | Recurrence 对象 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **区间** | Number | 否 | 1 | 1 到 1,000 | `"interval":10` |
+| **结束时间** | String | 是 | 无 | 代表将来某个时间的日期/时间值。 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **附表** | Object | 否 | 无 | Schedule 对象 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime 属性
 下表说明了 **startTime** 属性如何控制触发器运行：
 
 | startTime 值 | 不按计划循环 | 按计划循环 |
 |:--- |:--- |:--- |
-| 开始时间在过去 | 计算开始时间后的第一个将来执行时间，并在该时间运行。<br/><br/>根据上次执行时间进行计算后，运行后续执行。<br/><br/>请参阅此表后面的示例。 | 触发器不会早于指定的开始时间启动。 第一次执行取决于根据开始时间计算的计划。<br/><br/>后续执行的运行取决于定期触发计划。 |
-| 开始时间在将来或当前 | 在指定的开始时间运行一次。<br/><br/>根据上次执行时间进行计算后，运行后续执行。 | 触发器不会早于指定的开始时间启动。 第一次执行取决于根据开始时间计算的计划。<br/><br/>后续执行的运行取决于定期触发计划。 |
+| 开始时间在过去 | 计算开始时间后的第一个将来执行时间，并在该时间运行。<br/><br/>根据上次执行时间进行计算后，运行后续执行。<br/><br/>请参阅此表后面的示例。 | 触发器在指定的开始时间_不早_开始。 第一次执行取决于根据开始时间计算的计划。<br/><br/>后续执行的运行取决于定期触发计划。 |
+| 开始时间在将来或当前 | 在指定的开始时间运行一次。<br/><br/>根据上次执行时间进行计算后，运行后续执行。 | 触发器不会早于指定的开始时间__ 启动。 第一次执行取决于根据开始时间计算的计划。<br/><br/>后续执行的运行取决于定期触发计划。 |
 
-让我们查看一个示例，了解在开始时间是过去的时间，并且指定了定期触发但未指定计划的情况下，会发生什么事情。 假设当前时间为 `2017-04-08 13:00`，开始时间为 `2017-04-07 14:00`，定期触发为每两天触发一次。 （通过将**frequency**属性设置为 "day" 并将**interval**属性设置为2来定义**重复**值。）请注意， **startTime**值为过去，并发生在当前时间之前。
+让我们查看一个示例，了解在开始时间是过去的时间，并且指定了定期触发但未指定计划的情况下，会发生什么事情。 假设当前时间为 `2017-04-08 13:00`，开始时间为 `2017-04-07 14:00`，定期触发为每两天触发一次。 （通过将**频率**属性设置为"天"和**间隔**属性设置为 2 来定义**定期**值。请注意 **，startTime**值已过去，并发生在当前时间之前。
 
 在上述情况下，首次执行时间为 `2017-04-09 at 14:00`。 计划程序引擎从开始时间计算执行循环。 过去的所有实例会被丢弃。 引擎将使用将来发生的下一个实例。 在本方案中，开始时间为 `2017-04-07 at 2:00pm`，因此下一个实例为从该时间算起的 2 天，即 `2017-04-09 at 2:00pm`。
 
@@ -356,12 +356,12 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 下表详细描述了 **schedule** 元素：
 
 
-| JSON 元素 | 说明 | 有效值 |
+| JSON 元素 | 描述 | 有效值 |
 |:--- |:--- |:--- |
-| **分钟数** | 运行触发器的小时中的分钟。 | <ul><li>Integer</li><li>整数数组</li></ul>
-| **小时数** | 运行触发器的日期中的小时。 | <ul><li>Integer</li><li>整数数组</li></ul> |
-| **工作日** | 运行触发器的工作日。 此值只能使用与星期相关的频率来指定。 | <ul><li>星期一、星期二、星期三、星期四、星期五、星期六、星期日</li><li>星期值的数组（最大数组值为 7）</li><li>星期值不区分大小写</li></ul> |
-| **monthlyOccurrences** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 | <ul><li>MonthlyOccurrence对象的数组：`{ "day": day,  "occurrence": occurrence }`。</li><li>**day** 属性表示运行触发器那天为星期几。 例如，如果 **monthlyOccurrences** 属性的 **day** 值为 `{Sunday}`，则表示在当月的每个星期日运行触发器。 **day** 属性是必需的。</li><li>**occurrence** 属性是指定的 **day** 在当月的匹配项。 例如，如果 **monthlyOccurrences** 属性的 **day** 和 **occurrence** 值为 `{Sunday, -1}`，则表示在当月的最后一个星期日运行触发器。 **occurrence** 属性是可选的。</li></ul> |
+| **分钟** | 运行触发器的小时中的分钟。 | <ul><li>Integer</li><li>整数数组</li></ul>
+| **小时** | 运行触发器的日期中的小时。 | <ul><li>Integer</li><li>整数数组</li></ul> |
+| **平日** | 运行触发器的工作日。 此值只能使用与星期相关的频率来指定。 | <ul><li>星期一、星期二、星期三、星期四、星期五、星期六、星期日</li><li>星期值的数组（最大数组值为 7）</li><li>星期值不区分大小写</li></ul> |
+| **monthlyOccurrences** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 | <ul><li>MonthlyOccurrence **** 对象的数组：`{ "day": day,  "occurrence": occurrence }`。</li><li>**day** 属性表示运行触发器那天为星期几。 例如，如果 **monthlyOccurrences** 属性的 **day** 值为 `{Sunday}`，则表示在当月的每个星期日运行触发器。 **day** 属性是必需的。</li><li>**occurrence** 属性是指定的 **day** 在当月的匹配项。 例如，如果 **monthlyOccurrences** 属性的 **day** 和 **occurrence** 值为 `{Sunday, -1}`，则表示在当月的最后一个星期日运行触发器。 **occurrence** 属性是可选的。</li></ul> |
 | **monthDays** | 运行触发器的月份日期。 此值只能使用与月份相关的频率来指定。 | <ul><li><= -1 且 >= -31 的任何值</li><li>>= 1 且 <= 31 的任何值</li><li>值组成的数组</li></ul> |
 
 
@@ -370,7 +370,7 @@ Azure 数据工厂版本 1 支持使用以下系统变量读取或写入分区�
 
 这些示例假定 **interval** 值为 1，且根据计划定义，**frequency** 值是正确的。 例如，不能在 **frequency** 值为 "day" 的同时，在 **schedule** 对象中有一个 "monthDays" 修改项。 上一部分的表中提到了此类限制。
 
-| 示例 | 说明 |
+| 示例 | 描述 |
 |:--- |:--- |
 | `{"hours":[5]}` | 在每天早晨 5:00 运行。 |
 | `{"minutes":[15], "hours":[5]}` | 在每天早晨 5:15 运行。 |

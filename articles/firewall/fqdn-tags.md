@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74169040"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN 标记概述
@@ -28,14 +28,14 @@ FQDN 标记表示与已知的 Microsoft 服务关联的一组完全限定的域�
 
 ## <a name="current-fqdn-tags"></a>当前 FQDN 标记
 
-|FQDN 标记  |说明  |
+|FQDN 标记  |描述  |
 |---------|---------|
 |Windows 更新     |允许出站访问 Microsoft 更新，如[如何为软件更新配置防火墙](https://technet.microsoft.com/library/bb693717.aspx)中所述。|
 |Windows 诊断|允许出站访问所有 [Windows 诊断终结点](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints)。|
 |Microsoft 主动保护服务 (MAPS)|允许出站访问 [MAPS](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/)。|
 |应用服务环境 (ASE)|允许出站访问 ASE 平台流量。 此标记未涵盖由 ASE 创建的特定于客户的存储和 SQL 终结点。 这些应通过[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用或手动添加。<br><br>有关将 Azure 防火墙与 ASE 集成的详细信息，请参阅[锁定应用服务环境](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)。|
 |Azure 备份|允许对 Azure 备份服务进行出站访问。|
-|Azure HDInsight|允许出站访问 HDInsight 平台流量。 此标记不会涵盖特定于客户的存储或来自 HDInsight 的 SQL 流量。 使用[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用这些项或手动添加它们。|
+|Azure HDInsight|允许出站访问 HDInsight 平台流量。 此标记不包括 HDInsight 的客户特定存储或 SQL 流量。 使用[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用这些项或手动添加它们。|
 
 > [!NOTE]
 > 在应用程序规则中选择 FQDN 标记时，“协议:端口”字段必须设置为 **https**。

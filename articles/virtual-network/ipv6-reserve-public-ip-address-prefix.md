@@ -13,23 +13,23 @@ ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
 ms.openlocfilehash: 76d1ba2717ac3c8ac8e86687ef1754a8790f3e4d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72595085"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>保留公共 IPv6 地址前缀
-使用适用于 Azure 虚拟网络（VNet）的 IPv6，可以在 Azure 中使用 IPv6 和 IPv4 连接在虚拟网络中托管应用程序，以及与 Internet 建立连接。 除了保留单个 IPv6 地址外，你还可以保留一个连续的 Azure IPv6 地址范围（称为 IP 前缀）供你使用。 本文介绍如何使用 Azure PowerShell 和 CLI 创建 IPv6 公共 IP 地址和地址范围。
+Azure 虚拟网络 (VNet) IPv6 可让你通过虚拟网络内部的以及与 Internet 之间的 IPv6 和 IPv4 连接，在 Azure 中托管应用程序。 除了保留单个 IPv6 地址以外，还可以保留连续的 Azure IPv6 地址范围（称作 IP 前缀）供你使用。 本文介绍如何使用 Azure PowerShell 和 CLI 创建 IPv6 公共 IP 地址与地址范围。
 
 > [!Important]
-> Azure 虚拟网络的 IPv6 目前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure 虚拟网络的 IPv6 当前处于公共预览版。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="create-a-single-reserved-ipv6-public-ip"></a>创建单个保留 IPv6 公共 IP
+## <a name="create-a-single-reserved-ipv6-public-ip"></a>创建单个保留的 IPv6 公共 IP
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
-您可以 Azure PowerShell 使用[AzPublicIpAddress 和](/powershell/module/az.network/new-azpublicipaddress)创建单个保留（静态） IPV6 公共 IP 地址，如下所示：
+可以在 Azure PowerShell 中使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建单个保留的（静态）IPv6 公共 IP 地址，如下所示：
 
 ```azurepowershell  
  $myOwnIPv6Address = New-AzPublicIpAddress `
@@ -43,7 +43,7 @@ ms.locfileid: "72595085"
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
- 你可以使用[az network 公共 ip create](/cli/azure/network/public-ip)创建单个保留（静态） IPV6 公共 ip Azure CLI 地址，如下所示：
+ 可以在 Azure CLI 中使用 [az network public-ip create](/cli/azure/network/public-ip) 创建单个保留的（静态）IPv6 公共 IP 地址，如下所示：
   
 ```azurecli
  az network public-ip create \
@@ -57,11 +57,11 @@ ms.locfileid: "72595085"
 
 ## <a name="create-a-reserved-ipv6-prefix-range"></a>创建保留的 IPv6 前缀（范围）
 
-若要保留 IPv6 前缀，请将 IPv6 的 IP 地址系列添加到用于创建 IPv4 前缀的相同命令。 以下命令将创建一个大小为/125 （8个 IPv6 地址）的前缀。  
+若要保留某个 IPv6 前缀，请将 IPv6 的 IP 地址系列添加到用于创建 IPv4 前缀的同一命令。 以下命令将创建大小为 /125（8 个 IPv6 地址）的前缀。  
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
-可以使用带[az network 公共 ip create](/powershell/module/az.network/new-azpublicipprefix) Azure CLI 创建公共 IPv6 地址，如下所示：
+可以在 Azure CLI 中使用 [az network public-ip create](/powershell/module/az.network/new-azpublicipprefix) 创建公共 IPv6 地址，如下所示：
 ```azurepowershell  
  $myOwnIPv6Prefix = New-AzPublicIpPrefix `
  -name IPv6PrefixWestUS `
@@ -74,7 +74,7 @@ ms.locfileid: "72595085"
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
-你可以使用 Azure CLI 创建公共 IPv6 地址，如下所示：
+可按如下所示使用 Azure CLI 创建公共 IPv6 地址：
 
 ```azurecli  
 az network public-ip prefix create \
@@ -89,7 +89,7 @@ az network public-ip prefix create \
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
- 使用 Azure PowerShell 创建公共 IP 时，可以通过添加 `-PublicIpPrefix` 参数，从保留前缀创建静态 IPv6 公共 IP。 下面的示例假定已创建前缀并将其存储在名为的 PowerShell 变量中： *$MyOwnIPv 6prefix*。
+ 使用 Azure PowerShell 创建公共 IP 时，可以通过添加 `-PublicIpPrefix` 参数，从保留的前缀创建静态 IPv6 公共 IP。 以下示例假设已创建一个前缀并将其存储在名称如下的 PowerShell 变量中：*$myOwnIPv6Prefix*。
 
 ```azurepowershell:  
  $MyIPv6PublicIPFromMyReservedPrefix = New-AzPublicIpAddress \
@@ -104,7 +104,7 @@ az network public-ip prefix create \
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
  
-下面的示例假定已创建前缀，并将其存储在名为的 CLI 变量中： *IPv6PrefixWestUS*。
+下面的示例假定前缀已创建并存储在名为 *：IPv6PrefixWestUS*的 CLI 变量中。
 
 ```azurecli 
 az network public-ip create \
@@ -118,5 +118,5 @@ az network public-ip create \
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解[IPv6 地址前缀](ipv6-public-ip-address-prefix.md)。
-- 了解有关[IPv6 地址](ipv6-overview.md)的详细信息。
+- 详细了解 [IPv6 地址前缀](ipv6-public-ip-address-prefix.md)。
+- 详细了解 [IPv6 地址](ipv6-overview.md)。

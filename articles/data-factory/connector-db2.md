@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: jingwang
 ms.openlocfilehash: 22ecac12e049e58e533cdde0078f4a25f6bb2aa6
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77423821"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
@@ -29,14 +29,14 @@ ms.locfileid: "77423821"
 
 以下活动支持此 DB2 数据库连接器：
 
-- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
-- [Lookup 活动](control-flow-lookup-activity.md)
+- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [查找活动](control-flow-lookup-activity.md)
 
 可以将数据从 DB2 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，此 DB2 连接器支持以下 IBM DB2 平台和版本，以及分布式关系数据库结构 (DRDA) SQL 访问管理器 (SQLAM) 版本 9、版本 10 和版本 11：
 
-* IBM DB2 for z/OS 12。1
+* IBM DB2 for z/OS 12.1
 * IBM DB2 for z/OS 11.1
 * IBM DB2 for z/OS 10.1
 * IBM DB2 for i 7.3
@@ -47,7 +47,7 @@ ms.locfileid: "77423821"
 * IBM DB2 for LUW 10.1
 
 >[!TIP]
->DB2 连接器建立在 DB2 的 Microsoft OLE DB 提供程序之上。 若要解决 DB2 连接器错误，请参阅[数据访问接口错误代码](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)。
+>DB2 连接器构建在用于 DB2 的 Microsoft OLE DB 提供程序之上。 要排除 DB2 连接器错误，请参阅[数据提供程序错误代码](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -65,22 +65,22 @@ ms.locfileid: "77423821"
 
 DB2 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：Db2 | 是 |
+| type | type 属性必须设置为：Db2**** | 是 |
 | server |DB2 服务器的名称。 可以在冒号分隔的服务器名称后面指定端口号，例如 `server:port`。 |是 |
-| 数据库 |DB2 数据库的名称。 |是 |
-| authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：Basic。 |是 |
+| database |DB2 数据库的名称。 |是 |
+| authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：Basic****。 |是 |
 | username |指定用于连接到 DB2 数据库的用户名。 |是 |
 | password |指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| packageCollection | 指定在查询数据库时，ADF 自动创建所需的包的位置。 | 是 |
-| certificateCommonName | 使用安全套接字层（SSL）或传输层安全性（TLS）加密时，必须为 "证书公用名" 输入一个值。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |是 |
+| packageCollection | 在查询数据库时，在 ADF 自动创建所需包的位置下指定。 | 否 |
+| certificateCommonName | 使用安全套接字层 (SSL) 或传输层安全性 (TLS) 加密时，必须为“证书公用名称”输入值。 | 否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 > [!TIP]
-> 如果收到说明 `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`的错误消息，则原因是不会为用户创建所需的包。 默认情况下，ADF 会尝试在集合下创建一个名为的包，并将其命名为用于连接到 DB2 的用户。 指定 "包集合" 属性，以指示在查询数据库时 ADF 要在何处创建所需的包。
+> 如果收到一条错误消息，指出`The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`，原因是未为用户创建所需的包。 默认情况下，ADF 将尝试在集合下创建一个包，该包名为用于连接到 DB2 的用户。 指定包集合属性，以指示在查询数据库时希望 ADF 在何处创建所需的包。
 
-**示例：**
+**例子：**
 
 ```json
 {
@@ -107,16 +107,16 @@ DB2 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 DB2 数据集支持的属性列表。
+有关可用于定义数据集的节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 DB2 数据集支持的属性列表。
 
-若要从 DB2 复制数据，支持以下属性：
+若要从 DB2 复制数据，需要支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为： **Db2Table** | 是 |
+| type | 数据集的类型属性必须设置为 **：Db2Table** | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
-| table | 表的名称。 |否（如果指定了活动源中的“query”）  |
-| tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 为新的工作负荷使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
+| 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
+| tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -136,7 +136,7 @@ DB2 链接服务支持以下属性：
 }
 ```
 
-如果使用的是 `RelationalTable` 类型化数据集，则仍支持原样，但建议使用新的数据集。
+如果使用 `RelationalTable` 类型数据集，该数据集仍按原样受支持，但我们建议今后使用新数据集。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
@@ -144,14 +144,14 @@ DB2 链接服务支持以下属性：
 
 ### <a name="db2-as-source"></a>DB2 作为源
 
-若要从 DB2 复制数据，复制活动**源**部分支持以下属性：
+若要从 DB2 复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为： **Db2Source** | 是 |
+| type | 必须将复制活动源的类型属性设置为 **：Db2Source** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
 
-**示例：**
+**例子：**
 
 ```json
 "activities":[
@@ -183,7 +183,7 @@ DB2 链接服务支持以下属性：
 ]
 ```
 
-如果使用的是 `RelationalSource` 类型化源，则仍支持原样，但建议使用新的源。
+如果使用 `RelationalSource` 类型源，该源仍按原样受支持，但我们建议今后使用新源。
 
 ## <a name="data-type-mapping-for-db2"></a>DB2 的数据类型映射
 
@@ -196,31 +196,31 @@ DB2 链接服务支持以下属性：
 | Blob |Byte[] |
 | Char |String |
 | Clob |String |
-| 日期 |Datetime |
+| Date |Datetime |
 | DB2DynArray |String |
 | DbClob |String |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Double |Double |
-| 浮点 |Double |
+| Float |Double |
 | Graphic |String |
-| 整数 |Int32 |
+| Integer |Int32 |
 | LongVarBinary |Byte[] |
 | LongVarChar |String |
 | LongVarGraphic |String |
-| 数字 |Decimal |
+| Numeric |Decimal |
 | Real |Single |
 | SmallInt |Int16 |
 | 时间 |TimeSpan |
-| Timestamp |DateTime |
+| 时间戳 |DateTime |
 | VarBinary |Byte[] |
 | VarChar |String |
 | VarGraphic |String |
 | Xml |Byte[] |
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
-若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动作为源和接收器支持的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

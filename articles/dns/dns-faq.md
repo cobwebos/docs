@@ -1,6 +1,6 @@
 ---
-title: 常见问题解答-Azure DNS
-description: 本文详细介绍 Azure DNS 的常见问题
+title: 常见问题解答 - Azure DNS
+description: 本文介绍有关 Azure DNS 的常见问题
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
 ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77121722"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
@@ -42,9 +42,9 @@ Azure 保证在任何情况下，有效的 DNS 请求将从至少一个 Azure DN
 
 域在域名系统中具有唯一名称。 例如 contoso.com。
 
-DNS 区域用来托管某个特定域的 DNS 记录。 例如，域 contoso.com 可能包含几条 DNS 记录。 记录可能包括用于邮件服务器的 mail.contoso.com 和网站的 www\.contoso.com。 这些记录托管在 DNS 区域 contoso.com 中。
+DNS 区域用来托管某个特定域的 DNS 记录。 例如，域 contoso.com 可能包含几条 DNS 记录。 这些记录可能包含 mail.contoso.com（用于邮件服务器）和 www\.contoso.com（用于网站）。 这些记录托管在 DNS 区域 contoso.com 中。
 
-域名仅是一个名称。 DNS 区域是包含域名的 DNS 记录的数据资源。 可以使用 Azure DNS 托管 DNS 区域，以及管理 Azure 中域的 DNS 记录。 它还提供 DNS 名称服务器，用于回答来自 Internet 的 DNS 查询。
+域名仅是一个名称。** DNS 区域是包含域名的 DNS 记录的数据资源。 可以使用 Azure DNS 托管 DNS 区域，以及管理 Azure 中域的 DNS 记录。 它还提供 DNS 名称服务器，用于回答来自 Internet 的 DNS 查询。
 
 ### <a name="do-i-need-to-buy-a-dns-domain-name-to-use-azure-dns"></a>是否需要购买 DNS 域名才能使用 Azure DNS？ 
 
@@ -58,7 +58,7 @@ DNS 区域用来托管某个特定域的 DNS 记录。 例如，域 contoso.com 
 
 ### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>在流量管理器中使用域名顶点的别名记录时，是否存在任何限制？
 
-可以。 必须在 Azure 流量管理器中使用静态公共 IP 地址。 使用静态 IP 地址配置**外部终结点**目标。 
+是的。 必须在 Azure 流量管理器中使用静态公共 IP 地址。 使用静态 IP 地址配置**外部终结点**目标。 
 
 ### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Azure DNS 是否支持基于 DNS 的流量路由或终结点故障转移？
 
@@ -68,31 +68,31 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 ### <a name="does-azure-dns-support-domain-name-registration"></a>Azure DNS 是否支持域名注册？
 
-No。 Azure DNS 目前不支持购买域名。 若要购买域，必须使用第三方域名注册机构。 注册机构通常收取小额年费。 然后，可将域托管在 Azure DNS 中用于管理 DNS 记录。 有关详细信息，请参阅 [向 Azure DNS 委派域](dns-domain-delegation.md)。
+不是。 Azure DNS 目前不支持购买域名。 若要购买域，必须使用第三方域名注册机构。 注册机构通常收取小额年费。 然后，可将域托管在 Azure DNS 中用于管理 DNS 记录。 有关详细信息，请参阅[将域委派给 Azure DNS](dns-domain-delegation.md)。
 
 我们正在 Azure 积压工作中跟踪域购买功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar)。
 
 ### <a name="does-azure-dns-support-dnssec"></a>Azure DNS 是否支持 DNSSEC？
 
-No。 Azure DNS 目前不支持域名系统安全扩展 (DNSSEC)。
+不是。 Azure DNS 目前不支持域名系统安全扩展 (DNSSEC)。
 
 我们正在 Azure DNS 积压工作中跟踪 DNSSEC 功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support)。
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS 是否支持区域传送 (AXFR/IXFR)？
 
-No。 Azure DNS 目前不支持区域传送。 可[使用 Azure CLI 将 DNS 区域导入 Azure DNS](dns-import-export.md)。 然后，可通过 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)来托管 DNS 记录。
+不是。 Azure DNS 目前不支持区域传送。 可[使用 Azure CLI 将 DNS 区域导入 Azure DNS](dns-import-export.md)。 然后，可通过 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)来托管 DNS 记录。
 
 我们正在 Azure DNS 积压工作中跟踪区域传送功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c)。
 
 ### <a name="does-azure-dns-support-url-redirects"></a>Azure DNS 是否支持 URL 重定向？
 
-No。 URL 重定向服务实际并非 DNS 服务。 它们在 HTTP 级别而非 DNS 级别运行。 某些 DNS 提供商会在整体产品/服务中捆绑销售 URL 重定向服务。 Azure DNS 目前不支持此服务。
+不是。 URL 重定向服务实际并非 DNS 服务。 它们在 HTTP 级别而非 DNS 级别运行。 某些 DNS 提供商会在整体产品/服务中捆绑销售 URL 重定向服务。 Azure DNS 目前不支持此服务。
 
 我们正在 Azure DNS 积压工作中跟踪 URL 重定向功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape)。
 
 ### <a name="does-azure-dns-support-the-extended-ascii-encoding-8-bit-set-for-txt-record-sets"></a>Azure DNS 是否支持适用于 TXT 记录集的扩展 ASCII 编码（8 位）集？
 
-可以。 Azure DNS 支持适用于 TXT 记录集的扩展 ASCII 编码集。 但是，必须使用最新版本的 Azure REST API、SDK、PowerShell 和 CLI。 低于 2017 年 10 月 1 日版的版本或 SDK 2.1 不支持扩展的 ASCII 集。 
+是的。 Azure DNS 支持适用于 TXT 记录集的扩展 ASCII 编码集。 但是，必须使用最新版本的 Azure REST API、SDK、PowerShell 和 CLI。 低于 2017 年 10 月 1 日版的版本或 SDK 2.1 不支持扩展的 ASCII 集。 
 
 例如，你可能会提供一个字符串作为 TXT 记录的值，其中包含扩展的 ASCII 字符 \128。 例如“abcd\128efgh”。 Azure DNS 会在内部表示形式中使用此字符的字节值（即 128）。 在进行 DNS 解析时，此字节值会在响应中返回。 另请注意，在考虑到解析的情况下，“abc”和“\097\098\099”是可以互换的。 
 
@@ -117,25 +117,25 @@ No。 URL 重定向服务实际并非 DNS 服务。 它们在 HTTP 级别而非 
 ### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>支持哪些资源作为别名记录集的目标？
 
 - **从 DNS A/AAAA 记录集指向公共 IP 资源**。 可以创建一个 A/AAAA 记录集，并使其成为指向公共 IP 资源的别名记录集。
-- **从 DNS A/AAAA/CNAME 记录集指向流量管理器配置文件**。 可以从 DNS CNAME 记录集指向流量管理器配置文件的 CNAME。 例如 contoso.trafficmanager.net。 现在，还可以从 DNS 区域中的 A 或 AAAA 记录集指向包含外部终结点的流量管理器配置文件。
-- **指向 Azure 内容分发网络（CDN）终结点**。 当你使用 Azure 存储和 Azure CDN 创建静态网站时，这非常有用。
+- **从 DNS A/AAAA/CNAME 记录集中指向流量管理器配置文件。** 可以从 DNS CNAME 记录集指向流量管理器配置文件的 CNAME。 例如 contoso.trafficmanager.net。 现在，还可以从 DNS 区域中的 A 或 AAAA 记录集指向包含外部终结点的流量管理器配置文件。
+- **指向 Azure 内容传递网络 （CDN） 终结点**。 当您使用 Azure 存储和 Azure CDN 创建静态网站时，这非常有用。
 - **指向同一区域中的另一 DNS 记录集**。 别名记录可引用相同类型的其他记录集。 例如，可以使 DNS CNAME 记录集成为相同类型的另一 CNAME 记录集的别名。 如果希望有些记录集是别名，有些记录集不是别名，则这种安排会很有用。
 
 ### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>是否可以从 Azure 门户创建和更新别名记录？
 
-可以。 除了 Azure REST API、PowerShell、CLI 和 SDK 以外，还可以在 Azure 门户中创建或管理别名记录。
+是的。 除了 Azure REST API、PowerShell、CLI 和 SDK 以外，还可以在 Azure 门户中创建或管理别名记录。
 
 ### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>别名记录是否有助于确保在删除基础公共 IP 时，删除我的 DNS 记录集？
 
-可以。 此功能是别名记录的一项核心功能。 它有助于避免应用程序用户遇到中断。
+是的。 此功能是别名记录的一项核心功能。 它有助于避免应用程序用户遇到中断。
 
 ### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>当基础公共 IP 地址发生变化时，别名记录是否有助于确保我的 DNS 记录集更新为正确的 IP 地址？
 
-可以。 此功能是别名记录的一项核心功能。 它有助于避免应用程序出现中断或安全风险。
+是的。 此功能是别名记录的一项核心功能。 它有助于避免应用程序出现中断或安全风险。
 
 ### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>使用 A 或 AAAA 记录的别名记录集指向流量管理器时，是否存在任何限制？
 
-可以。 若要以别名形式从 A 或 AAAA 记录集指向流量管理器配置文件，流量管理器配置文件只能使用外部终结点。 在流量管理器中创建外部终结点时，请提供终结点的实际 IP 地址。
+是的。 若要以别名形式从 A 或 AAAA 记录集指向流量管理器配置文件，流量管理器配置文件只能使用外部终结点。 在流量管理器中创建外部终结点时，请提供终结点的实际 IP 地址。
 
 ### <a name="is-there-an-additional-charge-to-use-alias-records"></a>使用别名记录是否会产生额外的费用？
 
@@ -143,17 +143,17 @@ No。 URL 重定向服务实际并非 DNS 服务。 它们在 HTTP 级别而非 
 
 ## <a name="use-azure-dns"></a>使用 Azure DNS
 
-### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>是否可以使用 Azure DNS 和另一 DNS 提供程序共同托管域？
+### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>是否可以使用 Azure DNS 和其他 DNS 提供程序共同托管域？
 
-可以。 Azure DNS 支持与其他 DNS 服务共同托管域。
+是的。 Azure DNS 支持与其他 DNS 服务共同托管域。
 
-若要设置共同托管，请修改域的 NS 记录，使其指向两个提供程序的名称服务器。 名称服务器 (NS) 记录控制哪些提供程序接收域的 DNS 查询。 可在 Azure DNS、另一提供程序以及父区域中修改这些 NS 记录。 父区域通常是通过域名注册机构配置的。 有关 DNS 委派的详细信息，请参阅[DNS 域委派](dns-domain-delegation.md)。
+若要设置共同托管，请将域的 NS 记录修改为指向这两个提供程序的名称服务器。 名称服务器 (NS) 记录控制哪些提供程序接收域的 DNS 查询。 可在 Azure DNS、另一提供程序以及父区域中修改这些 NS 记录。 父区域通常是通过域名注册机构配置的。 有关 DNS 委派的详细信息，请参阅[DNS 域委派](dns-domain-delegation.md)。
 
 此外，请确保域的 DNS 记录在 DNS 提供程序之间进行同步。 Azure DNS 目前不支持 DNS 区域传送。 必须使用 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/rest/api/dns/)、[SDK](dns-sdk.md)、[PowerShell cmdlets](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)同步 DNS 记录。
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>是否需向全部四个 Azure DNS 名称服务器委托我的域？
 
-可以。 Azure DNS 为每个 DNS 区域分配四个名称服务器。 这种安排是为实现故障隔离和提高复原能力。 为了符合 Azure DNS SLA，请将域委托给全部四个名称服务器。
+是的。 Azure DNS 为每个 DNS 区域分配四个名称服务器。 这种安排是为实现故障隔离和提高复原能力。 为了符合 Azure DNS SLA，请将域委托给全部四个名称服务器。
 
 ### <a name="what-are-the-usage-limits-for-azure-dns"></a>Azure DNS 有哪些使用限制？
 
@@ -163,7 +163,7 @@ No。 URL 重定向服务实际并非 DNS 服务。 它们在 HTTP 级别而非 
 
 ### <a name="can-i-move-an-azure-dns-zone-between-resource-groups-or-between-subscriptions"></a>能否在资源组或订阅之间移动 Azure DNS 区域？
 
-可以。 可在资源组或订阅之间移动 DNS 区域。
+是的。 可在资源组或订阅之间移动 DNS 区域。
 
 移动 DNS 区域不会影响 DNS 查询。 分配给区域的名称服务器将保持不变。 DNS 查询将以正常的吞吐量进行处理。
 
@@ -187,7 +187,7 @@ No。 URL 重定向服务实际并非 DNS 服务。 它们在 HTTP 级别而非 
 
 ### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Azure DNS 名称服务器是否通过 IPv6 解析？ 
 
-可以。 Azure DNS 名称服务器是双重堆栈。 双重堆栈表示它们具有 IPv4 和 IPv6 地址。 若要查找分配给 DNS 区域的 Azure DNS 名称服务器的 IPv6 地址，请使用 nslookup 等工具。 示例为 `nslookup -q=aaaa <Azure DNS Nameserver>`。
+是的。 Azure DNS 名称服务器是双重堆栈。 双重堆栈表示它们具有 IPv4 和 IPv6 地址。 若要查找分配给 DNS 区域的 Azure DNS 名称服务器的 IPv6 地址，请使用 nslookup 等工具。 示例为 `nslookup -q=aaaa <Azure DNS Nameserver>`。
 
 ### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>如何在 Azure DNS 中设置 IDN？
 
@@ -197,7 +197,7 @@ No。 URL 重定向服务实际并非 DNS 服务。 它们在 HTTP 级别而非 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [详细了解 Azure DNS](dns-overview.md)。
+- [了解有关 Azure DNS 的更多详细信息](dns-overview.md)。
 
 - [详细了解如何将 Azure DNS 用于专用域](private-dns-overview.md)。
 

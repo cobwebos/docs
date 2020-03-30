@@ -1,6 +1,6 @@
 ---
-title: 迁移 StorSimple 设备管理器存储帐户，订阅
-description: 了解如何为 StorSimple 设备管理器服务迁移订阅和存储帐户。
+title: 迁移 StorSimple 设备管理器存储帐户、订阅
+description: 了解如何迁移 StorSimple 设备管理器服务的订阅、存储帐户。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 428c336d98e278910b229e9c0d877a9ae6268c96
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77169722"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>迁移与 StorSimple 设备管理器服务相关联的订阅和存储帐户
@@ -29,8 +29,8 @@ ms.locfileid: "77169722"
 
 | 是否可以迁移…| 支持| 故障时间| Azure 支持进程| 方法|
 |-----|-----|-----|-----|-----|
-| 将整个订阅（包括 StorSimple 服务和存储帐户）移动到另一注册？ | 是       | 否       | 注册传输<br>使用：<li>当通过新协议购买新的 Azure 承诺时。</li><li>需要将所有帐户和订阅从旧注册迁移到新注册。 这包括旧订阅下的所有 Azure 服务。</li> | 步骤 1：打开 Azure Enterprise 操作支持票证。<li>转到[https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport)。</li><li> 选择“注册管理”，然后选择“从一个注册转移到新注册”。<br>步骤 2：提供所请求的信息<br>包括：<li>源注册号</li><li> 目标注册号</li><li>转移生效日期|
-| 将 StorSimple 服务从现有帐户转移到新注册？    | 是       | 否       | 帐户转移<br>使用：<li>当不想进行完整注册转移时。</li><li>只想将特定帐户移动至新注册。</li>| 步骤 1：打开 Azure Enterprise 操作支持票证。<li>转到[https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport)。</li><li>选择“注册管理”，然后选择“将一个 EA 帐户传输到新注册”。<br>步骤 2：提供所请求的信息<br>包括：<li>源注册号</li><li> 目标注册号</li><li>转移生效日期|
+| 将整个订阅（包括 StorSimple 服务和存储帐户）移动到另一注册？ | 是       | 否       | 注册传输****<br>使用：<li>当通过新协议购买新的 Azure 承诺时。</li><li>需要将所有帐户和订阅从旧注册迁移到新注册。 这包括旧订阅下的所有 Azure 服务。</li> | 步骤 1：打开 Azure Enterprise 操作支持票证****。<li>转到[https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport)。</li><li> 选择“注册管理”，然后选择“从一个注册转移到新注册”********。<br>步骤 2：提供所请求的信息****<br>包括：<li>源注册号</li><li> 目标注册号</li><li>转移生效日期|
+| 将 StorSimple 服务从现有帐户转移到新注册？    | 是       | 否       | 帐户转移****<br>使用：<li>当不想进行完整注册转移时。</li><li>只想将特定帐户移动至新注册。</li>| 步骤 1：打开 Azure Enterprise 操作支持票证****。<li>转到[https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport)。</li><li>选择“注册管理”，然后选择“将一个 EA 帐户传输到新注册”********。<br>步骤 2：提供所请求的信息****<br>包括：<li>源注册号</li><li> 目标注册号</li><li>转移生效日期|
 | 将 StorSimple 服务从一个订阅移动到另一个订阅？      | 否        |    是         | 无，手动过程|<li>从 StorSimple 设备将数据迁出。</li><li>让设备恢复出厂设置，此操作将删除设备上的一切本地数据。</li><li>使用新订阅向 StorSimple 设备管理器服务注册设备。</li><li>将数据迁移回设备。|
 |能否将 Azure 订阅的所有权转让给其他目录？ | 是       | 否       | 将现有订阅关联到 Azure AD 目录 | 请参阅[将现有订阅关联到 Azure AD 目录的具体步骤](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。 正确显示所有内容可能需要长达 10 分钟的时间。|
 | 将 StorSimple 设备从一个 StorSimple 设备管理器服务移动到另一个区域中的服务？      | 否        | 是            | 无，手动过程 |同上。|

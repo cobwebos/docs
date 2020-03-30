@@ -1,5 +1,5 @@
 ---
-title: 设置 Citrix XenDesktop/XenApp 灾难恢复 Azure Site Recovery
+title: 使用 Azure 站点恢复设置 Citrix XenDesktop/XenApp 灾难恢复
 description: 本文介绍了如何使用 Azure Site Recovery 为 Citrix XenDesktop 和 XenApp 部署设置灾难恢复。
 author: ponatara
 manager: abhemraj
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74084555"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>为多层 Citrix XenApp 和 XenDesktop 部署设置灾难恢复
@@ -57,7 +57,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 **方案** | **到辅助站点** | **到 Azure**
 --- | --- | ---
 **Hyper-V** | 不在范围内 | 是
-**VMware** | 不在范围内 | 是
+**Vmware** | 不在范围内 | 是
 **物理服务器** | 不在范围内 | 是
 
 ### <a name="versions"></a>版本
@@ -73,7 +73,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 3.  Azure Site Recovery 无法复制和保护现有的本地 MCS 或 PVS 克隆。
 需要使用从传递控制器预配的 Azure RM 重新创建这些克隆。
 
-4. 无法使用 Azure Site Recovery 保护 NetScaler，因为 NetScaler 基于 FreeBSD，而 Azure Site Recovery 不支持保护 FreeBSD OS。 故障转移到 Azure 之后，你需要部署并配置来自 Azure 应用商店的新 NetScaler 设备。
+4. 无法使用 Azure Site Recovery 保护 NetScaler，因为 NetScaler 基于 FreeBSD，而 Azure Site Recovery 不支持保护 FreeBSD OS。 故障转移到 Azure 之后，你需要部署并配置来自 Azure Marketplace 的新 NetScaler 设备。
 
 
 ## <a name="replicating-virtual-machines"></a>复制虚拟机
@@ -108,7 +108,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 
 注意以下事项：
 
-* 可以设置目标 IP 地址。 如果未提供地址，故障转移的计算机使用 DHCP。 如果设置了无法用于故障转移的地址，故障转移将不会正常工作。 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
+* 可以设置目标 IP 地址。 如果未提供地址，故障转移的计算机将使用 DHCP。 如果设置了无法用于故障转移的地址，故障转移将不会正常工作。 如果地址可用于测试故障转移网络，则同一个目标 IP 地址可用于测试故障转移。
 
 * 对于 AD/DNS 服务器，如果保留本地地址，则可以为 Azure 虚拟网络指定与 DNS 服务器相同的地址。
 
@@ -117,7 +117,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 *   如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
 *   如果源虚拟机的适配器数大于目标大小允许的数目，则使用目标大小允许的最大数目。
 * 例如，如果源计算机有两个网络适配器，而目标计算机大小支持四个，则目标计算机将有两个适配器。 如果源计算机有两个适配器，但支持的目标大小只支持一个，则目标计算机只有一个适配器。
-*   如果虚拟机有多个网络适配器，它们会全部连接到同一个网络。
+*   如果虚拟机有多个网络适配器，它们将全部连接到同一个网络。
 *   如果虚拟机有多个网络适配器，列表中显示的第一个适配器将成为 Azure 虚拟机中的默认网络适配器。
 
 
@@ -156,7 +156,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
    >[!NOTE]     
    >包含手动操作或脚本操作的步骤 4、6 和 7 仅适用于具有 MCS/PVS 目录的本地 XenApp 环境。
 
-4. 组3手动或脚本操作：关闭主 VDA VM。
+4. 组 3 手动或脚本操作：关闭主 VDA VM。
 主 VDA VM 在故障转移到 Azure 时将处于运行状态。 若要使用 Azure 宿主创建新的 MCS 目录，Master VDA VM 需处于“已停止”（已解除分配）状态。 从 Azure 门户关闭 VM。
 
 5. 故障转移组4：传递控制器和 StoreFront 服务器 VM

@@ -1,47 +1,47 @@
 ---
-title: 同步云文件夹中的内容
-description: 了解如何通过内容同步将你的应用部署到 Azure App Service 云文件夹，包括 OneDrive 或 Dropbox。
+title: 从云文件夹中同步内容
+description: 了解如何通过云文件夹中的内容同步（包括 OneDrive 或 Dropbox）将应用部署到 Azure 应用服务。
 ms.assetid: 88d3a670-303a-4fa2-9de9-715cc904acec
 ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77482966"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>将内容从云文件夹同步到 Azure 应用服务
 本文介绍如何将内容同步到 Dropbox 和 OneDrive 上的 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)。 
 
-按需内容同步部署由应用服务的 [Kudu 部署引擎](https://github.com/projectkudu/kudu/wiki)提供支持。 你可以在指定的云文件夹中使用应用代码和内容，然后通过单击按钮同步到应用服务。 内容同步使用 Kudu 生成服务器。 
+按需内容同步部署由应用服务的 [Kudu 部署引擎](https://github.com/projectkudu/kudu/wiki)提供支持。 您可以在指定的云文件夹中处理应用代码和内容，然后单击按钮即可同步到应用服务。 内容同步使用 Kudu 生成服务器。 
 
 ## <a name="enable-content-sync-deployment"></a>启用内容同步部署
 
 若要启用内容同步，请导航至 [Azure 门户](https://portal.azure.com)中的“应用服务应用”页。
 
-在左侧菜单中，单击“部署中心” > “OneDrive”或“Dropbox” > “授权”。 按照授权提示进行操作。 
+在左侧菜单中，单击 **"部署中心** > **OneDrive"** 或 **"放置框** > **授权**"。 按照授权提示进行操作。 
 
 ![](media/app-service-deploy-content-sync/choose-source.png)
 
-只需使用 OneDrive 或 Dropbox 授权一次。 如果已获得授权，只需单击“继续”即可。 可以通过单击“更改帐户”来更改已获得授权的 OneDrive 或 Dropbox 帐户。
+只需使用 OneDrive 或 Dropbox 授权一次。 如果已获得授权，只需单击“继续”**** 即可。 可以通过单击“更改帐户”**** 来更改已获得授权的 OneDrive 或 Dropbox 帐户。
 
 ![](media/app-service-deploy-content-sync/continue.png)
 
-在“配置”页上，选择要同步的文件夹。 将在 OneDrive 或 Dropbox 中的以下指定内容路径下创建此文件夹。 
+在“配置”**** 页上，选择要同步的文件夹。 将在 OneDrive 或 Dropbox 中的以下指定内容路径下创建此文件夹。 
    
 * **OneDrive**：`Apps\Azure Web Apps`
 * **Dropbox**：`Apps\Azure`
 
-完成后，单击“继续”。
+完成后，单击“继续”。****
 
-在“摘要”页中，确认选项，然后单击“完成”。
+在“摘要”**** 页中，确认选项，然后单击“完成”****。
 
 ## <a name="synchronize-content"></a>同步内容
 
-如果想要使用应用服务同步云文件夹中的内容，请返回到“部署中心”页，单击“同步”。
+如果想要使用应用服务同步云文件夹中的内容，请返回到“部署中心”**** 页，单击“同步”****。
 
 ![](media/app-service-deploy-content-sync/synchronize.png)
    
@@ -54,7 +54,7 @@ ms.locfileid: "77482966"
 
 若要禁用内容同步，请导航至 [Azure 门户](https://portal.azure.com)中的“应用服务应用”页。
 
-在左侧菜单中，单击“部署中心” **“断开连接”。**  > 
+在左侧菜单中，单击 **"部署中心** > **断开连接**"。
 
 ![](media/app-service-deploy-content-sync/disable.png)
 

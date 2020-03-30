@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
 ms.openlocfilehash: f905e27f48a0bf9181625bbba07549a13d9420cb
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162130"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>下载用于 S2S VPN 连接的 VPN 设备配置脚本
@@ -26,7 +26,7 @@ ms.locfileid: "77162130"
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="about"></a>关于 VPN 设备配置脚本
+## <a name="about-vpn-device-configuration-scripts"></a><a name="about"></a>关于 VPN 设备配置脚本
 
 跨界 VPN 连接包含一个 Azure VPN 网关、一个本地 VPN 设备，以及将两者相连接的 IPsec S2S VPN 隧道。 典型的工作流包括以下步骤：
 
@@ -50,7 +50,7 @@ ms.locfileid: "77162130"
 
 创建 Azure VPN 网关、本地网络网关，以及连接两者的连接资源。 以下页面将引导你完成每个步骤：
 
-* [在 Azure 门户中创建站点到站点连接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [在 Azure 门户中创建站点到站点的连接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
 创建连接资源后，遵照以下说明下载 VPN 设备配置脚本：
 

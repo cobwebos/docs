@@ -1,6 +1,6 @@
 ---
-title: 将 Azure Stack 虚拟机载入 Azure Sentinel |Microsoft Docs
-description: 本文介绍如何在 Azure Stack 虚拟机上预配 Azure Monitor、更新和配置管理虚拟机扩展，并通过 Sentinel 开始监视它们。
+title: 将 Azure 堆栈虚拟机装到 Azure 哨兵 |微软文档
+description: 本文介绍如何在 Azure Stack 虚拟机上预配 Azure 监视器、更新和配置管理虚拟机扩展，并开始使用 Sentinel 监视它们。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -13,47 +13,47 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: a8213bd57936f95870324950204dbd6c1473739a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588512"
 ---
-# <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>将 Azure Stack 虚拟机连接到 Azure Sentinel
+# <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>将 Azure 堆栈虚拟机连接到 Azure 哨兵
 
 
 
 
-利用 Azure Sentinel，你可以监视在 Azure 上运行的 Vm，并 Azure Stack 在同一位置。 若要将 Azure Stack 计算机加入 Azure Sentinel，首先需要将虚拟机扩展添加到现有 Azure Stack 虚拟机。 
+使用 Azure 哨兵，可以在一个位置监视在 Azure 和 Azure 堆栈上运行的 VM。 要将 Azure 堆栈计算机装板到 Azure Sentinel，首先需要将虚拟机扩展添加到现有 Azure 堆栈虚拟机。 
 
-连接 Azure Stack 机后，从基于你的数据的仪表板库中进行选择。 可以轻松地根据需要对这些仪表板进行定制。
+连接 Azure 堆栈计算机后，请从基于数据显示见解的仪表板库中选择。 这些仪表板可以轻松自定义，以满足您的需要。
 
 
 
-## <a name="add-the-virtual-machine-extension"></a>添加虚拟机扩展 
+## <a name="add-the-virtual-machine-extension"></a>添加虚拟机扩展名 
 
-将**Azure Monitor、更新和配置管理**虚拟机扩展添加到 Azure Stack 上运行的虚拟机。 
+将**Azure 监视器、更新和配置管理**虚拟机扩展添加到 Azure 堆栈上运行的虚拟机。 
 
-1. 在新的浏览器选项卡中，登录到[Azure Stack 门户](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal#access-the-portal)。
-2. 请在 "**虚拟机**" 页上，选择要用 Azure Sentinel 保护的虚拟机。 有关如何在 Azure Stack 上创建虚拟机的信息，请参阅[使用 Azure Stack 门户创建 Windows SERVER vm](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal)或[使用 Azure Stack 门户创建 Linux 服务器 vm](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)。
-3. 选择“扩展”。 此时将显示此虚拟机上安装的虚拟机扩展列表。
-4. 单击 "**添加**" 选项卡。此时将打开 "**新建资源**菜单" 边栏选项卡，其中显示可用虚拟机扩展的列表。 
-5. 选择**Azure Monitor、更新和配置管理**扩展，并单击 "**创建**"。 此时将打开 "**安装扩展**配置" 窗口。
+1. 在新的浏览器选项卡中，登录到 Azure[堆栈门户](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal#access-the-portal)。
+2. 转到 **"虚拟机"** 页，选择要使用 Azure Sentinel 保护的虚拟机。 有关如何在 Azure 堆栈上创建虚拟机的信息，请参阅[使用 Azure 堆栈门户创建 Windows 服务器 VM](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal)或使用 Azure[堆栈门户创建 Linux 服务器 VM。](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)
+3. 选择**扩展**。 此时将显示此虚拟机上安装的虚拟机扩展列表。
+4. 单击"**添加"** 选项卡。"**新资源**"菜单边栏选项卡将打开并显示可用虚拟机扩展的列表。 
+5. 选择**Azure 监视器、更新和配置管理**扩展，然后单击"**创建**"。 将打开 **"安装扩展配置**"窗口。
 
-   ![Azure Monitor、更新和配置管理设置](./media/connect-azure-stack/azure-monitor-extension-fix.png)  
+   ![Azure 监视器、更新和配置管理设置](./media/connect-azure-stack/azure-monitor-extension-fix.png)  
 
    >[!NOTE]
-   > 如果你没有看到在 marketplace 中列出的**Azure Monitor、更新和配置管理**扩展，请联系你的 Azure Stack 操作员以使其可用。
+   > 如果市场中未列出**Azure 监视器、更新和配置管理**扩展，请与 Azure Stack 运算符联系以使其可用。
 
-6. 在 Azure Sentinel 菜单中，选择 "**工作区设置**"，然后选择 "**高级**"，然后复制**工作区 ID**和**工作区密钥（主密钥）** 。 
-1. 在 Azure Stack**安装扩展**"窗口中，将它们粘贴到指定字段中，然后单击 **" 确定 "** 。
-1. 扩展安装完成后，其状态将显示为 "**预配已成功**"。 虚拟机可能需要长达一小时的时间才能显示在 Azure Sentinel 门户中。
+6. 在 Azure 哨兵菜单上，选择**工作区设置**后跟**高级**，然后复制**工作区 ID**和**工作区键（主键）。** 
+1. 在 Azure 堆栈**安装扩展窗口中**，将它们粘贴到指示的字段中，然后单击"**确定**"。
+1. 扩展安装完成后，其状态将显示为 **"预配成功**"。 虚拟机最多可能需要一个小时才能显示在 Azure Sentinel 门户中。
 
-有关安装和配置 Windows 代理的详细信息，请参阅[连接 windows 计算机](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
+有关安装和配置 Windows 代理的详细信息，请参阅[连接 Windows 计算机](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
 
 有关如何排查 Linux 代理问题，请参阅[排查 Azure Log Analytics Linux 代理问题](../azure-monitor/platform/agent-linux-troubleshoot.md)。
 
-在 Azure 上的 Azure Sentinel 门户的 "**虚拟机**" 下，你可以大致了解所有 vm 和计算机及其状态。 
+在 Azure 上的 Azure Sentinel 门户中，在**虚拟机**下，您可以概览所有 VM 和计算机及其状态。 
 
 ## <a name="clean-up-resources"></a>清理资源
 如果不再需要，可以通过 Azure Stack 门户删除虚拟机中的扩展。
@@ -61,9 +61,9 @@ ms.locfileid: "77588512"
 删除扩展：
 
 1. 打开 **Azure Stack 门户**。
-2. 转到“虚拟机”页，选择要从中删除扩展的虚拟机。
-3. 选择“扩展”，然后选择“Microsoft.EnterpriseCloud.Monitoring”扩展。
-4. 单击 "**卸载**"，然后确认你的选择。
+2. 转到“虚拟机”页，选择要从中删除扩展的虚拟机。****
+3. 选择“扩展”，然后选择“Microsoft.EnterpriseCloud.Monitoring”扩展。********
+4. 单击 **"卸载**"并确认您的选择。
 
 ## <a name="next-steps"></a>后续步骤
 

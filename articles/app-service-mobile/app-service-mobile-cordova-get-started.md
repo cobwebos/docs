@@ -8,10 +8,10 @@ ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: 99fb4a4b07ecbd4a85abbc62ec52a0f5960654c5
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461566"
 ---
 # <a name="create-an-apache-cordova-app"></a>创建 Apache Cordova 应用
@@ -22,11 +22,11 @@ ms.locfileid: "77461566"
 
 只有在完成本教程后，才可以学习有关使用 Azure 应用服务中的移动应用功能的所有其他 Apache Cordova 教程。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要完成本教程，需要具备以下先决条件：
 
 * 装有 [Visual Studio Community 2017] 或更高版本的电脑。
-* [用于 Apache Cordova 的 Visual Studio 工具]
+* [用于 Apache Cordova 的 Visual Studio 工具]。
 * [有效的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 也可以绕过 Visual Studio，直接使用 Apache Cordova 命令行。  在 Mac 计算机上学习本教程时，使用命令行相当有效。  本教程不介绍如何使用命令行编译 Apache Cordova 客户端应用程序。
@@ -43,5 +43,5 @@ ms.locfileid: "77461566"
 <!-- URLs -->
 [Azure portal]: https://portal.azure.com/
 
-[Visual Studio Community 2017]: https://www.visualstudio.com/
-[用于 Apache Cordova 的 Visual Studio 工具]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
+[视觉工作室社区 2017]: https://www.visualstudio.com/
+[阿帕奇·科尔多瓦的视觉工作室工具]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx

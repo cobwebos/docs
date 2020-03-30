@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Analytics U-SQL 语言入门
-description: 了解有关 Azure Data Lake Analytics 中 U-SQL 语言的基础知识。 使用变量编写你的第一个查询、转换行集和聚合数据。
+description: 了解有关 Azure Data Lake Analytics 中 U-SQL 语言的基础知识。 使用变量将第一个查询写入文件的额外数据、转换行集和聚合数据。
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,14 +10,14 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
 ms.openlocfilehash: 8130679dcc519cecd25abf43902c003ad8047df3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672820"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics U-SQL 入门
-U-SQL 是一种将声明性 SQL 与命令性 C# 相结合的语言，能够处理任何规模的数据。 通过 U-SQL 的可缩放分布式查询功能，可以跨关系存储（如 Azure SQL 数据库）高效分析其中的数据。 使用 U-SQL，可以通过在读取和插入自定义逻辑和 UDF 时应用架构来处理非结构化数据。 此外，U-SQL 还提供可扩展性，可更精细地控制大规模执行的方式。 
+U-SQL 是一种将声明性 SQL 与命令性 C# 相结合的语言，能够处理任何规模的数据。 通过 U-SQL 的可缩放分布式查询功能，可以跨关系存储（如 Azure SQL 数据库）高效分析其中的数据。 使用 U-SQL，可以通过在读取和插入自定义逻辑和 UDF 时应用架构来处理非结构化数据。 此外，U-SQL 还提供可扩展性，让你更精细地控制大规模执行的方式。 
 
 ## <a name="learning-resources"></a>学习资源
 

@@ -1,16 +1,16 @@
 ---
 title: Xamarin iOS 中的身份验证入门
-description: 了解如何使用移动应用通过 AAD、Google、Facebook、Twitter 和 Microsoft 等标识提供者对 Xamarin iOS 应用程序的用户进行身份验证。
+description: 了解如何使用移动应用通过标识提供者（如 AAD、Google、Facebook、Twitter 和 Microsoft）对 Xamarin iOS 应用的用户进行身份验证。
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 05e936accbcd5c6fa2760c4f8682d907557f23b5
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461311"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加身份验证
@@ -29,15 +29,15 @@ ms.locfileid: "77461311"
 
 安全身份验证要求为应用定义新的 URL 方案。 这允许身份验证系统在身份验证过程完成后，重定向回应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，可以使用所选择的任何 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择“应用服务”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择应用服务。
 
-2. 单击“身份验证/授权”菜单选项。
+2. 单击“身份验证/授权”**** 菜单选项。
 
-3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
+3. 在“允许的外部重定向 URL”**** 中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案****。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
 4. 单击“确定”。
 
-5. 单击“保存”。
+5. 单击“保存”。****
 
 ## <a name="restrict-permissions-to-authenticated-users"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -114,7 +114,7 @@ ms.locfileid: "77461311"
     // rest of RefreshAsync method
     ```
 
-5. 打开 AppDelegate.cs，添加以下方法：
+5. 打开 AppDelegate.cs，添加以下方法****：
 
     ```csharp
     public static Func<NSUrl, bool> ResumeWithURL;
@@ -125,7 +125,7 @@ ms.locfileid: "77461311"
     }
     ```
 
-6. 打开 Info.plist 文件，导航到“高级”部分中的“URL 类型”。 现在配置 URL 类型的标识符和 URL 方案，然后单击“添加 URL 类型”。 URL 方案应与你的 {url_scheme_of_your_app} 相同。
+6. 打开 Info.plist 文件，导航到“高级”部分中的“URL 类型”************。 现在配置 URL 类型的标识符**** 和 URL 方案****，然后单击“添加 URL 类型”****。 URL 方案**** 应与你的 {url_scheme_of_your_app} 相同。
 7. 在已连接到 Mac 主机的 Visual Studio 中或在 Visual Studio for Mac 中，针对设备或模拟器运行客户端项目。 验证应用程序是否未显示任何数据。
 
     通过向下拉动项列表来执行刷新笔势，这会导致显示登录屏幕。 成功输入有效的凭据后，应用会显示待办事项列表，用户可以对数据进行更新。
@@ -133,4 +133,4 @@ ms.locfileid: "77461311"
 <!-- URLs. -->
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[创建 Xamarin.iOS 应用]: app-service-mobile-xamarin-ios-get-started.md
+[创建 Xamarin iOS 应用]: app-service-mobile-xamarin-ios-get-started.md

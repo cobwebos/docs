@@ -1,5 +1,5 @@
 ---
-title: 在具有不同架构的云数据库中进行查询
+title: 使用不同的架构跨云数据库查询
 description: 如何在垂直分区上设置跨数据库查询
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: d5983d25685242a696300f293231bbf987e8442d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823735"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>在具有不同架构的云数据库中进行查询。（预览）
@@ -37,7 +37,7 @@ ms.locfileid: "73823735"
 
 1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)（创建外部数据源）
+3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
 4. [创建外部表](https://msdn.microsoft.com/library/dn935021.aspx) 
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>创建数据库范围的主密钥和凭据
@@ -50,7 +50,7 @@ ms.locfileid: "73823735"
     [;]
 
 > [!NOTE]
-> 确保 `<username>` 不包含任何“**servername”\@** 后缀。 
+> 确保 不包含`<username>`任何 **"\@服务器名称"** 后缀。 
 >
 
 ## <a name="create-external-data-sources"></a>创建外部数据源
@@ -174,7 +174,7 @@ DATA_SOURCE 子句定义用于外部表的外部数据源（即，在垂直分�
 * 参数声明 (nvarchar) - 可选：在查询参数（如 sp_executesql）中使用的参数的字符串（包含数据类型定义）。 
 * 参数值列表 - 可选：以逗号分隔的参数值（如 sp_executesql）的列表。
 
-sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到远程数据库。  
+Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到远程数据库。  
 
 示例： 
 
@@ -188,7 +188,7 @@ sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 
 可以使用常规 SQL Server 连接字符串将 BI 和数据集成工具连接到 SQL 数据库服务器上已启用弹性查询并已定义外部表的数据库。 请确保支持将 SQL Server 用作工具的数据源。 然后，引用弹性查询数据库及其外部表，就像使用工具连接到其他任何 SQL Server 数据库一样。 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 * 确保已通过在 SQL 数据库防火墙配置中启用对 Azure 服务的访问授予弹性查询终结点数据库访问远程数据库的权限。 另请确保外部数据源定义中提供的凭据可以成功登录到远程数据库并有权访问远程表。  
 * 弹性查询最适合大部分计算可以在远程数据库上完成的查询。 使用可以在远程数据库或联接上求值的选择性筛选器谓词（可以完全在远程数据库上执行），通常可以获得最佳查询性能。 其他查询模式可能需要从远程数据库加载大量数据并且可能会执行效果不佳。 

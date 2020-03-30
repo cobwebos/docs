@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 1e25656b58fe675cfbe87fef75af4fcb174b7f55
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589735"
 ---
 使用事件中心输出绑定将事件写入到事件流。 必须具有事件中心的发送权限才可将事件写入到其中。
 
-在尝试实现输出绑定之前，请确保所需的包引用已准备就绪。
+在尝试实现输出绑定之前，请确保所需的包引用已到位。
 
 <a id="example" name="example"></a>
 
@@ -31,7 +31,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-下面的示例演示如何使用 `IAsyncCollector` 接口发送一批消息。 当处理来自一个事件中心的消息并将结果发送到另一个事件中心时，此方案很常见。
+以下示例演示如何使用 `IAsyncCollector` 接口发送一批消息。 当你处理来自一个事件中心的消息并将结果发送到另一个事件中心时，这种情况很常见。
 
 ```csharp
 [FunctionName("EH2EH")]
@@ -51,11 +51,11 @@ public static async Task Run(
 }
 ```
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [C# 脚本函数](../articles/azure-functions/functions-reference-csharp.md)。 该函数将消息写入事件中心。
 
-以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于函数1.x 和更高版本，第二个示例用于函数1.x。 
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x 及更高版本，第二个示例适用于 Functions 1.x。 
 
 ```json
 {
@@ -103,11 +103,11 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [JavaScript 函数](../articles/azure-functions/functions-reference-node.md)。 该函数将消息写入事件中心。
 
-以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于函数1.x 和更高版本，第二个示例用于函数1.x。 
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于 Functions 2.x 及更高版本，第二个示例适用于 Functions 1.x。 
 
 ```json
 {
@@ -157,7 +157,7 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)。 该函数将消息写入事件中心。
+以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)**。 该函数将消息写入事件中心。
 
 以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
@@ -187,7 +187,7 @@ def main(timer: func.TimerRequest) -> str:
 
 # <a name="java"></a>[Java](#tab/java)
 
-下面的示例演示一个 Java 函数，该函数将包含当前时间的消息写入事件中心。
+以下示例演示一个将包含当前时间的消息写入到事件中心的 Java 函数。
 
 ```java
 @FunctionName("sendTime")
@@ -202,7 +202,7 @@ public String sendTime(
 
 ---
 
-## <a name="attributes-and-annotations"></a>特性和批注
+## <a name="attributes-and-annotations"></a>特性和注释
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -221,68 +221,68 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 有关完整示例，请参阅[输出 - C# 示例](#example)。
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-C#脚本不支持特性。
+C# 脚本不支持特性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 JavaScript 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支持特性。
+Python 不支持属性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在[Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将发布到事件中心的参数使用[EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput)批注。 参数的类型应为 `OutputBinding<T>`，其中 `T` 是 POJO 或任何本机 Java 类型。
+在[Java 函数运行时库中](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)，对值将发布到事件中心的参数使用[EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput)注释。 参数应为 类型`OutputBinding<T>`，其中`T`POJO 或任何本机 Java 类型。
 
 ---
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
-下表解释了在 function.json 文件和 `EventHub` 特性中设置的绑定配置属性。
+下表介绍了您在*函数.json*文件和`EventHub`属性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为“eventHub”。 |
-|**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
+|direction**** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
 |**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
-|**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
-|**eventHubName** |**EventHubName** | 函数1.x 和更高版本。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
-|连接 |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 *命名空间* （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。|
+|**路径** |**事件中心名称** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
+|**eventHubName** |**事件中心名称** | Functions 2.x 及更高版本。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
+|**连接** |**连接** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 *命名空间* （而不是事件中心本身）**** 的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>用法
+## <a name="usage"></a>使用情况
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-使用方法参数（例如 `out string paramName`）发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 代替 `out string`。
+使用 方法参数（如`out string paramName`）发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 代替 `out string`。
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-使用方法参数（例如 `out string paramName`）发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 代替 `out string`。
+使用 方法参数（如`out string paramName`）发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 代替 `out string`。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-使用 `context.bindings.<name>`，其中 `<name>` 是*函数 json*的 `name` 属性中指定的值来访问输出事件。
+使用`context.bindings.<name>`*函数.json*`<name>``name`属性中指定的值来访问输出事件。
 
 # <a name="python"></a>[Python](#tab/python)
 
-有两个选项可用于从函数输出事件中心消息：
+从函数中提供事件中心消息有两个选项：
 
-- **返回值**：将*函数 json*中的 `name` 属性设置为 `$return`。 使用此配置时，函数的返回值将作为事件中心消息保留。
+- **返回值**：将`name`*函数.json*中的`$return`属性设置为 。 使用此配置，函数的返回值将保留为事件中心消息。
 
-- **命令式**：将值传递给声明为[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 传递给 `set` 的值将作为事件中心消息保留。
+- **命令 ：** 将值传递给声明为[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[集](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 传递给`set`的值将保留为事件中心消息。
 
 # <a name="java"></a>[Java](#tab/java)
 
-可以通过以下两个选项使用[EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput)批注从函数输出事件中心消息：
+使用[EventHub输出](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput)注释从函数中输出事件中心消息有两个选项：
 
-- **返回值**：通过将批注应用于函数本身，函数的返回值将持久保存为事件中心消息。
+- **返回值**：通过将注释应用于函数本身，函数的返回值将保留为事件中心消息。
 
-- **命令式**：若要显式设置消息值，请将批注应用于类型[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向 `setValue` 方法传递值会将值作为事件中心消息保留。
+- **命令：** 要显式设置消息值，请将注释应用于类型[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)的特定参数，其中`T`POJO 或任何本机 Java 类型。 使用此配置，将值传递给`setValue`该方法会将该值保留为事件中心消息。
 
 ---
 
@@ -296,7 +296,7 @@ Python 不支持特性。
 
 ## <a name="hostjson-settings"></a>host.json 设置
 
-本部分介绍此绑定在版本2.x 和更高版本中可用的全局配置设置。 下面的示例 host json 文件仅包含此绑定的版本 2.x + 设置。 有关版本2.x 和更高版本中的全局配置设置的详细信息，请参阅[host json reference for Azure Functions](../articles/azure-functions/functions-host-json.md)。
+本部分介绍版本 2.x 及更高版本中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的 2.x 版及更高版本设置。 若要详细了解 2.x 版及更高版本中的全局配置设置，请参阅 [Azure Functions 的 host.json 参考](../articles/azure-functions/functions-host-json.md)。
 
 > [!NOTE]
 > 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](../articles/azure-functions/functions-host-json-v1.md)。
@@ -316,8 +316,8 @@ Python 不支持特性。
 }  
 ```
 
-|properties  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------|
 |`maxBatchSize`|10|每个接收循环收到的最大事件计数。|
-|`prefetchCount`|300|基础 `EventProcessorHost`使用的默认预提取计数。|
+|`prefetchCount`|300|基础`EventProcessorHost`使用的默认预提取计数。|
 |`batchCheckpointFrequency`|1|创建 EventHub 游标检查点之前要处理的事件批数。|

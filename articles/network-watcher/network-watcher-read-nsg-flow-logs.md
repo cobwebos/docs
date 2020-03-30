@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
 ms.openlocfilehash: 47d927f9f17580767526ec6683e819256fc5e994
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77619913"
 ---
 # <a name="read-nsg-flow-logs"></a>读取 NSG 流日志
@@ -27,7 +27,7 @@ NSG 流日志存储于[块 blob](https://docs.microsoft.com/rest/api/storageserv
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 在如下方案中，你有一个存储在存储帐户的示例流日志。 了解如何选择性地读取 NSG 流日志中的最新事件。 虽然本文中将使用 PowerShell，但本文中讨论到的概念并不限于编程语言，而是适用于 Azure 存储 API 支持的所有语言。
 
@@ -187,8 +187,8 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 ## <a name="next-steps"></a>后续步骤
 
 
-请访问[使用弹性堆栈](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[使用 Grafana](network-watcher-nsg-grafana.md) 和[使用 Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) 详细了解查看 NSG 流日志的方法。 可在此处找到直接使用 blob 并发送到各种 log analytics 使用者的开源 Azure 函数方法： [Azure 网络观察程序 NSG 流日志连接器](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector)。
+请访问[使用弹性堆栈](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[使用 Grafana](network-watcher-nsg-grafana.md) 和[使用 Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) 详细了解查看 NSG 流日志的方法。 可在此处找到一种开源 Azure 函数方法来直接使用 blob 并排放到各种日志分析使用者[：Azure 网络观察程序 NSG 流日志连接器](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector)。
 
-可以使用[Azure 流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)获取流量流量的见解。 流量分析使用[Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)使流量流可查询。
+您可以使用[Azure 流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)获取有关流量流的见解。 流量分析使用[日志分析](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)使流量流可查询。
 
 若要了解有关存储 blob 的详细信息，请访问 [Azure Functions Blob 存储绑定](../azure-functions/functions-bindings-storage-blob.md)

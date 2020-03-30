@@ -1,6 +1,6 @@
 ---
-title: Azure 文件共享–无法从 Azure 文件共享中删除文件
-description: 识别删除 Azure 文件共享中的文件并对其进行故障排除。
+title: Azure 文件共享 - 无法从 Azure 文件共享中删除文件
+description: 确定并排查无法从 Azure 文件共享中删除文件的问题。
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
@@ -11,40 +11,40 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: d3a3763a8964810626bcdc47da230a9ee406f1f8
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74196481"
 ---
-# <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure 文件共享–无法从 Azure 文件共享中删除文件
+# <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure 文件共享 - 无法从 Azure 文件共享中删除文件
 
-从 Azure 文件共享删除文件的操作失败可能有多种症状：
+无法从 Azure 文件共享中删除文件可能有几种症状：
 
-**症状1：**
+**症状 1：**
 
-由于以下两个问题之一导致无法删除 azure 文件共享中的文件：
+由于以下两个问题之一，无法删除 Azure 文件共享中的文件：
 
 * 标记为删除的文件
 * SMB 客户端可能正在使用指定的资源
 
 **症状2：**
 
-可用配额不足，无法处理此命令
+处理此命令的配额不够
 
 ## <a name="cause"></a>原因
 
-如果在要安装文件共享的计算机上达到文件允许的并发打开句柄上限，则会出现错误1816。 有关详细信息，请参阅[Azure 存储性能和可伸缩性清单](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist)。
+在要装载文件共享的计算机上，如果达到文件允许的并发打开句柄上限，便会出现错误 1816。 有关详细信息，请参阅 [Azure 存储性能和可伸缩性清单](https://docs.microsoft.com/azure/storage/blobs/storage-performance-checklist)。
 
-## <a name="resolution"></a>分辨率
+## <a name="resolution"></a>解决方法
 
-通过关闭某些句柄，减少并发打开句柄的数量。
+请关闭一些句柄，减少并发打开句柄的数量。
 
 ## <a name="prerequisite"></a>先决条件
 
-### <a name="install-the-latest-azure-powershell-module"></a>安装最新 Azure PowerShell 模块
+### <a name="install-the-latest-azure-powershell-module"></a>安装最新的 Azure PowerShell 模块
 
-* [安装 Azure Powershell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)
+* [安装 Azure 电源外壳模块](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
 ### <a name="connect-to-azure"></a>连接到 Azure：
 
@@ -72,13 +72,13 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 
 ## <a name="example-result"></a>示例结果：
 
-|HandleId|Path|ClientIp|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionId|
+|HandleId|路径|ClientIp|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionId|
 |---|---|---|---|---|---|---|---|---|
-|259101229083|---|10.222.10.123|62758|2019-10-05|12：16：50Z|0|0|9507758546259807489|
-|259101229131|---|10.222.10.123|62758|2019-10-05|12：36：20Z|0|0|9507758546259807489|
-|259101229137|---|10.222.10.123|62758|2019-10-05|12：36：53Z|0|0|9507758546259807489|
-|259101229136|新建文件夹/测试 .zip|10.222.10.123|62758|2019-10-05|12：36：29Z|13835132822072852480|9223446803645464576|9507758546259807489|
-|259101229135|测试 .zip|37.222.22.143|62758|2019-10-05|12：36：24Z|11529250230440558592|0|9507758546259807489|
+|259101229083|---|10.222.10.123|62758|2019-10-05|12:16:50Z|0|0|9507758546259807489|
+|259101229131|---|10.222.10.123|62758|2019-10-05|12:36:20Z|0|0|9507758546259807489|
+|259101229137|---|10.222.10.123|62758|2019-10-05|12:36:53Z|0|0|9507758546259807489|
+|259101229136|New folder/test.zip|10.222.10.123|62758|2019-10-05|12:36:29Z|13835132822072852480|9223446803645464576|9507758546259807489|
+|259101229135|test.zip|37.222.22.143|62758|2019-10-05|12:36:24Z|11529250230440558592|0|9507758546259807489|
 
 ### <a name="close-an-open-handle"></a>关闭打开的句柄：
 

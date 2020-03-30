@@ -9,15 +9,15 @@ ms.date: 02/10/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 50ce8530aca40eed07741f35be1a57bbd7cc1868
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77133597"
 ---
 使用提升的权限打开 PowerShell 控制台。
 
-如果要在本地运行 Azure PowerShell，请连接到 Azure 帐户。 Connect-AzureRmAccount cmdlet 会提示输入凭据。 进行身份验证后，它会下载帐户设置，以便 Azure PowerShell 可以使用这些设置。 如果使用 Azure Cloud Shell，则不需要运行*AzAccount*。 Azure Cloud Shell 会自动连接到 Azure 帐户。
+如果要在本地运行 Azure PowerShell，请连接到 Azure 帐户。 Connect-AzureRmAccount cmdlet 会提示输入凭据**。 进行身份验证后，它会下载帐户设置，以便 Azure PowerShell 可以使用这些设置。 如果改为使用 Azure 云外壳，则不需要运行*Connect-AzAccount*。 Azure 云外壳会自动连接到 Azure 帐户。
 
 ```azurepowershell
 Connect-AzAccount

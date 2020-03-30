@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
 ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70071704"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>如何设置或编辑 Azure API 管理策略
@@ -29,16 +29,16 @@ ms.locfileid: "70071704"
 
 若要设置或编辑策略，请执行以下步骤：
 
-1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
+1. 登录到 中的[https://portal.azure.com](https://portal.azure.com)Azure 门户。
 2. 浏览到自己的 APIM 实例。
-3. 单击“API”选项卡。
+3. 单击“API”选项卡。****
 
     ![编辑策略](./media/set-edit-policies/code-editor.png)
 
 4. 选择以前导入的某个 API。
-5. 选择“设计”选项卡。
-6. 选择要将该策略应用到的操作。 如果想要将策略应用到所有操作，请选择“所有操作”。
-7. 在“入站处理”或“出站处理”部分中选择“</>(代码编辑器)”图标。
+5. 选择“设计”**** 选项卡。
+6. 选择要将该策略应用到的操作。 如果想要将策略应用到所有操作，请选择“所有操作”****。
+7. 在**</>****入站处理**或**出站处理**部分中选择（代码编辑器）图标。
 8. 将所需的策略代码粘贴到某个相应的块中。
 
     ```XML
@@ -71,21 +71,21 @@ ms.locfileid: "70071704"
 
 策略中的语句按 `base` 元素（如果存在）的位置计算。 全局策略没有父策略，因此在其中使用 `<base>` 元素无效。
 
-若要在策略编辑器中查看当前范围的策略，请单击“重新计算所选范围的有效策略”。
+若要在策略编辑器中查看当前范围的策略，请单击“重新计算所选范围的有效策略”。****
 
 ### <a name="global-scope"></a>全局范围
 
 全局范围是针对 APIM 实例中的**所有 API** 配置的。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，并导航到 APIM 实例。
-2. 单击“所有 API”。
+2. 单击“所有 API”。****
 
     ![全局范围](./media/api-management-howto-policies/global-scope.png)
 
 3. 单击三角形图标。
-4. 选择“代码编辑器”。
+4. 选择“代码编辑器”。****
 5. 添加或编辑策略。
-6. 按“保存”。 
+6. 按“保存”****。 
 
     所做的更改会立即传播到 API 管理网关。
 
@@ -93,14 +93,14 @@ ms.locfileid: "70071704"
 
 产品范围是针对选定的产品配置的。
 
-1. 单击“产品”。
+1. 单击“产品”。****
 
     ![产品范围](./media/api-management-howto-policies/product-scope.png)
 
 2. 选择要将策略应用到的产品。
-3. 单击“策略”。
+3. 单击“策略”。****
 4. 添加或编辑策略。
-5. 按“保存”。 
+5. 按“保存”****。 
 
 ### <a name="api-scope"></a>API 范围
 
@@ -110,25 +110,25 @@ API 范围是针对选定 API 的**所有操作**配置的。
 
     ![API 范围](./media/api-management-howto-policies/api-scope.png)
 
-2. 选择“所有操作”
+2. 选择**所有操作**
 3. 单击三角形图标。
-4. 选择“代码编辑器”。
+4. 选择“代码编辑器”。****
 5. 添加或编辑策略。
-6. 按“保存”。 
+6. 按“保存”****。 
 
 ### <a name="operation-scope"></a>操作范围 
 
 操作范围是针对选定的操作配置的。
 
-1. 选择一个 **API**。
+1. 选择**API**。
 2. 选择要将策略应用到的操作。
 
     ![操作范围](./media/api-management-howto-policies/operation-scope.png)
 
 3. 单击三角形图标。
-4. 选择“代码编辑器”。
+4. 选择“代码编辑器”。****
 5. 添加或编辑策略。
-6. 按“保存”。 
+6. 按“保存”****。 
 
 ## <a name="next-steps"></a>后续步骤
 

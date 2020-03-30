@@ -1,5 +1,5 @@
 ---
-title: .NET MVC 项目中的 Azure AD 入门 |Microsoft
+title: 在 .NET MVC 项目中开始使用 Azure AD |蔚蓝
 description: 通过 Visual Studio 连接服务连接到或创建 Azure AD 之后，如何在 .NET MVC 项目中开始使用 Azure Active Directory
 author: ghogen
 manager: jillfra
@@ -12,19 +12,19 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: eae649a4de88373ee79e49ecb7d5f14564a3054b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159482"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Azure Active Directory（ASP.NET MVC 项目）入门
 
 > [!div class="op_single_selector"]
 > - [入门](vs-active-directory-dotnet-getting-started.md)
-> - [发生了什么情况](vs-active-directory-dotnet-what-happened.md)
+> - [发生了什么事](vs-active-directory-dotnet-what-happened.md)
 
-本文提供通过 Visual Studio 的“项目”>“连接的服务”命令将 Active Directory 添加到 ASP.NET MVC 项目后的其他指南。 如果尚未将该服务添加到你的项目，可以随时执行该操作。
+本文提供通过 Visual Studio 的“项目”>“连接的服务”**** 命令将 Active Directory 添加到 ASP.NET MVC 项目后的其他指南。 如果尚未将该服务添加到你的项目，可以随时执行该操作。
 
 请参阅[我的 MVC 项目发生了什么情况？](vs-active-directory-dotnet-what-happened.md)，了解添加连接服务时对项目所做的更改。
 
@@ -83,5 +83,5 @@ ms.locfileid: "77159482"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Active Directory 的身份验证方案](authentication-scenarios.md)
+- [Azure 活动目录的身份验证方案](authentication-scenarios.md)
 - [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v2-aspnet-webapp.md)

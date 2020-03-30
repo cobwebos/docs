@@ -1,5 +1,5 @@
 ---
-title: 在本地部署远程监视解决方案-Docker-Azure |Microsoft Docs
+title: 在本地部署远程监视解决方案 - Docker - Azure |微软文档
 description: 本操作指南展示了如何使用 Docker 将远程监视解决方案加速器部署到本地计算机，以用于测试和开发。
 author: avneet723
 manager: hegate
@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73888836"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>在本地部署远程监视解决方案加速器 - Docker
@@ -23,11 +23,11 @@ ms.locfileid: "73888836"
 
 若要在本地计算机上的 IDE 中运行远程监视解决方案加速器，请参阅[在本地部署远程监视解决方案加速器 - Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要部署远程监视解决方案加速器使用的 Azure 服务，需要一个有效的 Azure 订阅。
 
-如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="machine-setup"></a>计算机设置
 
@@ -70,7 +70,7 @@ docker-compose up
 ```
 
 > [!NOTE] 
-> 在运行 [ 之前，请确保与 Docker ](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115)共享本地驱动器`docker-compose up`。
+> 在运行 `docker-compose up` 之前，请确保与 Docker [共享本地驱动器](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115)。
 
 首次运行此命令时，Docker 会从 Docker 中心下载微服务映像以在本地构建容器。 在后续运行中，Docker 会立即运行容器。
 
@@ -89,16 +89,16 @@ docker rmi <list_of_images>
 
 遵循以下步骤启动流分析作业：
 
-1. 导航到 [Azure 门户](https://portal.azure.com)。
+1. 导航到[Azure 门户](https://portal.azure.com)。
 1. 导航到为解决方案创建的**资源组**。 该资源组的名称是在运行 **start.cmd** 脚本时为解决方案选择的名称。
-1. 在资源列表中单击“流分析作业”。
-1. 在流分析作业的“概述”页上，单击“启动”按钮。 然后单击“启动”以立即启动该作业。
+1. 在资源列表中单击“流分析作业”。****
+1. 在流分析作业的“概述”页上，单击“启动”按钮。******** 然后单击“启动”以立即启动该作业****。
 
 ### <a name="connect-to-the-dashboard"></a>连接到仪表板
 
 若要访问远程监视解决方案仪表板，请在浏览器中导航到 `http://localhost:8080`。 现在可以使用 Web UI 和本地微服务。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 为避免产生不必要的费用，在完成测试后，请从 Azure 订阅中删除云服务。 若要删除这些服务，请导航到 [Azure 门户](https://ms.portal.azure.com)，并删除 **start.cmd** 脚本创建的资源组。
 

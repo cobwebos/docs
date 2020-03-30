@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: danlep
 ms.openlocfilehash: e3aeababcd062e315c9d80a35f183173a6fd1273
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77117840"
 ---
 ### <a name="resource-availability"></a>资源可用性
 
-| OS | GPU SKU | GPU 计数 | 最大 CPU | 最大内存（GB） | 存储器 (GB) |
+| OS | GPU SKU | GPU 计数 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
 | --- | --- | --- | --- | --- | --- |
 | Linux | K80 | 1 | 6 | 56 | 50 |
 | Linux | K80 | 2 | 12 | 112 | 50 |

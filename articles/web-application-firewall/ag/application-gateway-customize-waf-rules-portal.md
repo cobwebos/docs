@@ -1,6 +1,6 @@
 ---
-title: 使用门户自定义规则-Azure Web 应用程序防火墙
-description: 本文提供了有关如何在应用程序网关上利用 Azure 门户自定义 Web 应用程序防火墙规则的信息。
+title: 使用门户自定义规则 - Azure Web 应用程序防火墙
+description: 本文将介绍如何使用 Azure 门户自定义应用程序网关的 Web 应用程序防火墙规则。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,15 +8,15 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048380"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>使用 Azure 门户自定义 Web 应用程序防火墙规则
 
-Azure 应用程序网关 Web 应用程序防火墙（WAF）为 Web 应用程序提供保护。 这些保护通过打开 Web 应用程序安全性项目 (OWASP) 核心规则集 (CRS) 来提供。 某些规则可能会导致误报，并会阻止实际流量。 出于此原因，应用程序网关提供了自定义规则组和规则的功能。 有关特定规则组和规则的详细信息，请参阅[Web 应用程序防火墙 CRS 规则组和规则列表](application-gateway-crs-rulegroups-rules.md)。
+Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 这些保护通过打开 Web 应用程序安全性项目 (OWASP) 核心规则集 (CRS) 来提供。 某些规则可能会导致误报，并会阻止实际流量。 出于此原因，应用程序网关提供了自定义规则组和规则的功能。 有关特定规则组和规则的详细信息，请参阅 Web[应用程序防火墙 CRS 规则组和规则列表](application-gateway-crs-rulegroups-rules.md)。
 
 >[!NOTE]
 > 如果应用程序网关未使用 WAF 层，会在右侧窗格中显示“将应用程序网关升级到 WAF 层”选项。 
@@ -26,9 +26,9 @@ Azure 应用程序网关 Web 应用程序防火墙（WAF）为 Web 应用程序�
 ## <a name="view-rule-groups-and-rules"></a>查看规则组和规则
 
 **查看规则组和规则**
-1. 浏览到应用程序网关并选择“Web 应用程序防火墙”。  
-2. 选择**WAF 策略**。
-2. 选择 "**托管规则**"。
+1. 浏览到应用程序网关并选择“Web 应用程序防火墙”****。  
+2. 选择 **WAF 策略**。
+2. 选择“托管规则”****。
 
    此视图会在随所选规则集提供的所有规则组页上显示一个表。 已选中所有规则的复选框。
 
@@ -42,9 +42,9 @@ Azure 应用程序网关 Web 应用程序防火墙（WAF）为 Web 应用程序�
 **禁用规则组或特定规则**
 
    1. 搜索想要禁用的规则或规则组。
-   2. 选中要禁用的规则对应的复选框。 
-   3. 选择页面顶部的 "操作" （启用/禁用）作为所选规则。
-   2. 选择“保存”。 
+   2. 选中与要禁用的规则对应的复选框。 
+   3. 为所选规则选择页面顶部的操作（启用/禁用）。
+   2. 选择“保存”。**** 
 
 ![保存更改][3]
 

@@ -7,10 +7,10 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: cafeea8afe571fc81548833952eee72a695fed41
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459355"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 Apache Cordova 客户端库
@@ -27,7 +27,7 @@ ms.locfileid: "77459355"
 * Windows Phone 8.1。
 * 通用 Windows 平台。
 
-## <a name="Setup"></a>安装与先决条件
+## <a name="setup-and-prerequisites"></a><a name="Setup"></a>设置和先决条件
 本指南假设已创建了包含表的后端。 本指南假设该表的架构与这些教程中的表相同。 本指南还假设已将 Apache Cordova 插件添加到代码。  如果尚未这样做，可以在命令行中将 Apache Cordova 插件添加到项目：
 
 ```
@@ -36,7 +36,7 @@ cordova plugin add cordova-plugin-ms-azure-mobile-apps
 
 有关创建[第一个 Apache Cordova 应用]的详细信息，请参阅相关文档。
 
-## <a name="ionic"></a>设置 Ionic v2 应用
+## <a name="setting-up-an-ionic-v2-app"></a><a name="ionic"></a>设置 Ionic v2 应用
 
 要正确配置 Ionic v2 项目，请先创建基本应用，然后添加 Cordova 插件：
 
@@ -64,7 +64,7 @@ Azure 移动应用 Cordova 插件同时支持 Ionic v1 和 Ionic v2 应用。  �
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>如何对用户进行身份验证
+## <a name="how-to-authenticate-users"></a><a name="auth"></a>如何对用户进行身份验证
 Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Google、Microsoft 帐户和 Twitter）对应用的用户进行身份验证和授权。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。 有关详细信息，请参阅[身份验证入门]教程。
 
 在 Apache Cordova 应用中使用身份验证时，以下 Cordova 插件必须可用：
@@ -76,7 +76,7 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>如何为外部重定向 URL 配置移动应用服务。
+### <a name="how-to-configure-your-mobile-app-service-for-external-redirect-urls"></a><a name="configure-external-redirect-urls"></a>如何为外部重定向 URL 配置移动应用服务。
 有多种类型的 Apache Cordova 应用程序使用环回功能来处理 OAuth UI 流。  localhost 上的 OAuth UI 流会造成问题，因为身份验证服务默认只知道如何利用服务。  有问题的 OAuth UI 流示例包括：
 
 * Ripple 模拟器。
@@ -86,12 +86,12 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
 
 请遵循以下说明将本地设置添加到配置中：
 
-1. 登录到 [Azure 门户]
-2. 选择“所有资源”或“应用服务”，并单击移动应用的名称。
-3. 单击“工具”
-4. 在“观察”菜单中单击“资源浏览器”，并单击“转到”。  此时会打开一个新窗口或选项卡。
-5. 在左侧导航栏中，展开站点的“config”、“authsettings”节点。
-6. 单击“编辑”
+1. 登录到 Azure[门户]
+2. 选择“所有资源”**** 或“应用服务”****，并单击移动应用的名称。
+3. 单击“工具”****
+4. 在“观察”菜单中单击“资源浏览器”****，并单击“转到”****。  此时会打开一个新窗口或选项卡。
+5. 在左侧导航栏中，展开站点的“config”****、“authsettings”**** 节点。
+6. 单击“编辑”****
 7. 查找“allowedExternalRedirectUrls”元素。  该元素可能已设置为 null 或值数组。  将该值更改为以下值：
 
          "allowedExternalRedirectUrls": [
@@ -99,24 +99,24 @@ Azure 应用服务支持使用各种外部标识提供者（例如 Facebook、Go
              "https://localhost:3000"
          ],
 
-    将 URL 替换为自己服务的 URL。  例如 `http://localhost:3000` （适用于 node.js 示例服务）或 `http://localhost:4400` （适用于 Ripple 服务）。  但这是一些 URL 示例 - 根据不同的情况（包括示例中提到的服务）可能会有差异。
-8. 单击屏幕右上角的“读/写”按钮。
-9. 单击绿色的“PUT”按钮。
+    将 URL 替换为自己服务的 URL。  示例包括 `http://localhost:3000`（适用于 Node.js 示例服务）或 `http://localhost:4400`（适用于 Ripple 服务）。  但这是一些 URL 示例 - 根据不同的情况（包括示例中提到的服务）可能会有差异。
+8. 单击屏幕右上角的“读/写”**** 按钮。
+9. 单击绿色的“PUT”**** 按钮。
 
 此时会保存设置。  在保存完设置之前，请不要关闭浏览器窗口。
 还需要将以下环回 URL 添加到应用服务的 CORS 设置：
 
-1. 登录到 [Azure 门户]
-2. 选择“所有资源”或“应用服务”，并单击移动应用的名称。
-3. “设置”边栏选项卡随即自动打开。  如果没有打开，请单击“所有设置”。
-4. 在“API”菜单下单击“CORS”。
+1. 登录到 Azure[门户]
+2. 选择“所有资源”**** 或“应用服务”****，并单击移动应用的名称。
+3. “设置”边栏选项卡随即自动打开。  如果没有打开，请单击“所有设置”****。
+4. 在“API”菜单下单击“CORS”****。
 5. 在提供的框中输入想要添加的 URL，并按 Enter。
 6. 根据需要输入其他 URL。
-7. 单击“保存”保存这些设置。
+7. 单击“保存”**** 保存这些设置。
 
 大约需要 10-15 秒时间才能使新设置生效。
 
-## <a name="register-for-push"></a>如何：注册推送通知
+## <a name="how-to-register-for-push-notifications"></a><a name="register-for-push"></a>如何：注册推送通知
 安装 [phonegap-plugin-push] 即可处理推送通知。  在命令行中使用 `cordova plugin add` 命令，或者在 Visual Studio 内通过 Git 插件安装程序，即可轻松添加此插件。  Apache Cordova 应用中的以下代码将为设备注册推送通知：
 
 ```javascript

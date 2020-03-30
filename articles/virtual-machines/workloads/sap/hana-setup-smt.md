@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616996"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>为 SUSE Linux 安装 SMT 服务器
@@ -34,13 +34,13 @@ SAP HANA 的大型实例不直接连接到 Internet。 无法直接向操作系�
 
 第一步，登录 [SUSE 客户中心](https://scc.suse.com/)。
 
-转到“组织” **“组织凭据”**  > 。 在此部分中，应能找到安装 SMT 服务器所需的凭据。
+转到**组织** > **凭据**。 在此部分中，应能找到安装 SMT 服务器所需的凭据。
 
 然后，在 Azure 虚拟网络中安装 SUSE Linux VM。 若要部署此虚拟机，请获取 Azure 的 SLES 12 SP2 库映像（选择 BYOS SUSE 映像）。 在部署过程中，请勿定义 DNS 名称，也不要使用静态 IP 地址。
 
 ![SMT 服务器的虚拟机部署的屏幕截图](./media/hana-installation/image3_vm_deployment.png)
 
-部署的虚拟机较小，获得了 Azure 虚拟网络中的内部 IP 地址 10.34.1.4。 虚拟机的名称为“smtserver”。 安装完成后，检查了与 HANA 大型实例单元的连接。 可能需要在 Azure 虚拟机的 etc/hosts 中配置 HANA 大型实例单元解析，具体视名称解析的组织方式而定。 
+部署的虚拟机较小，获得了 Azure 虚拟网络中的内部 IP 地址 10.34.1.4。 虚拟机的名称为“smtserver”**。 安装完成后，检查了与 HANA 大型实例单元的连接。 可能需要在 Azure 虚拟机的 etc/hosts 中配置 HANA 大型实例单元解析，具体视名称解析的组织方式而定。 
 
 将磁盘添加到虚拟机。 使用此磁盘来保存更新，启动盘本身可能太小。 磁盘装载到 /srv/www/htdocs，如下面的屏幕截图所示。 100 GB 磁盘应该就足够了。
 
@@ -78,12 +78,12 @@ Resolving package dependencies...
 ```
 
 
-还可以使用 YAST 工具安装 smt 包。 在 YAST 中，转到“软件维护”并搜索 smt。 选择“smt”后会自动切换到“yast2-smt”。
+还可以使用 YAST 工具安装 smt 包。 在 YAST 中，转到**软件维护**，然后搜索 smt。 选择“smt”后会自动切换到“yast2-smt”****。
 
 ![YAST 中 SMT 的屏幕截图](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-接受 smtserver 上的安装选择。 安装完成后，转到 SMT 服务器配置。 输入之前从 SUSE 客户中心检索到的组织凭据。 此外，还请输入 Azure 虚拟机主机名，作为 SMT 服务器 URL。 在此演示中，它是 https：\//smtserver。
+接受 smtserver 上的安装选择。 安装完成后，转到 SMT 服务器配置。 输入之前从 SUSE 客户中心检索到的组织凭据。 此外，还请输入 Azure 虚拟机主机名，作为 SMT 服务器 URL。 在本演示中，它是 https：\//smtserver。
 
 ![SMT 服务器配置的屏幕截图](./media/hana-installation/image6_configuration_of_smtserver1.png)
 
@@ -123,7 +123,7 @@ systemctl restart apache2
 
 ## <a name="set-up-the-smt-client-on-hana-large-instance-units"></a>在 HANA 大型实例单元上安装 SMT 客户端
 
-在此示例中，客户端为 HANA 大型实例单元。 SMT 服务器安装程序将脚本 clientSetup4SMT.sh 复制到了 Azure 虚拟机中。 将此脚本复制到要连接到 SMT 服务器的 HANA 大型实例单元中。 使用 -h 选项启动此脚本，并将 SMT 服务器名称作为参数。 在本示例中，名称为“smtserver”。
+在此示例中，客户端为 HANA 大型实例单元。 SMT 服务器安装程序将脚本 clientSetup4SMT.sh 复制到了 Azure 虚拟机中。 将此脚本复制到要连接到 SMT 服务器的 HANA 大型实例单元中。 使用 -h 选项启动此脚本，并将 SMT 服务器名称作为参数。 在本示例中，名称为“smtserver”**。
 
 ![配置 SMT 客户端的屏幕截图](./media/hana-installation/image12_configure_client.PNG)
 
@@ -134,7 +134,7 @@ systemctl restart apache2
 如果无法注册，请参阅 [SUSE 支持文档](https://www.suse.com/de-de/support/kb/doc/?id=7006024)，并运行其中所述步骤。
 
 > [!IMPORTANT] 
-> 对于服务器名称，请提供虚拟机的名称（在本例中为“smtserver”），无需提供完全限定的域名。 
+> 对于服务器名称，请提供虚拟机的名称（在本例中为“smtserver”），无需提供完全限定的域名**。 
 
 完成这些步骤后，在 HANA 大型实例单元上运行以下命令：
 

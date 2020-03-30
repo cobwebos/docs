@@ -12,15 +12,15 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: e7e7fc44d5f8b46a66c698d3a33ceeab5b8625c4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73810326"
 ---
 # <a name="in-memory-sample"></a>内存中示例
 
-通过 Azure SQL 数据库中的内存中技术，可以改进应用程序性能，并且可能降低数据库成本。 通过使用 Azure SQL 数据库中的内存中技术，可以使用各种工作负荷实现性能改进。
+使用 Azure SQL 数据库的内存中技术可以提高应用程序的性能，并潜在地降低数据库的成本。 通过使用 Azure SQL 数据库中的内存中技术，可以使用各种工作负荷实现性能改进。
 
 本文介绍两个示例，演示如何使用 Azure SQL 数据库中的内存中 OLTP 和列存储索引。
 
@@ -45,13 +45,13 @@ ms.locfileid: "73810326"
 
 #### <a name="installation-steps"></a>安装步骤
 
-1. 通过 [Azure 门户](https://portal.azure.com/)，在服务器上创建一个高级或业务关键数据库。 将“源”设置为 AdventureWorksLT 示例数据库。 有关详细说明，请参阅[创建第一个 Azure SQL 数据库](sql-database-single-database-get-started.md)。
+1. 通过 [Azure 门户](https://portal.azure.com/)，在服务器上创建一个高级或业务关键数据库。 将“源”**** 设置为 AdventureWorksLT 示例数据库。 有关详细说明，请参阅[创建第一个 Azure SQL 数据库](sql-database-single-database-get-started.md)。
 
 2. 使用 SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx) 连接到该数据库。
 
 3. 将 内存中 [OLTP Transact-SQL 脚本](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql)复制到剪贴板。 T-SQL 脚本在步骤 1 创建的 AdventureWorksLT 示例数据库中创建所需的内存中对象。
 
-4. 将 T-SQL 脚本粘贴到 SSMS，并执行该脚本。 `MEMORY_OPTIMIZED = ON` 子句 CREATE TABLE 语句至关重要。 例如：
+4. 将 T-SQL 脚本粘贴到 SSMS，然后执行该脚本。 `MEMORY_OPTIMIZED = ON` 子句 CREATE TABLE 语句至关重要。 例如：
 
 
 ```sql
@@ -87,7 +87,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 - Demo.DemoSalesOrderDetailSeed
 
 
-可以通过 SSMS 中的“对象资源管理器”检查内存优化表。 右键单击“表” **“筛选器”** “筛选器设置” > “内存优化”。 >  >  值等于 1。
+可以通过 SSMS 中的“对象资源管理器”检查内存优化表。**** 右键单击**表** > **Filter** > **筛选器筛选器设置** > **是内存优化**。 值等于 1。
 
 
 或者可以查询目录视图，例如：
@@ -198,7 +198,7 @@ whereas for SQL 2016+
 
 
 
-### <a name="run-the-_inmem-stress-workload-first"></a>首先运行 *_inmem* 压力工作负荷
+### <a name="run-the-_inmem-stress-workload-first"></a>首先运行 *_inmem*压力工作负载
 
 
 可以使用 *RML 命令提示符*窗口来运行 ostress.exe 命令行。 命令行参数将 `ostress` 定向到：
@@ -236,10 +236,10 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-_ondisk-then-rerun"></a>重置，编辑 *_ondisk*，并重新运行
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>重置，编辑 *_ondisk*，然后重新运行
 
 
-在获得 *_inmem* 运行结果之后，请针对 *_ondisk* 运行执行以下步骤：
+获得 *_inmem*运行的结果后，对 *_ondisk*运行执行以下步骤：
 
 
 1. 在 SSMS 中运行以下命令重置数据库，删除前面运行的命令所插入的所有数据：
@@ -247,7 +247,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. 编辑 ostress.exe 命令行，将所有的 *_inmem* 替换为 *_ondisk*。
+2. 编辑 ostress.exe 命令行，将所有的 *_inmem *替换为 *_ondisk*。
 
 3. 再次重新运行 ostress.exe，并捕获持续时间结果。
 
@@ -256,19 +256,19 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 #### <a name="expected-comparison-results"></a>预期比较结果
 
-在与数据库相同的 Azure 区域的 Azure VM 上运行 **，内存中测试已显示此简化工作负荷大约有 9 倍的性能改善**`ostress`。
+在与数据库相同的 Azure 区域的 Azure VM 上运行 `ostress`，内存中测试已显示此简化工作负荷大约有 9 倍的性能改善****。
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
 &nbsp;
 
-## <a name="2-install-the-in-memory-analytics-sample"></a>2. 安装内存中分析示例
+## <a name="2-install-the-in-memory-analytics-sample"></a>2. 安装内存内分析示例
 
 
 本部分比较使用列存储索引与传统 b 树索引时的 IO 和统计信息结果。
 
 
-通常，在对 OLTP 工作负荷进行实时分析时，最好是使用非群集列存储索引。 有关详细信息，请参阅[列存储索引介绍](https://msdn.microsoft.com/library/gg492088.aspx)。
+通常，在对 OLTP 工作负荷进行实时分析时，最好是使用非群集列存储索引。 有关详细信息，请参阅[描述的列存储索引](https://msdn.microsoft.com/library/gg492088.aspx)。
 
 
 
@@ -284,7 +284,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
    - 该脚本将创建维度表和两个事实表。 每个事实表中填充了 350 万行。
    - 该脚本可能需要 15 分钟才能完成。
 
-3. 将 T-SQL 脚本粘贴到 SSMS，并执行该脚本。 **CREATE INDEX** 语句中的 **COLUMNSTORE** 关键字至关重要，如下所示：<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
+3. 将 T-SQL 脚本粘贴到 SSMS，然后执行该脚本。 **CREATE INDEX** 语句中的 **COLUMNSTORE** 关键字至关重要，如下所示：<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
 4. 将 AdventureWorksLT 设置为兼容级别 130：<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
 
@@ -382,11 +382,11 @@ GO
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门1：用于提高 T-sql 性能的内存中 OLTP 技术](https://msdn.microsoft.com/library/mt694156.aspx)
+- [快速入门 1：内存中 OLTP 技术，实现更快的 T-SQL 性能](https://msdn.microsoft.com/library/mt694156.aspx)
 
-- [在现有的 Azure SQL 应用程序中使用内存中 OLTP](sql-database-in-memory-oltp-migration.md)
+- [在现有 Azure SQL 应用程序中使用内存中 OLTP](sql-database-in-memory-oltp-migration.md)
 
-- [监视内存中 OLTP 存储](sql-database-in-memory-oltp-monitoring.md)（适用于内存中 OLTP）
+- [监控内存中 OLTP 存储](sql-database-in-memory-oltp-monitoring.md)，用于内存内 OLTP
 
 
 ## <a name="additional-resources"></a>其他资源
@@ -401,7 +401,7 @@ GO
 
 - [了解列存储索引](https://msdn.microsoft.com/library/gg492088.aspx)
 
-- [了解实时运营分析](https://msdn.microsoft.com/library/dn817827.aspx)
+- [了解实时操作分析](https://msdn.microsoft.com/library/dn817827.aspx)
 
 - 请参阅[有关常用工作负荷模式和迁移注意事项](https://msdn.microsoft.com/library/dn673538.aspx)（介绍内存中 OLTP 往往能够在其中提供显著性能改善的工作负荷模式）
 
@@ -409,7 +409,7 @@ GO
 
 - [内存中 OLTP（内存中优化）](https://msdn.microsoft.com/library/dn133186.aspx)
 
-- [在现有的 Azure SQL 应用程序中使用内存中 OLTP](sql-database-in-memory-oltp-migration.md)
+- [在现有 Azure SQL 应用程序中使用内存中 OLTP](sql-database-in-memory-oltp-migration.md)
 
 #### <a name="tools"></a>工具
 

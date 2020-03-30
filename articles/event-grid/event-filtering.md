@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
 ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70390180"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
@@ -61,7 +61,7 @@ ms.locfileid: "70390180"
 * 键 - 用于筛选的事件数据中的字段。 它可以是数字、布尔值或字符串。
 * 值 - 要与键进行比较的值。
 
-如果指定具有多个值的单个筛选器，则执行**或**操作，因此键字段的值必须是下列值之一。 下面是一个示例：
+如果指定具有多个值的单个筛选器，则将执行 **OR** 操作，因此键字段的值必须是这些值之一。 以下是示例：
 
 ```json
 "advancedFilters": [
@@ -76,7 +76,7 @@ ms.locfileid: "70390180"
 ]
 ```
 
-如果指定多个不同的筛选器，则执行**和**操作，因此必须满足每个筛选条件。 下面是一个示例： 
+如果指定多个不同的筛选器，则将执行 **AND** 操作，因此必须满足每个筛选器条件。 以下是示例： 
 
 ```json
 "advancedFilters": [
@@ -120,22 +120,22 @@ ms.locfileid: "70390180"
 
 所有字符串比较都不区分大小写。
 
-### <a name="key"></a>Key
+### <a name="key"></a>键
 
 对于事件网格架构中的事件，请使用以下键值：
 
-* id
+* ID
 * 主题
-* Subject
-* 事件类型
+* 主题
+* EventType
 * DataVersion
 * 事件数据（如 Data.key1）
 
 对于云事件架构中的事件，请使用以下键值：
 
 * EventId
-* Source
-* 事件类型
+* 源
+* EventType
 * EventTypeVersion
 * 事件数据（如 Data.key1）
 
@@ -145,8 +145,8 @@ ms.locfileid: "70390180"
 
 值可以是：
 
-* number
-* string
+* 数字
+* 字符串
 * boolean
 * array
 
@@ -156,7 +156,7 @@ ms.locfileid: "70390180"
 
 * 每个事件网格订阅有五个高级筛选器
 * 每个字符串值有 512 个字符
-* “in”和“not in”运算符有 5 个值
+* “in”和“not in”运算符有 5 个值********
 
 可以在多个筛选器中使用相同的键。
 

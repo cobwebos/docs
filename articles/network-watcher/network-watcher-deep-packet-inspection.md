@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152918"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 网络观察程序执行数据包检查
@@ -29,7 +29,7 @@ ms.locfileid: "77152918"
 
 本方案假设已在虚拟机上运行数据包捕获。 若要了解如何创建数据包捕获，请访问 [Manage packet captures with the portal](network-watcher-packet-capture-manage-portal.md)（使用门户管理数据包捕获）；若要了解如何使用 REST 进行相应操作，请访问 [Managing Packet Captures with REST API](network-watcher-packet-capture-manage-rest.md)（使用 REST API 管理数据包捕获）。
 
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 本方案中的操作：
 
@@ -51,7 +51,7 @@ ms.locfileid: "77152918"
 
 ### <a name="step-3"></a>步骤 3
 
-若要查看 TCP 对话中的初始往返时间 (RTT)，只需检查 TCP 握手中涉及的前两个数据包。 我们将使用三次握手中的前两个数据包，即 [SYN]、和 [SYN, ACK] 数据包。 这两个数据包是根据 TCP 标头中的标志命名的。 本方案不使用握手中的最后一个数据包，即 [ACK] 数据包。 [SYN] 数据包由客户端发送。 接收到后，服务器将发送 [ACK] 数据包作为接收来自客户端的 SYN 的确认。 利用服务器响应所需的开销极少这一事实，可通过对客户端收到 [SYN, ACK] 数据包的时间与客户端发送 [SYN] 数据包的时间进行减法运算，来计算 RTT。
+若要查看 TCP 对话中的初始往返时间 (RTT)，只需检查 TCP 握手中涉及的前两个数据包。 我们将使用三次握手中的前两个数据包，即 [SYN]、和 [SYN, ACK] 数据包。 这两个数据包是根据 TCP 标头中的标志命名的。 本方案不使用握手中的最后一个数据包，即 [ACK] 数据包。 [SYN] 数据包由客户端发送。 收到后，服务器将发送 [ACK] 数据包作为从客户端接收 SYN 的确认。 利用服务器响应所需的开销极少这一事实，可通过对客户端收到 [SYN, ACK] 数据包的时间与客户端发送 [SYN] 数据包的时间进行减法运算，来计算 RTT。
 
 使用 WireShark 可以计算此值。
 
@@ -77,7 +77,7 @@ ms.locfileid: "77152918"
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” **“协议层次结构”**  > 
+在上一个方案中使用相同的捕获，单击 **"统计信息** > **协议层次结构"**
 
 ![协议层次结构菜单][2]
 
@@ -93,7 +93,7 @@ ms.locfileid: "77152918"
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” **“IPv4 统计信息”** “目标和端口” >  > 
+在上一个方案中使用相同的捕获，单击**统计信息** > **IPv4 统计信息** > **目的地和端口**
 
 ![数据包捕获窗口][4]
 

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中创建通用化 VM 的非托管映像
+title: 在 Azure 中创建通用 VM 的非托管映像
 description: 创建通用化 Windows VM 的非托管映像，从而在 Azure 中创建多个 VM 的副本。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: f25968fb74f0f10b1d498866c036dd04d4d5d134
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073381"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>如何从 Azure VM 创建非托管 VM 映像
@@ -33,20 +33,20 @@ ms.locfileid: "74073381"
 ## <a name="generalize-the-vm"></a>一般化 VM 
 本部分说明如何通用化可用作映像的 Windows 虚拟机。 通用化 VM 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。
 
-确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
 > 如果是首次将 VHD 上传到 Azure，请确保先[准备好 VM](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，然后再运行 Sysprep。 
 > 
 > 
 
-还可以使用 `sudo waagent -deprovision+user` 通用化 Linux VM，并使用 PowerShell 捕获该 VM。 有关使用 CLI 捕获 VM 的信息，请参阅[如何使用 Azure CLI 通用化和捕获 Linux 虚拟机](../linux/capture-image.md)。
+还可以使用 `sudo waagent -deprovision+user` 通用化 Linux VM，并使用 PowerShell 捕获该 VM。 有关使用 CLI 捕获 VM 的信息，请参阅[如何使用 Azure CLI 对 Linux 虚拟机进行通用化和捕获](../linux/capture-image.md)。
 
 
 1. 登录到 Windows 虚拟机。
-2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 **%windir%\system32\sysprep**，并运行 `sysprep.exe`。
-3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。
-4. 在“关机选项”中选择“关机”。
+2. 以管理员身份打开“命令提示符”窗口。 将目录更改为 **%windir%_system32_sysprep，** 然后运行`sysprep.exe`。
+3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。************
+4. 在 **“关机选项”** 中选择 **“关机”**。
 5. 单击“确定”。
    
     ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
@@ -88,13 +88,13 @@ ms.locfileid: "74073381"
     Stop-AzVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
    
-    Azure 门户中该 VM 的“状态”将从“已停止”更改为“已停止(已解除分配)”。
-2. 将虚拟机的状态设置为“通用化”。 
+    Azure 门户中该 VM 的“状态”将从“已停止”更改为“已停止(已解除分配)”。**********
+2. 将虚拟机的状态设置为“通用化”****。 
    
     ```powershell
     Set-AzVm -ResourceGroupName <resourceGroup> -Name <vmName> -Generalized
     ```
-3. 检查 VM 的状态。 VM 的“OSState/通用化”部分中的“DisplayStatus”应设置为“VM 已通用化”。  
+3. 检查 VM 的状态。 VM 的“OSState/通用化”部分中的“DisplayStatus”应设置为“VM 已通用化”************。  
    
     ```powershell
     $vm = Get-AzVM -ResourceGroupName <resourceGroup> -Name <vmName> -Status
@@ -111,7 +111,7 @@ Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
    
-可以从 JSON 文件模板获取映像的 URL。 转到“资源” **“storageProfile”** “osDisk” > “映像” **“URI”部分即可查找映像的完整路径** >  >  > 。 映像的 URL 如下所示：`https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`。
+可以从 JSON 文件模板获取映像的 URL。 转到**资源** > **存储配置文件** > **osDisk** > **映像** > **uri**部分，查看映像的完整路径。 映像的 URL 如下所示：`https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`。
    
 也可以在门户中验证 URI。 映像将复制到存储帐户中名为 **system** 的容器中。 
 
@@ -121,7 +121,7 @@ Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
 
 ### <a name="set-the-uri-of-the-vhd"></a>设置 VHD 的 URI
 
-VHD 使用的 URI 采用以下格式： https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd。 在此示例中，名为 **myVHD** 的 VHD 位于存储帐户 **mystorageaccount** 的 **mycontainer** 容器中。
+VHD 使用的 URI 采用以下格式：https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd。 在此示例中，名为 **myVHD** 的 VHD 位于存储帐户 **mystorageaccount** 的 **mycontainer** 容器中。
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -129,7 +129,7 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
 
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
-创建 [虚拟网络](../../virtual-network/virtual-networks-overview.md)的 vNet 和子网。
+创建[虚拟网络](../../virtual-network/virtual-networks-overview.md)的 vNet 和子网。
 
 1. 创建子网。 以下示例在资源组 **myResourceGroup** 中创建具有 **10.0.0.0/24** 地址前缀的、名为 **mySubnet** 的子网。  
    
@@ -150,14 +150,14 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
 ### <a name="create-a-public-ip-address-and-network-interface"></a>创建公共 IP 地址和网络接口
 若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) 和网络接口。
 
-1. 创建公共 IP 地址。 此示例创建名为 **myPip**的公共 IP 地址。 
+1. 创建公共 IP 地址。 此示例创建名为 **myPip** 的公共 IP 地址。 
    
     ```powershell
     $ipName = "myPip"
     $pip = New-AzPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. 创建 NIC。 此示例创建名为 **myNic**的 NIC。 
+2. 创建 NIC。 此示例创建名为 **myNic** 的 NIC。 
    
     ```powershell
     $nicName = "myNic"
@@ -249,7 +249,7 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-完成后，应会在 [Azure 门户](https://portal.azure.com)的“浏览” **“虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM：**  > 
+完成后，应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM：********
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

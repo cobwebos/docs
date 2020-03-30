@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio （Web 作业项目）与 Azure 存储入门
+title: 使用可视化工作室（WebJob 项目）开始使用 Azure 存储
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 Azure WebJobs 项目中使用 Azure 表存储
 services: storage
 author: ghogen
@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e4d8299c06bfa5b0f33bff8fa592a2fa549c695c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74707606"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure 存储入门（Azure WebJob 项目）
@@ -33,7 +33,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 
 ## <a name="how-to-add-entities-to-a-table"></a>如何向表中添加实体
 
-若要将实体添加到表中，请将**table**属性与**ICollector\<t >** 或**IAsyncCollector\<t >** 参数一起使用，其中**t**指定想要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。
+要将实体添加到表，请使用具有**ICollector\<T>** 或**IAsyncCollector\<T>** 参数的**表**属性，**其中 T**指定要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。
 
 下面的代码示例将 **Person** 实体添加到名为 *Ingress* 的表。
 
@@ -74,21 +74,21 @@ public class Person
 
 ## <a name="real-time-monitoring"></a>实时监视
 
-因为数据入口函数通常处理大量数据，WebJobs SDK 仪表板提供了实时监视的数据。 “调用日志”部分将指示函数是否仍在运行。
+因为数据入口函数通常处理大量数据，WebJobs SDK 仪表板提供了实时监视的数据。 “调用日志”部分将指示函数是否仍在运行。****
 
 ![Ingress 函数正在运行](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
 
-“调用详细信息”页在运行时报告函数的进度（写入的实体数），并且提供了用来中止函数的机会。
+“调用详细信息”页在运行时报告函数的进度（写入的实体数），并且提供了用来中止函数的机会。****
 
 ![Ingress 函数正在运行](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
 
-该函数完成时，“调用详细信息”页会报告写入的行数。
+该函数完成时，“调用详细信息”页会报告写入的行数。****
 
 ![Ingress 函数已完成](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>如何从表中读取多个实体
 
-若要读取表，请将**表**属性与**IQueryable\<t >** 参数一起使用，其中类型**t**派生自**TableEntity**或实现**ITableEntity**。
+要读取表，请使用具有**IQuery\<T>** 参数的**表**属性，其中**T**类型派生自**表实体**或实现**ITableEntity**。
 
 下面的代码示例读取并记录 **Ingress** 表中的所有行：
 

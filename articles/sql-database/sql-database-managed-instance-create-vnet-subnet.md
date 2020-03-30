@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
 ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823367"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例创建虚拟网络
@@ -41,9 +41,9 @@ Azure SQL 数据库托管实例必须部署在 Azure [虚拟网络](../virtual-n
 
 创建和配置虚拟网络的最简单方法是使用 Azure 资源管理器部署模板。
 
-1. 登录到 Azure 门户。
+1. 登录到 Azure 门户。  
 
-2. 选择“部署到 Azure”按钮：
+2. 选择“部署到 Azure”按钮：****
 
    <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="https://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
 
@@ -56,11 +56,11 @@ Azure SQL 数据库托管实例必须部署在 Azure [虚拟网络](../virtual-n
 
    ![用于配置 Azure 网络的资源管理器模板](./media/sql-database-managed-instance-vnet-configuration/create-mi-network-arm.png)
 
-   可以更改虚拟网络和子网的名称，并调整与网络资源关联的 IP 范围。 选择“购买”按钮后，此窗体将创建并配置环境。 如果不需要两个子网，可以删除默认子网。
+   可以更改虚拟网络和子网的名称，并调整与网络资源关联的 IP 范围。 选择“购买”按钮后，此窗体将创建并配置环境。**** 如果不需要两个子网，可以删除默认子网。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关概述，请参阅[什么是托管实例？](sql-database-managed-instance.md)。
+- 有关概述，请参阅[什么是托管实例？](sql-database-managed-instance.md)
 - 了解[托管实例中的连接体系结构](sql-database-managed-instance-connectivity-architecture.md)。
 - 了解如何[修改托管实例的现有虚拟网络](sql-database-managed-instance-configure-vnet-subnet.md)
 - 有关如何创建虚拟网络、创建托管实例，以及从数据库备份还原数据库的教程，请参阅[创建 Azure SQL 数据库托管实例](sql-database-managed-instance-get-started.md)。

@@ -1,5 +1,5 @@
 ---
-title: Apache Hive Azure HDInsight 的 Java 用户定义函数（UDF）
+title: 使用 Apache 蜂巢 Azure HDInsight 的 Java 用户定义函数 （UDF）
 description: 了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此 UDF 示例将表中的文本字符串转换为小写。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/20/2019
 ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327212"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>将 Java UDF 与 HDInsight 中的 Apache Hive 配合使用
@@ -23,7 +23,7 @@ ms.locfileid: "74327212"
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 * [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)
-* 根据 Apache 要求正确[安装](https://maven.apache.org/download.cgi)的 [Apache Maven](https://maven.apache.org/install.html)。  Maven 是 Java 项目的项目生成系统。
+* 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
 * 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，此值为 wasb://；对于Azure Data Lake Storage Gen2，此值为 abfs://；对于 Azure Data Lake Storage Gen1，此值为 adl://。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。  另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
 * 文本编辑器或 Java IDE
@@ -44,15 +44,15 @@ cd C:\HDI
 
 ## <a name="create-an-example-java-udf"></a>创建 Java UDF 示例
 
-1. 通过输入以下命令创建一个新的 Maven 项目：
+1. 输入以下命令，新建 Maven 项目：
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    此命令创建一个名为 `exampleudf`的目录，其中包含 Maven 项目。
+    此命令创建一个名为 `exampleudf` 的目录，其中包含 Maven 项目。
 
-2. 创建项目后，通过输入以下命令删除作为项目的一部分创建的 `exampleudf/src/test` 目录：
+2. 创建该项目后，通过输入以下命令删除作为项目的一部分创建的 `exampleudf/src/test` 目录：
 
     ```cmd
     cd ExampleUDF
@@ -86,7 +86,7 @@ cd C:\HDI
 
     这些条目指定了 HDInsight 3.6 中包含的 Hadoop 和 Hive 版本。 可以在 [HDInsight 组件版本控制](../hdinsight-component-versioning.md)文档中找到 HDInsight 提供的 Hadoop 和 Hive 的版本信息。
 
-    在文件末尾的 `<build>` 行之前添加 `</project>` 部分。 本部分应包含以下 XML：
+    在文件末尾的 `</project>` 行之前添加 `<build>` 部分。 本部分应包含以下 XML：
 
     ```xml
     <build>
@@ -191,19 +191,19 @@ cd C:\HDI
 
     此命令生成 UDF 并将其打包到 `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` 文件。
 
-2. 使用 `scp` 命令通过输入以下命令将文件复制到 HDInsight 群集：
+2. 使用 `scp` 命令将文件复制到 HDInsight 群集，只需输入以下命令即可：
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-3. 输入以下命令，使用 SSH 连接到群集：
+3. 输入以下命令，通过 SSH 连接到群集：
 
     ```cmd
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-4. 从打开的 SSH 会话中，将 jar 文件复制到 HDInsight 存储。
+4. 从打开的 SSH 会话将 jar 文件复制到 HDInsight 存储。
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
@@ -211,7 +211,7 @@ cd C:\HDI
 
 ## <a name="use-the-udf-from-hive"></a>在 Hive 中使用 UDF
 
-1. 通过输入以下命令从 SSH 会话启动 Beeline 客户端：
+1. 输入以下命令，在 SSH 会话中启动 Beeline 客户端：
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
@@ -232,7 +232,7 @@ cd C:\HDI
     SELECT tolower(state) AS ExampleUDF, state FROM hivesampletable LIMIT 10;
     ```
 
-    此查询从表中选择状态，将字符串转换为小写形式，然后将其与未修改的名称一起显示。 显示的输出类似于以下文本：
+    此查询将从表中选择状态，并将字符串转换为小写字符串，然后将它们与未修改的名称一起显示。 显示的输出类似于以下文本：
 
         +---------------+---------------+--+
         |  exampleudf   |     state     |
@@ -249,7 +249,7 @@ cd C:\HDI
         | colorado      | Colorado      |
         +---------------+---------------+--+
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 运行 hive 作业时，可能会遇到类似于以下文本的错误：
 
@@ -257,7 +257,7 @@ cd C:\HDI
 
 此问题可能是由 Python 文件中的行尾结束符号导致的。 许多 Windows 编辑器默认为使用 CRLF 作为行尾结束符号，但 Linux 应用程序通常应使用 LF。
 
-可以使用 PowerShell 语句删除 CR 字符，再将文件上载到 HDInsight：
+可以使用 PowerShell 语句删除 CR 字符，然后再将文件上传到 HDInsight：
 
 ```PowerShell
 # Set $original_file to the python file path

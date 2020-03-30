@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心常见问题解答-有关权限的问题
-description: 此常见问题回答有关 Azure 安全中心中的权限的问题，这是一个可帮助你预防、检测和响应威胁的产品。
+title: Azure 安全中心常见问题 - 有关权限的问题
+description: 此常见问题解答有关 Azure 安全中心中的权限的问题，该产品可帮助您预防、检测和响应威胁。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,15 +14,15 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 66a260fbb03f770ee98ec29a5f5e15e3d7dd1310
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77599387"
 ---
 # <a name="permissions"></a>权限
 
-## <a name="how-do-permissions-work-in-azure-security-center"></a>如何在 Azure 安全中心使用权限？
+## <a name="how-do-permissions-work-in-azure-security-center"></a>权限在 Azure 安全中心的工作原理？
 
 Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 提供可在 Azure 中分配给用户、组和服务的[内置角色](../role-based-access-control/built-in-roles.md)。
 

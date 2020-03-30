@@ -1,5 +1,5 @@
 ---
-title: Azure 中的 OpenShift 概述
+title: Azure 概览中的打开移位
 description: Azure 中的 OpenShift 概述。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
 ms.openlocfilehash: 021ebe010a27fa155de861121e1972466c800f4a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035426"
 ---
 # <a name="openshift-in-azure"></a>Azure 中的 OpenShift
@@ -31,11 +31,11 @@ OpenShift 包括用于容器业务流程和管理的 Kubernetes 容器。 它增
 - 轻松部署和缩放。
 - 针对团队和应用程序的长期生命期维护。
 
-有多个 OpenShift 版本可用。  在这些版本中，目前只有两个版本可供客户在 Azure 中部署： OpenShift 容器平台和 OKD （以前称为 OpenShift 源）。
+有多个 OpenShift 版本可用。  在这些版本中，目前只有两个可供客户在 Azure 中部署：OpenShift 容器平台和 OKD（以前是 OpenShift 源）。
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat OpenShift 是在 Azure 中运行的 OpenShift 的完全托管的服务。 此服务由 Microsoft 和 Red Hat 共同管理并提供支持。 有关更多详细信息，请参阅[Azure Red Hat OpenShift 服务](https://docs.microsoft.com/azure/openshift/)文档。
+Microsoft Azure 红帽 OpenShift 是 Azure 中运行的完全托管的 OpenShift 产品。 此服务由 Microsoft 和 Red Hat 共同管理并提供支持。 有关详细信息，请参阅 Azure[红帽开放移位服务](https://docs.microsoft.com/azure/openshift/)文档。
 
 ## <a name="openshift-container-platform"></a>OpenShift 容器平台
 
@@ -51,7 +51,7 @@ OKD 是社区支持的 OpenShift 的[开源](https://www.okd.io/)上游项目。
 
 - [在 Azure 中配置 OpenShift 的常见先决条件](./openshift-container-platform-3x-prerequisites.md)
 - [在 Azure 中部署 OpenShift 容器平台](./openshift-container-platform-3x.md)
-- [部署 OpenShift 容器平台自行管理的 Marketplace 产品/服务](./openshift-container-platform-3x-marketplace-self-managed.md)
+- [部署 OpenShift 容器平台自管理市场产品/服务](./openshift-container-platform-3x-marketplace-self-managed.md)
 - [在 Azure Stack 中部署 OpenShift](./openshift-azure-stack.md)
 - [部署后任务](./openshift-container-platform-3x-post-deployment.md)
 - [OpenShift 部署故障排除](./openshift-container-platform-3x-troubleshooting.md)

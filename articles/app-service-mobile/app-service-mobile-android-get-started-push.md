@@ -7,10 +7,10 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 6fec85c028e992c15fb9503ffb599023e668c58f
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459933"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>向 Android 应用添加推送通知
@@ -21,9 +21,9 @@ ms.locfileid: "77459933"
 
 本教程介绍如何向 [Android 快速入门]项目添加推送通知，以便每次插入一条记录时，向设备发送一条推送通知。
 
-如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
+如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需要满足以下条件：
 
@@ -58,7 +58,7 @@ ms.locfileid: "77459933"
 
 [!INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
-下一步就是安装 Google Play Services。 Firebase Cloud Messaging 针对开发和测试有一些最低的 API 级别要求，清单中的 minSdkVersion 属性必须符合这些要求。
+下一步就是安装 Google Play Services。 Firebase Cloud Messaging 针对开发和测试有一些最低的 API 级别要求，清单中的 minSdkVersion**** 属性必须符合这些要求。
 
 如果要测试一台较旧的设备，请查阅[将 Firebase 添加到 Android 项目]，以确定此值可设置到的最小值，并相应地进行设置。
 
@@ -78,11 +78,11 @@ ms.locfileid: "77459933"
 
 完成此教程后，请考虑继续学习以下教程之一：
 
-* [将身份验证添加到 Android 应用](app-service-mobile-android-get-started-users.md)。
+* [将身份验证添加到您的 Android 应用](app-service-mobile-android-get-started-users.md)。
   介绍如何使用支持的标识提供者将身份验证添加到 Android 上的待办事项列表快速入门项目。
 * [为 Android 应用启用脱机同步](app-service-mobile-android-get-started-offline-data.md)。
   了解如何使用移动应用后端向应用添加脱机支持。 使用脱机同步，用户可以与移动应用进行交互&mdash;查看、添加或修改数据&mdash;，即使在没有网络连接时也是如此。
 
 <!-- URLs -->
 [Android 快速入门]: app-service-mobile-android-get-started.md
-[将 Firebase 添加到 Android 项目]: https://firebase.google.com/docs/android/setup
+[将 Firebase 添加到 Android 项目]:https://firebase.google.com/docs/android/setup

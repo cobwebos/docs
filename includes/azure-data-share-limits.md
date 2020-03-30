@@ -9,20 +9,20 @@ ms.date: 02/07/2020
 ms.author: jife
 ms.custom: include file
 ms.openlocfilehash: e1416b8b99c66daa4a27fa7f9bd7a20dfa9519e3
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77087425"
 ---
-通过 Azure 数据共享，组织可以轻松地与客户和合作伙伴共享数据。
+Azure 数据共享使组织能够简单安全地与其客户和合作伙伴共享数据。
 
 | **资源** | **限制** |
 | --- | --- |
 | 每个 Azure 订阅的最大数据共享资源数 |50 |
-| 每个数据共享资源的最大已发送共享数 |100 |
+| 每个数据共享资源的最大发送共享数 |100 |
 | 每个数据共享资源接收的最大共享数 |100 |
-| 每个已发送共享的最大邀请数 |100 |
-| 每个已发送共享的共享订阅的最大数目 |100 |
-| 每个共享的数据集的最大数目 |100 |
-| 每个共享的最大快照计划数 |1 |
+| 每个发送共享的最大邀请数 |100 |
+| 每个发送共享的最大共享订阅数 |100 |
+| 每股最大数据集数 |100 |
+| 每股快照计划的最大数量 |1 |

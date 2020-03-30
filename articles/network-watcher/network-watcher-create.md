@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77191181"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>创建 Azure 网络观察程序实例
@@ -49,7 +49,7 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>在门户中创建网络观察程序
 
-导航到“所有服务” > “网络” > “网络观察程序”。 可以选择要为其启用网络观察程序的所有订阅。 此操作在每个可用的区域中创建网络观察程序。
+导航到**所有服务** > **网络** > **网络观察程序**。 可以选择要为其启用网络观察程序的所有订阅。 此操作在每个可用的区域中创建网络观察程序。
 
 ![创建网络观察程序](./media/network-watcher-create/figure1.png)
 
@@ -101,19 +101,19 @@ $requestBody = @"
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
 ```
 
-## <a name="delete-a-network-watcher-in-the-portal"></a>在门户中删除网络观察程序
+## <a name="delete-a-network-watcher-in-the-portal"></a>删除门户中的网络观察程序
 
-导航到“所有服务” > “网络” > “网络观察程序”。
+导航到**所有服务** > **网络** > **网络观察程序**。
 
-选择 "概述" 选项卡（如果尚未这样做）。 使用下拉列表选择要在其中禁用网络观察程序的订阅。
-通过单击箭头，展开所选订阅的区域列表。 对于任何给定的，使用右侧的3个点访问上下文菜单。
-单击 "禁用网络观察程序" 开始禁用。 系统会要求你确认此步骤。 单击“是”继续操作。
-在门户上，你必须为每个订阅中的每个区域单独执行此操作。
+如果尚未在"概览"选项卡，请选择"概览"选项卡。 使用下拉列表选择要禁用网络观察程序的订阅。
+单击箭头展开所选订阅的区域列表。 对于任何给定的，使用右侧的 3 个点访问上下文菜单。
+单击"禁用网络观察程序"开始禁用。 系统将要求您确认此步骤。 单击“是”继续。
+在门户上，您必须针对每个订阅中的每个区域单独执行此操作。
 
 
 ## <a name="delete-a-network-watcher-with-powershell"></a>使用 PowerShell 删除网络观察程序
 
-若要删除网络观察程序的实例，请运行以下示例：
+要删除网络观察程序的实例，请运行以下示例：
 
 ```powershell
 New-AzResourceGroup -Name NetworkWatcherRG -Location westcentralus
@@ -128,7 +128,7 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 * [拓扑](network-watcher-topology-overview.md)
 * [数据包捕获](network-watcher-packet-capture-overview.md)
 * [IP 流验证](network-watcher-ip-flow-verify-overview.md)
-* [下一跃点](network-watcher-next-hop-overview.md)
+* [下一跳](network-watcher-next-hop-overview.md)
 * [安全组视图](network-watcher-security-group-view-overview.md)
 * [NSG 流日志记录](network-watcher-nsg-flow-logging-overview.md)
 * [虚拟网络网关故障排除](network-watcher-troubleshoot-overview.md)
