@@ -1,26 +1,26 @@
 ---
 title: 在 CloudEvents 架构中将 Azure 事件网格与事件配合使用
-description: 介绍如何将 CloudEvents 架构用于 Azure 事件网格中的事件。 服务支持云事件的 JSON 实现中的事件。
+description: 介绍如何使用云事件架构执行 Azure 事件网格中的事件。 该服务支持云事件的 JSON 实现中的事件。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0efccd2851885dad209d5548a76737c25777b891
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79265072"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372446"
 ---
-# <a name="use-cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents 1.0 版架构与事件网格结合使用
+# <a name="use-cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents v1.0 架构与事件网格配合使用
 
-Azure 事件网格除了[默认的事件架构](event-schema.md)外，还支持 CloudEvents V1.0 和[HTTP 协议绑定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)的[JSON 实现](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)中的事件。 [CloudEvents](https://cloudevents.io/) 是一种用于描述事件数据的[开放规范](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
+除了采用[默认事件架构](event-schema.md)的事件，Azure 事件网格本身还支持采用 [CloudEvents v1.0 的 JSON 实现](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和 [HTTP 协议绑定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)的事件。 [CloudEvents](https://cloudevents.io/) 是一种用于描述事件数据的[开放规范](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
 
 CloudEvents 提供的常用事件架构适合发布和使用基于云的事件，因此可简化互操作性。 可以通过此架构使用统一的工具、以标准方式路由和处理事件，以及以通用方式反序列化外部事件架构。 使用通用架构可以更轻松地跨平台集成工作。
 
-CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com/cloudevents/spec/blob/master/community/contributors.md)通过 [Cloud Native Computing Foundation](https://www.cncf.io/) 构建的。 目前提供的版本为1.0。
+CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com/cloudevents/spec/blob/master/community/contributors.md)通过 [Cloud Native Computing Foundation](https://www.cncf.io/) 构建的。 它目前的发布版本为 1.0。
 
 本文介绍如何将 CloudEvents 架构与事件网格配合使用。
 
@@ -60,7 +60,7 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 }
 ```
 
-[可在此处](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)查看可用字段、其类型和 CloudEvents 1.0 中的定义的详细说明。
+[此处提供](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes) CloudEvents v1.0 中的可用字段、类型和定义的详细说明。
 
 在 CloudEvents 架构和事件网格架构中传递的事件的标头值是相同的，但 `content-type` 除外。 对于 CloudEvents 架构，该标头值为 `"content-type":"application/cloudevents+json; charset=utf-8"`。 对于事件网格架构，该标头值为 `"content-type":"application/json; charset=utf-8"`。
 
@@ -136,17 +136,17 @@ New-AzureRmEventGridSubscription `
   -DeliverySchema CloudEventSchemaV1_0
 ```
 
- 目前，在以 CloudEvents 架构传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 使用 HTTP 触发器。 有关实现在 CloudEvents 架构中接收事件的 HTTP 触发器的示例，请参阅将[CloudEvents 与 Azure Functions 结合使用](#azure-functions)。
+ 目前，在以 CloudEvents 架构传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 使用 HTTP 触发器。 有关实现在 CloudEvents 架构中接收事件的 HTTP 触发器的示例，请参阅[将 CloudEvents 与 Azure Functions 配合使用](#azure-functions)。
 
- ## <a name="endpoint-validation-with-cloudevents-v10"></a>用 CloudEvents 1.0 版进行终结点验证
+ ## <a name="endpoint-validation-with-cloudevents-v10"></a>使用 CloudEvents v1.0 进行终结点验证
 
-如果已熟悉事件网格，可能会注意到事件网格的终结点验证握手，以防止滥用。 CloudEvents 1.0 版使用 HTTP OPTIONS 方法实现自己的[滥用保护语义](security-authentication.md#webhook-event-delivery)。 可以在 [此处](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)阅读详细内容。 使用 CloudEvents 架构进行输出时，事件网格将与 CloudEvents v1.0 滥用保护一起使用，以取代事件网格验证事件机制。
+如果熟悉事件网格，你可能会了解事件网格的用于防止滥用的终结点验证握手。 CloudEvents v1.0 使用 HTTP OPTIONS 方法来实现自己的[滥用保护语义](security-authentication.md#webhook-event-delivery)。 你可以[在这里](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)阅读更多关于它。 使用 CloudEvents 架构进行输出时，事件网格可与 CloudEvents v1.0 滥用保护配合使用，取代事件网格验证事件机制。
 
 <a name="azure-functions"></a>
 
-## <a name="use-with-azure-functions"></a>与 Azure Functions 一起使用
+## <a name="use-with-azure-functions"></a>与 Azure Functions 配合使用
 
-[Azure Functions 事件网格绑定](../azure-functions/functions-bindings-event-grid.md)本身不支持 CloudEvents，因此使用 HTTP 触发的函数读取 CloudEvents 消息。 使用 HTTP 触发器读取 CloudEvents 时，必须为事件网格触发器自动执行的操作编写代码：
+[Azure Functions 事件网格绑定](../azure-functions/functions-bindings-event-grid.md)本身不支持 CloudEvents，因此使用 HTTP 触发的函数读取 CloudEvents 消息。 使用 HTTP 触发器来读取 CloudEvents 时，必须编写代码来指定事件网格触发器自动执行的操作：
 
 * 将验证响应发送到[订阅验证请求](../event-grid/security-authentication.md#webhook-event-delivery)。
 * 针对请求正文中包含的事件数组的每个元素调用该函数一次。
@@ -157,35 +157,27 @@ New-AzureRmEventGridSubscription `
 
 ```csharp
 [FunctionName("HttpTrigger")]
-public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, ILogger log)
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", "options", Route = null)]HttpRequestMessage req, ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
+    if (req.Method == "OPTIONS")
+    {
+        // If the request is for subscription validation, send back the validation code
+        
+        var response = req.CreateResponse(HttpStatusCode.OK);
+        response.Add("Webhook-Allowed-Origin", "eventgrid.azure.net");
+
+        return response;
+    }
 
     var requestmessage = await req.Content.ReadAsStringAsync();
     var message = JToken.Parse(requestmessage);
 
-    if (message.Type == JTokenType.Array)
-    {
-        // If the request is for subscription validation, send back the validation code.
-        if (string.Equals((string)message[0]["eventType"],
-        "Microsoft.EventGrid.SubscriptionValidationEvent",
-        System.StringComparison.OrdinalIgnoreCase))
-        {
-            log.LogInformation("Validate request received");
-            return req.CreateResponse<object>(new
-            {
-                validationResponse = message[0]["data"]["validationCode"]
-            });
-        }
-    }
-    else
-    {
-        // The request is not for subscription validation, so it's for an event.
-        // CloudEvents schema delivers one event at a time.
-        log.LogInformation($"Source: {message["source"]}");
-        log.LogInformation($"Time: {message["eventTime"]}");
-        log.LogInformation($"Event data: {message["data"].ToString()}");
-    }
+    // The request is not for subscription validation, so it's for an event.
+    // CloudEvents schema delivers one event at a time.
+    log.LogInformation($"Source: {message["source"]}");
+    log.LogInformation($"Time: {message["eventTime"]}");
+    log.LogInformation($"Event data: {message["data"].ToString()}");
 
     return req.CreateResponse(HttpStatusCode.OK);
 }
@@ -196,15 +188,18 @@ public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLeve
 ```javascript
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
-
-    var message = req.body;
-    // If the request is for subscription validation, send back the validation code.
-    if (message.length > 0 && message[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
+    
+    if (req.method == "OPTIONS) {
+        // If the request is for subscription validation, send back the validation code
+        
         context.log('Validate request received');
-        var code = message[0].data.validationCode;
         context.res = { status: 200, body: { "ValidationResponse": code } };
+        context.res.headers.append('Webhook-Allowed-Origin', 'eventgrid.azure.net');
     }
-    else {
+    else
+    {
+        var message = req.body;
+        
         // The request is not for subscription validation, so it's for an event.
         // CloudEvents schema delivers one event at a time.
         var event = JSON.parse(message);
@@ -212,6 +207,7 @@ module.exports = function (context, req) {
         context.log('Time: ' + event.eventTime);
         context.log('Data: ' + JSON.stringify(event.data));
     }
+ 
     context.done();
 };
 ```

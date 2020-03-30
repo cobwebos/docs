@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: 2265471001896652a4ce35dbf8bd84aca50000fb
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74665672"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>快速入门：使用 C# 将查询发送到必应当地企业搜索 API
@@ -23,7 +23,7 @@ ms.locfileid: "74665672"
 
 此示例应用程序从 API 获取搜索查询 `hotel in Bellevue` 的本地响应数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 任何版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。

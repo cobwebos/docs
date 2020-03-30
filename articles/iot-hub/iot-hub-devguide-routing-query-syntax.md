@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中心消息路由查询 | Microsoft 文档
-description: 了解 IoT 中心消息路由查询语言，该语言可用于向消息应用丰富的查询，以接收重要的数据。
+description: 了解 IoT 中心消息路由查询语言，可用于将丰富的查询应用于邮件以接收对您重要的数据。
 author: ash2017
 ms.service: iot-hub
 services: iot-hub
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
 ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271104"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中心消息路由查询语法
@@ -56,9 +56,9 @@ IoT 中心为所有设备到云的消息传送定义了[格式](iot-hub-devguide
 | contentEncoding | 字符串 | 用户指定消息的编码类型。 如果 contentType 设置为应用程序/JSON，则允许的值为 UTF-8、UTF-16 和 UTF-32。 |
 | iothub-connection-device-id | 字符串 | 此值由 IoT 中心设置，标识设备的 ID。 若要查询，请使用 `$connectionDeviceId`。 |
 | iothub-enqueuedtime | 字符串 | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `enqueuedTime`。 |
-| iothub-name | 字符串 | 此值由用户设置，表示实现遥测消息的数字克隆接口的名称。 若要查询，请使用 `$interfaceName`。 此功能在[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)中提供。 |
+| iothub 接口名称 | 字符串 | 此值由用户设置，表示实现遥测消息的数字孪生接口的名称。 若要查询，请使用 `$interfaceName`。 此功能作为[IoT 即插即用公共预览](../iot-pnp/overview-iot-plug-and-play.md)的一部分提供。 |
 
-如 [IoT 中心消息](iot-hub-devguide-messages-construct.md)中所述，一条消息中还有其他系统属性。 除了 contentType，还可以查询 contentEncoding 和 enqueuedTime、connectionDeviceId 和 connectionModuleId。
+如 [IoT 中心消息](iot-hub-devguide-messages-construct.md)中所述，一条消息中还有其他系统属性。 除了**内容类型**、**内容编码**和**排队时间**之外，还可以查询**连接DeviceId**和**连接ModuleId。**
 
 ### <a name="application-properties"></a>应用程序属性
 
@@ -86,7 +86,7 @@ processingPath = 'hot'
 $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 ```
 
-"[表达式和条件](iot-hub-devguide-query-language.md#expressions-and-conditions)" 中显示了支持的运算符和函数的完整列表。
+[表达式和条件](iot-hub-devguide-query-language.md#expressions-and-conditions)中显示了支持的运算符和函数的完整列表。
 
 ## <a name="message-routing-query-based-on-message-body"></a>基于消息正文的消息路由查询
 
@@ -142,7 +142,7 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> 这说明了如何处理 javascript 中正文的编码。 若要查看中C#的示例，请下载[Azure IoT C#示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 解压缩 master.zip 文件。 Visual Studio 解决方案*SimulatedDevice*的 Program.cs 文件演示如何编码和将消息提交到 IoT 中心。 这是用于测试消息路由的相同示例，如[消息路由教程](tutorial-routing.md)中所述。 在 Program.cs 的底部，它还提供了一个方法，用于读取其中一个编码文件，对其进行解码，并将其写回作为 ASCII，以便您可以读取它。 
+> 这显示了如何处理在 javascript 中正文的编码。 如果要在 C# 中查看示例，请下载[Azure IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 解压缩 master.zip 文件。 Visual Studio 解决方案 *"模拟设备*"Program.cs文件演示如何对消息进行编码并将消息提交到 IoT 中心。 这是用于测试消息路由的相同示例，如[消息路由教程](tutorial-routing.md)中所述。 在Program.cs的底部，它还有一种方法在编码的文件之一读取，解码它，并将其写回ASCII，以便您可以读取它。 
 
 
 ### <a name="query-expressions"></a>查询表达式
@@ -167,7 +167,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ## <a name="message-routing-query-based-on-device-twin"></a>基于设备孪生的消息路由查询 
 
-通过消息路由，可以查询[设备孪生](iot-hub-devguide-device-twins.md)标记和属性，这些是 JSON 对象。 还支持对模块克隆进行查询。 设备孪生标记和属性的示例如下所示。
+通过消息路由，可以查询[设备孪生](iot-hub-devguide-device-twins.md)标记和属性，这些是 JSON 对象。 还支持对模块孪生进行查询。 设备孪生标记和属性的示例如下所示。
 
 ```JSON
 {
@@ -200,7 +200,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>查询表达式
 
-对消息双子的查询需要带有 `$twin`的前缀。 此外，查询表达式还可以将孪生标记或属性引用与正文引用、消息系统属性和消息应用程序属性引用组合在一起。 我们建议在标记和属性中使用唯一名称，因为查询不区分大小写。 这同时适用于设备孪生和模块孪生。 同时，请避免使用 `twin`、`$twin`、`body` 或 `$body` 作为属性名称。 例如，以下所有查询表达式都有效： 
+有关消息孪生的查询需要用 进行预固定`$twin`。 此外，查询表达式还可以将孪生标记或属性引用与正文引用、消息系统属性和消息应用程序属性引用组合在一起。 我们建议在标记和属性中使用唯一名称，因为查询不区分大小写。 这同时适用于设备孪生和模块孪生。 同时，请避免使用 `twin`、`$twin`、`body` 或 `$body` 作为属性名称。 例如，以下所有查询表达式都有效： 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
@@ -214,9 +214,9 @@ $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.send
 $twin.tags.deploymentLocation.floor = 1 
 ```
 
-不支持在负载或属性名称中有句点的 body 或 device 双子的路由查询。
+不支持在有效负载或属性名称中具有句点的实体或设备孪生上的路由查询。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[消息路由](iot-hub-devguide-messages-d2c.md)。
-* 尝试[消息路由教程](tutorial-routing.md)。
+* 请尝试[消息路由教程](tutorial-routing.md)。

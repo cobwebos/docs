@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/27/2019
 ms.author: spelluru
-ms.openlocfilehash: d4c4f055114ccd0be4bbc588b7785eb0fb2f48c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cbaf447dfcf06ae11f2282d7d847978297af8b8
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426896"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384885"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含主题、订阅和规则的服务总线命名空间
 
@@ -27,7 +27,7 @@ ms.locfileid: "75426896"
 
 有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。
 
-有关 Azure 资源命名约定的实践和模式的详细信息，请参阅[azure 资源的建议命名约定][Recommended naming conventions for Azure resources]。
+有关 Azure 资源命名约定的实践和模式的详细信息，请参阅 [Azure 资源的建议命名约定][Recommended naming conventions for Azure resources]。
 
 有关完整的模板，请参阅[包含主题、订阅和规则的服务总线命名空间][Service Bus namespace with topic, subscription, and rule]模板。
 
@@ -40,14 +40,12 @@ ms.locfileid: "75426896"
 > * [创建包含主题和订阅的服务总线命名空间](service-bus-resource-manager-namespace-topic.md)
 > 
 > 若要检查最新模板，请访问 [Azure 快速启动模板][Azure Quickstart Templates]库并搜索服务总线。
-> 
-> 
 
 ## <a name="what-do-you-deploy"></a>要部署什么？
 
 使用此模板，将部署包含主题、订阅和规则（筛选器）的服务总线命名空间。
 
-[服务总线主题和订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”模式提供一对多的通信形式。 使用主题和订阅时，分布式应用程序的组件之间不会直接通信，它们会通过用作中介的主题来交换消息。主题订阅类似于虚拟队列，接收发送至该主题的消息副本。 通过订阅中的筛选器，可以指定发送到主题的哪些消息应该在特定主题订阅中显示。
+[服务总线主题和订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”** 模式提供一对多的通信形式。 使用主题和订阅时，分布式应用程序的组件之间不会直接通信，它们会通过用作中介的主题来交换消息。主题订阅类似于虚拟队列，接收发送至该主题的消息副本。 通过订阅中的筛选器，可以指定发送到主题的哪些消息应该在特定主题订阅中显示。
 
 ## <a name="what-are-rules-filters"></a>什么是规则（筛选器）？
 
@@ -64,6 +62,7 @@ ms.locfileid: "75426896"
 模板定义以下参数：
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 要创建的服务总线命名空间的名称。
 
 ```json
@@ -73,6 +72,7 @@ ms.locfileid: "75426896"
 ```
 
 ### <a name="servicebustopicname"></a>serviceBusTopicName
+
 在服务总线命名空间中创建的主题的名称。
 
 ```json
@@ -82,6 +82,7 @@ ms.locfileid: "75426896"
 ```
 
 ### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
+
 在服务总线命名空间中创建的订阅的名称。
 
 ```json
@@ -89,7 +90,9 @@ ms.locfileid: "75426896"
 "type": "string"
 }
 ```
+
 ### <a name="servicebusrulename"></a>serviceBusRuleName
+
 在服务总线命名空间中创建的规则（筛选器）的名称。
 
 ```json
@@ -97,7 +100,9 @@ ms.locfileid: "75426896"
    "type": "string",
   }
 ```
+
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 模板的服务总线 API 版本。
 
 ```json
@@ -108,7 +113,9 @@ ms.locfileid: "75426896"
            "description": "Service Bus ApiVersion used by the template" 
        }
 ```
+
 ## <a name="resources-to-deploy"></a>要部署的资源
+
 创建类型为 **Messaging** 的包含主题、订阅和规则的标准服务总线命名空间。
 
 ```json
@@ -164,21 +171,25 @@ ms.locfileid: "75426896"
 有关 JSON 语法和属性，请参阅[命名空间](/azure/templates/microsoft.servicebus/namespaces)、[主题](/azure/templates/microsoft.servicebus/namespaces/topics)、[订阅](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions)和[规则](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions/rules)。
 
 ## <a name="commands-to-run-deployment"></a>运行部署的命令
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
-```powershell
+
+```powershell-interactive
 New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<resource-group-name\> -TemplateUri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```azurecli
+
+```azurecli-interactive
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 查看以下文章了解如何管理这些资源：
 
 * [管理 Azure 服务总线](service-bus-management-libraries.md)
@@ -193,4 +204,3 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 [Recommended naming conventions for Azure resources]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 [Service Bus namespace with topic, subscription, and rule]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-subscription-rule/
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-

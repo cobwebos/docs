@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c8de61d88417a19680b606be5e06583c36c94fbc
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78926094"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
@@ -19,7 +19,7 @@ ms.locfileid: "78926094"
 
 ## <a name="add-sample-code"></a>添加示例代码
 
-1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。   
+1. 若要向 Java 项目添加新的空类，请选择“文件” **“新建”** “类”。 >    >  
 
 1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。   
 
@@ -112,7 +112,7 @@ ms.locfileid: "78926094"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-按 F11，或选择“运行” > “调试”。  
+按 F11，或选择“运行” **“调试”。**  >  
 文本转换为语音，并保存在指定的音频数据中。
 
    ```text

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
 ms.openlocfilehash: 470e38c21a250273216f93eb38a5334a4bb581e7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77911775"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
@@ -30,7 +30,7 @@ ms.locfileid: "77911775"
 
 ## <a name="classic-vms"></a>经典 VM
 
-对于经典 Vm，仅支持从本地自定义映像部署新 VM。 若要使用本文支持的功能，必须首先将经典 VM 迁移到资源管理器模型。
+对于经典 VM，仅支持从本地自定义映像部署新的 VM。 若要使用本文支持的功能，必须首先将经典 VM 迁移到资源管理器模型。
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
  
@@ -168,7 +168,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>使用 Windows Server 的 Azure 混合权益部署虚拟机规模集
-在虚拟机规模集资源管理器模板内，必须在 VirtualMachineProfile 属性中指定额外参数 `licenseType`。 可在创建或更新规模集的过程中通过 ARM 模板、PowerShell、Azure CLI 或 REST 执行此操作。
+在虚拟机规模集资源管理器模板内，必须在 VirtualMachineProfile 属性中指定额外参数 `licenseType`。 可以通过 ARM 模板、PowerShell、Azure CLI 或 REST，在为规模集创建或更新期间执行此操作。
 
 以下示例将 ARM 模板用于 Windows Server 2016 Datacenter 映像：
 ```json
@@ -194,7 +194,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 还可以详细了解如何[修改虚拟机规模集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md)，了解更多更新规模集的方法。
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解[如何使用 Azure 混合权益节省资金](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
+- 阅读有关如何[使用 Azure 混合权益节省资金的更多内容](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 - 详细了解 [Azure 混合权益的常见问题解答](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
 - 详细了解 [Windows Server 的 Azure 混合权益许可详细指南](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)。
 - 详细了解 [Windows Server 的 Azure 混合权益和 Azure Site Recovery 让应用迁移到 Azure 更具成本效益](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)

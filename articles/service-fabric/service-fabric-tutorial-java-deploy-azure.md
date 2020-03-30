@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b7754a289c06dff37aedcf8da76d35dfac4b183d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: df6719cad79bdb063c2d4d74892206b6e5bbd414
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78252806"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292038"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>教程：将 Java 应用程序部署到 Azure 中的 Service Fabric 群集
 
@@ -217,11 +217,11 @@ ms.locfileid: "78252806"
     ./install.sh
     ```
 
-5. 若要访问 Service Fabric Explorer，请打开最常用的浏览器，然后键入 https://testlinuxcluster.westus.cloudapp.azure.com:19080 。 从证书存储中选择需要用来连接到此终结点的证书。 如果使用 Linux 计算机，则必须将通过 *new-service-fabric-cluster-certificate.sh* 脚本生成的证书导入到 Chrome 中，然后才能查看 Service Fabric Explorer。 如果使用 Mac，则必须将 PFX 文件安装到密钥链中。 你注意到应用程序已安装到群集上。
+5. 若要访问 Service Fabric Explorer，请打开最常用的浏览器，然后键入 `https://testlinuxcluster.westus.cloudapp.azure.com:19080` 。 从证书存储中选择需要用来连接到此终结点的证书。 如果使用 Linux 计算机，则必须将通过 *new-service-fabric-cluster-certificate.sh* 脚本生成的证书导入到 Chrome 中，然后才能查看 Service Fabric Explorer。 如果使用 Mac，则必须将 PFX 文件安装到密钥链中。 你注意到应用程序已安装到群集上。
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
-6. 若要访问应用程序，请键入 https://testlinuxcluster.westus.cloudapp.azure.com:8080
+6. 若要访问应用程序，请键入 `https://testlinuxcluster.westus.cloudapp.azure.com:8080`
 
     ![Voting 应用 Java Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 

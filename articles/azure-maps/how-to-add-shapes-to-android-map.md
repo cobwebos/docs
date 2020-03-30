@@ -1,34 +1,34 @@
 ---
-title: 将形状添加到 Android 地图 |Microsoft Azure 映射
-description: 本文介绍如何使用 Microsoft Azure 地图 Android SDK 在地图上呈现不同的形状。
-author: farah-alyasari
-ms.author: v-faalya
+title: 向 Android 地图添加形状 |微软 Azure 地图
+description: 在本文中，您将学习如何使用 Microsoft Azure 地图 Android SDK 在地图上呈现不同的形状。
+author: philmea
+ms.author: philmea
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6c59aadf89190f796134e22eb155eebb8579f3f0
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 7a793ff35675c876dc429976ebee96887b12735a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210032"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335596"
 ---
-# <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure Maps 将形状添加到地图 Android SDK
+# <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure 地图 Android SDK 将形状添加到地图
 
-本文介绍如何使用 Azure Maps Android SDK 在地图上呈现形状。
+本文介绍如何使用 Azure 地图 Android SDK 在地图上呈现形状。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-若要完成本文中的过程，需要安装[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)来加载地图。
+要完成本文中的过程，您需要安装[Azure 地图 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)来加载地图。
 
 
-## <a name="add-a-line-to-the-map"></a>向地图添加线条
+## <a name="add-a-line-to-the-map"></a>向地图添加线
 
-您可以使用**线条层**向地图添加线条，按照以下步骤在地图上添加一行。
+您可以使用**线图层**向地图添加线，按照以下步骤在地图上添加线。
 
-1. 编辑**res > 布局 > activity_main** ，使其看起来像下面这样：
+1. **>activity_main.xml 编辑>布局**，以便它看起来像下面的布局：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ ms.locfileid: "77210032"
     </FrameLayout>
     ```
 
-2. 将以下代码片段复制到 `MainActivity.java` 类的**onCreate （）** 方法。
+2. 将以下代码段复制到类`MainActivity.java`的**onCreate（）** 方法中。
 
     ```Java
     mapControl.onReady(map -> {
@@ -76,9 +76,9 @@ ms.locfileid: "77210032"
 
     ```
     
-    上面的代码段首先使用**onReady （）** 回调方法获取 Azure Maps 映射控件实例。 然后，它使用**DataSource**类创建数据源对象并将其添加到地图中。 然后创建**点**对象的列表。 将从点列表创建**LineString** ，并将其添加到数据源。 **线条层**将在地图上的数据源中换行对象。 然后创建一个线条层并将数据源添加到其中。
+    上面的代码段首先使用**onReady（）** 回调方法获取 Azure 地图映射控件实例。 然后，它使用**DataSource**类创建数据源对象并将其添加到地图中。 然后创建**Point**对象的列表。 **LineString**是从点列表中创建的，并添加到数据源中。 **线图层**渲染在地图上的数据源中包裹的线对象。 然后创建一个线图层，并将数据源添加到其中。
 
-    添加上述代码片段后，`MainActivity.java` 应如下所示：
+    添加上面的代码段后，应`MainActivity.java`如下所示：
     
     ```Java
     package com.example.myapplication;
@@ -174,18 +174,18 @@ ms.locfileid: "77210032"
     }
     ```
 
-如果现在运行应用程序，应在图上看到一条线，如下所示：
+如果现在运行应用程序，您应该在地图上看到一条线，如下所示：
 
 <center>
 
-![Android 地图上呈现的线条](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
+![在 Android 地图上呈现的线条](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
 
 
-## <a name="add-a-polygon-to-the-map"></a>向地图添加多边形
+## <a name="add-a-polygon-to-the-map"></a>将多边形添加到地图
 
-利用**多边形层**，您可以将多边形的面积渲染到地图中。 按照以下步骤在地图上添加多边形。
+"**多边形图层**"使您能够将多边形区域渲染到贴图。 按照以下步骤在地图上添加多边形。
 
-1. 编辑**res > 布局 > activity_main** ，使其看起来像下面这样：
+1. **>activity_main.xml 编辑>布局**，以便它看起来像下面的布局：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -208,7 +208,7 @@ ms.locfileid: "77210032"
     </FrameLayout>
     ```
 
-2. 将以下代码片段复制到 `MainActivity.java` 类的**onCreate （）** 方法。
+2. 将以下代码段复制到类`MainActivity.java`的**onCreate（）** 方法中。
 
     ```Java
     mapControl.onReady(map -> {
@@ -238,9 +238,9 @@ ms.locfileid: "77210032"
     });
     ```
 
-    上面的代码段首先使用**onReady （）** 回调方法获取 Azure Maps 映射控件实例。 然后，它使用**DataSource**类创建数据源对象并将其添加到地图中。 然后，将从**点**对象的列表创建**多边形**对象并将其添加到数据源。 **多边形层**将在地图上的数据源中呈现数据。 然后，它创建一个多边形层，用于呈现多边形区域并向其中添加数据源。 **线条层**用于呈现在数据源中换行的行对象。 代码段的最后一部分将创建一个线条层，用于呈现多边形的轮廓并向其添加数据源。
+    上面的代码段首先使用**onReady（）** 回调方法获取 Azure 地图映射控件实例。 然后，它使用**DataSource**类创建数据源对象并将其添加到地图中。 然后，从**Point**对象列表中创建**多边形**对象，并将其添加到数据源中。 **多边形图层**呈现在地图上的数据源中包装的数据。 然后，它创建一个多边形图层以渲染多边形区域，并将数据源添加到其中。 **线图层**呈现在数据源中包裹的行对象。 代码段的最后一部分创建一个线图层以呈现多边形的轮廓，并将数据源添加到其中。
 
-    添加上述代码片段后，`MainActivity.java` 应如下所示：
+    添加上面的代码段后，应`MainActivity.java`如下所示：
 
     ```Java
     package com.example.myapplication;
@@ -346,19 +346,19 @@ ms.locfileid: "77210032"
     }
     ```
 
-如果现在运行应用程序，应在地图上看到一个多边形，如下所示：
+如果现在运行应用程序，您应该在地图上看到一个多边形，如下所示：
 
 <center>
 
-![在 Android 地图上呈现的多边形](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
+![在 Android 地图上渲染的多边形](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
 
 
 ## <a name="next-steps"></a>后续步骤
 
-将更多数据添加到地图：
+要向地图添加更多数据，请进行：
 
 > [!div class="nextstepaction"]
-> [添加符号层](how-to-add-symbol-to-android-map.md)
+> [添加符号图层](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [添加图块层](how-to-add-tile-layer-android-map.md)

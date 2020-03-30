@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 4cd8d0901ce23fb227bb6919dee18f5aa3d063ed
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77089034"
 ---
 使用文本分析 API 的版本 3 可以选择数据的最新模型版本。 使用可选参数 `model-version` 选择请求所需的模型版本。 如果未指定此参数，API 会默认为 `latest`（最新的稳定版）。 尽管可以在任何请求中使用最新的模型版本，但在每个版本中只更新了某些功能。 下表说明了在每个模型版本中更新了哪些功能：
