@@ -2,14 +2,14 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: 4fb30abc2b8be6b81414631addce41c819eb8df6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 202b3dc5df75af4c9075b3962fcf6e86833ecdfa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927003"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477283"
 ---
 > [!IMPORTANT]
-> 您应仅使用您创建的或从受信任的源获取的模型。 你应将序列化模型视为代码，因为安全漏洞已被多种常用格式发现。 此外，模型可能是特意训练的，旨在提供有偏差或不准确的输出。
+> 应仅使用自己创建的或从受信任源获得的模型。 应将序列化模型视为代码，因为在许多常用格式中都发现了安全漏洞。 此外，可能有人恶意将模型训练为提供有偏差或不准确的输出。

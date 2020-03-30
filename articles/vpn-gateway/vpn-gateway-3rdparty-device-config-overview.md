@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
 ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279398"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>合作伙伴 VPN 设备配置概述
@@ -22,7 +22,7 @@ ms.locfileid: "79279398"
 ## <a name="device-requirements"></a>设备要求
 Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) VPN 隧道。 若要获取 Azure VPN 网关的 IPsec/IKE 参数和加密算法列表，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。 还可以根据[关于加密要求](vpn-gateway-about-compliance-crypto.md)中所述，为特定的连接指定确切的算法与密钥长度。
 
-## <a name ="singletunnel"></a>单一 VPN 隧道
+## <a name="single-vpn-tunnel"></a><a name ="singletunnel"></a>单一 VPN 隧道
 示例中的首个配置由 Azure VPN 网关与本地 VPN 设备之间的单个 S2S VPN 隧道构成。 可选择性配置[跨 VPN 隧道的边界网关协议(BGP)](#bgp)。
 
 ![单一 S2S VPN 隧道图示](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
@@ -32,7 +32,7 @@ Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) V
 ### <a name="connection-parameters"></a>连接参数
 本部分列出了前几部分中示例中所用的参数。
 
-| **Parameter**                | **值**                    |
+| **参数**                | **价值**                    |
 | ---                          | ---                          |
 | 虚拟网络地址前缀        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN 网关 IP         | Azure VPN 网关 IP         |
@@ -111,18 +111,18 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False
 ```
 
-### <a name ="policybased"></a>（可选）结合“UsePolicyBasedTrafficSelectors”使用自定义 IPsec/IKE 策略
+### <a name="optional-use-custom-ipsecike-policy-with-usepolicybasedtrafficselectors"></a><a name ="policybased"></a>（可选）结合“UsePolicyBasedTrafficSelectors”使用自定义 IPsec/IKE 策略
 如果 VPN 设备不支持“任意到任意”流量选择器（例如基于路由或基于 VTI 的配置），请创建自定义 IPsec/IKE 策略并配置[“UsePolicyBasedTrafficSelectors”](vpn-gateway-connect-multiple-policybased-rm-ps.md)选项。
 
 > [!IMPORTANT]
-> 需创建 IPsec/IKE 策略，才能对连接启用“UsePolicyBasedTrafficSelectors”选项。
+> 需创建 IPsec/IKE 策略，才能对连接启用“UsePolicyBasedTrafficSelectors”选项****。
 
 
 示例脚本使用以下算法和参数创建 IPsec/IKE 策略：
 * IKEv2：AES256、SHA384、DHGroup24
 * IPsec：AES256、SHA1、PFS24、SA 生存期 7200 秒和 20480000KB (20GB)
 
-该脚本应用 IPsec/IKE 策略，并对连接启用“UsePolicyBasedTrafficSelectors”选项。
+该脚本应用 IPsec/IKE 策略，并对连接启用“UsePolicyBasedTrafficSelectors”选项****。
 
 ```powershell
 $ipsecpolicy5 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA1 -PfsGroup PFS24 -SALifeTimeSeconds 7200 -SADataSizeKilobytes 20480000
@@ -133,7 +133,7 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False -IpsecPolicies $ipsecpolicy5 -UsePolicyBasedTrafficSelectors $True
 ```
 
-### <a name ="bgp"></a>（可选）在 S2S VPN 连接中使用 BGP
+### <a name="optional-use-bgp-on-s2s-vpn-connection"></a><a name ="bgp"></a>（可选）在 S2S VPN 连接中使用 BGP
 创建 S2S VPN 连接时，可选择性地使用[用于 VPN 网关的 BGP](vpn-gateway-bgp-resource-manager-ps.md)。 这种方法有两点不同：
 
 * 本地地址前缀可以是单个主机地址。 本地 BGP 对等 IP 地址指定如下：
@@ -142,7 +142,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
     New-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
     ```
 
-* 在创建连接时，必须将“-EnableBGP”选项设置为 $True：
+* 在创建连接时，必须将“-EnableBGP”选项设置为 $True****：
 
     ```powershell
     New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True

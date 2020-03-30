@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: cb906f6b3cf333e3fb3a24a934e5d9f11fc10cda
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654471"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480872"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -39,7 +39,8 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 * 北欧
 * 西欧
 * 法国中部
-
+* 加拿大中部
+* 美国西部
 * 美国中西部
 * 美国中北部
 * 美国中南部
@@ -67,7 +68,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="install-and-configure-agents"></a>安装并配置代理 
 
-使用基本过程在[Connect Windows 计算机](../platform/agent-windows.md)上安装代理，以便 Azure Monitor 并[将 Operations Manager 连接到 Azure Monitor](../platform/om-agents.md)。
+使用[将 Windows 计算机连接到 Azure Monitor](../platform/agent-windows.md) 和[将 Operations Manager 连接到 Azure Monitor](../platform/om-agents.md) 中的基本过程安装代理。
 
 ### <a name="where-to-install-the-agents"></a>代理安装位置 
 
@@ -91,7 +92,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
     > 此脚本仅在本地配置 Windows 防火墙。 如果有网络防火墙，请确保该防火墙允许流量去往网络性能监视器使用的 TCP 端口。
 
     >[!NOTE]
-    > 不需要为服务连接监视器运行[EnableRules](https://aka.ms/npmpowershellscript ) PowerShell 脚本。
+    > 不需为服务连接性监视器运行 [EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell 脚本。
 
     
 
@@ -109,59 +110,59 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="configure-the-solution"></a>配置解决方案 
 
-1. 将网络性能监视器解决方案从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)添加到工作区。 你还可以使用[从解决方案库中添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程。 
-2. 打开 Log Analytics 工作区，然后选择“概览”磁贴。 
-3. 选择 "**网络性能监视器**" 磁贴，其中包含消息*解决方案需要其他配置*。
+1. 将网络性能监视器解决方案从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)添加到工作区。 也可以使用[从解决方案库中添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程。 
+2. 打开 Log Analytics 工作区，然后选择“概览”磁贴****。 
+3. 选择带有“解决方案需要进行额外配置”** 消息的“网络性能监视器”**** 磁贴。
 
    ![网络性能监视器磁贴](media/network-performance-monitor/npm-config.png)
 
-4. 在“安装”页的“常用设置”视图中，可以看到用于安装 Log Analytics 代理并配置代理监视功能的选项。 如上所述，如果安装并配置了 Log Analytics 代理，请选择“安装”视图来配置要使用的功能。 
+4. 在“安装”页的“常用设置”视图中，可以看到用于安装 Log Analytics 代理并配置代理监视功能的选项。******** 如上所述，如果安装并配置了 Log Analytics 代理，请选择“安装”视图来配置要使用的功能****。 
 
-   **性能监视器**：在“默认”性能监视器规则中选择用于综合事务的协议，然后选择“保存并继续”。 此协议选择仅适用于系统生成的默认规则。 每次显式创建性能监视器规则时，均需要选择协议。 始终可以转到“性能监视器”选项卡中的“默认”规则设置（这在完成第 0 天的配置后显示），在以后更改协议。 如果不需要性能监视器功能，则可在“性能监视器”选项卡的“默认”规则设置中禁用默认规则。
+   **性能监视器**：在“默认”性能监视器规则中选择用于综合事务的协议，然后选择“保存并继续”********。 此协议选择仅适用于系统生成的默认规则。 每次显式创建性能监视器规则时，均需要选择协议。 始终可以转到“性能监视器”选项卡中的“默认”规则设置（这在完成第 0 天的配置后显示），在以后更改协议********。 如果不需要性能监视器功能，则可在“性能监视器”选项卡的“默认”规则设置中禁用默认规则********。
 
    ![“性能监视器”视图](media/network-performance-monitor/npm-synthetic-transactions.png)
     
-   **服务连接性监视器**：此功能提供内置的预配置测试，用于监视代理到 Office 365 和 Dynamics 365 的网络连接。 通过选中 Office 365 和 Dynamics 365 服务旁边的复选框，选择需要监视的服务。 要选择要从其进行监视的代理，请选择“添加代理”。 如果不希望使用此功能，或希望在以后进行设置，请不要做出任何选择，而是选择“保存并继续”。
+   **服务连接性监视器**：此功能提供内置的预配置测试，用于监视代理到 Office 365 和 Dynamics 365 的网络连接。 通过选中 Office 365 和 Dynamics 365 服务旁边的复选框，选择需要监视的服务。 要选择要从其进行监视的代理，请选择“添加代理”****。 如果不希望使用此功能，或希望在以后进行设置，请不要做出任何选择，而是选择“保存并继续”****。
 
-   ![服务连接监视器视图](media/network-performance-monitor/npm-service-endpoint-monitor.png)
+   ![“服务连接监视器”视图](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
-   **ExpressRoute 监视器**：选择“立即发现”，以便发现所有已连接到 Azure 订阅（通过此 Log Analytics 工作区进行链接）中的虚拟网络的 ExpressRoute 专用对等互连。 
+   **ExpressRoute 监视器**：选择“立即发现”****，以便发现所有已连接到 Azure 订阅（通过此 Log Analytics 工作区进行链接）中的虚拟网络的 ExpressRoute 专用对等互连。 
 
    ![ExpressRoute 监视器”视图](media/network-performance-monitor/npm-express-route.png)
 
-   发现完成后，发现的线路和对等互连将在表中列出。 
+   完成发现操作以后，发现的线路和对等互连就会列在表中。 
 
    ![“网络性能监视器配置”页](media/network-performance-monitor/npm-private-peerings.png)
     
-此线路和对等互连的监视最初处于禁用状态。 选择要监视的每个资源，并从右侧的详细信息视图中配置对这些资源的监视。 选择“保存”以保存配置。 要了解详细信息，请参阅“配置 ExpressRoute 监视”一文。 
+针对这些线路和对等互连的监视功能一开始处于禁用状态。 选择要监视的每个资源，然后从右侧的详细信息视图中配置相应的监视功能。 选择“保存”**** 以保存配置。 要了解详细信息，请参阅“配置 ExpressRoute 监视”一文。 
 
-安装完成以后，数据的填充需要 30 分钟到 1 小时。 当解决方案正从网络聚合数据时，网络性能监视器“概览”磁贴中会显示“解决方案需要进行额外配置”消息。 收集数据并为其编制索引以后，“概览”磁贴会变化，并以摘要形式告知网络运行状况。 然后，你可以对安装了 Log Analytics 代理的节点以及从环境中发现的子网的监视进行编辑。
+安装完成以后，数据的填充需要 30 分钟到 1 小时。 当解决方案正从网络聚合数据时，网络性能监视器“概览”磁贴中会显示“解决方案需要进行额外配置”消息******。 收集数据并为其编制索引以后，“概览”磁贴会变化，并以摘要形式告知网络运行状况****。 然后，你可以对安装了 Log Analytics 代理的节点以及从环境中发现的子网的监视进行编辑。
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>编辑子网和节点的监视设置 
 
-"配置" 页上的 "**子网**" 选项卡上将列出至少安装了一个代理的所有子网。 
+配置页的“子网”选项卡中会列出至少安装了一个代理的所有子网。**** 
 
 
 启用或禁用对特定子网的监视：
 
-1. 选中或清除 **子网 ID** 旁的复选框。 然后，请确保根据情况选中或清除“用于监视”。 可以选择或清除多个子网。 禁用时，不会监视子网，但会更新代理以停止 ping 其他代理。 
-2. 在特定子网中选择要监视的节点。 从列表中选择子网，并在包含未监视节点的列表与包含已监视节点的列表之间移动所需节点。 你可以向子网添加自定义描述。
-3. 选择“保存”以保存配置。 
+1. 选中或清除 **子网 ID** 旁的复选框。 然后，请确保根据情况选中或清除“用于监视”。**** 可以选择或清除多个子网。 禁用时，不会监视子网，但会更新代理以停止 ping 其他代理。 
+2. 在特定子网中选择要监视的节点。 从列表中选择子网，并在包含未监视节点的列表与包含已监视节点的列表之间移动所需节点。 可以向子网添加自定义说明。
+3. 选择“保存”**** 以保存配置。 
 
 #### <a name="choose-nodes-to-monitor"></a>选择要监视的节点
 
-所有已安装代理的节点都会列在“节点”选项卡上。 
+所有已安装代理的节点都会列在“节点”**** 选项卡上。 
 
 1. 选择要监视的节点或清除要停止监视的节点。 
-2. 选中“用于监视”，或清除它（视情况而定）。 
-3. 选择“保存”。 
+2. 选中“用于监视”****，或清除它（视情况而定）。 
+3. 选择“保存”。**** 
 
 
 配置所需功能：
 
 - [性能监视器](network-performance-monitor-performance-monitor.md#configuration)
 - [服务连接监视器](network-performance-monitor-performance-monitor.md#configuration)
-- [ExpressRoute 监视器](network-performance-monitor-expressroute.md#configuration)
+- [快速路由监视器](network-performance-monitor-expressroute.md#configuration)
 
  
 
@@ -170,13 +171,13 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 下表显示了数据收集方法，以及有关如何为网络性能监视器收集数据的其他详细信息。
 
-| 平台 | 直接代理 | System Center Operations Manager 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
+| Platform | 直接代理 | System Center Operations Manager 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows | &#8226; | &#8226; |  |  |  |每隔 5 秒发送 TCP 握手/ICMP ECHO 消息，每隔 3 分钟发送数据 |
  
 
  
-解决方案使用综合事务来评估网络的运行状况。 在网络中各个点安装的 Log Analytics 代理会相互交换 TCP 数据包或 ICMP Echo。 代理是使用 TCP 数据包还是 ICMP Echo 取决于选择用于监视的协议。 在此过程中，代理将了解往返时间和丢包情况（如果有）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和丢包数字。 每隔五秒重复执行测试。 在将代理上传到 Azure Monitor 中的 Log Analytics 工作区之前，会将代理聚合大约三分钟的时间。
+解决方案使用综合事务来评估网络的运行状况。 在网络中各个点安装的 Log Analytics 代理会相互交换 TCP 数据包或 ICMP Echo。 代理是使用 TCP 数据包还是 ICMP Echo 取决于选择用于监视的协议。 在此过程中，代理将了解往返时间和丢包情况（如果有）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和丢包数字。 每隔五秒重复执行测试。 代理聚合数据三分钟，然后数据将上传到 Azure Monitor 中的 Log Analytics 工作区。
 
 
 
@@ -187,7 +188,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="network-performance-monitor-overview-tile"></a>网络性能监视器“概览”磁贴 
 
-在启用了网络性能监视器解决方案后，“概览”页中的解决方案磁贴会提供网络运行状况的快速概览。 
+在启用了网络性能监视器解决方案后，“概览”页中的解决方案磁贴会提供网络运行状况的快速概览****。 
 
  ![网络性能监视器“概览”磁贴](media/network-performance-monitor/npm-overview-tile.png)
 
@@ -195,11 +196,11 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 * **排名靠前的网络运行状况事件**：本页提供系统中最新运行状况事件和警报的列表以及事件发生后所经过的时间。 每当监视规则的所选指标（丢失、延迟、响应时间或带宽利用率）的值超出阈值时，就会生成运行状况事件或警报。 
 
-* **ExpressRoute 监视器**：本页提供解决方案监视的各个 ExpressRoute 对等互连连接的运行状况摘要。 “拓扑”磁贴显示在网络中受监视的通过 ExpressRoute 线路的网络路径数。 选择此磁贴转到“拓扑”视图。
+* **ExpressRoute 监视器**：本页提供解决方案监视的各个 ExpressRoute 对等互连连接的运行状况摘要。 “拓扑”磁贴显示在网络中受监视的通过 ExpressRoute 线路的网络路径数****。 选择此磁贴转到“拓扑”视图****。
 
-* **服务连接性监视器**：本页提供所创建的不同测试的运行状况摘要。 “拓扑”磁贴显示受监视的终结点数。 选择此磁贴转到“拓扑”视图。
+* **服务连接性监视器**：本页提供所创建的不同测试的运行状况摘要。 “拓扑”磁贴显示受监视的终结点数****。 选择此磁贴转到“拓扑”视图****。
 
-* **性能监视器**：本页提供解决方案监视的“网络”链接和“子网”链接的运行状况摘要。 “拓扑”磁贴显示在网络中受监视的网络路径数。 选择此磁贴转到“拓扑”视图。 
+* **性能监视器**：本页提供解决方案监视的“网络”链接和“子网”链接的运行状况摘要********。 “拓扑”磁贴显示在网络中受监视的网络路径数****。 选择此磁贴转到“拓扑”视图****。 
 
 * **常见查询**：本页包含一组用于直接提取网络监视原始数据的搜索查询。 可以基于这些查询创建用于生成自定义报表的查询。 
 
@@ -209,15 +210,15 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="drill-down-for-depth"></a>深入了解 
 
-可以选择解决方案仪表板中的各个链接来进一步了解任何感兴趣部分。 例如，看到警报或不正常的网络链接出现在仪表板上时，可选择它进一步进行调查。 会转到列出该特定网络链接的所有子网链接的页面。 可以看到每个子网链接的丢失、延迟和运行状况状态。 可以快速找到引发问题的子网链接。 选择 "**查看节点链接**" 以查看不正常的子网链接的所有节点链接。 然后，可以查看个别节点到节点链接，找到不正常的节点链接。 
+可以选择解决方案仪表板中的各个链接来进一步了解任何感兴趣部分。 例如，看到警报或不正常的网络链接出现在仪表板上时，可选择它进一步进行调查。 会转到列出该特定网络链接的所有子网链接的页面。 可以看到每个子网链接的丢失、延迟和运行状况状态。 可以快速找到引发问题的子网链接。 选择“查看节点链接”****，查看不正常的子网链接的所有节点链接。 然后，可以查看个别节点到节点链接，找到不正常的节点链接。 
 
-选择 "**查看拓扑**" 查看源节点和目标节点之间路由的逐跳拓扑。 不正常的路由显示为红色。 可以查看每个跃点导致的延迟，从而快速确定网络特定部分的问题。
+选择“查看拓扑”**** 查看源节点和目标节点之间路由的逐跳拓扑。 不正常的路由显示为红色。 可以查看每个跃点导致的延迟，从而快速确定网络特定部分的问题。
 
  
 
 ### <a name="network-state-recorder-control"></a>网络状态记录器控件
 
-每个视图显示特定时间点的网络运行状况快照。 默认会显示最新的状态。 页面顶部栏显示该状态所处的时间点。 要查看先前某时间的网络运行状况快照，请选择“操作”。 查看最新状态时，还可以启用或禁用任何页面的自动刷新。 
+每个视图显示特定时间点的网络运行状况快照。 默认会显示最新的状态。 页面顶部栏显示该状态所处的时间点。 要查看先前某时间的网络运行状况快照，请选择“操作”****。 查看最新状态时，还可以启用或禁用任何页面的自动刷新。 
 
  ![网络状态记录器](media/network-performance-monitor/network-state-recorder.png)
 
@@ -237,7 +238,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="topology-map"></a>拓扑图 
 
-网络性能监视器显示交互式拓扑图中源节点和目标节点之间路由的逐跳拓扑。 要查看拓扑图，请选择解决方案仪表板上的“拓扑”磁贴。 还可以选择向下钻取页面上的“查看拓扑”链接。 
+网络性能监视器显示交互式拓扑图中源节点和目标节点之间路由的逐跳拓扑。 要查看拓扑图，请选择解决方案仪表板上的“拓扑”磁贴****。 还可以选择向下钻取页面上的“查看拓扑”链接****。 
 
 拓扑图会显示源和目标之间存在多少个路由，以及数据包会采用哪条路径。 由每个网络跃点导致的延迟也是可见的。 所有总路径延迟高出阈值（在相应的监视规则中设置）的路径都显示为红色。 
 
@@ -251,7 +252,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ## <a name="log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询
 
-通过网络性能监视器的仪表板和向下钻取页面以图形方式公开的所有数据也可以在[日志查询](../log-query/log-query-overview.md)中以本机方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板中的 "**常见查询**" 区域包含一些有用的查询，你可以使用这些查询作为开始创建自己的查询和报表的起点。 
+通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在[日志查询](../log-query/log-query-overview.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板的“常见查询”**** 区域中有一些查询非常有用，可以基于这些查询创建自己的查询和报表。 
 
 ## <a name="alerts"></a>警报
 
@@ -260,18 +261,18 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 这意味着使用[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)管理所有通知。  
 
 如果你是通过 Log Analytics 创建警报的 NPM 用户： 
-1. 你将看到一个链接，它会将你重定向到 Azure 门户。 单击该链接以访问门户。
+1. 你将看到一个链接，该链接可将你重定向到 Azure 门户。 单击该链接以访问门户。
 2. 单击“网络性能监视器解决方案”磁贴。 
 3. 导航到“配置”。  
 4. 选择要针对其创建警报的测试，并按照下述步骤进行操作。
 
-如果你是 NPM 用户通过 Azure 门户创建警报：  
+如果你是通过 Azure 门户创建警报的 NPM 用户：  
 1. 可以选择直接输入电子邮件，也可以选择通过操作组创建警报。
 2. 如果选择直接输入电子邮件，则将创建名为 **NPM Email ActionGroup** 的操作组，并将电子邮件 ID 添加到该操作组。
 3. 如果选择使用操作组，则需要选择一个以前创建的操作组。 可以在[此处](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal)了解如何创建操作组。 
 4. 成功创建警报后，可以使用“管理警报”链接来管理警报。 
 
-每次创建警报时，NPM 会在 Azure Monitor 中创建基于查询的日志警报规则。 默认情况下，每隔5分钟触发一次该查询。 Azure Monitor 不会对创建的前 250 条日志警报规则收取费用，超过 250 条日志警报规则限制的任何警报规则都将按照 [Azure Monitor 定价页中的警报定价](https://azure.microsoft.com/pricing/details/monitor/)计费。
+每次创建警报时，NPM 会在 Azure Monitor 中创建基于查询的日志警报规则。 默认情况下，每隔 5 分钟就会触发此查询。 Azure Monitor 不会对创建的前 250 条日志警报规则收取费用，超过 250 条日志警报规则限制的任何警报规则都将按照 [Azure Monitor 定价页中的警报定价](https://azure.microsoft.com/pricing/details/monitor/)计费。
 通知将按照 [Azure Monitor 定价页中的通知定价](https://azure.microsoft.com/pricing/details/monitor/)单独收费。
 
 
@@ -283,7 +284,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 * **UserVoice**：可以发表有关希望我们开发的网络性能监视器功能的想法。 请访问 [UserVoice 页](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring)。 
 
-* **加入我们的队伍**：我们总是希望一直有新客户不断加入我们的队伍。 那样，能够在早期接触到新功能并有机会帮助我们改进网络性能监视器。 如果你有兴趣加入，请填写此[快速调查](https://aka.ms/npmcohort)。 
+* **加入我们的队伍**：我们总是希望一直有新客户不断加入我们的队伍。 那样，能够在早期接触到新功能并有机会帮助我们改进网络性能监视器。 如果有兴趣加入，请填写此[快速调查](https://aka.ms/npmcohort)。 
 
 ## <a name="next-steps"></a>后续步骤 
 详细了解[性能监视器](network-performance-monitor-performance-monitor.md)、[服务连接性监视器](network-performance-monitor-performance-monitor.md)和 [ExpressRoute 监视器](network-performance-monitor-expressroute.md)。 

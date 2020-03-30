@@ -1,19 +1,18 @@
 ---
-title: 从适用于 Azure Marketplace 的 Vhd 部署 VM
+title: 从 VHD 为 Azure 应用商店部署 VM
 description: 介绍如何从 Azure 部署的 VHD 注册 VM。
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: evansma
-ms.openlocfilehash: 797c258c963d0daec32a8f9ac7c4e0665dc465d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 5263d24c411ef8de4187c2fd750013374d779f04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813410"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277933"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>从 VHD 部署 VM
 
@@ -24,7 +23,7 @@ ms.locfileid: "73813410"
 若要详细了解 VM 映像，请参阅以下博客文章：
 
 - [VM 映像](https://azure.microsoft.com/blog/vm-image-blog-post/)
-- [VM Image PowerShell 'How To'](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)（VM 映像 PowerShell 操作方法）
+- [VM 映像电源外壳"如何"](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -32,7 +31,7 @@ ms.locfileid: "73813410"
 
 遵照以下说明安装 Azure PowerShell 和 Azure CLI（如果尚未这样做）：
 
-- [安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
+- [安装 Azure 电源外壳](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 - [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
@@ -46,24 +45,24 @@ ms.locfileid: "73813410"
 
 部署 VM 后，即可[认证 VM 映像](./cpp-certify-vm.md)。
 
-1. 单击“新建”并搜索“模板部署”，然后选择“在编辑器中生成自己的模板”。  <br/>
+1. 单击“新建”并搜索“模板部署”，然后选择“在编辑器中生成自己的模板”。************  <br/>
    ![在 Azure 门户中生成 VHD 部署模板](./media/publishvm_021.png)
 
-1. 复制此 [JSON 模板](./cpp-deploy-json-template.md)并将其粘贴到编辑器中，然后单击“保存”。 <br/>
+1. 复制此 [JSON 模板](./cpp-deploy-json-template.md)并将其粘贴到编辑器中，然后单击“保存”。**** <br/>
    ![在 Azure 门户中保存 VHD 部署模板](./media/publishvm_022.png)
 
-1. 提供显示的“自定义部署”属性页的参数值。
+1. 提供显示的“自定义部署”属性页的参数值。****
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
-   |  **Parameter**              |   **说明**                                                            |
+   |  **参数**              |   **说明**                                                            |
    |  -------------              |   ---------------                                                            |
    | 用户存储帐户名称   | 通用化 VHD 所在的存储帐户名称                    |
    | 用户存储容器名称 | 通用化 VHD 所在的容器名称                          |
-   | 公共 IP 的 DNS 名称      | 公共 IP DNS 名称。 DNS 名称为 VM，一旦部署该产品/服务，你将在 Azure 门户中定义此名称。  |
+   | 公共 IP 的 DNS 名称      | 公共 IP DNS 名称。 DNS 名称是 VM 的，在部署产品/服务后，您将在 Azure 门户中定义此名称。  |
    | 管理员用户名             | 新 VM 的管理员帐户的用户名                                  |
    | 管理员密码              | 新 VM 的管理员帐户的密码                                  |
-   | OS 类型                     | VM 操作系统：`Windows` \| `Linux`                                    |
+   | 操作系统类型                     | VM 操作系统： `Windows` \|`Linux`                                    |
    | 订阅 ID             | 所选订阅的标识符                                      |
    | 位置                    | 部署的地理位置                                        |
    | VM 大小                     | [Azure VM 大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)，例如 `Standard_A2` |
@@ -74,9 +73,9 @@ ms.locfileid: "73813410"
    | VHD URL                     | 完整的 OS 磁盘 VHD URL                                                     |
    |  |  |
             
-1. 提供这些值后，单击“购买”。 
+1. 提供这些值后，单击“购买”。**** 
 
-Azure 将开始部署：使用指定的非托管 VHD 在指定的存储帐户路径中创建新 VM。  可以单击 Azure 门户左侧的“虚拟机”，在门户中跟踪进度。  创建 VM 后，状态将从 `Starting` 更改为 `Running`。 
+Azure 将开始部署：使用指定的非托管 VHD 在指定的存储帐户路径中创建新 VM。  可以单击 Azure 门户左侧的“虚拟机”，在门户中跟踪进度。****  创建 VM 后，状态将从 `Starting` 更改为 `Running`。 
 
 
 ### <a name="deploy-a-vm-from-powershell"></a>从 PowerShell 部署 VM

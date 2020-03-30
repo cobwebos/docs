@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
 ms.openlocfilehash: 55dc7f73a3e5bbff2e6e331ba0bd7d4088a86536
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110828"
 ---
-# <a name="get-started-with-device-twins-nodejs"></a>设备孪生入门（node.js）
+# <a name="get-started-with-device-twins-nodejs"></a>设备孪生入门 (Node.js)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
@@ -23,21 +23,21 @@ ms.locfileid: "77110828"
 
 * **AddTagsAndQuery.js**（Node.js 后端应用），用于添加标记和查询设备孪生。
 
-* TwinSimulatedDevice.js（Node.js 应用），用于模拟使用早先创建的设备标识连接到 IoT 中心的设备，并报告其连接状况。
+* **Twin模拟设备.js**，Node.js 应用程序，它模拟使用较早创建的设备标识连接到 IoT 中心的设备，并报告其连接条件。
 
 > [!NOTE]
-> [Azure IoT SDK](iot-hub-devguide-sdks.md) 一文介绍了可用于构建设备和后端应用的 Azure IoT SDK。
+> [Azure IoT SDK](iot-hub-devguide-sdks.md) 文章介绍了可用于构建设备和后端应用的 Azure IoT SDK。
 >
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，你需要：
+要完成本教程，需要：
 
-* Node.js 版本 10.0. x 或更高版本。
+* Node.js 版本 10.0.x 或更高版本。
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
-* 请确保已在防火墙中打开端口8883。 本文中的设备示例使用了 MQTT 协议，该协议通过端口8883进行通信。 此端口可能在某些企业和教育网络环境中被阻止。 有关此问题的详细信息和解决方法，请参阅[连接到 IoT 中心（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -71,7 +71,7 @@ ms.locfileid: "77110828"
 
 3. 使用文本编辑器，在 **addtagsandqueryapp** 文件夹中创建一个新的 **AddTagsAndQuery.js** 文件。
 
-4. 将以下代码添加到**AddTagsAndQuery**文件。 将 `{iot hub connection string}` 替换为在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。
+4. 将以下代码添加到 **AddTagsAndQuery.js** 文件。 将 `{iot hub connection string}` 替换为在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。
 
    ``` javascript
         'use strict';
@@ -106,7 +106,7 @@ ms.locfileid: "77110828"
 
     **Registry** 对象公开从该服务与设备孪生交互所需的所有方法。 前面的代码首先初始化 **Registry** 对象，并检索 **myDeviceId** 的设备孪生，最后使用所需位置信息更新其标记。
 
-    更新标记后，它将调用 queryTwins 函数。
+    更新标记后，它将调用 queryTwins 函数****。
 
 5. 在 **AddTagsAndQuery.js** 末尾添加以下代码以实现 **queryTwins** 函数：
 
@@ -134,7 +134,7 @@ ms.locfileid: "77110828"
 
     上面的代码执行两个查询：第一个仅选择位于 **Redmond43** 工厂的设备孪生，第二个将查询细化为仅选择还要通过蜂窝网络连接的设备。
 
-    当代码创建**查询**对象时，它将指定第二个参数中返回的最大文档数。 **query** 对象包含 **hasMoreResults** 布尔值属性，可以使用它多次调用 **nextAsTwin** 方法来检索所有结果。 名为**next**的方法可用于非设备孪生的结果（例如聚合查询的结果）。
+    代码创建 **query** 对象时，它在第二个参数中指定返回的最大文档数。 **query** 对象包含 **hasMoreResults** 布尔值属性，可以使用它多次调用 **nextAsTwin** 方法来检索所有结果。 名为 **next** 的方法可用于非设备孪生结果（例如聚合查询的结果）。
 
 6. 使用以下方法运行应用程序：
 
@@ -158,7 +158,7 @@ ms.locfileid: "77110828"
     npm init --yes
     ```
 
-2. 在命令提示符下，在**reportconnectivity**文件夹中运行以下命令，安装**azure iot-设备**和**mqtt**包：
+2. 在 **reportconnectivity** 文件夹中的命令提示符处，运行以下命令以安装 **azure-iot-device** 包和 **azure-iot-device-mqtt** 包：
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
@@ -166,7 +166,7 @@ ms.locfileid: "77110828"
 
 3. 使用文本编辑器，在 **reportconnectivity** 文件夹中创建一个新的 **ReportConnectivity.js** 文件。
 
-4. 将以下代码添加到**ReportConnectivity**文件。 将 `{device connection string}` 替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中创建**myDeviceId**设备标识时复制的设备连接字符串。
+4. 将以下代码添加到 **ReportConnectivity.js** 文件。 将 `{device connection string}` 替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中创建 **myDeviceId** 设备标识时复制的设备连接字符串。
 
     ```javascript
         'use strict';
@@ -232,8 +232,8 @@ ms.locfileid: "77110828"
 
 使用下列资源了解如何执行以下操作：
 
-* 通过[IoT 中心入门](quickstart-send-telemetry-node.md)教程中的设备发送遥测数据
+* 使用[IoT 中心](quickstart-send-telemetry-node.md)教程从设备发送遥测数据，
 
 * 按照[使用所需属性配置设备](tutorial-device-twins.md)教程使用设备孪生的所需属性配置设备，
 
-* 通过[使用直接方法](quickstart-control-device-node.md)教程，以交互方式控制设备（例如从用户控制的应用打开风扇）。
+* 使用["使用直接方法"](quickstart-control-device-node.md)教程，以交互方式控制设备（例如从用户控制的应用程序打开风扇）。

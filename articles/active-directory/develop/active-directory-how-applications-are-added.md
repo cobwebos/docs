@@ -15,10 +15,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.openlocfilehash: d47ed3a4cd4fbdcb69b956d3c8418f70a71cf44f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263135"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
@@ -30,7 +30,7 @@ Azure AD 中的应用程序有两种表示形式：
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>什么是应用程序对象，它们来自何处？
 
-用户可以在 Azure 门户中通过[应用程序注册](app-objects-and-service-principals.md#application-object)体验来管理[应用程序对象](https://aka.ms/appregistrations)。 应用程序对象描述 Azure AD 中的应用程序，可将其视为应用程序的定义，使服务能够知道如何根据应用程序的设置，向该应用程序颁发令牌。 应用程序对象只在其主目录中存在，即使它是支持其他目录中服务主体的多租户应用程序也是如此。 应用程序对象可以包括以下任何项（以及此处未提到的其他信息）：
+用户可以在 Azure 门户中通过[应用程序注册](https://aka.ms/appregistrations)体验来管理[应用程序对象](app-objects-and-service-principals.md#application-object)。 应用程序对象描述 Azure AD 中的应用程序，可将其视为应用程序的定义，使服务能够知道如何根据应用程序的设置，向该应用程序颁发令牌。 应用程序对象只在其主目录中存在，即使它是支持其他目录中服务主体的多租户应用程序也是如此。 应用程序对象可以包括以下任何项（以及此处未提到的其他信息）：
 
 * 名称、徽标和发布者
 * 重定向 URI
@@ -47,12 +47,12 @@ Azure AD 中的应用程序有两种表示形式：
 * Azure 门户中的应用程序注册
 * 使用 Visual Studio 创建新应用程序，并将其配置为使用 Azure AD 身份验证
 * 当管理员从应用库添加应用程序时（这也会创建服务主体）
-* 使用 Microsoft Graph API 或 PowerShell 来创建新应用程序
+* 使用 Microsoft Graph API 或 PowerShell 创建新应用程序
 * 其他许多途径，包括 Azure 中的各种开发人员体验，以及开发人员中心的 API 资源管理器体验
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>什么是服务主体，它们来自何处？
 
-用户可以在 Azure 门户中通过[企业应用程序](app-objects-and-service-principals.md#service-principal-object)体验来管理[服务主体](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)。 服务主体是控制与 Azure AD 相连接的应用程序的对象，可视为目录中应用程序的实例。 任意给定应用程序最多只能有一个应用程序对象（在“home”目录中注册），此外，可以有一个或多个服务主体对象，这些对象表示运行该应用程序的每个目录中的应用程序实例。 
+用户可以在 Azure 门户中通过[企业应用程序](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)体验来管理[服务主体](app-objects-and-service-principals.md#service-principal-object)。 服务主体是控制与 Azure AD 相连接的应用程序的对象，可视为目录中应用程序的实例。 任意给定应用程序最多只能有一个应用程序对象（在“home”目录中注册），此外，可以有一个或多个服务主体对象，这些对象表示运行该应用程序的每个目录中的应用程序实例。 
 
 服务主体可以包括：
 
@@ -60,7 +60,7 @@ Azure AD 中的应用程序有两种表示形式：
 * 本地用户和组应用程序角色分配的记录
 * 授予应用程序的本地用户和管理员权限的记录
   * 例如：应用程序访问特定用户电子邮件的权限
-* 本地策略的记录，包括条件性访问策略
+* 本地策略（包括条件访问策略）的记录
 * 应用程序的备用本地设置的记录
   * 声明转换规则
   * 属性映射（用户设置）
@@ -77,13 +77,13 @@ Azure AD 中的应用程序有两种表示形式：
 * 当管理员从应用库添加应用程序时（这也会创建基础应用对象）
 * 添加一个应用程序以使用 [Azure AD 应用程序代理](/azure/active-directory/manage-apps/application-proxy)
 * 连接应用程序，以使用 SAML 或密码单一登录 (SSO) 进行单一登录
-* 通过 Microsoft Graph API 或 PowerShell 以编程方式
+* 通过 Microsoft 图形 API 或 PowerShell 以编程方式
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>如何将应用程序对象与服务主体彼此相关？
 
 应用程序的主目录中包含一个应用程序对象，该对象由运行该应用程序的每个目录（包括该应用程序的主目录）中的一个或多个服务主体引用。
 
-![显示应用程序对象与服务主体之间的关系][apps_service_principals_directory]
+![显示应用对象与服务主体之间的关系][apps_service_principals_directory]
 
 在上面的关系图中，Microsoft 在内部维护两个用于发布应用程序的目录（左侧显示）：
 
@@ -100,13 +100,13 @@ Azure AD 中的应用程序有两种表示形式：
 
 ### <a name="notes-and-exceptions"></a>备注和例外情况
 
-* 并非所有服务主体都会往后指向应用程序对象。 最初生成 Azure AD 时，提供给应用程序的服务存在更多的限制，使用服务主体便足以建立应用程序标识。 原始服务主体在形式上更接近于 Windows Server Active Directory 服务帐户。 出于此原因，仍可以通过不同的途径创建服务主体（例如使用 Azure AD PowerShell），而无需首先创建应用程序对象。 Microsoft Graph API 在创建服务主体之前需要一个应用程序对象。
+* 并非所有服务主体都会往后指向应用程序对象。 最初生成 Azure AD 时，提供给应用程序的服务存在更多的限制，使用服务主体便足以建立应用程序标识。 原始服务主体在形式上更接近于 Windows Server Active Directory 服务帐户。 出于此原因，仍可以通过不同的途径创建服务主体（例如使用 Azure AD PowerShell），而无需首先创建应用程序对象。 在创建服务主体之前，Microsoft 图形 API 需要应用程序对象。
 * 上述信息当前并非全部都是以编程方式公开的。 只能在 UI 中使用以下功能：
   * 声明转换规则
   * 属性映射（用户设置）
-* 有关服务主体和应用程序对象的详细信息，请参阅 Microsoft Graph API 参考文档：
+* 有关服务主体和应用程序对象的详细信息，请参阅 Microsoft 图形 API 参考文档：
   * [应用程序](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
-  * [Service Principal](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [服务主体](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>应用程序为何要与 Azure AD 集成？
 

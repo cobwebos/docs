@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: 5f492dd2bd270d3f067c05c1dc2235d54e481847
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: d4bbd5560681aa73709019e87c6c22470a64ad78
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274878"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481732"
 ---
 # <a name="deprecated-deploy-docker-ce-cluster"></a>（已弃用）部署 Docker CE 群集
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-在本快速入门中，将使用 Azure CLI 部署 Docker CE 群集。 然后，在群集上部署和运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。
+在此快速入门中，使用 Azure CLI 部署 Docker CE 群集。 然后，在群集上部署和运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。
 
-Azure 容器服务上的 Docker CE 为预览版，不应用于生产工作负荷。
+Azure 容器服务上的 Docker CE 为预览版，不应用于生产工作负荷****。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -30,7 +30,7 @@ Azure 容器服务上的 Docker CE 为预览版，不应用于生产工作负荷
 
 使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。
 
-以下示例在 westus2 位置创建名为 myResourceGroup 的资源组。
+以下示例在 westus2 位置创建名为 myResourceGroup 的资源组。****
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus2
@@ -53,9 +53,9 @@ az group create --name myResourceGroup --location westus2
 
 ## <a name="create-docker-swarm-cluster"></a>创建 Docker Swarm 群集
 
-使用 [az acs create](/cli/azure/acs#az-acs-create) 命令在 Azure 容器服务中创建 Docker CE 群集。 有关 Docker CE 区域可用性的信息，请访问 [Docker CE 的 ACS 区域](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
+使用 [az acs create](/cli/azure/acs#az-acs-create) 命令在 Azure 容器服务中创建 Docker CE 群集。 有关 Docker CE 的区域可用性的信息，请参阅[Docker CE 的 ACS 区域](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
 
-以下示例创建名为 mySwarmCluster 的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
+以下示例创建名为 mySwarmCluster** 的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
 
 ```azurecli-interactive
 az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-group myResourceGroup --generate-ssh-keys
@@ -67,16 +67,15 @@ az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-grou
 
 ## <a name="connect-to-the-cluster"></a>连接到群集
 
-本快速入门自始至终都需要 Docker Swarm 主池和代理池的 FQDN。 运行以下命令即可返回主 FQDN 和代理 FQDN。
+在整个快速入门过程中，您需要 Docker Swarm 主控形状和 Docker 代理池的 FQDN。 运行以下命令即可返回主 FQDN 和代理 FQDN。
 
-
-```bash
+```azurecli
 az acs list --resource-group myResourceGroup --query '[*].{Master:masterProfile.fqdn,Agent:agentPoolProfiles[0].fqdn}' -o table
 ```
 
 输出：
 
-```bash
+```output
 Master                                                               Agent
 -------------------------------------------------------------------  --------------------------------------------------------------------
 myswarmcluster-myresourcegroup-d5b9d4mgmt.ukwest.cloudapp.azure.com  myswarmcluster-myresourcegroup-d5b9d4agent.ukwest.cloudapp.azure.com
@@ -125,7 +124,7 @@ docker stack deploy azure-vote --compose-file azure-vote.yaml
 
 输出：
 
-```bash
+```output
 Creating network azure-vote_default
 Creating service azure-vote_azure-vote-back
 Creating service azure-vote_azure-vote-front
@@ -139,7 +138,7 @@ docker stack ps azure-vote
 
 如果每个服务的 `CURRENT STATE` 为 `Running`，则说明应用程序已就绪。
 
-```bash
+```output
 ID                  NAME                            IMAGE                                 NODE                               DESIRED STATE       CURRENT STATE                ERROR               PORTS
 tnklkv3ogu3i        azure-vote_azure-vote-front.1   microsoft/azure-vote-front:v1   swarmm-agentpool0-66066781000004   Running             Running 5 seconds ago                            
 lg99i4hy68r9        azure-vote_azure-vote-back.1    redis:latest                          swarmm-agentpool0-66066781000002   Running             Running about a minute ago
@@ -160,13 +159,13 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="get-the-code"></a>获取代码
 
-本快速入门使用了预先创建的容器映像来创建 Docker 服务。 GitHub 上提供了相关的应用程序代码、Dockerfile 和 Compose 文件。
+在此快速入门中，预先创建的容器映像已用于创建 Docker 服务。 GitHub 上提供了相关的应用程序代码、Dockerfile 和 Compose 文件。
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你部署了 Docker Swarm 群集，并向该群集部署了多容器应用程序。
+在此快速入门中，您部署了 Docker Swarm 群集，并为此部署了多容器应用程序。
 
 若要了解如何将 Docker Swarm 与 Azure DevOps 集成，请继续学习“将 CI/CD 与 Docker Swarm 和 Azure DevOps 配合使用”。
 

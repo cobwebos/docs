@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
 ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272300"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>管理 HDInsight 群集的日志
@@ -35,14 +35,14 @@ HDInsight 日志管理的典型步骤如下：
 
 ### <a name="cluster-details"></a>群集详细信息
 
-以下群集详细信息可以帮助收集日志管理策略中的信息。 从在特定 Azure 帐户中创建的所有 HDInsight 群集收集此信息。
+以下群集详细信息可以帮助收集日志管理策略中的信息。 从在特定 Azure 帐户中创建的所有 HDInsight 群集中收集此信息。
 
 * 群集名称
 * 群集区域和 Azure 可用性区域
 * 群集状态，包括上次状态更改的详细信息
 * 为主节点、核心节点和任务节点指定的 HDInsight 实例的类型和数量
 
-可以使用 Azure 门户获取其中的大多数顶级信息。  或者，你可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)获取有关 HDInsight 群集的信息：
+可以使用 Azure 门户获取其中的大多数顶级信息。  或者，可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 获取有关 HDInsight 群集的信息：
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>
@@ -67,31 +67,31 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 
 * 考虑如何从一个或多个群集收集日志并为其创建排序规则，以进行审核、监视、规划和警报等活动。 可能使用自定义解决方案定期访问和下载日志文件，然后对其进行合并和分析，以提供仪表板视图。 还可以添加其他功能用于发出安全警报或执行故障检测。 可以使用 PowerShell、HDInsight SDK 或可以访问 Azure 经典部署模型的代码生成这些实用工具。
 
-* 考虑监视解决方案或服务是否能够带来好处。 Microsoft System Center 提供了 [HDInsight 管理包](https://www.microsoft.com/download/details.aspx?id=42521)。 可以使用 Apache Chukwa 和 Ganglia 等第三方工具收集和集中处理日志。 许多公司提供用于监视基于 Hadoop 的大数据解决方案的服务，例如： Centerity、Compuware APM、Sematext SPM 和 Zettaset Orchestrator。
+* 考虑监视解决方案或服务是否能够带来好处。 Microsoft System Center 提供了 [HDInsight 管理包](https://www.microsoft.com/download/details.aspx?id=42521)。 可以使用 Apache Chukwa 和 Ganglia 等第三方工具收集和集中处理日志。 许多公司提供服务来监控基于 Hadoop 的大数据解决方案，例如：中心、Compuware APM、信号文本 SPM 和 Zettaset 协调器。
 
-## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>步骤2：管理群集服务版本和查看日志
+## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>第 2 步：管理群集服务版本和查看日志
 
 典型的 HDInsight 群集使用多个服务和开源软件包（例如 Apache HBase、Apache Spark 等）。 对于某些工作负荷（例如生物信息学应用），除了作业执行日志以外，可能还需要保留服务配置日志历史记录。
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>使用 Ambari UI 查看群集配置设置
 
-Apache Ambari 提供 Web UI 和 REST API 来简化 HDInsight 群集的管理、配置和监视。 基于 Linux 的 HDInsight 群集上已随附 Ambari。 在 Azure 门户 HDInsight "页上选择"**群集仪表板**"窗格，打开"**群集仪表板**"链接页。  接下来，选择“HDInsight 群集仪表板”窗格打开 Ambari UI。  系统会提示输入群集登录凭据。
+Apache Ambari 提供 Web UI 和 REST API 来简化 HDInsight 群集的管理、配置和监视。 基于 Linux 的 HDInsight 群集上已随附 Ambari。 在 Azure 门户的“HDInsight”页上选择“群集仪表板”窗格，打开“群集仪表板”链接页。********  接下来，选择“HDInsight 群集仪表板”窗格打开 Ambari UI。****  系统会提示您输入群集登录凭据。
 
-若要打开服务视图列表，请在 Azure 门户页上选择 HDInsight 对应的“Ambari 视图”窗格。  此列表的内容根据安装的库而异。  例如，可能会显示“YARN 队列管理器”、“Hive 视图”和“Tez 视图”。  选择任一服务链接以查看配置和服务信息。  Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务版本历史记录的信息。 若要导航到 Ambari UI 的此部分，请选择“管理”菜单，然后选择“堆栈和版本”。  选择“版本”选项卡查看服务版本信息。
+若要打开服务视图列表，请在 Azure 门户页上选择 HDInsight 对应的“Ambari 视图”窗格。****  此列表的内容根据安装的库而异。  例如，可能会显示“YARN 队列管理器”、“Hive 视图”和“Tez 视图”。  选择任一服务链接以查看配置和服务信息。  Ambari UI 中的“堆栈和版本”页提供有关群集服务配置和服务版本历史记录的信息。**** 若要导航到 Ambari UI 的此部分，请选择“管理”菜单，然后选择“堆栈和版本”。********  选择“版本”选项卡查看服务版本信息。****
 
-![Apache Ambari 管理堆栈和版本](./media/hdinsight-log-management/ambari-stack-versions.png)
+![阿帕奇安巴里管理堆栈和版本](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-使用 Ambari UI 可以下载群集中特定主机（或节点）上运行的任一（或所有）服务的配置。  选择“主机”菜单，然后选择所需主机的链接。 在该主机的页面上，依次选择“主机操作”按钮和“下载客户端配置”。
+使用 Ambari UI 可以下载群集中特定主机（或节点）上运行的任一（或所有）服务的配置。  选择“主机”菜单，然后选择所需主机的链接。**** 在该主机的页面上，依次选择“主机操作”按钮和“下载客户端配置”。********
 
-![Apache Ambari 下载主机客户端配置](./media/hdinsight-log-management/download-client-configs.png)
+![阿帕奇·安巴里下载主机客户端配置](./media/hdinsight-log-management/download-client-configs.png)
 
 ### <a name="view-the-script-action-logs"></a>查看脚本操作日志
 
-使用 HDInsight [脚本操作](hdinsight-hadoop-customize-cluster-linux.md)可以手动或者根据指定在群集上运行脚本。 例如，可以使用脚本操作在群集上安装其他软件，或者更改配置设置的默认值。 在脚本操作日志中可以深入了解设置群集过程中发生的错误，以及可能影响群集性能和可用性的配置设置更改。  若要查看脚本操作的状态，请在 Ambari UI 中选择“操作”按钮，或访问默认存储帐户中的状态日志。 存储日志位于 `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`。
+使用 HDInsight [脚本操作](hdinsight-hadoop-customize-cluster-linux.md)可以手动或者根据指定在群集上运行脚本。 例如，可以使用脚本操作在群集上安装其他软件，或者更改配置设置的默认值。 在脚本操作日志中可以深入了解设置群集过程中发生的错误，以及可能影响群集性能和可用性的配置设置更改。  若要查看脚本操作的状态，请在 Ambari UI 中选择“操作”按钮，或访问默认存储帐户中的状态日志。**** 存储日志位于 `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`。
 
 ### <a name="view-ambari-alerts-status-logs"></a>查看 Ambari 警报状态日志
 
-Apache Ambari 将警报状态更改写入 `ambari-alerts.log`。 完整路径是 `/var/log/ambari-server/ambari-alerts.log`。 若要启用日志调试，请在 "`# Log alert state changes`" 下的 "`/etc/ambari-server/conf/log4j.properties.` 更改" 项下更改属性：
+阿帕奇·安巴里将警报`ambari-alerts.log`状态更改写入 。 完整路径为`/var/log/ambari-server/ambari-alerts.log`。 要启用日志的调试，请更改"更改"`/etc/ambari-server/conf/log4j.properties.`中的属性，然后`# Log alert state changes`从 以下项下输入：
 
 ```
 log4j.logger.alerts=INFO,alerts
@@ -103,15 +103,15 @@ log4j.logger.alerts=DEBUG,alerts
 
 ## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>步骤 3：管理群集作业执行日志文件
 
-下一步是查看各种服务的作业执行日志文件。  服务可能包括 Apache HBase、Apache Spark 等等。 Hadoop 群集会生成大量的详细日志，因此确定哪些日志有用（而不是哪些）可能会很耗时。  了解日志记录系统对于有针对性的日志文件管理非常重要。  下图是一个示例日志文件。
+下一步是查看各种服务的作业执行日志文件。  服务可能包括 Apache HBase、Apache Spark 等等。 Hadoop 群集生成大量详细日志，因此确定哪些日志很有用（哪些日志没有）可能非常耗时。  了解日志记录系统对于有针对性的日志文件管理非常重要。  下图是一个示例日志文件。
 
 ![HDInsight 示例日志文件示例输出](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>访问 Hadoop 日志文件
 
-HDInsight 将其日志文件存储在群集文件系统和 Azure 存储中。 可以通过打开与群集的[SSH](hdinsight-hadoop-linux-use-ssh-unix.md)连接并浏览文件系统，或使用远程头节点服务器上的 Hadoop YARN 状态门户来检查群集中的日志文件。 可以使用可从 Azure 存储空间访问和下载数据的任何工具检查 Azure 存储中的日志文件。 例如， [AzCopy](../storage/common/storage-use-azcopy.md)、 [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)和 Visual Studio 服务器资源管理器。 此外，可以使用 PowerShell 和 Azure 存储客户端库或 Azure.NET SDK 访问 Azure Blob 存储中的数据。
+HDInsight 将其日志文件存储在群集文件系统和 Azure 存储中。 您可以通过打开群集的[SSH](hdinsight-hadoop-linux-use-ssh-unix.md)连接并浏览文件系统，或者使用远程头节点服务器上的 Hadoop YARN 状态门户来检查群集中的日志文件。 可以使用可从 Azure 存储访问和下载数据的任何工具检查 Azure 存储中的日志文件。 示例包括[AzCopy、](../storage/common/storage-use-azcopy.md)[云智视器](https://clumsyleaf.com/products/cloudxplorer)和可视化工作室服务器资源管理器。 此外，可以使用 PowerShell 和 Azure 存储客户端库或 Azure.NET SDK 访问 Azure Blob 存储中的数据。
 
-Hadoop 在群集中的各个节点上以“任务尝试”的形式运行作业。 HDInsight 可以启动推测任务尝试，终止任何其他尚未完成的任务尝试。 这会即时生成大量的活动并将其记录到控制器、stderr 和 syslog 日志文件。 此外，多个任务尝试会同时运行，但日志文件只能以线性方式显示结果。
+Hadoop 在群集中的各个节点上以“任务尝试”的形式运行作业。** HDInsight 可以启动推测性任务尝试，终止未首先完成的任何其他任务尝试。 这会即时生成大量的活动并将其记录到控制器、stderr 和 syslog 日志文件。 此外，多个任务尝试会同时运行，但日志文件只能以线性方式显示结果。
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>写入 Azure Blob 存储的 HDInsight 日志
 
@@ -121,13 +121,13 @@ Hadoop 在群集中的各个节点上以“任务尝试”的形式运行作业�
 
 ### <a name="hdinsight-logs-generated-by-yarn"></a>YARN 生成的 HDInsight 日志
 
-YARN 聚合工作器节点上所有容器的日志，并按工作器节点将这些日志存储为一个聚合日志文件。 应用程序完成运行后，该日志将存储在默认文件系统中。 应用程序可能使用数百或数千个容器，但在单个工作器节点上运行的所有容器的日志始终聚合成单个文件。 应用程序使用的每个辅助角色节点仅有一个日志。 在 HDInsight 群集版本 3.0 和更高版本上，日志聚合默认已启用。 聚合日志位于群集的默认存储中。
+YARN 聚合工作器节点上所有容器的日志，并按工作器节点将这些日志存储为一个聚合日志文件。 应用程序完成运行后，该日志将存储在默认文件系统中。 应用程序可能使用数百或数千个容器，但在单个工作器节点上运行的所有容器的日志始终聚合成单个文件。 应用程序每个辅助角色节点只使用一个日志。 在 HDInsight 群集版本 3.0 和更高版本上，日志聚合默认已启用。 聚合日志位于群集的默认存储中。
 
 ```
 /app-logs/<user>/logs/<applicationId>
 ```
 
-聚合日志无法直接读取，因为它们是以容器索引的 Tfile (二进制格式编写的。 使用 YARN ResourceManager 日志或 CLI 工具以纯文本的形式查看感兴趣的应用程序或容器的这些日志。
+聚合日志不可直接读取，因为它们以按容器索引的 TFile 二进制格式编写。 使用 YARN ResourceManager 日志或 CLI 工具以纯文本的形式查看感兴趣的应用程序或容器的这些日志。
 
 #### <a name="yarn-cli-tools"></a>YARN CLI 工具
 
@@ -144,7 +144,7 @@ YARN ResourceManager UI 在群集头节点上运行，可通过 Ambari Web UI �
 
 1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net`。 将 CLUSTERNAME 替换为 HDInsight 群集的名称。
 2. 在左侧的服务列表中选择“YARN”。
-3. 在“快速链接”下拉列表中选择一个群集头节点，然后选择“ResourceManager 日志”。 将显示一个链接列表，其中包含指向 YARN 日志的链接。
+3. 在“快速链接”下拉列表中选择一个群集头节点，然后选择“ResourceManager 日志”。**** 您会收到指向 YARN 日志的链接列表。
 
 ## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>步骤 4：预测日志卷存储大小和成本
 
@@ -152,13 +152,13 @@ YARN ResourceManager UI 在群集头节点上运行，可通过 Ambari Web UI �
 
 接下来，请分析一段时间内关键日志存储位置中的日志数据量。 例如，可以分析 30-60-90 天内的数据量和增长率。  在电子表格中或使用其他工具（例如 Visual Studio、Azure 存储资源管理器或 Power Query for Excel）记录此信息。 有关详细信息，请参阅[分析 HDInsight 日志](hdinsight-debug-jobs.md)。  
 
-现在，我们已获得足够的信息来为关键日志创建日志管理策略。  使用电子表格（或所选的工具）预测日志大小增长率，以及后续的 Azure 服务日志存储费用。  还应考虑要检查的日志集的所有日志保留要求。  现在，在确定可以删除哪些日志文件（如果有）以及应保留哪些日志并将其存档到成本较低的 Azure 存储之后，你可以 reforecast 将来的日志存储成本。
+现在，我们已获得足够的信息来为关键日志创建日志管理策略。  使用电子表格（或所选的工具）预测日志大小增长率，以及后续的 Azure 服务日志存储费用。  还要考虑您要检查的日志集的任何日志保留要求。  现在，在确定可以删除哪些日志文件（如果有）以及应保留哪些日志并将其存档到成本较低的 Azure 存储后，可以重新预测将来的日志存储成本。
 
 ## <a name="step-5-determine-log-archive-policies-and-processes"></a>步骤 5：确定日志存档策略和过程
 
 确定可以删除哪些日志文件后，可以调整许多 Hadoop 服务上的日志记录参数，以便在指定的时间段后自动删除日志文件。
 
-对于某些日志文件，可以使用价格较低的日志文件存档方法。 对于 Azure 资源管理器活动日志，可以使用 Azure 门户浏览这种方法。  通过在 HDInsight 实例的 Azure 门户中选择 "**活动日志**" 链接，设置资源管理器日志的存档。  在“活动日志”搜索页面顶部，选择“导出”菜单项打开“导出活动日志”窗格。  填写订阅、区域、是否导出到存储帐户，以及日志的保留天数。 在同一窗格中，还可以指定是否导出到事件中心。
+对于某些日志文件，可以使用价格较低的日志文件存档方法。 对于 Azure 资源管理器活动日志，可以使用 Azure 门户探索此方法。  通过选择 HDInsight 实例的 Azure 门户中的**活动日志**链接，设置资源管理器日志的存档。  在“活动日志”搜索页面顶部，选择“导出”菜单项打开“导出活动日志”窗格。********  填写订阅、区域、是否导出到存储帐户，以及日志的保留天数。 在同一窗格中，还可以指定是否导出到事件中心。
 
 ![Azure 门户导出活动日志预览](./media/hdinsight-log-management/hdi-export-log-files.png)
 
@@ -166,8 +166,8 @@ YARN ResourceManager UI 在群集头节点上运行，可通过 Ambari Web UI �
 
 ### <a name="accessing-azure-storage-metrics"></a>访问 Azure 存储指标
 
-可以将 Azure 存储配置为记录存储操作和访问权限。 可以使用这些非常详细的日志进行容量监视和规划，以及审核存储请求。 记录的信息包括延迟详细信息，用于监视和微调解决方案的性能。
-你可以使用 .NET SDK for Hadoop 来检查为 Azure 存储生成的用于保存 HDInsight 群集数据的日志文件。
+Azure 存储可以配置为记录存储操作和访问。 可以使用这些非常详细的日志进行容量监视和规划，以及审核存储请求。 记录的信息包括延迟详细信息，用于监视和微调解决方案的性能。
+可以使用 Hadoop 的 .NET SDK 检查为 Azure 存储生成的日志文件，这些文件保存 HDInsight 群集的数据。
 
 ### <a name="control-the-size-and-number-of-backup-indexes-for-old-log-files"></a>控制旧日志文件的备份索引大小和数量
 
@@ -178,7 +178,7 @@ YARN ResourceManager UI 在群集头节点上运行，可通过 Ambari Web UI �
 
 ### <a name="other-log-management-techniques"></a>其他日志管理方法
 
-若要避免磁盘空间不足，可以使用一些 OS 工具（如[logrotate](https://linux.die.net/man/8/logrotate) ）来管理对日志文件的处理。 可将 `logrotate` 配置为每日运行，压缩日志文件和删除旧文件。 所用的方法取决于不同的要求，例如，要在本地节点上保留日志文件多久。  
+为了避免磁盘空间不足，可以使用一些 OS 工具（例如 [logrotate](https://linux.die.net/man/8/logrotate)）来管理日志文件的处理。 可将 `logrotate` 配置为每日运行，压缩日志文件和删除旧文件。 所用的方法取决于不同的要求，例如，要在本地节点上保留日志文件多久。  
 
 还可以检查是否为一个或多个服务启用了调试日志记录，这会明显增大输出日志的大小。  
 

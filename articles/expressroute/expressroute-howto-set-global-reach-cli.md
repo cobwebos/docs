@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：配置 ExpressRoute Global Reach： CLI
+title: Azure 快速路由：配置快速路由全球覆盖范围：CLI
 description: 本文介绍了如何将 ExpressRoute 线路链接到一起，以在本地网络之间建立专用网络并启用 Global Reach。
 services: expressroute
 author: jaredr80
@@ -7,14 +7,14 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/12/2018
 ms.author: jaredro
-ms.openlocfilehash: eda0011ea4d259d0e60cb894c2b42325ddfc2eb7
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a39cf4e09a70ca2b1225d699c84abf0e7f1d2eab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076637"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476400"
 ---
-# <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Global Reach
+# <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>使用 Azure CLI 配置快速路由全局覆盖
 
 本文帮助你使用 Azure CLI 配置 Azure ExpressRoute Global Reach。 有关详细信息，请参阅 [ExpressRoute Global Reach](expressroute-global-reach.md)。
  
@@ -47,7 +47,7 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>确定用于配置的 ExpressRoute 线路
 
-可以在任意两个 ExpressRoute 线路之间启用 ExpressRoute Global Reach，只要它们位于受支持的国家/地区并且是在不同的对等位置创建的。 如果你的订阅同时拥有这两条线路，则可以选择其中任一条线路运行配置，如本文稍后所述。 如果两条线路位于不同的 Azure 订阅中，则必须拥有来自一个 Azure 订阅的授权，并且在另一个 Azure 订阅中运行配置命令时必须传入授权密钥。
+您可以在任意两个 ExpressRoute 电路之间启用 ExpressRoute 全球覆盖，只要这些电路位于支持的国家/地区，并且创建在不同的对等位置。 如果你的订阅同时拥有这两条线路，则可以选择其中任一条线路运行配置，如本文稍后所述。 如果两条线路位于不同的 Azure 订阅中，则必须拥有来自一个 Azure 订阅的授权，并且在另一个 Azure 订阅中运行配置命令时必须传入授权密钥。
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>启用本地网络之间的连接
 
@@ -57,7 +57,7 @@ az account set --subscription <your subscription ID>
 
   > /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
 
-* *address-prefix* 必须是一个“/29”IPv4 子网（例如，“10.0.0.0/29”）。 我们使用此子网中的 IP 地址在两条 ExpressRoute 线路之间建立连接。 不得在 Azure 虚拟网络或本地网络中使用此子网中的地址。
+* *地址前缀*必须是"/29"IPv4 子网（例如，"10.0.0.0/29"）。 我们使用此子网中的 IP 地址在两条 ExpressRoute 线路之间建立连接。 不得在 Azure 虚拟网络或本地网络中使用此子网中的地址。
 
 运行以下 CLI 命令来连接两条 ExpressRoute 线路：
 
@@ -67,7 +67,7 @@ az network express-route peering connection create -g <ResourceGroupName> --circ
 
 CLI 输出如下所示：
 
-```azurecli
+```output
 {
   "addressPrefix": "<__.__.__.__/29>",
   "authorizationKey": null,
@@ -103,7 +103,7 @@ CLI 输出如下所示：
 
    CLI 输出如下所示：
 
-   ```azurecli
+   ```output
    {
      "authorizationKey": "<authorizationKey>",
      "authorizationUseStatus": "Available",

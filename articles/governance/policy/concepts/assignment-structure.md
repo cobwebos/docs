@@ -1,20 +1,20 @@
 ---
 title: 策略分配结构的详细信息
-description: 描述 Azure 策略使用的策略分配定义，用于将策略定义和参数关联到资源进行评估。
+description: 介绍策略分配定义，Azure Policy 使用该定义将策略定义和参数关联到资源，以进行评估。
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265293"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
-Azure 策略使用策略分配来定义为哪些资源分配哪些策略或计划。 在分配时，策略分配可以确定该组资源的参数值，这样就可以重复使用策略定义来处理相同的资源属性，同时满足不同的遵从性需求。
+Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或计划。 在分配时，策略分配可以确定该组资源的参数值，因此，可以重复使用能够处理相同资源属性并满足不同合规需求的策略定义。
 
-使用 JSON 创建策略分配。 策略分配包含的元素：
+使用 JSON 创建策略分配。 策略分配包含以下各项的元素：
 
 - 显示名称
 - description
@@ -23,7 +23,7 @@ Azure 策略使用策略分配来定义为哪些资源分配哪些策略或计�
 - 策略定义
 - parameters
 
-例如，以下 JSON 显示了具有动态参数的_DoNotEnforce_模式下的策略分配：
+例如，以下 JSON 显示包含动态参数的、处于 _DoNotEnforce_ 模式的策略分配：
 
 ```json
 {
@@ -47,34 +47,34 @@ Azure 策略使用策略分配来定义为哪些资源分配哪些策略或计�
 }
 ```
 
-所有 Azure 策略示例均在[Azure 策略示例](../samples/index.md)中。
+所有 Azure Policy 示例均位于 [Azure Policy 示例](../samples/index.md)中。
 
 ## <a name="display-name-and-description"></a>显示名称和说明
 
-使用**displayName**和**description**标识策略分配，并提供用于特定资源集的上下文。 **displayName** 的最大长度为 128个字符，**description** 的最大长度为 512个字符。
+使用 **displayName** 和 **description** 来标识策略分配，并提供它与特定资源集配合使用时的上下文。 **displayName** 的最大长度为 128 __ 个字符，**description** 的最大长度为 512 __ 个字符。
 
 ## <a name="enforcement-mode"></a>强制模式
 
-**EnforcementMode**属性使客户能够测试现有资源上的策略的结果，而无需在[Azure 活动日志](../../../azure-monitor/platform/platform-logs-overview.md)中启动策略效果或触发条目。 这种情况通常称为 "What If"，并与安全部署做法保持一致。 **enforcementMode**不同于[禁用](./effects.md#disabled)的效果，因为这种效果会阻止资源评估发生。
+**enforcementMode** 属性使客户能够测试对现有资源应用某个策略后的结果，而无需启动策略效果，或触发 [Azure 活动日志](../../../azure-monitor/platform/platform-logs-overview.md)中的条目。 此方案通常称为“What If”，与安全部署做法相符。 **enforcementMode** 不同于 [Disabled](./effects.md#disabled) 效果，后者会彻底阻止资源评估的发生。
 
 此属性具有以下值：
 
-|“模式” |JSON 值 |类型 |手动修正 |活动日志条目 |说明 |
+|“模式” |JSON 值 |类型 |手动修正 |活动日志条目 |描述 |
 |-|-|-|-|-|-|
-|已启用 |默认 |字符串 |是 |是 |策略效果在创建或更新资源的过程中强制执行。 |
-|已禁用 |DoNotEnforce |字符串 |是 |否 | 在创建或更新资源的过程中不会强制实施策略。 |
+|已启用 |默认 |字符串 |是 |是 |在创建或更新资源期间强制实施策略效果。 |
+|已禁用 |DoNotEnforce |字符串 |是 |否 | 在创建或更新资源期间不强制实施策略效果。 |
 
-如果策略或计划定义中未指定**enforcementMode** ，则使用值_Default_ 。 即使将**enforcementMode**设置为_DoNotEnforce_，也可以为[deployIfNotExists](./effects.md#deployifnotexists)策略启动[修正任务](../how-to/remediate-resources.md)。
+如果未在策略或计划定义中指定 **enforcementMode**，则使用值 _Default_。 即使 **enforcementMode** 设置为 _DoNotEnforce_，也可以针对 [deployIfNotExists](./effects.md#deployifnotexists) 策略启动[修正任务](../how-to/remediate-resources.md)。
 
 ## <a name="policy-definition-id"></a>策略定义 ID
 
 此字段必须是策略定义或计划定义的完整路径名称。
-`policyDefinitionId` 是字符串而不是数组。 如果经常将多个策略分配到一起，则建议使用[方案](./definition-structure.md#initiatives)。
+`policyDefinitionId` 是字符串，而不是数组。 如果经常要一起分配多个策略，我们建议改用[计划](./definition-structure.md#initiatives)。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
-策略分配的此段提供[策略定义或计划定义](./definition-structure.md#parameters)中定义的参数的值。
-此设计使你可以重复使用不同资源的策略或计划定义，但需要检查不同的业务值或结果。
+此策略分配段为[策略定义或计划定义](./definition-structure.md#parameters)中定义的参数提供值。
+通过这种设计，可对不同的资源重复使用某个策略或计划定义，但需要检查不同的业务价值或成果。
 
 ```json
 "parameters": {
@@ -87,12 +87,12 @@ Azure 策略使用策略分配来定义为哪些资源分配哪些策略或计�
 }
 ```
 
-在此示例中，以前在策略定义中定义的参数 `prefix` 和 `suffix`。 此特定策略分配将 `prefix` 设置为**DeptA** ，并将 `suffix` 为 **-LC**。 同一策略定义可与不同部门的不同参数集一起使用，从而减少策略定义的重复和复杂性，同时提供灵活性。
+在此示例中，事先在策略定义中定义的参数为 `prefix` 和 `suffix`。 此特定策略分配将 `prefix` 设置为 **DeptA**，将 `suffix` 设置为 **-LC**。 可对不同部门的一组不同参数重复使用同一个策略定义，以降低策略定义的重复性和复杂性，同时提供灵活性。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[策略定义结构](./definition-structure.md)。
-- 了解如何以[编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取相容性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
+- 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
+- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修复不合规资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

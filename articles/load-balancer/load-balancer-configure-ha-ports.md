@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: allensu
-ms.openlocfilehash: c2e787a1f81d9f3d31b981c31a0249dd362b7bb9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c6b8ecb443408f23ae604bd9c8139cb0a2afcd12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225406"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477776"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>为内部负载均衡器配置高可用性端口
 
@@ -44,11 +44,11 @@ ms.locfileid: "74225406"
 
 若要配置高可用性端口，请在后端池中使用 NVA 设置内部负载均衡器。 设置相应的负载均衡器运行状况探测配置，以便使用高可用性端口检测 NVA 运行状况和负载均衡器规则。 [入门](load-balancer-get-started-ilb-arm-portal.md)中介绍了常规的负载均衡器相关配置。 本文重点介绍高可用性端口配置。
 
-该配置实质上包括将前端端口和后端端口值设置为“0”。 将协议值设置为“All”。 本文介绍如何使用 Azure 门户、PowerShell 和 Azure CLI 配置高可用性端口。
+该配置实质上包括将前端端口和后端端口值设置为“0”****。 将协议值设置为“All”****。 本文介绍如何使用 Azure 门户、PowerShell 和 Azure CLI 配置高可用性端口。
 
 ### <a name="configure-a-high-availability-ports-load-balancer-rule-with-the-azure-portal"></a>使用 Azure 门户配置高可用性端口负载均衡器规则
 
-若要使用 Azure 门户配置高可用性端口，请选中“HA 端口”复选框。 选中时，会自动填充相关端口和协议配置。 
+若要使用 Azure 门户配置高可用性端口，请选中“HA 端口”复选框****。 选中时，会自动填充相关端口和协议配置。 
 
 ![通过 Azure 门户配置高可用性端口](./media/load-balancer-configure-ha-ports/haports-portal.png)
 
@@ -98,9 +98,9 @@ lbrule = New-AzLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfigurati
 在[创建内部负载均衡器集](load-balancer-get-started-ilb-arm-cli.md)的步骤 4 中，使用以下命令创建高可用性端口负载均衡器规则：
 
 ```azurecli
-azure network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
+az network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-深入了解[高可用性端口](load-balancer-ha-ports-overview.md)。
+了解有关[高可用性端口](load-balancer-ha-ports-overview.md)的更多信息。

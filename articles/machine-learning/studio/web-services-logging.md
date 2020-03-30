@@ -1,6 +1,6 @@
 ---
-title: Web 服务日志记录-Azure 机器学习 Studio （经典） |Microsoft Docs
-description: 了解如何为机器学习 Studio （经典） web 服务启用日志记录。 日志记录提供用于帮助对 API 进行故障排除的其他信息。
+title: Web 服务日志记录 - Azure 机器学习工作室（经典版）| Microsoft Docs
+description: 了解如何为机器学习工作室（经典版）Web 服务启用日志记录。 日志记录提供用于帮助对 API 进行故障排除的其他信息。
 services: machine-learning
 author: xiaoharper
 ms.custom: seodec18
@@ -12,61 +12,61 @@ ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.openlocfilehash: 90e7692fe0e254074d8176d719d0ca9abad54a9b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217843"
 ---
-# <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>为 Azure 机器学习 Studio （经典） web 服务启用日志记录
+# <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>为 Azure 机器学习工作室（经典版）Web 服务启用日志记录
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-本文档提供了有关机器学习 Studio （经典） web 服务的日志记录功能的信息。 日志记录不仅提供错误号和消息，还可帮助你排除对机器学习 Studio （经典） Api 的调用。  
+本文档提供有关机器学习工作室（经典版）Web 服务的日志记录功能的信息。 日志记录可提供错误编号和消息以外的其他信息，这些信息有助于对调用机器学习工作室（经典版）API 进行故障排除。  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>如何为 Web 服务启用日志记录
 
-可以从[Azure 机器学习 Studio （经典） Web 服务](https://services.azureml.net)门户启用日志记录。 
+在 [Azure 机器学习工作室（经典版）Web 服务](https://services.azureml.net)门户中启用日志记录。 
 
-1. 登录到[https://services.azureml.net](https://services.azureml.net)Azure 机器学习 Studio （经典） Web 服务门户。 对于经典 web 服务，还可以通过单击 Studio 中的 "机器学习 Studio （经典） Web 服务" 页上的 "**新 Web 服务体验**" 访问门户（经典）。
+1. 登录到 Azure[https://services.azureml.net](https://services.azureml.net)机器学习工作室（经典）Web 服务门户。 对于经典 Web 服务，还可通过在工作室（经典版）中单击“机器学习工作室（经典版）Web 服务”页上的“新 Web 服务体验”，到达该门户****。
 
    ![新 Web 服务体验链接](./media/web-services-logging/new-web-services-experience-link.png)
 
-2. 在顶部菜单栏，单击“Web 服务”用作新 Web 服务，或单击“经典 Web 服务”用作经典 Web 服务。
+2. 在顶部菜单栏，单击“Web 服务”用作新 Web 服务，或单击“经典 Web 服务”用作经典 Web 服务********。
 
    ![选择新 Web 服务或经典 Web 服务](./media/web-services-logging/select-web-service.png)
 
 3. 对于新 Web 服务，单击 Web 服务名称。 对于经典 Web 服务，单击 Web 服务名称，然后单击下一页上的相应终结点。
 
-4. 单击顶部菜单中的“配置”。
+4. 单击顶部菜单中的“配置”****。
 
-5. 将“启用日志记录”选项设置为“错误”（用于仅记录错误）或“全部”（用于记录完整日志）。
+5. 将“启用日志记录”选项设置为“错误”（用于仅记录错误）或“全部”（用于记录完整日志）********。
 
    ![选择日志记录级别](./media/web-services-logging/enable-logging.png)
 
-6. 单击“ **保存**”。
+6. 单击“保存”。****
 
-7. 对于经典 Web 服务，创建“ml-diagnostics”容器。
+7. 对于经典 Web 服务，创建“ml-diagnostics”容器****。
 
-   所有 Web 服务日志都保存在与此 Web 服务关联的存储帐户中名为“ml-diagnostics”的 blob 容器中。 对于新 Web 服务，容器会在你首次访问该 Web 服务时创建。 对于经典 Web 服务，需在容器尚不存在时进行创建。 
+   所有 Web 服务日志都保存在与此 Web 服务关联的存储帐户中名为“ml-diagnostics”的 blob 容器中****。 对于新 Web 服务，容器会在你首次访问该 Web 服务时创建。 对于经典 Web 服务，需在容器尚不存在时进行创建。 
 
    1. 在[Azure 门户](https://portal.azure.com)中，转到与此 Web 服务关联的存储帐户。
 
-   2. 单击“Blob 服务”下的“容器”。
+   2. 单击“Blob 服务”下的“容器”********。
 
-   3. 如果容器“ml-diagnostics”不存在，请单击“+容器”，将容器命名为“ml-diagnostics”，然后选择“访问类型”作为“Blob”。 单击“确定”。
+   3. 如果容器“ml-diagnostics”不存在，请单击“+容器”，将容器命名为“ml-diagnostics”，然后选择“访问类型”作为“Blob”************。 单击“确定”。
 
-      ![创建用于存储诊断日志的新容器](./media/web-services-logging/create-ml-diagnostics-container.png)
+      ![创建用来存储诊断日志的新容器](./media/web-services-logging/create-ml-diagnostics-container.png)
 
 > [!TIP]
 >
-> 对于经典 web 服务，机器学习 Studio （经典）中的 "Web 服务" 仪表板还具有用于启用日志记录的开关。 但是，由于日志记录现在通过 Web 服务门户进行托管，因此需通过该门户启用日志记录，如本文所述。 如果已在 Studio （经典）中启用了日志记录，则在 Web 服务门户中，禁用日志记录并再次启用日志记录。
+> 对于经典 Web 服务，机器学习工作室（经典版）中的 Web 服务仪表板还具有启用日志记录的开关。 但是，由于日志记录现在通过 Web 服务门户进行托管，因此需通过该门户启用日志记录，如本文所述。 如果已在工作室（经典版）中启用日志记录，则需在 Web 服务门户中禁用日志记录并再次启用。
 
 
 ## <a name="the-effects-of-enabling-logging"></a>启用日志记录的效果
-启用日志记录时，web 服务终结点的诊断和错误记录在与用户的工作区链接的 Azure 存储帐户中的**ml 诊断**blob 容器中。 此容器承载与此存储帐户相关联的所有工作区的所有 Web 服务终结点的所有诊断信息。
+启用日志记录后，Web 服务终结点的诊断和错误将记录在与用户工作区链接的 Azure 存储帐户中的**ml 诊断**blob 容器中。 此容器承载与此存储帐户相关联的所有工作区的所有 Web 服务终结点的所有诊断信息。
 
-可使用可用于浏览 Azure 存储帐户的多种工具中的任意一种查看日志。 最简单的方法是导航到 Azure 门户中的存储帐户，单击“门户”，然后单击容器“ml-diagnostics”。  
+可使用可用于浏览 Azure 存储帐户的多种工具中的任意一种查看日志。 最简单的方法是导航到 Azure 门户中的存储帐户，单击“门户”，然后单击容器“ml-diagnostics”********。  
 
 ## <a name="log-blob-detail-information"></a>日志 blob 详细信息
 容器中的每个 blob 承载完全匹配以下操作之一的诊断信息：
@@ -81,7 +81,7 @@ ms.locfileid: "79217843"
 `{Workspace Id}-{Web service Id}-{Endpoint Id}/{Log type}`
 
 
-其中“日志类型”是以下值之一：  
+其中“日志类型”是以下值之一__：  
 
 * 批处理  
 * score/requests  

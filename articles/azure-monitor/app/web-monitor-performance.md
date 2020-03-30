@@ -5,22 +5,22 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.openlocfilehash: e398f23559729580ae4ad8b6507c2f09328052b5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275615"
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
 
 
-确保应用程序性能良好，并快速查明任何故障。 [Application Insights][start]将告诉您任何性能问题和异常，并帮助您查找并诊断根本原因。
+确保应用程序性能良好，并快速查明任何故障。 [Application Insights][start]将告知任何性能问题和异常，并帮助查找并诊断根本原因。
 
 Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 服务。 可在本地、虚拟机上或作为 Microsoft Azure 网站托管它们。 
 
 在客户端，Application Insights 可从网页和各种设备（包括 iOS、Android 和 Windows 应用商店应用）获取遥测。
 
-## <a name="setup"></a>设置性能监视
+## <a name="set-up-performance-monitoring"></a><a name="setup"></a>设置性能监视
 如果尚未将 Application Insights 添加到项目（即，如果它没有 ApplicationInsights.config），则选择以下方式之一开始操作：
 
 * [ASP.NET Web 应用](../../azure-monitor/app/asp-net.md)
@@ -29,7 +29,7 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 * [Java EE Web 应用](../../azure-monitor/app/java-get-started.md)
   * [添加依赖项监视](../../azure-monitor/app/java-agent.md)
 
-## <a name="view"></a>探索性能指标
+## <a name="exploring-performance-metrics"></a><a name="view"></a>探索性能指标
 在 [Azure 门户](https://portal.azure.com)中，浏览到为应用程序设置的 Application Insights 资源。 “概述”边栏选项卡显示基本性能数据：
 
 单击任意图表查看更多详细信息，并查看更长时间段的结果。 例如，单击“请求”磁贴，并选择时间范围：
@@ -43,7 +43,7 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 > [!NOTE]
 > **取消选中所有指标**查看可用的完整选择。 指标分为多个组；选择某个组的任意成员时，仅显示该组的其他成员。
 
-## <a name="metrics"></a>这一切意味着什么？ 性能磁贴和报表
+## <a name="what-does-it-all-mean-performance-tiles-and-reports"></a><a name="metrics"></a>这一切意味着什么？ 性能磁贴和报表
 有多个性能指标可供获取。 让我们先从默认在应用程序边栏选项卡上显示的指标开始。
 
 ### <a name="requests"></a>Requests
@@ -96,14 +96,14 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 
 *我看不到“添加警报”按钮。* - 这是否是你对其具有只读访问权限的组帐户？ 请咨询帐户管理员。
 
-## <a name="diagnosis"></a>诊断问题
+## <a name="diagnosing-issues"></a><a name="diagnosis"></a>诊断问题
 下面是查找和诊断性能问题的一些提示：
 
-* 设置[web 测试][availability]，以便在网站出现故障或响应错误或缓慢时得到警报。 
+* 设置 [Web 测试][availability]，以便在网站出现故障或响应错误或缓慢时得到警报。 
 * 将请求计数与其他指标比较，查看故障或响应缓慢是否与负载有关。
-* 在代码中[插入和搜索跟踪语句][diagnostic]，以帮助查明问题。
-* 在操作中监视[实时指标流][livestream]的 Web 应用。
-* 通过[Snapshot Debugger][snapshot]捕获 .net 应用程序的状态。
+* 在代码中[插入和搜索跟踪语句][diagnostic]以帮助查明问题。
+* 使用[实时指标流][livestream]监视正在运行的 Web 应用。
+* 使用[快照调试器][snapshot]捕获 .NET 应用程序的状态。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>通过性能调查体验来发现和修复性能瓶颈
 
@@ -130,14 +130,14 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 ![“GET Customers/Details”在 7 天范围中的三个持续时间峰值和时间窗口](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
-## <a name="next"></a>后续步骤
-[Web 测试][availability]-将 web 请求按固定间隔从世界各地发送到应用程序。
+## <a name="next-steps"></a><a name="next"></a>后续步骤
+[Web 测试][availability] - 使 Web 请求按固定间隔从世界各地发送到应用程序。
 
-[捕获和搜索诊断跟踪][diagnostic]-插入跟踪调用并在结果中进行查询，以查明问题。
+[捕获和搜索诊断跟踪][diagnostic] - 插入跟踪调用并筛查结果以查明问题。
 
-[使用情况跟踪][usage]-了解用户如何使用应用程序。
+[使用情况跟踪][usage] - 查明用户使用应用程序的方式。
 
-[疑难解答][qna]-和 Q &
+[故障排除][qna] - 和问答
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: 排查 Azure HDInsight 中 Apache Spark 的问题
+title: 在 Azure HDInsight 中排除阿帕奇火花故障
 description: 获取有关使用 Apache Spark 和 Azure HDInsight 的常见问题的解答。
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,47 +9,47 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271936"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Spark 进行故障排除
 
-了解在[Apache Ambari](https://ambari.apache.org/)中使用 Apache Spark 负载时的最常见问题及其解决方法。
+了解在[阿帕奇安巴里](https://ambari.apache.org/)使用阿帕奇火花有效载荷时的首要问题及其解决方案。
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>如何在群集上使用 Apache Ambari 配置 Apache Spark 应用程序？
 
-可以优化 Spark 配置值，帮助避免 Apache Spark 应用程序 `OutofMemoryError` 异常。 以下步骤显示 Azure HDInsight 中的默认 Spark 配置值：
+可以优化 Spark 配置值，帮助避免出现 Apache Spark 应用程序 `OutofMemoryError` 异常。 以下步骤显示了 Azure HDInsight 中的默认 Spark 配置值：
 
-1. 在 `https://CLUSTERNAME.azurehdidnsight.net` 中，用你的群集凭据登录到 Ambari。 初始屏幕显示 "概述" 仪表板。 HDInsight 3.6 与4.0 之间略有不同。
+1. 使用群集凭据通过 `https://CLUSTERNAME.azurehdidnsight.net` 登录到 Ambari。 初始屏幕显示了概述仪表板。 HDInsight 3.6 和 4.0 在外观上略有不同。
 
-1. 导航到**custom-spark2-defaults** > **配置**。
+1. 导航到**Spark2** > **配置**。
 
     ![选择“配置”选项卡](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
-1. 在配置列表中，选择并展开 " **custom-spark2-defaults-默认值**"。
+1. 在配置列表中，选择并展开 **Custom-spark2-Defaults**。
 
-1. 找到需要调整的值设置，例如 **spark.executor.memory**。 在这种情况下， **9728m**的值过高。
+1. 找到需要调整的值设置，例如 **spark.executor.memory**。 在本例中，值 **9728m** 太大。
 
     ![选择 custom-spark-defaults](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
 1. 将值设置为建议的设置。 建议为此设置使用值 **2048m**。
 
-1. 保存值，并保存配置。 选择“保存”。
+1. 保存值，并保存配置。 选择“保存”。****
 
     ![将值更改为 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
-    编写有关配置更改的注释，并选择“保存”。
+    编写有关配置更改的注释，并选择“保存”。****
 
     ![输入有关所做更改的注释](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
-    如果有任何配置需要引以注意，系统会发出通知。 记下这些项，并选择“仍然继续”。
+    如果有任何配置需要引以注意，系统会发出通知。 记下这些项，并选择“仍然继续”。****
 
     ![选择“仍然继续”](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
-1. 每次保存配置时，系统都会提示重启服务。 选择“重启”。
+1. 每次保存配置时，系统都会提示重启服务。 选择“重启”。****
 
     ![选择“重启”](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "79271936"
 
     ![查看正在运行的进程](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
-1. 可以添加配置。 在配置列表中，依次选择“Custom-spark2-defaults”、“添加属性”。
+1. 可以添加配置。 在配置列表中，依次选择“Custom-spark2-defaults”、“添加属性”。********
 
     ![选择“添加属性”](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
@@ -105,12 +105,12 @@ spark-submit --master yarn-cluster --class com.microsoft.spark.application --num
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-* [Spark 内存管理概述](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)。
+* [火花内存管理概述](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)。
 
-* [调试 HDInsight 群集上的 Spark 应用程序](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)。
+* [在 HDInsight 群集上调试 Spark 应用程序](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)。
 
-* 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
+* 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 连接[@AzureSupport](https://twitter.com/azuresupport) -用于改善客户体验的官方 Microsoft Azure 帐户。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* 与[@AzureSupport](https://twitter.com/azuresupport)- 用于改善客户体验的官方 Microsoft Azure 帐户连接。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
-* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

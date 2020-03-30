@@ -15,18 +15,18 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 40db6e9f429569bc19641aa5f0f371f287db7b18
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281465"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中心 - 异地灾难恢复 
 
-当整个 Azure 区域或数据中心（如果未使用[可用性区域](../availability-zones/az-overview.md)）遭遇停机时，在不同区域或数据中心中继续进行数据处理就显得至关重要。 在这种情况下，异地灾难恢复和异地复制对于任何企业而言都是至关重要的功能。 Azure 事件中心支持命名空间级别的异地灾难恢复和异地复制。 
+当整个 Azure 区域或数据中心（如果未使用[可用性区域](../availability-zones/az-overview.md)）遭遇停机时，在不同区域或数据中心中继续进行数据处理就显得至关重要。 因此，*地质灾害恢复*和*异地复制*是任何企业的重要功能。 Azure 事件中心支持命名空间级别的异地灾难恢复和异地复制。 
 
 > [!NOTE]
-> 异地灾难恢复功能仅适用于[标准和专用 sku](https://azure.microsoft.com/pricing/details/event-hubs/)。  
+> 地质灾害恢复功能仅适用于[标准和专用 SKU。](https://azure.microsoft.com/pricing/details/event-hubs/)  
 
 ## <a name="outages-and-disasters"></a>中断和灾难
 
@@ -40,7 +40,7 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 灾难恢复功能可实现元数据灾难恢复，并且依赖于主要和次要灾难恢复命名空间。 
 
-异地灾难恢复功能仅适用于[标准和专用 sku](https://azure.microsoft.com/pricing/details/event-hubs/) 。 不需要对连接字符串进行任何更改，因为连接是通过别名建立的。
+地质灾害恢复功能仅适用于[标准和专用 SKU。](https://azure.microsoft.com/pricing/details/event-hubs/) 不需要对连接字符串进行任何更改，因为连接是通过别名建立的。
 
 本文涉及以下术语：
 
@@ -50,10 +50,10 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 -  *元数据*：事件中心和使用者组等实体以及其与命名空间关联的服务的属性。 请注意，仅自动复制实体及其设置。 不会复制消息和事件。 
 
--  故障转移：激活辅助命名空间的过程。
+-  ** 故障转移：激活辅助命名空间的过程。
 
 ## <a name="supported-namespace-pairs"></a>支持的命名空间对
-支持以下主要和辅助命名空间的组合：  
+支持主命名空间和辅助命名空间的以下组合：  
 
 | 主命名空间 | 辅助命名空间 | 支持 | 
 | ----------------- | -------------------- | ---------- |
@@ -63,7 +63,7 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 | 专用 | Standard | 否 | 
 
 > [!NOTE]
-> 不能对同一专用群集中的命名空间配对。 你可以将位于不同群集中的命名空间配对。 
+> 不能对同一专用群集中的命名空间进行配对。 可以配对位于单独群集中的命名空间。 
 
 ## <a name="setup-and-failover-flow"></a>设置和故障转移流程
 
@@ -110,11 +110,11 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 此版本需要注意以下事项：
 
-1. 按照设计，事件中心异地灾难恢复不会复制数据，因此，你无法在辅助事件中心重复使用主事件中心的旧偏移值。 建议通过以下方式之一重启事件接收方：
+1. 根据设计，事件中心地理灾难恢复不会复制数据，因此无法重用辅助事件中心上主事件中心的旧偏移值。 我们建议使用以下操作之一重新启动事件接收器：
 
-- *EventPosition. FromStart （）* -如果要读取辅助事件中心上的所有数据。
-- *EventPosition. FromEnd （）* -如果要从连接到次要事件中心时读取所有新数据。
-- *EventPosition. FromEnqueuedTime （日期时间）* -如果想要从给定的日期和时间开始读取辅助事件中心内接收的所有数据。
+- *事件位置.从开始（）* - 如果您希望读取辅助事件中心的所有数据。
+- *事件位置.FromEnd（）* - 如果您希望从连接到辅助事件中心时读取所有新数据。
+- *事件位置.FromEnqueuedtime（日期时间）* - 如果您希望从给定日期和时间开始读取辅助事件中心中接收的所有数据。
 
 2. 在故障转移规划中，还应考虑时间因素。 例如，如果失去连接的时间超过 15 到 20 分钟，你可能会决定启动故障转移。 
  
@@ -146,8 +146,8 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
-* [事件中心常见问题解答](event-hubs-faq.md)
+    - [Javascript](get-started-java-send-v2.md)
+* [事件中心常见问题](event-hubs-faq.md)
 * [使用事件中心的示例应用程序](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
 [1]: ./media/event-hubs-geo-dr/geo1.png

@@ -1,5 +1,5 @@
 ---
-title: 配置 ExpressRoute 和 S2S VPN 共存连接：经典
+title: 配置快速路由和 S2S VPN 共存连接：经典
 description: 本文指导配置可在经典部署模型中并存的 ExpressRoute 连接和站点到站点 VPN 连接。
 documentationcenter: na
 services: expressroute
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: charwen
 ms.openlocfilehash: aba07e0a1dd8e7b1db8677907672d919ef034057
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272924"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>配置 ExpressRoute 和站点到站点并存连接（经典）
@@ -81,7 +81,7 @@ ms.locfileid: "79272924"
 
 [!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
-## <a name="new"></a>创建新的虚拟网络和并存连接
+## <a name="to-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>创建新的虚拟网络和并存连接
 本过程指导创建 VNet，以及创建将共存的站点到站点连接和 ExpressRoute 连接。
 
 1. 需要安装 Azure PowerShell cmdlet 的最新版本。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。 请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。 
@@ -187,7 +187,7 @@ ms.locfileid: "79272924"
 
         New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
 
-## <a name="add"></a>为现有的 VNet 配置并存连接
+## <a name="to-configure-coexisting-connections-for-an-already-existing-vnet"></a><a name="add"></a>为现有的 VNet 配置并存连接
 如果已经有了一个虚拟网络，请检查网关子网大小。 如果网关子网为 /28 或 /29，则必须先删除虚拟网络网关，然后增加网关子网大小。 本部分的步骤将说明如何这样做。
 
 如果网关子网为 /27 或更大，且虚拟网络是通过 ExpressRoute 连接的，则可跳过下面的步骤，转到前一部分的 [“步骤 6 - 创建站点到站点 VPN 网关”](#vpngw) 。
@@ -214,7 +214,7 @@ ms.locfileid: "79272924"
           <Subnet name="GatewaySubnet">
             <AddressPrefix>10.17.159.224/27</AddressPrefix>
           </Subnet>
-5. 如果以前的网关是站点到站点 VPN，则还必须将连接类型更改为 **“专用”** 。
+5. 如果以前的网关是站点到站点 VPN，则还必须将连接类型更改为 **“专用”**。
    
                  <Gateway>
                   <ConnectionsToLocalNetwork>
@@ -226,5 +226,5 @@ ms.locfileid: "79272924"
 6. 此时，将拥有不带网关的虚拟网络。 若要创建新网关并完成连接，可以转到 [步骤 4 - 创建 ExpressRoute 网关](#gw)（可在前一组步骤中找到）。
 
 ## <a name="next-steps"></a>后续步骤
-有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)
+有关快速路由的详细信息，请参阅[快速路由常见问题解答](expressroute-faqs.md)
 

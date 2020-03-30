@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：路由要求
+title: Azure 快速路由：路由要求
 description: 本页提供有关为 ExpressRoute 线路配置和管理路由的详细要求。
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273041"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
@@ -83,7 +83,7 @@ ms.locfileid: "79273041"
 进行专用对等互连时，可以选择使用公共的或专用的 IPv4 地址。 我们会对用户的流量进行端到端隔离，因此在进行专用对等互连时，不可能出现与其他客户的地址发生重叠的情况。 这些地址不会播发到 Internet。 
 
 ### <a name="microsoft-peering"></a>Microsoft 对等互连
-可以使用 Microsoft 对等互连路径连接到 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 Microsoft 团队。 Microsoft 支持在 Microsoft 对等互连时进行双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
+可以使用 Microsoft 对等互连路径连接到 Microsoft 云服务。 服务列表包括 Office 365 服务，例如 Exchange Online、SharePoint Online、Skype for Business 和 Microsoft Teams。 Microsoft 支持在 Microsoft 对等互连时进行双向连接。 定向到 Microsoft 云服务的流量必须使用有效的公共 IPv4 地址才能进入 Microsoft 网络。
 
 确保 IP 地址和 AS 号码已在下列其中一个注册表中注册：
 
@@ -142,7 +142,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 > 
 > 
 
-## <a name="bgp"></a>BGP 社区支持
+## <a name="support-for-bgp-communities"></a><a name="bgp"></a>BGP 社区支持
 本部分概述如何配合 ExpressRoute 使用 BGP 社区。 Microsoft 将播发公共和 Microsoft 对等互连路径中的路由并为路由标记适当的社区值。 下面会介绍这种方案的理由以及有关社区值的详细信息。 但是，Microsoft 不遵循向 Microsoft 播发的路由的任何标记社区值。
 
 如果要在某个地缘政治区域内的任何一个对等互连位置通过 ExpressRoute 连接到 Microsoft，就必须能够访问该地缘政治边界内所有区域中的所有 Microsoft 云服务。 
@@ -153,7 +153,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 
 可以针对每个地缘政治区域购买多个 ExpressRoute 线路。 如果拥有多个连接，则可以从异地冗余中获得明显的高可用性优势。 如果具有多条 ExpressRoute 线路，将在 Microsoft 对等互连和公共对等互连路径收到 Microsoft 播发的同一组前缀。 这意味着可以使用多个路径从网络接入 Microsoft。 这可能会导致在网络中做出欠佳的路由决策。 因此，可能会在不同的服务上遇到欠佳的连接体验。 可以依赖社区值做出适当的路由决策，[向用户提供最佳路由](expressroute-optimize-routing.md)。
 
-| **Microsoft Azure 区域** | **区域 BGP 社区** | **存储 BGP 社区** | **SQL BGP 社区** | **Cosmos DB BGP 社区** |
+| **Microsoft Azure 区域** | **区域 BGP 社区** | **存储 BGP 社区** | **SQL BGP 社区** | **宇宙 DB BGP 社区** |
 | --- | --- | --- | --- | --- |
 | **北美** | |
 | 美国东部 | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
@@ -181,7 +181,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | 德国中西部 | 12076:51041 | 12076:52041 | 12076:53041 | 12076:54041 | 
 | 挪威东部 | 12076:51042 | 12076:52042 | 12076:53042 | 12076:54042 | 
 | 挪威西部 | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 
-| **亚太区** | |
+| **亚太** | |
 | 东亚 | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
 | 东南亚 | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
 | **日本** | |
@@ -215,22 +215,22 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 > 
 > 
 
-### <a name="service-to-bgp-community-value"></a>服务到 BGP 团体值
-除了上述各项，Microsoft 还会根据其所属的服务加上标记及前缀。 这只适用于 Microsoft 对等互连。 下表提供了服务与 BGP 社区值之间的映射。 若要获取最新值的完整列表，可以运行 "AzBgpServiceCommunity" cmdlet。
+### <a name="service-to-bgp-community-value"></a>为 BGP 社区价值提供服务
+除了上述各项，Microsoft 还会根据其所属的服务加上标记及前缀。 这只适用于 Microsoft 对等互连。 下表提供了服务与 BGP 社区值之间的映射。 您可以运行"获取-AzBgpService社区"cmdlet，了解最新值的完整列表。
 
 | **服务** | **BGP 社区值** |
 | --- | --- |
-| Exchange Online * * | 12076:5010 |
-| SharePoint Online * * | 12076:5020 |
-| Skype For Business Online * * | 12076:5030 |
-| CRM Online * * * |12076:5040 |
+| 在线交换* | 12076:5010 |
+| 在线分享点* | 12076:5020 |
+| Skype 业务在线* | 12076:5030 |
+| CRM 在线* |12076:5040 |
 | Azure 全球服务* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
-| 其他 Office 365 联机服务 * * | 12076:5100 |
+| 其他 Office 365 在线服务* | 12076:5100 |
 
-\* Azure 全局服务目前仅包含 Azure DevOps。
-\* * Microsoft 要求的授权，请参阅[为 microsoft 对等互连配置路由筛选器](how-to-routefilter-portal.md)\
-CRM Online 支持 Dynamics 8.2 和更低的版本。 对于更高版本，请选择 Dynamics 部署的区域社区。
+{Azure 全局服务此时仅包含 Azure DevOps。
+• 需要 Microsoft 授权，请参阅[为 Microsoft 对等互连配置路由筛选器](how-to-routefilter-portal.md)\
+CRM 在线支持动态 v8.2 及以下。 对于更高版本，选择 Dynamics 部署的区域社区。
 
 > [!NOTE]
 > Microsoft 不遵循你在播发到 Microsoft 的路由上设置的任何 BGP 社区值。
@@ -262,5 +262,5 @@ CRM Online 支持 Dynamics 8.2 和更低的版本。 对于更高版本，请选
 * 配置 ExpressRoute 连接。
   
   * [创建和修改线路](expressroute-howto-circuit-arm.md)
-  * [创建和修改对等互连配置](expressroute-howto-routing-arm.md)
+  * [创建和修改对等配置](expressroute-howto-routing-arm.md)
   * [将 VNet 链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)

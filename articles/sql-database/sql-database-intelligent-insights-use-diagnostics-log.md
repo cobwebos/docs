@@ -12,15 +12,15 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
 ms.openlocfilehash: bb62b087451140261aee7aaa2fab0de14ea36283
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79209451"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL 数据库性能诊断日志
 
-本页提供有关如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可以将此诊断日志发送到[Azure Monitor 日志](../azure-monitor/insights/azure-sql.md)、 [azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [azure 存储](sql-database-metrics-diag-logging.md#stream-into-azure-storage)或第三方解决方案，以用于自定义 DevOps 警报和报告功能。
+本页提供有关如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 您可以将此诊断日志发送到[Azure 监视器日志](../azure-monitor/insights/azure-sql.md)[、Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)[、Azure 存储](sql-database-metrics-diag-logging.md#stream-into-azure-storage)或用于自定义 DevOps 警报和报告功能的第三方解决方案。
 
 ## <a name="log-header"></a>日志标头
 
@@ -113,7 +113,7 @@ Intelligent Insights 日志的下一部分提供关于受检测到的性能问�
 }]
 ```
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 
 每个报告的指标的测量单位在指标 (metric) 属性下提供，可能的值有：秒、数字和百分比。 测量的指标值在值 (value) 属性中报告。
 
@@ -134,7 +134,7 @@ Intelligent Insights 性能日志的最后部分是对已确定的性能下降�
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-可以将智能见解性能日志与[Azure Monitor 日志]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)或第三方解决方案结合使用，以实现自定义 DevOps 警报和报告功能。
+您可以将智能见解性能日志与 Azure[监视器日志]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)或第三方解决方案一起用于自定义 DevOps 警报和报告功能。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279827"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中，使用 Windows 故障转移群集和共享磁盘为 SAP ASCS/SCS 实例安装 SAP NetWeaver HA
@@ -148,13 +148,13 @@ ms.locfileid: "79279827"
 
 本文介绍如何通过使用 Windows Server 故障转移群集和群集共享磁盘，群集化 SAP ASCS/SCS 实例，在 Azure 中配置高可用性 SAP 系统。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始安装之前，请查看这些文档：
 
-* [体系结构指南：使用群集共享磁盘在 Windows 故障转移群集上群集 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-shared-disk]
+* [体系结构指南：使用群集共享磁盘在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-shared-disk]
 
-* [为 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
+* [通过使用 SAP ASCS/SCS 实例的 Windows 故障转移群集和共享磁盘为 SAP HA 准备 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
 
 本文不会介绍 DBMS 安装，因为安装因所使用的 DBMS 系统而异。 本文假设 DBMS 在高可用性方面的疑虑已通过不同 DBMS 供应商为 Azure 提供的功能支持而获得解决。 例如，适用于 SQL Server 的 AlwaysOn 或数据库镜像，以及适用于 Oracle 数据库的 Oracle Data Guard。 在本文中所使用的方案中，我们未向 DBMS 添加更多保护。
 
@@ -165,7 +165,7 @@ ms.locfileid: "79279827"
 >
 >
 
-## <a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>使用高可用性 ASCS/SCS 实例安装 SAP
+## <a name="install-sap-with-a-high-availability-ascsscs-instance"></a><a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>使用高可用性 ASCS/SCS 实例安装 SAP
 
 > [!IMPORTANT]
 > 请确保不要将页面文件放置在 SIOS DataKeeper 镜像卷上。 DataKeeper 不支持镜像卷。 可将页面文件保留在 Azure 虚拟机的临时驱动器 D 上，这是默认值。 如果它尚未在该位置，请将 Windows 页面文件移到 Azure 虚拟机的驱动器 D。
@@ -180,7 +180,7 @@ ms.locfileid: "79279827"
 * 添加探测端口。
 * 打开 Windows 防火墙探测端口。
 
-### <a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>为群集 SAP ASCS/SCS 实例创建虚拟主机名
+### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a><a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>为群集 SAP ASCS/SCS 实例创建虚拟主机名
 
 1. 在 Windows DNS 管理器中为 ASCS/SCS 实例的虚拟主机名创建 DNS 条目。
 
@@ -193,15 +193,15 @@ ms.locfileid: "79279827"
 
    ![图 1：定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目][sap-ha-guide-figure-3046]
 
-   图 1 _**：定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目**_
+   图 1****：定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目__
 
-2. 若要定义分配给虚拟主机名的 IP 地址，请选择“DNS 管理器” **“域”**  > 。
+2. 要定义分配给虚拟主机名的 IP 地址，请选择 DNS**管理器** > **域**。
 
    ![图 2：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址][sap-ha-guide-figure-3047]
 
-   图 2 _**：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址**_
+   图 2****：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址__
 
-### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>安装 SAP 的第一个群集节点
+### <a name="install-the-sap-first-cluster-node"></a><a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>安装 SAP 第一个群集节点
 
 1. 在群集节点 A 上执行第一个群集节点选项。例如，在 pr1-ascs-0 主机上。
 2. 若要保留 Azure 内部负载均衡器的默认端口，请选择：
@@ -219,9 +219,9 @@ ms.locfileid: "79279827"
 >
 >
 
-### <a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>修改 ASCS/SCS 实例的 SAP 配置文件
+### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>修改 ASCS/SCS 实例的 SAP 配置文件
 
-首先，需要添加新的配置文件参数。 配置文件参数可避免 SAP 工作进程与排队服务器之间的连接在空闲时间太长时关闭。 我们提及在[SAP ASCS/SCS 实例的两个群集节点上添加注册表项][sap-ha-guide-8.11]中的问题。 在该部分中，我们还介绍了对一些基本 TCP/IP 连接参数所做的两项更改。 在第二个步骤中，需将排队服务器设置为发送 `keep_alive` 信号，以便连接不会达到 Azure 内部负载均衡器的空闲阈值。
+首先，需要添加新的配置文件参数。 配置文件参数可避免 SAP 工作进程与排队服务器之间的连接在空闲时间太长时关闭。 [在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项][sap-ha-guide-8.11]部分中已提到了出现该问题的情景。 在该部分中，我们还介绍了对一些基本 TCP/IP 连接参数所做的两项更改。 在第二个步骤中，需将排队服务器设置为发送 `keep_alive` 信号，以便连接不会达到 Azure 内部负载均衡器的空闲阈值。
 
 修改 ASCS/SCS 实例的 SAP 配置文件：
 
@@ -240,7 +240,7 @@ ms.locfileid: "79279827"
 
 2. 若要应用更改，请重启 SAP ASCS/SCS 实例。
 
-### <a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a>添加探测端口
+### <a name="add-a-probe-port"></a><a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a>添加探测端口
 
 使用内部负载均衡器探测功能，让整个群集配置使用 Azure Load Balancer。 Azure 内部负载均衡器通常在参与的虚拟机之间平均分配传入的工作负荷。
 
@@ -248,7 +248,7 @@ ms.locfileid: "79279827"
 
 添加探测端口：
 
-1. 运行以下 PowerShell 命令，检查当前的“ProbePort”值：
+1. 运行以下 PowerShell 命令，检查当前的“ProbePort”**** 值：
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>
@@ -263,7 +263,7 @@ ms.locfileid: "79279827"
 
    ![图 3：群集配置探测端口默认为 0][sap-ha-guide-figure-3048]
 
-   图 3 _**：群集配置探测端口默认为 0**_
+   图 3****：群集配置探测端口默认为 0__
 
    端口号在 SAP Azure 资源管理器模板中定义。 可在 PowerShell 中分配端口号。
 
@@ -325,7 +325,7 @@ ms.locfileid: "79279827"
    }
    ```
 
-   将 SAP \<SID\> 群集角色联机之后，验证“ProbePort”是否已设置为新值。
+   将 SAP \<SID\> 群集角色联机之后，验证“ProbePort”是否已设置为新值****。
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>
@@ -338,9 +338,9 @@ ms.locfileid: "79279827"
 
    ![图 4：设置新值后探测群集端口][sap-ha-guide-figure-3049]
 
-   图 4 _**：设置新值后探测群集端口**_
+   _**图 4：** 设置新值后探测群集端口_
 
-### <a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a>打开 Windows 防火墙探测端口
+### <a name="open-the-windows-firewall-probe-port"></a><a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a>打开 Windows 防火墙探测端口
 
 在两个群集节点上打开 Windows 防火墙探测端口。 使用以下脚本打开 Windows 防火墙探测端口。 更新环境的 PowerShell 变量。
 
@@ -350,29 +350,29 @@ ms.locfileid: "79279827"
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-ProbePort 设置为 62000。 现在，可从其他主机（例如 ascsha-dbas）访问文件共享 \\\ascsha-clsap\sapmnt。
+ProbePort 设置为 62000********。 现在，可从其他主机（例如 ascsha-dbas）访问文件共享 \\\ascsha-clsap\sapmnt。
 
-## <a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>安装数据库实例
+## <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>安装数据库实例
 
 若要安装数据库实例，请按照 SAP 安装文档中所述的过程操作。
 
-## <a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a>安装第二个群集节点
+## <a name="install-the-second-cluster-node"></a><a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a>安装第二个群集节点
 
 若要安装第二个群集，请按照 SAP 安装指南中所述的步骤操作。
 
-## <a name="094bc895-31d4-4471-91cc-1513b64e406a"></a>更改 SAP ERS Windows 服务实例的启动类型
+## <a name="change-the-start-type-of-the-sap-ers-windows-service-instance"></a><a name="094bc895-31d4-4471-91cc-1513b64e406a"></a>更改 SAP ERS Windows 服务实例的启动类型
 
-将两个群集节点上的 SAP 排队复制服务器 (ERS) Windows 服务的启动类型更改为“自动(延迟启动)”。
+将两个群集节点上的 SAP 排队复制服务器 (ERS) Windows 服务的启动类型更改为“自动(延迟启动)”。****
 
 ![图 5：将 SAP ERS 实例的服务类型更改为自动延迟][sap-ha-guide-figure-3050]
 
-图 5 _**：将 SAP ERS 实例的服务类型更改为自动延迟**_
+图 5****：将 SAP ERS 实例的服务类型更改为自动延迟__
 
-## <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>安装 SAP 主应用程序服务器
+## <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>安装 SAP 主应用程序服务器
 
 在已指定为托管 PAS 的虚拟机上安装主应用程序服务器 (PAS) 实例 \<SID\>-di-0。 Azure 上没有依赖项。 没有特定于 DataKeeper 的设置。
 
-## <a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>安装 SAP 附加应用程序服务器
+## <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>安装 SAP 附加应用程序服务器
 
 在指定用于托管 SAP 应用程序服务器实例的所有虚拟机上安装 SAP 附加应用程序服务器 (AAS)。 例如，在 \<SID\>-di-1 到 \<SID\>-di-&lt;n&gt; 上。
 
@@ -381,24 +381,24 @@ ProbePort 设置为 62000。 现在，可从其他主机（例如 ascsha-dbas）
 >
 
 
-## <a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a>测试 SAP ASCS/SCS 实例故障转移和 SIOS 复制
+## <a name="test-the-sap-ascsscs-instance-failover-and-sios-replication"></a><a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a>测试 SAP ASCS/SCS 实例故障转移和 SIOS 复制
 可以使用故障转移群集管理器和 SIOS DataKeeper 管理和配置工具，轻松测试及监视 SAP ASCS/SCS 实例故障转移与 SIOS 磁盘复制。
 
-### <a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a>SAP ASCS/SCS 实例在群集节点 A 上运行
+### <a name="sap-ascsscs-instance-is-running-on-cluster-node-a"></a><a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a>SAP ASCS/SCS 实例在群集节点 A 上运行
 
 SAP PR1 群集组在群集节点 A（例如在 pr1-ascs-0）上运行。 将属于 SAP PR1 群集组的共享磁盘驱动器 S 分配到群集节点 A。ASCS/SCS 实例也使用磁盘驱动器 S。 
 
 ![图 6：故障转移群集管理器：SAP \<SID\> 群集组在群集节点 A 上运行][sap-ha-guide-figure-5000]
 
-_图 6：故障转移群集管理器：SAP **SID** 群集组在群集节点 A 上运行\<\>_
+_**图 6：** 故障转移群集管理器：SAP \<SID\>群集组在群集节点 A 上运行_
 
 在 SIOS DataKeeper 管理和配置工具中，可以看到共享磁盘数据以同步方式从群集节点 A 上的源卷驱动器 S 复制到群集节点 B 上的目标卷驱动器 S。例如，从 pr1-ascs-0 [10.0.0.40] 复制到 pr1-ascs-1 [10.0.0.41]。
 
 ![图 7：在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到群集节点 B][sap-ha-guide-figure-5001]
 
-图 7 _**：在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到群集节点 B**_
+_**图 7：** 在 SIOS 数据保持器中，将本地卷从群集节点 A 复制到群集节点 B_
 
-### <a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>从节点 A 到节点 B 的故障转移
+### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>从节点 A 故障转移到节点 B
 
 1. 选择以下选项之一，开始将 SAP\<SID\> 群集组从群集节点 A 故障转转到群集节点 B 的故障转移：
    - 故障转移群集管理器  
@@ -419,10 +419,10 @@ _图 6：故障转移群集管理器：SAP **SID** 群集组在群集节点 A �
 
    ![图 8：在故障转移群集管理器中，SAP \<SID\> 群集组在群集节点 B 上运行][sap-ha-guide-figure-5002]
 
-   _图 8：在故障转移群集管理器中，SAP **SID** 群集组在群集节点 B 上运行\<\>_
+   _图 8：在故障转移群集管理器中，SAP \<SID\> 群集组在群集节点 B 上运行_****
 
    共享磁盘现在已装载到群集节点 B。SIOS DataKeeper 正在将数据从群集节点 B 上的源卷 S 复制到群集节点 A 上的目标卷 S。例如，从 pr1-ascs-1 [10.0.0.41] 复制到 pr1-ascs-0 [10.0.0.40]。
 
    ![图 9：SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A][sap-ha-guide-figure-5003]
 
-   图 9 _**：SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A**_
+   _**图 9：** SIOS 数据保持器将本地卷从群集节点 B 复制到群集节点 A_

@@ -1,10 +1,10 @@
 ---
 title: Azure 计算单元概述 | Microsoft Docs
-description: Azure 计算单元概念的概述。 ACU 提供了一种在 Azure SKU 中比较 CPU 性能的方法。
+description: Azure 计算单位概念概述。 ACU 提供了一种在 Azure SKU 中比较 CPU 性能的方法。
 services: virtual-machines
 documentationcenter: ''
 author: mimckitt
-manager: gwallace
+manager: vashan
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
-ms.author: jonbeck
-ms.openlocfilehash: 65d83e76d464da997c6933610ae97dc176df7964
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.author: mimckitt
+ms.openlocfilehash: e344d09497a30dec546dfaedd3d78f30c7d214d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919781"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535691"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure 计算单元 (ACU)
 
@@ -50,8 +50,8 @@ Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU
 | [G1 - G5](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [GS1 - GS5](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [H](h-series.md) |290 - 300* | 1:1 |
-| [HB-ACCT-WC](hb-series.md) |199 - 216** | 1:1 |
-| [HC](hc-series.md) |297-315 * | 1:1 |
+| [Hb](hb-series.md) |199 - 216** | 1:1 |
+| [HC](hc-series.md) |297 - 315* | 1:1 |
 | [L4s - L32s](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2 - L80s_v2](lsv2-series.md) |150 - 175** | 2:1 |
 | [M](m-series.md) | 160 - 180 | 2:1\*\*\* |

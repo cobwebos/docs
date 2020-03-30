@@ -1,19 +1,18 @@
 ---
-title: 为 Azure Marketplace 创建用户 VM 映像
+title: 为 Azure 应用商店创建用户 VM 映像
 description: 列出创建用户 VM 映像所需的步骤和参考。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: e63f09dc538c5e66b244826cf3b5f92ac388b6a9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 49db8c6717cd26886c3b49f8c99fdd2b08e8713d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818694"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278001"
 ---
 # <a name="create-a-user-vm-image"></a>创建用户 VM 映像
 

@@ -4,10 +4,10 @@ description: 介绍在 JSON 中通过连续导出导出的、用作筛选器的�
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663869"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights 导出数据模型
@@ -154,19 +154,19 @@ ms.locfileid: "77663869"
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
-| event [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
+| event [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如 4 =&gt; 25%。 |
 | event [0] name |字符串 |事件名称。  最大长度为 250。 |
 | event [0] url |字符串 | |
 | event [0] urlData.base |字符串 | |
 | event [0] urlData.host |字符串 | |
 
-## <a name="exceptions"></a>例外
+## <a name="exceptions"></a>异常
 报告服务器和浏览器中发生的[异常](../../azure-monitor/app/asp-net-exceptions.md)。
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
 | basicException [0] assembly |字符串 | |
-| basicException [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
+| basicException [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如 4 =&gt; 25%。 |
 | basicException [0] exceptionGroup |字符串 | |
 | basicException [0] exceptionType |字符串 | |
 | basicException [0] failedUserCodeMethod |字符串 | |
@@ -207,7 +207,7 @@ ms.locfileid: "77663869"
 | remoteDependency [0] async |boolean | |
 | remoteDependency [0] baseName |字符串 | |
 | remoteDependency [0] commandName |字符串 |例如“home/index” |
-| remoteDependency [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
+| remoteDependency [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如 4 =&gt; 25%。 |
 | remoteDependency [0] dependencyTypeName |字符串 |HTTP、SQL... |
 | remoteDependency [0] durationMetric.value |数字 |从依赖项调用到完成响应花费的时间 |
 | remoteDependency [0] id |字符串 | |
@@ -225,7 +225,7 @@ ms.locfileid: "77663869"
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
-| request [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如：4 =&gt; 25%。 |
+| request [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如：4 =&gt; 25%。 |
 | request [0] durationMetric.value |数字 |从请求到响应花费的时间。 1e7 == 1s |
 | request [0] id |字符串 |操作 ID |
 | request [0] name |字符串 |GET/POST + URL 基。  最大长度为 250 |
@@ -260,7 +260,7 @@ ms.locfileid: "77663869"
 
 | 路径 | 类型 | 说明 |
 | --- | --- | --- |
-| view [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
+| view [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如 4 =&gt; 25%。 |
 | view [0] durationMetric.value |integer |在 trackPageView() 中设置的，或者由 startTrackPage() - stopTrackPage() 设置的可选值。 与 clientPerformance 值不同。 |
 | view [0] name |字符串 |页面标题。  最大长度为 250 |
 | view [0] url |字符串 | |
@@ -275,7 +275,7 @@ ms.locfileid: "77663869"
 | --- | --- | --- |
 | availability [0] availabilityMetric.name |字符串 |availability |
 | availability [0] availabilityMetric.value |数字 |1.0 或 0.0 |
-| availability [0] count |integer |100/([采样](../../azure-monitor/app/sampling.md)率)。 例如 4 =&gt; 25%。 |
+| availability [0] count |integer |100/（[采样](../../azure-monitor/app/sampling.md)率）。 例如 4 =&gt; 25%。 |
 | availability [0] dataSizeMetric.name |字符串 | |
 | availability [0] dataSizeMetric.value |integer | |
 | availability [0] durationMetric.name |字符串 | |
@@ -287,7 +287,7 @@ ms.locfileid: "77663869"
 | availability [0] testRunId |字符串 | |
 | availability [0] testTimestamp |字符串 | |
 
-## <a name="metrics"></a>度量值
+## <a name="metrics"></a>指标
 由 TrackMetric() 生成。
 
 指标值出现在 context.custom.metrics[0] 中
@@ -342,7 +342,7 @@ ms.locfileid: "77663869"
 ### <a name="durations"></a>持续时间
 除非另有规定，否则持续时间以十分之一微秒表示，因此 10000000.0 表示 1 秒。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
-* [连续导出](export-telemetry.md)
-* [示例代码](export-telemetry.md#code-samples)
+* [连续出口](export-telemetry.md)
+* [代码示例](export-telemetry.md#code-samples)
