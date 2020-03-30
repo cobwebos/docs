@@ -1,5 +1,5 @@
 ---
-title: Microsoft Threat Modeling Tool 版本 02/11/2020-Azure
+title: 微软威胁建模工具版本 02/11/2020 - Azure
 description: 阐述 Threat Modeling Tool 的发行说明
 author: jegeib
 ms.author: jegeib
@@ -7,23 +7,23 @@ ms.service: security
 ms.topic: article
 ms.date: 02/25/2020
 ms.openlocfilehash: 354707aec90375b4bf25aea6e1baa743d85f20aa
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624834"
 ---
-# <a name="threat-modeling-tool-update-release-73002061---02112020"></a>Threat Modeling Tool 更新版本 7.3.00206.1-02/11/2020
+# <a name="threat-modeling-tool-update-release-73002061---02112020"></a>威胁建模工具更新版本 7.3.00206.1 - 02/11/2020
 
-Microsoft Threat Modeling Tool （TMT）的版本7.3.00206.1 于 11 2020 年2月发布，其中包含以下更改：
+Microsoft 威胁建模工具 （TMT） 的版本 7.3.00206.1 于 2020 年 2 月 11 日发布，其中包含以下更改：
 
 - Bug 修复
 
-## <a name="notable-bug-fixes"></a>值得注意的 bug 修复
+## <a name="notable-bug-fixes"></a>值得注意的错误修复
 
-### <a name="errors-related-to-priority-values-outside-of-the-expected-ranges"></a>与预期范围外的优先级值相关的错误
+### <a name="errors-related-to-priority-values-outside-of-the-expected-ranges"></a>与预期范围以外的优先级值相关的错误
 
-当打开在 "Threat Modeling Tool 2016" 或自定义模板中创建的文件时，某些客户报告接收到以下错误消息：
+一些客户在打开"威胁建模工具 2016"或自定义模板中创建的文件时报告收到以下错误消息：
 
     System.InvalidOperationException: Invalid Priority value. Accepted values are [0..4] and 'High', 'Medium', 'Low' at ThreatModeling.Model.Threat.get_Priority()
     
@@ -34,9 +34,9 @@ Microsoft Threat Modeling Tool （TMT）的版本7.3.00206.1 于 11 2020 年2月
 ## <a name="system-requirements"></a>系统要求
 
 - 受支持的操作系统
-  - [Microsoft Windows 10 周年更新](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)或更高版本
+  - [微软视窗 10 周年更新](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)或更高版本
 - 所需的 .NET 版本
-  - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) 或更高版本
+  - [.净 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)或更高版本
 - 其他要求
   - 需要建立 Internet 连接才能接收工具和模板的更新。
 

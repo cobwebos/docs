@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: cb4eb4474ad074a3e69dc146c97b48d54343595b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79213947"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL 数据库中的扩展事件
@@ -34,7 +34,7 @@ ms.locfileid: "79213947"
 - [快速入门：SQL Server 中的扩展事件](https://msdn.microsoft.com/library/mt733217.aspx)
 - [扩展事件](https://msdn.microsoft.com/library/bb630282.aspx)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本主题假设读者有以下方面的经验：
 
@@ -81,7 +81,7 @@ ms.locfileid: "79213947"
 
 扩展事件功能受多个[目录视图](https://msdn.microsoft.com/library/ms174365.aspx)的支持。 目录视图告诉你有关当前数据库中用户创建的事件会话的*元数据或定义*的信息。 视图不会返回有关活动事件会话的实例的信息。
 
-| 目录视图<br/>名称 | 说明 |
+| 目录视图<br/>名称 | 描述 |
 |:--- |:--- |
 | **sys.database_event_session_actions** |返回针对事件会话的每个事件执行的每个操作所对应的行。 |
 | **sys.database_event_session_events** |返回事件会话中每个事件所对应的行。 |
@@ -89,23 +89,23 @@ ms.locfileid: "79213947"
 | **sys.database_event_session_targets** |返回事件会话的每个事件目标所对应的行。 |
 | **sys.database_event_sessions** |返回 SQL 数据库中每个事件会话所对应的行。 |
 
-在 Microsoft SQL Server 中，类似目录视图的名称包含 *.server\_* 而不是 *.database\_* 。 名称模式类似于 **sys.server_event_%** 。
+在 Microsoft SQL Server 中，类似目录视图的名称包含 *.server\_* 而不是 *.database\_*。 名称模式类似于 **sys.server_event_%**。
 
 ## <a name="new-dynamic-management-views-dmvs"></a>新的动态管理视图 [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
 Azure SQL 数据库具有支持扩展事件的[动态管理视图 (DMV)](https://msdn.microsoft.com/library/bb677293.aspx)。 DMV 告诉你有关*活动*事件会话的信息。
 
-| DMV 的名称 | 说明 |
+| DMV 的名称 | 描述 |
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |返回有关事件会话操作的信息。 |
 | **sys.dm_xe_database_session_events** |返回有关会话事件的信息。 |
 | **sys.dm_xe_database_session_object_columns** |显示绑定到会话的对象的配置值。 |
-| **sys.dm_xe_database_session_targets** |返回有关会话目标的信息。 |
+| **系统dm_xe_database_session_targets** |返回有关会话目标的信息。 |
 | **sys.dm_xe_database_sessions** |返回划归到当前数据库的每个事件会话所对应的行。 |
 
-在 Microsoft SQL Server 中，类似目录视图的名称不包含 *\_database* 部分，例如：
+在 Microsoft SQL Server 中，在没有名称的*\_数据库*部分的情况下命名类似的目录视图，例如：
 
-- **sys.dm_xe_sessions** 而不是名称<br/>**sys.dm_xe_database_sessions**.
+- **sys.dm_xe_sessions** 而不是名称<br/>**系统dm_xe_database_sessions**。
 
 ### <a name="dmvs-common-to-both"></a>两者通用的 DMV
 对于扩展的事件，有通用于 Azure SQL 数据库和 Microsoft SQL Server 的其他 DMV：
@@ -190,7 +190,7 @@ SELECT
 
 ## <a name="related-links"></a>相关链接
 
-- [对 Azure 存储使用 Azure PowerShell](../storage/common/storage-powershell-guide-full.md)。
+- [将 Azure PowerShell 与 Azure 存储一起使用](../storage/common/storage-powershell-guide-full.md)。
 - [Azure 存储 Cmdlet](https://docs.microsoft.com/powershell/module/Azure.Storage)
 - [对 Azure 存储使用 Azure PowerShell](../storage/common/storage-powershell-guide-full.md) - 提供有关 PowerShell 和 Azure 存储服务的综合信息。
 - [如何通过 .NET 使用 Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)

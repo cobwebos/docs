@@ -1,7 +1,7 @@
 ---
 title: 使用 .NET 创建帐户 SAS
 titleSuffix: Azure Storage
-description: 了解如何使用 .NET 客户端库创建帐户共享访问签名（SAS）。
+description: 了解如何使用 .NET 客户端库创建帐户共享访问签名 (SAS)。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,21 +11,21 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 9da27cef7bafa94715a42db86fc5a5675a049eb1
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137863"
 ---
 # <a name="create-an-account-sas-with-net"></a>使用 .NET 创建帐户 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文介绍如何使用存储帐户密钥通过[用于 .net 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage?view=azure-dotnet)创建帐户 SAS。
+本文介绍如何使用存储帐户密钥通过[用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage?view=azure-dotnet)创建帐户 SAS。
 
 ## <a name="create-an-account-sas"></a>创建帐户 SAS
 
-若要为容器创建帐户 SAS，请调用[CloudStorageAccount. cloudblobcontainer.getsharedaccesssignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature)方法。
+若要为容器创建帐户 SAS，请调用 [CloudStorageAccount.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) 方法。
 
 以下代码示例将创建一个帐户 SAS，该 SAS 对 Blob 和文件服务是有效的，并授予客户端读取、写入和列表权限，使其能够访问服务级别 API。 帐户 SAS 将协议限制为 HTTPS，因此请求必须使用 HTTPS 发出。 请务必将尖括号中的占位符值替换为你自己的值：
 
@@ -51,9 +51,9 @@ static string GetAccountSASToken()
 }
 ```
 
-## <a name="use-an-account-sas-from-a-client"></a>使用客户端中的帐户 SAS
+## <a name="use-an-account-sas-from-a-client"></a>通过客户端使用帐户 SAS
 
-若要使用帐户 SAS 访问 Blob 服务的服务级别 Api，请使用 SAS 和存储帐户的 Blob 存储终结点构造 Blob 服务客户端对象。 请务必将尖括号中的占位符值替换为你自己的值：
+若要使用帐户 SAS 访问 Blob 服务的服务级别 API，请使用存储帐户的 SAS 和 Blob 存储终结点构造 Blob 服务客户端对象。 请务必将尖括号中的占位符值替换为你自己的值：
 
 ```csharp
 static void UseAccountSAS(string sasToken)
@@ -97,5 +97,5 @@ static void UseAccountSAS(string sasToken)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用共享访问签名（SAS）授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)
+- [使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限](storage-sas-overview.md)
 - [创建帐户 SAS](/rest/api/storageservices/create-account-sas)

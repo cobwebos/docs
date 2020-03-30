@@ -4,10 +4,10 @@ description: 使用 Azure REST API 以获取 Azure 资源的运行状况事件�
 ms.topic: conceptual
 ms.date: 06/06/2017
 ms.openlocfilehash: 6964a6c4e85c38d532b12e730a02c4df73be76e5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77653995"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>使用 REST API 获取资源运行状况 
@@ -28,14 +28,14 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft
 
 以下标头是必需的： 
 
-|请求标头|说明|  
+|请求标头|描述|  
 |--------------------|-----------------|  
-|Content-Type：|必需。 设置为 `application/json`。|  
-|Authorization：|必需。 设置为有效的`Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
+|Content-Type：**|必需。 设置为 `application/json`。|  
+|*授权：*|必需。 设置为有效的`Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 参数
 
-| 名称 | 说明 |
+| “属性” | 描述 |
 | :--- | :---------- |
 | subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | api-version | 要用于请求的 API 版本。<br /><br /> 本文档涵盖 API 版本 `2015-04-01`，包含于上述 URL 中。  |

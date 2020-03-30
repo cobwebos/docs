@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
 ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77608739"
 ---
 若要以一致的方式大规模创建和管理 Azure 虚拟机 (VM)，通常需要某种形式的自动化。 可以通过许多工具和解决方案来自动完成整个 Azure 基础结构部署和管理生命周期。 本文介绍了一些可以在 Azure 中使用的基础结构自动化工具。 这些工具通常适合以下某个方法：
@@ -54,7 +54,7 @@ ms.locfileid: "77608739"
 ## <a name="cloud-init"></a>Cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
 
-Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
+Cloud-init 还支持不同的分发。 例如，不要使用 apt-get 安装**** 或 yum 安装**** 来安装包。 可定义要安装的程序包的列表。 Cloud-init 将为所选发行版自动使用本机包管理工具。
 
 我们正在积极地与我们认可的 Linux 发行版合作伙伴合作，以便在 Azure 市场中提供已启用 cloud-init 的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和虚拟机规模集。 了解有关 Azure 上的 cloud-init 的更多详细信息：
 
@@ -103,14 +103,14 @@ DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 
 - [使用 Terraform 创建 Azure 基础结构](../articles/terraform/terraform-create-complete-vm.md)。
 
 
-## <a name="azure-automation"></a>Azure Automation
+## <a name="azure-automation"></a>Azure 自动化
 [Azure 自动化](https://azure.microsoft.com/services/automation/)使用 Runbook 在目标 VM 上处理一组任务。 Azure 自动化用于管理现有 VM，而不是创建基础结构。 Azure 自动化可以跨 Linux 和 Windows VM 运行，还可以通过混合 Runbook 辅助角色在本地虚拟机或物理计算机上运行。 可以将 Runbook 存储在源代码管理存储库（例如 GitHub）中。 然后即可手动运行或按定义的计划运行这些 Runbook。
 
 Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对给定的一组 VM 的配置方式创建定义。 然后，DSC 就可以确保所需配置得到应用且 VM 保持一致。 Azure 自动化 DSC 可以在 Windows 和 Linux 计算机上运行。
 
 了解如何操作：
 
-- [创建 PowerShell Runbook](../articles/automation/automation-first-runbook-textual-powershell.md)。
+- [创建 PowerShell 运行簿](../articles/automation/automation-first-runbook-textual-powershell.md)。
 - [使用混合 Runbook 辅助角色管理本地资源](../articles/automation/automation-hybrid-runbook-worker.md)。
 - [使用 Azure 自动化 DSC](../articles/automation/automation-dsc-getting-started.md)。
 

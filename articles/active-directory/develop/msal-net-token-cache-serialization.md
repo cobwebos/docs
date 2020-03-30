@@ -1,5 +1,5 @@
 ---
-title: 令牌缓存序列化（MSAL.NET） |Microsoft
+title: 令牌缓存序列化 （MSAL.NET） |蔚蓝
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 对令牌缓存进行序列化和客户序列化。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1bd348ad27d892d0421b13c16ce81bc4f5dfb021
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262797"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET 中的令牌缓存序列化
@@ -45,7 +45,7 @@ ms.locfileid: "79262797"
   ![类图](media/msal-net-token-cache-serialization/class-diagram.png)
 
 > [!IMPORTANT]
-> MSAL.NET 将为你创建令牌缓存，当你调用应用程序的 `IToken` 和 `UserTokenCache` 属性时，它会提供 `AppTokenCache` 缓存。 最好是不要自行实现接口。 实现自定义令牌缓存序列化时，你的责任是：
+> MSAL.NET 将为你创建令牌缓存，当你调用应用程序的 `UserTokenCache` 和 `AppTokenCache` 属性时，它会提供 `IToken` 缓存。 最好是不要自行实现接口。 实现自定义令牌缓存序列化时，你的责任是：
 > - 回应 `BeforeAccess` 和 `AfterAccess`“事件”（或其异步风格）。 `BeforeAccess` 委托负责反序列化缓存，而 `AfterAccess` 负责序列化缓存。
 > - 其中的一部分事件存储或加载 Blob，这些 Blob 将通过事件参数传递到所需的任何存储。
 
@@ -122,7 +122,7 @@ static class TokenCacheHelper
  }
 ```
 
-[Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) 开放源代码库中提供了适用于公共客户端应用程序（适用于 Windows、Mac 和 Linux 上运行的桌面应用程序）的基于产品质量令牌缓存文件的序列化程序预览。 可以将其包含在以下 nuget 包中的应用程序中： [Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/)。
+[Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) 开放源代码库中提供了适用于公共客户端应用程序（适用于 Windows、Mac 和 Linux 上运行的桌面应用程序）的基于产品质量令牌缓存文件的序列化程序预览。 你可以从以下 nuget 包中将其包含在应用程序中[：Microsoft.身份.客户端.扩展.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/)。
 
 #### <a name="dual-token-cache-serialization-msal-unified-cache-and-adal-v3"></a>双令牌缓存序列化（MSAL 统一缓存和 ADAL v3）
 
@@ -271,14 +271,14 @@ namespace CommonCacheMsalV3
 
 在 Web 应用或 Web API 中，缓存可以利用会话、Redis 缓存或数据库。
 
-在 web 应用或 web Api 中，为每个帐户保留一个令牌缓存。  对于 web 应用，令牌缓存应使用帐户 ID 进行键控。  对于 web Api，应使用用于调用 API 的令牌的哈希来键控帐户。 MSAL.NET 在 .NET Framework 和 .NET Core subplatforms 中提供自定义令牌缓存序列化。 当访问缓存时，将触发事件，应用程序可以选择是否序列化或反序列化缓存。 在处理用户的机密客户端应用程序（登录用户和调用 web Api 的 web 应用，以及调用下游 web Api 的 web Api）上，可能会有很多用户和用户进行并行处理。 出于安全和性能方面的原因，我们建议为每个用户序列化一个缓存。 序列化事件基于已处理用户的标识计算缓存密钥，并对该用户的令牌缓存进行序列化/deserialie。
+在 Web 应用或 Web API 中，为每个帐户保留一个令牌缓存。  对于 Web 应用，令牌缓存应使用帐户 ID 进行键控。  对于 Web API，帐户应使用用于调用该 API 的令牌的哈希值进行键控。 MSAL.NET 在 .NET Framework 和 .NET Core 子平台中提供自定义令牌缓存序列化。 访问缓存时会触发事件，应用可以选择是对缓存进行序列化还是反序列化。 在处理用户的机密客户端应用程序（登录用户并调用 Web API 的 Web 应用程序，以及调用下游 Web API 的 Web API）中，可能会有许多用户，并且会对这些用户进行并行处理。 出于安全和性能方面的原因，我们建议为每个用户序列化一个缓存。 序列化事件基于已处理用户的标识计算缓存密钥，并对该用户的令牌缓存进行序列化/反序列化。
 
-[ASP.NET Core Web 应用教程](https://ms-identity-aspnetcore-webapp-tutorial)的阶段 [2-2 令牌缓存](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)中提供了有关如何对 Web 应用和 Web API 使用令牌缓存的示例。 对于实现，请查看 dotnet 库中的[TokenCacheProviders](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/Microsoft.Identity.Web/TokenCacheProviders)文件夹中的文件夹[，该文件夹](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web)[为](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet)库中的文件夹。 
+[ASP.NET Core Web 应用教程](https://ms-identity-aspnetcore-webapp-tutorial)的阶段 [2-2 令牌缓存](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)中提供了有关如何对 Web 应用和 Web API 使用令牌缓存的示例。 有关实现，请查看 [microsoft-authentication-extensions-for-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) 库中的 [TokenCacheProviders](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/Microsoft.Identity.Web/TokenCacheProviders) 文件夹（在 [Microsoft.Identity.Client.Extensions.Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) 文件夹中）。 
 
 ## <a name="next-steps"></a>后续步骤
 以下示例演示了令牌缓存序列化。
 
-| 示例 | 平台 | 说明|
+| 示例 | Platform | 描述|
 | ------ | -------- | ----------- |
 |[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | 桌面 (WPF) | 调用 Microsoft Graph API 的 Windows 桌面 .NET (WPF) 应用程序。 ![拓扑](media/msal-net-token-cache-serialization/topology.png)|
 |[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | 桌面（控制台） | 演示如何将使用 ADAL.NET 的 Azure AD v1.0 应用程序迁移到使用 MSAL.NET 的 Azure AD v2.0 应用程序（也称为融合应用程序）的 Visual Studio 解决方案集。具体而言，此功能称为[令牌缓存迁移](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

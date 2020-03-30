@@ -4,14 +4,14 @@ description: 使用流分析将 Application Insights 数据连续导出到 SQL�
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.openlocfilehash: 3ef0420cdab64f11b699fd4031ed2b0134f18609
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663669"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
-本文介绍如何使用[连续导出][export]和[azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从[AZURE 应用程序见解][start]移入 Azure SQL 数据库。 
+本文说明如何使用[连续导出][export]和 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从 [Azure Application Insights][start] 移入 Azure SQL 数据库。 
 
 连续导出以 JSON 格式将遥测数据移入 Azure 存储。 我们将使用 Azure 流分析来分析 JSON 对象，并在数据库表中创建行。
 
@@ -64,7 +64,7 @@ ms.locfileid: "77663669"
 1. 让我们累积一些数据。 请休息一下，让其他人先使用该应用程序一段时间。 应用程序中会逐渐传入遥测数据，[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中会显示统计图表，[诊断搜索](../../azure-monitor/app/diagnostic-search.md)中会显示各个事件。 
    
     此外，数据将导出到存储。 
-2. 在门户中检查导出的数据 - 选择“浏览”，选择存储帐户，然后选择“容器”；也可以在 Visual Studio 中检查。 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。 （如果未看到此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，并打开“Visual C#”>“云”>“获取用于 .NET 的 Microsoft Azure SDK”。）
+2. 在门户中检查导出的数据 - 选择“浏览”，选择存储帐户，然后选择“容器”；也可以在 Visual Studio 中检查。******** 在 Visual Studio 中，请选择“查看”>“Cloud Explorer”，并打开“Azure”>“存储”。**** （如果未看到此菜单选项，则需要安装 Azure SDK：打开“新建项目”对话框，并打开“Visual C#”>“云”>“获取用于 .NET 的 Microsoft Azure SDK”。）
    
     ![在 Visual Studio 中，依次打开“Server Browser”、“Azure”、“存储”](./media/code-sample-export-sql-stream-analytics/087-explorer.png)
    
@@ -73,7 +73,7 @@ ms.locfileid: "77663669"
 事件以 JSON 格式写入 Blob 文件。 每个文件可能包含一个或多个事件。 因此我们想要读取事件数据，并筛选出所需的字段。 可以针对数据执行各种操作，但我们目前的计划是使用流分析将数据移到 SQL 数据库。 这样做可以轻松运行许多微妙的查询。
 
 ## <a name="create-an-azure-sql-database"></a>创建 Azure SQL 数据库
-在[Azure 门户][portal]中再次从你的订阅开始，创建数据库（除非已有数据库，除非你已有），然后才能将数据写入到其中。
+再次在 [Azure 门户][portal]中打开订阅，创建要在其中写入数据的数据库（除非已有新服务器，否则还要创建新服务器）。
 
 ![依次选择“新建”、“数据”、“SQL”](./media/code-sample-export-sql-stream-analytics/090-sql.png)
 
@@ -137,7 +137,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/code-sample-export-sql-stream-analytics/SA002.png)
 
-创建新作业后，选择“转到资源”。
+创建新作业后，选择“转到资源”****。
 
 ![流分析设置](./media/code-sample-export-sql-stream-analytics/SA003.png)
 
@@ -159,7 +159,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
     webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
-在本示例中：
+在此示例中：
 
 * `webapplication27` 是 Application Insights 资源的名称，**全部小写**。 
 * `1234...` 是 Application Insights 资源的检测密钥，但**删除了短划线**。 

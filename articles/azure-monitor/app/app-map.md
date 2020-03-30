@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.openlocfilehash: dce2fdbe7e0c390309be38d2ebab4c73dbb4ed2e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77666269"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
@@ -43,7 +43,7 @@ ms.locfileid: "77666269"
 
 ### <a name="investigate-failures"></a>调查故障
 
-选择“调查故障”以启动故障窗格。
+选择“调查故障”**** 以启动故障窗格。
 
 ![“调查故障”按钮的屏幕截图](media/app-map/investigate-failures.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "77666269"
 
 ### <a name="investigate-performance"></a>调查性能
 
-若要排查性能问题，请选择“调查性能”。
+若要排查性能问题，请选择“调查性能”****。
 
 ![“调查性能”按钮的屏幕截图](media/app-map/investigate-performance.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "77666269"
 
 ### <a name="go-to-details"></a>转到详细信息
 
-选择 "**中转到详细信息**" 以浏览端到端事务体验，它可以向下提供对调用堆栈级别的查看。
+选择“转到详细信息”可探索端到端事务体验，从而可以深入到调用堆栈级别的信息。****
 
 ![“转到详细信息”按钮的屏幕截图](media/app-map/go-to-details.png)
 
@@ -67,15 +67,15 @@ ms.locfileid: "77666269"
 
 ### <a name="view-logs-analytics"></a>查看日志（分析）
 
-若要进一步查询和调查应用程序数据，请单击 "**在日志中查看" （分析）** 。
+若要进一步查询和调查应用程序数据，请单击“在日志(分析)中查看”。****
 
 ![“在 Analytics 中查看”按钮的屏幕截图](media/app-map/view-logs.png)
 
-![分析体验的屏幕截图。 用于汇总过去12小时内请求的平均响应持续时间的折线图。](media/app-map/log-analytics.png)
+![分析体验的屏幕截图。 汇总过去 12 小时内请求的平均响应持续时间的折线图。](media/app-map/log-analytics.png)
 
 ### <a name="alerts"></a>警报
 
-若要查看活动警报和导致警报触发的基础规则，请选择“警报”。
+若要查看活动警报和导致警报触发的基础规则，请选择“警报”。****
 
 ![“警报”按钮的屏幕截图](media/app-map/alerts.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "77666269"
 
 ## <a name="set-cloud-role-name"></a>设置云角色名称
 
-应用程序映射使用 "**云角色名称**" 属性标识地图上的组件。 Application Insights SDK 会自动向组件发出的遥测添加云角色名称属性。 例如，SDK 会将网站名称或服务角色名称添加到云角色名称属性。 但是，在某些情况下，你可能希望替代默认值。 若要替代云角色名称并更改应用程序映射上显示的内容，请执行以下操作：
+应用程序映射使用**云角色名称**属性来标识映射上的组件。 Application Insights SDK 会自动将云角色名称属性添加到组件发出的遥测数据。 例如，SDK 会将网站名称或服务角色名称添加到云角色名称属性。 但是，在某些情况下，你可能希望替代默认值。 若要替代云角色名称并更改要在应用程序映射上显示的内容，请如下所示进行操作：
 
 ### <a name="netnet-core"></a>.NET/.NET Core
 
@@ -110,9 +110,9 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**ASP.NET apps：将初始值设定项加载到活动 TelemetryConfiguration**
+**ASP.NET应用：将初始化程序加载到活动遥测配置**
 
-在 Applicationinsights.config 中：
+在 ApplicationInsights.config 中：
 
 ```xml
     <ApplicationInsights>
@@ -124,7 +124,7 @@ namespace CustomInitializer.Telemetry
     </ApplicationInsights>
 ```
 
-ASP.NET Web 应用的另一种方法是在代码中实例化初始值设定项，例如在 Global.aspx.cs 中：
+ASP.NET Web 应用程序的另一种方法是在代码中（例如在 Global.aspx.cs 中）实例化初始值设定项：
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -140,9 +140,9 @@ ASP.NET Web 应用的另一种方法是在代码中实例化初始值设定项�
 > [!NOTE]
 > 使用 `ApplicationInsights.config` 或使用 `TelemetryConfiguration.Active` 添加初始值设定项对于 ASP.NET Core 应用程序无效。 
 
-**ASP.NET Core 应用：将初始值设定项加载到 TelemetryConfiguration**
+**ASP.NET核心应用：将初始化程序加载到遥测配置**
 
-对于[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)应用程序，通过将新 `TelemetryInitializer` 添加到依赖关系注入容器来添加新，如下所示。 这是在 `Startup.cs` 类 `ConfigureServices` 方法中完成的。
+对于 [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) 应用程序，添加新的 `TelemetryInitializer` 是通过将其添加到依赖项注入容器来完成的，如下所示。 这是在 `Startup.cs` 类的 `ConfigureServices` 方法中完成的。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -191,7 +191,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 
 `spring.application.name=<name-of-app>`
 
-春季 Boot starter 会自动将云角色名称分配给为 spring.application.name 属性输入的值。
+Spring Boot 入门版会自动将云角色名称分配给你为 spring.application.name 属性输入的值。
 
 ### <a name="clientbrowser-side-javascript"></a>客户端/浏览器端 JavaScript
 
@@ -204,17 +204,17 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 ```
 
-### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>了解应用程序映射上下文内的云角色名称
+### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>了解应用程序映射上下文中的云角色名称
 
-至于如何考虑**云角色名称**，查看具有多个云角色名称的应用程序映射会很有帮助：
+以下包含多个云角色名称的应用程序映射可帮助你加深对**云角色名称**的理解：
 
 ![应用程序映射屏幕截图](media/app-map/cloud-rolename.png)
 
-在应用程序中，绿色框中每个名称以上的每个名称都是此特定分布式应用程序的不同方面的云角色名称值。 因此，对于此应用程序，其角色包括： `Authentication`、`acmefrontend`、`Inventory Management`和 `Payment Processing Worker Role`。 
+在上面的应用程序映射中，绿框中的每个名称是云角色名称值，它们反映了此特定分布式应用程序的不同方面。 因此，此应用的角色由 `Authentication`、`acmefrontend`、`Inventory Management` 和 `Payment Processing Worker Role` 组成。 
 
-在此应用中，每个云角色名称还表示一个具有自己的检测密钥的不同唯一 Application Insights 资源。 由于此应用程序的所有者有权访问这四个不同 Application Insights 资源中的每一项，因此应用程序映射可以将基础关系的映射汇聚在一起。
+对于此应用，其中的每个云角色名称也代表具有自身检测密钥的唯一 Application Insights 资源。 由于此应用程序的所有者有权访问这四个不同 Application Insights 资源中的每一个，因此，应用程序映射可将基础关系的映射拼接到一起。
 
-对于[官方定义](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93)：
+[官方定义](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93)：
 
 ```
    [Description("Name of the role the application is a part of. Maps directly to the role name in azure.")]
@@ -226,13 +226,13 @@ appInsights.addTelemetryInitializer((envelope) => {
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-或者，在**云角色名称**告诉你 web 前端出现问题的情况**下，你**可能会在多个负载均衡的服务器上运行 web 前端，以便能够通过 Kusto 查询深入了解层，并了解问题是否影响了所有 web 前端服务器/实例，或者只是一个非常重要的情况。
+或者，**云角色实例**可帮助实现以下方案：尽管**云角色名称**会告知问题出现在 Web 前端中的某个位置，但你可能在多个负载均衡的服务器中运行 Web 前端，因此，能够通过 Kusto 查询下钻到更深的层并了解问题是影响所有 Web 前端服务器/实例还是只影响其中的一个服务器/实例可能极其重要。
 
-如果你的应用程序是在容器化环境中运行的，则你可能需要替代云角色实例的值，这种情况下，仅知道单个服务器可能没有足够的信息来查找给定的问题。
+另一个方案是，应用在容器化环境中运行，仅仅了解单个服务器可能无法获得足够的信息来找出给定的问题，因此需要替代云角色实例的值。
 
-若要详细了解如何用遥测初始化表达式替代 "云角色名称" 属性，请参阅[添加属性： ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)。
+有关如何使用遥测初始化程序重写云角色名称属性的详细信息，请参阅[添加属性：I遥测初始化器](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果无法让应用程序映射按预期方式工作，请尝试以下步骤：
 
@@ -240,29 +240,29 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 1. 请确保你使用的是官方支持的 SDK。 不受支持的/社区 SDK 可能不支持关联。
 
-    有关受支持的 SDK 的列表，请参考此[文章](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)。
+    有关受支持的 SDK 列表，请参阅[本文](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)。
 
 2. 将所有组件都升级到最新 SDK 版本。
 
-3. 如果将 Azure Functions 与 C# 一起使用，请升级到 [Functions V2](https://docs.microsoft.com/azure/azure-functions/functions-versions)。
+3. 如果将 Azure 函数与 C# 一起使用，则升级到[函数 V2](https://docs.microsoft.com/azure/azure-functions/functions-versions)。
 
-4. 确认正确配置了[云角色名称](#set-cloud-role-name)。
+4. 确认[云角色名称](#set-cloud-role-name)已正确配置。
 
 5. 如果缺少某个依赖项，请确保它在[自动收集的依赖项](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)列表中。 如果不在其中，也可以使用某个[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪它。
 
-### <a name="too-many-nodes-on-the-map"></a>地图上的节点太多
+### <a name="too-many-nodes-on-the-map"></a>映射中存在过多的节点
 
-应用程序映射为你的请求遥测中存在的每个唯一云角色名称构造一个应用程序节点，并为依赖项遥测中类型、目标和云角色名称的每个唯一组合构造一个依赖项节点。 如果你的遥测中有10000个以上的节点，应用程序映射将无法获取所有节点和链接，因此你的映射将不完整。 如果发生这种情况，则查看地图时，将显示一条警告消息。
+应用程序映射为请求遥测中的每个唯一云角色名称构造一个应用程序节点，并为依赖项遥测中的类型、目标和云角色名称的每个唯一组合构造一个依赖项节点。 如果遥测中包含 10,000 个以上的节点，则应用程序映射无法提取所有的节点和链接，因此映射是不完整的。 如果发生这种情况，查看映射时会显示一条警告消息。
 
-此外，应用程序映射仅支持最多1000个单独呈现的未分组节点。 应用程序映射通过将具有相同类型和调用方的依赖项组合在一起，降低了视觉对象的复杂性，但是，如果你的遥测具有太多独特的云角色名称或依赖关系类型太多，则该分组将会不足，并且映射将无法呈现.
+此外，应用程序映射最多仅支持一次性呈现的 1000 个独立未分组节点。 应用程序映射将具有相同类型和调用方的依赖项分组到一起，因此可降低了视觉复杂性。但是，如果遥测包含过多的唯一云角色名称或过多的依赖项类型，则这种分组并不足够，并且映射无法呈现。
 
-若要解决此问题，需要更改检测，以正确设置云角色名称、依赖关系类型和依赖项目标字段。
+若要解决此问题，需要更改检测，以正确设置云角色名称、依赖项类型和依赖项目标字段。
 
-* 依赖关系目标应表示依赖项的逻辑名称。 在许多情况下，它等效于依赖项的服务器或资源名称。 例如，在 HTTP 依赖项情况下，它设置为主机名。 它不应包含从一个请求更改到另一个请求的唯一 Id 或参数。
+* 依赖项目标应代表依赖项的逻辑名称。 在许多情况下，它相当于依赖项的服务器或资源名称。 例如，对于 HTTP 依赖项，其目标将设置为主机名。 依赖项目标不应包含会在不同的请求中发生变化的唯一 ID 或参数。
 
-* 依赖关系类型应表示依赖项的逻辑类型。 例如，HTTP、SQL 或 Azure Blob 是典型的依赖项类型。 它不应包含唯一 Id。
+* 依赖项类型应代表依赖项的逻辑类型。 例如，HTTP、 SQL 或 Azure Blob 就是典型的依赖项类型。 它不应包含唯一 ID。
 
-* [上述部分](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)介绍了云角色名称的用途。
+* [上面的部分](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)介绍了云角色名称的用途。
 
 ## <a name="portal-feedback"></a>门户反馈
 
@@ -272,6 +272,6 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解相关工作原理 Application Insights 参阅[遥测相关文章](correlation.md)。
-* [端到端事务诊断体验](transaction-diagnostics.md)将所有 Application Insights 监视的组件中的服务器端遥测关联到一个视图中。
-* 有关 ASP.NET Core 和 ASP.NET 中的高级关联方案，请参阅[跟踪自定义操作](custom-operations-tracking.md)一文。
+* 要了解有关相关性在应用程序见解中的工作方式，请参阅[遥测相关文章](correlation.md)。
+* [端到端事务诊断体验](transaction-diagnostics.md)将来自所有应用程序见解监控组件的服务器端遥测关联到单个视图中。
+* 有关ASP.NET核心和ASP.NET的高级关联方案，请参阅[跟踪自定义操作](custom-operations-tracking.md)一文。

@@ -1,5 +1,5 @@
 ---
-title: 用于 Azure Vm 的安全功能
+title: 与 Azure VM 一起使用的安全功能
 titleSuffix: Azure security
 description: 本文概述了能够与 Azure 虚拟机配合使用的核心 Azure 安全功能。
 services: security
@@ -17,14 +17,14 @@ ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
 ms.openlocfilehash: a1726e18ea8c1ba86d77d7b9ca3d50c444620361
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657157"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虚拟机安全概述
-本文概述了可用于虚拟机的核心 Azure 安全功能。
+本文概述了可与虚拟机一起使用的核心 Azure 安全功能。
 
 可使用 Azure 虚拟机灵活地部署各种计算解决方案。 该服务支持 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP 和 Azure BizTalk Services。 因此，几乎可在任何操作系统上部署任何工作负载和任何语言。
 
@@ -46,12 +46,12 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 
 适用于 Azure 的 Microsoft 反恶意软件是针对应用程序和租户环境的单一代理解决方案。 它旨在后台运行，且无需人工干预。 可以根据应用程序工作负荷的需求，选择默认的基本安全性或高级的自定义配置（包括反恶意软件监视）来部署保护。
 
-详细了解适用[于 Azure 的 Microsoft 反恶意软件](antimalware.md)和可用的核心功能。
+详细了解适用于[Azure 的 Microsoft 反恶意软件](antimalware.md)以及可用的核心功能。
 
 了解有关反恶意软件的详细信息以保护虚拟机：
 
 * [在 Azure 虚拟机上部署反恶意软件解决方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [如何在 Windows VM 上安装和配置服务型 Trend Micro Deep Security](/azure/virtual-machines/windows/classic/install-trend)
+* [如何在 Windows VM 上安装和配置趋势微型深层安全作为服务](/azure/virtual-machines/windows/classic/install-trend)
 * [如何在 Windows VM 上安装和配置 Symantec Endpoint Protection](/azure/virtual-machines/windows/classic/install-symantec)
 * [Azure 市场中的安全解决方案](https://azure.microsoft.com/marketplace/?term=security)
 
@@ -79,12 +79,12 @@ Azure 虚拟机可用于灵活地进行虚拟化，而无需购买和维护运�
 
 了解详细信息：
 
-* [什么是 Azure 密钥保管库？](/azure/key-vault/key-vault-overview)
+* [什么是 Azure Key Vault？](/azure/key-vault/key-vault-overview)
 * [Azure 密钥保管库博客](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>虚拟机磁盘加密
 
-Azure 磁盘加密是用于加密 Windows 和 Linux 虚拟机磁盘的新功能。 Azure 磁盘加密利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。
+Azure 磁盘加密是用于加密 Windows 和 Linux 虚拟机磁盘的新功能。 Azure 磁盘加密使用 Windows 的行业标准[BitLocker](https://technet.microsoft.com/library/cc732774.aspx)功能和 Linux 的[dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)功能为操作系统和数据磁盘提供卷加密。
 
 该解决方案与 Azure Key Vault 集成，帮助用户控制和管理 Key Vault 订阅中的磁盘加密密钥和机密。 它可确保虚拟机磁盘上的所有数据在 Azure 存储中静态加密。
 
@@ -100,7 +100,7 @@ Azure 备份是一种可缩放的解决方案，无需资本投资便可帮助�
 了解详细信息：
 
 * [什么是 Azure 备份？](/azure/backup/backup-introduction-to-azure-backup)
-* [Azure 备份服务 - 常见问题解答](/azure/backup/backup-azure-backup-faq)
+* [Azure 备份服务常见问题解答](/azure/backup/backup-azure-backup-faq)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
@@ -117,7 +117,7 @@ Site Recovery：
 了解详细信息：
 
 * [什么是 Azure Site Recovery？](/azure/site-recovery/site-recovery-overview)
-* [Azure Site Recovery 的工作原理是什么？](/azure/site-recovery/site-recovery-components)
+* [Azure 站点恢复如何工作？](/azure/site-recovery/site-recovery-components)
 * [哪些工作负荷受 Azure Site Recovery 保护？](/azure/site-recovery/site-recovery-workload)
 
 ## <a name="virtual-networking"></a>虚拟网络
@@ -130,7 +130,7 @@ Azure 虚拟网络是一个构建于物理 Azure 网络结构之上的逻辑构�
 
 * [Azure 网络安全概述](network-overview.md)
 * [虚拟网络概述](/azure/virtual-network/virtual-networks-overview)
-* [Networking features and partnerships for Enterprise scenarios](https://azure.microsoft.com/blog/networking-enterprise/)（网络功能和用于企业方案的合作关系）
+* [企业方案的网络功能和伙伴关系](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>安全策略管理和报告
 
@@ -171,4 +171,4 @@ TEE 可以确保无法从外部查看数据或执行操作，即使通过调试�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Vm 和操作系统的[最佳安全方案](iaas.md)。
+了解 VM 和操作系统[的安全最佳实践](iaas.md)。

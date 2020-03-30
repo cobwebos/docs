@@ -1,19 +1,19 @@
 ---
-title: 诊断实时指标流 Azure 应用程序 Insights
+title: 使用实时指标流诊断 - Azure 应用程序见解
 description: 通过自定义指标实时监视 Web 应用，使用实时失败、跟踪和事件源以诊断问题。
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.openlocfilehash: ea0d786d0b8b96941d791bcc8e92fad9a869c5f3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670094"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
-通过使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的实时指标流探测实时和生产时的 Web 应用程序的信号。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。 以及[探查器](../../azure-monitor/app/profiler.md)、[快照调试器](../../azure-monitor/app/snapshot-debugger.md)。 实时指标流为您的实时网站提供了一个功能强大且不具侵害性的诊断工具。
+通过使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的实时指标流探测实时和生产时的 Web 应用程序的信号。 选择并筛选指标和性能计数器进行实时监视，且服务不会受到任何干扰。 从失败请求和异常的样本中检查堆栈跟踪。 与 [Profiler](../../azure-monitor/app/profiler.md)、[Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md) 一起使用。 实时指标流为实时网站提供了功能强大的非侵入式诊断工具。
 
 使用实时指标流可实现以下操作：
 
@@ -27,13 +27,13 @@ ms.locfileid: "77670094"
 
 [![实时指标流视频](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
-目前支持 ASP.NET、ASP.NET Core、Azure Functions、Java 和 node.js 应用的实时指标。
+目前 ASP.NET、ASP.NET Core、Azure Functions、Java 和 Node.js 应用支持实时指标。
 
 ## <a name="get-started"></a>入门
 
 1. 如果尚未在 Web 应用中[安装 Application Insights](../../azure-monitor/azure-monitor-app-hub.yml)，现在请进行安装。
 2. 若要启用实时指标流，除了标准 Application Insights 包之外，还需要 [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/)。
-3. 更新到最新版本的 Application Insights 包。 在 Visual Studio 中右键单击项目，然后选择“管理 NuGet 包”。 打开“更新”选项卡，并选择所有的 Microsoft.ApplicationInsights.* 包。
+3. 更新到最新版本的 Application Insights 包。**** 在 Visual Studio 中右键单击项目，然后选择“管理 NuGet 包”。**** 打开“更新”**** 选项卡，并选择所有的 Microsoft.ApplicationInsights.* 包。
 
     重新部署应用。
 
@@ -54,7 +54,7 @@ ms.locfileid: "77670094"
 |按需|打开实时指标时会流式处理数据|每当安装并启用 SDK 时会发送数据|
 |免费|实时流数据不收取费用|遵从[定价](../../azure-monitor/app/pricing.md)中的标准
 |采样|传输所有选择的指标和计数器。 对失败和堆栈跟踪进行采样。 不应用 TelemetryProcessors。|可能会对事件进行[采样](../../azure-monitor/app/api-filtering-sampling.md)|
-|控制通道|筛选器的控制信号会发送到 SDK。 建议确保此通道的安全。|通信是到门户的一种方式|
+|控制通道|筛选器的控制信号会发送到 SDK。 建议确保此通道的安全。|通信为单向通信，即通向门户|
 
 ## <a name="select-and-filter-your-metrics"></a>选择和筛选指标
 
@@ -83,7 +83,7 @@ ms.locfileid: "77670094"
 
 注意：目前，对于基于异常消息的条件，请使用外部异常消息。 在前面的示例中，若要筛选出具有内部异常消息“客户端已断开连接”（追随“<--”分隔符查找）的良性异常， 请使用不包含“读取请求内容时出错”条件的消息。
 
-单击实时源中的某个项可查看其详细信息。 可以通过单击“暂停”、向下滚动或单击某个项来暂停源。 在实时源处于暂停状态时，滚回到顶部后，或者单击收集的项的计数器时，该实时源会恢复。
+单击实时源中的某个项可查看其详细信息。 可以通过单击“暂停”、向下滚动或单击某个项来暂停源。**** 在实时源处于暂停状态时，滚回到顶部后，或者单击收集的项的计数器时，该实时源会恢复。
 
 ![采样的实时失败](./media/live-stream/live-metrics-eventdetail.png)
 
@@ -149,11 +149,11 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 ### <a name="azure-function-apps"></a>Azure 函数应用
 
-对于 Azure Function Apps （v2），可以使用环境变量来实现使用 API 密钥保护通道。
+对于使用 API 密钥保护通道的 Azure 函数应用 (v2)，可以通过一个环境变量来实现。
 
-从 Application Insights 资源中创建一个 API 密钥，并转到你的 Function App 的**应用程序设置**。 选择“添加新设置”并输入名称 `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 和与你的 API 密钥对应的值。
+从 Application Insights 资源中创建一个 API 密钥，并转到你的 Function App 的**应用程序设置**。 选择“添加新设置”**** 并输入名称 `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 和与你的 API 密钥对应的值。
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core （需要 Application Insights ASP.NET Core SDK 2.3.0 或更高版本）
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET核心（需要应用程序洞察ASP.NET核心 SDK 2.3.0 或更高）
 
 如下所述修改 startup.cs 文件：
 
@@ -179,31 +179,31 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 
 ## <a name="supported-features-table"></a>支持的功能表
 
-| 语言                         | 基本指标       | 性能指标 | 自定义筛选    | 示例遥测    | CPU 按进程拆分 |
+| 语言                         | 基本指标       | 性能指标 | 自定义筛选    | 样本遥测数据    | CPU 按进程划分 |
 |----------------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:---------------------|
-| .NET                             | 支持（V 2.7.2 +） | 支持（V 2.7.2 +） | 支持（V 2.7.2 +） | 支持（V 2.7.2 +） | 支持（V 2.7.2 +）  |
-| .NET Core （target = .NET Framework）| 支持（V 2.4.1 +） | 支持（V 2.4.1 +） | 支持（V 2.4.1 +） | 支持（V 2.4.1 +） | 支持（V 2.4.1 +）  |
-| .NET Core （target = NET.TCP Core）     | 支持（V 2.4.1 +） | 支持*          | 支持（V 2.4.1 +） | 支持（V 2.4.1 +） | **不支持**    |
+| .NET                             | 支持 (V2.7.2+) | 支持 (V2.7.2+) | 支持 (V2.7.2+) | 支持 (V2.7.2+) | 支持 (V2.7.2+)  |
+| .NET Core（目标=.NET Framework）| 支持 (V2.4.1+) | 支持 (V2.4.1+) | 支持 (V2.4.1+) | 支持 (V2.4.1+) | 支持 (V2.4.1+)  |
+| .NET Core（目标=.NET Core）     | 支持 (V2.4.1+) | 支持*          | 支持 (V2.4.1+) | 支持 (V2.4.1+) | **不支持**    |
 | Azure Functions v2               | 支持           | 支持           | 支持           | 支持           | **不支持**    |
-| Java                             | 支持（V 2.0.0 +） | 支持（V 2.0.0 +） | **不支持**   | **不支持**   | **不支持**    |
-| Node.js                          | 支持（V 1.3.0 +） | 支持（V 1.3.0 +） | **不支持**   | 支持（V 1.3.0 +） | **不支持**    |
+| Java                             | 支持 (V2.0.0+) | 支持 (V2.0.0+) | **不支持**   | **不支持**   | **不支持**    |
+| Node.js                          | 支持 (V1.3.0+) | 支持 (V1.3.0+) | **不支持**   | 支持 (V1.3.0+) | **不支持**    |
 
 基本指标包括请求、依赖项和异常率。 性能指标（性能计数器）包括内存和 CPU。 示例遥测显示了有关失败的请求和依赖项、异常、事件和跟踪的详细信息流。
 
- \* PerfCounters 支持在不面向 .NET Framework 的 .NET Core 版本上略有不同：
+ \* PerfCounters 支持在不针对 .NET Framework 的 .NET Core 版本之间略有不同：
 
-- 在 Windows Azure App Service 中运行时，支持 PerfCounters 指标。 （AspNetCore SDK 版本2.4.1 或更高版本）
-- 当应用程序在任何 Windows 计算机（VM 或云服务或本地等）中运行时，支持 PerfCounters。（AspNetCore SDK 版本2.7.1 或更高版本），但适用于面向 .NET Core 2.0 或更高版本的应用。
-- 当应用程序在最新的 beta 版（即，linux、Windows、适用于 Linux 的应用服务、容器等）中运行时，支持 PerfCounters AspNetCore SDK 版本 2.8.0-beta1 或更高版本），但面向 .NET Core 2.0 或更高版本的应用。
+- 在适用于 Windows 的 Azure 应用服务中运行时，支持 PerfCounters 指标。 （AspNetCore SDK 版本 2.4.1 或更高版本）
+- 当应用在任何 Windows 计算机（VM、云服务或本地等）上运行时（AspNetCore SDK 版本 2.7.1 或更高版本），支持 PerfCounters，但针对 .NET Core 2.0 或更高版本的应用除外。
+- 当应用以最新 Beta 版本（即，AspNetCore SDK 版本 2.8.0-beta1 或更高版本）在任何地方（Linux、Windows、适用于 Linux 的应用服务、容器等） 运行时，都支持 PerfCounters，但针对 .NET Core 2.0 或更高版本的应用除外。
 
-默认情况下，在 node.js SDK 中禁用实时度量值。 若要启用实时指标，请在初始化 SDK 时将 `setSendLiveMetrics(true)` 添加到[配置方法](https://github.com/Microsoft/ApplicationInsights-node.js#configuration)。
+默认情况下，Node.js SDK 中禁用了实时指标。 若要启用实时指标，请在初始化 SDK 时将 `setSendLiveMetrics(true)` 添加到[配置方法](https://github.com/Microsoft/ApplicationInsights-node.js#configuration)。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
-没有数据？ 如果你的应用程序位于受保护的网络中：实时指标流使用不同于其他 Application Insights 遥测的 IP 地址。 请确保在防火墙中开放[这些 IP 地址](../../azure-monitor/app/ip-addresses.md)。
+没有数据？ 如果应用程序处于受保护的网络中：实时指标流使用与其他应用程序见解遥测不同的 IP 地址。 请确保在防火墙中开放[这些 IP 地址](../../azure-monitor/app/ip-addresses.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [使用 Application Insights 监视使用情况](../../azure-monitor/app/usage-overview.md)
 * [使用诊断搜索](../../azure-monitor/app/diagnostic-search.md)
-* [探查器](../../azure-monitor/app/profiler.md)
+* [分析器](../../azure-monitor/app/profiler.md)
 * [快照调试器](../../azure-monitor/app/snapshot-debugger.md)

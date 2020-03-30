@@ -1,6 +1,6 @@
 ---
-title: 配置 Azure ExpressRoute v1
-description: 适用于 PowerApps 和 Azure ExpressRoute 的应用服务环境网络配置。 此文档仅为使用旧版 v1 ASE 的客户提供。
+title: 配置 Azure 快速路由 v1
+description: 使用 Azure ExpressRoute 为电源应用应用服务环境的网络配置。 此文档仅提供给使用旧版 v1 ASE 的客户。
 author: stefsch
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
 ms.topic: article
@@ -8,15 +8,15 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243869"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>使用 Azure ExpressRoute 的 PowerApps 的应用服务环境网络配置详细信息
 
-客户可将[Azure ExpressRoute][ExpressRoute]线路连接到虚拟网络基础结构，以将其本地网络扩展到 Azure。 应用服务环境在[虚拟网络][virtualnetwork]基础结构的子网中创建。 然后，应用服务环境中运行的应用可以与只能通过 ExpressRoute 连接访问的后端资源建立安全连接。  
+客户可以将 [Azure ExpressRoute][ExpressRoute] 线路连接到虚拟网络基础结构，以将其本地网络扩展到 Azure。 可以在[虚拟网络][virtualnetwork]基础结构的子网中创建应用服务环境。 然后，应用服务环境中运行的应用可以与只能通过 ExpressRoute 连接访问的后端资源建立安全连接。  
 
 可在以下方案中创建应用服务环境：
 - Azure 资源管理器虚拟网络。
@@ -49,11 +49,11 @@ ms.locfileid: "79243869"
 
 * 出站网络路径不能遍历内部企业代理，也不可以使用本地的强制隧道。 这些操作会更改来自应用服务环境的出站网络流量的有效 NAT 地址。 更改应用服务环境出站网络流量的 NAT 地址会导致无法连接到许多终结点。 创建应用服务环境将会失败。 任何现有的应用服务环境将被标记为不正常。
 
-* 必须允许应用服务环境通过入站网络访问所需的端口。 有关详细信息，请参阅[如何控制要应用服务环境的入站流量][requiredports]。
+* 必须允许应用服务环境通过入站网络访问所需的端口。 有关详细信息，请参阅[如何控制应用服务环境的入站流量][requiredports]。
 
-若要满足 DNS 要求，请确保针对虚拟网络配置并维护有效的 DNS 基础结构。 如果创建应用服务环境之后更改了 DNS 配置，开发人员可以强制应用服务环境选择新的 DNS 配置。 可以通过使用[Azure 门户][NewPortal]中应用服务环境管理下的 "**重新启动**" 图标来触发滚动环境重启。 重新启动后，环境即会选择新的 DNS 配置。
+若要满足 DNS 要求，请确保针对虚拟网络配置并维护有效的 DNS 基础结构。 如果创建应用服务环境之后更改了 DNS 配置，开发人员可以强制应用服务环境选择新的 DNS 配置。 可以在 [Azure 门户][NewPortal]中使用“应用服务环境管理”下的“重启”图标，触发滚动环境重新启动。**** 重新启动后，环境即会选择新的 DNS 配置。
 
-若要完成入站网络访问要求，请在应用服务环境子网上配置[网络安全组（NSG）][NetworkSecurityGroups] 。 NSG 允许所需的访问[控制入站流量应用服务环境][requiredports]。
+若要满足入站网络访问要求，请在应用服务环境子网中配置[网络安全组 (NSG)][NetworkSecurityGroups]。 NSG 允许进行所需的访问，以[控制应用服务环境的入站流量][requiredports]。
 
 ## <a name="outbound-network-connectivity"></a>出站网络连接
 
@@ -77,30 +77,30 @@ ms.locfileid: "79243869"
 > 
 > 
 
-有关用户定义路由的背景信息，请参阅[虚拟网络流量路由][UDROverview]。  
+有关用户定义的路由的背景信息，请参阅[虚拟网络流量路由][UDROverview]。  
 
-若要了解如何创建和配置用户定义的路由，请参阅[使用 PowerShell 通过路由表路由网络流量][UDRHowTo]。
+若要了解如何创建和配置用户定义的路由，请参阅 [使用 PowerShell 通过路由表路由网络流量][UDRHowTo]。
 
 ## <a name="udr-configuration"></a>UDR 配置
 
 本部分介绍应用服务环境的示例 UDR 配置。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
-* 从[Azure 下载页][AzureDownloads]安装 Azure PowerShell。 请选择下载发布日期为 2015 年 6 月或更晚的版本。 在“命令行工具” **“Windows PowerShell”下，选择“安装”以安装最新的 PowerShell cmdlet。**  > 
+* 从 [Azure 下载页][AzureDownloads]安装 Azure PowerShell。 请选择下载发布日期为 2015 年 6 月或更晚的版本。 在**命令行工具** > **Windows PowerShell**下，选择 **"安装**"以安装最新的 PowerShell cmdlet。
 
 * 创建专供应用服务环境使用的唯一子网。 该唯一子网确保应用到子网的 UDR 只会打开应用服务环境的出站流量。
 
 > [!IMPORTANT]
 > 只有在完成配置步骤之后，才能部署应用服务环境。 这些步骤确保在尝试部署应用服务环境之前出站网络连接可用。
 
-### <a name="step-1-create-a-route-table"></a>步骤1：创建路由表
+### <a name="step-1-create-a-route-table"></a>步骤 1：创建路由表
 
 如以下代码片段所示，在“美国西部”Azure 区域创建名为 **DirectInternetRouteTable** 的路由表：
 
 `New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
-### <a name="step-2-create-routes-in-the-table"></a>步骤2：在表中创建路由
+### <a name="step-2-create-routes-in-the-table"></a>步骤 2：在表中创建路由
 
 将路由添加到路由表，以启用出站 Internet 访问。  
 
@@ -110,7 +110,7 @@ ms.locfileid: "79243869"
 
 0.0.0.0/0 是广泛的地址范围。 该范围将被 ExpressRoute 播发的更具体地址范围所替代。 使用 0.0.0.0/0 路由的 UDR 应与仅播发 0.0.0.0/0 的 ExpressRoute 配置结合使用。 
 
-或者，可以下载 Azure 当前使用的完整 CIDR 范围列表。 所有 Azure IP 地址范围的 XML 文件均可从[Microsoft 下载中心][DownloadCenterAddressRanges]获取。  
+或者，可以下载 Azure 当前使用的完整 CIDR 范围列表。 可从 [Microsoft 下载中心][DownloadCenterAddressRanges]获取所有 Azure IP 地址范围的 XML 文件。  
 
 > [!NOTE]
 >
@@ -119,13 +119,13 @@ ms.locfileid: "79243869"
 > 单个 UDR 的默认上限为 100 个路由。 需要“汇总”Azure IP 地址范围以符合 100 个路由的限制。 UDR 定义的路由需要比 ExpressRoute 连接播发的路由更具体。
 > 
 
-### <a name="step-3-associate-the-table-to-the-subnet"></a>步骤3：将表关联到子网
+### <a name="step-3-associate-the-table-to-the-subnet"></a>步骤 3：将表关联到子网
 
 将路由表关联到用于部署应用服务环境的子网。 此命令将 **DirectInternetRouteTable** 表关联到将要包含应用服务环境的 **ASESubnet** 子网。
 
 `Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'`
 
-### <a name="step-4-test-and-confirm-the-route"></a>步骤4：测试和确认路由
+### <a name="step-4-test-and-confirm-the-route"></a>第 4 步：测试和确认路线
 
 将路由表绑定到子网后，请测试并确认路由。
 
@@ -140,7 +140,7 @@ ms.locfileid: "79243869"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始执行 PowerApps 的应用服务环境，请参阅[应用服务环境简介][IntroToAppServiceEnvironment]。
+若要开始使用 PowerApps 的应用服务环境，请参阅[应用服务环境简介][IntroToAppServiceEnvironment]。
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/ 

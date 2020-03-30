@@ -1,14 +1,14 @@
 ---
-title: 请求遥测的数据模型-Azure 应用程序 Insights
+title: 适用于请求遥测的数据模型 - Azure Application Insights
 description: 适用于请求遥测的 Application Insights 数据模型
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671896"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
@@ -17,11 +17,11 @@ ms.locfileid: "77671896"
 
 请求遥测使用自定义的 `properties` 和 `measurements` 支持标准可扩展性模型。
 
-## <a name="name"></a>名称
+## <a name="name"></a>“属性”
 
-请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `GET /values/{id}` 值的 `id`。
+请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `id` 值的 `GET /values/{id}`。
 
-在字母大小写方面，Application Insights Web SDK 会“按原样”发送请求名称。 UI 上的分组区分大小写，因此 `GET /Home/Index` 被视为不同于 `GET /home/INDEX`，即使两者通常生成相同的控制器和操作执行。 原因在于，URL 往往[区分大小写](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 可能想要确定所有 `404` 是否发生在以大写形式键入的 URL 上。 可以通过[博客文章](https://apmtips.com/blog/2015/02/23/request-name-and-url/)中的 ASP.NET Web SDK 在请求名称集合中阅读更多详细信息。
+在字母大小写方面，Application Insights Web SDK 会“按原样”发送请求名称。 UI 上的分组区分大小写，因此 `GET /Home/Index` 被视为不同于 `GET /home/INDEX`，即使两者通常生成相同的控制器和操作执行。 原因在于，URL 往往[区分大小写](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 可能想要确定所有 `404` 是否发生在以大写形式键入的 URL 上。 您可以在[博客帖子](https://apmtips.com/blog/2015/02/23/request-name-and-url/)中通过ASP.NET Web SDK 阅读有关请求名称收集的更多内容。
 
 最大长度：1024 个字符
 

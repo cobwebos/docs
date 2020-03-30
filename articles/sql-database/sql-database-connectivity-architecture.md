@@ -1,6 +1,6 @@
 ---
 title: 连接体系结构
-description: 本文档介绍 azure 中或 Azure 外部的数据库连接的 Azure SQL 连接体系结构。
+description: 本文档介绍了用于从 Azure 内部或 Azure 外部进行数据库连接的 Azure SQL 连接体系结构。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -13,10 +13,10 @@ ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
 ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79256414"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
@@ -24,9 +24,9 @@ ms.locfileid: "79256414"
 > 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
 
 > [!IMPORTANT]
-> 本文不适用于 **Azure SQL 数据库托管实例**。 请参阅[托管实例的连接体系结构](sql-database-managed-instance-connectivity-architecture.md)。
+> 本文不** 适用于 **Azure SQL 数据库托管实例**。 请参阅[托管实例的连接体系结构](sql-database-managed-instance-connectivity-architecture.md)。
 
-本文介绍了将网络流量定向到 Azure SQL 数据库或 SQL 数据仓库的各种组件的体系结构。 它还介绍了不同的连接策略，以及它如何影响从 Azure 内部连接的客户端和从 Azure 外部连接的客户端。 
+本文介绍将网络流量定向到 Azure SQL 数据库或 SQL 数据仓库的各种组件的体系结构。 它还解释了不同的连接策略，以及它如何影响从 Azure 内部连接的客户端和从 Azure 外部连接的客户端。 
 
 ## <a name="connectivity-architecture"></a>连接体系结构
 
@@ -44,15 +44,15 @@ ms.locfileid: "79256414"
 
 Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三个选项：
 
-- **重定向（推荐）：** 客户端直接建立与托管数据库的节点的连接，从而降低延迟并提高吞吐量。 对于使用此模式的连接，客户端需要：
-   - 允许从客户端到 11000 11999 范围内端口上的所有 Azure IP 地址的出站通信。 使用 SQL 服务标记，使其更易于管理。  
-   - 允许从客户端到端口1433上的 Azure SQL 数据库网关 IP 地址的出站通信。
+- **重定向（推荐）：** 客户端直接建立与托管数据库的节点的连接，从而降低延迟并提高吞吐量。 要使用此模式的连接，客户端需要：
+   - 允许从客户端向区域中所有 Azure IP 地址进行 11000 11999 范围内的所有 Azure IP 地址的通信。 使用 SQL 的服务标记使其更易于管理。  
+   - 允许从客户端到端口 1433 上的 Azure SQL 数据库网关 IP 地址的出站通信。
 
-- **代理：** 在此模式下，所有连接都通过 Azure SQL 数据库网关进行代理，从而提高延迟并降低吞吐量。 对于使用此模式的连接，客户端需要允许从客户端到端口1433上的 Azure SQL 数据库网关 IP 地址的出站通信。
+- **代理：** 在此模式下，所有连接都通过 Azure SQL 数据库网关进行接近，从而导致延迟增加和吞吐量降低。 要使用此模式的连接，客户端需要允许从客户端到端口 1433 上的 Azure SQL 数据库网关 IP 地址的出站通信。
 
-- **默认值：** 这是在创建之后对所有服务器生效的连接策略，除非显式将连接策略更改为 `Proxy` 或 `Redirect`。 默认策略为源自 Azure 内部的所有客户端连接`Redirect` （例如，从 Azure 虚拟机），并为源自外部（例如，来自本地工作站的连接）的所有客户端连接 `Proxy`。
+- **默认值：** 这是创建后对所有服务器上有效的连接策略，除非您显式将连接策略更改为 或`Proxy``Redirect`。 默认策略适用于`Redirect`源自 Azure 内部的所有客户端连接（例如，来自 Azure 虚拟机）和`Proxy`源自外部的所有客户端连接（例如，来自本地工作站的连接）。
 
- 强烈建议对 `Proxy` 连接策略进行 `Redirect` 连接策略，以实现最低的延迟和最高的吞吐量。但是，你将需要满足如上所述允许网络流量的其他要求。 如果客户端是 Azure 虚拟机，则可以通过使用网络安全组（NSG）和[服务标记](../virtual-network/security-overview.md#service-tags)来实现此目的。 如果客户端从本地工作站进行连接，则你可能需要与网络管理员合作，以允许网络流量通过你的企业防火墙。
+ 我们强烈建议使用 `Redirect` 连接策略而不要使用 `Proxy` 连接策略，以最大程度地降低延迟和提高吞吐量。但是，若要允许上述网络流量，需满足额外要求。 如果客户端为 Azure 虚拟机，则可将网络安全组 (NSG) 与[服务标记](../virtual-network/security-overview.md#service-tags)配合使用来实现它。 如果客户端从本地工作站进行连接，则可能需要联系网络管理员，让其允许网络流量通过公司防火墙。
 
 ## <a name="connectivity-from-within-azure"></a>从 Azure 内部连接
 
@@ -67,20 +67,20 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> 另外，打开端口14000-14999 以启用[与 DAC 的连接](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
+> 另请打开端口 14000-14999，以便[使用 DAC 进行连接](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
 
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL 数据库网关 IP 地址
 
-下表列出了按区域列出的网关 IP 地址。 若要连接到 Azure SQL 数据库，需要允许网络流量从区域的**所有**网关 &。
+下表按区域列出了网关的 IP 地址。 若要连接到 Azure SQL 数据库，需要允许到/来自该区域的**所有**网关的网络流量。
 
-以下文章介绍了如何将流量迁移到特定区域中的新网关： [AZURE SQL 数据库流量迁移到更新的网关](sql-database-gateway-migration.md)
+有关如何将流量迁移到特定区域中的新网关的详细信息，请于以下文章[：Azure SQL 数据库流量迁移到较新的网关](sql-database-gateway-migration.md)
 
 
 | 区域名称          | 网关 IP 地址 |
 | --- | --- |
 | 澳大利亚中部    | 20.36.105.0 |
-| 澳大利亚 Central2   | 20.36.113.0 |
+| 澳大利亚中部2   | 20.36.113.0 |
 | 澳大利亚东部       | 13.75.149.87, 40.79.161.1 |
 | 澳大利亚东南部 | 191.239.192.109, 13.73.109.251 |
 | 巴西南部         | 104.41.11.5, 191.233.200.14 |

@@ -8,10 +8,10 @@ ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: ce995a84d2290845e83416caf9c8b0004242eed4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267750"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>使用 PowerShell 将数据磁盘附加到 Windows VM
@@ -23,7 +23,7 @@ ms.locfileid: "79267750"
 * 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 若要使用高级 SSD，则需要使用[支持高级存储的 VM 类型](sizes-memory.md)，例如 DS 系列或 GS 系列虚拟机。
 
-本文在[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)中使用 PowerShell，它不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”。
+本文在[Azure 云外壳](https://docs.microsoft.com/azure/cloud-shell/overview)中使用 PowerShell，该云外壳会不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”****。
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>将空数据磁盘添加到虚拟机
 
@@ -117,4 +117,4 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="next-steps"></a>后续步骤
 
-你还可以使用模板部署托管磁盘。 有关详细信息，请参阅[在 Azure 中使用托管磁盘资源管理器模板](using-managed-disks-template-deployments.md)或用于部署多个数据磁盘的[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk)。
+还可以使用模板部署托管磁盘。 有关详细信息，请参阅[使用 Azure 资源管理器模板中的托管磁盘](using-managed-disks-template-deployments.md)或[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk)以部署多个数据磁盘。

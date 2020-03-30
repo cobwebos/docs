@@ -1,7 +1,7 @@
 ---
 title: 导出或删除工作区数据
 titleSuffix: Azure Machine Learning
-description: 了解如何通过 Azure 机器学习 studio、CLI、SDK 和通过身份验证的 REST Api 导出或删除工作区。
+description: 了解如何使用 Azure 机器学习工作室、CLI、SDK 和经过身份验证的 REST API 导出或删除工作区。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,10 +12,10 @@ ms.author: laobri
 ms.date: 03/06/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4abef0146b4bf0cfaa254d196b0ca68f0d8ac883
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218294"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>导出或删除机器学习服务工作区数据
@@ -30,7 +30,7 @@ ms.locfileid: "79218294"
 
 ## <a name="control-your-workspace-data"></a>控制工作区数据
 
-通过 Azure 机器学习 studio、CLI、SDK 和通过身份验证的 REST Api，Azure 机器学习存储的产品内数据可用于导出和删除。 可通过 Azure 隐私门户访问遥测数据。 
+通过 Azure 机器学习工作室、CLI、SDK 和经过身份验证的 REST API，可导出和删除 Azure 机器学习存储的产品内数据。 可通过 Azure 隐私门户访问遥测数据。 
 
 在 Azure 机器学习中，个人数据包括运行历史记录文档中的用户信息以及用户与服务之间的一些交互的遥测数据记录。
 
@@ -38,7 +38,7 @@ ms.locfileid: "79218294"
 
 若要删除数据，可以使用 HTTP DELETE 谓词进行以下 API 调用。 它们是通过在请求中放置 `Authorization: Bearer <arm-token>` 标头进行授权的，其中 `<arm-token>` 是 `https://management.core.windows.net/` 终结点的 AAD 访问令牌。  
 
-若要了解如何获取此令牌并调用 Azure 终结点，请参阅[使用 REST 管理 ML 资源](how-to-manage-rest.md)和[azure REST API 文档](https://docs.microsoft.com/rest/api/azure/)。  
+要了解如何获取此令牌并调用 Azure 终结点，请参阅[使用 REST 来管理 ML 资源和](how-to-manage-rest.md)Azure REST API[文档](https://docs.microsoft.com/rest/api/azure/)。  
 
 在下面的示例中，请将 {} 中的文本替换为决定了相关资源的实例名称。
 
@@ -94,7 +94,7 @@ ms.locfileid: "79218294"
 
 若要导出数据，可以使用 HTTP GET 谓词进行以下 API 调用。 它们是通过在请求中放置 `Authorization: Bearer <arm-token>` 标头进行授权的，其中，`<arm-token>` 是终结点 `https://management.core.windows.net/` 的 AAD 访问令牌。  
 
-若要了解如何获取此令牌并调用 Azure 终结点，请参阅[使用 REST 管理 ML 资源](how-to-manage-rest.md)和[azure REST API 文档](https://docs.microsoft.com/rest/api/azure/)。   
+要了解如何获取此令牌并调用 Azure 终结点，请参阅[使用 REST 来管理 ML 资源和](how-to-manage-rest.md)Azure REST API[文档](https://docs.microsoft.com/rest/api/azure/)。   
 
 在下面的示例中，请将 {} 中的文本替换为决定了相关资源的实例名称。
 
@@ -238,25 +238,25 @@ ms.locfileid: "79218294"
 
 ## <a name="delete-assets-in-the-designer"></a>在设计器中删除资产
 
-在创建试验的设计器中，删除各个资产：
+在创建了试验的设计器中删除各个资产：
 
-1. 中转到设计器
+1. 转到设计器
 
     ![删除资产](./media/how-to-export-delete-data/delete-experiment.png)
 
 1. 在列表中，选择要删除的单个管道草案。
 
-1. 选择“删除”。
+1. 选择 **"删除**"。
 
 ### <a name="delete-datasets-in-the-designer"></a>在设计器中删除数据集
 
-若要在设计器中删除数据集，请使用 Azure 门户或存储资源管理器导航到已连接的存储帐户，并删除其中的数据集。 在设计器中注销数据集仅删除存储中的引用点。
+若要在设计器中删除数据集，请使用 Azure 门户或存储资源管理器导航到已连接的存储帐户，删除其中的数据集。 在设计器中注销数据集只会删除存储中的引用点。
 
 ## <a name="export-data-in-the-designer"></a>在设计器中导出数据
 
-在创建了实验的设计器中，导出已添加的数据：
+在创建了试验的设计器中，导出已添加的数据：
 
-1. 在左侧选择 "**数据集**"。
+1. 在左侧选择“数据集”。****
 
 1. 在列表中，选择要导出的数据集
 

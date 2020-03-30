@@ -1,6 +1,6 @@
 ---
-title: 常见查询模式-Azure 数字孪生 |Microsoft Docs
-description: 了解 Azure 数字孪生管理 Api 的几个常见 API 查询模式。
+title: 常见查询模式 - Azure 数字孪生 |微软文档
+description: 了解 Azure 数字孪生管理 API 的几个常见 API 查询模式。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: 133c0e0dcc07afb85a0f3af9ae51d2207abac293
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589107"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>如何在常见任务中查询 Azure 数字孪生 API
@@ -238,4 +238,4 @@ ms.locfileid: "77589107"
 
 要了解如何使用管理 API 进行身份验证，请阅读[使用 API 进行身份验证](./security-authenticating-apis.md)。
 
-若要了解有关 API 终结点的详细信息，请参阅[如何使用数字孪生 Swagger](./how-to-use-swagger.md)。
+要了解有关 API 终结点的更多信息，请阅读[如何使用数字双胞胎摇摆。](./how-to-use-swagger.md)

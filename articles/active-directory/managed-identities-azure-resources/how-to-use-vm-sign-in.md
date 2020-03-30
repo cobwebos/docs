@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure VM 上的托管标识进行登录 Azure AD
+title: 使用 Azure VM 上的托管标识进行登录 - Azure AD
 description: 有关使用 Azure 资源服务主体的 Azure VM 托管标识进行脚本客户端登录和资源访问的逐步说明与示例。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74547386"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何在 Azure VM 上使用 Azure 资源的托管标识进行登录 
@@ -29,7 +29,7 @@ ms.locfileid: "74547386"
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -86,15 +86,15 @@ Azure 资源的托管标识提供一个[服务主体对象](../develop/developer
 
 如下所示的响应可能表示未正确配置 VM 的 Azure 资源的托管标识：
 
-- PowerShell：“Invoke-WebRequest: 无法连接到远程服务器”
-- CLI： *MSI：无法从 `http://localhost:50342/oauth2/token` 检索令牌，出现错误 "HTTPConnectionPool （主机 = ' localhost '，端口 = 50342）"* 
+- PowerShell：“Invoke-WebRequest: 无法连接到远程服务器”**
+- *CLI：MSI：`http://localhost:50342/oauth2/token`未能从"HTTPConnectionPool（主机='本地主机"，端口=50342）的错误中检索令牌* 
 
 如果收到以下错误之一，请在 [Azure 门户](https://portal.azure.com)中返回到 Azure VM 并执行以下操作：
 
-- 转到“标识”页面，确保“系统分配的”已设置为“是”。
-- 转到“扩展”页面，确保已成功部署 Azure 资源扩展的托管标识（计划在 2019 年 1 月弃用）。
+- 转到“标识”页面，确保“系统分配的”已设置为“是”********。
+- 转到“扩展”页面，确保已成功部署 Azure 资源扩展的托管标识（计划在 2019 年 1 月弃用）********。
 
-如果有任何一项不正确，可能都需要在资源上再次重新部署 Azure 资源的托管标识，或排查部署故障。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)。
+如果有任何一项不正确，可能都需要在资源上再次重新部署 Azure 资源的托管标识，或排查部署故障。 如果需要有关 VM 配置的帮助[，请参阅使用 Azure 门户为 VM 上的 Azure 资源配置托管标识](qs-configure-portal-windows-vm.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

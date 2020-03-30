@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: a2ca9a167d50619ed2963b13515c0a772d712570
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77591262"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>从云到设备通信指南
@@ -31,7 +31,7 @@ IoT 中心提供三个选项，允许设备应用向后端应用公开功能：
 
 |  | 直接方法 | 克隆的所需属性 | 云到设备的消息 |
 | ---- | ------- | ---------- | ---- |
-| 场景 | 需要立即确认的命令，例如打开风扇。 | 旨在将设备置于某个所需状态的长时间运行命令。 例如，将遥测发送间隔设置为 30 分钟。 | 提供给设备应用的单向通知。 |
+| 方案 | 需要立即确认的命令，例如打开风扇。 | 旨在将设备置于某个所需状态的长时间运行命令。 例如，将遥测发送间隔设置为 30 分钟。 | 提供给设备应用的单向通知。 |
 | 数据流 | 双向。 设备应用可立即响应方法。 解决方案后端根据上下文接收请求结果。 | 单向。 设备应用接收更改了属性的通知。 | 单向。 设备应用接收消息
 | 持续性 | 不联系已断开连接的设备。 通知解决方案后端：设备未连接。 | 设备孪生会保留属性值。 设备会在下次重新连接时读取属性值。 属性值可通过 [IoT 中心查询语言](iot-hub-devguide-query-language.md)检索。 | IoT 中心可保留消息长达 48 小时。 |
 | 目标 | 使用 **deviceId** 与单个设备通信，或使用[作业](iot-hub-devguide-jobs.md)与多个设备通信。 | 使用 **deviceId** 与单个设备通信，或使用[作业](iot-hub-devguide-jobs.md)与多个设备通信。 | 使用 **deviceId** 与单个设备通信。 |

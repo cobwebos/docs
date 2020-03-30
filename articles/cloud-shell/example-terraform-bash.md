@@ -1,6 +1,6 @@
 ---
-title: 从 Azure Cloud Shell 部署 with Terraform |Microsoft Docs
-description: 从 Azure Cloud Shell 部署 with Terraform
+title: 使用 Azure 云壳的 Terraform 部署 |微软文档
+description: 使用 Azure 云外壳使用 Terraform 进行部署
 services: Azure
 documentationcenter: ''
 author: tomarchermsft
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: f5939251729905d349b79a94411cf87e3873b279
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 8bacadd8941131f608411e61cc15c120c1b2bc60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742065"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458148"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>通过 Terraform 和 Azure Cloud Shell 中的 Bash 进行部署
-本文逐步讲解如何使用 [Terraform AzureRM 提供程序](https://www.terraform.io/docs/providers/azurerm/index.html)创建资源组。 
+本文逐步讲解如何使用 [Terraform AzureRM 提供程序](https://www.terraform.io/docs/providers/azurerm/index.html)创建资源组。
 
-[Hashicorp Terraform](https://www.terraform.io/) 是一个开放工具，可将 API 编码成能够在团队成员之间共享的声明性配置文件，让他们对其进行编辑、审阅和版本控制。 使用 Microsoft AzureRM 提供程序可以通过 AzureRM API 来与 Azure 资源管理器支持的资源交互。 
+[Hashicorp Terraform](https://www.terraform.io/) 是一个开放工具，可将 API 编码成能够在团队成员之间共享的声明性配置文件，让他们对其进行编辑、审阅和版本控制。 使用 Microsoft AzureRM 提供程序可以通过 AzureRM API 来与 Azure 资源管理器支持的资源交互。
 
 ## <a name="automatic-authentication"></a>自动化身份验证
 Terraform 默认已安装在 Cloud Shell 中的 Bash 内。 此外，Cloud Shell 会自动对默认的 Azure CLI 订阅进行身份验证，以通过 Terraform Azure 模块部署资源。
@@ -147,7 +147,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ### <a name="verify-deployment-with-azure-cli"></a>使用 Azure CLI 验证部署
 运行 `az group show -n myRgName` 验证是否已成功预配资源。
 
-```azcliinteractive
+```azurecli-interactive
 az group show -n myRgName
 ```
 
@@ -189,4 +189,4 @@ Destroy complete! Resources: 1 destroyed.
 
 ## <a name="next-steps"></a>后续步骤
 [了解 Terraform Azure 提供程序](https://www.terraform.io/docs/providers/azurerm/#)<br>
-[Bash in Cloud Shell 快速入门](quickstart.md)
+[云壳中的 Bash 快速启动](quickstart.md)

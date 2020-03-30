@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: twooley
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e58e2d929dd1e4db16ce495ad54045e9dc3a6fb1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267412"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager 简介
@@ -33,7 +33,7 @@ StorSimple Snapshot Manager 是一种 Microsoft 管理控制台 (MMC) 管理单�
 
 > [!NOTE]
 > * 不能使用 StorSimple Snapshot Manager 管理 Microsoft Azure StorSimple 虚拟数组（也称为 StorSimple 本地虚拟设备）。
-> * 如果计划在 StorSimple 设备上安装 StorSimple Update 2，请在安装 StorSimple Update 2 前，务必先下载并安装最新版本的 StorSimple Snapshot Manager。 最新版本的 StorSimple Snapshot Manager 向后兼容，并可与所有已发布的 Microsoft Azure StorSimple 版本一起使用。 如果使用的是旧版 StorSimple Snapshot Manager，则需要更新（安装新版本前，无需卸载旧版本）。
+> * 如果计划在 StorSimple 设备上安装 StorSimple Update 2，请在安装 StorSimple Update 2 前，**** 务必先下载并安装最新版本的 StorSimple Snapshot Manager。 最新版本的 StorSimple Snapshot Manager 向后兼容，并可与所有已发布的 Microsoft Azure StorSimple 版本一起使用。 如果使用的是旧版 StorSimple Snapshot Manager，则需要更新（安装新版本前，无需卸载旧版本）。
 > 
 > 
 
@@ -47,7 +47,7 @@ StorSimple Snapshot Manager 提供了一个中心管理控制台，可用于创�
 
 StorSimple Snapshot Manager 提取使用主机上的 VSS 提供程序注册的应用程序的列表。 为了创建应用程序一致性备份，它会检查应用程序所用的卷并建议要配置的卷组。 StorSimple Snapshot Manager 使用这些卷组来生成应用程序一致的备份副本。 （当所有的相关文件和数据库已同步并表示应用程序在特定时间点的真实状态时，即存在应用程序一致性。） 
 
-StorSimple Snapshot Manager 备份采用增量快照的形式，仅捕获自上次备份以来的更改。 因此，备份需要较少的存储空间，可以快速创建和恢复。 StorSimple Snapshot Manager 使用 Windows 卷影复制服务 (VSS) 以确保快照捕获应用程序一致性数据。 （有关详细信息，请参阅与 Windows 卷影复制服务集成部分。）使用 StorSimple Snapshot Manager，你可以根据需要创建备份计划或进行即时备份。 如果需要从备份还原数据，StorSimple Snapshot Manager 会让你从本地或云快照目录中进行选择。 Azure StorSimple 仅在需要时还原所需的数据，这样可以防止在还原操作期间数据可用性发生延迟。）
+StorSimple Snapshot Manager 备份采用增量快照的形式，仅捕获自上次备份以来的更改。 因此，备份需要较少的存储空间，可以快速创建和恢复。 StorSimple Snapshot Manager 使用 Windows 卷影复制服务 (VSS) 以确保快照捕获应用程序一致性数据。 （有关详细信息，请转到"与 Windows 卷卷卷卷复制服务集成"部分。使用 StorSimple 快照管理器，您可以创建备份计划或根据需要立即进行备份。 如果需要从备份还原数据，StorSimple Snapshot Manager 会让你从本地或云快照目录中进行选择。 Azure StorSimple 仅在需要时还原所需的数据，这样可以防止在还原操作期间数据可用性发生延迟。）
 
 ![StorSimple Snapshot Manager 体系结构](./media/storsimple-what-is-snapshot-manager/HCS_SSM_Overview.png)
 
@@ -56,11 +56,11 @@ StorSimple Snapshot Manager 备份采用增量快照的形式，仅捕获自上�
 ## <a name="support-for-multiple-volume-types"></a>支持多种卷类型
 可以使用 StorSimple Snapshot Manager 配置和备份以下类型的卷： 
 
-* **基本卷** － 基本卷是基本磁盘上的单个分区。 
-* **简单卷** － 简单卷是一个动态卷，包含单个动态磁盘中的磁盘空间。 简单卷包含磁盘上的单个区域或同一磁盘上链接在一起的多个区域。 （只能在动态磁盘上创建简单卷。）简单卷不具备容错能力。
-* **动态卷** － 动态卷是在动态磁盘上创建的卷。 动态磁盘使用数据库来跟踪有关卷的信息，这些卷包含在计算机的动态磁盘中。 
-* **具有镜像的动态卷** － 具有镜像的动态卷基于 RAID 1 体系结构。 通过 RAID 1 体系结构，将相同的数据写入两个或更多磁盘中，从而生成镜像集。 然后任何包含所请求数据的磁盘均可处理读取请求。
-* **群集共享卷** － 通过群集共享卷 (CSV)，故障转移群集中的多个节点可以同时读取或写入到同一磁盘中。 可以快速从一个节点故障转移到另一个节点，无需更改驱动器所有权或安装、卸载和移除卷。 
+* **基本卷** – 基本卷是基本磁盘上的单个分区。 
+* **简单卷** – 简单卷是一个动态卷，包含单个动态磁盘提供的磁盘空间。 简单卷包含磁盘上的单个区域或同一磁盘上链接在一起的多个区域。 （只能在动态磁盘上创建简单卷。简单卷不容错。
+* **动态卷** – 动态卷是在动态磁盘上创建的卷。 动态磁盘使用数据库来跟踪有关卷的信息，这些卷包含在计算机的动态磁盘中。 
+* **具有镜像功能的动态卷** – 具有镜像功能的动态卷基于 RAID 1 体系结构构建。 通过 RAID 1 体系结构，将相同的数据写入两个或更多磁盘中，从而生成镜像集。 然后任何包含所请求数据的磁盘均可处理读取请求。
+* **群集共享卷** – 使用群集共享卷 (CSV)，故障转移群集中的多个节点可以同时读取或写入同一磁盘。 可以快速从一个节点故障转移到另一个节点，无需更改驱动器所有权或安装、卸载和移除卷。 
 
 > [!IMPORTANT]
 > 不要在同一快照中混用 CSV 和非 CSV。 不支持在一个快照中混用 CSV 和非 CSV。 
@@ -113,7 +113,7 @@ VSS 的 StorSimple Snapshot Manager 实现适用于 SQL Server 和通用 NTFS �
 可以使用 StorSimple Snapshot Manager 创建以下类型的备份：
 
 * **本地快照** — 本地快照是存储在 StorSimple 设备上的卷数据的时间点副本。 通常可以快速创建并还原此类型的备份。 可以像使用本地备份副本一样使用本地快照。
-* **云快照** — 云快照是存储在云中的卷数据的时间点副本。 云快照等效于在不同的异地存储系统上复制的快照。 在灾难恢复方案中，云快照特别有用。
+* **云快照** – 云快照是存储在云中的卷数据的时间点副本。 云快照等效于在不同的异地存储系统上复制的快照。 在灾难恢复方案中，云快照特别有用。
 
 ### <a name="on-demand-and-scheduled-backups"></a>按需和计划备份
 使用 StorSimple Snapshot Manager，可以立即开始创建一次性备份，也可以使用备份策略来计划定期备份操作。
@@ -124,11 +124,11 @@ VSS 的 StorSimple Snapshot Manager 实现适用于 SQL Server 和通用 NTFS �
 
 为创建的每个备份策略配置以下信息：
 
-* **名称** — 选定备份策略的唯一名称。
-* **类型** — 备份策略的类型；本地快照或云快照。
-* **卷组** — 将选定备份策略分配到的卷组。
-* **保留** — 要保留的备份副本数。 如果选中“**全部**”框，会保留所有的备份副本，直到达到每个卷的最大备份副本数，此时策略会失败并生成一条错误消息。 或者，可以指定要保留的备份数（1 到 64 之间）。
-* **日期** — 创建备份策略的日期。
+* **名称** – 选定备份策略的唯一名称。
+* **类型** – 备份策略的类型；可能是本地快照或云快照。
+* **卷组** – 选定备份策略所分配到的卷组。
+* **保留** – 要保留的备份副本数。 如果你选中 **“所有”** 框，则所有备份副本都会保留，直至达到每个卷的最大备份副本数，此后策略将会失败并生成错误消息。 或者，可以指定要保留的备份数（1 到 64 之间）。
+* **日期** – 创建备份策略的日期。
 
 有关配置备份策略的信息，请转到[使用 StorSimple Snapshot Manager 创建和管理备份策略](storsimple-snapshot-manager-manage-backup-policies.md)。
 
@@ -139,5 +139,5 @@ StorSimple Snapshot Manager 可用于监视和管理即将开始、已计划和�
 
 ## <a name="next-steps"></a>后续步骤
 * 了解有关[使用 StorSimple Snapshot Manager 管理 StorSimple 解决方案](storsimple-snapshot-manager-admin.md)的详细信息。
-* 下载 [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220)。
+* 下载[StorSimple 快照管理器](https://www.microsoft.com/download/details.aspx?id=44220)。
 

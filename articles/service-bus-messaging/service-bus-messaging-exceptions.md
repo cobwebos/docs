@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线故障排除指南 |Microsoft Docs
-description: 本文提供 Azure 服务总线消息传送异常的列表，以及在发生异常时要采取的建议操作。
+title: Azure 服务总线故障排除指南 | Microsoft Docs
+description: 本文提供了 Azure 服务总线消息传送异常以及发生异常时建议采取的措施的列表。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,46 +12,46 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2020
+ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: 37f316af68bc0b20f21eb606e2abc8232f29ce32
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: fb27befadcf8e6d201d020e758cfd1ef9b695f41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759357"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240805"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服务总线故障排除指南
-本文提供了 Service Bus .NET Framework Api 生成的一些 .NET 异常，还提供了解决问题的其他提示。 
+本文提供了服务总线 .NET Framework API 生成的部分 .NET 异常，以及其他故障排除技巧。 
 
-## <a name="service-bus-messaging-exceptions"></a>服务总线消息传递异常
-本部分列出 .NET Framework Api 生成的 .NET 异常。 
+## <a name="service-bus-messaging-exceptions"></a>服务总线消息传送异常
+本部分列出了 .NET Framework API 生成的 .NET 异常。 
 
 ### <a name="exception-categories"></a>异常类别
 消息传送 API 会生成以下类别的异常，以及在尝试修复这些异常时可以采取的相关操作。 异常的含义和原因会因消息传送实体的类型而异：
 
-1. 用户代码错误（[System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)、[System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)、[System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)、[System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)）。 常规操作：继续之前尝试修复代码。
-2. 设置/配置错误（[Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception)、[System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)）。 常规操作：检查配置，必要时进行更改。
-3. 暂时性异常（[Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception)、[Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception)、[Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)）。 常规操作：重试操作或通知用户。 可以将客户端 SDK 中的 `RetryPolicy` 类配置为自动处理重试。 有关详细信息，请参阅[重试指南](/azure/architecture/best-practices/retry-service-specific#service-bus)。
-4. 其他异常（[System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx)、[System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx)、[Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)、[Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception)）。 常规操作：特定于异常类型;请参阅以下部分中的表： 
+1. 用户编码错误（[系统.参数异常](https://msdn.microsoft.com/library/system.argumentexception.aspx)，[系统.无效操作异常](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)，[系统.操作取消异常](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)，[系统.运行时.序列化.序列化异常](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)）。 常规操作：继续之前尝试修复代码。
+2. 设置/配置错误（[微软.服务总线.消息传递.消息实体未发现异常](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception)，[系统.未经授权的访问异常](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)）。 常规操作：检查配置，必要时进行更改。
+3. 瞬态异常（[微软.服务总线.消息传递异常](/dotnet/api/microsoft.servicebus.messaging.messagingexception)，[微软.服务总线.消息.服务器忙异常](/dotnet/api/microsoft.azure.servicebus.serverbusyexception)，[微软.服务总线.消息传递异常](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception)）。 常规操作：重试操作或通知用户。 客户端 SDK 中的 `RetryPolicy` 类可以配置为自动处理重试。 有关详细信息，请参阅[重试指南](/azure/architecture/best-practices/retry-service-specific#service-bus)。
+4. 其他例外（[系统.事务.事务异常](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx)，[系统.超时例外](https://msdn.microsoft.com/library/system.timeoutexception.aspx)，[微软.服务总线.消息.消息锁定异常](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)，[微软.服务总线.消息.会话锁定异常](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception)）。 常规操作：特定于异常类型；请参考以下部分中的表： 
 
 ### <a name="exception-types"></a>异常类型
 下表列出了消息异常的类型及其原因，并说明可以采取的建议性操作。
 
-| **异常类型** | **说明/原因/示例** | **建议的操作** | **自动/立即重试注意事项** |
+| **异常类型** | **说明/原因/示例** | **建议的行动** | **自动/立即重试注意事项** |
 | --- | --- | --- | --- |
-| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |服务器未在指定的时间内响应请求的操作，该操作由[OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings)控制。 服务器可能已完成请求的操作。 这可能是由于网络或其他基础结构延迟造成的。 |检查系统状态的一致性，并根据需要重试。 请参阅[超时异常](#timeoutexception)。 |在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
-| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |不允许在服务器或服务中执行请求的用户操作。 有关详细信息，请查看异常消息。 例如，如果在 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式下收到消息，则 [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) 将生成此异常。 |检查代码和文档。 确保请求的操作有效。 |重试不起作用。 |
-| [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |尝试对已关闭、中止或释放的对象调用某个操作。 在极少数的情况下，已释放环境事务。 |检查代码并确保它不会对已释放的对象调用操作。 |重试不起作用。 |
-| [UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider)对象无法获取令牌，令牌无效，或者令牌不包含执行操作所需的声明。 |确保使用正确的值创建令牌提供程序。 检查访问控制服务的配置。 |在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
+| [超时例外](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |服务器在 [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) 控制的指定时间内未响应请求的操作。 服务器可能已完成请求的操作。 这可能是由于网络或其他基础结构延迟造成的。 |检查系统状态的一致性，并根据需要重试。 请参阅[超时异常](#timeoutexception)。 |在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
+| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |不允许在服务器或服务中执行请求的用户操作。 有关详细信息，请查看异常消息。 例如，如果消息是在[接收和删除](/dotnet/api/microsoft.azure.servicebus.receivemode)模式下接收的，[则 Complete（）](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync)将生成此异常。 |检查代码和文档。 确保请求的操作有效。 |重试不起作用。 |
+| [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) |尝试对已关闭、中止或释放的对象调用某个操作。 在极少数的情况下，已释放环境事务。 |检查代码并确保代码不会对已释放的对象调用操作。 |重试不起作用。 |
+| [UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) 对象无法获取令牌，该令牌无效，或者令牌不包含执行操作所需的声明。 |确保使用正确的值创建令牌提供程序。 检查访问控制服务的配置。 |在某些情况下，重试可能会有帮助；在代码中添加重试逻辑。 |
 | [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [ArgumentNullException](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[ArgumentOutOfRangeException](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) |提供给该方法的一个或多个参数均无效。<br /> 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 包含路径段。<br /> 提供给 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) 或 [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 的 URI 方案无效。 <br />属性值大于 32 KB。 |检查调用代码并确保参数正确。 |重试不起作用。 |
-| [MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception) |与该操作关联的实体不存在或已被删除。 |确保该实体存在。 |重试不起作用。 |
-| [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |尝试接收具有特定序列号的消息。 找不到此消息。 |请确保尚未收到消息。 检查死信队列，以确定该消息是否被视为死信。 |重试不起作用。 |
+| [MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception) |与操作关联的实体不存在或已被删除。 |确保该实体存在。 |重试不起作用。 |
+| [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |尝试接收具有特定序列号的消息。 找不到此消息。 |确保该消息尚未接收。 检查死信队列，以确定该消息是否被视为死信。 |重试不起作用。 |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |客户端无法与服务总线建立连接。 |确保提供的主机名正确并且主机可访问。 |如果存在间歇性的连接问题，重试可能会有帮助。 |
 | [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |服务目前无法处理请求。 |客户端可以等待一段时间，并重试操作。 |客户端可在特定的时间间隔后重试操作。 如果重试导致其他异常，请检查该异常的重试行为。 |
-| [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception) |与消息关联的锁令牌已过期，或者找不到锁定标记。 |释放消息。 |重试不起作用。 |
+| [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception) |与消息关联的锁令牌已过期，或者找不到锁令牌。 |释放消息。 |重试不起作用。 |
 | [SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception) |与此会话关联的锁已丢失。 |中止 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) 对象。 |重试不起作用。 |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |在以下情况下，可能会引发一般消息异常：<br /> 尝试使用属于其他实体类型（例如主题）的名称或路径创建 [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)。<br />  尝试发送大于 256 KB 的消息。 服务器或服务在处理请求期间遇到错误。 有关详细信息，请查看异常消息。 这通常是暂时性的异常。 |检查代码，并确保只对消息正文使用可序列化对象（或使用自定义序列化程序）。 在文档中查看属性支持的值类型，并只使用支持的类型。 检查 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) 属性。 如果**为 true**，则可以重试该操作。 |重试行为的效果不确定，可能不会解决问题。 |
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |在以下情况下，可能会引发一般消息异常：<p>尝试使用属于其他实体类型（例如主题）的名称或路径创建 [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)。</p><p>尝试发送大于 256 KB 的消息。 </p>服务器或服务在处理请求期间遇到错误。 有关详细信息，请查看异常消息。 这通常是暂时性异常。</p><p>请求已终止，因为实体被限制。 错误代码：50001、50002、50008。 </p> | 检查代码，并确保只对消息正文使用可序列化对象（或使用自定义序列化程序）。 <p>在文档中查看属性支持的值类型，并只使用支持的类型。</p><p> 检查 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) 属性。 如果为 true，可以重试操作****。 </p>| 如果异常是由于限制造成的，请等待几秒钟，然后重试该操作。 重试行为未定义，在其他方案中可能不起作用。|
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |尝试使用已被该服务命名空间中另一实体使用的名称创建实体。 |删除现有的实体，或者选择不同的名称来创建实体。 |重试不起作用。 |
 | [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) |消息实体已达到其允许的最大大小，或已超出到命名空间的最大连接数。 |通过从实体或其子队列接收消息在该实体中创建空间。 请参阅[QuotaExceededException](#quotaexceededexception)。 |如果同时已删除消息，则重试可能会有帮助。 |
 | [RuleActionException](/dotnet/api/microsoft.servicebus.messaging.ruleactionexception) |如果尝试创建无效的规则操作，服务总线将返回此异常。 如果在处理该消息的规则操作时出错，服务总线会将此异常附加到死信消息。 |检查规则操作是否正确。 |重试不起作用。 |
@@ -65,14 +65,14 @@ ms.locfileid: "76759357"
 | [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) |已对未决事务尝试进行操作，或尝试提交该事务并且事务进入不确定状态。 |应用程序必须处理此异常（作为特例），因为此事务可能已提交。 |- |
 
 ### <a name="quotaexceededexception"></a>QuotaExceededException
-[QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) 指示已超出某个特定实体的配额。
+[配额超过例外](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception)表示已超出特定实体的配额。
 
 #### <a name="queues-and-topics"></a>队列和主题
-对于队列和主题，这通常是队列的大小。 错误消息属性会包含更多详细信息，如以下示例所示：
+对队列和主题而言，这通常指队列的大小。 错误消息属性会包含更多详细信息，如以下示例所示：
 
 ```Output
 Microsoft.ServiceBus.Messaging.QuotaExceededException
-Message: The maximum entity size has been reached or exceeded for Topic: ‘xxx-xxx-xxx’. 
+Message: The maximum entity size has been reached or exceeded for Topic: 'xxx-xxx-xxx'. 
     Size of entity in bytes:1073742326, Max entity size in bytes:
 1073741824..TrackingId:xxxxxxxxxxxxxxxxxxxxxxxxxx, TimeStamp:3/15/2013 7:50:18 AM
 ```
@@ -93,10 +93,10 @@ ConnectionsQuotaExceeded for namespace xxx.
 #### <a name="common-causes"></a>常见原因
 此错误有两个常见的原因：死信队列和无法正常运行的消息接收器。
 
-1. [死信队列](service-bus-dead-letter-queues.md) 读取器无法完成消息，当锁定过期后，消息将返回至队列/主题。 如果读取器遇到阻止其调用[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.complete)的异常，则会发生这种情况。 消息读取 10 次后，将默认移至死信队列。 此行为由 [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 属性控制，默认值为 10。 消息堆积在死信队列中会占用空间。
+1. **[死信队列](service-bus-dead-letter-queues.md)** 读取器无法完成消息，并且当锁过期时，消息将返回到队列/主题。 如果读取器发生异常，以致无法调用 [BrokeredMessage.Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.complete)，就会出现这种情况。 消息读取 10 次后，将默认移至死信队列。 此行为由 [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 属性控制，默认值为 10。 消息堆积在死信队列中会占用空间。
    
     若要解决此问题，请读取并完成死信队列中的消息，就像处理任何其他队列一样。 可以使用 [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) 方法帮助格式化死信队列路径。
-2. **接收方已停止**。 接收方已停止从队列或订阅接收消息。 识别这种情况的方法是查看 [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) 属性，它会显示消息的完整细目。 如果[ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount)属性很高或增长，则不会在写入消息时尽快读取这些消息。
+2. **接收方已停止**。 接收方已停止从队列或订阅接收消息。 识别这种情况的方法是查看 [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) 属性，它会显示消息的完整细目。 如果 [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) 属性很高或不断增加，则表示消息写入的速度超过读取的速度。
 
 ### <a name="timeoutexception"></a>TimeoutException
 [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) 指示用户启动的操作所用的时间超过操作超时值。 
@@ -106,10 +106,10 @@ ConnectionsQuotaExceeded for namespace xxx.
 #### <a name="queues-and-topics"></a>队列和主题
 对于队列和主题，超时在 [MessagingFactorySettings.OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) 属性中作为连接字符串的一部分指定，或通过 [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder) 指定。 错误消息本身可能会有所不同，但它始终包含当前操作的指定超时值。 
 
-## <a name="connectivity-certificate-or-timeout-issues"></a>连接、证书或超时问题
-以下步骤可帮助你排除 *. servicebus.windows.net 下所有服务的连接/证书/超时问题。 
+## <a name="connectivity-certificate-or-timeout-issues"></a>连接性、证书或超时问题
+以下步骤可帮助排除 *.servicebus.windows.net 下所有服务的连接性/证书/超时问题。 
 
-- 浏览到或[wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/`。 它有助于检查是否存在 IP 筛选或虚拟网络或证书链问题（使用 java SDK 时最常见）。
+- 浏览到 或[wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/`。 这可帮助检查是否存在 IP 筛选或虚拟网络或证书链问题（使用 java SDK 时最常见）。
 
     成功消息的示例：
     
@@ -127,7 +127,7 @@ ConnectionsQuotaExceeded for namespace xxx.
         </Detail>
     </Error>
     ```
-- 运行以下命令，检查防火墙上是否有任何端口被阻止。 使用的端口为443（HTTPS）、5671（AMQP）和9354（Net 消息传递/SBMP）。 还会使用其他端口，具体取决于所使用的库。 下面是用于检查5671端口是否被阻止的示例命令。 
+- 运行以下命令，检查防火墙是否阻止了任何端口。 所用的端口为 443 (HTTPS)、5671 (AMQP) 和 9354 (Net Messaging/SBMP)。 根据使用的库，还会使用其他端口。 下面是用于检查 5671 端口是否被阻止的示例命令。 
 
     ```powershell
     tnc <yournamespacename>.servicebus.windows.net -port 5671
@@ -138,21 +138,30 @@ ConnectionsQuotaExceeded for namespace xxx.
     ```shell
     telnet <yournamespacename>.servicebus.windows.net 5671
     ```
-- 出现间歇性连接问题时，请运行以下命令，检查是否有任何丢弃的数据包。 此命令将尝试通过服务每隔1秒建立25个不同的 TCP 连接。 然后，可以检查其中有多少成功/失败，还可以查看 TCP 连接延迟。 你可以从[此处](/sysinternals/downloads/psping)下载 `psping` 工具。
+- 出现间歇性连接问题时，请运行以下命令，检查是否存在任何丢弃的数据包。 此命令会尝试通过服务每隔 1 秒建立 25 个不同的 TCP 连接。 然后，可以检查其中有多少成功/失败，还可以查看 TCP 连接延迟。 你可以`psping`[从这里](/sysinternals/downloads/psping)下载该工具。
 
     ```shell
     .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.windows.net:5671 -nobanner     
     ```
-    如果使用的是其他工具，如 `tnc`、`ping`等，则可以使用等效的命令。 
-- 如果前面的步骤不能帮助并使用[Wireshark](https://www.wireshark.org/)等工具对其进行分析，请获取网络跟踪。 如果需要，请联系[Microsoft 支持部门](https://support.microsoft.com/)。 
+    如果使用的是 `tnc`、`ping` 等其他工具，可以使用等效的命令。 
+- 如果上述步骤没有帮助，请获取网络跟踪，并使用 [Wireshark](https://www.wireshark.org/) 之类的工具对其进行分析。 如果需要，请联系 [Microsoft 支持部门](https://support.microsoft.com/)。 
 
+## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>服务升级/重新启动时可能出现的问题
+后端服务升级和重新启动可能会对应用程序造成以下影响：
+
+- 请求可能会暂时受到限制。
+- 传入消息/请求可能会下降。
+- 日志文件可能包含错误消息。
+- 应用程序可能会断开与服务几秒钟的时间。
+
+如果应用程序代码使用 SDK，则重试策略已内置并处于活动状态。 应用程序将重新连接，而不会对应用程序/工作流造成重大影响。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关服务总线 .NET API 的完整参考，请参阅 [Azure .NET API 参考](/dotnet/api/overview/azure/service-bus)。
 
-若要了解有关[服务总线](https://azure.microsoft.com/services/service-bus/)的详细信息，请参阅以下文章：
+要了解有关[服务总线](https://azure.microsoft.com/services/service-bus/)的更多详细信息，请参阅以下文章：
 
-* [服务总线消息传送概述](service-bus-messaging-overview.md)
+* [服务总线消息概述](service-bus-messaging-overview.md)
 * [服务总线体系结构](service-bus-architecture.md)
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
 ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660234"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor 日志中的搜索查询
@@ -29,7 +29,7 @@ search "error"
 如上所示的无范围查询尽管用法简单，但并不高效，且可能返回大量不相关的结果。 更好的做法是在相关表甚至特定的列中执行搜索。
 
 ### <a name="table-scoping"></a>表范围限定
-若要在特定的表中搜索某个词语，请紧靠在 `in (table-name)`search**运算符的后面添加**：
+若要在特定的表中搜索某个词语，请紧靠在 **search** 运算符的后面添加 `in (table-name)`：
 
 ```Kusto
 search in (Event) "error"
@@ -43,7 +43,7 @@ search in (Event, SecurityEvent) "error"
 ```
 
 ### <a name="table-and-column-scoping"></a>表和列范围限定
-默认情况下，**search** 将评估数据集中的所有列。 若要仅搜索特定列（以下示例中的命名*源*），请使用以下语法：
+默认情况下，**search** 将评估数据集中的所有列。 若要仅搜索特定列（在以下示例中名为“Source”**），请使用以下语法：
 
 ```Kusto
 search in (Event) Source:"error"
@@ -51,7 +51,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> 如果使用 `==` 而不是 `:`，则结果将包含如下所述的记录：其中的 *Source* 列包含确切值“error”（大小写完全与此相同）。 使用 "：" 将包括*源*具有值（如 "错误代码 404" 或 "错误"）的记录。
+> 如果使用 `==` 而不是 `:`，则结果将包含如下所述的记录：其中的 *Source* 列包含确切值“error”（大小写完全与此相同）。 使用“:”将包括其 *Source* 具有“错误代码 404”或“错误”等值的记录。
 
 ## <a name="case-sensitivity"></a>区分大小写
 默认情况下，词语搜索不区分大小写，因此，搜索“dns”可能会产生“DNS”、“dns”或“Dns”等结果。 若要执行区分大小写的搜索，请使用 `kind` 选项：
@@ -94,7 +94,7 @@ search in (Event) "corp*.com"
 > [!TIP]
 > 尽管可以使用 `search *` 来获取每个表中的每个列，但我们建议始终将查询范围限定为特定的表。 无范围查询可能需要花费一段时间才能完成，并且可能返回过多的结果。
 
-## <a name="add-and--or-to-search-queries"></a>添加*并*/*或*搜索查询
+## <a name="add-and--or-to-search-queries"></a>将 *and* / *or* 添加到搜索查询
 使用 **and** 可以搜索包含多个词语的记录：
 
 ```Kusto

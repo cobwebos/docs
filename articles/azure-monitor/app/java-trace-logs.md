@@ -1,20 +1,20 @@
 ---
-title: 在 Azure 应用程序 Insights 中浏览 Java 跟踪日志
+title: 在 Azure 应用程序见解中浏览 Java 跟踪日志
 description: 在 Application Insights 中搜索 Log4J 或 Logback 跟踪
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657208"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 Java 跟踪日志
 如果使用 Logback 或 Log4J（v1.2 或 v2.0）进行跟踪，可将跟踪日志自动发送到 Application Insights，以便在其中发现和搜索日志。
 
 > [!TIP]
-> 只需为应用程序设置一次 Application Insights 检测密钥。 如果使用的是 Java 弹簧等框架，则可能已在应用配置中的其他位置注册了该密钥。
+> 只需为应用程序设置一次 Application Insights 检测密钥。 如果使用的是 Java Spring 之类的框架，则可能已经在应用配置中的其他位置注册了密钥。
 
 ## <a name="using-the-application-insights-java-agent"></a>使用 Application Insights Java 代理
 
@@ -33,7 +33,7 @@ ms.locfileid: "77657208"
 </ApplicationInsightsAgent>
 ```
 
-您可以使用 `AI-Agent.xml` 文件禁用 Java 代理的日志记录捕获：
+可以使用 `AI-Agent.xml` 文件禁用 Java 代理的日志记录捕获：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -46,11 +46,11 @@ ms.locfileid: "77657208"
 </ApplicationInsightsAgent>
 ```
 
-## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>或者，你可以按照以下说明进行操作（而不是使用 Java 代理）
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>或者（不使用 Java 代理），可以按照以下说明进行操作
 
 ### <a name="install-the-java-sdk"></a>安装 Java SDK
 
-如果尚未执行此操作，请按照说明安装[APPLICATION INSIGHTS SDK For Java][java]。
+按照说明安装[适用于 Java 的 Application Insights SDK][java]（如果尚未安装）。
 
 ### <a name="add-logging-libraries-to-your-project"></a>将日志记录库添加到项目
 *为项目选择适当的方式。*
@@ -182,7 +182,7 @@ ms.locfileid: "77657208"
 Application Insights 追加器可由配置的任何记录器（而不一定是根记录器）引用（如上面的代码示例所示）。
 
 ## <a name="explore-your-traces-in-the-application-insights-portal"></a>在 Application Insights 门户中浏览跟踪
-现在，你已将项目配置为将跟踪发送到 Application Insights，你可以在 Application Insights 门户中的 "[搜索][diagnostic]" 边栏选项卡中查看和搜索这些跟踪。
+将项目配置为向 Application Insights 发送跟踪后，可以在 Application Insights 门户的[搜索][diagnostic]边栏选项卡中查看和搜索这些跟踪。
 
 通过记录器提交的异常将作为异常遥测显示在门户中。
 

@@ -1,22 +1,22 @@
 ---
 title: 在 Azure Monitor 日志查询中使用字符串 | Microsoft Docs
-description: 本文提供了有关在 Azure 门户中使用 Azure Monitor Log Analytics 在 Azure Monitor 中查询和分析日志数据的教程。
+description: 本文提供了有关在 Azure 门户中使用 Azure Monitor Log Analytics 对 Azure Monitor 中的日志数据进行查询和分析的教程。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 8be4f318149590ff08b73fda719e99a17220ec2e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670145"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用 JSON 和数据结构
 
 > [!NOTE]
-> 完成本课程之前，应完成[Azure Monitor Log Analytics](get-started-portal.md)和[Azure Monitor 日志查询](get-started-queries.md)入门。
+> 在完成本课程之前，应完成[Azure 监视器日志分析](get-started-portal.md)入门以及[Azure 监视器日志查询入门](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "77670145"
 ## <a name="working-with-json-strings"></a>结合使用 JSON 字符串
 使用 `extractjson` 访问已知路径中的特定 JSON 元素。 此函数需要使用以下约定的路径表达式。
 
-- _$_ 指的是根文件夹
+- _$_ 引用根文件夹
 - 使用括号/圆点表示法来表示索引和元素，如下例所示。
 
 
@@ -127,7 +127,7 @@ print hosts_object
 参阅有关在 Azure Monitor 中使用日志查询的其他课：
 
 - [字符串操作](string-operations.md)
-- [时间和日期操作](datetime-operations.md)
+- [日期和时间操作](datetime-operations.md)
 - [聚合函数](aggregations.md)
 - [高级聚合](advanced-aggregations.md)
 - [高级查询编写](advanced-query-writing.md)

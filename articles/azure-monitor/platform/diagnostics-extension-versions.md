@@ -1,5 +1,5 @@
 ---
-title: Windows Azure 诊断扩展（WAD）配置架构版本历史记录
+title: Windows Azure 诊断扩展 （WAD） 配置架构版本历史记录
 description: 有关收集 Azure 虚拟机、VM 规模集、Service Fabric 和云服务中的性能计数器的信息。
 ms.subservice: diagnostic-extension
 ms.topic: reference
@@ -7,14 +7,14 @@ author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
 ms.openlocfilehash: 4dd91363cdebf18e6303238816e8269065a6a317
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672236"
 ---
-# <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure 诊断扩展（WAD）配置架构版本和历史记录
-本文提供作为 Microsoft Azure SDK 的一部分提供的[Windows Azure 诊断扩展](diagnostics-extension-overview.md)的版本历史记录。  
+# <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure 诊断扩展 （WAD） 配置架构版本和历史记录
+本文提供作为 Microsoft Azure SDK 的一部分提供的[Windows （WAD）](diagnostics-extension-overview.md)架构版本的 Azure 诊断扩展的版本历史记录。  
 
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure SDK 和诊断版本随附图  
@@ -40,7 +40,7 @@ ms.locfileid: "77672236"
  从 SDK 2.5（诊断版本 1.2）开始，Azure 诊断随附于扩展模型中。 使用新功能的工具仅在较新版本的 Azure SDK 中可用，但使用 Azure 诊断的任何服务都将直接从 Azure 选取最新的附带版本。 例如，仍在使用 SDK 2.5 的任何用户在使用较新功能时都将加载上表中显示的最新版本。  
 
 ## <a name="schemas-index"></a>架构索引  
-不同版本的 Azure 诊断使用不同的配置架构。 架构1.0 和1.2 已弃用。 有关版本1.3 及更高版本的详细信息，请参阅[诊断1.3 和更高版本配置架构](diagnostics-extension-schema-windows.md)  
+不同版本的 Azure 诊断使用不同的配置架构。 架构 1.0 和 1.2 已弃用。 有关版本 1.3 及更高版本的详细信息，请参阅[诊断 1.3 及更高版本的配置架构](diagnostics-extension-schema-windows.md)  
 
 ## <a name="version-history"></a>版本历史记录
 
@@ -99,7 +99,7 @@ ms.locfileid: "77672236"
 
 
 ### <a name="diagnostics-extension-181"></a>诊断扩展 1.8.1
-可以在专用配置中指定 SAS 令牌而非存储帐户密钥。如果提供 SAS 令牌，则会忽略存储帐户密钥。
+可以在私有配置中指定 SAS 令牌而不是存储帐户密钥。如果提供了 SAS 令牌，则忽略存储帐户密钥。
 
 
 ```json
@@ -167,8 +167,8 @@ ms.locfileid: "77672236"
 
 * 在 Azure SDK 2.4 及更早版本中，诊断插件在运行时使用连接字符串获取用于传输诊断日志的存储帐户信息。
 * 在 Azure SDK 2.6 及更高版本中，Visual Studio 在发布过程中通过诊断连接字符串使用相应的存储帐户信息来配置诊断扩展。 连接字符串让你为 Visual Studio 会在发布时使用的不同服务配置定义不同的存储帐户。 但是，因为诊断插件已不再可用（在 Azure SDK 2.5 之后），.cscfg 文件本身不能启用诊断扩展。 必须通过工具（如 Visual Studio 或 PowerShell）单独启用扩展。
-* 为了简化使用 PowerShell 配置诊断扩展的过程，Visual Studio 的程序包输出还包含每个角色的诊断扩展的公共配置 XML。 Visual Studio 使用诊断连接字符串来填充公共配置中存在的存储帐户信息。 公共配置文件在 "扩展" 文件夹中创建，并遵循模式 `PaaSDiagnostics.<RoleName>.PubConfig.xml`。 任何基于 PowerShell 的部署都可以使用此模式将每个配置映射到角色。
-* Azure 门户使用 .cscfg 文件中的连接字符串来访问诊断数据，使其可以出现在 "**监视**" 选项卡中。需要连接字符串才能配置服务以在门户中显示详细监视数据。
+* 为了简化使用 PowerShell 配置诊断扩展的过程，Visual Studio 的程序包输出还包含每个角色的诊断扩展的公共配置 XML。 Visual Studio 使用诊断连接字符串来填充公共配置中存在的存储帐户信息。 公共配置文件在“扩展”文件夹中创建，并遵循模式 `PaaSDiagnostics.<RoleName>.PubConfig.xml`。 任何基于 PowerShell 的部署都可以使用此模式将每个配置映射到角色。
+* Azure 门户还使用 .cscfg 文件中的连接字符串访问诊断数据，以便它可以显示在 **"监视"** 选项卡中。需要连接字符串来配置服务以在门户中显示详细的监视数据。
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>将项目迁移到 Azure SDK 2.6 和更高版本
 从 Azure SDK 2.5 迁移到 Azure SDK 2.6 或更高版本时，如果在 .wadcfgx 文件中指定了诊断存储帐户，则该帐户将继续保留在那里。 要针对不同存储配置充分使用不同存储帐户的灵活性，必须手动将连接字符串添加到项目。 如果将项目从 Azure SDK 2.4 或更低版本迁移到 Azure SDK 2.6，系统将保留诊断连接字符串。 但是，请注意 Azure SDK 2.6 中处理连接字符串的方式的更改，如上一部分中所述。
@@ -179,7 +179,7 @@ ms.locfileid: "77672236"
 * .cscfg 文件中的诊断连接字符串将优先于 .wadcfgx 文件中的存储帐户。 如果在 .cscfg 文件中指定了诊断连接字符串，则 Visual Studio 将使用该字符串，而忽略 .wadcfgx 中的存储帐户。
 
 #### <a name="what-does-the-update-development-storage-connection-strings-checkbox-do"></a>“更新开发存储连接字符串...”复选框的作用
-“在发布到 Microsoft Azure 时使用 Microsoft Azure 存储帐户凭据更新诊断和缓存的开发存储连接字符串”复选框提供了使用发布过程中指定的 Azure 存储帐户更新任何开发存储帐户连接字符串的简便方法。
+**“在发布到 Microsoft Azure 时使用 Microsoft Azure 存储帐户凭据更新诊断和缓存的开发存储连接字符串”** 复选框为你提供了使用发布过程中指定的 Azure 存储帐户更新任何开发存储帐户连接字符串的简便方法。
 
 例如，假设你选中此复选框，并且诊断连接字符串指定 `UseDevelopmentStorage=true`。 将项目发布到 Azure 时，Visual Studio 会自动使用发布向导中指定的存储帐户更新诊断连接字符串。 但是，如果已将实际的存储帐户指定为诊断连接字符串，则将改用该帐户。
 
@@ -189,5 +189,5 @@ ms.locfileid: "77672236"
 * **配置 API 已弃用** – 诊断的编程配置在 Azure SDK 2.4 或更早版本中可用，但在 Azure SDK 2.5 及更高版本中已弃用。 如果目前在代码中定义了诊断配置，则需在已迁移的项目中从头开始重新配置这些设置，这样才能让诊断正常工作。 Azure SDK 2.4 的诊断配置文件是 diagnostics.wadcfg，而 Azure SDK 2.5 及更高版本的诊断配置文件是 diagnostics.wadcfgx。
 * **云服务应用程序的诊断只能在角色级别配置，而不能在实例级别配置。**
 * **每次部署应用程序时，都会更新诊断配置** – 如果从服务器资源管理器更改诊断配置并重新部署应用，这可能会导致奇偶校验问题。
-* **在 Azure SDK 2.5 及更高版本中，故障转储是在诊断配置文件而非代码中配置的** – 如果在代码中配置了故障转储，则必须手动将配置从代码传输至配置文件，因为故障转储并未在迁移至 Azure SDK 2.6 的过程中传输。
+* **在 Azure SDK 2.5 及更高版本中，故障转储是在诊断配置文件而非代码中配置的** – 如果你在代码中配置了故障转储，则必须手动将配置从代码传输至配置文件，因为故障转储并未在迁移至 Azure SDK 2.6 的过程中传输。
 

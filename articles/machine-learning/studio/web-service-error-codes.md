@@ -1,5 +1,5 @@
 ---
-title: REST API 错误代码-Azure 机器学习 Studio （经典） |Microsoft Docs
+title: REST API 错误代码 - Azure 机器学习工作室（经典）| Microsoft Docs
 description: 在 Azure 机器学习 Web 服务中执行操作时，可能会返回这些错误代码。
 keywords: ''
 services: machine-learning
@@ -13,23 +13,23 @@ ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
 ms.openlocfilehash: 9e25f2fbc10eb07cc71f2a7bd34247c0191f61b9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217759"
 ---
-# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure 机器学习 Studio （经典） REST API 错误代码
+# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure 机器学习工作室（经典）REST API 错误代码
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
  
-Azure 机器学习 Studio （经典） web 服务上的操作可能会返回以下错误代码。
+在 Azure 机器学习工作室（经典）Web 服务中执行操作时，可能会返回以下错误代码。
  
 ## <a name="badargument-http-status-code-400"></a>BadArgument（HTTP 状态代码 400）
  
 提供的参数无效。
  
-出现此类错误表示某处提供的参数无效。 这可能是某个对象传递给 Web 服务的凭据或 Azure 存储位置。 请查看 "详细信息" 部分中的错误 "代码" 字段，以诊断哪个特定参数无效。
+出现此类错误表示某处提供的参数无效。 这可能是某个对象传递给 Web 服务的凭据或 Azure 存储位置。 请查看"详细信息"部分中的错误"代码"字段，以诊断哪个特定参数无效。
  
 | 错误代码 | 用户消息 |
 | ---------- |--------------|
@@ -67,7 +67,7 @@ Azure 机器学习 Studio （经典） web 服务上的操作可能会返回以�
 | MissingWebServicePackage | 未提供 Web 服务包。 请提供有效的 Web 服务包，并重试。 |
 | MissingWorkspaceId | 未提供工作区 ID。 请提供有效的工作区 ID，并重试。 |
 | ModelConfigurationInvalid | 模型包中的模型配置无效。 请确保模型配置包含输出终结点定义、std 错误终结点和 std out 终结点，并重试。 |
-| ModelPackageIdInvalid | 模型包 Id 无效。请验证模型包 Id 是否正确，然后重试。 |
+| ModelPackageIdInvalid | 无效的模型包 ID.验证模型包 ID 是否正确，然后重试。 |
 | RequestBodyInvalid | 未提供请求正文，或者反序列化请求正文时出错。 |
 | RequestIsEmpty | 未提供请求。 请提供有效请求，并重试。 |
 | UnexpectedParameter | 提供了意外的参数。 请检查所有参数名称是否拼写正确，只传递所需的参数，并重试。 |

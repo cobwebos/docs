@@ -1,47 +1,47 @@
 ---
 title: 针对受限制请求的指南
-description: 了解如何对进行并行处理，以避免请求被 Azure 资源关系图限制。
+description: 了解如何进行分组、错开、分页和并行查询，以避免 Azure Resource Graph 限制请求。
 ms.date: 12/02/2019
 ms.topic: conceptual
 ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259846"
 ---
-# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure 资源图中的限制请求指南
+# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>有关 Azure Resource Graph 中受限请求的指南
 
-创建编程和频繁使用 Azure 资源关系图数据时，应考虑限制如何影响查询的结果。 更改请求数据的方式可帮助您和您的组织避免受到限制并维护有关 Azure 资源的及时数据。
+创建编程代码和频繁使用 Azure Resource Graph 数据时，应考虑到限制对查询结果的影响。 更改请求数据的方式可能有助于你和你的组织避免受到限制，并在 Azure 资源方面保持及时的数据流。
 
-本文介绍了与在 Azure 资源关系图中创建查询相关的四个领域和模式：
+本文介绍与在 Azure Resource Graph 中创建查询相关的四个方面和模式：
 
-- 了解阻止标头
+- 了解限制标头
 - 分组查询
-- 惊人查询
+- 错开查询
 - 分页的影响
 
-## <a name="understand-throttling-headers"></a>了解阻止标头
+## <a name="understand-throttling-headers"></a>了解限制标头
 
-Azure 资源图基于时间范围为每个用户分配配额号。 例如，用户可以在每5秒的时间段内最多发送15个查询，而不会受到限制。 配额值由许多因素决定，并可能会发生更改。
+Azure Resource Graph 根据时间范围为每个用户分配配额数。 例如，某个用户可以每隔 5 秒最多发送 15 个查询，而不会受到限制。 配额值由多种因素决定，并可能会发生更改。
 
-在每个查询响应中，Azure 资源关系图将添加两个限制标头：
+在每个查询响应中，Azure Resource Graph 会添加两个限制标头：
 
-- `x-ms-user-quota-remaining` （int）：用户的剩余资源配额。 此值映射到查询计数。
-- `x-ms-user-quota-resets-after` （hh： mm： ss）：重置用户的配额消耗之前的持续时间。
+- `x-ms-user-quota-remaining`（int）：用户的剩余资源配额。 此值映射到查询计数。
+- `x-ms-user-quota-resets-after`（hh：mm：ss）：重置用户配额消耗的持续时间。
 
-为了说明标题的工作方式，让我们看看具有 `x-ms-user-quota-remaining: 10` 和 `x-ms-user-quota-resets-after: 00:00:03`的标头和值的查询响应。
+为了演示标头的工作原理，让我们看看一个包含标头以及值 `x-ms-user-quota-remaining: 10` 和 `x-ms-user-quota-resets-after: 00:00:03` 的查询响应。
 
-- 在接下来的3秒内，最多可以提交10个查询，而不会受到限制。
-- 3秒，`x-ms-user-quota-remaining` 和 `x-ms-user-quota-resets-after` 的值将分别重置为 `15` 和 `00:00:05`。
+- 在接下来的 3 秒内，最多可以提交 10 个查询，这不会受到限制。
+- 3 秒后，`x-ms-user-quota-remaining` 和 `x-ms-user-quota-resets-after` 的值将分别重置为 `15` 和 `00:00:05`。
 
-若要查看使用标头在查询请求上_回退_的示例，请参阅[并行查询中](#query-in-parallel)的示例。
+有关演示如何使用标头回退查询请求的示例，请参阅[并行查询](#query-in-parallel)中的示例。__
 
 ## <a name="grouping-queries"></a>分组查询
 
-按订阅、资源组或单个资源对查询进行分组比并行查询更有效。 较大查询的配额成本通常低于许多小型和目标查询的配额成本。 建议将组大小小于_300_。
+按订阅、资源组或单个资源分组查询比并行化查询更为有效。 较大查询的配额成本通常小于众多有针对性的小型查询的配额成本。 建议使组大小小于 300__。
 
-- 不良优化方法的示例
+- 优化不当的方法示例
 
   ```csharp
   // NOT RECOMMENDED
@@ -62,7 +62,7 @@ Azure 资源图基于时间范围为每个用户分配配额号。 例如，用�
   }
   ```
 
-- 优化的分组方法的示例 #1
+- 优化的分组方法示例 #1
 
   ```csharp
   // RECOMMENDED
@@ -85,7 +85,7 @@ Azure 资源图基于时间范围为每个用户分配配额号。 例如，用�
   }
   ```
 
-- 示例 #2 用于在一个查询中获取多个资源的优化分组方法
+- 优化的分组方法示例 #2，用于在一个查询中获取多个资源
 
   ```kusto
   Resources | where id in~ ({resourceIdGroup}) | project name, type
@@ -113,23 +113,23 @@ Azure 资源图基于时间范围为每个用户分配配额号。 例如，用�
   }
   ```
 
-## <a name="staggering-queries"></a>惊人查询
+## <a name="staggering-queries"></a>错开查询
 
-由于强制限制的方式，我们建议将查询错开。 也就是说，将查询分为四个5秒的窗口，而不是同时发送60查询：
+由于限制的实施方式，我们建议将查询错开。 也就是说，不要同时发送 60 个查询，而是在四个 5 秒时限内将查询错开：
 
-- 非错开查询计划
+- 未错开的查询计划
 
   | 查询计数         | 60  | 0    | 0     | 0     |
   |---------------------|-----|------|-------|-------|
   | 时间间隔（秒） | 0-5 | 5-10 | 10-15 | 15-20 |
 
-- 交错查询计划
+- 错开的查询计划
 
   | 查询计数         | 15  | 15   | 15    | 15    |
   |---------------------|-----|------|-------|-------|
   | 时间间隔（秒） | 0-5 | 5-10 | 10-15 | 15-20 |
 
-下面是查询 Azure 资源关系图时遵从限制标头的示例：
+下面是查询 Azure Resource Graph 时遵从限制标头的示例：
 
 ```csharp
 while (/* Need to query more? */)
@@ -153,7 +153,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>并行查询
 
-即使建议使用分组，也不能轻松地对查询进行分组。 在这些情况下，可能需要通过并行发送多个查询来查询 Azure 资源关系图。 下面的示例演示如何在这种情况下基于限制标头进行_回退_：
+尽管我们建议使用分组而不是并行化，但有时，并不能轻松地分组查询。 在这些情况下，可能需要通过并行发送多个查询来查询 Azure Resource Graph。 以下示例演示在这种情况下如何基于限制标头进行回退：__
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -187,11 +187,11 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 ## <a name="pagination"></a>分页
 
-由于 Azure 资源关系图在单个查询响应中最多返回1000项，因此你可能需要对查询进行[分页](./work-with-data.md#paging-results)以获取所需的完整数据集。 但是，某些 Azure 资源关系图客户端处理分页的方式不同。
+由于 Azure Resource Graph 在单个查询响应中最多返回 1000 个条目，因此你可能需要将查询[分页](./work-with-data.md#paging-results)才能获取所需的完整数据集。 但是，某些 Azure Resource Graph 客户端处理分页的方式与其他客户端不同。
 
 - C# SDK
 
-  使用 ResourceGraph SDK 时，需要通过将从上一个查询响应返回的 skip 标记传递到下一个分页查询来处理分页。 这种设计意味着需要收集所有分页调用的结果，并将它们一起组合到末尾。 在这种情况下，发送的每个分页查询都采用一个查询配额：
+  使用 ResourceGraph SDK 时，需要通过将上一查询响应中返回的跳过标记传递给下一个分页查询，来处理分页。 这种设计意味着需要收集所有分页调用的结果，并最终将其组合到一起。 在这种情况下，发送的每个分页查询都会占用一个查询配额：
 
   ```csharp
   var results = new List<object>();
@@ -216,7 +216,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 - Azure CLI/Azure PowerShell
 
-  使用 Azure CLI 或 Azure PowerShell 时，会自动对 Azure 资源关系图的查询进行分页，最多可提取5000个条目。 查询结果将返回所有分页调用中的条目的组合列表。 在这种情况下，根据查询结果中的条目数，单个分页查询可能会消耗多个查询配额。 例如，在下面的示例中，一次运行查询可能会消耗最多五个查询配额：
+  使用 Azure CLI 或 Azure PowerShell 时，对 Azure Resource Graph 的查询将自动分页，以最多提取 5000 个条目。 查询结果将返回所有分页调用中的条目的组合列表。 在这种情况下，根据查询结果中的条目数，单个分页查询可能会消耗多个查询配额。 例如，在以下示例中，运行一次查询最多可能会消耗五个查询配额：
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000
@@ -226,19 +226,19 @@ async Task ExecuteQueries(IEnumerable<string> queries)
   Search-AzGraph -Query 'Resources | project id, name, type' -First 5000
   ```
 
-## <a name="still-get-throttled"></a>仍会受到限制？
+## <a name="still-get-throttled"></a>仍然受到限制？
 
-如果在进行上述建议后受到限制，请在[resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)联系团队。
+如果您在执行上述建议后受到限制，请与 团队联系[resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)。
 
-提供以下详细信息：
+请提供以下详细信息：
 
-- 特定用例和业务驱动程序需要更高的限制。
-- 有多少资源可以访问？ 从单个查询返回了多少？
+- 特定的用例，以及需要提高限制的业务驱动因素。
+- 你有权访问多少资源？ 单个查询返回了多少资源？
 - 你感兴趣的资源类型有哪些？
-- 你的查询模式是什么？ X 个查询/Y 秒等。
+- 你的查询模式是什么？ 每 Y 秒发送 X 个查询，等等。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[Starter 查询](../samples/starter.md)中使用的语言。
-- 请参阅高级[查询](../samples/advanced.md)中的高级使用。
+- 请参阅[初学者查询](../samples/starter.md)中正在使用的语言。
+- 请参阅[高级查询](../samples/advanced.md)中的高级用途。
 - 详细了解如何[浏览资源](explore-resources.md)。

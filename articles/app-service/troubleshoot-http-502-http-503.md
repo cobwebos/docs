@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74688327"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>排查 Azure 应用服务中出现的 HTTP 错误“502 错误的网关”和“503 服务不可用”
@@ -42,10 +42,10 @@ ms.locfileid: "74688327"
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. 观察和监视应用程序行为
 #### <a name="track-service-health"></a>跟踪服务运行状况
-每次发生服务中断或性能下降时 Microsoft Azure 会发出通告。 可以在 [Azure 门户](https://portal.azure.com/)中跟踪服务的运行状况。 有关详细信息，请参阅[跟踪服务的运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
+每次发生服务中断或性能下降时 Microsoft Azure 会发出通告。 您可以在[Azure 门户](https://portal.azure.com/)上跟踪服务的运行状况。 有关详细信息，请参阅[跟踪服务的运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
 
 #### <a name="monitor-your-app"></a>监视应用
-此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴。 “指标”边栏选项卡会显示所有可以添加的指标。
+此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴****。 “指标”边栏选项卡会显示所有可以添加的指标。****
 
 可能需要在应用中监视的一些指标包括
 
@@ -68,7 +68,7 @@ ms.locfileid: "74688327"
 #### <a name="use-the-diagnostics-tool"></a>使用诊断工具
 应用服务提供了智能的交互式体验，可帮助我们排查应用的问题，且无需配置。 如果应用确实出现问题，诊断工具会指出问题所在，并引导你获取适当的信息，以便更轻松快速地排查和解决问题。
 
-若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。
+若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。****
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 调试控制台
 应用服务随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为应用的 *Kudu 控制台*或 *SCM 仪表板*。
@@ -88,7 +88,7 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. 缓解此问题
+### <a name="3-mitigate-the-issue"></a>3. 缓解问题
 #### <a name="scale-the-app"></a>缩放应用
 在 Azure 应用服务中，为了提高性能和吞吐量，可以调整运行应用程序的规模。 纵向扩展应用涉及到两个相关操作：将应用服务计划更改为较高的定价层，以及在切换到较高的定价层后配置特定的设置。
 
@@ -99,14 +99,14 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 可以将缩放设置为手动或自动。
 
 #### <a name="use-autoheal"></a>使用 AutoHeal
-AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终可以从 Azure 门户直接重新启动应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 请注意，即使应用程序不是 .NET 应用程序，这些设置的工作方式也相同。
+AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终可以从 Azure 门户直接重新启动应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 请注意，即使应用程序并非 .NET 应用程序，这些设置的工作方式也仍然相同。
 
 有关详细信息，请参阅[自动修复 Azure 网站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
 
 #### <a name="restart-the-app"></a>重启应用
-这通常是在发生一次性问题后进行恢复的最简单方式。 [Azure 门户](https://portal.azure.com/)上的应用边栏选项卡中提供了用于停止或重启应用的选项。
+这通常是在发生一次性问题后进行恢复的最简单方式。 在[Azure 门户](https://portal.azure.com/)上，在应用的边栏选项卡上，您可以选择停止或重新启动应用。
 
  ![重新启动应用以解决 HTTP 错误“502 错误的网关”和“503 服务不可用”](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
-还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
+还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅将[Azure PowerShell 与 Azure 资源管理器一起使用](../powershell-azure-resource-manager.md)。
 

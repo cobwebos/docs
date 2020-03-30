@@ -1,5 +1,5 @@
 ---
-title: 迁移后管理单个和共用数据库
+title: 迁移后管理单个数据库和池数据库
 description: 了解如何在迁移到 Azure SQL 数据库后管理数据库。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: ebb512fee0186bed3cc7f49f0525dac43e57da3a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79256180"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中的单一数据库和共用数据库
@@ -39,18 +39,18 @@ ms.locfileid: "79256180"
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>使用 Azure 门户监视数据库
 
-在[Azure 门户](https://portal.azure.com/)中，可以通过选择数据库并单击 "**监视**" 图表来监视单个数据库的使用情况。 这会显示“指标”窗口，可通过单击“编辑图表”按钮来对其进行更改。 添加以下指标：
+在[Azure 门户](https://portal.azure.com/)中，可以通过选择数据库并单击**监视**图表来监视各个数据库的利用率。 这会显示“指标”**** 窗口，可通过单击“编辑图表”**** 按钮来对其进行更改。 添加以下指标：
 
 - CPU 百分比
 - DTU 百分比
 - 数据 IO 百分比
 - 数据库大小百分比
 
-添加这些指标后，可以继续在“监视”图表上查看它们，并可在“指标”窗口上查看更多详细信息。 **DTU** 的平均利用率百分比。 有关服务层级的详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)文章。  
+添加这些指标后，可以继续在 **"监视"** 图表中查看这些指标，并了解有关 **"指标"** 窗口的详细信息。 **DTU** 的平均利用率百分比。 有关服务层级的详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)文章。  
 
 ![监视数据库服务层的性能。](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 
-还可以针对性能指标配置警报。 在“指标”窗口中单击“添加警报”按钮。 按照向导说明来配置警报。 可以选择在指标超出特定阈值或指标低于特定阈值时显示警报。
+还可以针对性能指标配置警报。 在“指标”**** 窗口中单击“添加警报”**** 按钮。 按照向导说明来配置警报。 可以选择在指标超出特定阈值或指标低于特定阈值时显示警报。
 
 例如，如果预期数据库的工作负荷会增长，则可以选择配置在数据库的任何性能指标达到 80% 时发出电子邮件警报。 可以将此警报用作预警，以确定你何时需要切换到下一个更高的计算大小。
 
@@ -66,7 +66,7 @@ ms.locfileid: "79256180"
 
 |服务层|保留天数|
 |---|:---:|
-|基本|7|
+|Basic|7|
 |Standard|35|
 |Premium|35|
 |||
@@ -91,7 +91,7 @@ ms.locfileid: "79256180"
 
 SQL 数据库十分重视安全性和隐私性。 SQL 数据库中的安全性分为数据库级别和平台级别，将安全性分为几层后，就很好理解了。 在每一层，都需要为应用程序控制和提供最佳安全性。 这些层分为：
 
-- 身份验证 & 身份验证（[SQL 身份验证和 Azure Active Directory [AAD] 身份验证](sql-database-manage-logins.md)）。
+- 身份&身份验证[（SQL 身份验证和 Azure 活动目录 [AAD] 身份验证](sql-database-manage-logins.md)）。
 - 监视活动（[审核](sql-database-auditing.md)和[检测威胁](sql-database-threat-detection.md)）。
 - 保护实际数据（[透明数据加密 [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 和 [Always Encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)）。
 - 控制对敏感和特许数据的访问（[行级安全性](/sql/relational-databases/security/row-level-security)和[动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)）。
@@ -102,17 +102,17 @@ SQL 数据库十分重视安全性和隐私性。 SQL 数据库中的安全性�
 
 SQL 数据库中提供了两种身份验证方法：
 
-- [Azure Active Directory 身份验证](sql-database-aad-authentication.md)
+- [Azure 活动目录身份验证](sql-database-aad-authentication.md)
 - [SQL 身份验证](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 不支持传统的 Windows 身份验证。 Azure Active Directory (AD) 是集中式标识和访问管理服务。 通过此服务可非常方便地为组织中的所有人员提供单一登录访问 (SSO)。 这意味着，所有 Azure 服务共享凭据，身份验证更容易。 AAD 支持 [MFA（多重身份验证）](sql-database-ssms-mfa-authentication.md)，只需[单击几次](../active-directory/hybrid/how-to-connect-install-express.md)，AAD 就可与 Windows Server Active Directory 集成。 SQL 身份验证的工作方式与之前完全相同。 提供用户名/密码后，即可对给定 SQL 数据库服务器上任何数据库的用户进行身份验证。 此外，还允许 SQL 数据库和 SQL 数据仓库在 Azure AD 域中提供多重身份验证和来宾用户帐户。 如果你已经有一个本地 Active Directory，则可以将该目录与 Azure Active Directory 联合在一起，以将目录扩展到 Azure。
 
 |**如果你...**|**SQL 数据库/SQL 数据仓库**|
 |---|---|
-|不想在 Azure 中使用 Azure Active Directory (AD)|使用 [SQL 身份验证](sql-database-security-overview.md)|
+|不想在 Azure 中使用 Azure Active Directory (AD)|使用[SQL 身份验证](sql-database-security-overview.md)|
 |在本地 SQL Server 上使用 AD|[将 AD 与 Azure AD 联合](../active-directory/hybrid/whatis-hybrid-identity.md)，并使用 Azure AD 身份验证。 借此，你可以使用单一登录。|
 |需要实施多重身份验证 (MFA)|需要 MFA 作为 [Microsoft 条件性访问](sql-database-conditional-access.md)的策略 ，并使用[支持 MFA 的 Azure AD 通用身份验证](sql-database-ssms-mfa-authentication.md)。|
-|有来自 Microsoft 帐户（live.com、outlook.com）或其他域 (gmail.com) 的来宾帐户|在利用 [Azure AD B2B 协作](sql-database-ssms-mfa-authentication.md)的 SQL 数据库/数据仓库中使用 [Azure AD 通用身份验证](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)。|
+|有来自 Microsoft 帐户（live.com、outlook.com）或其他域 (gmail.com) 的来宾帐户|在利用 [Azure AD B2B 协作](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)的 SQL 数据库/数据仓库中使用 [Azure AD 通用身份验证](sql-database-ssms-mfa-authentication.md)。|
 |使用来自联合域的 Azure AD 凭据登录到 Windows|使用 [Azure AD 集成身份验证](sql-database-aad-authentication-configure.md)。|
 |使用来自未与 Azure 联合的域的凭据登录到 Windows|使用 [Azure AD 集成身份验证](sql-database-aad-authentication-configure.md)。|
 |具有需要连接到 SQL 数据库或数据仓库的中间层服务|使用 [Azure AD 集成身份验证](sql-database-aad-authentication-configure.md)。|
@@ -130,11 +130,11 @@ SQL 数据库中提供了两种身份验证方法：
 
 防火墙仅允许特定实体访问 SQL 数据库服务器，以此来防止外部实体访问服务器。 默认拒绝 SQL 数据库服务器内的所有连接和数据库，来自其他 Azure 服务的连接除外。 利用防火墙规则，可以仅向实体（例如，开发人员计算机）开放服务器的访问权限。为此，你只需通过防火墙允许该计算机的 IP 地址。 利用它还可以指定你想要允许访问 SQL 数据库服务器的 IP 范围。 例如，通过在防火墙设置页中指定一个范围，可以一次性添加组织中开发人员计算机 IP 地址。
 
-可以创建服务器级或数据库级的防火墙规则。 可使用 Azure 门户或通过 SSMS 创建服务器级 IP 防火墙规则。 若要了解有关如何设置服务器级和数据库级防火墙规则的详细信息，请参阅：[在 SQL 数据库中创建 IP 防火墙规则](sql-database-security-tutorial.md#create-firewall-rules)。
+可以创建服务器级或数据库级的防火墙规则。 可使用 Azure 门户或通过 SSMS 创建服务器级 IP 防火墙规则。 有关如何设置服务器级和数据库级防火墙规则的详细信息，请参阅：[在 SQL 数据库中创建 IP 防火墙规则](sql-database-security-tutorial.md#create-firewall-rules)。
 
 #### <a name="service-endpoints"></a>服务终结点
 
-默认情况下，SQL 数据库配置为“允许 Azure 服务访问服务器” – 这表示 Azure 中的所有虚拟机都可能会尝试连接到数据库。 尝试连接时仍必须已经过身份验证。 但是，如果不想让任何 Azure IP 访问数据库，则可禁用“允许 Azure 服务访问服务器”。 此外，还可配置 [VNet 服务终结点](sql-database-vnet-service-endpoint-rule-overview.md)。
+默认情况下，SQL 数据库配置为“允许 Azure 服务访问服务器” – 这表示 Azure 中的所有虚拟机都可能会尝试连接到数据库。 尝试连接时仍必须已经过身份验证。 但是，如果不想让任何 Azure IP 访问数据库，则可禁用“允许 Azure 服务访问服务器”。 此外，您可以配置[VNet 服务终结点](sql-database-vnet-service-endpoint-rule-overview.md)。
 
 通过服务终结点 (SE) 可以仅向自己在 Azure 中的专用虚拟网络公开关键 Azure 资源。 以此从根本上阻止了对资源的公共访问。 虚拟网络与 Azure 间的流量位于 Azure 主干网络上。 无 SE 时，可获得强制隧道数据包路由。 虚拟网络强制组织的 Internet 流量和 Azure 服务流量通过相同的路由。 借助服务终结点，可优化这进程，因为数据包直接从虚拟网络流向 Azure 主干网络上的服务。
 
@@ -142,7 +142,7 @@ SQL 数据库中提供了两种身份验证方法：
 
 #### <a name="reserved-ips"></a>保留 IP
 
-另一种方法是为 Vm 设置[保留 ip](../virtual-network/virtual-networks-reserved-public-ip.md) ，并在服务器防火墙设置中添加这些特定的 VM IP 地址。 通过分配保留 IP，就可以避免通过更改 IP 地址来更新防火墙规则的麻烦。
+另一种方法是为 VM 预配[保留 IP](../virtual-network/virtual-networks-reserved-public-ip.md)，并在服务器防火墙设置中添加这些特定的 VM IP 地址。 通过分配保留 IP，就可以避免通过更改 IP 地址来更新防火墙规则的麻烦。
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>连接到哪些端口上的 SQL 数据库
 
@@ -152,11 +152,11 @@ SQL 数据库中提供了两种身份验证方法：
 
 #### <a name="sql-database-auditing"></a>SQL 数据库审核
 
-使用 SQL 数据库，可打开“审核”来跟踪数据库事件。 [SQL 数据库审核](sql-database-auditing.md)可记录数据库事件，并将事件写入 Azure 存储帐户中的审核日志文件。 如果你想要深入了解潜在的安全性和策略违规情况，请维持法规遵从性等。它允许你定义和配置你认为需要审核的某些类别的事件，并根据你可以获得预配置的报告和仪表板来获取数据库上发生的事件的概述。 可在数据库级或服务器级应用这些审核策略。 有关如何启用服务器/数据库审核的指南，请参阅：[启用 SQL 数据库审核](sql-database-security-tutorial.md#enable-security-features)。
+使用 SQL 数据库，可打开“审核”来跟踪数据库事件。 [SQL 数据库审核](sql-database-auditing.md)可记录数据库事件，并将事件写入 Azure 存储帐户中的审核日志文件。 如果您打算深入了解潜在的安全和违反政策行为，保持合规性等，审核尤其有用。它允许您定义和配置某些类别的事件，您认为需要审核，并基于您可以获取预配置的报告和仪表板，以获得数据库上发生的事件的概览。 可在数据库级或服务器级应用这些审核策略。 有关如何启用服务器/数据库审核的指南，请参阅：[启用 SQL 数据库审核](sql-database-security-tutorial.md#enable-security-features)。
 
 #### <a name="threat-detection"></a>威胁检测
 
-通过[威胁检测](sql-database-threat-detection.md)，可轻松应对“审核”发现的违反安全规定和政策的行为。 即使不是安全专家，也能解决系统中潜在的威胁或违规问题。 威胁检测还具有一些内置功能，如 SQL 注入检测。 SQL 注入会企图改变或破坏数据，是攻击数据库应用程序的一种相当常见的方法。 威胁检测运行多组算法，这些算法可以检测潜在漏洞和 SQL 注入攻击，以及异常的数据库访问模式（如来自异常位置或不熟悉主体的访问）。 如果在数据库中检测到威胁，安全管理人员或其他指定管理员将收到电子邮件通知。 每个通知都会提供可疑活动的详细信息，以及如何进一步调查和缓解威胁的建议。 若要了解如何启用威胁检测，请参阅：[启用威胁检测](sql-database-security-tutorial.md#enable-security-features)。
+通过[威胁检测](sql-database-threat-detection.md)，可轻松应对“审核”发现的违反安全规定和政策的行为。 即使不是安全专家，也能解决系统中潜在的威胁或违规问题。 威胁检测还具有一些内置功能，如 SQL 注入检测。 SQL 注入会企图改变或破坏数据，是攻击数据库应用程序的一种相当常见的方法。 威胁检测运行多组算法，这些算法可以检测潜在漏洞和 SQL 注入攻击，以及异常的数据库访问模式（如来自异常位置或不熟悉主体的访问）。 如果在数据库中检测到威胁，安全管理人员或其他指定管理员将收到电子邮件通知。 每个通知都会提供可疑活动的详细信息，以及如何进一步调查和缓解威胁的建议。 要了解如何打开威胁检测，请参阅：[启用威胁检测](sql-database-security-tutorial.md#enable-security-features)。
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>一般情况下如何保护 SQL 数据库中的数据
 
@@ -168,7 +168,7 @@ SQL 数据库中提供了两种身份验证方法：
 在 SQL 数据库中，存储子系统上数据和日志文件中的静态数据在默认情况下始终全部通过[透明数据加密 [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 进行加密。 备份也进行了加密。 使用 TDE 时，访问这些数据的应用程序不需要进行任何更改。 加密和解密均以透明方式进行；因而得名“透明数据加密”。
 为了保护传输中的和静态的敏感数据，SQL 数据库提供了一个名为 [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 的功能。 AE 是客户端加密的一种形式，它对数据库中的敏感列进行加密（因此，它们位于数据库管理员和未授权用户的已加密文本中）。 服务器会首先收到加密数据。 Always Encrypted 的密钥也存储在客户端，因此只有授权的客户端可以解密敏感列。 服务器和数据管理员无法看到敏感数据，因为加密密钥存储在客户端上。 AE 对表中的敏感列进行端到端加密，以防未经授权的客户端和物理磁盘对其进行访问。 AE 目前支持等式比较，因此数据库管理员可以继续查询加密列，这是其 SQL 命令的一部分。 Always Encrypted 可以与各种密钥存储选项结合使用，如 [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)、Windows 证书存储和本地硬件安全模块。
 
-|**特征**|**Always Encrypted**|**透明数据加密**|
+|**特征**|**始终加密**|**透明数据加密**|
 |---|---|---|
 |**加密范围**|端到端|静态数据|
 |**数据库服务器可访问敏感数据**|否|是，因为加密针对的是静态数据|
@@ -179,7 +179,7 @@ SQL 数据库中提供了两种身份验证方法：
 
 ### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>如何限制对数据库中敏感数据的访问
 
-每个应用程序在数据库中都有一定的敏感数据，需要防止这些数据被所有人查看。 组织内的某些人员需要查看此数据，但其他人员应无法查看此数据。 比如，员工工资。 经理需要访问其直接下属的工资信息，但各团队成员不应有权访问其对等方的工资信息。 另一种情况是，数据开发人员在开发阶段或测试期间可能需要使用敏感数据，例如客户的 SSN。 而此信息后来不再需要向开发人员公开。 在这种情况下，敏感数据要么需要屏蔽，要么完全不公开。 SQL 数据库提供了两种方法来防止未经授权的用户查看敏感数据：
+每个应用程序在数据库中都有一定的敏感数据，需要防止这些数据被所有人查看。 组织内的某些人员需要查看此数据，但其他人员应无法查看此数据。 比如，员工工资。 经理需要访问其直接下属的工资信息，但是，各个团队成员不应访问其同事的工资信息。 另一种情况是，数据开发人员在开发阶段或测试期间可能需要使用敏感数据，例如客户的 SSN。 而此信息后来不再需要向开发人员公开。 在这种情况下，敏感数据要么需要屏蔽，要么完全不公开。 SQL 数据库提供了两种方法来防止未经授权的用户查看敏感数据：
 
 [动态数据掩码](sql-database-dynamic-data-masking-get-started.md)是一种数据屏蔽功能，它通过屏蔽应用程序层上的非特权用户来限制敏感数据的公开。 你可以定义屏蔽规则来创建屏蔽模式（例如，只显示国家 ID 号的最后 4 位数，如 XXX-XX-0000，并将大部分编号标记为 X），并确定哪些用户被排除在屏蔽规则之外。 随时都可能出现屏蔽，有各种屏蔽功能可用于各种数据类别。 通过动态数据屏蔽可以自动检测数据库中的敏感数据，并对其应用屏蔽。
 
@@ -222,11 +222,11 @@ Express Route 还允许激增高达 2 倍的带宽限制，无需额外付费。
 
 - [Express Route 简介](../expressroute/expressroute-introduction.md)
 - [先决条件](../expressroute/expressroute-prerequisites.md)
-- [工作流](../expressroute/expressroute-workflows.md)
+- [流程](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL 数据库是否符合任何规章要求，这对我组织的符合性有什么帮助
 
-SQL 数据库符合一系列法规 compliancies。 若要查看 SQL 数据库已满足的最新 compliancies 集，请访问[Microsoft 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，并向下钻取对你的组织很重要的 compliancies，以了解 sql 数据库是否包含在合规的 Azure 服务中。 需要注意的是，尽管 SQL 数据库可能被认证为符合的服务，它有助于确保组织服务的符合性，但不会自动保证这一点。
+SQL 数据库符合一系列监管法规。 要查看 SQL 数据库满足的最新一组比较，请访问[Microsoft 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，并深入了解对组织重要的比较，以查看 SQL 数据库是否包含在合规 Azure 服务下。 需要注意的是，尽管 SQL 数据库可能被认证为符合的服务，它有助于确保组织服务的符合性，但不会自动保证这一点。
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>迁移后的智能数据库监视和维护
 
@@ -280,11 +280,11 @@ Azure 门户通过选择数据库并单击“概述”窗格中的图表来显�
 
 ![查询性能见解](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure Monitor 日志中的 Azure SQL Analytics （预览）
+#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure 监视器日志中的 Azure SQL 分析（预览）
 
-[Azure Monitor 日志](../azure-monitor/insights/azure-sql.md)使你可以收集和直观显示 Azure sql 数据库的关键性能指标，每个工作区最多支持150000个 sql 数据库和5000个 sql 弹性池。 你可以使用它监视并接收通知。 可以跨多个 Azure 订阅和弹性池监视 SQL 数据库和弹性池指标，并可用于识别应用程序堆栈每一层上的问题。
+[Azure 监视器日志](../azure-monitor/insights/azure-sql.md)允许您收集和可视化关键的 Azure SQL 数据库性能指标，每个工作区最多支持 150，000 个 SQL 数据库和 5，000 个 SQL 弹性池。 你可以使用它监视并接收通知。 可以跨多个 Azure 订阅和弹性池监视 SQL 数据库和弹性池指标，并可用于识别应用程序堆栈每一层上的问题。
 
-### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>我注意到了性能问题：我的 SQL 数据库故障排除方法与 SQL Server 有何不同
+### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>我注意到性能问题：我的 SQL 数据库故障排除方法与 SQL Server 有何不同
 
 用于诊断查询和数据库性能问题的疑难解答技术的主要部分还是一样的。 毕竟支持云的 SQL Server 引擎是一样的。 但是 Azure SQL DB 平台却内置了“智能”功能。 它可帮助你更轻松地诊断和解决性能问题。 还可代表你执行某些纠正操作，在某些情况下，可自动执行主动修复措施。
 
@@ -302,14 +302,14 @@ SQL 数据库提供了各种服务层级：“基本”、“标准”和“高�
 
 |**服务层**|**常见用例方案**|
 |---|---|
-|**基本**|用户较少，数据库不具有高并发性、扩展性和性能要求的应用程序。 |
-|**Standard**|具有相当高的并发性、扩展性和性能要求以及低到中等 IO 要求的应用程序。 |
-|**高级**|具有大量并发用户、高 CPU/内存和高 IO 需求的应用程序。 高并发性、高吞吐量和对延迟敏感的应用可利用高级等级。 |
+|**Basic**|用户较少，数据库不具有高并发性、扩展性和性能要求的应用程序。 |
+|**标准**|具有相当高的并发性、扩展性和性能要求以及低到中等 IO 要求的应用程序。 |
+|**溢价**|具有大量并发用户、高 CPU/内存和高 IO 需求的应用程序。 高并发性、高吞吐量和对延迟敏感的应用可利用高级等级。 |
 |||
 
 为确保处于正确的计算大小，可通过“如何监视 SQL 数据库中的性能和资源利用率”中所述的某种方式来监视查询和数据库资源消耗。 如果发现查询/数据库一直在过度消耗 CPU/内存等，则可考虑纵向扩展到更高的计算大小。 同样，如果你发现，即使在繁忙时间，似乎也没有使用多少资源，则可考虑下调当前计算大小。
 
-如果有 SaaS 应用模式或数据库整合方案，则考虑使用弹性池进行成本优化。 弹性池非常适合用于整合数据库和优化成本。 若要了解有关使用弹性池管理多个数据库的详细信息，请参阅：[管理池和数据库](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)。
+如果有 SaaS 应用模式或数据库整合方案，则考虑使用弹性池进行成本优化。 弹性池非常适合用于整合数据库和优化成本。 要了解有关使用弹性池管理多个数据库的信息，请参阅：[管理池和数据库](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)。
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>需要多久运行一次数据库完整性检查
 
@@ -319,11 +319,11 @@ SQL 数据库使用的某些智能技术可以实现自动处理某些类别的�
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database"></a>如何从 SQL 数据库将数据作为 BACPAC 文件导出和导入
 
-- 导出：可以将你的 Azure SQL 数据库作为 BACPAC 文件从 Azure 门户导出
+- 导出****：可以将你的 Azure SQL 数据库作为 BACPAC 文件从 Azure 门户导出
 
    ![数据库导出](./media/sql-database-export/database-export1.png)
 
-- 导入：你还可使用 Azure 门户将数据作为 BACPAC 文件导入到数据库。
+- 导入****：你还可使用 Azure 门户将数据作为 BACPAC 文件导入到数据库。
 
    ![数据库导入](./media/sql-database-import/import1.png)
 

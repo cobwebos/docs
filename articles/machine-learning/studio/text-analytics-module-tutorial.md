@@ -1,7 +1,7 @@
 ---
 title: 情绪分析用例
 titleSuffix: ML Studio (classic) - Azure
-description: 如何使用用于文本预处理的模块在 Azure 机器学习 Studio （经典）中创建文本分析模型，N 元哈希或特征哈希
+description: 如何使用文本预处理、N 元语法或特征哈希模块在 Azure 机器学习工作室（经典）中创建文本分析模型
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,17 +11,17 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/14/2018
 ms.openlocfilehash: 89fc5196977f53e040e1a6553b46ca57f39b18b4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217886"
 ---
-# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio （经典）中创建情绪分析模型
+# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中创建情绪分析模型
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-你可以使用 Azure 机器学习 Studio （经典）来构建和操作文本分析模型。 例如，这些模型可以帮助你解决文档分类或情绪分析问题。
+可以使用 Azure 机器学习工作室（经典）构建和实现文本分析模型的操作化。 例如，这些模型可以帮助你解决文档分类或情绪分析问题。
 
 在文本分析实验中，通常需要：
 
@@ -31,7 +31,7 @@ ms.locfileid: "79217886"
 4. 评分和验证模型
 5. 将模型部署到生产环境
 
-在本教程中，你将了解有关使用 Amazon 图书评论数据集的情绪分析模型的步骤，请参阅此研究论文 "Biographies，Bollywood，Boom-boxes and Blenders：按 John 情绪进行 Blitzer 分类的域调整"Mark Dredze 和 Fernando Pereira;计算语言（ACL）2007的关联。此数据集包含查看分数（1-2 或4-5）和自由格式的文本。 目标是预测评论分数：低 (1-2) 或高 (4-5)。
+在本教程中，您将在使用 Amazon 书评数据集浏览情绪分析模型时学习这些步骤（请参阅 John Blitzer 的本研究论文"传记、宝莱坞、动臂箱和搅拌机：情绪分类的域适应"，马克·德雷泽和费尔南多·佩雷拉;计算语言学协会 （ACL），2007 年。此数据集由审核分数（1-2 或 4-5）和自由格式文本组成。 目标是预测评论分数：低 (1-2) 或高 (4-5)。
 
 可以在 Azure AI 库中找到本教程中涵盖的实验：
 
@@ -68,7 +68,7 @@ ms.locfileid: "79217886"
 ## <a name="step-3-train-classification-or-regression-model"></a>步骤 3：定型分类或回归模型
 文本现已转换为数值特征列。 数据集仍包含上一阶段中的字符串列，因此我们使用“选择数据集中的列中”来将其排除。
 
-然后，我们使用[二元逻辑回归](https://msdn.microsoft.com/library/azure/dn905994.aspx)来预测我们的目标：高或低评论分数。 在这种情况下，文本分析问题已转换为常规分类问题。 您可以使用 Azure 机器学习 Studio （经典）中提供的工具来改进模型。 例如，可以实验不同的分类器，以了解如何它们给出结果的准确度，或使用超参数调整改进准确度。
+然后，我们使用[二元逻辑回归](https://msdn.microsoft.com/library/azure/dn905994.aspx)来预测我们的目标：高或低评论分数。 在这种情况下，文本分析问题已转换为常规分类问题。 可以使用 Azure 机器学习工作室（经典）中提供的工具来改进模型。 例如，可以实验不同的分类器，以了解如何它们给出结果的准确度，或使用超参数调整改进准确度。
 
 ![定型和评分](./media/text-analytics-module-tutorial/scoring-text.png)
 

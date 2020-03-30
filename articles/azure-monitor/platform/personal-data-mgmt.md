@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
 ms.openlocfilehash: a720627e1783d2e29ef180b7855132ea59444cab
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248744"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>存储在 Log Analytics 和 Application Insights 中的个人数据指南
@@ -53,22 +53,22 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 
 ### <a name="application-data"></a>应用程序数据
 
-* IP 地址：虽然 Application Insights 在默认情况下会将所有 IP 地址字段混淆成“0.0.0.0”，但为了保留会话信息，通常会将此值替代为实际的用户 IP。 可以使用下面的 Analytics 查询来查找特定的表，此类表的 IP 地址列中包含的值在过去 24 小时内不是“0.0.0.0”：
+* ** IP 地址：虽然 Application Insights 在默认情况下会将所有 IP 地址字段混淆成“0.0.0.0”，但为了保留会话信息，通常会将此值替代为实际的用户 IP。 可以使用下面的 Analytics 查询来查找特定的表，此类表的 IP 地址列中包含的值在过去 24 小时内不是“0.0.0.0”：
     ```
     search client_IP != "0.0.0.0"
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* 用户 ID：默认情况下，Application Insights 会使用为用户随机生成的 ID，以便进行会话跟踪。 不过，这些字段常常会被替代，改为存储与应用程序更相关的 ID。 例如：用户名、AAD Guid 等。这些 Id 通常被视为在个人数据范围内，因此应进行相应处理。 我们的建议始终是尝试对这些 ID 进行混淆或匿名处理。 通常可以在其中发现这些值的字段包括：session_Id、user_Id、user_AuthenticatedId、user_AccountId、customDimensions。
-* 自定义数据：Application Insights 允许向任何数据类型追加一组自定义维度。 这些维度可以是任何数据。 使用以下查询来确定在过去 24 小时内收集的任何自定义维度：
+* ** 用户 ID：默认情况下，Application Insights 会使用为用户随机生成的 ID，以便进行会话跟踪。 不过，这些字段常常会被替代，改为存储与应用程序更相关的 ID。 例如：用户名、AAD GUID 等。这些数据通常被视为个人数据的范围之内，因此应适当处理。 我们的建议始终是尝试对这些 ID 进行混淆或匿名处理。 通常可以在其中发现这些值的字段包括：session_Id、user_Id、user_AuthenticatedId、user_AccountId、customDimensions。
+* ** 自定义数据：Application Insights 允许向任何数据类型追加一组自定义维度。 这些维度可以是任何数据。** 使用以下查询来确定在过去 24 小时内收集的任何自定义维度：
     ```
     search * 
     | where isnotempty(customDimensions)
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* 内存中和传输中数据：Application Insights 会跟踪异常、请求、依赖项调用和跟踪。 私人数据通常可以在代码和 HTTP 调用级别收集。 查看异常、请求、依赖项和跟踪表中是否存在任何此类数据。 尽可能使用[遥测初始值设定项](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling)来混淆该数据。
-* Snapshot Debugger 捕获：使用 Application Insights 中的 [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) 功能时，只要在应用程序的生产实例上捕获某个异常，就可以收集调试快照。 快照会公开导致异常的完整堆栈跟踪，以及堆栈中每一步的本地变量的值。 遗憾的是，此功能不允许选择性地删除吸附点，也不允许以编程方式访问快照中的数据。 因此，如果默认的快照保留率不满足符合性要求，建议关闭此功能。
+* ** 内存中和传输中数据：Application Insights 会跟踪异常、请求、依赖项调用和跟踪。 私人数据通常可以在代码和 HTTP 调用级别收集。 查看异常、请求、依赖项和跟踪表中是否存在任何此类数据。 尽可能使用[遥测初始值设定项](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling)来混淆该数据。
+* ** Snapshot Debugger 捕获：使用 Application Insights 中的 [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) 功能时，只要在应用程序的生产实例上捕获某个异常，就可以收集调试快照。 快照会公开导致异常的完整堆栈跟踪，以及堆栈中每一步的本地变量的值。 遗憾的是，此功能不允许选择性地删除吸附点，也不允许以编程方式访问快照中的数据。 因此，如果默认的快照保留率不满足符合性要求，建议关闭此功能。
 
 ## <a name="how-to-export-and-delete-private-data"></a>如何导出和删除私人数据
 
@@ -81,7 +81,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 对于查看和导出数据请求，应使用 [Log Analytics 查询 API](https://dev.loganalytics.io/) 或 [Application Insights 查询 API](https://dev.applicationinsights.io/quickstart)。 将数据形状转换为适当形状以提供给用户时，将由你实现相关逻辑。 [Azure Functions](https://azure.microsoft.com/services/functions/) 非常适合托管此类逻辑。
 
 > [!IMPORTANT]
->  尽管绝大部分的清除操作的完成时间可能比 SLA 要快得多，但**完成清除操作的正式 SLA 将设置为30天**，因为它们对所使用的数据平台产生了很大的影响。 这是一个自动化过程;无法请求处理操作的速度更快。
+>  虽然绝大多数清除操作的完成速度可能比 SLA 快得多，但**完成清除操作的正式 SLA 设置为 30 天**，因为它们对所使用的数据平台产生了重大影响。 这是一个自动化过程；没有办法请求更快地处理操作。
 
 ### <a name="delete"></a>删除
 
@@ -93,7 +93,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 清除是一项高特权操作，如果未向 Azure 中的应用或用户显式授予 Azure 资源管理器中的某个角色，则任何应用或用户（甚至包括资源所有者）都无权执行该操作。 此角色为_数据清除程序_，由于可能会丢失数据，应谨慎委托。 
 
 > [!IMPORTANT]
-> 为了管理系统资源，每小时50请求会限制清除请求。 应通过发送一个命令，该命令的谓词包含所有需要清除的用户标识，来批处理清除请求的执行。 使用[in 运算符](/azure/kusto/query/inoperator)可指定多个标识。 应在执行清除请求之前运行查询，以验证结果是否正确。 
+> 为了管理系统资源，清除请求每小时限制 50 个请求。 应通过发送一个命令来批处理清除请求的执行，该命令的谓词包含需要清除的所有用户标识。 使用[in 运算符](/azure/kusto/query/inoperator)指定多个标识。 在执行清除请求之前，应运行查询，以验证预期结果。 
 
 
 
@@ -109,7 +109,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
     ```
 
 > [!IMPORTANT]
->  虽然我们预计绝大多数清除操作完成起来都比我们的 SLA 快得多，但由于这些操作会对 Log Analytics 使用的数据平台造成严重影响，因此**我们将完成清除操作所需的正式 SLA 设置为 30 天**。 
+>  虽然我们预计绝大多数的清除操作完成得比我们的SLA快得多，但由于它们对 Log Analytics 使用的数据平台影响很大，**但完成清除操作的正式 SLA 设置为 30 天**。 
 
 #### <a name="application-data"></a>应用程序数据
 
@@ -121,7 +121,7 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
    ```
 
 > [!IMPORTANT]
->  虽然绝大多数清除操作完成起来会比 SLA 快得多，但由于其对 Application Insights 使用的数据平台造成的严重影响，因此**将完成清除操作所需的正式 SLA 设置为 30 天**。
+>  虽然绝大多数的清除操作可能比 SLA 更快地完成，但由于它们对应用程序见解使用的数据平台影响很大，**但完成清除操作的正式 SLA 设置为 30 天**。
 
 ## <a name="next-steps"></a>后续步骤
 - 若要详细了解如何收集、处理和保护 Log Analytics 数据，请参阅 [Log Analytics 数据安全性](../../azure-monitor/platform/data-security.md)。

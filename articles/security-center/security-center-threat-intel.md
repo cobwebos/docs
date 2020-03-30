@@ -1,5 +1,5 @@
 ---
-title: 威胁智能 & 安全警报映射-Azure 安全中心
+title: 威胁情报&安全警报映射 - Azure 安全中心
 description: 了解如何使用 Azure 安全中心的安全警报地图和威胁智能功能确定 VM 和计算机中的潜在威胁。
 services: security-center
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
 ms.openlocfilehash: 39835d9d73adcbe474d3b70dfced313e18d1a3b3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603430"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>安全警报地图和威胁智能
 本文可帮助你使用 Azure 安全中心安全警报冲突和基于安全事件的威胁智能地图来解决与安全相关的问题。
 
 > [!NOTE]
-> 安全*事件*映射按钮已于2019年7月31日停用。 有关详细信息和替代服务，请参阅[停用安全中心功能（2019年7月）](security-center-features-retirement-july2019.md#menu_securityeventsmap)。
+> "安全*事件*映射"按钮已于 2019 年 7 月 31 日停用。 有关详细信息和替代服务，请参阅[安全中心停用功能（2019 年 7 月）。](security-center-features-retirement-july2019.md#menu_securityeventsmap)
 
 
 ## <a name="how-the-security-alerts-map-works"></a>安全警报地图的工作原理
@@ -46,8 +46,8 @@ ms.locfileid: "77603430"
 ## <a name="access-the-security-alerts-map"></a>访问安全警报地图
 若要可视化环境中的当前威胁，请打开安全警报地图：
 
-1. 打开“安全中心”仪表板。
-2. 在左窗格中，选择“威胁防护”下的“安全警报地图”。 地图随即打开。
+1. 打开“安全中心”**** 仪表板。
+2. 在左窗格中，选择“威胁防护”**** 下的“安全警报地图”****。 地图随即打开。
 3. 若要获取有关警报的详细信息并接收补救步骤，请单击地图上的警报圆点，并按照说明进行操作。 
  
 安全警报地图基于警报。 这些警报基于其网络通信与已成功解析的 IP 地址关联的活动，无论 IP 地址是已知的有风险 IP 地址（例如，已知的加密矿机）还是以前未识别为有风险的 IP 地址。 地图提供之前在 Azure 中选择的任何订阅间的警报。 
@@ -57,7 +57,7 @@ ms.locfileid: "77603430"
 
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 本文介绍了如何使用安全中心的威胁智能来确定可疑活动。 若要详细了解安全中心，请参阅以下文章：
 
 * [管理和响应 Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 了解如何管理警报并响应安全中心的安全事件。
