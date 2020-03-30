@@ -1,5 +1,5 @@
 ---
-title: 使用暂时性错误
+title: 处理暂时性错误
 description: 了解如何排查、诊断和防止 Azure SQL 数据库中的 SQL 连接错误或暂时性错误。
 keywords: SQL 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
 services: sql-database
@@ -14,10 +14,10 @@ ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
 ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269076"
 ---
 # <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>排查 SQL 数据库的暂时性连接错误
@@ -77,8 +77,8 @@ ms.locfileid: "79269076"
 
 以下文档提供了有关重试逻辑的代码示例：
 
-- [使用 ADO.NET 实现对 SQL 的弹性连接][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-- [使用 PHP 实现对 SQL 的弹性连接][step-4-connect-resiliently-to-sql-with-php-p42h]
+- [使用ADO.NET弹性连接到 SQL][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [使用 PHP 弹性连接到 SQL][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
@@ -131,11 +131,11 @@ ms.locfileid: "79269076"
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
 
-为 [SqlConnection](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) 对象生成**连接字符串**时，请在以下参数之间协调值：
+为 **SqlConnection** 对象生成[连接字符串](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx)时，请在以下参数之间协调值：
 
-- **ConnectRetryCount**：&nbsp;&nbsp;默认值为 1。 范围为 0 到 255。
-- **ConnectRetryInterval**：&nbsp;&nbsp;默认值为10秒。 范围为 1 到 60。
-- **Connection Timeout**：&nbsp;&nbsp;默认值为 15 秒。 范围为 0 到 2147483647。
+- **连接重试计数**：&nbsp;&nbsp;默认值为 1。 范围为 0 到 255。
+- **连接重试间隔**：&nbsp;&nbsp;默认值为 10 秒。 范围为 1 到 60。
+- **连接超时**：&nbsp;&nbsp;默认值为 15 秒。 范围为 0 到 2147483647。
 
 具体而言，所选的值应使以下等式成立：Connection Timeout = ConnectRetryCount * ConnectionRetryInterval
 
@@ -150,7 +150,7 @@ ms.locfileid: "79269076"
 - mySqlConnection.Open 方法调用
 - mySqlConnection.Execute 方法调用
 
-有个很微妙的地方。 如果正在执行查询时发生暂时性错误，**SqlConnection** 对象不会重试连接操作。 肯定不会重试查询。 但是，**SqlConnection** 在发送要执行的查询前会非常快速地检查连接。 如果快速检查检测到连接问题，**SqlConnection** 会重试连接操作。 如果重试成功，则会发送查询以执行。
+有个很微妙的地方。 如果正在执行查询** 时发生暂时性错误，**SqlConnection** 对象不会重试连接操作。 肯定不会重试查询。 但是，**SqlConnection** 在发送要执行的查询前会非常快速地检查连接。 如果快速检查检测到连接问题，**SqlConnection** 会重试连接操作。 如果重试成功，则会发送查询以执行。
 
 ### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>ConnectRetryCount 是否应结合应用程序重试逻辑？
 
@@ -164,7 +164,7 @@ ms.locfileid: "79269076"
 
 ### <a name="connection-connection-string"></a>连接：连接字符串
 
-连接到 SQL 数据库所需的连接字符串与连接到 SQL Server 所需的字符串稍有不同。 可以通过 [Azure 门户](https://portal.azure.com/)复制数据库的连接字符串。
+连接到 SQL 数据库所需的连接字符串与连接到 SQL Server 所需的字符串稍有不同。 可以从[Azure 门户](https://portal.azure.com/)复制数据库的连接字符串。
 
 [!INCLUDE [sql-database-include-connection-string-20-portalshots](../../includes/sql-database-include-connection-string-20-portalshots.md)]
 
@@ -188,7 +188,7 @@ ms.locfileid: "79269076"
 例如，当客户端程序托管在 Windows 计算机上时，则可以使用主机上的 Windows 防火墙打开端口 1433。
 
 1. 打开控制面板。
-2. 选择“所有控制面板项” **“Windows 防火墙”** “高级设置” > “出站规则” **“操作”** “新建规则”。 >  >  >  > 
+2. 选择**所有控制面板项目** > **窗口防火墙** > **高级设置** > **出站规则** > **操作** > **新规则**。
 
 如果客户端程序托管在 Azure 虚拟机 (VM) 上，请阅读[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
 
@@ -241,7 +241,7 @@ ms.locfileid: "79269076"
 - `netstat -nap`
 - `nmap -sS -O 127.0.0.1`：请将示例值更改为你的 IP 地址。
 
-在 Windows 上，[PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) 实用工具可能很有用。 以下是在 SQL 数据库服务器上查询端口情况，以及在便携式计算机上运行了哪个端口的示例执行：
+在 Windows 上[，PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148)实用程序可能会有所帮助。 以下是在 SQL 数据库服务器上查询端口情况，以及在便携式计算机上运行了哪个端口的示例执行：
 
 ```cmd
 [C:\Users\johndoe\]
@@ -275,7 +275,7 @@ Enterprise Library 6 (EntLib60) 提供了 .NET 托管类来帮助进行日志记
 
 下面是查询错误日志和其他信息的一些 Transact-SQL SELECT 语句。
 
-| 日志查询 | 说明 |
+| 日志查询 | 描述 |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx) 视图提供有关各个事件的信息，包括一些可能导致暂时性错误或连接故障的事件。<br/><br/>理想情况下，可以将 **start_time** 或 **end_time** 值与有关客户端程序遇到问题时的信息相关联。<br/><br/>必须连接到 *master* 数据库才能运行此查询。 |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[sys.database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) 视图针对其他诊断提供事件类型的聚合计数。<br/><br/>必须连接到 *master* 数据库才能运行此查询。 |
@@ -338,11 +338,11 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
 
 以下 EntLib60 类对重试逻辑特别有用。 可以在 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 命名空间或其子级中找到所有这些类。
 
-在命名空间 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 中：
+在命名空间**微软.实践.企业库.瞬态故障处理**：
 
 - **RetryPolicy** 类
   - **ExecuteAction** 方法
-- **ExponentialBackoff** 类
+- **指数返回**类
 - **SqlDatabaseTransientErrorDetectionStrategy** 类
 - **ReliableSqlConnection** 类
   - **ExecuteCommand** 方法
@@ -354,7 +354,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
 
 以下是 EntLib60 相关信息的某些链接：
 
-- 免费书籍下载：[Microsoft Enterprise Library 版本 2 开发人员指南](https://www.microsoft.com/download/details.aspx?id=41145)
+- 免费图书下载：[微软企业图书馆开发者指南，第二版](https://www.microsoft.com/download/details.aspx?id=41145)。
 - 最佳实践：[有关重试的一般性指南](../best-practices-retry-general.md)深入探讨了重试逻辑。
 - NuGet 下载：[Enterprise Library - 暂时性故障处理应用程序块 6.0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)。
 
@@ -445,8 +445,8 @@ public bool IsTransient(Exception ex)
 ## <a name="next-steps"></a>后续步骤
 
 - [用于 SQL 数据库和 SQL Server 的连接库](sql-database-libraries.md)
-- [SQL Server 连接池 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
-- [*重试*是 Apache 2.0 授权的通用重试库，它以 Python](https://pypi.python.org/pypi/retrying) 编写，可以简化向几乎任何程序添加重试行为的任务。
+- [SQL 服务器连接池 （ADO.NET）](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
+- [*重试*是一个 Apache 2.0 许可的通用重试库，用 Python 编写，](https://pypi.python.org/pypi/retrying)以简化将重试行为添加到任何内容的任务。
 
 <!-- Link references. -->
 

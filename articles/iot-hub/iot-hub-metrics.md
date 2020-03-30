@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
 ms.openlocfilehash: ec8a00460b4a750339f929eb6879ac6eb63cac8e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284429"
 ---
 # <a name="understand-iot-hub-metrics"></a>了解 IoT 中心指标
@@ -21,13 +21,13 @@ IoT 中心度量值提供更棒的数据，清晰显示 Azure 订阅中的 Azure
 默认启用度量值。 可在 Azure 门户中查看 IoT 中心度量值。
 
 > [!NOTE]
-> 可以使用 IoT 中心指标来查看有关连接到 IoT 中心的 IoT 即插即用设备的信息。 IoT 即插即用设备是[iot 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)的一部分。
+> 您可以使用 IoT 中心指标查看有关连接到 IoT 中心的 IoT 即插即用设备的信息。 IoT 即插即用设备是[IoT 即插即用公共预览](../iot-pnp/overview-iot-plug-and-play.md)的一部分。
 
 ## <a name="how-to-view-iot-hub-metrics"></a>如何查看 IoT 中心度量值
 
 1. 创建 IoT 中心。 可以在[从设备向 IoT 中心发送遥测数据](quickstart-send-telemetry-dotnet.md)指南中找到有关如何创建 IoT 中心的说明。
 
-2. 打开 IoT 中心的边栏选项卡。 在此处单击“指标”。
+2. 打开 IoT 中心的边栏选项卡。 在此处单击“指标”****。
    
     ![显示指标选项在 IoT 中心资源页中位置的屏幕截图](./media/iot-hub-metrics/enable-metrics-1.png)
 
@@ -35,7 +35,7 @@ IoT 中心度量值提供更棒的数据，清晰显示 Azure 订阅中的 Azure
    
     ![显示 IoT 中心的指标页的屏幕截图](./media/iot-hub-metrics/enable-metrics-2.png)
     
-4. 可以选择将指标数据发送到事件中心终结点还是 Azure 存储帐户，方法是单击“诊断设置”，然后单击“添加诊断设置”
+4. 可以选择将指标数据发送到事件中心终结点还是 Azure 存储帐户，方法是单击“诊断设置”****，然后单击“添加诊断设置”****
 
    ![显示“诊断设置”按钮所在位置的屏幕截图](./media/iot-hub-metrics/enable-metrics-3.png)
 
@@ -43,14 +43,14 @@ IoT 中心度量值提供更棒的数据，清晰显示 Azure 订阅中的 Azure
 
 IoT 中心提供了多个指标，使你可以大致了解中心的运行状况以及已连接的设备总数。 可以结合多个度量值的信息，更清楚地了解 IoT 中心的状态。 下表描述了每个 IoT 中心所跟踪的度量值，以及每个度量值与 IoT 中心总体状态的关联。
 
-|指标|指标显示名称|单位|聚合类型|说明|维度|
+|指标|指标显示名称|单位|聚合类型|描述|维度|
 |---|---|---|---|---|---|
 |d2c.telemetry.ingress.allProtocol|遥测消息发送尝试次数|Count|总计|尝试发送到 IoT 中心的、设备到云的遥测消息数|无|
 |d2c.telemetry.ingress.success|已发送的遥测消息数|Count|总计|成功发送到 IoT 中心的、设备到云的遥测消息数|无|
-|c2d.commands.egress.complete.success|已完成 C2D 消息传递|Count|总计|设备已成功完成的云到设备消息传递数|无|
-|c2d.commands.egress.abandon.success|C2D 消息已放弃|Count|总计|设备放弃的云到设备的消息数|无|
-|c2d.commands.egress.reject.success|已拒绝 C2D 消息|Count|总计|设备拒绝的云到设备的消息数|无|
-|C2DMessagesExpired|C2D 消息已过期（预览版）|Count|总计|已过期的云到设备的消息数|无|
+|c2d.commands.egress.complete.success|已完成的 C2D 消息传递次数|Count|总计|设备成功完成的云到设备消息传递次数|无|
+|c2d.commands.egress.abandon.success|丢弃的 C2D 消息数|Count|总计|设备丢弃的云到设备消息数|无|
+|c2d.commands.egress.reject.success|拒绝的 C2D 消息数|Count|总计|设备拒绝的云到设备消息数|无|
+|C2DMessagesExpired|过期的 C2D 消息数（预览版）|Count|总计|过期的云到设备消息数|无|
 |devices.totalDevices|（已弃用）设备总数|Count|总计|已注册到 IoT 中心的设备数目|无|
 |devices.connectedDevices.allProtocol|（已弃用）连接设备数 |Count|总计|已连接到 IoT 中心的设备数目|无|
 |d2c.telemetry.egress.success|路由：已发送的遥测消息数|Count|总计|已使用 IoT 中心路由将消息成功发送到所有终结点的次数。 如果消息路由到多个终结点，每次成功发送后，此值将逐一增加。 如果消息多次路由到同一终结点，每次成功发送后，此值将逐一增加。|无|
@@ -70,8 +70,8 @@ IoT 中心提供了多个指标，使你可以大致了解中心的运行状况�
 |d2c.endpoints.latency.storage|路由：存储器的消息延迟|毫秒|平均值|消息进入 IoT 中心与遥测消息进入存储器终结点之间的平均延迟时间（毫秒）。|无|
 |d2c.endpoints.egress.storage.bytes|路由：发送到存储器的数据数|字节|总计|IoT 中心路由发送到存储器终结点的数据量（字节）。|无|
 |d2c.endpoints.egress.storage.blobs|路由：发送到存储器的 blob 数|Count|总计|IoT 中心路由将 blob 发送到存储器终结点的次数。|无|
-|EventGridDeliveries|事件网格传递（预览）|Count|总计|发布到事件网格的 IoT 中心事件数。 对于成功和失败的请求数，请使用结果维度。 事件类型维度显示事件的类型（ https://aka.ms/ioteventgrid)。|ResourceId<br/>输出<br/>EventType|
-|EventGridLatency|事件网格延迟（预览版）|毫秒|平均值|将事件发布到事件网格时，从生成 Iot 中心事件到的平均延迟时间（毫秒）。 此数字是所有事件类型的平均数。 使用 "事件类型" 维度来查看特定事件类型的延迟。|ResourceId<br/>EventType|
+|EventGridDeliveries|事件网格传递次数（预览版）|Count|总计|发布到事件网格的 IoT 中心事件的数量。 使用 Result 维度表示成功和失败请求的数量。 EventType 维度显示事件的类型 (https://aka.ms/ioteventgrid)。|ResourceId、<br/>Result、<br/>EventType|
+|EventGridLatency|事件网格延迟（预览）|毫秒|平均值|从生成 IoT 中心事件到将事件发布到事件网格的平均延迟（毫秒）。 此数值是所有事件类型的平均。 若要查看特定事件类型的延迟，请使用 EventType 维度。|ResourceId、<br/>EventType|
 |d2c.twin.read.success|设备的成功克隆读取数|Count|总计|由设备发起的所有成功的克隆读取的计数。|无|
 |d2c.twin.read.failure|设备的失败克隆读取数|Count|总计|由设备发起的所有失败的克隆读取的计数。|无|
 |d2c.twin.read.size|设备的克隆读取的响应大小|字节|平均值|由设备发起的所有成功的克隆读取的平均大小、最小大小和最大大小。|无|
@@ -105,7 +105,7 @@ IoT 中心提供了多个指标，使你可以大致了解中心的运行状况�
 |jobs.failed|失败的作业数|Count|总计|所有失败的作业的计数。|无|
 |d2c.telemetry.ingress.sendThrottle|限制错误数|Count|总计|由于设备吞吐量限制而导致的限制错误数|无|
 |dailyMessageQuotaUsed|已使用的消息总数|Count|平均值|今天使用的消息总数。 这是累积值，每日 00:00 UTC 重置为零。|无|
-|deviceDataUsage|设备数据总使用量|字节|总计|从与 IotHub 相连的任意设备传出的字节，以及传入到与 IotHub 相连的任意设备的字节|无|
+|deviceDataUsage|设备数据用量总计|字节|总计|从与 IotHub 相连的任意设备传出的字节，以及传入到与 IotHub 相连的任意设备的字节|无|
 |deviceDataUsageV2|设备数据使用总量（预览）|字节|总计|从与 IotHub 相连的任意设备传出的字节，以及传入到与 IotHub 相连的任意设备的字节|无|
 |totalDeviceCount|设备总数（预览）|Count|平均值|已注册到 IoT 中心的设备数目|无|
 |connectedDeviceCount|已连接设备数（预览）|Count|平均值|已连接到 IoT 中心的设备数目|无|

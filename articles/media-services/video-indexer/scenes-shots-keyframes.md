@@ -1,7 +1,7 @@
 ---
-title: 视频索引器场景、截图和关键帧
+title: 视频索引器场景、镜头和关键帧
 titleSuffix: Azure Media Services
-description: 本主题概述了视频索引器场景、截图和关键帧。
+description: 本主题概述了视频索引器场景、镜头和关键帧。
 services: media-services
 author: Juliako
 manager: femila
@@ -11,52 +11,52 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245936"
 ---
 # <a name="scenes-shots-and-keyframes"></a>场景、镜头和关键帧
 
-视频索引器支持基于结构和语义属性将视频分段为临时单位。 此功能使客户能够根据不同的粒度轻松浏览、管理和编辑视频内容。 例如，根据本主题中所述的场景、快照和关键帧。   
+视频索引器支持根据结构和语义属性将视频分割到时态单位。 此功能使客户能够根据不同的粒度轻松浏览、管理和编辑其视频内容。 例如，基于本主题中介绍的场景、镜头和关键帧。   
 
 ![场景、镜头和关键帧](./media/scenes-shots-keyframes/scenes-shots-keyframes.png)
  
 ## <a name="scene-detection"></a>场景检测  
  
-视频索引器根据视觉提示确定场景在视频中的更改时间。场景描述单个事件，并由一系列在语义上相关的连续快照组成。 场景缩略图是其基础拍摄的第一个关键帧。 视频索引器基于连续照片中的颜色一致性将视频分段，并检索每个场景的开始时间和结束时间。 场景检测被视为一种挑战性的任务，因为它涉及量化视频的语义部分。
+视频索引器根据视觉提示确定视频中场景何时更改。场景描述单个事件，由一系列连续镜头组成，这些镜头在语义上是相关的。 场景缩略图是其基础拍摄的第一个关键帧。 视频索引器根据连续镜头的颜色一致性将视频分割成场景，并检索每个场景的开始和结束时间。 场景检测被认为是一项具有挑战性的任务，因为它涉及量化视频的语义方面。
 
 > [!NOTE]
-> 适用于至少包含3场景的视频。
+> 适用于包含至少 3 个场景的视频。
 
 ## <a name="shot-detection"></a>镜头检测
 
-视频索引器通过跟踪相邻帧的配色方案中的突然转换和逐步转换，确定在视频中拍摄图像的时间。 拍摄的元数据包括开始时间和结束时间，以及该快照中包含的关键帧的列表。 该照片是从同一相机同时拍摄的连续帧。
+视频索引器通过跟踪相邻帧的配色方案中的突然和渐进过渡，根据视觉提示确定视频拍摄何时发生更改。 拍摄的元数据包括开始和结束时间，以及该拍摄中包含的关键帧列表。 拍摄是同时从同一摄像机拍摄的连续帧。
 
 ## <a name="keyframe-detection"></a>关键帧检测
 
-视频索引器选择最能表示每个拍摄的帧。 关键帧是基于美观属性从整个视频中选择的代表帧（例如，对比度和 stableness）。 视频索引器将在拍摄的元数据中检索关键帧 Id 的列表，具体取决于哪些客户可以将关键帧作为高分辨率图像提取。  
+视频索引器选择最能代表每个镜头的帧。 关键帧是根据美观特性（例如，对比度和稳定性）从整个视频中选择的代表帧。 视频索引器检索关键帧 I 的清单，作为拍摄元数据的一部分，客户可以基于该列表提取关键帧作为高分辨率图像。  
 
 ### <a name="extracting-keyframes"></a>提取关键帧
 
-若要提取视频的高分辨率关键帧，必须先上传视频并为其编制索引。
+要提取视频的高分辨率关键帧，必须首先上载和索引视频。
 
-![关键帧](./media/scenes-shots-keyframes/extracting-keyframes.png)
+![关键 帧](./media/scenes-shots-keyframes/extracting-keyframes.png)
 
-#### <a name="with-the-video-indexer-website"></a>视频索引器网站
+#### <a name="with-the-video-indexer-website"></a>使用视频索引器网站
 
-若要使用视频索引器网站提取关键帧，请上传视频并为其编制索引。 索引作业完成后，单击 "**下载**" 按钮，然后选择 "**项目（ZIP）** "。 这会将项目文件夹下载到你的计算机。 
+要使用视频索引器网站提取关键帧，请上传和索引视频。 索引作业完成后，单击 **"下载**"按钮并选择 **"项目 "（ZIP）。** 这将将工件文件夹下载到您的计算机。 
 
-![关键帧](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+![关键 帧](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  
-解压缩并打开该文件夹。 在 *_KeyframeThumbnail*文件夹中，你将找到从视频中提取的所有关键帧。 
+解压缩并打开文件夹。 在 *_KeyframeThumbnail*文件夹中，您将找到从视频中提取的所有关键帧。 
 
-#### <a name="with-the-video-indexer-api"></a>带有视频索引器 API
+#### <a name="with-the-video-indexer-api"></a>使用视频索引器 API
 
-若要使用视频索引器 API 获取关键帧，请使用[上传视频](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?)呼叫上传和索引视频。 索引作业完成后，调用[获取视频索引](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)。 这将为你介绍视频索引器从 JSON 文件中的内容中提取的所有见解。  
+要使用视频索引器 API 获取关键帧，请使用[上传视频](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?)呼叫上传和索引视频。 索引作业完成后，调用[获取视频索引](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)。 这将为您提供视频索引器从 JSON 文件中的内容中提取的所有见解。  
 
-你将获得关键帧 Id 列表作为每个拍摄的元数据的一部分。 
+您将获得关键帧 I 的列表，作为每个镜头元数据的一部分。 
 
 ```json
 "shots":[  
@@ -98,33 +98,33 @@ ms.locfileid: "79245936"
 ]
 ```
 
-现在需要在[获取缩略图](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?)调用上运行每个关键帧 id。 这会将每个关键帧映像下载到计算机。 
+现在，您需要在[获取缩略图](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?)调用上运行每个关键帧的 ID。 这将将每个关键帧图像下载到您的计算机。 
 
-## <a name="editorial-shot-type-detection"></a>编辑快照类型检测
+## <a name="editorial-shot-type-detection"></a>编辑拍摄类型检测
 
-关键帧与输出 JSON 中的快照相关联。 
+关键帧与输出 JSON 中的镜头相关联。 
 
-与 insights JSON 中的个别截图关联的拍摄类型表示其编辑类型。 在编辑视频到剪辑、尾部或搜索特定的关键帧样式以实现艺术时，可能会发现这些拍摄类型特征非常有用。 根据每个拍摄的第一个关键帧的分析来确定不同的类型。 照片按其第一个关键帧中显示的面部的规模、大小和位置进行标识。 
+与见解 JSON 中的单个拍摄关联的拍摄类型表示其编辑类型。 在将视频编辑成剪辑、预告片或为艺术目的搜索特定类型的关键帧时，您可能会发现这些拍摄类型特征很有用。 根据对每个拍摄的第一个关键帧的分析确定不同类型的类型。 镜头由第一个关键帧中显示的人脸的比例、大小和位置标识。 
 
-根据相机与表面之间的距离来确定拍摄的大小和比例。 使用这些属性，视频索引器将检测以下快照类型：
+拍摄大小和比例根据摄像机与帧中显示的人脸之间的距离来确定。 使用这些属性，视频索引器检测以下拍摄类型：
 
-* 宽：显示整个人员的正文。
-* 中：显示人员的正文和脸。
-* 关闭：主要显示人员的人脸。
-* 极近关闭：显示一个人来填充屏幕。 
+* 宽：显示整个人的身体。
+* 中等：显示一个人的上半身和面部。
+* 特写：主要显示一个人的脸。
+* 极端特写：显示一个人的脸填充屏幕。 
 
-还可以根据框架中心的使用者字符的位置来确定拍摄类型。 此属性在视频索引器中定义以下快照类型：
+拍摄类型还可以根据主题字符相对于框架中心的位置来确定。 此属性在视频索引器中定义以下拍摄类型：
 
-* 左面：某人出现在框架的左侧。
-* 中心脸：某个人出现在框架的中心区域。
-* 右栏：某个人出现在该帧的右侧。
-* 户外：某个人出现在户外的设置中。
-* 室内：某个人在室内设置中出现。
+* 左面：一个人出现在框架的左侧。
+* 中心面：一个人出现在框架的中心区域。
+* 右面：一个人出现在框架的右侧。
+* 户外：一个人出现在户外环境中。
+* 室内：一个人出现在室内环境中。
 
 其他特征：
 
-* 两个抓图：显示两个人的中等大小。
-* 多面面：多于两人。
+* 两张照片：显示两张中等大小的人脸。
+* 多张面孔：两个以上。
 
 
 ## <a name="next-steps"></a>后续步骤

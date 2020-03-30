@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
 ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282089"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
@@ -26,9 +26,9 @@ ms.locfileid: "79282089"
 - [Microsoft 顶级支持](https://support.microsoft.com/en-us/premier)。
 
 > [!Note]
-> 在青铜可靠性层或单节点群集上运行的群集只允许运行测试工作负荷。 如果在青铜色或单节点群集上运行的群集遇到问题，Microsoft 支持团队将会帮助你缓解问题，但不会执行根本原因分析。 有关更多详细信息，请参阅[群集的可靠性特征](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)。
+> 在青铜级可靠性层级或单节点群集上运行的群集只能用来运行测试性工作负荷。 如果您在青铜可靠性或单节点群集上运行群集时遇到问题，Microsoft 支持团队将协助您缓解此问题，但不会执行根本原因分析。 请参阅[群集的可靠性特征](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)以获取更多详细信息。
 >
-> 有关生产就绪群集所需内容的详细信息，请参阅[生产准备情况清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
+> 若要详细了解生产就绪性群集的必要信息，请参阅[生产就绪性核对清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
 
 <a id="getlivesitesupportonprem"></a>
 
@@ -51,11 +51,11 @@ ms.locfileid: "79282089"
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow 和 MSDN 论坛
 
-[StackOverflow 上的 Service Fabric 标记][stackoverflow]和[MSDN 上的 Service Fabric 论坛][msdn-forum]最适用于询问有关平台工作方式以及如何通过该平台完成某些任务的问题。
+[StackOverflow 上的 Service Fabric 标记][stackoverflow]和 [MSDN 上的 Service Fabric 论坛][msdn-forum]最适合提问有关平台工作方式以及如何通过该平台完成某些任务的问题。
 
 ### <a name="azure-feedback-forum"></a>Azure 反馈论坛
 
-[适用于 Service Fabric 的 Azure 反馈论坛][uservoice-forum]是提交有关产品的重要功能构想的最佳位置，因为我们查看最常见的请求是中型到长期规划的一部分。 我们鼓励你在社区内争取大家对建议的支持。
+[有关 Service Fabric 的 Azure 反馈论坛][uservoice-forum]最适合提交用户关于产品的大型功能创意，我们可以看到，大多数常见的请求都属于我们的中长期规划。 我们鼓励你在社区内争取大家对建议的支持。
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric 预览版本 - 不支持在生产环境中使用
 
