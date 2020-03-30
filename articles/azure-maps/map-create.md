@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure Maps 创建地图 |Microsoft Azure 映射
-description: 在本文中，你将了解如何使用 Microsoft Azure map Web SDK 在网页上呈现地图。
-author: jingjing-z
+title: 使用 Azure 地图创建地图 |微软 Azure 地图
+description: 在本文中，您将了解如何使用 Microsoft Azure 地图 Web SDK 在网页上呈现地图。
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 07/26/2019
 ms.topic: conceptual
@@ -9,69 +9,119 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 578abae5b206b31674b00b9d27ef34174b93759f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: cfeff430e5313c8728582c4790c9aca9482d63aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988577"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534910"
 ---
 # <a name="create-a-map"></a>创建地图
 
 本文展示了如何创建地图并将地图制成动画。  
 
-## <a name="loading-a-map"></a>加载映射
+## <a name="loading-a-map"></a>加载地图
 
-若要加载地图，请创建[map 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)的新实例。 初始化映射时，传递 DIV 元素 ID 以呈现映射，并传递一组要在加载映射时使用的选项。 如果未在 `atlas` 命名空间上指定默认身份验证信息，则在加载地图时，需要在映射选项中指定此信息。 地图以异步方式加载多个资源以提高性能。 因此，在创建映射实例之后，将 `ready` 或 `load` 事件附加到映射，然后将与映射交互的任何其他代码添加到事件处理程序。 当映射的资源足以以编程方式交互时，就会激发 `ready` 事件。 完全加载初始映射视图后，将触发 `load` 事件。 
+要加载地图，请创建[Map 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)的新实例。 初始化地图时，传递 DIV 元素 ID 以呈现地图，并传递一组加载地图时要使用的选项。 如果未在`atlas`命名空间上指定默认身份验证信息，则加载地图时需要在地图选项中指定此信息。 地图以异步方式加载多个资源以进行性能加载。 因此，在创建地图实例后，将 或`ready``load`事件附加到地图，然后将与映射交互的任何其他代码添加到事件处理程序。 一`ready`旦地图加载了足够的资源以编程方式与之交互，事件就会触发。 初始`load`地图视图完全加载后，事件将触发。 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="基本地图负载" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "按 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）进行的<a href='https://codepen.io/azuremaps/pen/rXdBXx/'>基本地图加载</a>"。
+在<a href='https://codepen.io'>CodePen</a>上按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （） 查看笔<a href='https://codepen.io/azuremaps/pen/rXdBXx/'>基本地图加载</a>。
 </iframe>
 
 > [!TIP]
-> 您可以在同一页上加载多个映射。 同一页面上的多个映射可能使用相同或不同的身份验证和语言设置。
+> 您可以在同一页上加载多个地图。 同一页上的多个地图可能使用相同的或不同的身份验证和语言设置。
 
-## <a name="show-a-single-copy-of-the-world"></a>显示世界上单个副本
+## <a name="show-a-single-copy-of-the-world"></a>显示世界的单一副本
 
-当在宽屏幕上缩小地图时，多个世界副本将水平显示。 此选项在某些情况下非常有用，但对于其他应用程序，则需要查看单一副本。 此行为是通过将 maps `renderWorldCopies` 选项设置为 `false`来实现的。
+当地图在宽屏幕上缩小时，世界的多个副本将水平显示。 此选项对于某些方案非常理想，但对于其他应用程序，最好看到世界的单一副本。 此行为通过将地图`renderWorldCopies`选项设置为`false`实现。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="renderWorldCopies = false" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的<a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = false</a> by Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
+<iframe height="500" style="width: 100%;" scrolling="no" title="渲染世界副本 = 假" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+在<a href='https://codepen.io'>CodePen</a>上，请参阅"按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （） 显示的笔<a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>呈现世界副本 = false。</a>
 </iframe>
 
-## <a name="controlling-the-map-camera"></a>控制地图相机
 
-可以通过两种方法使用地图的照相机来设置显示的地图区域。 可以在加载地图时设置相机选项。 或者，您可以在映射加载后随时调用 `setCamera` 选项，以编程方式更新映射视图。  
+## <a name="map-options"></a>地图选项
+
+在那里创建地图时，可以传入几种不同类型的选项来自定义地图的函数方式，如下所示。
+
+- [Camera 选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions)和[CameraBound 选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraboundsoptions)用于指定地图应显示的区域。
+- [ServiceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions)用于指定地图应如何与为地图供电的服务进行交互。
+- [样式选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)用于指定地图应设置样式和渲染。
+- [用户交互选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions)用于指定当用户与地图交互时地图应如何到达。 
+
+`setCamera`在使用`setServiceOptions`、`setStyle`和`setUserInteraction`函数加载地图后，也可以更新这些选项。 
+
+## <a name="controlling-the-map-camera"></a>控制地图摄像机
+
+有两种方法可以使用地图的相机设置地图的显示区域。 加载地图时，可以设置摄像机选项。 或者，在地图加载后`setCamera`，您可以随时调用该选项以以编程方式更新地图视图。  
 
 <a id="setCameraOptions"></a>
 
 ### <a name="set-the-camera"></a>设置相机
 
-在下面的代码中，将创建一个[地图对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)并设置中心和缩放选项。 地图属性（如中心和缩放级别）是[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)的一部分。
+地图摄像机控制地图画布的视口中显示的内容。 在初始化或传递到地图函数中时，可以将相机选项传递到地图`setCamera`选项中。
+
+```javascript
+//Set the camera options when creating the map.
+var map = new atlas.Map('map', {
+    center: [-122.33, 47.6],
+    zoom: 12
+
+    //Additional map options.
+};
+
+//Update the map camera at anytime using setCamera function.
+map.setCamera({
+    center: [-110, 45],
+    zoom: 5 
+});
+```
+
+在以下代码中，将创建一个[Map 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)，并设置中心和缩放选项。 地图属性（如中心级和缩放级别）是["相机选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions)"的一部分。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='通过 CameraOptions 创建地图' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅在<a href='https://codepen.io'>CodePen</a>上通过 `CameraOptions` Azure Location Based Services （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）<a href='https://codepen.io/azuremaps/pen/qxKBMN/'>创建地图</a>。
+<iframe height='500' scrolling='no' title='通过 CameraOptions 创建地图' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上 Azure Location Based Services (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>通过  创建地图`CameraOptions` </a>。
 </iframe>
 
 <a id="setCameraBoundsOptions"></a>
 
 ### <a name="set-the-camera-bounds"></a>设置相机边界
 
-在下面的代码中，[地图对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)通过 `new atlas.Map()`来构造。 可以通过 Map 类的 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 函数定义地图属性，例如 `CameraBoundsOptions`。 边界和填充属性是使用 `setCamera` 设置的。
+边界框可用于更新地图摄像机。 如果边界框是根据点数据计算的，则通常也很有用，在摄像机选项中指定像素填充值以考虑图标大小。 这将有助于确保点不会从地图视口边缘脱落。
+
+```javascript
+map.setCamera({
+    bounds: [-122.4, 47.6, -122.3, 47.7],
+    padding: 10
+});
+```
+
+在以下代码中，通过 构造[Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) `new atlas.Map()`对象。 可以通过 Map 类的 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) 函数定义地图属性，例如 `CameraBoundsOptions`。 边界和填充属性是使用 `setCamera` 设置的。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='通过 CameraBoundsOptions 创建地图' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅在<a href='https://codepen.io'>CodePen</a>上通过 `CameraBoundsOptions` Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）<a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>创建地图</a>。
+<iframe height='500' scrolling='no' title='通过 CameraBoundsOptions 创建地图' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>通过  创建地图`CameraBoundsOptions` </a>。
 </iframe>
 
 ### <a name="animate-map-view"></a>将地图视图制成动画
 
-在下面的代码中，第一个代码块创建地图并设置 "输入" 和 "缩放" 地图样式。 在第二个代码块中，为 "动画" 按钮创建一个 click 事件处理程序。 单击此按钮时，将调用 `setCamera` 函数，其中包含[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)和[AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions)的一些随机值。
+设置地图的相机选项时，也可以设置[动画选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.animationoptions)。 这些选项指定移动摄像机所应采用的动画类型和持续时间。
+
+```javascript
+map.setCamera({
+    center: [-122.33, 47.6],
+    zoom: 12,
+    duration: 1000,
+    type: 'fly'  
+});
+```
+
+在以下代码中，第一个代码块创建一个地图并设置输入和缩放地图样式。 在第二个代码块中，为动画按钮创建一个单击事件处理程序。 单击此按钮时，使用`setCamera`["相机选项](/javascript/api/azure-maps-control/atlas.cameraoptions)"和"[动画选项](/javascript/api/azure-maps-control/atlas.animationoptions)"的一些随机值调用该函数。
 
 <br/>
 
@@ -80,7 +130,7 @@ ms.locfileid: "76988577"
 
 ## <a name="try-out-the-code"></a>试用代码
 
-查看代码示例。 您可以在 " **JS" 选项卡**中编辑 JavaScript 代码，然后在 "结果"**选项卡**上查看地图视图更改。还可以单击右上角的**CodePen 上**的 "编辑"，并在 CodePen 中修改代码。
+查看代码示例。 您可以在**JS 选项卡**中编辑 JavaScript 代码，并在 **"结果"选项卡**上看到地图视图更改。您还可以在右上角单击**CodePen 上的"编辑**"，并在 CodePen 中修改代码。
 
 <a id="relatedReference"></a>
 
@@ -89,13 +139,13 @@ ms.locfileid: "76988577"
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [地图](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)
+> [相机选项](/javascript/api/azure-maps-control/atlas.cameraoptions)
 
 > [!div class="nextstepaction"]
-> [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions)
+> [动画选项](/javascript/api/azure-maps-control/atlas.animationoptions)
 
 请参阅向应用添加功能的代码示例：
 
@@ -103,7 +153,7 @@ ms.locfileid: "76988577"
 > [更改地图的样式](choose-map-style.md)
 
 > [!div class="nextstepaction"]
-> [向地图添加控件](map-add-controls.md)
+> [将控件添加到地图](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [示例代码](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)

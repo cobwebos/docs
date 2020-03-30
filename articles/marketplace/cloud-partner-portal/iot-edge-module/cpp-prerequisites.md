@@ -1,23 +1,22 @@
 ---
-title: Azure IoT Edge 模块必备组件 |Azure Marketplace
+title: Azure IoT 边缘模块先决条件 |Azure 应用商店
 description: 发布 IoT Edge 模块的先决条件。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 610f9bc8d87ac75e2868e247fe1332574480b498
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b6e021fc452b45edd7b1be9fd5afd77b792b4853
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813863"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286534"
 ---
 # <a name="iot-edge-module-publishing-prerequisites"></a>IoT Edge 模块发布先决条件
 
-本文介绍了发布新 IoT Edge 模块产品/服务的先决条件。  如果尚未执行此操作，请查看[IoT Edge 模块发布指南](../..//iot-edge-module.md)。
+本文介绍了发布新 IoT Edge 模块产品/服务的先决条件。  如果尚未这样做，请查看[IoT Edge 模块发布指南](../..//iot-edge-module.md)。
 
 
 ## <a name="publishing-prerequisites"></a>发布先决条件
@@ -25,8 +24,8 @@ ms.locfileid: "73813863"
 若要将 IoT Edge 模块发布到 Azure 市场，必须满足以下先决条件：
 
 <!-- P2: It would be great to point to the terms of use of CPP here. This can often be a blocker for big companies and these terms of use are not anonymously visible yet.-->
-- 具有对[云合作伙伴门户](https://cloudpartner.azure.com/)的访问权限。 有关详细信息，请参阅 [Azure 市场和 AppSource 发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
-- 同意 [Azure 市场条款](https://azure.microsoft.com/support/legal/marketplace-terms/)
+- 访问[云合作伙伴门户](https://cloudpartner.azure.com/)。 有关详细信息，请参阅 [Azure 市场和 AppSource 发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
+- 与[Azure 应用商店条款](https://azure.microsoft.com/support/legal/marketplace-terms/)的协议
 - 将 IoT Edge 模块技术资产承载在 Azure 容器注册表中。  有关详细信息，请参阅[如何准备你的 IoT Edge 模块技术资产](./cpp-create-technical-assets.md)
 - 使你的 IoT Edge 模块元数据就绪可用。 例如，准备以下资产：
     - 标题
@@ -40,4 +39,4 @@ ms.locfileid: "73813863"
 
 ## <a name="next-steps"></a>后续步骤
 
-[准备好 IoT Edge 模块技术资产](./cpp-create-technical-assets.md)后，便可以[创建 IoT Edge 模块产品](./cpp-create-offer.md)。 
+一旦[您准备好 IoT Edge 模块技术资产](./cpp-create-technical-assets.md)，您将准备好[创建 IoT Edge 模块产品](./cpp-create-offer.md)。 

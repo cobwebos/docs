@@ -1,17 +1,17 @@
 ---
 title: 缓存 ASP.NET 会话状态提供程序
-description: 了解如何使用 Azure Cache for Redis 将 ASP.NET 会话状态存储在内存中。
+description: 了解如何使用 Redis 的 Azure 缓存存储ASP.NET会话状态。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 5c9af862ca2df3d812384c0f4ab660730aece872
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 25cef95e2d01012506148f03be45104e455e1fcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433559"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530268"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 会话状态提供程序
 
@@ -21,7 +21,7 @@ Azure Redis 缓存提供了一个会话状态提供程序，可使用该提供�
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>在缓存中存储 ASP.NET 会话状态
 
-要使用 Azure Redis 缓存会话状态 NuGet 包在 Visual Studio 中配置客户端应用程序，请在“工具”菜单中依次单击“NuGet 包管理器”和“包管理器控制台”。
+要使用 Azure Redis 缓存会话状态 NuGet 包在 Visual Studio 中配置客户端应用程序，请在“工具”菜单中依次单击“NuGet 包管理器”和“包管理器控制台”************。
 
 从 `Package Manager Console` 窗口运行以下命令。
     
@@ -125,6 +125,11 @@ Redis 会话状态提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName
 * 分布式内存中会话状态提供程序（如 Azure Redis 缓存会话状态提供程序） - 此提供程序提供两全其美的功能。 Web 应用可以使用简单、快速且可缩放的会话状态提供程序。 因为此提供程序会话状态存储在缓存中，因此应用必须考虑到在与分布式内存中缓存通信时关联的所有特征，如暂时性网络故障。 有关使用缓存的最佳实践，请参阅 Microsoft 模式和实践 [Azure 云应用程序设计和实现指南](https://github.com/mspnp/azure-guidance)中的[缓存指南](../best-practices-caching.md)。
 
 有关会话状态和其他最佳实践的详细信息，请参阅 [Web Development Best Practices (Building Real-World Cloud Apps with Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)（Web 开发最佳做法（使用 Azure 构建实际的云应用））。
+
+## <a name="third-party-session-state-providers"></a>第三方会话状态提供程序
+
+* [NCache](https://www.alachisoft.com/ncache/session-index.html)
+* [阿帕奇点燃](https://apacheignite-net.readme.io/docs/aspnet-session-state-caching)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,19 +1,18 @@
 ---
-title: 检索操作 API |Azure Marketplace
+title: 检索操作 API |Azure 应用商店
 description: 检索针对产品/服务的所有操作或获取指定 operationId 所对应的特定操作。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: c3eb77744d61322ca0aed20bb2b3f486cc02ac70
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4fc77407ae1c5854d3fe977da5a81f4226bf5305
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819598"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280467"
 ---
 <a name="retrieve-operations"></a>检索操作
 ===================
@@ -45,7 +44,7 @@ ms.locfileid: "73819598"
 <a name="header"></a>标头
 ------
 
-|  **名称**          |  **值**           |
+|  **名称**          |  **价值**           |
 |  ---------------   | -------------------- |
 |  Content-Type      | `application/json`   |
 |  授权     | `Bearer YOUR_TOKEN`  |
@@ -183,7 +182,7 @@ ms.locfileid: "73819598"
 |  submissionType              | 标识为产品/服务报告的操作类型，例如 `Publish/GGoLive`      |
 |  createdDateTime             | 创建操作时的 UTC 日期/时间                                                       |
 |  lastActionDateTime          | 上次更新操作时的 UTC 日期/时间                                       |
-|  status                      | 操作的状态，`not started` \| `running` \| `failed` \| `completed`。 一次只能有一个操作具有状态 `running`。 |
+|  status                      | `not started`\|`running`\|操作的状态`failed`。 \| `completed` 一次只能有一个操作具有状态 `running`。 |
 |  error                       | 操作失败的错误消息                                                               |
 |  |  |
 

@@ -1,16 +1,16 @@
 ---
 title: 为 Azure Cosmos 容器定义唯一键
-description: 了解如何使用 Azure 门户、PowerShell、.Net、Java 和其他各种 Sdk 定义 Azure Cosmos 容器的唯一密钥。
+description: 了解如何使用 Azure 门户、PowerShell、.Net、Java 和各种其他 SDK 为 Azure Cosmos 容器定义唯一键。
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74872105"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>为 Azure Cosmos 容器定义唯一键
@@ -19,25 +19,25 @@ ms.locfileid: "74872105"
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 Azure[门户](https://portal.azure.com/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)或选择现有帐户。
 
-1. 打开“数据资源管理器”窗格，选择要使用的容器。
+1. 打开“数据资源管理器”窗格，选择要使用的容器。****
 
-1. 单击“新建容器”。
+1. 单击“新建容器”****。
 
-1. 在“添加容器”对话框中，单击“+ 添加唯一键”，添加唯一键条目。
+1. 在“添加容器”对话框中，单击“+ 添加唯一键”，添加唯一键条目********。
 
 1. 输入唯一键约束的路径
 
-1. 如果需要，可通过单击“+ 添加唯一键”，添加更多唯一键条目
+1. 如果需要，可通过单击“+ 添加唯一键”，添加更多唯一键条目****
 
     ![Azure 门户中唯一键约束条目的屏幕截图](./media/how-to-define-unique-keys/unique-keys-portal.png)
 
-## <a name="use-powershell"></a>使用 Powershell
+## <a name="use-powershell"></a>使用 PowerShell
 
-若要创建具有唯一密钥的容器，请参阅[创建具有唯一密钥和 TTL 的 Azure Cosmos 容器](manage-with-powershell.md#create-container-unique-key-ttl)
+要创建具有唯一键的容器，请参阅[创建具有唯一键和 TTL 的 Azure Cosmos 容器](manage-with-powershell.md#create-container-unique-key-ttl)
 
 ## <a name="use-the-net-sdk-v2"></a>使用 .NET SDK V2
 
@@ -61,7 +61,7 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 
 ## <a name="use-the-net-sdk-v3"></a>使用 .NET SDK V3
 
-使用[.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)创建新容器时，请使用 SDK 的 Fluent API 以简洁且可读的方式声明唯一键。
+使用 [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 创建新容器时，请使用 SDK 的 Fluent API 以简洁且可读的方式声明唯一键。
 
 ```csharp
 await client.GetDatabase("database").DefineContainer(name: "container", partitionKeyPath: "/myPartitionKey")
@@ -147,5 +147,5 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关[分区](partition-data.md)的详细信息
+- 了解有关[分区](partition-data.md)的更多
 - 探索[索引编制的工作原理](index-overview.md)

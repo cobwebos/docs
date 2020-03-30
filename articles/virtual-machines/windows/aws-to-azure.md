@@ -1,5 +1,5 @@
 ---
-title: 将 Windows AWS Vm 移到 Azure
+title: 将 Windows AWS VM 移动到 Azure
 description: 将 Amazon Web Services (AWS) EC2 Windows 实例移到 Azure 虚拟机。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 9bd01f24ac2cada02f51089d238519cd6c7e0248
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74039283"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>将 Windows VM 从 Amazon Web Services (AWS) 移到 Azure 虚拟机
@@ -29,16 +29,16 @@ ms.locfileid: "74039283"
 
 ## <a name="prepare-the-vm"></a>准备 VM 
  
-可将通用和专用 VHD 上传到 Azure。 每种类型都需要在从 AWS 导出之前先准备 VM。 
+可将通用化和专用化 VHD 上传到 Azure。 每种类型都需要在从 AWS 导出之前先准备 VM。 
 
-- **通用 VHD** - 通用 VHD 包含使用 Sysprep 删除的所有个人帐户信息。 如果打算使用 VHD 作为映像来创建新 VM，应该： 
+- **通用化 VHD** - 通用化 VHD 包含使用 Sysprep 删除的所有个人帐户信息。 如果打算使用 VHD 作为映像来创建新 VM，应该： 
  
     * [准备 Windows VM](prepare-for-upload-vhd-image.md)。  
     * 使用 Sysprep 将虚拟机通用化。  
 
  
-- **专用 VHD** - 专用 VHD 保留原始 VM 中的用户帐户、应用程序和其他状态数据。 如果打算按原样使用 VHD 来创建新 VM，请确保完成以下步骤。  
-    * 准备好要上传到 Azure 的 Windows VHD。 **不要**使用 Sysprep 通用化 VM。 
+- **专用化 VHD** - 专用化 VHD 保留原始 VM 中的用户帐户、应用程序和其他状态数据。 如果打算按原样使用 VHD 来创建新 VM，请确保完成以下步骤。  
+    * [准备要上载到 Azure 的 Windows VHD。](prepare-for-upload-vhd-image.md) 不要使用 Sysprep 通用化 VM****。 
     * 删除 VM 上安装的所有来宾虚拟化工具和代理（例如 VMware 工具）。 
     * 确保 VM 配置为通过 DHCP 提取 IP 地址和 DNS 设置。 这可以确保服务器在启动时获得 VNet 中的 IP 地址。  
 
@@ -64,7 +64,7 @@ aws ec2 create-instance-export-task --instance-id <instanceID> --target-environm
 
 现在可以将 VHD 上传到 Azure 并创建新的 VM 了。 
 
-- 如果导出前在源上运行了 Sysprep 以通用化该 VHD，请参阅[上传通用化的 VHD 并使用它在 Azure 中创建新的 VM](upload-generalized-managed.md)
-- 如果导出前未运行 Sysprep，VHD 将被视为专用化，请参阅[将专用化的 VHD 上传到 Azure 并创建新的 VM](create-vm-specialized.md)
+- 如果导出前在源上运行了 Sysprep 以通用化**** 该 VHD，请参阅[上传通用化的 VHD 并使用它在 Azure 中创建新的 VM](upload-generalized-managed.md)
+- 如果导出前未运行 Sysprep，VHD 将被视为专用化****，请参阅[将专用化的 VHD 上传到 Azure 并创建新的 VM](create-vm-specialized.md)
 
  

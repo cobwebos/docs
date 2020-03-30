@@ -1,77 +1,93 @@
 ---
-title: 映射数据流查找转换
-description: Azure 数据工厂映射数据流查找转换
+title: 映射数据流的查找转换
+description: 在映射数据流时使用查找转换从其他源引用数据。
 author: kromerm
+ms.reviewer: daperlov
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/26/2020
-ms.openlocfilehash: 2216e1bf058eef486dbfefba24d52bdc6bdb232f
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.date: 03/23/2020
+ms.openlocfilehash: 78c6c1363af011a90865770d88c0037e50e958c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164672"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240416"
 ---
-# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure 数据工厂映射数据流查找转换
+# <a name="lookup-transformation-in-mapping-data-flow"></a>映射数据流的查找转换
 
-使用“查找”将其他源的参考数据添加到数据流中。 查找转换需要一个定义的源，它指向你的引用表并匹配关键字段。
+使用查找转换引用来自数据流中另一个源的数据。 查找转换将列从匹配的数据追加到源数据。
+
+查找转换类似于左外部联接。 主流中的所有行都将存在于输出流中，并包含来自查找流的其他列。 
+
+## <a name="configuration"></a>Configuration
 
 ![查找转换](media/data-flow/lookup1.png "查找")
 
-选择要在传入流字段和参考源字段之间匹配的关键字段。 必须先在数据流设计画布上创建一个新源，以在右侧用于查找。
+**主流：** 传入的数据流。 此流等效于联接的左侧。
 
-找到匹配项后，参考源中生成的行和列将添加到数据流中。 可以在数据流的末尾选择要包含在接收器中的感兴趣的字段。 或者，在查找时使用 "选择" 转换来修剪字段列表，以便仅保留两个流中要保留的字段。
+**查找流：** 追加到主流的数据。 添加哪些数据由查找条件决定。 此流等效于联接的右侧。
 
-查找转换执行左外部联接的等效操作。 因此，你会看到左侧源中的所有行都与你的右侧的匹配项相结合。 如果在查找中有多个匹配值，或者如果想要自定义查找表达式，更可取的方法是切换到联接转换并使用交叉联接。 这将避免执行时出现笛卡尔积错误。
+**匹配多行：** 如果启用，主流中具有多个匹配项的行将返回多行。 否则，将仅根据"匹配"条件返回一行。
 
-## <a name="match--no-match"></a>匹配/不匹配
+**匹配：** 仅当启用了"匹配多行"时，才可见。 选择是匹配任何行、第一个匹配项还是最后一个匹配项。 建议任何行执行最快。 如果选择了第一行或最后一行，则需要指定排序条件。
 
-进行查找转换后，可以使用 expression 函数通过使用 expression 函数来检查每个匹配行的结果，`isMatch()` 根据查找是否导致行匹配来进行更多的选择。
+**查找条件：** 选择要匹配的列。 如果满足相等条件，则行将被视为匹配项。 悬停并选择"计算列"以使用[数据流表达式语言](data-flow-expression-functions.md)提取值。
+
+查找转换仅支持相等匹配。 要自定义查找表达式以包括其他运算符（如大于，建议[在联接转换中使用交叉联接](data-flow-join.md#custom-cross-join)）。 交叉联接将避免执行时可能出现的点菜产品错误。
+
+输出数据中包含来自两个流的所有列。 要删除重复列或不需要的列，请在查找转换后添加[选择转换](data-flow-select.md)。 列也可以在接收器转换中删除或重命名。
+
+## <a name="analyzing-matched-rows"></a>分析匹配的行
+
+查找转换后，该函数`isMatch()`可用于查看查找是否匹配单个行。
 
 ![查找模式](media/data-flow/lookup111.png "查找模式")
 
-使用查找转换后，可以在 ```isMatch()``` 函数上添加有条件拆分转换拆分。 在上面的示例中，匹配行经过最顶部的流，而不匹配的行则流过 ```NoMatch``` 流。
+此模式的一个示例是使用条件拆分转换在`isMatch()`函数上拆分。 在上面的示例中，匹配的行通过顶部流，不匹配的行流通过```NoMatch```流。
 
-## <a name="first-or-last-value"></a>第一个或最后一个值
+## <a name="testing-lookup-conditions"></a>测试查找条件
 
-查找转换以左外部联接的形式实现。 如果你有多个匹配项与查找，则可能需要选取第一个匹配行、最后一个匹配项或任意随机行来减少多个匹配行。
+在调试模式下使用数据预览测试查找转换时，请使用一小组已知数据。 从大型数据集对行进行采样时，无法预测将读取哪些行和键进行测试。 结果是非确定性的，这意味着您的联接条件可能不会返回任何匹配项。
 
-### <a name="option-1"></a>选项 1
+## <a name="broadcast-optimization"></a>广播优化
 
-![单行查找](media/data-flow/singlerowlookup.png "单行查找")
+在 Azure 数据工厂中，映射数据流在横向扩展的 Spark 环境中执行。 如果数据集可以适合辅助节点内存空间，则可以通过启用广播来优化查找性能。
 
-* 匹配多个行：将其留空可返回单个行匹配
-* 匹配时间：选择第一个、最后一个或任意匹配
-* 排序条件：如果选择 "第一个" 或 "最后一个"，则 ADF 要求对数据进行排序，以便在第一个和最后一个逻辑后面出现逻辑
+![广播加入](media/data-flow/broadcast.png "广播加入")
 
-> [!NOTE]
-> 如果需要控制要从查找返回哪一个值，则只对单行选择器使用第一个或最后一个选项。 使用 "任何" 或多行查找的速度将更快。
+启用广播会将整个数据集推送到内存中。 对于仅包含几千行的小型数据集，广播可以大大提高查找性能。 对于大型数据集，此选项可能导致内存不足异常。
 
-### <a name="option-2"></a>方法 2
+## <a name="data-flow-script"></a>数据流脚本
 
-您还可以在查找后使用聚合转换来执行此操作。 在这种情况下，会使用一个名为 ```PickFirst``` 的聚合转换选取查找匹配项中的第一个值。
+### <a name="syntax"></a>语法
 
-![查找聚合](media/data-flow/lookup333.png "查找聚合")
+```
+<leftStream>, <rightStream>
+    lookup(
+        <lookupConditionExpression>,
+        multiple: { true | false },
+        pickup: { 'first' | 'last' | 'any' },  ## Only required if false is selected for multiple
+        { desc | asc }( <sortColumn>, { true | false }), ## Only required if 'first' or 'last' is selected. true/false determines whether to put nulls first
+        broadcast: { 'none' | 'left' | 'right' | 'both' }
+    ) ~> <lookupTransformationName>
+```
+### <a name="example"></a>示例
 
-![首先查找](media/data-flow/lookup444.png "首先查找")
+![查找转换](media/data-flow/lookup-dsl-example.png "查找")
 
-## <a name="optimizations"></a>优化
+上述查找配置的数据流脚本位于下面的代码段中。
 
-在数据工厂中，数据流在扩展的 Spark 环境中执行。 如果数据集适合工作节点内存空间，则可以优化查找性能。
+```
+SQLProducts, DimProd lookup(ProductID == ProductKey,
+    multiple: false,
+    pickup: 'first',
+    asc(ProductKey, true),
+    broadcast: 'none')~> LookupKeys
+```
+## 
+后续步骤
 
-![广播联接](media/data-flow/broadcast.png "广播联接")
-
-### <a name="broadcast-join"></a>广播联接
-
-选择 "左" 和/或 "右" "向右广播" "请求 ADF"，将整个数据集从查找关系的两侧推送到内存。 对于较小的数据集，这可以极大地提高查找性能。
-
-### <a name="data-partitioning"></a>数据分区
-
-您还可以通过在查找转换的 "优化" 选项卡上选择 "设置分区" 来指定数据的分区，以创建可在每个辅助角色中更好地适应内存的数据集。
-
-## <a name="next-steps"></a>后续步骤
-
-* [联接](data-flow-join.md)和[存在](data-flow-exists.md)转换在 ADF 映射数据流中执行类似任务。 接下来，请查看这些转换。
-* 使用带有 ```isMatch()``` 的有[条件拆分](data-flow-conditional-split.md)拆分匹配和不匹配值的行
+* [联接](data-flow-join.md)和[存在](data-flow-exists.md)转换都采用多个流输入
+* 使用[条件拆分转换](data-flow-conditional-split.md)与```isMatch()```在匹配值和非匹配值上拆分行

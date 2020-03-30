@@ -1,21 +1,19 @@
 ---
-title: 管理云合作伙伴门户上的用户 |Azure Marketplace
-description: 不推荐使用的 CPP 文章，指向 PC 文章;was "管理云合作伙伴门户上的用户"
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
-manager: pbutlerm
+title: 在云合作伙伴门户上管理用户 |Azure 应用商店
+description: 弃用CPP文章，指向PC文章;是"在云合作伙伴门户上管理用户"
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: 15c173748f6e38d72f6f05d83a93bbf1fd4a243d
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: d0a83f0a6c842e7b364e7fa8553768bab063dc68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666403"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288472"
 ---
-# <a name="managing-users-on-the-cloud-partner-portal"></a>管理云合作伙伴门户上的用户
+# <a name="managing-users-on-the-cloud-partner-portal"></a>在云合作伙伴门户上管理用户
 
-此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[如何在合作伙伴中心管理商业 Marketplace 帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)。
+此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[如何在合作伙伴中心管理您的商业市场帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)。

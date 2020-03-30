@@ -1,7 +1,7 @@
 ---
 title: 在 macOS 和 iOS 上配置 SSO
 titleSuffix: Microsoft identity platform
-description: 了解如何在 macOS 和 iOS 上配置单一登录（SSO）。
+description: 了解如何在 macOS 和 iOS 上配置单一登录 (SSO)。
 services: active-directory
 documentationcenter: dev-center-name
 author: mmacy
@@ -18,71 +18,71 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 91a55520b37c549c8f1d94ba6cf08ecd24db85b5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262446"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上配置 SSO
 
-适用于 macOS 和 iOS 的 Microsoft 身份验证库（MSAL）支持 macOS/iOS 应用与浏览器之间的单一登录（SSO）。 本文介绍以下 SSO 方案：
+适用于 macOS 和 iOS 的 Microsoft 身份验证库 (MSAL) 支持 macOS/iOS 应用与浏览器之间的单一登录 (SSO)。 本文介绍以下 SSO 方案：
 
-- [在多个应用之间无提示 SSO](#silent-sso-between-apps)
+- [多个应用之间的静默 SSO](#silent-sso-between-apps)
 
-这种类型的 SSO 适用于同一 Apple 开发人员分发的多个应用程序。 它提供无提示 SSO （即，不提示用户输入凭据），方法是从密钥链读取其他应用程序写入的刷新令牌，并以无提示方式为其交换访问令牌。  
+此类 SSO 在同一 Apple 开发商分发的多个应用之间进行。 它提供静默 SSO（即，不提示用户输入凭据）：从密钥链读取其他应用写入的刷新令牌，并以静默方式使用这些刷新令牌交换访问令牌。  
 
-- [通过身份验证代理的 SSO](#sso-through-authentication-broker-on-ios)
+- [通过身份验证中介实现的 SSO](#sso-through-authentication-broker-on-ios)
 
 > [!IMPORTANT]
 > 此流在 macOS 上不可用。
 
-Microsoft 提供称为代理的应用程序，只要移动设备注册到 Azure Active Directory （AAD），就可以在不同供应商的应用程序之间实现 SSO。 这种类型的 SSO 要求在用户的设备上安装一个代理应用程序。
+Microsoft 提供称作“中介”的应用，只要移动设备已注册到 Azure Active Directory (AAD)，这些应用就能在不同供应商提供的应用程序之间实现 SSO。 此类 SSO 要求在用户设备上安装一个中介应用程序。
 
-- **MSAL 和 Safari 之间的 SSO**
+- **MSAL 与 Safari 之间的 SSO**
 
-SSO 是通过[ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)类实现的。 它使用其他应用程序和 Safari 浏览器的现有登录状态。 它并不局限于同一个 Apple 开发人员分发的应用程序，但它需要一些用户交互。
+SSO 是通过 [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc) 类实现的。 它使用其他应用程序和 Safari 浏览器中的现有登录状态。 它并不局限于同一个 Apple 开发商分发的应用，但需要用户进行一些交互。
 
-如果你在应用中使用默认的 web 视图来登录用户，则会在基于 MSAL 的应用程序和 Safari 之间自动建立 SSO。 若要了解有关 MSAL 支持的 web 视图的详细信息，请访问[自定义浏览器和 webview](customize-webviews.md)。
+如果在应用中使用默认 Web 视图将用户登录，基于 MSAL 的应用程序与 Safari 之间会自动实现 SSO。 若要详细了解 MSAL 支持的 Web 视图，请访问[自定义浏览器和 WebView](customize-webviews.md)。
 
 > [!IMPORTANT]
-> 此类型的 SSO 当前在 macOS 上不可用。 MacOS 上的 MSAL 仅支持 WKWebView，这对 Safari 没有 SSO 支持。 
+> 此类 SSO 目前在 macOS 上不可用。 macOS 上的 MSAL 仅支持 WKWebView，但 Safari 并不提供 WKWebView 的 SSO 支持。 
 
-- **ADAL 和 MSAL macOS/iOS 应用之间的无提示 SSO**
+- **ADAL 与 MSAL macOS/iOS 应用之间的静默 SSO**
 
-MSAL 目标-C 支持迁移和 SSO 与基于 ADAL 目标-C 的应用。 应用必须由同一 Apple 开发人员分发。
+MSAL Objective-C 支持基于 ADAL Objective-C 的应用的迁移和 SSO。 这些应用必须由同一家 Apple 开发商分发。
 
-有关基于 ADAL 和 MSAL 的应用之间的跨应用 SSO 的说明，请参阅[macOS 和 iOS 上的 ADAL 与 MSAL 应用之间的 SSO](sso-between-adal-msal-apps-macos-ios.md) 。
+有关基于 ADAL 与基于 MSAL 的应用之间的跨应用 SSO 说明，请参阅 [macOS 和 iOS 上 ADAL 与 MSAL 应用之间的 SSO](sso-between-adal-msal-apps-macos-ios.md)。
 
-## <a name="silent-sso-between-apps"></a>应用之间无提示 SSO
+## <a name="silent-sso-between-apps"></a>应用之间的静默 SSO
 
 MSAL 支持通过 iOS 密钥链访问组进行 SSO 共享。
 
-若要在应用程序中启用 SSO，需要执行以下步骤，详细说明如下：
+若要跨应用程序启用 SSO，需要执行以下步骤，后文对此做了详细说明：
 
 1. 确保所有应用程序使用相同的客户端 ID 或应用程序 ID。
 1. 确保所有应用程序共享来自 Apple 的相同签名证书，以便可以共享密钥链。
 1. 请求每个应用程序的相同密钥链授权。
-1. 告诉 MSAL Sdk 你希望我们使用的共享密钥链（如果它不同于默认值）。
+1. 如果你要使用的共享密钥链不同于默认设置，请告知 MSAL SDK。
 
 ### <a name="use-the-same-client-id-and-application-id"></a>使用相同的客户端 ID 和应用程序 ID
 
-为了让 Microsoft 标识平台知道哪些应用程序可以共享令牌，这些应用程序需要共享相同的客户端 ID 或应用程序 ID。 这是在门户中注册第一个应用程序时提供的唯一标识符。
+为使 Microsoft 标识平台知道哪些应用程序可以共享令牌，这些应用程序需要共享相同的客户端 ID 或应用程序 ID。 这是在门户中注册第一个应用程序时提供的唯一标识符。
 
-Microsoft 标识平台告诉使用同一个应用程序 ID 的应用程序的**重定向 uri**。 每个应用程序可以在登记门户中注册多个重定向 URI。 套件中的每个应用程序具有不同的重定向 URI。 例如：
+Microsoft 标识平台根据应用的**重定向 URI** 来辨别使用相同应用程序 ID 的应用。 每个应用程序可以在登记门户中注册多个重定向 URI。 套件中的每个应用程序具有不同的重定向 URI。 例如：
 
 App1 重定向 URI：`msauth.com.contoso.mytestapp1://auth`  
 App2 重定向 URI：`msauth.com.contoso.mytestapp2://auth`  
 App3 重定向 URI：`msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
-> 重定向 uri 的格式必须兼容 MSAL 支持的格式，如[MSAL 重定向 URI 格式要求](redirect-uris-ios.md#msal-redirect-uri-format-requirements)中所述。
+> 重定向 URI 的格式必须与 MSAL 支持的格式兼容，[MSAL 重定向 URI 格式要求](redirect-uris-ios.md#msal-redirect-uri-format-requirements)中阐述了此格式。
 
-### <a name="setup-keychain-sharing-between-applications"></a>设置应用程序之间的密钥链共享
+### <a name="setup-keychain-sharing-between-applications"></a>设置在应用程序之间共享的密钥链
 
-若要启用密钥链共享，请参阅 Apple[添加功能](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html)一文。 重要的是，你需要确定要调用的密钥链，并将该功能添加到将涉及 SSO 的所有应用程序中。
+请参阅 Apple 的 [Adding Capabilities](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html)（添加功能）一文来启用密钥链共享。 重要的是，需要决定密钥链的调用方式，并将该功能添加到 SSO 涉及的所有应用程序。
 
-设置正确的权利后，你将在项目目录中看到一个 `entitlements.plist` 文件，其中包含类似于以下示例的内容：
+正确设置权利后，项目目录中会出现一个 `entitlements.plist` 文件，其中包含类似于以下示例的内容：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -98,19 +98,19 @@ App3 重定向 URI：`msauth.com.contoso.mytestapp3://auth`
 </plist>
 ```
 
-#### <a name="add-a-new-keychain-group"></a>添加新的密钥链组
+#### <a name="add-a-new-keychain-group"></a>添加新的钥匙串组
 
-向项目**功能**添加新的密钥链组。 密钥链组应为：
-* iOS 上的 `com.microsoft.adalcache` 
-* macOS 上的 `com.microsoft.identity.universalstorage`。
+向项目**功能**添加新的键串组。 钥匙串组应为：
+* `com.microsoft.adalcache`在 iOS 上 
+* `com.microsoft.identity.universalstorage`在macOS上。
 
-![密钥链示例](media/single-sign-on-macos-ios/keychain-example.png)
+![钥匙串示例](media/single-sign-on-macos-ios/keychain-example.png)
 
-有关详细信息，请参阅[密钥链组](howto-v2-keychain-objc.md)。
+有关详细信息，请参阅[钥匙串组](howto-v2-keychain-objc.md)。
 
 ## <a name="configure-the-application-object"></a>配置应用程序对象
 
-在每个应用程序中启用密钥链授权，并准备好使用 SSO 后，请使用密钥链访问组配置 `MSALPublicClientApplication`，如以下示例中所示：
+在每个应用程序中启用密钥链权利并准备好使用 SSO 后，请按以下示例所示在 `MSALPublicClientApplication` 中配置密钥链访问组：
 
 Objective-C：
 
@@ -137,19 +137,19 @@ do {
 ```
 
 > [!WARNING]
-> 在应用程序之间共享密钥链时，任何应用程序都可以删除应用程序中的用户或甚至所有令牌。
-> 如果你的应用程序依赖于标记来执行后台工作，则这一点特别有影响力。
-> 共享密钥链意味着在应用使用 Microsoft 标识 SDK 删除操作时必须非常小心。
+> 在应用程序之间共享密钥链之后，任何应用程序都可以删除用户，甚至可以删除整个应用程序的所有令牌。
+> 如果应用程序依赖于这些令牌来执行后台工作，后果特别严重。
+> 要共享密钥链，就必须十分警惕应用使用 Microsoft 标识 SDK 删除操作的情况。
 
-就这么简单！ Microsoft 标识 SDK 现在会在所有应用程序之间共享凭据。 帐户列表还将在应用程序实例之间共享。
+就这么简单！ Microsoft 标识 SDK 现在会在所有应用程序之间共享凭据。 此外还会在应用程序实例之间共享帐户列表。
 
-## <a name="sso-through-authentication-broker-on-ios"></a>IOS 上的 SSO 到身份验证代理
+## <a name="sso-through-authentication-broker-on-ios"></a>在 iOS 上通过身份验证中介实现 SSO
 
-MSAL 通过 Microsoft Authenticator 提供对中转身份验证的支持。 Microsoft Authenticator 为 AAD 注册的设备提供 SSO，还可以帮助你的应用程序遵循条件性访问策略。
+MSAL 通过 Microsoft Authenticator 提供中介身份验证支持。 Microsoft 身份验证器为 AAD 注册设备提供 SSO，还可帮助您的应用程序遵循条件访问策略。
 
-以下步骤介绍如何使用应用的身份验证代理启用 SSO：
+以下步骤说明如何使用身份验证中介为应用启用 SSO：
 
-1. 为应用程序的 info.plist 中的应用程序注册 broker 兼容的重定向 URI 格式。 与 broker 兼容的重定向 URI 格式为 `msauth.<app.bundle.id>://auth`。 用应用程序的捆绑 ID 替换 "< >" "。 例如：
+1. 为应用 Info.plist 中的应用程序注册中介兼容的重定向 URI 格式。 中介兼容的重定向 URI 格式为 `msauth.<app.bundle.id>://auth`。 请将 `<app.bundle.id>`` 替换为应用程序的捆绑 ID。 例如：
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -158,7 +158,7 @@ MSAL 通过 Microsoft Authenticator 提供对中转身份验证的支持。 Micr
     </array>
     ```
 
-1. 将以下方案添加到 `LSApplicationQueriesSchemes`下的应用 info.plist：
+1. 将以下方案添加到应用的 Info.plist 中的 `LSApplicationQueriesSchemes` 下：
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -187,7 +187,7 @@ MSAL 通过 Microsoft Authenticator 提供对中转身份验证的支持。 Micr
     }
     ```
     
-**如果使用的是 Xcode 11**，应改为将 MSAL 回拨放入 `SceneDelegate` 文件中。
+**如果使用的是 Xcode 11**，应改为将 MSAL 回调放入 `SceneDelegate` 文件。
 如果支持兼容旧版 iOS 的 UISceneDelegate 和 UIApplicationDelegate，则需将 MSAL 回叫置于这两个文件中。
 
 Objective-C：

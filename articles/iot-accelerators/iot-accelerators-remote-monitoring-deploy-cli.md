@@ -8,22 +8,22 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271650"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258288"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>使用 CLI 部署远程监视解决方案加速器
 
-本操作指南介绍如何部署远程监视解决方案加速器。 使用 CLI 部署解决方案。 你还可以在 azureiotsolutions.com 中使用基于 web 的 UI 部署解决方案，若要了解此选项，请参阅[部署远程监视解决方案加速器](quickstart-remote-monitoring-deploy.md)快速入门。
+本操作指南介绍如何部署远程监视解决方案加速器。 使用 CLI 部署解决方案。 您还可以在azureiotsolutions.com使用基于 Web 的 UI 部署解决方案，了解此选项，请参阅[部署远程监视解决方案加速器](quickstart-remote-monitoring-deploy.md)快速入门。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要部署远程监视解决方案加速器，需要一个有效的 Azure 订阅。
 
-如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 要运行 CLI，需在本地计算机上安装 [Node.js](https://nodejs.org/)。
 
@@ -49,10 +49,10 @@ pcs login
 
 在部署解决方案加速器时，有几种选项可用于配置部署进程：
 
-| 选项 | 值 | 说明 |
+| 选项 | 值 | 描述 |
 | ------ | ------ | ----------- |
-| SKU    | `basic`、`standard`、`local` | 基本部署适用于测试和演示，它将所有微服务部署到一个虚拟机上。 标准部署适用于生产，它将微服务部署到多个虚拟机上。 本地部署通过配置 Docker 容器在本地计算机中运行微服务，并使用 Azure 云服务（如存储和 Cosmos DB）。 |
-| 运行时 | `dotnet`、`java` | 选择微服务的语言实现。 |
+| SKU    | `basic`, `standard`, `local` | 基本部署适用于测试和演示，它将所有微服务部署到一个虚拟机上__。 标准部署适用于生产，它将微服务部署到多个虚拟机上__。 本地部署通过配置 Docker 容器在本地计算机中运行微服务，并使用 Azure 云服务（如存储和 Cosmos DB）__。 |
+| 运行时 | `dotnet`, `java` | 选择微服务的语言实现。 |
 
 若要了解如何使用本地部署选项，请参阅[在本地运行远程监视解决方案](iot-accelerators-remote-monitoring-deploy-local.md)。
 
@@ -60,7 +60,7 @@ pcs login
 
 本部分汇总基本与标准部署之间的主要差别。
 
-### <a name="basic"></a>基本
+### <a name="basic"></a>Basic
 
 可以从[azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators)或使用 CLI 执行基本部署。
 
@@ -76,10 +76,10 @@ pcs login
 | 1     | [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | 适用于 VM 和流式处理检查点的存储 |
 | 1     | [Web 应用程序](https://azure.microsoft.com/services/app-service/web/)        |                 | 托管前端 Web 应用程序 |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | 管理用户标识和安全性 |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | 查看资产位置 |
+| 1     | [Azure 地图](https://azure.microsoft.com/services/azure-maps/)        | Standard                | 查看资产位置 |
 | 1     | [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)        |   3 个单位              | 启用实时分析 |
 | 1     | [Azure 设备预配服务](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | 大规模预配设备 |
-| 1     | [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
+| 1     | [Azure 时间序列见解](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
 
 ### <a name="standard"></a>Standard
 
@@ -91,19 +91,19 @@ pcs login
 
 | Count | 资源                                     | SKU/大小      | 用途 |
 |-------|----------------------------------------------|-----------------|----------|
-| 1     | [Azure Kubernetes 服务](https://azure.microsoft.com/services/kubernetes-service)| 使用完全托管的 Kubernetes 容器业务流程服务，默认值为 3 个代理|
+| 1     | [Azure 库伯奈斯服务](https://azure.microsoft.com/services/kubernetes-service)| 使用完全托管的 Kubernetes 容器业务流程服务，默认值为 3 个代理|
 | 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                     | S2 - 标准层 | 设备管理、命令和控制 |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | 存储配置数据和设备遥测数据，例如规则、警报和消息 |
 | 5     | [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | 4 个用于 VM 存储，1 个用于流式处理检查点 |
-| 1     | [应用服务](https://azure.microsoft.com/services/app-service/web/)             | S1 标准     | 基于 SSL 的应用程序网关 |
+| 1     | [应用服务](https://azure.microsoft.com/services/app-service/web/)             | S1 标准     | TLS 应用程序网关 |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | 管理用户标识和安全性 |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | 查看资产位置 |
+| 1     | [Azure 地图](https://azure.microsoft.com/services/azure-maps/)        | Standard                | 查看资产位置 |
 | 1     | [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)        |   3 个单位              | 启用实时分析 |
 | 1     | [Azure 设备预配服务](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | 大规模预配设备 |
-| 1     | [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
+| 1     | [Azure 时间序列见解](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
 
 > [!NOTE]
-> 在 [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing) 中可以找到这些服务的定价信息。 可在 [Azure 门户](https://portal.azure.com/)中找到订阅的用量和计费详细信息。
+> 您可以在 中找到[https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing)这些服务的定价信息。 可在 [Azure 门户](https://portal.azure.com/)中找到订阅的用量和计费详细信息。
 
 ## <a name="deploy-the-solution-accelerator"></a>部署解决方案加速器
 

@@ -1,20 +1,18 @@
 ---
 title: Web Analytics
-description: 。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+description: 本文提供有关如何学习和使用 Web Analytics，以便最合理地发展业务的说明。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: d47a67be157f71a30a6ae155790ed78a78fd6743
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 446e579a7205f0e785d7e940c1dbdd36cff8f370
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814644"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285327"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
@@ -30,7 +28,7 @@ ms.locfileid: "73814644"
 <a name="microsoft-campaigns"></a>**Microsoft 营销活动**
 -----------------------
 
-为了扩展套餐以及跟踪套餐的扩展情况，我们在云合作伙伴门户上启用了“Microsoft 营销活动”功能。 营销活动是最新支持的市场功能，可用于跟踪在应用详细信息页中发送客户的不同渠道。
+为了扩展套餐以及跟踪套餐的扩展情况，我们在云合作伙伴门户上启用了“Microsoft 营销活动”功能。**** 营销活动是最新支持的市场功能，可用于跟踪在应用详细信息页中发送客户的不同渠道。
 
 ### <a name="how-to-make-a-campaign"></a>**如何创建营销活动**
 
@@ -64,9 +62,9 @@ ms.locfileid: "73814644"
 
 在某种情况下，有可能营销活动的驱动流量会定向到一个中间页面，然后，通过该页面将客户定向到市场。 必须将初始营销活动 ID 传递到要发送到市场的最终 URL 中。
 
-下面是一个示例：
+以下是示例：
 
-1. 营销员工从 Google 购买广告，以将流量驱动到公司的登陆页面 \'。 此登陆页面包含一个指向 \" 的\"试用我的产品<https://appsource.com>链接。
+1. 营销员工从 Google 购买广告，以将流量驱动到公司的登陆页面 <https://contoso.com>。 此登陆页面包含一个指向 <https://appsource.com> 的\"试用我的产品\"链接。
 2. 用户单击广告，然后登陆到其公司的登陆页面。
     1.  推荐 URL = google.com
     2.  登陆页面 URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
@@ -95,7 +93,7 @@ ms.locfileid: "73814644"
 
 类似于我们查看客户所在领域的方式，在此图表中，可以查看用户进入市场时所在的每个营销活动的数据分布。 \_NoCampaign 表示客户导航到市场时，其 URL 中不包含营销活动 ID。
 
-<a name="next-steps"></a>**Next Steps**
+<a name="next-steps"></a>**后续步骤**
 --------------
 
 在能够跟踪套餐的成功度之后，我们建议你创建自己的营销活动。

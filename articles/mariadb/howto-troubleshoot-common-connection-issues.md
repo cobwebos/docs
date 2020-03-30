@@ -1,17 +1,17 @@
 ---
-title: 排查连接问题-Azure Database for MariaDB
-description: 了解如何对 Azure Database for MariaDB 的连接问题进行故障排除，包括需要重试、防火墙问题和中断的暂时性错误。
+title: 解决连接问题 - MariaDB 的 Azure 数据库
+description: 了解如何排查与 Azure Database for MariaDB 的连接问题，包括需要重试的暂时性错误、防火墙问题和服务中断。
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 613de96ee58d37e6270266852e513e53857a441a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: d134bcd0c5f9bfde0fdb095122d54848873174be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765726"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536354"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>解决 Azure Databases for MariaDB 的连接问题
 
@@ -47,14 +47,14 @@ ms.locfileid: "74765726"
 
 * 防火墙配置：Azure Database for MariaDB 服务器或客户端防火墙正在阻止连接。
 * 在客户端重新配置了网络：例如，添加了新的 IP 地址或代理服务器。
-* 用户错误：例如，你可能键入了错误的连接参数（例如连接字符串中的服务器名称或用户名中缺少 *\@servername*后缀）。
+* 用户错误：例如，连接参数键入错误，例如连接字符串中的服务器名称或用户名中缺少*\@的服务器名称*后缀。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
 
 1. 设置[防火墙规则](howto-manage-firewall-portal.md)以允许客户端 IP 地址。 （仅出于临时测试目的）使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束 IP 地址，来设置一个防火墙规则。 这会在所有 IP 地址上打开服务器。 如果这样可以解决连接性问题，请删除此规则，再针对适当限制的 IP 地址或地址范围创建防火墙规则。
 2. 在客户端与 Internet 之间的所有防火墙上，确保为出站连接打开端口 3306。
 3. 验证连接字符串和其他连接设置。 查看[如何将应用程序连接到 Azure Database for MariaDB](howto-connection-string.md)。
-4. 在仪表板中检查服务运行状况。 如果你认为发生了区域性服务中断，请参阅[有关使用 Azure Database for MariaDB 确保业务连续性的概述](concepts-business-continuity.md)了解恢复到新区域所要执行的步骤。
+4. 在仪表板中检查服务运行状况。 如果认为存在区域中断，请参阅[MariaDB Azure 数据库的业务连续性概述](concepts-business-continuity.md)，了解恢复到新区域的步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

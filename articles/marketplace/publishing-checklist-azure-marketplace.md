@@ -1,20 +1,18 @@
 ---
 title: Azure 市场的发布清单 | Azure
 description: 使用云合作伙伴门户的 Azure 市场的发布清单。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: aa03444f78663874132df5f9148925bffa883f31
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: deee43628f8d9f782979b4112f1fec415d137340
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827757"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284987"
 ---
 # <a name="publishing-checklist-for-azure-marketplace"></a>Azure 市场的发布清单    
 发布前检查必需组件是否全有。  
@@ -29,7 +27,7 @@ ms.locfileid: "73827757"
 | All | 虚拟机 | <table> <tr><th>技术信息</th></tr> <tr><td>支持 URL</td></tr> </table> |
 | 列出 | 咨询服务 | <table> <tr><th>店面详细信息</th></tr> <tr><td>参与持续时间</td></tr> <tr><td>公司徽标（48x48，216x216）</td></tr> </table> |  
 | 试用 | All | <table> <tr><th>技术信息</th></tr> <tr><td>试用 URL</td></tr> <tr><td>支持的语言</td></tr> <tr><td>应用版本号</td></tr> <tr><td>应用发行日期</td></tr> <tr><td>支持 URL</td></tr> </table> |  
-| 试用 | 体验版 | <table> <tr><th>体验版</th></tr> <tr><td>说明</td></tr> <tr><td>持续时间</td></tr> <tr><td>用户手册</td></tr> <tr><td>体验版视频（最多 1 个）</td></tr> <tr><td>体验版国家/区域可用性</td></tr> <tr><td>Azure 订阅 ID</td></tr> <tr><td>Azure AD 租户 ID</td></tr> <tr><td>Azure AD 应用 ID</td></tr> <tr><td>Azure AD 应用密钥</td></tr> </table> |  
+| 试用 | 体验版 | <table> <tr><th>体验版</th></tr> <tr><td>描述</td></tr> <tr><td>Duration</td></tr> <tr><td>用户手册</td></tr> <tr><td>体验版视频（最多 1 个）</td></tr> <tr><td>体验版国家/区域可用性</td></tr> <tr><td>Azure 订阅 ID</td></tr> <tr><td>Azure AD 租户 ID</td></tr> <tr><td>Azure AD 应用 ID</td></tr> <tr><td>Azure AD 应用密钥</td></tr> </table> |  
 | 事务处理 | 虚拟机 | <table> <tr><th>店面</th></tr> <tr><td>标题（50 个字符）</td></tr> <tr><td>摘要（200 个字符）</td></tr> <tr><td>长摘要（256 个字符）</td></tr> <tr><td>基于 HTML 的说明（3,000 个字符）</td></tr> <tr><td>公司徽标（40x40、90x90、115x115、255x115、815x290）</td></tr> </table> <table> <tr><th>SKU</th></tr> <tr><td>操作系统详细信息</td></tr> <tr><td>正在使用的端口</td></tr> <tr><td>正在使用协议</td></tr> <tr><td>每个使用中的 VHD 的磁盘版本</td></tr> <tr><td>每个使用中的 VHD 的 SAS URL</td></tr> </table> |  
 | 事务处理 | Azure 应用：解决方案模板 | <table> <tr><th>店面</th></tr> <tr><td>标题（50 个字符）</td></tr> <tr><td>摘要（200 个字符）</td></tr> <tr><td>长摘要（256 个字符）</td></tr> <tr><td>基于 HTML 的说明（3,000 个字符）</td></tr> <tr><td>公司徽标（40x40、90x90、115x115、255x115、815x290）</td></tr> </table> <table> <tr><th>SKU</th></tr> <tr><td>版本号</td></tr> <tr><td>包含的包文件<ul> <li>所有模板文件</li> <li>createUIDefinition 文件</li> </ul> </td></tr> </table> |  
 | 事务处理 | Azure 应用：托管应用 | <table> <tr><th>店面</th></tr> <tr><td>标题（50 个字符）</td></tr> <tr><td>摘要（200 个字符）</td></tr> <tr><td>长摘要（256 个字符）</td></tr> <tr><td>基于 HTML 的说明（3,000 个字符）</td></tr> <tr><td>公司徽标（40x40、90x90、115x115、255x115、815x290）</td></tr> </table> <table> <tr><th>SKU</th></tr> <tr><td>版本号</td></tr> <tr><td>包含的包文件<ul> <li>所有模板文件</li> <li>createUIDefinition 文件</li> </ul> </td></tr> </table> |  
@@ -37,6 +35,6 @@ ms.locfileid: "73827757"
 | 事务处理 | SaaS 应用 | <table> <tr><th>店面</th></tr> <tr><td>标题（50 个字符）</td></tr> <tr><td>摘要（200 个字符）</td></tr> <tr><td>长摘要（256 个字符）</td></tr> <tr><td>基于 HTML 的说明（3,000 个字符）</td></tr> <tr><td>公司徽标（40x40、90x90、115x115、255x115、815x290）</td></tr> </table> |  
 
 ## <a name="next-steps"></a>后续步骤
-*   访问 [Azure 市场和 AppSource 发布者指南](./marketplace-publishers-guide.md)页面。  
+*   访问 [Azure 市场和 AppSource 发布者指南](./marketplace-publishers-guide.md)页。  
  
 ---

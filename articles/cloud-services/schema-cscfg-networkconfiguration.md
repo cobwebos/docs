@@ -1,5 +1,6 @@
 ---
 title: Azure 云服务 NetworkConfiguration 架构 | Microsoft Docs
+description: 了解服务配置文件的 Network 配置元素的子元素，该元素指定虚拟网络和 DNS 值。
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
@@ -8,12 +9,12 @@ ms.topic: reference
 caps.latest.revision: 28
 author: tgore03
 ms.author: tagore
-ms.openlocfilehash: cacc8b1f2909965594fdf0d841963e792acf648c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 695ba3acfd5af8797de6e6f7454e493d7863627c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385418"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529282"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure 云服务的配置 NetworkConfiguration 架构
 
@@ -61,7 +62,7 @@ ms.locfileid: "75385418"
 
 下表介绍了 `NetworkConfiguration` 元素的子元素。
 
-| 元素       | Description |
+| 元素       | 描述 |
 | ------------- | ----------- |
 | AccessControl | 可选。 指定云服务中用于访问终结点的规则。 访问控制名称由 `name` 属性的字符串定义。 `AccessControl` 元素包含一个或多个 `Rule` 元素。 可定义多个 `AccessControl` 元素。|
 | 规则 | 可选。 指定应对指定的 IP 地址子网范围执行的操作。 规则的顺序由 `order` 属性的字符串值定义。 规则编号越低，优先级越高。 例如，可使用序号 100、200 和 300 指定规则。 序号为 100 的规则优先于序号为 200 的规则。<br /><br /> 规则的操作由 `action` 属性的字符串定义。 可能的值包括：<br /><br /> -   `permit` – 指定只有指定子网范围中的数据包才可以与终结点通信。<br />-   `deny` – 指定拒绝对指定子网范围中终结点的访问。<br /><br /> 受规则影响的 IP 地址的子网范围由 `remoteSubnet` 属性的字符串定义。 对规则的说明由 `description` 属性的字符串定义。|

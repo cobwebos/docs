@@ -7,34 +7,34 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: sihhu
-author: sihhu
+author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.custom: ''
-ms.openlocfilehash: 7b124c0f35b5cfda4380555385971e4968d4c45c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: acbd2e3ba756255cbc69ae8a7b7ad62d7a1c1c5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78939247"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528466"
 ---
-# <a name="version-and-track-datasets-in-experiments"></a>试验中的版本和跟踪数据集
+# <a name="version-and-track-datasets-in-experiments"></a>在试验中对数据集进行版本控制和跟踪
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，你将了解如何为可再现性版本和跟踪 Azure 机器学习数据集。 数据集版本控制是一种将数据的状态做成书签的方式，以便您可以应用特定版本的数据集以供将来试验。
+在本文中，你将了解如何对 Azure 机器学习数据集进行版本控制和跟踪，以实现可再现性。 数据集版本控制是为数据状态设置书签的一种方法，方便为将来的试验应用数据集的特定版本。
 
-典型版本控制方案：
+典型的版本控制方案：
 
 * 当新数据可用于重新训练时
-* 应用不同的数据准备或功能设计方法时
+* 应用不同的数据准备或特征工程方法时
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 对于本教程的内容，你需要：
 
-- [已安装适用于 Python AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 此 SDK 包含[azureml 数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py)包。
+- [安装了适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 此 SDK 包括 [azureml-datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py) 包。
     
-- [Azure 机器学习工作区](concept-workspace.md)。 通过运行以下代码来检索现有的[工作区，或创建一个新的工作区](how-to-manage-workspace.md)。
+- [Azure 机器学习工作区](concept-workspace.md)。 通过运行以下代码检索现有的工作区，或者[创建新的工作区](how-to-manage-workspace.md)。
 
     ```Python
     import azureml.core
@@ -48,11 +48,11 @@ ms.locfileid: "78939247"
 
 ## <a name="register-and-retrieve-dataset-versions"></a>注册和检索数据集版本
 
-通过注册数据集，可以在试验和同事之间对其进行版本、重复使用和共享。 您可以使用相同的名称注册多个数据集，并按名称和版本号检索特定版本。
+通过注册数据集，可以对数据集进行版本控制，在试验之间以及与同事重复使用和共享数据集。 你可以使用相同的名称注册多个数据集，并按名称和版本号检索特定版本。
 
 ### <a name="register-a-dataset-version"></a>注册数据集版本
 
-下面的代码通过将 `create_new_version` 参数设置为 `True`，来注册 `titanic_ds` 数据集的新版本。 如果没有向工作区注册现有 `titanic_ds` 数据集，代码会创建一个名为 `titanic_ds` 的新数据集，并将其版本设置为1。
+下面的代码通过将 `create_new_version` 参数设置为 `True` 来注册 `titanic_ds` 数据集的新版本。 如果没有向工作区注册现有 `titanic_ds` 数据集，则代码会创建一个名为 `titanic_ds` 的新数据集，并将其版本设置为 1。
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -60,13 +60,13 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'titanic training data',
                                  create_new_version = True)
 ```
-你还可以在中注册数据集的新版本 
+您还可以在 
 
 ### <a name="retrieve-a-dataset-by-name"></a>按名称检索数据集
 
-默认情况下，`Dataset` 类上的[get_by_name （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)方法返回注册到工作区中的最新版本的数据集。 
+默认情况下，`Dataset` 类中的 [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。 
 
-下面的代码获取 `titanic_ds` dataset 的版本1。
+下面的代码获取 `titanic_ds` 数据集的版本 1。
 
 ```Python
 from azureml.core import Dataset
@@ -78,16 +78,16 @@ titanic_ds = Dataset.get_by_name(workspace = workspace,
 
 <a name="best-practice"></a>
 
-## <a name="versioning-best-practice"></a>版本控制最佳实践
+## <a name="versioning-best-practice"></a>版本控制最佳做法
 
-创建数据集版本时，*不会*使用工作区创建额外的数据副本。 由于数据集是对存储服务中的数据的引用，因此，你有一个真实来源，由存储服务管理。
+创建数据集版本时，** 不会使用工作区创建额外的数据副本。 由于数据集是对存储服务中数据的引用，因此，你有单个由存储服务管理的事实来源。
 
 >[!IMPORTANT]
-> 如果数据集引用的数据被覆盖或删除，则调用特定版本的数据集*不*会恢复更改。
+> 如果数据集引用的数据被覆盖或删除，则调用特定版本的数据集不会** 还原更改。
 
-从数据集加载数据时，始终会加载数据集引用的当前数据内容。 如果要确保每个数据集版本都是可重复的，我们建议您不要修改数据集版本引用的数据内容。 当新数据进入时，将新数据文件保存到单独的数据文件夹中，然后创建新的数据集版本以包含该新文件夹中的数据。
+从数据集加载数据时，始终会加载数据集引用的当前数据内容。 如果要确保每个数据集版本都是可再现的，建议你不要修改数据集版本引用的数据内容。 当新数据进入时，将新数据文件保存到单独的数据文件夹中，然后创建新的数据集版本以包含该新文件夹中的数据。
 
-以下图像和示例代码显示了如何构建数据文件夹的结构，并创建引用这些文件夹的数据集版本：
+下图和示例代码展示了对数据文件夹进行构造的建议方式，以及创建引用那些文件夹的数据集版本的建议方式：
 
 ![文件夹结构](./media/how-to-version-track-datasets/folder-image.png)
 
@@ -117,11 +117,11 @@ dataset2.register(workspace = workspace,
 
 <a name="pipeline"></a>
 
-## <a name="version-a-pipeline-output-dataset"></a>版本管道输出数据集
+## <a name="version-a-pipeline-output-dataset"></a>对管道输出数据集进行版本控制
 
-您可以使用 dataset 作为每个机器学习管道步骤的输入和输出。 重新运行管道时，每个管道步骤的输出将注册为新的数据集版本。
+可以使用数据集作为每个机器学习管道步骤的输入和输出。 重新运行管道时，每个管道步骤的输出将注册为一个新的数据集版本。
 
-由于机器学习管道会在每次管道重新运行时将每个步骤的输出填充到新文件夹中，因此，版本控制的输出数据集是可重复的。 详细了解[管道中的数据集](how-to-create-your-first-pipeline.md#steps)。
+因为机器学习管道每次重新运行时，管道都会将每个步骤的输出填充到一个新文件夹中，所以带版本的输出数据集是可再现的。 了解有关[管道中的数据集的更多详细信息](how-to-create-your-first-pipeline.md#steps)。
 
 ```Python
 from azureml.core import Dataset
@@ -159,7 +159,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 对于每个机器学习试验，可以通过试验 `Run` 对象轻松跟踪用作输入的数据集。
 
-下面的代码使用[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--)方法跟踪试验运行时所使用的输入数据集：
+以下代码使用 方法[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--)跟踪在实验运行中使用了哪些输入数据集：
 
 ```Python
 # get input datasets
@@ -170,9 +170,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-还可以通过使用 https://ml.azure.com/从试验中查找 `input_datasets`。 
+您还可以使用 从`input_datasets`实验中查找https://ml.azure.com/。 
 
-下图显示了在何处查找 Azure 机器学习 studio 中实验的输入数据集。 在此示例中，请参阅**试验**窗格，并打开试验的特定运行的 "**属性**" 选项卡，`keras-mnist`。
+下图显示了在 Azure 机器学习工作室上查找实验的输入数据集的位置。 对于此示例，请转到“试验”**** 窗格，并打开试验 `keras-mnist` 的特定运行的“属性”**** 选项卡。
 
 ![输入数据集](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -184,13 +184,13 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-注册后，可以通过使用 Python 或中转到 https://ml.azure.com/查看向数据集注册的模型列表。
+注册后，您可以使用 Python 或转到https://ml.azure.com/查看在数据集中注册的模型列表。
 
-以下视图来自 "**资产**" 下的 "**数据集**" 窗格。 选择数据集，然后选择 "**模型**" 选项卡，获取向数据集注册的模型的列表。 
+以下视图来自“资产”下的“数据集”******** 窗格。 选择数据集，然后选择“模型”**** 选项卡以获取向数据集注册的模型的列表。 
 
 ![输入数据集模型](./media/how-to-version-track-datasets/dataset-models.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [数据集定型](how-to-train-with-datasets.md)
+* [使用数据集进行训练](how-to-train-with-datasets.md)
 * [更多示例数据集笔记本](https://aka.ms/dataset-tutorial)

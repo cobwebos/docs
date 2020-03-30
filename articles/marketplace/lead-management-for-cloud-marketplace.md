@@ -1,24 +1,23 @@
 ---
 title: 云市场的潜在顾客管理 | Azure 市场和 AppSource
 description: 有关向 Azure 市场和 AppSource 发布产品/服务和技术项目的各种主题的概述
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/05/2018
-ms.author: pabutler
-ms.openlocfilehash: 047ffd983cecd9f9bd971ee3f97e15734d14ce66
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 94510d02a28e0364f1c715dbcf9ff641fe2b14fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813283"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286126"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>云市场的潜在顾客管理
 
 
-任何发展良好的业务都以客户为中心。 在转换当今的产品时，营销人员需要集中精力直接与客户建立关系。 所以，生成高质量的销售线索对销售周期非常重要。 在[云合作伙伴门户](https://cloudpartner.azure.com/)中列出产品/服务后，可使用工具在客户表示对产品感兴趣或在市场中部署产品后立即以编程方式接收客户联系信息。 
+任何发展良好的业务都以客户为中心。 在当今产品收购的转型中，营销人员需要专注于与客户直接建立联系，并建立关系。 所以，生成高质量的销售线索对销售周期非常重要。 在[云合作伙伴门户](https://cloudpartner.azure.com/)中列出产品/服务后，可使用工具在客户表示对产品感兴趣或在市场中部署产品后立即以编程方式接收客户联系信息。 
 
 
 
@@ -33,59 +32,59 @@ ms.locfileid: "73813283"
 
 以下是有关如何连接每个可能的潜在顾客目标的分步说明：
 
-**Dynamics CRM Online** - [单击此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)获取有关如何配置 Dynamics CRM Online 以获取潜在顾客的说明。
+**动态 CRM 在线** - [单击此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)获取有关如何配置动态 CRM 联机以获得潜在顾客的说明。
 
-**Marketo** - [单击此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)获取有关设置 Marketo 潜在顾客配置以获取潜在顾客的说明。
+**市场**点击这里获取有关设置 Marketo 潜在顾客配置以获得潜在顾客的说明。[Click here](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)  - 
 
 **Salesforce** - [单击此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)获取有关设置 Salesforce 实例以获取潜在顾客的说明。
 
-**Azure 表** - [单击此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)获取有关设置 azure 存储帐户的说明，以便在 azure 表中获取潜在顾客。
+**Azure 表** - [单击此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table)获取设置 Azure 存储帐户以在 Azure 表中获取潜在顾客的说明。
 
-**Https 终结点** - [单击此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https)获取有关设置 Https 终结点以获取潜在顾客的说明。
+**Https 终结点** - [单击此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https)获取设置 Https 终结点以获取潜在顾客的说明。
 
 在正确配置销售线索目标并在产品/服务上点击“发布”后，我们会验证连接并向你发送一个测试销售线索。 如果要在投入使用前查看产品/服务，还可以通过亲自尝试在预览环境中购买产品/服务来测试销售线索连接。 请务必确保潜在顾客设置保持最新状态，以便你不会错失任何潜在顾客，因此，每当终端发生了更改时都务必更新这些连接。
 
 
 ### <a name="what-are-the-next-steps"></a>后续步骤有哪些？
 
-在技术性设置到位后，应当将这些销售线索纳入到当前的销售和市场营销策略以及操作流程中。 我们希望更好地了解整个销售流程并希望更紧密地与你合作来提供高质量的潜在顾客和足够的数据来助你成功。 我们欢迎你提供有关如何优化发送给销售线索，以及如何使用额外的数据对其进行增强的反馈，以便帮助客户取得成功。 如果你有兴趣提供反馈和建议，让你的销售团队能够更成功地利用 Marketplace 主管，请告知我们。
+在技术性设置到位后，应当将这些销售线索纳入到当前的销售和市场营销策略以及操作流程中。 我们希望更好地了解整个销售流程并希望更紧密地与你合作来提供高质量的潜在顾客和足够的数据来助你成功。 我们欢迎你提供有关如何优化发送给销售线索，以及如何使用额外的数据对其进行增强的反馈，以便帮助客户取得成功。 如果您有兴趣提供反馈和建议，使您的销售团队在市场线索方面更加成功，请告诉我们。
 
 
 
 ## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>在云合作伙伴门户上发布期间的常见潜在顾客配置错误 
 
-**无法将潜在顾客保存到 Dynamics CRM。检查 Dynamics CRM 帐户设置。LastCRMError：无法登录到 Dynamics CRM，LastCRMException：** 
+**无法将潜在顾客保存到动态 CRM。检查动态 CRM 帐户设置。上次 CRM 错误：无法登录到 Dynamics CRM，最后一个CRM例外：** 
 
 > 如果选择了 O365 身份验证，请检查用户帐户和密码是否有效。 如果选择了 AAD，请检查租户 ID、应用程序 ID 和应用程序密钥是否与 AAD 上设置的项相匹配。 按照[此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)的说明操作。如果帐户用户名/密码有效，请确保其可以访问 Dynamics 365 并已分配许可证（如果使用 Office 用户，使用 Azure Active Directory 或安全设置，则执行步骤 11-15）。 
 
  
-**无法将潜在顾客保存到 Dynamics CRM。用户对 "潜在顾客" 实体中的 leadsourcecode 属性没有 create 权限** 
+**无法将潜在顾客保存到动态 CRM。用户没有潜在顾客实体中潜在顾客源码属性的创建权限** 
 
 > 应用程序/用户缺少 Microsoft 市场潜在顾客编写器的安全角色。 如果在[此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)使用 Office用户，使用 Azure Active Directory 或安全设置，请执行步骤 11-15。
 
-**无法使用 AAD 将潜在顾客保存到 Dynamics CRM。异常：：找不到租户。如果该租户没有活动的订阅，则可能会发生此情况。**  
+**无法使用 AAD 将潜在顾客保存到动态 CRM。异常：未找到租户。如果租户没有活动订阅，则可能发生此实例。**  
 
-> 潜在顾客管理部分中提供的目录 ID 不是有效的目录。 请根据步骤 2 （[此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)的 Azure Active Directory 下）的说明获取目录 ID 
+> 潜在顾客管理部分中提供的目录 ID 不是有效的目录。 请根据步骤 2 中的说明获取目录 ID（在 Azure 活动目录下，[从这里开始](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) 
 
-**无法将潜在顾客保存到 Dynamics CRM。LastCRMError： SecLib：： RetrievePrivilegeForUser 失败-未将角色分配给用户。**  
+**无法将潜在顾客保存到动态 CRM。上次 CRM 错误：SecLib：：检索用户权限失败 - 未向用户分配任何角色。**  
 
 > 解决方案：将安全角色分配给 Microsoft 市场潜在顾客编写者。 按照“安全设置”下[此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)的说明进行操作 
 
-**无法使用 AAD 将潜在顾客保存到 Dynamics CRM。异常：：在目录中找不到标识符为的应用程序** 
+**无法使用 AAD 将潜在顾客保存到动态 CRM。异常：： 在目录中找不到具有标识符的应用程序** 
 
 > 潜在顾客管理部分中提供的应用程序 ID 不是有效目录。 请按照步骤 8（[此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)的 Azure Active Directory 下）的说明获取目录 ID。 
 
-**无法使用 AAD 将潜在顾客保存到 Dynamics CRM。Exception：：请求的租户标识符无效，外部域格式无效** 
+**无法使用 AAD 将潜在顾客保存到动态 CRM。异常：请求的租户标识符无效，并且外部域格式无效** 
 
 > 潜在顾客管理部分中提供的目录 ID 不是有效的目录。 请根据步骤 2（[此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)的 Azure Active Directory 下）的说明获取目录 ID。 
 
-**无法使用 AAD 将潜在顾客保存到 Dynamics CRM。Exception：：验证凭据时出错。提供的客户端密码无效。** 
+**无法使用 AAD 将潜在顾客保存到动态 CRM。异常：错误验证凭据。： 提供了无效的客户端密钥。** 
 
-> 解决方法：登录到 Azure 门户，检查应用程序密钥是否与云合作伙伴门户中的内容相匹配。 请从[此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)，根据步骤 10（Azure Active Directory 下）的说明生成密码。 
+> 解决方法：登录到 Azure 门户，检查应用程序密钥是否与云合作伙伴门户中的内容匹配。 请从[此处](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)，根据步骤 10（Azure Active Directory 下）的说明生成密码。 
 
-**无法将潜在顾客保存到 Dynamics CRM。LastCRMError：在00:02:00 之后等待回复时，请求通道超时。增加传递给请求调用的超时值，或增加绑定上的 SendTimeout 值。分配给此操作的时间可能是更长超时的一部分。**  
+**无法将潜在顾客保存到动态 CRM。上次 CRMError： 请求通道超时，等待 00：02：00 后的答复。增加传递到"请求"调用的超时值，或增加绑定上的"发送超时"值。分配给此操作的时间可能是较长超时的一部分。**  
 
-> 解决方法：登录到云合作伙伴门户，查看店面详细信息 > > 主导目标 > > URL，检查它是否为有效的动态 CRM 实例
+> 解决方法：登录到云合作伙伴门户，查看网店详细信息 >> 潜在顾客目标 >> URL，检查其是否有效动态 CRM 实例
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -96,7 +95,7 @@ ms.locfileid: "73813283"
 
 **在何处可获得设置潜在顾客目标的帮助？** 
 
-可在此处找到相关文档：[获得客户主管](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)或通过 aka.ms/marketplacepublishersupport 提交支持票证选择产品/服务类型和潜在客户管理。 
+您可以在此处找到文档：通过选择产品/服务类型和潜在顾客管理aka.ms/marketplacepublishersupport[获取客户潜在顾客](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)或提交支持票证。 
 
 
 
@@ -114,7 +113,7 @@ ms.locfileid: "73813283"
 **如何查找测试潜在顾客？**
 
 
-在潜在客户目标中搜索 "MSFT_TEST"，以下是测试潜在顾客数据示例： 
+在潜在顾客目标中搜索"MSFT_TEST"，下面是测试线索数据示例： 
 
 company = MSFT_TEST_636573304831318844 
 
@@ -132,7 +131,7 @@ first_name = MSFT_TEST_636573304831318844
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844 MSFT_TEST_636573304831318844 |\<提供名称 > 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844]\<优惠名称> 
 
 oid = 00Do0000000ZHog 
 
@@ -142,18 +141,18 @@ title = MSFT_TEST_636573304831318844
 
  
 
-**我有一个现场产品/服务，但未看到任何潜在客户？**
+**我有一个现场报价，但没有看到任何线索？**
 
-每个潜在顾客都会在所选潜在顾客目标的字段中传递数据，潜在顾客将采用以下格式：源 - 操作|产品/服务 
+每个潜在顾客都会在所选潜在顾客目标的字段中传递数据，潜在顾客将采用以下格式：源 - 操作|产品/服务**** 
 
-  源：
+  *来源：*
 
     "AzureMarketplace", 
     "AzurePortal", 
     "TestDrive",  
     "SPZA" (acronym for AppSource) 
 
-  操作：
+  *行动：*
 
     "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
     "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
@@ -165,7 +164,7 @@ title = MSFT_TEST_636573304831318844
     "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
 
 
-  产品/服务：
+  *提供：*
 
     "checkpoint.check-point-r77-10sg-byol", 
     "bitnami.openedxcypress", 
@@ -173,7 +172,7 @@ title = MSFT_TEST_636573304831318844
 
  
 
-  *下面是客户信息的示例数据*
+  *以下是客户信息的示例数据*
 
     { 
 
@@ -208,7 +207,7 @@ title = MSFT_TEST_636573304831318844
 
  **已将 Azure Table/Azure BLOB 配置为潜在顾客目标，如何查看潜在顾客？** 
 
-你可以从 Azure 门户访问 blob 或表，也可以下载并安装[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，以便查看 azure 存储帐户的表/blob。 
+可以从 Azure 门户访问 Blob 或表，也可以免费下载和安装[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)以查看 Azure 存储帐户的表/blob。 
 
 
 **已将 Azure 表配置为潜在顾客目标，可在市场发送新潜在顾客时收到通知吗？** 
@@ -222,7 +221,7 @@ title = MSFT_TEST_636573304831318844
 检查潜在顾客窗体的 Web 是否是基于选择列表的必填字段。 如果是，请将字段切换为非必填文本字段。  
  
 
-**潜在顾客目标出现问题，我错过了某些潜在顾客。我是否可以通过电子邮件向我发送电子邮件？** 
+**我的主要目的地有一个问题，我错过了一些线索。我可以在电子邮件中发送给我吗？** 
 
 由于 PII（个人标识信息）政策，我们无法通过不安全的电子邮件共享潜在顾客信息。 
 

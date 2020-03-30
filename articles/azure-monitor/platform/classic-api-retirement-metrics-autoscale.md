@@ -4,12 +4,12 @@ description: 指标和自动缩放经典 API（也称为 Azure 服务管理 (ASM
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 980f4e840f7778c6ea3025db9b37a3454267bac7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9dfa6b278587f4ed79b1c3cd9eff1defd09ec0bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663549"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294660"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor 即将停用指标和自动缩放的经典部署模型 API
 
@@ -29,13 +29,13 @@ ms.locfileid: "77663549"
 
 - **经典 Azure Insights SDK** - 如果你正在使用[经典 Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)，请改用适用于 [.NET](https://github.com/azure/azure-libraries-for-net#download) 或 [Java](https://github.com/azure/azure-libraries-for-java#download) 的新 Azure Monitor SDK。 下载 [Azure Monitor SDK NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)。
 
-- **经典自动缩放** - 如果你正在通过定制工具或使用[经典 Azure Insights SDK](https://msdn.microsoft.com/library/azure/mt348562.aspx) 调用[经典自动缩放设置 API](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)，则应改用[资源管理器 Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings)。
+- **经典自动缩放** - 如果你正在通过定制工具或使用[经典 Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) 调用[经典自动缩放设置 API](https://msdn.microsoft.com/library/azure/mt348562.aspx)，则应改用[资源管理器 Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings)。
 
 - **经典指标** - 如果你正在定制工具中通过[经典 REST API](https://msdn.microsoft.com/library/azure/dn510374.aspx) 或[经典 Azure Insights SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) 使用指标，则应改用[资源管理器 Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings)。 
 
 如果不确定代码或定制工具是否调用经典 API，请查看以下内容：
 
-- 查看代码或工具中引用的 URI。 经典 API 使用 URI https://management.core.windows.net。 应使用基于资源管理器的 API 的较新 URI，它以 https://management.azure.com/ 开头。
+- 查看代码或工具中引用的 URI。 经典 API 使用 URI https://management.core.windows.net。 应使用基于资源管理器的 API 的较新 URI，它以 `https://management.azure.com/` 开头。
 
 - 比较计算机上的程序集名称。 旧版经典程序集位于 https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ 中。
 
@@ -58,7 +58,7 @@ ms.locfileid: "77663549"
 - 维度支持
 - 在所有服务中保持一致的 1 分钟指标粒度 
 - 更方便的查询
-- 更高的数据保留期（93天，指标与30天） 
+- 更高的数据保留率（93 天的指标与 30 天） 
 
 总体而言，与 Azure 中的其他所有服务一样，基于资源管理器的 Azure Monitor API 提供更好的性能、可伸缩性和可靠性。 
 
@@ -72,9 +72,9 @@ ms.locfileid: "77663549"
 
 对前面所列的经典 API 发出任何调用将会失败，并返回如下所示的错误消息：
 
-对于自动缩放：*此 API 已弃用。使用 Azure 门户、Azure Monitor SDK、PowerShell、CLI 或资源管理器模板来管理自动缩放设置*。  
+对于自动缩放：*此 API 已被弃用。使用 Azure 门户、Azure 监视器 SDK、PowerShell、CLI 或资源管理器模板来管理自动缩放设置*。  
 
-对于指标：*此 API 已弃用。使用 Azure 门户，Azure Monitor SDK、PowerShell、CLI 查询指标*。
+对于指标：*此 API 已被弃用。使用 Azure 门户、Azure 监视器 SDK、PowerShell、CLI 查询指标*。
 
 ## <a name="email-notifications"></a>电子邮件通知
 

@@ -1,28 +1,28 @@
 ---
-title: '& Azure SignalR 服务构建实时应用 Azure Functions'
-description: 通过以下示例了解如何使用 Azure SignalR 服务开发实时无服务器 web 应用程序。
+title: 生成实时应用 - Azure Functions 和 Azure SignalR 服务
+description: 通过以下示例了解如何使用 Azure SignalR 服务开发实时无服务器 Web 应用程序。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74157619"
 ---
-# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>利用 Azure Functions 和 Azure SignalR 服务构建实时应用程序
+# <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>使用 Azure Functions 和 Azure SignalR 服务生成实时应用
 
-Azure SignalR Service 和 Azure Functions 都是高度可缩放的完全托管服务，使你可以专注于构建应用程序而不是管理基础结构，因此通常将这两种服务结合使用以在[无服务器](https://azure.microsoft.com/solutions/serverless/)环境中提供实时通信。
+由于 Azure SignalR 服务和 Azure 函数都是完全托管的、高度可扩展的服务，允许您专注于构建应用程序而不是管理基础结构，因此通常将这两个服务一起使用，以便在[无服务器](https://azure.microsoft.com/solutions/serverless/)环境中提供实时通信。
 
 > [!NOTE]
-> 了解如何在交互式教程中同时使用 SignalR 和 Azure Functions，[使用 Azure Functions 和 SignalR 服务在 web 应用程序中启用自动更新](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)。
+> 在交互式教程"[使用 Azure 函数和 SignalR 服务在 Web 应用程序中启用自动更新"中，](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)了解如何一起使用 SignalR 和 Azure 函数。
 
 ## <a name="integrate-real-time-communications-with-azure-services"></a>将实时通信与 Azure 服务集成在一起
 
-Azure Functions 允许你以[多种语言](../azure-functions/supported-languages.md)（包括 JavaScript、Python、 C#和 Java）编写代码，该代码会在云中发生事件时触发。 这些事件的示例包括：
+Azure Functions 允许你以 JavaScript、Python、C# 和 Java 等[多种语言](../azure-functions/supported-languages.md)编写代码，在云中发生事件时触发。 这些事件的示例包括：
 
 * HTTP 和 Webhook 请求
 * 周期性定时器
@@ -68,8 +68,8 @@ Azure Functions 允许你以[多种语言](../azure-functions/supported-language
 
 有关如何使用 Azure Functions 和 SignalR 服务的完整详细信息，请访问以下资源：
 
-* [SignalR 服务的 Azure Functions 开发和配置](signalr-concept-serverless-development-config.md)
-* [使用 Azure Functions 和 SignalR 服务在 web 应用程序中启用自动更新](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
+* [通过 SignalR 服务进行 Azure Functions 开发和配置](signalr-concept-serverless-development-config.md)
+* [使用 Azure Functions 和 SignalR 服务在 Web 应用程序中启用自动更新](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
 
 请按照以下其中一个快速入门了解详细信息。
 

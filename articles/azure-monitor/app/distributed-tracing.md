@@ -1,25 +1,25 @@
 ---
 title: Azure Application Insights 中的分布式跟踪 | Microsoft Docs
-description: 介绍 Microsoft 如何在 OpenCensus 项目中通过本地转发器和合作伙伴关系提供对分布式跟踪的支持
+description: 通过 OpenCensus 项目中的合作伙伴关系提供有关 Microsoft 支持分布式跟踪的信息
 ms.topic: conceptual
 author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d9f67250a232d4666e4655f83e9bdc7622754331
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: c2f384370c3ceaf24164e4a27adc05b1a1e1ddf7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136734"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294967"
 ---
 # <a name="what-is-distributed-tracing"></a>什么是分布式跟踪？
 
-现代云和[微服务](https://azure.com/microservices)体系结构的出现宣告了一种简单且可独立部署的服务的诞生，它可以提高可用性和吞吐量，同时还能降低成本。 但尽管这些变动使得单个服务更易于理解，但它们使整体系统更难以实现和调试。
+现代云和[微服务](https://azure.com/microservices)架构的出现催生了简单、可独立部署的服务，可帮助降低成本，同时提高可用性和吞吐量。 但是，尽管这些移动使单个服务整体更易于理解，但它们使整个系统更难推理和调试。
 
-在单一体系结构中，我们已使用调用堆栈进行调试。 调用堆栈是很好的工具，可以显示执行流（方法 A 调用了方法 B，方法 B 调用了方法 C），并可显示每个这样的调用的详细信息和参数。 这适用于在单个进程上运行的庞大单体结构或服务。但是，如果调用跨进程边界，而不仅仅是本地堆栈上的某个引用，我们该如何调试？ 
+在整体架构中，我们已经习惯了使用调用堆栈进行调试。 调用堆栈是很好的工具，可以显示执行流（方法 A 调用了方法 B，方法 B 调用了方法 C），并可显示每个这样的调用的详细信息和参数。 这适用于在单个进程上运行的庞大单体结构或服务。但是，如果调用跨进程边界，而不仅仅是本地堆栈上的某个引用，我们该如何调试？ 
 
-这就是在其中进入分布式跟踪的地方。  
+这就是分布式跟踪的用处。  
 
 分布式跟踪就是适合现代云和微服务体系结构的调用堆栈，但是添加了简单的性能探查器。 在 Azure Monitor 中，我们提供的两种体验适合使用分布式跟踪数据。 第一种是[事务诊断](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics)视图，这相当于一个增加了时间维度的调用堆栈。 事务诊断视图适用于查看单个事务/请求，并且可以按照单个请求来查找可靠性问题和性能瓶颈的根本原因。
 
@@ -37,7 +37,7 @@ Azure Monitor 还提供[应用程序映射](https://docs.microsoft.com/azure/app
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [Javascript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 * [Python](opencensus-python.md)
 
 安装并配置适当的 Application Insights SDK 以后，系统就会通过 SDK 依赖项自动收集器自动收集常用框架、库和技术的跟踪信息。 [依赖项自动收集文档](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)中提供支持的技术的完整列表。

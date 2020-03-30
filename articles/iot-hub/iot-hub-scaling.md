@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: d1de29124825a7f398b9722bb2455d1105e9c9f7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ecc1ae5138fe5a1e42fed9be2e31b5afa8b6d5b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79284416"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79497503"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>选择适用于解决方案的 IoT 中心层
 
@@ -33,16 +33,16 @@ Azure IoT 中心提供两个层，即基本层和标准层，这两个层在所�
 
 IoT 中心的标准层启用了所有功能，是任何需要使用双向通信功能的 IoT 解决方案所必需的。 基本层启用了部分功能，适用于只需单向通信（从设备到云）的 IoT 解决方案。 这两个层提供相同的安全性和身份验证功能。
 
-每个 IoT 中心在每个层内只能选择一种类型的[版本](https://azure.microsoft.com/pricing/details/iot-hub/)。 例如，可以创建具有多个 S1 单位的 IoT 中心，而不是使用不同版本的单元（例如 S1 和 S2）。
+每个 IoT 中心在每个层内只能选择一种类型的[版本](https://azure.microsoft.com/pricing/details/iot-hub/)。 例如，可以创建具有多个 S1 单元的 IoT 中心，但不能创建混合使用不同版本的单元，例如 S1 和 S2。
 
-| 功能 | 基本层 | 免费层/标准层 |
+| 功能 | 基本层 | 免费/标准层 |
 | ---------- | ---------- | ------------- |
 | [设备到云的遥测](iot-hub-devguide-messaging.md) | 是 | 是 |
 | [每设备标识](iot-hub-devguide-identity-registry.md) | 是 | 是 |
-| [消息路由](iot-hub-devguide-messages-read-custom.md)、[消息根据](iot-hub-message-enrichments-overview.md)和[事件网格集成](iot-hub-event-grid.md) | 是 | 是 |
+| [消息路由](iot-hub-devguide-messages-read-custom.md)、[消息扩充](iot-hub-message-enrichments-overview.md)和[事件网格集成](iot-hub-event-grid.md) | 是 | 是 |
 | [HTTP、AMQP 和 MQTT 协议](iot-hub-devguide-protocols.md) | 是 | 是 |
 | [设备预配服务](../iot-dps/about-iot-dps.md) | 是 | 是 |
-| [监视和诊断](iot-hub-monitor-resource-health.md) | 是 | 是 |
+| [监控和诊断](iot-hub-monitor-resource-health.md) | 是 | 是 |
 | [云到设备的消息传递](iot-hub-devguide-c2d-guidance.md) |   | 是 |
 | [设备孪生](iot-hub-devguide-device-twins.md)、[模块孪生](iot-hub-devguide-module-twins.md)和[设备管理](iot-hub-device-management-overview.md) |   | 是 |
 | [设备流（预览版）](iot-hub-device-streams-overview.md) |   | 是 |
@@ -55,7 +55,7 @@ IoT 中心还提供一个免费层，用于测试和评估。 它具有标准层
 
 Azure IoT 中心包含 [Azure 事件中心](../event-hubs/event-hubs-features.md)的许多核心组件，包括[分区](../event-hubs/event-hubs-features.md#partitions)。 IoT 中心的事件流通常由各种 IoT 设备报告的传入遥测数据进行填充。 事件流的分区功能用来减少当事件流有并发的读取和写入时发生的连接。
 
-分区限制是在创建 IoT 中心时选择的，并且无法更改。 对于基本层 IoT 中心和标准层 IoT 中心，最大分区限制为32。 大多数 IoT 中心只需要 4 个分区。 有关确定分区的详细信息，请参阅事件中心常见问题解答[我需要多少分区？](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+分区限制是在创建 IoT 中心时选择的，并且无法更改。 基本层 IoT 中心和标准层 IoT 中心的最大分区限制为 32。 大多数 IoT 中心只需要 4 个分区。 有关确定分区的详细信息，请参阅事件中心常见问题解答[我需要多少分区？](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
 
 ## <a name="tier-upgrade"></a>层升级
 
@@ -64,45 +64,45 @@ Azure IoT 中心包含 [Azure 事件中心](../event-hubs/event-hubs-features.md
 从基本层迁移到标准层时，分配配置保持不变。
 
 > [!NOTE]
-> 免费层不支持升级到 "基本" 或 "标准"。
+> 免费层不支持升级到基本层或标准层。
 
 ## <a name="iot-hub-rest-apis"></a>IoT 中心 REST API
 
 IoT 中心基本层和标准层所支持的功能存在差异，也就是说，某些 API 调用在基本层中心不适用。 下表显示了哪些 API 可用：
 
-| API | 基本层 | 免费层/标准层 |
+| API | 基本层 | 免费/标准层 |
 | --- | ---------- | ------------- |
-| [删除设备](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | 是 | 是 |
-| [获取设备](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | 是 | 是 |
-| [删除模块](https://docs.microsoft.com/rest/api/iothub/service/deletemodule) | 是 | 是 |
-| [获取模块](https://docs.microsoft.com/rest/api/iothub/service/getmodule) | 是 | 是 |
-| [获取注册表统计信息](https://docs.microsoft.com/rest/api/iothub/service/getdeviceregistrystatistics) | 是 | 是 |
-| [获取服务统计信息](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | 是 | 是 |
-| [创建或更新设备](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | 是 | 是 |
-| [创建或更新模块](https://docs.microsoft.com/rest/api/iothub/service/createorupdatemodule) | 是 | 是 |
-| [查询 IoT 中心](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | 是 | 是 |
+| [删除设备](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletedevice) | 是 | 是 |
+| [获取设备](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevice) | 是 | 是 |
+| [删除模块](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletemodule) | 是 | 是 |
+| [获取模块](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getmodule) | 是 | 是 |
+| [获取注册表统计信息](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevicestatistics) | 是 | 是 |
+| [获取服务统计信息](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getservicestatistics) | 是 | 是 |
+| [创建或更新设备](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatedevice) | 是 | 是 |
+| [创建或更新模块](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatemodule) | 是 | 是 |
+| [查询 IoT 中心](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/queryiothub) | 是 | 是 |
 | [创建文件上传 SAS URI](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | 是 | 是 |
 | [接收发往设备的通知](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | 是 | 是 |
 | [发送设备事件](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | 是 | 是 |
 | 发送模块事件 | 仅限 AMQP 和 MQTT | 仅限 AMQP 和 MQTT |
 | [更新文件上传状态](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | 是 | 是 |
-| [批量设备操作](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | 是的，IoT Edge 功能除外 | 是 |
-| [取消导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/cancelimportexportjob) | 是 | 是 |
-| [创建导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/createimportexportjob) | 是 | 是 |
-| [获取导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjob) | 是 | 是 |
-| [获取导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjobs) | 是 | 是 |
-| [清除命令队列](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | 是 |
-| [获取设备孪生](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | 是 |
-| [获取模块克隆](https://docs.microsoft.com/rest/api/iothub/service/getmoduletwin) |   | 是 |
-| [调用设备方法](https://docs.microsoft.com/rest/api/iothub/service/invokedevicemethod) |   | 是 |
-| [更新设备孪生](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | 是 |
-| [更新模块克隆](https://docs.microsoft.com/rest/api/iothub/service/updatemoduletwin) |   | 是 |
+| [批量设备操作](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/bulkdevicecrud) | 是的，IoT Edge 功能除外 | 是 |
+| [取消导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/cancelimportexportjob) | 是 | 是 |
+| [创建导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createimportexportjob) | 是 | 是 |
+| [获取导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjob) | 是 | 是 |
+| [获取导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) | 是 | 是 |
+| [清除命令队列](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) |   | 是 |
+| [获取设备孪生](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) |   | 是 |
+| [获取模块孪生](https://docs.microsoft.com/rest/api/iothub/service/twin/getmoduletwin) |   | 是 |
+| [调用设备方法](https://docs.microsoft.com/rest/api/iothub/service/devicemethod/invokedevicemethod) |   | 是 |
+| [更新设备孪生](https://docs.microsoft.com/rest/api/iothub/service/twin/updatedevicetwin) |   | 是 |
+| [更新模块孪生](https://docs.microsoft.com/rest/api/iothub/service/twin/updatemoduletwin) |   | 是 |
 | [放弃发往设备的通知](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | 是 |
 | [完成发往设备的通知](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | 是 |
-| [取消作业](https://docs.microsoft.com/rest/api/iothub/service/canceljob) |   | 是 |
-| [创建作业](https://docs.microsoft.com/rest/api/iothub/service/createjob) |   | 是 |
-| [获取作业](https://docs.microsoft.com/rest/api/iothub/service/getjob) |   | 是 |
-| [查询作业](https://docs.microsoft.com/rest/api/iothub/service/queryjobs) |   | 是 |
+| [取消作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/canceljob) |   | 是 |
+| [创建作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createjob) |   | 是 |
+| [获取作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getjob) |   | 是 |
+| [查询作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/queryjobs) |   | 是 |
 
 ## <a name="message-throughput"></a>消息吞吐量
 
@@ -112,30 +112,30 @@ IoT 中心基本层和标准层所支持的功能存在差异，也就是说，�
 * 云到设备的消息
 * 标识注册表操作
 
-每个单位为 IoT 中心衡量流量。 创建 IoT 中心时，选择其层和版本，并设置可用的单位数。 对于 B1、B2、S1 或 S2 版，最多可购买200单位，对于 B3 或 S3 edition，最多可购买10个单位。 创建 IoT 中心后，可以更改其版本中可用的单位数，在其层中的各版本之间进行升级或降级（B1 到 B2），或从基本层升级到标准层（B1 到 S1），而不会中断现有的操作。 有关详细信息，请参阅[如何升级 IoT 中心](iot-hub-upgrade.md)。  
+IoT 中心的流量按单元进行度量。 创建 IoT 中心时，请选择其层级和版本，并设置可用的单元数。 对于 B1、B2、S1 或 S2 版本，最多可以购买 200 个单元；对于 B3 或 S3 版本，最多可以购买 10 个单元。 创建 IoT 中心后，可以更改其版本中可用的单元数、在其层级中的各版本之间进行升级或降级（B1 到 B2），或从基本层级升级到标准层级（B1 到 S1），而不会中断现有的操作。 有关详细信息，请参阅[如何升级 IoT 中心](iot-hub-upgrade.md)。  
 
 例如，就每个层的流量功能来说，设备到云的消息遵循以下持续吞吐量指导原则：
 
-| 层版本 | 持续吞吐量 | 持续发送速率 |
+| 层级版本 | 持续吞吐量 | 持续发送速率 |
 | --- | --- | --- |
 | B1、S1 |每个单元最多 1111 KB/分钟<br/>（1.5 GB/天/单元） |每个单元平均 278 条消息/分钟<br/>（400000 条消息/天/单元） |
 | B2、S2 |每个单元最多 16 MB/分钟<br/>（22.8 GB/天/单元） |每个单元平均 4,167 条消息/分钟<br/>（600 万条消息/天/单元） |
 | B3、S3 |每个单元最多 814 MB/分钟<br/>（1144.4 GB/天/单元） |每个单元平均 208,333 条消息/分钟<br/>（3 亿条消息/天/单元） |
 
-从设备到云的吞吐量只是设计 IoT 解决方案时需要考虑的一个指标。 有关更全面的信息，请参阅[IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
+设备到云的吞吐量只是设计 IoT 解决方案时需要考虑的指标之一。 有关更全面的信息，请参阅 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
 
 ### <a name="identity-registry-operation-throughput"></a>标识注册表操作吞吐量
 
 由于大多数 IoT 中心标识注册表操作都与设备预配相关，因此不认为这些操作是运行时操作。
 
-有关特定脉冲性能数字，请参阅 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
+有关具体的突发性能数字，请参阅 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
 
 ## <a name="auto-scale"></a>自动缩放
 
-如果你接近 IoT 中心允许的消息限制，则可以使用这些[步骤自动缩放](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/)，以便在同一 iot 中心层中递增 IoT 中心单元。
+如果接近 IoT 中心上允许的消息限制，则可以使用[以下步骤自动缩放](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/)以在同一 IoT 中心层中增加 IoT 中心单元。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 IoT 中心功能和性能详细信息的详细信息，请参阅[Iot 中心定价](https://azure.microsoft.com/pricing/details/iot-hub)或[iot 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
+* 若要详细了解 IoT 中心功能和性能，请参阅 [IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub)或 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
 
 * 若要更改 IoT 中心层，请执行[升级 IoT 中心](iot-hub-upgrade.md)中的步骤。

@@ -1,19 +1,18 @@
 ---
-title: 检索提议状态 |Azure Marketplace
+title: 检索产品/服务状态 |Azure 应用商店
 description: API 可检索产品/服务的当前状态。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 5ce546d79497f462f6c262de738036d7e3a30226
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819663"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280501"
 ---
 <a name="retrieve-offer-status"></a>检索产品/服务状态 
 =====================
@@ -36,7 +35,7 @@ ms.locfileid: "73819663"
 <a name="header"></a>标头
 ------
 
-|  名称           |  值               |
+|  “属性”           |  “值”               |
 |  -------------  | -------------------  |
 |  Content-Type   |  `application/json`  |
 |  授权  | `Bearer YOUR_TOKEN`  |
@@ -161,7 +160,7 @@ ms.locfileid: "73819663"
 |  正在运行                     | 正在处理产品/服务提交。                     |
 |  已成功                   | 产品/服务提交已完成处理。               |
 |  已取消                    | 产品/服务提交已取消。                           |
-|  已失败                      | 产品/服务提交失败。                                 |
+|  失败                      | 产品/服务提交失败。                                 |
 |  |  |
 
 
@@ -170,7 +169,7 @@ ms.locfileid: "73819663"
 |  **名称**                    |    **说明**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | 步骤尚未开始。                        |
-|  InProgress                  | 步骤正在运行。                             |
+|  正在进行                  | 步骤正在运行。                             |
 |  WaitingForPublisherReview   | 步骤正在等待发布者批准。      |
 |  WaitingForApproval          | 步骤正在等待流程审批。        |
 |  已阻止                     | 步骤被阻止。                             |

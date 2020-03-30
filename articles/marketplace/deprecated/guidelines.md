@@ -3,18 +3,17 @@ title: Azure 市场和 AppSource 发布者准则 | Azure
 description: 面向应用和服务发布者的 Azure 市场与 AppSource 准则
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2018
-ms.author: ellacroi
-ms.openlocfilehash: 371f36e13c244439a583cbeb7ff06c6a1283d272
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f41aeb75253c803eac03b856d1e1ed0edb74a7e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825939"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281521"
 ---
 # <a name="guidelines"></a>指南  
 
@@ -29,7 +28,7 @@ ms.locfileid: "73825939"
 如果多个用户需要访问创建市场帐户所用的 Microsoft ID，则你应该遵循本文中的准则来帮助创建公司帐户。 
 
 >[!IMPORTANT]
->若要授权多个用户访问你的 Microsoft 开发人员中心（简称“开发人员中心”）帐户，Microsoft 建议使用 Azure Active Directory (Azure AD) 向各个用户分配角色。 每个用户必须通过使用其个人 Azure AD 凭据登录来访问该帐户。 使用已注册到公司的域中的电子邮件地址创建 Microsoft ID。Microsoft 建议不要将电子邮件分配给个人。 例如 `windowsapps@fabrikam.com`。  
+>若要授权多个用户访问你的 Microsoft 开发人员中心（简称“开发人员中心”）帐户，Microsoft 建议使用 Azure Active Directory (Azure AD) 向各个用户分配角色。 每个用户必须通过使用其个人 Azure AD 凭据登录来访问该帐户。 使用已注册到公司的域中的电子邮件地址创建 Microsoft ID。Microsoft 建议不要将电子邮件分配给个人。 示例为 `windowsapps@fabrikam.com`。  
 >*   有关详细信息，请访问[问题：Azure AD 联合域中的 Microsoft ID](#issue-microsoft-id-in-an-azure-ad-federated-domain) 部分。  
 
 *   限制只有尽可能最少数量的开发人员可以访问 Microsoft ID。 
@@ -69,6 +68,6 @@ Microsoft 推荐了一种解决方法。 请遵循这些步骤在 `outlook.com` 
 
 ## <a name="next-steps"></a>后续步骤
 
-*   访问 [Azure 市场和 AppSource 发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)页面。 
+*   访问 [Azure 市场和 AppSource 发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)页。 
  
 ---

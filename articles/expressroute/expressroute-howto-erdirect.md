@@ -1,6 +1,6 @@
 ---
-title: Azure ExpressRoute：配置 ExpressRoute 直接
-description: 此页可帮助你配置 ExpressRoute Direct。
+title: Azure 快速路由：直接配置快速路由
+description: 此页面可帮助您配置快速路由直接。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
 ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77031606"
 ---
-# <a name="how-to-configure-expressroute-direct"></a>如何配置 ExpressRoute 直接
+# <a name="how-to-configure-expressroute-direct"></a>如何配置快速路由直接
 
 使用 ExpressRoute Direct，可以直接连接到 Microsoft 战略性分布在全球的对等互连位置的的全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct](expressroute-erdirect-about.md)。
 
-## <a name="resources"></a>创建资源
+## <a name="create-the-resource"></a><a name="resources"></a>创建资源
 
 1. 登录到 Azure 并选择订阅。 ExpressRoute Direct 资源和 ExpressRoute 线路必须位于同一订阅中。
 
@@ -28,7 +28,7 @@ ms.locfileid: "77031606"
    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
    
-2. 将你的订阅重新注册到 Microsoft 以访问 expressrouteportslocation 和 expressrouteport Api。
+2. 重新注册您的订阅到 Microsoft.Network 以访问快速路由端口定位和快速路由端口 API。
 
    ```powershell
    Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
@@ -106,7 +106,7 @@ ms.locfileid: "77031606"
    > 封装属性还可以设置为 Dot1Q。 
    >
 
-   **示例输出：**
+   **输出示例：**
 
    ```powershell
    Name                       : Contoso-Direct
@@ -155,7 +155,7 @@ ms.locfileid: "77031606"
    Circuits                   : []
    ```
 
-## <a name="state"></a>更改链路的管理状态
+## <a name="change-admin-state-of-links"></a><a name="state"></a>更改链路的管理状态
 
   应当使用此过程执行第 1 层测试，以确保每个交叉连接都已针对主端口和辅助端口正确设置到每台路由器中。
 1. 获取 ExpressRoute Direct 详细信息。
@@ -174,7 +174,7 @@ ms.locfileid: "77031606"
    $ERDirect.Links[1].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    ```
-   **示例输出：**
+   **输出示例：**
 
    ```powershell
    Name                       : Contoso-Direct
@@ -225,15 +225,15 @@ ms.locfileid: "77031606"
 
    使用相同的过程和 `AdminState = "Disabled"` 设置可关闭端口。
 
-## <a name="circuit"></a>创建线路
+## <a name="create-a-circuit"></a><a name="circuit"></a>创建线路
 
 默认情况下，可以在 ExpressRoute Direct 资源所在的订阅中创建 10 条线路。 可以联系支持人员来提高此限额。 你负责跟踪预配的和已利用的带宽。 预配的带宽是 ExpressRoute Direct 资源上所有线路的带宽总和，已利用的带宽是基础物理接口的物理利用率。
 
 有额外的线路带宽可以在 ExpressRoute Direct 上使用，仅用于支持上面概述的场景。 它们是：40Gbps 和 100Gbps。
 
-**SkuTier**可以是本地、标准或高级。
+**SkuTier**可以是本地、标准版或高级版。
 
-**SkuFamily**必须是 MeteredData，因为 ExpressRoute 直接不支持。
+**SkuFamily**必须仅按流量计费数据，因为 ExpressRoute Direct 不支持无限制的数据。
 
 在 ExpressRoute Direct 资源上创建一个线路。
 
@@ -243,7 +243,7 @@ ms.locfileid: "77031606"
 
   其他带宽包括：5.0、10.0 和 40.0
 
-  **示例输出：**
+  **输出示例：**
 
   ```powershell
   Name                             : ExpressRoute-Direct-ckt
@@ -277,4 +277,4 @@ ms.locfileid: "77031606"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 ExpressRoute Direct 的详细信息，请参阅[概述](expressroute-erdirect-about.md)。
+有关快速路由直接的详细信息，请参阅[概述](expressroute-erdirect-about.md)。
