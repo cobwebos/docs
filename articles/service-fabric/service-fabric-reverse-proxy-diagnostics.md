@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric 反向代理诊断
-description: 了解如何在反向代理中监视和诊断 Azure Service Fabric 应用程序的请求处理。
+description: 了解如何在 Azure 服务结构应用程序的反向代理处监视和诊断请求处理。
 author: kavyako
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: kavyako
 ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645457"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>了解如何监视和诊断在反向代理处处理的请求
@@ -29,7 +29,7 @@ ms.locfileid: "75645457"
 
     有效负载包括：
 
-   * **traceId**：可将此 GUID 用于关联与单个请求对应的所有事件。 在下面的两个事件中，traceId = 2f87b722-e254-4ac2-a802-fd315c1a0271 暗示它们属于同一请求。
+   * **traceId**：可将此 GUID 用于关联与单个请求对应的所有事件。 在下面的两个事件中，traceId = 2f87b722-e254-4ac2-a802-fd315c1a0271 暗示它们属于同一请求****。
    * **requestUrl**：请求已发送到的 URL（反向代理 URL）。
    * **verb**：HTTP 谓词。
    * **remoteAddress**：发送请求的客户端地址。
@@ -77,8 +77,8 @@ ms.locfileid: "75645457"
     
     下面的示例中的反向代理将返回 404，因为找不到匹配的服务终结点。
     此处需要了解的有效负载项为：
-   * **processRequestPhase**：指示发生故障时请求处理的阶段，TryGetEndpoint， 即尝试获取要转发到的服务终结点时。 
-   * **errorDetails**：列出终结点搜索条件。 此处，你可看到指定的 listenerName = FrontEndListener，而副本终结点列表仅包含名称为 OldListener 的侦听程序。
+   * **processRequestPhase**：指示发生故障时请求处理的阶段，TryGetEndpoint******， 即尝试获取要转发到的服务终结点时。 
+   * **errorDetails**：列出终结点搜索条件。 此处，你可看到指定的 listenerName = FrontEndListener，而副本终结点列表仅包含名称为 OldListener 的侦听程序********。
     
      ```
      {
@@ -96,7 +96,7 @@ ms.locfileid: "75645457"
      }
      }
      ```
-     反向代理返回“404 未找到”的另一个示例为：ApplicationGateway\Http 配置参数 SecureOnlyMode 已设为 true，同时反向代理正在侦听 HTTPS，但所有副本终结点都不安全（侦听 HTTP）。
+     反向代理返回“404 未找到”的另一个示例为：ApplicationGateway\Http 配置参数 SecureOnlyMode 已设为 true，同时反向代理正在侦听 HTTPS，但所有副本终结点都不安全（侦听 HTTP）********。
      反向代理返回 404，因为找不到用于侦听 HTTPS 的终结点来转发请求。 分析事件负载中的参数有助于缩小问题范围：
     
      ```

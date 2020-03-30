@@ -7,13 +7,13 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 0f5f01c757bf651beddaa76fc3eb8046b21b31eb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979390"
 ---
-# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建、编辑或扩展逻辑应用工作流定义的 JSON
+# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>为 Azure 逻辑应用中的逻辑应用工作流定义创建、编辑或扩展 JSON
 
 在 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)中使用自动化工作流创建企业集成解决方案时，基础逻辑应用定义会将简单的声明性 JavaScript 对象表示法 (JSON) 以及[工作流定义语言 (WDL) 架构](../logic-apps/logic-apps-workflow-definition-language.md)用于说明和验证。 这些格式使得逻辑应用定义更易于阅读和理解，无需让用户详细了解代码。
 若要自动创建和部署逻辑应用，可在 [Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)中将逻辑应用定义包含为 [Azure 资源](../azure-resource-manager/management/overview.md)。
@@ -28,12 +28,12 @@ ms.locfileid: "75979390"
 
 ## <a name="edit-json---azure-portal"></a>编辑 JSON - Azure 门户
 
-1. 登录 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>。
+1. 登录到 Azure<a href="https://portal.azure.com" target="_blank">门户</a>。
 
-2. 在左侧菜单中选择“所有服务”。
+2. 在左侧菜单中选择“所有服务”。****
 在搜索框中查找“逻辑应用”，然后在结果中选择择自己的逻辑应用。
 
-3. 在逻辑应用菜单中的“开发工具”下，选择“逻辑应用代码视图”。
+3. 在逻辑应用菜单中的“开发工具”**** 下，选择“逻辑应用代码视图”****。
 
    “代码视图”编辑器将会打开并显示 JSON 格式的逻辑应用定义。
 
@@ -50,36 +50,36 @@ ms.locfileid: "75979390"
 可以使用并自定义此模板，以部署到不同的环境中。
 
 3. 打开逻辑应用定义和模板的快捷菜单。
-选择“使用逻辑应用设计器打开”。
+选择“使用逻辑应用设计器打开”****。
 
    ![在 Visual Studio 解决方案中打开逻辑应用](./media/logic-apps-author-definitions/open-logic-app-designer.png)
 
    > [!TIP]
    > 如果你的 Visual Studio 2019 中没有此命令，请检查是否安装了 Visual Studio 的最新更新。
 
-4. 在设计器底部，选择“代码视图”。
+4. 在设计器底部，选择“代码视图”****。
 
    “代码视图”编辑器将会打开并显示 JSON 格式的逻辑应用定义。
 
-5. 若要返回设计器视图，请在“代码视图”编辑器的底部选择“设计”。
+5. 若要返回设计器视图，请在“代码视图”编辑器的底部选择“设计”****。
 
 ## <a name="parameters"></a>参数
 
-部署生命周期通常具有不同的环境用于开发、测试、过渡和生产。 如果你有想要在不硬编码的情况下重复使用的值，或根据你的部署需求而异的值，则可以为工作流定义创建[Azure 资源管理器模板](../azure-resource-manager/management/overview.md)，以便你还可以自动执行逻辑应用部署。
+部署生命周期通常有用于开发、测试、过渡和生产的不同环境。 如果有需要在逻辑应用中不进行硬编码就重用的值，或者该值会根据部署需求而变化，则请针对工作流定义创建一个 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)，这样就还可以自动完成逻辑应用部署。
 
-请按照以下常规步骤*将这些值参数化*或定义并使用参数。 然后，你可以在将这些值传递给模板的单独参数文件中提供值。 这样，你就可以更轻松地更改这些值，而无需更新和重新部署逻辑应用。 有关完整详细信息，请参阅[概述：利用 Azure 资源管理器模板自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
+请改为按这些常规步骤来参数化这些值，或者定义和使用其参数。** 然后，可以在单独的参数文件中提供这些值，通过该文件将这些值传递给模板。 这样，无需更新和重新部署逻辑应用即可更轻松地更改这些值。 有关详细信息，请参阅[概述：使用 Azure 资源管理器模板自动部署逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
 
-1. 在模板中，定义模板参数和工作流定义参数，分别用于接受在部署和运行时中使用的值。
+1. 在模板中，定义模板参数和工作流定义参数，以便接受分别在部署时和运行时使用的值。
 
-   模板参数在工作流定义之外的参数部分中定义，而工作流定义参数则在工作流定义内的参数部分中定义。
+   定义模板参数时所在的 parameters 节位于工作流定义外，定义工作流定义参数时所在的 parameters 节位于工作流定义内。
 
-1. 将硬编码值替换为引用这些参数的表达式。 模板表达式使用不同于工作流定义表达式的语法。
+1. 请将硬编码的值替换为引用这些参数的表达式。 模板表达式使用的语法不同于工作流定义表达式。
 
-   避免在部署时（在运行时计算的工作流定义表达式内），不使用模板表达式来使代码复杂化。 仅在工作流定义之外使用模板表达式。 仅使用工作流定义中的工作流定义表达式。
+   避免代码复杂化，方法是：不要在工作流定义表达式（在运行时求值）中使用模板表达式（在部署时求值）。 仅在工作流定义外部使用模板表达式。 仅在工作流定义内部使用工作流定义表达式。
 
-   指定工作流定义参数的值时，可以使用工作流定义之外的参数部分引用模板参数，但仍会在逻辑应用的资源定义中引用模板参数。 这样，便可以将模板参数值传递到工作流定义参数。
+   针对工作流定义参数来指定值时，可以引用模板参数，方法是：使用位于工作流定义外部但仍在逻辑应用的资源定义内部的 parameters 节。 这样，便可以将模板参数值传入工作流定义参数。
 
-1. 在单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)中存储参数的值，并将该文件包含在你的部署中。
+1. 请将参数的值存储在单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)中，在部署时包括该文件。
 
 ## <a name="process-strings-with-functions"></a>使用函数处理字符串
 
@@ -127,18 +127,18 @@ ms.locfileid: "75979390"
 "uri": "https://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
 
-1. 获取公司名称的 [`length()`](../logic-apps/logic-apps-workflow-definition-language.md)，以便获取字符总数。
+1. 获取公司[`length()`](../logic-apps/logic-apps-workflow-definition-language.md)名称的 ，以便获取字符总数。
 
 2. 若要获取较短的字符串，请减去 `5`。
 
-3. 现在使用 [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md) 获取子字符串。
+3. 现在获取[`substring()`](../logic-apps/logic-apps-workflow-definition-language.md)。
 从索引 `5` 开始，提取字符串的其余部分。
 
-4. 将此子字符串转换为 [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) 字符串。
+4. 将此子字符串转换为[`base64()`](../logic-apps/logic-apps-workflow-definition-language.md)字符串。
 
-5. 现在使用 [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) 将所有 `+` 字符替换为 `-` 字符。
+5. 现在[`replace()`](../logic-apps/logic-apps-workflow-definition-language.md)所有字符`+`与`-`字符。
 
-6. 最后，使用 [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) 将所有 `/` 字符替换为 `_` 字符。
+6. 最后，[`replace()`](../logic-apps/logic-apps-workflow-definition-language.md)所有字符`/`与`_`字符。
 
 ## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>将列表项映射到属性值，然后使用映射作为参数
 
@@ -147,7 +147,7 @@ ms.locfileid: "75979390"
 例如，此工作流定义一些类别作为参数，并定义一个将这些类别与特定 URL 进行匹配的映射。
 首先，此工作流获取文章列表。 然后，此工作流使用映射找到与每篇文章的类别匹配的 URL。
 
-*   [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md) 函数检查类别是否与某个已知的已定义类别匹配。
+*   该[`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md)函数检查该类别是否与已知定义的类别匹配。
 
 *   获取匹配的类别后，此示例使用方括号从映射中拉取项：`parameters[...]`
 
@@ -240,7 +240,7 @@ ms.locfileid: "75979390"
 
    如果第一个值小于第二个值，则意味着从首次下订单开始过去了 1 秒以上的时间。
 
-若要设置日期格式，可以使用字符串格式化程序。 例如，若要获取 RFC1123，可以使用 [`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md)。
+若要设置日期格式，可以使用字符串格式化程序。 例如，要获取 RFC1123，请使用[`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md)。
 详细了解[日期格式设置](../logic-apps/logic-apps-workflow-definition-language.md)。
 
 ``` json

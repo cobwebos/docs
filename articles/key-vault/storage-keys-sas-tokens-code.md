@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault 托管存储帐户 - PowerShell 版本
-description: 托管存储帐户功能提供 Azure Key Vault 和 Azure 存储帐户之间的无缝集成。
+description: 托管存储帐户功能在 Azure Key Vault 与 Azure 存储帐户之间提供无缝集成。
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: secrets
@@ -9,15 +9,15 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.openlocfilehash: cbd7bd034c5cbbdf5308ec660a96dc52a9a2b310
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78200696"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>通过编写代码提取共享访问签名令牌
 
-你可以使用密钥保管库中的[共享访问签名令牌](../storage/common/storage-dotnet-shared-access-signature-part-1.md)来管理你的存储帐户。 本文提供了获取 SAS C#令牌并对其执行操作的代码示例。  有关如何创建和存储 SAS 令牌的信息，请参阅[通过 Key Vault 和 Azure CLI 管理存储帐户密钥](key-vault-ovw-storage-keys.md)或[用 Key Vault 和 Azure PowerShell 管理存储帐户密钥](key-vault-overview-storage-keys-powershell.md)。
+可以使用密钥保管库中的[共享访问签名令牌](../storage/common/storage-dotnet-shared-access-signature-part-1.md)来管理存储帐户。 本文提供了提取 SAS 令牌并对其执行操作的 C# 代码示例。  有关如何创建和存储 SAS 令牌的信息，请参阅[使用密钥保管库和 Azure CLI 管理存储帐户密钥](key-vault-ovw-storage-keys.md)或[使用密钥保管库和 Azure PowerShell 管理存储帐户密钥](key-vault-overview-storage-keys-powershell.md)。
 
 ## <a name="code-samples"></a>代码示例
 
@@ -51,7 +51,7 @@ accountSasCredential.UpdateSASToken(sasToken);
 
 
 ## <a name="next-steps"></a>后续步骤
-- 了解如何[通过 Key Vault 和 Azure CLI 或](key-vault-ovw-storage-keys.md) [Azure PowerShell](key-vault-overview-storage-keys-powershell.md) 管理存储帐户密钥。
+- 了解如何[使用密钥保管库和 Azure CLI 管理存储帐户密钥](key-vault-ovw-storage-keys.md)或 [Azure PowerShell](key-vault-overview-storage-keys-powershell.md)。
 - 请参阅[托管存储帐户密钥示例](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
-- [关于键、密钥和证书](about-keys-secrets-and-certificates.md)
+- [关于密钥、机密和证书](about-keys-secrets-and-certificates.md)
 - [Key Vault PowerShell 参考](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)

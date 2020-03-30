@@ -1,6 +1,6 @@
 ---
-title: 重新激活已禁用的 Azure 访问控制服务（ACS）命名空间
-description: 查找并启用 Azure 访问控制服务（ACS）命名空间，并请求扩展，使其保持启用到2019年2月4日。
+title: 重新激活禁用的 Azure 访问控制服务 （ACS） 命名空间
+description: 查找并启用 Azure 访问控制服务 （ACS） 命名空间，并请求扩展以使其保持启用状态，直到 2019 年 2 月 4 日。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,13 @@ ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.openlocfilehash: 85696a5580c4ed6c03f257787e2693a61a6158de
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: ff0ce05b13fea8409475e3415c5d810d7c79769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164612"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154859"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>如何：重新激活已禁用的访问控制服务命名空间
 
@@ -25,7 +26,7 @@ ms.locfileid: "77164612"
 
 在 2017 年 11 月我们已宣布，Azure Active Directory (Azure AD) 服务 Microsoft Azure 访问控制服务 (ACS) 将在 2018 年 11 月 7 日停用。
 
-然后，我们在 2018 年 11 月 7 日停用日期之前的 12 个月、9 个月、6 个月、3 个月、1 个月、2 周、1 周和 1 天，向 ACS 订阅管理员发送了有关 ACS 停用的电子邮件。
+从那时起，我们向 ACS 订阅的管理员电子邮件发送电子邮件，介绍 ACS 退休 12 个月、9 个月、6 个月、3 个月、1 个月、2 周、1 周和 2018 年 11 月 7 日退休日期前 1 天。
 
 在 2018 年 10 月 3 日我们（通过电子邮件和[博客文章](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)）宣布，2018 年 11 月 7 日之前未完成迁移的客户可以请求延期。 公告还包含了有关请求延期的说明。
 
@@ -68,7 +69,7 @@ ms.locfileid: "77164612"
 1. 使用 **Get-AcsNamespace** cmdlet 列出 ACS 命名空间。
 1. 通过检查 `State` 是否为 `Disabled`，来确认命名空间是否已禁用。
 
-    [![确认命名空间是否已禁用](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
+    [![确认命名空间已禁用](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png)](./media/howto-reactivate-disabled-acs-namespaces/confirm-disabled-namespace.png#lightbox)
 
     还可以使用 `nslookup {your-namespace}.accesscontrol.windows.net` 来确认域是否仍处于活动状态。
 
@@ -88,10 +89,10 @@ ms.locfileid: "77164612"
 
 ### <a name="to-request-an-extension"></a>若要请求延期
 
-1. 登录到 Azure 门户并创建[新的支持请求](https://portal.azure.com/#create/Microsoft.Support)。
+1. 登录到 Azure 门户并创建新[的支持请求](https://portal.azure.com/#create/Microsoft.Support)。
 1. 如下面的示例所示，填写新的支持请求表单。
 
-    | 支持请求字段 | 值 |
+    | 支持请求字段 | “值” |
     |-----------------------|--------------------|
     | **问题类型** | `Technical` |
     | **订阅** | 设置为你的订阅 |
@@ -100,7 +101,7 @@ ms.locfileid: "77164612"
     | **问题类型** | `ACS to SAS Migration` |
     | **主题** | 描述问题 |
 
-   ![显示新技术支持请求的示例](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+   ![显示新的技术支持请求示例](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 
 <!--
 

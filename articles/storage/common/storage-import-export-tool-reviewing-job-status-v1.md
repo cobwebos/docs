@@ -9,10 +9,10 @@ ms.date: 01/26/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: 33e6ecca0eb4ca05b1f6bf53cdb3bd4ac8c8d8a9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978434"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>使用复制日志文件查看 Azure 导入/导出作业状态
@@ -31,7 +31,7 @@ Microsoft Azure 导入/导出服务在处理与某个导入或导出作业关联
 ## <a name="next-steps"></a>后续步骤
 
  * [设置 Azure 导入/导出工具](storage-import-export-tool-setup-v1.md)   
- * [为导入作业准备硬盘驱动器](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+ * [为导入作业准备硬盘](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
  * [修复导入作业](../storage-import-export-tool-repairing-an-import-job-v1.md)   
  * [修复导出作业](../storage-import-export-tool-repairing-an-export-job-v1.md)   
- * [排查 Azure 导入/导出工具问题](storage-import-export-tool-troubleshooting-v1.md)
+ * [排除 Azure 导入/导出工具的故障](storage-import-export-tool-troubleshooting-v1.md)

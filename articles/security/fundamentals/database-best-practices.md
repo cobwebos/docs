@@ -1,5 +1,5 @@
 ---
-title: 数据库安全性最佳做法-Microsoft Azure
+title: 数据库安全最佳实践 - 微软 Azure
 description: 本文提供有关 Azure 数据库安全性的一套最佳做法。
 services: security
 documentationcenter: na
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 316c3ef3c5bd16b52291029924d04fc159375bc8
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 0f2e0257c5bf855b0d9be61c43b68b4e30b3d80d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943658"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125109"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure 数据库安全性最佳做法
-本文介绍数据库安全性的最佳做法。
+本文介绍了数据库安全的最佳做法。
 
-最佳做法以观点的共识以及 Azure 平台功能和特性集为基础。 观点和技术随时间而变化，本文会定期更新以反映这些更改。
+最佳做法以观点的共识以及 Azure 平台功能和特性集为基础。 观点和技术将随着时间改变，本文会定期更新以反映这些更改。
 
-## <a name="secure-databases"></a>保护数据库
+## <a name="secure-databases"></a>安全数据库
 安全性是管理数据库时的首要考虑因素，并且始终是 [Azure SQL 数据库](../../sql-database/index.yml)的优先事务。 严格保护数据库有助于满足大部分法规或安全要求，包括 HIPAA、ISO 27001/27002 和 PCI DSS Level 1。 [Microsoft 信任中心站点](https://azure.microsoft.com/support/trust-center/services/)上提供了安全合规认证的最新列表。 也可以根据法规要求将数据库放置在特定的 Azure 数据中心。
 
 ## <a name="use-firewall-rules-to-restrict-database-access"></a>使用防火墙规则来限制数据库访问
@@ -50,12 +50,12 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
 有关 SQL 数据库中的防火墙规则的详细信息，请参阅 [SQL 数据库防火墙规则](../../sql-database/sql-database-firewall-configure.md)。
 
 > [!Note]
-> 除了 IP 规则外，防火墙还管理虚拟网络规则。 虚拟网络规则基于虚拟网络服务终结点。 在某些情况下，虚拟网络规则可能比 IP 规则更好。 若要了解详细信息，请参阅[虚拟网络服务终结点和 Azure SQL 数据库规则](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)。
+> 除了 IP 规则外，防火墙还管理虚拟网络规则。 虚拟网络规则基于虚拟网络服务终结点。 在某些情况下，虚拟网络规则可能比 IP 规则更好。 要了解更多信息，请参阅[Azure SQL 数据库的虚拟网络服务终结点和规则](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)。
 
 ## <a name="enable-database-authentication"></a>启用数据库身份验证
 SQL 数据库支持两种身份验证：SQL Server 身份验证和 Azure AD 身份验证。
 
-### <a name="sql-server-authentication"></a>*SQL Server 身份验证*
+### <a name="sql-server-authentication"></a>*SQL 服务器身份验证*
 
 包括如下优点：
 
@@ -75,7 +75,7 @@ SQL 数据库支持两种身份验证：SQL Server 身份验证和 Azure AD 身�
 - （可能需要）保护通过网络从 Web 服务器传递到数据库的凭据。 有关详细信息，请参阅[如何：在 ASP.NET 2.0 中使用 SQL 身份验证连接到 SQL Server](/previous-versions/msp-n-p/ff648340(v=pandp.10))。
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Azure Active Directory (AD) 身份验证*
-Azure AD 身份验证是使用 Azure AD 中的标识连接到 Azure SQL 数据库和 [SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的一种机制。 通过 Azure AD 身份验证，可以在一个中心位置中管理数据库用户和其他 Microsoft 服务的标识。 集中 ID 管理提供一个单一位置来管理数据库用户，并简化权限管理。
+Azure AD 身份验证是使用 Azure AD 中的标识连接到 Azure SQL 数据库和 [SQL 数据仓库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的一种机制。 通过 Azure AD 身份验证，可以在一个中心位置中管理数据库用户和其他 Microsoft 服务的标识。 集中 ID 管理提供一个单一位置来管理数据库用户，并简化权限管理。
 
 > [!NOTE]
 > 我们建议使用 Azure AD 身份验证，而不使用 SQL Server 身份验证。
@@ -132,7 +132,7 @@ Azure AD 身份验证是使用 Azure AD 中的标识连接到 Azure SQL 数据�
 
 SQL Server 有多个审核级别，具体取决于针对安装的政府要求或标准要求。 SQL Server 审核提供用于启用、存储和查看有关各个服务器和数据库对象的审核的工具和流程。
 
-[Azure SQL 数据库审核](/azure/sql-database/sql-database-auditing)跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。
+[Azure SQL 数据库审核](/azure/sql-database/sql-database-auditing)跟踪数据库事件并将其写入 Azure 存储帐户中的审核日志。
 
 审核可帮助你遵守法规、了解数据库活动，以及查出可以指明业务考量因素或安全违规的偏差和异常。 审核有助于遵从法规标准，但不能保证遵从法规。
 
@@ -145,16 +145,16 @@ SQL Server 有多个审核级别，具体取决于针对安装的政府要求或
 - 在数据库上实现安全配置，以便可以保护数据库。
 - 在出现潜在威胁时对其进行检测和响应，以便可以快速响应和修正。
 
-最佳做法：发现数据库中的敏感数据并进行分类和标记。   
-详细信息：通过启用 Azure SQL 数据库中的[数据发现和分类](/azure/sql-database/sql-database-data-discovery-and-classification)对 SQL 数据库中的数据进行分类。 可以监视对 Azure 仪表板中的敏感数据的访问或下载报告。
+最佳做法****：发现数据库中的敏感数据并进行分类和标记。   
+详细信息****：通过启用 Azure SQL 数据库中的[数据发现和分类](/azure/sql-database/sql-database-data-discovery-and-classification)对 SQL 数据库中的数据进行分类。 可以监视对 Azure 仪表板中的敏感数据的访问或下载报告。
 
-最佳做法：跟踪数据库漏洞，以便可以主动提升数据库安全性。   
-详细信息：使用 Azure SQL 数据库[漏洞评估](/azure/sql-database/sql-vulnerability-assessment)服务，该服务可扫描潜在的数据库漏洞。 该服务采用标记安全漏洞的规则知识库，并显示与最佳做法的偏差，例如错误配置、过多权限和未受保护的敏感数据。
+最佳做法****：跟踪数据库漏洞，以便可以主动提升数据库安全性。   
+详细信息****：使用 Azure SQL 数据库[漏洞评估](/azure/sql-database/sql-vulnerability-assessment)服务，该服务可扫描潜在的数据库漏洞。 该服务采用标记安全漏洞的规则知识库，并显示与最佳做法的偏差，例如错误配置、过多权限和未受保护的敏感数据。
 
 这些规则基于 Microsoft 的最佳做法，并专注于对数据库及其重要数据有最大风险的安全问题。 其中涵盖数据库级别的问题以及服务器级别的安全问题，如服务器防火墙设置和服务器级别的权限。 此外，这些规则也代表了监管机构的诸多要求，以满足其符合性标准。
 
-最佳做法：启用威胁检测。  
-详细信息：启用 Azure SQL 数据库[威胁检测](/azure/sql-database/sql-database-threat-detection)以获取有关如何调查和缓解威胁的安全警报和建议。 你会收到有关可疑数据库活动、潜在漏洞、SQL 注入攻击以及异常数据库访问和查询模式的警报。
+最佳做法****：启用威胁检测。  
+详细信息****：启用 Azure SQL 数据库[威胁检测](/azure/sql-database/sql-database-threat-detection)以获取有关如何调查和缓解威胁的安全警报和建议。 你会收到有关可疑数据库活动、潜在漏洞、SQL 注入攻击以及异常数据库访问和查询模式的警报。
 
 [高级威胁防护](/azure/sql-database/sql-advanced-threat-protection)是高级 SQL 安全功能的统一程序包。 它包括前面提到的服务：数据发现和分类、漏洞评估和威胁检测。 它提供用于启用和管理这些功能的一个位置。
 
@@ -172,4 +172,4 @@ SQL Server 有多个审核级别，具体取决于针对安装的政府要求或
 
 以下资源提供了有关 Azure 安全性及相关 Microsoft 服务的更多常规信息：
 * [Azure 安全团队博客](https://blogs.msdn.microsoft.com/azuresecurity/) - 随时掌握 Azure 安全性的最新信息
-* [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx) - 可在其中报告 Microsoft 安全漏洞（包括 Azure 问题）或将其通过电子邮件发送到 secure@microsoft.com
+* [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx)- 可向其报告或通过电子邮件向secure@microsoft.com

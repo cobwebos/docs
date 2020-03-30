@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心向特定 iOS 设备推送通知 | Microsoft Docs
+title: 使用 Azure 通知中心向特定 iOS 设备发送推送通知 |微软文档
 description: 在本教程中，将了解如何使用 Azure 通知中心向特定 iOS 设备推送通知。
 services: notification-hubs
 documentationcenter: ios
@@ -16,14 +16,14 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 618be4bc2d7669879daa927d5c4392b1097d29af
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a775963f1b0fa19cd687c839f527f4a078c76864
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774892"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80126994"
 ---
-# <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 iOS 设备推送通知
+# <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 iOS 设备发送推送通知
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -41,9 +41,9 @@ ms.locfileid: "76774892"
 > * 从设备发送通知
 > * 运行应用并生成通知
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-本主题基于在[教程：使用 Azure 通知中心将通知推送到 iOS 应用][get-started]中创建的应用。 开始本教程之前，必须已完成[教程：使用 Azure 通知中心将通知推送到 iOS 应用][get-started]。
+本主题基于在[教程：使用 Azure 通知中心将通知推送到 iOS 应用][get-started]中创建的应用。 在开始本教程前，必须已完成[教程：使用 Azure 通知中心将通知推送到 iOS 应用][get-started]。
 
 ## <a name="add-category-selection-to-the-app"></a>向应用程序中添加类别选择
 
@@ -156,10 +156,10 @@ ms.locfileid: "76774892"
     > [!NOTE]
     > 由于使用客户端应用程序分发的凭据通常是不安全的，只应使用客户端应用程序分发具有侦听访问权限的密钥。 侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。 在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
 
-9. 将 `AppDelegate.m` 中 `didRegisterForRemoteNotificationsWithDeviceToken` 方法内的代码替换为以下代码，以将设备令牌传递给 `notifications` 类。 `notifications` 类将通知注册到类别。 如果用户更改类别选择，则调用 `subscribeWithCategories` 方法以响应“订阅”按钮，从而进行更新。
+9. 将 `AppDelegate.m` 中 `didRegisterForRemoteNotificationsWithDeviceToken` 方法内的代码替换为以下代码，以将设备令牌传递给 `notifications` 类。 `notifications` 类将通知注册到类别。 如果用户更改类别选择，则调用 `subscribeWithCategories` 方法以响应“订阅”按钮，从而进行更新****。
 
     > [!NOTE]
-    > 由于 Apple Push Notification 服务（APNS）分配的设备标记随时可能更改，因此你应该经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，可以跳过注册来节省带宽。
+    > 由于 Apple 推送通知服务 （APNS） 分配的设备令牌可以随时更改，因此应经常注册通知以避免通知失败。 此示例在每次应用程序启动时注册通知。 对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，可以跳过注册来节省带宽。
 
     ```objc
     self.notifications.deviceToken = deviceToken;
@@ -177,7 +177,7 @@ ms.locfileid: "76774892"
 
     此时，`didRegisterForRemoteNotificationsWithDeviceToken` 方法中不应有任何代码。
 
-10. 以下方法应已存在于完成[通知中心入门][get-started]教程 `AppDelegate.m`。 否则，请添加这些方法。
+10. 完成[通知中心入门][get-started]教程后，以下方法应已存在于 `AppDelegate.m` 中。 否则，请添加这些方法。
 
     ```objc
     - (void)MessageBox:(NSString *)title message:(NSString *)messageText
@@ -253,7 +253,7 @@ ms.locfileid: "76774892"
 
 ## <a name="optional-send-notifications-from-the-device"></a>（可选）从设备发送通知
 
-通常，通知由后端服务发送，但你也可以直接从应用发送突发新闻通知。 为此，请更新[通知中心入门][get-started]教程中定义的 `SendNotificationRESTAPI` 方法。
+通常，通知由后端服务发送，但你也可以直接从应用发送突发新闻通知。 为此，需更新[通知中心入门][get-started]教程中定义的 `SendNotificationRESTAPI` 方法。
 
 1. 在 `ViewController.m` 中，按如下所示更新 `SendNotificationRESTAPI` 方法，使其接受类别标记的参数并发送适当的[模板](notification-hubs-templates-cross-platform-push-messages.md)通知。
 

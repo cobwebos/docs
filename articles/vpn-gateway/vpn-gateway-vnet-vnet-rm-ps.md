@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure VPN 网关 VNet 到 VNet 连接将 VNet 连接到另一 VNet： PowerShell
+title: 使用 Azure VPN 网关 VNet 到 VNet 连接将 VNet 连接到另一个 VNet：PowerShell
 description: 使用 VNet 到 VNet 连接和 PowerShell 将虚拟网络连接起来。
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75860514"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
@@ -22,13 +22,13 @@ ms.locfileid: "75860514"
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [电源外壳](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure 门户（经典）](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [连接不同的部署模型 - Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [连接不同的部署模型 - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 
-## <a name="about"></a>关于连接 VNet
+## <a name="about-connecting-vnets"></a><a name="about"></a>关于连接 VNet
 
 可通过多种方式来连接 VNet。 以下各节介绍了如何通过不同方式来连接虚拟网络。
 
@@ -44,7 +44,7 @@ ms.locfileid: "75860514"
 
 可以考虑使用 VNet 对等互连来连接 VNet。 VNet 对等互连不使用 VPN 网关，并且有不同的约束。 另外，[VNet 对等互连定价](https://azure.microsoft.com/pricing/details/virtual-network)的计算不同于 [VNet 到 VNet VPN 网关定价](https://azure.microsoft.com/pricing/details/vpn-gateway)的计算。 有关详细信息，请参阅 [VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)。
 
-## <a name="why"></a>为何创建 VNet 到 VNet 连接？
+## <a name="why-create-a-vnet-to-vnet-connection"></a><a name="why"></a>为何创建 VNet 到 VNet 连接？
 
 你可能会出于以下原因而使用 VNet 到 VNet 连接来连接虚拟网络：
 
@@ -58,7 +58,7 @@ ms.locfileid: "75860514"
 
 可以将 VNet 到 VNet 通信与多站点配置组合使用。 这样，便可以建立将跨界连接与虚拟网络间连接相结合的网络拓扑。
 
-## <a name="steps"></a>应使用哪些 VNet 到 VNet 步骤？
+## <a name="which-vnet-to-vnet-steps-should-i-use"></a><a name="steps"></a>应使用哪些 VNet 到 VNet 步骤？
 
 在本文中，可以看到两组不同的步骤。 一组步骤适用于[驻留在同一订阅中的 VNet](#samesub)，另一组适用于[驻留在不同订阅中的 VNet](#difsub)。
 两组的主要差异是，配置位于不同订阅中的 VNet 的连接时，必须使用单独的 PowerShell 会话。 
@@ -73,7 +73,7 @@ ms.locfileid: "75860514"
 
   ![v2v 示意图](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
-## <a name="samesub"></a>如何连接同一订阅中的 VNet
+## <a name="how-to-connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>如何连接同一订阅中的 VNet
 
 ### <a name="before-you-begin"></a>开始之前
 
@@ -83,7 +83,7 @@ ms.locfileid: "75860514"
 
 * 如果更想本地安装最新版本的 Azure PowerShell 模块，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
-### <a name="Step1"></a>步骤 1 - 规划 IP 地址范围
+### <a name="step-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>步骤 1 - 规划 IP 地址范围
 
 以下步骤将创建两个虚拟网络，以及它们各自的网关子网和配置。 然后在两个 VNet 之间创建 VPN 连接。 必须计划用于网络配置的 IP 地址范围。 请记住，必须确保没有任何 VNet 范围或本地网络范围存在任何形式的重叠。 在这些示例中，我们没有包括 DNS 服务器。 如果需要虚拟网络的名称解析，请参阅[名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
@@ -121,7 +121,7 @@ ms.locfileid: "75860514"
 * ConnectionType：VNet2VNet
 
 
-### <a name="Step2"></a>步骤 2 - 创建并配置 TestVNet1
+### <a name="step-2---create-and-configure-testvnet1"></a><a name="Step2"></a>步骤 2 - 创建并配置 TestVNet1
 
 1. 验证订阅设置。
 
@@ -166,7 +166,7 @@ ms.locfileid: "75860514"
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
    ```
-4. 创建 TestVNet1 的子网配置。 本示例创建一个名为 TestVNet1 的虚拟网络和三个子网，这三个子网分别名为 GatewaySubnet、FrontEnd 和 Backend。 替换值时，请务必始终将网关子网特意命名为 GatewaySubnet。 如果命名为其他名称，网关创建会失败。 出于此原因，它不是通过下面的变量分配的。
+4. 创建 TestVNet1 的子网配置。 本示例创建一个名为 TestVNet1 的虚拟网络和三个子网，这三个子网分别名为 GatewaySubnet、FrontEnd 和 Backend。 替换值时，请务必始终将网关子网特意命名为 GatewaySubnet。 如果命名为其他名称，网关创建会失败。 因此，名称不是通过下面的变量分配的。
 
    下面的示例使用先前设置的变量。 在本示例中，网关子网使用 /27。 尽管创建的网关子网最小可为 /29，但建议至少选择 /28 或 /27，创建包含更多地址的更大子网。 这样便可以留出足够多的地址，满足将来可能需要使用的其他配置。
 
@@ -292,7 +292,7 @@ ms.locfileid: "75860514"
    ```
 4. 验证连接。 请参阅 [如何验证连接](#verify)部分。
 
-## <a name="difsub"></a>如何连接不同订阅中的 VNet
+## <a name="how-to-connect-vnets-that-are-in-different-subscriptions"></a><a name="difsub"></a>如何连接不同订阅中的 VNet
 
 在此方案中，连接 TestVNet1 和 TestVNet5。 TestVNet1 和 TestVNet5 驻留在不同订阅中。 订阅不需要与相同的 Active Directory 租户相关联。
 
@@ -471,13 +471,13 @@ ms.locfileid: "75860514"
    New-AzVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
    ```
 
-## <a name="verify"></a>如何验证连接
+## <a name="how-to-verify-a-connection"></a><a name="verify"></a>如何验证连接
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 [!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-## <a name="faq"></a>VNet 到 VNet 常见问题解答
+## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>VNet 到 VNet 常见问题解答
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 

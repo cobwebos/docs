@@ -1,41 +1,41 @@
 ---
-title: 配置 SSL-Azure Database for MySQL
+title: 配置 SSL - Azure Database for MySQL
 description: 介绍了如何正确配置 Azure Database for MySQL 和关联的应用程序，以正确使用 SSL 连接
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 3a1c7f6542ebdf1617982fbb50a239b66a6675ba
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 3/18/2020
+ms.openlocfilehash: 557986560eb27beddf939bcab7f4d72a66781e53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926712"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062446"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MySQL
 Azure Database for MySQL 支持使用安全套接字层 (SSL) 将 Azure Database for MySQL 服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
 
 ## <a name="step-1-obtain-ssl-certificate"></a>步骤 1：获取 SSL 证书
-从 [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 下载通过 SSL 与 Azure Database for MySQL 服务器通信所需的证书，再将证书文件保存到本地驱动器（例如，本教程使用 c:\ssl）。
+从下载通过 SSL 与 MySQL 服务器的 Azure 数据库[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)通信所需的证书，并将证书文件保存到本地驱动器（例如，本教程使用 c：\ssl）。
 **对于 Microsoft Internet Explorer 和 Microsoft Edge：** 下载完成之后，将证书重命名为 BaltimoreCyberTrustRoot.crt.pem。
 
 ## <a name="step-2-bind-ssl"></a>步骤 2：绑定 SSL
 
 有关特定的编程语言连接字符串，请参阅下面的[示例代码](howto-configure-ssl.md#sample-code)。
 
-### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>使用 MySQL 通过 SSL 连接到服务器
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>使用 MySQL Workbench 通过 SSL 连接到服务器
 配置 MySQL Workbench，以便安全地通过 SSL 连接。 
 
-1. 从“设置新连接”对话框，导航到“SSL”选项卡。 
+1. 从“设置新连接”对话框，导航到“SSL”选项卡****。 
 
-1. 将 "**使用 SSL** " 字段更新为 "需要"。
+1. 将“使用 SSL”**** 字段更新为“必需”。
 
-1. 在 " **SSL CA 文件：** " 字段中，输入**baltimorecybertrustroot.crt.pem**的文件位置。 
+1. 在“SSL CA 文件:”字段中输入 BaltimoreCyberTrustRoot.crt.pem 的文件位置********。 
     
     ![保存 SSL 配置](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
-对于现有连接，可以通过右键单击连接图标来绑定 SSL，然后选择 "编辑"。 然后导航到“SSL”选项卡，并绑定证书文件。
+对于现有连接，可以通过右键单击“连接”图标并选择“编辑”来绑定 SSL。 然后导航到“SSL”**** 选项卡，并绑定证书文件。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>使用 MySQL CLI 通过 SSL 连接到服务器
 绑定 SSL 证书的另一种方法是使用 MySQL 命令行接口执行以下命令。 
@@ -49,23 +49,23 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 
 ## <a name="step-3--enforcing-ssl-connections-in-azure"></a>步骤 3：在 Azure 中强制实施 SSL 连接 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
-在 Azure 门户中，访问 Azure Database for MySQL 服务器，并单击“连接安全性”。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置，并单击“保存”。 Microsoft 建议始终启用“强制实施 SSL 连接”设置，以增强安全性。
+在 Azure 门户中，访问 Azure Database for MySQL 服务器，并单击“连接安全性”****。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置，并单击“保存”********。 Microsoft 建议始终启用“强制实施 SSL 连接”设置，以增强安全性****。
 ![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
-可以通过在 Azure CLI 中分别使用“Enabled”或“Disabled”值来启用或禁用“ssl-enforcement”参数。
+可以通过在 Azure CLI 中分别使用“Enabled”或“Disabled”值来启用或禁用“ssl-enforcement”参数****。
 ```azurecli-interactive
 az mysql server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
 
 ## <a name="step-4-verify-the-ssl-connection"></a>步骤 4：验证 SSL 连接
-执行 mysql status 命令，验证是否已使用 SSL 连接到 MySQL 服务器：
+执行 mysql status 命令，验证是否已使用 SSL 连接到 MySQL 服务器：****
 ```dos
 mysql> status
 ```
-通过查看输出来确认连接是否已加密，如果已加密，输出应显示为：“SSL: 使用中的密码为 AES256-SHA” 
+通过查看输出来确认连接是否已加密，如果已加密，输出应显示为：“SSL: 使用中的密码为 AES256-SHA”**** 
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 若要从应用程序通过 SSL 与 Azure Database for MySQL 建立安全连接，请参阅以下代码示例：
 
 请参阅 Azure Database for MySQL 服务支持的[兼容驱动程序](concepts-compatibility.md)列表。
@@ -79,7 +79,7 @@ if (mysqli_connect_errno($conn)) {
 die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 ```
-### <a name="php-using-pdo"></a>PHP （使用 PDO）
+### <a name="php-using-pdo"></a>PHP（使用 PDO）
 ```phppdo
 $options = array(
     PDO::MYSQL_ATTR_SSL_CA => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
@@ -107,7 +107,7 @@ conn = pymysql.connect(user='myadmin@mydemoserver',
                        ssl={'ssl': {'ssl-ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
 ```
 
-### <a name="django-pymysql"></a>Django （PyMySQL）
+### <a name="django-pymysql"></a>Django (PyMySQL)
 ```python
 DATABASES = {
     'default': {
@@ -147,7 +147,7 @@ var connectionString string
 connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=custom",'myadmin@mydemoserver' , 'yourpassword', 'mydemoserver.mysql.database.azure.com', 'quickstartdb')   
 db, _ := sql.Open("mysql", connectionString)
 ```
-### <a name="java-mysql-connector-for-java"></a>Java （用于 Java 的 MySQL 连接器）
+### <a name="java-mysql-connector-for-java"></a>Java（适用于 Java 的 MySQL 连接器）
 ```java
 # generate truststore and keystore in code
 String importCert = " -import "+
@@ -174,7 +174,7 @@ properties.setProperty("user", 'myadmin@mydemoserver');
 properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
-### <a name="java-mariadb-connector-for-java"></a>Java （适用于 Java 的 MariaDB 连接器）
+### <a name="java-mariadb-connector-for-java"></a>Java（适用于 Java 的 MariaDB 连接器）
 ```java
 # generate truststore and keystore in code
 String importCert = " -import "+
@@ -202,7 +202,7 @@ properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
 
-### <a name="net-mysqlconnector"></a>.NET （MySqlConnector）
+### <a name="net-mysqlconnector"></a>.NET (MySqlConnector)
 ```csharp
 var builder = new MySqlConnectionStringBuilder
 {

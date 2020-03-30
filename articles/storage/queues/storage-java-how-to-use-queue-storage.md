@@ -2,18 +2,18 @@
 title: 如何通过 Java 使用队列存储 - Azure 存储
 description: 了解如何通过适用于 Java 的 Azure 存储客户端库使用队列存储创建和删除队列，以及插入、获取和删除消息。
 author: mhopkins-msft
-ms.service: storage
 ms.author: mhopkins
 ms.date: 12/08/2016
+ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 17d02d8df96927aa506683fef94899e5c5114684
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7658b8541e7a79a5e547a6649b35681446e34b0b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839023"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067135"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>如何通过 Java 使用队列存储
 
@@ -21,10 +21,10 @@ ms.locfileid: "73839023"
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
-本指南演示如何使用 Azure 队列存储服务执行常见方案。 这些示例用 Java 编写并使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。 介绍的方案包括**插入**、**扫视**、**获取**和**删除**队列消息以及**创建**和**删除**队列。 有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
+本指南演示如何使用 Azure 队列存储服务执行常见方案。 这些示例用 Java 编写并使用[适用于 Java 的 Azure 存储 SDK][Azure Storage SDK for Java]。 涵盖的方案包括**插入**、**查看**、**获取**和**删除**队列消息，以及**创建**和**删除**队列。 有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
 
 > [!NOTE]
-> SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅 [Azure Storage SDK for Android][Azure Storage SDK for Android]。
+> SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅[适用于 Android 的 Azure 存储 SDK][Azure Storage SDK for Android]。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -48,7 +48,7 @@ import com.microsoft.azure.storage.queue.*;
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>设置 Azure 存储连接字符串
 
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。 在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 AccountName[](https://portal.azure.com) 和 AccountKey 值使用 *Azure 门户*中列出的存储帐户的名称和存储帐户的主访问密钥。 此示例演示如何声明一个静态字段以保存连接字符串：
+Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。 在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 AccountName** 和 AccountKey** 值使用 [Azure 门户](https://portal.azure.com)中列出的存储帐户的名称和存储帐户的主访问密钥。 此示例演示如何声明一个静态字段以保存连接字符串：
 
 ```java
 // Define the connection-string with your values.
@@ -58,7 +58,7 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-在 Microsoft Azure 的角色内运行的应用程序中，此字符串可存储在服务配置文件 *ServiceConfiguration.cscfg* 中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。 下面是从服务配置文件中名为 **StorageConnectionString** 的 *Setting* 元素中获取连接字符串的示例：
+在 Microsoft Azure 的角色内运行的应用程序中，此字符串可存储在服务配置文件 *ServiceConfiguration.cscfg* 中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。 下面是从服务配置文件中名为 *StorageConnectionString* 的 **Setting** 元素中获取连接字符串的示例：
 
 ```java
 // Retrieve storage account from connection-string.
@@ -69,9 +69,9 @@ String storageConnectionString =
 下面的示例假定使用了这两个方法之一来获取存储连接字符串。
 
 ## <a name="how-to-create-a-queue"></a>如何：创建队列
-利用 **CloudQueueClient** 对象，可以获取队列的引用对象。 以下代码将创建 **CloudQueueClient** 对象。 （注意：还有其他方式可创建 **CloudStorageAccount** 对象；有关详细信息，请参阅 **Azure 存储客户端 SDK 参考**中的 [Azure 存储客户端 SDK 参考]。）
+**CloudQueueClient**对象允许您获取队列的引用对象。 以下代码将创建 **CloudQueueClient** 对象。 （注意：还有其他方式可创建 **CloudStorageAccount** 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 **CloudStorageAccount**。）
 
-使用 **CloudQueueClient** 对象获取对要使用的队列的引用。 如果队列不存在，可以创建它。
+使用**CloudQueueClient**对象获取对要使用的队列的引用。 如果队列不存在，可以创建它。
 
 ```java
 try
@@ -97,7 +97,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-add-a-message-to-a-queue"></a>如何：向队列添加消息
-要将消息插入现有队列，请先创建一个新的 **CloudQueueMessage**。 接下来，调用 **addMessage** 方法。 可从字符串（UTF-8 格式）或字节数组创建 **CloudQueueMessage**。 以下代码创建队列（如果该队列不存在）并插入消息“Hello, World”。
+要将消息插入现有队列，请先创建一个新的 **CloudQueueMessage**。 接下来，调用**addMessage**方法。 **云队列消息**可以从字符串（UTF-8 格式）或字节数组创建。 以下代码创建队列（如果该队列不存在）并插入消息“Hello, World”。
 
 ```java
 try
@@ -274,7 +274,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-dequeue-the-next-message"></a>如何：取消对下一条消息的排队
-代码通过两个步骤来取消对队列中某条消息的排队。 调用 **retrieveMessage** 时，会获得队列中的下一条消息。 从 **retrieveMessage** 返回的消息对从此队列读取消息的任何其他代码不可见。 默认情况下，此消息将持续 30 秒不可见。 若要从队列中删除消息，还必须调用 **deleteMessage**。 此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 代码在处理消息后会立即调用 **deleteMessage**。
+代码通过两个步骤来取消对队列中某条消息的排队。 调用 **retrieveMessage** 时，会获得队列中的下一条消息。 从 **retrieveMessage** 返回的消息对从此队列读取消息的任何其他代码不可见。 默认情况下，此消息将持续 30 秒不可见。 要完成从队列中删除邮件，还必须调用**deleteMessage**。 此删除消息的两步过程可确保，如果代码因硬件或软件故障而无法处理消息，则代码的其他实例可以获取相同消息并重试。 您的代码在邮件处理后立即调用**deleteMessage。**
 
 ```java
 try
@@ -308,7 +308,7 @@ catch (Exception e)
 ## <a name="additional-options-for-dequeuing-messages"></a>用于取消对消息进行排队的其他选项
 可以通过两种方式自定义队列中的消息检索。 首先，可以获取一批消息（最多 32 个）。 其次，可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少时间来完全处理每个消息。
 
-下面的代码示例使用 **retrieveMessages** 方法在一次调用中获取 20 条消息。 然后，它会使用 **for** 循环处理每条消息。 它还将每条消息的不可见超时设置为五分钟（300 秒）。 这五分钟超时对于所有消息都是同时开始的，因此在调用 **retrieveMessages** 五分钟后，尚未删除的任何消息都会再次变得可见。
+下面的代码示例使用 **retrieveMessages** 方法在一次调用中获取 20 条消息。 然后，它使用**for**循环处理每条消息。 它还将每条消息的不可见超时设置为五分钟（300 秒）。 这五分钟超时对于所有消息都是同时开始的，因此在调用 **retrieveMessages** 五分钟后，尚未删除的任何消息都会再次变得可见。
 
 ```java
 try
@@ -394,7 +394,7 @@ catch (Exception e)
 ## <a name="next-steps"></a>后续步骤
 现在，已了解有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
 
-* [用于 Java 的 Azure 存储 SDK][Azure Storage SDK for Java]
+* [适用于 Java 的 Azure 存储 SDK][Azure Storage SDK for Java]
 * [Azure 存储客户端 SDK 参考][Azure Storage Client SDK Reference]
 * [Azure 存储服务 REST API][Azure Storage Services REST API]
 * [Azure 存储团队博客][Azure Storage Team Blog]

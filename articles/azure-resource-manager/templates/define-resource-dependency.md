@@ -3,22 +3,22 @@ title: 设置资源的部署顺序
 description: 介绍如何在部署期间将一个资源设置为依赖于另一个资源，以确保按正确的顺序部署资源。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: ffd6d6c65a1cbe9578b5f9162d29f3238e27ea71
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: f11f79df875492a568a76f494dfffb4a163f64cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207683"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153278"
 ---
-# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>定义 Azure 资源管理器模板中部署资源的顺序
+# <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>定义在 ARM 模板中部署资源的顺序
 
-部署资源时，可能需要在部署资源之前确保其他资源存在。 例如，在部署 SQL 数据库之前，需要 SQL server。 可通过将一个资源标记为依赖于其他资源来定义此关系。 使用 **dependsOn** 元素或 **reference** 函数定义依赖项。
+部署资源时，可能需要确保其他资源在部署之前存在。 例如，在部署 SQL 数据库之前，需要 SQL Server。 可通过将一个资源标记为依赖于其他资源来定义此关系。 使用 **dependsOn** 元素或 **reference** 函数定义依赖项。
 
 Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序进行部署。 如果资源互不依赖，资源管理器将以并行方式部署资源。 只需为在同一模板中部署的资源定义依赖关系。
 
 ## <a name="dependson"></a>dependsOn
 
-在模板中，使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 它的值是一个以逗号分隔的资源名称列表。 此列表可以包含有条件地[部署](conditional-resource-deployment.md)的资源。 当条件资源未部署时，Azure 资源管理器会自动从所需的依赖项中将其删除。
+在模板中，使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 它的值是逗号分隔的资源名称列表。 该列表可以包括[有条件部署](conditional-resource-deployment.md)的资源。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
 
 以下示例显示了一个虚拟机规模集，该集依赖于负载均衡器、虚拟网络以及创建多个存储帐户的循环。 下面的示例中未显示其他这些资源，但它们需要存在于模板的其他位置。
 
@@ -55,7 +55,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 
 ## <a name="child-resources"></a>子资源
 
-资源属性允许指定与所定义的资源相关的子资源。 子资源总共只能定义五级。 请务必注意，不会在子资源和父资源之间创建隐式部署依赖关系。 如果要在父级资源后部署子资源，则必须使用 dependsOn 属性明确声明该依赖关系。
+资源属性允许指定与所定义的资源相关的子资源。 子资源总共只能定义五级。 请务必注意子资源和父资源之间不能创建隐式部署依赖关系。 如果要在父级资源后部署子资源，则必须使用 dependsOn 属性明确声明该依赖关系。
 
 每个父资源仅接受特定的资源类型作为子资源。 可接受的资源类型在父资源的[模板架构](https://github.com/Azure/azure-resource-manager-schemas)中指定。 子资源类型的名称包含父资源类型的名称，例如 **Microsoft.Web/sites/config** 和 **Microsoft.Web/sites/extensions** 都是 **Microsoft.Web/sites** 的子资源。
 

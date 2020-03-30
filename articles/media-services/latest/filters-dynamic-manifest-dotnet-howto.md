@@ -1,5 +1,5 @@
 ---
-title: 用 Azure 媒体服务 v3 .NET SDK 创建筛选器
+title: 使用 Azure 媒体服务 v3 .NET SDK 创建筛选器
 description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务将创建动态清单来存档此选择性流。
 services: media-services
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
 ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75779240"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 创建筛选器
@@ -29,9 +29,9 @@ ms.locfileid: "75779240"
 本主题展示了如何使用媒体服务 .NET SDK 为点播视频资产定义筛选器，以及如何创建[帐户筛选器](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet)和[资产筛选器](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)。 
 
 > [!NOTE]
-> 请确保查看[presentationTimeRange](filters-concept.md#presentationtimerange)。
+> 请确保查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>先决条件 
 
 - 查看[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
@@ -82,11 +82,11 @@ AssetFilter assetFilterParams = new AssetFilter(tracks: includedTracks);
 client.AssetFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, encodedOutputAsset.Name, "assetFilterName1", assetFilterParams);
 ```
 
-## <a name="associate-filters-with-streaming-locator"></a>将筛选器与流式处理定位符关联
+## <a name="associate-filters-with-streaming-locator"></a>将筛选器与流定位器关联
 
-可以指定将应用于流式处理定位符的资产或帐户筛选器的列表。 [动态包装器（流式处理终结点）](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器结合在一起。 这种组合生成[动态清单](filters-dynamic-manifest-overview.md)，它基于在流式处理定位符上指定的 URL 中的筛选器和筛选器。 如果要应用筛选器，但不希望在 URL 中公开筛选器名称，建议使用此功能。
+可以指定资产或帐户筛选器的列表，这些筛选器将应用于流定位器。 [动态打包程序（流式处理终结点）](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位器上指定的“URL + 筛选器”中的筛选器。 如果要应用筛选器，但不希望在 URL 中公开筛选器名称，建议使用此功能。
 
-下面C#的代码演示如何创建流式处理定位符并指定 `StreamingLocator.Filters`。 这是一个可选属性，它采用 `IList<string>` 的筛选器名称。
+以下 C# 代码显示了如何创建流定位器并指定 `StreamingLocator.Filters`。 这是一个可选属性，它采用筛选器名称的 `IList<string>`。
 
 ```csharp
 IList<string> filters = new List<string>();

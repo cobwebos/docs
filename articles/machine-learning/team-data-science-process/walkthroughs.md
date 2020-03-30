@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8fa21cc690742a71100c53b4e5b6ce122d1a6147
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864071"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>执行 Team Data Science Process 的演练
 
-这些**综合性演练**演示了针对特定方案的团队数据科学过程中的步骤。 它们说明了如何将云、本地工具和服务合并到**智能应用程序**的工作流中。 这些演练按所使用的**平台**进行分组。
+这些**全面的演练**演示了团队数据科学流程中针对特定方案的步骤。 它们说明了如何将云、本地工具和服务合并到**智能应用程序的**工作流中。 这些演练按所使用的**平台**进行分组。
 
 
 ## <a name="walkthrough-descriptions"></a>演练说明
@@ -40,7 +40,7 @@ ms.locfileid: "75864071"
 
 有关构成 Team Data Science Process 的关键组件的讨论，请参阅 [Team Data Science Process 概述](overview.md)。
 
-有关团队数据科学过程生命周期的讨论，请参阅[团队数据科学过程生命周期](lifecycle.md)。 此生命周期概述了在执行项目时通常遵循的步骤。 
+有关团队数据科学流程生命周期的讨论，请参阅[团队数据科学流程生命周期](lifecycle.md)。 此生命周期概述了项目在执行时通常遵循的步骤（从开始到结束）。 
 
-有关概述，请参阅[数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。 
+有关概述，请参阅[数据科学流程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。 
 

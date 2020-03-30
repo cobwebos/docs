@@ -1,6 +1,6 @@
 ---
-title: Azure Batch 池创建事件
-description: Batch 池 create 事件的参考，在创建池后发出此事件。 日志内容将公开有关池的常规信息。
+title: Azure 批处理池创建事件
+description: Batch 池的引用创建事件，创建池后发出该事件。 日志内容将公开有关池的常规信息。
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -12,17 +12,17 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
 ms.openlocfilehash: dea025b274278aa5fed2900c95b4a274541ffef9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022183"
 ---
 # <a name="pool-create-event"></a>池创建事件
 
  池创建后，会发出此事件。 日志内容将公开有关池的常规信息。 请注意，如果池的目标大小大于 0 个计算节点，则池调整大小启动事件会在此事件之后立即发生。
 
- 下面的示例显示了使用 `CloudServiceConfiguration` 属性创建的池的池创建事件的正文。
+ 以下示例显示了使用 `CloudServiceConfiguration` 属性所创建池的池创建事件的正文。
 
 ```
 {
@@ -67,7 +67,7 @@ ms.locfileid: "77022183"
 |[`virtualMachineConfiguration`](#bk_vmconf)|复杂类型|池的虚拟机配置。|
 |[`networkConfiguration`](#bk_netconf)|复杂类型|池的网络配置。|
 |`resizeTimeout`|时间|为针对池的上一次调整大小操作指定的将计算节点分配到池的超时。  （创建池时的初始大小计为一次调整大小。）|
-|`targetDedicatedNodes`|Int32|为池请求的专用计算节点数。|
+|`targetDedicatedNodes`|Int32|池请求的专用计算节点数。|
 |`targetLowPriorityNodes`|Int32|池请求的低优先级计算节点数。|
 |`enableAutoScale`|Bool|指定池大小是否随时间自动调整。|
 |`enableInterNodeCommunication`|Bool|指定是否针对节点间的直接通信设置池。|
@@ -75,14 +75,14 @@ ms.locfileid: "77022183"
 |`maxTasksPerNode`|Int32|可在池中单个计算节点上并发运行的任务的最大数目。|
 |`vmFillType`|String|定义批处理服务如何在池中不同的计算节点之间分配任务。 有效值为 Spread 或 Pack。|
 
-###  <a name="bk_csconf"></a> cloudServiceConfiguration
+###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a>云服务配置
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
 |`osFamily`|String|要安装在池中虚拟机上的 Azure 来宾 OS 系列。<br /><br /> 可能的值包括：<br /><br /> **2** – OS 系列 2，等效于 Windows Server 2008 R2 SP1。<br /><br /> **3** – OS 系列 3，等效于Windows Server 2012。<br /><br /> **4** – OS 系列 4，等效于 Windows Server 2012 R2。<br /><br /> 有关详细信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
-|`targetOSVersion`|String|要安装在池中虚拟机上的 Azure 来宾 OS 版本。<br /><br /> 默认值为 **\*** ，用于指定特定系列的最新操作系统版本。<br /><br /> 有关其他允许的值的信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
+|`targetOSVersion`|String|要安装在池中虚拟机上的 Azure 来宾 OS 版本。<br /><br /> 默认值为**\*** 指定指定族的最新操作系统版本。<br /><br /> 有关其他允许的值的信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
 
-###  <a name="bk_vmconf"></a> virtualMachineConfiguration
+###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a> virtualMachineConfiguration
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
@@ -90,7 +90,7 @@ ms.locfileid: "77022183"
 |`nodeAgentId`|String|在计算节点上预配的批处理节点代理的 SKU。|
 |[`windowsConfiguration`](#bk_winconf)|复杂类型|指定虚拟机上的 Windows 操作系统设置。 如果 imageReference 引用 Linux OS 映像，则不能指定此属性。|
 
-###  <a name="bk_imgref"></a> imageReference
+###  <a name="imagereference"></a><a name="bk_imgref"></a> imageReference
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
@@ -99,13 +99,13 @@ ms.locfileid: "77022183"
 |`sku`|String|映像的 SKU。|
 |`version`|String|映像的版本。|
 
-###  <a name="bk_winconf"></a> windowsConfiguration
+###  <a name="windowsconfiguration"></a><a name="bk_winconf"></a> windowsConfiguration
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
 |`enableAutomaticUpdates`|Boolean|指示是否对虚拟机启用自动更新。 如果未指定此属性，则默认值为 true。|
 
-###  <a name="bk_netconf"></a> networkConfiguration
+###  <a name="networkconfiguration"></a><a name="bk_netconf"></a>网络配置
 
 |元素名称|类型|说明|
 |------------------|--------------|----------|

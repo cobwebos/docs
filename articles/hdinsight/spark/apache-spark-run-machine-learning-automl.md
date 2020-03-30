@@ -1,5 +1,5 @@
 ---
-title: 在 HDInsight 中 Apache Spark 上运行 Azure 机器学习工作负荷
+title: 在 HDInsight 中的 Apache Spark 上运行 Azure 机器学习工作负载
 description: 了解如何在 Azure HDInsight 中的 Apache Spark 上使用自动化机器学习 (AutoML) 运行 Azure 机器学习工作负荷。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,28 +8,28 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.openlocfilehash: 6fc0d4cfe29e0fb189c44b307576bd08d2da8a31
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75638873"
 ---
-# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>在 HDInsight 中 Apache Spark 上通过自动机器学习运行 Azure 机器学习工作负荷
+# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>在 HDInsight 中的 Apache Spark 上使用自动化机器学习运行 Azure 机器学习工作负载
 
-Azure 机器学习简化并加速了机器学习模型的构建、培训和部署。 在自动机器学习（AutoML）中，您从具有定义的目标功能的训练数据开始，然后循环访问算法和特征选择的组合，根据定型评分自动为您的数据选择最佳模型。 HDInsight 允许客户设置具有数百个节点的群集。 在 HDInsight 群集中的 Spark 上运行的 AutoML 允许用户在这些节点上使用计算容量，以向外扩展的方式运行定型作业，以及并行运行多个定型作业。 这样，用户便可以运行 AutoML 试验，同时将计算与其他大数据工作负荷共享。
+Azure 机器学习可简化和加速机器学习模型的生成、训练和部署。 在自动化机器学习 (AutoML) 中，一开始可以对带有定义的目标特征的数据进行训练，然后以迭代方式将算法和特征选择组合在一起，以便根据训练分数自动为数据选择最佳模型。 HDInsight 允许客户预配具有数百个节点的群集。 在 HDInsight 群集中的 Spark 上运行的 AutoML 允许用户在这些节点上使用计算容量，以横向扩展的方式运行训练作业，以及并行运行多个训练作业。 这样，用户便可以运行 AutoML 试验，同时将计算与其他大数据工作负载共享。
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>在 HDInsight 群集上安装 Azure 机器学习
 
 有关自动机器学习的一般教程，请参阅[教程：使用自动机器学习构建回归模型](../../machine-learning/tutorial-auto-train-models.md)。
-所有新的 HDInsight-Spark 群集都预装了 AutoML SDK。
+所有新的 HDInsight-Spark 群集都预装了 AzureML-AutoML SDK。
 
 > [!Note]
 > Azure 机器学习包将安装到 Python3 conda 环境中。 应使用 PySpark3 内核运行安装的 Jupyter Notebook。
 
-还可以使用 Zeppelin 笔记本来使用 AutoML。
+还可以通过 Zeppelin 笔记本来使用 AutoML。
 
 > [!Note]
-> Zeppelin 有一个[已知问题](https://community.hortonworks.com/content/supportkb/207822/the-livypyspark3-interpreter-uses-python-2-instead.html)，PySpark3 不会选取适当版本的 Python。 请使用记录的解决方法。
+> Zeppelin 有一个[已知问题](https://community.hortonworks.com/content/supportkb/207822/the-livypyspark3-interpreter-uses-python-2-instead.html)，即 PySpark3 不会选取适当版本的 Python。 请使用记录的解决方法。
 
 ## <a name="authentication-for-workspace"></a>工作区身份验证
 
@@ -71,10 +71,10 @@ dataflow_with_token = dprep.read_csv(
 
 ## <a name="experiment-submission"></a>试验提交
 
-在[自动机器学习配置](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中，应将属性 `spark_context` 设置为在分布式模式下运行包。 属性 `concurrent_iterations` 表示并行执行的最大迭代数，应设置为小于 Spark 应用的执行器核心数。
+在[自动机器学习配置](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中，应设置该属性`spark_context`，使包在分布式模式下运行。 属性 `concurrent_iterations` 表示并行执行的最大迭代数，应设置为小于 Spark 应用的执行器核心数。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关自动机器学习背后的动机的详细信息，请参阅[使用 Microsoft 的自动机器学习在步调上发布模型！](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
-* 有关使用 Azure ML 自动 ML ML 功能的详细信息，请参阅[中的新的自动机器学习功能 Azure 机器学习](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
+* 有关自动机器学习背后的动机的详细信息，请参阅[使用 Microsoft 自动化机器学习的速度发布模型！](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
+* 有关如何使用 Azure ML 自动化 ML 功能的详细信息，请参阅 [Azure 机器学习中的全新自动化机器学习功能](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
 * [Microsoft Research 提供的 AutoML 项目](https://www.microsoft.com/research/project/automl/)

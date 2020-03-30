@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 2c021a6d10c95b58ac444de8ea895ca01371a2b0
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75902458"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API 管理策略中的错误处理
@@ -59,24 +59,24 @@ Azure API 管理中的策略分为 `inbound`、`backend`、`outbound`、`on-erro
 
 以下策略可以用在 `on-error` 策略节中。
 
--   [choose](api-management-advanced-policies.md#choose)
--   [set-variable](api-management-advanced-policies.md#set-variable)
+-   [选择](api-management-advanced-policies.md#choose)
+-   [设置变量](api-management-advanced-policies.md#set-variable)
 -   [find-and-replace](api-management-transformation-policies.md#Findandreplacestringinbody)
 -   [return-response](api-management-advanced-policies.md#ReturnResponse)
 -   [set-header](api-management-transformation-policies.md#SetHTTPheader)
 -   [set-method](api-management-advanced-policies.md#SetRequestMethod)
 -   [set-status](api-management-advanced-policies.md#SetStatus)
--   [send-request](api-management-advanced-policies.md#SendRequest)
--   [send-one-way-request](api-management-advanced-policies.md#SendOneWayRequest)
+-   [发送请求](api-management-advanced-policies.md#SendRequest)
+-   [单向发送请求](api-management-advanced-policies.md#SendOneWayRequest)
 -   [log-to-eventhub](api-management-advanced-policies.md#log-to-eventhub)
 -   [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)
 -   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)
 
 ## <a name="lasterror"></a>lastError
 
-发生错误并控制对 `on-error` 策略部分的跳转时，错误将存储在[上下文中。LastError](api-management-policy-expressions.md#ContextVariables)属性，可由 `on-error` 节中的策略访问。 LastError 具有以下属性。
+当发生错误并控制跳转到策略部分`on-error`时，该错误将存储在[上下文中。LastError](api-management-policy-expressions.md#ContextVariables)属性，该`on-error`属性可通过节中的策略访问。 LastError 具有以下属性。
 
-| 名称       | 类型   | Description                                                                                               | 需要 |
+| “属性”       | 类型   | 说明                                                                                               | 必选 |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | `Source`   | 字符串 | 指定在其中发生错误的元素。 可以是策略或内置管道步骤名称。      | 是      |
 | `Reason`   | 字符串 | 计算机友好错误代码，可以用在错误处理中。                                       | 否       |
@@ -101,9 +101,9 @@ Azure API 管理中的策略分为 `inbound`、`backend`、`outbound`、`on-erro
 | 配置 | URI 与任何 API 或操作均不匹配 | OperationNotFound       | 无法匹配操作的传入请求。                                                                      |
 | authorization | 未提供订阅密钥             | SubscriptionKeyNotFound | 由于缺少订阅密钥，访问被拒绝。 请确保在向此 API 发出请求时包括订阅密钥。 |
 | authorization | 订阅密钥值无效         | SubscriptionKeyInvalid  | 由于订阅密钥无效，访问被拒绝。 请确保提供活动订阅的有效密钥。            |
-| 多个 | 请求处于挂起状态时，客户端终止了下游连接（从客户端到 API 管理网关） | ClientConnectionFailure | 多个 |
-| 多个 | 上游连接（从 API 管理网关到后端服务）未建立或已被后端中止 | BackendConnectionFailure | 多个 |
-| 多个 | 计算特定表达式时出现运行时异常 | ExpressionValueEvaluationFailure | 多个 |
+| 多个 | 下游连接（从客户端到 API 管理网关）在请求挂起时被客户端中止 | 客户端连接失败 | 多个 |
+| 多个 | 上游连接（从 API 管理网关到后端服务）未建立或被后端中止 | 后端连接失败 | 多个 |
+| 多个 | 在评估特定表达式期间发生了运行时异常 | 表达式价值评估失败 | 多个 |
 
 ## <a name="predefined-errors-for-policies"></a>针对策略的预定义错误
 
@@ -128,7 +128,7 @@ Azure API 管理中的策略分为 `inbound`、`backend`、`outbound`、`on-erro
 | validate-jwt | 令牌中缺少必需的声明                          | TokenClaimNotFound        | JWT 令牌缺少以下声明: <c1\>、<c2\>、… 访问被拒绝。                                                            |
 | validate-jwt | 声明值不匹配                                           | TokenClaimValueNotAllowed | 不允许声明 {claim-name} 的值 {claim-value}。 访问被拒绝。                                                             |
 | validate-jwt | 其他验证失败                                       | JwtInvalid                | <jwt 库中的消息\>                                                                                                          |
-| 转发请求或发送请求 | 在配置的超时时间内未收到来自后端的 HTTP 响应状态代码和标头 | 超时 | 多个 |
+| 转发请求或发送请求 | 在配置的超时内未从后端接收 HTTP 响应状态代码和标头 | 超时 | 多个 |
 
 ## <a name="example"></a>示例
 

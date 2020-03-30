@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76986098"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure 自动化中的 Az 模块支持
@@ -18,7 +18,7 @@ Azure 自动化支持在 runbook 中使用 [Azure Powershell Az 模块](/powersh
 
 ## <a name="considerations"></a>注意事项
 
-在 Azure 自动化中使用 Az 模块时，需要考虑很多事项。 自动化帐户中更高级别的解决方案可以使用 runbook 和模块。 编辑 runbook 或升级模块可能会导致 runbook 出现问题。 在导入新的 `Az` 模块前，应该在单独的自动化帐户中认真测试所有 runbook 和解决方案。 对模块的任何修改都可能对[启动/停止](automation-solution-vm-management.md)解决方案产生负面影响。 不建议在包含任何解决方案的自动化帐户中更改模块和 runbook。 此行为并非特定于 Az 模块。 在自动化帐户中引入任何更改时，都应考虑此行为。
+在 Azure 自动化中使用 Az 模块时，需要考虑很多事项。 自动化帐户中更高级别的解决方案可以使用 runbook 和模块。 编辑 runbook 或升级模块可能会导致 runbook 出现问题。 在导入新的 `Az` 模块前，应该在单独的自动化帐户中认真测试所有 runbook 和解决方案。 对模块的任何修改都会对[开始/停止](automation-solution-vm-management.md)解决方案产生负面影响。 我们不建议在包含任何解决方案的自动化帐户中更改模块和运行簿。 此行为并非特定于 Az 模块。 在自动化帐户中引入任何更改时，都应考虑此行为。
 
 在自动化帐户中导入 `Az` 模块的行为不会在 runbook 使用的 PowerShell 会话中自动导入该模块。 在以下情况中，模块会导入到 PowerShell 会话中：
 
@@ -49,11 +49,11 @@ Azure 自动化支持在 runbook 中使用 [Azure Powershell Az 模块](/powersh
 
 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) 模块是其他 `Az.*` 模块的依赖项。 因此，需要先将此模块导入自动化帐户，然后才能导入任何其他模块。
 
-在自动化帐户中，选择“共享资源”下的“模块”。 单击“浏览库”，打开“浏览库”页。  在搜索栏中，输入模块名称（例如 `Az.Accounts`）。 在 PowerShell 模块页，单击“导入”，将模块导入自动化帐户。
+从您的自动化帐户中，选择**共享资源**下的**模块**。 单击“浏览库”，打开“浏览库”页********。  在搜索栏中，输入模块名称（例如 `Az.Accounts`）。 在 PowerShell 模块页，单击“导入”，将模块导入自动化帐户****。
 
 ![从自动化帐户导入模块](media/az-modules/import-module.png)
 
-还可以通过搜索模块，使用 [PowerShell 库](https://www.powershellgallery.com)完成此导入过程。 找到模块后，选择该模块，然后在“Azure 自动化”选项卡下，单击“部署到 Azure 自动化”。
+还可以通过搜索模块，使用 [PowerShell 库](https://www.powershellgallery.com)完成此导入过程。 找到模块后，选择该模块，然后在“Azure 自动化”选项卡下，单击“部署到 Azure 自动化”********。
 
 ![直接从库中导入模块](media/az-modules/import-gallery.png)
 
@@ -65,7 +65,7 @@ Azure 自动化支持在 runbook 中使用 [Azure Powershell Az 模块](/powersh
 
 ## <a name="after-migration-details"></a>迁移后详细信息
 
-迁移完成后，不要再使用帐户上的 `AzureRM` 模块启动 runbook。 还建议不要在此帐户上导入或更新 `AzureRM` 模块。 从这一刻开始，请记住此帐户已迁移到 `Az`，并且仅使用 `Az` 模块运行。 创建新的自动化帐户时，仍将安装现有的 `AzureRM` 模块，并且仍将使用 `AzureRM` cmdlet 创作教程 runbook。 不应运行这些 runbook。
+迁移完成后，不要再使用帐户上的 `AzureRM` 模块启动 runbook。 还建议不要在此帐户上导入或更新 `AzureRM` 模块。 从这一刻开始，请记住此帐户已迁移到 `Az`，并且仅使用 `Az` 模块运行。 创建新的自动化帐户时，仍将安装现有的 `AzureRM` 模块，并且仍将使用 `AzureRM` cmdlet 创作教程 runbook。 不应运行这些 Runbook。
 
 ## <a name="next-steps"></a>后续步骤
 

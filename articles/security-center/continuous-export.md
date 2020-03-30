@@ -1,120 +1,128 @@
 ---
-title: 将 Azure 安全中心警报和建议导出到 Siem |Microsoft Docs
-description: 本文介绍如何将安全警报和建议的连续导出设置为 Siem
+title: 将 Azure 安全中心警报和建议导出到 SIEM |微软文档
+description: 本文介绍如何设置安全警报和向 SIEM 提供的安全警报和建议的连续导出
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: bad3be86bd85f7e5cebcf9445d14d836c73a87ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 19fdcc7b590c6ad6873c7808ae26d218bbda7f5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470780"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158957"
 ---
-# <a name="export-security-alerts-and-recommendations-preview"></a>导出安全警报和建议（预览）
+# <a name="export-security-alerts-and-recommendations"></a>导出安全警报和建议
 
-Azure 安全中心生成详细的安全警报和建议。 可以在门户中或通过编程工具查看它们。 你可能还需要导出此信息，或将其发送到你环境中的其他监视工具。 
+Azure 安全中心生成详细的安全警报和建议。 您可以在门户中或通过编程工具查看它们。 您可能还需要导出此信息或将其发送到环境中的其他监视工具。 
 
-本文介绍了一套（预览版）工具，通过这些工具，您可以手动或以持续的连续方式导出警报和建议。
+本文介绍了允许您手动或持续导出警报和建议的工具集。
 
-使用这些工具可以：
+使用这些工具，您可以：
 
-* 生成 CSV 格式的详细报告
-* 导出到 Log Analytics 工作区
-* 导出到 Azure 事件中心（适用于与第三方 Siem 的集成）
+* 持续导出到日志分析工作区
+* 持续导出到 Azure 事件中心（用于与第三方 SIEM 的集成）
+* 导出到 CSV（一次）
+
 
 ## <a name="setting-up-a-continuous-export"></a>设置连续导出
 
-1. 在安全中心的边栏中，单击 "**定价 & 设置**"。
+无论是设置日志分析工作区还是 Azure 事件中心，都有必要执行以下步骤。
+
+1. 从安全中心的侧边栏中，选择**定价&设置**。
 
 1. 选择要为其配置数据导出的特定订阅。
     
-1. 在该订阅的 "设置" 页的侧栏中，选择 "**连续导出（预览版）** "。
+1. 从该订阅的设置页的边栏中，选择 **"连续导出**"。
 
-    [Azure 安全中心中的![导出选项](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox)此时会显示导出选项。 每个可用的导出目标有一个选项卡。 
+    [Azure 安全中心的导出选项![](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox)在这里，您可以看到导出选项。 每个可用的导出目标都有一个选项卡。 
 
 1. 选择要导出的数据类型，并从每种类型的筛选器中进行选择（例如，仅导出高严重性警报）。
 
-1. 从 "导出目标" 区域中，选择要将数据保存到的位置。 数据可以保存在不同订阅的目标中（例如，在中央事件中心实例或中央 Log Analytics 工作区中）。
+1. 从"导出目标"区域中，选择希望将数据保存的位置。 数据可以保存在目标上不同的订阅（例如，在中央事件中心实例或中央日志分析工作区）。
 
-1. 单击“保存”。
+1. 单击“保存”。****
 
-## <a name="continuous-export-through-azure-event-hubs"></a>通过 Azure 事件中心连续导出  
+
+
+## <a name="configuring-siem-integration-via-azure-event-hubs"></a>通过 Azure 事件中心配置 SIEM 集成
+
+Azure 事件中心是程序化使用任何流数据的绝佳解决方案。 对于 Azure 安全中心警报和建议，它是与第三方 SIEM 集成的首选方式。
 
 > [!NOTE]
-> 在大多数情况下，最有效的方法是将监视数据流式处理到外部工具使用 Azure 事件中心。 [本文](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs)简要介绍了如何将来自不同源的监视数据流式传输到事件中心，并提供详细指南链接。
+> 在大多数情况下，将监视数据流式传输到外部工具的最有效方法是使用 Azure 事件中心。 [本文](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs)简要介绍了如何将监视数据从不同源流式传输到事件中心，以及指向详细指南的链接。
 
 > [!NOTE]
-> 如果以前使用 Azure 活动日志将安全中心警报导出到 SIEM，则以下过程将取代该方法。
+> 如果以前使用 Azure 活动日志将安全中心警报导出到 SIEM，则下面的过程将替换该方法。
 
-若要查看导出的数据类型的事件架构，请访问[事件中心事件架构](https://aka.ms/ASCAutomationSchemas)。
+要查看导出数据类型的事件架构，请访问[事件中心事件架构](https://aka.ms/ASCAutomationSchemas)。
+
 
 ### <a name="to-integrate-with-a-siem"></a>与 SIEM 集成 
 
-将所选安全中心数据连续导出到 Azure 事件中心后，可以按照以下说明在 SIEM 上设置相应的连接器。
+将所选安全中心数据连续导出到 Azure 事件中心后，可以为 SIEM 设置适当的连接器：
 
-按照[此页面](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/?cdn=disable)上与你的 SIEM 相关的说明进行操作，并使用相关的连接器：
+* **Azure 哨兵**- 使用本地 Azure 安全中心警报数据[连接器](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)。
+* **Splunk** - 使用[Azure 监视器加载项进行斯普伦克](https://github.com/Microsoft/AzureMonitorAddonForSplunk/blob/master/README.md)
+* **IBM QRadar** - 使用[手动配置的日志源](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/t_dsm_guide_microsoft_azure_enable_event_hubs.html)
+* **弧线**视觉 – 使用[智能连接器](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)
 
-* **Splunk** -使用[Splunk 的 Azure Monitor 外接程序](https://splunkbase.splunk.com/app/3534/)
-* **IBM QRadar** -使用[手动配置的日志源](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/t_logsource_microsoft_azure_event_hubs.html)
-* **ArcSight** –使用[SmartConnector](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)
-
-如果你使用的是**Azure Sentinel**，请使用此处提供的本机 Azure 安全中心警报[数据连接器](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)。
-
-此外，如果你想要从已配置的事件中心自动将连续导出的数据移至 Azure 数据资源管理器，请按照将[数据从事件中心引入 azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub)中的说明进行操作。
+此外，如果要将连续导出的数据自动从配置的事件中心移动到 Azure 数据资源管理器，请使用[将数据从事件中心引入到 Azure 数据资源管理器](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub)中的说明。
 
 
-## <a name="continuous-export-to-a-log-analytics-workspace"></a>连续导出到 Log Analytics 工作区
 
-若要导出到 Log Analytics 工作区，必须在工作区中启用安全中心的免费或标准层 Log Analytics 解决方案。 如果你使用的是 Azure 门户，则当你启用连续导出时，将自动启用安全中心免费层解决方案。 但是，如果要以编程方式配置连续导出设置，则必须从**定价 & 设置**中手动选择所需工作区的 "免费" 或 "标准" 定价层。  
+## <a name="continuous-export-to-a-log-analytics-workspace"></a>持续导出到日志分析工作区
 
-### <a name="log-analytics-tables-and-schemas"></a>Log Analytics 表和架构
+如果要分析日志分析工作区内的 Azure 安全中心数据或与安全中心一起使用 Azure 警报，请设置连续导出到日志分析工作区。
 
-安全警报和建议分别存储在*SecurityAlert*和*SecurityRecommendations*表中。 包含这些表的 Log Analytics 解决方案的名称取决于你是在 "免费" 层还是 "标准" 层上（请参阅[定价](security-center-pricing.md)）：安全性（"安全和审核"）或 SecurityCenterFree。
+要导出到日志分析工作区，必须在工作区上启用安全中心的日志分析解决方案。 如果使用 Azure 门户，则启用连续导出时，安全中心的免费层解决方案将自动启用。 但是，如果要以编程方式配置连续导出设置，则必须在**定价&设置**中手动选择所需工作区的免费或标准定价层。  
 
-![Log Analytics 中的 * SecurityAlert * 表](./media/continuous-export/log-analytics-securityalert-solution.png)
+### <a name="log-analytics-tables-and-schemas"></a>日志分析表和架构
 
-若要查看导出的数据类型的事件架构，请访问[Log Analytics 表架构](https://aka.ms/ASCAutomationSchemas)。
+安全警报和建议分别存储在*安全警报**和安全建议*表中。 包含这些表的日志分析解决方案的名称取决于您是位于免费层还是标准层（请参阅[定价](security-center-pricing.md)）：安全性（"安全和审核"）还是安全中心免费。
 
-###  <a name="view-exported-security-alerts-and-recommendations-in-azure-monitor"></a>在 Azure Monitor 中查看导出的安全警报和建议
+![日志分析中的 [安全警报] 表](./media/continuous-export/log-analytics-securityalert-solution.png)
 
-在某些情况下，你可以选择在[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)中查看导出的安全警报和/或建议。 
+要查看导出数据类型的事件架构，请访问[日志分析表架构](https://aka.ms/ASCAutomationSchemas)。
 
-Azure Monitor 提供了一种统一的警报体验，包括诊断日志、指标警报以及基于 Log Analytics 工作区查询的自定义警报。
+###  <a name="view-exported-security-alerts-and-recommendations-in-azure-monitor"></a>在 Azure 监视器中查看导出的安全警报和建议
 
-若要在 Azure Monitor 中查看安全中心的警报和建议，请根据 Log Analytics 查询（日志警报）配置警报规则：
+在某些情况下，您可以选择在[Azure 监视器](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)中查看导出的安全警报和/或建议。 
 
-1. 在 Azure Monitor 的 "**警报**" 页中，单击 "**新建警报规则**"。
+Azure 监视器为各种 Azure 警报提供了统一的警报体验，包括诊断日志、指标警报和基于日志分析工作区查询的自定义警报。
 
-    ![Azure Monitor 的 "警报" 页](./media/continuous-export/azure-monitor-alerts.png)
+要查看 Azure 监视器中安全中心的警报和建议，请根据日志分析查询（日志警报）配置警报规则：
 
-1. 在 "创建规则" 页中，配置新规则（与在 Azure Monitor 中配置[日志警报规则](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)的方式相同）：
+1. 在 Azure 监视器的**警报页中**，单击 **"新警报规则**"。
 
-    * 对于 "**资源**"，请选择要向其中导出安全警报和建议的 "Log Analytics" 工作区。
+    ![Azure 监视器的警报页](./media/continuous-export/azure-monitor-alerts.png)
 
-    * 对于 "**条件**"，选择 "**自定义日志搜索**"。 在出现的页中，配置查询、lookback 周期和频率时间段。 在搜索查询中，你可以键入*SecurityAlert*或*SecurityRecommendation* ，以在你启用连续导出到 Log Analytics 功能时查询安全中心持续导出到的数据类型。 
+1. 在创建规则页中，配置新规则（与[在 Azure 监视器中配置日志警报规则](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)的方式相同）：
+
+    * 对于**资源**，选择导出安全警报和建议的日志分析工作区。
+
+    * 对于**条件**，选择**自定义日志搜索**。 在显示的页面中，配置查询、回望周期和频率周期。 在搜索查询中，可以键入*安全警报*或*安全建议*，以查询安全中心在启用"连续导出到日志分析"功能时连续导出到的数据类型。 
     
-    * 还可以配置要触发的[操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。 操作组可以触发电子邮件发送、ITSM 票证、Webhook 等。
-    ![Azure Monitor 预警规则](./media/continuous-export/azure-monitor-alert-rule.png)
+    * 或者，配置要触发[的操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。 操作组可以触发电子邮件发送、ITSM 票证、WebHook 等。
+    ![Azure 监视器警报规则](./media/continuous-export/azure-monitor-alert-rule.png)
 
-你现在可以在 Azure Monitor 警报中看到新的 Azure 安全中心警报或建议（具体取决于你的配置），并自动触发操作组（如果已提供）。
+现在，您将在 Azure 监视器警报中看到新的 Azure 安全中心警报或建议（取决于您的配置），并自动触发操作组（如果提供）。
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>手动一次性导出安全警报
 
-若要为警报或建议下载 CSV 报表，请打开 "**安全警报**" 或 "**建议**" 页，然后单击 "**下载 CSV 报表**" 按钮。
+要下载 CSV 报告以查找警报或建议，请打开**安全警报**或**建议**页面，然后单击 **"下载 CSV 报告**"按钮。
 
-[![将警报数据作为 CSV 文件下载](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
+[![将警报数据下载为 CSV 文件](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 
 > [!NOTE]
-> 这些报表包含当前所选订阅中的资源的警报和建议。
+> 这些报告包含当前所选订阅中的资源的警报和建议。
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何配置建议和警报的连续导出。 还了解了如何将警报数据作为 CSV 文件下载。 
+在本文中，您学习了如何配置建议和警报的连续导出。 您还学习了如何将警报数据下载为 CSV 文件。 
 
 有关相关材料，请参阅以下文档： 
 

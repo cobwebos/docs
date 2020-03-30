@@ -1,7 +1,7 @@
 ---
-title: 传递身份验证请求中的自定义状态（MSAL） |Microsoft
+title: 在身份验证请求中传递自定义状态 (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库（MSAL）在身份验证请求中传递自定义状态参数值。
+description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 在身份验证请求中传递自定义状态参数值。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,17 +14,17 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1c05956f83ad3a6491627be8916fac2c8be2b7ff
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77084935"
 ---
-# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>使用 MSAL 在身份验证请求中传递自定义状态
+# <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>使用 MSAL.js 在身份验证请求中传递自定义状态
 
-由 OAuth 2.0 定义的*状态*参数包含在身份验证请求中，并且也在令牌响应中返回，以防止跨站点请求伪造攻击。 默认情况下，适用于 JavaScript 的 Microsoft 身份验证库（MSAL）在身份验证请求中传递随机生成的唯一*状态*参数值。
+由 OAuth 2.0 定义的 state** 参数包含在身份验证请求中，并在令牌响应中返回，以防止跨站点请求伪造攻击。 默认情况下，适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 在身份验证请求中传递随机生成的唯一 state ** 参数值。
 
-State 参数还可用于在重定向前对应用状态的信息进行编码。 可以在应用中传递用户的状态，例如，作为此参数的输入，例如它们所在的页面或视图。 MSAL 库允许将自定义状态作为状态参数传递到 `Request` 对象中：
+state 参数也可用于在重定向之前对应用的状态信息进行编码。 可以在应用中传递用户的状态，例如他们所在的页面或视图，作为此参数的输入。 MSAL.js 库允许你将自定义状态作为 state 参数传入 `Request` 对象：
 
 ```javascript
 // Request type
@@ -45,10 +45,10 @@ export type AuthenticationParameters = {
 ```
 
 > [!Note]
-> 如果要跳过缓存的令牌并转到服务器，请将布尔 `forceRefresh` 传入到用于发出登录/令牌请求的 AuthenticationParameters 对象。
-> 由于对应用程序性能的影响，默认情况下不应使用 `forceRefresh`。
-> 依靠缓存可为用户提供更好的体验。
-> 跳过缓存只应在知道当前缓存的数据没有最新信息的情况下使用。
+> 如果要跳过缓存的令牌并转到服务器，请将布尔值 `forceRefresh` 传入到用于发出登录/令牌请求的 AuthenticationParameters 对象。
+> 默认情况下不应使用 `forceRefresh`，因为对应用程序存在性能影响。
+> 可以依靠缓存为用户提供更好的体验。
+> 只应在知道当前缓存的数据没有最新信息的情况下，才应跳过缓存。
 > 例如，管理工具将角色添加到需要使用更新角色获取新令牌的用户。
 
 例如：
@@ -62,7 +62,7 @@ let loginRequest = {
 myMSALObj.loginPopup(loginRequest);
 ```
 
-发送请求时，传递的状态将追加到由 MSAL 设置的唯一 GUID。 返回响应时，MSAL 会检查状态匹配，然后以 `accountState`的形式返回 `Response` 对象中的自定义传入状态。
+发送请求时，传入状态将追加到 MSAL.js 设置的唯一 GUID 中。 返回响应时，MSAL.js 将检查状态是否匹配，然后在 `Response` 对象中返回自定义传入状态作为 `accountState`。
 
 ```javascript
 export type AuthResponse = {
@@ -78,4 +78,4 @@ export type AuthResponse = {
 };
 ```
 
-若要了解详细信息，请参阅使用 MSAL[生成单页应用程序（SPA）](scenario-spa-overview.md) 。
+若要了解详细信息，请阅读[使用 MSAL.js 生成单页应用程序 (SPA)](scenario-spa-overview.md)。

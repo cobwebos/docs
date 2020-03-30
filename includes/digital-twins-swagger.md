@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 01/07/2020
 ms.custom: include file
 ms.openlocfilehash: 096e28c875634e248ee95e1010fa915dd35bddab
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75752343"
 ---
 > [!TIP]
@@ -26,7 +26,7 @@ ms.locfileid: "75752343"
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| 名称 | 替换为 |
+| “属性” | 替换为 |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Azure 数字孪生实例的名称 |
 | YOUR_LOCATION | 托管实例的服务器区域 |

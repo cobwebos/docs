@@ -1,29 +1,29 @@
 ---
-title: 模板函数-数值
+title: 模板函数 - 数值
 description: 介绍可在 Azure 资源管理器模板中使用的用于处理数值的函数。
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2ca5c539036d002b83b8141132a0ebf2530dc6af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273652"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156338"
 ---
-# <a name="numeric-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的数值函数
+# <a name="numeric-functions-for-arm-templates"></a>ARM 模板的数字函数
 
-Resource Manager 提供以下用于处理整数的函数：
+资源管理器提供了以下函数，用于在 Azure 资源管理器 （ARM） 模板中处理整数：
 
-* [add](#add)
-* [copyIndex](#copyindex)
+* [添加](#add)
+* [复制索引](#copyindex)
 * [div](#div)
-* [float](#float)
-* [int](#int)
+* [浮动](#float)
+* [Int](#int)
 * [max](#max)
-* [min](#min)
-* [mod](#mod)
+* [分钟](#min)
+* [国防部](#mod)
 * [mul](#mul)
-* [sub](#sub)
+* [子](#sub)
 
 <a id="add" />
 
@@ -36,8 +36,8 @@ Resource Manager 提供以下用于处理整数的函数：
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
-|:--- |:--- |:--- |:--- | 
+| 参数 | 必选 | 类型 | 说明 |
+|:--- |:--- |:--- |:--- |
 |operand1 |是 |int |要添加的第一个数。 |
 |operand2 |是 |int |要添加的第二个数。 |
 
@@ -82,20 +82,20 @@ Resource Manager 提供以下用于处理整数的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | addResult | Int | 8 |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
 <a id="copyindex" />
@@ -103,11 +103,11 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="copyindex"></a>copyIndex
 `copyIndex(loopName, offset)`
 
-返回一个迭代循环的索引。 
+返回一个迭代循环的索引。
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | loopName | 否 | 字符串 | 用于获取迭代的循环的名称。 |
 | offset |否 |int |要添加到从零开始的迭代值的数。 |
@@ -116,25 +116,25 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 此函数始终用于 **copy** 对象。 如果没有提供**偏移量**的值，则返回当前迭代值。 从零开始的迭代值。 定义资源或变量时，你可以使用迭代循环。
 
-**loopName** 可用于指定 copyIndex 是引用资源迭代还是引用属性迭代。 如果没有为 **loopName** 提供值，则将使用当前的资源类型迭代。 当在属性上迭代时，请为 **loopName** 提供值。 
- 
+**loopName** 可用于指定 copyIndex 是引用资源迭代还是引用属性迭代。 如果没有为 **loopName** 提供值，则将使用当前的资源类型迭代。 当在属性上迭代时，请为 **loopName** 提供值。
+
 有关如何使用 **copyIndex** 的完整说明，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 
-有关定义变量时使用“copyIndex”的示例，请参阅[变量](template-syntax.md#variables)。
+有关定义变量时使用“copyIndex”的示例****，请参阅[变量](template-syntax.md#variables)。
 
 ### <a name="example"></a>示例
 
-以下示例显示名称中包含 copy 循环和索引值。 
+以下示例显示名称中包含 copy 循环和索引值。
 
 ```json
-"resources": [ 
-  { 
-    "name": "[concat('examplecopy-', copyIndex())]", 
-    "type": "Microsoft.Web/sites", 
-    "copy": { 
-      "name": "websitescopy", 
-      "count": "[parameters('count')]" 
-    }, 
+"resources": [
+  {
+    "name": "[concat('examplecopy-', copyIndex())]",
+    "type": "Microsoft.Web/sites",
+    "copy": {
+      "name": "websitescopy",
+      "count": "[parameters('count')]"
+    },
     ...
   }
 ]
@@ -153,7 +153,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除数。 |
 | operand2 |是 |int |除数。 不能为 0。 |
@@ -199,32 +199,32 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | divResult | Int | 2 |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
 <a id="float" />
 
-## <a name="float"></a>浮点数
+## <a name="float"></a>FLOAT
 `float(arg1)`
 
 将值转换为浮点数。 仅当将自定义参数传递给应用程序（例如，逻辑应用）时，才使用此函数。
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为浮点数的值。 |
 
@@ -258,7 +258,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 |字符串或整数 |要转换为整数的值。 |
 
@@ -275,7 +275,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "stringToConvert": { 
+        "stringToConvert": {
             "type": "string",
             "defaultValue": "4"
         }
@@ -293,14 +293,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -318,7 +318,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
@@ -356,7 +356,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -364,7 +364,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -382,7 +382,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
@@ -420,7 +420,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -428,7 +428,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -446,7 +446,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除数。 |
 | operand2 |是 |int |非零除数。 |
@@ -491,14 +491,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | modResult | Int | 1 |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -516,7 +516,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |要乘以的第一个数。 |
 | operand2 |是 |int |要乘以的第二个数。 |
@@ -562,14 +562,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | mulResult | Int | 15 |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -587,7 +587,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被减数。 |
 | operand2 |是 |int |减数。 |
@@ -632,14 +632,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | subResult | Int | 4 |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -650,7 +650,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
-* 要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
-* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
+* 要合并多个模板，请参阅[使用 Azure 资源管理器使用链接模板](linked-templates.md)。
+* 要迭代创建资源类型时指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 若要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 

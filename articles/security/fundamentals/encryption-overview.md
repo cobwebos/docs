@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5d8fd578c5539c83e37a232d8425ad8bdf22129b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79243531"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125051"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概述
 
@@ -89,7 +89,7 @@ Azure Blob 存储和 Azure 文件共享中的静态数据都可以在服务器�
 
 #### <a name="transparent-data-encryption"></a>透明数据加密
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 可通过数据库加密密钥 (DEK) 实时加密 [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL 数据库](../../sql-database/sql-database-technical-overview.md)和 [Azure SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)数据文件，该加密密钥存储在数据库启动记录中，可在恢复期间使用。
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 可通过数据库加密密钥 (DEK) 实时加密 [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL 数据库](../../sql-database/sql-database-technical-overview.md)和 [Azure SQL 数据仓库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)数据文件，该加密密钥存储在数据库启动记录中，可在恢复期间使用。
 
 TDE 使用 AES 和三重数据加密标准 (3DES) 加密算法保护数据和日志文件。 数据库文件加密在页面级执行。 加密数据库中的页面在写入磁盘之前被加密，在读入内存后被解密。 默认情况下，新创建的 Azure SQL 数据库启用 TDE。
 
@@ -105,7 +105,7 @@ CLE 具有内置函数，可通过函数使用对称或非对称密钥、证书�
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB 数据库加密
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) 由 Microsoft 提供，是全球分布式多模型数据库。 存储在非易失性存储（固态硬盘）中的 Cosmos DB 中的用户数据默认加密。 无法将其打开或关闭。 静态加密是通过许多安全技术实现的，其中包括安全密钥存储系统、加密网络以及加密 API。 加密密钥由 Microsoft 管理，并根据 Microsoft 的内部指南进行轮换。
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md)是 Microsoft 的全球分布式多模型数据库。 存储在非易失性存储（固态硬盘）中的 Cosmos DB 中的用户数据默认加密。 无法将其打开或关闭。 静态加密是通过许多安全技术实现的，其中包括安全密钥存储系统、加密网络以及加密 API。 加密密钥由 Microsoft 管理，并根据 Microsoft 的内部指南进行轮换。
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Data Lake 中的静态加密
 

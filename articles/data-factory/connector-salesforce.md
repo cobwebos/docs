@@ -1,5 +1,5 @@
 ---
-title: 从/向 Salesforce 复制数据
+title: 将数据从销售队伍复制到 Salesforce
 description: 了解如何通过在数据工厂管道中使用复制活动，将数据从 Salesforce 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 Salesforce。
 services: data-factory
 ms.author: jingwang
@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/01/2019
-ms.openlocfilehash: 89ce253806b4a39b393c74ea96ddc2523d338d84
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/24/2020
+ms.openlocfilehash: 7d380f34f849eac835abbd295cd1e2d8c17daaef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926250"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153841"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
 
@@ -31,32 +31,31 @@ ms.locfileid: "74926250"
 以下活动支持此 Salesforce 连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
-- [Lookup 活动](control-flow-lookup-activity.md)
+- [查找活动](control-flow-lookup-activity.md)
 
-
-可以将数据从 Salesforce 复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Salesforce。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+可以将数据从 Salesforce 复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Salesforce。 有关"复制"活动支持为源或接收器的数据存储的列表，请参阅[支持数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，Salesforce 连接器支持：
 
 - Salesforce 开发人员版、专业版、企业版或不受限制版。
 - 从/向 Salesforce 生产、沙盒和自定义域复制数据。
 
-Salesforce 连接器是在 Salesforce REST/批量 API 的基础上构建的，其中[v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm)用于将数据复制到，将数据复制到[v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) 。
+Salesforce 连接器构建在 Salesforce REST/Bulk API 之上。 默认情况下，连接器使用[v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm)从 Salesforce 复制数据，并使用[v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm)将数据复制到 Salesforce。 您还可以显式设置用于通过[`apiVersion`](#linked-service-properties)链接服务中的属性读取/写入数据的 API 版本。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在 Salesforce 中，必须启用 API 权限。 有关详细信息，请参阅[通过权限集启用 Salesforce 中的 API 访问权限](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
 
 ## <a name="salesforce-request-limits"></a>Salesforce 请求限制
 
-Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下几点：
+Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以下几点：
 
 - 如果并发请求数超过限制，则将进行限制并且会看到随机失败。
 - 如果请求总数超过限制，会阻止 Salesforce 帐户 24 小时。
 
 在这两种情况下，还可能会收到“REQUEST_LIMIT_EXCEEDED”错误消息。 有关详细信息，请参阅 [Salesforce 开发人员限制](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)中的“API 请求限制”部分。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -66,13 +65,14 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下�
 
 Salesforce 链接服务支持以下属性。
 
-| properties | 描述 | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type |类型属性必须设置为 **Salesforce**。 |是 |
-| environmentUrl | 指定 Salesforce 实例的 URL。 <br> - 默认为 `"https://login.salesforce.com"`。 <br> - 要从沙盒复制数据，请指定 `"https://test.salesforce.com"`。 <br> - 要从自定义域复制数据，请指定 `"https://[domain].my.salesforce.com"`（以此为例）。 |No |
+| environmentUrl | 指定 Salesforce 实例的 URL。 <br> - 默认为 `"https://login.salesforce.com"`。 <br> - 要从沙盒复制数据，请指定 `"https://test.salesforce.com"`。 <br> - 要从自定义域复制数据，请指定 `"https://[domain].my.salesforce.com"`（以此为例）。 |否 |
 | username |为用户帐户指定用户名。 |是 |
 | password |指定用户帐户的密码。<br/><br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| securityToken |为用户帐户指定安全令牌。 有关如何重置和获取安全令牌的说明，请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)。 若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。<br/><br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
+| securityToken |为用户帐户指定安全令牌。 <br/><br/>若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。 仅当将集成运行时的 IP 添加到 Salesforce 上的[受信任 IP 地址列表](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm)时，才能跳过安全令牌。 使用 Azure IR 时，请参阅[Azure 集成运行时 IP 地址](azure-integration-runtime-ip-addresses.md)。<br/><br/>有关如何获取和重置安全令牌的说明，请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |否 |
+| apiVersion | 指定要使用的 Salesforce REST/Bulk API 版本，例如`48.0`。 默认情况下，连接器使用[v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm)从 Salesforce 复制数据，并使用[v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm)将数据复制到 Salesforce。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 对于源为“否”，对于接收器为“是”（如果源链接服务没有集成运行时） |
 
 >[!IMPORTANT]
@@ -144,7 +144,7 @@ Salesforce 链接服务支持以下属性。
 
 要从/向 Salesforce 复制数据，请将数据集的 type 属性设置为 **SalesforceObject**。 支持以下属性。
 
-| properties | 描述 | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SalesforceObject**。  | 是 |
 | objectApiName | 要从中检索数据的 Salesforce 对象名称。 | 对于源为“No”，对于接收器为“Yes” |
@@ -154,7 +154,7 @@ Salesforce 链接服务支持以下属性。
 
 ![数据工厂 Salesforce 连接 API 名称](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
 
-**示例：**
+**例子：**
 
 ```json
 {
@@ -176,7 +176,7 @@ Salesforce 链接服务支持以下属性。
 >[!NOTE]
 >为了向后兼容，从 Salesforce 中复制数据时，使用以前“RelationalTable”类型的数据集都将有效，而建议以切换到新的“SalesforceObject”类型。
 
-| properties | 描述 | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 **RelationalTable**。 | 是 |
 | tableName | 在 Salesforce 中表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -187,20 +187,20 @@ Salesforce 链接服务支持以下属性。
 
 ### <a name="salesforce-as-a-source-type"></a>将 Salesforce 用作源类型
 
-要从 Salesforce 复制数据，请将复制活动中的源类型设置为“SalesforceSource”。 复制活动的 **source** 节支持以下属性。
+要从 Salesforce 复制数据，请将复制活动中的源类型设置为“SalesforceSource”****。 复制活动的 **source** 节支持以下属性。
 
-| properties | 描述 | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **SalesforceSource**。 | 是 |
-| 查询 |使用自定义查询读取数据。 可以使用 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询或 SQL-92 查询。 请在[查询提示](#query-tips)部分中查看更多提示。 如果未指定查询，将检索在数据集的“objectApiName”中指定的 Salesforce 对象的所有数据。 | 否（如果指定了数据集中的“objectApiName”） |
-| readBehavior | 指示是查询现有记录，还是查询包括已删除记录在内的所有记录。 如果未指定，默认行为是前者。 <br>允许的值：**query**（默认值）、**queryAll**。  | No |
+| query |使用自定义查询读取数据。 可以使用 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询或 SQL-92 查询。 请在[查询提示](#query-tips)部分中查看更多提示。 如果未指定查询，将检索在数据集的“objectApiName”中指定的 Salesforce 对象的所有数据。 | 否（如果指定了数据集中的“objectApiName”） |
+| readBehavior | 指示是查询现有记录，还是查询包括已删除记录在内的所有记录。 如果未指定，默认行为是前者。 <br>允许的值：**query**（默认值）、**queryAll**。  | 否 |
 
 > [!IMPORTANT]
 > 任何自定义对象均需要 **API 名称**的“__c”部分。
 
 ![数据工厂 Salesforce 连接 API 名称列表](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
 
-**示例：**
+**例子：**
 
 ```json
 "activities":[
@@ -237,15 +237,15 @@ Salesforce 链接服务支持以下属性。
 
 ### <a name="salesforce-as-a-sink-type"></a>将 Salesforce 用作接收器类型
 
-要向 Salesforce 复制数据，请将复制活动中的接收器类型设置为“SalesforceSink”。 复制活动 **sink** 节支持以下属性。
+要向 Salesforce 复制数据，请将复制活动中的接收器类型设置为“SalesforceSink”****。 复制活动**接收器**部分支持以下属性。
 
-| properties | 描述 | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **SalesforceSink**。 | 是 |
 | writeBehavior | 操作写入行为。<br/>允许的值为 **Insert** 和 **Upsert**。 | 否（默认值为 Insert） |
 | externalIdFieldName | 更新插入操作的外部的 ID 字段名称。 指定的字段必须在 Salesforce 对象中定义为“外部 Id 字段”。 它相应的输入数据中不能有 NULL 值。 | 对于“Upsert”是必需的 |
 | writeBatchSize | 每批中写入到 Salesforce 的数据行计数。 | 否（默认值为5,000） |
-| ignoreNullValues | 指示是否忽略 NULL 值从输入数据期间写入操作。<br/>允许的值为 **true** 和 **false**。<br>- **True**：保留目标中的数据对象时进行更新插入或更新操作保持不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入或更新操作时为 NULL 更新目标对象中的数据。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
+| ignoreNullValues | 指示是否忽略 NULL 值从输入数据期间写入操作。<br/>允许的值**是真****假**的。<br>- **True**：保留目标中的数据对象时进行更新插入或更新操作保持不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入或更新操作时为 NULL 更新目标对象中的数据。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
 
 **示例：复制活动中的 Salesforce 接收器**
 
@@ -286,7 +286,7 @@ Salesforce 链接服务支持以下属性。
 
 ### <a name="retrieve-data-from-a-salesforce-report"></a>从 Salesforce 报表检索数据
 
-可通过将查询指定为 `{call "<report name>"}` 从 Salesforce 报表检索数据。 例如 `"query": "{call \"TestReport\"}"`。
+可通过将查询指定为 `{call "<report name>"}` 从 Salesforce 报表检索数据。 示例为 `"query": "{call \"TestReport\"}"`。
 
 ### <a name="retrieve-deleted-records-from-the-salesforce-recycle-bin"></a>从 Salesforce 回收站中检索删除的记录
 
@@ -309,12 +309,12 @@ Salesforce 链接服务支持以下属性。
 
 当指定 SOQL 或 SQL 查询时，请注意 DateTime 的格式差异。 例如：
 
-* **SOQL 示例**：`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
+* **SOQL 样本**：`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL 示例**：`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
-### <a name="error-of-malformed_querytruncated"></a>MALFORMED_QUERY 错误：已截断
+### <a name="error-of-malformed_querytruncated"></a>MALFORMED_QUERY:Truncated 错误
 
-如果遇到错误 "MALFORMED_QUERY：已截断"，通常是由于你在数据中具有 JunctionIdList 的类型列，并且 Salesforce 在支持具有大量行的此类数据方面存在限制。 若要缓解这种情况，请尝试排除 JunctionIdList 列或限制要复制的行数（您可以将分区为多个复制活动运行）。
+如果遇到"MALFORMED_QUERY：截断"的错误，通常是由于数据中具有 JunctionIdList 类型列，Salesforce 在支持大量行中支持此类数据有限制。 若要缓解这种情况，请尝试排除 JunctionIdList 列或限制要复制的行数（可以将其划分为多个复制活动运行）。
 
 ## <a name="data-type-mapping-for-salesforce"></a>Salesforce 的数据类型映射
 
@@ -322,29 +322,29 @@ Salesforce 链接服务支持以下属性。
 
 | Salesforce 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| 自动编号 |字符串 |
-| 复选框 |布尔 |
+| 自动编号 |String |
+| 复选框 |Boolean |
 | 货币 |Decimal |
-| 日期 |日期/时间 |
-| 日期/时间 |日期/时间 |
-| 电子邮件 |字符串 |
-| ID |字符串 |
-| 查找关系 |字符串 |
-| 多选择列表 |字符串 |
+| Date |DateTime |
+| 日期/时间 |DateTime |
+| 电子邮件 |String |
+| ID |String |
+| 查找关系 |String |
+| 多选择列表 |String |
 | Number |Decimal |
 | 百分比 |Decimal |
-| 手机 |字符串 |
-| 选择列表 |字符串 |
-| 文本 |字符串 |
-| 文本区域 |字符串 |
-| 文本区域（长型值） |字符串 |
-| 文本区域（丰富） |字符串 |
-| 文本（加密） |字符串 |
-| URL |字符串 |
+| 电话 |String |
+| 选择列表 |String |
+| Text |String |
+| 文本区域 |String |
+| 文本区域（长型值） |String |
+| 文本区域（丰富） |String |
+| 文本（加密） |String |
+| 代码 |String |
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
-若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

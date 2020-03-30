@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.openlocfilehash: 77e542e9bff399e58b433286385864478bcb5076
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75719539"
 ---
 # <a name="benchmarking-a-disk"></a>磁盘基准测试
@@ -26,6 +26,6 @@ ms.locfileid: "75719539"
 
 ## <a name="next-steps"></a>后续步骤
 
-请继续阅读我们的文章，以[获得高性能](premium-storage-performance.md)。
+继续我们关于[高性能设计](premium-storage-performance.md)的文章。
 
-在这篇文章中，你将创建一个与现有应用程序类似的检查表。 使用各种能够用来模拟工作负荷并衡量原型应用程序性能的基准测试工具。 这样做可以确定哪些磁盘产品可以满足或超过你的应用程序性能要求。 然后，就可以将相同的准则实施到生产型应用程序中。
+在这篇文章中，您为原型创建类似于现有应用程序的清单。 使用各种能够用来模拟工作负荷并衡量原型应用程序性能的基准测试工具。 这样做可以确定哪些磁盘产品可以满足或超过你的应用程序性能要求。 然后，就可以将相同的准则实施到生产型应用程序中。

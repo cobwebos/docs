@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-ms.date: 01/15/2019
-ms.openlocfilehash: 6dfc0a59ab4150173196fae82d90eca4880d5364
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/17/2020
+ms.openlocfilehash: 50b832baa9253f47b5f10980ae1764c9425ed4d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818880"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476943"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置现有虚拟网络
 
@@ -38,7 +38,7 @@ Azure SQL 数据库托管实例必须部署在专用于托管实例的 Azure [�
 如果希望在现有子网内创建托管实例，建议使用以下 PowerShell 脚本来准备子网：
 
 ```powershell
-$scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/prepare-subnet'
+$scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/delegate-subnet'
 
 $parameters = @{
     subscriptionId = '<subscriptionId>'
@@ -47,17 +47,17 @@ $parameters = @{
     subnetName = '<subnetName>'
     }
 
-Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepareSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
+Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/delegateSubnet.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters
 ```
 
 该脚本通过三个步骤来准备子网：
 
-1. Validate：验证所选的虚拟网络和子网是否满足托管实例网络要求。
-2. 确认：向用户显示准备子网进行托管实例部署所需的一组更改。 同时请求用户同意。
-3. 准备：正确配置虚拟网络和子网。
+1. 验证：它验证所选虚拟网络和子网的托管实例网络要求。
+2. 确认：它向用户显示为托管实例部署准备子网需要进行的一组更改。 同时请求用户同意。
+3. 准备：它正确配置虚拟网络和子网。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关概述，请参阅[什么是托管实例？](sql-database-managed-instance.md)。
+- 有关概述，请参阅[什么是托管实例？](sql-database-managed-instance.md)
 - 有关如何创建虚拟网络、创建托管实例，以及从数据库备份还原数据库的教程，请参阅[创建 Azure SQL 数据库托管实例](sql-database-managed-instance-get-started.md)。
 - 有关 DNS 问题，请参阅[配置自定义 DNS](sql-database-managed-instance-custom-dns.md)。

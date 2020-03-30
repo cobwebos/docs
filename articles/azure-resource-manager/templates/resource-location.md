@@ -3,29 +3,29 @@ title: 模板资源位置
 description: 介绍如何在 Azure 资源管理器模板中设置资源位置。
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 24d278df8f71fecfaec4f0fa3a84172bf1db942b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: a8324dac1232eecd5624e5f1dc0e6656295c0a10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122400"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156423"
 ---
-# <a name="set-resource-location-in-resource-manager-template"></a>在资源管理器模板中设置资源位置
+# <a name="set-resource-location-in-arm-template"></a>在 ARM 模板中设置资源位置
 
-部署模板时，必须提供每个资源的位置。 此位置不需要与资源组位置相同。
+部署 Azure 资源管理器 （ARM） 模板时，必须为每个资源提供位置。 该位置不必与资源组位置相同。
 
 ## <a name="get-available-locations"></a>获取可用位置
 
 不同的位置中支持不同的资源类型。 若要获取资源类型支持的位置，请使用 Azure PowerShell 或 Azure CLI。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes `
   | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az provider show \
@@ -96,4 +96,4 @@ az provider show \
 ## <a name="next-steps"></a>后续步骤
 
 * 有关模板函数的完整列表，请参阅 [Azure 资源管理器模板函数](template-functions.md)。
-* 有关模板文件的详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
+* 有关模板文件的详细信息，请参阅了解[ARM 模板的结构和语法](template-syntax.md)。

@@ -1,6 +1,6 @@
 ---
-title: Jupyter 404 错误-"阻止跨源 API"-Azure HDInsight
-description: 由于 Azure HDInsight 中的 "阻止跨源 API"，Jupyter server 404 "找不到" 错误
+title: Jupyter 404 错误 - "阻止交叉原点 API" - Azure HDInsight
+description: Azure HDInsight 中的“阻止跨源 API”导致 Jupyter 服务器 404“找不到”错误
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: e241657186582955d21981f7dfe18856724aa692
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894416"
 ---
-# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>方案： Azure HDInsight 中的 "阻止跨源 API" 导致 Jupyter server 404 "找不到" 错误
+# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>方案：由于 Azure HDInsight 中的"阻止跨源 API"，Jupyter 服务器 404"未找到"错误
 
-本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时的故障排除步骤和可能的解决方法。
+本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时出现的问题的故障排除步骤和可能的解决方案。
 
 ## <a name="issue"></a>问题
 
-当你访问 HDInsight 上的 Jupyter 服务时，你会看到一个错误框，指出 "找不到"。 如果检查 Jupyter 日志，会看到如下所示的内容：
+访问 HDInsight 上的 Jupyter 服务时看到一个指出“找不到”的错误框。 如果检查 Jupyter 日志，会看到如下所示的内容：
 
 ```log
 [W 2018-08-21 17:43:33.352 NotebookApp] 404 PUT /api/contents/PySpark/notebook.ipynb (10.16.0.144) 4504.03ms referer=https://pnhr01hdi-corpdir.msappproxy.net/jupyter/notebooks/PySpark/notebook.ipynb
@@ -28,17 +28,17 @@ Blocking Cross Origin API request.
 Origin: https://xxx.xxx.xxx, Host: pnhr01.j101qxjrl4zebmhb0vmhg044xe.ax.internal.cloudapp.net:8001
 ```
 
-你还可以在 Jupyter 日志中的 "源" 字段中看到一个 IP 地址。
+此外，在 Jupyter 日志中的“源”字段中还可以看到一个 IP 地址。
 
 ## <a name="cause"></a>原因
 
-此错误可能由以下几项导致：
+此错误可能由以下几种原因导致：
 
-- 如果已将网络安全组（NSG）规则配置为限制对群集的访问。 使用 NSG 规则限制访问仍可让你使用 IP 地址而不是群集名称直接访问 Apache Ambari 和其他服务。 但是，在访问 Jupyter 时，可能会看到 404 "找不到" 错误。
+- 如果已应用网络安全组 (NSG) 规则来限制对群集的访问： 使用 NSG 规则限制访问时，你仍可以使用 IP 地址（而不是群集名称）直接访问 Apache Ambari 和其他服务。 但是，在访问 Jupyter 时，可能会看到 404“找不到”错误。
 
-- 如果你已为 HDInsight 网关提供自定义的 DNS 名称，而不是标准 `xxx.azurehdinsight.net`。
+- 如果为 HDInsight 网关指定了自定义的 DNS 名称而不是标准的 `xxx.azurehdinsight.net`：
 
-## <a name="resolution"></a>分辨率
+## <a name="resolution"></a>解决方法
 
 1. 在以下两个位置修改 jupyter.py 文件：
 
@@ -47,20 +47,20 @@ Origin: https://xxx.xxx.xxx, Host: pnhr01.j101qxjrl4zebmhb0vmhg044xe.ax.internal
     /var/lib/ambari-agent/cache/common-services/JUPYTER/1.0.0/package/scripts/jupyter.py
     ```
 
-1. 找到如下所示的行： `NotebookApp.allow_origin='\"https://{2}.{3}\"'` 并将其更改为： `NotebookApp.allow_origin='\"*\"'`。
+1. 找到行，说：`NotebookApp.allow_origin='\"https://{2}.{3}\"'`并改变它： 。 `NotebookApp.allow_origin='\"*\"'`
 
-1. 从 Ambari 重新启动 Jupyter 服务。
+1. 从 Ambari 重启 Jupyter 服务。
 
-1. 在命令提示符下键入 `ps aux | grep jupyter` 应显示它允许任何 URL 连接到它。
+1. 在命令提示符下键入 `ps aux | grep jupyter` 后，应会显示允许任何 URL 与该服务建立连接。
 
-这比我们已有的设置更安全。 但假定对群集的访问受到限制，并且允许从外部访问群集，因为我们 NSG 了。
+这种安全性比现有的设置更低。 但是，它会假设对群集的访问受到限制，并且允许外部的流量连接到群集，因为应用了 NSG。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-* 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
+* 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 与[@AzureSupport](https://twitter.com/azuresupport) -通过将 Azure 社区连接到适当的资源来改进客户体验的官方 Microsoft Azure 帐户：答案、支持和专家。
+* 与[@AzureSupport](https://twitter.com/azuresupport)- 正式的 Microsoft Azure 帐户连接 Azure 社区，以将 Azure 社区连接到正确的资源：答案、支持和专家，从而改善客户体验。
 
-* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

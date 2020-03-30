@@ -9,26 +9,26 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: feaf72de1d2c578d2b2d0df9e86ec0fbe0b49445
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371706"
 ---
 必须满足以下要求才能成功建立设备隧道：
 
-* 设备必须是已加入域且运行 Windows 10 企业版或教育版1809或更高版本的计算机。
-* 隧道仅适用于 Windows 内置 VPN 解决方案，并且是使用 IKEv2 和计算机证书身份验证建立的。
-* 每台设备只能配置一个设备隧道。
+* 该设备必须是已加入域且运行 Windows 10 企业版或教育版 1809 或更高版本的计算机。
+* 只可针对 Windows 内置 VPN 解决方案配置该隧道；结合计算机证书身份验证使用 IKEv2 建立该隧道。
+* 对于每台设备，只能配置一个设备隧道。
 
-1. 使用[点到站点 VPN 客户](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)端一文在 Windows 10 客户端上安装客户端证书。 该证书必须位于本地计算机存储区中。
-1. 使用[这些说明](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)创建 VPN 配置文件，并在本地系统帐户的上下文中配置设备隧道。
+1. 使用[点对点 VPN 客户端](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)文章在 Windows 10 客户端上安装客户端证书。 证书需位于本地计算机存储中。
+1. 使用这些[说明](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)在 LOCAL SYSTEM 帐户的上下文中创建 VPN 配置文件并配置设备隧道。
 
 ### <a name="configuration-example-for-device-tunnel"></a>设备隧道的配置示例
 
-配置虚拟网络网关并将客户端证书安装到 Windows 10 客户端上的本地计算机存储中后，请使用以下示例来配置客户端设备隧道：
+配置虚拟网络网关并在 Windows 10 客户端上的本地计算机存储中安装客户端证书后，请使用以下示例配置客户端设备隧道：
 
-1. 复制以下文本并将其保存为***devicecert***。
+1. 复制以下文本，并将文件保存为 ***devicecert.ps1***。
 
    ```
    Param(
@@ -80,7 +80,7 @@ ms.locfileid: "79371706"
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. 复制以下文本，并将其作为***VPNProfile***保存在与**devicecert**相同的文件夹中。 编辑以下文本以匹配您的环境。
+1. 复制以下文本，并在 **devicecert.ps1** 所在的同一文件夹中将文件保存为 ***VPNProfile.xml***。 编辑以下文本，使之与你的环境相匹配。
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -115,8 +115,8 @@ ms.locfileid: "79371706"
    <RegisterDNS>true</RegisterDNS>
    </VPNProfile>
    ```
-1. 从[Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec)下载**PsExec** ，并将文件解压缩到**C:\PSTools**。
-1. 在管理员命令提示符下，通过运行以下命令启动 PowerShell：
+1. 从 [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) 下载 **PsExec**，并将文件解压缩到 **C:\PSTools**。
+1. 在管理员命令提示符下，运行以下命令启动 PowerShell：
 
    ```
    PsExec.exe Powershell for 32-bit Windows
@@ -124,17 +124,17 @@ ms.locfileid: "79371706"
    ```
 
    ![powershell](./media/vpn-gateway-vwan-always-on-device/powershell.png)
-1. 在 PowerShell 中，切换到**devicecert**和**VPNProfile**所在的文件夹，并运行以下命令：
+1. 在 PowerShell 中，切换到 **devicecert.ps1** 和 **VPNProfile.xml** 所在的文件夹，然后运行以下命令：
 
    ```powershell
    .\devicecert.ps1 .\VPNProfile.xml MachineCertTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
-1. 运行**rasphone**。
+1. 运行 **rasphone**。
 
    ![rasphone](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
-1. 查找**MachineCertTest**条目，并单击 "**连接**"。
+1. 找到 **MachineCertTest** 条目并单击“连接”。****
 
    ![连接](./media/vpn-gateway-vwan-always-on-device/connect.png)
-1. 如果连接成功，请重新启动计算机。 隧道会自动连接。
+1. 如果连接成功，请重新启动计算机。 隧道将自动连接。
