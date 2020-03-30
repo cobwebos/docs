@@ -4,18 +4,18 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 ST_DISTANCE。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/12/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 972712d37c146ce288c49af7832919946f5503cd
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: 02844569137a46ea030b2189191b84a9db24ed22
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79297112"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537289"
 ---
-# <a name="st_distance-azure-cosmos-db"></a>ST_DISTANCE （Azure Cosmos DB）
- 返回两个 GeoJSON 点、多边形、MultiPolygon 或 LineString 表达式之间的距离。 若要了解详细信息，请参阅[地理空间和 GeoJSON 位置数据](sql-query-geospatial-intro.md)一文。
+# <a name="st_distance-azure-cosmos-db"></a>ST_DISTANCE (Azure Cosmos DB)
+ 返回两个 GeoJSON 点、多边形、多面或线弦表达式之间的距离。 要了解更多信息，请参阅[地理空间和地理JSON位置数据](sql-query-geospatial-intro.md)一文。
   
 ## <a name="syntax"></a>语法
   
@@ -23,7 +23,7 @@ ms.locfileid: "79297112"
 ST_DISTANCE (<spatial_expr>, <spatial_expr>)  
 ```  
   
-## <a name="arguments"></a>参数
+## <a name="arguments"></a>自变量
   
 *spatial_expr*  
    为任何有效的 GeoJSON 点、多边形或 LineString 对象表达式。  
@@ -34,7 +34,7 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例演示如何使用 `ST_DISTANCE` 内置函数返回指定位置的30公里内的所有家族文档。 。  
+  以下示例演示了如何使用 `ST_DISTANCE` 内置函数返回与指定位置的距离在 30 公里内的所有家族文档。 .  
   
 ```sql
 SELECT f.id
@@ -52,10 +52,10 @@ WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 3
 
 ## <a name="remarks"></a>备注
 
-此系统函数将从[地理空间索引](index-policy.md#spatial-indexes)中受益。
+该系统功能将受益于[地理空间索引](index-policy.md#spatial-indexes)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [空间函数 Azure Cosmos DB](sql-query-spatial-functions.md)
-- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 简介](introduction.md)
+- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 简介](introduction.md)

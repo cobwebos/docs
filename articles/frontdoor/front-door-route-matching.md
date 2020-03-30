@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door 服务 - 传递规则匹配监视 | Microsoft Docs
-description: 本文可帮助你了解 Azure Front Door 服务如何匹配用于传入请求的传递规则
+title: Azure 前门 - 路由规则匹配监视 |微软文档
+description: 本文可帮助您了解 Azure 前门如何匹配用于传入请求的路由规则
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: eec99bde0ea73a99a9dc1345f938b821a95a7c05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736271"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471585"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door 如何匹配请求与传递规则
 
@@ -28,9 +28,9 @@ Front Door 传递规则配置由两个主要部分组成：“左侧”和“右
 ### <a name="incoming-match-left-hand-side"></a>传入的匹配项（左侧）
 以下属性确定传入的请求是否与传递规则（或左侧）匹配：
 
-*  HTTP 协议 (HTTP/HTTPS)
-* **主机**(例如，www\.foo.com， \*。 bar.com)
-*  路径（例如，/\*、/users/\*/file.gif）
+* **** HTTP 协议 (HTTP/HTTPS)
+* **主机**（例如，www\.foo.com，.bar.com） \*
+* **** 路径（例如，/\*、/users/\*/file.gif）
 
 这些属性会在内部扩展，因此协议/主机/路径的每种组合都是潜在的匹配集。
 
@@ -38,7 +38,7 @@ Front Door 传递规则配置由两个主要部分组成：“左侧”和“右
 决定如何处理请求取决于是否为特定路由启用了缓存。 因此，如果没有针对请求的缓存应答，我们会将请求转发到配置的后端池中的相应后端。
 
 ## <a name="route-matching"></a>路由匹配
-本节将重点介绍我们如何匹配给定的 Front Door 传递规则。 基本概念是始终优先匹配最具体的匹配项，仅查看“左侧”  。  首先基于 HTTP 协议匹配，接下来是前端主机，然后是路径。
+本节将重点介绍我们如何匹配给定的 Front Door 传递规则。 基本概念是始终优先匹配最具体的匹配项，仅查看“左侧”****。  首先基于 HTTP 协议匹配，接下来是前端主机，然后是路径。
 
 ### <a name="frontend-host-matching"></a>前端主机匹配
 在匹配前端主机时，使用如下逻辑：
@@ -52,26 +52,26 @@ Front Door 传递规则配置由两个主要部分组成：“左侧”和“右
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
 | B | foo.contoso.com | /users/\* |
-| C | www\.fabrikam.com, foo.adventure-works.com  | /\*, /images/\* |
+| C | foo.adventure-works.com，fabrikam.com\.  | /\*, /images/\* |
 
 如果以下传入的请求已发送到 Front Door，则它们将与上面的传递规则匹配：
 
 | 传入前端主机 | 匹配的传递规则 |
 |---------------------|---------------|
 | foo.contoso.com | A, B |
-| www\.fabrikam.com | C |
-| images.fabrikam.com | 错误 400:错误的请求 |
+| wwwfabrikam.com\. | C |
+| images.fabrikam.com | 错误 400：错误请求 |
 | foo.adventure-works.com | C |
-| contoso.com | 错误 400:错误的请求 |
-| www\.adventure-works.com | 错误 400:错误的请求 |
-| www\.northwindtraders.com | 错误 400:错误的请求 |
+| contoso.com | 错误 400：错误请求 |
+| wwwadventure-works.com\. | 错误 400：错误请求 |
+| wwwnorthwindtraders.com\. | 错误 400：错误请求 |
 
 ### <a name="path-matching"></a>路径匹配
 确定特定前端主机并将可能的传递规则过筛选到仅具有该前端主机的路由后，Front Door 会根据请求路径筛选传递规则。 使用与前端主机类似的逻辑：
 
 1. 在路径上查找具有完全匹配项的任何传递规则
 2. 如果没有完全匹配的路径，请查找具有匹配的通配符路径的传递规则
-3. 如果没有路由规则找到具有匹配的路径，然后拒绝该请求并返回 400:错误的请求错误 HTTP 响应。
+3. 如果找不到具有匹配路径的传递规则，则拒绝该请求并返回“400：错误请求”错误 HTTP 应答。
 
 >[!NOTE]
 > 任何没有通配符的路径都视作完全匹配的路径。 即使路径以斜线结尾，仍被视作完全匹配。
@@ -93,19 +93,19 @@ Front Door 传递规则配置由两个主要部分组成：“左侧”和“右
 
 | 传入的请求    | 匹配的路由 |
 |---------------------|---------------|
-| www\.contoso.com/            | A             |
-| www\.contoso.com/a           | B             |
-| www\.contoso.com/ab          | C             |
+| wwwcontoso.com/\.            | A             |
+| wwwcontoso.com/a\.           | B             |
+| wwwcontoso.com/ab\.          | C             |
 | www\.contoso.com/abc         | D             |
-| www\.contoso.com/abzzz       | B             |
-| www\.contoso.com/abc/        | E             |
-| www\.contoso.com/abc/d       | F             |
+| wwwcontoso.com/abzzz\.       | B             |
+| wwwcontoso.com/abc/\.        | E             |
+| wwwcontoso.com/abc/d\.       | F             |
 | www\.contoso.com/abc/def     | G             |
-| www\.contoso.com/abc/defzzz  | F             |
-| www\.contoso.com/abc/def/ghi | F             |
-| www\.contoso.com/path        | B             |
+| wwwcontoso.com/abc/defzzz\.  | F             |
+| wwwcontoso.com/abc/def/ghi\. | F             |
+| wwwcontoso.com/path\.        | B             |
 | www\.contoso.com/path/       | H             |
-| www\.contoso.com/path/zzz    | B             |
+| wwwcontoso.com/path/zzz\.    | B             |
 
 >[!WARNING]
 > </br> 如果完全匹配的前端主机没有包含全部路由路径 (`/*`) 的传递规则，则不会与任何传递规则匹配。
@@ -120,7 +120,7 @@ Front Door 传递规则配置由两个主要部分组成：“左侧”和“右
 >
 > | 传入的请求       | 匹配的路由 |
 > |------------------------|---------------|
-> | profile.domain.com/other | 无。 错误 400:错误的请求 |
+> | profile.domain.com/other | 无。 错误 400：错误请求 |
 
 ### <a name="routing-decision"></a>路由决策
 匹配了单个 Front Door 路由规则之后，就需要选择如何处理请求。 对于匹配的传递规则，如果 Front Door 具有可用的缓存应答，则将相同的服务返回给客户端。 否则，下一步就需要评估是否为匹配的传递规则配置了 [URL 重写（自定义转发路径）](front-door-url-rewrite.md)。 如果未定义自定义转发路径，则请求将按原样转发到配置的后端池中的相应后端。 另外，系统会按照定义的[自定义转发路径](front-door-url-rewrite.md)更新请求路径，然后将其转发到后端。

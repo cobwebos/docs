@@ -1,19 +1,18 @@
 ---
-title: 从 Azure Marketplace 部署 VM
-description: 说明如何从 Azure Marketplace 预配置虚拟机部署虚拟机。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: 从 Azure 应用商店部署 VM
+description: 说明如何从 Azure 应用商店预配置的虚拟机部署虚拟机。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: 2888d7643fd4f624634dc2ec520bec6e753382f1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 7d5269cf8865faeb65356bc8fd3eea087cb7653c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816825"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277967"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>从 Azure 市场部署虚拟机
 
@@ -25,7 +24,7 @@ ms.locfileid: "73816825"
 
 Azure VM 部署快速入门模板现以联机文件 [azuredeploy.json](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json) 形式提供。  它包含以下参数：
 
-|  **Parameter**        |   **说明**                                 |
+|  **参数**        |   **说明**                                 |
 |  -------------        |   ---------------                                 |
 | newStorageAccountName | 存储帐户的名称                       |
 | dnsNameForPublicIP    | 公共 IP 的 DNS 名称。 必须为小写。    |

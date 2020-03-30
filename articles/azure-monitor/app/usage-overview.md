@@ -2,13 +2,13 @@
 title: 使用 Azure Application Insights 进行使用情况分析 | Microsoft docs
 description: 了解用户，以及他们将应用用于哪些目的。
 ms.topic: conceptual
-ms.date: 09/19/2019
-ms.openlocfilehash: 9f34267a1820f8b2365a41569bd3c8eaed9f2f9c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/25/2019
+ms.openlocfilehash: e964b1b5b9d5500f2d9f24ed765299389e6dbbb9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79275641"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283950"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -20,9 +20,9 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 1. **服务器代码：** 为 [ASP.NET](../../azure-monitor/app/asp-net.md)、[Azure](../../azure-monitor/app/app-insights-overview.md)、[Java](../../azure-monitor/app/java-get-started.md)、[Node.js](../../azure-monitor/app/nodejs.md) 或[其他](../../azure-monitor/app/platforms.md)应用安装适当的模块。
 
-    * *不想安装服务器代码？只需[创建一个 Azure 应用程序 Insights 资源](../../azure-monitor/app/create-new-resource.md )。*
+    * *不想安装服务器代码？只需[创建 Azure 应用程序见解资源](../../azure-monitor/app/create-new-resource.md )。*
 
-2. 网页**代码：** 将以下脚本添加到您的网页，然后关闭 ``</head>``。 将检测密钥替换为 Application Insights 资源的相应值：
+2. **网页代码：** 在结束``</head>``之前将以下脚本添加到您的网页。 将检测密钥替换为 Application Insights 资源的相应值：
     
     ```html
     <script type="text/javascript">
@@ -34,7 +34,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
     </script>
     ```
 
-    若要了解有关监视网站的更多高级配置，请查看[JAVASCRIPT SDK 参考文章](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
+    若要了解更多用于监视网站的高级配置，请查看 [JavaScript SDK 参考文章](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
 
 3. **移动应用代码：** 通过[按照此指南操作](../../azure-monitor/learn/mobile-center-quickstart.md)，使用 App Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights 进行分析。
 
@@ -56,8 +56,8 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 右侧的见解指出了数据集中的相关模式。  
 
-* “用户”报告统计所选时间段内访问页面的唯一用户数目。 对于 Web 应用，将使用 Cookie 统计用户。 如果某个用户使用不同的浏览器或客户端计算机访问站点或者清除了其 Cookie，该用户会被统计多次。
-* “会话”报告统计访问站点的用户会话数。 会话是指某个用户的活动时段，如果有半个小时以上处于非活动状态，会话会被终止。
+* “用户”报告统计所选时间段内访问页面的唯一用户数目。**** 对于 Web 应用，将使用 Cookie 统计用户。 如果某个用户使用不同的浏览器或客户端计算机访问站点或者清除了其 Cookie，该用户会被统计多次。
+* “会话”报告统计访问站点的用户会话数。**** 会话是指某个用户的活动时段，如果有半个小时以上处于非活动状态，会话会被终止。
 
 [有关用户、会话和事件工具的详细信息](usage-segmentation.md)  
 
@@ -123,16 +123,20 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 为此，请[设置遥测初始值设定项](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)：
 
-**ASP.NET 应用**
+**ASP.NET应用**
 
 ```csharp
     // Telemetry initializer class
     public class MyTelemetryInitializer : ITelemetryInitializer
     {
-        public void Initialize (ITelemetry telemetry)
-        {
-            telemetry.Properties["AppVersion"] = "v2.1";
-        }
+        public void Initialize(ITelemetry item)
+            {
+                var itemProperties = item as ISupportProperties;
+                if (itemProperties != null && !itemProperties.Properties.ContainsKey("AppVersion"))
+                {
+                    itemProperties.Properties["AppVersion"] = "v2.1";
+                }
+            }
     }
 ```
 
@@ -153,7 +157,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 > [!NOTE]
 > 使用 `ApplicationInsights.config` 或使用 `TelemetryConfiguration.Active` 添加初始值设定项对于 ASP.NET Core 应用程序无效。 
 
-对于[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)应用程序，通过将新 `TelemetryInitializer` 添加到依赖关系注入容器来添加新，如下所示。 这是在 `Startup.cs` 类 `ConfigureServices` 方法中完成的。
+对于 [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) 应用程序，添加新的 `TelemetryInitializer` 是通过将其添加到依赖项注入容器来完成的，如下所示。 这是在 `Startup.cs` 类的 `ConfigureServices` 方法中完成的。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -171,5 +175,5 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
    - [漏斗图](usage-funnels.md)
    - [保留](usage-retention.md)
    - [用户流](usage-flows.md)
-   - [工作簿](../../azure-monitor/app/usage-workbooks.md)
+   - [练习 册](../../azure-monitor/app/usage-workbooks.md)
    - [添加用户上下文](usage-send-user-context.md)

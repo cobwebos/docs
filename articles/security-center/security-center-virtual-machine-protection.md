@@ -1,5 +1,5 @@
 ---
-title: 保护您的计算机和应用程序
+title: 保护计算机和应用程序
 description: 本文档介绍 Azure 安全中心内提供的，可帮助保护虚拟机和计算机以及 Web 应用和应用服务环境的建议。
 services: security-center
 documentationcenter: na
@@ -14,57 +14,57 @@ ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
 ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282635"
 ---
-# <a name="protect-your-machines-and-applications"></a>保护您的计算机和应用程序
-当 Azure 安全中心识别到潜在的安全漏洞时，它会创建建议，指导你完成配置所需控件以强化和保护资源的过程。
+# <a name="protect-your-machines-and-applications"></a>保护计算机和应用程序
+在 Azure 安全中心识别出潜在的安全漏洞时，它会创建建议，指导你完成配置所需控件以强化和保护资源的过程。
 
-本文介绍安全中心的 "资源安全性" 部分的 "**计算和应用**" 页。
+本文介绍安全中心的资源安全部分的“计算和应用”页。****
 
-有关此页上可能会看到的建议的完整列表，请参阅[计算和应用建议](recommendations-reference.md#recs-computeapp)。
+有关您可能在此页上看到的建议的完整列表，请参阅[计算和应用建议](recommendations-reference.md#recs-computeapp)。
 
 
 ## <a name="view-the-security-of-your-compute-and-apps-resources"></a>查看计算和应用资源的安全性
 
 [![安全中心仪表板](./media/security-center-virtual-machine-recommendations/compute-and-apps-recs-overview.png)](./media/security-center-virtual-machine-recommendations/compute-and-apps-recs-overview.png#lightbox)
 
-若要查看计算和应用资源的状态，请从安全中心的左窗格中选择 "**计算 & 应用**"。 提供以下选项卡：
+要查看计算和应用资源的状态，请在安全中心的左侧窗格中选择 **"计算&应用**"。 以下选项卡可用：
 
-* **概述**：列出所有计算和应用资源的建议以及当前的安全状态 
+* **概览**：列出所有计算和应用资源及其当前安全状态的建议 
 
-* [**Vm 和服务器**](#vms-and-computers)：列出 vm、计算机和每个 vm 的当前安全状态的建议
+* [**VM 和服务器**](#vms-and-computers)：列出对 VM、计算机和每个服务器的当前安全状态的建议
 
 * [**VM 规模集**](#vmscale-sets)：列出规模集的建议， 
 
-* [**云服务**](#cloud-services)：列出安全中心监视的 web 角色和辅助角色的建议
+* [**云服务**](#cloud-services)：列出安全中心监视的 Web 和辅助角色的建议
 
-* [**应用服务**](#app-services)：列出你的应用服务环境的建议，以及每个环境的当前安全状态
+* [**应用服务**](#app-services)：列出应用服务环境及其当前安全状态的建议
 
-* [**容器**](#containers)：列出容器的建议和对其配置的安全评估
+* [**容器**](#containers)：列出容器的建议及其配置的安全评估
 
-* **计算资源**：列出计算资源的建议，例如 Service Fabric 群集和事件中心
+* **计算资源**：列出针对计算资源（例如 Service Fabric 群集和事件中心）的建议
 
-### <a name="whats-in-each-tab"></a>每个选项卡中有什么？
+### <a name="whats-in-each-tab"></a>每个选项卡中的内容
 
-每个选项卡都有多个部分，在每个部分中，您可以向下钻取以查看有关所显示的项的其他详细信息。
+每个选项卡都有多个部分。在每个部分中，可以通过向下钻取查看已显示项的其他详细信息。
 
-在每个选项卡中，你还将看到有关监视环境中相关资源的建议。 第一列列出建议，第二列显示受影响的资源总数，第三列显示问题的严重性。
+在每个选项卡中，还会看到有关受监视环境中的相关资源的建议。 第一列列出建议，第二列显示受影响资源的总数，第三列显示问题的严重性。
 
-每条建议附带一组操作，可在选择该建议后执行这些操作。 例如，如果选择“缺失的系统更新”，则会显示缺少修补程序的 VM 和计算机数目，以及所缺更新的严重性。
+每条建议附带一组操作，可在选择该建议后执行这些操作。 例如，如果选择“缺失的系统更新”，则会显示缺少修补程序的 VM 和计算机数目，以及所缺更新的严重性。****
 
 > [!NOTE]
-> 安全建议与 "**建议**" 页上的建议相同，但此处会将其筛选为你选择的特定资源类型。 有关如何解决建议的详细信息，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
+> 安全建议与“建议”**** 页上的相同，但此处会将其筛选为所选的特定资源类型。 有关如何解决建议的详细信息，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
 >
 
 
 
 
-### <a name="vms-and-computers"></a>Vm 和服务器
-"Vm 和计算机" 部分提供了有关 Vm 和计算机的所有安全建议的概述。 包括四种类型的计算机：
+### <a name="vms-and-servers"></a><a name="vms-and-computers"></a>VM 和服务器
+“VM 和计算机”部分概述了有关 VM 和计算机的所有安全建议。 包括四种类型的计算机：
 
 ![非 Azure 计算机](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) 非 Azure 计算机。
 
@@ -72,60 +72,60 @@ ms.locfileid: "79282635"
 
 ![Azure 经典 VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Azure 经典 VM。
 
-![从工作区中识别的 VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) 只能通过工作区（属于所查看的订阅）标识的 VM。 这包括来自向此订阅中的工作区报告的其他订阅中的 Vm，以及与 Operations Manager 直接代理一起安装的 Vm，没有资源 ID。
+![从工作区中识别的 VM](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) 只能通过工作区（属于所查看的订阅）标识的 VM。 其中包括其他订阅中向此订阅中的工作区报告的 VM，以及使用 Operations Manager 直接代理安装的 VM（没有资源 ID）。
 
-每条建议下面显示的图标有助于快速识别需要关注的 VM 和计算机以及建议的类型。 也可使用筛选器，按“资源类型”和“严重性”搜索列表。
+每条建议下面显示的图标有助于快速识别需要关注的 VM 和计算机以及建议的类型。 也可使用筛选器，按“资源类型”和“严重性”搜索列表。********
 
 若要向下钻取每个 VM 的安全建议，请单击相应的 VM。
-此处显示 VM 或计算机的安全详细信息。 在底部，可以看到建议的操作以及每个问题的严重性。
+此处显示 VM 或计算机的安全详细信息。 在底部可以看到建议的操作以及每个问题的严重性。
 
 [![云服务](./media/security-center-virtual-machine-recommendations/recommendation-list.png)](./media/security-center-virtual-machine-recommendations/recommendation-list.png#lightbox)
 
 
 
 
-### <a name="vmscale-sets"></a>虚拟机规模集
-安全中心会自动发现你是否有规模集，并建议你在这些集上安装 Microsoft Monitoring Agent。
+### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>虚拟机缩放集
+安全中心会自动发现你是否有规模集，并会建议你在其上安装 Microsoft Monitoring Agent。
 
 若要安装 Microsoft Monitoring Agent，请执行以下操作： 
 
-1. 选择建议“在虚拟机规模集上安装监视代理”。 你会获得未收监视的规模集的列表。
+1. 选择建议“在虚拟机规模集上安装监视代理”。**** 你会获得未收监视的规模集的列表。
 
 1. 选择不正常的规模集。 按照说明操作，使用现有的已填充工作区或新建的工作区安装监视代理。 确保设置工作区[定价层](security-center-pricing.md)（如果尚未设置）。
 
    ![安装 MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-若要设置新的规模集以自动安装 Microsoft Monitoring Agent：
-1. 转到 Azure Policy，单击“定义”。
+若要将新规模集设置为自动安装 Microsoft Monitoring Agent，请执行以下操作：
+1. 转到 Azure Policy，单击“定义”。****
 
-1. 搜索 "**部署 Windows 虚拟机规模集 Log Analytics 代理**" 策略，然后单击它。
+1. 搜索策略“为 Windows 虚拟机规模集部署 Log Analytics 代理”，然后单击它。****
 
-1. 单击“分配”。
+1. 单击“分配”****。
 
-1. 设置“范围”和“Log Analytics 工作区”，然后单击“分配”。
+1. 设置“范围”和“Log Analytics 工作区”，然后单击“分配”。************
 
-若要将所有现有的规模集设置为安装 Microsoft Monitoring Agent，请在 Azure Policy 中转到“修正”，将现有的策略应用到现有的规模集。
-
-
+若要将所有现有的规模集设置为安装 Microsoft Monitoring Agent，请在 Azure Policy 中转到“修正”，将现有的策略应用到现有的规模集。****
 
 
 
-### <a name="cloud-services"></a>云服务
+
+
+### <a name="cloud-services"></a><a name="cloud-services"></a>云服务
 对于云服务，会在操作系统版本过期时创建建议。
 
 ![云服务](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
 
-在有建议的方案中，按照建议中的步骤更新操作系统。 当更新可用时，将出现警报（红色或橙色，具体取决于问题的严重性）。 有关此建议的完整说明，请单击 "**描述**" 列下的 "**更新 OS 版本**"。
+在有建议的方案中，请按建议中的步骤更新操作系统。 如果有可用的更新，会出现警报（红色或橙色 - 取决于问题的严重性）。 有关此建议的完整说明，请在“说明”栏下单击“更新 OS 版本”。********
 
 
 
 
 
 
-### <a name="app-services"></a>应用服务
-若要查看应用服务信息，你必须位于安全中心的标准定价层并在你的订阅中启用应用服务。 有关启用此功能的说明，请参阅[通过 Azure 安全中心保护应用服务](security-center-app-services.md)。
+### <a name="app-services"></a><a name="app-services"></a>应用服务
+若要查看应用服务信息，你必须在安全中心的“标准”定价层上，并在订阅中启用应用服务。 有关如何启用此功能的说明，请参阅[使用 Azure 安全中心保护应用服务](security-center-app-services.md)。
 
-在“应用服务”下，可以看到应用服务环境的列表，以及安全中心执行评估后提供的运行状况摘要。
+在“应用服务”下，可以看到应用服务环境的列表，以及安全中心执行评估后提供的运行状况摘要。****
 
 ![应用程序服务](./media/security-center-virtual-machine-recommendations/app-services.png)
 
@@ -137,19 +137,19 @@ ms.locfileid: "79282635"
 
 ![函数应用程序](./media/security-center-virtual-machine-recommendations/function-app.png) 函数应用程序
 
-如果选择 web 应用程序，则会打开摘要视图，其中包含三个选项卡：
+如果选择 Web 应用程序，则会打开摘要视图，其中包含三个选项卡：
 
-   - **建议**：基于失败的安全中心执行的评估。
+   - **建议**：基于安全中心执行的失败的评估。
    - **已通过的评估**：安全中心执行的、已通过的评估列表。
    - **不可用的评估**：由于出错或者建议与特定的应用服务不相关，而未能运行的评估列表。
 
-   “建议”下面是选定 Web 应用程序的建议列表，以及每条建议的严重性。
+   “建议”下面是选定 Web 应用程序的建议列表，以及每条建议的严重性。****
 
    ![应用服务建议](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
 
 选择一条建议即可查看其说明，以及不正常资源、正常资源和未扫描资源的列表。
 
-   - "**传递的评估**" 列显示已传递的评估列表。 这些评估的严重性始终为绿色。
+   - “已通过的评估”列显示已通过的评估的列表。**** 这些评估的严重性始终为绿色。
 
    - 从评估说明列表、不正常和正常资源列表以及未扫描的资源列表中选择一个已通过的评估。 不正常的资源有一个对应的选项卡，但其中的列表始终为空，因为评估已经通过。
 
@@ -157,41 +157,41 @@ ms.locfileid: "79282635"
 
 
 
-### <a name="containers"></a>存放
+### <a name="containers"></a><a name="containers"></a>容器
 
-当你打开 "**容器**" 选项卡时，根据你的环境，你可能会看到以下三种类型的资源中的任何一种：
+打开 **"容器"** 选项卡时，根据您的环境，您可能会看到三种类型的资源中的任何一种：
 
-![容器主机](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) 容器主机-运行 docker 的 Vm 
+![容器主机](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) 容器主机 - 运行 Docker 的 VM 
 
-![Kubernetes 服务](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure Kubernetes 服务（AKS）群集
+![Kubernetes 服务](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Azure 库伯奈斯服务 （AKS） 群集
 
-![容器注册表](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure 容器注册表（ACR）注册表项-仅当你在标准定价层和启用了 Azure 容器注册表捆绑包时才显示。
+![容器注册表](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Azure 容器注册表 （ACR） 注册表 - 仅在您处于标准定价层和启用 Azure 容器注册表包时显示。
 
 有关如何使用容器安全功能的说明，请参阅[监视容器的安全性](monitor-container-security.md)。
 
-[此处](azure-container-registry-integration.md)介绍了 Azure 容器注册表捆绑的优点
+[此处](azure-container-registry-integration.md)介绍了 Azure 容器注册表捆绑包的优点
 
-[此处](azure-kubernetes-service-integration.md)解释了 Kubernetes Services 捆绑的优点
+库伯内斯服务捆绑包的好处[在这里](azure-kubernetes-service-integration.md)解释
 
-[![容器 "选项卡](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
+[![容器选项卡](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
 
-若要查看列表中特定资源的建议，请单击该资源。
+要查看列表中特定资源的建议，请单击该资源。
 
-#### <a name="visibility-into-container-registries"></a>查看容器注册表
+#### <a name="visibility-into-container-registries"></a>容器注册表的可见性
 
-例如，在上图所示的列表中单击 asc-演示程序注册表会出现以下详细信息页：
+例如，从上图中显示的列表中单击 asc-demo ACR 注册表，将引至此详细信息页面：
 
-[针对特定 ACR 注册表的 ![建议](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png)](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png#lightbox)
-
-
-#### <a name="visibility-into-containers-hosted-on-iaas-linux-machines"></a>查看 IaaS Linux 计算机上托管的容器
-
-单击其中一个运行 docker 的 Vm 时，会看到详细信息页，其中包含与计算机上的容器相关的信息，如 Docker 版本和主机上运行的映像数。
-
-![有关运行 docker 的 VM 的建议](./media/security-center-virtual-machine-recommendations/docker-recommendation.png)
+[![针对特定 ACR 注册表的建议](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png)](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png#lightbox)
 
 
-#### <a name="security-recommendations-based-on-cis-benchmark-for-docker"></a>基于 Docker 的 CIS 基准的安全建议
+#### <a name="visibility-into-containers-hosted-on-iaas-linux-machines"></a>洞察 IaaS Linux 计算机上托管的容器
+
+单击运行 Docker 的 VM 之一时，您将看到详细信息页，其中包含与计算机上的容器相关的信息，例如 Docker 版本和主机上运行的图像数。
+
+![运行 Docker 的 VM 建议](./media/security-center-virtual-machine-recommendations/docker-recommendation.png)
+
+
+#### <a name="security-recommendations-based-on-cis-benchmark-for-docker"></a>基于 Docker CIS 基准的安全建议
 
 安全中心扫描 Docker 配置，并提供已评估的所有失败规则列表让你洞察错误配置。 安全中心提供指导来帮助你快速解决这些问题，因此可节省时间。 安全中心持续评估 Docker 配置，并提供其最新状态。
 

@@ -4,29 +4,29 @@ description: Azure Policy 的评估和效果确定了符合性。 了解如何�
 ms.date: 02/01/2019
 ms.topic: how-to
 ms.openlocfilehash: 891c9c72d8e83dc8f9adb930e8ebd11b70f6aad8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280633"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
-Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../../management-groups/overview.md)中的资源提供的见解和控制度。 可通过许多不同的方式运用这种控制，例如，防止在错误的位置创建资源、强制实施常见且一致的标记用法，或者审核相应配置和设置的现有资源。 在所有情况下，数据均由 Azure 策略生成，使你能够了解环境的符合性状态。
+Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../../management-groups/overview.md)中的资源提供的见解和控制度。 可通过许多不同的方式运用这种控制，例如，防止在错误的位置创建资源、强制实施常见且一致的标记用法，或者审核相应配置和设置的现有资源。 在所有情况下，数据都由 Azure Policy 生成，使你能够了解环境的符合性状态。
 
 可通过多种方式访问策略和计划分配生成的符合性信息：
 
-- 使用 [Azure 门户](#portal)
+- 使用[Azure 门户](#portal)
 - 通过[命令行](#command-line)脚本
 
 在探讨符合性报告方法之前，让我们了解符合性信息的更新时间和频率，以及触发评估周期的事件。
 
 > [!WARNING]
-> 如果符合性状态被报告为**未注册**，请验证**PolicyInsights**资源提供程序是否已注册，以及用户是否具有适当的基于角色的访问控制（rbac）权限（如[Azure 策略中的 RBAC 中](../overview.md#rbac-permissions-in-azure-policy)所述）。
+> 如果符合性状态被报告为“未注册”****，请验证是否已注册 **Microsoft.PolicyInsights** 资源提供程序，并验证用户是否具有适当的基于角色的访问控制 (RBAC) 权限，如 [Azure Policy 中的 RBAC](../overview.md#rbac-permissions-in-azure-policy) 所述。
 
 ## <a name="evaluation-triggers"></a>评估触发器
 
-已完成的评估周期的结果通过 `Microsoft.PolicyInsights` 和 `PolicyStates` 操作在 `PolicyEvents` 资源提供程序中获取。 有关 Azure Policy Insights REST API 操作的详细信息，请参阅[Azure Policy insights](/rest/api/policy-insights/)。
+已完成的评估周期的结果通过 `PolicyStates` 和 `PolicyEvents` 操作在 `Microsoft.PolicyInsights` 资源提供程序中获取。 有关 Azure Policy Insights REST API 的操作的详细信息，请参阅 [Azure Policy Insights](/rest/api/policy-insights/)。
 
 已分配的策略和计划的评估会在各种事件后发生：
 
@@ -51,7 +51,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 - `{YourRG}` - 替换为资源组的名称
 - `{subscriptionId}` - 替换为订阅 ID
 
-扫描支持评估订阅或资源组中的资源。 使用以下 URI 结构，通过 REST API POST 命令开始按范围扫描：
+扫描支持评估订阅或资源组中的资源。 使用以下 URI 结构，通过 REST API POST 命令开始按范围扫描****：
 
 - 订阅
 
@@ -65,13 +65,13 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
   POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
   ```
 
-该调用返回“202 Accepted”状态。 响应标头中包含 Location 属性，格式如下：
+该调用返回“202 Accepted”状态****。 响应标头中包含 Location 属性，格式如下****：
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
 ```
 
-以静态方式为请求的范围生成了 `{ResourceContainerGUID}`。 如果某个范围已在运行按需扫描，则不会启动新扫描。 而是向新请求提供状态相同的 `{ResourceContainerGUID}`**位置**URI。 在评估过程中，位置 URI 的 REST API GET 命令返回“202 Accepted”状态。 评估扫描完成后，返回“200 OK”状态。 已完成的扫描的正文为 JSON 响应，其状态为：
+以静态方式为请求的范围生成了 `{ResourceContainerGUID}`。 如果某个范围已在运行按需扫描，则不会启动新扫描。 而是为新请求的状态提供相同的  位置 URI`{ResourceContainerGUID}` ****。 在评估过程中，位置 URI 的 REST API GET 命令返回“202 Accepted”状态************。 评估扫描完成后，返回“200 OK”状态****。 已完成的扫描的正文为 JSON 响应，其状态为：
 
 ```json
 {
@@ -81,7 +81,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ## <a name="how-compliance-works"></a>符合性的工作原理
 
-在分配中，如果某资源不符合策略或计划规则，则该资源不合规。
+在分配中，如果某资源不符合策略或计划规则，则该资源不合规****。
 下表显示了对于生成的符合性状态，不同的策略效果是如何与条件评估配合使用的：
 
 | 资源状态 | 效果 | 策略评估 | 符合性状态 |
@@ -98,65 +98,65 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ![向公共网络公开的存储帐户](../media/getting-compliance-data/resource-group01.png)
 
-在此示例中，需要慎重考虑安全风险。 创建策略分配后，将会针对 ContosoRG 资源组中的所有存储帐户评估该分配。 它对这三个不合规的存储帐户进行审核，并因此将其状态更改为“不合规”。
+在此示例中，需要慎重考虑安全风险。 创建策略分配后，将会针对 ContosoRG 资源组中的所有存储帐户评估该分配。 它对这三个不合规的存储帐户进行审核，并因此将其状态更改为“不合规”****。
 
 ![已审核不合规的存储帐户](../media/getting-compliance-data/resource-group03.png)
 
-除“符合”和“不符合”外，政策和资源还有 3 种状态：
+除“符合”和“不符合”外，政策和资源还有 3 种状态********：
 
-- **冲突**：存在两个或多个策略冲突的规则。 例如，两项策略向不同的值附加了相同的标记。
-- **未启动：没有**为策略或资源启动评估周期。
-- **未注册**：尚未注册 Azure 策略资源提供程序或登录的帐户没有读取符合性数据的权限。
+- **冲突**：存在两个或多个策略，存在冲突规则。 例如，两项策略向不同的值附加了相同的标记。
+- **未启动**：策略或资源的评估周期尚未启动。
+- **未注册**：Azure 策略资源提供程序尚未注册，或者登录的帐户没有读取合规性数据的权限。
 
-Azure 策略使用定义中的 "**类型**" 和 "**名称**" 字段来确定资源是否是匹配项。 如果资源匹配，则被视为适用，状态为“符合”或“不符合”。 如果“类型”或“名称”是定义中的唯一属性，则将所有资源视为适用并对其进行评估。
+Azure Policy 使用定义中的“类型”和“名称”字段来确定资源是否匹配********。 如果资源匹配，则被视为适用，状态为“符合”或“不符合”********。 如果“类型”或“名称”是定义中的唯一属性，则将所有资源视为适用并对其进行评估********。
 
-符合百分比是合规资源与总资源之比。
-根据定义，总资源是指合规资源、不合规资源和冲突资源的总和。 整体符合性是不同合规资源的总和除以所有唯一资源。 在下图中，有 20 种不同的资源适用，只有一种资源“不合规”。 因此，资源的整体符合性为 95%（19/20）。
+符合百分比是合规资源与总资源之比****__。
+根据定义，总资源是指合规资源、不合规资源和冲突资源的总和__************。 整体符合性是不同合规资源的总和除以所有唯一资源****。 在下图中，有 20 种不同的资源适用，只有一种资源“不合规”****。 因此，资源的整体符合性为 95%（19/20）。
 
-!["符合性" 页中的策略符合性示例](../media/getting-compliance-data/simple-compliance.png)
+![符合性页面上的策略符合性示例](../media/getting-compliance-data/simple-compliance.png)
 
 ## <a name="portal"></a>门户
 
-Azure 门户展示了一个图形体验用于可视化和了解环境中的符合性状态。 在“策略”页上，“概述”选项提供了策略和计划符合性的可用范围的详细信息。 除了符合性状态和每个分配的计数以外，该页还包含一个图表，显示过去七天的符合性。 “符合性”页包含上述大量相同信息（图表除外），但提供附加的筛选和排序选项。
+Azure 门户展示了一个图形体验用于可视化和了解环境中的符合性状态。 在“策略”页上，“概述”选项提供了策略和计划符合性的可用范围的详细信息。******** 除了符合性状态和每个分配的计数以外，该页还包含一个图表，显示过去七天的符合性。 “符合性”页包含上述大量相同信息（图表除外），但提供附加的筛选和排序选项。****
 
-![Azure 策略符合性页面示例](../media/getting-compliance-data/compliance-page.png)
+![Azure Policy 符合性页的示例](../media/getting-compliance-data/compliance-page.png)
 
 由于策略或计划可分配到不同的范围，因此表中包含每个分配的范围，以及分配的定义类型。 还提供每个分配项中不合规资源和不合规策略的数量。 单击表中的某个策略或计划可以更深入地了解该特定分配的符合性。
 
-![Azure 策略符合性详细信息页示例](../media/getting-compliance-data/compliance-details.png)
+![Azure Policy 符合性详细信息页的示例](../media/getting-compliance-data/compliance-details.png)
 
-“资源符合性”选项卡上的资源列表显示当前分配的现有资源的评估状态。 此选项卡默认为“不符合”，但是可以进行筛选。
-创建资源的请求所触发的事件（追加、审核、拒绝、部署）显示在“事件”选项卡下。
+“资源符合性”选项卡上的资源列表显示当前分配的现有资源的评估状态。**** 此选项卡默认为“不符合”，但是可以进行筛选。****
+创建资源的请求所触发的事件（追加、审核、拒绝、部署）显示在“事件”选项卡下。****
 
 > [!NOTE]
 > 对于 AKS 引擎策略，显示的资源是资源组。
 
-![Azure 策略符合性事件示例](../media/getting-compliance-data/compliance-events.png)
+![Azure Policy 符合性事件的示例](../media/getting-compliance-data/compliance-events.png)
 
-对于[资源提供程序模式](../concepts/definition-structure.md#resource-provider-modes)资源，请在 "**资源符合性**" 选项卡上选择资源，或右键单击行并选择 "**查看符合性详细信息**"，打开组件相容性详细信息。 此页还提供选项卡，以查看分配给此资源、事件、组件事件和更改历史记录的策略。
+对于[“资源提供程序”模式](../concepts/definition-structure.md#resource-provider-modes)资源，在“资源符合性”选项卡上**** 选择资源或右键单击行并选择“查看符合性详细信息”**** 即可打开组件符合性详细信息。 此页还提供多个选项卡，用于查看分配给此资源的策略、事件、组件事件以及更改历史记录。
 
-![Azure 策略组件符合性详细信息示例](../media/getting-compliance-data/compliance-components.png)
+![Azure Policy 组件符合性详细信息的示例](../media/getting-compliance-data/compliance-components.png)
 
-返回 "资源符合性" 页，右键单击要在其中收集更多详细信息的事件行，然后选择 "**显示活动日志**"。 活动日志页将会打开，其中的搜索结果经过预先筛选，显示分配和事件的详细信息。 活动日志提供有关这些事件的其他上下文和信息。
+回到资源符合性页，右键单击要收集其更多详细信息的事件所在的行，然后选择“显示活动日志”。**** 活动日志页将会打开，其中的搜索结果经过预先筛选，显示分配和事件的详细信息。 活动日志提供有关这些事件的其他上下文和信息。
 
-![Azure 策略相容性活动日志的示例](../media/getting-compliance-data/compliance-activitylog.png)
+![Azure Policy 符合性活动日志的示例](../media/getting-compliance-data/compliance-activitylog.png)
 
-### <a name="understand-non-compliance"></a>了解不合规性
+### <a name="understand-non-compliance"></a>了解不符合性
 
 <a name="change-history-preview"></a>
 
-当资源被确定为**不符合**时，有许多可能的原因。 若要确定资源不**符合**的原因或要确定更改的原因，请参阅[确定不符合性](./determine-non-compliance.md)。
+当确定资源为**不符合**时，有许多可能的原因。 若要确定资源**不符合**的原因或查找负责的更改，请参阅[确定不符合性](./determine-non-compliance.md)。
 
 ## <a name="command-line"></a>命令行
 
-可以使用 REST API （包括 with [ARMClient](https://github.com/projectkudu/ARMClient)）、Azure PowerShell 和 Azure CLI （预览版）来检索门户中提供的相同信息。
-有关 REST API 的完整详细信息，请参阅[Azure 策略见解](/rest/api/policy-insights/)参考。 REST API 参考页上针对每个操作提供了一个绿色的“试用”按钮，使用该按钮可在浏览器中直接试用该操作。
+可以使用 REST API（包括使用 [ARMClient](https://github.com/projectkudu/ARMClient)）、Azure PowerShell 和 Azure CLI（预览版）来检索门户中提供的相同信息。
+有关 REST API 的完整详细信息，请参阅 [Azure Policy Insights](/rest/api/policy-insights/) 参考文章。 REST API 参考页上针对每个操作提供了一个绿色的“试用”按钮，使用该按钮可在浏览器中直接试用该操作。
 
-使用 ARMClient 或类似的工具来处理 Azure REST API 示例的身份验证。
+对于 REST API 示例，请使用 ARMClient 或类似工具处理向 Azure 进行身份验证的问题。
 
 ### <a name="summarize-results"></a>汇总结果
 
-使用 REST API 时，可以按容器、定义或分配进行汇总。 下面是使用 Azure 策略见解的[订阅汇总](/rest/api/policy-insights/policystates/summarizeforsubscription)的订阅级别的汇总示例：
+使用 REST API 时，可以按容器、定义或分配进行汇总。 下面是使用 Azure Policy Insight 的[按订阅汇总](/rest/api/policy-insights/policystates/summarizeforsubscription)功能在订阅级别执行的汇总示例：
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
@@ -246,7 +246,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ### <a name="view-events"></a>查看事件
 
-创建或更新资源时，将生成策略评估结果。 结果称为“策略事件”。 使用以下 URI 查看与订阅关联的最近策略事件。
+创建或更新资源时，将生成策略评估结果。 结果称为“策略事件”。__ 使用以下 URI 查看与订阅关联的最近策略事件。
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2018-04-04
@@ -266,11 +266,11 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
-有关查询策略事件的详细信息，请参阅[Azure 策略事件](/rest/api/policy-insights/policyevents)参考文章。
+有关查询策略事件的详细信息，请参阅 [Azure Policy 事件](/rest/api/policy-insights/policyevents)参考文章。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-PowerShell 库上的[PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights)中提供了适用于 Azure 策略的 Azure PowerShell 模块。
+适用于 Azure Policy 的 Azure PowerShell 模块在 PowerShell 库中以 [Az.PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights) 的形式提供。
 使用 PowerShellGet，可以使用 `Install-Module -Name Az.PolicyInsights` 安装模块（请确保已安装了最新版 [Azure PowerShell](/powershell/azure/install-az-ps)）：
 
 ```azurepowershell-interactive
@@ -385,7 +385,7 @@ TenantId                   : {tenantId}
 PrincipalOid               : {principalOid}
 ```
 
-可以结合 Azure PowerShell cmdlet **使用**PrincipalOid`Get-AzADUser` 字段来获取特定的用户。 请将 **{principalOid}** 替换为在前一示例中获取的响应。
+可以结合 Azure PowerShell cmdlet `Get-AzADUser` 使用 **PrincipalOid** 字段来获取特定的用户。 请将 **{principalOid}** 替换为在前一示例中获取的响应。
 
 ```azurepowershell-interactive
 PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
@@ -394,16 +394,16 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor 日志
 
-如果你有一个[Log Analytics 工作区，该工作区](../../../log-analytics/log-analytics-overview.md)包含与你的订阅相关联的[Activity Log Analytics 解决方案](../../../azure-monitor/platform/activity-log-collect.md)`AzureActivity`，则还可以使用简单 Kusto 查询和 `AzureActivity` 表从评估周期查看不符合性结果。 借助 Azure Monitor 日志中的详细信息，可对警报进行配置，以监视不符合情况。
+如果具有与`AzureActivity`订阅关联的[活动日志分析解决方案](../../../azure-monitor/platform/activity-log-collect.md)中的`AzureActivity`[日志分析工作区](../../../log-analytics/log-analytics-overview.md)，还可以使用简单的 Kusto 查询和表查看评估周期中的不合规结果。 借助 Azure Monitor 日志中的详细信息，可对警报进行配置，以监视不符合情况。
 
 
-![使用 Azure Monitor 日志的 Azure 策略符合性](../media/getting-compliance-data/compliance-loganalytics.png)
+![使用 Azure 监视器日志的 Azure 策略合规性](../media/getting-compliance-data/compliance-loganalytics.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 - 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
-- 查看[了解策略效果](../concepts/effects.md)。
-- 了解如何以[编程方式创建策略](programmatically-create.md)。
-- 了解如何[修正不合规的资源](remediate-resources.md)。
+- 回顾[了解政策效果](../concepts/effects.md)。
+- 了解如何[以编程方式创建策略](programmatically-create.md)。
+- 了解如何[修复不合规资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

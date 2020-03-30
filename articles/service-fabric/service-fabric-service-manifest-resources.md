@@ -4,10 +4,10 @@ description: 如何在服务清单中描述终结点资源，包括如何设置 
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: cc4eedf5e5fee0bbfa0a763e9b9ec0dd25409afa
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282154"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
@@ -18,9 +18,9 @@ ms.locfileid: "79282154"
 在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。 例如，可以查看本段落后面提供的清单代码段中指定的终结点 *ServiceEndpoint1*。 此外，服务还可以请求在资源中使用特定端口。 在不同群集节点上运行的服务副本可以分配不同的端口号，而运行在同一节点上的服务副本共享同一个端口。 之后服务副本可根据需要将这些端口用于复制和侦听客户端请求。
 
 > [!WARNING] 
-> 设计静态端口不应与 Clustermanifest.xml 中指定的应用程序端口范围重叠。 如果指定静态端口，请将其分配到应用程序端口范围外，否则将导致端口冲突。 使用 release 6.5 CU2，我们将在检测到此类冲突时发出**运行状况警告**，但允许部署与发货6.5 行为保持同步。 但是，我们可能会阻止应用程序在下一个主要版本中进行部署。
+> 根据设计，静态端口不应与 ClusterManifest 中指定的应用程序端口范围重叠。 如果指定静态端口，请将其分配到应用程序端口范围外，否则会导致端口冲突。 对于版本 6.5CU2，当我们检测到此类冲突时，我们将发出**运行状况警告**，但让部署继续与已发布的 6.5 行为同步。 但是，我们可能会在下一个主要版本中阻止应用程序部署。
 >
-> 在版本7.0 中，我们会在检测到应用程序端口范围使用超出 HostingConfig：： ApplicationPortExhaustThresholdPercentage （默认80%）后发出**运行状况警告**。
+> 在版本 7.0 中，当我们检测到应用程序端口范围使用率超过 HostingConfig::ApplicationPortExhaustThresholdPercentage（默认 80%）时，我们将发出**运行状况警告**。
 >
 
 ```xml
@@ -33,7 +33,7 @@ ms.locfileid: "79282154"
 </Resources>
 ```
 
-如果在单个服务包中有多个代码包，则还需要在“终结点”部分中引用代码包。  例如，如果 **ServiceEndpoint2a** 和 **ServiceEndpoint2b** 是同一个服务包中引用不同代码包的终结点，则对应于每个终结点的代码包按如下所示说明：
+如果在单个服务包中有多个代码包，则还需要在“终结点”**** 部分中引用代码包。  例如，如果 **ServiceEndpoint2a** 和 **ServiceEndpoint2b** 是同一个服务包中引用不同代码包的终结点，则对应于每个终结点的代码包按如下所示说明：
 
 ```xml
 <Resources>
@@ -209,4 +209,4 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 并且应用程序参数的 Port1 和 Protocol1 值为 null 或为空。 仍由 ServiceFabric 决定端口。 而协议将 TCP。
 
-假设指定了错误值。 与用于端口一样，指定了字符串值 "Foo" 而不是 int。 Get-servicefabricapplication 命令将失败并出现错误： "ResourceOverrides" 部分中名为 "ServiceEndpoint1" 特性 "Port1" 的 override 参数无效。 指定的值为“Foo”，而要求的值为“int”。
+假设指定了错误值。 与 Port 一样，您指定了字符串值"Foo"而不是 int。 New-ServiceFabric应用程序命令将失败，但出现错误："资源覆盖"部分中名称为"服务终结点1"属性"Port1"的覆盖参数无效。 指定的值为“Foo”，而要求的值为“int”。

@@ -1,23 +1,21 @@
 ---
 title: 应用程序管理的先决条件
-description: 链接到电脑文章的不推荐使用的 CPP 文章;是 "应用程序特选的先决条件列表"。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
-manager: Ricardo.Villalobos
+description: 弃用 CPP 文章，链接到 PC 文章;是"应用固化的先决条件列表"。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: 98a50481612d93a9a2d9d7d5bfb04bfa22db6e00
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e907c51e69b5b57da9986fa017d59fed2e58320d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819808"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280569"
 ---
 # <a name="prerequisites-for-application-curation"></a>应用程序管理的先决条件
 
-[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持为财务和运营提供的 Dynamics 365 的创建和管理。 相反，此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅为[操作提供新的 Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)。
+[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持创建和管理 Dynamics 365，用于财务和运营产品。 相反，此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[为操作创建新的 Dynamics 365 产品/](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)
 
-在为操作提供新的 Dynamics 365 之前，应阅读[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，然后在选中 "**概述**" 页的情况下打开 "[商业市场" 仪表板](https://partner.microsoft.com/dashboard/directory)。 按照为[操作创建新的 Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)中的说明来创建产品/服务。
+在创建新的 Dynamics 365 操作产品/服务之前，应阅读["创建合作伙伴中心"帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，然后在选中 **"概览"** 页后打开["商业市场"仪表板](https://partner.microsoft.com/dashboard/directory)。 按照[创建新的 Dynamics 365 操作产品/服务提供](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)中的说明来创建您的产品/服务。

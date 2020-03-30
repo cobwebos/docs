@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259950"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box 系统要求
@@ -55,7 +55,7 @@ ms.locfileid: "79259950"
 
 ### <a name="port-requirements"></a>端口要求
 
-下表列出了需要在防火墙中打开以允许 SMB 或 NFS 通信的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 " *Out* " 或 "*出站*" 是指 Data Box 设备在外部发送数据的方向，而不是部署：例如，到 Internet 的出站。
+下表列出了需要在防火墙中打开以允许 SMB 或 NFS 流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 “传出”或“出站”表示 Data Box 设备从外部（超出部署范围）发送数据的方向：例如，向 Internet 发送出站数据。****
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 

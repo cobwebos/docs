@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
 ms.openlocfilehash: 30664d533215cb49fa6f436ec4cf88fa319c3300
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272261"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>规划 Azure HDInsight 的虚拟网络
 
-本文提供有关将[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)（vnet）与 azure HDInsight 配合使用的背景信息。 它还讨论了在为 HDInsight 群集实现虚拟网络之前必须做出的设计和实施决策。 规划阶段完成后，可以继续为[Azure HDInsight 群集创建虚拟网络](hdinsight-create-virtual-network.md)。 有关正确配置网络安全组（Nsg）和用户定义的路由所需的 HDInsight 管理 IP 地址的详细信息，请参阅[HDInsight 管理 ip 地址](hdinsight-management-ip-addresses.md)。
+本文提供有关将[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)（VNet） 与 Azure HDInsight 一起使用的背景信息。 其中介绍了在为 HDInsight 群集实施虚拟网络之前必须做出的设计和实施决策。 规划阶段完成后，可以继续[为 Azure HDInsight 群集创建虚拟网络](hdinsight-create-virtual-network.md)。 有关正确配置网络安全组 （NSG） 和用户定义的路由所需的 HDInsight 管理 IP 地址的详细信息，请参阅[HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)。
 
 使用 Azure 虚拟网络支持以下方案：
 
 * 直接从本地网络连接到 HDInsight。
 * 将 HDInsight 连接到 Azure 虚拟网络中的数据存储。
-* 直接访问不能通过 internet 公开的 Apache Hadoop 服务。 例如，Apache Kafka Api 或 Apache HBase Java API。
+* 直接访问 Apache Hadoop 服务，这些服务在互联网上无法公开提供。 例如，Apache Kafka API 或 Apache HBase Java API。
 
 > [!IMPORTANT]
-> 在 VNET 中创建 HDInsight 群集会创建多个网络资源，例如 Nic 和负载均衡器。 请勿**删除这些**网络资源，因为群集在 VNET 中正常工作需要它们。
+> 在 VNET 中创建 HDInsight 群集时会创建多个网络资源，例如 NIC 和负载均衡器。 请**勿**删除这些网络资源，因为群集需要它们才能在 VNET 中正常运行。
 >
-> 2019年2月28日以后，将在同一 HDInsight 群集资源组中预配在 VNET 中创建的新 HDInsight 群集的网络资源（如 Nic、磅等）。 以前，这些资源是在 VNET 资源组中预配的。 不会更改当前正在运行的群集，并且不会在没有 VNET 的情况下创建这些群集。
+> 2019 年 2 月 28 日以后，在 VNET 中创建的新 HDInsight 群集的网络资源（例如 NIC、LB 等）会在同一 HDInsight 群集资源组中进行预配。 以前，这些资源在 VNET 资源组中预配。 当前运行的群集以及那些在没有 VNET 的情况下创建的群集没有任何更改。
 
 ## <a name="planning"></a>规划
 
@@ -36,7 +36,7 @@ ms.locfileid: "79272261"
 
 * 是否需要将 HDInsight 安装到现有的虚拟网络？ 或者是否正在创建新的网络？
 
-    如果使用现有的虚拟网络，则可能需要修改网络配置，然后才能安装 HDInsight。 有关详细信息，请参阅[将 HDInsight 添加到现有虚拟网络](#existingvnet)一节。
+    如果您使用的是现有虚拟网络，则可能需要修改网络配置，然后才能安装 HDInsight。 有关详细信息，请参阅[将 HDInsight 添加到现有虚拟网络](#existingvnet)一节。
 
 * 是否要将包含 HDInsight 的虚拟网络连接到其他虚拟网络或你的本地网络？
 
@@ -65,13 +65,13 @@ ms.locfileid: "79272261"
 
     作为托管服务，HDInsight 需要无限制访问 Azure 数据中心中的若干个 IP 地址。 若要允许与这些 IP 地址进行通信，请更新任何现有网络安全组或用户定义的路由。
 
-    HDInsight 托管多个服务，这些服务使用不同的端口。 不要阻止发往这些端口的流量。 有关虚拟设备防火墙的允许端口列表，请参阅“安全”一节。
+    HDInsight 托管多个服务，这些服务使用不同的端口。 不要阻止到这些端口的流量。 有关虚拟设备防火墙的允许端口列表，请参阅“安全”一节。
 
     若要查找你现有的安全配置，请使用以下 Azure PowerShell 或 Azure CLI 命令：
 
     * 网络安全组
 
-        将 `RESOURCEGROUP` 替换为包含虚拟网络的资源组的名称，然后输入以下命令：
+        将 `RESOURCEGROUP` 替换为包含虚拟网络的资源组的名称，然后输入命令：
 
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
@@ -88,7 +88,7 @@ ms.locfileid: "79272261"
 
     * 用户定义路由
 
-        将 `RESOURCEGROUP` 替换为包含虚拟网络的资源组的名称，然后输入以下命令：
+        将 `RESOURCEGROUP` 替换为包含虚拟网络的资源组的名称，然后输入命令：
 
         ```powershell
         Get-AzRouteTable -ResourceGroupName "RESOURCEGROUP"
@@ -118,14 +118,14 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 * Internet 上的任何可用资源。 例如，microsoft.com、windowsupdate.com。
 
-* 位于同一 Azure 虚拟网络中的任何资源（通过使用资源的内部 DNS 名称）。 例如，使用默认名称解析时，以下是分配给 HDInsight 辅助角色节点的内部 DNS 名称的示例：
+* 位于同一 Azure 虚拟网络中的任何资源（通过使用资源的内部 DNS 名称____）。 例如，在使用默认的名称解析时，下面是分配给 HDInsight 工作器节点的内部 DNS 名称示例：
 
   * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
   * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
 
     这两个节点通过使用内部 DNS 名称可以直接彼此通信，以及与 HDInsight 中的其他节点进行通信。
 
-默认名称解析不允许 HDInsight 解析加入到虚拟网络的网络中的资源名称。 例如，将本地网络加入虚拟网络很常见。 如果仅使用默认名称解析，HDInsight 将无法通过名称访问本地网络中的资源。 相反，本地网络中的资源不能按名称访问虚拟网络中的资源。
+默认名称解析不____ 允许 HDInsight 解析加入到虚拟网络的网络中的资源名称。 例如，将本地网络加入虚拟网络很常见。 仅使用默认名称解析，HDInsight 无法按名称访问本地网络中的资源。 事实正好相反，本地网络中的资源无法按名称访问虚拟网络中的资源。
 
 > [!WARNING]  
 > 必须创建自定义 DNS 服务器并配置虚拟网络以在创建 HDInsight 群集前使用它。
@@ -174,7 +174,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 1. 若要发现 HDInsight 群集节点的内部完全限定的域名 (FQDN)，请使用以下其中一种方法：
 
-    将 `RESOURCEGROUP` 替换为包含虚拟网络的资源组的名称，然后输入以下命令：
+    将 `RESOURCEGROUP` 替换为包含虚拟网络的资源组的名称，然后输入命令：
 
     ```powershell
     $clusterNICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP" | where-object {$_.Name -like "*node*"}
@@ -203,39 +203,39 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 ## <a name="controlling-network-traffic"></a><a id="networktraffic"></a>控制网络流量
 
-### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>用于控制到 HDInsight 群集的入站和出站流量的技术
+### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>控制 HDInsight 群集的入站和出站流量的技术
 
 可以使用以下方法控制 Azure 虚拟网络中的网络流量：
 
-* 网络安全组(NSG) 允许你筛选往返于网络的入站和出站流量。 有关详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/security-overview.md)文档。
+* 网络安全组****(NSG) 允许你筛选往返于网络的入站和出站流量。 有关详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/security-overview.md)文档。
 
-* **网络虚拟设备**（NVA）只能与出站流量一起使用。 Nva 复制防火墙和路由器等设备的功能。 有关详细信息，请参阅[网络设备](https://azure.microsoft.com/solutions/network-appliances)文档。
+* **网络虚拟设备** (NVA) 只能用于出站流量。 NVA 可复制设备（如防火墙和路由器）的功能。 有关详细信息，请参阅[网络设备](https://azure.microsoft.com/solutions/network-appliances)文档。
 
-作为托管服务，HDInsight 要求对来自 VNET 的传入和传出流量进行无限制的访问权限。 当使用 Nsg 时，必须确保这些服务仍可与 HDInsight 群集通信。
+作为托管服务，HDInsight 需要对 HDInsight 运行状况和管理服务具有不受限制的访问权限，以处理从 VNET 传入和传出的流量。 使用 NSG 时，必须确保这些服务仍然可以与 HDInsight 群集进行通信。
 
-![在 Azure 自定义 VNET 中创建的 HDInsight 实体示意图](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
+![在 Azure 自定义 VNET 中创建的 HDInsight 实体的关系图](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
 
-### <a name="hdinsight-with-network-security-groups"></a>HDInsight 与网络安全组
+### <a name="hdinsight-with-network-security-groups"></a>使用网络安全组的 HDInsight
 
-如果你计划使用**网络安全组**来控制网络流量，请在安装 HDInsight 之前执行以下操作：
+如果计划使用**网络安全组**来控制网络流量，请在安装 HDInsight 之前执行以下操作：
 
 1. 标识你计划用于 HDInsight 的 Azure 区域。
 
-2. 确定 HDInsight 为你所在的区域所需的服务标记。 有关详细信息，请参阅[Azure HDInsight 的网络安全组（NSG）服务标记](hdinsight-service-tags.md)。
+2. 标识 HDInsight 为您的地区所需的服务标记。 有关详细信息，请参阅[Azure HDInsight 的网络安全组 （NSG） 服务标记](hdinsight-service-tags.md)。
 
-3. 为计划安装 HDInsight 的子网创建或修改网络安全组。
+3. 为计划将 HDInsight 安装到其中的子网创建或修改网络安全组。
 
-    * __网络安全组__： 允许 IP 地址端口 443 上的入站流量。 这将确保 HDInsight 管理服务可以从虚拟网络外部访问群集。
+    * __网络安全组__： 允许 IP 地址端口 443 上的入站________ 流量。 这将确保 HDInsight 管理服务可以从虚拟网络外部访问群集。
 
 有关网络安全组的详细信息，请参阅[网络安全组概述](../virtual-network/security-overview.md)。
 
 ### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>控制 HDInsight 群集的出站流量
 
-若要详细了解如何控制来自 HDInsight 群集的出站流量，请参阅[为 Azure HDInsight 群集配置出站网络流量限制](hdinsight-restrict-outbound-traffic.md)。
+有关控制 HDInsight 群集的出站流量的详细信息，请参阅[配置 Azure HDInsight 群集的出站网络流量限制](hdinsight-restrict-outbound-traffic.md)。
 
-#### <a name="forced-tunneling-to-on-premises"></a>强制隧道到本地
+#### <a name="forced-tunneling-to-on-premises"></a>到本地的强制隧道
 
-强制隧道是用户定义的路由配置，其中来自子网的所有流量都强制发往特定网络或位置，例如你的本地网络。 HDInsight__不__支持强制隧道传输到本地网络。
+强制隧道是用户定义的路由配置，其中来自子网的所有流量都强制发往特定网络或位置，例如你的本地网络。 HDInsight__不支持__强制隧道将流量隧道到本地网络。
 
 ## <a name="required-ip-addresses"></a><a id="hdinsight-ip"></a>需要的 IP 地址
 
@@ -243,7 +243,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 ## <a name="required-ports"></a><a id="hdinsight-ports"></a>所需的端口
 
-如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中介绍的 Azure 管理流量在端口 443 上到达群集，则不需要特地将端口列入允许列表。
+如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中介绍的 Azure 管理流量在端口 443 上到达群集，则不需要特地将端口列入白名单。
 
 对于特定服务的端口列表，请参阅 [HDInsight 上的 Apache Hadoop 服务所用的端口](hdinsight-hadoop-port-settings-for-services.md)文档。
 
@@ -251,22 +251,22 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 ## <a name="load-balancing"></a>负载均衡
 
-创建 HDInsight 群集时，还会创建负载均衡器。 此负载均衡器的类型为[基本 SKU 级别](../load-balancer/concepts-limitations.md#skus)，它具有某些约束。 其中一项限制是，如果在不同区域有两个虚拟网络，则无法连接到基本负载均衡器。 有关详细信息，请参阅[虚拟网络常见问题解答：针对全局 vnet 对等互连的约束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
+创建 HDInsight 群集时，也会创建一个负载均衡器。 此负载均衡器的类型处于[基本 SKU 级别](../load-balancer/concepts-limitations.md#skus)，具有一定的约束。 这些约束中的一个是：如果两个虚拟网络位于不同的区域，则无法连接到基本负载均衡器。 有关详细信息，请参阅[虚拟网络常见问题解答：对全局 VNet 对等互连的约束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
 ## <a name="transport-layer-security"></a>传输层安全性
 
-通过公用群集终结点连接到群集 `https://<clustername>.azurehdinsight.net` 通过群集网关节点代理。 这些连接使用称为 TLS 的协议进行保护。 在网关上强制执行较高版本的 TLS 可提高这些连接的安全性。 有关为何应使用较新版本的 TLS 的详细信息，请参阅[解决 tls 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)。
+通过公共群集终结点`https://<clustername>.azurehdinsight.net`与群集的连接通过群集网关节点进行接近。 这些连接使用称为 TLS 的协议进行保护。 在网关上强制实施更高版本的 TLS 可提高这些连接的安全性。 有关为什么要使用较新版本 TLS 的详细信息，请参阅[解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)。
 
-默认情况下，Azure HDInsight 群集接受公有 HTTPS 终结点上的 TLS 1.2 连接以及旧版本，以实现向后兼容性。 在群集创建过程中，可以使用 "Azure 门户" 或 "resource manager" 模板来控制在创建群集时所支持的最低 TLS 版本。 对于门户，请在群集创建过程中从 "**安全性 + 网络**" 选项卡中选择 TLS 版本。 对于部署时的 resource manager 模板，请使用**minSupportedTlsVersion**属性。 有关示例模板，请参阅[HDInsight 最小 TLS 1.2 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)。 此属性支持三个值： "1.0"、"1.1" 和 "1.2"，分别对应于 TLS 1.0 +、TLS 1.1 + 和 TLS 1.2 +。
+默认情况下，Azure HDInsight 群集接受公共 HTTPS 终结点上的 TLS 1.2 连接，以及旧版本，以便向后兼容。 在群集创建期间，可以使用 Azure 门户或资源管理器模板控制网关节点上支持的最小 TLS 版本。 对于门户，在群集创建期间从 **"安全 + 网络**"选项卡中选择 TLS 版本。 对于部署时资源管理器模板，请使用 **"最小支持 TlsVersion"** 属性。 有关示例模板，请参阅[HDInsight 最小 TLS 1.2 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls)。 此属性支持三个值："1.0"、"1.1"和"1.2"，分别对应于 TLS 1.0°、TLS 1.1+ 和 TLS 1.2+。
 
 > [!IMPORTANT]
-> 从2020年6月30日开始，Azure HDInsight 将为所有 HTTPS 连接强制执行 TLS 1.2 或更高版本。 모든 클라이언트가 TLS 1.2 이상 버전을 처리할 수 있도록 대비하는 것이 좋습니다. 有关详细信息，请参阅[Azure HDINSIGHT TLS 1.2 强制](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/)。
+> 从 2020 年 6 月 30 日开始，Azure HDInsight 将对所有 HTTPS 连接强制实施 TLS 1.2 或更高版本。 我们建议你确保所有客户端都已准备好处理 TLS 1.2 或更高版本。 有关详细信息，请参阅[Azure HDInsight TLS 1.2 强制](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关创建 Azure 虚拟网络的代码示例和示例，请参阅[创建 Azure HDInsight 群集的虚拟网络](hdinsight-create-virtual-network.md)。
+* 有关演示如何创建 Azure 虚拟网络的代码示例和操作示例，请参阅[为 Azure HDInsight 群集创建虚拟网络](hdinsight-create-virtual-network.md)。
 * 有关将 HDInsight 配置为连接到本地网络的端到端示例，请参阅[将 HDInsight 连接到本地网络](./connect-on-premises-network.md)。
-* 若要在 Azure 虚拟网络中配置 Apache HBase 群集，请参阅[在 Azure 虚拟网络中的 HDInsight 上创建 Apache hbase 群集](hbase/apache-hbase-provision-vnet.md)。
+* 有关在 Azure 虚拟网络中配置 Apache HBase 群集，请参阅[在 Azure 虚拟网络中的 HDInsight 上创建 Apache HBase 群集](hbase/apache-hbase-provision-vnet.md)。
 * 要了解如何配置 Apache HBase 异地复制，请参阅[在 Azure 虚拟网络中设置 Apache HBase 群集复制](hbase/apache-hbase-replication.md)。
 * 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 * 有关网络安全组的详细信息，请参阅[网络安全组](../virtual-network/security-overview.md)。

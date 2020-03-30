@@ -1,18 +1,18 @@
 ---
-title: Azure IoT 中心设备的客户数据请求
-description: 大多数 Azure IoT 中心管理的设备并不是个人，但有些设备是。 本文讨论了管理员能够从设备导出或删除个人数据。
+title: Azure IoT 中心设备的客户数据请求功能
+description: Azure IoT 中心中管理的大多数设备都不是个人的，但有些设备是个人的。 本文讨论管理员能够从设备导出或删除个人数据。
 author: robinsh
 ms.author: robinsh
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 29b3ed46ffe7f2236fc63d65ed49385b29b1a08a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a05fbf6e1908f88014cd8da99fafb875de033f45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889478"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499310"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
 
@@ -36,17 +36,17 @@ Azure IoT 中心是一项基于 REST API 的云服务，其目标是企业客户
 
 租户管理员可以在 Azure 门户中使用 Azure IoT 中心扩展的 IoT 设备边栏选项卡来删除设备，而删除设备同时也会删除与该设备关联的数据。
 
-也可使用 REST API 对设备执行删除操作。 有关详细信息，请参阅[服务 - 删除设备](/rest/api/iothub/service/deletedevice)。
+也可使用 REST API 对设备执行删除操作。 有关详细信息，请参阅[服务 - 删除设备](/rest/api/iothub/service/registrymanager/deletedevice)。
 
 ## <a name="exporting-customer-data"></a>导出客户数据
 
-租户管理员可以在 Azure 门户的 Azure IoT 中心扩展的 IoT 设备窗格中使用复制和粘贴，以导出与设备关联的数据。
+在 Azure 门户中，租户管理员可以利用 Azure IoT 中心扩展的 IoT 设备窗格中的复制和粘贴功能来导出与设备关联的数据。
 
-也可使用 REST API 对设备执行导出操作。 有关详细信息，请参阅[服务 - 获取设备](/rest/api/iothub/service/getdevice)。
+也可使用 REST API 对设备执行导出操作。 有关详细信息，请参阅[服务 - 获取设备](/rest/api/iothub/service/registrymanager/getdevice)。
 
 > [!NOTE]
 > 当你使用 Microsoft 的企业服务时，Microsoft 会生成一些信息，称为系统生成的日志。 租户管理员无法访问或导出 Azure IoT 中心系统生成的某些日志。 这些日志包含在服务中执行的实际操作以及与个人设备相关的诊断数据。
 
 ## <a name="links-to-additional-documentation"></a>其他文档的链接
 
-Azure IoT 中心服务 API 的完整文档位于 [IoT 中心服务 API](https://docs.microsoft.com/rest/api/iothub/service)。
+Azure IoT 中心服务 API 的完整文档位于 [IoT 中心服务 API](https://docs.microsoft.com/rest/api/iothub/service/configuration)。

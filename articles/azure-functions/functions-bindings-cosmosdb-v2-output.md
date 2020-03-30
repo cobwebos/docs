@@ -1,22 +1,22 @@
 ---
-title: 函数 1.x Azure Cosmos DB 输出绑定
-description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 的输出绑定。
+title: Azure Cosmos DB 输出绑定函数 2.x
+description: 了解如何在 Azure 函数中使用 Azure 宇宙 DB 输出绑定。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: 636903c20e07f11a2fd919654cfaa62037171f20
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277760"
 ---
-# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Functions 2.x Azure Cosmos DB 输出绑定
+# <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Cosmos DB 输出绑定，用于 Azure 函数 2.x
 
 Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos DB 数据库。
 
-有关设置和配置的详细信息，请参阅[概述](./functions-bindings-cosmosdb-v2.md)。
+有关设置和配置详细信息的信息，请参阅[概述](./functions-bindings-cosmosdb-v2.md)。
 
 <a id="example" name="example"></a>
 
@@ -24,8 +24,8 @@ Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos
 
 本部分包含以下示例：
 
-* [队列触发器，编写一个文档](#queue-trigger-write-one-doc-c)
-* [队列触发器，使用 IAsyncCollector 写入文档](#queue-trigger-write-docs-using-iasynccollector-c)
+* [队列触发器，写入一个文档](#queue-trigger-write-one-doc-c)
+* [队列触发器，使用 IAsyncCollector 来写入文档](#queue-trigger-write-docs-using-iasynccollector-c)
 
 这些示例引用简单的 `ToDoItem` 类型：
 
@@ -112,12 +112,12 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 本部分包含以下示例：
 
-* [队列触发器，编写一个文档](#queue-trigger-write-one-doc-c-script)
-* [队列触发器，使用 IAsyncCollector 写入文档](#queue-trigger-write-docs-using-iasynccollector-c-script)
+* [队列触发器，写入一个文档](#queue-trigger-write-one-doc-c-script)
+* [队列触发器，使用 IAsyncCollector 来写入文档](#queue-trigger-write-docs-using-iasynccollector-c-script)
 
 
 <a id="queue-trigger-write-one-doc-c-script"></a>
@@ -145,7 +145,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json** 文件中的绑定数据：
 
 ```json
 {
@@ -247,7 +247,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个 Azure Cosmos DB 输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数使用一个用于某个队列的队列输入绑定，该队列以下列格式接收 JSON：
 
@@ -270,7 +270,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json** 文件中的绑定数据：
 
 ```json
 {
@@ -306,7 +306,7 @@ JavaScript 代码如下所示：
 
 下面的示例演示如何将文档作为函数的输出写入 Azure CosmosDB 数据库。
 
-绑定定义在*函数 json*中定义，其中*type*设置为 `cosmosDB`。
+绑定定义在 function.json** 中定义，其中 type** 设置为 `cosmosDB`。
 
 ```json
 {
@@ -340,7 +340,7 @@ JavaScript 代码如下所示：
 }
 ```
 
-若要写入数据库，请将文档对象传递到 database 参数的 `set` 方法。
+若要写入数据库，请将文档对象传递给数据库参数的 `set` 方法。
 
 ```python
 import azure.functions as func
@@ -364,7 +364,7 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 
 <a id="queue-trigger-save-message-to-database-via-return-value-java"></a>
 
-### <a name="queue-trigger-save-message-to-database-via-return-value"></a>Queue 触发器，通过返回值将消息保存到数据库
+### <a name="queue-trigger-save-message-to-database-via-return-value"></a>队列触发器，通过返回值将消息保存到数据库
 
 以下示例展示了一个 Java 函数，它向数据库中添加一个文档，该文档包含来自队列存储中消息的数据。
 
@@ -385,7 +385,7 @@ public String cosmosDbQueryById(
 ```
 <a id="http-trigger-save-one-document-to-database-via-return-value-java"></a>
 
-#### <a name="http-trigger-save-one-document-to-database-via-return-value"></a>HTTP 触发器，通过返回值将一个文档保存到数据库
+#### <a name="http-trigger-save-one-document-to-database-via-return-value"></a>HTTP 触发器，通过返回值将文件保存到数据库
 
 以下示例显示了 Java 函数，其签名使用 ```@CosmosDBOutput``` 注释，并且返回值类型为 ```String```。 该函数返回的 JSON 文档将自动写入相应的 CosmosDB 集合。
 
@@ -426,7 +426,7 @@ public String cosmosDbQueryById(
 
 ### <a name="http-trigger-save-one-document-to-database-via-outputbinding"></a>HTTP 触发器，通过 OutputBinding 将一个文档保存到数据库
 
-以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将文档写入 CosmosDB。 在此示例中，需要用 ```@CosmosDBOutput```批注 ```outputItem``` 参数，而不是函数签名。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
+以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将文档写入 CosmosDB。 在此示例中，```outputItem```参数需要用```@CosmosDBOutput```进行注注，而不是使用函数签名。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
 
 ```java
     @FunctionName("WriteOneDocOutputBinding")
@@ -472,7 +472,7 @@ public String cosmosDbQueryById(
 
 ### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding"></a>HTTP 触发器，通过 OutputBinding 将多个文档保存到数据库
 
-以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将多个文档写入 CosmosDB。 在此示例中，```outputItem``` 参数以 ```@CosmosDBOutput```（而不是函数签名）进行批注。 输出参数 ```outputItem``` 有一个 ```ToDoItem``` 对象列表作为其模板参数类型。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
+以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将多个文档写入 CosmosDB。 在此示例中，```outputItem```参数使用 进行注注```@CosmosDBOutput```，而不是使用 函数签名。 输出参数 ```outputItem``` 有一个 ```ToDoItem``` 对象列表作为其模板参数类型。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
 
 ```java
     @FunctionName("WriteMultipleDocsOutputBinding")
@@ -523,7 +523,7 @@ public String cosmosDbQueryById(
 
 ---
 
-## <a name="attributes-and-annotations"></a>特性和批注
+## <a name="attributes-and-annotations"></a>特性和注释
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -541,41 +541,41 @@ public String cosmosDbQueryById(
     }
 ```
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-C#脚本不支持特性。
+C# 脚本不支持特性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 JavaScript 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支持特性。
+Python 不支持属性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`CosmosDBOutput` 批注可用于将数据写入 Cosmos DB。 可以将批注应用于函数或单个函数参数。 在函数方法上使用时，函数的返回值将写入 Cosmos DB。 如果将批注与参数一起使用，则必须将参数的类型声明为 `OutputBinding<T>`，其中 `T` 本机 Java 类型或 POJO。
+注释`CosmosDBOutput`可用于将数据写入 Cosmos DB。 您可以将注释应用于函数或单个函数参数。 当在函数方法上使用时，函数的返回值是写入 Cosmos DB 的内容。 如果将注释与参数一起使用，则必须将参数的类型声明为本机 Java 类型`OutputBinding<T>`或`T`POJO 所在的 区域。
 
 ---
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
-下表解释了在 function.json 文件和 `CosmosDB` 特性中设置的绑定配置属性。
+下表介绍了您在*函数.json*文件和`CosmosDB`属性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-|type     | 不适用 | 必须设置为 `cosmosDB`。        |
-|direction     | 不适用 | 必须设置为 `out`。         |
-|name     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
-|**databaseName** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |
-|**collectionName** |**CollectionName**  | 包含在其中创建文档的集合的名称。 |
-|**createIfNotExists**  |**CreateIfNotExists**    | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*，因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |
-|**partitionKey**|**PartitionKey** |如果 `CreateIfNotExists` 为 true，则它将为创建的集合定义分区键路径。|
-|**collectionThroughput**|**CollectionThroughput**| 如果 `CreateIfNotExists` 为 true，则它将定义创建的集合的[吞吐量](../cosmos-db/set-throughput.md)。|
-|**connectionStringSetting**    |**ConnectionStringSetting** |内含 Azure Cosmos DB 连接字符串的应用设置的名称。        |
-|**preferredLocations**| **PreferredLocations**| 可有可无为 Azure Cosmos DB 服务中异地复制的数据库帐户定义首选位置（区域）。 值应以逗号分隔。 例如，"美国东部"、"美国中南部" 北欧 "。 |
-|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| 可有可无如果设置为 `true` 和 `PreferredLocations`，则它可以在 Azure Cosmos DB 服务中利用[多区域写入](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)。 |
+|**type**     | 不适用 | 必须设置为 `cosmosDB`。        |
+|direction****     | 不适用 | 必须设置为 `out`。         |
+|**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
+|**数据库名称** | **数据库名称**|包含在其中创建文档的集合的数据库。     |
+|**集合名称** |**CollectionName**  | 包含在其中创建文档的集合的名称。 |
+|**创建不存在**  |**CreateIfNotExists**    | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*，因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |
+|**分区键**|**PartitionKey** |当`CreateIfNotExists`为 true 时，它将定义所创建集合的分区键路径。|
+|**集合吞吐量**|**CollectionThroughput**| 当`CreateIfNotExists`为 true 时，它定义创建的集合的[吞吐量](../cosmos-db/set-throughput.md)。|
+|**连接字符串设置**    |**ConnectionStringSetting** |内含 Azure Cosmos DB 连接字符串的应用设置的名称。        |
+|**首选位置**| **首选位置**| （可选）为 Azure Cosmos 数据库服务中的异地复制数据库帐户定义首选位置（区域）。 值应为逗号分隔。 例如，"美国东部、美国中南部、北欧"。 |
+|**使用多个写入位置**| **使用多个写入位置**| （可选）设置为`true`与 时`PreferredLocations`，它可以利用 Azure Cosmos DB 服务中的[多区域写入](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -613,7 +613,7 @@ Python 不支持特性。
 }
 ```
 
-|properties  |默认 | 说明 |
+|properties  |默认 | 描述 |
 |---------|---------|---------|
 |GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
 |协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)|
@@ -621,5 +621,5 @@ Python 不支持特性。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在创建或修改 Azure Cosmos DB 文档时运行函数（触发器）](./functions-bindings-cosmosdb-v2-trigger.md)
-- [读取 Azure Cosmos DB 文档（输入绑定）](./functions-bindings-cosmosdb-v2-input.md)
+- [创建或修改 Azure 宇宙数据库文档时运行函数（触发器）](./functions-bindings-cosmosdb-v2-trigger.md)
+- [阅读 Azure 宇宙数据库文档（输入绑定）](./functions-bindings-cosmosdb-v2-input.md)

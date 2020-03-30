@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 2e7c1eedf02c8a7783ee90f403dbd77ec2ee53ea
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79267659"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297711"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 系列软件、高可用性和网络要求
 
@@ -81,7 +81,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
 <sup>3</sup> StorSimple 设备上控制器的固定 IP 必须可路由，并能直接连接到 Internet 或通过配置 Web 代理连接到 Internet。 固定 IP 地址用于为设备提供更新以及垃圾回收。 如果设备控制器无法通过固定 IP 连接到 Internet，用户将不能更新 StorSimple 设备，且垃圾回收将无法正常工作。
 
 > [!IMPORTANT]
-> 确保防火墙不会修改或解密 StorSimple 设备和 Azure 之间的任何 SSL 通信。
+> 确保防火墙不会修改或解密 StorSimple 设备和 Azure 之间的任何 TLS 流量。
 
 
 ### <a name="url-patterns-for-firewall-rules"></a>防火墙规则的 URL 模式
@@ -149,7 +149,7 @@ StorSimple 设备是锁定设备。 但是，需要在防火墙中打开端口�
   
     *Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)*
   
-    括号中的数字表示相应的路由跃点数。
+    括号中的数字表示相应的路由跃点数。**
   
     如果 Data 0 失败，将通过 Data 5 路由云流量。 假设所有其他网络上已配置网关，如果 Data 0 和 Data 5 均失败，将通过 Data 1 路由云流量。
 * 如果启用云的网络接口失败，则重试连接到接口 3 次，其中有 30 秒的延迟。 如果所有重试均失败，将流量路由到路由表确定的下一个启用云的可用接口。 如果所有启用云的网络接口均失败，设备将故障转移到另一个控制器（在这种情况下不用重新启动）。
@@ -223,7 +223,7 @@ StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和�
 * 如果 SSD 或 HDD 发生故障或需要更换，请确保仅移除需要更换的 SSD 或 HDD。
 * 不要同时从系统中移除多个 SSD 或 HDD。
   如果短时间内 2 个或更多个特定类型（SSD、HDD）的磁盘发生故障或发生连续故障，可能导致系统出现故障和潜在的数据丢失。 如果发生这种情况，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)获取帮助。
-* 更换过程中，在 SSD 和 HDD 驱动器的“硬件运行状况”边栏选项卡中监视“共享组件”。 绿色复选标记状态表示磁盘运行正常，而红色感叹号表示 SSD 或 HDD 发生故障。
+* 更换过程中，在 SSD 和 HDD 驱动器的“硬件运行状况”**** 边栏选项卡中监视“共享组件”****。 绿色复选标记状态表示磁盘运行正常，而红色感叹号表示 SSD 或 HDD 发生故障。
 * 建议用户为需要系统故障保护的所有卷配置云快照。
 
 #### <a name="ebod-enclosure"></a>EBOD 机箱
@@ -233,7 +233,7 @@ StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和�
 * 请确保始终都安装有两个 EBOD 机箱控制器模块、两个 SAS 电缆以及所有的硬盘驱动器。
 * 如果 EBOD 机箱控制器模块发生故障，立即请求更换。
 * 如果 EBOD 机箱控制器模块发生故障，请确保在更换发生故障的模块之前另一个控制器模块处于主动状态。 若要验证控制器是否处于主动状态，请转到 [Identify the active controller on your device](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)（识别设备上的主动控制器）。
-* 在 EBOD 控制器模块更换过程中，依次访问“监视” > “硬件运行状况”，持续监视 StorSimple 设备管理器服务中的组件状态。
+* 在 EBOD 控制器模块更换期间，通过访问**监视器** > **硬件运行状况**，持续监视 StorSimple 设备管理器服务中组件的状态。
 * 如果 SAS 电缆发生故障或需要更换（应让 Microsoft 支持部门参与，一起做出决定），请确保仅移除需要更换的 SAS 电缆。
 * 不要同时从系统中移除两个 SAS 电缆。
 
@@ -241,7 +241,7 @@ StorSimple 设备包括使用镜像空间进行保护的固态硬盘 (SSD) 和�
 
 请仔细查看这些最佳实践，确保连接到 StorSimple 设备的主机具有高可用性。
 
-* 将 StorSimple 配置为具有[双节点文件服务器群集配置][1]。 通过消除单点故障并在主机端内置冗余，整个解决方案变得高度可用。
+* 通过[双节点文件服务器群集配置][1]来配置 StorSimple。 通过消除单点故障并在主机端内置冗余，整个解决方案变得高度可用。
 * 在存储控制器故障转移期间，使用可用于 Windows Server 2012 (SMB 3.0) 的连续可用 (CA) 共享来实现高可用性。 有关通过 Windows Server 2012 配置文件服务器群集和持续可用共享的其他信息，请参阅该[视频演示](https://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)。
 
 ## <a name="next-steps"></a>后续步骤

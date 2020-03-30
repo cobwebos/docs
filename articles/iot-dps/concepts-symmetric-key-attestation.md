@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中心设备预配服务 - 对称密钥证明
-description: 本文简要概述了使用 IoT 设备预配服务（DPS）的对称密钥证明。
+description: 本文提供了使用 IoT 设备配置服务 （DPS） 的对称密钥认证的概念概述。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271507"
 ---
 # <a name="symmetric-key-attestation"></a>对称密钥证明
@@ -26,7 +26,7 @@ ms.locfileid: "79271507"
 
 ## <a name="symmetric-key-creation"></a>对称密钥创建
 
-默认情况下，当保存新注册且启用“自动生成密钥”选项时，设备预配服务会创建默认长度为 32 个字节的新对称密钥。
+默认情况下，当保存新注册且启用“自动生成密钥”选项时，设备预配服务会创建默认长度为 32 个字节的新对称密钥****。
 
 ![自动生成对称密钥](./media/concepts-symmetric-key-attestation/auto-generate-keys.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "79271507"
 
 使用 IoT 中心支持的相同[安全令牌](../iot-hub/iot-hub-devguide-security.md#security-token-structure)来执行含设备预配服务的对称密钥证明，以标识设备。 这些安全令牌都是[共享访问签名 (SAS) 令牌](../service-bus-messaging/service-bus-sas.md)。 
 
-SAS 令牌具有使用对称密钥创建的哈希签名。 设备预配服务会重新创建该签名，以验证在证明期间显示的安全令牌是否可信。
+SAS 令牌具有使用对称密钥创建的哈希签名**。 设备预配服务会重新创建该签名，以验证在证明期间显示的安全令牌是否可信。
 
 SAS 令牌的格式如下：
 
@@ -46,13 +46,13 @@ SAS 令牌的格式如下：
 
 下面是每个令牌的组成元素：
 
-| 值 | 说明 |
+| “值” | 描述 |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串。 对于单个注册，此签名通过使用对称密钥（主密钥或辅助密钥）执行哈希而生成。 对于注册组，从注册组密钥中派生的密钥用于执行哈希。 哈希在以下格式的消息上执行：`URL-encoded-resourceURI + "\n" + expiry`。 **重要说明**：必须先从 base64 解码密钥，然后才能将其用于执行 HMAC-SHA256 计算。 此外，签名结果必须为 URL 编码。 |
 | {resourceURI} |以设备预配服务实例的范围 ID 开头、可通过此令牌访问的注册终结点的 URI。 例如： `{Scope ID}/registrations/{Registration ID}` |
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
 | {URL-encoded-resourceURI} |小写资源 URI 的小写 URL 编码 |
-| {policyName} |此令牌所引用的共享访问策略名称。 使用对称密钥证明预配时使用的策略名称是“注册”。 |
+| {policyName} |此令牌所引用的共享访问策略名称。 使用对称密钥证明预配时使用的策略名称是“注册”****。 |
 
 当设备使用单个注册进行证明时，设备将使用在单个注册条目中定义的对称密钥创建 SAS 令牌的哈希签名。
 
@@ -102,7 +102,7 @@ String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(mas
 
 理想情况下，在中心中派生和安装设备密钥。 此方法可保证不会在部署到设备的任何软件中包含组密钥。 向设备分配 MAC 地址或序列号后，可以派生密钥，并将其注入到设备，而无论制造商选择以何种方式来存储它。
 
-请考虑下图，该图显示了一个设备密钥表，这些设备密钥通过以下方式在中心中生成：通过组注册密钥 (K) 对每个设备注册 ID 进行哈希处理。 
+请考虑下图，该图显示了一个设备密钥表，这些设备密钥通过以下方式在中心中生成：通过组注册密钥 (K) 对每个设备注册 ID 进行哈希处理****。 
 
 ![从中心分配的设备密钥](./media/concepts-symmetric-key-attestation/key-diversification.png)
 

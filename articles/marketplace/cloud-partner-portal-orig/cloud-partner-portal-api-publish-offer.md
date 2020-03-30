@@ -1,19 +1,18 @@
 ---
-title: 发布产品/服务 |Azure Marketplace
+title: 发布产品/服务 |Azure 应用商店
 description: 用于发布指定产品/服务的 API。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b7ad8086c417cf1f14d9116fa4abcb0a88030922
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4163bf5727c327d559b81db42f99684aa0cc8d5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819643"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280518"
 ---
 <a name="publish-an-offer"></a>发布产品/服务
 ================
@@ -36,7 +35,7 @@ ms.locfileid: "73819643"
 <a name="header"></a>标头
 ------
 
-|  **名称**        |    **值**          |
+|  **名称**        |    **价值**          |
 |  --------        |    ---------          |
 |  Content-Type    | `application/json`    |
 |  授权   |  `Bearer YOUR_TOKEN`  |
@@ -72,7 +71,7 @@ ms.locfileid: "73819643"
 
 ### <a name="response-header"></a>响应标头
 
-|  **名称**             |    **值**                                                                 |
+|  **名称**             |    **价值**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
 | Operation-Location    | URL，可以查询它以确定操作的当前状态。    |
 |  |  |

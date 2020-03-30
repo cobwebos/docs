@@ -1,146 +1,262 @@
 ---
-title: REST API 声明交换作为验证
+title: REST API 声明交换为验证
 titleSuffix: Azure AD B2C
-description: 用于创建与 RESTful services 交互的 Azure AD B2C 用户旅程的演练。
+description: 用于创建与 RESTful 服务交互的 Azure AD B2C 用户旅程的演练。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7100498d99068941bcd7ca48b6cbcaa271fbb095
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a4902e96cd41a02953b6686b5d52d7912b27809f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189066"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330818"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>演练：在 Azure AD B2C 用户旅程中集成 REST API 声明交换，以验证用户输入
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-构成 Azure Active Directory B2C (Azure AD B2C) 基础的标识体验框架 (IEF) 可让标识开发人员在用户旅程中将某种交互与 RESTful API 集成。
+支持 Azure 活动目录 B2C（Azure AD B2C）的标识体验框架 （IEF） 使标识开发人员能够在用户旅程中集成与 RESTful API 的交互。  在本演练结束时，您将能够创建 Azure AD B2C 用户旅程，该旅程与[RESTful 服务](custom-policy-rest-api-intro.md)进行交互，以验证用户输入。
 
-完成本演练后，就可以创建与 RESTful 服务交互的 Azure AD B2C 用户旅程了。
+在这种情况下，我们将添加用户在 Azure AD B2C 注册页中输入会员号码的能力。 我们将通过将此数据发送到 REST API 来验证此电子邮件和会员号码的组合是否已映射到促销代码。 如果 REST API 找到此用户的促销代码，它将返回到 Azure AD B2C。 最后，促销代码将插入到应用程序使用令牌声明中。
 
-IEF 在声明中发送数据，同时也在声明中接收数据。 与 API 的交互：
+也可以将交互设计为业务流程步骤。 当 REST API 不会在屏幕上验证数据，并且始终返回声明时，这一点是合适的。 有关详细信息，请参阅[演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换](custom-policy-rest-api-claims-exchange.md)。
 
-- 可设计为 REST API 声明交换，或者业务流程步骤中的一个验证配置文件。
-- 通常会验证用户提供的输入。 如果用户提供的值被拒绝，该用户可重试输入有效值，同时，系统可能会返回一条错误消息。
+## <a name="prerequisites"></a>先决条件
 
-也可以将交互设计为业务流程步骤。 有关详细信息，请参阅[演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换](custom-policy-rest-api-claims-exchange.md)。
+- 完成[自定义策略入门](custom-policy-get-started.md)中的步骤。 应准备好一个有效的自定义策略，以便使用本地帐户注册和登录。
+- 了解如何在[Azure AD B2C 自定义策略中集成 REST API 声明交换](custom-policy-rest-api-intro.md)。
 
-我们将使用初学者包文件 ProfileEdit.xml 中的配置文件编辑用户旅程作为验证配置文件示例。
+## <a name="prepare-a-rest-api-endpoint"></a>准备 REST API 终结点
 
-我们可以验证用户在配置文件编辑中提供的名称是否为排除列表的一部分。
+在本演练中，您应该有一个 REST API，用于验证电子邮件地址是否在后端系统中注册了一个会员 ID。 如果注册，REST API 应返回注册促销代码，客户可以使用该代码在您的应用程序中购买商品。 否则，REST API 应返回 HTTP 409 错误消息："忠诚 ID '[会员 ID] 未与 "[电子邮件]"电子邮件地址关联。
 
-## <a name="prerequisites"></a>必备条件
+以下 JSON 代码说明了 Azure AD B2C 将发送到 REST API 终结点的数据。 
 
-- 根据[入门](custom-policy-get-started.md)中所述配置一个 Azure AD B2C 租户，以完成本地帐户注册/登录。
-- 要交互的 REST API 终结点。 对于本演练，我们设置了一个名为 [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) 且包含 REST API 服务的演示站点。
-
-## <a name="step-1-prepare-the-rest-api-function"></a>步骤 1：准备 REST API 函数
-
-> [!NOTE]
-> REST API 函数的设置不在本文的讨论范围内。 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) 提供一个绝佳的工具包，用于在云中创建 RESTful 服务。
-
-我们创建了一个 Azure 函数，用于接收它所需要的 `playerTag` 声明。 该函数验证是否存在此声明。 可以在 [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples) 中访问完整的 Azure 函数代码。
-
-```csharp
-if (requestContentAsJObject.playerTag == null)
+```json
 {
-  return request.CreateResponse(HttpStatusCode.BadRequest);
+    "email": "User email address",
+    "language": "Current UI language",
+    "loyaltyId": "User loyalty ID"
 }
-
-var playerTag = ((string) requestContentAsJObject.playerTag).ToLower();
-
-if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcottonmarcus")
-{
-  return request.CreateResponse<ResponseContent>(
-    HttpStatusCode.Conflict,
-    new ResponseContent
-    {
-      version = "1.0.0",
-      status = (int) HttpStatusCode.Conflict,
-      userMessage = $"The player tag '{requestContentAsJObject.playerTag}' is already used."
-    },
-    new JsonMediaTypeFormatter(),
-    "application/json");
-}
-
-return request.CreateResponse(HttpStatusCode.OK);
 ```
 
-IEF 需要 Azure 函数返回的 `userMessage` 声明。 如果验证失败，例如前面的示例中返回 409 冲突状态时，此声明将以字符串的形式向用户显示。
+REST API 验证数据后，必须返回 HTTP 200 （Ok），并包含以下 JSON 数据：
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>步骤 2：在 TrustFrameworkExtensions.xml 文件中将 RESTful API 声明交换配置为技术配置文件
+```json
+{
+    "promoCode": "24534"
+}
+```
 
-技术配置文件是 RESTful 服务所需的交换的完整配置。 打开 TrustFrameworkExtensions.xml 文件并在元素 `<ClaimsProviders>` 内添加以下 XML 代码片段。
+如果验证失败，REST API 必须返回带有 JSON 元素的`userMessage`HTTP 409（冲突）。 IEF 期望`userMessage`REST API 返回的声明。 如果验证失败，此声明将作为字符串呈现给用户。
 
-> [!NOTE]
-> 在以下 XML 中，RESTful 提供程序 `Version=1.0.0.0` 被描述为协议。 将其视为与外部服务进行交互的函数。 <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
+```json
+{
+    "version": "1.0.1",
+    "status": 409,
+    "userMessage": "LoyaltyId ID '1234' is not associated with 'david@contoso.com' email address."
+}
+```
+
+REST API 终结点的设置不在本文的讨论范围之内。 我们创建了[Azure 函数](https://docs.microsoft.com/azure/azure-functions/functions-reference)示例。 您可以在[GitHub](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)访问完整的 Azure 函数代码。
+
+## <a name="define-claims"></a>定义声明
+
+声明在 Azure AD B2C 策略执行期间提供数据的临时存储。 您可以在[声明架构](claimsschema.md)部分中声明声明声明。 
+
+1. 打开策略的扩展文件。 例如， <em> `SocialAndLocalAccounts/` </em>.
+1. 搜索 BuildingBlocks[](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
+1. 找到[声明架构](claimsschema.md)元素。 如果该元素不存在，请添加该元素。
+1. 将以下声明添加到**声明架构**元素。  
+
+```xml
+<ClaimType Id="loyaltyId">
+  <DisplayName>Your loyalty ID</DisplayName>
+  <DataType>string</DataType>
+  <UserInputType>TextBox</UserInputType>
+</ClaimType>
+<ClaimType Id="promoCode">
+  <DisplayName>Your promo code</DisplayName>
+  <DataType>string</DataType>
+  <UserInputType>Paragraph</UserInputType>
+</ClaimType>
+  <ClaimType Id="userLanguage">
+  <DisplayName>User UI language (used by REST API to return localized error messages)</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+```
+
+## <a name="configure-the-restful-api-technical-profile"></a>配置 RESTful API 技术配置文件 
+
+[宁静的技术配置文件](restful-technical-profile.md)支持与您自己的 RESTful 服务进行接口。 Azure AD B2C 将数据发送到`InputClaims`集合中的 RESTful 服务，并在`OutputClaims`集合中接收数据。 查找**声明提供程序**元素并添加新的声明提供程序，如下所示：
 
 ```xml
 <ClaimsProvider>
-    <DisplayName>REST APIs</DisplayName>
-    <TechnicalProfiles>
-        <TechnicalProfile Id="AzureFunctions-CheckPlayerTagWebHook">
-            <DisplayName>Check Player Tag Web Hook Azure Function</DisplayName>
-            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-            <Metadata>
-                <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
-                <Item Key="SendClaimsIn">Body</Item>
-                <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
-                <Item Key="AuthenticationType">None</Item>
-                <!-- REMOVE the following line in production environments -->
-                <Item Key="AllowInsecureAuthInProduction">true</Item>
-            </Metadata>
-            <InputClaims>
-                <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="playerTag" />
-            </InputClaims>
-            <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
-        </TechnicalProfile>
-        <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
-            <ValidationTechnicalProfiles>
-                <ValidationTechnicalProfile ReferenceId="AzureFunctions-CheckPlayerTagWebHook" />
-            </ValidationTechnicalProfiles>
-        </TechnicalProfile>
-    </TechnicalProfiles>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="REST-ValidateProfile">
+      <DisplayName>Check loyaltyId Azure Function web hook</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/ValidateProfile?code=your-code</Item>
+        <Item Key="SendClaimsIn">Body</Item>
+        <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+        <Item Key="AuthenticationType">None</Item>
+        <!-- REMOVE the following line in production environments -->
+        <Item Key="AllowInsecureAuthInProduction">true</Item>
+      </Metadata>
+      <InputClaims>
+        <!-- Claims sent to your REST API -->
+        <InputClaim ClaimTypeReferenceId="loyaltyId" />
+        <InputClaim ClaimTypeReferenceId="email" />
+        <InputClaim ClaimTypeReferenceId="userLanguage" PartnerClaimType="lang" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
+      </InputClaims>
+      <OutputClaims>
+        <!-- Claims parsed from your REST API -->
+        <OutputClaim ClaimTypeReferenceId="promoCode" />
+      </OutputClaims>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+    </TechnicalProfile>
+  </TechnicalProfiles>
 </ClaimsProvider>
 ```
 
-`InputClaims` 元素定义要从 IEF 发送到 REST 服务的声明。 在本示例中，声明 `givenName` 的内容将以 `playerTag` 的形式发送到 REST 服务。 本示例中，IEF 不需要返回的声明。 相反，它等待来自 REST 服务的响应并根据所接收的状态代码执行操作。
+在此示例中，`userLanguage`将像在 JSON 负载中一样`lang`发送到 REST 服务。 `userLanguage`声明的值包含当前用户语言 ID。 有关详细信息，请参阅[声明解析器](claim-resolver-overview.md)。
 
-上述注释 `AuthenticationType` 和 `AllowInsecureAuthInProduction` 指定在迁移到生产环境时应进行的更改。 若要了解如何保护用于生产的 RESTful Api，请参阅通过[证书身份验证](secure-rest-api-dotnet-certificate-auth.md)实现基本身份验证和安全 RESTful Api[安全 RESTful api](secure-rest-api-dotnet-basic-auth.md) 。
+上面`AuthenticationType`的注释并`AllowInsecureAuthInProduction`指定在移动到生产环境时应所做的更改。 要了解如何保护用于生产的 RESTful API，请参阅安全[RESTful API](secure-rest-api.md)。
 
-## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>步骤 3：在要验证用户输入的自我断言技术配置文件中包含 RESTful 服务声明交换
+## <a name="validate-the-user-input"></a>验证用户输入
 
-验证步骤的最常见用途是与用户交互。 用户预期需要提供输入的所有交互都属于自我断言技术配置文件。 在本示例中，我们会将此验证添加到 Self-Asserted-ProfileUpdate 技术配置文件。 这是信赖方 (RP) 策略文件 `Profile Edit` 所使用的技术配置文件。
+要在注册期间获取用户的会员号码，您必须允许用户在屏幕上输入此数据。 通过将**pageaid**输出声明添加到现有注册技术配置文件部分`OutputClaims`的元素，将 pageaid 输出声明添加到注册页。 指定整个输出声明列表，以控制声明在屏幕上显示的顺序。  
 
-将声明交换添加到自我断言技术配置文件：
+将验证技术配置文件引用添加到注册技术配置文件，该配置文件调用`REST-ValidateProfile`。 新的验证技术配置文件将添加到基本策略中定义的`<ValidationTechnicalProfiles>`集合的顶部。 此行为意味着只有在成功验证后，Azure AD B2C 才会继续在目录中创建帐户。   
 
-1. 打开 TrustFrameworkBase.xml 文件并搜索 `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`。
-2. 查看此技术配置文件的配置。 观察如何将用户交换定义为需要用户响应的声明（输入声明），以及预期需要自我断言提供程序返回的声明（输出声明）。
-3. 搜索 `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`，可以看到此配置文件已作为 `<UserJourney Id="ProfileEdit">` 业务流程的第 5 步调用。
+1. 找到 **ClaimsProviders** 元素。 添加新的声明提供程序，如下所示：
 
-## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>步骤 4：上传并测试配置文件编辑 RP 策略文件
+    ```xml
+    <ClaimsProvider>
+      <DisplayName>Local Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true"/>
+            <OutputClaim ClaimTypeReferenceId="newPassword" Required="true"/>
+            <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true"/>
+            <OutputClaim ClaimTypeReferenceId="displayName"/>
+            <OutputClaim ClaimTypeReferenceId="givenName"/>
+            <OutputClaim ClaimTypeReferenceId="surName"/>
+            <!-- Required to present the text box to collect the data from the user -->
+            <OutputClaim ClaimTypeReferenceId="loyaltyId"/>
+            <!-- Required to pass the promoCode returned from "REST-ValidateProfile" 
+            to subsequent orchestration steps and token issuance-->
+            <OutputClaim ClaimTypeReferenceId="promoCode" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="REST-ValidateProfile" />
+          </ValidationTechnicalProfiles>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Self Asserted</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="SelfAsserted-Social">
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="email" />
+          </InputClaims>
+            <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="email" />
+            <OutputClaim ClaimTypeReferenceId="displayName"/>
+            <OutputClaim ClaimTypeReferenceId="givenName"/>
+            <OutputClaim ClaimTypeReferenceId="surname"/>
+            <!-- Required to present the text box to collect the data from the user -->
+            <OutputClaim ClaimTypeReferenceId="loyaltyId"/>
+            <!-- Required to pass the promoCode returned from "REST-ValidateProfile" 
+            to subsequent orchestration steps and token issuance-->
+            <OutputClaim ClaimTypeReferenceId="promoCode" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="REST-ValidateProfile"/>
+          </ValidationTechnicalProfiles>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
 
-1. 上传新版本的 TrustFrameworkExtensions.xml 文件。
-2. 使用“立即运行”测试配置文件编辑 RP 策略文件。
-3. 通过在“给定名称”字段中提供某个现有名称（例如：mcvinny）来测试验证。 如果所有设置正确，应会收到一条消息，告知用户播放器标记已被使用。
+## <a name="include-a-claim-in-the-token"></a>在令牌中包含声明 
+
+要将促销代码声明返回到依赖方应用程序，请向<em>`SocialAndLocalAccounts/`</em>文件添加输出声明。 输出声明将允许在用户成功访问后将声明添加到令牌中，并将发送到应用程序。 修改依赖方节中的技术配置文件元素以添加`promoCode`为输出声明。
+ 
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      <OutputClaim ClaimTypeReferenceId="promoCode" DefaultValue="" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+## <a name="test-the-custom-policy"></a>测试自定义策略
+
+1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 通过在顶部菜单中选择**目录 + 订阅**筛选器并选择包含 Azure AD 租户的目录，请确保使用的目录包含 Azure AD 租户。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”********。
+1. 选择**身份体验框架**。
+1. 选择 **"上传自定义策略**"，然后上载您更改的策略文件：*信任框架扩展.xml*和*SignUpOrSignin.xml*。 
+1. 选择已上传的注册或登录策略，并单击“立即运行”按钮。****
+1. 现在，应该可以使用电子邮件地址注册。
+1. 单击"**立即注册"** 链接。
+1. 在 **"您的会员 ID"** 中，键入 1234，然后单击"**继续**"。 此时，您应该收到一条验证错误消息。
+1. 更改为其他值，然后单击"**继续**"。
+1. 发送回应用程序的令牌包含 `promoCode` 声明。
+
+```json
+{
+  "typ": "JWT",
+  "alg": "RS256",
+  "kid": "X5eXk4xyojNFum1kl2Ytv8dlNP4-c57dO6QGTVBwaNk"
+}.{
+  "exp": 1584295703,
+  "nbf": 1584292103,
+  "ver": "1.0",
+  "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
+  "aud": "e1d2612f-c2bc-4599-8e7b-d874eaca1ee1",
+  "acr": "b2c_1a_signup_signin",
+  "nonce": "defaultNonce",
+  "iat": 1584292103,
+  "auth_time": 1584292103,
+  "name": "Emily Smith",
+  "email": "emily@outlook.com",
+  "given_name": "Emily",
+  "family_name": "Smith",
+  "promoCode": "84362"
+  ...
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-[修改配置文件编辑和用户注册以便收集用户的其他信息](custom-policy-custom-attributes.md)
+要了解如何保护 API，请参阅以下文章：
 
-[演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换](custom-policy-rest-api-claims-exchange.md)
-
-[参考： RESTful 技术配置文件](restful-technical-profile.md)
-
-若要了解如何保护 Api，请参阅以下文章：
-
-* [使用基本身份验证（用户名和密码）保护 RESTful API](secure-rest-api-dotnet-basic-auth.md)
-* [使用客户端证书保护 RESTful API](secure-rest-api-dotnet-certificate-auth.md)
+- [演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换](custom-policy-rest-api-claims-exchange.md)
+- [保护您的 RESTful API](secure-rest-api.md)
+- [参考： RESTful 技术配置文件](restful-technical-profile.md)

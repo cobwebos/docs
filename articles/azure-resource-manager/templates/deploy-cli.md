@@ -1,18 +1,20 @@
 ---
-title: 部署具有 Azure CLI 和模板的资源
+title: 使用 Azure CLI 和模板部署资源
 description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-ms.date: 10/09/2019
-ms.openlocfilehash: 17307b1657afc133a7e1b1d7714363329573e48c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/25/2020
+ms.openlocfilehash: 241b84bc7b8c0b213e74cd7ee5f3d7668fe0d808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273899"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282641"
 ---
-# <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>使用 Resource Manager 模板和 Azure CLI 部署资源
+# <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>使用 ARM 模板和 Azure CLI 部署资源
 
-本文介绍如何将 Azure CLI 与资源管理器模板配合使用将资源部署到 Azure。 如果你不熟悉部署和管理 Azure 解决方案的概念，请参阅[模板部署概述](overview.md)。
+本文介绍如何使用 Azure 资源管理器 （ARM） 模板将 Azure CLI 部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅[模版部署概述](overview.md)。
+
+Azure CLI 版本 2.2.0 中更改了部署命令。 本文中的示例需要 Azure CLI 版本 2.2.0 或更高版本。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -20,23 +22,39 @@ ms.locfileid: "79273899"
 
 ## <a name="deployment-scope"></a>部署范围
 
-可以将部署定向到订阅中的 Azure 订阅或资源组。 在大多数情况下，将部署到资源组。 使用订阅部署在整个订阅中应用策略和角色分配。 你还可以使用订阅部署创建资源组，并将资源部署到该资源组。 根据部署的范围，你可以使用不同的命令。
+您可以将部署定位到资源组、订阅组、管理组或租户。 大多数情况下，我们会将以资源组指定为部署目标。 要在更大的范围内应用策略和角色分配，请使用订阅、管理组或租户部署。 部署到订阅时，可以创建资源组并将资源部署到该订阅。
 
-若要部署到**资源组**，请使用[az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)：
+你将根据部署范围使用不同的命令。
 
-```azurecli-interactive
-az group deployment create --resource-group <resource-group-name> --template-file <path-to-template>
-```
-
-若要部署到**订阅**，请使用[az deployment create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create)：
+要部署到**资源组**，请使用[az 部署组创建](/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-create)：
 
 ```azurecli-interactive
-az deployment create --location <location> --template-file <path-to-template>
+az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
 ```
 
-有关订阅级别部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
+要部署到**订阅**，请使用[az 部署子创建](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create)：
 
-目前，只能通过 REST API 来支持管理组部署。 有关管理组级别部署的详细信息，请参阅[在管理组级别创建资源](deploy-to-management-group.md)。
+```azurecli-interactive
+az deployment sub create --location <location> --template-file <path-to-template>
+```
+
+有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
+
+要部署到**管理组**，请使用[az 部署 mg 创建](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create)：
+
+```azurecli-interactive
+az deployment mg create --location <location> --template-file <path-to-template>
+```
+
+有关管理组级部署的详细信息，请参阅[在管理组级别创建资源](deploy-to-management-group.md)。
+
+要部署到**租户**，请使用[az 部署租户创建](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create)：
+
+```azurecli-interactive
+az deployment tenant create --location <location> --template-file <path-to-template>
+```
+
+有关租户级别部署的详细信息，请参阅[在租户级别创建资源](deploy-to-tenant.md)。
 
 本文中的示例使用资源组部署。
 
@@ -54,7 +72,7 @@ az deployment create --location <location> --template-file <path-to-template>
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
   --template-file storage.json \
@@ -69,13 +87,13 @@ az group deployment create \
 
 ## <a name="deploy-remote-template"></a>部署远程模板
 
-可能更愿意将 Resource Manager 模板存储在外部位置，而不是将它们存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
+您可能希望将 ARM 模板存储在本地计算机上，而不是将 ARM 模板存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
 
 若要部署外部模板，请使用 **template-uri** 参数。 使用示例中的 URI 从 GitHub 部署示例模板。
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
   --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
@@ -90,12 +108,12 @@ az group deployment create \
 
 ```azurecli-interactive
 az group create --name examplegroup --location "South Central US"
-az group deployment create --resource-group examplegroup \
+az deployment group create --resource-group examplegroup \
   --template-uri <copied URL> \
   --parameters storageAccountType=Standard_GRS
 ```
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 若要传递参数值，可以使用内联参数或参数文件。
 
@@ -104,18 +122,18 @@ az group deployment create --resource-group examplegroup \
 若要传递内联参数，请在 `parameters` 中提供值。 例如，若要在 Bash shell 中将字符串和数组传递给模板，请使用：
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group testgroup \
   --template-file demotemplate.json \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
-如果将 Azure CLI 与 Windows 命令提示符（CMD）或 PowerShell 一起使用，请按以下格式传递数组： `exampleArray="['value1','value2']"`。
+如果要将 Azure CLI 与 Windows 命令提示符 (CMD) 或 PowerShell 配合使用，请以以下格式传递数组：`exampleArray="['value1','value2']"`。
 
 还可以获取文件的内容并将该内容作为内联参数提供。
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group testgroup \
   --template-file demotemplate.json \
   --parameters exampleString=@stringContent.txt exampleArray=@arrayContent.json
@@ -136,12 +154,12 @@ arrayContent.json 格式为：
 
 与在脚本中以内联值的形式传递参数相比，可能会发现使用包含参数值的 JSON 文件更为容易。 参数文件必须是本地文件。 Azure CLI 不支持外部参数文件。
 
-有关参数文件的详细信息，请参阅[Create 资源管理器 parameter file](parameter-files.md)。
+有关参数文件的详细信息，请参阅[创建资源管理器参数文件](parameter-files.md)。
 
 若要传递本地参数文件，请使用 `@` 指定名为 storage.parameters.json 的本地文件。
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
   --template-file storage.json \
@@ -172,10 +190,10 @@ az group deployment create \
 
 ## <a name="test-a-template-deployment"></a>测试模板部署
 
-若要测试模板和参数值而不实际部署任何资源，请使用 [az group deployment validate](/cli/azure/group/deployment#az-group-deployment-validate)。
+要在不实际部署任何资源的情况下测试模板和参数值，请使用[az 部署组验证](/cli/azure/group/deployment)。
 
 ```azurecli-interactive
-az group deployment validate \
+az deployment group validate \
   --resource-group ExampleGroup \
   --template-file storage.json \
   --parameters @storage.parameters.json
@@ -223,9 +241,9 @@ az group deployment validate \
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要在出现错误时回滚到成功的部署，请参阅[出错时回滚到成功部署](rollback-on-error.md)。
+- 若要在出错时回退到成功的部署，请参阅[出错时回退到成功的部署](rollback-on-error.md)。
 - 若要指定如何处理存在于资源组中但未在模板中定义的资源，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
-- 若要了解如何在模板中定义参数，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
+- 要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 - 有关解决常见部署错误的提示，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](common-deployment-errors.md)。
 - 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](secure-template-with-sas-token.md)。
 - 若要安全地将服务扩展到多个区域，请参阅 [Azure 部署管理器](deployment-manager-overview.md)。

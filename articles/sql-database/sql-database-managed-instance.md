@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
 ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268777"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什么是 Azure SQL 数据库托管实例？
@@ -29,7 +29,7 @@ ms.locfileid: "79268777"
 
 ![主要功能](./media/sql-database-managed-instance/key-features.png)
 
-托管实例部署模型面向想要以最少的迁移工作量，将大量应用从本地或 IaaS、自我构建的或 ISV 提供的环境迁移到完全托管的 PaaS 云环境的客户。 使用 Azure 中完全自动化的[数据迁移服务 (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)，客户可将其本地 SQL Server 即时转移到托管实例，从而实现与本地 SQL Server 的兼容，并通过本机 VNet 支持实现客户实例的完全隔离。  使用软件保障，你可以使用[SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)，为托管实例上的折扣率交换现有许可证。  托管实例是 SQL Server 实例在云中的最佳迁移目标，需要很高的安全性和丰富的编程接口。
+托管实例部署模型面向想要以最少的迁移工作量，将大量应用从本地或 IaaS、自我构建的或 ISV 提供的环境迁移到完全托管的 PaaS 云环境的客户。 使用 Azure 中的完全自动化[数据迁移服务 （DMS），](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)客户可以提升其本地 SQL Server 并将其转移到托管实例，该实例提供与本地 SQL Server 的兼容性，并且使用本机 VNet 支持完全隔离客户实例。  借助软件保障，可以使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)交换现有许可证，以获得托管实例的折扣价格。  托管实例是 SQL Server 实例在云中的最佳迁移目标，需要很高的安全性和丰富的编程接口。
 
 托管实例部署选项旨在通过分阶段的发布计划，实现外围应用与最新本地 SQL Server 版本的近乎 100% 的兼容性。
 
@@ -45,15 +45,15 @@ ms.locfileid: "79268777"
 | **PaaS 优势** | **业务连续性** |
 | --- | --- |
 |无需采购和管理硬件 <br>不产生底层基础结构的管理开销 <br>快速预配和服务缩放 <br>自动修补和版本升级 <br>与其他 PaaS 数据服务集成 |99.99% 的运行时间 SLA  <br>内置[高可用性](sql-database-high-availability.md) <br>使用[自动备份](sql-database-automated-backups.md)保护数据 <br>客户可配置的备份保留期 <br>用户发起的[备份](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[数据库时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)功能 |
-|**安全性和符合性** | **管理**|
-|隔离的环境（[VNet 集成](sql-database-managed-instance-connectivity-architecture.md)、单租户服务、专用的计算和存储资源） <br>[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD 身份验证](sql-database-aad-authentication.md)、单一登录支持 <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 服务器主体（登录名）</a>  <br>符合 Azure SQL 数据库遵循的相同法规标准 <br>[SQL 审核](sql-database-managed-instance-auditing.md) <br>[高级威胁防护](sql-database-managed-instance-threat-detection.md) |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务
+|**安全性和合规性** | **管理**|
+|隔离的环境（[VNet 集成](sql-database-managed-instance-connectivity-architecture.md)、单租户服务、专用的计算和存储资源） <br>[透明数据加密 （TDE）](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD 身份验证](sql-database-aad-authentication.md)、单一登录支持 <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 服务器主体（登录名）</a>  <br>符合 Azure SQL 数据库遵循的相同法规标准 <br>[SQL 审核](sql-database-managed-instance-auditing.md) <br>[高级威胁防护](sql-database-managed-instance-threat-detection.md) |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务
 
 > [!IMPORTANT]
-> Azure SQL 数据库（所有部署选项）已针对多个符合性标准进行了认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，你可以在其中找到最新的 SQL 数据库符合性认证列表。
+> Azure SQL 数据库（所有部署选项）已通过了许多符合性标准的认证。 有关详细信息，请参阅 Microsoft [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，您可以在其中找到最新的 SQL 数据库合规性认证列表。
 
 下表显示托管实例的主要功能：
 
-|Feature | 说明|
+|Feature | 描述|
 |---|---|
 | SQL Server 版本/内部版本 | SQL Server 数据库引擎（最新稳定版） |
 | 受管理的自动备份 | 是 |
@@ -72,21 +72,21 @@ ms.locfileid: "79268777"
 
 ## <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
 
-托管实例中[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)提供了灵活性、控制力和透明度，并且还提供了一种简单明了的方法来将本地工作负荷要求转换到云。 此模型允许根据工作负荷需求来更改计算、内存和存储。 对于[SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)，vCore 模型还享有高达55% 的节约。
+托管实例中[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)提供了灵活性、控制力和透明度，并且还提供了一种简单明了的方法来将本地工作负荷要求转换到云。 此模型允许根据工作负荷需求来更改计算、内存和存储。 此外，借助[适用于 SQL Server 的 Azure SQL Server 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)，还能使用 vCore 模型节省高达 55% 的费用。
 
 在 vCore 模型中，可在以下两代硬件中进行选择。
 
-- **Gen4**逻辑 Cpu 基于 Intel E5-2673 v3 （Haswell） 2.4 GHz 处理器、附加的 SSD、物理内核、每个内核 7 GB RAM 以及8到 24 Vcore 之间的计算大小。
-- **Gen5**逻辑 Cpu 基于 Intel E5-2673 v4 （Broadwell） 2.3 GHz 和 Intel SP-8160 （Skylake）处理器，快速 NVMe SSD，超线程逻辑核心，以及4到80内核之间的计算大小。
+- **第4代**逻辑 CPU 基于英特尔 E5-2673 v3 （Haswell） 2.4-GHz 处理器、附加的 SSD、物理内核、每个内核 7 GB RAM 以及 8 到 24 个 vCore 之间的计算大小。
+- **第 5 代**逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel SP-8160 (Skylake) 处理器，采用快速 NVMe SSD，超线程逻辑核心，计算大小为 4 到 80 个核心。
 
-若要详细了解两代硬件之间的区别，请参阅[托管实例资源限制](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)。
+查找有关[托管实例资源限制](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)中硬件生成之间的差异的详细信息。
 
 ## <a name="managed-instance-service-tiers"></a>“托管实例”服务层级
 
 托管实例可在两个服务层级中提供：
 
-- **常规用途**：专为具有典型性能和 IO 延迟要求的应用程序而设计。
-- **业务关键**：专为具有低 IO 延迟要求的应用程序设计，对工作负荷的底层维护操作的影响最小。
+- **通用：** 专为具有典型性能和 IO 延迟要求的应用程序而设计。
+- **业务关键型**：专为 IO 延迟要求低且基础维护操作对工作负载影响最小的应用程序而设计。
 
 这两个服务层级保证 99.99% 的可用性，可让你独立选择存储大小和计算容量。 有关 Azure SQL 数据库高可用性体系结构的详细信息，请参阅[高可用性和 Azure SQL 数据库](sql-database-high-availability.md)。
 
@@ -96,7 +96,7 @@ ms.locfileid: "79268777"
 
 - 适用于具有典型性能要求的大多数业务应用程序
 - 高性能 Azure Blob 存储 (8 TB)
-- 基于可靠的 Azure Blob 存储和 [Azure Service Fabric](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) 的内置[高可用性](../service-fabric/service-fabric-overview.md)
+- 基于可靠的 Azure Blob 存储和 [Azure Service Fabric](../service-fabric/service-fabric-overview.md) 的内置[高可用性](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)
 
 有关详细信息，请参阅[常规用途层中的存储层](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c)和[托管实例（常规用途）的存储性能最佳做法和注意事项](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/)。
 
@@ -110,8 +110,8 @@ ms.locfileid: "79268777"
 
 - 为具有最严苛性能和 HA 要求的商业应用程序设计
 - 附带超高速本地 SSD 存储（第 4 代最多 1 TB，第 5 代最多 4 TB）
-- 基于 [Always On 可用性组](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)和 [Azure Service Fabric](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) 的内置[高可用性](../service-fabric/service-fabric-overview.md)。
-- 内置的附加[只读数据库副本](sql-database-read-scale-out.md)，可用于报表和其他只读工作负荷
+- 基于[始终打开的可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)和[Azure 服务结构](../service-fabric/service-fabric-overview.md)的内置[高可用性](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)。
+- 内置的附加[只读数据库副本](sql-database-read-scale-out.md)，可用于报告和其他只读工作负载
 - [内存中 OLTP](sql-database-in-memory.md)，可用于具有高性能要求的工作负荷  
 
 若要详细了解两种服务层级之间的区别，请参阅[托管实例资源限制](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)。
@@ -121,95 +121,95 @@ ms.locfileid: "79268777"
 
 Azure SQL 数据库提供管理操作，你可以使用这些操作自动部署新的托管实例、更新实例属性，以及在不再需要实例时将其删除。 本部分提供有关管理操作及其典型持续时间的信息。
 
-为了支持[Azure 虚拟网络（vnet）中的部署](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks)并为客户提供隔离和安全性，托管实例依赖于[虚拟群集](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)，这表示在客户的虚拟网络子网中部署的一组专用虚拟机。 实质上，空子网中的每个托管实例部署会导致新的虚拟群集 ring。
+托管实例依赖使用[虚拟群集](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)来支持 [Azure 虚拟网络 (VNet) 中的部署](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks)以及为客户提供隔离和安全性。虚拟群集表示客户虚拟网络子网中部署的一组隔离的专用虚拟机。 实质上，每在一个空子网中部署一个托管实例，就会组建一个新的虚拟群集。
 
-部署的托管实例上的后续操作也可能会影响其基础虚拟群集。 这会影响管理操作的持续时间，因为部署更多的虚拟机所需的开销需要在计划新部署或对现有托管实例的更新时考虑。
+在已部署的托管实例上执行的后续操作还可能会影响其底层虚拟群集。 这会影响管理操作的持续时间，因为部署更多的虚拟机会附带某种开销，在规划新的部署或者更新现有托管实例时，需要考虑到这种开销。
 
 所有管理操作可以按如下方式分类：
 
-- 实例部署（创建新实例）。 
-- 实例更新（更改实例属性，如 Vcore 或保留的存储。
+- 实例部署（新实例的创建）。 
+- 实例更新（更改实例属性，例如 vCore 数或预留存储）。
 - 实例删除。
 
-通常，虚拟群集上的操作花费的时间最长。 虚拟群集操作的持续时间变化–下面是根据现有的服务遥测数据，通常可以获得的值：
+通常，在虚拟群集上执行的操作花费的时间最长。 虚拟群集操作的持续时间各不相同 - 以下是您通常可以根据现有服务遥测数据预期的值：
 
-- 虚拟群集创建。 这是实例管理操作中的一个同步步骤。 **90% 的操作在4小时内完成**。
-- 虚拟群集大小调整（扩展或收缩）。 扩展是一种同步步骤，而收缩是异步执行的（不影响实例管理操作的持续时间）。 **90% 的群集扩展在2.5 小时内完成**。
-- 删除虚拟群集。 删除是异步步骤，但也可以在空虚拟群集上[手动启动](sql-database-managed-instance-delete-virtual-cluster.md)，在这种情况下，它会同步执行。 **90% 的虚拟群集删除在1.5 小时内完成**。
+- 虚拟群集的创建。 这是实例管理操作中的一个同步步骤。 **90%的操作在 4 小时内完成**。
+- 虚拟群集大小调整（扩展或收缩）。 扩展是一个同步步骤，而收缩以异步方式执行（不影响实例管理操作的持续时间）。 **90% 的群集扩展操作可在 2.5 小时内完成**。
+- 虚拟群集的删除。 删除是一个异步步骤，但也可以在空的虚拟群集上[手动启动](sql-database-managed-instance-delete-virtual-cluster.md)，在这种情况下，它将以同步方式执行。 **90% 的虚拟群集删除操作可在 1.5 小时内完成**。
 
-此外，实例的管理还可能包括对托管数据库执行的一项操作，这会导致持续时间延长：
+此外，实例管理还可能包括托管数据库上的某个操作，这会导致持续时间变长：
 
-- 附加 Azure 存储中的数据库文件。 这是一个同步步骤，如计算（vCore）或在常规用途服务层中向上或向下缩放存储。 **90% 的这些操作将在5分钟内完成**。
-- Always On 可用性组种子设定。 这是一个同步步骤，如计算（vCore）或业务关键服务层中的存储缩放，以及将服务层从常规用途改为业务关键（反之亦然）。 此操作的持续时间与总数据库大小以及当前数据库活动（活动事务数）成正比。 更新实例时的数据库活动会给总持续时间带来明显的差异。 **90% 的这些操作的执行频率为 220 GB/小时或更高**。
+- 附加 Azure 存储中的数据库文件。 这是一个同步步骤，例如计算 (vCore)，或者“常规用途”服务层级中的存储纵向缩放。 **90% 的此类操作可在 5 分钟内完成**。
+- Always On 可用性组种子设定 这是一个同步步骤，例如计算 (vCore)，或者“业务关键”服务层级中的存储缩放，以及将服务层级从“常规用途”更改为“业务关键”（或反之）。 此操作的持续时间与总数据库大小以及当前数据库活动（活动的事务数）成正比。 更新实例时执行数据库活动可能会使总持续时间发生明显的变化。 **90% 的此类操作能够以 220 GB/小时或更高的速率执行**。
 
-下表总结了操作和典型的总持续时间：
+下表汇总了操作及其典型的总持续时间：
 
-|类别  |Operation  |长时间运行的段  |估计的持续时间  |
+|类别  |Operation  |长时间运行的分段  |预计持续时间  |
 |---------|---------|---------|---------|
-|**部署** |空子网中的第一个实例|创建虚拟群集|90% 的操作在4小时内完成|
-|部署 |非空子网中的第一个硬件生成的第一个实例（例如，子网中的第一个第1代实例，具有第4代实例）|虚拟群集创建 *|90% 的操作在4小时内完成|
-|部署 |第一个实例在空子网或非空子网中创建4个 Vcore|虚拟群集创建 * *|90% 的操作在4小时内完成|
-|部署 |在非空子网（第二个、第三个等实例）中创建后续实例|虚拟群集大小调整|90% 的操作在2.5 小时内完成|
-|**Update** |实例属性更改（管理员密码、AAD 登录、Azure 混合权益标志）|空值|最长1分钟|
-|更新 |实例存储扩展/缩减（常规用途服务层）|附加数据库文件|90% 的操作在5分钟内完成|
-|更新 |实例存储扩展/缩减（业务关键服务层）|-虚拟群集大小调整<br>-Always On 可用性组种子设定|90% 的操作在2.5 小时内完成，为所有数据库设定种子（220 GB/小时）|
-|更新 |实例计算（Vcore）增加和减少（常规用途）|-虚拟群集大小调整<br>-附加数据库文件|90% 的操作在2.5 小时内完成|
-|更新 |实例计算（Vcore）增加和减少（业务关键）|-虚拟群集大小调整<br>-Always On 可用性组种子设定|90% 的操作在2.5 小时内完成，为所有数据库设定种子（220 GB/小时）|
-|更新 |实例缩减到4个 Vcore （常规用途）|-虚拟群集大小调整（如果是首次完成，则可能需要创建虚拟群集 * *）<br>-附加数据库文件|90% 的操作完成，4 h 5 分钟 * *|
-|更新 |实例缩减到4个 Vcore （业务关键）|-虚拟群集大小调整（如果是首次完成，则可能需要创建虚拟群集 * *）<br>-Always On 可用性组种子设定|90% 的操作将在4小时内完成，并对所有数据库进行种子计算（220 GB/小时）|
-|更新 |实例服务层更改（常规用途为业务关键，反之亦然）|-虚拟群集大小调整<br>-Always On 可用性组种子设定|90% 的操作在2.5 小时内完成，为所有数据库设定种子（220 GB/小时）|
-|**予以**|实例的删除|所有数据库的日志尾备份|90% 的操作最多可完成1分钟。<br>注意：如果删除了子网中的最后一个实例，此操作将在12小时后计划删除虚拟群集|
-|删除|删除虚拟群集（作为用户启动的操作）|删除虚拟群集|90% 的操作在最多1.5 小时内完成|
+|**部署** |空子网中的第一个实例|虚拟群集的创建|90% 的操作可在 4 小时内完成|
+|部署 |非空子网中另一个硬件代系的第一个实例（例如，包含第 4 代实例的子网中的第一个 5 代实例）|虚拟群集的创建*|90% 的操作可在 4 小时内完成|
+|部署 |在空或非空子网中创建包含 4 个 vCore 的第一个实例|虚拟群集的创建**|90% 的操作可在 4 小时内完成|
+|部署 |在非空子网中创建后续实例（第 2 个、第 3 个 ... 实例）|虚拟群集大小调整|90% 的操作可在 2.5 小时内完成|
+|**更新** |实例属性更改（管理员密码、AAD 登录名、Azure 混合权益标志）|空值|最长 1 分钟|
+|更新 |实例存储纵向缩放（“常规用途”服务层级）|附加数据库文件|90% 的操作可在 5 分钟内完成|
+|更新 |实例存储纵向缩放（“业务关键”服务层级）|- 虚拟群集大小调整<br>- Always On 可用性组种子设定|90% 的操作可在“2.5 小时 + 所有数据库种子设定时间”内完成（220 GB/小时）|
+|更新 |实例计算 (vCore) 纵向缩放（“常规用途”）|- 虚拟群集大小调整<br>- 附加数据库文件|90% 的操作可在 2.5 小时内完成|
+|更新 |实例计算 (vCore) 纵向缩放（“业务关键”）|- 虚拟群集大小调整<br>- Always On 可用性组种子设定|90% 的操作可在“2.5 小时 + 所有数据库种子设定时间”内完成（220 GB/小时）|
+|更新 |实例缩减为 4 个 vCore（“常规用途”）|- 虚拟群集大小调整（如果是首次执行，则可能需要创建虚拟群集**）<br>- 附加数据库文件|90% 的操作可在 4 小时 5 分钟内完成**|
+|更新 |实例可缩减为 4 个 vCore（“业务关键”层级）|- 虚拟群集大小调整（如果是首次执行，则可能需要创建虚拟群集**）<br>- Always On 可用性组种子设定|90% 的操作可在“4 小时 + 所有数据库种子设定时间”内完成（220 GB/小时）|
+|更新 |实例服务层级更改（从“常规用途”更改为“业务关键”，或反之）|- 虚拟群集大小调整<br>- Always On 可用性组种子设定|90% 的操作可在“2.5 小时 + 所有数据库种子设定时间”内完成（220 GB/小时）|
+|**删除**|实例的删除|所有数据库的尾部日志备份|90% 的操作在最多 1 分钟内即可完成。<br>注意：如果删除了子网中的最后一个实例，此操作会将虚拟群集的删除安排在 12 小时后***|
+|删除|虚拟群集的删除（用户启动的操作）|虚拟群集的删除|90% 的操作在最多 1.5 小时内可完成|
 
-\* 虚拟群集是根据每个硬件生成生成的。
+\* 虚拟群集是按硬件代系构建的。
 
-\*\* 4 Vcore 部署选项在2019年6月发布，需要新的虚拟群集版本。 如果目标子网中的实例在6月12日前创建，则会自动将新的虚拟群集部署到主机 4 vCore 实例。
+\*\* 4 vCore 部署选项已在 2019 年 6 月发布，需要新的虚拟群集版本。 如果在 6 月 12 日之前创建的目标子网中创建了实例，则会自动部署一个新的虚拟群集来托管 4 个 vCore 实例。
 
-\*\*\* 12 小时是当前配置，但将来可能会更改，因此不会对其进行硬依赖。 如果你之前需要删除虚拟群集（例如，释放子网），请参阅删除[AZURE SQL 数据库托管实例后删除子网](sql-database-managed-instance-delete-virtual-cluster.md)。
+\*\*\* 12 小时是当前配置，但将来可能会更改，因此，请不要过度依赖于此配置。 如果需要提前删除虚拟群集（例如，释放子网），请参阅[删除 Azure SQL 数据库托管实例之后删除子网](sql-database-managed-instance-delete-virtual-cluster.md)。
 
 ### <a name="instance-availability-during-management"></a>管理期间的实例可用性
 
-在部署和删除操作过程中，客户端应用程序不能使用托管实例。
+在执行部署和删除操作期间，客户端应用程序无法使用托管实例。
 
-托管实例在更新操作期间可用，但发生了短暂的停机时间，这是因为在更新结束时通常会长达10秒。 这种情况的例外是更新常规用途服务层中的保留存储空间，这不会导致故障转移，也不会影响实例的可用性。
+在执行更新操作期间，托管实例可用，但更新结束时发生的故障转移会造成短时间的停机（通常，停机持续时间最长为 10 秒）。 例外的情况是更新“常规用途”服务层级中的预留存储空间，这不会导致故障转移，也不会影响实例的可用性。
 
 > [!IMPORTANT]
-> 由于[恢复时间](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process)长，在数据库上发生长时间运行的事务时，故障转移持续时间可能会很大。 因此，不建议缩放 Azure SQL 数据库托管实例的计算或存储，也不建议同时使用长时间运行的事务（数据导入、数据处理作业、索引重新生成等）来更改服务层。 在操作结束时会执行的数据库故障转移将取消正在进行的事务，并导致长时间的恢复时间。
+> 如果[长时间的恢复](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process)导致数据库上发生长时间运行的事务，故障转移持续时间可能会有很大的差异。 因此，不建议扩展 Azure SQL 数据库托管实例的计算或存储，或者使用长时间运行的事务（数据导入、数据处理作业、索引重建等）同时更改服务层。 在操作结束时执行的数据库故障转移将取消正在进行的事务，并导致恢复时间变长。
 
 > [!TIP]
-> 常规用途服务层中的保留存储空间更新不会导致故障转移，也不会影响实例的可用性。
+> 更新“常规用途”服务层级中的预留存储空间不会导致故障转移，也不会影响实例的可用性。
 
-[加速数据库恢复](sql-database-accelerated-database-recovery.md)当前不适用于 Azure SQL 数据库托管实例。 启用后，即使长时间运行的事务，此功能也会明显减少故障转移时间的变化。
+[加速数据库恢复](sql-database-accelerated-database-recovery.md)目前不适用于 Azure SQL 数据库托管实例。 启用后，此功能会显著降低故障转移时间的差异，即使在事务长时间运行的情况下也是如此。
 
 ### <a name="canceling-management-operations"></a>取消管理操作
 
-下表总结了取消特定管理操作和典型总持续时间的能力：
+下表汇总了取消特定管理操作的功能和典型的总持续时间：
 
-类别  |Operation  |可  |估计取消持续时间  |
+类别  |Operation  |可取消  |估计取消持续时间  |
 |---------|---------|---------|---------|
 |部署 |实例创建 |否 |  |
-|更新 |实例存储增加/减少（常规用途） |否 |  |
-|更新 |实例存储增加/减少（业务关键） |是 |90% 的操作在5分钟内完成 |
-|更新 |实例计算（Vcore）增加和减少（常规用途） |是 |90% 的操作在5分钟内完成 |
-|更新 |实例计算（Vcore）增加和减少（业务关键） |是 |90% 的操作在5分钟内完成 |
-|更新 |实例服务层更改（常规用途为业务关键，反之亦然） |是 |90% 的操作在5分钟内完成 |
+|更新 |实例存储纵向缩放（“常规用途”服务层级） |否 |  |
+|更新 |实例存储纵向缩放（“业务关键”服务层级） |是 |90% 的操作可在 5 分钟内完成 |
+|更新 |实例计算 (vCore) 纵向缩放（“常规用途”） |是 |90% 的操作可在 5 分钟内完成 |
+|更新 |实例计算 (vCore) 纵向缩放（“业务关键”） |是 |90% 的操作可在 5 分钟内完成 |
+|更新 |实例服务层级更改（从“常规用途”更改为“业务关键”，或反之） |是 |90% 的操作可在 5 分钟内完成 |
 |删除 |实例的删除 |否 |  |
-|删除 |删除虚拟群集（作为用户启动的操作） |否 |  |
+|删除 |虚拟群集的删除（用户启动的操作） |否 |  |
 
-若要取消管理操作，请切换到 "概述" 边栏选项卡，并单击 "正在进行的操作" 通知框。 在右侧，将出现带有正在进行的操作的屏幕，并且将显示 "取消" 操作按钮。 第一次单击之后，系统会要求您再次单击并确认您要取消该操作。
+若要取消管理操作，请转到概述边栏选项卡，单击正在进行的操作的通知框。 右侧会显示包含正在进行的操作的屏幕，并提供用于取消操作的按钮。 第一次单击该按钮后，系统会要求再次单击并确认取消该操作。
 
 [![](./media/sql-database-managed-instance/canceling-operation.png)](./media/sql-database-managed-instance/canceling-operation.png#lightbox)
 
-提交并处理取消请求后，如果取消提交成功，您将收到通知。 
+提交并处理取消请求后，你会收到通知，指出取消提交是否成功。 
 
-如果取消成功，将在几分钟内取消管理操作，从而导致失败。
+如果取消成功，管理操作将在几分钟内取消，从而导致失败。
 
-![正在取消操作结果](./media/sql-database-managed-instance/canceling-operation-result.png)
+![取消操作的结果](./media/sql-database-managed-instance/canceling-operation-result.png)
 
-如果取消请求失败或 "取消" 按钮处于非活动状态，则意味着管理操作进入 "不可取消" 状态，并且将在几分钟内完成。 管理操作将继续执行，直到完成。
+如果取消请求失败或取消按钮处于非活动状态，则表示管理操作已进入不可取消状态，将在几分钟内完成。 管理操作将继续执行，直到完成。
 
 > [!IMPORTANT]
-> 当前仅在门户中支持取消操作。
+> 目前仅支持在门户中取消操作。
 
 ## <a name="advanced-security-and-compliance"></a>高级安全性和符合性
 
@@ -219,8 +219,8 @@ Azure SQL 数据库提供管理操作，你可以使用这些操作自动部署�
 
 使用托管实例可以进一步实现与 Azure 云中其他租户的安全隔离。 安全隔离包括：
 
-- 使用 Azure Express Route 或 VPN 网关[实现本机虚拟网络](sql-database-managed-instance-connectivity-architecture.md)并连接到本地环境。
-- 在默认部署中，SQL 终结点仅通过专用 IP 地址公开，允许从私有 Azure 或混合网络进行安全连接。
+- 使用 Azure 快速路由或 VPN 网关[实现本机虚拟网络](sql-database-managed-instance-connectivity-architecture.md)并连接到本地环境。
+- 在默认部署中，仅通过专用 IP 地址公开 SQL 终结点，以便从专用 Azure 或混合网络建立安全连接。
 - 具有专用底层基础结构（计算、存储）的单一租户。
 
 下图概述了应用程序的各种连接选项：
@@ -238,24 +238,24 @@ Azure SQL 数据库提供一组可用于保护数据的高级安全功能。
 
 - [托管实例审核](sql-database-managed-instance-auditing.md)功能可跟踪数据库事件，并将其写入 Azure 存储帐户中的审核日志文件。 借助审核可以保持合规、了解数据库活动，以及深入了解可能指示业务考量因素或疑似安全违规的偏差和异常。
 - 动态数据加密 - 托管实例提供动态数据加密，使用传输层安全性保护数据。 除传输层安全性以外，托管实例部署选项使用 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 在动态、静态和查询处理期间提供敏感数据的保护。 Always Encrypted 是业界首创功能，可针对涉及关键数据被盗的漏洞提供无与伦比的数据安全性。 例如，借助 Always Encrypted，信用卡号即使在查询处理期间也始终加密存储在数据库中，允许经授权员工或需要处理该数据的应用程序在使用时进行解密。
-- [高级威胁防护](sql-database-managed-instance-threat-detection.md)通过提供内置于服务中的额外安全智能层来补充[审核](sql-database-managed-instance-auditing.md)，该服务可检测异常和可能有害的数据库访问或利用尝试。 出现可疑活动、潜在漏洞、 SQL 注入攻击和异常数据库访问模式时，它会发出警报。 可从[Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看高级威胁防护警报，提供可疑活动的详细信息，并提供有关如何调查和缓解威胁的建议操作。  
-- [动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)功能通过对非特权用户模糊化敏感数据来限制此类数据的泄漏。 动态数据掩码允许指定在对应用层产生最小影响的前提下可以透露的敏感数据量，从而帮助防止未经授权的用户访问敏感数据。 它是一种基于策略的安全功能，可以隐藏对指定数据库字段进行查询时获得的结果集中的敏感数据，不会更改数据库中的数据。
+- [高级威胁防护](sql-database-managed-instance-threat-detection.md)是对[审核](sql-database-managed-instance-auditing.md)的补充，它在服务中提供一个内置的附加安全智能层，用于检测企图访问或使用数据库的异常的潜在有害尝试。 出现可疑活动、潜在漏洞、 SQL 注入攻击和异常数据库访问模式时，它会发出警报。 可从 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看高级威胁防护警报，其中提供了可疑活动的详细信息以及如何调查和缓解威胁的建议操作。  
+- [动态数据屏蔽](/sql/relational-databases/security/dynamic-data-masking)通过屏蔽敏感数据以限制对非特权用户的影响来限制其暴露。 动态数据掩码允许指定在对应用层产生最小影响的前提下可以透露的敏感数据量，从而帮助防止未经授权的用户访问敏感数据。 它是一种基于策略的安全功能，可以隐藏对指定数据库字段进行查询时获得的结果集中的敏感数据，不会更改数据库中的数据。
 - 使用[行级别安全性](/sql/relational-databases/security/row-level-security)可以根据执行查询的用户特征（例如，按组成员身份或执行上下文），控制对数据库表中的行的访问。 行级别安全性 (RLS) 简化了应用程序中的安全性设计和编程。 使用 RLS 可针对数据行访问实施限制。 例如，确保工作人员只能访问与其部门相关的数据行，或者将可访问的数据限制为相关的数据。
 - [透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 可以加密托管实例数据文件，称为静态数据加密。 TDE 针对数据和日志文件执行实时 I/O 加密和解密。 加密使用数据库加密密钥 (DEK)，它存储在数据库引导记录中，可在恢复时使用。 可使用透明数据加密保护托管实例中的所有数据库。 TDE 是 SQL Server 经验证的静态加密技术，许多符合性标准都需要它来防止存储介质被盗。
 
-通过 Azure 数据库迁移服务 (DMS) 或本机还原，支持将加密数据库迁移到托管实例。 如果计划使用本机还原来迁移加密的数据库，则需要将现有的 TDE 证书从本地 SQL Server 或虚拟机中的 SQL Server 迁移到托管实例。 有关迁移选项的详细信息，请参阅[将 SQL Server 实例迁移到托管实例](sql-database-managed-instance-migrate.md)。
+通过 Azure 数据库迁移服务 (DMS) 或本机还原，支持将加密数据库迁移到托管实例。 如果打算使用本机还原迁移加密数据库，则必须将现有 TDE 证书从本地 SQL Server 或虚拟机中的 SQL Server 迁移到托管实例。 有关迁移选项的详细信息，请参阅[将 SQL Server 实例迁移到托管实例](sql-database-managed-instance-migrate.md)。
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory 集成
 
-托管实例部署选项支持传统的 SQL Server 数据库引擎登录名，以及与 Azure Active Directory (AAD) 集成的登录名。 Azure AD 服务器主体（登录名）（公共预览版）是在本地环境中使用的本地数据库登录名的 Azure 云版本。 利用 Azure AD 服务器主体（登录名），可以将 Azure Active Directory 租户中的用户和组指定为真正的实例范围内的主体，这可以执行任何实例级别的操作，包括相同托管的中的跨数据库查询。实例.
+托管实例部署选项支持传统的 SQL Server 数据库引擎登录名，以及与 Azure Active Directory (AAD) 集成的登录名。 Azure AD 服务器主体（登录名）（公共预览版）是在本地环境中使用的本地数据库登录名的 Azure 云版本****。 使用 Azure AD 服务器主体（登录名）可将 Azure Active Directory 租户中的用户和组指定为真正的实例范围的主体，能够执行任何实体级操作，包括在同一托管实例内执行跨数据库查询。
 
-引入了一个新语法，用于**从外部提供程序**创建 Azure AD 服务器主体（登录名）。 有关该语法的详细信息，请参阅 <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>，并查看[为托管实例预配 Azure Active Directory 管理员](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)一文。
+引入了用来创建 Azure AD 服务器主体（登录名）（公共预览版）的一个新语法：**FROM EXTERNAL PROVIDER**。 有关语法的详细信息，请参阅<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">创建登录</a>，并查看[为托管实例文章预配 Azure 活动目录管理员](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)。
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory 集成和多重身份验证
 
 借助托管实例部署选项，可以使用 [Azure Active Directory 集成](sql-database-aad-authentication.md)集中管理数据库用户和其他 Microsoft 服务的标识。 此功能简化了权限管理，增强了安全性。 Azure Active Directory 支持[多重身份验证](sql-database-ssms-mfa-authentication-configure.md) (MFA)，以便在支持单一登录进程的同时提高数据和应用程序安全性。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
 托管实例身份验证是指用户连接到数据库时如何证明其身份。 SQL 数据库支持两种类型的身份验证：  
 
@@ -278,7 +278,7 @@ Azure SQL 数据库提供一组可用于保护数据的高级安全功能。
 
 迁移方法利用 Azure Blob 存储的 SQL 备份。 可以使用 [T-SQL RESTORE 命令](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)将 Azure 存储 Blob 中存储的备份直接还原到托管实例。
 
-- 有关介绍如何还原 Wide World Importers - 标准数据库备份文件的快速入门，请参阅[将备份文件还原到托管实例](sql-database-managed-instance-get-started-restore.md)。 本快速入门介绍了如何将备份文件上传到 Azure blob 存储，并使用共享访问签名（SAS）密钥对其进行保护。
+- 有关介绍如何还原 Wide World Importers - 标准数据库备份文件的快速入门，请参阅[将备份文件还原到托管实例](sql-database-managed-instance-get-started-restore.md)。 本快速入门介绍如何将备份文件上传到 Azure Blob 存储并使用共享访问签名 (SAS) 密钥对其进行保护。
 - 有关从 URL 还原的信息，请参阅[从 URL 本机还原](sql-database-managed-instance-migrate.md#native-restore-from-url)。
 
 > [!IMPORTANT]
@@ -290,7 +290,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 
 ## <a name="sql-features-supported"></a>支持的 SQL 功能
 
-在服务正式版推出之前，托管实例部署选项旨在通过分阶段的计划，实现外围应用与本地 SQL Server 的近乎 100% 的兼容性。 有关功能和比较列表，请参阅 [SQL 数据库功能比较](sql-database-features.md)；有关托管实例与 SQL Server 中 T-SQL 差异的列表，请参阅[托管实例与 SQL Server 的 T-SQL 差异](sql-database-managed-instance-transact-sql-information.md)。
+在服务正式版推出之前，托管实例部署选项旨在通过分阶段的计划，实现外围应用与本地 SQL Server 的近乎 100% 的兼容性。 有关功能和比较列表，请参阅[SQL 数据库功能比较](sql-database-features.md)，有关托管实例与 SQL Server 中的 T-SQL 差异的列表，请参阅[托管实例 T-SQL 与 SQL Server 的差异](sql-database-managed-instance-transact-sql-information.md)。
 
 托管实例部署选项支持与 SQL 2008 数据库的向后兼容。 支持从 SQL 2005 数据库服务器直接迁移，迁移后的 SQL 2005 数据库的兼容级别将更新为 SQL 2008。
   
@@ -300,18 +300,18 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>本地 SQL Server 与托管实例中 SQL Server 的主要差异
 
-托管实例部署选项受益于云中的一贯最新状态，这意味着，本地 SQL Server 中的某些功能可能会过时、被弃用或被取代。 在某些情况下，工具需要识别特定功能的工作方式略有不同，或者服务在不完全控制的环境中运行：
+托管实例部署选项受益于云中的一贯最新状态，这意味着，本地 SQL Server 中的某些功能可能会过时、被弃用或被取代。 在某些情况下，当工具需要识别特定的功能是否以略微不同的方式工作或者服务是否在某个环境中运行时，你无法完全控制这一点：
 
 - 高可用性是通过类似 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)的技术内置和预配的。
 - 自动备份和时间点还原。 客户可以启动 `copy-only` 备份，而不会干扰自动备份链。
-- 托管实例不允许指定完整的物理路径，因此必须以不同的方式支持所有对应的方案： RESTORE DB 不支持移动，CREATE DB 不允许使用物理路径，BULK INSERT 仅适用于 Azure Blob，等等。
+- 托管实例不允许指定完整的物理路径，因此必须以不同的方式支持所有相应的方案：RESTORE DB 不支持"随移动"，创建数据库不允许物理路径，BULK INSERT 仅适用于 Azure Blob 等。
 - 托管实例支持使用 [Azure AD 身份验证](sql-database-aad-authentication.md)作为 Windows 身份验证的云替代方法。
 - 对于包含内存中 OLTP 对象的数据库，托管实例会自动管理 XTP 文件组和文件
-- 托管实例支持 SQL Server Integration Services (SSIS)，并且可以托管存储 SSIS 包的 SSIS 目录 (SSISDB)，但它们在 Azure 数据工厂 (ADF) 的托管 Azure-SSIS 集成运行时 (IR) 上执行，请参阅[在 ADF 中创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 若要比较 SQL 数据库中的 SSIS 功能，请参阅[比较 AZURE SQL 数据库单一数据库、弹性池和托管实例](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)。
+- 托管实例支持 SQL 服务器集成服务 （SSIS），并可以承载存储 SSIS 包的 SSIS 目录 （SSISDB），但它们在 Azure 数据工厂 （ADF） 中的托管 Azure-SSIS 集成运行时 （IR） 上执行，请参阅[在 ADF 中创建 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 若要比较 SQL 数据库中的 SSIS 功能，请参阅[比较 Azure SQL 数据库单一数据库、弹性池和托管实例](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)。
 
 ### <a name="managed-instance-administration-features"></a>托管实例管理功能
 
-托管实例部署选项可以减少系统管理员花费在管理任务上的时间，因为 SQL 数据库服务可以自行执行这些任务，或者大大简化这些任务。 例如，[OS/RDBMS 安装和修补](sql-database-high-availability.md)、[动态实例大小调整和配置](sql-database-single-database-scale.md)、[备份](sql-database-automated-backups.md)、[数据库复制（包括系统数据库）](replication-with-sql-database-managed-instance.md)、[高可用性配置](sql-database-high-availability.md)，以及运行状况和[性能监视](../azure-monitor/insights/azure-sql.md)数据流的配置。
+托管实例部署选项可以减少系统管理员花费在管理任务上的时间，因为 SQL 数据库服务可以自行执行这些任务，或者大大简化这些任务。 例如[，OS/RDBMS 安装和修补](sql-database-high-availability.md)、[动态实例调整大小和配置](sql-database-single-database-scale.md)、[备份](sql-database-automated-backups.md)、[数据库复制](replication-with-sql-database-managed-instance.md)（包括系统数据库）、[高可用性配置](sql-database-high-availability.md)以及运行状况[和性能监视](../azure-monitor/insights/azure-sql.md)数据流的配置。
 
 > [!IMPORTANT]
 > 有关支持、部分支持和不支持的功能列表，请参阅 [SQL 数据库功能](sql-database-features.md)。 有关托管实例与 SQL Server 的 T-SQL 差异列表，请参阅[托管实例与 SQL Server 的 T-SQL 差异](sql-database-managed-instance-transact-sql-information.md)
@@ -320,19 +320,19 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 
 下表显示了可通过 Transact SQL 访问的几个属性。使用这些属性可以检测应用程序是否正在使用托管实例和检索重要属性。
 
-|properties|值|注释|
+|properties|“值”|注释|
 |---|---|---|
-|`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值与 SQL 数据库中的值相同。 这**并不**表示 SQL 引擎版本12（SQL Server 2014）。 托管实例始终运行最新稳定的 SQL 引擎版本，该版本等于或高于 SQL Server 的最新可用 RTM 版本。  |
+|`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值与 SQL 数据库中的值相同。 此值**并不**表示 SQL 引擎版本 12 (SQL Server 2014)。 托管实例始终运行最新稳定的 SQL 引擎版本，此版本与最新可用的 SQL Server RTM 版本相同或更高。  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|此值与 SQL 数据库中的值相同。|
 |`SERVERPROPERTY('EngineEdition')`|8|此值唯一标识托管实例。|
-|`@@SERVERNAME`、`SERVERPROPERTY ('ServerName')`|采用以下格式的完整实例 DNS 名称：`<instanceName>`.`<dnsPrefix>`.database.windows.net，其中，`<instanceName>` 是客户提供的名称，`<dnsPrefix>` 是自动生成的名称部分，保证 DNS 名称的全局唯一性（例如“wcus17662feb9ce98”）|示例：my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|采用以下格式的完整实例 DNS 名称：`<instanceName>`.`<dnsPrefix>`.database.windows.net，其中，`<instanceName>` 是客户提供的名称，`<dnsPrefix>` 是自动生成的名称部分，保证 DNS 名称的全局唯一性（例如“wcus17662feb9ce98”）|示例：my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何创建第一个托管实例，请参阅[快速入门指南](sql-database-managed-instance-get-started.md)。
+- 要了解如何创建第一个托管实例，请参阅[快速入门指南](sql-database-managed-instance-get-started.md)。
 - 有关功能和比较列表，请参阅 [SQL 常用功能](sql-database-features.md)。
 - 有关 VNet 配置的详细信息，请参阅[托管实例 VNet 配置](sql-database-managed-instance-connectivity-architecture.md)。
 - 有关创建托管实例以及从备份文件还原数据库的快速入门，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。
 - 有关使用 Azure 数据库迁移服务 (DMS) 进行迁移的教程，请参阅[使用 DMS 进行托管实例迁移](../dms/tutorial-sql-server-to-managed-instance.md)。
-- 有关内置故障排除智能的高级监视托管实例数据库性能，请参阅[使用 Azure SQL Analytics 监视 AZURE SQL 数据库](../azure-monitor/insights/azure-sql.md)。
-- 有关定价信息，请参阅 [SQL 数据库托管实例定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。
+- 有关使用内置故障排除智能对托管实例数据库性能的高级监视，请参阅[使用 Azure SQL 分析监视 Azure SQL 数据库](../azure-monitor/insights/azure-sql.md)。
+- 有关定价信息，请参阅[SQL 数据库托管实例定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。

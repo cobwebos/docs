@@ -1,5 +1,6 @@
 ---
-title: Azure 云服务定义 LoadBalancerProbe 架构 |Microsoft Docs
+title: Azure 云服务定义负载平衡器探测架构 |微软文档
+description: 客户定义的 LoadBalancerProbe 是角色实例中端点的运行状况探测。 它与服务定义文件中的 Web 或辅助角色结合。
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -8,12 +9,12 @@ ms.topic: reference
 caps.latest.revision: 14
 author: georgewallace
 ms.author: tagore
-ms.openlocfilehash: bc2c0f5137ce78392a8df7c6c2fdd402ded5355a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449053"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537340"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure 云服务定义 LoadBalancerProbe 架构
 负载均衡器探测是由客户定义的，用于探测 UDP 终结点和角色实例中的终结点的运行状况。 `LoadBalancerProbe` 不是一个独立的元素；它在服务定义文件中与 Web 角色或辅助角色结合。 `LoadBalancerProbe` 可由多个角色使用。
@@ -46,15 +47,15 @@ Azure 负载均衡器负责将传入流量路由到角色实例。 负载均衡�
 - [LoadBalancerProbes 元素](#LoadBalancerProbes)
 - [LoadBalancerProbe 元素](#LoadBalancerProbe)
 
-##  <a name="LoadBalancerProbes"></a> LoadBalancerProbes 元素
+##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a>负载平衡器探测元件
 `LoadBalancerProbes` 元素描述负载均衡器探测的内容集合。 此元素是 [LoadBalancerProbe 元素](#LoadBalancerProbe)的父元素。 
 
-##  <a name="LoadBalancerProbe"></a> LoadBalancerProbe 元素
+##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a>负载平衡器探测元件
 `LoadBalancerProbe` 元素可定义模型的运行状况探测。 可定义多个负载均衡器探测。 
 
 下表描述 `LoadBalancerProbe` 元素的属性：
 
-|Attribute|类型|Description|
+|特性|类型|说明|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | 必需。 负载均衡器探测的名称。 该名称必须是唯一的。|
 | `protocol`          | `string` | 必需。 指定终结点的协议。 可能的值为 `http` 或 `tcp`。 如果已指定 `tcp`，则需要接收到的 ACK 才可完成进行探测。 如果已指定 `http`，则需要来自指定 URI 的 200 正常响应才可成功完成探测。|

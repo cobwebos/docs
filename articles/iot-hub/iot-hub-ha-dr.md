@@ -1,18 +1,18 @@
 ---
 title: Azure IoT 中心的高可用性和灾难恢复 | Microsoft Docs
 description: 介绍了Azure 和 IoT 中心功能，这些功能有助于构建带灾难恢复功能的 Azure IoT 高可用性解决方案。
-author: rkmanda
+author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 173be8207df2f0128dfc9ae3c36aa3c3dc392bee
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 615dc1b7bd1a31069a542ebb7ea44693c404cb40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271065"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499110"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT 中心高可用性和灾难恢复
 
@@ -32,7 +32,7 @@ ms.locfileid: "79271065"
 
 ## <a name="intra-region-ha"></a>区域内部 HA
 
-IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内部 HA。 [IoT 中心服务发布的 SLA](https://azure.microsoft.com/support/legal/sla/iot-hub) 是利用这些冗余实现的。 IoT 解决方案开发人员无需完成任何额外工作就能利用这些 HA 功能。 尽管 IoT 中心提供相当高的运行时间保证，但与任何分布式计算平台一样，暂时性的故障仍有可能出现。 如果只是开始从本地解决方案将解决方案迁移到云，则你的关注点需要从优化 "平均故障时间" 转换为 "平均恢复时间"。 换而言之，以混合模式操作云时，暂时性故障被视为正常。 必须在与云应用程序交互的组件中内置[重试策略](iot-hub-reliability-features-in-sdks.md)，以处理暂时性故障。
+IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内部 HA。 [IoT 中心服务发布的 SLA](https://azure.microsoft.com/support/legal/sla/iot-hub) 是利用这些冗余实现的。 IoT 解决方案开发人员无需完成任何额外工作就能利用这些 HA 功能。 尽管 IoT 中心提供相当高的运行时间保证，但与任何分布式计算平台一样，暂时性的故障仍有可能出现。 如果刚刚开始将解决方案从本地解决方案迁移到云，则需要将重心从优化“平均故障时间”改为优化“平均恢复时间”。 换而言之，以混合模式操作云时，暂时性故障被视为正常。 必须在与云应用程序交互的组件中内置[重试策略](iot-hub-reliability-features-in-sdks.md)，以处理暂时性故障。
 
 > [!NOTE]
 > 某些 Azure 服务还通过与[可用性区域 (AZ)](../availability-zones/az-overview.md) 集成，在区域中提供附加的可用性层。 IoT 中心服务目前不支持 AZ。
@@ -41,7 +41,7 @@ IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内�
 
 在极少见的情况下，电源故障或其他涉及到实物资产的故障会导致数据中心遇到长时间的服务中断。 此类事件非常罕见，在此期间，上述区域内部 HA 不一定总能发挥作用。 IoT 中心提供多种解决方案，用于在发生此类长时间服务中断后进行恢复。 
 
-在这种情况下，客户可以使用的恢复选项是[Microsoft 启动的故障转移](#microsoft-initiated-failover)和[手动故障转移](#manual-failover)。 两者之间的根本差别在于，前者由 Microsoft 发起，后者由用户发起。 此外，与 Microsoft 发起的故障转移选项相比，手动故障转移提供更低的恢复时间目标 (RTO)。 以下部分讨论了每个选项提供的具体 RTO。 执行上述任一选项从主要区域故障转移 IoT 中心时，中心将在对应的 [Azure 异地配对区域](../best-practices-availability-paired-regions.md)完全正常运行。
+在这种情况下，客户可以使用的恢复选项是 Microsoft[启动的故障转移](#microsoft-initiated-failover)和[手动故障转移](#manual-failover)。 两者之间的根本差别在于，前者由 Microsoft 发起，后者由用户发起。 此外，与 Microsoft 发起的故障转移选项相比，手动故障转移提供更低的恢复时间目标 (RTO)。 以下部分讨论了每个选项提供的具体 RTO。 执行上述任一选项从主要区域故障转移 IoT 中心时，中心将在对应的 [Azure 异地配对区域](../best-practices-availability-paired-regions.md)完全正常运行。
 
 这两个故障转移选项提供以下恢复点目标 (RPO)：
 
@@ -55,14 +55,14 @@ IoT 中心服务通过在几乎所有服务层中实现冗余来提供区域内�
 | 操作监视消息 |所有未读的消息都丢失 |
 | 云到设备的反馈消息 |所有未读的消息都丢失 |
 
-<sup>1</sup>在手动故障转移过程中，不会将云到设备的消息和父作业恢复。
+<sup>1</sup>手动故障转移期间无法恢复云到设备的消息和父作业。
 
-完成 IoT 中心的故障转移操作后，来自设备和后端应用程序的所有操作预期可继续进行，无需人工干预。 这意味着，设备到云的消息应会继续工作，并且整个设备注册表会保持不变。 通过事件网格发出的事件可通过之前配置的相同订阅使用，前提是这些事件网格订阅继续可用。
+完成 IoT 中心的故障转移操作后，来自设备和后端应用程序的所有操作预期可继续进行，无需人工干预。 这意味着，设备到云的消息应会继续正常工作，并且整个设备注册表会保持不变。 可以借助前面配置的相同订阅来使用通过事件网格发出的事件，前提是这些事件网格订阅仍然可用。
 
 > [!CAUTION]
-> - 故障转移后，IoT 中心内置事件终结点的事件中心兼容名称和终结点会发生变化。 使用事件中心客户端或事件处理程序主机从内置终结点接收遥测消息时，应[使用 IoT 中心连接字符串](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)建立连接。 这可以确保在故障转移后，后端应用程序可继续工作，而无需人工干预。 如果在后端应用程序中直接使用事件中心兼容的名称和终结点，在故障转移后需要通过[提取新的事件中心兼容名称和终结点](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)来重新配置应用程序，这样才能继续操作。
+> - IoT 中心内置事件终结点的事件中心兼容的名称和终结点在故障转移后更改，并删除已配置的使用者组（这是将在 2020 年 5 月之前修复的 Bug）。 使用事件中心客户端或事件处理器主机从内置终结点接收遥测消息时，应[使用 IoT 中心连接字符串](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)建立连接。 这可以确保在故障转移后，后端应用程序可继续工作，而无需人工干预。 如果直接在应用程序中使用事件中心兼容的名称和终结点，则需要[重新配置他们使用的使用者组，并在故障转移后获取新的事件中心兼容终结点](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)以继续操作。 如果使用 Azure 函数或 Azure 流分析来连接内置终结点，则可能需要执行**重新启动**。
 >
-> - 路由到存储时，我们建议列出 blob 或文件，然后循环访问它们，以确保读取所有 blob 或文件而不进行分区假设。 在 Microsoft 启动的故障转移或手动故障转移过程中，分区范围可能会发生更改。 你可以使用[列表 BLOB API](https://docs.microsoft.com/rest/api/storageservices/list-blobs)来枚举 Blob 或[列表 ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list)的列表，以获取文件列表。 
+> - 路由到存储时，我们建议列出 blob 或文件，然后循环访问它们，以确保在不进行分区的情况下读取所有 blob 或文件。 在 Microsoft 发起的故障转移或手动故障转移期间，分区范围可能发生变化。 可以使用 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 枚举 blob 列表，或使用 [List ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) 枚举文件列表。 
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft 发起的故障转移
 
@@ -72,14 +72,19 @@ RTO 较高的原因是，Microsoft 必须代表该区域中所有受影响的客
 
 ## <a name="manual-failover"></a>手动故障转移
 
-如果 Microsoft 启动故障转移提供的 RTO 不满足业务运行时间目标，则请考虑使用手动故障转移自行触发故障转移过程。 此选项的 RTO 大致在 10 分钟到几个小时。 目前，RTO 取决于针对故障转移的 IoT 中心实例注册的设备数。 托管大约 100,000 台设备的中心的 RTO 大致是 15 分钟。 “恢复时间”部分介绍了触发此过程后，使运行时操作完全正常所需的总时间。
+如果 Microsoft 发起的故障转移提供的 RTO 无法满足企业的正常运行时间目标，请考虑使用手动故障转移来自行触发故障转移过程。 此选项的 RTO 大致在 10 分钟到几个小时。 目前，RTO 取决于针对故障转移的 IoT 中心实例注册的设备数。 托管大约 100,000 台设备的中心的 RTO 大致是 15 分钟。 “恢复时间”部分介绍了触发此过程后，使运行时操作完全正常所需的总时间。
 
 不管主要区域是否遇到停机，手动故障转移选项始终可用。 因此，用户可能会使用此选项来执行计划内故障转移。 计划内故障转移的一个示例用途是执行定期的故障转移演练。 需要注意的是，计划内故障转移操作会导致中心在此选项的 RTO 定义的时间段内停机，同时会导致数据丢失（由上面的 RPO 表定义）。 可以考虑设置一个测试 IoT 中心实例来定期执行计划内故障转移选项，以便在发生实际灾难时，自信地让端到端解决方案正常运行。
 
-> [!IMPORTANT]
-> - 不应针对生产环境中使用的 IoT 中心执行测试演练。
->
-> - 不应使用手动故障转移作为在 Azure 异地配对区域之间永久迁移中心的机制。 否则，会增大从驻留在旧主要区域中的设备针对中心执行的操作的延迟。
+有关分步说明，请参阅[教程：为 IoT 中心执行手动故障转移](tutorial-manual-failover.md)
+
+### <a name="running-test-drills"></a>正在运行测试钻
+
+不应针对生产环境中使用的 IoT 中心执行测试演练。
+
+### <a name="dont-use-manual-failover-to-migrate-iot-hub-to-a-different-region"></a>不要使用手动故障转移将 IoT 中心迁移到其他区域
+
+手动故障转移*不应*用作在 Azure 地理配对区域之间永久迁移中心的机制。 这样做会增加从旧主区域中居于的设备对 IoT 中心执行的操作的延迟。
 
 ## <a name="failback"></a>故障回复
 
@@ -88,11 +93,11 @@ RTO 较高的原因是，Microsoft 必须代表该区域中所有受影响的客
 > [!IMPORTANT]
 > - 每天只允许用户执行 2 次成功的故障转移和 2 次成功的故障回复操作。
 >
-> - 不允许背靠背（连续）的故障转移/故障回复操作。 必须在这些操作之间等待1小时。
+> - 不允许背靠背（连续）的故障转移/故障回复操作。 必须在这些操作之间等待 1 小时。
 
 ## <a name="time-to-recover"></a>恢复时间
 
-尽管 IoT 中心实例的 FQDN （和连接字符串）在故障转移后保持不变，但基础 IP 地址会发生更改。 因此，可使用以下函数来表示触发故障转移过程后，针对 IoT 中心实例执行的运行时操作完全正常所需的总时间。
+尽管 IoT 中心实例的 FQDN（因此也包括连接字符串）在故障转移后保持不变，但基础 IP 地址会发生变化。 因此，可使用以下函数来表示触发故障转移过程后，针对 IoT 中心实例执行的运行时操作完全正常所需的总时间。
 
 恢复时间 = RTO [手动故障转移为 10 分钟到 2 小时 | Microsoft 发起的故障转移为 2 到 26 小时] + DNS 传播延迟 + 客户端应用程序刷新任何缓存 IoT 中心 IP 地址花费的时间。
 
@@ -131,6 +136,6 @@ IoT 解决方案中对部署拓扑的完整处理不在本文的介绍范围内�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure IoT 中心是什么？](about-iot-hub.md)
+* [什么是 Azure IoT 中心？](about-iot-hub.md)
 * [IoT 中心入门（快速入门）](quickstart-send-telemetry-dotnet.md)
-* [教程：为 IoT 中心执行手动故障转移](tutorial-manual-failover.md)
+* [教程：对 IoT 中心执行手动故障转移](tutorial-manual-failover.md)

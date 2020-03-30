@@ -1,18 +1,18 @@
 ---
-title: 创建和克隆 Jupyter 笔记本-Azure Notebooks 预览
-description: Azure Notebooks 预览项目可管理笔记本和相关文件的集合，您可以从其他源创建新的或克隆的文件。
+title: 创建和克隆朱派笔记本 - Azure 笔记本预览
+description: Azure 笔记本预览项目管理笔记本和相关文件的集合，可以从其他源创建新或克隆。
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280568"
 ---
-# <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>在 Azure Notebooks 预览中创建和克隆项目
+# <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>在 Azure 笔记本预览中创建和克隆项目
 
-Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”的逻辑组。 首先将项目作为容器创建，然后在文件夹内创建或克隆一个或多个笔记本（以及其他项目文件）。 （此过程如[教程](tutorial-create-run-jupyter-notebook.md)中所述。）
+Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”的逻辑组**。 首先将项目作为容器创建，然后在文件夹内创建或克隆一个或多个笔记本（以及其他项目文件）。 （此过程如[教程](tutorial-create-run-jupyter-notebook.md)中所述。）
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -20,13 +20,13 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 ## <a name="use-the-my-projects-dashboard"></a>使用“我的项目”仪表板
 
-“我的项目”仪表板位于 **，用于查看、管理和创建项目**`https://notebooks.azure.com/<userID>/projects`：
+“我的项目”仪表板位于 `https://notebooks.azure.com/<userID>/projects`，用于查看、管理和创建项目****：
 
-[![Azure Notebooks 中的“我的项目”仪表板](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
+[![Azure 笔记本中的"我的项目"仪表板](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 可在仪表板上执行的操作取决于你是否使用拥有用户 ID 的帐户登录：
 
-| Command | 适用对象 | 说明 |
+| 命令 | 适用对象 | 描述 |
 | --- | --- | --- |
 | **运行** | “所有者” | 启动项目服务器并在 Jupyter 中打开项目文件夹。 （更常见的是：先导航到项目文件夹中，然后从中启动一个笔记本。） |
 | **下载** | 所有人 | 将选定项目的副本下载到一个 ZIP 文件中。 |
@@ -39,7 +39,7 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 ### <a name="obtain-a-launch-badge"></a>获取启动徽章
 
-使用“共享”命令再选择“嵌入”选项卡，即可复制创建“启动笔记本”徽章的 HTML 或 Markdown 代码：
+使用“共享”命令再选择“嵌入”选项卡，即可复制创建“启动笔记本”徽章的 HTML 或 Markdown 代码********：
 
 ![启动笔记本徽章](https://notebooks.azure.com/launch.png)
 
@@ -55,42 +55,42 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 ## <a name="create-a-new-project"></a>创建新项目
 
-使用“+ 新建项目”命令时，Azure Notebooks 显示一个“新建项目”弹出窗口。 在其中输入以下信息，然后选择“创建”：
+使用“+ 新建项目”命令时，Azure Notebooks 显示一个“新建项目”弹出窗口********。 在其中输入以下信息，然后选择“创建”：****
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 | --- | --- |
 | 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 例如，"我的笔记本项目"。 |
-| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分（形式为 `https://notebooks.azure.com/<user_id>/projects/<project_id>`）。 此 ID 只能使用字母、数字和连字符，不能超过30个字符，且不能是[保留的项目 ID](#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
-| 公共 | 如果设置为公共项目，有链接的任何人均可访客项目。 创建专用项目时，请清除此选项。 |
-| 使用自述文件初始化此项目 | 如果这样设置，会在项目中创建一个默认的“README.md”文件。 README.md 文件用于根据需要提供项目相关文档。 |
+| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分（形式为 `https://notebooks.azure.com/<user_id>/projects/<project_id>`）。 此 ID 只能使用字母、数字和连字符，限制为 30 个字符，不能是[保留的项目 ID](#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
+| Public | 如果设置为公共项目，有链接的任何人均可访客项目。 创建专用项目时，请清除此选项。 |
+| 使用自述文件初始化此项目 | 如果这样设置，会在项目中创建一个默认的“README.md”文件**。 README.md 文件用于根据需要提供项目相关文档**。 |
 
-### <a name="reserved-project-ids"></a>保留的项目 Id
+### <a name="reserved-project-ids"></a>保留项目项目专用区
 
-以下保留字不能用作项目 Id。 但是，可以将这些保留字用作更长的项目 Id 的一部分。
+以下保留词本身不能用作项目项目。" 但是，这些保留词可用作较长的项目项目指示的一部分。
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| about | account | 管理 | api | 发布 | 课堂 |
+| about | account | 管理 | api | 博客 | 教室 |
 | content | 仪表板 | 浏览 | 常见问题 | help | html |
 | 主页 | 进口 | 图书馆 | 管理 | 新 | 笔记本 |
 | notebooks | pdf | 预览 | 定价 | 个人资料 | 搜索 |
 | status | support | 测试 | | | |
 
-如果尝试使用其中一个词作为项目 ID，则 "新建**项目**" 和 "**项目设置**" 弹出窗口会指示 "库 ID 是保留标识符"。
+如果尝试将这些单词之一用作项目 ID，**则"创建新项目和****项目设置"** 弹出窗口表示"库 ID 是保留标识符"。
 
-由于项目 ID 也是项目的 URL 的一部分，因此，ad 阻止程序软件可能会阻止使用某些关键字，如 "播发"。 在这种情况下，请在项目 ID 中使用其他字词。
+由于项目 ID 也是项目网址的一部分，因此广告拦截器软件可能会阻止某些关键字（如"广告"）的使用。 在这种情况下，在项目 ID 中使用其他单词。
 
 ## <a name="import-a-project-from-github"></a>从 GitHub 导入项目
 
-可轻松将整个公共 GitHub 存储库作为项目（包括任何数据和 README.md 文件）导入。 使用“上传 GitHub 存储库”命令，在弹出窗口中提供以下详细信息，然后选择“导入”：
+可轻松将整个公共 GitHub 存储库作为项目（包括任何数据和 README.md 文件）导入**。 使用“上传 GitHub 存储库”命令，在弹出窗口中提供以下详细信息，然后选择“导入”********：
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 | --- | --- |
-| GitHub 存储库 | github.com 上的源存储库的名称。 例如，若要克隆 Azure 认知服务的 Jupyter 笔记本（位于 [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)），请输入“Microsoft/cognitive-services-notebooks”。  |
+| GitHub 存储库 | github.com 上的源存储库的名称。 例如，要在 中克隆 Azure 认知服务的 Jupyter[https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)笔记本，请输入"Microsoft/认知服务笔记本"。  |
 | 以递归方式克隆 | GitHub 存储库可以包含多个子存储库。 如果希望克隆父存储库及其所有子存储库，请设置此选项。 一个存储库可能拥有许多子存储库，除非需要这样设置，否则请勿勾选此选项。 |
 | 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 |
-| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分（形式为 `https://notebooks.azure.com/<user_id>/projects/<project_id>`）。 此 ID 只能使用字母、数字和连字符，不能超过30个字符，且不能是[保留的项目 ID](#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
-| 公共 | 如果设置为公共项目，有链接的任何人均可访客项目。 创建专用项目时，请清除此选项。 |
+| 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分（形式为 `https://notebooks.azure.com/<user_id>/projects/<project_id>`）。 此 ID 只能使用字母、数字和连字符，限制为 30 个字符，不能是[保留的项目 ID](#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
+| Public | 如果设置为公共项目，有链接的任何人均可访客项目。 创建专用项目时，请清除此选项。 |
 
 从 GitHub 导入存储库还会导入其历史记录。 可以使用标准的 Git 命令执行从终端提交新更改、从 GitHub 拉取更改等操作。
 
@@ -100,22 +100,22 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 克隆项目：
 
-1. 在“我的项目”仪表板中右键单击所需的项目，然后选择“克隆”（键盘快捷方式：c）。
+1. 在“我的项目”仪表板中右键单击所需的项目，然后选择“克隆”（键盘快捷方式：c）********。
 
     ![项目上下文菜单上的克隆命令](media/clone-command.png)
 
-1. 在“克隆项目”弹出窗口中，输入克隆的名称和 ID，并指定是否为公用克隆。 这些设置与[新项目](#create-a-new-project)相同。
+1. 在“克隆项目”弹出窗口中，输入克隆的名称和 ID，并指定是否为公用克隆****。 这些设置与[新项目](#create-a-new-project)相同。
 
     ![克隆项目弹出窗口](media/clone-project.png)
 
-1. 选择“克隆”按钮后，Azure Notebooks 直接导航到副本。
+1. 选择“克隆”按钮后，Azure Notebooks 直接导航到副本****。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [浏览示例笔记本](azure-notebooks-samples.md)
 - [如何：配置和管理项目](configure-manage-azure-notebooks-projects.md)
-- [如何：从笔记本中安装包](install-packages-jupyter-notebook.md)
-- [如何：显示幻灯片](present-jupyter-notebooks-slideshow.md)
-- [如何：处理数据文件](work-with-project-data-files.md)
+- [如何：从笔记本中安装软件包](install-packages-jupyter-notebook.md)
+- [如何：展示幻灯片](present-jupyter-notebooks-slideshow.md)
+- [操作方式：处理数据文件](work-with-project-data-files.md)
 - [如何：访问数据资源](access-data-resources-jupyter-notebooks.md)
 - [如何：使用 Azure 机器学习](use-machine-learning-services-jupyter-notebooks.md)

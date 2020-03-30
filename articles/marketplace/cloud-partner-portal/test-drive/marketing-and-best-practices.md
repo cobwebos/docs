@@ -1,20 +1,18 @@
 ---
-title: 试用版市场营销最佳做法 |Azure Marketplace
-description: 针对发布者的试用版市场营销最佳方案
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+title: 试驾营销最佳实践 |Azure 应用商店
+description: 面向发布商的试驾营销最佳实践
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 177b4bd804ad878c8f983eefcd54399d1a72ba19
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 3520e2c16f9a0c891db0d641fa7c9b811cac7b10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824547"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278240"
 ---
 <a name="test-drive-marketing-and-best-practices"></a>体验版营销和最佳做法
 =======================================

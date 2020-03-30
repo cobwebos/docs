@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/07/2019
 ms.author: spelluru
 ms.openlocfilehash: 9b31f3e68fbabc32f301fdcd8066a3bfbf1c2dbd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284208"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>向用户授予特定实验室策略的权限
@@ -28,14 +28,14 @@ ms.locfileid: "79284208"
 ## <a name="policies-as-resources"></a>将策略作为资源
 正如 [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)一文所述，可通过 RBAC 对 Azure 进行细致的访问管理。 使用 RBAC，可以在开发运营团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。
 
-在开发测试实验室中，策略是一种资源类型，可启用 RBAC 操作 **Microsoft.DevTestLab/labs/policySets/policies/** 。 每个实验室策略都是策略资源类型中的一种资源，并可作为作用域分配给 RBAC 角色。
+在开发测试实验室中，策略是一种资源类型，可启用 RBAC 操作 **Microsoft.DevTestLab/labs/policySets/policies/**。 每个实验室策略都是策略资源类型中的一种资源，并可作为作用域分配给 RBAC 角色。
 
-例如，若要授予用户对**允许的 VM 大小**策略的读/写权限，你需要创建一个可与**microsoft.devtestlab/实验室/policySets/policy/** 操作一起工作的自定义角色，然后将相应的用户分配到**microsoft.devtestlab/实验室/policySets/policy/AllowedVmSizesInLab**范围内的此自定义角色。
+例如，为了向用户授予**允许的 VM 大小策略**的读取/写入权限，您可以创建一个适用于 Microsoft 的自定义角色 **。DevTestLab/labs/策略集/策略/** 操作，然后在**Microsoft.DevTestLab/labs/策略/策略/允许VmSizesInLab**的范围内将适当的用户分配给此自定义角色。
 
 若要了解有关 RBAC 中自定义角色的详细信息，请参阅[自定义角色的访问控制](../role-based-access-control/custom-roles.md)。
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>使用 PowerShell 创建实验室自定义角色
-若要开始，需要[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 
+要开始，您需要[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 
 
 一旦设置了 Azure PowerShell cmdlet，即可执行以下任务：
 
@@ -62,9 +62,9 @@ ms.locfileid: "79284208"
     $policyRoleDef = (New-AzRoleDefinition -Role $policyRoleDef)
 
 ## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>使用自定义角色将某特定策略的权限分配给用户
-一旦定义了自定义角色，即可将其分配给用户。 为了将自定义角色分配给用户，首先必须获取代表用户的 **ObjectId**。 为此，请使用**AzADUser** cmdlet。
+一旦定义了自定义角色，即可将其分配给用户。 为了将自定义角色分配给用户，首先必须获取代表用户的 **ObjectId**。 为此，请使用**获取-阿达德User** cmdlet。
 
-在下方示例中，**SomeUser** 用户的 *ObjectId* 为 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3。
+在下方示例中，*SomeUser* 用户的 **ObjectId** 为 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3。
 
     PS C:\>Get-AzADUser -SearchString "SomeUser"
 
@@ -72,7 +72,7 @@ ms.locfileid: "79284208"
     -----------                    ----                           --------
     someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
 
-获得用户的**ObjectId**和自定义角色名称后，可以使用**AzRoleAssignment** cmdlet 将该角色分配给用户：
+获得用户的**ObjectId**和自定义角色名称后，可以使用**New-AzRoleAssign** cmdlet 将该角色分配给用户：
 
     PS C:\>New-AzRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
 
@@ -88,9 +88,9 @@ ms.locfileid: "79284208"
 ## <a name="next-steps"></a>后续步骤
 向用户分配特定实验室策略的权限后，需要考虑执行后续步骤：
 
-* [保护对实验室的访问](devtest-lab-add-devtest-user.md)
+* [安全访问实验室](devtest-lab-add-devtest-user.md)
 * [设置实验室策略](devtest-lab-set-lab-policy.md)
 * [创建实验室模板](devtest-lab-create-template.md)
-* [创建适用于 VM 的自定义项目](devtest-lab-artifact-author.md)
+* [为 VM 创建自定义项目](devtest-lab-artifact-author.md)
 * [将 VM 添加到实验室](devtest-lab-add-vm.md)
 

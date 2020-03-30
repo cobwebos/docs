@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: e28863f9980d6403bef1f88de01b7a9b5271b444
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 43024b63a355646f607adbb6623cc6c349374ea8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60197079"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535589"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>将 Azure Data Lake Storage Gen1 和其他 Azure 服务集成
 Azure Data Lake Storage Gen1 可和其他 Azure 服务结合使用来实现更多的使用方案。 下面的文章列出了可和 Data Lake Storage Gen1 集成的服务。
@@ -60,13 +60,13 @@ Azure Data Lake Storage Gen1 提供命令行工具 AdlCopy，可从 Azure 存储
 可在 SSIS 中使用 Data Lake Storage Gen1 连接管理器将 SSIS 包与 Azure Data Lake Storage Gen1 相连接。 有关详细信息，请参阅[配合使用 SSIS 和 Data Lake Storage Gen1](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)。
 
 ## <a name="use-data-lake-storage-gen1-with-sql-data-warehouse"></a>配合使用 Data Lake Storage Gen1 和 SQL 数据仓库
-可使用 PolyBase 将数据从 Data Lake Storage Gen1 加载到 SQL 数据仓库中。 有关详细信息，请参阅[配合使用 Data Lake Storage Gen1 和 SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)。
+可使用 PolyBase 将数据从 Data Lake Storage Gen1 加载到 SQL 数据仓库中。 有关详细信息，请参阅[配合使用 Data Lake Storage Gen1 和 SQL 数据仓库](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)。
 
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>配合使用 Data Lake Storage Gen1 和 Azure 事件中心
 可以使用 Azure Data Lake Storage Gen1 存档和捕获 Azure 事件中心收到的数据。 有关详细信息，请参阅[配合使用 Data Lake Storage Gen1 和 Azure 事件中心](data-lake-store-archive-eventhub-capture.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [通过门户实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
-* [通过 PowerShell 实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-powershell.md)  
+* [使用 PowerShell 开始使用数据存储第 1 代](data-lake-store-get-started-powershell.md)  
 

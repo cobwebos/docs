@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：线路和对等互连
+title: Azure 快速路由：电路和对等互连
 description: 本页对 ExpressRoute 线路和路由域/对等互连进行了概述。
 services: expressroute
 author: mialdrid
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mialdrid
 ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281348"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 线路和对等互连
@@ -21,10 +21,10 @@ ExpressRoute 线路通过连接提供商将本地基础结构连接到 Microsoft
 ![](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 > [!IMPORTANT]
-> Azure 公共对等互连已弃用，不适用于新的 ExpressRoute 线路。 新线路支持 Microsoft 对等互连和专用对等互连。  
+> Azure 公共对等互连已被弃用，不适用于新的 ExpressRoute 电路。 新的电路支持微软对等互连和私有对等互连。  
 >
 
-## <a name="circuits"></a>ExpressRoute 线路
+## <a name="expressroute-circuits"></a><a name="circuits"></a>ExpressRoute 线路
 
 ExpressRoute 线路表示通过连接提供商在本地基础结构与 Microsoft 云服务之间建立的逻辑连接。 可以订购多条 ExpressRoute 线路。 每条线路可以位于相同或不同的区域，且可以通过不同的连接提供程序连接到本地。
 
@@ -34,31 +34,31 @@ ExpressRoute 线路不会映射到任何物理实体。 线路由称为服务密
 
 每条线路有固定的带宽（50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、10 Gbps），并映射到连接提供商和对等互连位置。 所选择的带宽在所有线路对等互连之间共享
 
-### <a name="quotas"></a>配额、限制和局限性
+### <a name="quotas-limits-and-limitations"></a><a name="quotas"></a>配额、限制和局限性
 
 默认配额和限制适用于每条 ExpressRoute 线路。 有关配额的最新信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
-## <a name="routingdomains"></a>ExpressRoute 对等互连
+## <a name="expressroute-peering"></a><a name="routingdomains"></a>ExpressRoute 对等互连
 
-ExpressRoute 线路有多个与之关联的路由域/对等互连： Azure 公共、Azure 专用和 Microsoft。 在一对路由器上（采用主动-主动或负载共享配置），每个对等互连采用相同的配置以实现高可用性。 Azure 服务分类为 Azure 公共和 Azure 专用以表示 IP 寻址方案。
+ExpressRoute 电路具有与其关联的多个路由域/对等互连：Azure 公共、Azure 专用和 Microsoft。 在一对路由器上（采用主动-主动或负载共享配置），每个对等互连采用相同的配置以实现高可用性。 Azure 服务分类为 Azure 公共** 和 Azure 专用** 以表示 IP 寻址方案。
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
-### <a name="privatepeering"></a>Azure 专用对等互连
+### <a name="azure-private-peering"></a><a name="privatepeering"></a>Azure 专用对等互连
 
 可以通过专用对等域来连接虚拟网络内部署的 Azure 计算服务（即虚拟机 (IaaS) 和云服务 (PaaS)）。 专用对等域被视为进入 Microsoft Azure 的核心网络的受信任扩展。 可以在核心网络和 Azure 虚拟网络 (VNet) 之间设置双向连接。 利用此对等互连，可以使用专用 IP 地址直接连接到虚拟机和云服务。  
 
 可以将多个虚拟网络连接到专用对等域。 有关限制和局限性的信息，请查看[常见问题解答页](expressroute-faqs.md)。 有关限制的最新信息，请访问 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。  有关路由配置的详细信息，请参阅[路由](expressroute-routing.md)页。
 
-### <a name="microsoftpeering"></a>Microsoft 对等互连
+### <a name="microsoft-peering"></a><a name="microsoftpeering"></a>微软对等互连
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-与 Microsoft 联机服务（Office 365 和 Azure PaaS 服务）的连接通过 Microsoft 对等互连进行。 我们将通过 Microsoft 对等路由域在 WAN 和 Microsoft 云服务之间启用双向连接。 只能通过由你或连接提供商拥有的公共 IP 地址连接到 Microsoft 云服务，并且你必须遵守我们规定的所有规则。 有关详细信息，请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)页。
+通过 Microsoft 对等互连连接到 Microsoft 联机服务（Office 365 和 Azure PaaS 服务）。 我们将通过 Microsoft 对等路由域在 WAN 和 Microsoft 云服务之间启用双向连接。 只能通过由你或连接提供商拥有的公共 IP 地址连接到 Microsoft 云服务，并且你必须遵守我们规定的所有规则。 有关详细信息，请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)页。
 
 有关支持的服务、费用和配置的详细信息，请参阅[常见问题解答页](expressroute-faqs.md)。 有关提供 Microsoft 对等互连支持的连接提供商列表的信息，请参阅 [ExpressRoute Locations](expressroute-locations.md) （ExpressRoute 位置）页。
 
-## <a name="peeringcompare"></a>对等互连比较
+## <a name="peering-comparison"></a><a name="peeringcompare"></a>对等互连比较
 
 下表对三种对等互连进行了比较：
 
@@ -68,7 +68,7 @@ ExpressRoute 线路有多个与之关联的路由域/对等互连： Azure 公�
 
 每个对等互连都需要单独的 BGP 会话（每个对等互连类型一对）。 BGP 会话对提供高度可用的链接。 若要通过第 2 层连接性提供程序进行连接，需要负责配置和管理路由。 可以通过查看设置 ExpressRoute 的[工作流](expressroute-workflows.md)了解详细信息。
 
-## <a name="health"></a>ExpressRoute 运行状况
+## <a name="expressroute-health"></a><a name="health"></a>ExpressRoute 运行状况
 
 可以使用[网络性能监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) 监视 ExpressRoute 线路的可用性、与 VNet 的连接性和带宽利用率。
 
