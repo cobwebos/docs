@@ -1,5 +1,5 @@
 ---
-title: B2B 协作 API 和自定义-Azure Active Directory
+title: B2B 协作 API 和自定义 - Azure 活动目录
 description: Azure Active Directory B2B 协作可让业务合作伙伴有选择性地访问本方的企业应用程序，为跨公司合作关系提供支持
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a090ee3f9588ff6bff01e12db469bf04407a7fc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263460"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B 协作 API 和自定义
@@ -100,12 +100,12 @@ New-AzureADMSInvitation
 
 ### <a name="invitation-status"></a>邀请状态
 
-向外部用户发送邀请后，可使用 Get-AzureADUser cmdlet 查看是否用户已接受该邀请。 向外部用户发送邀请时，将填充 Get-AzureADUser 的以下属性：
+向外部用户发送邀请后，可使用 Get-AzureADUser cmdlet 查看是否用户已接受该邀请****。 向外部用户发送邀请时，将填充 Get-AzureADUser 的以下属性：
 
-* **UserState** 指示邀请是“PendingAcceptance”还是“Accepted”。
-* **UserStateChangedOn** 显示 UserState 属性最新更改的时间戳。
+* **UserState** 指示邀请是“PendingAcceptance”还是“Accepted”********。
+* **UserStateChangedOn** 显示 UserState 属性最新更改的时间戳****。
 
-可使用“筛选器”选项按 UserState 筛选结果。 以下示例显示了如何筛选结果以仅显示具有待处理邀请的用户。 该示例还显示了 Format-List 选项，借助该选项可以指定要显示的属性。 
+可使用“筛选器”选项按 UserState 筛选结果********。 以下示例显示了如何筛选结果以仅显示具有待处理邀请的用户。 该示例还显示了 Format-List 选项，借助该选项可以指定要显示的属性****。 
  
 
 ```powershell
@@ -115,9 +115,9 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 > [!NOTE]
 > 确保拥有最新版本的 AzureAD PowerShell 模块或 AzureADPreview PowerShell 模块。 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-在 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) 中查看邀请 API 参考。
+在 中[https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)查看邀请 API 引用。
 
 ## <a name="next-steps"></a>后续步骤
 

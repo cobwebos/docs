@@ -1,6 +1,6 @@
 ---
-title: Azure 中的 OpenShift 容器平台3.11 部署后任务
-description: 部署 OpenShift 容器平台3.11 群集后的其他任务。
+title: 在 Azure 部署后任务中打开Shift容器平台 3.11
+description: 已部署 OpenShift 容器平台 3.11 群集后的其他任务。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: d3008e2e2d720b67fcf0846c27d2fed1ef7db307
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1635589b282dc33f6a1e9c2552dc8a73c67b9004
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035513"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294750"
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
 
 部署 OpenShift 群集后，可以配置附加的项。 本文介绍：
 
 - 了解如何使用 Azure Active Directory (Azure AD) 配置单一登录
-- 如何配置 Azure Monitor 日志以监视 OpenShift
+- 如何配置 Azure 监视器日志以监视打开 Shift
 - 如何配置指标和日志记录
 - 如何安装 Open Service Broker for Azure (OSBA)
 
@@ -39,9 +39,9 @@ ms.locfileid: "74035513"
 这些步骤使用 Azure CLI 创建应用注册，然后使用 GUI（门户）设置权限。 若要创建应用注册，需要提供以下五项信息：
 
 - 显示名称：应用注册名称（例如 OCPAzureAD）
-- 主页：OpenShift 控制台 URL（例如 https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- 标识符 URI：OpenShift 控制台 URL（例如 https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- 答复 URL：主公用 URL 和应用注册名称（例如 https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
+- 主页：打开Shift控制台 URL（例如， `https://masterdns343khhde.westus.cloudapp.azure.com/console`）
+- 标识符 URI：打开Shift控制台 URL（例如`https://masterdns343khhde.westus.cloudapp.azure.com/console`，
+- 回复 URL：主公共 URL 和应用注册名称（例如， `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`）
 - 密码：安全密码（使用强密码）
 
 以下示例使用上述信息创建应用注册：
@@ -74,23 +74,23 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
 在 Azure 门户中：
 
-1. 选择“Azure Active Directory” **“应用注册”。**  > 
+1. 选择**Azure 活动目录** > **应用注册**。
 2. 搜索应用注册（例如 OCPAzureAD）。
 3. 在结果中，单击“应用注册”。
-4. 在“设置”下，选择“所需的权限”。
-5. 在“所需的权限”下，选择“添加”。
+4. 在“设置”下，选择“所需的权限”。********
+5. 在“所需的权限”下，选择“添加”。********
 
    ![应用注册](media/openshift-post-deployment/app-registration.png)
 
-6. 依次单击“步骤 1: 选择 API”、“Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)”。 单击底部的“选择”。
+6. 依次单击“步骤 1: 选择 API”、“Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)”。**** 单击底部的“选择”。****
 
    ![应用注册选择 API](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. 在“步骤 2: 选择权限”中，选择“委托的权限”下的“登录并读取用户配置文件”，并单击“选择”。
+7. 在“步骤 2: 选择权限”中，选择“委托的权限”下的“登录并读取用户配置文件”，并单击“选择”。************
 
    ![应用注册访问权限](media/openshift-post-deployment/app-registration-access.png)
 
-8. 选择“完成”。
+8. 选择 **"完成**"。
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>为 Azure AD 身份验证配置 OpenShift
 
@@ -157,14 +157,14 @@ sudo /usr/local/bin/master-restart controllers
 
 在 OpenShift 控制台中，现在可以看到两个身份验证选项：“htpasswd_auth”和“[应用注册]”。
 
-## <a name="monitor-openshift-with-azure-monitor-logs"></a>用 Azure Monitor 日志监视 OpenShift
+## <a name="monitor-openshift-with-azure-monitor-logs"></a>使用 Azure 监视器日志监视打开 Shift
 
 可通过三种方法将 Log Analytics 代理添加到 OpenShift。
 - 在每个 OpenShift 节点上直接安装适用于 Linux 的 Log Analytics 代理
-- 启用每个 OpenShift 节点上的 Azure Monitor VM 扩展
+- 在每个 OpenShift 节点上启用 Azure 监视器 VM 扩展
 - 安装 Log Analytics 代理作为 OpenShift daemon-set
 
-有关更多详细信息，请阅读完整[说明](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift)。
+有关详细信息，请阅读完整[说明](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift)。
 
 ## <a name="configure-metrics-and-logging"></a>配置指标和日志记录
 
@@ -204,8 +204,8 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 
 若要在 OpenShift 中安装 OSBA，请遵照 https://github.com/Azure/open-service-broker-azure#openshift-project-template 中的说明。 
 > [!NOTE]
-> 只完成 OpenShift 项目模板部分中的步骤，而不是整个安装部分。
+> 仅完成 OpenShift 项目模板部分中的步骤，而不是整个安装部分。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [OpenShift 容器平台入门](https://docs.openshift.com)
+- [使用 OpenShift 容器平台入门](https://docs.openshift.com)

@@ -1,14 +1,14 @@
 ---
 title: Azure Service Fabric 群集缩放
-description: 了解如何横向或纵向扩展、放大或缩减 Azure Service Fabric 群集。 由于应用程序要求发生更改，因此可以 Service Fabric 分类。
+description: 了解如何横向或纵向扩展、放大或缩减 Azure Service Fabric 群集。 随着应用程序需求的变化，服务结构群集也会发生变化。
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
 ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258689"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>缩放 Azure Service Fabric 群集
@@ -37,7 +37,7 @@ Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理�
 ### <a name="programmatic-scaling"></a>编程缩放
 在许多方案中，[手动或使用自动缩放规则缩放群集](service-fabric-cluster-scale-up-down.md)是合理的解决方案。 但是，对于更高级的方案，这种缩放方法可能不合适。 这些方法的潜在缺点包括：
 
-- 手动缩放要求你登录并显式请求缩放操作。 如果经常需要执行缩放操作或者执行该操作的时间不可预测，则这种缩放方法可能不是一个很好的解决方案。
+- 手动缩放要求登录并显式请求缩放操作。 如果经常需要执行缩放操作或者执行该操作的时间不可预测，则这种缩放方法可能不是一个很好的解决方案。
 - 当自动缩放规则从虚拟机规模集中删除某个实例时，它们不会从关联的 Service Fabric 群集中自动删除该节点的信息，除非节点类型的持久性级别达到了银级或金级。 由于自动缩放规则在规模集级别（而不是 Service Fabric 级别）工作，因此，自动缩放规则可能会在未正常关闭 Service Fabric 节点的情况下将其删除。 在执行缩减操作后，这种强行删除节点的方式会使 Service Fabric 节点保持“虚幻”状态。 个人（或服务）需要定期清理 Service Fabric 群集中已删除节点的状态。
 - 持久性级别达到金级或银级的节点类型会自动清理已删除的节点，因此无需任何附加清理。
 - 尽管自动缩放规则支持[许多指标](../azure-monitor/platform/autoscale-common-metrics.md)，但指标集的规模仍然有限。 如果方案需要根据该集中未涵盖的某个指标进行缩放，则自动缩放规则可能不是一个适当的选项。
@@ -46,9 +46,9 @@ Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理�
 
 Azure API 可让应用程序以编程方式使用虚拟机规模集和 Service Fabric 群集。 如果现有的自动缩放选项不适用于方案，可通过这些 API 实现自定义的缩放逻辑。 
 
-实现这种“定制”自动缩放功能的方法之一是，将一个新的无状态服务添加到 Service Fabric 应用程序来管理缩放操作。 创建自己的缩放服务可以针对应用程序的缩放行为实现最大控制度和定制性。 这对于需要精确地控制应用程序何时或如何进行缩减的情况非常有用。但是，这种控制是代码复杂性的折衷。 使用这种方法意味着需要拥有缩放代码，而这并不是一个简单的任务。 在服务的 `RunAsync` 方法中，有一组触发器可以确定是否需要缩放（包括检查最大群集大小等参数，以及缩放减缓）。   
+实现这种“定制”自动缩放功能的方法之一是，将一个新的无状态服务添加到 Service Fabric 应用程序来管理缩放操作。 创建自己的缩放服务可以针对应用程序的缩放行为实现最大控制度和定制性。 这对于需要精确控制应用程序何时或如何扩展的方案非常有用。但是，此控件附带代码复杂性的权衡。 使用这种方法意味着需要拥有缩放代码，而这并不是一个简单的任务。 在服务的 `RunAsync` 方法中，有一组触发器可以确定是否需要缩放（包括检查最大群集大小等参数，以及缩放减缓）。   
 
-适用于虚拟机规模集交互的 API（用于确定和修改当前虚拟机实例数量）为 [Fluent Azure 管理计算库](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/)。 fluent 计算库提供一个易用的 API 来与虚拟机规模集交互。  若要与 Service Fabric 群集本身交互，可使用 [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient)。
+用于虚拟机缩放集交互（用于检查当前虚拟机实例数并对其进行修改）的 API 是[流畅的 Azure 管理计算库](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/)。 fluent 计算库提供一个易用的 API 来与虚拟机规模集交互。  若要与 Service Fabric 群集本身交互，可使用 [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient)。
 
 不过，缩放代码无需在群集中以服务的形式运行即可缩放。 `IAzure` 和 `FabricClient` 均可远程连接到其关联的 Azure 资源，因此，缩放服务可以单纯地是一个控制台应用程序，或者是从 Service Fabric 应用程序外部运行的 Windows 服务。
 
@@ -71,7 +71,7 @@ Azure API 可让应用程序以编程方式使用虚拟机规模集和 Service F
 根据节点类型是非主节点类型还是主节点类型，其纵向缩放过程有所不同。
 
 ### <a name="scaling-non-primary-node-types"></a>缩放非主节点类型
-使用所需的资源创建新节点类型。  更新运行中服务的位置约束，以包含新节点类型。  将旧节点类型的实例计数逐渐（一次一个）减少至零，以免影响群集的可靠性。  当旧节点类型已停止工作时，服务会逐渐迁移到新节点类型。
+使用所需的资源创建新节点类型。  更新运行中服务的位置约束，以包含新节点类型。  将旧节点类型的实例计数逐渐（一次一个）减少至零，以免影响群集的可靠性。  在解除旧节点类型授权的过程中，服务会逐渐迁移到新节点类型。
 
 ### <a name="scaling-the-primary-node-type"></a>缩放主节点类型
 我们建议不要更改主节点类型的 VM SKU。 如果需要更多群集容量，我们建议添加更多实例。 

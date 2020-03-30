@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: f9dd53fded06eec169219d00993620a0f2aa2bf0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73678240"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>在 Azure 数据工厂中执行等待活动
@@ -36,7 +36,7 @@ ms.locfileid: "73678240"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+properties | 描述 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 name | `Wait` 活动的名称。 | String | 是
 type | 必须被设置为 **Wait**。 | String | 是
@@ -99,12 +99,12 @@ waitTimeInSeconds | 管道在继续进行处理前所等待的秒数。 | Intege
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅数据工厂支持的其他控制流活动： 
+查看数据工厂支持的其他控制流活动： 
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
-- [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
-- [For Each 活动](control-flow-for-each-activity.md)
-- [Get Metadata 活动](control-flow-get-metadata-activity.md)
+- [执行管道活动](control-flow-execute-pipeline-activity.md)
+- [对于每个活动](control-flow-for-each-activity.md)
+- [获取元数据活动](control-flow-get-metadata-activity.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
-- [Web 活动](control-flow-web-activity.md)
+- [网站活动](control-flow-web-activity.md)
 - [Until 活动](control-flow-until-activity.md)

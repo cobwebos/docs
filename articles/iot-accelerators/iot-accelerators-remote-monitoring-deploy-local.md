@@ -1,5 +1,5 @@
 ---
-title: 在本地部署远程监视解决方案-VS IDE-Azure |Microsoft Docs
+title: 在本地部署远程监视解决方案 - VS IDE - Azure |微软文档
 description: 本操作指南展示了如何使用 Visual Studio 将远程监视解决方案加速器部署到本地计算机，以用于测试和开发。
 author: avneet723
 manager: hegate
@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: a1eba1fceb959bd475d205176c2c53f6409fdc77
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73890891"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>在本地部署远程监视解决方案加速器 - Visual Studio
@@ -23,11 +23,11 @@ ms.locfileid: "73890891"
 
 若要在本地计算机上的 Docker 中运行远程监视解决方案加速器，请参阅[在本地部署远程监视解决方案加速器 - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要部署远程监视解决方案加速器使用的 Azure 服务，需要一个有效的 Azure 订阅。
 
-如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="machine-setup"></a>计算机设置
 
@@ -64,17 +64,17 @@ ms.locfileid: "73890891"
 
 1. 启动 Visual Studio。
 1. 打开存储库本地副本中 **services** 文件夹内的 **remote-monitoring.sln** 解决方案。
-1. 在“解决方案资源管理器”中右键单击解决方案，然后单击“属性”。
-1. 选择“通用属性”>“启动项目”。
-1. 选择“多个启动项目”，并将以下项目的“操作”设置为“启动”：
+1. 在“解决方案资源管理器”中右键单击解决方案，然后单击“属性”。********
+1. 选择“通用属性”>“启动项目”。****
+1. 选择“多个启动项目”，并将以下项目的“操作”设置为“启动”：************
     * WebService (asa-manager\WebService)
     * WebService (auth\WebService)
     * WebService (config\WebService)
     * WebService (device-telemetry\WebService)
     * WebService (iothub-manager\WebService)
     * WebService (storage-adapter\WebService)
-1. 单击“确定”以保存选择。
-1. 单击“调试”>“开始调试”，以在本地计算机上生成并运行 Web 服务。
+1. 单击“确定”以保存选择。****
+1. 单击“调试”>“开始调试”，以在本地计算机上生成并运行 Web 服务。****
 
 每个 Web 服务将打开一个命令提示符和 Web 浏览器窗口。 在命令提示符下，查看正在运行的服务的输出；在浏览器窗口中可以监视状态。 请不要关闭命令提示符或网页，此操作会停止 Web 服务。
 
@@ -82,10 +82,10 @@ ms.locfileid: "73890891"
 
 遵循以下步骤启动流分析作业：
 
-1. 导航到 [Azure 门户](https://portal.azure.com)。
+1. 导航到[Azure 门户](https://portal.azure.com)。
 1. 导航到为解决方案创建的**资源组**。 该资源组的名称是在运行 **start.cmd** 脚本时为解决方案选择的名称。
-1. 在资源列表中单击“流分析作业”。
-1. 在流分析作业的“概述”页上，单击“启动”按钮。 然后单击“启动”以立即启动该作业。
+1. 在资源列表中单击“流分析作业”。****
+1. 在流分析作业的“概述”页上，单击“启动”按钮。******** 然后单击“启动”以立即启动该作业****。
 
 ### <a name="run-the-web-ui"></a>运行 Web UI
 
@@ -96,7 +96,7 @@ npm install
 npm start
 ```
 
-启动完成后，浏览器将显示**http：\//localhost： 3000/仪表板**的页面。 此页面上出现的错误在意料之中。 若要在无错误的情况下查看应用程序，请完成以下步骤。
+启动完成后，浏览器将显示页面**\/http： /本地主机：3000/仪表板**。 此页面上出现的错误在意料之中。 若要在无错误的情况下查看应用程序，请完成以下步骤。
 
 ### <a name="configure-and-run-nginx"></a>配置并运行 NGINX
 
@@ -109,9 +109,9 @@ npm start
 
 ### <a name="connect-to-the-dashboard"></a>连接到仪表板
 
-若要访问远程监视解决方案仪表板，请在浏览器中导航到 http：\//localhost：9000。
+要访问远程监视解决方案仪表板，请导航到浏览器中的\/http： /localhost：9000。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 为避免产生不必要的费用，在完成测试后，请从 Azure 订阅中删除云服务。 若要删除这些服务，请导航到 [Azure 门户](https://ms.portal.azure.com)，并删除 **start.cmd** 脚本创建的资源组。
 

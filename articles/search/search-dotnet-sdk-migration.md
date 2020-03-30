@@ -1,5 +1,5 @@
 ---
-title: 升级到 Azure 搜索 .NET SDK 版本3
+title: 升级到 Azure 搜索 .NET SDK 版本 3
 titleSuffix: Azure Cognitive Search
 description: 从旧版本将代码迁移到 Azure 搜索 .NET SDK 版本 3。 了解新增功能和所需的代码更改。
 manager: nitinme
@@ -10,13 +10,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792982"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>升级到 Azure 搜索 .NET SDK 版本3
+# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>升级到 Azure 搜索 .NET SDK 版本 3
 
 <!--- DETAILS in the word doc
 cosmosdb
@@ -41,7 +41,7 @@ the data source API will no longer return in the response of any REST operation,
 ## <a name="whats-new-in-version-3"></a>版本 3 中的新增功能
 版本 3 的 Azure 搜索 .NET SDK 针对 Azure 搜索 REST API 的最新正式发布版本，具体来说就是 2016-09-01。 这使得可以在 .NET 应用程序中使用 Azure 搜索的许多新功能，如下所示：
 
-* [自定义分析器](https://aka.ms/customanalyzers)
+* [自定义分析仪](https://aka.ms/customanalyzers)
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)和 [Azure 表存储](search-howto-indexing-azure-tables.md)索引器支持
 * 通过[字段映射](search-indexer-field-mappings.md)实现的索引器自定义
 * 用于支持安全并发更新索引定义、索引器和数据源的 ETag 支持
@@ -147,6 +147,6 @@ index.Analyzers = new Analyzer[]
 ## <a name="conclusion"></a>结束语
 如果需要有关如何使用 Azure 搜索 .NET SDK 的更多详细信息，请参阅 [.NET 操作指南](search-howto-dotnet-sdk.md)。
 
-我们欢迎你对 SDK 提供反馈。 如果遇到问题，请随时咨询获取有关[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)的帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“[Azure 搜索]”。
+我们欢迎你对 SDK 提供反馈。 如果遇到问题，请随时通过 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) 向我们寻求帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“[Azure 搜索]”。
 
 感谢使用 Azure 搜索！

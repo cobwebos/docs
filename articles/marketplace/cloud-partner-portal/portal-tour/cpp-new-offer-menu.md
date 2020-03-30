@@ -1,33 +1,32 @@
 ---
-title: Azure Marketplace 的新产品/服务菜单
-description: Azure Marketplace 云合作伙伴门户中 "新的产品/服务" 菜单的概述。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Azure 应用商店的新产品/服务菜单
+description: Azure 应用商店云合作伙伴门户中"新产品/服务"菜单的概述。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: pabutler
-ms.openlocfilehash: c96341d462d541b1c08ce2851acf3a6a4c0bd804
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 3e56fbbab144dd99d18f63a3dfc2318db0306acd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821499"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288914"
 ---
 # <a name="new-offer-menu"></a>“新产品/服务”菜单
 
-“新产品/服务”菜单可使合作伙伴能够创建**云合作伙伴门户**支持的产品/服务类型的实例[](https://cloudpartner.azure.com)。  选择左侧导航菜单栏上的“新产品/服务”菜单项，随即将显示以下产品/服务类型的列表。  选择任一类型即可开始进行产品/服务的创建和发布过程。
+“新产品/服务”菜单可使合作伙伴能够创建[云合作伙伴门户](https://cloudpartner.azure.com)支持的产品/服务类型的实例****。  选择左侧导航菜单栏上的“新产品/服务”菜单项，随即将显示以下产品/服务类型的列表****。  选择任一类型即可开始进行产品/服务的创建和发布过程。
 
 |    **新产品/服务菜单项**     |     **相应的文档部分**                       |
 |    -----------------------     |     -----------------------------                       |
 | ![Azure 应用程序菜单项](./media/new-offer-menu1.png) |  [Azure 应用程序产品/服务](../azure-applications/cpp-azure-app-offer.md) |
 | ![咨询服务菜单项](./media/new-offer-menu2.png) | [咨询服务产品/服务](./../../cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md) |
-| ![容器菜单项](./media/new-offer-menu3.png) | [容器产品/服务](./../containers/cpp-containers-offer.md) |
-| ![Dynamics 365 Business Central 菜单项](./media/new-offer-menu4.png) | [Dynamics 365 Business Central 产品/服务](./../../cloud-partner-portal-orig/cpp-business-central-offer.md) |
+| ![容器菜单项](./media/new-offer-menu3.png) | [集装箱提供](./../containers/cpp-containers-offer.md) |
+| ![Dynamics 365 Business Central 菜单项](./media/new-offer-menu4.png) | [Dynamics 365 Business Central 套餐](./../../cloud-partner-portal-orig/cpp-business-central-offer.md) |
 | ![Dynamics 365 for Customer Engagement 菜单项](./media/new-offer-menu5.png) | [Dynamics 365 for Customer Engagement 产品/服务](./../../cloud-partner-portal-orig/cpp-customer-engagement-offer.md) |
 | ![Dynamics 365 for Operations 菜单项](./media/new-offer-menu6.png) | [Dynamics 365 for Operations 产品/服务](./../../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) |
-| ![IoT Edge 模块菜单项](./media/new-offer-menu7.png) | [IoT Edge 模块产品/服务](./../iot-edge-module/cpp-offer-process-parts.md) |
+| ![IoT Edge 模块菜单项](./media/new-offer-menu7.png) | [IoT 边缘模块产品](./../iot-edge-module/cpp-offer-process-parts.md) |
 | ![Power BI 应用菜单项](./media/new-offer-pbi.png)   |  [Power BI 应用产品/服务](../power-bi/cpp-power-bi-offer.md)  |
 | ![ SasS 应用程序菜单项](./media/new-offer-menu8.png) | [SasS 应用程序产品/服务](../saas-app/cpp-saas-offer.md) |
 | ![ 虚拟机菜单项](./media/new-offer-menu9.png) | [虚拟机产品/服务](./../virtual-machine/cpp-virtual-machine-offer.md) |

@@ -1,5 +1,5 @@
 ---
-title: 跨 Azure 中的租户共享库映像
+title: 在 Azure 中的租户之间共享库图像
 description: 了解如何使用共享映像库跨 Azure 租户共享 VM 映像。
 services: virtual-machines-linux
 author: cynthn
@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: cynthn
 ms.openlocfilehash: 18337620a6f9506e402149909667026e4a8ba7eb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034976"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租户共享库 VM 映像
@@ -24,7 +24,7 @@ ms.locfileid: "74034976"
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 > [!IMPORTANT]
-> 不能使用门户从另一个 Azure 租户中的映像部署 VM。 若要从租户之间共享的映像创建 VM，必须使用 Azure CLI 或 [Powershell](../windows/share-images-across-tenants.md)。
+> 不能使用门户从另一个 Azure 租户中的映像部署 VM。 要从租户之间共享的映像创建 VM，必须使用 Azure CLI 或[Powershell](../windows/share-images-across-tenants.md)。
 
 ## <a name="create-a-vm-using-azure-cli"></a>使用 Azure CLI 创建 VM
 

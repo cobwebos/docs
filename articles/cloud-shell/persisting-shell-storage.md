@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Cloud Shell 中持久保存文件 |Microsoft Docs
+title: Azure 云壳中的持久文件 |微软文档
 description: 演练 Azure Cloud Shell 如何持久保存文件。
 services: azure
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d4d59642f638e7b1221c35a4bb281923571d5066
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252098"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297587"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中持久保存文件
 Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始启动时，Cloud Shell 会提示关联新的或现有的文件共享，以便在会话之间持久保存文件。
@@ -28,7 +28,7 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始
 > Bash 和 PowerShell 共享相同的文件共享。 只能有一个文件共享与 Cloud Shell 中的自动装载相关联。
 
 > [!NOTE]
-> Cloud shell 存储帐户不支持 Azure 存储防火墙。
+> 云外壳存储帐户不支持 Azure 存储防火墙。
 
 ## <a name="create-new-storage"></a>创建新存储
 
@@ -39,15 +39,15 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始
 
 ![订阅设置](media/persisting-shell-storage/basic-storage.png)
 
-文件共享在 `clouddrive` 目录中装载为 `$Home`。 这是一次性操作，文件共享会自动装载在后续会话中。 
+文件共享在 `$Home` 目录中装载为 `clouddrive`。 这是一次性操作，文件共享会自动装载在后续会话中。 
 
 文件共享还包含一个为你创建的 5-GB 映像，该映像自动将数据持久保存在 `$Home` 目录中。 对于 Bash 和 PowerShell 都是这样。
 
 ## <a name="use-existing-resources"></a>使用现有资源
 
-通过使用高级选项，可以将现有资源相关联。 选择 Cloud Shell 区域时，必须选择位于同一区域的后备存储帐户。 例如，如果分配的区域是美国西部，则还必须将位于美国西部的文件共享相关联。
+通过使用高级选项，可以将现有资源相关联。 选择 Cloud Shell 区域时，必须选择位于同一区域的后备存储帐户。 例如，如果您指定的区域是西美国，则必须关联驻留在美国西部的文件共享。
 
-出现存储设置的提示时，选择“显示高级设置”查看其他选项。 填充的存储选项针对本地冗余存储 (LRS)、异地冗余存储 (GRS) 和区域冗余存储 (ZRS) 帐户进行筛选。 
+出现存储设置的提示时，选择“显示高级设置”查看其他选项****。 填充的存储选项针对本地冗余存储 (LRS)、异地冗余存储 (GRS) 和区域冗余存储 (ZRS) 帐户进行筛选。 
 
 > [!NOTE]
 > 建议使用 GRS 或 ZRS 存储帐户以提高后备文件共享的复原能力。 选择哪种类型的冗余取决于你的目标和价格首选项。 [详细了解 Azure 存储帐户的复制选项](https://docs.microsoft.com/azure/storage/common/storage-redundancy)。
@@ -57,12 +57,12 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始
 ## <a name="securing-storage-access"></a>保护存储访问
 安全起见，每个用户应预配自己的存储帐户。  对于基于角色的访问控制 (RBAC)，用户必须具有存储帐户级别的“参与者”访问权限或更高访问权限。
 
-Cloud Shell 在指定订阅中的存储帐户内使用 Azure 文件共享。 由于继承了权限，对订阅拥有足够访问权限的用户将能够访问订阅中包含的所有存储帐户和文件共享。
+云外壳在指定的订阅中使用存储帐户中的 Azure 文件共享。 由于继承了权限，具有对订阅具有足够访问权限的用户将能够访问订阅中包含的所有存储帐户和文件共享。
 
-用户应通过在存储帐户或订阅级别设置权限来锁定对其文件的访问权限。
+用户应通过在存储帐户或订阅级别设置权限来锁定对其文件的访问。
 
 ## <a name="supported-storage-regions"></a>支持的存储区域
-若要查找当前区域，可在 Bash 中运行 `env`，并 `ACC_LOCATION`或 PowerShell run `$env:ACC_LOCATION`中找到该变量。 文件共享会收到系统创建的 5-GB 映像，用于保存 `$Home` 目录。
+要查找当前区域，您可以在 Bash`env`中运行并找到变量`ACC_LOCATION`，或者从 PowerShell`$env:ACC_LOCATION`运行 。 文件共享会收到系统创建的 5-GB 映像，用于保存 `$Home` 目录。
 
 Cloud Shell 计算机位于以下区域中：
 
@@ -72,15 +72,15 @@ Cloud Shell 计算机位于以下区域中：
 |欧洲|欧洲北部、欧洲西部|
 |亚太区|印度中部、亚洲东南部|
 
-客户应选择主要区域，除非他们要求静态数据存储在特定区域中。 如果有这样的要求，则应使用辅助存储区域。
+客户应选择主要区域，除非他们要求其静止数据存储在特定区域中。 如果他们有这样的要求，则应使用辅助存储区域。
 
 ### <a name="secondary-storage-regions"></a>辅助存储区域
-如果使用了辅助存储区域，则关联的 Azure 存储帐户与要将其装载到的 Cloud Shell 计算机位于不同的区域中。 例如，Jane 可以将其存储帐户设置为位于加拿大东部的次要区域中，但她装载到的计算机仍位于主要区域。 她的静态数据位于加拿大，但在美国中进行处理。
+如果使用辅助存储区域，则关联的 Azure 存储帐户位于另一个区域中，作为要将它们装载到的云外壳计算机。 例如，Jane 可以将存储帐户设置为位于加拿大东部，一个辅助区域，但她安装到的机器仍位于主区域。 她的数据位于加拿大，但在美国处理。
 
 > [!NOTE]
-> 如果使用了次要区域，则 Cloud Shell 的文件访问和启动时间可能会更慢。
+> 如果使用辅助区域，则云外壳的文件访问和启动时间可能会变慢。
 
-用户可以在 PowerShell 中运行 `(Get-CloudDrive | Get-AzStorageAccount).Location` 以查看其文件共享的位置。
+用户可以在 PowerShell 中运行`(Get-CloudDrive | Get-AzStorageAccount).Location`以查看其文件共享的位置。
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>根据 Azure 资源策略限制资源创建
 在 Cloud Shell 中创建的存储帐户都标记有 `ms-resource-usage:azure-cloud-shell`。 如果想禁止用户在 Cloud Shell 中创建存储帐户，请创建此特定标记触发的[适用于标记的 Azure 资源策略](../azure-policy/json-samples.md)。
@@ -88,15 +88,16 @@ Cloud Shell 计算机位于以下区域中：
 ## <a name="how-cloud-shell-storage-works"></a>Cloud Shell 存储的工作原理 
 Cloud Shell 通过以下两种方法持久保存文件： 
 * 创建 `$Home` 目录的磁盘映像来持久保持目录中所有内容。 磁盘映像将作为 `acc_<User>.img` 保存在指定的文件共享中，位于以下位置：`fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img`，并会自动同步更改。 
-* 将指定的文件共享装载为 `clouddrive` 目录中的 `$Home` 以便直接进行文件共享交互。 `/Home/<User>/clouddrive` 映射到 `fileshare.storage.windows.net/fileshare`。
+* 将指定的文件共享装载为 `$Home` 目录中的 `clouddrive` 以便直接进行文件共享交互。 `/Home/<User>/clouddrive` 映射到 `fileshare.storage.windows.net/fileshare`。
  
 > [!NOTE]
 > `$Home` 目录中的所有文件（如 SSH 密钥）将持久保存用户磁盘映像（存储于已装载的文件共享中）中。 在 `$Home` 目录和已装载的文件共享中持久保存信息时，请应用最佳做法。
 
-## <a name="clouddrive-commands"></a>clouddrive 命令
+## <a name="clouddrive-commands"></a>云驱动命令
 
 ### <a name="use-the-clouddrive-command"></a>使用 `clouddrive` 命令
-在 Cloud Shell 中，您可以运行名为 `clouddrive`的命令，这样您就可以手动更新装载到 Cloud Shell 的文件共享。
+在云外壳中，可以运行名为 的命令`clouddrive`，它使您能够手动更新装载到云外壳的文件共享。
+
 ![运行“clouddrive”命令](media/persisting-shell-storage/clouddrive-h.png)
 
 ### <a name="list-clouddrive"></a>列出 `clouddrive`
@@ -121,7 +122,7 @@ justin@Azure:~$
 #### <a name="prerequisites-for-manual-mounting"></a>手动装载的先决条件
 可使用 `clouddrive mount` 命令更新与 Cloud Shell 相关联的文件共享。
 
-如果装载现有的文件共享，则存储帐户必须位于所选的 Cloud Shell 区域中。 通过运行 `env` 并检查 `ACC_LOCATION`来检索位置。
+如果装载现有的文件共享，则存储帐户必须位于所选的 Cloud Shell 区域中。 通过运行`env`和检查 检索`ACC_LOCATION`位置。
 
 #### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` 命令
 
@@ -164,7 +165,7 @@ clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareNam
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
-注意：如果需要在文件中定义一个函数并从 PowerShell cmdlet 中调用该函数，则必须包含点运算符。 例如： .\MyFunctions.ps1
+注意：如果需要在文件中定义函数并从 PowerShell cmdlet 调用它，则必须包括点运算符。 例如： .\MyFunctions.ps1
 
 ## <a name="next-steps"></a>后续步骤
 [Cloud Shell 快速入门](quickstart.md) <br>

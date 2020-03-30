@@ -1,19 +1,19 @@
 ---
-title: 在 Azure 门户中管理 Azure Maps 帐户 |Microsoft Azure 映射
-description: 在本文中，你将了解如何使用 Azure 门户管理 Microsoft Azure Maps 帐户。
-author: farah-alyasari
-ms.author: v-faalya
+title: 在 Azure 门户中管理 Azure 地图帐户 |微软 Azure 地图
+description: 在本文中，您将学习如何使用 Azure 门户来管理 Microsoft Azure 地图帐户。
+author: philmea
+ms.author: philmea
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1186c3ab0fc333896f3be4db5d103bcd6d12abf9
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209964"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335556"
 ---
 # <a name="manage-your-azure-maps-account"></a>管理 Azure Maps 帐户
 
@@ -23,27 +23,27 @@ ms.locfileid: "77209964"
 
 ## <a name="create-a-new-account"></a>创建新帐户
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 Azure[门户](https://portal.azure.com)。
 
-2. 在 Azure 门户的左上角，选择“创建资源”。
+2. 在 Azure 门户的左上角，选择“创建资源”****。
 
-3. 搜索并选择“Maps”。 然后选择“创建”。
+3. 搜索并选择“Maps”****。 然后选择 **"创建**"。
 
 4. 输入新帐户的信息。
 
-[![在 Azure 门户中输入 Azure Maps 帐户信息](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
+[![在 Azure 门户中输入 Azure 地图帐户信息](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
 
 ## <a name="delete-an-account"></a>删除帐户
 
-可以通过 Azure 门户删除帐户。 导航到帐户概览页并选择“删除”。
+可以通过 Azure 门户删除帐户。 导航到帐户概览页并选择“删除”。****
 
-[![将 Azure Maps 帐户删除 Azure 门户](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
+[![删除 Azure 门户中的 Azure 地图帐户](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
 
 将显示确认页面。 可以通过键入帐户名称来确认删除帐户。
 
 ## <a name="next-steps"></a>后续步骤
 
-设置 Azure Maps 的身份验证，并了解如何获取 Azure Maps 订阅密钥：
+使用 Azure 映射设置身份验证并了解如何获取 Azure 地图订阅密钥：
 > [!div class="nextstepaction"]
 > [管理身份验证](how-to-manage-authentication.md)
 

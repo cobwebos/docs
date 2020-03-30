@@ -1,19 +1,18 @@
 ---
-title: 用于预验证虚拟机的自我测试客户端 |Azure Marketplace
+title: 自测试客户端以预验证虚拟机 |Azure 应用商店
 description: 如何为 Azure 市场创建用来预验证虚拟机映像的自测试客户端。
-services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: pabutler
-ms.openlocfilehash: fc62875873f38630e592c79aebd6a138665ed6e4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: fb568400cb60f108303909353bfa703e98ab6157
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809214"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286415"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>创建用来预验证 Azure 虚拟机映像的自测试客户端
 
@@ -21,7 +20,7 @@ ms.locfileid: "73809214"
 
 ## <a name="development-and-testing-overview"></a>开发和测试概述
 
-作为自检过程的一部分，你将创建一个连接到 Azure Marketplace 的本地客户端来验证 Azure 订阅中运行的 VM。 VM 可以运行 Windows 或 Linux 操作系统。
+作为自测试过程的一部分，您将创建一个本地客户端，该客户端连接到 Azure 应用商店以验证在 Azure 订阅中运行的 VM。 VM 可以运行 Windows 或 Linux 操作系统。
 
 本地客户端运行使用自测试 API 进行身份验证、发送连接信息以及接收测试结果的脚本。
 
@@ -63,13 +62,13 @@ Request body:    The Request body parameters should use the following JSON forma
 下表描述了 API 各字段。
 
 
-|      字段         |    说明    |
+|      字段         |    描述    |
 |  ---------------   |  ---------------  |
-|  授权     |  "持有者 xxxx-xxxxx" 字符串包含可使用 PowerShell 创建的 Azure Active Directory （AD）客户端令牌。          |
+|  授权     |  "承载 xxx-xxx-xxx-xxxxxx"字符串包含 Azure 活动目录 （AD） 客户端令牌，可以使用 PowerShell 创建。          |
 |  DNSName           |  要测试的 VM 的 DNS 名称    |
 |  用户              |  用于登录到 VM 的用户名         |
 |  密码          |  用于登录到 VM 的密码          |
-|  操作系统                |  VM 的操作系统：`Linux` 或 `Windows`          |
+|  OS                |  VM 的操作系统：`Linux` 或 `Windows`          |
 |  PortNo            |  用于连接到 VM 的开放端口号。 通常，对于 Linux，端口号为 `22`，对于 Windows，端口号为 `5986`。          |
 |  |  |
 
@@ -220,18 +219,18 @@ https://isvapp.azurewebsites.net/selftest-vm
 
 使用以下步骤选择要在其中创建应用程序的 Azure AD 租户。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在顶部菜单栏上，选择你的帐户，然后在“目录”列表下，选择要在其中注册应用程序的 Active Directory 域服务租户。 也可选择“目录 + 订阅”图标以查看全局订阅筛选器。 以下屏幕截图显示了此筛选器的示例。
+1. 登录到 Azure[门户](https://portal.azure.com/)。
+2. 在顶部菜单栏上，选择你的帐户，然后在“目录”列表下，选择要在其中注册应用程序的 Active Directory 域服务租户。 也可选择“目录 + 订阅”图标以查看全局订阅筛选器****。 以下屏幕截图显示了此筛选器的示例。
 
    ![选择订阅筛选器](./media/stclient-subscription-filter.png)
 
-3. 在左侧导航栏中，选择“所有服务”，然后选择“Azure Active Directory”。
+3. 在左侧导航栏中，选择“所有服务”，然后选择“Azure Active Directory”********。
 
    在以下步骤中，可能需要提供租户名称（或目录名称）或租户 ID（或目录 ID）。
 
    **获取租户信息：**
 
-   在**Azure Active Directory 概述**中，搜索 "属性"，然后选择 "**属性**"。 使用以下屏幕截图为例：
+   在**Azure 活动目录概述中**，搜索"属性"，然后选择**属性**。 使用以下屏幕截图为例：
 
    - **名称** - 租户名称或目录名称
    - **目录 ID** - 租户 ID 或目录 ID，或使用滚动条查找“属性”。
@@ -242,51 +241,51 @@ https://isvapp.azurewebsites.net/selftest-vm
 
 要注册客户端应用，请使用以下步骤进行操作。
 
-1. 在左侧导航栏中，选择“所有服务”，然后选择“应用注册”。
-2. 在“应用注册”下，选择“+ 新建应用程序注册”。
-3. 在“创建”下，提供以下字段所需的信息：
+1. 在左侧导航栏中，选择“所有服务”，然后选择“应用注册”********。
+2. 在“应用注册”下，选择“+ 新建应用程序注册”********。
+3. 在“创建”下，提供以下字段所需的信息****：
 
-   - **名称**-输入应用的友好名称。 例如 "SelfTestClient"。
-   - **应用程序类型**-选择**WEB 应用/API**
-   - **登录 URL** -类型 "https：\//isvapp.azurewebsites.net/selftest-vm"
+   - **名称**- 输入应用的友好名称。 例如，"自测试客户端"。
+   - **应用程序类型**- 选择**Web 应用/API**
+   - **登录 URL** - 键入"https：\//isvapp.azurewebsites.net/selftest-vm"
 
-4. 选择“创建”。
-5. 在“应用注册”或“已注册的应用”下，复制“应用程序 ID”。
+4. 选择 **“创建”**。
+5. 在“应用注册”或“已注册的应用”下，复制“应用程序 ID”************。
 
    ![获取应用程序 ID](./media/stclient-app-id.png)
 
-6. 在已注册的应用工具栏中，选择“设置”。
-7. 选择“所需权限”以为应用程序配置权限。
-8. 在“所需权限”下，选择“+ 添加”。
-9. 在“添加 API 访问权限”下，选取“选择 API”。
-10. 在 "**选择 api**" 下，键入 "Windows Azure 经典部署模型" 以搜索 API。
-11. 在搜索结果中，选取“Microsoft Azure 经典部署模型”，然后单击“选择”。
+6. 在已注册的应用工具栏中，选择“设置”****。
+7. 选择“所需权限”以为应用程序配置权限****。
+8. 在“所需权限”下，选择“+ 添加”。********
+9. 在“添加 API 访问权限”下，选取“选择 API”********。
+10. 在 **"选择 API"** 下，键入"Windows Azure 经典部署模型"以搜索 API。
+11. 在搜索结果中，选取“Microsoft Azure 经典部署模型”，然后单击“选择”********。
 
     ![为应用配置多租户](./media/stclient-select-api.png)
 
-12. 在“添加 API 访问权限”下，选取“选择权限”。
-13. 选择 **"Microsoft Azure 服务管理 API"** 。
+12. 在“添加 API 访问权限”下，选取“选择权限”********。
+13. 选择 **"访问"Windows Azure 服务管理 API"。**
 
     ![为应用启用 API 访问权限](./media/stclient-enable-api-access.png)
 
 14. 单击“选择”。
-15. 选择“完成”。
-16. 在“设置”下，选择“属性”。
-17. 在“属性”下，向下滚动到“多租户”。 请选择“是”。
+15. 选择 **"完成**"。
+16. 在“设置”下，选择“属性”********。
+17. 在“属性”下，向下滚动到“多租户”********。 选择 **“是”**。
 
     ![为应用配置多租户](./media/stclient-yes-multitenant.png)
 
-18. 选择“保存”。
-19. 在“设置”下，选择“密钥”。
-20. 选择密钥“说明”文本框，创建密钥。 配置以下字段：
+18. 选择“保存”。****
+19. 在“设置”下，选择“密钥”********。
+20. 选择密钥“说明”文本框，创建密钥****。 配置以下字段：
 
-    - 键入密钥名称。 例如，"selftestclient"
-    - 在 "**过期**" 下拉列表中，选择 "1 年"。
-    - 选择“保存”以生成密钥。
-    - 在“值”下，复制该密钥。
+    - 键入密钥名称。 例如，"自测客户端"
+    - 在 **"过期**"下拉列表中，选择"1 年内"。
+    - 选择“保存”以生成密钥****。
+    - 在“值”下，复制该密钥****。
 
       >[!Important]
-      >退出 "**密钥**" 窗体后，将无法看到键值。
+      >退出 **"密钥"** 窗体后，您将无法看到密钥值。
 
     ![密钥值表单](./media/stclient-create-key.png)
 
@@ -301,7 +300,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 
 ### <a name="to-create-and-get-a-token-using-postman"></a>使用 Postman 创建和获取令牌
 
- 要向 Auth0 请求任何授权的应用程序的令牌，请使用以下格式的有效负载对 [https://login.microsoftonline.com/common/oauth2/token ](https://login.microsoftonline.com/common/oauth2/token) 终结点执行 POST 操作：
+ 要向 Auth0 请求任何授权应用程序的令牌，请对[https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token)具有以下格式的有效负载的终结点执行 POST 操作：
 
 ```
 Method Type : POST
@@ -330,7 +329,7 @@ Content-Type: application/x-www-form-urlencoded
 
 ### <a name="to-create-and-get-a-token-using-curl-in-linux"></a>在 Linux 中使用 cURL 创建和获取令牌
 
-要向 Auth0 请求任何授权的应用程序的令牌，请使用以下格式的有效负载对 [https://login.microsoftonline.com/common/oauth2/token ](https://login.microsoftonline.com/common/oauth2/token) 终结点执行 POST 操作：
+要向 Auth0 请求任何授权应用程序的令牌，请对[https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token)具有以下格式的有效负载的终结点执行 POST 操作：
 
 ```
 Request:
@@ -351,7 +350,7 @@ Response:
 
 ### <a name="to-create-and-get-a-token-using-c35"></a>使用 C&#35;创建和获取令牌
 
-若要向 Auth0 请求任何已授权应用程序的令牌，请使用以下格式的有效负载对 https：\//soamtenant.auth0.com/oauth/token 终结点执行 POST 操作：
+要向 Auth0 请求任何授权应用程序的令牌，请对 https 执行 POST 操作\/：/soamtenant.auth0.com/oauth/token具有以下格式的有效负载的终结点：
 
 ```csharp
 string clientId = "Your Application Id";
@@ -374,7 +373,7 @@ var token = JObject.Parse(content)["access_token"];
 
 ### <a name="to-create-and-get-a-token-using-powershell"></a>使用 PowerShell 创建和获取令牌
 
-若要向 Auth0 请求任何已授权应用程序的令牌，请使用以下格式的有效负载对 https：\//soamtenant.auth0.com/oauth/token 终结点执行 POST 操作：
+要向 Auth0 请求任何授权应用程序的令牌，请对 https 执行 POST 操作\/：/soamtenant.auth0.com/oauth/token具有以下格式的有效负载的终结点：
 
 ```powershell
 $clientId = "Application Id of AD Client APP";
