@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 02dc1b55d85b7137a5c1f57999cc3b7e9b1efe29
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77591330"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>从设备到云通信指南
@@ -31,9 +31,9 @@ ms.locfileid: "77591330"
 
 |  | 设备到云的消息 | 设备克隆的报告属性 | 文件上传 |
 | ---- | ------- | ---------- | ---- |
-| 场景 | 遥测时序和警报。 例如，每隔 5 分钟发送 256-KB 的传感器数据批。 | 可用功能和条件。 例如，当前设备连接模式，诸如手机网络或 WiFi。 同步长时间运行的工作流，如配置和软件更新。 | 媒体文件。 大型（通常为压缩的）遥测批。 |
+| 方案 | 遥测时序和警报。 例如，每隔 5 分钟发送 256-KB 的传感器数据批。 | 可用功能和条件。 例如，当前设备连接模式，诸如手机网络或 WiFi。 同步长时间运行的工作流，如配置和软件更新。 | 媒体文件。 大型（通常为压缩的）遥测批。 |
 | 存储和检索 | IoT 中心的临时存储，最多可保存 7 天。 仅顺序读取。 | 由 IoT 中心存储在设备孪生中。 可使用 [IoT 中心查询语言](iot-hub-devguide-query-language.md)进行检索。 | 存储在用户提供的 Azure 存储帐户中。 |
-| 大小 | 消息大小最大为 256-KB。 | 报告的最大属性大小为 32 KB。 | Azure Blob 存储支持的最大文件大小。 |
+| 大小 | 消息大小最大为 256-KB。 | 最大报告的属性大小为 32 KB。 | Azure Blob 存储支持的最大文件大小。 |
 | 频率 | 高。 有关详细信息，请参阅 [IoT 中心限制](iot-hub-devguide-quotas-throttling.md)。 | 中。 有关详细信息，请参阅 [IoT 中心限制](iot-hub-devguide-quotas-throttling.md)。 | 低。 有关详细信息，请参阅 [IoT 中心限制](iot-hub-devguide-quotas-throttling.md)。 |
 | 协议 | 适用于所有协议。 | 使用 MQTT 或 AMQP 时可用。 | 在使用任何协议时可用，但设备上必须具备 HTTPS。 |
 

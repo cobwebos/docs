@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
 ms.openlocfilehash: 7caeba0e88f63106eae80f7142b5d65463f8d7a7
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019394"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务连接性和网络问题：常见问题解答 (FAQ)
@@ -43,18 +43,18 @@ ms.locfileid: "77019394"
 有关详细信息，请参阅[使用端口 ping 而不是 ICMP 来测试 Azure VM 连接性](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/)。
 
 ## <a name="how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service"></a>如何防止接收来自未知 IP 地址的数千次点击，这些 IP 地址是否会对云服务造成某种形式的恶意攻击？
-Azure 实现多层网络安全性，以保护其平台服务免受分布式拒绝服务 (DDoS) 攻击。 Azure DDoS 防御系统是 Azure 持续监视过程的一部分，通过渗透测试不断改进。 该 DDoS 防御系统的设计不仅可以抵御外部的攻击，还可以承受其他 Azure 租户的攻击。 有关详细信息，请参阅 [Azure 网络安全](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)。
+Azure 实现多层网络安全性，以保护其平台服务免受分布式拒绝服务 (DDoS) 攻击。 Azure DDoS 防御系统是 Azure 持续监视过程的一部分，通过渗透测试不断改进。 该 DDoS 防御系统的设计不仅可以抵御外部的攻击，还可以承受其他 Azure 租户的攻击。 有关详细信息，请参阅[Azure 网络安全](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)。
 
 还可以创建一个启动任务来选择性地阻止某些特定 IP 地址。 有关详细信息，请参阅[阻止特定 IP 地址](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)。
 
 ## <a name="when-i-try-to-rdp-to-my-cloud-service-instance-i-get-the-message-the-user-account-has-expired"></a>当尝试 RDP 到我的云服务实例时，我收到消息：“此用户帐户已过期。”
 当绕过 RDP 设置中配置的到期日期时，你可能会收到“此用户帐户已过期”的错误消息。 你可以按照以下步骤从门户更改到期日期：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，导航到云服务并选择“远程桌面”选项卡。
+1. 登录到 [Azure 门户](https://portal.azure.com)，导航到云服务并选择“远程桌面”**** 选项卡。
 
-2. 选择“生产”或“暂存”部署槽位。
+2. 选择“生产”**** 或“暂存”**** 部署槽位。
 
-3. 更改“到期日期”字段中的日期，然后保存配置。
+3. 更改“到期日期”字段中的日期，然后保存配置。****
 
 你现在应能够 RDP 到你的计算机了。
 
@@ -65,14 +65,14 @@ Azure 实现多层网络安全性，以保护其平台服务免受分布式拒�
 
 ## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>如何将发往云服务的默认 URL 的传入流量重定向到自定义 URL？
 
-可以使用 IIS 的 URL 重写模块将传入到云服务的默认 URL（例如 \*.cloudapp.net）的流量重定向到某个自定义 DNS 名称/URL。 由于 URL 重写模块默认在 web 角色上启用并且其规则是在应用程序的 web.config 中配置的，因此，无论是否重新启动/重置映像，它在 VM 上始终可用。有关详细信息，请参阅：
+可以使用 IIS 的 URL 重写模块将传入到云服务的默认 URL（例如 \*.cloudapp.net）的流量重定向到某个自定义 DNS 名称/URL。 由于默认情况下在 Web 角色上启用 URL 重写模块，并且其规则在应用程序的 Web.config 中配置，因此无论重新启动/重新映像如何，它始终在 VM 上可用。有关详细信息，请参阅：
 
 - [为 URL 重写模块创建重写规则](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [删除默认链接](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>如何阻止/禁用发往云服务的默认 URL 的传入流量？
 
-可以阻止发往云服务的默认 URL/名称（例如 \*）的传入流量。 按照如下所示，将主机标头设置为云服务定义（* MyCloudService.com）文件中的 "站点绑定配置" 下的自定义 DNS 名称（例如 www\.）：
+可以阻止发往云服务的默认 URL/名称（例如 \*）的传入流量。 在云服务定义 （*.csdef） 文件中的站点\.绑定配置下，将主机标头设置为自定义 DNS 名称（例如 www MyCloudService.com），如所示：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -104,13 +104,13 @@ Azure 实现多层网络安全性，以保护其平台服务免受分布式拒�
 - [保留现有云服务的 IP 地址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
 - [使用服务配置文件将保留 IP 关联到云服务](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-只要有多个实例用于你的角色，将 RIP 与云服务进行关联就应该不会导致任何停机时间。 或者，可以将 Azure 数据中心的 IP 范围添加到允许列表。 可以在 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=41653)找到所有 Azure IP 范围。
+只要有多个实例用于你的角色，将 RIP 与云服务进行关联就应该不会导致任何停机时间。 另外，还可以将 Azure 数据中心的 IP 范围添加到允许列表。 可以在 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=41653)找到所有 Azure IP 范围。
 
 此文件包含 Azure 数据中心使用的 IP 地址范围（包括计算、SQL 和存储范围）。 每周都将发布更新的文件，反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 请每周下载新的 xml 文件，并在网站上执行必要的更改以正确地标识 Azure 中运行的服务。 Azure ExpressRoute 用户可能会注意到，此文件用于在每个月第一周更新 Azure 空间的 BGP 播发。
 
 ## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>如何将 Azure 资源管理器虚拟网络与云服务一起使用？
 
-不能将云服务置于 Azure 资源管理器虚拟网络中。 可以通过对等互连将 Azure 资源管理器虚拟网络与经典部署虚拟网络连接起来。 有关详细信息，请参阅[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
+不能将云服务置于 Azure 资源管理器虚拟网络中。 可以通过对等互连将 Azure 资源管理器虚拟网络与经典部署虚拟网络连接起来。  有关详细信息，请参阅[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
 
 
 ## <a name="how-can-i-get-the-list-of-public-ips-used-by-my-cloud-services"></a>如何获取云服务使用的公共 IP 列表？

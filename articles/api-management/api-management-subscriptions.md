@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
 ms.openlocfilehash: 9144af131e1427d0b3226655c871921ac1d91665
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70073420"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API 管理中的订阅
@@ -27,13 +27,13 @@ ms.locfileid: "70073420"
 
 通过 API 管理发布 API 时，使用订阅密钥保护对这些 API 的访问容易且常见。 需要使用已发布 API 的开发人员在调用这些 API 时必须在 HTTP 请求中包括一个有效的订阅密钥。 否则，API 管理网关会立即拒绝调用。 不会将它们转发到后端服务。
 
-若要获取访问 API 所需的订阅密钥，必须有一个订阅。 订阅实质上是一个已命名的容器，该容器包含一对订阅密钥。 需要使用已发布 API 的开发人员可以获取订阅。 不需要 API 发布者批准。 API 发布者也可以直接为 API 使用者创建订阅。
+若要获取访问 API 所需的订阅密钥，必须拥有订阅。 订阅实质上是一个已命名的容器，该容器包含一对订阅密钥。 需要使用已发布 API 的开发人员可以获取订阅。 不需要 API 发布者批准。 API 发布者也可以直接为 API 使用者创建订阅。
 
 > [!TIP]
 > API 管理还支持使用其他机制来保护对 API 的访问，包括以下示例：
 > - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
 > - [客户端证书](api-management-howto-mutual-certificates-for-clients.md)
-> - [IP 允许列表](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> - [IP 白名单](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>订阅范围
 
@@ -46,14 +46,14 @@ ms.locfileid: "70073420"
 ![产品订阅](./media/api-management-subscriptions/product-subscription.png)
 
 > [!TIP]
-> 有时候，API 发布者可能希望在不要求订阅的情况下将 API 产品发布给公众。 发布者可以在 Azure 门户中在产品的“设置”页上取消选择“需要订阅”选项。 这样一来，用户就可以在没有 API 密钥的情况下访问该产品的所有 API。
+> 有时候，API 发布者可能希望在不要求订阅的情况下将 API 产品发布给公众。 发布者可以在 Azure 门户中在产品的“设置”页上取消选择“需要订阅”选项。******** 这样一来，用户就可以在没有 API 密钥的情况下访问该产品的所有 API。
 
 ### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>订阅所有 API 或单个 API
 
 引入 API 管理的[消耗](https://aka.ms/apimconsumptionblog)层时，我们进行了一些更改以简化密钥管理。
 - 首先，我们在原来的基础上添加了两个订阅范围：所有 API 和单个 API。 订阅范围不再限于一个 API 产品。 现在可以创建密钥，以授予对 API 管理实例中的一个 API 或所有 API 的访问权限，而不需先创建一个产品并向其添加 API。 此外，每个 API 管理实例现在都有一个不可变的包含所有 API 的订阅。 此订阅使得在测试控制台中测试和调试 API 更为容易且简单明了。
 
-- 其次，API 管理现在允许“独立”订阅。 订阅不再需要与开发人员帐户相关联。 此功能在某些情况下非常有用，例如当多个开发人员或团队共享某个订阅时。
+- 其次，API 管理现在允许“独立”订阅。**** 订阅不再需要与开发人员帐户相关联。 此功能在某些情况下非常有用，例如当多个开发人员或团队共享某个订阅时。
 
 - 最后，API 发布者现在可以直接在 Azure 门户中[创建订阅](api-management-howto-create-subscriptions.md)：
 

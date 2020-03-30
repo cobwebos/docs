@@ -1,15 +1,15 @@
 ---
-title: 节 UI 元素
-description: 介绍了 Azure 门户的 Microsoft.Common.Section UI 元素。 用于对部署托管应用程序的门户中的元素进行分组。
+title: Section UI 元素
+description: 介绍了 Azure 门户的 Microsoft.Common.Section UI 元素。 用于对门户中的元素进行分组，以便部署托管应用程序。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 999a7386ee7c5b3ef76f87280cc2d0cd45f143cd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652250"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI 元素

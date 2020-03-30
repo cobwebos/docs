@@ -1,56 +1,56 @@
 ---
-title: Azure Functions 异地灾难恢复和高可用性
-description: 如何使用地理区域进行冗余并在 Azure Functions 中进行故障转移。
+title: Azure 功能地质灾害恢复和高可用性
+description: 如何使用地理区域进行冗余和在 Azure 函数中故障转移。
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79080231"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions 异地灾难恢复
 
-在整个 Azure 区域或数据中心遇到停机时间时，计算在不同区域中继续进行处理是非常重要的。  本文将介绍一些可用于部署功能以实现灾难恢复的策略。
+在整个区域或数据中心遭遇停机的情况下，在不同区域进行计算以实现连续处理就显得至关重要。  本文将介绍一些可以用来部署函数以实现灾难恢复的策略。
 
 ## <a name="basic-concepts"></a>基本概念
 
-Azure Functions 在特定区域中运行。  若要获得更高的可用性，可以将相同的函数部署到多个区域。  在多个区域中，可以让函数在主动/*主动*模式或*主动/被动*模式中运行。  
+Azure Functions 在特定区域运行。  若要提高可用性，可将相同函数部署到多个区域。  在多个区域中时，可以让函数以“主动/主动”或“主动/被动”模式运行。****  
 
-* 主动/主动。 这两个区域都处于活动状态和正在接收事件（重复或 rotationally）。 建议将 active/active 用于 HTTPS 函数与 Azure 前门结合使用。
-* 主动/被动。 一个区域处于活动状态且正在接收事件，而辅助数据库处于空闲状态。  需要故障转移时，将激活辅助区域并接管处理。  对于非 HTTP 函数（如服务总线和事件中心），建议使用此项。
+* 主动/主动。 两个区域都主动接收事件（采用重复或循环方式）。 建议将“主动/主动”用于 HTTPS 函数，与 Azure Front Door 组合使用。
+* 主动/被动。 一个区域主动接收事件，另一个区域（次要区域）处于空闲状态。  需要进行故障转移时，次要区域激活，开始接管处理操作。  建议将它用于非 HTTP 功能，例如服务总线和事件中心。
 
-有关多区域部署的详细信息，请参阅如何[在多个区域中运行应用](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)。
+有关如何[在多个区域中运行应用](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)，了解有关多区域部署的详细信息。
 
-## <a name="activeactive-for-https-functions"></a>HTTPS 函数的主动/主动
+## <a name="activeactive-for-https-functions"></a>用于 HTTPS 功能的活动/活动
 
-若要实现函数的主动/主动部署，需要在两个区域之间协调事件的某些组件。  对于 HTTPS 函数，此协调使用[Azure 前门](../frontdoor/front-door-overview.md)完成。  Azure 前门可以在多个区域函数之间路由和轮循 HTTPS 请求。  它还会定期检查每个终结点的运行状况。  如果某个区域函数停止了对运行状况检查的响应，则 Azure 前门会将其从轮换中取出，只将流量转发到正常运行的功能。  
+要实现函数的主动/主动部署，需要一些组件来协调两个区域之间的事件。  对于 HTTPS 函数，此协调使用[Azure 前门](../frontdoor/front-door-overview.md)完成。  Azure 前门可以在多个区域函数之间路由和循环 HTTPS 请求。  它还定期检查每个终结点的运行状况。  如果区域函数停止响应运行状况检查，Azure 前门将使其退出旋转，并且仅将流量转发到正常运行的函数。  
 
-![Azure 前门和功能的体系结构](media/functions-geo-dr/front-door.png)  
+![Azure 前门和函数的体系结构](media/functions-geo-dr/front-door.png)  
 
-## <a name="activeactive-for-non-https-functions"></a>针对非 HTTPS 函数的主动/主动
+## <a name="activeactive-for-non-https-functions"></a>用于非 HTTPS 功能的“主动/主动”模式
 
-你仍可以实现非 HTTPS 函数的主动/主动部署。  但是，您需要考虑这两个区域之间的相互交互或相互协调的方式。  如果将相同的函数应用部署到两个区域中，每个区域都触发同一服务总线队列，则它们将充当对队列进行取消排队的竞争使用者。  尽管这意味着每条消息仅由一个实例进行处理，但这也意味着单个服务总线上仍存在单点故障。  如果你部署了两个服务总线队列（一个在主要区域中，一个位于次要区域中），而两个 function app 指向它们的区域队列，则该挑战现在就是如何在这两个区域之间分布队列消息。  通常，这意味着每个发布服务器都会尝试将消息发布到*这两个*区域，并且每个消息都由两个活动函数应用处理。  尽管这会创建一个主动/主动模式，但它会在重复计算以及何时或如何合并数据时产生其他挑战。  由于这些原因，对于非 HTTPS 触发器，建议使用主动/被动模式。
+仍可针对非 HTTPS 功能实现“主动/主动”部署。  但是，需要考虑这两个区域如何互相交互或协调。  如果向两个区域部署了同一函数应用，每个区域都在同一服务总线队列上触发，那么在对该队列执行取消排队操作时，这两个区域属于竞争性使用者。  虽然这意味着每条消息仅由其中一个实例处理，但它也意味着单个服务总线上仍有一个故障点。  如果部署两个服务总线队列（一个在主区域，一个在辅助区域），并且两个函数应用指向其区域队列，则现在的挑战在于队列消息在两个区域之间的分配方式。  通常情况下，这意味着每个发布者都会尝试将消息发布到两个区域，** 每条消息都由两个活动的函数应用进行处理。  虽然这样会形成一个“主动/主动”模式，但也会在复制计算以及在何时合并数据或以何种方式合并数据方面制造其他难题。  出于这些原因，建议由非 HTTPS 触发器来使用“主动/主动”模式。
 
-## <a name="activepassive-for-non-https-functions"></a>非 HTTPS 函数的主动/被动
+## <a name="activepassive-for-non-https-functions"></a>用于非 HTTPS 功能的“主动/被动”模式
 
-主动/被动仅提供一种方法来处理每条消息，但提供在发生灾难时故障转移到次要区域的机制。  Azure Functions 与[Azure 服务总线异地恢复](../service-bus-messaging/service-bus-geo-dr.md)和[azure 事件中心地域恢复](../event-hubs/event-hubs-geo-dr.md)一起工作。
+使用“主动/被动”模式时，每次只有一个函数处理一条消息，但在发生灾难时可以故障转移到次要区域。  Azure 函数与[Azure 服务总线地理恢复](../service-bus-messaging/service-bus-geo-dr.md)和[Azure 事件中心地理恢复一](../event-hubs/event-hubs-geo-dr.md)起工作。
 
-使用 Azure 事件中心触发器作为示例，主动/被动模式将涉及以下内容：
+以 Azure 事件中心触发器为例，主动/被动模式将涉及以下内容：
 
-* 同时部署到主要区域和次要区域的 Azure 事件中心。
-* 已启用异地灾难，以配对主要和次要事件中心。  这也会创建一个 "别名"，用于连接到事件中心，并从主节点切换到辅助副本，而无需更改连接信息。
-* 同时部署到主要区域和次要区域的函数应用。
-* 函数应用在其各自事件中心的*直接*（非别名）连接字符串上触发。 
-* 事件中心的发布服务器应发布到别名连接字符串。 
+* Azure 事件中心部署到主区域和辅助区域。
+* 启用地理灾难对主事件和辅助事件中心进行配对。  这还会创建一个"别名"，可用于连接到事件中心，并在不更改连接信息的情况下从主集线切换到辅助中心。
+* 部署到主区域和辅助区域的函数应用。
+* 函数应用正在其各自的事件中心*的直接*（非别名）连接字符串上触发。 
+* 事件中心的发布者应发布到别名连接字符串。 
 
 ![主动-被动示例体系结构](media/functions-geo-dr/active-passive.png)
 
-在故障转移之前，发送到共享别名的发布服务器将路由到主事件中心。  主函数应用仅侦听主事件中心。  辅助函数应用将为被动且空闲。  启动故障转移后，发送到共享别名的发布服务器现在会路由到辅助事件中心。  辅助函数应用现在将处于活动状态并开始自动触发。  有效故障转移到次要区域可以完全从事件中心驱动，并且仅当各自的事件中心处于活动状态时，函数才变为活动状态。
+在故障转移之前，发送到共享别名的发布者将路由到主事件中心。  主函数应用专门侦听主事件中心。  辅助函数应用将是被动和空闲的。  启动故障转移后，发送到共享别名的发布者现在将路由到辅助事件中心。  辅助函数应用现在将变为活动状态并开始自动触发。  有效的故障转移到辅助区域可以完全从事件中心驱动，功能仅在相应的事件中心处于活动状态时变为活动状态。
 
-详细了解如何在[服务总线](../service-bus-messaging/service-bus-geo-dr.md)和[事件中心](../event-hubs/event-hubs-geo-dr.md)之间进行故障转移。
+阅读有关[使用服务总线](../service-bus-messaging/service-bus-geo-dr.md)和[事件集线器](../event-hubs/event-hubs-geo-dr.md)进行故障转移的信息和注意事项的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

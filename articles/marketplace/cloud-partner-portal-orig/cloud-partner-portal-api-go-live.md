@@ -1,19 +1,18 @@
 ---
-title: 上线 |Azure Marketplace
+title: 去现场 |Azure 应用商店
 description: 上线 API 启动产品/服务上线一览过程。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 30500e9dfae9411563fc727290d0569998ba3550
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bf7bebf6e72e373811879a311d70255c29988ed6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819689"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288574"
 ---
 <a name="go-live"></a>上线
 =======
@@ -36,7 +35,7 @@ ms.locfileid: "73819689"
 <a name="header"></a>标头
 ------
 
-|  **名称**       |     **值**       |
+|  **名称**       |     **价值**       |
 |  ---------      |     ----------      |
 | Content-Type    | `application/json`  |
 | 授权   | `Bearer YOUR_TOKEN` |
@@ -53,7 +52,7 @@ ms.locfileid: "73819689"
 
 ### <a name="response-header"></a>响应标头
 
-|  **名称**             |      **值**                                                            |
+|  **名称**             |      **价值**                                                            |
 |  --------             |      ----------                                                           |
 | Operation-Location    |  要查询的 URL，用于确定操作的当前状态            |
 |  |  |

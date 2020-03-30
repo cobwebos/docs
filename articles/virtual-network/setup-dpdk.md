@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: 876e64cd29aabe1fd4274872800a29cf1a83a0d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c79c1fd687e329b97a854a3ff66a3cf95076b5d6
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350490"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384222"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>在 Linux 虚拟机中设置 DPDK
 
@@ -31,32 +31,32 @@ DPDK 由多组用户空间库构成，这些库提供对较低级别资源的访
 
 DPDK 可以在支持多个操作系统分发版的 Azure 虚拟机中运行。 DPDK 在驱动网络功能虚拟化实现方面提供与众不同的关键性能。 这些实现可采用网络虚拟设备 (NVA) 的形式，如虚拟路由器、防火墙、VPN、负载均衡器、演进包核心和拒绝服务 (DDoS) 应用程序。
 
-## <a name="benefit"></a>权益
+## <a name="benefit"></a>优势
 
-**提高每秒包数 (PPS)** ：绕过内核并控制用户空间中的包可消除上下文切换，从而减少周期计数。 同时，这还会提高 Azure Linux 虚拟机中每秒处理的包比率。
+**提高每秒包数 (PPS)**：绕过内核并控制用户空间中的包可消除上下文切换，从而减少周期计数。 同时，这还会提高 Azure Linux 虚拟机中每秒处理的包比率。
 
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-支持 Azure 库中的以下分发版：
+支持 Azure 应用商店中的以下分发：
 
-| Linux OS     | 内核版本        |
-|--------------|----------------       |
-| Ubuntu 16.04 | 4.15.0-1015-azure     |
-| Ubuntu 18.04 | 4.15.0-1015-azure     |
-| SLES 15      | 4.12.14-5.5-azure     |
-| RHEL 7.5     | 3.10.0-862.9.1.el7    |
-| CentOS 7.5   | 3.10.0-862.3.3.el7    |
+| Linux OS     | 内核版本               | 
+|--------------|---------------------------   |
+| Ubuntu 16.04 | 4.15.0-1014-azure*           | 
+| Ubuntu 18.04 | 4.15.0-1014-azure*           |
+| SLES 15 SP1  | 4.12.14-8.27-azure*          | 
+| RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64*  | 
+| CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64*  | 
 
 **自定义内核支持**
 
-对于未列出的任何 Linux 内核版本，请参阅[用于生成 Azure 优化 Linux 内核的修补程序](https://github.com/microsoft/azure-linux-kernel)。 有关详细信息，还可以联系 [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com)。 
+对于未列出的任何 Linux 内核版本，请参阅[用于生成 Azure 优化 Linux 内核的修补程序](https://github.com/microsoft/azure-linux-kernel)。 有关详细信息，您还可以联系[azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com)。 
 
 ## <a name="region-support"></a>区域支持
 
 所有 Azure 区域都支持 DPDK。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 必须在 Linux 虚拟机上启用加速网络。 虚拟机应至少有两个网络接口，其中一个接口用于管理。 了解如何[创建启用加速网络的 Linux 虚拟机](create-vm-accelerated-networking-cli.md)。
 
@@ -86,7 +86,7 @@ sudo dracut --add-drivers "mlx4_en mlx4_ib mlx5_ib" -f
 yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel libmnl-devel
 ```
 
-### <a name="sles-15"></a>SLES 15
+### <a name="sles-15-sp1"></a>SLES 15 SP1
 
 **Azure 内核**
 
@@ -108,7 +108,7 @@ zypper \
 
 ## <a name="set-up-the-virtual-machine-environment-once"></a>设置虚拟机环境（一次性操作）
 
-1. [下载最新的 DPDK](https://core.dpdk.org/download)。 Azure 需要 18.02 或更高版本。
+1. [下载最新的 DPDK](https://core.dpdk.org/download)。 Azure 需要版本 18.11 LTS 或 19.11 LTS。
 2. 运行 `make config T=x86_64-native-linuxapp-gcc` 生成默认配置。
 3. 使用 `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config` 在生成的配置中启用 Mellanox PMDs。
 4. 使用 `make` 进行编译。
@@ -120,38 +120,36 @@ zypper \
 
 1. 巨页
 
-   * 针对所有 numa 节点运行以下命令一次，以配置巨页：
+   * 通过运行以下命令配置大页，每个 numa 节点一次：
 
      ```bash
-     echo 1024 | sudo tee
-     /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
+     echo 1024 | sudo tee /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
    * 使用 `mkdir /mnt/huge` 创建用于装载的目录。
    * 使用 `mount -t hugetlbfs nodev /mnt/huge` 装载巨页。
    * 运行 `grep Huge /proc/meminfo` 检查巨页是否已保留。
 
-     > [!NOTE]
-     > 可以将 grub 文件修改为，在启动时保留巨页，具体是按照适用于 DPDK 的[说明](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)操作。 页面底部提供了这些说明。 如果使用的是 Azure Linux 虚拟机，请改为将 /etc/config/grub.d 下的文件修改为跨重启保留巨页。
+     > [注意]有一种方法来修改 grub 文件，以便按照 DPDK[的说明](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)在引导时保留大量页面。 页面底部提供了这些说明。 如果使用的是 Azure Linux 虚拟机，请改为将 /etc/config/grub.d**** 下的文件修改为跨重启保留巨页。
 
-2. MAC 和 IP 地址：使用 `ifconfig –a` 查看网络接口的 MAC 和 IP 地址。 *VF* 网络接口和 *NETVSC* 网络接口具有相同的 MAC 地址，但只有 *NETVSC* 网络接口具有 IP 地址。 VF 接口以 NETVSC 接口的从属接口形式运行。
+2. MAC 和 IP 地址：使用 `ifconfig –a` 查看网络接口的 MAC 和 IP 地址。 *VF* 网络接口和 *NETVSC* 网络接口具有相同的 MAC 地址，但只有 *NETVSC* 网络接口具有 IP 地址。 *VF*接口作为*NETVSC*接口的从属接口运行。
 
 3. PCI 地址
 
-   * 运行 `ethtool -i <vf interface name>` 确定对 VF 使用哪个 PCI 地址。
-   * 如果 eth0 已启用加速网络，请确保 testpmd 不会意外接管 eth0 的 VF PCI 设备。 如果 DPDK 应用程序意外接管管理网络接口，并导致 SSH 连接断开，请使用串行控制台来停止 DPDK 应用程序。 串行控制台还可用于停止或启动虚拟机。
+   * 运行 `ethtool -i <vf interface name>` 确定对 VF** 使用哪个 PCI 地址。
+   * 如果*eth0*已启用加速网络，请确保 testpmd 不会意外接管*eth0*的*VF* pci 设备。 如果 DPDK 应用程序意外接管管理网络接口，并导致 SSH 连接断开，请使用串行控制台来停止 DPDK 应用程序。 串行控制台还可用于停止或启动虚拟机。
 
 4. 每次重新启动后，使用 `modprobe -a ib_uverbs` 加载 *ibuverbs*。 （仅适用于 SLES 15）另外，使用 `modprobe -a mlx4_ib` 加载 *mlx4_ib*。
 
 ## <a name="failsafe-pmd"></a>防故障 PMD
 
-DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果应用程序直接通过 VF PMD 运行，它不会收到发往 VM 的所有包，因为一些包通过综合接口显示。 
+DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果应用程序直接通过*VF* PMD 运行，则**它不会接收所有**发往 VM 的数据包，因为某些数据包显示在合成接口上。 
 
 通过防故障 PMD 运行 DPDK 应用程序，可保证应用程序收到发往 VM 的所有包。 此外，还能确保应用程序继续以 DPDK 模式运行，即使在为主机提供服务时撤销了 VF，也不例外。 若要详细了解防故障 PMD，请参阅[防故障轮询模式驱动程序库](https://doc.dpdk.org/guides/nics/fail_safe.html)。
 
 ## <a name="run-testpmd"></a>运行 testpmd
 
-若要在根模式下运行 testpmd，请在 testpmd 命令前面使用 `sudo`。
+若要在根模式下运行 testpmd，请在 testpmd** 命令前面使用 `sudo`。
 
 ### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>基本：健全性检查、防故障适配器初始化
 
@@ -179,7 +177,7 @@ DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果�
 3.  启动后，运行 `show port info all` 检查端口信息。 应会看到一个或两个值为 net_failsafe（不是 *net_mlx4*）的 DPDK 端口。
 4.  使用 `start <port> /stop <port>` 启动流量。
 
-上面的命令在交互模式下启动 testpmd，这是建议用于试用 testpmd 命令的模式。
+上面的命令在交互模式下启动 testpmd**，这是建议用于试用 testpmd 命令的模式。
 
 ### <a name="basic-single-sendersingle-receiver"></a>基本：单个发送端/单个接收端
 
@@ -215,7 +213,7 @@ DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果�
      --stats-period <display interval in seconds>
    ```
 
-若要在虚拟机上运行上面的命令，请先将 `app/test-pmd/txonly.c` 中的 IP_SRC_ADDR 和 IP_DST_ADDR 更改为与虚拟机的实际 IP 地址一致，再进行编译。 否则，数据包在抵达接收端之前将被丢弃。
+若要在虚拟机上运行上面的命令，请先将 `app/test-pmd/txonly.c` 中的 IP_SRC_ADDR** 和 IP_DST_ADDR** 更改为与虚拟机的实际 IP 地址一致，再进行编译。 否则，数据包在抵达接收端之前将被丢弃。
 
 ### <a name="advanced-single-sendersingle-forwarder"></a>高级：单个发送端/单个转发端
 以下命令定期列显每秒数据包数的统计信息：
@@ -251,7 +249,7 @@ DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果�
      --stats-period <display interval in seconds>
     ```
 
-若要在虚拟机上运行上面的命令，请先将 `app/test-pmd/txonly.c` 中的 IP_SRC_ADDR 和 IP_DST_ADDR 更改为与虚拟机的实际 IP 地址一致，再进行编译。 否则，数据包在抵达转发端之前将被丢弃。 无法使用第三台计算机来接收转发的流量，因为除非做出一些代码更改，否则 testpmd 转发器不会修改第 3 层地址。
+若要在虚拟机上运行上面的命令，请先将 `app/test-pmd/txonly.c` 中的 IP_SRC_ADDR** 和 IP_DST_ADDR** 更改为与虚拟机的实际 IP 地址一致，再进行编译。 否则，数据包在抵达转发端之前将被丢弃。 无法使用第三台计算机来接收转发的流量，因为除非做出一些代码更改，否则 testpmd** 转发器不会修改第 3 层地址。
 
 ## <a name="references"></a>参考
 

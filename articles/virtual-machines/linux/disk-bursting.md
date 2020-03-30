@@ -1,20 +1,20 @@
 ---
-title: 托管磁盘突发
-description: 了解磁盘突发功能，以及 Azure premium Ssd 的工作原理。
+title: 托管磁盘爆发
+description: 了解磁盘爆发及其如何适用于 Azure 高级 SSD。
 author: roygara
 ms.author: rogarana
-ms.date: 10/22/2019
+ms.date: 03/28/2019
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: f5ec4cb63db1522153c0600d719a22e4744cb4d7
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 4cac3c3e5346fa9c8ab68a4238d64419060a0967
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970713"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385191"
 ---
-# <a name="premium-ssd-bursting-preview"></a>高级 SSD 突发（预览版）
+# <a name="premium-ssd-bursting"></a>高级 SSD 爆裂
 
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
 

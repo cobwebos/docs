@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell 快速入门-Bash
-description: 了解如何在浏览器中使用 Bash 命令行 Azure Cloud Shell。
+title: Azure 云外壳快速启动 - Bash
+description: 了解如何在浏览器中使用 Azure 云外壳中的 Bash 命令行。
 author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 574841b3a89385a3b8bf048d5ed36f40fac99a83
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252124"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458063"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 Bash 快速入门
 
@@ -25,7 +25,7 @@ ms.locfileid: "79252124"
 > 此外，还提供了 [Azure Cloud Shell 中的 PowerShell](quickstart-powershell.md) 快速入门。
 
 ## <a name="start-cloud-shell"></a>启动 Cloud Shell
-1. 从 Azure 门户的顶部导航栏启动 **Cloud Shell**。 <br>
+1. 从 Azure 门户的顶部导航启动**云外壳**。 <br>
 ![](media/quickstart/shell-icon.png)
 
 2. 选择用于创建存储帐户和 Microsoft Azure 文件共享的订阅。
@@ -85,7 +85,7 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 
 ## <a name="cleaning-up"></a>清理 
 1. 退出 SSH 会话。
-   ```azurecli-interactive
+   ```
    exit
    ```
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2019
 ms.author: memildin
-ms.openlocfilehash: c591dc1efc3b64b0f926e95c14cff681dbcdf957
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
-ms.translationtype: HT
+ms.openlocfilehash: 64a9600a3014f7e85a7f924d38882bfadaf631db
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385004"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387812"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>在 Azure 安全中心提供安全联系人详细信息
 Azure 安全中心建议对 Azure 订阅提供安全联系人的详细信息（如果尚未提供）。 如果 Microsoft 安全响应中心 (MSRC) 发现用户的客户数据被某方非法访问或未经授权访问，Microsoft 会使用该信息联系用户。 MSRC 会执行 Azure 网络和基础结构的选择安全监视，并接收来自第三方的威胁情报和恶意投诉。
@@ -43,16 +43,19 @@ Azure 安全中心建议对 Azure 订阅提供安全联系人的详细信息（�
 
 1. 打开**电子邮件通知**页面：
 
-    1. 对于警报，打开**定价&设置**，选择相关订阅，并选择**电子邮件通知**。
+    - 对于警报，打开**定价&设置**，选择相关订阅，并选择**电子邮件通知**。
 
-    1. 如果要实施建议，请在 **"建议"** 下选择"**提供安全联系人详细信息**"，选择 Azure 订阅以提供其联系信息。 这将打开“电子邮件通知”****。
+    - 如果要实施建议，请在 **"建议"** 下选择"**提供安全联系人详细信息**"，选择 Azure 订阅以提供其联系信息。 这将打开“电子邮件通知”****。
 
    ![提供安全联系人详细信息][2]
 
-   * 输入安全联系人的电子邮件地址或地址，用逗号隔开。 您可以输入的电子邮件地址数量没有限制。
-   * 若要接收有关于高严重级别警报的电子邮件，请打开选项“通过电子邮件向我发送警报”****。 对于其他严重性级别，请使用[工作流自动化](workflow-automation.md)中所述的逻辑应用。
-   * 您可以向订阅所有者（经典服务管理员和共同管理员，以及订阅范围内的 RBAC 所有者角色）发送电子邮件通知。
-   * 要将安全联系信息应用于订阅，请选择"**保存**"。
+1. 输入安全联系人的电子邮件地址或地址，用逗号隔开。 您可以输入的电子邮件地址数量没有限制。
+
+1. 若要接收有关于高严重级别警报的电子邮件，请打开选项“通过电子邮件向我发送警报”****。 对于其他严重性级别，请使用[工作流自动化](workflow-automation.md)中所述的逻辑应用。
+
+1. 您可以向订阅所有者（经典服务管理员和共同管理员，以及订阅范围内的 RBAC 所有者角色）发送电子邮件通知。
+
+1. 要将安全联系信息应用于订阅，请选择"**保存**"。
 
 ## <a name="see-also"></a>请参阅
 若要了解有关安全中心的详细信息，请参阅以下文章：

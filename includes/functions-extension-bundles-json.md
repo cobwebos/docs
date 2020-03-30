@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
 ms.openlocfilehash: f47a543143c949715fe2a49adccf074759a346fa
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
-ms.translationtype: HT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79381581"
 ---
 ```json
@@ -21,13 +21,13 @@ ms.locfileid: "79381581"
 }
 ```
 
-`extensionBundle` 中提供了以下属性：
+以下属性可在 `extensionBundle` 中使用：
 
-| 属性 | 说明 |
+| properties | 描述 |
 | -------- | ----------- |
-| id | Microsoft Azure Functions 扩展捆绑包的命名空间。 |
-| 版本 | 要安装的捆绑包的版本。 Functions 运行时始终选取由版本范围或间隔定义的可允许最高版本。 上述版本值允许从 1.0.0 到（但不包括）2.0.0 的所有捆绑包版本。 有关详细信息，请参阅[用于指定版本范围的间隔表示法](/nuget/reference/package-versioning#version-ranges)。 |
+| id | Microsoft Azure 函数扩展包的命名空间。 |
+| 版本 | 要安装的捆绑的版本。 Functions 运行时始终选取按版本范围或间隔定义的最宽松版本。 上述版本值允许使用从 1.0.0 到 2.0.0（不含 2.0.0）的所有捆绑版本。 有关详细信息，请参阅[用于指定版本范围的间隔表示法](/nuget/reference/package-versioning#version-ranges)。 |
 
-随着捆绑包中的包的变化，捆绑包版本递增。 当捆绑包中的包的主版本递增时，会发生主版本更改。 捆绑包的主版本更改通常与 Functions 运行时主版本的更改同时发生。  
+捆绑中的包发生变化时，捆绑版本将会递增。 当捆绑中的包增加主版本时，就会发生主版本更改。 捆绑中的主版本更改通常与 Functions 运行时的主版本更改一致。  
 
-默认捆绑包安装的当前扩展集在此 [extensions.json 文件](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)中进行枚举。
+默认捆绑安装的当前扩展集将在此 [extensions.json 文件](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)中枚举。

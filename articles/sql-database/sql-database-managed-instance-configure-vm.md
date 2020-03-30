@@ -1,5 +1,5 @@
 ---
-title: 连接客户端 VM-托管实例
+title: 连接客户端 VM - 托管实例
 description: 使用 SQL Server Management Studio 从 Azure 虚拟机连接到 Azure SQL 数据库托管实例。
 services: sql-database
 ms.service: sql-database
@@ -12,15 +12,15 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
 ms.openlocfilehash: 7273c7b1dbf5eb6c855b95a8661f38bd4bd14af7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73839045"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>快速入门：配置 Azure VM，以便连接到 Azure SQL 数据库托管实例
 
-本快速入门演示如何配置 Azure 虚拟机，以便使用 SQL Server Management Studio (SSMS) 连接到 Azure SQL 数据库托管实例。 如需介绍如何使用点到站点连接从本地客户端计算机进行连接的快速入门，请参阅[配置点到站点连接](sql-database-managed-instance-configure-p2s.md)
+本快速入门演示如何配置 Azure 虚拟机，以便使用 SQL Server Management Studio (SSMS) 连接到 Azure SQL 数据库托管实例。 有关如何使用点对点连接从本地客户端计算机进行连接的快速入门，请参阅[配置点对点连接](sql-database-managed-instance-configure-p2s.md)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "73839045"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录到 Azure[门户](https://portal.azure.com/)。
 
 ## <a name="create-a-new-subnet-in-the-managed-instance-vnet"></a>在托管实例 VNet 中创建新的子网
 
@@ -38,13 +38,13 @@ ms.locfileid: "73839045"
 
    ![托管实例资源](./media/sql-database-managed-instance-configure-vm/resources.png)
 
-2. 选择“子网”，然后选“+ 子网”择，以便创建新的子网。
+2. 选择“子网”****，然后选“+ 子网”择****，以便创建新的子网。
 
    ![托管实例子网](./media/sql-database-managed-instance-configure-vm/subnets.png)
 
 3. 根据此表中的信息填充窗体：
 
-   | 设置| 建议的值 | 说明 |
+   | 设置| 建议的值 | 描述 |
    | ---------------- | ----------------- | ----------- |
    | **名称** | 任何有效的名称|请参阅[命名规则和限制](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称。|
    | **地址范围(CIDR 块)** | 有效的范围 | 默认值适用于本快速入门。|
@@ -55,7 +55,7 @@ ms.locfileid: "73839045"
 
    ![为客户端 VM 新建托管实例子网](./media/sql-database-managed-instance-configure-vm/new-subnet.png)
 
-4. 选择“确定”，在托管实例 VNet 中创建这个额外的子网。
+4. 选择“确定”，在托管实例 VNet 中创建这个额外的子网。****
 
 ## <a name="create-a-virtual-machine-in-the-new-subnet-in-the-vnet"></a>在 VNet 的新子网中创建虚拟机
 
@@ -67,13 +67,13 @@ ms.locfileid: "73839045"
 
 若要使用所有必需的工具创建一个客户端虚拟机，最容易的方式是使用 Azure 资源管理器模板。
 
-1. 请确保已登录到其他浏览器选项卡中的 Azure 门户。然后，选择以下按钮创建客户端虚拟机并安装 SQL Server Management Studio：
+1. 请确保已登录到另一个浏览器选项卡中的 Azure 门户。然后，选择以下按钮以创建客户端虚拟机并安装 SQL 服务器管理工作室：
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 2. 根据下表中的信息填充窗体：
 
-   | 设置| 建议的值 | 说明 |
+   | 设置| 建议的值 | 描述 |
    | ---------------- | ----------------- | ----------- |
    | **订阅** | 有效的订阅 | 必须是有权在其中创建新资源的订阅。 |
    | **资源组** |在[创建托管实例](sql-database-managed-instance-get-started.md)快速入门中指定的资源组。|此资源组必须是 VNet 所在的资源组。|
@@ -92,9 +92,9 @@ ms.locfileid: "73839045"
 
    如果使用了在[创建托管实例](sql-database-managed-instance-get-started.md)中建议的 VNet 名称和默认子网，则不需更改后两个参数。 否则，应将这些值更改为设置网络环境时输入的值。
 
-3. 选择“我同意上述条款和条件”复选框。
-4. 选择“购买”，在网络中部署 Azure VM。
-5. 选择“通知”图标，查看部署的状态。
+3. 选择“我同意上述条款和条件”复选框。****
+4. 选择“购买”，在网络中部署 Azure VM。****
+5. 选择“通知”图标，查看部署的状态。****
 
 > [!IMPORTANT]
 > 创建虚拟机后约 15 分钟内，不要继续操作，以便创建后脚本有时间来安装 SQL Server Management Studio。
@@ -107,24 +107,24 @@ ms.locfileid: "73839045"
 
     ![VM](./media/sql-database-managed-instance-configure-vm/vm.png)  
 
-2. 选择“连接”。
+2. 选择“连接”****。
 
    此时会显示远程桌面协议文件（.rdp 文件）窗体，其中包含虚拟机的公共 IP 地址和端口号。
 
    ![RDP 窗体](./media/sql-database-managed-instance-configure-vm/rdp.png)  
 
-3. 选择“下载 RDP 文件”。
+3. 选择**下载 RDP 文件**。
 
    > [!NOTE]
    > 也可使用 SSH 连接到 VM。
 
-4. 关闭“连接到虚拟机”窗体。
+4. 关闭“连接到虚拟机”窗体。****
 5. 若要连接到 VM，请打开下载的 RDP 文件。
-6. 出现提示时，选择“连接”。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
+6. 出现提示时，选择“连接”****。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
 
-7. 输入在创建虚拟机时指定的用户名和密码，然后选择“确定”。
+7. 输入在创建虚拟机时指定的用户名和密码，然后选择“确定”。****
 
-8. 你可能会在登录过程中收到证书警告。 选择“是”或“继续”以继续连接。
+8. 你可能会在登录过程中收到证书警告。 选择“是”或“继续”以继续连接。********
 
 已连接到“服务器管理器”仪表板中的虚拟机。
 
@@ -133,7 +133,7 @@ ms.locfileid: "73839045"
 1. 在虚拟机中，打开 SQL Server Management Studio (SSMS)。
 
    需要一些时间才能打开，因为这是第一次启动 SSMS，因此需要完成其配置。
-2. 在“连接到服务器”对话框的“服务器名称”框中输入托管实例的完全限定**主机名**。 选择“SQL Server 身份验证”，提供用户名和密码，然后选择“连接”。
+2. 在“连接到服务器”对话框的“服务器名称”框中输入托管实例的完全限定******主机名**。**** 选择“SQL Server 身份验证”，提供用户名和密码，然后选择“连接”。********
 
     ![ssms 连接](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 

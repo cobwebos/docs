@@ -1,45 +1,44 @@
 ---
-title: 定义咨询服务产品/服务的产品/服务设置 |Azure Marketplace
-description: 在 azure Marketplace 的云合作伙伴门户中，定义 Azure 或 Dynamics 365 咨询服务产品中的产品/服务设置。
-services: Azure, Marketplace, Cloud Partner Portal,
+title: 定义咨询服务产品/服务的报价设置 |Azure 应用商店
+description: 在 Azure 应用商店的云合作伙伴门户中定义 Azure 或 Dynamics 365 咨询服务产品中的产品/服务设置。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: e505f9aa1ec08708b85176d5b05fc5b40ceb295e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ac7ac2cc049c87b3f619f68a9a93a2268d961114
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818129"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278563"
 ---
 # <a name="offer-settings-tab"></a>“产品/服务设置”选项卡
 
-在“新建产品/服务”屏幕中，第一个步骤是创建产品/服务标识。 套餐标识由三个部分组成：“套餐 ID”、“发布者 ID”和“名称”。 以下各部分将介绍其中的每个组成部分。
+在“新建产品/服务”**** 屏幕中，第一个步骤是创建产品/服务标识。 套餐标识由三个部分组成：“套餐 ID”、“发布者 ID”和“名称”。************ 以下各部分将介绍其中的每个组成部分。
 
 ![创建新的咨询服务套餐 -“套餐设置”选项卡](media/consultingoffer-settings-tab.png)
 
 
-### <a name="offer-id"></a>产品/服务 ID *
+### <a name="offer-id"></a>优惠 ID*
 
-此标识符是首次提交套餐时创建的唯一名称。 它只能包含小写的字母数字字符、短划线或下划线。 “套餐 ID”将显示在 URL 中，并会影响搜索引擎的结果。 例如，yourcompanyname_exampleservice。
+此标识符是首次提交套餐时创建的唯一名称。 它只能包含小写的字母数字字符、短划线或下划线。 “套餐 ID”将显示在 URL 中，并会影响搜索引擎的结果****。 例如，yourcompanyname_exampleservice**。
 
-如示例中所示，“套餐 ID”将追加到发布者 ID 的后面，以创建唯一的标识符。 此唯一标识符将公开为可预订服务的永久链接，并由搜索引擎编制索引。
+如示例中所示，“套餐 ID”将追加到发布者 ID 的后面，以创建唯一的标识符****。 此唯一标识符将公开为可预订服务的永久链接，并由搜索引擎编制索引。
 
 >[!Note]
 >套餐上线后，无法更新其标识符。
 
 
-### <a name="publisher-id"></a>发布者 ID *
+### <a name="publisher-id"></a>发布者 ID*
 
-此标识符与你的帐户相关。 使用组织帐户登录后，“发布者 ID”将显示在下拉菜单中。
+此标识符与你的帐户相关。 使用组织帐户登录后，“发布者 ID”将显示在下拉菜单中****。
 
 
-### <a name="name"></a>路径名
+### <a name="name"></a>名称*
 
-此字符串显示为 AppSource 或 Azure 市场中的套餐名称。 “名称”框被限制为最多包含 50 个字符。 审阅者可能需要编辑你的标题以在套餐名称后追加持续时间和套餐类型。
+此字符串显示为 AppSource 或 Azure 市场中的套餐名称。 “名称”框被限制为最多包含 50 个字符****。 审阅者可能需要编辑你的标题以在套餐名称后追加持续时间和套餐类型。
 
 以下示例演示了如何组合套餐名称。 
 
@@ -47,29 +46,29 @@ ms.locfileid: "73818129"
 
 套餐名称由四个部分组成：
 
--   **持续时间：** 在编辑器的 "**店面详细信息**" 选项卡上定义。 可使用小时、天或周作为单位来表示持续时间。
--   **服务类型：** 在编辑器的 "**店面详细信息**" 选项卡上定义。 服务类型包括 `Assessment`、`Briefing`、`Implementation`、`Proof of concept` 和 `Workshop`。
+-   **持续时间：** 在编辑器的 **"店面详细信息"** 选项卡上定义。 可使用小时、天或周作为单位来表示持续时间。
+-   **服务类型：** 在编辑器的 **"店面详细信息"** 选项卡上定义。 服务类型包括 `Assessment`、`Briefing`、`Implementation`、`Proof of concept` 和 `Workshop`。
 -   **介词：** 由审阅者插入。
--   **名称：** 在 "**产品/服务设置**" 页上定义。
+-   **名称：** 在 **"产品/服务设置"页上定义**。
 
 >[!Note]
->“名称”框被限制为最多包含 50 个字符。 审阅者可能需要编辑你的标题以在套餐名称后追加持续时间和套餐类型。
+>“名称”框被限制为最多包含 50 个字符****。 审阅者可能需要编辑你的标题以在套餐名称后追加持续时间和套餐类型。
 
 以下列表提供了几个适当的套餐名称：
 
 -   专业服务基础知识：1 小时简报
 -   云迁移平台：1 小时简报
 -   PowerApps 和 Microsoft Flow：1 天研讨会
--   Azure 机器学习： Wk PoC
+-   Azure 机器学习：3-Wk PoC
 -   实体与虚拟零售解决方案：1 小时简报
--   引入你自己的数据： 1-Wk 研讨会
+-   自带数据：1Wk研讨会
 -   云分析：3 天研讨会
 -   Power BI 培训：3 天研讨会
 -   销售管理解决方案：1 周实施
--   CRM 快速入门：1天研讨会
+-   CRM 快速入门：为期 1 天的研讨会
 -   Dynamics 365 for Sales：2 天评估
 
-填写“套餐设置”选项卡后，保存提交。 现在，套餐名称显示在编辑器的上方，并且可以在“所有套餐”中找到它。
+填写“套餐设置”选项卡后，保存提交****。 现在，套餐名称显示在编辑器的上方，并且可以在“所有套餐”中找到它****。
 
 ## <a name="next-steps"></a>后续步骤
 

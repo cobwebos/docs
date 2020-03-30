@@ -1,33 +1,33 @@
 ---
-title: 向 Android maps 添加符号层 |Microsoft Azure 映射
-description: 在本文中，你将了解如何通过使用 Microsoft Azure map Android SDK 将符号层添加到地图上，从而在地图上呈现点数据。
-author: farah-alyasari
-ms.author: v-faalya
+title: 向 Android 地图添加符号图层 |微软 Azure 地图
+description: 在本文中，您将了解如何使用 Microsoft Azure 地图 Android SDK 向地图添加符号图层来呈现地图上的点数据。
+author: philmea
+ms.author: philmea
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e323d99c11df7f482e6caf81e8d38bf64d160859
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 0eca73b5acae715283c05125181e12729ed5a772
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209981"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335588"
 ---
-# <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure Maps 向地图添加符号层 Android SDK
+# <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure 地图 Android SDK 将符号图层添加到地图
 
-本文说明如何使用 Azure Maps Android SDK 将数据源中的点数据呈现为地图上的符号层。
+本文演示如何使用 Azure 地图 Android SDK 将数据源中的点数据呈现为地图上的符号图层。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-若要完全按照本文中的步骤进行操作，需要安装[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)来加载地图。
+要完全按照本文中的步骤操作，您需要安装[Azure 地图 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)才能加载地图。
 
 ## <a name="add-a-symbol-layer"></a>添加符号层
 
-若要使用符号层在地图上添加标记，请遵循以下步骤：
+要使用符号图层在地图上添加标记，请按照以下步骤操作：
 
-1. 编辑**res** > **布局** > **activity_main** ，使其类似于以下 xml：
+1. 编辑 > **activity_main.xml** **res** > **布局**，以便它看起来像以下 XML：
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -50,7 +50,7 @@ ms.locfileid: "77209981"
     </FrameLayout>
     ```
 
-2. 将以下代码片段复制到 `MainActivity.java` 类的**onCreate （）** 方法。
+2. 将以下代码段复制到类`MainActivity.java`的**onCreate（）** 方法中。
 
     ```Java
     mapControl.onReady(map -> {
@@ -72,9 +72,9 @@ ms.locfileid: "77209981"
     
     ```
     
-    上面的代码段首先使用**onReady （）** 回调方法获取 Azure Maps 映射控件实例。 然后，它使用**DataSource**类创建数据源对象并将其添加到地图中。 然后，它将包含点几何图形的功能添加到该**功能**中。 然后，将红色标记图像设置为符号的图标。 **符号层**使用文本或图标将基于点的数据作为地图上的符号在数据源中进行包装。 然后创建一个符号层，然后将数据源传递给它以呈现，然后将其添加到地图的层中。
+    上面的代码段首先使用**onReady（）** 回调方法获取 Azure 地图映射控件实例。 然后，它使用**DataSource**类创建数据源对象并将其添加到地图中。 然后，它将包含点几何体的**要素**添加到其中。 然后，红色标记图像设置为符号的图标。 **符号图层**使用文本或图标将数据源中包装为地图上符号的基于点的数据。 然后创建一个符号图层，并将数据源传递给它以进行渲染，然后添加到地图的图层中。
     
-    添加上述代码片段后，`MainActivity.java` 应如下所示：
+    添加上面的代码段后，应`MainActivity.java`如下所示：
     
     ```Java
     package com.example.myapplication;
@@ -166,16 +166,16 @@ ms.locfileid: "77209981"
     }
     ```
     
-此时，如果你运行应用程序，你应该会在地图上看到一个标记，如下所示：
+此时，如果您运行应用程序，您应该在地图上看到一个标记，如下所示：
 
 <center>
 
-![Android 地图 pin](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
+![Android 地图图钉](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要将更多内容添加到地图，请参阅：
+要向地图添加更多内容，请参阅：
 
 > [!div class="nextstepaction"]
 > [将形状添加到 Android 地图](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)

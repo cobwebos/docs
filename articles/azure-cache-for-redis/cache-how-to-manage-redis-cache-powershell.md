@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278527"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
-> * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
+> * [电源外壳](cache-how-to-manage-redis-cache-powershell.md)
 > * [Azure CLI](cache-manage-cli.md)
 > 
 > 
@@ -28,7 +28,7 @@ ms.locfileid: "79278527"
 
 若要深入了解经典部署模型，请参阅 [Azure 资源管理器与经典部署：了解部署模型和资源状态](../azure-resource-manager/management/deployment-models.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 如果已安装 Azure PowerShell，则必须确保安装的是 Azure PowerShell 版本 1.0.0 或更高版本。 可以使用此命令在 Azure PowerShell 命令提示符下查看已安装的 Azure PowerShell 版本。
 
     Get-Module Az | format-table version
@@ -117,9 +117,9 @@ ms.locfileid: "79278527"
 ### <a name="properties-used-for-azure-cache-for-redis-powershell"></a>Azure Redis 缓存 PowerShell 使用的属性
 下表包含使用 Azure PowerShell 创建和管理 Azure Redis 缓存实例时常用的参数的属性和说明。
 
-| 参数 | 说明 | 默认 |
+| 参数 | 描述 | 默认 |
 | --- | --- | --- |
-| 名称 |缓存的名称 | |
+| “属性” |缓存的名称 | |
 | 位置 |缓存的位置 | |
 | ResourceGroupName |将在其中创建缓存的资源组名称 | |
 | 大小 |缓存的大小。 有效值为：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
@@ -134,7 +134,7 @@ ms.locfileid: "79278527"
 | KeyType |指定续订访问密钥时要重新生成哪个访问密钥。 有效值为：Primary、Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration 属性
-| properties | 说明 | 定价层 |
+| properties | 描述 | 定价层 |
 | --- | --- | --- |
 | rdb-backup-enabled |是否已启用 [Redis 数据暂留](cache-how-to-premium-persistence.md) |仅限高级版 |
 | rdb-storage-connection-string |[Redis 数据暂留](cache-how-to-premium-persistence.md)存储帐户的连接字符串 |仅限高级版 |
@@ -322,7 +322,7 @@ ms.locfileid: "79278527"
 <a name="scale"></a>
 
 ## <a name="to-scale-an-azure-cache-for-redis"></a>缩放 Azure Redis 缓存
-修改 `Set-AzRedisCache`、`Size` 或 `Sku` 属性时，可以使用 `ShardCount` 来缩放 Azure Redis 缓存实例。 
+修改 `Size`、`Sku` 或 `ShardCount` 属性时，可以使用 `Set-AzRedisCache` 来缩放 Azure Redis 缓存实例。 
 
 > [!NOTE]
 > 使用 PowerShell 缩放缓存受到的限制和要遵循的准则与在 Azure 门户中缩放缓存相同。 可以扩展到不同定价层，但有以下限制。
@@ -332,7 +332,7 @@ ms.locfileid: "79278527"
 > * 不能从**标准**缓存向下缩放到**基本**缓存。
 > * 可从**基本**缓存缩放到**标准**缓存，但不能同时更改大小。 如果需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
 > * 不能从**基本**缓存直接缩放到**高级**缓存。 必须在一个缩放操作中从**基本**缩放到**标准**，并在后续的缩放操作中从**标准**缩放到**高级**。
-> * 不能从较大的大小减小为 **C0 (250 MB)** 。
+> * 不能从较大的大小减小为 **C0 (250 MB)**。
 > 
 > 有关详细信息，请参阅[如何缩放 Azure Redis 缓存](cache-how-to-scale.md)。
 > 
@@ -421,7 +421,7 @@ ms.locfileid: "79278527"
 
     Get-AzRedisCache
 
-若要返回特定资源组中所有缓存的相关信息，请结合 `Get-AzRedisCache` 参数运行 `ResourceGroupName`。
+若要返回特定资源组中所有缓存的相关信息，请结合 `ResourceGroupName` 参数运行 `Get-AzRedisCache`。
 
     Get-AzRedisCache -ResourceGroupName myGroup
 
@@ -529,7 +529,7 @@ ms.locfileid: "79278527"
             OutBuffer, PipelineVariable, and OutVariable. For more information, see
             about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-若要重新生成缓存的主要或辅助密钥，请调用 `New-AzRedisCacheKey` cmdlet，传入名称和资源组，并为 `Primary` 参数指定 `Secondary` 或 `KeyType`。 以下示例将重新生成缓存的辅助访问密钥。
+若要重新生成缓存的主要或辅助密钥，请调用 `New-AzRedisCacheKey` cmdlet，传入名称和资源组，并为 `KeyType` 参数指定 `Primary` 或 `Secondary`。 以下示例将重新生成缓存的辅助访问密钥。
 
     PS C:\> New-AzRedisCacheKey -Name myCache -ResourceGroupName myGroup -KeyType Secondary
 
@@ -779,5 +779,5 @@ ms.locfileid: "79278527"
 * [使用资源组来管理 Azure 资源](../azure-resource-manager/templates/deploy-portal.md)：了解如何在 Azure 门户中创建和管理资源组。
 * [Azure 博客](https://azure.microsoft.com/blog/)：了解 Azure 中的新功能。
 * [Windows PowerShell 博客](https://blogs.msdn.com/powershell)：了解 Windows PowerShell 中的新功能。
-* ["你好，脚本编写专家！"博客](https://blogs.technet.com/b/heyscriptingguy/)：从 Windows PowerShell 社区获取实际提示和技巧。
+* [“你好，脚本编写专家！” 博客](https://blogs.technet.com/b/heyscriptingguy/)：从 Windows PowerShell 社区获取实用提示和技巧。
 

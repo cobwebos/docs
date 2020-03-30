@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 3784b94a8571ab57d191d0bdb1e38aaa16d3cabb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 880072c9865e38e181869506e35968767fa95e8a
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255972"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387897"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>配置 Azure SQL 数据库诊断遥测的流式导出
 
@@ -84,7 +84,7 @@ ms.locfileid: "79255972"
 - Azure 资源管理器模板
 
 > [!NOTE]
-> 要启用安全遥测的审核日志流，请参阅在[Azure 监视器日志和 Azure 事件中心中为数据库设置审核日志和审核日志](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。 [Set up auditing for your database](sql-database-auditing.md#subheading-2)
+> 要启用安全遥测的审核日志流，请参阅在[Azure 监视器日志和 Azure 事件中心中为数据库设置审核日志和审核日志](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。 [Set up auditing for your database](sql-database-auditing.md#setup-auditing)
 
 ## <a name="configure-the-streaming-export-of-diagnostic-telemetry"></a>配置诊断遥测的流导出
 

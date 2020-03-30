@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 95e8a30eaa59762ad7cf5b388326c9d3c9723d8e
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925136"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
@@ -22,7 +22,7 @@ ms.locfileid: "78925136"
 
 ## <a name="add-sample-code"></a>添加示例代码
 
-1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。   
+1. 若要向 Java 项目添加新的空类，请选择“文件” **“新建”** “类”。 >    >  
 
 1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。   
 
@@ -34,7 +34,7 @@ ms.locfileid: "78925136"
 
 1. 将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“区域标识符”（例如，对于免费试用版订阅，为 `westus`）。 
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的**区域**中的“区域标识符”（例如，对于免费试用版订阅，为 [）。](https://aka.ms/speech/sdkregion)`westus`
 
 1. 保存对项目的更改。
 
@@ -43,7 +43,7 @@ ms.locfileid: "78925136"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-按 F11，或选择“运行” > “调试”。  
+按 F11，或选择“运行” **“调试”。**  >  
 接下来的 15 秒，通过麦克风提供的语音输入将被识别并记录到控制台窗口中。
 
 ![成功识别后的控制台输出的屏幕截图](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-07-console-output.png)

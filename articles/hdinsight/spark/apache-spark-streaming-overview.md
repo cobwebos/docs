@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
 ms.openlocfilehash: 521d72642a27995d096402a4ca0e4af632b0788c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74406267"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark 流式处理概述
@@ -21,17 +21,17 @@ ms.locfileid: "74406267"
 
 ![使用 HDInsight 和 Spark 流式处理的流处理](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
-Spark 流式处理应用程序必须先等待一会，以收集事件的每个微批处理，才能发送该批处理进行处理。 与此相反，事件驱动应用程序会立即处理每个事件。 Spark 流式处理延迟一般为几秒钟。 微批处理方法的优点是数据处理效率更高和聚合计算更简单。
+Spark 流式处理应用程序必须先等待一会，以收集事件的每个微批处理，才能发送该批处理进行处理。** 与此相反，事件驱动应用程序会立即处理每个事件。 Spark 流式处理延迟一般为几秒钟。 微批处理方法的优点是数据处理效率更高和聚合计算更简单。
 
 ## <a name="introducing-the-dstream"></a>引入 DStream
 
-Spark 流式处理使用称为 DStream 的离散流表示传入数据的连续流。 可以基于输入源（例如事件中心或 Kafka）或通过对另一个 DStream 应用转换来创建此 DStream。
+Spark 流式处理使用称为 DStream 的离散流表示传入数据的连续流**。 可以基于输入源（例如事件中心或 Kafka）或通过对另一个 DStream 应用转换来创建此 DStream。
 
 DStream 可提供基于原始事件数据的抽象层。
 
-从单一事件开始，例如已连接调温器的温度读数。 当此事件到达 Spark 流式处理应用程序时，将以可靠的方式存储事件，在该事件中，会将其复制到多个节点上。 这种容错可确保任何单个节点的故障不会导致事件丢失。 Spark 核心使用将数据分布到群集中的多个节点的数据结构，其中每个节点通常维护其自己的内存中数据，以实现最佳性能。 此数据结构称为弹性分布式数据集 (RDD)。
+从单一事件开始，例如已连接调温器的温度读数。 当此事件到达 Spark 流式处理应用程序时，该事件以可靠的方式存储，在多个节点上复制该事件。 此容错确保任何单个节点的故障不会导致事件丢失。 Spark 核心使用将数据分布到群集中的多个节点的数据结构，其中每个节点通常维护其自己的内存中数据，以实现最佳性能。 此数据结构称为弹性分布式数据集 (RDD)**。
 
-每个 RDD 表示在用户定义的时间范围（称为*批处理间隔*）内收集的事件。 每个批处理间隔后，将生成新的 RDD，其中包含该间隔的所有数据。 连续的 RDD 集将被收集到 DStream。 例如，如果批处理间隔为 1 秒，则 DStream 将每秒发出一个批处理，其中包含一个 RDD（包含该秒期间引入的所有数据）。 处理 DStream 时，温度事件将出现在其中一个批处理中。 Spark 流式处理应用程序处理包含事件的批处理并最终作用于每个 RDD 中存储的数据。
+每个 RDD 表示在称为*批处理间隔*的用户定义的时间帧内收集的事件。 每个批处理间隔后，将生成新的 RDD，其中包含该间隔的所有数据。 连续的 RDD 集将被收集到 DStream。 例如，如果批处理间隔为 1 秒，则 DStream 将每秒发出一个批处理，其中包含一个 RDD（包含该秒期间引入的所有数据）。 处理 DStream 时，温度事件将出现在其中一个批处理中。 Spark 流式处理应用程序处理包含事件的批处理并最终作用于每个 RDD 中存储的数据。
 
 ![温度事件的示例 DStream](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 
@@ -154,7 +154,7 @@ SELECT * FROM demo_numbers
 
 生成的输出如下所示：
 
-| 值 | time |
+| value | time |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -167,7 +167,7 @@ SELECT * FROM demo_numbers
 
 ## <a name="sliding-windows"></a>滑动窗口
 
-若要对某个时间段内的 DStream 执行聚合计算，例如获取最后 2 秒钟内的平均温度，可以使用 Spark 流式处理中包括的“滑动窗口”操作。 滑动窗口具有一个持续时间（窗口长度）和在期间计算窗口内容的时间间隔（即滑动间隔）。
+若要对某个时间段内的 DStream 执行聚合计算，例如获取最后 2 秒钟内的平均温度，可以使用 Spark 流式处理中包括的“滑动窗口”操作。** 滑动窗口具有一个持续时间（窗口长度）和在期间计算窗口内容的时间间隔（即滑动间隔）。
 
 滑动窗口可以重叠，例如，可以定义长度为两秒的窗口，每一秒滑动一次。 这意味着每次执行聚合计算时，窗口将包括上一个窗口最后一秒的数据以及下一秒的任何新数据。
 
@@ -222,7 +222,7 @@ ssc.start()
 
 第一分钟后，会产生 12 个条目 - 窗口中收集到的两个批处理中各有 6 个条目。
 
-| 值 | time |
+| value | time |
 | --- | --- |
 | 1 | 1497316294139 |
 | 2 | 1497316299158
@@ -245,7 +245,7 @@ Spark 流式传输 API 中可用的滑动窗口函数包括 window、countByWind
 
 ## <a name="deploying-spark-streaming-applications"></a>部署 Spark 流式处理应用程序
 
-通常在本地的 JAR 文件中生成 Spark 流应用程序，然后通过将此 JAR 文件复制到 HDInsight 群集上附加的默认存储，在 Spark on HDInsight 中部署此应用程序。 可以使用 POST 操作，通过群集上可用的 LIVY REST API 启动该应用程序。 POST 的正文包括提供 JAR 路径的 JSON 文档、其 main 方法定义并运行流应用程序的类的名称，可选的作业资源要求（例如执行器、内存和核心的数量）以及应用程序代码所需的任何配置设置。
+通常在本地将 Spark 流应用程序生成为 JAR 文件，然后通过将此 JAR 文件复制到 HDInsight 群集上附加的默认存储，在 Spark on HDInsight 中部署此应用程序。 可以使用 POST 操作，通过群集上可用的 LIVY REST API 启动该应用程序。 POST 的正文包括提供 JAR 路径的 JSON 文档、其 main 方法定义并运行流应用程序的类的名称，可选的作业资源要求（例如执行器、内存和核心的数量）以及应用程序代码所需的任何配置设置。
 
 ![部署 Spark 流式处理应用程序](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 

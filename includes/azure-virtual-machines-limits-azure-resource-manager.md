@@ -4,28 +4,28 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 8607fd6f01ea02841017d09dac7236812f2330b9
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 90dc5a067c05cadb3d5e102435b2e3d3de803e28
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133704"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334724"
 ---
-| 资源 | 默认限制 |
+| 资源 | 限制 |
 | --- | --- |
-| 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 数 |每个区域 25000<sup>1</sup> 。 |
-| 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 核心总数 |每个区域20个<sup>1</sup> 。 联系支持人员以增加限制。 |
-| Azure 点 VM 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的总内核数 |每个区域20个<sup>1</sup> 。 联系支持人员以增加限制。 |
-| VM 每个系列，如 Dv2 和 F，每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的核心数 |每个区域20个<sup>1</sup> 。 联系支持人员以增加限制。 |
-| 每个订阅的[可用性集](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |每个区域2000。 |
+| 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 数 |每个区域 25,000 个<sup>1</sup>。 |
+| 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的 VM 核心总数 |每个区域 20<sup>1。</sup> 联系支持以增加限制。 |
+| Azure Spot VM 每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的总内核数 |每个区域 20<sup>1。</sup> 联系支持以增加限制。 |
+| VM 系列（例如 Dv2 和 F）、每个[订阅](../articles/billing-buy-sign-up-azure-subscription.md)的核心数 |每个区域 20<sup>1。</sup> 联系支持以增加限制。 |
+| 每个订阅[的可用性集](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) |每个区域 2,000 个。 |
 | 每个可用性集的虚拟机数 | 200 |
 | 每个订阅的证书数 |无限制<sup>2</sup> |
 
-<sup>1</sup>默认限制根据产品类别类型（例如免费试用版和即用即付，以及按序列（如 Dv2、F 和 G）而有所不同。例如，企业协议订阅的默认值为350。
+<sup>1</sup>默认限制因产品/服务类别类型而异，例如免费试用和即用即付，以及按系列（如 Dv2、F 和 G）更改。例如，企业协议订阅的默认值为 350。
 
-<sup>2</sup>在 Azure 资源管理器中，证书存储在 Azure Key Vault 中。 订阅的证书数不受限制。 每个部署有 1 MB 的证书限制，其中包括单个 VM 或可用性集。
+<sup>2</sup>使用 Azure 资源管理器，证书存储在 Azure 密钥保管库中。 对于每个订阅，证书个数没有限制。 对于每个部署（包括单一 VM 或可用性集），证书的限制为 1-MB。
 
 > [!NOTE]
-> 虚拟机核心具有区域总数限制。 它们还限制了区域的每个大小的系列，如 Dv2 和 F。这些限制是单独强制执行的。 例如，某个订阅的美国东部 VM 核心总数限制为 30，A 系列核心数限制为 30，D 系列核心数限制为 30。 此订阅可以部署30个 A1 Vm 或30个 D1 Vm，或者两者的组合（不超过30个核心）。 例如，10个 A1 Vm 和20个 D1 Vm 的组合的示例。  
+> 虚拟机核心数存在区域总数限制。 区域大小系列（例如 Dv2 和 F）也存在限制。这些限制是单独实施的。 例如，某个订阅的美国东部 VM 核心总数限制为 30，A 系列核心数限制为 30，D 系列核心数限制为 30。 此订阅可以部署 30 个 A1 VM、30 个 D1 VM，或两者的组合，但总共不能超过 30 个核心。 例如，10 个 A1 VM 和 20 个 D1 VM 就是一种组合。  
 > <!-- -->
 > 

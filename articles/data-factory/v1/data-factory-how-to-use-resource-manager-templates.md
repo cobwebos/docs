@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 930a3f0cf629c99fc03a84c701bcf7b2807c77c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972863"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用模板来创建 Azure 数据工厂实体
@@ -25,7 +25,7 @@ ms.locfileid: "75972863"
 ## <a name="overview"></a>概述
 使用 Azure 数据工厂实现数据集成需求时，可能发现自己在不同环境中重复使用同一模式，或在同一解决方案内重复执行相同任务。 使用模板可轻松实现和管理这些方案。 Azure 数据工厂中的模板非常适合于涉及可重用性和重复的情况。
 
-请考虑此情况：某组织在世界各地拥有 10 个制造工厂。 每个工厂的日志均存储在单独的本地 SQL Server 数据库中。 公司希望在云中构建单个数据仓库用于即席分析。 还希望开发、测试和生产环境具有相同逻辑但具有不同配置。
+请考虑此情况：某组织在世界各地拥有 10 个制造工厂。 每个工厂的日志均存储在单独的本地 SQL Server 数据库中。 该公司希望在云中构建单个数据仓库，以便进行特殊分析。 还希望开发、测试和生产环境具有相同逻辑但具有不同配置。
 
 在此情况下，需在相同环境中重复同一任务，但 10 个制造工厂的每个数据工厂具有不同值。 总之，存在**重复**。 模板化允许将此泛型流抽象化（即，管道在每个数据工厂中具有相同活动），但对每个制造工厂使用单独的参数文件。
 

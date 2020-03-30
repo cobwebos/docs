@@ -1,5 +1,5 @@
 ---
-title: Azure AD 域服务的兼容第三方软件 |Microsoft Docs
+title: 适用于 Azure AD 域服务的兼容第三方软件 |微软文档
 description: 适用于 Azure Active Directory 域服务的第三方软件
 services: active-directory-ds
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 03/06/2017
 ms.author: iainfou
 ms.openlocfilehash: f5a633a49a0f7b99da4eac08a527d17299aa34b9
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72754457"
 ---
 # <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>与 Azure AD 域服务兼容的第三方软件

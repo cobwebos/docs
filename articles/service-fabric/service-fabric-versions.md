@@ -1,48 +1,51 @@
 ---
-title: Azure 中支持的群集版本 Service Fabric
-description: 了解 Azure Service Fabric 中的群集版本，包括指向 Service Fabric 团队博客中的最新版本的链接。
+title: Azure Service Fabric 中支持的群集版本
+description: 了解 Azure 服务结构中的群集版本，包括服务结构团队博客中指向最新版本的链接。
 ms.topic: troubleshooting
 ms.date: 03/02/2020
-ms.openlocfilehash: 76a8137bbe42d8f693ac807f640a78fc4ec87c2e
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 1158266857f0864ed2f442edb100032c70063719
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370417"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385038"
 ---
 # <a name="supported-service-fabric-versions"></a>支持的 Service Fabric 版本
 
-请确保群集始终运行受支持的 Azure Service Fabric 版本。 发布新版本的 Service Fabric 后，至少60天后，对以前版本的支持就会结束。 你会在[Service Fabric 团队博客](https://azure.microsoft.com/updates/?product=service-fabric)上找到新版本的公告。
+请确保群集始终运行受支持的 Azure Service Fabric 版本。 在公告新版 Service Fabric 的发布日期以后，至少还要过 60 天我们才会结束对旧版本的支持。 可以在 [Service Fabric 团队博客](https://azure.microsoft.com/updates/?product=service-fabric)中找到有关新版本的公告。
 
-请参阅以下文档，了解有关如何使群集运行受支持的 Service Fabric 版本的详细信息：
+若要详细了解如何使群集始终运行受支持的 Service Fabric 版本，请参阅以下文档：
 
 - [升级 Azure Service Fabric 群集](service-fabric-cluster-upgrade.md)
-- [升级独立 Windows Server 群集上运行的 Service Fabric 版本](service-fabric-cluster-upgrade-windows-server.md)
+- [升级在单独的 Windows Server 群集上运行的 Service Fabric 版本](service-fabric-cluster-upgrade-windows-server.md)
 
 ## <a name="supported-versions"></a>支持的版本
 
-下表列出了 Service Fabric 的版本及其支持结束日期。
+下表列出了 Service Fabric 版本及其支持结束日期。
 
 | 群集中的 Service Fabric 运行时 | 可以直接从群集版本升级 |兼容的 SDK 或 NuGet 包版本 | 结束支持 |
 | --- | --- |--- | --- |
-| 5\.3.121 之前的所有群集版本 | 5.1.158.* |低于或等于版本 2.3 |2017 年 1 月 20 日 |
+| 5.3.121 之前的所有群集版本 | 5.1.158.* |低于或等于版本 2.3 |2017 年 1 月 20 日 |
 | 5.3.* | 5.1.158.* |低于或等于版本 2.3 |2017 年 2 月 24 日 |
 | 5.4.* | 5.1.158.* |低于或等于版本 2.4 |2017 年 5 月 10 日       |
 | 5.5.* | 5.4.164.* |低于或等于版本 2.5 |2017 年 8 月 10 日    |
 | 5.6.* | 5.4.164.* |低于或等于版本 2.6 |2017 年 10 月 13 日   |
-| 5.7.* | 5.4.164.* |低于或等于版本 2.7 |2017年12月15日  |
-| 6.0.* | 5.6.205.* |版本 2.8 或更低版本 |2018年3月30日     |
-| 6.1.* | 5.7.221.* |版本 3.0 或更低版本 |2018年7月15日      |
-| 6.2.* | 6.0.232.* |版本 3.1 或更低版本 |2018年10月26日   |
-| 6.3.* | 6.1.480.* |版本 3.2 或更低版本 |2019年3月31日  |
-| 6.4.* | 6.2.301.* |版本 3.3 或更低版本 |2019年9月15日 |
-| 6.5.* | 6.4.617.* |小于或等于版本3。4 |5月1日，2020 |
-| 7.0. * | 7.0.466.* |小于或等于版本4。0 |当前版本，无结束日期 |
+| 5.7.* | 5.4.164.* |低于或等于版本 2.7 |2017 年 12 月 15 日  |
+| 6.0.* | 5.6.205.* |版本 2.8 或更低版本 |2018 年 3 月 30 日     |
+| 6.1.* | 5.7.221.* |版本 3.0 或更低版本 |2018 年 7 月 15日      |
+| 6.2.* | 6.0.232.* |版本 3.1 或更低版本 |2018 年 10 月 26日   |
+| 6.3.* | 6.1.480.* |版本 3.2 或更低版本 |2019 年 3 月 31 日  |
+| 6.4.* | 6.2.301.* |版本 3.3 或更低版本 |2019 年 9 月 15 日 |
+| 6.5.* | 6.4.617.* |低于或等于版本 3.4 |2020年8月1日 |
+| 7.0.466.* | 6.4.664.* |小于或等于版本 4.0|当前版本，因此无结束日期 |
+| 7.0.466.* | 6.5.* |小于或等于版本 4.0|当前版本，因此无结束日期 |
+| 7.0.470.* | 7.0.466.* |小于或等于版本 4.0 |当前版本，因此无结束日期 |
+
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-下表列出了支持的 Service Fabric 版本的支持的操作系统。
+下表列出了支持的 Service Fabric 版本所支持的操作系统。
 
-| 操作系统 | 支持的最早 Service Fabric 版本 |
+| 操作系统 | 支持的最低 Service Fabric 版本 |
 | --- | --- |
 | Windows Server 2012 R2 | 所有版本 |
 | Windows Server 2016 | 所有版本 |
@@ -54,7 +57,7 @@ ms.locfileid: "79370417"
 
 ## <a name="supported-version-names"></a>支持的版本名称
 
-下表列出了 Service Fabric 的版本名称及其相应的版本号。
+下表列出了 Service Fabric 的版本名称以及相应的版本号。
 
 | 版本名称 | Windows 版本号 | Linux 版本号 |
 | --- | --- | --- |

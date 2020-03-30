@@ -10,15 +10,15 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 3788fdb954917f28f64a0dfe035bed4ded0932d5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "69642131"
 ---
 Blob 触发器提供了几个元数据属性。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些值的语义与 [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) 类型相同。
 
-|属性  |类型  |描述  |
+|properties  |类型  |说明  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|触发 Blob 的路径。|
 |`Uri`|`System.Uri`|主位置的 blob 的 URI。|

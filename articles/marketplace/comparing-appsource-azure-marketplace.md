@@ -1,18 +1,18 @@
 ---
 title: 比较 AppSource 和 Azure 市场 | Azure
 description: 本文介绍 Microsoft AppSource 和 Azure 市场中的店面。
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
-ms.openlocfilehash: c07bba7340a1934fc422598c798022602e7c046a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd6c375231facc3d7afb35df74210d26b5f50ba8
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281606"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387778"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>比较 AppSource 和 Azure 市场
 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Microsoft AppSource](https://appsource.microsoft.com) 中的店面满足独特的客户要求。 使用店面按角色定位客户。 你可以根据客户提供适当的解决方案或服务。

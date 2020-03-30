@@ -1,20 +1,20 @@
 ---
-title: Azure Service Fabric 网格 Maven 参考
+title: Azure 服务结构网格 Maven 参考
 description: 包含如何使用适用于 Service Fabric 网格的 Maven 插件的参考
 author: suhuruli
 ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
 ms.openlocfilehash: bcc3fb7c6c3adce0997d0960c4d98227089b048b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75459014"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>适用于 Service Fabric 网格的 Maven 插件
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Java SDK
 - Maven
@@ -36,7 +36,7 @@ ms.locfileid: "75459014"
 - 使用 `appresources` 文件夹中提供的网关名称生成 `gateway` YAML 
 
 #### `azure-sfmesh:addvolume`
-- 使用 `appresources` 文件夹中提供的 YAML 生成 `volume`。
+- 生成具有`volume`文件夹中提供的卷名称的`appresources`YAML。
 
 ### `azure-sfmesh:addsecret`
 - 使用 `appresources` 文件夹中提供的密钥名称生成 `secret` YAML 
@@ -109,7 +109,7 @@ mvn azure-sfmesh:addservice -DapplicationName=helloworldserver -DserviceName=hel
 
 - 在名为 `service_helloworldservice` 的文件夹 `servicefabric->helloworldservice` 中创建一个引用 `helloworldservicenetwork` 和 `helloworldserver` 应用的服务 YAML
 - 该服务将侦听端口 8080
-- 该服务将使用 helloworldserver:latest 作为其容器映像。
+- 该服务将使用 helloworldserver:latest****** 作为其容器映像。
 
 #### <a name="add-a-new-gateway-resource-to-your-application"></a>向应用程序添加新网关资源
 运行以下命令以创建网关资源 yaml。 

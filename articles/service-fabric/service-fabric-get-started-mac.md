@@ -1,15 +1,15 @@
 ---
 title: 在 macOS 上设置开发环境
-description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，即可在 macOS 上生成应用程序。
+description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，即可在 macOS 上构建应用程序。
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
 ms.openlocfilehash: f2ca1566358fad45f6ec2860fcca96b887c54adb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722571"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
@@ -22,7 +22,7 @@ ms.locfileid: "76722571"
 
 可以使用 Mac OS X 生成在 Linux 群集上运行的 Azure Service Fabric 应用程序。本文档介绍了如何设置用于开发的 Mac。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Service Fabric 群集，我们提供了预配置的 Docker 容器映像。 准备事项：
 
 * 至少 4 GB 的 RAM。
@@ -44,15 +44,15 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    可以在 Docker 安装路径的 daemon.json 文件中直接更新这些设置。 可直接在 Docker 中修改守护程序配置设置。 选择 **Docker 图标**，然后选择“首选项” > “守护程序” > “高级”。
+    可以在 Docker 安装路径的 daemon.json 文件中直接更新这些设置。 可直接在 Docker 中修改守护程序配置设置。 选择 **Docker 图标**，然后选择“首选项”**** > ****“守护程序” > ****“高级”。
     
     >[!NOTE]
     >
-    >建议直接在 Docker 中修改守护程序，因为守护程序 json 文件的位置会因计算机而异。 例如，~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json。
+    >建议直接在 Docker 中修改守护进程，因为守护进程.json 文件的位置可能因计算机而异。 例如，~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json。
     >
 
     >[!TIP]
-    >测试大型应用程序时，我们建议增加分配给 Docker 的资源。 为此，可以选择 **Docker 图标**，然后选择“高级”来调整核心数量和内存量。
+    >测试大型应用程序时，我们建议增加分配给 Docker 的资源。 为此，可以选择 **Docker 图标**，然后选择“高级”来调整核心数量和内存量。****
 
 2. 在新目录中创建名为 `Dockerfile` 的文件，以生成 Service Fabric 映像：
 
@@ -76,7 +76,7 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
     >例如，添加 `RUN apt-get install nodejs -y` 可以支持将 `nodejs` 应用程序用作来宾可执行文件。
     
     >[!TIP]
-    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 如需特定的修订版本，请访问 [Docker 中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/)页。
+    > 默认情况下，这样会拉取具有最新 Service Fabric 版本的映像。 有关特定修订，请访问 Docker[中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/)页面
 
 3. 若要通过 `Dockerfile` 生成可重用的映像，请打开终端并运行 `cd` 切换到 `Dockerfile` 所在的目录，然后运行：
 
@@ -101,7 +101,7 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-5. 群集需要一小段时间来启动。 运行时，可以使用以下命令查看日志，或者通过跳转到仪表板来查看群集运行状况 [http://localhost:19080](http://localhost:19080)：
+5. 群集需要一小段时间来启动。 运行时，可以使用以下命令查看日志，也可以跳转到仪表板以查看群集运行状况[http://localhost:19080](http://localhost:19080)：
 
     ```bash 
     docker logs sftestcluster
@@ -166,7 +166,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
     ```
 
     > [!IMPORTANT]
-    > `brew cask install java` 的当前版本可以安装最新版本的 JDK。
+    > `brew cask install java` 的当前版本可能会安装更新版本的 JDK。
     > 请确保安装 JDK 8。
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>通过 Terminal 在 Mac 上部署应用程序

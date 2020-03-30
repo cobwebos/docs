@@ -1,7 +1,7 @@
 ---
-title: Azure CLI 脚本示例-配置 IPv6 前端
+title: Azure CLI 脚本示例 - 配置 IPv6 前端
 titlesuffix: Azure Virtual Network
-description: 使用 Azure 虚拟网络中的 Azure CLI 启用 IPv6 终结点
+description: 使用 Azure CLI 在 Azure 虚拟网络中启用 IPv6 终结点
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,37 +12,39 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: 0661c5231e2fce4d6a675c07be6b0ae914c99997
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201351"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235029"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>在虚拟网络脚本示例中配置 IPv6 终结点（预览）
 
-本文介绍如何在 Azure 中部署一个双堆栈（IPv4 + IPv6）应用程序，该应用程序包含一个双堆栈子网、一个具有双堆栈子网的负载均衡器、一个具有双堆栈子网的负载均衡器、一个具有双 IP 配置的 Nic 的 Vm，双重网络安全组规则和双重公共 Ip。
+本文介绍如何在 Azure 中部署一个双堆栈 (IPv4 + IPv6) 应用程序，其中包含具有双堆栈子网的双堆栈虚拟网络、采用双重 (IPv4 + IPv6) 前端配置的负载均衡器、具有采用双重 IP 配置的 NIC 的 VM、双重网络安全组规则，以及双重公共 IP。
 
 可以通过 Azure [Cloud Shell](https://shell.azure.com/bash) 或本地 Azure CLI 安装来执行脚本。 如果在本地使用 CLI，此脚本要求运行版本 2.0.28 或更高版本。 要查找已安装的版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
-若要使用 Azure 虚拟网络的 IPv6 功能，你必须按如下所示配置订阅一次：
+要将 IPv6 用于 Azure 虚拟网络功能，必须仅配置订阅一次，如下所示：
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-功能注册最多需要 30 分钟才能完成。 可以通过运行以下 Azure CLI 命令来检查注册状态：
 
-```azurelci
+功能注册最多需要 30 分钟才能完成。 您可以通过运行以下 Azure CLI 命令来检查注册状态：
+
+```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 注册完成后，运行以下命令：
 
-```azurelci
+```azurecli
 az provider register --namespace Microsoft.Network
 ```
 
@@ -261,6 +263,7 @@ az vm create \
 --image MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest
 
 ```
+
 ## <a name="clean-up-deployment"></a>清理部署
 
 运行以下命令来删除资源组、VM 和所有相关资源：
@@ -273,7 +276,7 @@ az group delete --name <resourcegroupname> --yes
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 注意 |
+| 命令 | 说明 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 创建 Azure 虚拟网络和子网。 |
@@ -291,6 +294,6 @@ az group delete --name <resourcegroupname> --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅[Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
 
 可在 [Azure 网络文档](../cli-samples.md)中找到其他 Azure 网络 CLI 脚本示例。
