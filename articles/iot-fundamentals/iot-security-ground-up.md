@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
 ms.openlocfilehash: 7072e2c0bfa054a670ac3fb09590378d3ef055a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72789732"
 ---
 # <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>从头开始讲解物联网 (IoT) 的安全性

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d635950c8b34986cd5824660166017317948cbd8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73176907"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API 管理中的应用程序模板
@@ -36,7 +36,7 @@ ms.locfileid: "73176907"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a>应用程序列表  
+##  <a name="application-list"></a><a name="ProductList"></a>应用程序列表  
  **应用程序列表**模板可用于自定义开发人员门户中应用程序列表页的正文。  
   
  ![应用程序列表页开发人员门户模板](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM 应用程序列表页开发人员门户模板")  
@@ -73,14 +73,14 @@ ms.locfileid: "73176907"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控件  
  `Product list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [分页控制](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>数据模型  
   
-|properties|Type|描述|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Paging`|[分页](api-management-template-data-model-reference.md#Paging)实体。|应用程序集合的分页信息。|  
 |`Applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|对当前用户可见的应用程序。|  
@@ -137,7 +137,7 @@ ms.locfileid: "73176907"
 }  
 ```  
   
-##  <a name="Application"></a> 应用程序  
+##  <a name="application"></a><a name="Application"></a>应用  
  **应用程序**模板可用于自定义开发人员门户中应用程序页的正文。  
   
  ![应用程序页开发人员门户模板](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM 应用程序页开发人员门户模板")  
@@ -180,7 +180,7 @@ ms.locfileid: "73176907"
   
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控件  
  `Application` 模板不允许使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  

@@ -1,33 +1,33 @@
 ---
-title: 查看任务运行日志-任务
-description: 如何查看和管理 ACR 任务生成的运行日志。
+title: 查看任务运行日志 - 任务
+description: 如何查看和管理由 ACR 任务生成的运行日志。
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246963"
 ---
 # <a name="view-and-manage-task-run-logs"></a>查看和管理任务运行日志
 
-[Azure 容器注册表任务](container-registry-tasks-overview.md)中运行的每个任务都会生成日志输出，你可以通过检查这些输出来确定任务步骤是否成功运行。 
+[Azure 容器注册表任务中](container-registry-tasks-overview.md)运行的每个任务都会生成日志输出，您可以检查日志输出以确定任务步骤是否成功运行。 
 
 本文介绍如何查看和管理任务运行日志。
 
-## <a name="view-streamed-logs"></a>查看流式处理日志
+## <a name="view-streamed-logs"></a>查看流式日志
 
-手动触发任务时，日志输出会直接流式传输到控制台。 例如，当你使用[az acr build](/cli/azure/acr#az-acr-build)、 [az acr run](/cli/azure/acr#az-acr-run)或[az acr task run](/cli/azure/acr/task#az-acr-task-run)命令手动触发任务时，你会看到向控制台流式传输的日志输出。 
+手动触发任务时，日志输出将直接流式传输到控制台。 例如，当您使用[az acr 生成](/cli/azure/acr#az-acr-build)[、az acr 运行](/cli/azure/acr#az-acr-run)或 az [acr 任务运行](/cli/azure/acr/task#az-acr-task-run)命令手动触发任务时，您将看到日志输出流式传输到控制台。 
 
-以下示例[az acr run](/cli/azure/acr#az-acr-run)命令手动触发了一个任务，该任务运行从同一注册表中提取的容器：
+以下示例[az acr 运行](/cli/azure/acr#az-acr-run)命令手动触发运行从同一注册表提取的容器的任务：
 
 ```azurecli
 az acr run --registry mycontainerregistry1220 \
   --cmd '$Registry/samples/hello-world:v1' /dev/null
 ```
 
-流日志：
+流式日志：
 
 ```console
 Queued a run with ID: cf4
@@ -58,21 +58,21 @@ Run ID: cf4 was successful after 5s
 
 ## <a name="view-stored-logs"></a>查看存储的日志 
 
-Azure 容器注册表存储所有任务的运行日志。 可以在 Azure 门户中查看存储的运行日志。 或者，使用[az acr task logs](/cli/azure/acr/task#az-acr-task-logs)命令查看选定的日志。 默认情况下，日志保留30天。
+Azure 容器注册表存储所有任务的运行日志。 您可以在 Azure 门户中查看存储的运行日志。 或者，使用[az acr 任务日志](/cli/azure/acr/task#az-acr-task-logs)命令查看选定的日志。 默认情况下，日志将保留 30 天。
 
-如果自动触发任务（例如，通过源代码更新），则访问存储的日志是查看运行日志的*唯一*方法。 自动任务触发器包括源代码提交或拉取请求、基本映像更新和计时器触发器。
+如果任务自动触发（例如由源代码更新），则访问存储的日志是查看运行日志*的唯*一方法。 自动任务触发器包括源代码提交或拉取请求、基本映像更新和计时器触发器。
 
-若要在门户中查看运行日志：
+要查看门户中的运行日志，请查看：
 
 1. 导航到容器注册表。
-1. 在 "**服务**" 中，选择 "**任务** > **运行**"。
-1. 选择**运行 Id**以查看运行状态和运行日志。 日志包含与流式处理日志相同的信息（如果生成了日志）。
+1. 在 **"服务**"中，选择 > **"任务运行**"。 **Tasks**
+1. 选择**运行 ID**以查看运行状态并运行日志。 日志包含与流式日志相同的信息（如果生成了）。
 
 ![查看任务运行登录门户](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
-若要使用 Azure CLI 查看日志，请运行[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) ，并指定运行 ID、任务名称或生成任务创建的特定映像。 如果指定任务名称，该命令将显示上次创建的运行的日志。
+要使用 Azure CLI 查看日志，请运行[az acr 任务日志](/cli/azure/acr/task#az-acr-task-logs)并指定运行 ID、任务名称或生成任务创建的特定映像。 如果指定了任务名称，该命令将显示上次创建运行的日志。
 
-下面的示例输出运行 ID 为*cf4*的日志：
+以下示例使用 ID *cf4*输出运行的日志：
 
 ```azurecli
 az acr task logs --registry mycontainerregistry1220 \
@@ -81,9 +81,9 @@ az acr task logs --registry mycontainerregistry1220 \
 
 ## <a name="alternative-log-storage"></a>备用日志存储
 
-你可能希望将任务运行日志存储在本地文件系统上，或使用备用存档解决方案，如 Azure 存储。
+您可能希望在本地文件系统上存储任务运行日志，或使用替代存档解决方案（如 Azure 存储）。
 
-例如，创建本地*tasklogs*目录，并将[az acr task 日志](/cli/azure/acr/task#az-acr-task-logs)的输出重定向到本地文件：
+例如，创建本地*任务日志*目录，并将[az acr 任务日志](/cli/azure/acr/task#az-acr-task-logs)的输出重定向到本地文件：
 
 ```azurecli
 mkdir ~/tasklogs
@@ -92,12 +92,12 @@ az acr task logs --registry mycontainerregistry1220 \
   --run-id cf4 > ~/tasklogs/cf4.log
 ```
 
-你还可以将本地日志文件保存到 Azure 存储。 例如，使用[Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md)、 [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md)或其他方法将文件上传到存储帐户。
+还可以将本地日志文件保存到 Azure 存储。 例如，使用[Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) [、Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md)或其他方法将文件上载到存储帐户。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关[Azure 容器注册表任务](container-registry-tasks-overview.md)的详细信息
+* 了解有关[Azure 容器注册表任务](container-registry-tasks-overview.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

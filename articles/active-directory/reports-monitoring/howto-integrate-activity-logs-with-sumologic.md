@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Monitor 将日志流式传输到 SumoLogic |Microsoft Docs
-description: 了解如何使用 Azure Monitor 将 Azure Active Directory 日志与 SumoLogic 集成
+title: 使用 Azure 监视器将日志流式传输到相扑逻辑 |微软文档
+description: 了解如何使用 Azure 监视器将 Azure 活动目录日志与相扑逻辑集成
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,19 +18,19 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6cdfc4e393ca7bf4bcbd523b4fad72690d5f2744
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014387"
 ---
-# <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>使用 Azure Monitor 将 Azure Active Directory 日志与 SumoLogic 集成
+# <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>使用 Azure 监视器将 Azure 活动目录日志与相扑集成
 
 本文介绍如何使用 Azure Monitor 将 Azure Active Directory (Azure AD) 日志与 SumoLogic 集成。 首先将日志路由到 Azure 事件中心，然后将事件中心与 SumoLogic 相集成。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用此功能，需满足以下条件：
+若要使用此功能，需满足以下条件:
 * 包含 Azure AD 活动日志的 Azure 事件中心。 了解如何[将活动日志流式传输到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)。 
 * 启用了 SumoLogic 单一登录的订阅。
 
@@ -44,6 +44,6 @@ ms.locfileid: "74014387"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
-* [解释 Azure Monitor 中的登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)
+* [解释 Azure 监视器中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
+* [在 Azure 监视器中解释登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)
 * [常见问题解答和已知的问题](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

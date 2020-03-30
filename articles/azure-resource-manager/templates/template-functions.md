@@ -3,20 +3,20 @@ title: 模板函数
 description: 介绍在 Azure 资源管理器模板中检索值、处理字符串和数字以及检索部署信息时所用的函数。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: a9d10ad4899f35acd45069cb3d351a60632fed3a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207036"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156253"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure 资源管理器模板函数
+# <a name="arm-template-functions"></a>ARM 模板功能
 
-本文介绍可以在 Azure 资源管理器模板中使用的所有函数。 有关在模板中使用函数的信息，请参阅[模板语法](template-expressions.md)。
+本文介绍可在 Azure 资源管理器 （ARM） 模板中使用的所有功能。 若要了解如何在模板中使用函数，请参阅[模板语法](template-expressions.md)。
 
 若要创建自己的函数，请参阅[用户定义函数](template-syntax.md#functions)。
 
-大多数函数在部署到资源组、订阅、管理组或租户时的工作方式相同。 有些函数不能用于所有范围。 下面的列表中对它们进行了说明。
+部署到资源组、订阅、管理组或租户时，大多数函数的工作方式相同。 一些函数不能在所有作用域中使用。 下面列出了它们。
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -40,23 +40,23 @@ ms.locfileid: "77207036"
 
 Resource Manager 提供以下用于处理数组和对象的函数。
 
-* [array](template-functions-array.md#array)
-* [coalesce](template-functions-array.md#coalesce)
-* [concat](template-functions-array.md#concat)
-* [contains](template-functions-array.md#contains)
-* [createArray](template-functions-array.md#createarray)
-* [empty](template-functions-array.md#empty)
-* [first](template-functions-array.md#first)
-* [intersection](template-functions-array.md#intersection)
-* [json](template-functions-array.md#json)
-* [last](template-functions-array.md#last)
+* [阵 列](template-functions-array.md#array)
+* [合并](template-functions-array.md#coalesce)
+* [Concat](template-functions-array.md#concat)
+* [包含](template-functions-array.md#contains)
+* [创建Array](template-functions-array.md#createarray)
+* [空](template-functions-array.md#empty)
+* [第一](template-functions-array.md#first)
+* [交集](template-functions-array.md#intersection)
+* [Json](template-functions-array.md#json)
+* [最后](template-functions-array.md#last)
 * [length](template-functions-array.md#length)
-* [min](template-functions-array.md#min)
+* [分钟](template-functions-array.md#min)
 * [max](template-functions-array.md#max)
-* [range](template-functions-array.md#range)
-* [skip](template-functions-array.md#skip)
-* [take](template-functions-array.md#take)
-* [union](template-functions-array.md#union)
+* [范围](template-functions-array.md#range)
+* [跳](template-functions-array.md#skip)
+* [采取](template-functions-array.md#take)
+* [联盟](template-functions-array.md#union)
 
 <a id="equals" aria-hidden="true" />
 <a id="less" aria-hidden="true" />
@@ -82,10 +82,10 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 Resource Manager 提供以下函数，用于从与部署相关的模板和值部分获取值：
 
-* [deployment](template-functions-deployment.md#deployment)
+* [部署](template-functions-deployment.md#deployment)
 * [环境](template-functions-deployment.md#environment)
 * [参数](template-functions-deployment.md#parameters)
-* [variables](template-functions-deployment.md#variables)
+* [变量](template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
 <a id="bool" aria-hidden="true" />
@@ -97,11 +97,11 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 资源管理器提供以下用于逻辑条件的函数：
 
-* [and](template-functions-logical.md#and)
+* [和](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
 * [if](template-functions-logical.md#if)
-* [not](template-functions-logical.md#not)
-* [or](template-functions-logical.md#or)
+* [不](template-functions-logical.md#not)
+* [或](template-functions-logical.md#or)
 
 <a id="add" aria-hidden="true" />
 <a id="copyindex" aria-hidden="true" />
@@ -118,16 +118,16 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 
 Resource Manager 提供以下用于处理整数的函数：
 
-* [add](template-functions-numeric.md#add)
-* [copyIndex](template-functions-numeric.md#copyindex)
+* [添加](template-functions-numeric.md#add)
+* [复制索引](template-functions-numeric.md#copyindex)
 * [div](template-functions-numeric.md#div)
-* [float](template-functions-numeric.md#float)
-* [int](template-functions-numeric.md#int)
-* [min](template-functions-numeric.md#min)
+* [浮动](template-functions-numeric.md#float)
+* [Int](template-functions-numeric.md#int)
+* [分钟](template-functions-numeric.md#min)
 * [max](template-functions-numeric.md#max)
-* [mod](template-functions-numeric.md#mod)
+* [国防部](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
-* [sub](template-functions-numeric.md#sub)
+* [子](template-functions-numeric.md#sub)
 
 <a id="extensionResourceId" aria-hidden="true" />
 <a id="listkeys" aria-hidden="true" />
@@ -148,12 +148,12 @@ Resource Manager 提供以下用于获取资源值的函数：
 * [listAccountSas](template-functions-resource.md#list)
 * [listKeys](template-functions-resource.md#listkeys)
 * [listSecrets](template-functions-resource.md#list)
-* [list*](template-functions-resource.md#list)
-* [providers](template-functions-resource.md#providers)
-* [reference](template-functions-resource.md#reference)
-* [resourceGroup](template-functions-resource.md#resourcegroup) -只能在资源组的部署中使用。
-* [resourceId](template-functions-resource.md#resourceid) -可以在任何范围内使用，但有效参数会根据范围而发生变化。
-* [订阅](template-functions-resource.md#subscription)-只能用于部署到资源组或订阅。
+* [列表*](template-functions-resource.md#list)
+* [供应商](template-functions-resource.md#providers)
+* [参考](template-functions-resource.md#reference)
+* [资源组](template-functions-resource.md#resourcegroup)- 只能在部署到资源组时使用。
+* [resourceId](template-functions-resource.md#resourceid) - 可在任何作用域使用，但有效参数会根据范围而变化。
+* [订阅](template-functions-resource.md#subscription)- 只能在部署到资源组或订阅时使用。
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
@@ -195,40 +195,40 @@ Resource Manager 提供以下用于处理字符串的函数：
 * [base64](template-functions-string.md#base64)
 * [base64ToJson](template-functions-string.md#base64tojson)
 * [base64ToString](template-functions-string.md#base64tostring)
-* [concat](template-functions-string.md#concat)
-* [contains](template-functions-string.md#contains)
+* [Concat](template-functions-string.md#concat)
+* [包含](template-functions-string.md#contains)
 * [dataUri](template-functions-string.md#datauri)
 * [dataUriToString](template-functions-string.md#datauritostring)
-* [empty](template-functions-string.md#empty)
+* [空](template-functions-string.md#empty)
 * [endsWith](template-functions-string.md#endswith)
-* [first](template-functions-string.md#first)
-* [format](template-functions-string.md#format)
-* [guid](template-functions-string.md#guid)
-* [indexOf](template-functions-string.md#indexof)
-* [last](template-functions-string.md#last)
+* [第一](template-functions-string.md#first)
+* [格式](template-functions-string.md#format)
+* [Guid](template-functions-string.md#guid)
+* [索引](template-functions-string.md#indexof)
+* [最后](template-functions-string.md#last)
 * [lastIndexOf](template-functions-string.md#lastindexof)
 * [length](template-functions-string.md#length)
-* [newGuid](template-functions-string.md#newguid)
-* [padLeft](template-functions-string.md#padleft)
+* [新吉德](template-functions-string.md#newguid)
+* [垫左](template-functions-string.md#padleft)
 * [replace](template-functions-string.md#replace)
-* [skip](template-functions-string.md#skip)
-* [split](template-functions-string.md#split)
-* [startsWith](template-functions-string.md#startswith)
-* [string](template-functions-string.md#string)
-* [substring](template-functions-string.md#substring)
-* [take](template-functions-string.md#take)
-* [toLower](template-functions-string.md#tolower)
-* [toUpper](template-functions-string.md#toupper)
-* [trim](template-functions-string.md#trim)
+* [跳](template-functions-string.md#skip)
+* [分裂](template-functions-string.md#split)
+* [开始与](template-functions-string.md#startswith)
+* [字符串](template-functions-string.md#string)
+* [子](template-functions-string.md#substring)
+* [采取](template-functions-string.md#take)
+* [到下](template-functions-string.md#tolower)
+* [到上](template-functions-string.md#toupper)
+* [修剪](template-functions-string.md#trim)
 * [uniqueString](template-functions-string.md#uniquestring)
-* [uri](template-functions-string.md#uri)
+* [Uri](template-functions-string.md#uri)
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
 * [utcNow](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)
+* 有关 ARM 模板中部分的说明，请参阅创作[ARM 模板](template-syntax.md)
 * 要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)
-* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
-* 若要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)
+* 要迭代创建资源类型时指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
+* 要查看如何部署已创建的模板，请参阅[使用 ARM 模板部署应用程序](deploy-powershell.md)

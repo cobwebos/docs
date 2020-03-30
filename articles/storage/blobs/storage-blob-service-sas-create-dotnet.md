@@ -1,7 +1,7 @@
 ---
 title: 使用 .NET 为容器或 blob 创建服务 SAS
 titleSuffix: Azure Storage
-description: 了解如何使用 .NET 客户端库为容器或 blob 创建服务共享访问签名（SAS）。
+description: 了解如何使用 .NET 客户端库为容器或 blob 创建服务共享访问签名 (SAS)。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,21 +11,21 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: 10045a760d7e0fcb02a754bc9bb52a5ebca970f4
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137205"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>使用 .NET 为容器或 blob 创建服务 SAS
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-本文介绍如何使用存储帐户密钥通过[适用于 .net 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage?view=azure-dotnet)为容器或 blob 创建服务 SAS。
+本文介绍如何使用存储帐户密钥通过[用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage?view=azure-dotnet)为容器或 blob 创建服务 SAS。
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>为 blob 容器创建服务 SAS
 
-若要为容器创建服务 SAS，请调用[CloudBlobContainer. cloudblobcontainer.getsharedaccesssignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature)方法。
+若要为容器创建服务 SAS，请调用 [CloudBlobContainer.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) 方法。
 
 下面的代码示例在容器上创建 SAS。 如果提供现有存储访问策略的名称，则该策略与 SAS 关联。 如果未提供存储访问策略，则代码会在容器上创建一个临时 SAS。
 
@@ -71,9 +71,9 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
 
 ## <a name="create-a-service-sas-for-a-blob"></a>为 blob 创建服务 SAS
 
-若要为 blob 创建服务 SAS，请调用[CloudBlob. cloudblobcontainer.getsharedaccesssignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature)方法。
+若要为 blob 创建服务 SAS，请调用 [CloudBlob.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) 方法。
 
-下面的代码示例在 blob 上创建 SAS。 如果提供现有存储访问策略的名称，则该策略与 SAS 关联。 如果未提供存储访问策略，则代码会在 blob 上创建一个临时 SAS。
+下面的代码示例在 blob 上创建 SAS。 如果提供现有存储访问策略的名称，则该策略与 SAS 关联。 如果未提供存储访问策略，则代码会在 Blob 上创建一个临时 SAS。
 
 ```csharp
 private static string GetBlobSasUri(CloudBlobContainer container, string blobName, string policyName = null)
@@ -122,5 +122,5 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用共享访问签名（SAS）授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)
+- [使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限](../common/storage-sas-overview.md)
 - [创建服务 SAS](/rest/api/storageservices/create-service-sas)

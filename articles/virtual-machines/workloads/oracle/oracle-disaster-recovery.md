@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: f6f678f91e74ea9b0b68127c1786fee745508b99
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101463"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>在 Azure 环境下的 Oracle Database 12c 数据库灾难恢复
@@ -44,20 +44,20 @@ ms.locfileid: "70101463"
 - 两个具有 Data Guard 的 Oracle 数据库（主数据库和备用数据库）
 - 两个具有 Golden Gate 或 Data Guard 的 Oracle 数据库（仅限主站点）
 - 两个应用程序服务，一个位于主站点，一个位于 DR 站点
-- 一个“可用性集”，用于主站点上的数据库和应用程序服务
+- 一个“可用性集”**，用于主站点上的数据库和应用程序服务
 - 每个站点各有一个 jumpbox，用于限制对专用网络的访问，且仅允许管理员登录
 - 位于不同子网的 jumpbox、应用程序服务、数据库和 VPN 网关
 - 对应用程序和数据库子网强制执行的 NSG
 
 ![“DR 拓扑”页屏幕截图](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
-## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>方案 2：主站点本地和 Azure 上的 DR 站点
+## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>方案 2：本地主站点和 Azure 上的 DR 站点
 
 客户在本地安装了 Oracle 数据库（主站点）。 DR 站点位于 Azure 上。 使用 Oracle Data Guard 在这些站点间进行快速恢复。 主站点还拥有用于报告等其他用途的辅助数据库。 
 
 安装方式有两种。
 
-### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>方法 1:在本地与 Azure 之间直接连接, 要求在防火墙上打开 TCP 端口 
+### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>方式 1：在本地和 Azure 之间直接连接，要求在防火墙上开启 TCP 端口 
 
 不建议进行直接连接，因为这会向外部公开 TCP 端口。
 
@@ -77,7 +77,7 @@ ms.locfileid: "70101463"
 
 ![“DR 拓扑”页屏幕截图](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
-### <a name="approach-2-site-to-site-vpn"></a>方法 2:站点到站点 VPN
+### <a name="approach-2-site-to-site-vpn"></a>方式 2：站点到站点 VPN
 使用站点到站点 VPN 是一个比较好的做法。 有关安装 VPN 的详细信息，请参阅[使用 CLI 创建具有站点到站点 VPN 连接的虚拟网络](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)。
 
 #### <a name="topology"></a>拓扑
@@ -105,5 +105,5 @@ ms.locfileid: "70101463"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：创建高度可用的 VM](../../linux/create-cli-complete.md)
+- [教程：创建具有高可用性的 VM](../../linux/create-cli-complete.md)
 - [浏览 VM 部署 Azure CLI 示例](../../linux/cli-samples.md)

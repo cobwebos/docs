@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: labrenne
 ms.openlocfilehash: 098ccf999391412520989c4ec2433fd73bc0a72d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77017218"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>配置或禁用对 Azure Batch 池中计算节点的远程访问
@@ -22,7 +22,7 @@ ms.locfileid: "77017218"
 在环境中，可能需要限制或禁用这些默认的外部访问设置。 使用 Batch API 设置 [PoolEndpointConfiguration](/rest/api/batchservice/pool/add#poolendpointconfiguration) 属性，可以修改这些设置。 
 
 ## <a name="about-the-pool-endpoint-configuration"></a>关于池终结点配置
-终结点配置由一个或多个前端端口的[网络地址转换 (NAT) 池](/rest/api/batchservice/pool/add#inboundnatpool)构成。 （请勿将 NAT 池与计算节点的 Batch 池混淆。）设置每个 NAT 池以替代池计算节点上的默认连接设置。 
+终结点配置由一个或多个前端端口的[网络地址转换 (NAT) 池](/rest/api/batchservice/pool/add#inboundnatpool)构成。 （不要将 NAT 池与计算节点的批处理池混淆。设置每个 NAT 池以覆盖池计算节点上的默认连接设置。 
 
 每个 NAT 池配置包括一个或多个[网络安全组 (NSG) 规则](/rest/api/batchservice/pool/add#networksecuritygrouprule)。 每个 NSG 规则允许或拒绝特定的网络流量流向终结点。 可以选择允许或拒绝所有流量、由[服务标记](../virtual-network/security-overview.md#service-tags)（例如“Internet”）标识的流量，或者来自特定 IP 地址或子网的流量。
 

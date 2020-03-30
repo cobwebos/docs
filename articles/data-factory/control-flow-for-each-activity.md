@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.openlocfilehash: b8f95f22553a3b4639b1aba6576ce844116ae20b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73679876"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure 数据工厂中的 ForEach 活动
@@ -68,12 +68,12 @@ ForEach 活动在管道中定义重复的控制流。 此活动用于循环访�
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+properties | 描述 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 name | For-Each 活动的名称。 | String | 是
 type | 必须设置为 **ForEach** | String | 是
-isSequential | 指定是否应按顺序或并行执行循环。  一次最多可以并行执行 20 个循环迭代。 例如，如果你有 ForEach 活动，在 **isSequential** 设置为 False 的情况下循环访问含有 10 个不同源和接收器数据集的复制活动，所有副本都执行一次。 默认值为 false。 <br/><br/> 如果“isSequential”被设置为 False，则确保有运行多个可执行文件的正确配置。 否则，应谨慎使用此属性，以避免产生写入冲突。 有关详细信息，请参阅[并行执行](#parallel-execution)部分。 | 布尔值 | 不能。 默认值为 false。
-batchCount | 要用于控制并行执行数的批计数（当 isSequential 设为 false 时）。 | 整数（最大值为 50） | 不能。 默认值为 20。
+isSequential | 指定是否应按顺序或并行执行循环。  一次最多可以并行执行 20 个循环迭代。 例如，如果你有 ForEach 活动，在 **isSequential** 设置为 False 的情况下循环访问含有 10 个不同源和接收器数据集的复制活动，所有副本都执行一次。 默认值为 False。 <br/><br/> 如果“isSequential”被设置为 False，则确保有运行多个可执行文件的正确配置。 否则，应谨慎使用此属性，以避免产生写入冲突。 有关详细信息，请参阅[并行执行](#parallel-execution)部分。 | Boolean | 不是。 默认值为 False。
+batchCount | 要用于控制并行执行数的批计数（当 isSequential 设为 false 时）。 | 整数（最大值为 50） | 不是。 默认值为 20。
 Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回 JSON 数组） | 是
 活动 | 要执行的活动。 | 活动列表 | 是
 
@@ -473,24 +473,24 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 
 ## <a name="aggregating-outputs"></a>聚合输出
 
-若要聚合 foreach 活动的输出，请使用 Variables 和 Append Variable 活动。
+要聚合__每个__活动的输出，请使用_变量_和_追加变量_活动。
 
-首先，在管道中声明 `array` 变量。 然后，在每个 foreach 循环内调用追加变量活动。 随后，你可以从数组中检索聚合。
+首先，在管道中声明  变量`array` __。 然后，在每个 foreach____ 循环内调用追加变量__ 活动。 随后，你可以从数组中检索聚合。
 
 ## <a name="limitations-and-workarounds"></a>限制和解决方法
 
 以下是 ForEach 活动的一些限制以及建议的解决方法。
 
-| 升级到 V12 | 解决方法 |
+| 限制 | 解决方法 |
 |---|---|
 | 不能将 ForEach 循环嵌套在另一个 ForEach 循环（或 Until 循环）中。 | 设计一个两级管道，其中具有外部 ForEach 循环的外部管道使用嵌套循环对内部管道进行迭代。 |
 | 对于并行处理，ForEach 活动的最大 `batchCount` 为 50，最大项数为 100,000 个。 | 设计一个两级管道，其中具有 ForEach 活动的外部管道对内部管道进行迭代。 |
 | | |
 
 ## <a name="next-steps"></a>后续步骤
-请参阅数据工厂支持的其他控制流活动： 
+查看数据工厂支持的其他控制流活动： 
 
-- [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
-- [Get Metadata 活动](control-flow-get-metadata-activity.md)
+- [执行管道活动](control-flow-execute-pipeline-activity.md)
+- [获取元数据活动](control-flow-get-metadata-activity.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
-- [Web 活动](control-flow-web-activity.md)
+- [网站活动](control-flow-web-activity.md)

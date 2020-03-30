@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 27832008e8922e339a648985192a58b111555bc9
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349647"
 ---
 # <a name="pi-azure-cosmos-db"></a>PI (Azure Cosmos DB)
- 返回 PI 的常数值。  
+ 返回 PI 的常量值。  
   
 ## <a name="syntax"></a>语法
   
@@ -29,13 +29,13 @@ PI ()
   
 ## <a name="examples"></a>示例
   
-  以下示例返回 `PI` 的值。  
+  下面的示例返回 `PI` 的值。  
   
 ```sql
 SELECT PI() AS pi 
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{"pi": 3.1415926535897931}]  
@@ -43,6 +43,6 @@ SELECT PI() AS pi
 
 ## <a name="next-steps"></a>后续步骤
 
-- [数学函数 Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 简介](introduction.md)
+- [数学函数 Azure 宇宙 DB](sql-query-mathematical-functions.md)
+- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 简介](introduction.md)

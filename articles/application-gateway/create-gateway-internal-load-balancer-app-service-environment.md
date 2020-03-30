@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
 ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71121952"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>未使用内部负载均衡器和应用服务环境将应用程序网关的后端服务器证书加入允许列表。
@@ -32,13 +32,13 @@ ms.locfileid: "71121952"
 **应用程序网关配置：**
 
 - **侦听器：** 多站点
-- **Port：** 443
+- **端口：** 443
 - **主机名：** test.appgwtestase.com
 - **SSL 证书：** CN=test.appgwtestase.com
 - **后端池：** IP 地址或 FQDN
 - **IP 地址：** 10.1.5.11
 - **HTTP 设置：** HTTPS
-- **端口：** :443
+- **端口：**： 443
 - **自定义探测：** 主机名 - test.appgwtestase.com
 - **身份验证证书：** test.appgwtestase.com 的 .cer 证书
 - **后端运行状况：** 不正常 - 未将应用程序网关的后端服务器证书加入允许列表。
@@ -52,7 +52,7 @@ ms.locfileid: "71121952"
 
 访问应用程序网关时，会收到以下错误消息，因为后端服务器不正常：
 
-“502 - Web 服务器在充当网关或代理服务器时收到了无效响应”。
+**502 – Web 服务器在充当网关或代理服务器时收到无效响应。**
 
 ## <a name="solution"></a>解决方案
 
@@ -66,9 +66,9 @@ ms.locfileid: "71121952"
 
 - 在 ILB 和后端服务器上使用通配符证书，这样对于所有网站来说，证书都是通用的。 但是，此解决方案仅在子域的情况下才可行，不适用于每个网站都要求不同的主机名这种情形。
 
-- 如果使用的是 ILB 的 IP 地址，请清除应用程序网关的“用于应用服务”选项。
+- 如果使用的是 ILB 的 IP 地址，请清除应用程序网关的“用于应用服务”选项****。
 
-若要降低开销，可在 HTTP 设置中上传 ILB 证书，使探测路径正常工作。 （此步骤仅适用于允许列表操作， 不可用于 SSL 通信。）可通过如下方式检索 ILB 证书：在浏览器中使用 ILB 的 HTTPS IP 地址访问 ILB，然后以 Base-64 编码的 CER 格式导出 SSL 证书，并在相应 HTTP 设置中上传该证书。
+若要降低开销，可在 HTTP 设置中上传 ILB 证书，使探测路径正常工作。 （此步骤仅适用于允许列表操作， 它不会用于 SSL 通信。您可以通过从 HTTPS 上的浏览器访问 ILB 及其 IP 地址，然后以 Base-64 编码的 CER 格式导出 SSL 证书，并在相应的 HTTP 设置上上载证书来检索 ILB 证书。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

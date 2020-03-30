@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77468756"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
@@ -23,31 +23,31 @@ ms.locfileid: "77468756"
 
 * 从 URL 上传视频（首选），
 * 作为请求正文中的字节数组发送视频文件。
-* 通过提供[资产 ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept) （仅在付费帐户中支持）来使用现有的 Azure 媒体服务资产。
+* 通过提供[资产 ID（](https://docs.microsoft.com/azure/media-services/latest/assets-concept)仅在付费帐户中支持）使用现有的 Azure 媒体服务资产。
 
-视频上传完毕后，视频索引器（可选）会对视频进行编码（如文章中所述）。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以[创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
+上传视频后，视频索引器（可选）对视频进行编码（本文中讨论）。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以[创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
 
-本文介绍如何通过以下选项上传和索引视频：
+本文演示如何使用以下选项上传和索引视频：
 
 * [视频索引器网站](#website) 
-* [视频索引器 Api](#apis)
+* [视频索引器 API](#apis)
 
 ## <a name="uploading-considerations-and-limitations"></a>上传注意事项和限制
  
 - 视频的名称长度不得超过 80 个字符。
-- 基于 URL 上传视频时（首选），终结点必须通过 TLS 1.2 （或更高版本）进行保护。
-- 带有 URL 选项的上传大小限制为30GB。
-- 请求 URL 长度限制为6144个字符，其中查询字符串 URL 长度限制为4096个字符。
-- 具有字节数组选项的上传大小限制为2GB。
-- 字节数组选项在30分钟后超时。
-- `videoURL` 参数中提供的 URL 需要进行编码。
-- 为媒体服务资产编制索引与从 URL 进行索引的限制相同。
-- 对于单个文件，视频索引器的最大持续时间限制为4小时。
-- URL 需要可访问（例如，公共 URL）。 
+- 根据 URL（首选）上传视频时，必须通过 TLS 1.2（或更高版本）保护终结点。
+- URL 选项的上传大小限制为 30GB。
+- 请求 URL 长度限制为 6144 个字符，其中查询字符串 URL 长度限制为 4096 个字符。
+- 字节数组选项的上载大小限制为 2GB。
+- 字节数组选项在 30 分钟后超时。
+- 需要对参数中`videoURL`提供的 URL 进行编码。
+- 索引媒体服务资产与 URL 索引具有相同的限制。
+- 视频索引器对于单个文件的最大持续时间限制为 4 小时。
+- URL 需要可访问（例如公共 URL）。 
 
-    如果它是专用 URL，则需要在请求中提供访问令牌。
-- URL 必须指向有效的媒体文件，而不是指向网页，如指向 `www.youtube.com` 页面的链接。
-- 在付费帐户中，最多可以上传50个电影，每分钟最多上载5个电影。
+    如果是专用 URL，则需要在请求中提供访问令牌。
+- URL 必须指向有效的媒体文件，而不是指向网页，例如指向`www.youtube.com`页面的链接。
+- 在付费帐户中，您每分钟最多可以上传 50 部电影，在试用帐户中每分钟最多上传 5 部电影。
 
 > [!Tip]
 > 建议使用 .NET framework 版本 4.6.2. 或更高版本，因为较旧的 .NET framework 不会默认为 TLS 1.2。
@@ -58,13 +58,13 @@ ms.locfileid: "77468756"
 
 有关可用于视频索引器的文件格式列表，请参阅[输入容器/文件格式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)一文。
 
-## <a name="a-idwebsiteupload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>使用视频索引器网站上传视频并为视频编制索引
+## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>使用视频索引器网站上传和索引视频
 
 > [!NOTE]
 > 视频的名称长度不得超过 80 个字符。
 
 1. 登录到[视频索引器](https://www.videoindexer.ai/)网站。
-2. 若要上传视频，请按“上传”按钮或链接。
+2. 若要上传视频，请按“上传”按钮或链接。****
 
     ![上载](./media/video-indexer-get-started/video-indexer-upload.png)
 
@@ -74,9 +74,9 @@ ms.locfileid: "77468756"
 
     当视频索引器分析完以后，你会获得一个通知，其中包含视频链接以及对视频中找到的内容的简短说明。 例如：人物、主题、OCR。
 
-## <a name="a-idapisupload-and-index-with-api"></a>通过 API <a id="apis"/>上传和索引
+## <a name="upload-and-index-with-api"></a><a id="apis"/>使用 API 上载和索引
 
-使用上[传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)API，根据 URL 上传和索引视频。 下面的代码示例包含注释掉的代码，该代码演示如何上传字节数组。 
+使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)API 根据 URL 上传视频并编制索引视频。 后面的代码示例包括注释出代码，这些代码演示如何上载字节数组。 
 
 ### <a name="configurations-and-params"></a>配置和参数
 
@@ -93,22 +93,22 @@ ms.locfileid: "77468756"
 - 索引状态更改： 
     - 属性：    
     
-        |名称|说明|
+        |“属性”|描述|
         |---|---|
         |id|视频 ID|
         |state|视频状态|  
-    - 示例： https：\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+    - 示例： https：\//test.com/notifyme?projectName=MyProject&id=1234abcd&状态=已处理
 - 在视频中标识的人：
   - 属性
     
-      |名称|说明|
+      |“属性”|描述|
       |---|---|
       |id| 视频 ID|
       |faceId|出现在视频索引中的人脸 ID|
       |knownPersonId|在人脸模型中唯一的个人 ID|
       |personName|人名|
         
-    - 示例： https：\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - 示例： https：\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid_12&已知PersonId_CCA84350-89B7-4262-861C-3CAC796542A5&人名_Inigo_Montoya 
 
 ##### <a name="notes"></a>说明
 
@@ -120,13 +120,13 @@ ms.locfileid: "77468756"
 如果原始的或外部的记录包含背景噪音，请使用此参数。 此参数用于配置索引编制过程。 可以指定以下值：
 
 - `AudioOnly` - 仅使用音频（忽略视频）编制见解的索引和提取见解
-- 仅使用视频 `VideoOnly` 索引和提取见解（忽略音频）
+- `VideoOnly`- 仅使用视频进行索引和提取见解（忽略音频）
 - `Default` - 使用音频和视频编制见解的索引和提取见解
 - `DefaultWithNoiseReduction` - 通过音频和视频编制见解的索引和提取见解，同时对音频流应用降噪算法
 
 > [!NOTE]
-> 视频索引器最多包含两个音频轨道。 如果文件中有更多的音频曲目，它们将被视为一个轨迹。<br/>
-如果要单独为曲目编制索引，则需要提取相关的音频文件，并将其索引为 `AudioOnly`。
+> 视频索引器可覆盖最多两个音频轨道。 如果文件中有更多的音轨，它们将被视为一个轨道。<br/>
+如果要单独索引轨道，则需要提取相关的音频文件并将其索引为`AudioOnly`。
 
 价格取决于所选索引编制选项。  
 
@@ -140,7 +140,7 @@ ms.locfileid: "77468756"
 
 视频上传以后，视频索引器会选择性地对视频进行编码。 接下来会对视频进行索引编制和分析。 当视频索引器分析完以后，你会获得一个包含视频 ID 的通知。  
 
-使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或[重新索引视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API 时，一个可选的参数是 `streamingPreset`。 如果将 `streamingPreset` 设置为 `Default`、`SingleBitrate` 或 `AdaptiveBitrate`，则会触发编码过程。 索引编制和编码作业完成以后，视频就会发布，这样你就也可以流式传输视频。 要从其流式传输视频的流式处理终结点必须处于“正在运行”状态。
+使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或[重新索引视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API 时，一个可选的参数是 `streamingPreset`。 如果将 `streamingPreset` 设置为 `Default`、`SingleBitrate` 或 `AdaptiveBitrate`，则会触发编码过程。 索引编制和编码作业完成以后，视频就会发布，这样你就也可以流式传输视频。 要从其流式传输视频的流式处理终结点必须处于“正在运行”状态。****
 
 为了运行索引编制和编码作业，[连接到视频索引器帐户的 Azure 媒体服务帐户](connect-to-azure.md)需要预留单位。 有关详细信息，请参阅[缩放媒体处理](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview)。 由于这些是计算密集型作业，因此强烈建议使用 S3 单位类型。 RU 数定义可以并行运行的最大作业数。 基线建议是 10 个 S3 RU。 
 
@@ -156,21 +156,21 @@ ms.locfileid: "77468756"
 
 以下 C# 代码片段演示了如何将所有的视频索引器 API 结合使用。
 
-#### <a name="instructions-for-running-this-code-sample"></a>有关运行此代码示例的说明
+#### <a name="instructions-for-running-this-code-sample"></a>运行此代码示例的说明
 
-将此代码复制到开发平台后，需要提供两个参数： API 管理身份验证密钥和视频 URL。
+将此代码复制到开发平台后，您需要提供两个参数：API 管理身份验证密钥和视频 URL。
 
-* API 密钥– API 密钥是你的个人 API 管理订阅密钥，将允许你获取访问令牌，以便对视频索引器帐户执行操作。 
+* API 密钥 – API 密钥是您的个人 API 管理订阅密钥，它允许您获取访问令牌，以便对视频索引器帐户执行操作。 
 
-    若要获取 API 密钥，请完成以下流程：
+    要获取 API 密钥，请遍通此流：
 
     * 导航到 https://api-portal.videoindexer.ai/
     * 登录
-    *  -> **授权订阅**中转到 "**产品**" -> **授权**
-    * 复制**主密钥**
-* 视频 URL-要编制索引的视频/音频文件的 URL。 该 URL 必须指向媒体文件（不支持 HTML 页面）。 该文件可以通过作为 URI 的一部分提供的访问令牌进行保护，并且为该文件提供服务的终结点必须使用 TLS 1.2 或更高版本进行保护。 需要对 URL 进行编码。
+    * 转到**产品** -> **授权** -> **订阅**
+    * 复制**主键**
+* 视频 URL = 要编制索引的视频/音频文件的 URL。 该 URL 必须指向媒体文件（不支持 HTML 页面）。 该文件可以通过作为 URI 的一部分提供的访问令牌进行保护，并且为该文件提供服务的终结点必须使用 TLS 1.2 或更高版本进行保护。 需要对 URL 进行编码。
 
-成功运行代码示例的结果将包括一个见解小组件 URL 和一个播放机小组件 URL，该 URL 允许你分别检查见解和视频上传。 
+成功运行代码示例的结果将包括见解小部件 URL 和播放器小部件 URL，允许您检查分别上传的见解和视频。 
 
 
 ```csharp
@@ -348,11 +348,11 @@ public class AccountContractSlim
 
 上传操作可能会返回下表中列出的状态代码。
 
-|状态代码|ErrorType（在响应正文中）|说明|
+|状态代码|ErrorType（在响应正文中）|描述|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|相同的视频已在给定帐户的处理进度中。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小时前，相同的视频已在给定帐户中处理失败。 API 客户端应至少等待 2 小时才能重新上传视频。|
-|429||每分钟允许5次上载的试用帐户。 每分钟允许上传50个付费帐户。|
+|429||试用帐户允许每分钟 5 次上传。 付费帐户允许每分钟 50 次上传。|
 
 ## <a name="next-steps"></a>后续步骤
 

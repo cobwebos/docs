@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 154160f9a3fbd485ee6383bf3d5ff1c291520a75
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71088517"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>连接到 Azure VM 时，远程桌面许可证服务器不可用
@@ -62,7 +62,7 @@ mstsc /v:<Server>[:<Port>] /admin
 
     如果无法使用管理会话连接到 VM，可以使用 [Azure 上的虚拟机串行控制台](serial-console-windows.md)访问 VM，如下所述：
 
-    1. 选择“支持和故障排除” > “串行控制台(预览版)”访问串行控制台。 如果在 VM 上启用了该功能，则可以成功连接 VM。
+    1. 选择“支持和故障排除”“串行控制台(预览版)”访问 串行控制台 >  。******** 如果在 VM 上启用了该功能，则可以成功连接 VM。
 
     2. 为 CMD 实例创建新通道。 输入 **CMD** 启动通道，并获取通道名称。
 
@@ -126,6 +126,6 @@ mstsc /v:<Server>[:<Port>] /admin
 
 4. 如果远程桌面许可证服务器已配置且正常运行，请确保使用 CAL 激活远程桌面许可证服务器。
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系技术支持
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)解决问题。

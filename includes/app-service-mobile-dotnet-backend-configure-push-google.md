@@ -5,17 +5,17 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 3c6147cc24f285fc32dce145e594f743c9633c20
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857329"
 ---
 选择与后端项目类型 &mdash;[.NET 后端](#dotnet)或 [Node.js 后端](#nodejs)匹配的过程。
 
-### <a name="dotnet"></a>.NET 后端项目
+### <a name="net-back-end-project"></a><a name="dotnet"></a>.NET 后端项目
 
-1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”。 搜索 `Microsoft.Azure.NotificationHubs`，并单击“安装”。 这会安装通知中心客户端库。
+1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”****。 搜索 `Microsoft.Azure.NotificationHubs`，并单击“安装”****。 这会安装通知中心客户端库。
 2. 在“控制器”文件夹中，打开“TodoItemController.cs”，添加以下 `using` 语句：
 
     ```csharp
@@ -23,7 +23,7 @@ ms.locfileid: "68857329"
     using Microsoft.Azure.NotificationHubs;
     ```
 
-3. 将 `PostTodoItem` 方法替换为以下代码：  
+3. 将 `PostTodoItem`方法替换为以下代码：  
 
     ```csharp
     public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
@@ -67,7 +67,7 @@ ms.locfileid: "68857329"
 
 4. 重新发布服务器项目。
 
-### <a name="nodejs"></a>Node.js 后端项目
+### <a name="nodejs-back-end-project"></a><a name="nodejs"></a>Node.js 后端项目
 
 1. 设置后端项目。
 2. 将 todoitem.js 文件中的现有代码替换为以下内容：

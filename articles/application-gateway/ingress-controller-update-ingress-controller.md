@@ -1,5 +1,5 @@
 ---
-title: 升级入口控制器与 Helm
+title: 使用 Helm 升级入口控制器
 description: 本文介绍如何使用 Helm 升级应用程序网关入口。
 services: application-gateway
 author: caya
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 3903ccd1c15765d06cd1794a40567e2c70062538
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73795906"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>如何使用 Helm 升级应用程序网关入口控制器 
 
-可以使用托管在 Azure 存储上的 Helm 存储库来升级适用于 Kubernetes （AGIC）的 Azure 应用程序网关入口控制器。
+Kubernetes 的 Azure 应用程序网关入口控制器 (AGIC) 可以使用托管在 Azure 存储上的 Helm 存储库升级。
 
 在开始升级过程之前，请确保已添加所需的存储库：
 
-- 查看当前添加的 Helm 存储库：
+- 使用以下命令查看当前添加的 Helm 存储库：
 
     ```bash
     helm repo list
     ```
 
-- 添加 AGIC 存储库：
+- 使用以下命令添加 AGIC 存储库：
 
     ```bash
     helm repo add \
@@ -56,9 +56,9 @@ ms.locfileid: "73795906"
     application-gateway-kubernetes-ingress/ingress-azure    0.6.0           0.6.0           Use Azure Application Gateway as the ingress for an Azure...
     ```
 
-    以上列表中的最新可用版本为： `0.7.0-rc1`
+    在上面的列表中，最新的可用版本为 `0.7.0-rc1`
 
-1. 查看当前已安装的 Helm 图表：
+1. 查看当前安装的 Helm 图表：
 
     ```bash
     helm list
@@ -71,7 +71,7 @@ ms.locfileid: "73795906"
     odd-billygoat   22              Fri Jun 21 15:56:06 2019        FAILED  ingress-azure-0.7.0-rc1 0.7.0-rc1       default
     ```
 
-    上面的示例响应中的 Helm 图安装名为 `odd-billygoat`。 对于其余的命令，我们将使用此名称。 实际的部署名称最有可能不同。
+    上述示例响应中的 Helm 图表安装名为 `odd-billygoat`。 我们会将该名称用于其余的命令。 你的实际部署名称很可能会不同。
 
 1. 将 Helm 部署升级到新版本：
 
@@ -84,9 +84,9 @@ ms.locfileid: "73795906"
 
 ## <a name="rollback"></a>回退
 
-如果 Helm 部署失败，则可以回滚到以前的版本。
+如果 Helm 部署失败，可以回退到以前的版本。
 
-1. 获取上一个已知的正常发行版号码：
+1. 获取上一个已知正常的发行版号：
 
     ```bash
     helm history odd-billygoat
@@ -100,9 +100,9 @@ ms.locfileid: "73795906"
     2               Fri Jun 21 15:56:06 2019        FAILED          ingress-azure-xx        xxxx
     ```
 
-    在 `helm history` 命令的示例输出中，它看起来就像是最后一次成功部署 `odd-billygoat` 的修订版 `1`
+    从 `helm history` 命令的示例输出中可以看到，我们的 `odd-billygoat` 的上一个成功部署是修订版 `1`
 
-1. 回滚到上次成功的修订：
+1. 回退到上一个成功的修订版：
 
     ```bash
     helm rollback odd-billygoat 1

@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd4743bc38c3b2b4b9495b33535b4b73f48d1372
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71176675"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：技术深入了解
+# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：深入技术探究
 
 本文从技术层面详细介绍了 Azure Active Directory 无缝单一登录（无缝 SSO）功能的工作原理。
 
@@ -39,12 +39,12 @@ ms.locfileid: "71176675"
 
 可使用 Azure AD Connect 启用无缝 SSO，如[此处](how-to-connect-sso-quick-start.md)所示。 启用该功能时，请执行以下步骤：
 
-- 计算机帐户（`AZUREADSSOACC`）在你同步到 Azure AD （使用 Azure AD Connect）的每个 AD 林中的本地 Active Directory （AD）中创建。
-- 此外，还会创建一些 Kerberos 服务主体名称（Spn），以便在 Azure AD 登录过程中使用。
-- 与 Azure AD 安全共享计算机帐户的 Kerberos 解密密钥。 如果有多个 AD 林，则每个计算机帐户都有其自己的唯一 Kerberos 解密密钥。
+- 计算机帐户 （`AZUREADSSOACC`） 是在本地活动目录 （AD） 中创建的，该目录位于您同步到 Azure AD 的每个 AD 林中（使用 Azure AD 连接）。
+- 此外，还创建了许多 Kerberos 服务主体名称 （SPN） 以在 Azure AD 登录过程中使用。
+- 与 Azure AD 安全共享计算机帐户的 Kerberos 解密密钥。 如果有多个 AD 林，则每个计算机帐户将具有其自己独特的 Kerberos 解密密钥。
 
 >[!IMPORTANT]
-> 出于安全原因，需要对计算机帐户进行严格保护。`AZUREADSSOACC` 只有域管理员才能管理计算机帐户。 请确保计算机帐户上的 Kerberos 委派处于禁用状态，并且 Active Directory 中的其他帐户没有对计算机帐户的`AZUREADSSOACC`委派权限。 将计算机帐户存储在组织单位（OU）中，在这种情况下，用户可以放心地删除意外删除，并且只有域管理员才有权访问。 计算机帐户上的 Kerberos 解密密钥也应视为敏感。 我们强烈建议至少每隔 30 天滚动更新一次 `AZUREADSSOACC` 计算机帐户的 [Kerberos 解密密钥](how-to-connect-sso-faq.md)。
+> 出于`AZUREADSSOACC`安全原因，需要对计算机帐户进行强力保护。 只有域管理员才能管理计算机帐户。 确保禁用计算机帐户上的 Kerberos 委派，并且 Active Directory 中没有其他帐户对`AZUREADSSOACC`计算机帐户具有委派权限。 将计算机帐户存储在组织单位 （OU），其中计算机帐户可以免受意外删除，并且只有域管理员有权访问。 计算机帐户上的 Kerberos 解密密钥也应被视为敏感密钥。 我们强烈建议至少每隔 30 天滚动更新一次 `AZUREADSSOACC` 计算机帐户的 [Kerberos 解密密钥](how-to-connect-sso-faq.md)。
 
 完成此设置后，无缝 SSO 的工作方式与使用集成 Windows 身份验证 (IWA) 的任何其他登录方式相同。
 
@@ -52,7 +52,7 @@ ms.locfileid: "71176675"
 
 在 Web 浏览器上进行登录的流程如下所示：
 
-1. 用户尝试从企业网络内部已加入域的企业设备访问 Web 应用程序（例如，Outlook Web 应用 - https://outlook.office365.com/owa/) ）。
+1. 用户尝试从企业网络内部已加入域的企业设备访问 Web 应用程序（例如，Outlook Web 应用 - https://outlook.office365.com/owa/)）。
 2. 如果用户尚未登录，该用户将被重定向到 Azure AD 登录页面。
 3. 用户在 Azure AD 登录页键入其用户名。
 
@@ -95,7 +95,7 @@ ms.locfileid: "71176675"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门](how-to-connect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
-- [**常见问题**](how-to-connect-sso-faq.md) - 常见问题的解答。
-- [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+- [快速入门****](how-to-connect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
+- [**常见问题**](how-to-connect-sso-faq.md)- 常见问题的解答。
+- [**故障排除**](tshoot-connect-sso.md)- 了解如何使用该功能解决常见问题。
+- [UserVoice****](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。

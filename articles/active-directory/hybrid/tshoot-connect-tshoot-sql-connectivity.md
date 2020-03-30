@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：排查 SQL 连接问题 | Microsoft 文档
+title: Azure AD Connect：排查 SQL 连接问题 | Microsoft Docs
 description: 介绍如何排查使用 Azure AD Connect 时出现的 SQL 连接问题。
 services: active-directory
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cde94dce13eeb7536f72fb0dcd937265960c7314
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70842694"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>排除使用 Azure AD Connect 时的 SQL 连接问题
@@ -39,8 +39,8 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\A
 >Install-Module 需要更新到 [PowerShell 5.0 (WMF 5.0)](https://www.microsoft.com/download/details.aspx?id=50395) 或更高版本；  
 或者安装 [PackageManagement PowerShell 模块预览 - 2016 年 3 月，适用于 PowerShell 3.0/4.0](/powershell/module/PackageManagement) 
 
-- 显示所有命令：`Get-Command -Module AdSyncTools` 
-- 执行 powershell 函数：具有以下参数的 `Connect-ADSyncDatabase`
+- **显示所有命令**：`Get-Command -Module AdSyncTools` 
+- **执行电源壳函数**：`Connect-ADSyncDatabase`具有以下参数
     - Server。 SQL Server 名称。
     - Instance。 （可选）SQL Server 实例名称和（可选）你要使用的端口号。 不要指定此参数来使用默认实例。
     - UserName。 （可选）用于连接的用户帐户。 如果留空，将使用当前登录的用户。 如果要连接到远程 SQL Server，应使用你为 Azure ADConnect SQL 连接创建的自定义服务帐户。 Azure AD Connect 使用 Azure AD Connect 同步服务帐户向远程 SQL Server 进行身份验证。
@@ -173,5 +173,5 @@ PS C:\Program Files\Microsoft Azure Active Directory Connect\tools>
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
+- [将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)
 -  [Azure AD 与 Azure AD Connect 的连接](tshoot-connect-connectivity.md)

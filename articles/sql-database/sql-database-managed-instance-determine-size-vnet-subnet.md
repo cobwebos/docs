@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
 ms.openlocfilehash: 7f0ef26343284b7b668e71676114586f4bec8b9e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825757"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>根据 Azure SQL 数据库托管实例确定 VNet子网大小
@@ -29,7 +29,7 @@ Azure SQL 数据库托管实例必须部署在 Azure [虚拟网络 (VNet)](../vi
 根据设计，托管实例至少需要子网中的 16 个 IP 地址，有时使用多达 256 个 IP 地址。 因此，在定义子网 IP 范围时，可以使用介于 /28 和 /24 之间的子网掩码。 对于单一的常规用途或业务关键部署，网络掩码位 /28（每个网络 14 台主机）是一个不错的大小。 对于位于同一 VNet 内的多个托管实例部署，掩码位 /27（每个网络 30 台主机）是理想的。 掩码位设置 /26（62 台主机）和 /24（254 台主机）允许进一步横向扩展 VNet 来支持更多的托管实例。
 
 > [!IMPORTANT]
-> 具有16个 IP 地址的子网大小是不受限制的，其中不支持 vCore 大小变化之类的缩放操作。 强烈建议选择带有前缀/27 或最长前缀的子网。
+> 具有 16 个 IP 地址的子网大小是最小值，在不支持 vCore 大小更改等缩放操作的情况下潜力有限。 强烈建议选择前缀为 /27 或最长前缀的子网。
 
 ## <a name="determine-subnet-size"></a>确定子网大小
 

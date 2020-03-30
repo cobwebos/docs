@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure 中的标准内部负载均衡器部署 IPv6 双堆栈应用程序-PowerShell
+title: 在 Azure 中部署使用标准内部负载均衡器的 IPv6 双堆栈应用程序 - PowerShell
 titlesuffix: Azure Virtual Network
-description: 本文介绍如何使用 Azure Powershell 在 Azure 虚拟网络中部署具有标准内部负载均衡器的 IPv6 双重堆栈应用程序。
+description: 本文介绍如何使用 Azure Powershell 在 Azure 虚拟网络中部署使用标准内部负载均衡器的 IPv6 双堆栈应用程序。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,20 +14,20 @@ ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
 ms.openlocfilehash: fdf726fd31e8b92a04a1c136eb5cd7110e0c6d5a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72333360"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>使用 Azure 中的标准内部负载均衡器部署 IPv6 双堆栈应用程序-PowerShell （预览版）
+# <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>使用 Azure - PowerShell 中的标准内部负载均衡器部署 IPv6 双堆栈应用程序（预览版）
 
-本文介绍如何在 Azure 中部署包含双堆栈虚拟网络和子网的双堆栈（IPv4 + IPv6）应用程序、带有双重（IPv4 + IPv6）前端配置的标准内部负载均衡器、具有双 IP 的 Nic 的 Vm配置、网络安全组和公共 Ip。
+本文介绍如何在 Azure 中部署一个双堆栈 (IPv4 + IPv6) 应用程序，其中包含双堆栈虚拟网络和子网、采用双重 (IPv4 + IPv6) 前端配置的标准内部负载均衡器、具有采用双重 IP 配置的 NIC 的 VM、网络安全组规则，以及公共 IP。
 
 > [!Important]
-> Azure 虚拟网络的 IPv6 支持当前提供公共预览版。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 对 Azure 虚拟网络的 IPv6 支持当前处于公共预览版中。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-创建支持 IPv6 的内部负载均衡器的过程与创建面向 Internet 的 IPv6 负载均衡器的过程几乎完全[相同。](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 创建内部负载均衡器的唯一区别在于前端配置，如下面的 PowerShell 示例中所示：
+创建支持 IPv6 的内部负载均衡器的过程，与[此处](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)所述的创建面向 Internet 的 IPv6 负载均衡器的过程基本相同。 创建内部负载均衡器的唯一差别在于前端配置，如以下 PowerShell 示例中所示：
 
 ```azurepowershell
  $frontendIPv6 = New-AzLoadBalancerFrontendIpConfig `
@@ -37,24 +37,24 @@ ms.locfileid: "72333360"
  -Subnet $DsSubnet
 ```
 
-使上述内部负载均衡器前端配置的更改如下所示：
-- `PrivateIpAddressVersion` 被指定为 "IPv6"
-- `-PublicIpAddress` 参数已省略或已替换为 `-PrivateIpAddress`。 请注意，专用地址必须在将部署内部负载均衡器的子网 IP 空间的范围内。 如果省略静态 `-PrivateIpAddress`，则将从部署内部负载均衡器的子网中选择下一个可用的 IPv6 地址。
-- 将在其中部署内部负载均衡器的双堆栈子网，同时指定 `-Subnet` 或 `-SubnetId` 参数。
+创建上述内部负载均衡器前端配置所要做出的更改包括：
+- 被指定为`PrivateIpAddressVersion`"IPv6"
+- `-PublicIpAddress` 参数已省略或已替换为 `-PrivateIpAddress`。 请注意，专用地址必须在要将内部负载均衡器部署到的子网 IP 空间的范围内。 如果省略静态 `-PrivateIpAddress`，将从部署内部负载均衡器的子网中选择下一个可用 IPv6 地址。
+- 使用 `-Subnet` 或 `-SubnetId` 参数指定要将内部负载均衡器部署到的双堆栈子网。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块版本6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果你选择在本地安装和使用 PowerShell，本文要求使用 Azure PowerShell 模块 6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="prerequisites"></a>先决条件
-在 Azure 中部署双堆栈应用程序之前，必须使用以下 Azure PowerShell 来配置此预览功能的订阅：
+在 Azure 中部署双堆栈应用程序之前，必须使用以下 Azure PowerShell 配置此预览功能的订阅：
 
-按如下所示进行注册：
+注册如下：
 ```azurepowershell
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-功能注册最多需要 30 分钟才能完成。 可以通过运行以下 Azure PowerShell 命令来检查注册状态：按如下所示检查注册：
+功能注册最多需要 30 分钟才能完成。 您可以通过运行以下 Azure PowerShell 命令来检查注册状态：按如下方式检查注册：
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
@@ -67,7 +67,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-必须先使用[AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)创建资源组，然后才能创建双堆栈虚拟网络。 以下示例在 "*美国东部*" 位置创建名为 " *dsStd_ILB_RG* " 的资源组：
+在创建双堆栈虚拟网络之前，必须先使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建一个资源组。 以下示例*在位于我们东部*的位置创建名为*dsStd_ILB_RG*的资源组：
 
 ```azurepowershell
 $rg = New-AzResourceGroup `
@@ -76,7 +76,7 @@ $rg = New-AzResourceGroup `
 ```
 
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses"></a>创建 IPv4 和 IPv6 公共 IP 地址
-若要从 Internet 访问虚拟机，需要 Vm 的 IPv4 和 IPv6 公共 IP 地址。 通过[AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)创建公共 IP 地址。 以下示例在*dsStd_ILB_RG*资源组中创建名为*RdpPublicIP_1*和*RdpPublicIP_2*的 IPv4 和 IPv6 公共 IP 地址：
+若要从 Internet 访问虚拟机，需要为 VM 创建 IPv4 和 IPv6 公共 IP 地址。 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建公共 IP 地址。 以下示例在 *dsStd_ILB_RG* 资源组中创建名为 *RdpPublicIP_1* 与 *RdpPublicIP_2* 的 IPv4 和 IPv6 公共 IP 地址：
 
 ```azurepowershell
 $RdpPublicIP_1 = New-AzPublicIpAddress `
@@ -95,9 +95,9 @@ $RdpPublicIP_2 = New-AzPublicIpAddress `
   -IpAddressVersion IPv4  `
   -sku Standard
 ```
-## <a name="create-the-virtual-network-and-the-subnet"></a>创建虚拟网络和子网
+## <a name="create-the-virtual-network-and-the-subnet"></a>创建虚拟网络和 VM 子网
 
-使用[AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)通过双堆栈创建虚拟网络使用[AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)的子网配置。 以下示例使用*dsSubnet*创建名为*dsVnet*的虚拟网络。
+使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络，使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建双堆栈子网配置。 以下示例创建包含 *dsSubnet* 的名为 *dsVnet* 的虚拟网络：
 
 ```azurepowershell
 # Create dual stack subnet config
@@ -118,11 +118,11 @@ $DsSubnet = get-AzVirtualNetworkSubnetconfig -name dsSubnet -VirtualNetwork $vne
 ```
 ## <a name="create-standard-load-balancer"></a>创建标准负载均衡器
 
-在本部分中，将配置负载均衡器的前端 IP （IPv4 和 IPv6）和后端地址池，然后创建标准负载均衡器。
+在本部分，你将为负载均衡器配置双重前端 IP（IPv4 和 IPv6）与后端地址池，然后创建标准负载均衡器。
 
 ### <a name="create-front-end-ip"></a>创建前端 IP
 
-使用 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) 创建一个前端 IP。 以下示例创建名为*dsLbFrontEnd_v4*和*dsLbFrontEnd_v6*的 IPV4 和 IPv6 前端 IP 配置：
+使用 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) 创建一个前端 IP。 以下示例创建名为 *dsLbFrontEnd_v4* 与 *dsLbFrontEnd_v6* 的 IPv4 和 IPv6 前端 IP 配置：
 
 ```azurepowershell
 $frontendIPv4 = New-AzLoadBalancerFrontendIpConfig `
@@ -141,7 +141,7 @@ $frontendIPv6 = New-AzLoadBalancerFrontendIpConfig `
 
 ### <a name="configure-back-end-address-pool"></a>配置后端地址池
 
-使用 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) 创建一个后端地址池。 在剩余步骤中，VM 将连接到此后端池。 以下示例创建名为*dsLbBackEndPool_v4*的后端地址池，并将其*dsLbBackEndPool_v6*为包括同时具有 IPV4 和 IPv6 NIC 配置的 vm：
+使用[New-AzLoad平衡器Backend地址池配置创建](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig)后端地址池。 在剩余步骤中，VM 将连接到此后端池。 以下示例创建名为 *dsLbBackEndPool_v4* 和 *dsLbBackEndPool_v6* 的后端地址池，以包含采用 IPv4 和 IPv6 NIC 配置的 VM：
 
 ```azurepowershell
 $backendPoolv4 = New-AzLoadBalancerBackendAddressPoolConfig -Name "dsLbBackEndPool_v4"
@@ -151,9 +151,9 @@ $backendPoolv6 = New-AzLoadBalancerBackendAddressPoolConfig -Name "dsLbBackEndPo
 
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
-负载均衡器规则用于定义将流量分配给 VM 的方式。 定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需的源端口和目标端口。 若要确保仅正常运行的 Vm 接收流量，可以选择定义运行状况探测。 基本负载均衡器使用 IPv4 探测来评估 Vm 上 IPv4 和 IPv6 终结点的运行状况。 标准负载均衡器支持显式 IPv6 运行状况探测。
+负载均衡器规则用于定义将流量分配给 VM 的方式。 定义传入流量的前端 IP 配置和后端 IP 池以接收流量，同时定义所需的源端口和目标端口。 若要确保仅正常运行的 VM 接收流量，可以选择性地定义一个运行状况探测。 基本负载均衡器使用 IPv4 探测来评估 VM 上 IPv4 和 IPv6 终结点的运行状况。 标准负载均衡器支持显式 IPv6 运行状况探测。
 
-使用 [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) 创建一个负载均衡器规则。 以下示例创建名为*dsLBrule_v4*和*dsLBrule_v6*的负载均衡器规则，并将*TCP*端口*80*上的流量平衡到 IPv4 和 IPv6 前端 IP 配置：
+使用 [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) 创建一个负载均衡器规则。 以下示例创建名为 *dsLBrule_v4* 和 *dsLBrule_v6* 的负载均衡器规则，并通过 IPv4 和 IPv6 前端 IP 配置均衡 *TCP* 端口 *80* 上的流量：
 
 ```azurepowershell
 $lbrule_v4 = New-AzLoadBalancerRuleConfig `
@@ -175,7 +175,7 @@ $lbrule_v6 = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-load-balancer"></a>创建负载均衡器
 
-使用[AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer)创建标准负载均衡器。 下面的示例使用在前面的步骤中创建的 IPv4 和 IPv6 前端 IP 配置、后端池和负载均衡规则，创建名为*myInternalLoadBalancer*的公共标准负载均衡器：
+使用 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) 创建标准负载均衡器。 以下示例使用前面步骤中创建的 IPv4 和 IPv6 前端 IP 配置、后端池和负载均衡规则创建名为 *myInternalLoadBalancer* 的公共标准负载均衡器：
 
 ```azurepowershell
 $lb = New-AzLoadBalancer  `
@@ -190,12 +190,12 @@ $lb = New-AzLoadBalancer  `
 ```
 
 ## <a name="create-network-resources"></a>创建网络资源
-在部署某些 Vm 并可以测试均衡器之前，必须创建支持网络资源-可用性集、网络安全组和虚拟 Nic。 
+在部署某些 VM 和测试均衡器之前，必须创建支持性的网络资源 - 可用性集、网络安全组和虚拟 NIC。 
 
 ### <a name="create-an-availability-set"></a>创建可用性集
-若要提高应用程序的高可用性，请将 Vm 放置在可用性集中。
+若要改善应用程序的高可用性，请将 VM 放到可用性集中。
 
-使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 创建一个可用性集。 以下示例创建名为*dsAVset*的可用性集：
+使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 创建一个可用性集。 以下示例创建名为 *dsAVset* 的可用性集：
 
 ```azurepowershell
 $avset = New-AzAvailabilitySet `
@@ -209,7 +209,7 @@ $avset = New-AzAvailabilitySet `
 
 ### <a name="create-network-security-group"></a>创建网络安全组
 
-为将在 VNet 中控制入站和出站通信的规则创建网络安全组。
+创建一个网络安全组，以通过其中的规则控制 VNet 中的入站和出站通信。
 
 #### <a name="create-a-network-security-group-rule-for-port-3389"></a>为端口 3389 创建网络安全组规则
 
@@ -230,7 +230,7 @@ $rule1 = New-AzNetworkSecurityRuleConfig `
 ```
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>为端口 80 创建网络安全组规则
 
-创建网络安全组规则，以允许通过[AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)的端口80连接 internet。
+使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建网络安全组规则以允许通过端口 80 进行 Internet 连接。
 
 ```azurepowershell
 $rule2 = New-AzNetworkSecurityRuleConfig `
@@ -258,7 +258,7 @@ $nsg = New-AzNetworkSecurityGroup `
 ```
 ### <a name="create-nics"></a>创建 NIC
 
-创建具有[AzNetworkInterface 的](/powershell/module/az.network/new-aznetworkinterface)虚拟 nic。 下面的示例创建两个虚拟 Nic，它们都是 IPv4 和 IPv6 配置。 （在以下步骤中为应用创建的每个 VM 各使用一个虚拟 NIC）。
+使用 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 创建虚拟 NIC。 以下示例创建采用 IPv4 和 IPv6 配置的两个虚拟 NIC。 （在以下步骤中为应用创建的每个 VM 各使用一个虚拟 NIC）。
 
 ```azurepowershell
 
@@ -330,14 +330,14 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ```
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 门户中查看 IPv6 双堆栈虚拟网络
 可以在 Azure 门户中查看 IPv6 双堆栈虚拟网络，如下所示：
-1. 在门户的搜索栏中，输入 " *dsVnet*"。
-2. 当 " **dsVnet** " 出现在搜索结果中时，请选择它。 这将启动名为*dsVnet*的双堆栈虚拟网络的 "**概述**" 页。 双堆栈虚拟网络将显示两个 Nic，它们都位于名为*dsSubnet*的双堆栈子网中。
+1. 在门户的搜索栏中输入 *dsVnet*。
+2. 当“dsVnet”出现在搜索结果中时，将其选中。**** 此时会启动名为 *dsVnet* 的双堆栈虚拟网络的“概述”页。**** 该双堆栈虚拟网络显示了位于 *dsSubnet* 双堆栈子网中的两个 NIC，这些 NIC 采用 IPv4 和 IPv6 配置。
 
-![具有标准内部负载均衡器的 IPv6 双堆栈虚拟网络](./media/ipv6-dual-stack-standard-internal-load-balancer-powershell/ipv6-dual-stack-virtual-network.png)
+![使用标准内部负载均衡器的 IPv6 双堆栈虚拟网络](./media/ipv6-dual-stack-standard-internal-load-balancer-powershell/ipv6-dual-stack-virtual-network.png)
 
 
 > [!NOTE]
-> 适用于 Azure 虚拟网络的 IPv6 可在此预览版本的只读 Azure 门户中使用。
+> Azure 虚拟网络的 IPv6 在此预览版本中以只读的 Azure 门户提供。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -349,4 +349,4 @@ Remove-AzResourceGroup -Name dsStd_ILB_RG
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍如何使用双前端 IP 配置（IPv4 和 IPv6）创建标准负载均衡器。 还创建了两个虚拟机，其中包含已添加到负载均衡器后端池的双 IP 配置（IPV4 + IPv6）的 Nic。 若要了解有关 Azure 虚拟网络中 IPv6 支持的详细信息，请参阅[什么是适用于 Azure 虚拟网络的 ipv6？](ipv6-overview.md)
+在本文中，你已使用双重前端 IP 配置（IPv4 和 IPv6）创建了一个标准负载均衡器。 你还创建了两个虚拟机，它们包含采用双重 IP 配置（IPV4 + IPv6）的 NIC，并已添加到负载均衡器的后端池。 要了解有关 Azure 虚拟网络中 IPv6 支持的更多信息，请参阅[什么是 Azure 虚拟网络的 IPv6？](ipv6-overview.md)

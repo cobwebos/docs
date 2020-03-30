@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 37969986b1d015ed08113da42a309eef42df569c
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69015509"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>如何使用 Azure 媒体服务执行实时流式处理以通过 .NET 创建多比特率流
@@ -29,7 +29,7 @@ ms.locfileid: "69015509"
 > * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
 > 
 > 
 
@@ -44,18 +44,18 @@ ms.locfileid: "69015509"
 > [!NOTE]
 > 目前，直播活动的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amshelp@microsoft.com。
 
-1. 将视频摄像机连接到计算机。 启动并配置一个可通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。
+1. 将视频摄像机连接到计算机。 启动并配置可以通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。
 
     此步骤也可以在创建频道后执行。
 
 2. 创建并启动频道。
-3. 检索通道引入 URL。
+3. 检索频道引入 URL。
 
     实时编码器使用引入 URL 将流发送到频道。
 
 4. 检索频道预览 URL。
 
-    使用此 URL 来验证通道是否正常接收实时流。
+    使用此 URL 来验证频道是否正常接收实时流。
 
 5. 创建资源。
 6. 如果想让资源在播放期间进行动态加密，请执行以下操作：
@@ -66,7 +66,7 @@ ms.locfileid: "69015509"
 11. 通过创建按需定位器发布与节目关联的资产。
 
     >[!NOTE]
-    >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。 
+    >创建 AMS 帐户时，**默认**流式处理终结点将添加到处于 **"已停止"** 状态的帐户。 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。**** 
 
 12. 在准备好开始流式传输和存档时，启动节目。
 13. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
@@ -90,7 +90,7 @@ ms.locfileid: "69015509"
 ## <a name="prerequisites"></a>先决条件
 以下是完成本教程所需具备的条件。
 
-* 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完后，也可保留帐户并使用免费的 Azure 服务和功能，例如 Azure 应用服务中的 Web 应用功能。
+* 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留该帐户，使用免费的 Azure 服务和功能，例如 Azure 应用服务中的 Web 应用功能。
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[创建帐户](media-services-portal-create-account.md)。
 * Visual Studio 2010 SP1（Professional、Premium、Ultimate 或 Express）或更高版本。
 * 必须使用适用于 .NET 的媒体服务 SDK 版本 3.2.0.0 或更高版本。
@@ -106,7 +106,7 @@ ms.locfileid: "69015509"
 
 ## <a name="set-up-for-development-with-media-services-sdk-for-net"></a>使用用于 .NET 的媒体服务 SDK 进行开发设置
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，使用 连接信息填充 app.config 文件，如使用[.NET 的媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 ## <a name="code-example"></a>代码示例
 

@@ -1,5 +1,5 @@
 ---
-title: 服务层停用高级 RS
+title: 高级 RS 服务层停用
 description: “高级 RS”服务层级即将停用，对其的支持即将终结 - 请参阅迁移选项。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/07/2019
 ms.openlocfilehash: f00ecd19877ba6236bde5de73d450967abc1fe15
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821045"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL 数据库“高级 RS”服务层级（预览版）即将停用 - 迁移选项
@@ -26,7 +26,7 @@ ms.locfileid: "73821045"
 
 - vCore 服务层级
 
-  **基于 vCore 的购买模型**中的“常规用途”和“业务关键”服务层级。[](sql-database-service-tiers-vcore.md) 这两个服务层级已推出正式版。 基于 vCore 的购买模型还提供了**超大规模**服务层，可根据每个数据库自动扩展到 100 TB，按需适应工作负荷需求。 “超大规模”服务层级提供的 IO 性能与[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)中的“高级”服务层级相当，价格与“高级 RS”服务层级比较接近。
+  [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)中的“常规用途”和“业务关键”服务层级。******** 这两个服务层级已推出正式版。 基于 vCore 的购买模型还提供“超大规模”服务层级，该服务层级按需适应工作负荷的需求，可自动将每个数据库最大扩展到 100 TB。**** “超大规模”服务层级提供的 IO 性能与[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)中的“高级”服务层级相当，价格与“高级 RS”服务层级比较接近。
 - 开发/测试定价
 
   与 Visual Studio 订阅的许可证涵盖费率相比，[开发/测试定价](https://azure.microsoft.com/pricing/dev-test/)最多可将成本节省 55%。
@@ -69,10 +69,10 @@ ms.locfileid: "73821045"
 
 |**如果当前使用…**|**迁移到对等的基于 vCore 的服务层...**|**迁移到对等的基于 DTU 的服务层...**|
 |---|---|---|
-|Premium RS 1| 超大规模 1 vCore （Gen4）或业务关键 1 vCore （Gen4）|高级 1|
-|Premium RS 2| 超大规模 2 Vcore （Gen4）或业务关键 2 Vcore （Gen4|高级 2|
-|Premium RS 4| 超大规模 4 Vcore （Gen4）或业务关键 4 Vcore （Gen4）|高级 4
-|Premium RS 6| 超大规模 6 Vcore （Gen4）或业务关键 6 Vcore （Gen4）|高级 6|
+|Premium RS 1| 超大规模 1 vCore（第 4 代）或业务关键 1 vCore（第 4 代）|高级 1|
+|Premium RS 2| 超大规模 2 vCore（第 4 代）或业务关键 2 vCore（第 4 代）|高级 2|
+|Premium RS 4| 超大规模 4 vCore（第 4 代）或业务关键 4 vCore（第 4 代）|高级 4
+|Premium RS 6| 超大规模 6 vCore（第 4 代）或业务关键 6 vCore（第 4 代）|高级 6|
 
 |**如果当前使用…**|**迁移到对等的基于 vCore 的服务层...**|**迁移到对等的基于 DTU 的服务层...**|
 |---|---|---|
@@ -100,4 +100,4 @@ ms.locfileid: "73821045"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关适用于单一数据库的特定计算大小和存储大小选项的详细信息，请参阅[适用于单一数据库的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-single-databases.md)。
-- 若要详细了解适用于弹性池的特定计算大小和存储大小选项，请参阅[适用于弹性池的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)。
+- 有关可用于弹性池的特定计算大小和存储大小选择的详细信息，请参阅[弹性池的 SQL 数据库 vCore 资源限制](sql-database-vcore-resource-limits-elastic-pools.md)。

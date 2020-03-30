@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
 ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70999169"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>使用 Azure 存储保护 PaaS Web 和移动应用程序的最佳做法
@@ -27,7 +27,7 @@ ms.locfileid: "70999169"
 
 Azure 可以用本地不易实现的方式来部署并使用存储。 通过 Azure 存储，可用相对较少的工作量达到高水平的可伸缩性和可用性。 Azure 存储不仅是 Windows 和 Linux Azure 虚拟机的基础，还可以支持大型分布式应用程序。
 
-Azure 存储提供了以下四种服务：Blob 存储、表存储、队列存储和文件存储。 若要了解详细信息，请参阅 [Microsoft Azure 存储简介](/azure/storage/common/storage-introduction)。
+Azure 存储提供以下四种服务：Blob 存储、表存储、队列存储和文件存储。 若要了解详细信息，请参阅 [Microsoft Azure 存储简介](/azure/storage/common/storage-introduction)。
 
 [Azure 存储安全指南](/azure/storage/common/storage-security-guide)是有关 Azure存储和安全性的详细信息的重要来源。 本篇最佳做法文章高度概括地介绍了安全指南中的一些概念，并提供了获得详细信息的安全指南及其他来源的链接。
 
@@ -64,7 +64,7 @@ Azure 存储提供了以下四种服务：Blob 存储、表存储、队列存储
 
 若要了解有关 RBAC 的详细信息，请参阅：
 
-- [使用 RBAC 和 Azure 门户管理访问权限](/azure/role-based-access-control/role-assignments-portal)
+- [使用 RBAC 和 Azure 门户管理访问](/azure/role-based-access-control/role-assignments-portal)
 - [Azure 资源的内置角色](/azure/role-based-access-control/built-in-roles)
 - [Azure 存储安全指南](/azure/storage/common/storage-security-guide) 
 

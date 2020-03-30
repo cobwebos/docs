@@ -14,20 +14,20 @@ ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
 ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70080601"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 虚拟机的性能诊断
 
-性能诊断工具可帮助你解决可能会影响 Windows 或 Linux 虚拟机 (VM) 的性能问题。 支持故障排除方案包括快速检查已知问题和最佳做法，以及涉及到 VM 性能缓慢，或者 CPU、磁盘空间或内存使用率过高的复杂问题。
+性能诊断工具可帮助您解决可能影响 Windows 或 Linux 虚拟机 （VM） 的性能问题。 支持故障排除方案包括快速检查已知问题和最佳做法，以及涉及到 VM 性能缓慢，或者 CPU、磁盘空间或内存使用率过高的复杂问题。
 
 可以直接从 Azure 门户运行性能诊断，在其中还可以查看见解，以及有关各种日志、丰富配置和诊断数据的报告。 我们建议在联系 Microsoft 支持部门之前，先运行性能诊断并查看见解和诊断数据。
 
 > [!NOTE]
-> 对于 Windows, 当前已安装 .NET SDK 4.5 版或更高版本的 Vm 当前支持性能诊断。 有关在经典 VM 上运行性能诊断的步骤，请参阅[Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md)。
+> 对于 Windows，当前支持具有 .NET SDK 版本 4.5 或更高版本安装的 VM 的性能诊断。 有关在经典 VM 上运行性能诊断的步骤，请参阅[Azure 性能诊断 VM 扩展](performance-diagnostics-vm-extension.md)。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -37,26 +37,26 @@ Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Wi
 
 ### <a name="linux"></a>Linux
 
-Oracle Linux Server 6.10 [`*`], 7.3, 7.6, 7.5 (Oracle 数据库-Ee 13.8 marketplace 映像), CentOS 6.5 [`*`], 7.6, RHEL 7.2, 7.5, 8.0 [`*`], Ubuntu 14.04, 16.04, 18.04, Debian 8, 9, 10 [`*`], SLES 12 SP4 [`*`]
+Oracle Linux 服务器 6.10 =`*`7.3， 7.6， 7.5 （Oracle-数据库-Ee 13.8 市场`*`映像）， CentOS 6.5 * * 7.6， RHEL 7.2， 7.5， 8.0 *`*`， Ubuntu 14.04， 16.04， 18.04， Debian 8， 9， 10 *，`*`SLES 12 SP4 |`*`
 
 >[!Note]
 >[`*`] 请参阅[已知问题](how-to-use-perfinsights-linux.md#known-issues)
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>在 VM 上安装并运行性能诊断
 
-性能诊断安装一个 VM 扩展, 该扩展运行一个名为 PerfInsights 的诊断工具。 PerfInsights 适用于[Windows](https://aka.ms/perfinsights)和[Linux](https://aka.ms/perfinsightslinux)。 若要安装并运行性能诊断，请执行以下步骤：
+性能诊断会安装一个 VM 扩展，该扩展可运行名为 PerfInsights 的诊断工具。 PerfInsights 同时可用于[Windows](https://aka.ms/perfinsights)和[Linux。](https://aka.ms/perfinsightslinux) 若要安装并运行性能诊断，请执行以下步骤：
 
-1. 在左侧的命令列中，选择“虚拟机”。
+1. 在左侧的命令列中，选择“虚拟机”。****
 1. 在 VM 名称列表中，选择要对其运行诊断的 VM。
-1. 在右侧的命令列中，选择“性能诊断”。
+1. 在右侧的命令列中，选择“性能诊断”。****
 
     ![Azure 门户的屏幕截图，其中突出显示了“安装性能诊断”按钮](media/performance-diagnostics/performance-diagnostics-install.png)
 
     > [!NOTE]
-    > 在此屏幕截图中, VM 名称的边栏选项卡处于隐藏状态。
+    > 在此屏幕截图中，VM 名称的边栏选项卡是隐藏的。
 1. 选择存储帐户（可选）
 
-    若要使用单个存储帐户来存储多个 VM 的性能诊断结果，可在工具栏中单击“设置”按钮来选择存储帐户。 选择存储帐户后，单击“确定”按钮。
+    若要使用单个存储帐户来存储多个 VM 的性能诊断结果，可在工具栏中单击“设置”按钮来选择存储帐户。**** 选择存储帐户后，单击“确定”按钮。****
 
     如果未指定存储帐户，默认会创建一个新存储帐户。
 
@@ -64,8 +64,8 @@ Oracle Linux Server 6.10 [`*`], 7.3, 7.6, 7.5 (Oracle 数据库-Ee 13.8 marketpl
 
     ![在性能诊断设置边栏选项卡中选择存储帐户的屏幕截图](media/performance-diagnostics/select-storage-account.png)
 
-1. 选择“安装性能诊断”按钮。
-1. 若要在完成安装后运行诊断，请选中“运行诊断”复选框。 如果做出了此项选择，则可以选择性能分析方案和相关选项。
+1. 选择“安装性能诊断”按钮。****
+1. 若要在完成安装后运行诊断，请选中“运行诊断”复选框。**** 如果做出了此项选择，则可以选择性能分析方案和相关选项。
 
     ![性能诊断安装按钮的屏幕截图](media/performance-diagnostics/install-diagnostics-button.png)
 
@@ -82,7 +82,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 * **高级性能分析**`*`  
     包括性能分析中的所有检查，并收集下一部分中所列的一项或多项跟踪。 使用此方案可以排查需要更多跟踪的复杂问题。 长时间运行此方案会增大诊断输出的整体大小，具体输出大小取决于 VM 大小以及选择的跟踪选项。 运行此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 [了解详细信息](https://aka.ms/perfinsights/advanced)
 
-* **Azure 文件分析**`*`  
+* **Azure 文件分析** `*`  
     包括性能分析中的所有检查，并捕获网络跟踪和 SMB 计数器。 使用此方案可以排查 Azure 文件的性能问题。 运行此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 [了解详细信息](https://aka.ms/perfinsights/azurefiles)
 
 >[!Note]
@@ -109,7 +109,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 分析完成后，以下各项将上传到 Azure 表以及存储帐户中指定的二进制大型对象 (BLOB) 容器：
 
 * 有关运行的所有见解和信息
-* Windows 上的输出压缩 (.zip) 文件 (名为**PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff** ) 和 Linux 上包含日志文件的 tar 球文件 (名为**PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff gz** )
+* Windows 上的输出压缩 （.zip） 文件（名为**PerformanceDiagnostics_yyyy-MM-dd_hh-s-fff.zip）** 和 Linux 上的 tar 球文件（名为**PerformanceDiagnostics_yyyy-MM-dd_hh-s-fff.tar.gz），** 其中包含日志文件
 * 一份 HTML 报告
 
 上传后，Azure 门户中会列出新的诊断报告。
@@ -118,11 +118,11 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 
 ## <a name="how-to-change-performance-diagnostics-settings"></a>如何更改性能诊断设置
 
-使用“设置”工具栏按钮来更改可以存储诊断见解和输出的存储帐户。 可对使用性能诊断的多个 VM 使用同一个存储帐户。 更改存储帐户时，不会删除旧的报告和见解。 但是，它们不再显示在诊断报告列表中。
+使用“设置”工具栏按钮来更改可以存储诊断见解和输出的存储帐户。**** 可对使用性能诊断的多个 VM 使用同一个存储帐户。 更改存储帐户时，不会删除旧的报告和见解。 但是，它们不再显示在诊断报告列表中。
 
 ## <a name="review-insights-and-performance-diagnostics-report"></a>查看见解和性能诊断报告
 
-每个诊断运行包含见解和建议的列表、受影响的资源、日志文件、其他收集的丰富诊断信息，以及供脱机查看的报告。 有关所有收集的诊断数据的完整列表, 请参阅[Windows](how-to-use-perfinsights.md#what-kind-of-information-is-collected-by-perfinsights)或[Linux](how-to-use-perfinsights-linux.md#what-kind-of-information-is-collected-by-perfinsights)上的**PerfInsights 收集的信息类型**。
+每个诊断运行包含见解和建议的列表、受影响的资源、日志文件、其他收集的丰富诊断信息，以及供脱机查看的报告。 有关所有收集的诊断数据的完整列表，请参阅 PerfInsights？ 在[Windows](how-to-use-perfinsights.md#what-kind-of-information-is-collected-by-perfinsights)或[Linux](how-to-use-perfinsights-linux.md#what-kind-of-information-is-collected-by-perfinsights)上**收集了哪些类型的信息**。
 
 ### <a name="select-a-performance-diagnostics-report"></a>选择性能诊断报告
 
@@ -146,11 +146,11 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 
 ### <a name="download-and-review-the-full-performance-diagnostics-report"></a>下载并查看完整的性能诊断报告
 
-可以使用“下载报告”按钮下载 HTML 报告，其中包含丰富的诊断信息，例如，存储和网络配置、性能计数器、跟踪、进程列表和日志。 其内容取决于所选的分析。 进行高级故障排除时，该报告可能包含有关 CPU 使用率较高、磁盘使用率较高和消耗过多内存的进程的其他信息和交互式图表。 有关性能诊断报告的详细信息, 请参阅[Windows](how-to-use-perfinsights.md#review-the-diagnostics-report)或[Linux](how-to-use-perfinsights-linux.md#review-the-diagnostics-report)。
+可以使用“下载报告”按钮下载 HTML 报告，其中包含丰富的诊断信息，例如，存储和网络配置、性能计数器、跟踪、进程列表和日志。**** 其内容取决于所选的分析。 进行高级故障排除时，该报告可能包含有关 CPU 使用率较高、磁盘使用率较高和消耗过多内存的进程的其他信息和交互式图表。 有关性能诊断报告的详细信息，请参阅[Windows](how-to-use-perfinsights.md#review-the-diagnostics-report)或[Linux](how-to-use-perfinsights-linux.md#review-the-diagnostics-report)。
 
 ## <a name="manage-performance-diagnostics-reports"></a>管理性能诊断报告
 
-可以使用“删除报告”按钮删除一个或多个性能诊断报告。
+可以使用“删除报告”按钮删除一个或多个性能诊断报告。****
 
 ## <a name="how-to-uninstall-performance-diagnostics"></a>如何卸载性能诊断
 
@@ -160,35 +160,35 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-### <a name="where-is-the-diagnostics-data-from-my-vm-stored"></a>其中存储了 VM 中的诊断数据
+### <a name="where-is-the-diagnostics-data-from-my-vm-stored"></a>我的 VM 中的诊断数据存储在何处
 
 所有性能诊断见解和报告存储在你自己的存储帐户中。 见解存储在 Azure 表内部。 报告压缩文件存储在名为 azdiagextnresults 的二进制大型对象 (BLOB) 容器中。
 
 可以使用工具栏上的“设置”按钮查看存储帐户信息。
 
-### <a name="how-do-i-share-this-data-with-microsoft-customer-support"></a>如何实现与 Microsoft 客户支持人员共享此数据
+### <a name="how-do-i-share-this-data-with-microsoft-customer-support"></a>如何与 Microsoft 客户支持共享此数据
 
 可通过多种方式来与 Microsoft 共享诊断报告。
 
-**选项 1：** 自动共享最新报表  
-向 Microsoft 开具支持票证时，必须共享性能诊断报告。 如果你在运行诊断时已选择与 Microsoft 共享此信息（选中“我同意与 Microsoft 共享诊断信息”复选框），则 Microsoft 可以在从运行日期开始算起的最长 30 天内，使用输出 zip 文件的 SAS 链接从你的存储帐户访问报告。 只会将最新的报告提供给支持工程师。
+**选项 1：** 自动共享最新报告  
+向 Microsoft 开具支持票证时，必须共享性能诊断报告。 如果你在运行诊断时已选择与 Microsoft 共享此信息（选中“我同意与 Microsoft 共享诊断信息”复选框），则 Microsoft 可以在从运行日期开始算起的最长 30 天内，使用输出 zip 文件的 SAS 链接从你的存储帐户访问报告。**** 只会将最新的报告提供给支持工程师。
 
 **选项 2：** 为诊断报告压缩文件生成共享访问签名  
-可以使用共享访问签名来共享报告压缩文件的链接。 为此，请执行以下步骤：
+可以使用共享访问签名来共享报告压缩文件的链接。 为此，请按照下列步骤进行操作：
 
 1. 在 Azure 门户中，浏览到存储了诊断数据的存储帐户。
-1. 在“Blob 服务”部分选择“Blob”。
-1. 选择“azdiagextnresults”容器。
+1. 在“Blob 服务”部分选择“Blob”。********
+1. 选择“azdiagextnresults”容器。****
 1. 选择要共享的性能诊断输出压缩文件。
-1. 在“生成 SAS”选项卡上，选择共享条件。
-1. 单击“生成 Blob SAS 令牌和 URL”。
-1. 复制“Blob SAS URL”并与支持工程师共享。
+1. 在“生成 SAS”选项卡上，选择共享条件。****
+1. 单击“生成 Blob SAS 令牌和 URL”。****
+1. 复制“Blob SAS URL”并与支持工程师共享。****
 
-**选项 3:** 从存储帐户下载报表
+**选项 3：** 从存储帐户下载报告
 
 也可以使用“选项 2”中的步骤 1-4 找到性能诊断报告压缩文件。 选择下载文件，然后通过电子邮件共享该文件，或者请求支持工程师提供有关上传文件的说明。  
 
-### <a name="how-do-i-capture-the-diagnostics-data-at-the-correct-time"></a>如何实现在正确的时间捕获诊断数据
+### <a name="how-do-i-capture-the-diagnostics-data-at-the-correct-time"></a>如何在正确的时间捕获诊断数据
 
 每个性能诊断运行包括两个阶段：
 
@@ -201,4 +201,4 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 
 查看性能诊断见解和报告后，如果仍不能确定问题的原因并需要更多的帮助，可以向 Microsoft 客户支持部门开具支持票证。
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果本文中的任何一点都需要更多帮助，则可以在[MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上联系 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)，然后选择 **"获取支持**"。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

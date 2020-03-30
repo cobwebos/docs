@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio （Web 作业项目）开始使用队列存储
+title: 使用可视化工作室（WebJob 项目）开始使用队列存储
 description: 在使用 Visual Studio 连接服务连接到存储帐户后，如何开始使用 WebJob 项目中的 Azure 队列存储
 services: storage
 author: ghogen
@@ -14,17 +14,17 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ffba203bafaf3837cd2d7fc1a6fd962a6926b186
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72298749"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure 队列存储和 Visual Studio 连接服务（WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>概述
-本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio Azure WebJob 项目中使用 Azure 队列存储。 当使用 Visual Studio“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，相应的.NET 引用会添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。  
+本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio Azure WebJob 项目中使用 Azure 队列存储。**** 当使用 Visual Studio“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，相应的.NET 引用会添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。****  
 
 本文提供了 C# 代码示例，用于演示如何在 Azure 队列存储服务中使用 Azure WebJobs SDK 版本 1.x。
 
@@ -45,7 +45,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 除了 **string** 以外，参数还可以是字节数组、**CloudQueueMessage** 对象或定义的 POCO。
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
+### <a name="poco-plain-old-clr-object-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
 在下面的示例中，队列消息包含 **BlobInformation** 对象的 JSON，该对象包含一个 **BlobName** 属性。 SDK 会自动反序列化该对象。
 
 ```csharp
@@ -89,13 +89,13 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>QueueTrigger 属性适用的类型
 可以将 **QueueTrigger** 用于以下类型：
 
-* **string**
+* **字符串**
 * 序列化为 JSON 的 POCO 类型
-* **byte[]**
-* **CloudQueueMessage**
+* **字节***
+* **云队列消息**
 
 ## <a name="polling-algorithm"></a>轮询算法
-SDK 实现了随机指数退让算法，以降低空闲队列轮询对存储事务成本造成的影响。  当找到消息时，SDK 将等待两秒钟，并检查另一条消息；如果未找到消息，它将等待大约四秒，然后重试。 如果后续尝试获取队列消息失败，则等待时间会继续增加，直到达到最长等待时间（默认为 1 分钟）。 [最长等待时间是可配置的](#how-to-set-configuration-options)。
+SDK 实现了随机指数退让算法，以降低空闲队列轮询对存储交易成本造成的影响。  当找到消息时，SDK 将等待两秒钟，然后检查另一条消息；如果未找到消息，它将等待大约四秒，然后重试。 如果后续尝试获取队列消息失败，则等待时间会继续增加，直到达到最长等待时间（默认为 1 分钟）。 [最长等待时间是可配置的](#how-to-set-configuration-options)。
 
 ## <a name="multiple-instances"></a>多个实例
 如果 Web 应用在多个实例上运行，则每台计算机上都会运行连续的 WebJobs，并且每台计算机将等待触发器并尝试运行函数。 在某些情况下，这可能会导致某些函数处理相同的数据两次，因此函数应该是幂等的（编写的这些函数在使用相同输入数据重复调用时不会生成重复的结果）。  
@@ -106,13 +106,13 @@ SDK 实现了随机指数退让算法，以降低空闲队列轮询对存储事�
 接收单个队列的多个消息时，也是如此。 默认情况下，SDK 一次获取一批 16 条队列消息，并执行并行处理这些消息的函数。 [批大小是可配置的](#how-to-set-configuration-options)。 当处理的数量达到批大小的一半时，SDK 将获取另一个批，并开始处理这些消息。 因此，每个函数处理的最大并发消息数是批大小的 1.5 倍。 此限制分别应用于具有 **QueueTrigger** 属性的每个函数。 如果不希望在收到一个队列的消息时并行执行，请将批大小设置为 1。
 
 ## <a name="get-queue-or-queue-message-metadata"></a>获取队列或队列消息元数据
-可以通过将参数添加到方法签名来获取以下消息属性：
+可以通过将参数添加到方法签名获取以下消息属性：
 
 * **DateTimeOffset** expirationTime
 * **DateTimeOffset** insertionTime
 * **DateTimeOffset** nextVisibleTime
 * **string** queueTrigger（包含消息文本）
-* **string** id
+* **字符串**ID
 * **string** popReceipt
 * **int** dequeueCount
 
@@ -160,7 +160,7 @@ public static void WriteLog([QueueTrigger("logqueue")] string logMessage,
         queueTrigger=Hello world!
 
 ## <a name="graceful-shutdown"></a>正常关闭
-在连续的 WebJob 中运行的函数可以接受 **CancellationToken** 参数，以使操作系统能够在 WebJob 即将终止时通知该函数。 可以使用此通知确保该函数不会意外终止，从而导致数据处于不一致状态。
+在连续的 WebJob 中运行的函数可以接受 **CancellationToken** 参数，以使操作系统能够在 WebJob 即将终止时通知该函数。 可以使用此通知来确保该函数不会意外终止，导致数据处于不一致状态。
 
 下面的示例演示了如何在函数中检查即将发生的 Web 作业终止。
 
@@ -188,10 +188,10 @@ public static void GracefulShutdownDemo(
 有关详细信息，请参阅 [WebJobs 正常关闭](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)。   
 
 ## <a name="how-to-create-a-queue-message-while-processing-a-queue-message"></a>如何在处理队列消息时创建队列消息
-若要编写创建新队列消息的函数，请使用 **Queue** 属性。 与 **QueueTrigger**一样，可以传入字符串形式的队列名称，或者 [动态设置队列名称](#how-to-set-configuration-options)。
+若要编写创建新队列消息的函数，请使用 **Queue** 属性。 与 **QueueTrigger** 一样，可以传入字符串形式的队列名称，还可以[动态设置队列名称](#how-to-set-configuration-options)。
 
 ### <a name="string-queue-messages"></a>字符串队列消息
-下面的非异步代码示例在名为“outputqueue”的队列中创建新的队列消息，该消息的内容与名为“inputqueue”的队列中收到的队列消息相同。 （对于异步函数，请使用**IAsyncCollector\<t >** ，如本节后面部分所示。）
+下面的非异步代码示例在名为“outputqueue”的队列中创建新的队列消息，该消息的内容与名为“inputqueue”的队列中收到的队列消息相同。 （对于异步函数，请使用**IAsyncCollector\<T>，** 如本节后面所示。
 
 ```csharp
 public static void CreateQueueMessage(
@@ -202,7 +202,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
+### <a name="poco-plain-old-clr-object-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
 要创建包含 POCO（而不是字符串）的队列消息，请将 POCO 类型作为输出参数传递给 **Queue** 属性构造函数。
 
 ```csharp
@@ -217,7 +217,7 @@ public static void CreateQueueMessage(
 SDK 会自动将对象序列化为 JSON。 即使对象为 null，也始终会创建队列消息。
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>在异步函数中创建多个消息
-若要创建多个消息，请将输出队列的参数类型**ICollector\<t >** 或**IAsyncCollector\<t >** ，如以下示例中所示。
+要创建多条消息，请使输出队列**ICollector\<T>** 或**IAsyncCollector\<T>** 的参数类型，如下例所示。
 
 ```csharp
 public static void CreateQueueMessages(
@@ -237,7 +237,7 @@ public static void CreateQueueMessages(
 可对以下参数类型使用 **Queue** 属性：
 
 * **out string**（如果函数结束时参数值非 null，则创建队列消息）
-* **out byte[]** （用法类似于 **string**）
+* **out byte[]**（用法类似于 **string**）
 * **out CloudQueueMessage**（用法类似于 **string**）
 * **out POCO**（一种可序列化类型，如果函数结束时参数为 null，则创建一条包含 null 对象的消息）
 * **ICollector**
@@ -297,7 +297,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
+### <a name="poco-plain-old-clr-object-queue-messages"></a>POCO [（普通旧 CLR 对象](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)）队列消息
 对于队列消息中存储为 JSON 的 POCO，可以在 **Queue** 属性的 **blobPath** 参数中使用占位符来指定对象的属性。 还可以将队列元数据属性名称用作占位符。 请参阅[获取队列或队列消息元数据](#get-queue-or-queue-message-metadata)。
 
 下面的示例将 Blob 复制到具有不同扩展名的新 Blob。 队列消息是一个 **BlobInformation** 对象，其中包括 **BlobName** 和 **BlobNameWithoutExtension** 属性。 属性名称用作 **Blob** 属性的 blob 路径中的占位符。
@@ -338,12 +338,12 @@ logQueue.AddMessage(queueMessage);
 * **CloudPageBlob**（读取或写入）
 
 ## <a name="how-to-handle-poison-messages"></a>如何处理有害消息
-内容导致函数失败的消息称为 *病毒消息*。 当函数失败时，将不删除并最终再次选择队列消息，从而导致周期重复。 在达到限制的迭代次数后，SDK 可自动中断周期，也可以手动中断。
+其内容导致函数失败的消息称为有害消息**。 当函数失败时，将不删除并最终再次选择队列消息，从而导致周期重复。 在达到限制的迭代次数后，SDK 可自动中断周期，也可以手动中断。
 
 ### <a name="automatic-poison-message-handling"></a>自动处理有害消息
 SDK 在处理一个队列消息时最多会调用某个函数 5 次。 如果第五次尝试失败，消息将移到有害队列。 有关如何配置最大重试次数的信息，请参阅[如何设置配置选项](#how-to-set-configuration-options)。
 
-病毒队列的名称为 *{originalqueuename}* -poison。 可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。
+有害队列的名称为 {originalqueuename}**-poison。 可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。
 
 在下面的示例中，如果队列消息包含不存在的 blob 名称，则 **CopyBlob** 函数会失败。 在这种情况，消息将从 copyBlobqueue 队列移到 copyBlobqueue-poison 队列。 然后，**ProcessPoisonMessage** 记录有害消息。
 
@@ -511,11 +511,11 @@ public class Program
 
 ![函数调用页中的日志](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-在函数或 **Main()** 方法中调用的控制台方法的输出在 Web 作业的仪表板页面上显示，而不是在特定方法调用页面上显示。 从方法签名的参数中获取的 TextWriter 对象的输出在方法调用的仪表板页中显示。
+在函数或 **Main()** 方法中调用的控制台方法的输出在 Web 作业的仪表板页面上显示，而不是在特定方法调用页面上显示。 从方法签名的参数中获取的 TextWriter 对象的输出显示在方法调用的仪表板页面。
 
 无法将控制台输出链接到特定的方法调用，因为控制台是单线程的，而许多作业函数可能同时运行。 因此，SDK 为每个函数调用提供了自身唯一的日志写入器对象。
 
-若要写入[应用程序跟踪日志](../app-service/troubleshoot-dotnet-visual-studio.md#logsoverview)，请使用 **Console.Out**（创建标记为 INFO 的日志）和 **Console.Error**（创建标记为 ERROR 的日志）。 或者，可以使用 [Trace 或 TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)，除提供“信息”和“错误”外，还提供“详细”、“警告”和“严重级别”。 应用程序跟踪日志在 Web 应用日志文件、Azure 表或 Azure blob 中显示，具体取决于配置 Azure Web 应用的方式。 与所有控制台输出一样，最近的 100 条应用程序日志也会显示在 Web 作业的仪表板页中，而不是显示在函数调用的页中。
+若要写入[应用程序跟踪日志](../app-service/troubleshoot-dotnet-visual-studio.md#logsoverview)，请使用 **Console.Out**（创建标记为 INFO 的日志）和 **Console.Error**（创建标记为 ERROR 的日志）。 还可以使用 [Trace 或 TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)，它除了提供“信息”和“错误”外，还提供“详细”、“警告”和“严重级别”。 应用程序跟踪日志在 Web 应用日志文件、Azure 表或 Azure blob 中显示，具体取决于配置 Azure Web 应用的方式。 与所有控制台输出一样，最近的 100 条应用程序日志也会显示在 Web 作业的仪表板页中，而不是显示在函数调用的页中。
 
 仅当程序在 Azure Web 作业中运行（而不是在本地运行或者在其他某个环境中运行）时，控制台输出才显示在仪表板中。
 
@@ -535,17 +535,17 @@ public static void WriteLog(
 }
 ```
 
-在 WebJobs SDK 仪表板中，转到特定函数调用页面并选择“切换输出”时，会看到 **TextWriter** 对象的输出：
+在 WebJobs SDK 仪表板中，转到特定函数调用页面并选择“切换输出”时，会看到 **TextWriter** 对象的输出：****
 
 ![调用链接](./media/vs-storage-webjobs-getting-started-queues/dashboardinvocations.png)
 
 ![函数调用页中的日志](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-在 WebJobs SDK 仪表板中，转到 Web 作业（而不是函数调用）页面并选择“切换输出”时，会看到最近的 100 行控制台输出。
+在 WebJobs SDK 仪表板中，转到 Web 作业（而不是函数调用）页面并选择“切换输出”时，会看到最近的 100 行控制台输出。****
 
 ![切换输出](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-在连续的 WebJob 中，应用程序日志显示在 Web 应用文件系统的 /data/jobs/continuous/ *{webjobname}* /job_log.txt 中。
+在连续的 WebJob 中，应用程序日志显示在 Web 应用文件系统的 /data/jobs/continuous/*{webjobname}*/job_log.txt 中。
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

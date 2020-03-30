@@ -8,10 +8,10 @@ ms.date: 4/10/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 7f48012ca1f97c2e28380d95da37863c4bc17f63
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73831840"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>使用 Azure PowerShell 部署和配置 Azure 防火墙
@@ -45,7 +45,7 @@ ms.locfileid: "73831840"
 
 如果需要，可以使用 [Azure 门户](tutorial-firewall-deploy-portal.md)完成此过程。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -250,7 +250,7 @@ $NIC | Set-AzNetworkInterface
 
 ## <a name="clean-up-resources"></a>清理资源
 
-可以将防火墙资源保留到下一教程使用。不再需要时，请删除 **Test-FW-RG** 资源组，以删除与防火墙相关的所有资源：
+您可以保留防火墙资源以进行下一教程，或者如果不再需要，请删除**测试-FW-RG**资源组以删除所有与防火墙相关的资源：
 
 ```azurepowershell
 Remove-AzResourceGroup -Name Test-FW-RG

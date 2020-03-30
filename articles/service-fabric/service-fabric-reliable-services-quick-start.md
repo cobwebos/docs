@@ -1,20 +1,20 @@
 ---
-title: 在中创建你的第一个 Service Fabric 应用程序C#
+title: 在 C# 中创建第一个 Service Fabric 应用程序
 description: 介绍如何创建具有无状态服务和有状态服务的 Microsoft Azure Service Fabric 应用程序。
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
 ms.openlocfilehash: 15dd9bf6ac19bdac7bc8b50fc70e0b3b0a4e9a83
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083757"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
 
 > [!div class="op_single_selector"]
-> * [Windows 上的 C#](service-fabric-reliable-services-quick-start.md)
+> * [C# 在 Windows 上](service-fabric-reliable-services-quick-start.md)
 > * [Linux 上的 Java](service-fabric-reliable-services-quick-start-java.md)
 
 Azure Service Fabric 应用程序包含一个或多个运行代码的服务。 本指南说明如何使用 [Reliable Services](service-fabric-reliable-services-introduction.md) 同时创建无状态与有状态的 Service Fabric 应用程序。  
@@ -32,22 +32,22 @@ Azure Service Fabric 应用程序包含一个或多个运行代码的服务。 �
 
 无状态服务是目前在云应用程序中作为基准的服务类型。 该服务之所以被视为无状态，是因为它本身不包含需要可靠存储或高度可用的数据。 如果无状态服务的实例关闭，其所有内部状态都会丢失。 在这种类型的服务中，必须将状态保存到外部存储（如 Azure 表或 SQL 数据库），才能实现高可用性和可靠性。
 
-以管理员身份启动 Visual Studio 2017 或 Visual Studio 2019，并创建名为*HelloWorld*的新 Service Fabric 应用程序项目：
+以管理员身份启动 Visual Studio 2017 或 Visual Studio 2019，并新建一个名为 HelloWorld** 的 Service Fabric 应用程序项目：
 
 ![使用“新建项目”对话框新建 Service Fabric 应用程序](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
-然后，使用名为*HelloWorldStateless*的 **.net Core 2.0**创建无状态服务项目：
+然后使用 **.NET Core 2.0**创建一个无状态的服务项目，名为*HelloWorldstate：*
 
 ![在第二个对话框中，创建无状态服务项目](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
 解决方案现在包含两个项目：
 
-* *HelloWorld*。 这是包含*服务*的*应用程序*项目。 它还包含应用程序清单，用于描述该应用程序以及一些帮助你部署应用程序的 PowerShell 脚本。
+* *你好世界*。 这是包含*服务*的*应用程序*项目。 它还包含应用程序清单，用于描述该应用程序以及一些帮助你部署应用程序的 PowerShell 脚本。
 * *HelloWorldStateless*。 这是服务项目。 其中包含无状态服务实现。
 
 ## <a name="implement-the-service"></a>实现服务
 
-打开服务项目中的 **HelloWorldStateless.cs** 文件。 在 Service Fabric 中，服务可以运行任一业务逻辑。 服务 API 为你的代码提供两个入口点：
+打开服务项目中的 **HelloWorldStateless.cs** 文件。 在 Service Fabric 中，服务可以运行任一业务逻辑。 服务 API 为代码提供两个入口点：
 
 * 名为 *RunAsync* 的开放式入口点方法，可在其中开始执行任何工作负荷，包括长时间运行的计算工作负荷。
 
@@ -71,7 +71,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 项目模板包括 `RunAsync()` 的示例实现，该实现递增滚动计数。
 
 > [!NOTE]
-> 有关如何使用通信堆栈的详细信息，请参阅[与 ASP.NET Core 的服务通信](service-fabric-reliable-services-communication-aspnetcore.md)
+> 有关如何处理通信堆栈的详细信息，请参阅与 ASP.NET[核心的服务通信](service-fabric-reliable-services-communication-aspnetcore.md)
 
 ### <a name="runasync"></a>RunAsync
 
@@ -103,7 +103,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 系统将管理此业务流程，以便保持服务的高度可用和适当平衡。
 
-`RunAsync()` 不应阻止同步。 RunAsync 实现应返回 Task，或等待任意长时间运行或阻止的操作以允许运行时继续。 请注意，上一示例中的 `while(true)` 循环中使用了返回 Task 的 `await Task.Delay()`。 如果必须同步阻止工作负荷，应使用 `Task.Run()` 实现中的 `RunAsync` 安排新的 Task。
+`RunAsync()` 不应阻止同步。 RunAsync 实现应返回 Task，或等待任意长时间运行或阻止的操作以允许运行时继续。 请注意，上一示例中的 `while(true)` 循环中使用了返回 Task 的 `await Task.Delay()`。 如果必须同步阻止工作负荷，应使用 `RunAsync` 实现中的 `Task.Run()` 安排新的 Task。
 
 取消工作负荷是一项由所提供的取消标记协调的协同操作。 系统会等任务结束后（成功完成、取消或出现故障）再执行下一步操作。 当系统请求取消时，请务必接受取消标记，完成所有任务，并尽快退出 `RunAsync()`。
 
@@ -119,15 +119,15 @@ Service Fabric 引入了一种新的有状态服务。 有状态服务能够可�
 
 ![向 Service Fabric 应用程序添加服务](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-选择 " **.Net Core 2.0-> 有状态服务**"，并将其命名为*HelloWorldStateful*。 单击“确定”。
+选择 **.NET 核心 2.0 ->有状态服务**，并将其命名为*HelloWorldState。* 单击“确定”。
 
 ![使用“新建项目”对话框新建 Service Fabric 有状态服务](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
 应用程序现在应该有两个服务：无状态服务 *HelloWorldStateless* 和有状态服务 *HelloWorldStateful*。
 
-有状态服务具有与无状态服务相同的入口点。 主要区别是是否有能够可靠地存储状态的*状态提供程序*。 Service Fabric 附带名为[可靠集合](service-fabric-reliable-services-reliable-collections.md)的状态提供程序实现，可让你通过可靠状态管理器创建复制的数据结构。 有状态可靠服务默认使用此状态提供程序。
+有状态服务具有与无状态服务相同的入口点。 主要区别是状态提供程序的可用性，该*提供程序*可以可靠地存储状态。 Service Fabric 附带一个称为["可靠集合](service-fabric-reliable-services-reliable-collections.md)"的状态提供程序实现，它允许您通过可靠状态管理器创建复制的数据结构。 有状态可靠服务默认使用此状态提供程序。
 
-打开 **HelloWorldStateful** 中的 *HelloWorldStateful.cs*，该文件包含以下 RunAsync 方法：
+打开 *HelloWorldStateful* 中的 **HelloWorldStateful.cs**，该文件包含以下 RunAsync 方法：
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -176,7 +176,7 @@ var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<str
 * Service Fabric 通过跨节点*复制*状态，使状态具备高可用性；而可靠集合会将数据存储到每个副本上的本地磁盘中。 这意味着可靠集合中存储的所有内容都必须*可序列化*。 默认情况下，可靠集合使用 [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) 进行序列化，因此，在使用默认序列化程序时，务必确保类型[受数据协定序列化程序的支持](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx)。
 * 在可靠集合上提交事务时，将复制对象以实现高可用性。 存储在可靠集合中的对象保留在服务的本地内存中。 这意味着你有对象的本地引用。
   
-   切勿转变这些对象的本地实例而不在事务中的可靠集合上执行更新操作。 这是因为对对象的本地实例的更改将不会自动复制。 必须将对象重新插回字典中，或在字典上使用其中一个*更新*方法。
+   切勿转变这些对象的本地实例而不在事务中的可靠集合上执行更新操作。 这是因为对对象的本地实例的更改将不会自动复制。 必须重新将对象重新插入字典，或使用*字典上的更新*方法之一。
 
 可靠状态管理器管理可靠集合。 无论何时何地，都可以根据名称向可靠状态管理器请求服务中的某个可靠集合。 可靠状态管理器可确保能取回引用。 不建议将可靠集合实例的引用存储在类成员变量或属性中。 请特别小心，确保在服务生命周期中随时会引用设置为某个实例。 可靠状态管理器将处理此工作，并已针对重复访问进行优化。
 
@@ -193,12 +193,12 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-可靠集合具有许多与它们的 `System.Collections.Generic` 和 `System.Collections.Concurrent` 相同的操作，但语言集成查询（LINQ）除外。 可靠集合上的操作是异步的。 这是因为可靠集合的写入操作执行 I/O 操作，以将数据复制并保存到磁盘。
+除了语言集成查询 （LINQ）之外`System.Collections.Generic`，`System.Collections.Concurrent`可靠集合具有许多与其和对口相同的操作。 可靠集合上的操作是异步的。 这是因为可靠集合的写入操作执行 I/O 操作，以将数据复制并保存到磁盘。
 
-可靠集合操作是*事务性的*，因此可以跨多个可靠集合和操作保持状态的一致。 例如，你可以在单个事务中，将工作项从 Reliable Queue 取消排队、对其执行操作并将结果保存在 Reliable Dictionary 中。 这被视为原子操作，它可以保证整个操作要么成功，要么回滚。 如果将项取消排队之后、保存结果之前发生错误，则会回滚整个事务，并且项将保留在队列中以供处理。
+可靠集合操作是*事务性的*，因此可以跨多个可靠集合和操作保持状态的一致。 例如，可以在单个事务中，将工作项从 Reliable Queue 取消排队、对其执行操作并将结果保存在 Reliable Dictionary 中。 这被视为原子操作，它可以保证整个操作要么成功，要么回滚。 如果将项取消排队之后、保存结果之前发生错误，则会回滚整个事务，并且项将保留在队列中以供处理。
 
 ## <a name="run-the-application"></a>运行应用程序
-现在，我们返回到 *HelloWorld* 应用程序。 现在，你可以生成并部署你的服务。 按 **F5** 即可生成应用程序并部署到本地群集。
+现在，我们返回到 *HelloWorld* 应用程序。 现在，可以生成并部署服务。 按 **F5** 即可生成应用程序并部署到本地群集。
 
 服务开始运行之后，可以在“**诊断事件**”窗口中查看生成的 Windows 事件跟踪 (ETW) 事件。 请注意，应用程序中会同时显示无状态服务和有状态服务的事件。 可以通过单击“**暂停**”按钮来暂停流。 然后，可以通过展开该消息来检查消息的详细信息。
 
@@ -212,7 +212,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 ## <a name="next-steps"></a>后续步骤
 [在 Visual Studio 中调试 Service Fabric 应用程序](service-fabric-debugging-your-application.md)
 
-[入门：Service Fabric Web API 服务与 OWIN 自托管](service-fabric-reliable-services-communication-webapi.md)
+[入门：Service Fabric Web API 服务与 OWIN 自托管 | Microsoft Azure](service-fabric-reliable-services-communication-webapi.md)
 
 [深入了解 Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
 

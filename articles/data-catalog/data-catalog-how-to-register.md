@@ -7,14 +7,14 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 0c5fdac7df41fec3a6206dbd78af74b7f1b58c7f
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68736324"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>在 Azure 数据目录中注册数据源
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 Azure 数据目录是一个完全托管的云服务，充当企业数据源的注册和发现系统。 换而言之，数据目录可帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 通过数据目录使数据源可被发现的第一步是注册该数据源。
 
 ## <a name="register-data-sources"></a>注册数据源

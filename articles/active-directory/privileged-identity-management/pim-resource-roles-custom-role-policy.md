@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中为 Azure 资源使用自定义角色-Azure AD |Microsoft Docs
+title: 在 PIM 中对 Azure 资源使用自定义角色 - Azure AD |微软文档
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中为 Azure 资源使用自定义角色。
 services: active-directory
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fbe08cff2b57155f8f3315f5d3454abfbdad47a0
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73847065"
 ---
-# <a name="use-custom-roles-for-azure-resources-in-privileged-identity-management"></a>在 Privileged Identity Management 中将自定义角色用于 Azure 资源
+# <a name="use-custom-roles-for-azure-resources-in-privileged-identity-management"></a>在 Privileged Identity Management 中为 Azure 资源使用自定义角色
 
-你可能需要将严格的 Privileged Identity Management （PIM）设置应用到 Azure Active Directory （Azure AD）组织中特权角色的某些用户，同时为其他用户提供更大的独立性。 例如，假设你的组织雇用若干协定关联的方案有助于开发将在 Azure 订阅中运行的应用程序。
+可能需要对 Azure Active Directory (Azure AD) 组织中具有特权角色的某些用户应用严格的 Privileged Identity Management (PIM) 设置，同时为其他用户提供更大的自主权。 例如，假设你的组织招聘了几名合同工来帮助开发将在 Azure 订阅中运行的应用程序。
 
 作为资源管理员，你希望正式员工可以在不需要审批的情况下获得合格访问权。 但所有合同工在请求访问组织资源时必须接受审批。
 
-按照下一部分中所述的步骤设置 Azure 资源角色的目标 Privileged Identity Management 设置。
+按照下一部分中列出的步骤来为 Azure 资源角色设置具针对性的 Privileged Identity Management 设置。
 
 ## <a name="create-the-custom-role"></a>创建自定义角色
 
@@ -40,11 +40,11 @@ ms.locfileid: "73847065"
 
 ## <a name="apply-pim-settings"></a>应用 PIM 设置
 
-在 Azure AD 组织中创建角色后，请在 Azure 门户中转到**Privileged Identity Management-Azure 资源**页。 选择应用该角色的资源。
+在 Azure AD 组织中创建角色后，请在 Azure 门户中转到“Privileged Identity Management - Azure 资源”**** 页。 选择应用该角色的资源。
 
 ![“Privileged Identity Management - Azure 资源”窗格](media/pim-resource-roles-custom-role-policy/aadpim-manage-azure-resource-some-there.png)
 
-配置应应用于角色成员的[Privileged Identity Management 角色设置](pim-resource-roles-configure-role-settings.md)。
+[配置 Privileged Identity Management 角色设置](pim-resource-roles-configure-role-settings.md)，这些设置应当应用于该角色的这些成员。
 
 最后，为你希望作为这些设置的应用目标的不同成员组[分配角色](pim-resource-roles-assign-roles.md)。
 

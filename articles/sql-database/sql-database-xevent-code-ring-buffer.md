@@ -1,5 +1,5 @@
 ---
-title: XEvent 环形缓冲区代码
+title: XEvent 环缓冲区代码
 description: 提供一个 Transact-SQL 代码示例，以帮助你快速轻松地在 Azure SQL 数据库中使用环形缓冲区目标。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: ad98b61d6339388551af93671b3d4d892942f4e4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79213965"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的环形缓冲区目标代码
@@ -29,7 +29,7 @@ ms.locfileid: "79213965"
 1. 创建一个包含要演示的数据的表。
 2. 创建现有扩展事件的会话，即 **sqlserver.sql_statement_starting**。
    
-   * 此事件仅限于包含特定 Update 字符串的 SQL 语句：**statement LIKE '%UPDATE tabEmployee%'** 。
+   * 此事件仅限于包含特定 Update 字符串的 SQL 语句：**statement LIKE '%UPDATE tabEmployee%'**。
    * 选择要将事件的输出发送给环形缓冲区类型的目标，即 **package0.ring_buffer**。
 3. 启动事件会话。
 4. 发出几个简单的 SQL UPDATE 语句。
@@ -40,9 +40,9 @@ ms.locfileid: "79213965"
 7. 删除环形缓冲区目标以释放其资源。
 8. 删除事件会话和演示表。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 帐户和订阅。 可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 帐户和订阅。 您可以注册免费[试用](https://azure.microsoft.com/pricing/free-trial/)。
 * 可以在其中创建表的任何数据库。
   
   * 或者，也可以快速[创建一个 **AdventureWorksLT** 演示数据库](sql-database-get-started.md)。
@@ -220,9 +220,9 @@ GO
 
 为了查看结果，我们单击了 **target_data_XML** 列标题下的单元格。
 
-然后，在结果窗格中，我们单击了 target_data_XML 列标题下的单元格。 这个单击动作在 ssms.exe 中按结果单元格内容显示的顺序，以 XML 格式创建了另一个文件选项卡。
+然后，在结果窗格中，我们单击了 target_data_XML 列标题下的单元格****。 这个单击动作在 ssms.exe 中按结果单元格内容显示的顺序，以 XML 格式创建了另一个文件选项卡。
 
-输出显示在以下块中。 它看起来很长，但它只是两个 **\<事件 >** 元素。
+输出显示在以下块中。 它看起来很长，但它只是两**\<个事件>** 元素。
 
 &nbsp;
 

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: barclayn
 ms.openlocfilehash: 741e6b9cad20645fdfc085623fd9492a12ac1dfc
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726564"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 上可用的安全服务和技术
@@ -69,27 +69,27 @@ ms.locfileid: "68726564"
 |------|--------|
 | [Azure&nbsp;角色&nbsp;基于&nbsp;访问控制](/azure/active-directory/role-based-access-control-configure)|一项访问控制功能，它基于用户在组织内的角色，仅允许用户访问其必须访问的内容。  |
 | [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)|一个基于云的身份验证存储库，它支持基于云的多租户目录和 Azure 中的多标识管理服务。  |
-| [Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview)|一项标识管理服务，帮助控制客户使用基于 Azure 的应用程序时如何注册、登录和管理其配置文件。   |
-| [Azure Active Directory 域服务](/azure/active-directory-domain-services/overview)| Active Directory 域服务基于云的托管版本。 |
+| [Azure 活动目录 B2C](/azure/active-directory-b2c/active-directory-b2c-overview)|一项标识管理服务，帮助控制客户使用基于 Azure 的应用程序时如何注册、登录和管理其配置文件。   |
+| [Azure 活动目录域服务](/azure/active-directory-domain-services/overview)| Active Directory 域服务基于云的托管版本。 |
 | [Azure 多重身份验证](/azure/active-directory/authentication/multi-factor-authentication)| 一项安全性设置，它会采用几种形式的身份验证和验证，再允许访问安全信息。 |
 
 ## <a name="backup-and-disaster-recovery"></a>备份和灾难恢复
 |服务|描述|
 |------|--------|
 | [Azure&nbsp;备份](/azure/backup/backup-introduction-to-azure-backup)| 一项基于 Azure 的服务，用于备份和还原 Azure 云中的数据。 |
-| [Azure&nbsp;Site&nbsp;Recovery](/azure/site-recovery/site-recovery-overview)|一项联机服务，它可将在物理计算机和虚拟机 (VM) 上运行的工作负荷从主站点复制到辅助位置，以便在出现故障后恢复服务。 |
+| [Azure&nbsp;&nbsp;站点恢复](/azure/site-recovery/site-recovery-overview)|一项联机服务，它可将在物理计算机和虚拟机 (VM) 上运行的工作负荷从主站点复制到辅助位置，以便在出现故障后恢复服务。 |
 
 ## <a name="networking"></a>网络
 |服务|描述|
 |------|--------|
-| [网络&nbsp;安全&nbsp;组](/azure/virtual-network/virtual-networks-nsg)| 一项基于网络的访问控制功能，它使用 5 元组进行允许或拒绝决策。  |
+| [网络安全&nbsp;&nbsp;组](/azure/virtual-network/virtual-networks-nsg)| 一项基于网络的访问控制功能，它使用 5 元组进行允许或拒绝决策。  |
 | [Azure VPN 网关](/azure/vpn-gateway/vpn-gateway-about-vpngateways)| 一种网络设备，用作 VPN 终结点，以允许跨界访问 Azure 虚拟网络。  |
 | [Azure 应用程序网关](/azure/application-gateway/application-gateway-introduction)|高级 Web 应用程序负载均衡器，可基于 URL 进行路由并执行 SSL 卸载。 |
-|[Web 应用程序防火墙](/azure/frontdoor/waf-overview) (WAF)|应用程序网关的一项功能，可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞危害|
+|[Web 应用程序防火墙](/azure/frontdoor/waf-overview)（WAF）|应用程序网关的一项功能，可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞危害|
 | [Azure 负载均衡器](/azure/load-balancer/load-balancer-overview)|TCP/UDP 应用程序网络负载均衡器。 |
 | [Azure ExpressRoute](/azure/expressroute/expressroute-introduction)| 本地网络和 Azure 虚拟网络之间的专用 WAN 链接。 |
 | [Azure 流量管理器](/azure/traffic-manager/traffic-manager-overview)| 一种全局 DNS 负载均衡器。|
 | [Azure 应用程序代理](/azure/active-directory/active-directory-application-proxy-get-started)| 用于保护远程访问本地托管 Web 应用程序的身份验证前端。 |
 |[Azure 防火墙](/azure/firewall/overview)|是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。|
-|[Azure DDoS 防护](/azure/virtual-network/ddos-protection-overview)|与应用程序设计最佳做法相结合，可提供针对 DDoS 攻击的防御。|
+|[Azure DDoS 保护](/azure/virtual-network/ddos-protection-overview)|与应用程序设计最佳做法相结合，可提供针对 DDoS 攻击的防御。|
 |[虚拟网络服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)|可通过直接连接，将 VNet 的虚拟网络专用地址空间和标识扩展到 Azure 服务。|

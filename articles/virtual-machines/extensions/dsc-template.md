@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
 ms.openlocfilehash: ef781653332984a7fb6d71ef91d53cbf77e6c91c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72437973"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration 扩展与 Azure 资源管理器模板
@@ -81,7 +81,7 @@ DSC 扩展继承默认扩展属性。
 ## <a name="template-example-for-windows-virtual-machine-scale-sets"></a>Windows 虚拟机规模集的模板示例
 
 虚拟机规模集节点具有 **properties** 节，其中包含 **VirtualMachineProfile, extensionProfile** 属性。
-在“扩展”下，添加 DSC 扩展的详细信息。
+在“扩展”下，添加 DSC 扩展的详细信息****。
 
 DSC 扩展继承默认扩展属性。
 有关详细信息，请参阅 [VirtualMachineScaleSetExtension 类](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet)。
@@ -177,15 +177,15 @@ DSC 扩展继承默认扩展属性。
 
 ## <a name="details"></a>详细信息
 
-| 属性名称 | Type | 描述 |
+| 属性名称 | 类型 | 说明 |
 | --- | --- | --- |
-| settings.wmfVersion |字符串 |指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为 **latest** 可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”、“5.1”和“latest”。 这些可能值将来可能会更新。 默认值为 **latest**。 |
+| settings.wmfVersion |字符串 |指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为 **latest** 可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”、“5.1”和“latest”****************。 这些可能值将来可能会更新。 默认值为**最新**。 |
 | settings.configuration.url |字符串 |指定要从中下载 DSC 配置 .zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，请将 **protectedSettings.configurationUrlSasToken** 属性设置为 SAS 令牌的值。 如果已定义 **settings.configuration.script** 或 **settings.configuration.function**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置位置配置管理器 (LCM) 元数据，并应提供参数。 |
 | settings.configuration.script |字符串 |指定包含 DSC 配置定义的脚本的文件名。 此脚本必须位于从 **settings.configuration.url** 属性所指定的 URL 下载的 zip 文件的根文件夹中。 如果已定义 **settings.configuration.url** 或 **settings.configuration.script**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置 LCM 元数据，并应提供参数。 |
 | settings.configuration.function |字符串 |指定 DSC 配置的名称。 命名的配置必须包含在 **settings.configuration.script** 定义的脚本中。 如果已定义 **settings.configuration.url** 或 **settings.configuration.function**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置 LCM 元数据，并应提供参数。 |
 | settings.configurationArguments |集合 |定义想要传递到 DSC 配置的任何参数。 此属性未加密。 |
 | settings.configurationData.url |字符串 |指定 URL，将从中下载配置数据 (.pds1) 文件用作 DSC 配置的输入。 如果提供的 URL 需要 SAS 令牌才能访问，请将 **protectedSettings.configurationDataUrlSasToken** 属性设置为 SAS 令牌的值。 |
-| settings.privacy.dataCollection |字符串 |启用或禁用遥测数据收集。 此属性的可能值只有 **Enable**、**Disable**、 **''** 或 **$null**。 将此属性留空或 null 可启用遥测。 默认值为 **''** 。 有关详细信息，请参阅 [Azure DSC 扩展数据集合](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)。 |
+| settings.privacy.dataCollection |字符串 |启用或禁用遥测数据收集。 此属性的唯一可能值是**启用**、**禁用****、''或****$null**。 将此属性留空或 null 可启用遥测。 默认值为 **'。** 有关详细信息，请参阅 [Azure DSC 扩展数据集合](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)。 |
 | settings.advancedOptions.downloadMappings |集合 |定义要从中下载 WMF 的备选位置。 有关详细信息，请参阅 [Azure DSC 扩展 2.8 以及如何将扩展依赖项下载内容映射到自己的位置](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx)。 |
 | protectedSettings.configurationArguments |集合 |定义想要传递到 DSC 配置的任何参数。 此属性已加密。 |
 | protectedSettings.configurationUrlSasToken |字符串 |指定用于访问 **settings.configuration.url** 所定义的 URL 的 SAS 令牌。 此属性已加密。 |
@@ -196,17 +196,17 @@ DSC 扩展继承默认扩展属性。
 有关以下值的详细信息，请参阅[本地配置管理器基本设置](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings)。
 使用 DSC 扩展默认配置脚本只能配置下表中列出的 LCM 属性。
 
-| 属性名称 | Type | 描述 |
+| 属性名称 | 类型 | 说明 |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |必需的属性。 指定节点用于注册到 Azure 自动化服务的密钥作为 PowerShell 凭据对象的密码。 可以使用 **listkeys** 方法针对自动化帐户自动发现此值。  请参阅[示例](#example-using-referenced-azure-automation-registration-values)。 |
 | settings.configurationArguments.RegistrationUrl |字符串 |必需的属性。 指定节点将尝试注册的自动化终结点的 URL。 可以使用 **reference** 方法针对自动化帐户自动发现此值。 |
 | settings.configurationArguments.NodeConfigurationName |字符串 |必需的属性。 在自动化帐户中指定要分配给节点的节点配置。 |
-| settings.configurationArguments.ConfigurationMode |字符串 |指定 LCM 的模式。 有效选项包括 **ApplyOnly**、**ApplyandMonitor** 和 **ApplyandAutoCorrect**。  默认值为 **ApplyandMonitor**。 |
-| settings.configurationArguments.RefreshFrequencyMins | uint32 | 指定 LCM 将尝试向自动化帐户查询更新的频率。  默认值为 **30**。  最小值为 **15**。 |
-| settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | 指定 LCM 将验证当前配置的频率。 默认值为 **15**。 最小值为 **15**。 |
-| settings.configurationArguments.RebootNodeIfNeeded | 布尔值 | 指定在 DSC 操作请求时是否可能会自动重新启动节点。 默认值为“false”。 |
-| settings.configurationArguments.ActionAfterReboot | 字符串 | 指定在应用配置时重新启动后会发生什么情况。 有效选项为 **ContinueConfiguration** 和 **StopConfiguration**。 默认值为 **ContinueConfiguration**。 |
-| settings.configurationArguments.AllowModuleOverwrite | 布尔值 | 指定 LCM 是否会覆盖节点上的现有模块。 默认值为“false”。 |
+| settings.configurationArguments.ConfigurationMode |字符串 |指定 LCM 的模式。 有效选项包括 **"仅应用**"、**应用和监视**以及**应用和自动更正**。  默认值为 **"应用和监视**"。 |
+| settings.configurationArguments.RefreshFrequencyMins | uint32 | 指定 LCM 将尝试向自动化帐户查询更新的频率。  默认值为**30**。  最小值为**15**。 |
+| settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | 指定 LCM 将验证当前配置的频率。 默认值为**15**。 最小值为**15**。 |
+| settings.configurationArguments.RebootNodeIfNeeded | boolean | 指定在 DSC 操作请求时是否可能会自动重新启动节点。 默认值为**false**。 |
+| settings.configurationArguments.ActionAfterReboot | 字符串 | 指定在应用配置时重新启动后会发生什么情况。 有效选项是 **"继续配置**"和 **"停止配置**"。 默认值为 **"继续配置**"。 |
+| settings.configurationArguments.AllowModuleOverwrite | boolean | 指定 LCM 是否会覆盖节点上的现有模块。 默认值为**false**。 |
 
 ## <a name="settings-vs-protectedsettings"></a>settings 与 protectedSettings
 
@@ -255,7 +255,7 @@ DSC 扩展继承默认扩展属性。
 
 以下示例摘自 [DSC 扩展处理程序概述](dsc-overview.md)。
 此示例使用 Resource Manager 模板而不是cmdlet 来部署该扩展。
-保存 Iisinstall.ps1 配置，将它放在 .zip 文件中（例如 `iisinstall.zip`），然后将该文件上传到可访问的 URL 中。
+保存 IisInstall.ps1 配置，将它放在 .zip 文件（示例：`iisinstall.zip`）中，并将该文件上传到可访问的 URL 中。
 此示例使用 Azure Blob 存储，但可以从任意位置下载 .zip 文件。
 
 在资源管理器模板中，以下代码指示 VM 下载正确的文件并运行适当的 PowerShell 函数：
@@ -345,7 +345,7 @@ DSC 扩展继承默认扩展属性。
 | protectedSettings.configurationUrlSasToken |settings.SasToken |
 | protectedSettings.configurationDataUrlSasToken |protectedSettings.DataBlobUri 中的 SAS 令牌 |
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 下面是可能会遇到的一些错误及其解决方法。
 
@@ -356,7 +356,7 @@ DSC 扩展继承默认扩展属性。
 “WmfVersion 为‘{0}’。
 唯一的可能值为 ... 和 'latest'”。
 
-**问题**：不允许使用提供的值。
+**问题**：不允许提供的值。
 
 **解决方法**：将无效值更改为有效值。
 有关详细信息，请参阅[详细信息](#details)中的表格。
@@ -367,7 +367,7 @@ DSC 扩展继承默认扩展属性。
 
 **问题**：提供的 URL 无效。
 
-**解决方法**：检查提供的所有 URL。
+**解决方案**：检查所有提供的 URL。
 确保所有 URL 都解析为扩展可在远程计算机上访问的有效位置。
 
 ### <a name="invalid-registrationkey-type"></a>无效 RegistrationKey 类型
@@ -420,7 +420,7 @@ DSC 扩展继承默认扩展属性。
 
 **问题**：定义的属性需要另一个缺少的属性。
 
-**解决方法**：
+**解决方案**：
 
 - 提供缺少的属性。
 - 删除需要缺失属性的属性。

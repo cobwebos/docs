@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
 ms.openlocfilehash: ef9d3c7c479df9c71a855f0a243b5b9d0da947d7
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68359504"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>使用 Azure PowerShell 命令可创建一个空的云服务容器

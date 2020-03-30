@@ -10,15 +10,15 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.openlocfilehash: 060e1d01e5f078bad9852ae35d0af9142192a7b6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68985619"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 页 Blob 概述
 
-Azure 存储提供了三种类型的 Blob 存储：块 Blob、追加 Blob 和页 Blob。 块 Blob 由块组成，非常适合用于存储文本或二进制文件，以及高效上传大型文件。 追加 Blob 也由块组成，但它们已针对追加操作进行优化，因此非常适合用于日志记录方案。 页 Blob 由总大小可达 8 TB 的 512 字节页面组成，专为频繁的随机读/写操作而设计。 页 Blob 是 Azure IaaS 磁盘的基础。 本文重点介绍页 Blob 的功能和优势。
+Azure 存储提供三种类型的 Blob 存储：块 Blob、追加 Blob 和页 Blob。 块 Blob 由块组成，非常适合用于存储文本或二进制文件，以及高效上传大型文件。 追加 Blob 也由块组成，但它们已针对追加操作进行优化，因此非常适合用于日志记录方案。 页 Blob 由总大小可达 8 TB 的 512 字节页面组成，专为频繁的随机读/写操作而设计。 页 Blob 是 Azure IaaS 磁盘的基础。 本文重点介绍页 Blob 的功能和优势。
 
 页 Blob 是 512 字节页面的集合，提供读/写任意字节范围的功能。 因此，页 Blob 非常适用于存储基于索引的稀疏数据结构，如虚拟机和数据库的 OS 磁盘与数据磁盘。 例如，Azure SQL 数据库使用页 Blob 作为数据库的基础持久性存储。 此外，页 Blob 往往还用于支持基于范围的更新的文件。  
 
@@ -31,7 +31,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 第一方 Microsoft 服务（例如 Azure Site Recovery 和 Azure 备份）以及许多第三方开发商已使用页 Blob 的 REST 接口实现了行业领先的创新。 下面是在 Azure 上实现的一些独特方案： 
 
 * 应用程序主导的增量快照管理：应用程序可以利用页 Blob 快照和 REST API 来保存应用程序检查点，而不会产生高昂的数据复制成本。 Azure 存储支持页 Blob 的本地快照，这类快照不要求复制整个 blob。 使用这些公共快照 API 还可以访问和复制快照之间的增量数据。
-* 将应用程序和数据从本地实时迁移到云中：复制本地数据并使用 REST API 将数据直接写入 Azure 页 Blob，同时，本地 VM 可继续保持运行。 与目标同步后，可以使用该数据快速故障转移到 Azure VM。 这样，便可以在几乎不造成停机的情况下，将 VM 和虚拟磁盘从本地迁移到云中，因为数据迁移在后台发生，同时我们可以继续使用 VM，并且故障转移所需的停机时间很短（以分钟计）。
+* 应用程序和数据从内部部署实时迁移到云：复制内部本地数据，并使用 REST API 直接写入 Azure 页 Blob，同时本地 VM 继续运行。 与目标同步后，可以使用该数据快速故障转移到 Azure VM。 这样，便可以在几乎不造成停机的情况下，将 VM 和虚拟磁盘从本地迁移到云中，因为数据迁移在后台发生，同时我们可以继续使用 VM，并且故障转移所需的停机时间很短（以分钟计）。
 * [基于 SAS](../common/storage-sas-overview.md) 的共享访问，可以实现支持并发控制的方案，例如多个读取者和单个写入者。
 
 ## <a name="page-blob-features"></a>页 Blob 功能
@@ -46,7 +46,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 #### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>创建指定大小的空页 Blob
 
-为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount*）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例所示。 然后，该示例展示了如何先创建对 CloudBlobContainer 对象的引用，再创建容器 (testvhds)（如果它尚未存在）。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 若要创建页 blob, 请调用[CloudPageBlob](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create), 传入要创建的 blob 的最大大小。 *blobSize* 必须是 512 字节的倍数。
+为了创建页 Blob，让我们先创建一个 **CloudBlobClient** 对象，其中包含用于访问存储帐户（图 1 中的 *pbaccount*）的 Blob 存储的基 URI；另外创建 **StorageCredentialsAccountAndKey** 对象，如以下示例所示。 然后，该示例显示创建对**CloudBlob 容器**对象的引用，然后创建容器 *（testvhds），* 如果该容器不存在。 然后，使用 **CloudBlobContainer** 对象，通过指定要访问的页 Blob 名称 (os4.vhd)，来创建对 **CloudPageBlob** 对象的引用。 要创建页面 Blob，请调用[CloudPageBlob.Create，](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)以最大大小传递要创建的 Blob。 *blobSize* 必须是 512 字节的倍数。
 
 ```csharp
 using Microsoft.Azure;

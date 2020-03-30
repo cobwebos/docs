@@ -4,27 +4,26 @@ description: 了解 Azure 云环境中运行的多租户软件即服务 (SaaS) �
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: seoapril2019
-ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: ad7bd660ee685b490fb79c7e63fd3c5fce557977
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.custom: seoapril2019
+ms.openlocfilehash: 956d74467c69d9924d26f9cae8d902a6ddd84496
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822064"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067492"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>多租户 SaaS 数据库租户模式
 
-本文介绍可用于多租户 SaaS 应用程序的各种租户模型。
+本文介绍了适用于多租户 SaaS 应用程序的各种租赁模型。
 
-在设计多租户 SaaS 应用程序时，必须慎重选择最符合应用程序需要的租户模型。  租户模型确定如何将每个租户的数据映射到存储。  所选的租户模型会影响应用程序设计和管理。  今后改用不同的模型可能需要付出一定的代价。
+在设计多租户 SaaS 应用程序时，必须慎重选择最符合应用程序需要的租户模型。  租赁模型确定每个租户的数据如何映射到存储。  所选的租户模型会影响应用程序设计和管理。  今后改用不同的模型可能需要付出一定的代价。
 
-## <a name="a-saas-concepts-and-terminology"></a>答： SaaS 概念和术语
+## <a name="a-saas-concepts-and-terminology"></a>A. SaaS 概念和术语
 
 在软件即服务 (SaaS) 模型中，贵公司不会销售软件的*许可证*。 而是，每个客户都会向贵公司支付租金，使每个客户成为贵公司的*租户*。
 
@@ -32,23 +31,23 @@ ms.locfileid: "73822064"
 
 术语*租户模型*是指租户存储数据的组织方式：
 
-- *单租户：* &nbsp;每个数据库仅存储来自一个租户的数据。
-- *多租户：* &nbsp;每个数据库都存储来自多个独立租户的数据（使用保护数据隐私的机制）。
+- *单租户：*&nbsp;每个数据库仅存储来自一个租户的数据。
+- *多租户：*&nbsp;每个数据库存储来自多个独立租户的数据（具有保护数据隐私的机制）。
 - 混合租户模式也可用。
 
 ## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. 如何选择适当的租户模型
 
 一般情况下，租户模型不会影响应用程序的功能，但可能会影响总体解决方案的其他方面。  以下条件用于评估每个模型：
 
-- **可伸缩性：**
+- **可 伸缩 性：**
     - 租户数目。
     - 每个租户的存储量。
     - 总存储量。
     - 工作负荷。
 
-- **租户隔离：** &nbsp;数据隔离和性能（一个租户的工作负荷是否影响其他租户）。
+- **租户隔离：**&nbsp;数据隔离和性能（一个租户的工作量是否影响其他租户）。
 
-- **每个租户的成本：** &nbsp;数据库成本。
+- **每租户成本：**&nbsp;数据库成本。
 
 - **开发复杂性：**
     - 架构更改。
@@ -60,9 +59,9 @@ ms.locfileid: "73822064"
     - 还原租户。
     - 灾难恢复。
 
-- **可自定义性：** &nbsp;易于支持租户特定或租户类特定的架构自定义。
+- **可自定义性：**&nbsp;易于支持特定于租户的架构自定义或特定于租户类的架构自定义。
 
-有关租户的讨论侧重于数据层。  但是，请花费片刻时间思考一下应用程序层。  应用程序层被视为单一实体。  如果将应用程序划分成多个小型组件，所选的租户模型可能会更改。  在所用的租户和存储技术或平台方面，可以不同的方式对待某些组件。
+有关租户的讨论侧重于数据层。**  但是，请花费片刻时间思考一下应用程序层。**  应用程序层被视为单一实体。  如果将应用程序划分成多个小型组件，所选的租户模型可能会更改。  在所用的租户和存储技术或平台方面，可以不同的方式对待某些组件。
 
 ## <a name="c-standalone-single-tenant-app-with-single-tenant-database"></a>C. 包含单租户数据库的独立单租户应用
 
@@ -78,11 +77,11 @@ ms.locfileid: "73822064"
 
 #### <a name="vendor-management"></a>供应商管理
 
-供应商可以访问所有独立应用实例中的所有数据库，即使应用实例安装在不同的租户订阅中。  访问是通过 SQL 连接实现的。  这种跨实例访问可让供应商出于报告或分析目的，在集中位置进行架构管理和跨数据库查询。  如果需要此类集中化管理，必须部署一个可将租户标识符映射到数据库 URI 的目录。  Azure SQL 数据库提供一个分片库，将该库与 SQL 数据库一起使用可以提供目录。  分片库正式命名为[弹性数据库客户端库][docu-elastic-db-client-library-536r]。
+供应商可以访问所有独立应用实例中的所有数据库，即使应用实例安装在不同的租户订阅中。  访问是通过 SQL 连接实现的。  这种跨实例访问可让供应商出于报告或分析目的，在集中位置进行架构管理和跨数据库查询。  如果需要此类集中化管理，必须部署一个可将租户标识符映射到数据库 URI 的目录。  Azure SQL 数据库提供一个分片库，将该库与 SQL 数据库一起使用可以提供目录。  该分片库的正式名称为[弹性数据库客户端库][docu-elastic-db-client-library-536r]。
 
 ## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D. 采用“每个租户各有数据库”模型的多租户应用
 
-接下来的这个模式使用包含许多数据库的多租户应用程序，这些数据库都是单租户数据库。  针对每个新租户预配一个新数据库。  可通过为每个节点添加更多的资源来纵向扩展应用程序层。  或者，可通过添加更多的节点来横向扩展应用。  缩放基于工作负荷，不受各个数据库的数目或规模的影响。
+接下来的这个模式使用包含许多数据库的多租户应用程序，这些数据库都是单租户数据库。  针对每个新租户预配一个新数据库。  可通过为每个节点添加更多的资源来纵向扩展应用程序层。**  或者，可通过添加更多的节点来横向扩展应用。**  缩放基于工作负荷，不受各个数据库的数目或规模的影响。
 
 ![设计采用“每个租户各有数据库”模型的多租户应用。][image-mt-app-db-per-tenant-132d]
 
@@ -98,13 +97,13 @@ ms.locfileid: "73822064"
 
 ![使用弹性池设计采用“每个租户各有数据库”模型的多租户应用。][image-mt-app-db-per-tenant-pool-153p]
 
-Azure SQL 数据库提供所需的工具用于配置、监视和管理共享。  池级和数据库级性能指标都在 Azure 门户中提供，并且通过 Azure Monitor 日志提供。  指标可以提供聚合性能和租户特定性能的深入见解。  可以在池之间移动单个数据库，以便向特定的租户提供保留的资源。  使用这些工具可确保以经济高效的方式获得良好性能。
+Azure SQL 数据库提供所需的工具用于配置、监视和管理共享。  池级和数据库级性能指标在 Azure 门户中以及通过 Azure 监视器日志都可用。  指标可以提供聚合性能和租户特定性能的深入见解。  可以在池之间移动单个数据库，以便向特定的租户提供保留的资源。  使用这些工具可确保以经济高效的方式获得良好性能。
 
 #### <a name="operations-scale-for-database-per-tenant"></a>“每个租户各有数据库”模型的操作规模
 
 Azure SQL 数据库平台提供多种管理功能，用于大规模管理大量数据库（例如 100,000 以上的数据库）。  这些功能使“每个租户各有数据库”模式变得合理。
 
-例如，假设某个系统使用一个包含 1000 个租户的数据库作为其唯一的数据库。  该数据库可能包含 20 个索引。  如果该系统改用 1000 个单租户数据库，则索引数量会提高到 20,000 个。  在[自动优化][docu-sql-db-automatic-tuning-771a]过程中，SQL 数据库中默认启用自动索引功能。  自动索引会自动管理所有 20,000 个索引，以及这些索引的持续创建和删除优化操作。  这些自动操作发生在单个数据库内部，不受其他数据库中类似操作的协调或限制。  自动索引在繁忙数据库中处理索引的方式与在不太繁忙的数据库中不同。  如果必须手动完成这种异常繁重的管理任务，则以“每个租户各有数据库”规模进行这种索引管理自定义是不切实际的。
+例如，假设某个系统使用一个包含 1000 个租户的数据库作为其唯一的数据库。  该数据库可能包含 20 个索引。  如果该系统改用 1000 个单租户数据库，则索引数量会提高到 20,000 个。  在[自动优化][docu-sql-db-automatic-tuning-771a]过程中，默认会在 SQL 数据库中启用自动索引功能。  自动索引会自动管理所有 20,000 个索引，以及这些索引的持续创建和删除优化操作。  这些自动操作发生在单个数据库内部，不受其他数据库中类似操作的协调或限制。  自动索引在繁忙数据库中处理索引的方式与在不太繁忙的数据库中不同。  如果必须手动完成这种异常繁重的管理任务，则以“每个租户各有数据库”规模进行这种索引管理自定义是不切实际的。
 
 其他可以正常缩放的管理功能包括：
 
@@ -115,7 +114,7 @@ Azure SQL 数据库平台提供多种管理功能，用于大规模管理大量�
 
 #### <a name="automation"></a>自动化
 
-可以编写管理操作的脚本并通过[devops][http-visual-studio-devops-485m]模型提供这些操作。  甚至可以在应用程序中自动化和公开操作。
+可以编写管理操作的脚本，并通过 [devops][http-visual-studio-devops-485m] 模型提供这些操作。  甚至可以在应用程序中自动化和公开操作。
 
 例如，可将单个租户自动恢复到以前的某个时间点。  恢复操作只需还原一个存储租户的单租户数据库。  此还原操作不会影响其他租户，确保以每个租户的粒度级完成管理操作。
 
@@ -125,9 +124,9 @@ Azure SQL 数据库平台提供多种管理功能，用于大规模管理大量�
 
 #### <a name="tenant-isolation-is-sacrificed"></a>丧失租户隔离性
 
-*数据：* &nbsp;使用多租户数据库势必会丧失租户隔离性。  多个租户的数据统一存储在一个数据库中。  在开发期间，需确保查询永远不会公开多个租户中的数据。  SQL 数据库支持[行级别安全性][docu-sql-svr-db-row-level-security-947w]，这可以强制从查询返回的数据的作用域限定为单个租户。
+*数据：*&nbsp;多租户数据库必然牺牲租户隔离。  多个租户的数据统一存储在一个数据库中。  在开发期间，需确保查询永远不会公开多个租户中的数据。  SQL 数据库支持[行级安全性][docu-sql-svr-db-row-level-security-947w]，这种安全性可以强制某个查询返回的数据划归到单个租户。
 
-*处理：* &nbsp;多租户数据库在其所有租户之间共享计算和存储资源。  可将数据库作为一个整体进行监视，确保其性能可接受。  但是，Azure 系统不提供内置的方式来监视或管理单个租户对这些资源的使用。  因此，多租户数据库增大了遇到干扰性邻居的风险：一个过度活跃的租户的工作负荷影响同一数据库中其他租户的性能体验。  其他应用程序级监视可以监视租户级性能。
+*处理：*&nbsp;多租户数据库共享其所有租户的计算和存储资源。  可将数据库作为一个整体进行监视，确保其性能可接受。  但是，Azure 系统不提供内置的方式来监视或管理单个租户对这些资源的使用。  因此，多租户数据库增大了遇到干扰性邻居的风险：一个过度活跃的租户的工作负荷影响同一数据库中其他租户的性能体验。  其他应用程序级监视可以监视租户级性能。
 
 #### <a name="lower-cost"></a>成本更低
 
@@ -185,7 +184,7 @@ SQL 数据库提供一个可与分片库和目录数据库结合使用的拆分/
 
 | 度量 | 独立应用 | 每个租户各有数据库 | 分片多租户 |
 | :---------- | :------------- | :------------------ | :------------------- |
-| 缩放 | 中型<br />1 到数百个 | 很高<br />1 到数十万个 | 不受限制<br />1 到数百万个 |
+| 缩放 | 中型<br />1 到数百个 | 很高<br />1 到数十万个 | 无限制<br />1 到数百万个 |
 | 租户隔离 | 很高 | 高 | 低；任何单租户（即独自在 MT 数据库中的租户）除外。 |
 | 每个租户的数据库成本 | 高；大小根据峰值而定。 | 低；使用池。 | 最低，适用于 MT 数据库中的小租户。 |
 | 性能监视和管理 | 仅限每租户 | 聚合 + 每租户 | 聚合；不过，对于单租户，将应用“仅限每租户”模式。 |
@@ -195,9 +194,9 @@ SQL 数据库提供一个可与分片库和目录数据库结合使用的拆分/
 
 ## <a name="next-steps"></a>后续步骤
 
-- [部署和浏览使用 "每租户一个数据库" SaaS 模型的多租户 Wingtip 应用程序-Azure SQL 数据库][docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]
+- [部署和探索使用“每个租户各有数据库”SaaS 模型的多租户 Wingtip 应用程序 - Azure SQL 数据库][docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]
 
-- [欢迎使用 Wingtip 票证示例 SaaS Azure SQL 数据库租户应用][docu-saas-tenancy-welcome-wingtip-tickets-app-384w]
+- [欢迎使用 Wingtip Tickets 示例 SaaS Azure SQL 数据库租户应用][docu-saas-tenancy-welcome-wingtip-tickets-app-384w]
 
 
 <!--  Article link references.  -->
@@ -214,11 +213,11 @@ SQL 数据库提供一个可与分片库和目录数据库结合使用的拆分/
 
 <!--  Image references.  -->
 
-[image-standalone-app-st-db-111a]: media/saas-tenancy-app-design-patterns/saas-standalone-app-single-tenant-database-11.png "设计恰好包含一个单租户数据库的独立应用。"
+[image-standalone-app-st-db-111a]: media/saas-tenancy-app-design-patterns/saas-standalone-app-single-tenant-database-11.png "使用一个单租户数据库设计独立应用程序。"
 
 [image-mt-app-db-per-tenant-132d]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-13.png "设计采用“每个租户各有数据库”模型的多租户应用。"
 
 [image-mt-app-db-per-tenant-pool-153p]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-pool-15.png "使用弹性池设计采用“每个租户各有数据库”模型的多租户应用。"
 
-[image-mt-app-sharded-mt-db-174s]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-sharded-multi-tenant-databases-17.png "设计采用分片多租户数据库的多租户应用。"
+[image-mt-app-sharded-mt-db-174s]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-sharded-multi-tenant-databases-17.png "使用分片多租户数据库设计多租户应用。"
 

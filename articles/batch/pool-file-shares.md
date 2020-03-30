@@ -15,10 +15,10 @@ ms.date: 05/24/2018
 ms.author: labrenne
 ms.custom: ''
 ms.openlocfilehash: 156dad25af5abd1b4d5db32569faf09a23fadfb1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022505"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>将 Batch 池与 Azure 文件共享配合使用
@@ -50,8 +50,8 @@ Batch 原生支持通过 API 使用 Azure 存储 Blob 来读取和写入数据�
 
 例如，包含 `net use` 命令，以将文件共享装载为每个任务命令行的一部分。 若要装载文件共享，需要以下凭据：
 
-* **用户名**：AZURE\\\<存储帐户名称\>，例如 AZURE\\*mystorageaccountname*
-* **密码**： \<StorageAccountKeyWhichEnds in = = >，例如*XXXXXXXXXXXXXXXXXXXXX = =*
+* **用户名**：AZURE\\\<存储帐户\>名称，例如，AZURE\\*mystorage 帐户名称*
+* **密码** \<： 存储帐户密钥在 *> 中结束， 例如 *，XXXXXXXXXXXXXXXXXXXXX_*
 
 以下命令在存储帐户 *mystorageaccountname* 中将文件共享 *myfileshare* 装载为 *S:* 驱动器：
 
@@ -117,7 +117,7 @@ tasks.Add(task);
 
 ## <a name="mount-a-share-on-a-linux-pool"></a>在 Linux 池中装载共享
 
-可以使用 [CIFS 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 以下示例演示如何在 Ubuntu 16.04 LTS 计算节点池中装载文件共享。 如果使用不同的 Linux 分发版，则一般步骤与此相似，但需要使用适用于该分发版的包管理器。 有关详细信息和其他示例，请参阅[在 Linux 中使用 Azure 文件](../storage/files/storage-how-to-use-files-linux.md)。
+Azure 文件共享可以使用[CIFS 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)安装在 Linux 发行版中。 以下示例演示如何在 Ubuntu 16.04 LTS 计算节点池中装载文件共享。 如果使用不同的 Linux 分发版，则一般步骤与此相似，但需要使用适用于该分发版的包管理器。 有关详细信息和其他示例，请参阅[在 Linux 中使用 Azure 文件](../storage/files/storage-how-to-use-files-linux.md)。
 
 首先，以管理员用户标识安装 `cifs-utils` 包，并在本地文件系统中创建装入点（例如 */mnt/MyAzureFileShare*）。 可以在文件系统上的任何位置创建装入点的文件夹，但是通用约定是在 `/mnt` 文件夹下创建此文件夹。 请务必不要直接在 `/mnt`（适用于 Ubuntu）或 `/mnt/resource`（适用于其他分发版）中创建装入点。
 
@@ -127,8 +127,8 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 
 然后，运行 `mount` 命令并提供以下凭据来装载文件共享：
 
-* **用户名**：\<存储帐户名称\>，例如 *mystorageaccountname*
-* **密码**： \<StorageAccountKeyWhichEnds in = = >，例如*XXXXXXXXXXXXXXXXXXXXX = =*
+* **用户名**：\<存储帐户名称\>，例如，*我的存储帐户名称*
+* **密码** \<： 存储帐户密钥在 *> 中结束， 例如 *，XXXXXXXXXXXXXXXXXXXXX_*
 
 以下命令在存储帐户 *mystorageaccountname* 中的 */mnt/MyAzureFileShare* 装载文件共享 *myfileshare*： 
 

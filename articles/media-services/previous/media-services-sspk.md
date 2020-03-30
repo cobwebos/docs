@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
 ms.openlocfilehash: 59ac3ab2e70bfa00f19bae7e551780f2b2bb8ccb
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096716"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>授权 Microsoft® 平滑流式处理客户端移植工具包 
@@ -29,7 +29,7 @@ Microsoft 平滑流式处理客户端移植工具包（简称 **SSPK**）是经�
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>说明
+## <a name="description"></a>描述
 经过授权的 SSPK 可以提供优异的商业价值。 SSPK 许可证为行业提供：
 
 * 采用 C++ 的平滑流式处理移植工具包源代码 
@@ -71,11 +71,11 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * 每年的前 10,000 个设备实现无需支付特许权使用费 
 
 ## <a name="licensing-procedure-and-sspk-access"></a>许可过程和 SSPK 访问权限
-有关所有许可查询的信息，请发送电子邮件到 [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com)。
+电子邮件[sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com)，用于所有许可查询。
 
 已注册的中期受证者可以访问 [SSPK 分发门户](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/)。
 
-中期和最终 SSPK 受证者可以将技术问题提交到 [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)。
+临时和最终的 SSPK 被许可人可以向[smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)提交技术问题。
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft 平滑流式处理客户端中期产品协议受证人
 
@@ -91,7 +91,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * EchoStar Purchasing Corporation
 * Enseo, Inc.
 * Fluendo S.A.
-* 广州 Shikun
+* 广州世坤电子有限公司
 * HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
@@ -125,9 +125,9 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * Dongguan Digital AV Technology Corp., Ltd.
 * EchoStar Purchasing Corporation
 * Enseo, Inc.
-* 限制的 FilmFlex 电影
+* FilmFlex Movies Limited
 * Fluendo S.A.
-* FUNAI，有限公司
+* FUNAI ELECTRIC CO., LTD
 * Gibson Innovations Limited
 * Haier Information Applicantion S.R.L
 * HANDAN BroadInfoCom Co., Ltd.
@@ -141,7 +141,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * Orange SA
 * Saffron Digital Limited
 * Sagemcom Broadband SAS
-* Shenzhen Chuangwei-RGB
+* Shenzhen Chuangwei-RGB Electronics Co.,Ltd.
 * Shenzhen Coship Electronics CO., LTD
 * Shenzhen Jiuzhou Electric Co., Ltd
 * Shenzhen Skyworth Digital Technology Co., Ltd

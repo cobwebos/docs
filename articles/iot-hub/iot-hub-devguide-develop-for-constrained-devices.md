@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心使用 IoT 中心 C SDK 开发受约束的设备
+title: 使用 IoT 中心 C SDK 为受限设备开发 Azure IoT 中心
 description: 开发人员指南：指导如何使用 Azure IoT SDK 针对受限制设备进行开发。
 author: robinsh
 ms.service: iot-hub
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: robinsh
 ms.openlocfilehash: a1918a99efcdcc5764140093ad422f7887ca3c88
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954696"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>使用 Azure IoT C SDK 针对受限制设备进行开发
 
 Azure IoT 中心 C SDK 使用 ANSI C (C99) 编写，因而非常适合用于运行各种平台，磁盘和内存占用都很小。 建议 RAM 至少为 64 KB，但具体内存占用取决于使用的协议、打开的连接数以及目标平台。
 > [!NOTE]
-> * Azure IoT C SDK 会定期发布资源消耗信息，以帮助进行开发。  请访问我们的[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)并查看最新的基准。
+> * Azure IoT C SDK 定期发布资源消耗信息以帮助开发。  请访问我们的[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)并查看最新的基准。
 >
 
 C SDK 可通过 apt-get、NuGet 和 MBED 以程序包的形式提供。 若要以受限制设备为目标，则可能需要为目标平台在本地构建 SDK。 本文档演示如何使用 [cmake](https://cmake.org/) 删除特定功能，从而缩小 C SDK 占用的空间。 此外，本文档讨论使用受限制设备的最佳编程模型。
@@ -71,11 +71,11 @@ strip -s <Path_to_executable>
 
 ### <a name="avoid-using-the-serializer"></a>避免使用序列化程序
 
-C SDK 具有可选的 [C SDK 序列化程序](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer)，它允许使用声明式映射表来定义方法和设备孪生属性。 序列化程序旨在简化开发，但也会增加开销，因而对于受限制设备而言不是最优选择。 在这种情况下，请考虑使用原始客户端 API，并使用轻量级分析程序（例如 [parson](https://github.com/kgabis/parson)）分析 JSON。
+C SDK 具有可选的 [C SDK 序列化程序](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer)，它允许使用声明式映射表来定义方法和设备孪生属性。 序列化程序旨在简化开发，但也会增加开销，因而对于受限制设备而言不是最优选择。 在这种情况下，请考虑使用基元客户端 API 并使用轻量级解析器（如[parson）](https://github.com/kgabis/parson)解析 JSON。
 
 ### <a name="use-the-lower-layer-_ll_"></a>使用较低层 (_LL_)
 
-C SDK 支持两种编程模型。 其中一组拥有具有 _LL_ 中缀的 API，该中缀代表较低层。 这组 API 权重更轻且不会启动工作线程，这意味着用户必须手动控制调度。 例如，对于设备客户端，可在此_头文件_中找到 [LL](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h) API。 
+C SDK 支持两种编程模型。 其中一组拥有具有 _LL_ 中缀的 API，该中缀代表较低层。 这组 API 权重更轻且不会启动工作线程，这意味着用户必须手动控制调度。 例如，对于设备客户端，可在此[头文件](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h)中找到 _LL_ API。 
 
 另一组没有 _LL_ 索引的 API 称为便捷层，工作线程会在其中自动启动。 例如，设备客户端的便捷层 API 可以在此 [IoT 设备客户端头文件](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h)中找到。 对于每个额外的线程会占用大量系统资源的受限制设备，请考虑使用 _LL_ API。
 

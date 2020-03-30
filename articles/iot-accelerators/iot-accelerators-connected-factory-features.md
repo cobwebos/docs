@@ -1,6 +1,6 @@
 ---
 title: 连接的工厂解决方案功能 - Azure | Microsoft Docs
-description: 本文介绍了连接工厂预配置解决方案的功能，如云仪表板、规则和警报。
+description: 本文介绍了连接工厂预配置解决方案的功能的概述，如云仪表板、规则和警报。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
 ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820109"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>什么是连接的工厂 IoT 解决方案加速器？
@@ -65,4 +65,4 @@ ms.locfileid: "73820109"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关已连接工厂解决方案加速器的详细信息，请参阅快速入门[尝试使用基于云的解决方案来管理我的工业 IoT 设备](quickstart-connected-factory-deploy.md)。
+要了解有关互联工厂解决方案加速器的更多信息，请参阅快速入门[尝试基于云的解决方案来管理我的工业物联网设备](quickstart-connected-factory-deploy.md)。

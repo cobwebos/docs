@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: ef5eedaa903480ae670f9bc48d0af89744a99d22
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71213001"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>如何：发送预定通知
@@ -30,7 +30,7 @@ ms.locfileid: "71213001"
 
 
 ## <a name="schedule-your-notifications"></a>计划通知
-发送通知时，只需如以下示例中所示，使用通知中心 SDK 中的 [`ScheduledNotification` 类](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx)：
+发送通知时，只需在通知中心 SDK 中使用[`ScheduledNotification`类](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx)，如以下示例所示：
 
 ```csharp
 Notification notification = new AppleNotification("{\"aps\":{\"alert\":\"Happy birthday!\"}}");

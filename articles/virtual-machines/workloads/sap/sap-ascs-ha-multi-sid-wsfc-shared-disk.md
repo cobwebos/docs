@@ -1,5 +1,5 @@
 ---
-title: Azure 上的 SAP ASCS/SCS 多 SID HA 与 WSFC & 共享磁盘 |Microsoft Docs
+title: SAP ASCS/SCS 多 SID HA，在 Azure 上&共享磁盘，具有 WSFC微软文档
 description: 使用 Azure 上的 Windows Server 故障转移群集和共享磁盘实现 SAP ASCS/SCS 实例多 SID 高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 446091263596a1fd5503f38c6a60316f9b0b6843
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245169"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -208,7 +208,7 @@ ms.locfileid: "79245169"
 > ![Windows][Logo_Windows] Windows
 >
 
-2016年9月，Microsoft 发布了一项功能，可在其中使用[Azure 内部负载均衡器][load-balancer-multivip-overview]管理多个虚拟 IP 地址。 Azure 外部负载均衡器已包含此功能。 
+2016 年 9 月，Microsoft 推出了一项可让用户通过 [Azure 内部负载均衡器][load-balancer-multivip-overview]管理多个虚拟 IP 地址的功能。 Azure 外部负载均衡器已包含此功能。 
 
 在 SAP 部署中，必须使用内部负载均衡器为 SAP 中心服务 (ASCS/SCS) 实例创建 Windows 群集配置。
 
@@ -222,13 +222,13 @@ ms.locfileid: "79245169"
 >一个 WSFC 群集中的最大 SAP ASCS/SCS 实例数等于每个 Azure 内部负载均衡器的最大专用前端 IP 数。
 >
 
-有关负载均衡器限制的详细信息，请参阅[网络限制： Azure 资源管理器][networking-limits-azure-resource-manager]中的 "每个负载均衡器的专用前端 IP" 部分。
+若要详细了解负载均衡器限制，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]中的“每个负载均衡器的专用前端 IP”部分。
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-已配置 WSFC 群集，通过文件共享用于一个 SAP ASCS/SCS 实例，如下图所示。
+已配置 WSFC 群集，通过文件共享用于一个 SAP ASCS/SCS 实例，如下图所示****。
 
 ![高可用性 SAP ASCS/SCS 实例][sap-ha-guide-figure-6001]
 
@@ -244,17 +244,17 @@ ms.locfileid: "79245169"
 
 ![Azure 中有多个 SAP ASCS/SCS 群集实例][sap-ha-guide-figure-6002]
 
-有关负载均衡器限制的详细信息，请参阅[网络限制： Azure 资源管理器][networking-limits-azure-resource-manager]中的 "每个负载均衡器的专用前端 IP" 部分。
+若要详细了解负载均衡器限制，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]中的“每个负载均衡器的专用前端 IP”部分。
 
 包含两个高可用性 SAP 系统的完整布局如下所示：
 
 ![包含两个 SAP 系统 SID 的 SAP 高可用性多 SID 设置][sap-ha-guide-figure-6003]
 
-## <a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a> 为 SAP 多 SID 方案准备基础结构
+## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a><a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a> 为 SAP 多 SID 方案准备基础结构
 
 若要准备基础结构，可以使用以下参数安装附加的 SAP ASCS/SCS 实例：
 
-| 参数名称 | 值 |
+| 参数名称 | “值” |
 | --- | --- |
 | SAP ASCS/SCS SID |pr1-lb-ascs |
 | SAP DBMS 内部负载均衡器 | PR5 |
@@ -388,7 +388,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 1. 将一个或多个相同大小的附加磁盘（需要条带化）添加到每个群集节点，然后将其格式化。
 2. 使用 SIOS DataKeeper 配置存储复制。
 
-此过程假设已在 WSFC 群集计算机上安装 SIOS DataKeeper。 如果已安装，现在必须配置计算机之间的复制。 [适用于 SAP ASCS/SCS 群集共享磁盘的安装 SIOS DataKeeper Cluster Edition][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios]中详细介绍了此过程。  
+此过程假设已在 WSFC 群集计算机上安装 SIOS DataKeeper。 如果已安装，现在必须配置计算机之间的复制。 [为 SAP ASCS/SCS 群集共享磁盘安装 SIOS DataKeeper Cluster Edition][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios] 中详细介绍了此过程。  
 
 ![新 SAP ASCS/SCS 共享磁盘的 DataKeeper 同步镜像][sap-ha-guide-figure-6006]
 
@@ -401,11 +401,11 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 ## <a name="install-an-sap-netweaver-multi-sid-system"></a>安装 SAP NetWeaver 多 SID 系统
 
-有关安装第二个 SAP SID2 系统的完整过程的说明，请参阅 sap [ASCS/SCS 实例的 Windows 故障转移群集和共享磁盘上的 Sap NETWEAVER HA 安装][sap-high-availability-installation-wsfc-shared-disk]。
+有关安装第二个 SAP SID2 系统的完整过程的描述，请参阅[针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘的 SAP NetWeaver HA 安装][sap-high-availability-installation-wsfc-shared-disk]。
 
 概要过程如下所述：
 
-1. [使用高可用性 ASCS/SCS 实例安装 SAP][sap-high-availability-installation-wsfc-shared-disk-install-ascs]。  
+1. [使用高可用性 ASCS/SCS 实例安装 SAP。][sap-high-availability-installation-wsfc-shared-disk-install-ascs]  
  此步骤在现有 WSFC 群集节点 1 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。
 
 2. [修改 ASCS/SCS 实例的 SAP 配置文件][sap-high-availability-installation-wsfc-shared-disk-modify-ascs-profile]。
@@ -420,13 +420,13 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
  此步骤在现有 WSFC 群集节点 2 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。 若要安装第二个群集，请按照 SAP 安装指南中的步骤操作。
 
 6. 打开 SAP ASCS/SCS 实例的 Windows 防火墙端口和探测端口。  
-    在用于 SAP ASCS/SCS 实例的两个群集节点上，打开 SAP ASCS/SCS 使用的所有 Windows 防火墙端口。 [SAP ASCS/Scs 端口][sap-net-weaver-ports-ascs-scs-ports]一章中列出了这些 sap ASCS/scs 实例端口。
+    在用于 SAP ASCS/SCS 实例的两个群集节点上，打开 SAP ASCS/SCS 使用的所有 Windows 防火墙端口。 [SAP ASCS / SCS 端口][sap-net-weaver-ports-ascs-scs-ports]一章中列出了这些 SAP ASCS/SCS 实例端口。
 
-    有关所有其他 SAP 端口的列表，请参阅[所有 sap 产品的 tcp/ip 端口][sap-net-weaver-ports]。  
+    有关所有其他 SAP 端口的列表，请参阅[所有 SAP 产品的 TCP/IP 端口][sap-net-weaver-ports]。  
 
-    此外，打开 Azure 内部负载均衡器探测端口，在本例中为 62350。 [本文对此][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port]进行了介绍。
+    此外，打开 Azure 内部负载均衡器探测端口，在本例中为 62350。 [本文][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port]对此进行了描述。
 
-7. [更改 SAP 评估接收结算（ERS） Windows 服务实例的启动类型][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type]。
+7. [更改 SAP 评估收据结算 (ERS) Windows 服务实例的启动类型][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type]。
 
 8. 在新的专用 VM 上安装 SAP 主应用程序服务器，如 SAP 安装指南中所述。  
 
@@ -436,5 +436,5 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 ## <a name="next-steps"></a>后续步骤
 
-- [网络限制： Azure 资源管理器][networking-limits-azure-resource-manager]
-- [Azure 负载均衡器的多个 Vip][load-balancer-multivip-overview]
+- [网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]
+- [Azure 负载均衡器的多个 VIP][load-balancer-multivip-overview]

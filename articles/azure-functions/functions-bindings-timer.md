@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: f4fdf25fa1403b8429e7ad7e7fc644d0355b1324
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 566d6ccf43024692e19bcd6639fe5cfbbba0660d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79277149"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80056409"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器 
 
@@ -26,7 +26,7 @@ ms.locfileid: "79277149"
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x-and-higher"></a>包-函数2.x 和更高版本
+## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
 
 [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet 包 3.x 版中提供了计时器触发器。 [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub 存储库中提供了此包的源代码。
 
@@ -36,7 +36,7 @@ ms.locfileid: "79277149"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-下面的示例演示了一个[ C#函数](functions-dotnet-class-library.md)，该函数在每次该分钟的值都可除以5时执行（例如，如果函数从18:57:00 开始，则下一个性能将是19:00:00）。 [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)对象将传递到函数中。
+下面的示例显示每次分钟具有五个可分割的值时执行的[C# 函数](functions-dotnet-class-library.md)（例如，如果函数从 18：57：00 开始，下一个性能将在 19：00：00 开始）。 对象[`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)传递到函数中。
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -50,11 +50,11 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-以下示例演示 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。 [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)对象将传递到函数中。
+以下示例演示 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。 对象[`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)传递到函数中。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json** 文件中的绑定数据：
 
 ```json
 {
@@ -78,11 +78,11 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-以下示例演示 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。 [计时器对象](#usage)传递到函数中。
+以下示例演示 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。 [计时器对象](#usage)将传递到函数中。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json** 文件中的绑定数据：
 
 ```json
 {
@@ -111,9 +111,9 @@ module.exports = function (context, myTimer) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例使用一个 timer 触发器绑定，其配置在*函数 json*文件中进行了描述。 *Py*文件中介绍了使用绑定的实际[Python 函数](functions-reference-python.md)。 传递到函数的对象的类型为[TimerRequest 对象](/python/api/azure-functions/azure.functions.timerrequest)。 函数逻辑写入日志，指示当前调用是否是由于缺少计划出现。 
+以下示例使用计时器触发器绑定，其配置在 *function.json* 文件中进行了描述。 使用绑定的实际 [Python 函数](functions-reference-python.md)在 init.py 文件中进行了描述**____。 传入函数的对象的类型为 [azure.functions.TimerRequest 对象](/python/api/azure-functions/azure.functions.timerrequest)。 函数逻辑将写入日志，以指示当前调用是由于错过了计划发生时间。 
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json** 文件中的绑定数据：
 
 ```json
 {
@@ -160,13 +160,13 @@ public void keepAlive(
 
 ---
 
-## <a name="attributes-and-annotations"></a>特性和批注
+## <a name="attributes-and-annotations"></a>特性和注释
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs)。
 
-该特性的构造函数采用 CRON 表达式或 `TimeSpan`： 仅当函数应用在应用服务计划上运行时，才能使用 `TimeSpan`。 `TimeSpan` 不支持使用或弹性高级函数。
+该特性的构造函数采用 CRON 表达式或 `TimeSpan`： 仅当函数应用在应用服务计划中运行时才能使用 `TimeSpan`。 `TimeSpan`不支持用于消费或弹性高级功能。
 
 以下示例显示了一个 CRON 表达式：
 
@@ -182,17 +182,17 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-C#脚本不支持特性。
+C# 脚本不支持特性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 JavaScript 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支持特性。
+Python 不支持属性。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -211,27 +211,27 @@ public void keepAlive(
 
 ---
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
-下表解释了在 function.json 文件和 `TimerTrigger` 特性中设置的绑定配置属性。
+下表介绍了您在*函数.json*文件和`TimerTrigger`属性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-|type | 不适用 | 必须设置为“timerTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 | 在函数代码中表示计时器对象的变量的名称。 | 
-|**schedule**|**ScheduleExpression**|[CRON 表达式](#ncrontab-expressions)或 [TimeSpan](#timespan) 值。 只能对在应用服务计划中运行的函数应用使用 `TimeSpan`。 可以将计划表达式放在应用设置中并将此属性设置为用 **%** 符号括起的应用设置名称，例如此示例中的“%ScheduleAppSetting%”。 |
-|**runOnStartup**|**RunOnStartup**|如果为 `true`，则在运行时启动时调用此函数。 例如，当函数应用从由于无活动而进入的空闲状态醒来后，运行时会启动。 当函数应用由于函数更改而重新启动时，以及当函数应用横向扩展时。因此， **runOnStartup**应很少设置为 `true`，尤其是在生产环境中。 |
-|**useMonitor**|**UseMonitor**|设置为 `true` 或 `false` 以指示是否应当监视计划。 计划监视在各次计划发生后会持续存在，以帮助确保即使在函数应用实例重新启动的情况下也能正确维护计划。 如果未显式设置，则对于定期间隔大于或等于1分钟的计划，默认值为 `true`。 对于每分钟触发多次的计划，默认值为 `false`。
+|**type** | 不适用 | 必须设置为“timerTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|direction**** | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 | 在函数代码中表示计时器对象的变量的名称。 | 
+|**附表**|**ScheduleExpression**|[CRON 表达式](#ncrontab-expressions)或 [TimeSpan](#timespan) 值。 只能对在应用服务计划中运行的函数应用使用 `TimeSpan`。 您可以将计划表达式放在应用设置中，并将此属性设置为用**%** 符号包装的应用设置名称，如本示例："%计划AppSet%"。 |
+|**runOnStartup**|**运行启动**|如果为 `true`，则在运行时启动时调用此函数。 例如，当函数应用从由于无活动而进入的空闲状态醒来后，运行时会启动。 当函数应用由于功能更改而重新启动时，以及函数应用缩小时。因此 **，如果**设置为 （）很少运行启动`true`，尤其是在生产中。 |
+|**使用监视器**|**UseMonitor**|设置为 `true` 或 `false` 以指示是否应当监视计划。 计划监视在各次计划发生后会持续存在，以帮助确保即使在函数应用实例重新启动的情况下也能正确维护计划。 如果未显式设置，则对于重复周期间隔大于或等于 1 分钟的计划，默认值为 `true`。 对于每分钟触发多次的计划，默认值为 `false`。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> 在生产中不建议将 runOnStartup 设置为 `true`。 使用此设置会使代码在非常不可预测的时间执行。 在某些生产设置中，这些额外执行可能会导致消耗计划中托管的应用产生明显更高的成本。 例如，如果启用了**runOnStartup** ，则每当扩展函数应用时，都会调用触发器。 在生产中启用 runOnStartup 之前，请确保完全了解函数的生产行为。   
+> 在生产中不建议将 runOnStartup**** 设置为 `true`。 使用此设置会使代码在非常不可预测的时间执行。 在某些生产设置中，这些额外执行可能会导致消耗计划中托管的应用产生明显更高的成本。 例如，启用 **runOnStartup** 后，只要缩放函数应用，就会调用触发器。 在生产中启用 runOnStartup**** 之前，请确保完全了解函数的生产行为。   
 
 ## <a name="usage"></a>使用情况
 
-调用计时器触发器函数时，会将计时器对象传递到函数中。 以下 JSON 是计时器对象的示例表示形式。
+调用计时器触发器函数时，计时器对象将传递到函数中。 以下 JSON 是计时器对象的示例表示形式。
 
 ```json
 {
@@ -250,7 +250,7 @@ public void keepAlive(
 
 ## <a name="ncrontab-expressions"></a>NCRONTAB 表达式 
 
-Azure Functions 使用[NCronTab](https://github.com/atifaziz/NCrontab)库来解释 NCronTab 表达式。 NCRONTAB 表达式与 CRON 表达式类似，不同之处在于，它在开始时包含附加的第六个字段以用于时间精度（以秒为单位）：
+Azure Functions 使用 [NCronTab](https://github.com/atifaziz/NCrontab) 库来解释 NCRONTAB 表达式。 NCRONTAB 表达式类似于 CRON 表达式，不同之处在于它在开头包含额外的第六个字段，用于以秒为单位的时间精度：
 
 `{second} {minute} {hour} {day} {month} {day-of-week}`
 
@@ -262,13 +262,13 @@ Azure Functions 使用[NCronTab](https://github.com/atifaziz/NCrontab)库来解�
 |所有值 (`*`)|<nobr>"0 * 5 * * *"</nobr>|在每天的 5:mm:00，其中 mm 表示该小时的每分钟（一天 60 次）|
 |一个范围（`-` 运算符）|<nobr>"5-7 * * * * *"</nobr>|在 hh:mm:05、hh:mm:06 和 hh:mm:07，其中 hh:mm 表示每小时的每分钟（每分钟 3 次）|
 |一组值（`,` 运算符）|<nobr>"5,8,10 * * * * *"</nobr>|在 hh:mm:05、hh:mm:08 和 hh:mm:10，其中 hh:mm 表示每小时的每分钟（每分钟 3 次）|
-|一个间隔值（`/` 运算符）|<nobr>"0 */5 * * * *"</nobr>|在 hh：00：00，hh：05：00，hh：10：00，依此类推，到 hh：55：00，其中 hh 为每小时（每小时12次）|
+|一个间隔值（`/` 运算符）|<nobr>"0 */5 * * * *"</nobr>|hh：00：00、hh：05：00、hh：10：00 等，通过 hh：55：00，每小时 hh（每小时 12 次）|
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
 ### <a name="ncrontab-examples"></a>NCRONTAB 示例
 
-下面是 Azure Functions 中可用于计时器触发器的 NCRONTAB 表达式的一些示例。
+以下是一些可用于 Azure Functions 中计时器触发器的 NCRONTAB 表达式示例。
 
 |示例|何时触发  |
 |---------|---------|
@@ -288,9 +288,9 @@ CRON 表达式中的数字指的是时间和日期，而不是时间跨度。 �
 CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON 表达式基于其他时区，请为你的函数应用创建一个名为 `WEBSITE_TIME_ZONE` 的应用设置。 将值设置为所需时区的名称，如 [Microsoft 时区索引](https://technet.microsoft.com/library/cc749073)中所示。
 
   > [!NOTE]
-  > Linux 消耗计划当前不支持 `WEBSITE_TIME_ZONE`。
+  > `WEBSITE_TIME_ZONE`Linux 消费计划当前不受支持。
 
-例如，东部标准时间是 UTC-05:00。 若要使计时器触发器在每天凌晨10:00 点触发，请使用以下 NCRONTAB 表达式，该表达式将用于 UTC 时区：
+例如，东部标准时间** 是 UTC-05:00。 若要让计时器触发器每天在美国东部时间上午 10:00 触发，可使用表示 UTC 时区的以下 NCRONTAB 表达式：
 
 ```
 "0 0 15 * * *"
@@ -310,14 +310,14 @@ CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON �
 
 与 CRON 表达式不同，`TimeSpan` 值指定各次函数调用之间的时间间隔。 如果函数的运行时间超出了指定的时间间隔，则在函数完成时，计时器会立即再次调用该函数。
 
-以字符串表示，当 `TimeSpan` 小于 24 时，`hh:mm:ss` 格式为 `hh`。 当前两个数字是 24 或更大的数字时，格式为 `dd:hh:mm`。 下面是一些示例：
+以字符串表示，当 `hh` 小于 24 时，`TimeSpan` 格式为 `hh:mm:ss`。 当前两个数字是 24 或更大的数字时，格式为 `dd:hh:mm`。 下面是一些示例：
 
 |示例 |何时触发  |
 |---------|---------|
 |"01:00:00" | 每小时        |
 |"00:01:00"|每分钟         |
-|"24:00:00" | 每24小时        |
-|"1.00：00： 00" | 每天        |
+|"24:00:00" | 每 24 天        |
+|"1.00:00:00" | 每天        |
 
 ## <a name="scale-out"></a>横向扩展
 
@@ -325,22 +325,22 @@ CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON �
 
 ## <a name="function-apps-sharing-storage"></a>共享同一存储的函数应用
 
-如果你要跨未部署到应用服务的函数应用共享存储帐户，你可能需要为每个应用显式分配主机 ID。
+如果要在未部署到应用服务的函数应用之间共享存储帐户，则可能需要为每个应用显式分配主机 ID。
 
 | Functions 版本 | 设置                                              |
 | ----------------- | ---------------------------------------------------- |
-| 2.x （及更高版本）  | `AzureFunctionsWebHost__hostid` 环境变量 |
-| 1.x               | *json*中的 `id`                                  |
+| 2.x（及更高版本）  | `AzureFunctionsWebHost__hostid` 环境变量 |
+| 1.x               | *host.json* 中的 `id`                                  |
 
-可以省略标识值，也可以手动将每个 function app 的标识配置设置为不同的值。
+可以省略标识值，也可以手动将每个函数应用的标识配置设置为不同的值。
 
-Timer 触发器使用存储锁来确保只有一个计时器实例向外扩展到多个实例。 如果两个函数应用共享相同的标识配置，并且每个应用都使用计时器触发器，则只会运行一个计时器。
+计时器触发器使用存储锁来确保当函数应用横向扩展到多个实例时将只有一个计时器实例。 如果两个函数应用共享相同的标识配置，并且每个函数应用都使用一个计时器触发器，则只有一个计时器运行。
 
 ## <a name="retry-behavior"></a>重试行为
 
 与队列触发器不同，计时器触发器在函数失败后不会重试。 函数失败时，在计划的下次时间到来前，不会再次调用该函数。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 有关在计时器触发器未按预期工作的情况下应采取的措施，请参阅[调查和报告有关计时器触发功能未触发的问题](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing)。
 

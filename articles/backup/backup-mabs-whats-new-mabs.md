@@ -4,21 +4,21 @@ description: Microsoft Azure 备份服务器提供用于保护 VM、文件和文
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77582800"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Microsoft Azure 备份服务器中的新增功能
 
-Microsoft Azure 备份 Server 版本3（MABS V3）是最新升级，其中包括关键 bug 修复、Windows Server 2019 支持、SQL 2017 支持以及其他功能和增强功能。 若要查看 MABS V3 中已修复的 bug 列表和安装说明，请参阅知识库文章 [4457852](https://support.microsoft.com/help/4457852/microsoft-azure-backup-server-v3)。
+Microsoft Azure 备份服务器版本 3 (MABS V3) 是最新升级版，其中包含关键的 bug 修复、Windows Server 2019 支持、SQL 2017 支持和其他功能与增强功能。 若要查看 MABS V3 中已修复的 bug 列表和安装说明，请参阅知识库文章 [4457852](https://support.microsoft.com/help/4457852/microsoft-azure-backup-server-v3)。
 
 MABS V3 包含以下功能：
 
 ## <a name="volume-to-volume-migration"></a>卷到卷的迁移
 
-发布 MABS V2 中的新式备份存储 (MBS) 时，我们宣布推出了工作负荷感知的存储，在其中可以根据存储属性，将某些工作负荷配置为备份到特定的存储。 但是，在配置后，你可能发现，需要将某些数据源的备份移到其他存储，以优化资源利用率。 MABS V3 使你可以通过[三个步骤](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842)迁移备份并将其配置为存储到不同的卷。
+发布 MABS V2 中的新式备份存储 (MBS) 时，我们宣布推出了工作负荷感知的存储，在其中可以根据存储属性，将某些工作负荷配置为备份到特定的存储。 但是，在配置后，你可能发现，需要将某些数据源的备份移到其他存储，以优化资源利用率。 在 MABS V3 中可以迁移备份，并通过[三个步骤](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842)将其配置为存储到其他卷。
 
 ## <a name="prevent-unexpected-data-loss"></a>防止意外的数据丢失
 

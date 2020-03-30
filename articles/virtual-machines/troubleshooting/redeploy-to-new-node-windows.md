@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 36af0eeb43fb209ed65f950576f2dc9e97ec3633
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71058626"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>将 Windows 虚拟机重新部署到新的 Azure 节点
@@ -39,5 +39,5 @@ Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>后续步骤
-如果在连接 VM 时遇到问题，可以在 [troubleshooting RDP connections](troubleshoot-rdp-connection.md)（RDP 连接故障排除）或 [detailed RDP troubleshooting steps](detailed-troubleshoot-rdp.md)（详细的 RDP 故障排除步骤）中找到具体的帮助信息。 如果无法访问在 VM 上运行的应用程序，还可以阅读[应用程序故障排除问题](../windows/troubleshoot-app-connection.md)。
+如果在连接 VM 时遇到问题，可以在 [troubleshooting RDP connections](troubleshoot-rdp-connection.md)（RDP 连接故障排除）或 [detailed RDP troubleshooting steps](detailed-troubleshoot-rdp.md)（详细的 RDP 故障排除步骤）中找到具体的帮助信息。 如果无法访问在 VM 上运行的应用程序，还可以阅读 [application troubleshooting issues](../windows/troubleshoot-app-connection.md)（应用程序故障排除问题）。
 

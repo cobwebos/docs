@@ -3,7 +3,7 @@ title: 在 Azure 中创建和上传 SUSE Linux VHD
 description: 了解如何创建和上传包含 SUSE Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
+author: gbowerman
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
-ms.author: mimckitt
-ms.openlocfilehash: d64fc55159ddc3ce88397879958a63bf30808ad9
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.author: guybo
+ms.openlocfilehash: 7bfe0aabbf2318643b59d57519be1475648a12ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251576"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066555"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>为 Azure 准备 SLES 或 openSUSE 虚拟机
 
@@ -40,7 +40,7 @@ ms.locfileid: "78251576"
 
 ## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>准备 SUSE Linux Enterprise Server 11 SP4
 1. 在 Hyper-V 管理器的中间窗格中，选择虚拟机。
-2. 单击“连接”打开虚拟机窗口。
+2. 单击 **“连接”** 以打开虚拟机窗口。
 3. 注册 SUSE Linux Enterprise 系统以允许其下载更新并安装程序包。
 4. 使用最新修补程序更新系统：
    
@@ -98,12 +98,12 @@ ms.locfileid: "78251576"
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-16. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
+16. 单击 **"操作 ->在**超 V 管理器中关闭。 Linux VHD 现已准备好上传到 Azure。
 
 ---
 ## <a name="prepare-opensuse-131"></a>准备 openSUSE 13.1+
 1. 在 Hyper-V 管理器的中间窗格中，选择虚拟机。
-2. 单击“连接”打开虚拟机窗口。
+2. 单击 **“连接”** 以打开虚拟机窗口。
 3. 在 shell 上，运行命令“`zypper lr`”。 如果此命令返回了类似于下面的输出，则表示已按预期配置了存储库 - 不需要进行任何调整（请注意版本号可能有所不同）：
    
         # | Alias                 | Name                  | Enabled | Refresh
@@ -162,7 +162,7 @@ ms.locfileid: "78251576"
 12. 确保在启动时运行 Azure Linux 代理：
     
         # sudo systemctl enable waagent.service
-13. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
+13. 单击 **"操作 ->在**超 V 管理器中关闭。 Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
 现在，可以使用 SUSE Linux 虚拟硬盘在 Azure 中创建新的 Azure 虚拟机了。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。

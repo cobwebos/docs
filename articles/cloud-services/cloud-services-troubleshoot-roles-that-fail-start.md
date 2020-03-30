@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71122736"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>对无法启动的云服务角色进行故障排除
@@ -47,13 +47,13 @@ DLL 或程序集缺失的症状可能为：
 若要在不使用远程桌面的情况下查看更完整的错误，请执行以下操作：
 
 1. 在 Microsoft Visual Studio 中打开解决方案。
-2. 在“**解决方案资源管理器**”中，找到 web.config 文件并打开。
+2. 在“解决方案资源管理器”**** 中，找到 web.config 文件并打开它。
 3. 在 web.config 文件中，找到 system.web 部分并添加以下行：
 
     ```xml
     <customErrors mode="Off" />
     ```
-4. 保存该文件。
+4. 保存文件。
 5. 重新打包并重新部署服务。
 
 重新部署服务后，会看到错误消息，其中包含缺失的程序集或 DLL 的名称。
@@ -63,19 +63,19 @@ DLL 或程序集缺失的症状可能为：
 
 1. 确保安装了 Azure SDK 1.3 或更高版本。
 2. 在使用 Visual Studio 部署解决方案的过程中，启用远程桌面。 有关详细信息，请参阅[使用 Visual Studio 为 Azure 云服务中的角色启用远程桌面连接](cloud-services-role-enable-remote-desktop-visual-studio.md)。
-3. 在 Microsoft Azure 门户中，一旦实例显示“就绪”状态，则远程连接到该实例。 有关通过云服务使用远程桌面的详细信息，请参阅[远程连接到角色实例](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances)。
+3. 在 Microsoft Azure 门户中，一旦实例显示“就绪”状态，则远程连接到该实例****。 有关通过云服务使用远程桌面的详细信息，请参阅[远程连接到角色实例](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances)。
 5. 使用在远程桌面配置期间指定的凭据登录到虚拟机。
 6. 打开命令窗口。
 7. 键入 `IPconfig`。
 8. 记录 IPV4 地址值。
 9. 打开 Internet Explorer。
-10. 键入 Web 应用程序的地址和名称。 例如，`http://<IPV4 Address>/default.aspx`。
+10. 键入 Web 应用程序的地址和名称。 例如，`http://<IPV4 Address>/default.aspx` 。
 
 现在，导航到网站将返回更明确的错误消息：
 
 * '/' 应用程序中出现服务器错误。
-* 说明:执行当前 web 请求期间发生未处理的异常。 请检查堆栈跟踪信息，以了解有关该错误以及代码中导致错误的出处的详细信息。
-* 异常详细信息：System.IO.FIleNotFoundException:无法加载文件或程序集 "Windowsazure.storage. StorageClient，Version = 1.1.0.0，Culture = 中立，PublicKeyToken = 31bf856ad364e35" 或其依赖项之一。 系统找不到指定的文件。
+* 说明：执行当前 Web 请求期间，出现未处理的异常。 请检查堆栈跟踪信息，以了解有关该错误以及代码中导致错误的出处的详细信息。
+* 异常详细信息：System.IO.FIleNotFoundException：未能加载文件或程序集“Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35”或它的某一个依赖项。 系统找不到指定的文件。
 
 例如：
 
@@ -91,7 +91,7 @@ DLL 或程序集缺失的症状可能为：
 3. 在 Windows 资源管理器中，导航到云服务项目的 bin\debug 文件夹。
 4. 将 .csx 文件夹和 .cscfg 文件复制到用来调试问题的计算机。
 5. 在干净的计算机上打开 Azure SDK 命令提示符窗口并键入 `csrun.exe /devstore:start`。
-6. 在命令提示符处，键入：`run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`。
+6. 在命令提示符下键入 `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`。
 7. 角色启动后，会在 Internet Explorer 中看到详细的错误信息。 还可使用标准的 Windows 故障排除工具来进一步诊断问题。
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>使用 IntelliTrace 诊断问题
@@ -101,12 +101,12 @@ DLL 或程序集缺失的症状可能为：
 
 1. 确认已安装 Azure SDK 1.3 或更高版本。
 2. 使用 Visual Studio 部署解决方案。 在部署期间，请选中“**为 .NET 4 角色启用 IntelliTrace**”复选框。
-3. 实例启动后，打开“**服务器资源管理器**”。
+3. 实例启动后，打开“服务器资源管理器”****。
 4. 展开 **Azure\\Cloud Services** 节点并查找部署。
 5. 展开部署，直至看到角色实例。 右键单击其中一个实例。
-6. 选择“**查看 IntelliTrace 日志**”。 此时会打开“**IntelliTrace 摘要**”。
+6. 选择“查看 IntelliTrace 日志”****。 这将打开“IntelliTrace 摘要”****。
 7. 查找摘要的异常部分。 如果存在异常，则会将该部分标记为“**异常数据**”。
-8. 展开“**异常数据**”并查找类似如下内容的 **System.IO.FileNotFoundException** 错误：
+8. 展开“异常数据”**** 并查找类似如下所示的 **System.IO.FileNotFoundException** 错误：
 
 ![异常数据、缺少文件或程序集](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503390.png)
 
@@ -116,7 +116,7 @@ DLL 或程序集缺失的症状可能为：
 1. 在 Visual Studio 中打开解决方案。
 2. 在“**解决方案资源管理器**”中，打开 **References** 文件夹。
 3. 单击错误中标识的程序集。
-4. 在“属性”窗格中，找到“复制本地属性”并将值设置为“True”。
+4. 在“**属性**”窗格中，找到“**复制本地属性**”并将值设置为 **True**。
 5. 重新部署云服务。
 
 确认所有错误均已更正后，可以在不选中“**为 .NET 4 角色启用 IntelliTrace**”复选框的情况下部署服务。

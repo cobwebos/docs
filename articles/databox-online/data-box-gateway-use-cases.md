@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Data Box Gateway 用例 |Microsoft Docs
-description: 介绍 Azure Data Box Gateway （一种虚拟设备存储解决方案，可用于将数据传输到 Azure）的用例
+title: 微软 Azure 数据盒网关用例 |微软文档
+description: 描述 Azure 数据盒网关的用例，这是一个虚拟设备存储解决方案，允许您将数据传输到 Azure
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
 ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022675"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway 的用例
@@ -44,10 +44,10 @@ Data Box Gateway 的主要优势之一就是，无论数据大小如何，都能
 
 ### <a name="move-data-to-archive-tier"></a>将数据移至存档层
 
-在开始之前，请确保正在运行 Data Box Gateway 设备。 请按照[教程：准备部署 Azure Data Box Gateway](data-box-gateway-deploy-prep.md)中详细介绍的步骤进行操作，并继续学习下一教程，直到有一个操作设备。
+在开始之前，请确保正在运行 Data Box Gateway 设备。 按照教程中详述的步骤[操作：准备部署 Azure 数据框网关](data-box-gateway-deploy-prep.md)，并一直推进到下一个教程，直到您有一个操作设备。
 
 - 如[通过 Data Box Gateway 传输数据](data-box-gateway-deploy-add-shares.md)中所述，使用 Data Box Gateway 设备通过常规传输过程将数据上传到 Azure。
-- 上传数据后，需要将其移至存档层。 可以通过两种方式设置 blob 层： Azure PowerShell 脚本或 Azure 存储生命周期管理策略。  
+- 上传数据后，需要将其移至存档层。 可以通过两种方式设置 Blob 层：Azure PowerShell 脚本或 Azure 存储生命周期管理策略。  
     - 如果使用 Azure PowerShell，请按照这些[步骤](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier)将数据移至存档层。
     - 如果使用 Azure 生命周期管理，请按照以下步骤将数据移至存档层。
         - [注册](/azure/storage/common/storage-lifecycle-management-concepts) Blob 生命周期管理服务预览版以使用存档层。
@@ -79,11 +79,11 @@ Data Box Gateway 的主要优势之一就是，无论数据大小如何，都能
 
 按照以下步骤使用 Data Box Gateway 进行持续引入。
 
-1. 在 Data Box Gateway 上创建云共享。 此共享会自动将所有数据上传到 Azure 存储帐户。 转到 Data Box Gateway 资源中的“共享”，然后单击“+ 添加共享”。
+1. 在 Data Box Gateway 上创建云共享。 此共享会自动将所有数据上传到 Azure 存储帐户。 转到 Data Box Gateway 资源中的“共享”，然后单击“+ 添加共享”********。
 
     ![单击“+ 添加共享”](media/data-box-gateway-use-cases/add-share1.png)
 
-2. 确保此共享映射到包含已播种数据的容器。 对于“选择 Blob 容器”，请选择“使用现有容器”并浏览到已将 Data Box 中的数据传输到的容器。
+2. 确保此共享映射到包含已播种数据的容器。 对于“选择 Blob 容器”，请选择“使用现有容器”并浏览到已将 Data Box 中的数据传输到的容器********。
 
     ![共享设置](media/data-box-gateway-use-cases/share-settings-select-existing-container1.png)
 

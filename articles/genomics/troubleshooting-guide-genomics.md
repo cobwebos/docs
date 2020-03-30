@@ -1,7 +1,7 @@
 ---
 title: 故障排除指南
 titleSuffix: Microsoft Genomics
-description: 了解有关使用 Microsoft 基因组学的故障排除策略，包括错误消息以及如何解决这些问题。
+description: 了解使用 Microsoft 基因组学的故障排除策略，包括错误消息以及如何解决这些问题。
 keywords: 故障排除, 错误, 调试
 services: genomics
 author: ruchir
@@ -12,10 +12,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: f6ef56e4188a7541036db096e4ab35a1b95fc141
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73486002"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
@@ -30,7 +30,7 @@ ms.locfileid: "73486002"
 1. 使用命令行并键入 `msgen status`
 2. 检查 standardoutput.txt 的内容。
 
-### <a name="1-using-the-command-line-msgen-status"></a>1. 使用命令行 `msgen status`
+### <a name="1-using-the-command-line-msgen-status"></a>1. 使用命令行`msgen status`
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -43,7 +43,7 @@ msgen status -u URL -k KEY -w ID
 
 * URL - API 的基本 URI
 * 密钥 - 基因组学帐户的访问密钥
-    * 若要查找 URL 和密钥，请转到 Azure 门户并打开 Microsoft 基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
+    * 若要查找 URL 和密钥，请转到 Azure 门户并打开 Microsoft 基因组学帐户页。 在“管理”标题下方，选择“访问密钥”********。 可在此处找到 API URL 和访问密钥。
 
   
 * ID - 工作流 ID
@@ -82,7 +82,7 @@ msgen status -u URL -k KEY -w ID
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 检查 standardoutput 的内容 
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 检查标准输出的内容.txt 
 查找有问题的工作流的输出容器。 每次执行工作流后，MSGEN 会创建一个 `[workflowfilename].logs.zip` 文件夹。 请解压缩该文件夹以查看其内容：
 
 * outputFileList.txt - 工作流运行期间生成的输出文件列表
@@ -116,7 +116,7 @@ Microsoft 基因组学服务 (msgen) 可能引发以下两种类型的错误：
 
 | 文件类型 | 错误代码 | 错误消息                                                                           | 建议的故障排除步骤                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| 任意          | 701        | 读取操作 [readId] 具有 [numberOfBases] 个基，但限制为 [maxReadLength]           | 出现此错误的最常见原因是文件损坏，导致串联了两个读取操作。 请检查输入文件。 |
+| Any          | 701        | 读取操作 [readId] 具有 [numberOfBases] 个基，但限制为 [maxReadLength]           | 出现此错误的最常见原因是文件损坏，导致串联了两个读取操作。 请检查输入文件。 |
 | BAM          | 200        |   无法读取文件“[yourFileName]”。                                                                                       | 请检查 BAM 文件的格式。 使用格式正确的文件重新提交工作流。                                                                           |
 | BAM          | 201        |  无法读取 BAM 文件 [File_name]。                                                                                      |请检查 BAM 文件的格式。  使用格式正确的文件提交工作流。                                                                            |
 | BAM          | 202        | 无法读取 BAM 文件 [File_name]。 文件太小，且缺少标头。                                                                                        | 请检查 BAM 文件的格式。  使用格式正确的文件提交工作流。                                                                            |

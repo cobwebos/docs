@@ -12,23 +12,23 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: ab972db78cd213497fb96486b3e16b01f2c4c6eb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823630"
 ---
 # <a name="elastic-database-tools-glossary"></a>弹性数据库工具词汇表
 
 Azure SQL 数据库中的[弹性数据库工具](sql-database-elastic-scale-introduction.md)功能的术语定义如下。 这些工具用于管理[分片映射](sql-database-elastic-scale-shard-map-management.md)，包括[客户端库](sql-database-elastic-database-client-library.md)、[拆分/合并工具](sql-database-elastic-scale-overview-split-and-merge.md)、[弹性池](sql-database-elastic-pool.md)和[查询](sql-database-elastic-query-overview.md)。 
 
-这些术语用于[使用弹性数据库工具添加分片](sql-database-elastic-scale-add-a-shard.md)和[使用 RecoveryManager 类解决分片映射问题](sql-database-elastic-database-recovery-manager.md)。
+[使用弹性数据库工具添加分片](sql-database-elastic-scale-add-a-shard.md)和[使用 RecoveryManager 类解决分片映射问题](sql-database-elastic-database-recovery-manager.md)中用到了这些术语。
 
 ![弹性缩放术语][1]
 
 **数据库**：Azure SQL 数据库。 
 
-**依赖于数据的路由**：使应用程序能够连接到给定了特定分片键的分片的功能。 请参阅[依赖于数据的路由](sql-database-elastic-scale-data-dependent-routing.md)。 与 **[多分片查询](sql-database-elastic-scale-multishard-querying.md)** 进行比较。
+**依赖于数据的路由**：使应用程序能够连接到给定了特定分片键的分片的功能。 请参阅[依赖于数据的路由](sql-database-elastic-scale-data-dependent-routing.md)。 与**[多分片查询](sql-database-elastic-scale-multishard-querying.md)** 进行比较。
 
 **全局分片映射**：**分片集**内分片键及其各自分片之间的映射。 全局分片映射存储在**分片映射管理器**中。 与**局部分片映射**进行比较。
 
@@ -77,7 +77,7 @@ Azure SQL 数据库中的[弹性数据库工具](sql-database-elastic-scale-intr
 
 **Shardlet 移动**：将单个 shardlet 移动到不同分片的行为。 
 
-**分片**：基于分片键对多个数据库上的结构相同的数据进行水平分区的行为。
+**分片**：基于分片键对多个数据库上结构相同的数据进行水平分区的行为。
 
 **拆分**：将几个 shardlet 从一个分片移动到另一个（通常是新的）分片的行为。 由用户提供的作为拆分点的分片键。
 

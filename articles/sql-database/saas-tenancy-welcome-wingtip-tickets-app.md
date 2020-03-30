@@ -1,5 +1,5 @@
 ---
-title: 欢迎使用 Wingtips 应用
+title: 欢迎来到翼尖应用程序
 description: 了解有关云环境中的 Azure SQL 数据库的数据库租户模型和示例 Wingtips SaaS 应用程序的内容。
 keywords: sql 数据库教程
 services: sql-database
@@ -13,21 +13,21 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
 ms.openlocfilehash: 4e0b3afe51ac7c7a6b9213fcee79af57cbbd8197
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73818314"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS 应用程序
 
-三个示例均实现了同一个 Wingtip Tickets SaaS应用程序。 该应用是一个简单的事件列表和票证 SaaS 应用，面向小型会场、俱乐部等。每个地点都是应用的租户，并有自己的数据：地点详细信息、事件列表、客户、票证订单等。 该应用与管理脚本和教程一起展示了一个端到端 SaaS 方案。 此方案包括预配租户、监视并管理性能、架构管理和跨租户报告和分析。
+三个示例均实现了同一个 Wingtip Tickets SaaS ** 应用程序。 该应用程序是一个简单的事件列表和票务SaaS应用程序，针对小场地 - 剧院，俱乐部等。每个场地都是应用程序的租户，并有自己的数据：场地详细信息、活动列表、客户、机票订单等。 该应用程序以及管理脚本和教程展示了端到端 SaaS 方案。 此方案包括预配租户、监视并管理性能、架构管理和跨租户报告和分析。
 
 ## <a name="three-saas-application-and-tenancy-patterns"></a>三种 SaaS 应用程序和租户模式
 
 此应用有三个版本；每个版本在 Azure SQL 数据库上都使用了不同的数据库租户模式。  第一个示例使用每租户的独立应用程序和其自己的数据库。 第二个示例使用多租户应用，并且每个租户都具有一个数据库。 第三个示例使用多租户应用，并且具有分片式多租户数据库。
 
-![三种租户模式][image-three-tenancy-patterns]
+![三种租赁模式][image-three-tenancy-patterns]
 
  每个示例包含应用程序代码以及管理脚本和教程，其中介绍了各种设计和管理模式。  每个示例均可在 5 分钟内完成部署。  可并行部署这三个示例，以比较它们在设计和管理方面的不同。
 
@@ -35,41 +35,41 @@ ms.locfileid: "73818314"
 
 “每租户一个独立应用程序”模式使用单个租户应用程序，并且每个租户具有一个数据库。 每个租户的应用，包括其数据库，均部署到单独的 Azure 资源组。 可在服务提供商的订阅或租户的订阅中部署资源组，并由提供程序代表租户进行管理。 每租户独立应用程序模式提供了最佳的租户隔离，但是它的经济成本通常是最高的，因为无法跨多个租户共享资源。  此模式非常适合于较为复杂并部署到较小数量的租户的应用程序。  相较其他模式，使用独立部署，能够更轻松地为每个租户自定义应用程序。  
 
-查看 GitHub 上的[教程][docs-tutorials-for-wingtip-sa]和代码。 [../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa]。
+请查看相关[教程][docs-tutorials-for-wingtip-sa]和 GitHub [.../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa] 上的代码。
 
 ## <a name="database-per-tenant-pattern"></a>“每个租户一个数据库”模式
 
 “每个租户一个数据库”模式适用于注重租户隔离并想要运行集中式服务以经济高效地使用共享资源的服务提供商。 将为每个场所或租户创建数据库，并集中管理所有数据库。 数据库可以托管在弹性池中，以便可以均衡无法预测的租户工作负载模式，轻松并经济高效地进行性能管理。 目录数据库将保管租户与其数据库之间的映射。 使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)的分片映射管理功能管理此映射，从而为应用程序提供高效的连接管理功能。
 
-查看 GitHub 上的[教程][docs-tutorials-for-wingtip-dpt]和代码。 [../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt]。
+请查看相关[教程][docs-tutorials-for-wingtip-dpt]和 GitHub [.../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt] 上的代码。
 
 ## <a name="sharded-multi-tenant-database-pattern"></a>分片式多租户数据库模式
 
 多租户数据库适用于希望降低每个租户的成本并可接受租户隔离性降低的服务提供商。 此模式可将大量租户封装到单个数据库，从而降低每个租户的成本。 可以通过跨多个数据库将租户分片来实现几乎无限制的缩放。 目录数据库将租户映射到数据库。  
 
-此模式还可实现混合模型，在此模型中可以通过将多个租户置于一个数据库中来优化成本，或通过将单个租户置于他们自己的数据库中来优化隔离。 在预配租户时或在此之后，可以根据租户做出选择，并且不会影响此应用程序。  如果需要以不同的方式处理不同租户组，使用此模式可获得良好效果。 例如，可将低成本租户分配到共享数据库，而将高级租户分配到其自己的数据库。 
+此模式还允许*混合*模型，您可以在其中优化数据库中有多个租户的成本，或优化与自己的数据库中的单个租户隔离。 在预配租户时或在此之后，可以根据租户做出选择，并且不会影响此应用程序。  如果需要以不同的方式处理不同租户组，使用此模式可获得良好效果。 例如，可将低成本租户分配到共享数据库，而将高级租户分配到其自己的数据库。 
 
-查看 GitHub 上的[教程][docs-tutorials-for-wingtip-mt]和代码。 [../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt]。
+请查看相关[教程][docs-tutorials-for-wingtip-mt]和 GitHub [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt] 上的代码。
 
 ## <a name="next-steps"></a>后续步骤
 
 #### <a name="conceptual-descriptions"></a>概念说明
 
-- [多租户 SaaS 数据库租户模式][saas-tenancy-app-design-patterns-md]提供了有关应用程序租户模式的更详细说明
+- 可在[多租户 SaaS 数据库租户模式][saas-tenancy-app-design-patterns-md]中查看此应用程序租户模式的详细说明
 
 #### <a name="tutorials-and-code"></a>教程和代码
 
 - 每租户独立应用程序：
-    - [适用于独立应用的教程][docs-tutorials-for-wingtip-sa]。
-    - [GitHub 上的独立应用代码][github-code-for-wingtip-sa]。
+    - [独立应用模式的教程][docs-tutorials-for-wingtip-sa]。
+    - [GitHub 上独立应用的代码][github-code-for-wingtip-sa]。
 
 - 每个租户一个数据库：
-    - [针对每个租户的数据库的教程][docs-tutorials-for-wingtip-dpt]。
-    - [GitHub 上的每个租户的数据库的代码][github-code-for-wingtip-dpt]。
+    - [“每个租户一个数据库”模式的教程][docs-tutorials-for-wingtip-dpt]。
+    - [GitHub 上的“每个租户一个数据库”模式的代码][github-code-for-wingtip-dpt]。
 
 - 分片式多租户：
-    - [分片多租户教程][docs-tutorials-for-wingtip-mt]。
-    - [GitHub 上分片多租户的代码][github-code-for-wingtip-mt]。
+    - [分片式多租户模式的教程][docs-tutorials-for-wingtip-mt]。
+    - [GitHub 上的分片式多租户模式的代码][github-code-for-wingtip-mt]。
 
 
 
