@@ -2,18 +2,18 @@
 title: Azure 市场的“虚拟机”产品/服务发布指南
 description: 本文介绍发布要从市场部署的虚拟机和软件免费试用版的要求。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: 0f2047501b6c57b2bb98ff7e3c56498417644324
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 34de5f59e96a37282063741a1664f512697c167b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818980"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288710"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>“虚拟机”产品/服务发布指南
 
@@ -23,14 +23,7 @@ ms.locfileid: "73818980"
 
 ## <a name="free-trial"></a>免费试用版 
 
-使用自带许可 (BYOL) 计费模型时，你可以安排用户通过访问有限期限软件许可证来测试产品/服务。 下面是部署此产品/服务的要求。 
-
-|要求  |详细信息  |
-|---------|---------|
-|免费试用期和试用体验     |   客户可以在有限时间内免费试用你的应用。 客户不需要支付产品/服务的任何许可证或订阅费用。 客户不需要支付基础 Microsoft 第一方产品或服务的费用。 所有试用选项部署到 Azure 订阅。 你可以独自控制成本优化和管理。 可以选择免费试用或互动演示。 不管选择哪种，免费试用版都必须向客户提供规定时间的免费产品/服务试用。|
-|可轻松配置、随时可用的解决方案    |  应用的配置和设置须便捷。       |
-|可用性/运行时间    |    SaaS 应用或平台的运行时间须不低于 99.9%。     |
-|Azure Active Directory     |    在已启用许可的情况下，产品/服务须允许使用 Azure Active Directory (Azure AD) 联合单一登录 (SSO)（Azure AD 联合 SSO）。     |
+使用自带许可 (BYOL) 计费模型时，你可以安排用户通过访问有限期限软件许可证来测试产品/服务。 
 
 ## <a name="test-drive"></a>体验版
 
@@ -63,7 +56,7 @@ ms.locfileid: "73818980"
 | 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 <ul> <li>有关创建 Linux VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>有关创建 Windows VHD 的详细信息，请参阅[创建与 Azure 兼容的 VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)。</li> </ul> |  
 
 >[!Note]
->现在提供了云解决方案提供商（CSP）合作伙伴渠道选择。  请参阅[云解决方案提供商](./cloud-solution-providers.md)，了解有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的详细信息。
+>云解决方案提供商 （CSP） 合作伙伴渠道选择加入现已可用。  有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的更多信息[，请参阅云解决方案提供商](./cloud-solution-providers.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 创建 & 查询 Azure Data Lake Analytics-Azure CLI
+title: 创建&查询 Azure 数据湖分析 - Azure CLI
 description: 了解如何使用 Azure 命令行接口创建 Azure Data Lake Analytics 帐户，并提交 U-SQL 作业。
 ms.service: data-lake-analytics
 author: saveenr
@@ -7,32 +7,31 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: c9781165affb1755e73919931d8d158ae9b535ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d9fc9bee98391f7272a417324b9c3a540b6adbe6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438764"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474503"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>通过 Azure CLI 开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 本文介绍如何使用 Azure CLI 命令行接口创建 Azure Data Lake Analytics 帐户、提交 USQL 作业和目录。 此作业读取制表符分隔值 (TSV) 文件，并将其转换为逗号分隔值 (CSV) 文件。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在开始之前，需要以下项：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 本文要求运行 Azure CLI 2.0 或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+* 本文要求运行 Azure CLI 2.0 或更高版本。 如果需要安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-若要登录到 Azure 订阅，请执行以下命令：
+要登录到 Azure 订阅，请执行：
 
-```
-azurecli
+```azurecli
 az login
 ```
 
@@ -42,7 +41,7 @@ az login
 
 若要使用特定订阅，请执行以下命令：
 
-```
+```azurecli
 az account set --subscription <subscription id>
 ```
 
@@ -53,23 +52,23 @@ az account set --subscription <subscription id>
 
 若要列出订阅中的现有资源组，请执行以下命令：
 
-```
+```azurecli
 az group list
 ```
 
 若要创建新的资源组：
 
-```
+```azurecli
 az group create --name "<Resource Group Name>" --location "<Azure Location>"
 ```
 
-* **Data Lake Analytics 帐户名**。 每个 Data Lake Analytics 帐户都有一个名称。
+* **数据湖分析帐户名称**。 每个 Data Lake Analytics 帐户都有一个名称。
 * **位置**。 使用支持 Data Lake Analytics 的 Azure 数据中心之一。
-* **默认的 Data Lake Store 帐户**：每个 Data Lake Analytics 帐户都有一个默认的 Data Lake Store 帐户。
+* **默认数据湖存储帐户**：每个数据湖分析帐户都有一个默认的数据湖存储帐户。
 
 若要列出现有的 Data Lake Store 帐户，请执行以下命令：
 
-```
+```azurecli
 az dls account list
 ```
 
@@ -81,13 +80,13 @@ az dls account create --account "<Data Lake Store Account Name>" --resource-grou
 
 请使用以下语法创建 Data Lake Analytics 帐户：
 
-```
+```azurecli
 az dla account create --account "<Data Lake Analytics Account Name>" --resource-group "<Resource Group Name>" --location "<Azure location>" --default-data-lake-store "<Default Data Lake Store Account Name>"
 ```
 
 创建帐户以后，可以使用以下命令列出帐户并显示帐户详细信息：
 
-```
+```azurecli
 az dla account list
 az dla account show --account "<Data Lake Analytics Account Name>"            
 ```
@@ -99,7 +98,7 @@ Azure 门户提供一个用户界面，可将一些示例数据复制到默认 D
 
 若要使用 Azure CLI 上传文件，请使用以下命令：
 
-```
+```azurecli
 az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Source File Path>" --destination-path "<Destination File Path>"
 az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
@@ -151,27 +150,26 @@ wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Da
 
 请使用以下语法提交作业。
 
-```
+```azurecli
 az dla job submit --account "<Data Lake Analytics Account Name>" --job-name "<Job Name>" --script "<Script Path and Name>"
 ```
 
 例如：
 
-```
+```azurecli
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
 ```
 
 **列出作业并显示作业详细信息**
 
-```
-azurecli
+```azurecli
 az dla job list --account "<Data Lake Analytics Account Name>"
 az dla job show --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
 **取消作业**
 
-```
+```azurecli
 az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
@@ -179,7 +177,7 @@ az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity 
 
 作业完成后，可以使用以下命令列出输出文件，并下载这些文件：
 
-```
+```azurecli
 az dls fs list --account "<Data Lake Store Account Name>" --source-path "/Output" --destination-path "<Destination>"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv" --length 128 --offset 0
@@ -188,7 +186,7 @@ az dls fs download --account "<Data Lake Store Account Name>" --source-path "/Ou
 
 例如：
 
-```
+```azurecli
 az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"
 ```
 
@@ -196,4 +194,4 @@ az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-fr
 
 * 若要查看 Data Lake Analytics Azure CLI 参考文档，请参阅 [Data Lake Analytics](/cli/azure/dla)。
 * 若要查看 Data Lake Store Azure CLI 参考文档，请参阅 [Data Lake Store](/cli/azure/dls)。
-* 若要查看更复杂的查询，请参阅[使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)。
+* 要查看更复杂的查询，请参阅[使用 Azure 数据湖分析分析分析网站日志](data-lake-analytics-analyze-weblogs.md)。

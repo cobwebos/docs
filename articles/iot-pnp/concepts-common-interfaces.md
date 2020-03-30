@@ -1,47 +1,47 @@
 ---
-title: 常见接口-IoT 即插即用预览版 |Microsoft Docs
-description: 适用于 IoT 即插即用开发人员的常见界面的说明
+title: 通用接口 - IoT 即插即用预览 |微软文档
+description: 物联网即插即用开发人员通用接口的说明
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f697a0d6aba4f137b75faa2a200424c72aa78c3b
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c6ac90f917b9afc37b3a39d8da679fbcad091778
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531405"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234705"
 ---
-# <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT 即插即用预览通用接口
+# <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT 即插即用预览通用界面
 
-所有 IoT 即插即用设备都应该实现一些公共接口。 常见接口会使 IoT 解决方案受益，因为它们提供了一致的功能。 [证书](tutorial-build-device-certification.md)要求设备实现多个通用接口。 你可以从公共模型存储库检索公共接口定义。
+所有 IoT 即插即用设备都有望实现一些通用接口。 通用接口使 IoT 解决方案受益，因为它们提供了一致的功能。 [认证](tutorial-build-device-certification.md)要求您的设备实现多个通用接口。 可以从公共模型存储库检索通用接口定义。
 
-## <a name="summary-of-common-interfaces"></a>公共接口摘要
+## <a name="summary-of-common-interfaces"></a>常见接口摘要
 
-| 名称 | ID | Description | 由 Azure IoT SDK 实现 | 必须在功能模型中声明 |
+| “属性” | ID | 描述 | 由 Azure IoT SDK 实现 | 必须在功能模型中声明 |
 | -------- | -------- | -------- | -------- | -------- | -------- |
-| 模型信息 | urn： azureiot： ModelDiscovery： ModelInformation：1 | 用于设备声明功能模型 ID 和接口。 所有 IoT 即插即用设备都是必需的。 | 是 | 否 |
-| 数字克隆客户端 SDK 信息 | urn： azureiot：客户端： SDKInformation：1 | 用于将设备连接到 Azure 的客户端 SDK。 [认证](tutorial-build-device-certification.md)所必需 | 是 | 否 |
-| 设备信息 | urn： azureiot：设备： DeviceInformation：1 | 有关设备的硬件和操作系统信息。 [认证](tutorial-build-device-certification.md)所必需 | 否 | 是 |
-| 模型定义 | urn： azureiot： ModelDiscovery： ModelDefinition：1 | 设备用于声明其功能模型和接口的完整定义。 当模型定义不托管在模型存储库中时，必须实现。 | 否 | 是 |
-| 数字输出 | urn： azureiot： ModelDiscovery： DigitalTwin：1 | 供解决方案开发人员检索数字克隆的功能模型 ID 和接口 Id。 IoT 即插即用设备不声明或实现此接口。 | 否 | 否 |
+| 模型信息 | urn：azureiot：模型发现：模型信息：1 | 供设备声明功能型号 ID 和接口。 所有 IoT 即插即用设备都需要。 | 是 | 否 |
+| 数字双客户端 SDK 信息 | urn：azureiot：客户端：SDK信息：1 | 用于将设备与 Azure 连接的客户端 SDK。 [认证](tutorial-build-device-certification.md)所需的 | 是 | 否 |
+| 设备信息 | urn：azureiot：设备管理：设备信息：1 | 有关设备的硬件和操作系统信息。 [认证](tutorial-build-device-certification.md)所需的 | 否 | 是 |
+| 模型定义 | urn：azureiot：模型发现：模型定义：1 | 供设备声明其功能模型和接口的完整定义。 当模型定义未托管在模型存储库中时，必须实现。 | 否 | 是 |
+| 数字孪生 | urn：azureiot：模型发现：数字孪生：1 | 供解决方案开发人员检索数字孪生的功能模型 ID 和接口 ID。 此接口不是由 IoT 即插即用设备声明或实现的。 | 否 | 否 |
 
-- 由 Azure IoT SDK 实现-Azure IoT SDK 是否实现了在接口中声明的功能。 使用 Azure IoT SDK 的 IoT 即插即用设备无需实现此接口。
-- 必须在功能模型中声明-如果是 "yes"，则必须在此 IoT 即插即用设备的设备功能模型的 `"implements":` 部分中声明此接口。
+- 由 Azure IoT SDK 实现 - Azure IoT SDK 是否实现在接口中声明的功能。 使用 Azure IoT SDK 的 IoT 即插即用设备不需要实现此接口。
+- 必须在功能模型中声明 - 如果为"是"，则必须在此 IoT`"implements":`即插即用设备的设备功能模型部分中声明此接口。
 
 ## <a name="retrieve-interface-definitions-from-the-public-repository"></a>从公共存储库检索接口定义
 
 ### <a name="cli"></a>CLI
 
-可以使用适用于 Azure CLI 的 Azure IoT 扩展从公共模型存储库检索公共接口。
+可以使用 Azure CLI 的 Azure IoT 扩展从公共模型存储库检索公共接口。
 
-```cmd/sh
+```azurecli
 az iot pnp interface show --interface {InterfaceID}
 ```
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model show --model {ModelID}
 ```
 
@@ -49,16 +49,16 @@ az iot pnp capability-model show --model {ModelID}
 
 1. 按 **Ctrl+Shift+P** 打开命令面板。
 
-1. 输入**即插即用**，然后选择 " **IoT 即插即用：打开模型存储库**" 命令。 选择 "**公共存储库**"。 公共模型存储库将在 VS Code 中打开。
+1. 输入**即插即用**，然后选择**IoT 即插即用：打开模型存储库**命令。 选择**公共存储库**。 公共模型存储库将在 VS Code 中打开。
 
-1. 在 "公共模型存储库" 中，在搜索字段中输入接口名称。
+1. 在公共模型存储库中，在搜索字段中输入接口名称。
 
-1. 若要创建接口的本地副本，请在搜索结果中选择它，然后选择 "**下载**"。
+1. 要创建界面的本地副本，请在搜索结果中选择它，然后选择 **"下载**"。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解常见接口，以下是一些其他资源：
+现在，您已经了解了通用接口，下面是一些其他资源：
 
-- [数字克隆定义语言（DTDL）](https://aka.ms/DTDL)
+- [数字双定义语言 （DTDL）](https://aka.ms/DTDL)
 - [C 设备 SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
+- [物联网 REST API](https://docs.microsoft.com/rest/api/iothub/device)

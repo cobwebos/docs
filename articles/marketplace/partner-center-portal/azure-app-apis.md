@@ -1,56 +1,55 @@
 ---
-title: 在商业应用商店中加入 Azure 应用的 API
-description: Microsoft 合作伙伴中心的商业 marketplace 中的 Azure 应用的 API 必备组件。
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: 商业应用商店中 Azure 应用的载入 API
+description: 在 Microsoft 合作伙伴中心的商业市场中，Azure 应用的 API 先决条件。
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: c14d8c6f27e4b0f4a4a75fa14b83455ff30ee35a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279753"
 ---
-# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>用于在合作伙伴中心载入 Azure 应用的 API
+# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>用于在合作伙伴中心中载入 Azure 应用的 API
 
-使用*合作伙伴中心提交 API*以编程方式查询、创建提交并发布 Azure 产品/服务。  如果你的帐户管理多个产品/服务，并且你希望自动执行这些服务的提交过程并对其进行优化，则此 API 非常有用。
+使用*合作伙伴中心提交 API*以编程方式查询、为 Azure 产品/服务创建提交并发布 Azure 产品/服务。  如果您的帐户管理许多产品/服务，并且希望自动和优化这些优惠的提交过程，则此 API 非常有用。
 
 ## <a name="api-prerequisites"></a>API 先决条件
 
-你需要使用几种编程资产才能使用适用于 Azure 产品的合作伙伴中心 API： 
+要使用 Azure 产品的合作伙伴中心 API，您需要一些编程资源： 
 
-- Azure Active Directory 应用程序。
-- Azure Active Directory （Azure AD）访问令牌。
+- Azure 活动目录应用程序。
+- Azure 活动目录 （Azure AD） 访问令牌。
 
-### <a name="step-1-complete-prerequisites-for-using-the-partner-center-submission-api"></a>步骤1：完成使用合作伙伴中心提交 API 的先决条件
+### <a name="step-1-complete-prerequisites-for-using-the-partner-center-submission-api"></a>步骤 1：完成使用合作伙伴中心提交 API 的先决条件
 
-在开始编写代码以调用合作伙伴中心提交 API 之前，请确保已完成以下先决条件。
+在开始编写代码以调用合作伙伴中心提交 API 之前，请确保您已完成以下先决条件。
 
-- 你（或你的组织）必须具有 Azure AD 目录，并且你必须具有该目录的[全局管理员](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)权限。 如果你已使用 Office 365 或 Microsoft 的其他业务服务，表示你已经具有 Azure AD 目录。 否则，你可以[在合作伙伴中心创建新的 Azure AD，而](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account)无额外费用。
+- 您（或您的组织）必须具有 Azure AD 目录，并且必须具有该目录的[全局管理员](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)权限。 如果你已使用 Office 365 或 Microsoft 的其他业务服务，表示你已经具有 Azure AD 目录。 否则，您可以在[合作伙伴中心中创建新的 Azure AD，](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account)无需支付额外费用。
 
-- 必须[将 Azure AD 应用程序与合作伙伴中心帐户相关联](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account)，并获取租户 id、客户端 id 和密钥。 获取 Azure AD 访问令牌（该令牌用于调用 Microsoft Store 提交 API）需要这些值。
+- 您必须[将 Azure AD 应用程序与合作伙伴中心帐户相关联，](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account)并获取租户 ID、客户端 ID 和密钥。 获取 Azure AD 访问令牌（该令牌用于调用 Microsoft Store 提交 API）需要这些值。
 
 #### <a name="how-to-associate-an-azure-ad-application-with-your-partner-center-account"></a>如何将 Azure AD 应用程序与合作伙伴中心帐户关联
 
-若要使用 Microsoft Store 提交 API，你必须将 Azure AD 应用程序与你的合作伙伴中心帐户关联、检索应用程序的租户 ID 和客户端 ID，并生成一个密钥。 Azure AD 应用程序表示你要从中调用合作伙伴中心提交 API 的应用或服务。 你需要租户 ID、客户端 ID 和密钥以获取传递给 API 的 Azure AD 访问令牌。
+若要使用 Microsoft 应用商店提交 API，必须将 Azure AD 应用程序与合作伙伴中心帐户关联，检索应用程序的租户 ID 和客户端 ID，并生成密钥。 Azure AD 应用程序表示要从中调用合作伙伴中心提交 API 的应用或服务。 你需要租户 ID、客户端 ID 和密钥以获取传递给 API 的 Azure AD 访问令牌。
 
 >[!Note]
->只需执行此任务一次。 获取租户 ID、客户端 ID 和密钥后，当你需要创建新的 Azure AD 访问令牌时，可以随时重复使用它们。
+>您只需要执行此任务一次。 获取租户 ID、客户端 ID 和密钥后，当你需要创建新的 Azure AD 访问令牌时，可以随时重复使用它们。
 
-1. 在合作伙伴中心，[将组织的合作伙伴中心帐户与组织的 Azure AD 目录相关联](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center)。
-1. 接下来，从合作伙伴中心的 "**帐户设置**" 部分的 "**用户**" 页中，添加表示将用于访问合作伙伴中心帐户提交的应用或服务的[Azure AD 应用程序](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account)。 请确保为此应用程序分配**管理员**角色。 如果 Azure AD 目录中尚不存在该应用程序，则可以[在合作伙伴中心创建新的 Azure AD 应用程序](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account)。
+1. 在合作伙伴中心中，[将组织的合作伙伴中心帐户与组织的 Azure AD 目录相关联](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center)。
+1. 接下来，从合作伙伴中心"**帐户设置"** 部分中的 **"用户"** 页面[中，添加 Azure AD 应用程序](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account)，该应用程序表示将用于访问合作伙伴中心帐户提交的应用或服务。 请确保为此应用程序分配**管理员**角色。 如果应用程序在 Azure AD 目录中尚不存在，则可以[在合作伙伴中心中创建新的 Azure AD 应用程序](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account)。
 1. 返回到**用户**页面、单击 Azure AD 应用程序的名称以转到应用程序设置，然后记下**租户 ID** 和**客户端 ID** 值。
-1. 单击**添加新密钥**。 在接下来的屏幕上，记下“密钥”值。 在离开此页面后，你将无法再访问该信息。 有关详细信息，请参阅[管理 Azure AD 应用程序的密钥](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys)。
+1. 单击 **"添加新键**"。 在接下来的屏幕上，记下“密钥”值。**** 在离开此页面后，你将无法再访问该信息。 有关详细信息，请参阅[管理 Azure AD 应用程序的密钥](https://docs.microsoft.com/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys)。
 
 ### <a name="step-2-obtain-an-azure-ad-access-token"></a>步骤 2：获取 Azure AD 访问令牌
 
-在合作伙伴中心提交 API 中调用任何方法之前，必须先获取一个 Azure AD 访问令牌，并将其传递给 API 中每个方法的**Authorization**标头。 获取访问令牌后，在它到期前，你有 60 分钟的使用时间。 令牌过期后，您可以刷新该令牌，以便以后在对 API 的调用中继续使用该令牌。
+在调用合作伙伴中心提交 API 中的任何方法之前，必须首先获取 Azure AD 访问令牌，该令牌将传递给 API 中每个方法**的授权**标头。 获取访问令牌后，在它到期前，你有 60 分钟的使用时间。 令牌过期后，可以刷新令牌，以便在以后调用 API 时继续使用它。
 
-若要获取访问令牌，请按照[使用客户端凭据的服务到服务调用](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/)中的说明将 `HTTP POST` 发送到 `https://login.microsoftonline.com/<tenant_id>/oauth2/token` 终结点。 下面是示例请求：
+要获取访问令牌，请按照[服务到服务调用中的说明使用客户端凭据](https://azure.microsoft.com/documentation/articles/active-directory-protocols-oauth-service-to-service/)将 发送到`HTTP POST``https://login.microsoftonline.com/<tenant_id>/oauth2/token`终结点。 下面是示例请求：
 
 JSONCopy
 ```Json
@@ -64,10 +63,10 @@ grant_type=client_credentials
 &resource= https://api.partner.microsoft.com
 ```
 
-对于 "`POST URI`" 和 " *client_id* " 和 " *client_secret* " 参数中的*tenant_id*值，请为你在上一节中的合作伙伴中心检索的应用程序指定租户 id、客户端 id 和密钥。 对于 *resource* 参数，必须指定 `https://api.partner.microsoft.com`。
+对于 和*client_id* `POST URI`和*client_secret*参数中的*tenant_id*值，请在上一节中指定从合作伙伴中心检索的应用程序的租户 ID、客户端 ID 和密钥。 对于 *resource* 参数，必须指定 `https://api.partner.microsoft.com`。
 
 ### <a name="step-3-use-the-microsoft-store-submission-api"></a>步骤 3：使用 Microsoft Store 提交 API
 
-拥有 Azure AD 访问令牌后，可以在合作伙伴中心提交 API 中调用方法。 若要创建或更新提交，通常按特定顺序在合作伙伴中心提交 API 中调用多个方法。 有关每个方案和每个方法的语法的信息，请参阅摄取 API swagger。
+获得 Azure AD 访问令牌后，可以在合作伙伴中心提交 API 中调用方法。 要创建或更新提交，通常按特定顺序在合作伙伴中心提交 API 中调用多个方法。 有关每个方案以及每个方法的语法的信息，请参阅引入 API 挥霍。
 
 https://apidocs.microsoft.com/services/partneringestion/

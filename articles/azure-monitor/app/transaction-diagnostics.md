@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671131"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断
@@ -66,15 +66,15 @@ ms.locfileid: "77671131"
 
 [Application Insights 探查器](../../azure-monitor/app/profiler.md)或[快照调试器](snapshot-debugger.md)有助于对性能和失败问题进行代码级诊断。 通过此体验，仅需一次单击即可查看任意组件的探查器跟踪或快照。
 
-如果无法运行探查器，请联系**serviceprofilerhelp\@microsoft.com**
+如果无法让 Profiler 正常工作，请联系 **serviceprofilerhelp\@microsoft.com**
 
-如果无法 Snapshot Debugger 工作，请联系**snapshothelp\@microsoft.com**
+如果无法让快照调试器正常工作，请联系 **snapshothelp\@microsoft.com**
 
 ![探查器集成](media/transaction-diagnostics/profilerTraces.png)
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 
-图中只显示了一个组件，其余组件仅显示为外部依赖项，没有显示有关这些组件内发生的情况的详细信息。
+图中只显示了一个组件，其余组件仅显示为外部依赖项，没有显示有关这些组件内发生的情况的详细信息**。
 
 可能的原因：
 
@@ -84,14 +84,14 @@ ms.locfileid: "77671131"
 
 如果确实具有权限，且使用了最新的 Application Insights SDK 来检测组件，请通过右上方的反馈通道告知我们。
 
-*我看到依赖项的重复行。这是不是吗？*
+*我看到依赖项的重复行。这是预料之中的吗？*
 
 当前，出站依赖项调用与入站请求分开显示。 通常情况下，这两种调用大致相同，但持续时间值因网络往返而不同。 可通过前导图标和样式不同的持续时间条来区分它们。 这份数据演示文稿是否包含令人困惑的内容？ 欢迎提供反馈！
 
-不同组件实例间的时钟偏差情况如何？
+不同组件实例间的时钟偏差情况如何？**
 
 在事务图中针对时钟偏差调整了时间线。 可以在详细信息窗格中查看确切的时间戳，或使用“Analytics”进行查看。
 
-为什么新体验中缺少大部分相关项查询？
+为什么新体验中缺少大部分相关项查询？**
 
 这是设计的结果。 所有组件的全部相关项都已显示在左侧（顶部和底部）。 新体验中有两个左侧未包含的相关项：此事件发生前后五分钟内的所有遥测，以及用户时间线。

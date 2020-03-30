@@ -1,21 +1,21 @@
 ---
-title: 解决常见的部署错误
+title: 排查常见部署错误
 description: 说明如何解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误。
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.openlocfilehash: 58519056bd59f449fe26aa2fee3620f3ed28cc31
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: bc1568c53cdb5518f694d77a2f28f3cf77296ee2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154510"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460375"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure 资源管理器时的常见 Azure 部署错误
 
 本文介绍了一些常见的 Azure 部署错误，并提供了有关如何解决这些错误的信息。 如果找不到部署错误的错误代码，请参阅[查找错误代码](#find-error-code)。
 
-如果你正在查找有关错误代码的信息，但本文未提供该信息，请告知我们。 在此页的底部，你可以留下反馈。 将跟踪 GitHub 问题的反馈。
+如果需要某个错误代码的信息，而本文没有提供该信息，请告知我们。 在此页面底部，您可以留下反馈。 反馈通过 GitHub 问题进行跟踪。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -27,45 +27,45 @@ ms.locfileid: "76154510"
 | AccountPropertyCannotBeSet | 检查可用的存储帐户属性。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | 群集或区域没有可用的资源或无法支持所请求的 VM 大小。 稍后重试请求，或者请求不同的 VM 大小。 | [Linux 预配和分配问题](../../virtual-machines/linux/troubleshoot-deployment-new-vm.md)、[Windows 预配和分配问题](../../virtual-machines/windows/troubleshoot-deployment-new-vm.md)和[排查分配失败问题](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | 等待并发操作完成。 | |
-| AuthorizationFailed | 帐户或服务主体没有足够的访问权限，无法完成部署。 检查帐户所属的角色及其在部署范围内的访问权限。<br><br>如果尚未注册所需的资源提供程序，则可能会收到此错误。 | [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)<br><br>[解决注册问题](error-register-resource-provider.md) |
+| AuthorizationFailed | 帐户或服务主体没有足够的访问权限，无法完成部署。 检查帐户所属的角色及其在部署范围内的访问权限。<br><br>所需的资源提供程序未注册时，可能会收到此错误。 | [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)<br><br>[解决注册问题](error-register-resource-provider.md) |
 | BadRequest | 发送的部署值与资源管理器预期的值不匹配。 检查内部状态消息，以帮助进行故障排除。 | [模板引用](/azure/templates/)和[支持的位置](resource-location.md) |
 | 冲突 | 在资源的当前状态下不允许所请求的操作。 例如，仅当创建 VM 或该 VM 已解除分配时，才允许调整磁盘大小。 | |
 | DeploymentActiveAndUneditable | 等待此资源组上的并发部署完成。 | |
-| DeploymentFailedCleanUp | 在完整模式下部署时，不在模板中的所有资源都将被删除。 如果没有足够的权限删除模板中的所有资源，则会出现此错误。 若要避免此错误，请将部署模式改为 "增量"。 | [Azure 资源管理器部署模式](deployment-modes.md) |
+| DeploymentFailedCleanUp | 在完整模式下部署时，模板中不存在的任何资源都将被删除。 当没有足够的权限删除模板中所有不存在的资源时，会出现此错误。 若要避免此错误，请将部署模式更改为“增量”。 | [Azure 资源管理器部署模式](deployment-modes.md) |
 | DeploymentNameInvalidCharacters | 部署名称只能包含字母、数字、"-"、"." 或 "_"。 | |
-| DeploymentNameLengthLimitExceeded | 部署名称限制为64个字符。  | |
+| DeploymentNameLengthLimitExceeded | 部署名称限制为 64 个字符。  | |
 | DeploymentFailed | DeploymentFailed 错误为常规错误，未提供解决错误所需的详细信息。 请查看错误代码的错误详情，其中提供了详细信息。 | [查找错误代码](#find-error-code) |
-| DeploymentQuotaExceeded | 如果达到每个资源组的部署数限制 800，则会从历史记录中删除不再需要的部署。 | [在部署计数超过800时解决错误](deployment-quota-exceeded.md) |
-| DnsRecordInUse | DNS 记录名称必须唯一。 请输入其他名称。 | |
+| DeploymentQuotaExceeded | 如果达到每个资源组的部署数限制 800，则会从历史记录中删除不再需要的部署。 | [解决部署计数超出 800 的错误](deployment-quota-exceeded.md) |
+| DnsRecordInUse | DNS 记录名称必须唯一。 输入不同的名称。 | |
 | ImageNotFound | 检查 VM 映像设置。 |  |
-| InUseSubnetCannotBeDeleted | 尝试更新资源时可能会遇到此错误，并且通过删除和创建资源来处理请求。 确保指定所有未更改值。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| InUseSubnetCannotBeDeleted | 如果尝试更新资源，但已通过删除并创建资源处理了请求，则可能会出现此错误。 确保指定所有未更改值。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | 获取相应租户的访问令牌。 只能从帐户所属的租户获取该令牌。 | |
-| InvalidContentLink | 您很可能尝试链接到不存在的嵌套模板。 再次确认为嵌套模板提供的 URI。 如果模板存在于存储帐户中，请确保 URI 可访问。 你可能需要传递 SAS 令牌。 目前，无法链接到位于[Azure 存储防火墙](../../storage/common/storage-network-security.md)后面的存储帐户中的模板。 请考虑将模板移动到其他存储库，如 GitHub。 | [链接的模板](linked-templates.md) |
+| InvalidContentLink | 很可能尝试过链接到不可用的嵌套模板。 再次确认为嵌套模板提供的 URI。 如果模板存在于存储帐户中，请确保 URI 可访问。 可能需要传递 SAS 令牌。 目前，无法链接到位于 [Azure 存储防火墙](../../storage/common/storage-network-security.md)后面的存储帐户中的模板。 考虑将模板移到其他存储库，如 GitHub。 | [链接的模板](linked-templates.md) |
 | InvalidDeploymentLocation | 在订阅级别部署时，你为以前使用的部署名称提供了不同的位置。 | [订阅级别部署](deploy-to-subscription.md) |
-| InvalidParameter | 为资源提供的某个值与预期值不匹配。 此错误可能由许多不同的状况造成。 例如，密码强度可能不足，或者 Blob 名称可能不正确。 错误消息应指出需要更正哪些值。 | |
-| InvalidRequestContent | 部署值包括无法识别的值，或者缺少必需的值。 确认资源类型的值。 | [模板参考](/azure/templates/) |
-| InvalidRequestFormat | 在运行部署时启用调试日志记录，并验证请求的内容。 | [调试日志记录](#enable-debug-logging) |
+| InvalidParameter | 为资源提供的某个值与预期值不匹配。 此错误可能由许多不同的状况造成。 例如，密码强度可能不足，或者 Blob 名称可能不正确。 错误消息应表明哪个值需要更正。 | |
+| InvalidRequestContent | 部署值包含无法识别的值，或者缺少必需的值。 确认资源类型的值。 | [模板参考](/azure/templates/) |
+| InvalidRequestFormat | 在运行部署时启用调试日志记录功能，并验证请求的内容。 | [调试日志记录](#enable-debug-logging) |
 | InvalidResourceNamespace | 检查在 **type** 属性中指定的资源命名空间。 | [模板参考](/azure/templates/) |
 | InvalidResourceReference | 资源尚不存在，或错误地引用了它。 检查是否需要添加依赖项。 验证所用的 **reference** 函数是否包含方案所需的参数。 | [解决依赖项问题](error-not-found.md) |
 | InvalidResourceType | 检查在 **type** 属性中指定的资源类型。 | [模板参考](/azure/templates/) |
 | InvalidSubscriptionRegistrationState | 将订阅注册到资源提供程序。 | [解决注册问题](error-register-resource-provider.md) |
 | InvalidTemplate | 检查模板语法是否有错误。 | [解决模板无效问题](error-invalid-template.md) |
 | InvalidTemplateCircularDependency | 删除不必要的依赖项。 | [解决循环依赖项](error-invalid-template.md#circular-dependency) |
-| LinkedAuthorizationFailed | 检查你的帐户是否与要部署到的资源组属于同一租户。 | |
+| LinkedAuthorizationFailed | 检查帐户所属的租户是否与要部署到的资源组所属的租户相同。 | |
 | LinkedInvalidPropertyId | 无法正确解析资源的资源 ID。 检查是否为资源 ID 提供了所有必需值，包括订阅 ID、资源组名称、资源类型、父资源名称（如果需要）和资源名称。 | |
 | LocationRequired | 提供资源的位置。 | [设置位置](resource-location.md) |
 | MismatchingResourceSegments | 请确保嵌套资源的名称和类型中包含正确数量的段。 | [解决资源段](error-invalid-template.md#incorrect-segment-lengths)
-| MissingRegistrationForLocation | 检查资源提供程序注册状态和支持的位置。 | [解决注册问题](error-register-resource-provider.md) |
+| MissingRegistrationForLocation | 检查资源提供程序注册状态，以及支持的位置。 | [解决注册问题](error-register-resource-provider.md) |
 | MissingSubscriptionRegistration | 将订阅注册到资源提供程序。 | [解决注册问题](error-register-resource-provider.md) |
 | NoRegisteredProviderFound | 检查资源提供程序注册状态。 | [解决注册问题](error-register-resource-provider.md) |
-| NotFound | 你可能正在尝试使用父资源并行部署依赖资源。 检查是否需要添加依赖项。 | [解决依赖项问题](error-not-found.md) |
+| NotFound | 你可能在尝试部署与父资源并行的依赖资源。 检查是否需要添加依赖项。 | [解决依赖项问题](error-not-found.md) |
 | OperationNotAllowed | 部署正在尝试执行一个超过了订阅、资源组或区域配额的操作。 如果可能，请修改部署，以保持在配额范围内。 否则，请考虑请求更改配额。 | [解决配额问题](error-resource-quota.md) |
 | ParentResourceNotFound | 确保在创建子资源之前父资源已存在。 | [解决父资源问题](error-parent-resource.md) |
-| PasswordTooLong | 您可能选择了包含太多字符的密码，或者将密码值转换为安全字符串，然后将其作为参数传递。 如果模板包括一个**安全字符串**参数，则不需要将值转换为安全字符串。 请以文本形式提供密码值。 |  |
+| PasswordTooLong | 你可能选择了包含太多字符的密码，或在将密码值作为参数传递之前将其转换成了一个安全字符串。 如果模板包括一个**安全字符串**参数，则不需要将值转换为安全字符串。 请以文本形式提供密码值。 |  |
 | PrivateIPAddressInReservedRange | 指定的 IP 地址包括 Azure 所需的地址范围。 更改 IP 地址以避免保留的范围。 | [IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
 | PrivateIPAddressNotInSubnet | 指定的 IP 地址超出子网范围。 更改 IP 地址，使之在子网范围内。 | [IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PropertyChangeNotAllowed | 无法在已部署的资源上更改某些属性。 更新资源时，请限制为对允许的属性进行更改。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |
-| RequestDisallowedByPolicy | 订阅中包含的资源策略可防止在部署期间尝试执行的操作。 查找阻止该操作的策略。 如果可能，请更改部署以满足策略中的限制。 | [解决策略问题](error-policy-requestdisallowedbypolicy.md) |
+| PropertyChangeNotAllowed | 已部署资源上的某些属性不能更改。 更新资源时，请限制为对允许的属性进行更改。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| RequestDisallowedByPolicy | 订阅中的某个资源策略阻止你在部署期间尝试执行的操作。 查找阻止该操作的策略。 如果可能，请更改部署，使之符合策略的限制。 | [解决策略问题](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | 提供不包含保留名称的资源名称。 | [保留的资源名称](error-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | 等待删除操作完成。 | |
 | ResourceGroupNotFound | 检查部署的目标资源组的名称。 目标资源组必须已存在于订阅中。 检查订阅上下文。 | [Azure CLI](/cli/azure/account?#az-account-set) [PowerShell](/powershell/module/Az.Accounts/Set-AzContext) |
@@ -74,9 +74,9 @@ ms.locfileid: "76154510"
 | SkuNotAvailable | 选择可在所选位置中使用的 SKU（例如 VM 大小）。 | [解决 SKU 问题](error-sku-not-available.md) |
 | StorageAccountAlreadyExists | 为存储帐户提供唯一名称。 | [解析存储帐户名称](error-storage-account-name.md)  |
 | StorageAccountAlreadyTaken | 为存储帐户提供唯一名称。 | [解析存储帐户名称](error-storage-account-name.md) |
-| StorageAccountNotFound | 检查要使用的存储帐户的 "订阅"、"资源组" 和 "名称"。 | |
+| StorageAccountNotFound | 检查尝试使用的存储帐户的订阅、资源组和名称。 | |
 | SubnetsNotInSameVnet | 一个虚拟机只能有一个虚拟网络。 部署多个 NIC 时，请确保它们属于同一虚拟网络。 | [多个 NIC](../../virtual-machines/windows/multiple-nics.md) |
-| SubscriptionNotRegistered | 部署网络资源时，会在订阅中自动注册 Microsoft 网络资源提供程序。 有时，自动注册不会按时完成。 若要避免此间歇错误，请在部署前注册 Microsoft 网络资源提供程序。 | [解决注册问题](error-register-resource-provider.md) |
+| SubscriptionNotRegistered | 部署网络资源时，Microsoft.Network 资源提供程序会自动在订阅中注册。 有时，自动注册未及时完成。 若要避免此间歇性错误，请在部署之前注册 Microsoft.Network 资源提供程序。 | [解决注册问题](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | 删除不必要的依赖项。 | [解决循环依赖项](error-invalid-template.md#circular-dependency) |
 | TooManyTargetResourceGroups | 减少单个部署的资源组数。 | [跨资源组部署](cross-resource-group-deployment.md) |
 
@@ -114,7 +114,7 @@ ms.locfileid: "76154510"
 若要通过 Azure CLI 查看部署错误代码和消息，请使用：
 
 ```azurecli-interactive
-az group deployment operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+az deployment group operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
 ```
 
 在门户中，选择通知。
@@ -125,7 +125,7 @@ az group deployment operation list --name exampledeployment -g examplegroup --qu
 
 ![部署失败](./media/common-deployment-errors/deployment-failed.png)
 
-看到错误消息和错误代码。 请注意有两个错误代码。 第一个错误代码 (DeploymentFailed) 表示常规错误，不提供解决错误所需的详细信息。 第二个错误代码 (**StorageAccountNotFound**) 提供所需的详细信息。
+看到错误消息和错误代码。 请注意有两个错误代码。 第一个错误代码 (DeploymentFailed) 表示常规错误，不提供解决错误所需的详细信息****。 第二个错误代码 (**StorageAccountNotFound**) 提供所需的详细信息。
 
 ![错误详细信息](./media/common-deployment-errors/error-details.png)
 
@@ -172,7 +172,7 @@ New-AzResourceGroupDeployment `
 使用以下命令查看部署操作：
 
 ```azurecli
-az group deployment operation list \
+az deployment group operation list \
   --resource-group examplegroup \
   --name exampledeployment
 ```
@@ -180,7 +180,7 @@ az group deployment operation list \
 使用以下命令检查请求内容：
 
 ```azurecli
-az group deployment operation list \
+az deployment group operation list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.request
@@ -189,7 +189,7 @@ az group deployment operation list \
 使用以下命令检查响应内容：
 
 ```azurecli
-az group deployment operation list \
+az deployment group operation list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.response
@@ -244,10 +244,10 @@ az group deployment operation list \
 }
 ```
 
-或者，假设您收到的部署错误与错误设置依赖关系无关。 通过将模板分解为多个简化模板进行测试。 首先，创建仅部署单个资源（如 SQL Server）的模板。 如果确定已正确定义该资源，请添加依赖于该资源的资源（如 SQL 数据库）。 正确定义这两个资源后，添加其他从属资源（如审核策略）。 在每个测试部署之间，删除资源组，以确保充分测试依赖关系。
+或者，假设收到部署错误，而你认为它与依赖关系设置错误有关。 通过将模板分解为多个简化模板进行测试。 首先，创建仅部署单个资源（如 SQL Server）的模板。 确保已正确定义该资源时，再添加依赖于它的资源（如 SQL 数据库）。 正确定义这两个资源后，添加其他从属资源（如审核策略）。 在每个测试部署之间，删除资源组，以确保充分测试依赖关系。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要浏览疑难解答教程，请参阅[教程：排查资源管理器模板部署问题](template-tutorial-troubleshoot.md)
+* 要完成故障排除教程，请参阅[教程：解决资源管理器模板部署的疑难问题](template-tutorial-troubleshoot.md)
 * 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../management/view-activity-logs.md)。
 * 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](deployment-history.md)。

@@ -1,19 +1,18 @@
 ---
-title: 创建 Azure IoT Edge 模块技术资产 |Azure Marketplace
+title: 创建 Azure IoT 边缘模块技术资产 |Azure 应用商店
 description: 创建 IoT Edge 模块的技术资产。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: pabutler
-ms.openlocfilehash: 57bc2f789836a7d3453004cdacc59029c4b24129
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 304ea31f2a6f9820226a6ad0db8bfc803e6fdb94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827619"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285208"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>准备 IoT Edge 模块技术资产
 
@@ -52,14 +51,14 @@ IoT Edge 模块必须支持以下平台选项之一。
 
 目标 IoT Edge 设备上的 IoT Edge 模块规格（CPU/RAM/存储/GPU 等）必须满足以下要求：
 
-- 该模块必须适用于 **Azure IoT Edge 认证**设备目录中的[至少一个 IoT Edge 认证](https://catalog.azureiotsolutions.com/)设备。
-- 必须在套餐说明中的最后一个段落（在 **“市场”选项卡**下）阐述[最低硬件要求](./cpp-marketplace-tab.md)。 （可选）如果模块有明显的差异，则还可以列出建议的硬件要求。 例如，在套餐说明的末尾添加以下部分：
+- 该模块必须适用于 [Azure IoT Edge 认证](https://catalog.azureiotsolutions.com/)设备目录中的**至少一个 IoT Edge 认证**设备。
+- 必须在套餐说明中的最后一个段落（在[“市场”选项卡](./cpp-marketplace-tab.md)下）阐述**最低硬件要求**。 （可选）如果模块有明显的差异，则还可以列出建议的硬件要求。 例如，在套餐说明的末尾添加以下部分：
 
   ```html
     <p><u>Minimum hardware requirements:</u> Linux x64 and arm32  OS, 1GB of RAM, 500 Mb of storage</p>
   ```
 
-### <a name="configuration"></a>配置
+### <a name="configuration"></a>Configuration
 
 该模块还包括默认配置设置，尽量使部署到 IoT Edge 设备的过程变得简单直接。 容器还可以包含 IoT Edge 模块 SDK，以便与 edgeHub 和 IoT 中心通信。
 
@@ -68,9 +67,9 @@ IoT Edge 模块必须支持以下平台选项之一。
 IoT Edge 模块必须能够使用[云合作伙伴门户的“SKU”选项卡](./cpp-skus-tab.md)中提供的默认设置启动。 可使用以下默认设置：
 
 - 默认**路由**
-- 默认**孪生所需属性**
+- 默认**双对所需属性**
 - 默认**环境变量**
-- 默认 **createOptions**
+- 默认**创建选项**
 
 如果默认值所需的参数（例如客户服务器的 IP 地址）不起作用，请添加一个参数作为默认值。 将此值括在方括号中并采用大写。 此示例设置以下默认环境变量：
 
@@ -80,11 +79,11 @@ IoT Edge 模块必须能够使用[云合作伙伴门户的“SKU”选项卡](./
 
 #### <a name="configuration-documentation"></a>配置文档
 
-IoT Edge 模块的所有配置设置都必须清楚地记录在文档中（如何使用其路由、createOptions 的所需属性、环境变量、等）。提供文档的链接，或文档必须是产品/服务/sku 说明的一部分。
+必须清楚地记录 IoT Edge 模块的所有配置设置（如何使用其路由、双所需属性、环境变量、创建选项等）。提供指向文档的链接，或者文档必须是您的产品/sku 说明的一部分。
 
 ### <a name="tags-and-versioning"></a>标记和版本控制
 
-客户必须能够轻松部署模块并自动从 marketplace 获取更新（在开发人员方案中）。它们还必须能够使用和冻结其测试的确切版本（在生产方案中）。
+客户必须能够轻松部署模块并自动从市场获取更新（在开发人员方案中）。他们还必须能够使用和冻结他们测试的精确版本（在生产方案中）。
 
 为了达到这些客户的期望并在市场中发布，IoT Edge 模块必须满足以下要求：
 
@@ -109,7 +108,7 @@ IoT Edge 模块的所有配置设置都必须清楚地记录在文档中（如�
 
 对于不使用 IoT 模块 SDK 的模块，将通过云合作伙伴门户提供不太精确的深入信息，例如下载次数。
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全性
 
 IoT Edge 模块必须尽量请求提供对主机的最低特权访问权限。 应避免使用[特权模块](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)。
 
@@ -123,7 +122,7 @@ IoT Edge 模块必须尽量请求提供对主机的最低特权访问权限。 �
 ## <a name="recertification-process"></a>重新认证过程
 
 <!-- Add legal time windows-->
-当存在影响其模块的重大更改时，合作伙伴将收到通知，例如：
+ 每当发生会影响模块的重大更改时，合作伙伴会收到通知，例如：
 
 - IoT Edge 支持的第 1 层 OS/体系结构支持矩阵
 - IoT 模块 SDK

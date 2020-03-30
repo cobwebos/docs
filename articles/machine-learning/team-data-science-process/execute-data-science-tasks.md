@@ -10,27 +10,27 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 984b03288b8dae644fc04a2cd78fb03a2e027f62
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e69a03cd142fdbcc5864ee38a4843e1c2e44a124
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722197"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477147"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>执行数据科学任务：探索、建模和部署
 
-典型的数据科学任务包括数据探索、建模和部署。 本文介绍如何使用**交互式数据探索、分析和报告 (IDEAR)** 与**自动建模和报告 (AMAR)** 实用工具来完成多个常见数据科学任务，例如交互式数据探索、数据分析、报告和建模。 用于将模型部署到生产环境中的选项可能包括：
+典型的数据科学任务包括数据探索、建模和部署。 本文介绍如何使用**交互式数据探索、分析和报告 (IDEAR)** 与**自动建模和报告 (AMAR)** 实用工具来完成多个常见数据科学任务，例如交互式数据探索、数据分析、报告和建模。 将模型部署到生产环境的选项可能包括：
 
 - [Azure 机器学习](../index.yml)
 - [包含机器学习服务的 SQL-Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
+- [Microsoft 机器学习服务器](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 
-## 1. <a name='DataQualityReportUtility-1'></a>浏览 
+## <a name="1--exploration"></a>1.<a name='DataQualityReportUtility-1'></a>勘探 
 
 数据科学家可通过各种方法执行探索和报告：使用适用于 Python 的库和包（例如 matplotlib）或使用 R（例如 ggplot 或 lattice）。 数据科学家可以自定义此类代码，以满足特定方案中数据探索的需要。 结构化数据与非结构化数据（例如文本或图像）的处理需求有所不同。 
 
-产品（如 Azure 机器学习）还为数据整理和探索提供[高级数据准备](../how-to-create-register-datasets.md)，包括功能创建。 用户应确定哪种工具、库和包最适合其需要。 
+Azure 机器学习等产品还提供了[高级数据准备](../how-to-create-register-datasets.md)用于数据整理和探索，包括特征创建。 用户应确定哪种工具、库和包最适合其需要。 
 
 完成此阶段后，交付件是一份数据探索报告。 该报告应提供相当全面的数据视图用于建模，并评估这些数据是否适合继续在建模步骤中使用。 以下部分所述的，用于半自动化探索、建模和报告的 Team Data Science Process (TDSP) 实用工具也提供标准化的数据探索和建模报告。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "76722197"
 目前，此工具仅适用于内存中的数据帧。 需要使用 YAML 文件指定要探索的数据集的参数。 有关详细信息，请参阅 [TDSP 数据科学实用程序中的 IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils)。
 
 
-## 2. <a name='ModelingUtility-2'></a>建模
+## <a name="2--modeling"></a>2.<a name='ModelingUtility-2'></a>建模
 
 有大量的工具包和程序包可用于训练各种语言的模型。 只要符合相关业务用例和生产方案的性能、准确度和延迟要求，数据科学家就可以任意使用他们顺手的工具。
 
@@ -74,11 +74,11 @@ YAML 文件用于指定：
 生成多个模型后，往往需要配置一个系统来注册和管理这些模型。 通常，需要创建脚本或 API 的组合，以及后端数据库或版本控制系统。 可考虑用于这些管理任务的几个选项包括：
 
 1. [Azure 机器学习 - 模型管理服务](../index.yml)
-2. [MIT 提供的 ModelDB](https://mitdbg.github.io/modeldb/) 
+2. [MIT 提供的 ModelDB](http://modeldb.csail.mit.edu:3000/projects) 
 3. [用作模型管理系统的 SQL-Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
-4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+4. [Microsoft 机器学习服务器](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
-## 3. <a name='Deployment-3'></a>部署
+## <a name="3--deployment"></a>3.<a name='Deployment-3'></a>部署
 
 生产部署可让模型在企业中发挥积极作用。 所部署模型提供的预测可用于业务决策。
 
@@ -88,7 +88,7 @@ YAML 文件用于指定：
 
 - [Azure 机器学习中的模型部署](../how-to-deploy-and-where.md)
 - [SQL-Server 中的模型部署](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [Microsoft 机器学习服务器](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 > [!NOTE]
 > 在部署之前，必须确保模型的延迟评分够低，使模型可在生产环境中使用。

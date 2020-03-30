@@ -1,19 +1,18 @@
 ---
-title: Azure 应用程序产品/服务 |Azure Marketplace
+title: Azure 应用程序产品 / |Azure 应用商店
 description: 概述在 Azure 市场中发布 Azure 应用程序产品/服务的过程。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/06/2019
-ms.author: pabutler
-ms.openlocfilehash: 9125b5c71b63b27c58ea72b7bfd49f730854b33d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ed086ffdc49e21b819c0ee05b38ad882b4e269d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818794"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285310"
 ---
 # <a name="azure-application-offer"></a>Azure 应用程序产品/服务
 
@@ -39,7 +38,7 @@ ms.locfileid: "73818794"
 除了 Azure 市场之外，还可在服务目录中提供托管应用程序。 服务目录是为组织中的用户提供的已批准解决方案内部目录。 可使用该目录来确保满足组织标准，同时为组织中的团体提供解决方案。 员工可以使用目录轻松找到 IT 部门推荐和批准的应用程序。
 
 >[!Note]
->现在提供了云解决方案提供商（CSP）合作伙伴渠道选择。  请参阅[云解决方案提供商](../../cloud-solution-providers.md)，了解有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的详细信息。
+>云解决方案提供商 （CSP） 合作伙伴渠道选择加入现已可用。  有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的更多信息[，请参阅云解决方案提供商](../../cloud-solution-providers.md)。
 
 有关托管应用程序的优点和类型的详细信息，请参阅 [Azure 托管应用程序概述](https://docs.microsoft.com/azure/managed-applications/overview)。
 
@@ -54,7 +53,7 @@ ms.locfileid: "73818794"
 
 1. 满足[先决条件](./cpp-prerequisites.md)（未显示）- 验证是否已满足将 Azure 应用发布到 Azure 市场的业务和技术要求。 
 
-1. [创建产品/服务](./cpp-create-offer.md) - 提供有关产品/服务的详细信息。 此信息包括：产品/服务说明、营销材料、支持信息和资产规范。
+1. [创建产品/服务](./cpp-create-offer.md)- 提供有关产品/服务的详细信息。 此信息包括：产品/服务说明、营销材料、支持信息和资产规范。
 
 1. [创建或收集现有的业务和技术资产](./cpp-create-technical-assets.md) - 为关联的解决方案创建业务资产（法律文档和营销材料）及技术资产。
 

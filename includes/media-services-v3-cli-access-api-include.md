@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 58e9156091702718dccd75eb4a57e5b6d8c1f073
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
-ms.translationtype: HT
+ms.openlocfilehash: 9d8de8826fc3dfcc2360eb3b6c82b3ff8d65d845
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896328"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79461225"
 ---
-## <a name="access-the-media-services-api"></a>访问媒体服务 API
+### <a name="access-the-media-services-api"></a>访问媒体服务 API
 
 若要连接到 Azure 媒体服务 API，请使用 Azure AD 服务主体身份验证。 以下命令创建 Azure AD 应用程序并将服务主体附加到帐户。 应使用返回的值配置应用程序。
 
