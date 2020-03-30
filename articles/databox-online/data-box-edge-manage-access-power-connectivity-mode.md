@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Edge 设备访问、电源和连接模式 |Microsoft Docs
-description: 描述如何管理可帮助将数据传输到 Azure 的 Azure Data Box Edge 设备的访问、电源和连接模式
+title: Azure 数据框 边缘设备访问、电源和连接模式 |微软文档
+description: 介绍如何管理 Azure 数据框边缘设备的访问、电源和连接模式，该设备可帮助将数据传输到 Azure
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 7ce4b9dda853e63e427757317abc2f7c878ba3a4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: be4b780161003470622cb367d78138cfeffe341b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79260262"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454326"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>管理 Azure Data Box Edge 的访问、电源和连接模式
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>管理 Azure 数据框边缘的访问、电源和连接模式
 
-本文介绍如何管理 Azure Data Box Edge 的访问、电源和连接模式。 这些操作是通过本地 Web UI 或 Azure 门户执行的。
+本文介绍如何管理 Azure 数据框边缘的访问、电源和连接模式。 这些操作是通过本地 Web UI 或 Azure 门户执行的。
 
 在本文中，学习如何：
 
@@ -29,67 +29,67 @@ ms.locfileid: "79260262"
 
 ## <a name="manage-device-access"></a>管理对设备的访问
 
-对 Data Box Edge 设备的访问通过使用设备密码进行控制。 可以通过本地 web UI 更改密码。 你还可以在 Azure 门户中重置设备密码。
+对数据盒边缘设备的访问由设备密码的使用控制。 您可以通过本地 Web UI 更改密码。 您还可以在 Azure 门户中重置设备密码。
 
 ### <a name="change-device-password"></a>更改设备密码
 
-请在本地 UI 中执行以下步骤，以更改设备密码。
+按照本地 UI 中的这些步骤更改设备密码。
 
-1. 在本地 Web UI 中，转到“维护”>“密码更改”。
+1. 在本地 Web UI 中，转到“维护”>“密码更改”。****
 2. 依次输入当前密码和新密码。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 确认新密码。
 
     ![更改密码](media/data-box-edge-manage-access-power-connectivity-mode/change-password-1.png)
 
-3. 选择“更改密码”。
+3. 选择“更改密码”****。
  
 ### <a name="reset-device-password"></a>重置设备密码
 
 重置工作流不需要用户回忆旧密码，在密码丢失时非常有用。 在 Azure 门户中执行此工作流。
 
-1. 在 Azure 门户中，转到“概述”>“重置管理员密码”。
+1. 在 Azure 门户中，转到“概述”>“重置管理员密码”。****
 
     ![重置密码](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
-2. 输入新密码并确认。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 选择 "**重置**"。
+2. 输入新密码并确认。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 选择“重置”****。
 
     ![重置密码](media/data-box-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>管理资源访问
 
-若要创建 Data Box Edge/Data Box Gateway、IoT 中心和 Azure 存储资源，需要具有资源组级别的参与者或更高级别的权限。 还需要注册相应的资源提供程序。 对于涉及激活密钥和凭据的任何操作，还需要 Azure Active Directory 图形 API 的权限。 以下部分介绍了这些内容。
+要创建数据框边缘/数据框网关、IoT 中心和 Azure 存储资源，需要在资源组级别作为参与者或更高版本的权限。 您还需要注册相应的资源提供程序。 对于涉及激活密钥和凭据的任何操作，还需要对 Microsoft 图形 API 的权限。 这些在以下各节中介绍。
 
-### <a name="manage-microsoft-azure-active-directory-graph-api-permissions"></a>管理 Microsoft Azure Active Directory Graph API 权限
+### <a name="manage-microsoft-graph-api-permissions"></a>管理 Microsoft 图形 API 权限
 
-为 Data Box Edge 设备生成激活密钥，或执行需要凭据的任何操作时，需要具有 Azure Active Directory 图形 API 的权限。 需要凭据的操作可以是：
+为数据框边缘设备生成激活密钥或执行任何需要凭据的操作时，您需要对 Microsoft 图形 API 的权限。 需要凭据的操作可以是：
 
 -  使用关联的存储帐户创建共享。
--  创建可访问设备上的共享的用户。
+-  创建可以访问设备上共享的用户。
 
-你应在 Active Directory 租户上拥有 `User` 访问权限，因为你需要能够 `Read all directory objects`。 你不能是来宾用户，因为他们没有 `Read all directory objects`的权限。 如果你是来宾，则生成激活密钥、创建 Data Box Edge 设备上的共享、创建用户、配置边缘计算角色、重置设备密码的操作都将失败。
+您应该具有对活动`User`目录租户的访问权限，因为您需要能够`Read all directory objects`。 不能是来宾用户，因为他们没有 权限`Read all directory objects`。 如果您是来宾，则诸如生成激活密钥、在数据盒边缘设备上创建共享、创建用户、配置 Edge 计算角色、重置设备密码等操作都将失败。
 
-有关如何向用户提供对 Azure Active Directory 图形 API 的访问的详细信息，请参阅[管理员、用户和来宾用户的默认访问权限](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
+有关如何向用户提供对 Microsoft 图形 API 的访问的详细信息，请参阅[Microsoft 图形权限引用](https://docs.microsoft.com/graph/permissions-reference)。
 
 ### <a name="register-resource-providers"></a>注册资源提供程序
 
-若要在 Azure 中预配资源（在 Azure 资源管理器模型中），需要一个支持创建该资源的资源提供程序。 例如，要设置虚拟机，订阅中应提供 "Microsoft. 计算" 资源提供程序。
+要在 Azure 中预配资源（在 Azure 资源管理器模型中），需要支持创建该资源的资源提供程序。 例如，要预配虚拟机，应在订阅中提供"Microsoft.Compute"资源提供程序。
  
-资源提供程序在订阅级别注册。 默认情况下，任何新的 Azure 订阅都预注册到一组常用的资源提供程序中。 "DataBoxEdge" 的资源提供程序未包含在此列表中。
+资源提供程序在订阅级别注册。 默认情况下，任何新的 Azure 订阅都预注册到一组常用的资源提供程序中。 此列表中不包括"Microsoft.DataBoxEdge"的资源提供程序。
 
-你无需向订阅级别授予访问权限，用户可以在其拥有所有者权限的资源组中创建类似于 "DataBoxEdge" 的资源，前提是这些资源的资源提供程序已注册.
+只要这些资源的资源提供商已经拥有所有者权限，用户就无需向订阅级别授予访问权限，即可在其资源组中创建"Microsoft.DataBoxEdge"等资源。注册。
 
-尝试创建任何资源之前，请确保在订阅中注册了资源提供程序。 如果未注册资源提供程序，则需要确保创建新资源的用户具有足够的权限在订阅级别上注册所需的资源提供程序。 如果还没有这样做，则会看到以下错误：
+在尝试创建任何资源之前，请确保资源提供程序已注册到订阅中。 如果未注册资源提供程序，则需要确保创建新资源的用户有足够的权限在订阅级别上注册所需的资源提供程序。 如果您尚未这样做，您将看到以下错误：
 
-*订阅 \<订阅名称 > 无权注册资源提供程序： DataBoxEdge。*
+*订阅\<订阅名称>无权注册资源提供程序：Microsoft.DataBoxEdge。*
 
 
-若要获取当前订阅中已注册资源提供程序的列表，请运行以下命令：
+要获取当前订阅中已注册资源提供程序的列表，运行以下命令：
 
 ```PowerShell
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-对于 Data Box Edge 设备，应注册 `Microsoft.DataBoxEdge`。 若要注册 `Microsoft.DataBoxEdge`，订阅管理员应运行以下命令：
+对于数据框边缘设备，`Microsoft.DataBoxEdge`应注册。 要注册`Microsoft.DataBoxEdge`，订阅管理员应运行以下命令：
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
@@ -99,11 +99,11 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 ## <a name="manage-connectivity-mode"></a>管理连接模式
 
-除了默认的完全连接模式，你的设备还可以在部分连接或完全断开连接模式下运行。 下面介绍上述每种模式：
+除了默认的完全连接模式外，您的设备还可以以部分连接或完全断开连接模式运行。 下面介绍上述每种模式：
 
-- **完全连接**-这是设备运行时的常规默认模式。 在此模式下，云上传和下载数据都处于启用状态。 你可以使用 Azure 门户或本地 web UI 来管理设备。
+- **完全连接**- 这是设备运行的正常默认模式。 云上传和下载数据都在此模式下启用。 可以使用 Azure 门户或本地 Web UI 来管理设备。
 
-- **部分断开**–在此模式下，设备无法上载或下载任何共享数据，但可通过 Azure 门户进行管理。
+- **部分断开连接**- 在此模式下，设备无法上载或下载任何共享数据，但可以通过 Azure 门户进行管理。
 
     使用按流量计费的卫星网络，并且目标是尽量减少网络带宽消耗时，通常会使用此模式。 执行设备监视操作时，仍有可能会消耗少量的网络带宽。
 
@@ -113,24 +113,24 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 若要更改设备模式，请执行以下步骤：
 
-1. 在设备的本地 Web UI 中，转到“配置”>“云设置”。
-2. 从下拉列表中，选择要在其中操作设备的模式。 你可以选择 "**完全连接**"、"**部分连接**" 和 "**完全断开连接**"。 若要在部分离线模式下运行设备，请启用“Azure 门户管理”。
+1. 在设备的本地 Web UI 中，转到“配置”>“云设置”。****
+2. 从下拉列表中，选择要在其中操作设备的模式。 您可以从 **"完全连接**"、**部分连接**和**完全断开连接中**选择。 若要在部分离线模式下运行设备，请启用“Azure 门户管理”。****
 
     ![连接模式](media/data-box-edge-manage-access-power-connectivity-mode/connectivity-mode.png)
  
 ## <a name="manage-power"></a>管理电源
 
-你可以使用本地 web UI 关闭或重新启动你的物理设备。 建议在重新启动之前，先在数据服务器和设备上使共享脱机。 此操作可以最大程度地减少发生数据损坏的可能性。
+您可以使用本地 Web UI 关闭或重新启动物理设备。 我们建议您在重新启动之前，使共享在数据服务器上脱机，然后使设备脱机。 此操作可以最大程度地减少发生数据损坏的可能性。
 
-1. 在本地 Web UI 中，转到“维护”>“电源设置”。
-2. 根据要执行的操作，选择 "**关机**" 或 "**重新启动**"。
+1. 在本地 Web UI 中，转到“维护”>“电源设置”。****
+2. 根据要执行的操作选择 **"关闭**"或 **"重新启动**"。
 
     ![电源设置](media/data-box-edge-manage-access-power-connectivity-mode/shut-down-restart-1.png)
 
-3. 出现确认提示时，请选择 **"是"** 以继续。
+3. 当提示确认时，选择 **"是**"以继续。
 
 > [!NOTE]
-> 如果关闭物理设备，则需要按设备上的电源按钮将其打开。
+> 如果关闭物理设备，则需要按下设备上的电源按钮才能将其打开。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,27 +1,27 @@
 ---
 title: 自定义策略的日期声明转换示例
-description: Azure Active Directory B2C 的标识体验框架（IEF）架构的日期声明转换示例。
+description: Azure 活动目录 B2C 的标识体验框架 （IEF） 架构的日期声明转换示例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f3e5a7b90892f0ed0243d448ea1ac63fb56f277f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c02ac9392d6f3f95deef38ff86250e96dfb76d96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78188828"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476682"
 ---
 # <a name="date-claims-transformations"></a>日期声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文提供了有关在 Azure Active Directory B2C （Azure AD B2C）中使用标识体验框架架构的日期声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
+本文提供了在 Azure Active Directory B2C (Azure AD B2C) 中使用标识体验框架架构的日期声明转换的示例。 有关详细信息，请参阅 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan
 
@@ -35,7 +35,7 @@ ms.locfileid: "78188828"
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | 指定如果缺少右操作数，是否应传递此断言。 |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | 指定将两个日期时间视为相等时允许两者之间相差的毫秒数（例如，用于说明时钟偏差）。 |
 
-AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 DateTimeGreaterThan 自断言技术配置文件元数据控制技术配置文件向用户呈现的错误消息。
+AssertDateTimeIsGreaterThan**** 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 DateTimeGreaterThan**** 自断言技术配置文件元数据控制技术配置文件向用户呈现的错误消息。 错误消息可以[本地化](localization-string-ids.md#claims-transformations-error-messages)。
 
 ![AssertStringClaimsAreEqual 执行](./media/date-transformations/assert-execution.png)
 
@@ -65,7 +65,7 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 </TechnicalProfile>
 ```
 
-自断言技术配置文件调用验证 login-NonInteractive 技术配置文件。
+自断言技术配置文件调用验证 login-NonInteractive**** 技术配置文件。
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
@@ -81,13 +81,13 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - leftOperand：2018-10-01T15:00:00.0000000Z
-    - rightOperand：2018-10-01T14:00:00.0000000Z
+    - **左操作 ：** 2020-03-01T15：00.0000000Z
+    - **右：** 2020-03-01T14：00.0000000Z
 - 结果：引发错误
 
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
 
-将 Date ClaimType 转换为 DateTime ClaimType。 该声明转换会转换时间格式并向日期添加 12:00:00 AM。
+将 Date**** ClaimType 转换为 DateTime**** ClaimType。 该声明转换会转换时间格式并向日期添加 12:00:00 AM。
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
@@ -110,20 +110,20 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - inputClaim：2019-06-01
+    - **输入索赔**： 2020-15-03
 - 输出声明：
-    - outputClaim：1559347200（2019 年 6 月 1 日中午 12:00:00）
+    - **输出要求**： 2020-15-03T00：00.0000000Z
 
-## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
+## <a name="convertdatetimetodateclaim"></a>转换日期时间到日期声明
 
-将日期**时间**ClaimType 转换为**日期**claimtype。 声明转换从日期中删除时间格式。
+将**日期时间**声明类型转换为**日期**声明类型。 声明转换从日期中删除时间格式。
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | dateTime | 要转换的 ClaimType。 |
 | OutputClaim | outputClaim | date | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
-下面的示例演示如何将声明 `systemDateTime` （日期时间数据类型）转换为另一个声明 `systemDate` （date 数据类型）。
+下面的示例演示了将声明`systemDateTime`（日期时间数据类型）转换为另一个声明`systemDate`（日期数据类型）。
 
 ```XML
 <ClaimsTransformation Id="ConvertToDate" TransformationMethod="ConvertDateTimeToDateClaim">
@@ -139,9 +139,9 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 ### <a name="example"></a>示例
 
 - 输入声明：
-  - **inputClaim**：1559347200（6月1日，2019 12:00:00 AM）
+  - **输入索赔**： 2020-15-03T11：34：22.0000000Z
 - 输出声明：
-  - **outputClaim**：2019-06-01
+  - **输出索赔**： 2020-15-03
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
@@ -162,7 +162,7 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 ### <a name="example"></a>示例
 
 * 输出声明：
-    * currentDateTime：1534418820（2018 年 8 月 16 日上午 11:27:00）
+    * **当前时间**： 2020-15-03T11：40：35.0000000Z
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
@@ -198,10 +198,10 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - firstDateTime：2018-01-01T00:00:00.100000Z
-    - secondDateTime：2018-04-01T00:00:00.100000Z
+    - **第一时间**： 2020-01-01T00：00.100000Z
+    - **第二时间**： 2020-04-01T00：00.100000Z
 - 输入参数：
-    - operator: later than
-    - timeSpanInSeconds：7776000（90 天）
+    - operator: later than****
+    - timeSpanInSeconds****：7776000（90 天）
 - 输出声明：
-    - 结果：true
+    - 结果****：true

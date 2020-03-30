@@ -1,5 +1,5 @@
 ---
-title: Azure 服务总线防火墙规则 | Microsoft Docs
+title: 为 Azure 服务总线配置 IP 防火墙规则
 description: 如何使用防火墙规则允许从特定 IP 地址连接到 Azure 服务总线。
 services: service-bus
 documentationcenter: ''
@@ -11,64 +11,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 9887d5448eabd272ab2528e4fc758265f2ada977
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a20882de34cb306b767959e21327180ff284e658
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980335"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475937"
 ---
-# <a name="azure-service-bus---use-firewall-rules"></a>Azure 服务总线-使用防火墙规则
+# <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>为 Azure 服务总线配置 IP 防火墙规则
+默认情况下，只要请求附带有效的身份验证和授权，服务总线命名空间即可从 Internet 访问。 使用 IP 防火墙，您可以进一步将其限制为[CIDR（无类域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法中的一组 IPv4 地址或 IPv4 地址范围。
 
-对于只能从某些已知站点访问 Azure 服务总线的方案，防火墙规则使你能够配置规则，以接受源自特定 IPv4 地址的流量。 例如，这些地址可能是企业 NAT 网关地址。
+此功能在 Azure 服务总线应仅从某些已知站点访问的情况下非常有用。 防火墙规则使您能够配置规则以接受来自特定 IPv4 地址的流量。 例如，如果将服务总线与 Azure[快速路由][express-route]一起使用 ，则可以创建**防火墙规则**，仅允许来自本地基础结构 IP 地址或公司 NAT 网关地址的流量。 
 
-## <a name="when-to-use"></a>使用时机
+## <a name="ip-firewall-rules"></a>IP 防火墙规则
+IP 防火墙规则在服务总线命名空间级别应用。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与服务总线命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 
-如果要安装服务总线，使其仅接收来自指定 IP 地址范围的流量并拒绝其他所有流量，则可以利用“防火墙”来阻止来自其他 IP 地址的服务总线终结点。 例如，你将服务总线与[Azure Express Route][express-route]一起使用，以创建到本地基础结构的专用连接。 
+## <a name="use-azure-portal"></a>使用 Azure 门户
+本节介绍如何使用 Azure 门户为服务总线命名空间创建 IP 防火墙规则。 
 
-## <a name="how-filter-rules-are-applied"></a>筛选器规则的应用方式
+1. 导航到[Azure 门户](https://portal.azure.com)中的**服务总线命名空间**。
+2. 在左侧菜单上，选择 **"网络**"选项。 默认情况下，选择"**所有网络**"选项。 服务总线命名空间接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
 
-IP 筛选器规则应用于服务总线命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。
+    ![防火墙 - 选择的所有网络选项](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+1. 选择页面顶部的 **"选定网络**"选项。 在 **"防火墙"** 部分中，按照以下步骤操作：
+    1. 选择 **"添加客户端 IP 地址**"选项，使当前客户端 IP 有权访问命名空间。 
+    2. 对于**地址范围**，在 CIDR 表示法中输入特定的 IPv4 地址或 IPv4 地址范围。 
+    3. 指定是否要**允许受信任的 Microsoft 服务绕过此防火墙**。 
 
-如果某 IP 地址与服务总线命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。
+        ![防火墙 - 选择的所有网络选项](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+3. 选择 **"在**工具栏上保存"以保存设置。 等待几分钟，确认显示在门户通知上。
 
-## <a name="default-setting"></a>默认设置
-
-门户中服务总线的“IP 筛选器”网格默认为空。 此默认设置表示命名空间接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。
-
-## <a name="ip-filter-rule-evaluation"></a>IP 筛选器规则评估
-
-IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
-
->[!WARNING]
-> 实施防火墙规则可以组织其他 Azure 服务与服务总线进行交互。
->
-> 实施 IP 筛选（防火墙规则）时，受信任的 Microsoft 服务不受支持，但很快就会变得可用。
->
-> 不适用于 IP 筛选的常见 Azure 方案（请注意，该列表内容并不详尽）-
-> - Azure 流分析
-> - 与 Azure 事件网格的集成
-> - Azure IoT 中心路由
-> - Azure IoT Device Explorer
->
-> 以下 Microsoft 服务必须在虚拟网络中
-> - Azure App Service
-> - Azure Functions
-
-### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建虚拟网络和防火墙规则
+## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
+本节具有创建虚拟网络和防火墙规则的示例 Azure 资源管理器模板。
 
 > [!IMPORTANT]
-> 仅服务总线的**高级**层支持防火墙和虚拟网络。
+> 防火墙和虚拟网络仅在服务总线的**高级**层中受支持。
 
 以下资源管理器模板支持向现有服务总线命名空间添加虚拟网络规则。
 
 模板参数：
 
-- ipMask 是单个 IPv4 地址或者是以 CIDR 表示法表示的一个 IP 地址块。 例如，在 CIDR 表示法中，70.37.104.0/24 表示从 70.37.104.0 到 70.37.104.255 的 256 个 IPv4 地址，其中 24 表示范围的有效前缀位数。
+- ipMask 是单个 IPv4 地址或者是以 CIDR 表示法表示的一个 IP 地址块****。 例如，在 CIDR 表示法中，70.37.104.0/24 表示从 70.37.104.0 到 70.37.104.255 的 256 个 IPv4 地址，其中 24 表示范围的有效前缀位数。
 
 > [!NOTE]
-> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
-> 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
+> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接****。
+> 制定虚拟网络或防火墙规则时，必须更改“defaultAction”******
 > 
 > 从
 > ```json
@@ -133,6 +120,7 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
                 "action":"Allow"
             }
           ],
+          "trustedServiceAccessEnabled": false,          
           "defaultAction": "Deny"
         }
       }
@@ -141,7 +129,7 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
   }
 ```
 
-若要部署模板，请按照[Azure 资源管理器][lnk-deploy]的说明进行操作。
+若要部署模板，请按照 [Azure 资源管理器][lnk-deploy]的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

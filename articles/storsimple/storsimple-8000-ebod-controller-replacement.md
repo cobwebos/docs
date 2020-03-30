@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254880"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>更换 StorSimple 设备上的 EBOD 控制器
@@ -42,19 +42,19 @@ ms.locfileid: "79254880"
 
 #### <a name="to-remove-an-ebod-module"></a>移除 EBOD 模块
 1. 打开 Azure 门户。
-2. 转到设备并导航到“设置” > “硬件运行状况”，确认活动 EBOD 控制器模块的 LED 状态为绿色，发生故障的 EBOD 控制器模块的 LED 为红色。
+2. 转到您的设备并导航到 **"设置** > **硬件"运行状况**，并验证活动 EBOD 控制器模块的 LED 状态为绿色，故障 EBOD 控制器模块的 LED 指示灯为红色。
 3. 在设备背面找到发生故障的 EBOD 控制器模块。
 4. 将 EBOD 模块从系统中移除之前，请先移除将 EBOD 控制器模块连接到控制器的电缆。
 5. 记下连接到控制器的 EBOD 控制器模块的确切 SAS 端口。 更换 EBOD 模块后，需将系统还原到此配置。
    
    > [!NOTE]
-   > 通常情况下，这会是端口 A，在下图中标记为“主机进”。
+   > 通常情况下，这会是端口 A，在下图中标记为“主机进”。****
    
     ![EBOD 控制器的底板](./media/storsimple-ebod-controller-replacement/IC741049.png)
    
      **图 1** EBOD 模块的背面
    
-   | Label | 说明 |
+   | Label | 描述 |
    |:--- |:--- |
    | 1 |故障 LED |
    | 2 |电源 LED |
@@ -84,9 +84,9 @@ ms.locfileid: "79254880"
    
     ![为 4U 设备进行电源布线](./media/storsimple-ebod-controller-replacement/IC770723.png)
    
-    **图 4**。 重新连接电缆
+    **图4**. 重新连接电缆
    
-   | Label | 说明 |
+   | Label | 描述 |
    |:--- |:--- |
    | 1 |主机箱 |
    | 2 |PCM 0 |

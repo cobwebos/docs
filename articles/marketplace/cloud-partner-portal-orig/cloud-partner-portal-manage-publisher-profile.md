@@ -1,26 +1,24 @@
 ---
-title: 管理 Azure Marketplace 和 AppSource 发布者配置文件
-description: 管理 Azure Marketplace 和 AppSource 发布者配置文件
-services: Azure, Marketplace, Cloud Partner Portal,
+title: 管理 Azure 应用商店和 AppSource 发布者配置文件
+description: 管理 Azure 应用商店和 AppSource 发布者配置文件
 author: qianw211
-manager: pbutlerm
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: pabutler
-ms.openlocfilehash: c9e8e73d18ec0c2a7334fbb5521e89ead4334cc7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9b89ff803e08d0ca929eea913be9a1c87664b124
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826367"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280229"
 ---
 # <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>管理“Azure 市场”和“AppSource”发布者个人资料
 
 本文档演示如何查看和管理注册的发布者个人资料。
 
-到目前为止，你已完成成为 Azure 市场和 AppSource 发布者的步骤。 批准合作伙伴请求后，发布者个人资料将在 **[云合作伙伴门户](https://cloudpartner.azure.com/)** 上注册。 发布者个人资料将适用于从合作伙伴注册期间使用的帐户发布的所有产品/服务和 SKU。
+到目前为止，你已完成成为 Azure 市场和 AppSource 发布者的步骤。 批准合作伙伴请求后，发布者个人资料将在**[云合作伙伴门户](https://cloudpartner.azure.com/)** 上注册。 发布者个人资料将适用于从合作伙伴注册期间使用的帐户发布的所有产品/服务和 SKU。
 
 如果尚未将公司注册为云合作伙伴，请参阅[云合作伙伴门户入门](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal)。
 
@@ -34,7 +32,7 @@ ms.locfileid: "73826367"
 > [!NOTE]
 > 通过云合作伙伴门户“用户”部分中左侧导航窗格上的“用户”部分，可将用户（参与者和所有者）添加到发布个人资料
 
-**若要查看和管理发布者个人资料**，请在右上方的菜单栏中单击“发布者个人资料”选项卡。
+**若要查看和管理发布者个人资料**，请在右上方的菜单栏中单击“发布者个人资料”**** 选项卡。
 
 ![“发布者个人资料”选项卡 - 发布者个人资料](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofilenew.png)
 
@@ -46,6 +44,6 @@ ms.locfileid: "73826367"
 >[!NOTE]
 >开发人员中心帐户注册是发布市场付费 SKU 所需的必要操作。
 
-如果没有[开发人员中心帐户](./cloud-partner-portal-dev-center-accounts-registration.md)，可以创建一个。 然后在云合作伙伴门户上将注册的电子邮件地址添加为产品/服务的所有者。 所有者仅可从“用户”部分将已注册的电子邮件地址添加到发布个人资料。 然后，使用相同的电子邮件地址登录到门户，并链接开发人员中心帐户。
+如果没有[开发人员中心帐户](./cloud-partner-portal-dev-center-accounts-registration.md)，可以创建一个。 然后在云合作伙伴门户上将注册的电子邮件地址添加为产品/服务的所有者。 所有者仅可从“用户”**** 部分将已注册的电子邮件地址添加到发布个人资料。 然后，使用相同的电子邮件地址登录到门户，并链接开发人员中心帐户。
 
 ![发布者个人资料详细信息 - 发布者个人资料说明](./media/cloud-partner-portal-how-to-manage-publisher-profile/publisherprofiledescription.png)

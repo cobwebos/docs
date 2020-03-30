@@ -1,34 +1,33 @@
 ---
-title: Azure Marketplace SEO 指南
+title: Azure 应用商店 SEO 指南
 description: 提供了有关最大程度地提升搜索引擎优化 (SEO) 的指南。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.author: pabutler
-ms.openlocfilehash: 7115798faadc3209413d22a384433417ec0ddff0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 761cdc2233bce3619d4c2c9ce1d7d7177d3bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819587"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280144"
 ---
-# <a name="azure-marketplace-seo-guidance"></a>Azure Marketplace SEO 指南
+# <a name="azure-marketplace-seo-guidance"></a>Azure 应用商店 SEO 指南
 
-本文介绍如何通过[Azure Marketplace](https://azuremarketplace.microsoft.com)和[AppSource](https://appsource.microsoft.com)中的搜索功能，最大程度地提高产品/服务的可发现性。 
+本文介绍如何通过[Azure 应用商店](https://azuremarketplace.microsoft.com)和[AppSource](https://appsource.microsoft.com)中的搜索功能最大限度地提高产品/服务的可发现性。 
 
 
 ## <a name="general-explanation-of-algorithm"></a>算法的一般说明
 
-Microsoft 市场使用 Azure 认知搜索为网站的搜索功能提供支持。 算法基于词频–逆向文档频率 ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf))。 将使用标准 [Lucene 分析器](https://lucene.apache.org/core/)。
+微软市场利用 Azure 认知搜索为网站的搜索功能提供动力。 算法基于词频–逆向文档频率 ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf))。 将使用标准 [Lucene 分析器](https://lucene.apache.org/core/)。
 
 通常情况下，所有文本字段、类别和行业都将包括在相关性权重中。 其他应用不常用但你的应用中常用的专业术语在搜索时将产生较高的匹配分数。 因此，使用“VM”这样的术语不会带来多大好处，而使用“Azure搜索”将更加专业。
 下面是要考虑的最相关的字段。
 
  
-|  字段                   | 重要性 | 指南                                                                                            |
+|  字段                   | Importance | 指南                                                                                            |
 |  --------------------    | ----------                   | ---------------                                                                   |
 | 产品名称               |  高      | 与搜索查询完全匹配或接近完全匹配的项将产生较高的排名。                       |
 | 发布者名称           |  高      | 与搜索查询完全匹配或接近完全匹配的项将产生较高的排名。                       |

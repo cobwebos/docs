@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/04/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ccbb4175701c3535b790f25c9ed522911dda6707
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: c2f171c79423e0cfe8b57c05b8248679f9ada9f1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668836"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472735"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
-[Azure 活动日志](platform-logs-overview.md)可深入了解 Azure 中发生的任何订阅级别事件。 本文介绍每个类别的事件架构。 
+[Azure 活动日志](platform-logs-overview.md)可以方便用户深入了解 Azure 中发生的任何订阅级别事件。 本文介绍每个类别的事件架构。 
 
-以下示例显示了从门户、PowerShell、CLI 和 REST API 访问活动日志时的架构。 将[活动日志流式传输到存储或事件中心](resource-logs-stream-event-hubs.md)时，架构是不同的。 本文末尾提供了[资源日志架构](diagnostic-logs-schema.md)的属性映射。
+以下示例显示了从门户、PowerShell、CLI 和 REST API 访问活动日志时的架构。 [将活动日志流式传输到存储或事件中心](resource-logs-stream-event-hubs.md)时，架构是不同的。 本文末尾提供了这些属性到[资源日志架构](diagnostic-logs-schema.md)的映射。
 
 ## <a name="administrative"></a>管理
 此类别包含对通过资源管理器执行的所有创建、更新、删除和操作的记录。 此类别中的事件类型的示例包括“创建虚拟机”和“删除网络安全组”。用户或应用程序通过资源管理器所进行的每一个操作都会作为特定资源类型上的操作建模。 如果操作类型为“写入”、“删除”或“操作”，则该操作的开始、成功或失败记录都会记录在管理类别中。 管理类别还包括任何对订阅中基于角色的访问控制进行的更改。
@@ -38,7 +38,7 @@ ms.locfileid: "77668836"
         "nbf": "1234567890",
         "exp": "1234567890",
         "_claim_names": "{\"groups\":\"src1\"}",
-        "_claim_sources": "{\"src1\":{\"endpoint\":\"https://graph.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/users/f409edeb-4d29-44b5-9763-ee9348ad91bb/getMemberObjects\"}}",
+        "_claim_sources": "{\"src1\":{\"endpoint\":\"https://graph.microsoft.com/1114444b-7467-4144-a616-e3a5d63e147b/users/f409edeb-4d29-44b5-9763-ee9348ad91bb/getMemberObjects\"}}",
         "http://schemas.microsoft.com/claims/authnclassreference": "1",
         "aio": "A3GgTJdwK4vy7Fa7l6DgJC2mI0GX44tML385OpU1Q+z+jaPnFMwB",
         "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
@@ -111,7 +111,7 @@ ms.locfileid: "77668836"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | authorization |包含事件的 RBAC 属性的 Blob。 通常包括“action”、“role”和“scope”属性。 |
 | caller |执行操作（UPN 声明或 SPN 声明，具体取决于可用性）的用户的电子邮件地址。 |
@@ -120,13 +120,13 @@ ms.locfileid: "77668836"
 | correlationId |通常为字符串格式的 GUID。 共享 correlationId 的事件属于同一 uber 操作。 |
 | description |事件的静态文本说明。 |
 | eventDataId |事件的唯一标识符。 |
-| eventName | 管理事件的友好名称。 |
-| category | 始终为 "管理" |
+| eventName | 管理事件的易记名称。 |
+| category | 始终为“Administrative” |
 | httpRequest |描述 Http 请求的 Blob。 通常包括“clientRequestId”、“clientIpAddress”和“method”（HTTP 方法。 例如 PUT）。 |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
 | resourceGroupName |受影响资源的资源组的名称。 |
 | resourceProviderName |受影响资源的资源提供程序的名称 |
-| resourceType | 受管理事件影响的资源类型。 |
+| resourceType | 受“管理”事件影响的资源类型。 |
 | resourceId |受影响资源的资源 ID。 |
 | operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName |操作的名称。 |
@@ -258,7 +258,7 @@ ms.locfileid: "77668836"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | channels | 始终是“Admin, Operation” |
 | correlationId | 字符串格式的 GUID。 |
@@ -351,7 +351,7 @@ ms.locfileid: "77668836"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | caller | 始终是 Microsoft.Insights/alertRules |
 | channels | 始终是“Admin, Operation” |
@@ -359,7 +359,7 @@ ms.locfileid: "77668836"
 | correlationId | 字符串格式的 GUID。 |
 | description |警报事件的静态文本说明。 |
 | eventDataId |警报事件的唯一标识符。 |
-| category | 始终 "警报" |
+| category | 始终为“Alert” |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
 | resourceGroupName |受影响资源的资源组的名称（如果是指标警报）。 对于其他警报类型，它是包含警报本身的资源组的名称。 |
 | resourceProviderName |受影响资源的资源提供程序的名称（如果是指标警报）。 对于其他警报类型，它是警报本身的资源提供程序的名称。 |
@@ -377,7 +377,7 @@ ms.locfileid: "77668836"
 该属性字段包含不同的值，具体取决于警报事件的源。 两种常见警报事件提供程序是活动日志警报和指标警报。
 
 #### <a name="properties-for-activity-log-alerts"></a>活动日志警报的属性
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | properties.subscriptionId | 激活活动日志预警规则的活动日志事件的订阅 ID。 |
 | properties.eventDataId | 激活活动日志预警规则的活动日志事件的事件数据 ID。 |
@@ -388,7 +388,7 @@ ms.locfileid: "77668836"
 | properties.status | 激活活动日志预警规则的活动日志事件的状态。|
 
 #### <a name="properties-for-metric-alerts"></a>指标警报的属性
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | properties.RuleUri | 指标预警规则自身的资源 ID。 |
 | properties.RuleName | 指标预警规则的名称。 |
@@ -401,7 +401,7 @@ ms.locfileid: "77668836"
 | properties.MetricUnit | 计算指标预警规则所用的指标的指标单位。 |
 
 ## <a name="autoscale"></a>自动缩放
-此类别包含基于在订阅中定义的任何自动缩放设置的自动缩放引擎操作相关的事件记录。 可在此类别中看到的事件类型示例如“自动缩放扩展操作失败”。 使用自动缩放，可在支持的资源类型中，通过自动缩放设置基于日期和/或负载（指标）数据来自动横向扩展或横向缩减实例的数量。 满足纵向扩展或缩减条件时，开始、成功或失败的事件将记录到此类别中。
+此类别包含基于在订阅中定义的任何自动缩放设置的自动缩放引擎操作相关的事件记录。 可在此类别中看到的事件类型示例如“自动缩放扩展操作失败”。 使用自动缩放，可在支持的资源类型中，通过自动缩放设置基于日期和/或负载（指标）数据来自动增加或减少实例的数量。 满足纵向扩展或缩减条件时，开始、成功或失败的事件将记录到此类别中。
 
 ### <a name="sample-event"></a>示例事件
 ```json
@@ -461,7 +461,7 @@ ms.locfileid: "77668836"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | caller | 始终是 Microsoft.Insights/autoscaleSettings |
 | channels | 始终是“Admin, Operation” |
@@ -551,14 +551,14 @@ ms.locfileid: "77668836"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
 | description |安全事件的静态文本说明。 |
 | eventDataId |安全事件的唯一标识符。 |
 | eventName |安全事件的友好名称。 |
-| category | 始终为 "安全性" |
+| category | 始终为“Security” |
 | ID |安全事件的唯一资源标识符。 |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”或“Informational” |
 | resourceGroupName |资源的资源组名称。 |
@@ -632,7 +632,7 @@ ms.locfileid: "77668836"
 
 ```
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
@@ -657,7 +657,7 @@ ms.locfileid: "77668836"
 
 ## <a name="policy"></a>策略
 
-此类别包含 [Azure Policy](../../governance/policy/overview.md) 执行的所有效果操作的记录。 在此类别中看到的事件类型示例包括“审核”和“拒绝”。 Policy 执行的每个操作建模为对资源执行的操作。
+此类别包含 [Azure Policy](../../governance/policy/overview.md) 执行的所有效果操作的记录。 在此类别中将看到的事件类型的示例包括_审核_和_拒绝_。 Policy 执行的每个操作建模为对资源执行的操作。
 
 ### <a name="sample-policy-event"></a>示例 Policy 事件
 
@@ -742,7 +742,7 @@ ms.locfileid: "77668836"
 
 ### <a name="policy-event-property-descriptions"></a>Policy 事件属性说明
 
-| 元素名称 | 说明 |
+| 元素名称 | 描述 |
 | --- | --- |
 | authorization | 事件的 RBAC 属性数组。 对于新资源，这是触发评估的请求的操作和范围。 对于现有资源，操作是“Microsoft.Resources/checkPolicyCompliance/read”。 |
 | caller | 对于新资源，为启动部署的标识。 对于现有资源，为 Microsoft Azure Policy Insights RP 的 GUID。 |
@@ -773,11 +773,11 @@ ms.locfileid: "77668836"
 | relatedEvents | 对于 Policy 事件，此字段是空白的。 |
 
 
-## <a name="schema-from-storage-account-and-event-hubs"></a>存储帐户和事件中心的架构
-将 Azure 活动日志流式传输到存储帐户或事件中心时，数据将遵循[资源日志架构](diagnostic-logs-schema.md)。 下表提供了从上述架构到资源日志架构的属性的映射。
+## <a name="schema-from-storage-account-and-event-hubs"></a>来自存储帐户和事件中心的架构
+将 Azure 活动日志流式传输到存储帐户或事件中心时，数据遵循[资源日志架构](diagnostic-logs-schema.md)。 下表提供从上述架构到资源日志架构的属性映射。
 
 > [!IMPORTANT]
-> 写入存储帐户的活动日志数据的格式更改为2018年11月1日的 JSON 行。 有关此格式更改的详细信息，请参阅[准备将格式更改 Azure Monitor 资源日志存档到存储帐户](diagnostic-logs-append-blobs.md)。
+> 写入到存储帐户的活动日志数据的格式已在 2018 年 11 月 1 日更改为 JSON Lines。 若要详细了解此格式更改，请参阅[为存档到存储帐户的 Azure Monitor 资源日志的格式更改做准备](diagnostic-logs-append-blobs.md)。
 
 
 | 资源日志架构属性 | 活动日志 REST API 架构属性 | 说明 |
@@ -864,6 +864,6 @@ ms.locfileid: "77668836"
 
 
 ## <a name="next-steps"></a>后续步骤
-* [了解有关活动日志的更多信息](platform-logs-overview.md)
-* [创建用于将活动日志发送到 Log Analytics 工作区、Azure 存储或事件中心的诊断设置](diagnostic-settings.md)
+* [了解有关活动日志的更多内容](platform-logs-overview.md)
+* [创建诊断设置以将活动日志发送到日志分析工作区、Azure 存储或事件中心](diagnostic-settings.md)
 

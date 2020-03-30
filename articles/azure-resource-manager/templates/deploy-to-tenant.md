@@ -1,25 +1,25 @@
 ---
 title: 将资源部署到租户
-description: 介绍如何在 Azure 资源管理器模板中的租户范围内部署资源。
+description: 介绍如何在 Azure 资源管理器模板中的租户作用域中部署资源。
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: 64090f1a0bac4b2b5f18d8dec14be0c3b051ac17
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.date: 03/16/2020
+ms.openlocfilehash: fcdfc5b1c4333a0d7eeec80a09ad85579a1f8b77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968879"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460256"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租户级别创建资源
 
-随着组织的成熟，你可能需要在 Azure AD 租户中定义并分配[策略](../../governance/policy/overview.md)或[基于角色的访问控制](../../role-based-access-control/overview.md)。 使用租户级模板，可以在全局级别以声明方式应用策略并分配角色。
+随着组织的成熟，您可能需要跨 Azure AD 租户定义和分配[策略](../../governance/policy/overview.md)或[基于角色的访问控件](../../role-based-access-control/overview.md)。 使用租户级别模板，您可以声明性地应用策略并在全局级别分配角色。
 
 ## <a name="supported-resources"></a>支持的资源
 
-可以在租户级别部署以下资源类型：
+您可以在租户级别部署以下资源类型：
 
-* [部署](/azure/templates/microsoft.resources/deployments)-适用于部署到管理组或订阅的嵌套模板。
-* [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
+* [部署](/azure/templates/microsoft.resources/deployments)- 用于部署到管理组或订阅的嵌套模板。
+* [策略分配](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
@@ -27,7 +27,7 @@ ms.locfileid: "78968879"
 
 ### <a name="schema"></a>架构
 
-用于租户部署的架构不同于资源组部署的架构。
+用于租户部署的架构与资源组部署的架构不同。
 
 对于模板，请使用：
 
@@ -35,21 +35,21 @@ ms.locfileid: "78968879"
 https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#
 ```
 
-对于所有部署范围，参数文件的架构都是相同的。 对于参数文件，请使用：
+对于所有部署作用域，参数文件的架构都相同。 对于参数文件，请使用：
 
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
-## <a name="required-access"></a>必需的访问权限
+## <a name="required-access"></a>所需访问权限
 
-部署模板的主体必须有权在租户范围内创建资源。 主体必须具有执行部署操作（`Microsoft.Resources/deployments/*`）和创建在模板中定义的资源的权限。 例如，若要创建管理组，主体必须拥有租户范围的 "参与者" 权限。 若要创建角色分配，主体必须拥有 "所有者" 权限。
+部署模板的主体必须具有在租户作用域中创建资源的权限。 主体必须具有执行部署操作 （`Microsoft.Resources/deployments/*`） 和创建模板中定义的资源的权限。 例如，要创建管理组，主体必须在租户作用域中具有"参与者"权限。 要创建角色分配，主体必须具有所有者权限。
 
-Azure Active Directory 的全局管理员不会自动拥有分配角色的权限。 若要在租户范围内启用模板部署，全局管理员必须执行以下步骤：
+Azure 活动目录的全局管理员不自动具有分配角色的权限。 要在租户范围内启用模板部署，全局管理员必须执行以下步骤：
 
-1. 提升帐户访问权限，以便全局管理员可以分配角色。 有关详细信息，请参阅[提升访问权限以管理所有 Azure 订阅和管理组](../../role-based-access-control/elevate-access-global-admin.md)。
+1. 提升帐户访问权限，以便全局管理员可以分配角色。 有关详细信息，请参阅[提升管理所有 Azure 订阅和管理组的访问](../../role-based-access-control/elevate-access-global-admin.md)。
 
-1. 向需要部署模板的主体分配所有者或参与者。
+1. 将所有者或参与者分配给需要部署模板的主体。
 
    ```azurepowershell-interactive
    New-AzRoleAssignment -SignInName "[userId]" -Scope "/" -RoleDefinitionName "Owner"
@@ -59,40 +59,50 @@ Azure Active Directory 的全局管理员不会自动拥有分配角色的权限
    az role assignment create --assignee "[userId]" --scope "/" --role "Owner"
    ```
 
-主体现在具有所需的部署模板的权限。
+主体现在具有部署模板所需的权限。
 
 ## <a name="deployment-commands"></a>部署命令
 
-适用于租户部署的命令不同于资源组部署命令。
+租户部署的命令与资源组部署的命令不同。
 
-对于 Azure PowerShell，请使用[AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment)。
+对于 Azure CLI，使用[az 部署租户创建](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create)：
+
+```azurecli-interactive
+az deployment tenant create \
+  --name demoTenantDeployment \
+  --location WestUS \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+```
+
+对于 Azure 电源外壳，请使用[新租户部署](/powershell/module/az.resources/new-aztenantdeployment)。
 
 ```azurepowershell-interactive
 New-AzTenantDeployment `
+  -Name demoTenantDeployment `
   -Location "West US" `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
 ```
 
-对于 REST API，请使用[部署-租户范围内的 Create 或 Update](/rest/api/resources/deployments/createorupdateattenantscope)。
+对于 REST API，请使用[部署 - 在租户作用域创建或更新](/rest/api/resources/deployments/createorupdateattenantscope)。
 
 ## <a name="deployment-location-and-name"></a>部署位置和名称
 
-对于租户级别部署，必须提供部署的位置。 部署的位置与部署的资源的位置不同。 部署位置指定部署数据的存储位置。
+对于租户级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。
 
-可以为部署提供名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
+可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
 
-对于每个部署名称，位置是不可变的。 如果在不同的位置存在同名的现有部署，则不能在一个位置中创建部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
+每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
 ## <a name="use-template-functions"></a>使用模板函数
 
-对于租户部署，使用模板功能时需要注意以下事项：
+对于租户部署，使用模板函数时需要考虑一些重要事项：
 
-* 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。
-* **不**支持[订阅（）](template-functions-resource.md#subscription)函数。
+* 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。****
+* **不**支持 [subscription()](template-functions-resource.md#subscription) 函数。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
-* 使用[tenantResourceId （）](template-functions-resource.md#tenantresourceid)函数获取在租户级别部署的资源的资源 ID。
+* 使用[租户 ResourceId（）](template-functions-resource.md#tenantresourceid)函数获取在租户级别部署的资源的资源 ID。
 
-  例如，若要获取策略定义的资源 ID，请使用：
+  例如，要获取策略定义的资源 ID，请使用：
   
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
@@ -132,7 +142,7 @@ New-AzTenantDeployment `
 
 ## <a name="assign-role"></a>分配角色
 
-[以下模板](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment)在租户范围内分配一个角色。
+[以下模板](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment)在租户作用域中分配角色。
 
 ```json
 {
@@ -174,5 +184,5 @@ New-AzTenantDeployment `
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何分配角色，请参阅[使用 RBAC 和 azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
-* 你还可以在[订阅级别](deploy-to-subscription.md)或[管理组级别](deploy-to-management-group.md)部署模板。
+* 若要了解如何分配角色，请参阅[使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
+* 您还可以在[订阅级别](deploy-to-subscription.md)或[管理组级别](deploy-to-management-group.md)部署模板。
