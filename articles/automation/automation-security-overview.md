@@ -8,10 +8,10 @@ ms.date: 03/19/2018
 ms.topic: conceptual
 ROBOTS: NOINDEX
 ms.openlocfilehash: b2003469fa35de837c3a9214e40cfb333156b40c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278566"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Azure 自动化中的身份验证简介  
@@ -41,8 +41,8 @@ Azure 自动化让可以通过其他云提供程序（如 Amazon Web Services (A
 | 方法 | 环境 | 项目 |
 | --- | --- | --- |
 | Azure AD 用户帐户 |Azure 资源管理器和 Azure 经典 |[Authenticate Runbooks with Azure AD User account（使用 Azure AD 用户帐户进行 Runbook 身份验证）](automation-create-aduser-account.md) |
-| Azure 运行方式帐户 |Azure 资源管理器 |[Authenticate Runbooks with Azure Run As account（使用 Azure 运行方式帐户进行 Runbook 身份验证）](automation-sec-configure-azure-runas-account.md) |
-| Azure 经典运行方式帐户 |Azure 经典 |[Authenticate Runbooks with Azure Run As account（使用 Azure 运行方式帐户进行 Runbook 身份验证）](automation-sec-configure-azure-runas-account.md) |
+| Azure 运行方式帐户 |Azure 资源管理器 |[使用 Azure 运行方式帐户进行 Runbook 身份验证](automation-sec-configure-azure-runas-account.md) |
+| Azure 经典运行方式帐户 |Azure 经典 |[使用 Azure 运行方式帐户进行 Runbook 身份验证](automation-sec-configure-azure-runas-account.md) |
 | Windows 身份验证 |本地数据中心 |[对混合 Runbook 辅助角色进行 Runbook 身份验证](automation-hybrid-runbook-worker.md) |
 | AWS 凭据 |Amazon Web Services |[Authenticate Runbooks with Amazon Web Services (AWS)（使用 Amazon Web Services (AWS) 进行 Runbook 身份验证）](automation-config-aws-account.md) |
 

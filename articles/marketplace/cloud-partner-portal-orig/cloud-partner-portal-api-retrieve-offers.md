@@ -1,19 +1,18 @@
 ---
-title: 检索提供 API |Azure Marketplace
+title: 检索优惠 API |Azure 应用商店
 description: API 检索发布者命名空间下的产品/服务汇总列表。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 5c94c03a63936be2b086085a1e52064dedf214b0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: a1f15e269481b9706f81fd02f19effc9ad37df32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819618"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280484"
 ---
 <a name="retrieve-offers"></a>检索产品/服务
 ===============
@@ -36,7 +35,7 @@ ms.locfileid: "73819618"
 <a name="header"></a>标头
 ------
 
-|  **名称**        |         **值**       |
+|  **名称**        |         **价值**       |
 |  --------------- |       ----------------  |
 |  Content-Type    | `application/json`      |
 |  授权   | `Bearer YOUR_TOKEN`     |
@@ -73,7 +72,7 @@ ms.locfileid: "73819618"
 |  publisherId    | 唯一标识发布者的标识符                                                                      |
 |  status         | 产品/服务的状态。 有关可能值的列表，请参阅下面的[产品/服务状态](#offer-status)。                         |
 |  id             | 唯一标识发布者命名空间中的产品/服务的 GUID。                                                    |
-|  version        | 该产品/服务的当前版本。 客户端无法修改版本属性。 它在每次发布后都会递增。 |
+|  版本        | 该产品/服务的当前版本。 客户端无法修改版本属性。 它在每次发布后都会递增。 |
 |  定义     | 包含工作负载实际定义的摘要视图。 若要获取详细定义，请使用[检索特定产品/服务](./cloud-partner-portal-api-retrieve-specific-offer.md) API。 |
 |  changedTime    | 上次修改该产品/服务时的 UTC 时间                                                                              |
 |  |  |
@@ -100,5 +99,5 @@ ms.locfileid: "73819618"
 |  正在运行                     | 正在处理产品/服务提交。             |
 |  已成功                   | 产品/服务提交已完成处理。       |
 |  已取消                    | 产品/服务提交已取消。                   |
-|  已失败                      | 产品/服务提交失败。                         |
+|  失败                      | 产品/服务提交失败。                         |
 |  |  |

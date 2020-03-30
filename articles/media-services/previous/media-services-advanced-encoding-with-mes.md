@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 5f7611fd9df207df51fa0e51218d8a234583b1f9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251266"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529777"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>通过自定义 MES 预设执行高级编码 
 
@@ -30,7 +30,7 @@ ms.locfileid: "79251266"
 如果使用的是 XML 预设，请务必保留元素顺序，如下面的 XML 示例所示（例如，KeyFrameInterval 应在 SceneChangeDetection 前面）。
 
 > [!NOTE] 
-> Media Encoder Standard 的许多高级媒体服务 v2 功能当前在 v3 中不可用。 有关详细信息，请参阅[功能间隙](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3#feature-gaps-with-respect-to-v2-apis)。
+> Media Encoder Standard 的许多高级媒体服务 v2 功能目前在 v3 中不可用。 有关详细信息，请参阅[功能差距](https://docs.microsoft.com/azure/media-services/latest/media-services-v2-vs-v3#feature-gaps-with-respect-to-v2-apis)。
 
 ## <a name="support-for-relative-sizes"></a>支持相对大小
 
@@ -44,7 +44,7 @@ ms.locfileid: "79251266"
     <Width>100%</Width>
     <Height>100%</Height>
 
-## <a id="thumbnails"></a>生成缩略图
+## <a name="generate-thumbnails"></a><a id="thumbnails"></a>生成缩略图
 
 本部分说明如何自定义生成缩略图的预设。 下面定义的预设包含有关如何将文件编码的信息，以及生成缩略图时所需的信息。 可使用[此部分](media-services-mes-presets-overview.md)所述的任何 MES 预设，并添加生成缩略图的代码。  
 
@@ -57,7 +57,7 @@ ms.locfileid: "79251266"
 
 请务必仔细阅读[注意事项](#considerations)部分。
 
-### <a id="json"></a>JSON 预设
+### <a name="json-preset"></a><a id="json"></a>JSON 预设
     {
       "Version": 1.0,
       "Codecs": [
@@ -157,7 +157,7 @@ ms.locfileid: "79251266"
     }
 
 
-### <a id="xml"></a>XML 预设
+### <a name="xml-preset"></a><a id="xml"></a>XML 预设
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -243,16 +243,16 @@ ms.locfileid: "79251266"
 
     可以随意混搭使用表示法。
 
-    此外，Start 还支持特殊的宏 {Best}，它会尝试判断第一个“有意义”的内容帧。注意：（Start 设置为 {Best} 时，将忽略 Step 与 Range）
+    此外，Start 还支持特殊的宏 {Best}，它会尝试确定第一个“有意义”的内容帧。注意：（Start 设置为 {Best} 时，将忽略 Step 与 Range）
   * 默认值：Start:{Best}
 * 需要显式提供每个图像格式的输出格式：Jpg/Png/BmpFormat。 MES 会将 JpgVideo（如果已指定）与 JpgFormat 进行匹配，依此类推。 OutputFormat 引入了新的图像编解码器特定宏 {Index}，需要为图像输出格式提供该宏一次（且只需一次）。
 
-## <a id="trim_video"></a>剪裁视频（剪切）
-本部分说明如何修改编码器预设，以裁剪或修剪其输入为所谓的夹层文件或按需文件的输入视频。 也可以使用编码器来剪辑或剪裁从实时流捕获或存档的资产 – [此博客](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)提供了详细信息。
+## <a name="trim-a-video-clipping"></a><a id="trim_video"></a>剪裁视频（剪切）
+本部分说明如何修改编码器预设，以裁剪或修剪其输入为所谓的夹层文件或按需文件的输入视频。 编码器还可用于剪辑或修剪从实时流捕获或存档的资产 - 此详细信息[可在此博客](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)中提供。
 
 若要裁剪视频，可以使用[此部分](media-services-mes-presets-overview.md)所述的任何 MES 预设，并修改 **Sources** 元素（如下所示）。 StartTime 的值需与输入视频的绝对时间戳匹配。 例如，如果输入视频第一帧的时间戳为 12:00:10.000，则 StartTime 应大于或等于 12:00:10.000。 在以下示例中，假设输入视频的起始时间戳为零。 **Sources** 应位于预设的开始处。
 
-### <a id="json"></a>JSON 预设
+### <a name="json-preset"></a><a id="json"></a>JSON 预设
     {
       "Version": 1.0,
       "Sources": [
@@ -489,13 +489,13 @@ ms.locfileid: "79251266"
       </Outputs>
     </Preset>
 
-## <a id="overlay"></a>创建覆盖层
+## <a name="create-an-overlay"></a><a id="overlay"></a>创建覆盖层
 
 Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以下格式：png、jpg、gif 和 bmp。 下面定义的预设是视频覆盖层的基本示例。
 
 除了定义预设文件外，还必须让媒体服务知道资产中的哪个文件是覆盖层图像，哪个文件是你要在其上覆盖图像的源视频。 视频文件必须是**主**文件。
 
-如果使用 .NET，请将以下两个函数添加到[此主题](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)中定义的 .NET 示例。 **UploadMediaFilesFromFolder** 函数从文件夹上传文件（例如 BigBuckBunny.mp4 和 Image001.png），并将 mp4 文件设置为资产中的主文件。 **EncodeWithOverlay** 函数使用传递给它的自定义预设文件（例如，下面的预设）来创建编码任务。
+如果使用 .NET，请将以下两个函数添加到[此主题](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)中定义的 .NET 示例。 **"上传媒体文件从文件夹"** 功能从文件夹上传文件（例如，BigBuckBunny.mp4 和 Image001.png），并将 mp4 文件集为资产中的主要文件。 **EncodeWithOverlay** 函数使用传递给它的自定义预设文件（例如，下面的预设）来创建编码任务。
 
 
     static public IAsset UploadMediaFilesFromFolder(string folderPath)
@@ -696,7 +696,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
     </Preset>
 
 
-## <a id="silent_audio"></a>在输入不包含音频时插入静音曲目
+## <a name="insert-a-silent-audio-track-when-input-has-no-audio"></a><a id="silent_audio"></a>在输入不包含音频时插入静音曲目
 默认情况下，如果要向编码器发送仅包含视频而不包含音频的输入，则输出资产将包含仅有视频数据的文件。 某些播放器可能无法处理此类输出流。 对于这种方案，可以使用此设置来强制编码器将静音曲目添加到输出。
 
 若要强制编码器在输入不包含音频时生成包含静音曲目的资产，请指定“InsertSilenceIfNoAudio”值。
@@ -719,7 +719,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
       <Bitrate>96</Bitrate>
     </AACAudio>
 
-## <a id="deinterlacing"></a>禁用自动取消隔行扫描
+## <a name="disable-auto-de-interlacing"></a><a id="deinterlacing"></a>禁用自动取消隔行扫描
 如果客户想要将隔行扫描内容自动取消隔行扫描，不需要执行任何操作。 当自动取消隔行扫描打开（默认设置）时，MES 会自动检测隔行扫描帧，并且只将标记为隔行扫描的帧取消隔行扫描。
 
 可以关闭自动取消隔行扫描， 不建议使用此选项。
@@ -747,7 +747,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
     </Sources>
 
 
-## <a id="audio_only"></a>仅音频预设
+## <a name="audio-only-presets"></a><a id="audio_only"></a>仅音频预设
 本部分介绍两个仅音频 MES 预设：AAC 音频和 AAC 优质音频。
 
 ### <a name="aac-audio"></a>AAC 音频
@@ -794,7 +794,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
       ]
     }
 
-## <a id="concatenate"></a>连接两个或更多视频文件
+## <a name="concatenate-two-or-more-video-files"></a><a id="concatenate"></a>连接两个或更多视频文件
 
 以下示例演示如何生成预设来连接两个或更多个视频文件。 最常见的应用场景：希望在主视频中添加标题或预告片。 预期使用场合：当一起编辑的视频文件共享属性（视频分辨率、帧速率、音轨计数等）时。 务必注意不要混合使用不同帧速率或不同音轨数的视频。
 
@@ -904,10 +904,10 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
       ]
     }
 
-## <a id="crop"></a>使用 Media Encoder Standard 裁剪视频
+## <a name="crop-videos-with-media-encoder-standard"></a><a id="crop"></a>使用 Media Encoder Standard 裁剪视频
 请参阅[使用 Media Encoder Standard 剪辑视频](media-services-crop-video.md)主题。
 
-## <a id="no_video"></a>在输入不包含视频时插入视频轨
+## <a name="insert-a-video-track-when-input-has-no-video"></a><a id="no_video"></a>在输入不包含视频时插入视频轨迹
 
 默认情况下，如果要向编码器发送仅包含音频而不包含视频的输入，则输出资产将包含仅有音频数据的文件。 某些播放器（包括 Azure 媒体播放器）（请参阅[此处](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)）可能无法处理这样的流。 对于这种方案，可使用此设置来强制编码器将单色视频轨迹添加到输出。
 
@@ -917,7 +917,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 
 ### <a name="inserting-video-at-only-the-lowest-bitrate"></a>仅以最低比特率插入视频
 
-假设要使用多比特率编码预设（如[“H264 多比特率 720p”](media-services-mes-preset-h264-multiple-bitrate-720p.md)）对整个输入目录进行编码以实现流式处理，且输入目录中混合了视频文件和仅音频文件。 在此方案中，如果输入不包含视频，用户可能想要强制编码器仅以最低比特率插入单色视频轨迹，而不是按每个输出比特率插入视频。 为此，需要使用“InsertBlackIfNoVideoBottomLayerOnly”标志。
+假设您正在使用多个比特率编码预设（如["H264 多比特率 720p"）](media-services-mes-preset-h264-multiple-bitrate-720p.md)对流式处理的整个输入目录进行编码，其中包含视频文件和仅音频文件的组合。 在此方案中，如果输入不包含视频，用户可能想要强制编码器仅以最低比特率插入单色视频轨迹，而不是按每个输出比特率插入视频。 为此，需要使用“InsertBlackIfNoVideoBottomLayerOnly”**** 标志。
 
 可使用[此部分](media-services-mes-presets-overview.md)中所述的任何 MES 预设，并进行以下修改：
 
@@ -933,7 +933,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 
 #### <a name="xml-preset"></a>XML 预设
 
-使用 XML 时，请使用 Condition="InsertBlackIfNoVideoBottomLayerOnly" 作为“H264Video”元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”的属性。
+使用 XML 时，请使用 Condition="InsertBlackIfNoVideoBottomLayerOnly" 作为“H264Video”**** 元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”**** 的属性。
 
 ```
 . . .
@@ -976,7 +976,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 
 #### <a name="xml-preset"></a>XML 预设
 
-使用 XML 时，请使用 Condition="InsertBlackIfNoVideo" 作为“H264Video”元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”的属性。
+使用 XML 时，请使用 Condition="InsertBlackIfNoVideo" 作为“H264Video”**** 元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”**** 的属性。
 
 ```
 . . .
@@ -1002,7 +1002,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 . . .  
 ```
 
-## <a id="rotate_video"></a>旋转视频
+## <a name="rotate-a-video"></a><a id="rotate_video"></a>旋转视频
 [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) 支持旋转 0/90/180/270 度。 默认行为是“自动”，即尝试在传入的视频文件中检测旋转元数据并对其进行补偿。 将以下 **Sources** 元素包含在[此部分](media-services-mes-presets-overview.md)定义的其中一个预设中：
 
 ### <a name="json-preset"></a>JSON 预设

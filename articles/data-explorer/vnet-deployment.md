@@ -1,97 +1,97 @@
 ---
-title: 将 Azure 数据资源管理器部署到你的虚拟网络
-description: 了解如何在虚拟网络中部署 Azure 数据资源管理器
+title: 将 Azure 数据资源管理器部署到虚拟网络
+description: 了解如何将 Azure 数据资源管理器部署到虚拟网络
 author: basaba
 ms.author: basaba
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 5a2731e26ba4f371177cf2ae649f0695f27e6304
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: dbc17620cda836ec0ac5c4ebc5a709fb0605c958
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096771"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240037"
 ---
-# <a name="deploy-azure-data-explorer-into-your-virtual-network"></a>将 Azure 数据资源管理器部署到你的虚拟网络
+# <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>将 Azure 数据资源管理器群集部署到虚拟网络
 
-本文介绍将 Azure 数据资源管理器群集部署到自定义 Azure 虚拟网络时存在的资源。 此信息将帮助你将群集部署到虚拟网络（VNet）中的子网。 有关 Azure 虚拟网络的详细信息，请参阅[什么是 Azure 虚拟网络？](/azure/virtual-network/virtual-networks-overview)
+本文介绍将 Azure 数据资源管理器群集部署到自定义 Azure 虚拟网络时存在的资源。 此信息将帮助您将群集部署到虚拟网络 （VNet） 中的子网中。 有关 Azure 虚拟网络的详细信息，请参阅[什么是 Azure 虚拟网络？](/azure/virtual-network/virtual-networks-overview)
 
-   ![vnet 关系图](media/vnet-deployment/vnet-diagram.png)
+   ![vnet 图](media/vnet-deployment/vnet-diagram.png)
 
-Azure 数据资源管理器支持将群集部署到虚拟网络（VNet）中的子网。 此功能使你能够：
+Azure 数据资源管理器支持将群集部署到虚拟网络 （VNet） 中的子网。 此功能使您能够：
 
-* 在 Azure 数据资源管理器群集流量上强制实施[网络安全组](/azure/virtual-network/security-overview)（NSG）规则。
+* 在 Azure 数据资源管理器群集流量上强制实施[网络安全组](/azure/virtual-network/security-overview)（NSG） 规则。
 * 将本地网络连接到 Azure 数据资源管理器群集的子网。
-* 通过[服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)保护数据连接源（[事件中心](/azure/event-hubs/event-hubs-about)和[事件网格](/azure/event-grid/overview)）。
+* 使用[服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)保护数据连接源（[事件中心](/azure/event-hubs/event-hubs-about)和[事件网格](/azure/event-grid/overview)）。
 
 ## <a name="access-your-azure-data-explorer-cluster-in-your-vnet"></a>在 VNet 中访问 Azure 数据资源管理器群集
 
-你可以使用以下每个服务的 IP 地址（引擎和数据管理服务）访问 Azure 数据资源管理器群集：
+您可以使用以下 IP 地址访问 Azure 数据资源管理器群集，每个服务（引擎和数据管理服务）：
 
-* **专用 IP**：用于访问 VNet 中的群集。
-* **公共 IP**：用于从 VNet 外部访问群集以进行管理和监视，并用作从群集启动的出站连接的源地址。
+* **专用 IP**：用于访问 VNet 内的群集。
+* **公共 IP**：用于从 VNet 外部访问群集以进行管理和监视，并作为出站连接的源地址从群集启动。
 
-创建以下 DNS 记录以访问该服务： 
+创建以下 DNS 记录以访问服务： 
 
-* `[clustername].[geo-region].kusto.windows.net` （引擎） `ingest-[clustername].[geo-region].kusto.windows.net` （数据管理）映射到每个服务的公共 IP。 
+* `[clustername].[geo-region].kusto.windows.net`（发动机）`ingest-[clustername].[geo-region].kusto.windows.net` （数据管理）映射到每个服务的公共 IP。 
 
-* `private-[clustername].[geo-region].kusto.windows.net` （引擎） `private-ingest-[clustername].[geo-region].kusto.windows.net` （数据管理）映射到每个服务的专用 IP。
+* `private-[clustername].[geo-region].kusto.windows.net`（发动机）`private-ingest-[clustername].[geo-region].kusto.windows.net` （数据管理）映射到每个服务的专用 IP。
 
-## <a name="plan-subnet-size-in-your-vnet"></a>规划 VNet 中的子网大小
+## <a name="plan-subnet-size-in-your-vnet"></a>在 VNet 中规划子网大小
 
-部署子网后，无法更改用于承载 Azure 数据资源管理器群集的子网的大小。 在 VNet 中，Azure 数据资源管理器为每个 VM 使用一个专用 IP 地址，并为内部负载均衡器（引擎和数据管理）使用两个专用 IP 地址。 Azure 网络还为每个子网使用5个 IP 地址。 Azure 数据资源管理器为数据管理服务预配两个 Vm。 引擎服务 Vm 按用户配置规模容量进行设置。
+部署子网后，无法更改用于承载 Azure 数据资源管理器群集的子网的大小。 在 VNet 中，Azure 数据资源管理器为每个 VM 使用一个专用 IP 地址，对内部负载均衡器（引擎和数据管理）使用两个专用 IP 地址。 Azure 网络还为每个子网使用五个 IP 地址。 Azure 数据资源管理器为数据管理服务提供了两个 VM。 引擎服务 VM 按用户配置规模容量进行预配。
 
-IP 地址的总数：
+IP 地址总数：
 
 | 用途 | 地址数 |
 | --- | --- |
-| 引擎服务 | 每个实例1个 |
+| 发动机服务 | 每个实例 1 个 |
 | 数据管理服务 | 2 |
 | 内部负载均衡器 | 2 |
 | Azure 保留地址 | 5 |
-| **总计** | **#engine_instances + 9** |
+| **总计** | **#engine_instances = 9** |
 
 > [!IMPORTANT]
-> 必须提前计划子网大小，因为在部署 Azure 数据资源管理器后无法更改它。 因此，请相应地保留所需的子网大小。
+> 子网大小必须提前计划，因为部署 Azure 数据资源管理器后无法更改子网大小。 因此，相应地保留所需的子网大小。
 
 ## <a name="service-endpoints-for-connecting-to-azure-data-explorer"></a>用于连接到 Azure 数据资源管理器的服务终结点
 
-[Azure 服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)可让你将 azure 多租户资源保护到虚拟网络。
-若要在子网中部署 Azure 数据资源管理器群集，可以在限制 Azure 数据资源管理器子网的基础资源的情况下，设置[事件中心](/azure/event-hubs/event-hubs-about)或[事件网格](/azure/event-grid/overview)的数据连接。
+[Azure 服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)使您能够保护 Azure 多租户资源到虚拟网络。
+将 Azure 数据资源管理器群集部署到子网允许您设置与[事件中心](/azure/event-hubs/event-hubs-about)或[事件网格](/azure/event-grid/overview)的数据连接，同时限制 Azure 数据资源管理器子网的基础资源。
 
 > [!NOTE]
-> 将 EventGrid 安装程序与[存储](/azure/storage/common/storage-introduction)和 [事件中心] 结合使用时，可以使用服务终结点将订阅中使用的存储帐户锁定到 Azure 数据资源管理器的子网，同时允许在[防火墙配置](/azure/storage/common/storage-network-security)中使用受信任的 azure 平台服务，但是事件中心无法启用服务终结点，因为它不支持受信任的[azure 平台服务](/azure/event-hubs/event-hubs-service-endpoints)。
+> 将事件Grid设置与[存储](/azure/storage/common/storage-introduction)和 [事件中心] 一起使用时，订阅中使用的存储帐户可以与 Azure 数据资源管理器子网的服务终结点一起锁定，同时允许在[防火墙配置](/azure/storage/common/storage-network-security)中使用受信任的 Azure 平台服务，但事件中心无法启用服务终结点，因为它不支持受信任的 Azure[平台服务](/azure/event-hubs/event-hubs-service-endpoints)。
 
 ## <a name="dependencies-for-vnet-deployment"></a>VNet 部署的依赖项
 
 ### <a name="network-security-groups-configuration"></a>网络安全组配置
 
-[网络安全组（NSG）](/azure/virtual-network/security-overview)提供了控制 VNet 中的网络访问的功能。 可以使用两个终结点访问 Azure 数据资源管理器： HTTPs （443）和 TDS （1433）。 必须将以下 NSG 规则配置为允许访问这些终结点，以便对群集进行管理、监视和正确操作。
+[网络安全组 （NSG）](/azure/virtual-network/security-overview)提供控制 VNet 内网络访问的能力。 可以使用两个终结点访问 Azure 数据资源管理器：HTT（443）和 TDS （1433）。 必须配置以下 NSG 规则，以允许访问这些终结点，以便管理、监视和正确操作群集。
 
 #### <a name="inbound-nsg-configuration"></a>入站 NSG 配置
 
-| **使用**   | **From**   | **收件人**   | 协议   |
+| **使用**   | **从**   | **自**   | **协议**   |
 | --- | --- | --- | --- |
-| 管理  |[ADX 管理地址](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement （ServiceTag） | ADX 子网：443  | TCP  |
-| 运行状况监视  | [ADX 运行状况监视地址](#health-monitoring-addresses)  | ADX 子网：443  | TCP  |
+| 管理  |[ADX 管理地址](#azure-data-explorer-management-ip-addresses)/Azure 数据资源管理器管理（服务标签） | ADX 子网：443  | TCP  |
+| 运行状况监视  | [ADX 运行状况监控地址](#health-monitoring-addresses)  | ADX 子网：443  | TCP  |
 | ADX 内部通信  | ADX 子网：所有端口  | ADX 子网：所有端口  | All  |
-| 允许 Azure 负载均衡器入站（运行状况探测）  | AzureLoadBalancer  | ADX 子网：80443  | TCP  |
+| 允许 Azure 负载均衡器入站（运行状况探测）  | AzureLoadBalancer  | ADX 子网：80，443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>出站 NSG 配置
 
-| **使用**   | **From**   | **收件人**   | 协议   |
+| **使用**   | **从**   | **自**   | **协议**   |
 | --- | --- | --- | --- |
-| 依赖于 Azure 存储  | ADX 子网  | 存储：443  | TCP  |
-| 依赖关系 Azure Data Lake  | ADX 子网  | AzureDataLake：443  | TCP  |
-| EventHub 引入和服务监视  | ADX 子网  | EventHub：443，5671  | TCP  |
-| 发布指标  | ADX 子网  | AzureMonitor：443 | TCP  |
-| Azure Monitor 配置下载  | ADX 子网  | [Azure Monitor 配置终结点地址](#azure-monitor-configuration-endpoint-addresses)：443 | TCP  |
-| Active Directory （如果适用） | ADX 子网 | AzureActiveDirectory：443 | TCP |
-| 证书颁发机构 | ADX 子网 | Internet：80 | TCP |
+| 与 Azure 存储的依赖关系  | ADX 子网  | 存储：443  | TCP  |
+| 对 Azure 数据湖的依赖  | ADX 子网  | AzureDataLake：443  | TCP  |
+| 事件中心引入和服务监视  | ADX 子网  | 活动中心：443，5671  | TCP  |
+| 发布指标  | ADX 子网  | Azure 监视器：443 | TCP  |
+| Azure 监视器配置下载  | ADX 子网  | [Azure 监视器配置终结点地址](#azure-monitor-configuration-endpoint-addresses)：443 | TCP  |
+| 活动目录（如果适用） | ADX 子网 | Azure 活动目录：443 | TCP |
+| 证书颁发机构 | ADX 子网 | 互联网：80 | TCP |
 | 内部通信  | ADX 子网  | ADX 子网：所有端口  | All  |
-| 用于 `sql\_request` 和 `http\_request` 插件的端口  | ADX 子网  | Internet：自定义  | TCP  |
+| 用于`sql\_request`和`http\_request`插件的端口  | ADX 子网  | 互联网：自定义  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>相关 IP 地址
 
@@ -100,10 +100,10 @@ IP 地址的总数：
 | 区域 | 地址 |
 | --- | --- |
 | 澳大利亚中部 | 20.37.26.134 |
-| 澳大利亚 Central2 | 20.39.99.177 |
+| 澳大利亚中部2 | 20.39.99.177 |
 | 澳大利亚东部 | 40.82.217.84 |
 | 澳大利亚东南部 | 20.40.161.39 |
-| BrazilSouth | 191.233.25.183 |
+| 巴西南部 | 191.233.25.183 |
 | 加拿大中部 | 40.82.188.208 |
 | 加拿大东部 | 40.80.255.12 |
 | 印度中部 | 40.81.249.251 |
@@ -112,7 +112,7 @@ IP 地址的总数：
 | 东亚 | 20.189.74.103 |
 | 美国东部 | 52.224.146.56 |
 | 美国东部 2 | 52.232.230.201 |
-| 东 2 EUAP | 52.253.226.110 |
+| 东 US2 EUAP | 52.253.226.110 |
 | 法国中部 | 40.66.57.91 |
 | 法国南部 | 40.82.236.24 |
 | 日本东部 | 20.43.89.90 |
@@ -134,7 +134,7 @@ IP 地址的总数：
 | 美国西部 | 13.64.38.225 |
 | 美国西部 2 | 40.90.219.23 |
 
-#### <a name="health-monitoring-addresses"></a>运行状况监视地址
+#### <a name="health-monitoring-addresses"></a>运行状况监测地址
 
 | 区域 | 地址 |
 | --- | --- |
@@ -173,12 +173,12 @@ IP 地址的总数：
 | 美国西部 | 23.99.5.162 |
 | 美国西部 2 | 23.99.5.162 |    
 
-#### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Monitor 配置终结点地址
+#### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure 监视器配置终结点地址
 
 | 区域 | 地址 |
 | --- | --- |
 | 澳大利亚中部 | 52.148.86.165 |
-| 澳大利亚中部2 | 52.148.86.165 |
+| 澳大利亚中部 2 | 52.148.86.165 |
 | 澳大利亚东部 | 52.148.86.165 |
 | 澳大利亚东南部 | 52.148.86.165 |
 | 巴西南部 | 13.68.89.19 |
@@ -189,7 +189,7 @@ IP 地址的总数：
 | 美国中部 EUAP | 13.90.43.231 |
 | 东亚 | 13.75.117.221 |
 | 美国东部 | 13.90.43.231 |
-| 美国东部2 | 13.68.89.19 |    
+| 美国东部 2 | 13.68.89.19 |    
 | 美国东部 2 EUAP | 13.68.89.19 |
 | 法国中部 | 52.174.4.112 |
 | 法国南部 | 52.174.4.112 |
@@ -210,15 +210,15 @@ IP 地址的总数：
 | 西欧 | 52.174.4.112 |
 | 印度西部 | 13.71.25.187 |
 | 美国西部 | 40.78.70.148 |
-| 美国西部2 | 52.151.20.103 |
+| 美国西部 2 | 52.151.20.103 |
 
-## <a name="expressroute-setup"></a>ExpressRoute 设置
+## <a name="expressroute-setup"></a>快速路由设置
 
-使用 ExpressRoute 将本地网络连接到 Azure 虚拟网络。 常见的设置是通过边界网关协议（BGP）会话播发默认路由（0.0.0.0/0）。 这会强制将来自虚拟网络的流量转发到客户的本地网络，该网络可能会丢弃流量，导致出站流中断。 若要解决此默认值，可配置[用户定义的路由（UDR）](/azure/virtual-network/virtual-networks-udr-overview#user-defined) （0.0.0.0/0），并将下一个跃点设置为*Internet*。 由于 UDR 优先于 BGP，因此流量将发送到 Internet。
+使用 ExpressRoute 将本地网络连接到 Azure 虚拟网络。 常见设置是通过边界网关协议 （BGP） 会话通告默认路由 （0.0.0.0/0）。 这迫使从虚拟网络流出的流量转发到客户的前提网络，这可能会丢弃流量，从而导致出站流中断。 为了克服此默认值，可以配置[用户定义路由 （UDR）](/azure/virtual-network/virtual-networks-udr-overview#user-defined) （0.0.0.0/0），下一个跃点将是*Internet*。 由于 UDR 优先于 BGP，因此流量将发送到 Internet。
 
-## <a name="securing-outbound-traffic-with-firewall"></a>用防火墙保护出站流量
+## <a name="securing-outbound-traffic-with-firewall"></a>使用防火墙保护出站流量
 
-如果要使用[Azure 防火墙](/azure/firewall/overview)或任何虚拟设备来保护出站流量以限制域名，则必须在防火墙中允许下列完全限定的域名（FQDN）。
+如果要使用[Azure 防火墙](/azure/firewall/overview)或任何虚拟设备保护出站流量以限制域名，则必须在防火墙中允许以下完全限定域名 （FQDN）。
 
 ```
 prod.warmpath.msftcloudes.com:443
@@ -246,163 +246,17 @@ adl.windows.com:80
 crl3.digicert.com:80
 ```
 
-还需要在子网中定义[路由表](/azure/virtual-network/virtual-networks-udr-overview)，其中包含[管理地址](#azure-data-explorer-management-ip-addresses)和[运行状况监视地址](#health-monitoring-addresses)和下一跃点*Internet* ，以防止非对称路由问题。
+您还需要使用下一跃点*Internet*使用[管理地址](#azure-data-explorer-management-ip-addresses)和[运行状况监视地址](#health-monitoring-addresses)在子网上定义[路由表](/azure/virtual-network/virtual-networks-udr-overview)，以防止出现非对称路由问题。
 
-例如，对于**美国西部**区域，必须定义以下 udr：
+例如，对于**美国西部**区域，必须定义以下 UDR：
 
-| 名称 | 地址前缀 | 下一个跃点 |
+| “属性” | 地址前缀 | 下一跃点 |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | Internet |
 | ADX_Monitoring | 23.99.5.162/32 | Internet |
 
 ## <a name="deploy-azure-data-explorer-cluster-into-your-vnet-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板将 Azure 数据资源管理器群集部署到 VNet
 
-若要将 Azure 数据资源管理器群集部署到虚拟网络，请使用将[azure 数据资源管理器群集部署到 VNet](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) Azure 资源管理器模板。
+要将 Azure 数据资源管理器群集部署到虚拟网络，请使用["将 Azure 数据资源管理器"群集部署到 VNet](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) Azure 资源管理器模板中。
 
 此模板创建群集、虚拟网络、子网、网络安全组和公共 IP 地址。
-
-## <a name="troubleshooting"></a>故障排除
-
-本部分介绍如何排查部署到[虚拟网络](/azure/virtual-network/virtual-networks-overview)中的群集的连接、操作和群集创建问题。
-
-### <a name="access-issues"></a>访问问题
-
-如果你在使用公用（cluster.region.kusto.windows.net）或专用（private-cluster.region.kusto.windows.net）终结点访问群集时遇到问题，并且怀疑它与虚拟网络设置相关，请执行以下步骤以解决问题。
-
-#### <a name="check-tcp-connectivity"></a>检查 TCP 连接
-
-第一步包括使用 Windows 或 Linux OS 检查 TCP 连接。
-
-# <a name="windows"></a>[Windows](#tab/windows)
-
-   1. 将[TCping](https://www.elifulkerson.com/projects/tcping.php)下载到连接到群集的计算机。
-   2. 使用以下命令从源计算机 Ping 目标：
-
-    ```cmd
-     C:\> tcping -t yourcluster.kusto.windows.net 443 
-    
-     ** Pinging continuously.  Press control-c to stop **
-    
-     Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
-     ```
-
-# <a name="linux"></a>[Linux](#tab/linux)
-
-   1. 在连接到群集的计算机上安装*netcat*
-
-    ```bash
-    $ apt-get install netcat
-     ```
-
-   2. 使用以下命令从源计算机 Ping 目标：
-
-     ```bash
-     $ netcat -z -v yourcluster.kusto.windows.net 443
-    
-     Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
-     ```
----
-
-如果测试不成功，请继续执行以下步骤。 如果测试成功，则问题不是由 TCP 连接问题导致的。 请继续执行[操作问题](#cluster-creation-and-operations-issues)以进一步解决问题。
-
-#### <a name="check-the-network-security-group-nsg"></a>检查网络安全组（NSG）
-
-   检查附加到群集子网的[网络安全组](/azure/virtual-network/security-overview)（NSG）是否具有允许从客户端计算机的 IP 访问端口443的入站规则。
-
-#### <a name="check-route-table"></a>检查路由表
-
-   如果群集的子网具有对防火墙的强制隧道设置（带有包含默认路由 "0.0.0.0/0" 的[路由表](/azure/virtual-network/virtual-networks-udr-overview)的子网），请确保计算机 IP 地址具有 "[下一跃点类型](/azure/virtual-network/virtual-networks-udr-overview)" 到 VirtualNetwork/Internet 的路由。 这是防止非对称路由问题所必需的。
-
-### <a name="ingestion-issues"></a>引入问题
-
-如果遇到引入问题并且怀疑它与虚拟网络设置有关，请执行以下步骤。
-
-#### <a name="check-ingestion-health"></a>检查引入运行状况
-
-    Check that the [cluster ingestion metrics](/azure/data-explorer/using-metrics#ingestion-health-and-performance-metrics) indicate a healthy state.
-
-#### <a name="check-security-rules-on-data-source-resources"></a>检查数据源资源上的安全规则
-
-如果度量值指示没有从数据源处理任何事件（处理的*事件*（对于事件/IoT 中心）指标），请确保数据源资源（事件中心或存储）允许通过防火墙规则或服务终结点中的群集子网进行访问。
-
-#### <a name="check-security-rules-configured-on-clusters-subnet"></a>检查群集子网上配置的安全规则
-
-请确保群集的子网具有正确配置的 NSG、UDR 和防火墙规则。 此外，请测试所有依赖终结点的网络连接。 
-
-### <a name="cluster-creation-and-operations-issues"></a>群集创建和操作问题
-
-如果遇到群集创建或操作问题，并且怀疑它与虚拟网络设置有关，请执行以下步骤来解决此问题。
-
-#### <a name="diagnose-the-virtual-network-with-the-rest-api"></a>诊断具有 REST API 的虚拟网络
-
-[ARMClient](https://chocolatey.org/packages/ARMClient)用于使用 PowerShell 调用 REST API。 
-
-1. 使用 ARMClient 登录
-
-   ```powerShell
-   armclient login
-   ```
-
-1. 调用诊断操作
-
-    ```powershell
-    $subscriptionId = '<subscription id>'
-    $clusterName = '<name of cluster>'
-    $resourceGroupName = '<resource group name>'
-    $apiversion = '2019-11-09'
-    
-    armclient post "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName/diagnoseVirtualNetwork?api-version=$apiversion" -verbose
-    ```
-
-1. 检查响应
-
-    ```powershell
-    HTTP/1.1 202 Accepted
-    ...
-    Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
-    ...
-    ```
-
-1. 等待操作完成
-
-    ```powershell
-    armclient get https://management.azure.com/subscriptions/$subscriptionId/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
-    
-    {
-      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
-      "name": "{operation-name}",
-      "status": "[Running/Failed/Completed]",
-      "startTime": "{start-time}",
-      "endTime": "{end-time}",
-      "properties": {...}
-    }
-    ```
-    
-   等待 "*状态*" 属性显示为 "*已完成*"，然后 "*属性*" 字段应显示：
-
-    ```powershell
-    {
-      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
-      "name": "{operation-name}",
-      "status": "Completed",
-      "startTime": "{start-time}",
-      "endTime": "{end-time}",
-      "properties": {
-        "Findings": [...]
-      }
-    }
-    ```
-
-如果 "*发现*" 属性显示空结果，则表示所有网络测试均已通过，并且没有任何连接被中断。 如果此错误显示如下所示的错误：*出站依赖项 "{dependencyName}： {port}" 可能未满足（出站）* ，则群集无法访问依赖的服务终结点。 继续执行以下步骤进行故障排除。
-
-#### <a name="check-network-security-group-nsg"></a>检查网络安全组（NSG）
-
-请确保按照[VNet 部署依赖关系](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment)中的说明正确配置[网络安全组](/azure/virtual-network/security-overview)
-
-#### <a name="check-route-table"></a>检查路由表
-
-如果群集的子网将强制隧道设置为防火墙（带有包含默认路由 "0.0.0.0/0" 的[路由表](/azure/virtual-network/virtual-networks-udr-overview)的子网），请确保[管理 ip 地址](#azure-data-explorer-management-ip-addresses)和[运行状况监视 ip 地址](#health-monitoring-addresses)具有[下一跃点类型](/azure/virtual-network/virtual-networks-udr-overview##next-hop-types-across-azure-tools) *Internet*的路由，并且[源地址前缀](/azure/virtual-network/virtual-networks-udr-overview#how-azure-selects-a-route)为 *"management ip/32"* 和 *"运行状况监视-ip/32"* 。 这是防止非对称路由问题所必需的。
-
-#### <a name="check-firewall-rules"></a>检查防火墙规则
-
-如果强制将隧道子网出站流量发送到防火墙，请确保防火墙配置中允许所有依赖项 FQDN （例如， *. blob.core.windows.net*），如[使用防火墙保护出站流量](/azure/data-explorer/vnet-deployment#securing-outbound-traffic-with-firewall)中所述。

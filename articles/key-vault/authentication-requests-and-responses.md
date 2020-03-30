@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b84084dafe79a8caa9cdb70bc201f68834079845
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 8cb68b1a5363889e6ea7c49cf0cdda6ed5f0e027
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196070"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294559"
 ---
 # <a name="authentication-requests-and-responses"></a>身份验证、请求和响应
 
@@ -65,7 +65,7 @@ Azure Key Vault 支持 JSON 格式的请求和响应。 Azure Key Vault 请求�
 
 - 3xx - 重定向：可能返回 304“未修改”以满足条件性 GET。 未来可能会使用其他 3xx 代码，以指示 DNS 和路径更改。  
 
-- 4xx –客户端错误：用于错误请求、缺少密钥、语法错误、参数无效、身份验证错误，等等。响应正文将包含详细的错误说明。  
+- 4xx = 客户端错误：用于错误请求、缺少密钥、语法错误、无效参数、身份验证错误等。响应正文将包含详细的错误说明。  
 
 - 5xx - 服务器错误：用于内部服务器错误。 响应正文包含汇总的错误信息。  
 
@@ -88,7 +88,7 @@ Azure Key Vault 支持 JSON 格式的请求和响应。 Azure Key Vault 请求�
 
 ```  
 
-## <a name="authentication"></a>Authentication  
+## <a name="authentication"></a>身份验证  
  必须对所有 Azure Key Vault 请求进行身份验证。 Azure Key Vault 支持通过 OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)] 获得的 Azure Active Directory 访问令牌。 
  
  若要详细了解如何注册应用程序和进行身份验证以使用 Azure Key Vault，请参阅[通过 Azure AD 注册客户端应用程序](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad)。
@@ -113,7 +113,7 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   authorization：可用于获取请求访问令牌的 OAuth2 授权服务的地址。  
 
--   资源：资源的名称（ https://vault.azure.net) 在授权请求中使用。  
+-   资源：要在授权请求中使用的资源`https://vault.azure.net`的名称。  
 
 ## <a name="see-also"></a>另请参阅  
- [关于键、密钥和证书](about-keys-secrets-and-certificates.md)
+ [关于密钥、机密和证书](about-keys-secrets-and-certificates.md)

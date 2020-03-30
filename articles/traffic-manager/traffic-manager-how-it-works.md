@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: rohink
-ms.openlocfilehash: 709e89b94ba10db954aa5cf3f70aeffb0d239edb
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938620"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294859"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理器的工作原理
 
@@ -25,7 +25,7 @@ ms.locfileid: "76938620"
 
 流量管理器具有两大优势：
 
-- 根据某个[流量路由方法](traffic-manager-routing-methods.md)对流量进行分布
+- 根据几种[流量路由方法](traffic-manager-routing-methods.md)之一分布流量
 - [连续监视终结点运行状况](traffic-manager-monitoring.md)，在终结点发生故障时自动进行故障转移
 
 当客户端尝试连接到某个服务时，必须先将该服务的 DNS 名称解析成 IP 地址。 然后，客户端就可以连接到该 IP 地址以访问相关服务。
@@ -34,7 +34,7 @@ ms.locfileid: "76938620"
 
 ## <a name="traffic-manager-example"></a>流量管理器示例
 
-Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 https://partners.contoso.com/login.aspx 。 该应用程序托管在三个 Azure 区域中。 为了改善可用性并在全球最大程度地提高性能，他们使用流量管理器将客户端流量分布到最靠近的可用终结点。
+Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 `https://partners.contoso.com/login.aspx`。 该应用程序托管在三个 Azure 区域中。 为了改善可用性并在全球最大程度地提高性能，他们使用流量管理器将客户端流量分布到最靠近的可用终结点。
 
 为了实现此配置，他们完成以下步骤：
 
@@ -49,7 +49,7 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 htt
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>客户端如何使用流量管理器进行连接
 
-沿用前面的示例，当客户端请求页面 https://partners.contoso.com/login.aspx 时，会执行以下步骤来解析 DNS 名称并建立连接：
+沿用前面的示例，当客户端请求页面 `https://partners.contoso.com/login.aspx` 时，会执行以下步骤来解析 DNS 名称并建立连接：
 
 ![使用流量管理器建立连接][2]
 
@@ -69,29 +69,29 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 htt
 
 递归 DNS 服务缓存它所收到的 DNS 响应。 客户端设备上的 DNS 解析程序也会缓存结果。 通过缓存可以加快后续 DNS 查询的响应速度，因为使用的是缓存中的数据，不需要查询其他名称服务器。 缓存的持续时间取决于每个 DNS 记录的“生存时间”(TTL) 属性。 该属性值越小，缓存过期时间就越短，因此访问流量管理器名称服务器所需的往返次数就越多。 如果指定较大的值，则意味着从故障终结点定向流量需要更长的时间。 使用流量管理器，可以将流量管理器 DNS 响应中使用的 TTL 配置为最短 0 秒，最长 2,147,483,647 秒（符合[ RFC-1035 ](https://www.ietf.org/rfc/rfc1035.txt)的最大范围），从而可选择使应用程序的需求实现最佳平衡的值。
 
-## <a name="faqs"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 
 * [流量管理器使用什么 IP 地址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-ip-address-does-traffic-manager-use)
 
-* [可以使用流量管理器来路由哪些类型的流量？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
+* [可以使用流量管理器路由什么类型的流量？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
 
-* [流量管理器是否支持 "粘滞" 会话？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+* [流量管理器是否支持"粘性"会话？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
 
-* [使用流量管理器时为何会出现 HTTP 错误？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
+* [使用流量管理器时为何出现 HTTP 错误？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
 
 * [使用流量管理器对性能有什么影响？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-the-performance-impact-of-using-traffic-manager)
 
-* [流量管理器可以使用哪些应用程序协议？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
+* [流量管理器允许使用什么应用程序协议？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
 
-* [是否可以使用流量管理器和 "裸" 域名？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+* [我可以使用带有"裸"域名的流量管理器吗？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
 
-* [在处理 DNS 查询时，流量管理器是否会考虑客户端子网地址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
+* [处理 DNS 查询时流量管理器是否会考虑客户端子网地址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
 
 * [什么是 DNS TTL，它如何影响我的用户？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
 
-* [能否为流量管理器响应设置 TTL？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
+* [可如何设置流量管理器响应的 TTL 范围？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
 
-* [如何了解传入配置文件的查询数量？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
+* [如何了解传入到我的配置文件的查询数量？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
 ## <a name="next-steps"></a>后续步骤
 

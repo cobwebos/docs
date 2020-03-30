@@ -1,17 +1,17 @@
 ---
-title: 配置数据暂留-适用于 Redis 的高级 Azure 缓存
+title: 配置数据暂留 - 高级 Azure Cache for Redis
 description: 了解如何为高级层的 Azure Redis 缓存实例配置和管理数据暂留
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 40cd3467c7a4377427bb8db437e1047382933b1c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 84a5b4784a36fb22ae50a7a1ec4fcb7e5ef5b7c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714872"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80245270"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置数据暂留
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 本文介绍如何配置高级 Azure Redis 缓存实例中的暂留功能。
@@ -26,58 +26,58 @@ Azure Redis 缓存使用以下模型提供 Redis 暂留：
 * **RDB 暂留** - 配置 RDB（Redis 数据库）暂留以后，Azure Redis 缓存按照可配置的备份频率，将 Azure Redis 缓存的快照以 Redis 二进制格式暂留在磁盘上。 如果发生了灾难性事件，导致主缓存和副缓存都无法使用，则会使用最新快照重新构造缓存。 详细了解 RDB 暂留的[优点](https://redis.io/topics/persistence#rdb-advantages)和[缺点](https://redis.io/topics/persistence#rdb-disadvantages)。
 * **AOF 暂留** - 配置 AOF（仅追加文件）暂留后，Azure Redis 缓存将每个写入操作保存到日志，此日志每秒至少保存到 Microsoft Azure 存储帐户一次。 如果发生了灾难性事件，导致主缓存和副缓存都无法使用，则会使用存储的写入操作重新构造缓存。 详细了解 AOF 暂留的[优点](https://redis.io/topics/persistence#aof-advantages)和[缺点](https://redis.io/topics/persistence#aof-disadvantages)。
 
-持久性将 Redis 数据写入你拥有和管理的 Azure 存储帐户。 你可以在创建缓存期间，在现有高级缓存的 "**资源" 菜单**中，从 "Redis" 边栏选项卡配置**新的 Azure Cache** 。
+暂留将 Redis 数据写入你拥有和管理的 Azure 存储帐户。 可在缓存创建过程中通过“新建 Azure Redis 缓存”边栏选项卡进行配置，也可以在现有高级缓存的“资源”菜单上配置********。
 
 > [!NOTE]
 > 
-> 保存数据时，Azure 存储会自动加密数据。 你可以使用自己的密钥进行加密。 有关详细信息，请参阅[Azure Key Vault 的客户托管密钥](/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault)。
+> 保存数据时，Azure 存储会自动加密数据。 可以使用自己的密钥进行加密。 有关详细信息，请参阅 [Azure Key Vault 中的客户托管密钥](/azure/storage/common/storage-service-encryption)。
 > 
 > 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-选中某个高级定价层后，请单击“Redis 暂留”。
+选中某个高级定价层后，请单击“Redis 暂留”****。
 
 ![Redis 暂留][redis-cache-persistence]
 
-下一部分中的步骤介绍如何在新的高级缓存上配置 Redis 暂留。 配置 Redis 暂留后，单击“创建”以创建具有 Redis 暂留的新高级版缓存。
+下一部分中的步骤介绍如何在新的高级缓存上配置 Redis 暂留。 配置 Redis 暂留后，单击“创建”**** 以创建具有 Redis 暂留的新高级版缓存。
 
 ## <a name="enable-redis-persistence"></a>启用 Redis 暂留
 
-通过选择**RDB**或**AOF**暂留，可以在 "**数据暂留**" 边栏选项卡上启用 Redis 暂留。 对于新缓存，可以按前一部分中所述，在创建缓存过程中访问此边栏选项卡。 对于现有缓存，可从缓存的 "**资源" 菜单**访问 "**数据暂留**" 边栏选项卡。
+通过选择“RDB”或“AOF”暂留可在“数据暂留”边栏选项卡上启用 Redis 暂留************。 对于新缓存，可以按前一部分中所述，在创建缓存过程中访问此边栏选项卡。 对于现有缓存，可从缓存的“资源菜单”访问“数据暂留”边栏选项卡********。
 
 ![Redis 设置][redis-cache-settings]
 
 
 ## <a name="configure-rdb-persistence"></a>配置 RDB 暂留
 
-若要启用 RDB 暂留，请单击“RDB”。 若要在以前启用的高级缓存上禁用 RDB 暂留，请单击“禁用”。
+若要启用 RDB 暂留，请单击“RDB”****。 若要在以前启用的高级缓存上禁用 RDB 暂留，请单击“禁用”****。
 
 ![Redis RDB 暂留][redis-cache-rdb-persistence]
 
-若要配置备份间隔，请从下拉列表选择“备份频率”。 选项包括“15 分钟”、“30 分钟”、“60 分钟”、“6 小时”、“12 小时”和“24 小时”。 在上一个备份操作成功完成以后，此时间间隔就会开始倒计时，同时会启动新的备份。
+若要配置备份间隔，请从下拉列表选择“备份频率”****。 选项包括“15 分钟”****、“30 分钟”****、“60 分钟”****、“6 小时”****、“12 小时”**** 和“24 小时”****。 在上一个备份操作成功完成以后，此时间间隔就会开始倒计时，同时会启动新的备份。
 
-单击“存储帐户”以选择要使用的存储帐户，并从“存储密钥”下拉列表中选择要使用的“主密钥”或“辅助密钥”。 必须选择与缓存处于相同区域的存储帐户，建议选择“高级存储”帐户，因为高级存储的吞吐量较高。 
+单击“存储帐户”**** 以选择要使用的存储帐户，并从“存储密钥”**** 下拉列表中选择要使用的“主密钥”**** 或“辅助密钥”****。 必须选择与缓存处于相同区域的存储帐户，建议选择“高级存储”**** 帐户，因为高级存储的吞吐量较高。 
 
 > [!IMPORTANT]
-> 如果重新生成了暂留帐户的存储密钥，必须从“存储密钥”下拉列表中重新配置所需密钥。
+> 如果重新生成了暂留帐户的存储密钥，必须从“存储密钥”**** 下拉列表中重新配置所需密钥。
 > 
 > 
 
-单击“确定”可保存暂留配置。
+单击“确定”**** 可保存暂留配置。
 
 一旦备份频率间隔时间已过，则会启动下一次备份（或新缓存的首次备份）。
 
 ## <a name="configure-aof-persistence"></a>配置 AOF 暂留
 
-若要启用 AOF 暂留，请单击“AOF”。 若要在以前启用的高级缓存上禁用 AOF 暂留，请单击“禁用”。
+若要启用 AOF 暂留，请单击“AOF”****。 若要在以前启用的高级缓存上禁用 AOF 暂留，请单击“禁用”****。
 
 ![Redis AOF 暂留][redis-cache-aof-persistence]
 
-若要配置 AOF 暂留，请指定“第一个存储帐户”。 此存储帐户必须与缓存处于相同区域，建议选择“高级存储”帐户，因为高级存储的吞吐量较高。 也可配置名为“第二个存储帐户”的其他存储帐户。 如果配置第二个存储帐户，写入副本缓存操作会写入到第二个存储帐户。 对于每个配置的存储帐户，请从“存储密钥”下拉列表选择要使用的“主密钥”或“辅助密钥”。 
+若要配置 AOF 暂留，请指定“第一个存储帐户”****。 此存储帐户必须与缓存处于相同区域，建议选择“高级存储”帐户，因为高级存储的吞吐量较高****。 也可配置名为“第二个存储帐户”的其他存储帐户****。 如果配置第二个存储帐户，写入副本缓存操作会写入到第二个存储帐户。 对于每个配置的存储帐户，请从“存储密钥”下拉列表选择要使用的“主密钥”或“辅助密钥”************。 
 
 > [!IMPORTANT]
-> 如果重新生成了暂留帐户的存储密钥，必须从“存储密钥”下拉列表中重新配置所需密钥。
+> 如果重新生成了暂留帐户的存储密钥，必须从“存储密钥”**** 下拉列表中重新配置所需密钥。
 > 
 > 
 
@@ -86,9 +86,9 @@ Azure Redis 缓存使用以下模型提供 Redis 暂留：
 ## <a name="persistence-faq"></a>保留常见问题
 以下列表包含对 Azure Redis 缓存暂留相关常见问题的解答。
 
-* [能否对此前创建的缓存启用暂存？](#can-i-enable-persistence-on-a-previously-created-cache)
+* [能否在此前已创建的缓存的基础上启用保留？](#can-i-enable-persistence-on-a-previously-created-cache)
 * [是否可同时启用 AOF 暂留和 RDB 暂留？](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
-* [应选择哪个暂留模型？](#which-persistence-model-should-i-choose)
+* [应该选择哪个暂留模型？](#which-persistence-model-should-i-choose)
 * [如果我缩放到不同大小并还原了缩放操作之前生成的备份，会发生什么情况？](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
 
 
@@ -131,7 +131,7 @@ AOF 暂留将每个写入保存到日志，与 RDB 暂留相比，这对吞吐�
 * 如果缩放到更小的大小，并且更小的大小空间不足，无法容纳上次备份的所有数据，则在还原过程中，通常会使用 [allkeys-lru](https://redis.io/topics/lru-cache) 逐出策略逐出密钥。
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>创建缓存后是否可更改 RDB 备份频率？
-是的，你可以在 "**数据暂留**" 边栏选项卡上更改 RDB 暂留的备份频率。 有关说明，请参阅“配置 Redis 暂留”。
+可以，可在“数据暂留”边栏选项卡上更改 RDB 暂留的备份频率****。 有关说明，请参阅“配置 Redis 暂留”。
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>为何我的 RDB 备份频率为 60 分钟，而两次备份的间隔却超过 60 分钟？
 RDB 暂留备份频率间隔在先前备份过程已成功完成后才会开始。 如果备份频率为 60 分钟，而备份过程需要 15 分钟才能成功完成，则在上一次备份开始以后，要再过 75 分钟才会开始下一次备份。

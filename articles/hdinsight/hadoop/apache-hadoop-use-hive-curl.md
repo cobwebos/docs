@@ -1,6 +1,6 @@
 ---
 title: 在 HDInsight 中将 Apache Hadoop Hive 与 Curl 配合使用 - Azure
-description: 了解如何使用卷将 Apache Pig 作业远程提交到 Azure HDInsight。
+description: 了解如何使用 Curl 远程将 Apache Pig 作业提交到 Azure HDInsight。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 10a2f413142124db7547e68280a0d5e9abac9b98
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79298744"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>使用 REST 在 HDInsight 中通过 Apache Hadoop 运行 Apache Hive 查询
@@ -21,34 +21,34 @@ ms.locfileid: "79298744"
 
 了解如何使用 WebHCat REST API 通过 Apache Hadoop on Azure HDInsight 群集运行 Apache Hive 查询。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
-* 一个 REST 客户端。 本文档在[WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)上使用 Windows PowerShell 并在[Bash](https://docs.microsoft.com/windows/wsl/install-win10)上[弯曲](https://curl.haxx.se/)。
+* 一个 REST 客户端。 本文档在 Windows PowerShell 上使用 [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)，在 [Bash](https://docs.microsoft.com/windows/wsl/install-win10) 上使用 [Curl](https://curl.haxx.se/)。
 
-* 如果使用 Bash，还需要 jq，它是一个命令行 JSON 处理器。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
+* 如果使用 Bash，您还需要 jq，一个命令行 JSON 处理器。  请参阅[https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
-## <a name="base-uri-for-rest-api"></a>Rest API 的基本 URI
+## <a name="base-uri-for-rest-api"></a>用于 Rest API 的基 URI
 
-HDInsight 上 REST API 的基本统一资源标识符（URI）是 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`的，其中 `CLUSTERNAME` 是群集的名称。  Uri 中的群集名称**区分大小写**。  尽管 URI 的完全限定的域名（FQDN）部分（`CLUSTERNAME.azurehdinsight.net`）中的群集名称不区分大小写，但 URI 中的其他事件区分大小写。
+HDInsight 上 REST API 的基本统一资源标识符 (URI) 为 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`，其中 `CLUSTERNAME` 是群集的名称。  URI 中的群集名称**区分大小写**。  虽然 URI (`CLUSTERNAME.azurehdinsight.net`) 的完全限定域名 (FQDN) 部分中的群集名称不区分大小写，但 URI 中的其他部分是区分大小写的。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 使用 cURL 或者与 WebHCat 进行任何其他形式的 REST 通信时，必须提供 HDInsight 群集管理员的用户名和密码以对请求进行身份验证。 REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。 为了有助于确保将凭据安全地发送到服务器，应始终使用安全 HTTP (HTTPS) 发出请求。
 
 ### <a name="setup-preserve-credentials"></a>设置（保留凭据）
 
-保留您的凭据以避免为每个示例重新输入凭据。  群集名称将保留在单独的步骤中。
+请保留凭据，以免在每个示例中重复输入。  群集名称将在单独的步骤中保留。
 
-**答： Bash**  
-通过使用实际密码替换 `PASSWORD` 来编辑下面的脚本。  然后输入命令。
+**A. 巴什**  
+编辑以下脚本，将 `PASSWORD` 替换为实际密码。  然后输入该命令。
 
 ```bash
 export password='PASSWORD'
 ```  
 
-**B.** 执行以下代码，然后在弹出窗口中输入你的凭据：
+**B. PowerShell**执行以下代码，并在弹出窗口中输入凭据：
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -56,9 +56,9 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 
 ### <a name="identify-correctly-cased-cluster-name"></a>识别大小写正确的群集名称
 
-群集名称的实际大小写格式可能出乎预期，具体取决于群集的创建方式。  此处的步骤将显示实际的大小写，并将其存储在一个变量中以供以后使用。
+群集名称的实际大小写格式可能出乎预期，具体取决于群集的创建方式。  此处的步骤将显示实际大小写，然后将其存储在变量中，以便以后的所有示例。
 
-编辑以下脚本，将 `CLUSTERNAME` 替换为群集名称。 然后输入命令。 （FQDN 的群集名称不区分大小写。）
+编辑以下脚本，将 `CLUSTERNAME` 替换为群集名称。 然后输入该命令。 （FQDN 的群集名称不区分大小写。
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -146,7 +146,7 @@ $clusterName
 
    这些语句将执行以下操作：
 
-   * `DROP TABLE`-如果表已存在，则将其删除。
+   * `DROP TABLE`- 如果表已存在，则将其删除。
    * `CREATE EXTERNAL TABLE` - 在 Hive 中创建一个新的“外部”表。 外部表仅在 Hive 中存储表定义。 数据将保留在原始位置。
 
      > [!NOTE]  
@@ -155,7 +155,7 @@ $clusterName
      > 删除外部表**不会**删除数据，只会删除表定义。
 
    * `ROW FORMAT` - 如何设置数据的格式。 每个日志中的字段都用空格分隔。
-   * `STORED AS TEXTFILE LOCATION`-数据的存储位置（example/data 目录），并且存储为文本。
+   * `STORED AS TEXTFILE LOCATION`- 数据存储的位置（示例/数据目录）并将其存储为文本。
    * `SELECT` - 选择 **t4** 列包含值 **[ERROR]** 的所有行的计数。 此语句返回的值为 **3**，因为有三行包含此值。
 
      > [!NOTE]  
@@ -183,7 +183,7 @@ $clusterName
 
     如果作业已完成，状态将是 **SUCCEEDED**。
 
-1. 在作业的状态更改为“SUCCEEDED”后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `/example/rest`。 此地址将输出存储在群集默认存储中的 `example/curl` 目录。
+1. 在作业的状态更改为“SUCCEEDED”**** 后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中，该位置为 `/example/rest`。 此地址将输出存储在群集默认存储中的 `example/curl` 目录。
 
     可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 列出并下载这些文件。 有关将 Azure CLI 与 Azure 存储配合使用的详细信息，请参阅[将 Azure CLI 与 Azure 存储配合使用](https://docs.microsoft.com/azure/storage/storage-azure-cli)文档。
 

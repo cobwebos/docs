@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: 69686cad20bc4ce70bff2a92a216c9430522c301
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278839"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>如何管理 Azure Redis 缓存
@@ -19,11 +19,11 @@ ms.locfileid: "79278839"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="reboot"></a>重新启动
-可通过“重新启动”边栏选项卡重新启动缓存的一个或多个节点。 如果有缓存节点发生故障，此重新启动功能可用于测试应用程序的复原能力。
+可通过“重新启动”**** 边栏选项卡重新启动缓存的一个或多个节点。 如果有缓存节点发生故障，此重新启动功能可用于测试应用程序的复原能力。
 
 ![重新启动](./media/cache-administration/redis-cache-administration-reboot.png)
 
-选择要重启的节点，并单击“重启”。
+选择要重启的节点，并单击“重启”****。
 
 ![重新启动](./media/cache-administration/redis-cache-reboot.png)
 
@@ -31,7 +31,7 @@ ms.locfileid: "79278839"
 
 ![重新启动](./media/cache-administration/redis-cache-reboot-cluster.png)
 
-要重新启动缓存的一个或多个节点，请选择所需节点，并单击“重新启动”。 如果高级缓存启用了群集功能，请选择要重新启动的所需分片，并单击“重新启动”。 几分钟后，所选节点将重新启动，再过几分钟后，又会回到联机状态。
+要重新启动缓存的一个或多个节点，请选择所需节点，并单击“重新启动”****。 如果高级缓存启用了群集功能，请选择要重新启动的所需分片，并单击“重新启动”****。 几分钟后，所选节点将重新启动，再过几分钟后，又会回到联机状态。
 
 对客户端应用程序的影响因用户重新启动的节点而有所不同。
 
@@ -58,7 +58,7 @@ ms.locfileid: "79278839"
 > 
 
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>如果我执行重新启动，是否会丢失缓存中的数据？
-如果同时重新启动**主**节点和**从属**节点，则缓存中的所有数据（或该分片，如果你使用的是启用群集的高级缓存）可能会丢失，但这种情况并不保证。 如果已配置 [数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时会还原最新备份，但在进行该备份后发生的所有缓存写入都将丢失。
+如果同时重新启动**主**节点和**从属**节点，则缓存中或该分片中（如果用户使用的是已启用群集的高级缓存）的所有数据都可能会丢失，但这种情况也不一定会发生。 如果已配置 [数据持久性](cache-how-to-premium-persistence.md)，则在缓存重新联机时会还原最新备份，但在进行该备份后发生的所有缓存写入都将丢失。
 
 如果只重新启动其中一个节点，数据通常不会丢失，但仍可能会丢失。 例如，如果重新启动主节点时正在进行缓存写入，则缓存写入的数据将丢失。 发生数据丢失的另一种情况是，重新启动一个节点时，另一个节点恰巧因故障而关闭。 有关数据丢失的可能原因的详细信息，请参阅 [What happened to my data in Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)（Redis 中的数据发生了什么情况？）
 
@@ -66,7 +66,7 @@ ms.locfileid: "79278839"
 能，有关 PowerShell 说明，请参阅[重新启动 Azure Redis 缓存](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis)。
 
 ## <a name="schedule-updates"></a>计划更新
-使用 "**计划更新**" 边栏选项卡，可以为缓存实例指定维护时段。 指定维护时段后，会在此时段内进行任何 Redis 服务器更新。 
+使用“计划更新”**** 边栏选项卡可以为缓存实例指定维护时段。 指定维护时段后，会在此时段内进行任何 Redis 服务器更新。 
 
 > [!NOTE] 
 > 维护时段仅适用于 Redis 服务器更新，不适用于任何 Azure 更新或托管缓存的 VM 的操作系统更新。
@@ -74,9 +74,9 @@ ms.locfileid: "79278839"
 
 ![计划更新](./media/cache-administration/redis-schedule-updates.png)
 
-要指定维护时段，请勾选合适的日期，并指定每天的维护时段开始时间，最后再单击“确定”。 请注意，维护时段使用 UTC 时间。 
+要指定维护时段，请勾选合适的日期，并指定每天的维护时段开始时间，最后再单击“确定”****。 请注意，维护时段使用 UTC 时间。 
 
-更新的默认最小维护时段为 5 小时。 此值不可以在 Azure 门户中配置，但可以在 PowerShell 中使用 `MaintenanceWindow`New-AzRmRedisCacheScheduleEntry[ cmdlet 的 ](/powershell/module/az.rediscache/new-azrediscachescheduleentry) 参数进行配置。 有关详细信息，请参阅是否可以使用 PowerShell、CLI 或其他管理工具管理计划的更新？
+更新的默认最小维护时段为 5 小时。 此值不可以在 Azure 门户中配置，但可以在 PowerShell 中使用 [New-AzRmRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) cmdlet 的 `MaintenanceWindow` 参数进行配置。 有关详细信息，请参阅是否可以使用 PowerShell、CLI 或其他管理工具管理计划的更新？
 
 ## <a name="schedule-updates-faq"></a>计划更新常见问题
 * [如果不使用计划更新功能，何时进行更新？](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

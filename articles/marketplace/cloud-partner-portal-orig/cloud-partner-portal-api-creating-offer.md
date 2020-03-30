@@ -1,19 +1,18 @@
 ---
-title: 创建或修改产品/服务 |Azure Marketplace
+title: 创建或修改产品/服务 |Azure 应用商店
 description: 用于创建新的产品/服务或更新现有产品/服务的 API。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: bfb9cfbe2c63caafef8487015f42a05b98afa29c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 681e71fae161100c8804f95980b9e9567dcf1863
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819719"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288608"
 ---
 <a name="create-or-modify-an-offer"></a>创建或修改产品/服务
 =========================
@@ -36,7 +35,7 @@ ms.locfileid: "73819719"
 <a name="header"></a>标头
 ------
 
-|  **名称**        |  **值**               |
+|  **名称**        |  **价值**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
 | 授权    | `Bearer YOUR_TOKEN`      |
@@ -247,11 +246,11 @@ ms.locfileid: "73819719"
 
 | **代码**  |  **说明**                                                                            |
 | --------  |  ---------------                                                                            |
-|  200      | `OK`。 请求已成功处理，并且已成功修改产品/服务。           |
-|  201      | `Created`。 请求已成功处理，并且已成功创建产品/服务。   |
-|  400      | `Bad/Malformed request`。 错误响应正文可以提供更多信息。            |
-|  403      | `Forbidden`。 客户端无法访问请求的命名空间。                     |
-|  404      | `Not found`。 客户端引用的实体不存在。                           |
+|  200      | `OK`. 请求已成功处理，并且已成功修改产品/服务。           |
+|  201      | `Created`. 请求已成功处理，并且已成功创建产品/服务。   |
+|  400      | `Bad/Malformed request`. 错误响应正文可以提供更多信息。            |
+|  403      | `Forbidden`. 客户端无法访问请求的命名空间。                     |
+|  404      | `Not found`. 客户端引用的实体不存在。                           |
 |  412      | 服务器不满足请求者在请求中指定的某一前提条件。 客户端应检查随请求发送的 ETAG。 |
 |  |  |
 

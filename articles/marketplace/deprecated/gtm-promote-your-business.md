@@ -1,19 +1,18 @@
 ---
 title: 市场推广服务 - 通过 Microsoft 促进业务发展 | Azure
 description: 市场推广服务 - 发行商可在本部分中学习如何通过 Microsoft 促进业务发展。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/12/2019
-ms.author: ellacroi
-ms.openlocfilehash: d1ac8963e673044e1d3ca3a0163df065097e12be
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8e5165d000ee98212b3fd76091ffbd030b6b787f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825958"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281538"
 ---
 # <a name="promote-your-business-with-microsoft"></a>通过 Microsoft 促进业务发展
 

@@ -1,6 +1,6 @@
 ---
-title: 使用大型 Azure 虚拟机规模集
-description: 为了在应用程序中使用大型 Azure 虚拟机规模集，需要了解的内容。
+title: 使用大型 Azure 虚拟机缩放集
+description: 您需要了解的大型 Azure 虚拟机缩放集，以便在应用程序中使用它们。
 author: cynthn
 ms.author: cynthn
 tags: azure-resource-manager
@@ -8,12 +8,12 @@ ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 11/9/2017
-ms.openlocfilehash: 618b677ee836327e8ed4ab7798ab35d92b364c98
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 6a872e749bae6bd29dbf73d4946e631af1660a39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79254048"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531033"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>使用大型虚拟机规模集
 用户现在可以创建容量高达 1,000 台 VM 的 Azure [虚拟机规模集](/azure/virtual-machine-scale-sets/)。 在本文档中，_大型虚拟机规模集_定义为能够扩展到 100 台 VM 以上的规模集。 此功能通过规模集属性 (_singlePlacementGroup=False_) 设置。 
@@ -39,22 +39,25 @@ _大型_ 规模集之所以特别，不是因为 VM 数，而是因为其包含�
 - 容错域和放置组 ID 显示在规模集 VM 的_实例视图_ 中。 可以在 [Azure 资源浏览器](https://resources.azure.com/)中查看规模集 VM 的实例视图。
 
 ## <a name="creating-a-large-scale-set"></a>创建大型规模集
-在 Azure 门户中创建规模集时，请直接指定实例计数值（最大为 1,000）。 如果超出 100 个实例，请将“允许缩放到 100 个实例以上”设置为“是”，这样就可以缩放成多个放置组。 
+在 Azure 门户中创建规模集时，请直接指定实例计数值（最大为 1,000）。** 如果超出 100 个实例，请将“允许缩放到 100 个实例以上”设置为“是”，这样就可以缩放成多个放置组。**** 
 
 ![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
-可以使用[Azure CLI](https://github.com/Azure/azure-cli) _az vmss create_命令创建大型虚拟机规模集。 该命令根据 _instance-count_ 参数设置智能默认值（例如子网大小）：
+可以使用 [Azure CLI 的 ](https://github.com/Azure/azure-cli) _az vmss create_ 命令创建大型虚拟机规模集。 该命令根据 _instance-count_ 参数设置智能默认值（例如子网大小）：
 
-```bash
+```azurecli
 az group create -l southcentralus -n biginfra
 az vmss create -g biginfra -n bigvmss --image ubuntults --instance-count 1000
 ```
+
 _vmss create_ 命令会对某些配置值进行默认设置（如果用户未指定这些值）。 若要查看可重写的选项，请尝试以下命令：
-```bash
+
+```azurecli
 az vmss create --help
 ```
 
-若要通过编写 Azure 资源管理器模板来创建大型规模集，请确保该模板基于 Azure 托管磁盘创建规模集。 可以在 _Microsoft.Compute/virtualMachineScaleSets_ 资源的 _properties_ 节将 _singlePlacementGroup_ 属性设置为 _false_。 以下 JSON 片段显示了规模集模板的开头，包括 1,000 VM 容量和 _"singlePlacementGroup" : false_ 设置：
+若要通过编写 Azure 资源管理器模板来创建大型规模集，请确保该模板基于 Azure 托管磁盘创建规模集。 您可以在_Microsoft.Compute/VirtualMachineScaleSet_资源_的属性_部分将_单个放置组_属性设置为_false。_ 以下 JSON 片段显示了规模集模板的开头，包括 1,000 VM 容量和 _"singlePlacementGroup" : false_ 设置：
+
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",
@@ -71,10 +74,11 @@ az vmss create --help
       "mode": "Automatic"
     }
 ```
-有关大型规模集模板的完整示例，请参阅 [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json)。
+
+有关大规模集模板的完整示例，请参阅[https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json)。
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>将现有的规模集转换为跨多个放置组
-要使现有的虚拟机规模集能够扩展到 100 个以上的 VM，需在规模集模型中将 _singlePlacementGroup_ 属性更改为 _false_。 可以使用 [Azure 资源浏览器](https://resources.azure.com/)对该属性进行测试性更改。 找到现有的规模集，选择“编辑”，并更改 _singlePlacementGroup_ 属性。 如果看不到该属性，则可能是在使用旧版 Microsoft.Compute API 查看规模集。
+要使现有的虚拟机规模集能够扩展到 100 个以上的 VM，需在规模集模型中将 _singlePlacementGroup_ 属性更改为 _false_。 可以使用 [Azure 资源浏览器](https://resources.azure.com/)对该属性进行测试性更改。 找到现有的规模集，选择“编辑”，并更改 _singlePlacementGroup_ 属性。__ 如果看不到该属性，则可能是在使用旧版 Microsoft.Compute API 查看规模集。
 
 > [!NOTE]
 > 可以将规模集从仅支持单个放置组（默认行为）更改为支持多个放置组，但不能反过来进行转换。 因此，请确保在进行转换之前了解大型规模集的属性。

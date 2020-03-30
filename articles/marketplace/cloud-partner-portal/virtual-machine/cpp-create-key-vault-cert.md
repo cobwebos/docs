@@ -1,19 +1,18 @@
 ---
-title: 创建 Azure Key Vault 证书 |Azure Marketplace
+title: 创建 Azure 密钥保管库证书 |Azure 应用商店
 description: 介绍如何从 Azure 部署的 VHD 注册 VM。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: 4adc6f716050e2d792e0a5c022972e4340d2846a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: dc106ecf40367172f28c0f339bbcce8bddb50a34
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823111"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278069"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>创建 Azure Key Vault 证书
 
@@ -33,7 +32,7 @@ ms.locfileid: "73823111"
 
 编辑并运行以下 Azure Powershell 脚本，以在本地文件夹中创建证书文件 (.pfx)。  需要替换以下参数的值：
 
-|  **Parameter**        |   **说明**                                                               |
+|  **参数**        |   **说明**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$certroopath` | 用于保存 .pfx 文件的本地文件夹  |
 | `$location`    | Azure 标准地理位置之一  |
@@ -77,9 +76,9 @@ ms.locfileid: "73823111"
 
 ## <a name="create-the-key-vault"></a>创建 Key Vault
 
-将 [Key Vault 部署模板](./cpp-key-vault-deploy-template.md)的内容复制到本地计算机上的文件中。 （在下面的示例脚本中，此资源 `C:\certLocation\keyvault.json`。） 编辑并运行以下 Azure Powershell 脚本以创建 Azure Key Vault 实例和关联的资源组。  需要替换以下参数的值：
+将 [Key Vault 部署模板](./cpp-key-vault-deploy-template.md)的内容复制到本地计算机上的文件中。 （在下面的示例脚本中，此资源为`C:\certLocation\keyvault.json`.） 编辑并运行以下 Azure Powershell 脚本以创建 Azure 密钥保管库实例和关联的资源组。  需要替换以下参数的值：
 
-|  **Parameter**        |   **说明**                                                               |
+|  **参数**        |   **说明**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$postfix`            | 附加到部署标识符的任意数字字符串                     |
 | `$rgName`             | 要创建的 Azure 资源组 (RG) 名称                                        |

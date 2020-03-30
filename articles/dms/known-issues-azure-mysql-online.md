@@ -1,10 +1,10 @@
 ---
-title: 已知问题：联机迁移到 Azure Database for MySQL
+title: 已知问题：联机迁移到 MySQL 的 Azure 数据库
 titleSuffix: Azure Database Migration Service
-description: 了解使用 Azure 数据库迁移服务时，联机迁移到 Azure Database for MySQL 的已知问题和迁移限制。
+description: 了解在使用 Azure 数据库迁移服务时联机迁移到 Azure Database for MySQL 的已知问题和迁移限制。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,14 +14,14 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: afbff1c0b001d00f2791a869850729171782701c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650242"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235279"
 ---
-# <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>联机迁移问题 & azure DB for MySQL 与 Azure 数据库迁移服务的限制
+# <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>使用 Azure 数据库迁移服务联机迁移到 Azure DB for MySQL 的问题和限制
 
 以下部分描述了在从 MySQL 联机迁移到 Azure Database for MySQL 时存在的已知问题和限制。
 
@@ -35,7 +35,7 @@ ms.locfileid: "77650242"
 - 相同版本的迁移。 不支持将 MySQL 5.6 迁移到 Azure Database for MySQL 5.7。
 - 在 my.ini (Windows) 或 my.cnf (Unix) 中启用二进制日志记录
   - 将 Server_id 设为大于或等于 1 的任意数字，例如 Server_id=1（仅适用于 MySQL 5.6）
-  - 设置日志-bin = \<路径 > （仅适用于 MySQL 5.6）
+  - 设置 log-bin = \<path>（仅适用于 MySQL 5.6）
   - 设置 binlog_format = row
   - Expire_logs_days = 5（建议 - 仅适用于 MySQL 5.6）
 - 用户必须具有 ReplicationAdmin 角色。
@@ -76,7 +76,7 @@ ms.locfileid: "77650242"
 
 ## <a name="lob-limitations"></a>LOB 限制
 
-大型对象 (LOB) 列可能会增大。 对于 MySQL，中文本、Longtext、Blob、Mediumblob、Longblob 等，都是 LOB 的某些数据类型。
+大型对象 (LOB) 列可能会增大。 MySQL、中等长度文本、长文本、Blob、中等 Blob、长 Blob 等都属于 LOB 数据类型。
 
 - **限制**：如果将 LOB 数据类型用作主键，迁移将会失败。
 
@@ -87,38 +87,38 @@ ms.locfileid: "77650242"
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **解决方法**：如果 LOB 对象大于 32 KB，请在[请求 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)时联系工程团队。
+    **解决方法**：如果 LOB 对象大于 32 KB，请与["询问 Azure 数据库迁移"](mailto:AskAzureDatabaseMigrations@service.microsoft.com)中的工程团队联系。
 
-## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>从 AWS RDS MySQL 在线迁移时的限制
+## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>从 AWS RDS MySQL 联机迁移时的限制
 
-尝试执行从 AWS RDS MySQL 到 Azure Database for MySQL 的联机迁移时，可能会遇到以下错误。
+尝试从 AWS RDS MySQL 联机迁移到 Azure Database for MySQL 时，你可能会遇到以下错误。
 
-- **错误：** 数据库 "{0}" 在目标上具有外键。 修复目标并启动新的数据迁移活动。 在 target 上执行以下脚本以列出外键
+- **错误：** 数据库{0}' 具有目标上的外键。 修复目标并启动新的数据迁移活动。 在目标上执行以下脚本以列出外键
 
-  **限制**：如果你在架构中有外键，则迁移的初始负载和连续同步将会失败。
-  **解决方法**：在 MySQL 工作台中执行以下脚本，提取删除外键脚本并添加外键脚本：
+  **限制**：如果您的架构中具有外键，迁移的初始加载和连续同步将失败。
+  **解决方法**：在 MySQL 工作台中执行以下脚本以提取删除外键脚本并添加外键脚本：
 
   ```
   SET group_concat_max_len = 8192; SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery FROM (SELECT KCU.REFERENCED_TABLE_SCHEMA as SchemaName, KCU.TABLE_NAME, KCU.COLUMN_NAME, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' DROP FOREIGN KEY ', KCU.CONSTRAINT_NAME) AS DropQuery, CONCAT('ALTER TABLE ', KCU.TABLE_NAME, ' ADD CONSTRAINT ', KCU.CONSTRAINT_NAME, ' FOREIGN KEY (`', KCU.COLUMN_NAME, '`) REFERENCES `', KCU.REFERENCED_TABLE_NAME, '` (`', KCU.REFERENCED_COLUMN_NAME, '`) ON UPDATE ',RC.UPDATE_RULE, ' ON DELETE ',RC.DELETE_RULE) AS AddQuery FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE KCU, information_schema.REFERENTIAL_CONSTRAINTS RC WHERE KCU.CONSTRAINT_NAME = RC.CONSTRAINT_NAME AND KCU.REFERENCED_TABLE_SCHEMA = RC.UNIQUE_CONSTRAINT_SCHEMA AND KCU.REFERENCED_TABLE_SCHEMA = 'SchemaName') Queries GROUP BY SchemaName;
   ```
 
-- **错误：** 服务器上不存在数据库 "{0}"。 提供的 MySQL 源服务器区分大小写。 请检查数据库名称。
+- **错误：** 服务器上不存在{0}数据库 ' ' 提供的 MySQL 源服务器区分大小写。 请检查数据库名称。
 
-  **限制**：使用命令行接口（CLI）将 MySQL 数据库迁移到 Azure 时，用户可能会遇到此错误。 服务找不到源服务器上的数据库，这可能是因为你提供的数据库名称不正确，或者所列出的服务器上没有该数据库。 注意数据库名称区分大小写。
+  **限制**：使用命令行接口 （CLI） 将 MySQL 数据库迁移到 Azure 时，用户可能会遭遇此错误。 服务在源服务器上找不到该数据库，原因可能是提供了错误的数据库名称，或者该数据库不存在于所列的服务器上。 请注意，数据库名称区分大小写。
 
-  **解决方法**：提供准确的数据库名称，然后重试。
+  **解决方法**：提供确切的数据库名称，然后重试。
 
-- **错误：** 数据库 "{database}" 中存在同名的表。 Azure Database for MySQL 不支持区分大小写的表。
+- **错误：** 数据库中有同名的表"[数据库]"。 Azure Database for MySQL 不支持区分大小写的表。
 
-  **限制**：如果源数据库中有两个同名的表，则会发生此错误。 Azure Database for MySQL 不支持区分大小写的表。
+  **限制**：当源数据库中有两个同名表时，将发生此错误。 Azure Database for MySQL 不支持区分大小写的表。
 
-  **解决方法**：将表名称更新为唯一，然后重试。
+  **解决方法**：将表名称更新为唯一名称，然后重试。
 
-- **错误：** 目标数据库 {database} 为空。 请迁移架构。
+- **错误：** 目标数据库 [数据库] 为空。 请迁移架构。
 
-  **限制**：当目标 Azure Database for MySQL 数据库没有所需的架构时，会发生此错误。 若要将数据迁移到目标，需要进行架构迁移。
+  **限制**：当 MySQL 数据库的目标 Azure 数据库没有所需的架构时，将发生此错误。 若要将数据迁移到目标，需要进行架构迁移。
 
-  **解决方法**：将架构从源数据库[迁移](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema)到目标数据库。
+  **解决方法**：[将架构](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema)从源数据库迁移到目标数据库。
 
 ## <a name="other-limitations"></a>其他限制
 
@@ -134,10 +134,10 @@ ms.locfileid: "77650242"
     CREATE INDEX partial_name ON customer (name(10));
     ```
 
-- 在 Azure 数据库迁移服务中，一个迁移活动中要迁移的数据库限制为四个。
+- 在 Azure 数据库迁移服务中，可在单个迁移活动中迁移的数据库数目限制为 4 个。
 
-- **错误：** 行大小太大（> 8126）。 将某些列更改为文本或 BLOB 可能会有所帮助。 在当前行格式中，将以内联方式存储0字节的 BLOB 前缀。
+- **错误：** 行大小过大（> 8126）。 将某些列更改为 TEXT 或 BLOB 可能会有帮助。 在当前的行格式中，0 字节的 BLOB 前缀以内联方式存储。
 
-  **限制**：使用 InnoDB 存储引擎迁移到 Azure Database for MySQL 时，如果任何表的行大小太大（> 8126 字节），就会发生此错误。
+  **限制**：当您使用 InnoDB 存储引擎迁移到 MySQL 的 Azure 数据库时，会发生此错误，并且任何表行大小都太大（>8126 字节）。
 
-  **解决方法**：更新行大小大于8126字节的表的架构。 不建议更改严格模式，因为数据会被截断。 不支持更改 page_size。
+  **解决方法**：更新行大小大于 8126 字节的表的架构。 我们建议不要更改严格模式，因为更改后会截断数据。 不支持更改 page_size。

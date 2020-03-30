@@ -9,21 +9,21 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
 ms.openlocfilehash: 51e58de92f111c8854add613a299f2b8ccec0503
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79285235"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
-设备孪生是存储设备状态信息（例如元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每台设备保留一个设备孪生。 
+设备孪生是存储设备状态信息（例如元数据、配置和条件）的 JSON 文档**。 Azure IoT 中心为连接到 IoT 中心的每台设备保留一个设备孪生。 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 本文介绍：
 
-* 设备孪生的结构：标记、所需的属性和报告的属性。
+* 设备孪生的结构：标记、所需的属性和报告的属性******。
 * 设备应用和后端可在设备孪生上执行的操作。
 
 使用设备克隆可以：
@@ -115,7 +115,7 @@ ms.locfileid: "79285235"
 在上面的示例中，设备孪生包含设备应用报告的 `batteryLevel` 属性。 使用此属性可以根据上次报告的电池电量水平查询和操作设备。 其他示例包括让设备应用报告设备功能或连接选项。
 
 > [!NOTE]
-> 报告的属性如何简化解决方案后端获取属性最后一个已知值的方案。 如果解决方案后端需要以带时间戳的事件序列（例如时间序列）的形式处理设备遥测数据，可以使用[设备到云的消息](iot-hub-devguide-messages-d2c.md)。
+> 报告的属性如何简化解决方案后端获取属性最后一个已知值的方案。 如果解决方案后端需要以带时间戳事件序列（例如时间序列）的形式处理设备遥测数据，可以使用[设备到云的消息](iot-hub-devguide-messages-d2c.md)。
 
 ### <a name="desired-property-example"></a>所需属性示例
 
@@ -144,7 +144,7 @@ ms.locfileid: "79285235"
    }
    ```
 
-3. 解决方案后端可以通过[查询](iot-hub-devguide-query-language.md)设备孪生，跟踪多个设备上的配置操作结果。
+3. 解决方案后端可以通过[查询](iot-hub-devguide-query-language.md)设备孪生来跟踪跨多个设备的配置操作的结果。
 
 > [!NOTE]
 > 为便于阅读，上述代码片段示例经过优化，演示了为设备配置及其状态进行编码的一种方式。 IoT 中心不会对设备克隆中的所需属性和报告属性施加特定的架构。
@@ -182,7 +182,7 @@ ms.locfileid: "79285235"
 
   - 属性
 
-    | 名称 | 值 |
+    | “属性” | “值” |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  发送通知的时间 |
@@ -219,7 +219,7 @@ ms.locfileid: "79285235"
     }
     ```
 
-上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要**控制对 IoT 中心的访问**中定义的 [ServiceConnect](iot-hub-devguide-security.md) 权限。
+上述所有操作均支持[乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)中定义的 **ServiceConnect** 权限。
 
 除了上述操作以外，解决方案后端还可以：
 
@@ -231,13 +231,13 @@ ms.locfileid: "79285235"
 
 设备应用使用以下原子操作对设备克隆执行操作：
 
-* **检索设备克隆**。 此操作返回当前连接的设备的设备克隆文档（包括所需的系统属性和报告的系统属性）。 （标记对设备应用不可见。）
+* **检索设备克隆**。 此操作返回当前连接的设备的设备孪生文档（包括所需的系统属性和报告的系统属性）。 （标记对设备应用不可见。）
 
 * **部分更新报告属性**。 使用此操作可以部分更新当前连接的设备的报告属性。 此操作使用的 JSON 更新格式与解决方案后端用于部分更新所需属性的格式相同。
 
 * **观察所需属性**。 当前连接的设备可以选择在所需属性发生更新时接收通知。 设备收到的更新格式与解决方案后端执行的更新格式相同（部分或完全替换）。
 
-上述所有操作都需要**控制对 IoT 中心的访问**中定义的 [DeviceConnect](iot-hub-devguide-security.md) 权限。
+上述所有操作都需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)中定义的 **DeviceConnect** 权限。
 
 借助 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md)，可通过多种语言和平台轻松使用上述操作。 有关用于同步所需属性的 IoT 中心基元的详细信息，请参阅[设备重新连接流](iot-hub-devguide-device-twins.md#device-reconnection-flow)。
 
@@ -245,15 +245,15 @@ ms.locfileid: "79285235"
 
 标记、所需的属性和报告的属性是具有以下限制的 JSON 对象：
 
-* **键**： JSON 对象中的所有键都是 utf-8 编码、区分大小写和最大为 1 KB。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
+* **键**：JSON 对象中的所有键都是 UTF-8 编码的、区分大小写且长度高达 1 KB 的。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
 
-* **值**： json 对象中的所有值可以是以下 json 类型：布尔值、数字、字符串、对象。 不允许数组。
+* **值**：JSON 对象中的所有值都可以具有以下 JSON 类型：布尔、数字、字符串、对象。 不允许数组。
 
-    * 整数的最小值可为-4503599627370496，最大值为4503599627370495。
+    * 整数的最小值为 -4503599627370496，最大值为 4503599627370495。
 
-    * 字符串值是 UTF-8 编码的，最大长度为 4 KB。
+    * 字符串值为 UTF-8 编码，最大长度可达 4 KB。
 
-* **深度**：标记、所需属性和报告属性中 JSON 对象的最大深度为10。 例如，以下对象是有效的：
+* **深度**：标记、所需属性和报告属性中的 JSON 对象的最大深度为 10。 例如，以下对象有效：
 
    ```json
    {
@@ -287,21 +287,21 @@ ms.locfileid: "79285235"
 
 ## <a name="device-twin-size"></a>设备克隆的大小
 
-IoT 中心对 `tags`的值强制使用 8 KB 的大小限制，并对 `properties/desired` 和 `properties/reported`的值限制每个大小的大小限制为 32 KB。 这些总计与只读元素（例如 `$etag`、`$version`和 `$metadata/$lastUpdated`）不相容。
+IoT 中心对 `tags` 的值实施 8 KB 大小限制，对 `properties/desired` 和 `properties/reported` 的值分别实施 32 KB 大小限制。 这些总计不包括只读元素，如`$etag`和`$version`。 `$metadata/$lastUpdated`
 
-克隆大小的计算方式如下：
+双大小按如下方式计算：
 
-* 对于 JSON 文档中的每个属性，IoT 中心累积计算并添加属性的键和值的长度。
+* 对于 JSON 文档中的每个属性，IoT 中心会累积计算并添加属性的键和值的长度。
 
 * 属性键被视为 UTF8 编码的字符串。
 
-* 简单属性值被视为 UTF8 编码的字符串、数字值（8字节）或布尔值（4字节）。
+* 简单属性值被视为 UTF8 编码字符串、数值（8 字节）或布尔值 （4 字节）。
 
-* UTF8 编码字符串的大小通过对所有字符进行计数计算，不包括 UNICODE 控制字符（段 C0 和 C1）。
+* UTF8 编码字符串的大小是通过计算所有字符（不包括 UNICODE 控制字符（段 C0 和 C1）来计算的。
 
-* 复杂属性值（嵌套对象）根据它们所包含的属性键和属性值的聚合大小进行计算。
+* 复杂属性值（嵌套对象）是根据属性键及其包含的属性值的聚合大小计算的。
 
-IoT 中心拒绝所有操作，这些操作会增加 `tags`、`properties/desired`或 `properties/reported` 超过限制的文档大小。
+IoT 中心以错误拒绝所有将 增大`tags`的 、`properties/desired`或`properties/reported`文档超出限制的文档大小的操作。
 
 ## <a name="device-twin-metadata"></a>设备克隆的元数据
 
@@ -359,7 +359,7 @@ IoT 中心保留设备孪生所需属性和报告属性中每个 JSON 对象的�
 ## <a name="optimistic-concurrency"></a>乐观并发
 
 标记、所需的属性和报告的属性都支持乐观并发。
-标记包含一个符合 [RFC7232](https://tools.ietf.org/html/rfc7232) 规范的 ETag，它是标记的 JSON 表示形式。 可在解决方案后端上的条件更新操作中使用 ETag 来确保一致性。
+标记具有一个 ETag，如[RFC7232](https://tools.ietf.org/html/rfc7232)，表示标记的 JSON 表示形式。 可在解决方案后端上的条件更新操作中使用 ETag 来确保一致性。
 
 设备孪生所需的属性和报告的属性不包含 ETag，但包含一个保证可递增的 `$version` 值。 更新方可以使用类似于 ETag 的版本来强制实施更新一致性。 例如，报告的属性的设备应用，或者所需的属性的解决方案后端。
 
@@ -385,11 +385,11 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 * [IoT 中心终结点](iot-hub-devguide-endpoints.md)一文介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
 
-* [限制和配额](iot-hub-devguide-quotas-throttling.md)一文介绍了适用于 IoT 中心服务的配额，以及使用服务时应会碰到的限制行为。
+* [限制和配额](iot-hub-devguide-quotas-throttling.md)一文介绍了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
 
-* [Azure IoT 设备和服务 SDK](iot-hub-devguide-sdks.md) 一文列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
+* [Azure IoT 设备和服务 SDK](iot-hub-devguide-sdks.md)一文列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
 
-* [设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)一文介绍了可用于从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
+* [设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)一文中介绍了可用于从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
 
 * [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)一文提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
@@ -399,10 +399,10 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 * [在 IoT 中心内了解并使用模块孪生](iot-hub-devguide-module-twins.md)
 * [在设备上调用直接方法](iot-hub-devguide-direct-methods.md)
-* [在多个设备上计划作业](iot-hub-devguide-jobs.md)
+* [在多台设备上安排作业](iot-hub-devguide-jobs.md)
 
 要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 
-* [如何使用设备孪生](iot-hub-node-node-twin-getstarted.md)
-* [如何使用设备孪生属性](tutorial-device-twins.md)
-* [使用适用于 VS Code 的 Azure IoT 工具进行设备管理](iot-hub-device-management-iot-toolkit.md)
+* [如何使用设备克隆](iot-hub-node-node-twin-getstarted.md)
+* [如何使用设备克隆属性](tutorial-device-twins.md)
+* [使用用于 VS Code 的 Azure IoT Tools 进行设备管理](iot-hub-device-management-iot-toolkit.md)

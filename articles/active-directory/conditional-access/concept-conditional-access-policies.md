@@ -1,42 +1,42 @@
 ---
-title: 构建条件访问策略-Azure Active Directory
-description: 可用于生成条件性访问策略的所有选项及其含义是什么？
+title: 生成条件访问策略 - Azure Active Directory
+description: 生成条件访问策略可使用的所有选项有哪些？它们的含义是什么？
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d2ebcc885b4018f4d9c3ff1b525ffc19b1abdda
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 907ad8705742e4b2e38b13c3c675ebd333bd27d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671932"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295327"
 ---
-# <a name="building-a-conditional-access-policy"></a>生成条件性访问策略
+# <a name="building-a-conditional-access-policy"></a>生成条件访问策略
 
-如条件性[访问](overview.md)一文中所述，条件性访问策略是**赋值**和**访问控制**的 if-then 语句。 条件性访问策略将信号组合在一起，以做出决策，并强制实施组织策略。
+如[什么是条件访问](overview.md)一文中所述，条件访问策略是一个关于**分配**和**访问控制**的 if-then 语句。 条件访问策略可统合信号，做出决策，并实施组织策略。
 
 组织如何创建这些策略？ 需要执行哪些操作？
 
-![条件性访问（信号 + 决策 + 强制 = 策略）](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
+![条件访问（信号 + 决策 + 实施 = 策略）](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
 
 ## <a name="assignments"></a>分配
 
-"分配" 部分控制条件访问策略的人员、内容和位置。
+分配部分用于控制条件访问策略的对象、内容和位置。
 
 ### <a name="users-and-groups"></a>用户和组
 
-[用户和组](concept-conditional-access-users-groups.md)分配策略将包括或排除的用户。 此分配可以包括所有用户、特定的用户组、目录角色或外部来宾用户。 
+[用户和组](concept-conditional-access-users-groups.md)分配策略将包含或排除谁。 该分配可以包括所有用户、特定的用户组、目录角色或外部来宾用户。 
 
 ### <a name="cloud-apps-or-actions"></a>云应用或操作
 
-[云应用或操作](concept-conditional-access-cloud-apps.md)可以包括或排除将服从策略的云应用程序或用户操作。
+[云应用或操作](concept-conditional-access-cloud-apps.md)可以包括或排除受该政策约束的云应用程序或用户操作。
 
 ### <a name="conditions"></a>条件
 
@@ -44,93 +44,93 @@ ms.locfileid: "78671932"
 
 #### <a name="sign-in-risk"></a>登录风险
 
-对于具有[Azure AD Identity Protection](../identity-protection/overview.md)的组织而言，生成的风险检测可能会影响你的条件访问策略。
+对于具有[Azure AD 标识保护](../identity-protection/overview.md)的组织，在那里生成的风险检测可能会影响条件访问策略。
 
 #### <a name="device-platforms"></a>设备平台
 
-具有多个设备操作系统平台的组织可能希望在不同的平台上强制实施特定策略。 
+具有多个设备操作系统平台的组织可能希望在不同的平台上实施特定的策略。 
 
-用于计算设备平台的信息来自未经验证的源，如可以更改的用户代理字符串。
+用于计算设备平台的信息来自未经验证的源，例如可以更改的用户代理字符串。
 
 #### <a name="locations"></a>位置
 
-位置数据由 IP 地理位置数据提供。 管理员可以选择定义位置，并选择将某些位置标记为 "受信任"，如其组织的网络位置。
+位置数据由 IP 地理位置数据提供。 管理员可以选择定义位置，并选择将某些位置（例如其组织的网络位置）标记为受信任位置。
 
 #### <a name="client-apps"></a>客户端应用
 
 默认情况下，条件访问策略适用于支持新式身份验证的浏览器应用、移动应用和桌面客户端。 
 
-此分配条件允许条件性访问策略针对不使用新式身份验证的特定客户端应用程序。 这些应用程序包括 Exchange ActiveSync 客户端、不使用新式身份验证的旧版 Office 应用程序，以及 IMAP、MAPI、POP 和 SMTP 等邮件协议。
+此分配条件允许条件访问策略将不使用新式身份验证的特定客户端应用程序作为目标。 这些应用程序包括 Exchange ActiveSync 客户端、不使用新式身份验证的旧版 Office 应用程序，以及 IMAP、MAPI、POP 和 SMTP 等邮件协议。
 
 #### <a name="device-state"></a>设备状态
 
-此控件用于排除混合 Azure AD 的设备或在 Intune 中标记为符合的设备。 可以通过此排除来阻止非托管设备。 
+此控制条件用于排除已加入混合 Azure AD 或在 Intune 中标记为合规的设备。 可以通过此排除来阻止非托管设备。 
 
 ## <a name="access-controls"></a>访问控制
 
-条件性访问策略的 "访问控制" 部分控制如何强制实施策略。
+条件访问策略的访问控制部分用于控制策略的实施方式。
 
 ### <a name="grant"></a>授予
 
-[Grant](concept-conditional-access-grant.md)为管理员提供了一种策略实施方法，可在其中阻止或授予访问权限。
+[授予](concept-conditional-access-grant.md)为管理员提供了一种策略实施方法，他们可以阻止或授予访问权限。
 
 #### <a name="block-access"></a>阻止访问
 
-阻止访问只会阻止在指定分配下进行访问。 Block 控件的功能非常强大，应年长相关知识。
+阻止访问只会阻止指定分配下的访问。 阻止控制的功能十分强大，应对其有一定了解后再使用。
 
 #### <a name="grant-access"></a>授予访问权限
 
-Grant 控件可以触发一个或多个控件的强制执行。 
+授予控制可以触发一项或多项控制的实施。 
 
-- 需要多重身份验证（Azure 多重身份验证）
-- 要求设备标记为符合（Intune）
+- 要求进行多重身份验证（Azure 多重身份验证）
+- 要求将设备标记为合规 (Intune)
 - 要求使用加入混合 Azure AD 的设备
 - 需要批准的客户端应用
 - 需要应用保护策略
 
-管理员可以选择要求使用以下选项之一之前的控件或所有选定的控件。 多个控件的默认值为 "全部需要"。
+管理员可以使用以下选项选择是需要上述控制之一还是所有已选控制。 多项控制的默认值为全部需要。
 
-- 要求所有选定控件（控件和控件）
-- 需要一个选定控件（控件或控件）
+- 需要所有已选控制（控制和控制）
+- 需要某一已选控制（控制或控制）
 
 ### <a name="session"></a>会话
 
-[会话控制](concept-conditional-access-session.md)可限制体验 
+[会话控件](concept-conditional-access-session.md)可以限制体验 
 
 - 使用应用所强制实施的限制
    - 目前仅适用于 Exchange Online 和 SharePoint Online。
-      - 传递设备信息，以允许控制授予完全访问权限或受限访问权限。
+      - 传递设备信息，以允许控制授予完全访问权限或受限访问权限的体验。
 - 使用条件访问应用控制
-   - 使用来自 Microsoft Cloud App Security 的信号执行如下操作： 
-      - 阻止对敏感文档进行下载、剪切、复制和打印。
-      - 监视风险会话行为。
-      - 要求对敏感文件进行标记。
+   - 使用 Microsoft Cloud App Security 发出的信号来执行以下操作： 
+      - 阻止下载、剪切、复制和打印敏感文档。
+      - 监视危险的会话行为。
+      - 需要标记敏感文件。
 - 登录频率
    - 能够更改新式身份验证的默认登录频率。
 - 持久性浏览器会话
-   - 允许用户在关闭并重新打开其浏览器窗口后保持登录。
+   - 可让用户在关闭再重新打开其浏览器窗口后保持登录状态。
 
 ## <a name="simple-policies"></a>简单策略
 
-条件性访问策略必须至少包含以下内容才能强制执行：
+条件访问策略必须至少包含以下内容才能实施：
 
 - 策略的**名称**。
 - **分配**
-   - 要向其应用策略的**用户和/或组**。
-   - 要向其应用策略的**云应用或操作**。
-- 访问控制
-   - **Grant**或**Block**控件
+   - 要应用策略的**用户和/或组**。
+   - 要应用策略的**云应用或操作**。
+- 访问控制****
+   - **授予**或**阻止**控制
 
-![空白条件性访问策略](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
+![空白条件访问策略](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
-本文[常见的条件性访问策略](concept-conditional-access-policy-common.md)包括一些我们认为对大多数组织有用的策略。
+文章["通用条件访问"策略](concept-conditional-access-policy-common.md)包括我们认为对大多数组织有用的一些策略。
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用条件性访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
+[使用条件访问"如果"工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 
 [规划基于云的 Azure 多重身份验证部署](../authentication/howto-mfa-getstarted.md)
 
-[用 Intune 管理设备符合性](/intune/device-compliance-get-started)
+[管理设备符合 Intune](/intune/device-compliance-get-started)
 
 [Microsoft Cloud App Security 和条件访问](/cloud-app-security/proxy-intro-aad)

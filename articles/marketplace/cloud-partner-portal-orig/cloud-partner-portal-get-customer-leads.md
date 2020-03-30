@@ -1,19 +1,18 @@
 ---
-title: 配置客户主管 |Azure Marketplace
+title: 配置客户潜在客户 |Azure 应用商店
 description: 在云合作伙伴门户中配置潜在顾客。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: 312e172321c25248f1b0801bdbccf71762319989
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 56012fb2a907a6db6f87554660ee36b99a3dcbf9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818814"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280314"
 ---
 <a name="get-customer-leads"></a>获取潜在客户
 ==================
@@ -64,7 +63,7 @@ ms.locfileid: "73818814"
 
 ### <a name="lead-source"></a>查找源
 
-潜在顾客源的格式为**源**-**操作** |  **套餐**
+潜在顾客源的格式是**源**-**操作** |  **优惠**
 
 **源**："AzureMarketplace"、"AzurePortal"、"TestDrive" 和 "AppSource (SPZA)"
 
@@ -75,9 +74,9 @@ ms.locfileid: "73818814"
 - "Create" - 此操作只能在 Azure 门户中执行，它是在客户通过其帐户购买你的套餐时生成的。
 - "StartTestDrive" - 此操作仅适用于体验版，它是在客户启动其体验版时生成的。
 
-**套餐**
+**提供**
 
-下面的示例显示了分配给发布服务器和特定产品/服务的唯一标识符： r77-10sg-byol、bitnami 和 openedxcypress。
+以下示例显示分配给发布者的唯一标识符和特定产品/服务：检查点.check-point-r77-10sg-byol、bitnami.打开xcypress和 docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a。
 
 
 ### <a name="customer-info"></a>客户信息
@@ -116,4 +115,4 @@ ms.locfileid: "73818814"
 <a name="what-next"></a>接下来要做什么？
 ----------
 
-在技术性设置到位后，应当将这些销售线索纳入到当前的销售和市场营销策略以及操作流程中。 我们非常希望更好地了解整个销售流程并希望更紧密地与你合作来提供高质量的销售线索和足够的数据来助你成功。 我们欢迎你提供有关如何优化发送给销售线索，以及如何使用额外的数据对其进行增强的反馈，以便帮助客户取得成功。 如果想要[提供反馈](mailto:AzureMarketOnboard@microsoft.com)和建议来使销售团队借助市场潜在顾客取得更大的成功，请告知我们。
+在技术性设置到位后，应当将这些销售线索纳入到当前的销售和市场营销策略以及操作流程中。 我们非常希望更好地了解整个销售流程并希望更紧密地与你合作来提供高质量的销售线索和足够的数据来助你成功。 我们欢迎你提供有关如何优化发送给销售线索，以及如何使用额外的数据对其进行增强的反馈，以便帮助客户取得成功。 如果您有兴趣[提供反馈](mailto:AzureMarketOnboard@microsoft.com)和建议，使您的销售团队在市场线索方面更加成功，请告诉我们。
