@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: 04df30c2a97e865d23999df26768b38cb38be607
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68855560"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>使用 Azure Data Lake Storage Gen2 URI
@@ -31,9 +31,9 @@ Data Lake Storage Gen2 的 URI 语法依赖于存储帐户是否设置为将 Dat
 
 2. **文件系统**：保存文件和文件夹的父位置。 这与 Azure 存储 Blob 服务中的“容器”相同。
 
-3. **帐户名**：创建期间为存储帐户提供的名称。
+3. **帐户名称**：创建期间为存储帐户提供的名称。
 
-4. **路径**：目录结构的正斜杠分隔 (`/`) 表示形式。
+4. **路径**：目录结构采用正斜杠分隔 (`/`) 表示形式。
 
 5. **文件名**：单个文件的名称。 如果对目录寻址，则此参数是可选的。
 
@@ -41,9 +41,9 @@ Data Lake Storage Gen2 的 URI 语法依赖于存储帐户是否设置为将 Dat
 
 <pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
 
-1. **路径**：目录结构的正斜杠分隔 (`/`) 表示形式。
+1. **路径**：目录结构采用正斜杠分隔 (`/`) 表示形式。
 
-2. **文件名**：单个文件的名称。
+2. **文件名称**：单个文件的名称。
 
 
 ## <a name="next-steps"></a>后续步骤

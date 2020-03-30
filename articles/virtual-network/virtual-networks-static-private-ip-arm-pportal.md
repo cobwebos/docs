@@ -1,5 +1,5 @@
 ---
-title: 为 Vm 配置专用 IP 地址-Azure 门户
+title: 为 VM 配置专用 IP 地址 - Azure 门户
 description: 了解如何使用 Azure 门户为虚拟机配置专用 IP 地址。
 services: virtual-network
 documentationcenter: na
@@ -13,90 +13,121 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/04/2016
+ms.date: 02/07/2020
 ms.author: kumud
-ms.openlocfilehash: b1019b15463a03282c5d1bd8f0a878433d7f488e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b50875105696dc5c556e2a4a9e756078cf995327
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199557"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060542"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>使用 Azure 门户为虚拟机配置专用 IP 地址
+# <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>使用 Azure 门户为 VM 配置专用 IP 地址
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-需要已创建一个简单的环境才能执行以下示例步骤。 若要运行本文档中所显示的步骤，请先生成[创建虚拟网络](quick-create-portal.md) 中所述的测试环境。
+以下示例步骤期望已创建一个简单的环境。 如果要在本文档中显示的步骤中运行这些步骤，请先[创建虚拟网络](quick-create-portal.md#create-a-virtual-network)。 但是，在步骤 3 中，改用这些值：
 
-## <a name="how-to-create-a-vm-for-testing-static-private-ip-addresses"></a>如何创建用于测试静态专用 IP 地址的 VM
-在 Resource Manager 部署模型中创建 VM 时，不能使用 Azure 门户设置静态专用 IP 地址。 必须先创建 VM，然后再将其专用 IP 设置为静态。
+| 设置 | “值” |
+| ------- | ----- |
+| “属性” | *TestVNet* |
+| 地址空间 | *192.168.0.0/16* |
+| 资源组 | **TestRG（** 如有必要，选择 **"创建新**"以创建它） |
+| 子网 - 名称 | *前端* |
+| 子网 - 地址范围 | *192.168.1.0/24* |
 
-若要在名为 TestVNet 的 VNet 的前端子网中创建名为 DNS01 的 VM，请按以下步骤操作：
+## <a name="create-a-vm-for-testing-static-private-ip-addresses"></a>创建用于测试静态专用 IP 地址的 VM
+在资源管理器部署模式下创建 VM 时，无法使用 Azure 门户设置静态专用 IP 地址。 相反，您首先创建 VM。 然后，您可以将其专用 IP 设置为静态。
 
-1. 在浏览器中导航到 https://portal.azure.com，并根据需要使用 Azure 帐户登录。
-2. 单击“创建资源” **“计算”** “Windows Server 2012 R2 数据中心”，确认“选择部署模型”列表已显示“资源管理器”，然后单击“创建”，如下图所示 >  > 。
-   
-    ![在 Azure 门户中创建 VM](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
-3. 在“基本信息”窗格中，输入要创建的 VM 的名称（在此方案中为DNS01）、本地管理员帐户和密码，如下图所示。
-   
-    ![“基本信息”窗格](./media/virtual-networks-static-ip-arm-pportal/figure02.png)
-4. 请确保所选“位置”为“美国中部”，然后在“资源组”下单击“选择现有项”，接着依次单击“资源组”、“TestRG””和“确定”。
-   
-    ![“基本信息”窗格](./media/virtual-networks-static-ip-arm-pportal/figure03.png)
-5. 在“选择大小”窗格中，选择“A1 标准”，然后单击“选择”。
-   
-    ![选择“大小”窗格](./media/virtual-networks-static-ip-arm-pportal/figure04.png)    
-6. 在“设置”窗格中，确保属性设置为以下值，然后单击“确定”。
-   
-    -“存储帐户”：*vnetstorage*
-   
-   * **网络**：*TestVNet*
-   * **子网**：*FrontEnd*
-     
-     ![选择“大小”窗格](./media/virtual-networks-static-ip-arm-pportal/figure05.png)     
-7. 在“摘要”窗格中，单击“确定”。 请注意，以下磁贴会显示在仪表板中。
-   
-    ![在 Azure 门户中创建 VM](./media/virtual-networks-static-ip-arm-pportal/figure06.png)
+要在名为*TestVNet*的虚拟网络*的 FrontEnd*子网中创建名为*DNS01*的 VM，请按照以下步骤操作：
 
-我们建议，除非有必要（例如，[为 Windows VM 分配多个 IP 地址](virtual-network-multiple-ip-addresses-portal.md)时），否则不要以静态方式在 VM 的操作系统中分配已分配给 Azure 虚拟机的专用 IP。 如果确实需要在操作系统中手动设置该专用 IP 地址，请确保它与分配给 Azure [网络接口](virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](virtual-network-network-interface-addresses.md#private)设置。 切勿在虚拟机的操作系统中手动分配已分配给 Azure 虚拟机的公共 IP 地址。
+1. 在[Azure 门户](https://portal.azure.com)菜单中，选择 **"创建资源**"。
 
-## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>如何检索 VM 的静态专用 IP 地址信息
-若要查看使用以上步骤创建的 VM 的静态专用 IP 地址信息，请执行以下步骤。
+    ![创建资源 Azure 门户](./media/virtual-networks-static-ip-arm-pportal/create-a-resource.png)
+2. 选择**计算** > **虚拟机**。
 
-1. 在 Azure 门户中，单击“全部浏览” **“虚拟机”** “DNS01” > “所有设置” **“网络接口”，然后单击所列出的唯一网络接口** >  >  > 。
+    ![创建 VM、Azure 门户](./media/virtual-networks-static-ip-arm-pportal/compute-virtual-machine.png)
+3. 在 **"基础知识"** 中，指定下表中所述的项的值。 然后选择 **"&nbsp;下&nbsp;一步：磁盘"，** 然后**选择"下一个&nbsp;：&nbsp;网络**"。
+
+    | Item | “值” |
+    | --- | --- |
+    | **订阅** | 您当前的订阅 |
+    | **资源组** | **TestRG（** 从下拉列表中选择） |
+    | **虚拟机名称** | *DNS01* |
+    | **地区** | **（美国）美国东部** |
+    | **映像** | **视窗服务器 2019 数据中心** |
+    | **大小** | **B1ls**的**VM 大小**，**Offering****提供标准** |
+    | **用户** | 管理员帐户的用户名 |
+    | **密码** | 管理员帐户用户名的密码 |
+    | **确认密码** | 再次使用密码 |
+
+    ![基础知识选项卡，创建虚拟机，Azure 门户](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-basics.png)
+4. 在 **"网络"** 中，指定下表中所述项的值，然后选择 **"下一步**"。
+
+    | Item | “值” |
+    | --- | --- |
+    | **虚拟网络** | **TestVNet** |
+    | **子** | **前端** |
+
+    ![网络选项卡，创建虚拟机，Azure 门户](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-networking.png)
+5. 在 **"管理**"下，**在诊断存储帐户**下，选择**vnetstorage**。 如果该存储帐户未显示在列表中，请选择"**创建新**"，指定*vnetstorage***的名称**，然后选择 **"确定**"。 最后，选择 **"&nbsp;+&nbsp;审阅创建**"。
+
+    ![管理选项卡，创建虚拟机，Azure 门户](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-management.png)
+6. 在 **"审阅 " 创建**中，查看概览信息，然后选择 **"创建**"。
+
+    ![查看 + 创建选项卡、创建虚拟机、Azure 门户](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-review-create.png)
+
+创建 VM 后将显示以下消息。
+
+![部署完成消息，创建虚拟机，Azure 门户](./media/virtual-networks-static-ip-arm-pportal/deployment-is-complete.png)
+
+## <a name="retrieve-private-ip-address-information-for-a-vm"></a>检索 VM 的专用 IP 地址信息
+要查看新 VM 的专用 IP 地址信息，请处理：
+
+1. 转到[Azure 门户](https://portal.azure.com)以查找 VM。 搜索并选择**虚拟机**。
+
+    ![虚拟机、搜索框、Azure 门户](./media/virtual-networks-static-ip-arm-pportal/search-box-virtual-machines.png)
+
+2. 选择新 VM 的名称 （**DNS01**）。
+
+    ![虚拟机列表，Azure 门户](./media/virtual-networks-static-ip-arm-pportal/virtual-machine-list.png)
+
+3. 选择 **"网络**"，然后选择列出的唯一网络接口。
+
+    ![网络接口、网络、虚拟机、Azure 门户](./media/virtual-networks-static-ip-arm-pportal/networking-network-interface.png)
+
+4. 选择**IP 配置**，然后选择表中列出的 IP 配置。
+
+    ![IP 配置、网络接口、网络、虚拟机、Azure 门户](./media/virtual-networks-static-ip-arm-pportal/network-interface-ip-configurations.png)
+
+5. 在**专用 IP 地址设置**中，在**TestVNet/FrontEnd**虚拟网络/子网下，请注意**分配**值（**动态**或**静态**）和**IP 地址**。
+
+    ![动态或静态分配、旧的专用 IP 地址设置、IP 配置、网络接口、网络、虚拟机、Azure 门户](./media/virtual-networks-static-ip-arm-pportal/private-ip-address-settings-old.png)
+
+## <a name="add-a-static-private-ip-address-to-an-existing-vm"></a>将静态专用 IP 地址添加到现有 VM
+要向新 VM 添加静态专用 IP 地址，请处理：
+
+1. 在 IP 配置页中，将专用 IP 地址的分配设置为**静态**。
+2. 将专用**IP 地址**更改为*192.168.1.101*，然后选择 **"保存**"。
    
-    ![部署 VM 磁贴](./media/virtual-networks-static-ip-arm-pportal/figure07.png)
-2. 在“网络接口”窗格中，单击“所有设置” **“IP 地址”并几下“分配”和“IP 地址”值** > 。
-   
-    ![部署 VM 磁贴](./media/virtual-networks-static-ip-arm-pportal/figure08.png)
-
-## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>如何将静态专用 IP 地址添加到现有 VM
-要将静态专用 IP 地址添加到使用上面步骤创建的 VM 中，请按照以下步骤操作：
-
-1. 从上面所示的“IP 地址”窗格中，单击“分配”下的“静态”。
-2. 键入 *192.168.1.101* 作为“**IP 地址**”，并单击“**保存**”。
-   
-    ![在 Azure 门户中创建 VM](./media/virtual-networks-static-ip-arm-pportal/figure09.png)
+    ![动态或静态分配、新的专用 IP 地址设置、IP 配置、网络接口、网络、虚拟机、Azure 门户](./media/virtual-networks-static-ip-arm-pportal/private-ip-address-settings-new.png)
 
 > [!NOTE]
-> 单击“保存”后，如果注意到分配仍设置为“动态”，则表示你键入的 IP 地址已被使用。 请尝试其他 IP 地址。
-> 
-> 
+> 如果在选择 **"保存"** 后注意到分配仍设置为 **"动态**"，则键入的 IP 地址已在使用中。 请尝试另一个 IP 地址。
 
-我们建议，除非有必要（例如，[为 Windows VM 分配多个 IP 地址](virtual-network-multiple-ip-addresses-portal.md)时），否则不要以静态方式在 VM 的操作系统中分配已分配给 Azure 虚拟机的专用 IP。 如果确实需要在操作系统中手动设置该专用 IP 地址，请确保它与分配给 Azure [网络接口](virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](virtual-network-network-interface-addresses.md#private)设置。 切勿在虚拟机的操作系统中手动分配已分配给 Azure 虚拟机的公共 IP 地址。
+## <a name="remove-a-static-private-ip-address-from-a-vm"></a>从 VM 中删除静态专用 IP 地址
+要从 VM 中删除静态专用 IP 地址，请：
 
-## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>如何从 VM 中删除静态专用 IP 地址
-若要从上面创建的 VM 中删除静态专用 IP 地址，请完成以下步骤：
-
-从上面所示的“IP 地址”窗格中，单击“分配”下的“动态”，然后单击“保存”。
+在 IP 配置页中，将专用 IP 地址的分配设置为**动态**，然后选择 **"保存**"。
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>在操作系统中设置 IP 地址
 
-我们建议，除非有必要（例如，[为 Windows VM 分配多个 IP 地址](virtual-network-multiple-ip-addresses-portal.md)时），否则不要以静态方式在 VM 的操作系统中分配已分配给 Azure 虚拟机的专用 IP。 如果确实需要在操作系统中手动设置该专用 IP 地址，请确保它与分配给 Azure [网络接口](virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](virtual-network-network-interface-addresses.md#private)设置。 切勿在虚拟机的操作系统中手动分配已分配给 Azure 虚拟机的公共 IP 地址。
+在 VM 的操作系统中，不应静态地分配分配给 Azure VM 的*专用*IP。 仅在必要时（如[将许多 IP 地址分配给 VM](virtual-network-multiple-ip-addresses-portal.md)时）进行私有 IP 的静态分配。 如果在操作系统中手动设置专用 IP 地址，请确保它与分配给 Azure[网络接口](virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址匹配。 否则，您可能会失去与 VM 的连接。 详细了解[专用 IP 地址](virtual-network-network-interface-addresses.md#private)设置。
+
+此外，绝不应手动分配分配给虚拟机内 Azure 虚拟机*的公共*IP 地址。
 
 ## <a name="next-steps"></a>后续步骤
 
 了解如何管理 [IP 地址设置](virtual-network-network-interface-addresses.md)。
-

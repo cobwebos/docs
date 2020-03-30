@@ -1,6 +1,6 @@
 ---
-title: 完成 & 应用程序组的访问评审-Azure AD
-description: 了解如何在 Azure Active Directory 访问评审中完成组成员或应用程序访问的访问评审。
+title: 完成对应用程序&组的访问审查 - Azure AD
+description: 了解如何在 Azure Active Directory 访问评审中完成对组成员或应用程序访问的访问评审。
 services: active-directory
 documentationcenter: ''
 author: msaburnley
@@ -17,70 +17,70 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 266234f2872cfe99509d564c9460bfba4a0e2bf2
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75932548"
 ---
-# <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中完成对组和应用程序的访问评审
+# <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问审核中完成对组和应用程序的访问审查
 
-作为管理员，你可以[创建组、应用程序和审阅者的访问评审](create-access-review.md)，以[执行访问评审](perform-access-review.md)。 本文介绍如何查看访问评审的结果并应用结果。
+你以管理员身份[创建对组或应用程序的访问评审](create-access-review.md)，审阅者[执行访问评审](perform-access-review.md)。 本文介绍如何查看访问评审的结果并应用结果。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Azure AD Premium P2
-- 全局管理员、用户管理员、安全管理员或安全读者
+- 全局管理员、用户管理员、安全管理员或安全读取者
 
 有关详细信息，请参阅[许可证要求](access-reviews-overview.md#license-requirements)。
 
 ## <a name="view-an-access-review"></a>查看访问评审
 
-您可以在评审者完成评审后跟踪进度。
+审阅者完成评审时，你可以跟踪进度。
 
-1. 登录到 Azure 门户并打开 "[标识管理" 页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
+1. 登录到 Azure 门户并打开[“标识治理”页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
 
-1. 在左侧菜单中，单击 "**访问评审**"。
+1. 在左侧菜单中，单击“访问评审”。****
 
-1. 在列表中，单击 "访问评审"。
+1. 在列表中，单击“访问评审”。
 
-    若要查看一系列访问评审，请导航到 "访问评审"，并在计划的评审中找到即将发生的情况。
+    若要查看一系列访问评审，请导航到访问评审，此时会在“计划的评审”中找到即将进行的评审。
 
-    在 "**概述**" 页上，可以查看进度。 在评审完成之前，不会更改目录中的访问权限。
+    在“概览”页上可以看到进度。**** 在评审完成之前，目录中的任何访问权限都不会更改。
 
     ![访问评审进度](./media/complete-access-review/overview-progress.png)
 
-1. 如果要在访问评审结束之前停止访问评审，请单击 "**停止**" 按钮。
+1. 如果要在某个访问评审达到计划的结束日期之前停止它，请单击“停止”按钮。****
 
-    当停止审阅时，审阅者将无法再给出响应。 停止后将无法重新开始评审。
+    停止某个评审后，审阅者将再也不能提供回复。 停止后将无法重新开始评审。
 
-1. 如果你不再想要访问评审，可以通过单击 "**删除**" 按钮将其删除。
+1. 如果不再关注此访问评审，可以单击“删除”按钮将其删除。****
 
 ## <a name="apply-the-changes"></a>应用更改
 
-如果已启用 "**自动将结果应用于资源**" 并基于您在**完成设置**中所做的选择，则将在评审结束日期之后或在您手动停止审阅时执行自动应用。
+如果“将结果自动应用到资源”选项已启用，并且该选项是基于你在“完成后操作”设置中所做的选择，则自动应用会在审阅者的结束日期之后执行，或在你手动停止评审后执行。********
 
-如果未为审核启用 "**自动应用结果**"，请单击 "**应用**" 以手动应用更改。 如果在评审中拒绝了某个用户的访问权限，则当你单击 "**应用**" 时，Azure AD 会删除其成员身份或应用程序分配。
+如果未为评审启用“将结果自动应用到资源”，请单击“应用”，手动应用所做的更改。******** 如果在评审中拒绝了某个用户的访问权限，则当你单击“应用”时，Azure AD 会删除该用户的成员资格或应用程序分配。****
 
 ![应用访问评审更改](./media/complete-access-review/apply-changes.png)
 
-该评审的状态将从 "**已完成**" 更改为 "已完成"，如 **"应用" 和 "** 最终 **"。** 几分钟后，应会看到被拒绝的用户（如果有）已从组成员身份或应用程序分配中删除。
+评审状态将从“已完成”变为各种中间状态（例如“正在应用”），并最终变为“结果已应用”状态。************ 几分钟后，应会看到被拒绝的用户（如果有）已从组成员身份或应用程序分配中删除。
 
-为评审配置自动应用或者选择“应用”不会影响源自本地目录的组，也不会影响动态组。 若要更改源自本地的组，请下载结果，并将这些更改应用到该目录中组的表示形式。
+为评审配置自动应用或者选择“应用”不会影响源自本地目录的组，也不会影响动态组****。 若要更改源自本地的组，请下载结果，并将这些更改应用到该目录中组的表示形式。
 
 ## <a name="retrieve-the-results"></a>检索结果
 
-若要查看一次性访问评审的结果，请单击 "**结果**" 页。 若要只查看用户的访问权限，请在 "搜索" 框中，键入查看其访问权限的用户的显示名称或用户主体名称。
+若要查看一次性访问评审的结果，请单击“结果”页。**** 若只查看某个用户的访问，请在“搜索”框中键入其访问已进行评审的用户的显示名称或用户主体名称。
 
-![检索访问评审的结果](./media/complete-access-review/retrieve-results.png)
+![检索访问评审结果](./media/complete-access-review/retrieve-results.png)
 
-若要查看定期活动访问评审的进度，请单击 "**结果**" 页。
+若要查看定期进行的活动访问评审的进度，请单击“结果”**** 页面。
 
-若要查看定期访问评审的已完成实例的结果，请单击 "**查看历史记录**"，然后根据实例的开始日期和结束日期从已完成的访问评审实例列表中选择特定实例。 可以从 "**结果**" 页获取此实例的结果。
+若要查看已完成的定期访问评审实例的结果，请单击“评审历史记录”****，然后根据实例的开始日期和结束日期，从已完成的访问评审实例列表中选择特定实例。 该实例的结果可以从“结果”**** 页面获得。
 
-若要检索访问评审的所有结果，请单击 "**下载**" 按钮。 可以在 Excel 中或在可打开 UTF-8 编码 CSV 文件的其他程序中查看生成的 CSV 文件。
+若要检索某个访问评审的所有结果，请单击“下载”**** 按钮。 可以在 Excel 中或在可打开 UTF-8 编码 CSV 文件的其他程序中查看生成的 CSV 文件。
 
 ## <a name="remove-users-from-an-access-review"></a>从访问评审中删除用户
 

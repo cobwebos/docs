@@ -1,6 +1,6 @@
 ---
-title: 用于 IoT 设备的 Azure 安全中心调查指南 |Microsoft Docs
-description: 本操作方法指南介绍了如何使用 Azure 安全中心进行 IoT 来调查可疑 IoT 设备的使用 Log Analytics。
+title: 用于物联网设备的 Azure 安全中心调查指南*微软文档
+description: 如何指导如何使用 IoT Azure 安全中心使用日志分析调查可疑的 IoT 设备。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 8d2fe8d63c7ece6f3b3426d8fc5a3454a61826f8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68596249"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>调查可疑的 IoT 设备
 
-适用于 IoT 服务警报的 Azure 安全中心可在 IoT 设备涉嫌参与可疑活动时, 或在存在设备受损的迹象时提供清晰的指示。 
+Azure IoT 服务警报安全中心在怀疑 IoT 设备参与可疑活动或存在设备受到威胁的迹象时提供明确指示。 
 
-在本指南中, 请使用提供的调查建议来帮助确定组织的潜在风险, 确定如何修正, 并发现将来阻止类似攻击的最佳方式。  
+在本指南中，使用提供的调查建议来帮助确定组织的潜在风险，决定如何修复，并发现防止将来发生类似攻击的最佳方式。  
 
 > [!div class="checklist"]
 > * 查找设备数据
@@ -35,26 +35,26 @@ ms.locfileid: "68596249"
 
 ## <a name="how-can-i-access-my-data"></a>如何访问我的数据？
 
-默认情况下, 适用于 IoT 的 Azure 安全中心在 Log Analytics 工作区中存储安全警报和建议。 你还可以选择存储原始安全数据。
+默认情况下，适用于 IoT 的 Azure 安全中心会在日志分析工作区中存储安全警报和建议。 你还可以选择存储原始安全数据。
 
-查找数据存储 Log Analytics 工作区:
+要查找用于数据存储的日志分析工作区，请执行以下操作：
 
 1. 打开 IoT 中心， 
-1. 在 "**安全**" 下, 单击 "**概述**", 然后选择 "**设置**"。
+1. 在 **"安全"** 下，单击 **"概述**"，然后选择 **"设置**"。
 1. 更改 Log Analytics 工作区配置详细信息。 
-1. 单击“保存”。 
+1. 单击“保存”。**** 
 
 根据配置执行以下操作，以访问 Log Analytics 工作区中存储的数据：
 
-1. 选择并单击 IoT 中心内的 Azure 安全中心的 IoT 警报。 
-1. 单击“进一步调查”。 
-1. 选择“若要查看哪些设备生成了此警报，请单击此处并查看 DeviceId 列”。
+1. 选择并单击 IoT 中心中的 IoT 警报 Azure 安全中心。 
+1. 单击“进一步调查”。**** 
+1. 选择“若要查看哪些设备生成了此警报，请单击此处并查看 DeviceId 列”。****
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>可疑 IoT 设备的调查步骤
 
-若要查看有关 IoT 设备的见解和原始数据, 请访问 Log Analytics 工作区[以访问数据](#how-can-i-access-my-data)。
+要查看有关 IoT 设备的见解和原始数据，请转到日志分析工作区[以访问数据](#how-can-i-access-my-data)。
 
-请参阅下面的示例 kql 查询, 开始调查设备上的警报和活动。
+请参阅下面的示例 kql 查询，以便开始调查设备上的警报和活动。
 
 ### <a name="related-alerts"></a>相关警报
 
@@ -87,11 +87,11 @@ ms.locfileid: "68596249"
  ```
 使用此数据来确定： 
 - 哪些用户有权访问该设备？
-- 具有访问权限的用户是否具有所需的权限级别？
+- 具有访问权限的用户具有预期的权限级别吗？
 
 ### <a name="open-ports"></a>打开端口
 
-若要查明设备中当前正在使用或使用的端口, 请使用以下 kql 查询: 
+要了解设备中的哪些端口当前正在使用或使用，请使用以下 kql 查询： 
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -114,11 +114,11 @@ ms.locfileid: "68596249"
 使用此数据来确定：
 - 哪些侦听套接字当前在设备上处于活动状态？
 - 是否应允许当前处于活动状态的侦听套接字？
-- 是否存在连接到设备的可疑远程地址？
+- 是否有任何可疑的远程地址连接到设备？
 
 ### <a name="user-logins"></a>用户登录
 
-若要查找登录到设备的用户, 请使用以下 kql 查询: 
+要查找登录到设备的用户，请使用以下 kql 查询： 
  
  ```
   let device = "YOUR_DEVICE_ID";
@@ -144,12 +144,12 @@ ms.locfileid: "68596249"
 
 使用查询结果来确定：
 - 哪些用户登录到了设备？
-- 登录的用户是否应该登录？
+- 登录的用户应该登录吗？
 - 登录的用户是从预期还是意外的 IP 地址连接的？
   
-### <a name="process-list"></a>进程列表
+### <a name="process-list"></a>流程列表
 
-若要查看进程列表是否按预期运行, 请使用以下 kql 查询: 
+要了解流程列表是否按预期，请使用以下 kql 查询： 
 
  ```
   let device = "YOUR_DEVICE_ID";

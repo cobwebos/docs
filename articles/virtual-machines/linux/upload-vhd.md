@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 上传或复制自定义 Linux VM
+title: 使用 Azure CLI 上载或复制自定义 Linux VM
 description: 使用资源管理器部署模型和 Azure CLI 上传或复制自定义的虚拟机
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 70fff041cd693a19269b11398947fb0c8ce56bb1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: b5063c8037a763c1919d2172a81c8abbbd406ace
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79267100"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060148"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>使用 Azure CLI 从自定义磁盘创建 Linux VM
 
@@ -51,7 +51,7 @@ ms.locfileid: "79267100"
 
 - 确保已安装了最新的 [Azure CLI](/cli/azure/install-az-cli2) 并已使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure 帐户。
 
-在下面的示例中，请将示例参数名称替换为自己的值，例如 `myResourceGroup`、`mystorageaccount`和 `mydisks`。
+在以下示例中，将示例参数名称替换为自己的值，例如 `myResourceGroup`、`mystorageaccount` 和 `mydisks`。
 
 <a id="prepimage"> </a>
 
@@ -65,7 +65,7 @@ Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-di
 * [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [SLES 和 openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [其他：非认可的分发版](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [其他：非认可分发版](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 另请参阅 [Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)，获取更多有关如何为 Azure 准备 Linux 映像的一般提示。
 
@@ -76,21 +76,21 @@ Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-di
 
 ## <a name="option-1-upload-a-vhd"></a>选项 1：上传 VHD
 
-你现在可以将 VHD 直接上传到托管磁盘。 有关说明，请参阅[使用 Azure CLI 将 VHD 上传到 Azure](disks-upload-vhd-to-managed-disk-cli.md)。
+现在可以直接将 VHD 上传到托管磁盘中。 有关说明，请参阅[使用 Azure CLI 将 VHD 上传到 Azure](disks-upload-vhd-to-managed-disk-cli.md)。
 
-## <a name="option-2-copy-an-existing-vm"></a>选项 2：复制现有的 VM
+## <a name="option-2-copy-an-existing-vm"></a>选项 2：复制现有 VM
 
-也可以在 Azure 中创建自定义的 VM，然后复制 OS 磁盘并将其附加到新 VM 以创建另一个副本。 这种做法在测试中不会有任何问题，但若要将现有 Azure VM 作为多个新 VM 的模型，请改为创建映像。 有关从现有 Azure VM 创建映像的详细信息，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。
+也可以在 Azure 中创建自定义的 VM，然后复制 OS 磁盘并将其附加到新 VM 以创建另一个副本。 这种做法在测试中不会有任何问题，但若要将现有 Azure VM 作为多个新 VM 的模型，请改为创建映像。** 有关从现有 Azure VM 创建映像的详细信息，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。
 
-如果要将现有 VM 复制到其他区域，你可能想要使用 azcopy[在另一区域中的磁盘副本](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)。 
+如果要将现有 VM 复制到其他区域，可能需要使用 azcopy [在其他区域中创建磁盘副本](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)。 
 
-否则，你应拍摄 VM 的快照，然后从快照创建新的操作系统 VHD。
+否则，应创建 VM 的快照，然后基于快照创建新的 OS VHD。
 
 ### <a name="create-a-snapshot"></a>创建快照
 
 此示例在资源组 *myResourceGroup* 中创建名为 *myVM* 的 VM 的快照，并创建名为 *osDiskSnapshot* 的快照。
 
-```azure-cli
+```azurecli
 osDiskId=$(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
 az snapshot create \
     -g myResourceGroup \
@@ -103,13 +103,13 @@ az snapshot create \
 
 获取快照的 ID。 在此示例中，快照名为 *osDiskSnapshot*，位于 *myResourceGroup* 资源组中。
 
-```azure-cli
+```azurecli
 snapshotId=$(az snapshot show --name osDiskSnapshot --resource-group myResourceGroup --query [id] -o tsv)
 ```
 
 创建托管磁盘。 此示例将从快照创建名为 *myManagedDisk* 的托管磁盘，该磁盘位于标准存储中，大小为 128 GB。
 
-```azure-cli
+```azurecli
 az disk create \
     --resource-group myResourceGroup \
     --name myManagedDisk \

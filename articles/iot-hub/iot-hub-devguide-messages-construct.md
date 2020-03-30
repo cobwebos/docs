@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure IoT 中心消息格式 | Microsoft Docs
-description: 开发人员指南-介绍 IoT 中心消息的格式和预期内容。
+description: 开发人员指南 - 描述 IoT 中心消息的格式和预期内容。
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
 ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69872489"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
@@ -21,11 +21,11 @@ ms.locfileid: "69872489"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与[事件中心](/azure/event-hubs/)*事件*和[服务总线](/azure/service-bus-messaging/) *消息*相比，IoT 中心的设备到云消息更类似前者，类似之处在于有大量事件通过可供多个读取器读取的服务。
+IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与[事件中心](/azure/event-hubs/) *事件*和[服务总线](/azure/service-bus-messaging/) *消息*相比，IoT 中心的设备到云消息更类似前者，类似之处在于有大量事件通过可供多个读取器读取的服务。
 
 IoT 中心消息由以下部分组成：
 
-* 一组预先确定的“系统属性”如下所示。
+* 一组预先确定的“系统属性”** 如下所示。
 
 * 一组*应用程序属性*。 应用程序可以定义的字符串属性字典，而不需将消息正文反序列化即可进行访问。 IoT 中心永不修改这些属性。
 
@@ -35,7 +35,7 @@ IoT 中心消息由以下部分组成：
 
 使用 IoT 中心进行的设备到云消息传递具有以下特征：
 
-* 设备到云的消息可持久保留在 IoT 中心的默认 messages/events终结点长达七天。
+* 设备到云的消息可持久保留在 IoT 中心的默认 messages/events **** 终结点长达七天。
 
 * 设备到云的消息最大可为 256 KB，而且可分成多个批以优化发送。 Batch 最大可为 256 KB。
 
@@ -49,19 +49,19 @@ IoT 中心消息由以下部分组成：
 
 ## <a name="system-properties-of-d2c-iot-hub-messages"></a>**D2C** IoT 中心消息的系统属性
 
-| 属性 | 描述  |用户可设置？|关键字 </br>路由查询|
+| properties | 描述  |用户可设置？|关键字（用于 </br>路由查询）|
 | --- | --- | --- | --- |
 | message-id |用户可设置的，用于请求-答复模式的消息标识符。 格式：ASCII 7 位字母数字字符 + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。  | 是 | messageId |
 | iothub-enqueuedtime |IoT 中心收到[设备到云](iot-hub-devguide-d2c-guidance.md)消息的日期和时间。 | 否 | enqueuedTime |
 | user-id |用于指定消息的源的 ID。 如果消息是由 IoT 中心生成的，则设置为 `{iot hub name}`。 | 是 | userId |
 | iothub-connection-device-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **deviceId**。 | 否 | connectionDeviceId |
-| iothub-模块 id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的**moduleId** 。 | 否 | 为 connectionmoduleid |
-| iothub-connection-auth-generation-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的**connectionDeviceGenerationId** (根据[设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties))。 | 否 |connectionDeviceGenerationId |
+| iothub-connection-module-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **moduleId**。 | 否 | connectionModuleId |
+| iothub-connection-auth-generation-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **connectionDeviceGenerationId**（根据[设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties)）。 | 否 |connectionDeviceGenerationId |
 | iothub-connection-auth-method |由 IoT 中心对设备到云的消息设置的身份验证方法。 此属性包含用于验证发送消息的设备的身份验证方法的相关信息。| 否 | connectionAuthMethod |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT 中心消息的系统属性
 
-| 属性 | 描述  |用户可设置？|
+| properties | 描述  |用户可设置？|
 | --- | --- | --- |
 | message-id |用户可设置的，用于请求-答复模式的消息标识符。 格式：ASCII 7 位字母数字字符 + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。  |是|
 | sequence-number |IoT 中心分配给每条云到设备消息的编号（对每个设备队列是唯一的）。 |否|
@@ -73,7 +73,7 @@ IoT 中心消息由以下部分组成：
 
 ## <a name="message-size"></a>消息大小
 
-IoT 中心用于衡量消息大小的方法与协议无关，仅考虑实际有效负载。 大小 (以字节为单位) 将计算为以下值的总和:
+IoT 中心用于衡量消息大小的方法与协议无关，仅考虑实际有效负载。 以字节为单位的大小计算为以下值的和：
 
 * 以字节为单位的正文大小。
 * 以字节为单位的消息系统属性的所有值的大小。
@@ -85,13 +85,13 @@ IoT 中心用于衡量消息大小的方法与协议无关，仅考虑实际有�
 
 为了避免设备到云的消息中出现设备欺骗，IoT 中心使用以下属性在所有消息上加上戳记：
 
-* **iothub-connection-device-id**
+* **iothub-连接-设备-id**
 * **iothub-connection-auth-generation-id**
 * **iothub-connection-auth-method**
 
-根据[设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties)，前两个属性包含源设备的 deviceId 和 generationId。
+根据[设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties)，前两个属性包含源设备的 deviceId 和 generationId********。
 
-iothub-connection-auth-method 属性包含具有以下属性的 JSON 序列化对象：
+**** iothub-connection-auth-method 属性包含具有以下属性的 JSON 序列化对象：
 
 ```json
 {

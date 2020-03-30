@@ -3,15 +3,15 @@ title: 创建 Azure HPC 缓存
 description: 如何创建 Azure HPC 缓存实例
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: rohogue
-ms.openlocfilehash: 793a80e7019e72c1cb3087da02d5642639cb8d5e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: HT
+ms.openlocfilehash: c6090d19ce530829b79dca69636c2123e2519961
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647150"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80129555"
 ---
 # <a name="create-an-azure-hpc-cache"></a>创建 Azure HPC 缓存
 
@@ -23,9 +23,9 @@ ms.locfileid: "75647150"
 
 ![Azure 门户中的“项目详细信息”页的屏幕截图](media/hpc-cache-create-basics.png)
 
-在“项目详细信息”  中，选择将托管缓存的订阅和资源组。 请确保订阅位于[访问](hpc-cache-prereqs.md#azure-subscription)列表中。
+在“项目详细信息”**** 中，选择将托管缓存的订阅和资源组。 请确保订阅位于[访问](hpc-cache-prereqs.md#azure-subscription)列表中。
 
-在“服务详细信息”  中，设置缓存名称和其他属性：
+在“服务详细信息”**** 中，设置缓存名称和其他属性：
 
 * 位置 - 选择其中一个[支持的区域](hpc-cache-overview.md#region-availability)。
 * 虚拟网络 - 可选择现有虚拟网络或创建新的虚拟网络。
@@ -34,7 +34,7 @@ ms.locfileid: "75647150"
 ## <a name="set-cache-capacity"></a>设置缓存容量
 <!-- referenced from GUI - update aka.ms link if you change this header text -->
 
-在“缓存”  页上，必须设置缓存的容量。 此处设置的值确定缓存可以容纳多少数据，以及为客户端请求提供服务的速度。
+在“缓存”**** 页上，必须设置缓存的容量。 此处设置的值确定缓存可以容纳多少数据，以及为客户端请求提供服务的速度。
 
 容量还会影响缓存的成本。
 
@@ -53,11 +53,11 @@ Azure HPC 缓存会管理缓存和预加载哪些文件，以最大限度地提�
 
 ## <a name="add-resource-tags-optional"></a>添加资源标记（可选）
 
-在“标记”  页上，可以向 Azure HPC 缓存实例添加[资源标记](https://go.microsoft.com/fwlink/?linkid=873112)。
+在“标记”**** 页上，可以向 Azure HPC 缓存实例添加[资源标记](https://go.microsoft.com/fwlink/?linkid=873112)。
 
 ## <a name="finish-creating-the-cache"></a>完成缓存创建
 
-配置新缓存后，请单击“查看 + 创建”  选项卡。门户将验证你的选择，并允许你查看你的选择。 如果所有内容都正确，请单击“创建”  。
+配置新缓存后，单击"审阅 **+ 创建**"选项卡。门户验证您的选择，并允许您查看您的选择。 如果所有内容都正确，请单击“创建”****。
 
 缓存创建花费大约 10 分钟。 可在 Azure 门户的通知面板中跟踪进度。
 

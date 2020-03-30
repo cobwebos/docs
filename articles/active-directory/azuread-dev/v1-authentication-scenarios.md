@@ -1,38 +1,35 @@
 ---
-title: 面向开发人员的 Azure AD （1.0 版） |Microsoft
-description: 了解面向开发人员的 Azure AD 的身份验证基础知识（1.0 版），如应用模型、API、预配和最常见的身份验证方案。
+title: 面向开发人员的 Azure AD (v1.0) | Azure
+description: 了解面向开发人员的 Azure AD (v1.0) 的身份验证基础知识，如应用模型、API、预配和最常见的身份验证方案。
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 07bdc8af5a3bc82f0fc5aad52648a9524a2dc87f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164144"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154723"
 ---
 # <a name="what-is-authentication"></a>什么是身份验证？
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-身份验证是向访问方质询合法凭据的措施，提供创建用于标识和访问控制的安全主体的基础。 简单来说，身份验证就是证明你是你自己的过程。 身份验证有时缩写为 AuthN。
+身份验证是向访问方质询合法凭据的措施，提供创建用于标识和访问控制的安全主体的基础**。 简单来说，身份验证就是证明你是你自己的过程。 身份验证有时缩写为 AuthN。
 
-授权是指授予经过身份验证的安全主体执行某项操作权力的措施。 它指定了可以访问的数据以及使用其可执行的操作。 授权有时缩写为 AuthZ。
+授权是指授予经过身份验证的安全主体执行某项操作权力的措施。** 它指定了可以访问的数据以及使用其可执行的操作。 授权有时缩写为 AuthZ。
 
-面向开发人员的 Azure Active Directory （1.0 版）（Azure AD）通过将标识作为一项服务提供服务，简化了对应用程序开发人员的身份验证，并支持使用行业标准协议（例如 OAuth 2.0 和 OpenID Connect）以及开源库适用于不同的平台，可帮助你快速开始编码。
+面向开发人员的 Azure Active Directory (v1.0) (Azure AD) 通过提供标识即服务、支持 OAuth 2.0 和 OpenID Connect 等行业标准协议以及适用于不同平台的开源库来帮助你快速开始编码，从而简化了应用程序开发人员的身份验证。
 
 在 Azure AD 编程模型中有两个主要用例：
 
@@ -45,16 +42,16 @@ ms.locfileid: "77164144"
 
 ![Web 应用程序登录概述](./media/v1-authentication-scenarios/auth-basics-microsoft-identity-platform.svg)
 
-下面是需要了解的图表中显示的各种组件的相关信息：
+以下是您需要了解的关于关系图中显示的各种组件的内容：
 
-* Azure AD 是标识提供程序。 标识提供程序负责对组织的目录中存在的用户和应用程序的标识进行验证，并在那些用户和应用程序成功通过身份验证时颁发安全令牌。
-* 需要将身份验证外包给 Azure AD 的应用程序必须在 Azure Active Directory （Azure AD）中注册。 Azure AD 在目录中注册并唯一标识应用。
+* Azure AD 是标识提供程序。 标识提供程序负责验证组织目录中存在的用户和应用程序的身份，并在成功验证这些用户和应用程序后颁发安全令牌。
+* 要将身份验证外包给 Azure AD 的应用程序必须在 Azure Active Directory (Azure AD) 中进行注册。 Azure AD 在目录中注册并唯一标识应用。
 * 开发人员可以使用开源 Azure AD 身份验证库处理协议细节，方便你进行身份验证。 有关详细信息，请参阅 Microsoft 标识平台 [v2.0 身份验证库](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)和 [v1.0 身份验证库](active-directory-authentication-libraries.md)。
-* 在用户通过身份验证后，应用程序必须对用户的安全令牌进行验证以确保身份验证是成功的。 可查找各种语言和框架的快速入门、教程和代码示例，了解应用程序必须执行的操作。
-  * 要快速构建应用并添加功能（如获取令牌、刷新令牌、进行用户登录、显示某些用户信息），请参阅文档的“快速入门”部分。
-  * 要深入了解顶级身份验证开发人员任务的案例过程，例如获取访问令牌并在调用 Microsoft Graph API 和其他 API 时使用它们，使用 OpenID Connect 通过传统的基于 Web 浏览器的应用实现 Microsoft 登录等，请参阅文档的“教程”部分。
+* 用户经过身份验证后，应用程序必须验证用户的安全令牌，以确保身份验证成功。 可查找各种语言和框架的快速入门、教程和代码示例，了解应用程序必须执行的操作。
+  * 要快速构建应用并添加功能（如获取令牌、刷新令牌、进行用户登录、显示某些用户信息），请参阅文档的“快速入门”部分****。
+  * 要深入了解顶级身份验证开发人员任务的案例过程，例如获取访问令牌并在调用 Microsoft Graph API 和其他 API 时使用它们，使用 OpenID Connect 通过传统的基于 Web 浏览器的应用实现 Microsoft 登录等，请参阅文档的“教程”部分****。
   * 要下载代码示例，请转到 [GitHub](https://github.com/Azure-Samples?q=active-directory)。
-* 身份验证过程的请求和响应流是由所使用的身份验证协议（例如 OAuth 2.0、OpenID Connect、WS 联合身份验证或 SAML 2.0）决定的。 有关协议的详细信息，请参阅文档中的 "**概念 > 身份验证协议**" 部分。
+* 身份验证过程的请求和响应流是由所使用的身份验证协议（例如 OAuth 2.0、OpenID Connect、WS 联合身份验证或 SAML 2.0）决定的。 有关协议的详细信息，请参阅文档中的“概念”>“身份验证协议”部分****。
 
 在上面的示例方案中，你可以根据以下两个角色对应用进行分类：
 
@@ -63,7 +60,7 @@ ms.locfileid: "77164144"
 
 ### <a name="how-each-flow-emits-tokens-and-codes"></a>每个流如何发出令牌和代码
 
-根据客户端的构建方式，它可以使用 Azure AD 支持的身份验证流中的一个（或多个）。 这些流可以生成各种令牌（id_tokens、刷新令牌、访问令牌）以及授权代码，并需要不同的令牌使其正常工作。 此图表提供了概述：
+根据客户端的生成方式，客户端可以使用 Azure AD 支持的一种（或几种）身份验证流。 这些流可以生成各种令牌（id_tokens、刷新令牌、访问令牌）以及授权代码，并需要不同的令牌使其正常工作。 此图表提供概述：
 
 |流向 | 需要 | id_token | 访问令牌 | 刷新令牌 | 授权代码 | 
 |-----|----------|----------|--------------|---------------|--------------------|
@@ -72,9 +69,9 @@ ms.locfileid: "77164144"
 |[混合 OIDC 流](v1-protocols-openid-connect-code.md#get-access-tokens)| | x  | |          |            x   |
 |[刷新令牌兑换](v1-protocols-oauth-code.md#refreshing-the-access-tokens) | 刷新令牌 | x | x | x| |
 |[代理流](v1-oauth2-on-behalf-of-flow.md) | 访问令牌| x| x| x| |
-|[客户端凭据](v1-oauth2-client-creds-grant-flow.md) | | | x （仅限应用程序）| | |
+|[客户端凭据](v1-oauth2-client-creds-grant-flow.md) | | | x（仅限应用）| | |
 
-通过隐式模式颁发的令牌具有长度限制，原因是通过 URL 将其传递回浏览器（其中 `response_mode` `query` 或 `fragment`）。  某些浏览器对可放置在浏览器栏中的 URL 大小有限制，但当它太长时，会失败。  因此，这些令牌没有 `groups` 或 `wids` 声明。 
+通过隐式模式颁发的令牌由于通过 URL（其中 `response_mode` 是 `query` 或 `fragment`）传回浏览器而具有长度限制。  有些浏览器对可以放在浏览器栏中的 URL 的大小有限制，当 URL 太长时会失败。  因此，这些令牌没有 `groups` 或 `wids` 声明。 
 
 现在你已大致了解了基础知识，请继续阅读以了解身份应用模型和 API，如何在 Azure AD 中进行预配，以及指向 Azure AD 支持的常见方案的详细信息的链接。
 
@@ -93,7 +90,7 @@ Azure AD 表示遵循特定模型的应用程序，该模型旨在实现两个�
     * 使用户和管理员能够动态地同意或拒绝应用以他们的名义访问资源。
     * 使管理员能够最终决定允许执行哪些应用、哪些用户可以使用特定的应用，以及如何访问目录资源。
 
-在 Azure AD 中，应用程序对象将应用程序描述为抽象实体。 开发人员使用应用程序。 在部署时，Azure AD 使用给定的应用程序对象作为蓝图来创建服务主体，它表示目录或租户中的应用程序的具体实例。 该服务主体用于定义应用在特定目标目录中可以实际执行的操作、使用者是谁、以及可以访问哪些资源等。 Azure AD 通过“同意”使用应用程序对象创建服务主体。
+在 Azure AD 中，应用程序对象将应用程序描述为抽象实体****。 开发人员使用应用程序。 在部署时，Azure AD 使用给定的应用程序对象作为蓝图来创建服务主体，它表示目录或租户中的应用程序的具体实例****。 该服务主体用于定义应用在特定目标目录中可以实际执行的操作、使用者是谁、以及可以访问哪些资源等。 Azure AD 通过“同意”使用应用程序对象创建服务主体****。
 
 下图显示了征得同意后经过简化的 Azure AD 预配流程。  其中存在两个租户（A 和 B），租户 A 拥有应用程序，租户 B 通过服务主体实例化应用程序。  
 
@@ -120,9 +117,9 @@ Azure AD 颁发的安全令牌（访问令牌和 ID 令牌）包含与经过身�
 
 任何给定安全令牌中存在的声明都依赖于令牌的类型、用于验证用户身份的凭据的类型和应用程序配置。
 
-下表提供了由 Azure AD 发出的每种声明的简要说明。 有关更多详细信息，请参阅 Azure AD 颁发的[访问令牌](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)和[ID 令牌](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
+下表提供了由 Azure AD 发出的每种声明的简要说明。 有关详细信息，请参阅 Azure AD 颁发的[访问令牌](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)和 [ID 令牌](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 
-| 声明 | 说明 |
+| 声明 | 描述 |
 | --- | --- |
 | 应用程序 ID | 标识正在使用令牌的应用程序。 |
 | 读者 | 标识令牌所针对的接收方资源。 |
@@ -135,7 +132,7 @@ Azure AD 颁发的安全令牌（访问令牌和 ID 令牌）包含与经过身�
 | 颁发时间 | 记录令牌的颁发时间，通常用于计算令牌新鲜度。 |
 | 颁发者 | 标识发出令牌以及 Azure AD 租户的 STS。 |
 | 姓氏 | 按照 Azure AD 中的设置提供用户的姓氏。 |
-| 名称 | 提供了一个用户可读值，用于标识令牌使用者。 |
+| “属性” | 提供了一个用户可读值，用于标识令牌使用者。 |
 | 对象 ID | 包含 Azure AD 中的使用者的不可变、唯一标识符。 |
 | 角色 | 包含授予用户的 Azure AD 应用程序角色的友好名称。 |
 | 范围 | 指示授予客户端应用程序的权限。 |

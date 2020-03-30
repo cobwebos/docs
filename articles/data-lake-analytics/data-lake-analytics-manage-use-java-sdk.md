@@ -10,10 +10,10 @@ ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: b8c7d2ba1c782c3b6ae3034d6a9aab5eb19be954
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70813633"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>使用 Java 应用管理 Azure Data Lake Analytics
@@ -22,17 +22,17 @@ ms.locfileid: "70813633"
 本文介绍如何通过使用 Azure Java SDK 编写的应用管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。 
 
 ## <a name="prerequisites"></a>先决条件
-* Java 开发工具包 (JDK) 8（使用 Java 1.8 版）。
-* IntelliJ 或其他合适的 Java 开发环境。 本文档中的说明使用 IntelliJ。
+* **Java 开发工具包 （JDK） 8（** 使用 Java 版本 1.8）。
+* **IntelliJ**或其他合适的 Java 开发环境。 本文档中的说明使用 IntelliJ。
 * 创建 Azure Active Directory (AAD) 应用程序，并检索其**客户端 ID**、**租户 ID** 和**密钥**。 有关 AAD 应用程序的详细信息和如何获取客户端 ID 的说明，请参阅 [使用门户创建 Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。 创建应用程序并生成密钥后，可从门户获取回复 URI 和密钥。
 
 ## <a name="authenticating-using-azure-active-directory"></a>使用 Azure Active Directory 进行身份验证
 
-以下代码片段提供了非交互式身份验证的代码，在这种验证方式中，应用程序提供自己的凭据。
+以下代码片段提供了非交互式身份验证的代码，在这种验证方式中，应用程序提供自己的凭据****。
 
 ## <a name="create-a-java-application"></a>创建 Java 应用程序
-1. 打开 IntelliJ，使用“命令行应用”模板创建 Java 项目。
-2. 右键单击屏幕左侧的项目并单击“添加框架支持”。 选择 “Maven”，并单击“确定”。
+1. 打开 IntelliJ，使用“命令行应用”模板创建 Java 项目****。
+2. 右键单击屏幕左侧的项目并单击“添加框架支持”****。 选择 “Maven”****，并单击“确定”****。
 3. 打开新创建的 **"pom.xml"** 文件，并在 **\</版本>** 标记和 **\</项目>** 标记之间添加以下文本段：
 
 ```
@@ -76,9 +76,9 @@ ms.locfileid: "70813633"
 </dependencies>
 ```
 
-转到“文件”>“设置”>“生成”>“执行”>“部署”。 选择“生成工具”>“Maven”>“导入”。 然后选中“自动导入 Maven 项目”。
+转到“文件”>“设置”>“生成”>“执行”>“部署”****。 选择“生成工具”>“Maven”>“导入”****。 然后选中“自动导入 Maven 项目”****。
 
-打开`Main.java`并将现有代码块替换为以下代码：
+打开`Main.java`现有代码块，然后用以下代码替换现有代码块：
 
 ```java
 import com.microsoft.azure.CloudException;
@@ -320,5 +320,5 @@ public class Main {
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解 U-SQL，请参阅 [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md)（Azure Data Lake Analytics U-SQL 语言入门）和 [U-SQL language reference](https://docs.microsoft.com/u-sql/)（U-SQL 语言参考）。
-* 有关管理任务，请参阅 [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md)（使用 Azure 门户管理 Azure Data Lake Analytics）。
+* 有关管理任务，请参阅[使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)。
 * 有关 Data Lake Analytics 的概述，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。

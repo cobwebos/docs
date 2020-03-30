@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7b9b536def2aa7da25fef9f3baa5efdd8b0ed6f7
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 0314095a053087a7d490926c41c6ae386c304919
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944617"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066649"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
 
@@ -27,17 +27,17 @@ ms.locfileid: "78944617"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在“美国东部”位置创建一个名为“myResourceGroup”的资源组。
+在“美国东部”** 位置创建一个名为“myResourceGroup”** 的资源组。
 
-```bash
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-使用 [az storage account create](/cli/azure/storage/account) 在创建的资源组中创建一个新存储帐户。 此示例创建一个名为 MySTORAGEACCT 的存储帐户， *\<随机数 >* 并将该存储帐户的名称放在**STORAGEACCT**变量中。 存储帐户名称必须唯一，请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
+使用 [az storage account create](/cli/azure/storage/account) 在创建的资源组中创建一个新存储帐户。 此示例创建一个名为 *mySTORAGEACCT\<random number>* 的存储帐户，然后将该存储帐户的名称置于变量 **STORAGEACCT** 中。 存储帐户名称必须唯一，请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
 
-```bash
+```azurecli
 STORAGEACCT=$(az storage account create \
     --resource-group "myResourceGroup" \
     --name "mystorageacct$RANDOM" \
@@ -52,7 +52,7 @@ STORAGEACCT=$(az storage account create \
 
 使用 [az storage account keys list](/cli/azure/storage/account/keys) 查看存储帐户密钥。 此示例将密钥 1 的值存储在 **STORAGEKEY** 变量中。
 
-```bash
+```azurecli
 STORAGEKEY=$(az storage account keys list \
     --resource-group "myResourceGroup" \
     --account-name $STORAGEACCT \
@@ -67,7 +67,7 @@ STORAGEKEY=$(az storage account keys list \
 
 此示例创建名为 *myshare* 且具有 10-GiB 配额的共享。 
 
-```bash
+```azurecli
 az storage share create --name myshare \
     --quota 10 \
     --account-name $STORAGEACCT \
@@ -103,11 +103,12 @@ sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFile
 ```bash
 //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=myStorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
+
 为了提高生产环境的安全性，应将凭据存储在 fstab 之外。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [在创建期间使用 cloud-init 自定义 Linux VM](using-cloud-init.md)
 - [将磁盘添加到 Linux VM](add-disk.md)
-- [适用于 Linux Vm 的 Azure 磁盘加密](disk-encryption-overview.md)
+- [适用于 Linux VM 的 Azure 磁盘加密](disk-encryption-overview.md)
 

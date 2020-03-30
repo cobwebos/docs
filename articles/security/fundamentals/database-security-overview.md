@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
 ms.openlocfilehash: e5ed60ea59dc8cf19b8f9ca7e96777dbc6980171
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906063"
 ---
 # <a name="azure-database-security-overview"></a>Azure 数据库安全性概述
@@ -63,13 +63,13 @@ SQL 数据库可提供加密功能来帮助保护数据：
 
 在与数据库来回“传输”数据时，与 Azure SQL 数据库建立的所有连接都需要经过加密 (TLS/SSL)。 SQL 数据库使用 TLS/SSL 验证服务器和客户端，然后使用它来加密经过身份验证的双方之间的消息。 
 
-在应用程序的连接字符串中，必须指定参数来加密连接，而不是信任服务器证书。 （如果将连接字符串从 Azure 门户中复制出来，则我们会代你完成此操作。）否则，连接不会验证服务器的身份，且容易受到“中间人”攻击。 例如，对于 ADO.NET 驱动程序，这些连接字符串参数为 `Encrypt=True` 和 `TrustServerCertificate=False`。
+在应用程序的连接字符串中，必须指定参数来加密连接，而不是信任服务器证书。 （如果将连接字符串从 Azure 门户中复制，则这样做。否则，连接将不验证服务器的身份，并且容易受到"中间人"攻击。 例如，对于 ADO.NET 驱动程序，这些连接字符串参数为 `Encrypt=True` 和 `TrustServerCertificate=False`。
 
 ### <a name="encryption-at-rest"></a>静态加密
 
 可采取一些预防措施来帮助保护数据库。 例如设计安全系统、加密机密资产、围绕数据库服务器构建防火墙。 但如果物理媒体（如驱动器或备份磁带）失窃，恶意方可能会还原或附加数据库并浏览数据。
 
-一种解决方法是加密数据库中的敏感数据，并使用证书保护用于加密数据的密钥。 此解决方案可防止没有密钥的人使用数据，但这种保护必须经过精心规划。
+一种解决方案是加密数据库中的敏感数据，并通过证书保护用于加密数据的密钥。 此解决方案可防止没有密钥的人使用数据，但这种保护必须经过精心规划。
 
 为解决此问题，SQL Server 和 SQL 数据库支持[透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017)。 透明数据加密可加密 SQL Server 和 SQL 数据库数据文件，这称为静态加密数据。
 
@@ -77,7 +77,7 @@ SQL 数据库可提供加密功能来帮助保护数据：
 
 透明数据加密使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 在 SQL 数据库中，数据库加密密钥由内置服务器证书保护。 内置服务器证书对每个 SQL 数据库服务器都是唯一的。
 
-如果数据库处于 Geo-DR 关系中，则会受到每个服务器上不同的密钥的保护。 如果两个数据库连接到同一个服务器，则它们共用相同的内置证书。 Microsoft 每隔 90 天自动轮换这些证书至少一次。 
+如果数据库处于 Geo-DR 关系中，则会受到每个服务器上不同的密钥的保护。 如果两个数据库连接到同一台服务器，则它们共享相同的内置证书。 Microsoft 至少每 90 天自动轮换这些证书。 
 
 有关详细信息，请参阅[透明数据加密](/sql/relational-databases/security/encryption/transparent-data-encryption-tde)。
 
@@ -107,7 +107,7 @@ Always Encrypted 将数据所有者与数据管理者区分开来，前者可查
 
 #### <a name="firewall-and-firewall-rules"></a>防火墙和防火墙规则
 
-[Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)为 Azure 和其他基于 Internet 的应用程序提供关系数据库服务。 为了保护数据，在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予数据库访问权限。 有关详细信息，请参阅 [Azure SQL 数据库防火墙规则概述](/azure/sql-database/sql-database-firewall-configure)。
+[Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)为 Azure 和其他基于 Internet 的应用程序提供关系数据库服务。 为了保护数据，在指定哪些计算机具有访问权限之前，防火墙将禁止所有对数据库服务器的访问。 防火墙基于每个请求的起始 IP 地址授予数据库访问权限。 有关详细信息，请参阅[Azure SQL 数据库防火墙规则的概述](/azure/sql-database/sql-database-firewall-configure)。
 
 只能通过 TCP 端口 1433 使用 Azure SQL 数据库服务。 若要从计算机访问 SQL 数据库，请确保客户端计算机防火墙允许 TCP 端口 1433 上的传出 TCP 通信。 如果其他应用程序不需入站连接，则阻止 TCP 端口 1433 上的入站连接。
 
@@ -115,8 +115,8 @@ Always Encrypted 将数据所有者与数据管理者区分开来，前者可查
 
 身份验证是指连接到数据库时如何证明身份。 SQL 数据库支持两种类型的身份验证：
 
--   **SQL Server 身份验证**：创建逻辑 SQL 实例时会创建单个登录帐户，称为“SQL 数据库订户帐户”。 此帐户通过 [SQL Server 身份验证](/azure/sql-database/sql-database-security-overview)（用户名和密码）进行连接。 此帐户为管理员，负责管理逻辑服务器实例以及所有附加到该实例的用户数据库。 不能限制订户帐户的权限。 此类帐户只能存在一个。
--   **Azure Active Directory 身份验证**：[Azure AD 身份验证](/azure/sql-database/sql-database-aad-authentication)是使用 Azure AD 中的标识连接到 Azure SQL 数据库和 Azure SQL 数据仓库的一种机制。 可通过它集中管理数据库用户的身份。
+-   **SQL Server 身份验证：** 创建逻辑 SQL 实例时会创建单个登录帐户，称为“SQL 数据库订户帐户”。 此帐户通过 [SQL Server 身份验证](/azure/sql-database/sql-database-security-overview)（用户名和密码）进行连接。 此帐户为管理员，负责管理逻辑服务器实例以及所有附加到该实例的用户数据库。 不能限制订户帐户的权限。 此类帐户只能存在一个。
+-   **Azure Active Directory 身份验证**：[Azure AD 身份验证](/azure/sql-database/sql-database-aad-authentication)是使用 Azure AD 中的标识连接到 Azure SQL 数据库和 SQL 数据仓库的一种机制。 可通过它集中管理数据库用户的身份。
 
 ![使用 SQL 数据库进行 Azure AD 身份验证](./media/database-security-overview/azure-database-fig2.png)
 
@@ -126,7 +126,7 @@ Always Encrypted 将数据所有者与数据管理者区分开来，前者可查
   - 可使用外部 (Azure AD) 组管理数据库权限。
   - 它可通过启用集成的 Windows 身份验证和 Azure AD 支持的其他形式的身份验证来消除存储密码。
 
-#### <a name="authorization"></a>Authorization
+#### <a name="authorization"></a>授权
 
 [授权](/azure/sql-database/sql-database-manage-logins)是指用户可在 Azure SQL 数据库中执行的操作。 授权由用户帐户的数据库[角色成员资格](https://msdn.microsoft.com/library/ms189121)和[对象级权限](https://msdn.microsoft.com/library/ms191291.aspx)控制。 授权是确定主体可以访问哪些安全对象资源以及哪些操作允许用于这些资源的过程。
 
@@ -144,7 +144,7 @@ Always Encrypted 将数据所有者与数据管理者区分开来，前者可查
 
 [SQL 数据库动态数据掩码](/azure/sql-database/sql-database-dynamic-data-masking-get-started)通过对非特权用户模糊化敏感数据来限制此类数据的泄露。 V12 版的 Azure SQL 数据库支持动态数据屏蔽。
 
-[动态数据屏蔽](/sql/relational-databases/security/dynamic-data-masking)允许用户指定在对应用层产生最小影响的前提下可以透露的敏感数据量，从而帮助防止未经授权的用户访问敏感数据。 它是一种基于策略的安全功能，会在针对指定的数据库字段运行查询后返回的结果集中隐藏敏感数据，同时保持数据库中的数据不变。
+[动态数据屏蔽](/sql/relational-databases/security/dynamic-data-masking)使您能够指定要显示的敏感数据量，从而对应用程序层的影响最小，从而有助于防止对敏感数据的未授权访问。 它是一种基于策略的安全功能，可以隐藏对指定数据库字段进行查询时获得的结果集中的敏感数据，不会更改数据库中的数据。
 
 > [!Note]
 > Azure 数据库管理员、服务器管理员或安全主管角色可以配置动态数据屏蔽。
@@ -155,13 +155,13 @@ Always Encrypted 将数据所有者与数据管理者区分开来，前者可查
 
 ![行级安全允许用户通过客户端应用访问表中的行](./media/database-security-overview/azure-database-fig4.png)
 
-访问限制逻辑位于数据库层，而不会脱离另一应用程序层中的数据。 每当从任一层尝试访问数据时，数据库系统就会应用访问限制。 这样就会通过减少安全系统的外围应用，使安全系统变得更加可靠和稳健。
+访问限制逻辑位于数据库层中，而不是在另一个应用层中远离数据。 数据库系统会在每次尝试从任何层进行数据访问时应用访问限制。 这样就会通过减少安全系统的外围应用，使安全系统变得更加可靠和稳健。
 
 行级安全性引入了基于谓词的访问控制。 它可进行灵活的集中式评估，能考虑元数据或管理员根据需要确定的任何其他标准。 谓词用作判断用户是否对基于用户属性的数据具有适当访问权限的标准。 可通过使用基于谓词的访问控制来实现基于标签的访问控制。
 
 ## <a name="proactive-monitoring"></a>主动监视
 
-SQL 数据库可提供“审核”和“威胁检测”功能，有助于保护数据。
+SQL 数据库可提供“审核”和“威胁检测”功能，有助于保护数据****。
 
 ### <a name="auditing"></a>审核
 
@@ -206,7 +206,7 @@ SQL 高级威胁防护 (ATP) 提供一组高级 SQL 安全功能，包括数据�
 
 [Azure 安全中心](https://azure.microsoft.com/documentation/services/security-center/)可帮助防范、检测和应对威胁。 它为 Azure 订阅提供集成的安全监控和策略管理。 它有助于检测可能会被忽视的威胁，适用于各种安全解决方案生态系统。
 
-[安全中心](../../security-center/security-center-alerts-data-services.md)通过为所有服务器和数据库提供安全性的可见性来帮助保护 SQL 数据库中的数据。 通过安全中心，可以：
+[安全中心](../../security-center/security-center-alerts-data-services.md)通过提供对所有服务器和数据库安全性的可见性，帮助您保护 SQL 数据库中的数据。 通过安全中心，可以：
 
 - 定义 SQL 数据库加密和审核的策略。
 - 跨所有订阅监视 SQL 数据库资源的安全性。
@@ -223,7 +223,7 @@ SQL 高级威胁防护 (ATP) 提供一组高级 SQL 安全功能，包括数据�
 
 可以在 Azure 安全中心配置 [SQL 信息保护策略](/azure/security-center/security-center-info-protection-policy)。
 
-## <a name="azure-marketplace"></a>Azure Marketplace
+## <a name="azure-marketplace"></a>Azure 市场
 
 Azure Marketplace 是一个在线应用程序和服务市场，初创公司和独立软件供应商 (ISV) 能够通过它为全球 Azure 客户提供解决方案。
 Azure 市场与 Microsoft Azure 合作伙伴生态系统结合为一个统一的平台，以便更好地服务于客户和合作伙伴。 可[运行搜索](https://azuremarketplace.microsoft.com/marketplace/apps?search=Database%20Security&page=1)，查看 Azure 市场中可用的数据库安全产品。

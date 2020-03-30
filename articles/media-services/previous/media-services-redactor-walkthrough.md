@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
 ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69997680"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒体分析进行面部修订演练
@@ -72,13 +72,13 @@ ms.locfileid: "69997680"
     ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. （可选）编辑 annotations.json 文件，例如增加边界框边界。 
-4. 右键单击第一步中的输出资产，选择“Redactor”，在“修正”模式下运行。 
+4. 右键单击第一步中的输出资产，选择“Redactor”，在“修正”**** 模式下运行。 
 
     ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
 5. 下载或共享最终修正的输出资产。 
 
-    ![面部修正](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
+    ![面部修订](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
 ## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure Media Redactor Visualizer 开源工具
 

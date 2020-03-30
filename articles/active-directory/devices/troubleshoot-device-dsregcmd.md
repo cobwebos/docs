@@ -1,6 +1,6 @@
 ---
-title: 使用 dsregcmd.exe 命令进行故障排除-Azure Active Directory
-description: 使用 dsregcmd.exe 的输出来了解中设备的状态 Azure AD
+title: 使用 dsregcmd 命令进行故障排除 - Azure 活动目录
+description: 使用 dsregcmd 的输出了解 Azure AD 中的设备状态
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,37 +11,37 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 676a1dd2435d17db2151bdf21f1989e7f182701b
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: 2cd782cdab625934fe60617142e5ac0baf756398
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136477"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128765"
 ---
-# <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>使用 dsregcmd.exe 命令对设备进行故障排除
+# <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>使用 dsregcmd 命令对设备进行故障排除
 
-必须以域用户帐户身份运行 dsregcmd.exe/status 实用程序。
+dsregcmd /状态实用程序必须作为域用户帐户运行。
 
 ## <a name="device-state"></a>设备状态
 
-此部分列出了设备联接状态参数。 下表列出了设备处于不同联接状态的条件。
+本节列出设备联接状态参数。 下表列出了设备处于各种联接状态的条件。
 
-| AzureAdJoined | EnterpriseJoined | DomainJoined | 设备状态 |
+| AzureAdad | 企业加入 | 域已加入 | 设备状态 |
 | ---   | ---   | ---   | ---   |
-| YES | 是 | 是 | Azure AD 联接 |
+| YES | 是 | 是 | Azure AD 已加入 |
 | 是 | 是 | YES | 已加入域 |
-| YES | 是 | YES | 已加入混合广告 |
-| 是 | YES | YES | 已联接本地 DRS |
+| YES | 是 | YES | 混合 AD 加入 |
+| 是 | YES | YES | 本地 DRS 已加入 |
 
 > [!NOTE]
-> Workplace Join （Azure AD 注册）状态显示在 "用户状态" 部分中
+> 工作区加入（Azure AD 已注册）状态显示在"用户状态"部分
 
-- **AzureAdJoined：** -如果设备已加入到 Azure AD，则设置为 "是"。 否则为 "NO"。
-- **EnterpriseJoined：** -如果设备已加入本地 DRS，则设置为 "是"。 设备不能同时为 EnterpriseJoined 和 AzureAdJoined。
-- **DomainJoined：** -如果设备已加入域（AD），则设置为 "是"。
-- **DomainName：** -如果设备已加入域，则设置为域的名称。
+- **AzureAdad：-** 如果设备已加入 Azure AD，则设置为"是"。 否则"否"。
+- **企业加入：** - 如果设备已加入本地 DRS，则设置为"是"。 设备不能同时是企业加入和 AzureAdAd.。
+- **域已加入：** - 如果设备已加入域 （AD），则设置为"是"。
+- **域名：** - 如果设备已加入域，则设置为域的名称。
 
-### <a name="sample-device-state-output"></a>设备状态输出示例
+### <a name="sample-device-state-output"></a>示例设备状态输出
 
 ```
 +----------------------------------------------------------------------+
@@ -56,14 +56,14 @@ ms.locfileid: "79136477"
 
 ## <a name="device-details"></a>设备详细信息
 
-仅当设备 Azure AD 联接或混合 Azure AD （未注册 Azure AD）时显示。 本部分列出了存储在云中的设备标识详细信息。
+仅当设备加入 Azure AD 或混合 Azure AD 加入（未注册 Azure AD）时显示。 本节列出了存储在云中的设备标识详细信息。
 
-- **DeviceId：** -Azure AD 租户中的设备的唯一 ID
-- **指纹：** -设备证书的指纹 
-- **DeviceCertificateValidity：** -设备证书的有效性
-- **KeyContainerId：** -与设备证书关联的设备私钥的 ContainerId
-- **KeyProvider：** -KeyProvider （硬件/软件）用于存储设备私钥。
-- **TpmProtected：** -如果设备私钥存储在硬件 TPM 中，则为 "是"。
+- **设备 ID：** - Azure AD 租户中设备的唯一 ID
+- **指纹：** - 设备证书的指纹 
+- **设备证书有效性：** - 设备证书的有效性
+- **密钥容器Id：** - 与设备证书关联的设备私钥的容器 Id
+- **密钥提供程序：** - 用于存储设备私钥的密钥提供程序（硬件/软件）。
+- **Tpm 保护：** - 如果设备私钥存储在硬件 TPM 中，则"是"。
 
 ### <a name="sample-device-details-output"></a>示例设备详细信息输出
 
@@ -83,13 +83,13 @@ ms.locfileid: "79136477"
 
 ## <a name="tenant-details"></a>租户详细信息
 
-仅当设备 Azure AD 联接或混合 Azure AD （未注册 Azure AD）时显示。 此部分列出了将设备加入到 Azure AD 时的常见租户详细信息。
+仅当设备加入 Azure AD 或混合 Azure AD 加入（未注册 Azure AD）时显示。 本节列出设备加入 Azure AD 时的常见租户详细信息。
 
 > [!NOTE]
-> 如果此部分中的 MDM Url 为空，则表示 MDM 未配置，或者当前用户不在 MDM 注册的范围内。 查看 Azure AD 中的移动设置以查看 MDM 配置。
+> 如果此部分中的 MDM URL 为空，则表示 MDM 未配置，或者当前用户不在 MDM 注册范围内。 检查 Azure AD 中的移动设置以查看 MDM 配置。
 
 > [!NOTE]
-> 即使您看到 MDM Url，这并不意味着设备由 MDM 管理。 如果租户具有用于自动注册的 MDM 配置（即使设备本身不受管理），则会显示此信息。 
+> 即使您看到 MDM URL，也不表示设备由 MDM 管理。 如果租户具有用于自动注册的 MDM 配置，即使设备本身未进行管理，也会显示该信息。 
 
 ### <a name="sample-tenant-details-output"></a>示例租户详细信息输出
 
@@ -124,22 +124,22 @@ ms.locfileid: "79136477"
 
 ## <a name="user-state"></a>用户状态
 
-此部分列出了当前登录到设备的用户的各种属性的状态。
+本节列出当前登录到设备的用户的各种属性的状态。
 
 > [!NOTE]
-> 命令必须在用户上下文中运行，才能检索有效状态。
+> 该命令必须在用户上下文中运行才能检索有效状态。
 
-- **NgcSet：** -如果为当前已登录用户设置 Windows Hello 密钥，则设置为 "是"。
-- **NgcKeyId：** -Windows Hello 密钥的 ID （如果为当前已登录用户设置了一个密钥）。
-- **CanReset：** -表示用户是否可以重置 Windows Hello 密钥。 
-- **可能的值：** -DestructiveOnly、NonDestructiveOnly、DestructiveAndNonDestructive 或 Unknown （如果错误）。 
-- **WorkplaceJoined：** -如果已将 Azure AD 注册帐户添加到当前已上下文中的设备，则设置为 "是"。
-- **WamDefaultSet：** -如果为已登录用户创建 WAM 默认 WebAccount，则设置为 "是"。 如果在管理上下文中运行 dsreg/status，则此字段可能显示错误。 
-- **WamDefaultAuthority：** -设置为 "组织" Azure AD。
-- **WamDefaultId：** -Always "https://login.microsoft.com" Azure AD。
-- **末尾为：** -默认 WAM WEBACCOUNT 的 WAM 提供程序的（Azure AD/MICROSOFT 帐户） GUID。 
+- **NgcSet：** - 如果为当前登录的用户设置了 Windows Hello 密钥，则设置为"是"。
+- **NgcKeyId：** - Windows Hello 密钥的 ID（如果为当前登录用户设置了密钥）。
+- **Can重置：** - 表示用户是否可以重置 Windows Hello 密钥。 
+- **可能的值：** - 仅破坏性、仅破坏性、破坏性和非破坏性值，如果错误，则未知。 
+- **工作区：-** 如果 Azure AD 注册帐户已添加到当前 NTUSER 上下文中的设备，则设置为"是"。
+- **WamDefaultSet：** - 如果为登录用户创建了 WAM 默认 Web 帐户，则设置为"是"。 如果 dsreg /状态从提升的命令提示符运行，则此字段可能会显示错误。 
+- **WamDefaultAuthority：** - 设置为 Azure AD 的"组织"。
+- **WamDefaultId：** -https://login.microsoft.com始终"""为 Azure AD。
+- **WamDefaultGUID：** - WAM 提供商的（Azure AD/Microsoft 帐户）GUID 用于默认 WAM Web 帐户。 
 
-### <a name="sample-user-state-output"></a>用户状态输出示例
+### <a name="sample-user-state-output"></a>示例用户状态输出
 
 ```
 +----------------------------------------------------------------------+
@@ -160,21 +160,21 @@ ms.locfileid: "79136477"
 
 ## <a name="sso-state"></a>SSO 状态
 
-对于 Azure AD 注册的设备，可忽略此部分。
+对于 Azure AD 注册设备，可以忽略此部分。
 
 > [!NOTE]
-> 此命令必须在用户上下文中运行，以检索该用户的有效状态。
+> 该命令必须在用户上下文中运行才能检索该用户的有效状态。
 
-- **AzureAdPrt：** -如果登录用户的设备上存在 PRT，则设置为 "是"。
-- **AzureAdPrtUpdateTime：** -设置为上次更新 PRT 时的 UTC 时间。
-- **AzureAdPrtExpiryTime：** -设置为在未续订时 PRT 将过期的时间（UTC）。
-- **AzureAdPrtAuthority：** -Azure AD 颁发机构 URL
-- **EnterprisePrt：** -如果设备已从本地 ADFS PRT，则设置为 "是"。 对于已加入混合 Azure AD 设备，设备可能同时具有 Azure AD 和本地 AD 中的 PRT。 本地加入的设备将只有企业 PRT。
-- **EnterprisePrtUpdateTime：** -设置为上次更新 Enterprise PRT 时的 UTC 时间。
-- **EnterprisePrtExpiryTime：** -设置为在未续订时 PRT 将过期的时间（UTC）。
-- **EnterprisePrtAuthority：** -ADFS 证书颁发机构 URL
+- **AzureAdPrt：** - 如果设备上存在已登录用户的 PRT，则设置为"是"。
+- **AzureAdPrt 更新时间：** - 设置为上次更新 PRT 时以 UTC 表示的时间。
+- **AzureAdPrt 过期时间：** - 设置为在 UTC 中，如果 PRT 未续订，它将过期。
+- **Azure AdPrt 授权：** - Azure AD 权限 URL
+- **企业 Prt：** - 如果设备具有来自本地 ADFS 的 PRT，则设置为"是"。 对于混合 Azure AD 联接设备，设备可以同时从 Azure AD 和本地 AD 同时具有 PRT。 本地连接的设备将仅具有企业 PRT。
+- **企业 Prt 更新时间：** - 设置为上次更新企业 PRT 时 UTC 的时间。
+- **企业 Prt 过期时间：** - 设置为在 UTC 中，如果 PRT 未续订，它将过期。
+- **企业授权：** - ADFS 授权 URL
 
-### <a name="sample-sso-state-output"></a>示例 SSO 状态输出
+### <a name="sample-sso-state-output"></a>样本 SSO 状态输出
 
 ```
 +----------------------------------------------------------------------+
@@ -195,23 +195,23 @@ ms.locfileid: "79136477"
 
 ## <a name="diagnostic-data"></a>诊断数据
 
-### <a name="pre-join-diagnostics"></a>预先联接诊断
+### <a name="pre-join-diagnostics"></a>加入前诊断
 
-仅当设备已加入域并且无法 Azure AD 联接混合时，才显示此部分。
+仅当设备已加入域且无法混合 Azure AD 联接时，才会显示此部分。
 
-本部分将执行各种测试来帮助诊断联接失败。 本节还包括上一个（？）的详细信息。 此信息包括错误阶段、错误代码、服务器请求 ID、服务器响应 http 状态、服务器响应错误消息。
+本节执行各种测试以帮助诊断联接失败。 本节还包括上一个 （？） 的详细信息。 此信息包括错误阶段、错误代码、服务器请求 ID、服务器响应 http 状态、服务器响应错误消息。
 
-- **用户上下文：** -运行诊断的上下文。 可能的值：系统、不提升的用户、提升的用户。 
+- **用户上下文：** - 运行诊断的上下文。 可能的值：系统、UN-高架用户、提升用户。 
 
    > [!NOTE]
-   > 由于实际联接是在系统上下文中执行的，因此在系统上下文中运行诊断最接近实际联接方案。 若要在系统上下文中运行诊断，必须在提升的命令提示符下运行 dsregcmd.exe/status 命令。
+   > 由于实际联接是在 SYSTEM 上下文中执行的，因此在 SYSTEM 上下文中运行诊断最接近实际联接方案。 要在 SYSTEM 上下文中运行诊断，必须从提升的命令提示符运行 dsregcmd /状态命令。
 
-- **客户端时间：** -UTC 格式的系统时间。
-- **AD 连接测试：** -test 执行到域控制器的连接测试。 此测试中的错误可能导致预检查阶段出现联接错误。
-- **AD 配置测试：** -测试读取并验证是否在本地 AD 林中正确配置了 SCP 对象。 此测试中的错误可能导致发现阶段出现联接错误，错误代码为0x801c001d。
-- **DRS 发现测试：** -Test 从发现元数据终结点获取 DRS 终结点并执行用户领域请求。 此测试中的错误可能导致发现阶段出现联接错误。
-- **Drs 连接测试：** -测试对 DRS 终结点执行基本连接测试。
-- **令牌获取测试：** 如果用户租户是联合的，则测试尝试获取 Azure AD 身份验证令牌。 此测试中的错误可能导致在身份验证阶段出现联接错误。 如果身份验证失败，则将尝试将同步联接作为回退，除非通过以下注册表项设置显式禁用回退。
+- **客户端时间：** - 系统时间（以 UTC 表示）。
+- **AD 连接测试：** - 测试对域控制器执行连接测试。 此测试中的错误可能会导致预检查阶段的联接错误。
+- **AD 配置测试：** - 测试读取并验证 SCP 对象是否在本地 AD 林中正确配置。 此测试中的错误可能会导致发现阶段的联接错误，错误代码 0x801c001d。
+- **DRS 发现测试：** - 测试从发现元数据终结点获取 DRS 终结点，并执行用户域请求。 此测试中的错误可能会导致发现阶段的联接错误。
+- **DRS 连接测试：** - 测试执行与 DRS 终结点的基本连接测试。
+- **令牌获取测试：** - 如果用户租户联合，测试尝试获取 Azure AD 身份验证令牌。 此测试中的错误可能会导致 auth 阶段的联接错误。 如果 auth 失败，将尝试将同步联接作为回退，除非使用以下注册表键设置显式禁用回退。
 ```
     Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
     Value: FallbackToSyncJoin
@@ -220,18 +220,18 @@ ms.locfileid: "79136477"
     Value: 0x1 -> Enabled
     Default (No Key): Enabled
  ```
-- **回退到同步-联接：** -设置为 "已启用"，如果上述注册表项阻止回退与身份验证失败的联接，则不存在。 此选项在 Windows 10 1803 和更高版本中可用。
-- **上一次注册：** -上次进行联接尝试的时间。 仅记录失败的联接尝试。
-- **错误阶段：** -已中止的联接的阶段。 可能的值包括预检查、发现、身份验证和联接。
-- **客户端错误：** -返回的客户端错误代码（HRESULT）。
-- **服务器 ErrorCode：** -服务器错误代码（如果向服务器发送了请求，并且服务器响应了错误代码）。 
-- **服务器消息：** -与错误代码一起返回的服务器消息。
-- **Https 状态：** -服务器返回的 Http 状态。
-- **请求 ID：** -发送到服务器的客户端 requestId。 与服务器端日志关联很有用。
+- **回退到同步连接：** - 设置为"已启用"，如果上述注册表项，以防止回退同步联接与 auth 失败， 不存在。 此选项可从 Windows 10 1803 及更高版本获得。
+- **上一次注册：** - 上次"加入"尝试发生的时间。 只记录失败的联接尝试。
+- **错误阶段：** - 已中止的联接阶段。 可能的值是预先检查、发现、auth、联接。
+- **客户端错误代码：** - 返回的客户端错误代码 （HRESULT）。
+- **服务器错误代码：** - 如果请求发送到服务器，服务器会使用错误代码进行回复，则服务器错误代码。 
+- **服务器消息：** - 服务器消息随错误代码一起返回。
+- **Https 状态：** - 服务器返回的 Http 状态。
+- **请求 ID：** - 发送到服务器的客户端请求 ID。 可用于与服务器端日志关联。
 
-### <a name="sample-pre-join-diagnostics-output"></a>示例预联接诊断输出
+### <a name="sample-pre-join-diagnostics-output"></a>样品预加入诊断输出
 
-下面的示例演示发现错误，诊断测试失败。
+下面的示例显示诊断测试失败，并出现发现错误。
 
 ```
 +----------------------------------------------------------------------+
@@ -255,7 +255,7 @@ ms.locfileid: "79136477"
 +----------------------------------------------------------------------+
 ```
 
-下面的示例演示了如何通过了诊断测试，但注册尝试失败，并出现目录错误，要求同步联接。 Azure AD Connect 同步作业完成后，设备将能够加入。
+下面的示例显示诊断测试正在通过，但注册尝试失败，出现目录错误，该错误预期用于同步联接。 Azure AD 连接同步作业完成后，设备将能够加入。
 
 ```
 +----------------------------------------------------------------------+
@@ -284,14 +284,14 @@ ms.locfileid: "79136477"
 +----------------------------------------------------------------------+
 ```
 
-### <a name="post-join-diagnostics"></a>联接后诊断
+### <a name="post-join-diagnostics"></a>加入后诊断
 
-此部分显示在加入云的设备上执行的检查的输出。
+本节显示在加入云的设备上执行的健全性检查的输出。
 
-- **AadRecoveryEnabled：** -如果是 "YES"，则表示存储在设备中的密钥不可用，并且设备已标记为要恢复。 下一个登录将触发恢复流，并重新注册设备。
-- **KeySignTest：** -如果 "通过" 设备密钥的运行状况良好。 如果 KeySignTest 失败，设备通常会标记为要恢复。 下一个登录将触发恢复流，并重新注册设备。 对于混合 Azure AD 联接的设备，恢复是静默的。 Azure AD 加入或 Azure AD 注册后，设备将提示用户进行身份验证，以便在必要时恢复并重新注册设备。 **KeySignTest 需要提升的权限。**
+- **启用 AadRecovery：** - 如果"是"，则存储在设备中的密钥不可用，并且设备标记为恢复。 下一个登录将触发恢复流并重新注册设备。
+- **密钥测试：** - 如果"通过"设备密钥处于良好运行状况。 如果 KeySignTest 失败，设备通常会标记为恢复。 下一个登录将触发恢复流并重新注册设备。 对于混合 Azure AD 联接设备，恢复为静默状态。 在 Azure AD 加入或 Azure AD 注册时，设备将提示用户身份验证以在必要时恢复和重新注册设备。 **密钥签名测试需要提升的权限。**
 
-#### <a name="sample-post-join-diagnostics-output"></a>示例联接后诊断输出
+#### <a name="sample-post-join-diagnostics-output"></a>样品连接后诊断输出
 
 ```
 +----------------------------------------------------------------------+
@@ -305,22 +305,22 @@ ms.locfileid: "79136477"
 
 ## <a name="ngc-prerequisite-check"></a>NGC 先决条件检查
 
-本部分执行 Windows Hello 企业版（WHFB）的预配的系统必备组件检查。 
+本节对为企业 （WHFB） 预配 Windows Hello 执行渗透检查。 
 
 > [!NOTE]
-> 如果用户已成功配置 WHFB，则不能在 dsregcmd.exe/status 中看到 NGC 必备组件检查详细信息。
+> 如果用户已成功配置 WHFB，则可能无法在 dsregcmd /状态中看到 NGC 先决条件检查详细信息。
 
-- **IsDeviceJoined：** -如果设备已加入到 Azure AD，则设置为 "是"。
-- **IsUserAzureAD：** -如果登录用户存在于 Azure AD 中，则设置为 "是"。
-- **PolicyEnabled：** -如果在设备上启用了 WHFB 策略，则设置为 "是"。
-- **PostLogonEnabled：** -如果 WHFB 注册由平台本机触发，则设置为 "是"。 如果设置为 "否"，则表示 Windows Hello 企业版注册由自定义机制触发
-- **DeviceEligible：** -如果设备满足在 WHFB 中注册所需的硬件要求，则设置为 "是"。
-- **SessionIsNotRemote：** -如果当前用户直接登录到设备而不是远程登录，则设置为 "是"。
-- **CertEnrollment：** -特定于 WHFB 证书信任部署，指示 WHFB 的证书注册机构。 如果 WHFB 组策略策略的源为 ""，则设置为 "注册机构"，如果源是 MDM，则设置为 "移动设备管理"。 否则为 "none"
-- **AdfsRefreshToken：** -特定于 WHFB 证书信任部署。 仅当 CertEnrollment 为 "注册机构" 时才存在。 指示设备是否为用户提供 enterprise PRT。
-- **AdfsRaIsReady：** -特定于 WHFB 证书信任部署。  仅当 CertEnrollment 为 "注册机构" 时才存在。 如果在支持 WHFB 的发现元数据中指示 ADFS 并且登录证书模板可用 *，* 则设置为 "是"。
-- **LogonCertTemplateReady：** -特定于 WHFB 证书信任部署。 仅当 CertEnrollment 为 "注册机构" 时才存在。 如果登录证书模板的状态有效，则设置为 "是"，有助于排查 ADFS RA 问题。
-- **PreReqResult：** -提供所有 WHFB 必备评估的结果。 如果在下次用户登录时 WHFB 注册将作为登录后任务启动，则设置为 "将预配"。
+- **已加入：** - 如果设备已加入 Azure AD，则设置为"是"。
+- **IsUserAzureAD：** - 如果登录的用户存在于 Azure AD 中，则设置为"是"。
+- **策略启用：** - 如果设备上启用了 WHFB 策略，则设置为"是"。
+- **启用后日志：** - 如果 WHFB 注册由平台本机触发，则设置为"是"。 如果设置为"否"，则表示"适用于企业的 Windows Hello"注册由自定义机制触发
+- **设备合格：** - 如果设备满足使用 WHFB 注册的硬件要求，则设置为"是"。
+- **会话不是远程：** - 如果当前用户直接登录到设备而不是远程登录到设备，则设置为"是"。
+- **证书注册：** - 特定于 WHFB 证书信任部署，指示 WHFB 的证书注册权限。 如果 WHFB 策略的来源是组策略，则设置为"注册权限"，如果源为 MDM，则设置为"移动设备管理"。 否则"无"
+- **AdfsRefreshToken：** - 特定于 WHFB 证书信任部署。 仅当 Cert注册是"注册权限"时才存在。 指示设备是否具有针对用户的企业 PRT。
+- **AdfsRaIs 就绪：** - 特定于 WHFB 证书信任部署。  仅当 Cert注册是"注册权限"时才存在。 如果 ADFS 在发现元数据中指示它支持*WHFB，并且*登录证书模板可用，则设置为"是"。
+- **登录证书就绪：** - 特定于 WHFB 证书信任部署。 仅当 Cert注册是"注册权限"时才存在。 如果登录证书模板的状态有效，则设置为"是"，并有助于排除 ADFS RA 的故障。
+- **预结果：** - 提供所有 WHFB 先决条件评估的结果。 如果 WHFB 注册将在用户下次登录时作为登录后任务启动，则设置为"将预配"。
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>示例 NGC 先决条件检查输出
 

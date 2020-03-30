@@ -3,24 +3,24 @@ title: 模板最佳实践
 description: 介绍创作 Azure 资源管理器模板的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: f623255a64404f0e041173fd29488ded24cd03b3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248263"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156406"
 ---
-# <a name="azure-resource-manager-template-best-practices"></a>Azure 资源管理器模板最佳做法
+# <a name="arm-template-best-practices"></a>ARM 模板最佳实践
 
-本文提供有关如何构造资源管理器模板的建议。 这些建议有助于在使用模板部署解决方案时避免出现常见问题。
+本文提供有关如何构造 Azure 资源管理器 （ARM） 模板的建议。 这些建议可帮助您避免使用 ARM 模板部署解决方案时的常见问题。
 
-有关如何管理 Azure 订阅的建议，请参阅 [Azure Enterprise 基架：出于合规目的监管订阅](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)。
+有关如何管理 Azure 订阅的建议，请参阅[Azure 企业基架：规范订阅治理](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)。
 
 有关如何生成在所有 Azure 云环境中工作的模板的建议，请参阅[开发用于实现云一致性的 Azure 资源管理器模板](templates-cloud-consistency.md)。
 
 ## <a name="template-limits"></a>模板限制
 
-将模板大小限制为 4 MB，每个参数文件大小限制为 64 KB。 4 MB 的限制适用于通过迭代资源定义和变量和参数的值展开后，模板的最终状态。 
+将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 4-MB 限制适用于模板使用迭代资源定义以及变量和参数值进行扩展后的最终状态。 
 
 还将受限于：
 
@@ -34,7 +34,7 @@ ms.locfileid: "79248263"
 
 ## <a name="resource-group"></a>资源组
 
-将资源部署到资源组时，资源组将存储资源的相关元数据。 元数据存储在资源组的位置。
+将资源部署到资源组时，资源组会存储与资源有关的元数据。 元数据存储在资源组的位置中。
 
 如果资源组的区域暂时不可用，则无法更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍将按预期运行，但你无法更新它们。 若要将风险降至最低，请将资源组和资源定位在同一区域中。
 
@@ -93,9 +93,9 @@ ms.locfileid: "79248263"
 
 * 请勿为资源类型的 API 版本使用参数。 资源的属性和值可能会因版本号的不同而异。 如果将 API 版本设置为参数，代码编辑器中的 IntelliSense 无法确定正确架构。 并且会在模板中将 API 版本硬编码。
 
-* 请尽量少使用 `allowedValues`。 仅当必须确保允许的选项中不含特定值时使用它。 如果使用 `allowedValues` 过于广泛，则可能会阻止列表保持最新状态，从而阻止有效的部署。
+* 请尽量少使用 `allowedValues`。 仅当必须确保允许的选项中不含特定值时使用它。 如果过于广泛地使用 `allowedValues`，可能会因未将列表保持最新而阻碍有效部署。
 
-* 当模板中的参数名称与 PowerShell 部署命令中的参数相同时，资源管理器会将 postfix FromTemplate 添加到模板参数中，以解决此命名冲突。 例如，如果在模板中包括一个名为“ResourceGroupName”的参数，则该参数会与 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的“ResourceGroupName”参数冲突。 在部署期间，系统会提示用户提供 ResourceGroupNameFromTemplate 的值。
+* 当模板中的参数名称与 PowerShell 部署命令中的参数相同时，资源管理器会将 postfix FromTemplate 添加到模板参数中，以解决此命名冲突****。 例如，如果在模板中包括一个名为“ResourceGroupName”**** 的参数，则该参数会与 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的“ResourceGroupName”**** 参数冲突。 在部署期间，系统会提示用户提供 ResourceGroupNameFromTemplate 的值****。
 
 ### <a name="security-recommendations-for-parameters"></a>有关参数的安全性建议
 
@@ -144,7 +144,7 @@ ms.locfileid: "79248263"
 
 使用[变量](template-variables.md)时，以下信息可以提供帮助：
 
-* 对变量名称使用 camel 大小写。
+* 对变量名称使用混合大小写。
 
 * 针对需要在模板中多次使用的值使用变量。 如果一次只使用一个值，则硬编码值可使模板更易于阅读。
 
@@ -152,7 +152,7 @@ ms.locfileid: "79248263"
 
 * 请勿为资源上的 `apiVersion` 使用变量。 API 版本决定资源的架构。 通常无法在不更改资源属性的情况下更改版本。
 
-* 不能在模板的“变量”节中使用 [reference](template-functions-resource.md#reference) 函数。 **reference** 函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 直接在模板的 **resources** 或 **outputs** 节中构造需要 **reference** 函数的值。
+* 不能在模板的“变量”节中使用 [reference](template-functions-resource.md#reference) 函数****。 **reference** 函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 直接在模板的 **resources** 或 **outputs** 节中构造需要 **reference** 函数的值。
 
 * 包含必须具有唯一性的资源名称的变量。
 
@@ -162,9 +162,9 @@ ms.locfileid: "79248263"
 
 ## <a name="resource-dependencies"></a>资源依赖关系
 
-在决定要设置的[依赖项](define-resource-dependency.md)时，请遵循以下准则：
+在决定要设置的依赖[项](define-resource-dependency.md)时，请使用以下准则：
 
-* 使用 reference 函数并传入资源名称以在需要共享属性的资源之间设置隐式依赖项。 在已定义隐式依赖项的情况下，请勿添加显式 `dependsOn` 元素。 此方法降低了设置不必要依赖项的风险。
+* 使用 reference 函数并传入资源名称以在需要共享属性的资源之间设置隐式依赖项****。 在已定义隐式依赖项的情况下，请勿添加显式 `dependsOn` 元素。 此方法降低了设置不必要依赖项的风险。
 
 * 将子资源设置为依赖于其父资源。
 
@@ -193,7 +193,7 @@ ms.locfileid: "79248263"
    ]
    ```
 
-* 如果在模板中使用“公共终结点”（例如 Azure Blob 存储公共终结点），请不要将命名空间硬编码。 使用 **reference** 函数可动态检索命名空间。 可以使用此方法将模板部署到不同的公共命名空间环境，而无需在模板中手动更改终结点。 在模板中将 API 版本设置为用于存储帐户的同一版本：
+* 如果在模板中使用“公共终结点”（例如 Azure Blob 存储公共终结点），请不要将命名空间硬编码****。 使用 **reference** 函数可动态检索命名空间。 可以使用此方法将模板部署到不同的公共命名空间环境，而无需在模板中手动更改终结点。 在模板中将 API 版本设置为用于存储帐户的同一版本：
    
    ```json
    "diagnosticsProfile": {
@@ -204,7 +204,7 @@ ms.locfileid: "79248263"
    }
    ```
    
-   如果在创建的同一模板中部署存储帐户，且存储帐户的名称不与模板中的其他资源共享，则在引用资源时，无需指定 provider 命名空间或 apiVersion。 下面的示例显示了简化的语法：
+   如果存储帐户部署在正在创建的同一模板中，并且存储帐户的名称未与模板中的其他资源共享，则在引用资源时不需要指定提供程序命名空间或 apiVersion。 下面的示例显示了简化的语法：
    
    ```json
    "diagnosticsProfile": {
@@ -279,5 +279,5 @@ ms.locfileid: "79248263"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关资源管理器模板文件结构的详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
-* 有关如何生成在所有 Azure 云环境中工作的模板的建议，请参阅[开发用于实现云一致性的 Azure 资源管理器模板](templates-cloud-consistency.md)。
+* 有关模板文件结构的信息，请参阅了解 ARM[模板的结构和语法](template-syntax.md)。
+* 有关如何构建适用于所有 Azure 云环境中的模板的建议，请参阅[为云一致性开发 ARM 模板](templates-cloud-consistency.md)。

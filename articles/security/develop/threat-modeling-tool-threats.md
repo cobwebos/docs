@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: eb006482b851e9094b82ec3d0753b74c05296994
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727832"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft 威胁建模工具威胁
 
 威胁建模工具是 Microsoft 安全开发生命周期 (SDL) 的核心要素。 当潜在安全问题处于无需花费过多成本即可相对容易解决的阶段，软件架构师可以使用威胁建模工具提前识别这些问题。 因此，它能大幅减少开发总成本。 此外，我们设计该工具时考虑到了非安全专家的体验，为他们提供有关创建和分析威胁模型的清晰指导，让所有开发人员都可以更轻松地使用威胁建模。
 
-> 请访问 **[威胁建模工具](threat-modeling-tool.md)** 以立即开始！
+> 请访问**[威胁建模工具](threat-modeling-tool.md)** 以立即开始！
 
 威胁建模工具可帮助解答某些问题，例如：
 
@@ -49,4 +49,4 @@ ms.locfileid: "68727832"
 
 ## <a name="next-steps"></a>后续步骤
 
-继续执行 **[威胁建模工具缓解措施](threat-modeling-tool-mitigations.md)** ，以了解使用 Azure 来缓解这些威胁可采取的不同方式。
+继续执行**[威胁建模工具缓解措施](threat-modeling-tool-mitigations.md)**，以了解使用 Azure 来缓解这些威胁可采取的不同方式。

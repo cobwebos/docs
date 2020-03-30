@@ -1,6 +1,6 @@
 ---
 title: Azure 事件中心 .NET Framework API 概述 | Microsoft 文档
-description: 本文概要介绍了一些关键的事件中心，.NET Framework 客户端 Api （管理和运行时）。
+description: 本文概要介绍了一些重要的事件中心 .NET Framework 客户端 API（管理和运行时）。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
 ms.openlocfilehash: b14759ed39037bfa172366a2ed8f8ca089786ec6
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137605"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>事件中心 .NET Framework API 概述

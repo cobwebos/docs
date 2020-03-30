@@ -1,7 +1,7 @@
 ---
-title: 针对本地和远程运行的模型 interpretability
+title: 本地和远程运行的模型可解释性
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习 SDK 来了解机器学习模型如何确定功能重要性并做出预测。
+description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了解机器学习模型如何确定特征重要性并做出预测。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,33 +10,33 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 19b7fbe5541bda5e6e2c265681e292f452cd57c0
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: a479982eeac325c9774e3858ec51643e8ba699c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044271"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064040"
 ---
-# <a name="model-interpretability-for-local-and-remote-runs"></a>针对本地和远程运行的模型 interpretability
+# <a name="model-interpretability-for-local-and-remote-runs"></a>本地和远程运行的模型可解释性
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何使用 Azure 机器学习 Python SDK 的 interpretability 包来了解模型为何会进行预测。 学习如何：
+本文介绍如何使用 Azure 机器学习 Python SDK 的可解释性包来了解模型做出其预测的原因。 学习如何：
 
-* 解释在本地和远程计算资源上定型的机器学习模型。
-* 在 Azure 运行历史记录中存储本地和全局说明。
-* 在[Azure 机器学习 studio](https://ml.azure.com)中查看 interpretability 的可视化效果。
-* 使用模型部署计分说明。
+* 解释在本地和远程计算资源上训练的机器学习模型。
+* 在 Azure 运行历史记录中存储本地和全局解释。
+* 在 [Azure 机器学习工作室](https://ml.azure.com)中查看可解释性可视化效果。
+* 使用模型部署评分解释器。
 
-有关详细信息，请参阅[Model interpretability in Azure 机器学习](how-to-machine-learning-interpretability.md)。
+有关详细信息，请参阅 [Azure 机器学习中的模型可解释性](how-to-machine-learning-interpretability.md)。
 
-## <a name="local-interpretability"></a>本地 interpretability
+## <a name="local-interpretability"></a>本地可解释性
 
-下面的示例演示如何在不联系 Azure 服务的情况下在本地使用 interpretability 包。
+以下示例演示如何在不联系 Azure 服务的情况下在本地使用可解释性包。
 
-1. 如果需要，请使用 `pip install azureml-interpret` 获取 interpretability 包。
+1. 如果需要，请使用 `pip install azureml-interpret` 获取可解释性包。
 
-1. 训练本地 Jupyter 笔记本中的示例模型。
+1. 在本地 Jupyter 笔记本中训练示例模型。
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -56,13 +56,13 @@ ms.locfileid: "76044271"
     model = clf.fit(x_train, y_train)
     ```
 
-1. 在本地调用说明。
-   * 若要初始化说明对象，请将模型和一些定型数据传递给说明的构造函数。
-   * 若要使您的说明和可视化效果更丰富，可以选择在进行分类时传入功能名称和输出类名称。
+1. 在本地调用解释器。
+   * 若要初始化解释器对象，请将模型和一些训练数据传递给该解释器的构造函数。
+   * 若要使解释和可视化效果更具参考性，可以选择传入特征名称和输出类名称（如果执行分类）。
 
-   以下代码块显示了如何在本地实例化带有 `TabularExplainer`、`MimicExplainer`和 `PFIExplainer` 的说明对象。
-   * `TabularExplainer` 调用下三个 SHAP explainers 之一（`TreeExplainer`、`DeepExplainer`或 `KernelExplainer`）。
-   * `TabularExplainer` 会自动为用例选择最适合的一个，但你可以直接调用其三个基础 explainers。
+   以下代码块演示如何在本地使用 `TabularExplainer`、`MimicExplainer` 和 `PFIExplainer` 实例化解释器对象。
+   * `TabularExplainer` 调用下面的三个 SHAP 解释器之一（`TreeExplainer`、`DeepExplainer` 或 `KernelExplainer`）。
+   * `TabularExplainer` 为用例自动选择最适合的解释器，但你可以直接调用三个基础解释器中的每一个。
 
     ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -111,9 +111,9 @@ ms.locfileid: "76044271"
                              classes=classes)
     ```
 
-### <a name="overall-global-feature-importance-values"></a>整体，全局特征重要性值
+### <a name="overall-global-feature-importance-values"></a>总体的全局特征重要性值
 
-请参阅以下示例，帮助你获取全局功能重要性值。
+请参阅以下示例来帮助获取全局特征重要性值。
 
 ```python
 
@@ -132,11 +132,11 @@ dict(zip(sorted_global_importance_names, sorted_global_importance_values))
 global_explanation.get_feature_importance_dict()
 ```
 
-### <a name="instance-level-local-feature-importance-values"></a>实例级别的本地功能重要性值
+### <a name="instance-level-local-feature-importance-values"></a>实例级的本地特征重要性值
 
-通过调用单个实例或一组实例的解释来获取本地功能重要性值。
+通过针对单个实例或一组实例调用解释来获取本地特征重要性值。
 > [!NOTE]
-> `PFIExplainer` 不支持本地说明。
+> `PFIExplainer` 不支持本地解释。
 
 ```python
 # get explanation for the first data point in the test set
@@ -147,14 +147,14 @@ sorted_local_importance_names = local_explanation.get_ranked_local_names()
 sorted_local_importance_values = local_explanation.get_ranked_local_values()
 ```
 
-## <a name="interpretability-for-remote-runs"></a>远程运行的 Interpretability
+## <a name="interpretability-for-remote-runs"></a>远程运行的可解释性
 
-下面的示例演示如何使用 `ExplanationClient` 类为远程运行启用 model interpretability。 它在概念上类似于本地过程，只不过：
+以下示例演示如何使用 `ExplanationClient` 类为远程运行启用模型可解释性。 它在概念上类似于本地过程，不过需要：
 
-* 使用远程运行中的 `ExplanationClient` 上传 interpretability 上下文。
-* 稍后在本地环境中下载上下文。
+* 在远程运行中使用 `ExplanationClient` 来上传可解释性上下文。
+* 稍后在本地环境中下载该上下文。
 
-1. 如果需要，请使用 `pip install azureml-contrib-interpret` 获取所需的包。
+1. 可根据需要使用 `pip install azureml-contrib-interpret` 获取所需的包。
 
 1. 在本地 Jupyter 笔记本中创建训练脚本。 例如，`train_explain.py` 。
 
@@ -187,9 +187,9 @@ sorted_local_importance_values = local_explanation.get_ranked_local_values()
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. 将 Azure 机器学习计算设置为计算目标，并提交训练运行。 有关说明，请参阅[设置用于模型定型的计算目标](how-to-set-up-training-targets.md#amlcompute)。 你还可能会发现[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)有帮助。
+1. 将 Azure 机器学习计算设置为计算目标，并提交训练运行。 有关说明，请参阅[设置模型训练的计算目标](how-to-set-up-training-targets.md#amlcompute)。 [示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)也可能很有帮助。
 
-1. 下载本地 Jupyter 笔记本中的说明。
+1. 下载本地 Jupyter 笔记本中的解释。
 
     ```python
     from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
@@ -207,13 +207,13 @@ sorted_local_importance_values = local_explanation.get_ranked_local_values()
     print('global importance names: {}'.format(global_importance_names))
     ```
 
-## <a name="raw-feature-transformations"></a>原始功能转换
+## <a name="raw-feature-transformations"></a>原始特征转换
 
-您可以选择在原始、未经转换功能而不是工程功能方面获得说明。 对于此选项，请将功能转换管道传递到 `train_explain.py`中的说明。 否则，说明会根据设计的功能提供说明。
+可以选择获取原始的未经转换的特征中的解释，而不是工程特征中的解释。 对于此选项，请将特征转换管道传递到 `train_explain.py` 中的解释器。 否则，解释器会根据工程特征提供解释。
 
-支持的转换的格式与[spark-sklearn-pandas](https://github.com/scikit-learn-contrib/sklearn-pandas)中所述的格式相同。 通常情况下，只要对单个列执行转换，就会支持任何转换，以便清楚地将其视为一对多。
+支持的转换格式与 [sklearn-pandas](https://github.com/scikit-learn-contrib/sklearn-pandas) 中所述的格式相同。 一般情况下，只要转换针对单个列运行，并且很明确地可以判断它们执行一对多的转换，则就会支持这些转换。
 
-使用 `sklearn.compose.ColumnTransformer` 或适用的转换器元组列表获取对原始功能的说明。 下面的示例使用 `sklearn.compose.ColumnTransformer`。
+使用 `sklearn.compose.ColumnTransformer` 或拟合的转换器元组列表获取原始特征的解释。 以下示例使用 `sklearn.compose.ColumnTransformer`。
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -247,7 +247,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
                                      transformations=preprocessor)
 ```
 
-如果希望使用合适的转换器元组列表运行该示例，请使用以下代码：
+如果你想要使用拟合的转换器元组列表运行示例，请使用以下代码：
 
 ```python
 from sklearn.pipeline import Pipeline
@@ -283,41 +283,41 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="visualizations"></a>可视化效果
 
-在本地 Jupyter 笔记本中下载说明后，可以使用可视化仪表板来了解和解释模型。
+下载本地 Jupyter 笔记本中的解释后，可以使用可视化仪表板来了解和解释模型。
 
-### <a name="global-visualizations"></a>全局可视化
+### <a name="global-visualizations"></a>全局可视化效果
 
-以下图形提供了定型模型的全局视图及其预测和说明。
+下图提供了已训练模型的全局视图及其预测和解释。
 
-|出|Description|
+|绘图|描述|
 |----|-----------|
 |数据浏览| 显示数据集的概述以及预测值。|
-|全局重要性|全局显示 top K （可配置的 K）重要功能。 有助于理解基础模型的全局行为。|
-|解释探索|说明功能如何影响模型的预测值的变化或预测值的概率。 显示功能交互的影响。|
-|摘要重要性|在所有数据点使用本地的功能重要性值，以显示每个功能对预测值的影响。|
+|全局重要性|全局显示排名靠前的 K（可配置的 K）个重要特征。 帮助了解基础模型的全局行为。|
+|解释探索|演示要素如何影响模型预测值的变化或预测值的概率。 显示特征交互的影响。|
+|摘要重要性|在所有数据点中使用本地特征重要性值来显示每个特征对预测值的影响分布。|
 
-[全局 ![可视化仪表板](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
+[![可视化仪表板全局](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
 
-### <a name="local-visualizations"></a>本地可视化
+### <a name="local-visualizations"></a>本地可视化效果
 
-您可以通过在绘图中选择单个数据点，为任何数据点加载本地功能重要的绘图。
+可以通过在绘图中选择单个数据点，来加载任何数据点的本地特征重要性绘图。
 
-|出|Description|
+|绘图|描述|
 |----|-----------|
-|本地重要性|全局显示前 K （可配置的 K）重要功能。 有助于说明特定数据点上基础模型的本地行为。|
-|Perturbation 探索|允许更改所选数据点的功能值，并观察对预测值所做的更改。|
-|单个条件预计（ICE）| 允许从最小值到最大值的功能值更改。 有助于说明在功能发生变化时数据点的预测如何变化。|
+|本地重要性|全局显示排名靠前的 K（可配置的 K）个重要特征。 帮助演示基础模型对特定数据点的本地行为。|
+|扰动探索|允许更改所选数据点的特征值，并观察对预测值所做的最终更改。|
+|个体条件预期 (ICE)| 允许特征值从最小值更改为最大值。 帮助演示在特征发生更改时数据点的预测如何更改。|
 
-[![可视化面板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
+[![可视化仪表板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
 
 
-[![可视化面板功能 Perturbation](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
+[![可视化仪表板功能扰动](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
 
 
 [![可视化仪表板 ICE 绘图](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
 
 > [!NOTE]
-> 在 Jupyter 内核开始之前，请确保为可视化仪表板启用小组件扩展。
+> 在 Jupyter 内核启动之前，请确保为可视化仪表板启用小组件扩展。
 
 * Jupyter 笔记本
 
@@ -333,7 +333,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     jupyter labextension install microsoft-mli-widget
     ```
 
-若要加载可视化面板，请使用以下代码。
+要加载可视化仪表板，请使用以下代码。
 
 ```python
 from interpret_community.widget import ExplanationDashboard
@@ -341,33 +341,33 @@ from interpret_community.widget import ExplanationDashboard
 ExplanationDashboard(global_explanation, model, x_test)
 ```
 
-### <a name="visualization-in-azure-machine-learning-studio"></a>Azure 机器学习 studio 中的可视化效果
+### <a name="visualization-in-azure-machine-learning-studio"></a>Azure 机器学习工作室中的可视化效果
 
-如果完成[远程 interpretability](#interpretability-for-remote-runs)步骤，可以在[Azure 机器学习 studio](https://ml.azure.com)中查看可视化仪表板。 此仪表板是上面所述的可视化面板的更简单版本。 它仅支持两个选项卡：
+如果已完成[远程可解释性](#interpretability-for-remote-runs)步骤，可以在 [Azure 机器学习工作室](https://ml.azure.com)中查看可视化仪表板。 此仪表板是前面所述的可视化仪表板的简化版本。 它仅支持两个选项卡：
 
-|出|Description|
+|绘图|描述|
 |----|-----------|
-|全局重要性|全局显示 top K （可配置的 K）重要功能。 有助于理解基础模型的全局行为。|
-|摘要重要性|在所有数据点使用本地的功能重要性值，以显示每个功能对预测值的影响。|
+|全局重要性|全局显示排名靠前的 K（可配置的 K）个重要特征。 帮助了解基础模型的全局行为。|
+|摘要重要性|在所有数据点中使用本地特征重要性值来显示每个特征对预测值的影响分布。|
 
-如果全局和本地说明都可用，则数据将填充这两个选项卡。 如果只有全局说明，则 "摘要重要性" 选项卡处于禁用状态。
+如果全局和本地解释均可用，数据将填充在这两个选项卡中。 如果只有全局解释可用，将会禁用“摘要重要性”选项卡。
 
-按照以下路径之一访问 Azure 机器学习 studio 中的可视化仪表板：
+通过以下途径之一访问 Azure 机器学习工作室中的可视化仪表板：
 
-* **试验**窗格（预览版）
-  1. 在左窗格中选择 "**试验**"，查看在 Azure 机器学习上运行的实验的列表。
-  1. 选择特定实验以查看该实验中的所有运行。
-  1. 选择一个 "运行"，然后**选择 "说明" 选项卡**，然后单击 "解释可视化" 仪表板。
+* “试验”窗格（预览）****
+  1. 在左侧窗格中选择“试验”，以查看在 Azure 机器学习中运行的试验列表。****
+  1. 选择特定的试验可查看该试验中的所有运行。
+  1. 选择一个运行，然后选择“解释”选项卡来查看解释可视化仪表板。****
 
-   [![可视化面板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![可视化仪表板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
-* **模型**窗格
-  1. 如果您按照[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步骤注册了原始模型，则可以在左窗格中选择**模型**来查看。
-  1. 选择模型，然后单击 "**解释**" 选项卡，查看 "解释可视化效果" 仪表板。
+* “模型”窗格****
+  1. 如果已遵循[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步骤注册了原始模型，则可以在左侧窗格中选择“模型”来查看它。****
+  1. 选择一个模型，然后选择“解释”选项卡来查看解释可视化仪表板。****
 
-## <a name="interpretability-at-inference-time"></a>在推理时间 Interpretability
+## <a name="interpretability-at-inference-time"></a>推理时的可解释性
 
-可以将说明与原始模型一起部署，并在推断时使用它来提供本地解释信息。 我们还提供了更轻量的评分 explainers，提高推断时间的 interpretability 性能。 部署较轻量评分说明的过程与部署模型类似，包括以下步骤：
+可将解释器与原始模型一起部署，并在推断时使用该解释器来提供本地解释信息。 我们还提供了更轻量的评分解释器来改善推断时的解释性能。 部署轻量评分解释器的过程类似于部署模型，包括以下步骤：
 
 1. 创建解释对象。 例如，可以使用 `TabularExplainer`：
 
@@ -382,7 +382,7 @@ ExplanationDashboard(global_explanation, model, x_test)
                                 transformations=transformations)
    ```
 
-1. 使用解释对象创建计分说明。
+1. 使用解释对象创建评分解释器。
 
    ```python
    from azureml.contrib.interpret.scoring.scoring_explainer import KernelScoringExplainer, save
@@ -396,7 +396,7 @@ ExplanationDashboard(global_explanation, model, x_test)
    save(scoring_explainer, directory=OUTPUT_DIR, exist_ok=True)
    ```
 
-1. 配置和注册使用计分说明模型的映像。
+1. 配置并注册使用评分解释器模型的映像。
 
    ```python
    # register explainer model using the path from ScoringExplainer.save - could be done on remote compute
@@ -408,7 +408,7 @@ ExplanationDashboard(global_explanation, model, x_test)
    print(scoring_explainer_model.name, scoring_explainer_model.id, scoring_explainer_model.version, sep = '\t')
    ```
 
-1. 作为一个可选步骤，您可以从云中检索评分说明并测试说明。
+1. （可选步骤）可以从云检索评分解释器，并测试解释。
 
    ```python
    from azureml.contrib.interpret.scoring.scoring_explainer import load
@@ -425,9 +425,9 @@ ExplanationDashboard(global_explanation, model, x_test)
    print(preds)
    ```
 
-1. 按照以下步骤将映像部署到计算目标：
+1. 遵循以下步骤将映像部署到计算目标：
 
-   1. 如果需要，请按照[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步骤注册原始预测模型。
+   1. 如果需要，请遵循[使用 Azure 机器学习部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步骤注册原始预测模型。
 
    1. 创建评分文件。
 
@@ -467,7 +467,7 @@ ExplanationDashboard(global_explanation, model, x_test)
          ```
    1. 定义部署配置。
 
-         此配置取决于模型的要求。 下面的示例定义一个配置，该配置使用一个 CPU 内核和 1 GB 的内存。
+         此配置取决于模型的要求。 以下示例定义一种使用 1 个 CPU 核心和 1 GB 内存的配置。
 
          ```python
          from azureml.core.webservice import AciWebservice
@@ -479,7 +479,7 @@ ExplanationDashboard(global_explanation, model, x_test)
                                                     description='Get local explanations for NAME_OF_THE_PROBLEM')
          ```
 
-   1. 创建具有环境依赖项的文件。
+   1. 创建包含环境依赖项的文件。
 
          ```python
          from azureml.core.conda_dependencies import CondaDependencies
@@ -502,16 +502,16 @@ ExplanationDashboard(global_explanation, model, x_test)
             print(f.read())
          ```
 
-   1. 创建一个已安装 g + + 的自定义 dockerfile。
+   1. 创建装有 g++ 的自定义 Dockerfile。
 
          ```python
          %%writefile dockerfile
          RUN apt-get update && apt-get install -y g++
          ```
 
-   1. 部署已创建的映像。
+   1. 部署创建的映像。
    
-         此过程大约需五分钟。
+         此过程大约需要 5 分钟。
 
          ```python
          from azureml.core.webservice import Webservice
@@ -558,4 +558,4 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解有关模型 interpretability 的详细信息](how-to-machine-learning-interpretability.md)
+[详细了解模型可解释性](how-to-machine-learning-interpretability.md)

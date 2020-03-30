@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 9456d975ffb6d7726166f9badbcb8fe0ccbe5256
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68965358"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>StorSimple 与 Azure 文件同步和 Data Box Edge 数据传输选项的比较 
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
  
-本文档概述用于将本地数据传输到 Azure 的选项，并在 Data Box Edge、Azure 文件同步与 StorSimple 8000 系列之间进行比较。
+本文档概述了本地数据传输到 Azure 的选项，比较：数据框边缘与 Azure 文件同步与 StorSimple 8000 系列。
 
 - **[Data Box Edge](/azure/databox-online/data-box-edge-overview)** - Data Box Edge 是一种本地网络设备，可将数据移入和移出 Azure，它还包含支持 AI 的 Edge 计算，用于在上传期间预处理数据。 Data Box Gateway 是该设备的虚拟版本，具有相同的数据传输功能。
 - **[Azure 文件同步](/azure/storage/files/storage-sync-files-deployment-guide)** - 使用 Azure 文件同步可将组织的文件共享集中在 Azure 文件中，同时不会失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 在 2018 年早期已宣布推出 Azure 文件同步的正式版。
@@ -35,7 +35,7 @@ ms.locfileid: "68965358"
 |硬件         |Microsoft 作为服务的一部分提供的物理设备 | 由客户提供 |Microsoft 作为服务的一部分提供的物理设备  |
 |数据格式      |自定义格式   |文件         |Blob 或文件    |
 |协议支持 |iSCSI          |SMB、NFS    | SMB 或 NFS      |
-|定价          |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure 文件同步](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
+|定价          |[斯托简单](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure 文件同步](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 
 ## <a name="next-steps"></a>后续步骤
 

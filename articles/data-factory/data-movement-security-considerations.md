@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/15/2018
-ms.openlocfilehash: e809c88d8a0a0efeb12e9f2a472a497349fdfa1b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/11/2020
+ms.openlocfilehash: bee627ade4f66206cd5254fc32bc7aa9973c7bee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927510"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131319"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -45,7 +45,7 @@ ms.locfileid: "74927510"
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。 有关所有 Azure 合规性产品检查的最新列表 - https://aka.ms/AzureCompliance 。
+如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。 有关所有 Azure 合规性产品检查的最新列表 - https://aka.ms/AzureCompliance。
 
 在本文中，我们将查看以下两个数据移动方案中的安全注意事项： 
 
@@ -65,7 +65,7 @@ ms.locfileid: "74927510"
 如果云数据存储支持 HTTPS 或 TLS，则数据工厂中数据移动服务与云数据存储之间的所有数据传输均通过安全通道 HTTPS 或 TLS 进行。
 
 > [!NOTE]
-> 在与数据库相互传输数据时，与 Azure SQL 数据库和 Azure SQL 数据仓库的所有连接需要经过加密 (SSL/TLS)。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 **true**。 对于 Azure 存储，可以在连接字符串中使用 **HTTPS**。
+> 在与数据库相互传输数据时，与 Azure SQL 数据库和 Azure SQL 数据仓库的所有连接需要经过加密 (SSL/TLS)。 在使用 JSON 创作管道时，请在连接字符串中添加 encryption 属性并将其设置为 **true**。 对于 Azure 存储，可以在连接字符串中使用**HTTPS。**
 
 > [!NOTE]
 > 若要在从 Oracle 移动数据时启用传输加密，请遵循以下选项之一：
@@ -79,9 +79,9 @@ ms.locfileid: "74927510"
 某些数据存储支持静态数据加密。 我们建议为这些数据存储启用数据加密机制。 
 
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
-Azure SQL 数据仓库中的透明数据加密 (TDE) 可帮助对静态数据进行实时加密和解密，避免恶意活动造成的威胁。 此行为对客户端透明。 有关详细信息，请参阅[保护 SQL 数据仓库中的数据库](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
+Azure SQL 数据仓库中的透明数据加密 (TDE) 可帮助对静态数据进行实时加密和解密，避免恶意活动造成的威胁。 此行为对客户端透明。 有关详细信息，请参阅[保护 SQL 数据仓库中的数据库](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
 
-#### <a name="azure-sql-database"></a>Azure SQL Database
+#### <a name="azure-sql-database"></a>Azure SQL 数据库
 Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅 [SQL 数据库和数据仓库的透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
@@ -107,19 +107,19 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和
 使用命令通道可在数据工厂中的数据移动服务与自承载集成运行时之间通信。 通信包含与活动相关的信息。 数据信道用于在本地数据存储和云数据存储之间传输数据。    
 
 ### <a name="on-premises-data-store-credentials"></a>本地数据存储凭据
-凭据可以存储在数据工厂中，也可以在运行时从 Azure Key Vault 中[引用](store-credentials-in-key-vault.md)。 如果将凭据存储在数据工厂中，则始终会在自承载集成运行时对其进行加密。 
+凭据可以存储在数据工厂中，也可以在运行时从 Azure 密钥保管库[由数据工厂引用](store-credentials-in-key-vault.md)。 如果将凭据存储在数据工厂中，则凭据会始终以加密方式存储在自承载集成运行时上。 
  
-- **在本地存储凭据**。 如果直接将**AzDataFactoryV2LinkedService** CMDLET 与 JSON 中的连接字符串和凭据一起使用，则链接服务会加密并存储在自承载集成运行时中。  在这种情况下，凭据将通过 azure 后端服务（此服务非常安全）传递到自承载的集成计算机（在该服务中，最终会对其进行加密和存储）。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。
+- **在本地存储凭据**。 如果直接结合 JSON 中内联的连接字符串和凭据使用 **Set-AzDataFactoryV2LinkedService** cmdlet，则链接服务将加密并存储在自承载集成运行时中。  在这种情况下，凭据将通过 Azure 后端服务（此服务非常安全）传递到自承载集成计算机（在其中最终会对其进行加密和存储）。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。
 
 - **在 Azure Key Vault 中存储凭据**。 还可以将数据存储的凭据存储在 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 中。 数据工厂在执行某个活动期间会检索该凭据。 有关详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。
 
-- 在**本地存储凭据，而无需通过 Azure 后端将凭据流动到自承载集成运行时**。 如果要在自承载集成运行时本地加密并存储凭据，而无需通过数据工厂后端流式传输凭据，请遵循在[Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)中的步骤。 所有连接器都支持此选项。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。 
+- **在本地存储凭据，而无需通过 Azure 后端将凭据传递到自承载集成运行时**。 如果想要在自承载集成运行时本地加密并存储凭据，而不必通过数据工厂后端传递凭据，请按照[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)中的步骤操作。 所有连接器都支持此选项。 自承载集成运行时使用 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 来加密敏感数据和凭据信息。 
 
-   使用**AzDataFactoryV2LinkedServiceEncryptedCredential** cmdlet 可加密链接服务凭据，并在链接服务中加密敏感详细信息。 然后，可以使用返回的 JSON （使用连接字符串中的**EncryptedCredential**元素）创建链接服务，方法是使用**AzDataFactoryV2LinkedService** cmdlet 创建链接服务。  
+   使用 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** cmdle 可加密链接服务凭据和链接服务中的敏感详细信息。 然后，可以通过 **Set-AzDataFactoryV2LinkedService** cmdlet 使用返回的 JSON（结合连接字符串中的 **EncryptedCredential** 元素）创建链接服务。  
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>在自承载集成运行时中加密链接服务时使用的端口
-默认情况下，PowerShell 在具有自承载集成运行时的计算机上使用端口8060来确保通信安全。 如有必要，可以更改此端口。  
+默认情况下，PowerShell 在装有自承载集成运行时的计算机上使用端口 8060 来确保通信安全。 如有必要，可以更改此端口。  
 
 ![网关的 HTTPS 端口](media/data-movement-security-considerations/https-port-for-gateway.png)
 
@@ -135,15 +135,15 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下表根据混合数据移动的源和目标位置的不同组合，汇总了有关网络和自承载集成运行时的配置建议。
 
-| Source      | 目标                              | 网络配置                    | 集成运行时安装                |
+| 源      | 目标                              | 网络配置                    | 集成运行时安装                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 应在虚拟网络中的 Azure 虚拟机上安装自承载集成运行时。  |
-| 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（专用对等互连）           | 应在虚拟网络中的 Azure 虚拟机上安装自承载集成运行时。  |
-| 本地 | 具有公共终结点的基于 Azure 的服务 | ExpressRoute （Microsoft 对等互连）            | 可在本地或 Azure 虚拟机上安装自承载集成运行时。 |
+| 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 自承载集成运行时应安装在虚拟网络中的 Azure 虚拟机上。  |
+| 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（专用对等互连）           | 自承载集成运行时应安装在虚拟网络中的 Azure 虚拟机上。  |
+| 本地 | 具有公共终结点的基于 Azure 的服务 | 快速路由（微软对等）            | 自承载集成运行时可以在本地安装，也可以安装在 Azure 虚拟机上。 |
 
 下图显示了如何使用自承载集成运行时通过 ExpressRoute 和 IPSec VPN（具有 Azure 虚拟网络）在本地数据库和 Azure 服务之间移动数据：
 
-**ExpressRoute**
+**快速路线**
 
 ![结合使用 ExpressRoute 和网关](media/data-movement-security-considerations/express-route-for-gateway.png) 
 
@@ -151,9 +151,9 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 ![将 IPSec VPN 与网关配合使用](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>针对 IP 地址的防火墙配置和允许列表设置
+### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> 防火墙配置和针对 IP 地址设置的允许列表
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求  
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求    
 在企业中，企业防火墙在组织的中央路由器上运行。 Windows 防火墙在安装自承载集成运行时的本地计算机上作为守护程序运行。 
 
 下表提供了企业防火墙的出站端口和域要求：
@@ -161,7 +161,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> 可能需要根据相应数据源的要求，在企业防火墙级别管理端口或设置域的允许列表。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
+> 可能需要按相应数据源的要求在企业防火墙级别为域管理端口或设置允许列表。 此表仅以 Azure SQL 数据库、Azure SQL 数据仓库和 Azure Data Lake Store 为例。   
 
 下表提供了 Windows 防火墙的入站端口要求：
 
@@ -171,26 +171,26 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 ![网关端口要求](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
-#### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>数据存储中的 IP 配置和允许列表设置
-云中的某些数据存储还要求你允许访问存储的计算机的 IP 地址。 确保在防火墙中相应地允许或配置了自承载集成运行时计算机的 IP 地址。
+#### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>IP 配置和数据存储中设置的允许列表
+云中的一些数据存储还要求你允许访问存储的计算机的 IP 地址。 确保已在防火墙中相应地允许或配置自承载集成运行时计算机的 IP 地址。
 
-以下云数据存储要求你允许自承载集成运行时计算机的 IP 地址。 默认情况下，某些数据存储可能不需要允许列表。 
+以下云数据存储要求允许自承载集成运行时计算机的 IP 地址。 默认情况下，其中一些数据存储可能不需要允许列表。 
 
 - [Azure SQL 数据库](../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
-- [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
+- [Azure 数据湖存储](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
-- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [亚马逊红移](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
 **是否可在不同的数据工厂之间共享自承载集成运行时？**
 
-可以。 [此处](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/)提供了更多详细信息。
+是的。 更多细节[在这里](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/)。
 
 **需要满足哪些端口要求才能让自承载集成运行时正常工作？**
 
-自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口8060。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源或目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和允许列表设置 IP 地址](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)部分。 
+自承载集成运行时与访问 Internet 建立基于 HTTP 的连接。 必须打开出站端口 443，才能让自承载集成运行时建立此连接。 仅在计算机级别（不是企业防火墙级别）为凭据管理器应用程序打开入站端口 8060。 如果使用 Azure SQL 数据库或 Azure SQL 数据仓库作为源或目标，则还需要打开端口 1433。 有关详细信息，请参阅[防火墙配置和针对 IP 地址设置的允许列表](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)部分。 
 
 
 ## <a name="next-steps"></a>后续步骤

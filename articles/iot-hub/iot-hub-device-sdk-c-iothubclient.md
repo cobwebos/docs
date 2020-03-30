@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: robinsh
 ms.openlocfilehash: fd3e02101f206ebdb183da87089eadcbc9619b33
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68883173"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>适用于 C 语言的 Azure IoT 设备 SDK - 有关 IoTHubClient 的详细信息
 
-[适用于 C 语言的 Azure IoT 设备 SDK](iot-hub-device-sdk-c-intro.md) 是本系列中的第一篇文章，介绍了**适用于 C 语言的 Azure IoT 设备 SDK**。该文章已说明 SDK 中有两个体系结构层。 底层是 **IoTHubClient** 库，用于直接管理与 IoT 中心的通信。 另有一个**序列化程序**库，它构建在 SDK 的顶部，可提供序列化服务。 在本文中，我们将提供有关 **IoTHubClient** 库的更多详细信息。
+[C 的 Azure IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)是本系列中介绍 C 的**Azure IoT 设备 SDK**的第一篇文章。本文解释说，SDK 中有两个体系结构层。 底层是 **IoTHubClient** 库，用于直接管理与 IoT 中心的通信。 另有一个**序列化程序**库，它构建在 SDK 的顶部，可提供序列化服务。 在本文中，我们将提供有关**IoTHubClient**库的其他详细信息。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -64,9 +64,9 @@ IoTHubClient_Destroy(iotHubClientHandle);
 * IoTHubClient\_LL\_SetMessageCallback
 * IoTHubClient\_LL\_Destroy
 
-这些函数的 API 名称中都包含“LL”。 除了名称的 **LL** 部分之外，其中每个函数的参数都与其非 LL 的对应项相同。 但是，这些函数的行为有一个重要的差异。
+这些函数都包括 API 名称中的**LL。** 除了名称的 **LL** 部分之外，其中每个函数的参数都与其非 LL 的对应项相同。 但是，这些函数的行为有一个重要的差异。
 
-当你调用 **IoTHubClient\_CreateFromConnectionString** 时，基础库将创建在后台运行的新线程。 此线程将事件发送到 IoT 中心以及从 IoT 中心接收消息。 使用 **LL** API 时不会创建此类线程。 创建后台线程是为了给开发人员提供方便。 无需担心如何明确与 IoT 中心相互发送和接收消息 -- 此操作会在后台自动进行。 相比之下，**LL** API 可让你根据需要显式控制与 IoT 中心的通信。
+调用 **IoTHubClient\_CreateFromConnectionString** 时，基础库将创建在后台运行的新线程。 此线程将事件发送到 IoT 中心以及从 IoT 中心接收消息。 使用**LL** API 时不会创建此类线程。 创建后台线程是为了给开发人员提供方便。 无需担心如何明确与 IoT 中心相互发送和接收消息 -- 此操作会在后台自动进行。 相反，**如果需要，LL** API 可以显式控制与 IoT 中心的通信。
 
 为了更好地理解此概念，让我们看一个示例：
 
@@ -74,7 +74,7 @@ IoTHubClient_Destroy(iotHubClientHandle);
 
 同样，使用 **IoTHubClient\_SetMessageCallback** 注册消息的回调函数时，则会指示 SDK 在收到消息时让后台线程调用回调函数（独立于主线程）。
 
-**LL** API 不会创建后台线程。 必须调用一个新 API 明确地与 IoT 中心之间相互发送和接收数据。 以下示例就将此进行演示。
+**LL** API 不创建后台线程。 必须调用一个新 API 明确地与 IoT 中心之间相互发送和接收数据。 以下示例就将此进行演示。
 
 SDK 中随附的 **iothub\_client\_sample\_http** 应用程序演示了较低级别 API。 在该示例中，使用如下代码将事件发送到 IoT 中心：
 
@@ -86,7 +86,7 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-前三行创建消息，最后一行发送事件。 但是，如前所述，发送事件意味着数据只是放在缓冲区中。 当我们调用 **IoTHubClient\_LL\_SendEventAsync** 时，不会在网络上传输任何内容。 若要实际将数据引入 IoT 中心，必须调用 **IoTHubClient\_LL\_DoWork**，如以下示例所示：
+前三行创建消息，最后一行发送事件。 但是，如前所述，发送事件意味着数据只是放在缓冲区中。 当我们调用 **IoTHubClient\_LL\_SendEventAsync** 时，不会在网络上传输任何内容。 要实际将数据引入 IoT 中心，必须调用 **IoTHubClient\_LL\_DoWork**，如以下示例所示：
 
 ```C
 while (1)
@@ -96,7 +96,7 @@ while (1)
 }
 ```
 
-此代码（来自 **iothub\_client\_sample\_http** 应用程序）反复调用 **IoTHubClient\_LL\_DoWork**。 每次 **IoTHubClient\_LL\_DoWork** 被调用时，它会将某些事件从缓冲区发送到 IoT 中心，并检索正在发送到设备的排队消息。 对于后一种情况，意味着如果已注册消息的回调函数，则调用回调（假设所有消息都已加入队列）。 使用如下代码来注册此类回调函数：
+此代码（来自 **iothub\_client\_sample\_http** 应用程序）反复调用 **IoTHubClient\_LL\_DoWork**。 每次 **IoTHubClient\_LL\_DoWork** 被调用时，会将某些事件从缓冲区发送到 IoT 中心，并检索正在发送到设备的排队消息。 对于后一种情况，意味着如果已注册消息的回调函数，则调用回调（假设所有消息都已加入队列）。 使用如下代码来注册此类回调函数：
 
 ```C
 IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext)
@@ -216,7 +216,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 
 对于前两个返回代码，**IoTHubClient** 库会将消息发送到 IoT 中心，指示应该从设备队列中删除消息且不再传送。 最终结果一样（从设备队列删除消息），但仍记录是已接受还是已拒绝消息。  对于可听取反馈并了解设备是已接受还是拒绝特定消息的消息发送者而言，记录这种区分信息的功能非常有用。
 
-在最后一个案例中，消息也会发送到 IoT 中心，但指示应重新传送消息。 如果遇到了错误但想要再次尝试处理消息，通常会放弃消息。 相比之下，当遇到不可恢复的错误（或者只是决定你不想要处理消息）时，拒绝消息是适当的方式。
+在最后一个案例中，消息也会发送到 IoT 中心，但指示应重新传送消息。 如果遇到了错误但想要再次尝试处理消息，通常会放弃消息。 相比之下，遇到不可恢复的错误（或者只是决定你不想要处理消息）时，拒绝消息是适当的方式。
 
 在任何情况下，请留意不同的返回代码，以便能够推测 **IoTHubClient** 库的行为。
 
@@ -235,9 +235,9 @@ iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, A
 HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY
 ```
 
-此字符串中有四条信息：IoT 中心名称、IoT 中心后缀、设备 ID 和共享访问密钥。 在 Azure 门户中创建 IoT 中心实例时，可以获取 IoT 中心的完全限定域名 (FQDN) - 它提供了 IoT 中心名称（FQDN 的第一个部分）和 IoT 中心后缀（FQDN 的其余部分）。 向 IoT 中心注册设备时，可以获取设备 ID 和共享访问密钥（如[前一篇文章](iot-hub-device-sdk-c-intro.md)中所述）。
+此字符串包含四个信息片段：IoT 中心名称、IoT 中心后缀、设备 ID 和共享访问密钥。 在 Azure 门户中创建 IoT 中心实例时，可以获取 IoT 中心的完全限定域名 (FQDN) - 它提供了 IoT 中心名称（FQDN 的第一个部分）和 IoT 中心后缀（FQDN 的其余部分）。 当您向 IoT 中心注册设备时，您将获得设备 ID 和共享访问密钥（如[上一篇文章中](iot-hub-device-sdk-c-intro.md)所述）。
 
-**IoTHubClient\_CreateFromConnectionString** 提供了初始化库的方式。 如果需要，可以使用其中的每个参数而不是设备连接字符串来创建新的 **IOTHUB\_CLIENT\_HANDLE**。 使用以下代码被实现此目的：
+**IoTHubClient\_CreateFromConnectionString** 提供了初始化库的方式。 如果需要，可以使用其中的每个参数而不是设备连接字符串来创建新的 **IOTHUB\_CLIENT\_HANDLE**。 使用以下代码即可实现此目的：
 
 ```C
 IOTHUB_CLIENT_CONFIG iotHubClientConfig;
@@ -251,7 +251,7 @@ IOTHUB_CLIENT_HANDLE iotHubClientHandle = IoTHubClient_LL_Create(&iotHubClientCo
 
 结果将与使用 **IoTHubClient\_CreateFromConnectionString** 相同。
 
-显然，更想要使用 **IoTHubClient\_CreateFromConnectionString**，而不是这种更繁琐的初始化方法。 但请记住，当在 IoT 中心注册设备时，获得的是设备 ID 和设备密钥（而不是连接字符串）。 [前一篇文章](iot-hub-device-sdk-c-intro.md)中介绍的设备资源管理器 SDK 工具使用 **Azure IoT 服务 SDK** 中的库，通过设备 ID、设备密钥和 IoT 中心主机名创建设备连接字符串。 因此调用 **IoTHubClient\_LL\_Create** 可能更好，因为这样可以免除生成连接字符串的步骤。 使用任何一种方法都很方便。
+显然，更想要使用 **IoTHubClient\_CreateFromConnectionString**，而不是这种更繁琐的初始化方法。 但请记住，在 IoT 中心注册设备时，获得的是设备 ID 和设备密钥（而不是连接字符串）。 [前一篇文章](iot-hub-device-sdk-c-intro.md)中介绍的设备资源管理器** SDK 工具使用 **Azure IoT 服务 SDK** 中的库，通过设备 ID、设备密钥和 IoT 中心主机名创建设备连接字符串。 因此调用 **IoTHubClient\_LL\_Create** 可能更好，因为这样可以免除生成连接字符串的步骤。 使用任何一种方法都很方便。
 
 ## <a name="configuration-options"></a>配置选项
 
@@ -264,7 +264,7 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 有一些常用的选项：
 
-* **SetBatching**（布尔值）– 如果为 **true**，则将数据分批发送到 IoT 中心。 如果为 **false**，则逐个发送消息。 默认值为 **false**。 支持通过 AMQP/AMQP-WS 进行批处理，以及在 D2C 消息上添加系统属性。
+* **SetBatching**（布尔值）– 如果为 **true**，则将数据分批发送到 IoT 中心。 如果为 **false**，则逐个发送消息。 默认值为**false**。 支持通过 AMQP/AMQP-WS 进行批处理，以及在 D2C 消息上添加系统属性。
 
 * **Timeout**（无符号整数）– 此值以毫秒表示。 如果发送 HTTPS 请求或接收响应所花费的时间超过此时间，即表示连接超时。
 
@@ -272,7 +272,7 @@ batching 选项非常重要。 默认情况下，库将逐个引入事件（单�
 
 ## <a name="next-steps"></a>后续步骤
 
-本文详细探讨了**适用于 C 语言的 Azure IoT 设备 SDK** 中的 **IoTHubClient** 库的行为。参考这些信息可以充分了解 **IoTHubClient** 库的功能。 本系列中的第二篇文章是[适用于 C 语言的 Azure IoT 设备 SDK - 序列化程序](iot-hub-device-sdk-c-serializer.md)，它提供了有关**序列化程序**库的类似详细信息。
+本文详细介绍了**在 Azure IoT 设备 SDK 中**找到的**IoTHubClient**库的行为。有了这些信息，您应该能够很好地了解**IoTHubClient**库的功能。 本系列中的第二篇文章是[适用于 C 语言的 Azure IoT 设备 SDK - 序列化程序](iot-hub-device-sdk-c-serializer.md)，它提供了有关**序列化程序**库的类似详细信息。
 
 若要详细了解如何针对 IoT 中心进行开发，请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 

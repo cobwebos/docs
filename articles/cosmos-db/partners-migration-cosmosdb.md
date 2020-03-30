@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988169"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 迁移和应用程序开发合作伙伴
@@ -19,13 +19,13 @@ ms.locfileid: "76988169"
 
 ## <a name="migration-tools"></a>迁移工具
 
-|**合作伙伴**  |**功能和体验**  |**支持的国家/地区**  |**联系人**  |
+|**Partner**  |**功能和体验**  |**支持的国家/地区**  |**联系人**  |
 |---------|---------|---------|---------|
-|![Striim][2]    |  从各种数据源[将实时数据移至 Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/)。 <br/> Striim 简化了将数据从各种本地源（包括企业文档和关系数据库、传感器和日志文件）实时收集和移动到 Azure Cosmos DB。 |   USA   |  [网站](https://www.striim.com/)       |
+|![Striim][2]    |  从各种数据源[将实时数据移至 Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/)。 <br/> Striim 简化了从各种本地源（包括企业文档和关系数据库、传感器和日志文件）到 Azure Cosmos DB 中实时收集和移动数据的过程。 |   USA   |  [网站](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>系统集成商合作伙伴
 
-|**合作伙伴**  |**功能和体验**  |**支持的国家/地区**  |**联系人**  |
+|**Partner**  |**功能和体验**  |**支持的国家/地区**  |**联系人**  |
 |---------|---------|---------|---------|
 | ![10thMagnitude][13] | NoSQL 迁移；新应用开发 | USA | [网站](https://www.10thmagnitude.com/)|
 |![Altoros Development LLC][3]    |  NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发 |   美国、挪威、芬兰、白俄罗斯、阿根廷 |  [网站](https://www.altoros.com/)     |
@@ -36,7 +36,7 @@ ms.locfileid: "76988169"
 | ![Capgemini][14] | NoSQL 迁移、应用创新（现有应用）、新应用开发 | 美国、法国、英国、荷兰、芬兰  | [网站](https://www.capgemini.com/) | 
 |![Coeo][7]     |   应用创新（现有应用）、 <br/> 新应用开发 |    英国     |  [网站](https://www.coeo.com/)       |
 | ![Cognizant][15] | NoSQL 迁移 |美国、加拿大、英国、丹麦、荷兰、瑞士、澳大利亚、日本 | [网站](https://www.cognizant.com/)|
-|![Infosys][8]     |  NoSQL 迁移       |    全球     |  [网站](https://www.infosys.com/)       |
+|![Infosys][8]     |  NoSQL 迁移       |    Global     |  [网站](https://www.infosys.com/)       |
 | ![Lagash][16] | NoSQL 迁移、 <br/> 新应用开发 | 阿根廷、智利、哥伦比亚、墨西哥| [网站](https://www.lagash.com/)|
 | ![Lambda3 Informatics][17] | NoSQL 迁移、 <br/> 新应用开发 | 巴西| [网站](https://www.lambda3.com.br/)|
 |![Neal Analytics][9]     |     应用开发（新应用）    |    USA     |  [网站](https://www.nealanalytics.com/)       |

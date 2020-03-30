@@ -8,26 +8,26 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ff3409fad12e54be5ac00ead3ca44c1f24bb0af8
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 0d081a8cec088f4743bd0dc7d3cc37a9fade61d1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268256"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80117144"
 ---
-Azure ultra 磁盘为 Azure IaaS 虚拟机（Vm）提供高吞吐量、高 IOPS 和一致的低延迟磁盘存储。 此新产品提供出类拔萃的性能，其可用性级别与我们的现有磁盘产品相同。 超磁盘的一个主要优点是能够在不重新启动 Vm 的情况下动态更改 SSD 的性能和工作负荷。 超级磁盘适用于 SAP HANA、顶层数据库等数据密集型工作负荷，以及事务密集型工作负荷。
+Azure 超级磁盘为 Azure IaaS 虚拟机 （VM） 提供高吞吐量、高 IOPS 和一致的低延迟磁盘存储。 此新产品提供出类拔萃的性能，其可用性级别与我们的现有磁盘产品相同。 超磁盘的一个主要好处是能够动态更改 SSD 的性能以及您的工作负载，而无需重新启动 VM。 超级磁盘适用于 SAP HANA、顶层数据库等数据密集型工作负荷，以及事务密集型工作负荷。
 
 ## <a name="ga-scope-and-limitations"></a>GA 范围和限制
 
 [!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](managed-disks-ultra-disks-GA-scope-and-limitations.md)]
 
-## <a name="determine-vm-size-and-region-availability"></a>确定 VM 大小和区域可用性
+## <a name="determine-vm-size-and-region-availability"></a>确定 VM 大小和地区可用性
 
-若要利用超磁盘，需要确定你所在的可用性区域。 并非每个区域都支持任何虚拟磁盘的 VM 大小。 若要确定你的区域、区域和 VM 大小是否支持 ultra 磁盘，请运行以下命令之一，确保首先替换**region**、 **vmSize**和**订阅**值：
+要利用超磁盘，您需要确定您位于哪个可用性区域。 并不是每个区域都支持每个 VM 大小与超磁盘。 要确定区域、区域和 VM 大小是否支持超磁盘，请运行以下任一命令，请确保首先替换**区域****、vmSize**和**订阅**值：
 
 CLI：
 
-```bash
+```azurecli
 $subscription = "<yourSubID>"
 # example value is southeastasia
 $region = "<yourLocation>"
@@ -45,115 +45,115 @@ $vmSize = "Standard_E64s_v3"
 (Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) -and $_.LocationInfo[0].ZoneDetails.Count -gt 0})[0].LocationInfo[0].ZoneDetails
 ```
 
-响应将类似于以下形式，其中 X 是用于在所选区域中进行部署的区域。 X 可能是1、2 或 3。
+响应将类似于下面的窗体，其中 X 是用于在所选区域中部署的区域。 X 可能是1、2 或 3。
 
-保留 "**区域**" 值，它表示可用性区域，你需要它来部署超磁盘。
+保留 **"区域"** 值，它表示可用性区域，您需要它才能部署 Ultra 磁盘。
 
-|ResourceType  |名称  |位置  |区域  |限制  |功能  |值  |
+|ResourceType  |“属性”  |位置  |区域  |限制  |功能  |“值”  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 > [!NOTE]
-> 如果命令没有响应，则所选区域中的 ultra 磁盘不支持所选的 VM 大小。
+> 如果命令没有响应，则所选区域中的超磁盘不支持所选 VM 大小。
 
-现在，你已了解要部署到哪个区域，请按照本文中的部署步骤，使用附加的 ultra 磁盘部署 VM，或者将超小型磁盘附加到现有 VM。
+现在，您已经了解了要部署到哪个区域，请按照本文中的部署步骤部署附加超磁盘的 VM 或将超磁盘附加到现有 VM。
 
-## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>使用 Azure 资源管理器部署 ultra 磁盘
+## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>使用 Azure 资源管理器部署超磁盘
 
-首先，确定要部署的 VM 大小。 有关支持的 VM 大小的列表，请参阅[GA 范围和限制](#ga-scope-and-limitations)部分。
+首先，确定要部署的 VM 大小。 有关支持的 VM 大小列表，请参阅[GA 范围和限制](#ga-scope-and-limitations)部分。
 
-若要创建具有多个超磁盘的 VM，请参阅示例[创建包含多个超磁盘的 vm](https://aka.ms/ultradiskArmTemplate)。
+如果要创建具有多个超磁盘的 VM，请参阅示例["创建具有多个超磁盘的 VM"。](https://aka.ms/ultradiskArmTemplate)
 
-如果要使用自己的模板，请确保 `Microsoft.Compute/virtualMachines` 和 `Microsoft.Compute/Disks` 的**apiVersion**设置为 `2018-06-01` （或更高版本）。
+如果要使用自己的模板，请确保**apiVersion**设置为`Microsoft.Compute/virtualMachines``Microsoft.Compute/Disks` `2018-06-01` （或更高版本）。
 
-将磁盘 sku 设置为**UltraSSD_LRS**，然后设置磁盘容量、IOPS、可用性区域和吞吐量（以 MBps 为单位），以创建一个超小型磁盘
+将磁盘 sKU 设置为**UltraSSD_LRS**，然后在 MBps 中设置磁盘容量、IOPS、可用性区域和吞吐量以创建超磁盘。
 
 在预配 VM 后，可以对数据磁盘进行分区和格式设置并为工作负荷配置这些磁盘。
 
 
 ## <a name="deploy-an-ultra-disk-using-the-azure-portal"></a>使用 Azure 门户部署超磁盘
 
-本部分介绍如何部署一个虚拟机，并将其作为数据磁盘。 本教程假定你已熟悉如何部署虚拟机，如果不这样做，请参阅[快速入门：在 Azure 门户中创建 Windows 虚拟机](../articles/virtual-machines/windows/quick-create-portal.md)。
+本节介绍部署配备超磁盘作为数据磁盘的虚拟机。 它假定您熟悉部署虚拟机（如果不熟悉），请参阅我们的[快速入门：在 Azure 门户中创建 Windows 虚拟机](../articles/virtual-machines/windows/quick-create-portal.md)。
 
-- 登录到[Azure 门户](https://portal.azure.com/)，导航到 "部署虚拟机（VM）"。
-- 请确保选择支持的[VM 大小和区域](#ga-scope-and-limitations)。
-- 选择**可用性选项**中的**可用性区域**。
-- 填写所选选择的其余条目。
-- 选择“磁盘”。
+- 登录到 Azure[门户](https://portal.azure.com/)并导航以部署虚拟机 （VM）。
+- 请确保选择[受支持的 VM 大小和区域](#ga-scope-and-limitations)。
+- 在**可用性选项**中选择**可用性区域**。
+- 使用您选择的选项填写其余条目。
+- 选择“磁盘”****。
 
-![create-ultra-disk-enabled-vm .png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
+![创建启用超磁盘的 vm.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
 
-- 在 "磁盘" 边栏选项卡中，选择 **"是"** **启用超高磁盘兼容性**。
-- 选择 "**创建并附加新磁盘**"，立即附加一个超磁盘。
+- 在磁盘边栏选项卡上，选择 **"是****"以启用超磁盘兼容性**。
+- 选择 **"立即创建并附加新磁盘**以连接超磁盘"。
 
-![enable-and-attach-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
+![启用和附加超磁盘.png](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
 
-- 在 "**创建新磁盘**" 边栏选项卡上，输入名称，然后选择 "**更改大小**"。
-- 将**帐户类型**更改为 "**超小型磁盘**"。
-- 将 "**自定义磁盘大小（GiB）** "、"**磁盘 IOPS**" 和 "**磁盘吞吐量**" 的值更改为你选择的值。
-- 在两个边栏选项卡中选择 **"确定"** 。
-- 继续执行 VM 部署，该部署将与部署任何其他 VM 的部署相同。
+- 在"**创建新磁盘**边栏选项卡"上，输入名称，然后选择 **"更改大小**"。
+- 将**帐户类型**更改为**超级磁盘**。
+- 将**自定义磁盘大小 （GiB）**、**磁盘 IOPS**和**磁盘吞吐量**的值更改为您选择的值。
+- 在两个刀片中选择 **"确定**"。
+- 继续 VM 部署，它将与部署任何其他 VM 相同。
 
-![create-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk.png)
+![创建超磁盘.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk.png)
 
-## <a name="attach-an-ultra-disk-using-the-azure-portal"></a>使用 Azure 门户附加一个超磁盘
+## <a name="attach-an-ultra-disk-using-the-azure-portal"></a>使用 Azure 门户连接超磁盘
 
-或者，如果你的现有 VM 位于能够使用超磁盘的区域/可用性区域中，则可以使用超磁盘，而不必创建新的 VM。 在现有 VM 上启用 ultra 磁盘，并将其附加为数据磁盘。
+或者，如果现有 VM 位于能够使用超磁盘的区域/可用性区域中，则可以使用超磁盘，而无需创建新 VM。 通过在现有 VM 上启用超磁盘，然后将它们附加到数据磁盘。
 
-- 导航到 VM，然后选择 "**磁盘**"。
-- 选择“编辑”。
+- 导航到 VM 并选择**磁盘**。
+- 选择 **"编辑**"。
 
-![options-selector-ultra-disks .png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
+![选项-选择器-超磁盘.png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
 
-- 选择 **"是"** **启用超高磁盘兼容性**。
+- 选择 **"是****"以启用超磁盘兼容性**。
 
-![ultra-options-yes-enable .png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
+![超选项-是启用.png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
 
-- 选择“保存”。
-- 选择 "**添加数据磁盘**"，然后在 "**名称**" 下拉列表中选择 "**创建磁盘**"。
+- 选择“保存”。****
+- 选择 **"添加数据磁盘**"，然后在**名称**选择"**创建磁盘**"的下拉下列表中选择。
 
-![create-and-attach-new-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
+![创建和附加-新超磁盘.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
 
-- 填写新磁盘的名称，并选择 "**更改大小**"。
-- 将**帐户类型**更改为 "**超小型磁盘**"。
-- 将 "**自定义磁盘大小（GiB）** "、"**磁盘 IOPS**" 和 "**磁盘吞吐量**" 的值更改为你选择的值。
-- 选择 **"确定"** ，然后选择 "**创建**"。
+- 填写新磁盘的名称，然后选择 **"更改大小**"。
+- 将**帐户类型**更改为**超级磁盘**。
+- 将**自定义磁盘大小 （GiB）**、**磁盘 IOPS**和**磁盘吞吐量**的值更改为您选择的值。
+- 选择 **"确定"，** 然后选择 **"创建**"。
 
-![making-a-new-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/making-a-new-ultra-disk.png)
+![制作新超磁盘.png](media/virtual-machines-disks-getting-started-ultra-ssd/making-a-new-ultra-disk.png)
 
-- 返回到磁盘的边栏选项卡后，选择 "**保存**"。
+- 返回到磁盘的边栏选项卡后，选择 **"保存**"。
 
-![saving-and-attaching-new-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
+![保存和附加-新超磁盘.png](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
 
 ### <a name="adjust-the-performance-of-an-ultra-disk-using-the-azure-portal"></a>使用 Azure 门户调整超磁盘的性能
 
-超磁盘提供了独特的功能，使你能够调整其性能。 你可以在磁盘本身上从 Azure 门户进行这些调整。
+超磁盘具有独特的功能，允许您调整其性能。 可以从 Azure 门户、磁盘本身进行这些调整。
 
-- 导航到 VM，然后选择 "**磁盘**"。
-- 选择要修改其性能的超磁盘。
+- 导航到 VM 并选择**磁盘**。
+- 选择要修改性能的超磁盘。
 
-![selecting-ultra-disk-to-modify .png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
+![选择超磁盘到修改.png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
 
-- 选择 "**配置**"，然后进行修改。
-- 选择“保存”。
+- 选择 **"配置**"，然后进行修改。
+- 选择“保存”。****
 
-![configuring-ultra-disk-performance-and-size .png](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
+![配置超磁盘性能和大小.](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
 
-## <a name="deploy-an-ultra-disk-using-cli"></a>使用 CLI 部署 ultra 磁盘
+## <a name="deploy-an-ultra-disk-using-cli"></a>使用 CLI 部署超磁盘
 
 首先，确定要部署的 VM 大小。 有关支持的 VM 大小的列表，请参阅[GA 范围和限制](#ga-scope-and-limitations)部分。
 
-必须创建能够使用 ultra 磁盘的 VM，才能附加超磁盘。
+您必须创建能够使用超磁盘的 VM，以便附加超磁盘。
 
-将 **$vmname**、 **$rgname**、 **$diskname**、 **$location**、 **$password**、 **$user**变量替换为你自己的值。 将 **$zone**设置为从[本文开头](#determine-vm-size-and-region-availability)获取的可用性区域值。 然后运行以下 CLI 命令，以创建支持 ultra 的 VM：
+用您自己的值替换或设置 **$vmname**$vmname、$rgname、$diskname、$location、$password、$user变量。 **$rgname** **$diskname** **$location** **$password** **$user** $zone**集**到[从本文开头](#determine-vm-size-and-region-availability)获得的可用性区域的值。 然后运行以下 CLI 命令以创建启用的超启用 VM：
 
 ```azurecli-interactive
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
 ```
 
-### <a name="create-an-ultra-disk-using-cli"></a>使用 CLI 创建超小型磁盘
+### <a name="create-an-ultra-disk-using-cli"></a>使用 CLI 创建超磁盘
 
-现在，你有了一个能够附加超磁盘的 VM，你可以创建一个超磁盘并将其附加到该磁盘。
+现在，您拥有了能够附加超磁盘的 VM，您可以创建超级磁盘并将其附加到它。
 
 ```azurecli-interactive
 $location="eastus2"
@@ -176,11 +176,11 @@ az disk create `
 --disk-mbps-read-write 50
 ```
 
-## <a name="attach-an-ultra-disk-to-a-vm-using-cli"></a>使用 CLI 将 ultra 磁盘附加到 VM
+## <a name="attach-an-ultra-disk-to-a-vm-using-cli"></a>使用 CLI 将超磁盘连接到 VM
 
-或者，如果你的现有 VM 位于能够使用超磁盘的区域/可用性区域中，则可以使用超磁盘，而不必创建新的 VM。
+或者，如果现有 VM 位于能够使用超磁盘的区域/可用性区域中，则可以使用超磁盘，而无需创建新 VM。
 
-```bash
+```azurecli
 $rgName = "<yourResourceGroupName>"
 $vmName = "<yourVMName>"
 $diskName = "<yourDiskName>"
@@ -191,7 +191,7 @@ az vm disk attach -g $rgName --vm-name $vmName --disk $diskName --subscription $
 
 ### <a name="adjust-the-performance-of-an-ultra-disk-using-cli"></a>使用 CLI 调整超磁盘的性能
 
-超磁盘提供了独特的功能，使你能够调整性能，以下命令描述了如何使用此功能：
+Ultra 磁盘提供了独特的功能，允许您调整其性能，以下命令描述了如何使用此功能：
 
 ```azurecli-interactive
 az disk update `
@@ -202,11 +202,11 @@ az disk update `
 --set diskMbpsReadWrite=800
 ```
 
-## <a name="deploy-an-ultra-disk-using-powershell"></a>使用 PowerShell 部署 ultra 磁盘
+## <a name="deploy-an-ultra-disk-using-powershell"></a>使用 PowerShell 部署超磁盘
 
 首先，确定要部署的 VM 大小。 有关支持的 VM 大小的列表，请参阅[GA 范围和限制](#ga-scope-and-limitations)部分。
 
-若要使用超磁盘，必须创建能够使用超磁盘的 VM。 将 **$resourcegroup**和 **$vmName**变量替换为自己的值。 将 **$zone**设置为从[本文开头](#determine-vm-size-and-region-availability)获取的可用性区域值。 然后运行以下[new-azvm](/powershell/module/az.compute/new-azvm)命令，以创建支持 HYPER-V 的 VM：
+要使用超磁盘，必须创建能够使用超磁盘的 VM。 用您自己的值替换或设置 **$resourcegroup$vmName**变量。 **$resourcegroup** $zone**集**到[从本文开头](#determine-vm-size-and-region-availability)获得的可用性区域的值。 然后运行以下[New-AzVm](/powershell/module/az.compute/new-azvm)命令以创建启用的超启用 VM：
 
 ```powershell
 New-AzVm `
@@ -219,9 +219,9 @@ New-AzVm `
     -zone $zone
 ```
 
-### <a name="create-an-ultra-disk-using-powershell"></a>使用 PowerShell 创建超小型磁盘
+### <a name="create-an-ultra-disk-using-powershell"></a>使用 PowerShell 创建超磁盘
 
-现在，你有了一个能够使用超磁盘的 VM，接下来可以创建一个超磁盘并将其附加到其中：
+现在，您拥有了能够使用超磁盘的 VM，您可以创建超级磁盘并将其附加到它：
 
 ```powershell
 $diskconfig = New-AzDiskConfig `
@@ -239,9 +239,9 @@ New-AzDisk `
 -Disk $diskconfig;
 ```
 
-## <a name="attach-an-ultra-disk-to-a-vm-using-powershell"></a>使用 PowerShell 将 ultra 磁盘附加到 VM
+## <a name="attach-an-ultra-disk-to-a-vm-using-powershell"></a>使用 PowerShell 将超磁盘连接到 VM
 
-或者，如果你的现有 VM 位于能够使用超磁盘的区域/可用性区域中，则可以使用超磁盘，而不必创建新的 VM。
+或者，如果现有 VM 位于能够使用超磁盘的区域/可用性区域中，则可以使用超磁盘，而无需创建新 VM。
 
 ```powershell
 # add disk to VM
@@ -259,7 +259,7 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 ### <a name="adjust-the-performance-of-an-ultra-disk-using-powershell"></a>使用 PowerShell 调整超磁盘的性能
 
-超磁盘具有独特的功能，使你能够调整性能，以下命令是一个示例，用于在不分离磁盘的情况下调整性能：
+Ultra 磁盘具有独特的功能，允许您调整其性能，以下命令是一个无需分离磁盘即可调整性能的示例：
 
 ```powershell
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
@@ -268,4 +268,4 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 
 ## <a name="next-steps"></a>后续步骤
 
-如果希望使用此调查尝试新的磁盘类型[请求访问权限](https://aka.ms/UltraDiskSignup)。
+如果要尝试新的磁盘类型[请求访问使用此调查](https://aka.ms/UltraDiskSignup)。

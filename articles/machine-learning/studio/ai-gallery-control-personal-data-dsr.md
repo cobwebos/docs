@@ -12,10 +12,10 @@ ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
 ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204539"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>从 Azure AI 库中查看和删除产品内用户数据
@@ -61,7 +61,7 @@ ms.locfileid: "79204539"
 2.    单击右上角的配置文件图片，然后单击帐户名称以加载配置文件页面。
 3.    按 F12 打开浏览器的“开发人员工具”窗格，选择“网络”选项卡，然后刷新页面。 
 4. 通过在“筛选器”文本框中键入字符串 *catalog*，根据该字符串筛选请求。
-5.    在 `https://catalog.cortanaanalytics.com/entities`URL 的请求中，查找 GET 请求并选择 "*标头*" 选项卡。向下滚动到 "*请求标头*" 部分。
+5.    在 URL 请求`https://catalog.cortanaanalytics.com/entities`中，查找 GET 请求并选择 *"标题*"选项卡。向下滚动到 *"请求标题"* 部分。
 6.    标头 `DataLabAccessToken` 下便是字母数字令牌。 为了确保数据安全，请不要共享此令牌。
 
 ### <a name="view-user-information"></a>查看用户信息

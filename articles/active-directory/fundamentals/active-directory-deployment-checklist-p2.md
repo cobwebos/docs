@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063639"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
@@ -28,7 +28,7 @@ ms.locfileid: "77063639"
 
 ## <a name="prerequisites"></a>先决条件
 
-本指南中的许多建议均可通过 Azure AD Free 或根本无许可证实现。 如果需要许可证，本指南会指出完成相应任务最起码需要哪种许可证。
+本指南中的许多建议可以使用 Azure AD 免费实现或根本没有许可证。 如果需要许可证，本指南会指出完成相应任务最起码需要哪种许可证。
 
 可在以下页面上找到有关许可的更多信息：
 
@@ -37,11 +37,11 @@ ms.locfileid: "77063639"
 * [企业移动性 + 安全性](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Azure AD B2B 许可指南](../b2b/licensing-guidance.md)
 
-## <a name="phase-1-build-a-foundation-of-security"></a>阶段1：构建安全基础
+## <a name="phase-1-build-a-foundation-of-security"></a>第 1 阶段：建立安全基础
 
 在此阶段，管理员启用基准安全功能，以便在 Azure AD 中创建更安全且易用的基础，然后我们导入或创建普通用户帐户。 此基础阶段确保你从一开始就处于一种更安全的状态，并且只需向最终用户介绍新的概念一次。
 
-| 任务 | Detail | 所需的许可证 |
+| 任务 | 详细信息 | 所需的许可证 |
 | ---- | ------ | ---------------- |
 | [指定多个全局管理员](../users-groups-roles/directory-emergency-access.md) | 至少分配两个仅限云的永久性全局管理员帐户，以便在紧急情况下使用。 这些帐户不是每日使用，应该具有复杂的长密码。 | Azure AD Free |
 | [尽可能使用非全局管理角色](../users-groups-roles/directory-assign-admin-roles.md) | 只为管理员分配他们必须访问的区域的访问权限。 并非所有管理员都需要是全局管理员。 | Azure AD Free |
@@ -53,42 +53,42 @@ ms.locfileid: "77063639"
 | [对基于云的用户帐户禁用定期密码重置](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | 定期密码重置会促使用户增加其现有密码。 使用 Microsoft 密码指导文档中的指导原则，并将相同的本地策略运用到仅限云的用户。 | Azure AD Free |
 | [自定义 Azure Active Directory 智能锁定](../authentication/howto-password-smart-lockout.md) | 停止锁定从基于云的用户复制到本地 Active Directory 用户 | |
 | [为 AD FS 启用 Extranet 智能锁定](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS Extranet 锁定可以防范暴力密码猜测攻击，同时可让有效的 AD FS 用户继续使用其帐户。 | |
-| [使用条件性访问策略部署 Azure AD 多重身份验证](../authentication/howto-mfa-getstarted.md) | 要求用户在使用条件访问策略访问敏感应用程序时执行双重验证。 | Azure AD Premium P1 |
+| [使用条件访问策略部署 Azure AD 多重身份验证](../authentication/howto-mfa-getstarted.md) | 要求用户在使用条件访问策略访问敏感应用程序时执行两步验证。 | Azure AD Premium P1 |
 | [Azure Active Directory 标识保护](../identity-protection/overview-identity-protection.md) | 针对组织中的用户启用有风险登录和已泄密凭据的跟踪。 | Azure AD Premium P2 |
-| [使用风险检测来触发多重身份验证和密码更改](../authentication/tutorial-risk-based-sspr-mfa.md) | 启用可以触发多重身份验证、密码重置和基于风险阻止登录等事件的自动化功能。 | Azure AD Premium P2 |
+| [使用风险检测触发多重身份验证和密码更改](../authentication/tutorial-risk-based-sspr-mfa.md) | 启用可以触发多重身份验证、密码重置和基于风险阻止登录等事件的自动化功能。 | Azure AD Premium P2 |
 | [启用自助密码重置和 Azure AD 多重身份验证的聚合注册（预览版）](../authentication/concept-registration-mfa-sspr-converged.md) | 允许用户从 Azure 多重身份验证和自助式密码重置的一个常用体验进行注册。 | Azure AD Premium P1 |
 
-## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>阶段2：导入用户、启用同步和管理设备
+## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>第 2 阶段：导入用户、启用同步和管理设备
 
 接下来，我们通过导入用户、启用同步、规划来宾访问权限并准备支持其他功能，来对阶段 1 中的基础做出补充。
 
-| 任务 | Detail | 所需的许可证 |
+| 任务 | 详细信息 | 所需的许可证 |
 | ---- | ------ | ---------------- |
-| [安装 Azure AD Connect](../connect/active-directory-aadconnect-select-installation.md) | 准备将现有本地目录中的用户同步到云。 | Azure AD Free |
+| [安装 Azure AD 连接](../connect/active-directory-aadconnect-select-installation.md) | 准备将现有本地目录中的用户同步到云。 | Azure AD Free |
 | [实现密码哈希同步](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | 同步密码哈希，以便能够复制密码更改、检测并补救错误密码，以及报告已泄漏的凭据。 | Azure AD Free |
 | [实现密码写回](../authentication/howto-sspr-writeback.md) | 允许将云中的密码更改写回到本地 Windows Server Active Directory 环境。 | Azure AD Premium P1 |
 | [实现 Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md) | 为 Azure AD Connect 服务器、AD FS 服务器和域控制器启用关键运行状况统计信息的监视。 | Azure AD Premium P1 |
 | [按 Azure Active Directory 中的组成员资格将许可证分配给用户](../users-groups-roles/licensing-groups-assign.md) | 创建许可组来按组启用或禁用功能，而无需按用户进行设置，这样可以节省时间和精力。 | |
 | [针对来宾用户访问权限创建计划](../b2b/what-is-b2b.md) | 让来宾用户使用其自己的工作、学校或社交标识登录到你的应用和服务，借此来与他们协作。 | [Azure AD B2B 许可指南](../b2b/licensing-guidance.md) |
 | [决定设备管理策略](../devices/overview.md) | 决定组织允许在设备上执行哪些操作。 这包括在自带设备与公司提供的设备上执行注册与加入操作。 | |
-| [在组织中部署 Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | 使用 Windows Hello 准备无密码 authentication | |
-| [为用户部署无密码身份验证方法](../authentication/concept-authentication-passwordless.md) | 为用户提供便利的无密码身份验证方法 | Azure AD Premium P1 |
+| [在组织中部署 Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | 使用 Windows Hello 准备无密码身份验证 | |
+| [为用户部署无密码身份验证方法](../authentication/concept-authentication-passwordless.md) | 为用户提供方便的无密码身份验证方法 | Azure AD Premium P1 |
 
-## <a name="phase-3-manage-applications"></a>阶段3：管理应用程序
+## <a name="phase-3-manage-applications"></a>第 3 阶段：管理应用程序
 
 在前几个阶段中持续构建环境的过程中，我们识别了适合迁移并与 Azure AD 集成的应用程序，并完成了这些应用程序的设置。
 
-| 任务 | Detail | 所需的许可证 |
+| 任务 | 详细信息 | 所需的许可证 |
 | ---- | ------ | ---------------- |
 | 识别应用程序 | 识别组织中正在使用的应用程序：本地应用程序、云中的 SaaS 应用程序和其他业务线应用程序。 确定这些应用程序是否可以，以及是否应该由 Azure AD 进行管理。 | 无需许可证 |
 | [集成库中的受支持 SaaS 应用程序](../manage-apps/add-application-portal.md) | Azure AD 的某个库包含数千个预先集成的应用程序。 组织使用的某些应用程序可能就在该库中。可通过 Azure 门户直接访问该库。 | Azure AD Free |
 | [使用应用程序代理集成本地应用程序](../manage-apps/application-proxy-add-on-premises-application.md) | 应用程序代理可让用户在使用其 Azure AD 帐户登录后访问本地应用程序。 | |
 
-## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>阶段4：审核特权标识、完成访问评审和管理用户生命周期
+## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>第 4 阶段：审核特权标识、完成访问审核和管理用户生命周期
 
 在第 4 阶段，管理员针对管理工作强制实施最低特权原则，完成首次访问评审，并启用常见用户生命周期任务的自动化。
 
-| 任务 | Detail | 所需的许可证 |
+| 任务 | 详细信息 | 所需的许可证 |
 | ---- | ------ | ---------------- |
 | [强制使用 Privileged Identity Management](../privileged-identity-management/pim-security-wizard.md) | 删除普通日常用户帐户的管理角色。 使管理用户能够在成功完成多重身份验证检查、提供业务理由或请求指定的审批者批准之后使用其角色。 | Azure AD Premium P2 |
 | [在 PIM 中完成 Azure AD 目录角色的访问评审](../privileged-identity-management/pim-how-to-start-security-review.md) | 与安全和领导团队协作创建访问评审策略，以根据组织的策略评审管理访问权限。 | Azure AD Premium P2 |

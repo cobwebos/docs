@@ -1,5 +1,5 @@
 ---
-title: Azure 网络往返行程延迟统计信息 |Microsoft Docs
+title: Azure 网络往返延迟统计信息 |微软文档
 description: 了解 Azure 区域之间的往返延迟统计信息。
 services: networking
 author: nayak-mahesh
@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 03/10/2020
 ms.author: kumud
 ms.openlocfilehash: 3469daa8b81b20d5d0052a23ce3236fc4fde75de
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79082926"
 ---
-# <a name="azure-network-round-trip-latency-statistics"></a>Azure 网络往返行程延迟统计信息
+# <a name="azure-network-round-trip-latency-statistics"></a>Azure 网络往返延迟统计信息
 
-Azure 使用内部监视工具和第三方合成监视服务[ThousandEyes](https://thousandeyes.com)收集的度量值来持续监视其网络核心区域的延迟（速度）。
+Azure 使用内部监控工具以及由第三方综合监控服务[千美希望](https://thousandeyes.com)收集的测量值持续监控其网络核心区域的延迟（速度）。
 
-## <a name="how-are-the-measurements-collected"></a>度量值的收集方式是什么？
+## <a name="how-are-the-measurements-collected"></a>如何收集测量值？
 
-延迟度量是从世界各地的 Azure 云区域中托管的 ThousandEyes 代理收集的，它们在1分钟的时间间隔内持续发送网络探测。 每月滞后时间统计信息派生自每月收集的样本数。
+延迟测量是从千眼代理收集的，这些代理托管在全球 Azure 云区域中，这些代理每隔 1 分钟一次在它们之间连续发送网络探测。 每月延迟统计信息派生自该月收集的样本的平均值。
 
-## <a name="february-2020-round-trip-latency-figures"></a>2020年2月往返延迟的数据
+## <a name="february-2020-round-trip-latency-figures"></a>2020 年 2 月往返延迟数据
 
-过去29天的 Azure 区域之间的每月平均往返时间（截至2020年2月29日），如下所示。 以下度量值由[ThousandEyes](https://thousandeyes.com)提供支持。
+Azure 区域过去 29 天（2020 年 2 月 29 日结束）之间的每月平均往返时间如下所示。 以下测量由[千眼](https://thousandeyes.com)驱动。
 
 [![Azure 区域间延迟统计信息](media/azure-network-latency/azure-network-latency.png)](media/azure-network-latency/azure-network-latency.png#lightbox)
 

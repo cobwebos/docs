@@ -1,24 +1,24 @@
 ---
-title: 用 SAS 令牌安全部署模板
+title: 使用 SAS 令牌安全部署模板
 description: 使用受 SAS 令牌保护的 Azure 资源管理器模板将资源部署到 Azure。 显示 Azure PowerShell 和 Azure CLI。
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: d30e685c35f33b6fc5d3872b9287e45190ad5713
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273704"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156389"
 ---
-# <a name="deploy-private-resource-manager-template-with-sas-token"></a>使用 SAS 令牌部署专用 Resource Manager 模板
+# <a name="deploy-private-arm-template-with-sas-token"></a>使用 SAS 令牌部署专用 ARM 模板
 
-如果模板位于存储帐户中，可以限制对该模板的访问，以避免公开公开该模板。 可以通过为模板创建共享访问签名（SAS）令牌并在部署过程中提供该令牌来访问受保护的模板。 本文介绍如何使用 Azure PowerShell 或 Azure CLI 来部署具有 SAS 令牌的模板。
+当 Azure 资源管理器 （ARM） 模板位于存储帐户中时，可以限制对模板的访问，以避免公开公开模板。 访问受保护模板的方法是：为模板创建一个共享访问签名 (SAS) 令牌，在部署时提供该令牌。 本文介绍如何使用 Azure PowerShell 或 Azure CLI 通过 SAS 令牌来部署模板。
 
-## <a name="create-storage-account-with-secured-container"></a>创建具有安全容器的存储帐户
+## <a name="create-storage-account-with-secured-container"></a>使用受保护的容器创建存储帐户
 
-以下脚本将创建一个存储帐户，并关闭公共访问权限的容器。
+以下脚本创建一个存储帐户和容器，其中的公共访问权限已禁用。
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -63,9 +63,9 @@ az storage container create \
 
 ## <a name="upload-template-to-storage-account"></a>将模板上传到存储帐户
 
-现在，你已准备好将模板上传到存储帐户。 提供要使用的模板的路径。
+现在可以将模板上传到存储帐户了。 提供要使用的模板的路径。
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzStorageBlobContent `
@@ -90,10 +90,10 @@ az storage blob upload \
 要在存储帐户中部署专用模板，请生成 SAS 令牌，并将其包括在模板的 URI 中。 设置到期时间以允许足够的时间来完成部署。
 
 > [!IMPORTANT]
-> 只有帐户所有者可以访问包含模板的 blob。 但是，如果为 blob 创建 SAS 令牌，则拥有该 URI 的任何人都可以访问 blob。 如果其他用户截获了该 URI，则此用户可以访问该模板。 SAS 令牌是限制对模板的访问的好方法，但不应直接在模板中包括密码等敏感数据。
+> 只有帐户所有者可以访问包含模板的 Blob。 但是，如果为 blob 创建 SAS 令牌，则拥有该 URI 的任何人都可以访问 blob。 如果其他用户截获了该 URI，则此用户可以访问该模板。 SAS 令牌是限制对模板的访问的好方法，但不应直接在模板中包括密码等敏感数据。
 >
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 # get the URI with the SAS token
@@ -129,7 +129,7 @@ url=$(az storage blob url \
     --name azuredeploy.json \
     --output tsv \
     --connection-string $connection)
-az group deployment create \
+az deployment group create \
   --resource-group ExampleGroup \
   --template-uri $url?$token
 ```
@@ -140,5 +140,5 @@ az group deployment create \
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关部署模板的简介，请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](deploy-powershell.md)。
+* 有关部署模板的简介，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)。
 * 若要在模板中定义参数，请参阅[创作模板](template-syntax.md#parameters)。

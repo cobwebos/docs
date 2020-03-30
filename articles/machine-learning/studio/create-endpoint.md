@@ -1,7 +1,7 @@
 ---
 title: 创建 Web 服务终结点
 titleSuffix: ML Studio (classic) - Azure
-description: 在 Azure 机器学习 Studio （经典）中创建 web 服务终结点。 Web 服务中的每个终结点都是独立处理、限制和托管的。
+description: 在 Azure 机器学习工作室中创建 Web 服务终结点（经典）。 Web 服务中的每个终结点都是独立处理、限制和托管的。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,18 +11,18 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
 ms.openlocfilehash: 980ed1e54de30ec8a2dc0c1fdac6546d31f48a00
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218203"
 ---
-# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>创建部署 Azure 机器学习 Studio （经典） web 服务的终结点
+# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>为部署的 Azure 机器学习工作室（经典）Web 服务创建终结点
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 > [!NOTE]
-> 本主题介绍适用于经典机器学习 Web 服务的技术。
+> 本主题介绍适用于**经典**机器学习 Web 服务的技术。
 
 部署 Web 服务之后，将为该服务创建默认终结点。 该默认终结点可以使用其 API 密钥调用。 可以从 Web 服务门户添加更多具有自身密钥的终结点。
 Web 服务中的每个终结点都是独立处理、限制和托管的。 每个终结点唯一 URL 和身份验证密钥，可以将其分发给客户。
@@ -34,18 +34,18 @@ Web 服务中的每个终结点都是独立处理、限制和托管的。 每个
 > [!NOTE]
 > 如果 Web 服务已添加其他终结点，则无法删除默认终结点。
 
-1. 在机器学习 Studio （经典） "的左侧导航栏中，单击" Web 服务 "。
-2. 在“Web 服务”仪表板的底部，单击“管理终结点”。 Azure 机器学习 Web 服务门户可打开 Web 服务的终结点页。
-3. 单击 **“新建”** 。
+1. 在机器学习工作室（经典）的左侧导航栏中，单击“Web 服务”。
+2. 在“Web 服务”仪表板的底部，单击“管理终结点”****。 Azure 机器学习 Web 服务门户可打开 Web 服务的终结点页。
+3. 单击 **“新建”**。
 4. 键入新终结点的名称及说明。 终结点名称的长度必须少于或等于 24 个字符，并且必须由小写字母或数字组成。 选择日志记录级别以及是否启用示例数据。 有关日志记录的详细信息，请参阅[为机器学习 Web 服务启用日志记录](web-services-logging.md)。
 
-## <a id="scaling"></a> 通过添加其他终结点来扩展 Web 服务
+## <a name="scale-a-web-service-by-adding-additional-endpoints"></a><a id="scaling"></a> 通过添加其他终结点来扩展 Web 服务
 
-默认情况下，每个已发布的 Web 服务配置为支持 20 个并发请求，并且最高可达 200 个并发请求。 Azure 机器学习 Studio （经典）会自动优化设置以提供 web 服务的最佳性能，并忽略门户值。
+默认情况下，每个已发布的 Web 服务配置为支持 20 个并发请求，并且最高可达 200 个并发请求。 Azure 机器学习工作室（经典）自动优化设置以为 Web 服务提供最佳性能，并忽略门户值。
 
 如果计划调用带有高于并发调用值 200 所支持的负载的 API，应在同一个 Web 服务上创建多个终结点。 然后可在所有终结点上随机分发负载。
 
-Web 服务的扩展是常见任务。 扩展的一些原因是为了支持超过 200 个并发请求、通过多个终结点增加可用性或为 Web 服务提供单独的终结点。 通过 [Azure 机器学习 Web 服务](https://services.azureml.net/)门户为同一个 Web 服务添加其他终结点，可增加规模。
+Web 服务的扩展是常见任务。 扩展的一些原因是为了支持超过 200 个并发请求、通过多个终结点增加可用性或为 Web 服务提供单独的终结点。 您可以通过[Azure 机器学习 Web 服务](https://services.azureml.net/)门户为同一 Web 服务添加其他终结点来扩大规模。
 
 请记住，如果不使用相应的高速率调用 API，使用高并发数可能有害。 如果在针对高负载配置的 API 上放置相对较低的负载，则可能看到偶发的超时和/或延迟峰值。
 

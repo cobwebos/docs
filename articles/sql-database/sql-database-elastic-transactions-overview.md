@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 3ca3e9074f28d66068d49b80915e98600759d9be
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68568289"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>跨云数据库的分布式事务
 
-通过 Azure SQL 数据库 (SQL DB) 的弹性数据库事务可在 SQL DB 中跨多个数据库运行事务。 SQL DB 的弹性数据库事务适用于使用 ADO .NET 的 .NET 应用程序，并且与你熟悉的使用 [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) 类的编程体验相集成。 若要获取该库，请参阅 [.NET Framework 4.6.1（Web 安装程序）](https://www.microsoft.com/download/details.aspx?id=49981)。
+Azure SQL 数据库 (SQL DB) 的弹性数据库事务可让你在 SQL DB 中跨多个数据库运行事务。 SQL DB 的弹性数据库事务适用于使用 ADO .NET 的 .NET 应用程序，并且与你熟悉的使用 [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) 类的编程体验相集成。 若要获取该库，请参阅 [.NET Framework 4.6.1（Web 安装程序）](https://www.microsoft.com/download/details.aspx?id=49981)。
 
 在本地，这种方案通常需要运行 Microsoft 分布式事务处理协调器 (MSDTC)。 由于 MSDTC 不适用于 Azure 中的平台即服务应用程序，协调分布式事务的功能现在已直接集成到 SQL DB。 应用程序可以连接到任何 SQL 数据库来启动分布式事务，其中一个数据库以透明方式协调分布式事务，如下图所示。 
 
@@ -32,7 +32,7 @@ SQL DB 的弹性数据库事务可让应用程序对多个不同 SQL 数据库�
 弹性数据库事务面向以下方案：
 
 * Azure 中的多数据库应用程序：在此方案中，数据垂直分区到 SQL DB 中的多个数据库，使得不同种类的数据位于不同的数据库。 某些操作需要更改两个以上的数据库中保存的数据。 应用程序使用弹性数据库事务来协调数据库之间的更改并确保原子性。
-* Azure 中的分片数据库应用程序：在此方案中，数据层使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)或自我分片，将数据水平分区到 SQL DB 中的多个数据库。 常见的用例之一是在分片的多租户应用程序中，当更改涉及到多个租户时，需要执行原子更改。 例如，从一个租户转移到另一个租户，而两者位于不同的数据库。 第二种方案是以细致分片来适应大租户的容量需求，这又通常表示某些原子操作需要扩展到用于同一租户的多个数据库。 第三种方案是以原子更新来引用数据库之间复制的数据。 现在，可以使用预览版跨多个数据库协调这几个方面原子性事务操作。
+* Azure 中的分区数据库应用程序：在此方案中，数据层使用[弹性数据库客户端库](sql-database-elastic-database-client-library.md)或自我分片，将数据水平分区到 SQL DB 中的多个数据库。 常见的用例之一是在分片的多租户应用程序中，当更改涉及到多个租户时，需要执行原子更改。 例如，从一个租户转移到另一个租户，而两者位于不同的数据库。 第二种方案是以细致分片来适应大租户的容量需求，这又通常表示某些原子操作需要扩展到用于同一租户的多个数据库。 第三种方案是以原子更新来引用数据库之间复制的数据。 现在，可以使用预览版跨多个数据库协调这几个方面原子性事务操作。
   弹性数据库事务使用两阶段提交，确保跨数据库的事务原子性。 如果事务涉及的数据库少于 100 个，则适合并入单个事务内。 这些限制不不是强制施加的，但是，如果超出这些限制时，弹性数据库事务的性能和成功率很有可能会下降。
 
 ## <a name="installation-and-migration"></a>安装和迁移
@@ -47,7 +47,7 @@ SQL DB 的弹性数据库事务可让应用程序对多个不同 SQL 数据库�
 
 ### <a name="multi-database-applications"></a>多数据库应用程序
 
-以下示例代码使用熟悉的 .NET System.Transactions 编程体验。 TransactionScope 类在 .NET 中创建环境事务。 （“环境事务”是位于当前线程中的事务）。在 TransactionScope 内打开的所有连接都参与该事务。 如果有不同的数据库参与，事务会自动提升为分布式事务。 通过设置完成范围来指示提交，即可控制事务的结果。
+以下示例代码使用熟悉的 .NET System.Transactions 编程体验。 TransactionScope 类在 .NET 中创建环境事务。 （"环境事务"是驻留在当前线程中的事务。在事务范围中打开的所有连接都参与事务。 如果有不同的数据库参与，事务会自动提升为分布式事务。 通过设置完成范围来指示提交，即可控制事务的结果。
 
     using (var scope = new TransactionScope())
     {
@@ -133,13 +133,13 @@ Azure SQL 数据库中支持跨不同 SQL 数据库服务器的弹性数据库�
 
 使用以下 PowerShell cmdlet 来管理弹性数据库事务的跨服务器通信关系：
 
-* **New-AzSqlServerCommunicationLink**：使用此 cmdlet 在 Azure SQL 数据库中的两个 SQL 数据库服务器之间创建新的通信关系。 这种通信关系是对称的，这意味着这两台服务器可以使用另一台服务器启动事务。
-* **Get-AzSqlServerCommunicationLink**:使用此 cmdlet 来检索现有通信关系及其属性。
-* **Remove-AzSqlServerCommunicationLink**:使用此 cmdlet 来删除现有通信关系。 
+* **New-AzSqlServer通信链接**：使用此 cmdlet 在 Azure SQL 数据库中的两个 SQL 数据库服务器之间创建新的通信关系。 这种通信关系是对称的，这意味着这两台服务器可以使用另一台服务器启动事务。
+* **获取-AzSqlServer通信链接**：使用此 cmdlet 检索现有的通信关系及其属性。
+* **删除-AzSqlServer通信链接**：使用此 cmdlet 删除现有的通信关系。 
 
 ## <a name="monitoring-transaction-status"></a>监视事务状态
 
-使用 SQL DB 中的动态管理视图 (DMV) 来监视正在进行的弹性数据库事务的状态和进度。 与事务相关的所有 DMV 与 SQL DB 中的分布式事务相关。 可以在此处找到相应的 DMV 列表：[与事务相关的动态管理视图和函数 (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx)。
+使用 SQL DB 中的动态管理视图 (DMV) 来监视正在进行的弹性数据库事务的状态和进度。 与事务相关的所有 DMV 与 SQL DB 中的分布式事务相关。 可以在此处找到相应的 DMV 列表：[事务相关的动态管理视图和函数 (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx)。
 
 这些 DMV 特别有用：
 

@@ -7,15 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 448b14168e85e75b7ed19e189600186ce11c2902
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251812"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
 
-本文概述了如何保护对 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 中存储的数据的访问。
+本文概述了对[存储在 Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)中的数据的访问。
 
 Azure Cosmos DB 使用两种类型的密钥来验证用户身份并提供对其数据和资源的访问权限。 
 
@@ -62,7 +62,7 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
 
-## 资源令牌<a id="resource-tokens"></a>
+## <a name="resource-tokens"></a>资源令牌<a id="resource-tokens"></a>
 
 资源令牌提供对数据库中应用程序资源的访问权限。 资源令牌：
 
@@ -70,7 +70,7 @@ CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 - 向[用户](#users)授予对特定资源的[权限](#permissions)时创建。
 - 通过 POST、GET 或 PUT 调用操作权限资源时重新创建。
 - 使用专门针对用户、资源和权限构造的哈希资源令牌。
-- 生存期受到可自定义的有效期的约束。 默认有效时间跨度为1小时。 但是，可将令牌生存期显式指定为最长五个小时。
+- 生存期受到可自定义的有效期的约束。 默认的有效期限为一小时。 但是，可将令牌生存期显式指定为最长五个小时。
 - 可以安全替代主密钥。
 - 使客户端能够根据授予的权限读取、写入和删除 Cosmos DB 帐户中的资源。
 
@@ -91,13 +91,13 @@ Cosmos DB 资源令牌提供一种安全的替代方案，使客户端能够根�
 
     ![Azure Cosmos DB 资源令牌工作流](./media/secure-access-to-data/resourcekeyworkflow.png)
 
-资源令牌的生成和管理由本机 Cosmos DB 客户端库处理；但是，如果使用 REST，必须构造请求/身份验证标头。 有关为 REST 创建身份验证标头的详细信息，请参阅[Cosmos DB 资源上的访问控制](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)或[.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs)或 node.js [SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)的源代码。
+资源令牌的生成和管理由本机 Cosmos DB 客户端库处理；但是，如果使用 REST，必须构造请求/身份验证标头。 有关为 REST 创建身份验证标头的详细信息，请参阅 [Cosmos DB 资源的访问控制](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)或我们的 [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) 或 [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts) 的源代码。
 
 有关用于生成或代理资源令牌的中间层服务的示例，请参阅 [ResourceTokenBroker 应用](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)。
 
-## 那些<a id="users"></a>
+## <a name="users"></a>用户<a id="users"></a>
 
-Azure Cosmos DB 用户与 Cosmos 数据库相关联。  每个数据库可以包含零个或多个 Cosmos DB 用户。 下面的代码示例演示如何使用[Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement)创建 Cosmos DB 用户。
+Azure Cosmos DB 用户与 Cosmos 数据库相关联。  每个数据库可以包含零个或多个 Cosmos DB 用户。 以下代码示例展示了如何使用 [Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement) 创建 Cosmos DB 用户。
 
 ```csharp
 //Create a user.
@@ -107,17 +107,17 @@ User user = await database.CreateUserAsync("User 1");
 ```
 
 > [!NOTE]
-> 每个 Cosmos DB 用户都有一个 ReadAsync （）方法，可用于检索与该用户关联的[权限](#permissions)的列表。
+> 每个 Cosmos DB 用户都有一个 ReadAsync() 方法，可以使用此方法检索与用户关联的[权限](#permissions)的列表。
 
-## 访问<a id="permissions"></a>
+## <a name="permissions"></a>权限<a id="permissions"></a>
 
-权限资源与用户相关联，并在容器和分区键级别分配。 每个用户可能包含零个或多个权限。 权限资源提供对用户在尝试访问特定的容器或特定分区键中的数据时所需的安全令牌的访问权限。 权限资源提供两种可用的访问级别：
+权限资源与用户相关联，并在容器以及分区键级别进行分配。 每个用户可能包含零个或多个权限。 用户在尝试访问某个特定容器或访问特定分区键中的数据时需要一个安全令牌，权限资源提供对该安全令牌的访问权限。 权限资源提供两种可用的访问级别：
 
 - 所有：用户对资源拥有完全权限。
 - 只读：用户只能读取资源的内容，但无法对资源执行写入、更新或删除操作。
 
 > [!NOTE]
-> 若要运行存储过程，用户必须具有在其中运行存储过程的容器上的 All 权限。
+> 为了运行存储过程，用户必须对将在其中运行存储过程的容器具有全部权限。
 
 ### <a name="code-sample-to-create-permission"></a>有关创建权限的代码示例
 
@@ -134,9 +134,9 @@ user.CreatePermissionAsync(
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 
-### <a name="code-sample-to-read-permission-for-user"></a>用于读取用户权限的代码示例
+### <a name="code-sample-to-read-permission-for-user"></a>有关读取用户权限的代码示例
 
-下面的代码片段演示如何检索与上面创建的用户关联的权限，并代表用户实例化新的 CosmosClient （作用域为单个分区键）。
+下面的代码片段展示了如何检索与上面创建的用户关联的权限，并代表用户实例化一个新的 CosmosClient，作用域为单个分区键。
 
 ```csharp
 //Read a permission, create user client session.
@@ -150,12 +150,12 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 若要将 Azure Cosmos DB 帐户读者访问权限添加到用户帐户，请让订阅所有者在 Azure 门户执行以下步骤。
 
 1. 打开 Azure 门户，并选择 Azure Cosmos DB 帐户。
-2. 单击“访问控制(IAM)”选项卡，然后单击“+ 添加角色分配”。
-3. 在“添加角色分配”窗格中的“角色”框中，选择“Cosmos DB 帐户读者角色”。
-4. 在“分配其访问权限”框中，选择“Azure AD 用户、组或应用程序”。
+2. 单击“访问控制(IAM)”**** 选项卡，然后单击“+ 添加角色分配”****。
+3. 在“添加角色分配”**** 窗格中的“角色”**** 框中，选择“Cosmos DB 帐户读者角色”****。
+4. 在"**分配对访问"框中**，选择**Azure AD 用户、组或应用程序**。
 5. 在你想要授予访问权限的目录中选择用户、组或应用程序。  可以通过显示名称、电子邮件地址或对象标识符搜索目录。
     所选用户、组或应用程序会显示在所选成员列表中。
-6. 单击“ **保存**”。
+6. 单击“保存”。****
 
 实体现在便可以读取 Azure Cosmos DB 资源。
 
@@ -167,6 +167,6 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关 Cosmos 数据库安全性的详细信息，请参阅[Cosmos DB 数据库安全性](database-security.md)。
+- 若要详细了解 Cosmos 数据库安全性，请参阅 [Cosmos DB 数据库安全性](database-security.md)。
 - 若要了解如何构造 Azure Cosmos DB 授权令牌，请参阅 [Azure Cosmos DB 资源的访问控制](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)。
-- 用户管理示例用户和权限， [.NET SDK v3 用户管理示例](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)
+- 有关包含用户和权限的用户管理示例，请参阅 [.NET SDK v3 用户管理示例](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)

@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898781"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 WHERE 子句
 
-可选 WHERE 子句（`WHERE <filter_condition>`）指定源 JSON 项必须满足的条件，以便查询将它们包含在结果中。 JSON 项必须将指定的条件评估为要 `true` 为结果考虑的条件。 索引层使用 WHERE 子句来确定可以作为结果的一部分的源项的最小子集。
+可选的 WHERE 子句 (`WHERE <filter_condition>`) 指定条件，查询只会将满足这些条件的源 JSON 项包含在结果中。 JSON 项必须将指定的条件评估为 `true` 才被视作结果。 索引层使用 WHERE 子句来确定可以作为结果的一部分的源项的最小子集。
   
 ## <a name="syntax"></a>语法
   
@@ -25,7 +25,7 @@ WHERE <filter_condition>
   
 ```  
   
-## <a name="arguments"></a>参数
+## <a name="arguments"></a>自变量
 
 - `<filter_condition>`  
   
@@ -37,13 +37,13 @@ WHERE <filter_condition>
   
 ## <a name="remarks"></a>备注
   
-  为了能够返回文档，指定为筛选条件的表达式的求值结果必须为 true。 只有布尔值 `true` 将满足条件，任何其他值： undefined、null、false、数字、数组或对象将不满足条件。
+  为了能够返回文档，指定为筛选条件的表达式的求值结果必须为 true。 只有布尔值`true`才能满足条件，任何其他值：未定义、空、假、数字、数组或对象将无法满足条件。
 
-  如果在 `WHERE` 子句中包含分区键作为相等筛选器的一部分，则查询将自动仅筛选相关的分区。
+  如果将分区键包含在`WHERE`子句中作为相等筛选器的一部分，则查询将自动筛选为仅相关分区。
 
 ## <a name="examples"></a>示例
 
-以下查询请求包含值为 `AndersenFamily``id` 属性的项。 它不包含任何 `id` 属性或者其值与 `AndersenFamily`不匹配的项。
+以下查询请求包含值为 `AndersenFamily` 的 `id` 属性的项。 它会排除任何不带 `id` 属性或值与 `AndersenFamily` 不匹配的项。
 
 ```sql
     SELECT f.address
@@ -67,7 +67,7 @@ WHERE <filter_condition>
 
 上面的示例演示了一个简单的等式查询。 SQL API 还支持各种[标量表达式](sql-query-scalar-expressions.md)。 最常使用的是二进制和一元表达式。 来自源 JSON 对象的属性引用也是有效的表达式。
 
-您可以使用以下受支持的二进制运算符：  
+可以使用以下受支持的二元运算符：  
 
 |**运算符类型**  | **值** |
 |---------|---------|
@@ -93,7 +93,7 @@ WHERE <filter_condition>
     WHERE c.grade >= 5    -- matching grades == 5
 ```
 
-你还可以使用一元运算符 +,-, ~，而不能在查询中使用，如以下示例中所示：
+还可以在查询中使用一元运算符 +、-、~ 和 NOT，如以下示例所示：
 
 ```sql
     SELECT *
@@ -105,10 +105,10 @@ WHERE <filter_condition>
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-您还可以在查询中使用属性引用。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 返回 JSON 项，其中包含值等于 `true`的属性 `isRegistered`。 任何其他值（例如 `false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>`或 `<array>`）都不会从结果中排除项。
+还可以在查询中使用属性引用。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 返回包含值等于 `true` 的 `isRegistered` 属性的 JSON 项。 任何其他值（例如`false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>` 或 `<array>`）会从结果中排除该项。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [入门](sql-query-getting-started.md)
+- [开始](sql-query-getting-started.md)
 - [IN 关键字](sql-query-keywords.md#in)
-- [FROM 子句](sql-query-from.md)
+- [from 子句](sql-query-from.md)

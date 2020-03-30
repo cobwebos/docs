@@ -1,17 +1,17 @@
 ---
-title: 使用 Azure Monitor 监视 Active Directory 复制状态 | Microsoft Docs
+title: 监视活动目录复制状态
 description: Active Directory 复制状态解决方案包定期监视 Active Directory 环境中是否有任何复制失败。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: bfc9572e8b21692a386c510ffd3409c571eff8f4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77667170"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055905"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态
 
@@ -26,11 +26,11 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
-* AD 复制状态解决方案要求在每台具有适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent （MMA））的计算机上安装 .NET Framework 4.6.2 或更高版本的受支持版本。  代理由 System Center 2016-Operations Manager、Operations Manager 2012 R2 和 Azure Monitor 使用。
+* “AD 复制状态”解决方案要求在每台安装了适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent (MMA)）的计算机上安装受支持的 .NET Framework 4.6.2 或更高版本。  该代理由 System Center 2016 - Operations Manager、Operations Manager 2012 R2 和 Azure Monitor 使用。
 * 该解决方案支持运行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2 以及 Windows Server 2016 的域控制器。
-* 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure 市场添加 Active Directory 运行状况检查解决方案。 不需要其他配置。
+* 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure 市场添加 Active Directory 运行状况检查解决方案。 无需其他配置。
 
 
 ### <a name="install-agents-on-domain-controllers"></a>在域控制器上安装代理
@@ -44,7 +44,7 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 3. 在该计算机上，设置以下注册表项：<br>关键值：**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**<br>值：**IsTarget**<br>值数据：**true**
 
    > [!NOTE]
-   > 在重新启动 Microsoft Monitoring Agent 服务（运行状况服务）之前，这些更改不会生效。
+   > 在重新启动 Microsoft 监视代理服务 （HealthService.exe） 之前，这些更改不会生效。
    > ### <a name="install-solution"></a>安装解决方案
    > 按照[安装监视解决方案](solutions.md#install-a-monitoring-solution)中描述的过程，将 **Active Directory 复制状态**解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 
@@ -62,7 +62,7 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-“AD 复制状态”磁贴显示目前有多少复制错误。 严重复制错误是指那些处于或高于 Active Directory 林 75% [逻辑删除生存期](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx)的错误。
+“AD 复制状态”磁贴显示目前有多少复制错误。 严重复制错误**** 是指那些处于或高于 Active Directory 林 75% [逻辑删除生存期](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx)的错误。
 
 ![AD 复制状态磁贴](./media/ad-replication-status/oms-ad-replication-tile.png)
 
@@ -94,11 +94,11 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 
 在此情况下，仅修复复制错误是不够的。 至少需要手动调查，识别和清理延迟对象，才可以重新启动复制。 甚至可能需要取消配置域控制器。
 
-除了识别保留时间超过逻辑删除生存期的任何复制错误，还需要留意任何落入 50-75% TSL 或 75-100% TSL 类别的错误。
+除了识别保留时间超过逻辑删除生存期的任何复制错误，还需要留意任何落入 50-75% TSL**** 或 75-100% TSL**** 类别的错误。
 
 这些是明显延迟（不是暂时的）的错误，因此，它们可能需要干预才能解决。 值得庆幸的是，它们尚未到达逻辑删除生存期。 如果立即和在达到逻辑删除生存期*之前*解决这些问题，则可以最少的手动干预来重新启动复制。
 
-如上所述，AD 复制状态解决方案的仪表板磁贴显示你环境中的严重复制错误数，其定义为超过 75% 的逻辑删除生存期的错误（包括超过 100% TSL 的错误）。 请尽可能将此数字保持为 0。
+如上所述，AD 复制状态解决方案的仪表板磁贴显示你环境中的严重** 复制错误数，其定义为超过 75% 的逻辑删除生存期的错误（包括超过 100% TSL 的错误）。 请尽可能将此数字保持为 0。
 
 > [!NOTE]
 > 所有逻辑删除生存期百分比计算都基于 Active Directory 林的实际逻辑删除生存期，因此，可以确信这些百分比是准确的（即使你已设置自定义的逻辑删除生存期值）。
@@ -106,7 +106,7 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 >
 
 ### <a name="ad-replication-status-details"></a>AD 复制状态详细信息
-当单击其中一个列表的任何一项时，可以查看有关使用日志查询的其他详细信息。 这些结果已经过筛选，只显示与该项相关的错误。 例如，如果单击“目标服务器状态(ADDC02)”下列出的第一个域控制器，会看到查询结果经过筛选，显示将该域控制器列为目标服务器的错误：
+当单击其中一个列表的任何一项时，可以查看有关使用日志查询的其他详细信息。 这些结果已经过筛选，只显示与该项相关的错误。 例如，如果单击“目标服务器状态(ADDC02)”**** 下列出的第一个域控制器，会看到查询结果经过筛选，显示将该域控制器列为目标服务器的错误：
 
 ![查询结果中的 AD 复制状态错误](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
@@ -128,7 +128,7 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 **问：是否需要将所有域控制器添加到我的 Log Analytics 工作区中以查看复制状态？**
 答：不需要，只需要添加一个域控制器。 如果 Log Analytics 工作区中有多个域控制器，则所有域控制器的数据发送到 Azure Monitor。
 
-**问：我不想将任何域控制器添加到我的 Log Analytics 工作区。我是否仍然可以使用 AD 复制状态的解决方案？**
+**问：我不想向日志分析工作区添加任何域控制器。我仍可以使用 AD 复制状态解决方案吗？**
 
 答：是的。 可以设置注册表项的值来实现此目的。 请参阅[启用非域控制器](#enable-non-domain-controller)。
 
@@ -148,7 +148,7 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 答：针对 Active Directory 的普通用户权限就足够了。
 
 ## <a name="troubleshoot-data-collection-problems"></a>数据收集问题疑难解答
-为了收集数据，AD 复制状态解决方案包需要至少一个域控制器以连接到 Log Analytics 工作区。 直到你连接域控制器，出现一条消息，指示“仍在收集数据”。
+为了收集数据，AD 复制状态解决方案包需要至少一个域控制器以连接到 Log Analytics 工作区。 直到你连接域控制器，出现一条消息，指示“仍在收集数据”****。
 
 如果在连接某个域控制器时需要帮助，可以查看[将 Windows 计算机连接到 Azure Monitor](../../azure-monitor/platform/om-agents.md) 文档。 或者，如果域控制器已连接到现有 System Center Operations Manager 环境，则可以查看[将 System Center Operations Manager 连接到 Azure Monitor](../../azure-monitor/platform/om-agents.md) 文档。
 

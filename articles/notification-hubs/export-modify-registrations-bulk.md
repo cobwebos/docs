@@ -1,5 +1,5 @@
 ---
-title: 批量导出和导入 Azure 通知中心注册 |Microsoft Docs
+title: 批量导出和导入 Azure 通知中心注册 |微软文档
 description: 了解如何使用通知中心批量操作支持针对通知中心执行大量操作或导出所有注册。
 services: notification-hubs
 author: sethmanheim
@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/18/2019
 ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71212395"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>批量导出和导入 Azure 通知中心注册
@@ -29,7 +29,7 @@ ms.locfileid: "71212395"
 ## <a name="high-level-flow"></a>概要工作流
 批处理支持旨在支持涉及到数百万个注册的长时间运行的作业。 为了实现这种规模，批处理支持使用 Azure 存储来存储作业详细信息和输出。 执行批量更新操作时，用户需要在 Blob 容器中创建一个文件，其内容是注册更新操作的列表。 启动该作业时，用户需提供输入 Blob 的 URL，以及输出目录（也在 Blob 容器中）的 URL。 启动该作业后，用户可以通过查询启动作业时提供的 URL 位置来检查状态。 特定的作业只能执行特定类型的操作（创建、更新或删除）。 导出操作以类似的方式执行。
 
-## <a name="import"></a>导入
+## <a name="import"></a>Import
 
 ### <a name="set-up"></a>设置
 本部分假设存在以下实体：
@@ -261,7 +261,7 @@ namespace ConsoleApplication1
 }
 ```
 
-## <a name="export"></a>导出
+## <a name="export"></a>Export
 导出注册的过程类似于导入，但存在以下差别：
 
 - 只需提供输出 URL。
@@ -291,5 +291,5 @@ while(true){
 若要详细了解注册，请参阅以下文章：
 
 - [注册管理](notification-hubs-push-notification-registration-management.md)
-- [注册的标记](notification-hubs-tags-segment-push-message.md)
+- [注册标记](notification-hubs-tags-segment-push-message.md)
 - [模板注册](notification-hubs-templates-cross-platform-push-messages.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge 和 Azure IoT Central |Microsoft Docs
-description: 了解如何在 IoT Central 应用程序中使用 Azure IoT Edge。
+title: Azure IoT 边缘和 Azure IoT 中心 |微软文档
+description: 了解如何将 Azure IoT 边缘与 IoT 中央应用程序一起使用。
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/12/2019
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 69660152458de26e9dbcbf1f50db6ce6824351d0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77027064"
 ---
-# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序
+# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>将 Azure IoT 边缘设备连接到 Azure IoT 中心应用程序
 
 IoT Edge 包含三个组件：
 
-* IoT Edge 模块是容器，可以运行 Azure 服务、合作伙伴服务或者你自己的代码。 这些模块部署到 IoT Edge 设备，在设备上以本地方式运行。
-* IoT Edge 运行时在每个 IoT Edge 设备上运行，并管理部署到每个设备的模块。
-* 可以通过基于云的界面远程监视和管理 IoT Edge 设备。 IoT Central 是云接口。
+* IoT Edge 模块是容器，可以运行 Azure 服务、合作伙伴服务或者你自己的代码****。 这些模块部署到 IoT Edge 设备，在设备上以本地方式运行。
+* **IoT Edge 运行时**在每个 IoT Edge 设备上运行，并管理部署到每个设备的模块。
+* 可以通过基于云的界面远程监视和管理 IoT Edge 设备****。 IoT Central 是云接口。
 
-Azure IoT Edge 设备可以是具有连接到 IoT Edge 设备的下游设备的网关设备。 本文共享有关下游设备连接模式的详细信息。
+Azure IoT Edge 设备可以是具有连接到 IoT Edge 设备的下游设备的网关设备****。 本文分享有关下游设备连接模式的详细信息。
 
-设备模板定义设备和 IoT Edge 模块的功能。 功能包括模块发送的遥测数据、模块属性以及模块响应的命令。
+设备模板定义设备和 IoT Edge 模块的功能****。 功能包括模块发送的遥测数据、模块属性以及模块响应的命令。
 
 ## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>下游设备与网关和模块的关系
 
@@ -52,11 +52,11 @@ Azure IoT Edge 设备可以是具有连接到 IoT Edge 设备的下游设备的�
 
 使用 Visual Studio Code 创建部署清单。 若要了解详细信息，请参阅[适用于 Visual Studio Code 的 Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。
 
-在 Azure IoT Central 中，可以导入部署清单来创建设备模板。 以下流程图显示了 IoT Central 中的部署清单生命周期。
+在 Azure IoT 中心中，可以导入部署清单以创建设备模板。 以下流程图显示了 IoT Central 中的部署清单生命周期。
 
 ![部署清单生命周期的流程图](./media/concepts-iot-edge/dmflow.png)
 
-IoT 即插即用（预览版）对 IoT Edge 设备建模，如下所示：
+IoT 即插即用（预览）对 IoT 边缘设备进行建模，如下所示：
 
 * 每个 IoT Edge 设备模板都具有设备功能模型。
 * 对于部署清单中列出的每个自定义模块，都会生成模块功能模型。
@@ -66,10 +66,10 @@ IoT 即插即用（预览版）对 IoT Edge 设备建模，如下所示：
 
 ![IoT Edge 建模关系图](./media/concepts-iot-edge/edgemodelling.png)
 
-## <a name="iot-edge-gateway-devices"></a>IoT Edge 网关设备
+## <a name="iot-edge-gateway-devices"></a>IoT 边缘网关设备
 
 如果选择 IoT Edge 设备作为网关设备，则可以将下游关系添加到将连接到网关设备的设备的设备功能模型。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 IoT Central 应用程序模板之后，可以通过[创建 IoT Central 应用程序](quick-deploy-iot-central.md)开始操作。
+了解 IoT Central 应用程序模板是什么以后，即可开始[创建 IoT Central 应用程序](quick-deploy-iot-central.md)。

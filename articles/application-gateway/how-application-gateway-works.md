@@ -1,18 +1,18 @@
 ---
 title: 应用程序网关的工作原理
-description: 本文提供了有关应用程序网关如何接受传入请求并将其路由到后端的信息。
+description: 本文提供有关应用程序网关如何接受传入请求并将其路由到后端的信息。
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: d9d7ae3bc321f1f000fac1a875589df352077f33
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 84a7bdfb9f8f7c741140cbe2086149dff90db211
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129809"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132969"
 ---
 # <a name="how-an-application-gateway-works"></a>应用程序网关的工作原理
 
@@ -32,7 +32,7 @@ ms.locfileid: "74129809"
 
 可以使用 Azure 应用程序网关作为内部应用程序负载均衡器或面向 Internet 的应用程序负载均衡器。 面向 Internet 的应用程序网关使用公共 IP 地址。 面向 Internet 的应用程序网关的 DNS 名称可公开解析为其公共 IP 地址。 因此，面向 Internet 的应用程序网关可将客户端请求路由到 Internet。
 
-内部应用程序网关仅使用专用 IP 地址。 如果你使用的是自定义或[专用 DNS 区域](https://docs.microsoft.com/azure/dns/private-dns-overview)，则应在内部将域名解析为应用程序网关的专用 IP 地址。 因此，内部负载均衡器只能路由有权访问应用程序网关虚拟网络的客户端发出的请求。
+内部应用程序网关仅使用专用 IP 地址。 如果使用自定义或专用 DNS[区域](https://docs.microsoft.com/azure/dns/private-dns-overview)，则域名应在内部解析为应用程序网关的专用 IP 地址。 因此，内部负载均衡器只能路由有权访问应用程序网关虚拟网络的客户端发出的请求。
 
 ## <a name="how-an-application-gateway-routes-a-request"></a>应用程序网关如何路由请求
 
@@ -46,7 +46,7 @@ ms.locfileid: "74129809"
 
 应用程序网关确定后端服务器之后，会根据 HTTP 设置来与后端服务器建立新的 TCP 会话。 HTTP 设置组件指定与后端服务器建立新会话所需的协议、端口和其他路由相关设置。
 
-HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器之间的流量是要加密（从而可实现端到端的 SSL）还是不加密。
+HTTP 设置中使用的端口和协议确定应用程序网关和后端服务器之间的流量是加密（从而完成端到端 TLS）还是未加密。
 
 将原始请求发送到后端服务器时，应用程序网关遵循 HTTP 设置中指定的任何自定义配置，这些配置与替代主机名、路径和协议相关。 此操作将保持基于 Cookie 的会话相关性、连接清空、从后端选择主机名的设置，等等。
 
