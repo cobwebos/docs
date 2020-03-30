@@ -1,15 +1,15 @@
 ---
-title: 与 Azure 中的服务建立连接和通信 Service Fabric
+title: 在 Azure Service Fabric 中与服务建立连接并与之通信
 description: 了解如何在 Service Fabric 中解析服务、建立连接以及与之通信。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: e57d169decf482f8b8be1e3b31a07690bc222c5d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458242"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>在 Service Fabric 中与服务建立连接和通信
@@ -23,7 +23,7 @@ Service Fabric 可帮助管理服务的生命周期，但是它不会制定有�
 ![服务终结点][1]
 
 ## <a name="service-discovery-and-resolution"></a>服务发现和解析
-在分布式系统中，服务可能随时间推移从一台计算机移动到另一台计算机。 发生这种情况的原因有多种，包括资源平衡、升级、故障转移或扩大。这意味着服务终结点地址会在服务移动到具有不同 IP 地址的节点时更改，如果服务使用动态选择的端口，则可能会在不同的端口上打开。
+在分布式系统中，服务可能随时间推移从一台计算机移动到另一台计算机。 这可能是由于各种原因发生的，包括资源平衡、升级、故障转移或横向扩展。这意味着服务终结点在服务移动到具有不同 IP 地址的节点时会解决更改，如果服务使用动态选择的端口，则可能会在不同的端口上打开。
 
 ![服务分发][7]
 

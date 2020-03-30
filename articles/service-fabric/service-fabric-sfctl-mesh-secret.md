@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric sfctl 网格机密
-description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于获取和删除 Service Fabric 网格密钥资源的命令的列表。
+title: Azure 服务结构 CLI-sfctl 网格机密
+description: 了解 sfctl，Azure 服务结构命令行接口。 包括用于获取和删除服务结构网格机密资源的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fab388ff223eb95020e2ba0945c76532bc54f224
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905981"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
@@ -17,7 +17,7 @@ ms.locfileid: "76905981"
 
 ## <a name="commands"></a>命令
 
-|命令|Description|
+|命令|描述|
 | --- | --- |
 | delete | 删除机密资源。 |
 | list | 列出所有机密资源。 |
@@ -28,15 +28,15 @@ ms.locfileid: "76905981"
 
 删除指定的机密资源及其所有其命名值。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --name -n [必需] | 机密资源的名称。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -51,7 +51,7 @@ ms.locfileid: "76905981"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -64,15 +64,15 @@ ms.locfileid: "76905981"
 
 获取具有给定名称的机密资源的相关信息。 此信息包括机密的说明和其他属性。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --name -n [必需] | 机密资源的名称。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -82,5 +82,5 @@ ms.locfileid: "76905981"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [安装](service-fabric-cli.md) Service Fabric CLI。
+- [设置](service-fabric-cli.md)服务结构 CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
 ms.openlocfilehash: e24bacb0ea7ab406442022915872fc77e9cc1a5e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74887878"
 ---
 # <a name="handling-event-grid-events"></a>处理事件网格事件
@@ -40,9 +40,9 @@ ms.locfileid: "74887878"
 * 使用“subject”前缀和后缀匹配项，将事件限制为特定事件。
 
 > [!NOTE]
-> 事件取决于事件网格[服务级别协议（SLA）](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)。 如果要使用 Api 获取事件通知，请参阅使用[.NET sdk](https://github.com/Azure-Samples/media-services-v3-dotnet)或[Java sdk](https://github.com/Azure-Samples/media-services-v3-java)时如何使用事件的示例。
+> 事件受事件网格[服务级别协议 （SLA）](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)的约束。 如果要使用 API 获取事件通知，请参阅有关如何使用事件的示例，以及[.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet)或[Java SDK](https://github.com/Azure-Samples/media-services-v3-java)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [监视事件-门户](monitor-events-portal-how-to.md)
-* [监视事件-CLI](job-state-events-cli-how-to.md)
+* [监控事件 - 门户](monitor-events-portal-how-to.md)
+* [监视事件 - CLI](job-state-events-cli-how-to.md)

@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 管理 Azure 中的流量管理器
-description: 使用此学习路径，开始使用流量管理器的 Azure PowerShell。
+description: 使用此学习路径，开始使用 Azure PowerShell 进行流量管理器。
 services: traffic-manager
 documentationcenter: na
 author: rohinkoul
@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
 ms.openlocfilehash: 7886764a69eefa68be071a801bea65ae995fbdc3
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938498"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理器
@@ -59,9 +59,9 @@ $TmProfile = New-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG
 
 下表描述了参数：
 
-| 参数 | Description |
+| 参数 | 描述 |
 | --- | --- |
-| 名称 |流量管理器配置文件资源的资源名称。 同一资源组中的配置文件必须具有唯一的名称。 此名称不同于用于 DNS 查询的 DNS 名称。 |
+| “属性” |流量管理器配置文件资源的资源名称。 同一资源组中的配置文件必须具有唯一的名称。 此名称不同于用于 DNS 查询的 DNS 名称。 |
 | ResourceGroupName |包含配置资源的资源组的名称。 |
 | TrafficRoutingMethod |指定用于确定在响应 DNS 查询时返回的终结点的流量路由方法。 可能的值为“Performance”、“Weighted”或“Priority”。 |
 | RelativeDnsName |指定此流量管理器配置文件提供的 DNS 名称中的主机名部分。 将此值与 Azure 流量管理器使用的 DNS 域名相结合，可以构成配置文件的完全限定域名 (FQDN)。 例如，设置“contoso”值将成为“contoso.trafficmanager.net”。 |
@@ -115,7 +115,7 @@ Set-AzTrafficManagerProfile -TrafficManagerProfile $TmProfile
 
 Azure 终结点会引用托管在 Azure 中的服务。 支持 2 种类型的 Azure 终结点：
 
-1. Azure App Service
+1. Azure 应用服务
 2. Azure PublicIpAddress 资源（可以附加到负载均衡器或虚拟机 NIC）。 必须为 publicIpAddress 指定 DNS 名称，才能在流量管理器中使用它。
 
 在每种情况下：
@@ -125,7 +125,7 @@ Azure 终结点会引用托管在 Azure 中的服务。 支持 2 种类型的 Az
 * 指定“加权”是可选项。 仅当配置文件被配置为使用“加权”流量路由方法时，才使用加权。 否则会忽视优先级。 如果要指定，值必须是介于 1 和 1000 之间的数字。 默认值为“1”。
 * 指定“优先级”是可选项。 仅当配置文件被配置为使用“优先级”流量路由方法时，才使用优先级。 否则会忽视优先级。 有效值为 1 到 1000 之间的值，值越小指示优先级越高。 如果为一个终结点指定了该值，则必须为所有终结点指定该值。 如果省略，则会按排列终结点的顺序从“1”开始应用默认值。
 
-### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>示例1：使用 `Add-AzTrafficManagerEndpointConfig` 添加应用服务终结点
+### <a name="example-1-adding-app-service-endpoints-using-add-aztrafficmanagerendpointconfig"></a>示例 1：使用添加应用服务终结点`Add-AzTrafficManagerEndpointConfig`
 
 在此示例中，创建了一个流量管理器配置文件，并使用 `Add-AzTrafficManagerEndpointConfig` cmdlet 添加了两个应用服务终结点。
 
@@ -210,7 +210,7 @@ New-AzTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceG
 
 ## <a name="adding-endpoints-from-another-subscription"></a>从其他订阅添加终结点
 
-流量管理器可以使用不同订阅中的终结点。 需要使用要添加的终结点切换到订阅，以检索所需的流量管理器输入。 然后，需要切换到包含流量管理器配置文件的订阅，并向其添加终结点。 下面的示例演示如何使用公共 IP 地址执行此操作。
+流量管理器可以使用不同订阅中的终结点。 需要使用要添加的终结点切换到订阅，以检索所需的流量管理器输入。 然后，需要使用流量管理器配置文件切换到订阅，并向其中添加终结点。 下面的示例演示如何使用公共 IP 地址执行此操作。
 
 ```powershell
 Set-AzContext -SubscriptionId $EndpointSubscription

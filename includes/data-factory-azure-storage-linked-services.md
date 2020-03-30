@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75469448"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure 存储链接服务
 **Azure 存储链接服务**可让你使用**帐户密钥**（为数据工厂提供 Azure 存储的全局访问权限）将 Azure 存储帐户链接到 Azure 数据工厂。 下表提供 Azure 存储链接服务专属 JSON 元素的描述。
 
-| 属性 | Description | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| type |type 属性必须设置为：**AzureStorage** |是 |
+| type |类型属性必须设置为 **：Azure 存储** |是 |
 | connectionString |为 connectionString 属性指定连接到 Azure 存储所需的信息。 |是 |
 
 有关如何检索存储帐户访问密钥的信息，请参阅[管理存储帐户访问密钥](../articles/storage/common/storage-account-keys-manage.md)。
 
-**示例：**  
+**例子：**  
 
 ```json
 {
@@ -47,12 +47,12 @@ ms.locfileid: "75469448"
 
 Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure 存储帐户链接到 Azure 数据工厂。 这样，便可以将存储中所有/特定资源（Blob/容器）的受限/限时访问权限提供给数据工厂。 下表提供了 Azure 存储 SAS 链接服务特定的 JSON 元素的描述。 
 
-| 属性 | Description | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**AzureStorageSas** |是 |
 | sasUri |指定 Azure 存储资源（例如 Blob、容器或表）的共享访问签名 URI。  |是 |
 
-**示例：**
+**例子：**
 
 ```json
 {
@@ -68,7 +68,7 @@ Azure 存储 SAS 链接服务可让你使用共享访问签名 (SAS) 将 Azure �
 
 创建 **SAS URI** 时，请注意以下事项：  
 
-* 根据链接服务（读取、写入、读/写）在数据工厂中的用法，设置针对对象的适当读/写**权限**。
-* 根据需要设置“到期时间”。 确保 Azure 存储对象的访问权限不会在管道的活动期限内过期。
+* 根据数据工厂中的链接服务（读取、写入、读取/写入）的使用方式，设置对象的适当的读/写**权限**。
+* 根据需要设置“到期时间”****。 确保 Azure 存储对象的访问权限不会在管道的活动期限内过期。
 * 应该根据需要在正确的容器/Blob 或表级别创建 URI。 数据工厂服务可以使用 Azure Blob 的 SAS URI 访问特定的 Blob。 数据工厂服务可以使用 Azure Blob 容器的 SAS URI 迭代该容器中的 Blob。 如果稍后需要提供更多/更少对象的访问权限或需要更新 SAS URI，请记得使用新 URI 更新链接服务。   
 

@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
 ms.openlocfilehash: d5a8e165fcee23c5feecd5935983dd77d3ec6c30
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759657"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 语法
 
-SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的实例，代表基于 SQL 语言的筛选器表达式，该表达式针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 进行计算。 SqlFilter 支持 SQL-92 标准的子集。  
+SqlFilter** 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)的实例，代表基于 SQL 语言的筛选器表达式，该表达式针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 进行计算。 SqlFilter 支持 SQL-92 标准的子集。  
   
  本主题列出了有关 SqlFilter 语法的详细信息。  
   
@@ -58,9 +58,9 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 ```  
   
-## <a name="arguments"></a>参数  
+## <a name="arguments"></a>自变量  
   
--   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` 或 `user`。 `sys` 值指示系统范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user` 指示用户范围，其中 `<property_name>` 是 [BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的项。 `user` 范围是默认范围（如果 `<scope>` 未指定）。  
+-   `<scope>` 是一个可选字符串，指示 `<property_name>` 的范围。 有效值为 `sys` 或 `user`。 该`sys`值指示系统作用域，`<property_name>`其中是[BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公共属性名称。 `user`指示用户作用域，`<property_name>`其中是[BrokeredMessage 类](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的键。 `user` 范围是默认范围（如果 `<scope>` 未指定）。  
   
 ## <a name="remarks"></a>备注
 
@@ -78,7 +78,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
 ```  
   
-### <a name="arguments"></a>参数  
+### <a name="arguments"></a>自变量  
 
  `<regular_identifier>` 是一个字符串，由以下正则表达式表示：  
   
@@ -143,7 +143,7 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
       <integer_constant> | <decimal_constant> | <approximate_number_constant> | <boolean_constant> | NULL  
 ```  
   
-### <a name="arguments"></a>参数  
+### <a name="arguments"></a>自变量  
   
 -   `<integer_constant>` 是一个数字字符串，不使用引号，且不包含小数点。 这些值以 `System.Int64` 形式存储在内部，并具有相同的范围。  
   
@@ -239,11 +239,11 @@ SqlFilter 对象是 [SqlFilter 类](/dotnet/api/microsoft.servicebus.messaging.s
   
   `[NOT] LIKE` 中的未知求值：  
   
-- 如果任何操作数的求值结果为“未知”，则结果为“未知”。  
+- 如果任何操作数被计算为**未知**，则结果**未知**。  
   
   `[NOT] IN` 中的未知求值：  
   
-- 如果左侧操作数的求值结果为“未知”，则结果为“未知”。  
+- 如果左操作数计算为**未知**，则结果**未知**。  
   
   **AND** 运算符中的未知求值：  
   

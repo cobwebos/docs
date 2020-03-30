@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
 ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75466182"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>在 Windows 上容器化 Service Fabric Reliable Services 和 Reliable Actors
@@ -45,7 +45,7 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
           {
    ```
 
-4. 生成并[打包](service-fabric-package-apps.md#Package-App)项目。 若要生成并创建包，请在解决方案资源管理器中右键单击应用程序项目，选择“包”命令。
+4. 生成并[打包](service-fabric-package-apps.md#Package-App)项目。 若要生成并创建包，请在解决方案资源管理器中右键单击应用程序项目，选择“包”命令****。
 
 5. 对于每个需要容器化的代码包，运行 PowerShell 脚本 [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1)。 用法如下：
 
@@ -111,7 +111,7 @@ Service Fabric 支持容器化 Service Fabric 微服务（基于 Reliable Servic
    ```
 
 > [!NOTE] 
-> 默认情况下，Service Fabric 的应用程序可以访问 Service Fabric 运行时，其形式为接受应用程序特定请求的终结点。 当应用程序承载不受信任的代码时，请考虑禁用此访问权限。 有关详细信息，请参阅[Service Fabric 中的最佳安全方案](service-fabric-best-practices-security.md#platform-isolation)。 若要禁用对 Service Fabric 运行时的访问，请在对应于导入的服务清单的应用程序清单的 "策略" 部分中添加以下设置，如下所示：
+> 默认情况下，Service Fabric 应用程序可以以接受特定于应用程序的请求的终结点的形式访问 Service Fabric 运行时。 当应用程序托管不受信任的代码时，请考虑禁用此访问。 有关详细信息，请参阅 [Service Fabric 中的安全最佳做法](service-fabric-best-practices-security.md#platform-isolation)。 若要禁用对 Service Fabric 运行时的访问，请在与导入的服务清单对应的应用程序清单的“策略”部分中添加以下设置，如下所示：
 >
 ```xml
   <Policies>

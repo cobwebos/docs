@@ -1,7 +1,7 @@
 ---
 title: 优化模型的超参数
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 机器学习有效优化深度学习/机器学习模型的超参数。 您将了解如何定义参数搜索空间，指定要优化的主要指标，并提前终止性能不佳的运行。
+description: 使用 Azure 机器学习，有效地优化深度学习/机器学习模型的超参数。 本文将介绍如何定义参数搜索空间、指定要优化的主要指标，以及提前终止性能不佳的运行。
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4ca9cac00b9d00dcdbbd27f2fe769de2983c13ae
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75536637"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>使用 Azure 机器学习优化模型的超参数
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-使用 Azure 机器学习有效优化模型的超参数。  超参数优化包括以下步骤：
+使用 Azure 机器学习有效地优化模型的超参数。  超参数优化包括以下步骤：
 
 * 定义参数搜索空间
 * 指定要优化的主要指标  
@@ -46,7 +46,7 @@ ms.locfileid: "75536637"
 
 ### <a name="types-of-hyperparameters"></a>超参数的类型
 
-每个超参数既可以是离散的，也可以是连续的，并且具有由[参数表达式](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py)描述的值的分布。
+每个超参数既可以是离散的，也可以是连续的，并具有由[参数表达式](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py)描述的值分布。
 
 #### <a name="discrete-hyperparameters"></a>离散超参数 
 
@@ -99,13 +99,13 @@ ms.locfileid: "75536637"
 
 #### <a name="picking-a-sampling-method"></a>选取采样方法
 
-* 如果可以将超参数空间定义为离散值中的选项，并且您有足够的预算来对定义的搜索空间中的所有值进行全面搜索，则可以使用网格采样。 此外，还可以使用自动的不正常运行运行的自动提前终止，从而减少了资源的浪费。
-* 随机采样允许超参数空间包括离散超参数和连续。 在实践中，它大多数时间都能产生良好的结果，并且还允许使用自动的不正常运行的自动提前终止。 某些用户使用随机抽样执行初始搜索，然后以迭代方式优化搜索空间来改善结果。
-* Bayesian 采样在选择超参数值时利用了以前示例的知识，从而有效地尝试改进所报告的主要指标。 当你有足够的预算来浏览超参数空间时，建议使用 Bayesian 采样-为了获得 Bayesian 采样的最佳结果，我们建议使用大于或等于正在优化的超参数数的20倍的最大运行数。 请注意，Bayesian 采样当前不支持任何早期终止策略。
+* 如果超参数空间可定义为离散值中的选项，并且你的预算充足，可以详尽地搜索定义的搜索空间中的所有值，则可以采用网格采样。 另外，网格采样还可自动提前终止性能不佳的运行，从而减少资源的浪费。
+* 随机采样允许超参数空间包含离散超参数和连续超参数。 它在大多数时候实际应用良好，并且也可自动提前终止性能不佳的运行。 某些用户使用随机采样执行初始搜索，然后以迭代方式优化搜索空间来改善结果。
+* Bayesian 采样在选择超参数值时利用了上述示例中的知识，有效地尝试了改进所有报告的主要指标。 如果你有足够的预算探索超参数空间，建议使用 Bayesian 采样 - 为了实现 Bayesian 采样的最佳结果，我们建议使用大于或等于正在优化的超参数数的 20 倍的最大运行数。 请注意，Bayesian 采样目前不支持任何提前终止策略。
 
 #### <a name="random-sampling"></a>随机采样
 
-在随机采样中，超参数值是从定义的搜索空间中随机选择的。 [随机采样](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?view=azure-ml-py)允许搜索空间同时包含离散的和连续的超参数。
+在随机采样中，超参数值是从定义的搜索空间中随机选择的。 [随机采样](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?view=azure-ml-py)允许搜索空间同时包含离散和连续超参数。
 
 ```Python
 from azureml.train.hyperdrive import RandomParameterSampling
@@ -132,11 +132,11 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>贝叶斯采样
 
-[Bayesian 采样](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?view=azure-ml-py)基于 Bayesian 优化算法，并使超参数值上的智能选择成为接下来的示例。 它会根据以前的采样方式选取样本，使新样本能够改进报告的主要指标。
+[贝叶斯采样](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?view=azure-ml-py)基于贝叶斯优化算法，对接下来采样的超参数值做出智能选择。 它会根据以前的采样方式选取样本，使新样本能够改进报告的主要指标。
 
 使用贝叶斯采样时，并发运行的数目会影响优化效果。 通常情况下，数目较小的并发运行可能带来更好的采样收敛，因为较小的并行度会增加可从先前完成的运行中获益的运行的数量。
 
-Bayesian 采样仅支持通过搜索空间 `choice`、`uniform`和 `quniform` 分布。
+Bayesian 采样仅支持搜索空间中的 `choice`、`uniform` 和 `quniform` 分布。
 
 ```Python
 from azureml.train.hyperdrive import BayesianParameterSampling
@@ -154,7 +154,7 @@ param_sampling = BayesianParameterSampling( {
 
 ## <a name="specify-primary-metric"></a>指定主要指标
 
-指定想要超参数优化试验优化的[主要指标](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py)。 将根据此主要指标评估每个训练运行。 性能不佳的运行（其主要指标不符合提前终止策略设置的条件）将会终止。 除了主要指标名称以外，还需指定优化的目标是要最大化还是最小化主要指标。
+指定希望优化超参数调优实验[的主要指标](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py)。 将根据此主要指标评估每个训练运行。 性能不佳的运行（其主要指标不符合提前终止策略设置的条件）将会终止。 除了主要指标名称以外，还需指定优化的目标是要最大化还是最小化主要指标。
 
 * `primary_metric_name`：要优化的主要指标的名称。 主要指标的名称需要与训练脚本记录的指标名称完全匹配。 请参阅[记录用于超参数优化的指标](#log-metrics-for-hyperparameter-tuning)。
 * `primary_metric_goal`：可以是 `PrimaryMetricGoal.MAXIMIZE` 或 `PrimaryMetricGoal.MINIMIZE`，确定在评估运行时是要将主要指标最大化还是最小化。 
@@ -170,7 +170,7 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 ### <a name="log-metrics-for-hyperparameter-tuning"></a>记录用于超参数优化的指标
 
-模型的训练脚本必须在模型训练过程中记录相关指标。 配置超参数优化时，指定要用于评估运行性能的主要指标。 （请参阅[指定要优化的主要指标](#specify-primary-metric-to-optimize)。） 你必须在训练脚本中记录此指标，使其可用于超参数优化过程。
+模型的训练脚本必须在模型训练过程中记录相关指标。 配置超参数优化时，指定要用于评估运行性能的主要指标。 （请参阅[指定用于优化 的主指标](#specify-primary-metric-to-optimize)。 在训练脚本中，必须记录此指标，以便可用于超参数调优过程。
 
 使用以下示例代码片段将此指标记录在训练脚本中：
 
@@ -193,11 +193,11 @@ run_logger.log("accuracy", float(val_accuracy))
 * `evaluation_interval`：应用策略的频率。 每次训练脚本都会将主要指标计数记录为一个间隔。 因此，如果 `evaluation_interval` 为 1，则训练脚本每次报告主要指标时，都会应用策略。 如果 `evaluation_interval` 为 2，则训练脚本每两次报告主要指标时会应用策略。 如果未指定，则默认将 `evaluation_interval` 设置为 1。
 * `delay_evaluation`：将第一个策略评估延迟指定的间隔数。 这是一个可选参数，可让所有配置运行初始设置的最小间隔数，避免训练运行过早终止。 如果已指定，则每隔大于或等于 delay_evaluation 的 evaluation_interval 倍数应用策略。
 
-Azure 机器学习支持以下早期终止策略。
+Azure 机器学习支持以下提前终止策略。
 
 ### <a name="bandit-policy"></a>老虎机策略
 
-[Bandit](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#definition)是基于可宽延时间系数/时差和评估间隔的终止策略。 如果主要指标不在与最佳性能训练运行相关的指定松驰因子/松驰数量范围内，则此策略会提前终止任何运行。 此策略采用以下配置参数：
+[强盗](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#definition)是基于松弛因子/松弛量和评估间隔的终止策略。 如果主要指标不在与最佳性能训练运行相关的指定松驰因子/松驰数量范围内，则此策略会提前终止任何运行。 此策略采用以下配置参数：
 
 * `slack_factor` 或 `slack_amount`：在最佳性能训练运行方面允许的松驰。 `slack_factor` 以比率的形式指定允许的松驰。 `slack_amount` 以绝对数量（而不是比率）的形式指定允许的松驰。
 
@@ -215,7 +215,7 @@ early_termination_policy = BanditPolicy(slack_factor = 0.1, evaluation_interval=
 
 ### <a name="median-stopping-policy"></a>中间值停止策略
 
-[中间停止](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py)是基于运行时所报告的主要指标的运行平均值的早期终止策略。 此策略计算所有训练运行的运行平均值，并终止其性能比运行平均值的中间值更差的运行。 此策略采用以下配置参数：
+[中位停止](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py)是基于运行报告的主要指标的运行平均值的早期终止策略。 此策略计算所有训练运行的运行平均值，并终止其性能比运行平均值的中间值更差的运行。 此策略采用以下配置参数：
 * `evaluation_interval`：应用策略的频率（可选参数）。
 * `delay_evaluation`：将第一个策略评估延迟指定的间隔数（可选参数）。
 
@@ -229,7 +229,7 @@ early_termination_policy = MedianStoppingPolicy(evaluation_interval=1, delay_eva
 
 ### <a name="truncation-selection-policy"></a>截断选择策略
 
-[截断选择](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?view=azure-ml-py)将取消每个评估时间间隔内最低执行运行的给定百分比。 根据运行的性能和主要指标比较运行，并终止 X% 的性能最低的运行。 此策略采用以下配置参数：
+[截断选择](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?view=azure-ml-py)取消在每个计算间隔内执行最低运行的给定百分比。 根据运行的性能和主要指标比较运行，并终止 X% 的性能最低的运行。 此策略采用以下配置参数：
 
 * `truncation_percentage`：要在每个评估间隔终止的性能最低的运行百分比。 指定一个介于 1 到 99 之间的整数值。
 * `evaluation_interval`：应用策略的频率（可选参数）。
@@ -241,7 +241,7 @@ from azureml.train.hyperdrive import TruncationSelectionPolicy
 early_termination_policy = TruncationSelectionPolicy(evaluation_interval=1, truncation_percentage=20, delay_evaluation=5)
 ```
 
-在此示例中，将在每个间隔应用提前终止策略，从评估间隔 5 开始。 如果某个运行的时间间隔为5，则该运行会在时间间隔5终止。
+在此示例中，将在每个间隔应用提前终止策略，从评估间隔 5 开始。 如果某个运行在间隔 5 处的性能，在间隔 5 的所有运行中处于 20% 的性能最低的运行范围内，则会终止该运行。
 
 ### <a name="no-termination-policy"></a>无终止策略
 
@@ -253,12 +253,12 @@ policy=None
 
 ### <a name="default-policy"></a>默认策略
 
-如果未指定任何策略，超参数优化服务将允许执行所有定型运行，直到完成。
+如果未指定策略，则超参数优化服务将让所有训练运行一直执行到完成。
 
 ### <a name="picking-an-early-termination-policy"></a>选择提前终止策略
 
 * 如果你正在寻找既可以节省成本又不会终止有前景的作业的保守策略，则可以使用 `evaluation_interval` 为 1 且 `delay_evaluation` 为 5 的中间值停止策略。 这属于保守的设置，可以提供大约 25%-35% 的节省，且不会造成主要指标损失（基于我们的评估数据）。
-* 如果要从早期终止中寻找更高的节省时间，可以将 Bandit 策略与更严格（较小）允许的时差或截断选择策略结合使用，截断百分比更大。
+* 如果希望通过提前终止实现成本节省，则可以使用 Bandit 策略或截断选择策略，因为前者的可用可宽延时间更严格（更小），后者的截断百分比更大。
 
 ## <a name="allocate-resources"></a>分配资源
 
@@ -284,11 +284,11 @@ max_total_runs=20,
 max_concurrent_runs=4
 ```
 
-此代码将超参数优化试验配置为使用最多20个总运行，每次运行四个配置。
+此代码会将超参数优化试验配置为总共最多使用 20 个运行，每次运行四个配置。
 
 ## <a name="configure-experiment"></a>配置试验
 
-使用上述部分中定义的超参数搜索空间、提前终止策略、主要指标和资源分配来[配置超参数优化](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py)试验。 此外，提供将结合采样的超参数调用的 `estimator`。 `estimator` 描述运行的训练脚本、每个作业的资源（单个或多个 GPU）以及要使用的计算目标。 由于超参数优化试验的并发性受可用资源限制，所以请确保 `estimator` 中指定的计算目标能够为所需的并发性提供足够的资源。 （有关估算器的详细信息，请参阅[如何训练模型](how-to-train-ml-models.md)。）
+使用上述各节定义的超参数搜索空间、早期终止策略、主要指标和资源分配[配置超参数调优](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py)实验。 此外，提供将结合采样的超参数调用的 `estimator`。 `estimator` 描述运行的训练脚本、每个作业的资源（单个或多个 GPU）以及要使用的计算目标。 由于超参数优化试验的并发性受可用资源限制，所以请确保 `estimator` 中指定的计算目标能够为所需的并发性提供足够的资源。 （有关估算器的详细信息，请参阅[如何训练模型](how-to-train-ml-models.md)。）
 
 配置超参数优化试验：
 
@@ -305,7 +305,7 @@ hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
 
 ## <a name="submit-experiment"></a>提交试验
 
-定义超参数优化配置后，请[提交试验](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py#submit-config--tags-none----kwargs-)：
+定义超参数调优配置后，[提交实验](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py#submit-config--tags-none----kwargs-)：
 
 ```Python
 from azureml.core.experiment import Experiment
@@ -313,13 +313,13 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` 是分配给超参数优化试验的名称，`workspace` 是要在其中创建试验的工作区（有关试验的详细信息，请参阅[如何 Azure 机器学习工作？](concept-azure-machine-learning-architecture.md)）
+`experiment_name` 是要分配给超参数优化试验的名称，`workspace` 是要在其中创建试验的工作区（有关试验的详细信息，请参阅 [Azure 机器学习的工作原理](concept-azure-machine-learning-architecture.md)）
 
 ## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>热启动超参数优化试验（可选）
 
-通常，查找模型的最佳超参数值可能是一个迭代过程，需要多次优化运行，才能从以前的超参数优化运行中学习。 重复使用这些以前运行的知识将加快超参数优化过程，从而降低优化模型的成本，并可能会提高生成的模型的主要指标。 当热启动超参数优化试验 Bayesian 采样时，上一次运行的试验将作为先前的知识，以智能选取新示例，以提高主要指标。 此外，在使用随机或网格采样时，任何早期的终止决策都将利用以前的运行中的指标来确定执行定型运行的性能不佳。 
+通常，为模型查找最佳参数值可以是一个迭代过程，需要多次从之前超参数优化运行中学习到的优化运行。 重复运用这些之前运行的知识将加速超参数优化过程，从而降低优化模型的成本，并有可能改进生成模型的主要指标。 通过 Bayesian 采样热启动超参数优化实验时，先前运行的试验将作为先验知识，以智能选择新样本，从而改进主要指标。 此外，使用随机或网格采样时，任何提前终止决策都将利用之前运行的指标来确定性能不佳的训练运行。 
 
-Azure 机器学习使你可以通过使用最多5个以前完成/已取消的超参数优化父运行中的知识，超参数优化运行。 你可以使用以下代码段指定要热启动的父运行列表：
+通过 Azure 机器学习，你可利用最多 5 个之前完成/已取消的超参数优化父运行的知识来热启动超参数优化运行。 可使用以下代码片段指定要热启动的父运行列表：
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveRun
@@ -329,7 +329,7 @@ warmstart_parent_2 = HyperDriveRun(experiment, "warmstart_parent_run_ID_2")
 warmstart_parents_to_resume_from = [warmstart_parent_1, warmstart_parent_2]
 ```
 
-此外，在某些情况下，超参数优化试验的单个定型运行因预算限制而取消或因其他原因而失败。 现在可以从上一个检查点恢复此类单独的定型运行（假设定型脚本处理检查点）。 恢复单个训练运行将使用相同的超参数配置，并装载用于该运行的输出文件夹。 训练脚本应接受 `resume-from` 参数，该参数包含要从中恢复定型运行的检查点或模型文件。 可以使用以下代码片段恢复单个定型运行：
+此外，在某些情况下，可能会因预算限制而取消超参数优化实验的单个训练运行，或因其他原因而失败。 现在可以从最后一个检查点恢复这种单个训练运行（假设训练脚本处理检查点）。 恢复单个训练运行将使用相同的超参数配置，并装载用于该运行的输出文件夹。 训练脚本应接受 `resume-from` 参数，该参数包含要从中恢复训练运行的检查点或模型文件。 可以使用以下代码片段恢复单个训练运行：
 
 ```Python
 from azureml.core.run import Run
@@ -339,7 +339,7 @@ resume_child_run_2 = Run(experiment, "resume_child_run_ID_2")
 child_runs_to_resume = [resume_child_run_1, resume_child_run_2]
 ```
 
-可以配置超参数优化试验，使其从以前的实验中热开始，或使用可选 `resume_from` 参数恢复单个训练运行，并在配置中 `resume_child_runs`：
+可以配置超参数优化试验，使其从之前的试验中热启动，或者使用可选参数 `resume_from` 和 `resume_child_runs` 在配置中恢复单个训练运行：
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
@@ -357,7 +357,7 @@ hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
 
 ## <a name="visualize-experiment"></a>将实验可视化
 
-Azure 机器学习 SDK 提供了一[小的笔记本小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py)，可直观显示定型运行进度。 以下代码片段可在 Jupyter 笔记本中的一个位置可视化所有的超参数优化运行：
+Azure 机器学习 SDK 提供[笔记本小部件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py)，用于可视化培训运行的进度。 以下代码片段可在 Jupyter 笔记本中的一个位置可视化所有的超参数优化运行：
 
 ```Python
 from azureml.widgets import RunDetails
@@ -380,7 +380,7 @@ RunDetails(hyperdrive_run).show()
 
 ## <a name="find-the-best-model"></a>找到最佳模型
 
-所有超参数优化运行完成后，[确定最佳的执行配置](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py#get-best-run-by-primary-metric-include-failed-true--include-canceled-true--include-resume-from-runs-true-----typing-union-azureml-core-run-run--nonetype-)和相应的超参数值：
+完成所有超参数调优运行后，[确定性能最佳的配置](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py#get-best-run-by-primary-metric-include-failed-true--include-canceled-true--include-resume-from-runs-true-----typing-union-azureml-core-run-run--nonetype-)和相应的超参数值：
 
 ```Python
 best_run = hyperdrive_run.get_best_run_by_primary_metric()
@@ -395,11 +395,11 @@ print('\n batch size:',parameter_values[7])
 ```
 
 ## <a name="sample-notebook"></a>示例 Notebook
-请参阅以下文件夹中的超参数-* 笔记本：
+请参阅以下文件夹中 train-hyperparameter-* 笔记本：
 * [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>后续步骤
 * [跟踪试验](how-to-track-experiments.md)
-* [部署定型的模型](how-to-deploy-and-where.md)
+* [部署训练的模型](how-to-deploy-and-where.md)

@@ -1,21 +1,21 @@
 ---
-title: 使用C# Service Fabric 中的服务远程处理
+title: 在 Service Fabric 中使用 C# 进行服务远程处理
 description: Service Fabric 远程处理允许客户端和服务使用远程过程调用来与 C# 服务进行通信。
 author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
 ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75433880"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>通过 Reliable Services 使用 C# 进行服务远程处理
 
 > [!div class="op_single_selector"]
-> * [Windows 上的 C#](service-fabric-reliable-services-communication-remoting.md)
+> * [C# 在 Windows 上](service-fabric-reliable-services-communication-remoting.md)
 > * [Linux 上的 Java](service-fabric-reliable-services-communication-remoting-java.md)
 >
 >
@@ -313,7 +313,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 若要从 V1 升级到 V2（接口兼容，称为 V2_1），必须执行双步升级。 请按顺序执行以下步骤。
 
 > [!NOTE]
-> 从 V1 升级到 V2 时，请确保更新 `Remoting` 命名空间以使用 V2。 例如： "ServiceFabric" （"FabricTransport"）
+> 从 V1 升级到 V2 时，请确保更新 `Remoting` 命名空间以使用 V2。 示例："微软.ServiceFabric.服务.Remoting.V2.Fabric 传输.客户端"
 >
 >
 

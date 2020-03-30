@@ -12,10 +12,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: fbac52d65433f2137d565ca60fcf754e49199640
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931394"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>重新配置 Azure-SSIS 集成运行时
@@ -24,19 +24,19 @@ ms.locfileid: "74931394"
 ## <a name="data-factory-ui"></a>数据工厂 UI 
 可以使用数据工厂 UI 停止、编辑/重新配置或删除 Azure-SSIS IR。 
 
-1. 在**数据工厂 UI**中，切换到 "**编辑**" 选项卡。若要启动数据工厂 UI，请单击数据工厂主页上的 "**创作 & 监视器**"。
-2. 在左窗格中，单击“连接”。
-3. 在右窗格中，切换到“集成运行时”。 
-4. 可以使用“操作”列中的按钮**停止**、**编辑**或**删除**集成运行时。 使用“操作”列中的“代码”按钮，可以查看与集成运行时关联的 JSON 定义。  
+1. 在 **"数据工厂 UI"** 中，切换到 **"编辑"** 选项卡。要启动数据工厂 UI，请单击数据工厂主页**上的"&监视器"。**
+2. 在左窗格中，单击“连接”****。
+3. 在右窗格中，切换到“集成运行时”****。 
+4. 可以使用“操作”列中的按钮**停止**、**编辑**或**删除**集成运行时。 使用“操作”**** 列中的“代码”**** 按钮，可以查看与集成运行时关联的 JSON 定义。  
     
     ![Azure SSIS IR 的操作](./media/manage-azure-ssis-integration-runtime/actions-for-azure-ssis-ir.png)
 
 ### <a name="to-reconfigure-an-azure-ssis-ir"></a>重新配置 Azure-SSIS IR
-1. 通过单击“操作”列中的“停止”停止集成运行时。 若要刷新列表视图，请单击工具栏上的“刷新”。 IR 停止后，将看到第一个操作让你启动 IR。 
+1. 通过单击“操作”**** 列中的“停止”**** 停止集成运行时。 若要刷新列表视图，请单击工具栏上的“刷新”****。 IR 停止后，将看到第一个操作让你启动 IR。 
 
     ![Azure SSIS IR 的操作 - 停止后](./media/manage-azure-ssis-integration-runtime/actions-after-ssis-ir-stopped.png)
-2. 通过单击“操作”列中的“编辑”按钮编辑/重新配置 IR。 在“集成运行时设置”窗口中，更改设置（例如，节点大小、节点数或每个节点的最大并行执行数）。 
-3. 若要重新启动 IR，请单击“操作”列中的“启动”按钮。     
+2. 通过单击“操作”**** 列中的“编辑”**** 按钮编辑/重新配置 IR。 在“集成运行时设置”**** 窗口中，更改设置（例如，节点大小、节点数或每个节点的最大并行执行数）。 
+3. 若要重新启动 IR，请单击“操作”**** 列中的“启动”**** 按钮。     
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -46,17 +46,17 @@ ms.locfileid: "74931394"
 
 ### <a name="reconfigure-an-azure-ssis-ir"></a>重新配置 Azure-SSIS IR
 
-1. 首先，使用[AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/stop-Azdatafactoryv2integrationruntime) Cmdlet 停止 Azure SSIS 集成运行时。 此命令释放该运行时的所有节点并停止计费。
+1. 首先，使用 [Stop-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/stop-Azdatafactoryv2integrationruntime) cmdlet 停止 Azure-SSIS Integration Runtime。 此命令释放该运行时的所有节点并停止计费。
 
     ```powershell
     Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName 
     ```
-2. 接下来，使用[AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) cmdlet 重新配置 Azure-SSIS IR。 以下示例命令将 Azure-SSIS 集成运行时横向扩展到五个节点。
+2. 接下来，使用 [Set-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) cmdlet 重新配置 Azure-SSIS IR。 以下示例命令将 Azure-SSIS 集成运行时横向扩展到五个节点。
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -NodeCount 5
     ```  
-3. 然后，使用[AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) Cmdlet 启动 Azure SSIS 集成运行时。 此命令分配该运行时的所有节点来运行 SSIS 包。   
+3. 然后，使用 [Start-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) cmdlet 启动 Azure-SSIS Integration Runtime。 此命令分配该运行时的所有节点来运行 SSIS 包。   
 
     ```powershell
     Start-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName

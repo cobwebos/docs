@@ -1,14 +1,14 @@
 ---
-title: Azure Service Fabric 网格的常见问题
+title: Azure 服务结构网格的常见问题
 description: 了解 Azure Service Fabric 网格的常见问题和解答。
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252489"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>有关 Service Fabric 网格的常见问题
@@ -23,18 +23,18 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 ### <a name="what-is-the-cost-of-participating-in-the-preview"></a>参与预览版的成本是多少？
 
-对于将应用程序或容器部署到网格预览，当前没有任何费用。 请注意中的更新可能会对计费进行支持。 但是，我们建议你删除部署的资源，而不是将其保持运行状态，除非你主动对它们进行测试。
+当前将应用程序或容器部署到网格预览不收取任何费用。 请留意 5 月的更新，以便启用计费。 但是，我们鼓励您删除部署的资源，除非正在积极测试这些资源，否则不要将其保留。
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>内核和 RAM 的数量是否有配额限制？
 
 是的。 每个订阅的配额是：
 
-- 应用程序数量：5
-- 每个应用程序的内核数：12
-- 每个应用程序的总 RAM： 48 GB
-- 网络和入口端点：5
+- 申请数量： 5
+- 每个应用程序的内核： 12
+- 每个应用程序的总 RAM：48 GB
+- 网络和入口端点： 5
 - 可以附加的 Azure 卷：10
-- 服务副本数：3
+- 服务副本数： 3
 - 可以部署的最大容器限制为 4 个内核，16GB RAM。
 - 可以将部分核心以 0.5 个核心的增量分配给容器（最多 6 个核心）。
 
@@ -88,16 +88,16 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
     - Windows Server 1709
     - Windows Server 1803
     - Windows Server 1809
-    - Windows Server 2019 LTSC
+    - 视窗服务器 2019 LTSC
 - Linux
     - 无已知限制
 
 > [!NOTE]
-> 适用于网格的 Visual Studio 工具尚不支持部署到 Windows Server 2019 和1809容器。
+> 网格的可视化工作室工具尚不支持部署到 Windows Server 2019 和 1809 容器中。
 
-### <a name="what-types-of-applications-can-i-deploy"></a>可以部署哪些类型的应用程序？ 
+### <a name="what-types-of-applications-can-i-deploy"></a>我可以部署哪些类型的应用程序？ 
 
-你可以部署在容器中运行的、适合于应用程序资源上的限制的任何内容（有关配额的详细信息，请参阅上文）。 如果我们检测到你正在使用网格来运行非法工作负荷或滥用系统（即挖掘），则我们保留终止你的部署并阻止列表你的订阅在服务上运行的权利。 如果对运行特定工作负荷有任何疑问，请联系我们。 
+可以部署任何在容器中运行的容器，这些容器都适合对应用程序资源施加的限制（有关配额的详细信息，请参阅上文）。 如果我们检测到您使用 Mesh 运行非法工作负载或滥用系统（即挖掘），则我们保留终止部署和阻止订阅在服务上运行的权利。 如果您对运行特定工作负载有任何疑问，请联系我们。 
 
 ## <a name="developer-experience-issues"></a>开发人员体验问题
 
@@ -106,7 +106,7 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 在某些情况下，从容器到 Service Fabric DNS 服务的传出 DNS 查询可能会失败。 正在调查此问题。 缓解措施：
 
 - 使用 Windows Fall Creators 更新（版本 1709）或更高版本作为基容器映像。
-- 如果服务名称单独不起作用，请尝试使用完全限定的名称： ServiceName. ApplicationName。
+- 如果服务名称本身不起作用，请尝试完全限定的名称：服务名称.应用程序名称。
 - 在服务的 Docker 文件中添加 `EXPOSE <port>`，其中的端口是在其上公开服务的端口。 例如：
 
 ```Dockerfile
@@ -121,7 +121,7 @@ EXPOSE 80
 
 Azure 网格目前不支持跨应用程序进行 DNS 解析。
 
-有关在 Windows 10 上运行 Service Fabric 开发群集的其他已知 DNS 问题，请参阅：[调试 windows 容器](/azure/service-fabric/service-fabric-how-to-debug-windows-containers)和[已知 DNS 问题](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)。
+有关在 Windows 10 上运行服务结构开发群集的其他已知 DNS 问题，请参阅：[调试 Windows 容器](/azure/service-fabric/service-fabric-how-to-debug-windows-containers)和已知的 DNS[问题](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)。
 
 ### <a name="networking"></a>网络
 
@@ -143,7 +143,7 @@ Azure 网格目前不支持跨应用程序进行 DNS 解析。
 
 ### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>VS 工具对 Windows 容器的支持有限
 
-Visual Studio 工具仅支持使用 Windows Server 1709 和1803的基本操作系统版本部署 Windows 容器。 
+Visual Studio 工具仅支持部署具有 Windows Server 1709 和 1803 基本操作系统版本的 Windows 容器。 
 
 ## <a name="feature-gaps-and-other-known-issues"></a>功能差距和其他已知问题
 

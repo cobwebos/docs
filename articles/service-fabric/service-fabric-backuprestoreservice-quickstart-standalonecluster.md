@@ -1,15 +1,15 @@
 ---
-title: 在独立 Azure Service Fabric 中定期备份/还原
+title: 在单独的 Azure Service Fabric 中进行定期备份/还原
 description: 使用 Service Fabric 的定期备份和还原功能来实现应用程序数据的定期数据备份。
 author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: 938cbbde9f53c52350ef64715f6c61c4aa961057
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75526237"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>在独立 Service Fabric 中定期备份和还原
@@ -36,7 +36,7 @@ Service Fabric 提供了一个内置 API，用于执行时间点[备份和还原
 Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关的以下功能：
 
 - 通过支持将备份上传到（外部）存储位置，计划可靠有状态服务和 Reliable Actors 的定期备份。 受支持的存储位置
-    - Azure 存储器
+    - Azure 存储
     - 文件共享（本地）
 - 枚举备份
 - 触发分区的临时备份
@@ -44,18 +44,18 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 - 暂时暂停备份
 - 备份的保留期管理（即将推出）
 
-## <a name="prerequisites"></a>必备组件
-* Service Fabric Fabric 6.4 或更高版本的群集。 有关下载所需包的步骤，请参阅[文章](service-fabric-cluster-creation-for-windows-server.md)。
+## <a name="prerequisites"></a>先决条件
+* 具有 Fabric 6.4 或更高版本的 Service Fabric 群集。 有关下载所需包的步骤，请参阅[文章](service-fabric-cluster-creation-for-windows-server.md)。
 * 用于加密机密的 X.509 证书，连接到存储以存储备份时需要此机密。 请参阅[文章](service-fabric-windows-cluster-x509-security.md)，了解如何获取或创建一个自签名的 X.509 证书。
 
 * 使用 Service Fabric SDK 3.0 或更高版本生成的 Service Fabric 可靠有状态应用程序。 对于面向 .Net Core 2.0 的应用程序，应使用 Service Fabric SDK 3.1 或更高版本生成应用程序。
-* 安装 ServiceFabric 模块 [In Preview]，以便进行配置调用。
+* 安装 Microsoft.ServiceFabric.Powershell.Http模块 [在预览中] 进行配置调用。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-* 使用 ServiceFabric 模块进行任何配置请求之前，请确保使用 `Connect-SFCluster` 命令连接群集。
+* 请确保在使用 Microsoft.ServiceFabric.Powershell.Http 模块发出任何配置请求之前，先使用 `Connect-SFCluster` 命令连接群集。
 
 ```powershell
 
@@ -64,7 +64,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 ```
 
 ## <a name="enabling-backup-and-restore-service"></a>启用备份和还原服务
-首先，需要在群集中启用备份和还原服务。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。 通过以下步骤启用备份和还原服务：
+首先，需要在群集中启用备份和还原服务__。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。 通过以下步骤启用备份和还原服务__：
 
 1. 检查在群集配置文件中 `apiversion` 是否设置为了 `10-2017`，如果没有，请按以下代码片段所示进行更新：
 
@@ -77,7 +77,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     }
     ```
 
-2. 现在，通过在 `properties` 部分下添加以下 `addonFeatures` 部分来启用备份和还原服务，如以下代码片段所示： 
+2. 现在，通过在 `properties` 部分下添加以下 `addonFeatures` 部分来启用备份和还原服务，如以下代码片段所示__： 
 
     ```json
         "properties": {
@@ -106,13 +106,13 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     }
     ```
 
-4. 通过前述更改更新群集配置文件后，应用更改并等待部署/升级完成。 完成后，备份和还原服务开始在群集中运行。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。 
+4. 通过前述更改更新群集配置文件后，应用更改并等待部署/升级完成。 完成后，备份和还原服务开始在群集中运行__。 此服务的 URI 为 `fabric:/System/BackupRestoreService`，并且此服务可位于 Service Fabric Explorer 中系统服务部分下。 
 
 
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>启用可靠有状态服务和 Reliable Actors 的定期备份
 让我们通过一些步骤来启用可靠有状态服务和 Reliable Actors 的定期备份。 这些步骤假定
-- 通过备份和还原服务安装群集。
+- 通过备份和还原服务安装群集__。
 - 在群集上部署了可靠有状态服务。 在本快速入门指南中，应用程序 URI 为 `fabric:/SampleApp`，属于此应用程序的可靠有状态服务的 URI 为 `fabric:/SampleApp/MyStatefulService`。 使用单个分区部署此服务，分区 ID 为 `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7`。  
 
 ### <a name="create-backup-policy"></a>创建备份策略
@@ -122,7 +122,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 对于备份存储，请创建文件共享并为所有 Service Fabric 节点计算机提供对此文件共享的读写访问权限。 此示例假定名为 `BackupStore` 的共享存在于 `StorageServer` 上。
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 Powershell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
 
 ```powershell
 
@@ -165,19 +165,19 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 #### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
 
-1. 在 Service Fabric Explorer 中，导航到 "备份" 选项卡，然后选择 "操作" > 创建备份策略 "。
+1. 在 Service Fabric Explorer 中，导航到“备份”选项卡，然后选择“操作”>“创建备份策略”。
 
     ![创建备份策略][6]
 
-2. 填写信息。 对于独立群集，应选择 "文件共享"。
+2. 填写信息。 对于独立群集，应选择 FileShare。
 
-    ![创建备份策略文件共享][7]
+    ![创建备份策略 FileShare][7]
 
 ### <a name="enable-periodic-backup"></a>启用定期备份
 在定义策略以满足应用程序的数据保护要求后，备份策略应与应用程序相关联。 根据需要，备份策略可与应用程序、服务或分区相关联。
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 Powershell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
 
 ```powershell
 Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
@@ -199,11 +199,11 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 #### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
 
-1. 选择应用程序并执行 "操作"。 单击 "启用/更新应用程序备份"。
+1. 选择应用程序，然后访问操作。 单击“启用/更新应用程序备份”。
 
     ![启用应用程序备份][3] 
 
-2. 最后，选择所需的策略，然后单击 "启用备份"。
+2. 最后，选择所需的策略，然后单击“启用备份”。
 
     ![选择策略][4]
 
@@ -215,9 +215,9 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ### <a name="list-backups"></a>列出备份
 
-可使用 GetBackups API 来枚举属于应用程序的可靠有状态服务和 Reliable Actors 的所有分区的关联备份。 根据需要，可为应用程序、服务或分区枚举备份。
+可使用 GetBackups API 来枚举属于应用程序的可靠有状态服务和 Reliable Actors 的所有分区的关联备份__。 根据需要，可为应用程序、服务或分区枚举备份。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 Powershell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
 
 ```powershell
     Get-SFApplicationBackupList -ApplicationId WordCount     
@@ -278,7 +278,7 @@ FailureError            :
 
 #### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
 
-若要查看 Service Fabric Explorer 中的备份，请导航到分区，然后选择 "备份" 选项卡。
+若要在 Service Fabric Explorer 中查看备份，请导航到一个分区，然后选择“备份”选项卡。
 
 ![枚举备份][5]
 

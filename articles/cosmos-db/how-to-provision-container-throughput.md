@@ -1,29 +1,29 @@
 ---
 title: 在 Azure Cosmos DB 中预配容器吞吐量
-description: 了解如何使用 Azure 门户、CLI、PowerShell 和其他各种 Sdk 在 Azure Cosmos DB 中的容器级别预配吞吐量。
+description: 了解如何使用 Azure 门户、CLI、PowerShell 和各种其他 SDK 在 Azure Cosmos DB 中预配容器级别的吞吐量。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mjbrown
 ms.openlocfilehash: e416501cb3c532b3ba0a262442b35b236875a463
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273299"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>在 Azure Cosmos 容器上预配吞吐量
 
-本文介绍如何在 Azure Cosmos DB 中为容器（集合、图形或表）预配吞吐量。 可以为单个容器预配吞吐量，也可以[为数据库预配吞吐量](how-to-provision-database-throughput.md)，并在数据库中的容器之间共享。 可以使用 Azure 门户、Azure CLI 或 Azure Cosmos DB SDK 为容器预配吞吐量。
+本文介绍如何在 Azure Cosmos DB 中为容器（集合、图形或表）预配吞吐量。 您可以在单个容器上预配吞吐量，也可以[在数据库上预配吞吐量](how-to-provision-database-throughput.md)，并在数据库中的容器之间共享吞吐量。 可以使用 Azure 门户、Azure CLI 或 Azure Cosmos DB SDK 为容器预配吞吐量。
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 Azure[门户](https://portal.azure.com/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)，或选择现有的 Azure Cosmos 帐户。
 
-1. 打开“数据资源管理器”窗格，然后选择“新建集合”。 接下来，请提供以下详细信息：
+1. 打开“数据资源管理器”窗格，然后选择“新建集合”********。 接下来，请提供以下详细信息：
 
    * 表明要创建新数据库还是使用现有数据库。
    * 输入容器（或表或图）ID。
@@ -35,7 +35,7 @@ ms.locfileid: "78273299"
 
 ## <a name="azure-cli-or-powershell"></a>Azure CLI 或 PowerShell
 
-若要创建具有专用吞吐量的容器，请参阅。
+若要创建具有专用吞吐量的容器，请参阅
 
 * [使用 Azure CLI 创建容器](manage-with-cli.md#create-a-container)
 * [使用 Powershell 创建容器](manage-with-powershell.md#create-container)
@@ -48,7 +48,7 @@ ms.locfileid: "78273299"
 > [!Note]
 > 使用适用于 SQL API 的 Cosmos SDK 为除 Cassandra API 之外的所有 Cosmos DB API 预配吞吐量。
 
-### <a id="dotnet-most"></a>SQL、MongoDB、Gremlin 和表 API
+### <a name="sql-mongodb-gremlin-and-table-apis"></a><a id="dotnet-most"></a>SQL、MongoDB、Gremlin 和表 API
 ### <a name="net-v2-sdk"></a>.Net V2 SDK
 
 ```csharp
@@ -96,7 +96,7 @@ offer.content.offerThroughput = 2000;
 await client.offer(offer.id).replace(offer);
 ```
 
-### <a id="dotnet-cassandra"></a>Cassandra API
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>卡桑德拉 API
 
 类似的命令可以通过任何 CQL 兼容的驱动程序发出。
 
@@ -108,7 +108,7 @@ session.Execute("CREATE TABLE myKeySpace.myTable(
     lastName text) WITH cosmosdb_provisioned_throughput=400");
 
 ```
-### <a name="alter-or-change-throughput-for-cassandra-table"></a>更改或更改 Cassandra 表的吞吐量
+### <a name="alter-or-change-throughput-for-cassandra-table"></a>修改或更改 Cassandra 表的吞吐量
 
 ```csharp
 // Altering the throughput too can be done through code by issuing following command

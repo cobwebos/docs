@@ -1,6 +1,6 @@
 ---
-title: 用于调用 web Api 的 web API-Microsoft 标识平台 |Microsoft
-description: 了解如何生成可调用 web Api 的 web API。
+title: 调用 Web API 的 Web API - Microsoft 标识平台 | Azure
+description: 了解如何构建调用 Web API 的 Web API。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,21 +15,21 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d66a08d4e84a3771d6c3fa46b96c975869435452
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76833356"
 ---
-# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>用于调用 web Api 的 web API：调用 API
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>调用 Web API 的 Web API：调用 API
 
-获得令牌后，可以调用受保护的 web API。 可以从 web API 的控制器执行此操作。
+有了令牌后，就可以调用受保护的 Web API 了。 可以从 Web API 的控制器执行此操作。
 
 ## <a name="controller-code"></a>控制器代码
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-下面的代码将继续在调用 web Api 的 web API 中显示的示例代码[：获取应用程序的令牌](scenario-web-api-call-api-acquire-token.md)。 在 API 控制器的操作中调用该代码。 它调用名为*todolist*的下游 API。
+以下代码继续示例代码，该代码显示在[调用 Web API 的 Web API 中：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)。 该代码在 API 控制器的操作中调用。 它调用名为“todolist”** 的下游 API。
 
 获取令牌后，将其用作持有者令牌以调用下游 API。
 
@@ -59,9 +59,9 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-下面的代码将继续在调用 web Api 的 web API 中显示的示例代码[：获取应用程序的令牌](scenario-web-api-call-api-acquire-token.md)。 在 API 控制器的操作中调用该代码。 它调用下游 API MS Graph。
+以下代码继续示例代码，该代码显示在[调用 Web API 的 Web API 中：获取应用的令牌](scenario-web-api-call-api-acquire-token.md)。 该代码在 API 控制器的操作中调用。 它调用下游 API MS Graph。
 
 获取令牌后，将其用作持有者令牌以调用下游 API。
 
@@ -83,12 +83,12 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
-使用 MSAL Python 演示此流的示例尚不可用。
+# <a name="python"></a>[Python](#tab/python)
+我们尚未编写在 MSAL Python 中演示此流的示例。
 
 ---
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [用于调用 web Api 的 web API：移至生产环境](scenario-web-api-call-api-production.md)
+> [调用 Web API 的 Web API：迁移到生产](scenario-web-api-call-api-production.md)

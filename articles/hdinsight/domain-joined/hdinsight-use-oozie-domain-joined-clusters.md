@@ -1,5 +1,5 @@
 ---
-title: Apache Oozie 工作流 & 企业安全性-Azure HDInsight
+title: 阿帕奇 Oozie 工作流&企业安全 - Azure HDInsight
 description: 使用 Azure HDInsight 企业安全性套餐保护 Apache Oozie 工作流。 了解如何定义 Oozie 工作流，并提交 Oozie 作业。
 author: omidm1
 ms.author: omidm
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/09/2019
 ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194897"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie
@@ -69,7 +69,7 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
 
    将 `DomainUser` 替换为域用户名。
    将 `DomainUserPath` 替换为域用户的主目录路径。
-   将 `ClusterVersion` 替换为群集数据平台版本。
+   替换为`ClusterVersion`群集数据平台版本。
 
 2. 使用以下语句创建并编辑新文件：
 
@@ -178,17 +178,17 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
 
 4. 将 `clustername` 替换为群集的名称。
 
-5. 若要保存文件，请选择 " **Ctrl + X**"。 输入**Y**。然后选择**Enter**。
+5. 要保存文件，请选择**Ctrl_X**。 输入**Y**。然后选择 **"输入**"。
 
     工作流分为两部分：
 
-   - **Credential.** 此部分接收用于验证 Oozie 操作的凭据：
+   - **凭据。** 此部分接收用于验证 Oozie 操作的凭据：
 
      此示例对 Hive 操作进行身份验证。 若要了解详细信息，请参阅[操作身份验证](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html)。
 
      凭据服务允许 Oozie 操作模拟用户访问 Hadoop 服务。
 
-   - **采取.** 此部分包含三个操作：map-reduce、Hive server 2 和 Hive server 1：
+   - **行动。** 此部分包含三个操作：map-reduce、Hive server 2 和 Hive server 1：
 
      - map-reduce 操作针对输出聚合字数统计的映射化简运行来自 Oozie 包的示例。
 
@@ -230,9 +230,9 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   - 如果主群集存储是 Azure Data Lake Storage Gen1，则将 `adl://home` URI 用于 `nameNode` 属性。 如果使用的是 Azure Blob 存储，请将其更改为 `wasb://home`。 如果使用 Azure Data Lake Storage Gen2，则将其更改为 `abfs://home`。
+   - 如果主群集存储是 Azure Data Lake Storage Gen1，则将 `adl://home` URI 用于 `nameNode` 属性。 如果使用 Azure Blob 存储，则将此更改为`wasb://home`。 如果您使用的是 Azure 数据存储第 2 代，则将此`abfs://home`更改为 。
    - 将 `domainuser` 替换为你的域用户名。  
-   - 将 `ClusterShortName` 替换为群集的短名称。 例如，如果群集名称为 https:// [example link] sechadoopcontoso.azurehdisnight.net， *为群集的前 6 个字符：sechad*`clustershortname`。  
+   - 将 `ClusterShortName` 替换为群集的短名称。 例如，如果群集名称为 https:// [example link] sechadoopcontoso.azurehdisnight.net，`clustershortname` 为群集的前 6 个字符：sechad******。  
    - 将 `jdbcurlvalue` 替换为 Hive 配置中的 JDBC URL。 例如，jdbc:hive2://headnodehost:10001/;transportMode=http。
    - 若要保存文件，请按 Ctrl+X，输入 `Y`，再按 **Enter**。
 
@@ -347,5 +347,5 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。
-- [使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)。
+- [使用Apache Oozie与阿帕奇哈多普定义和运行一个工作流基于Linux的AzureHDInsight。](../hdinsight-use-oozie-linux-mac.md)
+- [使用 SSH 连接到 HDInsight （阿帕奇 Hadoop）。](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/01/2020
 ms.openlocfilehash: 3e7e5919a3f862f5cad243654972683d1879c4ba
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78251088"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用
@@ -20,7 +20,7 @@ ms.locfileid: "78251088"
 > [!Note]
 > 使用 [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md) 部署新的 HDInsight 群集以提高性能并获得新功能。
 
-若要分析 HDInsight 群集中的数据，可以将数据存储在[Azure 存储](../storage/common/storage-introduction.md)中， [Azure Data Lake Storage 第1代](../data-lake-store/data-lake-store-overview.md)或[Azure Data Lake Storage 第2代](../storage/blobs/data-lake-storage-introduction.md)。 使用所有存储选项都能安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
+要分析 HDInsight 群集中的数据，可以在[Azure 存储](../storage/common/storage-introduction.md)[、Azure 数据湖存储第 1 代](../data-lake-store/data-lake-store-overview.md)或 Azure[数据存储湖存储第 2 代](../storage/blobs/data-lake-storage-introduction.md)中存储数据。 使用所有存储选项都能安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
 
 在本文中，你将了解如何将 Data Lake Storage Gen1 与 HDInsight 群集配合使用。 若要了解如何配合使用 Azure 存储和 HDInsight 群集，请参阅[配合使用 Azure 存储和 Azure HDInsight 群集](hdinsight-hadoop-use-blob-storage.md)。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
@@ -42,7 +42,7 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Storage Gen1：
 
 | HDInsight 群集类型 | 将 Data Lake Storage Gen1 用作默认存储 | 将 Data Lake Storage Gen1 用作附加存储| 说明 |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight 版本4。0 | 否 | 否 |HDInsight 4.0 不支持 ADLS Gen1 |
+| HDInsight 版本 4.0 | 否 | 否 |HDInsight 4.0 不支持 ADLS Gen1 |
 | HDInsight 版本 3.6 | 是 | 是 | HBase 除外|
 | HDInsight 版本 3.5 | 是 | 是 | HBase 除外|
 | HDInsight 版本 3.4 | 否 | 是 | |
@@ -53,7 +53,7 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Storage Gen1：
 > [!WARNING]  
 > Azure Data Lake Storage Gen1 不支持 HDInsight HBase
 
-使用 Data Lake Storage Gen1 作为附加存储帐户不会影响性能或从群集读取或写入 Azure 存储的功能。
+将数据存储库 Gen1 用作其他存储帐户不会影响性能或从群集读取或写入 Azure 存储的能力。
 
 ## <a name="use-data-lake-storage-gen1-as-default-storage"></a>将 Data Lake Storage Gen1 用作默认存储
 
@@ -74,7 +74,7 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Storage Gen1：
 
 ### <a name="extracting-a-certificate-from-azure-keyvault-for-use-in-cluster-creation"></a>从 Azure Keyvault 提取证书以在创建群集时使用
 
-如果要将 Azure Data Lake Storage Gen1 设置为新群集的默认存储，并将服务主体的证书存储在 Azure Key Vault 中，则需要执行一些额外步骤才能将证书转换为正确的格式。 以下代码片段演示了如何执行转换操作。
+如果要将 Azure 数据湖存储 Gen1 设置为新群集的默认存储，并且服务主体的证书存储在 Azure 密钥保管库中，则需要执行一些附加步骤才能将证书转换为正确的格式。 以下代码片段演示了如何执行转换操作。
 
 首先，从 Key Vault 下载证书并提取 `SecretValueText`。
 
@@ -108,11 +108,11 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>将 Data Lake Storage Gen1 用作附加存储
 
-也可将 Data Lake Storage Gen1 用作群集的附加存储。 在这种情况下，群集的默认存储可以是 Azure 存储 Blob，也可以是 Data Lake Storage 帐户。 如果正在针对作为附加存储的 Data Lake Storage 中存储的数据运行 HDInsight 作业，则必须使用文件的完全限定路径。 例如：
+也可将 Data Lake Storage Gen1 用作群集的附加存储。 在这种情况下，群集的默认存储可以是 Azure 存储 Blob，也可以是 Data Lake Storage 帐户。 如果针对数据存储中存储的数据作为附加存储运行 HDInsight 作业，则必须使用文件完全限定的路径。 例如：
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-请注意，当前在 URL 中没有 **cluster_root_path**。 这是因为在这种情况下 Data Lake Storage 不是默认存储，因此只需提供文件的路径。
+请注意，当前在 URL 中没有 **cluster_root_path**。 这是因为在这种情况下，Data Lake 存储不是默认存储，因此您只需提供文件的路径。
 
 为了能够使用 Data Lake Storage Gen1 作为附加存储，只需授予服务主体对存储文件的路径位置的访问权限。  例如：
 
@@ -131,7 +131,7 @@ New-AzResourceGroupDeployment `
 > [!NOTE]  
 > 如果要将 Azure Data Lake Storage Gen1 用作 HDInsight 群集的附加存储，强烈建议在创建该群集时按本文说明进行此项操作。 将 Azure Data Lake Storage Gen1 作为附加存储添加到现有的 HDInsight 群集是不受支持的方案。
 
-有关 Data Lake Storage Gen1 的访问控制模型的基础知识的详细信息，请参阅[Azure Data Lake Storage Gen1 中的访问控制](../data-lake-store/data-lake-store-access-control.md)。
+有关数据存储第 1 代的访问控制模型的基本知识的详细信息，请参阅[Azure 数据存储湖存储 Gen1 中的访问控制](../data-lake-store/data-lake-store-access-control.md)。
 
 ## <a name="access-files-from-the-cluster"></a>从群集访问文件
 
@@ -143,7 +143,7 @@ New-AzResourceGroupDeployment `
     adl://<data_lake_account>.azuredatalakestore.net/<cluster_root_path>/<file_path>
     ```
 
-* **使用缩短的路径格式**。 利用此方法，你可以将路径替换为群集根路径，如下所示：
+* **使用缩短的路径格式**。 使用此方法时，需将群集根的路径替换为：
 
     ```
     adl:///<file path>
@@ -157,11 +157,11 @@ New-AzResourceGroupDeployment `
 
 ### <a name="data-access-examples"></a>数据访问示例
 
-示例基于与群集头节点的[ssh 连接](./hdinsight-hadoop-linux-use-ssh-unix.md)。 这些示例使用全部三个 URI 方案。 将 `DATALAKEACCOUNT` 和 `CLUSTERNAME` 替换为相关值。
+示例基于到群集的头节点的 [ssh 连接](./hdinsight-hadoop-linux-use-ssh-unix.md)。 示例使用所有三个 URI 方案。 `CLUSTERNAME`替换为`DATALAKEACCOUNT`相关值。
 
-#### <a name="a-few-hdfs-commands"></a>几个 hdfs 命令
+#### <a name="a-few-hdfs-commands"></a>一些 hdfs 命令
 
-1. 在本地存储中创建一个简单文件。
+1. 在本地存储上创建一个简单的文件。
 
     ```bash
     touch testFile.txt
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
     hdfs dfs -copyFromLocal testFile.txt /sampledata3/
     ```
 
-1. 列出群集存储中的目录内容。
+1. 列出群集存储上的目录内容。
 
     ```bash
     hdfs dfs -ls adl://DATALAKEACCOUNT.azuredatalakestore.net/clusters/CLUSTERNAME/sampledata1/
@@ -193,7 +193,7 @@ New-AzResourceGroupDeployment `
 
 #### <a name="creating-a-hive-table"></a>创建 Hive 表
 
-出于说明目的，显示了三个文件位置。 对于实际执行，只使用其中一个 `LOCATION` 条目。
+但为了便于说明，显示了三个文件位置。 实际执行时，仅使用 `LOCATION` 条目之一。
 
 ```hql
 DROP TABLE myTable;
@@ -212,9 +212,9 @@ LOCATION 'adl:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-ambari"></a>从 Ambari 标识存储路径
+## <a name="identify-storage-path-from-ambari"></a>识别来自安巴里的存储路径
 
-若要确定配置的默认存储的完整路径，请导航到 HDFS ** > 配置，然后**在 "筛选器" 输入框中输入 `fs.defaultFS`。
+要标识配置的默认存储的完整路径，请导航到**HDFS** > **配置**，并在筛选器`fs.defaultFS`输入框中输入。
 
 ## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage-gen1"></a>创建具有 Data Lake Storage Gen1 访问权限的 HDInsight 群集
 
@@ -305,7 +305,7 @@ Invoke-AzResourceAction `
 
 有关详细信息，请参阅：
 
-* [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [开始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [快速入门：在 HDInsight 中设置群集](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [通过 Azure PowerShell 创建使用 Data Lake Storage Gen1 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [将数据上传到 HDInsight](hdinsight-upload-data.md)

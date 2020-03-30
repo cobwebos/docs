@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure API 管理、事件中心和 Moesif 监视 Api
+title: 使用 Azure API 管理、事件中心和莫伊西亚监视 API
 titleSuffix: Azure API Management
 description: 通过连接 Azure API 管理、Azure 事件中心以及适用于 HTTP 日志记录与监视的 Moesif，演示 log-to-eventhub 策略的示例应用程序
 services: api-management
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442530"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>使用 Azure API 管理、事件中心和 Moesif 监视 API
@@ -48,7 +48,7 @@ Azure 事件中心旨在引入大量数据，它能够处理的事件数目远�
 
 另一个做法是使用 HTTP 规范 [RFC 7230](https://tools.ietf.org/html/rfc7230) 中所述的 `application/http` 媒体类型。 此媒体类型使用的格式与用于通过网络实际发送 HTTP 消息的格式完全相同，但整个消息可以放在另一个 HTTP 请求的正文中。 在本例中，我们将使用该正文作为消息发送到事件中心。 [Microsoft ASP .NET Web API 2.2 客户端](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/)库中有一个分析器可以分析此格式并将其转换为本机 `HttpRequestMessage` 和 `HttpResponseMessage` 对象，相当方便。
 
-若要创建此消息，需要在 Azure API 管理中使用基于 C# 的[策略表达式](/azure/api-management/api-management-policy-expressions)。 下面是可将 HTTP 请求消息发送到 Azure 事件中心的策略。
+为了能够创建此消息，我们需要利用 Azure API 管理中基于 C#[的策略表达式](/azure/api-management/api-management-policy-expressions)。 下面是可将 HTTP 请求消息发送到 Azure 事件中心的策略。
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -294,7 +294,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-`MoesifHttpMessageProcessor` 利用可轻松将 HTTP 事件数据推送到其服务的[适用于 Moesif 的 C# API 库](https://www.moesif.com/docs/api?csharp#events)。 若要将 HTTP 数据发送到 Moesif 收集器 API，需要一个帐户和应用程序 Id。可以通过在[Moesif 的网站](https://www.moesif.com)上创建帐户来获取 Moesif 应用程序 Id，然后转到 -> _应用安装_程序的_右上方菜单_。
+`MoesifHttpMessageProcessor` 利用可轻松将 HTTP 事件数据推送到其服务的[适用于 Moesif 的 C# API 库](https://www.moesif.com/docs/api?csharp#events)。 为了将 HTTP 数据发送到 Moesif 收集器 API，您需要一个帐户和一个应用程序 ID。通过在[Moesif的网站上](https://www.moesif.com)创建一个帐户，然后转到_右上角的菜单_ -> _应用程序设置_，你会得到一个Moesif应用程序ID。
 
 ## <a name="complete-sample"></a>完整示例
 GitHub 上提供了本示例的[源代码](https://github.com/dgilling/ApimEventProcessor)和测试。 需要准备好 [API 管理服务](get-started-create-service-instance.md)、[连接的事件中心](api-management-howto-log-event-hubs.md)和[存储帐户](../storage/common/storage-create-storage-account.md)才能自行运行本示例。   
@@ -305,7 +305,7 @@ GitHub 上提供了本示例的[源代码](https://github.com/dgilling/ApimEvent
 
 ![演示如何将请求转发到 Runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 Azure API 管理服务提供了一个理想位置用于捕获 API 的双向 HTTP 流量。 Azure 事件中心是一个高度可缩放的、低成本的解决方案，可以捕获流量并将其馈送到辅助处理系统进行日志记录、监视和其他复杂分析。 只需编写几十行代码，就能轻松连接到 Moesif 等第三方流量监视系统。
 
 ## <a name="next-steps"></a>后续步骤

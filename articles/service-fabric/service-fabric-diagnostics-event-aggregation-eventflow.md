@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric 事件聚合与 EventFlow
+title: 使用 EventFlow 聚合 Azure Service Fabric 事件
 description: 了解通过使用 EventFlow 集合和收集事件来监视和诊断 Azure Service Fabric 群集。
 author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: cde24657cc8ed78b91e72df16d51df4077a6e030
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75463097"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>使用 EventFlow 进行事件聚合和收集
@@ -24,7 +24,7 @@ EventFlow 二进制文件都可用作一组 NuGet 包。 要将 EventFlow 添加
 
 将显示一个不同包的列表，带有“输入”和“输出”标记。 EventFlow 支持不同日志提供程序和分析器。 托管 EventFlow 的服务应包括相应的包，具体取决于应用程序日志的源和目标。 除核心 ServiceFabric 包外，至少还需配置一个输入和输出。 例如，可添加下列包将 EventSource 事件发送到 Application Insights：
 
-* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`（从该服务的 EventSource 类和标准 EventSource 捕获数据，例如 Microsoft-ServiceFabric-Services 和 Microsoft-ServiceFabric-Actors）
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`（从该服务的 EventSource 类和标准 EventSource 捕获数据，例如 Microsoft-ServiceFabric-Services** 和 Microsoft-ServiceFabric-Actors**）
 * `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`（我们会将日志发送到 Azure Application Insights 资源）
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric`（允许初始化来自 Service Fabric 服务配置的 EventFlow 管道，并以 Service Fabric 运行状况报表的形式报告发送诊断数据的任何相关问题）
 
@@ -39,7 +39,7 @@ EventFlow 管道（负责发送日志）根据配置文件中存储的规范创�
 >[!NOTE]
 >如果项目文件具有 VisualStudio 2017 格式，则不会自动添加 `eventFlowConfig.json` 文件。 要修复此问题，请在 `Config` 文件夹中创建该文件，并将生成操作设置为`Copy if newer`。 
 
-以下是基于上文提到的 NuGet 包的 eventFlowConfig.json示例：
+以下是基于上文提到的 NuGet 包的 eventFlowConfig.json ** 示例：
 ```json
 {
   "inputs": [
@@ -70,7 +70,7 @@ EventFlow 管道（负责发送日志）根据配置文件中存储的规范创�
 }
 ```
 
-服务的 ServiceEventSource 名称是应用于 ServiceEventSource 类的 `EventSourceAttribute` 的 Name 属性值。 这在 `ServiceEventSource.cs` 文件中指定，该文件是服务代码的一部分。 例如，在以下代码片段中，ServiceEventSource 的名称是 MyCompany-Application1-Stateless1：
+服务的 ServiceEventSource 名称是应用于 ServiceEventSource 类的 `EventSourceAttribute` 的 Name 属性值。 这在 `ServiceEventSource.cs` 文件中指定，该文件是服务代码的一部分。 例如，在以下代码片段中，ServiceEventSource 的名称是 MyCompany-Application1-Stateless1**：
 
 ```csharp
 [EventSource(Name = "MyCompany-Application1-Stateless1")]
@@ -82,7 +82,7 @@ internal sealed class ServiceEventSource : EventSource
 
 请注意，`eventFlowConfig.json` 文件属于服务配置包。 对此文件的更改可以包含在服务的完全升级或仅配置的升级中，并且会接受 Service Fabric 升级运行状况检查和自动回退（如果升级失败）。 有关详细信息，请参阅 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)。
 
-通过配置的筛选器部分可进一步自定义将通过 EventFlow 管道到达输出的信息，使你能够删除或包含某些信息，或更改事件数据的结构。 有关筛选的详细信息，请参阅 [EventFlow 筛选器](https://github.com/Azure/diagnostics-eventflow#filters)。
+通过配置的筛选器** 部分可进一步自定义将通过 EventFlow 管道到达输出的信息，使你能够删除或包含某些信息，或更改事件数据的结构。 有关筛选的详细信息，请参阅 [EventFlow 筛选器](https://github.com/Azure/diagnostics-eventflow#filters)。
 
 最后一步是在服务的启动代码中（位于 `Program.cs` 文件）实例化 EventFlow 管道：
 
@@ -129,7 +129,7 @@ namespace Stateless1
 }
 ```
 
-作为 `ServiceFabricDiagnosticsPipelineFactory` 中 `CreatePipeline` 方法的参数传递的名称是表示 EventFlow 日志收集管道的运行状况实体的名称。 如果 EventFlow 发生错误，并通过 Service Fabric 运行状况子系统进行报告，则使用此名称。
+作为 `ServiceFabricDiagnosticsPipelineFactory` 中 `CreatePipeline` 方法的参数传递的名称是表示 EventFlow 日志收集管道的运行状况实体** 的名称。 如果 EventFlow 发生错误，并通过 Service Fabric 运行状况子系统进行报告，则使用此名称。
 
 ### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>在 eventFlowConfig 中使用 Service Fabric 设置和应用程序参数
 
@@ -147,6 +147,6 @@ servicefabric:/<section-name>/<setting-name>
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Application Insights 进行事件分析和可视化](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Azure Monitor 日志进行事件分析和可视化](service-fabric-diagnostics-event-analysis-oms.md)
+* [使用应用程序见解进行事件分析和可视化](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [使用 Azure 监视器日志的事件分析和可视化](service-fabric-diagnostics-event-analysis-oms.md)
 * [EventFlow 文档](https://github.com/Azure/diagnostics-eventflow)

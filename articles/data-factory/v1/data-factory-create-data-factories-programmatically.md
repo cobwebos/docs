@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 9cd3cd60f5d62a0c416b0e05ea408c20483bff13
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931330"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure 数据工厂 .NET SDK 创建、监视和管理 Azure 数据工厂
@@ -28,18 +28,18 @@ ms.locfileid: "74931330"
 > [!NOTE]
 > 本文不会介绍所有数据工厂 .NET API。 有关数据工厂 .NET API 的综合文档，请参阅 [Data Factory .NET API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)（数据工厂 .NET API 参考）。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Visual Studio 2012、2013 或 2015
-* 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
+* 下载并安装[Azure .NET SDK](https://azure.microsoft.com/downloads/)。
 * Azure PowerShell。 遵循 [How to install and configure Azure PowerShell](/powershell/azure/overview) （如何安装和配置 Azure PowerShell）一文中的说明，在计算机上安装 Azure PowerShell。 使用 Azure PowerShell 创建 Azure Active Directory 应用程序。
 
 ### <a name="create-an-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建应用程序
 创建一个 Azure Active Directory 应用程序，为该应用程序创建服务主体，然后将其分配到 **数据工厂参与者** 角色。
 
-1. 启动 **PowerShell**。
+1. 启动“PowerShell”****。
 2. 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
 
     ```powershell
@@ -50,7 +50,7 @@ ms.locfileid: "74931330"
     ```powershell
     Get-AzSubscription
     ```
-4. 运行以下命令选择要使用的订阅。 将 **&lt;NameOfAzureSubscription**&gt; 替换为 Azure 订阅的名称。
+4. 运行以下命令选择要使用的订阅。 将**&lt;Azure 订阅**&gt;的名称替换为 Azure 订阅的名称。
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -84,7 +84,7 @@ ms.locfileid: "74931330"
     ```powershell
     New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
     ```
-8. 将服务主体添加到 **数据工厂参与者** 角色。
+8. 将服务主体添加到**数据工厂参与者**角色。
 
     ```powershell
     New-AzRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
@@ -109,15 +109,15 @@ ms.locfileid: "74931330"
 复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储区间复制数据。 有关复制活动的详细信息，请参阅 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）。
 
 1. 使用 Visual Studio 2012/2013/2015 创建 C# .NET 控制台应用程序。
-   1. 启动 **Visual Studio** 2012/2013/2015。
-   2. 单击“文件”，指向“新建”并单击“项目”。
-   3. 展开“模板”，并选择“Visual C#”。 本演练中使用的是 C#，但可以使用任何 .NET 语言。
-   4. 从右侧项目类型列表中选择“控制台应用程序”。
-   5. 在“名称”中输入 **DataFactoryAPITestApp** 。
-   6. 在“位置”中选择“C:\ADFGetStarted”。
-   7. 单击“确定”以创建该项目 。
-2. 单击“工具”，指向“NuGet 包管理器”，并单击“包管理器控制台”。
-3. 在“包管理器控制台”中执行以下步骤：
+   1. 推出**视觉工作室**2012/2013/2015。
+   2. 单击 **"文件**"，指向 **"新建"，** 然后单击 **"项目**"。
+   3. 展开“模板”，并选择“Visual C#”。******** 本演练中使用的是 C#，但可以使用任何 .NET 语言。
+   4. 从右侧项目类型列表中选择“控制台应用程序”。****
+   5. 输入**名称的数据工厂APITestApp。**
+   6. 选择**C：\_ADFGet 开始**的位置。
+   7. 单击“确定”**** 以创建项目。
+2. 单击**工具**，指向**NuGet 包管理器**，然后单击 **"包管理器控制台**"。
+3. 在“包管理器控制台”中执行以下步骤：****
    1. 运行以下命令安装数据工厂包：`Install-Package Microsoft.Azure.Management.DataFactories`
    2. 运行以下命令安装 Azure Active Directory 包（因为要在代码中使用 Active Directory API）：`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. 将项目中 **App.config** 文件的内容替换为以下内容： 
@@ -137,7 +137,7 @@ ms.locfileid: "74931330"
         </appSettings>
     </configuration>
     ```
-5. 在 App.Config 文件中，使用自己的值更新 **&lt;Application ID&gt;** 、 **&lt;Password&gt;** 、 **&lt;Subscription ID&gt;** 和 **&lt;tenant ID&gt;** 的值。
+5. 在 App.Config 文件中，使用您自己的值**&lt;更新&gt;应用程序 ID、****&lt;&gt;密码**、**&lt;订阅 ID&gt;** 和**&lt;租户 ID&gt;** 的值。
 6. 将以下 **using** 语句添加到项目中的 **Program.cs** 文件。
 
     ```csharp
@@ -220,9 +220,9 @@ ms.locfileid: "74931330"
     ```
 9. 将以下用于创建**输入和输出数据集**的代码添加到 **Main** 方法。
 
-    输入 blob 的 **FolderPath** 设置为 **adftutorial/** ，其中 **adftutorial** 是 Blob 存储中的容器名称。 如果 Azure Blob 存储中不包含此容器，请创建名为 **adftutorial** 的容器，然后将文本文件上传到该容器。
+    输入 blob 的 **FolderPath** 设置为 **adftutorial/**，其中 **adftutorial** 是 Blob 存储中的容器名称。 如果 Azure Blob 存储中不包含此容器，请创建名为 **adftutorial** 的容器，然后将文本文件上传到该容器。
 
-    输出 blob 的 FolderPath 设置为 **adftutorial/apifactoryoutput/{Slice}** ，在此位置基于 **SliceStart** 的值（每个切片的开始日期时间）动态评估**切片**。
+    输出 blob 的 FolderPath 设置为 **adftutorial/apifactoryoutput/{Slice}**，在此位置基于 **SliceStart** 的值（每个切片的开始日期时间）动态评估**切片**。
 
     ```csharp
     // create input and output datasets
@@ -425,7 +425,7 @@ ms.locfileid: "74931330"
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. 将 **Main** 方法使用的以下帮助器方法添加到 **Program** 类。 此方法会弹出要求提供用于登录 Azure 门户的用户名和密码的对话框。
+14. 将 **Main** 方法使用的以下帮助器方法添加到 **Program** 类。 此方法会弹出要求提供用于登录 Azure 门户的用户名**** 和密码**** 的对话框。
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -445,15 +445,15 @@ ms.locfileid: "74931330"
     }
     ```
 
-15. 在“解决方案资源管理器”中展开项目 **DataFactoryAPITestApp**，右键单击“引用”，并单击“添加引用”。 选择 `System.Configuration` 程序集的复选框，并单击“确定”。
-15. 生成控制台应用程序。 在菜单中单击“生成”，并单击“生成解决方案”。
+15. 在解决方案资源管理器中，展开项目：**数据工厂APITestApp，** 右键单击 **"参考**"，然后单击"**添加参考**"。 选择 `System.Configuration` 程序集的复选框，并单击“确定”****。
+15. 生成控制台应用程序。 在菜单中单击“生成”，并单击“生成解决方案”。********
 16. 确认 Azure Blob 存储中的 adftutorial 容器内至少有一个文件。 如果没有，请在记事本中创建包含以下内容的 Emp.txt 文件，然后将其上传到 adftutorial 容器。
 
     ```
     John, Doe
     Jane, Doe
     ```
-17. 在菜单中单击“调试” -> “开始调试”运行示例。 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。
+17. 通过单击菜单上的 **"调试** -> **开始调试"** 来运行示例。 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。****
 18. 使用 Azure 门户验证是否创建了包含以下项目的数据工厂 **APITutorialFactory** ：
     * 链接服务：**AzureStorageLinkedService**
     * 数据集：**DatasetBlobSource** 和 **DatasetBlobDestination**。

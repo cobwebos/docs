@@ -1,6 +1,6 @@
 ---
-title: 专用区域的方案-Azure DNS
-description: 本文介绍使用 Azure DNS 专用区域的常见方案。
+title: 专用区域的场景 - Azure DNS
+description: 本文介绍使用 Azure DNS 专用区域的常见场景。
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
 ms.openlocfilehash: ab850adb2e9a25778d5f44ba711eb0762fe562c8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76939345"
 ---
-# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS 专用区域方案
+# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS 专用区域场景
 
 Azure DNS 专用区域在虚拟网络内或虚拟网络之间提供名称解析功能。 在本文中，我们将查看可以使用此功能实现的一些常见方案。
 
@@ -52,7 +52,7 @@ Azure DNS 专用区域在虚拟网络内或虚拟网络之间提供名称解析�
 
 了解如何在 Azure DNS 中[创建专用 DNS 区域](./private-dns-getstarted-powershell.md)。
 
-若要了解 DNS 区域和记录，请访问 [DNS 区域和记录概述](dns-zones-records.md)。
+通过访问了解 DNS 区域[和记录：DNS 区域和记录概述](dns-zones-records.md)。
 
-了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。
+了解 Azure 的一些其他密钥[网络功能](../networking/networking-overview.md)。
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
 ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435757"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>运行 HDInsight 随附的 MapReduce 示例
@@ -21,7 +21,7 @@ ms.locfileid: "75435757"
 
 了解如何在 HDInsight 上运行 Apache Hadoop 随附的 MapReduce 示例。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -29,34 +29,34 @@ ms.locfileid: "75435757"
 
 ## <a name="the-mapreduce-examples"></a>MapReduce 示例
 
-`/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`上的示例位于 HDInsight 群集上。 这些示例的源代码包含在 `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`的 HDInsight 群集上。
+示例位于 `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar` 处的 HDInsight 群集上。 这些示例的源代码包含在 `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples` 处的 HDInsight 群集上。
 
 下面的示例都包含在该存档文件中：
 
-|示例 |Description |
+|示例 |描述 |
 |---|---|
-|aggregatewordcount|对输入文件中的单词进行计数。|
+|aggregatewordcount|计算输入文件中的单词数。|
 |aggregatewordhist|计算输入文件中单词的直方图。|
-|bbp|使用 Bailey-Bailey-borwein-plouffe-Bailey-borwein-plouffe 计算 Pi 的精确位数。|
+|bbp|使用 Bailey-Borwein-Plouffe 来计算 Pi 的精确位数。|
 |dbcount|计算存储在数据库中的 pageview 日志数。|
-|distbbp|使用 BBP 公式来计算 Pi 的精确位数。|
-|grep|计算输入中正则表达式的匹配项。|
-|join|对已排序、相等分区的数据集执行联接。|
-|multifilewc|计算多个文件中的字数。|
-|五格拼板|平铺布局计划，查找五格拼板问题的解决方案。|
-|pi|使用准 Monte Carlo 方法估算 Pi。|
+|distbbp|使用 BBP 类型的公式来计算 Pi 的精确位数。|
+|grep|计算输入中某个正则表达式的匹配数。|
+|join|将经过排序且等分的数据集联接起来。|
+|multifilewc|计算多个文件中的单词数。|
+|pentomino|平铺排列程序，用于查找五格拼板问题的解决方案。|
+|pi|使用拟蒙特卡罗法估算 Pi 值。|
 |randomtextwriter|为每个节点写入 10 GB 的随机文本数据。|
 |randomwriter|为每个节点写入 10 GB 的随机数据。|
-|secondarysort|定义简化阶段的次要排序。|
-|sort|对随机写入器写入的数据进行排序。|
+|secondarysort|定义化简阶段的次级排序。|
+|sort|对随机写入器所写入的数据进行排序。|
 |sudoku|数独解算器。|
 |teragen|为 terasort 生成数据。|
 |terasort|运行 terasort。|
 |teravalidate|检查 terasort 的结果。|
-|wordcount|对输入文件中的单词进行计数。|
+|wordcount|计算输入文件中的单词数。|
 |wordmean|计算输入文件中单词的平均长度。|
-|wordmedian|计算输入文件中单词的中间长度。|
-|wordstandarddeviation|计算输入文件中单词长度的标准偏差。|
+|wordmedian|计算输入文件中单词的中值长度。|
+|wordstandarddeviation|计算输入文件中单词长度的标准差。|
 
 ## <a name="run-the-wordcount-example"></a>运行 wordcount 示例
 
@@ -66,7 +66,7 @@ ms.locfileid: "75435757"
     ssh sshuser@CLUSTER-ssh.azurehdinsight.net
     ```
 
-2. 从 SSH 会话中，使用以下命令列出示例：
+2. 在 SSH 会话中，使用以下命令来列出示例：
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
@@ -88,7 +88,7 @@ ms.locfileid: "75435757"
 
     此消息表示可以为源文档提供多个输入路径。 最后的路径是存储输出（源文档中的单词计数）的位置。
 
-4. 使用以下内容来统计 Leonardo da Vinci 的笔记本中的所有单词，它们作为示例数据包含在群集中：
+4. 使用以下内容计算列奥纳多·达·芬奇笔记本中的所有单词，这些单词作为示例数据随群集一起提供：
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
@@ -154,7 +154,7 @@ yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar 
 
 ## <a name="pi--example"></a>Pi (π) 示例
 
-该示例使用统计学方法（拟蒙特卡罗法）来估算 pi 值。 点随机置于单位正方形中。 正方形还包含一个圆圈。 点在圆圈内的概率等于圆圈的面积，pi/4。 可以根据 4R 的值估算 pi 的值。 R 是落入圆圈内的点数与正方形内总点数的比率。 所使用的取样点越多，估算值越准确。
+该示例使用统计学方法（拟蒙特卡罗法）来估算 pi 值。 点随机置于单位正方形中。 正方形还包含一个圆圈。 点位于圆圈中的概率等于圆圈面积 pi/4。 可以根据 4R 的值估算 pi 的值。 R 是落入圆圈内的点数与正方形内总点数的比率。 所使用的取样点越多，估算值越准确。
 
 请使用以下命令运行此示例。 该命令使用 16 个映射（每个映射 10,000,000 个示例）来估算 pi 值：
 
@@ -168,7 +168,7 @@ yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar 
 
 GraySort 是一种基准排序。 其指标为在给大量数据（通常至少 100 TB）排序时达到的排序速率（TB/分钟）。
 
-此示例使用适中的 10 GB 数据，这样它运行时能相对快一点。 它使用由 Owen O'Malley 和 Arun Murthy 开发的 MapReduce 应用程序。 这些应用程序在2009中赢得了年度通用（"Daytona"） tb 排序基准，其速率为 0.578 TB/分钟（173分钟内为 100 TB）。 有关此分类基准和其他排序基准的详细信息，请参阅[排序基准](https://sortbenchmark.org/)站点。
+此示例使用适中的 10 GB 数据，这样它运行时能相对快一点。 它使用由 Owen O'Malley 和 Arun Murthy 开发的 MapReduce 应用程序。 这些应用在 2009 年赢得了年度通用（"Daytona"）TB 排序基准，速率为 0.578 TB/min（173 分钟内为 100 TB）。 有关此和其他排序基准的详细信息，请参阅[排序基准](https://sortbenchmark.org/)站点。
 
 本示例使用三组 MapReduce 程序：
 

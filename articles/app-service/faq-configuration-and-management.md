@@ -1,6 +1,6 @@
 ---
 title: 配置常见问题解答
-description: 获取有关 Azure App Service 的配置和管理问题的常见问题解答。
+description: 获取有关 Azure 应用服务配置和管理问题的常见问题解答。
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942938"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
@@ -59,24 +59,24 @@ ms.locfileid: "78942938"
 
 为 Web 应用设置服务器时区：
 
-1. 在 Azure 门户中的应用服务订阅中，转到“应用程序设置”菜单。
-2. 在“应用设置”下，添加此设置：
+1. 在 Azure 门户中的应用服务订阅中，转到“应用程序设置”**** 菜单。
+2. 在“应用设置”**** 下，添加此设置：
     * 键 = WEBSITE_TIME_ZONE
     * 值 = *所需时区*
-3. 选择“保存”。
+3. 选择“保存”。****
 
-对于在 Windows 上运行的应用服务，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)文章中的 "**时区**" 列获取接受值。 对于在 Linux 上运行的应用服务，将[TZ 数据库名称](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)设置为时区值。 下面是 TZ 数据库名称的示例：中美洲/Adak。
+对于在 Windows 上运行的应用服务，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”**** 列了解接受的值。 对于在 Linux 上运行的应用程序服务，将[TZ 数据库名称](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)设置为时区值。 下面是 TZ 数据库名称的示例：美国/Adak。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>为何我的连续 Web 作业有时会失败？
 
-默认情况下，Web 应用如果已处于空闲状态达到一定时间，则会卸载。 这样可以让系统节省资源。 在基本和标准计划中，可以打开“始终可用”设置以使 Web 应用始终加载。 如果 Web 应用运行连续 Web 作业，则应打开“始终打开”，否则 Web 作业可能无法可靠运行。 有关详细信息，请参阅[创建连续运行的 Web 作业](webjobs-create.md#CreateContinuous)。
+默认情况下，Web 应用如果已处于空闲状态达到一定时间，则会卸载。 这样可以让系统节省资源。 在基本和标准计划中，可以打开“始终可用”**** 设置以使 Web 应用始终加载。 如果 Web 应用运行连续 Web 作业，则应打开“始终打开”****，否则 Web 作业可能无法可靠运行。 有关详细信息，请参阅[创建连续运行的 Web 作业](webjobs-create.md#CreateContinuous)。
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>如何获取 Web 应用的出站 IP 地址？
 
 获取 Web 应用的出站 IP 地址列表：
 
-1. 在 Azure 门户中的 Web 应用边栏选项卡，转到“属性”菜单。
-2. 搜索“出站 ip 地址”。
+1. 在 Azure 门户中的 Web 应用边栏选项卡，转到“属性”**** 菜单。
+2. 搜索“出站 ip 地址”****。
 
 出站 IP 地址列表随即出现。
 
@@ -90,7 +90,7 @@ ms.locfileid: "78942938"
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>是否可以导出应用服务证书以在 Azure 外部使用（如用于在其他位置承载的网站）？ 
 
-是的，你可以将其导出以在 Azure 外部使用。 有关详细信息，请参阅[应用服务证书和自定义域的常见问题解答](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)。
+是的，可以导出这些证书以在 Azure 外部使用。 有关详细信息，请参阅[应用服务证书和自定义域的常见问题解答](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)。
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>是否可以导出应用服务证书以用于其他 Azure 云服务？
 
@@ -105,7 +105,7 @@ ms.locfileid: "78942938"
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>如何从 HTTP 响应中删除标头？
 
-若要从 HTTP 响应中删除标头，请更新站点的 web.config 文件。 有关详细信息，请参阅[在 Azure 网站上删除标准服务器标头](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
+若要移删除 HTTP 响应的标头，请更新站点的 web.config 文件。 有关详细信息，请参阅[在 Azure 网站上删除标准服务器标头](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>应用服务是否符合 PCI 标准 3.0 和 3.1？
 
@@ -127,10 +127,10 @@ PCI DSS 版本 3.1 认证要求禁用传输层安全性 (TLS) 1.0。 当前，�
 
 1. 登录到 [Kudu 网站](https://*yourwebsitename*.scm.azurewebsites.net)。
 2. 选择 Web 作业。
-3. 选择“切换输出”按钮。
-4. 若要下载输出文件，请选择“下载”链接。
-5. 对于单个运行，选择“单个调用”。
-6. 选择“切换输出”按钮。
+3. 选择“切换输出”**** 按钮。
+4. 若要下载输出文件，请选择“下载”**** 链接。
+5. 对于单个运行，选择“单个调用”****。
+6. 选择“切换输出”**** 按钮。
 7. 选择下载链接。
 
 ## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>我在尝试对 SQL Server 使用混合连接。 为何会看到消息“System.OverflowException: 算术运算导致溢出”？
@@ -145,9 +145,9 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 该异常是由于混合连接管理器存在问题而导致，该问题现已修复。 请务必[更新混合连接管理器](https://go.microsoft.com/fwlink/?LinkID=841308)以解决此问题。
 
-## <a name="how-do-i-add-a-url-rewrite-rule"></a>如何实现添加 URL 重写规则？
+## <a name="how-do-i-add-a-url-rewrite-rule"></a>如何添加 URL 重写规则？
 
-若要添加 URL 重写规则，请创建一个 web.config 文件，其中包含**wwwroot**文件夹中的相关配置条目。 有关详细信息，请参阅[Azure 应用 Services：了解 URL 重写](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
+若要添加 URL 重写规则，请使用 **wwwroot** 文件夹中的相关配置条目创建一个 web.config 文件。 有关详细信息，请参阅[Azure 应用服务：了解 URL 重写](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>如何控制应用服务的入站流量？
 
@@ -160,7 +160,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>如何在应用服务 Web 应用中阻止端口？
 
-在应用服务共享租户环境中，由于基础结构的性质，因此无法阻止特定端口。 对于 Visual Studio 远程调试，TCP 端口4020、4022和4024也可能已打开。
+在应用服务共享租户环境中，由于基础结构的性质，因此无法阻止特定端口。 TCP 端口 4020、4022 和 4024 也可能打开，用于 Visual Studio 远程调试。
 
 在应用服务环境中，可完全控制入站和出站流量。 可以使用网络安全组限制或阻止特定端口。 有关应用服务环境的详细信息，请参阅[应用服务环境简介](https://azure.microsoft.com/blog/introducing-app-service-environment/)。
 
@@ -175,16 +175,16 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 1. 在 Internet Explorer 中，转到你的网站。 请务必先登录，然后再执行后续步骤。 否则，F12 跟踪会捕获敏感的登录数据。
 2. 按 F12。
-3. 验证是否选择了“网络”选项卡，然后选择绿色的“播放”按钮。
+3. 验证是否选择了“网络”**** 选项卡，然后选择绿色的“播放”**** 按钮。
 4. 执行再现问题的步骤。
-5. 选择红色的“停止”按钮。
-6. 选择“保存”按钮（磁盘图标），然后保存 HAR 文件（在 Internet Explorer 和 Microsoft Edge 中），或右键单击 HAR 文件，然后选择“保存为包含内容的 HAR”（在 Chrome 中）。
+5. 选择红色的“停止”**** 按钮。
+6. 选择“保存”**** 按钮（磁盘图标），然后保存 HAR 文件（在 Internet Explorer 和 Microsoft Edge 中），或** 右键单击 HAR 文件，然后选择“保存为包含内容的 HAR”****（在 Chrome 中）。
 
 ### <a name="f12-console-output"></a>F12 控制台输出
 
-1. 选择“控制台”选项卡。
-2. 对于包含的项数不为零的每个选项卡，选择选项卡（“错误”、“警告”或“信息”）。 如果未选择该选项卡，则将光标移开时，选项卡图标为灰色或黑色。
-3. 在窗格的消息区域中右键单击，然后选择“全部复制”。
+1. 选择“控制台”**** 选项卡。
+2. 对于包含的项数不为零的每个选项卡，选择选项卡（“错误”****、“警告”**** 或“信息”****）。 如果未选中选项卡，移开光标时，选项卡图标呈灰色或黑色。
+3. 在窗格的消息区域中右键单击，然后选择“全部复制”****。
 4. 在文件中粘贴复制的文本，然后保存文件。
 
 若要查看 HAR 文件，可以使用 [HAR 查看器](https://www.softwareishard.com/har/viewer/)。
@@ -276,13 +276,13 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 有关应用服务中的身份验证和授权的详细文档，请参阅各种标识提供者登录的文档：
 * [Azure Active Directory](configure-authentication-provider-aad.md)
 * [Facebook](configure-authentication-provider-facebook.md)
-* [Google](configure-authentication-provider-google.md)
-* [Microsoft 帐户](configure-authentication-provider-microsoft.md)
+* [谷歌](configure-authentication-provider-google.md)
+* [微软帐户](configure-authentication-provider-microsoft.md)
 * [Twitter](configure-authentication-provider-twitter.md)
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>如何将默认的 *.azurewebsites.net 域重定向到我的 Azure Web 应用的自定义域？
 
-在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *. azurewebsites.net 域，则可以重定向默认的 URL。 若要了解如何将所有流量从网站的默认域重定向到自定义域，请参阅[在 Azure Web 应用中将默认域重定向到自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
+在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net** 域。 如果将自定义主机名添加到您的网站，并且不希望用户能够访问默认的 *.azurewebsites.net 域，则可以重定向默认 URL。 若要了解如何将所有流量从网站的默认域重定向到自定义域，请参阅[在 Azure Web 应用中将默认域重定向到自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何确定应用服务中安装的 .NET 版本？
 

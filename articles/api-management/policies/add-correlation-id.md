@@ -1,5 +1,5 @@
 ---
-title: API 管理策略示例-添加包含相关 id 的标头
+title: 示例 API 管理策略 - 添加包含关联 ID 的标头
 titleSuffix: Azure API Management
 description: Azure API 管理策略示例 - 演示如何将包含相关 ID 的标头添加到入站请求。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 79910aa60602a80cbe79c4ce9899f6ff73fbfde9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75422258"
 ---
 # <a name="add-a-header-containing-a-correlation-id"></a>添加包含相关 ID 的标头
@@ -26,7 +26,7 @@ ms.locfileid: "75422258"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中。
+将代码粘贴到“入站”块中****。
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Add correlation id to inbound request.policy.xml)]
 

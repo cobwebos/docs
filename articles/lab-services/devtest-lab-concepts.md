@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 22fd78ccd58be1790fcd167da396600e8b876564
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75428922"
 ---
-# <a name="devtest-labs-concepts"></a>DevTest Labs 概念
+# <a name="devtest-labs-concepts"></a>开发测试实验室概念
 ## <a name="overview"></a>概述
 下表包含关键开发测试实验室概念和定义：
 
@@ -44,12 +44,12 @@ Azure 可认领 VM 是可供具备权限的任何实验室用户使用的虚拟�
 ## <a name="base-images"></a>基础映像
 基础映像为 VM 映像，包含预安装和配置为快速创建 VM 的所有工具和设置。 可通过选取现有基并添加项目来对 VM 进行预配，进而安装测试代理。 然后可将预配的 VM 保存为基，这样无需为每个 VM 的预配重新安装测试代理即可使用该基。
 
-## <a name="artifacts"></a>Artifacts
+## <a name="artifacts"></a>项目
 项目用于在预配 VM 后部署和配置应用程序。 项目可以是：
 
 * 想要在 VM 上安装的工具，例如，代理、Fiddler 和 Visual Studio。
 * 想要在 VM 上运行的操作，例如，克隆存储库。
-* 你想要测试的应用程序。
+* 想要测试的应用程序。
 
 项目是 [Azure 资源管理器](../azure-resource-manager/management/overview.md) JSON 文件，包含执行部署和应用配置的说明。
 
@@ -70,7 +70,7 @@ Azure 可认领 VM 是可供具备权限的任何实验室用户使用的虚拟�
 安全访问权限由 Azure 基于角色的访问控制 (RBAC) 决定。 若要了解如何访问，最好先了解权限、角色和由 RBAC 定义的作用域之间的差异。
 
 * 权限 - 权限是对特定操作的定义访问，例如，对所有虚拟机的读取访问权限。
-* 角色 - 角色是一组可进行分组、可分配给用户的权限。 例如，“订阅所有者”角色对订阅中所有资源都具有访问权限。
+* 角色 - 角色是一组可进行分组、可分配给用户的权限。 例如，“订阅所有者”** 角色对订阅中所有资源都具有访问权限。
 * 作用域 - 作用域是 Azure 资源层次结构中的级别，例如，资源组、单个实验室或整个订阅。
 
 开发测试实验室的作用域中存在两种定义用户权限的角色：实验室所有者和实验室用户。

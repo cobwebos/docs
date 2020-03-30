@@ -1,6 +1,6 @@
 ---
-title: 容器工作负荷-Azure Batch
-description: 了解如何在 Azure Batch 上的容器映像中运行和缩放应用。 创建支持运行容器任务的计算节点池。
+title: 容器工作负载 - Azure 批处理
+description: 了解如何从 Azure Batch 上的容器映像运行和缩放应用。 创建支持正在运行的容器任务的计算节点池。
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -11,10 +11,10 @@ ms.date: 03/02/2020
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 81f4e753ffbaaefd5761c9396a6533bac9f212c1
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254843"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
@@ -27,9 +27,9 @@ ms.locfileid: "78254843"
 
 使用容器可以方便地运行 Batch 任务，无需管理环境和依赖项即可运行应用程序。 容器将应用程序部署为轻量级、可移植、自给自足的单元，可以在各种不同的环境中运行。 例如，在本地构建和测试容器，然后将容器映像上传到 Azure 或其他位置的注册表中。 容器部署模型可确保始终正确安装和配置应用程序的运行时环境，而不考虑在何处托管应用程序。 Batch 中基于容器的任务也可利用非容器任务的功能，包括应用程序包以及资源文件和输出文件的管理。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* **SDK 版本**：Batch SDK 支持到以下版本为止的容器映像：
+* **SDK 版本**： 批处理 SDK 支持容器映像，如以下版本：
     * Batch REST API 版本 2017-09-01.6.0
     * Batch .NET SDK 版本 8.0.0
     * Batch Python SDK 版本 4.0
@@ -52,33 +52,33 @@ ms.locfileid: "78254843"
 
 ### <a name="windows-support"></a>Windows 支持
 
-Batch 支持具有容器支持标识的 Windows server 映像。 通常，这些图像 sku 名称以 `-with-containers` 或 `-with-containers-smalldisk`为后缀。 此外，如果映像支持 Docker 容器，[则成批列出所有支持的映像的 API](batch-linux-nodes.md#list-of-virtual-machine-images)将表示 `DockerCompatible` 功能。
+Batch 支持具有容器支持名称的 Windows 服务器映像。 通常，这些图像 sku 名称后缀`-with-containers`与`-with-containers-smalldisk`或 。 此外，如果映像支持 Docker 容器，[则要在 Batch 中列出所有受支持映像](batch-linux-nodes.md#list-of-virtual-machine-images)的 API 将表示`DockerCompatible`功能。
 
 也可以从 Windows 上运行 Docker 的 VM 创建自定义映像。
 
 ### <a name="linux-support"></a>Linux 支持
 
-对于 Linux 容器工作负荷，Batch 目前支持 Azure Marketplace 中 Microsoft Azure Batch 发布的以下 Linux 映像，无需自定义映像。
+对于 Linux 容器工作负荷，Batch 当前支持 Microsoft Azure Batch 在 Azure 应用商店中发布的以下 Linux 映像，而无需自定义映像。
 
-#### <a name="vm-sizes-without-rdma"></a>无 RDMA 的 VM 大小
+#### <a name="vm-sizes-without-rdma"></a>没有 RDMA 的 VM 大小
 
-- 发布者： `microsoft-azure-batch`
-  - 产品/服务： `centos-container`
-  - 产品/服务： `ubuntu-server-container`
+- 出版商：`microsoft-azure-batch`
+  - 提供：`centos-container`
+  - 提供：`ubuntu-server-container`
 
 #### <a name="vm-sizes-with-rdma"></a>带 RDMA 的 VM 大小
 
-- 发布者： `microsoft-azure-batch`
-  - 产品/服务： `centos-container-rdma`
-  - 产品/服务： `ubuntu-server-container-rdma`
+- 出版商：`microsoft-azure-batch`
+  - 提供：`centos-container-rdma`
+  - 提供：`ubuntu-server-container-rdma`
 
-仅支持在 Azure Batch 池中使用这些映像，适用于 Docker 容器的执行。 这些映像具有以下特性：
+这些映像仅支持在 Azure 批处理池中使用，并面向 Docker 容器执行。 这些映像具有以下特性：
 
-* 预安装的 Docker 兼容[小鲸鱼](https://github.com/moby/moby)容器运行时
+* 预安装的与 Docker 兼容[的 Moby](https://github.com/moby/moby)容器运行时
 
-* 预安装的 NVIDIA GPU 驱动程序和 NVIDIA 容器运行时，用于简化 Azure N 系列 Vm 上的部署
+* 预安装的 NVIDIA GPU 驱动程序和 NVIDIA 容器运行时，以简化 Azure N 系列 VM 的部署
 
-* 预安装/预配置的映像，它支持后缀为 `-rdma`的图像的 "不支持" RDMA VM 大小。 当前这些映像不支持 SR-IOV IB/RDMA VM 大小。
+* 预安装/预配置映像，支持 Infiniband RDMA VM 大小，用于具有 后缀的图像`-rdma`。 目前，这些映像不支持 SR-IOV IB/RDMA VM 大小。
 
 也可以从与 Batch 兼容的 Linux 分发版之一上运行 Docker 的 VM 创建自定义映像。 如果选择提供你自己的自定义 Linux 映像，请参阅[使用托管自定义映像创建虚拟机池](batch-custom-images.md)中的说明。
 
@@ -93,7 +93,7 @@ Batch 支持具有容器支持标识的 Windows server 映像。 通常，这些
 
 ## <a name="container-configuration-for-batch-pool"></a>批处理池的容器配置
 
-若要启用运行容器工作负荷的 Batch 池，必须在池的 [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) 对象中指定 [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) 设置。 （本文已提供 Batch .NET API 参考文章的链接。 [Batch Python](/python/api/overview/azure/batch) API 中提供了相应的设置。）
+若要启用运行容器工作负荷的 Batch 池，必须在池的 [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) 对象中指定 [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) 设置。 （本文已提供 Batch .NET API 参考文章的链接。 [Batch Python](/python/api/overview/azure/batch) API 中提供了相应的设置。）
 
 可以创建启用容器的池，可以带或不带预提取容器映像，如以下示例所示。 可以通过拉取（或预提取）过程从 Docker 中心预加载容器映像，或在 Internet 上预加载另一个容器注册表。 为获得最佳性能，请使用 Batch 帐户所在的同一区域中的 [Azure 容器注册表](../container-registry/container-registry-intro.md)。
 
@@ -231,7 +231,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 若要在启用了容器的池上运行容器任务，请指定特定于容器的设置。 设置包括要使用的映像、注册表和容器运行选项。
 
-* 使用任务类中的 `ContainerSettings` 属性来配置特定于容器的设置。 这些设置由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 类定义。 请注意，`--rm` 容器选项不需要额外的 `--runtime` 选项，因为它由批处理来处理。
+* 使用任务类中的 `ContainerSettings` 属性来配置特定于容器的设置。 这些设置由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 类定义。 请注意，`--rm`容器选项不需要其他`--runtime`选项，因为它由 Batch 处理。
 
 * 如果在容器映像上运行任务，[云任务](/dotnet/api/microsoft.azure.batch.cloudtask)和[作业管理器任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)将需要容器设置。 但是，[启动任务](/dotnet/api/microsoft.azure.batch.starttask)、[作业准备任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)和[作业发布任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)都不需要容器设置（即，它们可以在容器上下文中或直接在节点上运行）。
 

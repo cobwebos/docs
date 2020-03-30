@@ -1,5 +1,5 @@
 ---
-title: Microsoft Threat Modeling Tool 版本1/29/2019
+title: 微软威胁建模工具版本 1/29/2019
 titleSuffix: Azure
 description: 阐述 Threat Modeling Tool 的发行说明
 author: jegeib
@@ -9,17 +9,17 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/25/2019
 ms.openlocfilehash: 7d0be8d7243331264c10a407e3d78370ea798928
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78269774"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool 更新版 7.1.60126.1 - 2019 年 1 月 29 日
 
 Microsoft Threat Modeling Tool 7.1.60126.1 版已于 2019 年 1 月 29 日发布，包含以下更改：
 
-- .NET 4.7.1 的最低要求版本已增加到[.net](https://go.microsoft.com/fwlink/?LinkId=863262)。
+- .NET 的最低要求版本已增加到[.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)。
 - 由于 .NET 依赖关系，Windows 所需的最低版本已增至 [Windows 10 周年更新](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)。
 - 模型验证切换功能已添加到此工具的“选项”菜单中。
 - 威胁属性中的多个链接已更新。
@@ -30,7 +30,7 @@ Microsoft Threat Modeling Tool 7.1.60126.1 版已于 2019 年 1 月 29 日发布
 
 ### <a name="model-validation-option"></a>“模型验证”选项
 
-根据客户反馈，已向该工具添加一个选项以启用或禁用模型验证。 以前，如果你的模板在两个对象之间使用了单单向数据流，则你可能会在消息框中收到一条错误消息，指出： ObjectsName 至少需要一个 "Any"。 禁用模型验证将阻止在视图中显示这些警告。
+根据客户反馈，已向该工具添加一个选项以启用或禁用模型验证。 以前，如果模板在两个对象之间使用单个单向数据流，则可能在"消息"帧中收到一条错误消息，指出：对象名称至少需要一个"Any"。 禁用模型验证将阻止在视图中显示这些警告。
 
 可在“文件”->“设置”->“选项”菜单中找到打开和关闭模型验证的切换选项。 此设置的默认值为“禁用”。
 
@@ -39,9 +39,9 @@ Microsoft Threat Modeling Tool 7.1.60126.1 版已于 2019 年 1 月 29 日发布
 ## <a name="system-requirements"></a>系统要求
 
 - 受支持的操作系统
-  - [Microsoft Windows 10 周年更新](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)或更高版本
+  - [微软视窗 10 周年更新](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97)或更高版本
 - 所需的 .NET 版本
-  - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)或更高版本
+  - [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262)或更高版本
 - 其他要求
   - 需要建立 Internet 连接才能接收工具和模板的更新。
 

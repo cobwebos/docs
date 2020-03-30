@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426259"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理 .NET SDK：设置和运行使用 .NET 版 Azure 流分析 API 的分析作业
@@ -25,12 +25,12 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 > [!NOTE]
 > 本文中的示例代码已使用 Azure 流分析的 Management .NET SDK v2.x 版本进行了更新。 有关使用旧版 (1.x) SDK 的示例代码，请参阅[使用流分析的 Management .NET SDK v1.x ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1)。
 
-## <a name="prerequisites"></a>必备组件
-在开始本文之前，必须具备以下要求：
+## <a name="prerequisites"></a>先决条件
+在开始阅读本文前，必须完成以下要求：
 
-* 安装 Visual Studio 2019 或2015。
-* 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
-* 在订阅中创建 Azure 资源组。 下面的示例是 Azure PowerShell 脚本的示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)；  
+* 安装 Visual Studio 2019 或 2015。
+* 下载并安装[Azure .NET SDK](https://azure.microsoft.com/downloads/)。
+* 在订阅中创建 Azure 资源组。 以下示例是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/powershell/azure/overview)；  
 
    ```powershell
    # Log in to your Azure account
@@ -49,7 +49,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 * 设置作业要连接到的输入源和输出目标。
 
 ## <a name="set-up-a-project"></a>设置项目
-若要创建分析作业，请使用适用于 .NET 的流分析 API，首先设置你的项目。
+若要创建分析作业，请使用适用于 .NET 的流分析 API，首先设置项目。
 
 1. 创建 Visual Studio C# .NET 控制台应用程序。
 2. 在程序包管理器控制台中运行以下命令以安装 NuGet 包。 第一个是 Azure 流分析管理 .NET SDK。 第二个用于 Azure 客户端身份验证。
@@ -82,7 +82,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
    <Reference Include="System.Configuration" />
    ```
 
-5. 将以下 **using** 语句添加到项目中的源文件 (Program.cs)：
+5. 将以下**使用**语句添加到项目中的源文件 （Program.cs）：
    
    ```csharp
    using System;
@@ -133,7 +133,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
     };
    ```
 
-resourceGroupName 变量的值应该与你在先决条件步骤中创建或选取的资源组的名称相同。
+resourceGroupName 变量的值应该与你在先决条件步骤中创建或选取的资源组的名称相同****。
 
 若要自动执行凭据演示方面的作业创建，请参阅[使用 Azure 资源管理器对服务主体进行身份验证](../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
@@ -285,13 +285,13 @@ resourceGroupName 变量的值应该与你在先决条件步骤中创建或选�
    ```
 
 ## <a name="get-support"></a>获取支持
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+有关进一步帮助，请尝试我们的[Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 现已介绍完使用 .NET SDK 创建和运行分析作业的基础知识。 若要了解详细信息，请参阅以下文章：
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
+* [使用 Azure 流分析开始](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析管理 .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx)。
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

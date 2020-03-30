@@ -7,10 +7,10 @@ ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461955"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>配置网关资源以路由请求
@@ -219,8 +219,8 @@ HTTP 传递规则包括以下属性：
 ```
 
 此网关是为 Linux 应用程序“meshAppLinux”配置的，该应用程序由至少两个服务组成，“helloWorldService”和“counterService”，在端口 80 上侦听。 根据传入请求的 URL 结构，它将请求路由到其中一项服务。 
-* "\<IPAddress >： 80/helloWorld/\<请求\>" 将导致请求定向到 helloWorldService 中的 "helloWorldListener"。 
-* "\<IPAddress >： 80/counter/\<请求\>" 将导致请求定向到 counterService 中的 "counterListener"。 
+* "ip\<地址>：80/helloWorld/\<请求\>"将导致请求被定向到helloWorldService中的"helloWorldListener"。 
+* "ip\<地址>：80/计数器/\<请求\>"将导致请求被定向到计数器服务中的"计数器侦听器"。 
 
 ## <a name="next-steps"></a>后续步骤
 * 部署[入口示例](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress)以查看操作中的网关

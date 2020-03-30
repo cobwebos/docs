@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric sfctl 应用程序
-description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于管理应用程序的命令的列表。
+title: Azure Service Fabric CLI- sfctl application
+description: 了解 sfctl，Azure 服务结构命令行接口。 包括用于管理应用程序的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: b4e1066bba1db387c9dc0600bc55522f0b5fe897
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906199"
 ---
 # <a name="sfctl-application"></a>sfctl application
@@ -17,19 +17,19 @@ ms.locfileid: "76906199"
 
 ## <a name="commands"></a>命令
 
-|命令|Description|
+|命令|描述|
 | --- | --- |
 | create | 使用指定说明创建 Service Fabric 应用程序。 |
 | delete | 删除现有 Service Fabric 应用程序。 |
 | deployed | 获取部署在 Service Fabric 节点上的应用程序的相关信息。 |
 | deployed-health | 获取部署在 Service Fabric 节点上的应用程序的运行状况。 |
 | deployed-list | 获取部署在 Service Fabric 节点上的应用程序的列表。 |
-| 健康 | 获取 Service Fabric 应用程序运行状况。 |
+| health | 获取 Service Fabric 应用程序运行状况。 |
 | info | 获取 Service Fabric 应用程序的相关信息。 |
 | list | 获取在 Service Fabric 群集中创建且与指定的筛选器匹配的应用程序列表。 |
 | load | 获取 Service Fabric 应用程序的相关加载信息。 |
 | manifest | 获取描述应用程序类型的清单。 |
-| provision | 使用外部存储区中的 ".sfpkg" 包或使用映像存储中的应用程序包，为群集预配或注册 Service Fabric 应用程序类型。 |
+| provision | 使用外部存储中的 .sfpkg 包或使用映像存储中的应用程序包向群集预配或注册 Service Fabric 应用程序类型。 |
 | report-health | 发送有关 Service Fabric 应用程序的运行状况报告。 |
 | type | 获取 Service Fabric 群集中与指定名称完全匹配的应用程序类型的列表。 |
 | type-list | 获取 Service Fabric 群集中应用程序类型的列表。 |
@@ -43,9 +43,9 @@ ms.locfileid: "76906199"
 ## <a name="sfctl-application-create"></a>sfctl application create
 使用指定说明创建 Service Fabric 应用程序。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --app-name [必需] | 应用程序名称，包括“fabric\:”URI 方案。 |
 | --app-type [必需] | 在应用程序清单中找到的应用程序类型名称。 |
@@ -58,7 +58,7 @@ ms.locfileid: "76906199"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -71,17 +71,17 @@ ms.locfileid: "76906199"
 
 必须先创建应用程序才能进行删除。 删除应用程序会删除该应用程序中包含的所有服务。 默认情况下，Service Fabric 尝试正常关闭服务副本，然后删除服务。 但是，如果服务无法正常关闭，删除操作可能需要很长时间，也可能出现停滞。 使用可选 ForceRemove 标志跳过正常关闭序列，强制删除应用程序及其所有服务。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --force-remove | 强制删除 Service Fabric 应用程序或服务，跳过正常关闭序列。 若因服务代码中的问题而无法正常关闭副本，导致删除应用程序或服务操作超时，可使用此参数强制删除该应用程序或服务。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -94,18 +94,18 @@ ms.locfileid: "76906199"
 
 如果提供的应用程序 ID 是系统应用程序的，则此查询将返回系统应用程序信息。 结果包括处于活动、正在激活和正在下载状态的已部署应用程序。 此查询要求节点名称对应于群集上的某个节点。 如果提供的节点名称未指向群集上的任何活动 Service Fabric 节点，则查询将失败。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --node-name [必需] | 节点的名称。 |
 | --include-health-state | 包含实体的运行状况。 如果此参数为 false 或未指定，则返回的运行状况为“Unknown”。 设置为 true，查询将并行转到节点和运行状况系统服务，然后将结果合并。 因此，查询开销更高，并可能需要更长的时间。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -118,20 +118,20 @@ ms.locfileid: "76906199"
 
 获取部署在 Service Fabric 节点上的应用程序的运行状况。 使用 EventsHealthStateFilter 可以选择性地根据运行状况筛选部署的应用程序上报告的 HealthEvent 对象的集合。 使用 DeployedServicePackagesHealthStateFilter 可以选择性地根据运行状况筛选 DeployedServicePackageHealth 子项。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --node-name [必需] | 节点的名称。 |
 | --deployed-service-packages-health-state-filter | 用于根据运行状况筛选服务包运行状况查询结果中返回的已部署服务包运行状况对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的已部署服务包。 所有已部署服务包用于评估已部署应用程序的聚合运行状况。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的服务包的运行状态。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --exclude-health-statistics | 指示运行状况统计数据是否应作为查询结果的一部分返回。 默认值为 False。 统计信息显示处于 Ok、Warning 和 Error 运行状况的子实体数。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -144,19 +144,19 @@ ms.locfileid: "76906199"
 
 获取部署在 Service Fabric 节点上的应用程序的列表。 除非显式按 ID 查询，否则结果不会包含有关已部署系统应用程序的信息 结果包括处于活动、正在激活和正在下载状态的已部署应用程序。 此查询要求节点名称对应于群集上的某个节点。 如果提供的节点名称未指向群集上的任何活动 Service Fabric 节点，则查询将失败。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name [必需] | 节点的名称。 |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --include-health-state | 包含实体的运行状况。 如果此参数为 false 或未指定，则返回的运行状况为“Unknown”。 设置为 true，查询将并行转到节点和运行状况系统服务，然后将结果合并。 因此，查询开销更高，并可能需要更长的时间。 |
 | --max-results | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -169,20 +169,20 @@ ms.locfileid: "76906199"
 
 返回 Service Fabric 应用程序的运行状态。 响应报告“Ok”、“Error”或“Warning”运行状态。 如果未在运行状况存储中找到实体，则返回 Error。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --deployed-applications-health-state-filter | 用于根据运行状况筛选应用程序运行状况查询结果中返回的已部署应用程序运行状况对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的已部署应用程序。 所有已部署应用程序都用于评估聚合运行状况。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的已部署应用程序的运行状况。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
 | --exclude-health-statistics | 指示运行状况统计数据是否应作为查询结果的一部分返回。 默认值为 False。 统计信息显示处于 Ok、Warning 和 Error 运行状况的子实体数。 |
 | --services-health-state-filter | 用于根据运行状况筛选服务运行状况查询结果中返回的服务运行状况对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的服务。 所有服务都用于评估聚合运行状况。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为“6”，则返回 HealthState 值为 OK (2) 和 Warning (4) 的服务的运行状况。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -195,17 +195,17 @@ ms.locfileid: "76906199"
 
 返回 Service Fabric 群集中已创建或正在创建且名称与指定为参数的应用程序匹配的应用程序相关信息。 响应包括名称、类型、状态、参数以及应用程序的其他相关详细信息。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --exclude-application-parameters | 该标志指定应用程序参数是否排除在结果之外。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -218,20 +218,20 @@ ms.locfileid: "76906199"
 
 获取 Service Fabric 群集中已创建或正在创建且与指定的筛选器匹配的应用程序相关信息。 响应包括名称、类型、状态、参数以及应用程序的其他相关详细信息。 如果一页无法容纳这些应用程序，则返回一页结果及一个继续标记，该标记可用于获取下一页。 不能同时指定筛选器 ApplicationTypeName 和 ApplicationDefinitionKindFilter。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-definition-kind-filter | 用来筛选 ApplicationDefinitionKind，它是用来定义 Service Fabric 应用程序的机制。  <br> - Default - 默认值，它执行与选择“所有”时相同的功能。 值为 0。  <br> - All - 与任何 ApplicationDefinitionKind 值输入匹配的筛选器。 值为 65535。  <br> - ServiceFabricApplicationDescription - 与 ApplicationDefinitionKind 值 ServiceFabricApplicationDescription 输入匹配的筛选器。 值为 1。  <br> - Compose - 与 ApplicationDefinitionKind 值 Compose 输入匹配的筛选器。 值为 2。 |
 | --application-type-name | 用于筛选要查询的应用程序的应用程序类型名称。 此值不应包含应用程序类型版本。 |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --exclude-application-parameters | 该标志指定应用程序参数是否排除在结果之外。 |
 | --max-results | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -244,16 +244,16 @@ ms.locfileid: "76906199"
 
 返回 Service Fabric 群集中已创建或正在创建且名称与指定为参数的应用程序匹配的应用程序加载信息。 响应包括名称、最小节点数、最大节点数、应用程序目前占用的节点数以及有关应用程序的应用程序加载指标信息。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -266,17 +266,17 @@ ms.locfileid: "76906199"
 
 响应包含字符串形式的应用程序清单 XML。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-type-name    [必需] | 应用程序类型的名称。 |
 | --application-type-version [必需] | 应用程序类型的版本。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -285,13 +285,13 @@ ms.locfileid: "76906199"
 | --verbose | 提高日志记录详细程度。 使用 --debug 获取完整的调试日志。 |
 
 ## <a name="sfctl-application-provision"></a>sfctl application provision
-使用外部存储区中的 ".sfpkg" 包或使用映像存储中的应用程序包，为群集预配或注册 Service Fabric 应用程序类型。
+使用外部存储中的 .sfpkg 包或使用映像存储中的应用程序包向群集预配或注册 Service Fabric 应用程序类型。
 
-向群集预配 Service Fabric 应用程序类型。 在实例化任何新应用程序之前，必须进行预配。 可以在由 relativePathInImageStore 指定的应用程序包上或使用外部 ". .sfpkg" 的 URI 执行预配操作。 除非设置了 --external-provision，否则此命令需要映像存储预配。
+向群集预配 Service Fabric 应用程序类型。 必须完成此预配才能实例化任意新应用程序。 可以在 relativePathInImageStore 指定的应用程序包上或者使用外部 .sfpkg 的 URI 执行预配操作。 除非设置了 --external-provision，否则此命令需要映像存储预配。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-package-download-uri | “.sfpkg”应用程序包的路径，可使用 HTTP 或 HTTPS 协议从该处下载应用程序包。 <br><br> 仅适用于预配种类的外部存储。 应用程序包可以存储在外部存储中，该存储提供 GET 操作来下载文件。 支持的协议为 HTTP 和 HTTPS，并且路径必须允许读取访问权限。 |
 | --application-type-build-path | 仅适用于预配种类的映像存储。 应用程序包在先前的上传操作中指定的映像存储中的相对路径。 |
@@ -303,7 +303,7 @@ ms.locfileid: "76906199"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -316,9 +316,9 @@ ms.locfileid: "76906199"
 
 报告指定的 Service Fabric 应用程序的运行状况。 该报告必须包含有关运行状况报告及其所报告属性的源的信息。 报告将发送到 Service Fabric 网关应用程序，后者会将其转发到运行状况存储。 该报告可能被网关接受但被运行状况存储在执行额外的验证后拒绝。 例如，运行状况存储可能会由于无效的参数（如过时的序列号）而拒绝该报告。 若要了解该报告是否已在运行状况存储中应用，请获取应用程序运行状况并检查该报告是否显示。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 <br><br> 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --health-property [必需] | 运行状况信息的属性。 <br><br> 一个实体可以有不同属性的运行状况报告。 该属性是一个字符串，不是固定的枚举，因此可使报告器灵活地对触发报告的状态条件进行分类。 例如，SourceId 为“LocalWatchdog”的报告器可以监视节点上的可用磁盘的状态，因此它可以报告该节点的“AvailableDisk”属性。 同一报告器可以监视节点连接，因此它可以报告同一节点的“Connectivity”属性。 在运行状况存储中，这些报告均被视为指定节点的单独运行状况事件。 与 SourceId 一起，该属性唯一地标识运行状况信息。 |
@@ -333,7 +333,7 @@ ms.locfileid: "76906199"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -346,20 +346,20 @@ ms.locfileid: "76906199"
 
 返回 Service Fabric 群集中已预配或正在预配的应用程序类型的相关信息。 这些结果为名称与指定为参数的应用程序类型完全匹配，并且符合给定查询参数的应用程序类型。 返回与应用程序类型名称匹配的所有应用程序类型版本，每个版本作为一个应用程序类型返回。 响应包括名称、版本、状态以及有关应用程序类型的其他详细信息。 这是分页查询，如果一页无法容纳所有应用程序类型，则返回一页结果及一个继续标记，该标记可用于获取下一页。 例如，如果有 10 个应用程序类型，但一页仅能容纳前 3 个应用程序类型，或者最大结果数设置为 3，则返回 3 个结果。 要访问其他结果，请使用下一查询中返回的继续标记来检索后续页面。 如果没有后续页面，则返回空继续标记。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-type-name [必需] | 应用程序类型的名称。 |
 | --application-type-version | 应用程序类型的版本。 |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --exclude-application-parameters | 该标志指定应用程序参数是否排除在结果之外。 |
 | --max-results | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -372,19 +372,19 @@ ms.locfileid: "76906199"
 
 返回 Service Fabric 群集中已预配或正在预配的应用程序类型的相关信息。 应用程序类型的每个版本作为一个应用程序类型返回。 响应包括名称、版本、状态以及有关应用程序类型的其他详细信息。 这是分页查询，如果一页无法容纳所有应用程序类型，则返回一页结果及一个继续标记，该标记可用于获取下一页。 例如，如果有 10 个应用程序类型，但一页仅能容纳前 3 个应用程序类型，或者最大结果数设置为 3，则返回 3 个结果。 要访问其他结果，请使用下一查询中返回的继续标记来检索后续页面。 如果没有后续页面，则返回空继续标记。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-type-definition-kind-filter | 用来筛选 ApplicationTypeDefinitionKind，它是用来定义 Service Fabric 应用程序类型的机制。  <br> - Default - 默认值，它执行与选择“所有”时相同的功能。 值为 0。  <br> - All - 与任何 ApplicationTypeDefinitionKind 值输入匹配的筛选器。 值为 65535。  <br> - ServiceFabricApplicationPackage - 将输入与 ApplicationTypeDefinitionKind 值 ServiceFabricApplicationPackage 进行匹配的筛选器。 值为 1。  <br> - Compose - 与 ApplicationTypeDefinitionKind 值 Compose 输入匹配的筛选器。 值为 2。 |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --exclude-application-parameters | 该标志指定应用程序参数是否排除在结果之外。 |
 | --max-results | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -397,18 +397,18 @@ ms.locfileid: "76906199"
 
 仅当已删除应用程序类型的所有应用程序实例时，才可执行此操作。 注销应用程序类型后，无法为此特定应用程序类型创建新的应用程序实例。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-type-name    [必需] | 应用程序类型的名称。 |
 | --application-type-version [必需] | 应用程序清单中定义的应用程序类型的版本。 |
 | --async-parameter | 此标志指示取消预配是否应当以异步方式进行。 当设置为 true 时，取消预配操作将在请求被系统接受时返回，并且取消预配操作继续进行，没有任何超时限制。 默认值是 False。 但是，对于已预配的大型应用程序包，建议将其设置为 true。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -421,9 +421,9 @@ ms.locfileid: "76906199"
 
 验证提供的应用程序升级参数，如果参数有效，则开始升级应用程序。 请注意，升级说明将替换现有应用程序说明。 这意味着，如果未指定参数，应用程序的现有参数将替换为空的参数列表。 这会导致应用程序使用应用程序清单中的默认参数值。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 <br><br> 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --application-version [必需] | 应用程序升级的目标应用程序类型版本（在应用程序清单中找到）。 |
@@ -445,7 +445,7 @@ ms.locfileid: "76906199"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -458,17 +458,17 @@ ms.locfileid: "76906199"
 
 恢复不受监控的手动 Service Fabric 应用程序升级。 Service Fabric 每次升级一个升级域。 对于不受监控的手动升级，Service Fabric 完成升级域后，会等待调用此 API，然后再继续升级下一个升级域。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --upgrade-domain-name [必需] | 要恢复升级的升级域的名称。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -481,16 +481,16 @@ ms.locfileid: "76906199"
 
 开始将当前应用程序升级回滚到以前的版本。 此 API 只可用于回滚当前正在进行的、前滚到新版本的升级。 如果应用程序当前未在升级，请使用 StartApplicationUpgrade API 将其升级到所需版本，包括回滚到以前的版本。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -503,16 +503,16 @@ ms.locfileid: "76906199"
 
 返回有关最新应用程序升级状态的信息，以及可帮助调试应用程序运行状况问题的详细信息。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
-| --timeout -t | 用于执行操作的服务器超时时间（秒）。 此超时值指定客户端愿意等待请求的操作完成的持续时间。 此参数的默认值为60秒。  默认值\: 60。 |
+| --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -525,21 +525,21 @@ ms.locfileid: "76906199"
 
 （可选）显示包中每个文件的上传进度。 上传进度发送到 `stderr`。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
-| --path [必需] | 本地应用程序包的路径。 |
-| --压缩 | 仅适用于 Service Fabric 应用程序包。 创建一个包含压缩应用程序包的新文件夹到默认位置，或创建到压缩位置参数所指定的位置，然后上传新创建的文件夹。 <br><br> 如果已经有 sfctl 生成的压缩文件，则如果设置此标志，则将覆盖该文件。 如果目录不是应用程序包，则将返回错误。 如果已压缩应用程序包，则将按原样复制文件夹。 默认情况下，在上载成功后，将删除新创建的压缩应用程序包。 如果上传未成功，请根据需要手动清理压缩包。 如果压缩位置参数引用了不存在的目录，则删除操作不会删除任何可能已创建的空目录。 |
-| --压缩-位置 | 要放置压缩应用程序包的位置。 <br><br> 如果未提供任何位置，压缩的包将位于新创建的文件夹下，该文件夹位于在 path 参数中指定的父目录下 sfctl_compressed_temp。 例如，如果 path 参数的值为 C\:/FolderA/AppPkg，则压缩的包将添加到 C\:/FolderA/sfctl_compressed_temp/AppPkg。 |
-| --imagestore-string | 应用程序包上传到的目标映像存储区。  默认值\: fabric\:ImageStore。 <br><br> 若要上传到文件位置，请使用 "file\:" 启动此参数。 否则，该值应为映像存储连接字符串，例如默认值。 |
-| --保留压缩 | 在成功完成上传时是否保留生成的压缩包。 <br><br> 如果未设置，则在成功完成时将删除压缩的应用包。 如果上传未成功，则应用程序包将始终保留在输出目录中以便重新上传。 |
+| --路径 [必需] | 本地应用程序包的路径。 |
+| --压缩 | 仅适用于服务结构应用程序包。 创建包含压缩应用程序包的新文件夹，以默认位置或压缩位置参数指定的位置，然后上载新创建的文件夹。 <br><br> 如果 sfctl 已生成压缩文件，则如果设置了此标志，该文件将被覆盖。 如果目录不是应用程序包，则返回错误。 如果它已经是压缩的应用程序包，文件夹将复制为现在。 默认情况下，新创建的压缩应用程序包将在成功上载后删除。 如果上传不成功，请根据需要手动清理压缩包。 如果压缩位置参数引用不存在的目录，则删除不会删除可能已创建的任何空转。 |
+| --压缩位置 | 放置压缩应用程序包的位置。 <br><br> 如果未提供任何位置，则压缩包将放置在路径参数中指定的父目录下的新创建的名为sfctl_compressed_temp的文件夹下。 例如，如果路径参数的值为 C\:/FolderA/AppPkg，则压缩的包将添加到 C\:/FolderA/sfctl_compressed_temp/AppPkg 中。 |
+| --imagestore-string | 应用程序包上传到的目标映像存储区。  默认值\: fabric\:ImageStore。 <br><br> 若要上传到文件位置，请使用“file\:”启动此参数。 否则，该值应为映像存储连接字符串，例如默认值。 |
+| --保持压缩 | 是否在成功上载完成时保留生成的压缩包。 <br><br> 如果未设置，则在成功完成时，将删除压缩的应用包。 如果上载不成功，则应用程序包将始终保存在输出目录中以重新上载。 |
 | --show-progress | 显示大型包的文件上传进度。 |
-| --timeout -t | 总超时（以秒为单位）。 上载超时持续时间过后，将失败并返回错误。 此超时适用于整个应用程序包，单独的文件超时将等于剩余的超时时间。 超时不包括压缩应用程序包所需的时间。  默认\: 300。 |
+| --timeout -t | 总超时，以秒为单位。 超过上传超时持续时间后，上传将失败并返回错误。 此超时适用于整个应用程序包，单独的文件超时将等于剩余的超时持续时间。 超时不包括压缩应用程序包所需的时间。  默认值为 \: 300。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |

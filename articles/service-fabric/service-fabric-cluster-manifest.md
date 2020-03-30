@@ -6,22 +6,22 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
 ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458378"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>独立 Windows 群集的配置设置
-本文介绍可使用 ClusterConfig.json 文件设置的独立 Azure Service Fabric 群集的配置设置。 需要使用该文件指定有关群集节点、安全配置以及有关容错域和升级域的网络拓扑信息。  更改或添加配置设置后，可以[创建一个独立的群集](service-fabric-cluster-creation-for-windows-server.md)，也可以[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
+本文介绍可使用 ClusterConfig.json** 文件设置的独立 Azure Service Fabric 群集的配置设置。 需要使用该文件指定有关群集节点、安全配置以及有关容错域和升级域的网络拓扑信息。  更改或添加配置设置后，可以[创建一个独立的群集](service-fabric-cluster-creation-for-windows-server.md)，也可以[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
 
 [下载独立的 Service Fabric 包](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)时还会附带 ClusterConfig.json 示例。 名称中包含“DevCluster”的示例可使用逻辑节点创建所有三个节点都在同一台计算机上的群集。 在这些节点中，必须至少将一个节点标记为主节点。 此群集类型可用于开发或测试环境。 不支持将它用作生产群集。 名称中包含“MultiMachine”的示例可帮助创建生产等级群集，其中的每个节点位于不同的计算机上。 这些群集的主节点数取决于群集的[可靠性级别](#reliability)。 在版本 5.7 API 版本 05-2017 中，我们删除了可靠性级别属性。 取而代之的是，我们的代码将计算群集的最优可靠性级别。 请勿尝试在版本 5.7 及以上版本中设置此属性的值。
 
 * ClusterConfig.Unsecure.DevCluster.json 和 ClusterConfig.Unsecure.MultiMachine.json 分别说明如何创建不安全的测试群集和生产群集。
 
-* ClusterConfig.Windows.DevCluster.json 和 ClusterConfig.Windows.MultiMachine.json 说明如何创建使用 [Windows 安全性](service-fabric-windows-cluster-windows-security.md)保护的测试群集和生产群集。
+* 群集 Config.Windows.DevCluster.json 和群集 Config.Windows.MultiMachine.json 演示如何使用[Windows 安全性](service-fabric-windows-cluster-windows-security.md)创建受保护的测试或生产群集。
 
-* ClusterConfig.X509.DevCluster.json 和 ClusterConfig.X509.MultiMachine.json 说明如何创建使用[基于 X509 证书的安全性](service-fabric-windows-cluster-x509-security.md)保护的测试群集和生产群集。
+* ClusterConfig.X509.DevCluster.json 和 ClusterConfig.X509.MultiMachine.json 演示如何使用[基于 X509 证书的安全性](service-fabric-windows-cluster-x509-security.md)创建保护的测试或生产群集。
 
 现在，让我们查看 ClusterConfig.json 文件的各个部分。
 
@@ -113,7 +113,7 @@ metadata 用于描述群集诊断，可以根据具体的情况进行设置。 �
 }
 ```
 
-metadata 用于描述安全群集，可根据具体的情况进行设置。 ClusterCredentialType 和 ServerCredentialType 确定群集与节点将要实现的安全类型。 对于基于证书的安全性，可以将其设置为*X509* ，对于基于 Active Directory 的安全性，则设置为*Windows* 。 security 节的余下设置基于安全类型。 若要了解如何填充 security 节的余下设置，请参阅[独立群集中基于证书的安全性](service-fabric-windows-cluster-x509-security.md)，或[独立群集中的 Windows 安全性](service-fabric-windows-cluster-windows-security.md)。
+metadata 用于描述安全群集，可根据具体的情况进行设置。 ClusterCredentialType 和 ServerCredentialType 确定群集与节点将要实现的安全类型。 可将这两项设置为 *X509* 来实现基于证书的安全性，或者设置为 *Windows* 来实现基于 Active Directory 的安全性。 security 节的余下设置基于安全类型。 若要了解如何填充 security 节的余下设置，请参阅[独立群集中基于证书的安全性](service-fabric-windows-cluster-x509-security.md)，或[独立群集中的 Windows 安全性](service-fabric-windows-cluster-windows-security.md)。
 
 ### <a name="node-types"></a>节点类型
 nodeTypes 节描述群集中的节点类型。 一个群集必须指定至少一个节点类型，如以下代码片段所示： 
@@ -147,7 +147,7 @@ name 是此特定节点类型的友好名称。 要创建这种类型的节点�
 * leaseDriverEndpointPort 是群集租用驱动程序用来判断节点是否仍处于活动状态的端口。 
 * serviceConnectionEndpointPort 是节点上部署的应用程序和服务用来与该特定节点上的 Service Fabric 客户端通信的端口。
 * httpGatewayEndpointPort 是 Service Fabric Explorer 用来连接群集的端口。
-* ephemeralPorts 重写 [OS 使用的动态端口](https://support.microsoft.com/kb/929851)。 Service Fabric 使用其中的一部分端口作为应用程序端口，剩余的端口供 OS 使用。 它还会将此范围映射到 OS 中的现有范围，因此，无论何时，都可以使用示例 JSON 文件中指定的范围。 确保起始端口与结束端口至少相差 255。 如果此差过小，可能会遇到冲突，因为此范围与 OS 共享。 若要查看配置的动态端口范围，请运行 `netsh int ipv4 show dynamicport tcp`。
+* ephemeralPorts 替代 [OS 使用的动态端口](https://support.microsoft.com/kb/929851)。 Service Fabric 使用其中的一部分端口作为应用程序端口，剩余的端口供 OS 使用。 它还会将此范围映射到 OS 中的现有范围，因此，无论何时，都可以使用示例 JSON 文件中指定的范围。 确保起始端口与结束端口至少相差 255。 如果此差过小，可能会遇到冲突，因为此范围与 OS 共享。 若要查看配置的动态端口范围，请运行 `netsh int ipv4 show dynamicport tcp`。
 * applicationPorts 是 Service Fabric 应用程序使用的端口。 应用程序端口范围的大小应足以满足应用程序的终结点要求。 此范围在计算机上的动态端口范围中应是独占的，即按配置中设置的 ephemeralPorts 范围。 每当需要新端口时，Service Fabric 将使用这些端口，并负责为这些端口打开防火墙。 
 * reverseProxyEndpointPort 是可选的反向代理终结点。 有关详细信息，请参阅 [Service Fabric 反向代理](service-fabric-reverseproxy.md)。 
 
@@ -193,13 +193,13 @@ name 是此特定节点类型的友好名称。 要创建这种类型的节点�
     ]
 }
 ```
-所有可用的加载项功能都可在[Service Fabric REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-addonfeatures)中查看。
+可在 [Service Fabric REST API 参考](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-addonfeatures)中查看所有可用的附加功能。
 
 ### <a name="container-support"></a>容器支持
 若要为 Windows Server 容器和独立群集的 Hyper-V 容器启用容器支持，必须启用 DnsService 附加功能。
 
 ## <a name="next-steps"></a>后续步骤
-根据独立群集设置配置一个完整的 ClusterConfig.json 文件后，即可可部署群集。 请遵循[创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)中所述的步骤。 
+根据独立群集设置配置完整的*ClusterConfig.json*文件后，可以部署群集。 请遵循[创建独立 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)中所述的步骤。 
 
 如果已部署了独立群集，还可以[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。 
 

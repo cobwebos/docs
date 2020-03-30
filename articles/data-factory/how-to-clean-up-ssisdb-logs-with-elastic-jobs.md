@@ -11,10 +11,10 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.openlocfilehash: 331a2317f11fbb6f0dd1437a0b41f7ad110a63c7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928027"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>使用 Azure 弹性数据库作业清理 SSISDB 日志
@@ -264,6 +264,6 @@ ORDER BY start_time DESC
 
 对于与 Azure-SSIS Integration Runtime 相关的管理和监视任务，请参阅以下文章。 Azure-SSIS IR 是存储在 Azure SQL 数据库的 SSISDB 中的 SSIS 包的运行时引擎。
 
--   [重新配置 Azure-SSIS Integration Runtime](manage-azure-ssis-integration-runtime.md)
+-   [重新配置 Azure-SSIS 集成运行时](manage-azure-ssis-integration-runtime.md)
 
--   [监视 Azure-SSIS Integration Runtime](monitor-integration-runtime.md#azure-ssis-integration-runtime)。
+-   [监视 Azure-SSIS 集成运行时](monitor-integration-runtime.md#azure-ssis-integration-runtime)。

@@ -14,10 +14,10 @@ ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f1877ae630919ba7da5a851b5f8291ade2d165
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897576"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>使用 Azure Active Directory 添加组织的隐私信息
@@ -28,15 +28,15 @@ ms.locfileid: "76897576"
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="add-your-privacy-info-on-azure-ad"></a>在 Azure AD 上添加隐私信息
-可以在 Azure AD 的“属性”区域中添加组织的隐私信息。
+可以在 Azure AD 的“属性”区域中添加组织的隐私信息。****
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>访问“属性”区域并添加隐私信息
 
 1.  以租户管理员身份登录到 Azure 门户。
 
-2.  在左侧导航栏中，选择“Azure Active Directory”，然后选择“属性”。
+2.  在左侧导航栏中，选择“Azure Active Directory”****，然后选择“属性”****。
 
-    此时会显示“属性”区域。
+    此时会显示“属性”区域。****
 
     ![突出显示隐私信息区域的 Azure AD 属性区域](media/active-directory-properties-area/properties-area.png)
 
@@ -49,11 +49,11 @@ ms.locfileid: "76897576"
     - **隐私声明 URL。** 键入指向组织的文档的链接，该文档用于描述组织如何处理内部和外部来宾的数据隐私。
 
         >[!Important]
-        >如果未包括你自己的隐私声明或隐私联系人，外部来宾将在“审阅权限”框中看到这样的文字：<_你的组织名称_> 尚未提供指向供你查看的条款的链接。 例如，来宾用户将在收到通过 B2B 协作访问组织的邀请时看到此消息。
+        >如果未包括你自己的隐私声明或隐私联系人，外部来宾将在“审阅权限”**** 框中看到这样的文字：<_你的组织名称_> 尚未提供指向供你查看的条款的链接****。 例如，来宾用户将在收到通过 B2B 协作访问组织的邀请时看到此消息。
 
         ![带有消息的 B2B 协作审阅权限框](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.  选择“保存”。
+4.  选择“保存”。****
 
 ## <a name="next-steps"></a>后续步骤
 - [Azure Active Directory B2B 协作邀请兑换](https://aka.ms/b2bredemption)

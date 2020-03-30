@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.custom: seodec18
 ms.openlocfilehash: 1cf8898e5fd63e35447f6580e13347ba6d7fc413
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75485437"
 ---
 # <a name="track-asynchronous-azure-operations"></a>跟踪异步 Azure 操作
@@ -73,15 +73,15 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 用于创建、更新或删除（PUT、PATCH、DELETE）资源的操作通常返回 `provisioningState` 值。 完成操作后，将返回以下三个值之一： 
 
 * 已成功
-* 已失败
+* 失败
 * 已取消
 
-所有其他值表示该操作仍在运行。 资源提供程序可以返回自定义的值，用于指示其状态。 例如，当请求已收到且正在运行时，用户会收到“已接受”。
+所有其他值表示该操作仍在运行。 资源提供程序可以返回自定义的值，用于指示其状态。 例如，当请求已收到且正在运行时，用户会收到“已接受”****。
 
 ## <a name="example-requests-and-responses"></a>示例请求和响应
 
 ### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>启动虚拟机（Azure-AsyncOperation 标头出现 202 响应）
-此示例演示如何确定虚拟机的“启动”操作的状态。 初始请求采用以下格式：
+此示例演示如何确定虚拟机的“启动”**** 操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 POST 
@@ -113,7 +113,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 ### <a name="deploy-resources-201-with-azure-asyncoperation"></a>部署资源（Azure-AsyncOperation 标头出现 201 响应）
 
-此示例演示将资源部署到 Azure 时，如何确定“部署”操作的状态。 初始请求采用以下格式：
+此示例演示将资源部署到 Azure 时，如何确定“部署”**** 操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 PUT
@@ -153,7 +153,7 @@ https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{res
 
 ### <a name="create-storage-account-202-with-location-and-retry-after"></a>创建存储帐户（Location 和 Retry-After 标头出现 202 响应）
 
-此示例演示如何确定存储帐户的“创建”操作的状态。 初始请求采用以下格式：
+此示例演示如何确定存储帐户的“创建”**** 操作的状态。 初始请求采用以下格式：
 
 ```HTTP
 PUT
@@ -185,4 +185,4 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 ## <a name="next-steps"></a>后续步骤
 
 * 有关每个 REST 操作的文档，请参阅 [REST API 文档](/rest/api/)。
-* 有关通过资源管理器 REST API 部署模板的信息，请参阅[使用资源管理器模板部署资源和 REST API 资源管理器](../templates/deploy-rest.md)。
+* 有关通过资源管理器 REST API 部署模板的信息，请参阅[使用资源管理器模板和资源管理器 REST API 部署资源](../templates/deploy-rest.md)。

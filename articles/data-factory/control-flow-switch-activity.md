@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 数据工厂中切换活动
-description: "\"切换\" 活动允许您基于条件控制处理流程。"
+title: Azure 数据工厂中的 Switch 活动
+description: Switch 活动允许你控制基于条件的处理流。
 services: data-factory
 author: djpmsft
 ms.author: daperlov
@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440382"
 ---
-# <a name="switch-activity-in-azure-data-factory"></a>在 Azure 数据工厂中切换活动
+# <a name="switch-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Switch 活动
 
-Switch 活动提供了相同的功能，即 switch 语句提供的编程语言。 它计算一组与条件求值匹配的活动。
+Switch 活动提供的功能与编程语言中 switch 语句提供的功能相同。 它计算一组与条件求值匹配的 case 相对应的活动。
 
 ## <a name="syntax"></a>语法
 
@@ -65,13 +65,13 @@ Switch 活动提供了相同的功能，即 switch 语句提供的编程语言�
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | Description | 允许的值 | 需要
+properties | 描述 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-name | 切换活动的名称。 | String | 是
-type | 必须设置为*Switch** | String | 是
-表达式 | 必须计算结果为字符串值的表达式 | 带有 result 类型字符串的表达式 | 是
-cases | 一组事例，其中包含值和一组要在值与表达式计算匹配时执行的活动。 必须提供至少一个事例。 最大限制为25个事例。 | Case 对象数组 | 是
-defaultActivities | 在表达式计算不满足时执行的一组活动。 | 活动数组 | 是
+name | switch 活动的名称。 | String | 是
+type | 必须设置为 *"切换"** | String | 是
+表达式 | 必须评估为字符串值的表达式 | 具有结果类型字符串的表达式 | 是
+cases | 一组 case，其中包含一个值和一组在该值与表达式求值匹配时要执行的活动。 必须至少提供一个 case。 最大限制为 25 个 case。 | Case 对象数组 | 是
+defaultActivities | 不满足表达式求值时执行的一组活动。 | 活动数组 | 是
 
 ## <a name="example"></a>示例
 
@@ -80,7 +80,7 @@ defaultActivities | 在表达式计算不满足时执行的一组活动。 | 活
 > [!NOTE]
 > 本部分提供运行管道的 JSON 定义和示例 PowerShell 命令。 有关使用 Azure PowerShell 和 JSON 定义创建数据工厂管道的分步说明演练，请参阅[教程：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
 
-### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>带切换活动的管道（Adfv2QuickStartPipeline）
+### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>包含 Switch 活动的管道 (Adfv2QuickStartPipeline.json)
 
 ```json
 {
@@ -244,7 +244,7 @@ defaultActivities | 在表达式计算不满足时执行的一组活动。 | 活
 
 ### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>参数化的 Azure Blob 数据集 (BlobDataset.json)
 
-管道将 folderPath设置为管道参数 outputPath1或 outputPath2的值。 
+管道将 folderPath **** 设置为管道参数 outputPath1 **** 或 outputPath2 **** 的值。 
 
 ```json
 {
@@ -286,7 +286,7 @@ defaultActivities | 在表达式计算不满足时执行的一组活动。 | 活
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-这些命令假设已将 JSON 文件保存到文件夹中： C:\ADF。 
+这些命令假定您已将 JSON 文件保存到文件夹中：C：\ADF。 
 
 ```powershell
 Connect-AzAccount
@@ -332,8 +332,8 @@ $result.Error -join "`r`n"
 查看数据工厂支持的其他控制流活动： 
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
-- [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
-- [For Each 活动](control-flow-for-each-activity.md)
-- [Get Metadata 活动](control-flow-get-metadata-activity.md)
+- [执行管道活动](control-flow-execute-pipeline-activity.md)
+- [对于每个活动](control-flow-for-each-activity.md)
+- [获取元数据活动](control-flow-get-metadata-activity.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
-- [Web 活动](control-flow-web-activity.md)
+- [网站活动](control-flow-web-activity.md)

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845560"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure 监视器自动缩放常用指标
@@ -36,7 +36,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 - [基于 Resource Manager 的 Windows 和 Linux VM 的主机指标](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
 - [基于 Resource Manager 的 Windows 和 Linux VM 规模集的主机指标](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>基于资源管理器的 Windows Vm 的来宾 OS 指标
+### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>基于资源管理器的 Windows VM 的来宾操作系统指标
 在 Azure 中创建 VM 时，使用诊断扩展会启用诊断。 诊断扩展会发出一组从 VM 内部获取的指标。 这意味着可以自动缩放不是默认发出的指标。
 
 可以在 PowerShell 中使用以下命令生成指标列表。
@@ -52,10 +52,10 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \Processor(_Total)\% 处理器时间 |百分比 |
 | \Processor(_Total)\% Privileged Time |百分比 |
 | \Processor(_Total)\% User Time |百分比 |
-| \Processor Information(_Total)\Processor Frequency |计数 |
-| \System\Processes |计数 |
-| \Process(_Total)\Thread Count |计数 |
-| \Process(_Total)\Handle Count |计数 |
+| \Processor Information(_Total)\Processor Frequency |Count |
+| \System\Processes |Count |
+| \Process(_Total)\Thread Count |Count |
+| \Process(_Total)\Handle Count |Count |
 | \Memory\% Committed Bytes In Use |百分比 |
 | \Memory\Available Bytes |字节 |
 | \Memory\Committed Bytes |字节 |
@@ -71,11 +71,11 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk(_Total)\Disk Bytes/sec |每秒字节数 |
 | \PhysicalDisk(_Total)\Disk Read Bytes/sec |每秒字节数 |
 | \PhysicalDisk(_Total)\Disk Write Bytes/sec |每秒字节数 |
-| \PhysicalDisk （_Total） \Avg. 磁盘队列长度 |计数 |
-| \PhysicalDisk （_Total） \Avg. 磁盘读取队列长度 |计数 |
-| \PhysicalDisk （_Total） \Avg. 磁盘写入队列长度 |计数 |
+| [物理磁盘（_Total）\平均磁盘队列长度 |Count |
+| [物理磁盘（_Total）=平均磁盘读取队列长度 |Count |
+| [物理磁盘（_Total）\平均磁盘写入队列长度 |Count |
 | \LogicalDisk(_Total)\% Free Space |百分比 |
-| \LogicalDisk(_Total)\Free Megabytes |计数 |
+| \LogicalDisk(_Total)\Free Megabytes |Count |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Linux VM 的来宾 OS 指标
 在 Azure 中创建 VM 时，使用诊断扩展会默认启用诊断。
@@ -116,21 +116,21 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\TransfersPerSecond |每秒计数 |
 | \PhysicalDisk\ReadsPerSecond |每秒计数 |
 | \PhysicalDisk\WritesPerSecond |每秒计数 |
-| \PhysicalDisk\AverageReadTime |秒数 |
-| \PhysicalDisk\AverageWriteTime |秒数 |
-| \PhysicalDisk\AverageTransferTime |秒数 |
-| \PhysicalDisk\AverageDiskQueueLength |计数 |
+| \PhysicalDisk\AverageReadTime |秒 |
+| \PhysicalDisk\AverageWriteTime |秒 |
+| \PhysicalDisk\AverageTransferTime |秒 |
+| \PhysicalDisk\AverageDiskQueueLength |Count |
 | \NetworkInterface\BytesTransmitted |字节 |
 | \NetworkInterface\BytesReceived |字节 |
-| \NetworkInterface\PacketsTransmitted |计数 |
-| \NetworkInterface\PacketsReceived |计数 |
+| \NetworkInterface\PacketsTransmitted |Count |
+| \NetworkInterface\PacketsReceived |Count |
 | \NetworkInterface\BytesTotal |字节 |
-| \NetworkInterface\TotalRxErrors |计数 |
-| \NetworkInterface\TotalTxErrors |计数 |
-| \NetworkInterface\TotalCollisions |计数 |
+| \NetworkInterface\TotalRxErrors |Count |
+| \NetworkInterface\TotalTxErrors |Count |
+| \NetworkInterface\TotalCollisions |Count |
 
 ## <a name="commonly-used-app-service-server-farm-metrics"></a>常用应用服务（服务器场）指标
-也可以根据常用的 Web 服务器指标（如 Http 队列长度）执行自动缩放。 其指标名称为**HttpQueueLength**。  以下部分列出了可用的服务器场（应用服务）指标。
+也可以根据常用的 Web 服务器指标（如 Http 队列长度）执行自动缩放。 其指标名称为**Httpqueue 长度**。  以下部分列出了可用的服务器场（应用服务）指标。
 
 ### <a name="web-apps-metrics"></a>Web 应用指标
 可以在 PowerShell 中使用以下命令生成 Web 应用指标列表。
@@ -145,15 +145,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | --- | --- |
 | CpuPercentage |百分比 |
 | MemoryPercentage |百分比 |
-| DiskQueueLength |计数 |
-| HttpQueueLength |计数 |
+| DiskQueueLength |Count |
+| HttpQueueLength |Count |
 | BytesReceived |字节 |
 | BytesSent |字节 |
 
 ## <a name="commonly-used-storage-metrics"></a>常用的存储指标
 可以将存储队列长度作为缩放依据，它是存储队列中的消息数目。 存储队列长度是一个特殊指标，阈值是每个实例的消息数。 例如，如果有两个实例并且阈值设置为 100，则当队列中的消息总数为 200 时会进行缩放。 这两个实例的消息数可能各为 100，或分别为 120 和 80，或者为其他相加大于等于 200 的数字组合。
 
-在 Azure 门户的“设置”边栏选项卡中配置此配置。 若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName 用作 ApproximateMessageCount，并传递存储队列的 ID 作为 metricResourceUri。
+在 Azure 门户的“设置”**** 边栏选项卡中配置此配置。 若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName** 用作 ApproximateMessageCount**，并传递存储队列的 ID 作为 metricResourceUri**。
 
 例如，对于经典存储帐户，自动缩放设置 metricTrigger 将包括：
 
@@ -174,7 +174,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 ## <a name="commonly-used-service-bus-metrics"></a>常用的服务总线指标
 可以按服务总线队列的长度进行缩放，该长度是服务总线队列中的消息数量。 服务总线队列长度是一个特殊指标，阈值是每个实例的消息数。 例如，如果有两个实例并且阈值设置为 100，则当队列中的消息总数为 200 时会进行缩放。 这两个实例的消息数可能各为 100，或分别为 120 和 80，或者为其他相加大于等于 200 的数字组合。
 
-若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName 用作 ApproximateMessageCount，并传递存储队列的 ID 作为 metricResourceUri。
+若使用 VM 规模集，可以将 Resource Manager 模板中的“自动缩放”设置更新为将 metricName** 用作 ApproximateMessageCount**，并传递存储队列的 ID 作为 metricResourceUri**。
 
 ```
 "metricName": "ApproximateMessageCount",

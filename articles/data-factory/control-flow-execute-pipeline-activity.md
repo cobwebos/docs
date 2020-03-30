@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂中的 "执行管道" 活动
+title: Azure 数据工厂中的 Execute Pipeline 活动
 description: 了解如何使用 Execute Pipeline 活动从一个数据工厂管道调用另一个数据工厂管道。
 services: data-factory
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 26dd7c4f33360030b13ddbfc1516396436724c40
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440445"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Execute Pipeline 活动
@@ -59,7 +59,7 @@ Execute Pipeline 活动允许一个数据工厂管道调用另一个管道。
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | Description | 允许的值 | 需要
+properties | 描述 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 name | Execute Pipeline 活动的名称。 | String | 是
 type | 必须设置为：**ExecutePipeline**。 | String | 是
@@ -254,7 +254,7 @@ waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 默
 ## <a name="next-steps"></a>后续步骤
 查看数据工厂支持的其他控制流活动： 
 
-- [For Each 活动](control-flow-for-each-activity.md)
-- [Get Metadata 活动](control-flow-get-metadata-activity.md)
+- [对于每个活动](control-flow-for-each-activity.md)
+- [获取元数据活动](control-flow-get-metadata-activity.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
-- [Web 活动](control-flow-web-activity.md)
+- [网站活动](control-flow-web-activity.md)

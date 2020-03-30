@@ -1,5 +1,5 @@
 ---
-title: 使用 .NET SDK Microsoft Azure StorSimple 数据管理器作业
+title: 使用 .NET SDK 进行微软 Azure StorSimple 数据管理器作业
 description: 了解如何使用 .NET SDK 启动 StorSimple Data Manager 作业
 author: alkohli
 ms.service: storsimple
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: b7cf1d3b9d4a9d751348c4792f904062b00ac104
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76270725"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用 .NET SDK 启动数据转换
@@ -26,7 +26,7 @@ ms.locfileid: "76270725"
  
   本文详细说明如何创建示例 .NET 控制台应用程序以启动数据转换作业，然后跟踪它的完成情况。 若要了解有关如何通过自动化启动数据转换的详细信息，请转到[使用 Azure 自动化 runbook 触发数据转换作业](storsimple-data-manager-job-using-automation.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保具备以下条件：
 *   运行以下软件的计算机：
@@ -36,7 +36,7 @@ ms.locfileid: "76270725"
     - Azure Powershell。 [下载 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
 *   资源组中的 StorSimple 数据管理器中存在正确配置的作业定义。
 *   所有必需的 dll。 从 [GitHub 存储库](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)下载这些 dll。
-*   GitHub 存储库中的 [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) 脚本。
+*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)来自 GitHub 存储库的脚本。
 
 ## <a name="step-by-step-procedure"></a>分步过程
 
@@ -44,7 +44,7 @@ ms.locfileid: "76270725"
 
 1. 若要检索配置参数，请执行以下步骤：
     1. 在 `C:\DataTransformation` 位置通过 GitHub 存储库脚本下载 `Get-ConfigurationParams.ps1`。
-    1. 运行 GitHub 存储库中的 `Get-ConfigurationParams.ps1` 脚本。 输入以下命令：
+    1. 运行 GitHub 存储库中的 `Get-ConfigurationParams.ps1` 脚本。 键入下列命令：
 
         ```
         C:\DataTransformation\Get-ConfigurationParams.ps1 -SubscriptionName "AzureSubscriptionName" -ActiveDirectoryKey "AnyRandomPassword" -AppName "ApplicationName"
@@ -61,29 +61,29 @@ ms.locfileid: "76270725"
 
 3. 使用 Visual Studio 2012、2013 或 2015 创建 C# .NET 控制台应用程序。
 
-    1. 启动 **Visual Studio 2012/2013/2015**。
-    1. 选择“文件”>“新建”>“项目”。
+    1. 推出**视觉工作室 2012/2013/2015**.
+    1. 选择“文件”>“新建”>“项目”****。
 
         ![创建项目 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
-    2. 选择“已安装”>“模板”>“Visual C#”>“控制台应用程序”。
-    3. 对于**名称**，输入“DataTransformationApp”。
+    2. 选择“已安装”>“模板”>“Visual C#”>“控制台应用程序”****。
+    3. 对于**名称**，输入“DataTransformationApp”****。
     4. 对于**位置**，选择 **C:\DataTransformation**。
-    6. 单击“确定”以创建该项目 。
+    6. 单击“确定”**** 以创建项目。
 
         ![创建项目 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 
 4. 现在，将 [dlls 文件夹](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)中存在的所有 dll 添加为已创建的项目中的**引用**。 若要添加 dll 文件，请执行以下操作：
 
-   1. 在 Visual Studio 中，转到“视图”>“解决方案资源管理器”。
-   2. 单击“数据转换应用”项目左侧的箭头。 单击“引用”，并右键单击“添加引用”。
+   1. 在 Visual Studio 中，转到“视图”>“解决方案资源管理器”****。
+   2. 单击“数据转换应用”项目左侧的箭头。 单击“引用”****，并右键单击“添加引用”****。
     
        ![添加 dll 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
-   3. 浏览到包文件夹的位置，选择所有 dll，单击“添加”，然后单击“确定”。
+   3. 浏览到包文件夹的位置，选择所有 dll，单击“添加”****，然后单击“确定”****。
 
        ![添加 dll 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
-5. 将以下 **using** 语句添加到项目中的源文件 (Program.cs)。
+5. 将以下**使用**语句添加到项目中的源文件 （Program.cs）。
 
     ```
     using System;
@@ -194,4 +194,4 @@ ms.locfileid: "76270725"
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 StorSimple Data Manager UI 转换数据](storsimple-data-manager-ui.md)。
+[使用 StorSimple 数据管理器 UI 转换数据](storsimple-data-manager-ui.md)。

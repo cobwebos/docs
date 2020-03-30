@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Active Directory 身份验证托管标识
-description: 本文提供了有关使用 Azure Active Directory 访问 Azure 事件中心资源对托管标识进行身份验证的信息
+title: 使用 Azure Active Directory 对托管标识进行身份验证
+description: 本文提供有关对使用 Azure Active Directory 访问 Azure 事件中心资源的托管标识进行身份验证的信息
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -10,82 +10,82 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
 ms.openlocfilehash: 672b663a9cab72d465ea00e0a5ade364eadbf64e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78251530"
 ---
-# <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 验证托管标识，以访问事件中心资源
-Azure 事件中心支持[对 Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory （Azure AD）身份验证。 Azure 资源的托管标识可以使用 Azure 虚拟机（Vm）、函数应用、虚拟机规模集和其他服务中运行的应用程序的 Azure AD 凭据，授权访问事件中心资源。 通过将 Azure 资源的托管标识与 Azure AD authentication 一起使用，你可以避免将凭据存储在云中运行的应用程序。
+# <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 对托管标识的事件中心资源访问进行身份验证
+Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 Azure 资源的托管标识可以从 Azure 虚拟机 (VM)、函数应用、虚拟机规模集和其他服务中运行的应用程序使用 Azure AD 凭据授权对事件中心资源的访问权限。 将 Azure 资源的托管标识与 Azure AD 身份验证结合使用，可避免将凭据随在云中运行的应用程序一起存储。
 
-本文介绍如何使用 Azure VM 中的托管标识授予对事件中心的访问权限。
+本文介绍如何在 Azure VM 中使用托管标识授予对事件中心的访问权限。
 
 ## <a name="enable-managed-identities-on-a-vm"></a>在 VM 上启用托管标识
-必须先为 VM 上的 Azure 资源启用托管标识，然后才能使用 Azure 资源的托管标识来授权 VM 的事件中心资源。 若要了解如何为 Azure 资源启用托管标识，请参阅下述文章之一：
+在使用 Azure 资源的托管标识对 VM 中的事件中心资源授权之前，必须首先在 VM 上启用 Azure 资源的托管标识。 若要了解如何为 Azure 资源启用托管标识，请参阅下述文章之一：
 
 - [Azure 门户](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
-- [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+- [Azure 电源外壳](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager 模板](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure 资源管理器客户端库](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>向中的托管标识授予权限 Azure AD
-若要从应用程序中的托管标识向事件中心服务请求授权，请首先为该托管标识配置基于角色的访问控制（RBAC）设置。 Azure 事件中心定义了 RBAC 角色，其中包含用于从事件中心进行发送和读取的权限。 将 RBAC 角色分配到托管标识后，将向托管标识授予适当范围内的事件中心数据的访问权限。
+## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>向 Azure AD 中的托管标识授予权限
+若要通过应用程序中的托管标识授权对事件中心服务的请求，请先为该托管标识配置基于角色的访问控制 (RBAC) 设置。 Azure 事件中心定义 RBAC 角色，这些角色涵盖了从事件中心进行发送和读取操作所需的权限。 将 RBAC 角色分配到某个托管标识后，将在适当的范围授予该托管标识访问事件中心数据的权限。
 
-有关分配 RBAC 角色的详细信息，请参阅[使用 Azure Active Directory 进行身份验证以访问事件中心资源](authorize-access-azure-active-directory.md)。
+有关如何分配 RBAC 角色的详细信息，请参阅[使用 Azure Active Directory 进行身份验证，以便访问事件中心资源](authorize-access-azure-active-directory.md)。
 
-## <a name="use-event-hubs-with-managed-identities"></a>使用具有托管标识的事件中心
-若要将事件中心与托管标识一起使用，需要为标识分配角色和适当的作用域。 本节中的过程使用一个在托管标识下运行的简单应用程序，并访问事件中心资源。
+## <a name="use-event-hubs-with-managed-identities"></a>将事件中心与托管标识结合使用
+若要将事件中心与托管标识配合使用，需为标识分配角色和相应的范围。 此部分的过程使用一个简单的应用程序，该应用程序在托管标识下运行并访问事件中心资源。
 
-这里我们使用的是[Azure App Service](https://azure.microsoft.com/services/app-service/)中托管的示例 web 应用程序。 有关创建 web 应用程序的分步说明，请参阅[在 Azure 中创建 ASP.NET Core web 应用](../app-service/app-service-web-get-started-dotnet.md)
+在这里，我们将使用一个在 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)中托管的示例 Web 应用程序。 有关如何创建 Web 应用程序的分步说明，请参阅[在 Azure 中创建 ASP.NET Core Web 应用](../app-service/app-service-web-get-started-dotnet.md)
 
 创建应用程序后，请执行以下步骤： 
 
-1. 请参阅 "**设置**" 并选择 "**标识**"。 
-1. 选择要**启用**的**状态**。 
-1. 选择“保存”，保存设置。 
+1. 转到“设置”，然后选择“标识”****。**** 
+1. 选择“状态”****，将其切换到“启用”****。 
+1. 选择“保存”****，保存设置。 
 
     ![Web 应用的托管标识](./media/authenticate-managed-identity/identity-web-app.png)
 
-启用此设置后，将在 Azure Active Directory （Azure AD）中创建新的服务标识并将其配置到应用服务主机中。
+启用此设置后，会在 Azure Active Directory (Azure AD) 中创建一个新的服务标识并将其配置到应用服务主机中。
 
-现在，请将此服务标识分配到事件中心资源的所需作用域中的角色。
+现在，请将此服务标识分配给事件中心资源中所需范围中的某个角色。
 
 ### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>使用 Azure 门户分配 RBAC 角色
-若要将角色分配到事件中心资源，请在 Azure 门户中导航到该资源。 显示资源的 "访问控制（IAM）" 设置，并按照这些说明来管理角色分配：
+若要为事件中心资源分配角色，请导航到 Azure 门户中的该资源。 显示资源的“访问控制(标识和访问管理)”设置，并按以下说明管理角色分配：
 
 > [!NOTE]
-> 以下步骤将服务标识角色分配到事件中心命名空间。 你可以按照相同的步骤来分配作用域为任何事件中心资源的角色。 
+> 以下步骤为事件中心命名空间分配服务标识角色。 可以遵循相同的步骤来分配限定为事件中心资源范围的角色。 
 
-1. 在 Azure 门户中，导航到事件中心命名空间并显示命名空间的**概述**。 
-1. 选择左侧菜单中的 "**访问控制（IAM）** "，显示事件中心的访问控制设置。
-1.  选择“角色分配”选项卡以查看角色分配列表。
-3.  选择 "**添加**" 以添加新角色。
-4.  在 "**添加角色分配**" 页上，选择要分配的事件中心角色。 然后搜索以查找已注册的服务标识以分配角色。
+1. 在 Azure 门户中导航到事件中心命名空间，显示该命名空间的“概览”。**** 
+1. 选择左侧菜单上的“访问控制(标识和访问管理)”，显示事件中心的访问控制设置****。
+1.  选择“角色分配”**** 选项卡以查看角色分配列表。
+3.  选择“添加”以添加新角色。****
+4.  在“添加角色分配”页上，选择要分配的事件中心角色****。 然后通过搜索找到已注册的服务标识，以便分配该角色。
     
-    !["添加角色分配" 页](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  选择“保存”。 分配有该角色的标识列出在该角色下。 例如，下图显示服务标识具有事件中心数据所有者。
+    ![“添加角色分配”页](./media/authenticate-managed-identity/add-role-assignment-page.png)
+5.  选择“保存”。**** 分配有该角色的标识列出在该角色下。 例如，下图显示服务标识有事件中心数据所有者。
     
     ![分配给角色的标识](./media/authenticate-managed-identity/role-assigned.png)
 
-分配角色后，web 应用程序将有权访问定义范围下的事件中心资源。 
+分配此角色后，Web 应用程序即可访问已定义范围内的事件中心资源。 
 
 ### <a name="test-the-web-application"></a>测试 Web 应用程序
 1. 创建事件中心命名空间和事件中心。 
-2. 将 web 应用部署到 Azure。 请参阅以下选项卡式部分，了解 GitHub 上的 web 应用程序的链接。 
-3. 确保将 SendReceive 设置为 web 应用的默认文档。 
-3. 为 web 应用启用**标识**。 
-4. 将此标识分配给命名空间级别或事件中心级别的**事件中心数据所有者**角色。 
-5. 运行 web 应用程序，输入命名空间名称和事件中心名称和消息，然后选择 "**发送**"。 若要接收事件，请选择 "**接收**"。 
+2. 将 Web 应用部署到 Azure。 请参阅下面的选项卡式部分，获取 GitHub 上的 Web 应用程序的链接。 
+3. 确保将 SendReceive.aspx 设置为 Web 应用的默认文档。 
+3. 为 Web 应用启用**标识**。 
+4. 将此标识分配给命名空间级别或事件中心级别的“事件中心数据所有者”**** 角色。 
+5. 运行 Web 应用程序，输入命名空间名称和事件中心名称，输入一条消息，然后选择“发送”****。 若要接收事件，请选择“接收”。**** 
 
-#### <a name="azuremessagingeventhubs-latest"></a>[EventHubs （最新版本）](#tab/latest)
-你现在可以启动 web 应用程序，并将浏览器指向示例 aspx 页。 可以在[GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)存储库中找到从事件中心资源发送和接收数据的示例 web 应用程序。
+#### <a name="azuremessagingeventhubs-latest"></a>[Azure.消息传递.事件中心（最新）](#tab/latest)
+现在可以启动 Web 应用程序并将浏览器指向示例 aspx 页面了。 可以在 [GitHub 存储库](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)中找到用于通过事件中心资源发送和接收数据的示例 Web 应用程序。
 
-从[NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)安装最新的包，并使用**EventHubProducerClient**和使用**EventHubConsumerClient**接收事件开始向事件中心发送事件。 
+安装 [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/) 中的最新包，开始使用 **EventHubProducerClient** 向事件中心发送事件，使用 **EventHubConsumerClient** 接收事件。 
 
 > [!NOTE]
-> 有关使用托管标识将事件发布到事件中心的 Java 示例，请参阅[GitHub 上的使用 Azure 标识发布事件示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)。
+> 有关使用托管标识将事件发布到事件中心的 Java 示例，请参阅[在 GitHub 上使用 Azure 标识示例发布事件](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)。
 
 ```csharp
 protected async void btnSend_Click(object sender, EventArgs e)
@@ -130,10 +130,10 @@ protected async void btnReceive_Click(object sender, EventArgs e)
 }
 ```
 
-#### <a name="microsoftazureeventhubs-legacy"></a>[EventHubs （传统）](#tab/old)
-你现在可以启动 web 应用程序，并将浏览器指向示例 aspx 页。 可以在[GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp)存储库中找到从事件中心资源发送和接收数据的示例 web 应用程序。
+#### <a name="microsoftazureeventhubs-legacy"></a>[Microsoft.Azure.EventHubs（旧版）](#tab/old)
+现在可以启动 Web 应用程序并将浏览器指向示例 aspx 页面了。 可以在 [GitHub 存储库](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp)中找到用于通过事件中心资源发送和接收数据的示例 Web 应用程序。
 
-从[NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)安装最新包，并使用 EventHubClient 开始向事件中心发送和接收数据，如以下代码所示： 
+从 [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) 安装最新包，并开始使用 EventHubClient 通过事件中心发送和接收数据，如以下代码所示： 
 
 ```csharp
 var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHubNamespace}/"), EventHubName);
@@ -141,23 +141,23 @@ var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHub
 ---
 
 ## <a name="event-hubs-for-kafka"></a>用于 Kafka 的事件中心
-你可以使用 Apache Kafka 应用程序通过托管标识 OAuth 向 Azure 事件中心发送消息，以及从 Azure 事件中心接收消息。 请参阅 GitHub 上的以下示例： [Kafka 的事件中心-使用托管标识 OAuth 发送和接收消息](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)。
+您可以使用 Apache Kafka 应用程序使用托管标识 OAuth 向 Azure 事件中心发送消息并从 Azure 事件中心接收消息。 请参阅 GitHub 上的以下示例[：Kafka 的事件中心 - 使用托管标识 OAuth 发送和接收消息](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)。
 
 ## <a name="samples"></a>示例
-- **EventHubs**示例
+- **Azure.消息传递.事件中心**示例
     - [.NET](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
-- [EventHubs 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
+- [微软.Azure.事件中心示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
     
-    这些示例使用旧的**EventHubs**库，但你可以轻松地将其更新为使用最新的**EventHubs**库。 若要将示例从使用旧库移动到新库，请参阅[从 EventHubs 迁移到 EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)。
-    此示例已更新为使用最新的**EventHubs**库。
-- [Kafka 的事件中心-使用托管标识 OAuth 发送和接收消息](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
+    这些示例使用旧的**Microsoft.Azure.EventHubs**库，但可以轻松地将其更新为使用最新的**Azure.消息.事件中心**库。 要将示例从使用旧库移动到新库，请参阅[从 Microsoft.Azure.事件中心迁移到 Azure.消息集的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)。
+    此示例已更新为使用最新的**Azure.消息.事件中心**库。
+- [卡夫卡的事件中心 - 使用托管标识 OAuth 发送和接收消息](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 
 
 ## <a name="next-steps"></a>后续步骤
-- 请参阅以下文章，了解 Azure 资源的托管标识： [azure 资源的托管标识是什么？](../active-directory/managed-identities-azure-resources/overview.md)
+- 请参阅以下文章以了解 Azure 资源的托管标识[：Azure 资源的托管标识是什么？](../active-directory/managed-identities-azure-resources/overview.md)
 - 请参阅以下相关文章：
-    - [使用 Azure Active Directory 对应用程序中的 Azure 事件中心的请求进行身份验证](authenticate-application.md)
-    - [使用共享访问签名对 Azure 事件中心的请求进行身份验证](authenticate-shared-access-signature.md)
-    - [使用 Azure Active Directory 授权访问事件中心资源](authorize-access-azure-active-directory.md)
-    - [使用共享访问签名授予对事件中心资源的访问权限](authorize-access-shared-access-signature.md)
+    - [使用 Azure Active Directory 对应用程序的 Azure 事件中心请求进行身份验证](authenticate-application.md)
+    - [使用共享访问签名对 Azure 事件中心请求进行身份验证](authenticate-shared-access-signature.md)
+    - [使用 Azure 活动目录授权访问事件中心资源](authorize-access-azure-active-directory.md)
+    - [使用共享访问签名授权访问事件中心资源](authorize-access-shared-access-signature.md)

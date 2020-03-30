@@ -1,7 +1,7 @@
 ---
 title: 自定义策略的社交帐户声明转换示例
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C 的标识体验框架（IEF）架构的社交帐户声明转换示例。
+description: Azure 活动目录 B2C 的标识体验框架 （IEF） 架构的社交帐户声明转换示例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,17 +12,17 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cb713651aca266ab2546ff26c3cd0175a4cbc289
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183748"
 ---
 # <a name="social-accounts-claims-transformations"></a>社交帐户声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在 Azure Active Directory B2C （Azure AD B2C）中，社会帐户标识存储在**alternativeSecurityIdCollection**声明类型的 `userIdentities` 属性中。 **alternativeSecurityIdCollection** 中的每个项指定颁发者（标识提供者名称，例如 facebook.com）和 `issuerUserId`（颁发者的唯一用户标识符）。
+在 Azure 活动目录 B2C（Azure AD B2C）中，社交`userIdentities`帐户标识存储在**替代安全IdCollection**声明类型的属性中。 **alternativeSecurityIdCollection** 中的每个项指定颁发者（标识提供者名称，例如 facebook.com）和 `issuerUserId`（颁发者的唯一用户标识符）。
 
 ```JSON
 "userIdentities": [{
@@ -39,7 +39,7 @@ ms.locfileid: "78183748"
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-创建可在 Azure Active Directory 调用中使用的用户 alternativeSecurityId 属性的 JSON 表示形式。 有关详细信息，请参阅[AlternativeSecurityId](https://docs.microsoft.com/graph/api/resources/alternativesecurityid)架构。
+创建可在 Azure Active Directory 调用中使用的用户 alternativeSecurityId 属性的 JSON 表示形式。 有关详细信息，请参阅[替代安全Id](https://docs.microsoft.com/graph/api/resources/alternativesecurityid)架构。
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
@@ -65,7 +65,7 @@ ms.locfileid: "78183748"
 
 - 输入声明：
     - **key**: 12334
-    - **identityProvider**: Facebook.com
+    - **身份提供者**： Facebook.com
 - 输出声明：
     - **alternativeSecurityId**: { "issuer": "facebook.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
 
@@ -82,7 +82,7 @@ ms.locfileid: "78183748"
 以下示例将新的社交标识与现有帐户相链接。 链接新的社交标识：
 1. 在 **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserReadUsingObjectId** 技术配置文件中，输出用户的 **alternativeSecurityIds** 声明。
 1. 要求用户使用某个不与此用户关联的标识提供者登录。
-1. 使用 **CreateAlternativeSecurityId** 声明转换创建名为 **的新**alternativeSecurityId`AlternativeSecurityId2` 声明类型
+1. 使用 **CreateAlternativeSecurityId** 声明转换创建名为 `AlternativeSecurityId2` 的新 **alternativeSecurityId** 声明类型
 1. 调用 **AddItemToAlternativeSecurityIdCollection** 声明转换，将 **AlternativeSecurityId2** 声明添加到现有的 **AlternativeSecurityIds** 声明。
 1. 将 **alternativeSecurityIds** 声明保存到用户帐户
 
@@ -147,7 +147,7 @@ ms.locfileid: "78183748"
 1. 在 **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserReadUsingObjectId** 技术配置文件中，输出用户的 **alternativeSecurityIds** 声明。
 2. 要求用户选择要从此用户关联的标识提供者列表中删除哪个社交帐户。
 3. 调用一个声明转换技术配置文件，该技术配置文件调用使用标识提供者名称删除了所选社交标识的 **RemoveAlternativeSecurityIdByIdentityProvider** 声明转换。
-4. 将 **alternativeSecurityIds** 声明保存到用户帐户。
+4. 保留对用户帐户的替代**安全 Id**声明。
 
 ```XML
 <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider" TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">

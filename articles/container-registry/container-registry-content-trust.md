@@ -1,13 +1,13 @@
 ---
-title: 管理签名的映像
-description: 了解如何为 Azure 容器注册表启用内容信任，并推送并请求已签名的映像。
+title: 管理签名图像
+description: 了解如何为 Azure 容器注册表启用内容信任，以及推送和拉取签名映像。
 ms.topic: article
 ms.date: 09/06/2019
 ms.openlocfilehash: ce1e9e5cce0de58703e69df8db14cfbf3ecf04f3
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78249923"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
@@ -19,9 +19,9 @@ Azure 容器注册表实现了 Docker 的[内容信任][docker-content-trust]模
 
 ## <a name="how-content-trust-works"></a>内容信任工作原理
 
-对于在设计时需考虑安全性的任何分布式系统来说，重要的是验证进入系统的数据的源和完整性。 数据的使用者需要能够验证数据的发布者（源），并确保数据在发布后未修改过（完整性）。 
+对于在设计时需考虑安全性的任何分布式系统来说，重要的是验证进入系统的数据的源和完整性。**** 数据的使用者需要能够验证数据的发布者（源），并确保数据在发布后未修改过（完整性）。 
 
-作为映像发布者，你可以通过内容信任对发布到注册表的映像进行**签名**。 映像的使用者（从注册表拉取映像的人或系统）可以将其客户端配置为仅拉取签名的映像。 当映像使用者拉取签名的映像时，其 Docker 客户端会验证映像的完整性。 在此模型中，可以向使用者确保你注册表中的签名映像确实是你发布的，且自发布后未作修改。
+作为映像发布者，你可以通过内容信任对发布到注册表的映像进行**签名**。 映像的使用者（从注册表拉取映像的人或系统）可以将其客户端配置为** 仅拉取签名的映像。 当映像使用者拉取签名的映像时，其 Docker 客户端会验证映像的完整性。 在此模型中，可以向使用者确保你注册表中的签名映像确实是你发布的，且自发布后未作修改。
 
 ### <a name="trusted-images"></a>受信任的映像
 
@@ -36,9 +36,9 @@ Azure 容器注册表实现了 Docker 的[内容信任][docker-content-trust]模
 
 ## <a name="enable-registry-content-trust"></a>启用注册表内容信任
 
-第一步是在注册表级别启用内容信任。 启用内容信任以后，客户端（用户或服务）即可将签名的映像推送到注册表。 在注册表上启用内容信任并不意味着只能由启用了内容信任的使用者来使用注册表。 未启用内容信任的使用者可以照常继续使用注册表。 不过，在其客户端中启用了内容信任的使用者在其注册表中只能看到签名的映像。
+第一步是在注册表级别启用内容信任。 启用内容信任以后，客户端（用户或服务）即可将签名的映像推送到注册表。 在注册表上启用内容信任并不意味着只能由启用了内容信任的使用者来使用注册表。 未启用内容信任的使用者可以照常继续使用注册表。 不过，在其客户端中启用了内容信任的使用者在其注册表中只能看到签名的映像。**
 
-若要为注册表启用内容信任，请先在 Azure 门户中导航到注册表。 在“策略”下选择“内容信任” > “启用” > “保存”。 你还可以在 Azure CLI 中使用[az acr config content trust update][az-acr-config-content-trust-update]命令。
+若要为注册表启用内容信任，请先在 Azure 门户中导航到注册表。 在“策略”**** 下选择“内容信任”**** > “启用”**** > ****“保存”。 您还可以在 Azure CLI 中使用[az acr 配置内容信任更新][az-acr-config-content-trust-update]命令。
 
 ![在 Azure 门户中为注册表启用内容信任][content-trust-01-portal]
 
@@ -72,13 +72,13 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 只有已获得授权的用户或系统能够向注册表推送受信任的映像。 若要向用户（或使用服务主体的系统）授予受信任映像的推送权限，请为其 Azure Active Directory 标识授予 `AcrImageSigner` 角色。 这是在 `AcrPush`（或等效）角色（此角色是将映像推送到注册表所必需的）基础上添加的角色。 有关详细信息，请参阅 [Azure 容器注册表角色和权限](container-registry-roles.md)。
 
 > [!NOTE]
-> 不能将受信任的映像推送权限授予 Azure 容器注册表的[管理员帐户](container-registry-authentication.md#admin-account)。
+> 不能向 Azure 容器注册表的[管理员帐户](container-registry-authentication.md#admin-account)授予受信任的映像推送权限。
 
 下面是在 Azure 门户和 Azure CLI 中授予 `AcrImageSigner` 角色的详细信息。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-导航到 Azure 门户中的注册表，然后选择“访问控制(IAM)” > “添加角色分配”。 在“添加角色分配”下的“角色”下选择“ **”，** `AcrImageSigner`然后**选择**一个或多个用户或服务主体，然后单击“保存”。
+在 Azure 门户中导航到注册表，然后选择**访问控件 （IAM）** > **添加角色分配**。 在“添加角色分配”下的“角色”下选择“`AcrImageSigner`”，******** 然后**选择**一个或多个用户或服务主体，然后单击“保存”。****
 
 在此示例中，为以下两个实体分配了 `AcrImageSigner` 角色：名为“service-principal”的服务主体，以及名为“Azure 用户”的用户。
 
@@ -114,7 +114,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 `<service principal ID>` 可以是服务主体的 **appId**、**objectId** 或其 **servicePrincipalName** 之一。 若要详细了解如何使用服务主体和 Azure 容器注册表，请参阅[使用服务主体的 Azure 容器注册表身份验证](container-registry-auth-service-principal.md)。
 
 > [!IMPORTANT]
-> 在任何角色更改后，运行 `az acr login` 以刷新 Azure CLI 的本地标识令牌，以便新角色生效。 有关验证身份的角色的信息，请参阅[使用 rbac 和 Azure CLI 管理对 azure 资源的访问](../role-based-access-control/role-assignments-cli.md)和[排查 AZURE 资源的 RBAC 问题](../role-based-access-control/troubleshooting.md)。
+> 在任何角色更改后，运行 `az acr login` 以刷新 Azure CLI 的本地标识令牌，以便新角色生效。 有关验证标识角色的信息，请参阅[使用 RBAC 和 Azure CLI 管理对 Azure 资源的访问](../role-based-access-control/role-assignments-cli.md)，以及[针对 Azure 资源的 RBAC 故障。](../role-based-access-control/troubleshooting.md)
 
 ## <a name="push-a-trusted-image"></a>推送受信任的映像
 
@@ -190,7 +190,7 @@ umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; 
 > [!WARNING]
 > 如果在禁用注册表中的内容信任后重新启用它，**则会删除注册表的所有存储库中所有已签名标记的所有信任数据**。 此操作不可逆--Azure 容器注册表不能恢复已删除的信任数据。 禁用内容信任不会删除映像本身。
 
-若要禁用注册表的内容信任，请在 Azure 门户中导航到注册表。 在“策略”下选择“内容信任” > “禁用” > “保存”。 系统会警告：你会丢失注册表中的所有签名。 选择“确定”即可永久删除注册表中的所有签名。
+若要禁用注册表的内容信任，请在 Azure 门户中导航到注册表。 在“策略”**** 下选择“内容信任”**** > “禁用”**** > ****“保存”。 系统会警告：你会丢失注册表中的所有签名。 选择“确定”即可永久删除注册表中的所有签名。****
 
 ![在 Azure 门户中禁用注册表的内容信任][content-trust-03-portal]
 
