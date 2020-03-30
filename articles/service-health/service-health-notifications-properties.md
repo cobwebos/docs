@@ -4,10 +4,10 @@ description: 借助服务运行状况通知，可以查看由 Microsoft Azure �
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77653962"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 门户查看服务运行状况通知
@@ -24,9 +24,9 @@ ms.locfileid: "77653962"
 
 每个服务运行状况通知将包含有关适用范围和资源所受影响的详细信息。 详细信息包括：
 
-属性名称 | 说明
+属性名称 | 描述
 -------- | -----------
-channels | 以下值之一：“Admin”、“Operation”。
+channels | 以下值之一：“Admin”****、“Operation”****。
 correlationId | 通常为字符串格式的 GUID。 属于同一操作的事件通常共享相同的 correlationId。
 eventDataId | 事件的唯一标识符。
 eventName | 事件的标题。
@@ -37,35 +37,35 @@ subStatus | 通常为响应 REST 调用的 HTTP 状态码，但还可以包含�
 eventTimestamp | 处理与事件对应的请求的 Azure 服务生成事件时的时间戳。
 submissionTimestamp | 事件可供查询的时间戳。
 subscriptionId | 记录此事件的 Azure 订阅。
-status | 描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active 和 Resolved。
+status | 描述操作状态的字符串。 部分常用值包括：Started、In Progress、Succeeded、Failed、Active 和 Resolved************************。
 operationName | 操作的名称。
-category | 此属性始终为 ServiceHealth。
+category | 此属性始终为 ServiceHealth****。
 resourceId | 受影响的资源的资源 ID。
 Properties.title | 此通信的本地化标题。 默认为英语。
 Properties.communication | 带 HTML 标记的通信的经过本地化的详细信息。 默认为英语。
-Properties.incidentType | 以下值之一： " **ActionRequired**"、"**信息**"、"**事件**"、"**维护**" 或 "**安全**"。
+Properties.incidentType | 以下值之一：**操作要求**、**信息**、**事件**、**维护**或**安全**。
 Properties.trackingId | 与此事件关联的事件。 使用此属性将与某一事件相关的事件关联起来。
-Properties.impactedServices | 转义 JSON blob，描述受事件影响的服务和区域。 属性包括服务列表，每个服务具有一个 ServiceName，以及一个 受影响区域的列表，其中每个区域具有一个 RegionName。
+Properties.impactedServices | 转义 JSON blob，描述受事件影响的服务和区域。 属性包括服务列表，每个服务具有一个 ServiceName，以及一个 受影响区域的列表，其中每个区域具有一个 RegionName********。
 Properties.defaultLanguageTitle | 英语通信。
 Properties.defaultLanguageContent | HTML 标记或纯文本格式的英语通信。
-Properties.stage | **事件**和**安全**的可能值为 **"活动"、"** **已解决**" 或 " **RCA**"。 对于 ActionRequired 或 Informational，唯一的值为 Active。 对于 **Maintenance**，可能值为：**Active**、**Planned**、**InProgress**、**Canceled**、**Rescheduled**、**Resolved** 或 **Complete**。
+Properties.stage | **Incident** 和 **Security** 的可能值为 **Active、** **Resolved** 或 **RCA**。 对于 ActionRequired 或 Informational，唯一的值为 Active************。 对于**维护**，它们是：**活动**、**计划**、**正在进行**、**已取消**、**重新安排**、**已解决**或**完成**。
 Properties.communicationId | 与此事件关联的通信。
 
 ### <a name="details-on-service-health-level-information"></a>服务运行状况级别信息的详细信息
 
 **需要采取操作** (properties.incidentType == ActionRequired)
-- 信息-需要管理员操作以防止对现有服务的影响。
+- 信息 - 需要管理员采取操作来防止影响现有服务。
     
 **维护** (properties.incidentType == Maintenance)
-- 警告-紧急维护
-- 信息性-标准计划内维护
+- 警告 - 紧急维护
+- 信息 - 标准计划维护
 
 **信息** (properties.incidentType == Information)
-- 信息-管理员可能需要防止对现有服务的影响。
+- 信息 - 可能需要管理员来防止对现有服务的影响。
 
 **安全性** (properties.incidentType == Security)
-- 警告-影响现有服务并可能需要管理员操作的安全建议。
-- 信息-影响现有服务的安全建议。
+- 警告 - 影响现有服务并可能需要管理员采取行动的安全警告。
+- 信息 - 影响现有服务的安全公告。
 
 **服务问题** (properties.incidentType == Incident)
 - 错误 - 访问多个区域中多项服务时普遍出现的问题影响大批客户。

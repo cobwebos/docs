@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 2a0e88a439400bc36873ed7160b8eb039a16ebfb
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: bbc97489f0c7045040dd0189b97946c2bd8fb3c0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356189"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481630"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>使用 Apache Spark 到 Azure Cosmos DB 的连接器加速大数据分析
 
 可以使用 Cosmos DB Spark 连接器针对 Azure Cosmos DB 中存储的数据运行 [Spark](https://spark.apache.org/) 作业。 Cosmos 可用于批处理和流式处理，并可充当服务层来降低访问延迟。
 
-你可以将连接器与[Azure Databricks](https://azure.microsoft.com/services/databricks)或[azure HDInsight](https://azure.microsoft.com/services/hdinsight/)配合使用, 后者提供 Azure 上的托管 Spark 群集。 下表显示了支持的 Spark 版本。
+您可以将连接器与 Azure[数据块](https://azure.microsoft.com/services/databricks)或[Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)一起使用 ，后者在 Azure 上提供托管 Spark 群集。 下表显示了支持的 Spark 版本。
 
-| 组件 | Version |
+| 组件 | 版本 |
 |---------|-------|
 | Apache Spark | 2.4.x、2.3.x、2.2.x 和 2.1.x |
 | Scala | 2.11 |
@@ -34,11 +34,11 @@ ms.locfileid: "68356189"
 ## <a name="quickstart"></a>快速入门
 
 * 遵循 [Java SDK 入门](sql-api-async-java-get-started.md)中的步骤设置 Cosmos DB 帐户，并填充一些数据。
-* 按照[Azure Databricks](https://docs.azuredatabricks.net/getting-started/index.html)入门中的步骤设置 Azure Databricks 工作区和群集。
+* 按照 Azure[数据砖块入门](/azure/azure-databricks/quickstart-create-databricks-workspace-portal)的步骤来设置 Azure 数据块工作区和群集。
 * 现在可以创建新的 Notebook，并导入 Cosmos DB 连接器库。 有关如何设置工作区的详细信息，请跳转到[使用 Cosmos DB 连接器](#bk_working_with_connector)。
 * 以下部分提供了有关如何使用连接器读取和写入数据的代码片段。
 
-### <a name="batch-reads-from-cosmos-db"></a>批处理读取 Cosmos DB
+### <a name="batch-reads-from-cosmos-db"></a>从 Cosmos DB 批量读取
 
 以下代码片段演示如何在 PySpark 中创建一个 Spark 数据帧以从 Cosmos DB 读取数据。
 
@@ -80,7 +80,7 @@ val flights = spark.read.cosmosDB(readConfig)
 flights.count()
 ```
 
-### <a name="batch-writes-to-cosmos-db"></a>批次写入 Cosmos DB
+### <a name="batch-writes-to-cosmos-db"></a>批量写入 Cosmos DB
 
 以下代码片段演示如何在 PySpark 中将数据帧写入 Cosmos DB。
 
@@ -117,9 +117,9 @@ import org.apache.spark.sql.SaveMode
 flights.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 ```
 
-### <a name="streaming-reads-from-cosmos-db"></a>Cosmos DB 的流读取
+### <a name="streaming-reads-from-cosmos-db"></a>从 Cosmos DB 流式读取
 
-以下代码片段演示如何连接到 Azure Cosmos DB 更改源以及从中进行读取。
+以下代码片段显示了如何连接到 Azure Cosmos DB 更改源并从中读取。
 
 ```python
 # Read Configuration
@@ -217,9 +217,9 @@ df
 ```
 有关更多代码片段和端到端的示例，请参阅 [Jupyter](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/notebooks)。
 
-## <a name="bk_working_with_connector"></a>使用连接器
+## <a name="working-with-the-connector"></a><a name="bk_working_with_connector"></a>使用连接器
 
-可以从 GitHub 中的源构建连接器, 或从以下链接中的 Maven 下载 uber jar。
+可以基于 GitHub 中的源代码生成连接器，或通过以下链接从 Maven 下载 uber jar。
 
 | Spark | Scala | 最新版本 |
 |---|---|---|
@@ -228,12 +228,12 @@ df
 | 2.2.0 | 2.11 | [azure-cosmosdb-spark_2.2.0_2.11_1.1.1](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-cosmosdb-spark_2.2.0_2.11%7C1.1.1%7Cjar)
 | 2.1.0 | 2.11 | [azure-cosmosdb-spark_2.1.0_2.11_1.2.2](https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.1.0_2.11/1.2.2/jar)
 
-### <a name="using-databricks-notebooks"></a>使用 Databricks 笔记本
+### <a name="using-databricks-notebooks"></a>使用数据砖笔记本
 
-按照 Azure Databricks 指南中的指南 >[使用 Azure Cosmos DB Spark 连接器](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html), 使用 Databricks 工作区创建库
+按照 Azure 数据砖块指南中的指南>[使用 Azure Cosmos DB Spark 连接器](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)"中的指南"创建使用 Databricks 工作区的库
 
 > [!NOTE]
-> 请注意, "**使用 Azure Cosmos DB Spark 连接器**" 页当前不是最新的。 可以从 maven https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar) 下载 uber jar 并将其安装到一个 jar/库, 而不是将六个单独的 jar 下载到六个不同的库中。
+> 请注意，"**使用 Azure 宇宙 DB 火花连接器"** 页当前不是最新的。 而不是将六个单独的罐子下载到六个不同的库中，你可以从 maven 下载https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar)优步罐，并安装这个 jar/库。
 > 
 
 ### <a name="using-spark-cli"></a>使用 spark-cli
@@ -273,13 +273,13 @@ mvn clean package
 
 [Cosmos DB Spark GitHub 存储库](https://github.com/Azure/azure-cosmosdb-spark)包含以下可供你尝试的示例 Notebook 和脚本。
 
-* **使用 Spark 和 Cosmos DB 确保航班准时（西雅图）** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html)：使用 HDInsight Jupyter Notebook 服务将 Spark 连接到 Cosmos DB，以展示 Spark SQL 和图形帧，并使用机器学习管道预测航班延误。
-* **具有 Apache Spark 和 Azure Cosmos DB 更改源的 Twitter 源**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
-* **使用 Apache Spark 查询 Cosmos DB 关系图**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
-* 使用`azure-cosmosdb-spark` **[将 Azure Databricks 连接到 Azure Cosmos DB](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** 。  此处链接的是 "[实时航班性能" 笔记本](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks)Azure Databricks 版本。
-* **[使用 Azure Cosmos DB 和 HDInsight (Apache Spark) 的 Lambda 体系结构](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)** ：可以使用 Cosmos DB 和 Spark 减少维护大数据管道所造成的操作开销。
+* **实时飞行性能与火花和宇宙DB（西雅图**[）ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb) | [html：](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html)使用HDInsight Jupyter笔记本服务连接Sparks DB，以展示Spark SQL，图形帧，并使用ML管道预测航班延误。
+* **推特来源与阿帕奇火花和Azure宇宙DB更改饲料**[：ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
+* **使用 Apache Spark 查询 Cosmos DB 图形**：[ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb) | [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
+* 使用`azure-cosmosdb-spark`**[将 Azure 数据块连接到 Azure 宇宙数据库](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)**。  此处链接的还有实时[飞行性能笔记本](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks)的 Azure 数据砖块版本。
+* **[使用 Azure Cosmos DB 和 HDInsight （Apache Spark）](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)** 的 Lambda 体系结构：您可以使用 Cosmos DB 和 Spark 减少维护大数据管道的操作开销。
 
-## <a name="more-information"></a>详细信息
+## <a name="more-information"></a>更多信息
 
 我们在 `azure-cosmosdb-spark` [wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki) 中提供了更多信息，包括：
 
@@ -305,7 +305,7 @@ mvn clean package
 
 ### <a name="change-feed"></a>更改源
 
-* [使用 Azure Cosmos DB 更改源和 Apache Spark 流处理更改](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
+* [使用 Azure 宇宙 DB 更改源和 Apache Spark 进行流处理更改](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
 * [更改源演示](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
 * [结构化流演示](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
 
@@ -318,6 +318,6 @@ mvn clean package
 从 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub 存储库下载 Spark 到 Azure Cosmos DB 连接器（如果尚未下载）。 浏览存储库中的其他资源：
 
 * [聚合示例](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
-* [示例脚本和 Notebook](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
+* [示例脚本和笔记本](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 
 此外，还可以查看 [Apache Spark SQL、数据帧和数据集指南](https://spark.apache.org/docs/latest/sql-programming-guide.html)以及 [Azure HDInsight 上的 Apache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) 一文。

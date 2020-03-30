@@ -5,10 +5,10 @@ keywords: azure, chef, devops, 虚拟机, 概述, 自动控制
 ms.date: 02/22/2020
 ms.topic: article
 ms.openlocfilehash: c22faa69bf8f42111d328a9c156dc1a2432731b2
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586336"
 ---
 # <a name="using-chef-with-azure"></a>将 Chef 与 Azure 配合使用
@@ -17,13 +17,13 @@ ms.locfileid: "77586336"
 本文介绍使用 Chef 管理 Azure 基础结构的优点。
 
 ## <a name="chef-extension-on-azure"></a>Azure 上的 Chef 扩展
-使用 Chef 客户端预配运行的虚拟机，该虚拟机将作为后台服务运行，该服务具有[Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)上的[Chef 扩展](https://docs.microsoft.com/azure/chef/chef-extension-portal)。 预配后，这些虚拟机即可由 Chef 服务器进行管理。
+使用[Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)上的[Chef 扩展](https://docs.microsoft.com/azure/chef/chef-extension-portal)提供主处理客户端作为后台服务运行的虚拟机。 预配后，这些虚拟机即可由 Chef 服务器进行管理。
 
 ## <a name="chef-cloud-shell"></a>Chef Cloud Shell
 在 Azure Cloud Shell 中直接使用 Chef 工作站！ 直接从 Cloud Shell 运行所有 Chef 实用程序和 InSpec。 可以从以下位置利用 Chef 命令：
 
-* [chef](https://docs.chef.io/ctl_chef.html)
-* [kitchen](https://docs.chef.io/ctl_kitchen.html)
+* [厨师](https://docs.chef.io/ctl_chef.html)
+* [厨房](https://docs.chef.io/ctl_kitchen.html)
 * [inspec](https://www.inspec.io/docs/reference/cli/)
 * [knife](https://docs.chef.io/knife.html)
 * [cookstyle](https://docs.chef.io/cookstyle.html)

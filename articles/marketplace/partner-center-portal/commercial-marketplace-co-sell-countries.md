@@ -1,35 +1,34 @@
 ---
-title: 共同销售国家/地区代码 |Azure Marketplace
-description: 在产品/服务的共同销售页面上提供联系人信息时，请使用这两个字母的国家/地区代码。
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: 共同销售国家和地区代码 |Azure 应用商店
+description: 在优惠的共同销售页面上提供联系信息时，请使用这些两个字母的国家/地区代码。
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 925218879ce0dc1c69054f861e37e86c122d47f9
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934340"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277050"
 ---
-# <a name="co-sell-country-and-region-codes"></a>共同销售国家/地区代码
+# <a name="co-sell-country-and-region-codes"></a>共同销售区域代码
 
-在[产品/服务的共同销售页面上提供联系人信息](commercial-marketplace-co-sell.md)时，请使用这两个字母的国家/地区代码。
+[在优惠的共同销售页面上提供联系信息](commercial-marketplace-co-sell.md)时，请使用这些两个字母的国家/地区代码。
 
-如果联系人涵盖了所有国家/地区，请使用三字母代码 "OOO"。
+如果联系人覆盖所有国家/地区，请使用三个字母代码"OOO"。
 
-如果联系人涵盖了多个国家/地区，请输入以逗号分隔的两个字母代码（例如，输入 "US，CA，FR"，不带引号）。
+如果联系人覆盖多个国家/地区，请输入用逗号分隔的两个字母代码中的每个字母代码（例如，输入"美国、CA、FR"而不带引号）。
 
 ## <a name="countryregion-table"></a>国家/地区表
 
 |   国家/地区名称               |   ISO-2   |
 |-------------------------------------|-----------|
-| 全局联系人                     | OOO       |
+| 全球联系人                     | Ooo       |
 | 阿富汗                         | AF        |
-| 奥兰群岛                       | AX150        |
+| 奥兰群岛                         | 斧头        |
 | 阿尔巴尼亚                             | AL        |
 | 阿尔及利亚                             | DZ        |
 | 美属萨摩亚                      | AS        |
@@ -43,7 +42,7 @@ ms.locfileid: "75934340"
 | 澳大利亚                           | AU        |
 | 奥地利                             | AT        |
 | 阿塞拜疆                          | AZ        |
-| 巴哈马群岛                             | BS        |
+| 巴哈马                             | BS        |
 | 巴林                             | BH        |
 | 孟加拉                          | BD        |
 | 巴巴多斯                            | BB        |
@@ -54,7 +53,7 @@ ms.locfileid: "75934340"
 | 百慕大群岛                             | BM        |
 | 不丹                              | BT        |
 | 玻利维亚                             | BO        |
-| 博内尔                             | BQ        |
+| 博内尔岛                             | BQ        |
 | 波斯尼亚和黑塞哥维那              | BA        |
 | 博茨瓦纳                            | BW        |
 | 布韦岛                       | BV        |
@@ -68,7 +67,7 @@ ms.locfileid: "75934340"
 | 佛得角                          | CV        |
 | 柬埔寨                            | KH        |
 | 喀麦隆                            | CM        |
-| 加拿大                              | CA        |
+| Canada                              | CA        |
 | 开曼群岛                      | KY        |
 | 中非共和国            | CF        |
 | 乍得                                | TD        |
@@ -80,13 +79,13 @@ ms.locfileid: "75934340"
 | 哥伦比亚                            | CO        |
 | 科摩罗联盟                             | KM        |
 | 刚果                               | CG        |
-| 刚果（民主共和国）                         | CD        |
+| 刚果（金）                         | CD        |
 | 库克群岛                        | CK        |
 | 哥斯达黎加                          | CR        |
 | 科特迪瓦                       | CI        |
 | 克罗地亚                             | HR        |
 | 古巴                                | CU        |
-| 库拉索岛                             | CW        |
+| 库拉索岛                             | 连续        |
 | 塞浦路斯                              | CY        |
 | 丹麦                             | DK        |
 | 吉布提                            | DJ        |
@@ -98,7 +97,7 @@ ms.locfileid: "75934340"
 | 赤道几内亚                   | GQ        |
 | 厄立特里亚                             | ER        |
 | 爱沙尼亚                             | EE        |
-| eSwatini                            | SZ        |
+| 埃斯瓦蒂尼                            | SZ        |
 | 埃塞俄比亚                            | ET        |
 | 法罗群岛                       | FO        |
 | 斐济                                | FJ        |
@@ -110,7 +109,7 @@ ms.locfileid: "75934340"
 | 加蓬                               | GA        |
 | 冈比亚                              | GM        |
 | 格鲁吉亚                             | GE        |
-| 德国                             | 德国        |
+| 德国                             | DE        |
 | 加纳                               | GH        |
 | 直布罗陀                           | GI        |
 | 希腊                              | GR        |
@@ -144,10 +143,10 @@ ms.locfileid: "75934340"
 | 哈萨克斯坦                          | KZ        |
 | 肯尼亚                               | KE        |
 | 基里巴斯                            | KI        |
-| 韩国（南部）                       | KR        |
+| 韩国（韩国）                       | KR        |
 | 科威特                              | KW        |
 | 吉尔吉斯斯坦                          | KG        |
-| 老挝                                | 拉丁美洲        |
+| 老挝                                | LA        |
 | 拉脱维亚                              | LV        |
 | 黎巴嫩                             | LB        |
 | 莱索托                             | LS        |
@@ -178,7 +177,7 @@ ms.locfileid: "75934340"
 | 摩洛哥                             | MA        |
 | 莫桑比克                          | MZ        |
 | 缅甸                             | MM        |
-| 纳米比亚                             | 不可用        |
+| 纳米比亚                             | NA        |
 | 瑙鲁                               | NR        |
 | 尼泊尔                               | NP        |
 | 荷兰                         | NL        |
@@ -190,7 +189,7 @@ ms.locfileid: "75934340"
 | 纽埃                                | NU        |
 | 诺福克岛                      | NF        |
 | 朝鲜民主主义人民共和国                         | KP        |
-| 北马里亚纳群岛            | 管理包        |
+| 北马里亚纳群岛            | MP        |
 | 北马其顿                     | MK        |
 | 挪威                              | 是        |
 | 阿曼                                | OM        |
@@ -202,7 +201,7 @@ ms.locfileid: "75934340"
 | 巴拉圭                            | PY        |
 | 秘鲁                                | PE        |
 | 菲律宾                         | PH        |
-| 皮特凯恩群岛                    | PN        |
+| 皮特凯恩群岛                    | Pn        |
 | 波兰                              | PL        |
 | 葡萄牙                            | PT        |
 | 波多黎各                         | PR        |
@@ -214,36 +213,36 @@ ms.locfileid: "75934340"
 | 圣巴泰勒米                    | BL        |
 | 圣基茨和尼维斯               | KN        |
 | 圣卢西亚                         | LC        |
-| 圣马丁岛                        | MF        |
-| 圣皮埃尔和密克隆群岛           | 下午        |
+| 圣马丁岛                        | Mf        |
+| 圣皮埃尔和密克隆群岛           | PM        |
 | 圣文森特和格林纳丁斯    | VC        |
 | 萨摩亚                               | WS        |
 | 圣马力诺                          | SM        |
-| 圣多美和普林西比               | 一        |
+| 圣多美和普林西比               | ST        |
 | 沙特阿拉伯                        | SA        |
 | 塞内加尔                             | SN        |
 | 塞尔维亚                              | RS        |
 | 塞舌尔群岛                          | SC        |
 | 塞拉利昂                        | SL        |
 | 新加坡                           | SG        |
-| 圣马丁                        | SX        |
+| 圣马丁                        | Sx        |
 | 斯洛伐克                            | SK        |
 | 斯洛文尼亚                            | SI        |
 | 所罗门群岛                     | SB        |
 | 索马里                             | SO        |
 | 南非                        | ZA        |
-| 南乔治亚和南桑威奇群岛 | GS    |
+| 南乔治亚岛和南桑威奇群岛 | GS    |
 | 南苏丹                         | SS        |
 | 西班牙                               | ES        |
 | 斯里兰卡                           | LK        |
-| 圣赫勒拿、阿森松与特里斯坦达库尼亚 | SH     |
+| 圣赫勒拿， 阿森松， 特里斯坦达库尼亚 | SH     |
 | 苏丹                               | SD        |
 | 苏里南                            | SR        |
 | 斯瓦尔巴岛                            | SJ        |
 | 瑞典                              | SE        |
 | 瑞士                         | CH        |
 | 叙利亚                               | SY        |
-| 台湾                              | TW        |
+| 中国台湾                              | TW        |
 | 塔吉克斯坦                          | TJ        |
 | 坦桑尼亚                            | TZ        |
 | 泰国                            | TH        |
@@ -260,10 +259,10 @@ ms.locfileid: "75934340"
 | 乌干达                              | UG        |
 | 乌克兰                             | UA        |
 | 阿拉伯联合酋长国                | AE        |
-| 英国                      | GB        |
-| 美国                       | 美国        |
+| United Kingdom                      | GB        |
+| United States                       | 美国        |
 | 乌拉圭                             | UY        |
-| 美属外岛               | UM        |
+| 美国离岛               | UM        |
 | 美属维尔京群岛                 | VI        |
 | 乌兹别克斯坦                          | UZ        |
 | 瓦努阿图                             | VU        |
@@ -278,4 +277,4 @@ ms.locfileid: "75934340"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[合作伙伴中心的共同销售选项](./commercial-marketplace-co-sell.md)。
+- 了解[合作伙伴中心中的共同销售选项](./commercial-marketplace-co-sell.md)。

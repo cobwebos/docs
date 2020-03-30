@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670570"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>在 Azure Monitor 中收集 IIS 日志
@@ -27,13 +27,13 @@ Azure Monitor 仅支持以 W3C 格式存储的 IIS 日志文件，不支持自�
 
 
 ## <a name="data-collection"></a>数据收集
-每次日志时间戳更改时，Azure Monitor 从每个代理收集 IIS 日志条目。 日志每**5 分钟**读取一次。 如果出于任何原因，IIS 在创建新文件的滚动时间之前不会更新时间戳，则会在创建新文件后收集条目。 创建新文件的频率由 IIS 站点的 "**日志文件滚动更新计划**" 设置控制，默认情况下每天一次。 如果设置为 "**每小时**"，则 Azure Monitor 每小时收集一次日志。 如果设置为 "**每日**"，Azure Monitor 每24小时收集一次日志。
+每次日志时间戳更改时，Azure Monitor 都会从每个代理收集 IIS 日志条目。 每 **5 分钟**读取一次日志。 如果由于任何原因，IIS 在创建新文件时未在滚动更新时间之前更新时间戳，则会在创建新文件后收集条目。 新文件创建的频率由 IIS 站点的“日志文件滚动更新计划”**** 设置控制，默认情况下为每天一次。 如果设置为“每小时”****，则 Azure Monitor 每小时收集一次日志。 如果设置为“每日”****，则 Azure Monitor 每 24 小时收集一次日志。
 
 
 ## <a name="iis-log-record-properties"></a>IIS 日志记录属性
 IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 
-| properties | 说明 |
+| properties | 描述 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机的名称。 |
 | cIP |客户端的 IP 地址。 |
@@ -60,12 +60,12 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 ## <a name="log-queries-with-iis-logs"></a>使用 IIS 日志的日志查询
 下表提供了检索 IIS 日志记录的日志查询的不同示例。
 
-| 查询 | 说明 |
+| 查询 | 描述 |
 |:--- |:--- |
 | W3CIISLog |所有 IIS 日志记录。 |
 | W3CIISLog &#124; where scStatus==500 |返回状态为 500 的所有 IIS 日志记录。 |
 | W3CIISLog &#124; summarize count() by cIP |按客户端 IP 地址的 IIS 日志条目计数。 |
-| W3CIISLog &#124; where csHost = = "www\.contoso.com" &#124;汇总 Count （） by csUriStem |IIS 日志条目计数（按主机 www\.contoso.com 的 URL）。 |
+| W3CIISLog &#124; where csHost=="www\.contoso.com" &#124; summarize count() by csUriStem |按主机的 URL www\.contoso.com 统计的 IIS 日志条目的计数。 |
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |每台 IIS 计算机接收的总字节数。 |
 
 ## <a name="next-steps"></a>后续步骤

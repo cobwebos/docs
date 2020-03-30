@@ -1,18 +1,18 @@
 ---
-title: Azure 流分析中的 JavaScript 用户定义的聚合
+title: Azure 流分析中 JavaScript 用户定义的聚合
 description: 本文介绍如何在 Azure 流分析中通过 JavaScript 用户定义的聚合执行高级查询机制。
-author: rodrigoamicrosoft
+author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: d9b37810146f66806be9b8ce7a38f8dac31facb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c509d174787a58abeee33e039eb7bbbcbcb43f38
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426087"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531728"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure 流分析 JavaScript 用户定义的聚合
  
@@ -20,7 +20,7 @@ Azure 流分析支持以 JavaScript 编写的用户定义的聚合 (UDA)，可�
 
 ## <a name="javascript-user-defined-aggregates"></a>JavaScript 用户定义的聚合
 
-用户定义的聚合在时间窗口规范的顶层使用，可基于该窗口内的事件进行聚合，并生成单个结果值。 流分析目前支持两种类型的 UDA 接口：AccumulateOnly 和 AccumulateDeaccumulate。 翻转、跳跃、滑动和会话窗口均可使用这两种类型的 UDA。 与跳跃、滑动和会话窗口一起使用时，AccumulateDeaccumulate UDA 的性能比 AccumulateOnly UDA 更好。 可以根据所用的算法选择其中一种类型。
+用户定义的聚合在时间窗口规范的顶层使用，可基于该窗口内的事件进行聚合，并生成单个结果值。 流分析目前支持两种类型的 UDA 接口：AccumulateOnly 和 AccumulateDeaccumulate。 翻转窗口、跳跃窗口、滑动窗口和会话窗口可以使用这两种类型的 UDA。 与跳跃窗口、滑动窗口和会话窗口结合使用时，AccumulateDeaccumulate UDA 的表现比 AccumulateOnly UDA 更好。 可以根据所用的算法选择其中一种类型。
 
 ### <a name="accumulateonly-aggregates"></a>AccumulateOnly 聚合
 
@@ -98,11 +98,11 @@ Init() 方法初始化聚合的状态。 窗口启动时会调用此方法。
 
 ### <a name="method--accumulate"></a>方法 – accumulate()
 
-Accumulate() 方法基于前一状态和当前事件值计算 UDA 状态。 当事件进入时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）时，将调用此方法。
+Accumulate() 方法基于前一状态和当前事件值计算 UDA 状态。 当某个事件进入时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）时，会调用此方法。
 
 ### <a name="method--deaccumulate"></a>方法 – deaccumulate()
 
-deaccumulate() 方法基于前一状态和当前事件值重新计算状态。 当事件离开 SLIDINGWINDOW 或 SESSIONWINDOW 时，将调用此方法。
+deaccumulate() 方法基于前一状态和当前事件值重新计算状态。 当事件退出 SLIDINGWINDOW 或 SESSIONWINDOW 时，会调用此方法。
 
 ### <a name="method--deaccumulatestate"></a>方法 – deaccumulateState()
 
@@ -110,7 +110,7 @@ deaccumulateState() 方法基于前一状态和跃点状态重新计算状态。
 
 ### <a name="method--computeresult"></a>方法 – computeResult()
 
-computeResult() 方法基于当前状态返回聚合结果。 此方法在时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）结束时调用。
+computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）结束时调用此方法。
 
 ## <a name="javascript-uda-supported-input-and-output-data-types"></a>JavaScript UDA 支持的输入和输出数据类型
 有关 JavaScript UDA 数据类型，请参阅[集成 JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) 的**流分析和 JavaScript 类型转换**部分。
@@ -119,12 +119,12 @@ computeResult() 方法基于当前状态返回聚合结果。 此方法在时间
 
 下面演练通过门户创建 UDA 的过程。 此处使用的示例计算时间加权平均值。
 
-现在，让我们执行以下步骤在现有的 ASA 作业下创建一个 JavaScript UDA。
+现在，让我们执行以下步骤，在现有的 ASA 作业下创建一个 JavaScript UDA。
 
 1. 登录到 Azure 门户，并找到现有的流分析作业。
-1. 然后单击“作业拓扑”下的函数链接。
-1. 单击“添加”图标添加新函数。
-1. 在“新建函数”视图中，选择“JavaScript UDA”作为函数类型，然后，编辑器中会显示默认的 UDA 模板。
+1. 然后单击“作业拓扑”下的函数链接。****
+1. 单击“添加”图标添加新函数。****
+1. 在“新建函数”视图中，选择“JavaScript UDA”作为函数类型，然后，编辑器中会显示默认的 UDA 模板。****
 1. 填入“TWA”作为 UDA 别名，并按如下所示更改函数实现：
 
     ```JavaScript
@@ -230,7 +230,7 @@ GROUP BY TumblingWindow(minute, 5)
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
+* [使用 Azure 流分析开始](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

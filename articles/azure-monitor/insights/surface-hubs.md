@@ -1,5 +1,5 @@
 ---
-title: 用 Azure Monitor 监视 Surface Hub |Microsoft Docs
+title: 使用 Azure 监视器监视曲面集线器 |微软文档
 description: 使用 Surface Hub 解决方案来跟踪 Surface Hub 的运行状况并了解它们的使用情况。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
 ms.openlocfilehash: 7999735bf2d182b2811d01172adcfc89cba27dc8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77662495"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>使用 Azure Monitor 监视 Surface Hub 以跟踪其运行状况
@@ -32,7 +32,7 @@ ms.locfileid: "77662495"
 * 通过 Surface Hub 设备上的“**设置**”手动注册。
 
 ## <a name="set-up-monitoring"></a>设置监视
-可以使用 Azure Monitor 监视 Surface Hub 的运行状况和活动。 可以使用 Intune 注册 Surface Hub，或在本地使用 Surface Hub 上的“设置”注册。
+可以使用 Azure Monitor 监视 Surface Hub 的运行状况和活动。 可以使用 Intune 注册 Surface Hub，或在本地使用 Surface Hub 上的“设置”注册****。
 
 ## <a name="connect-surface-hubs-to-azure-monitor-through-intune"></a>通过 Intune 将 Surface Hub 连接到 Azure Monitor
 要管理 Surface Hub，需要为 Log Analytics 工作区提供工作区 ID 和工作区密钥。 可从 Azure 门户的工作区设置中获取上述信息。
@@ -40,9 +40,9 @@ ms.locfileid: "77662495"
 Intune 是 Microsoft 的一个产品，它允许集中管理应用于一个或多个设备的 Log Analytics 工作区配置设置。 请按照以下步骤通过 Intune 配置设备：
 
 1. 登录 Intune。
-2. 导航到“**设置**” > “**连接源**”。
+2. 导航到 **"设置** > **连接源**"。
 3. 创建或编辑基于 Surface Hub 模板的策略。
-4. 导航到策略的“Azure 操作见解”部分，为策略添加 Log Analytics“工作区 ID”和“工作区密钥”。
+4. 导航到策略的“Azure 操作见解”部分，为策略添加 Log Analytics“工作区 ID”** 和“工作区密钥”**。
 5. 保存策略。
 6. 关联策略和相应的设备组。
 
@@ -53,15 +53,15 @@ Intune 然后会在 Log Analytics 工作区中注册设备，从而将 Log Analy
 ## <a name="connect-surface-hubs-to-azure-monitor-using-the-settings-app"></a>使用“设置”应用将 Surface Hub 连接到 Azure Monitor
 要管理 Surface Hub，需要为 Log Analytics 工作区提供工作区 ID 和工作区密钥。 可从 Azure 门户的 Log Analytics 工作区设置中获取上述信息。
 
-如果不使用 Intune 管理环境，则可以通过每个 Surface Hub 上的“设置”手动注册设备：
+如果不使用 Intune 管理环境，则可以通过每个 Surface Hub 上的“设置”手动注册设备：****
 
 1. 从 Surface Hub 打开“**设置**”。
 2. 在出现提示时，输入设备管理凭据。
-3. 单击“此设备”，并单击“监视”下面的“配置 Log Analytics 设置”。
+3. 单击“此设备”****，并单击“监视”**** 下面的“配置 Log Analytics 设置”****。
 4. 选择“**启用监视**”。
-5. 在“Log Analytics 设置”对话框中，键入 Log Analytics“工作区 ID”和“工作区密钥”。  
+5. 在“Log Analytics 设置”对话框中，键入 Log Analytics“工作区 ID”**** 和“工作区密钥”****。  
    ![设置](./media/surface-hubs/settings.png)
-6. 单击“**确定**”以完成配置。
+6. 单击 **"确定"** 以完成配置。
 
 将显示一条确认信息，告诉你是否已将配置成功应用于设备。 如果是，则会出现一条消息，注明代理已成功连接到 Azure Monitor。 然后，设备开始将数据发送到 Azure Monitor，可以查看数据并采取相应操作。
 

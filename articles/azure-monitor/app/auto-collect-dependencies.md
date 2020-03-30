@@ -7,10 +7,10 @@ ms.author: nimolnar
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: eaafe19f5112b433d50a34aa551aa84d196726a5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665810"
 ---
 # <a name="dependency-auto-collection"></a>依赖项自动收集
@@ -41,15 +41,15 @@ ms.locfileid: "77665810"
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
 | <b>应用框架</b> |  |
 | [Spring](https://spring.io/) | 3.0 |
-| [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9+<sup>*</sup> |
+| [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9€<sup>*</sup> |
 | Java Servlet | 3.1+ |
 | <b>通信库</b> |  |
-| [Apache Http 客户端](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3+<sup>†</sup> |
+| [Apache Http 客户端](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3°<sup>|</sup> |
 | <b>存储客户端</b> | |
-| [SQL Server]( https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc) | 1+<sup>†</sup> |
-| [PostgreSQL （测试版支持）](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/CHANGELOG.md#version-240-beta) | |
-| [Oracle]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1+<sup>†</sup> |
-| [MySql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1+<sup>†</sup> |
+| [SQL Server]( https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc) | 1°<sup>|</sup> |
+| [PostgreSQL（Beta 版本支持）](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/CHANGELOG.md#version-240-beta) | |
+| [甲骨文]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1°<sup>|</sup> |
+| [Mysql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1°<sup>|</sup> |
 | <b>日志记录库</b> | |
 | [Logback](https://logback.qos.ch/) | 1+ |
 | [Log4j](https://logging.apache.org/log4j/) | 1.2+ |
@@ -64,12 +64,12 @@ ms.locfileid: "77665810"
 
 | 通信库 | 版本 |
 | ------------------------|----------|
-| [HTTP](https://nodejs.org/api/http.html)、[HTTPS](https://nodejs.org/api/https.html) | 0.10+ |
+| [HTTP](https://nodejs.org/api/http.html)， [HTTPS](https://nodejs.org/api/https.html) | 0.10+ |
 | <b>存储客户端</b> | |
 | [Redis](https://www.npmjs.com/package/redis) | 2.x |
 | [MongoDb](https://www.npmjs.com/package/mongodb)；[MongoDb Core](https://www.npmjs.com/package/mongodb-core) | 2.x - 3.x |
 | [MySQL](https://www.npmjs.com/package/mysql) | 2.0.0 - 2.16.x |
-| [PostgreSql](https://www.npmjs.com/package/pg)； | 6.x - 7.x |
+| [后格雷Sql](https://www.npmjs.com/package/pg); | 6.x - 7.x |
 | [pg-pool](https://www.npmjs.com/package/pg-pool) | 1.x - 2.x |
 | <b>日志记录库</b> | |
 | [console](https://nodejs.org/api/console.html) | 0.10+ |

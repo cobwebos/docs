@@ -1,6 +1,6 @@
 ---
 title: 在客户端上插入广告 | Microsoft Docs
-description: 本文演示如何在客户端将广告插入媒体。
+description: 本文演示如何在客户端将广告插入到媒体中。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 274ee09ae98dd229b255e58261f462e322be9f89
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77565734"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在客户端上插入广告
@@ -31,11 +31,11 @@ ms.locfileid: "77565734"
 > 
 > 
 
-## <a id="insert_ads_into_media"></a>在媒体中插入广告
+## <a name="inserting-ads-into-your-media"></a><a id="insert_ads_into_media"></a>在媒体中插入广告
 Azure 媒体服务通过“Windows 媒体平台：播放器框架”提供广告插入支持。 附带广告支持的播放器框架在 Windows 8、Silverlight、Windows Phone 8 和 iOS 设备上均可用。 每个播放器框架包含演示如何实现播放器应用程序的示例代码。 可插入 media:list 中的广告有三种。
 
 * **线性** - 暂停主视频的全帧广告。
-* **非线性** - 播放主视频时显示的覆盖式广告，通常为放置在播放器内的一个徽标或其他静态图像。
+* **非线性**– 作为主视频正在播放的叠加广告，通常是放置在播放器中的徽标或其他静态图像。
 * **随播** - 在播放器之外显示的广告。
 
 广告可置于主视频时间线中的任何一个时间点。 必须告知播放器何时播放广告以及播放哪些广告。 完成该操作需使用一组标准的基于 XML 的文件：视频广告服务模板 (VAST)、数字视频多广告播放列表 (VMAP)、媒体抽象排序模板 (MAST) 和数字视频播放器广告接口定义 (VPAID)。 VAST 文件用于指定要显示哪些广告。 VMAP 文件用于指定何时播放各种广告并且包含 VAST XML。 MAST 文件是对广告进行排序的另一种方法，也可以包含 VAST XML。 VPAID 文件用于定义视频播放器与广告或广告服务器之间的接口。
@@ -276,7 +276,7 @@ VMAP 文件以 `<VMAP>` 元素开头，该元素包含一个或多个 `<AdBreak>
     </vmap:VMAP>
 ```
 
-有关 <TrackingEvents> 元素及其子元素的详细信息，请参阅http://iab.net/VMAP.pdf
+有关 <TrackingEvents> 元素及其子元素的详细信息，请参阅 http://iab.net/VMAP.pdf****
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>使用媒体摘要排序模板 (MAST) 文件
 MAST 文件允许指定定义何时显示广告的触发器。 以下是一个示例 MAST 文件，它包含前置式广告、中置式广告和后置式广告的触发器。
@@ -363,7 +363,7 @@ VPAID 是用于使可执行广告单元能够与视频播放器进行通信的 A
     </MediaFiles>
 ```
 
-可以使用 VAST 响应中 `<AdParameters>` 或 `<Linear>` 元素内的 `<NonLinear>` 元素来初始化可执行广告。 有关 `<AdParameters>` 元素的详细信息，请参阅 [VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)。 有关 VPAID API 的详细信息，请参阅 [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
+可以使用 VAST 响应中 `<Linear>` 或 `<NonLinear>` 元素内的 `<AdParameters>` 元素来初始化可执行广告。 有关 `<AdParameters>` 元素的详细信息，请参阅 [VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)。 有关 VPAID API 的详细信息，请参阅 [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>实现带有支持广告的 Windows 或 Windows Phone 8 播放器
 Microsoft Media Platform：适用于 Windows 8 和 Windows Phone 8 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架实现视频播放器应用程序。 可以从[适用于 Windows 8 和 Windows Phone 8 的播放器框架](https://playerframework.codeplex.com)下载播放器框架和示例。
@@ -586,7 +586,7 @@ ProgrammaticAdPage.xaml.cs 文件创建 AdHandlerPlugin，添加 TimelineMarker 
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>实现带有广告支持的 iOS 视频播放器
-Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架实现视频播放器应用程序。 可以从 [Azure 媒体播放器框架](https://github.com/Azure/azure-media-player-framework)下载播放器框架和示例。 GitHub 页面包含一个 Wiki 链接，其中包含有关播放器框架的其他信息和播放机示例简介： [Azure Media Player wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
+Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架实现视频播放器应用程序。 可以从 [Azure 媒体播放器框架](https://github.com/Azure/azure-media-player-framework)下载播放器框架和示例。 GitHub 页面有一个指向 Wiki 的链接，其中包含有关玩家框架的其他信息和玩家示例简介[：Azure 媒体播放器 Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
 
 ### <a name="scheduling-ads-with-vmap"></a>使用 VMAP 安排广告
 以下示例演示如何使用 VMAP 文件安排广告。

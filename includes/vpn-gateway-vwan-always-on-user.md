@@ -8,24 +8,22 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7d2248360e499aab79459d0be549da3d8baa79ab
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370950"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500198"
 ---
-## <a name="configure-a-user-tunnel"></a>配置用户隧道
+1. 如此[点到站点 VPN 客户端](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)文章中所述，在 Windows 10 客户端上安装客户端证书。 该证书必须位于当前用户存储中。
 
-1. 在 Windows 10 客户端上安装客户端证书，如此[点到站点 VPN 客户端一](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)文中所示。 证书必须位于当前用户存储区中。
-
-1. 按照[配置 Windows 10 客户端 ALWAYS ON vpn 连接](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)中的说明，通过 PowerShell、Configuration Manager 或 Intune 配置 Always On VPN 客户端。
+1. 按[配置 Windows 10 客户端 Always On VPN 连接](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)中的说明操作，通过 PowerShell、Configuration Manager 或 Intune 配置 Always On VPN 客户端。
 
 ### <a name="example-configuration-for-the-user-tunnel"></a>用户隧道的示例配置
 
-配置虚拟网络网关并在 Windows 10 客户端上的本地计算机存储中安装客户端证书后，请使用以下示例配置客户端设备隧道：
+配置虚拟网关并在 Windows 10 客户端的本地计算机存储中安装客户端证书后，请根据以下示例配置客户端设备隧道：
 
-1. 复制以下文本，并将其另存为*usercert*：
+1. 复制以下文本，将其另存为 *usercert.ps1*：
 
    ```
    Param(
@@ -77,7 +75,7 @@ ms.locfileid: "79370950"
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. 复制以下文本，并将其作为*VPNProfile*保存在与*usercert*相同的文件夹中。 编辑以下文本以匹配你的环境：
+1. 复制以下文本，在 *usercert.ps1* 所在的文件夹中将其另存为 *VPNProfile.xml*。 编辑以下文本，使之与环境匹配：
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
@@ -123,13 +121,13 @@ ms.locfileid: "79370950"
    ```
 1. 以管理员身份运行 PowerShell。
 
-1. 在 PowerShell 中，切换到*usercert*和*VPNProfile*所在的文件夹，并运行以下命令：
+1. 在 PowerShell 中切换到 *usercert.ps1* 和 *VPNProfile.xml* 所在的文件夹，然后运行以下命令：
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-vwan-always-on-user/p2s2.jpg)
-1. 在 " **VPN 设置**" 下，查找 " **UserTest** " 条目，然后选择 "**连接**"。
+1. 在“VPN 设置”下查找“UserTest”条目，然后选择“连接”。************
 
-1. 如果连接成功，则已成功配置 Always On 用户隧道。
+1. 如果连接成功，则表明已成功配置 Always On 用户隧道。

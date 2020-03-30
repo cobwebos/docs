@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
 ms.openlocfilehash: a2765aaf36aa5f7e541e0ee7fb3178246d2cca5d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659889"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>使用 Azure PowerShell 创建 Log Analytics 工作区
@@ -19,7 +19,7 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 
 * 订阅中的 Azure 资源  
 * 受 System Center Operations Manager 监视的本地计算机  
-* Configuration Manager 的设备集合  
+* Configuration Manager 中的设备集合  
 * Azure 存储中的诊断或日志数据  
  
 对于其他源，如环境中的 Azure VM 和 Windows VM 或 Linux VM，请参阅以下主题：
@@ -28,7 +28,7 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 * [从混合 Linux 计算机收集数据](../learn/quick-collect-linux-computer.md)
 * [从混合 Windows 计算机收集数据](quick-collect-windows-computer.md)
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -37,9 +37,9 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell Az 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-a-workspace"></a>创建工作区
-使用[AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)创建工作区。 下面的示例使用本地计算机中的资源管理器模板在*eastus*位置创建一个工作区。 JSON 模板在经过配置后，只提示你输入工作区的名称，并为其他参数指定默认值，这些参数将会用作环境中的标准配置。 
+使用 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 创建工作区。 下面的示例使用本地计算机中的资源管理器模板在*东部*位置创建工作区。 JSON 模板在经过配置后，只提示你输入工作区的名称，并为其他参数指定默认值，这些参数将会用作环境中的标准配置。 
 
-有关支持的区域的信息，请参阅[中提供 Log Analytics 区域](https://azure.microsoft.com/regions/services/)，并从 "**搜索产品**" 字段搜索 Azure Monitor。 
+若要了解支持的区域，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)，然后在“搜索产品”字段中搜索 Azure Monitor。**** 
 
 以下参数设置默认值：
 
@@ -110,7 +110,7 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 
 2. 按要求编辑模板。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)参考，了解支持的属性和值。 
 3. 在本地文件夹中将此文件另存为 **deploylaworkspacetemplate.json**。   
-4. 已做好部署此模板的准备。 在包含模板的文件夹中使用以下命令。 如果系统提示输入工作区名称，请提供在所有 Azure 订阅中全局唯一的名称。
+4. 已做好部署此模板的准备。 在包含模板的文件夹中使用以下命令。 当系统提示你输入工作区名称时，请提供在所有 Azure 订阅中全局唯一的名称。
 
     ```powershell
         New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
@@ -124,6 +124,6 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
 现在，你已有可用的工作区，可以配置监视遥测收集、运行日志搜索分析该数据，以及添加管理解决方案以提供其他数据和分析见解。  
 
 * 若要启用通过 Azure 诊断或 Azure 存储从 Azure 资源收集数据，请参阅[在 Azure Monitor 中收集要使用的 Azure 服务日志和指标](../platform/collect-azure-metrics-logs.md)。  
-* [将 System Center Operations Manager 添加为数据源](../platform/om-agents.md)以从报告 Operations Manager 管理组的代理收集数据并将其存储在 Log Analytics 工作区中。  
+* 将[系统中心操作管理器添加为数据源，](../platform/om-agents.md)以便从报告操作管理器管理组的代理收集数据并将其存储在日志分析工作区中。  
 * 连接 [Configuration Manager](../platform/collect-sccm.md) 以导入作为层次结构中集合成员的计算机。  
 * 查看可用的[监视解决方案](../insights/solutions.md)以及如何从工作区添加或删除解决方案。

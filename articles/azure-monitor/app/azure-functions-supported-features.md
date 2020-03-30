@@ -1,5 +1,5 @@
 ---
-title: Azure 应用程序 Insights-Azure Functions 支持的功能
+title: Azure Application Insights - Azure Functions 支持的功能
 description: 适用于 Azure Functions 的 Application Insights 支持功能
 ms.topic: reference
 author: TimothyMothra
@@ -7,10 +7,10 @@ ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655644"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>适用于 Azure Functions 的 Application Insights 支持功能
@@ -19,11 +19,11 @@ Azure Functions 提供与 Application Insights 的[内置集成](../../azure-fun
 
 有关函数运行时版本的详细信息，请参阅[此处](../../azure-functions/functions-versions.md)。
 
-有关 Application Insights 的兼容版本的详细信息，请参阅[依赖关系](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)。
+有关兼容版本的应用程序见解的详细信息，请参阅[依赖项](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)。
 
 ## <a name="supported-features"></a>支持的功能
 
-| Azure Functions                       | V1                | V2 & V3   | 
+| Azure Functions                       | V1                | V2 和 V3   | 
 |-----------------------------------    |---------------    |------------------ |
 | | | | 
 | **自动集合**        |                 |                   |               
@@ -36,13 +36,13 @@ Azure Functions 提供与 Application Insights 的[内置集成](../../azure-fun
 | &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | 是               | 
 | &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | 是               | 
 | | | | 
-| **受支持的功能**                |                   |                   |               
+| **支持的功能**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | 是             | 是               | 
 | &nbsp;&nbsp;&nbsp;&mdash; 安全控制通道|                 | 是               | 
 | &bull; 采样                     | 是             | 是               | 
 | &bull; 检测信号                   |                 | 是               | 
 | | | | 
-| **关联性**                       |                   |                   |               
+| **相关性**                       |                   |                   |               
 | &bull; ServiceBus                     |                   | 是               | 
 | &bull; EventHub                       |                   | 是               | 
 | | | | 
@@ -63,9 +63,9 @@ Azure Functions 提供与 Application Insights 的[内置集成](../../azure-fun
 
 Azure Functions 默认在其配置中启用采样功能。 有关详细信息，请参阅[配置采样](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)。
 
-如果你的项目依赖于 Application Insights SDK 执行手动遥测跟踪，则如果你的采样配置不同于函数的采样配置，则可能会遇到奇怪的行为。 
+如果你的项目依赖 Application Insights SDK 进行手动遥测跟踪，则当采样配置与 Functions 的采样配置不同时，可能会遇到奇怪的行为。 
 
-建议使用与函数相同的配置。 使用**函数 v2**，你可以在构造函数中使用依赖关系注入来获取相同的配置：
+我们建议使用与 Functions 相同的配置。 使用 **Functions v2**，可以在构造函数中使用依赖注入获得相同的配置：
 
 ```csharp
 using Microsoft.ApplicationInsights;

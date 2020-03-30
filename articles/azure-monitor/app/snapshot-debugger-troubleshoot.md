@@ -1,19 +1,19 @@
 ---
-title: 排查 Azure 应用程序 Insights Snapshot Debugger
-description: 本文介绍了疑难解答步骤和信息，以帮助在启用或使用 Application Insights Snapshot Debugger 时遇到问题的开发人员。
+title: 排除 Azure 应用程序见解快照调试器
+description: 本文提供故障排除步骤和信息，帮助开发人员解决在启用或使用 Application Insights 快照调试器时遇到的难题。
 ms.topic: conceptual
 author: brahmnes
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671403"
 ---
-# <a id="troubleshooting"></a>排查 Application Insights Snapshot Debugger 或查看快照时的问题
-如果为应用程序启用了 Application Insights Snapshot Debugger，但没有看到用于例外的快照，则可以使用这些说明进行故障排除。 可能有许多不同的原因导致不生成快照。 可以运行快照运行状况检查来确定可能的一些常见原因。
+# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 排查启用 Application Insights Snapshot Debugger 或查看快照时遇到的问题
+如果为应用程序启用了 Application Insights 快照调试器，但未看到出现异常的快照，则可以使用以下说明进行故障排除。 可能有许多不同的原因导致未生成快照。 可以运行快照运行状况检查以确定一些可能的常见原因。
 
 ## <a name="use-the-snapshot-health-check"></a>使用快照运行状况检查
 几个常见问题会导致不显示“打开调试快照”。 例如，使用过时的快照收集器；达到每日上传限制；或者可能快照只是需要很长时间上传。 使用“快照运行状况检查”解决常见问题。
@@ -32,23 +32,23 @@ ms.locfileid: "77671403"
 
 请确保在发布的应用程序中使用正确的检测密钥。 通常，从 ApplicationInsights.config 文件中读取检测密钥。 请验证该值是否与在门户中看到的 Application Insights 资源的检测密钥相同。
 
-## <a name="preview-versions-of-net-core"></a>.NET Core 的预览版本
-如果应用程序使用 .NET Core 的预览版本，并且通过门户中的 " [Application Insights" 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用了 Snapshot Debugger，则 Snapshot Debugger 可能无法启动。 按照 "[启用其他环境的 Snapshot Debugger](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) " 中的说明操作，[将 microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包***添加***到应用程序，并通过 " [Application Insights" 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用。
+## <a name="preview-versions-of-net-core"></a>.NET Core 预览版
+如果应用程序使用 .NET Core 预览版，并已通过门户中的 [Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用了 Snapshot Debugger，则 Snapshot Debugger 可能无法启动。 按照[为其他环境启用 Snapshot Debugger](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) 中的说明首先将 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包包含在应用程序中，***另外***通过 [Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用。
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>升级到最新版本的 NuGet 包
 
-如果 Snapshot Debugger 是通过[门户中](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)的 "Application Insights" 窗格启用的，则应用程序应已在运行最新的 NuGet 包。 如果通过包括[Applicationinsights.config Microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) nuget 包启用了 Snapshot Debugger，请使用 Visual Studio 的 Nuget 包管理器，以确保使用最新版本的 applicationinsights.config microsoft.applicationinsights.snapshotcollector。 可以在 https://github.com/Microsoft/ApplicationInsights-Home/issues/167 中找到发行说明
+如果已通过[门户中的 Application Insights 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)启用了快照调试器，那么应用程序应该已经在运行最新的 NuGet 包。 如果通过包含 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包启用了快照调试器，请使用 Visual Studio 的 NuGet 包管理器确保使用的是最新版本的 Microsoft.ApplicationInsights.SnapshotCollector。 可以在 https://github.com/Microsoft/ApplicationInsights-Home/issues/167 中找到发行说明
 
 ## <a name="check-the-uploader-logs"></a>检查上传程序日志
 
 创建快照后，将在磁盘上创建一个小型转储文件 (.dmp)。 一个单独的上传程序进程会创建该小型转储文件，并将其连同所有关联的 PDB 一起上传到 Application Insights Snapshot Debugger 存储。 成功上传小型转储后，会将其从磁盘中删除。 上传程序进程的日志文件会保留在磁盘上。 在应用服务环境中，可在 `D:\Home\LogFiles` 中找到这些日志。 通过应用服务的 Kudu 管理站点查找这些日志文件。
 
 1. 在 Azure 门户中，打开应用服务应用程序。
-2. 单击“高级工具”，或搜索 **Kudu**。
-3. 单击“开始”。
-4. 在“调试控制台”下拉列表框中，选择“CMD”。
-5. 单击“日志文件”。
+2. 单击“高级工具”****，或搜索 **Kudu**。
+3. 单击“转到”****。
+4. 在“调试控制台”下拉列表框中，选择“CMD”********。
+5. 单击“日志文件”****。
 
 应至少看到一个名称以 `Uploader_` 或 `SnapshotUploader_` 开头，且扩展名为 `.log` 的文件。 单击相应图标，下载任意日志文件或在浏览器中打开文件。
 文件名包括可标识应用服务实例的唯一后缀。 如果应用服务实例托管于多台计算机上，则每台计算机都有单独的日志文件。 当上传程序检测到新的小型转储文件时，会将其记录在日志文件中。 下面是成功的快照和上传的示例：
@@ -97,7 +97,7 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
     DateTime=2018-03-09T01:47:19.4614027Z
 ```
 
-对于未托管于应用服务中的应用程序，上传程序日志与小型转储位于同一文件夹：`%TEMP%\Dumps\<ikey>`（其中 `<ikey>` 是检测密钥）。
+对于未__ 托管于应用服务中的应用程序，上传程序日志与小型转储位于同一文件夹：`%TEMP%\Dumps\<ikey>`（其中 `<ikey>` 是检测密钥）。
 
 ## <a name="troubleshooting-cloud-services"></a>云服务故障排除
 对于云服务中的角色而言，默认临时文件夹可能太小，无法容纳小型转储文件，从而导致丢失快照。
@@ -161,13 +161,13 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 - APPDATA
 - TEMP
 
-如果找不到合适的文件夹，则快照收集器将报告一个错误，指出“找不到合适的影子副本文件夹。”
+如果找不到合适的文件夹，则快照收集器将报告一个错误，指出“找不到合适的影子副本文件夹。”__
 
 如果复制失败，则快照收集器会报告一个 `ShadowCopyFailed` 错误。
 
 如果无法启动上传程序，则快照收集器会报告一个 `UploaderCannotStartFromShadowCopy` 错误。 消息的正文通常包含 `System.UnauthorizedAccessException`。 发生此错误通常是因为应用程序正在权限降低的帐户下运行。 此帐户有权向影子副本文件夹进行写入，但无权执行代码。
 
-因为这些错误通常发生在启动期间，所以它们后面通常会跟有一个 `ExceptionDuringConnect` 错误，指出“上传程序无法启动。”
+因为这些错误通常发生在启动期间，所以它们后面通常会跟有一个 `ExceptionDuringConnect` 错误，指出“上传程序无法启动。”__
 
 若要解决这些错误，可以通过 `ShadowCopyFolder` 配置选项手动指定影子副本文件夹。 例如，使用 ApplicationInsights.config：
 
@@ -196,10 +196,10 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 
 ## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>使用 Application Insights 搜索查找附带快照的异常
 
-创建快照后，出现的异常标记有快照 ID。 向 Application Insights 报告异常遥测时，该快照 ID 作为自定义属性包含在内。 通过 Application Insights 中的“搜索”，可借助 `ai.snapshot.id` 自定义属性找到所有遥测。
+创建快照后，出现的异常标记有快照 ID。 向 Application Insights 报告异常遥测时，该快照 ID 作为自定义属性包含在内。 通过 Application Insights 中的“搜索”****，可借助 `ai.snapshot.id` 自定义属性找到所有遥测。
 
 1. 在 Azure 门户中浏览到 Application Insights 资源。
-2. 单击 **“搜索”** 。
+2. 单击“搜索”****。
 3. 在“搜索”文本框中输入 `ai.snapshot.id`，然后按 Enter。
 
 ![在门户中使用快照 ID 搜索遥测](./media/snapshot-debugger/search-snapshot-portal.png)
@@ -216,4 +216,4 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>编辑网络代理或防火墙规则
 
-如果应用程序通过代理或防火墙连接到 Internet，则可能需要编辑规则以允许应用程序与 Snapshot Debugger 服务进行通信。 Snapshot Debugger 使用的 Ip 包含在 Azure Monitor 服务标记中。
+如果应用程序通过代理或防火墙连接到 Internet，则可能需要编辑规则以允许应用程序与 Snapshot Debugger 服务进行通信。 Snapshot Debugger 使用的 IP 包含在 Azure Monitor 服务标记中。

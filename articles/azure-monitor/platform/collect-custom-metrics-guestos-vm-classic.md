@@ -8,33 +8,33 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
 ms.openlocfilehash: 65bb1a3915ece384974da12b4e7a1ad0c1e08133
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655793"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>将来宾 OS 指标发送到 Windows 虚拟机的 Azure Monitor 指标数据库（经典）
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>将来宾 OS 指标发送到适用于 Windows 虚拟机（经典）的 Azure Monitor 指标数据库
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Monitor [诊断扩展](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)（称为“WAD”或“诊断”）支持从作为虚拟机、云服务或 Service Fabric 群集的一部分运行的来宾操作系统（来宾 OS）中收集指标和日志。 该扩展可将遥测数据发送到[许多不同的位置](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)。
 
-本文介绍将 Windows 虚拟机（经典）的来宾 OS 性能指标发送到 Azure Monitor 指标数据库的过程。 自诊断版本 1.11 版起，可将指标直接写入已收集标准平台指标的 Azure Monitor 指标存储。 
+本文介绍了将 Windows 虚拟机的来宾 OS 性能指标（经典）发送到 Azure 监视器指标数据库的过程。 自诊断版本 1.11 版起，可将指标直接写入已收集标准平台指标的 Azure Monitor 指标存储。 
 
 将它们存储在此位置可以访问在处理平台指标时所执行的相同操作。 操作包括近实时警报、图表绘制、路由、从 REST API 访问，等等。 在过去，诊断扩展将数据写入 Azure 存储而不是 Azure Monitor 数据存储。 
 
 本文概述的过程仅适用于运行 Windows 操作系统的经典虚拟机。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-- 你必须是 Azure 订阅的[服务管理员或共同管理员](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 
+- 您必须是 Azure 订阅上的[服务管理员或共同管理员](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 
 
-- 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。 
+- 您的订阅必须注册到[Microsoft.Insights.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) 
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
 
-- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
+- 您的 VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)。
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>创建经典虚拟机和存储帐户
 
@@ -43,7 +43,7 @@ Azure Monitor [诊断扩展](https://docs.microsoft.com/azure/monitoring-and-dia
 
 1. 创建此 VM 时，请选择创建新经典存储帐户的选项。 我们会在后面的步骤中使用此存储帐户。
 
-1. 在 Azure 门户中，转到“存储帐户”资源边栏选项卡。 选择“密钥”，并记下存储帐户名称和存储帐户密钥。 在后续步骤中需要使用此信息。
+1. 在 Azure 门户中，转到“存储帐户”资源边栏选项卡。**** 选择“密钥”，并记下存储帐户名称和存储帐户密钥。**** 在后续步骤中需要使用此信息。
    ![存储访问密钥](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
 
 ## <a name="create-a-service-principal"></a>创建服务主体
@@ -188,17 +188,17 @@ Azure Monitor [诊断扩展](https://docs.microsoft.com/azure/monitoring-and-dia
 
 1.  转到 Azure 门户。 
 
-1.  在左侧菜单中，选择“监视”。
+1.  在左侧菜单上，选择 **"监视器"。**
 
-1.  在“监视”边栏选项卡上选择“指标”。
+1.  在“监视”边栏选项卡上选择“指标”********。
 
     ![导航指标](./media/collect-custom-metrics-guestos-vm-classic/navigate-metrics.png)
 
 1. 在资源下拉菜单中，选择你的经典 VM。
 
-1. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”。
+1. 在命名空间下拉菜单中，选择**azure.vm.windows.guest**.
 
-1. 在指标下拉菜单中，选择“内存\已提交的使用字节数”。
+1. 在指标下拉菜单中，选择 **"正在使用的内存_已提交字节**"。
    ![绘制指标图表](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
 
 

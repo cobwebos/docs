@@ -1,35 +1,35 @@
 ---
-title: Java web 应用性能监视-Azure 应用程序 Insights
+title: Java Web 应用性能监视 - Azure Application Insights
 description: 使用 Application Insights 监视 Java 网站的扩展性能和使用情况。
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.openlocfilehash: b29618179d22eac97a07bf41906465aba1fd7929
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657021"
 ---
-# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>在 Java web 应用中监视依赖项、捕获的异常和方法执行时间
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
 
 
-如果已[使用 Application Insights 检测了 java web 应用][java]，则可以使用 Java 代理获得更深入的见解，无需进行任何代码更改：
+如果已[使用 Application Insights 检测了 Java Web 应用][java]，则无需更改任何代码，就能使用 Java 代理来获取更深入的见解：
 
 * **依赖项：** 有关应用程序对其他组件的调用的数据，包括：
-  * 捕获通过 Apache HttpClient、OkHttp 和 `java.net.HttpURLConnection` 发出的**传出 HTTP 调用**。
-  * 捕获通过 Jedis 客户端发出的**Redis 调用**。
-  * **JDBC 查询**-对于 MySQL 和 PostgreSQL，如果调用花费的时间超过10秒，则代理将报告查询计划。
+  * 捕获通过 Apache HttpClient、OkHttp 和 `java.net.HttpURLConnection` 进行的**传出 HTTP 调用**。
+  * 通过绝地客户端拨打**的雷迪斯电话**被捕获。
+  * **JDBC 查询** - 对于 MySQL 和 PostgreSQL，如果调用花费的时间长于 10 秒，代理将报告查询计划。
 
-* **应用程序日志记录：** 捕获应用程序日志，并将其与 HTTP 请求和其他遥测数据关联
-  * **Log4j 1。2**
-  * **Log4j2.xml**
+* **应用程序日志记录：** 捕获应用程序日志并将其与 HTTP 请求和其他遥测数据相关联
+  * **Log4j 1.2**
+  * **Log4j2**
   * **Logback**
 
-* **更好的操作命名：** （用于在门户中的请求聚合）
-  * 基于 `@RequestMapping`的**弹簧**。
-  * **Jax-rs-** 基于 `@Path`。 
+* **更好的操作命名：**（用于在门户中对请求进行聚合）
+  * **Spring** - 基于 `@RequestMapping`。
+  * **JAX-RS** - 基于 `@Path`。 
 
-若要使用 Java 代理，请在服务器上安装该代理。 必须通过[Application Insights JAVA SDK][java]来检测你的 web 应用。 
+若要使用 Java 代理，请在服务器上安装该代理。 必须使用 [Application Insights Java SDK][java] 检测 Web 应用。 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>安装适用于 Java 的 Application Insights 代理
 1. 在运行 Java 服务器的计算机上[下载该代理](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)。 请确保下载与 Application Insights Java SDK 核心和 Web 程序包版本相同的 Java 代理版本。
@@ -75,23 +75,23 @@ ms.locfileid: "77657021"
 </ApplicationInsightsAgent>
 ```
 
-## <a name="additional-config-spring-boot"></a>其他配置（弹簧 Boot）
+## <a name="additional-config-spring-boot"></a>其他配置 (Spring Boot)
 
 `java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
 
-对于 "Azure 应用服务"，请执行以下操作：
+对于 Azure 应用服务，请执行以下操作：
 
 * 选择“设置”>“应用程序设置”
 * 在“应用设置”下添加新的键/值对：
 
-键： `JAVA_OPTS` 值： `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+键：`JAVA_OPTS`值：`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
-对于最新版本的 Java 代理，请查看[此处](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)的版本。 
+有关 Java 代理的最新版本，请在[此处](https://github.com/Microsoft/ApplicationInsights-Java/releases
+)查看版本。 
 
-代理必须打包为项目中的资源，以使其在 D：/home/site/wwwroot/目录中结束。 可以通过转到 "**开发工具**" > "**高级工具**" > **调试控制台**并检查站点目录的内容来确认代理是否位于正确的应用服务目录中。    
+代理必须打包为项目中的资源，以便它最终位于 D:/home/site/wwwroot/ 目录中。 您可以通过访问**开发工具** > **高级工具** > **调试控制台**并检查网站目录的内容来确认代理位于正确的应用服务目录中。    
 
-* 保存设置并重新启动应用。 （这些步骤仅适用于在 Windows 上运行的应用服务。）
+* 保存设置并重启应用。 （这些步骤仅适用于 Windows 上运行的应用程序服务。）
 
 > [!NOTE]
 > AI-Agent.xml 和代理 jar 文件应位于同一文件夹中。 它们通常一起放在该项目的 `/resources` 文件夹中。  
@@ -113,10 +113,10 @@ ms.locfileid: "77657021"
 
 理想情况下，所有服务都已更新为支持 W3C 协议的较新版 SDK 时，就会出现这种情况。 强烈建议尽快迁移到提供 W3C 支持的新版 SDK。
 
-请确保**传入[和传出（代理）配置完全相同](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)** 。
+请确保[传入](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)和传出（代理）配置完全相同****。
 
 ## <a name="view-the-data"></a>查看数据
-在 Application Insights 资源中，聚合的远程依赖项和方法执行时间显示[在 "性能" 磁贴下][metrics]。
+在 Application Insights 资源中，聚合的远程依赖项和方法执行时间显示在[“性能”磁贴下][metrics]。
 
 若要搜索依赖项、异常和方法报告的单个实例，请打开[搜索][diagnostic]。
 

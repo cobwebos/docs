@@ -3,12 +3,12 @@ title: 模板中的输出
 description: 介绍如何在 Azure 资源管理器模板中定义输出值。
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: ec96b45cdc5ccf488d46c2d8da03caf16d002dfa
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622837"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460018"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的输出
 
@@ -29,7 +29,7 @@ ms.locfileid: "77622837"
 
 ## <a name="conditional-output"></a>条件输出
 
-在 "输出" 部分中，您可以有条件地返回值。 通常，在有[条件地部署](conditional-resource-deployment.md)资源时，将在输出中使用条件。 下面的示例演示如何根据是否部署了新的 IP 地址，有条件地返回该 IP 地址的资源 ID：
+在“输出”部分中，可以有条件地返回值。 通常，[有条件地部署](conditional-resource-deployment.md)资源时，可以在输出中使用条件。 以下示例展示了如何根据是否部署了新的公共 IP 地址，有条件地返回公共 IP 地址的资源 ID：
 
 ```json
 "outputs": {
@@ -43,9 +43,9 @@ ms.locfileid: "77622837"
 
 有关条件输出的简单示例，请参阅[条件输出模板](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json)。
 
-## <a name="dynamic-number-of-outputs"></a>动态输出数量
+## <a name="dynamic-number-of-outputs"></a>动态输出数
 
-在某些情况下，在创建模板时，您不知道需要返回的值的实例数。 您可以使用**copy**元素返回值的可变数量。
+在某些情况下，您不知道创建模板时需要返回的值的实例数。 可以使用**复制**元素返回可变值数。
 
 ```json
 "outputs": {
@@ -59,11 +59,11 @@ ms.locfileid: "77622837"
 }
 ```
 
-有关详细信息，请参阅[在 Azure 资源管理器模板中输出迭代](copy-outputs.md)。
+有关详细信息，请参阅[Azure 资源管理器模板中的输出迭代](copy-outputs.md)。
 
 ## <a name="linked-templates"></a>链接模板
 
-若要从链接模板中检索输出值，请使用父模板中的[reference](template-functions-resource.md#reference)函数。 父模板中的语法为：
+若要从链接模板中检索输出值，请在父模板中使用 [reference](template-functions-resource.md#reference) 函数。 父模板中的语法为：
 
 ```json
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
@@ -71,7 +71,7 @@ ms.locfileid: "77622837"
 
 从链接模板获取输出属性时，属性名称不能包含短划线。
 
-下面的示例演示如何通过从链接模板中检索值来设置负载均衡器上的 IP 地址。
+以下示例演示如何通过从链接模板检索值，在负载均衡器上设置 IP 地址。
 
 ```json
 "publicIPAddress": {
@@ -79,15 +79,15 @@ ms.locfileid: "77622837"
 }
 ```
 
-不能在`reference`嵌套模板[的 outputs 节中使用 ](linked-templates.md#nested-template) 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
+不能在[嵌套模板](linked-templates.md#nested-template)的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
 
 ## <a name="get-output-values"></a>获取输出值
 
-部署成功后，会在部署结果中自动返回输出值。
+部署成功时，将在部署结果中自动返回输出值。
 
 若要从部署历史记录中获取输出值，可以使用脚本。
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -98,7 +98,7 @@ ms.locfileid: "77622837"
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-az group deployment show \
+az deployment group show \
   -g <resource-group-name> \
   -n <deployment-name> \
   --query properties.outputs.resourceID.value
@@ -108,9 +108,9 @@ az group deployment show \
 
 ## <a name="example-templates"></a>示例模板
 
-下面的示例演示使用输出的方案。
+以下示例演示了使用输出的方案。
 
-|模板  |说明  |
+|模板  |描述  |
 |---------|---------|
 |[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 创建复杂变量，并输出这些值。 不部署任何资源。 |
 |[公共 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | 创建公共 IP 地址并输出资源 ID。 |
@@ -118,4 +118,4 @@ az group deployment show \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关输出的可用属性，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
+* 若要了解输出的可用属性，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 884d10ce1bc5e6b710c849d0be1cb9165caac4c5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 48a72b5ba3819712b9e1d2536ae2dd3a06eaf3f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706095"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238817"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
 
@@ -27,9 +27,9 @@ ms.locfileid: "74706095"
 
 ![显示通过连接器将数据从 IoT 中心传送到 Kafka 的图像](./media/apache-kafka-connector-iot-hub/iot-hub-kafka-connector-hdinsight.png)
 
-有关 Connect API 的详细信息，请参阅 [https://kafka.apache.org/documentation/#connect](https://kafka.apache.org/documentation/#connect)。
+有关连接 API 的详细信息，请参阅[https://kafka.apache.org/documentation/#connect](https://kafka.apache.org/documentation/#connect)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * HDInsight 上的 Apache Kafka 群集。 有关详细信息，请参阅 [Kafka on HDInsight 快速入门](apache-kafka-get-started.md)文档。
 
@@ -37,25 +37,25 @@ ms.locfileid: "74706095"
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* Azure IoT 中心和设备。 本文介绍[如何使用 Connect Raspberry Pi online 模拟器连接到 Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started)。
+* Azure IoT 中心和设备。 对于本文中的情况，请考虑[将 Raspberry Pi 联机模拟器连接到 Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started)。
 
 * [Scala 生成工具](https://www.scala-sbt.org/)。
 
-## <a name="build-the-connector"></a>构建连接器
+## <a name="build-the-connector"></a>生成连接器
 
-1. 将连接器的源从[https://github.com/Azure/toketi-kafka-connect-iothub/](https://github.com/Azure/toketi-kafka-connect-iothub/)下载到本地环境。
+1. 将连接器的源从[https://github.com/Azure/toketi-kafka-connect-iothub/](https://github.com/Azure/toketi-kafka-connect-iothub/)本地环境下载到本地环境。
 
-2. 在命令提示符下，导航到 `toketi-kafka-connect-iothub-master` 目录。 然后使用以下命令生成和打包项目：
+2. 在命令提示符中导航到 `toketi-kafka-connect-iothub-master` 目录。 然后使用以下命令生成并打包项目：
 
     ```cmd
     sbt assembly
     ```
 
-    生成需要几分钟才能完成。 命令在项目的 `toketi-kafka-connect-iothub-master\target\scala-2.11` 目录中创建一个名为 `kafka-connect-iothub-assembly_2.11-0.7.0.jar` 的文件。
+    该生成可能需要几分钟时间才能完成。 使用此命令在项目的 `toketi-kafka-connect-iothub-master\target\scala-2.11` 目录中创建名为 `kafka-connect-iothub-assembly_2.11-0.7.0.jar` 的文件。
 
 ## <a name="install-the-connector"></a>安装连接器
 
-1. 将 .jar 文件上传到 Kafka on HDInsight 群集的边缘节点。 将 `CLUSTERNAME` 替换为群集的实际名称，以编辑以下命令。 下面使用 SSH 用户帐户和[边缘节点](../hdinsight-apps-use-edge-node.md#access-an-edge-node)名称的默认值，并根据需要进行修改。
+1. 将 .jar 文件上传到 Kafka on HDInsight 群集的边缘节点。 编辑以下命令，将 `CLUSTERNAME` 替换为自己的群集名称。 下面使用 SSH 用户帐户的默认值和[边缘节点](../hdinsight-apps-use-edge-node.md#access-an-edge-node)的名称，可根据需要进行修改。
 
     ```cmd
     scp kafka-connect-iothub-assembly*.jar sshuser@new-edgenode.CLUSTERNAME-ssh.azurehdinsight.net:
@@ -73,11 +73,11 @@ ms.locfileid: "74706095"
     sudo mv kafka-connect-iothub-assembly*.jar /usr/hdp/current/kafka-broker/libs/
     ```
 
-使 SSH 连接保持活动状态，以执行剩余的步骤。
+使 SSH 连接保持活动状态，以执行剩余步骤。
 
 ## <a name="configure-apache-kafka"></a>配置 Apache Kafka
 
-在 SSH 连接到边缘节点后，使用以下步骤将 Kafka 配置为在独立模式下运行连接器：
+与边缘节点建立 SSH 连接后，使用以下步骤将 Kafka 配置为在独立模式下运行连接器：
 
 1. 设置密码变量。 将 PASSWORD 替换为群集登录密码，然后输入以下命令：
 
@@ -85,7 +85,7 @@ ms.locfileid: "74706095"
     export password='PASSWORD'
     ```
 
-1. 安装[jq](https://stedolan.github.io/jq/)实用程序。 jq 可以更轻松地处理从 Ambari 查询返回的 JSON 文档。 输入以下命令：
+1. 安装 [jq](https://stedolan.github.io/jq/) 实用工具。 使用 jq 可以更轻松地处理 Ambari 查询返回的 JSON 文档。 输入以下命令：
 
     ```bash
     sudo apt -y install jq
@@ -100,11 +100,11 @@ ms.locfileid: "74706095"
     echo $KAFKABROKERS
     ```
 
-    复制值供以后使用。 返回的值类似于下文：
+    复制这些值供稍后使用。 返回的值类似于下文：
 
     `wn0-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092,wn1-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092`
 
-1. 获取 Apache Zookeeper 节点的地址。 群集中有多个 Zookeeper 节点，但只需引用其中的一到两个。 使用以下命令将地址存储在变量 `KAFKAZKHOSTS`中：
+1. 获取 Apache Zookeeper 节点的地址。 群集中有多个 Zookeeper 节点，但只需引用其中的一到两个。 使用以下变量存储变量 `KAFKAZKHOSTS` 中的地址：
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin:$password -G http://headnodehost:8080/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
@@ -120,10 +120,10 @@ ms.locfileid: "74706095"
 
     |当前值 |新值 | 注释 |
     |---|---|---|
-    |`bootstrap.servers=localhost:9092`|将 `localhost:9092` 值替换为上一步中的代理主机|配置边缘节点的独立配置以查找 Kafka 代理。|
-    |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|做出此项更改后，可以使用 Kafka 随附的控制台生成方执行测试。 对于其他生产方和使用方，可能需要不同的转换器。 有关使用其他转换器值的信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。|
+    |`bootstrap.servers=localhost:9092`|将 `localhost:9092` 值替换为在上一步骤中获取的代理主机|将边缘节点的独立配置配置为查找 Kafka 代理。|
+    |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|做出此项更改后，可以使用 Kafka 随附的控制台生成方执行测试。 对于其他生产方和使用方，可能需要不同的转换器。 有关使用其他转换器值的信息，请参阅[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。|
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|同上。|
-    |N/A|`consumer.max.poll.records=10`|添加到文件末尾。 此项更改会将接收器连接器限制为每次处理 10 条记录，防止该连接器发生超时。 有关详细信息，请参阅[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。|
+    |空值|`consumer.max.poll.records=10`|添加到文件末尾。 此项更改会将接收器连接器限制为每次处理 10 条记录，防止该连接器发生超时。 有关详细信息，请参阅[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。|
 
 1. 要保存文件，请使用 __Ctrl + X__、__Y__，并按 __Enter__。
 
@@ -151,20 +151,20 @@ ms.locfileid: "74706095"
 
    * __在 [Azure 门户](https://portal.azure.com/)中__使用以下步骤：
 
-     1. 导航到 IoT 中心并选择“终结点”。
-     2. 在“内置终结点”中，选择“事件”。
-     3. 在“属性”中，复制以下字段的值：
+     1. 导航到 IoT 中心并选择“终结点”。____
+     2. 在“内置终结点”中，选择“事件”。________
+     3. 在“属性”中，复制以下字段的值：____
 
-         * __与事件中心兼容的名称__
-         * __与事件中心兼容的终结点__
-         * __分区__
+         * __事件中心兼容名称__
+         * __事件中心兼容终结点__
+         * __“度量值组”__
 
         > [!IMPORTANT]  
         > 门户中的终结点值可能包含本示例不需要的额外文本。 提取与模式 `sb://<randomnamespace>.servicebus.windows.net/` 匹配的文本。
 
    * __在 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ 中使用以下命令：
 
-       ```azure-cli
+       ```azurecli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
        ```
 
@@ -180,15 +180,15 @@ ms.locfileid: "74706095"
 
     * __在 [Azure 门户](https://portal.azure.com/)中__使用以下步骤：
 
-        1. 依次选择“共享访问策略”、“服务”。
-        2. 复制“主密钥”值。
-        3. 复制“连接字符串 - 主键”值。
+        1. 依次选择“共享访问策略”、“服务”。________
+        2. 复制__主键__值。
+        3. 复制“连接字符串 - 主键”____ 值。
 
     * __在 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ 中使用以下命令：
 
         1. 若要获取主密钥值，请使用以下命令：
 
-            ```azure-cli
+            ```azurecli
             az iot hub policy show --hub-name myhubname --name service --query "primaryKey"
             ```
 
@@ -196,7 +196,7 @@ ms.locfileid: "74706095"
 
         2. 若要获取 `service` 策略的连接字符串，请使用以下命令：
 
-            ```azure-cli
+            ```azurecli
             az iot hub show-connection-string --name myhubname --policy-name service --query "connectionString"
             ```
 
@@ -227,15 +227,15 @@ ms.locfileid: "74706095"
     |`IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`|将 `PLACEHOLDER` 替换为与事件中心兼容的终结点。|
     |`IotHub.AccessKeyName=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 `service`。|
     |`IotHub.AccessKeyValue=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 `service` 策略的主密钥。|
-    |`IotHub.Partitions=PLACEHOLDER`|将 `PLACEHOLDER` 替换为前面步骤中的分区数。|
+    |`IotHub.Partitions=PLACEHOLDER`|将 `PLACEHOLDER` 替换为在上一步骤中获取的分区数。|
     |`IotHub.StartTime=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 UTC 日期。 此日期是连接器开始检查消息的时间。 日期格式为 `yyyy-mm-ddThh:mm:ssZ`。|
     |`BatchSize=100`|将 `100` 替换为 `5`。 做出此项更改后，如果 IoT 中心出现五条新消息，则连接器会将消息读入 Kafka。|
 
-    有关示例配置，请参阅[Azure IoT 中心的 Kafka 连接源连接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)。
+    有关示例配置，请参阅[Azure IoT 集线器的 Kafka 连接源连接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)。
 
 1. 若要保存更改，请依次按 __Ctrl + X__、__Y__、__Enter__。
 
-有关配置连接器源的详细信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)。
+有关配置连接器源的详细信息，请参阅[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)。
 
 ## <a name="configure-the-sink-connection"></a>配置接收器连接
 
@@ -260,11 +260,11 @@ ms.locfileid: "74706095"
     |`topics=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 `iotout`。 写入 `iotout` 主题的消息将转发到 IoT 中心。|
     |`IotHub.ConnectionString=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 `service` 策略的连接字符串。|
 
-    有关示例配置，请参阅适用[于 Azure IoT 中心的 Kafka 连接接收器连接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
+    有关示例配置，请参阅[Azure IoT 集线器的 Kafka 连接接收器连接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
 
 1. 若要保存更改，请依次按 __Ctrl + X__、__Y__、__Enter__。
 
-有关配置连接器接收器的详细信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
+有关配置连接器接收器的详细信息，请参阅[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
 
 ## <a name="start-the-source-connector"></a>启动源连接器
 
@@ -276,7 +276,7 @@ ms.locfileid: "74706095"
 
     启动连接器后，将消息从设备发送到 IoT 中心。 当连接器从 IoT 中心读取消息并将其存储在 Kafka 主题时，会将信息记录到控制台：
 
-    ```text
+    ```output
     [2017-08-29 20:15:46,112] INFO Polling for data - Obtained 5 SourceRecords from IotHub (com.microsoft.azure.iot.kafka.connect.IotHubSourceTask:39)
     [2017-08-29 20:15:54,106] INFO Finished WorkerSourceTask{id=AzureIotHubConnector-0} commitOffsets successfully in 4 ms (org.apache.kafka.connect.runtime.WorkerSourceTask:356)
     ```
@@ -284,7 +284,7 @@ ms.locfileid: "74706095"
     > [!NOTE]  
     > 连接器启动时，可能会出现几条警告。 这些警告不会影响从 IoT 中心接收消息。
 
-1. 几分钟后，请使用**Ctrl + C**停止连接器。 连接器停止需要几分钟时间。
+1. 请在几分钟后按两次 Ctrl + C 停止连接器****。 停止连接器需要几分钟时间。
 
 ## <a name="start-the-sink-connector"></a>启动接收器连接器
 
@@ -296,7 +296,7 @@ ms.locfileid: "74706095"
 
 连接器运行时，会显示类似于以下文本的信息：
 
-```text
+```output
 [2017-08-30 17:49:16,150] INFO Started tasks to send 1 messages to devices. (com.microsoft.azure.iot.kafka.connect.sink.
 IotHubSinkTask:47)
 [2017-08-30 17:49:16,150] INFO WorkerSinkTask{id=AzureIotHubSinkConnector-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSinkTask:262)
@@ -309,13 +309,13 @@ IotHubSinkTask:47)
 
 若要通过连接器发送消息，请使用以下步骤：
 
-1. 打开到 Kafka 群集的*第二个*SSH 会话：
+1. 打开第二个 SSH 会话，连接到 Kafka 群集**：
 
     ```bash
     ssh sshuser@new-edgenode.CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. 获取新 ssh 会话的 Kafka 代理的地址。 将 PASSWORD 替换为群集登录密码，然后输入以下命令：
+1. 获取新 SSH 会话的 Kafka 代理的地址。 将 PASSWORD 替换为群集登录密码，然后输入以下命令：
 
     ```bash
     export password='PASSWORD'
@@ -331,7 +331,7 @@ IotHubSinkTask:47)
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list $KAFKABROKERS --topic iotout
     ```
 
-    此命令不会将你返回到正常的 Bash 提示符。 而是将键盘输入发送到 `iotout` 主题。
+    此命令不会将您返回到正常的 Bash 提示符。 而是将键盘输入发送到 `iotout` 主题。
 
 1. 若要将消息发送到设备，请将一个 JSON 文档粘贴到 `kafka-console-producer` 的 SSH 会话中。
 
@@ -342,17 +342,17 @@ IotHubSinkTask:47)
     {"messageId":"msg1","message":"Turn On","deviceId":"myDeviceId"}
     ```
 
-    [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) 中更详细地介绍了此 JSON 文档的架构。
+    此 JSON 文档的架构在 中[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)进行了更详细的描述。
 
-    如果使用模拟的 Raspberry Pi 设备，并且该设备正在运行，则设备会记录以下消息：
+    如果您使用的是模拟的树莓派设备，并且该设备正在运行，则设备将记录以下消息：
 
-    ```text
+    ```output
     Receive message: Turn On
     ```
 
     重新发送 JSON 文档，但这次请更改 `"message"` 条目的值。 设备会记录新值。
 
-有关使用接收器连接器的详细信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
+有关使用接收器连接器的详细信息，请参阅[https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

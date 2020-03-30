@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617078"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 端的监视和故障排除
@@ -35,7 +35,7 @@ ms.locfileid: "77617078"
 
 ## <a name="sap-hana-alerts"></a>SAP HANA 警报
 
-第一步是检查当前的 SAP HANA 警报日志。 在 SAP HANA Studio 中，转到“Administration Console: Alerts: Show: all alerts”（管理控制台: 警报: 显示: 所有警报）。 此选项卡会显示超出设置的最小和最大阈值的特定值（可用物理内存、CPU 利用率等）的所有相关 SAP HANA 警报。 默认情况下，检查结果每隔 15 分钟自动刷新一次。
+第一步是检查当前的 SAP HANA 警报日志。 在 SAP HANA 工作室中，转到**管理控制台：警报：显示：所有警报**。 此选项卡会显示超出设置的最小和最大阈值的特定值（可用物理内存、CPU 利用率等）的所有相关 SAP HANA 警报。 默认情况下，检查结果每隔 15 分钟自动刷新一次。
 
 ![在 SAP HANA Studio 中，转到“Administration Console: Alerts: Show: all alerts”（管理控制台: 警报: 显示: 所有警报）](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
@@ -62,7 +62,7 @@ ms.locfileid: "77617078"
 
 ![“负载”图可能会显示 CPU 消耗量偏高或者在过去偏高](./media/troubleshooting-monitoring/image4-load-graph.png)
 
-由于 CPU 使用率较高而触发的警报可能由多种原因引起，其中包括但不限于执行某些事务、数据加载、没有响应的作业、长时间运行的 SQL 语句以及错误的查询性能（例如通过 BW on HANA 多维数据集）。
+由于 CPU 利用率高而触发的警报可能由多种原因引起，包括但不限于：执行某些事务、数据加载、未响应的作业、长时间运行的 SQL 语句和糟糕的查询性能（例如，HANA 立方体上带有 BW）。
 
 有关详细故障排除步骤，请参阅 [SAP HANA Troubleshooting: CPU Related Causes and Solutions](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false)（SAP HANA 故障排除：CPU 相关的原因和解决方法）站点。
 
@@ -93,10 +93,10 @@ ms.locfileid: "77617078"
 请参阅 [SAP Note #2081065 - Troubleshooting SAP HANA Network](https://launchpad.support.sap.com/#/notes/2081065)（SAP 说明 #2081065 - SAP HANA 网络故障排除）并执行此 SAP 说明中的网络故障排除步骤。
 
 1. 分析服务器与客户端之间的往返时间。
-  A. 运行 SQL 脚本 [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700) _。_
+  A. 运行 SQL 脚本 [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700)_。_
   
 2. 分析节点间通信。
-  A. 运行 SQL 脚本 [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700) _。_
+  A. 运行 SQL 脚本 [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700)_。_
 
 3. 运行 Linux 命令 **ifconfig**（输出会显示是否发生了任何丢包情况）。
 4. 运行 Linux 命令 **tcpdump**。
@@ -107,7 +107,7 @@ ms.locfileid: "77617078"
 
 ## <a name="storage"></a>存储
 
-从最终用户的角度来看，应用程序（或整个系统）运行缓慢，没有响应，如果 i/o 性能出现问题，甚至可能会停止响应。 在 SAP HANA Studio 中的“Volumes”（卷）选项卡上，可以查看附加的卷，以及每个服务使用了哪些卷。
+从最终用户的角度来看，应用程序（或整个系统）运行缓慢、无响应，或者，如果 I/O 性能有问题，甚至可以停止响应。 在 SAP HANA Studio 中的“Volumes”（卷）选项卡上，可以查看附加的卷，以及每个服务使用了哪些卷。****
 
 ![在 SAP HANA Studio 中的“Volumes”（卷）选项卡上，可以查看附加的卷，以及每个服务使用了哪些卷](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 
@@ -123,19 +123,19 @@ ms.locfileid: "77617078"
 
 请参阅 [SAP Note #1969700 - SQL statement collection for SAP HANA](https://launchpad.support.sap.com/#/notes/1969700)（SAP 说明 #1969700 - SAP HANA 的 SQL 语句集合），并下载该说明随附的 SQL Statements.zip 文件。 将此 .zip 文件存储在本地硬盘上。
 
-在 SAP HANA Studio 中的“System Information”（系统信息）选项卡上，右键单击“Name”（名称）并选择“Import SQL Statements”（导入 SQL 语句）。
+在 SAP HANA 工作室中，在 **"系统信息**"选项卡上，右键单击 **"名称**"列并选择 **"导入 SQL 语句**"。
 
 ![在 SAP HANA Studio 中的“System Information”（系统信息）选项卡上，右键单击“Name”（名称）并选择“Import SQL Statements”（导入 SQL 语句）](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
 选择存储在本地的 SQL Statements.zip 文件，随后将导入包含相应 SQL 语句的文件夹。 此时，可以使用这些 SQL 语句运行多种不同的诊断检查。
 
-例如，要测试 SAP HANA 系统复制带宽要求，请在 SQL 控制台中右键单击“Replication: Bandwidth”（复制: 带宽）下面的“Bandwidth”（带宽）语句，并选择“Open”（打开）。
+例如，要测试 SAP HANA 系统复制带宽要求，请在 SQL 控制台中右键单击“Replication: Bandwidth”（复制: 带宽）下面的“Bandwidth”（带宽）语句，并选择“Open”（打开）。************
 
 整个 SQL 语句会打开，允许用户更改然后执行输入参数（modification 节）。
 
 ![整个 SQL 语句会打开，允许用户更改然后执行输入参数（modification 节）](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-另一种做法是右键单击“Replication: Overview”（复制: 概述）下面的语句。 从上下文菜单中选择“Execute”（执行）：
+另一种做法是右键单击“Replication: Overview”（复制: 概述）下面的语句。**** 从上下文菜单中选择 **"执行**"：
 
 ![另一种做法是右键单击“Replication: Overview”（复制: 概述）下面的语句。 从上下文菜单中选择“Execute”（执行）](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
@@ -147,11 +147,11 @@ ms.locfileid: "77617078"
 
 示例输出：
 
-用于常规 SAP HANA 检查的 **HANA\_Configuration\_MiniChecks\_Rev102.01+1**。
+对于常规 SAP HANA**检查\_，HANA\_配置迷你检查\_Rev102.01_1。**
 
 ![用于常规 SAP HANA 检查的 HANA\_Configuration\_MiniChecks\_Rev102.01+1](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
 
-用于概述哪些 SAP HANA 服务当前正在运行的 **HANA\_Services\_Overview**。
+**HANA\_\_服务概述**，概述 SAP HANA 服务当前正在运行的内容。
 
 ![用于概述哪些 SAP HANA 服务当前正在运行的 HANA\_Services\_Overview](./media/troubleshooting-monitoring/image12-services-overview.png)
 
@@ -159,11 +159,11 @@ ms.locfileid: "77617078"
 
 ![用于显示 SAP HANA 服务信息的 HANA\_Services\_Statistics](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-用于显示有关 SAP HANA 实例的常规信息的 **HANA\_Configuration\_Overview\_Rev110+** 。
+**HANA\_\_配置\_概述 Rev110+，** 用于 SAP HANA 实例的一般信息。
 
 ![用于显示有关 SAP HANA 实例的常规信息的 HANA\_Configuration\_Overview\_Rev110+](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-用于检查 SAP HANA 参数的 **HANA\_Configuration\_Parameters\_Rev70+** 。
+**HANA\_\_配置参数\_Rev70+** 以检查 SAP HANA 参数。
 
 ![用于检查 SAP HANA 参数的 HANA\_Configuration\_Parameters\_Rev70+](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 

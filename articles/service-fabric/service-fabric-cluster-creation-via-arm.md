@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 资源管理器在 Azure 中设置安全�
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 8cf14230f3abd37d91f1ec369f597ee594876100
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624112"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure 资源管理器创建 Service Fabric 群集 
@@ -19,21 +19,21 @@ ms.locfileid: "77624112"
 
 [Azure Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组联网的虚拟机，可在其中部署和管理微服务。  在 Azure 中运行的 Service Fabric 群集是一种 Azure 资源，通过 Azure 资源管理器进行部署。 本文介绍如何使用资源管理器在 Azure 中安全地部署 Service Fabric 群集。 可以使用默认模板或自定义模板。  如果尚无自定义模板，请[了解如何创建自定义模板](service-fabric-cluster-creation-create-template.md)。
 
-为群集的初始创建操作选择的安全类型（即： Windows 标识、X509 等）必须指定为群集的初始创建，之后无法更改。 在设置群集之前，请阅读[Service Fabric 群集安全方案][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 证书来保护群集及其终结点，对客户端进行身份验证以及对数据进行加密。 另外，还建议使用 Azure Active Directory 来保护对管理终结点的访问。 有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
+必须为群集的初始创建指定保护群集的安全类型（即：Windows 标识、X509 等），此后无法更改。 在设置群集之前，请先阅读 [Service Fabric 群集安全性方案][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 证书来保护群集及其终结点，对客户端进行身份验证以及对数据进行加密。 另外，还建议使用 Azure Active Directory 来保护对管理终结点的访问。 有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
 
 若要创建生产群集以运行生产工作负载，我们建议你首先阅读[生产就绪情况核对清单](service-fabric-production-readiness-checklist.md)。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 在本文中，使用 Service Fabric RM powershell 或 Azure CLI 模块部署群集：
 
-* [Azure PowerShell 4.1 及更高版本][azure-powershell]
-* [Azure CLI 版本2.0 及更高版本][azure-CLI]
+* [Azure PowerShell 4.1 或更高版本][azure-powershell]
+* [Azure CLI 版本 2.0 及更高版本][azure-CLI]
 
 以下为关于 Service Fabric 模块的参考文档：
-* [Az. ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
+* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
 * [az SF CLI 模块](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
@@ -58,12 +58,12 @@ az account set --subscription $subscriptionId
 
 通过默认模板，使用以下命令并指定最少量的参数快速创建群集。
 
-[Azure Service Fabric 模板示例：Windows 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)和 [Ubuntu 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)中提供了所用的模板
+使用的模板在[Azure 服务结构模板示例 ：窗口模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)和[Ubuntu 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)上可用
 
-以下命令可创建 Windows 或 Linux 群集，需指定相应的操作系统。 PowerShell/CLI 命令还会在指定的 CertificateOutputFolder 中输出证书，但要确保已创建该证书文件夹。 此命令还采用 VM SKU 等其他参数。
+以下命令可创建 Windows 或 Linux 群集，需指定相应的操作系统。 PowerShell/CLI 命令还会在指定的 CertificateOutputFolder 中输出证书，但要确保已创建该证书文件夹**。 此命令还采用 VM SKU 等其他参数。
 
 > [!NOTE]
-> 以下 PowerShell 命令仅适用于 Azure PowerShell `Az` 模块。 若要检查 Azure 资源管理器 PowerShell 版本的当前版本，请运行以下 PowerShell 命令 "Get-help Az"。 单击[此链接](/powershell/azure/install-Az-ps)升级 Azure 资源管理器 PowerShell 的版本。 
+> 以下 PowerShell 命令仅适用于 Azure PowerShell `Az` 模块。 若要检查 Azure 资源管理器 PowerShell 的当前版本，请运行以下 PowerShell 命令“Get-Module Az”。 单击[此链接](/powershell/azure/install-Az-ps)升级 Azure 资源管理器 PowerShell 的版本。 
 >
 >
 
@@ -107,7 +107,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-your-own-custom-template"></a>使用自己的自定义模板
 
-如果需要根据需要编写自定义模板，我们强烈建议从 [Azure Service Fabric 模板示例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master)中提供的模板之一着手。 了解如何[自定义群集模板][customize-your-cluster-template]。
+如果需要创作自定义模板以满足需求，强烈建议您从[Azure 服务结构模板示例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master)上可用的模板之一开始。 了解如何[自定义群集模板][customize-your-cluster-template]。
 
 如果已有一个自定义模板，请仔细检查模板中的所有三个证书相关参数以及参数文件已按如下所示命名且如下所示的值为 null：
 
@@ -159,10 +159,10 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 如果想要使用证书来保护群集，请使用以下命令创建群集。
 
-如果这是一个同时用于其他目的的 CA 签名证书，则我们建议专门为 Key Vault 提供一个不同的资源组。 建议将密钥保管库置于其资源组中。 这样可在不丢失密钥和机密的情况下删除计算和存储资源组，包括具有 Service Fabric 群集的资源组。 **包含 Key Vault 的资源组必须与正在使用它的群集位于同一区域。**
+如果这是一个同时用于其他目的的 CA 签名证书，则我们建议专门为 Key Vault 提供一个不同的资源组。 建议将密钥保管库置于其资源组中。 这样可在不丢失密钥和机密的情况下删除计算和存储资源组，包括具有 Service Fabric 群集的资源组。 **包含密钥保管库的资源组必须与使用它的群集*位于同一区域*。**
 
 ### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>使用模块中附带的默认“5 Node 1”节点类型模板
-[Azure 示例：Windows 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)和 [Ubuntu 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)中提供了所用的模板
+使用的模板在[Azure 示例 ：Windows 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)和[Ubuntu 模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)上可用
 
 使用 PowerShell 部署群集：
 
@@ -200,7 +200,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 ```
 
 ### <a name="use-your-own-custom-cluster-template"></a>使用自己的自定义群集模板
-如果需要根据需要编写自定义模板，我们强烈建议从 [Azure Service Fabric 模板示例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master)中提供的模板之一着手。 了解如何[自定义群集模板][customize-your-cluster-template]。
+如果需要创作自定义模板以满足需求，强烈建议您从[Azure 服务结构模板示例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master)上可用的模板之一开始。 了解如何[自定义群集模板][customize-your-cluster-template]。
 
 如果已有一个自定义模板，请确保模板中的所有三个证书相关参数以及参数文件已按如下所示命名并使用 null 值。
 
@@ -251,7 +251,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>使用指向上传到密钥保管库中的机密的指针
 
-要使用现有密钥保管库，则必须[针对部署启用](../key-vault/key-vault-manage-with-cli2.md#bkmk_KVperCLI)该密钥保管库，使计算资源提供程序能够从中获取证书并将其安装在群集节点上。
+要使用现有密钥保管库，必须启用密钥保管库[进行部署](../key-vault/key-vault-manage-with-cli2.md#bkmk_KVperCLI)，以便计算资源提供程序从它获取证书并将其安装到群集节点上。
 
 使用 PowerShell 部署群集：
 

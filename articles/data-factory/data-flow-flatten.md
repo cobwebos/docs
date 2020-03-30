@@ -1,139 +1,139 @@
 ---
-title: 在映射数据流中平展转换
-description: 使用平展转换非规范化分层数据
+title: 映射数据流中的扁平转换
+description: 使用拼合转换使分层数据非规范化
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 74f6df1fbc749a5ec015afb954ca6b12cbe0f18f
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: b19aae8ab6730936a826f5bb069bfdb7d696cdfa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086960"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246630"
 ---
-# <a name="flatten-transformation-in-mapping-data-flow"></a>在映射数据流中平展转换
+# <a name="flatten-transformation-in-mapping-data-flow"></a>映射数据流中的扁平转换
 
-使用平展转换在层次结构（如 JSON）中获取数组值，并将其展开到各个行。 此过程称为非规范化。
+使用拼合变换在分层结构（如 JSON）中获取数组值，并将其展开到单独的行中。 此过程称为非规范化。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
-平展转换包含以下配置设置
+扁平转换包含以下配置设置
 
-![平展设置](media/data-flow/flatten1.png "平展设置")
+![拼合设置](media/data-flow/flatten1.png "拼合设置")
 
-### <a name="unroll-by"></a>展开
+### <a name="unroll-by"></a>展开者
 
-选择要展开的数组。 每个数组中的每个项的输出数据都占一行。 如果输入行中的展开数组为 null 或为空，则会有一个输出行的 unrolled 值为 null。
+选择要展开的数组。 每个数组中每个项的输出数据将具有一行。 如果输入行中的按数组展开为空，则将有一个输出行，其中未滚动的值为空。
 
 ### <a name="unroll-root"></a>展开根
 
-默认情况下，平展转换 unrolls 将数组置于其中存在的层次结构的顶部。 你可以选择将数组选择为展开根。 展开根必须是复杂对象的数组，这些对象要么为，要么包含展开 by 数组。 如果选择了展开根，则输出数据将在展开根中的每个项中至少包含一行。 如果输入行没有展开根中的任何项，则会将其从输出数据中删除。 选择展开根将始终输出小于或等于默认行为的行数。
+默认情况下，拼合转换将数组解压到它存在的层次结构的顶部。 您可以选择数组作为展开根。 展开根必须是复杂对象的数组，这些对象是或包含按数组展开的。 如果选择了未卷根，则输出数据将包含卷根中每个项至少包含一行。 如果输入行在未滚动根中没有任何项，它将从输出数据中删除。 选择未卷根始终输出的行数小于或等于默认行为。
 
-### <a name="flatten-mapping"></a>平展映射
+### <a name="flatten-mapping"></a>拼合映射
 
-类似于 "选择转换"，从传入字段和非规范化数组中选择新结构的投影。 如果映射了非规范化数组，则输出列的数据类型将与数组的数据类型相同。 如果展开 by 数组是包含子的复杂对象数组，则映射该 subarry 的项将输出一个数组。
+与选择转换类似，从传入字段和非规范化数组中选择新结构的投影。 如果映射了非规范化数组，则输出列将与数组的数据类型相同。 如果按数组展开是包含子数组的复杂对象的数组，则映射该 subarry 的项将输出数组。
 
-请参阅检查选项卡和数据预览，验证映射输出。
+请参阅检查选项卡和数据预览以验证映射输出。
 
 ## <a name="examples"></a>示例
 
-有关平展转换的以下示例，请参阅以下 JSON 对象
+有关压平变换的以下示例，请参阅以下 JSON 对象
 
 ``` json
-[{
+{
   "name":"MSFT","location":"Redmond", "satellites": ["Bay Area", "Shanghai"],
   "goods": {
     "trade":true, "customers":["government", "distributer", "retail"],
     "orders":[
         {"orderId":1,"orderTotal":123.34,"shipped":{"orderItems":[{"itemName":"Laptop","itemQty":20},{"itemName":"Charger","itemQty":2}]}},
         {"orderId":2,"orderTotal":323.34,"shipped":{"orderItems":[{"itemName":"Mice","itemQty":2},{"itemName":"Keyboard","itemQty":1}]}}
-    ]}},
+    ]}}
 {"name":"Company1","location":"Seattle", "satellites": ["New York"],
   "goods":{"trade":false, "customers":["store1", "store2"],
   "orders":[
       {"orderId":4,"orderTotal":123.34,"shipped":{"orderItems":[{"itemName":"Laptop","itemQty":20},{"itemName":"Charger","itemQty":3}]}},
       {"orderId":5,"orderTotal":343.24,"shipped":{"orderItems":[{"itemName":"Chair","itemQty":4},{"itemName":"Lamp","itemQty":2}]}}
-    ]}},
+    ]}}
 {"name": "Company2", "location": "Bellevue",
-  "goods": {"trade": true, "customers":["Bank"], "orders": [{"orderId": 4, "orderTotal": 123.34}]}},
-{"name": "Company3", "location": "Kirkland"}]
+  "goods": {"trade": true, "customers":["Bank"], "orders": [{"orderId": 4, "orderTotal": 123.34}]}}
+{"name": "Company3", "location": "Kirkland"}
 ```
 
-### <a name="no-unroll-root-with-string-array"></a>没有带字符串数组的展开根
+### <a name="no-unroll-root-with-string-array"></a>没有带字符串数组的解卷根
 
-| 展开 | 展开根 | 投影 |
+| 展开者 | 展开根 | 投影 |
 | --------- | ----------- | ---------- |
-| 商品。客户 | 无 | name <br> customer = 客户 |
+| 货物.客户 | 无 | name <br> 客户 = 货物。 |
 
 #### <a name="output"></a>输出
 
 ```
-{ 'MSFT', 'government'},
-{ 'MSFT', 'distributer'},
-{ 'MSFT', 'retail'},
-{ 'Company1', 'store'},
-{ 'Company1', 'store2'},
-{ 'Company2', 'Bank'},
+{ 'MSFT', 'government'}
+{ 'MSFT', 'distributer'}
+{ 'MSFT', 'retail'}
+{ 'Company1', 'store'}
+{ 'Company1', 'store2'}
+{ 'Company2', 'Bank'}
 { 'Company3', null}
 ```
 
-### <a name="no-unroll-root-with-complex-array"></a>没有包含复杂数组的展开根
+### <a name="no-unroll-root-with-complex-array"></a>没有具有复杂数组的卷根
 
-| 展开 | 展开根 | 投影 |
+| 展开者 | 展开根 | 投影 |
 | --------- | ----------- | ---------- |
-| 发货。 orderItems | 无 | name <br> 订单 Id = 发货情况订单 Id <br> 命令% = orderItems。 <br> itemQty = orderItems. itemQty <br> 位置 = 位置 |
+| 货物.订单.发货.订单项目 | 无 | name <br> 订单 Id = 货物.订单.订单Id <br> 项目名称 = 货物.订单.发货.订单项目.项目名称 <br> 物料数量 = 货物.订单.发货.订单项目.项目数量 <br> 位置 = 位置 |
 
 #### <a name="output"></a>输出
 
 ```
-{ 'MSFT', 1, 'Laptop', 20, 'Redmond'},
-{ 'MSFT', 1, 'Charger', 2, 'Redmond'},
-{ 'MSFT', 2, 'Mice', 2, 'Redmond'},
-{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'},
-{ 'Company1', 4, 'Laptop', 20, 'Seattle'},
-{ 'Company1', 4, 'Charger', 3, 'Seattle'},
-{ 'Company1', 5, 'Chair', 4, 'Seattle'},
-{ 'Company1', 5, 'Lamp', 2, 'Seattle'},
-{ 'Company2', 4, null, null, 'Bellevue'},
+{ 'MSFT', 1, 'Laptop', 20, 'Redmond'}
+{ 'MSFT', 1, 'Charger', 2, 'Redmond'}
+{ 'MSFT', 2, 'Mice', 2, 'Redmond'}
+{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'}
+{ 'Company1', 4, 'Laptop', 20, 'Seattle'}
+{ 'Company1', 4, 'Charger', 3, 'Seattle'}
+{ 'Company1', 5, 'Chair', 4, 'Seattle'}
+{ 'Company1', 5, 'Lamp', 2, 'Seattle'}
+{ 'Company2', 4, null, null, 'Bellevue'}
 { 'Company3', null, null, null, 'Kirkland'}
 ```
 
-### <a name="same-root-as-unroll-array"></a>与展开数组相同的根
+### <a name="same-root-as-unroll-array"></a>与卷外卷阵列相同的根
 
-| 展开 | 展开根 | 投影 |
+| 展开者 | 展开根 | 投影 |
 | --------- | ----------- | ---------- |
-| 货物订单 | 货物订单 | name <br> orderItems..。 <br> 商品。客户 <br> location |
+| 货物.订单 | 货物.订单 | name <br> 货物.订单.发货.订单项目.项目名称 <br> 货物.客户 <br> location |
 
 #### <a name="output"></a>输出
 
 ```
-{ 'MSFT', ['Laptop','Charger'], ['government','distributer','retail'], 'Redmond'},
-{ 'MSFT', ['Mice', 'Keyboard'], ['government','distributer','retail'], 'Redmond'},
-{ 'Company1', ['Laptop','Charger'], ['store', 'store2'], 'Seattle'},
-{ 'Company1', ['Chair', 'Lamp'], ['store', 'store2'], 'Seattle'},
+{ 'MSFT', ['Laptop','Charger'], ['government','distributer','retail'], 'Redmond'}
+{ 'MSFT', ['Mice', 'Keyboard'], ['government','distributer','retail'], 'Redmond'}
+{ 'Company1', ['Laptop','Charger'], ['store', 'store2'], 'Seattle'}
+{ 'Company1', ['Chair', 'Lamp'], ['store', 'store2'], 'Seattle'}
 { 'Company2', null, ['Bank'], 'Bellevue'}
 ```
 
-### <a name="unroll-root-with-complex-array"></a>带有复杂数组的展开根
+### <a name="unroll-root-with-complex-array"></a>使用复杂数组展开根
 
-| 展开 | 展开根 | 投影 |
+| 展开者 | 展开根 | 投影 |
 | --------- | ----------- | ---------- |
-| 发货。 orderItem | 货物订单 |name <br> 订单 Id = 发货情况订单 Id <br> 命令% = orderItems。 <br> itemQty = orderItems. itemQty <br> 位置 = 位置 |
+| 货物.订单.发货.订单项目 | 货物.订单 |name <br> 订单 Id = 货物.订单.订单Id <br> 项目名称 = 货物.订单.发货.订单项目.项目名称 <br> 物料数量 = 货物.订单.发货.订单项目.项目数量 <br> 位置 = 位置 |
 
 #### <a name="output"></a>输出
 
 ```
-{ 'MSFT', 1, 'Laptop', 20, 'Redmond'},
-{ 'MSFT', 1, 'Charger', 2, 'Redmond'},
-{ 'MSFT', 2, 'Mice', 2, 'Redmond'},
-{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'},
-{ 'Company1', 4, 'Laptop', 20, 'Seattle'},
-{ 'Company1', 4, 'Charger', 3, 'Seattle'},
-{ 'Company1', 5, 'Chair', 4, 'Seattle'},
-{ 'Company1', 5, 'Lamp', 2, 'Seattle'},
+{ 'MSFT', 1, 'Laptop', 20, 'Redmond'}
+{ 'MSFT', 1, 'Charger', 2, 'Redmond'}
+{ 'MSFT', 2, 'Mice', 2, 'Redmond'}
+{ 'MSFT', 2, 'Keyboard', 1, 'Redmond'}
+{ 'Company1', 4, 'Laptop', 20, 'Seattle'}
+{ 'Company1', 4, 'Charger', 3, 'Seattle'}
+{ 'Company1', 5, 'Chair', 4, 'Seattle'}
+{ 'Company1', 5, 'Lamp', 2, 'Seattle'}
 { 'Company2', 4, null, null, 'Bellevue'}
 ```
 
@@ -169,5 +169,5 @@ source foldDown(unroll(goods.orders.shipped.orderItems, goods.orders),
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用[透视转换](data-flow-pivot.md)将行透视到列。
-* 使用[逆透视转换](data-flow-unpivot.md)将列透视到行。
+* 使用[数据透视转换](data-flow-pivot.md)将行透视到列。
+* 使用["取消透视"转换](data-flow-unpivot.md)将列透视到行。

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623120"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>将 Apache Hive 用作提取、转换和加载 (ETL) 工具
@@ -21,9 +21,9 @@ ms.locfileid: "77623120"
 
 ## <a name="use-case-and-model-overview"></a>用例和模型概述
 
-下图提供 ETL 自动化用例和模型的概述。 将转换输入数据以生成适当的输出。  在转换期间，数据可以更改形状、数据类型甚至语言。  ETL 过程可将英制转换为公制、更改时区和提高精确度，以便与目标中现有的数据相符。  ETL 进程还可以将新的数据与现有数据组合在一起，以保持报表的最新状态，或进一步了解现有数据。  然后，应用程序（例如报告工具和服务）能以所需的格式使用此数据。
+下图提供 ETL 自动化用例和模型的概述。 将转换输入数据以生成适当的输出。  在转换期间，数据可以更改形状、数据类型甚至语言。  ETL 过程可将英制转换为公制、更改时区和提高精确度，以便与目标中现有的数据相符。  ETL 流程还可以将新数据与现有数据相结合，以保持最新报告，或进一步深入了解现有数据。  然后，应用程序（例如报告工具和服务）能以所需的格式使用此数据。
 
-![Apache Hive 为 ETL 体系结构](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
+![阿帕奇蜂巢作为ETL架构](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
 在导入大量文本文件（例如 CSV）或数量较少但经常更改的文本文件或上述两者兼具的 ETL 过程中，通常使用 Hadoop。  Hive 是一个很好的工具，可以在将数据载入数据目标之前先准备好数据。  在 Hive 中，可以基于 CSV 创建架构，然后使用类似于 SQL 的语言来生成与数据交互的 MapReduce 程序。
 
@@ -73,7 +73,7 @@ ms.locfileid: "77623120"
 * Excel。
 * Azure 表和 Blob 存储。
 * 要求将数据处理成特定格式或处理成包含特定类型的信息结构的应用程序或服务。
-* JSON 文档存储，如[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)。
+* JSON 文档存储（如[Azure 宇宙数据库](https://azure.microsoft.com/services/cosmos-db/)）。
 
 ## <a name="considerations"></a>注意事项
 
@@ -81,9 +81,9 @@ ms.locfileid: "77623120"
 
 * 将流数据或大量半结构化或非结构化数据从外部源载入现有数据库或信息系统。
 * 在加载数据之前，先清理、转换和验证这些数据（也许是通过群集使用多个转换阶段执行此操作）。
-* 生成定期更新的报表和可视化效果。 例如，如果在日间生成报表耗时太长，可以安排在夜间运行报告。 若要自动运行 Hive 查询，可以使用[Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)和 PowerShell。
+* 生成定期更新的报表和可视化效果。 例如，如果在日间生成报表耗时太长，可以安排在夜间运行报告。 要自动运行 Hive 查询，可以使用[Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)和 PowerShell。
 
-如果数据的目标不是数据库，则可以在查询中以适当的格式（例如 CSV）生成文件。 然后，可将此文件导入 Excel 或 Power BI。
+如果数据的目标不是数据库，则可以在查询中以适当的格式生成文件，例如 CSV。 然后，可将此文件导入 Excel 或 Power BI。
 
 如果需要在 ETL 过程中对数据执行多个操作，请考虑如何管理这些操作。 如果操作由外部程序而不是解决方案中的工作流控制，则需要确定某些操作是否可以并行运行，并检测每项操作何时完成。 与使用外部脚本或自定义程序来尝试协调一系列操作相比，使用工作流机制（例如 Hadoop 中的 Oozie）可能更方便。 有关 Oozie 的详细信息，请参阅[工作流和作业业务流程](https://msdn.microsoft.com/library/dn749829.aspx)。
 

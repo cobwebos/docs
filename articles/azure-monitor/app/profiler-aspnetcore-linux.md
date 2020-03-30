@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9c98cd5d3d4d76f9455e4c036aa32a4ead20cfff
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671709"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
@@ -19,11 +19,11 @@ ms.locfileid: "77671709"
 
 使用 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 确定实时 Web 应用程序中的每个方法花费了多长时间。 Application Insights Profiler 现在可用于 Azure 应用服务上的 Linux 中托管的 ASP.NET Core Web 应用。 本指南提供了有关如何为 ASP.NET Core Linux Web 应用收集探查器跟踪的分步说明。
 
-完成本演练后，你的应用可以收集下图所示的探查器跟踪。 在此示例中，探查器跟踪指明某个特定的 Web 请求较慢，因为时间都花费在等待上。 代码中拖慢了应用的热路径前面带有火焰图标。 **HomeController** 节中的 **About** 方法拖慢了 Web 应用，因为该方法正在调用 **Thread.Sleep** 函数。
+完成本演练后，你的应用可以收集下图所示的探查器跟踪。 在此示例中，探查器跟踪指明某个特定的 Web 请求较慢，因为时间都花费在等待上。 代码中拖慢了应用的热路径前面带有火焰图标。** **HomeController** 节中的 **About** 方法拖慢了 Web 应用，因为该方法正在调用 **Thread.Sleep** 函数。
 
 ![探查器跟踪](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 以下说明适用于所有 Windows、Linux 和 Mac 开发环境：
 
 * 安装 [.NET Core SDK 2.1.2 或更高版本](https://dotnet.microsoft.com/download/archives)。
@@ -56,7 +56,7 @@ ms.locfileid: "77671709"
             .UseStartup<Startup>();
     ```
     
-1. 在 Startup.cs 中启用探查器：
+1. 在 Startup.cs 中启用 Profiler：
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -164,14 +164,14 @@ ms.locfileid: "77671709"
 
 4. 等待 2-5 分钟，以便将事件聚合到 Application Insights。
 
-5. 在 Azure 门户中浏览到 Application Insights 的“性能”窗格。 可以在窗格右下角查看探查器跟踪。
+5. 在 Azure 门户中浏览到 Application Insights 的“性能”窗格。**** 可以在窗格右下角查看探查器跟踪。
 
     ![查看探查器跟踪](./media/profiler-aspnetcore-linux/view-traces.png)
 
 ## <a name="known-issues"></a>已知问题
 
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>对于 Linux Profiler，"立即配置文件" 按钮不起作用
-Linux 版本的 App Insights 探查器尚不支持使用 "立即配置文件" 按钮进行按需分析。
+### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>“立即探查”按钮不适用于 Linux Profiler
+App Insights 探查器的 Linux 版本尚不支持使用“立即探查”按钮按需分析。
 
 
 ## <a name="next-steps"></a>后续步骤

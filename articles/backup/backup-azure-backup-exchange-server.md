@@ -1,19 +1,19 @@
 ---
-title: 通过 System Center DPM 备份 Exchange server
+title: 通过 System Center DPM 备份 Exchange 服务器
 description: 了解如何使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: 389713767409ff49c6fc83a4d6e8dc3c87272fc9
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614376"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 
-本文介绍了如何配置 System Center 2012 R2 Data Protection Manager （DPM）服务器，以将 Microsoft Exchange server 备份到 Azure 备份。  
+本文介绍如何配置系统中心 2012 R2 数据保护管理器 （DPM） 服务器以将 Microsoft Exchange 服务器备份到 Azure 备份。  
 
 ## <a name="updates"></a>更新
 
@@ -24,7 +24,7 @@ ms.locfileid: "77614376"
 >
 >
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在继续下一步之前，请确保符合使用 Microsoft Azure 备份保护工作负荷的所有[先决条件](backup-azure-dpm-introduction.md#prerequisites-and-limitations)。 这些先决条件包括：
 
@@ -44,8 +44,8 @@ ms.locfileid: "77614376"
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>为 Exchange Server 创建保护组
 
 1. 在 DPM 管理员控制台中，单击“**保护**”，并单击工具功能区上的“**添加**”，以打开“**创建新保护组**”向导。
-2. 在向导的 "**欢迎**" 屏幕上，单击 "**下一步**"。
-3. 在“**选择保护组类型**”屏幕上，选择“**服务器**”并单击“**下一步**”。
+2. 在向导**的欢迎**屏幕上，单击 **"下一步**"。
+3. 在 **"选择保护组类型"** 屏幕上，选择 **"服务器"** 并单击 **"下一步**"。
 4. 选择想要保护的 Exchange Server 数据库，并单击“**下一步**”。
 
    > [!NOTE]
@@ -62,7 +62,7 @@ ms.locfileid: "77614376"
 
    * 我想要使用磁盘提供短期保护。
    * 我想要使用在线保护。
-6. 单击“下一步”。
+6. 单击“下一步”****。
 7. 如果想要检查 Exchange Server 数据库的完整性，请选择“**运行 Eseutil 以检查数据完整性**”选项。
 
     选择此选项后，会在 DPM 服务器上运行备份一致性检查，以免由于在 Exchange Server 上运行 **eseutil** 命令而产生的 I/O 流量。
@@ -72,7 +72,7 @@ ms.locfileid: "77614376"
    > ![eseutil 错误](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 单击“下一步”。
+8. 单击“下一步”****。
 9. 选择“**复制备份**”的数据库，并单击“**下一步**”。
 
    > [!NOTE]
@@ -101,7 +101,7 @@ ms.locfileid: "77614376"
 
     ![指定联机保留策略](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
 18. 确认设置，并单击“**创建组**”。
-19. 单击“关闭”。
+19. 单击 **“关闭”**。
 
 ## <a name="recover-the-exchange-database"></a>恢复 Exchange 数据库
 

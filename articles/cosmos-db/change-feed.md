@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Cosmos DB 中的更改源支持
-description: 使用 Azure Cosmos DB 更改源支持跟踪文档中的更改、基于事件的处理（例如触发器），并使缓存和分析系统保持最新状态
+description: 使用 Azure Cosmos DB 的更改源支持来跟踪文档中发生的更改、执行基于事件的处理（例如触发器），使缓存和分析系统保持最新状态
 author: TheovanKraay
 ms.author: thvankra
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 898dfe7a619981b93af98effa942fdecbeb42dde
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79368122"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的更改源 - 概述
@@ -33,7 +33,7 @@ Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应
 
 目前，以下 Azure Cosmos DB API 和客户端 SDK 支持此功能。
 
-| **客户端驱动程序** | **Azure CLI** | **SQL API** | **Azure Cosmos DB 的 Cassandra API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API**|**表 API** |
+| **客户端驱动程序** | **Azure CLI** | **SQL API** | **用于 Cassandra 的 Azure Cosmos DB API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API**|**表 API** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | NA | 是 | 是 | 是 | 是 | 否 |
 |Java|NA|是|是|是|是|否|
@@ -42,15 +42,15 @@ Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应
 
 ## <a name="change-feed-and-different-operations"></a>更改源和不同操作
 
-如今，在更改流中可以看到所有操作。 针对只更新和不插入等特定操作的功能（可控制更改源）尚不可用。 你可以在项上添加 "软标记" 以进行更新，并根据在更改源中处理项时进行筛选。 当前更改源不会记录删除。 与前面的示例类似，可在要删除的项上添加软标记，例如，可在名为“已删除”的项中添加属性并将其设置为“true”，然后在该项上设置 TTL，这样系统就可将其自动删除。 您可以读取历史项的更改源（与该项相对应的最新更改，不包括中间更改），例如，在五年前添加的项。 如果未删除该项，则可以读取不超过容器原始时间的更改源。
+如今，在更改流中可以看到所有操作。 针对只更新和不插入等特定操作的功能（可控制更改源）尚不可用。 可以在更新项上添加“软标记”，并在更改源中处理项时根据标记进行筛选。 目前更改源不会记录删除操作。 与前面的示例类似，可在要删除的项上添加软标记，例如，可在名为“已删除”的项中添加属性并将其设置为“true”，然后在该项上设置 TTL，这样系统就可将其自动删除。 可以读取历史项的更改源（与该项相对应的最新更改，不包括中间更改），例如，在五年前添加的项。 如果未删除该项，则可以读取不超过容器原始时间的更改源。
 
 ### <a name="sort-order-of-items-in-change-feed"></a>更改源中项的排序顺序
 
-更改源项按其修改时间排序。 每个逻辑分区键均可保证这种排序顺序。
+更改源项按其修改时间排序。 此排序顺序保证每个逻辑分区键。
 
 ### <a name="consistency-level"></a>一致性级别
 
-在最终一致性级别使用更改源时，可能会在后续更改源读取操作之间发生重复的事件（一个读取操作的最后一个事件显示为下一个读取操作的最后一个事件）。
+在"最终一致性"级别使用更改源时，后续更改源读取操作之间可能存在重复事件（一个读取操作的最后一个事件显示为下一个读取操作中的第一个事件）。
 
 ### <a name="change-feed-in-multi-region-azure-cosmos-accounts"></a>多区域 Azure Cosmos 帐户中的更改流
 
@@ -62,7 +62,7 @@ Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应
 
 ### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>更改源和 _etag、_lsn 或 _ts
 
-_etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _ts 是修改或创建时间戳。 可以使用 _ts 进行时间顺序比较。 _lsn 是仅为更改源添加的批 ID;它表示事务 ID。 许多项可能具有相同的 _lsn。 FeedResponse 上的 ETag 不同于项上看到的 _etag。 _etag 是用于并发控制的内部标识符，它告知项的版本，而 ETag 用于将源定序。
+_etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _ts 是修改或创建时间戳。 可以使用 _ts 进行时间顺序比较。 _lsn 是仅为更改源添加的批 ID，它表示事务 ID。 许多项可能具有相同的 _lsn。 FeedResponse 上的 ETag 不同于项上看到的 _etag。 _etag 是用于并发控制的内部标识符，它告知项的版本，而 ETag 用于将源定序。
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>更改源用例和方案
 
@@ -98,7 +98,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 可通过以下选项使用更改源：
 
 * [将更改源与 Azure Functions 配合使用](change-feed-functions.md)
-* [将更改源与更改源处理器一起使用](change-feed-processor.md) 
+* [将更改源与更改源处理器配合使用](change-feed-processor.md) 
 
 更改源适用于容器中的每个逻辑分区键，它可以分配给一个或多个使用者进行并行处理，如下图所示。
 
@@ -112,7 +112,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 * 更改源包括针对容器中的项所执行的插入和更新操作。 在项（如文档）中的删除位置设置“软删除”标志，可以捕获删除操作。 此外，也可以使用 [TTL 功能](time-to-live.md)为项设置有限的过期时段。 例如，24 小时，可使用该属性的值来捕获删除操作。 使用此解决方案时，处理更改的时间间隔必须比 TTL 过期时段要短。 
 
-* 在更改源中，对项的每个更改都将显示一次，且客户端必须管理其检查点逻辑。 如果要避免管理检查点的复杂性，更改源处理器会提供自动检查点和 "至少一次" 语义。 请参阅[将更改源与更改源处理器结合使用](change-feed-processor.md)。
+* 在更改源中，对项的每个更改都将显示一次，且客户端必须管理其检查点逻辑。 如果想要避免管理检查点的复杂性，更改源处理器提供了自动检查点和“至少一次”语义。 请参阅[将更改源与更改源处理器配合使用](change-feed-processor.md)。
 
 * 更改日志中仅包含最近对给定项所做的更改。 而不包含中途的更改。
 
@@ -122,13 +122,13 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 * 对于 Azure Cosmos 容器的所有逻辑分区键，可以并行发生更改。 多个使用者可以使用此功能并行处理大型容器中发生的更改。
 
-* 应用程序可以同时在同一个容器上请求多个更改源。 可以使用 ChangeFeedOptions.StartTime 提供初始的起点。 例如，查找对应于给定时钟时间的继续令牌。 ContinuationToken（如果指定）优先于 StartTime 和 StartFromBeginning 值。 ChangeFeedOptions.StartTime 的精度是 ~5 秒。 
+* 应用程序可针对同一容器同时请求多个更改源。 可以使用 ChangeFeedOptions.StartTime 提供初始的起点。 例如，查找对应于给定时钟时间的继续令牌。 ContinuationToken（如果指定）优先于 StartTime 和 StartFromBeginning 值。 ChangeFeedOptions.StartTime 的精度是 ~5 秒。 
 
-## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>更改 Cassandra 和 MongoDB 的 Api 中的源
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>用于 Cassandra 和 MongoDB 的 API 中的更改源
 
-更改源功能作为 MongoDB API 中的更改流出现，并在 Cassandra API 中通过谓词进行查询。 若要了解有关 MongoDB API 的实现细节的详细信息，请参阅[AZURE COSMOS DB API For mongodb 中的更改流](mongodb-change-streams.md)。
+更改源功能在 MongoDB API 中作为更改流出现，在 Cassandra API 中作为带有谓词的查询出现。 若要了解有关 MongoDB API 的实现细节的详细信息，请参阅[用于 MongoDB 的 Azure Cosmos DB API 中的更改流](mongodb-change-streams.md)。
 
-本机 Apache Cassandra 提供了变更数据捕获（CDC），一种机制，用于标记要存档的特定表，并在达到 CDC 日志的可配置磁盘空间时拒绝写入这些表。 Azure Cosmos DB API for Cassandra 中的更改源功能增强了通过 CQL 查询具有谓词的更改的功能。 若要了解有关实现的详细信息，请参阅[Cassandra 的 AZURE COSMOS DB API 中的更改源](cassandra-change-feed.md)。
+本机 Apache Cassandra 提供了变更数据捕获 (CDC)，这是一种机制，用于标记要存档的特定表，并在达到 CDC 日志的可配置磁盘大小时拒绝写入这些表。 用于 Cassandra 的 Azure Cosmos DB API 中的更改源功能增强了通过 CQL 使用谓词查询更改的功能。 若要了解有关实现细节的详细信息，请参阅[用于 Cassandra 的 Azure Cosmos DB API 中的更改源](cassandra-change-feed.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

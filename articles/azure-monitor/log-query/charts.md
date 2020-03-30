@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 8a515f01bfa9f8ec579c51b806c997d79b629250
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670315"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>通过 Azure Monitor 日志查询创建图表和关系图
@@ -35,7 +35,7 @@ Heartbeat
 
 ![表](media/charts/table-display.png)
 
-要优化视图效果，请选择“图表”，然后选择“饼图”选项以直观显示结果：
+要优化视图效果，请选择“图表”，然后选择“饼图”选项以直观显示结果********：
 
 ![饼图](media/charts/charts-and-diagrams-pie.png)
 
@@ -50,7 +50,7 @@ Perf
 | summarize avg(CounterValue), percentiles(CounterValue, 50, 95)  by bin(TimeGenerated, 1h)
 ```
 
-选择“折线图”显示选项：
+选择**折线**图显示选项：
 
 ![折线图](media/charts/charts-and-diagrams-multiSeries.png)
 
@@ -69,7 +69,7 @@ Perf
 ![参考线](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
 ## <a name="multiple-dimensions"></a>多个维度
-`by` 的 `summarize` 字句中的多个表达式在结果中创建多个行，每个值组合对应一行。
+`summarize` 的 `by` 字句中的多个表达式在结果中创建多个行，每个值组合对应一行。
 
 ```Kusto
 SecurityEvent
@@ -77,7 +77,7 @@ SecurityEvent
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)
 ```
 
-将结果看作图表时，它使用 `by` 子句的第一列。 以下示例演示使用 EventID. 的堆积柱形图。 维度必须为 `string` 类型，因此在本例中，EventID 要强制转换为字符串。 
+将结果看作图表时，它使用 `by` 子句的第一列。 以下示例演示使用 EventID. 的堆积柱形图__。 维度必须为 `string` 类型，因此在本例中，EventID 要强制转换为字符串__。 
 
 ![条形图 EventID](media/charts/charts-and-diagrams-multiDimension1.png)
 
@@ -89,7 +89,7 @@ SecurityEvent
 请参阅有关将 [Kusto 查询语言](/azure/kusto/query/)与 Azure Monitor 日志数据配合使用的其他课程：
 
 - [字符串操作](string-operations.md)
-- [时间和日期操作](datetime-operations.md)
+- [日期和时间操作](datetime-operations.md)
 - [聚合函数](aggregations.md)
 - [高级聚合](advanced-aggregations.md)
 - [JSON 和数据结构](json-data-structures.md)

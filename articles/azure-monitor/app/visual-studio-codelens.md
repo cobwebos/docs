@@ -8,10 +8,10 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: dc334932bfd57bc81a58314ee68f02aeed520f41
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670944"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio CodeLens 中的 Application Insights 遥测
@@ -40,17 +40,17 @@ ms.locfileid: "77670944"
 若要查看更多详细信息，请单击异常 CodeLens 指示器：
 
 * 相对之前 24 小时的最近 24 小时内的异常数量的百分比变化
-* 选择“转到代码” 可浏览引发异常的函数的源代码
-* 选择“搜索” 可查询过去 24 小时内发生此异常的所有实例
-* 选择“趋势” 可查看过去 24 小时内此异常发生次数的区域可视化效果
-* 选择“查看此应用中的所有异常” 可查询过去 24 小时内发生的所有异常
-* 选择“探索异常趋势” 可查看过去 24 小时内发生的所有异常的趋势可视化效果。 
+* 选择“转到代码” **** 可浏览引发异常的函数的源代码
+* 选择“搜索” **** 可查询过去 24 小时内发生此异常的所有实例
+* 选择“趋势” **** 可查看过去 24 小时内此异常发生次数的区域可视化效果
+* 选择“查看此应用中的所有异常” **** 可查询过去 24 小时内发生的所有异常
+* 选择“探索异常趋势” **** 可查看过去 24 小时内发生的所有异常的趋势可视化效果。 
 
 > [!TIP]
-> 如果在 CodeLens 中看到“0 个异常”，但知道应该有异常，请检查并确保在 CodeLens 中选择了正确的 Application Insights 资源。 要选择其他资源，请在解决方案资源管理器中右键单击项目，并选择“Application Insights”>“选择遥测源”。 CodeLens 仅显示过去 24 小时内应用程序中的十五大最频繁发生的异常，因此，如果异常的发生频率排名第 16 位或发生频率更低，将看到“0 个异常”。 ASP.NET 视图中的异常可能不会在生成这些视图的控制器方法中显示。
+> 如果在 CodeLens 中看到“0 个异常”，但知道应该有异常，请检查并确保在 CodeLens 中选择了正确的 Application Insights 资源。 要选择其他资源，请在解决方案资源管理器中右键单击项目，并选择“Application Insights”>“选择遥测源”****。 CodeLens 仅显示过去 24 小时内应用程序中的十五大最频繁发生的异常，因此，如果异常的发生频率排名第 16 位或发生频率更低，将看到“0 个异常”。 ASP.NET 视图中的异常可能不会在生成这些视图的控制器方法中显示。
 > 
 > [!TIP]
-> 如果在 CodeLens 中看到“？ 个异常”，则需要将 Azure 帐户与 Visual Studio 关联，否则 Azure 帐户凭据可能会过期。 在任何一种情况下，单击“？ 个异常”，然后选择“添加帐户...”以输入凭据。
+> 如果在 CodeLens 中看到“？ 个异常”，则需要将 Azure 帐户与 Visual Studio 关联，否则 Azure 帐户凭据可能会过期。 在任何一种情况下，单击“？ 个异常”，然后选择“添加帐户...”**** 以输入凭据。
 > 
 > 
 
@@ -63,11 +63,11 @@ ms.locfileid: "77670944"
 
 * 相对之前 24 小时的过去 24 小时内的请求数量、失败的请求和平均响应时间的绝对值和百分比变化
 * 方法的可靠性，通过计算过去 24 小时内未失败请求的百分比获得
-* 选择“搜索” 请求或失败的请求，可查询过去 24 小时内发生的所有（失败）请求
-* 选择“趋势” 可查看过去 24 小时内的请求、失败的请求或平均响应时间的趋势可视化效果。
+* 选择“搜索” **** 请求或失败的请求，可查询过去 24 小时内发生的所有（失败）请求
+* 选择“趋势” **** 可查看过去 24 小时内的请求、失败的请求或平均响应时间的趋势可视化效果。
 * 选择 CodeLens 详细信息视图左上角的 Application Insights 资源名称，更改 CodeLens 数据源对应的资源。
 
-## <a name="next"></a>后续步骤
+## <a name="next-steps"></a><a name="next"></a>后续步骤
 |  |  |
 | --- | --- |
 | **[在 Visual Studio 中使用 Application Insights](../../azure-monitor/app/visual-studio.md)**<br/>搜索遥测、查看 CodeLens 中的数据以及配置 Application Insights。 一切尽在 Visual Studio 中。 |![右键单击项目，并依次选择“Application Insights”、“搜索”](./media/visual-studio-codelens/34.png) |

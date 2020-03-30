@@ -1,178 +1,178 @@
 ---
-title: 专用链接-Azure 门户-Azure Database for PostgreSQL-单一服务器
-description: 了解如何从 Azure 门户配置 Azure Database for PostgreSQL 单服务器的专用链接
+title: 专用链接 - Azure 门户 - 用于 PostgreSQL 的 Azure 数据库 - 单个服务器
+description: 了解如何为 Azure 门户中的 PostgreSQL- 单一服务器配置 Azure 数据库的专用链接
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 72dcf95c8ae8d8da34532fa96e3bf0371f5112fd
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79370910"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>使用门户创建和管理 Azure Database for PostgreSQL 单一服务器的专用链接
+# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>创建和管理 Azure 数据库的专用链接，用于 PostgreSQL - 使用门户创建单个服务器
 
-专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。  在本文中，你将了解如何使用 Azure 门户在 Azure 虚拟网络中创建 VM 和使用 Azure 专用终结点 Azure Database for PostgreSQL 单一服务器。
+专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。  在本文中，您将学习如何使用 Azure 门户在 Azure 虚拟网络中创建 VM，以及使用 Azure 专用终结点的 PostgreSQL 单一服务器的 Azure 数据库。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 此功能在所有 Azure Database for PostgreSQL 单一服务器支持常规用途和内存优化定价层的 Azure 区域中均可用。
+> 此功能在所有 Azure 区域都可用，其中用于 PostgreSQL 单个服务器的 Azure 数据库都支持通用和内存优化定价层。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-登录 [Azure 门户](https://portal.azure.com)。
+登录到 Azure[门户](https://portal.azure.com)。
 
 ## <a name="create-an-azure-vm"></a>创建 Azure VM
 
-在本部分中，你将创建虚拟网络和子网来托管用于访问专用链接资源的 VM （Azure 中的 PostgreSQL 服务器）。
+在本节中，您将创建虚拟网络和子网来承载用于访问专用链接资源的 VM（Azure 中的 PostgreSQL 服务器）。
 
 ### <a name="create-the-virtual-network"></a>创建虚拟网络
 在本部分，你将创建虚拟网络和子网来托管用于访问专用链接资源的 VM。
 
-1. 在屏幕的左上方，选择“创建资源” **“网络”** “虚拟网络” >  > 。
-2. 在“创建虚拟网络”中，输入或选择以下信息：
+1. 在屏幕的左上角，选择 **"创建资源** > **网络** > **虚拟网络**"。
+2. 在“创建虚拟网络”**** 中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
-    | 名称 | 输入 *MyVirtualNetwork*。 |
-    | 地址空间 | 输入 10.1.0.0/16。 |
+    | “属性” | 输入 *MyVirtualNetwork*。 |
+    | 地址空间 | 输入 10.1.0.0/16**。 |
     | 订阅 | 选择订阅。|
-    | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
-    | 位置 | 选择“西欧”。|
+    | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”**********。 |
+    | 位置 | 选择“西欧”****。|
     | 子网 - 名称 | 输入 *mySubnet*。 |
-    | 子网 - 地址范围 | 输入 10.1.0.0/24。 |
+    | 子网 - 地址范围 | 输入 10.1.0.0/24**。 |
     |||
-3. 将其余的设置保留默认值，然后选择“创建”。
+3. 将其余的设置保留默认值，然后选择“创建”****。
 
 ### <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户屏幕的左上方，选择“创建资源” **“计算”** “虚拟机”。 >  > 
+1. 在 Azure 门户中屏幕的左上角，选择 **"创建资源** > **计算** > **虚拟机**"。
 
-2. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
+2. 在“创建虚拟机 - 基本信息”**** 中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
-    | **项目详细信息** | |
+    | **项目详情** | |
     | 订阅 | 选择订阅。 |
-    | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。  |
+    | 资源组 | 选择**我的资源组**。 已在上一部分创建此内容。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 *myVm*。 |
-    | 区域 | 选择“西欧”。 |
-    | 可用性选项 | 保留默认值“不需要基础结构冗余”。 |
-    | 映像 | 选择“Windows Server 2019 Datacenter”。 |
-    | 大小 | 保留默认值“标准 DS1 v2”。 |
+    | 区域 | 选择“西欧”****。 |
+    | 可用性选项 | 保留默认值“不需要基础结构冗余”****。 |
+    | 图像 | 选择“Windows Server 2019 Datacenter”。**** |
+    | 大小 | 保留默认值“标准 DS1 v2”****。 |
     | **管理员帐户** |  |
     | 用户名 | 输入所选用户名。 |
     | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     | 确认密码 | 重新输入密码。 |
     | **入站端口规则** |  |
-    | 公共入站端口 | 保留默认值“无”。 |
+    | 公共入站端口 | 保留默认值“无”****。 |
     | **节省资金** |  |
-    | 已有 Windows 许可证？ | 保留默认值“否”。 |
+    | 已有 Windows 许可证？ | 保留默认值“否”****。 |
     |||
 
-1. 选择 "**下一步：磁盘**"。
+1. 选择 **"下一步"：磁盘**。
 
-1. 在 "**创建虚拟机-磁盘**" 中，保留默认值并选择 "**下一步：网络**"。
+1. 在 **"创建虚拟机磁盘"中**，保留默认值并选择 **"下一步：网络**"。
 
-1. 在“创建虚拟机 - 基本信息”中，选择以下信息：
+1. 在“创建虚拟机 - 基本信息”**** 中，选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
-    | 虚拟网络 | 保留默认值“MyVirtualNetwork”。  |
-    | 地址空间 | 保留默认值“10.1.0.0/24”。|
-    | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。|
-    | 公共 IP | 保留默认值“(new) myVm-ip”。 |
-    | 公共入站端口 | 选择“允许所选端口”。 |
-    | 选择入站端口 | 选择“HTTP”和“RDP”。|
+    | 虚拟网络 | 保留默认值“MyVirtualNetwork”****。  |
+    | 地址空间 | 保留默认值“10.1.0.0/24”。****|
+    | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。****|
+    | 公共 IP | 保留默认值“(new) myVm-ip”****。 |
+    | 公共入站端口 | 选择“允许所选端口”****。 |
+    | 选择入站端口 | 选择“HTTP”和“RDP”。********|
     |||
 
 
-1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+1. 选择“查看 + 创建”****。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置****。
 
-1. 看到“验证通过”消息时，选择“创建”。
+1. 当您看到**验证传递**的消息时，选择 **"创建**"。
 
-## <a name="create-an-azure-database-for-postgresql-single-server"></a>创建 Azure Database for PostgreSQL 单一服务器
+## <a name="create-an-azure-database-for-postgresql-single-server"></a>为后格雷SQL单一服务器创建 Azure 数据库
 
-在本部分中，将在 Azure 中创建 Azure Database for PostgreSQL 服务器。 
+在本节中，您将在 Azure 中为 PostgreSQL 服务器创建 Azure 数据库。 
 
-1. 在 Azure 门户屏幕的左上方，选择 "**创建资源** > **数据库** > " **Azure Database for PostgreSQL**"。
+1. 在 Azure 门户中屏幕的左上角，选择**为 PostgreSQL****创建资源** > **数据库** > Azure 数据库 。
 
-1. 在**Azure Database for PostgreSQL 部署 "选项**中，选择"**单一服务器**"并提供以下信息：
+1. 在**Azure 数据库的 PostgreSQL 部署选项**中，选择**单个服务器**并提供以下信息：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
-    | **项目详细信息** | |
+    | **项目详情** | |
     | 订阅 | 选择订阅。 |
-    | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
+    | 资源组 | 选择**我的资源组**。 已在上一部分创建此内容。|
     | **服务器详细信息** |  |
     |服务器名称  | 输入 *myserver*。 如果此名称已被使用，请创建唯一的名称。|
     | 管理员用户名| 输入所选的管理员名称。 |
     | 密码 | 输入所选密码。 密码长度必须至少为 8 个字符，且符合定义的要求。 |
-    | 位置 | 选择要在其中保存 PostgreSQL 服务器的 Azure 区域。 |
+    | 位置 | 选择要希望 PostgreSQL 服务器驻留的 Azure 区域。 |
     |版本  | 选择所需的 PostgreSQL 服务器的数据库版本。|
-    | 计算 + 存储| 根据工作负荷选择服务器需要的定价层。 |
+    | 计算 + 存储| 根据工作负荷选择服务器所需的定价层。 |
     |||
  
 7. 选择“确定”。 
-8. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
-9. 当看到 验证通过的 消息时，选择“创建”。 
+8. 选择“查看 + 创建”****。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置****。 
+9. 当您看到验证传递的消息时，选择 **"创建**"。 
 10. 看到“验证通过”消息时选择“创建”。 
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点
 
-在本部分中，你将创建一个 PostgreSQL 服务器，并向其添加专用终结点。 
+在本节中，您将创建 PostgreSQL 服务器，并添加专用终结点。 
 
-1. 在 Azure 门户屏幕的左上方，选择 "**创建资源** > **网络** > **专用链接**"。
-2. 在“专用链接中心 - 概述”中的“与服务建立专用连接”选项的旁边，选择“启动”。
+1. 在 Azure 门户中屏幕的左上角，选择 **"创建资源** > **网络** > **专用链接**"。
+2. 在“专用链接中心 - 概述”中的“与服务建立专用连接”选项的旁边，选择“启动”。************
 
     ![专用链接概述](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. 在 "**创建专用终结点-基础知识**" 中，输入或选择以下信息：
+1. 在 **"创建专用终结点 - 基础知识"中**，输入或选择此信息：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
-    | **项目详细信息** | |
+    | **项目详情** | |
     | 订阅 | 选择订阅。 |
-    | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
+    | 资源组 | 选择**我的资源组**。 已在上一部分创建此内容。|
     | **实例详细信息** |  |
-    | 名称 | 输入“myPrivateEndpoint”。 如果此名称已被使用，请创建唯一的名称。 |
-    |区域|选择“西欧”。|
+    | “属性” | 输入“myPrivateEndpoint”**。 如果此名称已被使用，请创建唯一的名称。 |
+    |区域|选择“西欧”****。|
     |||
-5. 选择 "**下一步：资源**"。
-6. 在“创建专用终结点 - 资源”中，输入或选择以下信息：
+5. 选择 **"下一步"：资源**。
+6. 在“创建专用终结点 - 资源”中，输入或选择以下信息：****
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
     | 订阅| 选择订阅。 |
-    | 资源类型 | 选择 " **DBforPostgreSQL/服务器**"。 |
-    | 资源 |选择“myServer”|
-    |目标子资源 |选择*postgresqlServer*|
+    | 资源类型 | 选择**微软.DBforPostgreSQL/服务器**。 |
+    | 资源 |选择“myServer”**|
+    |目标子资源 |选择*后格雷sqlServer*|
     |||
-7. 选择**下一步：配置**。
-8. 在 "**创建专用终结点-配置**" 中，输入或选择以下信息：
+7. 选择 **"下一步"：配置**。
+8. 在 **"创建专用终结点 - 配置**"中，输入或选择此信息：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
     |**网络**| |
-    | 虚拟网络| 选择“MyVirtualNetwork”。 |
+    | 虚拟网络| 选择*我的虚拟网络*。 |
     | 子网 | 选择“mySubnet”。 ** |
     |**专用 DNS 集成**||
-    |与专用 DNS 区域集成 |请选择“是”。 |
-    |专用 DNS 区域 |选择 *（新的） privatelink* |
+    |与专用 DNS 区域集成 |选择 **“是”**。 |
+    |专用 DNS 区域 |选择 *（新）私人链接.postgres.数据库.azure.com* |
     |||
 
-1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
-2. 看到“验证通过”消息时，选择“创建”。 
+1. 选择“查看 + 创建”****。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置****。 
+2. 当您看到**验证传递**的消息时，选择 **"创建**"。 
 
     ![已创建专用链接](media/concepts-data-access-and-security-private-link/show-postgres-private-link.png)
 
     > [!NOTE] 
-    > "Customer DNS" 设置中的 FQDN 不会解析为配置的专用 IP。 需要为配置的 FQDN 设置 DNS 区域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
+    > 客户 DNS 设置中的 FQDN 不会解析为配置的专用 IP。 您必须为配置的 FQDN 设置 DNS 区域，[如下所示](../dns/dns-operations-recordsets-portal.md)。
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>使用远程桌面 (RDP) 连接到 VM
 
@@ -181,22 +181,22 @@ ms.locfileid: "79370910"
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
-1. 选择“连接”按钮。 选择“连接”按钮后，“连接到虚拟机”随即打开。
+1. 选择“连接”按钮。**** 选择“连接”按钮后，“连接到虚拟机”随即打开********。
 
-1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
+1. 选择**下载 RDP 文件**。 Azure 会创建远程桌面协议 (*.rdp*) 文件，并将其下载到计算机。
 
-1. 打开 downloaded.rdp 文件。
+1. 打开 downloaded.rdp** 文件。
 
-    1. 出现提示时，选择“连接”。
+    1. 出现提示时，选择“连接”****。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” **“使用其他帐户”，以指定在创建 VM 时输入的凭据** > 。
+        > 您可能需要选择**更多选项** > **"使用其他帐户**"来指定创建 VM 时输入的凭据。
 
 1. 选择“确定”。
 
-1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续”。
+1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续”********。
 
 1. VM 桌面出现后，将其最小化以返回到本地桌面。
 
@@ -215,34 +215,34 @@ ms.locfileid: "79370910"
     Address:  10.1.3.4
     ```
 
-3. 使用任何可用的客户端测试 PostgreSQL 服务器的专用链接连接。 在下面的示例中，我使用[Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15)执行此操作。
+3. 使用任何可用的客户端测试 PostgreSQL 服务器的专用链路连接。 在下面的示例中，我使用[Azure 数据工作室](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15)来执行此操作。
 
-4. 在 "**新建连接**" 中，输入或选择以下信息：
+4. 在 **"新建连接**"中，输入或选择此信息：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
     | 服务器类型| 选择**PostgreSQL**。|
     | 服务器名称| 选择*mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | 用户名 | 输入用户名作为在 PostgreSQL 服务器创建过程中提供的 username@servername。 |
-    |密码 |输入在创建 PostgreSQL 服务器期间提供的密码。 |
-    |SSL|选择 "**必需**"。|
+    | 用户名 | 输入在username@servernamePostgreSQL 服务器创建期间提供的用户名。 |
+    |密码 |输入 PostgreSQL 服务器创建期间提供的密码。 |
+    |SSL|选择 **"必需**"。|
     ||
 
 5. 选择“连接”。
 
 6. 浏览左侧菜单中的数据库。
 
-7. 同时创建或查询来自 postgreSQL 服务器的信息。
+7. （可选）从后格雷SQL服务器创建或查询信息。
 
-8. 关闭与 myVm 的远程桌面连接。
+8. 关闭远程桌面连接到 myVm。
 
 ## <a name="clean-up-resources"></a>清理资源
-使用完专用终结点、PostgreSQL 服务器和 VM 后，请删除该资源组及其包含的所有资源：
+使用专用终结点 PostgreSQL 服务器和 VM 完成后，请删除资源组及其包含的所有资源：
 
-1. 在门户顶部的“搜索”框中输入“myResourceGroup” **  ，然后从搜索结果中选择“myResourceGroup”。 **  
-2. 选择“删除资源组”。
-3. 对于“键入资源组名称”，请输入“myResourceGroup”，然后选择“删除”。
+1. 在门户顶部的 **"搜索"** 框中输入 *"我的资源组* "，然后从搜索结果中选择 *"我的资源组* "。
+2. 选择“删除资源组”****。
+3. 输入"资源组 **"以键入资源组名称**，然后选择 **"删除**"。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本操作方法中，你在虚拟网络上创建了一个虚拟机、一个 Azure Database for PostgreSQL 单个服务器，以及一个专用终结点用于专用访问。 你从 internet 连接到一个 VM，并使用专用链接安全地传达到 PostgreSQL 服务器。 若要了解有关专用终结点的详细信息，请参阅[什么是 Azure 专用终结点](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)。
+在此执行中，您可以在虚拟网络上创建了 VM、为 PostgreSQL - 单服务器创建 Azure 数据库以及用于专用访问的专用终结点。 您从 Internet 连接到一个 VM，并使用专用链路安全地连接到 PostgreSQL 服务器。 要了解有关私有终结点的更多内容，请参阅[什么是 Azure 专用终结点](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)。

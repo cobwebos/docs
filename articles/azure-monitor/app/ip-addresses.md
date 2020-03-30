@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: ef8f5d1e011990e1d98a492ab8bfd871b7f429aa
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 74d696c19ac2a2d0d367f5a018fde8cd3a0eedb2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79275914"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535198"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 地址
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 服务使用许多 IP 地址。 如果要监视的应用托管在防火墙后面，可能需要知道这些 IP 地址。
@@ -30,7 +30,7 @@ ms.locfileid: "79275914"
 
 | 目的 | 代码 | IP | 端口 |
 | --- | --- | --- | --- |
-| 遥测 |dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169 | 443 |
+| 遥测 |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170 | 443 |
 | 实时指标流（美国东部） |use.rt.prod.applicationinsights.trafficmanager.net |23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207 |443 |
 | 实时指标流（美国中南部） |ussc.rt.prod.applicationinsights.trafficmanager.net |157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113 |443 |
 | 实时指标流（北欧） |eun.rt.prod.applicationinsights.trafficmanager.net |40.115.103.168<br/>40.115.104.31<br/>40.87.140.215<br/>40.87.138.220 |443 |
@@ -43,25 +43,25 @@ ms.locfileid: "79275914"
 
 | 目的 | 代码 | IP | 端口 |
 | --- | --- | --- | --- |
-| 配置 |`management.core.windows.net` | |`443` |
-| 配置 |`management.azure.com` | |`443` |
-| 配置 |`login.windows.net` | |`443` |
-| 配置 |`login.microsoftonline.com` | |`443` |
-| 配置 |`secure.aadcdn.microsoftonline-p.com` | |`443` |
-| 配置 |`auth.gfx.ms` | |`443` |
-| 配置 |`login.live.com` | |`443` |
-| 安装 | `globalcdn.nuget.org`、`packages.nuget.org`、`api.nuget.org/v3/index.json` `nuget.org`、`api.nuget.org`、`dc.services.vsallin.net` | |`443` |
+| Configuration |`management.core.windows.net` | |`443` |
+| Configuration |`management.azure.com` | |`443` |
+| Configuration |`login.windows.net` | |`443` |
+| Configuration |`login.microsoftonline.com` | |`443` |
+| Configuration |`secure.aadcdn.microsoftonline-p.com` | |`443` |
+| Configuration |`auth.gfx.ms` | |`443` |
+| Configuration |`login.live.com` | |`443` |
+| 安装 | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>可用性测试
 这是用于运行[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)的地址列表。 如果想要对应用运行 Web 测试，但 Web 服务器局限于为特定的客户端提供服务，则必须允许来自可用性测试服务器的传入流量。
 
-如果使用的是 Azure 网络安全组，只需添加**入站端口规则**以允许来自 Application Insights 可用性测试的流量，方法是选择 "**服务标记**" 作为**源**，并选择 " **ApplicationInsightsAvailability** " 作为**源服务标记**。
+如果使用 Azure 网络安全组，只需添加**入站端口规则**，即可选择**服务标记**作为**源****服务标记**，从而允许来自应用程序见解可用性测试的流量**ApplicationInsightsAvailability**。
 
 >[!div class="mx-imgBorder"]
->在 "设置" 下 ![选择 "入站安全规则"，然后选择选项卡顶部的 "添加" ](./media/ip-addresses/add-inbound-security-rule.png)
+>![在"设置"下选择"入站安全规则"，然后选择在选项卡顶部添加](./media/ip-addresses/add-inbound-security-rule.png)
 
 >[!div class="mx-imgBorder"]
->!["添加入站安全规则" 选项卡](./media/ip-addresses/add-inbound-security-rule2.png)
+>![添加入站安全规则选项卡](./media/ip-addresses/add-inbound-security-rule2.png)
 
 为来自这些地址的传入流量打开端口 80 (http) 和 443 (https)（IP 地址按位置进行分组）：
 
@@ -178,7 +178,7 @@ East US
 | --- | --- | --- | --- |
 | API |api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
 | API 文档 |dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com |23.96.58.253<br/>13.78.151.158<br/>40.74.59.40<br/>40.70.42.246<br/>40.117.198.0<br/>137.116.226.91<br/>52.163.88.44<br/>52.189.210.240<br/>13.77.201.34<br/>13.78.149.206<br/>52.232.28.146<br/>52.175.241.170<br/>20.36.36.66<br/>52.147.29.101<br/>40.115.155.252<br/>20.188.34.152<br/>52.141.32.103 |80,443 |
-| Azure 管道批注扩展 |aigs1.aisvc.visualstudio.com |动态|443 |
+| Azure Pipeline 批注扩展 |aigs1.aisvc.visualstudio.com |动态|443 |
 
 ## <a name="log-analytics-api"></a>Log Analytics API
 

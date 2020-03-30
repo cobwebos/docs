@@ -1,13 +1,13 @@
 ---
-title: Azure 应用程序 Insights 中分隔遥测数据
+title: 在 Azure 应用程序见解中分离遥测
 description: 为开发、测试和生产戳记直接遥测不同的资源。
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 3580d162f4b3955a04ffcd0f13933221bfef3b65
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671454"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
@@ -28,7 +28,7 @@ ms.locfileid: "77671454"
 * A | B 测试 - 使用单个资源 创建遥测初始值设定项来向遥测添加用于标识各个变体的属性。
 
 
-## <a name="dynamic-ikey"></a> 动态检测密钥
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 动态检测密钥
 
 为了在代码在不同生产阶段中移动时更轻松地更改 ikey，请在代码中而非在配置文件中设置 ikey。
 
@@ -47,7 +47,7 @@ ms.locfileid: "77671454"
 在此示例中，不同资源的 ikey 放置在 Web 配置文件的不同版本中。 通过交换 Web 配置文件（可作为发布脚本的一部分执行），将交换目标资源。
 
 ### <a name="web-pages"></a>网页
-在应用程序的网页中，还[可以从 "快速入门" 边栏选项卡中获取的脚本](../../azure-monitor/app/javascript.md)中使用 iKey。 从服务器状态生成它，而不是逐字将其编码到脚本中。 例如，在 ASP.NET 应用中：
+通过[从快速启动边栏选项卡获取的脚本](../../azure-monitor/app/javascript.md)，iKey 也在应用的网页中使用。 从服务器状态生成它，而不是逐字将其编码到脚本中。 例如，在 ASP.NET 应用中：
 
 *使用 Razor 的 JavaScript*
 
@@ -70,14 +70,14 @@ ms.locfileid: "77671454"
 ![依次单击“新建”、“Application Insights”](./media/separate-resources/01-new.png)
 
 * **应用程序类型**会影响在概述边栏选项卡上看到的内容和[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)中的可用属性。 如果未看到应用类型，请选择网页的 Web 类型之一。
-* **资源组**便于管理[访问控件](../../azure-monitor/app/resources-roles-access-control.md)之类的属性。 可为开发、测试和生产使用单独的资源组。
+* **资源组**是管理访问[控制](../../azure-monitor/app/resources-roles-access-control.md)等属性的便利。 可为开发、测试和生产使用单独的资源组。
 * **订阅**是 Azure 中的付款帐户。
 * **位置**是保留数据的位置。 当前无法更改它。 
 * **添加到仪表板**将资源的快速访问磁贴放在 Azure 主页上。 
 
 创建资源需要几秒钟。 完成后，会看到警报。
 
-（可编写 [PowerShell 脚本](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)，自动创建资源。）
+（您可以编写[PowerShell 脚本](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)来自动创建资源。
 
 ### <a name="getting-the-instrumentation-key"></a>获取检测密钥
 检测密钥标识所创建的资源。 
@@ -123,14 +123,14 @@ ms.locfileid: "77671454"
     </PropertyGroup>
     ```
 
-    这会生成一个名为*yourProjectName*的文件。Buildinfo.config。发布进程将其重命名为 Buildinfo.config。
+    这将生成名为*ProjectName*的文件。发布过程将其重命名为 BuildInfo.config。
 
     当使用 Visual Studio 生成时，生成标签包含一个占位符 (AutoGen_...)。 但是，在使用 MSBuild 生成时，标签中会填充正确的版本号。
 
     若要允许 MSBuild 生成版本号，请在 AssemblyReference.cs 中设置类似于 `1.0.*` 的版本
 
 ## <a name="version-and-release-tracking"></a>版本和发行版本跟踪
-若要跟踪应用程序版本，请确保 Microsoft 生成引擎进程生成了 `buildinfo.config`。 在 `.csproj` 文件中，添加：  
+若要跟踪应用程序版本，请确保 Microsoft 生成引擎进程生成了 `buildinfo.config`。 在文件中`.csproj`，添加：  
 
 ```XML
 
@@ -141,7 +141,7 @@ ms.locfileid: "77671454"
 
 当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/app/metrics-explorer.md)时按版本进行筛选。
 
-但请注意，内部版本号仅由 Microsoft 生成引擎生成，而不是由 Visual Studio 生成的开发人员生成。
+但是，请注意，生成版本号仅由 Microsoft 生成引擎生成，而不是由 Visual Studio 的开发人员生成。
 
 ### <a name="release-annotations"></a>版本注释
 如果使用 Azure DevOps，则可以在每次发布新版本时将[批注标记](../../azure-monitor/app/annotations.md)添加到图表中。 下图显示了此标记的形式。
