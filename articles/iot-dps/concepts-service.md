@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中心设备预配服务中的服务概念 | Microsoft Docs
-description: 描述特定于具有设备预配服务（DPS）和 IoT 中心的设备的服务预配概念
+description: 描述设备配置服务 （DPS） 和 IoT 中心特定于设备的服务调配概念
 author: nberdy
 ms.author: nberdy
 ms.date: 09/18/2019
@@ -9,19 +9,19 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79285209"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT 中心设备预配服务概念
 
 IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务用于将零接触设备预配到指定 IoT 中心。 使用设备预配服务，可以通过安全且可缩放的方式[自动预配](concepts-auto-provisioning.md)数百万台设备。
 
-设备预配是一个两部分过程。 第一部分是通过注册设备来建立设备和 IoT 解决方案之间的初始连接。 第二部分是根据解决方案的具体要求将适当的配置应用于设备。 在这两个步骤都完成后，设备已完全预配。 设备预配服务自动执行这两个步骤，为设备提供无缝的预配体验。
+设备预配是一个两部分过程。 第一部分是通过*注册*设备建立设备和 IoT 解决方案之间的初始连接。 第二部分是根据解决方案的具体要求将适当的配置应用于设备**。 在这两个步骤都完成后，设备已完全预配**。 设备预配服务自动执行这两个步骤，为设备提供无缝的预配体验。
 
-本文概述了最适用于管理服务的预配概念。 本文与设备部署准备工作的[云设置步骤](about-iot-dps.md#cloud-setup-step)中提及的角色最为相关。
+本文概述了最适用于管理服务的预配概念**。 本文与设备部署准备工作的[云设置步骤](about-iot-dps.md#cloud-setup-step)中提及的角色最为相关。
 
 ## <a name="service-operations-endpoint"></a>服务操作终结点
 
@@ -57,7 +57,7 @@ IoT 中心设备预配服务是一项 IoT 中心帮助程序服务，该服务�
 
 ### <a name="enrollment-group"></a>注册组
 
-注册组是一组共享特定证明机制的设备。 注册组支持 x.509 和对称。 X.509 注册组中的所有设备都提供已由同一根或中间证书颁发机构（CA）签名的 x.509 证书。 对称密钥注册组中的每个设备都提供派生自组对称密钥的 SAS 令牌。 注册组名称和证书名称必须是小写的字母数字，并可包含连字符。
+注册组是一组共享特定证明机制的设备。 注册组支持 X.509 和对称。 X.509 注册组中的所有设备都提供已由同一根或中间证书颁发机构 (CA) 签名的 X.509 证书。 对称密钥注册组中的每个设备都提供派生自组对称密钥的 SAS 令牌。 注册组名称和证书名称必须是小写的字母数字，并可包含连字符。
 
 > [!TIP]
 > 建议对共享所需初始配置的大量设备，或者全部转到同一租户的设备使用注册组。

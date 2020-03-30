@@ -1,5 +1,5 @@
 ---
-title: DNS 区域和记录概述-Azure DNS
+title: DNS 区域和记录概述 - Azure DNS
 description: 对在 Microsoft Azure DNS 中托管 DNS 区域和记录的支持的概述。
 author: rohinkoul
 ms.assetid: be4580d7-aa1b-4b6b-89a3-0991c0cda897
@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265150"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 区域和记录概述
@@ -22,9 +22,9 @@ ms.locfileid: "79265150"
 
 ## <a name="domain-names"></a>域名
 
-域名系统是域的层次结构。 该层次结构从名为“ **.** ”的“根”域开始。  根域的下面是顶级域，例如“com”、“net”、“org”、“uk”或“jp”。  再往下是二级域，例如“org.uk”或“co.jp”。 DNS 层次结构中的域遍布全球，由世界各地的 DNS 名称服务器托管。
+域名系统是域的层次结构。 层次结构从"root"域开始，其名称只是 **'.'。**  根域的下面是顶级域，例如“com”、“net”、“org”、“uk”或“jp”。  再往下是二级域，例如“org.uk”或“co.jp”。 DNS 层次结构中的域遍布全球，由世界各地的 DNS 名称服务器托管。
 
-域名注册机构是允许您购买域名的组织，如 `contoso.com`。  购买域名后，你可以通过该名称控制 DNS 层次结构，例如，允许你将名称 `www.contoso.com` 定向到你的公司网站。 注册机构会代表用户在域自身的名称服务器中托管域，或者允许用户指定可选名称服务器。
+域名注册商是允许您购买域名（如`contoso.com`） 的组织。  购买域名允许您控制该名称下的 DNS 层次结构，例如允许您将名称`www.contoso.com`定向到公司网站。 注册机构会代表用户在域自身的名称服务器中托管域，或者允许用户指定可选名称服务器。
 
 Azure DNS 提供全球分布的高可用性名称服务器基础结构，可将其用于托管域。 通过在 Azure DNS 中托管域，用户可以使用与其他 Azure 服务相同的凭据、API、工具、计费和支持来管理 DNS 记录。
 
@@ -82,7 +82,7 @@ SOA 记录集在每个区域（名称 =“\@”）的顶点处自动创建，并
 
 用户可以修改 SOA 记录的所有属性，但“主机”属性除外，此属性预配置为引用 Azure DNS 所提供的主名称服务器名。
 
-更改区域中的记录时，SOA 记录中的区域序列号不会自动更新。 如果需要，可以通过编辑 SOA 记录手动进行更新。
+当对区域中的记录进行更改时，SOA 记录中的区域序列号不会自动更新。 如果需要，可以通过编辑 SOA 记录手动进行更新。
 
 ### <a name="spf-records"></a>SPF 记录
 
@@ -92,8 +92,8 @@ SOA 记录集在每个区域（名称 =“\@”）的顶点处自动创建，并
 
 多种服务使用 [SRV 记录](https://en.wikipedia.org/wiki/SRV_record)指定服务器位置。 在 Azure DNS 中指定 SRV 记录时：
 
-* 服务和协议 必须指定为前面带下划线的记录集名称的一部分。  例如，“\_sip.\_tcp.name”。  对于区域顶点处的记录，无需在记录名称中指定“\@”，只需使用服务和协议，例如“\_sip.\_tcp”。
-* 将 priority、weight、port 和 target 指定为记录集中每个记录的参数。
+* 服务** 和协议** 必须指定为前面带下划线的记录集名称的一部分。  例如，“\_sip.\_tcp.name”。  对于区域顶点处的记录，无需在记录名称中指定“\@”，只需使用服务和协议，例如“\_sip.\_tcp”。
+* 将 priority**、weight**、port** 和 target** 指定为记录集中每个记录的参数。
 
 ### <a name="txt-records"></a>TXT 记录
 
@@ -103,7 +103,7 @@ DNS 标准允许单个 TXT 记录包含多个字符串，其中每个字符串�
 
 调用 Azure DNS REST API 时，需要单独指定每个 TXT 字符串。  使用 Azure 门户、PowerShell 或 CLI 接口时，应对每个记录指定单个字符串（这会在需要时自动划分为 254 个字符的段）。
 
-DNS 记录中的多个字符串不应与 TXT 记录集的多个 TXT 记录混淆。  TXT 记录集可以包含多个记录，其中每个可以包含多个字符串。  Azure DNS 在每个 TXT 记录集（跨所有合并的记录）中支持总长度最多 1024 个字符。
+DNS 记录中的多个字符串不应与 TXT 记录集的多个 TXT 记录混淆。  TXT 记录集可以包含多个记录，其中每个** 可以包含多个字符串。  Azure DNS 在每个 TXT 记录集（跨所有合并的记录）中支持总长度最多 1024 个字符。
 
 ## <a name="tags-and-metadata"></a>标记和元数据
 
@@ -123,14 +123,14 @@ Azure DNS 支持使用 DNS 区域资源上的 Azure 资源管理器标记。  �
 
 Azure DNS 使用 Etag 来安全地处理对同一资源的并发更改。 Etag 与 [Azure 资源管理器“标记”](#tags)不同。 每个 DNS 资源（区域或记录集）都有与其相关联的 Etag。 只要检索资源，就会检索其 Etag。 当更新资源时，可以选择传递回 Etag 的选项以便 Azure DNS 可以验证服务器上的 Etag 是否匹配。 由于对资源的每次更新都会导致重新生成 Etag，Etag 不匹配表示发生了并发更改。 当创建新的资源时也可以使用 Etag，以确保该资源不存在。
 
-默认情况下，Azure DNS PowerShell 使用 Etag 来阻止对区域和记录集的并发更改。 可选 -Overwrite 开关可用于取消 Etag 检查，这种情况下会覆盖发生的所有并发更改。
+默认情况下，Azure DNS PowerShell 使用 Etag 来阻止对区域和记录集的并发更改。 可选 -Overwrite** 开关可用于取消 Etag 检查，这种情况下会覆盖发生的所有并发更改。
 
 Etag 是在 Azure DNS REST API 级别使用 HTTP 标头指定的。  下表给出了它们的行为：
 
 | 标头 | 行为 |
 | --- | --- |
 | 无 |PUT 始终成功（没有 Etag 检查） |
-| If-match \<etag > |只有当资源存在并且 Etag 匹配时，PUT 才会成功 |
+| If-match \<etag> |只有当资源存在并且 Etag 匹配时，PUT 才会成功 |
 | If-match * |只有当资源存在时，PUT 才会成功 |
 | If-none-match * |只有当资源不存在时，PUT 才会成功 |
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261068"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步：计划程序
@@ -45,12 +45,12 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 
 ![GetSyncScheduler](./media/how-to-connect-sync-feature-scheduler/getsynccyclesettings2016.png)
 
-如果在运行此 cmdlet 时看到“此同步命令或 cmdlet 不可用”，则 PowerShell 模块未加载。 如果在 PowerShell 限制级别高于默认设置的域控制器或服务器上运行 Azure AD Connect，则可能会发生这种问题。 如果看到此错误，则运行 `Import-Module ADSync` 可使该 cmdlet 可用。
+如果在运行此 cmdlet 时看到“此同步命令或 cmdlet 不可用”，则 PowerShell 模块未加载****。 如果在 PowerShell 限制级别高于默认设置的域控制器或服务器上运行 Azure AD Connect，则可能会发生这种问题。 如果看到此错误，则运行 `Import-Module ADSync` 可使该 cmdlet 可用。
 
 * **AllowedSyncCycleInterval**。 Azure AD 允许的同步周期间的最短时间间隔。 不能比这种设置更频繁地同步，但仍会支持。
 * **CurrentlyEffectiveSyncCycleInterval**。 当前生效的计划。 如果它不比 AllowedSyncInterval 更频繁，它具有与 CustomizedSyncInterval 相同的值（如果已设置）。 如果使用早于 1.1.281 的版本，且更改了 CustomizedSyncCycleInterval，该更改会在下一个同步周期后生效。 从版本 1.1.281 开始，更改将立即生效。
 * **CustomizedSyncCycleInterval**。 如果希望计划程序以默认 30 分钟以外的任何其他频率运行，则可配置此设置。 在上图中，计划程序已改为设置为每隔一小时运行一次。 如果将此项设置为低于 AllowedSyncInterval 的值，则将使用后者。
-* **NextSyncCyclePolicyType**。 Delta 或 Initial。 定义下一个运行是应仅处理增量更改，还是应执行完全导入和同步。后者还将重新处理任何新的或更改的规则。
+* **NextSyncCyclePolicyType**。 Delta 或 Initial。 定义下一次运行是否仅应处理增量更改，或者下一次运行是否应执行完全导入和同步。后者还将重新处理任何新的或更改的规则。
 * **NextSyncCycleStartTimeInUTC**。 计划程序将启动下一个同步周期的时间。
 * **PurgeRunHistoryInterval**。 操作日志应保留的时间。 可以在 Synchronization Service Manager 中查看这些日志。 默认设置是保留这些日志 7 天。
 * **SyncCycleEnabled**。 指示计划程序是否正在运行导入、同步和导出过程作为其操作的一部分。
@@ -116,17 +116,17 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 运行完全同步周期可能非常耗时，请阅读下一部分以了解如何优化此过程。
 
 ### <a name="sync-steps-required-for-different-configuration-changes"></a>不同配置更改所需的同步步骤
-不同的配置更改需要不同的同步步骤，以确保将更改正确地应用于所有对象。
+不同的配置更改需要不同的同步步骤，以确保更改正确应用于所有对象。
 
 - 添加了更多要从源目录导入的对象或属性（通过添加/修改同步规则）
-    - 此源目录的连接器上需要完全导入
+    - 对于该源目录，连接器需要完全导入
 - 更改了同步规则
-    - 更改的同步规则的连接器上需要完全同步
+    - 对于更改的同步规则，连接器需要完全同步
 - 更改了[筛选设置](how-to-connect-sync-configure-filtering.md)，因此应包含不同的对象数
-    - 对于每个 AD 连接器，在连接器上需要完全导入，除非使用基于属性的筛选（基于已导入到同步引擎的属性）
+    - 对于每个 AD 连接器，连接器都需要完全导入，除非你使用基于属性的筛选（基于已经导入到同步引擎中的属性）
 
-### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>自定义同步周期运行正确混合的增量和完全同步步骤
-若要避免运行完全同步周期，你可以使用以下 cmdlet 将特定连接器标记为运行完整步骤。
+### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>自定义同步周期会运行增量同步和完全同步步骤的正确组合
+若要避免运行完全同步周期，可以使用以下 cmdlet 标记特定连接器以运行完整步骤。
 
 `Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullImportRequired $true`
 
@@ -134,13 +134,13 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 
 `Get-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid>` 
 
-示例：如果对连接器 "AD 林 A" 的同步规则进行更改，而该规则无需导入任何新属性，则可以运行以下 cmdlet 来运行增量同步循环，这也会为该连接器执行完全同步步骤。
+示例：如果对连接器"AD 林 A"的同步规则进行了更改，并且不需要导入任何新属性，则运行以下 cmdlet 以运行增量同步周期，该周期还对该连接器执行完全同步步骤。
 
 `Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
 
 `Start-ADSyncSyncCycle -PolicyType Delta`
 
-示例：如果对连接器 "AD 林 A" 的同步规则进行了更改，以便他们现在需要导入新属性，则可以运行以下 cmdlet 来运行增量同步循环，该循环也是该连接器的完全导入和完全同步步骤。
+示例：如果对连接器"AD 林 A"的同步规则进行了更改，以便它们现在需要导入新属性，则运行以下 cmdlet 以运行增量同步周期，该周期还对该连接器执行完全导入、完全同步步骤。
 
 `Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullImportRequired $true`
 
@@ -158,12 +158,12 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 
 1. 先要使用 PowerShell cmdlet `Stop-ADSyncSyncCycle` 指示计划程序停止其当前周期。
 2. 如果使用 1.1.281 之前的版本，停止计划程序并不会使当前连接器停止执行其当前任务。 若要强制停止连接器，请执行以下操作：![StopAConnector](./media/how-to-connect-sync-feature-scheduler/stopaconnector.png)
-   * 从“开始”菜单启动“同步服务”。 转到“连接器”，突出显示状态为“正在运行”的连接器，并从“操作”中选择“停止”。
+   * 从“开始”菜单启动“同步服务”。**** 转到“连接器”****，突出显示状态为“正在运行”**** 的连接器，并从“操作”中选择“停止”****。
 
 计划程序仍处于活动状态，并会在下次有机会时重新启动。
 
 ## <a name="custom-scheduler"></a>自定义计划程序
-本部分所述的 cmdlet 仅在内部版本 [1.1.130.0](reference-connect-version-history.md#111300) 及更高版本中提供。
+本节中所述的 cmdlet 仅在内部版本 [1.1.130.0](reference-connect-version-history.md#111300) 及更高版本中提供。
 
 如果内置的计划程序不符合要求，则可以使用 PowerShell 计划连接器。
 
@@ -174,7 +174,7 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 Invoke-ADSyncRunProfile -ConnectorName "name of connector" -RunProfileName "name of profile"
 ```
 
-用于[连接器名称](how-to-connect-sync-service-manager-ui-connectors.md)和[运行配置文件名称](how-to-connect-sync-service-manager-ui-connectors.md#configure-run-profiles)的名称可以在[同步服务管理器 UI](how-to-connect-sync-service-manager-ui.md) 中找到。
+用于[连接器名称](how-to-connect-sync-service-manager-ui-connectors.md)和[运行配置文件名称](how-to-connect-sync-service-manager-ui-connectors.md#configure-run-profiles)的名称可以在 [Synchronization Service Manager UI](how-to-connect-sync-service-manager-ui.md) 中找到。
 
 ![调用运行配置文件](./media/how-to-connect-sync-feature-scheduler/invokerunprofile.png)  
 
@@ -207,4 +207,4 @@ Get-ADSyncConnectorRunStatus
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
 ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281829"
 ---
 # <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>灾难恢复后将 VMware VM 故障回复到 Azure
@@ -21,10 +21,10 @@ ms.locfileid: "79281829"
 - 故障回复到原始位置 
 - 故障回复到备用位置
 
-故障转移 VMware 虚拟机后，可以故障回复到同一个本地源虚拟机（如果仍然存在）。 在这种情况下，只会复制更改。 这种情况称为**原始位置恢复**。 如果本地虚拟机不存在，则这种情况是一种**备用位置恢复**。
+故障转移 VMware 虚拟机后，可以故障回复到同一个本地源虚拟机（如果仍然存在）。 在这种情况下，只会复制更改。 这种情况称为**原始位置恢复**。 如果本地虚拟机不存在，则方案是**备用位置恢复**。
 
 > [!NOTE]
-> 只能故障回复到原始 vCenter 和配置服务器。 无法部署新配置服务器并通过它进行故障回复。 此外，无法向现有配置服务器添加新 vCenter 并故障回复到新 vCenter。
+> 仅可故障回复到原始 vCenter 和配置服务器。 无法部署新配置服务器并通过它进行故障回复。 此外，无法向现有配置服务器添加新 vCenter 并故障回复到新 vCenter。
 
 ## <a name="original-location-recovery-olr"></a>原始位置恢复 (OLR)
 如果选择故障回复到原始虚拟机，需要满足以下条件：

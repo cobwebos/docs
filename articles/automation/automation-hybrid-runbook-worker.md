@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: cb1444261a2ba4810f4fddb3d7aa3bc172f09654
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278865"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
@@ -20,7 +20,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 ![混合 Runbook 辅助角色概述](media/automation-hybrid-runbook-worker/automation.png)
 
-每个混合 Runbook 辅助角色都是你在安装代理时指定的混合 Runbook 辅助角色组的成员。 一个组可以包含一个代理，但是可以在一个组中安装多个代理，以实现高可用性。 每台计算机都可以将一个混合辅助角色报告托管到一个自动化帐户。
+每个混合 Runbook 辅助角色都是你在安装代理时指定的混合 Runbook 辅助角色组的成员。 一个组可以包含一个代理，但是可以在一个组中安装多个代理，以实现高可用性。 每台计算机可以托管一个向一个自动化帐户报告的混合辅助角色。
 
 在混合 Runbook 辅助角色中启动 Runbook 时，可以指定该辅助角色会在其中运行的组。 组中的每个辅助角色都会轮询 Azure 自动化以查看是否有可用作业。 如果作业可用，获取作业的第一个辅助角色将执行该作业。 作业队列的处理时间取决于混合辅助角色硬件配置文件和负载。 不能指定特定的辅助角色。 混合 Runbook 辅助角色不受 Azure 沙盒所具有的诸多限制。 它们没有磁盘空间、内存或网络套接字方面的相同限制。 混合 Runbook 辅助角色仅受混合 Runbook 辅助角色本身所拥有的资源的限制。 此外，混合 Runbook 辅助角色不受 Azure 沙盒所具有的 180 分钟[公平共享](automation-runbook-execution.md#fair-share)时间限制。 若要了解有关 Azure 沙盒和混合 Runbook 辅助角色的服务限制的详细信息，请参阅作业[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)页。
 
@@ -32,7 +32,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 |OS  |部署类型  |
 |---------|---------|
-|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[手动](automation-windows-hrw-install.md#manual-deployment)        |
+|Windows     | [电源外壳](automation-windows-hrw-install.md#automated-deployment)<br>[手动](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
@@ -49,7 +49,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 可以从组中删除一个或多个混合 Runbook 辅助角色，或者根据要求删除该组。 若要从本地计算机中删除混合 Runbook 辅助角色，请使用以下步骤：
 
 1. 在 Azure 门户中，转到自动化帐户。
-2. 在“帐户设置”下，选择“密钥”并记下“URL”和“主访问密钥”的值。 下一步需要用到此信息。
+2. 在“帐户设置”下，选择“密钥”并记下“URL”和“主访问密钥”的值****************。 下一步需要用到此信息。
 
 ### <a name="windows"></a>Windows
 
@@ -81,38 +81,38 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 要删除某个组，首先需要使用前面所示的过程，从每台计算机中删除属于该组的混合 Runbook 辅助角色。 然后，使用以下步骤删除该组：
 
 1. 在 Azure 门户中打开自动化帐户。
-2. 在“流程自动化”下选择“混合辅助角色组”。 选择要删除的组。 将显示该组的属性页。
+2. 在 **"过程自动化"** 下，选择**混合工作组**。 选择要删除的组。 将显示该组的属性页。
 
    ![“属性”页](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-3. 在所选组的属性页中，选择“删除”。 系统会显示一条消息，要求确认此操作。 如果确定要继续，请选择“是”。
+3. 在所选组的属性页中，选择“删除”****。 系统会显示一条消息，要求确认此操作。 如果确定要继续，请选择“是”****。
 
    ![确认消息](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 
-   完成此过程可能需要数秒钟的时间。 可以在菜单中的“通知”下面跟踪操作进度。
+   完成此过程可能需要数秒钟的时间。 可以在菜单中的“通知”下面跟踪操作进度****。
 
-## <a name="network-planning"></a>配置网络
+## <a name="configure-your-network"></a><a name="network-planning"></a>配置网络
 
 ### <a name="hybrid-worker-role"></a>混合辅助角色
 
-为了使混合 Runbook 辅助角色连接到 Azure 自动化并向其注册，它必须有权访问此部分中所述的端口号和 Url。 此访问权限位于 Microsoft Monitoring Agent 连接到 Azure Monitor 日志[所需的端口和 url](../azure-monitor/platform/agent-windows.md)的顶部。
+要使混合 Runbook 辅助角色连接并注册到 Azure 自动化，必须让其有权访问此部分所述的端口号和 URL。 除了这些端口和 URL 以外，还需要有权访问 [Microsoft Monitoring Agent 连接到 Azure Monitor 日志时要使用的端口和 URL](../azure-monitor/platform/agent-windows.md)。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-如果使用代理服务器在代理与 Azure Automation 服务之间进行通信，请确保适当的资源可访问。 混合 Runbook 辅助角色和自动化服务发出的请求超时为30秒。 3次尝试后，请求将失败。 如果使用防火墙来限制对 Internet 的访问，则必须将防火墙配置为允许访问。 如果将 Log Analytics 网关用作代理，请确保为混合辅助角色配置 Log Analytics 网关。 有关如何执行此操作的说明，请参阅[为自动化混合辅助角色配置 Log Analytics 网关](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway)。
+如果使用代理服务器在代理与 Azure 自动化服务之间通信，请确保能够访问相应的资源。 混合 Runbook 辅助角色和自动化服务发出的请求的超时为 30 秒。 尝试 3 次后，请求将失败。 如果使用防火墙来限制对 Internet 的访问，则必须将防火墙配置为允许访问。 如果将 Log Analytics 网关用作代理，请确保为混合辅助角色配置 Log Analytics 网关。 有关如何执行此操作的说明，请参阅[为自动化混合辅助角色配置 Log Analytics 网关](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway)。
 
 混合 Runbook 辅助角色与自动化通信时需要以下端口和 URL：
 
 * 端口：只需使用 TCP 443 进行出站 Internet 访问。
 * 全局 URL：*.azure-automation.net
 * US Gov 弗吉尼亚州的全局 URL：*.azure-automation.us
-* 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.net
+* 代理服务：https://\<workspaceId\>.agentsvc.azure-automation.net
 
 建议在定义例外时使用列出的地址。 对于 IP 地址，可以下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。
 
 如果为特定的区域定义了自动化帐户，则可以限制与该区域数据中心之间的通信。 下表提供了每个区域的 DNS 记录：
 
-| **区域** | **DNS 记录** |
+| **地区** | **DNS 记录** |
 | --- | --- |
 | 美国中西部 | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | 美国中南部 |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
@@ -143,11 +143,11 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 除了混合 Runbook 辅助角色所需的标准地址和端口以外，更新管理还特别需要以下地址。 与这些地址的通信通过端口 443 完成。
 
-|Azure Public  |Azure Government  |
+|Azure Public  |Azure Government   |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|\* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
 ## <a name="next-steps"></a>后续步骤
 

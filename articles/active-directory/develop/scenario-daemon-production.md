@@ -1,6 +1,6 @@
 ---
-title: 将用于调用 web Api 的守护程序应用移动到生产-Microsoft 标识平台 |Microsoft
-description: 了解如何将用于调用 web Api 的守护程序应用移动到生产环境
+title: 将调用 Web API 的守护程序应用移到生产环境 - Microsoft 标识平台 | Azure
+description: 了解如何将调用 Web API 的守护程序应用移到生产环境
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,56 +16,56 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: db5f52c95daf4e93c140b4c93f39dad19971319d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262615"
 ---
-# <a name="daemon-app-that-calls-web-apis---move-to-production"></a>用于调用 web Api 的后台应用程序-迁移到生产
+# <a name="daemon-app-that-calls-web-apis---move-to-production"></a>调用 Web API 的守护程序应用 - 移到生产环境
 
-现在，你已了解如何获取和使用令牌进行服务到服务调用，了解如何将应用移到生产环境。
+了解如何获取并使用用于服务到服务调用的令牌以后，即可学习如何将应用移到生产环境。
 
-## <a name="deployment---multitenant-daemon-apps"></a>部署-多租户守护程序应用
+## <a name="deployment---multitenant-daemon-apps"></a>部署 - 多租户守护程序应用
 
-如果你是创建可在多个租户中运行的后台应用程序的 ISV 应用程序，则需要确保租户管理员：
+如果你是 ISV，创建可以在多个租户中运行的守护程序应用程序，则需确保租户管理员执行以下操作：
 
-- 预配应用程序的服务主体。
-- 向应用程序授予许可。
+- 为应用程序预配服务主体。
+- 授予对应用程序的许可。
 
-你需要向客户说明如何执行这些操作。 有关详细信息，请参阅[请求整个租户的同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。
+需向客户解释如何执行这些操作。 有关详细信息，请参阅[请求整个租户的许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-下面是一些可帮助你了解更多信息的链接：
+下面是一些介绍详细信息的链接：
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-- 快速入门：[使用应用的标识从控制台应用获取令牌并调用 MICROSOFT GRAPH API](./quickstart-v2-netcore-daemon.md)。
-- 参考文档：
-  - 实例化[ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)。
-  - 调用[AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)。
+- 快速入门：[获取令牌，并使用应用的标识从控制台应用调用 Microsoft 图形 API。](./quickstart-v2-netcore-daemon.md)
+- 以下内容的参考文档：
+  - 实例化[机密客户端应用程序](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)。
+  - 调用[获取令牌客户端](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)。
 - 其他示例/教程：
-  - [microsoft 标识平台-控制台守护](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon)程序是一个简单的 .net Core 守护程序控制台应用程序，它显示查询 Microsoft Graph 的租户用户。
+  - [microsoft-identity-platform-console-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) 提供一个简单的 .NET Core 守护程序控制台应用程序，该应用程序显示某个租户的用户在查询 Microsoft Graph。
 
-    ![示例后台应用程序拓扑](media/scenario-daemon-app/daemon-app-sample.svg)
+    ![示例守护程序应用拓扑](media/scenario-daemon-app/daemon-app-sample.svg)
 
-    同一示例还演示了具有证书的变体：
+    同一示例还通过证书演示了变体：
 
-    ![示例后台应用拓扑-证书](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
+    ![示例守护程序应用拓扑 - 证书](media/scenario-daemon-app/daemon-app-sample-with-certificate.svg)
 
-  - [microsoft 标识平台 webapp](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon)功能是一种 ASP.NET MVC web 应用程序，它通过使用应用程序的标识（而不是代表用户），从 Microsoft Graph 同步数据。 此示例还说明了管理员同意过程。
+  - [microsoft-identity-platform-aspnet-webapp-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-aspnet-webapp-daemon) 具有一个 ASP.NET MVC Web 应用程序，该应用程序使用应用程序的标识来同步 Microsoft Graph 的数据，而不是代表用户来同步。 此示例还演示了管理员许可过程。
 
     ![拓扑](media/scenario-daemon-app/damon-app-sample-web.svg)
 
 # <a name="python"></a>[Python](#tab/python)
 
-尝试快速入门[获取令牌，并使用应用的标识从 Python 控制台应用调用 MICROSOFT GRAPH API](./quickstart-v2-python-daemon.md)。
+尝试快速入门 [使用应用的标识获取令牌并从 Python 控制台应用中调用 Microsoft Graph API](./quickstart-v2-python-daemon.md)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-MSAL Java 当前为公共预览版。 有关详细信息，请参阅[MSAL Java dev 示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples)。
+MSAL Java 目前为公共预览版。 有关详细信息，请参阅 [MSAL Java 开发示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples)。
 
 ---

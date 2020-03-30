@@ -1,5 +1,5 @@
 ---
-title: 如何在使用应用程序网关的虚拟网络中使用 API 管理
+title: 如何在虚拟网络中使用API管理与应用程序网关
 titleSuffix: Azure API Management
 description: 了解如何在使用应用程序网关 (WAF) 作为前端的内部虚拟网络中设置和配置 Azure API 管理
 services: api-management
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 2b8cf66afa1d8aa592d5755ebab70cd6ad2e75fd
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79298043"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>在包含应用程序网关的内部 VNET 中集成 API 管理
 
-## <a name="overview"> </a>概述
+## <a name="overview"></a><a name="overview"> </a>概述
 
 可在内部模式下的虚拟网络中配置 API 管理服务，以便只能从该虚拟网络内部访问该服务。 Azure 应用程序网关是一种 PAAS 服务，提供第 7 层负载均衡器。 它充当反向代理服务，并提供 Web 应用程序防火墙 (WAF) 及其他产品/服务。
 
@@ -35,7 +35,7 @@ ms.locfileid: "79298043"
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -47,29 +47,29 @@ ms.locfileid: "79298043"
 
 * 证书 - pfx 和 cer 用于 API 主机名，pfx 用于开发人员门户主机名。
 
-## <a name="scenario"> </a>方案
+## <a name="scenario"></a><a name="scenario"> </a>方案
 
-本文介绍如何对内部和外部使用者使用单个 API 管理服务，并使其成为本地和云 Api 的单一前端。 另外，它还介绍了如何使用应用程序网关中提供的路由功能，仅公开一部分 API（在示例中以绿色突出显示）供外部使用。
+本文介绍如何对内部和外部使用者使用单个 API 管理服务，并使其充当本地和云 API 的单一前端。 另外，它还介绍了如何使用应用程序网关中提供的路由功能，仅公开一部分 API（在示例中以绿色突出显示）供外部使用。
 
-在第一个设置示例中，只能从虚拟网络内部管理所有 API。 内部使用者（以橙色突出显示）可以访问所有内部和外部 API。 流量永远不会发送到 internet。 通过 Express Route 线路提供高性能连接。
+在第一个设置示例中，只能从虚拟网络内部管理所有 API。 内部使用者（以橙色突出显示）可以访问所有内部和外部 API。 流量永远不会外发到 Internet。 将通过 Express Route 线路提供高性能连接。
 
 ![url 路由](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"> </a>开始之前
+## <a name="before-you-begin"></a><a name="before-you-begin"> </a>开始之前
 
-* 确保使用最新版本的 Azure PowerShell。 请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)上的安装说明。 
+* 确保使用最新版本的 Azure PowerShell。 请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps) 中的安装说明。 
 
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>在 API 管理与应用程序网关之间创建集成需要做好哪些准备？
 
 * **后端服务器池：** API 管理服务的内部虚拟 IP 地址。
-* **后端服务器池设置：** 每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。 这些设置将应用到池中的所有服务器。
+* **后端服务器池设置：** 每个池都有端口、协议和基于 Cookie 的关联等设置。 这些设置将应用到池中的所有服务器。
 * **前端端口：** 此端口是应用程序网关上打开的公共端口。 抵达此端口的流量将重定向到后端服务器之一。
-* **侦听器：** 侦听器具有前端端口、协议（Http 或 Https，这些值区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
+* **听众：** 侦听器具有前端端口、协议（Http 或 Https、这些值区分大小写）和 SSL 证书名称（如果配置 SSL 卸载）。
 * **规则：** 规则将侦听器绑定到后端服务器池。
 * **自定义运行状况探测：** 默认情况下，应用程序网关使用基于 IP 地址的探测来判断 BackendAddressPool 中的哪些服务器处于活动状态。 API 管理服务只响应包含正确主机标头的请求，因此默认的探测会失败。 需要定义一个自定义运行状况探测，帮助应用程序网关确定服务处于活动状态，应该转发该请求。
 * **自定义域证书**：要从 Internet 访问 API 管理，需要创建从服务主机名到应用程序网关前端 DNS 名称的 CNAME 映射。 这可以确保发送到应用程序网关，并转发到 API 管理的主机名标头和证书是 APIM 可以识别为有效的对象。 在此示例中，我们将使用两个证书 - 用于后端和开发人员门户。  
 
-## <a name="overview-steps"> </a>集成 API 管理和应用程序网关所需的步骤
+## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"> </a> 集成 API 管理和应用程序网关所要执行的步骤
 
 1. 创建 Resource Manager 的资源组。
 2. 创建应用程序网关的虚拟网络、子网和公共 IP。 为 API 管理创建另一个子网。
@@ -81,13 +81,13 @@ ms.locfileid: "79298043"
 
 ## <a name="exposing-the-developer-portal-externally-through-application-gateway"></a>通过公开应用程序网关向外部公开开发人员门户
 
-在本指南中，我们还将通过应用程序网关向外部用户公开开发人员门户。 创建开发人员门户的侦听器、探测、设置和规则需要其他步骤。 相应步骤中提供了所有详细信息。
+在本指南中，我们还将通过应用程序网关向外部用户公开开发人员门户****。 创建开发人员门户的侦听器、探测、设置和规则需要其他步骤。 相应步骤中提供了所有详细信息。
 
 > [!WARNING]
 > 如果使用 Azure AD 或第三方身份验证，请在应用程序网关中启用[基于 cookie 的会话相关性](../application-gateway/features.md#session-affinity)功能。
 
 > [!WARNING]
-> 若要防止应用程序网关 WAF 中断在开发人员门户中下载 OpenAPI 规范，需要禁用防火墙规则 `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`。
+> 为了防止应用程序网关 WAF 中断在开发人员门户中 OpenAPI 规范的下载，需要禁用防火墙规则 `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`。
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>创建资源管理器的资源组
 
@@ -124,7 +124,7 @@ Azure 资源管理器要求所有资源组指定一个位置。 此位置将用�
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>为应用程序网关创建虚拟网络和子网
 
-下面的示例演示如何使用资源管理器创建虚拟网络。
+以下示例演示如何使用资源管理器创建虚拟网络。
 
 ### <a name="step-1"></a>步骤 1
 
@@ -144,7 +144,7 @@ $apimsubnet = New-AzVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10
 
 ### <a name="step-3"></a>步骤 3
 
-在美国西部地区的资源组“apim-appGw-RG”中创建名为“appgwvnet”的虚拟网络。 使用前缀 10.0.0.0/16 以及子网 10.0.0.0/24 和 10.0.1.0/24。
+在美国西部地区的资源组“apim-appGw-RG”中创建名为“appgwvnet”的虚拟网络********。 使用前缀 10.0.0.0/16 以及子网 10.0.0.0/24 和 10.0.1.0/24。
 
 ```powershell
 $vnet = New-AzVirtualNetwork -Name "appgwvnet" -ResourceGroupName $resGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $appgatewaysubnet,$apimsubnet
@@ -187,11 +187,11 @@ $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $l
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>在 API 管理中设置自定义域名
 
 > [!IMPORTANT]
-> 除了下面的步骤，[新的开发人员门户](api-management-howto-developer-portal.md)还需要启用与 API 管理的管理终结点的连接。
+> 除了以下步骤之外，[新的开发人员门户](api-management-howto-developer-portal.md)还要求启用与 API 管理终结点的连接。
 
 ### <a name="step-1"></a>步骤 1
 
-将以下变量初始化为包含域私钥的证书的详细信息。 本示例将使用 `api.contoso.net` 和 `portal.contoso.net`  
+使用带有域私钥的证书的详细信息初始化以下变量。 本示例将使用 `api.contoso.net` 和 `portal.contoso.net`  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -208,7 +208,7 @@ $certPortalPwd = ConvertTo-SecureString -String $portalCertPfxPassword -AsPlainT
 
 ### <a name="step-2"></a>步骤 2
 
-为代理创建和设置主机名配置对象，并为门户设置。  
+为代理和门户创建和设置主机名配置对象。  
 
 ```powershell
 $proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
@@ -220,11 +220,11 @@ Set-AzApiManagement -InputObject $apimService
 ```
 
 > [!NOTE]
-> 若要配置旧的开发人员门户连接，需要将 `-HostnameType DeveloperPortal` 替换为 `-HostnameType Portal`。
+> 若要配置旧开发人员门户连接，需要将 `-HostnameType DeveloperPortal` 替换为 `-HostnameType Portal`。
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>创建前端配置的公共 IP 地址
 
-在资源组中，创建公共 IP 资源 publicIP01。
+在资源组中，创建公共 IP 资源 publicIP01****。
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "publicIP01" -location $location -AllocationMethod Dynamic
@@ -238,7 +238,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "public
 
 ### <a name="step-1"></a>步骤 1
 
-创建名为 **gatewayIP01** 的应用程序网关 IP 配置。 当应用程序网关启动时，它会从配置的子网获取 IP 地址，再将网络流量路由到后端 IP 池中的 IP 地址。 请记住，每个实例需要一个 IP 地址。
+创建名为**gatewayIP01**的应用程序网关 IP 配置。 当应用程序网关启动时，它会从配置的子网获取 IP 地址，再将网络流量路由到后端 IP 池中的 IP 地址。 请记住，每个实例需要一个 IP 地址。
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet $appgatewaysubnetdata
@@ -363,10 +363,10 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupN
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-## <a name="summary"> </a>摘要
-VNET 中配置的 Azure API 管理为配置的所有 Api 提供单个网关接口，无论这些 Api 是托管在本地还是在云中。 将应用程序网关与 API 管理集成可以灵活地、有选择性地定义允许在 Internet 上访问哪些特定的 API，以及向 API 管理实例提供 Web 应用程序防火墙作为前端。
+## <a name="summary"></a><a name="summary"> </a>摘要
+VNET 中配置的 Azure API 管理为配置的所有 API 提供单个网关接口，无论这些 API 是托管在本地还是云中。 将应用程序网关与 API 管理集成可以灵活地、有选择性地定义允许在 Internet 上访问哪些特定的 API，以及向 API 管理实例提供 Web 应用程序防火墙作为前端。
 
-## <a name="next-steps"> </a>后续步骤
+## <a name="next-steps"></a><a name="next-steps"> </a>后续步骤
 * 详细了解 Azure 应用程序网关
   * [应用程序网关概述](../application-gateway/application-gateway-introduction.md)
   * [应用程序网关 Web 应用程序防火墙](../application-gateway/application-gateway-webapplicationfirewall-overview.md)

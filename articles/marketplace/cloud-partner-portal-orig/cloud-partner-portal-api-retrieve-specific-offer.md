@@ -1,19 +1,18 @@
 ---
-title: 检索特定的产品/服务 API |Azure Marketplace
+title: 检索特定产品/服务 API |Azure 应用商店
 description: API 可检索发布者命名空间中指定的产品/服务。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 030fb221b9227acf9c5dcda8797b106e51f56d64
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: a83b664bb770a88f3c4c13a672655e736a46ca75
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827349"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280450"
 ---
 <a name="retrieve-a-specific-offer"></a>检索特定产品/服务
 =========================
@@ -43,7 +42,7 @@ ms.locfileid: "73827349"
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | publisherId。 例如，Contoso                                                        | String        |
 | offerId     | 唯一标识产品/服务的 Guid。                                                 | String        |
-| version     | 所检索的产品/服务的版本。 默认情况下，将检索最新的产品/服务版本。 | Integer       |
+| 版本     | 所检索的产品/服务的版本。 默认情况下，将检索最新的产品/服务版本。 | Integer       |
 | slotId      | 要从中检索产品/服务的槽，可以是以下值之一：      <br/>  - `Draft`（默认值）检索当前处于草稿状态的产品/服务版本。  <br/>  -  `Preview` 检索当前处于预览状态的产品/服务版本。     <br/>  -  `Production` 检索当前处于生产状态的产品/服务版本。          |      枚举 |
 | api-version | API 的最新版本                                                                    | Date          |
 |  |  |  |
@@ -52,7 +51,7 @@ ms.locfileid: "73827349"
 <a name="header"></a>标头
 ------
 
-|  **名称**          |   **值**            |
+|  **名称**          |   **价值**            |
 |  ---------------   |  --------------        |
 |  Content-Type      | `application/json`     |
 |  授权     | `Bearer YOUR_TOKEN`    |
@@ -175,7 +174,7 @@ ms.locfileid: "73827349"
 |  publisherId    | 发布者的唯一标识符                                                                                              |
 |  status         | 产品/服务的状态。 有关可能值的列表，请参阅下面的[产品/服务状态](#offer-status)。                                  |
 |  ID             | 唯一标识产品/服务的 GUID                                                                                         |
-|  version        | 该产品/服务的当前版本。 客户端无法修改版本属性。 它在每次发布后都会递增。    |
+|  版本        | 该产品/服务的当前版本。 客户端无法修改版本属性。 它在每次发布后都会递增。    |
 |  定义     | 工作负载的实际定义                                                                                               |
 |  changedTime    | 上次修改该产品/服务时的 UTC 日期/时间                                                                                   |
 |  |  |
@@ -202,5 +201,5 @@ ms.locfileid: "73827349"
 |  正在运行                    | 正在处理产品/服务提交。          |
 |  已成功                  | 产品/服务提交已完成处理。    |
 |  已取消                   | 产品/服务提交已取消。                |
-|  已失败                     | 产品/服务提交失败。                      |
+|  失败                     | 产品/服务提交失败。                      |
 |  |  |

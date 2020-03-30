@@ -1,55 +1,54 @@
 ---
-title: Marketplace 计量服务 Api-常见问题 |Azure Marketplace
-description: 在 Azure Marketplace 中发出 SaaS 产品/服务的使用情况。
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: 市场计量服务 API - 常见问题 |Azure 应用商店
+description: 在 Azure 应用商店中发出 SaaS 产品/服务的使用。
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 044d92e79d8a885f553a7d081ce40c8b6de880a1
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 6e5b691a41ef283449f9eeeb90e9d01a91616146
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931221"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275775"
 ---
 # <a name="marketplace-metering-service-apis---faq"></a>Azure 市场计量服务 API - 常见问题解答
 
-一旦 Azure 用户订阅包含按流量计费的 SaaS 服务，就会跟踪该客户所使用的每个计费维度的消耗情况。 如果消耗超出了为客户选择的期限设置的所含数量，你的服务会向 Microsoft 发出使用情况事件。
+Azure 用户订阅包含按流量计费的 SaaS 服务后，将跟踪客户正在使用的每个计费维度的消耗量。 如果消耗量超过为客户选择的术语设置的包含数量，则服务将向 Microsoft 发出使用事件。
 
-## <a name="emit-usage-events"></a>发出使用情况事件
+## <a name="emit-usage-events"></a>发出使用事件
 
 >[!Note]
->本部分仅适用于 SaaS 产品/服务，其中至少有一个计划在发布产品/服务时定义了计数服务维度。
+>本节仅适用于 SaaS 产品/服务，其中至少有一个计划在发布产品/服务时定义了计量服务维度。
 
-![发出使用情况事件](media/isv-emits-usage-event.png)
+![发出使用事件](media/isv-emits-usage-event.png)
 
-有关用于发出使用事件的 API 约定的信息，请参阅[SaaS batch 使用情况事件 api](./marketplace-metering-service-apis.md#batch-usage-event) 。
+有关发出使用事件事件的 API 协定的信息，请参阅[SaaS 批处理使用事件 API。](./marketplace-metering-service-apis.md#batch-usage-event)
 
-### <a name="how-often-is-it-expected-to-emit-usage"></a>预期出现使用量的频率如何？
+### <a name="how-often-is-it-expected-to-emit-usage"></a>它预期多久发出一次用法？
 
-理想情况下，仅当前一小时内使用时，才应在过去一小时内每小时发出使用情况。
+理想情况下，您应在过去一小时每小时发出一次用法，仅当前一小时有用法时。
 
-### <a name="what-is-the-maximum-delay-between-the-time-an-event-occurs-and-the-time-a-usage-event-is-emitted-to-microsoft"></a>事件发生的时间与向 Microsoft 发送使用事件的时间之间的最大延迟是多少？
+### <a name="what-is-the-maximum-delay-between-the-time-an-event-occurs-and-the-time-a-usage-event-is-emitted-to-microsoft"></a>事件发生的时间与向 Microsoft 发出使用事件之间的最大延迟是多少？
 
-理想情况下，在过去一小时内发生的事件每小时发出一次使用事件。 但会出现延迟。 允许的最大延迟为24小时，超过此时间后将不接受使用事件。
+理想情况下，对于过去一小时发生的事件，每小时都会发出使用事件。 但是，预计会有延误。 允许的最大延迟为 24 小时，之后将不接受使用事件。
 
-例如，如果在一天的下午1日发生使用情况事件，则在下一天，你将有一个到下一天下午1： 这意味着，如果系统发出的使用时间较低，则它可以恢复，然后发送使用情况事件发生的小时间隔，而不会造成保真度损失。
+例如，如果使用事件发生在一天的下午 1 点，则您必须在第二天下午 1 点之前发出与此事件关联的使用事件。 这意味着，在系统发出使用有停机时间的情况下，它可以恢复，然后发送使用事件的时间间隔发生使用，而不会丢失保真度。
 
-### <a name="what-happens-when-you-send-more-than-one-usage-event-on-the-same-hour"></a>在同一小时发送多个使用事件时会发生什么情况？
+### <a name="what-happens-when-you-send-more-than-one-usage-event-on-the-same-hour"></a>当您在同一小时内发送多个使用事件时会发生什么情况？
 
-每小时间隔只接受一个使用事件。 小时间隔从第0分钟开始，到第59分钟结束。  如果在同一小时间隔内发出多个使用事件，则会删除任何后续的使用事件作为重复项。
+每小时间隔仅接受一个使用事件。 小时间隔从分钟 0 开始，以第 59 分钟结束。  如果在同一小时间隔内发出多个使用事件，则任何后续使用事件将作为重复项丢弃。
 
-### <a name="what-happens-when-you-emit-usage-for-a-saas-subscription-that-has-been-unsubscribed-already"></a>当你为已取消订阅的 SaaS 订阅发出使用情况时会发生什么情况？
+### <a name="what-happens-when-you-emit-usage-for-a-saas-subscription-that-has-been-unsubscribed-already"></a>当您发出已取消订阅的 SaaS 订阅的使用量时会发生什么情况？
 
-删除 SaaS 订阅后，将不接受任何发送到 marketplace 平台的使用事件。
+删除 SaaS 订阅后，将不接受发送到市场平台的任何使用事件。
 
-### <a name="can-you-get-a-list-of-all-saas-subscriptions-including-active-and-unsubscribed-subscriptions"></a>是否可以获取所有 SaaS 订阅的列表，包括活动订阅和取消订阅的订阅？
+### <a name="can-you-get-a-list-of-all-saas-subscriptions-including-active-and-unsubscribed-subscriptions"></a>能否获取所有 SaaS 订阅的列表，包括活动订阅和取消订阅订阅？
 
-是的，当你调用 `GET /saas/subscriptions` API 时，它将包含所有 SaaS 订阅的列表。 每个 SaaS 订阅的响应中的 "状态" 字段将捕获订阅是处于活动状态还是已取消订阅。 调用列表订阅时，最多返回100个订阅。
+是，当您调用 API`GET /saas/subscriptions`时，它包含所有 SaaS 订阅的列表。 每个 SaaS 订阅的响应中的状态字段捕获订阅是活动还是取消订阅。 对列表订阅的调用此时最多返回 100 个订阅。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关详细信息，请参阅[Marketplace 计量服务 api](./marketplace-metering-service-apis.md) 。
+- 有关详细信息[，请参阅应用商店计量服务 API。](./marketplace-metering-service-apis.md)

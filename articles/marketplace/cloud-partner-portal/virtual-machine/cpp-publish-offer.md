@@ -1,19 +1,18 @@
 ---
-title: 在 Azure Marketplace 中发布虚拟机产品/服务
+title: 在 Azure 应用商店中发布虚拟机产品/服务
 description: 列出了在 Azure 市场中发布现有的虚拟机产品/服务所需的步骤。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
-ms.author: pabutler
-ms.openlocfilehash: 1b07f3f3edab47f8f75835dffd4cc3f89f17ab63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: c35f721131b997dcfdb0f23a91a39329168b757c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824408"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277338"
 ---
 # <a name="publish-a-virtual-machine-offer"></a>发布虚拟机产品/服务
 
@@ -27,11 +26,11 @@ ms.locfileid: "73824408"
 
 |  **发布步骤**           | **时间**    | **说明**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| 验证先决条件         | 15 分钟   | 验证产品/服务信息和产品/服务设置。                        |
+| 验证先决条件         | 15 分钟   | 验证套餐信息和套餐设置。                        |
 | 体验版验证（可选） | 2 小时 | 如果你已选择启用体验版，则 Microsoft 会验证体验版配置、其部署以及通过所选区域的复制。 |
-| 认证                  | 3 天 | Azure 认证团队对套餐进行分析。 此步骤将针对病毒、恶意软件、安全合规性和安全问题进行扫描。 如果发现了问题，则会提供反馈。 |
+| 认证                  | 3 天 | Azure 认证团队对套餐进行分析。 此步骤将针对病毒、恶意软件、安全合规性和安全问题执行扫描。 如果发现了问题，则提供反馈。 |
 | 设置                   | 4 天   | 在市场生产系统中复制 VM 产品/服务。               |
-| 打包以及潜在顾客开发注册 | \< 1 小时  | 产品/服务的技术资产已打包供客户使用，并已配置并设置了线索系统。 |
+| 打包以及潜在顾客开发注册 | \< 1 小时  | 产品/服务的技术资产打包供客户使用，并配置和设置引线系统。 |
 |  发布者签收             |  -        | 最终发布者在套餐上线之前进行复查和确认。 可以在所选订阅（在套餐信息步骤中）中部署套餐，以验证它是否符合所有要求。  |
 | 设置                   | 4 天 | 在市场生产系统和区域中复制最终完成的 VM 产品/服务。 | 
 | 实时                           | 4 天 | 发布 VM 产品/服务，将其复制到所需的区域，并使其可供公众使用。 |

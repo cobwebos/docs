@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mimckitt
-ms.openlocfilehash: af5998a4207521d49ea4fd7956256aa6c880e6e9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 66fd656b5175547641150a048e57c978dc06d291
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79250798"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476818"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 
@@ -22,7 +22,7 @@ ms.locfileid: "79250798"
 ## <a name="fundamental-concepts"></a>基本概念
 
 ### <a name="the-scale-set-model"></a>规模集模型
-规模集有一个“规模集模型”，用于以整体方式捕获规模集的所需状态。 若要查询规模集的模型，可使用以下命令： 
+规模集有一个“规模集模型”，用于以整体方式捕获规模集的所需状态。** 若要查询规模集的模型，可使用以下命令： 
 
 - 如下所示通过 REST API 使用 [compute/virtualmachinescalesets/get](/rest/api/compute/virtualmachinescalesets/get)：
 
@@ -66,7 +66,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ### <a name="the-scale-set-instance-view"></a>规模集实例视图
-规模集还有一个“规模集实例视图”，用于以整体方式捕获规模集当前的“运行时”状态。 若要查询规模集的实例视图，可使用以下命令：
+规模集还有一个“规模集实例视图”，用于以整体方式捕获规模集当前的“运行时”状态。** 若要查询规模集的实例视图，可使用以下命令：
 
 - 如下所示通过 REST API 使用 [compute/virtualmachinescalesets/getinstanceview](/rest/api/compute/virtualmachinescalesets/getinstanceview)：
 
@@ -86,7 +86,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
     ```
 
-- 还可以使用 [resources.azure.com](https://resources.azure.com) 或特定于语言的 [Azure SDK](https://azure.microsoft.com/downloads/)
+- 您还可以使用[resources.azure.com](https://resources.azure.com)或特定于语言的[Azure SDK](https://azure.microsoft.com/downloads/)
 
 输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 的精简版示例输出：
 
@@ -174,13 +174,13 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
     Get-AzVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -InstanceView
     ```
 
-- 通过 Azure CLI 使用 [az vmss get-instance-view](/cli/azure/vmss)
+- 具有 az vms 的 Azure CLI[获取实例视图](/cli/azure/vmss)
 
     ```azurecli
     az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
     ```
 
-- 还可以使用 [resources.azure.com](https://resources.azure.com) 或 [Azure SDK](https://azure.microsoft.com/downloads/)
+- 您还可以使用[resources.azure.com](https://resources.azure.com)或[Azure SDK](https://azure.microsoft.com/downloads/)
 
 输出的具体呈现取决于提供给命令的选项。 下面的示例显示了来自 Azure CLI 的精简版示例输出：
 
@@ -309,9 +309,9 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 - 还可以使用特定于语言的 [Azure SDK](https://azure.microsoft.com/downloads/)。
 
 >[!NOTE]
-> Service Fabric 群集只能使用“自动”模式，但采用不同方式来处理更新。 有关详细信息，请参阅[Service Fabric 应用程序升级](../service-fabric/service-fabric-application-upgrade.md)。
+> Service Fabric 群集只能使用“自动”模式，但采用不同方式来处理更新。** 有关详细信息，请参阅[服务结构应用程序升级](../service-fabric/service-fabric-application-upgrade.md)。
 
-有一类对全局规模集属性的修改不遵循升级策略。 只能在 API 版本*2017-12-01*或更高版本中更改对规模集 OS 和数据磁盘配置文件的更改（例如，管理员用户名和密码）。 这些更改仅适用于在对规模集模型进行更改后创建的 VM。 若要更新现有的 VM，必须对每个现有的 VM 执行“重置映像”操作。 可通过以下方式执行此重置映像操作：
+有一类对全局规模集属性的修改不遵循升级策略。 对规模集 OS 和数据磁盘配置文件（如管理员用户名和密码）的更改只能在 API 版本*2017-12-01*或更高版本中更改。 这些更改仅适用于在对规模集模型进行更改后创建的 VM。 若要更新现有的 VM，必须对每个现有的 VM 执行“重置映像”操作。 可通过以下方式执行此重置映像操作：
 
 - 如下所示通过 REST API 使用 [compute/virtualmachinescalesets/reimage](/rest/api/compute/virtualmachinescalesets/reimage)：
 
@@ -342,6 +342,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 - 可用性区域
 - Image reference publisher
 - image reference offer
+- 图像参考 sku
 - 托管 OS 磁盘存储帐户类型
 
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>只能在当前值的基础上更改的属性

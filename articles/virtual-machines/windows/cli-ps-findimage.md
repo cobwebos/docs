@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 2388b51c8103b6bcbae0c32d3c4d78a176caf282
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266801"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像
@@ -121,7 +121,7 @@ advantys
 ...
 ```
 
-对于“MicrosoftWindowsServer”发布者：
+对于“MicrosoftWindowsServer”** 发布者：
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
@@ -138,7 +138,7 @@ WindowsServer
 WindowsServerSemiAnnual
 ```
 
-对于“WindowsServer”产品/服务：
+对于“WindowsServer”** 产品/服务：
 
 ```powershell
 $offerName="WindowsServer"
@@ -176,7 +176,7 @@ $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-现在可以将所选发布者、产品/服务、SKU 和版本合并到 URN 中（由“:”分隔的值）。 使用 `--image`New-AzVM[ cmdlet 创建 VM 时，使用 ](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 参数传递此 URN。 还可以将 URN 中的版本号替换为 "latest" 以获取映像的最新版本。
+现在可以将所选发布者、产品/服务、SKU 和版本合并到 URN 中（由“:”分隔的值）。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 创建 VM 时，使用 `--image` 参数传递此 URN。 还可以将 URN 中的版本号替换为 "latest" 以获取映像的最新版本。
 
 如果使用资源管理器模板部署 VM，请在 `imageReference` 属性中单独设置映像参数。 请参阅[模板参考](/azure/templates/microsoft.compute/virtualmachines)。
 
@@ -212,7 +212,7 @@ DataDiskImages   : []
 
 ```
 
-以下示例显示了适用于 *Data Science Virtual Machine - Windows 2016* 映像的类似命令，该映像具有以下 `PurchasePlan` 属性：`name`、`product` 和 `publisher`。 某些映像还具有 `promotion code` 属性。 若要部署此映像，请参阅以下部分，以接受条款并启用编程式部署。
+下面的示例显示了*数据科学虚拟机 - Windows 2016*`PurchasePlan`映像的类似命令，该映像具有以下属性： `name`、`product`和`publisher`。 某些映像还具有 `promotion code` 属性。 若要部署此映像，请参阅以下部分，以接受条款并启用编程式部署。
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"

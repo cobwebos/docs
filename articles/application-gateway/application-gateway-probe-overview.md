@@ -1,24 +1,24 @@
 ---
 title: Azure 应用程序网关的运行状况监视概述
-description: Azure 应用程序网关监视其后端池中所有资源的运行状况，并自动从池中删除任何被视为不正常的资源。
+description: Azure 应用程序网关会监视其后端池中所有资源的运行状况，并自动从池中删除任何被视为不正常的资源。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c5a53167c6a4ca6c886b858a1608eaa173185bd8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79279125"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335858"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>应用程序网关运行状况监视概述
 
 默认情况下，Azure 应用程序网关会监视其后端池中所有资源的运行状况，并自动从池中删除任何被视为不正常的资源。 应用程序网关持续监视不正常的实例，一旦这些实例恢复可用状态并能响应运行状况探测，应用程序网关就会将它们添加回到正常的后端池中。 应用程序网关发送的运行状况探测所针对的端口与后端 HTTP 设置中定义的端口相同。 此配置可确保探测所测试的端口即是客户用来连接到后端的端口。 
 
-源 IP 地址应用程序网关用于运行状况探测取决于后端池：
+应用程序网关用于运行状况探测的源 IP 地址取决于后端池：
  
 - 如果后端池是公共终结点，则源地址是应用程序网关前端公共 IP 地址。
 - 如果后端池是专用终结点，则源 IP 地址来自应用程序网关子网专用 IP 地址空间。
@@ -36,16 +36,16 @@ ms.locfileid: "79279125"
 
 例如：将应用程序网关配置为使用 A、B 和 C 后端服务器来接收端口 80 上的 HTTP 网络流量。 默认运行状况监视每隔 30 秒对三台服务器进行测试，以获取正常的 HTTP 响应。 正常的 HTTP 响应具有 200 到 399 的[状态代码](https://msdn.microsoft.com/library/aa287675.aspx)。
 
-如果服务器 A 的默认探测检查失败，应用程序网关会从后端池删除该服务器，并且网络流量不再流向此服务器。 默认探测仍继续每隔 30 秒检查服务器 A。 当服务器 A 成功响应默认运行状况探测发出的请求时，会将其作为正常添加回后端池，并且流量开始再次流向服务器。
+如果服务器 A 的默认探测检查失败，应用程序网关会从后端池删除该服务器，并且网络流量不再流向此服务器。 默认探测仍继续每隔 30 秒检查服务器 A。 当服务器 A 成功响应默认运行状况探测发出的请求时，将变为正常状态并重新添加回后端池，而流量也开始再次流向该服务器。
 
 ### <a name="probe-matching"></a>探测匹配
 
-默认情况下，状态代码介于200和399之间的 HTTP （S）响应被视为正常。 自定义运行状况探测额外支持两个匹配条件。 可以使用匹配条件来随意修改做出正常响应的的默认解释。
+默认情况下，状态代码为 200 到 399 的 HTTP(S) 响应被视为正常。 自定义运行状况探测额外支持两个匹配条件。 可根据需要使用条件匹配来修改构成正常响应的因素的默认解释。
 
 下面是匹配条件： 
 
 - **HTTP 响应状态代码匹配** - 接受用户指定的 http 响应代码或响应代码范围的探测匹配条件。 支持逗号分隔的单个响应状态代码，或一系列状态代码。
-- **HTTP 响应正文匹配** - 查找 HTTP 响应正文并匹配用户指定字符串的探测匹配条件。 匹配仅在响应正文中查找用户指定字符串的状态，并且不是完整的正则表达式匹配。
+- **HTTP 响应正文匹配** - 查找 HTTP 响应正文并匹配用户指定字符串的探测匹配条件。 该匹配操作只会在响应正文中确定是否存在用户指定的字符串，而不执行完整正则表达式匹配。
 
 可以使用 `New-AzApplicationGatewayProbeHealthResponseMatch` cmdlet 指定匹配条件。
 
@@ -59,17 +59,17 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ### <a name="default-health-probe-settings"></a>默认的运行状况探测设置
 
-| 探测属性 | 值 | 说明 |
+| 探测属性 | “值” | 描述 |
 | --- | --- | --- |
 | 探测 URL |http://127.0.0.1:\<port\>/ |URL 路径 |
 | 时间间隔 |30 |发送下一个运行状况探测前需要等待的时间（以秒为单位）。|
 | 超时 |30 |将探测标记为不正常前，应用程序网关等待探测响应的时间（以秒为单位）。 如果探测返回为正常，则相应的后端立即被标记为正常。|
-| 不正常阈值 |3 |控制在正常运行状况探测失败时要发送的探测数。 这些附加的运行状况探测会迅速发送，以确定后端的运行状况，并且不等待探测间隔。 连续探测失败计数达到不正常阈值后，将后端服务器标记为故障。 |
+| 不正常阈值 |3 |控制在定期运行状况探测出现故障的情况下要发送的探测数。 快速连续发送这些额外的运行状况探测，以快速确定后端的运行状况，并且无需等待探测时间间隔。 这个海涡只是v1 SKU。 在 v2 SKU 的情况下，运行状况探测器等待间隔。 连续探测失败计数达到不正常阈值后，将后端服务器标记为故障。 |
 
 > [!NOTE]
 > 该端口与后端 HTTP 设置的端口相同。
 
-默认探测仅查找 http：\//127.0.0.1：\<端口\>，以确定运行状况状态。 如果需要配置运行状况探测以使其转到自定义 URL 或修改任何其他设置，必须使用自定义探测。
+默认探测只查看 http:\//127.0.0.1:\<端口\> 来判断运行状况。 如果需要配置运行状况探测以使其转到自定义 URL 或修改任何其他设置，必须使用自定义探测。
 
 ### <a name="probe-intervals"></a>探测间隔
 
@@ -85,9 +85,9 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 下表提供自定义运行状况探测的属性的定义。
 
-| 探测属性 | 说明 |
+| 探测属性 | 描述 |
 | --- | --- |
-| 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
+| “属性” |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
 | 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
 | 主机 |用于发送探测的主机名。 仅在应用程序网关上配置了多站点的情况下适用，否则使用“127.0.0.1”。 此值与 VM 主机名不同。 |
 | 路径 |探测的相对路径。 有效路径以“/”开头。 |
@@ -101,9 +101,9 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ## <a name="nsg-considerations"></a>NSG 注意事项
 
-对于应用程序网关 v1 SKU，你必须允许 TCP 端口65503-65534 上的传入 Internet 流量，并允许 v2 SKU 的 TCP 端口65200-65535 （目标子网为**Any** and Source as **GatewayManager** service 标记）。 此端口范围是进行 Azure 基础结构通信所必需的。
+对于应用程序网关 v1 SKU，必须允许 TCP 端口 65503-65534 上的传入 Internet 流量，对于目标子网为 **Any** 且源为 **GatewayManager** 服务标记的 v2 SKU，必须允许 TCP 端口 65200-65535 上的传入 Internet 流量。 此端口范围是进行 Azure 基础结构通信所必需的。
 
-此外，不能阻止出站 Internet 连接，并且必须允许来自**AzureLoadBalancer**标记的入站流量。
+此外，无法阻止出站 Internet 连接，必须允许来自**AzureLoadBalancer**代码的入站流量。
 
 有关详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet)。
 
