@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77506224"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387642"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>使用 Azure SQL 数据库解决常见安全要求的剧本
 
@@ -657,7 +657,7 @@ DDoS 保护作为 Azure 平台的一部分自动启用。 它包括始终打开�
 **最佳实践**：
 
 - 在数据库服务器上配置用于审核事件的 [SQL 数据库审核](sql-database-auditing.md)后，将会审核该服务器上所有现有的和新建的数据库。
-- 审核策略默认包括对数据库执行的所有操作（查询、存储过程，以及成功和失败的登录），这可能会导致生成大量的审核日志。 建议客户[使用 PowerShell 对不同类型的操作和操作组配置审核](sql-database-auditing.md#subheading-7)。 此项配置有助于控制审核的操作数量，并将事件丢失的风险降到最低。 自定义审核配置可让客户仅捕获所需的审核数据。
+- 审核策略默认包括对数据库执行的所有操作（查询、存储过程，以及成功和失败的登录），这可能会导致生成大量的审核日志。 建议客户[使用 PowerShell 对不同类型的操作和操作组配置审核](sql-database-auditing.md#manage-auditing)。 此项配置有助于控制审核的操作数量，并将事件丢失的风险降到最低。 自定义审核配置可让客户仅捕获所需的审核数据。
 - 可以在 [Azure 门户](https://portal.azure.com/)中直接使用审核日志，或者从配置的存储位置使用。 
 
 

@@ -13,16 +13,18 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 800dbfc05c47a949bf024e9a5c671979b49ad201
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2241b69e36e3b17475dba115b8d2ae94fe2189a7
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68639972"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345845"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：准备数据以使用 Azure SQL 数据库机器学习服务（预览版）在 R 中执行聚类
 
 在这个由三部分组成的教程系列的第一部分中，将使用 R 从 Azure SQL 数据库导入和准备数据。在此系列中的后面部分，将通过 Azure SQL 数据库机器学习服务（预览版）借助 R 语言使用该数据训练和部署聚类分析模型。
+
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 聚类分析可解释为将数据组织成组，其中一个组的成员在某些方面类似  。
 你将使用 K-Means 算法在产品购买及退货的数据集中执行针对客户的聚类分析  。 通过对客户进行聚类分析，可以将特定组定为目标，更加高效地专注于市场营销工作。

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: 58b5b749e81aab4d8563d09cbfd139629520531c
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310555"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382964"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
 
@@ -24,7 +24,7 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 
 ## <a name="feature-availability-in-azure-clouds"></a>Azure 云中的功能可用性
 
-| 功能|全球 Azure 区域 | Azure Government|Azure Germany|Azure 中国世纪互联|
+| Feature|全球 Azure 区域 | Azure Government |Azure 德国|Azure 中国世纪互联|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | 可用 | 不可用 | 不可用 | 不可用 |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  可用 | 不可用 | 不可用 | 不可用 |
@@ -35,13 +35,13 @@ Azure 媒体服务 v3 可通过 Azure资源管理器清单在全球 Azure、Azur
 
 ## <a name="regionsgeographieslocations"></a>区域/地域/位置
 
-[部署 Azure 媒体服务服务的区域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
+[部署 Azure 媒体服务的区域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
-### <a name="region-code-name"></a>区域代码名 
+### <a name="region-code-name"></a>区域代码名
 
 如果需要提供**位置**参数，则需要提供区域代码名称作为**位置**值。 若要获取你的帐户所在的并且应当将你的调用路由到的区域的代码名称，可以在 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 中运行以下命令行
 
-```bash
+```azurecli-interactive
 az account list-locations
 ```
 
@@ -66,37 +66,37 @@ az account list-locations
 
 ### <a name="global-azure"></a>全球 Azure
 
-|终结点 ||
-| --- | --- | 
-| Azure Resource Manager |  `https://management.azure.com/` |
-| 身份验证 | `https://login.microsoftonline.com/` | 
+|终结点||
+| --- | --- |
+| Azure 资源管理器 |  `https://management.azure.com/` |
+| 身份验证 | `https://login.microsoftonline.com/` |
 | 令牌受众 | `https://management.core.windows.net/` |
 
-### <a name="azure-government"></a>Azure Government
+### <a name="azure-government"></a>Azure Government 
 
 |终结点||
-| --- | --- | 
-| Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| 身份验证 | `https://login.microsoftonline.us/` | 
+| --- | --- |
+| Azure 资源管理器 |  `https://management.usgovcloudapi.net/` |
+| 身份验证 | `https://login.microsoftonline.us/` |
 | 令牌受众 | `https://management.core.usgovcloudapi.net/` |
 
-### <a name="azure-germany"></a>Azure Germany
+### <a name="azure-germany"></a>Azure 德国
 
 | 终结点 ||
 | --- | --- |  
-| Azure Resource Manager | `https://management.cloudapi.de/` |
+| Azure 资源管理器 | `https://management.cloudapi.de/` |
 | 身份验证 | `https://login.microsoftonline.de/` |
 | 令牌受众 | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure 中国世纪互联
 
 |终结点||
-| --- | --- | 
-| Azure Resource Manager | `https://management.chinacloudapi.cn/` |
+| --- | --- |
+| Azure 资源管理器 | `https://management.chinacloudapi.cn/` |
 | 身份验证 | `https://login.chinacloudapi.cn/` |
 | 令牌受众 |  `https://management.core.chinacloudapi.cn/` |
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)
 * [Azure 地域](https://azure.microsoft.com/global-infrastructure/geographies/)

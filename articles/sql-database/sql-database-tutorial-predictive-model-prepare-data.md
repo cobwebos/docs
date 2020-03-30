@@ -13,16 +13,18 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: c1271d5b63fa796fe44b7a40c364953464a87539
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 505f58f13a7186948a228fefe872d74fb98eba33
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68596661"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345774"
 ---
 # <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：准备数据以使用 Azure SQL 数据库机器学习服务（预览版）在 R 中训练预测模型
 
 在这个由三部分组成的教程系列的第一部分中，将使用 R 从 Azure SQL 数据库导入和准备数据。在此系列中的后面部分，将通过 Azure SQL 数据库机器学习服务（预览版）借助 R 语言使用该数据训练和部署预测机器学习模型。
+
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 在本教程系列中，假设你拥有一家滑雪用具租赁公司，并且希望预测未来某一日期的租用数量。 此信息可帮助你准备好库存、人员和设施。
 

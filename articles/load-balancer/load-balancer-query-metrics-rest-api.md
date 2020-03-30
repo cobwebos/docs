@@ -1,7 +1,7 @@
 ---
 title: 使用 REST API 检索指标
 titleSuffix: Azure Load Balancer
-description: 本文开始使用 Azure REST Api 来收集 Azure 负载均衡器的运行状况和使用情况指标。
+description: 在本文中，开始使用 Azure REST API 收集 Azure 负载均衡器的运行状况和使用情况指标。
 services: sql-database
 author: asudbring
 manager: KumudD
@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: allensu
 ms.openlocfilehash: 760ec8a945ab88b63dde2de75f5354818facf4f2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74225256"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>使用 REST API 获取负载均衡器使用情况指标
 
-使用[Azure REST API](/rest/api/azure/)收集[标准负载均衡器](/azure/load-balancer/load-balancer-standard-overview)为时间间隔处理的字节数。
+使用 [Azure REST API](/rest/api/azure/) 收集[标准负载均衡器](/azure/load-balancer/load-balancer-standard-overview)在一段时间内处理的字节数。
 
 [Azure Monitor REST 参考](/rest/api/monitor)中提供了完整的参考文档和 REST API 的其他示例。 
 
@@ -35,21 +35,21 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 以下标头是必需的： 
 
-|请求标头|说明|  
+|请求标头|描述|  
 |--------------------|-----------------|  
-|Content-Type：|必需。 设置为 `application/json`。|  
-|Authorization：|必需。 设置为有效的 `Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
+|Content-Type：**|必需。 设置为 `application/json`。|  
+|*授权：*|必需。 设置为有效的`Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 参数
 
-| 名称 | 说明 |
+| “属性” | 描述 |
 | :--- | :---------- |
 | subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | resourceGroupName | 包含该资源的资源组名称。 可以从 Azure 资源管理器 API、CLI 或门户获取此值。 |
 | loadBalancerName | Azure 负载均衡器的名称。 |
 | 指标名称 | 以逗号分隔的有效[负载均衡器指标](/azure/load-balancer/load-balancer-standard-diagnostics)列表。 |
 | api-version | 要用于请求的 API 版本。<br /><br /> 本文档涵盖 API 版本 `2018-01-01`，包含于上述 URL 中。  |
-| timespan | 查询的时间跨度。 这是一个字符串，格式如下 `startDateTime_ISO/endDateTime_ISO`。 此可选参数设置为在示例中返回一天的数据。 |
+| timespan | 查询的时间跨度。 它是具有格式 `startDateTime_ISO/endDateTime_ISO` 的字符串。 此可选参数设置为在示例中返回一天的数据。 |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>请求正文

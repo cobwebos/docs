@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：将 VNet 链接到线路：经典
+title: Azure 快速路由：将 VNet 链接到电路：经典
 description: 本文档概述如何使用经典部署模型和 PowerShell 将虚拟网络 (VNet) 链接到 ExpressRoute 线路。
 services: expressroute
 author: cherylmc
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: cherylmc
 ms.openlocfilehash: 53c200b01dfa6bce09cfc058dc24ab8e38d253a6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930037"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 将虚拟网络连接到 ExpressRoute 线路（经典）
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [PowerShell](expressroute-howto-linkvnet-arm.md)
+> * [电源外壳](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [PowerShell（经典）](expressroute-howto-linkvnet-classic.md)
+> * [电源外壳（经典）](expressroute-howto-linkvnet-classic.md)
 >
 
 本文介绍如何使用 PowerShell 将虚拟网络 (VNet) 链接到 Azure ExpressRoute 线路。 单个 VNet 可最多连接到 4 条 ExpressRoute 线路。 通过本文中的步骤为正在连接的每条 ExpressRoute 线路创建新链接。 ExpressRoute 线路可在同一订阅、不同订阅或两者兼有。 本文适用于使用经典部署模型创建的虚拟网络。
@@ -39,7 +39,7 @@ ms.locfileid: "74930037"
 * 在开始配置之前，请先查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 * 必须有一个活动的 ExpressRoute 线路。
    * 请按说明[创建 ExpressRoute 线路](expressroute-howto-circuit-classic.md)，并让连接提供商启用该线路。
-   * 请确保为线路配置 Azure 专用对等互连。 如需路由说明，请参阅[配置路由](expressroute-howto-routing-classic.md)一文。
+   * 请确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅[配置路由](expressroute-howto-routing-classic.md)一文。
    * 确保配置 Azure 专用对等互连并运行网络和 Microsoft 之间的 BGP 对等互连，以便启用端到端连接。
    * 必须已创建并完全预配一个虚拟网络和一个虚拟网络网关。 请按说明[为 ExpressRoute 配置虚拟网络](expressroute-howto-vnet-portal-classic.md)。
 
@@ -76,7 +76,7 @@ Remove-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VN
 ![跨订阅连接](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
 ### <a name="administration"></a>管理
-“线路所有者”是在其中创建了 ExpressRoute 线路的订阅的管理员/共同管理员。 线路所有者可以授权其他订阅的管理员/共同管理员（称为线路用户）使用他们拥有的专用线路。 有权使用组织的 ExpressRoute 线路的线路用户在获得授权后可以将其订阅中的虚拟网络链接到 ExpressRoute 线路。
+“线路所有者”** 是在其中创建了 ExpressRoute 线路的订阅的管理员/共同管理员。 线路所有者可以授权其他订阅的管理员/共同管理员（称为线路用户**）使用他们拥有的专用线路。 有权使用组织的 ExpressRoute 线路的线路用户在获得授权后可以将其订阅中的虚拟网络链接到 ExpressRoute 线路。
 
 线路所有者有权随时修改和撤消授权。 撤消授权将导致从撤消其访问权限的订阅中删除所有链接。
 

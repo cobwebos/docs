@@ -1,15 +1,15 @@
 ---
-title: 备份和还原 Service Fabric
-description: Service Fabric 备份和还原的概念文档，一种用于配置可靠有状态服务和 Reliable Actors 备份的服务。
+title: Service Fabric 备份和还原
+description: 服务交换矩阵备份和还原的概念文档，用于配置可靠状态服务和可靠参与者的备份。
 author: mcoskun
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
 ms.openlocfilehash: ac6bb14517b67a4b308460583e8c9fb99a2df9f0
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75922779"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>备份和还原 Reliable Services 及 Reliable Actors
@@ -254,10 +254,10 @@ class MyCustomActorService : ActorService
 `RestoreAsync` 首先删除调用它的主副本中的所有现有状态。 之后，可靠状态管理器创建备份文件夹中存在的所有可靠对象。 接下来，指示可靠对象从备份文件夹中的它们的检查点还原。 最后，可靠性状态管理器从备份文件夹中的日志记录中恢复其自己的状态，并执行恢复。 作为恢复过程的一部分，将对可靠对象重播从“起始点”开始的操作，该起始点已提交备份文件夹中的日志记录。 此步骤可以确保恢复的状态是一致的。
 
 ## <a name="next-steps"></a>后续步骤
-  - [Reliable Collections](service-fabric-work-with-reliable-collections.md)
+  - [可靠的收藏](service-fabric-work-with-reliable-collections.md)
   - [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
   - [Reliable Services 通知](service-fabric-reliable-services-notifications.md)
   - [Reliable Services 配置](service-fabric-reliable-services-configuration.md)
-  - [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  - [可靠集合的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
   - [在 Azure Service Fabric 中定期备份和还原](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 

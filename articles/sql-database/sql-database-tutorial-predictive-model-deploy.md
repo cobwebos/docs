@@ -13,16 +13,18 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 9fa816b2a8e736f03c99b66b898f48bd2a483b31
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7779db053344f99238d38d5d49762730efbc5fc4
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68596774"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346318"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：使用 Azure SQL 数据库机器学习服务（预览版）在 R 中部署预测模型
 
 在这个由三部分组成的教程的第三部分中，将使用 Azure SQL 数据库机器学习服务（预览版）将预测模型（使用 R 开发）部署到 SQL 数据库中。
+
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 将使用嵌入式 R 脚本创建存储过程，该脚本使用模型进行预测。 由于模型在 Azure SQL 数据库中执行，因此可用存储在数据库中的数据轻松地对其进行训练。
 

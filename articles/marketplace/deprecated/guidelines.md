@@ -2,18 +2,18 @@
 title: Azure 市场和 AppSource 发布者准则 | Azure
 description: 面向应用和服务发布者的 Azure 市场与 AppSource 准则
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/13/2018
 ms.author: dsindona
-ms.openlocfilehash: f41aeb75253c803eac03b856d1e1ed0edb74a7e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9156126ff2a3dbe936dc426c6f5097c6bba7b7b7
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281521"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387593"
 ---
 # <a name="guidelines"></a>指南  
 

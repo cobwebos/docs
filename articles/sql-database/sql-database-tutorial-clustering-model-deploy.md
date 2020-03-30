@@ -13,16 +13,18 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 6f4d237d5e923aab61ae34a235d2e1f759399e6d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d67f007ac91d4830557a2cae646698b130b02314
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68640905"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345786"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：使用 Azure SQL 数据库机器学习服务（预览版）在 R 中部署聚类模型
 
 在这个由三部分组成的教程系列的第三部分中，将使用 Azure SQL 数据库机器学习服务（预览版）将聚类分析模型（使用 R 开发）部署到 SQL 数据库中。
+
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 你将使用嵌入式 R 脚本创建一个可执行聚类的存储过程。 由于模型在 Azure SQL 数据库中执行，因此可用存储在数据库中的数据轻松地对其进行训练。
 
