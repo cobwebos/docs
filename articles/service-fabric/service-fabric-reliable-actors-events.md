@@ -1,15 +1,15 @@
 ---
 title: 基于执行组件的 Azure Service Fabric 执行组件中的事件
-description: 了解 Service Fabric Reliable Actors 的事件，它是在执行组件和客户端之间进行通信的有效方法。
+description: 了解服务结构可靠参与者的事件，这是参与者和客户端之间沟通的有效方式。
 author: vturecek
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639660"
 ---
 # <a name="actor-events"></a>执行组件事件
@@ -103,6 +103,6 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 * [执行组件可重入性](service-fabric-reliable-actors-reentrancy.md)
 * [执行组件诊断和性能监视](service-fabric-reliable-actors-diagnostics.md)
 * [执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# 代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [C# 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C# .NET Core 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
 * [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)

@@ -1,6 +1,6 @@
 ---
-title: 用于 IoT 的 Azure 安全中心的可自定义安全警报指南 |Microsoft Docs
-description: 了解使用 Azure 安全中心进行 IoT 功能和服务的可自定义安全警报和建议的补救措施。
+title: 适用于 IoT 的 Azure 安全中心的可自定义安全警报指南*微软文档
+description: 使用 Azure 安全中心了解可自定义的安全警报和建议进行补救的 IoT 功能和服务。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,25 +15,25 @@ ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
 ms.openlocfilehash: 32d79267559480de8ec91e5e66196bfd57e01cf1
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78299567"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>用于 IoT 安全警报的 Azure 安全中心
 
-用于 IoT 的 Azure 安全中心使用高级分析和威胁智能来持续分析 IoT 解决方案，以提醒你应对恶意活动。
+IoT Azure 安全中心使用高级分析和威胁情报持续分析 IoT 解决方案，以提醒您注意恶意活动。
 
-我们鼓励你根据你对预期设备行为的了解来创建自定义警报，以确保在独特的组织部署和布局中，警报充当潜在危害的最有效指标。 
+我们鼓励您根据您对预期设备行为的了解创建自定义警报，以确保警报在独特的组织部署和环境中成为潜在危害的最有效指标。 
 
-下面列出了适用于 IoT 警报的 Azure 安全中心，它们根据预期的 IoT 中心和/或设备行为进行定义。 有关如何自定义每个警报的更多详细信息，请参阅[创建自定义警报](quickstart-create-custom-alerts.md)。
+以下 IoT 警报 Azure 安全中心列表由您根据预期的 IoT 中心和/或设备行为进行定义。 有关如何自定义每个警报的更多详细信息，请参阅[创建自定义警报](quickstart-create-custom-alerts.md)。
 
-## <a name="iot-hub-alerts-available-for-customization"></a>可供自定义的 IoT 中心警报 
+## <a name="iot-hub-alerts-available-for-customization"></a>IoT 中心警报可用于自定义 
 
 
 
-| Severity | 警报名称 | 数据源 | 说明 | 建议的补救措施|
+| 严重性 | 警报名称 | 数据源 | 描述 | 建议的补救措施|
 |---|---|---|---|---|
 | 低      | 自定义警报 - AMQP 协议中云到设备的消息数目超出了允许的范围          | IoT 中心     | 特定时间范围内的云到设备消息（AMQP 协议）数目超出了配置的允许范围。||
 | 低      | 自定义警报 - AMQP 协议中已拒绝的云到设备的消息数目超出了允许的范围 | IoT 中心     | 设备在特定时间范围内拒绝的云到设备消息（AMQP 协议）数目超出了配置的允许范围。||
@@ -53,7 +53,7 @@ ms.locfileid: "78299567"
 
 ## <a name="agent-alerts-available-for-customization"></a>可用于自定义的代理警报 
 
-| Severity | 警报名称 | 数据源 | 说明 | 建议的补救措施|
+| 严重性 | 警报名称 | 数据源 | 描述 | 建议的补救措施|
 |---|---|---|---|---|
 | 低      | 自定义警报 - 活动连接数目超出了允许的范围  | 代理       | 特定时间范围内的活动连接数目超出了当前配置的允许范围。|  调查设备日志。 了解连接的来源位置，并确定该连接是良性还是恶意的。 如果是恶意的，请删除可能的恶意软件并了解来源。 如果是良性的，请将来源添加到允许的连接列表。  |
 | 低      | 自定义警报 - 与不允许的 IP 建立了出站连接                             | 代理       | 与允许的 IP 列表以外的 IP 建立了出站连接。 |调查设备日志。 了解连接的来源位置，并确定该连接是良性还是恶意的。 如果是恶意的，请删除可能的恶意软件并了解来源。 如果是良性的，请将来源添加到允许的 IP 列表。                        |
@@ -65,6 +65,6 @@ ms.locfileid: "78299567"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[自定义警报](quickstart-create-custom-alerts.md)
-- 用于 IoT 服务的 Azure 安全中心[概述](overview.md)
+- 用于 IoT 服务[概述](overview.md)的 Azure 安全中心
 - 了解如何[访问安全数据](how-to-security-data-access.md)
-- 了解有关[调查设备的](how-to-investigate-device.md)详细信息
+- 了解有关[调查设备的信息](how-to-investigate-device.md)

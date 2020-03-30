@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: 76eb3a135f7a32a30cfa62546a644bc77cf39998
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934584"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具
@@ -67,7 +67,7 @@ HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 
 * 旧命令 (ASM) - `azure hdinsight cluster delete myhdicluster`
 * 新命令 - `azure hdinsight cluster delete mycluster -g myresourcegroup`
 
-**列出群集**
+**列表群集**
 
 * 旧命令 (ASM) - `azure hdinsight cluster list`
 * 新命令 - `azure hdinsight cluster list`
@@ -83,7 +83,7 @@ HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>将 Azure PowerShell 迁移到 Azure 资源管理器
 有关处于 Azure 资源管理器模式的 Azure PowerShell 的一般信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
 
-Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的 cmdlet 可按其名称来区分。  资源管理器模式在 cmdlet 名称中具有与 ASM 模式下的*clustername>.azurehdinsight.net*进行比较的*AzHDInsight* 。  例如， *AzHDInsightCluster*与*new-azurehdinsightcluster*。 某些参数和开关可能有新名称，并且在使用资源管理器时，有许多新参数可供使用。  例如，多个 cmdlet 需要名为 *-ResourceGroupName* 的新开关。 
+Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的 cmdlet 可按其名称来区分。  资源管理器模式下的 cmdlet 名称中包含 AzHDInsight，而在 ASM 模式下则包含 AzureHDInsight****。  例如，*新-AzHDInsight群集*与新*AzureHDInsight 群集*。 某些参数和开关可能有新名称，并且在使用资源管理器时，有许多新参数可供使用。  例如，多个 cmdlet 需要名为 *-ResourceGroupName* 的新开关。 
 
 在使用这些 HDInsight cmdlet 之前，必须先连接到 Azure 帐户并创建新资源组：
 
@@ -132,17 +132,17 @@ Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种
 
 **与脚本操作相关的 cmdlet：**
 
-* **AzHDInsightPersistedScriptAction**：获取群集的持久化脚本操作并按时间顺序列出这些操作，或获取指定的持久化脚本操作的详细信息。 
-* **AzHDInsightScriptActionHistory**：获取群集的脚本操作历史记录并按时间顺序反向列出，或获取以前执行的脚本操作的详细信息。 
-* **AzHDInsightPersistedScriptAction**：从 HDInsight 群集中删除持久化脚本操作。
-* **AzHDInsightPersistedScriptAction**：将之前执行的脚本操作设置为持久性脚本操作。
-* **AzHDInsightScriptAction**：向 Azure HDInsight 群集提交新的脚本操作。 
+* **获取 AzHDInsight 持久脚本操作**：获取群集的持久脚本操作，并按时间顺序列出它们，或获取指定持久脚本操作的详细信息。 
+* **获取 AzHDInsightScriptAction 历史**：获取群集的脚本操作历史记录，并按相反的时间顺序列出它，或获取以前执行的脚本操作的详细信息。 
+* **删除 AzHDInsight 持久脚本操作**：从 HDInsight 群集中删除持久脚本操作。
+* **设置-AzHDInsight持久脚本操作**：将以前执行的脚本操作设置为持久脚本操作。
+* **提交-AzHDInsight脚本操作**：向 Azure HDInsight 群集提交新的脚本操作。 
 
 有关其他用法信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 **与群集标识相关的 cmdlet：**
 
-* **AzHDInsightClusterIdentity**：将群集标识添加到群集配置对象，以便 HDInsight 群集可以访问 Azure Data Lake Storage。 请参阅[使用 Azure PowerShell 创建包含 Data Lake Storage 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
+* **添加-AzHDInsight群集标识**：向群集配置对象添加群集标识，以便 HDInsight 群集可以访问 Azure 数据湖存储。 请参阅[使用 Azure PowerShell 创建包含 Data Lake Storage 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
 
 ### <a name="examples"></a>示例
 **创建群集**
@@ -225,7 +225,7 @@ Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种
 
 | 如何...使用基于资源管理器的 HDInsight SDK | 链接 |
 | --- | --- |
-| 用于 .NET 的 Azure HDInsight SDK|请参阅[Azure HDINSIGHT SDK for .net](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet) |
+| 用于 .NET 的 Azure HDInsight SDK|请参阅[.NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet) |
 | 配合使用 Azure Active Directory 与 .NET SDK 以交互方式对应用程序进行身份验证 |请参阅[使用 .NET SDK 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。 本文中的代码段使用交互式身份验证方法。 |
 | 配合使用 Azure Active Directory 与 .NET SDK 以非交互方式对应用程序进行身份验证 |请参阅[为 HDInsight 创建非交互式应用程序](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | 使用 .NET SDK 提交 Apache Hive 作业 |请参阅[提交 Apache Hive 作业](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |

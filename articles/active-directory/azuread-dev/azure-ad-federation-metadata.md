@@ -4,27 +4,27 @@ description: 本文介绍 Azure Active Directory 针对接受 Azure Active Direc
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: c2d5f80b-aa74-452c-955b-d8eb3ed62652
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: ryanwi
-ms.reviewer: hirsin, dastrock
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ff034da1f2f40ad0162e5b9fad477d066bc4c3e7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165093"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154893"
 ---
 # <a name="federation-metadata"></a>联合元数据
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-对于配置为接受 Azure Active Directory 颁发的安全令牌的服务，Azure Active Directory (Azure AD) 发布了一个联合元数据文档。 在扩展了 [OASIS 安全断言标记语言 (SAML) v2.0 元数据](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html)的 [Web 服务联合语言（WS 联合身份验证）版本 1.2](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf) 中描述了联合元数据文档格式。
+对于配置为接受 Azure Active Directory 颁发的安全令牌的服务，Azure Active Directory (Azure AD) 发布了一个联合元数据文档。 在扩展了 [OASIS 安全断言标记语言 (SAML) v2.0 元数据](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf)的 [Web 服务联合语言（WS 联合身份验证）版本 1.2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) 中描述了联合元数据文档格式。
 
 ## <a name="tenant-specific-and-tenant-independent-metadata-endpoints"></a>特定于租户和独立于租户的元数据终结点
 Azure AD 发布了特定于租户和独立于租户的终结点。
@@ -43,7 +43,7 @@ Azure AD 会在 `https://login.microsoftonline.com/<TenantDomainName>/Federation
 
 对于**独立于租户的终结点**，`TenantDomainName` 为 `common`。 此文档仅列出了托管在 login.microsoftonline.com 上的所有 Azure AD 租户通用的联合元数据元素。
 
-例如，特定于租户的终结点可以是 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`。 独立于租户的终结点为 [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)。 可以在浏览器中键入此 URL 以查看联合元数据文档。
+例如，特定于租户的终结点可以是 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`。 与租户无关的终结点为[https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)。 可以在浏览器中键入此 URL 以查看联合元数据文档。
 
 ## <a name="contents-of-federation-metadata"></a>联合元数据的内容
 以下部分提供使用 Azure AD 颁发的令牌的服务所需的信息。
@@ -51,7 +51,7 @@ Azure AD 会在 `https://login.microsoftonline.com/<TenantDomainName>/Federation
 ### <a name="entity-id"></a>实体 ID
 `EntityDescriptor` 元素包含 `EntityID` 属性。 `EntityID` 属性的值表示颁发者，即，颁发令牌的安全令牌服务 (STS)。 请务必在收到令牌时验证颁发者。
 
-以下元数据显示了包含 `EntityDescriptor` 元素的特定于租户的 `EntityID` 元素示例。
+以下元数据显示了包含 `EntityID` 元素的特定于租户的 `EntityDescriptor` 元素示例。
 
 ```
 <EntityDescriptor
@@ -71,7 +71,7 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>令牌签名证书
-当服务收到 Azure AD 租户颁发的令牌时，必须使用联合元数据文档中发布的签名密钥来验证令牌的签名。 联合元数据包含租户用来进行令牌签名的证书的公共部分。 证书原始字节显示在 `KeyDescriptor` 元素中。 仅当 `use` 属性值为 `signing` 时，才可以使用令牌签名证书进行签名。
+当服务收到 Azure AD 租户颁发的令牌时，必须使用联合元数据文档中发布的签名密钥来验证该令牌的签名。 联合元数据包含租户用来进行令牌签名的证书的公共部分。 证书原始字节显示在 `KeyDescriptor` 元素中。 仅当 `use` 属性值为 `signing` 时，才可以使用令牌签名证书进行签名。
 
 Azure AD 发布的联合元数据文档可以包含多个签名密钥，例如，当 Azure AD 准备更新签名证书时。 如果联合元数据文档包含多个证书，验证令牌的服务应该支持文档中的所有证书。
 
@@ -91,7 +91,7 @@ MIIDPjCCAiqgAwIBAgIQVWmXY/+9RqFA/OG9kFulHDAJBgUrDgMCHQUAMC0xKzApBgNVBAMTImFjY291
 
 `KeyDescriptor` 元素出现在联合元数据文档中的两个位置：特定于 WS 联合身份验证的部分中，以及特定于 SAML 的部分中。 在这两个部分中发布的证书将是相同的。
 
-在特定于 WS 联合身份验证的部分中，WS 联合身份验证元数据读取器将读取 `RoleDescriptor` 类型的 `SecurityTokenServiceType` 元素中的证书。
+在特定于 WS 联合身份验证的部分中，WS 联合身份验证元数据读取器将读取 `SecurityTokenServiceType` 类型的 `RoleDescriptor` 元素中的证书。
 
 以下元数据显示了一个 `RoleDescriptor` 元素示例。
 

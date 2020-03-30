@@ -16,17 +16,17 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
 ms.openlocfilehash: 2a0d1c5af572c88dc11bed950b46706f0a2f081f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981962"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>轮转存储访问密钥后更新媒体服务 
 
 创建新的 Azure 媒体服务 (AMS) 帐户时，系统还会要求选择用于存储媒体内容的 Azure 存储帐户。 可将多个存储帐户添加到媒体服务帐户。 本文介绍如何轮换存储密钥。 此外，介绍如何将存储帐户添加到媒体帐户。 
 
-若要执行本文所述的操作，应使用 [Azure 资源管理器 API](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [Powershell](https://docs.microsoft.com/powershell/module/az.media)。  有关详细信息，请参阅[如何使用 PowerShell 和 Resource Manager 管理 Azure 资源](../../azure-resource-manager/management/manage-resource-groups-powershell.md)。
+若要执行本文所述的操作，应使用 [Azure 资源管理器 API](/rest/api/media/operations/azure-media-services-rest-api-reference) 和 [Powershell](https://docs.microsoft.com/powershell/module/az.media)。  有关详细信息，请参阅如何使用[PowerShell 和资源管理器管理 Azure 资源](../../azure-resource-manager/management/manage-resource-groups-powershell.md)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -45,7 +45,7 @@ ms.locfileid: "75981962"
 ## <a name="steps-to-rotate-storage-keys"></a>轮换存储密钥的步骤 
  
  1. 通过 PowerShell cmdlet 或 [Azure](https://portal.azure.com/) 门户更改存储帐户主密钥。
- 2. 用适当的参数调用 AzMediaServiceStorageKeys cmdlet，强制媒体帐户选取存储帐户密钥
+ 2. 使用适当的参数调用 Sync-AzMediaServiceStorageKeys cmdlet，强制媒体帐户选取存储帐户密钥
  
     以下示例演示如何将密钥同步到存储帐户。
   
@@ -53,7 +53,7 @@ ms.locfileid: "75981962"
   
  3. 等待大约一小时。 验证流式处理方案是否正常工作。
  4. 通过 PowerShell cmdlet 或 Azure 门户更改存储帐户辅助密钥。
- 5. 调用 AzMediaServiceStorageKeys powershell 并提供相应的参数，强制媒体帐户选取新的存储帐户密钥。 
+ 5. 使用适当的参数调用 Sync-AzMediaServiceStorageKeys powershell，强制媒体帐户选取新的存储帐户密钥。 
  6. 等待大约一小时。 验证流式处理方案是否正常工作。
  
 ### <a name="a-powershell-cmdlet-example"></a>PowerShell cmdlet 示例 

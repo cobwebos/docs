@@ -9,10 +9,10 @@ ms.date: 02/21/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 922ac7eb6cb9676af65700a6a2fe7fbae35a0dc5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67173483"
 ---
 此任务的步骤使用的 VNet 基于以下配置参考列表中的值。 此列表中也概述了其他设置和名称。 尽管我们确实基于此列表中的值添加变量，但是我们在任何步骤中不会直接使用此列表。 可以复制列表作为参考，并将列表中的值替换为自己的值。
@@ -22,7 +22,7 @@ ms.locfileid: "67173483"
 * 资源组 = “TestRG”
 * Subnet1 名称 = “FrontEnd” 
 * Subnet1 地址空间 = “192.168.1.0/24”
-* 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为“GatewaySubnet”  。
+* 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为 *GatewaySubnet*。
 * 网关子网地址空间 = “192.168.200.0/26”
 * 区域 =“美国东部”
 * 网关名称 = “GW”
@@ -65,7 +65,7 @@ ms.locfileid: "67173483"
    ```azurepowershell-interactive
    $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
    ```
-7. 请求公共 IP 地址。 创建网关之前请求 IP 地址。 无法指定要使用的 IP 地址；它会进行动态分配。 后面的配置部分会用到此 IP 地址。 AllocationMethod 必须是动态的。
+7. 请求公共 IP 地址。 创建网关之前请求 IP 地址。 无法指定要使用的 IP 地址；它会进行动态分配。 后面的配置部分将使用此 IP 地址。 AllocationMethod 必须是动态的。
 
    ```azurepowershell-interactive
    $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
@@ -75,7 +75,7 @@ ms.locfileid: "67173483"
    ```azurepowershell-interactive
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
    ```
-9. 创建网关。 在此步骤中， **-GatewayType** 尤其重要。 必须使用值 **ExpressRoute**。 运行这些 cmdlet 后，可能需要 45 分钟或更长时间才能创建好网关。
+9. 创建网关。 在此步骤中，**-GatewayType** 尤其重要。 必须使用值 **ExpressRoute**。 运行这些 cmdlet 后，可能需要 45 分钟或更长时间才能创建好网关。
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard

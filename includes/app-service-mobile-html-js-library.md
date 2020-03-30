@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: ff7ba04271c150018f2c55b62e40542a686608cf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67173460"
 ---
-## <a name="create-client"></a>创建客户端连接
+## <a name="create-a-client-connection"></a><a name="create-client"></a>创建客户端连接
 通过创建 `WindowsAzure.MobileServiceClient` 对象创建客户端连接。  将 `appUrl` 替换为到移动应用的 URL。
 
 ```javascript
 var client = WindowsAzure.MobileServiceClient(appUrl);
 ```
 
-## <a name="table-reference"></a>使用表
+## <a name="work-with-tables"></a><a name="table-reference"></a>使用表
 若要访问或更新数据，请创建到后端表的引用。 将 `tableName` 替换为表名称
 
 ```javascript
@@ -30,12 +30,12 @@ var table = client.getTable(tableName);
 * [查询表](#querying)
   * [筛选数据](#table-filter)
   * [分页浏览数据](#table-paging)
-  * [对数据排序](#sorting-data)
+  * [对数据进行排序](#sorting-data)
 * [插入数据](#inserting)
 * [修改数据](#modifying)
 * [删除数据](#deleting)
 
-### <a name="querying"></a>如何：查询表格引用
+### <a name="how-to-query-a-table-reference"></a><a name="querying"></a>如何：查询表格引用
 拥有表格引用后，可用其查询服务器上的数据。  查询使用了“类 LINQ”语言。
 若要返回表中的所有数据，请使用以下代码：
 
@@ -69,7 +69,7 @@ table
 
 有关查询语法的详细信息，请参阅 [查询对象文档]。
 
-#### <a name="table-filter"></a>在服务器上筛选数据
+#### <a name="filtering-data-on-the-server"></a><a name="table-filter"></a>在服务器上筛选数据
 可在表格引用上使用 `where` 子句：
 
 ```javascript
@@ -79,7 +79,7 @@ table
     .then(success, failure);
 ```
 
-也可使用筛选对象的函数。  该情况下， `this` 变量被分配给经过筛选的当前对象。  以下代码在功能上等效于上述示例：
+也可使用筛选对象的函数。  在这种情况下，`this` 变量将分配到正在筛选的当前对象。  以下代码在功能上等效于上述示例：
 
 ```javascript
 function filterByUserId(currentUserId) {
@@ -92,7 +92,7 @@ table
     .then(success, failure);
 ```
 
-#### <a name="table-paging"></a>分页浏览数据
+#### <a name="paging-through-data"></a><a name="table-paging"></a>通过数据分页
 利用 `take()` 和 `skip()` 方法。  例如，如想要将表拆分为 100 行记录：
 
 ```javascript
@@ -120,7 +120,7 @@ function loadPage(pageNum) {
 
 然后，可使用页变量和某些 UI 按钮提供页列表；使用 `loadPage()` 为每页加载新记录。  实施缓存，加快已加载的记录的访问速度。
 
-#### <a name="sorting-data"></a>如何：返回排序后的数据
+#### <a name="how-to-return-sorted-data"></a><a name="sorting-data"></a>如何：返回排序后的数据
 使用 `.orderBy()` 或 `.orderByDescending()` 查询方法：
 
 ```javascript
@@ -132,7 +132,7 @@ table
 
 有关查询对象的详细信息，请参阅 [查询对象文档]。
 
-### <a name="inserting"></a>如何：插入数据
+### <a name="how-to-insert-data"></a><a name="inserting"></a>如何：插入数据
 使用相应日期创建 JavaScript 对象并异步调用 `table.insert()`：
 
 ```javascript
@@ -152,7 +152,7 @@ table
 
 Azure 移动应用 Node.js Server SDK 支持用于开发的动态架构。  使用动态架构可将列添加到表中，在插入或更新操作中指定这些列即可。  建议先关闭动态架构，再将应用程序迁移到生产。
 
-### <a name="modifying"></a>如何：修改数据
+### <a name="how-to-modify-data"></a><a name="modifying"></a>如何：修改数据
 类似于 `.insert()` 方法，应创建 Update 对象，并调用 `.update()`。  update 对象必须包含要更新的记录的 ID，此 ID 在读取记录或调用 `.insert()` 时获取。
 
 ```javascript
@@ -168,7 +168,7 @@ table
     }, failure);
 ```
 
-### <a name="deleting"></a>如何：删除数据
+### <a name="how-to-delete-data"></a><a name="deleting"></a>如何：删除数据
 若要删除记录，请调用 `.del()` 方法。  在对象引用中传递 ID：
 
 ```javascript

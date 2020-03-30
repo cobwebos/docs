@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9d0e31a89494477e048c7a2f9f7b8165e08d1a2f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 838e523f74a21c44958ddb6dc88e4dab3526d81a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924259"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064997"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
 > [!NOTE]
@@ -40,7 +40,7 @@ ms.locfileid: "74924259"
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>增强功能
 - 可将 DNS 条目添加到允许列表服务总线，而不是将防火墙中的所有 Azure IP 地址列入允许列表（如果需要）。 可以在 Azure 门户中找到相应的 DNS 条目（“数据工厂”->“创作和部署”->“网关”->“serviceUrls”（采用 JSON））
-- HDFS 连接器现在允许跳过 SSL 验证，支持自签名的公用证书。
+- HDFS 连接器现在通过跳过 TLS 验证支持自签名公共证书。
 - 已修复：更新期间发生的网关脱机问题（由于时钟偏差）
 
 
@@ -64,7 +64,7 @@ ms.locfileid: "74924259"
 - 已修复：从 Oracle 作为源读取十进制 null 值不正确。
 
 ## <a name="2661922"></a>2.6.6192.2
-### <a name="whats-new"></a>最新信息
+### <a name="whats-new"></a>新增功能
 - 客户可以提供有关网关注册体验的反馈。
 - 支持新的压缩格式：ZIP (Deflate)
 
@@ -81,7 +81,7 @@ ms.locfileid: "74924259"
 
 ## <a name="2461511"></a>2.4.6151.1
 
-### <a name="whats-new"></a>最新信息
+### <a name="whats-new"></a>新增功能
 
 - 现可在本地存储数据源凭据。 这些凭据已加密。 使用可从现有网关导出的备份文件可在本地恢复和还原数据源凭据。
 
@@ -102,7 +102,7 @@ ms.locfileid: "74924259"
 *  支持使用网关配置管理器设置网管的 HTTP 代理。 配置后，可通过 HTTP 代理访问 Azure Blob、Azure 表、Azure Data Lake 和 Document DB。
 *  在从/向 Azure Blob、Azure Data Lake Store、本地文件系统和本地 HDFS 复制数据时，支持对 TextFormat 进行标头处理。
 *  支持从追加 Blob、页 Blob 以及现已支持的块 Blob 复制数据。
-*  引入了一种新的网关状态“在线(受限)”，其指示网关主要功能正常工作，但对复制向导的交互操作支持例外。
+*  引入了一种新的网关状态“在线(受限)”****，其指示网关主要功能正常工作，但对复制向导的交互操作支持例外。
 *  增强了使用注册密钥注册网关的可靠性。
 
 ## <a name="216040"></a>2.1.6040.
@@ -128,7 +128,7 @@ ms.locfileid: "74924259"
     *  可使用[无代码复制工具](data-factory-copy-data-wizard-tutorial.md)从存储中复制数据。 有关此功能的大体详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
 *  可使用数据管理网关将数据从本地 SQL Server 数据库直接传入 Azure 机器学习。
 
-*  性能提升
+*  性能改进
 
     * 针对无代码复制工具中的 SQL Server 提升查看架构/预览的性能。
 
@@ -144,7 +144,7 @@ ms.locfileid: "74924259"
 
 *  如果自动更新失败，网关安装程序最多重试三次自动更新。
 
-*  性能提升
+*  性能改进
 
     * 在无代码复制情况下，提升了从本地服务器加载大型表的性能。
 
@@ -152,7 +152,7 @@ ms.locfileid: "74924259"
 
 ## <a name="11058921"></a>1.10.5892.1
 
-*  性能提升
+*  性能改进
 
 *  Bug 修复
 
@@ -164,34 +164,34 @@ ms.locfileid: "74924259"
 *  设置更新计划时间的功能
 *  用于切换开/关自动更新的 PowerShell 脚本
 *  支持 JSON 格式  
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ## <a name="1858221"></a>1.8.5822.1
 
 *  提升故障排除体验
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1757951"></a>1.7.5795.1
 
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1757641"></a>1.7.5764.1
 
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1657351"></a>1.6.5735.1
 
 *  支持本地 HDFS 源/接收器
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1656961"></a>1.6.5696.1
 
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1656761"></a>1.6.5676.1
@@ -208,7 +208,7 @@ ms.locfileid: "74924259"
 ### <a name="1656721"></a>1.6.5672.1
 
 *  支持用于 Azure 数据工厂的 ODBC 数据源的表名称
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1656581"></a>1.6.5658.1
@@ -229,13 +229,13 @@ ms.locfileid: "74924259"
 
 *  支持用于 Azure 数据工厂的 5 个关系数据库（MySQL、PostgreSQL、DB2、Teradata 和 Sybase）
 *  压缩支持（Gzip 和 Deflate）
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1455491"></a>1.4.5549.1
 
 *  增加了对 Azure 数据工厂的 Oracle 数据源支持
-*  性能提升
+*  性能改进
 *  Bug 修复
 
 ### <a name="1454921"></a>1.4.5492.1

@@ -2,21 +2,21 @@
 title: 通过 Node.js 使用 Azure 队列存储 - Azure 存储
 description: 了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。 相关示例是使用 Node.js 编写的。
 author: mhopkins-msft
-ms.service: storage
 ms.author: mhopkins
 ms.date: 12/08/2016
+ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 9eee7f6b321a5ba660e1a0a5a48771c599746bcb
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 7abcad03678131668700f5d2c64b9c971081cb89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673082"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060939"
 ---
-# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>使用 Azure 队列服务创建和删除 node.js 中的队列
+# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>通过 Node.js 使用 Azure 队列服务创建和删除队列
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "71673082"
 若要使用 Azure 存储，需要 Azure Storage SDK for Node.js，其中包括一组便于与存储 REST 服务进行通信的库。
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>使用 Node 包管理器 (NPM) 可获取该程序包
-1. 使用 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix) 等命令行界面导航到在其中创建了示例应用程序的文件夹。
+1. 使用 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix) 等命令行接口导航到在其中创建了示例应用程序的文件夹。
 2. 在命令窗口中键入 **npm install azure-storage**。 该命令的输出类似于以下示例。
  
     ```bash
@@ -70,7 +70,7 @@ Azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_AC
 var queueSvc = azure.createQueueService();
 ```
 
-使用 **createQueueIfNotExists** 方法，该方法返回指定的队列（如果已存在），或创建具有指定名称的新队列（如果尚不存在）。
+使用 **createQueueIfNotExists** 方法，该方法将返回指定的队列（如果已存在），或创建具有指定名称的新队列（如果尚不存在）。
 
 ```javascript
 queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
@@ -83,7 +83,7 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 如果创建了队列，则 `result.created` 为 true。 如果队列已存在，则 `result.created` 为 false。
 
 ### <a name="filters"></a>筛选器
-可以向使用 **QueueService** 执行的操作应用可选的筛选操作。 筛选操作可包括日志记录、自动重试等。筛选器是实现具有签名的方法的对象：
+可以向使用 **QueueService** 执行的操作应用可选的筛选操作。 筛选操作可以包括日志记录、自动重试等。筛选器是实现了具有签名的方法的对象：
 
 ```javascript
 function handle (requestOptions, next)
@@ -105,7 +105,7 @@ var queueSvc = azure.createQueueService().withFilter(retryOperations);
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>如何：在队列中插入消息
-要在队列中插入消息，可使用 **createMessage** 方法创建一条新消息并将其添加到队列中。
+若要将消息插入队列，请使用**createMessage**方法创建新消息并将其添加到队列中。
 
 ```javascript
 queueSvc.createMessage('myqueue', "Hello world!", function(error, results, response){
@@ -116,7 +116,7 @@ queueSvc.createMessage('myqueue', "Hello world!", function(error, results, respo
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>如何：扫视下一条消息
-通过调用 **peekMessages** 方法，可查看队列前面的消息，而不必从队列中将其删除。 默认情况下，**peekMessages** 扫视单条消息。
+您可以通过调用**peekMessages**方法查看队列前面的消息，而无需将其从队列中删除。 默认情况下，**peekMessages** 扫视单条消息。
 
 ```javascript
 queueSvc.peekMessages('myqueue', function(error, results, response){
@@ -133,7 +133,7 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 > 
 > 
 
-## <a name="how-to-dequeue-the-next-message"></a>如何：取消下一条消息的排队
+## <a name="how-to-dequeue-the-next-message"></a>如何：取消对下一条消息的排队
 处理消息是一个两阶段过程：
 
 1. 取消消息的排队。
@@ -156,7 +156,7 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 ```
 
 > [!NOTE]
-> 默认情况下，一条消息只会隐藏 30 秒，其他客户端就可以看见它。 可以将 `options.visibilityTimeout` 与 **getMessages** 配合使用，以指定其他值。
+> 默认情况下，一条消息只会隐藏 30 秒，其他客户端就可以看见它。 可将 `options.visibilityTimeout` 与 **getMessages** 配合使用，以指定其他值。
 > 
 > [!NOTE]
 > 在队列中没有消息时使用 **getMessages** 不会返回错误，但也不会返回消息。
@@ -180,7 +180,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 });
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>如何：取消消息排队的其他选项
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>如何：用于对消息取消排队的其他选项
 可以通过两种方式自定义队列中的消息检索：
 
 * `options.numOfMessages` - 获取一批消息（最多 32 条）。
@@ -230,7 +230,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 如果无法返回所有队列，可使用 `result.continuationToken` 作为 **listQueuesSegmented** 的第一个参数或 **listQueuesSegmentedWithPrefix** 的第二个参数，以检索更多结果。
 
 ## <a name="how-to-delete-a-queue"></a>如何：删除队列
-若要删除队列及其中包含的所有消息，请对队列对象调用 **deleteQueue** 方法。
+要删除队列及其中包含的所有消息，请调用队列对象上的**deleteQueue**方法。
 
 ```javascript
 queueSvc.deleteQueue(queueName, function(error, response){
@@ -325,10 +325,10 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 ```
 
 ## <a name="next-steps"></a>后续步骤
-在了解了有关队列存储的基础知识后，可使用以下链接来了解更复杂的存储任务。
+现在，已了解有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
 
 * 访问 [Azure 存储团队博客][Azure Storage Team Blog]。
-* 访问 GitHub 上的 [Azure Storage SDK for Node][Azure Storage SDK for Node] 存储库。
+* 访问 GitHub 上的[适用于 Node 的 Azure 存储 SDK][Azure Storage SDK for Node] 存储库。
 
 
 

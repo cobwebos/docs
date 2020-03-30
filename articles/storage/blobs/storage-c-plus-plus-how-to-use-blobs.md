@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: 0a9015e33f5456efeac7f7c887995ac4a69f0259
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75941809"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>如何通过 C++ 使用 Blob 存储
@@ -32,14 +32,14 @@ ms.locfileid: "75941809"
 
 要安装适用于 C++ 的 Azure 存储客户端库，可以使用以下方法：
 
-* **Linux：** 按照[自述文件的 Azure 存储客户端库中提供C++的说明进行操作： Linux 页上的入门](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)。
-* **Windows：** 在 Windows 上，使用[vcpkg](https://github.com/microsoft/vcpkg)作为依赖关系管理器。 按照[快速入门](https://github.com/microsoft/vcpkg#quick-start)初始化 vcpkg。 然后使用以下命令安装库：
+* **Linux：** 按照[Azure 存储客户端库中的说明操作，了解 C++ README：开始在 Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)页上。
+* **窗口：** 在 Windows 上，使用[vcpkg](https://github.com/microsoft/vcpkg)作为依赖项管理器。 按照[快速入门](https://github.com/microsoft/vcpkg#quick-start)初始化 vcpkg。 然后使用以下命令安装库：
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp
 ```
 
-可以在[自述](https://github.com/Azure/azure-storage-cpp#download--install)文件中找到有关如何生成源代码和导出到 NuGet 的指南。
+您可以在[README](https://github.com/Azure/azure-storage-cpp#download--install)文件中找到有关如何构建源代码并导出到 NuGet 的指南。
 
 ## <a name="configure-your-application-to-access-blob-storage"></a>配置应用程序以访问 Blob 存储
 将以下 include 语句添加到 C++ 文件的顶部，要在此使用 Azure 存储 API 来访问 blob：  
@@ -52,7 +52,7 @@ ms.locfileid: "75941809"
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>设置 Azure 存储连接字符串
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。 在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 *AccountName* 和 *AccountKey* 值使用 [Azure 门户](https://portal.azure.com)中列出的存储帐户的名称和存储帐户的存储访问密钥。 有关存储帐户和访问密钥的信息，请参阅[关于 Azure 存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 此示例演示如何声明一个静态字段以保存连接字符串：  
+Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。 在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 *AccountName* 和 *AccountKey* 值使用 [Azure 门户](https://portal.azure.com)中列出的存储帐户的名称和存储帐户的存储访问密钥。 有关存储帐户和访问密钥的信息，请参阅[有关 Azure 存储帐户](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 此示例演示如何声明一个静态字段以保存连接字符串：  
 
 ```cpp
 // Define the connection-string with your values.
@@ -66,12 +66,12 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-若要启动 Azure 存储模拟器，请选择“开始”按钮或按 **Windows** 键。 开始键入“Azure 存储模拟器”，并从应用程序列表中选择“Microsoft Azure 存储模拟器”。  
+要启动 Azure 存储模拟器，选择“启动”**** 按钮或按 **Windows** 键。 开始键入“Azure 存储模拟器”****，然后从应用程序列表中选择“Windows Azure 存储模拟器”****。  
 
 下面的示例假定使用了这两个方法之一来获取存储连接字符串。  
 
 ## <a name="retrieve-your-storage-account"></a>检索存储帐户
-可使用 **cloud_storage_account** 类来表示存储帐户信息。 若要从存储连接字符串中检索存储帐户信息，可以使用 **parse** 方法。  
+您可以使用**cloud_storage_account**类来表示存储帐户信息。 若要从存储连接字符串中检索存储帐户信息，可以使用 **parse** 方法。  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -120,7 +120,7 @@ permissions.set_public_access(azure::storage::blob_container_public_access_type:
 container.upload_permissions(permissions);  
 ```
 
-Internet 中的所有人都可以查看公共容器中的 Blob，但是，仅在你具有相应的访问密钥时，才能修改或删除它们。  
+Internet 中的所有人都可以查看公共容器中的 Blob，但是，仅在具有相应的访问密钥时，才能修改或删除它们。  
 
 ## <a name="how-to-upload-a-blob-into-a-container"></a>如何：将 Blob 上传到容器
 Azure Blob 存储支持块 Blob 和页 Blob。 大多数情况下，推荐使用块 Blob。  
@@ -158,7 +158,7 @@ blob3.upload_text(U("other text"));
 还可以使用 **upload_from_file** 方法将文件上传到块 Blob。
 
 ## <a name="how-to-list-the-blobs-in-a-container"></a>如何：列出容器中的 Blob
-若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的 **list_blobs** 方法来检索其中的 Blob 和/或目录。 若要针对一个返回的 **list_blob_item** 访问其丰富的属性和方法，必须调用 **list_blob_item.as_blob** 方法以获取一个 **cloud_blob** 对象，或调用 **list_blob.as_directory** 方法以获取 cloud_blob_directory 对象。 以下代码演示如何检索和输出 **my-sample-container** 容器中每一项的 URI：
+若要列出容器中的 Blob，首先需要获取容器引用。 然后，可以使用容器的**list_blobs**方法检索其中的 blob 和/或目录。 若要针对一个返回的 **list_blob_item** 访问其丰富的属性和方法，必须调用 **list_blob_item.as_blob** 方法以获取一个 **cloud_blob** 对象，或调用 **list_blob.as_directory** 方法以获取 cloud_blob_directory 对象。 以下代码演示如何检索和输出 **my-sample-container** 容器中每一项的 URI：
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -188,7 +188,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 有关列出操作的更多详细信息，请参阅[使用 C++ 列出 Azure 存储资源](../storage-c-plus-plus-enumeration.md)。
 
 ## <a name="how-to-download-blobs"></a>如何：下载 Blob
-要下载 Blob，请首先检索 Blob 引用，然后调用 **download_to_stream** 方法。 以下示例使用 **download_to_stream** 方法将 Blob 内容传输到一个流对象，然后用户即可将该对象保存到本地文件。  
+若要下载 blob，请先检索 blob 引用，然后调用**download_to_stream**方法。 以下示例使用 **download_to_stream** 方法将 Blob 内容传输到一个流对象，然后用户即可将该对象保存到本地文件。  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -260,8 +260,8 @@ blockBlob.delete_blob();
 
 * [如何通过 C++ 使用队列存储](../storage-c-plus-plus-how-to-use-queues.md)
 * [如何通过 C++ 使用表存储](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [使用 C++ 列出 Azure 存储资源](../storage-c-plus-plus-enumeration.md)
-* [适用于 C++ 的存储客户端库参考](https://azure.github.io/azure-storage-cpp)
+* [在C++中列出 Azure 存储资源](../storage-c-plus-plus-enumeration.md)
+* [存储客户端库，用于C++参考](https://azure.github.io/azure-storage-cpp)
 * [Azure 存储文档](https://azure.microsoft.com/documentation/services/storage/)
 * [使用 AzCopy 命令行实用程序传输数据](../storage-use-azcopy.md)
 

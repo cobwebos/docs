@@ -8,17 +8,17 @@ ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 6457f062a40e60a491220fcf977585e8b07445b2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273716"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
 
 使用支持 REST 调用的任何编程语言，可以针对 Azure Analysis Services 表格模型执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
 
-数据刷新操作可能需要一段时间，具体取决于多种因素，包括数据量、使用分区的优化级别，等等。这些操作在传统上是使用现有方法调用的，如使用[TOM](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) （表格对象模型）、 [PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) cmdlet 或[TMSL](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) （表格模型脚本语言）。 但是，这些方法可能需要通常不可靠的且长时间运行的 HTTP 连接。
+数据刷新操作可能需要一些时间，具体取决于许多因素，包括数据量、使用分区的优化级别等。这些操作传统上是使用现有方法调用的，例如使用[TOM（](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)表格对象模型[）、PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) cmdlet 或[TMSL（](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)表格模型脚本语言）。 但是，这些方法可能需要通常不可靠的且长时间运行的 HTTP 连接。
 
 使用 Azure Analysis Services 的 REST API 能够以异步方式执行数据刷新操作。 如果使用 REST API，则不需要从客户端应用程序建立长时间运行的 HTTP 连接。 还有其他内置功能可以确保可靠性，例如自动重试和分批提交。
 
@@ -30,7 +30,7 @@ ms.locfileid: "78273716"
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-例如，在名为 "`myserver`" 的服务器上，请考虑名为 AdventureWorks 的模型，该服务器位于美国西部 Azure 区域。 此服务器名称为：
+例如，请考虑位于美国西部 Azure 区域的名为`myserver`的服务器上名为"AdventureWorks"的模型。 此服务器名称为：
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -56,7 +56,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 所有调用必须使用 Authorization 标头中的有效 Azure Active Directory (OAuth 2) 令牌进行身份验证，并且必须满足以下要求：
 
@@ -93,11 +93,11 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 }
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 不需要指定参数。 将应用默认值。
 
-| 名称             | 类型  | 说明  |默认  |
+| “属性”             | 类型  | 说明  |默认  |
 |------------------|-------|--------------|---------|
 | `Type`           | 枚举  | 要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic 和 defragment。 Add 类型不受支持。      |   automatic      |
 | `CommitMode`     | 枚举  | 确定是要分批提交对象，还是只在完成时才提交。 模式包括：default、transactional、partialBatch。  |  transactional       |
@@ -112,18 +112,18 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 
 ### <a name="status-values"></a>状态值
 
-|状态值  |说明  |
+|状态值  |描述  |
 |---------|---------|
-|`notStarted`    |   操作尚未开始。      |
+|`notStarted`    |   操作尚未启动。      |
 |`inProgress`     |   操作正在进行。      |
-|`timedOut`     |    操作因用户指定的超时而超时。     |
-|`cancelled`     |   用户或系统取消了操作。      |
+|`timedOut`     |    根据用户指定的超时进行工时超时。     |
+|`cancelled`     |   操作被用户或系统取消。      |
 |`failed`     |   操作失败。      |
 |`succeeded`      |   操作成功。      |
 
 ## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
 
-若要检查刷新操作的状态，可以在刷新 ID 中使用 GET 谓词。 下面是响应正文的示例。 如果操作正在进行，则在状态中返回 `inProgress`。
+若要检查刷新操作的状态，可以在刷新 ID 中使用 GET 谓词。 下面是响应正文的示例。 如果操作正在进行，`inProgress`则返回状态。
 
 ```
 {
@@ -177,7 +177,7 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 
 ## <a name="post-sync"></a>POST /sync
 
-执行了刷新操作后，可能需要将新数据与副本同步以进行查询扩展。若要对模型执行同步操作，请在/sync 函数上使用 POST 谓词。 响应中的 Location 标头包含同步操作 ID。
+执行刷新操作后，可能需要将新数据与查询横向扩展的副本同步。要对模型执行同步操作，请使用 /sync 函数上的 POST 谓词。 响应中的 Location 标头包含同步操作 ID。
 
 ## <a name="get-sync-status"></a>GET /sync status
 
@@ -217,14 +217,14 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 
 有关如何在 Azure AS 中设置服务主体和分配必要权限的详细信息，请参阅[创建服务主体 - Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)和[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。 完成上述步骤后，请完成以下附加步骤：
 
-1.  在代码示例中，找到 **string authority = …** ，将 **common** 替换为组织的租户 ID。
+1.  在代码示例中，找到 **string authority = …**，将 **common** 替换为组织的租户 ID。
 2.  注释/取消注释，以便使用 ClientCredential 类来实例化 cred 对象。 确保以安全方式访问 \<App ID> 和 \<App Key> 值，或者对服务主体使用基于证书的身份验证。
 3.  运行该示例。
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-[示例](analysis-services-samples.md)   
+[样品](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
 
 

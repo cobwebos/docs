@@ -1,27 +1,27 @@
 ---
-title: Azure VM 备份中的 SQL DB & 通过 PowerShell 进行还原
-description: 使用 Azure 备份和 PowerShell 备份和还原 Azure Vm 中的 SQL 数据库。
+title: 通过 PowerShell 备份和还原 Azure VM 中的 SQL 数据库
+description: 使用 Azure 备份与 PowerShell 备份和还原 Azure VM 中的 SQL 数据库。
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 115eef3619f76f83f63c5e69e86393c032e0844e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 9608b02869b1d41d901ec77a42cfaa6d882040e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172624"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131817"
 ---
-# <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>在 Azure Vm 中通过 PowerShell 备份和还原 SQL 数据库
+# <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>使用 PowerShell 备份和还原 Azure VM 中的 SQL 数据库
 
-本文介绍如何使用 Azure PowerShell 在 Azure VM 中使用[Azure 备份](backup-overview.md)恢复服务保管库备份和恢复 SQL 数据库。
+本文介绍如何在 Azure PowerShell 中使用 [Azure 备份](backup-overview.md)恢复服务保管库来备份和恢复 Azure VM 中的 SQL 数据库。
 
-本文介绍以下操作：
+本文介绍如何执行以下操作：
 
 > [!div class="checklist"]
 >
 > * 设置 PowerShell 并注册 Azure 恢复服务提供程序。
 > * 创建恢复服务保管库。
-> * 在 Azure VM 中配置 SQL 数据库的备份。
+> * 为 Azure VM 中的 SQL 数据库配置备份。
 > * 运行备份作业。
 > * 还原已备份的 SQL 数据库。
 > * 监视备份和还原作业。
@@ -29,7 +29,7 @@ ms.locfileid: "74172624"
 ## <a name="before-you-start"></a>开始之前
 
 * [详细了解](backup-azure-recovery-services-vault-overview.md)恢复服务保管库。
-* 阅读有关在[Azure vm 中备份 SQL](backup-azure-sql-database.md#before-you-start)数据库的功能功能。
+* 了解用于[备份 Azure VM 中的 SQL 数据库](backup-azure-sql-database.md#before-you-start)的功能。
 * 查看恢复服务的 PowerShell 对象层次结构。
 
 ### <a name="recovery-services-object-hierarchy"></a>恢复服务对象层次结构
@@ -44,7 +44,7 @@ ms.locfileid: "74172624"
 
 按如下所述设置 PowerShell：
 
-1. [下载最新版本的 Azure PowerShell](/powershell/azure/install-az-ps)。 所需的最低版本为1.5.0。
+1. [下载最新版本的 Azure PowerShell](/powershell/azure/install-az-ps)。 所需的最低版本为 1.5.0。
 
 2. 找到包含以下命令的 Azure 备份 PowerShell cmdlet：
 
@@ -52,7 +52,7 @@ ms.locfileid: "74172624"
     Get-Command *azrecoveryservices*
     ```
 
-3. 查看 Azure 备份和恢复服务保管库的别名和 cmdlet。 下面是可能显示的内容示例。 此 cmdlet 列表并不完整。
+3. 查看 Azure 备份和恢复服务保管库的别名与 cmdlet。 下面是可能显示的内容示例。 此 cmdlet 列表并不完整。
 
     ![恢复服务 cmdlet 列表](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "74172624"
 5. 在出现的网页上，系统会提示你输入帐户凭据。
 
     * 或者，可以结合 **-Credential** 在 **Connect-AzAccount** cmdlet 中将帐户凭据包含为参数。
-    * 如果你是使用租户的 CSP 合作伙伴，请使用其 tenantID 或租户主域名将客户指定为租户。 例如，Connect-AzAccount -Tenant fabrikam.com。
+    * 如果你是为某个租户工作的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如，Connect-AzAccount -Tenant fabrikam.com****。
 
 6. 由于一个帐户可以有多个订阅，因此请将要使用的订阅与帐户关联在一起。
 
@@ -68,7 +68,7 @@ ms.locfileid: "74172624"
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-7. 首次使用 Azure 备份时，请使用 Register-AzResourceProvider cmdlet 将 Azure 恢复服务提供程序注册到订阅。
+7. 首次使用 Azure 备份时，请使用 Register-AzResourceProvider cmdlet 将 Azure 恢复服务提供程序注册到订阅****。
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
@@ -86,7 +86,7 @@ ms.locfileid: "74172624"
 
 请按照以下步骤创建恢复服务保管库。
 
-恢复服务保管库是一种资源管理器资源，因此必须将其放在资源组中。 可以使用现有资源组，也可以使用 New-AzResourceGroup cmdlet 创建资源组。 创建资源组时，请指定资源组的名称和位置。
+恢复服务保管库是一种资源管理器资源，因此必须将其放在资源组中。 可以使用现有资源组，也可以使用 New-AzResourceGroup cmdlet 创建资源组****。 创建资源组时，请指定资源组的名称和位置。
 
 1. 保管库放在资源组中。 如果没有现有的资源组，请使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0) 新建一个。 此示例在美国西部区域创建一个新的资源组。
 
@@ -103,7 +103,7 @@ ms.locfileid: "74172624"
 3. 指定保管库存储使用的冗余类型。
 
     * 可以使用[本地冗余存储](../storage/common/storage-redundancy-lrs.md)或[异地冗余存储](../storage/common/storage-redundancy-grs.md)。
-    * 下面的示例将**BackupStorageRedundancy**选项设置为[AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd For **testvault**设置为**GeoRedundant**。
+    * 以下示例针对 **testvault** 设置为 **GeoRedundant** 的 [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) 命令设置 **-BackupStorageRedundancy** 选项。
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -118,9 +118,9 @@ ms.locfileid: "74172624"
 Get-AzRecoveryServicesVault
 ```
 
-输出如下所示。 已提供关联的资源组和位置。
+输出如下所示。 其中已提供资源组名称和位置。
 
-```powershell
+```output
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -137,7 +137,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 * 许多 Azure 备份 cmdlet 要求将恢复服务保管库对象用作输入，因此可以方便地在变量中存储保管库对象。
 * 保管库上下文是在保管库中受保护的数据的类型。 可以使用 [Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0) 设置它。 设置上下文后，它将应用于所有后续 cmdlet。
 
-以下示例为 testvault 设置保管库上下文。
+以下示例为 testvault 设置保管库上下文****。
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
@@ -172,7 +172,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 > [!IMPORTANT]
 > 只需以 30 分钟的倍数提供开始时间。 在上面的示例中，开始时间只能是“01:00:00”或“02:30:00”。 开始时间不能为“01:15:00”
 
-以下示例将计划策略和保留策略存储在变量中。 然后，它使用这些变量作为新策略（**NewSQLPolicy**）的参数。 **NewSQLPolicy**采用每日一次的 "完整" 备份，保留180天，并每隔2小时进行一次日志备份
+以下示例将计划策略和保留策略存储在变量中。 然后，它使用这些变量作为新策略 (**NewSQLPolicy**) 的参数。 **NewSQLPolicy** 创建每日“完整”备份，将备份保留 180 天，并每隔 2 小时创建日志备份
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
@@ -182,7 +182,7 @@ $NewSQLPolicy = New-AzRecoveryServicesBackupProtectionPolicy -Name "NewSQLPolicy
 
 输出如下所示。
 
-```powershell
+```output
 Name                 WorkloadType       BackupManagementType BackupTime                Frequency                                IsDifferentialBackup IsLogBackupEnabled
                                                                                                                                 Enabled
 ----                 ------------       -------------------- ----------                ---------                                -------------------- ------------------
@@ -193,160 +193,161 @@ NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 
 
 ### <a name="registering-the-sql-vm"></a>注册 SQL VM
 
-对于 Azure VM 备份和 Azure 文件共享，备份服务可以连接到这些 Azure 资源管理器资源并提取相关的详细信息。 由于 SQL 是 Azure VM 内的应用程序，因此备份服务需要访问应用程序和提取必要详细信息的权限。 要执行此操作，需要使用恢复服务保管库 *"注册"* 包含 SQL 应用程序的 Azure VM。 一旦向保管库注册了 SQL VM，就可以仅保护该保管库的 SQL 数据库。 使用[AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS CMDLET 注册 VM。
+对于 Azure VM 备份和 Azure 文件共享，备份服务可以连接到这些 Azure 资源管理器资源并提取相关的详细信息。 由于 SQL 是 Azure VM 内部的一个应用程序，因此备份服务需要有权访问该应用程序并提取所需的详细信息。 为此，需要将包含 SQL 应用程序的 Azure VM“注册”到恢复服务保管库。** 将 SQL VM 注册到保管库后，可以仅在该保管库中保护 SQL 数据库。 使用 [Register-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS cmdlet 注册 VM。
 
-````powershell
+```powershell
  $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
 Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID -Force
-````
+```
 
-此命令将返回此资源的 "备份容器"，状态将为 "已注册"
+此命令将返回此资源的“备份容器”，状态为“已注册”
 
 > [!NOTE]
-> 如果未指定 force 参数，则要求用户确认文本 "是否要禁用对此容器的保护"。 请忽略此文本，并说 "Y" 以确认。 这是一个已知问题，我们正在努力删除文本和强制参数的要求。
+> 如果未指定 force 参数，系统会显示文本“是否要对此容器禁用保护”并要求用户确认。 请忽略此文本，并输入“Y”以确认。 这是一个已知的问题，我们正在努力删除该文本，并取消对 force 参数的要求。
 
-### <a name="fetching-sql-dbs"></a>获取 SQL 数据库
+### <a name="fetching-sql-dbs"></a>提取 SQL 数据库
 
-完成注册后，备份服务将能够列出 VM 内所有可用的 SQL 组件。 若要查看尚未备份到此保管库的所有 SQL 组件，请使用[AzRecoveryServicesBackupProtectableItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS cmdlet
+完成注册后，备份服务可以列出 VM 中所有可用的 SQL 组件。 若要查看需要备份到此保管库的所有 SQL 组件，请使用 [Get-AzRecoveryServicesBackupProtectableItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS cmdlet
 
-````powershell
+```powershell
 Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -VaultId $targetVault.ID
-````
+```
 
-此输出将显示所有通过项类型和 ServerName 注册到此保管库的 SQL Vm 中所有未受保护的 SQL 组件。 通过传递 "-Container" 参数或使用 "Name" 和 "ServerName" 的组合以及 ItemType 标志来实现唯一的 SQL 项目，可以进一步筛选到特定的 SQL VM。
+此输出将显示所有已注册到此保管库的 SQL VM 中所有不受保护的 SQL 组件以及 ItemType 和 ServerName。 可以通过传递“-Container”参数来进一步筛选特定的 SQL VM，或者结合 ItemType 标志使用“Name”和“ServerName”的组合来查看唯一的 SQL 项。
 
-````powershell
+```powershell
 $SQLDB = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLDataBase -VaultId $targetVault.ID -Name "<Item Name>" -ServerName "<Server Name>"
-````
+```
 
 ### <a name="configuring-backup"></a>配置备份
 
-现在，我们有了所需的 SQL DB 和需要备份的策略，可以使用[AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) cmdlet 来配置此 sql DB 的备份。
+提取所需的 SQL 数据库并创建用于备份的策略后，接下来可以使用 [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) cmdlet 来为此 SQL 数据库配置备份。
 
-````powershell
+```output
 Enable-AzRecoveryServicesBackupProtection -ProtectableItem $SQLDB -Policy $NewSQLPolicy
-````
+```
 
 该命令将一直等到配置备份完成并返回以下输出。
 
-```powershell
+```output
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 master           ConfigureBackup      Completed            3/18/2019 6:00:21 PM      3/18/2019 6:01:35 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
 ```
 
-### <a name="fetching-new-sql-dbs"></a>正在提取新的 SQL 数据库
+### <a name="fetching-new-sql-dbs"></a>提取新的 SQL 数据库
 
-注册计算机后，备份服务会提取可用数据库的详细信息。 如果用户稍后向注册的计算机添加 SQL 数据库/SQL 实例，则需要手动触发备份服务以执行全新的 "查询"，以再次获取所有不受保护的数据库（包括新添加的数据库）。 在 SQL VM 上使用[AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Initialize-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS cmdlet 来执行全新查询。 命令将等待，直到操作完成。 稍后使用[AzRecoveryServicesBackupProtectableItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS cmdlet 获取未受保护的最新 SQL 组件列表
+注册计算机后，备份服务将提取可用数据库的详细信息。 如果用户以后将 SQL 数据库/SQL 实例添加到已注册的计算机，则需要手动触发备份服务，才能执行新的“查询”来再次获取所有不受保护的数据库（包括新添加的数据库）。 在 SQL VM 上使用 [Initialize-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Initialize-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS cmdlet 执行新的查询。 该命令会等到操作完成为止。 稍后使用 [Get-AzRecoveryServicesBackupProtectableItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupProtectableItem?view=azps-1.5.0) PS cmdlet 获取不受保护的最新 SQL 组件列表
 
-````powershell
+```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
 Initialize-AzRecoveryServicesBackupProtectableItem -Container $SQLContainer -WorkloadType MSSQL -VaultId $targetvault.ID
 Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLDataBase -VaultId $targetVault.ID
-````
+```
 
-提取相关的可保护项后，按[上述部分](#configuring-backup)所述启用备份。
-如果不想手动检测新数据库, 则可以选择 start-autoprotection, 如[下](#enable-autoprotection)所述。
+获取相关的可保护项后，根据[上一部分](#configuring-backup)中的说明启用备份。
+如果用户不想要手动检测新数据库，可以根据[下面](#enable-autoprotection)所述启用自动保护。
 
-## <a name="enable-autoprotection"></a>启用 start-autoprotection
+## <a name="enable-autoprotection"></a>启用自动保护
 
-用户可以配置备份，以便将来添加的所有数据库都将使用特定策略自动保护。 若要启用 start-autoprotection，请使用[AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS cmdlet。
+用户可以配置备份，以使用特定的策略自动保护将来添加的所有数据库。 若要启用自动保护，请使用 [Enable-AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS cmdlet。
 
-由于说明要备份所有未来的数据库，因此该操作在 SQLInstance 级别进行。
+由于说明中的操作是备份将来的所有数据库，因此该操作将在 SQLInstance 级别进行。
 
 ```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
 Enable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupManagementType AzureWorkload -WorkloadType MSSQL -Policy $NewSQLPolicy -VaultId $targetvault.ID
 ```
 
-给定 start-autoprotection 意向后，对计算机进行的查询以提取新添加的数据库时，每隔8小时就会发生一次计划的后台任务。
+指明自动保护意向后，在计算机中提取新添加的数据库的查询将按计划的后台任务每隔 8 小时进行。
 
 ## <a name="restore-sql-dbs"></a>还原 SQL 数据库
 
-Azure 备份可以还原在 Azure Vm 上运行 SQL Server 数据库，如下所示：
+Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所述：
 
-* 使用事务日志备份还原到特定的日期或时间（到第二个）。 Azure 备份会自动根据所选时间确定所需的完整差异备份和日志备份链。
-* 还原特定的完整备份或差异备份以还原到特定恢复点。
+* 使用事务日志备份还原到特定的日期或时间（精确到秒）。 Azure 备份可自动确定相应的完整备份、差异备份和日志链备份，这些是根据所选时间进行还原所必需的。
+* 还原特定的完整备份或差异备份，这样就可以还原到特定的恢复点。
 
-在还原 SQL 数据库之前，请检查[此处](restore-sql-database-azure-vm.md#prerequisites)提到的先决条件。
+在还原 SQL 数据库之前，请查看[此处](restore-sql-database-azure-vm.md#prerequisites)所述的先决条件。
 
-首先，使用[AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS cmdlet 提取相关的已备份 SQL DB。
+首先使用 [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS cmdlet 提取相关的已备份 SQL 数据库。
 
-````powershell
+```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
-````
+```
 
 ### <a name="fetch-the-relevant-restore-time"></a>提取相关的还原时间
 
-如上所述，用户可以将备份的 SQL 数据库还原到完整/差异副本**或**日志时间点。
+如上所述，用户可将备份的 SQL 数据库还原到完整/差异副本，**或**还原到某个日志时间点。
 
 #### <a name="fetch-distinct-recovery-points"></a>提取不同的恢复点
 
-使用[AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryPoint?view=azps-1.5.0)为备份的 SQL 数据库提取不同（完全/差异）的恢复点。
+使用 [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryPoint?view=azps-1.5.0) 提取已备份的 SQL 数据库的不同（完整/差异）恢复点。
 
-````powershell
+```powershell
 $startDate = (Get-Date).AddDays(-7).ToUniversalTime()
 $endDate = (Get-Date).ToUniversalTime()
 Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $targetVault.ID -StartDate $startdate -EndDate $endDate
-````
+```
 
-输出类似于下面的示例
+输出类似于以下示例
 
-````powershell
+```output
 RecoveryPointId    RecoveryPointType  RecoveryPointTime      ItemName                             BackupManagemen
                                                                                                   tType
 ---------------    -----------------  -----------------      --------                             ---------------
 6660368097802      Full               3/18/2019 8:09:35 PM   MSSQLSERVER;model             AzureWorkload
-````
+```
 
-使用 "RecoveryPointId" 筛选器或数组筛选器提取相关的恢复点。
+使用“RecoveryPointId”筛选器或数组筛选器提取相关的恢复点。
 
-````powershell
+```powershell
 $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $targetVault.ID -RecoveryPointId "6660368097802"
-````
+```
 
 #### <a name="fetch-point-in-time-recovery-point"></a>提取时点恢复点
 
-如果用户想要将数据库还原到某个时间点，请使用[AzRecoveryServicesBackupRecoveryLogChain](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryLogChain?view=azps-1.5.0) PS cmdlet。 该 cmdlet 将返回一个日期列表，该列表表示该 SQL 备份项目的连续连续日志链的开始时间和结束时间。 所需的时间点应在此范围内。
+如果用户想要将数据库还原到特定的时间点，可使用 [Get-AzRecoveryServicesBackupRecoveryLogChain](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryLogChain?view=azps-1.5.0) PS cmdlet。 该 cmdlet 返回一个日期列表，这些日期表示该 SQL 备份项的已中断连续日志链的开始时间和结束时间。 所需的时间点应在此范围内。
 
 ```powershell
 Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -Item -VaultId $targetVault.ID
 ```
 
-输出将与下面的示例类似。
+输出类似于以下示例。
 
-````powershell
+```output
 ItemName                       StartTime                      EndTime
 --------                       ---------                      -------
 SQLDataBase;MSSQLSERVER;azu... 3/18/2019 8:09:35 PM           3/19/2019 12:08:32 PM
-````
+```
 
-上述输出意味着用户可以还原到所显示开始时间和结束时间之间的任何时间点。 时间采用 UTC 格式。 在 PS 中构造位于上述范围内的任何时间点。
+以上输出表示用户可以还原到显示的开始时间与结束时间之间的任意时间点。 这些时间为 UTC 时间。 在 PS 中构造处于上面所示范围内的任意时间点。
 
 > [!NOTE]
-> 选择还原的日志时间点时，用户不需要指定从其还原数据库的起始点，即完整备份。 Azure 备份服务将负责整个恢复计划，即要选择哪一完整备份，以及要应用的日志备份等。
+> 选择要还原到的日志时间点后，用户不需要指定起点（即，要从中还原数据库的完整备份）。 Azure 备份服务将处理整个恢复计划，即，选择所需的完整备份、应用所需的日志备份，等等。
 
 ### <a name="determine-recovery-configuration"></a>确定恢复配置
 
-对于 SQL 数据库还原，支持以下还原方案。
+SQL 数据库还原支持以下还原方案。
 
-* 用其他恢复点中的数据替代备份的 SQL DB-OriginalWorkloadRestore
-* 在同一 SQL 实例中将 SQL 数据库还原为新数据库-AlternateWorkloadRestore
-* 在另一个 SQL 实例中将 SQL 数据库作为新数据库还原到另一个 SQL 实例-AlternateWorkloadRestore
+* 使用其他恢复点中的数据替代已备份的 SQL 数据库 - OriginalWorkloadRestore
+* 将 SQL 数据库还原为同一 SQL 实例中的新数据库 - AlternateWorkloadRestore
+* 将 SQL 数据库还原为另一 SQL VM 上另一 SQL 实例中的新数据库 - AlternateWorkloadRestore
+* 将 SQL DB 还原为 .bak 文件 - 还原AsFiles
 
-在提取相关恢复点（不同或日志时间点）后，使用[AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS cmdlet 按照所需的恢复计划提取恢复配置对象。
+提取相关的恢复点（不同的时间点或日志时间点）后，使用 [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS cmdlet 根据所需的恢复计划提取恢复配置对象。
 
 #### <a name="original-workload-restore"></a>原始工作负荷还原
 
-若要用恢复点中的数据替代备份的数据库，只需指定右标志和相关恢复点，如以下示例中所示。
+若要使用恢复点中的数据替代已备份的数据库，只需指定适当的标志和相关恢复点，如以下示例中所示。
 
-##### <a name="original-restore-with-distinct-recovery-point"></a>具有不同恢复点的原始还原
+##### <a name="original-restore-with-distinct-recovery-point"></a>使用不同恢复点的原始工作负荷还原
 
-````powershell
+```powershell
 $OverwriteWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRP -OriginalWorkloadRestore -VaultId $targetVault.ID
-````
+```
 
-##### <a name="original-restore-with-log-point-in-time"></a>具有日志时间点的原始还原
+##### <a name="original-restore-with-log-point-in-time"></a>使用日志时间点的原始工作负荷还原
 
 ```powershell
 $OverwriteWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -Item $bkpItem  -OriginalWorkloadRestore -VaultId $targetVault.ID
@@ -355,31 +356,59 @@ $OverwriteWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -Po
 #### <a name="alternate-workload-restore"></a>备用工作负荷还原
 
 > [!IMPORTANT]
-> 只有在 Azure VM "注册" 到此保管库的情况下，才能将备份的 SQL 数据库作为新数据库还原到另一个 SQLInstance。
+> 备份的 SQL 数据库只能作为新数据库还原到已在此保管库中“注册”的 Azure VM 上的另一个 SQLInstance 中。
 
-如上所述，如果目标 SQLInstance 位于另一个 Azure VM 中，请确保将其[注册到此保管库](#registering-the-sql-vm)，并且相关的 SQLInstance 显示为可保护的项。
+如前所述，如果目标 SQLInstance 位于另一个 Azure VM 中，请确保该 VM [已注册到此保管库](#registering-the-sql-vm)，并且相关的 SQLInstance 显示为可保护的项。
 
-````powershell
+```powershell
 $TargetInstance = Get-AzRecoveryServicesBackupProtectableItem -WorkloadType MSSQL -ItemType SQLInstance -Name "<SQLInstance Name>" -ServerName "<SQL VM name>" -VaultId $targetVault.ID
-````
+```
 
-然后，只需传递相关恢复点，将 SQL 实例定位到正确的标志，如下所示。
+然后，只需结合适当的标志传递相关的恢复点和目标 SQL 实例，如下所示。
 
-##### <a name="alternate-restore-with-distinct-recovery-point"></a>用不同的恢复点进行备用还原
+##### <a name="alternate-restore-with-distinct-recovery-point"></a>使用不同恢复点的备用工作负荷还原
 
-````powershell
+```powershell
 $AnotherInstanceWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRP -TargetItem $TargetInstance -AlternateWorkloadRestore -VaultId $targetVault.ID
-````
+```
 
-##### <a name="alternate-restore-with-log-point-in-time"></a>具有日志时间点的备用还原
+##### <a name="alternate-restore-with-log-point-in-time"></a>使用日志时间点的备用工作负荷还原
 
 ```powershell
 $AnotherInstanceWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -Item $bkpItem -AlternateWorkloadRestore -VaultId $targetVault.ID
 ```
 
-从[AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS cmdlet 获取的最终恢复点配置对象具有用于还原的所有相关信息，如下所示。
+##### <a name="restore-as-files"></a>恢复为文件
 
-````powershell
+要将备份数据还原为 .bak 文件而不是数据库，请选择"**还原为文件**"选项。 备份的 SQL DB 可以还原到注册到此保管库的任何目标 VM。
+
+```powershell
+$TargetContainer= Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName "VM name" -VaultId $vaultID
+```
+
+##### <a name="restore-as-files-with-distinct-recovery-point"></a>还原为具有不同恢复点的文件
+
+```powershell
+$FileRestoreWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRP -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $targetVault.ID
+```
+
+##### <a name="restore-as-files-with-log-point-in-time-from-latest-full"></a>使用最新的完整日志点还原为文件
+
+```powershell
+$FileRestoreWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $targetVault.ID
+```
+
+##### <a name="restore-as-files-with-log-point-in-time-from-a-specified-full"></a>使用指定的完整日志点还原为文件
+
+如果要提供应用于还原的特定完整，请使用以下命令：
+
+```powershell
+$FileRestoreWithLogAndSpecificFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -FromFull $FullRP -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $targetVault.ID
+```
+
+从 [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS cmdlet 获取的最终恢复点配置对象包含用于还原的所有相关信息，如下所示。
+
+```output
 TargetServer         : <SQL server name>
 TargetInstance       : <Target Instance name>
 RestoredDBName       : <Target Instance name>/azurebackup1_restored_3_19_2019_1850
@@ -391,25 +420,29 @@ SourceResourceId     : /subscriptions/00000000-0000-0000-0000-000000000000/resou
 RestoreRequestType   : Alternate WL Restore
 RecoveryPoint        : Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureWorkloadRecoveryPoint
 PointInTime          : 1/1/0001 12:00:00 AM
-````
+```
 
-可以编辑已还原的数据库名称、OverwriteWLIfpresent、NoRecoveryMode 和 targetPhysicalPath 字段。 获取目标文件路径的更多详细信息，如下所示。
+可以编辑已还原的数据库名称、OverwriteWLIfpresent、NoRecoveryMode 和 targetPhysicalPath 字段。 按如下所示获取目标文件路径的其他详细信息。
 
-````powershell
+```powershell
 $AnotherInstanceWithFullConfig.targetPhysicalPath
+```
 
+```output
 MappingType SourceLogicalName SourcePath                  TargetPath
 ----------- ----------------- ----------                  ----------
 Data        azurebackup1      F:\Data\azurebackup1.mdf    F:\Data\azurebackup1_1553001753.mdf
 Log         azurebackup1_log  F:\Log\azurebackup1_log.ldf F:\Log\azurebackup1_log_1553001753.ldf
-````
+```
 
-将相关 PS 属性设置为字符串值，如下所示。
+按如下所示将相关 PS 属性设置为字符串值。
 
-````powershell
+```powershell
 $AnotherInstanceWithFullConfig.OverwriteWLIfpresent = "Yes"
 $AnotherInstanceWithFullConfig | fl
+```
 
+```output
 TargetServer         : <SQL server name>
 TargetInstance       : <Target Instance name>
 RestoredDBName       : <Target Instance name>/azurebackup1_restored_3_19_2019_1850
@@ -421,78 +454,78 @@ SourceResourceId     : /subscriptions/00000000-0000-0000-0000-000000000000/resou
 RestoreRequestType   : Alternate WL Restore
 RecoveryPoint        : Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureWorkloadRecoveryPoint
 PointInTime          : 1/1/0001 12:00:00 AM
-````
+```
 
 > [!IMPORTANT]
-> 请确保最终恢复配置对象具有所有必需的和正确的值，因为还原操作将基于 config 对象。
+> 确保最终恢复配置对象包含全部所需且正确的值，因为还原操作基于该配置对象。
 
-### <a name="restore-with-relevant-configuration"></a>还原相关配置
+### <a name="restore-with-relevant-configuration"></a>使用相关配置还原
 
-获取并验证相关恢复配置对象后，使用[AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Restore-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS cmdlet 来启动还原过程。
+获取并验证相关恢复配置对象后，使用 [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Restore-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS cmdlet 启动还原过程。
 
-````powershell
+```powershell
 Restore-AzRecoveryServicesBackupItem -WLRecoveryConfig $AnotherInstanceWithLogConfig -VaultId $targetVault.ID
-````
+```
 
-还原操作返回要跟踪的作业。
+还原操作将返回要跟踪的作业。
 
-````powershell
+```output
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 MSSQLSERVER/m... Restore              InProgress           3/17/2019 10:02:45 AM                                3274xg2b-e4fg-5952-89b4-8cb566gc1748
-````
+```
 
 ## <a name="manage-sql-backups"></a>管理 SQL 备份
 
 ### <a name="on-demand-backup"></a>按需备份
 
-为 DB 启用备份后，用户还可以使用[AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Backup-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS CMDLET 为数据库触发按需备份。 下面的示例在启用了压缩功能的情况下，在 SQL 数据库上触发完整备份，并且完整备份应保留60天。
+为数据库启用备份后，用户还可以使用 [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Backup-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS cmdlet 来触发数据库的按需备份。 以下示例对启用了压缩的 SQL 数据库触发完整备份，完整备份应保留 60 天。
 
-````powershell
+```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
 $endDate = (Get-Date).AddDays(60).ToUniversalTime()
 Backup-AzRecoveryServicesBackupItem -Item $bkpItem -BackupType Full -EnableCompression -VaultId $targetVault.ID -ExpiryDateTimeUTC $endDate
-````
+```
 
 按需备份命令返回要跟踪的作业。
 
-````powershell
+```output
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 MSSQLSERVER/m... Backup               InProgress           3/18/2019 8:41:27 PM                                2516bb1a-d3ef-4841-97a3-9ba455fb0637
-````
+```
 
-如果输出丢失或要获取相关的作业 ID，请从 Azure 备份服务[获取作业列表](#track-azure-backup-jobs)，然后跟踪其详细信息。
+如果未返回输出或者你要获取相关的作业 ID，请从 Azure 备份服务[获取作业列表](#track-azure-backup-jobs)，并跟踪该列表及其详细信息。
 
 ### <a name="change-policy-for-backup-items"></a>更改备份项的策略
 
 用户可以修改现有策略，也可以将备份项的策略从 Policy1 更改为 Policy2。 若要切换备份项的策略，请提取相关策略并备份项，并使用 [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) 命令以备份项作为参数。
 
-````powershell
+```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
 $anotherBkpItem = Get-AzRecoveryServicesBackupItem -WorkloadType MSSQL -BackupManagementType AzureWorkload -Name "<BackupItemName>"
 Enable-AzRecoveryServicesBackupProtection -Item $anotherBkpItem -Policy $TargetPol1
-````
+```
 
 该命令将一直等到配置备份完成并返回以下输出。
 
-```powershell
+```output
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 master           ConfigureBackup      Completed            3/18/2019 8:00:21 PM      3/18/2019 8:02:16 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
 ```
 
-### <a name="re-register-sql-vms"></a>重新注册 SQL Vm
+### <a name="re-register-sql-vms"></a>重新注册 SQL VM
 
 > [!WARNING]
-> 在尝试重新注册之前，请务必阅读本[文档](backup-sql-server-azure-troubleshoot.md#re-registration-failures)以了解失败的症状和原因
+> 在尝试重新注册之前，请务必阅读[此文档](backup-sql-server-azure-troubleshoot.md#re-registration-failures)，以了解失败症状和原因
 
 若要触发 SQL VM 的重新注册，请提取相关的备份容器，并将其传递给 register cmdlet。
 
-````powershell
+```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
 Register-AzRecoveryServicesBackupContainer -Container $SQLContainer -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID
-````
+```
 
 ### <a name="stop-protection"></a>停止保护
 
@@ -500,68 +533,68 @@ Register-AzRecoveryServicesBackupContainer -Container $SQLContainer -BackupManag
 
 如果用户想要停止保护，他们可以使用 [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS cmdlet。 此命令将停止计划的备份，但到目前为止备份的数据将永远保留。
 
-````powershell
+```powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -Name "<backup item name>" -VaultId $targetVault.ID
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
-````
+```
 
 #### <a name="delete-backup-data"></a>删除备份数据
 
 若要完全删除保管库中存储的备份数据，只需将“-RemoveRecoveryPoints”标志/开关添加到[“disable”保护命令](#retain-data)。
 
-````powershell
+```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID -RemoveRecoveryPoints
-````
+```
 
 #### <a name="disable-auto-protection"></a>禁用自动保护
 
-如果 start-autoprotection 是在 SQLInstance 上配置的，则用户可以使用[AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS cmdlet 来禁用它。
+如果在 SQLInstance 上配置了自动保护，用户可以使用 [Disable-AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS cmdlet 来禁用自动保护。
 
-````powershell
+```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
 Disable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetvault.ID
-````
+```
 
-#### <a name="unregister-sql-vm"></a>注销 SQL VM
+#### <a name="unregister-sql-vm"></a>取消注册 SQL VM
 
-如果 SQL server 的所有数据库[都不再受保护，并且不存在任何备份数据](#delete-backup-data)，则用户可以从此保管库中取消注册 sql VM。 只有这样，用户才可以保护 Db 到另一个保管库。 使用[AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Unregister-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS CMDLET 注销 SQL VM。
+如果 SQL 服务器的所有数据库[不再受保护且不存在任何备份数据](#delete-backup-data)，用户可以从此保管库取消注册 SQL VM。 只有这样，用户才能在另一保管库中保护数据库。 使用 [Unregister-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Unregister-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS cmdlet 取消注册 SQL VM。
 
-````powershell
+```powershell
 $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
  Unregister-AzRecoveryServicesBackupContainer -Container $SQLContainer -VaultId $targetvault.ID
-````
+```
 
 ### <a name="track-azure-backup-jobs"></a>跟踪 Azure 备份作业
 
-请务必注意，Azure 备份仅在 SQL 备份中跟踪用户触发的作业。 计划的备份（包括日志备份）在门户/powershell 中不可见。 但是，如果任何计划的作业失败，将生成一个[备份警报](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)并将其显示在门户中。 [使用 Azure Monitor](backup-azure-monitoring-use-azuremonitor.md)跟踪所有计划作业和其他相关信息。
+请务必注意，Azure 备份只会跟踪 SQL 备份中用户触发的作业。 计划的备份（包括日志备份）不会显示在门户/PowerShell 中。 但是，如果任一计划的作业失败，将会生成[备份警报](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)并在门户中显示该警报。 [使用 Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) 跟踪所有计划的作业和其他相关信息。
 
-用户可以跟踪按需/用户触发的操作，这些操作包含在异步作业（例如备份）的[输出](#on-demand-backup)中返回的 JobID。 使用[AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS cmdlet 跟踪作业及其详细信息。
+用户可以使用备份等异步作业的[输出](#on-demand-backup)中返回的 JobID，来跟踪按需/用户触发的操作。 使用 [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS cmdlet 跟踪作业及其详细信息。
 
-````powershell
+```powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID
-````
+```
 
-若要从 Azure 备份服务获取按需作业的列表及其状态，请使用[AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS cmdlet。 下面的示例返回所有正在进行的 SQL 作业。
+若要从 Azure 备份服务获取按需作业的列表及其状态，请使用 [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS cmdlet。 以下示例返回所有正在进行的 SQL 作业。
 
 ```powershell
 Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWorkload
 ```
 
-若要取消正在进行的作业，请使用[AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Stop-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS cmdlet。
+若要取消正在进行的作业，请使用 [Stop-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Stop-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS cmdlet。
 
 ## <a name="managing-sql-always-on-availability-groups"></a>管理 SQL Always On 可用性组
 
-对于 SQL Always On 可用性组，请确保注册可用性组（AG）的[所有节点](#registering-the-sql-vm)。 对所有节点执行注册后，会在 "可保护项" 下以逻辑方式创建 SQL 可用性组对象。 SQL AG 下的数据库将列为 "Backup-sqldatabase"。 节点将显示为独立的实例，并且它们下面的默认 SQL 数据库也将作为 SQL 数据库列出。
+对于 SQL Always On 可用性组，请确保[注册可用性组 (AG) 的所有节点](#registering-the-sql-vm)。 注册所有节点后，将在可保护项下以逻辑方式创建一个 SQL 可用性组对象。 SQL AG 下的数据库作为“SQLDatabase”列出。 节点将显示为独立实例，其下的默认 SQL 数据库也将作为 SQL 数据库列出。
 
-例如，假设 SQL AG 有两个节点： "sql-server-0" 和 "sql-server-1" 和1个 SQL AG DB。 一旦注册了这两个节点，如果用户列出了可保护[的项](#fetching-sql-dbs)，它将列出以下组件
+例如，假设某个 SQL AG 包含两个节点（“sql-server-0”与“sql-server-1”）和 1 个 SQL AG 数据库。 注册这两个节点后，如果用户[列出可保护项](#fetching-sql-dbs)，将列出以下组件
 
-* 作为 New-sqlavailabilitygroup 的 SQL AG 对象可保护项类型
-* 作为 Backup-sqldatabase 的 SQL AG DB 可保护项类型
-* sql-服务器 0-可保护的项类型为 SQLInstance
-* sql-server 1-可保护的项类型为 SQLInstance
-* 所有默认 SQL 数据库（master、model、msdb），其下的 sql server-0-可保护项类型为 Backup-sqldatabase
-* Sql server 1-可保护的项类型为 Backup-sqldatabase 的任何默认 SQL 数据库（master、model、msdb）
+* SQL AG 对象 - 作为 SQLAvailabilityGroup 列出的可保护项类型
+* SQL AG 数据库 - 作为 SQLDatabase 列出的可保护项类型
+* sql-server-0 - 作为 SQLInstance 列出的可保护项类型
+* sql-server-1 - 作为 SQLInstance 列出的可保护项类型
+* sql server-0 下的所有默认 SQL 数据库（master、model、msdb）- 作为 SQLDatabase 列出的可保护项类型
+* sql server-1 下的所有默认 SQL 数据库（master、model、msdb）- 作为 SQLDatabase 列出的可保护项类型
 
-如果[列出了备份容器](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)，则 sql-server 0 的 sql-server 1 还将作为 "AzureVMAppContainer" 列出。
+[列出备份容器](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)时，sql-server-0、sql-server-1 也作为“AzureVMAppContainer”列出。
 
-只需提取相关的 SQL 数据库即可[启用备份](#configuring-backup)，按[需备份](#on-demand-backup)和[还原 PS cmdlet](#restore-sql-dbs)是相同的。
+只需提取相关的 SQL 数据库即可[启用备份](#configuring-backup)，[按需备份](#on-demand-backup)和[还原 PS cmdlet](#restore-sql-dbs) 是相同的。

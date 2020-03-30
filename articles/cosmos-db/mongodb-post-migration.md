@@ -1,74 +1,71 @@
 ---
-title: Azure Cosmos DB 的 MongoDB API 的迁移后优化步骤
-description: 此文档提供从 MongoDB 到 Azure Cosmos DB 的 APi for Mongo DB 的迁移后优化技术。
+title: 迁移后优化步骤，使用 Azure Cosmos DB 的 MongoDB API
+description: 本文档提供从 MongoDB 迁移到 Azure Cosmos DB MongoDB API 后的优化方法。
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 03/20/2020
 ms.author: lbosq
-ms.openlocfilehash: 3a8da5df4c661a160c7ace37144f6ac1a9859da2
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: ce33651aae64d0a90264dde6da64b4044c6ce132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942260"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063619"
 ---
-# <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的适用于 MongoDB 的 API 时的迁移后优化步骤 
+# <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB MongoDB API 时的迁移后优化步骤
 
-将 MongoDB 数据库中存储的数据迁移到 Azure Cosmos DB 的 API for MongoDB 后，你可以连接到 Azure Cosmos DB 并管理数据。 本指南提供迁移后应考虑的步骤。 有关迁移步骤，请参阅将[Mongodb 迁移到 Azure Cosmos DB 适用于 MongoDB 的 API 教程](../dms/tutorial-mongodb-cosmos-db.md)。
+将 MongoDB 数据库中存储的数据迁移到 Azure Cosmos DB 的 API for MongoDB 后，你可以连接到 Azure Cosmos DB 并管理数据。 本指南提供迁移后应考虑的步骤。 有关迁移步骤，请参阅[迁移蒙戈DB 到 Azure Cosmos DB 的 API 教程](../dms/tutorial-mongodb-cosmos-db.md)。
 
 本指南介绍如何：
-- [连接应用程序](#connect-account)
-- [优化索引策略](#indexing)
-- [为 MongoDB Azure Cosmos DB 的 API 配置全局分发](#distribute-data)
-- [设置一致性级别](#consistency)
+
+- [连接应用程序](#connect-your-application)
+- [优化索引策略](#optimize-the-indexing-policy)
+- [为蒙戈DB配置 Azure Cosmos DB 的 API 的全局分布](#globally-distribute-your-data)
+- [设置一致性级别](#set-consistency-level)
 
 > [!NOTE]
-> 应用程序级别的唯一强制迁移步骤是将应用程序中的连接字符串更改为指向新的 Azure Cosmos DB 帐户。 所有其他迁移步骤都是推荐的优化。
+> 必须在应用程序级别执行的唯一一个迁移后步骤是将应用程序中的连接字符串更改为指向新的 Azure Cosmos DB 帐户。 所有其他迁移步骤都是建议的优化措施。
 >
 
-## <a id="connect-account"></a>连接应用程序 
+## <a name="connect-your-application"></a>连接应用程序
 
-1. 在新窗口中，登录到[Azure 门户](https://www.portal.azure.com/)
-2. 在[Azure 门户](https://www.portal.azure.com/)的左窗格中，打开 "**所有资源**" 菜单并找到已将数据迁移到的 Azure Cosmos DB 帐户。
-3. 打开 "**连接字符串**" 边栏选项卡。 右侧窗格中包含成功连接到帐户所需的全部信息。
-4. 使用应用程序配置（或其他相关位置）中的连接信息，在应用中反映 Azure Cosmos DB 的 API for MongoDB 连接。 
-![连接-字符串](./media/mongodb-post-migration/connection-string.png)
+1. 在新窗口中，登录到 [Azure 门户](https://www.portal.azure.com/)
+2. 在 [Azure 门户](https://www.portal.azure.com/)的左窗格中打开“所有资源”菜单，找到已将数据迁移到的 Azure Cosmos DB 帐户。****
+3. 打开“连接字符串”边栏选项卡。**** 右侧窗格中包含成功连接到帐户所需的全部信息。
+4. 使用应用程序配置（或其他相关位置）中的连接信息来反映应用中的 Azure Cosmos DB MongoDB API 连接。
+![连接字符串](./media/mongodb-post-migration/connection-string.png)
 
-有关更多详细信息，请参阅将[MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md)页。
+有关更多详细信息，请参阅[将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md) 页。
 
-## <a id="indexing"></a>优化索引策略
+## <a name="optimize-the-indexing-policy"></a>优化索引策略
 
-默认情况下，在将数据迁移到 Azure Cosmos DB 的过程中，所有数据字段都将自动编制索引。 在许多情况下，此默认索引策略是可接受的。 通常，删除索引会优化写入请求并使默认索引策略（即自动索引）优化读取请求。
+在将数据迁移到 Azure Cosmos DB 的过程中，默认将为所有数据字段自动编制索引。 在许多情况下，此默认索引策略是可接受的。 一般情况下，删除索引可以优化写入请求，而使用默认索引策略（即自动编制索引）可以优化读取请求。
 
-有关索引的详细信息，请参阅[Azure Cosmos DB 的 API For MongoDB 中的数据索引](mongodb-indexing.md)，以及[Azure Cosmos DB 文章中的索引](index-overview.md)。
+有关索引的详细信息，请参阅文章 [Azure Cosmos DB MongoDB API 中的数据索引](mongodb-indexing.md)和 [Azure Cosmos DB 中的索引](index-overview.md)。
 
-## <a id="distribute-data"></a>全局分发数据
+## <a name="globally-distribute-your-data"></a>全局分发数据
 
-Azure Cosmos DB 在全球所有[Azure 区域](https://azure.microsoft.com/regions/#services)中提供。 为 Azure Cosmos DB 帐户选择默认的一致性级别后，可以关联一个或多个 Azure 区域（具体取决于全局分发需求）。 为了实现高可用性和业务连续性，我们始终建议至少在2个区域中运行。 可以[在 Azure Cosmos DB 中查看有关多区域部署的成本优化](optimize-cost-regions.md)提示。
+Azure Cosmos DB 在全球范围的所有 [Azure 区域](https://azure.microsoft.com/regions/#services)中推出。 为 Azure Cosmos DB 帐户选择默认一致性级别后，可以关联一个或多个 Azure 区域（具体取决于全局分发需求）。 为了实现高可用性和业务连续性，我们始终建议至少在 2 个区域中运行 Azure Cosmos DB。 可以查看有关 [Azure Cosmos DB 中多区域部署的优化成本](optimize-cost-regions.md)的提示。
 
-若要在全球范围内分发数据，请参阅[在 Azure Cosmos DB 的适用于 MongoDB 的 API 上全局分发数据](tutorial-global-distribution-mongodb.md)。 
+要全局分发数据，请参阅在[Azure Cosmos DB 的 MongoDB API 上全局分发数据](tutorial-global-distribution-mongodb.md)。
 
-## <a id="consistency"></a>设置一致性级别
-Azure Cosmos DB 提供5个明确定义的[一致性级别](consistency-levels.md)。 若要了解 MongoDB 与 Azure Cosmos DB 一致性级别之间的映射，请参阅[一致性级别和 Azure Cosmos DB api](consistency-levels-across-apis.md)。 默认的一致性级别为会话一致性级别。 更改一致性级别是可选的，你可以为应用优化一致性级别。 使用 Azure 门户更改一致性级别：
+## <a name="set-consistency-level"></a>设置一致性级别
 
-1. 在 "设置" 下，中转到 "**默认一致性**" 边栏选项卡。
-2. 选择[一致性级别](consistency-levels.md)
+Azure Cosmos DB 提供 5 个妥善定义的[一致性级别](consistency-levels.md)。 若要了解 MongoDB 与 Azure Cosmos DB 一致性级别之间的映射，请参阅[一致性级别和 Azure Cosmos DB API](consistency-levels-across-apis.md)。 默认一致性级别是会话一致性级别。 更改一致性级别是可选操作，可为应用优化一致性级别。 若要使用 Azure 门户更改一致性级别：
 
-大多数用户在默认会话一致性设置下保持其一致性级别。 但[对于不同的一致性级别，存在可用性和性能的折衷](consistency-levels-tradeoffs.md)。 
+1. 转到“设置”下的“默认一致性”边栏选项卡。****
+2. 选择所需的[一致性级别](consistency-levels.md)
+
+大多数用户会将其一致性级别保留为默认的会话一致性设置。 但是，[不同一致性级别的可用性和性能各有利弊](consistency-levels-tradeoffs.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md)
 * [使用 Studio 3T 连接到 Azure Cosmos DB 帐户](mongodb-mongochef.md)
-* [如何使用 Azure Cosmos DB 的适用于 MongoDB 的 API 全局分发读取](mongodb-readpreference.md)
+* [如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 全局分发读取](mongodb-readpreference.md)
 * [使用 Azure Cosmos DB 的用于 MongoDB 的 API 过期数据](mongodb-time-to-live.md)
 * [Azure Cosmos DB 中的一致性级别](consistency-levels.md)
 * [Azure Cosmos DB 中的索引](index-overview.md)
-* [Azure Cosmos DB 中的请求单位](request-units.md)
-
-
-
-
-
+* [在 Azure 宇宙数据库中请求单位](request-units.md)

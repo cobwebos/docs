@@ -8,35 +8,35 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
 ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75902825"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>关于加密要求和 Azure VPN 网关
 
 本文介绍如何配置 Azure VPN 网关，满足 Azure 中跨界 S2S VPN 隧道和 VNet 到 VNet 连接的加密要求。
 
-## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>关于 Azure VPN 连接的 IKEv1 和 IKEv2
+## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>关于用于 Azure VPN 连接的 IKEv1 和 IKEv2
 
-过去，我们仅允许基本 Sku 使用 IKEv1 连接，并允许除基本 Sku 之外的所有 VPN 网关 Sku 使用 IKEv2 连接。 基本 Sku 只允许1个连接，并提供其他限制，如性能，使用仅支持 IKEv1 协议的旧设备的客户的体验有限。 为了增强使用 IKEv1 协议的客户体验，我们现在允许除基本 SKU 之外的所有 VPN 网关 Sku 使用 IKEv1 连接。 有关详细信息，请参阅[VPN 网关 sku](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku)。
+传统上，我们只允许将 IKEv1 连接用于基本 SKU，允许将 IKEv2 连接用于除基本 SKU 之外的所有 VPN 网关 SKU。 基本 SKU 只允许使用 1 个连接，并且有其他限制（例如性能限制）。使用只支持 IKEv1 协议的旧设备的客户其体验会受限。 为了增强使用 IKEv1 协议的客户的体验，我们现在允许将 IKEv1 连接用于除基本 SKU 之外的所有 VPN 网关 SKU。 有关详细信息，请参阅 [VPN 网关 SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku)。
 
 ![Azure VPN 网关 IKEv1 和 IKEv2 连接](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
 
-如果将 IKEv1 和 IKEv2 连接应用到同一个 VPN 网关，则这两个连接之间的传输将自动启用。
+将 IKEv1 和 IKEv2 连接应用到同一 VPN 网关时，会自动启用这两个连接之间的传输。
 
 ## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>关于 Azure VPN 网关的 IPsec 和 IKE 策略参数
 
-IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 如果未请求特定的加密算法和参数组合，则 Azure VPN 网关会使用一组默认方案。 选择默认策略集，最大限度地实现默认配置中各种第三方 VPN 设备的互操作性。 因此，策略和方案数无法涵盖所有可能的可用加密算法和密钥强度组合。
+IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 如果不要求使用特定加密算法和参数组合，则 Azure VPN 网关会使用一组默认方案。 选择默认策略集，最大限度地实现默认配置中各种第三方 VPN 设备的互操作性。 因此，策略和方案数无法涵盖所有可能的可用加密算法和密钥强度组合。
 
-Azure VPN 网关的默认策略集在文章：[关于用于站点到站点 Vpn 网关连接的 vpn 设备和 IPsec/IKE 参数](vpn-gateway-about-vpn-devices.md)一文中列出。
+本文列出了 Azure VPN 网关的默认策略集：[关于 VPN 设备和站点到站点 VPN 网关连接的 IPsec/IKE 参数](vpn-gateway-about-vpn-devices.md)。
 
 ## <a name="cryptographic-requirements"></a>加密要求
 
-对于需要特定加密算法或参数的通信，通常由于符合性或安全性要求，你现在可以将其 Azure VPN 网关配置为使用具有特定加密算法和密钥强度的自定义 IPsec/IKE 策略，而不是使用 Azure 默认策略集。
+对于需特定加密算法或参数的通信，通常由于符合性或安全性要求，你现在可配置其 Azure VPN 网关，使用具有特定加密算法和密钥强度的自定义 IPsec/IKE 策略，而不是使用 Azure 默认策略集。
 
-例如，Azure VPN 网关的 IKEv2 主模式策略仅使用 Diffie-hellman 组2（1024位），而你可能需要指定要在 IKE 中使用的更强的组，例如组14（2048位）、组24（2048位 MODP 组）或 ECP （椭圆曲线组）256或384位（分别为组19和组20）。 类似的要求也适用于 IPsec 快速模式策略。
+例如，Azure VPN 网关的 IKEv2 主模式策略仅使用 Diffie-Hellman 组 2（1024 位），而你可能需要指定更强的组用于 IKE，例如组 14（2048 位）、组 24（2048 位 MODP 组）或 ECP（椭圆曲线组）256 或 384 位（分别为组 19 和组 20）。 类似的要求也适用于 IPsec 快速模式策略。
 
 ## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>借助 Azure VPN 网关自定义 IPsec/IKE 策略
 

@@ -1,5 +1,5 @@
 ---
-title: 将数据从 Blob 存储复制到 SQL 数据库-Azure
+title: 将数据从 Blob 存储复制到 SQL 数据库 - Azure
 description: 本教程演示如何使用 Azure 数据工厂管道中的复制活动将数据从 Blob 存储复制到 SQL 数据库。
 services: data-factory
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979727"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>教程：使用数据工厂将数据从 Blob 存储复制到 SQL 数据库
@@ -25,7 +25,7 @@ ms.locfileid: "75979727"
 > * [概述与先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [复制向导](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [电源外壳](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager 模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
@@ -53,34 +53,34 @@ ms.locfileid: "75979727"
 ## <a name="collect-blob-storage-account-name-and-key"></a>收集 Blob 存储帐户名和密钥
 要完成本教程，需使用 Azure 存储帐户的帐户名和帐户密钥。 记下 Azure 存储帐户的**帐户名**和**帐户密钥**。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击左侧菜单上的“所有服务”，并选择“存储帐户”。
+1. 登录到 Azure[门户](https://portal.azure.com/)。
+2. 单击左侧菜单上的“所有服务”****，并选择“存储帐户”****。
 
     ![浏览存储帐户](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
-3. 在“存储帐户”边栏选项卡中，选择要在本教程中使用的“Azure 存储帐户”。
-4. 在“设置”下，选择“访问密钥”链接。
-5. 在“存储帐户名”文本框旁，单击“复制”（图像）按钮，然后将其保存/粘贴到某个位置（例如：文本文件中）。
+3. 在“存储帐户”**** 边栏选项卡中，选择要在本教程中使用的“Azure 存储帐户”****。
+4. 在“设置”**** 下，选择“访问密钥”**** 链接。
+5. 在“存储帐户名”**** 文本框旁，单击“复制”****（图像）按钮，然后将其保存/粘贴到某个位置（例如：文本文件中）。
 6. 重复上一步以复制或记下 **key1**。
 
     ![存储访问密钥](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
-7. 单击“X”关闭所有边栏选项卡。
+7. 单击“X”**** 关闭所有边栏选项卡。
 
 ## <a name="collect-sql-server-database-user-names"></a>收集 SQL Server、数据库和用户的名称
 要完成本教程，需提供 Azure SQL Server、数据库和用户的名称。 记下用于 Azure SQL 数据库的**服务器**、**数据库**和**用户**的名称。
 
-1. 在 **Azure 门户**中，单击左侧的“所有服务”，并选择“SQL 数据库”。
-2. 在“SQL 数据库”边栏选项卡中，选择要在本教程中使用的“数据库”。 记下**数据库名称**。  
-3. 在“SQL 数据库”边栏选项卡的“设置”下，单击“属性”。
+1. 在 **Azure 门户**中，单击左侧的“所有服务”****，并选择“SQL 数据库”****。
+2. 在“SQL 数据库”**** 边栏选项卡中，选择要在本教程中使用的“数据库”****。 记下**数据库名称**。  
+3. 在“SQL 数据库”**** 边栏选项卡的“设置”**** 下，单击“属性”****。
 4. 记下**服务器名称**和**服务器管理员登录名**的值。
-5. 单击“X”关闭所有边栏选项卡。
+5. 单击“X”**** 关闭所有边栏选项卡。
 
 ## <a name="allow-azure-services-to-access-sql-server"></a>允许 Azure 服务访问 SQL Server
-确保 Azure SQL Server 的“允许访问 Azure 服务”设置处于“打开”状态，以便数据工厂服务可以访问 Azure SQL Server。 若要验证并启用此设置，请执行以下步骤：
+确保 Azure SQL Server 的“允许访问 Azure 服务”**** 设置处于“打开”**** 状态，以便数据工厂服务可以访问 Azure SQL Server。 若要验证并启用此设置，请执行以下步骤：
 
-1. 单击左侧的“所有服务”中心，然后单击“SQL Server”。
-2. 选择服务器，并单击“设置”下的“防火墙”。
-3. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。
-4. 单击“X”关闭所有边栏选项卡。
+1. 单击左侧的“所有服务”**** 中心，然后单击“SQL Server”****。
+2. 选择服务器，并单击“设置”**** 下的“防火墙”****。
+3. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。************
+4. 单击“X”**** 关闭所有边栏选项卡。
 
 ## <a name="prepare-blob-storage-and-sql-database"></a>准备 Blob 存储和 SQL 数据库
 现在，执行以下步骤来准备本教程所需的 Azure Blob 存储和 Azure SQL 数据库：  
@@ -91,7 +91,7 @@ ms.locfileid: "75979727"
     John, Doe
     Jane, Doe
     ```
-2. 使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具创建 **adftutorial** 容器，将 **emp.txt** 文件上传到该容器。
+2. 使用 Azure[存储资源管理器](https://storageexplorer.com/)等工具创建**adf 教程**容器并将**emp.txt**文件上载到容器。
 
 3. 使用以下 SQL 脚本在 Azure SQL 数据库中创建 **emp** 表。  
 
@@ -116,7 +116,7 @@ ms.locfileid: "75979727"
 
 * [复制向导](data-factory-copy-data-wizard-tutorial.md)
 * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-* [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+* [电源外壳](data-factory-copy-activity-tutorial-using-powershell.md)
 * [Azure Resource Manager 模板](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)

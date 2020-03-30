@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 1b0a4627d377f5fa9ca997d1cc96bc38b0a6c37f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c73f585e3102618cea378716491f9354810a6db8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79217223"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125008"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>在 Azure 中保护 PaaS 数据库的最佳做法
 
-本文介绍有关保护平台即服务 (PaaS) Web 和移动应用程序的 [Azure SQL 数据库](../../sql-database/sql-database-technical-overview.md)和 [SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)安全最佳实践集。 这些最佳实践衍生自我们的 Azure 经验和客户经验。
+本文介绍有关保护平台即服务 (PaaS) Web 和移动应用程序的 [Azure SQL 数据库](../../sql-database/sql-database-technical-overview.md)和 [SQL 数据仓库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)安全最佳实践集。 这些最佳实践衍生自我们的 Azure 经验和客户经验。
 
 Azure SQL 数据库和 SQL 数据仓库为基于 Internet 的应用程序提供关系型数据库服务。 让我们了解一下在 PaaS 部署中使用 Azure SQL 数据库和 SQL 数据仓库时可帮助保护应用程序与数据的服务：
 
@@ -35,9 +35,9 @@ Azure SQL 数据库和 SQL 数据仓库为基于 Internet 的应用程序提供�
 ## <a name="use-a-centralized-identity-repository"></a>使用集中式标识存储库
 可将 Azure SQL 数据库配置为使用以下两种身份验证类型之一：
 
-- SQL 身份验证使用用户名和密码。 在为数据库创建逻辑服务器时，已指定一个包含用户名和密码的“服务器管理员”登录名。 借助这些凭据，可以使用数据库所有者的身份通过服务器上任何数据库的身份验证。
+- SQL 身份验证**** 使用用户名和密码。 在为数据库创建逻辑服务器时，已指定一个包含用户名和密码的“服务器管理员”登录名。 借助这些凭据，可以使用数据库所有者的身份通过服务器上任何数据库的身份验证。
 
-- Azure Active Directory 身份验证使用 Azure Active Directory 管理的标识，支持托管域和集成域。 若要使用 Azure Active Directory 身份验证，必须创建名为“Azure AD 管理员”的另一个服务器管理员，用于管理 Azure AD 用户和组。 此管理员还能执行普通服务器管理员可以执行的所有操作。
+- **** Azure Active Directory 身份验证使用 Azure Active Directory 管理的标识，支持托管域和集成域。 若要使用 Azure Active Directory 身份验证，必须创建名为“Azure AD 管理员”的另一个服务器管理员，用于管理 Azure AD 用户和组。 此管理员还能执行普通服务器管理员可以执行的所有操作。
 
 [Azure Active Directory 身份验证](../../active-directory/develop/authentication-scenarios.md)是使用 Azure Active Directory (AD) 中的标识连接到 Azure SQL 数据库和 SQL 数据仓库的一种机制。 Azure AD 为 SQL Server 身份验证提供一种替代方法，使你可以阻止用户标识在数据库服务器之间激增。 使用 Azure AD 身份验证可在一个中心位置集中管理数据库用户和其他 Microsoft 服务的标识。 集中 ID 管理提供一个单一位置来管理数据库用户，并简化权限管理。  
 
@@ -53,7 +53,7 @@ Azure SQL 数据库和 SQL 数据仓库为基于 Internet 的应用程序提供�
 若要了解有关 Azure AD 身份验证的详细信息，请参阅：
 
 - [将 Azure Active Directory 身份验证与 SQL 数据库、托管实例或 SQL 数据仓库结合使用](../../sql-database/sql-database-aad-authentication.md)
-- [对 Azure SQL 数据仓库进行身份验证](../../sql-data-warehouse/sql-data-warehouse-authentication.md)
+- [对 Azure SQL 数据仓库进行身份验证](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-authentication.md)
 - [使用 Azure AD 身份验证的 Azure SQL 数据库对基于令牌的身份验证的支持](../../sql-database/sql-database-aad-authentication.md)
 
 > [!NOTE]
@@ -79,7 +79,7 @@ Azure SQL 可以管理 TDE 存在的密钥相关问题。 与使用 TDE 时一�
 
 Azure SQL 通过 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 为列提供加密。 这样，只有获得授权的应用程序才能访问敏感列。 使用这种加密可将针对已加密列的 SQL 查询限制为基于相等性的值。
 
-对于某些特定的数据，也应该使用应用程序级加密。 使用保存在正确国家/地区的密钥加密数据有时可能会降低数据主权问题。 这可以防止意外的数据传输导致问题，因为在使用强算法（例如 AES 256）的情况下，如果没有该密钥，将无法解密数据。
+对于某些特定的数据，也应该使用应用程序级加密。 数据主权问题有时可以通过使用保存在正确的国家/区域的密钥加密数据来缓解。 这可以防止意外的数据传输导致问题，因为在使用强算法（例如 AES 256）的情况下，如果没有该密钥，将无法解密数据。
 
 可以使用其他预防措施来帮助保护数据库，例如，设计安全系统、加密机密资产，以及围绕数据库服务器构建防火墙。
 

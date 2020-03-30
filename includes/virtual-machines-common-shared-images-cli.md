@@ -9,10 +9,10 @@ ms.date: 05/21/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 57736a3cd553e83294d5290867e261b626cb035f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66814909"
 ---
 ## <a name="before-you-begin"></a>开始之前
@@ -23,9 +23,9 @@ ms.locfileid: "66814909"
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/bash](https://shell.azure.com/bash) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。**** 您还可以通过 访问[https://shell.azure.com/bash](https://shell.azure.com/bash)在单独的浏览器选项卡中启动云外壳。 选择 **"复制"** 以复制代码块，将其粘贴到云外壳中，然后按 Enter 以运行它。
 
-如果想要安装和本地使用 CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果希望在本地安装和使用 CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-an-image-gallery"></a>创建映像库 
 
@@ -60,9 +60,9 @@ az sig image-definition create \
 
 使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) 根据需要创建映像的版本。 你需要传入托管映像的 ID 以作为创建映像版本时要使用的基线。 可以使用 [az image list](/cli/azure/image?view#az-image-list) 获取资源组中的映像的相关信息。 
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*主要版本*。*次要版本*。*补丁*。
 
-在此示例中，我们的映像的版本是*1.0.0*我们将创建 2 个副本中的*美国中西部*区域，在 1 个副本*美国中南部*区域和 1中的副本*美国东部 2*使用区域冗余存储区域。
+在此示例中，我们的映像版本为*1.0.0，* 我们将在*美国中西部*区域创建 2 个副本，*在美国中南部*区域创建 1 个副本，在美国*东部 2*区域使用 1 个副本。
 
 
 ```azurecli-interactive 
@@ -79,12 +79,12 @@ az sig image-version create \
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
-> 此外可以将所有图像版本副本中存储[区域冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)通过添加`--storage-account-type standard_zrs`时创建的映像版本。
+> 您还可以通过在创建映像版本时添加添加`--storage-account-type standard_zrs`将所有映像版本副本存储在[区域冗余存储](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)中。
 >
 
 ## <a name="share-the-gallery"></a>共享库
 
-我们建议与库级别的其他用户共享。 若要获取您的库的对象 ID，请使用[az sig 显示](/cli/azure/sig#az-sig-show)。
+我们建议你在库级别与其他用户共享。 若要获取库的对象 ID，请使用 [az sig show](/cli/azure/sig#az-sig-show)。
 
 ```azurecli-interactive
 az sig show \
@@ -93,7 +93,7 @@ az sig show \
    --query id
 ```
 
-使用对象 ID 作为作用域，以及电子邮件地址和[az 角色分配创建](/cli/azure/role/assignment#az-role-assignment-create)使用户能够访问为共享的图片库。
+使用对象 ID 作为作用域以及电子邮件地址，并使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 授予用户对共享映像库的访问权限。
 
 ```azurecli-interactive
 az role assignment create --role "Reader" --assignee <email address> --scope <gallery ID>

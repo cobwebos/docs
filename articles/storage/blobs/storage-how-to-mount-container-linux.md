@@ -3,21 +3,22 @@ title: 如何将 Azure Blob 存储装载为 Linux 上的文件系统 | Microsoft
 description: 使用 FUSE 在 Linux 上装载 Azure Blob 存储容器
 author: rishabpoh
 ms.service: storage
+ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 35a4313d10231aec74685069a67d803ea32e68b1
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: a0a03df59bc6ecffcb4f0a701616297f2da78fdb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847549"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061432"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 将 Blob 存储装载为文件系统
 
 ## <a name="overview"></a>概述
-Blobfuse 是 Azure Blob 存储的虚拟文件系统驱动程序[](https://github.com/Azure/azure-storage-fuse)。 Blobfuse 允许通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 Blobfuse 使用包含正斜杠 "/" 的虚拟目录方案作为分隔符。  
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) 是 Azure Blob 存储的虚拟文件系统驱动程序。 Blobfuse 允许通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 Blobfuse 使用具有前斜杠"/" 的虚拟目录方案作为分隔符。  
 
 本指南介绍如何使用 Blobfuse，以及如何在 Linux 上装载 Blob 存储容器并访问数据。 若要详细了解 Blobfuse，请阅读 [Blobfuse 存储库](https://github.com/Azure/azure-storage-fuse)中的详细信息。
 
@@ -29,7 +30,7 @@ Blobfuse 是 Azure Blob 存储的虚拟文件系统驱动程序[](https://github
 ## <a name="install-blobfuse-on-linux"></a>在 Linux 上安装 Blobfuse
 适用于 Ubuntu 和 RHEL 发行版的 Blobfuse 二进制文件在[适用于 Linux 的 Microsoft 软件存储库](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)中提供。 若要在这些发行版上安装 blobfuse，请从列表中配置其中一个存储库。 如果你的发行版没有可用的二进制文件，还可以按照 [Azure 存储安装步骤](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)从源代码生成二进制文件。
 
-Blobfuse 支持在 Ubuntu 14.04、16.04 和18.04 上安装。 运行以下命令以确保你已部署了以下版本之一：
+Blobfuse 支持在 Ubuntu 14.04、16.04 和 18.04 上安装。 运行以下命令以确保你已部署了以下版本之一：
 ```
 lsb_release -a
 ```
@@ -51,11 +52,11 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-同样，将 URL 更改为 `.../ubuntu/16.04/...` 或 `.../ubuntu/18.04/...` 以引用其他 Ubuntu 版本。
+同样，将 URL`.../ubuntu/16.04/...`更改为`.../ubuntu/18.04/...`或引用其他 Ubuntu 版本。
 
 ### <a name="install-blobfuse"></a>安装 Blobfuse
 
-在 Ubuntu/Debian 分发上：
+在 Ubuntu/Debian 分布上：
 ```bash
 sudo apt-get install blobfuse
 ```
@@ -97,15 +98,15 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
-`accountName` 是存储帐户的前缀，而不是完整的 URL。
+是`accountName`存储帐户的前缀 ， 而不是完整 URL。
 
-使用以下文件创建此文件：
+使用：
 
 ```
 touch ~/fuse_connection.cfg
 ```
 
-创建并编辑此文件后，请确保限制访问，使其他用户不能读取。
+创建和编辑此文件后，请确保限制访问，以便其他用户无法读取它。
 ```bash
 chmod 600 fuse_connection.cfg
 ```

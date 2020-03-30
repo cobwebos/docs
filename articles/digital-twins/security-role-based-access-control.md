@@ -1,6 +1,6 @@
 ---
-title: 了解基于角色的访问控制-Azure 数字孪生 |Microsoft Docs
-description: 了解基于角色的访问控制和管理 Azure 数字孪生中的权限。
+title: 了解基于角色的访问控制 - Azure 数字孪生 |微软文档
+description: 了解 Azure 数字孪生中基于角色的访问控制和权限管理。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,15 +9,15 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: feda4b3a7f21b581fb4f08aec013f87c0fabb7e5
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76044933"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure 数字孪生中基于角色的访问控制
 
-使用 Azure 数字孪生可以精确地控制空间图中的特定数据、资源和操作。 它通过将角色和权限管理称为[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/)（RBAC）来实现此目的。 RBAC 包括“角色”和“角色分配”。 角色标识权限的级别。 角色分配将角色与用户或设备相关联。
+Azure 数字孪生支持对空间图中的特定数据、资源和操作进行精确访问控制。 它通过称为[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/)（RBAC） 的粒度角色和权限管理来这样做。 RBAC 包括“角色”和“角色分配”。____ 角色标识权限的级别。 角色分配将角色与用户或设备相关联。
 
 使用 RBAC 可将权限授予：
 
@@ -49,7 +49,7 @@ RBAC 具有唯一性，原因在于权限沿着空间图继承。
 
 ### <a name="role-definitions"></a>角色定义
 
-角色定义是组成权限和构成角色的其他属性的集合。 角色定义列出了允许的操作，包括具有该角色的任何对象可执行的创建、读取、更新和删除操作。 它还指定权限应用到的对象类型。
+角色定义是组成权限和构成角色的其他属性的集合。 角色定义列出了允许的操作，包括具有该角色的任何对象可执行的创建、读取、更新和删除操作********。 它还指定权限应用于哪些对象类型。
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
@@ -85,4 +85,4 @@ Azure 数字孪生角色分配将某个对象（例如用户或 Azure AD 租户�
 
 - 若要详细了解如何创建和管理 Azure 数字孪生角色分配，请阅读[创建和管理角色分配](./security-create-manage-role-assignments.md)。
 
-- 阅读有关[适用于 Azure 的 RBAC 的](https://docs.microsoft.com/azure/role-based-access-control/)详细信息。
+- 阅读有关[Azure 的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/)的更多内容。
