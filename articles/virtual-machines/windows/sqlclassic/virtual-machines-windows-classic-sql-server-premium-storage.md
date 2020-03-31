@@ -16,20 +16,20 @@ ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75965675"
 ---
-# <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>在虚拟机上使用带 SQL Server 的 Azure 高级存储
+# <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>将 Azure 高级存储用于虚拟机上的 SQL Server
 
 ## <a name="overview"></a>概述
 
 [Azure 高级 SSD](../disks-types.md) 是提供低延迟和高吞吐量 IO 的下一代存储。 它最适用于关键 IO 密集型工作负荷，例如 IaaS [虚拟机](https://azure.microsoft.com/services/virtual-machines/)上的 SQL Server。
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 有两种不同的部署模型来创建和使用资源：[资源管理器和经典](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 本文提供迁移运行 SQL Server 的虚拟机以使用高级存储的规划和指南。 这包括 Azure 基础结构（网络、存储）以及来宾 Windows VM 步骤。 [附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)中的示例显示如何移动较大的 VM 以通过 PowerShell 利用改进的本地 SSD 存储的完整全面的端到端迁移。
 
@@ -139,14 +139,14 @@ New-AzureStorageAccount -StorageAccountName $newstorageaccountname -Location "We
 Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
 ```
 
-1. 请注意 DiskName 和 LUN。
+1. 记下 DiskName 和 LUN。
 
     ![DisknameAndLUN][2]
-1. 通过远程桌面连接到 VM。 然后依次转到“计算机管理” | “设备管理器” | “磁盘驱动器”。 查看每个 Microsoft 虚拟磁盘的属性
+1. 通过远程桌面连接到 VM。 然后转到**计算机管理** | **设备管理器** | **磁盘驱动器**。 查看每个 Microsoft 虚拟磁盘的属性
 
     ![VirtualDiskProperties][3]
 1. 此处的 LUN 号是对你在将 VHD 附加到 VM 时指定的 LUN 号的引用。
-1. 对于“Microsoft 虚拟磁盘”，转到“详细信息”选项卡，并在“属性”列表中转到“驱动程序键”。 在“值”中，注意“偏移量”，该项在下面的屏幕截图中为 0002。 0002 表示存储池引用的 PhysicalDisk2。
+1. 对于“Microsoft 虚拟磁盘”，转到“详细信息”**** 选项卡，并在“属性”**** 列表中转到“驱动程序键”****。 在“值”**** 中，注意“偏移量”****，该项在下面的屏幕截图中为 0002。 0002 表示存储池引用的 PhysicalDisk2。
 
     ![VirtualDiskPropertyDetails][4]
 1. 对于每个存储池，转储关联的磁盘：
@@ -435,10 +435,10 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 
 有两种策略可以迁移允许停机一段时间的 Always On 部署：
 
-1. **将更多辅助副本添加到现有 Always On 群集**
+1. **向现有的"始终在群集"添加更多辅助副本**
 2. **迁移到新的 Always On 群集**
 
-#### <a name="1-add-more-secondary-replicas-to-an-existing-always-on-cluster"></a>1. 将更多辅助副本添加到现有 Always On 群集
+#### <a name="1-add-more-secondary-replicas-to-an-existing-always-on-cluster"></a>1. 向群集上的现有副本添加更多辅助副本
 
 一种策略是将更多辅助副本添加到 Always On 可用性组。 需要将这些辅助副本添加到新的云服务中，并使用新的负载均衡器 IP 更新侦听器。
 
@@ -473,7 +473,7 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 7. 将新节点添加到群集并运行完整验证。
 8. 成功验证后，启动所有 SQL Server 服务。
 9. 备份事务日志并还原用户数据库。
-10. 将新节点添加到 Always On 可用性组中，并将复制放置到“同步”中。
+10. 将新节点添加到 Always On 可用性组中，并将复制放置到“同步”**** 中。
 11. 根据[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)中的多站点示例，通过 PowerShell 为 Always On 添加新云服务 ILB/ELB 的 IP 地址资源。 在 Windows 群集中，将 **IP 地址**资源的**可能所有者**设置为新节点 old。 请参阅[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)的“在同一子网中添加 IP 地址资源”部分。
 12. 故障转移到新节点之一。
 13. 将新节点设为“自动故障转移伙伴”并测试故障转移。
@@ -492,7 +492,7 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 * 设置辅助副本时，SQL 数据传输时间可能会很长。
 * 在迁移期间，并行运行新计算机时，会产生额外的费用。
 
-#### <a name="2-migrate-to-a-new-always-on-cluster"></a>2. 迁移到新的 Always On 群集
+#### <a name="2-migrate-to-a-new-always-on-cluster"></a>2. 迁移到新的"始终在群集"中
 
 另一种策略是在新的云服务中创建包含全新节点的全新 Always On 群集，并重定向客户端以使用该群集。
 
@@ -520,10 +520,10 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 
 有两种迁移 Always On 部署的策略可实现最短停机时间：
 
-1. **利用现有的辅助副本：单站点**
+1. **利用现有辅助站点：单站点**
 2. **利用现有的辅助副本：多站点**
 
-#### <a name="1-utilize-an-existing-secondary-single-site"></a>1. 利用现有的辅助副本：单站点
+#### <a name="1-utilize-an-existing-secondary-single-site"></a>1. 利用现有的辅助：单站点
 
 停机时间最短的一个策略是获取现有的云辅助版本并将其从当前云服务中删除。 然后将 VHD 复制到新的高级存储帐户，并在新的云服务中创建 VM。 然后，在群集和故障转移中更新侦听器。
 
@@ -534,7 +534,7 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 * 如果选择将 Always On 群集组脱机来换出 IP 地址，则会增加停机时间。 可以通过对添加的 IP 地址资源使用 OR 依赖关系和可能的所有者来避免出现这种情况。 请参阅[附录](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage)的“在同一子网中添加 IP 地址资源”部分。
 
 > [!NOTE]
-> 如果要让添加的节点作为 Always On 故障转移伙伴参与其中，则需要添加带有对负载均衡集的引用的 Azure 终结点。 运行 Add-AzureEndpoint 命令来执行此操作时，当前连接保持断开，但在更新负载均衡器之后，才能建立到侦听器的新连接。 在测试时，看到此现像持续 90 到 120 秒，应该对此进行测试。
+> 如果要让添加的节点作为 Always On 故障转移伙伴参与其中，则需要添加带有对负载均衡集的引用的 Azure 终结点。 运行 Add-AzureEndpoint 命令来执行此操作时，当前连接保持断开，但在更新负载均衡器之后，才能建立到侦听器的新连接****。 在测试时，看到此现像持续 90 到 120 秒，应该对此进行测试。
 
 ##### <a name="advantages"></a>优点
 
@@ -681,7 +681,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>步骤2： \<可选 > 增加资源上允许的故障
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>第 2 步：增加资源\<允许的失败 可选>
 
 在 AlwaysOn 可用性组中包含的某些资源上，限定了在群集服务尝试重启资源组的固定时间内可出现的失败数。 在完成此过程时，建议增加此限制，因为如果未手动故障转移或通过关闭计算机来触发故障转移，则可能会接近此限制。
 
@@ -691,7 +691,7 @@ New-AzureService $destcloudsvc -Location $location
 
 将最大故障数更改为 6。
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>步骤3：为群集组添加 IP 地址资源 \<可选 >
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>步骤 3：为群集组\<可选>添加 IP 地址资源
 
 如果群集组只有一个 IP 地址，而此地址分配给了云子网，则请注意，如果意外地使此玩过上云端的所有群集脱机，群集 IP 资源和群集网络名称将无法再联机。 此情况下，这会阻止更新到其他群集资源。
 
@@ -749,7 +749,7 @@ Get-ClusterResource $ListenerName| Set-ClusterParameter -Name "HostRecordTTL" 12
 
 ##### <a name="client-application-settings"></a>客户端应用程序设置
 
-如果 SQL 客户端应用程序支持 .NET 4.5 SQLClient，则可以使用 "MULTISUBNETFAILOVER = TRUE" 关键字。 必须使用此关键字，因为它可加快故障转移期间到 SQL AlwaysOn 可用性组的连接速度。 它可以在故障转移过程中枚举与 Always On 侦听器并行关联的所有 IP 地址，并执行更激进的 TCP 连接重试速度。
+如果您的 SQL 客户端应用程序支持 .NET 4.5 SQLClient，则可以使用"多SUBNETFAILOVER_TRUE"关键字。 必须使用此关键字，因为它可加快故障转移期间到 SQL AlwaysOn 可用性组的连接速度。 它可以在故障转移过程中枚举与 Always On 侦听器并行关联的所有 IP 地址，并执行更激进的 TCP 连接重试速度。
 
 有关先前设置的详细信息，请参阅[MultiSubnetFailover 关键字及关联的功能](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover)。 另请参阅 [SqlClient 对高可用性、灾难恢复的支持](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx)。
 

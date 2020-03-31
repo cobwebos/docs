@@ -1,25 +1,25 @@
 ---
-title: 部署资源跨订阅 & 资源组
+title: 跨订阅和资源组部署资源
 description: 介绍如何在部署期间将多个 Azure 订阅和资源组作为目标。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 3cc31e64e9595c637a23fc54d9d02274ded40dda
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 70868f5a3598c26ffff81f0ad3536a6c5c0a7e53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944036"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460341"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>将 Azure 资源部署到多个订阅或资源组
 
-通常情况下，将模板中的所有资源部署到单个[资源组](../management/overview.md)。 不过，在某些情况下，你可能希望将一组资源部署在一起但将其放置在不同的资源组或订阅中。 例如，你可能希望将 Azure Site Recovery 的备份虚拟机部署到一个单独的资源组和位置。 资源管理器使你可以使用嵌套模板来针对多个订阅和资源组。
+通常情况下，将模板中的所有资源部署到单个[资源组](../management/overview.md)。 不过，在某些情况下，你可能希望将一组资源部署在一起但将其放置在不同的资源组或订阅中。 例如，你可能希望将 Azure Site Recovery 的备份虚拟机部署到一个单独的资源组和位置。 资源管理器允许使用嵌套模板，以多个订阅和资源组为目标。
 
 > [!NOTE]
 > 在单个部署中可以仅部署到五个资源组。 通常情况下，此限制意味着，在嵌套或链接的部署中可以部署到为父模板指定的一个资源组和最多四个资源组。 但是，如果父模板仅包含嵌套或链接的模板，并且本身不部署任何资源，则在嵌套或链接的部署中最多可包含五个资源组。
 
 ## <a name="specify-subscription-and-resource-group"></a>指定订阅和资源组
 
-若要针对其他资源组或订阅，请使用[嵌套模板或链接模板](linked-templates.md)。 `Microsoft.Resources/deployments` 资源类型为 `subscriptionId` 和 `resourceGroup`提供参数，这使你可以为嵌套部署指定订阅和资源组。 如果未指定订阅 ID 或资源组，则使用父模板中的订阅和资源组。 在运行部署之前，所有资源组都必须存在。
+若要以其他资源组或订阅为目标，请使用[嵌套或链接模板](linked-templates.md)。 `Microsoft.Resources/deployments` 资源类型为 `subscriptionId` 和 `resourceGroup` 提供参数，使你可以为嵌套部署指定订阅和资源组。 如果未指定订阅 ID 或资源组，将使用父模板中的订阅和资源组。 在运行部署之前，所有资源组都必须存在。
 
 用于部署模板的帐户必须有权部署到指定的订阅 ID。 如果指定的订阅存在于不同的 Azure Active Directory 租户中，则必须[从另一个目录添加来宾用户](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)。
 
@@ -38,9 +38,9 @@ ms.locfileid: "78944036"
 ]
 ```
 
-如果资源组位于同一订阅中，则可以删除“subscriptionId”值。
+如果资源组位于同一订阅中，则可以删除“subscriptionId”值****。
 
-下面的示例部署两个存储帐户。 第一个存储帐户部署到部署期间指定的资源组。 第二个存储帐户部署到在 `secondResourceGroup` 和 `secondSubscriptionID` 参数中指定的资源组：
+以下示例部署两个存储帐户。 第一个存储帐户部署到部署期间指定的资源组。 第二个存储帐户部署到在 `secondResourceGroup` 和 `secondSubscriptionID` 参数中指定的资源组：
 
 ```json
 {
@@ -115,11 +115,11 @@ ms.locfileid: "78944036"
 }
 ```
 
-如果将 `resourceGroup` 设置为不存在的资源组的名称，则部署将失败。
+如果将 `resourceGroup` 设置为不存在的资源组的名称，则部署会失败。
 
 若要测试上述模板并查看结果，请使用 PowerShell 或 Azure CLI。
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
 若要将两个存储帐户部署到**同一订阅**中的两个资源组，请使用：
 
@@ -172,7 +172,7 @@ secondRG="secondarygroup"
 
 az group create --name $firstRG --location southcentralus
 az group create --name $secondRG --location eastus
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group $firstRG \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
@@ -194,7 +194,7 @@ az group create --name $secondRG --location eastus
 az account set --subscription $firstSub
 az group create --name $firstRG --location southcentralus
 
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group $firstRG \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
@@ -205,21 +205,21 @@ az group deployment create \
 
 ## <a name="use-functions"></a>使用函数
 
-根据你指定模板的方式， [resourceGroup （）](template-functions-resource.md#resourcegroup)和[订阅（）](template-functions-resource.md#subscription)函数的解析方式有所不同。 链接到外部模板时，函数始终解析为该模板的作用域。 在父模板中嵌套模板时，请使用 `expressionEvaluationOptions` 属性指定函数是否解析为父模板或嵌套模板的资源组和订阅。 将属性设置为要 `inner` 解析为嵌套模板的范围。 将属性设置为要 `outer` 解析为父模板的作用域。
+[resourceGroup()](template-functions-resource.md#resourcegroup) 和 [subscription()](template-functions-resource.md#subscription) 函数根据指定模板的方式以不同的方式解析。 链接到外部模板时，函数始终解析为该模板的作用域。 在父模板中嵌套模板时，请使用 `expressionEvaluationOptions` 属性指定函数是否解析为父模板或嵌套模板的资源组和订阅。 将属性设置为 `inner`，以便解析为嵌套模板的范围。 将属性设置为 `outer`，以便解析为父模板的范围。
 
-下表显示了函数是解析为父资源组还是嵌入资源组和订阅。
+下表显示了函数是解析为父资源组，还是解析为嵌入资源组和订阅。
 
 | 模板类型 | 范围 | 解决方法 |
 | ------------- | ----- | ---------- |
 | 嵌套        | 外部（默认值） | 父资源组 |
 | 嵌套        | 内部 | 子资源组 |
-| 链表        | 空值   | 子资源组 |
+| 链接        | 空值   | 子资源组 |
 
-下面的[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)显示：
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)演示：
 
 * 具有默认（外部）范围的嵌套模板
 * 具有内部范围的嵌套模板
-* 链接模板
+* 链接的模板
 
 ```json
 {
@@ -317,7 +317,7 @@ az group deployment create \
 
 若要测试上述模板并查看结果，请使用 PowerShell 或 Azure CLI。
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -347,7 +347,7 @@ az group create --name parentGroup --location southcentralus
 az group create --name inlineGroup --location southcentralus
 az group create --name linkedGroup --location southcentralus
 
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group parentGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json

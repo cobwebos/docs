@@ -10,14 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: bf0710ebef21226d8d8582a920d64027bb015d34
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 850ab0ee89ee167886d8747a0c721bb643529e14
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622726"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80052076"
 ---
 # <a name="what-is-personalizer"></a>什么是个性化体验创建服务？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure 个性化体验创建服务是基于云的 API 服务，有助于客户端应用程序选择最佳的单个内容  项来显示每个用户。 此服务根据你提供的有关内容和上下文的实时集合信息，从内容项中选择最佳项。
 

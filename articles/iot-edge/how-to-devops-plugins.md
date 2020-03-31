@@ -1,6 +1,6 @@
 ---
 title: 使用 Jenkins 插件启用 CI/CD - Azure IoT Edge | Microsoft Docs
-description: 通过 Jenkins 的 Azure IoT Edge 扩展，可将 IoT Edge 开发和部署任务集成到现有的 DevOps 解决方案中。
+description: Jenkins 的 Azure IoT 边缘扩展使您能够将 IoT 边缘开发和部署任务集成到现有的 DevOps 解决方案中。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 75ed5f5eda48f10776b854ce4de4d2f855a53634
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76510237"
 ---
 # <a name="integrate-azure-iot-edge-with-jenkins-pipelines"></a>将 Azure IoT Edge 与 Jenkins 管道集成

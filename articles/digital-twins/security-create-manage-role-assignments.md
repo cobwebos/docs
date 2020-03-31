@@ -1,6 +1,6 @@
 ---
-title: 创建和管理角色分配-Azure 数字孪生 |Microsoft Docs
-description: 了解如何在 Azure 数字孪生内创建和管理角色分配。
+title: 创建和管理角色分配 - Azure 数字孪生 |微软文档
+description: 了解如何在 Azure 数字孪生中创建和管理角色分配。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110411"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>在 Azure 数字孪生中创建和管理角色分配
@@ -36,7 +36,7 @@ Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-base
 
 下表描述了每个属性：
 
-| 属性 | 名称 | 必需 | 类型 | 说明 |
+| 特性 | “属性” | 必选 | 类型 | 说明 |
 | --- | --- | --- | --- | --- |
 | roleId | 角色定义标识符 | 是 | String | 所需角色分配的唯一 ID。 通过查询系统 API 或查看下表查找角色定义及其标识符。 |
 | objectId | 对象标识符 | 是 | String | Azure Active Directory ID、服务主体对象 ID 或域名。 该角色分配要分配到哪个对象。 必须根据其关联类型设置角色分配的格式。 对于 `DomainName` objectIdType，objectId 必须以 `“@”` 字符开头。 |
@@ -85,14 +85,14 @@ az login
 az ad sp show --id <ApplicationId>
 ```
 
-在 Powershell 中：
+在电源壳中：
 
 ```powershell
 Login-AzAccount
 Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 ```
 
-然后，具有“管理员”角色的用户可以通过向以下 URL 发出经过身份验证的 HTTP POST 请求，将“空间管理员”角色分配给用户：
+然后，具有“管理员”角色的用户可以通过向以下 URL 发出经过身份验证的 HTTP POST 请求，将“空间管理员”角色分配给用户：****
 
 ```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
@@ -161,12 +161,12 @@ YOUR_MANAGEMENT_API_URL/system/roles
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **参数值** | **必需** |  类型 |  **说明** |
+| **参数值** | **必需** |  **类型** |  **说明** |
 | --- | --- | --- | --- |
 | YOUR_USER_ID |  True | String |   UserId objectIdType 的 objectId。 |
 | YOUR_PATH | True | String |   要检查访问权限的所选路径。 |
-| YOUR_ACCESS_TYPE |  True | String |   *读取*、*创建*、*更新*或*删除* |
-| YOUR_RESOURCE_TYPE | True | String |  *Device*、 *DeviceBlobMetadata*、 *DeviceExtendedProperty*、 *ExtendedPropertyKey*、 *ExtendedType*、 *Endpoint*、*密钥*存储 *、匹配程序*、 *Ontology*、 *Report*、RoleDefinition *、SensorExtendedProperty、* *SpaceBlobMetadata*、 *Space*、 *SpaceExtendedProperty*、 *SpaceResource*、 *SpaceRoleAssignment*、、 *System*、 *UerDefinedFunction*、 *User*、 *UserBlobMetadata*或*UserExtendedProperty* |
+| YOUR_ACCESS_TYPE |  True | String |   *读取*、*创建*、*更新**或删除* |
+| YOUR_RESOURCE_TYPE | True | String |  *设备*，*设备Blob元数据*，*设备扩展属性*，*扩展属性键*，*扩展类型*，*终端*，*钥匙存储*，*匹配器*，*本体，**报告*，*角色定义*，*传感器*，*传感器扩展属性*，*空间*，*空间Blob元数据*，*空间扩展属性*，*空间资源*，*空间角色分配*，*系统*， *Uer 定义函数*、*用户*、*用户 Blob 元数据*或*用户扩展属性* |
 
 成功的请求将返回布尔值 `true` 或 `false`，指示是否已将该访问类型分配到给定路径和资源的用户。
 
@@ -178,7 +178,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| 值 | 替换为 |
+| “值” | 替换为 |
 | --- | --- |
 | YOUR_PATH | 空间的完整路径 |
 
@@ -198,7 +198,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 
 ### <a name="revoke-a-permission"></a>撤销权限
 
-若要撤消接收方的权限，请通过发出经过身份验证的 HTTP DELETE 请求来删除角色分配：
+要撤销收件人的权限，请通过发出经过身份验证的 HTTP DELETE 请求来删除角色分配：
 
 ```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
@@ -240,7 +240,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
 
 以下示例演示如何在多种常见的角色分配方案中配置 JSON 正文。
 
-* **示例**：用户需要对租户空间底层的管理访问权限。
+* **示例**：用户需要对租户空间的楼层进行管理访问。
 
    ```JSON
    {
@@ -252,7 +252,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
    }
    ```
 
-* **示例**：应用程序运行测试方案模拟设备和传感器。
+* **示例**：应用程序运行测试场景，模拟设备和传感器。
 
    ```JSON
    {
@@ -264,7 +264,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
    }
     ```
 
-* **示例**：作为域成员的所有用户均可接收共享空间、传感器和用户的读取权限。 此访问权限包括其对应的相关对象。
+* **示例**：属于域的所有用户都接收空间、传感器和用户的读取访问权限。 此访问权限包括其对应的相关对象。
 
    ```JSON
    {

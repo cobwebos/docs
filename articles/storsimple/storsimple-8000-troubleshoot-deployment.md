@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: f2b454e812db1eea686f82e92841163f1129b6c8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79267620"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>排查 StorSimple 设备部署问题
@@ -58,7 +58,7 @@ ms.locfileid: "79267620"
      > [!IMPORTANT]
      > 密码在注册之前收集，但仅在成功注册设备后应用。 如果无法应用密码，系统会提示再次提供密码，直到收集所需的密码（满足复杂性要求）。
      
-4. 注册设备：最后一步是使用在 Microsoft Azure 中运行的 StorSimple 设备管理器服务注册设备。 注册需要从 Azure 门户[获取服务注册密钥](storsimple-8000-manage-service.md#get-the-service-registration-key)，并在设置向导中提供此密钥。 **成功注册设备后，系统会提供一个服务数据加密密钥。请确保将此加密密钥保存在安全的位置，因为需要将所有后续设备注册到该服务。**
+4. 注册设备：最后一步是使用在 Microsoft Azure 中运行的 StorSimple 设备管理器服务注册设备。 注册需要从 Azure 门户[获取服务注册密钥](storsimple-8000-manage-service.md#get-the-service-registration-key)，并在设置向导中提供此密钥。 **成功注册设备后，将为您提供服务数据加密密钥。请务必将此加密密钥保存在安全位置，因为它需要向服务注册所有后续设备。**
 
 ## <a name="common-errors-during-device-deployment"></a>部署设备期间的常见错误
 下表列出了执行以下操作时可能遇到的常见错误：
@@ -75,18 +75,18 @@ ms.locfileid: "79267620"
 | 2 |Invoke-HcsSetupWizard：设备未准备就绪。 |DATA 0 上的网络连接存在问题。 |检查 DATA 0 上的物理网络连接。 |
 | 3 |Invoke-HcsSetupWizard：有一个 IP 地址与网络上的另一个系统冲突（异常来自 HRESULT：0x80070263）。 |为 DATA 0 提供的 IP 已被另一个系统使用。 |提供一个未使用的新 IP。 |
 | 4 |Invoke-HcsSetupWizard：群集资源失败。 （异常来自 HRESULT：0x800713AE）。 |VIP 重复。 提供的 IP 已在使用中。 |提供一个未使用的新 IP。 |
-| 5 |Invoke-HcsSetupWizard：IPv4 地址无效。 |提供的 IP 地址的格式不正确。 |检查格式并再次提供 IP 地址。 有关详细信息，请参阅[Ipv4 寻址][1]。 |
-| 6 |Invoke-HcsSetupWizard：IPv6 地址无效。 |提供的 IP 地址的格式不正确。 |检查格式并再次提供 IP 地址。 有关详细信息，请参阅[Ipv6 寻址][2]。 |
-| 7 |Invoke-HcsSetupWizard：端点映射程序中没有更多可用的端点。 （异常来自 HRESULT：0x800706D9） |群集功能不工作。 |[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以了解后续步骤。 |
+| 5 |Invoke-HcsSetupWizard：IPv4 地址无效。 |提供的 IP 地址的格式不正确。 |检查格式并再次提供 IP 地址。 有关详细信息，请参阅 [Ipv4 寻址][1]。 |
+| 6 |Invoke-HcsSetupWizard：IPv6 地址无效。 |提供的 IP 地址的格式不正确。 |检查格式并再次提供 IP 地址。 有关详细信息，请参阅 [Ipv6 寻址][2]。 |
+| 7 |Invoke-HcsSetupWizard：端点映射程序中没有更多可用的端点。 （异常来自 HRESULT：0x800706D9） |群集功能不工作。 |[有关后续步骤，请与 Microsoft 支持部门联系](storsimple-8000-contact-microsoft-support.md)。 |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>配置可选 Web 代理设置期间的错误
 | 不是。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
-| 1 |Invoke-HcsSetupWizard：参数无效（异常来自 HRESULT：0x80070057） |为代理设置提供的一个参数无效。 |提供的 URI 的格式不正确。 使用以下格式： http:// *\<IP 地址或 web 代理服务器的 FQDN >* ： *\<TCP 端口号 >* |
-| 2 |Invoke-HcsSetupWizard：RPC 服务器不可用（异常来自 HRESULT：0x800706ba） |根本原因是以下项之一：<ol><li>群集未启动。</li><li>被动控制器不能与主动控制器通信，并且命令从被动控制器运行。</li></ol> |具体取决于根本原因：<ol><li>[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以确保群集已启动。</li><li>从主动控制器运行命令。 如果要从被动控制器运行命令，则需要确保被动控制器可以与主动控制器通信。 如果此连接中断，需要[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。</li></ol> |
+| 1 |Invoke-HcsSetupWizard：参数无效（异常来自 HRESULT：0x80070057） |为代理设置提供的一个参数无效。 |提供的 URI 的格式不正确。 使用以下格式：http://*\< **\<>：TCP 端口号>* 的 Web 代理服务器的 ip 地址或 FQDN |
+| 2 |Invoke-HcsSetupWizard：RPC 服务器不可用（异常来自 HRESULT：0x800706ba） |根本原因是以下项之一：<ol><li>群集未启动。</li><li>被动控制器不能与主动控制器通信，并且命令从被动控制器运行。</li></ol> |具体取决于根本原因：<ol><li>[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以确保群集已启动。</li><li>从主动控制器运行命令。 如果要从被动控制器运行命令，则需要确保被动控制器可以与主动控制器通信。 如果此连接中断，则需要[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。</li></ol> |
 | 3 |Invoke-HcsSetupWizard：RPC 调用失败（异常来自 HRESULT：0x800706be） |群集已关闭。 |[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以确保群集已启动。 |
 | 4 |Invoke-HcsSetupWizard：找不到群集资源（异常来自 HRESULT：0x8007138f） |找不到群集资源。 安装不正确时可能出现这个错误。 |可能需要将设备重置为出厂默认设置。 [联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md) 以创建群集资源。 |
-| 5 |Invoke-HcsSetupWizard：群集资源无法联机（异常来自 HRESULT：0x8007138c） |群集资源未联机。 |[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以了解后续步骤。 |
+| 5 |Invoke-HcsSetupWizard：群集资源无法联机（异常来自 HRESULT：0x8007138c） |群集资源未联机。 |[有关后续步骤，请与 Microsoft 支持部门联系](storsimple-8000-contact-microsoft-support.md)。 |
 
 ## <a name="errors-related-to-device-administrator-password"></a>与设备管理员密码相关的错误
 默认的设备管理员密码为 **Password1**。 此密码在首次登录后过期；因此，需要使用设置向导来更改它。 首次注册设备时，必须提供新的设备管理员密码。 
@@ -128,18 +128,18 @@ ms.locfileid: "79267620"
 
 | 不是。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
-| 1 |错误 350027：无法使用 StorSimple 设备管理器注册设备。 | |等候几分钟时间，并重试操作。 如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 |
+| 1 |错误 350027：无法使用 StorSimple 设备管理器注册设备。 | |等候几分钟时间，并重试操作。 如果问题仍然存在，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。 |
 | 2 |错误 350013：注册设备时发生错误。 这可能是由于服务注册密钥不正确。 | |请使用正确的服务注册密钥再次注册该设备。 有关详细信息，请参阅[获取服务注册密钥](storsimple-8000-manage-service.md#get-the-service-registration-key)。 |
-| 3 |错误 350063：已通过对 StorSimple 设备管理器服务的身份认证，但注册失败。 请稍后重试操作。 |此错误表示已通过使用 ACS 的身份验证，但对服务的注册调用失败。 这可能是偶发性网络故障的结果。 |如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 |
-| 4 |错误 350049：在注册期间无法访问服务。 |当对服务进行调用时，接收到 Web 异常。 在某些情况下，稍后重试该操作即可解决此问题。 |请检查 IP 地址和 DNS 名称，并重试该操作。 如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 |
+| 3 |错误 350063：已通过对 StorSimple 设备管理器服务的身份认证，但注册失败。 请稍后重试操作。 |此错误表示已通过使用 ACS 的身份验证，但对服务的注册调用失败。 这可能是偶发性网络故障的结果。 |如果问题仍然存在，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。 |
+| 4 |错误 350049：在注册期间无法访问服务。 |当对服务进行调用时，接收到 Web 异常。 在某些情况下，稍后重试该操作即可解决此问题。 |请检查 IP 地址和 DNS 名称，并重试该操作。 如果问题仍然存在，[请与 Microsoft 支持部门联系。](storsimple-8000-contact-microsoft-support.md) |
 | 5 |错误 350031：设备已注册。 | |无需执行任何操作。 |
 | 6 |错误 350016：设备注册失败。 | |请确保注册密钥正确。 |
 | 7 |Invoke-HcsSetupWizard：注册设备时发生错误；这可能是由于 IP 地址或 DNS 名称不正确。 请检查网络设置，然后重试。 如果该问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 （错误 350050） |确保设备可以 ping 外部网络。 如果没有连接到外部网络，则注册可能会失败并出现此错误。 此错误可能是以下一个或多个原因的组合：<ul><li>IP 不正确</li><li>子网不正确</li><li>网关不正确</li><li>DNS 设置不正确</li></ul> |请参阅[分步故障排除示例](#step-by-step-storsimple-troubleshooting-example)中的步骤。 |
-| 8 |Invoke-HcsSetupWizard：由于内部服务错误 [0x1FBE2]，当前操作失败。 请稍后重试操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。 |这是为服务或代理中所有用户不可见错误抛出的通用错误。 最常见的原因可能是 ACS 身份验证已失败。 导致此故障的可能原因是 NTP 服务器配置存在问题，并且设备上的时间设置不正确。 |更正时间（如果有问题），然后重试注册操作。 如果使用 Set-HcsSystem -Timezone 命令调整时区，请将时区中的每个单词的首字母大写（例如“Pacific Standard Time”）。  如果此问题仍然存在，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以了解后续步骤。 |
+| 8 |Invoke-HcsSetupWizard：由于内部服务错误 [0x1FBE2]，当前操作失败。 请稍后重试操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。 |这是为服务或代理中所有用户不可见错误抛出的通用错误。 最常见的原因可能是 ACS 身份验证已失败。 导致此故障的可能原因是 NTP 服务器配置存在问题，并且设备上的时间设置不正确。 |更正时间（如果有问题），然后重试注册操作。 如果使用 Set-HcsSystem -Timezone 命令调整时区，请将时区中的每个单词的首字母大写（例如“Pacific Standard Time”）。  如果问题仍然存在，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)以获取后续措施。 |
 | 9 |警告：无法激活设备。 设备管理员和 StorSimple Snapshot Manager 密码尚未更改。 |如果注册失败，则设备管理员和 StorSimple Snapshot Manager 密码不会更改。 | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>用于排查 StorSimple 部署问题的工具
-StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障排除。 其中包括：
+StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障排除。 其中包括:
 
 * 支持包和设备日志。
 * 专为故障排除而设计的 cmdlet。
@@ -154,7 +154,7 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
 4. 解密的支持包日志采用 etw/etvx 格式。 可以执行以下步骤以在 Windows 事件查看器中查看这些文件：
    
    1. 在 Windows 客户端上运行 **eventvwr** 命令。 这会启动事件查看器。
-   2. 在“**操作**”窗格中，单击“**打开保存的日志**”并指向采用 etvx/etw 格式的日志文件（支持包）。 现在可以查看该文件。 打开文件后，可以右键单击并将该文件另存为文本。
+   2. 在“操作”**** 窗格中，单击“打开保存的日志”**** 并指向采用 etvx/etw 格式（支持包）的日志文件。 现在可以查看该文件。 打开文件后，可以右键单击并将该文件另存为文本。
       
       > [!IMPORTANT]
       > 还可以使用 **Get-WinEvent** cmdlet 以在 Windows PowerShell 中打开这些文件。 有关详细信息，请参阅 Windows PowerShell cmdlet 参考文档中的 [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx)。
@@ -164,7 +164,7 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
    * hcs_pfconfig/Operational Log
    * hcs_pfconfig/Config
 6. 在这些日志文件中，搜索与设置向导调用的 cmdlet 相关的字符串。 有关这些 cmdlet 的列表，请参阅[首次设置向导过程](#first-time-setup-wizard-process)。
-7. 如果无法找出问题的原因，可以[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以了解后续步骤。 在联系 Microsoft 支持部门以寻求协助时，请使用[创建支持请求](storsimple-8000-contact-microsoft-support.md#create-a-support-request)中的步骤。
+7. 如果无法找出问题的原因，可以[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)以获取后续措施。 在联系 Microsoft 支持部门以寻求协助时，请使用[创建支持请求](storsimple-8000-contact-microsoft-support.md#create-a-support-request)中的步骤。
 
 ## <a name="cmdlets-available-for-troubleshooting"></a>可用于故障排除的 cmdlet
 使用以下 Windows PowerShell cmdlet 检测连接错误。
@@ -178,15 +178,15 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
 * `Get-HcsRoutingTable`：使用此 cmdlet 显示本地 IP 路由表。
 
 ## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>使用 Get-NetAdapter cmdlet 进行故障排除
-为第一次设备部署配置网络接口时，StorSimple 设备管理器服务 UI 中的硬件状态不可用，因为尚未使用该服务注册此设备。 此外，“硬件运行状况”边栏选项卡可能不会始终正确反映设备的状态，特别是在存在影响服务同步的问题时。 在这些情况下，可以使用 `Get-NetAdapter` cmdlet 确定网络接口的运行状况和状态。
+为第一次设备部署配置网络接口时，StorSimple 设备管理器服务 UI 中的硬件状态不可用，因为尚未使用该服务注册此设备。 此外，“硬件运行状况”边栏选项卡可能不会始终正确反映设备的状态，特别是在存在影响服务同步的问题时。**** 在这些情况下，可以使用 `Get-NetAdapter` cmdlet 确定网络接口的运行状况和状态。
 
 ### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>要查看设备上的所有网络适配器的列表
 1. 启动 Windows PowerShell for StorSimple，并键入 `Get-NetAdapter`。 
 2. 使用 `Get-NetAdapter` cmdlet 的输出和以下准则来了解网络接口的状态。
    
-   * 如果接口正常运行并已启用，**ifIndex** 状态显示为 **Up**。
-   * 如果接口正常运行但未以物理方式连接（通过网络电缆），**ifIndex** 显示为 **Disabled**。
-   * 如果接口正常运行但未启用，**ifIndex** 状态显示为 **NotPresent**。
+   * 如果接口正常运行并已启用，**ifIndex** 状态将显示为 **Up**。
+   * 如果接口正常运行但未建立物理连接（通过网络电缆），**ifIndex** 将显示为 **Disabled**。
+   * 如果接口正常运行但未启用，**ifIndex** 状态将显示为 **NotPresent**。
    * 如果接口不存在，则不会出现在此列表中。 StorSimple 设备管理器服务 UI 仍会显示此接口处于失败状态。
 
 有关如何使用此 cmdlet 的详细信息，请转到 Windows PowerShell cmdlet 参考中的 [Get-NetAdapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps)。
@@ -339,7 +339,7 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
 
 **示例输出 – 脱机设备** 
 
-此示例来自 Azure 门户中状态为“脱机”的设备。
+此示例来自 Azure 门户中状态为“脱机”的设备。****
 
      Checking device registrationstate: Success
      Device is registered successfully
@@ -504,9 +504,9 @@ StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障
 3. 验证网络接口的运行状况：
    
    * 使用 Get-NetAdapter cmdlet 可检测 DATA 0 的网络接口的运行状况。 
-   * 如果链接不工作，**ifindex** 状态将指示接口已关闭。 然后，你需要检查端口到设备和交换机的网络连接。 还需要排查出损坏的电缆。 
+   * 如果链路工作不正常，**ifindex** 状态将指示该接口已关闭。 然后，你需要检查端口到设备和交换机的网络连接。 还需要排查出损坏的电缆。 
    * 如果怀疑主动控制器上的 DATA 0 端口出现故障，可以通过连接到控制器 1 上的 DATA 0 端口来确认。 要确认这一点，请从控制器 0 的设备背面断开网络电缆，将电缆连接到控制器 1，并再次运行 Get-NetAdapter cmdlet。
-     如果控制器上的 DATA 0 端口出现故障，请[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以了解后续步骤。 可能需要更换系统上的控制器。
+     如果控制器上的 DATA 0 端口有故障，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)以获取后续措施。 可能需要更换系统上的控制器。
 4. 验证与交换机的连接：
    
    * 确保主机箱中控制器 0 和控制器 1 上的 DATA 0 网络接口位于同一子网中。 

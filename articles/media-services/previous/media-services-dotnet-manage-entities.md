@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251136"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 管理资产和相关的实体
@@ -29,18 +29,18 @@ ms.locfileid: "79251136"
 > 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 本主题演示如何使用 .NET 管理 Azure 媒体服务实体。
 
 自 2017 年 4 月 1 日起，即使记录总数低于最大配额，也会自动删除帐户中所有超过 90 天的作业记录，及其相关的任务记录。 例如，将于 2017 年 4 月 1 日自动删除帐户中 2016 年 12 月 31 日前的所有作业记录。 在需要时，可使用本主题中所述的代码存档作业/任务信息。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，使用 连接信息填充 app.config 文件，如使用[.NET 的媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 ## <a name="get-an-asset-reference"></a>获取资产引用
-一个常见的任务是获取对媒体服务中某个现有资产的引用。 下面的代码示例演示了如何根据资产 Id，从服务器上下文对象上的资产集合中获取资产引用。下面的代码示例使用 Linq 查询来获取对现有 IAsset 对象的引用。
+一个常见的任务是获取对媒体服务中某个现有资产的引用。 以下代码示例演示如何根据资产 ID 从服务器上下文对象上的"资产"集合获取资产引用。以下代码示例使用 Linq 查询获取对现有 IAsset 对象的引用。
 
 ```csharp
     static IAsset GetAsset(string assetId)
@@ -100,7 +100,7 @@ ms.locfileid: "79251136"
 
 ## <a name="get-a-job-reference"></a>获取作业引用
 
-处理媒体服务代码中的任务时，通常需要根据 Id 获取对现有作业的引用。下面的代码示例演示如何获取对作业集合中的 IJob 对象的引用。
+当您处理媒体服务代码中的处理任务时，通常需要根据 Id 获取对现有作业的引用。以下代码示例演示如何从作业集合中获取对 IJob 对象的引用。
 
 开始长时运行的编码作业时，可能需要获取作业引用，并且需要检查线程上的作业状态。 在这种情况下，当方法从某个线程返回时，需要检索对作业的刷新引用。
 

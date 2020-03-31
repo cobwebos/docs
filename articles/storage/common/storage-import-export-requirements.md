@@ -9,10 +9,10 @@ ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255309"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
@@ -24,14 +24,14 @@ ms.locfileid: "79255309"
 为了使用 WAImportExport 工具准备硬盘驱动器，以下**支持 BitLocker 驱动器加密的 64 位操作系统**受支持。
 
 
-|平台 |版本 |
+|Platform |版本 |
 |---------|---------|
 |Windows     | Windows 7 企业版、Windows 7 旗舰版 <br> Windows 8 专业版、Windows 8 企业版、Windows 8.1 专业版、Windows 8.1 企业版 <br> Windows 10        |
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
 
 ## <a name="other-required-software-for-windows-client"></a>Windows 客户端所需的其他软件
 
-|平台 |版本 |
+|Platform |版本 |
 |---------|---------|
 |.NET Framework    | 4.5.1       |
 | BitLocker        |  _          |
@@ -41,7 +41,7 @@ ms.locfileid: "79255309"
 
 Azure 导入/导出服务支持以下类型的存储帐户：
 
-- 标准常规用途 v2 存储帐户（对于大多数方案，建议使用）
+- 标准常规用途 v2 存储帐户（建议用于大多数方案）
 - Blob 存储帐户
 - 常规用途 v1 存储帐户（经典部署或 Azure 资源管理器部署）
 
@@ -78,9 +78,9 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 |HDD     |  2.5"<br>3.5"       |SATA II、SATA III         |
 
 不支持以下磁盘类型：
-- USBs.
+- USB。
 - 带有内置 USB 适配器的外部 HDD。
-- 外部 HDD 的大小写中的磁盘。
+- 外部 HDD 外壳内的磁盘。
 
 单个导入/导出作业可以有：
 - 最多 10 个 HDD/SSD。

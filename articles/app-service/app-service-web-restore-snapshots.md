@@ -1,16 +1,16 @@
 ---
 title: 从快照还原应用
-description: 了解如何从快照还原应用。 通过自动卷影副本从高级层中的意外数据丢失中恢复。
+description: 了解如何从快照还原应用。 使用自动卷影副本从高级层中的意外数据丢失状况中恢复。
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
 ms.topic: article
 ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
 ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255147"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>在 Azure 中从快照还原应用
@@ -35,20 +35,20 @@ ms.locfileid: "78255147"
 
 ## <a name="restore-an-app-from-a-snapshot"></a>从快照还原应用
 
-1. 在 [Azure 门户](https://portal.azure.com)中应用的“设置”页上，单击“备份”以显示“备份”页。 然后，在“快照(预览)”部分下单击“还原”。
+1. 在[Azure 门户](https://portal.azure.com)中的"设置"**应用页上，** 单击 **"备份**"以显示 **"备份"** 页。 然后，在“快照(预览)”部分下单击“还原”。********
    
     ![](./media/app-service-web-restore-snapshots/1.png)
 
-2. 在“还原”页中选择要还原的快照。
+2. 在“还原”页中选择要还原的快照。****
    
     ![](./media/app-service-web-restore-snapshots/2.png)
    
-3. 在“还原目标”中指定应用还原的目标。
+3. 在“还原目标”中指定应用还原的目标。****
    
     ![](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > 如果选择“覆盖”，则会清除并覆盖应用的当前文件系统中的所有现有数据。 在单击“确定”之前，请确保该操作是想要执行的操作。
+   > 如果选择“覆盖”****，则会清除并覆盖应用的当前文件系统中的所有现有数据。 在单击“确定”**** 之前，请确保该操作是想要执行的操作。
    > 
    > 
       
@@ -63,4 +63,4 @@ ms.locfileid: "78255147"
    
     ![](./media/app-service-web-restore-snapshots/4.png)
 
-5. 单击 **“确定”** 。
+5. 单击“确定”。

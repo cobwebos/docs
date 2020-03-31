@@ -1,7 +1,7 @@
 ---
 title: 部署和使用
 titleSuffix: ML Studio (classic) - Azure
-description: 你可以使用 Azure 机器学习 Studio （经典）将机器学习工作流和模型部署为 web 服务。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。
+description: 可以使用 Azure 机器学习工作室（经典）将机器学习工作流和模型作为 Web 服务部署。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,47 +11,47 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
 ms.openlocfilehash: ff6ae0de0bbd8c47b81fa5066a97eb0b3e0cf6bc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204386"
 ---
-# <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure 机器学习 Studio （经典） Web 服务：部署和使用
+# <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure 机器学习工作室（经典）Web 服务：部署和使用
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-你可以使用 Azure 机器学习 Studio （经典）将机器学习工作流和模型部署为 web 服务。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。 由于 Web 服务是 RESTful，可以从各种编程语言和平台（如 .NET 和 Java）以及应用程序（如 Excel）调用它们。
+可以使用 Azure 机器学习工作室（经典）将机器学习工作流和模型作为 Web 服务部署。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。 由于 Web 服务是 RESTful，可以从各种编程语言和平台（如 .NET 和 Java）以及应用程序（如 Excel）调用它们。
 
 接下来的部分提供指向演练、代码和文档的链接，可帮助你开始操作。
 
 ## <a name="deploy-a-web-service"></a>部署 Web 服务
 
-### <a name="with-azure-machine-learning-studio-classic"></a>与 Azure 机器学习 Studio （经典）
+### <a name="with-azure-machine-learning-studio-classic"></a>使用 Azure 机器学习工作室（经典）
 
-Studio （经典）门户和 Microsoft Azure 机器学习 Web 服务门户可帮助你在不编写代码的情况下部署和管理 Web 服务。
+工作室（经典）门户和 Microsoft Azure 机器学习 Web 服务门户可帮助部署和管理 Web 服务，而无需编写代码。
 
 以下链接提供有关如何部署新 Web 服务的常规信息：
 
 * 有关如何部署基于 Azure 资源管理器的新 Web 服务的概述，请参阅[部署新 Web 服务](deploy-a-machine-learning-web-service.md)。
 * 有关如何部署 Web 服务的演练，请参阅[部署 Azure 机器学习 Web 服务](deploy-a-machine-learning-web-service.md)。
-* 有关如何创建和部署 web 服务的完整演练，请从[教程1：预测信用风险](tutorial-part1-credit-risk.md)开始。
+* 有关如何创建和部署 Web 服务的完整演练，请从[教程 1：预测信用风险](tutorial-part1-credit-risk.md)开始。
 * 有关部署 Web 服务的特定示例，请参阅：
 
-  * [教程3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
+  * [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
   * [如何将 Web 服务部署到多个区域](deploy-a-machine-learning-web-service.md#multi-region)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>使用 Web 服务资源提供程序 API (Azure 资源管理器 API)
 
-Web 服务的 Azure 机器学习 Studio （经典）资源提供程序通过使用 REST API 调用来实现 web 服务的部署和管理。 有关详细信息，请参阅[机器学习 Web 服务 (REST)](/rest/api/machinelearning/index) 参考。
+用于 Web 服务的 Azure 机器学习工作室（经典）资源提供程序支持使用 REST API 调用来部署和管理 Web 服务。 有关详细信息，请参阅[机器学习 Web 服务 (REST)](/rest/api/machinelearning/index) 参考。
 
 <!-- [Machine Learning Web Service (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx) reference. -->
 
 ### <a name="with-powershell-cmdlets"></a>使用 PowerShell cmdlet
 
-Web 服务的 Azure 机器学习 Studio （经典）资源提供程序支持使用 PowerShell cmdlet 来部署和管理 web 服务。
+用于 Web 服务的 Azure 机器学习工作室（经典）资源提供程序支持使用 PowerShell cmdlet 来部署和管理 Web 服务。
 
-若要使用 cmdlet，必须先使用[AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 从 PowerShell 环境中登录到 Azure 帐户。 如果对调用基于资源管理器的 PowerShell 命令不熟悉，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../../azure-resource-manager/management/manage-resources-powershell.md)。
+要使用 cmdlet，必须先使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 从 PowerShell 环境中登录到 Azure 帐户。 如果对调用基于资源管理器的 PowerShell 命令不熟悉，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../../azure-resource-manager/management/manage-resources-powershell.md)。
 
 若要导出预测实验，则使用[此代码示例](https://github.com/ritwik20/AzureML-WebServices)。 从代码创建 .exe 文件后，可以键入：
 
@@ -80,7 +80,7 @@ Web 服务的 Azure 机器学习 Studio （经典）资源提供程序支持使�
 
 有关更多详细信息，请参阅以下文章和示例代码：
 
-* MSDN 上的[Azure 机器学习 Studio （经典） cmdlet](https://docs.microsoft.com/powershell/module/az.machinelearning)参考
+* MSDN 上的 [Azure 机器学习工作室（经典）Cmdlet](https://docs.microsoft.com/powershell/module/az.machinelearning) 参考
 * GitHub 上的示例[演练](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt)
 
 ## <a name="consume-the-web-services"></a>使用 Web 服务
@@ -91,15 +91,15 @@ Web 服务的 Azure 机器学习 Studio （经典）资源提供程序支持使�
 
 * [部署新 Web 服务](deploy-a-machine-learning-web-service.md)
 * [部署 Azure 机器学习 Web 服务](deploy-a-machine-learning-web-service.md)
-* [教程3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
+* [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>从 Excel
 
 可以下载使用 Web 服务的 Excel 模板：
 
 * [从 Excel 使用 Azure 机器学习 Web 服务](consuming-from-excel.md)
-* [适用于 Azure 机器学习 Web 服务的 Excel 加载项](excel-add-in-for-web-services.md)
+* [Azure 机器学习 Web 服务的 Excel 外接程序](excel-add-in-for-web-services.md)
 
 ### <a name="from-a-rest-based-client"></a>从基于 REST 的客户端
 
-Azure 机器学习 Web 服务是 RESTful API。 可以从各种平台（如 .NET、Python、R、Java 等）使用这些 Api。[Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net)上的 web 服务的 "**使用**情况" 页包含可帮助您入门的示例代码。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
+Azure 机器学习 Web 服务是 RESTful API。 可以从各种平台（如 .NET、Python、R、Java 等）使用这些 API。[Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net)上的 Web 服务的**使用**页具有可帮助您入门的示例代码。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。

@@ -1,6 +1,6 @@
 ---
-title: 获取用于调用 web Api 的 web 应用中的令牌-Microsoft 标识平台 |Microsoft
-description: 了解如何为调用 web Api 的 web 应用获取令牌
+title: 在调用 Web API 的 Web 应用中获取令牌 - Microsoft 标识平台 | Azure
+description: 了解如何获取调用 Web API 的 Web 应用的令牌
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,22 +15,22 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: abf7d800eda376c21dfdd672032ddb65e27355be
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759068"
 ---
-# <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>用于调用 web Api 的 web 应用：为应用获取令牌
+# <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>调用 Web API 的 Web 应用：获取应用的令牌
 
-已生成客户端应用程序对象。 现在，你将使用它来获取用于调用 web API 的令牌。 在 ASP.NET 或 ASP.NET Core 中，调用 web API 是在控制器中完成的：
+你已构建了客户端应用程序对象。 现在，你将使用它获取令牌来调用 Web API。 在 ASP.NET 或 ASP.NET Core 中，调用 Web API 是在控制器中完成的。
 
-- 使用令牌缓存获取 web API 的令牌。 若要获取此标记，请调用 `AcquireTokenSilent` 方法。
-- 调用受保护的 API，并将访问令牌作为参数传递给它。
+- 使用令牌缓存获取 Web API 的令牌。 若要获取此令牌，请调用 `AcquireTokenSilent` 方法。
+- 调用受保护的 API，将访问令牌作为参数传递给它。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-控制器方法受 `[Authorize]` 特性保护，该特性强制用户进行身份验证，以便使用 web 应用程序。 下面是调用 Microsoft Graph 的代码：
+控制器方法受 `[Authorize]` 属性的保护，该属性会强制经身份验证的用户使用 Web 应用。 下面是用于调用 Microsoft Graph 的代码：
 
 ```csharp
 [Authorize]
@@ -48,9 +48,9 @@ public class HomeController : Controller
 }
 ```
 
-使用依赖关系注入将 `ITokenAcquisition` 服务注入 ASP.NET。
+`ITokenAcquisition` 服务是由 ASP.NET 通过使用依赖项注入来注入的。
 
-下面是 `HomeController`的操作的简化代码，该代码获取用于调用 Microsoft Graph 的令牌：
+下面是 `HomeController` 的操作的简化代码，该操作获取令牌来调用 Microsoft Graph：
 
 ```csharp
 public async Task<IActionResult> Profile()
@@ -66,28 +66,28 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-为了更好地了解此方案所需的代码，请参阅[aspnetcore-webapp](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)教程的第2阶段（[2-1-Web 应用调用 Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)）步骤。
+若要更好地了解此方案所需的代码，请参阅 [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 教程的阶段 2 ([2-1-Web App Calls Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) 步骤。
 
 还有其他复杂的变化形式，例如：
 
-- 调用多个 Api。
-- 处理增量许可和条件性访问。
+- 调用多个 API。
+- 处理增量许可和条件访问。
 
-[WebApp-多 api](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs)教程的第3章介绍了这些高级步骤。
+[3-WebApp-multi-APIs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs) 教程的第 3 章中涵盖了这些高级步骤。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET 的代码类似于为 ASP.NET Core 显示的代码：
+适用于 ASP.NET 的代码类似于为 ASP.NET Core 显示的代码：
 
-- 受 [授权] 属性保护的控制器操作会提取控制器的 `ClaimsPrincipal` 成员的租户 ID 和用户 ID。 （ASP.NET 使用 `HttpContext.User`。）
-- 然后，它会生成一个 MSAL.NET `IConfidentialClientApplication` 对象。
+- 受 [Authorize] 属性保护的控制器操作会提取控制器的 `ClaimsPrincipal` 成员的租户 ID 和用户 ID。 （ASP.NET 使用 `HttpContext.User`。）
+- 然后，它会构建一个 MSAL.NET `IConfidentialClientApplication` 对象。
 - 最后，它调用机密客户端应用程序的 `AcquireTokenSilent` 方法。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-在 Java 示例中，调用 API 的代码位于[AuthPageController # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62)中的 getUsersFromGraph 方法中。
+在 Java 示例中，调用 API 的代码位于 [AuthPageController.java#L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62) 中的 getUsersFromGraph 方法中。
 
-此方法尝试调用 `getAuthResultBySilentFlow`。 如果用户需要同意更多作用域，则该代码会处理 `MsalInteractionRequiredException` 对象以质询用户。
+该方法尝试调用 `getAuthResultBySilentFlow`。 如果用户需要许可更多作用域，则该代码会处理 `MsalInteractionRequiredException` 对象来质询用户。
 
 ```java
 @RequestMapping("/msal4jsample/graph/me")
@@ -145,11 +145,11 @@ public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServlet
 // Code omitted here
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-在 Python 示例中，调用 Microsoft Graph 的代码位于[py # L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62)中。
+在 Python 示例中，调用 Microsoft Graph 的代码位于 [app.py#L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62) 中。
 
-此代码尝试从令牌缓存获取令牌。 然后，在设置授权标头后，它将调用 web API。 如果无法获取令牌，则会重新登录用户。
+该代码将尝试从令牌缓存中获取令牌。 然后，在设置授权标头后，它将调用 Web API。 如果它无法获取令牌，则会将用户重新登录。
 
 ```python
 @app.route("/graphcall")

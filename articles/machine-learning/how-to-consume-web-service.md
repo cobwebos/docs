@@ -1,5 +1,5 @@
 ---
-title: 为部署为 web 服务的模型创建客户端
+title: 为部署为 Web 服务的模型创建客户端
 titleSuffix: Azure Machine Learning
 description: 了解如何使用在通过 Azure 机器学习模型部署模型时生成的 Web 服务。 该 Web 服务公开一个 REST API。 使用所选的编程语言为此 API 创建客户端。
 services: machine-learning
@@ -11,19 +11,19 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4c3e60e9c296dc8e3a1e31a52a262d8462237407
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: a86b8ddb59719db9bdaffea44aecd5428ad16834
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283688"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282658"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 将 Azure 机器学习模型部署为 Web 服务可创建 REST API。 可将数据发送到此 API，并接收模型返回的预测。 本文档介绍了如何使用 C#、Go、Java 和 Python 为 Web 服务创建客户端。
 
-将映像部署到 Azure 容器实例、Azure Kubernetes 服务或现场可编程入口阵列（FPGA）时，可以创建 web 服务。 你将基于已注册的模型和评分文件创建映像。 你将使用 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 检索用来访问 Web 服务的 URI。 如果启用了身份验证，则还可以使用 SDK 获取身份验证密钥或令牌。
+将映像部署到 Azure 容器实例、Azure Kubernetes 服务或现场可编程门阵列 (FPGA) 时，你将创建一个 Web 服务。 你将基于已注册的模型和评分文件创建映像。 你将使用 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 检索用来访问 Web 服务的 URI。 如果启用了身份验证，则还可以使用该 SDK 来获取身份验证密钥或令牌。
 
 用于创建使用机器学习 Web 服务的客户端的常规工作流为：
 
@@ -32,7 +32,7 @@ ms.locfileid: "79283688"
 1. 创建调用 Web 服务的应用程序。
 
 > [!TIP]
-> 本文档中的示例是手动创建的，而无需使用 OpenAPI （Swagger）规范。 如果已为部署启用了 OpenAPI 规范，则可以使用[codegen](https://github.com/swagger-api/swagger-codegen)等工具为你的服务创建客户端库。
+> 本文档中的示例是手动创建的，没有使用 OpenAPI (Swagger) 规范。 如果已为部署启用了 OpenAPI 规范，则可以使用 [swagger-codegen](https://github.com/swagger-api/swagger-codegen) 之类的工具为服务创建客户端库。
 
 ## <a name="connection-information"></a>连接信息
 
@@ -41,10 +41,10 @@ ms.locfileid: "79283688"
 
 [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) 类提供了创建客户端所需的信息。 创建客户端应用程序时，以下 `Webservice` 属性非常有用：
 
-* `auth_enabled`-如果启用密钥身份验证，`True`;否则，`False`。
-* `token_auth_enabled`-如果启用令牌身份验证，`True`;否则，`False`。
+* `auth_enabled` - 如果启用了密钥身份验证，则为 `True`；否则为 `False`。
+* `token_auth_enabled` - 如果启用了令牌身份验证，则为 `True`；否则为 `False`。
 * `scoring_uri` - REST API 地址。
-* `swagger_uri`-OpenAPI 规范的地址。 如果已启用自动生成架构，则可以使用此 URI。 有关详细信息，请参阅[部署模型与 Azure 机器学习](how-to-deploy-and-where.md#schema)。
+* `swagger_uri` - OpenAPI 规范的地址。 如果已启用自动生成架构，则可以使用此 URI。 有关详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
 可通过三种方式检索已部署的 Web 服务的此信息：
 
@@ -73,27 +73,27 @@ ms.locfileid: "79283688"
     print(service.swagger_uri)
     ```
 
-### <a name="secured-web-service"></a>受保护的 web 服务
+### <a name="secured-web-service"></a>安全 Web 服务
 
-如果使用 SSL 证书保护已部署的 web 服务，则可以使用[HTTPS](https://en.wikipedia.org/wiki/HTTPS)连接到服务，并使用计分或 swagger URI。 HTTPS 通过对两者之间的通信进行加密来帮助保护客户端和 web 服务之间的通信。 加密使用[传输层安全性（TLS）](https://en.wikipedia.org/wiki/Transport_Layer_Security)。 TLS 有时仍称为*安全套接字层*（SSL），这是 tls 的前身。
+如果使用 TLS/SSL 证书保护已部署的 Web 服务，则可以使用[HTTPS](https://en.wikipedia.org/wiki/HTTPS)使用评分或挥霍 URI 连接到服务。 HTTPS 对客户端和 Web 服务之间的通信进行加密来帮助保护两者之间的通信。 加密使用[传输层安全性 (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)。 TLS 有时仍称为安全套接字层 (SSL)，这是 TLS 的前身**。
 
 > [!IMPORTANT]
-> Azure 机器学习部署的 Web services 仅支持 TLS 版本1.2。 创建客户端应用程序时，请确保它支持此版本。
+> Azure 机器学习部署的 Web 服务仅支持 TLS 版本 1.2。 创建客户端应用程序时，请确保它支持此版本。
 
-有关详细信息，请参阅[通过 Azure 机器学习使用 SSL 来保护 web 服务](how-to-secure-web-service.md)。
+有关详细信息，请参阅使用[TLS 通过 Azure 机器学习来保护 Web 服务](how-to-secure-web-service.md)。
 
-### <a name="authentication-for-services"></a>服务身份验证
+### <a name="authentication-for-services"></a>服务的身份验证
 
-Azure 机器学习提供了两种方法来控制对 web 服务的访问。
+Azure 机器学习提供了两种方法来控制对 Web 服务的访问。
 
 |身份验证方法|ACI|AKS|
 |---|---|---|
-|密钥|默认情况下禁用| 默认为启用|
-|标记| 不可用| 默认情况下禁用 |
+|键|默认已禁用| 默认已启用|
+|标记| 不可用| 默认已禁用 |
 
-将请求发送到使用密钥或令牌保护的服务时，请使用__Authorization__标头传递密钥或令牌。 密钥或令牌的格式必须为 `Bearer <key-or-token>`，其中 `<key-or-token>` 为密钥或令牌值。
+将请求发送到由密钥或令牌保护的服务时，请使用 __Authorization__ 标头来传递密钥或令牌。 密钥或令牌的格式必须为 `Bearer <key-or-token>`，其中 `<key-or-token>` 为密钥或令牌值。
 
-#### <a name="authentication-with-keys"></a>密钥身份验证
+#### <a name="authentication-with-keys"></a>使用密钥进行身份验证
 
 为部署启用身份验证时，会自动创建身份验证密钥。
 
@@ -110,18 +110,18 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> 如需重新生成密钥，请使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)。
+> 如果需要重新生成密钥，请使用[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)。
 
-#### <a name="authentication-with-tokens"></a>带令牌的身份验证
+#### <a name="authentication-with-tokens"></a>使用令牌进行身份验证
 
-为 web 服务启用令牌身份验证时，用户必须向 web 服务提供 Azure 机器学习 JWT 令牌才能访问该令牌。 
+当为 Web 服务启用了令牌身份验证时，用户必须向 Web 服务提供 Azure 机器学习 JWT 令牌才能访问。 
 
-* 在部署到 Azure Kubernetes 服务时，令牌身份验证默认情况下处于禁用状态。
-* 在部署到 Azure 容器实例时，令牌身份验证不受支持。
+* 部署到 Azure Kubernetes 服务时，默认情况下会禁用令牌身份验证。
+* 部署到 Azure 容器实例时，不支持令牌身份验证。
 
 若要控制令牌身份验证，请在创建或更新部署时使用 `token_auth_enabled` 参数。
 
-如果启用了令牌身份验证，则可以使用 `get_token` 方法来检索持有者令牌，并且令牌过期时间：
+如果启用了令牌身份验证，可以使用 `get_token` 方法来检索持有者令牌以及该令牌的到期时间：
 
 ```python
 token, refresh_by = service.get_token()
@@ -129,7 +129,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> 需要在令牌的 `refresh_by` 时间之后请求新令牌。 
+> 需要在令牌的 `refresh_by` 时间后请求一个新令牌。 
 
 ## <a name="request-data"></a>请求数据
 
@@ -175,9 +175,9 @@ Web 服务可以接受一个请求中的多个数据集。 它会返回包含响
 
 有关如何在服务中启用对二进制数据的支持的信息，请参阅[二进制数据](how-to-deploy-and-where.md#binary)。
 
-### <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享（CORS）
+### <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享 (CORS)
 
-有关在服务中启用 CORS 支持的信息，请参阅[跨域资源共享](how-to-deploy-and-where.md#cors)。
+有关在服务中启用 CORS 支持的信息，请参阅[跨源资源共享](how-to-deploy-and-where.md#cors)。
 
 ## <a name="call-the-service-c"></a>调用服务 (C#)
 
@@ -500,14 +500,14 @@ print(resp.text)
 [217.67978776218715, 224.78937091757172]
 ```
 
-## <a name="consume-the-service-from-power-bi"></a>从 Power BI 使用服务
+## <a name="consume-the-service-from-power-bi"></a>通过 Power BI 使用服务
 
-Power BI 支持 Azure 机器学习 web 服务的使用，使用预测来丰富 Power BI 数据。 
+Power BI 支持使用 Azure 机器学习 Web 服务，以通过预测来扩充 Power BI 中的数据。 
 
-若要生成 Power BI 中使用的 web 服务，架构必须支持 Power BI 所需的格式。 [了解如何创建 Power BI 支持的架构](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#example-entry-script)。
+若要生成支持在 Power BI 中使用的 Web 服务，架构必须支持 Power BI 所需的格式。 [了解如何创建 Power BI 支持的架构](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#example-entry-script)。
 
-部署 web 服务后，可通过 Power BI 数据流来利用它。 [了解如何从 Power BI 使用 Azure 机器学习 web 服务](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
+在部署 Web 服务后，可通过 Power BI 数据流来使用它。 [了解如何通过 Power BI 使用 Azure 机器学习 Web 服务](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看 Python 和深度学习模型的实时评分的参考体系结构，请参阅[Azure 体系结构中心](/azure/architecture/reference-architectures/ai/realtime-scoring-python)。
+若要查看 Python 和深度学习模型的实时评分的参考体系结构，请转至 [Azure 体系结构中心](/azure/architecture/reference-architectures/ai/realtime-scoring-python)。

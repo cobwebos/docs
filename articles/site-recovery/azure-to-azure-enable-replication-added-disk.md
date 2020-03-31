@@ -1,49 +1,49 @@
 ---
-title: 在 Azure Site Recovery 中为添加的 Azure VM 磁盘启用复制
-description: 本文介绍如何为已添加到 Azure VM 的磁盘启用复制，该磁盘已为启用了灾难恢复的 Azure VM 提供 Azure Site Recovery
+title: 在 Azure 站点恢复中为添加的 Azure VM 磁盘启用复制
+description: 本文介绍如何为添加到 Azure VM 的磁盘启用复制，该 Azure VM 已使用 Azure Site Recovery 启用灾难恢复
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2019
 ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75973796"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>为添加到 Azure VM 的磁盘启用复制
 
 
-本文介绍如何使用[Azure Site Recovery](site-recovery-overview.md)为已在 azure VM 中添加到已启用灾难恢复的 azure VM 的数据磁盘进行复制。
+本文介绍如何为添加到 Azure VM 的数据磁盘启用复制，该 Azure VM 已使用 [Azure Site Recovery](site-recovery-overview.md) 启用到另一个 Azure 区域的灾难恢复。
 
-对于包含托管磁盘的 Azure Vm，支持向 VM 中添加的磁盘启用复制。
+对于具有托管磁盘的 Azure VM，支持为添加到 VM 的磁盘启用复制。
 
-将新磁盘添加到复制到其他 Azure 区域的 Azure VM 时，将发生以下情况：
+将新磁盘添加到正在复制到另一个 Azure 区域的 Azure VM 时，会发生以下情况：
 
--   VM 的复制运行状况显示一条警告，并在门户中通知你有一个或多个磁盘可用于保护。
--   如果为添加的磁盘启用保护，则在磁盘初始复制后，将会出现警告。
--   如果选择不启用磁盘复制，则可以选择关闭该警告。
+-   VM 的复制运行状况会显示一条警告，并且门户中的注意事项会通知你有一个或多个磁盘可用于保护。
+-   如果为添加的磁盘启用保护，此警告会在初始复制磁盘后消失。
+-   如果选择不为磁盘启用复制，则可选择关闭此警告。
 
-![已添加新磁盘](./media/azure-to-azure-enable-replication-added-disk/newdisk.png)
+![添加的新磁盘](./media/azure-to-azure-enable-replication-added-disk/newdisk.png)
 
 
 
 ## <a name="before-you-start"></a>开始之前
 
-本文假设你已为要向其添加磁盘的 VM 设置了灾难恢复。 如果尚未执行此操作，请遵循[azure 到 azure 灾难恢复教程](azure-to-azure-tutorial-enable-replication.md)。
+本文假定你已经为要添加磁盘的 VM 设置了灾难恢复。 如果你还没有这样做，请按照 [Azure 到 Azure 灾难恢复教程](azure-to-azure-tutorial-enable-replication.md)进行操作。
 
 ## <a name="enable-replication-for-an-added-disk"></a>为添加的磁盘启用复制
 
 若要为添加的磁盘启用复制，请执行以下操作：
 
-1. 在保管库中 > "**复制的项**"，单击要向其添加磁盘的 VM。
-2. 单击 "**磁盘**"，然后选择要为其启用复制的数据磁盘（这些磁盘的状态为 "**不受保护**"）。
-3.  在 "**磁盘详细信息**" 中，单击 "**启用复制**"。
+1. 在保管库 >“复制的项”**** 中，单击已向其添加磁盘的 VM。
+2. 单击“磁盘”****，然后选择要为其启用复制的数据磁盘（这些磁盘具有“未受保护”**** 状态）。
+3.  在“磁盘详细信息”**** 中，单击“启用复制”****。
 
     ![为添加的磁盘启用复制](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
 
-运行 "启用复制" 作业并完成初始复制后，将删除磁盘问题的复制运行状况警告。
+在启用复制作业运行且初始复制完成后，将删除针对磁盘问题的复制运行状况警告。
 
 
 

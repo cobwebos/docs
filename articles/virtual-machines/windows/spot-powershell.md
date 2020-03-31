@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 部署 Azure 点 Vm
-description: 了解如何使用 Azure PowerShell 部署专色 Vm 以节省成本。
+title: 使用 PowerShell 部署 Azure Spot VM
+description: 了解如何使用 Azure PowerShell 部署 Spot VM 以节省成本。
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -10,36 +10,36 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: cynthn
 ms.openlocfilehash: 17186d1d7b50ea872dc47eca8c2c4491787d2a38
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77158938"
 ---
-# <a name="preview-deploy-spot-vms-using-azure-powershell"></a>预览：使用 Azure PowerShell 部署专色 Vm
+# <a name="preview-deploy-spot-vms-using-azure-powershell"></a>预览：使用 Azure PowerShell 部署 Spot VM
 
 
-使用[污点 vm](spot-vms.md) ，你可以显著节省成本。 当 Azure 需要恢复容量时，Azure 基础结构将逐出点 Vm。 因此，专色 Vm 非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。
+使用[Spot VM](spot-vms.md)使您能够利用我们未使用的容量，从而显著节省成本。 在 Azure 需要返回容量的任何时间点，Azure 基础结构将驱逐 Spot VM。 因此，Spot VM 非常适合处理批处理作业、开发/测试环境、大型计算工作负载等中断的工作负载。
 
-基于区域和 SKU，污点 Vm 的定价是可变的。 有关详细信息，请参阅适用于[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定价。 有关设置最大价格的详细信息，请参阅[污点 vm-定价](spot-vms.md#pricing)。
+现货 VM 的定价基于区域和 SKU 是可变的。 有关详细信息，请参阅[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定价。 有关设置最高价格的详细信息，请参阅[现货 VM - 定价](spot-vms.md#pricing)。
 
-你可以选择为 VM 设置你愿意支付的最大价格（每小时）。 可使用最多5个小数位来设置专色 VM 的最大价格（美元）。 例如，值 `0.98765`的最大价格为 $0.98765 美元/小时。 如果将最大价格设置为 `-1`，则不会根据价格收回 VM。 VM 的价格将是当前的价格价格或标准 VM 的价格，只要容量和配额可用，此价格就越小。
+您可以选择为 VM 设置您愿意每小时支付的最高价格。 Spot VM 的最高价格可以用美元 （USD） 设置，最多使用 5 个小数位。 例如，该值`0.98765`将是每小时 0.98765 美元的最高价格。 如果将最高价格设置为`-1`，则 VM 不会根据价格被逐出。 VM 的价格将是现货的当前价格或标准 VM 的价格，只要有容量和配额可用，标准 VM 的价格就更少了。
 
 > [!IMPORTANT]
-> 污点实例当前为公共预览版。
-> 不建议将此预览版本用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 竞价实例当前处于公共预览版中。
+> 不建议生产工作负载使用此预览版本。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
 
 
 
 ## <a name="create-the-vm"></a>创建 VM
 
-使用[AzVmConfig](/powershell/module/az.compute/new-azvmconfig)创建 spotVM，创建配置。 包括 `-Priority Spot`，并将 `-MaxPrice` 设置为：
-- `-1` 因此不会根据价格收回 VM。
-- 美元金额，最多5位数字。 例如，`-MaxPrice .98765` 表示一旦 spotVM 的价格约为每小时98765美元，就会释放 VM。
+使用[New-AzVmConfig 创建](/powershell/module/az.compute/new-azvmconfig)点 VM 以创建配置。 包括`-Priority Spot`并设置为`-MaxPrice`：
+- `-1`因此，VM 不会根据价格被逐出。
+- 一美元金额，最多 5 位。 例如，`-MaxPrice .98765`这意味着一旦 spotVM 的价格达到每小时 0.98765 美元，VM 将被处理。
 
 
-此示例将创建一个 spotVM，此功能不会根据定价进行释放（仅当 Azure 需要恢复容量时）。
+此示例创建一个不根据定价进行处理的 spotVM（仅当 Azure 需要返回容量时）。
 
 ```azurepowershell-interactive
 $resourceGroup = "mySpotRG"
@@ -72,7 +72,7 @@ Add-AzVMNetworkInterface -Id $nic.Id
 New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-创建 VM 后，你可以查询以查看资源组中所有 Vm 的最大价格。
+创建 VM 后，可以查询以查看资源组中所有 VM 的最大价格。
 
 ```azurepowershell-interactive
 Get-AzVM -ResourceGroupName $resourceGroup | `
@@ -81,6 +81,6 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="next-steps"></a>后续步骤
 
-你还可以使用[Azure CLI](../linux/spot-cli.md)或[模板](../linux/spot-template.md)创建一个专色 VM。
+您还可以使用[Azure CLI](../linux/spot-cli.md)或[模板](../linux/spot-template.md)创建 Spot VM。
 
 如果遇到错误，请参阅[错误代码](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

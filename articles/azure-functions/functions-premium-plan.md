@@ -1,51 +1,51 @@
 ---
-title: Azure Functions 高级计划
-description: Azure Functions 高级计划的详细信息和配置选项（VNet，无冷启动，无限制执行持续时间）。
+title: Azure 函数高级计划
+description: Azure 函数高级计划的详细信息和配置选项（VNet、无冷启动、无限制执行持续时间）。
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
 ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276902"
 ---
-# <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
+# <a name="azure-functions-premium-plan"></a>Azure 函数高级计划
 
-"Azure Functions 高级计划" （有时称为 "弹性高级计划"）是函数应用的托管选项。 高级计划提供 VNet 连接、无冷启动和高级硬件等功能。  可以将多个函数应用部署到相同的高级计划，该计划允许配置计算实例大小、基本计划大小和最大计划大小。  有关高级计划以及其他计划和托管类型的比较，请参阅[函数缩放和宿主选项](functions-scale.md)。
+Azure 函数高级计划（有时称为弹性高级计划）是函数应用的托管选项。 高级计划提供 VNet 连接、无冷启动和高级硬件等功能。  可以将多个功能应用部署到同一高级计划，并且该计划允许您配置计算实例大小、基本计划大小和最大计划大小。  有关高级计划和其他计划和托管类型的比较，请参阅[功能规模和托管选项](functions-scale.md)。
 
 ## <a name="create-a-premium-plan"></a>创建高级计划
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]
 
-你还可以在 Azure CLI 中使用[az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create)创建高级计划。 以下示例创建一个_弹性高级版 1_层计划：
+您还可以使用在 Azure CLI 中[创建的 az 函数应用计划](/cli/azure/functionapp/plan#az-functionapp-plan-create)创建高级计划。 以下示例创建_弹性高级高级 1_层计划：
 
 ```azurecli-interactive
 az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> \
 --location <REGION> --sku EP1
 ```
 
-在此示例中，将 `<RESOURCE_GROUP>` 替换为资源组，并将 `<PLAN_NAME>` 替换为在资源组中唯一的计划的名称。 指定[支持的 `<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions)。 若要创建支持 Linux 的高级计划，请包含 `--is-linux` 选项。
+在此示例中，替换为资源组`<RESOURCE_GROUP>`，并`<PLAN_NAME>`替换为资源组中唯一的计划的名称。 指定[受支持的`<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions)。 要创建支持 Linux 的高级计划，请包括`--is-linux`该选项。
 
-创建计划后，可以使用[az functionapp create](/cli/azure/functionapp#az-functionapp-create)创建 function app。 在门户中，计划和应用都同时创建。 有关完整 Azure CLI 脚本的示例，请参阅[在高级计划中创建函数应用](scripts/functions-cli-create-premium-plan.md)。
+创建计划后，可以使用[创建 az 函数应用](/cli/azure/functionapp#az-functionapp-create)来创建函数应用。 在门户中，将同时创建计划和应用。 有关完整 Azure CLI 脚本的示例，请参阅[在高级计划中创建函数应用](scripts/functions-cli-create-premium-plan.md)。
 
 ## <a name="features"></a>功能
 
-以下功能可用于部署到高级计划的函数应用。
+以下功能可用于部署到高级计划的应用。
 
-### <a name="pre-warmed-instances"></a>准备好实例
+### <a name="pre-warmed-instances"></a>预热实例
 
-如果当前在消耗计划中未发生任何事件和执行，则应用可能会向零个实例进行缩放。 当出现新事件时，需要使用在其上运行的应用程序来专用化新的实例。  专用化新实例可能需要一些时间，具体取决于应用程序。  第一次调用的额外延迟通常称为应用冷启动。
+如果"消耗"计划中今天未发生事件和执行，则应用可能会扩展到零实例。 当新事件进入时，需要专门使用运行其应用的新实例。  根据应用的不同，专业化新实例可能需要一些时间。  第一次调用时的额外延迟通常称为应用冷启动。
 
-在高级计划中，你可以将应用预先准备好指定数量的实例，最小计划大小。  使用准备好实例，还可以在高负载之前预缩放应用。 在应用程序扩展时，它首先扩展到准备好实例。 其他实例将继续为下一个缩放操作做好缓冲并使其立即预热。 通过使用准备好实例的缓冲区，可以有效地避免冷启动延迟。  准备好实例是高级计划的一项功能，需要在计划处于活动状态时至少保持一个实例处于运行状态且可用。
+在高级计划中，您可以让应用在指定数量的实例上预热，最多达到最低计划大小。  预热的实例还允许您在高负载之前预缩放应用。 当应用缩小时，它首先扩展到预热的实例。 其他实例继续缓冲并立即加热，为下一次规模操作做准备。 通过具有预预热实例的缓冲区，您可以有效地避免冷启动延迟。  预热实例是高级计划的一项功能，您需要保持至少一个实例的运行状态，并且在计划处于活动状态时随时可用。
 
-您可以通过选择**Function App**，转到 "**平台功能**" 选项卡，然后选择 " **Scale Out** " 选项，在 Azure 门户中配置准备好实例的数目。 在函数应用编辑窗口中，准备好实例特定于该应用，但最小和最大实例适用于你的整个计划。
+您可以通过选择**功能应用**（进入 **"平台功能"** 选项卡以及选择 **"横向扩展"** 选项）来配置 Azure 门户中预热实例的数量。 在函数应用编辑窗口中，预热的实例特定于该应用，但最小和最大实例适用于整个计划。
 
-![弹性缩放设置](./media/functions-premium-plan/scale-out.png)
+![弹性比例设置](./media/functions-premium-plan/scale-out.png)
 
-你还可以使用 Azure CLI 配置应用的预准备好实例。
+还可以使用 Azure CLI 为应用配置预热的实例。
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
@@ -53,57 +53,57 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="private-network-connectivity"></a>专用网络连接
 
-部署到高级计划的 Azure Functions 将利用[适用于 web 应用的新 VNet 集成](../app-service/web-sites-integrate-with-vnet.md)。  配置后，你的应用可以与 VNet 中的资源通信，或通过服务终结点进行保护。  应用上也提供了 IP 限制，以限制传入流量。
+部署到高级计划的 Azure 函数利用了[Web 应用的新 VNet 集成](../app-service/web-sites-integrate-with-vnet.md)。  配置后，你的应用可以与 VNet 中的资源通信或通过服务终结点进行保护。  应用程序上也提供 IP 限制，以限制传入流量。
 
-在高级计划中向函数应用分配子网时，需要一个子网，其中每个潜在实例都有足够的 IP 地址。 需要至少具有100个可用地址的 IP 块。
+在高级计划中将子网分配给函数应用时，需要每个潜在实例具有足够的 IP 地址的子网。 我们需要一个至少具有 100 个可用地址的 IP 块。
 
-有关详细信息，请参阅[将 function app 与 VNet 集成](functions-create-vnet.md)。
+有关详细信息，请参阅[将函数应用与 VNet 集成](functions-create-vnet.md)。
 
-### <a name="rapid-elastic-scale"></a>快速弹性缩放
+### <a name="rapid-elastic-scale"></a>快速弹性刻度
 
-使用与消耗计划相同的快速缩放逻辑，为你的应用自动添加其他计算实例。  若要详细了解缩放的工作方式，请参阅[函数缩放和宿主](./functions-scale.md#how-the-consumption-and-premium-plans-work)。
+使用与消耗计划相同的快速缩放逻辑，为您的应用自动添加其他计算实例。  要了解有关缩放的工作原理，请参阅[函数缩放和托管](./functions-scale.md#how-the-consumption-and-premium-plans-work)。
 
-### <a name="longer-run-duration"></a>运行持续时间较长
+### <a name="longer-run-duration"></a>更长的运行持续时间
 
-对于单个执行，消耗计划中的 Azure Functions 限制为10分钟。  在高级计划中，运行持续时间默认为30分钟，以防止执行失控。 不过，你可以[修改 host json 配置](./functions-host-json.md#functiontimeout)，使其不受高级计划应用的限制（保证60分钟）。
+使用计划中的 Azure 函数在单个执行时限制为 10 分钟。  在高级计划中，运行持续时间默认为 30 分钟，以防止失控执行。 但是，您可以[修改 host.json 配置](./functions-host-json.md#functiontimeout)，使其对高级计划应用无限制（保证 60 分钟）。
 
 ## <a name="plan-and-sku-settings"></a>计划和 SKU 设置
 
-创建计划时，需要配置两个设置：实例的最小数目（或计划大小）和最大猝发限制。  最小实例保留并始终运行。
+创建计划时，配置两个设置：最小实例数（或计划大小）和最大突发限制。  保留最小实例并始终运行。
 
 > [!IMPORTANT]
-> 对于在最小实例计数中分配的每个实例，无论函数是否正在执行，都将向你收费。
+> 无论函数是否正在执行，都会为在最小实例计数中分配的每个实例收费。
 
-如果你的应用程序需要的实例超出了你的计划大小，则它可以继续横向扩展，直到实例数达到最大猝发限制。  仅当计划规模正在运行且为你租借时，才会向你收费。  我们将尽最大努力将应用扩展到其定义的最大限制，而最小计划实例可确保适用于你的应用。
+如果应用需要超出计划大小的实例，则可以继续横向扩展，直到实例数达到最大突发限制。  只有在超出计划大小的实例运行并租给您时，才会向您收费。  我们将尽最大努力将你的应用扩展到其定义的最大限制，同时保证你的应用的最小计划实例。
 
-您可以通过选择计划中的**Scale Out**选项或部署到该计划的函数应用（在 "**平台功能**" 下），在 Azure 门户中配置计划大小和最大值。
+您可以通过在计划中选择 **"横向扩展"** 选项或部署到该计划的函数应用（在**平台功能**下）来配置 Azure 门户中的计划大小和最大值。
 
-还可以增加 Azure CLI 的最大猝发限制：
+您还可以从 Azure CLI 增加最大突发限制：
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
 ```
 
-### <a name="available-instance-skus"></a>可用实例 Sku
+### <a name="available-instance-skus"></a>可用实例 SKU
 
-创建或缩放计划时，可以在三种实例大小之间进行选择。  将按照内核总数和每秒使用的内存数计费。  应用可根据需要自动向外扩展到多个实例。  
+创建或缩放计划时，可以在三个实例大小之间进行选择。  您将按每秒消耗的内核和内存总数计费。  您的应用可以根据需要自动扩展到多个实例。  
 
 |SKU|核心数|内存|存储|
 |--|--|--|--|
-|EP1|1|3.5 GB|250GB|
+|EP1|1|3.5GB|250GB|
 |EP2|2|7GB|250GB|
-|EP3|4|14 GB|250GB|
+|EP3|4|14GB|250GB|
 
-### <a name="memory-utilization-considerations"></a>内存使用率注意事项
-在具有更多内存的计算机上运行并不一定意味着函数应用将使用所有可用内存。
+### <a name="memory-utilization-considerations"></a>内存利用率注意事项
+在内存较多的计算机上运行并不总是意味着函数应用将使用所有可用内存。
 
-例如，JavaScript 函数应用受 node.js 中默认的内存限制的限制。 若要增加此固定内存限制，请添加值为 `--max-old-space-size=<max memory in MB>`的应用设置 `languageWorkers:node:arguments`。
+例如，JavaScript 函数应用受 Node.js 中的默认内存限制的约束。 要增加此固定内存限制，添加值 为`languageWorkers:node:arguments`的应用`--max-old-space-size=<max memory in MB>`设置。
 
-## <a name="region-max-scale-out"></a>区域最大 Scale Out
+## <a name="region-max-scale-out"></a>区域最大横向扩展
 
-下面是每个区域和 OS 配置中的单个计划的当前支持的最大扩大值。 若要请求增加，请打开支持票证。
+以下是当前支持的每个区域和操作系统配置中单个计划的最大横向扩展值。 要要求增加，请打开一张支持票。
 
-请参阅此处的功能的完整区域可用性： [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
+在此处查看功能的完整区域可用性[：Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
 |区域| Windows | Linux |
 |--| -- | -- |
@@ -139,4 +139,4 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [了解 Azure Functions 缩放和托管选项](functions-scale.md)
+> [了解 Azure 函数缩放和托管选项](functions-scale.md)

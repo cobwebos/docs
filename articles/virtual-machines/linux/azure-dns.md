@@ -1,5 +1,5 @@
 ---
-title: 适用于 Linux Vm 的 DNS 名称解析选项
+title: Linux VM 的 DNS 名称解析选项
 description: Azure IaaS 中 Linux 虚拟机的名称解析方案，包括提供的 DNS 服务、混合外部 DNS 和自带 DNS 服务器。
 author: RicksterCDN
 ms.service: virtual-machines-linux
@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
 ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969322"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的 DNS 名称解析选项
@@ -26,16 +26,16 @@ Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。
 | **方案** | **解决方案** | **后缀** |
 | --- | --- | --- |
 | 在同一虚拟网络中的角色实例或虚拟机之间进行名称解析 |Azure 提供的名称解析 |主机名或完全限定域名 (FQDN) |
-| 在不同虚拟网络中的角色实例或虚拟机之间进行名称解析 |客户托管的 DNS 服务器，在虚拟网络之间转发查询供 Azure（DNS 代理）解析。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-using-your-own-dns-server)。 |仅 FQDN |
-| 从 Azure 中的角色实例或虚拟机解析本地计算机和服务名称 |客户托管的 DNS 服务器（例如本地域控制器、本地只读域控制器或使用区域传送同步的 DNS 辅助服务器）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-using-your-own-dns-server)。 |仅 FQDN |
-| 解析本地计算机中的 Azure 主机名 |将查询转发到相应虚拟网络中客户托管的 DNS 代理服务器。 代理服务器将查询转发到 Azure 进行解析。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-using-your-own-dns-server)。 |仅 FQDN |
+| 在不同虚拟网络中的角色实例或虚拟机之间进行名称解析 |客户托管的 DNS 服务器，在虚拟网络之间转发查询供 Azure（DNS 代理）解析。 请参阅[使用您自己的 DNS 服务器的名称解析](#name-resolution-using-your-own-dns-server)。 |仅 FQDN |
+| 从 Azure 中的角色实例或虚拟机解析本地计算机和服务名称 |客户托管的 DNS 服务器（例如本地域控制器、本地只读域控制器或使用区域传送同步的 DNS 辅助服务器）。 请参阅[使用您自己的 DNS 服务器的名称解析](#name-resolution-using-your-own-dns-server)。 |仅 FQDN |
+| 解析本地计算机中的 Azure 主机名 |将查询转发到相应虚拟网络中客户托管的 DNS 代理服务器。 代理服务器将查询转发到 Azure 进行解析。 请参阅[使用您自己的 DNS 服务器的名称解析](#name-resolution-using-your-own-dns-server)。 |仅 FQDN |
 | 针对内部 IP 的反向 DNS |[使用自己的 DNS 服务器的名称解析](#name-resolution-using-your-own-dns-server) |不适用 |
 
 ## <a name="name-resolution-that-azure-provides"></a>Azure 提供的名称解析
 除公共 DNS 名称解析之外，Azure 还为同一虚拟网络中的虚拟机和角色实例提供内部名称解析。 在基于 Azure 资源管理器的虚拟网络中，整个虚拟网络中的 DNS 后缀一致；无需 FQDN。 可以将 DNS 名称分配给网络接口卡 (NIC) 和虚拟机。 虽然 Azure 提供的名称解析不需要任何配置，但并不适合所有部署方案，如上表所示。
 
 ### <a name="features-and-considerations"></a>功能和注意事项
-**功能：**
+**特征：**
 
 * 无需任何配置就能使用 Azure 提供的名称解析。
 * Azure 提供的名称解析服务高度可用。 无需创建和管理自己 DNS 服务器的群集。
@@ -43,7 +43,7 @@ Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。
 * 无需 FQDN 即可在虚拟网络中的虚拟机之间进行名称解析。
 * 可以使用最能体现部署的主机名，而不必使用自动生成的名称。
 
-**注意事项：**
+**考虑：**
 
 * 不能修改 Azure 创建的 DNS 后缀。
 * 不能手动注册自己的记录。
@@ -53,7 +53,7 @@ Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。
 * 每个虚拟机的 DNS 查询流量有所限制。 限制不会影响大部分应用程序。  如果遵循请求限制，请确保启用客户端缓存。  有关详细信息，请参阅[充分利用 Azure 提供的名称解析](#getting-the-most-from-name-resolution-that-azure-provides)。
 
 ### <a name="getting-the-most-from-name-resolution-that-azure-provides"></a>充分利用 Azure 提供的名称解析
-客户端缓存：
+客户端缓存：****
 
 有些 DNS 查询不会通过网络发送。 客户端缓存可以解析本地缓存中重复出现的 DNS 查询，从而帮助降低延迟并提高网络不一致的复原能力。 DNS 记录包含生存时间 (TTL)，可让缓存尽可能长时间地存储记录，同时不影响记录新近度。 因此，客户端缓存适用于大多数情况。
 
@@ -61,17 +61,17 @@ Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。
 
 提供有多个不同的 DNS 缓存包（例如 dnsmasq）。 在最常见发行版上安装 dnsmasq 的步骤如下：
 
-Ubuntu（使用 resolvconf）
+Ubuntu（使用 resolvconf）****
   * 安装 dnsmasq 包（“sudo apt-get install dnsmasq”）。
 
-**SUSE（使用 netconf）** ：
+**SUSE （使用网络）**：
 1. 安装 dnsmasq 包（“sudo zypper install dnsmasq”）。
 2. 启用 dnsmasq 服务（“systemctl enable dnsmasq.service”）。
 3. 启动 dnsmasq 服务（“systemctl start dnsmasq.service”）。
 4. 编辑“/etc/sysconfig/network/config”并将 NETCONFIG_DNS_FORWARDER="" 更改为“dnsmasq”。
 5. 更新 resolv.conf（“netconfig update”），将缓存设置为本地 DNS 解析程序。
 
-Rogue Wave Software 的 CentOS（之前为 OpenLogic；使用 NetworkManager）
+Rogue Wave Software 的 CentOS（之前为 OpenLogic；使用 NetworkManager）****
 1. 安装 dnsmasq 包（“sudo yum install dnsmasq”）。
 2. 启用 dnsmasq 服务（“systemctl enable dnsmasq.service”）。
 3. 启动 dnsmasq 服务（“systemctl start dnsmasq.service”）。
@@ -83,7 +83,7 @@ Rogue Wave Software 的 CentOS（之前为 OpenLogic；使用 NetworkManager）
 >
 >
 
-客户端重试：
+客户端重试：****
 
 DNS 主要是一个 UDP 协议。 UDP 协议不保证消息传递，所以 DNS 协议自身处理重试逻辑。 每个 DNS 客户端（操作系统）可能会表现出不同的重试逻辑，具体取决于创建者的偏好：
 
@@ -96,15 +96,15 @@ DNS 主要是一个 UDP 协议。 UDP 协议不保证消息传递，所以 DNS �
 
 resolv.conf 文件是自动生成的，不应进行编辑。 添加“options”行的具体步骤因发行版而异：
 
-Ubuntu（使用 resolvconf）
+**乌本图**（使用管解）
 1. 将“options”行添加到“/etc/resolveconf/resolv.conf.d/head”。
 2. 运行“resolvconf -u”以更新。
 
-SUSE（使用 netconf）
+**SUSE（** 使用网联）
 1. 将“timeout:1 attempts:5”添加到“/etc/sysconfig/network/config”中的 NETCONFIG_DNS_RESOLVER_OPTIONS="" 参数。
 2. 运行“netconfig update”以更新。
 
-Rogue Wave Software 的 CentOS（之前为 OpenLogic；使用 NetworkManager）
+**由流氓波软件（以前开放逻辑）CentOS（** 使用网络管理器）
 1. 将“RES_OPTIONS="timeout:1 attempts:5"”添加到“/etc/sysconfig/network”。
 2. 运行“service network restart”以更新。
 

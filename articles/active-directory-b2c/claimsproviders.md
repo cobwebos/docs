@@ -11,10 +11,10 @@ ms.date: 01/29/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dfb34085181e0b759d1d77485ff21b5bc59e0de3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189763"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
@@ -39,23 +39,23 @@ ms.locfileid: "78189763"
 </ClaimsProviders>
 ```
 
-ClaimsProviders 元素包含以下元素：
+ClaimsProviders**** 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | ClaimsProvider | 1:n | 经认可的声明提供程序，可在各种用户旅程中使用。 |
 
 ## <a name="claimsprovider"></a>ClaimsProvider
 
-ClaimsProvider 元素包含以下子元素：
+ClaimsProvider**** 元素包含以下子元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ---------- | ----------- |
-| 域 | 0:1 | 一个字符串，包含声明提供程序的域名。 例如，如果声明提供程序包含 Facebook 技术配置文件，则域名为 Facebook.com。 此域名用于声明提供程序中定义的所有技术配置文件，除非被技术配置文件覆盖。 域名也可以在 **domain_hint** 中引用。 有关详细信息，请参阅**使用 Azure Active Directory B2C 设置直接登录**的[将登录重定向到社交提供者](direct-signin.md)部分。 |
-| DisplayName | 1:1 | 一个包含声明提供程序的名称的字符串。 |
+| 域 | 0:1 | 一个字符串，包含声明提供程序的域名。 例如，如果声明提供程序包含 Facebook 技术配置文件，则域名为 Facebook.com。 此域名用于声明提供程序中定义的所有技术配置文件，除非被技术配置文件覆盖。 域名也可以在 **domain_hint** 中引用。 有关详细信息，请参阅[使用 Azure Active Directory B2C 设置直接登录](direct-signin.md)的**将登录重定向到社交提供者**部分。 |
+| DisplayName | 1:1 | 包含声明提供程序名称的字符串。 |
 | [技术配置文件](technicalprofiles.md) | 0:1 | 声明提供程序支持的一组技术配置文件 |
 
-**ClaimsProvider**组织技术配置文件与声明提供程序之间的关系。 以下示例显示了使用 Azure Active Directory 技术配置文件的 Azure Active Directory 声明提供程序：
+**ClaimsProvider** 可组织技术配置文件与声明提供程序的关联方式。 以下示例显示了使用 Azure Active Directory 技术配置文件的 Azure Active Directory 声明提供程序：
 
 ```XML
 <ClaimsProvider>

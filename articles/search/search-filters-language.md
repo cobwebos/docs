@@ -1,7 +1,7 @@
 ---
 title: 在搜索索引中按语言筛选
 titleSuffix: Azure Cognitive Search
-description: 筛选条件以支持多语言搜索，将查询执行范围限定为特定于语言的字段。
+description: 支持多语言搜索的筛选条件，将查询执行范围限定为特定于语言的字段。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,24 +9,24 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 5dbf32610e54df4ff009d4cb0a0b080babb4ec73
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74112060"
 ---
-# <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>如何在 Azure 中按语言筛选认知搜索 
+# <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中按语言筛选 
 
-多语言搜索应用程序的一项关键要求是能够按用户自己的语言搜索和检索结果。 在 Azure 认知搜索中，满足多语言应用的语言要求的一种方法是创建一系列专门用于以特定语言存储字符串的字段，然后将全文搜索限制为查询时的这些字段。
+多语言搜索应用程序的一项关键要求是能够按用户自己的语言搜索和检索结果。 在 Azure 认知搜索中，满足多语言应用的语言要求的方法之一是创建专门用于按特定语言存储字符串的一系列字段，然后在查询时将全文搜索限定于这些字段。
 
 请求中的查询参数用于限定搜索操作的范围，同时修剪无法提供与所需搜索体验兼容的内容的任何字段的结果。
 
-| Parameters | 目的 |
+| 参数 | 目的 |
 |-----------|--------------|
 | **searchFields** | 将全文搜索限制为命名字段的列表。 |
 | **$select** | 修剪响应，以便只包含指定的字段。 默认情况下，会返回所有可检索字段。 使用 **$Select** 参数可以选择要返回哪些字段。 |
 
-此方法能够成功取决于字段内容的完整性。 Azure 认知搜索不会转换字符串或执行语言检测。 你负责确保字段包含预期的字符串。
+此方法能够成功取决于字段内容的完整性。 Azure 认知搜索不会转换字符串，也不执行语言检测。 你负责确保字段包含预期的字符串。
 
 ## <a name="define-fields-for-content-in-different-languages"></a>为采用不同语言的内容定义字段
 
@@ -60,10 +60,10 @@ parameters =
 > [!Note]
 > 尽管查询不包含 $filter 自变量，但此用例与筛选概念密切相关，因此我们将它作为筛选方案进行演示。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [Azure 认知搜索中的筛选器](search-filters.md)
 + [语言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)
-+ [Azure 中全文搜索的工作原理认知搜索](search-lucene-query-architecture.md)
++ [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)
 + [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 

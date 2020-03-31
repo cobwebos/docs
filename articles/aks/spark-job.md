@@ -6,26 +6,26 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 7465f8eb4357fcb6faa1d0fee0173837b6cb019b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b3248cb9ab61a158f70b5a2d6ae9dd846501816
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593643"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473619"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
 
-[Apache Spark][apache-spark]是一种用于大规模数据处理的快速引擎。 从[Spark 2.3.0 版本][spark-latest-release]开始，Apache Spark 支持与 Kubernetes 群集进行本机集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
+[Apache Spark][apache-spark] 是用于大规模数据处理的高速引擎。 从 [Spark 2.3.0 版][spark-latest-release]开始，Apache Spark 原生支持与 Kubernetes 群集集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 为了完成本文中的步骤，需要具备以下各项。
 
-* 基本了解 Kubernetes 和[Apache Spark][spark-quickstart]。
-* [Docker 中心][docker-hub]帐户或[Azure 容器注册表][acr-create]。
-* 在开发系统上[安装][azure-cli]Azure CLI。
-* 系统上安装了[JDK 8][java-install] 。
-* 已在系统上安装 SBT （[Scala 生成工具][sbt-install]）。
+* 基本了解 Kubernetes 和 [Apache Spark][spark-quickstart]。
+* [Docker 中心][docker-hub]帐户，或 [Azure 容器注册表][acr-create]。
+* 已在开发系统上[安装][azure-cli] Azure CLI。
+* 已在系统上安装 [JDK 8][java-install]。
+* 已在系统上安装 SBT（[Scala 生成工具][sbt-install]）。
 * 已在系统上安装 Git 命令行工具。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
@@ -40,13 +40,13 @@ Spark 用于大规模数据处理，要求根据 Spark 资源的要求调整 Kub
 az group create --name mySparkCluster --location eastus
 ```
 
-创建群集的服务主体。 创建后，将需要下一个命令的服务主体 appId 和密码。
+创建群集的服务主体。 创建后，下一条命令将需要服务主体 appId 和密码。
 
 ```azurecli
 az ad sp create-for-rbac --name SparkSP
 ```
 
-创建具有 `Standard_D3_v2`大小的节点的 AKS 群集，以及作为服务主体和客户端机密参数传递的 appId 和 password 的值。
+使用大小为 `Standard_D3_v2` 的节点以及作为服务主体和客户端密码参数传递的 appId 和密码值创建 AKS 群集。
 
 ```azurecli
 az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
@@ -58,7 +58,7 @@ az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-si
 az aks get-credentials --resource-group mySparkCluster --name mySparkCluster
 ```
 
-如果使用 Azure 容器注册表 (ACR) 来存储容器映像，请在 AKS 与 ACR 之间配置身份验证。 有关这些步骤，请参阅[ACR 身份验证文档][acr-aks]。
+如果使用 Azure 容器注册表 (ACR) 来存储容器映像，请在 AKS 与 ACR 之间配置身份验证。 请参阅 [ACR 身份验证文档][acr-aks]来了解相关步骤。
 
 ## <a name="build-the-spark-source"></a>生成 Spark 源
 
@@ -186,7 +186,7 @@ export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-strin
 
 使用以下命令将 jar 文件上传到 Azure 存储帐户。
 
-```bash
+```azurecli
 CONTAINER_NAME=jars
 BLOB_NAME=SparkPi-assembly-0.1.0-SNAPSHOT.jar
 FILE_TO_UPLOAD=target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar
@@ -241,8 +241,10 @@ kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount
 此操作会启动 Spark 作业，该作业将作业状态流式传输到 shell 会话。 运行作业时，可以使用 kubectl get pods 命令查看 Spark 驱动程序 pod 和执行器 pod。 打开另一个终端会话以运行这些命令。
 
 ```console
-$ kubectl get pods
+kubectl get pods
+```
 
+```output
 NAME                                               READY     STATUS     RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   1/1       Running    0          16s
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-1   0/1       Init:0/1   0          4s
@@ -270,7 +272,7 @@ kubectl get pods --show-all
 
 输出：
 
-```bash
+```output
 NAME                                               READY     STATUS      RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
@@ -283,7 +285,7 @@ kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
 
 在这些日志中，可以看到 Spark 作业的结果，即 Pi 的值。
 
-```bash
+```output
 Pi is roughly 3.152155760778804
 ```
 
@@ -291,7 +293,7 @@ Pi is roughly 3.152155760778804
 
 在上述示例中，Spark jar 文件已上传到 Azure 存储。 另一种做法是将 jar 文件打包成自定义生成的 Docker 映像。
 
-为此，请在 `dockerfile` 目录中查找 Spark 映像的 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/`。 在 `ADD` 与 `jar` 声明之间的某个位置为 Spark 作业 `WORKDIR` 添加 `ENTRYPOINT` 语句。
+为此，请在 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` 目录中查找 Spark 映像的 `dockerfile`。 在 `WORKDIR` 与 `ENTRYPOINT` 声明之间的某个位置为 Spark 作业 `jar` 添加 `ADD` 语句。
 
 将 jar 路径更新为 `SparkPi-assembly-0.1.0-SNAPSHOT.jar` 文件在开发系统上的位置。 也可以使用自己的自定义 jar 文件。
 
@@ -325,7 +327,7 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 ```
 
 > [!WARNING]
-> 从 Spark[文档][spark-docs]： "Kubernetes 计划程序当前正在试验。 将来版本中可能在配置、容器映像和入口点方面有一些方行为更改。”
+> 来自 Spark [文档][spark-docs]：“Kubernetes 计划程序当前处于实验阶段。 将来版本中可能在配置、容器映像和入口点方面有一些方行为更改。”
 
 ## <a name="next-steps"></a>后续步骤
 

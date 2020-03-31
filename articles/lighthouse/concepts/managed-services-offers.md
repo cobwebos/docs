@@ -1,18 +1,18 @@
 ---
 title: Azure 市场中的托管服务产品
 description: 服务提供商可借助托管服务产品向 Azure 市场中的客户销售资源管理服务。
-ms.date: 12/16/2019
+ms.date: 03/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b4f0d7457a74afe710a48f429cfe47535a9b122
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2d6e39f753736c0582e9d91870a99b66ae41255b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453591"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500784"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Azure 市场中的托管服务产品
 
-本文介绍 [Azure 市场](https://azuremarketplace.microsoft.com)中的“新托管服务产品”类型。 托管服务产品通过 Azure 委派资源管理为客户提供资源管理服务。 你可以向所有潜在客户提供这些产品/服务，也可以仅向一个或多个特定客户提供这些产品/服务。 由于直接向客户收取与这些托管服务相关的成本，因此 Microsoft 不收取任何费用。
+本文介绍 [Azure 市场](https://azuremarketplace.microsoft.com)中的“新托管服务产品”类型****。 托管服务产品通过 Azure 委派资源管理为客户提供资源管理服务。 你可以向所有潜在客户提供这些产品/服务，也可以仅向一个或多个特定客户提供这些产品/服务。 由于直接向客户收取与这些托管服务相关的成本，因此 Microsoft 不收取任何费用。
 
 ## <a name="understand-managed-services-offers"></a>了解托管服务产品
 
@@ -22,7 +22,7 @@ ms.locfileid: "75453591"
 
 ## <a name="public-and-private-offers"></a>公共和专用产品/服务
 
-每个托管服务产品/服务均包含一个或多个计划。 计划可以是私有的，也可以是公共的。 
+每个托管服务产品/服务均包含一个或多个计划。 计划可以是私有的，也可以是公开的。 
 
 如果要将产品/服务限制为特定客户，可以发布专用计划。 执行此操作时，只能为你提供的特定订阅 ID 购买计划。 有关详细信息，请参阅[专用产品/服务](../../marketplace/private-offers.md)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "75453591"
 如果需要，可以在同一个产品/服务中包括公用和专用计划。
 
 > [!IMPORTANT]
-> 一旦某个计划作为公共计划发布，则不能将其更改为 "专用"。 若要控制哪些客户可以接受您的产品/服务和委托资源，请使用私有计划。 使用公用计划，您不能将可用性限制为特定客户或甚至是特定数量的客户（不过，如果您选择这样做，您可以完全停止销售计划）。 如果客户接受了产品/服务，则当前没有任何机制可拒绝或删除委派，但你始终可以联系客户并要求他们[删除你的访问权限](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)。
+> 计划一旦公开发布，您就无法将其更改为私有。 要控制哪些客户可以接受您的报价并委派资源，请使用私人计划。 使用公共计划时，您无法将可用性限制为特定客户，甚至限制特定数量的客户（尽管如果您选择这样做，您可以完全停止销售计划）。 只有在发布产品/服务时，在**角色定义**中包含"**授权"** 设置为["托管服务注册分配删除角色"时](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)，才能在客户接受产品/服务后取消对[委派的访问权限](../how-to/onboard-customer.md#remove-access-to-a-delegation)。 您也可以联系客户，要求他们[删除您的访问权限](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)。
 
 ## <a name="publish-managed-service-offers"></a>发布托管服务产品
 
@@ -40,4 +40,4 @@ ms.locfileid: "75453591"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 [Azure 委托的资源管理](azure-delegated-resource-management.md)和[跨租户管理体验](cross-tenant-management-experience.md)。
-- 向 Azure 市场[发布托管服务](../how-to/publish-managed-services-offers.md)。
+- 向 Azure 应用商店[发布托管服务产品/](../how-to/publish-managed-services-offers.md)服务。
