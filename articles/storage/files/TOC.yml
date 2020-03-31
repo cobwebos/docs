@@ -39,8 +39,11 @@
       href: storage-files-scale-targets.md
     - name: 基于标识的身份验证和授权
       href: storage-files-active-directory-overview.md
-    - name: 静态加密
+    - name: Azure 存储静态加密
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      items:
+        - name: 客户管理的密钥和 Azure Key Vault
+          href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 合规性产品
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 开发
@@ -93,6 +96,10 @@
           href: storage-how-to-use-files-mac.md
     - name: 网络
       items:
+        - name: 配置 Azure 文件存储网络终结点
+          href: storage-files-networking-endpoints.md
+        - name: 配置 Azure 文件存储的 DNS 转发
+          href: storage-files-networking-dns.md
         - name: 配置站点到站点 VPN
           href: storage-files-configure-s2s-vpn.md
         - name: 在 Windows 上配置点到站点 VPN
@@ -117,12 +124,22 @@
           href: storage-sync-files-monitoring.md
     - name: 迁移
       items:
-        - name: 迁移到 Azure 文件同步
-          href: storage-sync-offline-data-transfer.md
-        - name: StorSimple 8100 和 8600 迁移指南
-          href: storage-files-migration-storsimple-8000.md
-        - name: StorSimple 1200 迁移指南
-          href: storage-files-migration-storsimple-1200.md
+        - name: 迁移到 Azure 文件共享
+          href: storage-files-migration-overview.md
+        - name: 针对混合部署
+          items:
+            - name: 使用 Azure DataBox 将数据批量迁移到 Azure 文件同步
+              href: storage-sync-offline-data-transfer.md
+            - name: 使用 Azure 文件同步从 Linux 迁移到混合文件服务器
+              href: storage-files-migration-linux-hybrid.md
+            - name: 使用 Azure 文件同步从本地 NAS 迁移到混合文件服务器
+              href: storage-files-migration-nas-hybrid.md
+        - name: 从 StorSimple
+          items:
+            - name: StorSimple 8100 和 8600 迁移指南
+              href: storage-files-migration-storsimple-8000.md
+            - name: StorSimple 1200 迁移指南
+              href: storage-files-migration-storsimple-1200.md
     - name: 开发
       items:
         - name: 配置连接字符串

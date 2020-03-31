@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 10/18/2019
+ms.date: 03/17/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e928d67ba7102df3d342e77705ea895f9230ff3
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: d2b1d9748b243dcc2104ce7b8e0e8735a7b7276f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887697"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79497681"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护是什么？
 
@@ -78,6 +78,15 @@ Microsoft 标识安全和保护团队的负责人 Alex Weinert 在他[于 2018 �
 ## <a name="permissions"></a>权限
 
 标识保护要求用户是安全读者、安全操作员、安全管理员、全局读者或全局管理员才可访问。
+
+| 角色 | 有权执行的操作 | 无权执行的操作 |
+| --- | --- | --- |
+| 全局管理员 | 对“标识保护”具有完全访问权限 |   |
+| 安全管理员 | 对“标识保护”具有完全访问权限 | 重置用户密码 |
+| 安全操作员 | 查看所有标识保护报表和“概览”边栏选项卡 <br><br> 消除用户风险，确认安全登录，确认泄露 | 配置或更改策略 <br><br> 重置用户密码 <br><br> 配置警报 |
+| 安全读取者 | 查看所有标识保护报表和“概览”边栏选项卡 | 配置或更改策略 <br><br> 重置用户密码 <br><br> 配置警报 <br><br> 提供有关检测的反馈 |
+
+条件访问管理员还可以创建将登录风险作为条件考虑进去的策略。有关详细信息，请参阅[条件访问：条件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)一文。
 
 ## <a name="license-requirements"></a>许可要求
 

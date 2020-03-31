@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: c938b6174226ef9ea1104c5e95968d6122e922cf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72386322"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging（已弃用）将通知推送到 Android 设备
@@ -76,7 +76,7 @@ ms.locfileid: "72386322"
 
 通知中心现在已配置为使用 GCM，并且你有连接字符串用于注册应用以接收和发送推送通知。
 
-## <a id="connecting-app"></a>将你的应用连接到通知中心
+## <a name="connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>将你的应用连接到通知中心
 
 ### <a name="create-a-new-android-project"></a>创建新的 Android 项目
 
@@ -166,9 +166,9 @@ ms.locfileid: "72386322"
 
     在 `NotificationSettings` 类的以下代码中更新三个占位符：
 
-   * `SenderId`：之前在 [Google 云控制台](https://cloud.google.com/console)中获取的项目编号。
-   * `HubListenConnectionString`：中心的 `DefaultListenAccessSignature` 连接字符串。 可以复制该连接字符串，方法是在 [Azure 门户]的中心的“设置”页上单击“访问策略”   。
-   * `HubName`：使用 [Azure 门户]的中心页中显示的通知中心的名称。
+   * `SenderId`设置用户帐户 ：之前在 [Google 云控制台](https://cloud.google.com/console)中获取的项目编号。
+   * `HubListenConnectionString`设置用户帐户 ：中心的 `DefaultListenAccessSignature` 连接字符串。 可以复制该连接字符串，方法是在 [Azure 门户]的中心的“设置”页上单击“访问策略”   。
+   * `HubName`设置用户帐户 ：使用 [Azure 门户]的中心页中显示的通知中心的名称。
 
      `NotificationSettings` 代码：
 
@@ -383,7 +383,7 @@ ms.locfileid: "72386322"
         });
     }
     ```
-10. `ToastNotify` 方法使用“Hello World”`TextView` 控件持续报告应用状态和通知  。 在 activity_main.xml 布局中，为该控件添加以下 ID。
+10. `ToastNotify` 方法使用“Hello World”`TextView` 控件在应用中持续报告状态和通知  。 在 activity_main.xml 布局中，为该控件添加以下 ID。
 
     ```xml
     android:id="@+id/text_hello"

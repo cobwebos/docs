@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.openlocfilehash: e5575a2e8f776e87fcd4e6f4a7a9244752ebfd9a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71950426"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>教程：Azure Active Directory 与 TOPdesk - Public 集成
@@ -261,7 +261,7 @@ ms.locfileid: "71950426"
 
 2. 在顶部菜单中，单击“TOPdesk”\>“新建”\>“支持文件”\>“人员”  。
    
-    ![人员](./media/topdesk-public-tutorial/ic790628.png "人员")
+    ![Person](./media/topdesk-public-tutorial/ic790628.png "人员")
 
 3. 在“新建用户”对话框中，执行以下步骤：
    

@@ -17,10 +17,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7a6dc16eef1bb36a5bd6cbf0502a83481230bc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67087079"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>教程：Azure Active Directory 与 Work.com 的集成
@@ -134,7 +134,7 @@ ms.locfileid: "67087079"
 
 2. 转到“设置”  。
    
-    ![设置](./media/work-com-tutorial/ic794108.png "设置")
+    ![安装](./media/work-com-tutorial/ic794108.png "设置")
 
 3. 在左侧导航窗格中的“管理”  部分中，单击“域管理”  以展开相关部分，并单击“我的域”  ，打开“我的域”  页。 
    
@@ -148,11 +148,11 @@ ms.locfileid: "67087079"
 
 6. 转到“设置”  。
     
-    ![设置](./media/work-com-tutorial/ic794108.png "设置")
+    ![安装](./media/work-com-tutorial/ic794108.png "设置")
 
 7. 展开“安全控件”  菜单，并单击“单一登录设置”  。
     
-    ![单一登录设置](./media/work-com-tutorial/ic794113.png "Single Sign-On Settings")
+    ![单一登录设置](./media/work-com-tutorial/ic794113.png "单一登录设置")
 
 8. 在“单一登录设置”  对话框页上，执行以下步骤：
     
@@ -160,11 +160,11 @@ ms.locfileid: "67087079"
     
     a. 选择“已启用 SAML”  。
     
-    b. 单击“新建”  。
+    b. 单击 **“新建”** 。
 
 9. 在“SAML 单一登录设置”  部分中，执行以下步骤：
     
-    ![SAML 单一登录设置](./media/work-com-tutorial/ic794114.png "SAML Single Sign-On Settings")
+    ![SAML 单一登录设置](./media/work-com-tutorial/ic794114.png "SAML 单一登录设置")
     
     a. 在“名称”  文本框中，键入配置名称。  
        
@@ -261,7 +261,7 @@ ms.locfileid: "67087079"
 
 2. 转到“设置”  。
    
-    ![设置](./media/work-com-tutorial/IC794108.png "设置")
+    ![安装](./media/work-com-tutorial/IC794108.png "设置")
 
 3. 转到“管理用户”\>“用户”  。
    
@@ -281,7 +281,7 @@ ms.locfileid: "67087079"
     
     c. 在“别名”文本框中，键入用户的**别名** (**BrittaS**)  。
     
-    d. 在“电子邮件”文本框中，键入用户的**电子邮件地址** Brittasimon@contoso.com。 
+    d. 在“电子邮件”文本框中，键入用户的**电子邮件地址**Brittasimon@contoso.com。 
     
     e. 在“用户名”  文本框中，键入用户的用户名（例如 Brittasimon@contoso.com）。
     

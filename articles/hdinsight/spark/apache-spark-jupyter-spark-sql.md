@@ -1,67 +1,69 @@
 ---
 title: 快速入门：使用模板创建 Apache Spark 群集 - Azure HDInsight
-description: 本快速入门演示如何使用资源管理器模板在 Azure HDInsight 中创建 Apache Spark 群集，并运行简单的 Spark SQL 查询。
+description: 本快速入门演示如何使用资源管理器模板在 Azure HDInsight 中创建 Apache Spark 群集，并运行 Spark SQL 查询。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 06/12/2019
-ms.custom: mvc
-ms.openlocfilehash: 2637603fa303d57340aa36786443508f1930a481
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.custom: subject-armqs
+ms.date: 03/13/2020
+ms.openlocfilehash: 6d590659a4ed73fa27193961721d949b555c3444
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049899"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80064545"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中创建 Apache Spark 群集
 
-在本快速入门中，你将使用 Azure 资源管理器模板在 Azure HDInsight 中创建一个 Apache Spark 群集。 然后你将创建一个 Jupyter 笔记本，并使用它来针对 Apache Hive 表运行 Spark SQL 查询。 Azure HDInsight 是适用于企业的分析服务，具有托管、全面且开源的特点。 用于 HDInsight 的 Apache Spark 框架使用内存中处理功能实现快速数据分析和群集计算。 使用 Jupyter 笔记本，可以与数据进行交互，将代码和 markdown 文本结合使用，以及执行简单的可视化效果。
+在本快速入门中，我们使用 Azure 资源管理器模板在 Azure HDInsight 中创建一个 [Apache Spark](./apache-spark-overview.md) 群集。 然后，我们创建一个 Jupyter 笔记本，并使用它针对 Apache Hive 表运行 Spark SQL 查询。 Azure HDInsight 是适用于企业的分析服务，具有托管、全面且开源的特点。 用于 HDInsight 的 Apache Spark 框架使用内存中处理功能实现快速数据分析和群集计算。 使用 Jupyter 笔记本，可以与数据进行交互、将代码和 Markdown 文本结合使用，以及进行简单的可视化。
 
-[概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md) | [Apache Spark](https://spark.apache.org/) | [Apache Hive](https://hive.apache.org/) | [Jupyter Notebook](https://jupyter.org/) | [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
+[!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>必备条件
-
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-an-apache-spark-cluster"></a>创建 Apache Spark 群集
 
-使用 Azure 资源管理器模板在 HDInsight 中创建 Apache Spark 群集。 可以在 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/) 中找到该模板。 有关群集的 JSON 语法和属性，请参阅 [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters)。
+### <a name="review-the-template"></a>查看模板
 
-群集将 Azure 存储 Blob 用作群集存储。 有关使用 Data Lake Storage Gen2 的详细信息，请参阅[快速入门：在 HDInsight 中设置群集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-spark-linux)。
 
-> [!IMPORTANT]  
-> HDInsight 群集是基于分钟按比例收费，而不管用户是否正在使用它们。 请务必在使用完之后删除群集。 有关详细信息，请参阅本文的[清理资源](#clean-up-resources)部分。
+:::code language="json" source="~/quickstart-templates/101-hdinsight-spark-linux/azuredeploy.json" range="1-143":::
 
-1. 选择以下链接在新的浏览器选项卡中打开 Azure 门户中的模板：
+该模板中定义了两个 Azure 资源：
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json" target="_blank">部署到 Azure</a>
+* [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)：创建 Azure 存储帐户。
+* [Microsoft.HDInsight/cluster](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/clusters)：创建 HDInsight 群集。
 
-2. 输入以下值：
+### <a name="deploy-the-template"></a>部署模板
 
-    | properties | 值 |
+1. 选择下面的“部署到 Azure”按钮以登录到 Azure，并打开资源管理器模板  。
+
+    [![部署到 Azure](./media/apache-spark-jupyter-spark-sql/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json)
+
+1. 输入或选择下列值：
+
+    |properties |说明 |
     |---|---|
-    |**订阅**|选择用于创建此群集的 Azure 订阅。 用于此快速入门的订阅是 &lt;Azure subscription name>  。 |
-    | **资源组**|创建一个资源组或选择一个现有的资源组。 资源组用于管理项目的 Azure 资源。 用于此快速入门的新资源组名称为“myspark20180403rg”  。|
-    | **位置**|选择资源组的位置。 模板将此位置用于创建群集，以及用于默认群集存储。 用于此快速入门的位置为“美国东部 2”  。|
-    | **ClusterName**|为要创建的群集输入一个名称。 用于此快速入门的新群集名称为“myspark20180403”  。|
-    | **群集登录名和密码**|默认登录名是“admin”。选择用于群集登录的密码。 用于此快速入门的登录名为“admin”  。|
-    | **SSH 用户名和密码**|选择用于 SSH 用户的密码。 用于此快速入门的 SSH 用户名为“sshuser”  。|
+    |订阅|从下拉列表中选择用于此群集的 Azure 订阅。|
+    |资源组|从下拉列表中选择现有资源组，或选择“新建”  。|
+    |位置|将使用用于资源组的位置自动填充此值。|
+    |群集名称|输入任何全局唯一的名称。 对于此模板，请只使用小写字母和数字。|
+    |群集登录用户名|提供用户名，默认值为 **admin**。|
+    |群集登录密码|提供密码。 密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` 字符除外）。 |
+    |SSH 用户名|提供用户名，默认值为 **sshuser**|
+    |SSH 密码|提供密码。|
 
-    ![使用 Azure 资源管理器模板在 HDInsight 中创建 Spark 群集](./media/apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "使用 Azure 资源管理器模板在 HDInsight 中创建 Spark 群集")
+    ![使用 Azure 资源管理器模板在 HDInsight 中创建 Spark 群集](./media/apache-spark-jupyter-spark-sql/resource-manager-template-spark.png "使用 Azure 资源管理器模板在 HDInsight 中创建 Spark 群集")
 
-3. 选择“我同意上述条款和条件”，选择“固定到仪表板”，并选择“购买”    。  此时会出现标题为“正在部署模板”的新磁贴。 创建群集大约需要 20 分钟时间。 必须先创建群集，才能继续下一会话。
+1. 查看“条款和条件”  。 接着选择“我同意上述条款和条件”，然后选择“购买”   。 你会收到一则通知，说明正在进行部署。 创建群集大约需要 20 分钟时间。
 
-如果在创建 HDInsight 群集时遇到问题，可能是因为没有这样做的适当权限。 有关详细信息，请参阅[访问控制要求](../hdinsight-hadoop-create-linux-clusters-portal.md)。
+如果在创建 HDInsight 群集时遇到问题，可能是因为你没有这样做的适当权限。 有关详细信息，请参阅[访问控制要求](../hdinsight-hadoop-customize-cluster-linux.md#access-control)。
 
-## <a name="install-intellijeclipse-for-spark-applications"></a>为 Spark 应用程序安装 IntelliJ/Eclipse
+## <a name="review-deployed-resources"></a>查看已部署的资源
 
-使用用于 IntelliJ/Eclipse 的 Azure 工具包插件开发以 [Scala](https://www.scala-lang.org/) 编写的 Spark 应用程序，并直接从 IntelliJ/Eclipse 集成开发环境 (IDE) 将其提交到 Azure HDInsight 群集。 有关详细信息，请参阅[使用 IntelliJ 创作/提交 Spark 应用程序](./apache-spark-intellij-tool-plugin.md)和[使用 Eclipse 创作/提交 Spark 应用程序](./apache-spark-eclipse-tool-plugin.md)。
-
-## <a name="install-vscode-for-pysparkhive-applications"></a>为 PySpark/Hive 应用程序安装 VSCode
-
-了解如何使用用于 Visual Studio Code (VSCode) 的 Azure HDInsight 工具来创建和提交 Hive 批处理作业、交互式 Hive 查询、PySpark 批处理和 PySpark 交互式脚本。 可以在 VSCode 支持的平台上安装 Azure HDInsight 工具。 这些平台包括 Windows、Linux 和 macOS。 有关详细信息，请参阅[使用 VSCode 创作/提交 PySpark 应用程序](../hdinsight-for-vscode.md)。
+创建群集后，你会收到“部署成功”的通知，通知中附有“转到资源”链接   。 “资源组”页面会列出新的 HDInsight 群集以及与该群集关联的默认存储。 每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)或 [Azure Data Lake Storage 帐户](../hdinsight-hadoop-use-data-lake-store.md)依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
 
 ## <a name="create-a-jupyter-notebook"></a>创建 Jupyter 笔记本
 
@@ -92,6 +94,7 @@ SQL（结构化查询语言）是用于查询和转换数据的最常见、最�
     ![内核状态](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "内核状态")
 
     首次启动 Notebook 时，内核在后台执行一些任务。 等待内核准备就绪。
+
 1. 将以下代码粘贴到一个空单元格中，然后按 **SHIFT + ENTER** 来运行这些代码。 此命令列出群集上的 Hive 表：
 
     ```sql
@@ -120,9 +123,9 @@ SQL（结构化查询语言）是用于查询和转换数据的最常见、最�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-HDInsight 会将数据和 Jupyter Notebook 保存在 Azure 存储或 Azure Data Lake Store 中，以便在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。 如果要立即开始[后续步骤](#next-steps)中所列的教程，可能需要保留群集。
+完成本快速入门后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要为 HDInsight 群集付费，即使不用也是如此。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。
 
-切换回 Azure 门户，并选择“删除”  。
+从 Azure 门户导航到群集，然后选择“删除”。 
 
 ![在 Azure 门户中删除 HDInsight 群集](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
 
@@ -130,7 +133,7 @@ HDInsight 会将数据和 Jupyter Notebook 保存在 Azure 存储或 Azure Data 
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已了解了如何在 HDInsight 中创建 Apache Spark 群集并运行基本的 Spark SQL 查询。 转到下一教程，了解如何使用 HDInsight 群集针对示例数据运行交互式查询。
+在本快速入门中，你已了解如何在 HDInsight 中创建 Apache Spark 群集并运行基本的 Spark SQL 查询。 转到下一教程，了解如何使用 HDInsight 群集针对示例数据运行交互式查询。
 
 > [!div class="nextstepaction"]
->[在 Apache Spark 上运行交互式查询](./apache-spark-load-data-run-query.md)
+> [在 Apache Spark 上运行交互式查询](./apache-spark-load-data-run-query.md)

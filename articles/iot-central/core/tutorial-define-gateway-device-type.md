@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: ec84d3804c24766c6344e9909ba10089e186599c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623460"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79298829"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型
 
@@ -30,7 +30,7 @@ ms.locfileid: "77623460"
 * 响应操作员做出的可写属性更新。 例如，操作员可能会更改遥测数据的发送间隔。
 * 响应命令，例如重新启动设备。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要[创建一个 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)。
 
@@ -203,6 +203,9 @@ ms.locfileid: "77623460"
 * 定义设备遥测的可视化效果。
 * 添加关系。
 * 发布设备模板。
+
+> [!NOTE]
+> 在 IoT Central 中建模的网关设备目前不支持基于 VS Code 的代码生成。
 
 接下来可以：
 

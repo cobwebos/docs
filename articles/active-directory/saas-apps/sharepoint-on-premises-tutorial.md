@@ -11,73 +11,61 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: bd9e916d1e50d9d5bc0717a1d283b3dcf5d383c9
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 22b673ef481593247b6ee1007c13390a498c66be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037013"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048619"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>教程：Azure Active Directory 与本地 SharePoint 的集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharepoint-on-premises"></a>教程：Azure Active Directory 与本地 SharePoint 的单一登录 (SSO) 集成
 
-本教程介绍如何将本地 SharePoint 与 Azure Active Directory (Azure AD) 集成。
-将本地 SharePoint 与 Azure AD 集成可获得以下优势：
+本教程介绍如何将本地 SharePoint 与 Azure Active Directory (Azure AD) 集成。 将本地 SharePoint 与 Azure AD 集成后，可以：
 
-* 可在 Azure AD 中控制谁有权访问本地 SharePoint。
-* 可让用户使用其 Azure AD 帐户自动登录到本地 SharePoint（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问本地 SharePoint。
+* 让用户使用其 Azure AD 帐户自动登录到本地 SharePoint。
+* 在一个中心位置（Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要配置 Azure AD 与本地 SharePoint 的集成，需要准备好以下各项：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)
-* 已启用本地 SharePoint 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 启用了单一登录 (SSO) 的本地 SharePoint 订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
-本教程会在测试环境中配置和测试 Azure AD 单一登录。
+本教程在测试环境中配置并测试 Azure AD SSO。
 
 * 本地 SharePoint 支持 SP 发起的 SSO 
+* 配置本地 SharePoint 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 请参阅此[链接](https://docs.microsoft.com/archive/blogs/kaevans/sharepoint-2013-user-profile-sync-for-claims-users)，了解如何将用户配置文件从本地 SharePoint 同步到 Azure AD
 
 ## <a name="adding-sharepoint-on-premises-from-the-gallery"></a>从库中添加本地 SharePoint
 
 若要配置本地 SharePoint 与 Azure AD 的集成，需要从库中将本地 SharePoint 添加到托管 SaaS 应用列表。
 
-**若要从库中添加本地 SharePoint，请执行以下步骤：**
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
-
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
-
-    > [!NOTE]   
+    > [!NOTE]
     > 如果元素应不可用，也可以通过左侧导航面板顶部的固定“所有服务”  链接将其打开。 在以下概述中，“Azure Active Directory”  链接位于“标识”  部分中，或者可以使用筛选器文本框搜索它。
 
-2. 转到“企业应用”，并选择“所有应用”选项   。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 在“从库中添加”部分中，在搜索框中键入“本地 SharePoint”。  
+1. 在结果面板中选择“本地 SharePoint”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sharepoint-on-premises"></a>配置并测试本地 SharePoint 的 Azure AD 单一登录
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
+使用名为 **B.Simon** 的测试用户配置并测试本地 SharePoint 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与本地 SharePoint 中的相关用户之间建立链接关系。
 
-    ![“新增应用程序”按钮](common/add-new-app.png)
-
-4. 在搜索框中键入“本地 SharePoint”，在结果面板中选择“本地 SharePoint”，然后单击“添加”按钮添加该应用程序。   
-
-    ![结果列表中的“本地 SharePoint”](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
-
-在本部分，我们将基于名为“Britta Simon”的测试用户配置和测试本地 SharePoint 的 Azure AD 单一登录  。
-若要运行单一登录，需要在 Azure AD 用户与本地 SharePoint 相关用户之间建立链接关系。
-
-若要配置和测试本地 SharePoint 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置并测试本地 SharePoint 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置本地 SharePoint 单一登录](#configure-sharepoint-on-premises-single-sign-on)** - 在应用程序端配置单一登录设置。
@@ -107,7 +95,6 @@ ms.locfileid: "79037013"
 
 4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
 
-    ![本地 SharePoint 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YourSharePointServerURL>/_trust/default.aspx`。
 
@@ -318,6 +305,7 @@ ms.locfileid: "79037013"
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
+
 6. 在管理中心内，转到该 Web 应用程序并启用现有的受信任标识提供者。 记住还将登录页 URL 配置为自定义登录页 `/_trust/`。
 
 7. 在管理中心内，单击该 Web 应用程序并选择“用户策略”  。 添加具有相应权限的用户，如本文中前面所示。
@@ -359,7 +347,7 @@ ms.locfileid: "79037013"
 
 ### <a name="create-sharepoint-on-premises-test-user"></a>创建本地 SharePoint 测试用户
 
-在本部分，我们将在本地 SharePoint 中创建一个名为 Britta Simon 的用户。 与 [本地 SharePoint 支持团队](https://support.office.com/)协作，在本地 SharePoint 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分，我们将在本地 SharePoint 中创建一个名为 Britta Simon 的用户。 与[本地 SharePoint 支持团队](https://support.office.com/)协作，在本地 SharePoint 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
@@ -371,6 +359,8 @@ ms.locfileid: "79037013"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

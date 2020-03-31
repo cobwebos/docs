@@ -1,6 +1,6 @@
 ---
-title: 教程 - 在 Azure Front Door 服务的自定义域中配置 HTTPS | Microsoft Docs
-description: 本教程介绍如何在自定义域的 Azure Front Door 服务配置中启用和禁用 HTTPS。
+title: 教程 - 在 Azure Front Door 的自定义域中配置 HTTPS | Microsoft Docs
+description: 本教程介绍如何在 Azure Front Door 配置中为自定义域启用和禁用 HTTPS。
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 40ec859802da2f00154e750ea717da3da0f46568
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fae4206e555c85fe0555ce1c4366cd57dd386f1e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512838"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79471823"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
 本教程介绍如何在前端主机部分为 Front Door 关联的自定义域启用 HTTPS 协议。 通过在自定义域（例如 https:\//www.contoso.com）上使用 HTTPS 协议，可以确保敏感数据在通过 Internet 发送时可以通过 TLS/SSL 加密安全地进行分发。 Web 浏览器通过 HTTPS 连接到网站时，它会验证网站的安全证书并验证该证书是否是由合法的证书颁发机构颁发的。 此过程提供安全性并保护 Web 应用程序免受攻击。
 
-默认情况下，Azure Front Door 服务支持 Front Door 默认主机名中的 HTTPS。 例如，如果你创建一个 Front Door（例如 https:\//contoso.azurefd.net），则会自动为向 https://contoso.azurefd.net 发出的请求启用 HTTPS。 但是，载入自定义域“www.contoso.com”之后，需要另外为此前端主机启用 HTTPS。   
+默认情况下，Azure Front Door 支持 Front Door 默认主机名中的 HTTPS。 例如，如果你创建一个 Front Door（例如 https:\//contoso.azurefd.net），则会自动为向 https://contoso.azurefd.net 发出的请求启用 HTTPS。 但是，载入自定义域“www.contoso.com”之后，需要另外为此前端主机启用 HTTPS。   
 
 自定义 HTTPS 功能的一些关键属性包括：
 
@@ -44,18 +44,18 @@ ms.locfileid: "76512838"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在完成本教程中的步骤之前，必须先创建一个 Front Door 并至少载入一个自定义域。 有关详细信息，请参阅[教程：将自定义域添加到 Front Door](front-door-custom-domain.md)。
 
 ## <a name="ssl-certificates"></a>SSL 证书数
 
-若要启用 HTTPS 协议以在 Front Door 自定义域上安全传送内容，必须使用 SSL 证书。 可以选择是使用由 Azure Front Door 服务托管的证书还是使用自己的证书。
+若要启用 HTTPS 协议以在 Front Door 自定义域上安全传送内容，必须使用 SSL 证书。 可以选择是使用由 Azure Front Door 托管的证书还是使用自己的证书。
 
 
 ### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>选项 1（默认）：使用 Front Door 托管的证书
 
-使用 Azure Front Door 服务托管的证书时，只需单击几下即可打开 HTTPS 功能。 Azure Front Door 服务可以处理所有证书管理任务，如获取和续订。 启用此功能后，进程将立即启动。 如果自定义域已映射到 Front Door 的默认前端主机 (`{hostname}.azurefd.net`)，则不需要进一步操作。 Front Door 将自动执行步骤并完成请求。 但是，如果自定义域映射到其他位置，则必须使用电子邮件来验证域所有权。
+使用 Azure Front Door 托管的证书时，只需单击几下即可打开 HTTPS 功能。 Azure Front Door 可以处理所有证书管理任务，如获取和续订。 启用此功能后，进程将立即启动。 如果自定义域已映射到 Front Door 的默认前端主机 (`{hostname}.azurefd.net`)，则不需要进一步操作。 Front Door 将自动执行步骤并完成请求。 但是，如果自定义域映射到其他位置，则必须使用电子邮件来验证域所有权。
 
 若要在自定义域上启用 HTTPS，请执行以下步骤：
 
@@ -72,23 +72,23 @@ ms.locfileid: "76512838"
 
 ### <a name="option-2-use-your-own-certificate"></a>选项 2：使用自己的证书
 
-可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure Front Door 服务使用此安全机制来获得你的证书，并且需要一些额外的步骤。 创建 SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure Front Door 服务上启用自定义 HTTPS 的证书颁发机构](front-door-troubleshoot-allowed-ca.md)。
+可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure Front Door 使用此安全机制来获得你的证书，并且需要一些额外的步骤。 创建 SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure Front Door 上启用自定义 HTTPS 的证书颁发机构](front-door-troubleshoot-allowed-ca.md)。
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>准备 Azure Key Vault 帐户和证书
  
 1. Azure Key Vault：在要启用自定义 HTTPS 的 Front Door 所在的同一订阅下，必须具有正在运行的 Azure Key Vault 帐户。 创建 Azure Key Vault 帐户（如果还没有帐户）。
 
 > [!WARNING]
-> Azure Front Door 服务目前仅支持 Front Door 配置所在的同一订阅中的 Key Vault 帐户。 选择不包含你的 Front Door 的订阅中的 Key Vault 会导致失败。
+> Azure Front Door 目前仅支持 Front Door 配置所在的同一订阅中的 Key Vault 帐户。 选择不包含你的 Front Door 的订阅中的 Key Vault 会导致失败。
 
 2. Azure Key Vault 证书：如果已有证书，可以将其直接上传到 Azure Key Vault 帐户，或者，可以直接通过 Azure Key Vault，从 Azure Key Vault 集成的合作伙伴 CA 之一创建新的证书。 将证书上传为**证书**对象，而不是**机密**。
 
-> [!IMPORTANT]
-> 必须以 PFX 格式上传证书，而**无需**密码保护。
+> [!NOTE]
+> 对于你自己的 SSL 证书，Front Door 不支持带有 EC 加密算法的证书。
 
-#### <a name="register-azure-front-door-service"></a>注册 Azure Front Door 服务
+#### <a name="register-azure-front-door"></a>注册 Azure Front Door
 
-通过 PowerShell 将 Azure Front Door 服务的服务主体注册为 Azure Active Directory 中的应用。
+通过 PowerShell 将 Azure Front Door 的服务主体注册为 Azure Active Directory 中的应用。
 
 > [!NOTE]
 > 此操作需要全局管理员权限，并且每个租户只需要执行**一次**。
@@ -99,9 +99,9 @@ ms.locfileid: "76512838"
 
      `New-AzADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
-#### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>授予 Azure Front Door 服务对 Key Vault 的访问权限
+#### <a name="grant-azure-front-door-access-to-your-key-vault"></a>授予 Azure Front Door 对 Key Vault 的访问权限
  
-授予 Azure Front Door 服务访问 Azure Key Vault 帐户中的证书的权限。
+授予 Azure Front Door 访问 Azure Key Vault 帐户中的证书的权限。
 
 1. 在 Key Vault 帐户的“设置”下，选择“访问策略”，然后选择“添加新策略”以创建新策略   。
 
@@ -113,9 +113,9 @@ ms.locfileid: "76512838"
 
 5. 选择“确定”  。 
 
-    Azure Front Door 服务现在可以访问此 Key Vault 和存储在其中的证书。
+    Azure Front Door 现在可以访问此 Key Vault 和存储在其中的证书。
  
-#### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>选择要部署的 Azure Front Door 服务的证书
+#### <a name="select-the-certificate-for-azure-front-door-to-deploy"></a>选择要部署的 Azure Front Door 的证书
  
 1. 在门户中返回到 Front Door。 
 
@@ -125,9 +125,9 @@ ms.locfileid: "76512838"
 
 3. 在证书管理类型下，选择“使用我自己的证书”  。 
 
-4. Azure Front Door 服务要求 Key Vault 帐户的订阅与 Front Door 的订阅相同。 选择 Key Vault，证书（机密）和证书版本。
+4. Azure Front Door 要求 Key Vault 帐户的订阅与 Front Door 的订阅相同。 选择 Key Vault，证书（机密）和证书版本。
 
-    Azure Front Door 服务列出以下信息： 
+    Azure Front Door 列出以下信息： 
     - 订阅 ID 的 Key Vault 帐户。 
     - 所选 Key Vault 下的证书（机密）。 
     - 可用证书版本。 
@@ -224,7 +224,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ### <a name="disable-the-https-feature"></a>禁用 HTTPS 功能 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到你的 **Azure Front Door 服务**配置。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到你的 **Azure Front Door** 配置。
 
 2. 在前端主机列表中，单击要禁用 HTTPS 的自定义域。
 
@@ -252,7 +252,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 2. 使用基于 IP 的 TLS/SSL 还是 SNI TLS/SSL？ 
 
-    Azure Front Door 服务使用 SNI TLS/SSL。
+    Azure Front Door 使用 SNI TLS/SSL。
 
 3. 如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？ 
 

@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6fd8573c78d80c950bdeb41ec01e2835def3979a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432247"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204250"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>教程 1：预测信用风险 - Azure 机器学习工作室（经典版）
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -38,7 +40,7 @@ ms.locfileid: "75432247"
 
 然后，可以使用此试验[训练第 2 部分中的模型](tutorial-part2-credit-risk-train.md)，并[在第 3 部分部署这些模型](tutorial-part3-credit-risk-deploy.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程默认用户此前至少使用过机器学习工作室（经典版）一次，且对机器学习概念有一些了解。 但不假设用户精通其中任一领域。
 
@@ -66,7 +68,7 @@ ms.locfileid: "75432247"
 > 在“设置”  页上，单击“用户”  ，并在窗口底部单击“邀请更多用户”  。
 > 
 
-## <a name="upload"></a>上传现有数据
+## <a name="upload-existing-data"></a><a name="upload"></a>上传现有数据
 
 若要开发用于信用风险的预测模型，我们需要用于训练和测试模型的数据。 对于本教程，我们将使用 UC Irvine 机器学习存储库的“UCI Statlog(德国信用数据)数据集”。 可在此处找到以下内容：  
 <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
@@ -129,7 +131,7 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 8. 对于数据类型，请选择“没有标题的一般 CSV 文件(.nh.csv)”  。
 
-9. 如果需要，可添加描述。
+9. 添加说明（如果需要）。
 
 10. 单击**确定**复选标记。  
 

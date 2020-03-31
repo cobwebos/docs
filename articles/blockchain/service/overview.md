@@ -1,15 +1,15 @@
 ---
 title: Azure 区块链服务概述
 description: Azure 区块链服务概述
-ms.date: 11/21/2019
+ms.date: 03/12/2020
 ms.topic: overview
-ms.reviewer: janders
-ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.reviewer: ravastra
+ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387371"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79205073"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什么是 Azure 区块链服务？
 
@@ -29,7 +29,7 @@ Azure 区块链服务旨在支持多种账本协议。 当前，该服务使用 
 
 ### <a name="performance-and-service-tiers"></a>性能和服服务层级
 
-Azure 区块链服务提供两种服务层：“基本”和“标准”   。 每层都提供不同的性能和功能，以支持轻量级开发和测试工作负载，直至大规模的生产区块链部署。 这两层均包括至少一个事务节点、一个验证器节点（基本）或两个验证器节点（标准）。
+Azure 区块链服务提供两种服务层：“基本”和“标准”   。 每层都提供不同的性能和功能，以支持轻量级开发和测试工作负载，直至大规模的生产区块链部署。 使用“基本”  层进行开发、测试和概念证明。 使用“标准”  层进行生产级部署。 这两层均包括至少一个事务节点、一个验证器节点（基本）或两个验证器节点（标准）。 
 
 ![定价层](./media/overview/pricing-tiers.png)
 
@@ -45,7 +45,7 @@ Azure 区块链服务提供两种服务层：“基本”和“标准”   。 �
 
 此外，Azure 区块链服务通过 Azure Monitor 服务提供丰富的指标，使你能够深入了解节点的 CPU、内存和存储使用情况。  Azure Monitor 还提供关于区块链网络活动（例如挖掘的事务和区块、事务队列深度和活动连接）的有用见解。  可以自定义指标，以提供对区块链应用程序至关重要的见解的视图。  此外，可以通过警报定义阈值，使用户能够触发操作，例如发送电子邮件或短信，运行逻辑应用、Azure Functions 或发送到自定义 Webhook。
 
-![度量值](./media/overview/metrics.png)
+![指标](./media/overview/metrics.png)
 
 通过 Azure Log Analytics，用户可以查看与 Quorum 账本相关的日志或其他重要信息，例如尝试与事务节点建立的连接。
 

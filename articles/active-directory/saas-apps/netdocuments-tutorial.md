@@ -17,10 +17,10 @@ ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72035700"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>教程：Azure Active Directory 单一登录 (SSO) 与 NetDocuments 集成
@@ -149,7 +149,7 @@ ms.locfileid: "72035700"
 
 5. 在“联合身份”对话框中，执行以下步骤： 
    
-    ![联合身份](./media/netdocuments-tutorial/ic795049.png "联合身份")
+    ![联合标识](./media/netdocuments-tutorial/ic795049.png "联合身份")
    
     a. 选择“Active Directory 联合身份验证服务”作为“联合身份服务器类型”。  
    

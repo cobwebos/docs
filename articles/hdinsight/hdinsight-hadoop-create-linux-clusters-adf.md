@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 10/09/2019
-ms.openlocfilehash: 1d1ddb84c000efaf58356ffdd15382e0b74aa744
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 03/18/2020
+ms.openlocfilehash: b184a42c52384440445181ac44c616c3139e064f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494871"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80130693"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>教程：使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-本教程将介绍如何使用 Azure 数据工厂在 Azure HDInsight 中按需创建 [Apache Hadoop](https://hadoop.apache.org/) 群集。 然后使用 Azure 数据工厂中的数据管道运行 Hive 作业并删除该群集。 本教程结束时，你便知道如何将大数据作业运行操作化，其中的群集创建、作业运行和群集删除操作都是按计划执行的。
+本教程将介绍如何使用 Azure 数据工厂在 Azure HDInsight 中按需创建 [Apache Hadoop](./hadoop/apache-hadoop-introduction.md) 群集。 然后使用 Azure 数据工厂中的数据管道运行 Hive 作业并删除该群集。 本教程结束时，你便知道如何将大数据作业运行操作化，其中的群集创建、作业运行和群集删除操作都是按计划执行的。
 
 本教程涵盖以下任务：
 
@@ -42,7 +42,7 @@ ms.locfileid: "73494871"
 
 ## <a name="create-preliminary-azure-objects"></a>创建初步 Azure 对象
 
-在本部分中，你将创建各种对象，以用于按需创建的 HDInsight 群集。 已创建的存储帐户将包含示例 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 脚本 (`partitionweblogs.hql`)，该脚本用于模拟群集上运行的示例 [Apache Hive](https://hive.apache.org/) 作业。
+在本部分中，你将创建各种对象，以用于按需创建的 HDInsight 群集。 已创建的存储帐户将包含示例 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) 脚本 (`partitionweblogs.hql`)，该脚本用于模拟群集上运行的示例 Apache Hive 作业。
 
 本部分使用 Azure PowerShell 脚本创建存储帐户，并在存储帐户中复制所需的文件。 本部分中的 Azure PowerShell 示例脚本执行以下任务：
 
@@ -52,7 +52,7 @@ ms.locfileid: "73494871"
 4. 在存储帐户中创建 Blob 容器
 5. 将示例 HiveQL 脚本 (**partitionweblogs.hql**) 复制到 Blob 容器。 [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql) 上提供了该脚本。 该示例脚本已在另一个公共 Blob 容器中提供。 以下 PowerShell 脚本将这些文件复制到它创建的 Azure 存储帐户。
 
-**使用 Azure PowerShell 创建存储帐户并复制文件：**
+### <a name="create-storage-account-and-copy-files"></a>创建存储帐户并复制文件
 
 > [!IMPORTANT]  
 > 指定将通过脚本创建的 Azure 资源组和 Azure 存储帐户的名称。
@@ -151,7 +151,7 @@ write-host "Storage Account Key: $destStorageAccountKey"
 Write-host "`nScript completed" -ForegroundColor Green
 ```
 
-**验证是否已创建存储帐户**
+### <a name="verify-storage-account"></a>验证存储帐户
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 从左侧导航到“所有服务”   > “常规”   > “资源组”  。
@@ -167,23 +167,23 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 在 Azure 数据工厂中，一个数据工厂可以有一个或多个数据管道。 一个数据管道有一个或多个活动。 有两种类型的活动：
 
-- [数据移动活动](../data-factory/copy-activity-overview.md) - 使用数据移动活动可将数据从源数据存储移到目标数据存储。
-- [数据转换活动](../data-factory/transform-data.md)。 可以使用数据转换活动来转换/处理数据。 HDInsight Hive 活动是数据工厂支持的转换活动之一。 用户在本教程中使用 Hive 转换活动。
+* [数据移动活动](../data-factory/copy-activity-overview.md)。 使用数据移动活动可将数据从源数据存储移到目标数据存储。
+* [数据转换活动](../data-factory/transform-data.md)。 可以使用数据转换活动来转换/处理数据。 HDInsight Hive 活动是数据工厂支持的转换活动之一。 用户在本教程中使用 Hive 转换活动。
 
 在本文中，我们将配置 Hive 活动，以创建按需 HDInsight Hadoop 群集。 运行活动来处理数据时，会发生以下情况：
 
-1. 自动为用户实时创建 HDInsight Hadoop 群集，以便处理该切片。 
+1. 自动为用户实时创建 HDInsight Hadoop 群集，以便处理该切片。
 
 2. 通过在群集上运行 HiveQL 脚本处理输入数据。 在本教程中，与 Hive 活动关联的 HiveQL 脚本执行以下操作：
 
-    - 使用现有表 (*hivesampletable*) 创建另一个表 **HiveSampleOut**。
-    - 只在 **HiveSampleOut** 表中填充原始 *hivesampletable* 中的特定列。
-    
+    * 使用现有表 (*hivesampletable*) 创建另一个表 **HiveSampleOut**。
+    * 只在 **HiveSampleOut** 表中填充原始 *hivesampletable* 中的特定列。
+
 3. HDInsight Hadoop 群集在处理完成后删除，群集空闲时间为配置的时间（timeToLive 设置）。 如果在这段 timeToLive 空闲时间内可以处理下一数据切片，则会使用同一群集处理该切片。  
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 2. 在左侧菜单中，导航到“+ 创建资源”   > “Analytics”   > “数据工厂”  。
 
@@ -191,16 +191,16 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 3. 为“新建数据工厂”  磁贴输入或选择以下值：
 
-    |属性  |值  |
+    |properties  |值  |
     |---------|---------|
-    |Name | 输入数据工厂的名称。 该名称必须全局唯一。|
-    |Subscription | 选择 Azure 订阅。 |
-    |Resource group | 选择“使用现有项”，然后选择使用 PowerShell 脚本创建的资源组。  |
+    |名称 | 输入数据工厂的名称。 该名称必须全局唯一。|
     |版本 | 保留为“V2”  。 |
+    |订阅 | 选择 Azure 订阅。 |
+    |资源组 | 选择你使用 PowerShell 脚本创建的资源组。 |
     |位置 | 位置会自动设置为先前在创建资源组时指定的位置。 在本教程中，位置设置为“美国东部”  。 |
     |启用 Git|取消选中此框。|
 
-    ![使用 Azure 门户创建 Azure 数据工厂](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "使用 Azure 门户创建 Azure 数据工厂")
+    ![使用 Azure 门户创建 Azure 数据工厂](./media/hdinsight-hadoop-create-linux-clusters-adf/azure-portal-create-data-factory.png "使用 Azure 门户创建 Azure 数据工厂")
 
 4. 选择“创建”  。 创建一个数据工厂可能需要花费 2 到 4 分钟。
 
@@ -214,8 +214,8 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 在本部分，我们将在数据工厂中创作两个链接服务。
 
-- 一个用于将 Azure 存储帐户链接到数据工厂的 **Azure 存储链接服务**。 按需 HDInsight 群集使用此存储。 它还包含群集上运行的 Hive 脚本。
-- 一个**按需 HDInsight 链接服务**。 Azure 数据工厂自动创建 HDInsight 群集并运行 Hive 脚本。 然后，当群集空闲预配置的时间后，就会删除 HDInsight 群集。
+* 一个用于将 Azure 存储帐户链接到数据工厂的 **Azure 存储链接服务**。 按需 HDInsight 群集使用此存储。 它还包含群集上运行的 Hive 脚本。
+* 一个**按需 HDInsight 链接服务**。 Azure 数据工厂自动创建 HDInsight 群集并运行 Hive 脚本。 然后，当群集空闲预配置的时间后，就会删除 HDInsight 群集。
 
 ### <a name="create-an-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 
@@ -233,9 +233,9 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 4. 为存储链接服务提供以下值：
 
-    |属性 |值 |
+    |properties |值 |
     |---|---|
-    |Name |输入 `HDIStorageLinkedService` 。|
+    |名称 |输入 `HDIStorageLinkedService`。|
     |Azure 订阅 |从下拉列表中选择你的订阅。|
     |存储帐户名称 |选择作为 PowerShell 脚本的一部分创建的 Azure 存储帐户。|
 
@@ -255,9 +255,9 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 4. 在“新建链接服务”窗口中，输入以下值，并将其余项保留为默认值  ：
 
-    | 属性 | 值 |
+    | properties | 值 |
     | --- | --- |
-    | Name | 输入 `HDInsightLinkedService` 。|
+    | 名称 | 输入 `HDInsightLinkedService`。|
     | 类型 | 选择“按需 HDInsight”  。 |
     | Azure 存储链接服务 | 选择 `HDIStorageLinkedService`。 |
     | 群集类型 | 选择“hadoop”  |
@@ -265,7 +265,7 @@ Write-host "`nScript completed" -ForegroundColor Green
     | 服务主体 ID | 提供作为先决条件的一部分创建的 Azure Active Directory 服务主体的应用程序 ID。 |
     | 服务主体密钥 | 提供 Azure Active Directory 服务主体的身份验证密钥。 |
     | 群集名称前缀 | 提供一个值，该值将用作由数据工厂创建的所有群集类型的前缀。 |
-    |Subscription |从下拉列表中选择你的订阅。|
+    |订阅 |从下拉列表中选择你的订阅。|
     | 选择资源组 | 选择作为先前使用的 PowerShell 脚本的一部分创建的资源组。|
     | OS 类型/群集 SSH 用户名 | 输入一个 SSH 用户名，常见的是 `sshuser`。 |
     | OS 类型/群集 SSH 密码 | 提供 SSH 用户的密码 |
@@ -282,15 +282,15 @@ Write-host "`nScript completed" -ForegroundColor Green
 
     ![在 Azure 数据工厂中创建管道](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "在 Azure 数据工厂中创建管道")
 
-2. 在“活动”工具箱中展开“HDInsight”，将“Hive”活动拖放到管道设计器图面。    在“常规”选项卡中，提供活动的名称。 
+1. 在“活动”工具箱中展开“HDInsight”，将“Hive”活动拖放到管道设计器图面。    在“常规”选项卡中，提供活动的名称。 
 
     ![将活动添加到数据工厂管道](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png "将活动添加到数据工厂管道")
 
-3. 确保已选择“Hive”活动，选择“HDI 群集”  选项卡，然后从“HDInsight 链接服务”  下拉列表中，选择先前为 HDInsight 创建的链接服务 **HDInsightLinkedService**。
+1. 确保已选择“Hive”活动，选择“HDI 群集”  选项卡，然后从“HDInsight 链接服务”  下拉列表中，选择先前为 HDInsight 创建的链接服务 **HDInsightLinkedService**。
 
     ![为管道提供 HDInsight 群集详细信息](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "为管道提供 HDInsight 群集详细信息")
 
-4. 选择“脚本”选项卡并完成以下步骤： 
+1. 选择“脚本”选项卡并完成以下步骤： 
 
     1. 从下拉列表中为“脚本链接服务”选择“HDIStorageLinkedService”   。 此值为先面创建的存储链接服务。
 
@@ -298,8 +298,10 @@ Write-host "`nScript completed" -ForegroundColor Green
 
         ![为管道提供 Hive 脚本详细信息](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "为管道提供 Hive 脚本详细信息")
 
-    1. 在“高级” > “参数”下，选择“从脚本自动填充”。    此选项会在 Hive 脚本中查找需要在运行时提供值的所有参数。 使用的脚本 (**partitionweblogs.hql**) 包含 **Output** 参数。 请以 `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` 格式提供**值**，以指向 Azure 存储中的现有文件夹。 该路径区分大小写。 这是脚本的输出的存储路径。 `wasbs` 架构是必需的，因为存储帐户现在默认情况下已启用“需要安全传输”。
-    
+    1. 在“高级” > “参数”下，选择“从脚本自动填充”。    此选项会在 Hive 脚本中查找需要在运行时提供值的所有参数。
+
+    1. 在“值”  文本框中，以 `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` 格式添加现有文件夹。 此路径区分大小写。 这是脚本的输出的存储路径。 `wasbs` 架构是必需的，因为存储帐户现在默认情况下已启用“需要安全传输”。
+
         ![为 Hive 脚本提供参数](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "为 Hive 脚本提供参数")
 
 1. 选择“验证”以验证管道。  选择 **>>** （右键头）按钮，关闭验证窗口。
@@ -316,7 +318,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
     ![触发 Azure 数据工厂管道](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "触发 Azure 数据工厂管道")
 
-2. 在弹出的边栏中选择“完成”。 
+2. 在弹出侧栏中选择“确定”  。
 
 ## <a name="monitor-a-pipeline"></a>监视管道
 
@@ -334,11 +336,11 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 1. 若要验证输出，请在 Azure 门户中导航到本教程使用的存储帐户。 应会看到以下文件夹或容器：
 
-    - 一个 **adfgerstarted/outputfolder**，其中包含作为管道一部分运行的 Hive 脚本的输出。
+    * 一个 **adfgerstarted/outputfolder**，其中包含作为管道一部分运行的 Hive 脚本的输出。
 
-    - 一个 **adfhdidatafactory-\<链接服务名称>-\<时间戳>** 容器。 此容器是管道运行过程中创建的 HDInsight 群集的默认存储位置。
+    * 一个 **adfhdidatafactory-\<链接服务名称>-\<时间戳>** 容器。 此容器是管道运行过程中创建的 HDInsight 群集的默认存储位置。
 
-    - 一个 **adfjobs** 容器，其中包含 Azure 数据工厂作业日志。  
+    * 一个 **adfjobs** 容器，其中包含 Azure 数据工厂作业日志。  
 
         ![验证 Azure 数据工厂管道输出](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "验证 Azure 数据工厂管道输出")
 
@@ -361,7 +363,8 @@ Write-host "`nScript completed" -ForegroundColor Green
 1. 输入资源组名称以确认删除，然后选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
+
 本文已介绍如何使用 Azure 数据工厂创建按需 HDInsight 群集和运行 [Apache Hive](https://hive.apache.org/) 作业。 请继续学习下一篇文章，了解如何使用自定义配置创建 HDInsight 群集。
 
 > [!div class="nextstepaction"]
->[使用自定义配置创建 Azure HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
+> [使用自定义配置创建 Azure HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)

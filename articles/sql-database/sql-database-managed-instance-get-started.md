@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: 2af153e5cf09cf331be016066e9c9210a0d39b03
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 25128442cd922f6b9130586e245695b6880f661c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838162"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80257608"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>快速入门：创建 Azure SQL 数据库托管实例
 
@@ -51,7 +51,7 @@ ms.locfileid: "73838162"
 
    参考下表来填写此选项卡中的所需信息。
 
-   | 设置| 建议的值 | Description |
+   | 设置| 建议的值 | 说明 |
    | ------ | --------------- | ----------- |
    | **订阅** | 你的订阅。 | 你有权在其中创建新资源的订阅。 |
    | **资源组** | 新的或现有的资源组。|如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。|
@@ -122,6 +122,10 @@ ms.locfileid: "73838162"
 > 1. 在 Azure 门户中，打开要向其部署托管实例的资源组（位于“基本信息”选项卡上）。 
 > 2. 选择“部署”。 
 > 3. 选择正在进行的托管实例部署操作。
+
+> [!IMPORTANT]
+> 若要获取托管实例创建状态，需要有资源组的**读取权限**。 如果没有此权限，或者在托管实例创建过程中将其撤消，则可能会导致托管实例在资源组部署列表中不可见。
+>
 
 ## <a name="post-deployment-operations"></a>部署后的操作
 

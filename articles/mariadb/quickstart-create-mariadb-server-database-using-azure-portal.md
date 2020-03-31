@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 9ba02f53ba5765d90e8bba80e4d99922d7eb7c46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/19/2020
+ms.openlocfilehash: 698220a7f81dc5fb9d70d2aa65e96dfa199af444
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432044"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80063847"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>使用 Azure 门户创建 Azure Database for MariaDB 服务器
 
@@ -37,7 +37,7 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
    ![Azure Database for MariaDB 选项](./media/quickstart-create-mariadb-server-database-using-azure-portal/2_navigate-to-mariadb.png)
 
 3. 输入或选择以下服务器详细信息：
-   
+
    ![“创建服务器”窗体](./media/quickstart-create-mariadb-server-database-using-azure-portal/4-create-form.png)
 
     设置 | 建议的值 | 说明
@@ -55,18 +55,16 @@ Azure Database for MariaDB 是一种托管服务，可用于在云中运行、�
   
    > [!NOTE]
    > 如果轻量级计算和 I/O 足以满足工作负荷要求，请考虑使用“基本”定价层。 请注意，在“基本”定价层中创建的服务器以后不能扩展到“常规用途”或“内存优化”定价层。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/mariadb/)。
-   > 
 
    ![“创建服务器 - 定价层”窗口](./media/quickstart-create-mariadb-server-database-using-azure-portal/3-pricing-tier.png)
 
-4.  选择“创建”  以预配服务器。 预配可能需要长达 20 分钟的时间。
-   
-5.  若要监视部署过程，请在工具栏上选择“通知”（钟形图标）。 
-   
+4. 选择“查看 + 创建”  以预配服务器。 预配可能需要长达 20 分钟的时间。
+
+5. 若要监视部署过程，请在工具栏上选择“通知”（钟形图标）。 
+
 默认情况下，将在服务器下创建以下数据库：**information_schema**、**mysql**、**performance_schema** 和 **sys**。
 
-
-## <a name="configure-firewall-rule"></a>配置服务器级防火墙规则
+## <a name="configure-a-server-level-firewall-rule"></a><a name="configure-firewall-rule"></a>配置服务器级防火墙规则
 
 Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创建了防火墙规则来为特定的 IP 地址打开防火墙，否则防火墙会阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 
 
@@ -77,20 +75,19 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
 2. 在服务器概览页中，选择“连接安全性”  。
 
 3. 在“防火墙规则”下，选择“规则名称”列中的空白文本框，开始创建防火墙规则。   指定将连接到此服务器的客户端的精确 IP 范围。
-   
+
    ![连接安全性 - 防火墙规则](./media/quickstart-create-mariadb-server-database-using-azure-portal/5-firewall-2.png)
 
-4. 在“连接安全性”页的上部工具栏中，选择“保存”。   在继续操作之前，请等待指示更新已成功完成的通知出现。 
+4. 在“连接安全性”页的上部工具栏中，选择“保存”。   在继续操作之前，请等待指示更新已成功完成的通知出现。
 
    > [!NOTE]
    > 连接到 Azure Database for MariaDB 时，经端口 3306 进行通信。 如果尝试从企业网络内部进行连接，则可能不允许经端口 3306 的出站流量。 这种情况下，若要连接到服务器，必须要求 IT 部门打开端口 3306。
-   > 
 
 ## <a name="get-connection-information"></a>获取连接信息
 
 若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 此前可能已在本文中记下这些值。 如果没有记下这些值，可以在 Azure 门户的服务器“概览”页或“属性”页中轻松地找到服务器名称和登录信息：  
 
-1. 转到服务器的“概览”  页。 记下“服务器名称”  和“服务器管理员登录名”  的值。 
+1. 转到服务器的“概览”  页。 记下“服务器名称”  和“服务器管理员登录名”  的值。
 
 2. 若要复制这些值，请将光标放置在要复制的字段上方。 复制图标会显示在文本右侧。 根据需要选择复制图标即可复制这些值。
 
@@ -113,13 +110,13 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
 
     若要通过 mysql 实用程序连接到 Azure Database for MariaDB 服务器，请使用以下格式：
 
-    ```bash
+    ```cmd
     mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
     ```
 
     例如，以下命令连接到示例服务器：
 
-    ```azurecli-interactive
+    ```cmd
     mysql --host mydemoserver.mariadb.database.azure.com --user myadmin@mydemoserver -p
     ```
 
@@ -129,11 +126,11 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
     --user | 服务器管理员登录名  |在创建 Azure Database for MariaDB 服务器时使用的服务器管理员登录用户名。 如果不记得用户名，请完成上一部分的步骤，以便获取连接信息。 格式为 username\@servername  。
     -p | 你的密码 <br>（等待系统提示） |出现提示时，输入用于创建服务器的密码。 键入密码字符时，这些字符不会显示在 bash 提示符处。 输入密码后，按 Enter。
 
-   连接 mysql 实用程序后，它会显示 `mysql>` 提示符。 可以在提示符下输入命令。 
+   连接 mysql 实用程序后，它会显示 `mysql>` 提示符。 可以在提示符下输入命令。
 
    下面是 mysql 输出的示例：
 
-    ```bash
+    ```output
     Welcome to the MySQL monitor.  Commands end with ; or \g.
     Your MySQL connection id is 65505
     Server version: 5.6.39.0 MariaDB Server
@@ -209,7 +206,6 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
 
     > [!NOTE]
     > 默认情况下，SSL 是在服务器上强制实施的， 需要额外配置才能成功进行连接。 有关详细信息，请参阅[配置应用程序中的 SSL 连接性以安全连接到 Azure Database for MariaDB](./howto-configure-ssl.md)。 若要禁用本快速入门的 SSL，请在 Azure 门户的服务器概览页的菜单中选择“连接安全性”。  对于“强制实施 SSL 连接”，请选择“禁用”。  
-    >
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -217,19 +213,18 @@ Azure Database for MariaDB 服务在服务器级别创建防火墙。 除非创�
 
 > [!TIP]
 > 本教程系列中的其他快速入门教程是在本文的基础上制作的。 如果打算继续使用 Azure Database for MariaDB 快速入门，请不要清除在本快速入门中创建的资源。 如果不打算继续，请执行以下步骤，删除在本快速入门中创建的所有资源。
->
 
 若要删除包括新建服务器在内的整个资源组，请执行以下操作：
 
-1.  在 Azure 门户中查找资源组。 在左侧菜单中选择“资源组”  ，然后选择资源组的名称（在我们的示例中为 myresourcegroup）。 
+1. 在 Azure 门户中查找资源组。 在左侧菜单中选择“资源组”  ，然后选择资源组的名称（在我们的示例中为 myresourcegroup）。 
 
-2.  在资源组页上，选择“删除”  。 然后，键入确认删除的资源组的名称（在我们的示例中为 **myresourcegroup**）。 选择“删除”。 
+2. 在资源组页上，选择“删除”  。 然后，键入确认删除的资源组的名称（在我们的示例中为 **myresourcegroup**）。 选择“删除”。 
 
 仅删除新建的服务器：
 
 1. 在 Azure 门户中找到服务器（如果尚未将其打开）。 在左侧菜单中，选择“所有资源”  。 然后搜索所创建的服务器。
 
-2. 在“概览”  页上，选择“删除”  。 
+2. 在“概览”  页上，选择“删除”  。
 
    ![Azure Database for MariaDB - 删除服务器](./media/quickstart-create-mariadb-server-database-using-azure-portal/delete-server.png)
 
