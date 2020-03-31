@@ -3,7 +3,7 @@ documentType: LandingData
 title: 可伸缩性
 metadata:
   title: Azure SQL 数据库 - 可伸缩性
-  meta.description: Learn how to scale your Azure SQL Database.
+  description: 了解 Azure SQL 数据库如何使你可以通过添加更多计算能力（纵向扩展）或添加更多数据库单元（横向扩展）来轻松扩展数据库。
   services: sql-database
   ms.subservice: scale-out
   author: jovanpop-msft
@@ -14,7 +14,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 01/25/2019
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
 sections:
   - items:
       - type: paragraph
