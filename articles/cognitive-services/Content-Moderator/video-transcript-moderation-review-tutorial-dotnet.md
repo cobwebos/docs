@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976972"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教程：视频和脚本审查
@@ -42,7 +42,7 @@ ms.locfileid: "74976972"
 
 ## <a name="enter-credentials"></a>输入凭据
 
-编辑文件 `App.config` 并添加 Active Directory 租户名称、服务终结点和用 `#####` 表示的订阅密钥。 你需要以下信息：
+编辑文件 `App.config` 并添加 Active Directory 租户名称、服务终结点和用 `#####` 表示的订阅密钥。 需要以下信息：
 
 |密钥|说明|
 |-|-|
@@ -121,7 +121,7 @@ ms.locfileid: "74976972"
 
 [!code-csharp[CompressVideo](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/AMSComponent.cs?range=31-59)]
 
-该代码执行以下步骤：
+此代码执行以下步骤：
 
 - 检查以确保 `App.config` 中的配置包含所有必要数据
 - 检查以确保存在 `ffmpeg` 二进制文件

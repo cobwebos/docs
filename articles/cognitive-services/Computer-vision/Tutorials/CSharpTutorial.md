@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: b492d8e3bdcf6d9a41df3eb79ef159985cc715cf
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76168883"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>示例：使用 C# 探索图像处理应用
@@ -28,7 +28,7 @@ ms.locfileid: "76168883"
 > * 运行示例应用并与其交互以执行各种场景
 > * 探索示例应用附带的各种场景
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在探索示例应用之前，请确保已满足以下先决条件：
 

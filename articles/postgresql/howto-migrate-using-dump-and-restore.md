@@ -1,22 +1,22 @@
 ---
-title: 转储和还原-Azure Database for PostgreSQL-单服务器
-description: 介绍如何将 PostgreSQL 数据库提取到转储文件中，以及如何从 Azure Database for PostgreSQL 单服务器中 pg_dump 创建的文件进行还原。
+title: 转储和还原 - 用于 PostgreSQL 的 Azure 数据库 - 单个服务器
+description: 介绍了如何在 Azure Database for PostgreSQL - 单一服务器中将 PostgreSQL 数据库解压缩为转储文件，以及如何从 pg_dump 创建的文件进行还原。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: 4365338efa56593e80edcc19cba5944b213d2b72
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74770231"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>使用转储和还原迁移 PostgreSQL 数据库
 可以使用 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 将 PostgreSQL 数据库提取到转储文件，并使用 [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) 从 pg_dump 创建的存档文件中还原 PostgreSQL 数据库。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要逐步执行本操作方法指南，需要：
 - 一个 [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)，其防火墙规则设置为允许访问，并且包含数据库。
 - 已安装 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 和 [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) 命令行实用程序
@@ -28,7 +28,7 @@ ms.locfileid: "74770231"
 ```bash
 pg_dump -Fc -v --host=<host> --username=<name> --dbname=<database name> -f <database>.dump
 ```
-例如，如果有一个本地服务器，并且该服务器中包含一个名为 testdb 的数据库
+例如，如果有一个本地服务器，并且该服务器中包含一个名为 testdb 的数据库****
 ```bash
 pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb -f testdb.dump
 ```
@@ -72,7 +72,7 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 
 - 默认情况下应该已经完成，但需打开转储文件来验证 create index 语句是否在插入数据之后。 如果不是这种情况，请将 create index 语句移动到插入的数据之后。
 
-- 使用 -Fc 和 -j *#* 交换机进行并行还原。 *#* 是目标服务器上的内核数。 你还可以尝试将 *#* 设置为目标服务器内核数的两倍，以查看产生的影响。 例如：
+- 使用开关 -Fc 和 -j*#* 进行还原以并行化还原。 *#* 是目标服务器上的内核数。 您还可以尝试将*#* 目标服务器的内核数设置为两倍，以查看影响。 例如：
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
@@ -90,5 +90,5 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 请记住先在测试环境中测试和验证这些命令，然后再将其用于生产。
 
 ## <a name="next-steps"></a>后续步骤
-- 若要使用导出和导入迁移 PostgreSQL 数据库，请参阅[使用导入和导出迁移 PostgreSQL 数据库](howto-migrate-using-export-and-import.md)。
+- 要使用导出和导入迁移 PostgreSQL 数据库，请参阅[使用导出和导入迁移 PostgreSQL 数据库](howto-migrate-using-export-and-import.md)。
 - 有关将数据库迁移到 Azure Database for PostgreSQL 的详细信息，请参阅[数据库迁移指南](https://aka.ms/datamigration)。

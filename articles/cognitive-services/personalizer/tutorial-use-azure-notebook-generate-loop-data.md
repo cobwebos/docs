@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: diberry
 ms.openlocfilehash: 03e8b658f7edf4640d738e5ea3af84953185d0f5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76986829"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>教程：在 Azure Notebook 中使用个性化体验创建服务
@@ -64,7 +64,7 @@ ms.locfileid: "76986829"
 > 这只是一种模拟，因此奖励算法非常简单。 在真实场景中，该算法应使用业务逻辑，并可能需要权衡客户体验的各个方面来确定奖励评分。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 一个 [Azure Notebook](https://notebooks.azure.com/) 帐户。
 * 一个 [Azure 个性化体验创建服务资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)。

@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: eb4e7907c3dcffed035307c2084160ce6051be13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98b21969ce86f84b20fbe78dbdf3002769ef65f5
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409943"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387863"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure 突触分析的数据发现&分类
 
@@ -89,17 +89,11 @@ ms.locfileid: "79409943"
 
 4. 要下载 Excel 格式的报表，请单击窗口顶部菜单中的“导出”选项****。
 
-   ![导出到 Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
-
 5. <a id="step-5"></a>要开始对数据进行分类，请单击窗口顶部的“分类”选项卡****。
-
-    ![对数据进行分类](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
 6. 分类引擎扫描数据库，以寻找包含潜在敏感数据的列，并提供**建议的列分类**列表。 查看并应用分类建议：
 
-   - 要查看建议的列分类列表，请单击窗口底部的“建议”面板：
-
-      ![对数据进行分类](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
+   - 要查看建议的列分类列表，请单击窗口底部的建议面板
 
    - 查看建议列表 - 要接受特定列的建议，请选中相关行左侧列中的复选框。 还可以选中建议表标头中的复选框，将所有建议标记为“接受”**。
 
@@ -107,21 +101,15 @@ ms.locfileid: "79409943"
 
    - 要应用所选建议，请单击蓝色的“接受所选建议”按钮****。
 
-      ![应用建议](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
-
 7. 此外，还可以手动对列进行分类，或基于建议分类：****
 
    - 单击窗口顶部菜单中的“添加分类”****。
-
-      ![手动添加分类](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
    - 在打开的上下文窗口中，选择要分类的“架构”>“表”>“列”，并选择信息类型和敏感度标签。 然后单击上下文窗口底部的蓝色“添加分类”按钮****。
 
       ![选择要进行分类的列](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
 8. 要完成分类，并永久地使用新分类元数据标记数据库列，请在窗口顶部菜单中单击“保存”****。
-
-   ![保存](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
 ## <a name="auditing-access-to-sensitive-data"></a><a id="subheading-3"></a>审核对敏感数据的访问
 

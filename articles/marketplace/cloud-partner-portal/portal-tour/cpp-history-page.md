@@ -1,19 +1,18 @@
 ---
-title: Azure Marketplace 的审核历史记录页
-description: Azure Marketplace 云合作伙伴门户中的 "审核历史记录" 页的概述。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Azure 应用商店的审核历史记录页
+description: Azure 应用商店云合作伙伴门户中的审核历史记录页面概述。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: pabutler
-ms.openlocfilehash: a09eca891c434a6bd836269908c3e2cf37fbd3f5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: cd9577a4bcdb1914ac0a7a23e4a98c31f6e43030
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821556"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288897"
 ---
 # <a name="audit-history-page"></a>审核历史记录页面
 
@@ -22,7 +21,7 @@ ms.locfileid: "73821556"
 
 ## <a name="example-page"></a>示例页
 
-下图显示了根据字符串  **筛选的**审核历史记录`contoso`页面。
+下图显示了根据字符串 `contoso` 筛选的**审核历史记录**页面。
 
 ![审核历史记录页面](./media/audit-history-page1.png)
 

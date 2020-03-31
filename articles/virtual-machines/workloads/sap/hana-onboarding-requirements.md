@@ -14,10 +14,10 @@ ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617009"
 ---
 # <a name="onboarding-requirements"></a>加入要求
@@ -32,7 +32,7 @@ ms.locfileid: "77617009"
 
 **网络连接**
 
-- 本地到 Azure 之间的 ExpressRoute：若要将本地数据中心连接到 Azure，请确保从 ISP 订购至少 1 Gbps 的连接。 HANA 大型实例单元与 Azure 之间的连接也使用 ExpressRoute 技术。 HANA 大型实例单元与 Azure 之间的此 ExpressRoute 连接包含在 HANA 大型实例单元的价格中，其中包括此特定 ExpressRoute 线路的所有数据流入和流出费用。 因此，作为客户，在本地与 Azure 之间的 ExpressRoute 链接以外，不会产生额外的成本。
+- 本地到 Azure 之间的 ExpressRoute：若要将本地数据中心连接到 Azure，请确保从 ISP 订购至少 1 Gbps 的连接。 HANA 大型实例单元与 Azure 之间的连接也使用 ExpressRoute 技术。 HANA 大型实例单元与 Azure 之间的此 ExpressRoute 连接包含在 HANA 大型实例单元的价格中，其中包括此特定 ExpressRoute 线路的所有数据流入和流出费用。 因此，您作为客户，除了本地和 Azure 之间的 ExpressRoute 链接之外，不会遇到额外费用。
 
 **操作系统**
 
@@ -48,7 +48,7 @@ ms.locfileid: "77617009"
    > Microsoft 提供的操作系统未向 Red Hat 注册。 它未连接到 Red Hat 订阅管理器实例。
 
 - 在 Azure 中的 VM 上部署的 Red Hat 订阅管理器。 Red Hat 订阅管理器使得 Azure 上的 SAP HANA（大型实例）能够由 Red Hat 进行注册并相应地进行更新。 （Azure 大型实例模具上部署的租户内没有直接 Internet 访问。）
-- SAP 要求拥有支持与 Linux 提供程序的协定。 此要求不清除 HANA 大型实例或这一事实的解决方案，在 Azure 中的运行的 Linux。 与不同的 Linux Azure 库映像，一些服务费未包含在 HANA 大型实例解决方案产品/服务。 你负责履行 SAP 与 Linux 分发服务器之间的支持合同的要求。 
+- SAP 要求拥有支持与 Linux 提供程序的协定。 此要求不清除 HANA 大型实例或这一事实的解决方案，在 Azure 中的运行的 Linux。 与不同的 Linux Azure 库映像，一些服务费未包含在 HANA 大型实例解决方案产品/服务**。 你负责履行 SAP 与 Linux 分发服务器之间的支持合同的要求。 
    - 对于 SUSE Linux，请查看 [SAP 说明 #1984787 - SUSE Linux Enterprise Server 12：安装说明](https://launchpad.support.sap.com/#/notes/1984787)和 [SAP 说明 #1056161 - SUSE 优先支持 SAP 应用程序](https://launchpad.support.sap.com/#/notes/1056161)中的支持合同要求。
    - 对于 Red Hat Linux，需要具有正确的订阅级别，其中包括支持和服务（HANA 大型实例的操作系统的更新）。 Red Hat 建议使用 Red Hat Enterprise Linux 订阅实现 SAP 解决方案。 请参阅 https://access.redhat.com/solutions/3082481。 
 
@@ -61,7 +61,7 @@ ms.locfileid: "77617009"
 > 对于类型 II 设备，目前仅支持 SLES 12 SP2 OS 版本。 
 
 
-**Database**
+**数据库**
 
 - SAP HANA（平台版或企业版）的许可证和软件安装组件。
 

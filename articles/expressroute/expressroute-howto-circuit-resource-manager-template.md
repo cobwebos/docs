@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute 模板：创建 ExpressRoute 线路
+title: Azure 快速路由模板：创建快速路由电路
 description: 创建、预配、删除和取消预配 ExpressRoute 线路。
 services: expressroute
 author: cherylmc
@@ -9,24 +9,24 @@ ms.date: 11/13/2019
 ms.author: cherylmc
 ms.reviewer: ganesr
 ms.openlocfilehash: 78da84a462566cca1a2800174849159ace8dd6dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981138"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ExpressRoute 线路
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
-> * [PowerShell](expressroute-howto-circuit-arm.md)
+> * [电源外壳](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager 模板](expressroute-howto-circuit-resource-manager-template.md)
 > * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [PowerShell（经典）](expressroute-howto-circuit-classic.md)
+> * [电源外壳（经典）](expressroute-howto-circuit-classic.md)
 >
 
-了解如何通过使用 Azure PowerShell 部署 Azure 资源管理器模板来创建 ExpressRoute 线路。 有关开发资源管理器模板的详细信息，请参阅[资源管理器文档](/azure/azure-resource-manager/)和[模板参考](/azure/templates/microsoft.network/expressroutecircuits)。
+了解如何使用 Azure PowerShell 部署 Azure 资源管理器模板，以便创建 ExpressRoute 线路。 有关开发资源管理器模板的详细信息，请参阅[资源管理器文档](/azure/azure-resource-manager/)和[模板参考](/azure/templates/microsoft.network/expressroutecircuits)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -34,17 +34,17 @@ ms.locfileid: "75981138"
 * 确保有权创建新的网络资源。 如果没有适当的权限，请与帐户管理员联系。
 * 可以在开始前[观看一段视频](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)，以更好地了解步骤。
 
-## <a name="create"></a>创建和预配 ExpressRoute 线路
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>创建和预配 ExpressRoute 线路
 
-[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)具有资源管理器模板的良好集合。 使用[现有的模板](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/)之一来创建 ExpressRoute 线路。
+[Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)有许多资源管理器模板。 请使用某个[现有模板](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/)来创建 ExpressRoute 线路。
 
 [!code-json[create-azure-expressroute-circuit](~/quickstart-templates/101-expressroute-circuit-create/azuredeploy.json)]
 
-若要查看更多相关模板，请[在此处](https://azure.microsoft.com/resources/templates/?term=expressroute)选择。
+若要查看更多相关的模板，请在[此处](https://azure.microsoft.com/resources/templates/?term=expressroute)进行选择。
 
-若要通过部署模板来创建 ExpressRoute 线路：
+若要通过部署模板来创建 ExpressRoute 线路，请执行以下操作：
 
-1. 从后续代码块中选择“试用”，然后按说明登录到 Azure Cloud Shell。
+1. 从后续代码块中选择“试用”，然后按说明登录到 Azure Cloud Shell。****
 
     ```azurepowershell-interactive
     $circuitName = Read-Host -Prompt "Enter a circuit name"
@@ -64,35 +64,35 @@ ms.locfileid: "75981138"
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **SKU 层**确定 ExpressRoute 线路是[本地](expressroute-faqs.md#expressroute-local)、标准还是[高级](expressroute-faqs.md#expressroute-premium)。 您可以指定*本地*、*标准*或*高级*。
-   * **SKU 系列**确定计费类型。 可以指定“Metereddata”以获取数据流量套餐，指定“Unlimiteddata”以获取无限制流量套餐。 可以将计费类型从“Metereddata”更改为“Unlimiteddata”，但不能将类型从“Unlimiteddata”更改为“Metereddata”。 *本地*线路仅*Unlimiteddata* 。
-   * “对等互连位置”是与 Microsoft 建立对等互连的实际位置。
+   * **SKU 层**确定 ExpressRoute 线路是[本地](expressroute-faqs.md#expressroute-local)线路、标准线路还是[高级](expressroute-faqs.md#expressroute-premium)线路。 可以指定“本地”**、“标准”** 或“高级”**。
+   * **SKU 系列**确定计费类型。 可以指定“Metereddata”** 以获取数据流量套餐，指定“Unlimiteddata”** 以获取无限制流量套餐。 可以将计费类型从“Metereddata”** 更改为“Unlimiteddata”**，但不能将类型从“Unlimiteddata”** 更改为“Metereddata”**。 “本地”** 线路仅为 Unlimiteddata**。
+   * “对等互连位置”**** 是与 Microsoft 建立对等互连的实际位置。
 
      > [!IMPORTANT]
      > “对等互连位置”指明了与 Microsoft 建立对等互连的[实际位置](expressroute-locations.md)。 此位置与“Location”属性**没有**关系，后者指的是 Azure 网络资源提供商所在的地理位置。 尽管两者之间没有关系，但最好是选择地理上与线路对等互连位置靠近的网络资源提供商。
 
-    资源组名称是附加了**rg**的服务总线命名空间名称。
+    资源组名称是追加了 **rg** 的服务总线命名空间名称。
 
-2. 选择“复制”以复制 PowerShell 脚本。
-3. 右键单击 shell 控制台并选择“粘贴”。
+2. 选择“复制”以复制 PowerShell 脚本。****
+3. 右键单击 shell 控制台并选择“粘贴”****。
 
 创建事件中心需要花费片刻时间。
 
-Azure PowerShell 用于在本教程中部署模板。 有关其他模板部署方法，请参阅：
+在本教程中，请使用 Azure PowerShell 来部署模板。 如需其他模板部署方法，请参阅：
 
-* [使用 Azure 门户](../azure-resource-manager/templates/deploy-portal.md)。
-* [使用 Azure CLI](../azure-resource-manager/templates/deploy-cli.md)。
-* [使用 REST API](../azure-resource-manager/templates/deploy-rest.md)。
+* [通过使用 Azure 门户](../azure-resource-manager/templates/deploy-portal.md)。
+* [通过使用 Azure CLI](../azure-resource-manager/templates/deploy-cli.md)。
+* [通过使用 REST API](../azure-resource-manager/templates/deploy-rest.md)。
 
-## <a name="delete"></a>取消设置和删除 ExpressRoute 线路
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>取消设置和删除 ExpressRoute 线路
 
-可以通过选择“删除”图标来删除 ExpressRoute 线路。 请注意以下信息：
+可以通过选择“删除”**** 图标来删除 ExpressRoute 线路。 请注意以下信息：
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接。 如果此操作失败，请检查是否有虚拟网络链接到了该线路。
-* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们一端取消预配线路。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
-* 如果服务提供商已取消设置线路（服务提供商预配状态设置为“未预配”），可以删除线路。 这样就会停止对线路的计费。
+* 如果 ExpressRoute 电路服务提供商预配状态为**预配**或**预配**，则必须与服务提供商合作，取消在其一侧的电路预配。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
+* 如果服务提供者已取消预配电路（服务提供商预配状态设置为**未预配**），则可以删除该电路。 这样就会停止对线路的计费。
 
-可以通过运行以下 PowerShell 命令来删除 ExpressRoute 线路：
+可以通过运行以下 PowerShell 命令删除 ExpressRoute 线路：
 
 ```azurepowershell-interactive
 $circuitName = Read-Host -Prompt "Enter the same circuit name that you used earlier"

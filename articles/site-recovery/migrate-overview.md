@@ -8,16 +8,20 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257935"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388893"
 ---
 # <a name="about-migration"></a>关于迁移
 
 阅读此文快速了解 [Azure Site Recovery](site-recovery-overview.md) 服务如何帮助迁移计算机。 
+
+> [!TIP]
+> 现在，应使用 Azure 迁移服务将 VM 和服务器迁移到 Azure，而不是 Azure 站点恢复服务。 [了解详情](../migrate/migrate-services-overview.md)。
+
 
 下面是可以使用 Site Recovery 迁移的内容：
 

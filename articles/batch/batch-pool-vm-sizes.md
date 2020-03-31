@@ -15,10 +15,10 @@ ms.date: 09/12/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: c18190ec5e5d079d51630a976681717a78a46e00
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087044"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
@@ -27,57 +27,57 @@ ms.locfileid: "77087044"
 
 选择 VM 大小时有几个例外和限制：
 
-* 批处理中不支持某些 VM 系列或 VM 大小。
+* Batch 不支持某些 VM 系列或 VM 大小。
 * 某些 VM 大小受到限制，需要专门启用才能进行分配。
 
 ## <a name="supported-vm-series-and-sizes"></a>支持的 VM 系列和大小
 
 ### <a name="pools-in-virtual-machine-configuration"></a>虚拟机配置中的池
 
-虚拟机配置中的 Batch 池几乎支持所有 VM 大小（[Linux](../virtual-machines/linux/sizes.md)、 [Windows](../virtual-machines/windows/sizes.md)）。 请参阅下表以了解有关支持的大小和限制的详细信息。
+虚拟机配置中的 Batch 池支持几乎所有的 VM 大小（[Linux](../virtual-machines/linux/sizes.md)、[Windows](../virtual-machines/windows/sizes.md)）。 请查看下表以了解有关支持的大小和限制的详细信息。
 
 | VM 系列  | 支持的大小 |
 |------------|---------|
-| 基本 A | 除 Basic_A0 （A0）*以外*的所有大小 |
-| A | 除 Standard_A0*以外*的所有大小 |
+| 基本 A | 除 Basic_A0 (A0) 外的所有大小** |
+| A | 除 Standard_A0 外的所有大小** |
 | Av2 | 所有大小 |
 | B | 无 |
 | DC | 无 |
-| Dv2、DSv2 | 所有大小 |
-| Dv3、Dsv3 | 所有大小 |
-| Dav4, Dasv4 | 无-尚不可用 |
-| Ev3、Esv3 | 除 E64is_v3 和 E64i_v3 之外的所有大小 |
-| Eav4, Easv4 | 无-尚不可用 |
-| F、Fs | 所有大小 |
+| Dv2， DSv2 | 所有大小 |
+| Dv3， Dsv3 | 所有大小 |
+| 达夫4， 达斯夫4 | 无 - 尚未可用 |
+| Ev3， Esv3 | 除E64is_v3和E64i_v3外的所有尺寸 |
+| Eav4， Easv4 | 无 - 尚未可用 |
+| F， Fs | 所有大小 |
 | Fsv2 | 所有大小 |
-| G，Gs | 所有大小 |
+| G， Gs | 所有大小 |
 | H | 所有大小 |
-| HB-ACCT-WC<sup>1</sup> | 所有大小 |
+| HB<sup>1</sup> | 所有大小 |
 | HBv2<sup>1</sup> | 所有大小 |
 | HC<sup>1</sup> | 所有大小 |
 | LS | 所有大小 |
-| Lsv2 | 无-尚不可用 |
-| M<sup>1</sup> | 除 M64-16ms、M64m、M128、M128m 之外的所有大小 |
-| Mv2 | 无-尚不可用 |
+| Lsv2 | 无 - 尚未可用 |
+| M<sup>1</sup> | 除 M64、M64m、M128、M128m 外，所有尺寸 |
+| Mv2 | 无 - 尚未可用 |
 | NC | 所有大小 |
 | NCv2<sup>1</sup> | 所有大小 |
 | NCv3<sup>1</sup> | 所有大小 |
 | ND<sup>1</sup> | 所有大小 |
-| NDv2<sup>1</sup> | 无-尚不可用 |
+| NDv2<sup>1</sup> | 无 - 尚未可用 |
 | NV | 所有大小 |
 | NVv3<sup>1</sup> | 所有大小 |
 | NVv4 | 无 |
 | SAP HANA | 无 |
 
-<sup>1</sup>可以在虚拟机配置的批处理池中分配这些 VM 大小，但必须创建新的 Batch 帐户并请求特定的[配额增加](batch-quota-limit.md#increase-a-quota)。 当批处理帐户完全支持每个 VM 系列的 vCPU 配额时，将删除此限制。
+<sup>1</sup>这些 VM 大小可以在虚拟机配置中的批处理池中分配，但您必须创建新的 Batch 帐户并请求特定的[配额增加](batch-quota-limit.md#increase-a-quota)。 一旦批处理帐户完全支持每个 VM 系列的 vCPU 配额，将删除此限制。
 
 ### <a name="pools-in-cloud-service-configuration"></a>云服务配置中的池
 
-云服务配置中的 Batch 池支持[云服务的所有 VM 大小](../cloud-services/cloud-services-sizes-specs.md) **，如下**所示：
+云服务配置中的 Batch 池支持所有[云服务的 VM 大小，但以下项](../cloud-services/cloud-services-sizes-specs.md) **除外**：
 
 | VM 系列  | 不支持的大小 |
 |------------|-------------------|
-| A 系列   | 特小型       |
+| A 系列   | 超小       |
 | Av2 系列 | Standard_A1_v2、Standard_A2_v2、Standard_A2m_v2 |
 
 ## <a name="size-considerations"></a>大小注意事项
@@ -88,7 +88,7 @@ ms.locfileid: "77087044"
 
 * **不同任务的负载级别** - 池中的所有节点都是相同大小。 如果打算运行具有不同系统要求和/或负载级别的应用程序，建议使用不同的池。
 
-* **区域可用性**-VM 系列或大小可能不适用于创建 Batch 帐户的区域。 若要检查大小是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/services/)。
+* **区域可用性** - 某个 VM 系列或大小在创建 Batch 帐户的区域中可能无法使用。 若要检查大小是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/regions/services/)。
 
 * **配额** - Batch 帐户中的[核心配额](batch-quota-limit.md#resource-quotas)会限制可添加到 Batch 池的给定大小的节点数。 若要请求增加配额，请参阅[此文](batch-quota-limit.md#increase-a-quota)。 
 

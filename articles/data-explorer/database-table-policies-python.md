@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: a0fe86e2dcb802b822cb08ed0922b5da9c5cfd1c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667278"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>使用 Python 为 Azure 数据资源管理器创建数据库和表策略
@@ -21,9 +21,9 @@ ms.locfileid: "74667278"
 > * [Python](database-table-policies-python.md)
 >
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 本文介绍如何使用 Python 创建 Azure 数据资源管理器的数据库和表策略。
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 在本文中，你将使用 Python 为 Azure 数据资源管理器创建数据库和表策略。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * [测试群集和数据库](create-cluster-database-python.md)
@@ -37,11 +37,11 @@ pip install azure-mgmt-kusto
 pip install azure-kusto-data (Optional, for changing table's policies)
 ```
 
-## <a name="authentication"></a>Authentication
-为了运行本文中的示例，我们需要 Azure AD 应用程序和可访问资源的服务主体。 您可以使用相同的 Azure AD 应用程序从[测试群集和数据库](create-cluster-database-csharp.md#authentication)进行身份验证。 如果要使用不同的 Azure AD 应用程序，请参阅[创建 Azure AD 应用](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)程序以创建免费的 Azure AD 应用程序，并在订阅范围内添加角色分配。 它还演示如何获取 `Directory (tenant) ID`、`Application ID`和 `Client Secret`。 可能需要在数据库中添加新的 Azure AD 应用程序作为主体，请参阅[管理 Azure 数据资源管理器数据库权限](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)。    
+## <a name="authentication"></a>身份验证
+为了运行本文中的示例，我们需要可以访问资源的 Azure AD 应用程序和服务主体。 可以使用相同的 Azure AD 应用程序通过[测试群集和数据库](create-cluster-database-csharp.md#authentication)进行身份验证。 如果要使用其他 Azure AD 应用程序，请参阅[创建 Azure AD 应用程序](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)以创建免费的 Azure AD 应用程序并在订阅范围内添加角色分配。 它还演示如何获取 `Directory (tenant) ID`、`Application ID` 和 `Client Secret`。 可能需要将新的 Azure AD 应用程序添加为数据库中的主体，请参阅[管理 Azure 数据资源管理器数据库权限](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)。    
 
 ## <a name="alter-database-retention-policy"></a>更改数据库保留策略
-设置包含10天软删除期的保留策略。
+使用 10 天的软删除期设置保留策略。
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -74,7 +74,7 @@ poller = kustoManagementClient.databases.update(resource_group_name=resource_gro
 ```
 
 ## <a name="alter-database-cache-policy"></a>更改数据库缓存策略
-为数据库设置缓存策略，最后五天的数据将位于群集 SSD 上。
+为数据库设置缓存策略，使最后五天的数据将位于群集 SSD 上。
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -107,7 +107,7 @@ poller = kustoManagementClient.databases.update(resource_group_name=resource_gro
 ```
 
 ## <a name="alter-table-cache-policy"></a>更改表缓存策略
-为表 SSD 上最后五天的数据设置缓存策略。
+为表设置缓存策略，使最后五天的数据将位于群集 SSD 上。
 
 ```python
 from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
@@ -131,7 +131,7 @@ command = '.alter table {} policy caching '.format(table_name) +  caching_policy
 kusto_client.execute_mgmt(database_name, command)
 ```
 
-## <a name="add-a-new-principal-for-database"></a>添加数据库的新主体
+## <a name="add-a-new-principal-for-database"></a>为数据库添加新主体
 添加新的 Azure AD 应用程序作为数据库的管理员主体
 
 ```python
@@ -168,4 +168,4 @@ kustoManagementClient.databases.add_principals(resource_group_name=resource_grou
 
 ## <a name="next-steps"></a>后续步骤
 
-* [阅读有关数据库和表策略的详细信息](https://docs.microsoft.com/azure/kusto/management/policies)
+* [阅读有关数据库和表策略的更多信息](https://docs.microsoft.com/azure/kusto/management/policies)

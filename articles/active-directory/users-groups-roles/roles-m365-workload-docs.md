@@ -1,5 +1,5 @@
 ---
-title: 跨 Microsoft 365 services 的管理角色文档-Azure AD |Microsoft Docs
+title: 跨 Microsoft 365 服务的管理员角色文档 - Azure AD |微软文档
 description: 在 Azure Active Directory 中查找针对 Microsoft 365 服务的管理员角色的内容和 API 参考
 services: active-directory
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 430b65217da33185cd3b5c235fb148f3350e1bfe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74024455"
 ---
 # <a name="administrator-roles-for-microsoft-365-services"></a>Microsoft 365 服务的管理员角色
@@ -30,20 +30,20 @@ ms.locfileid: "74024455"
 Microsoft 365 服务 | 角色内容 | API 内容
 ---------------------- | ------------------ | -----------------
 Office 365 和 Microsoft 365 业务计划中的管理员角色 | [Office 365 管理员角色](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | 不可用
-Azure Active Directory (Azure AD) 和 Azure AD 标识保护| [Azure AD 管理员角色](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
+Azure Active Directory (Azure AD) 和 Azure AD 标识保护| [Azure AD 管理员角色](directory-assign-admin-roles.md) | [图形 API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 Exchange Online| [Exchange 基于角色的访问控制](https://docs.microsoft.com/exchange/understanding-role-based-access-control-exchange-2013-help) |  [PowerShell for Exchange](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[提取角色分配](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
-SharePoint Online | [Azure AD 管理员角色](directory-assign-admin-roles.md)<br>还有[关于 Office 365 中的 SharePoint 管理员角色](https://docs.microsoft.com/sharepoint/sharepoint-admin-role) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Teams/Skype for Business | [Azure AD 管理员角色](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
+SharePoint Online | [Azure AD 管理员角色](directory-assign-admin-roles.md)<br>还有[关于 Office 365 中的 SharePoint 管理员角色](https://docs.microsoft.com/sharepoint/sharepoint-admin-role) | [图形 API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
+Teams/Skype for Business | [Azure AD 管理员角色](directory-assign-admin-roles.md) | [图形 API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 安全与合规中心（Office 365 高级威胁防护、Exchange Online Protection、信息保护） | [Office 365 管理员角色](https://docs.microsoft.com/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[提取角色分配](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
-安全功能分数 | [Azure AD 管理员角色](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
+安全功能分数 | [Azure AD 管理员角色](directory-assign-admin-roles.md) | [图形 API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 合规性管理器 | [合规性管理器角色](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | 不可用
-Azure 信息保护 | [Azure AD 管理员角色](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
+Azure 信息保护 | [Azure AD 管理员角色](directory-assign-admin-roles.md) | [图形 API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 Microsoft Cloud App Security | [基于角色的访问控制](https://docs.microsoft.com/cloud-app-security/manage-admins) | [API 参考](https://docs.microsoft.com/cloud-app-security/api-tokens) 
 Azure 高级威胁防护 | [Azure ATP 角色组](https://docs.microsoft.com/azure-advanced-threat-protection/atp-role-groups) | 不可用
 Windows Defender 高级威胁防护 | [Windows Defender ATP 基于角色的访问控制](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/rbac-windows-defender-advanced-threat-protection) | 不可用
-Privileged Identity Management | [Azure AD 管理员角色](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
-Intune | [Intune 基于角色的访问控制](https://docs.microsoft.com/intune/role-based-access-control) | [Graph API](https://docs.microsoft.com/graph/api/resources/intune-rbac-conceptual?view=graph-rest-beta)<br>[提取角色分配](https://docs.microsoft.com/graph/api/intune-rbac-roledefinition-list?view=graph-rest-beta)
-托管桌面 | [Azure AD 管理员角色](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
+Privileged Identity Management | [Azure AD 管理员角色](directory-assign-admin-roles.md) | [图形 API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
+Intune | [Intune 基于角色的访问控制](https://docs.microsoft.com/intune/role-based-access-control) | [图形 API](https://docs.microsoft.com/graph/api/resources/intune-rbac-conceptual?view=graph-rest-beta)<br>[提取角色分配](https://docs.microsoft.com/graph/api/intune-rbac-roledefinition-list?view=graph-rest-beta)
+托管桌面 | [Azure AD 管理员角色](directory-assign-admin-roles.md) | [图形 API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[提取角色分配](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 
 ## <a name="next-steps"></a>后续步骤
 

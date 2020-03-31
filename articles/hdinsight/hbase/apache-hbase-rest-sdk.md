@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
 ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74806654"
 ---
-# <a name="use-the-net-sdk-for-apache-hbase"></a>使用 .NET SDK for Apache HBase
+# <a name="use-the-net-sdk-for-apache-hbase"></a>将 .NET SDK 用于 Apache HBase
 
 [Apache HBase](apache-hbase-overview.md) 提供两种主要的数据处理选择：[Apache Hive 查询，以及调用 HBase 的 RESTful API](apache-hbase-tutorial-get-started-linux.md)。 可以通过 `curl` 命令或类似的实用工具直接使用 REST API。
 
@@ -38,11 +38,11 @@ client = new HBaseClient(credentials);
 
 将 CLUSTERNAME 替换为 HDInsight HBase 群集名称，将 USERNAME 和 PASSWORD 替换为在创建群集时指定的 Apache Hadoop 凭据。 默认的 Hadoop 用户名为 **admin**。
 
-## <a name="create-a-new-table"></a>新建表
+## <a name="create-a-new-table"></a>创建新表
 
-HBase 在表中存储数据。 表包含 *Rowkey*、主键以及一个或多个名为“列系列”的列组。 每个表中的数据按 Rowkey 范围水平分布到多个区域。 每个区域都有一个开始键和结束键。 一个表可以有一个或多个区域。 随着表中数据的增长，HBase 会将大区域拆分为较小的区域。 区域存储在区域服务器中，一个区域服务器可以存储多个区域。
+HBase 在表中存储数据。 表包含 *Rowkey*、主键以及一个或多个名为“列系列”的列组。** 每个表中的数据按 Rowkey 范围水平分布到多个区域。** 每个区域都有一个开始键和结束键。 一个表可以有一个或多个区域。 随着表中数据的增长，HBase 会将大区域拆分为较小的区域。 区域存储在区域服务器** 中，一个区域服务器可以存储多个区域。
 
-数据以物理方式存储在 *HFile* 中。 单个 HFile 包含的数据适用于一个表、一个区域和一个列系列。 HFile 中的行在存储时按 Rowkey 排序。 每个 HFile 都有一个B+ 树索引，用于快速检索行。
+数据以物理方式存储在 *HFile* 中。 单个 HFile 包含的数据适用于一个表、一个区域和一个列系列。 HFile 中的行在存储时按 Rowkey 排序。 每个 HFile 都有一个 ** B+ 树索引，用于快速检索行。
 
 若要创建新表，请指定 `TableSchema` 和列。 以下代码检查“RestSDKTable”表是否已存在 - 如果不存在，则会创建该表。
 
@@ -58,7 +58,7 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 }
 ```
 
-此新表有两列系列： t1 和 t2。 由于列系列单独存储在不同的 HFile 中，因此对于频繁查询的数据，应该有一个单独的列系列。 在下面的[插入数据](#insert-data)示例中，列添加到 t1 列系列中。
+此新表具有两列族，t1 和 t2。 由于列系列单独存储在不同的 HFile 中，因此对于频繁查询的数据，应该有一个单独的列系列。 在下面的[插入数据](#insert-data)示例中，列添加到 t1 列系列中。
 
 ## <a name="delete-a-table"></a>删除表
 
@@ -112,9 +112,9 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase 实现了[Cloud BigTable](https://cloud.google.com/bigtable/)，因此数据格式如下图所示：
+HBase 实现[云 BigTable，](https://cloud.google.com/bigtable/)因此数据格式类似于下图：
 
-![Apache HBase 示例数据输出](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
+![阿帕奇 HBase 示例数据输出](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
 ## <a name="select-data"></a>选择数据
 

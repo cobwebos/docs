@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
 ms.openlocfilehash: 9c627c3e597fdcd3859ce02ea208fc7a8b5d612b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822864"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL 数据库活动异地复制管理云应用程序的滚动升级
@@ -91,7 +91,7 @@ ms.locfileid: "73822864"
 
 1. 在主要区域中部署 Web 应用的过渡环境 (6)。
 2. 在主 Azure 区域中创建辅助数据库 (7)。 配置 Web 应用的过渡环境以便与它建立连接。 
-3. 通过在主要区域中复制辅助数据库，在备份区域中创建另一异地冗余的辅助数据库。 （此方法称为“链接的异地复制”）(8)。
+3. 通过在主要区域中复制辅助数据库，在备份区域中创建另一异地冗余的辅助数据库。 （此方法称为“链接的异地复制”）(8)。**
 4. 在备份区域中部署 Web 应用实例的过渡环境 (9)，并将其配置为连接在 (8) 中创建的异地冗余辅助数据库。
 
 > [!NOTE]
@@ -144,14 +144,14 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 此方法的主要缺点是它需要每个应用程序组件的双倍冗余，因此会导致更高的成本。 它还涉及更复杂的工作流。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文中所述的两种升级方法具有不同的复杂性和成本，但它们都注重于最小化用户仅限于执行只读操作的时间。 该时间由升级脚本的持续时间直接定义。 该时间不依赖于数据库大小、所选的服务层级、网站配置或你无法轻松控制的其他因素。 所有准备步骤都从升级步骤中分离出来，不影响生产应用程序。 升级脚本的效率是决定升级期间的用户体验的关键因素。 因此，改进体验的最佳做法是将工作重心放在尽可能提高升级脚本的效率上。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)。
-* 若要了解 Azure SQL 数据库活动异地复制，请参阅[使用活动异地复制创建可读辅助数据库](sql-database-active-geo-replication.md)。
+* 有关业务连续性概述和方案，请参阅[业务连续性概述](sql-database-business-continuity.md)。
+* 要了解 Azure SQL 数据库的活动异地复制，请参阅[使用活动异地复制创建可读的辅助数据库](sql-database-active-geo-replication.md)。
 * 若要了解 Azure SQL 数据库自动故障转移组，请参阅[使用自动故障转移组实现多个数据库的透明、协调式故障转移](sql-database-auto-failover-group.md)。
 * 若要了解 Azure 应用服务中的过渡环境，请参阅[在 Azure 应用服务中设置过渡环境](../app-service/deploy-staging-slots.md)。
 * 若要了解 Azure 流量管理器配置文件，请参阅[管理 Azure 流量管理器配置文件](../traffic-manager/traffic-manager-manage-profiles.md)。

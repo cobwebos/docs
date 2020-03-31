@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: swmachan
 ms.openlocfilehash: ecb42d200eb8808f6bfa4cfb91e98909e350038b
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118608"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教程：使用 WPF 创建翻译应用
@@ -44,7 +44,7 @@ ms.locfileid: "77118608"
 | 文本翻译 | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 检测输入文本的语言。 包含检测置信度评分。 |
 | 必应拼写检查 | [拼写检查](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | 更正拼写错误以提高翻译准确度。 |
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在继续之前，需要准备好以下各项：
 

@@ -1,6 +1,6 @@
 ---
-title: Web SDK 支持的浏览器 |Microsoft Azure 映射
-description: 在本文中，你将了解 Microsoft Azure Map Web SDK 支持的浏览器，以及如何检查浏览器是否为受支持的浏览器。
+title: 支持 Web SDK 的浏览器 |微软 Azure 地图
+description: 在本文中，您将了解 Microsoft Azure 地图 Web SDK 受支持的浏览器以及如何检查浏览器是否受支持的浏览器。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988781"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支持的浏览器
 
-Azure Maps Web SDK 提供了名为[isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-)的 helper 函数。 此函数检测 web 浏览器是否具有支持加载和呈现地图控件所需的最小 WebGL 功能集。 下面的示例演示如何使用函数：
+Azure 地图 Web SDK 提供了一个称为[atlas.is 支持的](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-)帮助器函数。 此功能检测 Web 浏览器是否具有支持加载和呈现地图控件所需的最小 WebGL 功能集。 下面是如何使用 函数的示例：
 
 ```JavaScript
 if (!atlas.isSupported()) {
@@ -29,52 +29,52 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>桌面型
+## <a name="desktop"></a>桌面
 
-Azure Maps Web SDK 支持以下桌面浏览器：
+Azure 映射 Web SDK 支持以下桌面浏览器：
 
-- Microsoft Edge （当前和以前的版本）
-- Google Chrome （当前版本和以前版本）
-- Mozilla Firefox （当前和以前的版本）
-- Apple Safari （Mac OS X）（当前和以前的版本）
+- 微软边缘（当前版本和以前的版本）
+- 谷歌Chrome（当前版本和以前的版本）
+- Mozilla 火狐（当前和以前的版本）
+- 苹果野生动物园（Mac OS X）（当前和以前的版本）
 
-另请参阅本文后面的[面向旧版浏览器](#Target-Legacy-Browsers)。
+请参阅本文后面的[目标旧版浏览器](#Target-Legacy-Browsers)。
 
-## <a name="mobile"></a>移动
+## <a name="mobile"></a>移动电话
 
-Azure Maps Web SDK 支持以下移动浏览器：
+Azure 地图 Web SDK 支持以下移动浏览器：
 
 - Android
-  - Android 6.0 及更高版本上的当前 Chrome 版本
-  - Android 6.0 及更高版本上的 Chrome Web 视图
+  - Android 6.0 及更高版本的 Chrome
+  - 在 Android 6.0 及更高版本上查看 Chrome 网络视图
 - iOS
-  - 当前和以前的 iOS 主版本上的移动 Safari
-  - 当前和以前的 iOS 主版本上的 UIWebView 和 WKWebView
-  - IOS 的当前版本 Chrome
+  - iOS 当前和以前的主要版本的移动 Safari
+  - UIWebView 和 WKWebView 在当前和以前的 iOS 主要版本上
+  - 适用于 iOS 的当前版本的 Chrome
 
 > [!TIP]
-> 如果要使用 web 视图控件在移动应用程序中嵌入地图，你可能更倾向于使用[Azure Maps WEB SDK 的 npm 包](https://www.npmjs.com/package/azure-maps-control)，而不是引用在 Azure 内容分发网络上托管的 SDK 版本。 此方法可减少加载时间，因为 SDK 已在用户的设备上，并且无需在运行时下载。
+> 如果使用 WebView 控件将地图嵌入移动应用程序中，则可能更喜欢使用 Azure 地图 Web SDK[的 npm 包](https://www.npmjs.com/package/azure-maps-control)，而不是引用 Azure 内容交付网络上托管的 SDK 版本。 此方法减少了加载时间，因为 SDK 已在用户的设备上，并且不需要在运行时下载。
 
 ## <a name="nodejs"></a>Node.js
 
-Node.js 还支持以下 Web SDK 模块：
+Node.js 中还支持以下 Web SDK 模块：
 
-- 服务模块（[文档](how-to-use-services-module.md) | [npm 模块](https://www.npmjs.com/package/azure-maps-rest)）
+- 服务模块 （[文档](how-to-use-services-module.md) | [npm 模块](https://www.npmjs.com/package/azure-maps-rest)）
 
-## <a name="Target-Legacy-Browsers"></a>定位旧版浏览器
+## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>目标旧版浏览器
 
-你可能想要面向不支持 WebGL 的旧版浏览器，或仅限对其的支持。 在这种情况下，我们建议你结合使用 Azure Maps 服务和开源地图控件，如[Leaflet](https://leafletjs.com/)。 下面是一个示例：
+您可能希望将目标对准不支持 WebGL 或仅对 WebGL 支持有限的较旧的浏览器。 在这种情况下，我们建议您将 Azure 地图服务与开源地图控件（如["传单"）](https://leafletjs.com/)一起使用。 下面是一个示例：
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps + Leaflet" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的笔<a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + Leaflet</a>按 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
+<iframe height="500" style="width: 100%;" scrolling="no" title="Azure 地图 + 传单" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+在<a href='https://codepen.io'>CodePen</a>上，请参阅按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （） 显示的笔<a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure 地图和传单</a>。
 </iframe>
 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 Azure Maps Web SDK 的详细信息：
+了解有关 Azure 地图 Web SDK 的更多内容：
 
 > [!div class="nextstepaction"]
 > [地图控件](how-to-use-map-control.md)

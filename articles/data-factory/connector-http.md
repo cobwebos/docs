@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: d6305a6e68f435c009fdfdea371e88f4a73c3d92
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 1ca439d1a82e3cdbe2cc0274cf63653d39048057
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830388"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532546"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 终结点复制数据
 
@@ -37,24 +37,24 @@ ms.locfileid: "75830388"
 以下活动支持此 HTTP 连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
-- [Lookup 活动](control-flow-lookup-activity.md)
+- [查找活动](control-flow-lookup-activity.md)
 
 可以将数据从 HTTP 源复制到任何支持的接收器数据存储。 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
 
 可以使用此 HTTP 连接器：
 
-- 通过 HTTP GET 或 POST 方法，从 HTTP/S 终结点检索数据。
-- 使用以下某种身份验证类型检索数据：Anonymous、Basic、Digest、Windows 或 ClientCertificate。
+- 通过 HTTP GET 或 POST 方法，从 HTTP/S 终结点检索数据********。
+- 使用以下某种身份验证类型检索数据：Anonymous、Basic、Digest、Windows 或 ClientCertificate********************。
 - 按原样复制 HTTP 响应，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析该响应。
 
 > [!TIP]
 > 若要先为数据检索测试 HTTP 请求，再在数据工厂中配置 HTTP 连接器，请了解标头和正文的 API 规范要求。 可以使用 Postman 或 Web 浏览器等工具进行验证。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -64,22 +64,22 @@ ms.locfileid: "75830388"
 
 HTTP 链接的服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 HttpServer。 | 是 |
+| type | **类型**属性必须设置为**HttpServer**。 | 是 |
 | url | Web 服务器的基 URL。 | 是 |
-| enableServerCertificateValidation | 指定连接到 HTTP 终结点时，是否启用服务器 SSL 证书验证。 HTTPS 服务器使用自签名证书时，将此属性设置为 false。 | 否<br /> （默认值为 true） |
-| authenticationType | 指定身份验证类型。 允许的值为：Anonymous、Basic、Digest、Windows 和 ClientCertificate。 <br><br> 有关这些身份验证类型的更多属性和 JSON 示例，请参阅此表格下面的部分。 | 是 |
-| connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| enableServerCertificateValidation | 指定连接到 HTTP 终结点时，是否启用服务器 SSL 证书验证。 HTTPS 服务器使用自签名证书时，将此属性设置为 false****。 | 否<br /> （默认值为**true）** |
+| authenticationType | 指定身份验证类型。 允许的值为：Anonymous、Basic、Digest、Windows 和 ClientCertificate********************。 <br><br> 有关这些身份验证类型的更多属性和 JSON 示例，请参阅此表格下面的部分。 | 是 |
+| connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>使用基本、摘要或 Windows 身份验证
 
-将 authenticationType 属性设置为 Basic、Digest 或 Windows。 除了前面部分所述的通用属性，还指定以下属性：
+将 authenticationType 属性设置为 Basic、Digest 或 Windows****************。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
 | userName | 用于访问 HTTP 终结点的用户名。 | 是 |
-| password | 用户（userName 值）的密码。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
+| password | 用户（userName 值）的密码****。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中****。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
 
 **示例**
 
@@ -107,22 +107,22 @@ HTTP 链接的服务支持以下属性：
 
 ### <a name="using-clientcertificate-authentication"></a>使用 ClientCertificate 身份验证
 
-若要使用 ClientCertificate 身份验证，将 authenticationType 属性设置为ClientCertificate。 除了前面部分所述的通用属性，还指定以下属性：
+若要使用 ClientCertificate 身份验证，将 authenticationType 属性设置为ClientCertificate********。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| embeddedCertData | Base64 编码的证书数据。 | 指定是 embeddedCertData，还是 certThumbprint。 |
-| certThumbprint | 自承载集成运行时计算机的证书存储中所安装证书的指纹。 仅当在 connectVia 属性中指定自承载类型的 Integration Runtime 时适用。 | 指定是 embeddedCertData，还是 certThumbprint。 |
-| password | 与证书关联的密码。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
+| embeddedCertData | Base64 编码的证书数据。 | 指定是 embeddedCertData，还是 certThumbprint********。 |
+| certThumbprint | 自承载集成运行时计算机的证书存储中所安装证书的指纹。 仅当在 connectVia 属性中指定自承载类型的 Integration Runtime 时适用****。 | 指定是 embeddedCertData，还是 certThumbprint********。 |
+| password | 与证书关联的密码。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中****。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
 
-如果使用 certThumbprint 进行身份验证，并在本地计算机的个人存储中安装了证书，则需要授予对自承载集成运行时的读取权限：
+如果使用 certThumbprint 进行身份验证，并在本地计算机的个人存储中安装了证书，则需要授予对自承载集成运行时的读取权限****：
 
-1. 打开 Microsoft 管理控制台 (MMC)。 添加面向“本地计算机”的“证书”管理单元。
-2. 展开“证书” > “个人”，然后选择“证书”。
-3. 右键单击个人存储中的证书，并选择“所有任务” > “管理私钥”。
-3. 在“安全性”选项卡上，添加运行 Integration Runtime 主机服务 (DIAHostService) 的、对证书具有读取访问权限的用户帐户。
+1. 打开 Microsoft 管理控制台 (MMC)。 添加面向“本地计算机”的“证书”管理单元。********
+2. 展开**证书** > **个人**，然后选择**证书**。
+3. 右键单击个人存储中的证书，然后选择 **"所有任务** > **管理私钥**"。
+3. 在“安全性”选项卡上，添加运行 Integration Runtime 主机服务 (DIAHostService) 的、对证书具有读取访问权限的用户帐户****。
 
-**示例 1：使用 certThumbprint**
+**示例 1：使用证书指纹**
 
 ```json
 {
@@ -142,7 +142,7 @@ HTTP 链接的服务支持以下属性：
 }
 ```
 
-**示例 2：使用 embeddedCertData**
+**示例 2：使用嵌入式数据**
 
 ```json
 {
@@ -174,15 +174,15 @@ HTTP 链接的服务支持以下属性：
 
 基于格式的数据集中 `location` 设置下的 HTTP 支持以下属性：
 
-| 属性    | Description                                                  | 需要 |
+| properties    | 描述                                                  | 必选 |
 | ----------- | ------------------------------------------------------------ | -------- |
-| type        | Dataset 中 `location` 下的 type 属性必须设置为**HttpServerLocation**。 | 是      |
-| relativeUrl | 包含数据的资源的相对 URL。 HTTP 连接器从组合 URL 中复制数据： `[URL specified in linked service]/[relative URL specified in dataset]`。   | 否       |
+| type        | 数据集中 `location` 下的 type 属性必须设置为 **HttpServerLocation**。 | 是      |
+| relativeUrl | 包含数据的资源的相对 URL。 HTTP 连接器从以下组合 URL 复制数据：`[URL specified in linked service][relative URL specified in dataset]`。   | 否       |
 
 > [!NOTE]
 > 支持的 HTTP 请求有效负载大小约为 500 KB。 如果要传递给 Web 终结点的有效负载大小大于 500 KB，请考虑以更小的区块对该有效负载进行批处理。
 
-**示例：**
+**例子：**
 
 ```json
 {
@@ -220,16 +220,16 @@ HTTP 链接的服务支持以下属性：
 
 基于格式的复制源中 `storeSettings` 设置下的 HTTP 支持以下属性：
 
-| 属性                 | Description                                                  | 需要 |
+| properties                 | 描述                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | `storeSettings` 下的 type 属性必须设置为**HttpReadSettings**。 | 是      |
-| requestMethod            | HTTP 方法。 <br>允许的值为 Get（默认值）和 Post。 | 否       |
+| type                     | 下`storeSettings`的类型属性必须设置为**HttpReadSettings**。 | 是      |
+| requestMethod            | HTTP 方法。 <br>允许的值为 Get（默认值）和 Post********。 | 否       |
 | addtionalHeaders         | 附加的 HTTP 请求标头。                             | 否       |
 | requestBody              | HTTP 请求的正文。                               | 否       |
-| httpRequestTimeout           | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。 | 否       |
+| httpRequestTimeout           | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）****。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40****。 | 否       |
 | maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
 
-**示例：**
+**例子：**
 
 ```json
 "activities":[
@@ -270,26 +270,26 @@ HTTP 链接的服务支持以下属性：
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
-若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
-## <a name="legacy-models"></a>传统模型
+## <a name="legacy-models"></a>旧模型
 
 >[!NOTE]
->对于向后兼容性，仍支持以下模型。 建议使用前面部分中提到的新模型，然后 ADF 创作 UI 已经切换为生成新模型。
+>仍按原样支持以下模型，以实现向后兼容性。 建议你以后使用前面部分中提到的新模型，ADF 创作 UI 已经切换到生成新模型。
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| 属性 | Description | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为 HttpFile。 | 是 |
+| type | 数据集**的类型**属性必须设置为**HttpFile**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 | 否 |
-| requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post。 | 否 |
+| requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post********。 | 否 |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
 | requestBody | HTTP 请求的正文。 | 否 |
-| format | 如果要在未经分析的情况下从 HTTP 终结点按原样检索数据，并将其复制到基于文件的存储，请跳过输入和输出数据集定义中的格式部分。<br/><br/>如果要在复制期间分析 HTTP 响应内容，下面是支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅 [JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[文本格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)。 |否 |
-| compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/><br/>支持的类型为：GZip、Deflate、BZip2 和 ZipDeflate。<br/>支持的级别为：最佳和最快。 |否 |
+| format | 如果要在未经分析的情况下从 HTTP 终结点按原样检索数据，并将其复制到基于文件的存储，请跳过输入和输出数据集定义中的格式部分****。<br/><br/>如果要在复制期间分析 HTTP 响应内容，下面是支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat 和 ParquetFormat********************。 请将格式中的“type”属性设置为上述值之一********。 有关详细信息，请参阅 [JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[文本格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)。 |否 |
+| compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/><br/>支持的类型为：GZip、Deflate、BZip2 和 ZipDeflate****************。<br/>支持的级别为：最佳和最快********。 |否 |
 
 > [!NOTE]
 > 支持的 HTTP 请求有效负载大小约为 500 KB。 如果要传递给 Web 终结点的有效负载大小大于 500 KB，请考虑以更小的区块对该有效负载进行批处理。
@@ -335,10 +335,10 @@ HTTP 链接的服务支持以下属性：
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| 属性 | Description | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：HttpSource。 | 是 |
-| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。  | 否 |
+| type | 复制活动源**的类型**属性必须设置为**HttpSource**。 | 是 |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）****。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40****。  | 否 |
 
 **示例**
 

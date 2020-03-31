@@ -1,56 +1,71 @@
 ---
-title: 条件性访问-组合的安全信息-Azure Active Directory
-description: 创建自定义条件访问策略以要求受信任位置进行安全信息注册
+title: 条件访问 - 组合安全信息 - Azure Active Directory
+description: 为安全信息注册创建自定义条件访问策略
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c9b01cc06b3d0ef8f47b34e9ef86bec9adac03f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f69a94e17155ff93510d09f666bce12f628274f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424853"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295160"
 ---
-# <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>条件性访问：要求受信任的位置进行 MFA 注册
+# <a name="conditional-access-securing-security-info-registration"></a>条件访问：保护安全信息注册
 
-使用条件性访问策略中的用户操作，可以保护用户注册 Azure 多重身份验证和自助密码重置的时间和方式。 此预览功能适用于启用了[组合注册预览](../authentication/concept-registration-mfa-sspr-combined.md)的组织。 如果要使用受信任的网络位置等条件来限制对注册 Azure 多重身份验证和 SSPR 的访问，组织中可能会启用此功能。 有关在条件性访问中创建受信任位置的详细信息，请参阅文章[Azure Active Directory 条件访问中的位置条件是什么？](../conditional-access/location-condition.md#named-locations)
+使用“条件访问策略”中的“用户操作”，现在可对用户注册 Azure 多重身份验证和自助式密码重置的时间和方式提供保护。 此预览功能可供启用[合并注册预览](../authentication/concept-registration-mfa-sspr-combined.md)的组织使用。 在希望使用受信任网络位置等条件来限制注册 Azure 多重身份验证和自助服务密码重置 （SSPR） 的组织中，可以启用此功能。 有关可用条件的详细信息，请参阅文章["条件访问：条件](concept-conditional-access-conditions.md)"。
 
-## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>创建需要从受信任位置注册的策略
+## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>创建要求从受信任的位置注册的策略
 
-以下策略适用于所有选定的用户，这些用户尝试使用组合注册体验进行注册，并阻止访问，除非它们从标记为受信任网络的位置进行连接。
+以下策略适用于所有试图使用组合注册体验进行注册的选定用户，并将阻止访问，除非他们从标记为受信任网络的位置进行连接。
 
-1. 在**Azure 门户**中，浏览到**Azure Active Directory** > **安全** > **条件性访问**。
-1. 选择“新策略”。
-1. 在 "名称" 中，输入此策略的名称。 例如，**受信任的网络上的合并安全信息注册**。
-1. 在 "**分配**" 下，单击 "**用户和组**"，然后选择你想要将此策略应用到的用户和组。
+1. 在“Azure 门户”**** 中，浏览到“Azure Active Directory”**** > “安全性”**** > “条件访问”****。
+1. 选择“新策略”****。
+1. 在“名称”中，输入此策略的名称。 例如，受信任网络上的组合安全信息注册****。
+1. 在 **"分配"** 下，选择 **"用户和组**"，然后选择要应用于此策略的用户和组。
 
    > [!WARNING]
-   > 必须为用户启用[组合注册预览](../authentication/howto-registration-mfa-sspr-combined.md)。
+   > 必须为[组合注册预览](../authentication/howto-registration-mfa-sspr-combined.md)启用用户。
 
-1. 在 "**云应用或操作**" 下，选择 "**用户操作**"，然后选中 "**注册安全信息（预览版）** "。
-1. 在 "**条件** > **位置**" 下。
-   1. 配置 **"是"** 。
-   1. 包含**任何位置**。
+1. 在“云应用或操作”**** 下，选择“用户操作”****，选中“注册安全信息(预览)”****。
+1. 在**条件** > **位置**。
+   1. 配置：“是”****。
+   1. 包括**任何位置**。
    1. 排除**所有受信任的位置**。
-   1. 单击 "位置" 边栏选项卡上的 "**完成**"。
-   1. 单击 "条件" 边栏选项卡上的 "**完成**"。
-1.  > **Grant**下的 "**访问控制**"。
-   1. 单击 "**阻止访问**"。
-   1. 然后单击“选择”。
-1. 将“启用策略”设置为“打开”。
-1. 然后单击“保存”。
+   1. 在"位置"边栏选项卡上选择 **"完成**"。
+   1. 在"条件"边栏选项卡上选择 **"完成**"。
+1. 在**条件** > **客户端应用（预览）** 下，将 **"配置配置为** **"，** 然后选择 **"完成**"。
+1. 在**访问控制** > **下授予**。
+   1. 选择“阻止访问”。****
+   1. 然后单击“选择”****。
+1. 将“启用策略”设置为“打开”。********
+1. 再选择“保存”****。
+
+在本政策的步骤 6 中，组织可以选择。 上述策略需要从受信任的网络位置进行注册。 组织可以选择利用任何可用的条件代替**地点**。 请记住，此策略是一个块策略，因此任何包含内容都被阻止，并且允许任何与包含不匹配的东西。 
+
+在上述步骤 6 中，有些人可能会选择使用设备状态而不是位置：
+
+6. 在**条件** > **设备状态（预览）** 下。
+   1. 配置：“是”****。
+   1. 包括**所有设备状态**。
+   1. 排除**设备混合 Azure AD 联接**和/或**标记为符合要求的设备**
+   1. 在"位置"边栏选项卡上选择 **"完成**"。
+   1. 在"条件"边栏选项卡上选择 **"完成**"。
+
+> [!WARNING]
+> 如果在策略中使用设备状态作为条件，可能会影响目录中的来宾用户。 [仅报告模式](concept-conditional-access-report-only.md)可帮助确定策略决策的影响。
 
 ## <a name="next-steps"></a>后续步骤
 
-[条件访问公用策略](concept-conditional-access-policy-common.md)
+[条件访问常见策略](concept-conditional-access-policy-common.md)
 
-[使用条件性访问仅报告模式来确定影响](howto-conditional-access-report-only.md)
+[使用仅条件访问报告模式确定影响](howto-conditional-access-report-only.md)
 
-[使用条件性访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
+[使用条件访问"如果"工具模拟登录行为](troubleshoot-conditional-access-what-if.md)

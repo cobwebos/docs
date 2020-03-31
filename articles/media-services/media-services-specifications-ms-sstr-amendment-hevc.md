@@ -1,5 +1,5 @@
 ---
-title: 针对 HEVC 的平滑流式处理协议（SSTR）修正-Azure
+title: HEVC 的平滑流式处理协议 （MS-SSTR） 修正案 - Azure
 description: 本规范描述 Azure 媒体服务中基于 HEVC 分片 MP4 的实时传送视频流的协议和格式。 本文中仅指定了传送 HEVC 所要进行的更改，“（未更改）”表示文本是复制的，仅用于澄清目的。
 services: media-services
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: be4009d418f2f8f3dff755e2e990efee593f070b
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514215"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正 
@@ -27,7 +27,7 @@ ms.locfileid: "76514215"
 
 本文提供适用于平滑流式处理协议规范 [MS-SSTR]（实现 HEVC 编码视频的平滑流式处理）的详细修正。 本规范只阐述了交付 HEVC 视频编解码器所要进行的更改。 本文遵循 [MS-SSTR] 规范所用的相同编号架构。 整篇文章中显示的空白标题行用于将读者定位到 [MS-SSTR] 规范中的相应位置。  “（未更改）”表示文本是复制的，仅用于澄清目的。
 
-本文针对平滑流式处理清单中的 HEVC 视频编解码器（使用 "hev1" 或 "hvc1" 格式跟踪）提供技术实现要求，并更新规范引用以引用当前 MPEG 标准包括 HEVC、HEVC 的通用加密，以及 ISO 基本媒体文件格式的 box 名称已更新，以与最新的规范保持一致。 
+本文提供平滑流式处理清单中 HEVC 视频编解码器（使用“hev1”或“hvc1”格式化轨道）信号的技术实现要求；规范参考内容经过更新，参考了包括 HEVC、HEVC 通用加密在内的最新 MPEG 标准；ISO 基本媒体文件格式的框架名称经过更新，与最新规范保持一致。 
 
 参考的平滑流式处理协议规范 [MS-SSTR] 描述了通过以下方式传送实时和点播数字媒体（例如音频和视频）所用的在线格式：从编码器传送到 Web 服务器、从一台服务器传送到另一个服务器，以及从服务器传送到 HTTP 客户端。
 通过 HTTP 使用基于 MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=327787) 的数据结构传送方法能够在不同的压缩媒体内容质量级别之间近乎实时地无缝切换。 因此，即使客户端计算机或设备的网络和视频呈现条件发生变化，也能为 HTTP 客户端最终用户带来一致的播放体验。
@@ -40,11 +40,11 @@ ms.locfileid: "76514215"
 
 本文档专门使用了以下术语：
 
->  **撰写时间：** 按[[ISO/IEC-iec-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)中定义的方式在客户端上显示示例的时间。
+>  **组成时间：** 在客户端上显示样本的时间，如[[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)中定义的。
 > 
 >   **CENC**：通用加密，符合 [ISO/IEC 23001-7] 第二版中的定义。
 > 
->   **解码时间：** 根据[[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695)中的定义，需要在客户端上对示例进行解码的时间。
+>   **解码时间：** 在客户端上解码样本所需的时间，如[[ISO/IEC 14496-12：2008]](https://go.microsoft.com/fwlink/?LinkId=183695)中定义的。
 
 **片段：** 一个可单独下载的**媒体**单元，由一个或多个**样本**构成。
 
@@ -52,11 +52,11 @@ ms.locfileid: "76514215"
 > 
 >   **清单：** 有关**呈现内容**的元数据，可让客户端发出**媒体**请求。 **媒体：** 由客户端用来播放**呈现内容**的压缩音频、视频和文本数据。 **媒体格式：** 以压缩**样本**形式呈现音频或视频时所用的妥善定义的格式。
 > 
->   **呈现内容：** 播放单部电影所需的所有**流**和相关元数据的集。 **请求：** 从客户端发送到服务器的 HTTP 消息（如[[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **响应**中所定义）：从服务器发送到客户端的 http 消息，如[[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)中所定义
+>   **呈现内容：** 播放单部电影所需的所有**流**和相关元数据的集。 **请求：** 从客户端发送到服务器的 HTTP 消息，如[[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)响应中定义 **：** 从服务器发送到客户端的 HTTP 消息，如[[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)中定义的
 > 
 >   **样本：** 存储和处理**媒体**的最小基本单位（例如帧）。
 > 
->   **可能、应该、** 不得、不得、不得：如 [RFC2119] 中所述，按[[]](https://go.microsoft.com/fwlink/?LinkId=90317)中所述使用了这些术语： "可能"、"应" 或 "不应"。
+>   **可能，应该，必须，不应该，不得：** 这些术语（在所有大写字母中）均按[[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317)中所述使用，可选行为的所有语句都使用五月、应该或不应使用。
 
 ## <a name="12-references"></a>1.2 参考
 
@@ -64,7 +64,7 @@ ms.locfileid: "76514215"
 
 ### <a name="121-normative-references"></a>1.2.1 规范参考 
 
->  [SSTR]平滑流式处理协议*v20140502* [https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
+>  [MS-SSTR]平滑流式处理协议*v20140502*[https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
 > 
 >   [ISO/IEC 14496-12] 国际标准化组织编写的“信息技术 -- 音频-视频对象编码 -- 第 12 部分：ISO 基本媒体文件格式”，ISO/IEC 14496-12:2014 版本 4，以及勘误 1、修正 1 和 2。
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
@@ -78,17 +78,17 @@ ms.locfileid: "76514215"
 > 
 >   [RFC-6381] IETF RFC-6381 中阐述的“‘存储桶’媒体类型的‘编解码器’和‘配置文件’参数”<https://tools.ietf.org/html/rfc6381>
 > 
->   [MPEG4-RA] MP4 注册机构，“MP4REG”，[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA]MP4注册局，"MP4REG"，[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
 > 
->   [RFC2119] Bradner, S. 编写的“RFC 中用于指示要求的关键字”，BCP 14，RFC 2119，1997 年 3 月，[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119]Bradner， S.，"用于 RFC 以指示需求水平的关键词"，BCP 14，RFC 2119，1997 年 3 月，[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 信息性参考 
 
 >   [MS-GLOS] Microsoft Corporation 编写的“*Windows 协议主要术语表*”。
 > 
->   [RFC3548] Josefsson, S., Ed. 编写的“Base16、Base32 和 Base64 数据编码”，RFC 3548，2003 年 7 月，[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548]约瑟夫松，S.，Ed.，"Base16，Base32和Base64数据编码"，RFC 3548，2003年7月，[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
 > 
->   [RFC5234] Crocker, D., Ed. 和 Overell, P. 编写的“扩充的 BNF 语法规范：ABNF”，STD 68，RFC 5234，2008 年 1 月，[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234]华盛顿特区克罗克和 Overell， P.，" 增强 BNF 语法规范： ABNF"， STD 68， RFC 5234， 2008年1月，[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>1.3 概述 
@@ -108,7 +108,7 @@ ms.locfileid: "76514215"
 >   应使用以下方法来识别采用 HEVC 视频格式的流：
 > 
 >   * **媒体格式的自定义描述性代码：** 此功能根据第 *2.2.2.5* 节中的指定，由 **FourCC** 字段提供。
->   实现者可以通过在[[ISO/IEC-iec-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)中指定的方式，使用 MPEG4-RA 注册扩展代码，以确保扩展不会冲突。
+>   实施者可以通过在[[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)中指定的 MPEG4-RA 注册扩展代码来确保扩展不会冲突。
 
 ## <a name="19-standards-assignments"></a>1.9 标准分配 
 
@@ -129,7 +129,7 @@ ms.locfileid: "76514215"
 >   **TimeScale（变量）：** Duration 属性的时标，指定为一秒的增量数。 默认值为
 > 1. （未更改）
 > 
->    建议值为90000，表示包含以帧为帧的小数值视频的视频帧和片段的确切持续时间（例如，30/1.001 Hz）。
+>    建议值为 90000，表示包含分数帧速率视频（例如 30/1.001 Hz）的视频帧和片段的确切持续时间。
 
 #### <a name="2222-protectionelement"></a>2.2.2.2 ProtectionElement 
 
@@ -149,13 +149,13 @@ ms.locfileid: "76514215"
 > 
 > * "hev1"：此轨迹的视频样本使用 HEVC 视频，并采用 [ISO/IEC-14496-15] 中指定的“hev1”样本说明格式。
 >
-> * "hvc1"：此轨迹的视频示例使用 HEVC 视频，并使用 [ISO/IEC-iec-14496-15] 中指定的 "hvc1" 示例说明格式。
+> * "hvc1"：此轨道的视频样本使用 HEVC 视频，使用 [ISO/IEC-14496-15] 中指定的"hvc1"示例描述格式。
 > 
 >   **CodecPrivateData（变量）：** 指定特定于媒体格式的参数，并在轨迹的所有样本中通用的数据，以十六进制编码字节的字符串表示。 字节序列的格式和语义含义根据 **FourCC** 字段的值而异，如下所述：
 > 
->   * 当 TrackElement 描述 HEVC 视频时， **FourCC**字段应等于 **"hev1"** 或 **"hvc1"**
+>   * 如果 TrackElement 描述 HEVC 视频，则 **FourCC** 字段应等于 **"hev1"** 或 **"hvc1"**
 > 
->   **CodecPrivateData**字段应包含以下字节序列的十六进制编码的字符串表示形式，在 ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096)中指定：（无从 MS-SSTR 中更改）
+>   **CodecPrivateData**字段 SHALL 包含以下字节序列的六进制字符串表示形式，在 ABNF [[RFC5234] 中指定：](https://go.microsoft.com/fwlink/?LinkId=123096) （MS-SSTR 没有变化）
 > 
 >   * %x00 %x00 %x00 %x01 SPSField %x00 %x00 %x00 %x01 PPSField
 > 
@@ -175,7 +175,7 @@ ms.locfileid: "76514215"
 
 ### <a name="223-fragment-request"></a>2.2.3 片段请求 
 
->   **注意**：为**MinorVersion** 2 和 "hev1" 或 "hvc1" 请求的默认媒体格式为 "Iso8" 品牌 ISO 基本媒体文件格式，其中指定为 [iso/Iec 14496-12] Iso 基本媒体文件格式第四版，[iso/Iec 23001-7] 通用加密第二版。
+>   **注意**：**为 MinorVersion** 2 和"hev1" 或"hvc1"请求的默认媒体格式是 [ISO/IEC 14496-12] ISO 基本媒体文件格式第四版和 [ISO/IEC 23001-7] 通用加密第二版中指定的"iso8"牌 ISO8 基础媒体文件格式。
 
 ### <a name="224-fragment-response"></a>2.2.4 片段响应 
 
@@ -280,8 +280,8 @@ ms.locfileid: "76514215"
 > 
 > * **MajorVersion**
 > * **MinorVersion**
-> * **TimeScale**
-> * **Duration**
+> * **时间表**
+> * **时间**
 > * **IsLive**
 > * **LookaheadCount**
 > * **DVRWindowLength**
@@ -307,7 +307,7 @@ ms.locfileid: "76514215"
 > 
 >   保护标头说明：与单个内容保护系统相关的内容保护元数据。 保护标头说明包括第 *2.2.2.2* 节中指定的以下字段：
 > 
->   * **SystemID**
+>   * **系统 ID**
 >   * **ProtectionHeaderContent**
 
 ##### <a name="31112-stream-description"></a>3.1.1.1.2 流说明 

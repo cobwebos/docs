@@ -1,19 +1,18 @@
 ---
 title: 将 AppSource 包存储到 Azure 存储中并使用 SAS 密钥生成 URL
 description: 详细介绍了上传和保护 AppSource 包所需执行的步骤。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: pabutler
-ms.openlocfilehash: 5f1a09244697a6771ad1b499f3d7c36eb7297067
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 57bc370fd160b8b3d6d7941ea28cd460c99f3d96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827649"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285361"
 ---
 <a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>将 AppSource 包存储到 Azure 存储中并使用 SAS 密钥生成 URL
 =============================================================================
@@ -24,13 +23,13 @@ ms.locfileid: "73827649"
 
 1. 转到 <https://azure.microsoft.com> 并创建一个免费试用版或收费帐户。
 
-2. 登录到 [Azure 门户](https://portal.azure.com/)。
+2. 登录到 Azure[门户](https://portal.azure.com/)。
 
-3. 通过单击“+ 新建”并转到“数据 + 存储”帐户来创建一个新的存储帐户。
+3. 通过单击“+ 新建”并转到“数据 + 存储”帐户来创建一个新的存储帐户。********
 
    ![Microsoft Azure 门户中的“数据 + 存储”边栏选项卡](media/CRMScreenShot7.png)
 
-4. 输入**名称**和**资源组**名称，然后单击“创建”按钮。
+4. 输入**名称**和**资源组**名称，然后单击“创建”**** 按钮。
 
    ![在 Microsoft Azure 门户中创建存储帐户](media/CRMScreenShot8.png)
 
@@ -42,15 +41,15 @@ ms.locfileid: "73827649"
 
 7. 打开存储资源管理器，并使用图标来连接到你的 Azure 存储帐户。
 
-8. 导航到你创建的 blob 容器，然后单击“上传”来添加包 zip 文件。
+8. 导航到你创建的 blob 容器，然后单击“上传”**** 来添加包 zip 文件。
 
    ![使用 Microsoft 存储资源管理器上传包](media/CRMScreenShot10.png)
 
-9. 右键单击你的文件，并选择“获取共享访问签名”。
+9. 右键单击你的文件，并选择“获取共享访问签名”。****
 
    ![获取 Azure 文件的共享访问签名](media/CRMScreenShot11.png)
 
-10. 修改“到期时间”以使 SAS 在一个月内保持活动状态，然后单击“创建”。
+10. 修改“到期时间”**** 以使 SAS 在一个月内保持活动状态，然后单击“创建”。****
 
     ![修改 Azure 文件的 SAS 到期日期](media/CRMScreenShot12.png)
 

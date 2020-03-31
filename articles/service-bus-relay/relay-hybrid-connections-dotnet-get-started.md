@@ -1,6 +1,6 @@
 ---
-title: Azure 中继混合连接-.NET 中的 Websocket
-description: 为 Azure C#中继混合连接 websocket 编写一个控制台应用程序。
+title: Azure 中继混合连接 - .NET 中的 WebSocket
+description: 为 Azure 中继混合连接 WebSocket 编写 C# 控制台应用程序。
 services: service-bus-relay
 documentationcenter: .net
 author: spelluru
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 13612f8ffa343e483165a8dbdd54d1b2b1f5e2cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75355201"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>开始在 .NET 中使用中继混合连接 WebSocket
@@ -34,12 +34,12 @@ ms.locfileid: "75355201"
 4. 编写客户端（发送方）控制台应用程序，用于发送消息。
 5. 运行应用程序。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要具备以下先决条件：
 
-* [Visual Studio 2015 或更高版本](https://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
-* Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+* [视觉工作室 2015 或更高版本](https://www.visualstudio.com)。 本教程中的示例使用 Visual Studio 2017。
+* Azure 订阅。 如果没有，请先[创建一个免费帐户](https://azure.microsoft.com/free/)。"
 
 ## <a name="create-a-namespace"></a>创建命名空间
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
@@ -64,7 +64,7 @@ ms.locfileid: "75355201"
 
     ![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
-恭喜，你已经创建了一个完整的混合连接应用程序！
+祝贺你，你已创建了一个完整的混合连接应用程序！
 
 ## <a name="next-steps"></a>后续步骤
 在本快速入门中，你创建了 .NET 客户端和服务器应用程序，此类程序使用 WebSocket 来发送和接收消息。 Azure 中继的混合连接功能也支持使用 HTTP 发送和接收消息。 若要了解如何将 HTTP 与 Azure 中继混合连接配合使用，请参阅 [HTTP 快速入门](relay-hybrid-connections-http-requests-dotnet-get-started.md)。

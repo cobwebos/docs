@@ -16,10 +16,10 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.openlocfilehash: 53c6375ce04425eae27f4c935e613cc27d058dc8
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77138032"
 ---
 # <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>使用 Azure AD Privileged Identity Management 管理对 Azure 资源的访问权限

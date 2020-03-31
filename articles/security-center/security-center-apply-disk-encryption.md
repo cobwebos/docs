@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
 ms.openlocfilehash: d0f96fe758966a435f8fb8e448e75cbb18b85122
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604527"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>在 Azure 安全中心中应用磁盘加密
@@ -31,8 +31,8 @@ Azure 安全中心建议：如有未使用 Azure 磁盘加密加密的 Windows �
 >
 
 ## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”边栏选项卡中，选择“应用磁盘加密”。
-2. 在“应用磁盘加密”边栏选项卡中，将看到一组建议应用磁盘加密的 VM。
+1. 在“建议”**** 边栏选项卡中，选择“应用磁盘加密”****。
+2. 在“应用磁盘加密”**** 边栏选项卡中，将看到一组建议应用磁盘加密的 VM。
 3. 按照说明操作，对这些 VM 应用加密。
 
 ![][1]
@@ -45,9 +45,9 @@ Azure 安全中心建议：如有未使用 Azure 磁盘加密加密的 Windows �
 
 [使用 Azure PowerShell 加密 Windows IaaS VM](../virtual-machines/windows/disk-encryption-powershell-quickstart.md) 将指导你完成这些步骤。 本主题假定你使用的是从中配置磁盘加密的 Windows 客户端计算机。
 
-有许多方法可用于 Azure 虚拟机。 如果用户已熟知 Azure PowerShell 或 Azure CLI，则用户可能更愿意使用备用方式。 若要了解这些其他方法，请参阅 [Azure 磁盘加密](../security/fundamentals/encryption-overview.md)。
+有许多方法可用于 Azure 虚拟机。 如果用户已熟知 Azure PowerShell 或 Azure CLI，则用户可能更愿意使用备用方式。 要了解这些其他方法，请参阅[Azure 磁盘加密](../security/fundamentals/encryption-overview.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 本文档演示了如何实现安全中心建议“应用磁盘加密”。 若要了解有关磁盘加密的详细信息，请参阅以下文章：
 
 * [Encryption and key management with Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/)（Azure 密钥保管库的加密和密钥管理）（视频，36 分 39 秒）- 了解如何将磁盘加密管理用于 IaaS VM 和 Azure 密钥保管库以帮助保护数据。
@@ -56,10 +56,10 @@ Azure 安全中心建议：如有未使用 Azure 磁盘加密加密的 Windows �
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [Setting security policies in Azure Security Center](tutorial-security-policy.md)（在 Azure 安全中心设置安全策略）- 了解如何配置安全策略。
-* [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) -- 了解如何监视 Azure 资源的运行状况。
-* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
-* [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助保护 Azure 资源。
-* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。
+* [Azure 安全中心中的安全运行状况监视](security-center-monitoring.md)-- 了解如何监视 Azure 资源的运行状况。
+* [管理和响应 Azure 安全中心中的安全警报](security-center-managing-and-responding-alerts.md)-- 了解如何管理和响应安全警报。
+* [在 Azure 安全中心管理安全建议](security-center-recommendations.md)-- 了解建议如何帮助保护 Azure 资源。
+* [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/)-- 查找有关 Azure 安全性和合规性的博客文章。
 
 <!--Image references-->
 [1]: ./media/security-center-apply-disk-encryption/apply-disk-encryption.png

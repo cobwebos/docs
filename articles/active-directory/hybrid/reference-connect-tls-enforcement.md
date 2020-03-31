@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ff5c75785622b43e66b808009c4674d4b2f2b50
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300842"
 ---
 # <a name="tls-12-enforcement-for-azure-ad-connect"></a>强制 Azure AD Connect 执行 TLS 1.2
@@ -34,20 +34,20 @@ ms.locfileid: "78300842"
 
 
 ### <a name="enable-tls-12"></a>启用 TLS 1.2
-- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft\\。NETFramework\v4.0.30319
-  - "SystemDefaultTlsVersions" = dword：00000001
-  - "SchUseStrongCrypto" = dword：0000001
-- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\\。NETFramework\v4.0.30319
-  - "SystemDefaultTlsVersions" = dword：00000001
+- [HKEY_LOCAL_MACHINE_软件_WOW6432Node_微软\\。NETFramework_v4.0.30319*
+  - "系统默认版本"=dword：0000001
+  - "舒斯强加密"=dword：000001
+- [HKEY_LOCAL_MACHINE_软件\微软\\。NETFramework_v4.0.30319*
+  - "系统默认版本"=dword：0000001
   - "SchUseStrongCrypto"=dword:00000001
-- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Server]
-  - "Enabled" = dword：00000001
-- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Server]
-  - "DisabledByDefault" = dword：00000000 
-- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 客户端]
-  - "Enabled" = dword：00000001
-- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 客户端]
-  - "DisabledByDefault" = dword：00000000
+- [HKEY_LOCAL_MACHINE_SYSTEM_当前控制集\控制\安全提供程序\SCHANNEL_协议\TLS 1.2\服务器]
+  - "已启用"=dword：0000001
+- [HKEY_LOCAL_MACHINE_SYSTEM_当前控制集\控制\安全提供程序\SCHANNEL_协议\TLS 1.2\服务器]
+  - "禁用状态"=dword：0000000 
+- [HKEY_LOCAL_MACHINE_SYSTEM_当前控制集\控制\安全提供程序\SCHANNEL_协议\TLS 1.2\客户端]
+  - "已启用"=dword：0000001
+- [HKEY_LOCAL_MACHINE_SYSTEM_当前控制集\控制\安全提供程序\SCHANNEL_协议\TLS 1.2\客户端]
+  - "禁用状态"=dword：0000000
 
 ### <a name="powershell-script-to-enable-tls-12"></a>用于启用 TLS 1.2 的 PowerShell 脚本
 可使用以下 PowerShell 脚本在 Azure AD Connect 服务器上启用 TLS 1.2。
@@ -80,20 +80,20 @@ ms.locfileid: "78300842"
 ```
 
 ### <a name="disable-tls-12"></a>禁用 TLS 1.2
-- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft\\。NETFramework\v4.0.30319
-  - "SystemDefaultTlsVersions" = dword：00000000
-  - "SchUseStrongCrypto" = dword：0000000
-- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\\。NETFramework\v4.0.30319
-  - "SystemDefaultTlsVersions" = dword：00000000
-  - "SchUseStrongCrypto" = dword：00000000
-- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Server]
-  - "Enabled" = dword：00000000
-- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Server]
-  - "DisabledByDefault" = dword：00000001
-- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 客户端]
-  - "Enabled" = dword：00000000
-- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 客户端]
-  - "DisabledByDefault" = dword：00000001 
+- [HKEY_LOCAL_MACHINE_软件_WOW6432Node_微软\\。NETFramework_v4.0.30319*
+  - "系统默认版本"=dword：0000000
+  - "舒斯强加密"=dword：000000
+- [HKEY_LOCAL_MACHINE_软件\微软\\。NETFramework_v4.0.30319*
+  - "系统默认版本"=dword：0000000
+  - "舒斯强加密"=dword：0000000
+- [HKEY_LOCAL_MACHINE_SYSTEM_当前控制集\控制\安全提供程序\SCHANNEL_协议\TLS 1.2\服务器]
+  - "已启用"=dword：0000000
+- [HKEY_LOCAL_MACHINE_SYSTEM_当前控制集\控制\安全提供程序\SCHANNEL_协议\TLS 1.2\服务器]
+  - "禁用状态"=dword：0000001
+- [HKEY_LOCAL_MACHINE_SYSTEM_当前控制集\控制\安全提供程序\SCHANNEL_协议\TLS 1.2\客户端]
+  - "已启用"=dword：0000000
+- [HKEY_LOCAL_MACHINE_SYSTEM_当前控制集\控制\安全提供程序\SCHANNEL_协议\TLS 1.2\客户端]
+  - "禁用状态"=dword：0000001 
 
 ### <a name="powershell-script-to-disable-tls-12"></a>用于禁用 TLS 1.2 的 PowerShell 脚本
 可使用以下 PowerShell 脚本在 Azure AD Connect 服务器上禁用 TLS 1.2。\
@@ -126,4 +126,4 @@ ms.locfileid: "78300842"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
+* [将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)

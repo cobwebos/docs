@@ -1,13 +1,13 @@
 ---
-title: 可靠集合对象序列化
-description: 了解 Azure Service Fabric 可靠集合对象序列化，包括默认策略和如何定义自定义序列化。
+title: 可靠的收集对象序列化
+description: 了解 Azure 服务结构可靠集合对象序列化，包括默认策略以及如何定义自定义序列化。
 ms.topic: conceptual
 ms.date: 5/8/2017
 ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639541"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric 中的 Reliable Collection 对象序列化
@@ -23,7 +23,7 @@ Reliable Collections 从可靠状态管理器获取与给定类型对应的串�
 内置串行化程序更高效，因为它们知道其类型无法更改，且它们无需包含类型名称等有关类型的信息。
 
 可靠状态管理器拥有针对以下类型的内置串行化程序： 
-- GUID
+- Guid
 - bool
 - 字节
 - sbyte
@@ -44,7 +44,7 @@ Reliable Collections 从可靠状态管理器获取与给定类型对应的串�
 
 自定义串行化程序通常用于提高性能，或用于在网络传输时以及在磁盘上加密数据。 自定义串行化程序通常比通用序列化程序更高效，因为它们不需要串行化有关类型的信息。 
 
-[IReliableStateManager. ireliablestatemanager.tryaddstateserializer\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer)用于为给定的类型 t 注册自定义序列化程序。此注册应在 StatefulServiceBase 的构造中发生，以确保在恢复开始之前，所有可靠集合都有权访问相关的序列化程序来读取其持久性数据。
+[IReliableStateManager.TryAddStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) 用于为给定类型 T 注册自定义序列化程序。此注册应在 StatefulServiceBase 构造内发生，以确保在开始恢复前，所有可靠集合都有权访问相关序列化程序来读取其保留的数据。
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -62,10 +62,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>如何实现自定义串行化程序
 
-自定义序列化程序需要实现[IStateSerializer\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1)接口。
+自定义序列化程序需要实现 [IStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) 接口。
 
 > [!NOTE]
-> IStateSerializer\<T > 包含用于写入和读取的重载，该重载采用名为基值的附加 T。 此 API 用于差分序列化。 当前未公开差分序列化功能。 因此，在公开和启用差分序列化前，不会调用这两个重载。
+> IStateSerializer\<T> 包含读取和写入重载，可接受名为基值的附加 T。 此 API 用于差分序列化。 当前未公开差分序列化功能。 因此，在公开和启用差分序列化前，不会调用这两个重载。
 
 以下是名为 OrderKey 的自定义类型示例，它包含四个属性
 
@@ -85,7 +85,7 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-下面是 IStateSerializer\<OrderKey > 的示例实现。
+下面是 IStateSerializer\<OrderKey> 的一个实现示例。
 请注意，接受 baseValue 的读取和写入重载调用各自的重载来实现向前兼容。
 
 ```csharp
@@ -139,9 +139,9 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 
 ## <a name="next-steps"></a>后续步骤
   * [序列化和升级](service-fabric-application-upgrade-data-serialization.md)
-  * [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [可靠集合的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
   * [使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
-  * [使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
-  * 使用[升级参数](service-fabric-application-upgrade-parameters.md)来控制应用程序的升级方式。
-  * 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
+  * [使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)会引导您使用 PowerShell 进行应用程序升级。
+  * 使用[升级参数](service-fabric-application-upgrade-parameters.md)控制应用程序升级的方式。
+  * 通过引用[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
   * 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。

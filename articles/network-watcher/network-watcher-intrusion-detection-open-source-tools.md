@@ -1,5 +1,5 @@
 ---
-title: 利用开源工具执行网络入侵检测
+title: 使用开放源代码工具执行网络入侵检测
 titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure 网络观察程序和开源工具执行网络入侵检测
 services: network-watcher
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 781f3788c9001276315a2baed7060450fa00d77a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845017"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用网络观察程序和开源工具执行网络入侵检测
 
 数据包捕获是一个重要组件，可以实施网络入侵检测系统 (IDS) 并执行网络安全监视 (NSM)。 可以借助多种开源 IDS 工具来处理数据包捕获，并检查潜在网络入侵和恶意活动的签名。 使用网络观察程序提供的数据包捕获，可以分析网络中是否存在任何有害入侵或漏洞。
 
-Suricata 就是这样的一种开源工具，它是一个 IDS 引擎，可使用规则集来监视网络流量，每当出现可疑事件时，它会触发警报。 Suricata 提供多线程引擎，意味着它能够以更高的速度和效率执行网络流量分析。 有关 Suricata 及其功能的更多详细信息，请访问其网站 https://suricata-ids.org/ 。
+Suricata 就是这样的一种开源工具，它是一个 IDS 引擎，可使用规则集来监视网络流量，每当出现可疑事件时，它会触发警报。 Suricata 提供多线程引擎，意味着它能够以更高的速度和效率执行网络流量分析。 有关 Suricata 及其功能的更多详细信息，请访问其网站 https://suricata-ids.org/。
 
 ## <a name="scenario"></a>方案
 
@@ -244,7 +244,7 @@ tail -f /var/log/suricata/fast.log
 
 1. 在[此处](https://aka.ms/networkwatchersuricatadashboard)下载仪表板文件，在[此处](https://aka.ms/networkwatchersuricatavisualization)下载可视化效果文件，在[此处](https://aka.ms/networkwatchersuricatasavedsearch)下载已保存的搜索文件。
 
-1. 在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。 然后，可从“仪表板”选项卡打开并加载示例仪表板。
+1. 在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。******** 然后，可从“仪表板”**** 选项卡打开并加载示例仪表板。
 
 还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.elastic.co/guide/en/kibana/current/visualize.html)，详细了解如何创建 Kibana 可视化效果。
 
@@ -254,13 +254,13 @@ tail -f /var/log/suricata/fast.log
 
 示例仪表板提供了 Suricata 警报日志的多种可视化效果：
 
-1. 按 Geoip 列出警报列出的警报–一种地图，显示根据地理位置（由 IP 确定）按源所在国家/地区分配的警报
+1. 按 GeoIP 分类的警报 – 显示警报按其所在国家/地区（根据地理位置确定）分布的地图
 
     ![地理 IP][3]
 
 1. 排名靠前的 10 条警报 – 最常触发的 10 条警报的摘要及其说明。 单击单个警报可以进一步筛选仪表板中的内容，以便只显示与该特定警报相关的信息。
 
-    ![图像 4][4]
+    ![图 4][4]
 
 1. 警报数 – 规则集触发的警报总数
 
@@ -284,7 +284,7 @@ tail -f /var/log/suricata/fast.log
 
 访问 [Use packet capture to do proactive network monitoring with Azure Functions](network-watcher-alert-triggered-packet-capture.md)（在 Azure Functions 中使用数据包捕获执行主动网络监视），了解如何根据警报触发数据包捕获
 
-访问 [Visualize NSG flows logs with Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)（使用 Power BI 可视化 NSG 流日志），了解如何使用 Power BI 可视化 NSG 流日志
+访问[使用 Power BI 将 NSG 流日志可视化](network-watcher-visualize-nsg-flow-logs-power-bi.md)，了解如何使用 Power BI 将 NSG 流日志可视化
 
 
 

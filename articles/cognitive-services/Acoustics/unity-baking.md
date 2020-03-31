@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 310decf8053ea16ba46250ba3aabe81c9c254e5e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72243125"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>项目音响效果 Unity 烘焙教程
@@ -201,7 +201,7 @@ ms.locfileid: "72243125"
    ![烘培任务状态](media/azure-batch-task-state.png)  
 
 
-### <a name="Estimating-bake-cost"></a> 估算 Azure 烘培成本
+### <a name="estimate-azure-bake-cost"></a><a name="Estimating-bake-cost"></a> 估算 Azure 烘培成本
 
 若要估算烘培的成本，请从“估算的计算成本”值（持续时间）着手  。 将该值乘以所选“VM 节点类型”的每小时成本（当地货币）  。 请注意，结果不包括节点启动和运行所需的节点时间。
 
@@ -209,7 +209,7 @@ ms.locfileid: "72243125"
 
 在 [Azure Batch 定价](https://azure.microsoft.com/pricing/details/virtual-machines/linux)中查找每小时节点成本。 （选择“计算优化”或“高性能计算”作为类别。）  
 
-## <a name="Local-bake"></a>在电脑上烘焙场景
+## <a name="bake-your-scene-on-your-pc"></a><a name="Local-bake"></a>在电脑上烘焙场景
 你还可以在自己的电脑上烘培场景。 在创建 Azure Batch 帐户之前对小场景进行音效试验时，此方法可能很有用。 但请注意，本地音效模拟可能耗时很长，具体取决于场景的大小。
 
 ### <a name="minimum-hardware-requirements"></a>最低硬件要求
@@ -233,7 +233,7 @@ ms.locfileid: "72243125"
 2. 若要启动模拟，请在 Windows 上运行 *runlocalbake.bat* 脚本，或在 MacOS 上运行 *runlocalbake.sh* 脚本。 此脚本将提取 Project Acoustics Docker 映像（其中包含用于模拟处理的工具集）并启动模拟。
 3. 模拟完成后，将生成的 *.ace* 文件复制回到 Unity 项目。 为确保 Unity 将此识别为二进制文件，请将“.bytes”追加到文件扩展名（例如，“Scene1.ace.bytes”）。 有关模拟的详细日志存储在 *AcousticsLog.txt* 中。 如果遇到任何问题，请检查此文件来帮助诊断问题。
 
-## <a name="Data-Files"></a>由烘焙过程添加的数据文件
+## <a name="data-files-added-by-the-bake-process"></a><a name="Data-Files"></a>由烘焙过程添加的数据文件
 
 以下四个数据文件是在烘培过程中创建的。 一个包含模拟结果并按你的标题进行传输。 其他文件存储与 Unity 编辑器相关的数据。
 

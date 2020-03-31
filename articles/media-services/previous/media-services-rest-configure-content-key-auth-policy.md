@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8942ad8bdc4f9fc37a88d09871c983f63cd8c1b9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773694"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略  
@@ -31,7 +31,7 @@ ms.locfileid: "76773694"
 
 当播放器请求某个流时，媒体服务将使用 AES 或 PlayReady 加密使用指定的密钥来对内容进行动态加密。 为解密流，播放器从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
-媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 通过使用开放或令牌限制，内容密钥授权策略可以实现一种或多种授权限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用简单 Web 令牌 ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 格式和 JSON Web 令牌 (JWT) 格式的令牌。
+媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 通过使用开放或令牌限制，内容密钥授权策略可以实现一种或多种授权限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持简单 Web 令牌 （[SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)） 和 JSON Web 令牌 （JWT） 格式的令牌。
 
 媒体服务不提供 STS。 可以创建自定义 STS 或使用 Azure Active Directory (Azure AD) 来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名（如本文所述）。 如果令牌有效，并且令牌中的声明与为内容密钥配置的声明相匹配，则媒体服务密钥传送服务会将加密密钥返回到客户端。
 
@@ -53,7 +53,7 @@ ms.locfileid: "76773694"
 > [!NOTE]
 > 使用媒体服务 REST API 时，需注意以下事项。
 > 
-> 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
+> 访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发设置](media-services-rest-how-to-use.md)。
 > 
 > 
 > 
@@ -63,7 +63,7 @@ ms.locfileid: "76773694"
 
 以下示例创建开放授权策略，并将其添加到内容密钥。
 
-#### <a id="ContentKeyAuthorizationPolicies"></a>创建 ContentKeyAuthorizationPolicies
+#### <a name="create-contentkeyauthorizationpolicies"></a><a id="ContentKeyAuthorizationPolicies"></a>创建 ContentKeyAuthorizationPolicies
 请求：
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicies HTTP/1.1
@@ -99,7 +99,7 @@ ms.locfileid: "76773694"
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicies/@Element","Id":"nb:ckpid:UUID:db4593da-f4d1-4cc5-a92a-d20eacbabee4","Name":"Open Authorization Policy"}
 
-#### <a id="ContentKeyAuthorizationPolicyOptions"></a>创建 ContentKeyAuthorizationPolicyOptions
+#### <a name="create-contentkeyauthorizationpolicyoptions"></a><a id="ContentKeyAuthorizationPolicyOptions"></a>创建 ContentKeyAuthorizationPolicyOptions
 请求：
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicyOptions HTTP/1.1
@@ -135,7 +135,7 @@ ms.locfileid: "76773694"
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:57829b17-1101-4797-919b-f816f4a007b7","Name":"policy","KeyDeliveryType":2,"KeyDeliveryConfiguration":"","Restrictions":[{"Name":"HLS Open Authorization Policy","KeyRestrictionType":0,"Requirements":null}]}
 
-#### <a id="LinkContentKeyAuthorizationPoliciesWithOptions"></a>将 ContentKeyAuthorizationPolicies 与 Options 相链接
+#### <a name="link-contentkeyauthorizationpolicies-with-options"></a><a id="LinkContentKeyAuthorizationPoliciesWithOptions"></a>链接内容密钥授权策略与选项
 请求：
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicies('nb%3Ackpid%3AUUID%3A0baa438b-8ac2-4c40-a53c-4d4722b78715')/$links/Options HTTP/1.1
@@ -156,7 +156,7 @@ ms.locfileid: "76773694"
 
     HTTP/1.1 204 No Content
 
-#### <a id="AddAuthorizationPolicyToKey"></a>将授权策略添加到内容密钥
+#### <a name="add-an-authorization-policy-to-the-content-key"></a><a id="AddAuthorizationPolicyToKey"></a>将授权策略添加到内容密钥
 请求：
 
     PUT https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeys('nb%3Akid%3AUUID%3A2e6d36a7-a17c-4e9a-830d-eca23ad1a6f9') HTTP/1.1
@@ -183,7 +183,7 @@ ms.locfileid: "76773694"
 若要配置令牌限制选项，需要使用 XML 来描述令牌的授权要求。 令牌限制配置 XML 必须符合以下 XML 架构：
 
 
-#### <a id="schema"></a>令牌限制架构
+#### <a name="token-restriction-schema"></a><a id="schema"></a>令牌限制架构
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
       <xs:complexType name="TokenClaim">
@@ -283,14 +283,14 @@ ms.locfileid: "76773694"
 ## <a name="playready-dynamic-encryption"></a>PlayReady 动态加密
 可以使用媒体服务配置相应的权限和限制，这样当用户尝试播放受保护的内容时，PlayReady DRM 运行时就会强制实施这些权限和限制。 
 
-使用 PlayReady 保护内容时，需要在授权策略中指定的项目之一是用于定义 [PlayReady 许可证模板](media-services-playready-license-template-overview.md)的 XML 字符串。 
+当您使用 PlayReady 保护内容时，需要在授权策略中指定的内容之一是定义[PlayReady 许可证模板](media-services-playready-license-template-overview.md)的 XML 字符串。 
 
 ### <a name="open-restriction"></a>开放限制
 开放限制意味着系统会将密钥传送到发出密钥请求的任何用户。 此限制可能适用于测试用途。
 
 以下示例创建开放授权策略，并将其添加到内容密钥。
 
-#### <a id="ContentKeyAuthorizationPolicies2"></a>创建 ContentKeyAuthorizationPolicies
+#### <a name="create-contentkeyauthorizationpolicies"></a><a id="ContentKeyAuthorizationPolicies2"></a>创建 ContentKeyAuthorizationPolicies
 请求：
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicies HTTP/1.1
@@ -417,8 +417,8 @@ ms.locfileid: "76773694"
 #### <a name="add-an-authorization-policy-to-the-content-key"></a>将授权策略添加到内容密钥
 将 AuthorizationPolicy 添加到 ContentKey，如“[将授权策略添加到内容密钥](#AddAuthorizationPolicyToKey)”部分中所示。
 
-## <a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
-### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+## <a name="types-used-when-you-define-contentkeyauthorizationpolicy"></a><a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
+### <a name="contentkeyrestrictiontype"></a><a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
     public enum ContentKeyRestrictionType
     {
         Open = 0,
@@ -431,7 +431,7 @@ ms.locfileid: "76773694"
 > 内容密钥授权策略上的 IP 限制在服务中尚不可用。
 
 
-### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a name="contentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
     public enum ContentKeyDeliveryType
     {
         None = 0,

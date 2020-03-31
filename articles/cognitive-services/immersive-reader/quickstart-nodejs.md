@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: pasta
 ms.openlocfilehash: 749e75fed409632c613713a49154e4cd8dc265b3
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75945965"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-nodejs"></a>快速入门：创建启动沉浸式阅读器的 Web 应用 (Node.js)
@@ -24,7 +24,7 @@ ms.locfileid: "75945965"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 为 Azure Active Directory 身份验证配置的沉浸式阅读器资源。 按照[这些说明](./how-to-create-immersive-reader.md)进行设置。 在配置环境属性时，将需要在此处创建的一些值。 将会话的输出保存到文本文件中，以供将来参考。
 * [Node.js](https://nodejs.org/) 和 [Yarn](https://yarnpkg.com)
@@ -245,7 +245,7 @@ script(type="text/javascript").
 npm start
 ```
 
-打开浏览器并导航到 http://localhost:3000  。 应该看到以下内容：
+打开浏览器并导航到 _http://localhost:3000_ 。 应该看到以下内容：
 
 ![示例应用](./media/quickstart-nodejs/1-buildapp.png)
 

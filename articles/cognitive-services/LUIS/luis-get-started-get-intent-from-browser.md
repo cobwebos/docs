@@ -12,17 +12,17 @@ ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: diberry
 ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987948"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>快速入门：使用浏览器获取意向
 
 若要了解 LUIS 预测终结点返回的内容，请在 Web 浏览器中查看预测结果。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要查询公共应用，需要：
 
@@ -34,7 +34,7 @@ ms.locfileid: "76987948"
 1. 打开 Web 浏览器。
 1. 使用以下完整 URL（请将 `YOUR-KEY` 替换为自己的 LUIS 创作或预测密钥）。 这些请求是 GET 请求，并包含授权（使用 LUIS 创作或预测密钥作为查询字符串参数）。
 
-    #### <a name="v3-prediction-requesttabv3-1-1"></a>[V3 预测请求](#tab/V3-1-1)
+    #### <a name="v3-prediction-request"></a>[V3 预测请求](#tab/V3-1-1)
 
 
     **GET** 终结点（按槽）请求的 V3 URL 格式为：
@@ -43,7 +43,7 @@ ms.locfileid: "76987948"
     https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
     `
 
-    #### <a name="v2-prediction-requesttabv2-1-2"></a>[V2 预测请求](#tab/V2-1-2)
+    #### <a name="v2-prediction-request"></a>[V2 预测请求](#tab/V2-1-2)
 
     **GET** 终结点请求的 V2 URL 格式为：
 
@@ -53,7 +53,7 @@ ms.locfileid: "76987948"
 
 1. 将该 URL 粘贴到浏览器窗口中，然后按 Enter。 浏览器显示的 JSON 结果指示 LUIS 将 `HomeAutomation.TurnOn` 意向检测为首要意向，并检测到值为 `on` 的 `HomeAutomation.Operation` 实体。
 
-    #### <a name="v3-prediction-responsetabv3-2-1"></a>[V3 预测响应](#tab/V3-2-1)
+    #### <a name="v3-prediction-response"></a>[V3 预测响应](#tab/V3-2-1)
 
     ```JSON
     {
@@ -74,7 +74,7 @@ ms.locfileid: "76987948"
     }
     ```
 
-    #### <a name="v2-prediction-responsetabv2-2-2"></a>[V2 预测响应](#tab/V2-2-2)
+    #### <a name="v2-prediction-response"></a>[V2 预测响应](#tab/V2-2-2)
 
     ```json
     {
@@ -99,7 +99,7 @@ ms.locfileid: "76987948"
 
 1. 要查看所有意图，请添加相应的查询字符串参数。
 
-    #### <a name="v3-prediction-endpointtabv3-3-1"></a>[V3 预测终结点](#tab/V3-3-1)
+    #### <a name="v3-prediction-endpoint"></a>[V3 预测终结点](#tab/V3-3-1)
 
     将 `show-all-intents=true` 添加到查询字符串末尾可**显示所有意向**：
 
@@ -132,7 +132,7 @@ ms.locfileid: "76987948"
     }
     ```
 
-    #### <a name="v2-prediction-endpointtabv2"></a>[V2 预测终结点](#tab/V2)
+    #### <a name="v2-prediction-endpoint"></a>[V2 预测终结点](#tab/V2)
 
     将 `verbose=true` 添加到查询字符串末尾可**显示所有意向**：
 

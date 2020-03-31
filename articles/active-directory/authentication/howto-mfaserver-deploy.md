@@ -1,5 +1,5 @@
 ---
-title: Azure MFA 服务器入门-Azure Active Directory
+title: 入门 Azure MFA 服务器 - Azure 活动目录
 description: 本地 Azure MFA 服务器分步入门
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,22 +12,22 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263694"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure 多重身份验证服务器入门
 
 <center>
 
-![本地 MFA 服务器入门](./media/howto-mfaserver-deploy/server2.png)</center>
+![入门本地 MFA 服务器](./media/howto-mfaserver-deploy/server2.png)</center>
 
 本页介绍如何全新安装服务器，以及在本地 Active Directory 上对它进行设置。 如果已安装 MFA 服务器，但需进行升级，请参阅[升级到最新的 Azure 多重身份验证服务器](howto-mfaserver-deploy-upgrade.md)。 若要了解如何只安装 Web 服务，请参阅[部署 Azure 多重身份验证服务器移动应用 Web 服务](howto-mfaserver-deploy-mobileapp.md)。
 
 > [!IMPORTANT]
-> 从2019年7月1日起，Microsoft 将不再为新部署提供 MFA 服务器。 想要从其用户请求多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在7月1日前激活 MFA 服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
+> 自 2019 年 7 月 1 日起，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户进行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活 MFA 服务器的现有客户将能够像往常一样下载最新版本、将来的更新并生成激活凭据。
 
 ## <a name="plan-your-deployment"></a>规划部署
 
@@ -51,7 +51,7 @@ ms.locfileid: "79263694"
 
 请确保用于 Azure 多重身份验证的服务器满足以下要求：
 
-| Azure 多重身份验证服务器要求 | 说明 |
+| Azure 多重身份验证服务器要求 | 描述 |
 |:--- |:--- |
 | 硬件 |<li>200 MB 硬盘空间</li><li>有 x32 或 x64 功能的处理器</li><li>1 GB 或更大的 RAM</li> |
 | 软件 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008、SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003、SP1、SP2</li><li>Windows 10</li><li>Windows 8.1，所有版本</li><li>Windows 8，所有版本</li><li>Windows 7，所有版本</li><li>Windows Vista，所有版本、SP1、SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 或更高版本（如果要安装用户门户或 Web 服务 SDK）</li> |
@@ -96,9 +96,9 @@ Azure MFA 服务器由三个 Web 组件组成：
 执行以下步骤，从 Azure 门户下载 Azure 多重身份验证服务器：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 搜索并选择“Azure Active Directory”。 选择**安全** > **MFA**。
-3. 在 " **MANAGER MFA 服务器**" 下，选择 "**服务器设置**"。
-4. 选择“下载”，按下载页上的说明保存安装程序。 
+2. 搜索并选择“Azure Active Directory”**。 选择**安全** > **MFA**。
+3. 在**管理器 MFA 服务器**下 ，选择**服务器设置**。
+4. **** 选择“下载”，按下载页上的说明保存安装程序。 
 
    ![从 Azure 门户下载 MFA 服务器](./media/howto-mfaserver-deploy/downloadportal.png)
 
@@ -109,13 +109,13 @@ Azure MFA 服务器由三个 Web 组件组成：
 下载服务器后，可以进行安装和配置。 请确保用于安装的服务器符合规划部分列出的要求。
 
 1. 双击可执行文件。
-2. 在“选择安装文件夹”屏幕中，确保文件夹正确，并单击“下一步”。
-3. 安装完成后，单击“完成”。 此时会启动配置向导。
-4. 在配置向导欢迎屏幕上，选中“跳过使用身份验证配置向导”，并单击“下一步”。 此时向导将关闭，服务器会启动。
+2. 在“选择安装文件夹”屏幕中，确保文件夹正确，并单击“下一步”。****
+3. 安装完成后，单击“完成”。**** 此时会启动配置向导。
+4. 在配置向导欢迎屏幕上，选中“跳过使用身份验证配置向导”，并单击“下一步”。******** 此时向导将关闭，服务器会启动。
 
-   ![跳过使用身份验证配置向导](./media/howto-mfaserver-deploy/skip2.png)
+   ![使用身份验证配置向导跳过](./media/howto-mfaserver-deploy/skip2.png)
 
-5. 返回下载服务器的页面，单击“生成激活凭据”按钮。 在提供的框中，将此信息复制到“Azure MFA 服务器”，然后单击“激活”。
+5. 返回下载服务器的页面，单击“生成激活凭据”按钮****。 在提供的框中，将此信息复制到“Azure MFA 服务器”，然后单击“激活”****。
 
 > [!NOTE]
 > 只有全局管理员才能在 Azure 门户中生成激活凭据。
@@ -130,7 +130,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 ### <a name="configure-email-and-email-templates"></a>配置电子邮件和电子邮件模板
 
-单击左侧的电子邮件图标，设置用于发送这些电子邮件的设置。 可以在此页中输入邮件服务器的 SMTP 信息，并通过选中“向用户发送电子邮件”复选框来发送电子邮件。
+单击左侧的电子邮件图标，设置用于发送这些电子邮件的设置。 可以在此页中输入邮件服务器的 SMTP 信息，并通过选中“向用户发送电子邮件”复选框来发送电子邮件。****
 
 ![MFA 服务器电子邮件配置](./media/howto-mfaserver-deploy/email1.png)
 
@@ -144,20 +144,20 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 ### <a name="manual-import-from-active-directory"></a>从 Active Directory 手动导入
 
-1. 在“Azure MFA 服务器”的左侧选择“用户”。
-2. 在底部选择“从 Active Directory 导入”。
+1. 在“Azure MFA 服务器”的左侧选择“用户” ****。
+2. 在底部选择“从 Active Directory 导入” ****。
 3. 现在，可以搜索单个用户，或在 AD 中搜索包含用户的 OU（组织单位）。 在本例中，我们将指定用户 OU。
 4. 突出显示右侧的所有用户，**并单击“导入**。 此时应会显示一个弹出窗口，指出操作已成功。 关闭导入窗口。
 
-   ![Active Directory 的 MFA 服务器用户导入](./media/howto-mfaserver-deploy/import2.png)
+   ![MFA 服务器用户从活动目录导入](./media/howto-mfaserver-deploy/import2.png)
 
 ### <a name="automated-synchronization-with-active-directory"></a>与 Active Directory 的自动同步
 
-1. 在“Azure MFA 服务器”的左侧选择“目录集成”。
-2. 导航到“同步”选项卡。
-3. 在底部选择“添加”
-4. 在显示的“添加同步项”框中，为此同步任务选择域、OU 或安全组、设置、方法默认设置、语言默认设置，然后单击“添加”。
-5. 选中标为“启用与 Active Directory 的同步”的框，然后选择“同步时间间隔”（1 分钟到 24 小时）。
+1. 在“Azure MFA 服务器”的左侧选择“目录集成”****。
+2. 导航到“同步”**** 选项卡。
+3. 在底部选择“添加”****
+4. 在显示的“添加同步项”框中，为此同步任务选择域、OU 或安全组、设置、方法默认设置、语言默认设置，然后单击“添加”。************
+5. 选中标为“启用与 Active Directory 的同步”的框，然后选择“同步时间间隔”（1 分钟到 24 小时）。********
 
 ## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>Azure 多重身份验证服务器如何处理用户数据
 
@@ -177,21 +177,21 @@ Azure MFA 服务器由三个 Web 组件组成：
 除了上述字段，验证结果（成功/拒绝）和任何拒绝的原因还与身份验证数据一起存储，可通过身份验证/使用情况报告获取。
 
 > [!IMPORTANT]
-> 从2019年3月开始，电话呼叫选项对于免费/试用 Azure AD 租户中的 MFA 服务器用户将不可用。 SMS 消息不受此更改的影响。 电话呼叫将继续为付费 Azure AD 租户中的用户提供。 此更改仅影响免费/试用 Azure AD 租户。
+> 从 2019 年 3 月开始，免费/试用 Azure AD 租户中的 MFA 服务器用户将不能使用电话呼叫选项。 SMS 消息不受此更改影响。 付费 Azure AD 租户中的用户将继续可以使用电话呼叫。 此更改仅影响免费/试用 Azure AD 租户。
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>备份和还原 Azure MFA 服务器
 
 不管什么系统，都必须确保备份正常，这是很重要的一步。
 
-若要备份 Azure MFA 服务器，请确保复制 C:\Program Files\Multi-Factor Authentication Server\Data 文件夹（包括 PhoneFactor.pfdata 文件）。 
+若要备份 Azure MFA 服务器，请确保复制 C:\Program Files\Multi-Factor Authentication Server\Data**** 文件夹（包括 PhoneFactor.pfdata**** 文件）。 
 
 如果需要还原，请完成以下步骤：
 
 1. 在新服务器上重新安装 Azure MFA 服务器。
 2. 激活新的 Azure MFA 服务器。
-3. 停止 MultiFactorAuth 服务。
+3. 停止 MultiFactorAuth**** 服务。
 4. 使用备份的副本覆盖 **PhoneFactor.pfdata**。
-5. 启动 MultiFactorAuth 服务。
+5. 启动 MultiFactorAuth**** 服务。
 
 新服务器现已使用原始的已备份配置和用户数据启动并运行。
 
