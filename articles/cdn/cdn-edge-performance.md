@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593900"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>分析 Microsoft Azure CDN 中的边缘节点性能
@@ -55,7 +55,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     CDN 管理门户打开。
-2. 将鼠标悬停在“分析”选项卡，然后悬停在“边缘性能分析”浮出控件   。  单击“**仪表板**”。
+2. 将鼠标悬停在“分析”选项卡，然后悬停在“边缘性能分析”浮出控件********。  单击“**仪表板**”。
    
     将显示边缘节点分析仪表板。
 
@@ -70,7 +70,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
 * 单击“查看一年前”可将同一时间段内上一年度的活动覆盖到图表上。 这种类型的比较可让我们深入了解长期的 CDN 使用模式。 图表的右上角包含一个图例，用于指示每个线形图的颜色代码。
 
 #### <a name="updating-the-chart"></a>更新图表
-* 时间范围：执行以下某种方案：
+* 时间范围：执行以下操作之一：
   * 在时间线中选择所需的区域。 图表将使用与所选时间段相对应的数据进行更新。
   * 双击图表以显示最多两年内的所有可用历史数据。
 * 指标：单击所需指标旁边显示的图表图标。 图表和时间线将使用相应指标的数据进行刷新。
@@ -134,7 +134,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
 | 安全命中数 |表示 CDN 内容的 HTTPS 请求数。 |
 | 安全传出字节 |表示从 CDN（边缘服务器）传递到请求者（例如，Web 浏览器）的 HTTPS 流量（以字节为单位）。 |
 
-## <a name="reports"></a>报告
+## <a name="reports"></a>报表
 此模块中的每个报告都包含有关不同类型指标的带宽和流量使用情况的图表和统计信息（例如，HTTP 状态代码，缓存状态代码，请求 URL 等）。 此信息可用于深入了解内容是如何提供给客户端以及如何微调 CDN 行为以提高数据传输性能。
 
 ### <a name="accessing-the-edge-performance-reports"></a>访问边缘性能报告
@@ -143,7 +143,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
     ![CDN 配置文件边栏选项卡管理按钮](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     CDN 管理门户打开。
-2. 将鼠标悬停在“分析”选项卡，然后悬停在“边缘性能分析”浮出控件   。  单击“**HTTP 大型对象**”。
+2. 将鼠标悬停在“分析”选项卡，然后悬停在“边缘性能分析”浮出控件********。  单击“**HTTP 大型对象**”。
    
     将显示边缘节点分析报告屏幕。
 

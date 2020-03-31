@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/12/2019
 ms.author: akjosh
 ms.openlocfilehash: bf17f499c1e8339a1e9abb13cffd5e35c390f564
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74072980"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 虚拟机扩展和功能
@@ -54,21 +54,21 @@ Azure 平台可承载许多扩展，其中包括 VM 配置、监视、安全性�
 
 可以在扩展概述的**故障排除和支持**部分中找到每个扩展的故障排除信息。 下面列出了可用的故障排除信息：
 
-| 命名空间 | 故障排除 |
+| 命名空间 | 疑难解答 |
 |-----------|-----------------|
-| dependencyagent. dependencyagentlinux。 | [适用于 Linux 的 Azure Monitor 依赖关系](agent-dependency-linux.md#troubleshoot-and-support) |
-| dependencyagent. dependencyagentwindows。 | [Windows 的 Azure Monitor 依赖关系](agent-dependency-windows.md#troubleshoot-and-support) |
+| 微软.azure.监视.依赖代理.依赖代理 | [Linux 的 Azure 监视器依赖项](agent-dependency-linux.md#troubleshoot-and-support) |
+| microsoft.azure.监视.依赖代理.依赖代理窗口 | [Windows 的 Azure 监视器依赖项](agent-dependency-windows.md#troubleshoot-and-support) |
 | microsoft.azure.security.azurediskencryptionforlinux | [适用于 Linux 的 Azure 磁盘加密](azure-disk-enc-linux.md#troubleshoot-and-support) |
 | microsoft.azure.security.azurediskencryption | [适用于 Windows 的 Azure 磁盘加密](azure-disk-enc-windows.md#troubleshoot-and-support) |
 | microsoft.compute.customscriptextension | [适用于 Windows 的自定义脚本](custom-script-windows.md#troubleshoot-and-support) |
 | microsoft.ostcextensions.customscriptforlinux | [适用于 Linux 的 Desired State Configuration](dsc-linux.md#troubleshoot-and-support) |
 | microsoft.powershell.dsc | [适用于 Windows 的 Desired State Configuration](dsc-windows.md#troubleshoot-and-support) |
-| microsoft.hpccompute.nvidiagpudriverlinux | [适用于 Linux 的 NVIDIA GPU 驱动程序扩展](hpccompute-gpu-linux.md#troubleshoot-and-support) |
+| microsoft.hpccompute.nvidiagpudriverlinux | [NVIDIA GPU Linux 驱动程序扩展](hpccompute-gpu-linux.md#troubleshoot-and-support) |
 | microsoft.hpccompute.nvidiagpudriverwindows | [适用于 Windows 的 NVIDIA GPU 驱动程序扩展](hpccompute-gpu-windows.md#troubleshoot-and-support) |
 | microsoft.azure.security.iaasantimalware | [适用于 Windows 的反恶意软件扩展](iaas-antimalware-windows.md#troubleshoot-and-support) |
 | microsoft.enterprisecloud.monitoring.omsagentforlinux | [用于 Linux 的 Azure Monitor](oms-linux.md#troubleshoot-and-support)
 | microsoft.enterprisecloud.monitoring.microsoftmonitoringagent | [用于 Windows 的 Azure Monitor](oms-windows.md#troubleshoot-and-support) |
-| stackify. linuxagent. stackifylinuxagentextension | [适用于 Linux 的 Stackify 回描](stackify-retrace-linux.md#troubleshoot-and-support) |
+| 堆栈ify.linuxagent.扩展.stackifylinux代理扩展 | [Linux 的堆栈化回溯](stackify-retrace-linux.md#troubleshoot-and-support) |
 | vmaccessforlinux.microsoft.ostcextensions | [为 Linux 重置密码 (VMAccess)](vmaccess.md#troubleshoot-and-support) |
 | microsoft.recoveryservices.vmsnapshot | [适用于 Linux 的快照](vmsnapshot-linux.md#troubleshoot-and-support) |
 | microsoft.recoveryservices.vmsnapshot | [适用于 Windows 的快照](vmsnapshot-windows.md#troubleshoot-and-support) |

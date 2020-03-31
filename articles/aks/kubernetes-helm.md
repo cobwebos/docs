@@ -1,16 +1,16 @@
 ---
 title: 使用 Helm 在 Kubernetes on Azure 中部署容器
-description: 了解如何使用 Helm 打包工具在 Azure Kubernetes 服务（AKS）群集中部署容器
+description: 了解如何使用 Helm 打包工具在 Azure Kubernetes 服务 (AKS) 群集中部署容器
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: zarhoads
 ms.openlocfilehash: 4a9ccaff0e3425c365a64ecb4fbadf3c7aa8dcfb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595172"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序
@@ -21,14 +21,14 @@ ms.locfileid: "77595172"
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门，并[使用 Azure CLI][aks-quickstart-cli]或[使用 Azure 门户][aks-quickstart-portal]。
+本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-还需要安装 Helm CLI，这是在开发系统上运行的客户端。 它使你可以通过 Helm 启动、停止和管理应用程序。 如果使用 Azure Cloud Shell，则已安装 Helm CLI。 有关本地平台的安装说明，请参阅[安装 Helm][helm-install]。
+还需要安装 Helm CLI，这是在开发系统上运行的客户端。 它允许你使用 Helm 启动、停止和管理应用程序。 如果使用 Azure Cloud Shell，则已安装 Helm CLI。 有关本地平台上的安装说明，请参阅安装[Helm][helm-install]。
 
 > [!IMPORTANT]
-> Helm 要在 Linux 节点上运行。 如果群集中有 Windows Server 节点，则必须确保 Helm pod 仅计划在 Linux 节点上运行。 还需要确保您安装的所有 Helm 图表也已计划在正确的节点上运行。 本文中的命令使用[节点选择器][k8s-node-selector]来确保将 pod 安排到正确的节点，而不是所有 Helm 图表都公开节点选择器。 还可以考虑使用群集上的其他选项，例如[taints][taints]。
+> Helm 要在 Linux 节点上运行。 如果群集中具有 Windows Server 节点，则必须确保将 Helm pod 安排仅在 Linux 节点上运行。 还需要确保所安装的所有 Helm 图表也计划在正确的节点上运行。 本文中的命令使用[节点选择器][k8s-node-selector]，确保将 Pod 安排到正确的节点，但并非所有 Helm 图表都可以公开节点选择器。 还可以考虑使用群集上的其他选项，例如[排斥][taints]。
 
-## <a name="verify-your-version-of-helm"></a>验证你的 Helm 版本
+## <a name="verify-your-version-of-helm"></a>验证 Helm 版本
 
 使用 `helm version` 命令来验证已安装的 Helm 版本：
 
@@ -36,7 +36,7 @@ ms.locfileid: "77595172"
 helm version
 ```
 
-以下示例演示了安装 Helm 版本3.0.0：
+以下示例演示了安装的 Helm 版本 3.0.0：
 
 ```console
 $ helm version
@@ -44,13 +44,13 @@ $ helm version
 version.BuildInfo{Version:"v3.0.0", GitCommit:"e29ce2a54e96cd02ccfce88bee4f58bb6e2a28b6", GitTreeState:"clean", GoVersion:"go1.13.4"}
 ```
 
-对于 Helm v3，请按照[Helm v3 部分](#install-an-application-with-helm-v3)中的步骤进行操作。 对于 Helm v2，请按照[Helm v2 部分](#install-an-application-with-helm-v2)中的步骤操作
+对于 Helm v3，请按 [Helm v3 部分](#install-an-application-with-helm-v3)中的步骤操作。 对于 Helm v2，请按 [Helm v2 部分](#install-an-application-with-helm-v2)中的步骤操作
 
 ## <a name="install-an-application-with-helm-v3"></a>使用 Helm v3 安装应用程序
 
 ### <a name="add-the-official-helm-stable-charts-repository"></a>添加官方 Helm 稳定图表存储库
 
-使用[helm][helm-repo-add]存储库命令添加官方 helm 稳定图表存储库。
+使用 [helm repo][helm-repo-add] 命令添加官方 Helm 稳定图表存储库。
 
 ```console
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
@@ -58,7 +58,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 ### <a name="find-helm-charts"></a>查找 Helm 图表
 
-Helm 图表用来将应用程序部署到 Kubernetes 群集中。 若要搜索预创建的 Helm 图表，请使用[Helm search][helm-search]命令：
+Helm 图表用来将应用程序部署到 Kubernetes 群集中。 要搜索预先创建的 Helm 图表，请使用[头盔搜索][helm-search]命令：
 
 ```console
 helm search repo stable
@@ -126,7 +126,7 @@ Update Complete. ⎈ Happy Helming!⎈
 
 ### <a name="run-helm-charts"></a>运行 Helm 图表
 
-若要安装具有 Helm 的图表，请使用[Helm install][helm-install-command]命令，并指定发布名称和要安装的图表的名称。 若要查看如何在操作中安装 Helm 图表，请使用 Helm 图表安装基本 nginx 部署。
+若要使用 Helm 安装图表，请使用 [helm install][helm-install-command] 命令并指定版本名称和要安装的图表的名称。 若要查看实际安装的 Helm 图表，让我们使用 Helm 图表安装基本的 nginx 部署。
 
 ```console
 helm install my-nginx-ingress stable/nginx-ingress \
@@ -154,7 +154,7 @@ You can watch the status by running 'kubectl --namespace default get services -o
 ...
 ```
 
-使用 `kubectl get services` 命令获取服务的*外部 IP* 。 例如，下面的命令显示*nginx 入口控制器*服务的*外部 IP* ：
+使用 `kubectl get services` 命令获取服务的 *EXTERNAL-IP*。 例如，下面的命令显示 *my-nginx-ingress-controller* 服务的 *EXTERNAL-IP*：
 
 ```console
 $ kubectl --namespace default get services -o wide -w my-nginx-ingress-controller
@@ -165,13 +165,13 @@ my-nginx-ingress-controller   LoadBalancer   10.0.123.1     <EXTERNAL-IP>   80:3
 
 ### <a name="list-releases"></a>列出版本
 
-若要查看群集上安装的版本的列表，请使用 `helm list` 命令。
+若要查看群集上已安装的版本列表，请使用 `helm list` 命令。
 
 ```console
 helm list
 ```
 
-以下示例显示了上一步中部署的*nginx*发布：
+以下示例显示了上一步中部署的 *my-nginx-ingress* 版本：
 
 ```console
 $ helm list
@@ -182,13 +182,13 @@ my-nginx-ingress    default     1           2019-11-22 10:08:06.048477 -0600 CST
 
 ### <a name="clean-up-resources"></a>清理资源
 
-在部署 Helm 图表时，会创建若干 Kubernetes 资源。 这些资源包括 pod、部署和服务。 若要清理这些资源，请使用[helm 卸载][helm-cleanup]命令，并指定你的发布名称，如前面的 `helm list` 命令中所示。
+在部署 Helm 图表时，会创建若干 Kubernetes 资源。 这些资源包括 pod、部署和服务。 若要清理这些资源，请使用 [helm uninstall][helm-cleanup] 命令并指定版本名称，如上一个 `helm list` 命令中所示。
 
 ```console
 helm uninstall my-nginx-ingress
 ```
 
-以下示例显示了名为*nginx*的发布：
+下面的示例显示了已卸载的名为 *my-nginx-ingress* 的版本：
 
 ```console
 $ helm uninstall my-nginx-ingress
@@ -200,7 +200,7 @@ release "my-nginx-ingress" uninstalled
 
 ### <a name="create-a-service-account"></a>创建服务帐户
 
-在已启用 RBAC 的 AKS 群集中部署 Helm 之前，需要 Tiller 服务的服务帐户和角色绑定。 有关在启用 RBAC 的群集中保护 Helm/Tiller 的详细信息，请参阅[Tiller、命名空间和 RBAC][tiller-rbac]。 如果 AKS 群集未启用 RBAC，请跳过此步骤。
+在已启用 RBAC 的 AKS 群集中部署 Helm 之前，需要 Tiller 服务的服务帐户和角色绑定。 有关在启用 RBAC 的群集中保护 Helm/Tiller 的详细信息，请参阅 [Tiller、命名空间和 RBAC][tiller-rbac]。 如果 AKS 群集未启用 RBAC，请跳过此步骤。
 
 创建名为 `helm-rbac.yaml` 的文件，并将其复制到以下 YAML 中：
 
@@ -235,11 +235,11 @@ kubectl apply -f helm-rbac.yaml
 
 Helm 客户端和 Tiller 服务使用 TLS/SSL 进行身份验证和相互通信。 此身份验证方法有助于保护 Kubernetes 群集以及可以部署的服务。 为了提高安全性，可以生成自己的签名证书。 每个 Helm 用户都会收到自己的客户端证书，并且 Tiller 将在 Kubernetes 群集中初始化并应用证书。 有关详细信息，请参阅[在 Helm 和 Tiller 之间使用 TLS/SSL][helm2-ssl]。
 
-使用启用 RBAC 的 Kubernetes 群集，可以控制 Tiller 对群集的访问级别。 可以定义部署 Tiller 的 Kubernetes 命名空间，并限制 Tiller 可以在其中部署资源的命名空间。 此方法允许你在不同的命名空间中创建 Tiller 实例并限制部署边界，并将 Helm 客户端的用户范围限定为某些命名空间。 有关详细信息，请参阅[Helm 基于角色的访问控制][helm2-rbac]。
+使用启用 RBAC 的 Kubernetes 群集，可以控制 Tiller 对群集的访问级别。 可以定义部署 Tiller 的 Kubernetes 命名空间，并限制 Tiller 可以在其中部署资源的命名空间。 此方法允许你在不同的命名空间中创建 Tiller 实例并限制部署边界，并将 Helm 客户端的用户范围限定为某些命名空间。 有关详细信息，请参阅 [Helm 基于角色的访问控制][helm2-rbac]。
 
 ### <a name="configure-helm"></a>配置 Helm
 
-若要将基本 Tiller 部署到 AKS 群集，请使用[helm init][helm2-init]命令。 如果群集未启用 RBAC，请删除 `--service-account` 参数和值。 以下示例还将[历史记录-最大值][helm2-history-max]设置为200。
+若要将基本 Tiller 部署到 AKS 群集，请使用 [helm init][helm2-init] 命令。 如果群集未启用 RBAC，请删除 `--service-account` 参数和值。 以下示例还将 [history-max][helm2-history-max] 设置为 200。
 
 如果已为 Tiller 和 Helm 配置了 TLS/SSL，请跳过此基本初始化步骤，而是提供所需的 `--tiller-tls-`，如下一个示例所示。
 
@@ -263,7 +263,7 @@ helm init \
 
 ### <a name="find-helm-charts"></a>查找 Helm 图表
 
-Helm 图表用来将应用程序部署到 Kubernetes 群集中。 若要搜索预创建的 Helm 图表，请使用[Helm search][helm2-search]命令：
+Helm 图表用来将应用程序部署到 Kubernetes 群集中。 要搜索预先创建的 Helm 图表，请使用[头盔搜索][helm2-search]命令：
 
 ```console
 helm search
@@ -317,7 +317,7 @@ Update Complete.
 
 ### <a name="run-helm-charts"></a>运行 Helm 图表
 
-若要安装具有 Helm 的图表，请使用[Helm install][helm2-install-command]命令，并指定要安装的图表的名称。 若要查看如何在操作中安装 Helm 图表，请使用 Helm 图表安装基本 nginx 部署。 如果配置了 TLS/SSL，请添加 `--tls` 参数以使用 Helm 客户端证书。
+若要使用 Helm 安装图表，请使用 [helm install][helm2-install-command] 命令并指定要安装的图表的名称。 若要查看实际安装的 Helm 图表，让我们使用 Helm 图表安装基本的 nginx 部署。 如果配置了 TLS/SSL，请添加 `--tls` 参数以使用 Helm 客户端证书。
 
 ```console
 helm install stable/nginx-ingress \
@@ -352,11 +352,11 @@ flailing-alpaca-nginx-ingress-default-backend  ClusterIP     10.0.44.97  <none> 
 ...
 ```
 
-要填充 nginx 服务的*外部 IP*地址，并允许使用 web 浏览器对其进行访问，需要花费一两分钟的时间。
+需要一两分钟才能填充 nginx-ingress-controller 服务的 EXTERNAL-IP** 地址，并允许你使用 Web 浏览器访问该地址。
 
 ### <a name="list-helm-releases"></a>列出 Helm 版本
 
-若要查看群集上安装的版本的列表，请使用[helm list][helm2-list]命令。 下面的示例显示了上一步中部署的 nginx 版本。 如果配置了 TLS/SSL，请添加 `--tls` 参数以使用 Helm 客户端证书。
+若要查看群集上已安装的版本列表，请使用 [helm list][helm2-list] 命令。 以下示例显示了上一步中部署的 nginx-ingress 版本。 如果配置了 TLS/SSL，请添加 `--tls` 参数以使用 Helm 客户端证书。
 
 ```console
 $ helm list
@@ -367,7 +367,7 @@ flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingres
 
 ### <a name="clean-up-resources"></a>清理资源
 
-在部署 Helm 图表时，会创建若干 Kubernetes 资源。 这些资源包括 pod、部署和服务。 若要清理这些资源，请使用 `helm delete` 命令并指定版本名称，如上一个 `helm list` 命令中所示。 下面的示例删除名为*flailing-alpaca*的版本：
+在部署 Helm 图表时，会创建若干 Kubernetes 资源。 这些资源包括 pod、部署和服务。 若要清理这些资源，请使用 `helm delete` 命令并指定版本名称，如上一个 `helm list` 命令中所示。 以下示例将删除名为 flailing-alpaca 的版本**：
 
 ```console
 $ helm delete flailing-alpaca

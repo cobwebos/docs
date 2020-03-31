@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987016"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门
@@ -24,7 +24,7 @@ ms.locfileid: "76987016"
 
 ## <a name="elastic-database-tools-for-java"></a>适用于 Java 的弹性数据库工具
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 * Java 开发人员工具包 (JDK) 1.8 或更高版本
 * [Maven](https://maven.apache.org/download.cgi)
@@ -70,10 +70,10 @@ ms.locfileid: "76987016"
 
 ## <a name="elastic-database-tools-for-net"></a>适用于 .NET 的弹性数据库工具
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 * 使用 C# 的 Visual Studio 2012 或更高版本。 可以从 [Visual Studio 下载页面](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)下载免费版本。
-* NuGet 2.7 或更高版本。 若要获取最新版本，请参阅[安装 NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)。
+* NuGet 2.7 或更高版本。 要获取最新版本，请参阅安装[NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)。
 
 ### <a name="download-and-run-the-sample-app"></a>下载并运行示例应用
 
@@ -81,11 +81,11 @@ ms.locfileid: "76987016"
 
 若要下载并运行该示例，请遵循以下步骤： 
 
-1. 下载[适用于 AZURE SQL 的弹性数据库工具-入门示例](https://github.com/Azure/elastic-db-tools)。 将示例解压缩到所选位置。
+1. 下载[Azure SQL - 入门示例的弹性数据库工具](https://github.com/Azure/elastic-db-tools)。 将示例解压缩到所选位置。
 
-2. 若要创建项目，请从 C# 目录打开 ElasticScaleStarterKit.sln 解决方案。
+2. 若要创建项目，请从 C#** 目录打开 ElasticScaleStarterKit.sln** 解决方案。
 
-3. 在示例项目的解决方案中打开 app.config 文件。 然后遵循该文件中的说明，添加 Azure SQL 数据库服务器名称和登录信息（用户名和密码）。
+3. 在示例项目的解决方案中打开 app.config** 文件。 然后遵循该文件中的说明，添加 Azure SQL 数据库服务器名称和登录信息（用户名和密码）。
 
 4. 生成并运行应用程序。 出现提示时，请允许 Visual Studio 还原该解决方案的 NuGet 包。 此操作会从 NuGet 下载最新版本的弹性数据库客户端库。
 
@@ -100,27 +100,27 @@ ms.locfileid: "76987016"
 
 ## <a name="key-pieces-of-the-code-sample"></a>重要的代码示例片段
 
-* 管理分片和分片映射：该代码演示如何在 ShardManagementUtils.cs 文件中处理分片、范围和映射。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。  
+* 管理分片和分片映射****：该代码演示如何在 ShardManagementUtils.cs 文件中处理分片、范围和映射**。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。  
 
-* 数据依赖型路由：DataDependentRoutingSample.cs 文件演示了如何向正确的分片路由事务。 有关详细信息，请参阅[数据依赖型路由](https://go.microsoft.com/?linkid=9862596)。 
+* 数据依赖型路由****：DataDependentRoutingSample.cs 文件演示了如何向正确的分片路由事务**。 有关详细信息，请参阅[数据依赖型路由](https://go.microsoft.com/?linkid=9862596)。 
 
-* 查询多个分片：MultiShardQuerySample.cs 文件演示了如何跨多个分片进行查询。 有关详细信息，请参阅[多分片查询](https://go.microsoft.com/?linkid=9862597)。
+* 查询多个分片****：MultiShardQuerySample.cs 文件演示了如何跨多个分片进行查询**。 有关详细信息，请参阅[多分片查询](https://go.microsoft.com/?linkid=9862597)。
 
-* 添加空分片：CreateShardSample.cs 文件中的代码以迭代方式添加新的空分片。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。
+* 添加空分片****：CreateShardSample.cs 文件中的代码以迭代方式添加新的空分片**。 有关详细信息，请参阅[使用分片映射管理器扩大数据库](https://go.microsoft.com/?linkid=9862595)。
 
 ## <a name="other-elastic-scale-operations"></a>其他弹性缩放操作
 
-* 拆分现有分片：拆分分片的功能由拆分/合并工具提供。 有关详细信息，请参阅[在已扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。
+* 拆分现有分片****：拆分分片的功能由拆分/合并工具提供。 有关详细信息，请参阅[在已扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。
 
-* 合并现有分片：分片合并也是使用拆分/合并工具执行的。 有关详细信息，请参阅[在已扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。   
+* 合并现有分片****：分片合并也是使用拆分/合并工具执行的。 有关详细信息，请参阅[在已扩展的云数据库之间移动数据](sql-database-elastic-scale-overview-split-and-merge.md)。   
 
-## <a name="cost"></a>费用
+## <a name="cost"></a>成本
 
 弹性数据库工具库免费。 使用弹性数据库工具时，除 Azure 使用成本外，无需支付其他任何费用。 
 
 例如，示例应用程序会创建新的数据库。 此功能的费用取决于所选的 SQL 数据库版本以及应用程序的 Azure 使用情况。
 
-有关定价信息，请参阅 [SQL 数据库定价详细信息](https://azure.microsoft.com/pricing/details/sql-database/)。
+有关定价信息，请参阅[SQL 数据库定价详细信息](https://azure.microsoft.com/pricing/details/sql-database/)。
 
 ## <a name="next-steps"></a>后续步骤
 

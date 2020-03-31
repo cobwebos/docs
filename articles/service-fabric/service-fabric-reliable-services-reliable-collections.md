@@ -1,13 +1,13 @@
 ---
-title: 可靠集合简介
+title: 可靠馆藏简介
 description: Service Fabric 有状态服务提供可靠集合，方便用户编写高度可用、高度可缩放且低延迟的云应用程序。
 ms.topic: conceptual
 ms.date: 1/3/2019
 ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609717"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric 有状态服务中的可靠集合简介
@@ -36,7 +36,7 @@ Reliable Collections 提供全新的非常一致保证，使应用程序状态�
 可靠集合 API 由并发集合 API（位于 **System.Collections.Concurrent** 命名空间中）演变而来：
 
 * 异步：返回任务；不同于并发集合，其操作会受到复制及保存。
-* No out 参数：使用 `ConditionalValue<T>` 返回 `bool` 和值，而不是输出参数。 `ConditionalValue<T>` 与 `Nullable<T>` 类似，但不要求 T 是一个 struct。
+* 无出参数：用于`ConditionalValue<T>`返回 和`bool`值而不是 out 参数。 `ConditionalValue<T>` 与 `Nullable<T>` 类似，但不要求 T 是一个 struct。
 * 事务：使用事务对象，让用户可以对事务中多个 Reliable Collections 上的操作分组。
 
 目前，**Microsoft.ServiceFabric.Data.Collections** 包含三个集合：
@@ -47,7 +47,7 @@ Reliable Collections 提供全新的非常一致保证，使应用程序状态�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Reliable Collection 指导原则和建议](service-fabric-reliable-services-reliable-collections-guidelines.md)
+* [可靠的收集指南&建议](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [事务和锁](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * 管理数据
@@ -55,7 +55,7 @@ Reliable Collections 提供全新的非常一致保证，使应用程序状态�
   * [通知](service-fabric-reliable-services-notifications.md)
   * [Reliable Collection 序列化](service-fabric-reliable-services-reliable-collections-serialization.md)
   * [序列化和升级](service-fabric-application-upgrade-data-serialization.md)
-  * [可靠状态管理器和配置](service-fabric-reliable-services-configuration.md)
+  * [可靠的状态管理器配置](service-fabric-reliable-services-configuration.md)
 * 其他
-  * [Reliable Services 快速启动](service-fabric-reliable-services-quick-start.md)
-  * [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [可靠的服务快速启动](service-fabric-reliable-services-quick-start.md)
+  * [可靠集合的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

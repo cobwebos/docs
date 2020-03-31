@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251240"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>自定义 Media Encoder Standard 预设  
@@ -30,9 +30,9 @@ ms.locfileid: "79251240"
 本文介绍如何使用 [H264 多比特率 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) 预设并减少层数，从而自定义预设。 [自定义 Media Encoder Standard 预设](media-services-advanced-encoding-with-mes.md)这篇文章演示了可用于执行高级编码任务的自定义预设。
 
 > [!NOTE]
-> 本文中所述的自定义预设不能用于[媒体服务 V3](https://docs.microsoft.com/azure/media-services/latest/)转换或 CLI 命令。 有关更多详细信息，请参阅[v2 中的迁移指南](../latest/migrate-from-v2-to-v3.md)。
+> 本文中所述的自定义预设不能用于[媒体服务 V3](https://docs.microsoft.com/azure/media-services/latest/) 转换或 CLI 命令。 有关更多详细信息，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)。
 
-## <a id="customizing_presets"></a>自定义 MES 预设
+## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>自定义 MES 预设
 
 ### <a name="original-preset"></a>原始预设
 
@@ -113,7 +113,7 @@ ms.locfileid: "79251240"
     }  
 ```
 
-## <a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
 
 以下代码示例使用媒体服务 .NET SDK 执行下列任务：
 
@@ -132,7 +132,7 @@ ms.locfileid: "79251240"
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，使用 连接信息填充 app.config 文件，如使用[.NET 的媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>示例   
 
@@ -264,9 +264,9 @@ namespace CustomizeMESPresests
 }
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
-- [如何使用 CLI 通过自定义转换进行编码](../latest/custom-preset-cli-howto.md)
+- [如何使用 CLI 对自定义转换进行编码](../latest/custom-preset-cli-howto.md)
 - [使用媒体服务 v3 进行编码](../latest/encoding-concept.md)
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

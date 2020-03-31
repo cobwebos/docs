@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 06412a1f08f1f242a3f3bd9be17b795ee09fcf9d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651873"
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo UI 元素
@@ -64,7 +64,7 @@ ms.locfileid: "75651873"
 - 存储帐户名称将基于 `count` 按字典顺序生成。 例如，如果 `count` 为 10，则存储帐户名称以两位整数（01、02、03）结尾。
 - `defaultValue.prefix` 的默认值为 **null**，`defaultValue.type` 的默认值为 **Premium_LRS**。
 - 将隐藏未在 `constraints.allowedTypes` 中指定的任何类型，会显示未在 `constraints.excludedTypes` 中指定的任何类型。 `constraints.allowedTypes` 和 `constraints.excludedTypes` 都是可选的，并且不能同时使用。
-- 除了生成存储帐户名称之外，`count` 还用于为元素设置合适的乘数。 它支持静态值（例如 **2**），也支持来自其他元素的动态值（例如 `[steps('step1').storageAccountCount]`）。 默认值是 **1**秒。
+- 除了生成存储帐户名称之外，`count` 还用于为元素设置合适的乘数。 它支持静态值（例如 **2**），也支持来自其他元素的动态值（例如 `[steps('step1').storageAccountCount]`）。 默认值为**1**。
 
 ## <a name="next-steps"></a>后续步骤
 

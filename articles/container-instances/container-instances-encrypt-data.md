@@ -1,79 +1,79 @@
 ---
 title: 加密部署数据
-description: 了解为容器实例资源保留的数据加密，以及如何使用客户管理的密钥对数据进行加密
+description: 了解为容器实例资源保存的数据的加密，以及如何使用客户管理的密钥来加密数据
 ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79080354"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署数据
 
-在云中运行 Azure 容器实例（ACI）资源时，ACI 服务会收集并保留与你的容器相关的数据。 当此数据保存在云中时，ACI 会自动对其进行加密。 此加密可保护你的数据，以帮助你满足组织的安全性和符合性承诺。 ACI 还提供了用自己的密钥对数据进行加密的选项，使您可以更好地控制与 ACI 部署相关的数据。
+在云中运行 Azure 容器实例 (ACI) 资源时，ACI 服务将收集并保存与容器相关的数据。 将此数据保存在云中时，ACI 会自动对其进行加密。 这种加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。 ACI 还提供相应的选项让你使用自己的密钥来加密数据，使你可以更好地控制与 ACI 部署相关的数据。
 
 ## <a name="about-aci-data-encryption"></a>关于 ACI 数据加密 
 
-使用256位 AES 加密对 ACI 中的数据进行加密和解密。 它适用于所有 ACI 部署，无需修改部署或容器即可利用此加密。 这包括有关部署、环境变量、要传入容器的密钥的元数据，以及在停止容器后保存的日志，以便仍可查看这些信息。 加密不会影响容器组的性能，并且无需额外付费。
+ACI 中的数据是使用 256 位 AES 加密法加密和解密的。 此加密法已为所有 ACI 部署启用，无需修改部署或容器即可利用它。 这些数据包括有关部署的元数据、环境变量、要传入容器的密钥，以及在停止容器后保存的日志（以便仍可以查看这些日志）。 加密不影响容器组的性能，并且不产生额外的费用。
 
 ## <a name="encryption-key-management"></a>加密密钥管理
 
-你可以依赖于 Microsoft 托管的密钥来加密容器数据，也可以通过自己的密钥来管理加密。 下表比较了这些选项： 
+您可以依赖 Microsoft 管理的密钥来加密容器数据，也可以使用自己的密钥管理加密。 下表对这些选项做了比较： 
 
-|    |    Microsoft 托管的密钥     |     客户管理的密钥     |
+|    |    Microsoft 管理的密钥     |     客户管理的密钥     |
 |----|----|----|
 |    加密/解密操作    |    Azure    |    Azure    |
 |    密钥存储    |    Microsoft 密钥存储    |    Azure Key Vault    |
-|    关键轮换责任    |    Microsoft    |    客户    |
-|    密钥访问权限    |    仅限 Microsoft    |    Microsoft，客户    |
+|    密钥轮换责任    |    Microsoft    |    客户    |
+|    密钥访问权限    |    仅限 Microsoft    |    Microsoft、客户    |
 
-本文档的其余部分涵盖了用密钥（客户管理的密钥）对 ACI 部署数据进行加密所需的步骤。 
+本文档的余下内容将介绍使用你自己的密钥（客户管理的密钥）加密 ACI 部署数据所要执行的步骤。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="encrypt-data-with-a-customer-managed-key"></a>使用客户管理的密钥加密数据
+## <a name="encrypt-data-with-a-customer-managed-key"></a>使用客户管理的密钥来加密数据
 
 ### <a name="create-service-principal-for-aci"></a>为 ACI 创建服务主体
 
-第一步是确保[azure 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)具有分配给 Azure 容器实例服务授予权限的服务主体。 
+第一步是确保为 [Azure 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)分配一个服务主体，用于向 Azure 容器实例服务授予权限。 
 
 > [!IMPORTANT]
-> 若要运行以下命令并成功创建服务主体，请确认你有权在租户中创建服务主体。
+> 为了运行以下命令并成功创建服务主体，请确认您具有在租户中创建服务主体的权限。
 >
 
-以下 CLI 命令将在你的 Azure 环境中设置 ACI SP：
+以下 CLI 命令将在 Azure 环境中设置 ACI SP：
 
 ```azurecli-interactive
 az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
-运行此命令的输出应显示已设置了 "displayName" 的服务主体："Azure 容器实例服务"。
+运行此命令的输出应显示已设置使用"显示名称"："Azure 容器实例服务"的服务主体。
 
-如果无法成功创建服务主体：
-* 确认你在租户中有权执行此操作
-* 检查是否已存在租户中的服务主体，以便部署到 ACI。 为此，可以运行 `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` 并改用该服务主体
+如果您无法成功创建服务主体：
+* 确认您具有在租户中执行此操作的权限
+* 检查租户中是否存在要部署到 ACI 的服务主体。 您可以通过运行`az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9`并使用该服务主体来执行此操作
 
 ### <a name="create-a-key-vault-resource"></a>创建 Key Vault 资源
 
-使用[Azure 门户](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)、 [CLI](https://docs.microsoft.com/azure/key-vault/quick-create-cli)或[PowerShell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell)创建 Azure Key Vault。 
+使用 [Azure 门户](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)、[CLI](https://docs.microsoft.com/azure/key-vault/quick-create-cli) 或 [PowerShell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell) 创建一个 Azure Key Vault。 
 
-对于密钥保管库的属性，请使用以下准则： 
-* 姓名：必须提供唯一的名称。 
-* 订阅：选择订阅。
-* 在 "资源组" 下，选择现有资源组，或创建新资源组，并输入资源组名称。
+对于 Key Vault 的属性，请使用以下指导原则： 
+* 名称：必须提供唯一的名称。 
+* 订阅：选择一个订阅。
+* 在“资源组”下，选择现有的资源组，或创建新的资源组并输入资源组名称。
 * 在“位置”下拉菜单中选择一个位置。
-* 可以将其他选项保留为其默认值，也可以根据其他要求进行选择。
+* 可将其他选项保留默认值，或者根据其他要求进行选择。
 
 > [!IMPORTANT]
-> 使用客户管理的密钥加密 ACI 部署模板时，建议在 key vault 上设置以下两个属性，软删除并不清除。 默认情况下不启用这些属性，但可以使用 PowerShell 或 Azure CLI 在新的或现有的密钥保管库上启用。
+> 使用客户管理的密钥加密 ACI 部署模板时，建议对 Key Vault 设置以下两个属性：“软删除”和“不清除”。 默认不会启用这些属性，但可以使用 PowerShell 或 Azure CLI 对新的或现有的 Key Vault 启用。
 
 ### <a name="generate-a-new-key"></a>生成新密钥 
 
-创建密钥保管库后，请导航到 Azure 门户中的资源。 在资源边栏选项卡的左侧导航菜单中的 "设置" 下，单击 "**密钥**"。 在 "项" 的视图上，单击 "生成/导入" 生成新密钥。 此密钥的任何唯一名称，以及任何其他基于要求的首选项。 
+创建 Key Vault 后，在 Azure 门户中导航到该资源。 在资源边栏选项卡的左侧导航菜单中的“设置”下，单击“密钥”。**** 在“密钥”的视图中，单击“生成/导入”以生成新密钥。 对此密钥使用任何唯一名称，并根据要求设置任何其他首选项。 
 
 ![生成新密钥](./media/container-instances-encrypt-data/generate-key.png)
 
@@ -81,28 +81,28 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 创建新的访问策略，以允许 ACI 服务访问你的密钥。
 
-* 生成密钥后，返回到密钥保管库资源边栏选项卡的 "设置" 下，单击 "**访问策略**"。
-* 在密钥保管库的 "访问策略" 页上，单击 "**添加访问策略**"。
-* 设置*密钥权限*，使其包含**Get**和**解包密钥**![设置密钥权限](./media/container-instances-encrypt-data/set-key-permissions.png)
-* 对于 "*选择主体*"，请选择 " **Azure 容器实例服务**"
-* 单击底部的 "**添加**" 
+* 生成密钥后，返回到 Key Vault 资源边栏选项卡，在“设置”下单击“访问策略”。****
+* 在 Key Vault 的“访问策略”页上，单击“添加访问策略”。****
+* 将*密钥权限*设置为包括**获取**和**取消包装密钥**![集密钥权限](./media/container-instances-encrypt-data/set-key-permissions.png)
+* 对于“选择主体”，请选择“Azure 容器实例服务”******
+* 在底部单击“添加”**** 
 
-访问策略现在应显示在密钥保管库的访问策略中。
+现在，该访问策略应会显示在 Key Vault 的访问策略中。
 
-![新建访问策略](./media/container-instances-encrypt-data/access-policy.png)
+![新访问策略](./media/container-instances-encrypt-data/access-policy.png)
 
 ### <a name="modify-your-json-deployment-template"></a>修改 JSON 部署模板
 
 > [!IMPORTANT]
-> 使用客户管理的密钥加密部署数据在当前推出的最新 API 版本（2019-12-01）中提供。在部署模板中指定此 API 版本。 如果你有任何问题，请联系 Azure 支持部门。
+> 使用客户管理的密钥加密部署数据，可在当前推出的最新 API 版本 （2019-12-01） 中提供。在部署模板中指定此 API 版本。 如果在执行此操作时遇到任何问题，请联系 Azure 支持部门。
 
-设置密钥保管库密钥和访问策略后，将以下属性添加到 ACI 部署模板。 有关使用 [教程中的模板部署 ACI 资源的详细信息，请参阅：使用资源管理器模板](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)部署多容器组。 
-* 在 "`resources`" 下，将 `apiVersion` 设置为 "`2019-12-01`"。
-* 在部署模板的容器组属性部分下，添加一个 `encryptionProperties`，其中包含以下值：
-  * `vaultBaseUrl`：密钥保管库的 DNS 名称，可在门户中密钥保管库资源的 "概述" 边栏选项卡上找到。
-  * `keyName`：之前生成的密钥的名称
-  * `keyVersion`：密钥的当前版本。 若要找到此项，可单击密钥本身（在 key vault 资源的 "设置" 部分中的 "密钥" 下）
-* 在容器组属性下，添加值为 `Standard`的 `sku` 属性。 API 版本2019-12-01 中需要 `sku` 属性。
+设置密钥保管库密钥和访问策略后，将以下属性添加到 ACI 部署模板。 了解有关使用教程中的模板部署 ACI 资源的更多信息[：使用资源管理器模板部署多容器组](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)。 
+* 在`resources`下`apiVersion`，`2019-12-01`设置为 。
+* 在部署模板的容器组属性部分下，添加 包含`encryptionProperties`以下值的 。
+  * `vaultBaseUrl`：密钥保管库的 DNS 名称，可在门户中密钥保管库资源的概述边栏选项卡上找到
+  * `keyName`：前面生成的密钥的名称
+  * `keyVersion`：密钥的当前版本。 单击密钥本身可找到此值（在 Key Vault 资源的“设置”部分的“密钥”下）
+* 在容器组属性下，添加`sku`值 的属性`Standard`。 该`sku`属性在 API 版本 2019-12-01 中是必需的。
 
 以下模板代码段显示了用于加密部署数据的其他属性：
 
@@ -129,7 +129,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ]
 ```
 
-下面是一个完整的模板，与 [教程中的模板改编：使用资源管理器模板](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)部署多容器组。 
+下面是一个完整的模板，改编自教程中的模板[：使用资源管理器模板部署多容器组](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)。 
 
 ```json
 {
@@ -225,9 +225,9 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 ### <a name="deploy-your-resources"></a>部署资源
 
-如果在桌面上创建并编辑了模板文件，则可以通过将文件拖动到 Cloud Shell 目录上，将其上传到该文件。 
+如果您在桌面上创建并编辑了模板文件，则可以通过将文件拖入云外壳目录来将其上载到云外壳目录。 
 
-使用[az group create][az-group-create]命令创建资源组。
+使用“[az group create][az-group-create]”命令创建资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -239,7 +239,7 @@ az group create --name myResourceGroup --location eastus
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-将在几秒钟内收到来自 Azure 的初始响应。 部署完成后，所有与该服务相关的数据都将使用您提供的密钥进行加密。
+将在几秒钟内收到来自 Azure 的初始响应。 部署完成后，所有与之相关且由 ACI 服务保存的数据将使用提供的密钥进行加密。
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create

@@ -12,27 +12,27 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260808"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
 
-本文介绍了 Azure 数据工厂复制活动在执行数据复制时如何将架构映射和数据类型从源数据映射到接收器数据。
+本文介绍在执行数据复制操作时，Azure 数据工厂复制活动如何将架构和数据类型从源数据映射到接收器数据。
 
 ## <a name="schema-mapping"></a>架构映射
 
-将数据从源复制到接收器时，将应用列映射。 默认情况下，复制活动**按列名称将源数据映射到接收器**。 可以指定[显式映射](#explicit-mapping)，根据需要自定义列映射。 更具体地说，复制活动包含以下内容：
+将数据从源复制到接收器时，适用列映射。 复制活动默认按列名称将源数据映射到接收器****。 可以指定[显式映射](#explicit-mapping)，根据需要自定义列映射。 更具体地说，复制活动包含以下内容：
 
 1. 从源中读取数据并确定源架构
-2. 使用默认列映射按名称映射列，或者在指定时应用显式列映射。
+2. 使用默认列映射按名称映射列，或者应用显式列映射（如果已指定）。
 3. 将数据写入接收器
 
 ### <a name="explicit-mapping"></a>显式映射
 
-可以指定要在复制活动中映射的列 > `translator` -> `mappings` 属性。 下面的示例定义管道中的复制活动，将数据从分隔文本复制到 Azure SQL 数据库。
+可以指定要在复制活动中映射的列 -> `translator` -> `mappings` 属性。 以下示例在管道中定义一个复制活动，可将数据从带分隔符的文本复制到 Azure SQL 数据库。
 
 ```json
 {
@@ -85,33 +85,33 @@ ms.locfileid: "79260808"
 }
 ```
 
-具有 `source` 和 `sink`的 `translator` -> `mappings` > 对象支持以下属性：
+以下属性在 `translator` -> `mappings` 下带 `source` 和 `sink` 的对象中受支持：
 
-| properties | 说明                                                  | 必选 |
+| properties | 描述                                                  | 必选 |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | 源或接收器列的名称。                           | 是      |
-| 序号  | 列索引。 从1开始。 <br>在未使用标题行的情况下使用带分隔符的文本时应用和要求。 | 否       |
-| 路径     | 要提取或映射的每个字段的 JSON 路径表达式。 适用于层次结构数据，如 MongoDB/REST。<br>对于根对象下的字段，JSON 路径以根 $ 开头对于 `collectionReference` 属性选择的数组中的字段，JSON 路径从数组元素开始。 | 否       |
+| 序号  | 列索引。 从 1 开始。 <br>在使用带分隔符的文本但没有标头行时应用，为必填项。 | 否       |
+| 路径     | 要提取或映射的每个字段的 JSON 路径表达式。 适用于分层数据，例如 MongoDB/REST。<br>对于根对象下的字段，JSON 路径以根 $ 开头；对于 `collectionReference` 属性选择的数组内的字段，JSON 路径从数组元素开始。 | 否       |
 | type     | 源或接收器列的数据工厂临时数据类型。 | 否       |
-| culture  | Source 或 sink 列的区域性。 <br>当类型为 `Datetime` 或 `Datetimeoffset`时应用。 默认为 `en-us`。 | 否       |
-| format   | 当类型为 `Datetime` 或 `Datetimeoffset`时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否       |
+| culture  | 源或接收器列的区域性。 <br>当类型为 `Datetime` 或 `Datetimeoffset` 时应用。 默认为 `en-us`。 | 否       |
+| format   | 当类型为 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否       |
 
-除了具有 `source` 和 `sink`的对象之外，`translator` -> `mappings` 还支持以下属性：
+以下属性在 `translator` -> `mappings` 下带 `source` 和 `sink` 的对象中受支持：
 
-| properties            | 说明                                                  | 必选 |
+| properties            | 描述                                                  | 必选 |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| collectionReference | 仅当分层数据（如 MongoDB/REST）为源时才受支持。<br>若要进行迭代操作，以同一模式从**数组字段中**的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 | 否       |
+| collectionReference | 仅当分层数据（例如 MongoDB/REST）为源时，才支持此项。<br>若要进行迭代操作，以同一模式从**数组字段中**的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 | 否       |
 
 ### <a name="alternative-column-mapping"></a>备用列映射
 
-您可以指定复制活动 > `translator` -> `columnMappings`，以在表格格式的数据之间进行映射。 在这种情况下，输入和输出数据集都需要 "结构" 部分。 列映射支持将源数据集“structure”中的所有列或列子集接收器数据集“structure”中的所有列。 以下是导致异常的错误条件：
+可以指定复制活动 -> `translator` -> `columnMappings`，在表格形式的数据之间进行映射。 在这种情况下，输入和输出数据集都需要“structure”节。 列映射支持将源数据集“structure”中的所有列或列子集接收器数据集“structure”中的所有列****。 以下是导致异常的错误条件：
 
 * 源数据存储查询结果中没有输入数据集“structure”部分中指定的列名称。
 * 接收器数据存储（如果具有预定义架构）没有输出数据集“structure”部分中指定的列名称。
 * 接收器数据集“structure”中的列数量多于或少于映射中指定的数量。
 * 重复的映射。
 
-在下面的示例中，输入数据集具有一个结构，它指向本地 Oracle 数据库中的一个表。
+在以下示例中，输入数据集有一个结构，并且它指向本地 Oracle 数据库中的表。
 
 ```json
 {
@@ -135,7 +135,7 @@ ms.locfileid: "79260808"
 }
 ```
 
-在此示例中，输出数据集具有一个结构，并指向 Salesfoce 中的表。
+在本示例中，输出数据集有一个结构，并指向 Salesfoce 中的表。
 
 ```json
 {
@@ -159,7 +159,7 @@ ms.locfileid: "79260808"
 }
 ```
 
-以下 JSON 定义管道中的复制活动。 使用**转换器** -> **columnMappings**属性将源中的列映射到接收器中的列。
+以下 JSON 定义管道中的复制活动。 使用 **"翻译器** -> **"列映射**属性将源映射到接收器中的列的列。
 
 ```json
 {
@@ -198,12 +198,12 @@ ms.locfileid: "79260808"
 
 ### <a name="alternative-schema-mapping"></a>备用架构映射
 
-您可以指定 "复制活动->" `translator` -> "`schemaMapping`" 以在分层形状的数据和表格格式的数据之间进行映射，例如从 MongoDB/REST 复制到文本文件并从 Oracle 复制到 Azure Cosmos DB 的 API for MongoDB。 复制活动 `translator` 部分支持以下属性：
+可以指定复制活动 -> `translator` -> `schemaMapping`，以便在分层数据和表格形式的数据之间进行映射（例如，将数据从 MongoDB/REST 复制到文本文件以及从 Oracle 复制到 Auzre Cosmos DB 的 API for MongoDB）。 复制活动 `translator` 部分支持以下属性：
 
-| properties | 说明 | 必选 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动转换器的 type 属性必须设置为： **TabularTranslator** | 是 |
-| schemaMapping | 键值对的集合，表示**从源端到接收器端**的映射关系。<br/>- **Key：** 表示源。 对于 "**表格源**"，请指定在数据集结构中定义的列名称;对于 "**分层源**"，请为每个要提取和映射的字段指定 JSON 路径表达式。<br>- **值：** 表示接收器。 对于**表格接收器**，指定数据集结构中定义的列名称;对于**分层接收器**，请为每个要提取和映射的字段指定 JSON 路径表达式。 <br>对于层次结构数据，对于根对象下的字段，JSON 路径以根 $ 开头对于 `collectionReference` 属性选择的数组中的字段，JSON 路径从数组元素开始。  | 是 |
+| type | 必须将复制活动转换器的类型属性设置为：**表格翻译器** | 是 |
+| schemaMapping | 键值对的集合，代表**从源端到接收器端**的映射关系。<br/>- **键：** 代表源。 对于**表格源**，指定数据集结构中定义的列名称；对于**分层源**，指定要提取和映射的每个字段的 JSON 路径表达式。<br>- **值：** 代表接收器。 对于**表格接收器**，指定数据集结构中定义的列名称；对于**分层接收器**，指定要提取和映射的每个字段的 JSON 路径表达式。 <br>在使用分层数据时，对于根对象下的字段，JSON 路径以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，JSON 路径以数组元素开头。  | 是 |
 | collectionReference | 若要进行迭代操作，以同一模式从**数组字段中**的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 仅当分层数据为源时，才支持此属性。 | 否 |
 
 **示例：从 MongoDB 复制到 Oracle：**
@@ -235,7 +235,7 @@ ms.locfileid: "79260808"
 }
 ```
 
-而你需要按以下格式通过平展数组中数据（order_pd 和 order_price）的方式将其复制到 Azure SQL 表中，并使用常见的根信息（数字、日期和城市）进行交叉联接：
+而你需要按以下格式通过平展数组中数据（order_pd 和 order_price）的方式将其复制到 Azure SQL 表中，并使用常见的根信息（数字、日期和城市）** 进行交叉联接：**
 
 | orderNumber | orderDate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |

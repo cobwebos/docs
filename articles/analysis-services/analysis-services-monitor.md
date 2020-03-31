@@ -1,6 +1,6 @@
 ---
 title: 监视 Azure Analysis Services 服务器指标 | Microsoft Docs
-description: 了解 Analysis Services 如何使用 Azure 指标资源管理器，这是门户中的一个免费工具，可帮助你监视服务器的性能和运行状况。
+description: 了解 Analysis Services 如何使用 Azure 指标资源管理器（门户中的一个免费工具）来帮助监视服务器的性能和运行状况。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,26 +8,26 @@ ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252800"
 ---
 # <a name="monitor-server-metrics"></a>监视服务器指标
 
-Analysis Services 提供 Azure 指标资源管理器中的指标，它是门户中的一个免费工具，可帮助你监视服务器的性能和运行状况。 例如，监视内存和 CPU 使用率、客户端连接数和查询资源消耗量。 Analysis Services 使用与大多数其他 Azure 服务相同的监视框架。 若要了解详细信息，请参阅[Azure 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)入门。
+Analysis Services 在 Azure 指标资源管理器（门户中的一个免费工具）中提供指标，以帮助你监视服务器的性能和运行状况。 例如，监视内存和 CPU 使用率、客户端连接数和查询资源消耗量。 Analysis Services 使用与大多数其他 Azure 服务相同的监视框架。 若要了解详细信息，请参阅 [Azure 指标资源管理器入门](../azure-monitor/platform/metrics-getting-started.md)。
 
 若要执行更深入的诊断、跟踪性能，并确定跨资源组或订阅中的多个服务资源的趋势，请使用 [Azure Monitor](../azure-monitor/overview.md)。 Azure Monitor（服务）可能会导致计费服务。
 
 
 ## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>监视 Analysis Services 服务器指标
 
-1. 在 Azure 门户中，选择“指标”。
+1. 在 Azure 门户中，选择“指标”****。
 
     ![在 Azure 门户中监视](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. 在 "**度量**值" 中，选择要包括在图表中的度量值。 
+2. 在**指标**中，选择要在图表中包括的指标。 
 
     ![监视图表](./media/analysis-services-monitor/aas-monitor-chart.png)
 
@@ -37,7 +37,7 @@ Analysis Services 提供 Azure 指标资源管理器中的指标，它是门户�
 
 使用此表可确定哪些指标最适用于监视方案。 在同一图表上只能显示相同单位的指标。
 
-|指标|指标显示名称|单位|聚合类型|说明|
+|指标|指标显示名称|单位|聚合类型|描述|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|命令池作业队列长度|Count|平均值|命令线程池队列中的作业数。|
 |CurrentConnections|连接: 当前连接数|Count|平均值|当前已建立的客户端连接的数量。|
@@ -54,10 +54,10 @@ Analysis Services 提供 Azure 指标资源管理器中的指标，它是门户�
 |MemoryLimitLow|内存: 内存下限|字节|平均值|内存下限，来自配置文件。|
 |MemoryLimitVertiPaq|内存: 内存 VertiPaq 限制|字节|平均值|内存中限制，来自配置文件。|
 |MemoryUsage|内存: 内存使用量|字节|平均值|服务器进程的内存使用量（在计算清理器内存价格时使用）。 等于计数器 Process\PrivateBytes 加上内存映射的数据的大小，并且将忽略由内存中分析引擎 (VertiPaq) 映射或分配的超出了引擎内存限制的任何内存。|
-|private_bytes_metric|专用字节 |字节|平均值|Analysis Services 引擎进程和混合容器进程分配的内存总量，不包括与其他进程共享的内存。|
-|virtual_bytes_metric|虚拟字节 |字节|平均值|Analysis Services 引擎进程和混合容器进程使用的虚拟地址空间的当前大小。|
-|mashup_engine_private_bytes_metric|M 引擎专用字节数 |字节|平均值|已分配的内存混合容器进程的总量，不包括与其他进程共享的内存。|
-|mashup_engine_virtual_bytes_metric|M 引擎虚拟字节数 |字节|平均值|当前正在使用的虚拟地址空间混合容器进程的大小。|
+|private_bytes_metric|专用字节 |字节|平均值|Analysis Services 引擎进程和糅合容器进程已分配的内存总量，不包括与其他进程共享的内存。|
+|virtual_bytes_metric|虚拟字节 |字节|平均值|Analysis Services 引擎进程和糅合容器进程正在使用的虚拟地址空间的当前大小。|
+|mashup_engine_private_bytes_metric|M 引擎专用字节数 |字节|平均值|糅合容器进程已分配的内存总量，不包括与其他进程共享的内存。|
+|mashup_engine_virtual_bytes_metric|M 引擎虚拟字节数 |字节|平均值|糅合容器进程正在使用的虚拟地址空间的当前大小。|
 |Quota|内存: 配额|字节|平均值|当前内存配额（字节）。 内存配额也称为内存授予或内存预留。|
 |QuotaBlocked|内存: 阻止的配额|Count|平均值|在其他内存配额被释放之前已阻止的当前的配额请求数。|
 |VertiPaqNonpaged|内存: VertiPaq 未分页|字节|平均值|工作集中被锁定的供内存中引擎使用的内存字节数。|
@@ -88,6 +88,6 @@ Analysis Services 提供 Azure 指标资源管理器中的指标，它是门户�
 |TotalConnectionRequests|连接请求总数|Count|平均值|连接请求总数。 |
 
 ## <a name="next-steps"></a>后续步骤
-[Azure Monitor 概述](../azure-monitor/overview.md)      
-[Azure 指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)     入门  
+[Azure 监视器概述](../azure-monitor/overview.md)      
+[使用 Azure 指标资源管理器入门](../azure-monitor/platform/metrics-getting-started.md)      
 [Azure Monitor REST API 中的指标](/rest/api/monitor/metrics)

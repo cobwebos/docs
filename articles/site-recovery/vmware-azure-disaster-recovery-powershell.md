@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Revoery 中的 PowerShell 设置 VMware 灾难恢复
+title: 使用 Azure 站点回收中的 PowerShell 设置 VMware 灾难恢复
 description: 了解如何使用 PowerShell 在 Azure Site Recovery 中设置复制和故障转移到 Azure 以进行 VMware VM 的灾难恢复。
 author: sujayt
 manager: rochakm
@@ -8,10 +8,10 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257194"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复
@@ -25,28 +25,28 @@ ms.locfileid: "79257194"
 > - 在保管库中验证服务器注册。
 > - 设置复制，包括复制策略。 添加 vCenter Server，并发现 VM。
 > - 添加 vCenter Server 并发现
-> - 创建存储帐户以保存复制日志或数据，并复制 Vm。
-> - 执行故障转移。 配置故障转移设置，执行用于复制虚拟机的设置。
+> - 创建存储帐户以保存复制日志或数据，并复制 VM。
+> - 执行故障转移。 配置故障转移设置，执行复制虚拟机的设置。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始之前：
 
 - 请确保了解[方案体系结构和组件](vmware-azure-architecture.md)。
-- 查看所有组件的[支持要求](site-recovery-support-matrix-to-azure.md)。
-- 你有 Azure PowerShell `Az` 模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/azure/install-az-ps)。
+- 查看所有组件[的支持要求](site-recovery-support-matrix-to-azure.md)。
+- 设置 Azure PowerShell `Az` 模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/azure/install-az-ps)。
 
 ## <a name="log-into-azure"></a>登录到 Azure
 
-使用 AzAccount cmdlet 登录到 Azure 订阅：
+使用 Connect-AzAccount cmdlet 登录到 Azure 订阅：
 
 ```azurepowershell
 Connect-AzAccount
 ```
-选择要将 VMware 虚拟机复制到的 Azure 订阅。 使用 AzSubscription cmdlet 获取有权访问的 Azure 订阅的列表。 使用 AzSubscription cmdlet 选择要使用的 Azure 订阅。
+选择要将 VMware 虚拟机复制到的 Azure 订阅。 使用 Get-AzSubscription cmdlet 获取你有权访问的 Azure 订阅的列表。 使用 Select-AzSubscription cmdlet 选择要使用的 Azure 订阅。
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionName "ASR Test Subscription"
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 使用 Set-ASRVaultContext cmdlet 设置保管库上下文。 设置后，PowerShell 会话中的后续 Azure Site Recovery 操作将在所选保管库的上下文中执行。
 
 > [!TIP]
-> Azure Site Recovery PowerShell 模块（Az Microsoft.recoveryservices module）为大多数 cmdlet 提供了易于使用的别名。 本模块中的 cmdlet 采用 *\<operation\<> 操作* 的形式 >，并具有采用\<> 操作格式\<>*操作* 的等效别名。 可以替换 cmdlet 别名以方便使用。
+> Azure Site Recovery PowerShell 模块（Az.RecoveryServices 模块）附带了大多数 cmdlet 的易用别名。 模块中的 cmdlet 采用> * \<**-AzRecoveryServicesAsr**\<对象>* 窗体，并且具有等效别名，这些别名采用>*\<操作 **-ASR**\<对象>。 * 可以替换 cmdlet 别名以便于使用。
 
 在以下示例中，使用来自 $vault 变量的保管库详细信息指定 PowerShell 会话的保管库上下文。
 
@@ -118,7 +118,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-作为 Set-asrvaultcontext cmdlet 的替代方法，还可以使用 AzRecoveryServicesAsrVaultSettingsFile cmdlet 来设置保管库上下文。 将保管库注册密钥文件所在的路径指定为 AzRecoveryServicesAsrVaultSettingsFile cmdlet 的-path 参数。 例如：
+除了使用 Set-ASRVaultContext cmdlet 之外，还可以使用 Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet 设置保管库上下文。 将保管库注册密钥文件所在位置的路径指定为 Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet 的路径参数。 例如：
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -131,7 +131,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 对于此示例，我们具备以下先决条件：
 
 - 配置服务器 (**ConfigurationServer**) 已注册到此保管库。
-- 其他进程服务器 (**ScaleOut-ProcessServer**) 已注册到 ConfigurationServer
+- 其他进程服务器 (**ScaleOut-ProcessServer**) 已注册到 ConfigurationServer**
 - 配置服务器上已设置了帐户（**vCenter_account**、**WindowsAccount**、**LinuxAccount**）。 这些帐户用于添加 vCenter Server 以发现虚拟机，以及在要复制的 Windows 和 Linux 服务器上推送安装移动服务软件。
 
 1. 已注册的配置服务器由 Site Recovery 中的结构对象表示。 获取保管库中结构对象的列表，并标识配置服务器。
@@ -198,7 +198,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 > [!NOTE]
 > 大多数 Azure Site Recovery 操作异步执行。 启动操作时，将提交 Azure Site Recovery 作业，并返回跟踪对象的作业。 此作业跟踪对象可以用于监视操作的状态。
 
-1. 创建名为 ReplicationPolicy 的复制策略，使用的指定属性将 VMware 虚拟机复制到 Azure。
+1. 创建名为 ReplicationPolicy** 的复制策略，使用的指定属性将 VMware 虚拟机复制到 Azure。
 
    ```azurepowershell
    $Job_PolicyCreate = New-AzRecoveryServicesAsrPolicy -VMwareToAzure -Name "ReplicationPolicy" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
@@ -238,7 +238,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    $Job_FailbackPolicyCreate = New-AzRecoveryServicesAsrPolicy -AzureToVMware -Name "ReplicationPolicy-Failback" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
    ```
 
-   使用 $Job_FailbackPolicyCreate 中的作业详细信息，以跟踪操作直到完成。
+   使用 $Job_FailbackPolicyCreate** 中的作业详细信息，以跟踪操作直到完成。
 
    * 创建保护容器映射，以便通过配置服务器映射复制策略。
 
@@ -279,7 +279,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 
 ## <a name="add-a-vcenter-server-and-discover-vms"></a>添加 vCenter 服务器，并发现 VM
 
-按 IP 地址或主机名添加 vCenter 服务器。 **-port** 参数指定 vCenter 服务器上要连接到的端口， **-Name** 参数指定要用于 vCenter 服务器的友好名称， **-Account** 参数指定配置服务器上用于发现由 vCenter 服务器托管的虚拟机的帐户句柄。
+按 IP 地址或主机名添加 vCenter 服务器。 **-port** 参数指定 vCenter 服务器上要连接到的端口，**-Name** 参数指定要用于 vCenter 服务器的友好名称，**-Account** 参数指定配置服务器上用于发现由 vCenter 服务器托管的虚拟机的帐户句柄。
 
 ```azurepowershell
 # The $AccountHandles[0] variable holds details of vCenter_account
@@ -316,9 +316,9 @@ Errors           : {}
 
 ## <a name="create-storage-accounts-for-replication"></a>创建用于复制的存储帐户
 
-**若要写入托管磁盘，请使用[Powershell Az. microsoft.recoveryservices module 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview)向上。** 它只要求创建日志存储帐户。 建议使用标准帐户类型和 LRS 冗余，因为它仅用于存储临时日志。 请确保在与保管库相同的 Azure 区域中创建存储帐户。
+**若要写入到托管磁盘，请使用 [Powershell Az.RecoveryServices 模块 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) 及更高版本。** 它只需要创建日志存储帐户。 建议使用标准帐户类型和 LRS 冗余，因为使用它只是为了存储临时日志。 请务必在保管库所在的同一个 Azure 区域中创建存储帐户。
 
-如果使用的是早于2.0.0 的 Microsoft.recoveryservices 模块版本，请使用以下步骤创建存储帐户。 稍后将使用这些存储帐户复制虚拟机。 确保在保管库所在 Azure 区域创建存储帐户。 如果计划使用现有存储帐户进行复制，可以跳过此步骤。
+如果使用低于 2.0.0 的 Az.RecoveryServices 模块版本，请按以下步骤创建存储帐户。 稍后将使用这些存储帐户复制虚拟机。 确保在保管库所在 Azure 区域创建存储帐户。 如果计划使用现有存储帐户进行复制，可以跳过此步骤。
 
 > [!NOTE]
 > 将本地虚拟机复制到高级存储帐户时，需要指定额外的标准存储帐户（日志存储帐户）。 在高级存储目标上应用日志之前，日志存储帐户将作为中间存储保留复制日志。
@@ -340,9 +340,9 @@ $ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDR
 需要添加以下详细信息以保护发现的虚拟机：
 
 * 要复制的可保护项。
-* 要将虚拟机复制到的存储帐户（仅当复制到存储帐户时）。 
-* 需要使用日志存储来保护高级存储帐户或托管磁盘的虚拟机。
-* 用于复制的进程服务器。 已检索到可用进程服务器的列表，并将其保存在 ***$ProcessServers [0]***  *（扩展-scaleout-processserver）* 和 ***$ProcessServers [1]*** *（ConfigurationServer）* 变量中。
+* 要将虚拟机复制到的存储帐户（前提是复制到存储帐户）。 
+* 需要使用日志存储在高级存储帐户或托管磁盘中保护虚拟机。
+* 用于复制的进程服务器。 检索可用进程服务器的列表，并将其保存在 ***$ProcessServers[0]***  *(ScaleOut-ProcessServer)* 和 ***$ProcessServers[1]*** *(ConfigurationServer)* 变量中。
 * 用于将移动服务软件推送安装到计算机的帐户。 检索可用帐户的列表，并将其存储在 ***$AccountHandles*** 变量中。
 * 要用于复制的复制策略的保护容器映射。
 * 故障转移时必须在其中创建虚拟机的资源组。
@@ -459,7 +459,7 @@ Errors           : {}
    #Start the test failover operation
    $TFOJob = Start-AzRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem $ReplicatedVM1 -AzureVMNetworkId $TestFailovervnet.Id -Direction PrimaryToRecovery
    ```
-2. 测试故障转移作业成功完成后，可以注意到在 Azure 中创建了名称包含后缀“-Test”（在本例中即 Win2K12VM1-Test）的虚拟机。
+2. 测试故障转移作业成功完成后，可以注意到在 Azure 中创建了名称包含后缀“-Test”**（在本例中即 Win2K12VM1-Test）的虚拟机。
 3. 现可连接到测试故障转移虚拟机，并验证测试故障转移。
 4. 使用 Start-ASRTestFailoverCleanupJob cmdlet 清理测试故障转移。 此操作将删除在测试故障转移过程中创建的虚拟机。
 
@@ -497,4 +497,4 @@ Errors           : {}
 2. 故障转移成功后，可提交故障转移操作并设置从 Azure 到本地 VMware 站点的反向复制。
 
 ## <a name="next-steps"></a>后续步骤
-了解如何使用[Azure Site Recovery PowerShell 参考](https://docs.microsoft.com/powershell/module/Az.RecoveryServices)来自动执行更多任务。
+了解如何使用 [Azure Site Recovery PowerShell 参考](https://docs.microsoft.com/powershell/module/Az.RecoveryServices)自动执行更多任务。

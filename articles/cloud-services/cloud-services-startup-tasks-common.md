@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273054"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常见的云服务启动任务
@@ -52,22 +52,22 @@ ms.locfileid: "79273054"
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>使用 AppCmd.exe 配置 IIS 启动
-[AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) 命令行工具在 Azure 上启动时可用于管理 IIS 设置。 AppCmd.exe 对要在 Azure 上的启动任务中使用的配置设置提供方便的命令行访问。 使用 AppCmd.exe，可以为应用程序和站点添加、修改或删除网站设置。
+[AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) 命令行工具在 Azure 上启动时可用于管理 IIS 设置。 AppCmd.exe** 对要在 Azure 上的启动任务中使用的配置设置提供方便的命令行访问。 使用 AppCmd.exe**，可以为应用程序和站点添加、修改或删除网站设置。
 
-但是，在使用 AppCmd.exe 作为启动任务时有几点需要注意：
+但是，在使用 AppCmd.exe** 作为启动任务时有几点需要注意：
 
 * 启动任务在重新启动之间可以运行多次。 例如，当角色回收时。
-* 如果多次执行 *AppCmd.exe* 操作，则可能会生成错误。 例如，尝试将某个节添加到 Web.config 中两次会生成错误。
-* 如果启动任务返回非零退出代码或 **errorlevel**，则为失败。 例如，AppCmd.exe 生成错误时。
+* 如果多次执行 *AppCmd.exe* 操作，则可能会生成错误。 例如，尝试将某个节添加到 Web.config** 中两次会生成错误。
+* 如果启动任务返回非零退出代码或 **errorlevel**，则为失败。 例如，AppCmd.exe** 生成错误时。
 
-比较明智的做法通常是在调用 AppCmd.exe 之后检查 *errorlevel*，如果使用 .cmd 文件包装对 AppCmd.exe 的调用，则很容易做到这一点。 如果检测到已知的 **errorlevel** 响应，可以将其忽略，否则将其返回。
+比较明智的做法通常是在调用 AppCmd.exe** 之后检查 **errorlevel**，如果使用 .cmd** 文件包装对 AppCmd.exe** 的调用，则很容易做到这一点。 如果检测到已知的 **errorlevel** 响应，可以将其忽略，否则将其返回。
 
 *AppCmd.exe* 返回的 errorlevel 在 winerror.h 文件中列出，并且还可以在 [MSDN](/windows/desktop/Debug/system-error-codes--0-499-) 上看到。
 
 ### <a name="example-of-managing-the-error-level"></a>管理错误级别的示例
-此示例将 JSON 的压缩节和压缩条目添加到 Web.config 文件，其中包含错误处理和日志记录。
+此示例将 JSON 的压缩节和压缩条目添加到 Web.config** 文件，其中包含错误处理和日志记录。
 
-此处显示了 [ServiceDefinition.csdef] 文件的相关节，其中包括将 [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) 属性设为 `elevated` 以为 AppCmd.exe 提供足够的权限来更改 *Web.config* 文件中的设置：
+此处显示了 [ServiceDefinition.csdef] 文件的相关节，其中包括将 [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) 属性设为 `elevated` 以为 AppCmd.exe** 提供足够的权限来更改 *Web.config* 文件中的设置：
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -80,7 +80,7 @@ ms.locfileid: "79273054"
 </ServiceDefinition>
 ```
 
-Startup.cmd 批处理文件使用 AppCmd.exe 将 JSON 的压缩节和压缩条目添加到 Web.config 文件。 使用 VERIFY.EXE 命令行程序将预期的 **errorlevel** 183 设为零。 意外的 errorlevel 将记录到 StartupErrorLog.txt 中。
+Startup.cmd** 批处理文件使用 AppCmd.exe** 将 JSON 的压缩节和压缩条目添加到 Web.config** 文件。 使用 VERIFY.EXE 命令行程序将预期的 **errorlevel** 183 设为零。 意外的 errorlevel 将记录到 StartupErrorLog.txt 中。
 
 ```cmd
 REM   *** Add a compression section to the Web.config file. ***
@@ -119,13 +119,13 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>添加防火墙规则
-在 Azure 中，实际上有两个防火墙。 第一个防火墙控制虚拟机与外界之间的连接。 此防火墙由 [ServiceDefinition.csdef] 文件中的 [ServiceDefinition.csdef] 元素控制。
+在 Azure 中，实际上有两个防火墙。 第一个防火墙控制虚拟机与外界之间的连接。 此防火墙由 [ServiceDefinition.csdef] 文件中的 [EndPoints] 元素控制。
 
 第二个防火墙控制虚拟机与该虚拟机中的进程之间的连接。 可以通过 `netsh advfirewall firewall` 命令行工具控制此防火墙。
 
 Azure 将角色中启动的进程创建防火墙规则。 例如，启动服务或程序时，Azure 会自动创建必要的防火墙规则以允许该服务与 Internet 进行通信。 但是，如果创建的服务由角色外部的进程（例如，COM+ 服务或 Windows 计划任务）启动，则将需要手动创建防火墙规则以允许访问该服务。 可以通过使用启动任务来创建这些防火墙规则。
 
-创建防火墙规则的启动任务的 [executionContext][环境] 必须为 **elevated**。 将以下启动任务添加到 [ServiceDefinition.csdef] 文件。
+创建防火墙规则的启动任务的 [executionContext][任务] 必须为 **elevated**。 将以下启动任务添加到 [ServiceDefinition.csdef] 文件。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -153,7 +153,7 @@ EXIT /B %errorlevel%
 ## <a name="block-a-specific-ip-address"></a>阻止特定 IP 地址
 可以通过修改 IIS **web.config** 文件来限制某个 Azure Web 角色对一组指定的 IP 地址的访问权限。 还需要使用一个用于解锁 **ApplicationHost.config** 文件的 **ipSecurity** 节的命令文件。
 
-若要解锁 **ApplicationHost.config** 文件的 **ipSecurity** 节，请先创建角色启动时运行的命令文件。 在 Web 角色的根级别创建一个名为 **startup** 的文件夹，并在该文件夹中创建一个名为 **startup.cmd** 的批处理文件。 将此文件添加到 Visual Studio 项目并将属性设置为“始终复制”以确保此文件包括在包中。
+若要解锁 **ApplicationHost.config** 文件的 **ipSecurity** 节，请先创建角色启动时运行的命令文件。 在 Web 角色的根级别创建一个名为 **startup** 的文件夹，并在该文件夹中创建一个名为 **startup.cmd** 的批处理文件。 将此文件添加到 Visual Studio 项目并将属性设置为“始终复制”**** 以确保此文件包括在包中。
 
 将以下启动任务添加到 [ServiceDefinition.csdef] 文件。
 
@@ -180,7 +180,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 
 此任务将导致每次初始化 Web 角色时都运行 **startup.cmd** 批处理文件，从而确保所需的 **ipSecurity** 节处于解锁状态。
 
-最后，修改 web 角色的 [web.config](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) 文件的 **system.webServer 节**以添加授予访问权限的 IP 地址列表，如下面的示例所示：
+最后，修改 web 角色的 **web.config** 文件的 [system.webServer 节](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005)以添加授予访问权限的 IP 地址列表，如下面的示例所示：
 
 此示例配置**允许**所有 IP（两个已定义的 IP 除外）访问服务器
 
@@ -248,7 +248,7 @@ EXIT /B %errorlevel%
 
 若要在启动任务中使用本地存储资源，需要创建一个环境变量以引用本地存储资源位置。 然后，启动任务和应用程序能够在本地存储资源中读取和写入文件。
 
-在此处显示 **ServiceDefinition.csdef** 文件的相关节：
+此处显示了 **ServiceDefinition.csdef** 文件的相关部分：
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -300,7 +300,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 
 可以通过在 [ServiceDefinition.csdef] 文件中创建一个环境变量来实现在计算模拟器中和云中执行不同操作的能力。 然后，会在启动任务中测试该环境变量的值。
 
-若要创建环境变量，请添加 [变量]/[RoleInstanceValue] 元素并创建 `/RoleEnvironment/Deployment/@emulated` 的 XPath 值。 在计算模拟器中运行时， **%ComputeEmulatorRunning%** 环境变量的值为 `true`，而在云中运行时，该值为 `false`。
+要创建环境变量，请添加[可变]/[角色实例值]元素，并创建 的`/RoleEnvironment/Deployment/@emulated`XPath 值。 在计算模拟器中运行时，**%ComputeEmulatorRunning%** 环境变量的值为 `true`，而在云中运行时，该值为 `false`。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -381,11 +381,11 @@ Visual Studio 未提供用于单步调试批处理文件的调试器，因此最
 
     "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
 
-若要简化 xml，可以创建一个包装器 cmd 文件，使该文件调用所有启动任务以及日志记录并确保每个子任务共享相同的环境变量。
+若要简化 xml，可以创建一个包装器 cmd** 文件，使该文件调用所有启动任务以及日志记录并确保每个子任务共享相同的环境变量。
 
-不过，你可能发现在每个启动任务的末尾使用 `>> "%TEMP%\StartupLog.txt" 2>&1` 令人烦恼。 可以通过创建一个包装器来处理日志记录以强制执行任务日志记录。 此包装器调用要运行的实际批处理文件。 来自目标批处理文件的任何输出都将重定向到 Startuplog.txt 文件。
+不过，你可能发现在每个启动任务的末尾使用 `>> "%TEMP%\StartupLog.txt" 2>&1` 令人烦恼。 可以通过创建一个包装器来处理日志记录以强制执行任务日志记录。 此包装器调用要运行的实际批处理文件。 来自目标批处理文件的任何输出都将重定向到 Startuplog.txt** 文件。
 
-以下示例展示了如何重定向来自某个启动批处理文件的所有输出。 在此示例中，ServerDefinition.csdef 文件将创建调用 logwrap.cmd 的启动任务。 logwrap.cmd 调用 Startup2.cmd，并将所有输出都重定向到 **%TEMP%\\StartupLog.txt**。
+以下示例展示了如何重定向来自某个启动批处理文件的所有输出。 在此示例中，ServerDefinition.csdef 文件将创建调用 logwrap.cmd** 的启动任务。 logwrap.cmd** 调用 Startup2.cmd**，并将所有输出都重定向到 **%TEMP%\\StartupLog.txt**。
 
 ServiceDefinition.cmd：
 
@@ -459,19 +459,19 @@ EXIT %ERRORLEVEL%
 ```
 
 > [!TIP]
-> **StartupLog.txt** 文件位于 C:\Resources\temp *{role identifier}\RoleTemp\\* 文件夹中。
+> **StartupLog.txt** 文件位于 C:\Resources\temp\\{role identifier}\RoleTemp** 文件夹中。
 > 
 > 
 
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>为启动任务适当地设置 executionContext
 为启动任务适当地设置权限。 有时启动任务必须以提升的权限运行，即使角色以普通权限运行，也是如此。
 
-[executionContext][环境] 属性将设置启动任务的权限级别。 使用 `executionContext="limited"` 意味着启动任务具有与角色相同的权限级别。 使用 `executionContext="elevated"` 意味着启动任务具有管理员权限，这会允许启动任务执行管理员任务，而无需向角色授予管理员权限。
+[executionContext][任务] 属性将设置启动任务的权限级别。 使用 `executionContext="limited"` 意味着启动任务具有与角色相同的权限级别。 使用 `executionContext="elevated"` 意味着启动任务具有管理员权限，这会允许启动任务执行管理员任务，而无需向角色授予管理员权限。
 
 需要提升的权限的启动任务示例是使用 **AppCmd.exe** 配置 IIS 的启动任务。 **AppCmd.exe** 需要 `executionContext="elevated"`。
 
 ### <a name="use-the-appropriate-tasktype"></a>使用适当的 taskType
-[taskType][环境] 属性决定了执行启动任务的方式。 有三个值：**simple**、**background** 和 **foreground**。 background 和 foreground 任务以异步方式启动，simple 任务以同步方式执行（一次一个）。
+[taskType][任务] 属性决定了执行启动任务的方式。 有三个值：**simple**、**background** 和 **foreground**。 background 和 foreground 任务以异步方式启动，simple 任务以同步方式执行（一次一个）。
 
 使用 **simple** 启动任务，可以设置顺序，让任务按照它们在 ServiceDefinition.csdef 文件中的列出顺序运行。 如果 **simple** 任务以非零退出代码结束，则启动过程将停止，并且角色不会启动。
 
@@ -500,18 +500,18 @@ EXIT %ERRORLEVEL%
 
 [创建和部署](cloud-services-how-to-create-deploy-portal.md)云服务包。
 
-[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[环境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[服务定义.csdef]: cloud-services-model-and-package.md#csdef
+[任务]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[任务]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
+[环境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [变量]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[角色实例值]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[ServiceDefinition.csdef]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
-[LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
+[终结点]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[本地存储]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[角色实例值]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 
 
 

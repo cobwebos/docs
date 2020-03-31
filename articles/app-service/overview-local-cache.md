@@ -1,22 +1,22 @@
 ---
 title: 本地缓存
-description: 了解本地缓存在 Azure App Service 中的工作原理，以及如何启用、调整大小和查询应用本地缓存的状态。
+description: 了解本地缓存在 Azure 应用服务中的工作方式，以及如何启用应用的本地缓存、调整其大小和查询其状态。
 tags: optional
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
 ms.openlocfilehash: 1945730acaddb0c1c7ee1b28eeb926635efad643
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78227880"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
 > [!NOTE]
-> 函数应用或容器化应用服务应用中不支持本地缓存，如[Windows 容器](app-service-web-get-started-windows-container.md)中或[Linux 应用服务](containers/app-service-linux-intro.md)。
+> 功能应用或容器化应用服务应用不支持本地缓存，例如[在 Windows 容器](app-service-web-get-started-windows-container.md)中或在 Linux[上的应用程序服务上](containers/app-service-linux-intro.md)。
 
 
 Azure 应用服务内容存储在 Azure 存储中，作为内容共享持续提供。 此设计旨在兼容各种应用，具有以下特点：  
@@ -24,7 +24,7 @@ Azure 应用服务内容存储在 Azure 存储中，作为内容共享持续提�
 * 内容跨应用的多个虚拟机 (VM) 实例共享。
 * 内容是持久性的，运行应用即可对其进行修改。
 * 在同一共享内容文件夹下提供日志文件和诊断数据文件。
-* 发布新内容会直接更新内容文件夹。 可以通过 SCM 网站和正在运行的应用立即查看相同的内容（通常，某些技术（如 ASP.NET）会在某些文件更改时启动应用重启以获取最新内容）。
+* 发布新内容会直接更新内容文件夹。 可以通过 SCM 网站和运行的应用即时查看相同的内容（通常情况下，在文件发生更改时，可以通过 ASP.NET 之类的特定技术重启应用，以获取最新内容）。
 
 虽然许多应用使用所有此类功能或其中一项功能，但某些应用只需要高性能的只读内容存储，此类存储可用性高且支持这些应用的运行。 这些应用可以充分利用特定本地缓存的 VM 实例。
 
@@ -35,14 +35,14 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 * 因存储共享更改而需要重新启动应用的次数较少。
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>本地缓存如何改变应用服务的行为
-* D:\home 指向本地缓存，它是应用启动时在 VM 实例上创建的。 D:\local 继续指向特定于临时 VM 的存储。
-* 本地缓存包含共享内容存储的 /site 和 /siteextensions 文件夹的一次性副本，分别位于 D:\home\site 和 D:\home\siteextensions。 应用启动时，文件会复制到本地缓存。 默认情况下，每个应用的这两个文件夹的大小限制为 300 MB，但最高可增至 2 GB。 如果复制的文件超出了本地缓存的大小，应用服务会以无提示方式忽略本地缓存并从远程文件共享读取。
+* D:\home__ 指向本地缓存，它是应用启动时在 VM 实例上创建的。 _D：\local_继续指向临时 VM 特定的存储。
+* 本地缓存包含共享内容存储的 /site 和 /siteextensions 文件夹的一次性副本，分别位于 D:\home\site 和 D:\home\siteextensions。________ 应用启动时，文件会复制到本地缓存。 默认情况下，每个应用的这两个文件夹的大小限制为 300 MB，但最高可增至 2 GB。 如果复制的文件超过本地缓存的大小，应用服务会静默忽略本地缓存并从远程文件共享读取。
 * 本地缓存是可以读写的。 不过，如果应用移动了虚拟机，或者系统重启了应用，则会放弃所做的任何修改。 如果应用在内容存储中存储了任务关键型数据，请不要使用本地缓存。
-* D:\home\LogFiles 和 D:\home\Data 包含日志文件和应用数据。 两个子文件夹本地存储在 VM 实例上，并定期复制到共享内容存储。 应用可以通过将日志文件和数据写入到这些文件夹来保留它们。 但是，复制到共享内容存储是最大努力，因此由于 VM 实例的突然崩溃，日志文件和数据可能会丢失。
+* D:\home\LogFiles 和 D:\home\Data 包含日志文件和应用数据。____ 两个子文件夹本地存储在 VM 实例上，并定期复制到共享内容存储。 应用可以通过将日志文件和数据写入到这些文件夹来保留它们。 但是，复制到共享内容存储是最大努力，因此由于 VM 实例的突然崩溃，日志文件和数据可能会丢失。
 * [日志流式处理](troubleshoot-diagnostic-logs.md#stream-logs)受最大努力副本的影响。 可以在流式传输的日志中观察到最多一分钟的延迟。
 * 在共享内容存储中，对于使用本地缓存的应用， _LogFiles_ 和 _Data_ 文件夹的文件夹结构会发生变化。 它们之中现在出现了子文件夹，其遵循的命名模式为“唯一标识符”+ 时间戳。 每个子文件夹对应于应用正在其中运行或已运行的一个虚拟机实例。
-* D:\home 中的其他文件夹保留在本地缓存中，不会复制到共享内容存储。
-* 通过任何支持的方法进行的应用部署都将直接发布到持久共享内容存储。 若要刷新本地缓存中的 D:\home\site 和 D:\home\siteextensions 文件夹，需要重新启动应用。 若要确保无缝的生命周期，请参阅本文后面提供的信息。
+* D:\home 中的其他文件夹保留在本地缓存中，不会复制到共享内容存储。__
+* 通过任何支持的方法进行的应用部署都将直接发布到持久共享内容存储。 若要刷新本地缓存中的 D:\home\site 和 D:\home\siteextensions 文件夹，需要重新启动应用。____ 若要确保无缝的生命周期，请参阅本文后面提供的信息。
 * SCM 站点的默认内容视图仍是共享内容存储的视图。
 
 ## <a name="enable-local-cache-in-app-service"></a>在应用服务中启用本地缓存
@@ -88,7 +88,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 ## <a name="best-practices-for-using-app-service-local-cache"></a>使用应用服务本地缓存的最佳实践
 建议将本地缓存与[过渡环境](../app-service/deploy-staging-slots.md)功能结合在一起使用。
 
-* 将值为  *的*粘性`WEBSITE_LOCAL_CACHE_OPTION`应用设置 `Always` 添加到**生产**槽。 如果使用的是 `WEBSITE_LOCAL_CACHE_SIZEINMB`，也可将其作为粘性设置添加到“生产”槽。
+* 将值为 `Always` 的*粘性*应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 添加到**生产**槽。 如果使用的是 `WEBSITE_LOCAL_CACHE_SIZEINMB`，也可将其作为粘性设置添加到“生产”槽。
 * 创建**过渡**槽，并发布到过渡槽。 如果获得了生产槽的本地缓存优势，则要想通过无缝的“构建-部署-测试”生命周期进行过渡，通常不需要将过渡槽设置为使用本地缓存。
 * 针对“过渡”槽来测试站点。  
 * 准备就绪以后，在过渡槽和生产槽之间执行[交换操作](../app-service/deploy-staging-slots.md#Swap)。  

@@ -1,6 +1,6 @@
 ---
-title: RpcTimeoutException for Apache Spark thrift-Azure HDInsight
-description: 使用 Apache Spark thrift 服务器处理大型数据集时，会看到502错误
+title: RpcTimeout 阿帕奇火花节俭例外 - Azure HDInsight
+description: 使用 Apache Spark thrift 服务器处理大型数据集时看到 502 错误
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,26 +8,26 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: b15ac80295a0113eb0c384e1cc3185f3304c39c6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894285"
 ---
-# <a name="scenario-rpctimeoutexception-for-apache-spark-thrift-server-in-azure-hdinsight"></a>方案： Azure HDInsight 中 Apache Spark thrift 服务器的 RpcTimeoutException
+# <a name="scenario-rpctimeoutexception-for-apache-spark-thrift-server-in-azure-hdinsight"></a>方案：Azure HDInsight 中 Apache Spark 节俭服务器的 RpcTimeout 例外
 
-本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时的故障排除步骤和可能的解决方法。
+本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时出现的问题的故障排除步骤和可能的解决方案。
 
 ## <a name="issue"></a>问题
 
-Spark 应用程序失败并出现 `org.apache.spark.rpc.RpcTimeoutException` 异常和消息： `Futures timed out`，如以下示例中所示：
+Spark 应用程序失败并出现 `org.apache.spark.rpc.RpcTimeoutException` 异常和以下示例中所示的消息：`Futures timed out`：
 
 ```
 org.apache.spark.rpc.RpcTimeoutException: Futures timed out after [120 seconds]. This timeout is controlled by spark.rpc.askTimeout
  at org.apache.spark.rpc.RpcTimeout.org$apache$spark$rpc$RpcTimeout$$createRpcTimeoutException(RpcTimeout.scala:48)
 ```
 
-`OutOfMemoryError` 和 `overhead limit exceeded` 错误也可能出现在 `sparkthriftdriver.log` 中，如以下示例所示：
+`sparkthriftdriver.log` 中还可能出现 `OutOfMemoryError` 和 `overhead limit exceeded` 错误，如以下示例中所示：
 
 ```
 WARN  [rpc-server-3-4] server.TransportChannelHandler: Exception in connection from /10.0.0.17:53218
@@ -36,20 +36,20 @@ java.lang.OutOfMemoryError: GC overhead limit exceeded
 
 ## <a name="cause"></a>原因
 
-这些错误是由于在数据处理过程中内存资源不足引起的。 如果启动 Java 垃圾回收过程，可能会导致 Spark 应用程序挂起。 查询将开始超时并停止处理。 `Futures timed out` 错误表明群集出现严重压力。
+这些错误的原因是数据处理期间内存资源不足。 如果启动 Java 垃圾回收进程，可能会导致 Spark 应用程序挂起。 查询将开始超时并停止处理。 `Futures timed out` 错误表示群集遭受严重的压力。
 
-## <a name="resolution"></a>分辨率
+## <a name="resolution"></a>解决方法
 
-增加群集大小，方法是添加更多的工作节点或增加现有群集节点的内存容量。 您还可以调整数据管道以减少一次处理的数据量。
+通过添加更多的工作器节点或增加现有群集节点的内存容量，来增大群集大小。 还可以调整数据管道，以减少一次性处理的数据量。
 
-`spark.network.timeout` 控制所有网络连接的超时。 增加网络超时可能需要更多的时间来完成一些关键操作，但这不会完全解决问题。
+`spark.network.timeout` 将控制所有网络连接的超时。 增大网络超时可为某些关键操作提供更多的时间，但不能彻底解决该问题。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-* 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
+* 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 与[@AzureSupport](https://twitter.com/azuresupport) -通过将 Azure 社区连接到适当的资源来改进客户体验的官方 Microsoft Azure 帐户：答案、支持和专家。
+* 与[@AzureSupport](https://twitter.com/azuresupport)- 正式的 Microsoft Azure 帐户连接 Azure 社区，以将 Azure 社区连接到正确的资源：答案、支持和专家，从而改善客户体验。
 
-* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请查看[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

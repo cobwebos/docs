@@ -1,40 +1,40 @@
 ---
-title: 管理防火墙规则-Azure CLI-Azure Database for MySQL
+title: 管理防火墙规则 - Azure CLI - MySQL 的 Azure 数据库
 description: 本文介绍如何使用 Azure CLI 命令行创建和管理 Azure Database for MySQL 防火墙规则。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 0c64a5d80bace68f72274224ca9ba7c99a84f86a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 11aa4a80deba4df14c239e69910ea38bac1b9c55
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764944"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063512"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则
-服务器级防火墙规则可用于管理从特定 IP 地址或 IP 地址范围对 Azure Database for MySQL 服务器的访问。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 Azure Database for MySQL 防火墙的概述，请参阅[Azure Database for MySQL 服务器防火墙规则](./concepts-firewall-rules.md)。
+可以使用服务器级防火墙规则，管理从特定 IP 地址或某个范围的 IP 地址对 Azure Database for MySQL 服务器的访问。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 MySQL 防火墙的 Azure 数据库概述，请参阅[MySQL 服务器防火墙规则的 Azure 数据库](./concepts-firewall-rules.md)。
 
-虚拟网络（VNet）规则还可用于保护对服务器的访问。 详细了解如何[使用 Azure CLI 创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-using-cli.md)。
+也可使用虚拟网络 (VNet) 规则来保护对服务器进行的访问。 详细了解如何[使用 Azure CLI 创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-using-cli.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 * [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 * [Azure Database for MySQL 服务器和数据库](quickstart-create-mysql-server-database-using-azure-cli.md)。
 
 ## <a name="firewall-rule-commands"></a>防火墙规则命令：
-从 Azure CLI 中使用 az mysql server firewall-rule 命令，创建、删除、列出、显示和更新防火墙规则。
+从 Azure CLI 中使用 az mysql server firewall-rule 命令，创建、删除、列出、显示和更新防火墙规则****。
 
 命令：
-- create：创建 Azure MySQL 服务器防火墙规则。
-- delete：删除 Azure MySQL 服务器防火墙规则。
-- **list**：列出 Azure MySQL 服务器防火墙规则。
-- **show**：显示 Azure MySQL 服务器防火墙规则的详细信息。
-- update：更新 Azure MySQL 服务器防火墙规则。
+- create：创建 Azure MySQL 服务器防火墙规则。****
+- delete：删除 Azure MySQL 服务器防火墙规则。****
+- **列表**：列出 Azure MySQL 服务器防火墙规则。
+- **显示**：显示 Azure MySQL 服务器防火墙规则的详细信息。
+- update：更新 Azure MySQL 服务器防火墙规则。****
 
-## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>登录到 Azure 并列出你的 Azure Database for MySQL 服务器
-使用 az login命令通过 Azure 帐户安全连接到 Azure CLI。
+## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>登录到 Azure，并列出 Azure Database for MySQL 服务器
+使用 az login **** 命令通过 Azure 帐户安全连接到 Azure CLI。
 
 1. 从命令行运行以下命令：
     ```azurecli
@@ -42,7 +42,7 @@ ms.locfileid: "74764944"
     ```
    此命令将输出要在下一步骤中使用的代码。
 
-2. 使用 Web 浏览器打开页面 [https://aka.ms/devicelogin](https://aka.ms/devicelogin)，再输入代码。
+2. 使用 Web 浏览器打开页面[https://aka.ms/devicelogin](https://aka.ms/devicelogin)，然后输入代码。
 
 3. 出现提示时，请使用 Azure 凭据登录。
 
@@ -64,11 +64,11 @@ ms.locfileid: "74764944"
     ```
 
 ## <a name="list-firewall-rules-on-azure-database-for-mysql-server"></a>列出 Azure Database for MySQL 服务器上的防火墙规则 
-使用服务器名称和资源组名称，列出服务器上现有的服务器防火墙规则。 使用 [az mysql server firewall list](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-list) 命令。  请注意，应在“--server”开关（而不是在“--name”开关）中指定服务器名称属性。 
+使用服务器名称和资源组名称，列出服务器上现有的服务器防火墙规则。 使用 [az mysql server firewall list](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-list) 命令。  请注意，应在“--server”开关（而不是在“--name”开关）中指定服务器名称属性********。 
 ```azurecli-interactive
 az mysql server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```
-输出会默认采用 JSON 格式列出规则（如果有）。 可使用“--output table”开关，以更具可读性的表格格式输出结果。
+输出会默认采用 JSON 格式列出规则（如果有）。 可使用“--output table”**** 开关，以更具可读性的表格格式输出结果。
 ```azurecli-interactive
 az mysql server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --output table
 ```
@@ -119,6 +119,6 @@ az mysql server firewall-rule delete --resource-group myresourcegroup --server-n
 成功后没有任何输出。 如果失败，会显示错误消息文本。
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关 [Azure Database for MySQL 服务器防火墙规则](./concepts-firewall-rules.md)的详细信息。
+- 了解有关[MySQL 服务器防火墙规则的 Azure 数据库的详细信息](./concepts-firewall-rules.md)。
 - [使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则](./howto-manage-firewall-using-portal.md)。
-- 通过[使用 Azure CLI 创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-using-cli.md)，进一步加强对服务器的访问。
+- 通过[使用 Azure CLI 创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-using-cli.md)，进一步保护对服务器的访问。

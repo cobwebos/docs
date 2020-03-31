@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7a868a5f9b06499e23710399733b0659d97f900d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68854888"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>项目音响效果 Unreal 烘焙教程
@@ -196,7 +196,7 @@ ms.locfileid: "68854888"
 
 Azure 凭据安全地存储在本地计算机上，并与 Unreal 项目相关联。 它们仅用于建立与 Azure 的安全连接。
 
-### <a name="Estimating-bake-cost"></a> 估计 Azure 制作成本
+### <a name="estimating-azure-bake-cost"></a><a name="Estimating-bake-cost"></a> 估计 Azure 制作成本
 
 要估计给定制作的成本，请采用“估计的计算成本”中显示的值（一段持续时间），再乘以所选 VM 节点类型的每小时费用（当地货币）   。 结果不包括节点启动和运行所需的节点时间。 例如，如果为节点类型选择 Standard_F8s_v2  ，其费用为 $0.40/小时，而“估计的计算成本”为 3 小时 57 分钟，则运行作业的估计成本为 $0.40 * ~4 小时 = ~$1.60。 实际成本很可能略高，因为开始使用节点时会产生的额外时间。 在 [Azure Batch 定价](https://azure.microsoft.com/pricing/details/virtual-machines/linux)页可找到每小时的节点费用（对类别选择“优化计算”或“高性能计算”）。
 
@@ -204,7 +204,7 @@ Azure 凭据安全地存储在本地计算机上，并与 Unreal 项目相关联
 
 制作完成后，通过运行运行时插件，检查体素和探测点是否位于预期的位置。
 
-## <a name="Data-Files"></a>数据文件
+## <a name="data-files"></a><a name="Data-Files"></a>数据文件
 
 此插件在不同位置创建了 4 个数据文件。 其中只有一个文件是运行时所需的，会放置在项目的 Content/Acoustics 文件夹中（会自动添加到项目的打包路径）。 其他三个文件处于 Acoustics Data 文件夹中，不会进行打包。
 

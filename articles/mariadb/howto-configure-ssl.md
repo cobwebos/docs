@@ -1,39 +1,39 @@
 ---
-title: 配置 SSL-Azure Database for MariaDB
+title: 配置 SSL - MariaDB 的 Azure 数据库
 description: 介绍了如何正确配置 Azure Database for MariaDB 和关联的应用程序，以正确使用 SSL 连接
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: a0fb1bdf1aac9b3c5a2d8c83d0597326de38caaf
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 668b72fa89916de6d2aa5971543b0ec085de8263
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767358"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530676"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MariaDB
 Azure Database for MariaDB 支持使用安全套接字层 (SSL) 将 Azure Database for MariaDB 服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
 
 ## <a name="obtain-ssl-certificate"></a>获取 SSL 证书
-从 [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 下载通过 SSL 与 Azure Database for MariaDB 服务器通信所需的证书，再将证书文件保存到本地驱动器（例如，本教程使用 c:\ssl）。
+下载通过 SSL 与 MariaDB 服务器的 Azure 数据库进行[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)通信所需的证书，并将证书文件保存到本地驱动器（例如，本教程使用 c：\ssl）。
 **对于 Microsoft Internet Explorer 和 Microsoft Edge：** 下载完成之后，将证书重命名为 BaltimoreCyberTrustRoot.crt.pem。
 
 ## <a name="bind-ssl"></a>绑定 SSL
 
-### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>使用 MySQL 通过 SSL 连接到服务器
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>使用 MySQL Workbench 通过 SSL 连接到服务器
 配置 MySQL Workbench，以便安全地通过 SSL 连接。 
 
-1. 从“设置新连接”对话框，导航到“SSL”选项卡。 
+1. 从“设置新连接”对话框，导航到“SSL”选项卡****。 
 
-1. 将 "**使用 SSL** " 字段更新为 "需要"。
+1. 将“使用 SSL”**** 字段更新为“必需”。
 
-1. 在 " **SSL CA 文件：** " 字段中，输入**baltimorecybertrustroot.crt.pem**的文件位置。 
+1. 在“SSL CA 文件:”字段中输入 BaltimoreCyberTrustRoot.crt.pem 的文件位置********。 
     
     ![保存 SSL 配置](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
-对于现有连接，可以通过右键单击连接图标来绑定 SSL，然后选择 "编辑"。 然后导航到“SSL”选项卡，并绑定证书文件。
+对于现有连接，可以通过右键单击“连接”图标并选择“编辑”来绑定 SSL。 然后导航到“SSL”**** 选项卡，并绑定证书文件。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>使用 MySQL CLI 通过 SSL 连接到服务器
 绑定 SSL 证书的另一种方法是使用 MySQL 命令行接口执行以下命令。 
@@ -47,23 +47,23 @@ mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>在 Azure 中强制实施 SSL 连接 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
-在 Azure 门户中，访问 Azure Database for MariaDB 服务器，并单击“连接安全性”。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置，并单击“保存”。 Microsoft 建议始终启用“强制实施 SSL 连接”设置，以增强安全性。
+在 Azure 门户中，访问 Azure Database for MariaDB 服务器，并单击“连接安全性”****。 使用切换按钮来启用或禁用“强制实施 SSL 连接”设置，并单击“保存”********。 Microsoft 建议始终启用“强制实施 SSL 连接”设置，以增强安全性****。
 ![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
-可以通过在 Azure CLI 中分别使用“Enabled”或“Disabled”值来启用或禁用“ssl-enforcement”参数。
+可以通过在 Azure CLI 中分别使用“Enabled”或“Disabled”值来启用或禁用“ssl-enforcement”参数****。
 ```azurecli-interactive
 az mariadb server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
 
 ## <a name="verify-the-ssl-connection"></a>验证 SSL 连接
-执行 mysql status 命令，验证是否已使用 SSL 连接到 MariaDB 服务器：
+执行 mysql status 命令，验证是否已使用 SSL 连接到 MariaDB 服务器：****
 ```sql
 status
 ```
-通过查看输出来确认连接是否已加密，如果已加密，输出应显示为：“SSL: 使用中的密码为 AES256-SHA” 
+通过查看输出来确认连接是否已加密，如果已加密，输出应显示为：“SSL: 使用中的密码为 AES256-SHA”**** 
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 若要从应用程序通过 SSL 与 Azure Database for MariaDB 建立安全连接，请参阅以下代码示例：
 
 ### <a name="php"></a>PHP
@@ -171,7 +171,7 @@ properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
 
-### <a name="net-mysqlconnector"></a>.NET （MySqlConnector）
+### <a name="net-mysqlconnector"></a>.NET (MySqlConnector)
 ```csharp
 var builder = new MySqlConnectionStringBuilder
 {

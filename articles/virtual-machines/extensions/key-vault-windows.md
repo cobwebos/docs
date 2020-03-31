@@ -9,31 +9,31 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 22a4177d85cb9dbbaa9ed75e063306484c7b48a9
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79298965"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
-Key Vault VM 扩展可自动刷新 Azure 密钥保管库中存储的证书。 具体而言，该扩展监视一系列观测到存储在 Key Vault 中的证书，并在检测到更改时检索并安装相应的证书。 本文档详细介绍适用于 Windows 的 Key Vault VM 虚拟机扩展支持的平台、配置和部署选项。 
+密钥保管库 VM 扩展可自动刷新 Azure 密钥保管库中存储的证书。 具体而言，该扩展监视一系列观测到存储在 Key Vault 中的证书，并在检测到更改时检索并安装相应的证书。 本文档详细介绍适用于 Windows 的 Key Vault VM 虚拟机扩展支持的平台、配置和部署选项。 
 
 ### <a name="operating-system"></a>操作系统
 
-Key Vault VM 扩展支持以下版本的 Windows：
+密钥保管库 VM 扩展支持以下版本的 Windows：
 
 - Windows Server 2019
 - Windows Server 2016
 - Windows Server 2012
 
-### <a name="supported-certificate-content-types"></a>支持的证书内容类型
+### <a name="supported-certificate-content-types"></a>受支持的证书内容类型
 
 - PKCS #12
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Key Vault VM 代理扩展的架构。 扩展不需要受保护的设置-其所有设置均被视为公用信息。 扩展需要一个列表，其中列出了监视的证书、轮询频率和目标证书存储。 具体来说：  
+以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为公共信息。 该扩展需要受监视的证书列表、轮询频率和目标证书存储。 具体来说：  
 
 ```json
     {
@@ -64,13 +64,13 @@ Key Vault VM 扩展支持以下版本的 Windows：
 ```
 
 > [!NOTE]
-> 观察到的证书 Url 应采用格式 `https://myVaultName.vault.azure.net/secrets/myCertName`。
+> 观察到的证书 URL 的格式应为 `https://myVaultName.vault.azure.net/secrets/myCertName`。
 > 
-> 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 可在此处找到有关证书的详细信息： [Key Vault 证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 有关证书的详细信息，请参阅此处：[密钥保管库证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 ### <a name="property-values"></a>属性值
 
-| 名称 | 值/示例 | 数据类型 |
+| “属性” | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | 发布者 | Microsoft.Azure.KeyVault | 字符串 |
@@ -86,9 +86,9 @@ Key Vault VM 扩展支持以下版本的 Windows：
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后刷新证书的一个或多个虚拟机时，模板是理想选择。 此扩展可以部署到单个 Vm 或虚拟机规模集。 架构和配置对于这两种模板类型通用。 
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后刷新证书的一个或多个虚拟机时，模板是理想选择。 可将该扩展部署到单个 VM 或虚拟机规模集。 架构和配置对于这两种模板类型通用。 
 
-虚拟机扩展的 JSON 配置必须嵌套在模板的虚拟机资源片段中，具体而言，`"resources": []` 虚拟机模板的对象和 `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` 对象下的虚拟机规模集。
+虚拟机扩展的 JSON 配置必须嵌套在模板的虚拟机资源片段中，具体来说是嵌套在虚拟机模板的 `"resources": []` 对象中，对于虚拟机规模集而言，是嵌套在 `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` 对象下。
 
 ```json
     {
@@ -140,7 +140,7 @@ Key Vault VM 扩展支持以下版本的 Windows：
     
     ```
 
-* 在虚拟机规模集上部署扩展：
+* 在虚拟机规模集上部署该扩展：
 
     ```powershell
     
@@ -165,7 +165,7 @@ Key Vault VM 扩展支持以下版本的 Windows：
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
-Azure CLI 可用于将 Key Vault VM 扩展部署到现有的虚拟机或虚拟机规模集。 
+可以使用 Azure CLI，将密钥保管库 VM 扩展部署到现有虚拟机或虚拟机规模集。 
  
 * 在 VM 上部署该扩展：
     
@@ -178,7 +178,7 @@ Azure CLI 可用于将 Key Vault VM 扩展部署到现有的虚拟机或虚拟�
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
-* 在虚拟机规模集上部署扩展：
+* 在虚拟机规模集上部署该扩展：
 
    ```azurecli
         # Start the deployment
@@ -192,12 +192,12 @@ Azure CLI 可用于将 Key Vault VM 扩展部署到现有的虚拟机或虚拟�
 请注意以下限制/要求：
 - Key Vault 限制：
   - 必须在部署时存在 
-  - 使用 MSI 为 VM/VMSS 标识设置 Key Vault 访问策略
+  - 使用 MSI 为 VM/VMSS 标识设置密钥保管库访问策略
 
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 运行以下命令。
 
@@ -220,4 +220,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果本文中的任何一点都需要更多帮助，则可以在[MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上联系 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择"获取支持"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

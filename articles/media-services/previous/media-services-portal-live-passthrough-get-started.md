@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户的本地编码器实时传送流 |Microsoft Docs
+title: 在 Azure 门户中使用本地编码器实时传送流 | Microsoft Docs
 description: 本教程指导完成相关步骤，以便创建经配置后可以进行直通传递的“通道”。
 services: media-services
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a83d6ae2e3ed13f0d03e0fdc87a3b45a4119ba88
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162746"
 ---
-# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>使用 Azure 门户通过本地编码器执行实时传送视频流
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>在 Azure 门户中使用本地编码器实时传送流
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -30,15 +30,15 @@ ms.locfileid: "77162746"
 > 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 本教程介绍了使用 Azure 门户创建经配置后可以进行直通传递的 **通道** 的步骤。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 以下是完成本教程所需具备的条件：
 
-* 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
-* 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
+* 一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
+* 一个媒体服务帐户。 要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
 * 网络摄像机。 例如， [Telestream Wirecast 编码器](media-services-configure-wirecast-live-encoder.md)。 
 
 强烈建议阅读以下文章：
@@ -47,15 +47,15 @@ ms.locfileid: "77162746"
 * [使用 Azure 媒体服务实时传送视频流概述](media-services-manage-channels-overview.md)
 * [使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)
 
-## <a id="scenario"></a>常见实时流式处理方案
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>常见实时流式处理方案
 
 以下步骤说明了在创建常用的实时传送视频流应用程序时涉及的任务，这些应用程序使用的通道经配置后可以进行直通传递。 本教程说明了如何创建和管理直通通道和直播活动。
 
 > [!NOTE]
-> 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。 
+> 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。**** 
     
 1. 将视频摄像机连接到计算机。 <br/>有关设置建议，请查看[简单且可移植的事件视频设备设置]( https://link.medium.com/KNTtiN6IeT)。
-1. 启动并配置输出多比特率 RTMP 或分段 MP4 流的本地实时编码器接收实时输入流。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。<br/>此外，请查看此博客：[包含 OBS 的实时流式处理生产](https://link.medium.com/ttuwHpaJeT)。
+1. 启动并配置输出多比特率 RTMP 或分段 MP4 流的本地实时编码器接收实时输入流。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。<br/>此外，看看这个博客：[使用OBS进行实时流式处理](https://link.medium.com/ttuwHpaJeT)。
    
     此步骤也可以在创建频道后执行。
 1. 创建并启动直通通道。
@@ -104,26 +104,26 @@ ms.locfileid: "77162746"
 如果希望保留已存档的内容但不希望其可供流式传输，请删除流式传输定位符。
 
 ### <a name="to-use-the-portal-to-create-a-channel"></a>使用门户来创建通道
-本部分介绍如何使用“快速创建”选项创建直通通道。
+本部分介绍如何使用“快速创建”**** 选项创建直通通道。
 
 有关直通通道的详细信息，请参阅[使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
-2. 在“设置”窗口中，单击“实时传送视频流”。 
+2. 在“设置”**** 窗口中，单击“实时传送视频流”****。 
    
     ![入门](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
-    此时会显示“实时传送视频流”窗口。
-3. 单击“快速创建” ，即可使用 RTMP 引入协议创建直通通道。
+    此时会显示“实时传送视频流”**** 窗口。
+3. 单击“快速创建” **** ，即可使用 RTMP 引入协议创建直通通道。
    
-    此时会显示“创建新通道”窗口。
-4. 为新通道命名，并单击“创建”。 
+    此时会显示“创建新通道”**** 窗口。
+4. 为新通道命名，并单击“创建” ****。 
    
     此时会使用 RTMP 引入协议创建直通通道。
 
 ## <a name="create-events"></a>创建事件
 1. 选择要添加事件的通道。
-2. 按“直播活动”按钮。
+2. 按“直播活动”**** 按钮。
 
 ![事件](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "77162746"
 ![创建](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>观看事件
-要观看事件，请在 Azure 门户中单击“观看” ，或者先复制流式处理 URL，并使用选择的播放器进行播放。 
+要观看事件，请在 Azure 门户中单击“观看” **** ，或者先复制流式处理 URL，并使用选择的播放器进行播放。 
 
 ![创建](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "77162746"
 ## <a name="view-archived-content"></a>查看存档的内容
 即使你停止并删除了事件，只要没有删除资产，用户也能够按需将已存档内容作为视频进行流式传输。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
 
-若要管理资产，请选择“设置”，再单击“资产”。
+若要管理资产，请选择“设置”****，再单击“资产”****。
 
 ![资产](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 

@@ -8,10 +8,10 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898863"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用于管理事件网格主题的事件域
@@ -31,7 +31,7 @@ ms.locfileid: "78898863"
 
 ### <a name="example-use-case"></a>示例用例
 
-解释事件域最简单的方法是采用示例。 假设您运行的是 Contoso 建设装置，其中制造的是 tractors、深入设备以及其他重型机械。 运营业务时，可向客户推送有关设备维护、系统运行状况、合同更新的实时信息。 所有这些信息都会发布到各种终结点，包括应用、客户终结点以及客户已安装的其他基础结构。
+解释事件域最简单的方法是采用示例。 假设您运行 Contoso 工程机械，在那里您制造拖拉机、挖掘设备和其他重型机械。 运营业务时，可向客户推送有关设备维护、系统运行状况、合同更新的实时信息。 所有这些信息都会发布到各种终结点，包括应用、客户终结点以及客户已安装的其他基础结构。
 
 事件域允许将 Contoso 建筑机械公司建模为单个事件实体。 每个客户表示为域中的主题。 使用 Azure Active Directory 处理身份验证和授权。 每个客户都可订阅他们的主题并获取传送的事件。 通过事件域管理访问权限可确保客户仅能访问其主题。
 
@@ -47,7 +47,7 @@ ms.locfileid: "78898863"
 
 ### <a name="built-in-roles"></a>内置角色
 
-事件网格提供两个内置角色定义，使 RBAC 可更方便地用于事件域。 这些角色是“EventGrid EventSubscription 参与者（预览版）”和“EventGrid EventSubscription 读取者（预览版）”。 将这些角色分配到需要订阅事件域中的主题的用户。 将角色分配的范围限定为用户需要订阅的主题。
+事件网格提供两个内置角色定义，使 RBAC 可更方便地用于事件域。 这些角色是“EventGrid EventSubscription 参与者（预览版）”和“EventGrid EventSubscription 读取者（预览版）”。******** 将这些角色分配到需要订阅事件域中的主题的用户。 将角色分配的范围仅限于用户需要订阅的主题。
 
 有关这些角色的信息，请参阅[事件网格的内置角色](security-authorization.md#built-in-roles)。
 
@@ -99,16 +99,16 @@ ms.locfileid: "78898863"
 ## <a name="limits-and-quotas"></a>限制和配额
 下面是与事件域相关的限制和配额：
 
-- 100000每个事件域的主题 
-- 每个 Azure 订阅100个事件域 
-- 事件域中的每个主题500事件订阅
-- 50域范围订阅 
-- 每秒5000事件引入速率（域中）
+- 每个事件域 100,000 个主题 
+- 每个 Azure 订阅 100 个事件域 
+- 事件域中每个主题 500 个事件订阅
+- 50 个域范围订阅 
+- 每秒 5,000 个事件的引入速率（引入到域）
 
-如果这些限制不符合您的需要，请通过提出支持票证或发送电子邮件到[askgrid@microsoft.com](mailto:askgrid@microsoft.com)来联系产品团队。 
+如果这些限制不适合您，请通过打开支持票证或发送电子邮件到[askgrid@microsoft.com](mailto:askgrid@microsoft.com)联系产品团队。 
 
 ## <a name="pricing"></a>定价
-事件域使用的操作定价与事件网格中的所有其他功能使用的[操作定价](https://azure.microsoft.com/pricing/details/event-grid/)相同。
+事件域将使用与事件网格中所有其他功能相同的[操作定价](https://azure.microsoft.com/pricing/details/event-grid/)。
 
 操作在事件域中的工作方式与在自定义主题中的相同。 事件域每引入一个事件都为一个操作，每尝试传递一个事件都为一个操作。
 

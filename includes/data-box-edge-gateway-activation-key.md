@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 4ff9aeaa7e1b6e7f3762db4e983b299a517df3da
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67173588"
 ---
-使用激活密钥：
+您使用的激活密钥：
 
-- 是 Azure Active Directory (Azure AD) 基于身份验证密钥。
-- 在三天后过期。
-- 在设备激活后不会使用。
+- 是基于 Azure 活动目录 （Azure AD） 的身份验证密钥。
+- 三天后过期。
+- 设备激活后未使用。
 
 激活设备后，它使用令牌与 Azure 通信。

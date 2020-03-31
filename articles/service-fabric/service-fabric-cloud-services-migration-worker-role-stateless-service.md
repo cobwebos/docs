@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75463340"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>将 Web 角色和辅助角色转换成 Service Fabric 无状态服务的指南
@@ -23,7 +23,7 @@ ms.locfileid: "75463340"
 ![Service Fabric 与云服务项目的比较][3]
 
 ## <a name="worker-role-to-stateless-service"></a>辅助角色到无状态服务
-从概念上讲，辅助角色代表无状态的工作负荷，这意味着工作负荷的每个实例都是相同的，随时可将请求路由到任何实例。 每个实例不需要记住前一个请求。 工作负荷的运行状态由外部状态存储（例如 Azure 表存储或 Azure Cosmos DB）进行管理。 在 Service Fabric 中，此类工作负荷以无状态服务来表示。 将辅助角色迁移到 Service Fabric 的最简单方法是将辅助角色代码转换成无状态服务。
+从概念上讲，辅助角色代表无状态的工作负荷，这意味着工作负荷的每个实例都是相同的，随时可将请求路由到任何实例。 每个实例不需要记住前一个请求。 工作负荷的运行状态由外部状态存储（例如 Azure 表存储或 Azure Cosmos DB）管理。 在 Service Fabric 中，此类工作负荷以无状态服务来表示。 将辅助角色迁移到 Service Fabric 的最简单方法是将辅助角色代码转换成无状态服务。
 
 ![辅助角色到无状态服务][4]
 
@@ -35,17 +35,17 @@ ms.locfileid: "75463340"
 | ASP.NET Web 窗体 |否 |转换为 ASP.NET Core 1 MVC |
 | ASP.NET MVC |使用迁移 |升级到 ASP.NET Core 1 MVC |
 | ASP.NET Web API |使用迁移 |使用自托管服务器或 ASP.NET Core 1 |
-| ASP.NET Core 1 |是 |N/A |
+| ASP.NET Core 1 |是 |空值 |
 
 ## <a name="entry-point-api-and-lifecycle"></a>入口点 API 和生命周期
 辅助角色和 Service Fabric 服务 API 提供类似的入口点： 
 
-| **入口点** | **辅助角色** | **Service Fabric 服务** |
+| **入口点** | **辅助角色** | **服务交换矩阵服务** |
 | --- | --- | --- |
 | Processing |`Run()` |`RunAsync()` |
-| VM 启动 |`OnStart()` |N/A |
-| VM 停止 |`OnStop()` |N/A |
-| 为客户端请求打开侦听器 |N/A |<ul><li> 适用于无状态服务的 `CreateServiceInstanceListener()`</li><li>适用于有状态服务的 `CreateServiceReplicaListener()`</li></ul> |
+| VM 启动 |`OnStart()` |空值 |
+| VM 停止 |`OnStop()` |空值 |
+| 为客户端请求打开侦听器 |空值 |<ul><li> 适用于无状态服务的 `CreateServiceInstanceListener()`</li><li>适用于有状态服务的 `CreateServiceReplicaListener()`</li></ul> |
 
 ### <a name="worker-role"></a>辅助角色
 ```csharp
@@ -109,13 +109,13 @@ Service Fabric 为侦听客户端请求的服务提供可选的通信设置入�
 ## <a name="application-api-and-environment"></a>应用程序 API 和环境
 云服务环境 API 提供当前 VM 实例的信息和功能，以及有关其他 VM 角色实例的信息。 Service Fabric 提供有关其运行时的信息，以及有关服务当前运行所在的节点的某些信息。 
 
-| **环境任务** | **云服务** | **Service Fabric** |
+| **环境任务** | **云服务** | **服务结构** |
 | --- | --- | --- |
 | 配置设置和更改通知 |`RoleEnvironment` |`CodePackageActivationContext` |
 | 本地存储 |`RoleEnvironment` |`CodePackageActivationContext` |
 | 终结点信息 |`RoleInstance` <ul><li>当前实例：`RoleEnvironment.CurrentRoleInstance`</li><li>其他角色和实例：`RoleEnvironment.Roles`</li> |<ul><li>适用于当前节点地址的 `NodeContext`</li><li>适用于服务终结点发现的 `FabricClient` 和 `ServicePartitionResolver`</li> |
-| 环境模拟 |`RoleEnvironment.IsEmulated` |N/A |
-| 同时更改事件 |`RoleEnvironment` |N/A |
+| 环境模拟 |`RoleEnvironment.IsEmulated` |空值 |
+| 同时更改事件 |`RoleEnvironment` |空值 |
 
 ## <a name="configuration-settings"></a>配置设置
 云服务中的配置设置是针对 VM 角色设置的，将应用到该 VM 角色的所有实例。 这些设置是 ServiceConfiguration.*.cscfg 文件中设置的键-值对，可直接通过 RoleEnvironment 进行访问。 在 Service Fabric 中，设置单独应用到每个服务和每个应用程序，而不是应用到 VM，因为 VM 可以托管多个服务和应用程序。 服务由三个包组成：

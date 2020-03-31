@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: alkohli
 ms.openlocfilehash: 4622a8575d7b6a38226ee3a980c05f143c128356
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68963540"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行 StorSimple 设备
@@ -42,11 +42,11 @@ ms.locfileid: "68963540"
 | ![电击图标](./media/storsimple-safety/IC740882.png) **Electrical Shock Hazard** |高电压 |
 | ![重物图标](./media/storsimple-safety/IC740883.png) **Heavy Weight** | |
 | ![用户不可维修的部件图标](./media/storsimple-safety/IC740879.png) **No User Serviceable Parts** |除非经过适当的培训，否则请勿访问。 |
-| ![阅读安全注意事项图标 ](./media/storsimple-safety/IC740885.png)**Read All Instructions First** | |
+| ![阅读安全通告图标](./media/storsimple-safety/IC740885.png)**请先阅读所有说明** | |
 | ![倾翻危险图标](./media/storsimple-safety/IC740886.png) **Tip Hazard** | |
 
 ## <a name="handling-precautions"></a>操作注意事项
-![警告图标](./media/storsimple-safety/IC740879.png)![重物图标](./media/storsimple-safety/IC740883.png) **WARNING!** 
+![警告图标](./media/storsimple-safety/IC740879.png) ![重物图标](./media/storsimple-safety/IC740883.png) **WARNING!** 
 
 若要降低受伤的风险：
 
@@ -85,7 +85,7 @@ ms.locfileid: "68963540"
 ## <a name="rack-system-precautions"></a>机架系统注意事项
 在机架机柜中装载设备时，必须考虑以下安全要求。
 
-![警告图标](./media/storsimple-safety/IC740879.png)![倾翻危险图标](./media/storsimple-safety/IC740886.png) **WARNING!**
+![警告图标](./media/storsimple-safety/IC740879.png) ![倾翻危险图标](./media/storsimple-safety/IC740886.png) **WARNING!**
 
 若要减少因倾翻受伤的可能性：
 
@@ -148,7 +148,7 @@ ms.locfileid: "68963540"
 
 ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:**
 
-当通过船运或空运对电池进行运输时，请遵循 [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) 中提供的 IATA 锂电池指南文档
+通过空运或以其他方式运输电池时，请按照 IATA 锂电池指南文档操作：：[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
 查看完这些安全注意事项之后，后续步骤是对设备进行解包、安装机架并连接电缆。
 

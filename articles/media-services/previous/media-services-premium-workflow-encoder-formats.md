@@ -15,10 +15,10 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269752"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>媒体编码器高级工作流格式和编解码器
@@ -28,13 +28,13 @@ ms.locfileid: "79269752"
 
 本文档包含受**媒体编码器高级工作流**公开预览版编码器支持的输入和输出文件格式及编解码器列表。
 
-[Media Encoder Premium Workflow 输入格式和编解码器](#input_formats)
+[媒体编码器高级工作流输入格式和编解码器](#input_formats)
 
 Media Encoder Premium Workflow 输出格式和编解码器
 
 **媒体编码器高级工作流**支持[此](#closed_captioning)部分中所述的隐藏字幕。 
 
-## <a id="input_formats"></a>Media Encoder Premium Workflow 输入格式和编解码器
+## <a name="media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Media Encoder Premium Workflow 输入格式和编解码器
 
 以下部分列出了此媒体处理器支持的作为输入的编解码器和文件格式。
 
@@ -71,7 +71,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 * Windows Media 音频
 * WAV/PCM
 
-## <a id="output_format"></a>Media Encoder Premium Workflow 输出格式和编解码器
+## <a name="media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Media Encoder Premium Workflow 输出格式和编解码器
 
 以下部分列出了支持作为此媒体处理器输入的编解码器和文件格式。
 
@@ -112,7 +112,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 >[!NOTE]
 >如果编码为 Dolby® Digital (AC3)，则只能将输出写入到 ISO MP4 文件。
 
-## <a id="closed_captioning"></a>支持隐藏式字幕
+## <a name="support-for-closed-captioning"></a><a id="closed_captioning"></a>支持隐藏式字幕
 
 引入时，**媒体编码器高级工作流**支持：
 
@@ -139,7 +139,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 
 ## <a name="need-help"></a>需要帮助？
 
-可以通过导航到[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来开具支持票证
+您可以通过导航到["新建支持"请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来打开支持票证
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

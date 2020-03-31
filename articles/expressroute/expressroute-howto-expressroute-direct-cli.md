@@ -1,24 +1,24 @@
 ---
-title: Azure ExpressRoute：配置 ExpressRoute Direct： CLI
-description: 本文将帮助你使用 Azure CLI
+title: Azure 快速路由：直接配置快速路由：CLI
+description: 本文使用 Azure CLI 帮助您配置快速路由直接
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: 47ee05113d46f66efd02978fed09cf72edc5ac1c
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: dcca1417aec52fb4bf99d5c480d81995154a68b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049944"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481970"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Direct
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 直接配置快速路由
 
 可以使用 Azure ExpressRoute Direct 连接到位于全球战略分布的对等互连位置的 Microsoft 全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
 
-## <a name="resources"></a>创建资源
+## <a name="create-the-resource"></a><a name="resources"></a>创建资源
 
 1. 登录到 Azure 并选择包含 ExpressRoute 的订阅。 ExpressRoute Direct 资源和 ExpressRoute 线路必须位于同一订阅中。 在 Azure CLI 中，请运行下列命令：
 
@@ -38,7 +38,7 @@ ms.locfileid: "77049944"
    az account set --subscription "<subscription ID>"
    ```
 
-2. 将你的订阅重新注册到 Microsoft 以访问 expressrouteportslocation 和 expressrouteport Api
+2. 重新注册您的订阅到 Microsoft.Network 以访问快速路由端口定位和快速路由端口 API
 
    ```azurecli
    az provider register --namespace Microsoft.Network
@@ -51,7 +51,7 @@ ms.locfileid: "77049944"
 
    **示例输出**
   
-   ```azurecli
+   ```output
    [
    {
     "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
@@ -118,7 +118,7 @@ ms.locfileid: "77049944"
 
    **示例输出**
 
-   ```azurecli
+   ```output
    {
    "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
    "availableBandwidths": [
@@ -151,12 +151,12 @@ ms.locfileid: "77049944"
    ```
 
    > [!NOTE]
-   > 还可以将“封装”属性设置为“Dot1Q”。 
+   > 还可以将“封装”属性设置为“Dot1Q”********。 
    >
 
    **示例输出**
 
-   ```azurecli
+   ```output
    {
    "allocationDate": "Wednesday, October 17, 2018",
    "bandwidthInGbps": 100,
@@ -208,11 +208,11 @@ ms.locfileid: "77049944"
    }  
    ```
 
-## <a name="state"></a> 更改链接的 AdminState
+## <a name="change-adminstate-for-links"></a><a name="state"></a> 更改链接的 AdminState
 
 使用此过程来执行第 1 层测试。 请确保每个交叉连接在主端口和辅助端口的每个路由器上都有正确的补丁。
 
-1. 将链接设置为“启用”。 重复此步骤以将每个链接设置为“启用”。
+1. 将链接设置为“启用”****。 重复此步骤以将每个链接设置为“启用”****。
 
    Links[0] 是主端口，Links[1] 是辅助端口。
 
@@ -224,7 +224,7 @@ ms.locfileid: "77049944"
    ```
    **示例输出**
 
-   ```azurecli
+   ```output
    {
    "allocationDate": "Wednesday, October 17, 2018",
    "bandwidthInGbps": 100,
@@ -278,15 +278,15 @@ ms.locfileid: "77049944"
 
    使用相同的过程来关闭端口，方法是使用 `AdminState = "Disabled"`。
 
-## <a name="circuit"></a>创建线路
+## <a name="create-a-circuit"></a><a name="circuit"></a>创建线路
 
 默认情况下，可以在包含 ExpressRoute Direct 资源的订阅中创建 10 条线路。 Microsoft 支持部门可以增加默认限制。 你负责跟踪预配的和已使用的带宽。 预配带宽是 ExpressRoute Direct 资源上所有线路的带宽总和。 利用带宽是基础物理接口的物理用法。
 
 只能在 ExpressRoute Direct 上使用其他线路带宽来支持上面概述的场景。 带宽为 40 Gbps 和 100 Gbps。
 
-**SkuTier**可以是本地、标准或高级。
+**SkuTier**可以是本地、标准版或高级版。
 
-**SkuFamily**必须是 MeteredData，因为 ExpressRoute 直接不支持。
+**SkuFamily**必须仅按流量计费数据，因为 ExpressRoute Direct 不支持无限制的数据。
 在 ExpressRoute Direct 资源上创建线路：
 
   ```azurecli
@@ -297,7 +297,7 @@ ms.locfileid: "77049944"
 
   **示例输出**
 
-  ```azurecli
+  ```output
   {
   "allowClassicOperations": false,
   "allowGlobalReach": false,

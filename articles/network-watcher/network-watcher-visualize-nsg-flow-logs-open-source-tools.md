@@ -1,5 +1,5 @@
 ---
-title: 可视化 NSG 流日志-弹性堆栈
+title: 将 NSG 流日志可视化 - Elastic Stack
 titleSuffix: Azure Network Watcher
 description: 在 Azure 中使用网络观察程序和 Elastic Stack 管理和分析网络安全组流日志。
 services: network-watcher
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: e567994038fb4f71ef86dc577760ecf4699a0b1d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840632"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用开源工具可视化 Azure 网络观察程序 NSG 流日志
@@ -37,7 +37,7 @@ ms.locfileid: "76840632"
 ## <a name="steps"></a>步骤
 
 ### <a name="enable-network-security-group-flow-logging"></a>启用网络安全组流日志记录
-就本方案来说，必须在帐户的至少一个网络安全组上启用网络安全组流日志记录。 有关启用网络安全组流日志的说明，请参阅以下文章：[网络安全组流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。
+就本方案来说，必须在帐户的至少一个网络安全组上启用网络安全组流日志记录。 有关启用网络安全流日志的说明，请参阅以下文章[简介网络安全组流日志记录](network-watcher-nsg-flow-logging-overview.md)。
 
 ### <a name="set-up-the-elastic-stack"></a>设置 Elastic Stack
 通过将 NSG 流日志与 Elastic Stack 相连接，可以创建一个 Kibana 仪表板，以便搜索、可视化、分析日志并从中获得见解。
@@ -157,7 +157,7 @@ ms.locfileid: "76840632"
    }  
    ```
 
-有关安装 Logstash 的其他说明，请参阅[正式文档](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)。
+有关安装 Logstash 的进一步说明，请参阅[官方文档](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)。
 
 ### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>安装适用于 Azure Blob 存储的 Logstash 输入插件
 
@@ -203,7 +203,7 @@ sudo /etc/init.d/logstash start
 
 下载[仪表板文件](https://aka.ms/networkwatchernsgflowlogdashboard)、[可视化效果文件](https://aka.ms/networkwatchernsgflowlogvisualizations)和[已保存的搜索文件](https://aka.ms/networkwatchernsgflowlogsearch)。
 
-在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。 然后，可从“仪表板”选项卡打开并加载示例仪表板。
+在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。******** 然后，可从“仪表板”**** 选项卡打开并加载示例仪表板。
 
 还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.elastic.co/guide/en/kibana/current/visualize.html)，详细了解如何创建 Kibana 可视化效果。
 
@@ -243,7 +243,7 @@ sudo /etc/init.d/logstash start
 
 ## <a name="next-steps"></a>后续步骤
 
-访问 [Visualize NSG flows logs with Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)（使用 Power BI 可视化 NSG 流日志），了解如何使用 Power BI 可视化 NSG 流日志
+访问[使用 Power BI 将 NSG 流日志可视化](network-watcher-visualize-nsg-flow-logs-power-bi.md)，了解如何使用 Power BI 将 NSG 流日志可视化
 
 <!--Image references-->
 

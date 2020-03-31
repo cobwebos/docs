@@ -1,5 +1,5 @@
 ---
-title: 向 Apache Cordova 应用添加推送通知
+title: 将推送通知添加到 Apache Cordova 应用程序
 description: 了解如何使用移动应用将推送通知发送到 Apache Cordova 应用。
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
 ms.tgt_pltfrm: mobile-html
@@ -7,10 +7,10 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 08260437076728421cb6fa393f481d27b95b1782
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461600"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>将推送通知添加到 Apache Cordova 应用
@@ -19,35 +19,35 @@ ms.locfileid: "77461600"
 
 ## <a name="overview"></a>概述
 
-在本教程中，你将向[Apache Cordova 快速入门][5]项目添加推送通知，以便每次插入一条记录时，向设备发送一条推送通知。
+本教程介绍如何向 [Apache Cordova 快速入门][5]项目添加推送通知，以便每次插入一条记录时，都向设备发送一条推送通知。
 
-如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用适用于移动应用的 .net 后端服务器 SDK][1]。
+如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用适用于移动应用的 .NET 后端服务器 SDK][1]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a><a name="prerequisites"></a>先决条件
 
 本教程假设已使用 Visual Studio 2015 开发了一个 Apache Cordova 应用程序。 此设备应在 Google Android 模拟器、Android 设备、Windows 设备或 iOS 设备上运行。
 
 要完成本教程，需要：
 
-* 使用[Visual Studio 社区 2015][2]或更高版本的电脑
-* [用于 Apache Cordova 的 Visual Studio 工具][4]
-* [有效的 Azure 帐户][3]
-* 已完成的[Apache Cordova 快速入门][5]项目
-* Android包含已验证电子邮件地址的[Google 帐户][6]
-* IOS[Apple 开发人员计划成员身份][7]和 ios 设备（ios 模拟器不支持推送通知）
-* Windows[Microsoft Store 开发人员帐户][8]和 Windows 10 设备
+* 装有 [Visual Studio Community 2015][2] 或更高版本的电脑
+* [阿帕奇·科尔多瓦的视觉工作室工具][4]
+* [活动 Azure 帐户][3]
+* 已完成的 [Apache Cordova 快速入门][5]项目
+* （安卓）具有已验证电子邮件地址的[Google 帐户][6]
+* (iOS) [Apple 开发人员计划成员身份][7]和 iOS 设备（iOS 模拟器不支持推送通知）
+* (Windows) [Microsoft Store 开发人员帐户][8]和 Windows 10 设备
 
-## <a name="configure-hub"></a>配置通知中心
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>配置通知中心
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-[观看视频，其中显示了本节中的步骤][9]。
+[观看视频，显示本节中的步骤][9]。
 
 ## <a name="update-the-server-project"></a>更新服务器项目
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="add-push-to-app"></a>修改 Cordova 应用
+## <a name="modify-your-cordova-app"></a><a name="add-push-to-app"></a>修改 Cordova 应用
 
 确保 Apache Cordova 应用项目已准备就绪，可通过安装 Cordova 推送插件和任何平台特定的推送服务来处理推送通知。
 
@@ -56,9 +56,9 @@ ms.locfileid: "77461600"
 如果项目使用早于版本 6.1.1 的 Apache Cordova 版本，请更新客户端项目。 若要更新项目，请执行以下步骤：
 
 * 若要打开配置设计器，请右键单击 `config.xml`。
-* 选择“平台”选项卡。
-* 在“Cordova CLI”文本框中选择“6.1.1”。 
-* 若要更新项目，请依次选择“生成”、“生成解决方案”。
+* 选择"**平台"** 选项卡。
+* 在“Cordova CLI”**** 文本框中选择“6.1.1”。**** 
+* 若要更新项目，请依次选择“生成”、“生成解决方案”。********
 
 #### <a name="install-the-push-plugin"></a>安装推送插件
 
@@ -74,7 +74,7 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 
 **从 Visual Studio 内部：**
 
-1. 在“解决方案资源管理器”中，打开 `config.xml` 文件。 接下来，选择“插件” **“自定义”。**  >  然后选择“Git”作为安装源。
+1. 在“解决方案资源管理器”中，打开 `config.xml` 文件。 接下来，选择**插件** > **自定义**。 然后选择“Git”作为安装源。****
 
 2. 输入 `https://github.com/phonegap/phonegap-plugin-push` 作为源。
 
@@ -87,13 +87,13 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
     >[!NOTE]
     >从版本 2.0.0 开始，需要在项目根文件夹中安装 google-services.json 才能配置发送方 ID。 有关详细信息，请参阅[安装文档](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)。
 
-5. 选择 **添加** 。
+5. 选择“添加”****。
 
 现已安装推送插件。
 
 #### <a name="install-the-device-plugin"></a>安装设备插件
 
-按照用于安装推送插件的相同步骤进行操作。 从“核心插件”列表添加“设备”插件。 （若要找到它，请选择 "**插件**" > **Core**"。）需要用此插件获取平台名称。
+按照用于安装推送插件的相同步骤进行操作。 从“核心插件”列表添加“设备”插件。 （要找到它，请选择**插件** > **核心**。）您需要此插件才能获取平台名称。
 
 #### <a name="register-your-device-when-the-application-starts"></a>在应用程序启动时注册设备 
 
@@ -169,25 +169,25 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
     pushRegistration.on('error', handleError);
     }
     ```
-3. Android在上面的代码中，将 `Your_Project_ID` 替换为[Google Developer Console][18]中应用的数值项目 ID。
+3. （安卓）在前面的代码中，从`Your_Project_ID`[Google 开发人员控制台][18]替换到应用的数字项目 ID。
 
 ## <a name="optional-configure-and-run-the-app-on-android"></a>（可选）在 Android 上配置并运行应用
 
 完成此部分以启用 Android 的推送通知。
 
-#### <a name="enable-gcm"></a>启用 Firebase Cloud Messaging
+#### <a name="enable-firebase-cloud-messaging"></a><a name="enable-gcm"></a>启用 Firebase Cloud Messaging
 
 由于我们最初面向的是 Google Android 平台，因此必须启用 Firebase Cloud Messaging。
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-#### <a name="configure-backend"></a>使用 FCM 配置移动应用后端以发送推送请求
+#### <a name="configure-the-mobile-app-back-end-to-send-push-requests-using-fcm"></a><a name="configure-backend"></a>使用 FCM 配置移动应用后端以发送推送请求
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 #### <a name="configure-your-cordova-app-for-android"></a>配置适用于 Android 的 Cordova 应用
 
-在 Cordova 应用中打开 **config.xml**。 然后，将 `Your_Project_ID` 替换为[Google Developer Console][18]中应用的数值项目 ID。
+在科尔多瓦应用程序中，打开**config.xml**。 然后，将 `Your_Project_ID` 替换为 [Google Developer Console][18] 中应用的数值项目 ID。
 
 ```xml
 <plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
@@ -195,7 +195,7 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 </plugin>
 ```
 
-打开 **index.js**。 然后更新代码以使用数值项目 ID。
+打开**索引.js**. 然后更新代码以使用数值项目 ID。
 
 ```javascript
 pushRegistration = PushNotification.init({
@@ -205,12 +205,12 @@ pushRegistration = PushNotification.init({
 });
 ```
 
-#### <a name="configure-device"></a>配置 Android 设备以进行 USB 调试
+#### <a name="configure-your-android-device-for-usb-debugging"></a><a name="configure-device"></a>配置 Android 设备以进行 USB 调试
 
 需要启用 USB 调试才能将应用程序部署到 Android 设备。 在 Android 手机上执行以下步骤：
 
-1. 转到“设置” > “关于手机”。 然后不断点击“内部版本号”（大约 7 次），直到启用开发人员模式。
-2. 返回“设置” > “开发人员选项”，启用“USB 调试”。 然后使用 USB 线缆将 Android 手机连接到开发电脑。
+1. 转到 **"关于手机的****设置** > "。 然后不断点击“内部版本号”****（大约 7 次），直到启用开发人员模式。
+2. 返回**设置** > **开发人员选项**，启用**USB 调试**。 然后使用 USB 线缆将 Android 手机连接到开发电脑。
 
 已使用运行 Android 6.0 (Marshmallow) 的 Google Nexus 5X 设备对此进行了测试。 但是，任何新式 Android 版本中都普遍具有此技术。
 
@@ -218,13 +218,13 @@ pushRegistration = PushNotification.init({
 
 推送插件依赖 Android Google Play 服务发送推送通知。
 
-1. 在 Visual Studio 中，选择“工具” > “Android” > “Android SDK 管理器”。 展开“Extras”文件夹。 勾选相应的复选框，确保安装以下每个 SDK：
+1. 在视觉工作室中，选择**工具** > **AndroidAndroid** > **SDK管理器**。 展开“Extras”文件夹。**** 勾选相应的复选框，确保安装以下每个 SDK：
 
    * Android 2.3 或更高版本
    * Google 存储库修订 27 或更高版本
    * Google Play Services 9.0.2 或更高版本
 
-2. 选择“安装程序包”。 等待安装完成。
+2. 选择“安装程序包”****。 等待安装完成。
 
 [phonegap-plugin-push 安装文档][19]中列出了当前需要的库。
 
@@ -232,9 +232,9 @@ pushRegistration = PushNotification.init({
 
 现在，可以通过运行该应用并将项插入 TodoItem 表中测试推送通知。 只要使用同一后端，就可以在同一设备或另一台设备中进行测试。 通过下面其中一种方式在 Android 平台上测试 Cordova 应用：
 
-* *在物理设备上：* 使用 USB 线缆将 Android 设备连接到开发计算机。  不是使用 **Google Android 模拟器**，而是选择“设备”。 Visual Studio 会将应用程序部署到设备，并运行应用程序。 可以随后在该设备上与该应用程序进行交互。
+* *在物理设备上：* 使用 USB 线缆将 Android 设备连接到开发计算机。  不是使用 **Google Android 模拟器**，而是选择“设备”****。 Visual Studio 会将应用程序部署到设备，并运行应用程序。 可以随后在该设备上与该应用程序进行交互。
 
-  屏幕共享应用程序（如[mobizen)][20] ）可以帮助你开发 Android 应用程序。 Mobizen 会将 Android 屏幕投影到电脑上的 Web 浏览器。
+  屏幕共享应用程序（如 [Mobizen][20]）可以帮助你开发 Android 应用程序。 Mobizen 会将 Android 屏幕投影到电脑上的 Web 浏览器。
 
 * *在 Android 模拟器中：* 使用模拟器时，还需要其他配置步骤。
 
@@ -242,9 +242,9 @@ pushRegistration = PushNotification.init({
 
     ![Android 虚拟设备管理器](./media/app-service-mobile-cordova-get-started-push/google-apis-avd-settings.png)
 
-    如果要使用更快的 x86 模拟器，请[安装 HAXM 驱动程序][11]，然后将其配置为使用该驱动程序。
+    如果想要使用更快的 x86 模拟器，请[安装 HAXM 驱动程序][11]并配置模拟器以使用它。
 
-    选择“应用” > “设置” > “添加帐户”，将 Google 帐户添加到 Android 设备。 然后遵照提示操作。
+    通过选择 **"应用** > **设置** > **添加帐户**"，将 Google 帐户添加到 Android 设备。 然后遵照提示操作。
 
     ![将 Google 帐户添加到 Android 设备](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
 
@@ -258,7 +258,7 @@ pushRegistration = PushNotification.init({
 
 #### <a name="install-and-run-the-ios-remote-build-agent-on-a-mac-or-cloud-service"></a>在 Mac 或云服务上安装并运行 iOS 远程生成代理
 
-在使用 Visual Studio 在 iOS 上运行 Cordova 应用前，请完成[ios 安装指南][12]中的步骤以安装并运行远程生成代理。
+在使用 Visual Studio 在 iOS 上运行 Cordova 应用之前，请浏览[iOS 设置指南][12]中安装和运行远程生成代理的步骤。
 
 请确保可以生成 iOS 应用。 需要执行安装指南中的步骤，通过 Visual Studio 生成适用于 iOS 的应用。 如果没有 Mac，可以使用服务（如 MacInCloud）中的远程生成代理针对 iOS 生成。 有关详细信息，请参阅[在云中运行 iOS 应用][21]。
 
@@ -299,17 +299,17 @@ pushRegistration = PushNotification.init({
 
 ##### <a name="test-push-notifications-in-your-ios-app"></a>在 iOS 应用中测试推送通知
 
-1. 在 Visual Studio 中，确保已选择“iOS”作为部署目标。 然后选择“设备”，以便在连接的 iOS 设备上运行推送通知。
+1. 在 Visual Studio 中，确保已选择“iOS”作为部署目标。**** 然后选择“设备”，以便在连接的 iOS 设备上运行推送通知。****
 
     可以在使用 iTunes 连接到电脑的 iOS 设备上运行推送通知。 iOS 模拟器不支持推送通知。
 
-2. 在 Visual Studio 中选择“运行”按钮或按 **F5** 生成项目并在 iOS 设备中启动应用， 然后选择“确定”接受推送通知。
+2. 在 Visual Studio 中选择“运行”**** 按钮或按 **F5** 生成项目并在 iOS 设备中启动应用， 然后选择“确定”接受推送通知。****
 
    > [!NOTE]
    > 首次运行时，应用会请求对推送通知进行确认。
 
 3. 在应用中，键入一项任务，并选择加号 **(+)** 图标。
-4. 确认收到了通知。 然后选择“确定”以关闭通知。
+4. 确认收到了通知。 然后选择“确定”以关闭通知。****
 
 ## <a name="optional-configure-and-run-on-windows"></a>（可选）配置并在 Windows 上运行
 
@@ -329,9 +329,9 @@ pushRegistration = PushNotification.init({
 
 #### <a name="configure-your-cordova-app-to-support-windows-push-notifications"></a>配置 Cordova 应用，以支持 Windows 推送通知
 
-若要打开配置设计器，请右键单击“config.xml”。 然后选择“视图设计器”。 接下来，选择“Windows”选项卡，并选择“Windows 目标版本”下的“Windows 10”。
+若要打开配置设计器，请右键单击“config.xml”。**** 然后选择“视图设计器”****。 接下来，选择“Windows”选项卡，并选择“Windows 目标版本”下的“Windows 10”。************
 
-若要在默认（调试）版本中支持推送通知，请打开 **build.json** 文件。 然后将“版本”配置复制到调试配置。
+要支持默认（调试）版本中的推送通知，请打开**build.json**文件。 然后将“版本”配置复制到调试配置。
 
 ```json
 "windows": {
@@ -342,7 +342,7 @@ pushRegistration = PushNotification.init({
 }
 ```
 
-更新后，**build.json** 文件应包含以下代码：
+更新后 **，build.json**文件应包含以下代码：
 
 ```json
 "windows": {
@@ -361,18 +361,18 @@ pushRegistration = PushNotification.init({
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>在 Windows 应用中测试推送通知
 
-在 Visual Studio 中，确保已选择 Windows 平台作为部署目标，例如 **Windows-x64** 或 **Windows-x86**。 若要在托管 Visual Studio 的 Windows 10 电脑上运行该应用，请选择“本地计算机”。
+在 Visual Studio 中，确保已选择 Windows 平台作为部署目标，例如 **Windows-x64** 或 **Windows-x86**。 若要在托管 Visual Studio 的 Windows 10 电脑上运行该应用，请选择“本地计算机”****。
 
-1. 选择“运行”按钮生成项目并启动应用程序。
+1. 选择“运行”按钮生成项目并启动应用程序。****
 
 2. 在应用中，为新 todoitem 键入一个名称，并选择加号 **(+)** 图标添加该项。
 
 确认在添加该项目时收到了通知。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a><a name="next-steps"></a>后续步骤
 
 * 有关推送通知的信息，请参阅[通知中心][17]。
-* 如果尚未执行此操作，请通过[将身份验证添加][14]到 Apache Cordova 应用来继续本教程。
+* 如果尚未这样做，请通过将[身份验证添加][14]到 Apache Cordova 应用来继续学习该教程。
 
 了解如何使用以下 SDK：
 

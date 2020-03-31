@@ -1,6 +1,6 @@
 ---
-title: 排查由于文件系统错误而导致的 Linux VM 启动问题 |Microsoft Docs
-description: 说明为何无法启动 Linux VM 以及如何解决此问题。
+title: 解决由于文件系统错误而导致的 Linux VM 启动问题 |微软文档
+description: 解释 Linux VM 为何无法启动，以及如何解决此问题。
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -15,19 +15,19 @@ ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
 ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842395"
 ---
-# <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>排查由于文件系统错误导致的 Linux VM 启动问题
+# <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>排查文件系统错误导致的 Linux VM 启动问题
 
-无法使用安全外壳（SSH）连接到 Azure Linux 虚拟机（VM）。 在[Azure 门户](https://portal.azure.com/)上运行启动诊断功能时，将看到类似于以下示例的日志条目。
+无法使用安全外壳 (SSH) 与 Azure Linux 虚拟机 (VM) 建立连接。 在 [Azure 门户](https://portal.azure.com/)上运行启动诊断功能时，看到类似于以下示例的日志条目。
 
 ## <a name="examples"></a>示例
 
-下面是可能的错误的示例。
+下面是可能的错误示例。
 
 ### <a name="example-1"></a>示例 1 
 
@@ -57,7 +57,7 @@ An error occurred while mounting /.
 
 ### <a name="example-4"></a>示例 4 
 
-此示例由干净的 fsck 引起。 在这种情况下，还附加了附加到 VM 的其他数据磁盘（/dev/sdc1 和/dev/sde1）。
+此示例是使用干净 fsck 导致的。 在这种情况下，还会有其他数据磁盘（/dev/sdc1 和 /dev/sde1）附加到 VM。
 
 ```
 Checking all file systems. 
@@ -69,32 +69,32 @@ Checking all file systems.
 /dev/sde1 : clean, 51/67043328 files, 4259482/268173037 blocks
 ```
 
-如果文件系统未完全关闭或与存储相关的问题，则可能出现此问题。 这些问题包括硬件或软件错误、驱动程序或程序的问题、写错误，等等。对关键数据进行备份始终很重要。 本文中描述的工具可以帮助恢复文件系统，但仍可能会丢失数据。
+如果文件系统未彻底关闭或者有存储相关问题，则可能会出现此问题。 这些问题包括硬件或软件错误、驱动程序或程序问题、写入错误等。备份关键数据始终很重要。 本文中介绍的工具可用于恢复文件系统，但仍可能出现数据丢失的情况。
 
-Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是： [FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific)、 [E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)和[Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair)。
+Linux 提供了多个文件系统检查程序。 Azure 中分布最常见的是[：FSCK、E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific)和[Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair)。 [E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)
 
-## <a name="resolution"></a>分辨率
+## <a name="resolution"></a>解决方法
 
-若要解决此问题，请使用[串行控制台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)将 VM 启动到紧急模式，并使用该工具修复文件系统。 如果未在 VM 上启用串行控制台或不工作，请参阅本文的[修复 VM 脱机](#repair-the-vm-offline)部分。
+要解决此问题，请使用[串行控制台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)将 VM 引导到紧急模式，并使用该工具修复文件系统。 如果 VM 上未启用串行控制台或不起作用，请参阅本文[的"修复 VM 脱机](#repair-the-vm-offline)"部分。
 
 ## <a name="use-the-serial-console"></a>使用串行控制台
 
 1. 连接到串行控制台。
 
    > [!Note]
-   > 有关使用适用于 Linux 的串行控制台的详细信息，请参阅：
+   > 有关为 Linux 使用串行控制台的详细信息，请参阅：
    > * [使用串行控制台访问 GRUB 和单用户模式](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
    > * [使用串行控制台进行 SysRq 和 NMI 调用](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-nmi-sysrq)
 
-2. 选择电源图标按钮，然后选择 "重新启动 VM"。 （如果串行控制台未启用或未成功连接，你将看不到此按钮。）
+2. 选择"电源"图标按钮，然后选择"重新启动 VM"。 （如果串行控制台未启用或未成功连接，您将看不到该按钮。
 
    ![IMAGE](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
 
-3. 在紧急模式下启动 VM。
+3. 将 VM 引导到紧急模式。
 
-4. 输入用于登录到紧急模式的根帐户的密码。
+4. 输入根帐户的密码以登录到紧急模式。
 
-5. 使用带有-n 选项的 xfs_repair 检测文件系统中的错误。 在下面的示例中，我们假定系统分区为/dev/sda1。 将其替换为 VM 的适当值：
+5. 将 xfs_repair 与 -n 选项配合使用，以便检测文件系统中的错误。 在下面的示例中，我们假定系统分区是 /dev/sda1。 将其替换为 VM 的相应值：
 
    ```
    xfs_repair -n /dev/sda1
@@ -106,27 +106,27 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是�
    xfs_repair /dev/sda1
    ```
 
-7. 如果收到错误消息 "错误：文件系统在需要重播的日志中有重要的元数据更改"，请创建一个临时目录并装载 filesystem：
+7. 如果您收到错误消息"ERROR：文件系统在日志中有需要重播的宝贵元数据更改"，请创建一个临时目录并装载文件系统：
 
    ```
    mkdir /temp
    mount /dev/sda1 /temp
    ```
 
-8. 如果磁盘未能装入，请运行包含-L 选项的 xfs_repair 命令（强制日志为零）：
+8. 如果磁盘无法装载，请使用 -L 选项运行 xfs_repair 命令（强制日志归零）：
 
    ```
    xfs_repair /dev/sda1 -L
    ```
 
-9. 接下来，尝试装载文件系统。 如果磁盘安装成功，您将收到以下输出：
+9. 接下来，尝试装载文件系统。 如果磁盘装载成功，则会收到以下输出：
  
    ```
    XFS (sda1): Mounting V1 Filesystem
    XFS (sda1): Ending clean mount
    ```
 
-10. 重新启动 VM，然后检查问题是否已解决。
+10. 重新启动 VM，然后检查问题是否得到解决。
 
     ```
     Reboot -f
@@ -134,11 +134,11 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是�
 
 ## <a name="repair-the-vm-offline"></a>修复 VM 脱机
 
-1. 将 VM 的系统磁盘作为数据磁盘附加到恢复 VM （任何工作的 Linux VM）。 为此，可以使用[CLI 命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)，也可以使用[VM repair 命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)自动设置恢复 VM。
+1. 将 VM 的系统磁盘作为数据磁盘附加到恢复 VM（任何正常工作的 Linux VM）。 为此，可以使用 [CLI 命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)，或者使用 [VM 修复命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)自动设置恢复 VM。
 
-2. 找到所附加的系统磁盘的驱动器标签。 在这种情况下，我们假设附加的系统磁盘的标签是/dev/sdc1 将其替换为 VM 的适当值。
+2. 找到附加的系统磁盘的驱动器标签。 在此示例中，我们假定附加的系统磁盘的驱动器标签为 /dev/sdc1。 请将它替换为 VM 的相应值。
 
-3. 使用带有-n 选项的 xfs_repair 检测文件系统中的错误。
+3. 将 xfs_repair 与 -n 选项配合使用，以便检测文件系统中的错误。
 
    ```
    xfs_repair -n /dev/sdc1
@@ -150,7 +150,7 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是�
    xfs_repair /dev/sdc1
    ```
 
-5. 如果收到错误消息 "错误：文件系统在需要重播的日志中有重要的元数据更改"，请创建一个临时目录并装载 filesystem：
+5. 如果您收到错误消息"ERROR：文件系统在日志中有需要重播的宝贵元数据更改"，请创建一个临时目录并装载文件系统：
 
    ```
    mkdir /temp
@@ -158,13 +158,13 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是�
    mount /dev/sdc1 /temp
    ```
 
-   如果磁盘未能装入，请运行包含-L 选项的 xfs_repair 命令（强制日志为零）：
+   如果磁盘无法装载，请使用 -L 选项运行 xfs_repair 命令（强制日志归零）：
 
    ```
    xfs_repair /dev/sdc1 -L
    ```
 
-6. 接下来，尝试装载文件系统。 如果磁盘安装成功，您将收到以下输出：
+6. 接下来，尝试装载文件系统。 如果磁盘装载成功，则会收到以下输出：
 
    ```
    XFS (sdc1): Mounting V1 Filesystem
@@ -172,12 +172,12 @@ Linux 提供了多个文件系统检查程序。 Azure 中最常见的分发是�
    XFS (sdc1): Ending clean mount
    ```
 
-7. 卸载并分离原始虚拟硬盘，然后从原始系统磁盘创建 VM。 为此，可以使用[CLI 命令](troubleshoot-recovery-disks-linux.md)或[VM repair 命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)（如果你使用它们来创建恢复 VM）。
+7. 卸载并分离原始虚拟硬盘，然后从原始系统磁盘创建 VM。 为此，可以使用 [CLI 命令](troubleshoot-recovery-disks-linux.md)或 [VM 修复命令](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)（如果使用这些命令创建了恢复 VM）。
 
-8. 检查问题是否已解决。
+8. 查看问题是否得到解决。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [通过将 OS 磁盘附加到带有 Azure CLI 2.0 的恢复 VM 来对 Linux VM 进行故障排除](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
+* [通过使用 Azure CLI 2.0 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
 * [使用门户将数据磁盘附加到 Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
 

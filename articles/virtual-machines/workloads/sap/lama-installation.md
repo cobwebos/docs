@@ -14,22 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 2df0bfe8041216e207193832c8f7ca48967c4e5b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842429"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293949"
 ---
 # <a name="sap-lama-connector-for-azure"></a>适用于 Azure 的 SAP LaMa 连接器
 
-[1877727]: https://launchpad.support.sap.com/#/notes/1877727
-[2343511]: https://launchpad.support.sap.com/#/notes/2343511
-[2350235]: https://launchpad.support.sap.com/#/notes/2350235
-[2562184]: https://launchpad.support.sap.com/#/notes/2562184
-[2628497]: https://launchpad.support.sap.com/#/notes/2628497
-[2445033]: https://launchpad.support.sap.com/#/notes/2445033
-[2815988]: https://launchpad.support.sap.com/#/notes/2815988
+[1877727]:https://launchpad.support.sap.com/#/notes/1877727
+[2343511]:https://launchpad.support.sap.com/#/notes/2343511
+[2350235]:https://launchpad.support.sap.com/#/notes/2350235
+[2562184]:https://launchpad.support.sap.com/#/notes/2562184
+[2628497]:https://launchpad.support.sap.com/#/notes/2628497
+[2445033]:https://launchpad.support.sap.com/#/notes/2445033
+[2815988]:https://launchpad.support.sap.com/#/notes/2815988
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 [dbms-guide]:dbms-guide.md
@@ -51,7 +51,7 @@ ms.locfileid: "76842429"
 
 以下 SAP 说明与 Azure 上的 SAP LaMa 主题相关：
 
-| 说明文档编号 | 标题 |
+| 说明文档编号 | Title |
 | --- | --- |
 | [2343511] |用于 SAP Landscape Management (LaMa) 的 Microsoft Azure 连接器 |
 | [2350235] |SAP Landscape Management 3.0 - Enterprise Edition |
@@ -60,34 +60,34 @@ ms.locfileid: "76842429"
 
 ## <a name="general-remarks"></a>一般备注
 
-* 请务必在“设置”->“设置”->“引擎”中启用“自动装入点创建”  
+* 请务必在“设置”->“设置”->“引擎”中启用“自动装入点创建”**  
   在未启用此设置的情况下，如果 SAP LaMa 使用虚拟机上的 SAP 自适应扩展装载卷，则该装入点必须存在。
 
 * 使用单独的子网而不要使用动态 IP 地址，以防止在部署新 VM 并且未准备好 SAP 实例时发生 IP 地址“窃用”  
   如果在子网中使用动态 IP 地址分配（SAP LaMa 也使用这种分配），则使用 SAP LaMa 准备 SAP 系统可能会失败。 如果未准备好 SAP 系统，IP 地址将不会保留，可能会分配到其他虚拟机。
 
-* 如果登录到托管主机，请确保未卸载文件系统  
-  如果登录到 Linux 虚拟机，并将工作目录更改为装入点中的某个目录（例如/usr/sap/AH1/ASCS00/exe），则无法卸载该卷，并且重定位或 unprepare 失败。
+* 如果登录到托管主机，请确保不会阻止文件系统卸载  
+  如果您登录到 Linux 虚拟机并将工作目录更改为装载点中的目录，例如 /usr/sap/AH1/ASCS00/exe，则无法取消安装卷，并且重新定位或未准备失败。
 
-* 请确保在 SUSE SLES Linux 虚拟机上禁用 CLOUD_NETCONFIG_MANAGE。 有关更多详细信息，请参阅[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)。
+* 请确保禁用 SUSE SLES Linux 虚拟机上的CLOUD_NETCONFIG_MANAGE。 有关详细信息，请参阅[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)。
 
 ## <a name="set-up-azure-connector-for-sap-lama"></a>为 SAP LaMa 设置 Azure 连接器
 
 从 SAP LaMa 3.0 SP05 开始随附了 Azure 连接器。 我们建议始终为 SAP LaMa 3.0 安装最新的支持包和修补程序。
 
-Azure 连接器使用 Azure 资源管理器 API 来管理 Azure 资源。 SAP LaMa 可以使用服务主体或托管标识对此 API 进行身份验证。 如果在 Azure VM 上运行 SAP LaMa，我们建议使用托管标识，如[使用托管标识访问 AZURE API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)一章中所述。 如果要使用服务主体，请遵循[使用服务主体访问 AZURE API](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e)一章中的步骤。
+Azure 连接器使用 Azure 资源管理器 API 来管理 Azure 资源。 SAP LaMa 可以使用此 API 使用服务主体或托管标识进行身份验证。 如果您的 SAP LaMa 在 Azure VM 上运行，我们建议使用管理标识，如使用托管标识一文中所述[，以访问 Azure API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)。 如果要使用服务主体，请按照"[使用服务主体"](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e)一章中的步骤访问 Azure API 。
 
-### <a name="913c222a-3754-487f-9c89-983c82da641e"></a>使用服务主体获取对 Azure API 的访问权限
+### <a name="use-a-service-principal-to-get-access-to-the-azure-api"></a><a name="913c222a-3754-487f-9c89-983c82da641e"></a>使用服务主体访问 Azure API
 
 Azure 连接器可以使用服务主体对 Microsoft Azure 进行授权。 遵循以下步骤为 SAP Landscape Management (LaMa) 创建服务主体。
 
 1. 转到 https://portal.azure.com
 1. 打开“Azure Active Directory”边栏选项卡
 1. 单击“应用注册”
-1. 单击 "新建注册"
-1. 输入名称，然后单击 "注册"
-1. 选择新应用，并在 "设置" 选项卡中单击 "证书" & 机密 "
-1. 创建新的客户端密码，输入新密钥的说明，选择密钥过期时间，并单击 "保存"
+1. 点击"新注册"
+1. 输入名称并单击"注册"
+1. 选择新应用，然后单击"设置"选项卡中的"证书&机密"
+1. 创建新客户端密钥，输入新密钥的说明，选择密钥何时过期，然后单击"保存"
 1. 记下值。 此值用作服务主体的密码
 1. 记下应用程序 ID。 此值用作服务主体的用户名
 
@@ -100,43 +100,43 @@ Azure 连接器可以使用服务主体对 Microsoft Azure 进行授权。 遵�
 1. 单击“添加角色分配”
 1. 选择“参与者”角色
 1. 输入前面创建的应用程序名称
-1. 单击“保存”。
+1. 点击“保存”
 1. 针对要在 SAP LaMa 中使用的所有资源组重复步骤 3 到 8
 
-### <a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>使用托管标识获取对 Azure API 的访问权限
+### <a name="use-a-managed-identity-to-get-access-to-the-azure-api"></a><a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>使用托管标识访问 Azure API
 
-为了能够使用托管标识，SAP LaMa 实例必须在具有系统或用户分配的标识的 Azure VM 上运行。 有关托管标识的详细信息，请参阅[azure 资源的托管标识是什么？](../../../active-directory/managed-identities-azure-resources/overview.md)并[使用 Azure 门户为 VM 上的 azure 资源配置托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)。
+为了能够使用托管标识，SAP LaMa 实例必须在具有系统或用户分配标识的 Azure VM 上运行。 有关托管标识的详细信息，请阅读 Azure[资源的托管标识是什么？](../../../active-directory/managed-identities-azure-resources/overview.md)并使用[Azure 门户在 VM 上配置 Azure 资源的托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)。
 
-默认情况下，托管标识没有访问 Azure 资源的权限。 需要授予其访问权限。
+默认情况下，托管标识没有访问 Azure 资源的权限。 您需要授予其访问它们的权限。
 
 1. 转到 https://portal.azure.com
 1. 打开“资源组”边栏选项卡
 1. 选择要使用的资源组
 1. 选择“访问控制(IAM)”
-1. 单击 "添加-> 添加角色分配
+1. 单击"添加 ->添加角色分配
 1. 选择“参与者”角色
-1. 选择 "虚拟机" 作为 "分配访问权限"
-1. 选择运行 SAP LaMa 实例的虚拟机
-1. 单击“保存”。
-1. 对于要在 SAP LaMa 中使用的所有资源组，请重复上述步骤。
+1. 选择"虚拟机"以"分配访问权限"
+1. 选择 SAP LaMa 实例运行所在的虚拟机
+1. 点击“保存”
+1. 对要在 SAP LaMa 中使用的所有资源组重复这些步骤
 
-在 SAP LaMa Azure 连接器配置中，选择 "使用托管标识" 启用托管标识。 如果要使用系统分配的标识，请确保将 "用户名" 字段留空。 如果要使用用户分配的标识，请在 "用户名" 字段中输入用户分配的标识 Id。
+在 SAP LaMa Azure 连接器配置中，选择"使用托管标识"以启用托管标识的使用。 如果要使用系统分配的标识，请确保将用户名字段留空。 如果要使用用户分配的身份，请在"用户名"字段中输入用户分配的标识 ID。
 
-### <a name="create-a-new-connector-in-sap-lama"></a>在 SAP LaMa 中创建新的连接器
+### <a name="create-a-new-connector-in-sap-lama"></a>在 SAP LaMa 中创建新连接器
 
 打开 SAP LaMa 网站并导航到“基础结构”。 转到“云管理器”选项卡并单击“添加”。 选择“Microsoft Azure 云适配器”并单击“下一步”。 输入以下信息：
 
 * 标签：选择连接器实例的名称
-* 用户名：服务主体应用程序 ID 或用户分配的虚拟机标识。 有关详细信息，请参阅 [使用系统或用户分配的标识]
-* Password：服务主体密钥/密码。 如果使用系统或用户分配的标识，则可以将此字段留空。
-* URL：保留默认值 https://management.azure.com/
+* 用户名：用户分配的虚拟机标识的服务主体应用程序 ID 或 ID。 有关详细信息，请参阅 [使用系统或用户分配的身份]
+* 密码：服务主体密钥/密码。 如果使用系统或用户分配的标识，则可以将此字段留空。
+* URL：保留默认值 `https://management.azure.com/`
 * 监视间隔(秒)：应至少为 300
-* 使用托管标识： SAP LaMa 可以使用系统或用户分配的标识对 Azure API 进行身份验证。 请参阅本指南中的 "[使用托管标识访问 AZURE API"](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)一章。
+* 使用托管标识：SAP LaMa 可以使用系统或用户分配的标识对 Azure API 进行身份验证。 请参阅本指南[中的"使用托管标识"一章访问 Azure API。](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)
 * 订阅 ID：Azure 订阅 ID
 * Azure Active Directory 租户 ID：Active Directory 租户的 ID
 * 代理主机：如果 SAP LaMa 需要使用代理连接到 Internet，则为代理的主机名
 * 代理端口：代理的 TCP 端口
-* 更改存储类型以节约成本：如果 Azure 适配器应更改托管磁盘的存储类型，以便在未使用磁盘时节省成本，请启用此设置。 对于在 SAP 实例配置中引用的数据磁盘，在实例 unprepare 期间，适配器会将磁盘类型更改为标准存储，并在实例准备期间恢复为原始存储类型。 如果停止 SAP LaMa 中的虚拟机，适配器会将所有附加磁盘的存储类型（包括 OS 磁盘）更改为标准存储。 如果在 SAP LaMa 中启动虚拟机，适配器会将存储类型更改回原始存储类型。
+* 更改存储类型以节省成本：如果 Azure 适配器应更改托管磁盘的存储类型以在磁盘未使用时节省成本，则启用此设置。 对于 SAP 实例配置中引用的数据磁盘，适配器将在实例未准备期间将磁盘类型更改为标准存储，并在实例准备期间返回原始存储类型。 如果在 SAP LaMa 中停止虚拟机，适配器将更改所有连接磁盘的存储类型，包括操作系统磁盘到标准存储。 如果在 SAP LaMa 中启动虚拟机，适配器将更改存储类型回原始存储类型。
 
 单击“测试配置”以验证输入。 在网站底部应会看到
 
@@ -274,7 +274,7 @@ SAP LaMa 不能重定位 SQL Server 本身，因此，要用于重定位数据�
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-ascs -n 255.255.255.128
 ```
 
-运行 SWPM，并为“ASCS 实例主机名”使用 *ah1-ascs*。
+运行 SWPM，并为“ASCS 实例主机名”使用 *ah1-ascs*。**
 
 ![Linux][Logo_Linux] Linux  
 将以下配置文件参数添加到位于 /usr/sap/hostctrl/exe/host_profile 的 SAP 主机代理配置文件。 有关详细信息，请参阅 SAP 说明 [2628497]。
@@ -282,61 +282,61 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 ```
 
-#### <a name="install-sap-netweaver-ascs-for-sap-hana-on-azure-netappfiles-anf-beta"></a>在 Azure NetAppFiles （和） BETA 上安装 SAP NetWeaver ASCS for SAP HANA
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-on-azure-netappfiles-anf-beta"></a>在 Azure NetApp文件 （ANF） BETA 上安装 SAP 网织软件 ASCS 以 SAP HANA
 
 > [!NOTE]
-> 此功能尚不公开。 有关详细信息，请参阅 SAP 说明[2815988] （仅对预览版客户可见）。
-打开组件 BC 上的 SAP 事件-VCM-HYPERV，并请求加入 Azure NetApp 文件预览版的 LaMa 存储适配器
+> 此功能还不是 GA。 有关详细信息，请参阅 SAP 说明[2815988（]仅对预览客户可见）。
+在组件 BC-VCM-LVM-HYPERV 上打开 SAP 事件，并请求加入 Azure NetApp 文件预览的 LaMa 存储适配器
 
-和为 Azure 提供 NFS。 在 SAP LaMa 的上下文中，这简化了 ABAP Central Services （ASCS）实例和应用程序服务器的后续安装。 以前，ASCS 实例还必须充当 NFS 服务器，并且必须将参数 acosprep/nfs_paths 添加到 SAP Hostagent 的 host_profile 中。
+ANF 为 Azure 提供 NFS。 在 SAP LaMa 的上下文中，这简化了 ABAP 中央服务 （ASCS） 实例的创建以及应用程序服务器的后续安装。 以前，ASCS 实例必须充当 NFS 服务器，并且参数 acosprep/nfs_paths必须添加到 SAP 主机代理host_profile。
 
-#### <a name="anf-is-currently-available-in-these-regions"></a>和目前在以下区域中提供：
+#### <a name="anf-is-currently-available-in-these-regions"></a>ANF 目前在以下区域可用：
 
-澳大利亚东部、美国中部、美国东部、美国东部2、北欧、美国中南部、西欧和美国西部2。
+澳大利亚东部、美国中部、美国东部、美国东部 2、北欧、美国中南部、西欧和美国西部 2.
 
 #### <a name="network-requirements"></a>网络要求
 
-和需要委派的子网，该子网必须与 SAP 服务器属于同一 VNET。 下面是此类配置的示例。
+ANF 需要一个委派的子网，该子网必须与 SAP 服务器属于同一 VNET。 下面是此类配置的示例。
 此屏幕显示 VNET 和第一个子网的创建：
 
-![SAP LaMa 为 Azure 和创建虚拟网络 ](media/lama/sap-lama-createvn-50.png)
+![SAP LaMa 为 Azure ANF 创建虚拟网络 ](media/lama/sap-lama-createvn-50.png)
 
-下一步将为 Microsoft NetApp/卷创建委托子网。
+下一步将创建 Microsoft.NetApp/卷的委派子网。
 
-![SAP LaMa 添加委托子网 ](media/lama/sap-lama-addsubnet-50.png)
+![SAP LaMa 添加委派子网 ](media/lama/sap-lama-addsubnet-50.png)
 
 ![SAP LaMa 子网列表 ](media/lama/sap-lama-subnets.png)
 
-现在，需要在 Azure 门户中创建一个 NetApp 帐户：
+现在需要在 Azure 门户中创建 NetApp 帐户：
 
 ![SAP LaMa 创建 NetApp 帐户 ](media/lama/sap-lama-create-netappaccount-50.png)
 
-![已创建 SAP LaMa NetApp 帐户 ](media/lama/sap-lama-netappaccount.png)
+![创建 SAP LaMa 网络应用帐户 ](media/lama/sap-lama-netappaccount.png)
 
-在 NetApp 帐户内，容量池为每个池指定磁盘的大小和类型：
+在 NetApp 帐户中，容量池指定每个池的磁盘大小和类型：
 
 ![SAP LaMa 创建 NetApp 容量池 ](media/lama/sap-lama-capacitypool-50.png)
 
-![已创建 SAP LaMa NetApp 容量池 ](media/lama/sap-lama-capacitypool-list.png)
+![创建 SAP LaMa NetApp 容量池 ](media/lama/sap-lama-capacitypool-list.png)
 
-现在可以定义 NFS 卷。 由于一个池中的多个系统都有卷，因此应选择一个自解释的命名方案。 添加 SID 有助于将相关卷组合在一起。 对于 ASCS 和 AS 实例，需要以下装载： */sapmnt/\<sid\>* 、 */usr/sap/\<sid\>* 和 */home/\<sid\>adm*。 （可选） */usr/sap/trans*是中心传输目录所必需的，其中至少有一个横向的系统使用。
+现在可以定义 NFS 卷。 由于在一个池中有多个系统的卷，因此应选择自我解释命名方案。 添加 SID 有助于将相关卷组合在一起。 对于 ASCS 和 AS 实例，需要以下装载： *\</sapmnt/\>SID、* */usr/sap/\<SID\>* 和 */home/\<sid\>adm*。 或者，中央传输目录需要 */usr/sap/trans，* 该目录至少被一个景观的所有系统使用。
 
 > [!NOTE]
-> 在测试阶段，卷的名称在订阅中必须是唯一的。
+> 在 BETA 阶段，卷的名称必须在订阅中是唯一的。
 
-![SAP LaMa 创建卷1 ](media/lama/sap-lama-createvolume-80.png)
+![SAP LaMa 创建卷 1 ](media/lama/sap-lama-createvolume-80.png)
 
-![SAP LaMa 创建卷2 ](media/lama/sap-lama-createvolume2-80.png)
+![SAP LaMa 创建卷 2 ](media/lama/sap-lama-createvolume2-80.png)
 
-![SAP LaMa 创建卷3 ](media/lama/sap-lama-createvolume3-80.png)
+![SAP LaMa 创建卷 3 ](media/lama/sap-lama-createvolume3-80.png)
 
-对于其他卷，还需要重复这些步骤。
+对于其他卷，也需要重复这些步骤。
 
-![SAP LaMa 创建的卷列表 ](media/lama/sap-lama-volumes.png)
+![SAP LaMa 已创建卷的列表 ](media/lama/sap-lama-volumes.png)
 
-现在，需要将这些卷装载到将执行具有 SAP SWPM 的初始安装的系统。
+现在，这些卷需要安装到将执行 SAP SWPM 初始安装的系统。
 
-首先需要创建装入点。 在这种情况下，SID 是 AN1 的，因此需要执行以下命令：
+首先需要创建装载点。 在这种情况下，SID 是 AN1，因此需要执行以下命令：
 
 ```bash
 mkdir -p /home/an1adm
@@ -344,7 +344,7 @@ mkdir -p /sapmnt/AN1
 mkdir -p /usr/sap/AN1
 mkdir -p /usr/sap/trans
 ```
-接下来，将通过以下命令装载和卷：
+接下来，ANF 卷将包含以下命令：
 
 ```bash
 # sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-home-sidadm /home/an1adm
@@ -352,21 +352,21 @@ mkdir -p /usr/sap/trans
 # sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-usr-sap-sid /usr/sap/AN1
 # sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/global-usr-sap-trans /usr/sap/trans
 ```
-装载命令也可以从门户派生。 需要调整本地装入点。
+装载命令也可以从门户派生。 需要调整本地安装点。
 
-使用 df-h 命令验证。
+使用 df-h 命令进行验证。
 
-![SAP LaMa 装入点操作系统级别 ](media/lama/sap-lama-mounts.png)
+![SAP LaMa 装载点操作系统级别 ](media/lama/sap-lama-mounts.png)
 
-现在必须执行具有 SWPM 的安装。
+现在必须执行使用 SWPM 进行安装。
 
-对于至少一个实例，必须执行相同的步骤。
+必须至少为一个 AS 实例执行相同的步骤。
 
-成功安装后，必须在 SAP LaMa 内发现系统。
+成功安装后，必须在 SAP LaMa 中发现系统。
 
 对于 ASCS 和 AS 实例，装载点应如下所示：
 
-在 LaMa 中 ![SAP LaMa 装入点 ](media/lama/sap-lama-ascs.png) （这是一个示例。 IP 地址和导出路径与之前使用的路径不同）
+![SAP LaMa 在 LaMa](media/lama/sap-lama-ascs.png)安装点（这是一个示例）。 IP 地址和导出路径与之前使用的地址不同）
 
 
 #### <a name="install-sap-hana"></a>安装 SAP HANA
@@ -381,7 +381,7 @@ mkdir -p /usr/sap/trans
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-db -n 255.255.255.128
 ```
 
-在应用程序服务器虚拟机（而不是 HANA 虚拟机）上运行 SWPM 数据库实例安装。 在“SAP 系统的数据库”对话框中，为“数据库主机”使用 *ah1-db*。
+在应用程序服务器虚拟机（而不是 HANA 虚拟机）上运行 SWPM 数据库实例安装。 在“SAP 系统的数据库”对话框中，为“数据库主机”使用 *ah1-db*。****
 
 #### <a name="install-sap-netweaver-application-server-for-sap-hana"></a>安装 SAP HANA 的 SAP NetWeaver 应用程序服务器
 
@@ -417,7 +417,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-di
 /usr/sap/AH1/hdbclient/hdbuserstore SET DEFAULT ah1-db:35041@AH1 SAPABAP1 <password>
 ```
 
-在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *ah1-di-0*。
+在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *ah1-di-0*。****
 
 #### <a name="post-installation-steps-for-sap-hana"></a>SAP HANA 的安装后步骤
 
@@ -436,7 +436,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-di
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-ascs -n 255.255.255.128
 ```
 
-运行 SWPM，并为“ASCS 实例主机名”使用 *as1-ascs*。
+运行 SWPM，并为“ASCS 实例主机名”使用 *as1-ascs*。**
 
 #### <a name="install-sql-server"></a>安装 SQL Server
 
@@ -460,9 +460,9 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di-0 -n 255.255.255.128
 ```
 
-在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *as1-di-0*。
+在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *as1-di-0*。****
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="errors-and-warnings-during-discover"></a>发现期间的错误和警告
 
@@ -489,19 +489,19 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
   * 解决方案  
     为源 HANA 系统中的所有数据库创建备份
 
-* 数据库实例的系统复制步骤开始
+* 数据库实例的系统复制步骤开始**
   * 主机代理操作 '000D3A282BC91EE8A1D76CF1F92E2944' 失败(OperationException。 FaultCode: '127'，消息:“命令执行失败。 : [Microsoft][SQL Server Driver][SQL Server] 用户无权更改数据库 'AS2'、该数据库不存在，或者该数据库不处于允许访问检查的状态。)
   * 解决方案  
     确保 *NT AUTHORITY\SYSTEM* 可以访问 SQL Server。 参阅 SAP 说明 [2562184]
 
 ### <a name="errors-and-warnings-during-a-system-clone"></a>系统克隆期间的错误和警告
 
-* 尝试在应用程序服务器或 ASCS 的“强制注册并启动实例代理”步骤中注册实例代理时出错
+* 尝试在应用程序服务器或 ASCS 的“强制注册并启动实例代理”步骤中注册实例代理时出错**
   * 尝试注册实例代理时出错。 (RemoteException:“无法从配置文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' 加载实例数据: 无法访问配置文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0': 没有此类文件或目录。”)
   * 解决方案  
    确保 ASCS/SCS 上的 sapmnt 共享对 SAP_AS1_GlobalAdmin 拥有完全访问权限
 
-* “为克隆启用启动保护”步骤出错
+* “为克隆启用启动保护”步骤出错**
   * 无法打开文件 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0'。原因: 没有此类文件或目录
   * 解决方案  
     应用程序服务器的计算机帐户需要拥有配置文件的写访问权限
