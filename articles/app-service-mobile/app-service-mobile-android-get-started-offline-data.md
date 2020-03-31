@@ -1,5 +1,5 @@
 ---
-title: 启用脱机同步（Android）
+title: 启用脱机同步 (Android)
 description: 了解如何在 Android 应用程序中使用应用服务移动应用来缓存和同步脱机数据。
 ms.assetid: 32a8a079-9b3c-4faf-8588-ccff02097224
 ms.tgt_pltfrm: mobile-android
@@ -7,10 +7,10 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: c215105af5fe1ef8056b0d816cf2c2a6b96f2038
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461617"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>为 Android 移动应用启用脱机同步
@@ -70,7 +70,7 @@ ms.locfileid: "77461617"
 ## <a name="test-the-app"></a>测试应用程序
 在此部分中，会在启用 WiFi 的情况下测试行为，然后关闭 WiFi 以创建脱机方案。
 
-添加数据项时，它们保存在本地 SQLite 存储中，但直到按下“刷新”按钮才同步到移动服务。 根据数据需要同步的时间，其他应用可能具有不同的要求，但出于演示目的，本教程让用户显式请求它。
+添加数据项时，它们保存在本地 SQLite 存储中，但直到按下“刷新”**** 按钮才同步到移动服务。 根据数据需要同步的时间，其他应用可能具有不同的要求，但出于演示目的，本教程让用户显式请求它。
 
 按下该按钮时，将启动新的后台任务。 首先它会使用同步上下文推送对本地存储所做的所有更改，然后将所有更改数据从 Azure 拉取到本地表。
 
@@ -79,20 +79,20 @@ ms.locfileid: "77461617"
 2. 添加一些 *ToDo* 项或将一些项标记为“完成”。 退出设备或模拟器（或强制关闭应用），并重新启动。 验证所做更改是否保存在设备上，因为本地 SQLite 存储已保存这些更改。
 3. 使用 SQL 工具（如 *SQL Server Management Studio*）或 REST 客户端（如 *Fiddler* 或 *Postman*）查看 Azure *TodoItem* 表的内容。 验证新项是否*未*同步到服务器
    
-       + 对于 Node.js 后端，请转到 [Azure 门户](https://portal.azure.com/)，在移动应用后端中单击“简易表” > “TodoItem”，查看 `TodoItem` 表的内容。
+       + 对于 Node.js 后端，请转到 [Azure 门户](https://portal.azure.com/)，在移动应用后端中单击“简易表”**** > “TodoItem”****，查看 `TodoItem` 表的内容。
        + 对于 .NET 后端，请使用 SQL 工具（如 *SQL Server Management Studio*）或 REST 客户端（如 *Fiddler* 或 *Postman*）查看表内容。
-4. 在设备或模拟器中打开 WiFi。 接下来，按“刷新”按钮。
+4. 在设备或模拟器中打开 WiFi。 接下来，按“刷新”**** 按钮。
 5. 在 Azure 门户中再次查看 TodoItem 数据。 新的和更改的 TodoItem 现在应会出现。
 
 ## <a name="additional-resources"></a>其他资源
 * [Azure 移动应用中的脱机数据同步]
-* [云覆盖：Azure 移动服务中的脱机同步]\(注意：视频位于移动服务上，但是脱机同步在 Azure 移动应用中的工作方式类似\)
+* [云覆盖：Azure 移动服务中的脱机同步] \(注意：此视频中是有关移动服务的内容，但是脱机同步在 Azure 移动应用中的工作原理与其类似\)
 
 <!-- URLs. -->
 
 [Azure 移动应用中的脱机数据同步]: app-service-mobile-offline-data-sync.md
 
-[创建 Android 应用]: app-service-mobile-android-get-started.md
+[创建 Android 应用程序]: app-service-mobile-android-get-started.md
 
 [云覆盖：Azure 移动服务中的脱机同步]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/

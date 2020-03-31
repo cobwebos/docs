@@ -11,15 +11,15 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 815976c672272270e465610e17fef3aea79387f6
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77526631"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Azure 后端连接性功能的互操作性：数据平面分析
 
-本文介绍了[测试设置][Setup]的数据平面分析。 您还可以查看测试设置的[测试设置配置][Configuration]和[控制平面分析][Control-Analysis]。
+本文介绍了[测试设置][Setup]的数据平面分析。 你也可以查看测试设置的[测试设置配置][Configuration]和[控制平面分析][Control-Analysis]。
 
 数据平面分析检查数据包从一个本地网络（LAN 或虚拟网络）遍历到拓扑中的另一个本地网络所采用的路径。 两个本地网络之间的数据路径不一定是对称的。 因此，本文将单独从反向路径的角度来分析从一个本地网络到另一个网络的正向路径。
 
@@ -356,7 +356,7 @@ ms.locfileid: "77526631"
 
 ### <a name="path-to-on-premises-location-2"></a>本地位置 2 的路径
 
-当我们在[控制平面分析][Control-Analysis]中讨论时，本地位置1对于每个网络配置无法查看本地位置2。 以下 ping 结果确认了这一事实： 
+如在[控制平面分析][Control-Analysis]中所述，根据网络配置，本地位置 2 看不到本地位置 1。 以下 ping 结果确认了这一事实： 
 
     C:\Users\rb>ping 10.1.31.10
     
@@ -420,7 +420,7 @@ ms.locfileid: "77526631"
 
 ### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>分支 VNet、本地位置 1 和远程 VNet 的路径
 
-正如我们在[控制平面分析][Control-Analysis]中讨论的那样，本地位置1对于分支 VNet 没有任何可见性，对于本地位置1，或每个网络配置到远程 VNet。 
+如在[控制平面分析][Control-Analysis]中所述，根据网络配置，分支 VNet、本地位置 1 或远程 VNet 看不到本地位置 1。 
 
 ## <a name="data-path-from-the-remote-vnet"></a>远程 VNet 中的数据路径
 
@@ -454,7 +454,7 @@ ms.locfileid: "77526631"
 
 ### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>分支 VNet 和本地位置 2 的路径
 
-当我们在[控制平面分析][Control-Analysis]中讨论时，远程 VNet 对于分支 VNet 或每个网络配置的本地位置2都不可见。 
+如在[控制平面分析][Control-Analysis]中所述，根据网络配置，分支 VNet 或本地位置 2 看不到远程 VNet。 
 
 ### <a name="path-to-on-premises-location-1"></a>本地位置 1 的路径
 
@@ -476,7 +476,7 @@ ms.locfileid: "77526631"
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>基于 ExpressRoute 的站点到站点 VPN
 
-可以使用 ExpressRoute Microsoft 对等互连配置站点到站点 VPN，在本地网络与 Azure VNet 之间以私密方式交换数据。 使用此配置可以在确保保密性、真实性和完整性的基础上交换数据。 这种数据交换还可以防重播。 有关如何使用 ExpressRoute Microsoft 对等互连在隧道模式下配置站点到站点 IPsec VPN 的详细信息，请参阅[通过 Expressroute microsoft 对等互连建立的站点到站点 vpn][S2S-Over-ExR]。 
+可以使用 ExpressRoute Microsoft 对等互连配置站点到站点 VPN，在本地网络与 Azure VNet 之间以私密方式交换数据。 使用此配置可以在确保保密性、真实性和完整性的基础上交换数据。 这种数据交换还可以防重播。 有关如何使用 ExpressRoute Microsoft 对等互连以隧道模式配置站点到站点 IPsec VPN 的详细信息，请参阅[基于 ExpressRoute Microsoft 对等互连的站点到站点 VPN][S2S-Over-ExR]。 
 
 配置使用 Microsoft 对等互连的站点到站点 VPN 的主要限制是吞吐量。 基于 IPsec 隧道的吞吐量受限于 VPN 网关容量。 VPN 网关吞吐量低于 ExpressRoute 吞吐量。 在这种情况下，对高安全性流量使用 IPsec 隧道，并对其他所有流量使用专用对等互连，将有助于优化 ExpressRoute 带宽利用率。
 
@@ -484,7 +484,7 @@ ms.locfileid: "77526631"
 
 ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的 Azure 区域配置异地冗余的 ExpressRoute 连接。 另外，如测试设置中所示，在 Azure 区域中，可以使用站点到站点 VPN 为 ExpressRoute 连接创建故障转移路径。 通过 ExpressRoute 和站点到站点 VPN 播发相同的前缀时，Azure 会优先使用 ExpressRoute。 为了避免 ExpressRoute 与站点到站点 VPN 之间的非对称路由，本地网络配置同样应该优先使用 ExpressRoute 连接，然后再使用站点到站点 VPN 连接。
 
-有关如何配置 ExpressRoute 连接和站点到站点 VPN 的详细信息，请参阅[expressroute 和站点到站点共存][ExR-S2S-CoEx]。
+有关如何配置 ExpressRoute 和站点到站点 VPN 共存连接的详细信息，请参阅 [ExpressRoute 和站点到站点共存][ExR-S2S-CoEx]。
 
 ## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>将后端连接扩展到辐射 VNet 和分支位置
 
@@ -503,18 +503,18 @@ ExpressRoute 充当冗余的线路对，可确保高可用性。 可在不同的
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[EXPRESSROUTE 常见问题解答][ExR-FAQ]，了解：
+请参阅 [ExpressRoute 常见问题解答][ExR-FAQ]：
 -   了解可将多少条 ExpressRoute 线路连接到一个 ExpressRoute 网关。
 -   了解可将多少个 ExpressRoute 网关连接到一条 ExpressRoute 线路。
 -   了解 ExpressRoute 的其他缩放限制。
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "从集线器 VNet 到分支 VNet 的连接的网络观察程序视图"
-[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "从集线器 VNet 到分支 VNet 的连接的网络观察程序视图"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "从中心 VNet 连接到分支 VNet 的网络观察程序网格视图"
-[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "通过 ExpressRoute 1 将从位置 1 VM 到中心 VNet 的连接网络性能监视器视图"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "通过站点到站点 VPN 网络性能监视器从位置 1 VM 连接到集线器 VNet 的连接视图"
+[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "从中心 VNet 到辐射 VNet 的连接的网络观察程序视图"
+[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "从中心 VNet 到分支 VNet 的连接的网络观察程序视图"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "从中心 VNet 到分支 VNet 的连接的网络观察程序网格视图"
+[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "通过 ExpressRoute 1 从位置 1 VM 到中心 VNet 的连接的网络性能监视器视图"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "通过站点到站点 VPN 从位置 1 VM 到中心 VNet 的连接的网络性能监视器视图"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

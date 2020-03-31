@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 7c83350dbecaf20e9b35f159b2c01824777bc665
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973707"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>教程：使用计算机视觉在 Azure 存储中生成图像元数据

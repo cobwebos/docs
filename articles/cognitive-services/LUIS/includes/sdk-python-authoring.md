@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: diberry
 ms.openlocfilehash: 631185c20b816191530158fab2b7cd1ed68c3092
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77371943"
 ---
 可以使用适用于 Python 的语言理解 (LUIS) 创作客户端库执行以下操作：
@@ -26,7 +26,7 @@ ms.locfileid: "77371943"
 
 [参考文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [创作包 (Pypi)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 语言理解 (LUIS) 门户帐户：[免费创建一个](https://www.luis.ai)。
 * [Python 3.x](https://www.python.org/)

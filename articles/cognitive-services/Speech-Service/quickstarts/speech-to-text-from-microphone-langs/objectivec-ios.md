@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/23/2019
 ms.author: chlandsi
 ms.openlocfilehash: c1246b19670a18f8dadc0c5e1c64dd5af4c1b210
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75380773"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-by-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Objective-C 识别语音
@@ -23,7 +23,7 @@ ms.locfileid: "75380773"
 
 本文介绍如何使用 Azure 认知服务语音 SDK 在 Objective-C 中创建 iOS 应用，以便将麦克风或包含录制音频的文件中的语音转录为文本。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 准备工作：
 

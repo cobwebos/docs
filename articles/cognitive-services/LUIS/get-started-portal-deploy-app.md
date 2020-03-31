@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772497"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79218496"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中部署应用
 
@@ -23,7 +23,7 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 
 本快速入门介绍如何部署应用程序。 此外还介绍如何创建预测终结点资源、如何将资源分配给应用、如何训练应用以及如何发布应用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 获取 [Azure 订阅](https://azure.microsoft.com/free)。
 * 完成[上述门户快速入门](get-started-portal-build-app.md)或[下载并导入应用](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json)。

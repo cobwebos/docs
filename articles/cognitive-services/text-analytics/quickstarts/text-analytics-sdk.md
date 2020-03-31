@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: c6883b9b79adfc4f91af354147d45ea27d806d78
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: cc3f48ec1113f954336cfae0bda2cba2499d9a1d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614497"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80240131"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>快速入门：使用文本分析客户端库
 
@@ -44,7 +44,6 @@ ms.locfileid: "77614497"
 
 > [!IMPORTANT]
 > * 本快速入门适用于文本分析客户端库的 `3.0-preview` 版本，这包括改进的[情绪分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[命名实体识别 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 的公共预览版。
->    * 确保只按所用版本的说明操作。
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 对于生产方案，我们建议使用批处理的异步方法来提高性能和可伸缩性。 请参阅下面的参考文档。
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
@@ -57,6 +56,7 @@ ms.locfileid: "77614497"
 > * 文本分析 API 的最新预览版本为 `3.0-preview`，这包括改进的[情绪分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)和[命名实体识别 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) 的公共预览版。 最新稳定版本为 `2.1`。
 >    * 确保只按所用版本的说明操作。
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 对于生产方案，我们建议使用批处理的异步方法来提高性能和可伸缩性。 请参阅下面的参考文档。
+> * 还可[在浏览器中](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)运行此版本的文本分析客户端库。
 
 [!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
 

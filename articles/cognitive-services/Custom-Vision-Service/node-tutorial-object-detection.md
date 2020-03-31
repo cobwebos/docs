@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: 94013b735f70358d0c49512e6d90cd1d03e78d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705711"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>快速入门：使用自定义视觉 Node.js SDK 创建对象检测项目
 
 本文介绍如何开始通过 Node.js 使用自定义视觉 SDK 来构建对象检测模型。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Node.js 应用程序的模板。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 安装了 [Node.js 8](https://www.nodejs.org/en/download/) 或更高版本。
 - 安装了 [npm](https://www.npmjs.com/)。

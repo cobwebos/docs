@@ -11,14 +11,14 @@ metadata:
   manager: nitinme
   ms.service: speech-service
   ms.topic: hub-page
-  ms.date: 03/04/2020
+  ms.date: 03/24/2020
   ms.author: dapine
-  ms.openlocfilehash: 0071d4da31e4739ccf53e9570bc7d0ed61c01bc4
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: f047af5d14ed6b18c559f814b35d730ba7ce0f6a
+  ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943316"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80244318"
 highlightedContent:
   items:
   - title: 什么是语音服务？
@@ -37,15 +37,15 @@ conceptualContent:
   items:
   - title: 语音转文本
     links:
+    - itemType: how-to-guide
+      text: 语音识别基础知识
+      url: speech-to-text-basics.md
     - itemType: quickstart
       text: 识别来自麦克风的语音
       url: quickstarts/speech-to-text-from-microphone.md
     - itemType: quickstart
-      text: 以批处理模式识别语音
-      url: batch-transcription.md
-    - itemType: how-to-guide
-      text: 为应用自定义语音识别
-      url: how-to-custom-speech.md
+      text: 识别音频文件中的语音
+      url: quickstarts/speech-to-text-from-file.md
     footerLink:
       text: 查看详细信息
       url: index-speech-to-text.yml
@@ -94,10 +94,10 @@ conceptualContent:
   - title: 对话方案
     links:
     - itemType: overview
-      text: 关于对话听录
+      text: 关于对话听录（会议）
       url: conversation-transcription.md
     - itemType: overview
-      text: 关于多设备对话
+      text: 关于多设备对话（会议）
       url: multi-device-conversation.md
     - itemType: how-to-guide
       text: 呼叫中心听录
@@ -152,9 +152,6 @@ conceptualContent:
     - itemType: how-to-guide
       text: 从必应语音迁移
       url: how-to-migrate-from-bing-speech.md
-    - itemType: how-to-guide
-      text: 从自定义语音识别服务迁移
-      url: how-to-migrate-from-custom-speech-service.md
     - itemType: how-to-guide
       text: 从语音翻译 API 迁移
       url: how-to-migrate-from-translator-speech-api.md

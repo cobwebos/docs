@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: 2db40150167a8f16242b2feb15b77820fa1970a9
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76961225"
 ---
 # <a name="quickstart-face-client-library-for-go"></a>快速入门：适用于 Go 的人脸客户端库
@@ -30,7 +30,7 @@ ms.locfileid: "76961225"
 
 [参考文档](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [库源代码](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK 下载](https://github.com/Azure/azure-sdk-for-go)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版本的 [Go](https://golang.org/dl/)
@@ -63,7 +63,7 @@ ms.locfileid: "76961225"
 
 使用操作系统的说明。
 <!-- replace the below endpoint and key examples -->
-#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+#### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx FACE_SUBSCRIPTION_KEY <replace-with-your-product-name-key>
@@ -72,7 +72,7 @@ setx FACE_ENDPOINT <replace-with-your-product-name-endpoint>
 
 添加环境变量后，请重启控制台窗口。
 
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
@@ -81,7 +81,7 @@ export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
 
 添加环境变量后，请从控制台窗口运行 `source ~/.bashrc`，使更改生效。
 
-#### <a name="macostabunix"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 编辑 `.bash_profile`，然后添加环境变量：
 

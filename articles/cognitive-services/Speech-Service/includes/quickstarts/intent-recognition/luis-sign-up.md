@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: dapine
 ms.openlocfilehash: 58122066e65fbcb02b6b4333985785b219d3dbbd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76900338"
 ---
 若要完成意向识别快速入门，需要使用 LUIS 预览门户创建 LUIS 帐户和项目。 本快速入门仅需 LUIS 订阅。 无需语音服务订阅  。

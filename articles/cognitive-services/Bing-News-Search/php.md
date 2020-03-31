@@ -12,10 +12,10 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75383077"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>快速入门：使用 PHP 和必应新闻搜索 REST API 执行新闻搜索
@@ -24,7 +24,7 @@ ms.locfileid: "75383077"
 
 虽然此应用程序是使用 PHP 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * PHP 5.6 或更高版本
 

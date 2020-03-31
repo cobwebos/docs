@@ -12,10 +12,10 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: deb7ef0d087bc33c9e59ecd95973bc55a5ab6521
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74961516"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-with-go"></a>快速入门：使用计算机视觉 REST API 和 Go 生成缩略图
@@ -27,7 +27,7 @@ ms.locfileid: "74961516"
 ## <a name="prerequisites"></a>先决条件
 
 - 必须安装有 [Go](https://golang.org/dl/)。
-- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
+- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
@@ -35,7 +35,7 @@ ms.locfileid: "74961516"
 
 1. 将以下代码复制到文本编辑器中。
 1. （可选）将 `imageUrl` 的值替换为生成缩略图时所依据的另一图像的 URL。
-1. 将代码保存为以 `.go` 为扩展名的文件。 例如，`get-thumbnail.go`。
+1. 将代码保存为以 `.go` 为扩展名的文件。 例如，`get-thumbnail.go` 。
 1. 打开命令提示符窗口。
 1. 在提示符处运行 `go build` 命令，对文件中的包进行编译。 例如，`go build get-thumbnail.go` 。
 1. 在提示符处，运行所编译的包。 例如，`get-thumbnail` 。

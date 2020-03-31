@@ -11,15 +11,15 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: dapine
 ms.openlocfilehash: 5b1a5ac4867379457d161d07f4f4f2fc2d8ee6c3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77119598"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>快速入门：获取 LUIS 终结点密钥
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始阅读本教程之前，请务必准备好以下各项：
 

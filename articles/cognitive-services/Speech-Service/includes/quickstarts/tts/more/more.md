@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: 7dec0af74ce98724b8b4d0a4ff30553cf4d365e1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75466968"
 ---
 ## <a name="additional-language-and-platform-support"></a>其他语言和平台支持

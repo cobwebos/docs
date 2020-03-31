@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
 ms.openlocfilehash: f8391818ebf13afb3b07eead55133aadde6158f0
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170100"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>快速入门：使用自定义视觉 Go SDK 创建图像分类项目
 
 本文提供信息和示例代码，以帮助你开始通过 Go 使用自定义视觉 SDK 来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Go 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，  请改为查看[基于浏览器的指南](getting-started-build-a-classifier.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [Go 1.8+](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](includes/create-resources.md)]

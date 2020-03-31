@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: b722fd34a78f1e9c2f4a660c205cf4a1e163a5d7
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: ba80d1396b30b61bdfe4c121220429f5a7d994b0
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78253055"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79485959"
 ---
 开始使用适用于 C# 的必应自定义搜索客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。 借助必应自定义搜索 API，可为关注的主题创建定制的无广告搜索体验。 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch) 上找到此示例的源代码。
 
@@ -86,9 +86,9 @@ ms.locfileid: "78253055"
     {
         Console.WriteLine("Didn't see any Web data..");
     }
-    ```csharp
+    ```
 
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Build a Custom Search web app](../../tutorials/custom-search-web-page.md)
+> [生成自定义搜索 Web 应用](../../tutorials/custom-search-web-page.md)

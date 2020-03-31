@@ -12,10 +12,10 @@ ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18, seo-javascript-september2018, seo-javascript-october2019
 ms.openlocfilehash: 98fb7eab52c710d9008aafefc50c2d00979d3350
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973826"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-nodejs"></a>快速入门：使用计算机视觉 REST API 和 Node.js 分析远程图像
@@ -28,7 +28,7 @@ ms.locfileid: "74973826"
 
 - 必须安装有 [Node.js](https://nodejs.org) 4.x 或更高版本。
 - 必须安装有 [npm](https://www.npmjs.com/)。
-- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
+- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
 ## <a name="create-and-run-the-sample"></a>创建并运行示例
 
@@ -47,9 +47,9 @@ ms.locfileid: "74973826"
 1. 将以下代码复制到文本编辑器中。
 1. （可选）将 `imageUrl` 的值替换为要分析的其他图像的 URL。
 1. （可选）将 `language` 请求参数的值替换为其他语言。
-1. 将代码保存为以 `.js` 为扩展名的文件。 例如，`analyze-image.js`。
+1. 将代码保存为以 `.js` 为扩展名的文件。 例如，`analyze-image.js` 。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `node` 命令运行文件。 例如，`node analyze-image.js`。
+1. 在提示符处，使用 `node` 命令运行文件。 例如，`node analyze-image.js` 。
 
 ```javascript
 'use strict';

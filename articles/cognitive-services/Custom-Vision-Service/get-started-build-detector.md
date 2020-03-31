@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
 ms.openlocfilehash: 8aef46f0b9c3dc526f1fbed3d9bc59f97771b509
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169991"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>快速入门：如何使用自定义视觉生成对象检测器
@@ -23,7 +23,7 @@ ms.locfileid: "76169991"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 一组用于训练检测器模型的图像。 可以使用 GitHub 上的一组[示例图像](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images)。 或者，可以根据下面的提示选择你自己的图像。
 

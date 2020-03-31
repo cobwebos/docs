@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: a37f2b7044fcba04ca18093aa73563961e9e35de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448146"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>快速入门：使用墨迹识别器 REST API 和 JavaScript 识别数字墨迹
@@ -29,7 +29,7 @@ ms.locfileid: "75448146"
 
 可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905) 上找到此快速入门的源代码。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Web 浏览器
 - 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json) 上找到此快速入门的示例墨迹笔划数据。

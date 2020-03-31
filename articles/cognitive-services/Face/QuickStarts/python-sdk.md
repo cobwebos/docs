@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 7ac1b85ee44627990931cfc7b3a65f6f7a661b3f
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76165813"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>快速入门：适用于 Python 的人脸客户端库
@@ -31,7 +31,7 @@ ms.locfileid: "76165813"
 
 [参考文档](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [包 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [示例](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)

@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
 ms.openlocfilehash: 11d2f9788f41e259058af50a728b8b82eeb10131
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78384086"
 ---
 本快速入门介绍如何使用适用于 Windows 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription-service.md)设备。 对于对话听录，仅支持 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)。 对于其他语音，支持使用提供麦克风阵列几何的线性麦克风阵列。

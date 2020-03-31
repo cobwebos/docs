@@ -13,10 +13,10 @@ ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 3778ec9bb44c1e78da152d4bde525884098fd445
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930753"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>快速入门：使用必应图像搜索 REST API 和 PHP 来搜索图像

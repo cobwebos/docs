@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: 7a929794ffaea4f863ffaef7227e58c7ccf901f0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976564"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>快速入门：使用 Node.js 获取“文本转语音”语音的列表

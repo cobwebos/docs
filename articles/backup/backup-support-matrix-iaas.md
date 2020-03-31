@@ -3,12 +3,12 @@ title: Azure VM 备份的支持矩阵
 description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支持设置和限制摘要。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: c30a1d1b30fcc7a12449b44d35704b3b43daa385
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d86ce94c62ec9f25b364e9fdc963e3043b274722
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247899"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389284"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -115,7 +115,6 @@ DPM/MABS 磁盘上的恢复点数 | 文件服务器为 64 个，应用服务器�
 **还原** | **支持**
 --- | ---
 跨操作系统还原文件 | 可以在与备份的 VM 使用相同（或兼容）OS 的任何计算机上还原文件。 请参阅[兼容操作系统表](backup-azure-restore-files-from-vm.md#system-requirements)。
-还原经典 VM 上的文件 | 不支持。
 还原已加密 VM 中的文件 | 不支持。
 还原网络受限的存储帐户中的文件 | 不支持。
 使用 Windows 存储空间还原 VM 上的文件 | 不支持在同一 VM 上还原。<br/><br/> 应在兼容的 VM 上还原文件。

@@ -1,7 +1,7 @@
 ---
 title: Azure AD B2C 支持的应用程序类型
 titleSuffix: Azure AD B2C
-description: 了解可与 Azure Active Directory B2C 一起使用的应用程序类型。
+description: 了解可与 Azure Active Directory B2C 配合使用的应用程序类型。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,22 +12,22 @@ ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e8328db12bde531c2e27936c09247611ff1a3583
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78190137"
 ---
-# <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可在 Active Directory B2C 中使用的应用程序类型
+# <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
 
-Azure Active Directory B2C （Azure AD B2C）支持多种新式应用程序体系结构的身份验证。 所有这些体系结构都以行业标准协议 [OAuth 2.0](protocols-overview.md) 或 [OpenID Connect](protocols-overview.md) 为基础。 本文介绍了你可以构建的应用程序类型，这些类型与你喜欢的语言或平台无关。 在开始构建应用程序之前，不妨从中了解一些高级方案。
+Azure Active Directory B2C (Azure AD B2C) 支持各种新式应用程序体系结构的身份验证。 所有这些体系结构都以行业标准协议 [OAuth 2.0](protocols-overview.md) 或 [OpenID Connect](protocols-overview.md) 为基础。 本文介绍可独立于首选语言或平台构建的应用程序类型。 在开始构建应用程序之前，不妨从中了解一些高级方案。
 
-必须通过 [Azure 门户](tutorial-create-tenant.md)将使用 Azure AD B2C 的每个应用程序注册到 [Azure AD B2C 租户](https://portal.azure.com/)中。 应用程序注册过程将收集和分配一些值，例如：
+必须通过 [Azure 门户](https://portal.azure.com/)将使用 Azure AD B2C 的每个应用程序注册到 [Azure AD B2C 租户](tutorial-create-tenant.md)中。 应用程序注册过程将收集和分配一些值，例如：
 
-* 用于唯一标识应用程序的应用程序 ID。
+* 用于唯一标识应用程序的应用程序 ID****。
 * 可用于将响应定向回应用程序的**回复 URL**。
 
-发送给 Azure AD B2C 的每个请求都指定了一个**用户流**（内置策略）或控制 Azure AD B2C 行为的**自定义策略**。 这两种策略类型都使你能够创建一组高度可自定义的用户体验。
+发送到 Azure AD B2C 的每个请求都指定了**用户流**（内置策略）或用于控制 Azure AD B2C 行为的**自定义策略**。 两种策略类型都可以用来创建一系列自定义程度很高的用户体验。
 
 每个应用程序的交互遵循类似的高级模式：
 
@@ -99,7 +99,7 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 6. `access_token` 和 `refresh_token` 返回到 Web 服务器。
 7. 使用授权标头中的 `access_token` 调用 Web API。
 8. Web API 对令牌进行验证。
-9. 安全数据将返回到 web 应用程序。
+9. 安全数据将返回给 Web 应用程序。
 
 有关授权代码、刷新令牌的详细信息和获取令牌的步骤，请参阅 [OAuth 2.0 protocol](authorization-code-flow.md)（OAuth 2.0 协议）。
 
@@ -125,7 +125,7 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web API 链（代理流）
 
-许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 Azure AD B2C 的保护。 此方案常见于具有 Web API 后端的本机客户端，并调用 Microsoft online 服务，例如 Microsoft Graph API。
+许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 Azure AD B2C 的保护。 此方案在具有 Web API 后端并调用 Microsoft 联机服务（如 Microsoft 图形 API）的本机客户端中很常见。
 
 可以使用 OAuth 2.0 JWT 持有者凭据授权（也称为“代理流”）来支持这种链接的 Web API 方案。  但是，Azure AD B2C 中目前尚未实现代理流。
 
@@ -142,4 +142,4 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[Azure Active Directory B2C 中的用户流](user-flow-overview.md)提供的内置策略的详细信息。
+详细了解 [Azure Active Directory B2C 中的用户流](user-flow-overview.md)提供的内置策略。
