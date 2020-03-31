@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rohink
 ms.openlocfilehash: 413c2ab3ee04249c2bb52bf42ca6a31a58fb9082
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76936933"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>如何使用 Azure CLI 管理 Azure DNS 中的 DNS 区域
 
 > [!div class="op_single_selector"]
 > * [门户](dns-operations-dnszones-portal.md)
-> * [PowerShell](dns-operations-dnszones.md)
+> * [电源外壳](dns-operations-dnszones.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 
@@ -32,7 +32,7 @@ ms.locfileid: "76936933"
 
 本指南专门介绍公共 DNS 区域。 有关使用 Azure CLI 管理 Azure DNS 中专用区域的详细信息，请参阅[使用 Azure CLI 开始使用 Azure DNS 专用区域](private-dns-getstarted-cli.md)。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
@@ -48,7 +48,7 @@ ms.locfileid: "76936933"
 
 ### <a name="sign-in-to-your-azure-account"></a>登录到 Azure 帐户
 
-打开控制台窗口并使用凭据进行身份验证。 有关详细信息，请阅读[从 Azure CLI 登录 Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+打开控制台窗口并使用凭据进行身份验证。 有关详细信息，请参阅从[Azure CLI 登录 Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
 
 ```
 az login
@@ -68,8 +68,8 @@ az account list
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>可选：若要安装/使用 Azure DNS 专用区域功能
-Azure DNS 专用区域功能通过 Azure CLI 的扩展提供。 安装“dns”Azure CLI 扩展 
+### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>可选：安装/使用 Azure DNS 专用区域功能
+可通过 Azure CLI 的扩展使用 Azure DNS 专用区域功能。 安装“dns”Azure CLI 扩展 
 ```
 az extension add --name dns
 ``` 
@@ -98,7 +98,7 @@ az network dns zone create --help
 
 使用 `az network dns zone create` 命令创建 DNS 区域。 有关帮助，请参阅 `az network dns zone create -h`。
 
-以下示例在名为 *MyResourceGroup* 的资源组中创建名为 *contoso.com* 的 DNS 区域：
+以下示例在名为*MyResourceGroup*的资源组中创建名为*contoso.com*的 DNS 区域：
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com
@@ -106,7 +106,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com
 
 ### <a name="to-create-a-dns-zone-with-tags"></a>使用标记创建 DNS 区域
 
-下面的示例演示如何通过 `--tags` 参数（缩写形式 `-t`）使用两个 [Azure 资源管理器标记](dns-zones-records.md#tags)、project = demo 和 env = test创建 DNS 区域：
+下面的示例演示如何通过 `--tags` 参数（缩写形式 `-t`）使用两个 [Azure 资源管理器标记](dns-zones-records.md#tags)、project = demo** 和 env = test** 创建 DNS 区域：
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"

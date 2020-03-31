@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 1f17463125cead64bd58a2d07e53eee4d3cfcd70
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840802"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Azure 网络观察程序中的可变数据包捕获简介
@@ -31,7 +31,7 @@ ms.locfileid: "76840802"
 
 **捕获配置**
 
-|属性|Description|
+|properties|描述|
 |---|---|
 |**每个数据包的最大字节数（字节）** | 从每个数据包捕获的字节数，如果留空，将捕获所有字节。 从每个数据包捕获的字节数，如果留空，将捕获所有字节。 如果仅需要 IPv4 标头 - 请在此处指示 34 |
 |**每个会话的最大字节数（字节）** | 达到会话结束值后，该会话中捕获的字节总数。|
@@ -39,9 +39,9 @@ ms.locfileid: "76840802"
 
 **筛选（可选）**
 
-|属性|Description|
+|properties|描述|
 |---|---|
-|协议 | 要筛选的数据包捕获协议。 可用值为 TCP、UDP 和 All。|
+|**协议** | 要筛选的数据包捕获协议。 可用值为 TCP、UDP 和 All。|
 |**本地 IP 地址** | 此值将数据包捕获筛选为本地 IP 地址与此筛选器值匹配的数据包。|
 |**本地端口** | 此值将数据包捕获筛选为本地端口与此筛选器值匹配的数据包。|
 |**远程 IP 地址** | 此值将数据包捕获筛选为远程 IP 与此筛选器值匹配的数据包。|

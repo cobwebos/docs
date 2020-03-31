@@ -1,5 +1,5 @@
 ---
-title: 基于证书的身份验证-Azure Active Directory
+title: 基于证书的身份验证 - Azure Active Directory
 description: 了解如何在环境中配置基于证书的身份验证
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b57c4f474b0b9def08005f32f48225d36ea8cf1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848827"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
@@ -36,7 +36,7 @@ ms.locfileid: "74848827"
 
 若要配置基于证书的身份验证，以下语句必须为真：
 
-- 仅适用于浏览器应用程序、使用新式身份验证（ADAL）或 MSAL 库的本机客户端的联合环境支持基于证书的身份验证（CBA）。 用于 Exchange Online (EXO) 的 Exchange Active Sync (EAS) 除外，它可用于联合帐户和托管帐户。
+- 仅浏览器应用程序的联合环境、使用新式身份验证 (ADAL) 的本机客户端或 MSAL 库支持基于证书的身份验证 (CBA)。 用于 Exchange Online (EXO) 的 Exchange Active Sync (EAS) 除外，它可用于联合帐户和托管帐户。
 - 必须在 Azure Active Directory 中配置根证书颁发机构和任何中间证书颁发机构。
 - 每个证书颁发机构必须有一个可通过面向 Internet 的 URL 引用的证书吊销列表 (CRL)。
 - 必须在 Azure Active Directory 中至少配置一个证书颁发机构。 可以在[配置证书颁发机构](#step-2-configure-the-certificate-authorities)部分中查找相关步骤。
@@ -45,7 +45,7 @@ ms.locfileid: "74848827"
 - 用于客户端身份验证的客户端证书必须已颁发给客户端。
 
 >[!IMPORTANT]
->用于成功下载和缓存的 Azure Active Directory CRL 的最大大小为20MB，下载 CRL 所需的时间不得超过10秒。  如果 Azure Active Directory 无法下载 CRL，则使用相应 CA 颁发的证书的基于证书的身份验证将失败。 确保 CRL 文件在大小限制范围内的最佳做法是将证书生存期保持在合理的限制内，并清理过期的证书。 
+>Azure Active Directory 成功下载和缓存的 CRL 的最大大小为 20MB，下载 CRL 所需的时间不得超过 10 秒。  如果 Azure Active Directory 无法下载 CRL，则使用相应 CA 颁发的证书进行的基于证书的身份验证将失败。 确保 CRL 文件符合大小限制的最佳做法是将证书生存期保持在合理的限制内，并清理过期的证书。 
 
 ## <a name="step-1-select-your-device-platform"></a>步骤 1：选择设备平台
 
@@ -63,7 +63,7 @@ ms.locfileid: "74848827"
 
 若要在 Azure Active Directory 中配置证书颁发机构，针对每个证书颁发机构，需要上传以下信息：
 
-* 证书的公共部分，格式为 .cer
+* 证书的公共部分，格式为 .cer**
 * 证书吊销列表 (CRL) 所在的面向 Internet 的 URL
 
 证书颁发机构的架构如下所示：
@@ -122,7 +122,7 @@ ms.locfileid: "74848827"
     $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
 
-### <a name="remove"></a>移除
+### <a name="remove"></a>删除
 
 若要删除受信任的证书颁发机构，请使用 [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet：
 
@@ -139,7 +139,7 @@ ms.locfileid: "74848827"
 
 ## <a name="step-3-configure-revocation"></a>步骤 3：配置吊销
 
-要吊销客户端证书，Azure Active Directory 会从作为证书颁发机构信息的一部分上传的 URL 中提取证书吊销列表 (CRL)，并将其缓存。 CRL 中的上次发布时间戳（“生效日期”属性）用于确保 CRL 仍然有效。 将定期引用 CRL，以撤销对该列表中证书的访问权限。
+要吊销客户端证书，Azure Active Directory 会从作为证书颁发机构信息的一部分上传的 URL 中提取证书吊销列表 (CRL)，并将其缓存。 CRL 中的上次发布时间戳（“生效日期”属性）用于确保 CRL 仍然有效。**** 将定期引用 CRL，以撤销对该列表中证书的访问权限。
 
 如果需要更即时的吊销（例如，如果用户丢失了设备），可以使用户的授权令牌失效。 若要使授权令牌失效，请使用 Windows PowerShell 为此特定用户设置 **StsRefreshTokenValidFrom** 字段。 必须为要撤销其访问权限的每个用户更新 **StsRefreshTokenValidFrom** 字段。
 

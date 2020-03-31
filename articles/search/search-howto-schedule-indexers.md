@@ -1,7 +1,7 @@
 ---
 title: 计划索引器执行
 titleSuffix: Azure Cognitive Search
-description: 安排 Azure 认知搜索索引器定期或在特定时间编制内容的索引。
+description: 计划 Azure 认知搜索索引器，以定期或在特定时间为内容编制索引。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,21 +9,21 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 72326413d463d449d339b1f3fd241ba2c27b4b6b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74112950"
 ---
-# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>如何在 Azure 中计划索引器认知搜索
+# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>如何计划 Azure 认知搜索中的索引器
 
 通常，在创建索引器后，该索引器会紧接着运行一次。 可以使用门户、REST API 或 .NET SDK 按需再次运行该索引器。 还可以将索引器配置为按计划定期运行。
 
 在某些情况下，计划索引器会很有作用：
 
-* 源数据将随着时间的推移而更改，并且你希望 Azure 认知搜索索引器自动处理已更改的数据。
+* 源数据随时更改，你希望 Azure 认知搜索索引器自动处理更改的数据。
 * 索引从多个数据源填充，你想要确保索引器在不同的时间运行，以减少冲突。
-* 源数据极大，你想要将索引器的处理负载分散到不同的时间。 有关对大量数据进行索引的详细信息，请参阅[如何为 Azure 中的大型数据集编制索引认知搜索](search-howto-large-index.md)。
+* 源数据极大，你想要将索引器的处理负载分散到不同的时间。 有关对大量数据编制索引的详细信息，请参阅[如何在 Azure 认知搜索中为大型数据集编制索引](search-howto-large-index.md)。
 
 计划程序是 Azure 认知搜索的内置功能。 无法使用外部计划程序来控制搜索索引器。
 
@@ -31,7 +31,7 @@ ms.locfileid: "74112950"
 
 索引器计划有两个属性：
 * **间隔**：定义按计划执行索引器的间隔时间。 允许的最小间隔为 5 分钟，最大间隔为 24 小时。
-* **开始时间 (UTC)** ：指示首次运行索引器的时间。
+* **开始时间 (UTC)**：指示首次运行索引器的时间。
 
 可以在首次创建索引器时指定计划，以后也可以通过更新索引器的属性来指定计划。 可以使用[门户](#portal)、[REST API](#restApi) 或 [.NET SDK](#dotNetSdk) 设置索引器计划。
 
@@ -48,23 +48,23 @@ ms.locfileid: "74112950"
 
 <a name="portal"></a>
 
-## <a name="schedule-in-the-portal"></a>门户中的计划
+## <a name="schedule-in-the-portal"></a>在门户中计划
 
-在创建时，可以使用门户中的“导入数据”向导来定义索引器的计划。 默认的“计划”设置为“小时”，即，索引器在创建后将运行一次，然后每隔一小时再次运行。
+在创建时，可以使用门户中的“导入数据”向导来定义索引器的计划。 默认的“计划”设置为“小时”，即，索引器在创建后将运行一次，然后每隔一小时再次运行。****
 
-如果你不希望索引器再次自动运行，可将“计划”设置更改为“一次”；或者更改为“每日”以每日运行一次。 若要指定不同的间隔或特定的将来开始时间，请将其设置为“自定义”。
+如果你不希望索引器再次自动运行，可将“计划”设置更改为“一次”；或者更改为“每日”以每日运行一次。******** 若要指定不同的间隔或特定的将来开始时间，请将其设置为“自定义”。****
 
-将计划设置为“自定义”时，会显示相应的字段让你指定“间隔”和“开始时间(UTC)”。 允许的最短时间间隔为 5 分钟，最长为 1440 分钟（24 小时）。
+将计划设置为“自定义”时，会显示相应的字段让你指定“间隔”和“开始时间(UTC)”。************ 允许的最短时间间隔为 5 分钟，最长为 1440 分钟（24 小时）。
 
    ![在导入数据向导中设置索引器计划](media/search-howto-schedule-indexers/schedule-import-data.png "在导入数据向导中设置索引器计划")
 
 创建索引器后，可以使用索引器的“编辑”面板更改计划设置。 “计划”字段与“导入数据”向导中的字段相同。
 
-   ![在索引器编辑面板中设置计划](media/search-howto-schedule-indexers/schedule-edit.png "在索引器编辑面板中设置计划")
+   ![在索引器的“编辑”面板中设置计划](media/search-howto-schedule-indexers/schedule-edit.png "在索引器的“编辑”面板中设置计划")
 
 <a name="restApi"></a>
 
-## <a name="schedule-using-rest-apis"></a>使用 REST Api 计划
+## <a name="schedule-using-rest-apis"></a>使用 REST API 进行计划
 
 可以使用 REST API 定义索引器的计划。 为此，请在创建或更新索引器时包含 **schedule** 属性。 以下示例演示了用于更新现有索引器的 PUT 请求：
 

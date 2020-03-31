@@ -8,10 +8,10 @@ ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268140"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>将 Azure 文件共享与 Windows 配合使用
@@ -30,24 +30,24 @@ ms.locfileid: "79268140"
 | Windows 8.1 | SMB 3.0 | 是 | 是 |
 | Windows Server 2012 R2 | SMB 3.0 | 是 | 是 |
 | Windows Server 2012 | SMB 3.0 | 是 | 是 |
-| Windows 7<sup>3</sup> | SMB 2.1 | 是 | 否 |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | 是 | 否 |
+| 视窗 7<sup>3</sup> | SMB 2.1 | 是 | 否 |
+| 视窗服务器 2008 R2<sup>3</sup> | SMB 2.1 | 是 | 否 |
 
-<sup>1</sup>Windows 10 版本1507、1607、1709、1803、1809、1903和1909。  
-<sup>2</sup>Windows Server、版本1809、1903和1909。  
-<sup>3</sup>Windows 7 和 Windows Server 2008 R2 的常规 Microsoft 支持已结束。 仅可通过[扩展安全更新（ESU）程序](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)购买对安全更新的额外支持。 强烈建议从这些操作系统迁移。
+<sup>1</sup>Windows 10、版本 1507、1607、1709、1803、1809、1903 和 1909。  
+<sup>2</sup>Windows 服务器，版本 1809、1903 和 1909。  
+<sup>3</sup>微软对 Windows 7 和 Windows 服务器 2008 R2 的常规支持已经结束。 只能通过[扩展安全更新 （ESU） 计划](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)购买对安全更新的其他支持。 我们强烈建议从这些操作系统迁移。
 
 > [!Note]  
 > 我们始终建议你使用相对于 Windows 版本来说最新的 KB。
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 * **存储帐户名称**：需提供存储帐户的名称才能装载 Azure 文件共享。
 
-* **存储帐户密钥**：需提供主要（或辅助）存储帐户密钥才能装载 Azure 文件共享。 目前不支持使用 SAS 密钥进行装载。
+* **存储帐户密钥**：要装载 Azure 文件共享，需要主（或辅助）存储密钥。 目前不支持使用 SAS 密钥进行装载。
 
-* **确保端口 445 已打开**：SMB 协议要求 TCP 端口 445 处于打开状态；如果阻止了端口 445，则连接会失败。 可以通过 `Test-NetConnection` cmdlet 来查看防火墙是否在阻止端口 445。 可在此处了解[阻止端口445的各种方法](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)。
+* **确保端口 445 已打开**：SMB 协议要求 TCP 端口 445 处于打开状态；如果阻止了端口 445，则连接会失败。 可以通过 `Test-NetConnection` cmdlet 来查看防火墙是否在阻止端口 445。 可以在此处了解[如何通过各种方式来解决端口 445 被阻止的问题](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)。
 
-    以下 PowerShell 代码假设已安装 Azure PowerShell 模块，有关详细信息，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 记得将 `<your-storage-account-name>` 和 `<your-resource-group-name>` 替换为存储帐户的相应名称。
+    以下 PowerShell 代码假设已安装 Azure PowerShell 模块。有关详细信息，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 记得将 `<your-storage-account-name>` 和 `<your-resource-group-name>` 替换为存储帐户的相应名称。
 
     ```powershell
     $resourceGroupName = "<your-resource-group-name>"
@@ -80,7 +80,7 @@ ms.locfileid: "79268140"
 ## <a name="using-an-azure-file-share-with-windows"></a>将 Azure 文件共享与 Windows 配合使用
 若要将 Azure 文件共享与 Windows 配合使用，必须将其装载好（这意味着为其分配一个驱动器号或装入点路径），或者通过其 [UNC 路径](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx)对其进行访问。 
 
-不同于其他你可能与之有交互的 SMB 共享（例如那些托管在 Windows Server、Linux Samba 服务器或 NAS 设备上的共享），Azure 文件共享目前不支持使用 Active Directory (AD) 或 Azure Active Directory (AAD) 标识进行 Kerberos 身份验证，虽然这是一项我们正[努力开发](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles)的功能。 与之相反，必须使用包含 Azure 文件共享的存储帐户的密钥访问 Azure 文件共享。 存储帐户密钥是存储帐户的管理员密钥，包括对你要访问的文件共享中的所有文件和文件夹的管理员权限，以及包含的所有文件共享和其他存储资源（blob、队列、表等）的管理员权限。在存储帐户中。 如果这对你的工作负荷来说还不够，则可使用 [Azure 文件同步](storage-sync-files-planning.md)来解决过渡期间缺少 Kerberos 身份验证和 ACL 支持的问题，直至基于 AAD 的 Kerberos 身份验证和 ACL 支持功能公开发布。
+不同于其他你可能与之有交互的 SMB 共享（例如那些托管在 Windows Server、Linux Samba 服务器或 NAS 设备上的共享），Azure 文件共享目前不支持使用 Active Directory (AD) 或 Azure Active Directory (AAD) 标识进行 Kerberos 身份验证，虽然这是一项我们正[努力开发](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles)的功能。 与之相反，必须使用包含 Azure 文件共享的存储帐户的密钥访问 Azure 文件共享。 存储帐户密钥是存储帐户的管理员密钥，包括管理员对要访问的文件共享中的所有文件和文件夹以及包含的所有文件共享和其他存储资源（Blob、队列、表等）的权限在您的存储帐户中。 如果这对你的工作负荷来说还不够，则可使用 [Azure 文件同步](storage-sync-files-planning.md)来解决过渡期间缺少 Kerberos 身份验证和 ACL 支持的问题，直至基于 AAD 的 Kerberos 身份验证和 ACL 支持功能公开发布。
 
 若要将预期使用 SMB 文件共享的业务线 (LOB) 应用程序直接迁移到 Azure，通常的模式是使用 Azure 文件共享，而不是在 Azure VM 中运行专用的 Windows 文件服务器。 若要成功地迁移业务线应用程序以使用 Azure 文件共享，一项重要的考量是，许多业务线应用程序在运行时使用系统权限有限的专用服务帐户（而非 VM 的管理帐户）的上下文。 因此，必须确保通过服务帐户（而非管理帐户）的上下文来装载/保存 Azure 文件共享的凭据。
 
@@ -168,7 +168,7 @@ New-PSDrive -Name <desired-drive-letter> -PSProvider FileSystem -Root "\\$($file
 ```
 
 > [!Note]  
-> 对 `-Persist` cmdlet 使用 `New-PSDrive` 选项只会在凭据已保存的情况下，允许文件共享在启动时重新装载。 可以使用 cmdkey 来保存凭据，如[前所述](#persisting-azure-file-share-credentials-in-windows)。 
+> 对 `New-PSDrive` cmdlet 使用 `-Persist` 选项只会在凭据已保存的情况下，允许文件共享在启动时重新装载。 可以使用 cmdkey 来保存凭据，如[前所述](#persisting-azure-file-share-credentials-in-windows)。 
 
 可以根据需要使用以下 PowerShell cmdlet 来卸载 Azure 文件共享。
 
@@ -182,11 +182,11 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. 打开文件资源管理器。 若要执行此操作，可从“开始”菜单打开，或者按 Win+E 快捷方式。
 
-2. 导航到窗口左侧的“此电脑”项。 这样会更改功能区中的可用菜单。 在“计算机”菜单中，选择“映射网络驱动器”。
+2. 导航到窗口左侧的“此电脑”项。**** 这样会更改功能区中的可用菜单。 在“计算机”菜单中，选择“映射网络驱动器”。****
     
     ![“映射网络驱动器”下拉菜单的屏幕截图](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. 从 Azure 门户的“连接”窗格中复制 UNC 路径。 
+3. 从 Azure 门户中的 **"连接**"窗格复制 UNC 路径。 
 
     ![Azure 文件“连接”窗格中的 UNC 路径](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
 
@@ -202,26 +202,26 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![Azure 文件共享现已装载](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. 做好卸载 Azure 文件共享的准备以后，即可在文件资源管理器中右键单击“网络位置”下对应于共享的条目，然后选择“断开连接”。
+7. 做好卸载 Azure 文件共享的准备以后，即可在文件资源管理器中右键单击“网络位置”下对应于共享的条目，然后选择“断开连接”。********
 
 ### <a name="accessing-share-snapshots-from-windows"></a>从 Windows 访问共享快照
-如果已手动或通过脚本或 Azure 备份等服务自动获取共享快照，则可以从 Windows 上的文件共享查看以前版本的共享、目录或特定文件。 可以从[Azure 门户](storage-how-to-use-files-portal.md)、 [Azure PowerShell](storage-how-to-use-files-powershell.md)和[Azure CLI](storage-how-to-use-files-cli.md)获取共享快照。
+如果已手动或通过脚本或 Azure 备份等服务自动获取共享快照，则可以从 Windows 上的文件共享查看以前版本的共享、目录或特定文件。 可以从[Azure 门户](storage-how-to-use-files-portal.md)Azure [PowerShell](storage-how-to-use-files-powershell.md)和 Azure [CLI](storage-how-to-use-files-cli.md)获取共享快照。
 
 #### <a name="list-previous-versions"></a>列出以前版本
-浏览到需要还原的项或父项。 通过双击转到所需的目录。 右键单击，然后从菜单中选择“属性”。
+浏览到需要还原的项或父项。 通过双击转到所需的目录。 右键单击，然后从菜单中选择“属性”。****
 
 ![所选目录的右键单击菜单](./media/storage-how-to-use-files-windows/snapshot-windows-previous-versions.png)
 
-选择"以前版本”，以查看此目录的共享快照列表。 列表可能需要几秒钟才能加载，具体要取决于网速和目录中共享快照的数量。
+选择"以前版本”****，以查看此目录的共享快照列表。 列表可能需要几秒钟才能加载，具体要取决于网速和目录中共享快照的数量。
 
 ![“以前版本”选项卡](./media/storage-how-to-use-files-windows/snapshot-windows-list.png)
 
-可以选择“打开”以打开特定快照。 
+可以选择“打开”**** 以打开特定快照。 
 
 ![打开的快照](./media/storage-how-to-use-files-windows/snapshot-browse-windows.png)
 
 #### <a name="restore-from-a-previous-version"></a>从以前版本还原
-选择“还原”，以递归方式将整个目录在共享快照创建时包含的内容复制到原始位置。
+选择“还原”****，以递归方式将整个目录在共享快照创建时包含的内容复制到原始位置。
  ![警告消息中的“还原”按钮](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>保护 Windows/Windows Server
@@ -243,7 +243,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 | Windows 7                                 | 已启用              | 通过注册表进行禁用       | 
 
 ### <a name="auditing-smb-1-usage"></a>审核 SMB 1 使用情况
-> 适用于 Windows Server 2019、Windows Server 半年频道（版本1709和1803）、Windows Server 2016、Windows 10 （版本1507、1607、1703、1709和1803）、Windows Server 2012 R2 和 Windows 8。1
+> 适用于 Windows Server 2019、Windows Server 半年通道（版本 1709 和 1803）、Windows Server 2016、Windows 10（版本 1507、1607、1703、1709 和 1803）、Windows Server 2012 R2 和 Windows 8.1
 
 在删除环境中的 SMB 1 之前，可能需要审核 SMB 1 使用情况，看是否有客户端会因更改而受损。 如果有客户端通过 SMB 1 对 SMB 共享提出了请求，系统会在 `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit` 下的事件日志中记录审核事件。 
 
@@ -257,7 +257,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>从 Windows Server 中删除 SMB 1
-> 适用于 Windows Server 2019，Windows Server 半年频道（版本1709和1803），Windows Server 2016，Windows Server 2012 R2
+> 适用于 Windows Server 2019、Windows Server 半年通道（版本 1709 和 1803）、Windows Server 2016、Windows Server 2012 R2
 
 若要从 Windows Server 实例中删除 SMB 1，请通过权限提升的 PowerShell 会话执行以下 cmdlet：
 
@@ -284,7 +284,7 @@ Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
 ### <a name="disabling-smb-1-on-legacy-versions-of-windowswindows-server"></a>在旧版 Windows/Windows Server 上禁用 SMB 1
 > 适用于 Windows Server 2012、Windows Server 2008 R2 和 Windows 7
 
-不能在旧版 Windows/Windows Server 上彻底删除 SMB 1，但可以通过注册表来禁用它。 若要禁用 SMB 1，请在 `SMB1` 下新建类型为 `DWORD` 且值为 `0` 的注册表项 `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters`。
+不能在旧版 Windows/Windows Server 上彻底删除 SMB 1，但可以通过注册表来禁用它。 若要禁用 SMB 1，请在 `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters` 下新建类型为 `DWORD` 且值为 `0` 的注册表项 `SMB1`。
 
 也可使用以下 PowerShell cmdlet 轻松完成该操作：
 
@@ -303,5 +303,5 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Par
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接，获取有关 Azure 文件的更多信息：
 - [规划 Azure 文件部署](storage-files-planning.md)
-- [常见问题](../storage-files-faq.md)
+- [FAQ](../storage-files-faq.md)
 - [在 Windows 上进行故障排除](storage-troubleshoot-windows-file-connection-problems.md)      

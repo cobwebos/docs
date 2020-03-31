@@ -1,13 +1,13 @@
 ---
 title: 找不到资源错误
-description: 介绍当使用 Azure 资源管理器模板进行部署时找不到资源时，如何解决错误。
+description: 介绍在使用 Azure 资源管理器模板部署时找不到资源时如何解决错误。
 ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.openlocfilehash: b6f433118092e46f734d4b65040dd97c2fcb58d9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773248"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>解决找不到 Azure 资源的错误
@@ -37,7 +37,7 @@ group {resource group name} was not found.
 
 ## <a name="solution-1---set-dependencies"></a>解决方案 1 - 设置依赖关系
 
-如果尝试在模板中部署缺少的资源，请检查是否需要添加依赖关系。 如果可能，Resource Manager 将通过并行创建资源来优化部署。 如果一个资源必须在另一个资源之后部署，则需在模板中使用 dependsOn 元素。 例如，在部署 Web 应用时，应用服务计划必须存在。 如果未指定该 Web 应用与应用服务计划的依赖关系，则 Resource Manager 会同时创建这两个资源。 会收到一条错误消息，指出未能找到应用服务计划资源，因为尝试在 Web 应用上设置属性时它尚不存在。 通过在 Web 应用中设置依赖关系可避免此错误。
+如果尝试在模板中部署缺少的资源，请检查是否需要添加依赖关系。 如果可能，Resource Manager 将通过并行创建资源来优化部署。 如果一个资源必须在另一个资源之后部署，则需在模板中使用 dependsOn 元素****。 例如，在部署 Web 应用时，应用服务计划必须存在。 如果未指定该 Web 应用与应用服务计划的依赖关系，则 Resource Manager 会同时创建这两个资源。 会收到一条错误消息，指出未能找到应用服务计划资源，因为尝试在 Web 应用上设置属性时它尚不存在。 通过在 Web 应用中设置依赖关系可避免此错误。
 
 ```json
 {
@@ -58,7 +58,7 @@ group {resource group name} was not found.
 
    ![选择部署历史记录](./media/error-not-found/select-deployment.png)
 
-2. 从历史记录中选择一个部署，并选择“事件”。
+2. 从历史记录中选择一个部署，并选择“事件”****。
 
    ![选择部署事件](./media/error-not-found/select-deployment-events.png)
 
@@ -89,13 +89,13 @@ group {resource group name} was not found.
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```
 
-## <a name="solution-4---get-managed-identity-from-resource"></a>解决方案 4-从资源获取托管标识
+## <a name="solution-4---get-managed-identity-from-resource"></a>解决方案 4 - 从资源获取托管标识
 
-如果要部署隐式创建[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)的资源，则必须等到该资源部署完成后，才能检索托管标识的值。 如果将托管标识名称传递到[reference](template-functions-resource.md#reference)函数，资源管理器会在部署资源和标识之前尝试解析引用。 而应传递应用该标识的资源的名称。 此方法确保在资源管理器解析 reference 函数之前部署资源和托管标识。
+如果要部署隐式创建[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)的资源，则必须等到部署该资源后，才能检索托管标识上的值。 如果将托管标识名称传递给[引用](template-functions-resource.md#reference)函数，资源管理器将尝试在部署资源和标识之前解析引用。 相反，传递应用于标识的资源的名称。 此方法可确保在资源管理器解析引用函数之前部署资源和托管标识。
 
-在 reference 函数中，使用 `Full` 获取包括托管标识在内的所有属性。
+在引用函数中，用于`Full`获取所有属性，包括托管标识。
 
-例如，若要获取应用于虚拟机规模集的托管标识的租户 ID，请使用：
+例如，要获取应用于虚拟机规模集的托管标识的租户 ID，请使用：
 
 ```json
 "tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"

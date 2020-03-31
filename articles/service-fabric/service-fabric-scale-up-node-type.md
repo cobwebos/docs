@@ -1,13 +1,13 @@
 ---
-title: 向上缩放 Azure Service Fabric 节点类型
+title: 纵向扩展 Azure Service Fabric 节点类型
 description: 了解如何通过添加虚拟机规模集缩放 Service Fabric 群集。
 ms.topic: article
 ms.date: 02/13/2019
 ms.openlocfilehash: 33d535cb093eeb95e0ce95bdd5722bfd21150a40
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464229"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>纵向扩展 Service Fabric 群集主节点类型

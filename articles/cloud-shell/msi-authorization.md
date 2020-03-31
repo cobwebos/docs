@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Cloud Shell 中使用资源的托管标识
+title: 对 Azure 云外壳中的资源使用托管标识
 description: 在 Azure Cloud Shell 中使用 MSI 对代码进行身份验证
 services: azure
 author: maertendMSFT
@@ -11,10 +11,10 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/14/2018
 ms.openlocfilehash: a5d49a16324a5a97f4a0507f9abf47ea602ea072
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72328715"
 ---
 # <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中使用 Azure 资源的托管标识

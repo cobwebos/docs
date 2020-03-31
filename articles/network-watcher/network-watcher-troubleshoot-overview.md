@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840683"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
@@ -84,15 +84,15 @@ ms.locfileid: "76840683"
 
 |  |  |
 |---------|---------|
-|网关类型   |         |
-|VPN      | 受支持        |
+|**网关类型**   |         |
+|VPN      | 支持        |
 |ExpressRoute | 不支持 |
-|VPN 类型 | |
-|基于路由 | 受支持|
+|**VPN 类型** | |
+|基于路由 | 支持|
 |基于策略 | 不支持|
-|连接类型||
-|IPSec| 受支持|
-|VNet2Vnet| 受支持|
+|**连接类型**||
+|IPSec| 支持|
+|VNet2Vnet| 支持|
 |ExpressRoute| 不支持|
 |VPNClient| 不支持|
 
@@ -105,7 +105,7 @@ ms.locfileid: "76840683"
 > [!NOTE]
 > 在某些情况下，仅部分日志文件写入到存储中。
 
-有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息可以在此链接中找到：[存储资源管理器](https://storageexplorer.com/)
+有关从 Azure 存储帐户下载文件的说明，请参阅[通过 .NET 开始使用 Azure Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 可以使用的另一个工具是存储资源管理器。 有关存储资源管理器的详细信息，请参阅以下链接：[存储资源管理器](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

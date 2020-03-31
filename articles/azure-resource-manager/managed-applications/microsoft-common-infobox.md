@@ -1,15 +1,15 @@
 ---
 title: InfoBox UI 元素
-description: 描述 Azure 门户的 InfoBox UI 元素。 用于在部署托管应用程序时添加文本或警告。
+description: 介绍 Azure 门户的 Microsoft.Common.InfoBox UI 元素。 用于在部署托管应用程序时添加文本或警告。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: tomfitz
 ms.openlocfilehash: 6d1e4a84904ef7022d9ce85803bf10285bf0b8ac
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652471"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox UI 元素
@@ -44,7 +44,7 @@ ms.locfileid: "75652471"
 
 ## <a name="remarks"></a>备注
 
-* 对于 `icon`，请使用“无”、“信息”、“警告”或“错误”。
+* 对于 `icon`，请使用“无”、“信息”、“警告”或“错误”****************。
 * `uri` 属性为可选。
 
 ## <a name="next-steps"></a>后续步骤

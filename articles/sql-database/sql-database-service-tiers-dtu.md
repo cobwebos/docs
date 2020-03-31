@@ -1,5 +1,5 @@
 ---
-title: 服务层-基于 DTU 的购买模型
+title: 服务层级 - 基于 DTU 的购买模型
 description: 了解单一数据库和共用数据库的基于 DTU 的购买模型中的服务层级，以提供计算大小和存储大小。
 services: sql-database
 ms.service: sql-database
@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
 ms.openlocfilehash: 2f316e57e407a0588e77f56d6e1fbe8c19ba5fee
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75562113"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 
-基于 DTU 的购买模型中的服务层级根据一系列具有固定随附存储量、固定备份保留期和固定价格的计算大小进行区分。 基于 DTU 的购买模型中的所有服务层都可以灵活地更改计算规模，使[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)最短;但是，在一段较短的时间内，会有一次与数据库的连接丢失的情况，可以使用重试逻辑来缓解这种情况。 单一数据库和弹性池根据服务层级和计算大小按小时计费。
+基于 DTU 的购买模型中的服务层级根据一系列具有固定随附存储量、固定备份保留期和固定价格的计算大小进行区分。 基于 DTU 的购买模型中的所有服务层级都提供了以最短[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)更改计算大小的灵活性；但是，在切换期间，与数据库的连接会短时间丢失，可以使用重试逻辑来缓解这种情况。 单一数据库和弹性池根据服务层级和计算大小按小时计费。
 
 > [!IMPORTANT]
 > SQL 数据库托管实例不支持基于 DTU 的购买模型。 有关详细信息，请参阅 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)。
@@ -31,45 +31,45 @@ ms.locfileid: "75562113"
 
 选择服务层级首要考虑的是业务连续性、存储和性能需求。
 
-||基本|标准|高级|
+||Basic|Standard|Premium|
 | :-- | --: |--:| --:|
-|目标工作负载|开发和生产|开发和生产|开发和生产|
+|目标工作负荷|开发和生产|开发和生产|开发和生产|
 |运行时间 SLA|99.99%|99.99%|99.99%|
-|最大备份保留|7 天|35 天|35 天|
+|最大备份保留期|7 天|35 天|35 天|
 |CPU|低|低、中、高|中、高|
 |IO 吞吐量（近似） |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
 |IO 延迟（近似）|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
-|列存储索引 |N/A|S3 及更高版本|受支持|
-|内存中 OLTP|N/A|N/A|受支持|
+|列存储索引 |空值|S3 及更高版本|支持|
+|内存中 OLTP|空值|空值|支持|
 |||||
 
 > [!IMPORTANT]
-> 基本、标准 S0、S1 和 S2 服务层提供了少于1个 vCore （CPU）。  对于占用大量 CPU 的工作负荷，建议使用 S3 或更高的服务层。 
+> 基本、标准 S0、S1 和 S2 服务层级提供的 vCore (CPU) 不到一个。  对于 CPU 密集型工作负荷，建议使用 S3 或更高的服务层级。 
 >
->对于数据存储，将基本、标准 S0 和 S1 服务层放置在标准页 Blob 上。 标准页 Blob 使用基于硬盘驱动器（HDD）的存储介质，最适合用于开发、测试和其他不太敏感的不太敏感的工作负载，这些工作负荷对性能变化不太敏感。
+>有关数据存储的基本、标准 S0 和 S1 服务层级放置在标准页 Blob 上。 标准页 Blob 使用基于硬盘驱动器 (HDD) 的存储介质，最适合用于对性能变化不太敏感的开发、测试和其他不频繁访问的工作负荷。
 >
 
 > [!NOTE]
-> 可以结合 Azure 免费帐户在基本服务层获取免费的 Azure SQL 数据库，以探索 Azure。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
+> 您可以在基本服务层获取免费 Azure SQL 数据库，并结合 Azure 免费帐户来浏览 Azure。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
 
 ## <a name="single-database-dtu-and-storage-limits"></a>单一数据库 DTU 和存储限制
 
-单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 Dtu 和 Edtu 的详细信息，请参阅[基于 DTU 的购买模型](sql-database-purchase-models.md#dtu-based-purchasing-model)。
+单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的更多，请参阅[基于 DTU 的采购模型](sql-database-purchase-models.md#dtu-based-purchasing-model)。
 
-||基本|标准|高级|
+||Basic|Standard|Premium|
 | :-- | --: | --: | --: |
-| 最大存储大小 | 2GB | 1 TB | 4 TB  |
+| 最大存储大小 | 2 GB | 1 TB | 4 TB  |
 | 最大 DTU | 5 | 3000 | 4000 | 
 |||||
 
 > [!IMPORTANT]
-> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
+> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅在[Azure SQL 数据库中管理文件空间](sql-database-file-space-management.md)。
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>弹性池 eDTU、存储和共用数据库限制
 
-| | **基本** | **Standard** | **高级** |
+| | **Basic** | **标准** | **溢价** |
 | :-- | --: | --: | --: |
-| 每个数据库的最大存储大小  | 2GB | 1 TB | 1 TB |
+| 每个数据库的最大存储大小  | 2 GB | 1 TB | 1 TB |
 | 每个池的最大存储大小 | 156 GB | 4 TB | 4 TB |
 | 每个数据库的最大 eDTU 数 | 5 | 3000 | 4000 |
 | 每个池的最大 eDTU 数 | 1600 | 3000 | 4000 |
@@ -77,9 +77,9 @@ ms.locfileid: "75562113"
 |||||
 
 > [!IMPORTANT]
-> 高级层中的存储空间超过 1 TB 目前在除：中国东部、中国北部、德国中部、德国北部、美国中部、US DoD 地区和美国政府中心以外的所有地区都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
+> 除中国东部、华北、德国中部、德国东北部、美国中西部、美国 DoD 地区和美国政府中心外，高级级别中目前所有区域都提供超过 1 TB 的存储。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
 > [!IMPORTANT]
-> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
+> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅在[Azure SQL 数据库中管理文件空间](sql-database-file-space-management.md)。
 
 ## <a name="dtu-benchmark"></a>DTU 基准
 
@@ -87,7 +87,7 @@ ms.locfileid: "75562113"
 
 ### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>将基准检验结果与实际数据库性能进行关联
 
-请务必了解，所有基准检验只具有代表性和指示性。 使用基准检验应用程序完成的事务率不会与使用其他应用程序可能完成的事务率相同。 基准检验包含不同事务类型的集合，这些事务针对包含一系列表和数据类型的架构运行。 虽然基准检验执行普遍适用于所有 OLTP 工作负荷的相同基本操作，但它并不代表任何特定类别的数据库或应用程序。 基准检验的目标是为在上调或下调计算大小时可预期的数据库相对性能提供合理的指导。 实际上，数据库具有不同的大小和复杂度，会遇到工作负荷的不同组合，并且以不同方式进行响应。 例如，IO 密集型应用程序可能会更快地达到 IO 阈值，或者 CPU 密集型应用程序可能会更快地达到 CPU 限制。 不能保证任何特定数据库在不断增加的负载下会以与基准检验相同的方式缩放。
+请务必了解，所有基准检验只具有代表性和指示性。 使用基准检验应用程序完成的事务率不会与使用其他应用程序可能完成的事务率相同。 基准检验包含不同事务类型的集合，这些事务针对包含一系列表和数据类型的架构运行。 虽然基准检验执行普遍适用于所有 OLTP 工作负荷的相同基本操作，但它并不代表任何特定类别的数据库或应用程序。 基准检验的目标是为在上调或下调计算大小时可预期的数据库相对性能提供合理的指导。 实际上，数据库具有不同的大小和复杂度，会遇到工作负荷的不同组合，并且以不同方式进行响应。 例如，IO 密集型应用程序可能会更快地达到 IO 阈值，或者 CPU 密集型应用程序可能会更快地达到 CPU 限制。 不能保证任何特定数据库在不断增加的负载下会以与基准检验相同的方式扩展。
 
 基准检验及其方法会在下面更详细地说明。
 
@@ -109,7 +109,7 @@ ms.locfileid: "75562113"
 
 工作负荷由九种事务类型组成，如下表中所示。 每种事务旨在强调数据库引擎和系统硬件中的特定一组系统特征，与其他事务形成高反差。 此方法可更方便地评估不同组件对总体性能的影响。 例如，事务“Read Heavy”将从磁盘生成大量的读取操作。
 
-| 事务类型 | Description |
+| 事务类型 | 描述 |
 | --- | --- |
 | Read Lite |SELECT；在内存中；只读 |
 | Read Medium |SELECT；大多数在内存中；只读 |
@@ -161,7 +161,7 @@ ms.locfileid: "75562113"
 
 有效地运行基准检验需要稳定状态度量持续时间至少为 1 小时。
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 
 基准检验中的关键指标是吞吐量和响应时间。
 
@@ -170,9 +170,9 @@ ms.locfileid: "75562113"
 
 | 服务等级 | 吞吐量度量值 | 响应时间要求 |
 | --- | --- | --- |
-| 高级 |事务数/秒 |0\.5 秒时达到 95% |
-| 标准 |事务数/分钟 |1\.0 秒时达到 90% |
-| 基本 |事务数/小时 |2\.0 秒时达到 80% |
+| Premium |每秒事务数 |0.5 秒时达到 95% |
+| Standard |每分钟事务数 |1.0 秒时达到 90% |
+| Basic |每小时事务数 |2.0 秒时达到 80% |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75452000"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用指标管理资源消耗和负载
-指标是服务关切的、由群集中的节点提供的资源。 指标是要进行管理以提升或监视服务性能的任何信息。 例如，可能需要监视内存消耗量以了解服务是否过载。 另一个用途是确定服务是否可以移动到内存较少受限的其他位置，以便获得更佳性能。
+指标是服务关切的、由群集中的节点提供的资源**。 指标是要进行管理以提升或监视服务性能的任何信息。 例如，可能需要监视内存消耗量以了解服务是否过载。 另一个用途是确定服务是否可以移动到内存较少受限的其他位置，以便获得更佳性能。
 
 像内存、磁盘和 CPU 使用率等信息，都是指标的示例。 这些指标是物理指标，即对应于节点上需要管理的物理资源的资源。 指标也可以是（且通常是）逻辑指标。 逻辑指标类似于“MyWorkQueueDepth”或“MessagesToProcess”或“TotalRecords”。 逻辑指标是应用程序定义的，并间接对应于某些物理资源消耗。 逻辑指标很常见，因为可能难以在每个服务的基础上测量和报告物理资源消耗量。 测量和报告自己的物理指标的复杂度也是 Service Fabric 提供一些默认指标的原因。
 
@@ -24,11 +24,11 @@ ms.locfileid: "75452000"
   - ReplicaCount - 节点上的有状态副本总计数
   - Count - 节点上的所有服务对象（无状态和有状态）计数
 
-| 度量值 | 无状态实例负载 | 有状态辅助负载 | 有状态主要负载 | 重量 |
+| 指标 | 无状态实例负载 | 有状态辅助负载 | 有状态主要负载 | 重量 |
 | --- | --- | --- | --- | --- |
-| PrimaryCount |0 |0 |第 |高 |
-| ReplicaCount |0 |第 |第 |中型 |
-| 计数 |第 |第 |第 |低 |
+| PrimaryCount |0 |0 |1 |高 |
+| ReplicaCount |0 |1 |1 |中型 |
+| Count |1 |1 |1 |低 |
 
 
 对于脚本工作负荷，默认指标实现群集中的适当工作分布。 在下面的示例中，让我们看看创建两个服务并依赖默认指标进行平衡时会发生什么情况。 第一个服务是具有 3 个分区的有状态服务，目标副本集大小为 3。 第二个服务是具有 1 个分区的无状态服务，实例数为 3。
@@ -66,7 +66,7 @@ ms.locfileid: "75452000"
     * SecondaryDefaultLoad：此服务使用此指标（辅助指标）的默认量
 
 > [!NOTE]
-> 如果定义了自定义指标，并且希望同时使用默认指标，则需重新显式添加默认指标并为其定义权重和值。 这是因为必须定义默认指标和自定义指标之间的关系。 例如，与主要分布相比，也许更关心 ConnectionCount 或 WorkQueueDepth。 默认情况下，PrimaryCount 指标的权重为“高”，因此需要在添加其他指标时将其降低至“中”，以确保优先处理其他指标。
+> 如果定义了自定义指标，并且希望同时使用默认指标，则需重新显式添加默认指标并为其定义权重和值____。 这是因为必须定义默认指标和自定义指标之间的关系。 例如，与主要分布相比，也许更关心 ConnectionCount 或 WorkQueueDepth。 默认情况下，PrimaryCount 指标的权重为“高”，因此需要在添加其他指标时将其降低至“中”，以确保优先处理其他指标。
 >
 
 ### <a name="defining-metrics-for-your-service---an-example"></a>为服务定义指标 - 示例
@@ -118,14 +118,14 @@ serviceDescription.Metrics.Add(totalCountMetric);
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-PowerShell：
+Powershell：
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ConnectionCount,High,20,5”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
 ```
 
 > [!NOTE]
-> 上述示例以及本文其余部分描述了如何根据每个命名服务管理指标。 也可以在服务类型级别为服务定义指标。 可通过在服务清单中指定它们来实现此目的。 出于以下几个原因，不建议定义类型级别指标。 第一个原因是指标名称通常是特定于环境的。 除非有明确协定，否则无法确定某一环境中的指标“Cores”不是其他环境中的“MiliCores”或“CoReS”。 如果在清单中定义指标，则需为每个环境创建新的清单。 这通常会导致只有细微差异的不同清单激增，从而增加管理难度。  
+> 上述示例以及本文其余部分描述了如何根据每个命名服务管理指标。 也可以在服务类型级别为服务定义指标__。 可通过在服务清单中指定它们来实现此目的。 出于以下几个原因，不建议定义类型级别指标。 第一个原因是指标名称通常是特定于环境的。 除非有明确协定，否则无法确定某一环境中的指标“Cores”不是其他环境中的“MiliCores”或“CoReS”。 如果在清单中定义指标，则需为每个环境创建新的清单。 这通常会导致只有细微差异的不同清单激增，从而增加管理难度。  
 >
 > 通常基于每个命名服务实例来分配指标负载。 例如，假设为客户 A 创建一个服务实例，该客户计划较少使用此实例。 同时为拥有较大工作负荷的客户 B 创建了另一服务实例。 在此情况下，很可能需要为这些服务调整默认负载。 如果通过清单定义指标和负载，并想要支持此方案，则需为每位客户提供不同的应用程序和服务类型。 创建服务时所定义的值会替代清单中定义的值，因此可以使用它来设置特定的默认值。 但是，这样做会导致清单中声明的值与服务实际运行时使用的值不相符。 这可能会造成混淆。 
 >
@@ -135,17 +135,17 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 现在来详细了解一下每项设置及其所影响的行为。
 
 ## <a name="load"></a>加载
-定义指标的重点是表示一些负载。 负载是特定节点上某个服务实例或副本使用的特定指标数。 可在几乎任意时间配置负载。 例如：
+定义指标的重点是表示一些负载。 负载是特定节点上某个服务实例或副本使用的特定指标数**。 可在几乎任意时间配置负载。 例如：
 
-  - 创建服务后，可以定义负载。 这称为“默认负载”。
-  - 创建服务后，可更新服务的指标信息（包括默认负载）。 这称为“更新服务”。 
-  - 可将给定分区的负载重置为该服务的默认值。 这称为“重置分区负载”。
-  - 在运行时，可动态报告每个服务对象的负载。 这称为“报告负载”。 
+  - 创建服务后，可以定义负载。 这称为“默认负载”__。
+  - 创建服务后，可更新服务的指标信息（包括默认负载）。 这称为“更新服务”__。 
+  - 可将给定分区的负载重置为该服务的默认值。 这称为“重置分区负载”__。
+  - 在运行时，可动态报告每个服务对象的负载。 这称为“报告负载”__。 
   
 可在同一服务的生存期内使用所有这些策略。 
 
 ## <a name="default-load"></a>默认负载
-默认负载是此服务的每个服务对象（无状态实例或有状态副本）对该指标的消耗量。 群集资源管理器将此数值用于服务对象的负载，直至收到动态负载报告等其他信息。 对于较简单的服务，默认负载是一种静态定义。 默认负载从不更新，并用于服务的整个生存期。 默认负载对于简单容量规划方案而言非常有用，其中一定量的资源专用于不同的工作负载且不发生更改。
+默认负载是此服务的每个服务对象（无状态实例或有状态副本）对该指标的消耗量**。 群集资源管理器将此数值用于服务对象的负载，直至收到动态负载报告等其他信息。 对于较简单的服务，默认负载是一种静态定义。 默认负载从不更新，并用于服务的整个生存期。 默认负载对于简单容量规划方案而言非常有用，其中一定量的资源专用于不同的工作负载且不发生更改。
 
 > [!NOTE]
 > 若要深入了解容量管理以及如何在群集中定义节点的容量，请参阅[此文](service-fabric-cluster-resource-manager-cluster-description.md#capacity)。
@@ -196,7 +196,7 @@ this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnecti
 
 假设一开始使用以下命令创建有状态服务：
 
-PowerShell：
+Powershell：
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("MemoryInMb,High,21,11”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
@@ -208,8 +208,8 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 <center>
 
-![通过默认值和自定义度量值平衡][Image2]
-的群集 </center>
+![使用默认和自定义指标均衡的群集][Image2]
+</center>
 
 有几个问题值得注意：
 
@@ -233,7 +233,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 <center>
 
-![指标权重示例及其对平衡解决方案的影响][Image3]
+![指标权重示例及其对均衡解决方案的影响][Image3]
 </center>
 
 此示例中有 4 种不同的服务，所有服务都针对两个不同指标 MetricA 和 MetricB 报告不同的值。 在其中一个用例中，所有服务定义 MetricA 为最重要的指标（权重 = 高），MetricB 为不重要的指标（权重 = 低）。 因此会看到群集资源管理器在放置服务时会采用使得 MetricA 比 MetricB 更均衡的方式。 “更均衡”意味着 MetricA 具有比 MetricB 更小的标准偏差。 在第二个方案中，我们反转指标权重。 结果，群集资源管理器会交换服务 A 与 B，以产生 MetricB 比 MetricA 更加均衡的分配。
@@ -251,8 +251,8 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 <center>
 
-![仅限全局解决方案][Image4]
-的影响 </center>
+![全局唯一解决方案的影响][Image4]
+</center>
 
 最上面的示例只探讨了全局均衡，群集整体上的确达到均衡。 所有节点的主副本计数和总副本计数都相同。 不过，如果查看此分配的实际影响，就不是那么理想：丢失任何节点对特定工作负荷带来不成比例的影响，因为这除去了其所有的主要副本。 例如，如果第一个节点出现故障，圆形服务的三个不同分区的三个主副本将全部丢失。 相反，三角形和六边形服务的分区丢失一个副本。 这不会导致中断，只是不得不恢复已停止运行的副本。
 
@@ -260,7 +260,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 ## <a name="next-steps"></a>后续步骤
 - 有关服务配置的详细信息，请参阅[了解如何配置服务](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
-- 定义碎片整理指标是合并节点上的负载而不是将其分散的一种方法。若要了解如何配置碎片整理，请参阅[此文](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+- 定义碎片整理指标是整合节点负载而不是将其分散的一种方式。要了解如何配置碎片整理，请参阅[本文](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 - 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
 - 从头开始并[获取 Service Fabric 群集 Resource Manager 简介](service-fabric-cluster-resource-manager-introduction.md)
 - 移动成本是向群集 Resource Manager 发出信号，表示移动某些服务比移动其他服务会产生更高成本的方式之一。 若要了解有关移动成本的详细信息，请参阅[此文](service-fabric-cluster-resource-manager-movement-cost.md)

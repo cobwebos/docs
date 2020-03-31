@@ -6,28 +6,28 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458418"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Azure Service Fabric 中的按需备份
 
 可将可靠有状态服务和 Reliable Actors 的数据进行备份，以解决灾难或数据丢失的情况。
 
-Azure Service Fabric 提供[定期备份数据](service-fabric-backuprestoreservice-quickstart-azurecluster.md)和按需备份数据的功能。 按需备份很有用，因为它可防止由于在基础服务或其环境中的计划更改而导致的数据丢失/数据损坏。
+Azure Service Fabric 提供[定期备份数据](service-fabric-backuprestoreservice-quickstart-azurecluster.md)和按需备份数据的功能。 按需备份非常有用，因为它可防止由于基础服务_data loss_/或其环境中的计划更改而导致_数据丢失数据损坏_。
 
 在手动触发服务或服务环境操作之前，按需备份功能有助于捕获服务的状态。 例如，如果你在升级或降级服务时对服务二进制文件做出了更改。 在这种情况下，按需备份可以帮助防止应用程序代码 bug 导致数据损坏。
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 安装 ServiceFabric 模块 [In Preview]，以便进行配置调用。
+- 安装 Microsoft.ServiceFabric.Powershell.Http模块 [在预览中] 进行配置调用。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- 使用 ServiceFabric 模块进行任何配置请求之前，请确保使用 `Connect-SFCluster` 命令连接群集。
+- 请确保在使用 Microsoft.ServiceFabric.Powershell.Http 模块发出任何配置请求之前，先使用 `Connect-SFCluster` 命令连接群集。
 
 ```powershell
 
@@ -46,7 +46,7 @@ Azure Service Fabric 提供[定期备份数据](service-fabric-backuprestoreserv
 
 以下用例是[为可靠有状态服务和 Reliable Actors 启用定期备份](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)中的方案的延续。 在本例中，你启用了一个备份策略，以使用某个分区，并按设置的频率在 Azure 存储中创建备份。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 Powershell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
 
 ```powershell
 
@@ -71,7 +71,7 @@ Invoke-WebRequest -Uri $url -Method Post -ContentType 'application/json' -Certif
 可以请求可靠有状态服务或 Reliable Actor 的分区的按需备份。 请在按需备份请求中提供存储信息。
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 Powershell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
 
 ```powershell
 
@@ -103,15 +103,15 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 可以使用 [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API 设置[按需备份进度](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)跟踪。
 
 ### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
-请确保已在 Service Fabric Explorer 设置中启用了 "高级" 模式。
-1. 选择所需分区，并单击 "操作"。 
-2. 选择 "触发分区备份"，并填写 Azure 的信息：
+请确保已在 Service Fabric Explorer 设置中启用了“高级模式”。
+1. 选择所需分区，并单击“操作”。 
+2. 选择“触发分区备份”，并填写用于 Azure 的信息：
 
-    ![触发器分区备份][0]
+    ![触发分区备份][0]
 
-    或文件共享：
+    或 FileShare：
 
-    ![触发器分区备份文件共享][1]
+    ![触发分区备份文件共享][1]
 
 ## <a name="tracking-on-demand-backup-progress"></a>跟踪按需备份进度
 
@@ -120,7 +120,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 不同的分区可以同时触发按需备份请求。
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 模块的 Powershell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用Microsoft.ServiceFabric.Powershell.Http 模块的 PowerShell
 
 ```powershell
 
@@ -139,7 +139,7 @@ $backupResponse
 
 按需备份请求可处于以下状态：
 
-- 已**接受**：备份已在分区上启动并且正在进行。
+- **已接受**：备份已在分区上启动，并且正在进行。
   ```
   BackupState             : Accepted
   TimeStampUtc            : 0001-01-01T00:00:00Z
@@ -149,8 +149,8 @@ $backupResponse
   LsnOfLastBackupRecord   : 0
   FailureError            :
   ```
-- **成功**、**失败**或**超时**：请求的按需备份可通过以下任何一种状态完成：
-  - **成功**：_成功_备份状态表明分区状态已成功备份。 响应将提供分区的 _BackupEpoch_ 和 _BackupLSN_ 以及 UTC 格式的时间。
+- **成功**、**失败**或**超时**：请求的按需备份可以在以下任何状态下完成：
+  - **成功**：_成功_备份状态表示分区状态已成功备份。 响应将提供分区的 _BackupEpoch_ 和 _BackupLSN_ 以及 UTC 格式的时间。
     ```
     BackupState             : Success
     TimeStampUtc            : 2018-11-21T20:00:01Z
@@ -160,7 +160,7 @@ $backupResponse
     LsnOfLastBackupRecord   : 36
     FailureError            :
     ```
-  - **失败**：_失败_的备份状态指示在备份分区状态时出错。 响应中会指明失败的原因。
+  - **失败**：_失败_备份状态指示在备份分区状态期间发生故障。 响应中会指明失败的原因。
     ```
     BackupState             : Failure
     TimeStampUtc            : 0001-01-01T00:00:00Z
@@ -170,7 +170,7 @@ $backupResponse
     LsnOfLastBackupRecord   : 0
     FailureError            : @{Code=FABRIC_E_BACKUPCOPIER_UNEXPECTED_ERROR; Message=An error occurred during this operation.  Please check the trace logs for more details.}
     ```
-  - **超时**：_超时_备份状态指示无法在给定的时间内创建分区状态备份。 默认超时值为 10 分钟。 如果发生这种情况，请使用更大的 [BackupTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) 发起新的按需备份请求。
+  - **超时**：_超时_备份状态表示无法在给定时间内创建分区状态备份。 默认超时值为 10 分钟。 如果发生这种情况，请使用更大的 [BackupTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) 发起新的按需备份请求。
     ```
     BackupState             : Timeout
     TimeStampUtc            : 0001-01-01T00:00:00Z

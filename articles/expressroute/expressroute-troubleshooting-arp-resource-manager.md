@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute： ARP 表-疑难解答
+title: Azure 快速路由：ARP 表 - 故障排除
 description: 此页说明了如何为 ExpressRoute 线路获取 ARP 表
 services: expressroute
 author: ganesr
@@ -9,15 +9,15 @@ ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 4f1bd064dbc0909be3deba9180be1d8b3c066fd4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076583"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>在 Resource Manager 部署模型中获取 ARP 表
 > [!div class="op_single_selector"]
-> * [PowerShell - Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
+> * [PowerShell - 资源管理器](expressroute-troubleshooting-arp-resource-manager.md)
 > * [PowerShell - 经典](expressroute-troubleshooting-arp-classic.md)
 > 
 > 

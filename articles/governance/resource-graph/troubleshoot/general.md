@@ -1,13 +1,13 @@
 ---
 title: 排查常见错误
-description: 了解如何在通过 Azure 资源关系图查询 Azure 资源时排查各种 Sdk 的问题。
+description: 了解如何在使用 Azure 资源图查询 Azure 资源时解决各种 SDK 的问题。
 ms.date: 10/18/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74303899"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>排查使用 Azure Resource Graph 时出现的错误
@@ -20,17 +20,17 @@ ms.locfileid: "74303899"
 
 ## <a name="general-errors"></a>常规错误
 
-### <a name="toomanysubscription"></a>方案：订阅过多
+### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>方案：订阅太多
 
 #### <a name="issue"></a>问题
 
-如果客户有权访问1000多个订阅（包括使用[Azure Lighthouse](../../../lighthouse/overview.md)的跨租户订阅），则不能在对 Azure 资源关系图的单个调用中跨所有订阅提取数据。
+有权访问 1000 多个订阅（包括使用[Azure 灯塔](../../../lighthouse/overview.md)的跨租户订阅）的客户无法在单个调用 Azure 资源图时跨所有订阅获取数据。
 
 #### <a name="cause"></a>原因
 
 Azure CLI 和 PowerShell 只会将前 1000 个订阅转发到 Azure Resource Graph。 Azure Resource Graph 的 REST API 接受对最大数目的订阅执行查询。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 对一部分订阅批处理查询请求，以保持在 1000 个订阅的限制范围内。 解决方法是在 PowerShell 中使用 **Subscription** 参数。
 
@@ -57,7 +57,7 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="rest-contenttype"></a>方案：不受支持的内容类型 REST 标头
+### <a name="scenario-unsupported-content-type-rest-header"></a><a name="rest-contenttype"></a>方案：不支持的内容类型 REST 标头
 
 #### <a name="issue"></a>问题
 
@@ -65,13 +65,13 @@ $response
 
 #### <a name="cause"></a>原因
 
-Azure Resource Graph REST API 仅支持 `Content-Type`application/json**的**。 某些 REST 工具或代理默认为 **text/plain**，REST API 不支持此选项。
+Azure Resource Graph REST API 仅支持 **application/json** 的 `Content-Type`。 某些 REST 工具或代理默认为 **text/plain**，REST API 不支持此选项。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
-验证用于查询 Azure Resource Graph 的工具或代理是否为 `Content-Type`application/json**配置了 REST API 标头**。
+验证用于查询 Azure Resource Graph 的工具或代理是否为 **application/json** 配置了 REST API 标头 `Content-Type`。
 
-### <a name="rest-403"></a>方案：列表中没有对所有订阅的读取权限
+### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>方案：对列表中的所有订阅没有读取权限
 
 #### <a name="issue"></a>问题
 
@@ -81,7 +81,7 @@ Azure Resource Graph REST API 仅支持 `Content-Type`application/json**的**。
 
 如果客户对所有提供的订阅没有读取权限，则由于缺乏适当的安全权限，请求将被拒绝。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 在订阅列表中包括至少一个订阅，运行查询的客户至少具有对该订阅的读取访问权限。 有关详细信息，请参阅 [Azure Resource Graph 中的权限](../overview.md#permissions-in-azure-resource-graph)。
 
@@ -89,6 +89,6 @@ Azure Resource Graph REST API 仅支持 `Content-Type`application/json**的**。
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-- 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
-- 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-- 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+- 通过[Azure 论坛](https://azure.microsoft.com/support/forums/)从 Azure 专家那里获得答案。
+- 与[@AzureSupport](https://twitter.com/azuresupport)— 正式的 Microsoft Azure 帐户连接，通过将 Azure 社区连接到正确的资源（答案、支持和专家），从而改善客户体验。
+- 如需更多帮助，可以提交 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **"获取支持**"。

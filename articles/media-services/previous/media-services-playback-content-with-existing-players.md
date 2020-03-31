@@ -1,6 +1,6 @@
 ---
 title: 使用现有播放器播放内容 - Azure | Microsoft 文档
-description: 本文列出了可以用来播放内容的现有播放器。
+description: 本文列出了可用于播放内容的现有播放器。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 07537d3d67e41f7e1179a709ffa19f3d84aa4539
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77565819"
 ---
 # <a name="playing-your-content-with-existing-players"></a>使用现有播放器播放内容
 Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 实时流和 MPEG-Dash。 本主题指出了可用来测试流的现有播放器。
 
 ### <a name="the-azure-portal-media-services-content-player"></a>Azure 门户媒体服务内容播放器
-**Azure** 门户提供可用于测试视频的内容播放器。
+**Azure**门户提供可用于测试视频的内容播放器。
 
-单击所需的视频（确保它[已发布](media-services-portal-publish.md)），并单击门户底部的“播放”按钮。
+单击所需的视频（确保它[已发布](media-services-portal-publish.md)），并单击门户底部的“播放”**** 按钮。
 
 请注意以下事项：
 
@@ -63,8 +63,8 @@ Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 
 ### <a name="other"></a>其他
 若要测试 HLS URL，还可以使用：
 
-* iOS 设备上的“Safari”或
-* Windows 上的“3ivx HLS 播放器”。
+* iOS 设备上的“Safari”**** 或
+* Windows 上的“3ivx HLS 播放器”****。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
