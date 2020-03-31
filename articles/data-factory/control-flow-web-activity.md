@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: c700c9786f3bec4c79cae904a95deb5fd1c670b4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260860"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
 Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
 
 > [!NOTE]
-> Web 活动只能调用公开显示的 Url。 专用虚拟网络中承载的 Url 不支持此方法。
+> Web 活动只能调用公开显示的 URL。 对于托管在专用虚拟网络中的 URL，不支持它。
 
 ## <a name="syntax"></a>语法
 
@@ -63,7 +63,7 @@ Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 说明 | 允许的值 | 必选
+properties | 描述 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 name | Web 活动的名称 | String | 是
 type | 必须设置为 **WebActivity**。 | String | 是
@@ -88,15 +88,15 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 | 非 JSON 类型 | 不支持 | 不支持 |
 ||||
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
-下面是 web 活动中支持的身份验证类型。
+以下是 Web 活动中支持的身份验证类型。
 
 ### <a name="none"></a>无
 
 如果不需要身份验证，请排除“身份验证”属性。
 
-### <a name="basic"></a>基本
+### <a name="basic"></a>Basic
 
 指定用户名和密码以用于基本身份验证。
 
@@ -132,7 +132,7 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 ```
 
 > [!NOTE]
-> 如果你的数据工厂配置了 git 存储库，则必须将你的凭据存储在 Azure Key Vault 中，才能使用基本身份验证或客户端证书身份验证。 Azure 数据工厂不会在 git 中存储密码。
+> 如果数据工厂配置了 git 存储库，则必须在 Azure 密钥保管库中存储凭据才能使用基本或客户端证书身份验证。 Azure 数据工厂不将密码存储在 git 中。
 
 ## <a name="request-payload-schema"></a>请求有效负载架构
 当使用 POST/PUT 方法时，正文属性表示发送到终结点的有效负载。 可以将链接服务和数据集作为有效负载的一部分进行传递。 下面是有效负载的架构：
@@ -254,7 +254,7 @@ public HttpResponseMessage Execute(JObject payload)
 ## <a name="next-steps"></a>后续步骤
 查看数据工厂支持的其他控制流活动：
 
-- [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
-- [For Each 活动](control-flow-for-each-activity.md)
-- [Get Metadata 活动](control-flow-get-metadata-activity.md)
+- [执行管道活动](control-flow-execute-pipeline-activity.md)
+- [对于每个活动](control-flow-for-each-activity.md)
+- [获取元数据活动](control-flow-get-metadata-activity.md)
 - [Lookup 活动](control-flow-lookup-activity.md)

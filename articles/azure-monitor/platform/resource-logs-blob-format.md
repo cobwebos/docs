@@ -1,6 +1,6 @@
 ---
-title: 准备 Azure Monitor 资源日志的格式更改
-description: 在2018年11月1日，迁移到的 Azure 资源日志使用追加 blob。
+title: 为 Azure Monitor 资源日志的格式更改做准备
+description: Azure 资源日志已于 2018 年 11 月 1 日改为使用追加 blob。
 author: johnkemnetz
 services: monitoring
 ms.topic: conceptual
@@ -8,42 +8,42 @@ ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096774"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>准备 Azure Monitor 平台日志存档到存储帐户的格式更改
+# <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 平台日志的格式更改做准备
 
 > [!WARNING]
-> 如果使用[日志配置文件](resource-logs-collect-storage.md)将[Azure 资源日志或指标](resource-logs-collect-storage.md)发送到存储帐户，则存储帐户中的数据格式将更改为2018年11月1日的 JSON 行。 以下说明介绍了影响以及如何更新工具以处理新格式。
+> 如果[使用诊断设置将 Azure 资源日志或指标发送到存储帐户](resource-logs-collect-storage.md)或[使用日志配置文件将活动日志发送到存储帐户](resource-logs-collect-storage.md)，则存储帐户中的数据格式将于 2018 年 11 月 1 日更改为 JSON Lines。 以下说明介绍了影响以及如何更新工具以处理新格式。
 >
 
 ## <a name="what-changed"></a>更改内容
 
-Azure Monitor 提供了一项功能，使你能够将资源日志和活动日志发送到 Azure 存储帐户、事件中心命名空间或 Azure Monitor 的 Log Analytics 工作区中。 若要解决系统性能问题，请在**2018 年11月1日上午12:00，** 发送到 blob 存储的日志数据的格式已更改。 如果工具从 blob 存储中读取数据，则需要更新工具以了解新的数据格式。
+Azure Monitor 提供了一项功能，可用于将资源日志和活动日志发送到 Azure 存储帐户、事件中心命名空间或 Azure Monitor 的 Log Analytics 工作区。 为解决系统性能问题，发送到 blob 存储的日志数据格式已于 2018 年 11 月 1 日凌晨 12 点 (UTC) 更改****。 如果工具从 blob 存储中读取数据，则需要更新工具以了解新的数据格式。
 
-* 在星期四，12:00 2018 年11月1日，UTC 格式已更改为[JSON 行](http://jsonlines.org/)。 这意味着每个记录将由换行符分隔，JSON 记录之间没有外部记录数组和逗号。
-* 同时为所有订阅中的所有诊断设置更改 blob 格式。 为11月1日发出的第一个 PT1H.JSON 文件使用此新格式。 Blob 和容器名称保持不变。
-* 将诊断设置设置为介于11月1日前之前，会一直在11月1日前发出当前格式的数据。
-* 此更改一次在所有公有云区域发生。 此更改不会在世纪互联、Azure 德国或 Azure 政府云运营的 Microsoft Azure 中发生。
+* 在 2018 年 11 月 1 日星期四凌晨 12 点 (UTC)，blob 格式已更改为 [JSON Lines](http://jsonlines.org/)。 这意味着每个记录将由换行符分隔，JSON 记录之间没有外部记录数组和逗号。
+* 已同时更改所有订阅中所有诊断设置的 blob 格式。 11 月 1 日发出的第一个 PT1H.json 文件已使用此新格式。 Blob 和容器名称保持不变。
+* 在 11 月 1 日之前设置诊断设置将继续以当前格式发出数据，直到 11 月 1 日为止。
+* 此更改已同时在所有公有云区域中进行。 但是，由世纪互联、Azure 德国或 Azure 政府云运营的 Microsoft Azure 不会进行此更改。
 * 此更改会影响以下数据类型：
   * [Azure 资源日志](archive-diagnostic-logs.md)（[请参阅此处的资源列表](diagnostic-logs-schema.md)）
   * [由诊断设置导出的 Azure 资源指标](diagnostic-settings.md)
   * [由日志配置文件导出的 Azure 活动日志数据](activity-log-collect.md)
 * 此更改不会影响：
   * 网络流日志
-  * 尚未通过 Azure Monitor 提供 Azure 服务日志（例如，Azure App Service 资源日志、存储分析日志）
+  * 尚未通过 Azure Monitor 可用的 Azure 服务日志（例如，Azure 应用服务资源日志、存储分析日志）
   * 将 Azure 资源日志和活动日志路由到其他目标（事件中心、Log Analytics）
 
 ### <a name="how-to-see-if-you-are-impacted"></a>如何查看是否受到影响
 
 只有在以下情况下，才会受到此更改的影响：
-1. 使用诊断设置将日志数据发送到 Azure 存储帐户，并
+1. 使用诊断设置将日志数据发送到 Azure 存储帐户，以及
 2. 拥有依赖于存储中这些日志的 JSON 结构的工具。
  
-若要确定是否有将数据发送到 Azure 存储帐户的诊断设置，可以导航到门户的 "**监视**" 部分，单击 "**诊断设置**"，并识别将**诊断状态**设置为 "**已启用**" 的所有资源：
+若要确定是否具有将数据发送到 Azure 存储帐户的诊断设置，可导航到门户的“监视”部分，单击“诊断设置”，并识别所有将“诊断状态”设置为“已启用”的资源****************：
 
 ![“Azure Monitor 诊断设置”边栏选项卡](media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 
@@ -133,6 +133,6 @@ Azure blob 存储中 PT1H.json 文件的当前格式使用 JSON 数组记录。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[将资源资源日志存档到存储帐户](./../../azure-monitor/platform/archive-diagnostic-logs.md)
+* 了解[将资源日志存档到存储帐户](./../../azure-monitor/platform/archive-diagnostic-logs.md)
 * 了解如何[将活动日志数据存档到存储帐户](./../../azure-monitor/platform/archive-activity-log.md)
 

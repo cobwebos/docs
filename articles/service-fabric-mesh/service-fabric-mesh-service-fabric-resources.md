@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric 资源模型简介
+title: Azure 服务结构资源模型简介
 description: 了解 Service Fabric 资源模型，这是一种定义 Service Fabric 网格应用程序的简化方法。
 author: vturecek
 ms.topic: conceptual
@@ -7,10 +7,10 @@ ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259131"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Service Fabric 资源模型简介
@@ -75,7 +75,7 @@ Service Fabric 资源模型描述了一种定义包含 Service Fabric 网格应�
 
 ## <a name="packaging-and-deployment"></a>打包和部署
 
-基于资源模型的 Service Fabric 网格应用程序打包为 Docker 容器。  Service Fabric 网格是共享的多租户环境，容器可提供高级别的隔离。  使用 JSON 格式或 YAML 格式（随后将其转换为 JSON）描述这些应用程序。 将网格应用程序部署到 Azure Service Fabric 网格时，用于描述应用程序的 JSON 是 Azure 资源管理器模板。 资源将映射到 Azure 资源。  将网格应用程序部署到 Service Fabric 群集（独立或 Azure 托管）时，用于描述应用程序的 JSON 的格式类似于 Azure 资源管理器模板。  部署后，可通过 HTTP 接口或 Azure CLI 管理网格应用程序。 
+基于资源模型的 Service Fabric 网格应用程序打包为 Docker 容器。  Service Fabric 网格是共享的多租户环境，容器可提供高级别的隔离。  使用 JSON 格式或 YAML 格式（随后将其转换为 JSON）描述这些应用程序。 将网格应用程序部署到 Azure 服务结构网格时，用于描述应用程序的 JSON 是 Azure 资源管理器模板。 资源将映射到 Azure 资源。  将 Mesh 应用程序部署到服务结构群集（独立或 Azure 托管）时，用于描述应用程序的 JSON 格式类似于 Azure 资源管理器模板。  部署后，可通过 HTTP 接口或 Azure CLI 管理网格应用程序。 
 
 
 ## <a name="next-steps"></a>后续步骤 

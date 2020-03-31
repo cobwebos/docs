@@ -1,6 +1,6 @@
 ---
-title: 性能降低的疑难解答
-description: 了解如何解决 Azure App Service 中的应用程序性能缓慢问题，包括监视应用程序行为、收集数据和缓解此问题。
+title: 对性能降低进行故障排除
+description: 了解如何解决 Azure 应用服务中的应用性能缓慢问题，包括监视应用行为、收集数据和缓解问题。
 tags: top-support-issue
 keywords: Web 应用性能，缓慢应用，应用缓慢
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
 ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74688315"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中应用性能缓慢的问题
@@ -30,7 +30,7 @@ ms.locfileid: "74688315"
 * 应用程序的内存/CPU 使用率过高
 * 应用程序因异常而崩溃
 
-## <a name="troubleshooting-steps"></a>故障排除步骤
+## <a name="troubleshooting-steps"></a>疑难解答步骤
 故障排除可划分为三种不同的任务，依次为：
 
 1. [观察和监视应用程序行为](#observe)
@@ -46,7 +46,7 @@ ms.locfileid: "74688315"
 每次发生服务中断或性能下降时 Microsoft Azure 会发出通告。 可以在 [Azure 门户](https://portal.azure.com/)中跟踪服务的运行状况。 有关详细信息，请参阅[跟踪服务的运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
 
 #### <a name="monitor-your-app"></a>监视应用
-此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴。 “指标”边栏选项卡显示所有可以添加的指标。
+此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴****。 “指标”边栏选项卡显示所有可以添加的指标。****
 
 可能需要在应用中监视的一些指标包括
 
@@ -64,7 +64,7 @@ ms.locfileid: "74688315"
 * [接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 #### <a name="monitor-web-endpoint-status"></a>监视 Web 终结点状态
-如果在“标准”定价层中运行应用，应用服务允许从三个地理位置监视两个终结点。
+如果在“标准”定价层中运行应用，应用服务允许从三个地理位置监视两个终结点。****
 
 终结点监视可从测试 Web URL 的响应时间和运行时间的分布式地理位置配置 Web 测试。 该测试可对 Web URL 执行 HTTP GET 操作，以从每个位置确定响应时间和运行时间。 每个已配置位置每 5 分钟运行一次测试。
 
@@ -75,7 +75,7 @@ ms.locfileid: "74688315"
 另外，有关终结点监视的视频，请参阅[保持 Azure 网站运行以及终结点监视 - Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow)。
 
 #### <a name="application-performance-monitoring-using-extensions"></a>使用扩展的应用程序性能监视
-还可以使用站点扩展监视应用程序的性能。
+还可以使用站点扩展监视应用程序的性能。**
 
 每个应用服务应用都提供了一个可扩展的管理终结点，通过此终结点可使用一组作为站点扩展部署的功能强大的工具。 扩展包括： 
 
@@ -93,7 +93,7 @@ ms.locfileid: "74688315"
 可以启用或禁用以下种类的日志：
 
 * **详细错误日志记录** - 指示故障的 HTTP 状态代码（状态代码 400 或更大数字）的详细错误消息。 其中可能包含有助于确定服务器返回错误代码的原因的信息。
-* **失败请求跟踪** - 有关失败请求的详细信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 在尝试提高应用性能或查找导致特定 HTTP 错误的问题时，此信息很有用。
+* **失败的请求跟踪**- 有关失败请求的详细信息，包括用于处理请求的 IIS 组件的跟踪以及每个组件所采用的时间。 在尝试提高应用性能或查找导致特定 HTTP 错误的问题时，此信息很有用。
 * **Web 服务器日志记录** - 使用 W3C 扩展日志文件格式的 HTTP 事务信息。 这在确定总体应用指标（如处理的请求数量或来自特定 IP 地址的请求数）时非常有用。
 
 #### <a name="enable-application-diagnostics"></a>启用应用程序诊断
@@ -121,10 +121,10 @@ Application Insights Profiler 提供每个 Web 调用响应时间的统计信息
 #### <a name="use-the-diagnostics-tool"></a>使用诊断工具
 应用服务提供了智能的交互式体验，可帮助我们排查应用的问题，且无需配置。 如果应用确实出现问题，诊断工具会指出问题所在，并引导你获取适当的信息，以便更轻松快速地排查和解决问题。
 
-若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。
+若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。****
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 调试控制台
-应用服务随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为应用的 Kudu 控制台或 SCM 仪表板。
+应用服务随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为应用的 Kudu 控制台或 SCM 仪表板。****
 
 可以通过转到链接 **https://&lt;Your app name>.scm.azurewebsites.net/** 来访问此仪表板。
 
@@ -141,7 +141,7 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. 缓解此问题
+### <a name="3-mitigate-the-issue"></a>3. 缓解问题
 #### <a name="scale-the-app"></a>缩放应用
 在 Azure 应用服务中，为了提高性能和吞吐量，可以调整运行应用程序的规模。 纵向扩展应用涉及到两个相关操作：将应用服务计划更改为较高的定价层，以及在切换到较高的定价层后配置特定的设置。
 
@@ -152,7 +152,7 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 可以将缩放设置为手动或自动。
 
 #### <a name="use-autoheal"></a>使用 AutoHeal
-AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终都可从 Azure 门户中直接重启应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 即使您的应用程序不是 .NET 应用程序，这些设置的工作方式也相同。
+AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的限制或执行请求所需的时间）回收应用的工作进程。 在大多数情况下，回收进程是在出现问题后进行恢复的最快方式。 尽管始终都可从 Azure 门户中直接重启应用，但 AutoHeal 可以自动执行此操作。 只需在应用的根 web.config 中添加一些触发器即可。 即使应用程序并非 .NET 应用，这些设置的工作方式也仍然相同。
 
 有关详细信息，请参阅[自动修复 Azure 网站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
 
@@ -161,4 +161,4 @@ AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的�
 
  ![重启应用以解决性能问题](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
+还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅将[Azure PowerShell 与 Azure 资源管理器一起使用](../powershell-azure-resource-manager.md)。

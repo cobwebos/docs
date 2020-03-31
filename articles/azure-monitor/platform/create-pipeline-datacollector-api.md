@@ -1,17 +1,17 @@
 ---
-title: 使用 Azure Monitor 数据收集器 API 创建数据管道 |Microsoft Docs
+title: 使用数据收集器 API 创建数据管道
 description: 可以使用 Azure Monitor HTTP 数据收集器 API，从能够调用 REST API 的任何客户端将 POST JSON 数据添加到 Log Analytics 工作区。 本文介绍如何以自动方式上传存储在文件中的数据。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 0300b44577725ddb272086713220d3318f1726fe
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 96c64f6a0167b678f14bf0199069ecd6b4c8d57a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655322"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055117"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>使用数据收集器 API 创建数据管道
 
@@ -20,7 +20,7 @@ ms.locfileid: "77655322"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>示例问题
-本文余下部分，我们会在 Application Insights 中检查页面视图数据。 在我们的假设方案中，我们想要将 Application Insights SDK 默认收集的地理信息关联到包含世界上每个国家/地区的人口数据的自定义数据中，目的是确定应在何处支出最多营销资金。 
+本文余下部分，我们会在 Application Insights 中检查页面视图数据。 在我们的假想方案中，我们需要将默认情况下由 Application Insights SDK 收集的地理信息与包含全球每个国家/地区人口的自定义数据关联起来，目的是确定最值得我们投入市场营销费用的地方。 
 
 为此，我们使用公开的数据源，例如 [UN World Population Prospects](https://esa.un.org/unpd/wpp/)（联合国世界人口展望）。 数据将采用以下简单架构：
 
@@ -60,8 +60,8 @@ ms.locfileid: "77655322"
 
 在此示例中，我们分析 CSV 文件，但任何其他的文件类型也可以进行类似的处理。 请直接修改 Azure Function 的反序列化部分，使之反映特定数据类型的正确逻辑。
 
-1.  在系统提示时使用 Function 运行时 v1 根据使用情况创建新的 Azure Function。  选择以 C# 为目标对象的“HTTP 触发器”模板作为起点，根据我们的要求配置绑定。 
-2.  在右窗格的“查看文件”选项卡中，创建名为 **project.json** 的新文件，然后粘贴以下代码（来自我们正使用的 NuGet 包）：
+1.  在系统提示时使用 Function 运行时 v1 根据使用情况创建新的 Azure Function。  选择以 C# 为目标对象的“HTTP 触发器”模板作为起点，根据我们的要求配置绑定。**** 
+2.  在右窗格的“查看文件”选项卡中，**** 创建名为 **project.json** 的新文件，然后粘贴以下代码（来自我们正使用的 NuGet 包）：
 
     ![Azure Functions 示例项目](./media/create-pipeline-datacollector-api/functions-example-project-01.png)
     
@@ -122,7 +122,7 @@ ms.locfileid: "77655322"
     ```
 
 4. 保存函数。
-5. 测试函数，确保代码正常运行。 切换到右窗格中的“测试”选项卡，对测试进行配置，如下所示。 将 Blob 链接和示例数据置于“请求正文”文本框中。 单击“运行”以后，会在“输出”框中看到 JSON 输出：
+5. 测试函数，确保代码正常运行。 切换到右窗格中的“测试”选项卡，对测试进行配置，如下所示。**** 将 Blob 链接和示例数据置于“请求正文”文本框中。**** 单击“运行”以后，会在“输出”框中看到 JSON 输出：********
 
     ![Function App 测试代码](./media/create-pipeline-datacollector-api/functions-test-01.png)
 

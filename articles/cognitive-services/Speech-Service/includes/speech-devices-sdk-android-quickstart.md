@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
 ms.openlocfilehash: 2ee6b12923bfd0e06343e8f185226cb72280d806
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78383867"
 ---
 本快速入门介绍如何使用适用于 Android 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription-service.md)设备。
@@ -18,7 +18,7 @@ ms.locfileid: "78383867"
 
 示例应用程序的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始使用语音设备 SDK 之前，需要：
 
@@ -47,7 +47,7 @@ ms.locfileid: "78383867"
 
 1. 你的设备应列在“选择设备”下。  选择设备旁边的“视图”按钮。 
 
-1. 选择文件夹图标，然后选择“设置” > “WLAN”连接到无线网络。  
+1. 选择文件夹图标，然后选择“设置” **“WLAN”连接到无线网络。**  >  
 
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "78383867"
    >
    > ![Vysor 文件夹](../media/speech-devices-sdk/qsg-10.png)
    >
-   > 选择“设置”。  搜索“mac 地址”，然后选择“Mac 地址” > “高级 WLAN”。   记下对话框底部附近显示的 MAC 地址。
+   > 选择“设置”。  搜索“mac 地址”，然后选择“Mac 地址” **“高级 WLAN”。**  >   记下对话框底部附近显示的 MAC 地址。
    >
    > ![Vysor MAC 地址](../media/speech-devices-sdk/qsg-11.png)
    >

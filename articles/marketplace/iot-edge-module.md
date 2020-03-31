@@ -1,20 +1,18 @@
 ---
 title: Azure IoT Edge 模块
 description: Azure 市场中的 IoT Edge 模块套餐适用于应用和服务发布者。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, IoT Edge module offer
 author: qianw211
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/22/2018
-ms.author: pabutler
-ms.openlocfilehash: db501c34a4418bc7b08b19105a9b28585288f877
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: aadbf33914f919e393a5ec88cf6fc0a6103911b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823065"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286143"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
@@ -46,11 +44,11 @@ IoT Edge 模块仅发布到 Azure 市场，AppSource 不适用。  有关店面�
  
 **计费选项**
 
-市场当前支持 IoT Edge 模块的“免费”和“自带许可证 (BYOL)”计费选项。
+市场当前支持 IoT Edge 模块的“免费”**** 和“自带许可证 (BYOL)”**** 计费选项。
  
 **发布选项**
 
-在所有情况下，IoT Edge 模块应选择“Transact”发布选项。  有关发布选项的详细信息，请参阅[选择发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。  
+在所有情况下，IoT Edge 模块应选择“Transact”**** 发布选项。  有关发布选项的详细信息，请参阅[选择发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。  
 
 ## <a name="eligibility-criteria"></a>资格条件
 
@@ -77,7 +75,7 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 ## <a name="documentation-and-resources"></a>文档和资源
 
-[创建 IoT Edge 模块产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer)-使用云发布门户发布新的 IoT Edge 模块产品/服务的步骤。
+[创建 IoT 边缘模块产品 /](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer)使用云发布门户发布新的 IoT Edge 模块产品的步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

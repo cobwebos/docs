@@ -1,5 +1,5 @@
 ---
-title: 从 macOS 连接到 Windows 虚拟桌面-Azure
+title: 从 macOS 连接到 Windows 虚拟桌面 - Azure
 description: 如何使用 macOS 客户端连接到 Windows 虚拟桌面。
 services: virtual-desktop
 author: heidilohr
@@ -9,39 +9,39 @@ ms.date: 12/13/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 673c20355e9ad4abf2c8318b3eb2ebbcc36ed8fd
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128243"
 ---
 # <a name="connect-with-the-macos-client"></a>使用 macOS 客户端进行连接
 
 > 适用于： macOS 10.12 或更高版本
 
-可以使用可下载的客户端从 macOS 设备访问 Windows 虚拟桌面资源。 本指南将说明如何设置客户端。
+您可以使用我们的可下载客户端从 macOS 设备访问 Windows 虚拟桌面资源。 本指南将告诉您如何设置客户端。
 
 ## <a name="install-the-client"></a>安装客户端
 
-若要开始，请[下载](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) 并在 macOS 设备上安装客户端。
+要开始使用，[请在](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) macOS 设备上下载并安装客户端。
 
 ## <a name="subscribe-to-a-feed"></a>订阅源
 
-订阅你的管理员提供的源，你可以在 macOS 设备上获取可供你使用的托管资源的列表。
+订阅管理员提供的源，获取 macOS 设备上可用的托管资源列表。
 
-订阅源：
+要订阅源：
 
-1. 在主页上选择 "**添加源**" 以连接到服务并检索资源。
-2. 输入源 URL。 这可以是 URL 或电子邮件地址：
-   - 如果使用 URL，请使用管理员提供的 URL。 通常，该 URL <https://rdweb.wvd.microsoft.com>。
-   - 若要使用电子邮件，请输入你的电子邮件地址。 如果管理员已将服务器配置为，则此方法将通知客户端搜索与你的电子邮件地址关联的 URL。
-3. 选择 "**订阅**"。
-4. 出现提示时，请用用户帐户登录。
+1. 在主页上选择 **"添加源"** 以连接到服务并检索资源。
+2. 输入“源 URL”。 该项可以是 URL 或电子邮件地址：
+   - 如果您使用 URL，请使用管理员为您提供的 URL。 通常，URL 是<https://rdweb.wvd.microsoft.com>。
+   - 要使用电子邮件，请输入您的电子邮件地址。 如果管理员以这种方式配置了服务器，则告诉客户端搜索与您的电子邮件地址关联的 URL。
+3. 选择 **"订阅**"。
+4. 出现提示时，请使用用户帐户登录。
 
-登录后，应会看到可用资源的列表。
+登录后，应看到可用资源的列表。
 
-订阅源后，该源的内容会定期自动更新。 可以根据管理员所做的更改来添加、更改或删除资源。
+订阅源后，源的内容将自动定期更新。 资源可能会根据管理员所做的更改进行添加、更改或删除。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 macOS 客户端的详细信息，请查看[macOS 客户端入门](/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac/)文档。
+要了解有关 macOS 客户端的详细信息，请查看[macOS 客户端](/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac/)文档入门。

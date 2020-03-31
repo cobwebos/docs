@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721653"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>将自定义字段映射到事件网格架构
@@ -47,9 +47,9 @@ ms.locfileid: "76721653"
 
 * **输入架构**值指定架构的类型。 可用选项包括 CloudEvents 架构、自定义事件架构或事件网格架构。 默认值为事件网格架构。 在你的架构和事件网格架构之间创建自定义映射时，请使用自定义事件架构。 当事件采用 CloudEvents 架构时，请使用 Cloudevents 架构。
 
-* “映射默认值”属性指定事件网格架构中字段的默认值。 可以为 `subject`、`eventtype` 和 `dataversion` 设置默认值。 通常情况下，如果自定义架构不包括这三个字段中的一个的对应字段，请使用此参数。 例如，可以指定将数据版本始终设置为 **1.0**。
+* “映射默认值”**** 属性指定事件网格架构中字段的默认值。 可以为 `subject`、`eventtype` 和 `dataversion` 设置默认值。 通常情况下，如果自定义架构不包括这三个字段中的一个的对应字段，请使用此参数。 例如，可以指定将数据版本始终设置为 **1.0**。
 
-* “映射字段”值将字段从你的架构映射到事件网格架构。 请以空格分隔的键/值对形式指定值。 对于键名称，请使用事件网格字段的名称。 对于值，请使用字段的名称。 可以对 `id`、`topic`、`eventtime`、`subject`、`eventtype` 和 `dataversion` 使用键名称。
+* “映射字段”**** 值将字段从你的架构映射到事件网格架构。 请以空格分隔的键/值对形式指定值。 对于键名称，请使用事件网格字段的名称。 对于值，请使用字段的名称。 可以对 `id`、`topic`、`eventtime`、`subject`、`eventtype` 和 `dataversion` 使用键名称。
 
 要使用 Azure CLI 创建自定义主题，请使用：
 
@@ -189,7 +189,7 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 }
 ```
 
-这些字段包含来自自定义主题的映射。 **myEventTypeField** 映射到 **EventType**。 使用 **DataVersion** 和“主题”的默认值。 “数据”对象包含原始的事件架构字段。
+这些字段包含来自自定义主题的映射。 **myEventTypeField** 映射到 **EventType**。 使用 **DataVersion** 和“主题”**** 的默认值。 “数据”对象包含原始的事件架构字段。****
 
 第二个订阅使用了输入事件架构。 已分发事件的格式为：
 
@@ -208,5 +208,5 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 ## <a name="next-steps"></a>后续步骤
 
 * 有关事件传送和重试的信息，请参阅[事件网格消息传送和重试](delivery-and-retry.md)。
-* 有关事件网格的介绍，请参阅[关于事件网格](overview.md)。
+* 有关事件网格的简介，请参阅[有关事件网格](overview.md)。
 * 若要快速开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。

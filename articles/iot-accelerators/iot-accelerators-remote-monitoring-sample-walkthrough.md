@@ -1,6 +1,6 @@
 ---
 title: 远程监视解决方案加速器概述 - Azure | Microsoft Docs
-description: 本文概述了远程监视解决方案的一些关键要素，以帮助你了解其工作原理。
+description: 本文概述了远程监视解决方案的一些关键元素，使您能够了解其工作原理。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 33005bc286f7dc2c0ebed74bd9df0309e71346f5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73824836"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>远程监视解决方案加速器概述
@@ -23,7 +23,7 @@ ms.locfileid: "73824836"
 
 * 排查解决方案中的问题。
 * 规划如何根据具体要求自定义该解决方案。
-* 自行设计使用 Azure 服务的 IoT 解决方案。
+* 设计使用 Azure 服务的 IoT 解决方案。
 
 GitHub 上提供了远程监视解决方案加速器代码：
 
@@ -32,7 +32,7 @@ GitHub 上提供了远程监视解决方案加速器代码：
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
-下图描绘了叠加在 [IoT 体系结构](../iot-fundamentals/iot-introduction.md)之上的远程监视解决方案加速器的逻辑组件：
+下图概述了覆盖在[IoT 体系结构](../iot-fundamentals/iot-introduction.md)上的远程监视解决方案加速器的逻辑组件：
 
 ![逻辑体系结构](./media/iot-accelerators-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
@@ -41,7 +41,7 @@ GitHub 上提供了远程监视解决方案加速器代码：
 自 Microsoft 发布第一款解决方案加速器以来，云体系结构已有所演变。 [微服务](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)应运而生，经证实能够在不降低开发速度的情况下实现可伸缩性和灵活性。 有多种 Microsoft 服务在内部使用此体系结构模式，且获得了出色的可靠性和可伸缩性。 更新的解决方案加速器将这些知识付诸实践，使我们也能从中受益。
 
 > [!TIP]
-> 若要详细了解微服务体系结构，请参阅 [.NET Application Architecture](https://www.microsoft.com/net/learn/architecture)（.NET 应用程序体系结构）和 [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)（微服务：由云推动的应用程序革命）。
+> 若要详细了解微服务体系结构，请参阅 [.NET 应用程序体系结构](https://www.microsoft.com/net/learn/architecture)和[微服务：由云推动的应用程序革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)。
 
 ## <a name="device-connectivity"></a>设备连接
 
@@ -170,4 +170,4 @@ ASA 作业将来自已连接设备的遥测数据提供给时序见解以便进�
 详细的解决方案体系结构示意图：
 * [用于远程监视体系结构的解决方案加速器](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)。
 
-有关远程监视解决方案加速器的更多概念性信息，请参阅[自定义解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)。
+有关远程监视解决方案加速器的更多概念信息，请参阅[自定义解决方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)。

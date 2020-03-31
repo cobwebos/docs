@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心常见问题解答-关于虚拟机的问题
-description: 有关 Azure 安全中心中的虚拟机的常见问题，一种可帮助防止、检测和响应威胁的产品
+title: Azure 安全中心常见问题 - 有关虚拟机的问题
+description: Azure 安全中心中有关虚拟机的常见问题，该产品可帮助您预防、检测和响应威胁
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,13 +14,13 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: d84085115816a8fe1cba65e191ea391dd91a4aed
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77599361"
 ---
-# <a name="faq---questions-about-virtual-machines"></a>常见问题解答-关于虚拟机的问题
+# <a name="faq---questions-about-virtual-machines"></a>常见问题解答 - 有关虚拟机的问题
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>支持哪些类型的虚拟机？
@@ -42,7 +42,7 @@ Azure 安全中心可识别出通过 Azure 扩展安装的反恶意软件。 例
 
 ## <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>安全中心多长时间扫描一次操作系统漏洞、系统更新和终结点保护问题？
 
-下面是安全中心扫描漏洞、更新和问题的延迟时间：
+以下是安全中心扫描漏洞、更新和问题的延迟时间：
 
 - 操作系统安全配置 - 数据在 48 小时内更新
 - 系统更新 – 数据在 24 小时内更新

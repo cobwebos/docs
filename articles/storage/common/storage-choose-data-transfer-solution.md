@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
 ms.openlocfilehash: ada96d0d4b167e30cb6e271aa02d0d399a9ae7d3
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303080"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>选择 Azure 数据传输解决方案
@@ -36,13 +36,13 @@ ms.locfileid: "78303080"
     - **图形界面** - 如果偶尔仅传输几个文件，并且无需自动执行数据传输，则可以选择图形界面工具（如 Azure 存储资源管理器或 Azure 门户中基于 Web 的浏览工具）。
     - **脚本化或编程传输** - 可以使用我们提供的优化软件工具，或直接调用我们的 REST API/SDK。 可用的可编写脚本工具有 AzCopy、Azure PowerShell 和 Azure CLI。 对于编程接口，请使用用于 .NET、Java、Python、Node/JS、C++、Go、PHP 或 Ruby 的 SDK 之一。
     - **本地设备** - 我们向你提供物理或虚拟设备，该设备驻留在你的数据中心内，并优化通过网络进行的数据传输。 这些设备还提供频繁使用的文件的本地缓存。 物理设备是 Data Box Edge，虚拟设备是 Data Box Gateway。 两者都在本地永久运行，并通过网络连接到 Azure。
-    - - 可以设置云管道，以在多个 Azure 服务、本地或这两者的组合之间定期传输文件。 使用 Azure 数据工厂可设置和管理数据管道，以及移动和转换数据以进行分析。
+    - **** - 可以设置云管道，以在多个 Azure 服务、本地或这两者的组合之间定期传输文件。 使用 Azure 数据工厂可设置和管理数据管道，以及移动和转换数据以进行分析。
 
 下面的视觉对象说明根据可用于传输的网络带宽、打算传输的数据大小和传输频率选择各种 Azure 数据传输工具的指导原则。
 
 ![Azure 数据传输工具](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
 
-*脱机传输设备（Data Box Disk、Data Box 和 Data Box Heavy）的上限可以通过对一种设备类型下多个订单来进行扩展。
+*脱机传输设备（Data Box Disk、Data Box 和 Data Box Heavy）的上限可以通过对一种设备类型下多个订单来进行扩展。**
 
 ## <a name="selecting-a-data-transfer-solution"></a>选择数据传输解决方案
 
@@ -50,30 +50,30 @@ ms.locfileid: "78303080"
 
 - 可用网络带宽是否有限或不存在，并且你要传输大型数据集？
   
-    如果是，请参阅：[方案1：传输不带或低网络带宽的大型数据集](storage-solution-large-dataset-low-network.md)。
+    如果是，请参阅：[方案 1：传输没有或低网络带宽的大型数据集](storage-solution-large-dataset-low-network.md)。
 - 是否要通过网络传输大型数据集并且具有中等到较高网络带宽？
 
-    如果是，请参阅：[方案2：传输具有中等到高网络带宽的大型数据集](storage-solution-large-dataset-moderate-high-network.md)。
+    如果是，请参阅：[方案 2：传输具有中到高网络带宽的大型数据集](storage-solution-large-dataset-moderate-high-network.md)。
 - 是否偶尔要通过网络仅传输几个文件？
 
-    如果是，请参阅[方案3：传输大小限制为适中的网络带宽的小型数据集](storage-solution-small-dataset-low-moderate-network.md)。
+    如果是，请参阅[方案 3：传输具有受限于中等网络带宽的小型数据集](storage-solution-small-dataset-low-moderate-network.md)。
 - 是否在寻找采用固定时间间隔的时间点数据传输？
 
-    如果是，请使用[方案4：定期数据传输](storage-solution-periodic-data-transfer.md)中所述的脚本化/编程选项。
+    如果是，请使用方案 4 中概述的脚本/编程选项[：定期数据传输](storage-solution-periodic-data-transfer.md)。
 - 是否在寻找持续数据传输？
 
-    如果是，请使用[方案4：定期数据传输](storage-solution-periodic-data-transfer.md)中的选项。
+    如果是，请使用方案 4 中的选项[：定期数据传输](storage-solution-periodic-data-transfer.md)。
 
 ## <a name="data-transfer-feature-in-azure-portal"></a>Azure 门户中的数据传输功能
 
-你还可以转到 Azure 门户中的 Azure 存储帐户，并选择**数据传输**功能。 提供环境中的网络带宽、要传输的数据的大小和数据传输的频率。 你将看到与你提供的信息相对应的最佳数据传输解决方案。 
+也可转到 Azure 门户中的 Azure 存储帐户，然后选择“数据传输”功能。**** 请在环境中提供网络带宽、要传输的数据大小以及数据传输的频率。 将会看到与提供的信息相对应的最佳数据传输解决方案。 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [获取 Azure 存储资源管理器简介](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/)。
 - [阅读 AzCopy 概述](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)。
 - [将 Azure PowerShell 与 Azure 存储一起使用](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
-- [快速入门：通过 Azure CLI 创建、下载和列出 blob](../blobs/storage-quickstart-blobs-cli.md)
+- [快速入门：使用 Azure CLI 创建、下载和列出 blob](../blobs/storage-quickstart-blobs-cli.md)
 - 学习内容：
 
     - [用于脱机传输的 Azure Data Box、Azure Data Box Disk 和 Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/)。

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
-ms.openlocfilehash: 264b169eefde18880f50feae2554aa3ca7037b1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8791e933882832dc7b0037c860a4c4e1e9a54c7
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368156"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389029"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器重新训练模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -54,14 +54,14 @@ ms.locfileid: "79368156"
    在此示例中，数据存储在 [Azure 数据存储](how-to-access-data.md)中。 如果还没有数据存储，可以通过选择“新建数据存储”**** 来创建一个数据存储。
 
 1. 指定数据路径。 您还可以选择 **"浏览路径"** 以浏览到数据存储。 
-1. 选择"在画布顶部**运行**"。
+1. 在画布顶部选择 **"提交**"。
     
    > [!NOTE]
    > 如果已为此管道草稿设置了默认计算，管道会自动运行。 否则，您可以按照设置窗格上的提示立即设置设置。
 
 ### <a name="find-your-trained-model"></a>查找您训练的模型
 
-设计器会将所有管道输出（包括已训练的模型）保存到默认存储帐户中。 还可以直接在设计器中访问已训练的模型：
+设计器会将所有管道输出（包括已训练的模型）保存到默认存储帐户中。 但是，您也可以直接在设计器中访问经过训练的模型：
 
 1. 等待管道完成运行。
 1. 选择**训练模型**模块。

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c4ca328aa0ddc61d86a435b93fe775f294287b98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79281933"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527378"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
@@ -92,7 +92,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 依此类推。
 
-在此示例中，当**并发**值设置为 2 时，**活动运行 1** 和 **活动运行 2** **并发**从两个活动时段复制数据，以提高数据移动性能。 但是，如果多个文件与活动运行 1 相关联，则数据移动服务一次只会将一个文件从源复制到目标位置。
+在此示例中，当**并发**值设置为 2 时，**活动运行 1** 和 **活动运行 2****并发**从两个活动时段复制数据，以提高数据移动性能。 但是，如果多个文件与活动运行 1 相关联，则数据移动服务一次只会将一个文件从源复制到目标位置。
 
 ### <a name="cloud-data-movement-units"></a>云数据移动单位
 **云数据移动单位 (DMU)** 是一种度量单位，代表单个单位在数据工厂中的能力（包含 CPU、内存、网络资源分配）。 DMU 适用于云到云复制操作，但不适用于混合复制。
@@ -139,7 +139,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 | 源和接收器 | 由服务确定的默认并行复制计数 |
 | --- | --- |
 | 在基于文件的存储（Blob 存储；Data Lake Store；Amazon S3；本地文件系统；本地 HDFS）之间复制数据 |介于 1 和 32 之间。 取决于文件大小以及用于在两个云数据存储之间复制数据的云数据移动单元 (DMU) 数，或用于混合复制的网关计算机的物理配置（将数据粘贴到本地数据存储或从本地数据存储复制）。 |
-| 将数据**从任何源数据存储复制到 Azure 表存储** |4 |
+| 将数据从**任何源数据存储复制到 Azure 表存储** |4 |
 | 所有其他源和接收器对 |1 |
 
 默认行为通常应可提供最佳吞吐量。 但是，若要控制托管数据存储的计算机上的负载或优化复制性能，可选择替代默认值并为 **parallelCopies** 属性指定值。 该值必须介于 1 和 32 之间（两者均含）。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
@@ -167,8 +167,8 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 需要注意的要点：
 
 * 在基于文件的存储之间复制数据时，**parallelCopies** 确定文件级别的并行度。 单个文件内的区块化会自动透明地在文件下进行，它旨在对给定源数据存储类型使用最佳区块大小，以并行和正交方式将数据加载到 parallelCopies。 数据移动服务在运行时用于复制操作的并行复制的实际数量不超过所拥有的文件数。 如果复制行为是 **mergeFile**，复制活动无法利用文件级别的并行度。
-* 为 **parallelCopies** 属性指定值时，请考虑源和接收器数据存储上的负载会增加，如果是混合复制，则网关的负载会增加。 尤其在有多个活动或针对同一数据存储运行的相同活动有并发运行时，会发生这种情况。 如果注意到数据存储或网关负载过重，请降低 **parallelCopies**  值以减轻负载。
-* 将数据从不基于文件的存储复制到基于文件的存储时，数据移动服务将忽略 **parallelCopies** 属性。 即使指定了并行性，在此情况下也不适用。
+* 为 ** parallelCopies ** 属性指定值时，请考虑源和接收器数据存储上的负载会增加，如果是混合复制，则网关的负载会增加。 尤其在有多个活动或针对同一数据存储运行的相同活动有并发运行时，会发生这种情况。 如果注意到数据存储或网关负载过重，请降低 **parallelCopies ** 值以减轻负载。
+* 将数据从不基于文件的存储复制到基于文件的存储时，数据移动服务将忽略 ** parallelCopies ** 属性。 即使指定了并行性，在此情况下也不适用。
 
 > [!NOTE]
 > 在进行混合复制时，必须使用数据管理网关版本 1.11 或更高版本才能使用 **parallelCopies** 功能。
@@ -202,10 +202,10 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 目前，不能使用暂存存储在两个本地数据存储之间复制数据。 我们预计会尽快提供此选项。
 
-### <a name="configuration"></a>配置
+### <a name="configuration"></a>Configuration
 在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 TRUE 时，指定下一个表中列出的其他属性。 如果未指定，则还需要创建 Azure 存储或存储共享访问签名链接服务供暂存用。
 
-| properties | 说明 | 默认值 | 必选 |
+| properties | 描述 | 默认值 | 必选 |
 | --- | --- | --- | --- |
 | **enableStaging** |指定是否要通过过渡暂存存储复制数据。 |False |否 |
 | **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能使用具有共享访问签名的存储通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |空值 |将 **enableStaging** 设置为 TRUE 时，则为是 |
@@ -250,7 +250,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 1. **建立基准**。 在开发阶段，通过对代表性数据示例使用复制活动来测试管道。 可使用数据工厂[切片模型](data-factory-scheduling-and-execution.md)来限制处理的数据量。
 
-   使用**监视和管理应用**收集执行时间和性能特征。 在数据工厂主页上选择“监视和管理”。 在树视图中，选择“输出数据集”。 在“活动窗口”列表中，选择复制活动运行。 **活动窗口**列出了复制活动持续时间和所复制的数据大小。 **活动窗口资源管理器**中列出了吞吐量。 有关此应用的详细信息，请参阅[使用监视和管理应用来监视和管理 Azure 数据工厂管道](data-factory-monitor-manage-app.md)。
+   使用**监视和管理应用**收集执行时间和性能特征。 在数据工厂主页上选择“监视和管理”****。 在树视图中，选择“输出数据集”****。 在“活动窗口”**** 列表中，选择复制活动运行。 **活动窗口**列出了复制活动持续时间和所复制的数据大小。 **活动窗口资源管理器**中列出了吞吐量。 有关此应用的详细信息，请参阅[使用监视和管理应用来监视和管理 Azure 数据工厂管道](data-factory-monitor-manage-app.md)。
 
    ![活动运行详细信息](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
 
@@ -263,7 +263,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
      * [暂存复制](#staged-copy)
      * [数据管理网关可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)
    * [数据管理网关](#considerations-for-data-management-gateway)
-   * [数据源](#considerations-for-the-source)
+   * [源](#considerations-for-the-source)
    * [接收器](#considerations-for-the-sink)
    * [序列化和反序列化](#considerations-for-serialization-and-deserialization)
    * [压缩](#considerations-for-compression)
@@ -285,18 +285,18 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 如果将数据从 Blob 存储复制到 SQL 数据仓库，请考虑使用 **PolyBase** 来提高性能。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
 
 ### <a name="file-based-data-stores"></a>基于文件的数据存储
-（包括 Blob 存储、Data Lake Store、Amazon S3、本地文件系统和本地 HDFS）
+（包括 Blob 存储、Data Lake Store、Amazon S3、本地文件系统和本地 HDFS）**
 
 * **平均文件大小和文件计数**：复制活动一次传输一个文件的数据。 在移动相同数据量的情况下，如果数据由许多小文件而不是几个大文件组成，则由于每个文件都有启动阶段，总吞吐量会较低。 因此，尽可能将小文件合并为较大的文件，以获得更高的吞吐量。
 * **文件格式和压缩**：有关提高性能的更多方法，请参阅[序列化和反序列化注意事项](#considerations-for-serialization-and-deserialization)和[压缩注意事项](#considerations-for-compression)部分。
 * 对于其中需要**数据管理网关**的**本地文件系统**方案，请参阅[数据管理网关注意事项](#considerations-for-data-management-gateway)部分。
 
 ### <a name="relational-data-stores"></a>关系数据存储
-（包括 SQL 数据库；SQL 数据仓库；Amazon Redshift；SQL Server 数据库；以及 Oracle、MySQL、DB2、Teradata、Sybase 和 PostgreSQL 数据库等。）
+（包括 SQL 数据库；SQL 数据仓库；Amazon Redshift；SQL Server 数据库；以及 Oracle、MySQL、DB2、Teradata、Sybase 和 PostgreSQL 数据库等。）**
 
 * **数据模式**：表架构会影响复制吞吐量。 复制相同数据量时，较大行大小可比较小行大小提供更佳的性能。 原因是数据库可以更有效地检索包含较少行的较少批量数据。
 * **查询或存储过程**：优化在复制活动源中指定的查询或存储过程的逻辑，以更有效地提取数据。
-* 对于需要使用数据管理网关的本地关系数据库（如 SQL Server 和 Oracle），请参阅“数据管理网关注意事项”部分。
+* 对于需要使用**数据管理网关**的**本地关系数据库**（如 SQL Server 和 Oracle），请参阅数据管理网关注意事项部分。
 
 ## <a name="considerations-for-the-sink"></a>有关接收器的注意事项
 ### <a name="general"></a>常规
@@ -307,7 +307,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 如果将数据从 **Blob 存储**复制到 **SQL 数据仓库**，请考虑使用 **PolyBase** 来提高性能。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
 
 ### <a name="file-based-data-stores"></a>基于文件的数据存储
-（包括 Blob 存储、Data Lake Store、Amazon S3、本地文件系统和本地 HDFS）
+（包括 Blob 存储、Data Lake Store、Amazon S3、本地文件系统和本地 HDFS）**
 
 * **复制行为**：如果从基于文件的不同数据存储复制数据，则复制活动可通过 **copyBehavior** 属性提供三个选项。 它将保留层次结构、平展层次结构或合并文件。 保留或平展层次结构有少量的性能开销或没有性能开销，但合并文件会导致性能开销增加。
 * **文件格式和压缩**：有关提高性能的更多方法，请参阅[序列化和反序列化注意事项](#considerations-for-serialization-and-deserialization)和[压缩注意事项](#considerations-for-compression)部分。
@@ -315,7 +315,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 * 对于需要使用**数据管理网关**的**本地文件系统**方案，请参阅[数据管理网关注意事项](#considerations-for-data-management-gateway)部分。
 
 ### <a name="relational-data-stores"></a>关系数据存储
-（包括 SQL 数据库、SQL 数据仓库、SQL Server 数据库和 Oracle 数据库）
+（包括 SQL 数据库、SQL 数据仓库、SQL Server 数据库和 Oracle 数据库）**
 
 * **复制行为**：根据已为 **sqlSink** 设置的属性，复制活动以不同的方式将数据写入目标数据库。
   * 数据移动服务默认使用大容量复制 API 以追加模式插入数据，这提供最佳性能。
@@ -323,7 +323,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
   * 如果为每个复制活动运行配置 **sqlWriterCleanupScript** 属性，该服务将触发脚本，然后使用大容量复制 API 插入数据。 例如，若要使用最新数据覆盖整个表，可指定一个脚本，先删除所有记录，再从源大容量加载新数据。
 * **数据模式和批大小**：
   * 表架构会影响复制吞吐量。 复制相同数据量时，较大行大小会比较小行大小提供更好的性能，因为数据库可以更有效地提交较少的数据批次。
-  * 复制活动以一系列批次插入数据。 可使用  **writeBatchSize** 属性设置批中的行数。 如果数据的行较小，可设置具有更高值的 **writeBatchSize** 属性，从更低的批开销和更高的吞吐量获益。 如果数据的行大小较大，请谨慎增加  **writeBatchSize**。 较高的值可能会导致复制失败（因为数据库负载过重）。
+  * 复制活动以一系列批次插入数据。 可使用 ** writeBatchSize** 属性设置批中的行数。 如果数据的行较小，可设置具有更高值的 **writeBatchSize **属性，从更低的批开销和更高的吞吐量获益。 如果数据的行大小较大，请谨慎增加 ** writeBatchSize**。 较高的值可能会导致复制失败（因为数据库负载过重）。
 * 对于需要使用**数据管理网关**的**本地关系数据库**（如 SQL Server 和 Oracle），请参阅[数据管理网关注意事项](#considerations-for-data-management-gateway)部分。
 
 ### <a name="nosql-stores"></a>NoSQL 存储
@@ -357,7 +357,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 **注意事项**：若要在本地存储和云之间复制大量数据，请考虑搭配使用过渡 Blob 存储与压缩。 当公司网络和 Azure 服务的带宽是限制因素，并希望输入数据集和输出数据集都处于未压缩形式时，使用过渡存储将非常有用。 更具体地说，可将单个复制活动分为两个复制活动。 第一个复制活动以压缩形式从源复制到过渡或暂存 blob。 第二个复制活动从暂存复制已压缩的数据，并在写入接收器时进行解压缩。
 
 ## <a name="considerations-for-column-mapping"></a>列映射注意事项
-可在复制活动中设置 **columnMappings** 属性，将全部或部分输入列映射到输出列。 数据移动服务从源读取数据后，它需要先对数据执行列映射，再将数据写入接收器。 这一额外处理会降低复制吞吐量。
+可在复制活动中设置 ** columnMappings ** 属性，将全部或部分输入列映射到输出列。 数据移动服务从源读取数据后，它需要先对数据执行列映射，再将数据写入接收器。 这一额外处理会降低复制吞吐量。
 
 如果源数据存储可查询，例如，如果存储是关系存储（如 SQL 数据库或 SQL Server），或者是 NoSQL 存储（如表存储或 Azure Cosmos DB），请考虑将列筛选和重排序逻辑推送到**查询**属性，而不使用列映射。 这样，当数据移动服务从源数据存储读取数据时会发生投影，使效率更高。
 
@@ -416,10 +416,10 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ## <a name="reference"></a>参考
 下面是有关一些受支持数据存储的性能监视和优化参考：
 
-* Azure Blob 存储： [blob 存储的可伸缩性和性能目标](../../storage/blobs/scalability-targets.md)，以及[Blob 存储的性能和可伸缩性清单](../../storage/blobs/storage-performance-checklist.md)。
-* Azure 表存储：表存储[的可伸缩性和性能目标](../../storage/tables/scalability-targets.md)，以及[表存储的性能和可伸缩性清单](../../storage/tables/storage-performance-checklist.md)。
+* Azure Blob 存储[：Blob 存储的可伸缩性和性能目标](../../storage/blobs/scalability-targets.md)，[以及 Blob 存储的性能以及可伸缩性检查表](../../storage/blobs/storage-performance-checklist.md)。
+* Azure 表存储：[表存储的可伸缩性和性能目标](../../storage/tables/scalability-targets.md)表[存储的性能以及可伸缩性检查表](../../storage/tables/storage-performance-checklist.md)。
 * Azure SQL 数据库：可[监视性能](../../sql-database/sql-database-single-database-monitor.md)并检查数据库事务单位 (DTU) 百分比
-* Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量；请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量；请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../../cosmos-db/performance-levels.md)
 * 本地 SQL Server：[监视和优化性能](https://msdn.microsoft.com/library/ms189081.aspx)
 * 本地文件服务器：[Performance tuning for file servers](https://msdn.microsoft.com/library/dn567661.aspx)（文件服务器性能优化）

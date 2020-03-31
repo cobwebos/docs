@@ -1,67 +1,68 @@
 ---
-title: 条件性访问-需要相容设备-Azure Active Directory
-description: 创建自定义条件访问策略以要求符合的设备
+title: 条件访问 - 要求合规设备 - Azure Active Directory
+description: 创建要求合规设备的自定义条件访问策略
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90d958d2adc8920e4e6ccbccef20acf20aedca4c
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: cc6bd486c1e8338eaf875c7026764c80d49e2f05
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561606"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295199"
 ---
-# <a name="conditional-access-require-compliant-devices"></a>条件性访问：需要相容的设备
+# <a name="conditional-access-require-compliant-devices"></a>条件访问：需要符合要求的设备
 
-已部署 Microsoft Intune 的组织可以使用从其设备返回的信息来识别满足符合性要求的设备，如：
+部署了 Microsoft Intune 的组织可以根据从其设备返回的信息来确定符合合规性要求的设备，例如以下要求：
 
-* 需要 PIN 才能解锁
-* 需要设备加密
-* 要求最小或最大操作系统版本
+* 要求使用 PIN 来解锁
+* 要求设备加密
+* 要求操作系统版本有一个下限或上限
 * 要求设备未越狱或取得 root 权限
 
-此策略符合性信息将转发到 Azure AD 其中条件访问可以决定是授予还是阻止对资源的访问。 有关设备符合性策略的详细信息，请参阅如何在[设备上设置规则以允许使用 Intune 访问组织中的资源](/intune/protect/device-compliance-get-started)
+此策略符合性信息会转发给 Azure AD，其中的条件访问可以进行决策，确定是授予还是阻止资源访问权限。 有关设备合规性策略的详细信息，请参阅"[在设备上设置规则"以允许使用 Intune 访问组织中的资源](/intune/protect/device-compliance-get-started)
 
 ## <a name="create-a-conditional-access-policy"></a>创建条件访问策略
 
-以下步骤将帮助创建条件性访问策略，以要求将访问资源的设备标记为符合组织的 Intune 合规性策略。
+以下步骤将有助于创建条件访问策略，该策略要求将访问资源的设备标记为符合组织的 Intune 符合性策略。
 
-1. 以全局管理员、安全管理员或条件访问管理员身份登录到**Azure 门户**。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
-1. 选择“新策略”。
-1. 为策略指定一个名称。 建议组织为其策略名称创建有意义的标准。
-1. 在 "**分配**" 下，选择 "**用户和组**"
-   1. 在 "**包括**" 下，选择 "**所有用户**"。
-   1. 在 "**排除**" 下，选择 "**用户和组**"，然后选择你的组织的紧急访问帐户或破解玻璃帐户。 
-   1. 选择“完成”。
-1. 在 "**云应用" 或 "操作** > **包括**" 下，选择 "**所有云应用**"。
-   1. 如果你必须从策略中排除特定的应用程序，可以从 "**选择排除的云应用**" 下的 "**排除**" 选项卡中进行选择，然后选择 "**选择**"。
-   1. 选择“完成”。
-1. 在 "**访问控制**" > **Grant**"下，选择"**要求设备标记为符合**"。
-   1. 选择“选择”。
-1. 确认设置并将 "**启用策略**" 设置为 **"开"** 。
-1. 选择 "**创建**" 以启用策略。
+1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
+1. 浏览到**Azure 活动目录** > **安全** > **条件访问**。
+1. 选择“新策略”****。
+1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
+1. 在 **"分配"** 下，选择 **"用户"和"组**"
+   1. 在 **"包括**"下，选择**所有用户**。
+   1. 在“排除”下**** 选择“用户和组”****，然后选择组织的紧急访问帐户或不受限帐户。 
+   1. 选择 **"完成**"。
+1. 在 **"云应用"或"包括** > **"下**，选择 **"所有云应用**"。
+   1. 如果必须将特定应用程序排除在策略之外，可以在“选择排除的云应用”下的“排除”选项卡中选择它们，然后选择“选择”。************
+   1. 选择 **"完成**"。
+1. 在**条件** > **客户端应用（预览）** 下，将 **"配置配置为** **"，** 然后选择 **"完成**"。
+1. 在 **"访问控制** > **授予"下**，选择 **"要求设备标记为符合"。**
+   1. 选择“选择”****。
+1. 确认设置，然后将“启用策略”设置为“打开”。********
+1. 选择“创建”****，以便创建启用策略所需的项目。
 
 > [!NOTE]
-> 即使你选择 "**要求设备标记为符合** **所有用户**和**所有云应用**" （使用上述步骤），也可以将新设备注册到 Intune。 **要求设备标记为合规**控制不阻止 Intune 注册。 
+> 即使您选择 **"需要使用**上述步骤将设备标记为符合**所有用户****和所有云应用**"，您也可以将新设备注册到 Intune。 **要求将设备标记为符合控制**不会阻止 Intune 注册。 
 
 ### <a name="known-behavior"></a>已知行为
 
-在 Windows 7、iOS、Android、macOS 和某些第三方 web 浏览器上 Azure AD 使用在 Azure AD 中注册设备时设置的客户端证书来标识设备。 当用户通过浏览器首次登录时，系统将提示用户选择证书。 最终用户必须选择此证书，然后才能继续使用浏览器。
+在 Windows 7、iOS、Android、macOS 和某些第三方 Web 浏览器上，Azure AD 使用客户端证书来标识设备，该证书是在向 Azure AD 注册设备时预配的。 用户首次通过浏览器登录时，系统会提示用户选择此证书。 最终用户必须选择此证书才能继续使用浏览器。
 
 ## <a name="next-steps"></a>后续步骤
 
-[条件访问公用策略](concept-conditional-access-policy-common.md)
+[条件访问常见策略](concept-conditional-access-policy-common.md)
 
-[使用条件性访问仅报告模式来确定影响](howto-conditional-access-report-only.md)
+[使用仅条件访问报告模式确定影响](howto-conditional-access-report-only.md)
 
-[使用条件性访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
+[使用条件访问"如果"工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 
-[设备合规性策略适用于 Azure AD](/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)
+[设备符合性策略与 Azure AD 配合使用](/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)

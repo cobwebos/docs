@@ -1,23 +1,23 @@
 ---
 title: Windows 诊断扩展架构
-description: Azure Monitor 中的 Windows 诊断扩展（WAD）的配置架构参考。
+description: Azure 监视器中 Windows 诊断扩展 （WAD） 的配置架构引用。
 ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274705"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 诊断扩展架构
-Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作系统中的监视数据和 Azure 计算资源的工作负荷。 本文详细介绍了用于在 Windows 虚拟机和其他计算资源上配置诊断扩展的架构。
+Azure 诊断扩展是 Azure 监视器中的代理，用于从 Azure 计算资源的来宾操作系统和工作负荷收集监视数据。 本文详细介绍了用于在 Windows 虚拟机和其他计算资源上配置诊断扩展的架构。
 
 > [!NOTE]
-> 本文中的架构适用于版本1.3 和更高版本（Azure SDK 2.4 和更高版本）。 已对较新的配置节进行注释，以显示其添加于哪一版本。 架构的版本1.0 和1.2 已存档，不再可用。 
+> 本文中的架构对版本 1.3 和更高版本（Azure SDK 2.4 和更高版本）有效。 已对较新的配置节进行注释，以显示其添加于哪一版本。 架构版本 1.0 和 1.2 已存档，不再可用。 
 
 ## <a name="public-configuration-file-schema"></a>公共配置文件架构
 
@@ -43,7 +43,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 `http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
-|子元素|说明|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**PublicConfig**|必需。 在此页的其他位置查看说明。|  
 |**PrivateConfig**|可选。 在此页的其他位置查看说明。|  
@@ -54,10 +54,10 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  描述公共诊断配置。  
 
-|子元素|说明|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**WadCfg**|必需。 在此页的其他位置查看说明。|  
-|**StorageAccount**|用于存储数据的 Azure 存储帐户的名称。 执行 Set-AzureServiceDiagnosticsExtension cmdlet 时，还可能将其指定为参数。|  
+|**存储帐户**|用于存储数据的 Azure 存储帐户的名称。 执行 Set-AzureServiceDiagnosticsExtension cmdlet 时，还可能将其指定为参数。|  
 |**StorageType**|可以是 *Table*、*Blob* 或 *TableAndBlob*。 Table 是默认值。 当选择了 TableAndBlob 时，诊断数据将写入两次 -- 针对每种类型写入一次。|  
 |**LocalResourceDirectory**|Monitoring Agent 在其中存储事件数据的虚拟机上的目录。 如果不设置，则使用默认目录：<br /><br /> 对于辅助角色/Web 角色：`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> 对于虚拟机：`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> 必需属性：<br /><br /> - **path** - Azure 诊断将使用的系统上的目录。<br /><br /> - **expandEnvironment** - 控制是否在路径名称中扩展环境变量。|  
 
@@ -72,7 +72,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  必选
 
-|属性|说明|  
+|特性|描述|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | 由 Azure 诊断收集的各类诊断数据使用的最大本地磁盘空间量。 默认设置是 4096 MB。<br />
 |**useProxyServer** | 将 Azure 诊断配置为使用在 IE 设置中设置的代理服务器设置。|
@@ -81,10 +81,10 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
 <br /> <br />
 
-|子元素|说明|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**CrashDumps**|在此页的其他位置查看说明。|  
-|**DiagnosticInfrastructureLogs**|启用收集 Azure 诊断生成的日志。 诊断基础结构日志可用于排查诊断系统本身的故障。 可选属性：<br /><br /> - **scheduledTransferLogLevelFilter** - 配置收集的日志的最低严重级别。<br /><br /> - **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**DiagnosticInfrastructureLogs**|启用收集 Azure 诊断生成的日志。 诊断基础结构日志可用于排查诊断系统本身的故障。 可选属性：<br /><br /> - **scheduledTransferLogLevelFilter** - 配置收集的日志的最低严重级别。<br /><br /> - **计划转移周期**- 计划转移到存储之间的间隔，四舍五入到最近的分钟。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**Directories**|在此页的其他位置查看说明。|  
 |**EtwProviders**|在此页的其他位置查看说明。|  
 |**指标**|在此页的其他位置查看说明。|  
@@ -99,13 +99,13 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  启用故障转储收集。  
 
-|属性|说明|  
+|特性|描述|  
 |----------------|-----------------|  
 |**containerName**|可选。 Azure 存储帐户中用于存储故障转储的 blob 容器的名称。|  
 |**crashDumpType**|可选。  将 Azure 诊断配置为收集少量或完整故障转储。|  
 |**directoryQuotaPercentage**|可选。  配置为 VM 上故障转储保留的 **overallQuotaInMB** 的百分比。|  
 
-|子元素|说明|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|必需。 定义每个进程的配置值。<br /><br /> 还必需以下属性：<br /><br /> **processName** - 希望 Azure 诊断为其收集故障转储的进程的名称。|  
 
@@ -116,11 +116,11 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  可选的 **scheduledTransferPeriod** 属性。 请参阅前面的说明。  
 
-|子元素|说明|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**IISLogs**|在配置中包括此元素可启用收集 IIS 日志：<br /><br /> **containerName** - Azure 存储帐户中用于存储 IIS 日志的 blob 容器的名称。|   
 |**FailedRequestLogs**|在配置中包括此元素可启用收集有关对 IIS 站点或应用程序的失败请求的日志。 还必须在 **Web.config** 文件中的 **system.WebServer** 下启用跟踪选项。|  
-|**DataSources**|要监视的目录的列表。|
+|**数据源**|要监视的目录的列表。|
 
 
 
@@ -130,7 +130,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  要监视的目录的列表。  
 
-|子元素|说明|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**DirectoryConfiguration**|必需。 必需属性：<br /><br /> **containerName** - Azure 存储帐户中用于存储日志文件的 blob 容器的名称。|  
 
@@ -143,9 +143,9 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  可能包括 **Absolute** 或 **LocalResource** 元素，但不能同时包含两者。  
 
-|子元素|说明|  
+|子元素|描述|  
 |--------------------|-----------------|  
-|**Absolute**|要监视的目录的绝对路径。 需要以下属性：<br /><br /> - **Path** - 要监视的目录的绝对路径。<br /><br /> - **expandEnvironment** - 配置是否在路径中扩展环境变量。|  
+|**绝对**|要监视的目录的绝对路径。 需要以下属性：<br /><br /> - **Path** - 要监视的目录的绝对路径。<br /><br /> - **expandEnvironment** - 配置是否在路径中扩展环境变量。|  
 |**LocalResource**|要监视的本地资源的相对路径。 必需属性：<br /><br /> - **Name** - 包含要监视的目录的本地资源<br /><br /> - **relativePath** - 包含要监视的目录的名称的相对路径|  
 
 
@@ -155,10 +155,10 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  配置从基于 EventSource 和/或 ETW 清单的提供程序收集 ETW 事件。  
 
-|子元素|说明|  
+|子元素|描述|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|配置收集从 [EventSource 类](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)生成的事件。 必需属性：<br /><br /> **provider** - EventSource 事件的类名称。<br /><br /> 可选属性：<br /><br /> - **scheduledTransferLogLevelFilter** - 要传输到存储帐户的最低严重级别。<br /><br /> - **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
-|**EtwManifestProviderConfiguration**|必需属性：<br /><br /> **provider** - 事件提供程序的 GUID<br /><br /> 可选属性：<br /><br /> - **scheduledTransferLogLevelFilter** - 要传输到存储帐户的最低严重级别。<br /><br /> - **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**EtwEventSourceProviderConfiguration**|配置收集从 [EventSource 类](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)生成的事件。 必需属性：<br /><br /> **provider** - EventSource 事件的类名称。<br /><br /> 可选属性：<br /><br /> - **scheduledTransferLogLevelFilter** - 要传输到存储帐户的最低严重级别。<br /><br /> - **计划转移周期**- 计划转移到存储之间的间隔，四舍五入到最近的分钟。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**EtwManifestProviderConfiguration**|必需属性：<br /><br /> **provider** - 事件提供程序的 GUID<br /><br /> 可选属性：<br /><br /> - **scheduledTransferLogLevelFilter** - 要传输到存储帐户的最低严重级别。<br /><br /> - **计划转移周期**- 计划转移到存储之间的间隔，四舍五入到最近的分钟。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
 
 
@@ -167,7 +167,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  配置收集从 [EventSource 类](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)生成的事件。  
 
-|子元素|说明|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**DefaultEvents**|可选属性：<br/><br/> **eventDestination** -存储事件的表的名称|  
 |**事件**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
@@ -177,7 +177,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwManifestProviderConfiguration*
 
-|子元素|说明|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**DefaultEvents**|可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
 |**事件**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
@@ -189,9 +189,9 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  可以生成针对快速查询进行优化的性能计数器表。 在 **PerformanceCounters** 元素中定义的每个性能计数器除存储在性能计数器表内外，还存储在度量值表中。  
 
- 必需 **resourceId** 属性。  要在其中部署 Azure 诊断的虚拟机或虚拟机规模集的资源 ID。 从 **Azure 门户**获取 [resourceID](https://portal.azure.com)。 选择“浏览” -> “资源组” -> “<名称 **”\>** 。 单击“属性”磁贴，并从“ID”字段复制值。  
+ 必需 **resourceId** 属性。  要在其中部署 Azure 诊断的虚拟机或虚拟机规模集的资源 ID。 从 [Azure 门户](https://portal.azure.com)获取 **resourceID**。 选择 **"浏览** -> **资源组** -> **<\>名称**。 单击“属性”**** 磁贴，并从“ID”**** 字段复制值。  
 
-|子元素|说明|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**MetricAggregation**|必需属性：<br /><br /> **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
@@ -206,9 +206,9 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  可选的 **scheduledTransferPeriod** 属性。 请参阅前面的说明。
 
-|子元素|说明|  
+|子元素|描述|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> - **counterSpecifier** - 性能计数器的名称。 例如，`\Processor(_Total)\% Processor Time` 。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> - **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。 [Unittype.pixel 度量类](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)提供了值 |
+|**PerformanceCounterConfiguration**|需要以下属性：<br /><br /> - **counterSpecifier** - 性能计数器的名称。 例如，`\Processor(_Total)\% Processor Time` 。 若要获取性能计数器列表，请在主机上运行 `typeperf` 命令。<br /><br /> - **sampleRate** - 应对计数器进行采样的频率。<br /><br /> 可选属性：<br /><br /> **unit** - 计数器的度量单位。 值在[单位类型类](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)中可用 |
 |**sinks** | 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如 Azure Monitor 或事件中心。|    
 
 
@@ -221,9 +221,9 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  可选的 **scheduledTransferPeriod** 属性。 请参阅前面的说明。  
 
-|子元素|说明|  
+|子元素|描述|  
 |-------------------|-----------------|  
-|**DataSource**|要收集的 Windows 事件日志。 必需属性：<br /><br /> **name** - 描述要收集的 Windows 事件的 XPath 查询。 例如：<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> 若要收集所有事件，请指定“*”|  
+|**数据来源**|要收集的 Windows 事件日志。 必需属性：<br /><br /> **name** - 描述要收集的 Windows 事件的 XPath 查询。 例如：<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> 若要收集所有事件，请指定“*”|  
 
 
 
@@ -231,32 +231,32 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 ## <a name="logs-element"></a>Logs 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Logs*
 
- 在 1.0 和 1.1 版本中提供。 1\.2 中不提供。 在 1.3 中重新添加。  
+ 在 1.0 和 1.1 版本中提供。 1.2 中不提供。 在 1.3 中重新添加。  
 
  定义基本 Azure 日志的缓冲区配置。  
 
-|Attribute|类型|说明|  
+|特性|类型|说明|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|**unsignedInt**|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
-|**scheduledTransferLogLevelFilter**|**string**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
-|**scheduledTransferPeriod**|**duration**|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
-|**sinks** |**string**| 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如，Application Insights 或事件中心。|  
+|**bufferQuotaInMB**|**未签名Int**|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
+|**scheduledTransferLogLevelFilter**|**字符串**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”****，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”****、“信息”****、“警告”****、“错误”**** 和“严重”****。|  
+|**scheduledTransferPeriod**|**时间**|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
+|**sinks** |**字符串**| 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如，Application Insights 或事件中心。|  
 
 ## <a name="dockersources"></a>DockerSources
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
 
  在 1.9 中添加的。
 
-|元素名称|说明|  
+|元素名称|描述|  
 |------------------|-----------------|  
-|**Stats**|告诉系统收集 Docker 容器的统计信息|  
+|**统计**|告诉系统收集 Docker 容器的统计信息|  
 
 ## <a name="sinksconfig-element"></a>SinksConfig 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig*
 
  向其中发送诊断数据的位置的列表以及与这些位置关联的配置。  
 
-|元素名称|说明|  
+|元素名称|描述|  
 |------------------|-----------------|  
 |**接收器**|在此页的其他位置查看说明。|  
 
@@ -267,14 +267,14 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  定义向其中发送诊断数据的位置。 例如，Application Insights 服务。  
 
-|Attribute|类型|说明|  
+|特性|类型|说明|  
 |---------------|----------|-----------------|  
-|name|字符串|标识 sinkname 的字符串。|  
+|**name**|字符串|标识 sinkname 的字符串。|  
 
 |元素|类型|说明|  
 |-------------|----------|-----------------|  
 |**Application Insights**|字符串|仅在将数据发送到 Application Insights 时使用。 包含有权访问的有效 Application Insights 帐户的检测密钥。|  
-|**通道**|字符串|每个对应一个流处理的其他筛选|  
+|**渠道**|字符串|每个对应一个流处理的其他筛选|  
 
 ## <a name="channels-element"></a>Channels 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
@@ -285,7 +285,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
 |元素|类型|说明|  
 |-------------|----------|-----------------|  
-|**Channel**|字符串|在此页的其他位置查看说明。|  
+|**通道**|字符串|在此页的其他位置查看说明。|  
 
 ## <a name="channel-element"></a>Channel 元素
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels - Channel*
@@ -294,10 +294,10 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  定义向其中发送诊断数据的位置。 例如，Application Insights 服务。  
 
-|属性|类型|说明|  
+|特性|类型|说明|  
 |----------------|----------|-----------------|  
-|**logLevel**|**string**|指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
-|name|**string**|要引用的通道的唯一名称|  
+|**logLevel**|**字符串**|指定传输的日志条目的最低严重级别。 默认值是“未定义”****，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”****、“信息”****、“警告”****、“错误”**** 和“严重”****。|  
+|**name**|**字符串**|要引用的通道的唯一名称|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig 元素
@@ -309,9 +309,9 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 
  存储存储帐户的私有详细信息（名称、密钥和终结点）。 此信息发送到虚拟机，但不能从中检索。  
 
-|子元素|说明|  
+|子元素|描述|  
 |--------------------|-----------------|  
-|**StorageAccount**|要使用的存储帐户。 需要以下属性<br /><br /> - **name** - 存储帐户的名称。<br /><br /> - **key** - 存储帐户的密钥。<br /><br /> - **endpoint** - 用于访问存储帐户的终结点。 <br /><br /> -**sasToken** （已添加1.8.1）-可以在专用配置中指定 SAS 令牌而非存储帐户密钥。如果提供，则忽略存储帐户密钥。 <br />对 SAS 令牌的要求： <br />- 仅支持帐户 SAS 令牌 <br />- *b*、*t* 服务类型是必需的。 <br /> - *a*、*c*、*u*、*w* 权限是必需的。 <br /> - *c*、*o* 资源类型是必需的。 <br /> - 仅支持 HTTPS 协议 <br /> - 起始时间和到期时间必须有效。|  
+|**存储帐户**|要使用的存储帐户。 需要以下属性<br /><br /> - **name** - 存储帐户的名称。<br /><br /> - **key** - 存储帐户的密钥。<br /><br /> - **endpoint** - 用于访问存储帐户的终结点。 <br /><br /> -**sasToken（** 添加 1.8.1） - 您可以在私有配置中指定 SAS 令牌而不是存储帐户密钥。如果提供，将忽略存储帐户密钥。 <br />对 SAS 令牌的要求： <br />- 仅支持帐户 SAS 令牌 <br />- *b*、*t* 服务类型是必需的。 <br /> - *a*、*c*、*u*、*w* 权限是必需的。 <br /> - *c*、*o* 资源类型是必需的。 <br /> - 仅支持 HTTPS 协议 <br /> - 起始时间和到期时间必须有效。|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled 元素  
@@ -320,15 +320,15 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
  布尔值。 使用 `true` 启用诊断或使用 `false` 禁用诊断。
 
 ## <a name="example-configuration"></a>配置示例
- 下面是 JSON 和 XML 中所示的 Windows 诊断扩展的完整示例配置。
+ 以下是 JSON 和 XML 中显示的 Windows 诊断扩展的完整示例配置。
 
  
 ### <a name="json"></a>JSON
 
-*PublicConfig*和*privateconfig.json*是分离的，因为在大多数 JSON 使用情况下，它们将作为不同的变量传递。 这些情况包括资源管理器模板、PowerShell 和 Visual Studio。
+*PublicConfig*和*Private Config*是分开的，因为在大多数 JSON 使用案例中，它们作为不同的变量传递。 这些案例包括资源管理器模板、PowerShell 和可视化工作室。
 
 > [!NOTE]
-> 公共配置 Azure Monitor 接收器定义具有两个属性： *resourceId*和*region*。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
+> 公共配置 Azure 监视器接收器定义有两个属性：*资源 Id*和*区域*。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
 
 ```json
 "PublicConfig" {
@@ -506,7 +506,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 ```
 
 > [!NOTE]
-> 专用配置 Azure Monitor 接收器定义具有两个属性： *PrincipalId*和*Secret*。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
+> 私有配置 Azure 监视器接收器定义有两个属性：*主体 Id*和*机密*。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
 
 
 ```json

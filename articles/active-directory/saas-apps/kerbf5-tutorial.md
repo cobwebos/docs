@@ -17,10 +17,10 @@ ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1f06b0b5aa59328d2fe39d501cfdf3ad7524427
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75431459"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory 单一登录 (SSO) 与 F5 的集成
@@ -33,7 +33,7 @@ ms.locfileid: "75431459"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -330,7 +330,7 @@ ms.locfileid: "75431459"
 
     ![F5 (Kerberos) 配置](./media/kerbf5-tutorial/configure18.png)
 
-2. 若要设置 SAML IDP，请导航到“访问”>“联合”>“SAML:服务提供程序”>“外部 Idp 连接器”，然后单击“创建”>“从元数据”   。
+2. 若要设置 SAML IDP，请导航到“访问”>“联合”>“SAML:  服务提供程序”>“外部 Idp 连接器”，然后单击“创建”>“从元数据”  。
 
     ![F5 (Kerberos) 配置](./media/kerbf5-tutorial/configure19.png)
 

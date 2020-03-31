@@ -1,6 +1,6 @@
 ---
-title: 由于分离的磁盘导致虚拟机部署故障排除 |Microsoft Docs
-description: 由于分离的磁盘导致虚拟机部署故障排除
+title: 由于磁盘分离而对虚拟机部署进行故障排除 |微软文档
+description: 由于磁盘分离而对虚拟机部署进行故障排除
 services: virtual-machines-windows
 documentationCenter: ''
 author: v-miegge
@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 10/31/2019
 ms.author: vaaga
 ms.openlocfilehash: e049a2b914cbf9c4f0ca0f3a1dd0281d58f881b2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75486815"
 ---
-# <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>由于分离的磁盘导致虚拟机部署故障排除
+# <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>由于磁盘分离而对虚拟机部署进行故障排除
 
 ## <a name="symptom"></a>症状
 
-尝试更新以前的数据磁盘分离失败的虚拟机时，可能会遇到此错误代码。
+当您尝试更新以前数据磁盘分离失败的虚拟机时，可能会遇到此错误代码。
 
 ```
 Code=\"AttachDiskWhileBeingDetached\" 
@@ -32,11 +32,11 @@ Message=\"Cannot attach data disk '{disk ID}' to virtual machine '{vmName}' beca
 
 ## <a name="cause"></a>原因
 
-尝试重新附加最后分离操作失败的数据磁盘时，会发生此错误。 离开此状态的最佳方式是分离发生故障的磁盘。
+当您尝试重新连接上次分离操作失败的数据磁盘时，将发生此错误。 摆脱此状态的最佳方法是分离发生故障的磁盘。
 
-## <a name="solution-1-powershell"></a>解决方案1： Powershell
+## <a name="solution-1-powershell"></a>解决方案 1：电源外壳
 
-### <a name="step-1-get-the-virtual-machine-and-disk-details"></a>步骤1：获取虚拟机和磁盘详细信息
+### <a name="step-1-get-the-virtual-machine-and-disk-details"></a>第 1 步：获取虚拟机和磁盘详细信息
 
 ```azurepowershell-interactive
 PS D:> $vm = Get-AzureRmVM -ResourceGroupName "Example Resource Group" -Name "ERGVM999999" 
@@ -51,39 +51,39 @@ diskSizeGB   : 8
 toBeDetached : False 
 ```
 
-### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>步骤2：将故障磁盘的标志设置为 "true"。
+### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>第 2 步：将失败磁盘的标志设置为"true"。
 
-获取发生故障的磁盘的阵列索引，并为发生故障的磁盘（出现**AttachDiskWhileBeingDetached**错误）的**toBeDetached**标志设置为 "true"。 此设置表示将磁盘从虚拟机分离。 可在**errorMessage**中找到故障磁盘名称。
+获取故障磁盘的数组索引，并将故障磁盘的**BeDetached**标志（针对其**发生附加磁盘"已分离错误**"）设置为"true"。 此设置意味着将磁盘从虚拟机中分离出来。 在**错误消息**中可以找到失败的磁盘名称。
 
-> !注意：为 Get 和 Put 调用指定的 API 版本需要为2019-03-01 或更高。
+> !注意：为获取和放置调用指定的 API 版本需要为 2019-03-01 或更高版本。
 
 ```azurepowershell-interactive
 PS D:> $vm.StorageProfile.DataDisks[0].ToBeDetached = $true 
 ```
 
-另外，还可以使用以下命令分离此磁盘，这对于使用在2019年3月1日之前的 API 版本的用户非常有用。
+或者，您也可以使用下面的命令分离此磁盘，这对在 2019 年 3 月 1 日之前使用 API 版本的用户很有帮助。
 
 ```azurepowershell-interactive
 PS D:> Remove-AzureRmVMDataDisk -VM $vm -Name "<disk ID>" 
 ```
 
-### <a name="step-3-update-the-virtual-machine"></a>步骤3：更新虚拟机
+### <a name="step-3-update-the-virtual-machine"></a>第 3 步：更新虚拟机
 
 ```azurepowershell-interactive
 PS D:> Update-AzureRmVM -ResourceGroupName "Example Resource Group" -VM $vm 
 ```
 
-## <a name="solution-2-rest"></a>解决方案2： REST
+## <a name="solution-2-rest"></a>解决方案 2：REST
 
-### <a name="step-1-get-the-virtual-machine-payload"></a>步骤1：获取虚拟机有效负载。
+### <a name="step-1-get-the-virtual-machine-payload"></a>第 1 步：获取虚拟机有效负载。
 
 ```azurepowershell-interactive
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?$expand=instanceView&api-version=2019-03-01
 ```
 
-### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>步骤2：将故障磁盘的标志设置为 "true"。
+### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>第 2 步：将失败磁盘的标志设置为"true"。
 
-在步骤1中返回的负载中，将故障磁盘的**toBeDetached**标志设置为 true。 请注意：为 Get 和 Put 调用指定的 API 版本需要 `2019-03-01` 或更高版本。
+在步骤 1 中返回的负载中，将故障磁盘的**toBeDetached**标志设置为 true。 请注意：为获取和放置调用指定的 API 版本需要或`2019-03-01`更大。
 
 **示例请求正文**
 
@@ -143,11 +143,11 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 }
 ```
 
-另外，还可以从上述有效负载中删除发生故障的数据磁盘，这对于使用在2019年3月1日之前的 API 版本的用户非常有用。
+或者，您还可以从上述有效负载中删除失败的数据磁盘，这对在 2019 年 3 月 1 日之前使用 API 版本的用户很有帮助。
 
-### <a name="step-3-update-the-virtual-machine"></a>步骤3：更新虚拟机
+### <a name="step-3-update-the-virtual-machine"></a>第 3 步：更新虚拟机
 
-使用步骤2中设置的请求正文负载，并按如下所示更新虚拟机：
+使用步骤 2 中设置的请求正文有效负载，并按照如下方式更新虚拟机：
 
 ```azurepowershell-interactive
 PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2019-03-01

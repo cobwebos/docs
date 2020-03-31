@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 查询语言中较低
-description: 了解 Azure Cosmos DB 中的较低 SQL 系统函数在将大写字符数据转换为小写后返回字符串表达式
+title: Azure Cosmos DB 查询语言中的 LOWER
+description: 了解 Azure Cosmos DB 中的 LOWER SQL 系统函数，以便返回在将大写字符数据转换为小写后的字符串表达式
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 80dba57d4fe05630eb5ae4f8fc96bd0aa214c6d4
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302264"
 ---
-# <a name="lower-azure-cosmos-db"></a>LOWER （Azure Cosmos DB）
+# <a name="lower-azure-cosmos-db"></a>LOWER (Azure Cosmos DB)
  返回在将大写字符数据转换为小写后的字符串表达式。  
 
-低系统函数不使用索引。 如果打算执行频繁的不区分大小写的比较，则系统函数越小，可能会消耗大量 RU。 如果是这种情况，则可以在插入时规范化大小写，而不是使用低系统函数对数据进行比较。 然后，如 SELECT * FROM c 的查询（其中较低（c 名称） = ' bob '）只是 SELECT * FROM c，其中 c.name = ' bob '。
+LOWER 系统函数不使用索引。 如果计划频繁进行不区分大小写的比较，则 LOWER 系统函数可能会消耗大量 RU。 如果是这种情况，可以在插入时将大小写规范化，而不是每次都使用 LOWER 系统函数将数据规范化以进行比较。 于是，诸如 SELECT * FROM c WHERE LOWER(c.name) = 'bob' 的查询只需变成 SELECT * FROM c WHERE c.name = 'bob'。
 
 ## <a name="syntax"></a>语法
   
@@ -25,10 +25,10 @@ ms.locfileid: "78302264"
 LOWER(<str_expr>)  
 ```  
   
-## <a name="arguments"></a>参数
+## <a name="arguments"></a>自变量
   
 *str_expr*  
-   字符串表达式。  
+   是一个字符串表达式。  
   
 ## <a name="return-types"></a>返回类型
   
@@ -36,7 +36,7 @@ LOWER(<str_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例演示如何在查询中使用 `LOWER`。  
+  以下示例演示如何在查询中使用 `LOWER`。  
   
 ```sql
 SELECT LOWER("Abc") AS lower
@@ -51,10 +51,10 @@ SELECT LOWER("Abc") AS lower
 
 ## <a name="remarks"></a>备注
 
-此系统函数不会使用索引。
+此系统功能不会利用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [字符串函数 Azure Cosmos DB](sql-query-string-functions.md)
-- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 简介](introduction.md)
+- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 简介](introduction.md)

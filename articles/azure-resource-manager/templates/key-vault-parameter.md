@@ -1,34 +1,34 @@
 ---
-title: Key Vault 带有模板的机密
+title: 密钥保管库机密与模板
 description: 说明在部署期间如何以参数形式从密钥保管库传递机密。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 56fa2def49f6d98abf1c939ed87456c4bf353eb9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 08b4042c6bad83f13ebaea0f46046ea7707fd868
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154017"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460188"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
 
-你可以在部署过程中从[Azure Key Vault](../../key-vault/key-vault-overview.md)检索值，而不是直接在模板或参数文件中放置安全值（如密码）。 通过引用参数文件中的密钥保管库和密钥来检索值。 值永远不会公开，因为仅引用其密钥保管库 ID。 密钥保管库可以与要部署到的资源组位于不同的订阅中。
+在部署过程中，可以从 [Azure Key Vault](../../key-vault/key-vault-overview.md) 中检索一个安全值，而不是直接在模板或参数文件中放置该值（如密码）。 通过引用参数文件中的密钥保管库和密钥来检索值。 值永远不会公开，因为仅引用其密钥保管库 ID。 密钥保管库可以与要部署到的资源组位于不同的订阅中。
 
-本文重点介绍如何将中的敏感值作为模板参数传递。 它不涉及将虚拟机属性设置为 Key Vault 中证书的 URL 的方案。 有关该方案的快速入门模板，请参阅在[虚拟机上安装 Azure Key Vault 的证书](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)。
+本文重点介绍将敏感值作为模板参数传入的方案。 它不涉及将虚拟机属性设为 Key Vault 中的证书 URL 的方案。 有关该方案的快速入门模板，请参阅[在虚拟机上安装来自 Azure Key Vault 的证书](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)。
 
 ## <a name="deploy-key-vaults-and-secrets"></a>部署密钥保管库和机密
 
-若要在模板部署过程中访问密钥保管库，请将密钥保管库上的 `enabledForTemplateDeployment` 设置为 `true`。
+若要在模板部署期间访问密钥保管库，请将密钥保管库上的 `enabledForTemplateDeployment` 设置为 `true`。
 
-如果你已经有 Key Vault，请确保它允许模板部署。
+如果你已有 Key Vault，请确保它允许进行模板部署。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az keyvault update  --name ExampleVault --enabled-for-template-deployment true
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy -VaultName ExampleVault -EnabledForTemplateDeployment
@@ -36,9 +36,9 @@ Set-AzKeyVaultAccessPolicy -VaultName ExampleVault -EnabledForTemplateDeployment
 
 ---
 
-若要创建新的 Key Vault 并添加机密，请使用：
+若要新建 Key Vault 并添加机密，请使用：
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location centralus
@@ -50,7 +50,7 @@ az keyvault create \
 az keyvault secret set --vault-name ExampleVault --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name ExampleGroup -Location centralus
@@ -65,9 +65,9 @@ $secret = Set-AzKeyVaultSecret -VaultName ExampleVault -Name 'ExamplePassword' -
 
 ---
 
-作为密钥保管库的所有者，你可以自动获得创建机密的权限。 如果使用机密的用户不是密钥保管库的所有者，请使用以下内容授予访问权限：
+作为密钥保管库的所有者，你可以自动获得创建机密的权限。 如果使用机密的用户不是密钥保管库的所有者，请使用以下命令授予访问权限：
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az keyvault set-policy \
@@ -76,7 +76,7 @@ az keyvault set-policy \
   --secret-permissions set delete get list
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 $userPrincipalName = "<Email Address of the deployment operator>"
@@ -89,7 +89,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ---
 
-有关创建密钥保管库和添加机密的详细信息，请参阅：
+若要详细了解如何创建密钥保管库和添加机密，请参阅：
 
 - [使用 CLI 设置和检索机密](../../key-vault/quick-create-cli.md)
 - [使用 Powershell 设置和检索机密](../../key-vault/quick-create-powershell.md)
@@ -99,7 +99,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ## <a name="grant-access-to-the-secrets"></a>授予对机密的访问权限
 
-部署模板的用户必须具有对资源组和密钥保管库的作用域的 `Microsoft.KeyVault/vaults/deploy/action` 权限。 [所有者](../../role-based-access-control/built-in-roles.md#owner)和[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色均应授予该权限。 如果创建了密钥保管库，则你是所有者，因此你具有权限。
+部署模板的用户必须在资源组和密钥保管库范围内具有 `Microsoft.KeyVault/vaults/deploy/action` 权限。 [所有者](../../role-based-access-control/built-in-roles.md#owner)和[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色均应授予该权限。 如果你创建了密钥保管库，则你是所有者，因此具有权限。
 
 以下过程展示了如何创建具有最小权限的角色，以及如何分配用户
 
@@ -121,11 +121,11 @@ Set-AzKeyVaultAccessPolicy `
       ]
     }
     ```
-    将 "00000000-0000-0000-0000-000000000000" 替换为订阅 ID。
+    将“00000000-0000-0000-0000-000000000000”替换为订阅 ID。
 
 2. 使用 JSON 文件创建新角色：
 
-    # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
     ```azurecli-interactive
     az role definition create --role-definition "<path-to-role-file>"
@@ -135,7 +135,7 @@ Set-AzKeyVaultAccessPolicy `
       --resource-group ExampleGroup
     ```
 
-    # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+    # <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
     ```azurepowershell-interactive
     New-AzRoleDefinition -InputFile "<path-to-role-file>"
@@ -147,9 +147,9 @@ Set-AzKeyVaultAccessPolicy `
 
     ---
 
-    示例将自定义角色分配给资源组级别的用户。
+    此示例在资源组级别为用户分配自定义角色。
 
-使用 Key Vault 部署[托管应用程序](../managed-applications/overview.md)的模板时，必须授予对设备资源提供程序服务主体的访问权限。 有关详细信息，请参阅[部署 Azure 托管应用程序时访问 Key Vault 机密](../managed-applications/key-vault-access.md)。
+使用 Key Vault 部署[托管应用程序](../managed-applications/overview.md)的模板时，必须授予对设备资源提供程序**** 服务主体的访问权限。 有关详细信息，请参阅[部署 Azure 托管应用程序时访问 Key Vault 机密](../managed-applications/key-vault-access.md)。
 
 ## <a name="reference-secrets-with-static-id"></a>通过静态 ID 引用机密
 
@@ -157,9 +157,9 @@ Set-AzKeyVaultAccessPolicy `
 
 ![资源管理器密钥保管库集成静态 ID 图](./media/key-vault-parameter/statickeyvault.png)
 
-[教程：将 Azure Key Vault 资源管理器模板部署](./template-tutorial-use-key-vault.md)使用此方法。
+[教程：在资源管理器模板部署中集成 Azure 密钥保管库](./template-tutorial-use-key-vault.md)使用此方法。
 
-以下模板部署包括管理员密码的 SQL server。 密码参数设置为安全字符串。 但是，模板不指定该值的来源。
+以下模板部署包含管理员密码的 SQL Server。 密码参数设置为安全字符串。 但是，此模板未指定该值的来源。
 
 ```json
 {
@@ -197,7 +197,7 @@ Set-AzKeyVaultAccessPolicy `
 
 现在，为上述模板创建参数文件。 在参数文件中，指定匹配模板中的参数名称的参数。 对于参数值，请从密钥保管库中引用机密。 可以通过传递密钥保管库的资源标识符和机密的名称来引用机密：
 
-在下面的参数文件中，密钥保管库机密必须已存在，并为其资源 ID 提供静态值。
+在以下参数文件中，密钥保管库机密必须已存在，而且你为其资源 ID 提供了静态值。
 
 ```json
 {
@@ -231,17 +231,17 @@ Set-AzKeyVaultAccessPolicy `
 
 部署模板并传入参数文件：
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create --name SqlGroup --location westus2
-az group deployment create \
+az deployment group create \
   --resource-group SqlGroup \
   --template-uri <template-file-URI> \
   --parameters <parameter-file>
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -259,11 +259,11 @@ New-AzResourceGroupDeployment `
 
 无法在参数文件中动态生成资源 ID，因为参数文件中不允许使用模板表达式。
 
-在父模板中，添加嵌套模板并传入包含动态生成的资源 ID 的参数。 下图显示链接模板中的参数如何引用机密。
+在父模板中添加嵌套模板，然后传入包含动态生成的资源 ID 的参数。 下图显示链接模板中的参数如何引用机密。
 
 ![动态 ID](./media/key-vault-parameter/dynamickeyvault.png)
 
-以下模板会动态创建密钥保管库 ID 并将其作为参数传递。
+以下模板动态创建 Key Vault ID 并将其作为参数传递。
 
 ```json
 {

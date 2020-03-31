@@ -3,18 +3,18 @@ title: 支持 Azure 迁移中的 Hyper-V 评估
 description: 通过 Azure 迁移服务器评估了解对 Hyper-V 评估的支持
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 61d8e635a32024ba5afabb34fefa5bf169e2911f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: e8a698b110f19dff593a93a41e9d6f20eb80cdb0
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336911"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388995"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V 评估的支持矩阵
 
-本文总结了评估 Hyper-V VM 的先决条件和支持要求，以便迁移到 Azure。 如果要将 Hyper-VM 迁移到 Azure，请查看[迁移支持矩阵](migrate-support-matrix-hyper-v-migration.md)。
+本文使用[Azure 迁移：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具汇总了评估 Hyper-V VM 以迁移到 Azure 时的先决条件和支持要求。 如果要将 Hyper-VM 迁移到 Azure，请查看[迁移支持矩阵](migrate-support-matrix-hyper-v-migration.md)。
 
-您可以使用[Azure 迁移：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具评估 Hyper-V VM。 创建 Azure 迁移项目，然后将该工具添加到项目。 添加该工具后，将部署 Azure[迁移设备](migrate-appliance.md)。 设备不断发现本地计算机，并将计算机元数据和性能数据发送到 Azure。 发现计算机后，您将发现的计算机收集到组中，并为组运行评估。
+要设置 Hyper-V VM 评估，请创建 Azure 迁移项目，并将服务器评估工具添加到项目中。 添加该工具后，将部署 Azure[迁移设备](migrate-appliance.md)。 设备不断发现本地计算机，并将计算机元数据和性能数据发送到 Azure。 发现完成后，您将发现的计算机收集到组中，并为组运行评估。
 
 
 ## <a name="limitations"></a>限制
@@ -44,13 +44,13 @@ ms.locfileid: "80336911"
 
 | **支持**                  | **详细信息**               
 | :----------------------------- | :------------------- |
-| **操作系统** | Azure 支持的所有[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)操作系统。 |
+| **操作系统** | 所有[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)操作系统。 |
 | **集成服务**       | [Hyper-V 集成服务](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)必须在您评估的 VM 上运行，以便捕获操作系统信息。 |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate 设备要求
 
-Azure 迁移使用[Azure 迁移设备](migrate-appliance.md)进行发现和评估。 您可以使用从门户下载的压缩超 V V Hd 或使用 PowerShell 脚本部署设备。
+Azure 迁移使用[Azure 迁移设备](migrate-appliance.md)进行发现和评估。 您可以使用从门户下载的压缩超 VHd 或使用[PowerShell 脚本](deploy-appliance-script.md)部署设备。
 
 - 了解 Hyper-V 的设备[要求](migrate-appliance.md#appliance---hyper-v)。
 - 了解设备需要访问的[URL。](migrate-appliance.md#url-access)
@@ -64,29 +64,13 @@ Azure 迁移使用[Azure 迁移设备](migrate-appliance.md)进行发现和评�
 **应用** | TCP 端口 3389 上的入站连接，以允许远程桌面连接到设备。<br/><br/> 端口 44368 上的入站连接，用于使用 URL 远程访问设备管理应用：``` https://<appliance-ip-or-name>:44368 ```<br/><br/> 端口 443 （HTTPS） 上的出站连接，用于向 Azure 迁移发送发现和性能元数据。
 **Hyper-V 主机/群集** | WinRM 上的入站连接端口 5985 （HTTP） 和 5986 （HTTPS），以便使用通用信息模型 （CIM） 会话提取 Hyper-V VM 的元数据和性能数据。
 
-## <a name="agentless-dependency-analysis-requirements"></a>无代理依赖项分析要求
-
-[依赖项分析](concepts-dependency-visualization.md)可帮助您确定要评估和迁移到 Azure 的本地计算机之间的依赖关系。 该表总结了设置无代理依赖项分析的要求。 
-
-**要求** | **详细信息** 
---- | --- 
-**部署前** | 应使用 Azure 迁移项目，将 Azure 迁移：服务器评估工具添加到项目中。<br/><br/>  设置 Azure 迁移设备以发现本地 VMWare 计算机后部署依赖项可视化。<br/><br/> [了解如何](create-manage-projects.md)首次创建项目。<br/> [了解如何](how-to-assess.md)将评估工具添加到现有项目。<br/> [了解如何](how-to-set-up-appliance-vmware.md)设置 Azure 迁移设备以评估 VMware VM。
-**虚拟机支持** | 当前仅支持 VMware VM。
-**视窗 VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows 服务器 2008 R2 （64 位）。
-**Windows 帐户** |  对于依赖项分析，Azure 迁移设备需要本地或域管理员帐户来访问 Windows VM。
-**Linux VM** | 红帽企业 Linux 7、 6、 5<br/> Ubuntu Linux 14.04， 16.04<br/> Debian 7、8<br/> 甲骨文 Linux 6， 7<br/> CentOS 5， 6， 7.
-**Linux 帐户** | 对于依赖项分析，在 Linux 计算机上，Azure 迁移设备需要具有 Root 权限的用户帐户。<br/><br/> 或者，用户帐户需要 /bin/netstat 和 /bin/ls 文件的这些权限：CAP_DAC_READ_SEARCH和CAP_SYS_PTRACE。
-**必需的代理** | 要分析的计算机上不需要代理。
-**VMware 工具** | VMware 工具（晚于 10.2）必须在要分析的每个 VM 上安装和运行。
-**vCenter 服务器** | 依赖项可视化需要具有只读访问权限的 vCenter Server 帐户，并为虚拟机启用>来宾操作的权限。**ESXi 主机**：在运行要分析的 VM 的 ESXi 主机上，Azure 迁移设备必须能够连接到 TCP 端口 443。
-
 ## <a name="agent-based-dependency-analysis-requirements"></a>基于代理的依赖项分析要求
 
-[依赖项分析](concepts-dependency-visualization.md)可帮助您确定要评估和迁移到 Azure 的本地计算机之间的依赖关系。 该表总结了设置基于代理的依赖项分析的要求。 
+[依赖项分析](concepts-dependency-visualization.md)可帮助您确定要评估和迁移到 Azure 的本地计算机之间的依赖关系。 该表总结了设置基于代理的依赖项分析的要求。 Hyper-V 目前仅支持基于代理的依赖项可视化。 
 
 **要求** | **详细信息** 
 --- | --- 
-**部署前** | 应使用 Azure 迁移项目，将 Azure 迁移：服务器评估工具添加到项目中。<br/><br/>  设置 Azure 迁移设备以发现本地计算机后部署依赖项可视化<br/><br/> [了解如何](create-manage-projects.md)首次创建项目。<br/> [了解如何](how-to-assess.md)将评估工具添加到现有项目。<br/> 了解如何设置 Azure 迁移设备以评估[Hyper-V、VMware](how-to-set-up-appliance-hyper-v.md)或物理服务器。 [VMware](how-to-set-up-appliance-vmware.md)
+**部署前** | 应设置 Azure 迁移项目，将服务器评估工具添加到项目中。<br/><br/>  设置 Azure 迁移设备以发现本地计算机后部署依赖项可视化<br/><br/> [了解如何](create-manage-projects.md)首次创建项目。<br/> [了解如何](how-to-assess.md)将评估工具添加到现有项目。<br/> 了解如何设置 Azure 迁移设备以评估[超 V VM。](how-to-set-up-appliance-hyper-v.md)
 **Azure 政府** | 依赖项可视化在 Azure 政府中不可用。
 **日志分析** | Azure 迁移使用[Azure 监视器日志](../log-analytics/log-analytics-overview.md)中的[服务映射](../operations-management-suite/operations-management-suite-service-map.md)解决方案进行依赖项可视化。<br/><br/> 将新的或现有的日志分析工作区与 Azure 迁移项目相关联。 添加 Azure 迁移项目的工作区后无法对其进行修改。 <br/><br/> 工作区必须与 Azure 迁移项目处于同一订阅中。<br/><br/> 工作区必须位于美国东部、东南亚或西欧区域。 其他区域中的工作区不能与项目关联。<br/><br/> 工作区必须位于[支持服务映射](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)的区域。<br/><br/> 在日志分析中，与 Azure 迁移关联的工作区将使用迁移项目键和项目名称进行标记。
 **必需的代理** | 在要分析的每台计算机上，安装以下代理：<br/><br/> [微软监控代理 （MMA）](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).<br/> [依赖项代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。<br/><br/> 如果本地计算机未连接到互联网，则需要在它们上下载并安装日志分析网关。<br/><br/> 了解有关安装[依赖项代理](how-to-create-group-machine-dependencies.md#install-the-dependency-agent)和[MMA](how-to-create-group-machine-dependencies.md#install-the-mma)的更多详细信息。

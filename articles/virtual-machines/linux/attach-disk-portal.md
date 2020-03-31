@@ -8,10 +8,10 @@ ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: 746cef8dfe026c731a677cbf77f729d36342f007
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969359"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用门户将数据磁盘附加到 Linux VM 
@@ -19,49 +19,49 @@ ms.locfileid: "78969359"
 
 将磁盘附加到 VM 前，请查看以下提示：
 
-* 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 虚拟机的大小决定了可以附加多少个磁盘。 有关详细信息，请参阅[虚拟机的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 附加到虚拟机的磁盘实际上是存储在 Azure 中的 .vhd 文件。 有关详细信息，请查看[托管磁盘简介](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 附加磁盘后，需要[连接到 Linux VM 以装载新磁盘](#connect-to-the-linux-vm-to-mount-the-new-disk)。
 
 
 ## <a name="find-the-virtual-machine"></a>查找虚拟机
-1. 请参阅[Azure 门户](https://portal.azure.com/)，查找 VM。 搜索并选择 "**虚拟机**"。
+1. 转到[Azure 门户](https://portal.azure.com/)以查找 VM。 搜索并选择**虚拟机**。
 2. 从列表中选择 VM。
-3. 在 "**虚拟机**" 页边栏中的 "**设置**" 下，选择 "**磁盘**"。
+3. 在 **"虚拟机"** 页侧边栏中，**在"设置"** 下，选择 **"磁盘**"。
    
     ![打开磁盘设置](./media/attach-disk-portal/find-disk-settings.png)
 
 
 ## <a name="attach-a-new-disk"></a>附加新磁盘
 
-1. 在“磁盘”窗格上，单击“+ 添加数据磁盘”。
-2. 单击“名称”的下拉列表菜单，并选择“创建磁盘”：
+1. 在“磁盘”窗格上，单击“+ 添加数据磁盘”********。
+2. 单击“名称”**** 的下拉列表菜单，并选择“创建磁盘”****：
 
     ![创建 Azure 托管磁盘](./media/attach-disk-portal/create-new-md.png)
 
-3. 输入托管磁盘的名称。 查看默认设置，根据需要更新，并单击“创建”。
+3. 输入托管磁盘的名称。 查看默认设置，根据需要更新，并单击“创建”****。
    
    ![检查磁盘设置](./media/attach-disk-portal/create-new-md-settings.png)
 
-4. 单击“保存”以创建托管磁盘并更新 VM 配置：
+4. 单击“保存”**** 以创建托管磁盘并更新 VM 配置：
 
    ![保存新的 Azure 托管磁盘](./media/attach-disk-portal/confirm-create-new-md.png)
 
-5. 在 Azure 创建磁盘并将磁盘附加到虚拟机之后，新磁盘将出现在“数据磁盘”下的虚拟机磁盘设置中。 托管磁盘是顶级资源，因此磁盘会显示在资源组的根部：
+5. Azure 创建磁盘并将其附加到虚拟机后，新磁盘将列在"**数据磁盘**"下的虚拟机磁盘设置中。 托管磁盘是顶级资源，因此磁盘会显示在资源组的根部：
 
    ![资源组中的 Azure 托管磁盘](./media/attach-disk-portal/view-md-resource-group.png)
 
 ## <a name="attach-an-existing-disk"></a>附加现有磁盘
-1. 在“磁盘”窗格上，单击“+ 添加数据磁盘”。
-2. 单击“名称”的下拉列表菜单，查看 Azure 订阅可访问的现有托管磁盘列表。 选择要附加的托管磁盘：
+1. 在“磁盘”窗格上，单击“+ 添加数据磁盘”********。
+2. 单击“名称”**** 的下拉列表菜单，查看 Azure 订阅可访问的现有托管磁盘列表。 选择要附加的托管磁盘：
 
    ![附加现有 Azure 管理磁盘](./media/attach-disk-portal/select-existing-md.png)
 
-3. 单击“保存”以附加现有托管磁盘并更新 VM 配置：
+3. 单击“保存”**** 以附加现有托管磁盘并更新 VM 配置：
    
    ![保存 Azure 托管磁盘更新](./media/attach-disk-portal/confirm-attach-existing-md.png)
 
-4. 在 Azure 将磁盘附加到虚拟机之后，磁盘将出现在“数据磁盘”下的虚拟机磁盘设置中。
+4. 在 Azure 将磁盘附加到虚拟机之后，磁盘将出现在“数据磁盘”下的虚拟机磁盘设置中。****
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>连接到 Linux VM 以装入新磁盘
 若要对新磁盘进行分区、格式化和装载，以便 Linux VM 可以使用它，请通过 SSH 登录到 VM。 有关详细信息，请参阅[如何在 Azure 中将 SSH 用于 Linux](mac-create-ssh-keys.md)。 以下示例使用公共 DNS 条目 *mypublicdns.westus.cloudapp.azure.com* 和用户名 *azureuser* 连接到一个 VM： 
@@ -92,9 +92,9 @@ dmesg | grep SCSI
 如果使用包含数据的现有磁盘，请跳到装载磁盘。 如果附加新磁盘，需要对磁盘进行分区。
 
 > [!NOTE]
-> 建议使用可用于发行版的最新版本的 fdisk 或 parted。
+> 建议你使用适用于你的发行版的最新版 fdisk 或 parted。
 
-使用 `fdisk` 对磁盘进行分区。 如果磁盘大小为 2 太字节 (TiB) 或更大，则必须使用 GPT 分区；可以使用 `parted` 来执行 GPT 分区。 如果磁盘大小在 2 TiB 以下，则可以使用 MBR 或 GPT 分区。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 `fdisk`/dev/sdc*上启动* 进程：
+使用 `fdisk` 对磁盘进行分区。 如果磁盘大小为 2 太字节 (TiB) 或更大，则必须使用 GPT 分区；可以使用 `parted` 来执行 GPT 分区。 如果磁盘大小在 2 TiB 以下，则可以使用 MBR 或 GPT 分区。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：
 
 ```bash
 sudo fdisk /dev/sdc
@@ -175,13 +175,13 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-#### <a name="alternate-method-using-parted"></a>使用 parted 的备用方法
-Fdisk 实用工具需要交互式输入，因此不适合在自动化脚本中使用。 不过， [parted](https://www.gnu.org/software/parted/)实用工具可以编写脚本，因此在自动化方案中也更适合。 Parted 实用程序可用于对数据磁盘进行分区和格式化。 在下面的演练中，我们将使用新的数据磁盘/dev/sdc，并使用[XFS](https://xfs.wiki.kernel.org/)文件系统对其进行格式化。
+#### <a name="alternate-method-using-parted"></a>使用分件的替代方法
+fdisk 实用程序需要交互式输入，因此不适合在自动化脚本中使用。 但是，[分段](https://www.gnu.org/software/parted/)实用程序可以编写脚本，因此在自动化方案中更适合自己。 分段实用程序可用于分区数据磁盘和格式化数据磁盘。 在下面的演练中，我们使用新的数据磁盘 /dev/sdc 并使用[XFS](https://xfs.wiki.kernel.org/)文件系统进行格式化。
 ```bash
 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
 partprobe /dev/sdc1
 ```
-如上所示，我们使用[partprobe](https://linux.die.net/man/8/partprobe)实用程序来确保内核立即了解新的分区和文件系统。 如果无法使用 partprobe，则可能导致 blkid 或 lslbk 命令不立即返回新文件系统的 UUID。
+如上所述，我们使用[零件探测](https://linux.die.net/man/8/partprobe)实用程序来确保内核立即了解新的分区和文件系统。 无法使用零件探测可能导致 blkid 或 lslbk 命令无法立即返回新文件系统的 UUID。
 
 ### <a name="mount-the-disk"></a>装载磁盘
 使用 `mkdir` 创建一个目录来装载文件系统。 以下示例在 */datadrive* 处创建一个目录：
@@ -211,7 +211,7 @@ sudo -i blkid
 ```
 
 > [!NOTE]
-> 错误地编辑 **/etc/fstab** 文件可能会导致系统无法引导。 如果没有把握，请参考分发的文档来获取有关如何正确编辑该文件的信息。 另外，建议在编辑之前创建 /etc/fstab 文件的备份。
+> 不当编辑 **/etc/fstab**文件可能会导致系统无法启动。 如果没有把握，请参考分发的文档来获取有关如何正确编辑该文件的信息。 另外，建议在编辑之前创建 /etc/fstab 文件的备份。
 
 接下来，在文本编辑器中打开 */etc/fstab* 文件，如下所示：
 
@@ -219,23 +219,23 @@ sudo -i blkid
 sudo vi /etc/fstab
 ```
 
-在此示例中，使用在之前的步骤中创建的 /dev/sdc1 设备的 UUID 值并使用装入点 /datadrive。 将以下行添加到 */etc/fstab* 文件的末尾：
+在此示例中，使用在之前的步骤中创建的 /dev/sdc1** 设备的 UUID 值并使用装入点 /datadrive**。 将以下行添加到 */etc/fstab* 文件的末尾：
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
-完成后，保存 */etc/fstab*文件，然后重新启动系统。
+完成后，保存 /etc/fstab** 文件并重新启动系统。
 > [!NOTE]
 > 之后，在不编辑 fstab 的情况下删除数据磁盘可能会导致 VM 无法启动。 大多数分发版都提供 *nofail* 和/或 *nobootwait* fstab 选项。 这些选项使系统在磁盘无法装载的情况下也能启动。 有关这些参数的详细信息，请查阅分发文档。
 > 
-> 即使文件系统已损坏或磁盘在引导时不存在，*nofail* 选项也能确保 VM 启动。 如果不使用此选项，可能会遇到 [Cannot SSH to Linux VM due to FSTAB errors](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)（由于 FSTAB 错误而无法通过 SSH 连接到 Linux VM）中所述的行为
+> 即使文件系统已损坏或磁盘在引导时不存在，*nofail* 选项也能确保 VM 启动。 如果没有此选项，您可能会遇到由于[FSTAB 错误而导致的无法 SSH 到 Linux VM](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)中描述的行为
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Azure 中对 Linux 的 TRIM/UNMAP 支持
 某些 Linux 内核支持 TRIM/UNMAP 操作以放弃磁盘上未使用的块。 此功能主要用于标准存储中，如果你创建大型文件后又将其删除，则该功能将通知 Azure 已删除的页不再有效并且可以丢弃，可以节省成本。
 
 在 Linux VM 中有两种方法可以启用 TRIM 支持。 与往常一样，有关建议的方法，请参阅分发：
 
-* 在 `discard`/etc/fstab*中使用* 装载选项，例如：
+* 在 */etc/fstab* 中使用 `discard` 装载选项，例如：
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2

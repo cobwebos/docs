@@ -11,17 +11,17 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 8fe95a471df6ea86aad90f387088824c3c92bd3f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75460446"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>针对 Microsoft Azure 存储使用 Java 的客户端加密和 Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>概述
-[用于 Java 的 Azure 存储客户端库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)支持在上传到 Azure 存储之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。 此库还支持与 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)集成，以便管理存储帐户密钥。
+[用于 Java 的 Azure 存储客户端库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)支持在上传到 Azure 存储之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。 该库还支持与[Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)集成，用于存储帐户密钥管理。
 
 ## <a name="encryption-and-decryption-via-the-envelope-technique"></a>通过信封技术加密和解密
 加密和解密的过程遵循信封技术。  
@@ -56,9 +56,9 @@ ms.locfileid: "75460446"
 > 
 > 
 
-下载已加密的 blob 涉及使用**下载**/**openInputStream**便捷方法检索整个 blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
+下载加密的 Blob 涉及使用**下载**/**openInputStream**便利方法检索整个 Blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
 
-下载已加密的 blob 中的任意范围（**downloadRange**方法）涉及调整用户提供的范围以获取少量可用于成功解密所请求范围的附加数据。  
+在加密的 Blob 中下载任意范围（**下载范围**）涉及调整用户提供的范围，以便获取可用于成功解密请求范围的少量附加数据。  
 
 所有 Blob 类型（块 Blob、页 Blob 和追加 Blob）都可以使用此方案进行加密/解密。
 
@@ -90,7 +90,7 @@ ms.locfileid: "75460446"
    
    请注意，只有字符串属性可以加密。 如果要对其他类型的属性进行加密，必须将它们转换为字符串。 加密的字符串作为二进制属性存储在服务中，并在解密之后转换回字符串。
    
-   对于表，除了加密策略以外，用户还必须指定要加密的属性。 可以通过指定 [Encrypt] 特性（适用于从 TableEntity 派生的 POCO 实体）或在请求选项中指定加密解析程序来完成此操作。 加密解析程序是一个委托，它接受分区键、行键和属性名称并返回一个布尔值以指示是否应加密该属性。 在加密过程中，客户端库将使用此信息来确定是否应在写入到网络时加密属性。 该委托还可以围绕如何加密属性来实现逻辑的可能性。 （例如，如果 X，则加密属性 A，否则加密属性 A 和 B。）请注意，在读取或查询实体时，不需要提供此信息。
+   对于表，除了加密策略以外，用户还必须指定要加密的属性。 可以通过指定 [Encrypt] 特性（适用于从 TableEntity 派生的 POCO 实体）或在请求选项中指定加密解析程序来完成此操作。 加密解析程序是一个委托，它接受分区键、行键和属性名称并返回一个布尔值以指示是否应加密该属性。 在加密过程中，客户端库将使用此信息来确定是否应在写入到网络时加密属性。 该委托还可以围绕如何加密属性来实现逻辑的可能性。 （例如，如果 X，则加密属性 A;否则加密属性 A 和 B。请注意，在读取或查询实体时不必提供此信息。
 
 ### <a name="batch-operations"></a>批处理操作
 在批处理操作中，将对该批处理操作中的所有行使用同一 KEK，因为客户端库仅允许每个批处理操作使用一个选项对象（因此是一个策略/KEK）。 但是，客户端库将为批处理中的每行在内部生成一个新的随机 IV 和随机 CEK。 用户还可以选择通过在加密解析程序中定义此行为来加密批处理中的每个操作的不同属性。
@@ -121,7 +121,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 3. 创建加密策略时，使用缓存解析程序作为输入。
    有关密钥保管库用法的详细信息，请查看加密代码示例。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 仅在用于 Java 的存储空间客户端库中提供加密支持。
 
 > [!IMPORTANT]
@@ -146,9 +146,9 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
     [加密示例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)演示了针对 blob、队列和表的更详细端到端方案，以及密钥保管库集成。
 
 ### <a name="requireencryption-mode"></a>RequireEncryption 模式
-用户可以选择启用一个操作模式，让所有上传和下载都必须加密。 在此模式下，尝试在没有加密策略的情况下上传数据或下载在服务中未加密的数据，将导致在客户端上失败。 请求选项对象的 **requireEncryption** 标志控制此行为。 如果应用程序要对存储在 Azure 存储中的所有对象进行加密，则可以在服务客户端对象的默认请求选项上设置 **requireEncryption** 属性。   
+用户可以选择启用一个操作模式，让所有上传和下载都必须加密。 在此模式下，尝试在没有加密策略的情况下上传数据或下载在服务中未加密的数据，将导致在客户端上失败。 请求选项对象的 **requireEncryption** 标志控制此行为。 如果应用程序将加密存储在 Azure 存储中的所有对象，则可以在服务客户端对象的默认请求选项上设置 **"需要加密**"属性。   
 
-例如，使用 **CloudBlobClient.getDefaultRequestOptions().setRequireEncryption(true)** ，要求对通过该客户端对象执行的所有 Blob 操作进行加密。
+例如，使用 **CloudBlobClient.getDefaultRequestOptions().setRequireEncryption(true)**，要求对通过该客户端对象执行的所有 Blob 操作进行加密。
 
 ### <a name="blob-service-encryption"></a>Blob 服务加密
 创建 **BlobEncryptionPolicy** 对象并在请求选项中对其进行设置（使用 **DefaultRequestOptions** 基于每个 API 或在客户端级别设置）。 其他所有事项均由客户端库在内部处理。
@@ -193,7 +193,7 @@ CloudQueueMessage retrMessage = queue.retrieveMessage(30, options, null);
 ```
 
 ### <a name="table-service-encryption"></a>表服务加密
-除了创建加密策略和在请求选项上设置它以外，还必须在 **TableRequestOptions** 中指定 **EncryptionResolver**，或在实体的 getter 和 setter 上设置 [Encrypt] 特性。
+除了创建加密策略并在请求选项上设置它之外，还必须在**表RequestOptions**中指定**加密解析器**，或者在实体的 getter 和 setter 上设置 [加密] 属性。
 
 ### <a name="using-the-resolver"></a>使用解析程序
 
@@ -255,5 +255,5 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
 * 从 GitHub 下载[适用于 Java 的 Azure 存储客户端库源代码](https://github.com/Azure/azure-storage-java)
 * 下载适用于 Java 的 Azure 密钥保管库 Maven 程序包：
   * [核心](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core)程序包
-  * [客户端](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault)程序包
+  * [客户端](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault)包
 * 访问 [Azure 密钥保管库文档](../../key-vault/key-vault-overview.md)

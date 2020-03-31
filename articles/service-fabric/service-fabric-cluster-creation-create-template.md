@@ -4,17 +4,17 @@ description: 了解如何为 Service Fabric 群集创建资源管理器模板。
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: a00f2bc505acd89d9fb9488565b6235bf7d146ba
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258871"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>创建 Service Fabric 群集 Resource Manager 模板
 
 [Azure Service Fabric 群集](service-fabric-deploy-anywhere.md)是一组联网的虚拟机，可在其中部署和管理微服务。 在 Azure 中运行的 Service Fabric 群集是一种 Azure 资源，它是使用资源管理器进行部署、管理和监视的。  本文介绍了如何为在 Azure 中运行的 Service Fabric 群集创建资源管理器模板。  在模板完成后，可以[在 Azure 上部署群集](service-fabric-cluster-creation-via-arm.md)。
 
-群集安全性是在首次设置群集时配置的，以后无法更改。 在设置群集之前，请阅读[Service Fabric 群集安全方案][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 证书来保护群集及其终结点，对客户端进行身份验证以及对数据进行加密。 另外，还建议使用 Azure Active Directory 来保护对管理终结点的访问。 在创建群集之前，必须先创建 Azure AD 租户和用户。  有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
+群集安全性是在首次设置群集时配置的，以后无法更改。 在设置群集之前，请先阅读 [Service Fabric 群集安全性方案][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 证书来保护群集及其终结点，对客户端进行身份验证以及对数据进行加密。 另外，还建议使用 Azure Active Directory 来保护对管理终结点的访问。 在创建群集之前，必须先创建 Azure AD 租户和用户。  有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
 
 在部署生产群集来运行生产工作负荷之前，请务必首先阅读[生产就绪情况核对清单](service-fabric-production-readiness-checklist.md)。
 
@@ -24,16 +24,16 @@ ms.locfileid: "79258871"
 ## <a name="create-the-resource-manager-template"></a>创建 资源管理器模板
 [GitHub 上的 Azure 示例](https://github.com/Azure-Samples/service-fabric-cluster-templates)中提供了示例资源管理器模板。 这些模板可用作群集模板的起点。
 
-本文使用[5 节点安全群集][service-fabric-secure-cluster-5-node-1-nodetype]示例模板和模板参数。 将 *azuredeploy.json* 和 *azuredeploy.parameters.json* 下载到计算机并在你喜欢使用的文本编辑器中打开这两个文件。
+本文使用了[五节点安全群集][service-fabric-secure-cluster-5-node-1-nodetype]示例模板和模板参数。 将 *azuredeploy.json* 和 *azuredeploy.parameters.json* 下载到计算机并在你喜欢使用的文本编辑器中打开这两个文件。
 
 > [!NOTE]
 > 对于国家/地区云（Azure 政府、Azure 中国、Azure 德国），还应将以下 `fabricSettings` 添加到模板：`AADLoginEndpoint`、`AADTokenEndpointFormat` 和 `AADCertEndpointFormat`。
 
 ## <a name="add-certificates"></a>添加证书
-通过引用包含证书密钥的密钥保管库将证书添加到群集 Resource Manager 模板。 在资源管理器模板参数文件 (*azuredeploy.parameters.json*) 中添加这些密钥保管库参数和值。
+通过引用包含证书密钥的密钥保管库将证书添加到群集 Resource Manager 模板。 将这些密钥保管库参数和值添加到资源管理器模板参数文件 *（azuredeploy.parameters.json*） 中。
 
 ### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>将所有证书都添加到虚拟机规模集 osProfile
-必须在规模集资源 (Microsoft.Compute/virtualMachineScaleSets) 的 **osProfile** 节中配置在群集中安装的每个证书。 该操作会指示资源提供程序在 VM 上安装证书。 此安装包括群集证书和打算用于应用程序的任何应用程序安全证书：
+群集中安装的每个证书都必须在规模集资源的**osProfile**部分（Microsoft.Compute/VirtualMachineScaleSet）中配置。 该操作会指示资源提供程序在 VM 上安装证书。 此安装包括群集证书和打算用于应用程序的任何应用程序安全证书：
 
 ```json
 {
@@ -132,10 +132,10 @@ ms.locfileid: "79258871"
 
 ## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>添加 Azure AD 配置以使用 Azure AD 访问客户端
 
-通过引用包含证书密钥的密钥保管库，将 Azure AD 配置添加到群集资源管理器模板。 在资源管理器模板参数文件 (*azuredeploy.parameters.json*) 中添加这些 Azure AD 参数和值。 
+通过引用包含证书密钥的密钥保管库，将 Azure AD 配置添加到群集资源管理器模板。 将这些 Azure AD 参数和值添加到资源管理器模板参数文件 *（azuredeploy.parameter.json*） 中。 
 
 > [!NOTE]
-> 在 Linux 上，必须先创建 Azure AD 租户和用户，然后才能创建群集。  有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
+> 在 Linux 上，创建群集之前必须先创建 Azure AD 租户和用户。  有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
 
 ```json
 {
@@ -254,9 +254,9 @@ Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFil
 
 * [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [微软.网络/虚拟网络](/azure/templates/microsoft.network/virtualnetworks)
+* [微软.网络/公共IP地址](/azure/templates/microsoft.network/publicipaddresses)
+* [微软.网络/负载平衡器](/azure/templates/microsoft.network/loadbalancers)
 * [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->

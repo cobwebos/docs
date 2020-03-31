@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7465ec4ef717f709aacb5e543a8f1cf4fa37bfb5
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: 40885e1de4ff4c16d2a50399c654d8596396ab53
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79139005"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366378"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>从 Azure 门户将混合计算机连接到 Azure
 
@@ -31,11 +31,11 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 
 1. 在浏览器中转到 [Azure 门户](https://aka.ms/hybridmachineportal)。
 
-1. 在“计算机 - Azure Arc”页上，选择左上角的“添加”，或者选择中间窗格底部的“创建计算机 - Azure Arc”选项。 
+1. 在“计算机 - Azure Arc”页上，选择左上角的“添加”，或者选择中间窗格底部的“创建计算机 - Azure Arc”选项。************ 
 
-1. 在“选择方法”页上选择“使用交互式脚本添加计算机”磁贴，然后选择“生成脚本”。
+1. 在“选择方法”页上选择“使用交互式脚本添加计算机”磁贴，然后选择“生成脚本”。************
 
-1. 在“生成脚本”页上，选择你要在 Azure 中管理的计算机所在的订阅和资源组。 选择要将计算机元数据存储到的 Azure 位置。
+1. 在“生成脚本”页上，选择你要在 Azure 中管理的计算机所在的订阅和资源组。**** 选择要将计算机元数据存储到的 Azure 位置。
 
     >[!NOTE]
     >Azure Arc for servers（预览版）仅支持以下区域：
@@ -43,15 +43,15 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
     >- 西欧
     >- 西亚
     >
-    >在概述[文章中选择区域时，请](overview.md#supported-regions)查看其他注意事项。
+    >在"概述"一文中[在此处](overview.md#supported-regions)选择区域时，请查看其他注意事项。
 
-1. 在“生成脚本”页上的“操作系统”下拉列表中，选择运行脚本的操作系统。
+1. 在“生成脚本”页上的“操作系统”下拉列表中，选择运行脚本的操作系统。********
 
-1. 如果计算机通过代理服务器进行通信以连接到 internet，请选择 "**下一步：代理服务器**"。 
-1. 在“代理服务器”选项卡上，指定计算机用来与代理服务器通信的代理服务器 IP 地址或名称以及端口号。 按格式 `http://<proxyURL>:<proxyport>` 输入值。 
-1. 选择“查看 + 生成”。
+1. 如果计算机正在通过代理服务器进行通信以连接到互联网，请选择"**下一步：代理服务器**"。 
+1. 在“代理服务器”选项卡上，指定计算机用来与代理服务器通信的代理服务器 IP 地址或名称以及端口号。**** 按格式 `http://<proxyURL>:<proxyport>` 输入值。 
+1. 选择“查看 + 生成”。****
 
-1. 在“查看 + 生成”选项卡上查看摘要信息，然后选择“下载”。 如果仍需进行更改，请选择“上一页”。
+1. 在“查看 + 生成”选项卡上查看摘要信息，然后选择“下载”。******** 如果仍需进行更改，请选择“上一页”。****
 
 ## <a name="install-and-validate-the-agent-on-windows"></a>在 Windows 上安装并验证代理
 
@@ -60,21 +60,26 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 可以运行 Windows Installer 包 *AzureConnectedMachineAgent.msi* 来手动安装 Connected Machine 代理。 
 
 > [!NOTE]
-> * 若要安装或卸载代理，必须拥有“管理员”权限。
+> * 若要安装或卸载代理，必须拥有“管理员”权限。**
 > * 必须先下载 Installer 包并将其复制到目标服务器上的某个文件夹，或者从共享网络文件夹下载。 如果在不指定任何选项的情况下运行该 Installer 包，它将启动一个安装向导，以交互方式指导用户安装代理。
 
 如果计算机需要通过代理服务器来与服务进行通信，则在安装代理后，需要运行本文稍后所述的某个命令。 此命令将设置代理服务器系统环境变量 `https_proxy`。
 
-下表突出显示了通过命令行安装代理时支持的参数。
+如果您不熟悉 Windows 安装程序包的命令行选项，请查看[Msiexec 标准命令行选项](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options)和[Msiexec 命令行选项](https://docs.microsoft.com/windows/win32/msi/command-line-options)。
 
-| 参数 | 说明 |
-|:--|:--|
-| /? | 返回命令行选项的列表。 |
-| /S | 执行无需用户交互的无提示安装。 |
+例如，使用`/?`参数运行安装程序以查看帮助和快速参考选项。 
 
-例如，若要使用 `/?` 参数运行安装程序，请输入 `msiexec.exe /i AzureConnectedMachineAgent.msi /?`。
+```dos
+msiexec.exe /i AzureConnectedMachineAgent.msi /?
+```
 
-Connected Machine 代理的文件默认安装在 *C:\Program Files\AzureConnectedMachineAgent* 中。 如果完成安装后代理无法启动，请检查日志以获取详细的错误信息。 日志目录为 *%Programfiles%\AzureConnectedMachineAgentAgent\logs*。
+要静默安装代理并在文件夹中创建设置日志文件，`C:\Support\Logs`请运行以下命令。
+
+```dos
+msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
+```
+
+默认情况下，已连接的计算机代理的文件安装在*C：*程序文件_Azure连接计算机代理*中。 如果完成安装后代理无法启动，请检查日志以获取详细的错误信息。 日志目录为 *%Programfiles%\AzureConnectedMachineAgentAgent\logs*。
 
 ### <a name="install-with-the-scripted-method"></a>使用脚本方法安装
 
@@ -149,60 +154,8 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ![服务器连接成功](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
-## <a name="clean-up"></a>清除
-
-若要从 Azure Arc for servers（预览版）断开计算机的连接，请执行以下操作：
-
-1. 转到 [Azure 门户](https://aka.ms/hybridmachineportal)并打开 Azure Arc for servers（预览版）。
-
-1. 在列表中选择计算机，选择省略号图标 ( **...** )，然后选择“删除”。
-
-1. 若要从计算机中卸载 Windows 代理，请执行以下操作：
-
-    a. 使用拥有管理员权限的帐户登录到计算机。  
-    b. 在“控制面板”中，选择“程序和功能”。  
-    c. 在“程序和功能”中，依次选择“Azure Connected Machine Agent”、“卸载”、“是”。  
-
-    >[!NOTE]
-    > 也可以双击 **AzureConnectedMachineAgent.msi** 安装程序包运行代理安装向导。
-
-    如果要为删除代理编写脚本，可以使用以下示例，该示例将检索产品代码，并使用 Msiexec 命令行 `msiexec /x {Product Code}`来卸载代理。 为此，请执行以下操作：  
-    
-    a. 打开注册表编辑器。  
-    b. 在注册表项 `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` 下，查找并复制产品代码 GUID。  
-    c. 然后，可以使用 Msiexec 卸载代理。
-
-    以下示例演示如何卸载代理：
-
-    ```powershell
-    Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
-    Get-ItemProperty | `
-    Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
-    ForEach-Object {MsiExec.exe /x "$($_.PsChildName)" /qn}
-    ```
-
-1. 要卸载 Linux 代理，使用的命令取决于 Linux 操作系统。
-
-    - 对于 Ubuntu，请运行以下命令：
-
-      ```bash
-      sudo apt purge azcmagent
-      ```
-
-    - 对于 RHEL、CentOS 和 Amazon Linux，请运行以下命令：
-
-      ```bash
-      sudo yum remove azcmagent
-      ```
-
-    - 对于 SLES，请运行以下命令：
-
-      ```bash
-      sudo zypper remove azcmagent
-      ```
-
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用[Azure 策略](../../governance/policy/overview.md)管理计算机，例如 VM[来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区进行报告，使用[vm Azure Monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)启用监视等操作。
+- 了解如何使用[Azure 策略](../../governance/policy/overview.md)管理计算机，用于 VM[来宾配置](../../governance/policy/concepts/guest-configuration.md)、验证计算机是否报告到预期的日志分析工作区、使用 VM 启用 Azure[监视器](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)等操作。
 
-- 详细了解[Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-intro.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。
+- 了解有关[日志分析代理](../../azure-monitor/platform/log-analytics-agent.md)的更多信息。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-intro.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。

@@ -1,7 +1,7 @@
 ---
-title: 在 Azure 虚拟网络中部署 IPv6 双重堆栈应用程序-资源管理器模板 (预览版)
+title: 在 Azure 虚拟网络中部署 IPv6 双堆栈应用程序 - 资源管理器模板（预览）
 titlesuffix: Azure Virtual Network
-description: 本文介绍如何使用 Azure 资源管理器 VM 模板在 Azure 虚拟网络中部署具有标准负载均衡器的 IPv6 双重堆栈应用程序。
+description: 本文介绍如何使用 Azure 资源管理器 VM 模板在 Azure 虚拟网络中部署具有标准负载均衡器的 IPv6 双堆栈应用程序。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,23 +13,23 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.openlocfilehash: 8f2c6bc7fb7ab0939da20932fd531c158549ce7a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70012849"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>在 Azure 虚拟网络中部署 IPv6 双重堆栈应用程序-模板 (预览版)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>在 Azure 虚拟网络中部署 IPv6 双堆栈应用程序 - 模板（预览）
 
-本文提供了 Azure 配置任务的列表, 其中包含适用于的部分 Azure 资源管理器 VM 模板。 使用本文中所述的模板, 使用 Azure 中的标准负载均衡器部署双堆栈 (IPv4 + IPv6) 应用程序, 该应用程序包含带有 IPv4 和 IPv6 子网的双堆栈虚拟网络, 具有双重 (IPv4 + IPv6) 前端的标准负载均衡器配置、具有双 IP 配置、网络安全组和公共 Ip 的 Nic 的 Vm。 
+本文提供 IPv6 配置任务的列表，以及适用的 Azure 资源管理器 VM 模板部分。 使用本文所述的模板可以在 Azure 中部署一个使用标准负载均衡器的双堆栈 (IPv4 + IPv6) 应用程序，其中包含具有 IPv4 和 IPv6 子网的双堆栈虚拟网络、采用双重 (IPv4 + IPv6) 前端配置的标准负载均衡器、具有采用双重 IP 配置的 NIC 的 VM、网络安全组，以及公共 IP。 
 
-## <a name="required-configurations"></a>所需配置
+## <a name="required-configurations"></a>所需的配置
 
-在模板中搜索模板节, 以查看它们应该出现的位置。
+在模板中搜索模板节，以了解它们应该出现的位置。
 
-### <a name="ipv6-addressspace-for-the-virtual-network"></a>虚拟网络的 IPv6 addressSpace
+### <a name="ipv6-addressspace-for-the-virtual-network"></a>虚拟网络的 IPv6 地址空间
 
-要添加的模板部分:
+要添加的模板节：
 
 ```JSON
         "addressSpace": {
@@ -38,9 +38,9 @@ ms.locfileid: "70012849"
             "[variables('vnetv6AddressRange')]"    
 ```
 
-### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>IPv6 虚拟网络中的 IPv6 子网 addressSpace
+### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>IPv6 虚拟网络地址空间中的 IPv6 子网
 
-要添加的模板部分:
+要添加的模板节：
 ```JSON
           {
             "name": "V6Subnet",
@@ -52,7 +52,7 @@ ms.locfileid: "70012849"
 
 ### <a name="ipv6-configuration-for-the-nic"></a>NIC 的 IPv6 配置
 
-要添加的模板部分:
+要添加的模板节：
 ```JSON
           {
             "name": "ipconfig-v6",
@@ -86,9 +86,9 @@ ms.locfileid: "70012849"
             }
 ```
 
-## <a name="conditional-configuration"></a>条件配置
+## <a name="conditional-configuration"></a>条件性配置
 
-如果你使用的是网络虚拟设备, 请将 IPv6 路由添加到路由表中。 否则, 此配置是可选的。
+如果使用的是网络虚拟设备，请在路由表中添加 IPv6 路由。 否则，此配置是可选的。
 
 ```JSON
     {
@@ -179,8 +179,8 @@ ms.locfileid: "70012849"
 ```
 
 ## <a name="sample-vm-template-json"></a>示例 VM 模板 JSON
-若要使用 Azure 资源管理器模板在 Azure 虚拟网络中部署 IPv6 双重堆栈应用程序, 请在[此处](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-stdlb/)查看示例模板。
+若要使用 Azure 资源管理器模板在 Azure 虚拟网络中部署 IPv6 双堆栈应用程序，请查看[此处](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-stdlb/)的示例模板。
 
 ## <a name="next-steps"></a>后续步骤
 
-你可以找到有关[公共 IP 地址](https://azure.microsoft.com/pricing/details/ip-addresses/)、[网络带宽](https://azure.microsoft.com/pricing/details/bandwidth/)或[负载均衡器](https://azure.microsoft.com/pricing/details/load-balancer/)定价的详细信息。
+可以查找有关[公共 IP 地址](https://azure.microsoft.com/pricing/details/ip-addresses/)、[网络带宽](https://azure.microsoft.com/pricing/details/bandwidth/)或[负载均衡器](https://azure.microsoft.com/pricing/details/load-balancer/)的定价详细信息。

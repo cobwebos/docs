@@ -5,13 +5,13 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: a53d2b259bc4ece12c4ccb1cf47409cd2f0af86f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67173635"
 ---
-**Objective-C**：
+**目标C**：
 
 1. 在 **QSAppDelegate.m** 中，导入 iOS SDK 和 **QSTodoService.h**：
 
@@ -28,7 +28,7 @@ ms.locfileid: "67173635"
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     ```
 
-3. 在 **QSAppDelegate.m** 中，添加以下处理程序方法。 应用现已更新，可支持推送通知。 
+3. 在**QSAppDelegate.m**中，添加以下处理程序方法。 应用现已更新，可支持推送通知。 
 
     ```objc
     // Registration with APNs is successful
@@ -97,9 +97,9 @@ ms.locfileid: "67173635"
     }
     ```
 
-**Swift**：
+**斯威夫特**：
 
-1. 将文件“ClientManager.swift”与以下内容一起添加。  用 Azure 移动应用后端的 URL 替换 *%AppUrl%* 。
+1. 将文件“ClientManager.swift”与以下内容一起添加。**** 用 Azure 移动应用后端的 URL 替换 *%AppUrl%*。
 
     ```swift
     class ClientManager {

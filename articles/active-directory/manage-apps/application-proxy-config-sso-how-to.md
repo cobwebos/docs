@@ -1,5 +1,5 @@
 ---
-title: 如何配置应用程序代理应用程序的单一登录
+title: 如何配置应用程序代理应用的单一登录
 description: 如何快速配置应用程序代理应用程序的单一登录
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 589b3e51f27147f0a0432b61c22a024c202e388b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76712016"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>如何配置应用程序代理应用程序的单一登录
@@ -28,7 +28,7 @@ ms.locfileid: "76712016"
 单一登录 (SSO) 允许用户访问应用程序，无需进行多次身份验证。 借助 Azure Active Directory，单一登录允许在云中执行一次身份验证，并允许服务或连接器模拟用户，完成来自应用程序的任何其他身份验证质询。
 
 ## <a name="how-to-configure-single-sign-on"></a>如何配置单一登录
-若要配置 SSO，请先确保应用程序已配置为通过 Azure Active Directory 进行预身份验证。 若要执行此配置，请**Azure Active Directory** -&gt;**企业应用程序** -&gt; -应用程序**代理**&gt; 应用程序-的**所有应用程序**。&gt; 在此页上，会看到“预身份验证”字段，确保将该字段设置为“Azure Active Directory”。 
+若要配置 SSO，请先确保应用程序已配置为通过 Azure Active Directory 进行预身份验证。 要执行此操作配置，请转到**Azure 活动目录** -&gt;**企业应用程序** -&gt;**应用程序的所有应用程序** -&gt;**-&gt;应用程序代理**。 在此页上，会看到“预身份验证”字段，确保将该字段设置为“Azure Active Directory”。 
 
 有关预身份验证方法的详细信息，请参阅[应用发布文档](application-proxy-add-on-premises-application.md)的步骤 4。
 
@@ -43,16 +43,16 @@ ms.locfileid: "76712016"
 
 -   **基于标头的登录**：通过合作关系启用基于标头的登录，需要提供一些其他配置。 有关为使用标头进行身份验证的应用程序配置单一登录的合作关系和分步说明的详细信息，请参阅 [Azure AD 的 PingAccess 文档](application-proxy-configure-single-sign-on-with-ping-access.md)。
 
--   **Saml 单一登录**：使用 saml 单一登录，Azure AD 使用用户的 Azure AD 帐户对应用程序进行身份验证。 Azure AD 通过连接协议将登录信息传递给应用程序。 使用基于 SAML 的单一登录，可以根据在 SAML 声明中定义的规则将用户映射到特定的应用程序角色。 有关设置 SAML 单一登录的信息，请参阅[saml For Application Proxy 单一登录](application-proxy-configure-single-sign-on-on-premises-apps.md)。
+-   **SAML 单一登录**：使用 SAML 单一登录，Azure AD 使用用户的 Azure AD 帐户对应用程序进行身份验证。 Azure AD 通过连接协议将登录信息传递给应用程序。 使用基于 SAML 的单一登录，可以根据在 SAML 声明中定义的规则将用户映射到特定的应用程序角色。 有关设置 SAML 单登录的信息，请参阅[SAML，了解使用应用程序代理的单一登录](application-proxy-configure-single-sign-on-on-premises-apps.md)。
 
-可通过以下方式找到这些选项：转到“企业应用程序”中的应用程序，打开左侧菜单上的“单一登录”页。 请注意，如果在旧门户中创建了应用程序，则可能看不到所有这些选项。
+可通过以下方式找到这些选项：转到“企业应用程序”中的应用程序，打开左侧菜单上的“单一登录”**** 页。 请注意，如果应用程序是在旧门户中创建的，则可能无法看到所有这些选项。
 
 在此页上，还可以看到另一个登录选项：链接登录。 此选项也受应用程序代理支持。 但是，此选项不会将单一登录添加到应用程序。 也就是说，应用程序可能已经使用另一个服务（如 Active Directory 联合身份验证服务）实现了单一登录。 
 
 此选项允许管理员在访问应用程序时创建一个指向用户首次登录的应用程序的链接。 例如，如果某一个应用程序配置为使用 Active Directory 联合身份验证服务 2.0 验证用户身份，则管理员可以使用“链接登录”选项在访问面板上创建指向该应用程序的链接。
 
 ## <a name="next-steps"></a>后续步骤
-- [使用应用程序代理通过密码保管库进行单一登录](application-proxy-configure-single-sign-on-password-vaulting.md)
+- [使用应用程序代理通过密码存储进行单一登录](application-proxy-configure-single-sign-on-password-vaulting.md)
 - [使用应用程序代理通过 Kerberos 约束委派进行单一登录](application-proxy-configure-single-sign-on-with-kcd.md)
 - [使用应用程序代理通过基于标头的身份验证进行单一登录](application-proxy-configure-single-sign-on-with-ping-access.md) 
-- [用于应用程序代理的单一登录的 SAML](application-proxy-configure-single-sign-on-on-premises-apps.md)。
+- [使用应用程序代理的单一登录的 SAML。](application-proxy-configure-single-sign-on-on-premises-apps.md)

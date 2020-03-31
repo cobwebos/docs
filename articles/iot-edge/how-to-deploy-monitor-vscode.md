@@ -1,5 +1,5 @@
 ---
-title: 使用 Visual Studio Code Azure IoT Edge 大规模部署模块
+title: 使用 Visual Studio Code 大规模部署模块 - Azure IoT Edge
 description: 使用 Visual Studio Code 的 IoT 扩展为 IoT Edge 设备组创建自动部署。
 keywords: ''
 author: kgremban
@@ -10,40 +10,40 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 08299a589dc6e8f768cba7ef976e109ef1fb69d7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774128"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>使用 Visual Studio Code 大规模部署 IoT Edge 模块
 
-可以使用 Visual Studio Code 创建一次**IoT Edge 自动部署**，以便同时管理多个设备的正在进行的部署。 IoT Edge 的自动部署是 IoT 中心[自动设备管理](/azure/iot-hub/iot-hub-automatic-device-management)功能的一部分。 部署是使你能够将多个模块部署到多个设备的动态进程。 还可以跟踪模块的状态和运行状况，并在必要时进行更改。
+可以使用 Visual Studio Code 接口创建 **IoT Edge 自动部署**，以便同时管理多个设备的持续部署。 IoT Edge 的自动部署属于 IoT 中心的[自动设备管理](/azure/iot-hub/iot-hub-automatic-device-management)功能。 部署是可让你将多个模块部署到多个设备的动态过程。 还可以跟踪模块的状态和运行状况，并按需进行更改。
 
-有关详细信息，请参阅[了解 IoT Edge 单个设备的自动部署或大规模部署](module-deployment-monitoring.md)。
+有关详细信息，请参阅[了解单个设备或大规模的 IoT Edge 自动部署](module-deployment-monitoring.md)。
 
-本文介绍如何设置 Visual Studio Code 和 IoT 扩展。 然后，了解如何将模块部署到一组 IoT Edge 设备。
+在本文中，你将设置 Visual Studio Code 和 IoT 扩展。 然后，了解如何将模块部署到一组 IoT Edge 设备。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#register-with-visual-studio-code)。
-* [Visual Studio Code](https://code.visualstudio.com/)。
+* [视觉工作室代码](https://code.visualstudio.com/)。
 * 适用于 Visual Studio Code 的 [Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview)。
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登录以访问 IoT 中心
 
-你可以使用适用于 Visual Studio Code 的 Azure IoT 扩展在中心执行操作。 要使这些操作正常工作，需要登录到 Azure 帐户，并选择正在处理的 IoT 中心。
+可以使用 Visual Studio Code 的 Azure IoT 扩展来执行与中心相关的操作。 为让操作顺利进行，需登录到 Azure 帐户并选择要使用的 IoT 中心。
 
-1. 在 Visual Studio Code 中打开“资源管理器”视图。
+1. 在 Visual Studio Code 中打开“资源管理器”视图****。
 
-1. 在资源管理器的底部，展开 " **Azure IoT 中心**" 部分。
+1. 在资源管理器底部，展开“Azure IoT 中心”部分****。
 
-1. 在**Azure IoT 中心**部分标题中单击 " **...** "。 如果没有看到省略号，请将鼠标悬停在标题处。
+1. 单击“Azure IoT 中心”部分标题中的“...”********。 如果没有看到省略号，请将鼠标悬停在标题处。
 
-1. 选择“选择 IoT 中心”。
+1. 选择“选择 IoT 中心”****。
 
-1. 如果未登录到 Azure 帐户，请按照提示进行操作。
+1. 如果尚未登录 Azure 帐户，请按照提示登录。
 
 1. 选择 Azure 订阅。
 
@@ -51,9 +51,9 @@ ms.locfileid: "75774128"
 
 ## <a name="configure-a-deployment-manifest"></a>配置部署清单
 
-部署清单是一个 JSON 文档，用于描述要部署的模块。 它还说明了模块之间数据的流动方式，以及模块孪生的所需属性。 有关详细信息，请参阅[了解如何部署模块和在 IoT Edge 中建立路由](module-composition.md)。
+部署清单是一个 JSON 文档，用于描述要部署的模块。 它还描述了模块之间的数据流动方式，以及模块孪生的所需属性。 有关详细信息，请参阅[了解如何在 IoT Edge 中部署模块和建立路由](module-composition.md)。
 
-若要使用 Visual Studio Code 部署模块，请将部署清单本地保存为 .JSON 文件。 运行命令将配置应用到设备时，需要提供其位置。
+若要使用 Visual Studio Code 部署模块，请将部署清单本地保存为 .JSON 文件。 运行命令将配置应用到设备时，需要提供清单的位置。
 
 下面是一个基本的部署清单示例，其中有一个模块：
 
@@ -126,13 +126,13 @@ ms.locfileid: "75774128"
 }
 ```
 
-如果需要确定当前可以配置哪些 IoT Edge 设备，请运行**IoT Edge：获取设备信息**命令。
+如果需要确定当前可以配置的 IoT Edge 设备，请运行**IoT 边缘：获取设备信息**命令。
 
-## <a name="identify-devices-with-target-conditions"></a>标识具有目标条件的设备
+## <a name="identify-devices-with-target-conditions"></a>使用目标条件标识设备
 
-若要确定接收部署的 IoT Edge 设备，必须指定目标条件。 当指定的条件由 deviceId、标记值或报告的属性值匹配时，将满足目标条件。
+若要标识接收部署的 IoT Edge 设备，必须指定目标条件。 当 deviceId、标记值或报告属性值与指定的条件匹配时，将满足目标条件。
 
-在设备克隆中配置标记。 下面是包含标记的设备克隆示例：
+在设备孪生中配置标记。 下面是具有标记的设备孪生示例：
 
 ```json
 "tags":{
@@ -145,26 +145,26 @@ ms.locfileid: "75774128"
 }
 ```
 
-如果部署的目标条件包含与某个标记值（如 `tag.location.building = '20'`）匹配的表达式，则此设备将接收部署。
+如果部署的目标条件包含与某个标记值匹配的表达式（例如 `tag.location.building = '20'`），则此设备将接收部署。
 
-如果要以特定设备为目标，而不考虑其标记或其他值，只需指定目标条件的 `deviceId`。
+若要以特定的设备为目标，而不管其标记或其他值为何，只需指定目标条件的 `deviceId`。
 
-下面是一些更多示例：
+下面提供了更多示例：
 
 * deviceId ='linuxprod1'
-* deviceId = ' linuxprod1 ' 或 deviceId = ' linuxprod2 ' 或 deviceId = ' linuxprod3 '
+* deviceId = 'linuxprod1' OR deviceId = 'linuxprod2' OR deviceId = 'linuxprod3'
 * tags.environment ='prod'
-* tags = "生产" 和标记。 location = \ "westus2"
-* tags = "生产" 或标记。 location = \ "westus2"
-* tags = "John" 和标记。环境 = "生产"，而不是 deviceId = "linuxprod1"
+* tags.environment = 'prod' AND tags.location = 'westus2'
+* tags.environment = 'prod' OR tags.location = 'westus2'
+* tags.operator = 'John' AND tags.environment = 'prod' AND NOT deviceId = 'linuxprod1'
 
 有关详细信息，请参阅[目标条件](module-deployment-monitoring.md#target-condition)。 有关设备孪生和标记的详细信息，请参阅[了解和使用 IoT 中心的设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)。
 
-### <a name="edit-the-device-twin"></a>编辑设备克隆
+### <a name="edit-the-device-twin"></a>编辑设备孪生
 
-可以在 Visual Studio Code 中编辑设备克隆，以配置标记。 从 "**视图**" 菜单中，选择 "**命令面板**"，并运行**IoT Edge：编辑设备**克隆命令。 选择 IoT Edge 设备，并显示设备克隆。
+可以在 Visual Studio Code 中编辑设备孪生，以配置标记。 在 **"查看"** 菜单中，选择**命令调色板**并运行 **"IoT 边缘：编辑设备孪生"** 命令。 选择 IoT Edge 设备，随即会显示设备孪生。
 
-在此示例中，未定义任何标记。 将当前的空节 `"tags": {}` 替换为您自己的标记定义。
+此示例中未定义任何标记。 将当前的空节 `"tags": {}` 替换为自己的标记定义。
 
 ```json
 {
@@ -204,29 +204,29 @@ ms.locfileid: "75774128"
 }
 ```
 
-保存本地文件后，请运行**IoT Edge：更新设备**克隆命令。
+保存本地文件后，运行**IoT 边缘：更新设备孪生**命令。
 
 ## <a name="create-deployment-at-scale"></a>大规模创建部署
 
-在设备克隆中配置部署清单和已配置的标记后，便可以进行部署了。
+配置部署清单并在设备孪生中配置标记后，便可以开始部署了。
 
-1. 从 "**视图**" 菜单中，选择 "**命令面板**"，然后选择 " **Azure IoT Edge：创建大规模部署**" 命令。
+1. 在 **"查看"** 菜单中，选择**命令调色板**并选择**Azure IoT 边缘：在"缩放"中创建部署**命令。
 
-1. 导航至要使用的部署清单 JSON 文件，然后单击“选择 Edge 部署清单”。
+1. 导航至要使用的部署清单 JSON 文件，然后单击“选择 Edge 部署清单”****。
 
-1. 按提示提供值，从**部署 id**开始。
+1. 按提示提供值，从“部署 ID”开始。****
 
-   ![指定部署 id](./media/how-to-deploy-monitor-vscode/create-deployment-at-scale.png)
+   ![指定部署 ID](./media/how-to-deploy-monitor-vscode/create-deployment-at-scale.png)
 
-   为这些参数指定值：
+   指定以下参数的值：
 
-  | 参数 | Description |
+  | 参数 | 描述 |
   | --- | --- |
-  | 部署 id | 将在 IoT 中心内创建的部署的名称。 为部署提供唯一名称（最多包含 128 个小写字母）。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。 |
-  | 目标条件 | 输入一个目标条件，以确定将以该部署为目标的设备。 此条件基于设备克隆标记或设备克隆报告的属性，并且应与表达式格式匹配。 例如，`tags.environment='test' and properties.reported.devicemodel='4000x'`。 |
-  | 优先级 |  正整数。 如果在同一设备上针对两个或更多部署，则将应用具有最高优先级的数值的部署。 |
+  | 部署 ID | 将在 IoT 中心创建的部署的名称。 为部署提供唯一名称（最多包含 128 个小写字母）。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。 |
+  | 目标条件 | 输入目标条件，确定用作此部署的目标的设备。该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。例如 `tags.environment='test' and properties.reported.devicemodel='4000x'`。 |
+  | 优先度 |  正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。 |
 
-  指定优先级后，终端应显示类似于以下描述的输出：
+  指定优先级后，终端应会显示类似于以下描述内容的输出：
 
    ```cmd
    [Edge] Start deployment with deployment id [{specified-value}] and target condition [{specified-value}]
@@ -235,8 +235,8 @@ ms.locfileid: "75774128"
 
 ## <a name="monitoring-and-modifying-deployments"></a>监视和修改部署
 
-使用[Azure CLI](how-to-deploy-monitor-cli.md#monitor-a-deployment)或[Azure 门户](how-to-deploy-monitor.md#monitor-a-deployment)来监视、修改和删除部署。 两者都提供部署的指标。
+使用 [Azure CLI](how-to-deploy-monitor-cli.md#monitor-a-deployment) 或 [Azure 门户](how-to-deploy-monitor.md#monitor-a-deployment)来监视、修改和删除部署。 这两个工具都会提供有关部署的指标。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[将模块部署到 IoT Edge 设备](module-deployment-monitoring.md)的详细信息。
+详细了解[将模块部署到 IoT Edge 设备](module-deployment-monitoring.md)。

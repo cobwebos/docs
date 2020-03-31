@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 6ccf544b524ad1ccd45b0aa814610902d54c0fd9
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 27da8c70dc64312506269cd1a15aa5b669842dfd
+  ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "70309288"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80365432"
 landingContent:
 - title: 关于 Azure Database for MySQL
   linkLists:
@@ -138,8 +138,8 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure CLI 开发人员参考
-      url: /rest/api/mysql/
-    - text: REST API 开发人员参考
       url: /cli/azure/mysql
+    - text: REST API 开发人员参考
+      url: /rest/api/mysql/
     - text: Azure 资源管理器模板
       url: /azure/templates/microsoft.dbformysql/allversions

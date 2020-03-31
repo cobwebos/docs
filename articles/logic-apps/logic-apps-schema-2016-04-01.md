@@ -1,5 +1,5 @@
 ---
-title: 架构更新6月-1-2016
+title: 架构更新 2016 年 6 月 1 日
 description: 针对 Azure 逻辑应用中的逻辑应用定义更新了架构版本 2016-06-01
 services: logic-apps
 ms.suite: integration
@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792876"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure 逻辑应用的架构更新 - 2016 年 6 月 1 日
@@ -27,7 +27,7 @@ ms.locfileid: "74792876"
 
 <a name="scopes"></a>
 
-## <a name="scopes"></a>范围
+## <a name="scopes"></a>作用域
 
 此架构包含作用域，方便用户将操作组合或嵌套到一起。 例如，一个条件可以包含另一个条件。 请详细了解[作用域语法](../logic-apps/logic-apps-loops-and-scopes.md)，或者查看下面这个基本的作用域示例：
 
@@ -103,25 +103,25 @@ ms.locfileid: "74792876"
 
 1. 在 Azure 门户中打开逻辑应用。
 
-2. 转到“概览”。 在逻辑应用工具栏上，选择“更新架构”。
+2. 转到“概览”****。 在逻辑应用工具栏上，选择“更新架构”****。
    
    ![选择“更新架构”][1]
    
    此时会返回升级的定义，用户可以根据需要将其复制并粘贴到资源定义中。 
 
    > [!IMPORTANT]
-   > *确保*选择“另存为”，以便所有连接引用在升级后的逻辑应用中保持有效。
+   > *确保*选择“另存为”****，以便所有连接引用在升级后的逻辑应用中保持有效。
 
-3. 在升级边栏选项卡工具栏中，选择“另存为”。
+3. 在升级边栏选项卡工具栏中，选择“另存为”****。
 
-4. 输入逻辑名称和状态。 若要部署升级的逻辑应用，请选择“创建”。
+4. 输入逻辑名称和状态。 若要部署升级的逻辑应用，请选择“创建”****。
 
 5. 确认已升级的逻辑应用正常运行。
    
    > [!NOTE]
    > 如果使用 manual 或 request 触发器，则回调 URL 会在新逻辑应用中更改。 请测试新的 URL，确保端到端体验正常。 若要保留以前的 URL，可以通过现有的逻辑应用进行克隆。
 
-6. *可选* 若要使用新的架构版本覆盖以前的逻辑应用，请在工具栏上选择“更新架构”旁边的“克隆”。 仅当需要保留逻辑应用的同一资源 ID 或请求触发器 URL 时，此步骤才是必需的。
+6. *可选* 若要使用新的架构版本覆盖以前的逻辑应用，请在工具栏上选择“更新架构”旁边的“克隆”。******** 仅当需要保留逻辑应用的同一资源 ID 或请求触发器 URL 时，此步骤才是必需的。
 
 ## <a name="upgrade-tool-notes"></a>升级工具说明
 
@@ -175,7 +175,7 @@ ms.locfileid: "74792876"
 ## <a name="next-steps"></a>后续步骤
 
 * [为逻辑应用创建工作流定义](../logic-apps/logic-apps-author-definitions.md)
-* [自动部署逻辑应用](logic-apps-azure-resource-manager-templates-overview.md)
+* [自动执行逻辑应用部署](logic-apps-azure-resource-manager-templates-overview.md)
 
 <!-- Image references -->
 [1]: ./media/logic-apps-schema-2016-04-01/upgradeButton.png

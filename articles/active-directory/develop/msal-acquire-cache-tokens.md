@@ -1,5 +1,5 @@
 ---
-title: 通过 MSAL 获取 & 缓存令牌 |Microsoft
+title: 使用 MSAL 获取&缓存令牌 |蔚蓝
 titleSuffix: Microsoft identity platform
 description: 了解如何使用 Microsoft 身份验证库 (MSAL) 获取和缓存令牌。
 services: active-directory
@@ -14,13 +14,13 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: c1f1cbf85b96aade745cc4248aed4bc89e41b450
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085168"
 ---
-# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>使用 Microsoft 身份验证库（MSAL）获取和缓存令牌
+# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>使用 Microsoft 身份验证库 (MSAL) 获取和缓存令牌
 
 客户端可以使用[访问令牌](access-tokens.md)安全调用受 Azure 保护的 Web API。 可以使用 Microsoft 身份验证库 (MSAL) 通过多种方法获取令牌。 有些方法需要用户通过 Web 浏览器进行交互。 而有些方法则不需要任何用户交互。 一般情况下，获取令牌的方法取决于应用程序是公共客户端应用程序（桌面或移动应用）还是机密客户端应用程序（Web 应用、Web API，或类似于 Windows 服务的后台程序应用程序）。
 
@@ -38,7 +38,7 @@ MSAL 在获取令牌后会缓存令牌。  在通过其他方式获取令牌之�
 
 ### <a name="request-specific-scopes-for-a-web-api"></a>请求 Web API 的特定范围
 
-当应用程序需要使用资源 API 的特定权限请求令牌时，你需要采用以下格式传递包含 API 应用 ID URI 的范围： *&lt;应用 ID URI&gt;/&lt;范围&gt;*
+当应用程序需要请求具有资源 API 特定权限的令牌时，您需要以以下格式传递包含 API 应用 ID URI 的范围：*&lt;应用 ID URI&gt;/&lt;范围&gt;*
 
 Microsoft Graph API 的范围示例：`https://graph.microsoft.com/User.Read`
 
@@ -92,7 +92,7 @@ MSAL 维护一个令牌缓存（对机密客户端应用程序维护两个），
 ### <a name="confidential-client-applications"></a>机密客户端应用程序
 
 对于机密客户端应用程序（Web 应用、Web API，或类似于 Windows 服务的后台程序应用程序）：
-- 使用**客户端凭据流**获取[应用程序本身](msal-authentication-flows.md#client-credentials)而不是用户的令牌。 此方法可用于同步工具，或者处理普通用户而不是特定用户的工具。 
+- 使用[客户端凭据流](msal-authentication-flows.md#client-credentials)获取**应用程序本身**而不是用户的令牌。 此方法可用于同步工具，或者处理普通用户而不是特定用户的工具。 
 - 使用适用于 Web API 的[代表流](msal-authentication-flows.md#on-behalf-of)代表用户调用 API。 系统会使用客户端凭据标识应用程序，以根据用户断言（例如 SAML 或 JWT 令牌）获取令牌。 需要在服务到服务调用中访问特定用户的资源的应用程序使用此流。
 - 在用户通过授权请求 URL 登录后，在 Web 应用中使用[授权代码流](msal-authentication-flows.md#authorization-code)获取令牌。 OpenID Connect 应用程序通常使用此机制，可让用户使用 Open ID Connect 登录，然后代表用户访问 Web API。
 
@@ -109,6 +109,6 @@ MSAL 维护一个令牌缓存（对机密客户端应用程序维护两个），
 
 ## <a name="next-steps"></a>后续步骤
 
-如果使用 MSAL for Java，请参阅[MSAL For java 中的自定义令牌缓存序列化](msal-java-token-cache-serialization.md)。
+如果使用的是适用于 Java 的 MSAL，请了解[适用于 Java 的 MSAL 中的自定义令牌缓存序列化](msal-java-token-cache-serialization.md)。
 
 了解如何[处理错误和异常](msal-handling-exceptions.md)。

@@ -4,10 +4,10 @@ description: 使用 Kudu 部署服务的 .zip 文件部署功能来发布 Azure 
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75769655"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 Zip 部署
@@ -16,7 +16,7 @@ ms.locfileid: "75769655"
 
 Azure Functions 具有完整的持续部署范围，以及由 Azure 应用服务提供的集成选项。 有关详细信息，请参阅 [Azure Functions 的连续部署](functions-continuous-deployment.md)。
 
-为了加快开发速度，你可能会发现直接从 .zip 文件部署函数应用项目文件会更容易。 .zip 部署 API 接受 .zip 文件的内容并将内容提取到你的函数应用的 `wwwroot` 文件夹中。 此 .zip 文件部署使用相同的 Kudu 服务，支持基于持续集成的部署，包括：
+为了加快开发速度，你可能会发现直接通过 .zip 文件部署函数应用项目文件更为简单。 .zip 部署 API 接受 .zip 文件的内容并将内容提取到你的函数应用的 `wwwroot` 文件夹中。 此 .zip 文件部署使用相同的 Kudu 服务，支持基于持续集成的部署，包括：
 
 + 删除之前的部署留下的文件。
 + 部署自定义，包括运行部署脚本。
@@ -42,11 +42,11 @@ Azure Functions 具有完整的持续部署范围，以及由 Azure 应用服务
 
 但是，可能已通过 Azure 门户中的编辑器创建了函数。 可以通过以下方式之一下载现有的函数应用项目：
 
-+ **通过 Azure 门户：**
++ **从 Azure 门户：**
 
   1. 登录 [Azure 门户](https://portal.azure.com)，并转到函数应用。
 
-  2. 在“概述”选项卡中，选择“下载应用内容”。 选择下载选项，然后选择“下载”。
+  2. 在“概述”选项卡中，选择“下载应用内容”********。 选择下载选项，然后选择“下载”****。
 
       ![下载函数应用项目](./media/deployment-zip-push/download-project.png)
 
@@ -62,11 +62,11 @@ Azure Functions 具有完整的持续部署范围，以及由 Azure 应用服务
 
 还可从 GitHub 存储库下载 .zip 文件。 在以 .zip 文件形式下载 GitHub 存储库时，GitHub 会为分支添加一个额外的文件夹级别。 此额外的文件夹级别意味着无法直接部署从 GitHub 下载的 .zip 文件。 如果当前使用 GitHub 存储库维护函数应用，应使用[持续集成](functions-continuous-deployment.md)来部署应用。  
 
-## <a name="cli"></a>使用 Azure CLI 进行部署
+## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>使用 Azure CLI 进行部署
 
 可使用 Azure CLI 来触发推送部署。 使用 [az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) 命令将 .zip 文件推送部署到函数应用。 要使用此命令，必须使用 Azure CLI 版本 2.0.21 或更高版本。 要查看当前使用的 Azure CLI 版本，请使用 `az --version` 命令。
 
-以下命令将 `<zip_file_path>` 占位符替换为 .zip 文件的位置路径。 同时，将 `<app_name>` 替换为 function app 的唯一名称，并将 `<resource_group>` 替换为资源组的名称。
+以下命令将 `<zip_file_path>` 占位符替换为 .zip 文件的位置路径。 此外，请将 `<app_name>` 替换为函数应用的唯一名称，并将 `<resource_group>` 替换为资源组的名称。
 
 ```azurecli-interactive
 az functionapp deployment source config-zip -g <resource_group> -n \

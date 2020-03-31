@@ -1,5 +1,5 @@
 ---
-title: 了解用于 IoT 事件聚合的 Azure 安全中心 |Microsoft Docs
+title: 了解 IoT 事件聚合的 Azure 安全中心*微软文档
 description: 了解用于 IoT 事件聚合的 Azure 安全中心。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -16,84 +16,84 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: ca1d1a5761e62b2838a474dcb83f450987972998
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73928959"
 ---
 # <a name="azure-security-center-for-iot-event-aggregation"></a>用于 IoT 事件聚合的 Azure 安全中心
 
-用于 IoT 安全代理的 Azure 安全中心从本地设备收集数据和系统事件，并将此数据发送到 Azure 云进行处理和分析。 安全代理收集许多类型的设备事件，包括新进程和新连接事件。 新进程和新连接事件可能会在一秒钟内在设备上合法发生，但这一点对于强健和全面的安全性很重要，安全代理被迫发送的消息数可能很快就会达到或超过 IoT 中心配额和开销限制。 但是，这些事件包含非常重要的安全信息，这对于保护你的设备至关重要。
+IoT 安全代理 Azure 安全中心从本地设备收集数据和系统事件，并将此数据发送到 Azure 云进行处理和分析。 安全代理收集多种类型的设备事件，包括新进程和新的连接事件。 新进程和新的连接事件可能在几秒钟内在设备上频繁发生，虽然对强大和全面的安全性很重要，但安全代理强制发送的消息数可能快速到达或超过 IoT 中心配额和成本限制。 但是，这些事件包含非常有价值的安全信息，这些信息对于保护您的设备至关重要。
 
-为了降低额外的配额和成本，同时保护设备，Azure 安全中心的 IoT 代理会聚合这些类型的事件。
+为了减少额外的配额和成本，同时保持设备受到保护，IoT 代理的 Azure 安全中心聚合这些类型的事件。
 
-默认情况下，事件聚合是**打开**的，尽管不建议这样做，但可以随时手动**关闭**。
+默认情况下，事件聚合处于**打开状态**，尽管不建议这样做，但可以随时手动**关闭**。
 
 聚合当前可用于以下类型的事件：
-* ProcessCreate
-* ConnectionCreate
-* ProcessTerminate （仅限 Windows）
+* 流程创建
+* 连接创建
+* 进程终止（仅限视窗）
 
 ## <a name="how-does-event-aggregation-work"></a>事件聚合如何工作？
-当事件聚合为**On**时，用于 IoT 代理的 Azure 安全中心会聚合间隔时间段或时间范围内的事件。
-在间隔时间过后，代理会将聚合事件发送到 Azure 云进行进一步分析。
-聚合事件存储在内存中，直到将其发送到 Azure 云。
+当事件聚合处于**打开状态时**，IoT 代理的 Azure 安全中心将事件聚合为间隔期间或时间段。
+间隔期结束后，代理会将聚合事件发送到 Azure 云进行进一步分析。
+聚合事件存储在内存中，直到发送到 Azure 云。
 
-为了降低代理的内存占用量，每当代理收集到已保留在内存中的事件时，代理都会增加此特定事件的命中次数。 当聚合时间窗口通过时，代理将发送所发生的每个特定事件类型的命中次数。 事件聚合只是聚合每个收集事件类型的命中计数。
+为了减少代理的内存占用空间，每当代理收集与已保存在内存中的事件相同的事件时，代理都会增加此特定事件的命中计数。 当聚合时间窗口过去时，代理发送发生的每种特定类型的事件的命中计数。 事件聚合只是每个收集类型的事件的热门计数的聚合。
 
-仅当满足以下条件时，事件才被视为完全相同： 
+仅当满足以下条件时，事件才被视为相同： 
 
-* ProcessCreate 事件-**命令行**、**可执行文件**、**用户名**和**用户 id**相同
-* ConnectionCreate 事件-**命令行**、 **userId**、 **direction**、 **local address**、 **remote address**、* * 协议和**目标端口**相同
-* ProcessTerminate 事件-当**可执行文件**和**退出状态**相同时
+* 进程创建事件 - 当**命令行**、**可执行项**、**用户名**和**userid**相同时
+* 连接创建事件 - 当**命令行**、**用户 Id**、**方向**、**本地地址**、**远程地址**、_协议**和目标端口**相同时
+* 进程终止事件 - 当**可执行**和**退出状态**相同时
 
 ### <a name="working-with-aggregated-events"></a>使用聚合事件
 
-在聚合期间，未聚合的事件属性将被丢弃，并显示在 log analytics 中，其值为0。 
-* ProcessCreate events- **processId**和**parentProcessId**设置为0
-* ConnectionCreate events- **processId**，**源端口**设置为0
+在聚合期间，将丢弃未聚合的事件属性，并显示在值为 0 的日志分析中。 
+* 进程创建事件 -**进程 Id**和**父进程Id**设置为 0
+* 连接创建事件 -**进程 Id**和**源端口**设置为 0
 
 ## <a name="event-aggregation-based-alerts"></a>基于事件聚合的警报 
-分析之后，适用于 IoT 的 Azure 安全中心为可疑的聚合事件创建安全警报。 对于每个聚合事件，从聚合事件创建的警报仅出现一次。
+分析后，IoT Azure 安全中心会为可疑的聚合事件创建安全警报。 从聚合事件创建的警报仅为每个聚合事件显示一次。
 
-每个事件的 "聚合开始时间"、"结束时间" 和 "命中次数" 记录在 Log Analytics 中的 "事件**ExtraDetails** " 字段中，以便在调查过程中使用。 
+每个事件的聚合开始时间、结束时间和命中计数都记录在日志分析中的"额外**详细信息**"事件字段中，以便在调查期间使用。 
 
-每个聚合事件表示收集的警报的24小时时间段。 使用每个事件左上方的 "事件选项" 菜单，可以**消除**每个单独的聚合事件。    
+每个聚合事件表示收集的警报的 24 小时周期。 使用每个事件左上角的事件选项菜单，可以**关闭**每个聚合事件。    
 
-## <a name="event-aggregation-twin-configuration"></a>事件聚合克隆配置
-更改**azureiotsecurity**模块的模块克隆标识的[代理配置对象](how-to-agent-configuration.md)内的 IoT 事件聚合的 Azure 安全中心配置。
+## <a name="event-aggregation-twin-configuration"></a>事件聚合孪生配置
+更改**Azureiot 安全**模块模块的模块孪生标识的[代理配置对象](how-to-agent-configuration.md)内的 IoT 事件聚合 Azure 安全中心配置。
 
-| 配置名称 | 可能的值 | 详细信息 | 备注 |
+| 配置名称 | 可能值 | 详细信息 | 备注 |
 |:-----------|:---------------|:--------|:--------|
-| aggregationEnabledProcessCreate | 布尔值 | 启用/禁用进程创建事件的事件聚合 |
-| aggregationIntervalProcessCreate | ISO8601 Timespan 字符串 | 进程创建事件的聚合间隔 |
-| aggregationEnabledConnectionCreate | 布尔值| 启用/禁用连接创建事件的事件聚合 |
-| aggregationIntervalConnectionCreate | ISO8601 Timespan 字符串 | 连接创建事件的聚合间隔 |
-| aggregationEnabledProcessTerminate | 布尔值 | 启用/禁用进程终止事件的事件聚合 | 仅限 Windows|
-| aggregationIntervalProcessTerminate | ISO8601 Timespan 字符串 | 进程终止事件的聚合间隔 | 仅限 Windows|
+| 聚合启用进程创建 | boolean | 启用/禁用进程创建事件的事件聚合 |
+| 聚合间隔进程创建 | ISO8601 时间跨度字符串 | 进程创建事件的聚合间隔 |
+| 聚合启用连接创建 | boolean| 启用/禁用连接创建事件的事件聚合 |
+| 聚合间隔连接创建 | ISO8601 时间跨度字符串 | 连接创建事件的聚合间隔 |
+| 聚合启用进程终止 | boolean | 启用/禁用进程终止事件的事件聚合 | 仅限 Windows|
+| 聚合间隔进程终止 | ISO8601 时间跨度字符串 | 进程终止事件的聚合间隔 | 仅限 Windows|
 |
 
 ## <a name="default-configurations-settings"></a>默认配置设置
 
 | 配置名称 | 默认值 |
 |:-----------|:---------------|
-| aggregationEnabledProcessCreate | 是 |
-| aggregationIntervalProcessCreate | PT1H.JSON|
-| aggregationEnabledConnectionCreate | 是 |
-| aggregationIntervalConnectionCreate | PT1H.JSON|
-| aggregationEnabledProcessTerminate | 是 |
-| aggregationIntervalProcessTerminate | PT1H.JSON|
+| 聚合启用进程创建 | true |
+| 聚合间隔进程创建 | "PT1H"|
+| 聚合启用连接创建 | true |
+| 聚合间隔连接创建 | "PT1H"|
+| 聚合启用进程终止 | true |
+| 聚合间隔进程终止 | "PT1H"|
 |
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了 Azure 安全中心的 IoT 安全代理聚合和可用事件配置选项。
+在本文中，您了解了用于 IoT 安全代理聚合的 Azure 安全中心以及可用的事件配置选项。
 
-若要继续开始使用 Azure 安全中心进行 IoT 部署，请使用以下文章：
+要继续使用用于 IoT 部署的 Azure 安全中心，请使用以下文章：
 
 - 了解[安全代理身份验证方法](concept-security-agent-authentication-methods.md)
 - 选择并部署[安全代理](how-to-deploy-agent.md)
-- 查看 Azure 安全中心以了解 IoT[服务先决条件](service-prerequisites.md)
-- 了解如何[在 Iot 中心为 iot 服务启用 Azure 安全中心](quickstart-onboard-iot-hub.md)
-- 详细了解[Azure 安全中心提供的 IOT 常见问题解答](resources-frequently-asked-questions.md)
+- 查看 Azure 安全中心，查看 IoT[服务先决条件](service-prerequisites.md)
+- 了解如何在[IoT 中心启用 IoT 服务的 Azure 安全中心](quickstart-onboard-iot-hub.md)
+- 从[IoT 常见问题解答的 Azure 安全中心](resources-frequently-asked-questions.md)了解有关该服务

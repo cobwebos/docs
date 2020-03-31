@@ -1,6 +1,6 @@
 ---
 title: 混合标识设计 - 多重身份验证要求 Azure | Microsoft Docs
-description: 使用条件访问控制，Azure Active Directory 检查选取用户进行身份验证时，然后才允许访问应用程序的特定条件。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
+description: 使用条件访问控件，Azure 活动目录会检查在验证用户时和允许访问应用程序之前选择的特定条件。 一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109299"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的多重身份验证要求
@@ -58,6 +58,6 @@ ms.locfileid: "67109299"
 ## <a name="next-steps"></a>后续步骤
 [定义混合标识采用策略](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 [设计注意事项概述](plan-hybrid-identity-design-considerations-overview.md)
 
