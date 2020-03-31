@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 164f07f6545c1c225814958bba5722536b11a9b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 883dbc95ee77d03aee4c3231c6ab8c03f9f7f6e4
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269438"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387829"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 AMD GPU 驱动程序
 
@@ -40,7 +40,7 @@ ms.locfileid: "78269438"
 
 2. 如果您是 NVv4 预览客户，请停止 VM 并等待它移动到"已停止（已转移）"状态。
 
-3. 请启动 VM，然后通过运行位于文件夹"._AMDClean 卸载实用程序"的"amdcleanup 实用程序-x64.exe"来卸载预览驱动程序。 确切的路径将因以前的驱动程序安装文件的位置而异。  
+3. 请启动 VM 并下载最新的[AMD 清理实用程序](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)。 通过运行"amdcleanup 实用程序-x64.exe"卸载现有驱动程序。 请不要使用与前一个驱动程序一起安装的任何 exititng 清理实用程序。  
 
 4. 下载并安装最新的驱动程序。
 

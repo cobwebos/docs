@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77167029"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
@@ -117,7 +117,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="disable-windows-firewall"></a>禁用 Windows 防火墙
 `netsh advfirewall set allprofiles state off`
 
-故障排除时，可以使用此命令暂时排除 Windows 防火墙。 它将在下一次重新启动时或使用以下命令启用它时启用。 不要通过停止 Windows 防火墙服务 (MPSSVC) 或基本筛选引擎 (BFE) 服务来排除 Windows 防火墙。 停止 MPSSVC 或 BFE 会导致所有连接被阻止。
+故障排除时，可以使用此命令暂时排除 Windows 防火墙。 它将在下次重新启动时启用，或者当您使用下面的命令启用它时。 不要通过停止 Windows 防火墙服务 (MPSSVC) 或基本筛选引擎 (BFE) 服务来排除 Windows 防火墙。 停止 MPSSVC 或 BFE 会导致所有连接被阻止。
 ### <a name="enable-windows-firewall"></a>启用 Windows 防火墙
 `netsh advfirewall set allprofiles state on`
 ## <a name="manage-users-and-groups"></a>管理用户和组
@@ -195,7 +195,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="restore-file-permissions-from-acl-file"></a>从 ACL 文件还原文件权限
 `icacls %programdata%\Microsoft\Crypto\RSA /save %temp%\MachineKeys_permissions_before.aclfile /t`
 
-使用 `/restore` 时的路径需是使用 `/save` 指定的文件夹的父文件夹。 在此示例中，`\RSA` 是在上述 `\MachineKeys` 示例中指定的 `/save` 文件夹的父级。
+使用 `/restore` 时的路径需是使用 `/save` 指定的文件夹的父文件夹。 在此示例中，`\RSA` 是在上述 `/save` 示例中指定的 `\MachineKeys` 文件夹的父级。
 ### <a name="take-ntfs-ownership-of-a-folder"></a>取得文件夹的 NTFS 所有权
 `takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`
 ### <a name="grant-ntfs-permissions-to-a-folder-recursively"></a>以递归方式授予对文件夹的 NTFS 权限
@@ -320,7 +320,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 `test-netconnection`
 
 > [!NOTE]
-> 写入进度 cmdlet 可能不适用于此命令。 作为缓解措施，可以在 PowerShell 中运行 `$ProgressPreference = "SilentlyContinue"` 以禁用进度栏。
+> 写入进度 cmdlet 可能无法使用此命令。 作为缓解措施，您可以在 PowerShell 中运行`$ProgressPreference = "SilentlyContinue"`以禁用进度栏。
 
 或
 
@@ -479,5 +479,5 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 
 ## <a name="next-steps"></a>后续步骤
 * 主要串行控制台 Windows 文档页位于[此处](serial-console-windows.md)。
-* 串行控制台也适用于 [Linux](serial-console-linux.md) VM。
-* 详细了解[启动诊断](boot-diagnostics.md)。
+* 串行控制台也可用于[Linux](serial-console-linux.md) VM。
+* 了解有关[引导诊断](boot-diagnostics.md)的更多信息。

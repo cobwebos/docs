@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务来保护内容 | Microsoft 文档
-description: 本文概述了如何使用 Azure 媒体服务 v2 进行内容保护。
+description: 本文概述了 Azure 媒体服务 v2 的内容保护。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 4ff4025941e9a77148daa91995ecf182231d1f0b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 88e0e1c18722fd86e79fc1fa7722b59b3cb8966a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976275"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460953"
 ---
 # <a name="content-protection-overview"></a>内容保护概述 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 可以使用 Azure 媒体服务在媒体从计算机离开到存储、处理和传送的整个过程中确保其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 
 
@@ -35,12 +35,17 @@ ms.locfileid: "74976275"
 本文介绍与了解使用媒体服务进行内容保护相关的概念和术语。 本文还提供指向讨论如何保护内容的文章的链接。 
 
 ## <a name="dynamic-encryption"></a>动态加密
- 可以通过 Azure 媒体服务传送使用 AES 明文密钥或 DRM 加密（利用 PlayReady、Widevine 或 FairPlay）动态加密的内容。 当前可以加密 HTTP Live Streaming (HLS)、MPEG DASH 和平滑流式处理格式。 不支持对渐进式下载加密。 每个加密方法均支持以下流式处理协议：
 
+可以通过 Azure 媒体服务传送使用 AES 明文密钥或 DRM 加密（利用 PlayReady、Widevine 或 FairPlay）动态加密的内容。 如果内容使用 AES 清除密钥进行加密，并且通过 HTTPS 发送，则在到达客户端之前不会清除内容。 
+
+每个加密方法均支持以下流式处理协议：
+ 
 - AES：MPEG-DASH、平滑流式处理和 HLS
 - PlayReady：MPEG-DASH、平滑流式处理和 HLS
 - Widevine：MPEG-DASH
 - FairPlay：HLS
+
+不支持对渐进式下载加密。 
 
 若要加密资产，则需要关联加密内容密钥和资产并且为该密钥配置授权策略。 可以指定或由媒体服务自动生成内容密钥。
 
@@ -48,7 +53,7 @@ ms.locfileid: "74976275"
 
 播放器请求流时，媒体服务将通过 AES 明文密钥或 DRM 加密使用指定的密钥来动态加密内容。 为了解密流，播放器从媒体服务密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
-## <a name="aes-128-clear-key-vs-drm"></a>AES-128 明文密钥与 DRM
+## <a name="aes-128-clear-key-vs-drm"></a>AES-128 清除键与 DRM
 客户通常希望知道他们应该使用 AES 加密还是 DRM 系统。 这两种系统之间的主要区别是，使用 AES 加密时，内容密钥以未加密格式（“明文”）传输到客户端。 因此，可以通过网络跟踪在客户端上明文查看用于加密内容的密钥。 AES-128 明文密钥加密适合查看者是受信任方的用例（例如，员工查看公司内分发的加密公司视频）。
 
 与 AES-128 明文密钥加密相比，PlayReady、Widevine 和 FairPlay 均提供更高等级的加密。 内容密钥以加密格式传输。 此外，解密是操作系统级别在安全的环境中处理的，在这样的环境中，恶意用户更难进行攻击。 在查看者可能不是受信任方且需要更高等级的安全性的用例中，建议使用 DRM。
@@ -75,6 +80,19 @@ PlayReady 和 Widevine 使用通用加密模式（AES CTR 模式）。 FairPlay 
 
 配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含为令牌签名时使用的密钥。 颁发者是颁发令牌的安全令牌服务。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
 
+### <a name="token-replay-prevention"></a>令牌重放防护
+
+*令牌重放防护*功能允许媒体服务客户对同一令牌可用于请求密钥或许可证的次数设置限制。 客户可以在令牌中添加 `urn:microsoft:azure:mediaservices:maxuses` 类型的声明，其中值是令牌可用于获取许可证或密钥的次数。 对密钥传送服务使用同一令牌的所有后续请求都将返回未经授权的响应。 请参阅“如何在 [DRM 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)中添加声明”。
+ 
+#### <a name="considerations"></a>注意事项
+
+* 客户必须控制令牌生成。 声明需要放在令牌本身中。
+* 使用此功能时，令牌过期时间超过接收请求时间一小时以上的请求将被拒绝，并返回未经授权的响应。
+* 令牌由其签名唯一标识。 对有效负荷的任何更改（例如，对到期时间或声明的更新）都会更改令牌的签名，并且该令牌将算作密钥传送服务之前没有遇到过的新令牌。
+* 如果令牌超过了客户设置的 `maxuses` 值，则播放将失败。
+* 此功能可用于所有现有的受保护内容（仅需要更改颁发的令牌）。
+* 此功能同时使用 JWT 和 SWT。
+
 ## <a name="streaming-urls"></a>流 URL
 如果资产是使用多个 DRM 加密的，请在流式处理 URL 中使用加密标记：(format='m3u8-aapl', encryption='xxx')。
 
@@ -84,25 +102,26 @@ PlayReady 和 Widevine 使用通用加密模式（AES CTR 模式）。 FairPlay 
 * 如果仅向资产应用了一种加密，则无需在 URL 中指定加密类型。
 * 加密类型不区分大小写。
 * 可以指定以下加密类型：
-  * **cenc**：对于 PlayReady 或 Widevine（通用加密）
-  * **cbcs-aapl**：对于 FairPlay（AES CBC 加密）
+
+  * **cenc**： 用于播放就绪或宽藤（通用加密）
+  * **cbcs-aapl**： 用于公平播放 （AES CBC 加密）
   * **cbc**：对于 AES 信封加密
 
 ## <a name="additional-notes"></a>附加说明
 
-* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="next-steps"></a>后续步骤
 下列文章介绍了可帮助你掌握内容保护入门知识的后续步骤：
 
 * [使用存储加密进行保护](media-services-rest-storage-encryption.md)
 * [使用 AES 加密进行保护](media-services-protect-with-aes128.md)
-* [使用 PlayReady 和/或 Widevine 进行保护](media-services-protect-with-playready-widevine.md)
+* [使用播放就绪和/或宽维文进行保护](media-services-protect-with-playready-widevine.md)
 * [使用 FairPlay 进行保护](media-services-protect-hls-with-FairPlay.md)
 
 ## <a name="related-links"></a>相关链接
 
 * [JWT 令牌身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
-* [将基于 Azure 媒体服务 OWIN MVC 的应用与 Azure Active Directory 相集成，并基于 JWT 声明限制内容密钥传送](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
+* [将 Azure 媒体服务 OWIN MVC 应用与 Azure 活动目录集成，并根据 JWT 声明限制内容密钥传递](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png

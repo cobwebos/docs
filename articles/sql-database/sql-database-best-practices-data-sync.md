@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: ee929fa227cb105b73bc929c13a768aabef37ce3
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75771677"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
@@ -25,9 +25,9 @@ ms.locfileid: "75771677"
 有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
 
 > [!IMPORTANT]
-> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例。
+> Azure SQL 数据同步此时**不支持**Azure SQL 数据库托管实例。
 
-## <a name="security-and-reliability"></a>安全性和可靠性
+## <a name="security-and-reliability"></a><a name="security-and-reliability"></a>安全性和可靠性
 
 ### <a name="client-agent"></a>客户端代理
 
@@ -39,20 +39,20 @@ ms.locfileid: "75771677"
 
 ### <a name="database-accounts-with-least-required-privileges"></a>具有所需最小特权的数据库帐户
 
--   对于同步设置。 创建/更改表、更改数据库、创建过程、选择/更改架构、创建用户定义的类型。
+-   **对于同步设置**。 创建/更改表、更改数据库、创建过程、选择/更改架构、创建用户定义的类型。
 
--   **对于正在进行的同步**。选择/插入/更新/删除选择用于同步的表以及同步元数据和跟踪表;对服务创建的存储过程的 Execute 权限;对用户定义的表类型执行权限。
+-   **对于持续同步**。选择/插入/更新/删除为同步而选择的表，以及同步元数据和跟踪表;对服务创建的存储过程执行权限;对用户定义的表类型执行权限。
 
--   对于取消预配。 在同步的表部分为“更改”权限，在同步元数据表上为“选择/删除”权限，在同步跟踪表、存储的过程和用户定义类型上为“控制”权限。
+-   **用于取消预配**。 在同步的表部分为“更改”权限，在同步元数据表上为“选择/删除”权限，在同步跟踪表、存储的过程和用户定义类型上为“控制”权限。
 
 Azure SQL 数据库仅支持单组凭据。 若要在此约束内完成这些任务，请考虑使用以下选项：
 
--   针对不同阶段更改凭据（例如 credential1 用于安装，credential2 用于正在运行）。  
+-   针对不同阶段更改凭据（例如 credential1** 用于安装，credential2** 用于正在运行）。  
 -   更改凭据的权限（即，在设置同步后更改权限）。
 
 ## <a name="setup"></a>设置
 
-### <a name="database-considerations-and-constraints"></a> 数据库考虑因素和约束
+### <a name="database-considerations-and-constraints"></a><a name="database-considerations-and-constraints"></a> 数据库考虑因素和约束
 
 #### <a name="sql-database-instance-size"></a>SQL 数据库实例大小
 
@@ -61,7 +61,7 @@ Azure SQL 数据库仅支持单组凭据。 若要在此约束内完成这些任
 > [!IMPORTANT]
 > SQL 数据同步会为每个数据库存储额外的元数据。 请确保在计算所需的空间时考虑此元数据。 增加的开销量与表宽度（例如，窄表会需要更多的开销）和流量大小有关。
 
-### <a name="table-considerations-and-constraints"></a> 表考虑因素和约束
+### <a name="table-considerations-and-constraints"></a><a name="table-considerations-and-constraints"></a> 表考虑因素和约束
 
 #### <a name="selecting-tables"></a>选择表
 
@@ -77,7 +77,7 @@ Azure SQL 数据库仅支持单组凭据。 若要在此约束内完成这些任
 
 空表在初始化时提供最佳性能。 如果目标表为空表，则数据同步会使用批量插入来加载数据。 否则，数据同步会逐行进行比较和插入以检查是否存在冲突。 但是，如果不考虑性能，则可以在已包含数据的表之间设置同步。
 
-### <a name="provisioning-destination-databases"></a> 预配目标数据库
+### <a name="provisioning-destination-databases"></a><a name="provisioning-destination-databases"></a> 预配目标数据库
 
 SQL 数据同步提供了基本的数据库自动预配。
 
@@ -94,14 +94,14 @@ SQL 数据同步自动预配的限制如下：
 -   不会预配源表上的现有触发器。  
 -   不会在目标数据库上创建视图和存储的过程。
 -   对外键约束的 ON UPDATE CASCADE 和 ON DELETE CASCADE 操作不会在目标表中重新创建。
--   如果小数列或数值列的精度大于28，则在同步过程中 SQL 数据同步可能会遇到转换溢出问题。建议将 decimal 或 numeric 列的精度限制为28或更少。
+-   如果小数列或数字列的精度大于 28，则 SQL 数据同步在同步期间可能会遇到转换溢出问题。我们建议您将小数列或数字列的精度限制为 28 或更少。
 
 #### <a name="recommendations"></a>建议
 
 -   仅在尝试使用该服务时使用 SQL 数据同步自动预配功能。  
 -   对于生产环境，应预配数据库架构。
 
-### <a name="locate-hub"></a> 在哪里定位中心数据库
+### <a name="where-to-locate-the-hub-database"></a><a name="locate-hub"></a>位置位置中心数据库
 
 #### <a name="enterprise-to-cloud-scenario"></a>企业到云方案
 
@@ -118,7 +118,7 @@ SQL 数据同步自动预配的限制如下：
 
 ## <a name="sync"></a>同步
 
-### <a name="avoid-a-slow-and-costly-initial-synchronization"></a> 避免缓慢且昂贵的初始同步
+### <a name="avoid-slow-and-costly-initial-sync"></a><a name="avoid-a-slow-and-costly-initial-synchronization"></a> 避免缓慢且昂贵的初始同步
 
 在本部分，我们将讨论同步组的初始同步。 了解如何帮助防止初始同步运行时间过长而产生不必要的昂贵开销。
 
@@ -132,13 +132,13 @@ SQL 数据同步自动预配的限制如下：
 
 如果可能，请先仅处理同步组中一个数据库的数据。
 
-### <a name="design-to-avoid-synchronization-loops"></a> 进行设计以避免同步循环
+### <a name="design-to-avoid-sync-loops"></a><a name="design-to-avoid-synchronization-loops"></a> 进行设计以避免同步循环
 
 在同步组中存在循环引用时将出现同步循环。 在此情况下，一个数据库中的每个更改都将通过同步组中的数据库进行循环无休止地复制。   
 
 请确保避免同步循环，因为它们会导致性能降低并可能显著增加成本。
 
-### <a name="handling-changes-that-fail-to-propagate"></a> 无法传播的更改
+### <a name="changes-that-fail-to-propagate"></a><a name="handling-changes-that-fail-to-propagate"></a> 无法传播的更改
 
 #### <a name="reasons-that-changes-fail-to-propagate"></a>更改无法传播的原因
 
@@ -150,7 +150,7 @@ SQL 数据同步自动预配的限制如下：
 
 #### <a name="what-happens-when-changes-fail-to-propagate"></a>如果更改无法传播，会发生什么情况？
 
--   同步组显示它处于警告状态。
+-   同步组显示它处于警告**** 状态。
 -   详细信息显示在门户 UI 日志查看器中。
 -   如果问题在 45 天未解决，数据库将过时。
 
@@ -164,17 +164,17 @@ SQL 数据同步自动预配的限制如下：
 
 ## <a name="maintenance"></a>维护
 
-### <a name="avoid-out-of-date-databases-and-sync-groups"></a> 避免过时的数据库和同步组
+### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a> 避免过时的数据库和同步组
 
-同步组或同步组中的数据库可能会过时。 如果同步组的状态为“过时”，则会停止运行。 如果数据库的状态为“过时”，数据可能会丢失。 最好避免这种情况，而不是尝试基于其还原。
+同步组或同步组中的数据库可能会过时。 当同步组的状态**过期**时，它将停止工作。 如果数据库的状态为“过时”****，数据可能会丢失。 最好避免这种情况，而不是尝试基于其还原。
 
 #### <a name="avoid-out-of-date-databases"></a>避免过时的数据库
 
-如果数据库离线长达 45 天或更多，其状态将设置为“过时”。 请确保没有任何数据库离线长达 45 天或更多，以避免数据库出现“过时”状态。
+数据库的状态设置为**过期**时，它已脱机 45 天或更长时间。 请确保没有任何数据库离线长达 45 天或更多，以避免数据库出现“过时”**** 状态。
 
 #### <a name="avoid-out-of-date-sync-groups"></a>避免过时的同步组
 
-如果同步组中的任何更改在 45 天或更长时间内无法传播到同步组中的其他数据库，则同步组的状态将设置为“过时”。 请定期检查同步组的历史记录日志，以避免同步组出现“过时”状态。 确保所有冲突已解决，且更改在同步组数据库之间成功传播。
+如果同步组中的任何更改在 45 天或更长时间内无法传播到同步组中的其他数据库，则同步组的状态将设置为“过时”****。 请定期检查同步组的历史记录日志，以避免同步组出现“过时”**** 状态。 确保所有冲突已解决，且更改在同步组数据库之间成功传播。
 
 同步组可能会由于下列原因之一无法应用更改：
 
@@ -189,7 +189,7 @@ SQL 数据同步自动预配的限制如下：
 -   更新外键值以包括失败的行中包含的值。
 -   更新失败的行中的数据值，以使其与目标数据库中的架构或外键兼容。
 
-### <a name="avoid-deprovisioning-issues"></a> 避免取消预配问题
+### <a name="avoid-deprovisioning-issues"></a><a name="avoid-deprovisioning-issues"></a> 避免取消预配问题
 
 在某些情况下，向客户端代理取消注册数据库可能会导致同步失败。
 
@@ -210,7 +210,7 @@ SQL 数据同步自动预配的限制如下：
 2. 将数据库重新添加回从中删除的每个同步组。  
 3. 部署每个受影响的同步组（此操作预配了数据库）。  
 
-### <a name="modifying-your-sync-group"></a> 修改同步组
+### <a name="modifying-a-sync-group"></a><a name="modifying-your-sync-group"></a> 修改同步组
 
 请勿尝试先从同步组中删除数据库，然后在不先部署其中一个更改的情况下编辑同步组。
 
@@ -220,11 +220,11 @@ SQL 数据同步自动预配的限制如下：
 
 ### <a name="avoid-schema-refresh-timeout"></a>避免架构刷新超时
 
-如果要同步的是复杂的架构，如果同步元数据数据库具有更低的 SKU （例如： basic），则可能会在架构刷新过程中遇到 "操作超时"。 
+在要同步复杂架构的情况下，如果同步元数据数据库的 SKU 较低（例如为“基本”），则可能会在架构刷新过程中遇到“操作超时”错误。 
 
 #### <a name="solution"></a>解决方案
 
-若要缓解此问题，请将同步元数据数据库向上扩展到更高的 SKU，例如 S3。 
+若要缓解此问题，请将同步元数据数据库纵向扩展到更高的 SKU，例如 S3。 
 
 ## <a name="next-steps"></a>后续步骤
 有关 SQL 数据同步的详细信息，请参阅：

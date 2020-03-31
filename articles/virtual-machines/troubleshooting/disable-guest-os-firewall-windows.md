@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 292b53fac6c970fb961e8ad4ce7774c080e52422
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dbb9b0f865c7ec5d9d29e2310ae41abbec287bd6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718865"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79464956"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>在 Azure VM 中禁用来宾 OS 防火墙
 
@@ -27,7 +27,7 @@ ms.locfileid: "76718865"
 
 ## <a name="solution"></a>解决方案
 
-本文所述的过程（即，如何正确设置防火墙规则）旨在作为一种解决方法，让你能够集中精力解决实际问题。 Microsoft 最佳做法是启用 Windows 防火墙组件。 配置防火墙规则的方式取决于对所需 VM 的访问级别。
+本文所述的过程（即，如何正确设置防火墙规则）旨在作为一种解决方法，让你能够集中精力解决实际问题。 启用 Windows 防火墙组件是 Microsoft 最佳实践。 如何配置防火墙规则取决于对 VM 所需的访问级别。
 
 ### <a name="online-solutions"></a>联机解决方案 
 
@@ -70,7 +70,7 @@ ms.locfileid: "76718865"
     ```
 
 > [!Note]
-> 如果通过组策略对象设置防火墙，则此方法可能不起作用，因为此命令只更改本地注册表项。 如果应用策略，它将覆盖此更改。 
+> 如果通过组策略对象设置防火墙，则此方法可能不起作用，因为此命令仅更改本地注册表项。 如果应用策略，它将覆盖此更改。 
 
 #### <a name="mitigation-3-pstools-commands"></a>缓解措施 3：PSTools 命令
 
@@ -90,9 +90,9 @@ ms.locfileid: "76718865"
 
 按以下步骤来使用[远程注册表](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在故障排除 VM 上，启动注册表编辑器，然后转到“文件” **“连接网络注册表”**  > 。
+1.  在故障排除 VM 上，启动注册表编辑器，然后转到**文件** > **连接网络注册表**。
 
-2.  打开 "*目标计算机*\SYSTEM" 分支，并指定以下值：
+2.  打开 TARGET MACHINE** \SYSTEM 分支，指定以下值：
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -100,15 +100,15 @@ ms.locfileid: "76718865"
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  重启服务。 由于无法使用远程注册表执行此操作，因此必须使用“删除服务控制台”。
+3.  重启服务。 由于无法使用远程注册表执行此操作，因此必须使用远程服务控制台。
 
-4.  打开**services.msc**的实例。
+4.  打开 **Services.msc** 的实例。
 
-5.  单击“服务(本地)”。
+5.  单击“服务(本地)”****。
 
-6.  选择“连接到另一台计算机”。
+6.  选择“连接到另一台计算机”。****
 
-7.  输入问题 VM 的**专用 IP 地址（DIP）** 。
+7.  输入问题 VM 的**专用 IP 地址 (DIP)**。
 
 8.  重启本地防火墙策略。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 基础结构可用性-Azure 安全性
-description: 本文提供了有关 Microsoft 保护 Azure 基础结构的安全, 并提供客户数据的最高可用性的信息。
+title: Azure 基础结构可用性 - Azure 安全性
+description: 本文提供有关 Microsoft 保护 Azure 基础结构并提供客户数据最大可用性的信息。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c50c4faf47caf0a7519d61fdc8989ec9fd809d78
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727215"
 ---
 # <a name="azure-infrastructure-availability"></a>Azure 基础结构可用性
-本文提供了有关 Microsoft 保护 Azure 基础结构的安全, 并提供客户数据的最高可用性的信息。 Azure 基于通过虚拟化技术实现的全面冗余提供可靠的可用性。
+本文提供有关 Microsoft 保护 Azure 基础结构并提供客户数据最大可用性的信息。 Azure 基于通过虚拟化技术实现的全面冗余提供可靠的可用性。
 
 ## <a name="temporary-outages-and-natural-disaster"></a>临时停电和自然灾害
 Microsoft 云基础结构和运营团队设计、生成、运营云基础结构并提高其安全性。 该团队确保 Azure 基础结构提供高可用性和可靠性、高效率、智能可伸缩性。 该团队提供更安全、更专用且更受信任的云。
@@ -51,7 +51,7 @@ Azure 通过高度可缩放且持久的存储服务提供存储，该服务提�
 - [Azure 网络体系结构](infrastructure-network.md)
 - [Azure 生产网络](production-network.md)
 - [Azure SQL 数据库安全功能](infrastructure-sql.md)
-- [Azure 生产运营和管理](infrastructure-operations.md)
+- [Azure 生产操作和管理](infrastructure-operations.md)
 - [Azure 基础结构监视](infrastructure-monitoring.md)
 - [Azure 基础结构完整性](infrastructure-integrity.md)
 - [Azure 客户数据保护](protection-customer-data.md)

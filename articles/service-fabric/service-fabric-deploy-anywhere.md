@@ -1,5 +1,5 @@
 ---
-title: Azure 和独立 Service Fabric 群集概述
+title: Azure 和独立 Service Fabric 群集的概述
 description: 可以在运行 Windows Server 或 Linux 的任何 VM 或计算机上创建 Service Fabric 群集。 这意味着，可以在包含一组互连 Windows Server 或 Linux 计算机（无论是本地计算机、Microsoft Azure 计算机还是任何云提供商的计算机）的任何环境中部署和运行 Service Fabric 应用程序。
 author: dkkapur
 ms.topic: conceptual
@@ -7,10 +7,10 @@ ms.date: 01/07/2020
 ms.author: dekapur
 ms.custom: sfrev
 ms.openlocfilehash: a3627effe10039ded5007f9dd060bf1865929040
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75751144"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>将 Azure Service Fabric 群集与 Windows Server 和 Linux 上的独立 Service Fabric 群集进行比较
@@ -27,7 +27,7 @@ Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理�
 * **Azure 资源管理器：** 使用 Azure 资源管理器可以单元的形式方便地管理群集使用的所有资源，并简化了成本跟踪和计费。
 * **用作 Azure 资源的 Service Fabric 群集** Service Fabric 群集是一种 Azure 资源，因此可以像在 Azure 中对其他资源建模一样为它建模。
 * **与 Azure 基础结构集成** Service Fabric 与适用于 OS、网络和其他升级的 Azure 基础结构相协调，以提高应用程序的可用性与可靠性。  
-* **诊断：** 在 Azure 上，我们提供与 Azure 诊断和 Azure Monitor 日志的集成。
+* **诊断：** 在 Azure 上，我们提供与 Azure 诊断和 Azure 监视器日志的集成。
 * **自动缩放：** 对于 Azure 上的群集，我们借助虚拟机缩放集提供内置自动缩放功能。 在本地和其他云环境中，必须构建自己的自动调整规模功能或使用 Service Fabric 为调整群集规模而公开的 API 来手动调整规模。
 
 ## <a name="benefits-of-standalone-clusters"></a>独立群集的优点
@@ -43,4 +43,4 @@ Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理�
 
 * 阅读 [Azure 上的 Service Fabric 群集](service-fabric-azure-clusters-overview.md)的概述
 * 阅读 [Service Fabric 独立群集](service-fabric-standalone-clusters-overview.md)的概述
-* 了解 [Service Fabric 支持选项](service-fabric-support.md)
+* 了解[服务交换矩阵支持选项](service-fabric-support.md)

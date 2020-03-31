@@ -4,10 +4,10 @@ description: 使用 Service Fabric 的 DNS 服务从群集内部发现微服务�
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.openlocfilehash: 317aa81238ec7a0dc24b69b1d00568901b9bc34f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458031"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服务
@@ -35,14 +35,14 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 > [!NOTE]
 > 在 Linux 上尚不支持用于 Service Fabric 服务的 DNS 服务。
 
-使用门户创建群集时，默认情况下，在“群集配置”菜单的“包括 DNS 服务”复选框中启用 DNS 服务：
+使用门户创建群集时，默认情况下，在“群集配置”菜单的“包括 DNS 服务”复选框中启用 DNS 服务********：
 
 ![通过门户启用 DNS 服务](./media/service-fabric-dnsservice/enable-dns-service.png)
 
 如果不使用门户创建群集或者要更新现有群集，则需要在模板中启用 DNS 服务：
 
 - 若要部署新的群集，可以使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或创建自己的资源管理器模板。 
-- 若要更新现有群集，可以导航到门户的群集资源组并单击“自动化脚本”，使用反映群集和组中其他资源当前状态的模板。 若要了解详细信息，请参阅[从资源组导出模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)。
+- 若要更新现有群集，可以导航到门户的群集资源组并单击“自动化脚本”，使用反映群集和组中其他资源当前状态的模板****。 若要了解详细信息，请参阅[从资源组导出模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)。
 
 有了模板后，可以通过以下步骤启用 DNS 服务：
 
@@ -100,13 +100,13 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
               ]
             }
        ```
-3. 通过这些更改更新群集模板后，请应用更改并等待升级完成。 完成升级后，DNS 系统服务将开始在群集中运行。 服务名称是 `fabric:/System/DnsService`，可以在 Service Fabric Explorer 的“系统”服务部分下找到它。 
+3. 通过这些更改更新群集模板后，请应用更改并等待升级完成。 完成升级后，DNS 系统服务将开始在群集中运行。 服务名称是 `fabric:/System/DnsService`，可以在 Service Fabric Explorer 的“系统”服务部分下找到它****。 
 
 > [!NOTE]
-> 将 DNS 从 "已禁用" 升级为 "已启用" 时，Service Fabric Explorer 可能不会反映新状态。 若要解决此情况，请通过修改 Azure 资源管理器模板中的 UpgradePolicy 重启节点。 有关详细信息，请参阅[Service Fabric 模板参考](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications)。
+> 将 DNS 从禁用升级到启用时，Service Fabric Explorer 可能未反映新状态。 若要解决问题，请重启节点，方法是：在 Azure 资源管理器模板中修改 UpgradePolicy。 有关详细信息，请参阅 [Service Fabric 模板参考](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications)。
 
 > [!NOTE]
-> 在本地计算机上进行开发时启用 DNS 服务将替代某些 DNS 设置。 如果在连接到 internet 时遇到问题，请检查 DNS 设置。
+> 在本地计算机上进行开发时，如果启用 DNS 服务，则会替代某些 DNS 设置。 如果在连接到 Internet 时遇到问题，请检查 DNS 设置。
 
 ## <a name="setting-the-dns-name-for-your-service"></a>设置服务的 DNS 名称
 可以在 ApplicationManifest.xml 文件中或者通过 PowerShell 命令，以声明方式为默认服务设置 DNS 名称。
@@ -170,10 +170,10 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 ```
     <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
-地点：
+其中：
 
 - *First-Label-Of-Partitioned-Service-DNSName* 是服务 DNS 名称的第一个部分。
-- *PartitionPrefix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 默认值为 "--"。 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
+- *PartitionPrefix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 默认值为“--”。 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 - *Target-Partition-Name* 是分区的名称。 
 - *PartitionSuffix* 是可以在群集清单的 DnsService 节中设置的，或者通过群集资源管理器模板设置的值。 默认值为空字符串。 有关详细信息，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 - *Remaining-Partitioned-Service-DNSName* 是服务 DNS 名称的剩余部分。

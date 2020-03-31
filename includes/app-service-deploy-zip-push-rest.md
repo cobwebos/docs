@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 08/12/2019
 ms.author: cephalin
 ms.openlocfilehash: 92e39f128e90ba83a919388e217f0edc86f81770
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75769654"
 ---
-## <a name="rest"></a>使用 REST API 部署 ZIP 文件 
+## <a name="deploy-zip-file-with-rest-apis"></a><a name="rest"></a>使用 REST API 部署 ZIP 文件 
 
 可以使用[部署服务 REST API](https://github.com/projectkudu/kudu/wiki/REST-API) 将 .zip 文件部署到 Azure 中的应用。 若要部署，请将 POST 请求发送到 https://<app_name>.scm.azurewebsites.net/api/zipdeploy。 POST 请求必须在消息正文中包含此 .zip 文件。 应用的部署凭据是通过使用 HTTP BASIC 身份验证在请求中提供的。 有关详细信息，请参阅 [.zip 推送部署参考](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)。 
 
@@ -33,7 +33,7 @@ curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deploymen
 
 ### <a name="with-powershell"></a>使用 PowerShell
 
-下面的示例使用[AzWebapp](/powershell/module/az.websites/publish-azwebapp)上传 .zip 文件。 替换占位符 `<group-name>`、`<app-name>` 和 `<zip-file-path>`。
+下面的示例使用 [Publish-AzWebapp](/powershell/module/az.websites/publish-azwebapp) 上传 .zip 文件。 替换占位符 `<group-name>`、`<app-name>` 和 `<zip-file-path>`。
 
 ```powershell
 Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <zip-file-path>
@@ -41,7 +41,7 @@ Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <
 
 此请求从已上传的 .zip 文件触发推送部署。 
 
-若要查看当前和之前的部署，请运行以下命令。 同样，请替换 `<deployment-user>`、`<deployment-password>`和 `<app-name>` 占位符。
+若要查看当前和之前的部署，请运行以下命令。 再次替换 `<deployment-user>`、`<deployment-password>` 和 `<app-name>` 占位符。
 
 ```bash
 $username = "<deployment-user>"

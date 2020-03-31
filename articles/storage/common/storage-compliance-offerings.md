@@ -9,10 +9,10 @@ ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
 ms.openlocfilehash: 1ad41b0b7391236a15b7c1be7d42ed81aaf5b51a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61483428"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure 存储符合性产品/服务
@@ -21,7 +21,7 @@ ms.locfileid: "61483428"
 
 你可以找到以下 Azure 存储上的符合性产品/服务，确保你的服务在使用 Azure 存储服务方面受到管控。 它们适用于以下 Azure 存储产品/服务：Blob、文件、队列、表、磁盘、冷存储和高级存储。
 
-## <a name="global"></a>全局
+## <a name="global"></a>Global
 
 * [CSA-STAR-Attestation](https://www.microsoft.com/trustcenter/compliance/csa-star-attestation)
 * [CSA-Star-Certification](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)
@@ -79,7 +79,7 @@ ms.locfileid: "61483428"
 * [ENISA IAF（欧盟）](https://aka.ms/AzureCompliance)
 * [ENS（西班牙）](https://www.microsoft.com/trustcenter/compliance/spainens)
 * [EU-Model-Clauses](https://www.microsoft.com/trustcenter/compliance/eu-model-clauses)
-* [欧盟美国隐私盾](https://privacy.microsoft.com/en-US/microsoft-eu-us-privacy-shield)
+* [欧盟-美国隐私保护](https://privacy.microsoft.com/en-US/microsoft-eu-us-privacy-shield)
 * [GB 18030（中国）](https://www.trustcenter.cn/compliance/default.html#GB18030)
 * [GDPR（欧盟）](https://www.microsoft.com/trustcenter/privacy/gdpr)
 * [IT Grundschutz Workbook（德国）](https://www.microsoft.com/TrustCenter/Compliance/IT-Grundschutz)

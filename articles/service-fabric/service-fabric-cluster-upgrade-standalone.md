@@ -1,13 +1,13 @@
 ---
 title: 升级 Azure Service Fabric 独立群集
-description: 了解有关升级 Azure Service Fabric 独立群集的版本或配置的信息。  万亿项
+description: 了解有关升级 Azure Service Fabric 独立群集的版本或配置的信息。  T
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451825"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>升级和更新 Service Fabric 独立群集
@@ -15,13 +15,13 @@ ms.locfileid: "75451825"
 对于任何现代系统，设计可升级性都是实现产品长期成功的关键。 Azure Service Fabric 独立群集是你拥有的资源。 本文介绍可以升级或更新的内容。
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>控制在群集上运行的结构版本
-请确保群集始终运行[受支持的 Service Fabric 版本](service-fabric-versions.md)。 当 Microsoft 宣布推出新版 Service Fabric 时，即标志着自宣布日期起至少 60 天后，将结束对旧版的支持。 新版本将[在 Service Fabric 团队博客](https://blogs.msdn.microsoft.com/azureservicefabric/)中宣布。 从该时间开始，便可以选择使用新版本。
+确保群集始终运行[受支持的 Service Fabric 版本](service-fabric-versions.md)。 当 Microsoft 宣布推出新版 Service Fabric 时，即标志着自宣布日期起至少 60 天后，将结束对旧版的支持。 新版本将[在 Service Fabric 团队博客](https://blogs.msdn.microsoft.com/azureservicefabric/)中宣布。 从该时间开始，便可以选择使用新版本。
 
 可以将群集设置为 Microsoft 发布结构升级时自动接收该升级，也可以手动选择希望群集安装的受支持结构版本。 有关详细信息，请阅读[升级群集上运行的 Service Fabric 版本](service-fabric-cluster-upgrade-windows-server.md)。
 
 ## <a name="customize-configuration-settings"></a>自定义配置设置
 
-可以在 ClusterConfig.json 文件中设置许多不同的[配置设置](service-fabric-cluster-manifest.md)，例如群集的可靠性级别和节点属性。  若要了解详细信息，请阅读[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。  还可自定义许多其他更高级的设置。  有关详细信息，请参阅 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)。
+可以在 ClusterConfig.json 文件中设置许多不同的[配置设置](service-fabric-cluster-manifest.md)，例如群集的可靠性级别和节点属性**。  若要了解详细信息，请阅读[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。  还可自定义许多其他更高级的设置。  有关详细信息，请参阅 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)。
 
 ## <a name="define-node-properties"></a>定义节点属性
 有时，可能需要确保仅在群集中特定类型的节点上运行某些工作负荷。 例如，某些工作负荷可能需要 GPU 或 SSD，而有些则不用。 对于群集中的每个节点类型，可以向群集节点添加自定义节点属性。 放置约束是附加到单个服务的语句，这些服务专供 1 个或多个节点属性选择。 放置约束定义服务运行的位置。

@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute：路由器配置示例-NAT
+title: Azure 快速路由：路由器配置示例 - NAT
 description: 本页提供 Cisco 和 Juniper 路由器的路由器配置示例。
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.openlocfilehash: ef2fd40db422c459ca966e802344ef45f7ec01de
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74072117"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>用于设置和管理 NAT 的路由器配置示例
@@ -82,7 +82,7 @@ NAT 命令：
 
 
 ## <a name="juniper-srx-series-routers"></a>Juniper SRX 系列路由器
-### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. 为群集创建冗余的以太网接口
+### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a>1. 为群集创建冗余以太网接口
     interfaces {
         reth0 {
             description "To Internal Network";
@@ -212,7 +212,7 @@ NAT 命令：
            }
        }
 
-### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. 配置 BGP 以便在每个方向上公布选择性前缀
+### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5. 配置 BGP 以通告每个方向的选择性前缀
 请参阅[路由配置示例](expressroute-config-samples-routing.md)页中的示例。
 
 ### <a name="6-create-policies"></a>6. 创建策略

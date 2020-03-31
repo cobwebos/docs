@@ -4,10 +4,10 @@ description: 有关如何在 Service Fabric 中安全运行微服务应用程序
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75452257"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric 应用程序和服务安全性
@@ -25,7 +25,7 @@ ms.locfileid: "75452257"
 
 如果可以直接访问服务，则可以使用某个身份验证服务（例如 Azure Active Directory，或充当安全令牌服务 (STS) 的专用身份验证微服务）对用户进行身份验证。 信任决策在包含安全令牌或 Cookie 的服务之间共享。 
 
-对于 ASP.NET Core，用于[对用户进行身份验证](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)的主要机制是 ASP.NET Core 标识成员身份系统。 ASP.NET Core 标识在开发人员配置的数据存储中存储用户信息（包括登录信息、角色和声明）。 ASP.NET Core 标识支持双重身份验证。  此外还支持外部身份验证提供程序，因此用户可以使用 Microsoft、Google、Facebook 或 Twitter 等提供程序中的现有身份验证过程登录。
+对于 ASP.NET Core，用于[对用户进行身份验证](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)的主要机制是 ASP.NET Core 标识成员身份系统。 ASP.NET Core 标识在开发人员配置的数据存储中存储用户信息（包括登录信息、角色和声明）。 ASP.NET Core 标识支持双重身份验证。  外部身份验证提供商也受支持，因此用户可以使用来自 Microsoft、Google、Facebook 或 Twitter 等提供商的现有身份验证进程登录。
 
 ### <a name="authorization"></a>授权
 完成身份验证后，服务需要为用户访问授权，或确定哪些用户可以访问。 此过程可让服务将 API 提供给某些经过身份验证的用户使用，而不是提供给所有用户使用。 授权是正交性的，它独立于身份验证，是认定用户身份的过程。 身份验证可为当前用户创建一个或多个标识。
@@ -40,7 +40,7 @@ ms.locfileid: "75452257"
 API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路由规则向后端 Service Fabric 服务发布 API。  可以使用限制来保护对后端服务的访问、防止 DOS 攻击；还可以验证 API 密钥、JWT 令牌、证书和其他凭据。 有关详细信息，请参阅[有关 Service Fabric 与 Azure API 管理的概述](service-fabric-api-management-overview.md)。
 
 ## <a name="manage-application-secrets"></a>管理应用程序机密
-机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。 本文使用 Azure Key Vault 来管理密钥和机密。 但是，在应用程序中*使用*机密的方式不区分云平台，因此可让应用程序部署到托管在任何位置的群集。
+机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。 本文使用 Azure Key Vault 来管理密钥和机密。 但是，在应用程序中*使用*机密与云平台无关，允许将应用程序部署到任何位置托管的群集。
 
 建议通过[服务配置包][config-package]来管理服务配置设置。 可以通过包含运行状况验证和自动回滚的托管滚动升级机制来控制配置包版本以及对其进行更新。 这比全局配置更有优势，因为可以减少全局服务中断的可能性。 加密的机密也不例外。 通过 Service Fabric 的内置功能，可以使用证书加密来加密和解密配置包 Settings.xml 文件中的值。
 
@@ -55,7 +55,7 @@ API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路
 3. 在部署应用程序时使用证书加密机密值，并将其注入服务的 Settings.xml 配置文件。
 4. 通过使用相同的加密证书进行解密，从 Settings.xml 中读取加密值。 
 
-此处[Azure Key Vault][key-vault-get-started]用作证书的安全存储位置，也可作为一种方法，用于获取在 Azure 中的 Service Fabric 群集上安装的证书。 如果不部署到 Azure，则不需要使用密钥保管库来管理 Service Fabric 应用程序中的机密。
+[Azure 密钥保管库][key-vault-get-started]在此处用作证书的安全存储位置，也可用于将证书安装在 Azure 中的 Service Fabric 群集上。 如果不部署到 Azure，则不需要使用密钥保管库来管理 Service Fabric 应用程序中的机密。
 
 有关示例，请参阅[管理应用程序机密](service-fabric-application-secret-management.md)。
 

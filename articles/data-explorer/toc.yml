@@ -15,6 +15,8 @@
       href: web-query-data.md
 - name: 教程
   items:
+    - name: 编写查询
+      href: write-queries.md
     - name: E2E 编程 Blob 引入
       items:
         - name: 'C#'
@@ -32,14 +34,22 @@
         - name: 数据引入概述
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+        - name: 数据引入属性
+          href: ingestion-properties.md
+        - name: 数据引入的格式
+          href: ingestion-supported-formats.md
     - name: Kusto 查询语言
       items:
         - name: 快速参考指南
           href: kql-quick-reference.md
     - name: 数据可视化概述
       href: viz-overview.md
-    - name: 安全概述
-      href: security.md
+    - name: 安全性
+      items:
+        - name: 安全概述
+          href: security.md
+        - name: 安全基线
+          href: security-baseline.md
 - name: 操作方法指南
   items:
     - name: 创建群集和数据库
@@ -60,6 +70,8 @@
           href: ingest-data-one-click.md
         - name: 流式引入
           href: ingest-data-streaming.md
+        - name: 使用 LightIngest
+          href: lightingest.md
         - name: 事件中心
           items:
             - name: Azure 门户
@@ -106,8 +118,6 @@
           href: ingest-json-formats.md
     - name: 查询数据
       items:
-        - name: 编写查询
-          href: write-queries.md
         - name: 在 Azure Data Lake 中查询数据
           href: data-lake-query-data.md
         - name: 在 Azure Monitor 中查询数据
@@ -158,12 +168,22 @@
           href: k2bridge.md
     - name: 安全
       items:
+        - name: 网络隔离 (VNet)
+          items:
+            - name: 在 VNet 中创建群集 - 门户
+              href: vnet-create-cluster-portal.md
+            - name: 将群集部署到 VNet
+              href: vnet-deployment.md
+            - name: 排查 VNet 群集创建、连接和操作的问题
+              href: vnet-deploy-troubleshoot.md
         - name: 管理群集安全性
           href: manage-cluster-security.md
         - name: 配置托管标识
           href: managed-identities.md
         - name: 配置客户管理的密钥
           items:
+            - name: 门户
+              href: customer-managed-keys-portal.md
             - name: 'C#'
               href: customer-managed-keys-csharp.md
             - name: Azure 资源管理器模板
@@ -214,10 +234,6 @@
               href: delete-data.md
             - name: 处理重复数据
               href: dealing-with-duplicates.md
-    - name: 部署
-      items:
-        - name: 将群集部署到虚拟网络
-          href: vnet-deployment.md
     - name: 监视
       items:
         - name: 使用诊断日志监视引入
@@ -236,6 +252,12 @@
               href: data-factory-template.md
             - name: 使用 Azure 数据工厂运行控制命令
               href: data-factory-command-activity.md
+        - name: Microsoft Flow 连接器
+          items:
+            - name: Microsoft Flow 连接器
+              href: flow.md
+            - name: Microsoft Flow 连接器用法示例
+              href: flow-usage.md
         - name: Apache Spark 连接器
           href: spark-connector.md
         - name: 使用 Python 从 Databricks 连接

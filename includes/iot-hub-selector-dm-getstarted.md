@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 239ea2eb4d5bc8d326d5ca503a18b149252dc1be
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69558741"
 ---
 > [!div class="op_single_selector"]
@@ -17,7 +17,7 @@ ms.locfileid: "69558741"
 > * [Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)
 
-后端应用可以使用 Azure IoT 中心基元 (如[设备][lnk-devtwin]克隆和[直接方法][lnk-c2dmethod]) 远程启动和监视设备上的设备管理操作。 本教程说明后端应用和设备应用如何协同工作，以便使用 IoT 中心发起远程设备重启操作并对其进行监视。
+后端应用可以使用 Azure IoT 中心基元（例如[设备孪生][lnk-devtwin]和[直接方法][lnk-c2dmethod]）远程启动和监视设备上的设备管理操作。 本教程说明后端应用和设备应用如何协同工作，以便使用 IoT 中心发起远程设备重启操作并对其进行监视。
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 从 Oracle 服务云复制数据（预览版）
+title: 从 Oracle 服务云复制数据（预览）
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Oracle 服务云复制到支持的接收器数据存储。
 services: data-factory
 ms.author: jingwang
@@ -12,25 +12,25 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: c655ddf47318951f01cb86841a72389489941db2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930510"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Oracle 服务云复制数据
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Oracle 服务云复制数据。 是基于总体介绍复制活动的[复制活动概述](copy-activity-overview.md)一文进行扩展的。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 Oracle 服务云复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 > [!IMPORTANT]
-> 此连接器目前以预览版提供。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
+> 此连接器目前提供预览版。 可以进行试用并提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-以下活动支持此 Oracle 服务云连接器：
+以下活动支持此 Oracle Service Cloud 连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
-- [Lookup 活动](control-flow-lookup-activity.md)
+- [查找活动](control-flow-lookup-activity.md)
 
 可以将数据从 Oracle 服务云复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -46,17 +46,17 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Oracle 服务云链接服务支持以下属性：
 
-| properties | 描述 | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：OracleServiceCloud | 是 |
+| type | type 属性必须设置为：OracleServiceCloud**** | 是 |
 | host | Oracle 服务云实例的 URL。  | 是 |
 | username | 用于访问 Oracle 服务云服务器的用户名。  | 是 |
 | password | 在用户名键中提供的用户名所对应的密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
-| useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | No |
-| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | No |
-| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | No |
+| useEncryptedEndpoints | 指定是否使用 HTTPS 加密数据源终结点。 默认值为 true。  | 否 |
+| useHostVerification | 指定通过 SSL 连接时是否需要服务器证书中的主机名匹配服务器的主机名。 默认值为 true。  | 否 |
+| usePeerVerification | 指定通过 SSL 连接时是否要验证服务器的标识。 默认值为 true。  | 否 |
 
-**示例：**
+**例子：**
 
 ```json
 {
@@ -81,14 +81,14 @@ Oracle 服务云链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Oracle 服务云数据集支持的属性列表。
+有关可用于定义数据集的节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Oracle 服务云数据集支持的属性列表。
 
-若要从/向 Oracle 服务云复制数据，请将数据集的 type 属性设置为“OracleServiceCloudObject”。 支持以下属性：
+若要从/向 Oracle 服务云复制数据，请将数据集的 type 属性设置为“OracleServiceCloudObject”****。 支持以下属性：
 
-| properties | 描述 | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为： **OracleServiceCloudObject** | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| type | 数据集的类型属性必须设置为 **：OracleServiceCloudObject** | 是 |
+| tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -114,14 +114,14 @@ Oracle 服务云链接服务支持以下属性：
 
 ### <a name="oracle-service-cloud-as-source"></a>作为源的 Oracle 服务云
 
-若要从 Oracle 服务云复制数据，请将复制活动中的源类型设置为“OracleServiceCloudSource”。 复制活动源部分支持以下属性：
+若要从 Oracle 服务云复制数据，请将复制活动中的源类型设置为“OracleServiceCloudSource”****。 复制活动**源**部分支持以下属性：
 
-| properties | 描述 | 需要 |
+| properties | 描述 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：OracleServiceCloudSource | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动源的 type 属性必须设置为：OracleServiceCloudSource**** | 是 |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
-**示例：**
+**例子：**
 
 ```json
 "activities":[
@@ -153,10 +153,10 @@ Oracle 服务云链接服务支持以下属性：
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>查找活动属性
+## <a name="lookup-activity-properties"></a>Lookup 活动属性
 
-若要了解有关属性的详细信息，请检查[查找活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动作为源和接收器支持的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

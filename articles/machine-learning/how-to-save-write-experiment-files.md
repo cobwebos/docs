@@ -1,7 +1,7 @@
 ---
-title: 在何处保存 & 写入试验文件
+title: 保存和写入试验文件的位置
 titleSuffix: Azure Machine Learning
-description: 了解保存实验输入文件的位置，以及写入输出文件的位置，以防止出现存储限制错误和试验延迟。
+description: 了解保存试验输入文件以及写入输出文件的位置，以防止出现存储空间上限错误和试验延迟。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -13,68 +13,68 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79078435"
 ---
-# <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>在何处为 Azure 机器学习试验保存和写入文件
+# <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>保存和写入 Azure 机器学习试验文件的位置
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍保存输入文件的位置，以及从试验写入输出文件的位置，以防止出现存储限制错误和试验延迟。
+本文介绍在试验中保存输入文件以及写入输出文件的位置，以防止出现存储空间上限错误和试验延迟。
 
-在[计算目标](how-to-set-up-training-targets.md)上启动训练时，它们会与外部环境隔离。 此设计的目的是确保实验的可再现性和可移植性。 如果在相同或其他计算目标上运行相同的脚本两次，则会收到相同的结果。 利用此设计，你可以将计算目标视为无状态计算资源，每个资源都与在完成后运行的作业没有关联。
+在[计算目标](how-to-set-up-training-targets.md)上启动训练运行时，它们会与外部环境隔离。 此设计的目的是确保试验的可再现性和可移植性。 如果在相同或不同的计算目标上运行同一脚本两次，可获得相同的结果。 在此设计中，可将计算目标视为无状态计算资源，其中每个资源与完成后运行的作业无关联。
 
-## <a name="where-to-save-input-files"></a>在何处保存输入文件
+## <a name="where-to-save-input-files"></a>保存输入文件的位置
 
-在对计算目标或本地计算机启动试验之前，必须确保所需的文件对该计算目标可用，如需要运行的代码的依赖项文件和数据文件。
+在对计算目标或本地计算机启动试验之前，必须确保所需文件对该计算目标可用，例如需要运行的代码的依赖项文件和数据文件。
 
-Azure 机器学习通过将整个脚本文件夹复制到目标计算上下文来运行训练脚本，然后拍摄快照。 试验快照的存储限制为 300 MB 和/或2000个文件。
+Azure 机器学习通过将整个脚本文件夹复制到目标计算上下文来运行训练脚本，然后拍摄快照。 试验快照的存储空间上限为 300 MB 和/或 2000 个文件。
 
-出于此原因，我们建议：
+因此，我们建议：
 
-* **将文件存储在 Azure 机器学习[数据](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)存储中。** 这会阻止试验延迟问题，并具有从远程计算目标访问数据的优点，这意味着身份验证和装载由 Azure 机器学习管理。 详细了解如何将数据存储指定为源目录，并将文件上传到数据存储中的数据存储文章中的[访问数据](how-to-access-data.md)。
+* 将文件存储在 Azure 机器学习[数据存储](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)中****。 这样能防止出现试验延迟问题，并具有从远程计算目标访问数据的优点，这意味着身份验证和装载工作都由 Azure 机器学习管理。 请参阅[访问数据存储中的数据](how-to-access-data.md)一文，详细了解如何将数据存储指定为源目录，以及如何将文件上传到数据存储。
 
-* **如果只需要几个数据文件和依赖项脚本并且不能使用数据存储，请**将这些文件放在与训练脚本相同的文件夹目录中。 将此文件夹指定为你的 `source_directory` 在训练脚本中直接指定，或在调用训练脚本的代码中指定。
+* 如果只需要几个数据文件和依赖项脚本且无法使用数据存储，请将文件放在与训练脚本相同的文件夹目录中****。 在训练脚本或者调用训练脚本的代码中直接将此文件夹指定为 `source_directory`。
 
 <a name="limits"></a>
 
-### <a name="storage-limits-of-experiment-snapshots"></a>试验快照的存储限制
+### <a name="storage-limits-of-experiment-snapshots"></a>试验快照的存储空间上限
 
-对于试验，Azure 机器学习会根据配置运行时所建议的目录自动进行代码的实验。 此限制的总大小限制为 300 MB 和/或2000个文件。 如果超出此限制，你将看到以下错误：
+Azure 机器学习会根据配置运行时所选择的目录自动为试验制作代码的试验快照。 此试验快照的总空间上限为 300 MB 和/或 2000 个文件。 如果超出限制，将看到以下错误：
 
 ```Python
 While attempting to take snapshot of .
 Your total snapshot size exceeds the limit of 300.0 MB
 ```
 
-若要解决此错误，请将实验文件存储在数据存储上。 如果无法使用数据存储，下表提供了可能的替代解决方案。
+要解决此错误，请将试验文件存储在数据存储中。 如果无法使用数据存储，下表提供了一些可以考虑的替代解决方案。
 
-试验&nbsp;说明|存储限制解决方案
+试验说明|存储空间上限解决方案
 ---|---
-小于2000个文件 & 无法使用数据存储| 替代快照大小限制 <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> 这可能需要几分钟时间，具体取决于文件的数量和大小。
-必须使用特定的脚本目录| 创建一个 `.amlignore` 文件，将不属于源代码的实验快照中的文件排除在外。 将文件名添加到 `.amlignore` 文件中，并将其放在训练脚本所在的同一目录中。 `.amlignore` 文件使用与 `.gitignore` 文件相同的[语法和模式](https://git-scm.com/docs/gitignore)。
-管道|为每个步骤使用不同的子目录
+上限低于 2000 个文件且无法使用数据存储| 使用该方法重写快照大小限制 <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> 这可能需要数分钟的时间，具体取决于文件的数量和大小。
+必须使用特定的脚本目录| 创建一个 `.amlignore` 文件，将不属于源代码的实验快照中的文件排除在外。 将文件名添加到 `.amlignore` 文件中，并将其放在与训练脚本一样的目录中。 `.amlignore` 文件使用的[语法和模式](https://git-scm.com/docs/gitignore)与 `.gitignore` 文件相同。
+管道|在每个步骤中使用不同的子目录
 Jupyter 笔记本| 创建 `.amlignore` 文件或将笔记本移动到新的空子目录，然后再次运行代码。
 
 ## <a name="where-to-write-files"></a>写入文件的位置
 
-由于定型试验的隔离，在运行期间发生的文件更改不一定在您的环境中保留。 如果你的脚本修改本地的文件以进行计算，则不会为下一次试验运行保留更改，并且不会自动将其传播回客户端计算机。 因此，在第一次试验期间所做的更改不会在第二次运行时产生影响。
+由于训练实验具有隔离性，所以在运行期间发生的文件更改并不一定在你的环境之外保留。 如果脚本在本地修改了文件以进行计算，那么，既不会为下一次试验运行持久保存更改，也不会自动将更改传播回客户端计算机。 因此在第一次试验运行期间所做的更改不应影响第二次试验运行中的更改。
 
 写入更改时，建议将文件写入 Azure 机器学习数据存储。 请参阅[访问数据存储中的数据](how-to-access-data.md)。
 
-如果不需要数据存储，请将文件写入 `./outputs` 和/或 `./logs` 文件夹。
+如果不需要使用数据存储，请将文件写入 `./outputs` 和/或 `./logs` 文件夹。
 
 >[!Important]
-> 两个文件夹（*输出*和*日志*）接收 Azure 机器学习的特殊处理。 在训练过程中，当您将文件写入`./outputs` 和`./logs` 文件夹时，这些文件将自动上传到您的运行历史记录，这样您就可以在运行完成后对其进行访问。
+> “outputs”和“logs”两个文件夹接收 Azure 机器学习的特殊处理****。 在训练期间，如果将文件写入 `./outputs` 和 `./logs` 文件夹，则会将这些文件自动上传到运行历史记录，以便在完成运行后对其具有访问权限。
 
-* **对于诸如状态消息或评分结果这样的输出，请**将文件写入 `./outputs` 文件夹，因此它们在运行历史记录中作为项目保存。 请注意写入到此文件夹中的文件的数量和大小，因为在将内容上载到运行历史记录时可能会发生延迟。 如果需要考虑延迟，则建议将文件写入数据存储。
+* 对于诸如状态消息或评分结果这样的输出，请将文件写入 `./outputs` 文件夹，以便将它们作为项目持久保存在运行历史记录中****。 请注意写入到此文件夹中的文件数量和文件大小，因为在将内容上传到运行历史记录时可能会出现延迟。 如果需要考虑延迟，则建议将文件写入数据存储。
 
-* **若要将写入的文件以日志形式保存在运行历史记录中，请**将文件写入 `./logs` 文件夹。 日志是实时上载的，因此，此方法适用于从远程运行流式传输实时更新。
+* 若要将写入的文件以日志形式保存在运行历史记录中，请将文件写入 `./logs` 文件夹****。 日志是实时上传的，所以此方法适用于从远程运行流式传输实时更新。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解如何[访问数据存储中的数据](how-to-access-data.md)。
 
-* 了解有关[如何设置定型目标](how-to-set-up-training-targets.md)的详细信息。
+* 详细了解[如何设置训练目标](how-to-set-up-training-targets.md)。

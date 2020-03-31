@@ -1,7 +1,7 @@
 ---
-title: 引用技能集中的输入和输出
+title: 技能集中的参考输入和输出
 titleSuffix: Azure Cognitive Search
-description: 介绍批注语法，以及如何在 Azure 认知搜索的 AI 扩充管道中的技能组合的输入和输出中引用注释。
+description: 解释注释语法以及如何在 Azure 认知搜索中的 AI 扩充管道中技能集的输入和输出中引用注释。
 manager: nitinme
 author: LuisCabrer
 ms.author: luisca
@@ -9,13 +9,13 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113864"
 ---
-# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>如何在 Azure 认知搜索技能组合中引用批注
+# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>如何引用 Azure 认知搜索技能集中的注释
 
 本文介绍如何在技能定义中引用注释，并使用示例演示各种方案。 当文档的内容流经一组技能时，它将通过注释进行扩充。 注释可以用作进一步下游扩充的输入，也可以映射到索引中的输出字段。 
  
@@ -25,7 +25,7 @@ ms.locfileid: "74113864"
 
 在复习语法之前，让我们回顾一些重要的概念，以便更好地理解本文后面提供的示例。
 
-| 术语 | 说明 |
+| 术语 | 描述 |
 |------|-------------|
 | 扩充文档 | 扩充文档是由管道创建和使用的内部结构，用来保存与文档相关的所有注释。 可以把扩充文档看作是注释树。 通常，从前一个注释创建的注释将成为前一个注释的子级。<p/>扩充文档仅在技能集执行期间存在。 内容映射到搜索索引后，就不再需要扩充文档了。 虽然不直接与扩充文档交互，但在创建技能集时，有一个文档的心理模型是很有用的。 |
 | 扩充上下文 | 扩充发生的上下文，即扩充的元素。 默认情况下，扩充上下文位于 `"/document"` 级别，作用域为单个文档。 当一个技能运行时，该技能的输出将成为[定义上下文的属性](#example-2)。|
@@ -120,8 +120,8 @@ ms.locfileid: "74113864"
 
 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 + [如何将自定义技能集成到扩充管道](cognitive-search-custom-skill-interface.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
-+ [创建技能集 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [创建技能组合 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [如何将扩充字段映射到索引](cognitive-search-output-field-mapping.md)

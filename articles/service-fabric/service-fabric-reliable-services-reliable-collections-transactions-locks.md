@@ -1,25 +1,25 @@
 ---
-title: 可靠集合中的事务和锁模式
+title: 可靠集合中的事务和锁定模式
 description: Azure Service Fabric 可靠状态管理器和可靠集合事务和锁定。
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
 ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938912"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric 可靠集合中的事务和锁模式
 
 ## <a name="transaction"></a>事务
 
-事务是作为单个逻辑工作单元执行的一系列操作。 它展示了数据库事务的公共[ACID](https://en.wikipedia.org/wiki/ACID) （*原子*性、*一致性*、*隔离*性和*持久性*）属性：
+事务是作为单个逻辑工作单元执行的一系列操作。 它表现出数据库事务的常见[ACID（](https://en.wikipedia.org/wiki/ACID)*原子性*、*一致性*、*隔离*性、*耐久性*）属性：
 
 * **原子性**：事务必须是原子工作单元。 换而言之，要么执行其所有数据修改，要么一个数据修改也不执行。
 * **一致性**：完成后，事务必须使所有数据处于一致状态。 事务结束时，所有内部数据结构必须都正确。
-* **隔离**：并发事务所做的修改必须与任何其他并发事务所做的修改隔离。 [ITransaction](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet)中用于操作的隔离级别由执行该操作的[IReliableState](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet)确定。
+* **隔离**：并发事务所做的修改必须与任何其他并发事务所做的修改隔离。 I[事务](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet)内操作使用的隔离级别由执行该操作的[IReliableState](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet)确定。
 * **持久性**：事务完成后，其效果永久存在于系统中。 该修改即使出现系统故障也将一直保持。
 
 ### <a name="isolation-levels"></a>隔离级别
@@ -37,7 +37,7 @@ Reliable Collections 支持两种隔离级别：
 Reliable Collections 会在事务创建时根据副本的操作和角色，为指定读取操作自动选择要使用的隔离级别。
 下表描述了用于 Reliable Dictionary 和 Reliable Queue 操作的默认隔离级别。
 
-| 操作\角色 | 主 | 辅助副本 |
+| 操作\角色 | 基本 | 辅助副本 |
 | --- |:--- |:--- |
 | 单个实体读取 |可重复的读取 |快照 |
 | 枚举、计数 |快照 |快照 |
@@ -46,7 +46,7 @@ Reliable Collections 会在事务创建时根据副本的操作和角色，为�
 > 单个实体操作的常见示例为 `IReliableDictionary.TryGetValueAsync`、`IReliableQueue.TryPeekAsync`。
 > 
 
-可靠字典和可靠队列都支持*读取写入*。
+可靠词典和可靠队列都支持*读取您的写入*。
 换而言之，事务中的任何写入都将对属于同一事务的后续读取可见。
 
 ## <a name="locks"></a>锁
@@ -55,7 +55,7 @@ Reliable Collections 会在事务创建时根据副本的操作和角色，为�
 
 可靠字典对所有单个实体操作使用行级锁定。
 Reliable Queue 权衡严格事务性 FIFO 属性的并发。
-可靠队列使用操作级别锁，允许一次具有 `TryPeekAsync` 和/或 `TryDequeueAsync` 的事务以及一次 `EnqueueAsync` 的一个事务。
+可靠队列使用操作级锁，允许一次使用`TryPeekAsync`和/或`TryDequeueAsync`一个事务`EnqueueAsync`。
 请注意，为保留 FIFO，如果 `TryPeekAsync` 或 `TryDequeueAsync` 曾观察到 Reliable Queue 为空，则它们将锁定 `EnqueueAsync`。
 
 写入操作始终采用排他锁。
@@ -68,21 +68,21 @@ Reliable Queue 权衡严格事务性 FIFO 属性的并发。
 
 锁兼容性矩阵可在下表中找到：
 
-| 请求\授予 | 无 | 共享 | 更新 | 排他 |
+| 请求\授予 | 无 | Shared | 更新 | 排他 |
 | --- |:--- |:--- |:--- |:--- |
-| 共享 |无冲突 |无冲突 |冲突 |冲突 |
+| Shared |无冲突 |无冲突 |冲突 |冲突 |
 | 更新 |无冲突 |无冲突 |冲突 |冲突 |
 | 排他 |无冲突 |冲突 |冲突 |冲突 |
 
-可靠集合 Api 中的超时参数用于死锁检测。
+可靠集合 API 中的超时参数用于死锁检测。
 例如，两个事务（T1 和 T2）正在尝试读取和更新 K1。
 它们有可能发生死锁，因为它们最后都拥有共享锁。
-在这种情况下，其中一个操作或两个操作都将超时。这种情况下，更新锁可能会阻止这种死锁。
+在这种情况下，一个或两个操作将超时。我这个方案，更新锁可以防止这样的死锁。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services 通知](service-fabric-reliable-services-notifications.md)
 * [Reliable Services 备份和还原（灾难恢复）](service-fabric-reliable-services-backup-restore.md)
-* [可靠状态管理器和配置](service-fabric-reliable-services-configuration.md)
-* [Reliable Collections 的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [可靠的状态管理器配置](service-fabric-reliable-services-configuration.md)
+* [可靠集合的开发人员参考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

@@ -1,5 +1,5 @@
 ---
-title: 配置和管理问题常见问题
+title: 配置和管理问题常见问题解答
 titleSuffix: Azure Cloud Services
 description: 本文列出了一些关于 Microsoft Azure 云服务配置和管理的常见问题解答。
 services: cloud-services
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
 ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77656919"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题解答 (FAQ)
@@ -39,7 +39,7 @@ ms.locfileid: "77656919"
 
 **监视和日志记录**
 
-- [Azure 门户中即将推出的可帮助管理和监视应用程序的云服务功能是什么？](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
+- [Azure 门户中即将推出的云服务功能有哪些，可帮助管理和监视应用程序？](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
 - [IIS 为何停止写入日志目录？](#why-does-iis-stop-writing-to-the-log-directory)
 - [如何为云服务启用 WAD 日志记录？](#how-do-i-enable-wad-logging-for-cloud-services)
 
@@ -53,24 +53,24 @@ ms.locfileid: "77656919"
 **权限**
 
 - [没有权限的 Microsoft 内部工程师能否通过远程桌面连接到云服务实例？](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
-- [我无法使用 RDP 文件通过远程桌面连接到云服务 VM。出现以下错误：发生身份验证错误（代码：0x80004005）](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
+- [无法使用 RDP 文件将桌面远程到云服务 VM。我得到以下错误：发生了身份验证错误（代码：0x80004005）](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
 **缩放**
 
 - [无法扩展到 X 个实例以上](#i-cannot-scale-beyond-x-instances)
 - [如何基于内存指标配置自动缩放？](#how-can-i-configure-auto-scale-based-on-memory-metrics)
 
-**常规**
+**泛型**
 
 - [如何将“nosniff”添加到网站？](#how-do-i-add-nosniff-to-my-website)
 - [如何为 Web 角色自定义 IIS？](#how-do-i-customize-iis-for-a-web-role)
-- [什么是云服务配额限制？](#what-is-the-quota-limit-for-my-cloud-service)
-- [云服务 VM 上的驱动器为何显示可用磁盘空间不足？](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
+- [我的云服务的配额限制是什么？](#what-is-the-quota-limit-for-my-cloud-service)
+- [为什么我的云服务 VM 上的驱动器显示的可用磁盘空间很少？](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
 - [如何以自动化方法为云服务添加反恶意软件扩展？](#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 - [如何为云服务启用服务器名称指示 (SNI)？](#how-to-enable-server-name-indication-sni-for-cloud-services)
 - [如何将标记添加到 Azure 云服务？](#how-can-i-add-tags-to-my-azure-cloud-service)
-- [Azure 门户不显示云服务的 SDK 版本。如何实现？](#the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that)
-- [我想关闭云服务几个月的时间。如何降低云服务的计费成本，而不会丢失 IP 地址？](#i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address)
+- [Azure 门户不显示云服务的 SDK 版本。我怎样才能得到？](#the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that)
+- [我想关闭云服务几个月。如何在不丢失 IP 地址的情况下降低云服务的计费成本？](#i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address)
 
 
 ## <a name="certificates"></a>证书
@@ -91,7 +91,7 @@ ms.locfileid: "77656919"
 
 [获取证书以用于 Windows Azure 网站 (WAWS)](https://azure.microsoft.com/blog/obtaining-a-certificate-for-use-with-windows-azure-web-sites-waws/)
 
-CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创建它。 尽管本文档是针对应用服务编写的，但 CSR 创建是通用的，也适用于云服务。
+CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创建它。此文档针对应用服务编写，但是 CSR 创建是通用的，它也适用于云服务。
 
 ### <a name="my-cloud-service-management-certificate-is-expiring-how-to-renew-it"></a>我的云服务管理证书即将到期。 如何续订？
 
@@ -101,7 +101,7 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
     Select-AzureSubscription -Current -SubscriptionName <your subscription name>
     Get-AzurePublishSettingsFile
 
-**Get-AzurePublishSettingsFile** 将在 Azure 门户的“订阅” > “管理证书”中创建新的管理证书。 新证书的名称类似于“YourSubscriptionNam]-[CurrentDate]-credentials”。
+**Get-AzurePublishSettingsFile** 将在 Azure 门户的“订阅”**** > “管理证书”**** 中创建新的管理证书。 新证书的名称类似于“YourSubscriptionNam]-[CurrentDate]-credentials”。
 
 ### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自动安装主要 SSL 证书 (.pfx) 和中间证书 (.p7b)？
 
@@ -109,7 +109,7 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>“用于 MachineKey 的 Microsoft Azure 服务管理”证书的用途是什么？
 
-此证书用于加密 Azure Web 角色的计算机密钥。 若要了解详细信息，请查看[此建议](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
+此证书用于加密 Azure Web 角色的计算机密钥。 要了解更多信息，请查看[此咨询](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
 
 有关详细信息，请参阅以下文章：
 - [如何配置和运行云服务的启动任务](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
@@ -131,7 +131,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 能够监视实例级别的指标。 其他监视功能在[如何监视云服务](cloud-services-how-to-monitor.md)中提供。
 
 ### <a name="why-does-iis-stop-writing-to-the-log-directory"></a>IIS 为何停止写入日志目录？
-你用于写入日志目录的本地存储配额已用完。 若要更正此问题，您可以执行以下三种操作之一：
+你用于写入日志目录的本地存储配额已用完。若要修正此问题，可以执行以下三种操作之一：
 * 为 IIS 启用诊断功能并将诊断定期移动到 blob 存储。
 * 手动删除日志记录目录中的日志文件。
 * 增加本地资源的配额限制。
@@ -176,9 +176,9 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 若要设置静态 IP 地址，需要创建保留 IP。 该保留 IP 可以关联到新的云服务或现有部署。 请参阅以下文档了解详细信息：
 * [如何创建保留 IP 地址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#manage-reserved-vips)
 * [保留现有云服务的 IP 地址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
-* [将保留 IP 关联到新的云服务](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-new-cloud-service)
+* [将保留的 IP 关联到新的云服务](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-new-cloud-service)
 * [将保留 IP 关联到正在运行的部署](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-running-deployment)
-* [使用服务配置文件将保留 IP 关联到云服务](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [使用服务配置文件将保留的 IP 与云服务关联](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Azure 基本 IPS/IDS 和 DDOS 有哪些功能？
 Azure 的数据中心物理服务器中包含 IPS/IDS，可用于防御威胁。 此外，客户可以部署第三方安全解决方案，例如 Web 应用程序防火墙、网络防火墙、反恶意软件、入侵检测、防护系统 (IDS/IPS) 等。 有关详细信息，请参阅[保护数据和资产及遵守全局安全标准](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)。
@@ -194,7 +194,7 @@ Windows 10 和 Windows Server 2016 随附了对客户端和服务器端上的 HT
 3. 创建名为 **DuoEnabled** 的新 DWORD 值。
 4. 将其值设置为 1。
 5. 重启服务器。
-6. 转到“默认网站”，在“绑定”下，使用刚刚创建的自签名证书创建新的 TLS 绑定。 
+6. 转到“默认网站”，在“绑定”下，使用刚刚创建的自签名证书创建新的 TLS 绑定。******** 
 
 有关详细信息，请参阅：
 
@@ -208,7 +208,7 @@ Windows 10 和 Windows Server 2016 随附了对客户端和服务器端上的 HT
 完成此过程后，可使用以下方法之一验证是否已启用 HTTP/2：
 
 - 在 IIS 日志中启用协议版本，并查看 IIS 日志。 日志中会显示 HTTP/2。 
-- 在 Internet Explorer 或 Microsoft Edge 中启用 F12 开发人员工具，并切换到 "网络" 选项卡来验证协议。 
+- 在 Internet Explorer 或 Microsoft Edge 中启用 F12 开发人员工具，并切换到“网络”选项卡来验证协议。 
 
 有关详细信息，请参阅 [IIS 上的 HTTP/2](https://blogs.iis.net/davidso/http2)。
 
@@ -228,7 +228,7 @@ Microsoft 遵循严格的流程，未经所有者或其被委派者书面许可�
 
 如果从已加入 Azure Active Directory 的计算机使用 RDP 文件，则可能出现此错误。 若要解决此问题，请执行以下步骤：
 
-1. 右键单击下载的 RDP 文件，然后选择“编辑”。
+1. 右键单击下载的 RDP 文件，然后选择“编辑”****。
 2. 在 username 前面添加“&#92;”作为前缀。 例如，使用 **.\username**，而不是 **username**。
 
 ## <a name="scaling"></a>扩展
@@ -282,7 +282,7 @@ Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用�
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>云服务 VM 上的驱动器为何显示可用磁盘空间不足？
 这是预期行为，应不会导致任何应用程序问题。 Azure PaaS VM 中的 %approot% 驱动器的日记功能启用后，基本上会占用文件通常所用空间的两倍。 但是请注意以下几点，从根本上看，此问题无足轻重。
 
-% Approot% 驱动器的大小计算为 \<大小的 .cspkg + 最大日志大小 + 可用空间的边距 > 或 1.5 GB，取两者中较大者。 VM 的大小与此计算方法无关。 （VM 大小仅影响临时 C: 驱动器的大小） 
+%approot% 驱动器大小计算为 \<.cspkg 大小 + 最大日记大小 + 富余的可用空间> 或 1.5 GB，以较大者为准。 VM 的大小与此计算方法无关。 （VM 大小仅影响临时 C: 驱动器的大小） 
 
 不支持写入 %approot% 驱动器。 如果要写入 Azure VM，必须在临时 LocalStorage 资源（或其他选项，例如 Blob 存储、Azure 文件等）中执行此操作。 因此 %approot% 文件夹的可用空间没有意义。 如果不确定应用程序是否要写入 %approot% 驱动器，可以让服务持续运行几天，然后比较“之前”和“之后”的大小。 
 
@@ -305,13 +305,13 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 
 **方法 1：使用 PowerShell**
 
-可在启动任务中使用 PowerShell cmdlet **New-WebBinding** 为云服务角色实例配置 SNI 绑定，如下所示：
+SNI 绑定可以使用 PowerShell cmdlet**新 Web 绑定**在云服务角色实例的启动任务中进行配置，如下所示：
     
     New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
     
 如[此文](https://technet.microsoft.com/library/ee790567.aspx)所述，$sslFlags 可为以下值之一：
 
-|值|含义|
+|“值”|含义|
 ------|------
 |0|没有 SNI|
 |1|已启用 SNI|

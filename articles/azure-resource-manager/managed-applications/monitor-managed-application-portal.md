@@ -1,15 +1,15 @@
 ---
-title: 使用 Azure 门户来监视托管应用
+title: 使用 Azure 门户监视托管应用
 description: 显示如何使用 Azure 门户监视托管应用程序的可用性和警报。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651743"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>监视部署的托管应用程序实例
@@ -22,7 +22,7 @@ ms.locfileid: "75651743"
 
    ![创建托管应用程序](./media/monitor-managed-application-portal/select-managed-application.png)
 
-1. 选择“资源运行状况”。
+1. 选择“资源运行状况”****。
 
    ![选择资源运行状况](./media/monitor-managed-application-portal/select-resource-health.png)
 
@@ -32,7 +32,7 @@ ms.locfileid: "75651743"
 
 ## <a name="view-alerts"></a>查看警报
 
-1. 选择“**警报**”。
+1. 选择**警报**。
 
    ![选择警报](./media/monitor-managed-application-portal/select-alerts.png)
 
@@ -40,7 +40,7 @@ ms.locfileid: "75651743"
 
    ![查看警报](./media/monitor-managed-application-portal/view-alerts.png)
 
-1. 若要添加警报规则，请选择“+ 新建警报规则”。
+1. 若要添加警报规则，请选择“+ 新建警报规则”****。
 
    ![创建警报](./media/monitor-managed-application-portal/create-new-alert.png)
 

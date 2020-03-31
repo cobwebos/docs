@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
 ms.openlocfilehash: da45e24898bc3b5aead250077af69a61bdb33bab
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73749642"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM 启动时停滞，并在 Azure 中显示“正在准备 Windows。 请不要关闭计算机”
 
-本文介绍了在 Microsoft Azure 中启动 Windows 虚拟机（VM）时可能会遇到的 "准备就绪" 和 "获取 Windows 就绪" 屏幕。 本文提供用于收集支持票证数据的步骤。
+本文介绍了在 Microsoft Azure 中启动 Windows 虚拟机 （VM） 时可能会遇到的"准备"和"准备 Windows"屏幕。 本文提供用于收集支持票证数据的步骤。
 
  
 
 ## <a name="symptoms"></a>症状
 
-Windows VM 无法启动。 使用**启动诊断**获取 VM 的屏幕截图时，可能会看到 vm 显示 "准备就绪" 或 "正在获取 Windows 就绪" 消息。
+Windows VM 无法启动。 使用**启动诊断**来获取 VM 的屏幕截图时，可能会看到 VM 显示消息“准备就绪”或“准备 Windows 就绪”。
 
 ![Windows Server 2012 R2 的消息示例](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
@@ -40,14 +40,14 @@ Windows VM 无法启动。 使用**启动诊断**获取 VM 的屏幕截图时，
 
 ## <a name="collect-an-os-memory-dump"></a>收集 OS 内存转储
 
-如果在等待更改处理后无法解决该问题，则需要收集内存转储文件并与支持人员联系。 若要收集转储文件，请执行以下步骤：
+如果等待更改处理后问题仍未解决，则需要收集内存转储文件并与支持部门联系。 若要收集转储文件，请执行以下步骤：
 
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
 
 1. 拍摄受影响的 VM 的 OS 磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
-2. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
+2. [将操作系统磁盘附加到恢复 VM。](../windows/troubleshoot-recovery-disks-portal.md)
 3. 通过远程桌面连接到恢复 VM。 
-4. 如果 OS 磁盘已加密，则必须在转到下一步之前关闭加密。 有关详细信息，请参阅[在无法启动的 VM 中解密已加密的 OS 磁盘](troubleshoot-bitlocker-boot-error.md#solution)。
+4. 如果 OS 磁盘已加密，则必须先关闭加密，然后才能进入下一步。 有关详细信息，请参阅[在无法启动的 VM 中解密加密的 OS 磁盘](troubleshoot-bitlocker-boot-error.md#solution)。
 
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>找到转储文件并提交支持票证
 
@@ -99,8 +99,8 @@ Windows VM 无法启动。 使用**启动诊断**获取 VM 的屏幕截图时，
 
 3. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 4. 启动 VM 并访问串行控制台。
-5. 选择 "**发送不可屏蔽中断（NMI）** " 以触发内存转储。
-    ![映像发送不可屏蔽中断的位置](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
+5. 选择“发送不可屏蔽中断(NMI)”**** 以触发内存转储。
+    ![有关发送不可屏蔽中断的位置的插图](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
 6. 再次将 OS 磁盘附加到恢复 VM，收集转储文件。
 
 ## <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系

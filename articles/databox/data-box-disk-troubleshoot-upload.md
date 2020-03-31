@@ -1,7 +1,7 @@
 ---
-title: 使用日志排查数据上传问题
+title: 使用日志对数据上传进行故障排除
 titleSuffix: Azure Data Box Disk
-description: 介绍如何使用日志和解决将数据上载到 Azure Data Box Disk 时所见到的问题。
+description: 介绍如何使用日志以及排查将数据上传到 Azure Data Box Disk 时出现的问题。
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,43 +10,43 @@ ms.topic: article
 ms.date: 06/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 7c14988706ef193ef5da868c55f6c4f55e7d98f9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260132"
 ---
-# <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>了解用于排查 Azure Data Box Disk 中的数据上传问题的日志
+# <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>了解如何使用日志排查将数据上传到 Azure Data Box Disk 时出现的问题
 
-本文适用于 Microsoft Azure Data Box Disk 并介绍将数据上传到 Azure 时看到的问题。
+本文适用于 Microsoft Azure 数据框磁盘，并介绍将数据上载到 Azure 时看到的问题。
 
 ## <a name="about-upload-logs"></a>关于上传日志
 
-数据在数据中心上传到 Azure 时，会为每个存储帐户生成 `_error.xml` 和 `_verbose.xml` 文件。 这些日志将上载到用于上传数据的同一存储帐户。 
+将数据上传到数据中心内的 Azure 后，系统将为每个存储帐户生成 `_error.xml` 和 `_verbose.xml` 文件。 这些日志将上传到用于上传数据的同一个存储帐户。 
 
-这两个日志的格式相同，并包含将数据从磁盘复制到 Azure 存储帐户时所发生事件的 XML 描述。
+这两份日志采用相同的格式，包含将数据从磁盘复制到 Azure 存储帐户时所发生的事件的 XML 描述。
 
-详细日志包含有关每个 blob 或文件的复制操作状态的完整信息，而错误日志只包含上传过程中遇到错误的 blob 或文件的信息。
+详细日志包含有关每个 Blob 或文件的复制操作状态的完整信息，而错误日志仅包含上传期间遇到错误的 Blob 或文件的信息。
 
-错误日志与详细日志具有相同的结构，但会筛选出成功的操作。
+错误日志的结构与详细日志相同，但可在其中筛选出成功的操作。
 
 ## <a name="download-logs"></a>下载日志
 
-执行以下步骤以查找上载日志。
+执行以下步骤找到上传日志。
 
-1. 如果在将数据上传到 Azure 时出现任何错误，门户将显示诊断日志所在的文件夹的路径。
+1. 如果在将数据上传到 Azure 时出现任何错误，门户会显示诊断日志所在的文件夹的路径。
 
-    ![链接到门户中的日志](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
+    ![门户中日志的链接](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
 
-2. 请参阅**waies**。
+2. 转到“waies”。****
 
     ![错误和详细日志](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs-1.png)
 
-在每种情况下，都会看到错误日志和详细日志。 选择每个日志并下载本地副本。
+在每种情况下，你都会看到错误日志和详细日志。 选择每个日志并下载本地副本。
 
 ## <a name="sample-upload-logs"></a>示例上传日志
 
-下面显示了 `_verbose.xml` 的示例。 在这种情况下，订单已成功完成，无任何错误。
+下面显示了 `_verbose.xml` 的示例。 在本例中，订单已成功完成而未出错。
 
 ```xml
 
@@ -91,7 +91,7 @@ ms.locfileid: "79260132"
 </DriveLog>
 ```
 
-对于同一顺序，`_error.xml` 的示例如下所示。
+下面显示了同一订单的 `_error.xml` 示例。
 
 ```xml
 
@@ -110,13 +110,13 @@ ms.locfileid: "79260132"
 </DriveLog>
 ```
 
-下面显示了 `_error.xml` 的示例，其中订单已完成，但出现错误。 
+下面显示了 `_error.xml` 的示例，其中的订单已完成但出错。 
 
-在此示例中，错误文件有一个 `Summary` 部分以及另一个包含所有文件级别错误的部分。 
+在本例中，错误文件提供了一个 `Summary` 节，以及包含所有文件级错误的另一个节。 
 
-`Summary` 包含 `ValidationErrors` 和 `CopyErrors`。 在这种情况下，8个文件或文件夹已上传到 Azure，但没有任何验证错误。 将数据复制到 Azure 存储帐户时，5个文件或文件夹已成功上传。 其余3个文件或文件夹已根据 Azure 容器命名约定重命名，然后成功上传到 Azure。
+`Summary` 包含 `ValidationErrors` 和 `CopyErrors`。 在本例中，已将 8 个文件或文件夹上传到 Azure，且未出现验证错误。 将数据复制到 Azure 存储帐户时，已成功上传 5 个文件或文件夹。 剩余的 3 个文件或文件夹已根据 Azure 容器命名约定重命名，然后成功上传到 Azure。
 
-文件级别状态位于 `BlobStatus` 中，描述了上载 blob 时执行的任何操作。 在这种情况下，将重命名三个容器，因为数据复制到的文件夹不符合容器的 Azure 命名约定。 对于在这些容器中上传的 blob，将包含新的容器名称、Azure 中 blob 的路径、原始无效文件路径和 blob 大小。
+文件级状态位于 `BlobStatus` 中，描述了上传 Blob 所执行的任何操作。 在本例中，已重命名 3 个容器，因为数据复制到的文件夹不符合容器的 Azure 命名约定。 对于在这些容器中上传的 Blob，已包含新的容器名称、Azure 中 Blob 的路径、原始的无效文件路径和 Blob 大小。
     
 ```xml
  <?xml version="1.0" encoding="utf-8"?>
@@ -154,33 +154,33 @@ ms.locfileid: "79260132"
 
 ## <a name="data-upload-errors"></a>数据上传错误
 
-下表总结了将数据上传到 Azure 时生成的错误。
+下表汇总了将数据上传到 Azure 时生成的错误。
 
-| 错误代码 | 说明                   |
+| 错误代码 | 描述                   |
 |-------------|------------------------------|
 |`None` |  已成功完成。           |
-|`Renamed` | 已成功重命名 blob。   |
-|`CompletedWithErrors` | 上传已完成，但出现错误。 日志文件中包含错误文件的详细信息。  |
-|`Corrupted`|数据引入期间计算得出的 CRC 与上传过程中计算得出的 CRC 不匹配。  |  
+|`Renamed` | 已成功重命名 Blob。   |
+|`CompletedWithErrors` | 上传已完成但出错。 错误中的文件的详细信息已包含在日志文件中。  |
+|`Corrupted`|数据引入期间计算出的 CRC 与上传期间计算出的 CRC 不匹配。  |  
 |`StorageRequestFailed` | Azure 存储请求失败。   |     
-|`LeasePresent` | 此项目已租给其他用户使用。 |
-|`StorageRequestForbidden` |由于身份验证问题，无法上传。 |
-|`ManagedDiskCreationTerminalFailure` | 无法作为托管磁盘上传。 文件在临时存储帐户中作为页 blob 提供。 可以将页 blob 手动转换为托管磁盘。  |
-|`DiskConversionNotStartedTierInfoMissing` | 由于 VHD 文件是在预创建层文件夹之外复制的，因此不会创建托管磁盘。 文件作为页 blob 上传到创建订单期间指定的临时存储帐户。 可以手动将其转换为托管磁盘。|
-|`InvalidWorkitem` | 无法上载数据，因为它不符合 Azure 命名和限制约定。|
-|`InvalidPageBlobUploadAsBlockBlob` | 作为块 blob 上传到带有前缀 `databoxdisk-invalid-pb-`的容器中。|
-|`InvalidAzureFileUploadAsBlockBlob` | 作为块 blob 上传，前缀为 `databoxdisk-invalid-af`-。|
-|`InvalidManagedDiskUploadAsBlockBlob` | 作为块 blob 上传，前缀为 `databoxdisk-invalid-md`-。|
-|`InvalidManagedDiskUploadAsPageBlob` |已上载为包含前缀 `databoxdisk-invalid-md-`的容器中的页 blob。 |
-|`MovedToOverflowShare` |已将文件上载到新共享，因为原始共享大小超出了最大 Azure 大小限制。 新的文件共享名的原始名称带有后缀 `-2`。   |
-|`MovedToDefaultAzureShare` |将不属于任何文件夹的文件上传到默认共享。 共享名称以 `databox-`开头。 |
-|`ContainerRenamed` |这些文件的容器不符合 Azure 命名约定，已重命名。 新名称以 `databox-` 开头，并以原始名称的 SHA1 哈希为后缀 |
-|`ShareRenamed` |这些文件的共享不符合 Azure 命名约定，已重命名。 新名称以 `databox-` 开头，并以原始名称的 SHA1 哈希为后缀。 |
-|`BlobRenamed` |这些文件不符合 Azure 命名约定，已重命名。 检查 "`BlobPath`" 字段中是否有新的名称。 |
-|`FileRenamed` |这些文件不符合 Azure 命名约定，已重命名。 检查 "`FileStoragePath`" 字段中是否有新的名称。 |
-|`DiskRenamed` |这些文件不符合 Azure 命名约定，已重命名。 检查 "`BlobPath`" 字段中是否有新的名称。 |
+|`LeasePresent` | 此项是租用的，已被其他用户使用。 |
+|`StorageRequestForbidden` |身份验证问题导致无法上传。 |
+|`ManagedDiskCreationTerminalFailure` | 无法作为托管磁盘上传。 文件已在临时存储帐户中作为页 Blob 提供。 可将页 Blob 手动转换为托管磁盘。  |
+|`DiskConversionNotStartedTierInfoMissing` | 由于 VHD 文件是在预创建的层文件夹外部复制的，因此未创建托管磁盘。 文件已作为页 Blob 上传到创建订单期间指定的临时存储帐户。 可手动将其转换为托管磁盘。|
+|`InvalidWorkitem` | 无法上传数据，因为它不符合 Azure 命名约定和限制。|
+|`InvalidPageBlobUploadAsBlockBlob` | 已作为块 Blob 上传到带有前缀 `databoxdisk-invalid-pb-` 的容器中。|
+|`InvalidAzureFileUploadAsBlockBlob` | 已作为块 Blob 上传到带有前缀 `databoxdisk-invalid-af`- 的容器中。|
+|`InvalidManagedDiskUploadAsBlockBlob` | 已作为块 Blob 上传到带有前缀 `databoxdisk-invalid-md`- 的容器中。|
+|`InvalidManagedDiskUploadAsPageBlob` |已作为页 Blob 上传到带有前缀 `databoxdisk-invalid-md-` 的容器中。 |
+|`MovedToOverflowShare` |由于原始共享大小超过了最大 Azure 大小限制，已将文件上传到新共享。 新文件共享名称包含带有 `-2` 后缀的原始名称。   |
+|`MovedToDefaultAzureShare` |已将不包含在任何文件夹中的文件上传到默认共享。 共享名称以 `databox-` 开头。 |
+|`ContainerRenamed` |这些文件的容器不符合 Azure 命名约定，现已重命名。 新名称以 `databox-` 开头，并以原始名称的 SHA1 哈希为后缀 |
+|`ShareRenamed` |这些文件的共享不符合 Azure 命名约定，现已重命名。 新名称以 `databox-` 开头，并以原始名称的 SHA1 哈希为后缀。 |
+|`BlobRenamed` |这些文件不符合 Azure 命名约定，已重命名。 请检查新名称的 `BlobPath` 字段。 |
+|`FileRenamed` |这些文件不符合 Azure 命名约定，已重命名。 请检查新名称的 `FileStoragePath` 字段。 |
+|`DiskRenamed` |这些文件不符合 Azure 命名约定，已重命名。 请检查新名称的 `BlobPath` 字段。 |
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [为 Data Box Disk 问题打开支持票证](data-box-disk-contact-microsoft-support.md)。
+- [打开数据框磁盘问题的支持票证](data-box-disk-contact-microsoft-support.md)。

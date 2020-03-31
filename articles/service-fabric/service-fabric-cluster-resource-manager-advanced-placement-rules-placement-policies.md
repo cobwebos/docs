@@ -1,15 +1,15 @@
 ---
-title: Service Fabric 群集资源管理器放置策略
+title: Service Fabric 群集资源管理器 - 放置策略
 description: 概述 Service Fabric 服务的其他放置策略和规则
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 9aea157d03f344e07a81f0588d3e0127f17ca75d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75834427"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Service Fabric 服务的放置策略
@@ -32,7 +32,7 @@ ms.locfileid: "75834427"
 以下大多数控件都能通过节点属性和放置约束来配置，但有一些控件比较复杂。 为了使操作更简单，Service Fabric 群集 Resource Manager 提供了这些附加放置策略。 每个命名服务实例配置了放置策略。 还可以进行动态更新。
 
 ## <a name="specifying-invalid-domains"></a>指定无效域
-凭借 InvalidDomain 放置策略，可以指定某个特定容错域对特定服务是无效的。 此策略可确保特定的服务绝对不会在特定的区域中运行（例如，出于地缘政治或公司政策的原因）。 可以通过单独的策略指定多个无效域。
+凭借 InvalidDomain 放置策略，可以指定某个特定容错域对特定服务是无效的****。 此策略可确保特定的服务绝对不会在特定的区域中运行（例如，出于地缘政治或公司政策的原因）。 可以通过单独的策略指定多个无效域。
 
 <center>
 
@@ -57,7 +57,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 <center>
 
-![所需的域示例][Image2]
+![所需域示例][Image2]
 </center>
 
 代码：
@@ -95,7 +95,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 ## <a name="requiring-replica-distribution-and-disallowing-packing"></a>需要副本分发并禁止封装
-群集正常运行时，副本通常分布在容错域和升级域中。 但是，存在给定分区的多个副本最终可能会暂时打包到单个域中的情况。 例如，假设群集有九个节点在三个容错域（fd:/0、fd:/1 和 fd:/2）中。 再假设服务具有三个副本。 假设 fd:/1 和 fd:/2 中用于这些副本的节点发生故障。 群集资源管理器通常会首选这些相同容错域中的其他节点。 在此例中，假设由于容量问题这些域中的其他节点都无效。 如果群集 Resource Manager 生成这些副本的替换位置，它只能选择 fd:/0 中的节点。 但是，执行该操作就造成了违反容错域约束的情况。 打包副本会增加整个副本集发生故障或丢失的可能性。 
+群集正常运行时，副本通常分布在容错域和升级域中__。 但是，存在给定分区的多个副本最终可能会暂时打包到单个域中的情况。 例如，假设群集有九个节点在三个容错域（fd:/0、fd:/1 和 fd:/2）中。 再假设服务具有三个副本。 假设 fd:/1 和 fd:/2 中用于这些副本的节点发生故障。 群集资源管理器通常会首选这些相同容错域中的其他节点。 在此例中，假设由于容量问题这些域中的其他节点都无效。 如果群集 Resource Manager 生成这些副本的替换位置，它只能选择 fd:/0 中的节点。 但是，执行该操作就造成了违反容错域约束的情况__。 打包副本会增加整个副本集发生故障或丢失的可能性。 
 
 > [!NOTE]
 > 有关约束和约束优先级的其他一般信息，请参阅[此主题](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities)。

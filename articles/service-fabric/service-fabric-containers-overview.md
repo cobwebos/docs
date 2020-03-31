@@ -4,15 +4,15 @@ description: 概述 Service Fabric，以及如何使用容器部署微服务应�
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458226"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric 和容器
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打包、部署和管理可缩放的可靠微服务和容器。
 
@@ -37,7 +37,7 @@ Service Fabric 是用于跨计算机群集部署微服务的 Microsoft [容器�
 
 相比于虚拟机，容器具有以下优势：
 
-* 小：容器使用单个存储空间和层的版本与更新，提高了效率。
+* 小****：容器使用单个存储空间和层的版本与更新，提高了效率。
 * **快**：容器无需启动整个操作系统，因此启动速度更快，通常在几秒内即可启动。
 * **可移植性**：容器化的应用程序映像可以移植到云中或本地运行、移植到虚拟机中运行，或者直接在物理机上运行。
 * **资源监管**：可以限制容器可在其主机上消耗的物理资源的容器。

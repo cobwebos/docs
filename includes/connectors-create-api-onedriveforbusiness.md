@@ -5,13 +5,13 @@ author: ecfan
 ms.author: estfan
 ms.date: 11/03/2016
 ms.openlocfilehash: 3a0cb48e7fe5f3eef101f644e4f72fcfa2689d6e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789438"
 ---
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 一个 [OneDrive](https://OneDrive.com) 帐户 
 
@@ -19,7 +19,7 @@ ms.locfileid: "74789438"
 
 下面介绍授权逻辑应用连接到 OneDrive for Business 帐户的步骤：
 
-1. 要创建与 OneDrive for Business 的连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”，并在搜索框中输入“OneDrive for Business”。 选择要使用的触发器或操作：  
+1. 要创建与 OneDrive for Business 的连接，请在逻辑应用设计器的下拉列表中选择“显示 Microsoft 托管的 API”****，并在搜索框中输入“OneDrive for Business”**。 选择要使用的触发器或操作：  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
 2. 如果以前尚未创建任何与 OneDrive for Business 的连接，系统会提示提供 OneDrive for Business 凭据。 这些凭据用于授权逻辑应用连接到 OneDrive for Business 帐户，然后访问该帐户中的数据：  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)

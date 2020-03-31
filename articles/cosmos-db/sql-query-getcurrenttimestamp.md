@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: b816c63da56025fe6e9cbaece2cde5dcd01585d4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71351006"
 ---
-# <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp （Azure Cosmos DB）
+# <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
  返回自 1970 年 1 月 1 日星期四 00:00:00 开始消逝的毫秒数。 
   
 ## <a name="syntax"></a>语法
@@ -29,13 +29,13 @@ GetCurrentTimestamp ()
 
 ## <a name="remarks"></a>备注
 
-  GetCurrentTimestamp （）是不确定性函数。
+  GetCurrentTimestamp() 是非确定性的函数。
   
   返回的结果采用 UTC（协调世界时）格式。
 
 ## <a name="examples"></a>示例
   
-  下面的示例演示如何使用 GetCurrentTimestamp （）内置函数获取当前时间戳。
+  以下示例演示如何使用 GetCurrentTimestamp() 内置函数获取当前时间戳。
   
 ```sql
 SELECT GetCurrentTimestamp() AS currentUtcTimestamp
@@ -52,5 +52,5 @@ SELECT GetCurrentTimestamp() AS currentUtcTimestamp
 ## <a name="next-steps"></a>后续步骤
 
 - [日期和时间函数 Azure Cosmos DB](sql-query-date-time-functions.md)
-- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 简介](introduction.md)
+- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 简介](introduction.md)

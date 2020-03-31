@@ -6,38 +6,38 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: c177589bea76770f8f72dd3267b856b00d57699c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f2f3e84462307f43ffe432fe878476d979f489f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79275238"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480906"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件，并映射服务之间的通信。 可使用服务映射如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示 TCP 连接的任何体系结构中服务器、进程、入站和出站连接延迟和端口之间的连接，只需安装代理，无需任何其他配置。
 
-本指南介绍载入和使用服务映射的详细信息。 有关配置此解决方案的必备组件的信息，请参阅[启用用于 VM 的 Azure Monitor 概述](vminsights-enable-overview.md#prerequisites)。 总而言之，需要以下各项：
+本指南介绍载入和使用服务映射的详细信息。 有关配置此解决方案的必备组件的信息，请参阅[启用用于 VM 的 Azure Monitor 概述](vminsights-enable-overview.md#prerequisites)。 总而言之，需要以下项：
 
 * 用于启用此解决方案的 Log Analytics 工作区。
 
-* 安装在 Windows 计算机或 Linux 服务器上的 Log Analytics 代理配置为报告启用了解决方案的同一工作区。
+* 安装在 Windows 计算机或 Linux 服务器上的 Log Analytics 代理，配置为报告启用解决方案所用的同一工作区。
 
-* 安装在 Windows 计算机或 Linux 服务器上的依赖关系代理。
+* 安装在 Windows 计算机或 Linux 服务器上的 Dependency Agent。
 
 >[!NOTE]
->如果已部署服务映射，现在还可以在面向 VM 的 Azure Monitor 中查看映射，其中包括监视 VM 运行状况和性能的附加功能。 若要了解详细信息，请参阅[面向 VM 的 Azure Monitor 概述](../../azure-monitor/insights/vminsights-overview.md)。 若要了解服务映射解决方案与用于 VM 的 Azure Monitor 地图功能之间的差异，请参阅以下[常见问题解答](../faq.md#azure-monitor-for-vms-preview)。
+>如果已部署服务映射，现在还可以在面向 VM 的 Azure Monitor 中查看映射，其中包括监视 VM 运行状况和性能的附加功能。 若要了解详细信息，请参阅[面向 VM 的 Azure Monitor 概述](../../azure-monitor/insights/vminsights-overview.md)。 若要了解服务映射解决方案与用于 VM 的 Azure Monitor 映射功能之间的差异，请参阅以下[常见问题解答](../faq.md#azure-monitor-for-vms)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
+登录到 中的[https://portal.azure.com](https://portal.azure.com)Azure 门户。
 
 ## <a name="enable-service-map"></a>启用服务映射
 
-1. 从[Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview)或使用[从解决方案库添加监视解决方案](solutions.md)中所述的过程，启用服务映射解决方案。
-1. 在[Windows 上安装依赖关系代理](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows)，或在要从中获取数据的每台计算机上[安装 Linux 上的依赖关系](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux)代理。 依赖关系代理可以监视与直接邻居之间的连接，因此不需要在每台计算机上都具有代理。
+1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview)或者使用[从解决方案库中添加监视解决方案](solutions.md)中所述的过程，启用服务映射解决方案。
+1. 在要获取数据的每台计算机上[安装 Windows 上的 Dependency Agent](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) 或[安装 Linux 上的 Dependency Agent](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux)。 依赖关系代理可以监视与直接邻居之间的连接，因此不需要在每台计算机上都具有代理。
 
-在 Azure 门户从 Log Analytics 工作区访问服务映射，并选择左窗格中的“解决方案”选项。<br><br> ![选择工作区中的“解决方案”选项](./media/service-map/select-solution-from-workspace.png)。<br> 从解决方案列表中选择“ServiceMap(workspaceName)”，并在服务映射解决方案概述页面单击“服务映射摘要”标题。<br><br> ![服务映射摘要标题](./media/service-map/service-map-summary-tile.png)。
+在 Azure 门户从 Log Analytics 工作区访问服务映射，并选择左窗格中的“解决方案”**** 选项。<br><br> ![选择工作区中的“解决方案”选项](./media/service-map/select-solution-from-workspace.png)。<br> 从解决方案列表中选择“ServiceMap(workspaceName)”****，并在服务映射解决方案概述页面单击“服务映射摘要”标题。<br><br> ![服务映射摘要标题](./media/service-map/service-map-summary-tile.png)。
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>用例：使 IT 进程感知依赖关系
 
@@ -55,7 +55,7 @@ ms.locfileid: "79275238"
 
 ### <a name="business-continuity"></a>业务连续性
 
-如果使用 Azure Site Recovery 并需要帮助定义应用程序环境的恢复顺序，服务映射可自动显示系统互相依赖的方式，以便确保恢复计划可靠。 通过选择关键服务器或组并查看其客户端，可以标识要在该服务器还原并可用后恢复的前端系统。 相反，通过查看关键服务器的后端依赖关系，可以标识要在焦点系统还原之前恢复的系统。
+如果使用 Azure Site Recovery 并需要帮助定义应用程序环境的恢复顺序，服务映射可自动显示系统互相依赖的方式，以便确保恢复计划可靠。 通过选择关键服务器或组并查看其客户端，可以标识要在该服务器还原并可用后恢复的前端系统。 相反，通过查看关键服务器的后端依赖关系，您可以确定在恢复焦点系统之前要恢复哪些系统。
 
 ### <a name="patch-management"></a>修补程序管理
 
@@ -63,7 +63,7 @@ ms.locfileid: "79275238"
 
 ## <a name="mapping-overview"></a>映射概述
 
-“服务映射”代理收集有关已安装 TCP 的服务器上所有 TCP 连接的进程的信息，以及有关每个进程的入站和出站连接的详细信息。
+服务映射代理收集有关安装这些进程所在的服务器上的所有 TCP 连接进程的信息，以及有关每个进程的入站和出站连接的详细信息。
 
 从左侧窗格的列表中，可选择具有服务映射代理的计算机或组，在指定时间范围内使其依赖关系可视化。 计算机依赖关系映射侧重于特定计算机，并显示属于该计算机的直接 TCP 客户端或服务器的所有计算机。  计算机组映射显示多组服务器及其依赖关系。
 
@@ -95,11 +95,11 @@ ms.locfileid: "79275238"
 
 ### <a name="creating-a-machine-group"></a>创建计算机组
 
-若要创建组，请在“计算机”列表中选择所需的一个或多个计算机，然后单击“添加到组”。
+若要创建组，请在“计算机”列表中选择所需的一个或多个计算机，然后单击“添加到组”****。
 
 ![创建组](media/service-map/machine-groups-create.png)
 
-在这里，可以选择“新建”，并为组指定名称。
+在这里，可以选择“新建”****，并为组指定名称。
 
 ![为组命名](media/service-map/machine-groups-name.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "79275238"
 
 ### <a name="viewing-a-group"></a>查看组
 
-创建一些组后，便可以选择“组”选项卡查看它们。
+创建某些组后，可以通过选择"组"选项卡来查看它们。
 
 ![“组”选项卡](media/service-map/machine-groups-tab.png)
 
@@ -125,21 +125,21 @@ ms.locfileid: "79275238"
 
 ![筛选组](media/service-map/machine-groups-filter.png)
 
-如果选择“所有进程”，映射将包括组中每个计算机上的所有进程和连接。
+如果选择“所有进程”****，映射将包括组中每个计算机上的所有进程和连接。
 
 ![计算机组 所有进程](media/service-map/machine-groups-all.png)
 
-如果将视图更改为仅显示“与组连接的进程”，映射将缩小为仅包括与组中的其他计算机直接相关的进程和连接，从而创建一个简化的视图。
+如果将视图更改为仅显示“与组连接的进程”****，映射将缩小为仅包括与组中的其他计算机直接相关的进程和连接，从而创建一个简化的视图。
 
 ![计算机组 筛选后的进程](media/service-map/machine-groups-filtered.png)
  
 ### <a name="adding-machines-to-a-group"></a>将计算机添加到组
 
-若要将计算机添加到现有组，请选中所需计算机旁边的框，单击“添加到组”。  然后选择要将计算机添加到的组。
+若要将计算机添加到现有组，请选中所需计算机旁边的框，单击“添加到组”****。  然后选择要将计算机添加到的组。
  
 ### <a name="removing-machines-from-a-group"></a>从组中删除计算机
 
-在“组”列表中，展开组名称以列出计算机组中的计算机。  然后，单击要删除的计算机旁边的省略号菜单，选择“删除”。
+在“组”列表中，展开组名称以列出计算机组中的计算机。  然后，单击要删除的计算机旁边的省略号菜单，选择“删除”****。
 
 ![从组中删除计算机](media/service-map/machine-groups-remove.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "79275238"
 
 某些进程在计算机上充当特定角色：Web 服务器、应用程序服务器、数据库等。 “服务映射”可批注进程和计算机设备，包含的角色图标有助于以显眼的方式标识进程或服务器扮演的角色。
 
-| 角色图标 | 说明 |
+| 角色图标 | 描述 |
 |:--|:--|
 | ![Web 服务器](media/service-map/role-web-server.png) | Web 服务器 |
 | ![应用服务器](media/service-map/role-application-server.png) | 应用程序服务器 |
@@ -179,7 +179,7 @@ ms.locfileid: "79275238"
 
 ![客户端组](media/service-map/client-groups.png)
 
-若要查看客户端组中的服务器 IP 地址，请选择该组。 “客户端组属性”窗格中会列出该组的内容。
+若要查看客户端组中的服务器 IP 地址，请选择该组。 “客户端组属性”**** 窗格中会列出该组的内容。
 
 ![客户端组属性](media/service-map/client-group-properties.png)
 
@@ -197,15 +197,15 @@ ms.locfileid: "79275238"
 
 ### <a name="load-server-map"></a>加载服务器映射
 
-单击“加载服务器映射”，转到新映射，其中所选服务器作为新的焦点计算机。
+单击“加载服务器映射”****，转到新映射，其中所选服务器作为新的焦点计算机。
 
 ### <a name="show-self-links"></a>显示自链接
 
-单击“显示自链接”，重绘包含任何自链接的服务器节点，这些自链接是表示服务器中进程的开始和结束的 TCP 连接。 如果显示了自链接，则该菜单命令更改为“隐藏自链接”，以便隐藏自链接。
+单击“显示自链接”****，重绘包含任何自链接的服务器节点，这些自链接是表示服务器中进程的开始和结束的 TCP 连接。 如果显示了自链接，则该菜单命令更改为“隐藏自链接”****，以便隐藏自链接。
 
 ## <a name="computer-summary"></a>计算机摘要
 
-“计算机摘要”窗格包括服务器的操作系统、依赖关系计数以及来自其他解决方案的各种数据的概述。 此类数据包括性能指标、服务台票证、更改跟踪、安全性和更新。
+“计算机摘要”**** 窗格包括服务器的操作系统、依赖关系计数以及来自其他解决方案的各种数据的概述。 此类数据包括性能指标、服务台票证、更改跟踪、安全性和更新。
 
 ![“计算机摘要”窗格](media/service-map/machine-summary.png)
 
@@ -219,18 +219,18 @@ ms.locfileid: "79275238"
 
 ![“进程属性”窗格](media/service-map/process-properties.png)
 
-“进程摘要”窗格提供有关该进程的连接性的其他信息，包括其绑定端口、入站和出站连接以及失败的连接。
+**"进程摘要"** 窗格提供有关进程连接的其他信息，包括其绑定端口、入站和出站连接以及失败连接。
 
 ![“进程摘要”窗格](media/service-map/process-summary.png)
 
 ## <a name="alerts-integration"></a>警报集成
 
-服务映射与 Azure 警报集成，可显示所选时间范围内所选服务器触发的警报。 如果当前有警报，服务器会显示一个图标，且“计算机警报”窗格会列出警报。
+服务映射与 Azure 警报集成，可显示所选时间范围内所选服务器触发的警报。 如果当前有警报，服务器会显示一个图标，且“计算机警报”**** 窗格会列出警报。
 
 ![“计算机警报”窗格](media/service-map/machine-alerts.png)
 
 若要使服务映射能够显示相关警报，请创建对特定计算机触发的警报规则。 创建相应的警报：
-- 包含一个子句，以按计算机分组（例如“by Computer interval 1 minute”）。
+- 包含一个子句，以按计算机分组（例如“by Computer interval 1 minute”****）。
 - 根据指标度量值选择警报。
 
 ## <a name="log-events-integration"></a>日志事件集成
@@ -243,30 +243,30 @@ ms.locfileid: "79275238"
 
 当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与 IT Service Management Connector 集成。 服务映射中的集成标记为“服务台”。 有关详细信息，请参阅[使用 IT Service Management Connector 集中管理 ITSM 工作项](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)。
 
-“计算机服务台”窗格列出所选时间范围内选定服务器的所有 IT Service Management 事件。 如果当前存在项，服务器会显示一个图标，且“计算机服务台”窗格会列出存在的项。
+“计算机服务台”**** 窗格列出所选时间范围内选定服务器的所有 IT Service Management 事件。 如果当前存在项，服务器会显示一个图标，且“计算机服务台”窗格会列出存在的项。
 
 ![“计算机服务台”窗格](media/service-map/service-desk.png)
 
-若要打开连接的 ITSM 解决方案中的项，请单击“查看工作项”。
+若要打开连接的 ITSM 解决方案中的项，请单击“查看工作项”****。
 
-若要在日志搜索中查看项的详细信息，请单击“在日志搜索中显示”。
+若要在日志搜索中查看项的详细信息，请单击“在日志搜索中显示”****。
 连接指标将写入到 Log Analytics 的两个新表中 
 
 ## <a name="change-tracking-integration"></a>更改跟踪集成
 
 当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与更改跟踪集成。
 
-“计算机更改跟踪”窗格列出所有更改（最新更改列在顶部），以及一个向下钻取到日志搜索以获取其他详细信息的链接。
+“计算机更改跟踪”**** 窗格列出所有更改（最新更改列在顶部），以及一个向下钻取到日志搜索以获取其他详细信息的链接。
 
 ![“计算机更改跟踪”窗格](media/service-map/change-tracking.png)
 
-下图是在选择“在 Log Analytics 中显示”后可能显示的 ConfigurationChange 事件的详细视图。
+下图是在选择“在 Log Analytics 中显示”**** 后可能显示的 ConfigurationChange 事件的详细视图。
 
 ![ConfigurationChange 事件](media/service-map/configuration-change-event-01.png)
 
 ## <a name="performance-integration"></a>性能集成
 
-“计算机性能”窗格显示所选服务器的标准性能指标。 指标包括 CPU 利用率、内存利用率、发送和接收的网络字节数，以及发送和接收网络字节数最多的进程的列表。
+“计算机性能”**** 窗格显示所选服务器的标准性能指标。 指标包括 CPU 利用率、内存利用率、发送和接收的网络字节数，以及发送和接收网络字节数最多的进程的列表。
 
 ![“计算机性能”窗格](media/service-map/machine-performance.png)
 
@@ -290,7 +290,7 @@ Linux：
 
 当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与安全和审核集成。
 
-“计算机安全”面板显示所选服务器的安全和审核解决方案的数据。 该窗格列出所选时间范围内服务器的所有未解决安全问题的摘要。 单击任意安全问题，向下钻取到日志搜索，了解有关安全问题的详细信息。
+“计算机安全”面板显示所选服务器的安全和审核解决方案的数据。**** 该窗格列出所选时间范围内服务器的所有未解决安全问题的摘要。 单击任意安全问题，向下钻取到日志搜索，了解有关安全问题的详细信息。
 
 ![“计算机安全性”窗格](media/service-map/machine-security.png)
 
@@ -298,7 +298,7 @@ Linux：
 
 当在 Log Analytics 工作区中启用并配置了这两个解决方案时，服务映射会自动与更新管理集成。
 
-“计算机更新”面板显示所选服务器的更新管理解决方案的数据。 该窗格列出所选时间范围内服务器缺少的所有更新的摘要。
+“计算机更新”面板显示所选服务器的更新管理解决方案的数据。**** 该窗格列出所选时间范围内服务器缺少的所有更新的摘要。
 
 ![“计算机更改跟踪”窗格](media/service-map/machine-updates.png)
 
@@ -314,19 +314,19 @@ Linux：
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
 - 计算机：使用 *ResourceId* 或 *ResourceName_s* 唯一标识 Log Analytics 工作区中的计算机。
-- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s* 在运行该进程的计算机 (MachineResourceName_s) 的上下文中唯一 
+- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s*在运行进程的机器的上下文中是唯一的（MachineResourceName_s） 
 
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 
 ### <a name="connections"></a>连接
 
-连接指标将写入到 Log Analytics 的新表 VMConnection 中。 此表提供有关计算机的连接（入站和出站）的信息。 还可以通过 API 公开连接指标。使用这些 API 可以获取某个时间范围内的特定指标。  由于侦听套接字上的接受导致的 TCP 连接是入站的，而通过连接到给定的 IP 和端口创建的连接是出站的。 连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
+连接指标将写入到 Log Analytics 的新表 VMConnection 中。 此表提供有关计算机的连接（入站和出站）的信息。 还可以通过 API 公开连接指标。使用这些 API 可以获取某个时间范围内的特定指标。  侦听套接字上接受产生的 TCP 连接是入站连接，而通过连接到给定 IP 和端口创建的 TCP 连接是出站连接。 连接方向由 Direction 属性表示，可将其设置为 **inbound** 或 **outbound**。 
 
 这些表中的记录是基于依赖项代理报告的数据生成的。 每条记录表示一分钟时间间隔内观测到的结果。 TimeGenerated 属性表示时间间隔的开始时间。 每条记录包含用于识别相应实体（即连接或端口）以及与该实体关联的指标的信息。 目前，只会报告使用“基于 IPv4 的 TCP”发生的网络活动。
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内共享以下属性相同值的物理网络连接将聚合到 *VMConnection* 中的单个逻辑记录内。 
 
-| properties | 说明 |
+| properties | 描述 |
 |:--|:--|
 | `Direction` |连接方向，值为 *inbound* 或 *outbound* |
 | `Machine` |计算机 FQDN |
@@ -338,18 +338,18 @@ Linux：
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| properties | 说明 |
+| properties | 描述 |
 |:--|:--|
 | `LinksEstablished` |在报告时间范围内建立的物理网络连接数 |
 | `LinksTerminated` |在报告时间范围内终止的物理网络连接数 |
 | `LinksFailed` |在报告时间范围内失败的物理网络连接数 此信息目前仅适用于出站连接。 |
 | `LinksLive` |在报告时间范围结束时打开的物理网络连接数|
 
-#### <a name="metrics"></a>度量值
+#### <a name="metrics"></a>指标
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| properties | 说明 |
+| properties | 描述 |
 |:--|:--|
 | `BytesSent` |在报告时间范围内发送的字节总数 |
 | `BytesReceived` |在报告时间范围内接收的字节总数 |
@@ -377,9 +377,9 @@ Linux：
 
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| properties | 说明 |
+| properties | 描述 |
 |:--|:--|
-| `RemoteCountry` |托管 RemoteIp 的国家/地区的名称。  例如 *United States* |
+| `RemoteCountry` |托管 RemoteIp 的国家/地区的名称。  例如，*美国* |
 | `RemoteLatitude` |地理位置的纬度。  例如 *47.68* |
 | `RemoteLongitude` |地理位置的经度。  例如 *-122.12* |
 
@@ -387,17 +387,17 @@ Linux：
 
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| properties | 说明 |
+| properties | 描述 |
 |:--|:--|
 | `MaliciousIp` |RemoteIp 地址 |
-| `IndicatorThreadType` |检测到的威胁标志是以下值之一：Botnet、C2、CryptoMining、Darknet、DDos、MaliciousUrl、Malware、Phishing、Proxy、PUA 和 Watchlist。   |
+| `IndicatorThreadType` |检测到的威胁标志是以下值之一：Botnet**、C2**、CryptoMining**、Darknet**、DDos**、MaliciousUrl**、Malware**、Phishing**、Proxy**、PUA** 和 Watchlist**。   |
 | `Description` |观察到的威胁说明。 |
-| `TLPLevel` |交通信号灯协议 (TLP) 级别是以下定义值之一：White、Green、Amber 和 Red。 |
-| `Confidence` |值介于 0 和 100 之间。 |
-| `Severity` |值介于 0 和 5 之间，其中 5 表示最严重，0 表示毫不严重。 默认值为 3。  |
+| `TLPLevel` |交通信号灯协议 (TLP) 级别是以下定义值之一：White**、Green**、Amber** 和 Red**。 |
+| `Confidence` |值介于 0 和 100** 之间。 |
+| `Severity` |值介于 0 和 5** 之间，其中 5** 表示最严重，0** 表示毫不严重。 默认值为 3**。  |
 | `FirstReportedDateTime` |提供程序第一次报告指标。 |
 | `LastReportedDateTime` |Interflow 最后一次看到指标。 |
-| `IsActive` |使用值 True 或 False 指明是否停用标志。 |
+| `IsActive` |使用值 True** 或 False** 指明是否停用标志。 |
 | `ReportReferenceLink` |与给定可观测结果相关的报告的链接。 |
 | `AdditionalInformation` |提供观测到的威胁的其他信息（若有）。 |
 
@@ -405,7 +405,7 @@ Linux：
 
 类型为 *ServiceMapComputer_CL* 的记录包含具有服务映射代理的服务器的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 说明 |
+| properties | 描述 |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -421,7 +421,7 @@ Linux：
 | `PhysicalMemory_d` | 物理内存（以 MB 为单位） |
 | `Cpus_d` | CPU 数 |
 | `CpuSpeed_d` | CPU 速度（以 MHz 为单位）|
-| `VirtualizationState_s` | *未知*、*物理*、*虚拟*、*虚拟机监控程序* |
+| `VirtualizationState_s` | *未知*，*物理*，*虚拟*，*虚拟机管理程序* |
 | `VirtualMachineType_s` | *hyperv*、*vmware* 等等 |
 | `VirtualMachineNativeMachineId_g` | 由虚拟机监控程序分配的 VM ID |
 | `VirtualMachineName_s` | VM 的名称 |
@@ -431,7 +431,7 @@ Linux：
 
 类型为 *ServiceMapProcess_CL* 的记录包含具有服务映射代理的服务器上 TCP 连接进程的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 说明 |
+| properties | 描述 |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -552,53 +552,53 @@ Microsoft 通过使用服务映射服务，自动收集使用情况和性能数�
 
 详细了解 Log Analytics 中的[日志搜索](../../azure-monitor/log-query/log-query-overview.md)，以检索服务映射收集的数据。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果安装或运行服务映射时遇到任何问题，可通过本部分内容获得帮助。 如果仍然无法解决问题，请联系 Microsoft 支持部门。
 
 ### <a name="dependency-agent-installation-problems"></a>Dependency Agent 安装问题
 
 #### <a name="installer-prompts-for-a-reboot"></a>安装程序提示重新启动
-依赖关系代理*通常*不需要在安装或删除时重新启动。 在极少数的某些情况下，Windows Server 需要重启才能继续安装。 这种情况发生在依赖项，通常C++是由于锁定了文件而需要重新启动。
+安装或卸载 Dependency Agent 时，通常不需要重新启动**。 在极少数的某些情况下，Windows Server 需要重启才能继续安装。 依赖关系（通常是 Microsoft Visual C++ 可再发行程序包库）因锁定的文件而需要重新启动时会发生这种情况。
 
 #### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>将显示“无法安装 Dependency Agent: Visual Studio 运行时库安装失败 (code = [code_number])”消息
 
 Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果安装库时出现问题，将收到一条消息。 
 
-运行时库安装程序在 %LOCALAPPDATA%\temp 文件夹中创建日志。 文件是 `dd_vcredist_arch_yyyymmddhhmmss.log`的 *，其中，* `x86` 或 `amd64`， *yyyymmddhhmmss*是创建日志时的日期和时间（24小时制）。 该日志提供有关阻止安装的问题的详细信息。
+运行时库安装程序在 %LOCALAPPDATA%\temp 文件夹中创建日志。 该文件为 `dd_vcredist_arch_yyyymmddhhmmss.log`，其中 arch** 为 `x86` 或 `amd64`，yyyymmddhhmmss** 为创建该日志时的日期和时间（24 小时制）。 该日志提供有关阻止安装的问题的详细信息。
 
-首先安装[最新的运行时库](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)可能会很有用。
+这可能有助于首次安装[最新运行时库](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。
 
 下表列出了代码号和建议的解决方法。
 
-| 代码 | 说明 | 解决方法 |
+| 代码 | 描述 | 解决方法 |
 |:--|:--|:--|
-| 0x17 | 库安装程序需要尚未安装的 Windows 更新。 | 查看最新的库安装程序日志。<br><br>如果对 `Windows8.1-KB2999226-x64.msu` 的引用后跟一行 `Error 0x80240017: Failed to execute MSU package,` 则没有安装 KB2999226 的先决条件。 按照[Windows 的通用 C 运行时中](https://support.microsoft.com/kb/2999226)的先决条件部分中的说明进行操作。 可能需要运行 Windows 更新并重新启动多次，才能安装好必备组件。<br><br>再次运行 Microsoft Dependency Agent 安装程序。 |
+| 0x17 | 库安装程序需要尚未安装的 Windows 更新。 | 查看最新的库安装程序日志。<br><br>如果对 `Windows8.1-KB2999226-x64.msu` 的引用后跟行 `Error 0x80240017: Failed to execute MSU package,`，则不具备安装 KB2999226 的先决条件。 请按照 [Windows 中的通用 C 运行时](https://support.microsoft.com/kb/2999226)一文中必备组件部分的说明进行操作。 可能需要运行 Windows 更新并重新启动多次，才能安装好必备组件。<br><br>再次运行 Microsoft Dependency Agent 安装程序。 |
 
 ### <a name="post-installation-issues"></a>安装后的问题
 
 #### <a name="server-doesnt-appear-in-service-map"></a>服务映射中不显示服务器
 
-如果依赖关系代理安装已成功，但在服务映射解决方案中看不到计算机：
+如果已成功安装 Dependency Agent，但在服务映射解决方案中看不到计算机：
 * Dependency Agent 是否已安装成功？ 可通过检查是否已安装并运行服务来验证这一点。<br><br>
-**Windows**：查找名为 " **Microsoft 依赖关系代理**" 的服务。
-**Linux**：查找正在运行的进程**microsoft 依赖关系代理**。
+**视窗**：查找名为**微软依赖项代理**的服务。
+**Linux**：寻找运行过程**微软依赖代理**。
 
-* 你是否处于[Log Analytics 免费层](https://azure.microsoft.com/pricing/details/monitor/)？ 免费计划最多允许五个独特的服务映射机。 任何后续计算机不会出现在服务映射中，即使之前的五个不再发送数据。
+* 您是否在[日志分析免费层](https://azure.microsoft.com/pricing/details/monitor/)？ 免费计划允许最多五台唯一的服务地图计算机。 任何后续计算机将不会显示在服务映射中，即使前五台计算机不再发送数据。
 
-* 服务器是否发送日志和性能数据来 Azure Monitor 日志？ 请参阅 Azure Monitor\Logs 并为你的计算机运行以下查询： 
+* 您的服务器是否向 Azure 监视器日志发送日志和 perf 数据？ 转到 Azure 监视器\日志并运行计算机的以下查询： 
 
     ```kusto
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-结果中是否有多种不同的事件？ 是否为最新数据？ 如果是这样，则 Log Analytics 代理正在正常运行，并且与工作区通信。 如果没有，请检查计算机上的代理：[用于 Windows 的 Log Analytics 代理故障排除](../platform/agent-windows-troubleshoot.md)或[用于 Linux 的 Log Analytics 代理故障排除](../platform/agent-linux-troubleshoot.md)。
+结果中是否有多种不同的事件？ 是否为最新数据？ 如果是这样，日志分析代理操作正常并与工作区通信。 如果没有，请检查计算机上的代理：[日志分析代理的 Windows 故障排除](../platform/agent-windows-troubleshoot.md)或[日志分析代理的 Linux 故障排除](../platform/agent-linux-troubleshoot.md)。
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>服务器会在服务映射中显示，但没有任何进程
 
-如果你在服务映射中看到你的计算机，但它没有进程或连接数据，则表明依赖关系代理已安装并正在运行，但内核驱动程序未加载。 
+如果在 Service Map 中看到计算机，但它没有进程或连接数据，则表示已安装并运行依赖项代理，但内核驱动程序未加载。 
 
-检查 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` （Windows）或 `/var/opt/microsoft/dependency-agent/log/service.log file` （Linux）。 文件的最后几行应指出为何未加载内核。 例如，如果更新内核，则内核在 Linux 上可能不受支持。
+检查`C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file`（Windows）或`/var/opt/microsoft/dependency-agent/log/service.log file`（Linux）。 文件的最后几行应指出为何未加载内核。 例如，如果更新内核，则内核在 Linux 上可能不受支持。
 
 ## <a name="feedback"></a>反馈
 

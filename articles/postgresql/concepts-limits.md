@@ -1,6 +1,6 @@
 ---
-title: 限制-Azure Database for PostgreSQL-单个服务器
-description: 本文介绍 Azure Database for PostgreSQL 单服务器中的限制，例如连接数和存储引擎选项。
+title: 限制 - Azure Database for PostgreSQL（单一服务器）
+description: 本文介绍了 Azure Database for PostgreSQL（单一服务器）中的限制，例如连接数和存储引擎选项。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76836450"
 ---
-# <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-单服务器的限制
-下列各部分介绍数据库服务中的容量和功能限制。 如需了解资源（计算、内存、存储）层，请参阅[定价层](concepts-pricing-tiers.md)一文。
+# <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的限制
+下列各部分介绍数据库服务中的容量和功能限制。 如果想了解资源（计算、内存、存储）层，请参阅[定价层](concepts-pricing-tiers.md)一文。
 
 
 ## <a name="maximum-connections"></a>最大连接数
-每个定价层和 Vcore 的最大连接数如下所示。 Azure 系统需要使用五个连接来监视 Azure Database for PostgreSQL 服务器。 
+每个定价层的最大连接数和 vCore 数如下所示。 Azure 系统需要使用五个连接来监视 Azure Database for PostgreSQL 服务器。 
 
-|**定价层**| **vCore(s)**| 最大连接数 | **最大用户连接数** |
+|**定价层**| **vCore**| 最大连接数**** | **最大用户连接数** |
 |---|---|---|---|
-|基本| 第| 55 | 50|
-|基本| 2| 105 | 100|
+|Basic| 1| 55 | 50|
+|Basic| 2| 105 | 100|
 |常规用途| 2| 150| 145|
 |常规用途| 4| 250| 245|
 |常规用途| 8| 480| 475|
@@ -41,9 +41,9 @@ ms.locfileid: "76836450"
 > 严重：很抱歉，客户端数过多
 
 > [!IMPORTANT]
-> 为了获得最佳体验，我们建议使用 pgBouncer 等连接池来有效地管理连接。
+> 为了获得最佳体验，我们建议你使用 pgBouncer 之类的连接池来有效地管理连接。
 
-PostgreSQL 连接（即使处于空闲状态）可能占用大约10MB 的内存。 而且，创建新的连接会耗费时间。 大多数应用程序会请求很多生存期较短的连接，这将会出现这种情况。 结果是，为实际工作负荷提供的资源越少，从而降低性能。 减少空闲连接并重复使用现有连接的连接池会有助于避免这种情况。 若要了解详细信息，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)。
+PostgreSQL 连接，即使空闲，也可以占用大约 10MB 的内存。 而且，创建新连接需要时间。 大多数应用程序都请求许多短期连接，这加剧了这种情况。 其结果是可用于实际工作负荷的资源减少，从而导致性能下降。 减少空闲连接并重用现有连接的连接池会有助于避免这种情况。 要了解更多信息，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)。
 
 ## <a name="functional-limitations"></a>功能限制
 ### <a name="scale-operations"></a>缩放操作
@@ -53,8 +53,8 @@ PostgreSQL 连接（即使处于空闲状态）可能占用大约10MB 的内存�
 ### <a name="server-version-upgrades"></a>服务器版本升级
 - 目前不支持在主要数据库引擎版本之间进行自动迁移。 如果要升级到下一主要版本，请将其[转储和还原](./howto-migrate-using-dump-and-restore.md)到使用新引擎版本创建的服务器。
 
-> 请注意，在 PostgreSQL 版本10之前， [PostgreSQL 版本控制策略](https://www.postgresql.org/support/versioning/)视为_第一个_ _或_第二个数字的增加（例如，9.5 到9.6 被视为_主要_版本升级）。
-> 从版本10开始，只有第一个数字中的更改被视为主要版本升级（例如，10.0 到10.1 是_次_版本升级，10到11是_主要_版本升级）。
+> 请注意，在 PostgreSQL 版本 10 之前，[PostgreSQL 版本控制策略](https://www.postgresql.org/support/versioning/)将_主版本_升级视为第一个_或_第二个数字的增加（例如，9.5 到 9.6 视为_主_版本升级）。
+> 从版本 10 开始，只有第一个数字的更改才视为主版本升级（例如，10.0 到 10.1 是_次要_版本升级，10 到 11 是_主_版本升级）。
 
 ### <a name="vnet-service-endpoints"></a>VNet 服务终结点
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。

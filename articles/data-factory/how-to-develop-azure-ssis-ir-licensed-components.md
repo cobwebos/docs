@@ -1,5 +1,5 @@
 ---
-title: 安装 Azure SSIS 集成运行时的许可组件
+title: 为 Azure-SSIS 集成运行时安装许可组件
 description: 了解 ISV 如何为 Azure-SSIS 集成运行时开发和安装付费或许可的自定义组件
 services: data-factory
 ms.service: data-factory
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 599b54f8a5d97ee5ed29ce4df16980f456ffb919
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74914585"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时安装付费或许可的自定义组件
@@ -32,14 +32,14 @@ Azure-SSIS 集成运行时的性质带来了多种挑战，使得在本地安装
 
 ## <a name="the-solution"></a>解决方案
 
-由于上一部分中介绍的传统许可方法的局限性，Azure-SSIS IR 提供了一种新的解决方案。 此解决方案使用 Windows 环境变量和 SSIS 系统变量来绑定许可证和验证第三方组件。 ISV 可以使用这些变量来获取 Azure-SSIS IR 的唯一和持久信息，例如群集 ID 和群集节点计数。 有了此信息，ISV 就可以将其组件的许可证*作为群集*绑定到 Azure-SSIS IR。 此绑定使用的 ID 不会在客户启动或停止、纵向扩展或缩减、横向缩减或扩展，或者以任何方式重新配置 Azure-SSIS IR 时发生变化。
+由于上一部分中介绍的传统许可方法的局限性，Azure-SSIS IR 提供了一种新的解决方案。 此解决方案使用 Windows 环境变量和 SSIS 系统变量来绑定许可证和验证第三方组件。 ISV 可以使用这些变量来获取 Azure-SSIS IR 的唯一和持久信息，例如群集 ID 和群集节点计数。 有了此信息，ISV 就可以将其组件的许可证*作为群集*绑定到 Azure-SSIS IR。 此绑定使用的 ID 不会在客户启动或停止、增加或减少、缩小或扩大或以任何方式重新配置 Azure-SSIS IR 时发生变化。
 
 下图显示了使用这些新变量对第三方组件执行的典型安装、激活和许可证绑定以及验证流：
 
 ![许可组件的安装](media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png)
 
-## <a name="instructions"></a>说明
-1. ISV 可在各种 SKU 或层（例如，单个节点、最多 5 个节点、最多 10 个节点，等等）中提供其许可组件。 当客户购买某个产品时，ISV 会提供相应的产品密钥。 ISV 还可以提供包含 ISV 安装脚本和关联文件的 Azure 存储 Blob 容器。 客户可将这些文件复制到其自己的存储容器中，并使用其自己的产品密钥修改这些文件（例如运行 `IsvSetup.exe -pid xxxx-xxxx-xxxx`）。 然后，客户可以使用容器的 SAS URI 作为参数，来预配或重新配置 Azure-SSIS IR。 有关详细信息，请参阅 [Azure-SSIS Integration Runtime 的自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。
+## <a name="instructions"></a>Instructions
+1. ISV 可在各种 SKU 或层（例如，单个节点、最多 5 个节点、最多 10 个节点，等等）中提供其许可组件。 当客户购买某个产品时，ISV 会提供相应的产品密钥。 ISV 还可以提供包含 ISV 安装脚本和关联文件的 Azure 存储 Blob 容器。 客户可将这些文件复制到其自己的存储容器中，并使用其自己的产品密钥修改这些文件（例如运行 `IsvSetup.exe -pid xxxx-xxxx-xxxx`）。 然后，客户可以使用容器的 SAS URI 作为参数，来预配或重新配置 Azure-SSIS IR。 有关详细信息，请参阅 [Azure-SSIS 集成运行时的自定义设置](how-to-configure-azure-ssis-ir-custom-setup.md)。
 
 2. 在预配或重新配置 Azure-SSIS IR 时，ISV 安装程序将在每个节点上运行，以查询 Windows 环境变量 `SSIS_CLUSTERID` 和 `SSIS_CLUSTERNODECOUNT`。 然后，Azure-SSIS IR 会将许可产品的群集 ID 和产品密钥提交到 ISV 激活服务器，以生成激活密钥。
 

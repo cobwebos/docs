@@ -1,48 +1,48 @@
 ---
-title: 适用于 Azure Functions 的 Azure Blob 存储触发器
-description: 了解如何在 Azure Blob 存储数据更改时运行 Azure 功能。
+title: Azure 函数的 Azure Blob 存储触发器
+description: 了解如何在 Azure Blob 存储数据更改时运行 Azure 函数。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 0cdff3ac6eb2faed0c0b6b8796fdb3b6b0411018
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 39e3521339947263161979033406fb39e397373f
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79277357"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348975"
 ---
-# <a name="azure-blob-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure Blob 存储触发器
+# <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure 函数的 Azure Blob 存储触发器
 
-检测到新的或更新的 Blob 时，Blob 存储触发器会启动某个函数。 Blob 内容作为[函数的输入](./functions-bindings-storage-blob-input.md)提供。
+检测到新的或更新的 Blob 时，Blob 存储触发器会启动某个函数。 blob 内容作为输入提供给[函数](./functions-bindings-storage-blob-input.md)。
 
-Azure Blob 存储触发器需要常规用途的存储帐户。 若要使用仅限 blob 的帐户，或者如果你的应用程序具有特殊需求，请查看使用此触发器的替代方法。
+Azure Blob 存储触发器需要通用存储帐户。 要使用仅 Blob 帐户，或者应用程序有专门需要，请查看使用此触发器的替代方法。
 
-有关设置和配置的详细信息，请参阅[概述](./functions-bindings-storage-blob.md)。
+有关设置和配置详细信息的信息，请参阅[概述](./functions-bindings-storage-blob.md)。
 
 ## <a name="alternatives"></a>备选项
 
 ### <a name="event-grid-trigger"></a>事件网格触发器
 
-[事件网格触发器](functions-bindings-event-grid.md)还为[blob 事件](../storage/blobs/storage-blob-event-overview.md)提供内置支持。 以下方案请使用事件网格而不是 Blob 存储触发器：
+[事件网格触发器](functions-bindings-event-grid.md)还内置了对[blob 事件](../storage/blobs/storage-blob-event-overview.md)的支持。 以下方案请使用事件网格而不是 Blob 存储触发器：
 
-- **仅限 blob 的存储帐户**： blob 输入和输出绑定支持[仅限 blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)，但不支持 blob 触发器。
+- **仅限 Blob 的存储帐户**：[仅 Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)支持 Blob 输入和输出绑定，但不支持 Blob 触发器。
 
-- **大规模**：高缩放可以松散定义为具有超过100000个 blob 的容器，或每秒具有超过100个 blob 更新的存储帐户。
+- **高比例**：可松散地定义为包含 100，000 个以上 blob 的容器或每秒具有 100 个以上 blob 更新的存储帐户。
 
-- **最小化延迟**：如果函数应用在消耗计划中，则在处理新 blob 时，如果 function app 处于空闲状态，则可能最多需要10分钟的延迟。 若要避免此延迟，可以切换到启用了 Always On 的应用服务计划。 还可以为 Blob 存储帐户使用[事件网格触发器](functions-bindings-event-grid.md)。 有关示例，请参阅[事件网格教程](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)。
+- **最小化延迟**：如果函数应用位于消耗计划上，则如果函数应用已空闲，则处理新 Blob 的延迟可能长达 10 分钟。 若要避免此延迟，可以切换到启用了 Always On 的应用服务计划。 还可以为 Blob 存储帐户使用[事件网格触发器](functions-bindings-event-grid.md)。 有关示例，请参阅[事件网格教程](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)。
 
-请参阅事件网格示例的 "[使用事件网格调整图像大小](../event-grid/resize-images-on-storage-blob-upload-event.md)" 教程。
+请参阅[事件网格示例的事件网格教程的图像调整大小](../event-grid/resize-images-on-storage-blob-upload-event.md)。
 
 ### <a name="queue-storage-trigger"></a>队列存储触发器
 
-处理 blob 的另一种方法是编写对应于正在创建或修改的 blob 的队列消息，然后使用[队列存储触发器](./functions-bindings-storage-queue.md)开始处理。
+处理 Blob 的另一种方法是编写与正在创建或修改的 Blob 对应的队列消息，然后使用[队列存储触发器](./functions-bindings-storage-queue.md)开始处理。
 
 ## <a name="example"></a>示例
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-以下示例演示在 [ 容器中添加或更新 blob 时写入日志的 ](functions-dotnet-class-library.md)C# 函数`samples-workitems`。
+以下示例演示在 `samples-workitems` 容器中添加或更新 blob 时写入日志的 [C# 函数](functions-dotnet-class-library.md)。
 
 ```csharp
 [FunctionName("BlobTriggerCSharp")]        
@@ -52,15 +52,15 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-blob 触发器路径 `{name}` 中的字符串 `samples-workitems/{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#blob-name-patterns)。
+blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#blob-name-patterns)。
 
-有关 `BlobTrigger` 属性的详细信息，请参阅[属性和注释](#attributes-and-annotations)。
+有关属性的详细信息，`BlobTrigger`请参阅[属性和注释](#attributes-and-annotations)。
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-下面的示例演示*函数 json*文件中的 blob 触发器绑定，以及使用绑定的代码。 在 `samples-workitems`[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 blob 时，该函数会写入日志。
+以下示例显示了 *function.json* 文件中的一个 blob 触发器绑定以及使用该绑定的代码。 当在`samples-workitems`[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，函数将写入日志。
 
-下面是 function.json 文件中的绑定数据：
+下面是 function.json** 文件中的绑定数据：
 
 ```json
 {
@@ -77,7 +77,7 @@ blob 触发器路径 `{name}` 中的字符串 `samples-workitems/{name}` 会创�
 }
 ```
 
-blob 触发器路径 `{name}` 中的字符串 `samples-workitems/{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#blob-name-patterns)。
+blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#blob-name-patterns)。
 
 有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的[配置](#configuration)部分。
 
@@ -103,11 +103,11 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [JavaScript 代码](functions-reference-node.md)。 在 `samples-workitems` 容器中添加或更新 Blob 时，该函数会写入日志。
 
-function.json 文件如下所示：
+下面是*函数.json*文件：
 
 ```json
 {
@@ -124,7 +124,7 @@ function.json 文件如下所示：
 }
 ```
 
-blob 触发器路径 `{name}` 中的字符串 `samples-workitems/{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#blob-name-patterns)。
+blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#blob-name-patterns)。
 
 有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的[配置](#configuration)部分。
 
@@ -139,9 +139,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Python 代码](functions-reference-python.md)。 在 `samples-workitems`[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 blob 时，该函数会写入日志。
+以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Python 代码](functions-reference-python.md)。 当在`samples-workitems`[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，函数将写入日志。
 
-function.json 文件如下所示：
+下面是*函数.json*文件：
 
 ```json
 {
@@ -159,7 +159,7 @@ function.json 文件如下所示：
 }
 ```
 
-blob 触发器路径 `{name}` 中的字符串 `samples-workitems/{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#blob-name-patterns)。
+blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#blob-name-patterns)。
 
 有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的[配置](#configuration)部分。
 
@@ -176,7 +176,7 @@ def main(myblob: func.InputStream):
 
 # <a name="java"></a>[Java](#tab/java)
 
-在 `myblob` 容器中添加或更新 blob 时，此函数会写入日志。
+当在容器中添加或更新 Blob 时，`myblob`此函数将写入日志。
 
 ```java
 @FunctionName("blobprocessor")
@@ -194,7 +194,7 @@ public void run(
 
 ---
 
-## <a name="attributes-and-annotations"></a>特性和批注
+## <a name="attributes-and-annotations"></a>特性和注释
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -247,40 +247,40 @@ public void run(
 要使用的存储帐户按以下顺序确定：
 
 * `BlobTrigger` 特性的 `Connection` 属性。
-* 作为 `StorageAccount` 特性应用到同一参数的 `BlobTrigger` 特性。
+* 作为 `BlobTrigger` 特性应用到同一参数的 `StorageAccount` 特性。
 * 应用到函数的 `StorageAccount` 特性。
 * 应用到类的 `StorageAccount` 特性。
 * 函数应用的默认存储帐户（“AzureWebJobsStorage”应用设置）。
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-C#脚本不支持特性。
+C# 脚本不支持特性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 JavaScript 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支持特性。
+Python 不支持属性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobTrigger` 特性用于授予您对触发函数的 blob 的访问权限。 有关详细信息，请参阅[触发器示例](#example)。
+`@BlobTrigger` 特性用于授予对触发函数的 blob 的访问权限。 有关详细信息，请参阅[触发器示例](#example)。
 
 ---
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
-下表解释了在 function.json 文件和 `BlobTrigger` 特性中设置的绑定配置属性。
+下表介绍了您在*函数.json*文件和`BlobTrigger`属性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-|type | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#usage)部分中已阐述异常。 |
-|name | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
+|**type** | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|direction**** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#usage)部分中已阐述异常。 |
+|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
 |**路径** | **BlobPath** |要监视的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可以是某种 [Blob 名称模式](#blob-name-patterns)。 |
-|连接 | **Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|**连接** | **连接** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -290,27 +290,27 @@ Python 不支持特性。
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-使用 `context.bindings.<NAME>` 访问 blob 数据，其中 `<NAME>` 与*函数 json*中定义的值匹配。
+使用 `context.bindings.<NAME>` 访问 blob 数据，其中 `<NAME>` 与 function.json** 中定义的值匹配。
 
 # <a name="python"></a>[Python](#tab/python)
 
-通过类型为[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的参数访问 blob 数据。 有关详细信息，请参阅[触发器示例](#example)。
+通过键入为[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的参数访问 blob 数据。 有关详细信息，请参阅[触发器示例](#example)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobTrigger` 特性用于授予您对触发函数的 blob 的访问权限。 有关详细信息，请参阅[触发器示例](#example)。
+`@BlobTrigger` 特性用于授予对触发函数的 blob 的访问权限。 有关详细信息，请参阅[触发器示例](#example)。
 
 ---
 
 ## <a name="blob-name-patterns"></a>Blob 名称模式
 
-可以在 `path`function.json*的* 属性中或者在 `BlobTrigger` 特性构造函数中指定 Blob 名称模式。 名称模式可以是[筛选器或绑定表达式](./functions-bindings-expressions-patterns.md)。 以下部分提供了有关示例。
+可以在 *function.json* 的 `path` 属性中或者在 `BlobTrigger` 特性构造函数中指定 Blob 名称模式。 名称模式可以是[筛选器或绑定表达式](./functions-bindings-expressions-patterns.md)。 以下部分提供了有关示例。
 
 ### <a name="get-file-name-and-extension"></a>获取文件名和扩展名
 
@@ -348,7 +348,7 @@ Python 不支持特性。
 "path": "images/{{20140101}}-{name}",
 ```
 
-如果 Blob 名为 *{20140101}-soundfile.mp3*，则函数代码中的 `name` 变量值为 *soundfile.mp3*。
+如果 blob 名为*{20140101}-soundfile.mp3，* 则函数代码中的`name`变量值为*soundfile.mp3*。
 
 ## <a name="metadata"></a>元数据
 
@@ -356,11 +356,11 @@ Python 不支持特性。
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 module.exports = function (context, myBlob) {
@@ -371,7 +371,7 @@ module.exports = function (context, myBlob) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 中的元数据不可用。
+元数据在 Python 中不可用。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -383,39 +383,39 @@ Python 中的元数据不可用。
 
 Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次调用 blob 触发器函数。 为了确定是否已处理给定的 blob 版本，它会维护 *blob 回执*。
 
-Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名为 azure-webjobs-hosts 的容器中（由 `AzureWebJobsStorage` 应用设置定义）。 Blob 回执包含以下信息：
+Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名为 azure-webjobs-hosts** 的容器中（由 `AzureWebJobsStorage` 应用设置定义）。 Blob 回执包含以下信息：
 
-* 触发的函数（"*function app name>.Functions.&lt;function name>* *&lt;* "，例如："MyFunctionApp.Functions.CopyBlob"）
+* 触发的函数（"*&lt;函数应用名称>*。功能。函数名称>"，例如："My功能应用程序.函数.CopyBlob"） * &lt; *
 * 容器名称
 * Blob 类型（"BlockBlob" 或 "PageBlob"）
 * Blob 名称
 * ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
 
-若要强制重新处理某个 blob，可从 azure-webjobs-hosts 容器中手动删除该 blob 的 blob 回执。 尽管重新处理可能不会立即发生，但仍保证在以后的某个时间点进行重新处理。
+若要强制重新处理某个 blob，可从 azure-webjobs-hosts** 容器中手动删除该 blob 的 blob 回执。 虽然重新处理可能不会立即发生，但它肯定会在稍后的时间点发生。
 
-## <a name="poison-blobs"></a>有害 blob
+## <a name="poison-blobs"></a>毒物斑点
 
 当给定 blob 的 blob 触发函数失败时，Azure Functions 将默认重试该函数共计 5 次。
 
-如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison 的存储队列。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
+如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison** 的存储队列。 最大尝试次数是可配置的。 将使用相同的 MaxDequeueCount 设置处理有害 blob 和有害队列消息。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
-* FunctionId（格式为 *function app name>.Functions.&lt;function name>* *&lt;* ）
+* 函数 Id（在格式*&lt;函数应用名称>。 *功能。函数名称>） * &lt; *
 * BlobType（"BlockBlob" 或 "PageBlob"）
 * ContainerName
 * BlobName
 * ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
 
-## <a name="concurrency-and-memory-usage"></a>并发和内存使用情况
+## <a name="concurrency-and-memory-usage"></a>并发性和内存使用
 
 Blob 触发器可在内部使用队列，因此并发函数调用的最大数量受 [host.json 中的队列配置](functions-host-json.md#queues)控制。 默认设置会将并发限制到 24 个调用。 此限制分别应用于使用 blob 触发器的函数。
 
-[消耗计划](functions-scale.md#how-the-consumption-and-premium-plans-work)将一台虚拟机（VM）上的函数应用限制为 1.5 GB 内存。 内存由每个并发执行函数实例和函数运行时本身使用。 如果 blob 触发的函数将整个 blob 加载到内存中，该函数使用的仅用于 blob 的最大内存为 24 * 最大 blob 大小。 例如，包含 3 个由 blob 触发的函数的函数应用和默认设置，其每 VM 最大并发为 3*24 = 72 个函数调用。
+[消耗计划](functions-scale.md#how-the-consumption-and-premium-plans-work)将一个虚拟机 （VM） 上的功能应用限制为 1.5 GB 内存。 内存由每个并发执行函数实例和函数运行时本身使用。 如果 blob 触发的函数将整个 blob 加载到内存中，该函数使用的仅用于 blob 的最大内存为 24 * 最大 blob 大小。 例如，包含 3 个由 blob 触发的函数的函数应用和默认设置，其每 VM 最大并发为 3*24 = 72 个函数调用。
 
 JavaScript 和 Java 函数会将整个 blob 加载到内存中，并且如果绑定到 `string`、`Byte[]` 或 POCO，则 C# 函数也会如此。
 
 ## <a name="polling"></a>轮询
 
-轮询在检查日志和运行定期容器扫描之间起到混合作用。 Blob 在每次以10000组进行扫描，并在间隔之间使用继续标记。
+轮询在检查日志和运行定期容器扫描之间起到混合作用。 每次以 10,000 个为一组扫描 Blob，并在间隔之间使用继续标记。
 
 > [!WARNING]
 > 此外，[将“尽力”创建存储日志](/rest/api/storageservices/About-Storage-Analytics-Logging)。 不保证捕获所有事件。 在某些情况下可能会遗漏某些日志。
@@ -425,5 +425,5 @@ JavaScript 和 Java 函数会将整个 blob 加载到内存中，并且如果绑
 
 ## <a name="next-steps"></a>后续步骤
 
-- [函数运行时读取 blob 存储数据](./functions-bindings-storage-blob-input.md)
-- [从函数中写入 blob 存储数据](./functions-bindings-storage-blob-output.md)
+- [运行函数时读取 Blob 存储数据](./functions-bindings-storage-blob-input.md)
+- [从函数写入 blob 存储数据](./functions-bindings-storage-blob-output.md)

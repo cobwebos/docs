@@ -1,25 +1,25 @@
 ---
-title: 地理编码覆盖率 |Microsoft Azure 映射
-description: 将位置地址转换为纬度和经度坐标的过程称为地理编码。 在本文中，你将了解 Microsoft Azure Maps 中的地理编码覆盖区域。
-author: farah-alyasari
-ms.author: v-faalya
+title: 地理编码覆盖率 |微软 Azure 地图
+description: 将位置地址转换为纬度和经度坐标的过程称为地理编码。 在本文中，您将了解在 Microsoft Azure 地图中具有地理编码覆盖范围的区域。
+author: philmea
+ms.author: philmea
 ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 149dd0a3e709bbf4660aaae176f76f560de873e2
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210049"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335651"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps 地理编码覆盖区域
 
-使用 Azure Maps 搜索某个位置时，搜索服务（例如 "[获取搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)"）将获取搜索词并返回纬度和经度坐标。 此过程称为地理编码。 不过，Azure Maps 没有与所有地区和国家/地区相同的信息和准确性。 使用本文确定可在每个区域中可靠搜索的位置类型。 
+使用 Azure 地图搜索位置时，搜索服务（例如[获取搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)）会获取搜索字词并返回纬度和经度坐标。 此过程称为地理编码。 但是，Azure 地图对于所有区域和国家/地区的信息和准确性并不相同。 使用本文确定可在每个区域中可靠搜索的位置类型。 
 
-在国家/地区地理编码的能力取决于公路数据覆盖面和地理编码服务的地理编码精度。 以下分类用于在每个国家/地区指定地理编码支持的级别。
+国家/地区的地理编码能力取决于道路数据覆盖率和地理编码服务的地理编码精度。 使用以下分类指定每个国家/地区的地理编码支持级别。
 * **地址点** - 可以将地址数据解析为地址包裹中的经度/维度坐标（地产边界）。 有时候称为“屋顶”准确性。 这是可用于地址的最高准确性级别。 
 * **门牌号** - 地址内插到街道上的纬度/经度坐标。
 * **街道级别** - 地址解析为包含地址的街道的纬度/经度坐标。 门牌号码可能不会处理。

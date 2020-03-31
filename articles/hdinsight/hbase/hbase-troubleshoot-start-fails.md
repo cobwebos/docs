@@ -1,6 +1,6 @@
 ---
 title: Apache HBase Master 无法在 Azure HDInsight 中启动
-description: Apache HBase Master （HMaster）无法在 Azure HDInsight 中启动
+description: Apache HBase Master (HMaster) 无法在 Azure HDInsight 中启动
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,33 +8,33 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: 290b541d9b5e86616373d2e426241fca07e780ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887200"
 ---
-# <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master （HMaster）无法在 Azure HDInsight 中启动
+# <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master (HMaster) 无法在 Azure HDInsight 中启动
 
-本文介绍有关在与 Azure HDInsight 群集交互时遇到的问题的故障排除步骤和可能的解决方法。
+本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
 
 ## <a name="scenario-atomic-renaming-failure"></a>方案：原子重命名失败
 
 ### <a name="issue"></a>问题
 
-启动过程中发现意外文件。
+启动过程中识别到意外的文件。
 
 ### <a name="cause"></a>原因
 
-在启动过程中，HMaster 执行大量的初始化步骤，包括将数据从暂存（.tmp）文件夹移动到 data 文件夹。 HMaster 还查看预写日志（WAL）文件夹，查看是否有任何无响应的区域服务器。
+在启动过程中，HMaster 会执行许多初始化步骤，包括将数据从暂存文件夹 (.tmp) 移到数据文件夹。 HMaster 还会查看预写日志 (WAL) 文件夹中是否存在任何无响应的区域服务器。
 
-HMaster 对 WAL 文件夹执行基本列表命令。 在任何时候，如果 HMaster 发现其中任何一个文件夹中存在意外的文件，则会引发异常并且不会启动。
+HMaster 会对 WAL 文件夹执行一个基本的 list 命令。 在任何时候，如果 HMaster 发现其中任何一个文件夹中存在意外的文件，则会引发异常并且不会启动。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
-检查调用堆栈，并尝试确定哪个文件夹可能导致问题（例如，它可能是 WAL 文件夹或 .tmp 文件夹）。 然后，通过 Cloud Explorer 或 HDFS 命令尝试找到问题文件。 通常，这是一个 `*-renamePending.json` 的文件。 （`*-renamePending.json` 文件是用于在 WASB 驱动程序中实现原子重命名操作的日志文件。 由于此实现中的 bug，在进程崩溃后，可以保留这些文件，依此类推。）在 Cloud Explorer 或使用 HDFS 命令强制删除此文件。
+检查调用堆栈并尝试确定哪个文件夹可能导致问题（例如，是 WAL 文件夹还是 .tmp 文件夹）。 然后，通过 Cloud Explorer 或 HDFS 命令尝试找到问题文件。 通常这是一个 `*-renamePending.json` 文件。 （`*-renamePending.json` 文件是用于在 WASB 驱动程序中实现原子重命名操作的日记文件。 由于此实现中的错误，这些文件可以在进程崩溃后保留，等等。强制删除此文件，无论是在云资源管理器或使用 HDFS 命令。
 
-有时，可能还有一个名为的临时文件，如此位置 `$$$.$$$`。 必须使用 HDFS `ls` 命令查看此文件，而不能在 Cloud Explorer 中查看。 若要删除此文件，请使用 HDFS 命令 `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`。
+有时，此位置还可能存在名称类似于 `$$$.$$$` 的临时文件。 必须使用 HDFS `ls` 命令查看此文件，而不能在 Cloud Explorer 中查看。 若要删除此文件，请使用 HDFS 命令 `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`。
 
 运行这些命令后，HMaster 应会立即启动。
 
@@ -44,13 +44,13 @@ HMaster 对 WAL 文件夹执行基本列表命令。 在任何时候，如果 HM
 
 ### <a name="issue"></a>问题
 
-你可能会看到一条消息，指示 `hbase: meta` 表不处于联机状态。 运行 `hbck` 可能会在 HMaster 日志中报告 `hbase: meta table replicaId 0 is not found on any region.`，你可能会看到以下消息： `No server address listed in hbase: meta for region hbase: backup <region name>`。  
+可能会看到一条消息，指示 `hbase: meta` 表未联机。 运行 `hbck` 可能会报告 `hbase: meta table replicaId 0 is not found on any region.` 在 HMaster 日志中，可能会看到以下消息：`No server address listed in hbase: meta for region hbase: backup <region name>`。  
 
 ### <a name="cause"></a>原因
 
-重新启动 HBase 后，HMaster 无法初始化。
+重启 HBase 后 HMaster 无法初始化。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 1. 在 HBase shell 中输入以下命令（根据情况更改实际值）：
 
@@ -59,7 +59,7 @@ HMaster 对 WAL 文件夹执行基本列表命令。 在任何时候，如果 HM
     delete 'hbase:meta','hbase:backup <region name>','<column name>'
     ```
 
-1. 删除 `hbase: namespace` 条目。 此条目可能与扫描 `hbase: namespace` 表时报告的错误相同。
+1. 删除 `hbase: namespace` 条目。 此条目可能是扫描 `hbase: namespace` 表时报告的相同错误。
 
 1. 从 Ambari UI 重启主动 HMaster 以使 HBase 恢复运行状态。
 
@@ -71,19 +71,19 @@ HMaster 对 WAL 文件夹执行基本列表命令。 在任何时候，如果 HM
 
 ---
 
-## <a name="scenario-javaioioexception-timedout"></a>方案： IOException：超时
+## <a name="scenario-javaioioexception-timedout"></a>方案：java.io.IO 例外：超时
 
 ### <a name="issue"></a>问题
 
-HMaster 超时，类似于以下内容： `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`。
+HMaster 超时并出现如下所示的严重异常：`java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`。
 
 ### <a name="cause"></a>原因
 
-如果有大量表和区域且在重启 HMaster 服务时未刷新，则会遇到此问题。 超时是 HMaster 的已知缺陷。 一般群集启动任务可能会花费很长时间。 如果尚未分配命名空间表，HMaster 将关闭。 长时间启动任务发生在大量未刷新数据存在并且超时为五分钟的情况下。
+如果有大量表和区域且在重启 HMaster 服务时未刷新，则会遇到此问题。 超时是 HMaster 中的一个已知缺陷。 一般群集启动任务可能会花费很长时间。 如果命名空间表尚未分配，HMaster 将会关闭。 如果存在大量未刷新的数据，而五分钟超时值不足以完成启动任务，则启动任务会长时间运行。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
-1. 从 Apache Ambari UI 中转到**HBase** ** > 配置**。 在自定义 `hbase-site.xml` 文件中，添加以下设置：
+1. 从阿帕奇安巴里UI，去**HBase** > **配置**。 在自定义 `hbase-site.xml` 文件中添加以下设置：
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -93,11 +93,11 @@ HMaster 超时，类似于以下内容： `java.io.IOException: Timedout 300000m
 
 ---
 
-## <a name="scenario-frequent-region-server-restarts"></a>方案：频繁地重启区域服务器
+## <a name="scenario-frequent-region-server-restarts"></a>方案：频繁的区域服务器重新启动
 
 ### <a name="issue"></a>问题
 
-节点定期重启。 从区域服务器日志中，你可能会看到类似于以下内容的条目：
+节点定期重新启动。 在区域服务器日志中，可能会看到如下所示的条目：
 
 ```
 2017-05-09 17:45:07,683 WARN  [JvmPauseMonitor] util.JvmPauseMonitor: Detected pause in JVM or host machine (eg GC): pause of approximately 31000ms
@@ -107,15 +107,15 @@ HMaster 超时，类似于以下内容： `java.io.IOException: Timedout 300000m
 
 ### <a name="cause"></a>原因
 
-长 `regionserver` JVM GC 暂停。 暂停将导致 `regionserver` 无响应，并且无法在 zk 会话超时 .40s 中向 HMaster 发送检测信号。 HMaster 会相信 `regionserver` 是死的，将中止 `regionserver` 并重新启动。
+`regionserver` JVM GC 长时间暂停。 暂停会导致 `regionserver` 无响应，并且无法在 40 秒 zk 会话超时期限内向 HMaster 发送检测信号。 HMaster 将认为 `regionserver` 已死机，因此会中止 `regionserver` 并重启。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
-更改 Zookeeper 会话超时，不仅 `zookeeper.session.timeout` `hbase-site` 设置，还需要更改 `zoo.cfg` 设置 `maxSessionTimeout`。
+更改 Zookeeper 会话超时，同时，不仅需要更改 `hbase-site` 设置 `zookeeper.session.timeout`，而且还要更改 Zookeeper `zoo.cfg` 设置 `maxSessionTimeout`。
 
-1. 访问 Ambari UI，转到**HBase-> 配置-> 设置**，在 "超时" 部分中，更改 Zookeeper 会话超时值。
+1. 访问 Ambari UI，转到“HBase”->“配置”->“设置”，在“超时”部分，更改 Zookeeper 会话超时值。****
 
-1. 访问 Ambari UI，转到**Zookeeper-> 配置-> 自定义**`zoo.cfg`，添加/更改以下设置。 请确保该值与 HBase `zookeeper.session.timeout`相同。
+1. 访问 Ambari UI，转到**动物园管理员 -> 配置 - >自定义**`zoo.cfg`，添加/更改以下设置。 确保该值与 HBase `zookeeper.session.timeout` 相同。
 
     ```
     Key: maxSessionTimeout Value: 120000  
@@ -133,11 +133,11 @@ HMasters 无法在 HBase 群集上启动。
 
 ### <a name="cause"></a>原因
 
-为辅助存储帐户配置了错误的 HDFS 和 HBase 设置。
+错误地配置了辅助存储帐户的 HDFS 和 HBase 设置。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
-设置 rootdir：在 Ambari 上 wasb://@.blob.core.windows.net/hbase 和重启服务。
+设置 hbase.rootdir: wasb://@.blob.core.windows.net/hbase，并在 Ambari 中重启服务。
 
 ---
 
@@ -145,8 +145,8 @@ HMasters 无法在 HBase 群集上启动。
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-* 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
+* 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 连接[@AzureSupport](https://twitter.com/azuresupport) -用于改善客户体验的官方 Microsoft Azure 帐户。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* 与[@AzureSupport](https://twitter.com/azuresupport)- 用于改善客户体验的官方 Microsoft Azure 帐户连接。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
-* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

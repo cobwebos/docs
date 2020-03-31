@@ -1,16 +1,16 @@
 ---
 title: Xamarin Android 中的身份验证入门
-description: 了解如何使用移动应用通过 AAD、Google、Facebook、Twitter 和 Microsoft 等标识提供者对 Xamarin Android 应用程序的用户进行身份验证。
+description: 了解如何使用移动应用通过标识提供者（如 AAD、Google、Facebook、Twitter 和 Microsoft）对 Xamarin Android 应用的用户进行身份验证。
 ms.assetid: 570fc12b-46a9-4722-b2e0-0d1c45fb2152
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: fa70b7419e1877ab2daba49ad154cdfd5a8d2cba
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77458947"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>向 Xamarin.Android 应用添加身份验证
@@ -21,32 +21,32 @@ ms.locfileid: "77458947"
 
 本教程基于移动应用快速入门。 还必须先完成教程[创建 Xamarin.Android 应用]。 如果不使用下载的快速入门服务器项目，必须将身份验证扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="register"></a>注册应用以进行身份验证并配置应用服务
+## <a name="register-your-app-for-authentication-and-configure-app-services"></a><a name="register"></a>注册应用以进行身份验证并配置应用服务
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
 
 安全身份验证要求为应用定义新的 URL 方案。 这允许身份验证系统在身份验证过程完成后，重定向回应用。 在本教程中，我们将通篇使用 URL 方案 _appname_。 但是，可以使用所选择的任何 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
 
 1. 在 [Azure 门户]中，选择应用服务。
 
-2. 单击“身份验证/授权”菜单选项。
+2. 单击“身份验证/授权”**** 菜单选项。
 
-3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
+3. 在“允许的外部重定向 URL”**** 中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案****。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
 4. 单击“确定”。
 
-5. 单击“保存”。
+5. 单击“保存”。****
 
-## <a name="permissions"></a>将权限限制为已经过身份验证的用户
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 在 Visual Studio 或 Xamarin Studio 中，运行设备或模拟器中的客户端项目。 验证在应用程序启动后是否引发状态代码为 401（“未授权”）的未处理异常。 发生此异常的原因是应用尝试以未经身份验证的用户身份访问移动应用后端。 *TodoItem* 表现在要求身份验证。
 
 接下来，更新客户端应用，以使用经过身份验证的用户从移动应用后端请求资源。
 
-## <a name="add-authentication"></a>向应用添加身份验证
-已更新应用，在显示数据之前要求用户点击“登录”按钮进行身份验证。
+## <a name="add-authentication-to-the-app"></a><a name="add-authentication"></a>向应用程序添加身份验证
+已更新应用，在显示数据之前要求用户点击“登录”**** 按钮进行身份验证。
 
 1. 将以下代码添加到 **TodoActivity** 类：
    
@@ -86,7 +86,7 @@ ms.locfileid: "77458947"
             }
         }
    
-    此代码创建一个对用户进行身份验证的新方法和一个针对新“登录”按钮的方法处理程序。 上面示例代码中的用户使用 Facebook 登录进行身份验证。 对话框用于在进行身份验证后显示用户 ID。
+    此代码创建一个对用户进行身份验证的新方法和一个针对新“登录”**** 按钮的方法处理程序。 上面示例代码中的用户使用 Facebook 登录进行身份验证。 对话框用于在进行身份验证后显示用户 ID。
    
    > [!NOTE]
    > 如果使用的标识提供程序不是 Facebook，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：*MicrosoftAccount*、*Twitter*、*Google* 或 *WindowsAzureActiveDirectory*。
@@ -119,7 +119,7 @@ ms.locfileid: "77458947"
 
 6. 在 Visual Studio 或 Xamarin Studio 中，运行设备或模拟器中的客户端项目，并使用所选的标识提供者登录。 成功登录后，应用会显示登录 ID 和待办事项列表，用户可以对数据进行更新。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 **应用程序崩溃并显示 `Java.Lang.NoSuchMethodError: No static method startActivity`**
 

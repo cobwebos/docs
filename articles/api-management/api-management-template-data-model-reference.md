@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243934"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API 管理模板数据模型参考
@@ -36,9 +36,9 @@ ms.locfileid: "79243934"
 -   [应用程序](#Application)  
 -   [附件](#Attachment)  
 -   [代码示例](#Sample)  
--   [注释](#Comment)  
+-   [备注](#Comment)  
 -   [筛选](#Filtering)  
--   [标头](#Header)  
+-   [头](#Header)  
 -   [HTTP 请求](#HTTPRequest)  
 -   [HTTP 响应](#HTTPResponse)  
 -   [问题](#Issue)  
@@ -46,17 +46,17 @@ ms.locfileid: "79243934"
 -   [操作菜单](#Menu)  
 -   [操作菜单项](#MenuItem)  
 -   [分页](#Paging)  
--   [Parameter](#Parameter)  
+-   [参数](#Parameter)  
 -   [Product](#Product)  
--   [提供程序](#Provider)  
--   [表示形式](#Representation)  
+-   [供应商](#Provider)  
+-   [表示](#Representation)  
 -   [订阅](#Subscription)  
 -   [订阅摘要](#SubscriptionSummary)  
 -   [用户帐户信息](#UserAccountInfo)  
 -   [用户登录](#UseSignIn)  
 -   [用户注册](#UserSignUp)  
   
-##  <a name="API"></a> API  
+##  <a name="api"></a><a name="API"></a>Api  
  `API` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -70,7 +70,7 @@ ms.locfileid: "79243934"
 |`authenticationSettings`|[授权服务器身份验证设置](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|此 API 中包含的身份验证设置的集合。|  
 |`subscriptionKeyParameterNames`|对象 (object)|可选属性，可用于指定包含订阅密钥的查询参数和/或标头参数的自定义名称。 如果存在此属性，则其必须包含以下两个属性中的至少一个。<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
-##  <a name="APISummary"></a> API 摘要  
+##  <a name="api-summary"></a><a name="APISummary"></a>API 摘要  
  `API summary` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -79,7 +79,7 @@ ms.locfileid: "79243934"
 |`name`|字符串|API 的名称。 不得为空。 最大长度为 100 个字符。|  
 |`description`|字符串|API 的说明。 不得为空。 可以包含 HTML 格式标记。 最大长度为 1000 个字符。|  
   
-##  <a name="Application"></a> 应用程序  
+##  <a name="application"></a><a name="Application"></a>应用  
  `application` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -97,7 +97,7 @@ ms.locfileid: "79243934"
 |`Attachments`|[附件](#Attachment)实体的集合。|应用程序的任何附件，例如屏幕截图或图标。|  
 |`Icon`|[附件](#Attachment)|应用程序的图标。|  
   
-##  <a name="Attachment"></a> 附件  
+##  <a name="attachment"></a><a name="Attachment"></a>附件  
  `attachment` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -107,7 +107,7 @@ ms.locfileid: "79243934"
 |`Type`|字符串|附件的类型。|  
 |`ContentType`|字符串|附件的媒体类型。|  
   
-##  <a name="Sample"></a> 代码示例  
+##  <a name="code-sample"></a><a name="Sample"></a>代码示例  
   
 |properties|类型|说明|  
 |--------------|----------|-----------------|  
@@ -124,7 +124,7 @@ ms.locfileid: "79243934"
 |`headers`|[标头](#Header)实体的集合。|此操作的标头。|  
 |`parameters`|[参数](#Parameter)实体的集合。|为此操作定义的参数。|  
   
-##  <a name="Comment"></a> 注释  
+##  <a name="comment"></a><a name="Comment"></a> 注释  
  `API` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -134,13 +134,13 @@ ms.locfileid: "79243934"
 |`DeveloperCompany`|字符串|开发人员所在公司的名称。|  
 |`PostedOn`|DateTime|发布注释的日期和时间。|  
   
-##  <a name="Issue"></a> 问题  
+##  <a name="issue"></a><a name="Issue"></a> 问题  
  `issue` 实体具有以下属性。  
   
 |properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Id`|字符串|问题的唯一标识符。|  
-|`ApiID`|字符串|报告了此问题的 API 的 ID。|  
+|`ApiID`|字符串|报告此问题的 API 的 ID。|  
 |`Title`|字符串|问题的标题。|  
 |`Description`|字符串|问题的说明。|  
 |`SubscriptionDeveloperName`|字符串|报告此问题的开发人员的名字。|  
@@ -150,7 +150,7 @@ ms.locfileid: "79243934"
 |`Attachments`|[附件](api-management-template-data-model-reference.md#Attachment)实体的集合。|此问题的任何附件。|  
 |`Services`|[API](#API) 实体的集合。|报告此问题的用户所订阅的 API。|  
   
-##  <a name="Filtering"></a> 筛选  
+##  <a name="filtering"></a><a name="Filtering"></a>滤波  
  `filtering` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -158,7 +158,7 @@ ms.locfileid: "79243934"
 |`Pattern`|字符串|当前的搜索词；如果没有搜索词，则为 `null`。|  
 |`Placeholder`|字符串|没有指定搜索词时，在搜索框中显示的文本。|  
   
-##  <a name="Header"></a> 标头  
+##  <a name="header"></a><a name="Header"></a> 标头  
  本部分描述 `parameter` 表示形式。  
   
 |properties|类型|说明|  
@@ -171,7 +171,7 @@ ms.locfileid: "79243934"
 |`required`|boolean|标头是否为必需。|  
 |`readOnly`|boolean|标头是否为只读。|  
   
-##  <a name="HTTPRequest"></a> HTTP 请求  
+##  <a name="http-request"></a><a name="HTTPRequest"></a> HTTP 请求  
  本部分描述 `request` 表示形式。  
   
 |properties|类型|说明|  
@@ -181,7 +181,7 @@ ms.locfileid: "79243934"
 |`parameters`|[参数](#Parameter)数组|操作请求参数的集合。|  
 |`representations`|[表示形式](#Representation)数组|操作请求表示形式的集合。|  
   
-##  <a name="HTTPResponse"></a> HTTP 响应  
+##  <a name="http-response"></a><a name="HTTPResponse"></a> HTTP 响应  
  本部分描述 `response` 表示形式。  
   
 |properties|类型|说明|  
@@ -190,7 +190,7 @@ ms.locfileid: "79243934"
 |`description`|字符串|操作响应说明。|  
 |`representations`|[表示形式](#Representation)数组|操作响应表示形式的集合。|  
   
-##  <a name="Operation"></a> 操作  
+##  <a name="operation"></a><a name="Operation"></a> 操作  
  `operation` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -205,7 +205,7 @@ ms.locfileid: "79243934"
 |`request`|[HTTP 请求](#HTTPRequest)|一个实体，包含请求详细信息。|  
 |`responses`|[HTTP 响应](#HTTPResponse)数组|操作 [HTTP 响应](#HTTPResponse)实体数组。|  
   
-##  <a name="Menu"></a> 操作菜单  
+##  <a name="operation-menu"></a><a name="Menu"></a>操作菜单  
  `operation menu` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -215,7 +215,7 @@ ms.locfileid: "79243934"
 |`Action`|字符串|菜单类型。|  
 |`MenuItems`|[操作菜单项](#MenuItem)实体的集合。|当前 API 的操作。|  
   
-##  <a name="MenuItem"></a> 操作菜单项  
+##  <a name="operation-menu-item"></a><a name="MenuItem"></a>操作菜单项  
  `operation menu item` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -224,7 +224,7 @@ ms.locfileid: "79243934"
 |`Title`|字符串|操作说明。|  
 |`HttpMethod`|字符串|此操作的 Http 方法。|  
   
-##  <a name="Paging"></a> 分页  
+##  <a name="paging"></a><a name="Paging"></a>寻呼  
  `paging` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -235,7 +235,7 @@ ms.locfileid: "79243934"
 |`ShowAll`|boolean|是否在单页上显示所有结果。|  
 |`PageCount`|数字|结果的页数。|  
   
-##  <a name="Parameter"></a> 参数  
+##  <a name="parameter"></a><a name="Parameter"></a>参数  
  本部分描述 `parameter` 表示形式。  
   
 |properties|类型|说明|  
@@ -248,7 +248,7 @@ ms.locfileid: "79243934"
 |`kind`|数字|此参数是路径参数 (1)，还是查询字符串参数 (2)。|  
 |`typeName`|字符串|参数类型。|  
   
-##  <a name="Product"></a> Product  
+##  <a name="product"></a><a name="Product"></a>产品  
  `product` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -261,7 +261,7 @@ ms.locfileid: "79243934"
 |`AllowMultipleSubscriptions`|boolean|指定用户是否可以同时拥有此产品的多个订阅。|  
 |`MultipleSubscriptionsCount`|数字|允许用户同时拥有此产品订阅的最大数。|  
   
-##  <a name="Provider"></a> 提供程序  
+##  <a name="provider"></a><a name="Provider"></a>供应商  
  `provider` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -270,7 +270,7 @@ ms.locfileid: "79243934"
 |`AuthenticationType`|字符串|提供程序类型。 （Azure Active Directory、Facebook 登录、Google 帐户、Microsoft 帐户、Twitter）。|  
 |`Caption`|字符串|提供程序的显示名称。|  
   
-##  <a name="Representation"></a> 表示形式  
+##  <a name="representation"></a><a name="Representation"></a> 表示形式  
  本部分描述 `representation`。  
   
 |properties|类型|说明|  
@@ -278,7 +278,7 @@ ms.locfileid: "79243934"
 |`contentType`|字符串|指定此表示形式的已注册内容类型或自定义内容类型，例如 `application/xml`。|  
 |`sample`|字符串|表示形式的示例。|  
   
-##  <a name="Subscription"></a> 订阅  
+##  <a name="subscription"></a><a name="Subscription"></a> 订阅  
  `subscription` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -304,7 +304,7 @@ ms.locfileid: "79243934"
 |`CancelUrl`|字符串|用于取消订阅的相对 URL。|  
 |`RenewUrl`|字符串|用于续订订阅的相对 URL。|  
   
-##  <a name="SubscriptionSummary"></a> 订阅摘要  
+##  <a name="subscription-summary"></a><a name="SubscriptionSummary"></a>订阅摘要  
  `subscription summary` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -312,7 +312,7 @@ ms.locfileid: "79243934"
 |`Id`|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的订阅。 值是有效的相对 URL，采用 `subscriptions/{sid}` 格式，其中 `{sid}` 是订阅标识符。 此属性为只读。|  
 |`DisplayName`|字符串|订阅的显示名称|  
   
-##  <a name="UserAccountInfo"></a> 用户帐户信息  
+##  <a name="user-account-info"></a><a name="UserAccountInfo"></a> 用户帐户信息  
  `user account info` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -325,7 +325,7 @@ ms.locfileid: "79243934"
 |`ProviderName`|字符串|身份验证提供程序名称。|  
 |`IsBasicAccount`|boolean|如果此帐户使用电子邮件和密码注册，则为 true；如果此帐户使用提供程序注册，则为 false。|  
   
-##  <a name="UseSignIn"></a> 用户登录  
+##  <a name="user-sign-in"></a><a name="UseSignIn"></a> 用户登录  
  `user sign in` 实体具有以下属性：  
   
 |properties|类型|说明|  
@@ -343,7 +343,7 @@ ms.locfileid: "79243934"
 |`UserRegistrationTerms`|字符串|用户必须在登录之前同意的条款。|  
 |`UserRegistrationTermsEnabled`|boolean|是否启用条款。|  
   
-##  <a name="UserSignUp"></a> 用户注册  
+##  <a name="user-sign-up"></a><a name="UserSignUp"></a>用户注册  
  `user sign up` 实体具有以下属性：  
   
 |properties|类型|说明|  

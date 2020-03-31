@@ -1,6 +1,6 @@
 ---
 title: Azure 中继常见问题 | Microsoft Docs
-description: 本文提供了一些有关 Azure 中继服务的常见问题的解答。
+description: 本文提供了一些有关 Azure 中继服务的常见问题解答 (FAQ)。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: d5032b427316a3c4e07013af4e8214e239a6efb3
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513994"
 ---
 # <a name="azure-relay-faqs"></a>Azure 中继常见问题
@@ -36,9 +36,9 @@ ms.locfileid: "76513994"
 [命名空间](relay-create-namespace-portal.md)是一个范围容器，可用于对应用程序中的中继资源进行寻址。 必须创建命名空间才能使用中继。 这是入门的开始步骤之一。
 
 ### <a name="what-happened-to-service-bus-relay-service"></a>服务总线中继服务发生了什么情况？
-以前命名的服务总线中继服务现在称为 [WCF 中继](service-bus-relay-tutorial.md)。 可以继续照常使用此服务。 混合连接功能是一种更新版的服务，从 Azure BizTalk 服务移植过来。 将继续支持 WCF 中继和混合连接。
+以前命名的服务总线中继服务现在称为[WCF 中继](service-bus-relay-tutorial.md)。 可以继续照常使用此服务。 混合连接功能是一种更新版的服务，从 Azure BizTalk 服务移植过来。 将继续支持 WCF 中继和混合连接。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 本部分回答了一些关于中继定价结构的常见问题。 若要了解一般的 Azure 定价信息，还可以参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。 有关中继定价的完整信息，请参阅[服务总线定价详细信息][Pricing overview]。
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>如何对混合连接和 WCF 中继收费？
@@ -71,16 +71,16 @@ WCF 中继仅适用于标准层命名空间。 其他中继的定价和[连接�
 在某些情况下，单个中继可能会有多个连接的侦听器。 当至少有一个中继侦听器连接到中继时，该中继都就会被视为“打开”状态。 将侦听器添加到打开的中继时，会增加中继小时数。 连接到中继的中继发送方（调用消息或将消息发送至中继的客户端）数量不会对中继小时数的计算产生影响。
 
 ### <a name="how-is-the-messages-meter-calculated-for-wcf-relays"></a>如何计算 WCF 中继的消息数？
-（**这仅适用于 WCF 中继。消息不是混合连接的成本。** ）
+（**这仅适用于 WCF 继电器。消息不是混合连接的成本。**
 
 一般情况下，会使用与上述相同的用于中转实体（队列、主题和订阅）的方法来计算中继的可计费消息。 但是，有一些明显的区别。
 
 将消息发送至服务总线中继的操作被视为“完全通过”式发送，其目标是接收消息的中继侦听器。 不会将其视为目标为服务总线中继的发送操作，这种情况下随后需交付至中继侦听器， 针对中继侦听器的请求-应答模式服务调用（最大 64 KB）将生成两条可计费消息：一条用于请求的可计费消息，一条用于应答（假设响应也是 64 KB 或更小）的可计费消息。 这不同于使用队列在客户端和服务之间进行协调。 如果使用队列在客户端和服务之间进行协调，则同一请求-答复模式要求先将请求发送到队列，然后再将其从队列交付到服务，或者取消其排队。 随后就是将响应发送至另一队列，再从该队列交付至客户端，或者取消排队。 如果始终使用同一大小作为假设吞吐量（最高 64 KB），则此中介型队列模式会生成 4 条计费消息。 收费的消息数两倍于使用中继实现同一模式时的消息数。 当然，使用队列来实现此模式好处更多，例如持久性和负载分级。 这些好处可能产生额外费用。
 
-使用 **netTCPRelay** WCF 绑定打开的中继不将消息视为单条消息，而视为流经系统的数据流。 使用此绑定时，只有发送方和侦听器可以识别发送和接收的单条分帧消息。 对于使用 **netTCPRelay** 绑定的中继，所有数据都会被视为用于计算可计费消息的数据流。 在这种情况下，服务总线每隔 5 分钟计算一次通过单个中继发送或接收的数据总量。 然后会将该数据总量除以 64 KB，得出该中继在该时段的计费消息数。
+使用 **netTCPRelay** WCF 绑定打开的中继不将消息视为单条消息，而视为流经系统的数据流。 使用此绑定时，只有发送方和侦听器可以识别发送和接收的单条分帧消息。 对于使用**netTCPRelay**绑定的中继，所有数据都被视为用于计算计费消息的流。 在这种情况下，服务总线每隔 5 分钟计算一次通过单个中继发送或接收的数据总量。 然后会将该数据总量除以 64 KB，得出该中继在该时段的计费消息数。
 
 ## <a name="quotas"></a>配额
-| 配额名称 | 范围 |  说明 | 值 |
+| 配额名称 | 范围 |  说明 | “值” |
 | --- | --- | --- | --- |
 | 中继上的并发侦听器数 |实体 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 |25 |
 | 服务命名空间中所有中继终结点的并发中继连接数 |命名空间 |- |5,000 |
@@ -123,19 +123,19 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-suggested-actions-you-can-take"></a>Azure 中继 API 所生成的异常有哪些，可以采用哪些建议操作？
-有关常见异常以及可以采取的建议操作的说明，请参阅[中继异常][Relay exceptions]。
+有关常见异常以及可以采用的建议操作的说明，请参阅[中继异常][Relay exceptions]。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>什么是共享访问签名？哪些语言可以用来生成签名？
-共享访问签名 (SAS) 是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在 node.js、PHP、Python、Java、C 和C#中生成自己的签名的信息，请参阅[使用共享访问签名进行服务总线身份验证][Shared Access Signatures]。
+共享访问签名 (SAS) 是基于 SHA–256 安全哈希或 URI 的身份验证机制。 有关如何在 Node.js、PHP、Python、Java、C 和 C# 中生成自有签名的信息，请参阅[使用共享访问签名进行服务总线身份验证][Shared Access Signatures]。
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>是否可以将中继终结点加入允许列表？
-可以。 中继客户端使用完全限定的域名连接到 Azure 中继服务。 客户可以在支持 DNS 允许列表的防火墙上为 `*.servicebus.windows.net` 添加一个条目。
+是的。 中继客户端使用完全限定的域名连接到 Azure 中继服务。 客户可以在支持 DNS 允许列表的防火墙上为 `*.servicebus.windows.net` 添加一个条目。
 
 ## <a name="next-steps"></a>后续步骤
 * [创建命名空间](relay-create-namespace-portal.md)
-* [.NET 入门](relay-hybrid-connections-dotnet-get-started.md)
+* [开始使用 .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [节点入门](relay-hybrid-connections-node-get-started.md)
 
 [Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/

@@ -1,21 +1,21 @@
 ---
-title: 利用 sys_schema Azure Database for MySQL
-description: 了解如何使用 sys_schema 在 Azure Database for MySQL 中查找性能问题和维护数据库。
+title: 利用sys_schema - MySQL 的 Azure 数据库
+description: 了解如何在 Azure Database for MySQL 中使用 sys_schema 发现性能问题和维护数据库。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 50552b87fad9d8f58ff8c48dc03463d4c901bf99
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
-ms.translationtype: MT
+ms.date: 3/18/2020
+ms.openlocfilehash: a35a586a519ff78e8b32d986b92bd008b2c6b858
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775939"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067869"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何在 Azure Database for MySQL 中使用 sys_schema 进行性能优化和数据库维护
 
-Mysql 5.5 中第一次提供的 MySQL performance_schema 为许多重要的服务器资源（如内存分配、存储程序、元数据锁定等）提供检测。但 performance_schema 包含80个以上的表，并且获取所需的信息通常需要联接 performance_schema 内的表以及 information_schema 中的表。 sys_schema 在 performance_schema 和 information_schema 的基础上构建，在一个只读的数据库中提供[用户友好视图](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html)的强大集合，并且完全在 Azure Database for MySQL 版本 5.7 中启用。
+MySQL performance_schema在 MySQL 5.5 中首次提供，它为许多重要的服务器资源（如内存分配、存储程序、元数据锁定等）提供检测。但是，performance_schema包含 80 多个表，获取必要的信息通常需要performance_schema联接表以及information_schema表。 sys_schema 在 performance_schema 和 information_schema 的基础上构建，在一个只读的数据库中提供[用户友好视图](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html)的强大集合，并且完全在 Azure Database for MySQL 版本 5.7 中启用。
 
 ![sys_schema 的视图](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
 
@@ -29,7 +29,7 @@ sys_schema 中有 52 个视图，每个视图具有以下前缀之一：
 - User：按用户分组的消耗资源。 示例包括文件 I/O、连接和内存。
 - Wait：等待按主机或用户分组的事件。
 
-现在，让我们了解 sys_schema 的一些常见使用模式。 首先，我们将使用模式分组为两个类别：**性能优化**和**数据库维护**。
+现在，让我们来了解 sys_schema 的一些常见使用模式。 首先，我们将使用模式分为两类：**性能调整**和**数据库维护**。
 
 ## <a name="performance-tuning"></a>性能调优
 
@@ -80,4 +80,4 @@ InnoDB 缓冲池驻留在内存中，是 DBMS 与存储之间的主要缓存机�
 总而言之，sys_schema 是用于优化性能和维护数据库的极佳工具。 请务必在 Azure Database for MySQL 中利用此功能。 
 
 ## <a name="next-steps"></a>后续步骤
-- 若要查找同行对你最关心的问题的解答或者发布新的问题/解答，请访问 [MSDN 论坛](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) 或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。
+- 若要查找同行对你最关心问题的解答，或者要发布新的问题/答案，请访问 [MSDN 论坛](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。
