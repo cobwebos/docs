@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/17/2019
+ms.date: 03/17/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: 6ddadcafd4f068f6516039017a3d491095c78e30
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 00de9c803ef796eda8da609a4009e0a8cfcb3664
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79280542"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455361"
 ---
 # <a name="registration-management"></a>注册管理
 
@@ -33,10 +33,10 @@ ms.locfileid: "79280542"
 
 ### <a name="registrations"></a>注册
 
-注册将设备的平台通知服务 (PNS) 句柄与标记（有时还包括模板）相关联。 PNS 句柄可能是 ChannelURI、设备令牌或 FCM 注册 id。标记用于将通知路由到一组正确的设备句柄。 有关详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。 模板用于实现按注册转换。 有关详细信息，请参阅[模板](notification-hubs-templates-cross-platform-push-messages.md)。
+注册将设备的平台通知服务 (PNS) 句柄与标记（有时还包括模板）相关联。 PNS 句柄可以是通道URI、设备令牌或 FCM 注册 ID。 标记用于将通知路由到一组正确的设备句柄。 有关详细信息，请参阅[路由和标记表达式](notification-hubs-tags-segment-push-message.md)。 模板用于实现按注册转换。 有关详细信息，请参阅[模板](notification-hubs-templates-cross-platform-push-messages.md)。
 
 > [!NOTE]
-> Azure 通知中心每个设备最多支持60个标记。
+> Azure 通知中心支持每个设备注册最多 60 个标记。
 
 ### <a name="installations"></a>安装
 
@@ -45,7 +45,7 @@ ms.locfileid: "79280542"
 以下是使用安装的一些主要优点：
 
 - 创建或更新安装是完全幂等的。 因此可以重试该操作，而不需要顾虑重复注册的情况。
-- 安装模型支持特殊标记格式（`$InstallationId:{INSTALLATION_ID}`），该格式允许将通知直接发送到特定设备。 例如，如果应用程序的代码为此特定设备设置了 `joe93developer` 的安装 ID，则当向 `$InstallationId:{joe93developer}` 标记发送通知时，开发人员可以将此设备设定为目标。 这使你可以针对特定设备，而无需进行任何其他编码。
+- 此安装模型支持特殊的标记格式 (`$InstallationId:{INSTALLATION_ID}`)，该格式允许将通知直接发送到特定的设备。 例如，如果应用的代码为此特定设备设置了安装 ID `joe93developer`，则开发人员在向 `$InstallationId:{joe93developer}` 标记发送通知时，可以将此设备作为目标。 这样，无需编写任何额外的代码，就能将特定设备作为目标。
 - 使用安装还能执行部分注册更新。 可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法来请求安装部分更新。 想要更新注册中的标记时，此方法很有用。 不需要删除整个注册，并重新发送前面的所有标记。
 
 安装可包含以下属性。 有关完整的安装属性列表，请参阅[使用 REST API 创建或覆盖安装](/rest/api/notificationhubs/create-overwrite-installation)或[安装属性](/dotnet/api/microsoft.azure.notificationhubs.installation)。
@@ -92,7 +92,7 @@ ms.locfileid: "79280542"
 注册与安装必须包含每个设备/通道的有效 PNS 句柄。 由于只能在设备上的客户端应用中获取 PNS 句柄，因此有一种模式是直接在该设备上使用客户端应用进行注册。 另一方面，与标记相关的安全性考虑和业务逻辑可能要求在应用后端管理设备注册。
 
 > [!NOTE]
-> 安装 API 不支持百度服务（尽管注册 API 确实会这样做）。 
+> 安装 API 不支持百度服务（尽管注册 API 支持）。 
 
 ### <a name="templates"></a>模板
 
@@ -119,7 +119,7 @@ SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建
 从设备注册是最简单的方法，但存在一些缺点：
 
 - 客户端应用只能在它处于活动状态时更新其标记。 例如，如果用户有两台设备要注册与体育团队相关的标记，则当第一台设备注册附加标记（例如，Seahawks）时，第二台设备将不会收到有关 Seahawks 的通知，直到第二次在第二台设备上执行应用程序为止。 更概括地说，如果标记受多个设备的影响，则从后端管理标记是理想的选择。
-- 由于应用可能会受到攻击，因此保护特定标记的注册需要格外小心，如“标记级安全性”部分中所述。
+- 由于应用可能会遭到黑客攻击，因此，保护注册到特定标记需要格外小心，如《[安全》](notification-hubs-push-notification-security.md)一文中所述。
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>使用安装从设备向通知中心注册的示例代码
 
@@ -170,7 +170,7 @@ var channel = await PushNotificationChannelManager.CreatePushNotificationChannel
 string installationId = null;
 var settings = ApplicationData.Current.LocalSettings.Values;
 
-// If we have not stored an installation id in application data, create and store as application data.
+// If we have not stored an installation ID in application data, create and store as application data.
 if (!settings.ContainsKey("__NHInstallationId"))
 {
     installationId = Guid.NewGuid().ToString();
@@ -212,15 +212,15 @@ else
 // Initialize the Notification Hub
 NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(listenConnString, hubName);
 
-// The Device id from the PNS
+// The Device ID from the PNS
 var pushChannel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
-// If you are registering from the client itself, then store this registration id in device
-// storage. Then when the app starts, you can check if a registration id already exists or not before
+// If you are registering from the client itself, then store this registration ID in device
+// storage. Then when the app starts, you can check if a registration ID already exists or not before
 // creating.
 var settings = ApplicationData.Current.LocalSettings.Values;
 
-// If we have not stored a registration id in application data, store in application data.
+// If we have not stored a registration ID in application data, store in application data.
 if (!settings.ContainsKey("__NHRegistrationId"))
 {
     // make sure there are no existing registrations for this push handle (used for iOS and Android)    
@@ -269,7 +269,7 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>使用安装从后端向通知中心注册的示例代码
 
-客户端设备仍会像前面一样获取其 PNS 句柄及相关的安装属性，并在可以执行注册和授权标记等的后端上调用自定义 API。后端可以利用[通知中心 SDK 进行后端操作](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+客户端设备仍像以前一样获取其 PNS 句柄和相关安装属性，并在后端调用自定义 API，该 API 可以执行注册和授权标记等。后端可以利用[通知中心 SDK 进行后端操作](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
 也可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法更新安装。
 
@@ -328,7 +328,7 @@ var reg = new WindowsRegistrationDescription(channelUri, tags);
 // Create
 await hub.CreateRegistrationAsync(reg);
 
-// Get by id
+// Get by ID
 var r = await hub.GetRegistrationAsync<RegistrationDescription>("id");
 
 // update

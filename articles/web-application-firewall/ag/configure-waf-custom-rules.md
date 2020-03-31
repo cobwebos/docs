@@ -1,7 +1,7 @@
 ---
 title: 使用 PowerShell 配置 v2 自定义规则
 titleSuffix: Azure Web Application Firewall
-description: 了解如何使用 Azure PowerShell 配置 WAF v2 自定义规则。 您可以为通过防火墙传递的每个请求创建自己的规则。
+description: 了解如何使用 Azure PowerShell 配置 WAF v2 自定义规则。 可以为通过防火墙传递的每个请求创建自己的评估规则。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,25 +9,25 @@ ms.topic: article
 ms.date: 11/16/2019
 ms.author: victorh
 ms.openlocfilehash: 4c50c4ce344a51a70f6849beb7c5d9d18a2b401d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471629"
 ---
-# <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>使用自定义规则在应用程序网关上配置 Web 应用程序防火墙 v2 Azure PowerShell
+# <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>通过 Azure PowerShell 在应用程序网关上使用自定义规则配置 Web 应用程序防火墙 v2
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-自定义规则允许您为通过 Web 应用程序防火墙（WAF） v2 传递的每个请求创建自己的规则。 这些规则的优先级高于托管规则集中的其余规则。 自定义规则具有操作（允许或阻止）、匹配条件和允许完全自定义的运算符。
+自定义规则允许你创建自己的规则，对通过 Web 应用程序防火墙 (WAF) v2 进行传递的每个请求进行评估。 这些规则的优先级高于托管规则集中的其余规则。 自定义规则具有一个操作（允许或阻止）、一个匹配条件和一个运算符以允许完全自定义。
 
 本文创建使用自定义规则的应用程序网关 WAF v2。 如果请求标头包含用户代理 *evilbot*，该自定义规则会阻止流量。
 
-若要查看更多自定义规则示例，请参阅[创建和使用自定义 web 应用程序防火墙规则](create-custom-waf-rules.md)
+若要查看更多自定义规则示例，请参阅[创建和使用自定义 Web 应用程序防火墙规则](create-custom-waf-rules.md)
 
-如果要在可复制、粘贴和运行的一个连续脚本中运行本文中的 Azure PowerShell，请参阅[Azure 应用程序网关 PowerShell 示例](powershell-samples.md)。
+如果你想在一个可以复制、粘贴和运行的连续脚本中运行本文中的 Azure PowerShell，请参见 [Azure 应用程序网关 PowerShell 示例](powershell-samples.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell 模块
 
@@ -140,4 +140,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
 
 ## <a name="next-steps"></a>后续步骤
 
-[在应用程序网关上详细了解 Web 应用程序防火墙](ag-overview.md)
+[详细了解应用程序网关上的 Web 应用程序防火墙](ag-overview.md)

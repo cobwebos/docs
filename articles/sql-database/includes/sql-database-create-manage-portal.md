@@ -6,26 +6,26 @@ ms.topic: include
 ms.date: 08/23/2019
 ms.author: sstein
 ms.openlocfilehash: 2a8b9322f7c03d76cd8a31c832c343cde9e2e355
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74935936"
 ---
-## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>利用 Azure 门户创建和管理 Azure SQL 资源
+## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure SQL 资源
 
-Azure 门户提供了一个页面，可在其中管理[所有 AZURE sql 资源](https://go.microsoft.com/fwlink/?linkid=2100641)（包括 SQL 虚拟机）。
+Azure 门户提供一个页面，您可以在其中管理[所有 Azure SQL 资源](https://go.microsoft.com/fwlink/?linkid=2100641)，包括 SQL 虚拟机。
 
-若要访问 " **AZURE sql 资源**" 页，请在 "Azure 门户" 菜单中选择 " **azure sql** "，或在任何页面中搜索并选择 " **azure sql** "。
+要访问**Azure SQL 资源**页，请从 Azure 门户菜单中选择**Azure SQL**或在任何页中搜索并选择**Azure SQL。**
 
 > [!NOTE]
-> **AZURE sql**提供一种便捷的方式来访问所有 SQL 数据库、弹性池、数据库服务器、sql 托管实例和 sql 虚拟机。 Azure SQL 不是服务或资源。 
+> **Azure SQL**提供了一种快速简便的方法来访问所有 SQL 数据库、弹性池、数据库服务器、SQL 托管实例和 SQL 虚拟机。 Azure SQL 不是服务或资源。 
 
-若要管理现有资源，请在列表中选择所需的项。 若要创建新的 Azure SQL 资源，请选择 " **+ 添加**"。 
+要管理现有资源，请在列表中选择所需的项。 要创建新的 Azure SQL 资源，请选择 **" 添加**"。 
 
-![Azure SQL 门户页](../media/sql-database-technical-overview/add-azure-sql-resources.png)
+![Azure SQL 门户页面](../media/sql-database-technical-overview/add-azure-sql-resources.png)
 
-选择 " **+ 添加**" 后，通过选择 "在任何磁贴上**显示详细**信息" 来查看有关不同选项的其他信息。
+选择 **+ 添加**后，通过选择"在任何磁贴上**显示详细信息**"来查看有关不同选项的其他信息。
 
 ![数据库磁贴详细信息](../media/sql-database-technical-overview/single-sql-database-deployment-options.png)
 

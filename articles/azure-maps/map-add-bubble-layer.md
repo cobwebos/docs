@@ -1,6 +1,6 @@
 ---
-title: 向地图添加气泡图层 |Microsoft Azure 映射
-description: 在本文中，你将了解如何使用 Microsoft Azure Map Web SDK 将气泡图层添加到地图。
+title: 向地图添加气泡图层 |微软 Azure 地图
+description: 在本文中，您将了解如何使用 Microsoft Azure 地图 Web SDK 将气泡图层添加到地图中。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,22 +10,22 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77208550"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>将气泡层添加地图
 
-本文介绍如何将数据源中的点数据呈现为地图上的气泡图层。 气泡图层用固定像素半径将点呈现为地图上的圆圈。 
+本文介绍如何将数据源的点数据呈现为地图上的气泡图层。 气泡图层在地图上渲染点，使其为具有固定像素半径的圆圈。 
 
 > [!TIP]
-> 默认情况下，气泡层将呈现数据源中所有几何图形的坐标。 若要将层限制为仅呈现点几何特征，请将层的 `filter` 属性设置为 `['==', ['geometry-type'], 'Point']` 或 `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` （如果还需要包含 MultiPoint 功能）。
+> 默认情况下，气泡层将呈现数据源中所有几何图形的坐标。 要限制图层，使其仅渲染点几何要素，`filter`请将图层的属性设置为`['==', ['geometry-type'], 'Point']`或`['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`是否还希望也包含 MultiPoint 要素。
 
 ## <a name="add-a-bubble-layer"></a>添加气泡层
 
-下面的代码将一个点数组加载到数据源中。 然后，它将数据点连接到[气泡图层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)。 气泡图层用5个像素呈现每个气泡的半径，并使用白色填充颜色。 和，颜色为蓝色，笔划宽度为六个像素。 
+以下代码将一系列点加载到数据源中。 然后，它连接数据点是到[气泡层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)。 气泡图层以五个像素和填充颜色白色渲染每个气泡的半径。 并且，描边颜色为蓝色，描边宽度为 6 像素。 
 
 ```javascript
 //Add point locations.
@@ -57,16 +57,16 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='BubbleLayer DataSource' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>CodePen</a> 上的 Azure Maps <a href='https://codepen.io/azuremaps'>BubbleLayer DataSource@azuremaps (</a><a href='https://codepen.io'></a>) 文章。
+<iframe height='500' scrolling='no' title='BubbleLayer DataSource' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
 </iframe>
 
 ## <a name="show-labels-with-a-bubble-layer"></a>显示具有气泡层的标签
 
-此代码演示如何使用气泡图层呈现地图上的点。 以及如何使用符号层呈现标签。 若要隐藏符号层的图标，请将图标选项的 `image` 属性设置为 "`'none'`"。
+此代码演示如何使用气泡图层在地图上呈现点。 以及如何使用符号图层来渲染标签。 要隐藏符号图层的图标，将`image`图标选项的属性设置为`'none'`。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='MultiLayer DataSource' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>CodePen</a> 上的 Azure Maps <a href='https://codepen.io/azuremaps'>MultiLayer DataSource@azuremaps (</a><a href='https://codepen.io'></a>) 文章。
+<iframe height='500' scrolling='no' title='MultiLayer DataSource' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>MultiLayer DataSource</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
 </iframe>
 
 ## <a name="customize-a-bubble-layer"></a>自定义气泡层
@@ -75,7 +75,7 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 
 <br/>
 
-<iframe height='700' scrolling='no' title='气泡层选项' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>通过 <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 查看 Pen <a href='https://codepen.io'>气泡层选项</a>。
+<iframe height='700' scrolling='no' title='气泡层选项' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>通过 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 查看 Pen <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>气泡层选项</a>。
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤
@@ -94,10 +94,10 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 > [创建数据源](create-data-source-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [添加符号层](map-add-pin.md)
+> [添加符号图层](map-add-pin.md)
 
 > [!div class="nextstepaction"]
 > [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [示例代码](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)

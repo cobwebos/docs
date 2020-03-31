@@ -1,57 +1,57 @@
 ---
 title: 锁定出站流量
-description: 了解如何与 Azure 防火墙集成，以保护从应用服务环境中出站流量。
+description: 了解如何与 Azure 防火墙集成，以保护应用服务环境中的出站流量。
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 84fcb9076bbc1e75d46d9a6682c96035576ae09e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79243856"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475436"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
 应用服务环境 (ASE) 需要访问许多的外部依赖项才能正常运行。 ASE 驻留在客户的 Azure 虚拟网络 (VNet) 中。 客户必须允许 ASE 依赖项流量，对于想要锁定从 VNet 传出的所有流量的客户而言，这是一个问题。
 
-有许多用于管理 ASE 的入站终结点。 无法通过防火墙设备发送入站管理流量。 此流量的源地址是已知的，并已在[应用服务环境管理地址](https://docs.microsoft.com/azure/app-service/environment/management-addresses)文档中发布。 还有一个名为 AppServiceManagement 的服务标记，可以与网络安全组（Nsg）一起使用，以保护入站流量。
+有许多用于管理 ASE 的入站终结点。 无法通过防火墙设备发送入站管理流量。 此流量的源地址是已知的，并已在[应用服务环境管理地址](https://docs.microsoft.com/azure/app-service/environment/management-addresses)文档中发布。 还有一个名为 AppServiceManagement 的服务标记，可以与网络安全组 (NSG) 一起使用来保护入站流量。
 
-ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态地址。 缺少静态地址意味着不能使用网络安全组锁定 ASE 的出站流量。 地址会频率更改，用户无法基于当前解析设置规则，然后使用这些规则来创建 NSG。 
+ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态地址。 缺少静态地址意味着无法使用网络安全组锁定来自 ASE 的出站流量。 地址会频率更改，用户无法基于当前解析设置规则，然后使用这些规则来创建 NSG。 
 
 保护出站地址的解决方案在于使用可基于域名控制出站流量的防火墙设备。 Azure 防火墙可以根据目标的 FQDN 限制出站 HTTP 和 HTTPS 流量。  
 
 ## <a name="system-architecture"></a>系统体系结构
 
-如果使用通过防火墙设备进行的出站流量部署 ASE，则需要更改 ASE 子网上的路由。 路由在 IP 级别运行。 如果你不小心定义你的路由，则可以将 TCP 回复流量从另一个地址强制发送到源。 如果答复地址不同于发送到的地址，则问题称为非对称路由，并将中断 TCP。
+部署出站流量通过防火墙设备的 ASE 需要更改 ASE 子网中的路由。 路由在 IP 级别运行。 如果在定义路由时出了差错，可以强制将 TCP 回复流量从另一个地址发送到源。 如果回复地址不同于流量发送到的地址，则会出现所谓“非对称路由”的问题，这会中断 TCP。
 
-必须已定义路由，以便与 ASE 的入站流量可以通过与流量传入相同的方式回复。 必须为入站管理请求和入站应用程序请求定义路由。
+必须定义路由，以便发往 ASE 的入站流量能够以传入流量的相同方式做出回复。 必须为入站管理请求和入站应用程序请求定义路由。
 
-进出 ASE 的流量必须遵守以下约定
+传入和传出 ASE 的流量必须遵守以下约定
 
-* 使用防火墙设备不支持到 Azure SQL、存储和事件中心的流量。 此流量必须直接发送到那些服务。 实现此目的的方法是为这三项服务配置服务终结点。 
-* 必须定义路由表规则，以便将入站管理流量从传入的位置发回。
-* 必须定义路由表规则，以便从传入的位置发回入站应用程序流量。 
-* 所有其他可以发送 ASE 的流量都可以通过路由表规则发送到防火墙设备。
+* 发往 Azure SQL、存储和事件中心的流量不是使用防火墙设备支持的。 此流量必须直接发送到这些服务。 实现此目的的方法是为这三个服务配置服务终结点。 
+* 必须定义路由表规则，用于从入站管理流量的来源位置发回这些流量。
+* 必须定义路由表规则，用于从入站应用程序流量的来源位置发回这些流量。 
+* 可以使用路由表规则将离开 ASE 的所有其他流量发送到防火墙设备。
 
 ![使用 Azure 防火墙的 ASE 连接流][5]
 
 ## <a name="locking-down-inbound-management-traffic"></a>锁定入站管理流量
 
-如果尚未为 ASE 子网分配 NSG，请创建一个。 在 NSG 中，设置第一个规则，以允许来自端口454、455上名为 AppServiceManagement 的服务标记的流量。 若要允许从 AppServiceManagement 标记进行访问，只需要公共 Ip 来管理 ASE。 该服务标记后面的地址仅用于管理 Azure App Service。 流过这些连接的管理流量将使用身份验证证书进行加密和保护。 此通道上的典型流量包括客户启动的命令和运行状况探测等内容。 
+如果尚未为 ASE 子网分配 NSG，请创建一个。 在 NSG 中，设置第一个规则，以允许在端口 454、455 上使用名为 AppServiceManagement 的服务标记中的流量。 允许从 AppService 管理标记进行访问的规则是公共 IP 管理 ASE 的唯一要求。 位于该服务标记后面的地址仅用来管理 Azure 应用服务。 流经这些连接的管理流量由身份验证证书提供加密和保护。 此通道上的典型流量包括客户发起的命令和运行状况探测等等。 
 
-使用包含新子网的门户生成的 Ase 的 NSG 包含 AppServiceManagement 标记的允许规则。  
+通过门户创建的带有新子网的 ASE 在创建时带有一个 NSG，其中包含 AppServiceManagement 标记的允许规则。  
 
-ASE 还必须允许来自端口16001上的负载均衡器标记的入站请求。 来自端口16001上的负载均衡器的请求会在负载均衡器和 ASE 前端之间保持活动状态检查。 如果端口16001被阻止，ASE 将变为不正常。
+ASE 还必须允许来自端口 16001 上的负载均衡器代码的入站请求。 端口 16001 上的负载均衡器的请求是在负载均衡器和 ASE 前端之间保持活动检查。 如果端口 16001 被阻止，则 ASE 将不正常。
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>在 ASE 中配置 Azure 防火墙 
 
 使用 Azure 防火墙锁定现有 ASE 的传出流量的步骤如下：
 
-1. 为 ASE 子网中的 SQL、存储和事件中心启用服务终结点。 若要启用服务终结点，请进入网络门户 > 子网，并从 "服务终结点" 下拉列表中选择 ""。 为 Azure SQL 启用服务终结点后，还必须为应用的所有 Azure SQL 依赖项配置服务终结点。 
+1. 为 ASE 子网中的 SQL、存储和事件中心启用服务终结点。 若要启用服务终结点，请转到网络门户并选择子网，然后从服务终结点下拉列表中选择“Microsoft.EventHub”、“Microsoft.SQL”和“Microsoft.Storage”。 为 Azure SQL 启用服务终结点后，还必须为应用的所有 Azure SQL 依赖项配置服务终结点。 
 
    ![选择服务终结点][2]
   
@@ -61,11 +61,11 @@ ASE 还必须允许来自端口16001上的负载均衡器标记的入站请求�
    
    ![添加应用程序规则][1]
    
-1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在 "IP 地址" 下的 "规则" 部分中，提供一个名称，选择 "**任意**" 的 ptocol，将 "设置为" 设置为源和目标地址，并将端口设置为123。 此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。 
+1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分中，在 IP 地址下，提供一个名称，选择“任何”作为协议，将源和目标地址设置为 *，将端口设置为 123。**** 此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。 
 
    ![添加 NTP 网络规则][3]
    
-1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在 "服务标记" 下的 "规则" 部分中，提供一个名称，选择 "**任何**"、"将 * 设置为源地址"、"AzureMonitor 的服务标记"，然后将端口设置为80，443。 此规则允许系统向 Azure Monitor 提供运行状况和指标信息。
+1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分中，在“服务标记”下，提供一个名称，选择“任何”**** 作为协议，将 * 设置为源地址，选择服务标记 AzureMonitor，然后将端口设置为 80、443。 此规则允许系统向 Azure Monitor 提供运行状况和指标信息。
 
    ![添加 NTP 服务标记网络规则][6]
    
@@ -92,13 +92,13 @@ ASE 还必须允许来自端口16001上的负载均衡器标记的入站请求�
 
 使用应用程序网关只是系统配置方法的一个例子。 如果遵循此路径，则需要将路由添加到 ASE 子网路由表，以便发送到应用程序网关的回复流量直接通过该路由传送。 
 
-## <a name="logging"></a>日志记录 
+## <a name="logging"></a>Logging 
 
 Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monitor 日志。 若要将应用与支持的任何目标相集成，请转到 Azure 防火墙门户 >“诊断日志”，并为所需目标启用日志。 与 Azure Monitor 日志集成后，可以查看已发送到 Azure 防火墙的任何流量的日志记录。 若要查看被拒绝的流量，请打开 Log Analytics 工作区门户 >“日志”，并输入如下所示的查询 
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-当你不知道所有应用程序依赖项时，当首次让应用程序正常工作时，将 Azure 防火墙与 Azure Monitor 日志集成非常有用。 可以在 Azure Monitor 中详细了解 Azure Monitor 日志[分析日志数据](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
+首次运行应用程序时，如果不知道所有的应用程序依赖项，则将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 可以从[Azure 监视器 中的分析日志数据](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)中了解有关 Azure 监视器日志的更多信息。
  
 ## <a name="dependencies"></a>依赖项
 
@@ -112,7 +112,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 
 
-| 端点 |
+| 终结点 |
 |----------|
 | Azure SQL |
 | Azure 存储 |
@@ -120,26 +120,26 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-| 端点 | 详细信息 |
+| 终结点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
-| \*:12000 | 此端口用于某些系统监视活动。 如果被阻止，某些问题将更难会审，而 ASE 将继续运行 |
-| 40.77.24.27：80 | 需要监视 ASE 问题并发出警报 |
-| 40.77.24.27:443 | 需要监视 ASE 问题并发出警报 |
-| 13.90.249.229:80 | 需要监视 ASE 问题并发出警报 |
-| 13.90.249.229:443 | 需要监视 ASE 问题并发出警报 |
-| 104.45.230.69：80 | 需要监视 ASE 问题并发出警报 |
-| 104.45.230.69:443 | 需要监视 ASE 问题并发出警报 |
-| 13.82.184.151：80 | 需要监视 ASE 问题并发出警报 |
-| 13.82.184.151:443 | 需要监视 ASE 问题并发出警报 |
+| \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |
+| 40.77.24.27:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 40.77.24.27:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 13.90.249.229:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 13.90.249.229:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 104.45.230.69:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 104.45.230.69:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 13.82.184.151:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 13.82.184.151:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
 
 使用 Azure 防火墙时，将使用 FQDN 标记自动配置以下所有设置。 
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS 依赖项 
 
-| 端点 |
+| 终结点 |
 |----------|
-|graph.windows.net:443 |
+|graph.microsoft.com:443 |
 |login.live.com:443 |
 |login.windows.com:443 |
 |login.windows.net:443 |
@@ -218,17 +218,17 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="wildcard-httphttps-dependencies"></a>通配符 HTTP/HTTPS 依赖项 
 
-| 端点 |
+| 终结点 |
 |----------|
 |gr-Prod-\*.cloudapp.net:443 |
 | \*.management.azure.com:443 |
 | \*.update.microsoft.com:443 |
 | \*.windowsupdate.microsoft.com:443 |
-| \*. identity.azure.net:443 |
+| \*.identity.azure.net:443 |
 
 #### <a name="linux-dependencies"></a>Linux 依赖项 
 
-| 端点 |
+| 终结点 |
 |----------|
 |wawsinfraprodbay063.blob.core.windows.net:443 |
 |registry-1.docker.io:443 |
@@ -239,7 +239,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 |download.mono-project.com:80 |
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
-| \*. cdn.mscr.io:443 |
+| \*.cdn.mscr.io:443 |
 |mcr.microsoft.com:443 |
 |packages.fluentbit.io:80 |
 |packages.fluentbit.io:443 |
@@ -256,21 +256,21 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 |40.76.35.62:11371 |
 |104.215.95.108:11371 |
 
-## <a name="us-gov-dependencies"></a>US Gov 依赖关系
+## <a name="us-gov-dependencies"></a>US Gov 依赖项
 
-对于 US Gov 区域中的 Ase，请按照本文档中的[使用 Ase 配置 Azure 防火墙](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase)部分中的说明，使用 Ase 配置 azure 防火墙。
+对于美国 Gov 区域中的 ASE，请按照本文档的[ASE](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase)部分的"配置 Azure 防火墙"中的说明来配置具有 ASE 的 Azure 防火墙。
 
-如果要在 US Gov 中使用 Azure 防火墙以外的设备 
+如果要在美国政府中使用 Azure 防火墙以外的设备 
 
 * 应在支持服务终结点的服务中配置服务终结点。
 * 可将 FQDN HTTP/HTTPS 终结点放在防火墙设备中。
 * 通配符 HTTP/HTTPS 终结点是可以根据许多限定符随 ASE 一起变化的依赖项。
 
-Linux 在 US Gov 区域中不可用，因此不作为可选配置列出。
+Linux 不在美国 Gov 区域提供，因此不列为可选配置。
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 ####
 
-| 端点 |
+| 终结点 |
 |----------|
 | Azure SQL |
 | Azure 存储 |
@@ -278,26 +278,26 @@ Linux 在 US Gov 区域中不可用，因此不作为可选配置列出。
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-| 端点 | 详细信息 |
+| 终结点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
-| \*:12000 | 此端口用于某些系统监视活动。 如果被阻止，某些问题将更难会审，而 ASE 将继续运行 |
-| 40.77.24.27：80 | 需要监视 ASE 问题并发出警报 |
-| 40.77.24.27:443 | 需要监视 ASE 问题并发出警报 |
-| 13.90.249.229:80 | 需要监视 ASE 问题并发出警报 |
-| 13.90.249.229:443 | 需要监视 ASE 问题并发出警报 |
-| 104.45.230.69：80 | 需要监视 ASE 问题并发出警报 |
-| 104.45.230.69:443 | 需要监视 ASE 问题并发出警报 |
-| 13.82.184.151：80 | 需要监视 ASE 问题并发出警报 |
-| 13.82.184.151:443 | 需要监视 ASE 问题并发出警报 |
+| \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |
+| 40.77.24.27:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 40.77.24.27:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 13.90.249.229:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 13.90.249.229:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 104.45.230.69:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 104.45.230.69:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 13.82.184.151:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
+| 13.82.184.151:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
 
 #### <a name="dependencies"></a>依赖项 ####
 
-| 端点 |
+| 终结点 |
 |----------|
-| \*. ctldl.windowsupdate.com:80 |
-| \*. management.usgovcloudapi.net:80 |
-| \*. update.microsoft.com:80 |
+| \*.ctldl.windowsupdate.com:80 |
+| \*.management.usgovcloudapi.net:80 |
+| \*.update.microsoft.com:80 |
 |admin.core.usgovcloudapi.net:80 |
 |azperfmerges.blob.core.windows.net:80 |
 |azperfmerges.blob.core.windows.net:80 |
@@ -340,9 +340,9 @@ Linux 在 US Gov 区域中不可用，因此不作为可选配置列出。
 |management.usgovcloudapi.net:80 |
 |maupdateaccountff.blob.core.usgovcloudapi.net:80 |
 |mscrl.microsoft.com
-|digicert。 |
+|ocsp.digicert.0 |
 |ocsp.msocsp.co|
-|ocsp。0 |
+|ocsp.verisign.0 |
 |rteventse.trafficmanager.net:80 |
 |settings-n.data.microsoft.com:80 |
 |shavamafestcdnprod1.azureedge.net:80 |
@@ -354,7 +354,7 @@ Linux 在 US Gov 区域中不可用，因此不作为可选配置列出。
 |www.msftconnecttest.com:80 |
 |www.thawte.com:80 |
 |\*ctldl.windowsupdate.com:443 |
-|\*. management.usgovcloudapi.net:443 |
+|\*.management.usgovcloudapi.net:443 |
 |\*.update.microsoft.com:443 |
 |admin.core.usgovcloudapi.net:443 |
 |azperfmerges.blob.core.windows.net:443 |

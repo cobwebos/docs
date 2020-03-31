@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB 中的 SELECT 子句
-description: 了解 Azure Cosmos DB 的 SQL SELECT 子句。 使用 SQL 作为 Azure Cosmos DB JSON 查询语言。
+description: 了解 Azure Cosmos DB 的 SQL SELECT 子句。 将 SQL 用作 Azure Cosmos DB JSON 查询语言。
 author: ginarobinson
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
 ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77469929"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 SELECT 子句
 
-每个查询都由 SELECT 子句和可选的[from](sql-query-from.md)和[WHERE](sql-query-where.md)子句（每个 ANSI SQL 标准）组成。 通常，枚举 FROM 子句中的源，WHERE 子句对源应用筛选器以检索 JSON 项的子集。 然后，SELECT 子句会在选择列表中投影请求的 JSON 值。
+每个查询按 ANSI SQL 标准由 SELECT 子句和可选的 [FROM](sql-query-from.md) 和 [WHERE](sql-query-where.md) 子句组成。 通常，将会枚举 FROM 子句中的源，WHERE 子句对该源应用一个筛选器，以检索 JSON 项的子集。 然后，SELECT 子句在 select 列表中投影请求的 JSON 值。
 
 ## <a name="syntax"></a>语法
 
@@ -32,7 +32,7 @@ SELECT <select_specification>
   
 ```  
   
-## <a name="arguments"></a>参数
+## <a name="arguments"></a>自变量
   
 - `<select_specification>`  
 
@@ -78,7 +78,7 @@ SELECT <select_specification>
   
 ## <a name="examples"></a>示例
 
-以下 SELECT 查询示例从 `Families` 中返回 `id` 与 `AndersenFamily`匹配的 `address`：
+以下 SELECT 查询示例从 `id` 匹配 `AndersenFamily` 的 `Families` 中返回 `address`：
 
 ```sql
     SELECT f.address
@@ -99,7 +99,7 @@ SELECT <select_specification>
 ```
 
 ### <a name="quoted-property-accessor"></a>带引号的属性访问器
-您可以使用带引号的属性运算符 [] 访问属性。 例如，`SELECT c.grade` 和 `SELECT c["grade"]` 是等效的。 此语法可用于对包含空格、特殊字符或与 SQL 关键字或保留字同名的属性进行转义。
+可以使用带引号的属性运算符 [] 访问属性。 例如，`SELECT c.grade` 和 `SELECT c["grade"]` 是等效的。 此语法很适合用于转义包含空格和特殊字符的属性，或者其名称与 SQL 关键字或保留字相同的属性。
 
 ```sql
     SELECT f["lastName"]
@@ -109,7 +109,7 @@ SELECT <select_specification>
 
 ### <a name="nested-properties"></a>嵌套属性
 
-下面的示例投影两个嵌套的属性，`f.address.state` 和 `f.address.city`。
+以下示例投影两个嵌套属性：`f.address.state` 和 `f.address.city`。
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -127,7 +127,7 @@ SELECT <select_specification>
 ```
 ### <a name="json-expressions"></a>JSON 表达式
 
-投影也支持 JSON 表达式，如下面的示例中所示：
+投影也支持 JSON 表达式，如以下示例所示：
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
@@ -147,7 +147,7 @@ SELECT <select_specification>
     }]
 ```
 
-在前面的示例中，SELECT 子句需要创建 JSON 对象，并且由于该示例未提供任何键，因此子句将使用隐式参数变量名 `$1`。 下面的查询返回两个隐式参数变量： `$1` 和 `$2`。
+在上述示例中，SELECT 子句需要创建一个 JSON 对象；由于该示例未提供键，因此子句使用了隐式参数变量名称 `$1`。 以下查询返回两个隐式参数变量：`$1` 和 `$2`。
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -171,9 +171,9 @@ SELECT <select_specification>
 ```
 ## <a name="reserved-keywords-and-special-characters"></a>保留关键字和特殊字符
 
-如果数据包含的属性的名称与保留关键字（如 "order" 或 "Group"）相同，则对这些文档的查询将导致语法错误。 应将属性显式包含在 `[]` 字符中，以便成功运行查询。
+如果数据包含与保留关键字（如"订单"或"组"）相同的名称的属性，则对这些文档的查询将导致语法错误。 应显式在字符中`[]`包含该属性以成功运行查询。
 
-例如，下面是一个文档，其中包含一个名为 `order` 的属性和一个包含特殊字符的属性 `price($)`：
+例如，下面是一个带有名为`order`属性的文档，`price($)`并且属性包含特殊字符：
 
 ```json
 {
@@ -190,7 +190,7 @@ SELECT <select_specification>
 }
 ```
 
-如果运行包含 `order` 属性或 `price($)` 属性的查询，则将收到语法错误。
+如果运行包含属性或`order``price($)`属性的查询，您将收到语法错误。
 
 ```sql
 SELECT * FROM c where c.order.orderid = "12345"
@@ -204,7 +204,7 @@ SELECT * FROM c where c.order.price($) > 50
 Syntax error, incorrect syntax near 'order'
 `
 
-应重写相同的查询，如下所示：
+应重写与以下内容相同的查询：
 
 ```sql
 SELECT * FROM c WHERE c["order"].orderId = "12345"
@@ -216,6 +216,6 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
 
 ## <a name="next-steps"></a>后续步骤
 
-- [入门](sql-query-getting-started.md)
+- [开始](sql-query-getting-started.md)
 - [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [WHERE 子句](sql-query-where.md)
+- [WHERE 条款](sql-query-where.md)

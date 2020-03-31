@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: 4445f6e9b72380b66f3282d50871b4283f7fc7fa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966736"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>用例：使用 Automation State Configuration 和 Chocolatey 持续部署到虚拟机
@@ -35,22 +35,22 @@ DevOps 领域中有许多工具可帮助你处理持续集成管道中的各个�
 Desired State Configuration (DSC)（[概述](/powershell/scripting/dsc/overview/overview)）是一个 PowerShell 工具，可使用它为计算机声明所需的配置。 例如，可以说“我想要安装 Chocolatey、我想要安装 IIS、我想要打开端口 80、我想要安装网站 1.0.0 版”。 DSC 本地配置管理器 (LCM) 实现该配置。 DSC“拉”服务器有一个存储库用于保存计算机的配置。 每台计算机上的 LCM 定期检查计算机的配置是否与存储的配置匹配。 它可以报告状态，也可以尝试让计算机恢复到与存储的配置匹配。 可以编辑“拉”服务器上存储的配置，使一台计算机或一组计算机与更改的配置匹配。
 
 Azure 自动化是 Microsoft Azure 中的托管服务，可让你使用 Runbook、节点、凭据、资源以及计划和全局变量之类的资产，将各种任务自动化。
-Azure Automation State Configuration 扩展了此自动化功能，包含 PowerShell DSC 工具。 下面是全面的[概述](automation-dsc-overview.md)。
+Azure Automation State Configuration 扩展了此自动化功能，包含 PowerShell DSC 工具。 这里是一个伟大的[概述](automation-dsc-overview.md)。
 
 DSC 资源是具有特定功能的代码模块，例如管理网络、Active Directory 或 SQL Server。 Chocolatey DSC 资源知道如何访问 NuGet 服务器（以及其他组件）、下载包、安装包，等等。 [PowerShell 库](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)中有许多其他 DSC 资源。
 这些模块已安装到 Azure Automation State Configuration 拉取服务器（由你安装）以供配置使用。
 
-Resource Manager 模板以声明方式生成基础结构，例如网络、子网、网络安全性和路由、负载均衡器、NIC、VM，等等。 这篇[文章](../azure-resource-manager/management/deployment-models.md)比较资源管理器部署模型（声明性）和 Azure 服务管理（ASM 或经典）部署模型（命令性），并讨论核心资源提供程序、计算、存储和网络。
+Resource Manager 模板以声明方式生成基础结构，例如网络、子网、网络安全性和路由、负载均衡器、NIC、VM，等等。 本文将资源管理器部署[article](../azure-resource-manager/management/deployment-models.md)模型（声明性）与 Azure 服务管理 （ASM 或经典）部署模型（命令）进行比较，并讨论了核心资源提供程序、计算、存储和网络。
 
 资源管理器模板的一项主要功能是在预配时将 VM 扩展安装到 VM 中。 VM 扩展模块具有特定功能，例如运行自定义脚本、安装防病毒软件或运行 DSC 配置脚本。 有许多其他类型的 VM 扩展。
 
 ## <a name="quick-trip-around-the-diagram"></a>示意图速览
 
 首先，需要编写、生成和测试代码，然后创建安装包。
-Chocolatey 可以处理各种类型的安装包，例如 MSI、MSU、ZIP。 如果 Chocolatey 的本机功能不足以满足需要，还有 PowerShell 的完整功能可执行实际安装。 将包放入可访问的位置–包存储库。 本用例使用 Azure Blob 存储帐户中的公共文件夹，但它可以位于任何位置。 Chocolatey 原生可配合 NuGet 服务器和其他某些工具一起管理包元数据。 [本文](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed)介绍了相应的选项。 本用例使用 NuGet。 Nuspec 是包的元数据。 Nuspec 将“编译”成 NuPkg，然后存储在 NuGet 服务器中。 当配置按名称请求某个包并引用 NuGet 服务器时，Chocolatey DSC 资源（现在位于 VM 中）将获取并安装包。 也可以请求特定版本的包。
+Chocolatey 可以处理各种类型的安装包，例如 MSI、MSU、ZIP。 如果 Chocolatey 的本机功能不足以满足需要，还有 PowerShell 的完整功能可执行实际安装。 将包放入可访问的位置 – 包存储库。 本用例使用 Azure Blob 存储帐户中的公共文件夹，但它可以位于任何位置。 Chocolatey 原生可配合 NuGet 服务器和其他某些工具一起管理包元数据。 [本文](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed)介绍了相应的选项。 本用例使用 NuGet。 Nuspec 是包的元数据。 Nuspec 将“编译”成 NuPkg，然后存储在 NuGet 服务器中。 当配置按名称请求某个包并引用 NuGet 服务器时，Chocolatey DSC 资源（现在位于 VM 中）将获取并安装包。 也可以请求特定版本的包。
 
 示意图左下方有一个 Azure 资源管理器模板。 在本用例中，VM 扩展将 VM 注册到 Azure Automation State Configuration“拉”服务器（即请求服务器）成为“节点”。 配置存储在“拉”服务器中。
-实际上，它存储了两次：一次是纯文本，一次编译为 MOF 文件（对于知道这种情况的信息）。在门户中，MOF 是 "节点配置" （而不只是 "配置"）。 它是与“节点”关联的项目，节点知道它的配置。 以下详细信息演示如何将节点配置分配给节点。
+实际上，它存储了两次：一次作为纯文本，一次编译为 MOF 文件（对于那些知道这些事情的人）。在门户中，MOF 是一种"节点配置"（而不是简单的"配置"）。 它是与“节点”关联的项目，节点知道它的配置。 以下详细信息演示如何将节点配置分配给节点。
 
 也许你已从头开始完成了部分或大部分工作。 创建和编译 nuspec 并将其存储在 NuGet 服务器中是一件很简单的事。 此外，你已在管理 VM。 持续部署的下一步需要设置拉取服务器（一次）、向它注册节点（一次），然后创建配置并存储到节点中（初步）。 接下来，当包升级并部署到存储库时，请刷新“拉”服务器中的“配置”和“节点配置”（根据需要重复）。
 
@@ -82,7 +82,7 @@ PowerShell 库自动将 DSC 资源安装到 Azure 自动化帐户。
 Azure 门户最近添加的另一种技术允许提取新模块或更新现有模块。 依次单击“自动化帐户资源”、“资产”磁贴和“模块”磁贴。 通过“浏览库”图标可以查看库中的模块列表，向下钻取详细信息，并最终导入自动化帐户。 这是让模块随时保持最新状态的绝佳方法。 而且，导入功能会检查与其他模块的依赖性，以确保所有模块都保持同步。
 
 还有手动方法。 适用于 Windows 计算机的 PowerShell 集成模块的文件夹结构与 Azure 自动化所需的文件夹结构稍有不同。
-需要稍微缩放一下。 但这并不是很难，只是每个资源执行一次（除非您想要在将来升级它）。有关创作 PowerShell 集成模块的详细信息，请参阅此文章：[创作适用于 Azure 自动化的集成模块](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
+需要稍微缩放一下。 但是这并不难，而且每个资源只完成一次（除非您希望将来升级它）。有关创作 PowerShell 集成模块的详细信息，请参阅本文：为[Azure 自动化创作集成模块](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
 
 - 将所需的模块安装到工作站，如下所示：
   - 安装 [Windows Management Framework v5](https://aka.ms/wmf5latest)（对于 Windows 10 不需要安装）
