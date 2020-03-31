@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric sfctl 网格代码-包-日志
-description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于获取指定代码包日志的命令的列表。
+title: Azure 服务结构 CLI-sfctl 网格代码-包日志
+description: 了解 sfctl，Azure 服务结构命令行接口。 包括用于获取指定代码包的日志的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: f8665e75e4c921a3305c9965601e2ee0825c8995
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906048"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
@@ -17,7 +17,7 @@ ms.locfileid: "76906048"
 
 ## <a name="commands"></a>命令
 
-|命令|Description|
+|命令|描述|
 | --- | --- |
 | get | 从容器中获取日志。 |
 
@@ -26,9 +26,9 @@ ms.locfileid: "76906048"
 
 获取服务副本的指定代码包的容器日志。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --app-name --application-name [必需] | 应用程序的名称。 |
 | --code-package-name [必需] | 服务的代码包名称。 |
@@ -38,7 +38,7 @@ ms.locfileid: "76906048"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -48,5 +48,5 @@ ms.locfileid: "76906048"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [安装](service-fabric-cli.md) Service Fabric CLI。
+- [设置](service-fabric-cli.md)服务结构 CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

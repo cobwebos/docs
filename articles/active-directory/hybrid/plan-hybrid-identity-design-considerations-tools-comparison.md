@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aed01ea11c1f53cb090d9c2e65ee23f521575649
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456911"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>混合标识目录集成工具比较
@@ -28,7 +28,7 @@ ms.locfileid: "60456911"
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
 > [!NOTE]
-> Azure AD Connect 整合了以前作为 DirSync 和 AAD Sync 发布的组件和功能。这些工具不再单独发布，将来所做的改进将包含在 Azure AD Connect 更新中，因此，始终知道从何处获取最新功能。
+> Azure AD 连接合并了以前作为 Dirsync 和 AAD 同步发布的组件和功能。这些工具不再单独发布，所有未来的改进都将包含在 Azure AD Connect 的更新中，以便始终知道在哪里获取最新的功能。
 > 
 > DirSync 和 Azure AD Sync 已弃用。 可在 [此处](reference-connect-dirsync-deprecated.md)找到更多信息。
 > 
@@ -55,7 +55,7 @@ PP = 公开预览版
 | 支持用于预配到本地系统的 FIM 同步规则和连接器。 | | | |● |● |
 
  
-&#42; 目前，这有两个支持的选项。  它们是： 
+&#42; 目前，这有两个支持的选项。  它们分别是： 
 
    1. 可以使用泛型 LDAP 连接器，在 Azure AD Connect 外部将其启用。  这很复杂，需要一位负责载入的合作伙伴，并签署关于维护的顶级支持协议。  此选项可以处理单个和多个 LDAP 目录。 
 
@@ -101,5 +101,5 @@ PP = 公开预览版
 | 允许对属性流进行高级自定义 |● |● | |● |● |
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
 

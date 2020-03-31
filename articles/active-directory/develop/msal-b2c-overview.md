@@ -1,5 +1,5 @@
 ---
-title: 结合使用 MSAL 与 Azure Active Directory B2CLearn |Microsoft
+title: 将 MSAL 与 Azure 活动目录 B2C 学习一起使用 |蔚蓝
 titleSuffix: Microsoft identity platform
 description: 借助 Microsoft 身份验证库 (MSAL)，应用程序可以与 Azure AD B2C进行交互，并获取令牌来调用受保护的 Web API。 这些 Web API 可以是 Microsoft Graph、其他 Microsoft API、其他来源的 Web API 或你自己的 Web API。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: e25564e64410701754390024a5bcfd39321343e2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696446"
 ---
 # <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>使用 Microsoft 身份验证库与 Azure Active Directory B2C 交互
@@ -28,7 +28,7 @@ ms.locfileid: "76696446"
 
 本教程演示如何使用 MSAL 与 Azure AD B2C 进行交互。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 如果尚未创建自己的 [Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)，请立即创建一个。 还可以使用现有的 Azure AD B2C 租户。
 
@@ -40,7 +40,7 @@ ms.locfileid: "76696446"
 
 若要实现身份验证，首先需要注册你的应用程序。 请遵循[注册应用程序](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c)来执行详细步骤。
 
-### <a name="step-2-download-the-sample-application"></a>步骤2：下载示例应用程序
+### <a name="step-2-download-the-sample-application"></a>第 2 步：下载示例应用程序
 
 下载示例作为 zip 文件，或从 GitHub 克隆：
 
@@ -48,11 +48,11 @@ ms.locfileid: "76696446"
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
 
-### <a name="step-3-configure-authentication"></a>步骤3：配置身份验证
+### <a name="step-3-configure-authentication"></a>第 3 步：配置身份验证
 
-1. 打开示例中的 index.html 文件。
+1. 在示例中打开**index.html**文件。
 
-1. 在注册应用程序时，用之前记录的客户端 ID 和密钥配置示例。 更改以下代码行，将值替换为你的目录和 API 的名称：
+1. 在注册应用程序时，使用以前记录的客户端 ID 和密钥配置示例。 更改以下代码行，将值替换为你的目录和 API 的名称：
 
    ```javascript
    // The current application coordinates were pre-registered in a B2C tenant.
@@ -78,9 +78,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
    ```
 
-本教程中的[用户流](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies)的名称为 B2C_1_signupsignin1。 如果使用了不同的用户流名称，请将 authority 值设置为该名称。
+本教程中的[用户流](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies)的名称为 B2C_1_signupsignin1****。 如果使用了不同的用户流名称，请将 authority 值设置为该名称****。
 
-### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>步骤4：将应用程序配置为使用 `b2clogin.com`
+### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>第 4 步：将应用程序配置为使用`b2clogin.com`
 
 可以使用 `b2clogin.com` 而不是 `login.microsoftonline.com` 作为重定向 URL。 设置标识提供者以进行注册和登录时，会在 Azure AD B2C 应用程序中执行此操作。
 
@@ -91,7 +91,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
  若要使用 `b2clogin.com`，需要更新应用程序的配置。  
 
-- 将 validateAuthority 属性设置为 `false`，以便可以使用 `b2clogin.com` 进行重定向。
+- 将 validateAuthority 属性设置为 `false`，以便可以使用 `b2clogin.com` 进行重定向****。
 
 以下示例展示了如何设置此属性：
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 中继 Node API 概述 | Microsoft Docs
-description: 本文概述了 Azure 中继服务的 node.js API。 它还演示了如何使用 hyco-ws 节点包。
+description: 本文概述了用于 Azure 中继服务的 Node.js API。 它还演示了如何使用 hyco-ws Node 包。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 2877284c419da4999e23490fc986e5da44e5d92e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514504"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>中继混合连接 Node API 概述
 
 ## <a name="overview"></a>概述
 
-Azure 中继混合连接的 [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) Node 包是在 [‘ws’](https://www.npmjs.com/package/ws) NPM 包的基础上进行构建和扩展的。 此包将重新导出该基程序包的所有导出，并添加允许与 Azure 中继服务混合连接功能集成的新导出。 
+Azure[`hyco-ws`](https://www.npmjs.com/package/hyco-ws)中继混合连接的节点包构建并扩展[了"ws"NPM](https://www.npmjs.com/package/ws)包。 此包将重新导出该基程序包的所有导出，并添加允许与 Azure 中继服务混合连接功能集成的新导出。 
 
 在现有应用程序中，`require('ws')` 可以改为结合使用此包与 `require('hyco-ws')`，从而还可以实现混合方案，其中应用程序可以同时从“防火墙内”和通过混合连接本地侦听 WebSocket 连接。
   
@@ -131,7 +131,7 @@ var wss = new server(
 - `server`（必需）- 要侦听的混合连接名称的完全限定 URI，通常使用 WebSocket.createRelayListenUri() 帮助程序方法构造。
 - `token`（必需）- 此参数可以保留以前颁发的令牌字符串，也可以保留为获得此类令牌字符串而调用的回调函数。 在启用令牌续订时，首选回调选项。
 
-#### <a name="events"></a>活动
+#### <a name="events"></a>事件
 
 `RelayedServer` 实例将发出三个事件，使你能够处理传入的请求、建立连接，以及检测错误条件。 订阅 `connect` 事件后才能处理消息。 
 

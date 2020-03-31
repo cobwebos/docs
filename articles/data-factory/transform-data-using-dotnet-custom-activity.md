@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260574"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
@@ -25,8 +25,8 @@ ms.locfileid: "79260574"
 
 在 Azure 数据工厂管道中可使用两类活动。
 
-- [数据移动活动](copy-activity-overview.md)：在[支持的源与接收器数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间移动数据。
-- [数据转换活动](transform-data.md)：使用 Azure HDInsight、Azure Batch 和 Azure 机器学习等计算服务转换数据。
+- [数据移动活动](copy-activity-overview.md)，用于在[受支持的源和接收器数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间移动数据。
+- [数据转换活动](transform-data.md)，使用计算服务（如 Azure HDInsight、Azure 批处理和 Azure 机器学习）转换数据。
 
 若要将数据移入/移出数据工厂不支持的数据存储，或者要以数据工厂不支持的方式转换/处理数据，可以使用你自己的数据移动或转换逻辑创建**自定义活动**，并在管道中使用该活动。 自定义活动在虚拟机的 **Azure Batch** 池上运行自定义代码逻辑。
 
@@ -35,8 +35,8 @@ ms.locfileid: "79260574"
 如果不熟悉 Azure Batch 服务，请参阅以下文章：
 
 * [Azure Batch 基础知识](../batch/batch-technical-overview.md) - Azure Batch 服务的概述。
-* [AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) cmdlet 创建 Azure Batch 帐户（或） [Azure 门户](../batch/batch-account-create-portal.md)使用 Azure 门户创建 Azure Batch 帐户。 请参阅 [Using PowerShell to manage Azure Batch Account](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)（使用 Azure PowerShell 管理 Azure Batch 帐户）一文，了解有关使用此 cmdlet 的详细说明。
-* 用于创建 Azure Batch 池的[AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet。
+* [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) cmdlet 以创建 Azure Batch 帐户（或）[Azure 门户](../batch/batch-account-create-portal.md)以使用 Azure 门户创建 Azure Batch 帐户。 请参阅 [Using PowerShell to manage Azure Batch Account](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)（使用 Azure PowerShell 管理 Azure Batch 帐户）一文，了解有关使用此 cmdlet 的详细说明。
+* [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet 以创建 Azure Batch 池。
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 链接服务
 
@@ -99,7 +99,7 @@ ms.locfileid: "79260574"
 
 下表描述了此活动特有的属性的名称和描述。
 
-| properties              | 说明                              | 必选 |
+| properties              | 描述                              | 必选 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
@@ -110,16 +110,16 @@ ms.locfileid: "79260574"
 | folderPath            | 自定义应用程序及其所有依赖项所在的文件夹的路径<br/><br/>如果将依赖项存储在子文件夹中（即 *folderPath* 下的分层文件夹结构中），目前当文件复制到 Azure Batch 时，文件夹结构将被平展。 也就是说，所有文件将复制到没有子文件夹的单个文件夹中。 若要解决此行为，请考虑压缩文件，复制压缩文件，然后在所需位置使用自定义代码解压缩文件。 | 否 &#42;       |
 | referenceObjects      | 现有链接服务和数据集的数组。 所引用的链接服务和数据集采用 JSON 格式传递到自定义应用程序，因此，自定义代码可以引用数据工厂的资源 | 否       |
 | extendedProperties    | 可以采用 JSON 格式传递到自定义应用程序的用户定义属性，以便自定义代码可以引用更多属性 | 否       |
-| retentionTimeInDays | 为自定义活动提交的文件的保留时间。 默认值为30天。 | 否 |
+| retentionTimeInDays | 为自定义活动提交的文件的保留时间。 默认值为 30 天。 | 否 |
 
 &#42; 属性 `resourceLinkedService` 和 `folderPath` 必须同时指定或同时省略。
 
 > [!NOTE]
-> 如果在自定义活动中将链接服务作为 referenceObjects 传递，则传递启用了 Azure Key Vault 的链接服务（因为它不包含任何安全字符串）并使用机密名称直接从密钥提取凭据，这是一种很好的安全做法。来自代码的保管库。 可在[此处](https://github.com/nabhishek/customactivity_sample/tree/linkedservice)找到引用启用了 AKV 的链接服务的示例，从 Key Vault 检索凭据，然后访问代码中的存储。
+> 如果要在自定义活动中将链接服务作为 referenceObjects 传递，则传递已启用 Azure Key Vault 的链接服务（因为它不包含任何安全字符串）并使用机密名称直接通过代码从 Key Vault 中提取凭据是一种很好的安全做法。 可以在[此处](https://github.com/nabhishek/customactivity_sample/tree/linkedservice)找到一个示例，该示例引用启用了 AKV 的链接服务，从密钥保管库检索凭据，然后通过代码访问存储。
 
 ## <a name="custom-activity-permissions"></a>自定义活动权限
 
-自定义活动将 Azure Batch 自动用户帐户设置为“任务范围内非管理员访问权限”（默认自动用户规范）。 无论更改自动用户帐户的权限级别。 有关详细信息，请参阅[在 Batch 中的用户帐户下运行任务 | 自动用户帐户](../batch/batch-user-accounts.md#auto-user-accounts)。
+自定义活动将 Azure Batch 自动用户帐户设置为“任务范围内非管理员访问权限”**（默认自动用户规范）。 无论更改自动用户帐户的权限级别。 有关详细信息，请参阅[在 Batch 中的用户帐户下运行任务 | 自动用户帐户](../batch/batch-user-accounts.md#auto-user-accounts)。
 
 ## <a name="executing-commands"></a>执行命令
 
@@ -300,12 +300,12 @@ Activity Error section:
 如果要在下游活动中使用 stdout.txt 的内容，则可以在表达式“\@activity('MyCustomActivity').output.outputs[0]”中获取 stdout.txt 文件的路径。
 
 > [!IMPORTANT]
-> - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 在此示例中，Linkedservices.json 和 dataset 存储在 `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` 路径中。 必要时需要单独清理它们。
+> - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 在此示例中，activity.json、linkedServices.json 和 datasets.json 存储在 `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` 路径中。 必要时需要单独清理它们。
 > - 对于使用自承载集成运行时的链接服务，将通过自承载集成运行时对敏感信息（例如密钥或密码）进行加密，以确保凭据保留在客户定义的专用网络环境中。 以此方式在自定义应用程序代码中进行引用时，可能会丢掉一些敏感字段。 如果需要，请在 extendedProperties 中使用 SecureString 而非使用链接服务引用。
 
 ## <a name="pass-outputs-to-another-activity"></a>将输出传递给另一个活动
 
-可以通过自定义活动中的代码将自定义值发送回 Azure 数据工厂。 可以通过从应用程序将自定义值写入 `outputs.json` 来完成此操作。 数据工厂复制 `outputs.json` 的内容，并将其作为 `customOutput` 属性的值追加到活动输出中。 （大小限制为2MB。）如果要使用下游活动中 `outputs.json` 的内容，则可以使用表达式 `@activity('<MyCustomActivity>').output.customOutput`获取该值。
+可以通过自定义活动中的代码将自定义值发送回 Azure 数据工厂。 可以通过从应用程序将自定义值写入 `outputs.json` 来完成此操作。 数据工厂复制 `outputs.json` 的内容，并将其作为 `customOutput` 属性的值追加到活动输出中。 （大小限制为 2MB。如果要使用下游活动中的内容`outputs.json`，可以使用 表达式`@activity('<MyCustomActivity>').output.customOutput`获取 值。
 
 ## <a name="retrieve-securestring-outputs"></a>检索 SecureString 输出
 
@@ -324,11 +324,11 @@ Activity Error section:
 
 若要从自定义活动访问 *SecureString* 类型的属性，请读取 `activity.json` 文件（该文件与 .EXE 放在同一个文件夹中），反序列化 JSON，然后访问 JSON 属性（extendedProperties => [propertyName] => 值）。
 
-## <a name="compare-v2-v1"></a>比较 v2 自定义活动和版本 1（自定义）DotNet 活动
+## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a>比较 v2 自定义活动和版本 1（自定义）DotNet 活动
 
-在 Azure 数据工厂版本1中，通过使用实现 `IDotNetActivity` 接口的 `Execute` 方法的类创建一个 .NET 类库项目来实现（自定义） DotNet 活动。 （自定义）DotNet 活动的 JSON 负载中的链接服务、数据集和扩展属性作为强类型对象传递到执行方法。 有关版本 1 行为的详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 由于此实现，版本 1 DotNet 活动代码必须以 .NET Framework 4.5.2 为目标。 版本 1 DotNet 活动还必须在基于 Windows 的 Azure Batch 池节点上执行。
+在 Azure 数据工厂版本 1 中，通过创建具有实现`Execute``IDotNetActivity`接口方法的类的 .NET 类库项目来实现（自定义）DotNet 活动。 （自定义）DotNet 活动的 JSON 负载中的链接服务、数据集和扩展属性作为强类型对象传递到执行方法。 有关版本 1 行为的详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 由于此实现，您的版本 1 DotNet 活动代码必须针对 .NET 框架 4.5.2。 版本 1 DotNet 活动还必须在基于 Windows 的 Azure Batch 池节点上执行。
 
-在 Azure 数据工厂 V2 自定义活动中，无需实现 .NET 接口。 现在可以直接运行命令、脚本和自己的已编译为可执行文件的自定义代码。 要配置该实现，请指定 `Command` 属性和 `folderPath` 属性。 自定义活动会将可执行文件及其依赖项上传到 `folderpath`，并执行命令。
+在 Azure 数据工厂 V2 自定义活动中，不需要实现 .NET 接口。 现在可以直接运行命令、脚本和自己的已编译为可执行文件的自定义代码。 要配置该实现，请指定 `Command` 属性和 `folderPath` 属性。 自定义活动会将可执行文件及其依赖项上传到 `folderpath`，并执行命令。
 
 可执行文件可以将链接服务、数据集（在 referenceObjects 中定义）和数据工厂 v2 自定义活动的 JSON 有效负载中定义的扩展属性作为 JSON 文件进行访问。 可以使用 JSON 序列化程序访问所需的属性，如前面的 SampleApp.exe 代码示例所示。
 
@@ -339,17 +339,17 @@ Activity Error section:
 |差异      | 自定义活动      | 版本 1（自定义）DotNet 活动      |
 | ---- | ---- | ---- |
 |如何定义自定义逻辑      |通过提供可执行文件      |通过实现 .NET DLL      |
-|自定义逻辑的执行环境      |Windows 或 Linux      |Windows （.NET Framework 4.5.2）      |
-|执行脚本      |直接支持执行脚本（如 Windows VM 上的“cmd /c echo hello world”）      |需要 .NET DLL 中的实现      |
+|自定义逻辑的执行环境      |Windows 或 Linux      |窗口 （.NET 框架 4.5.2）      |
+|执行脚本      |直接支持执行脚本（如 Windows VM 上的“cmd /c echo hello world”）      |需要在 .NET DLL 中实现      |
 |所需数据集      |可选      |需要链接活动并传递信息      |
 |将信息从活动传递到自定义逻辑      |通过 ReferenceObjects（LinkedServices 和数据集）与 ExtendedProperties（自定义属性）      |通过 ExtendedProperties（自定义属性）、输入和输出数据集      |
-|在自定义逻辑中检索信息      |分析可执行文件所在文件夹中存储的 activity.json、linkedServices.json 和 datasets.json      |通过 .NET SDK （.NET framework 4.5.2）      |
-|日志记录      |直接写入到 STDOUT      |在 .NET DLL 中实现记录器      |
+|在自定义逻辑中检索信息      |分析可执行文件所在文件夹中存储的 activity.json、linkedServices.json 和 datasets.json      |通过 .NET SDK （.NET 帧 4.5.2）      |
+|Logging      |直接写入到 STDOUT      |在 .NET DLL 中实现记录器      |
 
-如果现有的 .NET 代码是针对版本1（自定义） DotNet 活动编写的，则需要修改代码，使其适用于自定义活动的当前版本。 按照以下高级准则更新代码：
+如果为版本 1（自定义）DotNet 活动编写了现有的 .NET 代码，则需要修改代码，以便它才能与自定义活动的当前版本一起工作。 按照以下高级准则更新代码：
 
-  - 将项目从 .NET 类库更改为控制台应用程序。
-  - 使用 `Main` 方法启动应用程序。 不再需要 `Execute` 接口的 `IDotNetActivity` 方法。
+  - 将项目从 .NET 类库更改为控制台应用。
+  - 使用 `Main` 方法启动应用程序。 不再需要 `IDotNetActivity` 接口的 `Execute` 方法。
   - 使用 JSON 序列化程序并且不作为强类型对象读取和分析链接服务、数据集和活动。 将所需属性的值传递到主要自定义代码逻辑。 可将前面的 SampleApp.exe 代码作为示例进行参考。
   - 不再支持 Logger 对象。 可将可执行文件的输出打印到控制台并保存到 stdout.txt。
   - 不再需要 Microsoft.Azure.Management.DataFactories NuGet 包。
@@ -382,9 +382,9 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 
 * [U-SQL 活动](transform-data-using-data-lake-analytics.md)
 * [Hive 活动](transform-data-using-hadoop-hive.md)
-* [Pig 活动](transform-data-using-hadoop-pig.md)
+* [猪活动](transform-data-using-hadoop-pig.md)
 * [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
-* [Spark 活动](transform-data-using-spark.md)
-* [机器学习“批处理执行”活动](transform-data-using-machine-learning.md)
+* [Hadoop 流活动](transform-data-using-hadoop-streaming.md)
+* [火花活动](transform-data-using-spark.md)
+* [机器学习批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

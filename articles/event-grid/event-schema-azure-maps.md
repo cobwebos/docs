@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 02/08/2019
 ms.author: femila
 ms.openlocfilehash: 9acef524521e8fac6ce6f8f61e5ff3fbbb81d18d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77486353"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure Maps 的 Azure 事件网格事件架构
@@ -22,7 +22,7 @@ ms.locfileid: "77486353"
 
 Azure Maps 帐户发出以下事件类型：
 
-| 事件类型 | 说明 |
+| 事件类型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.Maps.GeofenceEntered | 当接收的坐标从给定地理围栏的外部进入内部时引发 |
 | Microsoft.Maps.GeofenceExited | 当接收的坐标从给定地理围栏的内部移到外部时引发 |

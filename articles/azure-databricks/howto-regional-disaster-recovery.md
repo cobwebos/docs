@@ -9,10 +9,10 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161930"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks 群集的区域性灾难恢复
@@ -21,7 +21,7 @@ ms.locfileid: "77161930"
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks 体系结构
 
-在较高层面上，当你通过 Azure 门户创建 Azure Databricks 工作区时，会在所选的 Azure 区域（例如“美国西部”），将某个[托管设备](../azure-resource-manager/managed-applications/overview.md)部署为订阅中的 Azure 资源。 此设备部署在 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)中，该网络具有[网络安全组](../virtual-network/manage-network-security-group.md)和订阅中的 Azure 存储帐户。 该虚拟网络为 Databricks 工作区提供外围级安全性，并受网络安全组的保护。 在工作区中，可以通过提供辅助角色和驱动程序 VM 类型与 Databricks 运行时版本来创建 Databricks 群集。 保留的数据在存储帐户中可用，可以是 Azure Blob 存储或 Azure Data Lake Storage。 创建群集后，可以通过笔记本、REST API、ODBC/JDBC 终结点运行作业：只需将作业附加到特定的群集即可。
+在较高层面上，当你通过 Azure 门户创建 Azure Databricks 工作区时，会在所选的 Azure 区域（例如“美国西部”），将某个[托管设备](../azure-resource-manager/managed-applications/overview.md)部署为订阅中的 Azure 资源。 此设备部署在 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)中，该网络具有[网络安全组](../virtual-network/manage-network-security-group.md)和订阅中的 Azure 存储帐户。 该虚拟网络为 Databricks 工作区提供外围级安全性，并受网络安全组的保护。 在工作区中，可以通过提供辅助角色和驱动程序 VM 类型与 Databricks 运行时版本来创建 Databricks 群集。 持久化数据在存储帐户中可用，可以是 Azure Blob 存储或 Azure 数据湖存储。 创建群集后，可以通过笔记本、REST API、ODBC/JDBC 终结点运行作业：只需将作业附加到特定的群集即可。
 
 Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管理操作（例如创建群集）将从控制平面发起。 所有元数据（例如计划的作业）存储在可通过异地复制实现容错的 Azure 数据库中。
 
@@ -31,7 +31,7 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
 
 ## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>如何创建区域性灾难恢复拓扑
 
-在上面的体系结构说明中可以看到，包含 Azure Databricks 的大数据管道使用了许多组件：Azure 存储、Azure 数据库和其他数据源。 Azure Databricks 是大数据管道的计算层。 它是临时性的层，这意味着，尽管数据仍在 Azure 存储中提供，但计算层（Azure Databricks 群集）可以终止，因此，在无需计算资源时，就无需支付其费用。 计算 (Azure Databricks) 和存储源必须位于同一区域，避免作业遇到较高的延迟。  
+在上面的体系结构说明中可以看到，包含 Azure Databricks 的大数据管道使用了许多组件：Azure 存储、Azure 数据库和其他数据源。 Azure Databricks 是大数据管道的计算层。** 它是临时性的层，这意味着，尽管数据仍在 Azure 存储中提供，但计算层（Azure Databricks 群集）可以终止，因此，在无需计算资源时，就无需支付其费用。**** 计算 (Azure Databricks) 和存储源必须位于同一区域，避免作业遇到较高的延迟。**  
 
 若要创建自己的区域性灾难恢复拓扑，需满足以下要求：
 
@@ -284,9 +284,9 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
 
    目前无法直接将库从一个工作区迁移到另一个工作区。 需要手动将这些库重新安装到新工作区中。 可以使用 [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples)（用于将自定义库上传到工作区）和[库 CLI](https://github.com/databricks/databricks-cli#libraries-cli) 的组合来自动完成此过程。
 
-8. **迁移 Azure blob 存储和 Azure Data Lake Storage 装载**
+8. **迁移 Azure Blob 存储和 Azure 数据湖存储装载**
 
-   使用基于笔记本的解决方案手动重新装载所有[Azure Blob 存储](/azure/databricks/data/data-sources/azure/azure-storage)和[Azure Data Lake Storage （第2代）](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)装入点。 存储资源应已装载到主要工作区，必须在辅助工作区中重复该操作。 无法使用外部 API 进行装载。
+   使用基于笔记本的解决方案手动重新装入所有[Azure Blob 存储](/azure/databricks/data/data-sources/azure/azure-storage)和 Azure[数据湖存储（第 2 代）](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)装载点。 存储资源应已装载到主要工作区，必须在辅助工作区中重复该操作。 无法使用外部 API 进行装载。
 
 9. **迁移群集初始化脚本**
 
@@ -308,7 +308,7 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
 
 ## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Azure 生态系统的灾难恢复
 
-如果你正在使用其他 Azure 服务，请务必为这些服务实现灾难恢复最佳做法。 例如，如果选择使用外部 Hive 元存储实例，则应考虑[azure SQL Server](../sql-database/sql-database-disaster-recovery.md)、 [azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)和/或[Azure Database for MySQL](../mysql/concepts-business-continuity.md)的灾难恢复。 有关灾难恢复的一般信息，请参阅[Azure 应用程序的灾难恢复](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications)。
+如果使用其他 Azure 服务，请确保也为这些服务实施灾难恢复最佳做法。 例如，如果选择使用外部 Hive 元存储实例，则应考虑为[MySQL](../mysql/concepts-business-continuity.md)考虑[Azure SQL 服务器](../sql-database/sql-database-disaster-recovery.md)[、Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)和/或 Azure 数据库的灾难恢复。 有关灾难恢复的一般信息，请参阅[Azure 应用程序的灾难恢复](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -63,6 +63,8 @@
           href: concepts-data-access-security-private-link.md
         - name: 高级威胁防护
           href: concepts-data-access-and-security-threat-protection.md
+        - name: 安全基线
+          href: security-baseline.md
     - name: 业务连续性
       items:
         - name: 业务连续性简介
@@ -138,6 +140,10 @@
           href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
+    - name: 拒绝公用网络访问
+      items:
+        - name: Azure 门户
+          href: howto-deny-public-network-access.md
     - name: 访问服务器日志
       items:
         - name: 慢查询日志

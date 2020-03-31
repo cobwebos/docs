@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/23/2019
 ms.author: cbasoglu
 ms.openlocfilehash: 7c5611a142087cff06eefb0277b12ff786074e1a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446831"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Swift 识别语音
@@ -23,7 +23,7 @@ ms.locfileid: "75446831"
 
 本文介绍如何使用认知服务语音 SDK 在 Swift 中创建一个 macOS 应用，以便将通过麦克风录制的语音转录为文本。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请满足以下一系列先决条件：
 

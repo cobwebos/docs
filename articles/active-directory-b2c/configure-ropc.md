@@ -12,10 +12,10 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 70cd4f2ca3a4ac37bdf1d1e465d1f1a7d06ef9e1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189695"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
@@ -30,13 +30,13 @@ ms.locfileid: "78189695"
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 Azure 门户。
 2. 若要切换到 Azure AD B2C 租户，请在门户右上角选择 B2C 目录。
-3. 单击“用户流”，然后选择“新建用户流”。
-4. 单击 "**全部**" 选项卡，然后选择 "**使用 ROPC 登录**"。
-5. 提供用户流名称，例如 ROPC_Auth。
-6. 在“应用程序声明”下，单击“显示更多”。
+3. 单击“用户流”****，然后选择“新建用户流”****。
+4. 单击“全部”**** 选项卡，然后选择“使用 ROPC 登录”****。
+5. 提供用户流名称，例如 ROPC_Auth**。
+6. 在“应用程序声明”**** 下，单击“显示更多”****。
 7. 选择应用程序所需的应用程序声明，例如“显示名称”、“电子邮件”和“标识提供者”。
-8. 选择“确定”，然后选择“创建”。
-9. 单击“运行用户流”。
+8. 选择 **"确定**"，然后选择 **"创建**"。
+9. 单击“运行用户流”****。
 
    你随后会看到一个终结点，如以下示例所示：
 
@@ -50,13 +50,13 @@ ms.locfileid: "78189695"
 ## <a name="test-the-user-flow"></a>测试用户流
 
 使用最喜欢的 API 开发应用程序来生成 API 调用，然后查看响应以调试用户流。 使用下表中的信息构建如下所示的调用作为 POST 请求的正文：
-- 将 *\<yourtenant.onmicrosoft.com>* 替换为 B2C 租户的名称。
-- 将 *\<B2C_1A_ROPC_Auth>* 替换为资源所有者密码凭据策略的全名。
-- 将 *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* 替换为注册时提供的应用程序 ID。
+- 将*\<yourtenant.onmicrosoft.com>* 替换为 B2C 租户的名称。
+- 将*\<B2C_1A_ROPC_Auth>* 替换为资源所有者密码凭据策略的全名。
+- 将*\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* 替换为注册申请 ID。
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| 密钥 | 值 |
+| 键 | “值” |
 | --- | ----- |
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
@@ -96,7 +96,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| 密钥 | 值 |
+| 键 | “值” |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -124,7 +124,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 }
 ```
 > [!NOTE]
-> 通过图形 API 创建用户时，应用程序需要从 Microsoft Graph "openid"、"offline_access" 和 "配置文件" 权限。
+> 通过图形 API 创建用户时，应用程序需要具有 Microsoft Graph 的“openid”、“offline_access”和“profile”权限。
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>使用首选本机 SDK 实现或使用 AppAuth
 

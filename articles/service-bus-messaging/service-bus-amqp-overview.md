@@ -1,6 +1,6 @@
 ---
-title: Azure 服务总线中的 AMQP 1.0 概述
-description: 了解 Azure 服务总线如何支持高级消息队列协议（AMQP）（一种开放标准协议）。
+title: Azure 服务总线中 AMQP 1.0 的概述
+description: 了解 Azure 服务总线如何支持高级消息队列协议（AMQP，一种开放标准协议）。
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 50d21cfe8136b9c794eae5104bbb34e28f7c1661
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759306"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服务总线的 AMQP 1.0 支持
@@ -29,7 +29,7 @@ Azure 服务总线云服务和本地 [Windows Server 服务总线（服务总线
 
 此外，连接来自不同供应商的消息传递代理比较棘手。 这通常需要通过应用程序级桥接来将消息从一个系统移到另一个系统，并在其专用消息格式之间进行转换。 这是一个常见的要求；例如，在必须向较旧的独立系统提供新的统一接口时，或者在合并后集成 IT 系统时。
 
-软件产业是一个飞速发展的产业；新编程语言和应用程序框架的引入速度有时会非常惊人。 同样，IT 系统的要求随着时间不断变化，并且开发人员希望利用最新的平台功能。 但有时候，所选消息传递供应商不支持这些平台。 由于使用的是专用消息协议，其他供应商无法为这些新平台提供库。 因此，必须使用构建网关等手段，或者可让你继续使用消息传递产品的网桥。
+软件产业是一个飞速发展的产业；新编程语言和应用程序框架的引入速度有时会非常惊人。 同样，IT 系统的要求随着时间不断变化，并且开发人员希望利用最新的平台功能。 但有时候，所选消息传送供应商不支持这些平台。 由于使用的是专用消息协议，其他供应商无法为这些新平台提供库。 因此，必须使用构建网关等手段，或者可让你继续使用消息传递产品的网桥。
 
 这些问题推动了高级消息队列协议 (AMQP) 1.0 的开发。 这种协议源于 JP Morgan Chase，像多数金融服务公司一样，该公司大量使用面向消息的中间件。 目标非常简单：就是创建一个开放标准消息传送协议，从而能够借助使用不同语言、框架和操作系统构建的组件来构建基于消息的应用程序，而所有这些应用程序都使用各个供应商提供的同类最佳组件。
 
@@ -60,7 +60,7 @@ AMQP 1.0 是一种国际标准，已通过 ISO 和 IEC 的认证，认证编号�
 * 随时可找到知识渊博的工作人员
 * 风险较低且可控
 
-## <a name="amqp-10-and-service-bus"></a>AMQP 1.0 和服务总线
+## <a name="amqp-10-and-service-bus"></a>AMQP 1.0 和 Service Bus
 Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列使用有效的二进制协议的平台利用队列和发布/订阅中转消息传送功能。 此外，还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
 
 下图显示了一个部署示例，其中 Java 客户端运行在 Linux 上，并使用标准 Java 消息服务 (JMS) API 写入数据；而 .NET 客户端运行在 Windows 上，并通过服务总线使用 AMQP 1.0 交换消息。
@@ -81,7 +81,7 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 
 **图 2：AMQP 1.0 客户端库表**
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 * AMQP 1.0 是一个开放、可靠的消息传递协议，可用于构建跨平台的混合应用程序。 AMQP 1.0 是一种 OASIS 标准。
 * Azure 服务总线和 Windows Server 服务总线（服务总线 1.1）都支持 AMQP 1.0。 定价与现有协议相同。
 

@@ -8,10 +8,10 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670859"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>在 Visual Studio 中分析趋势
@@ -28,11 +28,11 @@ Application Insights 趋势在 Visual Studio 2015 Update 3 及更高版本中提
 ## <a name="open-application-insights-trends"></a>打开 Application Insights 趋势
 若要打开“Application Insights 趋势”窗口，请执行以下操作：
 
-* 通过 Application Insights 工具栏按钮选择“浏览遥测趋势”，或者
-* 在项目上下文菜单中选择“Application Insights”>“浏览遥测趋势”，或者
-* 在 Visual Studio 菜单栏中，选择“视图”>“其他窗口”>“Application Insights 趋势”。
+* 通过 Application Insights 工具栏按钮选择“浏览遥测趋势”，或者 ****
+* 在项目上下文菜单中选择“Application Insights”>“浏览遥测趋势”，或者****
+* 在 Visual Studio 菜单栏中，选择“视图”>“其他窗口”>“Application Insights 趋势”****。
 
-此时会出现选择资源的提示。 单击“选择资源”，使用 Azure 订阅登录，并从列表中选择要分析其遥测趋势的 Application Insights 资源。
+此时会出现选择资源的提示。 单击“选择资源”，使用 Azure 订阅登录，并从列表中选择要分析其遥测趋势的 Application Insights 资源****。
 
 ## <a name="choose-a-trend-analysis"></a>选择趋势分析
 ![常用趋势分析类型的菜单](./media/visual-studio-trends/app-insights-trends-1-750.png)
@@ -45,7 +45,7 @@ Application Insights 趋势在 Visual Studio 2015 Update 3 及更高版本中提
 * **检查应用程序依赖项的性能** - 用户服务调用的服务，按响应时间分组
 * **检查自定义事件** - 为服务设置的自定义事件，按事件类型分组。
 
-稍后可从“趋势”窗口左上角的“查看常见的遥测分析类型”按钮获取这些预先构建的分析。
+稍后可从“趋势”窗口左上角的“查看常见的遥测分析类型”按钮获取这些预先构建的分析****。
 
 ## <a name="visualize-trends-in-your-application"></a>可视化应用程序中的趋势
 Application Insights 趋势基于应用的遥测数据创建时序视觉效果。 每个时序视觉效果显示某个时间范围内一种类型的遥测（按该遥测的某个属性分组）。 例如，可以查看过去 24 小时内的服务器请求（按来源国家/地区分组）。 在本示例中，视觉效果上的每个气泡代表一小时内某个国家/地区的服务器请求计数。
@@ -56,7 +56,7 @@ Application Insights 趋势基于应用的遥测数据创建时序视觉效果�
 * **时间范围** - 从过去 30 分钟到过去 3 天的任何时间段
 * **分组依据** - 异常类型、问题 ID、国家/地区，等等。
 
-然后，单击“分析遥测”以运行查询。
+然后，单击“分析遥测”**** 以运行查询。
 
 若要在视觉效果中的气泡之间导航：
 
@@ -70,23 +70,23 @@ Application Insights 趋势基于应用的遥测数据创建时序视觉效果�
 > 
 
 ## <a name="filter"></a>“筛选器”
-使用窗口底部的筛选控件发现更明确的趋势。 若要应用某个筛选器，请单击其名称。 可以快速切换不同的筛选器，发现可能隐藏在遥测特定维度中的趋势。 如果在某个维度（例如异常类型）中应用筛选器，其他维度中的筛选器仍可单击，即使它们显示为灰色。若要取消应用某个筛选器，请再次单击该筛选器。 在按住 Ctrl 的同时单击可以选择同一维度中的多个筛选器。
+使用窗口底部的筛选控件发现更明确的趋势。 若要应用某个筛选器，请单击其名称。 可以快速切换不同的筛选器，发现可能隐藏在遥测特定维度中的趋势。 如果在一个维度（如异常类型）中应用筛选器，则其他维度中的筛选器即使显示为灰出，也能保持可单击状态。要取消应用筛选器，请再次单击它。 在按住 Ctrl 的同时单击可以选择同一维度中的多个筛选器。
 
 ![趋势筛选器](./media/visual-studio-trends/TrendsFiltering-750.png)
 
 要应用多个筛选器怎么办？ 
 
 1. 应用第一个筛选器。 
-2. 单击第一个筛选器的维度名称旁边的“应用选定的筛选器并再次查询”按钮。 这只会针对匹配第一个筛选器的事件重新查询遥测。 
+2. 单击第一个筛选器的维度名称旁边的“应用选定的筛选器并再次查询”按钮****。 这只会针对匹配第一个筛选器的事件重新查询遥测。 
 3. 应用第二个筛选器。 
 4. 重复上述过程，在遥测的特定子集中查找趋势。 例如，名为“GET Home/Index”*且*来自德国*且*收到了 500 响应代码的服务器请求。 
 
-若要取消应用上述筛选器之一，请单击维度对应的“删除选定的筛选器并再次查询”按钮。
+若要取消应用上述筛选器之一，请单击维度对应的“删除选定的筛选器并再次查询”按钮****。
 
 ![多个筛选器](./media/visual-studio-trends/TrendsFiltering2-750.png)
 
 ## <a name="find-anomalies"></a>查找异常
-“趋势”工具突出显示异常事件的气泡，与同一时序中的其他气泡相对比。 在“视图类型”下拉列表中，选择“时间存储桶中的计数(突出显示异常)”或“时间存储桶中的百分比(突出显示异常)”。 红色气泡表示异常。 异常定义为计数/百分比超过 2.1 乘以在过去两个时间周期（如果正在查看过去 24 小时的数据，则为 48 小时）内发生的计数/百分比的标准偏差的气泡。
+“趋势”工具突出显示异常事件的气泡，与同一时序中的其他气泡相对比。 在“视图类型”下拉列表中，选择“时间存储桶中的计数(突出显示异常)”或“时间存储桶中的百分比(突出显示异常)”********。 红色气泡表示异常。 异常定义为计数/百分比超过 2.1 乘以在过去两个时间周期（如果正在查看过去 24 小时的数据，则为 48 小时）内发生的计数/百分比的标准偏差的气泡。
 
 ![彩色圆点表示异常](./media/visual-studio-trends/TrendsAnomalies-750.png)
 
@@ -95,7 +95,7 @@ Application Insights 趋势基于应用的遥测数据创建时序视觉效果�
 > 
 > 
 
-## <a name="next"></a>后续步骤
+## <a name="next-steps"></a><a name="next"></a>后续步骤
 |  |  |
 | --- | --- |
 | **[在 Visual Studio 中使用 Application Insights](../../azure-monitor/app/visual-studio.md)**<br/>搜索遥测、查看 CodeLens 中的数据以及配置 Application Insights。 一切尽在 Visual Studio 中。 |![右键单击项目，并依次选择“Application Insights”、“搜索”](./media/visual-studio-trends/34.png) |

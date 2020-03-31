@@ -15,16 +15,16 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77912998"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>使用 Azure 媒体分析检测动作
 
 > [!NOTE]
-> **Azure Media Motion Detector**媒体处理器将停用。 有关停用日期，请参阅[旧组件](legacy-components.md)主题。
+> **Azure 媒体运动探测器**媒体处理器将停用。 有关停用日期，请参阅[旧组件](legacy-components.md)主题。
  
 ## <a name="overview"></a>概述
 
@@ -42,10 +42,10 @@ ms.locfileid: "77912998"
 ## <a name="task-configuration-preset"></a>任务配置（预设）
 在使用 **Azure Media Motion Detector**创建任务时，必须指定配置预设。 
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 可以使用以下参数：
 
-| 名称 | 选项 | 说明 | 默认 |
+| “属性” | 选项 | 描述 | 默认 |
 | --- | --- | --- | --- |
 | sensitivityLevel |字符串：'low'、'medium'、'high' |设置报告动作情况的敏感度级别。 调整此项是为了调整误报数量。 |'medium' |
 | frameSamplingValue |正整数 |设置算法的运行频率。 1 等于每个帧，2 是指每 2 个帧，如此类推。 |1 |
@@ -90,7 +90,7 @@ ms.locfileid: "77912998"
 
 一旦固定背景视频（例如监控视频）中出现运动对象，动作检测器 API 将提供指示器。 动作检测器经过训练可减少误报（例如光源和阴影变化）。 当前算法限制包括夜视视频、半透明对象和小对象。
 
-### <a id="output_elements"></a>输出 JSON 文件的元素
+### <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>输出 JSON 文件的元素
 > [!NOTE]
 > 在最新版本中，输出 JSON 格式已更改，对某些客户来说可以说是重大更改。
 > 
@@ -98,7 +98,7 @@ ms.locfileid: "77912998"
 
 下表描述了输出 JSON 文件的元素。
 
-| 元素 | 说明 |
+| 元素 | 描述 |
 | --- | --- |
 | 版本 |这是指视频 API 的版本。 当前版本为 2。 |
 | 时间刻度 |视频每秒的“刻度”数。 |
@@ -208,7 +208,7 @@ ms.locfileid: "77912998"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+设置开发环境，使用 连接信息填充 app.config 文件，如使用[.NET 的媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>示例
 

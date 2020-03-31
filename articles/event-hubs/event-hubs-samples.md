@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/15/2020
 ms.author: shvija
 ms.openlocfilehash: da950c2219d3faf679953690d207372b64913ba8
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162052"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>带有 Azure 事件中心示例的 Git 存储库 
@@ -29,29 +29,29 @@ ms.locfileid: "77162052"
 
 | 版本 | 示例位置 |
 | ------- | ---------------- | 
-| EventHubs 版本5（最新版本） | [GitHub 上的事件中心示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[GitHub 上的事件中心处理器示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
-| EventHubs 版本4（旧版） | [GitHub 位置](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/) |
+| Azure.Messaging.EventHubs 版本 5（最新） | [GitHub 上的事件中心示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)<br/>[GitHub 上的事件中心处理器示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples) | 
+| Microsoft.Azure.EventHubs 版本 4（旧版） | [GitHub 位置](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/) |
 
 ## <a name="java-samples"></a>Java 示例
 
 | 版本 | 示例位置 |
 | ------- | ---------------- | 
-| azure 消息传送-eventhubs 版本5（最新版本） | [GitHub 位置](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) | 
-| azure-eventhubs 版本3（旧版） | [GitHub 位置](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/) |
+| azure-messaging-eventhubs 版本 5（最新） | [GitHub 位置](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) | 
+| azure-eventhubs 版本 3（旧版） | [GitHub 位置](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/) |
 
 ## <a name="python-samples"></a>Python 示例
 
 | 版本 | 示例位置 |
 | ------- | ---------------- | 
-| azure-eventhub 版本5（最新版本） | [GitHub 位置](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
-| azure-eventhub 版本1（旧版） | [GitHub 位置](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
+| azure-eventhub 版本 5（最新） | [GitHub 位置](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
+| azure-eventhub 版本 1（旧版） | [GitHub 位置](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
 
 ## <a name="javascript-samples"></a>JavaScript 示例
 
 | 版本 | 示例位置 |
 | ------- | ---------------- | 
-| azure/事件中心版本5（最新版本） | [GitHub 位置](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) | 
-| azure/事件中心版本2（旧版） | [GitHub 位置](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/event-hubs_2.1.0/sdk/eventhub/event-hubs/samples) |
+| azure/event-hubs 版本 5（最新） | [GitHub 位置](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) | 
+| azure/event-hubs 版本 2（旧版） | [GitHub 位置](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/event-hubs_2.1.0/sdk/eventhub/event-hubs/samples) |
 
 
 ## <a name="go-samples"></a>Go 示例
@@ -71,4 +71,4 @@ ms.locfileid: "77162052"
 
 - [事件中心概述](event-hubs-what-is-event-hubs.md)
 - [事件中心功能](event-hubs-features.md)
-- [事件中心常见问题解答](event-hubs-faq.md)
+- [事件中心常见问题](event-hubs-faq.md)

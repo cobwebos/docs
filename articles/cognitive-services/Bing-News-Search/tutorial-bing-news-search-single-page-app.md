@@ -12,10 +12,10 @@ ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 801bfcf02174c5dd98d4c7231c674299ef411aff
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943119"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>教程：创建单页 Web 应用

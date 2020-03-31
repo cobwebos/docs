@@ -1,6 +1,6 @@
 ---
-title: Azure 虚拟机规模集的设计注意事项
-description: 了解 Azure 虚拟机规模集的设计注意事项。 将规模集功能与 VM 功能进行比较。
+title: Azure 虚拟机缩放集的设计注意事项
+description: 了解 Azure 虚拟机缩放集的设计注意事项。 将比例集功能与 VM 功能进行比较。
 keywords: linux 虚拟机, 虚拟机规模集
 author: mayanknayar
 tags: azure-resource-manager
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: manayar
 ms.openlocfilehash: b427319fdba634ea3c61681baa30547450709dc1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250772"
 ---
 # <a name="design-considerations-for-scale-sets"></a>规模集的设计注意事项
@@ -25,7 +25,7 @@ ms.locfileid: "79250772"
 
 ### <a name="scale-set-specific-features"></a>特定于规模集的功能
 
-- 指定规模集配置后，可以更新“容量”属性以并行部署更多的 VM。 此过程比编写一个脚本来协调众多 VM 的同时部署要简单得多。
+- 指定规模集配置后，可以更新“容量”** 属性以并行部署更多的 VM。 此过程比编写一个脚本来协调众多 VM 的同时部署要简单得多。
 - 可以[使用 Azure 自动缩放来自动缩放规模集](./virtual-machine-scale-sets-autoscale-overview.md)，但不能使用它来自动缩放单个 VM。
 - 可以[重置规模集 VM 的映像](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)，但[不能重置单个 VM 的映像](https://docs.microsoft.com/rest/api/compute/virtualmachines)。
 - 可以[过度预配](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning)规模集 VM 以提高可靠性和加快部署速度。 除非编写自定义代码来执行此操作，否则不能过度配置单个 VM。
