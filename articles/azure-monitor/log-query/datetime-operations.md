@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655372"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用日期时间值
@@ -34,7 +34,7 @@ Kusto 查询语言主要具有两种与日期和时间相关的数据类型：�
 |h           | hour         |
 |m           | minute       |
 |s           | second       |
-|毫秒          | millisecond  |
+|ms          | 毫秒  |
 |微秒 | 微秒  |
 |时钟周期        | 纳秒   |
 
@@ -84,7 +84,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-`timeAgo` 列包含以下值：“00:09:31.5118992”，这意味着它们的格式为 hh:mm:ss.fffffff。 如果要将这些值的格式设置为自开始时间以来的 `numver` 分钟数，则用该值除以“1 分钟”：
+该`timeAgo`列包含诸如"00：09：31.5118992"等值，这意味着它们被格式化为 hh：mm：ss.fff。 如果要将这些值的格式设置为自开始时间以来的 `numver` 分钟数，则用该值除以“1 分钟”：
 
 ```Kusto
 Event
@@ -146,13 +146,13 @@ Event
 
 ## <a name="related-functions"></a>相关函数
 
-| 类别 | Functions |
+| 类别 | 函数 |
 |:---|:---|
-| 转换数据类型 | [system.xml.xmlconvert.todatetime](/azure/kusto/query/todatetimefunction)  [system.xml.xmlconvert.totimespan](/azure/kusto/query/totimespanfunction)  |
+| 转换数据类型 | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
 | 将值舍入到箱大小 | [bin](/azure/kusto/query/binfunction) |
-| 获取特定的日期或时间 | [前](/azure/kusto/query/agofunction) [现在](/azure/kusto/query/nowfunction)   |
+| 获取特定的日期或时间 | [ago](/azure/kusto/query/agofunction) [now](/azure/kusto/query/nowfunction)   |
 | 获取部分值 | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
-| 获取相对日期值  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth startofyear](/azure/kusto/query/startofmonthfunction) [](/azure/kusto/query/startofyearfunction) |
+| 获取相对日期值  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>后续步骤
 请参阅有关将 [Kusto 查询语言](/azure/kusto/query/)与 Azure Monitor 日志数据配合使用的其他课程：

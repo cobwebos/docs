@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 4d92bd3709c5f56db0095ca1be2caa0e9c78b42f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.openlocfilehash: e475c1bc1878c6b5a0efbbe41f2a3a0fe86bcff2
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336821"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389369"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在应用中嵌入视频索引器小部件
 
@@ -33,7 +33,7 @@ ms.locfileid: "80336821"
 |---|---|---|
 |`widgets` | 用逗号分隔的字符串 | 允许您控制要呈现的见解。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`仅呈现人和关键字 UI 见解。<br/>可用选项：人物、动画人物、关键字、标签、情感、情感、主题、关键帧、脚本、ocr、扬声器、场景和命名实体。|
 |`controls`|用逗号分隔的字符串|允许您控制要呈现的控件。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download`仅呈现搜索选项和下载按钮。<br/>可用选项：搜索、下载、预设、语言。|
-|`language`|短语言代码（语言名称）|控制见解语言。<br/>示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`language`|短语言代码（语言名称）|控制见解语言。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | 短语言代码 | 控制 UI 的语言。 默认值为 `en`。 <br/>示例：`locale=de`。|
 |`tab` | 默认选择选项卡 | 控制默认情况下呈现的 **"见解"** 选项卡。 <br/>示例：`tab=timeline`在选择 **"时间轴"** 选项卡时呈现见解。|
 
@@ -48,7 +48,7 @@ ms.locfileid: "80336821"
 |`showCaptions` | 布尔值 | 使播放器与已启用的字幕一起加载。<br/> 示例：`showCaptions=true`。 |
 |`type`| | 激活音频播放器外观（视频部分被删除）。<br/> 示例：`type=audio`。 |
 |`autoplay` | 布尔值 | 指示播放器在加载时是否应开始播放视频。 默认值为 `true`。<br/> 示例：`autoplay=false`。 |
-|`language` | 语言代码 | 控制玩家语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。|
+|`language`/`locale` | 语言代码 | 控制玩家语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。|
 
 ### <a name="editor-widget"></a>编辑器小部件
 
@@ -233,14 +233,14 @@ ms.locfileid: "80336821"
 
 您可以选择所需的见解类型。 为此，请将它们指定为添加到您获取的嵌入代码（从 API 或 Web 应用）的以下 URL 参数的值： `&widgets=<list of wanted widgets>`。
 
-可能的价值观是：**人**，**关键字**，**情绪**，**成绩单**和**搜索**。
+可能的值`people`是： 、 `animatedCharacters` `keywords`、 `labels` `sentiments`、 `emotions` `topics`、 `keyframes` `transcript`、 `ocr` `speakers`、 `scenes`、 `namedEntities`、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、
 
-例如，如果要嵌入仅包含人员并搜索见解的小部件，iframe 嵌入 URL 如下所示：
+例如，如果要嵌入仅包含人和关键字见解的小部件，iframe 嵌入 URL 如下所示：
 
-`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
+`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<YourTitle>` 即可。 （它自定义 HTML\<标题>值）。
-
+iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<YourTitle>` 即可。 （它自定义 HTML<title>值）。
+   
 例如，如果需要为 iframe 窗口提供标题“MyInsights”，则 URL 将如下所示：
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
@@ -257,15 +257,14 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<You
 
 默认情况下，视频索引器播放器已基于视频脚本自动生成隐藏字幕。 使用上传视频时选择的源语言从视频中提取脚本。
 
-如果要使用其他语言进行嵌入，可以添加到`&captions=< Language | "all" | "false" >`嵌入播放器 URL。 如果需要所有可用语言的标题，请使用 值`all`。 如果需要默认显示字幕，则可传递 `&showCaptions=true`。
+如果要使用其他语言进行嵌入，可以将&字幕*<语言代码>添加到嵌入播放器 URL 中。 如果默认情况下希望显示字幕，则可以传递&显示Captions_true。
 
 然后，嵌入 URL 将如下所示：
 
-`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
-
-如果要禁用标题，可以将`captions`参数值传递给`false`。
+`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=en-us`
 
 #### <a name="autoplay"></a>自动播放
+
 默认情况下，播放器将开始播放视频。 您可以选择不通过传递到`&autoplay=false`前面的嵌入 URL。
 
 ## <a name="code-samples"></a>代码示例

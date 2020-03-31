@@ -4,10 +4,10 @@ description: 了解 Azure 委托资源管理如何允许跨多个租户部署策
 ms.date: 11/8/2019
 ms.topic: conceptual
 ms.openlocfilehash: 9e061995b728e2864d1bd33a32d530634ab794d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456844"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>将 Azure Policy 大规模部署到委托订阅
@@ -50,7 +50,7 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="validate-the-policy-deployment"></a>验证策略部署
 
-部署 Azure 资源管理器模板之后，可以通过尝试创建存储帐户，并在其中一个委托订阅中将 EnableHttpsTrafficOnly 设置为 false 来确认策略定义已成功应用。 由于策略分配，你应该无法创建此存储帐户。  
+部署 Azure 资源管理器模板之后，可以通过尝试创建存储帐户，并在其中一个委托订阅中将 EnableHttpsTrafficOnly**** 设置为 false**** 来确认策略定义已成功应用。 由于策略分配，你应该无法创建此存储帐户。  
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -Location eastus -Force).ResourceGroupName `

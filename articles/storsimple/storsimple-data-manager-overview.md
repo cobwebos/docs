@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: alkohli
 ms.openlocfilehash: 2ffe17bf7ef4f01c18d2c26f4a045add7302272d
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67876103"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple 数据管理器解决方案概述
@@ -48,7 +48,7 @@ StorSimple 数据管理器服务从 StorSimple 8000 系列本地设备标识云�
 StorSimple 数据管理器在以下 7 个区域中提供：
 
  - 东南亚
- - East US
+ - 美国东部
  - 美国西部
  - 美国西部 2
  - 美国中西部
@@ -68,9 +68,9 @@ StorSimple 数据管理器在以下 7 个区域中提供：
  - 源存储帐户（与 StorSimple 设备关联的帐户）和目标存储帐户（希望其中的数据采用本机格式）位于同一 Azure 区域中。
  - 在包含 StorSimple 存储帐户的区域中使用数据管理器和作业定义。 如果不可行，请在最近的 Azure 区域中使用数据管理器，然后在 StorSimple 存储帐户所在的同一区域中创建作业定义。 
 
-    如果你的 StorSimple 存储帐户不在支持创建作业定义的26个区域, 则建议你在看到长时间延迟和潜在出口费用的情况下不要运行 StorSimple 数据管理器。
+    如果您的 StorSimple 存储帐户不在支持作业定义创建的 26 个区域中，我们建议您不要运行 StorSimple 数据管理器，因为您看到长期延迟和潜在的出口费用。
     
-Microsoft 努力确保 Azure 服务在所有区域始终可用。 但是, 在特定区域中的短时间内可能会发生计划外服务中断。 在这种情况下, 可以在不受中断影响的区域中引入数据管理器和作业定义, 并运行转换作业。 在这种情况下, 你可能会遇到一些额外的延迟, 但这可能是在发生区域性服务中断的罕见情况下的恢复策略。
+Microsoft 努力确保 Azure 服务始终在所有区域可用。 但是，计划外服务中断可能会在特定区域中发生短期。 在这种情况下，您可以在不受中断影响的区域中启动数据管理器和作业定义，并运行转换作业。 在这种情况下，可能会遇到一些额外的延迟，但在极少数区域中断的情况下，这可能是您的恢复策略。
 
 ## <a name="security-considerations"></a>安全注意事项
 
@@ -98,4 +98,4 @@ StorSimple 数据管理器不收集，也不显示任何个人信息。 有关�
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 StorSimple Data Manager UI 转换数据](storsimple-data-manager-ui.md)。
+[使用 StorSimple 数据管理器 UI 转换数据](storsimple-data-manager-ui.md)。

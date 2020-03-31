@@ -1,38 +1,38 @@
 ---
 title: 使用 Azure 数据资源管理器 Python 库引入数据
-description: 本文介绍如何使用 Python 将数据引入（加载）到 Azure 数据资源管理器。
+description: 本文介绍如何使用 Python 将数据引入（加载）到 Azure 数据资源管理器中。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 28151476ce96fabc92e04078396119d0eb8c2f17
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251721"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389352"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>使用 Azure 数据资源管理器 Python 库引入数据
 
-本文介绍如何使用 Azure 数据资源管理器 Python 库来引入数据。 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器为 Python 提供了两个客户端库：[引入库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)和[数据库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 使用这些库，可以将数据引入或加载到群集中，并从代码中查询数据。
+在本文中，您可以使用 Azure 数据资源管理器 Python 库引入数据。 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器为 Python 提供了两个客户端库：[引入库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)和[数据库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 这些库使您能够将数据引入或加载到群集中，并从代码中查询数据。
 
 首先，在群集中创建表和数据映射。 然后将引入排列到群集并验证结果。
 
-本文也可用作[Azure 笔记本](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb)。
+本文同时也以 [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb) 的形式提供。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 * [Python 3.4+](https://www.python.org/downloads/)。
 
-* [一个群集和数据库](create-cluster-database-portal.md)。
+* [群集和数据库](create-cluster-database-portal.md)。
 
 ## <a name="install-the-data-and-ingest-libraries"></a>安装数据和引入库
 
-安装 azure-kusto-data 和 azure-kusto-ingest。
+安装 azure-kusto-data** 和 azure-kusto-ingest**。
 
 ```
 pip install azure-kusto-data
@@ -49,13 +49,13 @@ from azure.kusto.data.exceptions import KustoServiceError
 from azure.kusto.data.helpers import dataframe_from_result_table
 ```
 
-Azure 数据资源管理器使用 AAD 租户 ID，以对应用程序进行身份验证。 要查找租户 ID，请使用以下 URL，并将域替换为 YourDomain。
+Azure 数据资源管理器使用 AAD 租户 ID，以对应用程序进行身份验证。 要查找租户 ID，请使用以下 URL，并将域替换为 YourDomain**。
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-例如，如果域名为 contoso.com，则该 URL 将是：[https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/)。 单击此 URL 以查看结果；第一行如下所示。 
+例如，如果域名为 contoso.com，则该 URL 将是：[https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/)**。 单击此 URL 以查看结果；第一行如下所示。 
 
 ```
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
@@ -70,7 +70,7 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 
-现在构造连接字符串。 此示例使用设备身份验证来访问群集。 此外可以使用 [AAD 应用程序证书](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24)、[AAD 应用程序密钥](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)以及 [AAD 用户和密码](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)。
+现在构造连接字符串。 此示例使用设备身份验证来访问群集。 您还可以使用[AAD应用程序证书](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24)[、AAD应用程序密钥](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)以及[AAD用户和密码](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)。
 
 在后续步骤中创建目标表和映射。
 
@@ -87,7 +87,7 @@ DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
 
 ## <a name="set-source-file-information"></a>设置源文件信息
 
-导入其他类并设置数据源文件的常数。 此示例使用 Azure Blob 存储上托管的示例文件。 StormEvents 示例数据集包含[美国国家环境信息中心](https://www.ncdc.noaa.gov/stormevents/)中与天气相关的数据。
+导入其他类并设置数据源文件的常数。 此示例使用 Azure Blob 存储上托管的示例文件。 StormEvents**** 示例数据集包含[美国国家环境信息中心](https://www.ncdc.noaa.gov/stormevents/)中与天气相关的数据。
 
 ```python
 from azure.storage.blob import BlockBlobService
@@ -105,7 +105,7 @@ BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + \
 
 ## <a name="create-a-table-on-your-cluster"></a>在群集上创建表
 
-创建与 StormEvents.csv 文件中的数据架构匹配的表。 此代码运行时，它将返回如下消息：要登录，请使用 Web 浏览器打开页面 *，并输入代码 F3W4VWZDM 进行身份验证 https://microsoft.com/devicelogin* 。 按照步骤登录，然后返回运行下一个代码块。 建立连接的后续代码块将要求你再次登录。
+创建与 StormEvents.csv 文件中的数据架构匹配的表。 此代码运行时，它将返回如下消息：要登录，请使用 Web 浏览器打开页面 https://microsoft.com/devicelogin，并输入代码 F3W4VWZDM 进行身份验证**。 按照步骤登录，然后返回运行下一个代码块。 建立连接的后续代码块将要求你再次登录。
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB_DATA)
@@ -136,7 +136,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
 
 # All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
-INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.csv,
+INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.CSV,
                                            mappingReference=DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
 # FILE_SIZE is the raw size of the data in bytes
 BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
@@ -160,7 +160,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ## <a name="run-troubleshooting-queries"></a>运行故障排除查询
 
-登录到 [https://dataexplorer.azure.com](https://dataexplorer.azure.com) 并连接到群集。 在数据库中运行以下命令以查看过去四个小时内是否存在任何失败引入。 在运行之前替换数据库名称。
+登录到[https://dataexplorer.azure.com](https://dataexplorer.azure.com)群集并连接到群集。 在数据库中运行以下命令以查看过去四个小时内是否存在任何失败引入。 在运行之前替换数据库名称。
 
 ```Kusto
 .show ingestion failures
@@ -177,7 +177,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果你打算追随我们的其他文章，请保留你创建的资源。 否则，在数据库中运行以下命令以清除 StormEvents 表。
+如果计划学习我们的其他文章，请保留已创建的资源。 否则，在数据库中运行以下命令以清除 StormEvents 表。
 
 ```Kusto
 .drop table StormEvents

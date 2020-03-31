@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67172625"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -18,16 +18,16 @@ ms.locfileid: "67172625"
 
 至此，你已创建了一个表，接下来让我们了解如何管理表中的实体或行。 
 
-实体可以具有最多 255 个属性，包括三个系统属性：**PartitionKey**， **RowKey**，和**时间戳**。 你需要负责插入和更新的值**PartitionKey**并**RowKey**。 在服务器管理的值**时间戳**，不能修改。 **PartitionKey** 和 **RowKey** 共同唯一标识表中的每个实体。
+实体可以具有多达 255 个属性，包括三个系统属性：**分区键**、**行键**和**时间戳**。 您负责插入和更新**分区键**和**RowKey**的值。 服务器管理时间**戳**的值，无法修改。 **PartitionKey** 和 **RowKey** 共同唯一标识表中的每个实体。
 
-* **PartitionKey**：确定实体存储中的分区。
+* **PartitionKey**：确定实体存储在其中的分区。
 * **RowKey**：唯一标识分区内的实体。
 
 最多可为一个实体定义 252 个自定义属性。 
 
 ### <a name="add-table-entities"></a>添加表实体
 
-将实体添加到表使用**添加 AzTableRow**。 这些示例使用具有值的分区键`partition1`和`partition2`，和行键等于状态缩写。 在每个实体的属性是`username`和`userid`。 
+使用**Add-AzTableRow**将实体添加到表中。 这些示例使用具有值`partition1`和`partition2`的分区键，行键等于状态缩写。 每个实体的属性为`username`和`userid`。 
 
 ```powershell
 $partitionKey1 = "partition1"
@@ -57,10 +57,10 @@ Add-AzTableRow `
 
 ### <a name="query-the-table-entities"></a>查询表实体
 
-可以通过使用查询表中的实体**Get AzTableRow**命令。
+可以使用**Get-AzTableRow**命令查询表中的实体。
 
 > [!NOTE]
-> Cmdlet **Get-azurestoragetablerowall**， **Get AzureStorageTableRowByPartitionKey**， **Get-azurestoragetablerowbycolumnname**，和**Get AzureStorageTableRowByCustomFilter**已弃用，将在未来版本的更新中删除。
+> cmdlet**获取 Azure 存储 TableRowAll、****获取 Azure 存储 TableBy 分区密钥**、**获取 Azure 存储 TableByColumn 名称**和获取 Azure 存储**TableBy 自定义筛选器**将被弃用，并将在将来的版本更新中删除。
 
 #### <a name="retrieve-all-entities"></a>检索所有实体
 
@@ -72,7 +72,7 @@ Get-AzTableRow -table $cloudTable | ft
 
 | userid | username | partition | rowkey |
 |----|---------|---------------|----|
-| 第 | Chris | partition1 | CA |
+| 1 | Chris | partition1 | CA |
 | 3 | Christine | partition1 | WA |
 | 2 | Jessie | partition2 | NM |
 | 4 | Steven | partition2 | TX |
@@ -87,7 +87,7 @@ Get-AzTableRow -table $cloudTable -partitionKey $partitionKey1 | ft
 
 | userid | username | partition | rowkey |
 |----|---------|---------------|----|
-| 第 | Chris | partition1 | CA |
+| 1 | Chris | partition1 | CA |
 | 3 | Christine | partition1 | WA |
 
 #### <a name="retrieve-entities-for-a-specific-value-in-a-specific-column"></a>在特定列中检索具有特定值的实体
@@ -103,7 +103,7 @@ Get-AzTableRow -table $cloudTable `
 
 |字段|value|
 |----|----|
-| userid | 第 |
+| userid | 1 |
 | username | Chris |
 | PartitionKey | partition1 |
 | RowKey      | CA |
@@ -120,14 +120,14 @@ Get-AzTableRow `
 
 |字段|value|
 |----|----|
-| userid | 第 |
+| userid | 1 |
 | username | Chris |
 | PartitionKey | partition1 |
 | RowKey      | CA |
 
 ### <a name="updating-entities"></a>更新实体 
 
-更新实体有三个步骤。 第一步，检索要更改的实体。 第二步，进行更改。 第三，提交更改使用**更新 AzTableRow**。
+更新实体有三个步骤。 第一步，检索要更改的实体。 第二步，进行更改。 第三，使用**Update-AzTableRow**提交更改。
 
 将 username = 'Jessie' 的实体更改为 username = 'Jessie2'。 此示例还介绍了使用 .NET 类型创建自定义筛选器的另一种方法。
 
@@ -166,7 +166,7 @@ Get-AzTableRow -table $cloudTable `
 
 #### <a name="deleting-one-entity"></a>删除一个实体
 
-若要删除单个实体，请获取对该实体的引用，并将其传递到**删除 AzTableRow**。
+要删除单个实体，请获取对该实体的引用，并将其传送到**删除-AzTableRow**中。
 
 ```powershell
 # Set filter.

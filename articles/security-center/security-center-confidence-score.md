@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心的置信度评分 | Microsoft Docs
-description: 安全中心将生成置信度分数，以帮助你的团队确定威胁是否合法，以及如何对警报进行分类和设置优先级。
+description: 安全中心生成置信度分数，以帮助您的团队确定威胁是否合法以及如何对警报进行会审和优先级排序。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,17 +14,17 @@ ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
 ms.openlocfilehash: 8aa17f473c550c99d91862754e6a746575aca202
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604384"
 ---
-# <a name="alert-confidence-score-preview"></a>警报置信度评分（预览）
+# <a name="alert-confidence-score-preview"></a>警报置信度分数（预览）
 
 在 Azure 安全中心可以查看 Azure 中运行的各个资源，以及在安全中心检测到潜在问题时发出的警报。 安全运营团队可能难以逐个解决警报列中的每个警报，因此有必要设定需要调查的警报的优先级。 警报调查工作可能很复杂且很耗时，因此需要忽略一些警报。
 
-安全中心的置信度评分（目前为预览版）可帮助你的团队会审并排定警报优先级。 安全中心自动运用行业最佳做法、智能算法和分析师使用的流程来确定某个威胁是否合法，并以置信度评分的形式提供有意义的见解。
+安全中心中的置信度分数（当前处于预览中）可以帮助您的团队会审并确定警报的优先级。 安全中心自动运用行业最佳做法、智能算法和分析师使用的流程来确定某个威胁是否合法，并以置信度评分的形式提供有意义的见解。
 
 ## <a name="how-the-confidence-score-is-triggered"></a>置信度评分的触发方式
 
@@ -42,7 +42,7 @@ ms.locfileid: "77604384"
  ![置信度分数][1]
 
 查看安全中心给出警报置信度时所依据的数据：
-- 在“安全警报”边栏选项卡中的“置信度”下，查看给出该置信度评分所依据的观测结果，并获取与警报相关的见解。 这可以更深入地了解导致该警报的活动性质。
+- 在“安全警报”边栏选项卡中的“置信度”下，查看给出该置信度评分所依据的观测结果，并获取与警报相关的见解。**** 这可以更深入地了解导致该警报的活动性质。
 
   ![可疑的置信度评分][2]
 

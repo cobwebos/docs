@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 上传自定义 Linux 磁盘
+title: 使用 Azure CLI 上载自定义 Linux 磁盘
 description: 使用资源管理器部署模型和 Azure CLI 创建虚拟硬盘 (VHD) 并将其上传到 Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 378b802602576c4cf50862149f5d31d16d721be0
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: bc90a409dd2695ce16f8c7d5909f8e2d7867673c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77115840"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060256"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>通过 Azure CLI 从自定义磁盘上传并创建 Linux VM
 
@@ -79,7 +79,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-目标存储帐户必须与虚拟磁盘上传到的位置相同。 还需要指定或根据提示输入 **az vm create** 命令所需的所有其他参数，例如虚拟网络、公共 IP 地址、用户名和 SSH 密钥。 可以阅读有关[可用的经典 CLI 资源管理器参数](../azure-cli-arm-commands.md#virtual-machines)的详细信息。
+目标存储帐户必须与虚拟磁盘上传到的位置相同。 还需要指定或根据提示输入 **az vm create** 命令所需的所有其他参数，例如虚拟网络、公共 IP 地址、用户名和 SSH 密钥。 您可以阅读有关[可用经典 CLI 资源管理器参数的更多信息](../azure-cli-arm-commands.md#virtual-machines)。
 
 ## <a name="requirements"></a>要求
 若要完成以下步骤，需要：
@@ -89,7 +89,7 @@ az vm create --resource-group myResourceGroup --location westus \
   * 也可以在 [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) 或 [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx) 上使用 Hyper-V。
 
 > [!NOTE]
-> Azure 不支持更新的 VHDX 格式。 创建 VM 时，请将 VHD 指定为映像格式。 如果需要，可以使用 [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) 或 [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) PowerShell cmdlet 将 VHDX 磁盘转换为 VHD。 此外，Azure 不支持上传动态 VHD，因此，上传之前，你需要将此类磁盘转换为静态 VHD。 可以使用 [Azure VHD Utilities for GO](https://github.com/Microsoft/azure-vhd-utils-for-go) 等工具在上传到 Azure 的过程中转换动态磁盘。
+> Azure 不支持更新的 VHDX 格式。 创建 VM 时，请将 VHD 指定为映像格式。 如果需要，您可以使用[`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)或[`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx)PowerShell cmdlet 将 VHDX 磁盘转换为 VHD。 此外，Azure 不支持上传动态 VHD，因此，上传之前，你需要将此类磁盘转换为静态 VHD。 可以使用 [Azure VHD Utilities for GO](https://github.com/Microsoft/azure-vhd-utils-for-go) 等工具在上传到 Azure 的过程中转换动态磁盘。
 > 
 > 
 
@@ -106,18 +106,18 @@ az vm create --resource-group myResourceGroup --location westus \
 ## <a name="prepare-the-disk-to-be-uploaded"></a>准备要上传的磁盘
 Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（认可的分发））。 以下文章指导如何准备 Azure 上支持的各种 Linux 分发：
 
-* **[基于 CentOS 的分发](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[基于 CentOS 的分布](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES 和 openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[红帽企业 Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[SLES & 打开SUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[其他 - 非认可分发版](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[其他 - 非认可发行](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
-另请参阅 **[Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)** ，以获取更多有关如何为 Azure 准备 Linux 映像的一般提示。
+有关为 Azure 准备 Linux 映像的更多一般提示，请参阅**[Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)**。
 
 > [!NOTE]
-> 只有在使用某个认可的分发的时候也使用 [Azure 认可的分发中的 Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 中“支持的版本”下指定的配置详细信息时，[Azure 平台 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 才适用于运行 Linux 的 VM。
+> [Azure 平台 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)仅适用于运行 Linux 的 VM，只有当其中一个认可的发行版与[在 Azure 认可的发行版上的 Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的"支持版本"下指定的配置详细信息一起使用时。
 > 
 > 
 
@@ -152,7 +152,7 @@ az storage account keys list --resource-group myResourceGroup --account-name mys
 
 输出类似于：
 
-```azurecli
+```output
 info:    Executing command storage account keys list
 + Getting storage account keys
 data:    Name  Key                                                                                       Permissions
@@ -161,6 +161,7 @@ data:    key1  d4XAvZzlGAgWdvhlWfkZ9q4k9bYZkXkuPCJ15NTsQOeDeowCDAdB80r9zA/tUINAp
 data:    key2  Ww0T7g4UyYLaBnLYcxIOTVziGAAHvU+wpwuPvK4ZG0CDFwu/mAxS/YYvAQGHocq1w7/3HcalbnfxtFdqoXOw8g==  Full
 info:    storage account keys list command OK
 ```
+
 记下 `key1`，你会在后续步骤中使用它与存储帐户进行交互。
 
 ## <a name="create-a-storage-container"></a>创建存储容器

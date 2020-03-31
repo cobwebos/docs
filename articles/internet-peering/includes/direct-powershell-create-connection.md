@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e1cb1bec6273fa79315b9439bec1412622ebfe28
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774297"
 ---
-下面的示例演示如何在西雅图创建10Gbps 直接对等互连。
+下面的示例演示如何在西雅图创建 10Gbps 直接对等互连。
 
-使用 PowerShell cmdlet **AzPeeringDirectConnectionObject**创建要在新对等请求中使用的 DirectConnections。
+使用 PowerShell cmdlet**新-Az 对等互连直接连接对象**创建新的对等互连请求中使用的直接连接。
 
-下面是创建 DirectConnection 的示例：
+下面是创建直接连接的示例：
 
 ```powershell
 $connection1 = New-AzPeeringDirectConnectionObject `
@@ -32,9 +32,9 @@ $connection1 = New-AzPeeringDirectConnectionObject `
 ```
 
 > [!NOTE]
-> 上述示例中 $peeringLocation [<index>] 的 <index> 应对应于所选的对等互连位置
+> <index>上例中$peeringLocation*<index>应对应于您选择的对等位置
 
-如果需要在给定对等位置进行冗余，请创建另一个连接：
+创建另一个连接，以防在给定对等位置需要冗余：
 
 ```powershell
 $connection2 = New-AzPeeringDirectConnectionObject `
@@ -46,7 +46,7 @@ $connection2 = New-AzPeeringDirectConnectionObject `
     -BandwidthInMbps 10000
 ```
 
-使用 PowerShell cmdlet **AzPeering**创建新的直接对等互连。 此命令需要 ASN 资源 ID，如下所示。
+使用 PowerShell cmdlet**新阿兹对等**来创建新的直接对等互连。 此命令需要 ASN 资源 ID，可以检索如下所示。
 
 
 ```powershell
@@ -78,4 +78,4 @@ New-AzPeering `
     Tags                 : {}
 
 ```
-请注意，在上面的**输出中，** 将显示实际订阅 ID。
+请注意，为了代替上述输出中的 **[订阅 Id]，** 将显示实际订阅 ID。

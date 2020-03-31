@@ -9,14 +9,16 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: c4e2253229f4461bcb6a2a9fe3e561f3cde29760
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: c433d99fd96e99d418fd5500c1075e68dfb1742c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170252"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053583"
 ---
 # <a name="what-is-the-azure-face-service"></a>什么是 Azure 人脸服务？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure 认知服务人脸服务提供用于检测、识别和分析图像中人脸的算法。 在许多不同的软件方案中，处理人脸信息的功能非常重要。 示例方案包括安全、自然用户界面、图像内容分析和管理、移动应用及机器人。
 

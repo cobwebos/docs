@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9a8201012b088b9db73f110a0f84ab5716f584be
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 52097963e900411aa07fabc23786a794ee3f3ec1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973775"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80245015"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-python"></a>快速入门：使用计算机视觉 REST API 和 Python 分析本地图像
 
@@ -31,7 +31,7 @@ ms.locfileid: "74973775"
 ## <a name="prerequisites"></a>先决条件
 
 - 如果想在本地运行此示例，必须安装 [Python](https://www.python.org/downloads/)。
-- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
+- 必须具有计算机视觉的订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)获取免费的试用密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 - 必须已安装以下 Python 包。 可以使用 [pip](https://packaging.python.org/tutorials/installing-packages/) 来安装 Python 包。
     - 请求
     - [matplotlib](https://matplotlib.org/)
@@ -43,11 +43,13 @@ ms.locfileid: "74973775"
 
 1. 将以下代码复制到文本编辑器中。
 1. （可选）将 `image_path` 的值替换为要分析的其他图像的路径和文件名。
-1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`analyze-local-image.py`。
+1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`analyze-local-image.py` 。
 1. 打开命令提示符窗口。
 1. 在提示符处，使用 `python` 命令运行示例。 例如，`python analyze-local-image.py` 。
 
 ```python
+import os
+import sys
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 # %matplotlib inline

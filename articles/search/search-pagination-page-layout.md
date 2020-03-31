@@ -1,34 +1,34 @@
 ---
-title: 如何处理搜索结果
+title: 如何使用搜索结果
 titleSuffix: Azure Cognitive Search
-description: 对搜索结果进行结构和排序、获取文档计数，并向 Azure 认知搜索中的搜索结果添加内容导航。
+description: 对搜索结果进行组织和排序、获取记录计数并将内容导航添加到 Azure 认知搜索中的搜索结果。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: e83ecb3888ed4b19933233f3ab511d1e86fb37af
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: 124f1ce3d30ce87d5e9d8fa027e5a7d6c0b3cb17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136984"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481596"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
-本文提供有关如何实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。 向你的搜索结果提供数据或信息的页面相关选项通过发送到 Azure 认知搜索服务的[搜索文档](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)请求来指定。 
+本文提供有关如何实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。 通过发送给 Azure 认知搜索服务的[搜索记录](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)请求来指定与页面相关的选项，以使用这些选项将数据或信息提供到搜索结果。 
 
 在 REST API 中，请求包括 GET 命令、路径和查询参数，用于通知服务正在请求的内容以及如何明确表述响应。 在 .NET SDK 中，等效的 API 是 [DocumentSearchResult 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)。
 
-若要快速为客户端生成搜索页面，请浏览以下选项：
+要快速生成客户端的搜索页，请浏览以下选项：
 
-+ 使用门户中的[应用程序生成器](search-create-app-portal.md)创建一个具有搜索栏、分面导航和结果区域的 HTML 页面。
-+ 请按照[创建第一个应用教程C#中](tutorial-csharp-create-first-app.md)的步骤创建功能客户端。
++ 使用门户中[的应用程序生成器](search-create-app-portal.md)创建具有搜索栏、分面导航和结果区域的 HTML 页面。
++ 按照[在 C# 教程中创建第一个应用](tutorial-csharp-create-first-app.md)来创建功能客户端。
 
-几个代码示例包含一个 web 前端接口，可在此处找到：纽约的 "[城市作业" 演示应用](https://aka.ms/azjobsdemo)、[使用实时演示网站的 JavaScript 示例代码](https://github.com/liamca/azure-search-javascript-samples)和[CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
+几个代码示例包括一个 Web 前端界面，您可以在这里找到：[纽约市工作演示应用程序](https://aka.ms/azjobsdemo)[，JavaScript 示例代码与实时演示网站](https://github.com/liamca/azure-search-javascript-samples)， 和[认知搜索FrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
 
 > [!NOTE]
-> 有效的请求包括大量元素，例如服务 URL 和路径、HTTP 谓词、`api-version` 等。 为简洁起见，我们剪裁了示例，以便仅突出显示与分页相关的语法。 有关请求语法的详细信息，请参阅[Azure 认知搜索 REST api](https://docs.microsoft.com/rest/api/searchservice)。
+> 有效的请求包括大量元素，例如服务 URL 和路径、HTTP 谓词、`api-version` 等。 为简洁起见，我们剪裁了示例，以便仅突出显示与分页相关的语法。 有关请求语法的详细信息，请参阅 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice)。
 >
 
 ## <a name="total-hits-and-page-counts"></a>总匹配记录和页面计数
@@ -37,7 +37,7 @@ ms.locfileid: "79136984"
 
 ![][1]
 
-在 Azure 认知搜索中，使用 `$count`、`$top`和 `$skip` 参数返回这些值。 下面的示例演示一个名为 "联机目录" 的索引上的命中总数示例请求，并返回 `@odata.count`：
+在 Azure 认知搜索中，使用 `$count`、`$top` 和 `$skip` 参数返回这些值。 以下示例显示了对名为“online-catalog”的索引的总命中数的示例请求，以 `@odata.count` 的形式返回：
 
     GET /indexes/online-catalog/docs?$count=true
 
@@ -59,7 +59,7 @@ ms.locfileid: "79136984"
 
  ![][2]
 
-在 Azure 认知搜索中，你将使用 `$select` 和[搜索 API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)来实现这种体验。
+在 Azure 认知搜索中，将使用 `$select` 和[搜索 API 请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)来实现此体验。
 
 若要返回平铺布局的字段的子集：
 
@@ -77,7 +77,7 @@ ms.locfileid: "79136984"
 
  ![][3]
 
-在 Azure 认知搜索中，排序基于 `$orderby` 表达式，对于索引为 `"Sortable": true.` `$orderby` 子句的所有字段，其为 OData 表达式。 有关语法的信息，请参阅[筛选器和 order-by 子句的 OData 表达式语法](query-odata-filter-orderby-syntax.md)。
+在 Azure 认知搜索中，对于所有编制索引为 `"Sortable": true.` 的字段，根据 `$orderby` 表达式进行排序。`$orderby` 子句是 OData 表达式。 有关语法的信息，请参阅[筛选器和 order-by 子句的 OData 表达式语法](query-odata-filter-orderby-syntax.md)。
 
 相关性与计分配置文件密切关联。 可以使用依赖于文本分析和统计信息对所有结果排序顺序的默认计分，针对某个搜索词，分数越高，相应记录的匹配项就越多且越相关。
 
@@ -95,9 +95,9 @@ ms.locfileid: "79136984"
 
 ## <a name="hit-highlighting"></a>突出显示
 
-您可以在搜索结果中将格式应用于匹配的字词，这样就可以轻松地找到匹配项。 [查询请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上提供了命中突出显示说明。 
+您可以将格式应用于搜索结果中的匹配项，从而轻松发现匹配项。 [查询请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上提供了命中突出显示说明。 
 
-格式设置将应用于整个术语查询。 对于在引擎中导致查询扩展的部分术语（如模糊搜索或通配符搜索）的查询，不能使用命中突出显示。
+格式应用于整个术语查询。 对部分术语（如模糊搜索或通配符搜索）的查询（如导致引擎中查询扩展）不能使用命中突出显示。
 
 ```http
 POST /indexes/hotels/docs/search?api-version=2019-05-06 
@@ -107,21 +107,24 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
     }
 ```
 
-
+> [!IMPORTANT]
+> 2020 年 7 月 15 日之后创建的服务将提供不同的突出显示体验。 该日期之前创建的服务在突出显示行为中不会改变。 使用此更改，将仅返回与完整短语查询匹配的短语。 此外，还可以指定为高光返回的片段大小。
+>
+> 编写实现命中突出显示的客户端代码时，请注意此更改。 请注意，除非您创建全新的搜索服务，否则这不会影响您。
 
 ## <a name="faceted-navigation"></a>多面导航
 
-搜索导航是搜索页面上的常见功能，通常位于页面侧边或顶部。 在 Azure 认知搜索中，分面导航提供基于预定义筛选器的自定向搜索。 有关详细信息，请参阅[Azure 中的分面导航认知搜索](search-faceted-navigation.md)。
+搜索导航是搜索页面上的常见功能，通常位于页面侧边或顶部。 在 Azure 认知搜索中，分面导航基于预定义筛选器提供自定向搜索。 有关详细信息，请参阅 [Azure 认知搜索中的分面导航](search-faceted-navigation.md)。
 
 ## <a name="filters-at-the-page-level"></a>页面级别的筛选器
 
-如果你的解决方案设计包含特定类型的内容（例如，页面顶部列出了部门的联机零售应用程序）的专用搜索页面，则可以插入[筛选表达式](search-filters.md)和**onClick**事件，以在预筛选状态下打开页面。
+如果解决方案设计包含特定类型内容的专用搜索页（例如，在页面顶部列出了部门的在线零售应用程序），则可以在**onClick**事件旁边插入[筛选器表达式](search-filters.md)，以打开处于预筛选状态的页面。
 
 可以发送带有或不带有搜索表达式的筛选器。 例如，将按品牌名称筛选以下请求，以便仅返回与之匹配的记录。
 
     GET /indexes/online-catalog/docs?$filter=brandname eq 'Microsoft' and category eq 'Games'
 
-有关 `$filter` 表达式的详细信息，请参阅[搜索文档（Azure 认知搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 。
+有关 `$filter` 表达式的详细信息，请参阅[搜索记录（Azure 认知搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
 
 ## <a name="see-also"></a>另请参阅
 

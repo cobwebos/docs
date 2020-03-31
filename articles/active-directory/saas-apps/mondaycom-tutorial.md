@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7126b6e40c7d76244ec5cd62566c4bad6dc0529
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5c0353bdcce6bb4917d13de9b8f254ee77de1a4c
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75430912"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80297933"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mondaycom"></a>教程：Azure Active Directory 单一登录 (SSO) 与 monday.com 的集成
 
@@ -57,7 +57,6 @@ ms.locfileid: "75430912"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“monday.com”   。
 1. 从结果面板中选择“monday.com”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-mondaycom"></a>配置并测试 monday.com 的 Azure AD 单一登录
 
@@ -106,7 +105,7 @@ ms.locfileid: "75430912"
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YOUR_DOMAIN>.monday.com`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [monday.com 客户端支持团队](mailto:dev@food.ee)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [monday.com 客户端支持团队](https://monday.com/contact-us/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. monday.com 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -114,8 +113,8 @@ ms.locfileid: "75430912"
 
 1. 除了上述属性，monday.com 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | 名称 | 源属性|
-    | ---------------| --------------- |
+    | 名称 | 源属性 |
+    |--|--|
     | 电子邮件 | user.mail |
     | FirstName | user.givenname |
     | LastName | user.surname |
@@ -135,7 +134,7 @@ ms.locfileid: "75430912"
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
+   1. 在“名称”  字段中，输入 `B.Simon`。
    1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 单击“创建”。 
@@ -182,8 +181,8 @@ ms.locfileid: "75430912"
 
     ![monday.com 配置](./media/mondaycom-tutorial/configuration03.png)
 
-    >[!NOTE]
-    >有关更多详细信息，请参阅[此文](https://support.monday.com/hc/articles/360000460605-SAML-Single-Sign-on?abcb=34642)
+    > [!NOTE]
+    > 有关更多详细信息，请参阅[此文](https://support.monday.com/hc/articles/360000460605-SAML-Single-Sign-on?abcb=34642)
 
 ### <a name="create-mondaycom-test-user"></a>创建 monday.com 测试用户
 
@@ -199,7 +198,7 @@ ms.locfileid: "75430912"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

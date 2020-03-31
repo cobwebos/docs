@@ -9,14 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6b19dc11438274ecf6218d5c0bd8c9ef3dafbf01
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118536"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80052440"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure 表单识别器是一个认知服务，该服务使用机器学习技术从表单文档中识别和提取文本、键值对和表数据。 它会引入表单中的文本并输出包含原始文件中的关系的结构化数据。 可以快速获取根据特定内容定制的准确结果，无需进行繁琐的手动干预，也不需要具备丰富的数据科学专业知识。 表单识别器由自定义模型、预生成的收据模型和布局 API 组成。 可以使用 REST API 调用表单识别器模型，以降低复杂性，并将该模型集成到工作流或应用程序中。
 
@@ -49,7 +51,7 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 
 ## <a name="layout-api"></a>布局 API
 
-表单识别器还可以使用高清光学字符识别 (OCR) 来提取文本和表结构（与文本关联的行号和列号）。 
+表单识别器还可以使用高清光学字符识别 (OCR) 来提取文本和表结构（与文本关联的行号和列号）。
 
 ## <a name="get-started"></a>入门
 
@@ -59,9 +61,9 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
   * 在没有标签的情况下训练
     * [快速入门：使用 REST API 和 cURL 训练表单识别器模型并提取表单数据](quickstarts/curl-train-extract.md)
     * [快速入门：使用 REST API 和 Python 训练表单识别器模型并提取表单数据](quickstarts/python-train-extract.md)
-  * 使用标签进行训练 
+  * 使用标签进行训练
     * [使用示例标记工具通过标签来训练表单识别器模型](quickstarts/label-tool.md)
-    * [使用 REST API 和 Python 通过标签训练表单识别器模型](quickstarts/python-labeled-data.md) 
+    * [使用 REST API 和 Python 通过标签训练表单识别器模型](quickstarts/python-labeled-data.md)
 * 预生成的收据 - 从美国销售收据中提取数据
   * [快速入门：使用 cURL 提取回执数据](quickstarts/curl-receipts.md)
   * [快速入门：使用 Python 提取回执数据](quickstarts/python-receipts.md)
@@ -92,7 +94,7 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 
 * 格式必须为 JPEG、PNG、BMP、PDF（文本或扫描时间）或 TIFF。
 * 文件大小必须小于 20 MB。
-* 图像尺寸必须介于 50 x 50 像素与 10000 x 10000 像素之间。 
+* 图像尺寸必须介于 50 x 50 像素与 10000 x 10000 像素之间。
 * PDF 尺寸必须最多为 17 x 17 英寸，对应于 Legal 或 A3 纸张尺寸及更小。
 * 对于 PDF 和 TIFF，仅处理前 200 页（对于免费层订阅，仅处理前两页）。
 

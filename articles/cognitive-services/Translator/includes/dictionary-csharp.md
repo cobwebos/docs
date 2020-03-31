@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 55ad3591a8c2e7d5de6d1efe255e0f3a4b3c11bd
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69907024"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
@@ -24,7 +24,7 @@ dotnet new console -o alternate-sample
 cd alternate-sample
 ```
 
-第一个命令执行两项操作。 它创建新的 .NET 控制台应用程序，并创建名为 `alternate-sample` 的目录。 第二个目录转到项目的目录。
+第一个命令执行两项操作。 它创建新的 .NET 控制台应用程序，并创建名为 `alternate-sample` 的目录。 第二个命令是切换至项目目录。
 
 接下来需安装 Json.Net。 在项目的目录中，运行以下命令：
 
@@ -158,7 +158,7 @@ static string PrettyPrint(string s)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是在 `Main` 函数中调用 `AltTranslation()`。 找到 `static void Main(string[] args)` 并添加以下行：
+最后一步是在 `AltTranslation()` 函数中调用 `Main`。 找到 `static void Main(string[] args)` 并添加以下行：
 
 ```csharp
 AltTranslation();

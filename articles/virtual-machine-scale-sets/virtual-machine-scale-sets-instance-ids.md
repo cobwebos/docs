@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure VM 规模集 VM 的实例 ID
-description: 了解 Azure VM 规模集虚拟机的实例 Id 及其表面的各种方式。
+description: 了解 Azure VM 规模设置虚拟机的实例标识及其显示的各种方式。
 author: mayanknayar
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: aa2b0013818f897f01945d394266a57016ecb0bb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 99ad4249a4134bcc1b1cf5aba92b8a95a034db33
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79250759"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534416"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 规模集 VM 的实例 ID
 本文介绍规模集的实例 ID 和显示这些 ID 的各种方法。
@@ -26,7 +26,7 @@ REST API：`POST https://management.azure.com/subscriptions/{subscriptionId}/res
 
 PowerShell：`Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage`（有关详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)）
 
-CLI：`az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}`（有关详细信息，请参阅 [CLI 文档](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)）。
+CLI：（`az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}`有关详细信息，请参阅[CLI 文档](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)）。
 
 可以通过列出规模集中的所有实例来获取实例 ID 的列表：
 
@@ -34,14 +34,17 @@ REST API：`GET https://management.azure.com/subscriptions/{subscriptionId}/reso
 
 PowerShell：`Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}`（有关详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)）
 
-CLI：`az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}`（有关详细信息，请参阅 [CLI 文档](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)）。
+CLI：（`az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}`有关详细信息，请参阅[CLI 文档](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)）。
 
 也可以使用 [resources.azure.com](https://resources.azure.com) 或 [Azure SDK](https://azure.microsoft.com/downloads/) 列出规模集中的 VM。
 
 下面是 CLI 的某个示例输出，但输出的具体呈现取决于提供给命令的选项：
 
+```azurecli
+az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 ```
-$ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
+
+```output
 [
   {
     "instanceId": "85",
@@ -70,7 +73,7 @@ $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 
 如果从规模集 VM 中查询[实例元数据](../virtual-machines/windows/instance-metadata-service.md)，会在输出中看到“名称”：
 
-```
+```output
 {
   "compute": {
     "location": "westus",

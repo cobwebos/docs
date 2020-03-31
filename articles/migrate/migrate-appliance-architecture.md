@@ -3,16 +3,16 @@ title: Azure 迁移设备体系结构
 description: 提供服务器评估和迁移中使用的 Azure 迁移设备的概述。
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 25dc530199cde3408ce3bd6641aeb9bb8595465d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d55d123bb056b46b5e78dd8ac836eeaf9b42fe70
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337592"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389012"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure 迁移设备体系结构
 
-本文介绍 Azure 迁移设备体系结构和过程。 Azure 迁移设备是一种轻量级设备，部署在内部，用于发现要评估的 VM 和物理服务器，以便迁移到 Azure。 
+本文介绍 Azure 迁移设备体系结构和过程。 Azure 迁移设备是一种轻量级设备，部署在内部，用于发现 VM 和物理服务器，以便迁移到 Azure。 
 
 ## <a name="deployment-scenarios"></a>部署方案
 
@@ -40,13 +40,13 @@ Azure 迁移设备用于以下方案。
 
 ## <a name="appliance-deployment"></a>设备部署
 
-- 可以使用模板（仅限 Hyper-V 或 VMware）或 PowerShell 脚本安装程序设置 Azure 迁移设备。 [详细了解](deploy-appliance.md#deployment-options)这些选项。 
+- Azure 迁移设备可以使用[Hyper-V](how-to-set-up-appliance-hyper-v.md)或[VMware](how-to-set-up-appliance-vmware.md)的模板进行设置，或者使用[适用于 VMware/Hyper-V](deploy-appliance-script.md)的 PowerShell 脚本安装程序以及[物理服务器](how-to-set-up-appliance-physical.md)。 
 - 设备支持要求和部署先决条件汇总到[设备支持矩阵](migrate-appliance.md)中。
 
 
 ## <a name="appliance-registration"></a>设备注册
 
-在设备设置期间，您将设备注册到 Azure 迁移。 在设置和注册过程中，将发生表中汇总的操作。
+在设备设置期间，您将设备注册到 Azure 迁移，并且表中汇总的操作将发生。
 
 **操作** | **详细信息** | **权限**
 --- | --- | ---
@@ -58,7 +58,7 @@ Azure 迁移设备用于以下方案。
 
 ## <a name="collected-data"></a>收集的数据
 
-客户端为所有部署方案收集的数据在[设备支持矩阵](migrate-appliance.md)中完全捕获。
+客户端针对所有部署方案收集的数据汇总到[设备支持矩阵](migrate-appliance.md)中。
 
 ## <a name="discovery-and-collection-process"></a>发现和收集过程
 
@@ -89,7 +89,8 @@ Azure 迁移设备用于以下方案。
 
 随着在设备上运行的 Azure 迁移代理更新，设备将升级。 这是自动发生的，因为默认情况下在设备上启用了自动更新。 您可以更改此默认设置以手动更新代理。
 
-通过将HKEY_LOCAL_MACHINE_SOFTWARE_Microsoft_AzureAppliance"自动更新"键设置为 0 （DWORD））来关闭注册表中的自动更新。 如果您决定使用手动更新，请务必同时更新设备上的所有代理，使用设备上每个过期代理的 **"更新**"按钮。
+通过将HKEY_LOCAL_MACHINE_SOFTWARE_Microsoft_AzureAppliance"自动更新"键设置为 0 （DWORD），在注册表中关闭自动更新。
+
  
 
 ## <a name="next-steps"></a>后续步骤

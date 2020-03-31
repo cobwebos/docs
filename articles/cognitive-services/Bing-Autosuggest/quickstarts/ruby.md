@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: ef5180aae04f71f3bbe6fbcd7d3df393b107be35
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eac1f53d35f8175da814dba6172edc12f9e1a063
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448796"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238931"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>快速入门：使用必应自动建议 REST API 和 Ruby 建议搜索查询
 
 使用此快速入门开始调用必应自动建议 API 并获取 JSON 响应。 这个简单的 Ruby 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 Ruby 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) 或更高版本。
 

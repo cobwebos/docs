@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
 ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77666631"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor 中的日志数据引入时间
@@ -39,10 +39,10 @@ Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发
 ### <a name="agent-upload-frequency"></a>代理上传频率
 为确保 Log Analytics 代理保持轻型，代理会缓冲日志并定期将其上传到 Azure Monitor。 上传频率在 30 秒到 2 分钟之间变化，具体取决于数据类型。 大多数数据可在 1 分钟内上传。 网络状况可能会对数据抵达 Azure Monitor 引入点的延迟产生负面影响。
 
-### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Azure 活动日志，资源日志和指标
+### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Azure 活动日志、资源日志和指标
 Azure 数据增加了额外的时间，以便在 Log Analytics 引入点处可用于处理：
 
-- 资源日志中的数据需要2-15 分钟的时间，具体取决于 Azure 服务。 请参阅[下面的查询](#checking-ingestion-time)，以便在你的环境中检查此延迟
+- 资源日志中的数据需要 2 到 15 分钟，具体取决于 Azure 服务。 请参阅[下面的查询](#checking-ingestion-time)，以便在你的环境中检查此延迟
 - 将 Azure 平台指标发送到 Log Analytics 引入点需要 3 分钟。
 - 将活动日志数据发送到 Log Analytics 引入点大约需要 10 到 15 分钟。
 
@@ -57,7 +57,7 @@ Azure 数据增加了额外的时间，以便在 Log Analytics 引入点处可�
 请参阅各解决方案的文档，确定其收集频率。
 
 ### <a name="pipeline-process-time"></a>管道处理时间
-一旦将日志记录引入到 Azure Monitor 管道（如[_TimeReceived](log-standard-properties.md#_timereceived)属性中所示），就会将它们写入临时存储，以确保租户隔离并确保数据不会丢失。 此过程通常会花费 5-15 秒的时间。 一些管理解决方案实施了更复杂的算法来聚合数据，并在数据流入时获得见解。 例如，网络性能监视器以 3 分钟的时间间隔聚合传入数据，有效地增加了 3 分钟的延迟。 处理自定义日志是另一个增加延迟的过程。 在某些情况下，此过程可能会为代理从文件收集的日志增加几分钟延迟。
+将日志记录引入到 Azure Monitor 管道（如 [_TimeReceived](log-standard-properties.md#_timereceived) 属性中所标识）后，会将其写入临时存储，以确保租户隔离并确保数据不会丢失。 此过程通常会花费 5-15 秒的时间。 一些管理解决方案实施了更复杂的算法来聚合数据，并在数据流入时获得见解。 例如，网络性能监视器以 3 分钟的时间间隔聚合传入数据，有效地增加了 3 分钟的延迟。 处理自定义日志是另一个增加延迟的过程。 在某些情况下，此过程可能会为代理从文件收集的日志增加几分钟延迟。
 
 ### <a name="new-custom-data-types-provisioning"></a>新的自定义数据类型预配
 从[自定义日志](data-sources-custom-logs.md)或[数据收集器 API ](data-collector-api.md)创建新的自定义数据类型时，系统会创建专用存储容器。 这是一次性开销，仅在此数据类型第一次出现时支付。
@@ -73,18 +73,18 @@ Azure Monitor 的首要任务是确保不会丢失任何客户数据，因此系
 
 
 ## <a name="checking-ingestion-time"></a>检查引入时间
-由于在不同情况下，不同资源的引入时间可能会有所不同。 可以使用日志查询来识别环境的特定行为。 下表指定了在创建记录并将记录发送到 Azure Monitor 时，如何确定该记录的不同时间。
+由于在不同情况下，不同资源的引入时间可能会有所不同。 可以使用日志查询来识别环境的特定行为。 下表指定了如何在创建记录并将其发送到 Azure Monitor 时确定记录的不同时间。
 
 | 步骤 | 属性或函数 | 注释 |
 |:---|:---|:---|
-| 数据源中创建的记录 | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>如果数据源未设置此值，则将其设置为与 _TimeReceived 相同的时间。 |
-| Azure Monitor 摄取终结点接收的记录 | [_TimeReceived](log-standard-properties.md#_timereceived) | |
-| 存储在工作区中的记录，可用于查询 | [ingestion_time （）](/azure/kusto/query/ingestiontimefunction) | |
+| 在数据源处创建的记录 | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>如果数据源未设置此值，则它将设置为与 _TimeReceived 相同的时间。 |
+| Azure Monitor 引入终结点收到的记录 | [_TimeReceived](log-standard-properties.md#_timereceived) | |
+| 存储在工作区中并可用于查询的记录 | [ingestion_time（）](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>引入延迟延迟
-您可以通过将[ingestion_time （）](/azure/kusto/query/ingestiontimefunction)函数的结果与_TimeGenerated_属性进行比较来度量特定记录的滞后时间。 此数据可用于各种聚合，以查找引入延迟的行为方式。 检查引入时间的某些百分位数，以获取大量数据的见解。 
+可以通过比较 [ingestion_time()](/azure/kusto/query/ingestiontimefunction) 函数的结果和 TimeGenerated 属性来测量特定记录的延迟__。 此数据可用于各种聚合，以查找引入延迟的行为方式。 检查引入时间的某些百分位数，以获取大量数据的见解。 
 
-例如，以下查询将显示在之前8小时内哪些计算机的引入时间最长： 
+例如，以下查询将显示在前 8 小时内哪些计算机的引入时间最长： 
 
 ``` Kusto
 Heartbeat
@@ -95,9 +95,9 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
 
-上述百分比检查适用于查找延迟的一般趋势。 若要在延迟时间内标识短期高峰，使用最大值（`max()`）可能更有效。
+上述百分位数检查非常适合发现延迟的一般趋势。 若要确定延迟的短期峰值，使用最大值 (`max()`) 可能更有效。
 
-如果要在一段时间内向下钻取特定计算机的引入时间，请使用以下查询，该查询还直观显示了图形中过去一天的数据： 
+如果想要在一段时间内详细了解特定计算机的引入时间，可以使用以下查询，它还可以将过去一天的数据以图表的形式显示出来： 
 
 
 ``` Kusto
@@ -109,7 +109,7 @@ Heartbeat
 | render timechart
 ```
  
-使用以下查询根据其 IP 地址显示计算机引入时间（其所在的国家/地区）： 
+使用以下查询按计算机所在国家/地区（基于其 IP 地址）显示计算机引入时间： 
 
 ``` Kusto
 Heartbeat 
@@ -130,9 +130,9 @@ AzureDiagnostics
 ```
 
 ### <a name="resources-that-stop-responding"></a>停止响应的资源 
-在某些情况下，资源无法停止发送数据。 若要了解资源是否正在发送数据，请查看由标准 TimeGenerated 字段标识的最新记录。  
+在某些情况下，资源无法停止发送数据。 若要了解资源是否正在发送数据，请查看由标准 TimeGenerated 字段标识的最新记录__。  
 
-使用检测信号表来检查 VM 的可用性，因为检测信号由代理每分钟发送一次。 使用以下查询列出最近尚未报告过检测信号的活动计算机： 
+使用检测信号表来检查 VM 的可用性，因为检测信号由代理每分钟发送一次__。 使用以下查询列出最近尚未报告过检测信号的活动计算机： 
 
 ``` Kusto
 Heartbeat  

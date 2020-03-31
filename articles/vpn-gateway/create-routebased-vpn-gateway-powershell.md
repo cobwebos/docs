@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 网关：创建基于路由的网关： PowerShell
+title: Azure VPN 网关：创建基于路由的网关：PowerShell
 description: 使用 PowerShell 快速创建基于路由的 VPN 网关
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: 8a4bb9d2ac7b8124fa9b1e00f3ecceda4f4a4cdf
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152935"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>使用 PowerShell 创建基于路由的 VPN 网关
@@ -28,15 +28,15 @@ ms.locfileid: "77152935"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 创建资源组。 如果在本地运行 PowerShell，请使用提升的权限打开 PowerShell 控制台，并使用 `Connect-AzAccount` 命令连接到 Azure。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。 创建资源组。 如果在本地运行 PowerShell，请打开具有提升权限的 PowerShell 控制台，并使用 命令`Connect-AzAccount`连接到 Azure。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name TestRG1 -Location EastUS
 ```
 
-## <a name="vnet"></a>创建虚拟网络
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>创建虚拟网络
 
-使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。 以下示例在“EastUS”位置创建一个名为“VNet1”的虚拟网络：
+使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。 以下示例在“EastUS”位置创建一个名为“VNet1”的虚拟网络********：
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -62,7 +62,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="gwsubnet"></a>添加网关子网
+## <a name="add-a-gateway-subnet"></a><a name="gwsubnet"></a>添加网关子网
 
 网关子网包含虚拟网络网关服务使用的保留 IP 地址。 使用下面的示例添加网关子网：
 
@@ -84,7 +84,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0
 $vnet | Set-AzVirtualNetwork
 ```
 
-## <a name="PublicIP"></a>请求公共 IP 地址
+## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>请求公共 IP 地址
 
 VPN 网关必须具有动态分配的公共 IP 地址。 创建与 VPN 网关的连接时，这是你指定的 IP 地址。 使用下面的示例请求一个公共 IP 地址：
 
@@ -92,7 +92,7 @@ VPN 网关必须具有动态分配的公共 IP 地址。 创建与 VPN 网关的
 $gwpip= New-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>创建网关 IP 地址配置
+## <a name="create-the-gateway-ip-address-configuration"></a><a name="GatewayIPConfig"></a>创建网关 IP 地址配置
 
 网关配置定义要使用的子网和公共 IP 地址。 使用以下示例创建网关配置：
 
@@ -101,7 +101,7 @@ $vnet = Get-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
-## <a name="CreateGateway"></a>创建 VPN 网关
+## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>创建 VPN 网关
 
 创建 VPN 网关可能需要 45 分钟或更长时间。 完成创建网关后，可以创建虚拟网络与另一个 VNet 之间的连接。 或者，创建虚拟网络与本地位置之间的连接。 使用 [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) cmdlet 创建 VPN 网关。
 
@@ -111,7 +111,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -VpnType RouteBased -GatewaySku VpnGw1
 ```
 
-## <a name="viewgw"></a>查看 VPN 网关
+## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>查看 VPN 网关
 
 可使用 [Get-AzVirtualNetworkGateway](/powershell/module/az.network/Get-azVirtualNetworkGateway) cmdlet 查看 VPN 网关。
 
@@ -164,7 +164,7 @@ BgpSettings            : {
      
 ```
 
-## <a name="viewgwpip"></a>查看公共 IP 地址
+## <a name="view-the-public-ip-address"></a><a name="viewgwpip"></a>查看公共 IP 地址
 
 若要查看 VPN 网关的公共 IP 地址，请使用 [Get-AzPublicIpAddress](/powershell/module/az.network/Get-azPublicIpAddress) cmdlet。
 

@@ -10,14 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 05ed7903cafbb265f23ba74a24ee0498be0effe9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9237e670dd8d43c4036f996c477948944718e3aa
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448971"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053701"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什么是异常检测器 API？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 可以使用异常检测器 API 来监视并检测与机器学习配合使用的时序数据中的异常。 异常检测器 API 可以自动标识最佳适配模型并将其应用到数据，不限行业、场景或数据量，通过这种方式进行适应。 使用时序数据，此 API 可以确定异常检测的边界、预期的值，以及哪些数据点异常。
 
@@ -27,7 +29,7 @@ ms.locfileid: "75448971"
 
 ## <a name="features"></a>功能
 
-可以使用异常检测器自动检测时序数据中的异常以及实时出现的异常。 
+可以使用异常检测器自动检测时序数据中的异常以及实时出现的异常。
 
 |Feature  |说明  |
 |---------|---------|
@@ -52,7 +54,7 @@ ms.locfileid: "75448971"
 1. 在完成克隆操作之前，请取消选中对话框中的“公共”选项，否则你的笔记本（包括任何订阅密钥）将是公共的。
 1. 单击“在免费计算上运行” 
 1. 选择其中一个笔记本。
-1. 向 `subscription_key` 变量添加有效的异常检测器 API 订阅密钥。 
+1. 向 `subscription_key` 变量添加有效的异常检测器 API 订阅密钥。
 1. 将 `endpoint` 变量更改为你的终结点。 例如： `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
 1. 单击顶部菜单栏中的“单元格”，然后单击“全部运行”  。 
 

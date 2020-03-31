@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 2a8a0bf1e63f06bbe6b6a073af6b3da8904dcaeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61450206"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>将设备连接到远程监视解决方案加速器 (Windows)
@@ -23,9 +23,9 @@ ms.locfileid: "61450206"
 
 与受约束设备上运行的大多数嵌入式应用程序一样，设备应用程序的客户端代码是用 C 语言编写的。在本教程中，将在运行 Windows 的计算机上生成设备客户端应用程序。
 
-如果更喜欢模拟某个设备，请参见[创建和测试新的模拟设备](iot-accelerators-remote-monitoring-create-simulated-device.md)。
+如果更喜欢模拟某个设备，请参阅[创建和测试新的模拟设备](iot-accelerators-remote-monitoring-create-simulated-device.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本操作指南中的步骤，请按照[设置 Windows 开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment)中的步骤将所需的开发工具和库添加到 Windows 计算机中。
 
@@ -37,15 +37,15 @@ ms.locfileid: "61450206"
 
 若要准备项目，请从 GitHub [克隆 Azure IoT C SDK 存储库](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment)。
 
-该示例位于 samples/solutions/remote_monitoring_client  文件夹中。
+该示例位于 samples/solutions/remote_monitoring_client**** 文件夹中。
 
-在文本编辑器中打开  samples/solutions/remote_monitoring_client 文件夹中的  remote_monitoring.c 文件。
+在文本编辑器中打开 **** samples/solutions/remote_monitoring_client 文件夹中的 **** remote_monitoring.c 文件。
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
 
-1. 编辑 remote_monitoring.c  文件，使用本操作指南开头在将设备添加到解决方案加速器时记下的设备连接字符串替换 `<connectionstring>`。
+1. 编辑 remote_monitoring.c**** 文件，使用本操作指南开头在将设备添加到解决方案加速器时记下的设备连接字符串替换 `<connectionstring>`。
 
 1. 按照[在 Windows 中构建 C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#build-the-c-sdk-in-windows) 中的步骤构建 SDK 和远程监视客户端应用程序。
 

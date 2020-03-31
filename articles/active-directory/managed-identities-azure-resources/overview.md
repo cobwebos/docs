@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/26/2019
+ms.date: 03/25/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47bd3b5da79bdb9c7dca75d521aa39d3652ab1ab
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 707b03d46615f3acfa0797d1dc0865d53ef75dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945498"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282114"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -143,7 +143,7 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 * [Azure 数据工厂](../../data-factory/data-factory-service-identity.md)
 
 
-## 哪些 Azure 服务支持此功能？<a name="which-azure-services-support-managed-identity"></a>
+## <a name="what-azure-services-support-the-feature"></a>哪些 Azure 服务支持此功能？<a name="which-azure-services-support-managed-identity"></a>
 
 Azure 资源的托管标识可以用来向支持 Azure AD 身份验证的服务证明身份。 如需支持 Azure 资源托管标识功能的 Azure 服务的列表，请参阅[支持 Azure 资源托管标识的服务](services-support-msi.md)。
 

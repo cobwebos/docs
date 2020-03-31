@@ -1,7 +1,7 @@
 ---
-title: 将群集迁移到较新的版本
+title: 将群集迁移到较新版本
 titleSuffix: Azure HDInsight
-description: 了解将 Azure HDInsight 群集迁移到较新版本的准则。
+description: 了解将 Azure HDInsight 群集迁移到较新版本的指南。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
 ms.openlocfilehash: f7198aeff5e9ef6d37e29c2336dc38e4eec0dda1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023967"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>将 HDInsight 群集迁移到较新版本
 
-为了充分利用最新的 HDInsight 功能，我们建议将 HDInsight 群集定期迁移到最新版本。 HDInsight 不支持就地升级，其中现有群集升级到较新的组件版本。 必须使用所需的组件和平台版本创建新群集，然后迁移应用程序以使用新群集。 遵循以下准则来迁移 HDInsight 群集版本。
+为了利用最新的 HDInsight 功能，我们建议定期将 HDInsight 群集迁移到最新版本。 HDInsight 不支持将现有群集升级到较新的组件版本的就地升级。 您必须创建具有所需组件和平台版本的新群集，然后迁移应用程序以使用新群集。 按照以下准则迁移 HDInsight 群集版本。
 
 > [!NOTE]  
 > 有关支持的 HDInsight 版本的信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
@@ -26,7 +26,7 @@ ms.locfileid: "77023967"
 ## <a name="migration-tasks"></a>迁移任务
 
 升级 HDInsight 群集的工作流如下所示。
-![HDInsight 升级工作流关系图](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
+![HDInsight 升级工作流图](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. 请阅读本文档的每个部分，了解在升级 HDInsight 群集时可能需要进行的更改。
 2. 创建群集作为测试/质量保证环境。 有关创建群集的详细信息，请参阅[了解如何创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
@@ -41,17 +41,17 @@ ms.locfileid: "77023967"
 1. 导入任何已备份的暂时性数据。
 1. 使用新群集启动作业/继续处理。
 
-## <a name="workload-specific-guidance"></a>特定于工作负载的指南
+## <a name="workload-specific-guidance"></a>工作负载特定指南
 
-以下文档提供有关如何迁移特定工作负载的指南：
+以下文档提供有关如何迁移特定工作负载的指导：
 
 * [迁移 HBase](./hbase/apache-hbase-migrate-new-version.md)
-* [迁移 Kafka](./kafka/migrate-versions.md)
-* [迁移 Hive/Interactive 查询](./interactive-query/apache-hive-migrate-workloads.md)
+* [迁移卡夫卡](./kafka/migrate-versions.md)
+* [迁移蜂巢/交互式查询](./interactive-query/apache-hive-migrate-workloads.md)
 
 ## <a name="backup-and-restore"></a>备份和还原
 
-有关数据库备份和还原的详细信息，请参阅[使用自动数据库备份恢复 AZURE SQL 数据库](../sql-database/sql-database-recovery-using-backups.md)。
+有关数据库备份和还原的详细信息，请参阅[使用自动数据库备份恢复 Azure SQL 数据库](../sql-database/sql-database-recovery-using-backups.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

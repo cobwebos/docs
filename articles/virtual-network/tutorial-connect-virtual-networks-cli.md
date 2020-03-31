@@ -1,5 +1,5 @@
 ---
-title: 通过 VNet 对等互连连接虚拟网络-Azure CLI
+title: 将虚拟网络与 VNet 对等互连连接 - Azure CLI
 description: 在本文中，你将学习如何使用 Azure CLI 通过虚拟网络对等互连来连接虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 4ba37ea99ddc0903e1febd53f8d8fbd84b417b87
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: aa2d75173b14e768a207336b54b3dc10a8c3ea5c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201396"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235168"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>通过 Azure CLI 使用虚拟网络对等互连连接虚拟网络
 
@@ -35,17 +35,17 @@ ms.locfileid: "77201396"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
 ## <a name="create-virtual-networks"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 下面的示例在*东部*位置创建名为*myResourceGroup*的资源组。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 以下示例创建地址前缀为 *10.0.0.0/16* 且名为 *myVirtualNetwork1* 的虚拟网络。
+创建具有 az[网络 vnet 创建的](/cli/azure/network/vnet)虚拟网络。 以下示例创建地址前缀为 *10.0.0.0/16* 且名为 *myVirtualNetwork1* 的虚拟网络。
 
 ```azurecli-interactive 
 az network vnet create \
@@ -97,7 +97,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-在前一个命令执行后返回的输出中，可以看到 **peeringState** 为“已启动”。 对等互连将保持 *Initiated* 状态，直到你创建从 *myVirtualNetwork2* 到 *myVirtualNetwork1* 的对等互连。 创建从 *myVirtualNetwork2* 到 *myVirtualNetwork1* 的对等互连。 
+在执行前一个命令后返回的输出中，您可以看到**对等互连状态**已*启动*。 对等互连将保持 *Initiated* 状态，直到你创建从 *myVirtualNetwork2* 到 *myVirtualNetwork1* 的对等互连。 创建从 *myVirtualNetwork2* 到 *myVirtualNetwork1* 的对等互连。 
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -108,7 +108,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-在前一个命令执行后返回的输出中，可以看到 **peeringState** 为“已连接”。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为 *Connected*。 使用 [az network vnet peering show](/cli/azure/network/vnet/peering) 确认 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态是否已更改为“已连接”。
+在执行前一个命令后返回的输出中，您可以看到**对等互连状态***已连接*。 Azure 还将 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态更改为 *Connected*。 使用 [az network vnet peering show](/cli/azure/network/vnet/peering) 确认 *myVirtualNetwork1-myVirtualNetwork2* 对等互连的对等互连状态是否已更改为“已连接”**。
 
 ```azurecli-interactive
 az network vnet peering show \
@@ -118,7 +118,7 @@ az network vnet peering show \
   --query peeringState
 ```
 
-在两个虚拟网络中的对等互连的 **peeringState** 为“已连接”之前，在一个虚拟网络中的资源无法与另一个虚拟网络中的资源通信。 
+在连接两个虚拟网络中的对**等互连之前**，一个虚拟网络中的资源无法与另一个虚拟网络中的资源*进行通信*。 
 
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
@@ -126,7 +126,7 @@ az network vnet peering show \
 
 ### <a name="create-the-first-vm"></a>创建第一个 VM
 
-使用 [az vm create](/cli/azure/vm) 创建 VM。 以下示例在 *myVirtualNetwork1* 虚拟网络中创建一个名为 *myVm1* 的 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 `--no-wait` 选项会在后台创建 VM，因此可继续执行下一步。
+创建具有[az vm 的](/cli/azure/vm)VM。 以下示例在 *myVirtualNetwork1* 虚拟网络中创建一个名为 *myVm1* 的 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。 `--no-wait` 选项会在后台创建 VM，因此可继续执行下一步。
 
 ```azurecli-interactive
 az vm create \
@@ -143,7 +143,7 @@ az vm create \
 
 在 *myVirtualNetwork2* 虚拟网络中创建 VM。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVm2 \
@@ -155,7 +155,7 @@ az vm create \
 
 创建 VM 需要几分钟时间。 创建 VM 之后，Azure CLI 将显示类似于以下示例的信息： 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm2",
@@ -168,19 +168,19 @@ az vm create \
 }
 ```
 
-记下 publicIpAddress。 在后面的步骤中会使用此地址通过 Internet 访问 VM。
+记下 publicIpAddress。**** 在后面的步骤中会使用此地址通过 Internet 访问 VM。
 
 ## <a name="communicate-between-vms"></a>VM 之间进行通信
 
 使用以下命令来与 *myVm2* VM 建立 SSH 会话。 将 `<publicIpAddress>` 替换为 VM 的公共 IP 地址。 在前一示例中，公共 IP 地址为 *13.90.242.231*。
 
-```bash 
+```bash
 ssh <publicIpAddress>
 ```
 
 对 *myVirtualNetwork1* 中的 VM 执行 Ping 操作。
 
-```bash 
+```bash
 ping 10.0.0.4 -c 4
 ```
 
@@ -192,7 +192,7 @@ ping 10.0.0.4 -c 4
 
 如果不再需要资源组及其包含的所有资源，可以使用 [az group delete](/cli/azure/group) 将其删除。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 

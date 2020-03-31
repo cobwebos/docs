@@ -1,5 +1,5 @@
 ---
-title: 为给定 API 选择权限 |Microsoft Docs
+title: 选择给定 API 的权限 |微软文档
 description: 了解要开发的应用程序的客户端和资源应用程序如何使用权限请求
 services: active-directory
 author: rwike77
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: cf28677e143b66a16b69c4363602537073f0be5a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76704232"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>如何为给定 API 选择权限 

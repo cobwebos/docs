@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 45478c8e4f5003ff41eb8b486d67caa452739cd4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8287250df4e278d4904e31121ed7d2df208e1c9
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384740"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238854"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>快速入门：创建首个必应自定义搜索实例
 
@@ -25,7 +25,7 @@ ms.locfileid: "75384740"
 
 ![必应自定义搜索门户的图片](media/blockedCustomSrch.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 

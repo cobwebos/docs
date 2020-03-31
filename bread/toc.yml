@@ -270,9 +270,6 @@
     - name: 缓存
       tocHref: /azure/cache/
       topicHref: /azure/cache/
-    - name: CDN
-      tocHref: /azure/cdn/
-      topicHref: /azure/cdn/
     - name: 云服务
       tocHref: /azure/cloud-services/
       topicHref: /azure/cloud-services/
@@ -426,9 +423,6 @@
         - name: Kubernetes
           tocHref: /azure/container-service/kubernetes/
           topicHref: /azure/container-service/kubernetes/
-    - name: Bastion
-      tocHref: /azure/bastion/
-      topicHref: /azure/bastion/
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
@@ -460,27 +454,6 @@
     - name: 开发测试实验室
       tocHref: /azure/devtest-lab/
       topicHref: /azure/devtest-lab/
-    - name: DNS
-      tocHref: /azure/dns/
-      topicHref: /azure/dns/
-    - name: 事件网格
-      tocHref: /azure/event-grid/
-      topicHref: /azure/event-grid
-    - name: 事件中心
-      tocHref: /azure/event-hubs/
-      topicHref: /azure/event-hubs/
-    - name: ExpressRoute
-      tocHref: /azure/expressroute/
-      topicHref: /azure/expressroute/
-    - name: 防火墙
-      tocHref: /azure/firewall/
-      topicHref: /azure/firewall/
-    - name: 防火墙管理器
-      tocHref: /azure/firewall-manager
-      topicHref: /azure/firewall-manager
-    - name: Front Door 服务
-      tocHref: /azure/frontdoor/
-      topicHref: /azure/frontdoor/
     - name: FXT Edge Filer
       tocHref: /azure/fxt-edge-filer/
       topicHref: /azure/fxt-edge-filer/
@@ -556,9 +529,6 @@
     - name: 实验室服务
       tocHref: /azure/lab-services/
       topicHref: /azure/lab-services/
-    - name: 负载均衡器
-      tocHref: /azure/load-balancer/
-      topicHref: /azure/load-balancer/
     - name: 逻辑应用
       tocHref: /azure/logic-apps/
       topicHref: /azure/logic-apps/
@@ -597,6 +567,22 @@
         - name: 视频索引器
           tocHref: /azure/media-services/video-indexer/
           topicHref: /azure/media-services/video-indexer/
+    - name: 消息传送服务
+      tocHref: /azure/messaging-services/
+      topicHref: /azure/messaging-services/
+      items:
+        - name: 事件网格
+          tocHref: /azure/event-grid/
+          topicHref: /azure/event-grid
+        - name: 事件中心
+          tocHref: /azure/event-hubs/
+          topicHref: /azure/event-hubs/
+        - name: 服务总线消息传送
+          tocHref: /azure/service-bus-messaging/
+          topicHref: /azure/service-bus-messaging/
+        - name: Service Bus 中继
+          tocHref: /azure/service-bus-relay/
+          topicHref: /azure/service-bus-relay/
     - name: 迁移
       tocHref: /azure/migrate/
       topicHref: /azure/migrate/
@@ -616,12 +602,67 @@
     - name: MySQL
       tocHref: /azure/mysql/
       topicHref: /azure/mysql/
-    - name: 网络观察程序
-      tocHref: /azure/network-watcher/
-      topicHref: /azure/network-watcher/
     - name: 网络
       tocHref: /azure/networking/
-      topicHref: /azure/networking/networking-overview
+      topicHref: /azure/networking/
+      items:
+        - name: 应用程序网关
+          tocHref: /azure/application-gateway/
+          topicHref: /azure/application-gateway/
+        - name: Bastion
+          tocHref: /azure/bastion/
+          topicHref: /azure/bastion/
+        - name: CDN
+          tocHref: /azure/cdn/
+          topicHref: /azure/cdn/
+        - name: DNS
+          tocHref: /azure/dns/
+          topicHref: /azure/dns/
+        - name: ExpressRoute
+          tocHref: /azure/expressroute/
+          topicHref: /azure/expressroute/
+        - name: 防火墙
+          tocHref: /azure/firewall/
+          topicHref: /azure/firewall/
+        - name: 防火墙管理器
+          tocHref: /azure/firewall-manager/
+          topicHref: /azure/firewall-manager/
+        - name: Front Door 服务
+          tocHref: /azure/frontdoor/
+          topicHref: /azure/frontdoor/
+        - name: Internet 分析器
+          tocHref: /azure/internet-analyzer/
+          topicHref: /azure/internet-analyzer/
+        - name: Internet 对等互连
+          tocHref: /azure/internet-peering/
+          topicHref: /azure/internet-peering/
+        - name: 负载均衡器
+          tocHref: /azure/load-balancer/
+          topicHref: /azure/load-balancer/
+        - name: 网络观察程序
+          tocHref: /azure/network-watcher/
+          topicHref: /azure/network-watcher/
+        - name: 专用链接
+          tocHref: /azure/private-link/
+          topicHref: /azure/private-link/
+        - name: 对等互连服务
+          tocHref: /azure/peering-service/
+          topicHref: /azure/peering-service/
+        - name: 流量管理器
+          tocHref: /azure/traffic-manager/
+          topicHref: /azure/traffic-manager/
+        - name: 虚拟网络
+          tocHref: /azure/virtual-network/
+          topicHref: /azure/virtual-network/
+        - name: 虚拟 WAN
+          tocHref: /azure/virtual-wan/
+          topicHref: /azure/virtual-wan/
+        - name: VPN 网关
+          tocHref: /azure/vpn-gateway/
+          topicHref: /azure/vpn-gateway/
+        - name: Web 应用程序防火墙
+          tocHref: /azure/web-application-firewall/
+          topicHref: /azure/web-application-firewall/
     - name: 笔记本
       tocHref: /azure/notebooks/
       topicHref: /azure/notebooks/azure-notebooks-overview
@@ -683,15 +724,6 @@
     - name: Azure Sentinel
       tocHref: /azure/sentinel/
       topicHref: /azure/sentinel/
-    - name: 服务总线
-      tocHref: /azure/service-bus/
-      topicHref: /azure/service-bus/
-    - name: 服务总线消息传送
-      tocHref: /azure/service-bus-messaging/
-      topicHref: /azure/service-bus-messaging/
-    - name: Service Bus 中继
-      tocHref: /azure/service-bus-relay/
-      topicHref: /azure/service-bus-relay/
     - name: Service Fabric
       tocHref: /azure/service-fabric/
       topicHref: /azure/service-fabric/
@@ -705,8 +737,8 @@
       tocHref: /azure/site-reliability-engineering/
       topicHref: /azure/site-reliability-engineering/
     - name: Synapse Analytics
-      tocHref: /azure/sql-data-warehouse/
-      topicHref: /azure/sql-data-warehouse/
+      tocHref: /azure/synapse-analytics/
+      topicHref: /azure/synapse-analytics/
     - name: SQL 数据库
       tocHref: /azure/sql-database/
       topicHref: /azure/sql-database/
@@ -741,12 +773,6 @@
     - name: 流分析
       tocHref: /azure/stream-analytics/
       topicHref: /azure/stream-analytics/
-    - name: Internet 分析器
-      tocHref: /azure/internet-analyzer/
-      topicHref: /azure/internet-analyzer/
-    - name: 流量管理器
-      tocHref: /azure/traffic-manager/
-      topicHref: /azure/traffic-manager/
     - name: 虚拟机规模集
       tocHref: /azure/virtual-machine-scale-sets/
       topicHref: /azure/virtual-machine-scale-sets/
@@ -787,18 +813,6 @@
             - name: SQL VM
               tocHref: /azure/virtual-machines/windows/sql
               topicHref: /azure/virtual-machines/windows/sql
-    - name: 虚拟网络
-      tocHref: /azure/virtual-network/
-      topicHref: /azure/virtual-network/
-    - name: 对等互连服务
-      tocHref: /azure/peering-service/
-      topicHref: /azure/peering-service/
-    - name: VPN 网关
-      tocHref: /azure/vpn-gateway/
-      topicHref: /azure/vpn-gateway/
-    - name: Web 应用程序防火墙
-      tocHref: /azure/web-application-firewall/
-      topicHref: /azure/web-application-firewall/
     - name: Windows 虚拟桌面
       tocHref: /azure/virtual-desktop/
       topicHref: /azure/virtual-desktop/

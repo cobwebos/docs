@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: cbfc122913978b1e0828917e901422942928644d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a601b309d18e489f6b631cb26e5f3e13ef790b42
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974438"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238831"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-python"></a>快速入门：使用 Python 调用必应自定义搜索终结点
 
-按照此快速入门开始从必应自定义搜索实例请求搜索结果。 虽然此应用程序是使用 Python 编写的，但必应自定义搜索 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingCustomSearchv7.py) 上获得。
+参考本快速入门开始从必应自定义搜索实例请求搜索结果。 虽然此应用程序是使用 Python 编写的，但必应自定义搜索 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingCustomSearchv7.py) 上获得。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,7 +31,7 @@ ms.locfileid: "74974438"
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 在最喜爱的 IDE 或编辑器中创建新的 Python 文件，然后添加以下 import 语句。 为订阅密钥、自定义配置 ID 和搜索词创建变量。 
+1. 在你喜欢使用的 IDE 或编辑器中创建新的 Python 文件，然后添加以下 import 语句。 为订阅密钥、自定义配置 ID 和搜索词创建变量。 
 
     ```python
     import json

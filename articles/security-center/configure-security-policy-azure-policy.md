@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77430935"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>使用 REST API 在 Azure 策略中配置安全策略
@@ -25,19 +25,19 @@ Azure Policy 中的重要概念：
 
 - **计划**是策略定义（规则）的集合 
 
-- **分配**是对特定范围（管理组、订阅等）的计划或策略的应用 
+- **分配**是将计划或策略应用于特定的范围（管理组、订阅等） 
 
-安全中心有一项内置计划，它包括中心内的所有安全策略。 若要评估 Azure 资源上的安全中心策略，你应在要评估的管理组或订阅上创建分配。
+安全中心有一项内置计划，它包括中心内的所有安全策略。 要评估安全中心对 Azure 资源的策略，应在管理组或要评估的订阅上创建分配。
 
-内置计划默认启用所有安全中心策略。 你可以选择禁用内置计划中的某些策略。 例如，若要应用除**web 应用程序防火墙**外的所有安全中心策略，请将策略的 effect 参数的值更改为 "**已禁用**"。 
+内置计划默认启用所有安全中心策略。 您可以选择从内置计划中禁用某些策略。 例如，要应用除**Web 应用程序防火墙**之外的所有安全中心策略，请将策略的效果参数的值更改为 **"已禁用**"。 
 
 ## <a name="api-examples"></a>API 示例
 
 在下面的示例中，替换以下三个变量：
 
-- **{scope}** 输入要对其应用策略的管理组或订阅的名称。
-- **{policyAssignmentName}** ，用于输入[相关策略分配的名称](#policy-names)。
-- **{name}** ，用于输入你的名字或批准策略更改的管理员的名字。
+- **{scope}** 输入要向其应用策略的管理组或订阅的名称。
+- **{policyAssignmentName}**，用于输入[相关策略分配的名称](#policy-names)。
+- **{name}**，用于输入你的名字或批准策略更改的管理员的名字。
 
 本示例演示如何对订阅或管理组分配内置的安全中心计划
  
@@ -115,7 +115,7 @@ Azure Policy 中的重要概念：
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
  ```
 
-## 策略名引用 <a name="policy-names"></a>
+## <a name="policy-names-reference"></a>策略名引用 <a name="policy-names"></a>
 
 |安全中心内的策略名|Azure Policy 中显示的策略名 |策略效果参数名|
 |----|----|----|
@@ -123,7 +123,7 @@ Azure Policy 中的重要概念：
 |SQL 审核 |监视 Azure 安全中心内未审核的 SQL 数据库 |sqlAuditingMonitoringEffect|
 |系统更新 |监视 Azure 安全中心内系统更新的缺失情况 |systemUpdatesMonitoringEffect|
 |存储加密 |审核存储帐户是否缺少 blob 加密 |storageEncryptionMonitoringEffect|
-|JIT 网络访问 |在 Azure 安全中心监视可能的网络实时（JIT）访问 |jitNetworkAccessMonitoringEffect |
+|JIT 网络访问 |监视 Azure 安全中心中可能的实时网络 （JIT） 访问 |jitNetworkAccessMonitoringEffect |
 |自适应应用程序控制 |监视 Azure 安全中心内列入允许列表的可能的应用 |adaptiveApplicationControlsMonitoringEffect|
 |网络安全组 |监视 Azure 安全中心内规则较宽松的网络访问 |networkSecurityGroupsMonitoringEffect| 
 |安全配置 |监视 Azure 安全中心的 OS 漏洞 |systemConfigurationsMonitoringEffect| 

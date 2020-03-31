@@ -4,10 +4,10 @@ description: 在本教程中，将使用 Node.js 生成集成了语言理解 (LU
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.openlocfilehash: 3ce12176957412a5599ced8b043f553969194efb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987828"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>教程：通过 Node.js 使用启用了语言理解的 Web 应用机器人
@@ -22,7 +22,7 @@ ms.locfileid: "76987828"
 > * 在计算机本地启动机器人和模拟器
 > * 在机器人中查看话语结果
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [机器人模拟器](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)

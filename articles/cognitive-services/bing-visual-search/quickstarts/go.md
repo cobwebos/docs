@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 836012c11d16810172c27fb948e1185f99f7de83
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446643"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>快速入门：使用必应视觉搜索 REST API 和 Go 获取图像见解
 
 本快速入门使用 Go 编程语言调用必应视觉搜索 API 并显示结果。 POST 请求可将图像上传到 API 终结点。 结果包含 URL 以及与已上传图像类似的图像的相关描述信息。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 安装 [Go 二进制文件](https://golang.org/dl/)。
 * go-spew 代码深度美化器用于显示结果。 可以使用 `$ go get -u https://github.com/davecgh/go-spew` 命令安装 go-spew。

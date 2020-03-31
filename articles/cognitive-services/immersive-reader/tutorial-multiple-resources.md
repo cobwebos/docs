@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
 ms.openlocfilehash: 3912d55b13f3977818e8d898efa651ffeb1a798a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76046473"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>教程：集成多个沉浸式阅读器资源
@@ -26,7 +26,7 @@ ms.locfileid: "76046473"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 按照[快速入门](./quickstart-nodejs.md)操作，创建一个使用 NodeJS 来启动沉浸式阅读器的 Web 应用。 在该快速入门中，我们配置单个沉浸式阅读器资源。 在本教程中，我们将在其基础上进行构建。
 

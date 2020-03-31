@@ -1,19 +1,18 @@
 ---
-title: 虚拟机产品/服务的定价 |Azure Marketplace
+title: 虚拟机产品/服务定价 |Azure 应用商店
 description: 说明指定虚拟机套餐定价的三种方法。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b96dcfa6a140d5c16208fd8183003a7462b1aa56
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827337"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280433"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>虚拟机套餐的定价
 ==================================
@@ -24,7 +23,7 @@ ms.locfileid: "73827337"
 <a name="customized-core-pricing"></a>自定义核心定价
 -----------------------
 
-定价针对每个区域和核心组合而定。 销售列表中的每个区域都必须在定义的 **virtualMachinePricing**/**regionPrices** 节中指定。  在请求中对每个[区域](#regions)使用正确的货币代码。  以下示例演示了这些要求：
+定价针对每个区域和核心组合而定。 销售列表中的每个区域都必须在定义的**虚拟机定价**/**区域价格**部分中指定。  在请求中对每个[区域](#regions)使用正确的货币代码。  以下示例演示了这些要求：
 
 ``` json
     "virtualMachinePricing": 
@@ -101,10 +100,10 @@ ms.locfileid: "73827337"
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>7/2/2019 上增加了新的核心大小
+<a name="new-core-sizes-added-on-722019"></a>2019 年 7 月 2 日新增的核心尺寸
 ---------------------------
 
-VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价格（基于内核数）通知。  新价格适用于核心大小10、44、48、60、120、208和416。  对于现有 VM，将根据当前价格自动计算这些核心大小的新价格。  发布者截至2019年8月1日，以查看其他价格并进行任何所需的更改。  在此日期之后，如果发布者尚未重新发布，则这些新的核心大小的自动计算价格将生效。
+VM 发布商于 2019 年 7 月 2 日收到新 Azure 虚拟机大小（基于内核数）新价格的通知。  新价格适用于核心尺寸 10、44、48、60、120、208 和 416。  对于现有 VM，这些内核的大小可根据当前价格自动计算新的价格。  出版商必须到 2019 年 8 月 1 日才能查看附加价格并进行任何所需的更改。  在此日期之后，如果发布者尚未重新发布，则这些新内核大小的自动计算价格将生效。
 
 
 <a name="regions"></a>区域
@@ -112,7 +111,7 @@ VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价�
 
 下表显示了可以为自定义核心定价指定的不同区域及其对应的货币代码。
 
-| **区域** | **名称**             | **货币代码** |
+| **地区** | **名称**             | **货币代码** |
 |------------|----------------------|-------------------|
 | DZ         | 阿尔及利亚              | DZD               |
 | AR         | 阿根廷            | ARS               |
@@ -123,7 +122,7 @@ VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价�
 | BE         | 比利时              | EUR               |
 | BR         | 巴西               | USD               |
 | BG         | 保加利亚             | BGN               |
-| CA         | 加拿大               | CAD               |
+| CA         | Canada               | CAD               |
 | CL         | 智利                | CLP               |
 | CO         | 哥伦比亚             | COP               |
 | CR         | 哥斯达黎加           | CRC               |
@@ -168,7 +167,7 @@ VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价�
 | NL         | 荷兰          | EUR               |
 | NZ         | 新西兰          | NZD               |
 | NG         | 尼日利亚              | NGN               |
-| 否         | 挪威               | NOK               |
+| 是         | 挪威               | NOK               |
 | OM         | 阿曼                 | OMR               |
 | PK         | 巴基斯坦             | PKR               |
 | PA         | 巴拿马               | USD               |
@@ -191,15 +190,15 @@ VM 发布者已在2019年7月2日向新的 Azure 虚拟机大小增加了新价�
 | LK         | 斯里兰卡            | USD               |
 | SE         | 瑞典               | SEK               |
 | CH         | 瑞士          | CHF               |
-| TW         | 台湾               | TWD               |
+| TW         | 中国台湾               | TWD               |
 | TH         | 泰国             | THB               |
 | TT         | 特立尼达和多巴哥  | TTD               |
 | TN         | 突尼斯              | TND               |
 | TR         | 土耳其               | TRY               |
 | UA         | 乌克兰              | UAH               |
 | AE         | 阿拉伯联合酋长国 | EUR               |
-| GB         | 英国       | GBP               |
-| 美国         | 美国        | USD               |
+| GB         | United Kingdom       | GBP               |
+| 美国         | United States        | USD               |
 | UY         | 乌拉圭              | UYU               |
 | VE         | 委内瑞拉            | USD               |
 |  |  |  |

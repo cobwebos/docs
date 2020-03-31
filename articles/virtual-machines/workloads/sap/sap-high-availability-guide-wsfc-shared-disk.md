@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中使用共享磁盘群集 SAP ASCS/SCS 实例Microsoft Docs
+title: 使用 Azure 中的共享磁盘在 WSFC 上群集 SAP ASCS/SCS 实例 |微软文档
 description: 了解如何使用群集共享磁盘在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8156f8706828afae30889b3250cf0b26252bf394
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598470"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -191,7 +191,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 故障转移群集是一组 1+n 个独立服务器（节点），这些服务器相互配合，共同提高应用程序和服务的可用性。 如果发生节点故障，Windows Server 故障转移群集会计算可能发生的故障数并保留正常运行的群集以提供应用程序和服务。 可从不同的仲裁模式中选择，以实现故障转移群集。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 在开始本文中的任务之前，请先查看以下文章：
 
 * [适用于 SAP NetWeaver 的 Azure 虚拟机高可用性体系结构和方案][sap-high-availability-architecture-scenarios]
@@ -205,13 +205,13 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 Azure 云平台不提供配置虚拟 IP 地址（例如浮动 IP 地址）的选项。 需要一个替代解决方案来设置虚拟 IP，以便连接到云中的群集资源。 
 
-Azure 负载均衡器服务提供适用于 Azure 的内部负载均衡器。 借助内部负载均衡器，客户端通过群集虚拟 IP 地址访问群集。 
+Azure 负载均衡器服务提供适用于 Azure 的内部负载均衡器**。 借助内部负载均衡器，客户端通过群集虚拟 IP 地址访问群集。 
 
 在包含群集节点的资源组中部署内部负载均衡器。 然后，使用内部负载均衡器的探测端口配置所有必要的端口转发规则。 客户端可以通过虚拟主机名连接。 DNS 服务器解析群集 IP 地址，内部负载均衡器处理向活动群集节点的端口转发。
 
 ![图 1：Azure 中未使用共享磁盘的 Windows 故障转移群集配置][sap-ha-guide-figure-1001]
 
-_图 1：Azure 中未使用共享磁盘的 Windows Server 故障转移群集配置_
+_图 1：Azure 中未使用共享磁盘的 Windows Server 故障转移群集配置_****
 
 ### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>使用群集共享磁盘的 SAP ASCS/SCS HA
 在 Windows 中，SAP ASCS/SCS 实例包含 SAP 中心服务、SAP 消息服务器、排队服务器进程和 SAP 全局主机文件。 SAP 全局主机文件存储整个 SAP 系统的中心文件。
@@ -219,7 +219,7 @@ _图 1：Azure 中未使用共享磁盘的 Windows Server 故障转移群集配�
 SAP ASCS/SCS 实例具有以下组件：
 
 * SAP 中心服务：
-    * 两个进程（一条消息和排队服务器），以及一个 \<ASCS/SCS 虚拟主机名 >，用于访问这两个进程。
+    * 两个进程，一个消息和排队服务器，以及\<一个 ASCS/SCS 虚拟主机名>，用于访问这两个进程。
     * 文件结构：S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<instance number\>
 
 
@@ -227,29 +227,29 @@ SAP ASCS/SCS 实例具有以下组件：
   * 文件结构：S:\usr\sap\\&lt;SID&gt;\SYS\..
   * sapmnt 文件共享，可通过使用以下 UNC 路径实现对这些全局 S:\usr\sap\\&lt;SID&gt;\SYS\..文件的访问：
 
-    \\\\< ASCS/SCS 虚拟主机名\>\sapmnt\\&lt;SID&gt;\SYS\..。
+    \\\\<ASCS/SCS 虚拟\>主机名 \sapmnt\\&lt;SID&gt;_SYS\...
 
 
 ![图 2：SAP ASCS/SCS 实例的进程、文件结构和全局主机 sapmnt 文件共享][sap-ha-guide-figure-8001]
 
-_图 2：SAP ASCS/SCS 实例的进程、文件结构和全局主机 sapmnt 文件共享_
+_**图 2：** SAP ASCS/SCS 实例的进程、文件结构和全局主机文件共享_
 
-在高可用性设置中，可群集化 SAP ASCS/SCS 实例。 我们使用群集共享磁盘（在示例中为驱动器 S）放置 SAP ASCS/SCS 文件和 SAP 全局主机文件。
+在高可用性设置中，可群集化 SAP ASCS/SCS 实例。 我们使用群集共享磁盘（在示例中为驱动器 S）放置 SAP ASCS/SCS 文件和 SAP 全局主机文件**。
 
 ![图 3：使用共享磁盘的 SAP ASCS/SCS HA 体系结构][sap-ha-guide-figure-8002]
 
-_图 3：使用共享磁盘的 SAP ASCS/SCS HA 体系结构_
+_**图 3：** 带共享磁盘的 SAP ASCS/SCS HA 架构_
 
 > [!IMPORTANT]
 > 由于这两个组件在相同的 SAP ASCS/SCS 实例下运行，因此：
->* 同一 \<ASCS/SCS 虚拟主机名 > 用于通过 sapmnt 文件共享访问 SAP 消息和排队服务器进程，以及 SAP 全局主机文件。
+>* 相同的\<ASCS/SCS 虚拟主机名>用于访问 SAP 消息和排队服务器进程，以及通过 sapmnt 文件共享对 SAP 全局主机文件进行排队。
 >* 它们共用同一个群集共享磁盘驱动器 S。
 >
 
 
 ![图 4：使用共享磁盘的 SAP ASCS/SCS HA 体系结构][sap-ha-guide-figure-8003]
 
-_图 4：使用共享磁盘的 SAP ASCS/SCS HA 体系结构_
+_图 4：使用共享磁盘的 SAP ASCS/SCS HA 体系结构_****
 
 ### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Azure 中使用 SIOS DataKeeper 的共享磁盘
 
@@ -267,7 +267,7 @@ _图 4：使用共享磁盘的 SAP ASCS/SCS HA 体系结构_
 
 ![图 5：Azure 中使用 SIOS DataKeeper 的 Windows Server 故障转移群集配置][sap-ha-guide-figure-1002]
 
-_图 5：Azure 中使用 SIOS DataKeeper 的 Windows 故障转移群集配置_
+_图 5：Azure 中使用 SIOS DataKeeper 的 Windows 故障转移群集配置_****
 
 > [!NOTE]
 > 对于某些 DBMS 产品（如 SQL Server），无需共享磁盘来实现高可用性。 SQL Server AlwaysOn 将 DBMS 数据和日志从一个群集节点的本地磁盘复制到另一个群集节点的本地磁盘。 在此情况下，Windows 群集配置不需要共享磁盘。
@@ -275,6 +275,6 @@ _图 5：Azure 中使用 SIOS DataKeeper 的 Windows 故障转移群集配置_
 
 ## <a name="next-steps"></a>后续步骤
 
-* [为 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
+* [针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* [在 SAP ASCS/SCS 实例的 Windows 故障转移群集和共享磁盘上安装 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]
+* [对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘安装 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]

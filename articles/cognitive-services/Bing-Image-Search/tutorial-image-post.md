@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
 ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75383869"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>教程：使用必应图像搜索 API 和 C# 提取图像详细信息
@@ -34,7 +34,7 @@ ms.locfileid: "75383869"
 
 该示例的源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingGetSimilarImages.cs) 上获得。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 任何版本的 [Visual Studio 2017 或更高版本](https://visualstudio.microsoft.com/downloads/)。
 

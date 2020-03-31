@@ -1,5 +1,5 @@
 ---
-title: 规划从经典部署迁移到 Azure 资源管理器
+title: 规划从经典资源管理器迁移到 Azure 资源管理器
 description: 规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 services: virtual-machines-linux
 author: tanmaygore
@@ -9,17 +9,17 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0b9c5b17b993afdd64cd2cbd8a15cbd6dd53f5ca
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: ff829e9ffbd6d6ae0766998e62634ac873afc748
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944667"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066658"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 
 > [!IMPORTANT]
-> 目前，大约90% 的 IaaS Vm 正在使用[Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)。 截至2020年2月28日，经典 Vm 已弃用，并将在2023年3月1日完全停用。 [了解]( https://aka.ms/classicvmretirement)有关此过时的详细信息以及[它对你有何影响](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
+> 今天，大约 90% 的 IaaS VM 正在使用[Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)。 截至 2020 年 2 月 28 日，经典 VM 已被弃用，将于 2023 年 3 月 1 日完全停用。 [详细了解]( https://aka.ms/classicvmretirement)此弃用[及其如何影响您](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
 
 尽管 Azure Resource Manager 提供了大量令人惊叹的功能，但规划好迁移过程以确保一切顺利仍至关重要。 花时间进行规划可确保执行迁移活动时不会遇到问题。
 
@@ -53,7 +53,7 @@ ms.locfileid: "78944667"
 成功迁移的客户制定了详细计划，在此期间讨论、记录并控制了上述问题。  确保与发起人和利益干系人就迁移计划进行广泛交流。  使用迁移选项的知识武装自身，强烈建议浏览下面的迁移文档集。
 
 * [平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移概述](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [有关平台支持的从经典部署模型到 Azure 资源管理器部署模型的迁移的技术深入探讨](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [有关平台支持的从经典部署模型到 Azure 资源管理器的迁移的技术深入探讨](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [规划从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](../windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [使用 CLI 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -86,7 +86,7 @@ ms.locfileid: "78944667"
 
 下面是在许多大型迁移中发现的问题。 这个列表并不详尽，有关详细信息，请参阅[不支持的功能和配置](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unsupported-features-and-configurations)。 不一定会遇到这些技术问题，但如果遇到，在尝试迁移前先解决这些问题可确保体验更流畅。
 
-- **执行验证/准备/中止试运行** - 这可能是确保经典部署模型成功迁移到 Azure 资源管理器部署模型最重要的步骤。 迁移 API 包括三个主要步骤：验证、准备和提交。 验证将读取经典环境的状态并返回所有问题的结果。 但是，由于某些问题可能存在于 Azure 资源管理器堆栈中，因此验证并不会捕获所有内容。 作为迁移过程下一步的“准备”有助于公开这些问题。 “准备”会将元数据从经典部署模型移动到 Azure 资源管理器部署模型，但不会提交移动，且不会删除或更改经典部署模型端的任何内容。 试运行涉及准备迁移，并中止（**而不是提交**）迁移准备。 验证/准备/中止试运行的目标是查看 Azure 资源管理器堆栈中的所有元数据，对其进行检查（以编程方式或在门户中），并验证所有内容是否正确迁移以及解决技术问题。  它还可让你对迁移持续时间有一些认识，以便可以相应地规划停机时间。  验证/准备/中止操作不会导致任何用户停机时间：因此，它对应用程序使用不具有破坏性。
+- **执行验证/准备/中止试运行** - 这可能是确保经典部署模型成功迁移到 Azure 资源管理器部署模型最重要的步骤。 迁移 API 包括三个主要步骤：验证、准备和提交。 验证将读取经典环境的状态并返回所有问题的结果。 但是，由于某些问题可能存在于 Azure 资源管理器堆栈中，因此验证并不会捕获所有内容。 作为迁移过程下一步的“准备”有助于公开这些问题。 “准备”会将元数据从经典部署模型移动到 Azure 资源管理器部署模型，但不会提交移动，且不会删除或更改经典部署模型端的任何内容。 试运行涉及准备迁移，并中止（**而不是提交**）迁移准备。 验证/准备/中止试运行的目标是查看 Azure 资源管理器堆栈中的所有元数据，对其进行检查（以编程方式或在门户中**），并验证所有内容是否正确迁移以及解决技术问题。  它还可让你对迁移持续时间有一些认识，以便可以相应地规划停机时间。  验证/准备/中止操作不会导致任何用户停机时间：因此，它对应用程序使用不具有破坏性。
   - 以下各项需要在试运行前解决，但如果错过了，试运行测试也会安全刷新这些准备步骤。 企业迁移期间，我们发现试运行是确保迁移准备就绪的安全且重要的方法。
   - 准备运行期间，将对整个虚拟网络锁定控制平面（Azure 管理操作），因此在验证/准备/中止期间无法对 VM 元数据进行任何更改。  但在其他方面，所有应用程序功能（RD、VM 使用等）均不受影响。  VM 用户不知道正在执行的是试运行。
 
@@ -106,7 +106,7 @@ ms.locfileid: "78944667"
 
 - **Web/辅助角色部署** - 包含 Web 和辅助角色的云服务无法迁移到 Azure 资源管理器。 必须先从虚拟网络中删除 Web/辅助角色，才能开始迁移。  典型的解决方案只是将 Web/辅助角色实例移到单独的经典虚拟网络中，该网络也链接到了 ExpressRoute 回路，或者将代码迁移到较新的 PaaS 应用服务（此讨论已超出本文范围）中。 在前一个重新部署用例中，创建了新的经典虚拟网络，将该 Web/辅助角色移动/重新部署到该新虚拟网络，然后从正在删除的虚拟网络中删除这些部署。 无需更改代码。 新的[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)功能可以用来使包含 Web/辅助角色的经典虚拟网络和同一 Azure 区域中的其他虚拟网络（如正在迁移的虚拟网络）通力合作（**虚拟网络迁移完成后，对等虚拟网络无法迁移**），从而提供没有性能损失和延迟/带宽损失的相同功能。 鉴于增加了[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)，现可轻易缓解 Web/辅助角色部署，且不会阻止到 Azure 资源管理器的迁移。
 
-- **Azure 资源管理器配额** - 对于经典部署模型和 Azure 资源管理器部署模型，Azure 区域都有单独的配额/限制。 即使在不使用新硬件的迁移方案中 *（我们正在将现有的 VM 从经典部署模型切换到 Azure 资源管理器部署模型）* ，Azure 资源管理器配额仍需处于容量充足的位置，才能开始迁移。 下面列出了我们已知的导致问题的主要限制。  开具配额支持票证来提高限制。
+- **Azure 资源管理器配额** - 对于经典部署模型和 Azure 资源管理器部署模型，Azure 区域都有单独的配额/限制。 即使在不使用新硬件的迁移方案中 *（我们正在将现有的 VM 从经典部署模型切换到 Azure 资源管理器部署模型）*，Azure 资源管理器配额仍需处于容量充足的位置，才能开始迁移。 下面列出了我们已知的导致问题的主要限制。  开具配额支持票证来提高限制。
 
     > [!NOTE]
     > 需要在与要迁移的当前环境相同的区域中提高这些限制。
@@ -122,31 +122,31 @@ ms.locfileid: "78944667"
 
     可以通过最新版 Azure CLI 使用以下命令查看当前的 Azure 资源管理器配额。
 
-    **计算** *（核心数、可用性集）*
+    **计算（核心数、可用性集数）** **
 
-    ```bash
+    ```azurecli
     az vm list-usage -l <azure-region> -o jsonc
     ```
 
-    **网络** *（虚拟网络、静态公共 Ip、公共 Ip、网络安全组、网络接口、负载均衡器和路由表）*
+    **网络** *（虚拟网络、静态公共 IP、公共 IP、网络安全组、网络接口、负载均衡器和路由表）*
 
-    ```bash
+    ```azurecli
     az network list-usages -l <azure-region> -o jsonc
     ```
 
     **存储** *（存储帐户）*
 
-    ```bash
+    ```azurecli
     az storage account show-usage
     ```
 
 - **Azure 资源管理器 API 限制** - 如果有足够大的环境（如 在 VNET 中有 > 400 VM），则可能达到 Azure 资源管理器中的写入的默认 API 限制（当前为 **1200 次写入/小时**）。 开始迁移前，应开具支持票证为订阅提高此限制。
 
-- **预配超时 VM 状态** - 如果任何 VM 具有状态“预配超时”，则需要在迁移前解决此问题。 执行此操作的唯一方法是通过取消预配/重新预配 VM（删除、保留磁盘并重新创建 VM）来使用停机时间。
+- **预配超时 VM 状态** - 如果任何 VM 具有状态“预配超时”****，则需要在迁移前解决此问题。 执行此操作的唯一方法是通过取消预配/重新预配 VM（删除、保留磁盘并重新创建 VM）来使用停机时间。
 
-- **RoleStateUnknown VM 状态** - 如果迁移因“角色状态未知”错误消息暂停，请使用门户检查 VM 并确保其正常运行。 此错误通常数分钟后会自行消失（无需修正），通常属于虚拟机**启动**、**停止**、**重新启动**操作期间经常看到的过渡类型。 **建议做法：** 数分钟后尝试再次迁移。
+- **RoleStateUnknown VM 状态** - 如果迁移因“角色状态未知”**** 错误消息暂停，请使用门户检查 VM 并确保其正常运行。 此错误通常数分钟后会自行消失（无需修正），通常属于虚拟机**启动**、**停止**、**重新启动**操作期间经常看到的过渡类型。 **建议做法：** 数分钟后尝试再次迁移。
 
-- **Fabric 群集不存在** - 在某些情况下，由于各种原因，某些 VM 无法迁移。 已知情况之一是当 VM 创建于最近（过去一周左右），且碰巧获得尚未为 Azure 资源管理器工作负荷配备的 Azure 群集。  将收到一条错误消息，指出“Fabric 群集不存在”并且无法迁移 VM。 等待数天通常可解决此特殊问题，因为群集会很快启用 Azure 资源管理器。 但是，一个直接的解决方法是对 VM 执行 `stop-deallocate`，继续迁移，并在迁移后在 Azure 资源管理器中开始 VM 备份。
+- **Fabric 群集不存在** - 在某些情况下，由于各种原因，某些 VM 无法迁移。 已知情况之一是当 VM 创建于最近（过去一周左右），且碰巧获得尚未为 Azure 资源管理器工作负荷配备的 Azure 群集。  将收到一条错误消息，指出“Fabric 群集不存在”**** 并且无法迁移 VM。 等待数天通常可解决此特殊问题，因为群集会很快启用 Azure 资源管理器。 但是，一个直接的解决方法是对 VM 执行 `stop-deallocate`，继续迁移，并在迁移后在 Azure 资源管理器中开始 VM 备份。
 
 ### <a name="pitfalls-to-avoid"></a>需避免的错误
 
@@ -204,7 +204,7 @@ ms.locfileid: "78944667"
 ## <a name="next-steps"></a>后续步骤
 
 * [平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移概述](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [有关平台支持的从经典部署模型到 Azure 资源管理器部署模型的迁移的技术深入探讨](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [有关平台支持的从经典部署模型到 Azure 资源管理器的迁移的技术深入探讨](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [规划从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](../windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [用于帮助将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的社区工具](../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378528"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>教程：将 Power BI 与文本分析认知服务集成
@@ -30,7 +30,7 @@ Microsoft Power BI Desktop 是免费的应用程序，可让你连接、转换�
 > * 使用文本分析关键短语 API 从客户反馈中提取最重要的短语
 > * 从客户反馈创建词云
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop。 [免费下载](https://powerbi.microsoft.com/get-started/)。

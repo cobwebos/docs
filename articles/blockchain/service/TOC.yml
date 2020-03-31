@@ -19,8 +19,6 @@
           href: connect-metamask.md
         - name: 使用 Geth
           href: connect-geth.md
-        - name: 使用 Truffle
-          href: connect-truffle.md
 - name: 教程
   items:
     - name: 创建智能合同

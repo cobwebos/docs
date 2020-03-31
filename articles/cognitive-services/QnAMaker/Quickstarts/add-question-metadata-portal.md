@@ -1,6 +1,6 @@
 ---
 title: 快速入门：在 QnA Maker 门户中添加问题和回答
-description: 本快速入门介绍如何添加问题和回答集以及元数据，以便用户可以找到其问题的正确答案。
+description: 本快速入门介绍如何使用元数据添加问题和答案集，以便用户可以找到其问题的正确答案。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: 25c0fe549dfc850a53b06f79f348a87cba3b70a1
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77109929"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>快速入门：使用 QnA Maker 门户添加问题和回答
@@ -22,7 +22,7 @@ ms.locfileid: "77109929"
 
 <a name="qna-table"></a>
 
-|集|问题|回答|元数据|
+|设置|问题|Answer|元数据|
 |--|--|--|--|
 |#1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |#2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -33,7 +33,7 @@ ms.locfileid: "77109929"
 * 接收所有回答，但根据每个回答的元数据对回答进行后处理。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 完成[前一个快速入门](./create-publish-knowledge-base.md)
 

@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 01/29/2020
-  ms.openlocfilehash: 28cfe37f6058dbedb11fb6fe01d932cbb10cbd18
-  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.openlocfilehash: 957a942efd618003dd3ff3f9f76be72799770859
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/12/2020
-  ms.locfileid: "77162950"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80288285"
 landingContent:
 - title: 关于事件中心
   linkLists:
@@ -70,7 +70,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 创建启用了 Apache Kafka 的事件中心
-      url: event-hubs-create-kafka-enabled.md
+      url: event-hubs-create.md
     - text: 在事件中心镜像 Kafka 代理
       url: event-hubs-kafka-mirror-maker-tutorial.md
     - text: 将 Apache Spark 连接到事件中心
@@ -143,7 +143,7 @@ landingContent:
       url: event-hubs-ip-filtering.md
     - text: 使用虚拟网络服务终结点
       url: event-hubs-service-endpoints.md
+    - text: 使用专用终结点
+      url: private-link-service.md
     - text: 配置客户管理的密钥以加密静态数据
       url: configure-customer-managed-key.md
-    - text: 启用虚拟网络集成和防火墙
-      url: event-hubs-tutorial-virtual-networks-firewalls.md

@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68688178"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 基于 URL 对 Web 流量进行路由
@@ -37,13 +37,13 @@ ms.locfileid: "68688178"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 `az group create` 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组****。
 
 ```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-the-app-gateway-with-a-url-map"></a>使用 URL 映射创建应用网关
 
-使用 `az network application-gateway create` 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 应用程序网关分配给*myAGSubnet*和*myAGPublicIPAddress*。
+使用 `az network application-gateway create` 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给 myAGSubnet** 和 myAGPublicIPAddress**。
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -98,7 +98,7 @@ az network application-gateway create \
  创建应用程序网关可能需要几分钟时间。 创建应用程序网关后，可以看到以下新功能：
 
 
-|功能  |描述  |
+|Feature  |描述  |
 |---------|---------|
 |appGatewayBackendPool     |应用程序网关必须至少具有一个后端地址池。|
 |appGatewayBackendHttpSettings     |指定将端口 80 和 HTTP 协议用于通信。|
@@ -248,11 +248,11 @@ az network public-ip show \
 
 ![在应用程序网关中测试基 URL](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-将 URL 更改为 http://&lt;&gt;: 8080/images/test.html, 替换 ip&gt;地址的&lt;ip 地址, 你应看到类似于以下示例的内容:
+将 URL 更改为 http://&lt;ip-address&gt;:8080/images/test.html（请将 &lt;ip-address&gt; 替换为自己的 IP 地址），应会看到如以下示例所示的内容：
 
 ![在应用程序网关中测试映像 URL](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-将 URL 更改为 http://&lt;ip 地址&gt;: 8080/video/test.html, 替换 ip&gt;地址的&lt;ip 地址, 你应看到类似于以下示例的内容。
+将 URL 更改为 http://&lt;ip-address&gt;:8080/video/test.html（请将 &lt;ip-address&gt; 替换为自己的 IP 地址），应会看到如以下示例所示的内容。
 
 ![在应用程序网关中测试视频 URL](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 

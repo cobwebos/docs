@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/27/2020
 ms.author: aahi
-ms.openlocfilehash: 02095a307e5227f477f51e857ee423d22a8edf8f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 83cdaecfb819fb1f4677b051f87e23e0e03daef2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689159"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370102"
 ---
-# <a name="create-a-visual-search-single-page-web-app"></a>创建视觉搜索单页 Web 应用
+# <a name="tutorial-create-a-visual-search-single-page-web-app"></a>教程：创建视觉搜索单页 Web 应用
 
 必应视觉搜索 API 返回图像见解。 你可以上传图像，也可以提供图像的 URL。 见解是视觉上类似的图像、购物源、包含图像的网页，等等。 必应视觉搜索 API 返回的见解类似于 Bing.com/images 上显示的见解。
 
