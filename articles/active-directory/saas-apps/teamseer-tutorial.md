@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3e505e4823db8c9f42bbff216f30326081110dcf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67088969"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>教程：Azure Active Directory 与 TeamSeer 集成
@@ -108,7 +108,7 @@ ms.locfileid: "67088969"
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://www.teamseer.com/<companyid>`
 
     > [!NOTE]
-    > 此值不是真实值。 使用实际登录 URL 更新该值。 若要获取该值，请与 [TeamSeer 客户端支持团队](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 此值不是真实值。 请使用实际登录 URL 更新此值。 若要获取该值，请与 [TeamSeer 客户端支持团队](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -134,7 +134,7 @@ ms.locfileid: "67088969"
 
 1. 单击“设置”  。
 
-    ![设置](./media/teamseer-tutorial/ic789635.png "设置")
+    ![安装](./media/teamseer-tutorial/ic789635.png "设置")
 
 1. 单击“设置 SAML 提供程序详细信息”  。
 

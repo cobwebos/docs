@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: rohink
-ms.openlocfilehash: 36ad1c47e115f06aea2017a049cefe36304504bf
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e19850243498fc24c9a726f4603590df15f3a046
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934828"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79531509"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>快速入门：使用 Azure CLI 创建流量管理器配置文件以实现 Web 应用程序的高可用性
 
@@ -88,6 +88,7 @@ az appservice plan create \
     --sku S1
 
 ```
+
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>在应用服务计划中创建 Web 应用
 在应用服务计划中使用 [az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 在“美国东部”和“西欧”Azure 区域中创建 Web 应用程序的两个实例。  
 
@@ -127,6 +128,7 @@ az webapp show \
     --query id
 
 ```
+
 记下输出中显示的 ID，并在以下命令中使用该 ID 添加终结点：
 
 ```azurecli-interactive
@@ -151,6 +153,7 @@ az webapp show \
     --query id
 
 ```
+
 记下输出中显示的 ID，并在以下命令中使用该 ID 添加终结点：
 
 ```azurecli-interactive
@@ -212,7 +215,7 @@ az network traffic-manager profile show \
 
 完成后，请使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 删除资源组、Web 应用程序和所有相关资源。
 
-```azurepowershell-interactive
+```azurecli-interactive
 
 az group delete \
     --resource-group myResourceGroup

@@ -5,20 +5,20 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7069ff363cf274ba855efc9b598d8d01e64e18d1
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: ad6ea3c68ed6f48ac48bbbdafed7f8660df23937
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250108"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239234"
 ---
-# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>教程：保护 Azure 资源管理器模板部署中的项目
+# <a name="tutorial-secure-artifacts-in-arm-template-deployments"></a>教程：保护 ARM 模板部署中的项目
 
-了解如何使用 Azure 存储帐户和共享访问签名 (SAS) 保护 Azure 资源管理器模板中使用的项目。 部署项目是指完成部署所需的任何文件以及主模板文件。 例如，在[教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件](./template-tutorial-deploy-sql-extensions-bacpac.md)，主模板创建 Azure SQL 数据库实例。 它还调用一个 BACPAC 文件来创建表和插入数据。 BACPAC 文件是存储在 Azure 存储帐户中的项目。 存储帐户密钥用于访问该项目。 
+了解如何使用 Azure 存储帐户和共享访问签名 (SAS) 保护 Azure 资源管理器 (ARM) 模板中使用的项目。 部署项目是指完成部署所需的任何文件以及主模板文件。 例如，在[教程：使用 ARM 模板导入 SQL BACPAC 文件](./template-tutorial-deploy-sql-extensions-bacpac.md)，主模板创建 Azure SQL 数据库实例。 它还调用一个 BACPAC 文件来创建表和插入数据。 BACPAC 文件是存储在 Azure 存储帐户中的项目。 存储帐户密钥用于访问该项目。
 
 在本教程中，你将使用 SAS 来授予对自己 Azure 存储帐户中 BACPAC 文件的有限访问权限。 有关 SAS 的详细信息，请参阅[使用共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 
-若要了解如何保护链接的模板，请参阅[教程：创建链接的 Azure 资源管理器模板](./template-tutorial-create-linked-templates.md)。
+若要了解如何保护链接的模板，请参阅[教程：创建链接的 ARM 模板](./template-tutorial-create-linked-templates.md)。
 
 本教程涵盖以下任务：
 
@@ -35,19 +35,19 @@ ms.locfileid: "78250108"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](./use-vs-code-to-create-template.md)。
-* 查看[教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件](./template-tutorial-deploy-sql-extensions-bacpac.md)。 本教程中使用的模板是在该教程中开发的。 本文提供了已完成模板的下载链接。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](./use-vs-code-to-create-template.md)。
+* 查看[教程：使用 ARM 模板导入 SQL BACPAC 文件](./template-tutorial-deploy-sql-extensions-bacpac.md)。 本教程中使用的模板是在该教程中开发的。 本文提供了已完成模板的下载链接。
 * 若要增强安全性，请使用为 SQL Server 管理员帐户生成的密码。 以下是可用于生成密码的示例：
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在资源管理器模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我们还建议你每三个月更新一次密码。
+    Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在 ARM 模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我们还建议你每三个月更新一次密码。
 
 ## <a name="prepare-a-bacpac-file"></a>准备 BACPAC 文件
 
-在本部分准备 BACPAC 文件，以便在部署资源管理器模板时可以安全访问该文件。 本部分包括五个过程：
+在本部分中，你将准备 BACPAC 文件，以便在部署 ARM 模板时可以安全地访问该文件。 本部分包括五个过程：
 
 * 下载 BACPAC 文件。
 * 创建 Azure 存储帐户。
@@ -115,7 +115,7 @@ ms.locfileid: "78250108"
 
 ## <a name="open-an-existing-template"></a>打开现有模板
 
-在此会话中，修改在[教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件](./template-tutorial-deploy-sql-extensions-bacpac.md)中创建的模板，以通过 SAS 令牌调用 BACPAC 文件。 SQL 扩展教程中开发的模板将在 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) 中共享。
+在此会话中，修改在[教程：使用 ARM 模板导入 SQL BACPAC 文件](./template-tutorial-deploy-sql-extensions-bacpac.md)中创建的模板，以通过 SAS 令牌调用 BACPAC 文件。 SQL 扩展教程中开发的模板将在 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) 中共享。
 
 1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。  
 1. 在“文件名”中粘贴以下 URL： 
@@ -138,7 +138,7 @@ ms.locfileid: "78250108"
 
 ## <a name="edit-the-template"></a>编辑模板
 
-1. 将 storageAccountKey 参数定义替换为以下参数定义： 
+1. 将 storageAccountKey 参数定义替换为以下参数定义：
 
     ```json
         "_artifactsLocationSasToken": {
@@ -211,7 +211,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已部署 SQL Server、SQL 数据库，并已使用 SAS 令牌导入 BACPAC 文件。 若要了解如何创建 Azure Pipeline 以持续开发和部署资源管理器模板，请参阅：
+在本教程中，你已部署 SQL Server、SQL 数据库，并已使用 SAS 令牌导入 BACPAC 文件。 若要了解如何跨多个区域部署 Azure 资源，以及如何使用安全部署做法，请参阅
 
 > [!div class="nextstepaction"]
-> [使用 Azure Pipeline 进行持续集成](./template-tutorial-use-azure-pipelines.md)
+> [使用安全部署做法](./deployment-manager-tutorial.md)

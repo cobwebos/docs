@@ -16,10 +16,10 @@ ms.date: 01/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7cf449880c1a7d1fdd1f951bf5ecbb7316efb8e8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76991879"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-health-support-system"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Health Support System 的集成
@@ -32,7 +32,7 @@ ms.locfileid: "76991879"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 

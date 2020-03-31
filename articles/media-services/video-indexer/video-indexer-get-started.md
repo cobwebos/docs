@@ -7,19 +7,19 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
-ms.topic: tutorial
-ms.date: 02/03/2020
+ms.topic: quickstart
+ms.date: 03/17/2020
 ms.author: juliako
-ms.openlocfilehash: 1f3d442ea7cf6d95427aaa9c072410119e2735af
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 22b06ce99333750d48d1cb65d9f60779572723b9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989801"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79499626"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>快速入门：如何注册并上传第一个视频
 
-本入门教程介绍如何登录到视频索引器网站，以及如何上传第一个视频。
+本快速入门介绍如何登录到视频索引器网站，以及如何上传第一个视频。
 
 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以[创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 你需要为编制索引的分钟数付费，此外还需要支付 Azure 媒体服务帐户相关的费用。 
 
@@ -27,10 +27,10 @@ ms.locfileid: "76989801"
 
 若要开始使用视频索引器进行开发，请浏览到[视频索引器](https://www.videoindexer.com)网站并注册。
 
-## <a name="upload-a-video-using-the-video-indexer-website"></a>使用视频索引器网站上传视频
-
 > [!NOTE]
-> 视频的名称长度不得超过 80 个字符。
+> 开始使用视频索引器后，所有存储的数据和上传的内容都将使用 Microsoft 托管密钥进行静态加密。
+
+## <a name="upload-a-video-using-the-video-indexer-website"></a>使用视频索引器网站上传视频
 
 ### <a name="supported-file-formats-for-video-indexer"></a>视频索引器支持的文件格式
 
@@ -40,6 +40,9 @@ ms.locfileid: "76989801"
 
 1. 登录到[视频索引器](https://www.videoindexer.ai/)网站。
 2. 若要上传视频，请按“上传”按钮或链接。 
+
+    > [!NOTE]
+    > 视频的名称长度不得超过 80 个字符。
 
     ![上载](./media/video-indexer-get-started/video-indexer-upload.png)
 

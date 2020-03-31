@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 4647d78255f611959bb86ca00ff6920bc823d49a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f497955b698d7ca390b40686e94d553a7cd5c948
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158570"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048762"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>教程：Azure Active Directory 与 ClickUp Productivity Platform 集成
 
@@ -122,6 +122,8 @@ ms.locfileid: "73158570"
 
 2. 单击“用户配置文件”并选择“设置”。  
 
+    ![ClickUp Productivity 配置](./media/clickup-productivity-platform-tutorial/configure0.png)
+
     ![ClickUp Productivity 配置](./media/clickup-productivity-platform-tutorial/configure1.png)
 
 3. 在单一登录 (SSO) 提供程序下选择“Microsoft”  下。
@@ -195,7 +197,9 @@ ms.locfileid: "73158570"
 
 1. 在其他 Web 浏览器窗口中，以管理员身份登录到 ClickUp Productivity Platform 租户。
 
-2. 单击“用户配置文件”并选择“用户”。  
+2. 单击“用户配置文件”并选择“人员”。  
+   
+    ![ClickUp Productivity 配置](./media/clickup-productivity-platform-tutorial/configure0.png)
 
     ![ClickUp Productivity 配置](./media/clickup-productivity-platform-tutorial/user1.png)
 
@@ -204,7 +208,7 @@ ms.locfileid: "73158570"
     ![ClickUp Productivity 配置](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
-    > 用户将收到通知，他们必须接受邀请才能激活帐户。
+    > 用户将收到通知，并必须接受邀请才能激活帐户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

@@ -21,6 +21,8 @@
           href: cognitive-search-quickstart-blob.md
         - name: 创建知识存储
           href: knowledge-store-create-portal.md
+        - name: 使用搜索浏览器查询
+          href: search-explorer.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -231,10 +233,10 @@
           href: search-query-simple-examples.md
         - name: 使用完整的 Lucene 语法
           href: search-query-lucene-examples.md
-        - name: 使用搜索资源管理器（门户）
-          href: search-explorer.md
         - name: 特殊字符和部分词
           href: search-query-partial-matching.md
+        - name: 从 Power Apps 查询
+          href: search-howto-powerapps.md
         - name: 语法参考
           items:
             - name: 简化的查询语法
@@ -261,7 +263,7 @@
       items:
         - name: 与页相关的功能
           href: search-pagination-page-layout.md
-        - name: 相关性优化（评分配置文件）
+        - name: 相关性调整（计分配置文件）
           href: index-add-scoring-profiles.md
         - name: 相关性优化（相似性算法）
           href: index-ranking-similarity.md

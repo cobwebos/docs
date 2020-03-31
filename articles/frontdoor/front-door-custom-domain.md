@@ -12,25 +12,28 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: fb9e369bbba72cd3a1dd7fcc864e2845e3a979e9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5ffa85a2a681bfd064bfeade77d9ae7b85b1f723
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184623"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79471755"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>教程：将自定义域添加到 Front Door
-本教程介绍如何将自定义域添加到 Front Door。 使用 Azure Front Door 服务进行应用程序交付时，如果希望自己的域名在最终用户请求中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。
+本教程介绍如何将自定义域添加到 Front Door。 使用 Azure Front Door 进行应用程序交付时，如果希望自己的域名在最终用户请求中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。
 
 创建 Front Door 后，URL 中将包含默认前端主机（`azurefd.net` 的子域），以便在默认情况下从后端交付 Front Door 内容（例如 https:\//contoso.azurefd.net/activeusers.htm）。 为方便起见，Azure Front Door 提供了用于将自定义域与默认主机相关联的选项。 通过此选项，可在 URL 中使用自定义域而不是 Front Door 拥有的域名来交付内容（例如 https:\//www.contoso.com/photo.png）。 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > - 创建 CNAME DNS 记录。
 > - 将自定义域与 Front Door 相关联。
 > - 验证自定义域。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+> [!NOTE]
+> Front Door 不  支持包含 [punycode](https://en.wikipedia.org/wiki/Punycode) 字符的自定义域。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -43,12 +46,12 @@ ms.locfileid: "74184623"
 
 ## <a name="create-a-cname-dns-record"></a>创建 CNAME DNS 记录
 
-在将自定义域与 Front Door 结合使用之前，必须先在域提供商的配合下创建一个规范名称 (CNAME) 记录，使之指向Front Door 的默认前端主机（例如 contoso.azurefd.net）。 CNAME 记录是一种 DNS 记录，用于将源域名映射到目标域名。 对于 Azure Front Door 服务，源域名是自定义域名，目标域名是 Front Door 默认主机名。 在 Front Door 验证了创建的 CNAME 记录后，发往源自定义域（如 www\.contoso.com）的流量将路由到指定的目标 Front Door 默认前端主机（如 contoso.azurefd.net）。 
+在将自定义域与 Front Door 结合使用之前，必须先在域提供商的配合下创建一个规范名称 (CNAME) 记录，使之指向Front Door 的默认前端主机（例如 contoso.azurefd.net）。 CNAME 记录是一种 DNS 记录，用于将源域名映射到目标域名。 对于 Azure Front Door，源域名是自定义域名，目标域名是 Front Door 默认主机名。 在 Front Door 验证了创建的 CNAME 记录后，发往源自定义域（如 www\.contoso.com）的流量将路由到指定的目标 Front Door 默认前端主机（如 contoso.azurefd.net）。 
 
 自定义域及其子域一次只能与一个 Front Door 相关联。 但是，可以通过使用多个 CNAME 记录，将同一自定义域中的不同子域用于不同的 Front Door。 还可以将包含不同子域的自定义域映射到同一 Front Door。
 
 
-## <a name="map-the-temporary-afdverify-sub-domain"></a>映射临时 afdverify 子域
+## <a name="map-the-temporary-afdverify-subdomain"></a>映射临时 afdverify 子域
 
 映射现有的生产环境中的域时，有一些特殊注意事项。 在 Azure 门户中注册自定义域时，该域可能会出现短暂的停机现象。 为避免 Web 流量中断，请先将自定义域映射到包含 Azure afdverify 子域的 Front Door 默认前端主机名，以便创建临时的 CNAME 映射。 使用此方法，用户可以在进行 DNS 映射时访问域，不会出现中断现象。
 
@@ -64,9 +67,9 @@ ms.locfileid: "74184623"
 
     | 源                    | 类型  | 目标                     |
     |---------------------------|-------|---------------------------------|
-    | afdverify.www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
+    | afdverify. www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
 
-    - 源：采用 afdverify.&lt;自定义域名&gt; 格式输入自定义域名，包括 afdverify 子域  。 例如 afdverify.www.contoso.com。
+    - 源：采用 afdverify.&lt;自定义域名&gt; 格式输入自定义域名，包括 afdverify 子域  。 例如 afdverify. www.contoso.com。
 
     - 键入：输入 *CNAME*。
 
@@ -92,7 +95,7 @@ ms.locfileid: "74184623"
 
     - 指向：输入默认 Front Door 前端主机的主机名，包括 afdverify 子域名称。 例如 afdverify.contoso.azurefd.net。 
 
-    - TTL：让“1 小时”保留选中状态。 
+    - TTL：保持选中“一小时”  。
 
 6. 选择“保存”。 
  
@@ -173,7 +176,7 @@ ms.locfileid: "74184623"
 
     - 指向：输入 Front Door 的默认主机名。 例如 contoso.azurefd.net. 
 
-    - TTL：让“1 小时”保留选中状态。 
+    - TTL：保持选中“一小时”  。
 
 6. 选择“保存”。 
  
@@ -197,7 +200,7 @@ ms.locfileid: "74184623"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > - 创建 CNAME DNS 记录。

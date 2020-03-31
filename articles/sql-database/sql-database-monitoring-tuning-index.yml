@@ -3,7 +3,7 @@ title: Azure SQL 数据库监视和性能优化
 summary: Azure SQL 数据库提供的工具可帮助你收集指标和诊断信息，以便监视数据库并提高其性能。
 metadata:
   title: Azure SQL 数据库监视和优化文档
-  description: Azure SQL 数据库提供的工具可帮助你收集指标和诊断信息，以便监视数据库并提高其性能。
+  description: 了解 Azure SQL 数据库监视和性能优化工具，这些工具可帮助你收集指标和诊断信息并提高数据库性能。
   ms.service: sql-database
   ms.subservice: performance
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: CarlRabeler
   ms.author: carlrab
   ms.date: 03/10/2020
-  ms.openlocfilehash: 43f74ea126ab7e028b39a86e2eb1edad4cae41a2
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: bc2c2a64cfce8bde6f04835bf090b632b8839a6f
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "79208907"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80373117"
 landingContent:
 - title: 关于监视和性能优化
   linkLists:

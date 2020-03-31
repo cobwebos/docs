@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 31826f5d4d88c977f859a009bface2fddf3a1c88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093183"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>教程：Azure Active Directory 与 Rackspace SSO 集成
@@ -200,7 +200,7 @@ Rackspace 使用**属性映射策略**为你的单一登录用户分配 Rackspac
 下面的示例**属性映射策略**演示了以下内容：
 1. 将 Rackspace 用户的名称设置为 `user.name` SAML 声明。 可以使用任何声明，但最常见的做法是将其设置为包含用户电子邮件地址的字段。
 1. 通过按组名称或组 UID 匹配 Azure AD 组来为用户设置 Rackspace 角色 `admin` 和 `billing:admin`。 `roles` 字段中使用了替代项 `"{0}"`，它将替换为 `remote` 规则表达式的结果。 
-1. 使用 `"{D}"` 默认替代项  让 Rackspace 通过在 SAML 交换中查找标准且已知的 SAML 声明来检索额外的 SAML 字段。
+1. 使用 `"{D}"` 默认替代项  让 Rackspace 通过在 SAML 交换中查找标准且已知的 SAML 声明来检索其他 SAML 字段。
 
 ```yaml
 ---

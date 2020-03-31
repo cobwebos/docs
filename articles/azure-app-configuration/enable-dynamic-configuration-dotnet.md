@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7ba3eae4ea5557b4bb1b1be4e2c79eab8f6e7988
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 7780bdbc92868f62e8d066d171b2a04fe06a981d
+ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484870"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80245797"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>教程：在 .NET Framework 应用中使用动态配置
 
@@ -28,7 +28,7 @@ ms.locfileid: "77484870"
 > [!div class="checklist"]
 > * 设置 .NET Framework 应用，使其能够更新配置以响应应用程序配置存储区中的更改。
 > * 在应用程序中注入最新配置。
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -38,13 +38,15 @@ ms.locfileid: "77484870"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “+创建”来添加以下键值对   ：
+6. 选择“配置资源管理器” > “+ 创建” > “键-值”来添加以下键值对    ：
 
     | 密钥 | 值 |
     |---|---|
     | TestApp:Settings:Message | Azure 应用配置的数据 |
 
     暂时将“标签”和“内容类型”保留为空   。
+
+7. 选择“应用”。 
 
 ## <a name="create-a-net-framework-console-app"></a>创建 .NET Framework 控制台应用
 

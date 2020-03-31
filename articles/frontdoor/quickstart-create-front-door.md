@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 67a4f9eb3290ba09a2c19325464cf7ad224856e7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a98a933113322509f6fda8678350e9415d0b4058
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184519"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79471415"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>快速入门：创建 Front Door，以实现高度可用的全局 Web 应用程序
 
@@ -39,8 +39,8 @@ ms.locfileid: "74184519"
 
      | 设置         | 值     |
      | ---              | ---  |
-     | Name           | 输入 Web 应用的唯一名称  |
-     | Resource group          | 选择“新建”  ，然后键入 myResourceGroupFD1  |
+     | 名称           | 输入 Web 应用的唯一名称  |
+     | 资源组          | 选择“新建”  ，然后键入 myResourceGroupFD1  |
      | 应用服务计划/位置         | 选择“新建”  。  在应用服务计划中，输入 *myAppServicePlanEastUS*，然后选择“确定”。  
      |      位置  |   美国东部        |
     |||
@@ -51,8 +51,8 @@ ms.locfileid: "74184519"
 
      | 设置         | 值     |
      | ---              | ---  |
-     | Name           | 输入 Web 应用的唯一名称  |
-     | Resource group          | 选择“新建”  ，然后键入 myResourceGroupFD2  |
+     | 名称           | 输入 Web 应用的唯一名称  |
+     | 资源组          | 选择“新建”  ，然后键入 myResourceGroupFD2  |
      | 应用服务计划/位置         | 选择“新建”  。  在应用服务计划中，输入 *myAppServicePlanWestEurope*，然后选择“确定”。  
      |      位置  |   西欧      |
     |||

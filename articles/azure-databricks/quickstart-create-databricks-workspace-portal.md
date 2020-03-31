@@ -8,20 +8,20 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
-ms.date: 05/08/2019
+ms.date: 03/23/2020
 ms.custom: mvc
-ms.openlocfilehash: 46bad14978957ab474cfc0eda3e523874246d3f3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d6af521238a034bc22612335119f08284b87eb4b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586217"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132706"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
 在本快速入门中，将使用 Azure 门户创建一个具有 Apache Spark 群集的 Azure Databricks 工作区。 你在群集上运行作业，并使用自定义图表根据波士顿安全数据生成实时报告。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 
@@ -58,6 +58,8 @@ ms.locfileid: "77586217"
 3. 选择“查看 + 创建”，然后选择“创建”   。 创建工作区需要几分钟时间。 创建工作区时，可以在“通知”中查看部署状态。  完成此过程后，你的用户帐户将自动添加为工作区的管理员用户。
 
     ![Databricks 部署磁贴](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Databricks 部署磁贴")
+
+    当工作区部署失败时，仍然会在失败状态下创建工作区。 删除失败的工作区，并创建一个解决部署错误的新工作区。 删除失败的工作区时，托管资源组和任何成功部署的资源也将被删除。
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中创建 Spark 群集
 

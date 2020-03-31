@@ -58,22 +58,24 @@
       href: best-practices.md
     - name: 常用条件访问策略
       items:
+        - name: 阻止传统身份验证
+          href: howto-conditional-access-policy-block-legacy.md
         - name: 要求对管理员执行 MFA
           href: howto-conditional-access-policy-admin-mfa.md
         - name: 要求将 MFA 用于 Azure 管理
           href: howto-conditional-access-policy-azure-management.md
         - name: 要求所有用户执行 MFA
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: 阻止传统身份验证
-          href: howto-conditional-access-policy-block-legacy.md
         - name: 基于风险的条件访问
           href: howto-conditional-access-policy-risk.md
-        - name: 要求在进行 MFA 注册时处于受信任的位置
+        - name: 保护安全信息注册
           href: howto-conditional-access-policy-registration.md
         - name: 按位置阻止访问
           href: howto-conditional-access-policy-location.md
         - name: 要求符合的设备
           href: howto-conditional-access-policy-compliant-device.md
+        - name: 阻止访问
+          href: howto-conditional-access-policy-block-access.md
     - name: 阻止传统身份验证
       href: block-legacy-authentication.md
     - name: 需要已批准的客户端应用
@@ -94,6 +96,8 @@
       href: policy-migration-mfa.md
     - name: 故障排除
       items:
+        - name: 排查登录问题
+          href: troubleshoot-conditional-access.md
         - name: 使用 What If 工具排查问题
           href: troubleshoot-conditional-access-what-if.md
 - name: 资源

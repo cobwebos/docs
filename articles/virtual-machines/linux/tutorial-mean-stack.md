@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50ccf0d6db5a50f7dd89732bc870ced6bcf1c2d7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9e0ed3454f11907c5f183f08fd2ec51db3384225
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034404"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154315"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>教程：在 Azure 中的 Linux 虚拟机上创建 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈
 
@@ -339,7 +339,7 @@ sudo apt-get install -y nodejs
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已创建一个可在 Linux VM 上使用 MEAN 堆栈跟踪书籍记录的 Web 应用程序。 你已了解如何：
+本教程已创建一个可在 Linux VM 上使用 MEAN 堆栈跟踪书籍记录的 Web 应用程序。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Linux VM
@@ -349,7 +349,7 @@ sudo apt-get install -y nodejs
 > * 使用 AngularJS 访问路由
 > * 运行应用程序
 
-转到下一教程，了解如何使用 SSL 证书保护 Web 服务器。
+转到下一教程，了解如何使用 TLS 证书保护 Web 服务器。
 
 > [!div class="nextstepaction"]
-> [使用 SSL 保护 Web 服务器](tutorial-secure-web-server.md)
+> [使用 TLS 保护 Web 服务器](tutorial-secure-web-server.md)

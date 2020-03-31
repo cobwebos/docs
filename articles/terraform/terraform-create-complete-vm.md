@@ -3,13 +3,13 @@ title: 快速入门 - 使用 Terraform 在 Azure 中创建完整的 Linux VM
 description: 在此快速入门中，你将使用 Terraform 在 Azure 中创建并管理完整的 Linux 虚拟机环境
 keywords: azure devops terraform linux vm 虚拟机
 ms.topic: quickstart
-ms.date: 03/09/2020
-ms.openlocfilehash: 03974d68477855d4ff55b7179312c91ba7d0d055
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.date: 03/15/2020
+ms.openlocfilehash: f262734cc16d97e4d73af371410403a4cbb8815e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943525"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79415455"
 ---
 # <a name="quickstart-create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>快速入门：在 Azure 中使用 Terraform 创建完整的 Linux 虚拟机基础结构
 
@@ -27,7 +27,7 @@ ms.locfileid: "78943525"
 
 我们来详细地了解 Terraform 模板的每个部分。 还可以看到完整版本的 [Terraform 模板](#complete-terraform-script)，可以复制并粘贴这些模板。
 
-`provider` 部分告知 Terraform 使用 Azure 提供程序。 若要获取 subscription_id  、client_id  、client_secret  和 *tenant_id* 的值，请参阅[安装和配置 Terraform](terraform-install-configure.md)。 
+`provider` 部分告知 Terraform 使用 Azure 提供程序。 若要获取 `subscription_id`、`client_id`、`client_secret` 和 `tenant_id`的值，请参阅[安装并配置 Terraform](terraform-install-configure.md)。 
 
 > [!TIP]
 > 如果要为值创建环境变量，或要使用 [Azure Cloud Shell Bash 体验](/azure/cloud-shell/overview)，则无需在此节中包括变量声明。
@@ -35,7 +35,7 @@ ms.locfileid: "78943525"
 ```hcl
 provider "azurerm" {
     # The "feature" block is required for AzureRM provider 2.x. 
-    # If you are using version 1.x, the "features" block is not allowed.
+    # If you're using version 1.x, the "features" block is not allowed.
     version = "~>2.0"
     features {}
     
@@ -59,10 +59,10 @@ resource "azurerm_resource_group" "myterraformgroup" {
 }
 ```
 
-在其他部分中，可以使用 ${azurerm_resource_group.myterraformgroup.name}  引用该资源组。
+在其他部分，我们引用具有 `${azurerm_resource_group.myterraformgroup.name}` 的资源组。
 
 ## <a name="create-virtual-network"></a>创建虚拟网络
-以下部分在 10.0.0.0/16  地址空间中创建名为 myVnet  的虚拟网络：
+以下部分在 `10.0.0.0/16` 地址空间中创建名为 `myVnet` 的虚拟网络：
 
 ```hcl
 resource "azurerm_virtual_network" "myterraformnetwork" {
@@ -77,7 +77,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 }
 ```
 
-以下部分在 myVnet  虚拟网络中创建名为 mySubnet  的子网：
+以下部分在 `myVnet` 虚拟网络中创建名为 `mySubnet` 的子网：
 
 ```hcl
 resource "azurerm_subnet" "myterraformsubnet" {
@@ -90,7 +90,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 
 
 ## <a name="create-public-ip-address"></a>创建公共 IP 地址
-若要通过 Internet 访问资源，请创建公共 IP 地址并将其分配到 VM。 以下部分创建名为 myPublicIP  的公共 IP 地址：
+若要通过 Internet 访问资源，请创建公共 IP 地址并将其分配到 VM。 以下部分创建名为 `myPublicIP` 的公共 IP 地址：
 
 ```hcl
 resource "azurerm_public_ip" "myterraformpublicip" {
@@ -107,7 +107,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 
 
 ## <a name="create-network-security-group"></a>创建网络安全组
-网络安全组控制传入和传出 VM 的网络流量。 以下部分创建名为 myNetworkSecurityGroup  的网络安全组并定义允许 TCP 端口 22 上的 SSH 流量的规则：
+网络安全组控制传入和传出 VM 的网络流量。 以下部分创建名为 `myNetworkSecurityGroup` 的网络安全组并定义允许 TCP 端口 22 上的 SSH 流量的规则：
 
 ```hcl
 resource "azurerm_network_security_group" "myterraformnsg" {
@@ -135,7 +135,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 
 
 ## <a name="create-virtual-network-interface-card"></a>创建虚拟网络接口卡
-虚拟网络接口卡 (NIC) 将 VM 连接到规定的虚拟网络、公共 IP 地址和网络安全组。 Terraform 模板的以下部分创建名为“myNIC”  的虚拟 NIC，并连接到已创建的虚拟网络资源：
+虚拟网络接口卡 (NIC) 将 VM 连接到规定的虚拟网络、公共 IP 地址和网络安全组。 Terraform 模板的以下部分创建名为 `myNIC` 的虚拟 NIC，并连接到已创建的虚拟网络资源：
 
 ```hcl
 resource "azurerm_network_interface" "myterraformnic" {
@@ -196,9 +196,9 @@ resource "azurerm_storage_account" "mystorageaccount" {
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-最后一步是创建 VM 并使用所有已创建的资源。 以下部分创建名为 myVM  的 VM 并附加名为 myNIC  的虚拟 NIC。 将使用最新的 Ubuntu 16.04 LTS  映像，并且在禁用密码身份验证的情况下创建名为 azureuser  的用户。
+最后一步是创建 VM 并使用所有已创建的资源。 以下部分创建名为 `myVM` 的 VM 并附加名为 `myNIC` 的虚拟 NIC。 将使用最新的 `Ubuntu 16.04-LTS` 映像，并且在禁用密码身份验证的情况下创建名为 `azureuser` 的用户。
 
- ssh_keys  部分中提供了 SSH 密钥数据。 在 *key_data* 字段中提供有效的公共 SSH 密钥。
+ `ssh_keys` 部分提供了 SSH 密钥数据。 在 `key_data` 字段中提供公共 SSH 密钥。
 
 ```hcl
 resource "azurerm_linux_virtual_machine" "myterraformvm" {
@@ -214,7 +214,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
         storage_account_type = "Premium_LRS"
     }
 
-    storage_image_reference {
+    source_image_reference {
         publisher = "Canonical"
         offer     = "UbuntuServer"
         sku       = "16.04.0-LTS"
@@ -242,13 +242,13 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 
 ## <a name="complete-terraform-script"></a>完成 Terraform 脚本
 
-若要将所有这些部分组合在一起，并在操作中看到 Terraform，请创建名为 terraform_azure.tf  的文件并粘贴以下内容：
+若要将所有这些部分组合在一起，并在操作中看到 Terraform，请创建名为 `terraform_azure.tf` 的文件并粘贴以下内容：
 
 ```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
     # The "feature" block is required for AzureRM provider 2.x. 
-    # If you are using version 1.x, the "features" block is not allowed.
+    # If you're using version 1.x, the "features" block is not allowed.
     version = "~>2.0"
     features {}
 
@@ -418,7 +418,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 terraform init
 ```
 
-下一步是让 Terraform 检查并验证模板。 此步骤将请求的资源与 Terraform 保存的状态信息进行比较，然后输出计划的执行。 资源不是  在 Azure 中创建的。
+下一步是让 Terraform 检查并验证模板。 此步骤将请求的资源与 Terraform 保存的状态信息进行比较，然后输出计划的执行。 此时不会创建 Azure 资源。
 
 ```bash
 terraform plan

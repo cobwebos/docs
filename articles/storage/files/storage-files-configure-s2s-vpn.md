@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7762366f68bee2cd8c44e81bb22366c504ff1a73
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ae3d38d92990d7a1af4146c25b017286ebd29352
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484427"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061037"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>配置站点到站点 VPN 以与 Azure 文件存储一起使用
 你可以使用站点到站点 (S2S) VPN 连接从本地网络中通过 SMB 装载 Azure 文件共享，而无需打开端口 445。 你可以使用 [Azure VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)设置站点到站点 VPN，该网关是提供 VPN 服务的 Azure 资源，与存储帐户或其他 Azure 资源一起部署在资源组中。
@@ -24,7 +24,9 @@ ms.locfileid: "74484427"
 本文详细介绍了配置站点到站点 VPN 以直接在本地装载 Azure 文件共享的步骤。 如果想要通过站点到站点 VPN 路由 Azure 文件同步的同步流量，请参阅[配置 Azure 文件同步代理和防火墙设置](storage-sync-files-firewall-and-proxy.md)。
 
 ## <a name="prerequisites"></a>先决条件
-- 要在本地装载的 Azure 文件共享。 可将[标准](storage-how-to-create-file-share.md)或[高级 Azure 文件共享](storage-how-to-create-premium-fileshare.md)用于站点到站点 VPN。
+- 要在本地装载的 Azure 文件共享。 Azure 文件共享部署在存储帐户中，是代表共享存储池的管理结构，可以在其中部署多个文件共享以及其他存储资源（例如 Blob 容器或队列）。 可以在[创建 Azure 文件共享](storage-how-to-create-file-share.md)中详细了解如何部署 Azure 文件共享和存储帐户。
+
+- 包含要在本地装载的 Azure 文件共享的存储帐户的专用终结点。 若要详细了解如何创建专用终结点，请参阅[配置 Azure 文件存储网络终结点](storage-files-networking-endpoints.md?tabs=azure-portal)。 
 
 - 本地数据中心内与 Azure VPN 网关兼容的网络设备或服务器。 Azure 文件存储与所选的本地网络设备无关，但 Azure VPN 网关会保留[已测试设备列表](../../vpn-gateway/vpn-gateway-about-vpn-devices.md)。 不同的网络设备提供不同的特性、性能特征和管理功能，因此，在选择网络设备时要将这些因素考虑在内。
 
@@ -46,7 +48,7 @@ ms.locfileid: "74484427"
 
 为了部署 Azure VPN 网关，必须填写以下字段：
 
-- **名称**：VPN 网关的 Azure 资源的名称。 此名称可以是任何你认为有助于管理的名称。
+- **Name**：VPN 网关的 Azure 资源的名称。 此名称可以是任何你认为有助于管理的名称。
 - **区域**：要将 VPN 网关部署到的区域。
 - **网关类型**：为了部署站点到站点 VPN，必须选择“VPN”  。
 - **VPN 类型**：可以根据你的 VPN 设备选择“基于路由”或“基于策略”   。 基于路由的 VPN 支持 IKEv2，而基于策略的 VPN 仅支持 IKEv1。 若要详细了解两种类型的 VPN 网关，请参阅[基于策略的 VPN 网关和基于路由的 VPN 网关](../../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md#about)
@@ -63,7 +65,7 @@ ms.locfileid: "74484427"
 
 为了部署本地网络网关资源，必须写入以下字段：
 
-- **名称**：本地网络网关的 Azure 资源名称。 此名称可以是任何你认为有助于管理的名称。
+- **Name**：本地网络网关的 Azure 资源名称。 此名称可以是任何你认为有助于管理的名称。
 - **IP 地址**：本地网关的公共 IP 地址。
 - **地址空间**：此本地网络网关所代表的网络的地址范围。 你可以添加多个地址空间范围，但是请确保此处所指定的范围没有与要连接到的其他网络的范围相重叠。 
 - **配置 BGP 设置**：仅在配置需要 BGP 设置时才配置此设置。 若要了解有关此设置的详细信息，请参阅[关于 Azure VPN 网关的 BGP](../../vpn-gateway/vpn-gateway-bgp-overview.md)。
@@ -76,27 +78,10 @@ ms.locfileid: "74484427"
 ## <a name="configure-on-premises-network-appliance"></a>配置本地网络设备
 配置本地网络设备的特定步骤取决于组织所选的网络设备。 根据组织所选的设备，[已测试设备的列表](../../vpn-gateway/vpn-gateway-about-vpn-devices.md)可能会包含链接，指向设备供应商提供的有关为设备配置 Azure VPN 网关的说明。
 
-## <a name="create-private-endpoint-preview"></a>创建专用终结点（预览版）
-为存储帐户创建专用终结点可为存储帐户提供虚拟网络 IP 地址空间内的 IP 地址。 使用此专用 IP 地址从本地装载 Azure 文件共享时，VPN 安装自动定义的传递规则将通过 VPN 将装载请求路由到存储帐户。 
-
-在“存储帐户”边栏选项卡中，选择左侧目录中的“专用终结点连接”，并选择“+ 专用终结点”来新建专用终结点   。 将打开向导，要求你在多个页面上完成配置：
-
-![“创建专用终结点”部分“基本信息”部分的屏幕截图](media/storage-files-configure-s2s-vpn/create-private-endpoint-1.png)
-
-在“基本信息”选项卡上，为专用终结点选择适当的资源组、名称和区域  。 资源组、名称和区域可以任意配置，不必与存储帐户匹配，但必须在同一区域中创建专用终结点和用于容纳该专用终结点的存储帐户。
-
-在“资源”选项卡上，选择“连接到目录中的 Azure 资源”的单选按钮   。 在“资源类型”下，选择“Microsoft.Storage/storageAccounts”为资源类型   。 “资源”字段用于指定包含要连接到的 Azure 文件共享的存储帐户  。 因为针对 Azure 文件存储，所以目标子资源是“文件”  。
-
-使用“配置”选项卡，可以选择要向其添加专用终结点的特定虚拟网络和子网  。 选择上面创建的虚拟网络。 必须选择上面将服务终结点添加到的子网以外的子网。
-
-使用“配置”选项卡还可以设置专用 DNS 区域  。 这不是强制要求，但可以使用易记的 UNC 路径（如 `\\mystorageaccount.privatelink.file.core.windows.net\myshare`）来装载 Azure 文件共享，而不使用包含 IP 地址的 UNC 路径。 此操作也可用于虚拟网络中的 DNS 服务器。
-
-单击“查看 + 创建”以创建专用终结点  。 创建专用终结点后，你将看到两个新资源：专用终结点资源和配对的虚拟网络接口。 虚拟网络接口资源将具有存储帐户的专用 IP。 
-
 ## <a name="create-the-site-to-site-connection"></a>创建站点到站点连接
 若要完成 S2S VPN 的部署，必须在本地网络设备（由本地网络网关资源表示）和 VPN 网关之间创建连接。 为此，请导航到前面创建的 VPN 网关。 在 VPN 网关目录中，选择“连接”，然后单击“添加”   。 将打开“添加连接”窗格，要求你填充以下字段  ：
 
-- **名称**：连接的名称。 VPN 网关可以承载多个连接，因此请选择一个有助于管理的名称来区分此特定连接。
+- **Name**：连接的名称。 VPN 网关可以承载多个连接，因此请选择一个有助于管理的名称来区分此特定连接。
 - **连接类型**：由于这是 S2S 连接，因此请在下拉列表中选择“站点到站点(IPSec)”  。
 - **虚拟网络网关**：此字段将自动选定到连接中的 VPN 网关，并且无法更改。
 - **本地网络网关**：这是要连接到 VPN 网关的本地网络网关。 将打开选择窗格，其名称与上面创建的本地网络网关相同。

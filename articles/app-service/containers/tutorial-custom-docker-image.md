@@ -7,13 +7,13 @@ ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 965897afc8e23c123575de0c497d4071ff4ca85a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.custom: mvc, seodec18
+ms.openlocfilehash: a6c9eb354bce09a5f652895f4af34df1f6750bec
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767100"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80045744"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>教程：从专用注册表生成自定义映像并在应用服务中运行
 
@@ -31,7 +31,7 @@ ms.locfileid: "76767100"
 
 [!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 
@@ -49,7 +49,7 @@ cd docker-django-webapp-linux
 
 ## <a name="build-the-image-from-the-docker-file"></a>从 Docker 文件生成映像
 
-在 Git 存储库中查看 _Dockerfile_。 此文件描述了运行应用程序所需的 Python 环境。 此外，映像会设置一个 [SSH](https://www.ssh.com/ssh/protocol/) 服务器来实现容器和主机之间的安全通信。
+在 Git 存储库中查看 _Dockerfile_。 此文件描述了运行应用程序所需的 Python 环境。 此外，映像会设置一个 [SSH](https://www.ssh.com/ssh/protocol/) 服务器来实现容器和主机之间的安全通信。 _Dockerfile_ 中的最后一行 `ENTRYPOINT ["init.sh"]` 会调用 `init.sh` 以启动 SSH 服务和 Python 服务器。
 
 ```Dockerfile
 FROM python:3.4
@@ -73,6 +73,8 @@ COPY init.sh /usr/local/bin/
     
 RUN chmod u+x /usr/local/bin/init.sh
 EXPOSE 8000 2222
+
+#service SSH start
 #CMD ["python", "/code/manage.py", "runserver", "0.0.0.0:8000"]
 ENTRYPOINT ["init.sh"]
 ```

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4508b69261cd7b1fb5e400eaf7ffaae67d5cb476
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4aa5dfd288819930da2f7af36b7d70df709e638
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647958"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473024"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述
 
@@ -19,7 +19,7 @@ ms.locfileid: "75647958"
 托管应用程序类似于市场中的解决方案模板，但有一个重大差异。 在托管应用程序中，资源将部署到由应用发布者管理的资源组。 资源组在使用者的订阅中，但发布者租户中的标识有权访问该资源组。 发布者指定解决方案的持续支持费用。
 
 > [!NOTE]
-> 以前，适用于 Azure 客户提供程序的文档包含在适用于托管应用程序的文档中。 但该文档现已改变位置。 现在，请参阅 [Azure 自定义提供程序](../custom-providers/overview.md)。
+> 以前，Azure 自定义提供程序的文档包含在托管应用程序的文档中。 但该文档现已改变位置。 现在，请参阅 [Azure 自定义提供程序](../custom-providers/overview.md)。
 
 ## <a name="advantages-of-managed-applications"></a>托管应用程序的优点
 

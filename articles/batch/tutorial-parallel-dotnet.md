@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 34e43789ffb29963d5013b4acc3ea710a961c838
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9a1a0b37b0fae52677ad989d85e947e0148ac0a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024052"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80153210"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>教程：使用 .NET API 通过 Azure Batch 运行并行工作负荷
 
@@ -35,7 +35,7 @@ ms.locfileid: "77024052"
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 适用于 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/vs)或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。
 
@@ -198,7 +198,9 @@ List<ResourceFile> inputFiles = await UploadFilesToContainerAsync(
 
 节点数和 VM 大小使用定义的常数进行设置。 Batch 支持专用节点和[低优先级](batch-low-pri-vms.md)节点。可以在池中使用这其中的一种，或者两种都使用。 专用节点为池保留。 低优先级节点在 Azure 有剩余 VM 容量时以优惠价提供。 如果 Azure 没有足够的容量，低优先级节点会变得不可用。 默认情况下，此示例创建的池只包含 5 个大小为 *Standard_A1_v2* 的低优先级节点。
 
-ffmpeg 应用程序部署到计算节点的方法是添加对池配置的 [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference)。
+>[注意] 请务必检查节点配额。 有关如何创建配额请求的说明，请参阅 [Batch 服务配额和限制](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0)。
+
+ffmpeg 应用程序部署到计算节点的方法是添加对池配置的 [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference)。 确保[应用程序激活](https://docs.microsoft.com/cli/azure/batch/application/package?view=azure-cli-latest#az-batch-application-package-activate)。
 
 [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) 方法将池提交到 Batch 服务。
 
@@ -335,3 +337,6 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 > [!div class="nextstepaction"]
 > [Batch C# 示例](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
+
+
+设置实例变量 LowPriorityNodeCount=0 和 DedicatedNodeCount=5 修复了该问题并允许作业完成。

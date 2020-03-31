@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7a15db6bbbcd9dfd43b025b780fda5a8b1d79da2
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 3b1988656e2c15515e121df3ee71e31ce7edd750
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78946144"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79212950"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>教程：使用 Azure Data Box Edge 传输数据
 
@@ -59,26 +59,28 @@ ms.locfileid: "78946144"
     类型可以是“SMB”或“NFS”，默认为“SMB”。   SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。  
     根据你选择 SMB 共享还是 NFS 共享，其余选项会略有不同。 
 
-    c. 提供一个可供共享驻留在其中的存储帐户。 
+    c. 提供一个可供共享驻留在其中的存储帐户。
 
-    
+      > [!IMPORTANT]
+      > 确保所用的 Azure 存储帐户没有设置不可变策略（如果要将它用于 Azure Stack Edge 或 Data Box Gateway 设备）。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+
     d. 在“存储服务”下拉列表中，选择“块 Blob”、“页 Blob”或“文件”。      
     所选服务类型取决于数据需要在 Azure 中采用何种格式。 在此示例中，我们希望数据以块 Blob 的形式存储在 Azure 中，因此选择“块 Blob”。  如果选择“页 Blob”，请确保数据按 512 字节对齐。  例如，VHDX 始终按 512 字节对齐。
 
     e. 创建新的 Blob 容器，或使用下拉列表中的现有容器。 如果创建 Blob 容器，请提供容器名称。 如果容器尚不存在，系统会使用新创建的共享名称在存储帐户中创建一个容器。
-   
-    f. 根据你已创建的是 SMB 共享还是 NFS 共享，请执行以下步骤之一： 
-     
-    - **SMB 共享**：在“所有特权本地用户”下选择“新建”或“使用现有”。    如果创建新的本地用户，请输入用户名和密码，然后确认密码。 此操作为本地用户分配权限。 当前不支持修改共享级权限。
+
+    f. 根据你已创建的是 SMB 共享还是 NFS 共享，请执行以下步骤之一：
+
+    * **SMB 共享**：在“所有特权本地用户”下选择“新建”或“使用现有”。    如果创建新的本地用户，请输入用户名和密码，然后确认密码。 此操作为本地用户分配权限。 当前不支持修改共享级权限。
 
         如果针对此共享数据选中“仅允许读取操作”复选框，则可以指定只读用户。 
 
         ![添加 SMB 共享](./media/data-box-edge-deploy-add-shares/add-share-smb-1.png)
-   
-    - **NFS 共享**：输入允许访问共享的客户端的 IP 地址。
+
+    * **NFS 共享**：输入允许访问共享的客户端的 IP 地址。
 
         ![添加 NFS 共享](./media/data-box-edge-deploy-add-shares/add-share-nfs-1.png)
-   
+
 4. 选择“创建”  以创建共享。
     
     系统会通知你正在创建共享。 使用指定的设置创建共享后，“共享”  磁贴会更新以反映新共享。

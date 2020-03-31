@@ -3,12 +3,12 @@ title: 教程 - 备份 Azure VM 中的 SAP HANA 数据库
 description: 在本教程中，了解如何将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 6273b4d5745b3c13b48622cde842c0222a47c5d4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: f64dd74ad0e038c5cad152e20ae2255de03114e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382421"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79501453"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教程：备份 Azure VM 中的 SAP HANA 数据库
 
@@ -96,7 +96,27 @@ ms.locfileid: "78382421"
 
 * 安装或更新分发版中 Azure 备份代理所需的任何包。
 * 执行与 Azure 备份服务器和相关服务（例如 Azure Active Directory 和 Azure 存储）之间的出站网络连接检查。
-* 使用[先决条件](#prerequisites)中列出的用户密钥登录到 HANA 系统。 此密钥用于在 HANA 系统中创建备份用户 (AZUREWLBACKUPHANAUSER)，成功运行注册前脚本后，可以删除此密钥。 此备份用户 (AZUREWLBACKUPHANAUSER) 使备份代理能够发现、备份和还原 HANA 系统中的数据库。
+* 使用[先决条件](#prerequisites)中列出的用户密钥登录到 HANA 系统。 此用户密钥用于在 HANA 系统中创建备份用户 (AZUREWLBACKUPHANAUSER)，成功运行注册前脚本后，可以删除此用户密钥。
+* 为 AZUREWLBACKUPHANAUSER 分配了以下必需的角色和权限：
+  * 数据库管理员（如果使用的是 MDC）和备份管理员（如果使用的是 SDC）：在还原期间创建新数据库。
+  * 目录读取：读取备份目录。
+  * SAP_INTERNAL_HANA_SUPPORT：访问一些专用表。
+* 此脚本在 **hdbuserstore** 中为 HANA 备份插件的 AZUREWLBACKUPHANAUSER 添加一个密钥，以便处理所有操作（数据库查询、还原操作、配置和运行备份）。
+
+>[!NOTE]
+> 你可以将[先决条件](#prerequisites)中列出的用户密钥作为参数显式传递给预注册脚本：`-sk SYSTEM_KEY_NAME, --system-key SYSTEM_KEY_NAME` <br><br>
+>若要了解脚本接受哪些其他参数，请使用命令 `bash msawb-plugin-config-com-sap-hana.sh --help`
+
+若要确认创建密钥，请在具有 SIDADM 凭据的 HANA 计算机上运行以下 HDBSQL 命令：
+
+```hdbsql
+hdbuserstore list
+```
+
+命令输出应显示 {SID}{DBNAME} 密钥，用户显示为 AZUREWLBACKUPHANAUSER。
+
+>[!NOTE]
+> 请确保 `/usr/sap/{SID}/home/.hdb/` 下有一组唯一的 SSFS 文件。 此路径中应只有一个文件夹。
 
 ## <a name="create-a-recovery-service-vault"></a>创建恢复服务保管库
 

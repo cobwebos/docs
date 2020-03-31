@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 603bffe3d28214dbdcd51888925c3c653d0759e7
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 89ed0bad2729a9e0983d4ef7f8a53faa4f5426ac
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068185"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79415644"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>教程：在 Azure 中备份和还原 Windows 虚拟机的文件
 
@@ -33,7 +33,7 @@ ms.locfileid: "74068185"
 
 ## <a name="backup-overview"></a>备份概述
 
-当 Azure 备份服务启动备份作业时，将触发备份扩展来创建时间点快照。 Azure 备份服务使用 _VMSnapshot_ 扩展。 该扩展是在首次 VM 备份（如果 VM 正在运行）期间安装的。 如果 VM 未运行，备份服务将创建基础存储的快照（因为在 VM 停止时不会发生任何应用程序写入）。
+当 Azure 备份服务启动备份作业时，将触发备份扩展来创建时间点快照。 Azure 备份服务使用 [VMSnapshot 扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows)。 该扩展是在首次 VM 备份（如果 VM 正在运行）期间安装的。 如果 VM 未运行，备份服务将创建基础存储的快照（因为在 VM 停止时不会发生任何应用程序写入）。
 
 创建 Windows VM 快照时，备份服务与卷影复制服务 (VSS) 互相配合，来获取虚拟机磁盘的一致性快照。 Azure 备份服务创建快照后，数据将传输到保管库。 为最大限度地提高效率，服务仅标识和传输自上次备份以后已更改的数据块。
 
@@ -42,7 +42,7 @@ ms.locfileid: "74068185"
 ## <a name="create-a-backup"></a>创建备份
 在恢复服务保管库中创建一个简单的已计划每日备份。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 在左侧菜单中选择“虚拟机”。  
 1. 从列表中选择要备份的 VM。
 1. 在 VM 边栏选项卡上的“操作”部分中，单击“备份”。   此时会打开“启用备份”边栏选项卡。 
@@ -93,7 +93,7 @@ ms.locfileid: "74068185"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 VM 的备份

@@ -2,14 +2,14 @@
 title: 使用基于代理的 Azure Migrate 服务器迁移功能迁移 VMware VM
 description: 了解如何使用 Azure Migrate 运行基于代理的 VMware VM 迁移。
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388957"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222024"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
@@ -156,7 +156,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以便：
 
 - 为计算机启用了复制时，Azure Migrate 复制设备可以执行此服务的推送安装，你也可以手动安装或使用安装工具安装。
 - 在本教程中，我们将使用推送安装来安装移动服务。
-- 若要执行推送安装，需要准备一个供 Azure Migrate 服务器迁移用来访问 VM 的帐户。
+- 若要执行推送安装，需要准备一个供 Azure Migrate 服务器迁移用来访问 VM 的帐户。 如果不手动安装移动服务，则此帐户仅用于推送安装。
 
 按如下所述准备此帐户：
 
@@ -409,7 +409,10 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以便：
 
 ## <a name="complete-the-migration"></a>完成迁移
 
-1. 完成迁移后，右键单击该 VM 并选择“停止迁移”。  这会停止本地计算机的复制，并清理 VM 的复制状态信息。
+1. 完成迁移后，右键单击该 VM 并选择“停止迁移”。  这样会执行以下操作：
+    - 停止本地计算机的复制。
+    - 从 Azure Migrate 的“复制服务器”  计数中删除该计算机：服务器迁移。
+    - 清除 VM 的复制状态信息。
 2. 在已迁移的计算机上安装 Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 代理。
 3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
 4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。

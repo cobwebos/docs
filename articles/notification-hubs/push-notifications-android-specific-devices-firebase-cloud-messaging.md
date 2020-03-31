@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心和 Google Firebase Cloud Messaging 将通知推送到特定的 Android 设备 | Microsoft Docs
+title: 使用 Azure 通知中心和 Google Firebase Cloud Messaging 将推送通知发送到特定设备 | Microsoft Docs
 description: 了解如何使用通知中心通过 Azure 通知中心和 Google Firebase Cloud Messaging (FCM) 将通知推送到特定的 Android 设备。
 services: notification-hubs
 documentationcenter: android
@@ -17,14 +17,14 @@ ms.date: 04/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: 1d0825fcfbcf10aaebc320a5c7cbbf2dd8c13856
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: b7ee3afc2e8b9958a868c8c117262d2017c9b600
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213343"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80126876"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-firebase-cloud-messaging-fcm"></a>教程：使用 Azure 通知中心和 Google Firebase Cloud Messaging (FCM) 将通知推送到特定的 Android 设备
+# <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>教程：使用通知中心和 Google Firebase Cloud Messaging 将通知发送到特定设备
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -34,7 +34,7 @@ ms.locfileid: "71213343"
 
 在通知中心创建注册时，通过加入一个或多个*标记*来启用广播方案。 将通知发送到标签时，已注册该标签的所有设备将接收通知。 因为标签是简单的字符串，它们不必提前设置。 有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-tags-segment-push-message.md)。
 
-在本教程中，请执行以下操作：
+在本教程中，将执行以下操作：
 
 > [!div class="checklist"]
 > * 向移动应用添加类别选择。

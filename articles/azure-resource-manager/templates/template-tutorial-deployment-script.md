@@ -10,22 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/24/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 21725e64bb359b2f11086baceb186605f010b796
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 94b351ddb18ca596f47e8ef40cff8229c838d7bd
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561453"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239206"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>教程：使用部署脚本创建自签名证书（预览版）
 
-了解如何使用 Azure 资源管理器模板中的部署脚本。 可以使用部署脚本执行无法由资源管理器模板完成的自定义步骤。 例如，创建自签名证书。  在本教程中，你将创建一个模板来部署 Azure 密钥保管库，然后在同一模板中使用 `Microsoft.Resources/deploymentScripts` 资源来创建证书并将证书添加到密钥保管库。 若要详细了解部署脚本，请参阅[使用 Azure 资源管理器模板中的部署脚本](./deployment-script-template.md)。
-
-> [!NOTE]
-> 部署脚本目前为预览版。 若要使用它，必须[注册预览版](https://aka.ms/armtemplatepreviews)。
+了解如何使用 Azure 资源管理器 (ARM) 模板中的部署脚本。 可以使用部署脚本执行无法由 ARM 模板完成的自定义步骤。 例如，创建自签名证书。  在本教程中，你将创建一个模板来部署 Azure 密钥保管库，然后在同一模板中使用 `Microsoft.Resources/deploymentScripts` 资源来创建证书并将证书添加到密钥保管库。 若要详细了解部署脚本，请参阅[使用 ARM 模板中的部署脚本](./deployment-script-template.md)。
 
 > [!IMPORTANT]
 > 在同一资源组中会创建两个部署脚本资源（一个存储帐户和一个容器实例），用于执行脚本和进行故障排除。 当脚本执行达到某个最终状态时，这些资源通常会被脚本服务删除。 在这些资源删除之前，这些资源会一直向你收费。 若要了解详细信息，请参阅[清理部署脚本资源](./deployment-script-template.md#clean-up-deployment-script-resources)。
@@ -39,11 +36,11 @@ ms.locfileid: "77561453"
 > * 调试失败的脚本
 > * 清理资源
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 
-* **包含资源管理器工具扩展的 [Visual Studio Code](https://code.visualstudio.com/)** 。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](./use-vs-code-to-create-template.md)。
+* **包含资源管理器工具扩展的 [Visual Studio Code](https://code.visualstudio.com/)** 。 请参阅[使用 Visual Studio Code 创建 ARM 模板](./use-vs-code-to-create-template.md)。
 
 * **在订阅级别具有参与者角色的用户分配的托管标识**。 此标识用来执行部署脚本。 若要创建一个标识，请参阅[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)。 部署模板时需要此标识 ID。 标识符的格式为：
 
@@ -62,7 +59,7 @@ ms.locfileid: "77561453"
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
-无需从头开始创建模板，可以通过 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)打开一个模板。 Azure 快速入门模板是资源管理器模板的存储库。
+无需从头开始创建模板，可以通过 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)打开一个模板。 Azure 快速入门模板是 ARM 模板的存储库。
 
 本快速入门中使用的模板名为[创建 Azure 密钥保管库和机密](https://azure.microsoft.com/resources/templates/101-key-vault-create/)。 该模板将创建一个密钥保管库，然后向该密钥保管库中添加机密。
 
@@ -348,7 +345,7 @@ program.\nCheck the spelling of the name, or if a path was included, verify that
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已了解了如何使用 Azure 资源管理器模板中的部署脚本。 若要了解如何根据条件部署 Azure 资源，请参阅：
+本教程介绍了如何使用 ARM 模板中的部署脚本。 若要了解如何根据条件部署 Azure 资源，请参阅：
 
 > [!div class="nextstepaction"]
 > [使用条件](./template-tutorial-use-conditions.md)

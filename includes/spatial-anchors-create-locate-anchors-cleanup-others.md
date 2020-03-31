@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 6d18cce06a249958e67ca07859a7cc058e2fba45
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67172674"
 ---
-若要正确地清除会话发布后的所有引用。
+若要在会话后进行适当清理，请释放所有引用。

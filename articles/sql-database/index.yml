@@ -3,7 +3,7 @@ title: Azure SQL 数据库文档
 summary: Azure SQL 数据库是基于最新稳定版 Microsoft SQL Server 的关系数据库即服务 (DBaaS)。
 metadata:
   title: 文档
-  meta.description: Learn how to use Azure SQL databases.
+  description: 查找有关 Azure SQL 数据库（基于最新稳定版 Microsoft SQL Server 的关系数据库即服务 (DBaaS)）的文档。
   services: sql-database
   ms.service: sql-database
   ms.subservice: service
@@ -13,12 +13,12 @@ metadata:
   author: stevestein
   ms.author: sstein
   ms.date: 10/30/2019
-  ms.openlocfilehash: c327873d3b122a60239cabc4534e2feec31b9091
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: ca825eb87e39dcc66e0cff56577849be6fa8c702
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73820579"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80369350"
 landingContent:
 - title: 关于 SQL 数据库
   linkLists:

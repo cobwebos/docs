@@ -43,6 +43,8 @@
       href: compliance-certifications.md
     - name: 中央管理
       href: central-management.md
+    - name: 远程工作支持
+      href: remote-work-support.md
 - name: 操作方法指南
   items:
     - name: 使用 Azure PowerShell 进行部署

@@ -1,15 +1,15 @@
 ---
-title: 教程 - 大规模备份 Azure 虚拟机
+title: 教程 - 备份多个 Azure 虚拟机
 description: 在本教程中，了解如何创建恢复服务保管库、定义备份策略以及同时备份多个虚拟机。
 ms.date: 01/31/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 6034202649e6d9bce75f0069316b79b55e533490
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f9306f2ef5c4b2a53dcba17cafca9ea13b8dab43
+ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171854"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80245236"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 门户备份多个虚拟机
 
@@ -24,7 +24,7 @@ ms.locfileid: "74171854"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 

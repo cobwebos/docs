@@ -51,7 +51,7 @@
     - name: Azure 应用服务和 Functions
       href: /azure/app-service/overview-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure 事件中心
-      href: /azure/event-hubs/authenticate-managed-identity.md?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
+      href: /azure/event-hubs/authenticate-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure 容器实例
       href: /azure/container-instances/container-instances-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
 - name: 操作方法指南
@@ -86,7 +86,7 @@
       items:
         - name: 获取访问令牌
           href: how-to-use-vm-token.md
-        - name: 使用托管标识登录到 Powershell 和 CLI
+        - name: 使用托管标识登录到 PowerShell 和 CLI
           href: how-to-use-vm-sign-in.md
         - name: 与 Azure SDK 配合使用
           href: how-to-use-vm-sdk.md

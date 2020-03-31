@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 257af309ebdb9080c3cd60b8b89a2c992ecf5145
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: da5db7d956b1ba8aa1ac245b77fe0d4cb31909c1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906571"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061462"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -22,7 +22,7 @@ ms.locfileid: "76906571"
 
 本快速入门介绍如何使用完全在浏览器中运行的 JavaScript 代码来管理 Blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将使用必需的安全措施来确保对 Blob 存储帐户的访问受到保护。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - 一个 Azure 存储帐户。 [创建存储帐户](../common/storage-account-create.md)。
@@ -43,10 +43,10 @@ ms.locfileid: "76906571"
 |设置  |值  | 说明 |
 |---------|---------|---------|
 | 允许的域 | * | 接受一个逗号分隔的列表，其中的域设置为可以接受的域。 将值设置为 `*` 意味着所有域都可以访问存储帐户。 |
-| 允许的谓词     | delete、get、head、merge、post、options 和 put | 列出允许对存储帐户执行操作的 HTTP 谓词。 对于本快速入门，请选择所有可用的选项。 |
+| 允许的方法     | delete、get、head、merge、post、options 和 put | 列出允许对存储帐户执行操作的 HTTP 谓词。 对于本快速入门，请选择所有可用的选项。 |
 | 允许的标题 | * | 定义一个列表，其中包含存储帐户允许的请求标头（包括带前缀的标头）。 将值设置为 `*` 意味着所有标头都可以进行访问。 |
 | 公开的标题 | * | 列出帐户允许的响应标头。 将值设置为 `*` 意味着帐户可以发送任何标头。  |
-| 最长存在时间(秒) | 86400 | 浏览器缓存预检 OPTIONS 请求的最长时间。 值为 *86400* 意味着缓存可以保留一整天。 |
+| 最长时间（秒） | 86400 | 浏览器缓存预检 OPTIONS 请求的最长时间。 值为 *86400* 意味着缓存可以保留一整天。 |
 
 > [!IMPORTANT]
 > 请确保将生产环境中使用的任何设置所公开的针对存储帐户的访问权限降至最低，以便始终能够进行安全的访问。 此处描述的 CORS 设置适用于快速入门，因为快速入门定义的安全策略是宽松的。 但是，不建议对实际环境使用这些设置。

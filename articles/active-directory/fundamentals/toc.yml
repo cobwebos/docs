@@ -5,8 +5,12 @@
   items:
     - name: 什么是 Azure Active Directory？
       href: active-directory-whatis.md
+    - name: 将 Azure AD 与 ADDS 进行比较
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Azure Active Directory 中的新增功能
       href: whats-new.md
+    - name: Microsoft 365 政府版中的新增功能
+      href: whats-new-microsoft-365-government.md
 - name: 快速入门
   expanded: true
   items:
@@ -17,8 +21,6 @@
 - name: 概念
   expanded: true
   items:
-    - name: 标识安全分数
-      href: identity-secure-score.md
     - name: 安全性
       items:
         - name: 启用 MFA
@@ -27,24 +29,30 @@
           href: concept-fundamentals-security-defaults.md
         - name: 阻止传统身份验证
           href: concept-fundamentals-block-legacy-authentication.md
-    - name: 组和访问管理
-      href: active-directory-manage-groups.md
-    - name: 基于组的许可
-      href: active-directory-licensing-whatis-azure-portal.md
-    - name: Azure AD 体系结构
-      href: active-directory-architecture.md
-    - name: 默认用户权限
-      href: users-default-permissions.md
-    - name: 部署 30 天、90 天及之后的时间
+        - name: 标识安全分数
+          href: identity-secure-score.md
+    - name: 组和用户
+      items:
+        - name: 组和访问管理
+          href: active-directory-manage-groups.md
+        - name: 基于组的许可
+          href: active-directory-licensing-whatis-azure-portal.md
+        - name: 默认用户权限
+          href: users-default-permissions.md
+    - name: 体系结构
+      items:
+        - name: Azure AD 体系结构
+          href: active-directory-architecture.md
+    - name: 部署指南
+      items:
+        - name: 部署 30 天、90 天及之后的时间
       href: active-directory-deployment-checklist-p2.md
-    - name: 用于欧盟的标识数据存储
-      href: active-directory-data-storage-eu.md
-    - name: 用于澳大利亚和新西兰的标识数据存储
-      href: active-directory-data-storage-australia-newzealand.md
-    - name: Microsoft 365 政府版中的新增功能
-      href: whats-new-microsoft-365-government.md
-    - name: 将 Azure AD 与 ADDS 进行比较
-      href: active-directory-compare-azure-ad-to-ad.md
+    - name: 数据存储
+      items:
+        - name: 用于欧洲的标识数据存储
+          href: active-directory-data-storage-eu.md
+        - name: 用于澳大利亚和新西兰的标识数据存储
+          href: active-directory-data-storage-australia-newzealand.md
     - name: Azure AD 操作参考
       items:
         - name: 介绍

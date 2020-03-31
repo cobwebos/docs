@@ -17,14 +17,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: b68d77bfdcf3fee0285b3c03ae0c598a3f6875c0
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 709926671e1ad4d8beefaf0f1cff4c56b1948ca3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531133"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127369"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging（已弃用）向特定的 Android 应用程序用户推送通知
+# <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging（已弃用）向特定 Android 用户发送推送通知
 
 > [!WARNING]
 > 截至 2018 年 4 月 10 日，Google 已弃用 Google Cloud Messaging (GCM)。 GCM 服务器和客户端 API 已弃用，最快将于 2019 年 5 月 29 日移除。 有关详细信息，请参阅 [GCM 和 FCM 常见问题解答](https://developers.google.com/cloud-messaging/faq)。
@@ -40,7 +40,7 @@ ms.locfileid: "75531133"
 > * 更新 Android 应用程序。
 > * 测试应用程序
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始本教程之前完成[教程：使用 Azure 通知中心和 Google Cloud Messaging 将通知推送到 Android 设备](notification-hubs-android-push-notification-google-gcm-get-started.md)。
 

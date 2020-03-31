@@ -10,12 +10,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 2521adfda731c06c879f5cfeb6283567228bf664
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c156d5f1242674adc53a2a813e9b2c140221ecfb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919356"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245304"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 Java Spring 应用
 
@@ -31,13 +31,15 @@ ms.locfileid: "77919356"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-1. 选择“配置资源管理器” > “+创建”来添加以下键值对   ：
+6. 选择“配置资源管理器” > “+ 创建” > “键-值”来添加以下键值对    ：
 
     | 密钥 | 值 |
     |---|---|
     | /application/config.message | 你好 |
 
     暂时将“标签”和“内容类型”保留为空   。
+
+7. 选择“应用”。 
 
 ## <a name="create-a-spring-boot-app"></a>创建 Spring Boot 应用
 
@@ -146,7 +148,7 @@ ms.locfileid: "77919356"
 
 1. 设置名为“APP_CONFIGURATION_CONNECTION_STRING”的环境变量，并将其设置为应用配置存储的访问密钥  。 在命令行中，运行以下命令并重启命令提示符，以使更改生效：
 
-    ```CLI
+    ```cmd
         setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
     ```
 
@@ -158,7 +160,7 @@ ms.locfileid: "77919356"
 
     如果使用 macOS 或 Linux，则请运行以下命令：
 
-    ```console
+    ```cmd
         export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
@@ -166,14 +168,14 @@ ms.locfileid: "77919356"
 
 1. 使用 Maven 生成 Spring Boot 应用程序，然后运行该程序，例如：
 
-    ```CLI
+    ```cmd
     mvn clean package
     mvn spring-boot:run
     ```
 
 2. 应用程序运行以后，请使用 curl 测试该应用程序，例如  ：
 
-      ```CLI
+      ```cmd
       curl -X GET http://localhost:8080/
       ```
 
@@ -185,7 +187,7 @@ ms.locfileid: "77919356"
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何创建新的应用程序配置存储区，并将其用于 Java Spring 应用。 有关详细信息，请参阅 [Azure 上的 Spring](https://docs.microsoft.com/java/azure/spring-framework/)。 若要了解如何使用 Azure 托管标识来简化对应用程序配置的访问，请继续学习下一篇教程。
+本快速入门介绍了如何创建新的应用程序配置存储区，并将其用于 Java Spring 应用。 有关详细信息，请参阅 [Azure 上的 Spring](https://docs.microsoft.com/java/azure/spring-framework/)。 若要了解如何使 Java Spring 应用能够动态刷新配置设置，请继续学习下一个教程。
 
 > [!div class="nextstepaction"]
-> [托管标识集成](./howto-integrate-azure-managed-service-identity.md)
+> [启用动态配置](./enable-dynamic-configuration-java-spring-app.md)

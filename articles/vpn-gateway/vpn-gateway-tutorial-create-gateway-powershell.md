@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: b144a70ee88138966d9cc38a56e1cff1e63fca1b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 66efa0f2922e70908616c7c447d782efee8f6b1b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424145"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79137171"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>教程：使用 PowerShell 创建和管理 VPN 网关
 
@@ -28,9 +28,7 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 
 ![VNet 和 VPN 网关](./media/vpn-gateway-tutorial-create-gateway-powershell/vnet1-gateway.png)
 
-### <a name="azure-cloud-shell-and-azure-powershell"></a>Azure Cloud Shell 和 Azure PowerShell
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>使用 Azure Cloud Shell 和 Azure PowerShell
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
@@ -103,7 +101,7 @@ $vnet   = New-AzVirtualNetwork `
 Azure VPN 网关通过 Internet 与本地 VPN 设备进行通信，执行 IKE（Internet 密钥交换）协商并建立 IPsec 隧道。 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 和 [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) 创建一个公共 IP 地址并将其分配给 VPN 网关，如以下示例中所示：
 
 > [!IMPORTANT]
-> 目前，只能为网关使用“动态”公用 IP 地址。 Azure VPN 网关不支持静态 IP 地址。
+> 目前，只能为网关使用“动态”公共 IP 地址。 Azure VPN 网关不支持静态 IP 地址。
 
 ```azurepowershell-interactive
 $gwpip    = New-AzPublicIpAddress -Name $GwIP1 -ResourceGroupName $RG1 `
@@ -186,7 +184,7 @@ Remove-AzResourceGroup -Name $RG1
 > * 调整 VPN 网关大小
 > * 重置 VPN 网关
 
-转到以下教程来了解 S2S、VNet 到 VNet 和 P2S 连接。
+若要了解 S2S 连接、VNet 到 VNet 连接和 P2S 连接，请转到以下教程。
 
 > [!div class="nextstepaction"]
 > * [创建 S2S 连接](vpn-gateway-tutorial-vpnconnection-powershell.md)

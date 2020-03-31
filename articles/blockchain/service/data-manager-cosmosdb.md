@@ -1,15 +1,15 @@
 ---
 title: 使用区块链数据管理器来更新 Azure Cosmos DB - Azure 区块链服务
 description: 使用适用于 Azure 区块链服务的区块链数据管理器向 Azure Cosmos DB 发送区块链数据
-ms.date: 12/04/2019
+ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 79c39d9883b5ba618e368b0ff6d3e95f1af5bd96
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977382"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79533175"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>教程：使用区块链数据管理器向 Azure Cosmos DB 发送数据
 
@@ -41,7 +41,7 @@ ms.locfileid: "74977382"
 
 区块链数据管理器实例连接并监控 Azure 区块链服务事务节点。 实例从事务节点捕获所有原始块和原始事务数据。 出站连接将区块链数据发送到 Azure 事件网格。 创建实例时，可以配置单个出站连接。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 转到在先决条件[快速入门：使用 Azure 门户创建区块链成员](create-member.md)中创建的 Azure 区块链服务成员。 选择“区块链数据管理器”  。
 1. 选择 **添加** 。
 
@@ -247,17 +247,17 @@ ms.locfileid: "74977382"
 
 ## <a name="send-a-transaction"></a>发送事务
 
-接下来，将事务发送到区块链账本以测试所创建的内容。 使用在先决条件[教程：  使用 Visual Studio Code 创建、生成和部署智能合同](send-transaction.md)中创建的“sendrequest.js”脚本。
+接下来，将事务发送到区块链账本以测试所创建的内容。 使用在先决条件[教程   ：使用 Visual Studio Code 创建、生成和部署智能合同](send-transaction.md)中创建的 HelloBlockchain 合同的 SendRequest 函数。
 
-在 VS Code 的终端窗格中，使用 Truffle 针对联盟区块链网络执行该脚本。 在终端窗格菜单栏中选择“终端”选项卡，并从下拉列表中选择“PowerShell”。  
+1. 使用 Azure 区块链开发工具包智能合同交互页调用 **SendRequest** 函数。 右键单击“HelloBlockchain.sol”，并从菜单中选择“显示智能合同交互页”。  
 
-``` PowerShell
-truffle exec sendrequest.js --network <blockchain network>
-```
+    ![从菜单中选择“显示智能合同交互页”](./media/data-manager-cosmosdb/contract-interaction.png)
 
-将 \<blockchain network\> 替换为 **truffle-config.js** 中定义的区块链网络名称。
+1. 选择 **SendRequest** 合同操作，并为 **requestMessage** 参数 并输入 **Hello, Blockchain!** 。 选择“执行”以通过事务调用 **SendRequest** 函数。 
 
-![添加事务](./media/data-manager-cosmosdb/send-request.png)
+    ![执行 SendRequest 操作](./media/data-manager-cosmosdb/sendrequest-action.png)
+
+SendRequest 函数设置 **RequestMessage** 和 **State** 字段。 **RequestMessage** 的当前状态是传递的参数 **Hello, Blockchain**。 **State** 字段值保留为 **Request**。
 
 ## <a name="view-transaction-data"></a>查看事务数据
 

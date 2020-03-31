@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 10/08/2019
-ms.openlocfilehash: f256adfd1fc970512cad5fb93ec235fc27a50373
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.custom: hdinsightactive
+ms.date: 03/20/2020
+ms.openlocfilehash: 2885fccd95d09149ae496b80a658f34e5b697d0b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817742"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80064479"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用 Apache Kafka Streams API
 
@@ -25,7 +25,7 @@ Kafka 流处理通常使用 Apache Spark 或 Apache Storm 完成。 Kafka 版本
 
 有关 Kafka Streams 的详细信息，请参阅 Apache.org 上的 [Streams 简介](https://kafka.apache.org/10/documentation/streams/)文档。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 了解代码
@@ -49,8 +49,8 @@ Kafka 流处理通常使用 Apache Spark 或 Apache Storm 完成。 Kafka 版本
 
 示例应用程序位于 `Streaming` 子目录的 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 中。 应用程序由两个文件组成：
 
-* `pom.xml`：此文件定义项目依赖项、Java 版本和打包方法。
-* `Stream.java`：此文件实现流式处理逻辑。
+* `pom.xml`设置用户帐户 ：此文件定义项目依赖项、Java 版本和打包方法。
+* `Stream.java`设置用户帐户 ：此文件实现流式处理逻辑。
 
 ### <a name="pomxml"></a>Pom.xml
 
@@ -71,8 +71,8 @@ Kafka 流处理通常使用 Apache Spark 或 Apache Storm 完成。 Kafka 版本
 
 * 插件：Maven 插件提供各种功能。 此项目使用了以下插件：
 
-    * `maven-compiler-plugin`：用于将项目使用的 Java 版本设置为 8。 HDInsight 3.6 需要 Java 8。
-    * `maven-shade-plugin`：用于生成包含此应用程序以及任何依赖项的 uber jar。 它还用于设置应用程序的入口点，以便直接运行 Jar 文件，而无需指定主类。
+    * `maven-compiler-plugin`设置用户帐户 ：用于将项目使用的 Java 版本设置为 8。 HDInsight 3.6 需要 Java 8。
+    * `maven-shade-plugin`设置用户帐户 ：用于生成包含此应用程序以及任何依赖项的 uber jar。 它还用于设置应用程序的入口点，以便直接运行 Jar 文件，而无需指定主类。
 
 ### <a name="streamjava"></a>Stream.java
 
@@ -166,6 +166,7 @@ public class Stream
     ```
 
 4. 提取具有正确大小写格式的群集名称。 群集名称的实际大小写格式可能出乎预期，具体取决于群集的创建方式。 此命令将获取实际的大小写，然后将其存储在变量中。 输入以下命令：
+
     ```bash
     export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
     ```
@@ -173,7 +174,7 @@ public class Stream
     > [!Note]  
     > 如果要从群集外部执行此过程，存储群集名称的过程则有所不同。 从 Azure 门户中获取采用小写格式的群集名称。 然后，将以下命令中的 `<clustername>` 替换为群集名称，并执行：`export clusterName='<clustername>'`。  
 
-5. 若要获取 Kafka 代理主机和 Apache Zookeeper 主机，请使用以下命令。 出现提示时，输入群集登录（管理员）帐户的密码。 系统会提示输入密码两次。
+5. 若要获取 Kafka 代理主机和 Apache Zookeeper 主机，请使用以下命令。 出现提示时，输入群集登录（管理员）帐户的密码。
 
     ```bash
     export KAFKAZKHOSTS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2);
@@ -181,8 +182,8 @@ public class Stream
     export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 
-> [!Note]  
-> 这些命令需要 Ambari 访问权限。 如果群集位于 NSG 后面，请在可访问 Ambari 的计算机上运行这些命令。 
+    > [!Note]  
+    > 这些命令需要 Ambari 访问权限。 如果群集位于 NSG 后面，请在可访问 Ambari 的计算机上运行这些命令。
 
 6. 若要创建流式处理操作所使用的主题，请使用以下命令：
 
@@ -198,10 +199,10 @@ public class Stream
 
     主题用于以下目的：
 
-   * `test`：本主题是接收记录的位置。 流式处理应用程序从此处读取。
-   * `wordcounts`：本主题是流式处理应用程序存储其输出的位置。
-   * `RekeyedIntermediateTopic`：本主题用于在 `countByKey` 运算符更新计数时对数据进行重新分区。
-   * `wordcount-example-Counts-changelog`：本主题是 `countByKey` 操作使用的状态存储
+   * `test`设置用户帐户 ：本主题是接收记录的位置。 流式处理应用程序从此处读取。
+   * `wordcounts`设置用户帐户 ：本主题是流式处理应用程序存储其输出的位置。
+   * `RekeyedIntermediateTopic`设置用户帐户 ：本主题用于在 `countByKey` 运算符更新计数时对数据进行重新分区。
+   * `wordcount-example-Counts-changelog`设置用户帐户 ：本主题是 `countByKey` 操作使用的状态存储
 
     Kafka on HDInsight 也可以配置为自动创建主题。 有关详细信息，请参阅[配置自动主题创建](apache-kafka-auto-create-topics.md)文档。
 
