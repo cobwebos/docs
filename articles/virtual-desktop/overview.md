@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/27/2020
+ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a32ee682490c5930b8c48d069087020c4763dcb
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e62b3c551f41bca0055f35cf6bf62c59d921c73b
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127766"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80294830"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？ 
 
@@ -123,11 +123,32 @@ Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由
 
 以下远程桌面客户端支持 Windows 虚拟桌面：
 
-* [Windows](connect-windows-7-and-10.md)
+* [Windows 桌面](connect-windows-7-and-10.md)
 * [Web](connect-web.md)
-* [Mac](connect-macos.md)
+* [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android（预览）](connect-android.md)
+
+> [!IMPORTANT]
+> Windows 虚拟桌面不支持 RemoteApp 和桌面连接 (RADC) 客户端或远程桌面连接 (MSTSC) 客户端。
+
+> [!IMPORTANT]
+> Windows 虚拟桌面目前不支持 Windows 应用商店中的远程桌面客户端。 将来的版本会添加对此客户端的支持。
+
+远程桌面客户端必须有权访问以下 URL：
+
+|地址|出站端口|目的|客户端|
+|---|---|---|---|
+|*.wvd.microsoft.com|TCP 端口 443|服务流量|All|
+|*.servicebus.windows.net|TCP 端口 443|排查数据问题|All|
+|go.microsoft.com|TCP 端口 443|Microsoft FWLink|All|
+|aka.ms|TCP 端口 443|Microsoft URL 缩短符|All|
+|docs.microsoft.com|TCP 端口 443|文档|All|
+|privacy.microsoft.com|TCP 端口 443|隐私声明|All|
+|query.prod.cms.rt.microsoft.com|TCP 端口 443|客户端更新|Windows 桌面|
+
+>[!IMPORTANT]
+>若要获取可靠的客户端体验，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。 这些 URL 仅对应于客户端站点和资源，而不包括 Azure Active Directory 等其他服务的 URL。
 
 ## <a name="supported-virtual-machine-os-images"></a>受支持的虚拟机 OS 映像
 

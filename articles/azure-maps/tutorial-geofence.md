@@ -1,20 +1,20 @@
 ---
 title: 教程：在地图上创建地理围栏并跟踪设备 | Microsoft Azure Maps
 description: 了解如何使用 Microsoft Azure Maps 空间服务设置地理围栏并跟踪相对于地理围栏的设备。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e0e918a2508bb65de176b030a73598e221aff676
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 126829f12d71e40511c26e781cb191988c1d031e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370162"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80333864"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教程：使用 Azure Maps 设置地域隔离区
 
@@ -32,7 +32,7 @@ ms.locfileid: "77370162"
 > *   使用 Azure Maps 地域隔离区服务 API 跟踪施工资产是否在工地范围内。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户 
 
@@ -150,13 +150,13 @@ ms.locfileid: "77370162"
    }
    ```
 
-5. 单击“发送”并查看响应标头。 成功请求后，**Location** 标头会包含状态 URI。 状态 URI 采用以下格式。 
+5. 单击“发送”并查看响应标头。 成功请求后，**Location** 标头会包含状态 URI。 状态 URI 采用以下格式。 uploadStatusId 值不在 { } 之间。 常见的做法是使用 {} 显示用户必须输入的值或对不同用户不同的值。
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. 复制状态 URI 并追加 subscription-key。 状态 URI 格式应如下所示。 请注意，在下面的格式中，你将使用自己的订阅密钥来替换 {subscription-key}（包括 {}）。
+6. 复制状态 URI 并追加 subscription-key。 状态 URI 格式应如下所示。 请注意，在下面的格式中，你将使用自己的订阅密钥来替换 {subscription-key}，不包括 { }。
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -166,7 +166,8 @@ ms.locfileid: "77370162"
 
    ```JSON
    {
-    "udid" : "{udId}"
+    "status": "Succeeded",
+    "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udId}?api-version=1.0"
    }
    ```
 

@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.date: 03/08/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 6a5cc5bbdb56e308d79b8eb2c8db546184cedb39
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 53036a43cbb0fe3c3a1e61f7124fe7dcbef228f3
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080337"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388927"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>将 Key Vault 与 Azure 专用链接集成
 
@@ -19,11 +19,11 @@ ms.locfileid: "79080337"
 
 Azure 专用终结点是一个网络接口，可以通过私密且安全的方式将你连接到 Azure 专用链接支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
 
-有关详细信息，请参阅[什么是 Azure 专用链接（预览版）？](../private-link/private-link-overview.md)
+有关详细信息，请参阅[什么是 Azure 专用链接？](../private-link/private-link-overview.md)
 
 ## <a name="prerequisites"></a>先决条件
 
-若要将 Key Vault 与 Azure 专用链接（预览版）集成，需要准备好以下各项：
+若要将 Key Vault 与 Azure 专用链接集成，需要准备好以下各项：
 
 - 一个 Key Vault。
 - 一个 Azure 虚拟网络。
@@ -46,7 +46,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
 配置 Key Vault 基本设置后，选择“网络”选项卡并执行以下步骤：
 
-1. 在“网络”选项卡中选中“专用终结点(预览版)”单选按钮。
+1. 在“网络”选项卡中选中“专用终结点”单选按钮。
 1. 单击“+ 添加”按钮添加专用终结点。
 
     ![映像](./media/private-link-service-1.png)
@@ -57,7 +57,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 1. 将“与专用区域 DNS 集成”选项保留不变。  
 1. 选择“确定”。
 
-    ![映像](./media/private-link-service-2.png)
+    ![映像](./media/private-link-service-8.png)
  
 现在可以看到配置的专用终结点。 可以使用相应的选项来删除和编辑此专用终结点。 选择“查看 + 创建”按钮并创建 Key Vault。 完成部署需要 5-10 分钟。 
 
@@ -69,7 +69,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 1. 在搜索栏中键入“key vault”
 1. 从列表中选择要将专用终结点添加到的 Key Vault。
 1. 选择“设置”下的“网络”选项卡
-1. 选择页面顶部的“专用终结点连接(预览版)”选项卡
+1. 选择页面顶部的“专用终结点连接”选项卡
 1. 选择页面顶部的“+ 专用终结点”按钮。
 
     ![插图](./media/private-link-service-3.png) ![插图](./media/private-link-service-4.png)
@@ -100,6 +100,10 @@ az provider register -n Microsoft.KeyVault
 ### <a name="create-a-new-key-vault"></a>创建新的密钥保管库
 ```console
 az keyvault create --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION}
+```
+### <a name="turn-on-key-vault-firewall"></a>启用 Key Vault 防火墙
+```console
+az keyvault update --name {KEY VAULT NAME} --resource-group {RG} --location {AZURE REGION} --default-action deny
 ```
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 ```console
@@ -220,9 +224,9 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 ## <a name="limitations-and-design-considerations"></a>限制和设计注意事项
 
-**定价**：有关定价信息，请参阅 [Azure 专用链接（预览版）定价](https://azure.microsoft.com/pricing/details/private-link/)。
+**定价**：有关定价信息，请参阅 [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link/)。
 
-**限制**：Azure Key Vault 的专用终结点目前为公共预览版。 此功能可在所有 Azure 公共区域中使用。
+**限制**：Azure Key Vault 的专用终结点仅在 Azure 公共区域提供。
 
 **每个 Key Vault 的专用终结点数目上限**：64。
 
@@ -232,5 +236,5 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure 专用链接（预览版）](../private-link/private-link-service-overview.md)
+- 详细了解 [Azure 专用链接](../private-link/private-link-service-overview.md)
 - 详细了解 [Azure Key Vault](key-vault-overview.md)

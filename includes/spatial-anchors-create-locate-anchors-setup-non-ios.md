@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: defdb89f2a9cf3ec270b0f728f90ba07b83d707b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67172654"
 ---
 ## <a name="set-up-the-session"></a>设置会话

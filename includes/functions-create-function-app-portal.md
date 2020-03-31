@@ -9,10 +9,10 @@ ms.date: 03/04/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: c590b61ee1424d32d83dc5f758682fde37492c3a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "80057116"
 ---
 1. 在 Azure 门户菜单或“主页”页中，选择“创建资源”   。
@@ -43,7 +43,7 @@ ms.locfileid: "80057116"
 
     ![Hosting](./media/functions-create-function-app-portal/function-app-create-hosting.png)
 
-1. 选择“下一步:  监视”。 在“监视”  页上，输入以下设置。
+1. **选择“下一步:** 监视”。 在“监视”  页上，输入以下设置。
 
     | 设置      | 建议的值  | 说明 |
     | ------------ | ---------------- | ----------- |
