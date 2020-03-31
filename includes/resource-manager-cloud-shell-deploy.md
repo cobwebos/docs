@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: aac2f3ea2b52ac0319f96279deed13c1145749bd
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74451554"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>从 Cloud Shell 部署模板
 
 可以使用 [Cloud Shell](../articles/cloud-shell/overview.md) 来部署模板。 要部署外部模板，请提供与用于任何外部部署的完全相同的模板 URI。 要部署本地模板，必须先将模板加载到 Cloud Shell 的存储帐户。 本节介绍如何将模板加载到 Cloud Shell 帐户，并将其部署为本地文件。 如果尚未使用过 Cloud Shell，请参阅 [Azure Cloud Shell 概述](../articles/cloud-shell/overview.md)，了解如何设置它。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到 Azure[门户](https://portal.azure.com)。
 
 1. 选择 Cloud Shell 资源组。 名称模式为 `cloud-shell-storage-<region>`。
 
@@ -25,11 +25,11 @@ ms.locfileid: "74451554"
 
    ![选择存储帐户](./media/resource-manager-cloud-shell-deploy/select-storage.png)
 
-1. 选择“Blob”。
+1. 选择**Blob**。
 
    ![选择 Blob](./media/resource-manager-cloud-shell-deploy/select-blobs.png)
 
-1. 选择“+ 容器”。
+1. 选择“+ 容器”****。
 
    ![添加容器](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
@@ -41,7 +41,7 @@ ms.locfileid: "74451554"
 
    ![选择新容器](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
-1. 选择“上传”。
+1. 选择 **"上传**"。
 
    ![上传 blob](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 

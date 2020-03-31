@@ -1,16 +1,16 @@
 ---
-title: Apache Cordova 上添加身份验证
-description: 了解如何在 Azure App Service 中使用移动应用，通过 Google、Facebook、Twitter 和 Microsoft 等标识提供者对 Apache Cordova 应用程序的用户进行身份验证。
+title: 在 Apache Cordova 中添加身份验证
+description: 了解如何使用 Azure 应用服务中的移动应用通过标识提供者（如 Google、Facebook、Twitter 和 Microsoft）对 Apache Cordova 应用的用户进行身份验证。
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 3714ce2a8098608851991115aa82afdc00d08a47
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459382"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>将身份验证添加到 Apache Cordova 应用
@@ -19,23 +19,23 @@ ms.locfileid: "77459382"
 ## <a name="summary"></a>总结
 本教程介绍如何使用支持的标识提供者将身份验证添加到 Apache Cordova 上的待办事项列表快速入门项目。 本教程基于[移动应用入门]教程，必须先完成该教程。
 
-## <a name="register"></a>注册应用以进行身份验证并配置应用服务
+## <a name="register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>注册应用以进行身份验证并配置应用服务
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
 [观看显示类似步骤的视频](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-8-Azure-authentication)
 
-## <a name="permissions"></a>将权限限制为已经过身份验证的用户
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 现在，可以验证是否已禁用对后端的匿名访问。 在 Visual Studio 中：
 
 * 打开完成[移动应用入门]教程后创建的项目。
-* 在“Google Android 模拟器”中运行应用程序。
+* 在“Google Android 模拟器”**** 中运行应用程序。
 * 验证在应用启动后，是否显示“意外的连接失败”。
 
 接下来，需要更新应用程序，以便在从移动应用后端请求资源之前对用户进行身份验证。
 
-## <a name="add-authentication"></a>向应用添加身份验证
+## <a name="add-authentication-to-the-app"></a><a name="add-authentication"></a>向应用程序添加身份验证
 1. 在 **Visual Studio** 中打开项目，并打开 `www/index.html` 文件进行编辑。
 2. 找到 head 节中的 `Content-Security-Policy` 元标记。  将 OAuth 主机添加到允许的源列表。
 
@@ -52,7 +52,7 @@ ms.locfileid: "77459382"
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'
             data: gap: https://login.microsoftonline.com https://yourapp.azurewebsites.net; style-src 'self'">
 
-    将 `https://login.microsoftonline.com` 替换为上表中的 OAuth 主机。  有关 content-security-policy 元标记的详细信息，请参阅 [Content-Security-Policy]。
+    将 `https://login.microsoftonline.com` 替换为上表中的 OAuth 主机。  有关 content-security-policy 元标记的详细信息，请参阅 [Content-Security-Policy 文档]。
 
     在相应的移动设备上使用时，某些身份验证提供程序不需要 Content-Security-Policy 更改。  例如，在 Android 设备上使用 Google 身份验证时便不需要 Content-Security-Policy 更改。
 
@@ -85,7 +85,7 @@ ms.locfileid: "77459382"
 4. 在刚刚添加的代码中，将 `SDK_Provider_Name` 替换为登录提供程序的名称。 例如，对于 Azure Active Directory，请使用 `client.login('aad')`。
 5. 运行您的项目。  当项目已完成初始化后，应用程序将针对所选的身份验证提供程序显示 OAuth 登录页。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a><a name="next-steps"></a>后续步骤
 * 了解有关 Azure 应用服务中的[关于身份验证]。
 * 将[推送通知]添加到 Apache Cordova 应用，继续学习本教程。
 

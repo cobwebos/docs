@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 管理 Azure Data Lake Analytics
+title: 使用 Azure CLI 管理 Azure 数据湖分析
 description: 本文介绍如何使用 Azure CLI 管理 Data Lake Analytics 作业、数据源和用户。
 services: data-lake-analytics
 author: jasonwhowell
@@ -8,12 +8,12 @@ ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: d66926d8ba87096537800d22a9c116b7b10d23cf
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 69a48952ef273acb8cf7eb0ec5968e12b962b622
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309736"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454357"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>使用 Azure 命令行接口 (CLI) 管理 Azure Data Lake Analytics
 
@@ -90,7 +90,7 @@ ms.locfileid: "71309736"
 
 Data Lake Analytics 目前支持以下两个数据源：
 
-* [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
+* [Azure 数据湖存储](../data-lake-store/data-lake-store-overview.md)
 * [Azure 存储](../storage/common/storage-introduction.md)
 
 创建 Analytics 帐户时，必须指定一个 Azure Data Lake 存储帐户作为默认存储帐户。 默认 Data Lake 存储帐户用于存储作业元数据和作业审核日志。 创建 Analytics 帐户后，可添加其他 Data Lake 存储帐户和/或 Azure 存储帐户。 
@@ -193,11 +193,11 @@ Data Lake Analytics 目前支持以下两个数据源：
 
 ## <a name="pipelines-and-recurrences"></a>管道和重复周期
 
-获取关于管道和重复周期的相关信息
+**获取关于管道和重复周期的相关信息**
 
 使用 `az dla job pipeline` 命令查看先前所提交作业的管道信息。
 
-```
+```azurecli
 az dla job pipeline list --account "<Data Lake Analytics Account Name>"
 
 az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeline-identity "<Pipeline ID>"
@@ -205,7 +205,7 @@ az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeli
 
 使用 `az dla job recurrence` 命令查看先前所提交作业的重复周期信息。
 
-```
+```azurecli
 az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
@@ -213,7 +213,7 @@ az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recu
 
 ## <a name="see-also"></a>请参阅
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
-* [Get started with Data Lake Analytics using Azure portal](data-lake-analytics-get-started-portal.md)
+* [使用 Azure 门户开始使用数据湖分析](data-lake-analytics-get-started-portal.md)
 * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
-* [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+* [使用 Azure 门户监视 Azure 数据湖分析作业并排除故障](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 

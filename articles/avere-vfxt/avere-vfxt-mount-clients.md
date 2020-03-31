@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: b8486b5a33226b1faa5e3874144129dbe7a1a2f2
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153405"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>装载 Avere vFXT 群集
@@ -62,35 +62,35 @@ function mount_round_robin() {
 ## <a name="create-the-mount-command"></a>创建装载命令
 
 > [!NOTE]
-> 如果创建 Avere vFXT 群集时未创建新的 Blob 容器，请按在尝试装载客户端之前[配置存储](avere-vfxt-add-storage.md)中所述添加存储系统。
+> 如果在创建 Avere vFXT 群集时未创建新的 Blob 容器，请按照["配置存储"](avere-vfxt-add-storage.md)中所述添加存储系统，然后再尝试装载客户端。
 
 ``mount`` 命令将 vFXT 群集上的虚拟服务器 (vserver) 从客户端映射到本地文件系统上的路径。 格式为 ``mount <vFXT path> <local path> {options}``
 
-装载命令包含三个元素：
+装载命令有三个元素：
 
-* vFXT 路径-群集上的 IP 地址和命名空间接合路径的组合9described）
+* vFXT 路径 - 群集 9 所述群集上的 IP 地址和命名空间交汇点路径的组合）
 * 本地路径 - 客户端上的路径
-* 装载命令选项-在[装载命令参数](#mount-command-arguments)中列出
+* 装载命令选项 - 在["装载"命令参数中列出](#mount-command-arguments)
 
 ### <a name="junction-and-ip"></a>交接点和 IP
 
-vserver 路径是其 IP 地址加上命名空间交接点的路径的组合。 命名空间交接点是在添加存储系统时定义的虚拟路径。
+vserver 路径是其 IP 地址加上命名空间交接点的路径的组合****。 命名空间交接点是在添加存储系统时定义的虚拟路径。
 
-如果群集是通过 Blob 存储创建的，则该容器的命名空间路径将 `/msazure`
+如果群集是使用 Blob 存储创建的，则该容器的命名空间路径为`/msazure`
 
 示例： ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-如果在创建群集后添加了存储，则命名空间接合路径是在创建联接时在 "**命名空间路径**" 中设置的值。 例如，如果使用 ``/avere/files`` 作为命名空间路径，则客户端会将 IP_address:/avere/files 装载到其本地装载点。
+如果在创建群集后添加了存储，则命名空间交汇点路径是在创建交汇点时在**命名空间路径**中设置的值。 例如，如果使用 ``/avere/files`` 作为命名空间路径，则客户端会将 IP_address:/avere/files 装载到其本地装载点**。
 
 ![在命名空间路径字段中使用 /avere/files 添加“添加新交接点”对话框](media/avere-vfxt-create-junction-example.png) <!-- to do - change example and screenshot to vfxt/files instead of avere -->
 
 IP 地址是为 vserver 定义的面向客户端的 IP 地址之一。 可在 Avere 控制面板中的两个位置找到面向客户端的 IP 范围：
 
-* VServers 表（仪表板选项卡） -
+* VServers 表（仪表板选项卡）**** -
 
   ![Avere 控制面板的仪表板选项卡，在图表下方的数据表中选择了 VServer 选项卡，并且带有 IP 地址部分](media/avere-vfxt-ip-addresses-dashboard.png)
 
-* 面向客户端的网络设置页面 -
+* 面向客户端的网络设置页面**** -
 
   ![“设置”>“VServer”>“面向客户端的网络”配置页面，在特定虚拟服务器的表的“地址范围”部分周围有一个圆圈](media/avere-vfxt-ip-addresses-settings.png)
 
@@ -113,6 +113,6 @@ IP 地址是为 vserver 定义的面向客户端的 IP 地址之一。 可在 Av
 
 安装客户端后，可以使用它们将数据复制到群集上的新 Blob 存储容器。 如果不需要填充新存储，请阅读其他链接以了解其他设置任务：
 
-* [将数据移到群集核心文件服务器](avere-vfxt-data-ingest.md)-如何使用多个客户端和线程将数据高效上传到新的核心文件服务器
+* [将数据移动到群集核心文件程序](avere-vfxt-data-ingest.md)- 如何使用多个客户端和线程有效地将数据上载到新的核心文件服务器
 * [自定义群集优化](avere-vfxt-tuning.md) - 定制群集设置以适应工作负载
 * [管理群集](avere-vfxt-manage-cluster.md) - 如何启动或停止群集并管理节点

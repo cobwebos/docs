@@ -1,15 +1,15 @@
 ---
-title: Service Fabric 群集资源管理器-应用程序组
+title: Service Fabric 群集资源管理器 - 应用程序组
 description: 概述 Service Fabric 群集 Resource Manager 中的应用程序组功能
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75452148"
 ---
 # <a name="introduction-to-application-groups"></a>应用程序组简介
@@ -28,14 +28,14 @@ Service Fabric 的群集 Resource Manager 通常通过将负载（通过[指标]
 
 <center>
 
-![应用程序实例定义][Image1]
-</center> 的最大节点数
+![定义最大节点数的应用程序实例][Image1]
+</center>
 
 在左侧的示例中，应用程序未定义最大节点数，并且有三个服务。 群集资源管理器已将所有副本分散到六个可用节点，从而在群集中实现最佳均衡（默认行为）。 在右侧的示例中，可以看到同一个应用程序已限制到三个节点。
 
 控制此行为的参数称为 MaximumNodes。 可在创建应用程序期间设置此参数，或针对已在运行的应用程序实例更新此参数。
 
-PowerShell
+Powershell
 
 ``` posh
 New-ServiceFabricApplication -ApplicationName fabric:/AppName -ApplicationTypeName AppType1 -ApplicationTypeVersion 1.0.0.0 -MaximumNodes 3
@@ -69,7 +69,7 @@ await fc.ApplicationManager.UpdateApplicationAsync(adUpdate);
 - **最大节点容量** – 此设置指定单个节点上应用程序的最大总负载。 如果负载超过此容量，则群集资源管理器会将副本移到其他节点，降低负载。
 
 
-PowerShell：
+Powershell：
 
 ``` posh
 New-ServiceFabricApplication -ApplicationName fabric:/AppName -ApplicationTypeName AppType1 -ApplicationTypeVersion 1.0.0.0 -Metrics @("MetricName:Metric1,MaximumNodeCapacity:100,MaximumApplicationCapacity:1000")
@@ -99,12 +99,12 @@ await fc.ApplicationManager.CreateApplicationAsync(ad);
 - 应用程序实例中的服务数每次都会发生更改 
 - 服务存在，但不会消耗资源 
 
-为应用程序实例保留资源需要指定两个附加参数：MinimumNodes 和 NodeReservationCapacity
+为应用程序实例保留资源需要指定两个附加参数：MinimumNodes 和 NodeReservationCapacity****
 
-- MinimumNodes - 定义应用程序实例应在其上运行的最小节点数。  
-- NodeReservationCapacity - 此设置是应用程序的各项指标。 应用程序中的服务在节点上运行，该值是为该节点上的该应用程序保留的该指标的量。
+- MinimumNodes**** - 定义应用程序实例应在其上运行的最小节点数。  
+- NodeReservationCapacity**** - 此设置是应用程序的各项指标。 应用程序中的服务在节点上运行，该值是为该节点上的该应用程序保留的该指标的量。
 
-结合使用 MinimumNodes 和 NodeReservationCapacity 可以保证为群集中的应用程序保留最小负载。 如果群集中存在的剩余容量比所需要的总预留容量小，则无法创建应用程序。 
+结合使用 MinimumNodes 和 NodeReservationCapacity 可以保证为群集中的应用程序保留最小负载********。 如果群集中存在的剩余容量比所需要的总预留容量小，则无法创建应用程序。 
 
 下面是容量预留的一个示例：
 
@@ -121,7 +121,7 @@ await fc.ApplicationManager.CreateApplicationAsync(ad);
 - 应用程序指标定义方式：
   - NodeReservationCapacity 为 20
 
-PowerShell
+Powershell
 
  ``` posh
  New-ServiceFabricApplication -ApplicationName fabric:/AppName -ApplicationTypeName AppType1 -ApplicationTypeVersion 1.0.0.0 -MinimumNodes 2 -Metrics @("MetricName:Metric1,NodeReservationCapacity:20")
@@ -150,7 +150,7 @@ Service Fabric 为 Application1 保留两个节点上的容量，并不允许 Ap
 ## <a name="obtaining-the-application-load-information"></a>获取应用程序负载信息
 对于每个应用程序，如果具有为一个或多个指标定义的应用程序容量，可以获取其服务的副本报告的聚合负载的相关信息。
 
-PowerShell：
+Powershell：
 
 ``` posh
 Get-ServiceFabricApplicationLoadInformation –ApplicationName fabric:/MyApplication1
@@ -206,7 +206,7 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 - 若要了解群集 Resource Manager 如何管理和均衡群集中的负载，请查看有关[平衡负载](service-fabric-cluster-resource-manager-balancing.md)的文章
 - 从头开始并[获取 Service Fabric 群集 Resource Manager 简介](service-fabric-cluster-resource-manager-introduction.md)
 - 有关在一般情况下指标的工作原理的详细信息，请参阅 [Service Fabric 负载指标](service-fabric-cluster-resource-manager-metrics.md)
-- 群集 Resource Manager 提供许多用于描述群集的选项。 若要详细了解这些选项，请查看这篇[介绍 Service Fabric 群集](service-fabric-cluster-resource-manager-cluster-description.md)的文章
+- 群集 Resource Manager 提供许多用于描述群集的选项。 要了解有关它们的更多，请查看本文介绍[服务结构群集](service-fabric-cluster-resource-manager-cluster-description.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png

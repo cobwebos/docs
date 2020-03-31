@@ -4,10 +4,10 @@ description: 介绍如何对 Service Fabric 有状态服务进行分区。 分�
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258611"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
@@ -44,11 +44,11 @@ ms.locfileid: "79258611"
 这样，便因为来自客户端的请求在计算机间进行分布而实现了扩大，提高了应用程序的整体性能，并减少了对数据区块的访问争用。
 
 ## <a name="plan-for-partitioning"></a>规划分区
-在实现服务之前，应始终考虑横向扩展所需的分区策略。有多种不同的方法，但所有这些方法都专注于应用程序需要实现的目标。 由于本文的背景，我们来考虑一些更重要的方面。
+在实现服务之前，应始终考虑横向扩展所需的分区策略。有不同的方法，但它们都侧重于应用程序需要实现的目标。 由于本文的背景，我们来考虑一些更重要的方面。
 
 一个不错的方法是将需要进行分区的状态的结构视为第一步。
 
-我们来看一个简单的示例。 如果要为县内的投票生成服务，可以为县中的每个城市创建一个分区。 随后可以在对应于城市的分区中为城市中的每个人存储投票。 图 3 显示一组人及其所在的城市。
+我们来看一个简单的示例。 如果要为全国投票生成一个服务，则可以为该国家/地区中的每个城市创建一个分区。 随后可以在对应于城市的分区中为城市中的每个人存储投票。 图 3 显示一组人及其所在的城市。
 
 ![简单分区屏幕截图](./media/service-fabric-concepts-partitioning/cities.png)
 
@@ -115,10 +115,10 @@ Service Fabric 提供了三个分区方案可供选择：
 > 
 > 
 
-1. 打开“**Visual Studio**” > “**文件**” > “**新建**” > “**项目**”。
+1. 打开**视觉工作室** > **文件** > **新项目** > **。**
 2. 在“**新建项目**”对话框中，选择 Service Fabric 应用程序。
 3. 将项目命名为“AlphabetPartitions”。
-4. 在“创建服务”对话框中，选择“有状态”服务并将它称为“Alphabet.Processing”。
+4. 在“创建服务”**** 对话框中，选择“有状态”**** 服务并将它称为“Alphabet.Processing”。
 5. 设置分区数。 打开 AlphabetPartitions 项目的 ApplicationPackageRoot 文件夹中的 Applicationmanifest.xml 文件，然后将参数 Processing_PartitionCount 更新为 26，如下所示。
    
     ```xml
@@ -152,7 +152,7 @@ Service Fabric 提供了三个分区方案可供选择：
    
     可以在同一台计算机上承载此服务的多个副本，因此此地址需要是副本独有的。 这就是 URL 中包含分区 ID 和副本 ID 的原因。 HttpListener 可以在同一端口上侦听多个地址，只要 URL 前缀是唯一的。
    
-    额外 GUID 在其中用于辅助副本也针对只读请求进行侦听的高级情况。 如果是这种情况，则要确保在从主副本转换为辅助副本时使用新的唯一地址，以强制客户端重新解析地址。 "+" 在此处用作地址，以便副本在所有可用主机（IP、FQDN、localhost 等）上进行侦听下面的代码显示了一个示例。
+    额外 GUID 在其中用于辅助副本也针对只读请求进行侦听的高级情况。 如果是这种情况，则要确保在从主副本转换为辅助副本时使用新的唯一地址，以强制客户端重新解析地址。 "+"在此处用作地址，以便副本侦听所有可用的主机（IP、FQDN、本地主机等）下面的代码显示了一个示例。
    
     ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -230,7 +230,7 @@ Service Fabric 提供了三个分区方案可供选择：
     此服务可用作简单 Web 界面，它接受姓氏作为查询字符串参数，确定分区键，然后将它发送到 Alphabet.Processing 服务进行处理。
 11. 在“**创建服务**”对话框中，选择“**无状态**”服务并将它称为“Alphabet.Web”，如下所示。
     
-    ![无状态服务屏幕截图](./media/service-fabric-concepts-partitioning/createnewstateless.png)。
+    ![无状态服务屏幕截图](./media/service-fabric-concepts-partitioning/createnewstateless.png).
 12. 在 Alphabet.WebApi 服务的 ServiceManifest.xml 中更新终结点信息，以打开端口，如下所示。
     
     ```xml
@@ -307,7 +307,7 @@ Service Fabric 提供了三个分区方案可供选择：
     ```
     
     请记住，对于此示例，我们在使用 26 个分区，其中每个分区有一个分区键。
-    接下来，我们通过对 `partition` 对象使用 `ResolveAsync` 方法，来获取此键的服务分区 `servicePartitionResolver`。 `servicePartitionResolver` 定义为
+    接下来，我们通过对 `servicePartitionResolver` 对象使用 `ResolveAsync` 方法，来获取此键的服务分区 `partition`。 `servicePartitionResolver` 定义为
     
     ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();

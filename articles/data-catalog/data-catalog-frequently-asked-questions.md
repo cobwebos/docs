@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 3877648723a8866ec7d9c5f1987ae3a276114d5e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7dbb1b4a8b85350b8bf8a6df0c9035a19055444c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152056"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409013"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure 数据目录常见问题
 本文将解答有关 Azure 数据目录服务的常见问题。
@@ -53,13 +53,13 @@ ms.locfileid: "73152056"
 ## <a name="how-do-i-request-support-for-another-data-source"></a>如何对另一数据源请求支持？
 若要提交功能请求和其他反馈，请转到 [Azure 反馈论坛上的数据目录](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources)。
 
-## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>尝试创建新目录时，为什么会收到错误*目录*？
+## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>为什么在尝试创建新目录时，我收到错误*目录已存在*？
 
-使用 Power BI Pro 许可证购买 Office 365 E5 时，Microsoft 会自动在订阅区域中创建默认目录。 此目录使用免费 SKU。 Office 365/Power BI 用户许可证在 Office 365 管理页中进行管理。 
+当您使用 Power BI Pro 许可证购买 Office 365 E5 时，Microsoft 会在订阅区域中自动创建默认目录。 此目录使用免费 SKU。 Office 365 / Power BI 用户许可证在 Office 365 管理页中管理。 
 
-但是，这种类型的数据目录没有**管理员选项**，在**Azure 门户**中不可见。 您无法删除此类型的数据目录。 同样，您不能重命名数据目录，也不能将其移动到另一个区域。 
+但是，这种类型的数据目录没有**管理员选项**，并且在**Azure 门户**中不可见。 您不能删除这种类型的数据目录。 同样，不允许重命名数据目录，也不能将其移动到其他区域。 
 
-如果用户使用 Power BI Pro 许可证注册 Office 365 E5，则分配有 Power BI Pro 许可证的用户帐户会自动访问数据目录。 此类用户对数据目录资产具有完全访问权限，无需管理权限。 这种类型的用户*不*是 Azure 数据目录中**目录用户**角色的一部分。
+分配 Power BI Pro 许可证的用户帐户在使用 Power BI Pro 许可证注册 Office 365 E5 时，根据许可协议可以访问数据目录。 这种类型的用户可以完全访问数据目录资产，而无需管理权限。 此类用户*不是*Azure 数据目录中**目录用户**角色的一部分。
 
 
 ## <a name="how-do-i-get-started-with-data-catalog"></a>如何开始使用数据目录？
@@ -67,7 +67,7 @@ ms.locfileid: "73152056"
 
 ## <a name="how-do-i-register-my-data"></a>如何注册我的数据？
 在数据目录中注册数据：
-1. 在 Azure 数据目录门户的“发布”区域中，启动 Azure 数据目录注册工具。 
+1. 在 Azure 数据目录门户的“发布”**** 区域中，启动 Azure 数据目录注册工具。 
 2. 在数据目录数据源注册工具中，使用用于访问数据目录门户的同一凭据登录。
 3. 选择要注册的数据源和特定资产。
 
@@ -87,7 +87,7 @@ ms.locfileid: "73152056"
 >
 
 > [!NOTE]
-> 对于具有一流“说明”属性的数据源（例如 SQL Server Analysis Services），数据目录数据源注册工具提取该属性值。 对于*本地*SQL Server 缺少第一类**Description**属性的关系数据库，数据目录数据源注册工具将从对象和列的**ms_description**扩展属性中提取值。 有关详细信息，请参阅[对数据库对象使用扩展属性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
+> 对于具有一流“说明”**** 属性的数据源（例如 SQL Server Analysis Services），数据目录数据源注册工具提取该属性值。 对于缺少一流**描述**属性*的本地*SQL Server 关系数据库，数据目录数据源注册工具从对象和列**的ms_description**扩展属性中提取该值。 SQL Azure 不支持此属性。 有关详细信息，请参阅[对数据库对象使用扩展属性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
 >
 >
 
@@ -97,10 +97,10 @@ ms.locfileid: "73152056"
 ## <a name="how-do-i-annotate-and-enrich-the-metadata-for-my-registered-data-assets"></a>如何批注和丰富已注册数据资产的元数据？
 为已注册资产提供元数据最简单的方法是在数据目录门户中选择资产，然后在属性窗格或架构窗格中为选定对象输入值。
 
-此外，还可在注册过程中提供某些元数据（例如专家和标记）。 在数据目录发布服务中提供的值适用于此时注册的所有资产。 若要查看门户中最近注册对象的更多注释，请选择数据目录数据源注册工具的最终屏幕上的“查看门户”按钮。
+此外，还可在注册过程中提供某些元数据（例如专家和标记）。 在数据目录发布服务中提供的值适用于此时注册的所有资产。 若要查看门户中最近注册对象的更多注释，请选择数据目录数据源注册工具的最终屏幕上的“查看门户”**** 按钮。
 
 ## <a name="how-do-i-delete-my-registered-data-objects"></a>如何删除已注册的数据对象？
-可通过在门户中选择对象并单击“删除”按钮，删除数据目录中的对象。 删除对象会从数据目录中删除其元数据，但不会影响基础数据源。
+可通过在门户中选择对象并单击“删除”**** 按钮，删除数据目录中的对象。 删除对象会从数据目录中删除其元数据，但不会影响基础数据源。
 
 ## <a name="what-is-an-expert"></a>什么是专家？
 专家是对数据对象具有明智观点的人员。 一个对象可以具有多个专家。 专家不需要是对象的“所有者”，只需知道可以怎样和应该怎样使用数据。
@@ -125,7 +125,7 @@ ms.locfileid: "73152056"
 如果想要包含列/架构元数据、预览或其中的数据源注册工具，不提取此元数据的数据源的数据配置文件，可以使用数据目录 API 添加此元数据。 有关详细信息，请参阅 [Azure 数据目录 REST API](https://docs.microsoft.com/rest/api/datacatalog/)。
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>如何限制已注册数据资产的可见性，仅允许特定人员发现它们？
-在数据目录中选择数据资产，然后单击“取得所有权”按钮。 数据目录中数据资产的所有者可更改可见性设置，允许所有用户发现拥有的资产或对特定用户限制可见性。 有关详细信息，请参阅[在 Azure 数据目录中管理数据资产](data-catalog-how-to-manage.md)。
+在数据目录中选择数据资产，然后单击“取得所有权”**** 按钮。 数据目录中数据资产的所有者可更改可见性设置，允许所有用户发现拥有的资产或对特定用户限制可见性。 有关详细信息，请参阅[在 Azure 数据目录中管理数据资产](data-catalog-how-to-manage.md)。
 
 ## <a name="how-do-i-update-the-registration-for-a-data-asset-so-that-changes-in-the-data-source-are-reflected-in-the-catalog"></a>如何更新数据资产的注册，将数据源中的更改都反映到目录中？
 若要更新已在目录中注册的数据资产的元数据，仅需重新注册包含该资产的数据源即可。 数据源中的任何更改（例如添加列、从表或视图中删除列）都会在目录中更新，但会保留用户提供的所有批注。

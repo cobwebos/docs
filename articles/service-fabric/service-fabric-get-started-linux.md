@@ -4,10 +4,10 @@ description: 在 Linux 上安装运行时和 SDK 并创建本地开发群集。 
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 572b1509f45a7f5bf2c63619809f01d17c3493d1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258429"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
@@ -25,7 +25,7 @@ ms.locfileid: "79258429"
 不支持在适用于 Linux 的 Windows 子系统上安装 Service Fabric 运行时和 SDK。 可以使用受支持的 Azure Service Fabric 命令行接口 (CLI) 来管理托管在云中或本地其他位置的 Service Fabric 实体。 有关如何安装 CLI 的信息，请参阅[设置 Service Fabric CLI](./service-fabric-cli.md)。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 支持使用以下操作系统版本进行开发。
 
@@ -43,7 +43,7 @@ ms.locfileid: "79258429"
 
 ### <a name="script-installation-ubuntu"></a>脚本安装 (Ubuntu)
 
-为方便起见，我们提供了一个脚本用于连同 sfctl CLI 一起安装 Service Fabric 运行时和 Service Fabric 通用 SDK。 在以下部分中执行手动安装步骤。 可以看到正在安装的组件和相关许可证。 运行该脚本即认为你同意所要安装的所有软件的许可条款。
+为方便起见，我们提供了一个脚本用于连同 sfctl CLI 一起安装 Service Fabric 运行时和 Service Fabric 通用 SDK****。 在以下部分中执行手动安装步骤。 可以看到正在安装的组件和相关许可证。 运行该脚本即认为你同意所要安装的所有软件的许可条款。
 
 成功运行脚本后，可以跳转到[设置本地群集](#set-up-a-local-cluster)。
 
@@ -179,7 +179,7 @@ RHEL | - | OpenJDK 1.8 | Implicit from npm | 最新 |
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. 打开 Web 浏览器，转到 [Service Fabric Explorer](http://localhost:19080/Explorer) (`http://localhost:19080/Explorer`)。 群集启动后，可以看到 Service Fabric Explorer 仪表板。 群集完全设置可能需要几分钟时间。 如果浏览器无法打开该 URL 或者 Service Fabric Explorer 未显示系统已准备就绪，请等待几分钟，然后重试。
+2. 打开 Web 浏览器并转到[服务结构资源管理器](http://localhost:19080/Explorer)`http://localhost:19080/Explorer`（）。 群集启动后，可以看到 Service Fabric Explorer 仪表板。 群集完全设置可能需要几分钟时间。 如果浏览器无法打开该 URL 或者 Service Fabric Explorer 未显示系统已准备就绪，请等待几分钟，然后重试。
 
     ![Linux 上的 Service Fabric Explorer][sfx-linux]
 
@@ -261,21 +261,21 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 > 
 > 在 Ubuntu 上，建议直接从 Eclipse 站点进行安装，而不是使用包安装程序（`apt` 或 `apt-get`）。 这样做可确保获取最新版 Eclipse。 可以安装面向 Java 开发人员或 Java EE 开发人员的 Eclipse IDE。
 
-1. 在 Eclipse 中，请确保已安装 Eclipse Neon 或更高版本，以及 Buildship 2.2.1 版或更高版本。 可以通过选择“帮助” **“关于 Eclipse”** “安装详细信息”查看已安装组件的版本 >  > 。 可以按照[Eclipse Buildship： Eclipse 插件 For Gradle][buildship-update]中的说明更新 Buildship。
+1. 在 Eclipse 中，请确保已安装 Eclipse Neon 或更高版本，以及 Buildship 2.2.1 版或更高版本。 通过选择"**关于 Eclipse** > **安装详细信息****的帮助"，** > 检查已安装组件的版本。 可以按 [Eclipse Buildship：适用于 Gradle 的 Eclipse 插件][buildship-update]中的说明更新 Buildship。
 
-2. 若要安装 Service Fabric 插件，请选择“帮助” **“安装新软件”**  > 。
+2. 要安装服务交换矩阵插件，请选择 **"帮助** > **安装新软件**"。
 
-3. 在“使用”框中，输入 **。 https://dl.microsoft.com/eclipse**
+3. 在“使用”框中，输入 **https://dl.microsoft.com/eclipse**。****
 
-4. 选择 **添加** 。
+4. 选择“添加”****。
 
     ![“可用软件”页][sf-eclipse-plugin]
 
-5. 选择 ServiceFabric 插件，然后选择“下一步”。
+5. 选择 ServiceFabric 插件，然后选择“下一步”********。
 
 6. 执行安装步骤。 然后接受最终用户许可协议。
 
-如果已安装 Service Fabric Eclipse 插件，请确保使用最新版本。 通过选择“帮助” **“关于 Eclipse”** “安装详细信息”查看 >  > 。 然后，在已安装的插件列表中搜索 Service Fabric。如果有较新版本可用，请选择 "**更新**"。
+如果已安装 Service Fabric Eclipse 插件，请确保使用最新版本。 通过选择 **"有关 Eclipse** > **安装详细信息****的帮助"** > 进行检查。 然后在已安装的插件列表中搜索服务结构。如果较新版本可用，请选择 **"更新**"。
 
 有关详细信息，请参阅[使用适用于 Eclipse 的 Service Fabric 插件开发 Java 应用程序](service-fabric-get-started-eclipse.md)。
 
@@ -287,7 +287,7 @@ Service Fabric 提供基架工具，可以借助此类工具，使用 Yeoman 模
 sudo apt-get update
 sudo apt-get install servicefabric servicefabricsdkcommon
 ```
-若要从 Maven 更新 Java SDK 二进制文件，需在 ``build.gradle`` 文件中更新相应的二进制文件的版本详细信息，使之指向最新 版本。 若要确切地了解需要在何处更新版本，请参阅 ``build.gradle``Service Fabric 入门示例[中的任何 ](https://github.com/Azure-Samples/service-fabric-java-getting-started) 文件。
+若要从 Maven 更新 Java SDK 二进制文件，需在 ``build.gradle`` 文件中更新相应的二进制文件的版本详细信息，使之指向最新 版本。 若要确切地了解需要在何处更新版本，请参阅 [Service Fabric 入门示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)中的任何 ``build.gradle`` 文件。
 
 > [!NOTE]
 > 更新这些包可能导致本地开发群集停止运行。 按本文中的说明操作，在升级后重启本地群集。

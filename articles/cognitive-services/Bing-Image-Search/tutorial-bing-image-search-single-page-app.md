@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 9227417d28eb09a322dd4757033ee62fee97d91c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78943892"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>教程：使用必应图像搜索 API 创建单页应用
@@ -31,7 +31,7 @@ ms.locfileid: "78943892"
 
 本教程的完整源代码可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search) 上获得。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 最新版本的 [Node.js](https://nodejs.org/)。
 * 适用于 Node.js 的 [Express.js](https://expressjs.com/) 框架。 可在 GitHub 示例自述文件中获取源代码的安装说明。
@@ -104,7 +104,7 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 ## <a name="send-search-requests"></a>发送搜索请求
 
-此应用程序通过 `onsubmit` 属性调用 `newBingImageSearch()`，来使用 HTML `<form>` 首先发送用户搜索请求。
+此应用程序通过 `<form>` 属性调用 `onsubmit`，来使用 HTML `newBingImageSearch()` 首先发送用户搜索请求。
 
 ```html
 <form name="bing" onsubmit="return newBingImageSearch(this)">
@@ -369,7 +369,7 @@ searchItemRenderers = {
     }, // relatedSearches renderer omitted
 ```
 
-`<img>` 标记以及缩略图 URL 的 `h` 和 `w` 字段中均使用了缩略图图像的 `height` 和 `width`。 这使得必应可以返回大小恰好的[缩略图](../bing-web-search/resize-and-crop-thumbnails.md)。
+`height` 标记以及缩略图 URL 的 `width` 和 `<img>` 字段中均使用了缩略图图像的 `h` 和 `w`。 这使得必应可以返回大小恰好的[缩略图](../bing-web-search/resize-and-crop-thumbnails.md)。
 
 ## <a name="persisting-client-id"></a>保留客户端 ID
 

@@ -5,33 +5,33 @@ ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: 098efd3075c6b099bdfc925cb4f09163f83532a5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77668260"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure 中的经典警报是什么？
 
 > [!NOTE]
-> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](../../azure-monitor/platform/alerts-overview.md)。 经典警报已[停](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)用，但对于尚不支持新警报的资源仍有限制。 
+> 本文介绍了如何创建旧式经典指标警报。 Azure 监视器现在支持[较新的近实时指标警报和新的警报体验](../../azure-monitor/platform/alerts-overview.md)。 经典警报[已停用](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)，但仍对不支持新警报的资源使用有限。 
 >
 
 警报允许配置数据条件，并在条件与最新监视数据匹配时发出通知。
 
-## <a name="old-and-new-alerting-capabilities"></a>新旧警报功能
+## <a name="old-and-new-alerting-capabilities"></a>旧式和新式警报功能
 
 在过去的 Azure Monitor 中，Application Insights，Log Analytics 和服务运行状况都有单独的警报功能。 随着时间推移，Azure 改进并组合了用户界面和不同的警报方法。 整合仍在进行中。
 
-只能在 Azure 门户中的经典警报用户屏幕中查看经典警报。 可以通过警报屏幕上的“查看经典警报”按钮访问此屏幕。 
+只能在 Azure 门户中的经典警报用户屏幕中查看经典警报。 可以通过警报屏幕上的“查看经典警报”**** 按钮访问此屏幕。 
 
  ![Azure 门户中的警报选项](media/alerts-classic.overview/monitor-alert-screen2.png)
 
 与经典警报体验相比，新式警报用户体验具有以下优点：
 -   **更好的通知系统** - 所有新式警报均使用操作组，这些组是命名的通知和操作组，可以在多个警报中重复使用。 经典指标警报和旧版 Log Analytics 警报不使用操作组。
--   **统一的创作体验** - 针对 Azure Monitor、Log Analytics 和 Application Insights 中的指标、日志和活动日志的所有警报创建均在一个位置进行。
+-   **统一的创作体验**- Azure 监视器、日志分析和应用程序见解的指标、日志和活动日志的所有警报创建都在一个位置。
 -   **在 Azure 门户中查看触发的 Log Analytics 警报** - 现在还可以在订阅中查看触发的 Log Analytics 警报。 以前这些警报在单独的门户中。
--   **分开触发的警报和警报规则** - 对警报规则（定义触发警报的条件）和触发的警报（警报规则触发实例）进行了区分，因此操作视图和配置视图是分开的。
+-   **已触发警报和警报规则的分离**- 警报规则（触发警报的条件的定义）和触发警报（警报规则触发的实例）是区分的，因此操作视图和配置视图被分开。
 -   **更好的工作流** - 全新警报创作体验引导用户完成警报规则配置过程，因此发现需要发出警报的事项变得更容易了。
 -   **智能警报整合**和**设置警报状态** - 新式警报包括了自动分组功能，它将类似的警报显示在一起以降低用户界面中的开销。 
 
@@ -51,7 +51,7 @@ ms.locfileid: "77668260"
 
 * **经典活动日志警报** - 当某个活动日志事件条目与筛选条件匹配时将触发的流式处理日志警报。 这些警报只有一个状态，即“已激活”。 警报引擎只是简单地将筛选条件应用于任何新事件。 它不会进行搜索来查找更早的条目。 出现新的服务运行状况事件时，或用户或应用程序在订阅中执行操作（例如“删除虚拟机”）时，这些警报可发出通知。
 
-对于通过 Azure Monitor 提供的资源日志数据，请将数据路由到 Log Analytics 并使用日志查询警报。 Log Analytics 现在使用[新的警报方法](../../azure-monitor/platform/alerts-overview.md) 
+对于通过 Azure Monitor 提供的资源日志数据，请将数据路由到 Log Analytics 并使用日志查询警报。 日志分析现在使用[新的警报方法](../../azure-monitor/platform/alerts-overview.md) 
 
 下图总结了 Azure Monitor 中的数据源，从概念上总结了从数据取消警报的方法。
 
@@ -68,7 +68,7 @@ Azure 使用以下术语来描述经典警报和及其功能：
 ## <a name="how-do-i-receive-a-notification-from-an-azure-monitor-classic-alert"></a>如何接收来自 Azure Monitor 经典警报的通知？
 从历史上来看，来自不同服务的 Azure 警报使用自己的内置通知方法。 
 
-Azure Monitor 创建了一个称为“操作组”的可重复使用的通知组。 操作组指定一组接收通知的接收方。 每当引用操作组的一个警报被激活时，所有接收方都会收到该通知。 操作组允许在多个警报对象中重复使用一组接收方（例如，在线工程师列表）。 除了电子邮件地址、短信号码和大量其他操作外，操作组还通过发布到 Webhook URL 来支持通知。  有关详细信息，请参阅[操作组](../../azure-monitor/platform/action-groups.md)。 
+Azure Monitor 创建了一个称为“操作组”的可重复使用的通知组**。 操作组指定一组接收通知的接收方。 每当引用操作组的一个警报被激活时，所有接收方都会收到该通知。 操作组允许在多个警报对象中重复使用一组接收方（例如，在线工程师列表）。 除了电子邮件地址、短信号码和大量其他操作外，操作组还通过发布到 Webhook URL 来支持通知。  有关详细信息，请参阅[操作组](../../azure-monitor/platform/action-groups.md)。 
 
 旧式经典活动日志警报使用操作组。
 
@@ -85,14 +85,14 @@ Webhook 可实现自动化和修复，例如使用：
 ## <a name="next-steps"></a>后续步骤
 了解警报规则以及如何使用以下工具来配置这些规则：
 
-* 详细了解[指标](data-platform.md)
+* 了解有关[指标](data-platform.md)的更多
 * [通过 Azure 门户配置经典指标警报](alerts-classic-portal.md)
 * 配置[经典指标警报 PowerShell](alerts-classic-portal.md)
 * 配置[经典指标警报命令行接口 (CLI)](alerts-classic-portal.md)
 * 配置[经典指标警报 Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
-* 详细了解[活动日志](platform-logs-overview.md)
+* 了解有关[活动日志的更多内容](platform-logs-overview.md)
 * [通过 Azure 门户配置活动日志警报](activity-log-alerts.md)
 * [通过 Resource Manager 配置活动日志警报](alerts-activity-log.md)
-* 查看[活动日志警报 webhook 架构](activity-log-alerts-webhook.md)
+* 查看[活动日志警报 Webhook 架构](activity-log-alerts-webhook.md)
 * 详细了解[操作组](action-groups.md)
 * 配置[较新的警报](alerts-metric.md)

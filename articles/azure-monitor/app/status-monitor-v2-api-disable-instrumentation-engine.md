@@ -1,24 +1,24 @@
 ---
-title: Azure 应用程序 Insights 代理 API 参考
-description: Application Insights 代理 API 参考。 InstrumentationEngine。 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
+title: Azure Application Insights 代理 API 参考
+description: Application Insights 代理 API 参考。 Disable-InstrumentationEngine。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: dafa12db95a10df467bf0d042cfd9395720648b2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671369"
 ---
-# <a name="application-insights-agent-api-disable-instrumentationengine"></a>Application Insights 代理 API： InstrumentationEngine
+# <a name="application-insights-agent-api-disable-instrumentationengine"></a>应用程序见解代理 API：禁用检测引擎
 
-本文介绍了一个 cmdlet，它是[ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成员。
+本文介绍属于 [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的 cmdlet。
 
-## <a name="description"></a>说明
-通过删除某些注册表项来禁用检测引擎。
-重新启动 IIS 以使更改生效。
+## <a name="description"></a>描述
+通过删除一些注册表项来禁用检测引擎。
+重启 IIS 以使这些更改生效。
 
 > [!IMPORTANT] 
 > 此 cmdlet 需要具有管理员权限的 PowerShell 会话。
@@ -29,10 +29,10 @@ ms.locfileid: "77671369"
 PS C:\> Disable-InstrumentationEngine
 ```
 
-## <a name="parameters"></a>parameters 
+## <a name="parameters"></a>参数 
 
 ### <a name="-verbose"></a>-Verbose
-**通用参数。** 使用此开关输出详细日志。
+**通用参数。** 使用此开关输出详细的日志。
 
 ## <a name="output"></a>输出
 
@@ -50,5 +50,5 @@ Configuring registry for instrumentation engine...
 
 ## <a name="next-steps"></a>后续步骤
 
- Application Insights 代理中执行更多操作：
- - 使用本指南来对 Application Insights 代理[进行故障排除](status-monitor-v2-troubleshoot.md)。
+ 使用 Application Insights 代理执行更多操作：
+ - 使用我们的指南对 Application Insights 代理进行[故障排除](status-monitor-v2-troubleshoot.md)。

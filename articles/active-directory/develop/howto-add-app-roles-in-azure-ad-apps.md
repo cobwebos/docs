@@ -1,5 +1,5 @@
 ---
-title: 添加应用角色，并从令牌获取它们 |Microsoft
+title: 添加应用角色并从令牌中获取这些角色 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何在注册到 Azure Active Directory 的应用程序中添加应用角色、如何向这些角色分配用户和组，以及如何在令牌的 `roles` 声明中接收它们。
 services: active-directory
@@ -15,10 +15,10 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399090"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
@@ -35,18 +35,18 @@ ms.locfileid: "78399090"
 
 ### <a name="declare-app-roles-using-azure-portal"></a>使用 Azure 门户声明应用角色
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择 "**目录 + 订阅**" 图标。
-1. 在 "**收藏夹**" 或 "**所有目录**" 列表中，选择要在其中注册应用程序的 Active Directory 租户。
-1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。
-1. 在“Azure Active Directory”窗格中选择“应用注册”，查看一个包含所有应用程序的列表。
-1. 选择一个应用程序，以便在其中定义应用角色。 然后选择 "**清单**"。
+1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 在门户工具栏中选择“目录 + 订阅”**** 图标。
+1. 在**收藏夹**或“所有目录”**** 列表中，选择要将应用程序注册到的 Active Directory 租户。
+1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。****
+1. 在“Azure Active Directory”窗格中选择“应用注册”，查看一个包含所有应用程序的列表********。
+1. 选择一个应用程序，以便在其中定义应用角色。 然后选择“清单”****。
 1. 编辑应用清单，方法是先查找 `appRoles` 设置，然后添加所有应用程序角色。
 
      > [!NOTE]
-     > 此清单中的每个应用程序角色定义都必须在 `id` 属性的清单的上下文中具有不同的有效 GUID。
+     > 此清单中的每个应用角色定义都必须在 `id` 属性的清单上下文中有不同的有效 GUID。
      >
-     > 每个应用程序角色定义的 `value` 属性应该与应用程序中的代码中使用的字符串完全匹配。 `value` 属性不能包含空格。 如果是这样，则在保存清单时，会收到错误。
+     > 每个应用角色定义的 `value` 属性应该与应用程序的代码中使用的字符串完全匹配。 `value` 属性不能包含空格。 如果包含，则在保存清单时会收到错误消息。
 
 1. 保存清单。
 
@@ -77,7 +77,7 @@ ms.locfileid: "78399090"
 > [!NOTE]
 >`displayName` 不能包含空格。
 
-可以针对 `users` 和/或 `applications` 来定义应用角色。 可供 `applications` 使用时，应用角色在“所需的权限”边栏选项卡中显示为应用程序权限。 以下示例显示一个以 `Application` 为目标的应用角色。
+可以针对 `users` 和/或 `applications` 来定义应用角色。 可供 `applications` 使用时，应用角色在“所需的权限”边栏选项卡中显示为应用程序权限。**** 以下示例显示一个以 `Application` 为目标的应用角色。
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -96,35 +96,35 @@ ms.locfileid: "78399090"
 "availableToOtherTenants": false,
 ```
 
-定义的角色数量将影响应用程序清单具有的限制。 它们已在 "[清单限制](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits)" 页上详细讨论。
+定义的角色数会影响应用程序清单的限制。 已在[清单限制](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits)页上对这些限制进行了详细讨论。
 
 ### <a name="assign-users-and-groups-to-roles"></a>将用户和组分配到角色
 
 在应用程序中添加应用角色以后，即可将这些角色分配给用户和组。
 
-1. 使用 **Azure Active Directory** 左侧导航菜单，在“Azure Active Directory”窗格中选择“企业应用程序”。
-1. 选择“所有应用程序”，查看所有应用程序的列表。
+1. 在**Azure 活动目录**窗格中，从**Azure 活动目录**左侧导航菜单中选择**企业应用程序**。
+1. 选择 **"所有应用程序**"以查看所有应用程序的列表。
 
-     如果看不到希望其显示在这里的应用程序，请使用“所有应用程序”列表顶部的各种筛选器来限制此列表，或者在列表中向下滚动，以便找到应用程序。
+     如果看不到希望其显示在这里的应用程序，请使用“所有应用程序”列表顶部的各种筛选器来限制此列表，或者在列表中向下滚动，以便找到应用程序。****
 
 1. 选择一个应用程序，以便在其中为角色分配用户或安全组。
-1. 在应用程序的左侧导航菜单中选择 "**用户和组**" 窗格。
-1. 在“用户和组”列表顶部选择“添加用户”按钮，以便打开“添加分配”窗格。
-1. 在“添加分配”窗格中，选择“用户和组”选择器。
+1. 在应用程序的左侧导航菜单中选择 **"用户和组**"窗格。
+1. 在“用户和组”列表顶部选择“添加用户”按钮，以便打开“添加分配”窗格。************
+1. 从"**添加分配**"窗格中选择 **"用户"和"组**"选择器。
 
      将会显示用户和安全组的列表和一个文本框，后者用于搜索和查找特定用户或组。 此屏幕允许一次选择多个用户和组。
 
-1. 选择好用户和组以后，按底部的“选择”按钮即可转到下一部分。
-1. 在“添加分配”窗格中，选择“选择角色”选择器。 此前在应用清单中声明的所有角色都会显示。
-1. 选择一个角色，然后按“选择”按钮。
-1. 按底部的“分配”按钮即可完成将用户和组分配到应用的操作。
-1. 确认已添加的用户和组显示在更新的“用户和组”列表中。
+1. 选择好用户和组以后，按底部的“选择”按钮即可转到下一部分。****
+1. 在“添加分配”**** 窗格中，选择“选择角色”**** 选择器。 此前在应用清单中声明的所有角色都会显示。
+1. 选择一个角色，然后按“选择”**** 按钮。
+1. 按底部的“分配”按钮即可完成将用户和组分配到应用的操作。****
+1. 确认已添加的用户和组显示在更新的“用户和组”列表中。****
 
 ## <a name="more-information"></a>详细信息
 
-- [使用应用角色向 ASP.NET Core 的 web 应用 & 角色声明添加授权](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
+- [使用应用角色&角色声明向 ASP.NET核心 Web 应用添加授权](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Using Security Groups and Application Roles in your apps (Video)](https://www.youtube.com/watch?v=V8VUPixLSiM)（在应用中使用安全组和应用程序角色（视频））
 - [Azure Active Directory 现在可以与组声明和应用程序角色配合使用](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory 应用清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [AAD 访问令牌](access-tokens.md)
-- [AAD `id_tokens`](id-tokens.md)
+- [AAD`id_tokens`](id-tokens.md)

@@ -1,6 +1,6 @@
 ---
 title: IoT 设备预配服务中的安全性终结点 | Microsoft Docs
-description: 概念-如何控制对后端应用的 IoT 设备预配服务（DPS）的访问。 包括安全令牌的相关信息。
+description: 概念 - 如何控制对后端应用的 IoT 设备配置服务 （DPS） 的访问。 包括安全令牌的相关信息。
 author: wesmc7777
 manager: philmea
 ms.service: iot-dps
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79285144"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制对 Azure IoT 中心设备预配服务的访问
 
-本文介绍了用于保护 IoT 设备预配服务的选项。 预配服务使用“权限”向每个终结点授予访问权限。 权限可根据功能限制对服务实例的访问。
+本文介绍了用于保护 IoT 设备预配服务的选项。 预配服务使用“权限”向每个终结点授予访问权限**。 权限可根据功能限制对服务实例的访问。
 
 本文介绍：
 
@@ -32,23 +32,23 @@ ms.locfileid: "79285144"
 
 可以通过以下方式授予[权限](#device-provisioning-service-permissions)：
 
-* 共享访问授权策略。 共享访问策略可以授予任意[权限](#device-provisioning-service-permissions)组合。 可以在[Azure 门户][lnk-management-portal]中定义策略，或使用[设备预配服务 REST api][lnk-resource-provider-apis]以编程方式定义策略。 新建的预配服务有以下默认策略：
+* **共享访问授权策略**。 共享访问策略可以授予任意[权限](#device-provisioning-service-permissions)组合。 可在 [Azure 门户][lnk-management-portal]中定义策略，也可使用[设备预配服务 REST API][lnk-resource-provider-apis] 以编程方式进行定义。 新建的预配服务有以下默认策略：
 
-* provisioningserviceowner：包含所有权限的策略。
+* provisioningserviceowner：包含所有权限的策略****。
 
 > [!NOTE]
 > 有关详细信息，请参阅[权限](#device-provisioning-service-permissions)。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 Azure IoT 中心设备预配服务通过针对共享访问策略验证令牌，授予对终结点的访问权限。 安全凭据（例如对称密钥）永远不会通过网络发送。
 
 > [!NOTE]
-> 设备预配服务资源提供程序通过 Azure 订阅进行保护，就像 Azure 中的所有提供程序一样[资源管理器][lnk-azure-resource-manager]。
+> 如同 [Azure 资源管理器][lnk-azure-resource-manager]中的所有提供程序一样，设备预配服务资源提供程序也通过 Azure 订阅受到保护。
 
 有关如何构造和使用安全令牌的详细信息，请参阅下一部分。
 
-HTTP 是唯一受支持的协议，它通过在“Authorization”请求标头中包含有效的令牌来实现身份验证。
+HTTP 是唯一受支持的协议，它通过在“Authorization”请求标头中包含有效的令牌来实现身份验证****。
 
 #### <a name="example"></a>示例
 ```csharp
@@ -57,11 +57,11 @@ SharedAccessSignature sr =
 ```
 
 > [!NOTE]
-> [Azure IoT 设备预配服务 sdk][lnk-sdks]在连接到服务时自动生成令牌。
+> [Azure IoT 设备预配服务 SDK][lnk-sdks] 在连接到服务时自动生成令牌。
 
 ## <a name="security-tokens"></a>安全令牌
 
-设备预配服务使用安全令牌对服务进行身份验证，以避免在线发送密钥。 并且安全令牌的有效期和范围有限。 [Azure IoT 设备预配服务 sdk][lnk-sdks]无需任何特殊配置即可自动生成令牌。 在某些情况下，确实需要用户生成并直接使用安全令牌。 这种情况包括直接使用 HTTP。
+设备预配服务使用安全令牌对服务进行身份验证，以避免在线发送密钥。 并且安全令牌的有效期和范围有限。 [Azure IoT 设备预配服务 SDK][lnk-sdks] 无需任何特殊配置即可自动生成令牌。 在某些情况下，确实需要用户生成并直接使用安全令牌。 这种情况包括直接使用 HTTP。
 
 ### <a name="security-token-structure"></a>安全令牌结构
 
@@ -75,7 +75,7 @@ SharedAccessSignature sr =
 
 以下是预期值：
 
-| 值 | 说明 |
+| “值” | 描述 |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为：`{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。|
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
@@ -141,14 +141,14 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 
 以下是终结点上显示的服务功能：
 
-| 端点 | 功能 |
+| 终结点 | 功能 |
 | --- | --- |
 | `{your-service}.azure-devices-provisioning.net/enrollments` |向设备注册操作提供设备预配服务。 |
 | `{your-service}.azure-devices-provisioning.net/enrollmentGroups` |提供用于管理设备注册组的操作。 |
 | `{your-service}.azure-devices-provisioning.net/registrations/{id}` |提供用于检索和管理设备注册状态的操作。 |
 
 
-例如，使用名为 enrollmentread 的预创建共享访问策略生成的服务将使用以下参数创建令牌：
+例如，使用名为 enrollmentread 的预创建共享访问策略生成的服务将使用以下参数创建令牌****：
 
 * 资源 URI：`{mydps}.azure-devices-provisioning.net`，
 * 签名密钥：`enrollmentread` 策略的密钥之一，
@@ -179,11 +179,11 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 | 权限 | 说明 |
 | --- | --- |
-| ServiceConfig |授予用于更改服务配置的访问权限。 <br/>后端云服务将使用此权限。 |
-| EnrollmentRead |授予对设备注册和注册组的读取访问权限。 <br/>后端云服务将使用此权限。 |
-| EnrollmentWrite |授予对设备注册和注册组的写入访问权限。 <br/>后端云服务将使用此权限。 |
-| RegistrationStatusRead |授予对设备注册状态的读取访问权限。 <br/>后端云服务将使用此权限。 |
-| RegistrationStatusWrite  |授予对设备注册状态的删除访问权限。 <br/>后端云服务将使用此权限。 |
+| ServiceConfig**** |授予用于更改服务配置的访问权限。 <br/>后端云服务将使用此权限。 |
+| EnrollmentRead**** |授予对设备注册和注册组的读取访问权限。 <br/>后端云服务将使用此权限。 |
+| EnrollmentWrite**** |授予对设备注册和注册组的写入访问权限。 <br/>后端云服务将使用此权限。 |
+| RegistrationStatusRead**** |授予对设备注册状态的读取访问权限。 <br/>后端云服务将使用此权限。 |
+| RegistrationStatusWrite****  |授予对设备注册状态的删除访问权限。 <br/>后端云服务将使用此权限。 |
 
 <!-- links and images -->
 

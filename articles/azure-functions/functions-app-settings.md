@@ -4,10 +4,10 @@ description: 有关 Azure Functions 应用设置或环境变量的参考文档�
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277825"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
@@ -22,30 +22,30 @@ ms.locfileid: "79277825"
 
 使用 Application Insights 时的 Application Insights 检测密钥。 请参阅[监视 Azure Functions](functions-monitoring.md)。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-在版本2.x 和更高版本的函数运行时中，将基于运行时环境配置应用程序行为。 此值在[初始化期间](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)会被读取。 可以将 `AZURE_FUNCTIONS_ENVIRONMENT` 设置为任何值，但支持[三个值](/dotnet/api/microsoft.aspnetcore.hosting.environmentname)：[开发](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development)、[过渡](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)和[生产](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production)。 如果未设置 `AZURE_FUNCTIONS_ENVIRONMENT`，则默认情况下，在本地环境中 `Development`，在 Azure 上 `Production`。 应使用此设置，而不是 `ASPNETCORE_ENVIRONMENT` 设置运行时环境。 
+在 2.x 和更高版本的 Functions 运行时中，基于运行时环境配置应用行为。 [在初始化期间读取](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)此值。 您可以`AZURE_FUNCTIONS_ENVIRONMENT`设置为任何值，但支持[三个值](/dotnet/api/microsoft.aspnetcore.hosting.environmentname)：[开发](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development)、[暂存](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)和生产 。 [Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production) 如果未设置 `AZURE_FUNCTIONS_ENVIRONMENT`，则在本地环境中默认为 `Development`，在 Azure 中默认为 `Production`。 应使用此设置（而不是 `ASPNETCORE_ENVIRONMENT`）来设置运行时环境。 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-用于存储日志并在门户上的“监视”选项卡中显示这些日志的可选存储帐户连接字符串。 此设置仅对面向版本1.x 的 Azure Functions 运行时的应用有效。 存储帐户必须是支持 Blob、队列和表的通用帐户。 若要了解详细信息，请参阅[存储帐户要求](storage-considerations.md#storage-account-requirements)。
+用于存储日志并在门户上的“监视”选项卡中显示这些日志的可选存储帐户连接字符串。**** 此设置仅适用于以 Azure 函数运行时版本 1.x 为目标的应用。 存储帐户必须是支持 Blob、队列和表的通用帐户。 有关详细信息，请参阅[存储帐户要求](storage-considerations.md#storage-account-requirements)。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>|
 
 > [!NOTE]
-> 为了获得更好的性能和体验，运行时版本2.x 和更高版本使用 APPINSIGHTS_INSTRUMENTATIONKEY 和 App Insights 来监视而不是 `AzureWebJobsDashboard`。
+> 为了更好的性能和体验，运行时版本 2.x 和更高版本使用APPINSIGHTS_INSTRUMENTATIONKEY和应用见解进行监视，而不是`AzureWebJobsDashboard`。
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
 `true` 表示禁用针对函数应用根 URL 显示的默认登录页。 默认为 `false`。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |AzureWebJobsDisableHomepage|true|
 
@@ -57,7 +57,7 @@ ms.locfileid: "79277825"
 
 `true` 表示在编译 .NET 代码时使用“发布”模式；`false` 表示使用“调试”模式。 默认为 `true`。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |AzureWebJobsDotNetReleaseCompilation|true|
 
@@ -65,7 +65,7 @@ ms.locfileid: "79277825"
 
 要启用的 beta 功能的逗号分隔列表。 由这些标志启用的 Beta 功能尚未准备好用于生产，但在发布这些功能之前可针对试验目的启用这些功能。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |AzureWebJobsFeatureFlags|feature1,feature2|
 
@@ -73,7 +73,7 @@ ms.locfileid: "79277825"
 
 指定用于密钥存储的存储库或提供程序。 目前，支持的存储库包括 blob 存储（“Blob”）和本地文件系统（“Files”）。 默认为在版本 2 中使用 blob，在版本 1 中使用文件系统。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |AzureWebJobsSecretStorageType|文件|
 
@@ -81,7 +81,7 @@ ms.locfileid: "79277825"
 
 Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函数使用此存储帐户连接字符串。 存储帐户必须是支持 Blob、队列和表的通用帐户。 请参阅[存储帐户](functions-infrastructure-as-code.md#storage-account)和[存储帐户要求](storage-considerations.md#storage-account-requirements)。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |AzureWebJobsStorage|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
@@ -89,15 +89,15 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 用于 TypeScript 的编译器的路径。 允许根据需要重写默认值。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |AzureWebJobs_TypeScriptPath|%HOME%\typescript|
 
 ## <a name="function_app_edit_mode"></a>FUNCTION\_APP\_EDIT\_MODE
 
-指示是否启用了 Azure 门户中的编辑。 有效值为“readwrite”和“readonly”。
+指示是否在 Azure 门户中启用了编辑。 有效值为“readwrite”和“readonly”。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |FUNCTION\_APP\_EDIT\_MODE|readonly|
 
@@ -105,53 +105,53 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 要在此函数应用中使用的 Functions 运行时版本。 波浪符加主要版本号表示使用该主要版本的最新版本（例如“~2”）。 当同一主要版本的新版本可用时，会自动在函数应用中安装新版本。 若要让应用固定使用特定的版本，请使用完整版本号（例如“2.0.12345”）。 默认为“~2”。 `~1` 的值将应用固定到运行时的版本 1.x。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |FUNCTIONS\_EXTENSION\_VERSION|~2|
 
-## <a name="functions_v2_compatibility_mode"></a>函数\_V2\_兼容性\_模式
+## <a name="functions_v2_compatibility_mode"></a>FUNCTIONS\_V2\_COMPATIBILITY\_MODE
 
-此设置使函数应用能够在版本2.x 运行时上以版本 2. x 兼容模式运行。 仅当将[function app 从版本2.x 升级到运行时的版本](functions-versions.md#migrating-from-2x-to-3x)1.x 时遇到问题时才使用此设置。 
+此设置使函数应用能够在版本 3.x 运行时上以版本 2.x 兼容模式运行。 仅当在[将函数应用从运行时版本 2.x 升级到版本 3.x](functions-versions.md#migrating-from-2x-to-3x) 时遇到问题的情况下，才使用此设置。 
 
 >[!IMPORTANT]
-> 此设置仅作为短期解决方法，当你将应用程序更新为在版本2.x 上正确运行。 只要[支持1.x 运行时](functions-versions.md)，就支持此设置。 如果在不使用此设置的情况下遇到阻止应用在版本2.x 上运行的问题，请[报告你的问题](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md)。
+> 在更新应用以便在版本 3.x 上正常运行时，此设置仅用作短期解决方法。 只要 [2.x 运行时受支持](functions-versions.md)，此设置就受支持。 如果在不使用此设置的情况下遇到阻止应用在版本 3.x 上运行的问题，请[报告问题](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md)。
 
-要求[函数\_扩展\_版本](functions-app-settings.md#functions_extension_version)设置为 `~3`。
+需要 [FUNCTIONS\_EXTENSION\_VERSION](functions-app-settings.md#functions_extension_version) 设置为 `~3`。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
-|函数\_V2\_兼容性\_模式|true|
+|FUNCTIONS\_V2\_COMPATIBILITY\_MODE|true|
 
-## <a name="functions_worker_process_count"></a>函数\_WORKER\_进程\_计数
+## <a name="functions_worker_process_count"></a>FUNCTIONS\_WORKER\_PROCESS\_COUNT
 
-指定语言工作进程的最大数量，默认值为 `1`。 允许的最大值为 `10`。 函数调用在语言工作进程之间均匀分布。 每隔10秒生成一次 Language 工作进程，直到达到函数\_WORKER\_进程\_计数。 使用多语言工作进程与[缩放](functions-scale.md)不同。 如果你的工作负荷混合使用了大量的 CPU 和 i/o 界限调用，请考虑使用此设置。 此设置适用于所有 non-.NET 语言。
+指定语言工作进程的最大数量，其默认值为 `1`。 允许的最大值为 `10`。 函数调用均匀地分布在语言工作进程中。 语言工作进程每 10 秒生成一次，直到达到 FUNCTIONS\_WORKER\_PROCESS\_COUNT 设置的计数。 使用多个语言工作进程与[缩放](functions-scale.md)不同。 当工作负荷混合使用 CPU 绑定和 I/O 绑定调用时，请考虑使用此设置。 此设置适用于所有非 .NET 语言。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
-|函数\_WORKER\_进程\_计数|2|
+|FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
 
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-要在函数应用中加载的语言辅助角色运行时。  这将对应于应用程序中正在使用的语言（例如，“dotnet”）。 对于多种语言的函数，需要将它们发布到多个应用，每个应用都具有相应的辅助角色运行时值。  有效值为 `dotnet` （C#/F#）、`node` （JavaScript/TypeScript）、`java` （Java）、`powershell` （PowerShell）和 `python` （Python）。
+要在函数应用中加载的语言辅助角色运行时。  这将对应于应用程序中正在使用的语言（例如，“dotnet”）。 对于多种语言的函数，需要将它们发布到多个应用，每个应用都具有相应的辅助角色运行时值。  有效值为 `dotnet` (C#/F#)、`node` (JavaScript/TypeScript)、`java` (Java)、`powershell` (PowerShell) 和 `python` (Python)。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |FUNCTIONS\_WORKER\_RUNTIME|dotnet|
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
-仅限 & 高级计划。 存储函数应用代码和配置的存储帐户的连接字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#create-a-function-app)。
+仅用于消费&高级计划。 存储函数应用代码和配置的存储帐户的连接字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#create-a-function-app)。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 
-仅限 & 高级计划。 函数应用代码和配置的文件路径。 与 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING 结合使用。 默认值是以函数应用名称开头的唯一字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#create-a-function-app)。
+仅用于消费&高级计划。 函数应用代码和配置的文件路径。 与 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING 结合使用。 默认值是以函数应用名称开头的唯一字符串。 请参阅[创建函数应用](functions-infrastructure-as-code.md#create-a-function-app)。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
@@ -162,24 +162,24 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 > [!NOTE]
 > 此设置是预览功能，只有在设置为值 <= 5 时才可靠
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|5|
 
 ## <a name="website_node_default_version"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
-_仅限 Windows。_  
-设置在 Windows 上运行函数应用时使用的 node.js 版本。 应使用波形符（~）使运行时使用目标主版本的最新可用版本。 例如，如果设置为 `~10`，将使用最新版本的 node.js 10。 如果主要版本以颚化符为目标，则无需手动更新次版本。 
+_仅限窗口。_  
+设置在 Windows 上运行函数应用时要使用的 Node.js 版本。 应使用波形符 (~) 让运行时使用目标主版本的最新可用版本。 例如，当设置为 `~10` 时，将使用最新版本 Node.js 10。 当目标主版本带有波形符时，无需手动更新次版本。 
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
-|WEBSITE\_NODE\_DEFAULT_VERSION|~ 10|
+|WEBSITE\_NODE\_DEFAULT_VERSION|~10|
 
 ## <a name="website_run_from_package"></a>WEBSITE\_RUN\_FROM\_PACKAGE
 
 让函数应用从已装载的包文件运行。
 
-|密钥|示例值|
+|键|示例值|
 |---|------------|
 |WEBSITE\_RUN\_FROM\_PACKAGE|1|
 
@@ -189,17 +189,17 @@ _仅限 Windows。_
 
 默认情况下，Functions 代理将使用快捷方式从代理直接将 API 调用发送到同一 Function App 中的函数，而不是创建新的 HTTP 请求。 此设置让你能够禁用该行为。
 
-|密钥|值|说明|
+|键|“值”|描述|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|使用指向本地 Function App 中某个函数的后端 URL 的调用将不再直接发送到该函数，并将改回定向回 Function App 的 HTTP 前端。|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|这是默认值。 使用指向本地 Function App 中某个函数的后端 URL 的调用将直接转发到该函数|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|具有指向本地函数应用中函数的后端 URL 的调用将不再直接发送到该函数，而是定向回函数应用的 HTTP 前端|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|这是默认值。 具有指向本地函数应用中函数的后端 URL 的调用将直接转发到该函数|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
 此设置控制 %2F 在路由参数插入后端 URL 时是否在路由参数中解码为斜杠。 
 
-|密钥|值|说明|
+|键|“值”|描述|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|包含编码斜杠的路由参数会将其解码。 `example.com/api%2ftest` 将成为 `example.com/api/test`|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|此选项为默认行为。 所有路由参数在传递时将保持不变|

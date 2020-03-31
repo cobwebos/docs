@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: c5d2bbe920f87421550fadf30a7e7e9d23931bfd
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759783"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292486"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>为 Azure VM 设置灾难恢复
 
@@ -27,9 +27,9 @@ ms.locfileid: "76759783"
 > [!NOTE]
 > 本文说明了如何使用最简单的设置来部署灾难恢复。 若要了解自定义的设置，请查看[“操作方法”部分](azure-to-azure-how-to-enable-replication.md)中的文章。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 - 查看[方案体系结构和组件](concepts-azure-to-azure-architecture.md)。
 - 在开始之前，请查看[支持要求](site-recovery-support-matrix-azure-to-azure.md)。
@@ -75,7 +75,7 @@ ms.locfileid: "76759783"
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
-如果使用的是网络安全组 (NSG)，请创建基于服务标记的 NSG 规则，以访问 Azure 存储、Azure Active Directory、Site Recovery 服务和 Site Recovery 监视。 [了解详细信息](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)。
+如果使用的是网络安全组 (NSG)，请创建基于服务标记的 NSG 规则，以访问 Azure 存储、Azure Active Directory、Site Recovery 服务和 Site Recovery 监视。 [了解详细信息](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)。
 
 ## <a name="verify-azure-vm-certificates"></a>验证 Azure VM 证书
 

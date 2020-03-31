@@ -1,5 +1,5 @@
 ---
-title: 在 CI/CD 管道中管理 U SQL 程序集-Azure Data Lake
+title: 在 CI/CD 管道中管理 U-SQL 程序集 - Azure 数据湖
 description: 了解使用 Azure DevOps 在 CI/CD 管道中管理 U-SQL C# 程序集的最佳做法。
 author: yanancai
 ms.author: yanacai
@@ -7,10 +7,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.openlocfilehash: e6de10ed712688e4ee9dccc22176e81ad5e574ca
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71315853"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>在 CI/CD 管道中管理 U-SQL 程序集的最佳做法
@@ -30,12 +30,12 @@ ms.locfileid: "71315853"
 U-SQL 数据库项目可引用类库（对于 U-SQL 应用程序）项目。 可以使用从此类库（对于 U-SQL 应用程序）项目中引用的 C# 源代码创建 U-SQL 数据库中注册的程序集。
 
 请按照下列步骤创建项目并添加引用。
-1. 通过选择“文件” > “新建” > “项目”创建类库（对于 U-SQL 应用程序）项目。 该项目位于“Azure Data Lake > U-SQL”节点下。
+1. 通过选择 **"文件** > **新项目** > "创建类库（用于 U-SQL 应用程序）**项目**。 该项目位于“Azure Data Lake > U-SQL”节点下****。
 
    ![用于 Visual Studio 的 Data Lake 工具 - 创建 C# 类库项目](./media/data-lake-analytics-cicd-manage-assemblies/create-c-sharp-class-library-project.png)
 1. 在类库（对于 U-SQL 应用程序）项目中添加用户定义的 C# 代码。
 
-1. 通过选择“文件” > “新建” > “项目”来创建 U-SQL 项目。 该项目位于“Azure Data Lake > U-SQL”节点下。
+1. 通过选择 **"文件** > **新项目** > "创建 U-SQL**项目**。 项目位于 Azure**数据湖** > **U-SQL**节点下。
 
    ![用于 Visual Studio 的 Data Lake 工具 - 创建 U-SQL 数据库项目](media/data-lake-analytics-cicd-manage-assemblies/create-u-sql-database-project.png)
 1. 为 U-SQL 数据库项目添加对 C# 类库项目的引用。
@@ -44,17 +44,17 @@ U-SQL 数据库项目可引用类库（对于 U-SQL 应用程序）项目。 可
 
     ![针对 Visual Studio 的 Data Lake 工具 - 添加 U-SQL 数据库项目引用](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference-wizard.png)
 
-5. 通过右键单击项目并选择“添加新项目”在 U-SQL 数据库项目中创建程序集脚本。
+5. 通过右键单击项目并选择“添加新项目”在 U-SQL 数据库项目中创建程序集脚本****。
 
    ![用于 Visual Studio 的 Data Lake 工具 - 添加程序集脚本](media/data-lake-analytics-cicd-manage-assemblies/add-assembly-script.png)
 
-1. 在程序集设计视图中打开程序集脚本。 在“从引用创建程序集”下拉菜单中选择引用的程序集。
+1. 在程序集设计视图中打开程序集脚本。 在“从引用创建程序集”下拉菜单中选择引用的程序集****。
 
     ![针对 Visual Studio 的 Data Lake 工具 - 从引用创建程序集](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-create-assembly-from-reference.png)
 
-7. 添加“托管的依赖项”和“其他文件”（若有）。 添加其他文件时，该工具会使用相对路径来确保它稍后可在本地计算机和生成计算机上找到程序集。
+7. 添加“托管的依赖项”和“其他文件”（若有）********。 添加其他文件时，该工具会使用相对路径来确保它稍后可在本地计算机和生成计算机上找到程序集。
 
-位于底部编辑器窗口中的 _DeployTempDirectory 是预定义的变量，它将工具指向生成输出文件夹。  **\@** 在生成输出文件夹下，每个程序集都有按程序集名称命名的子文件夹。 此子文件夹中包含所有 DLL 和其他文件。
+底部编辑器窗口中的_DeployTempDirectory是一个预定义的变量，将工具指向生成输出文件夹。 ** \@** 在生成输出文件夹下，每个程序集都有按程序集名称命名的子文件夹。 此子文件夹中包含所有 DLL 和其他文件。
 
 ## <a name="build-a-u-sql-database-project"></a>生成 U-SQL 数据库项目
 
@@ -70,11 +70,11 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包。 其名
 
 #### <a name="deploy-by-using-a-u-sql-database-project"></a>使用 U-SQL 数据库项目进行部署
 
-1.  右键单击 U-SQL 数据库项目，然后选择“部署”。
-2.  在“部署 U-SQL 数据库”向导中，选择要将数据库部署到的“ADLA 帐户”。 支持本地帐户和 ADLA 帐户。
-3.  将自动填充“数据库源”。 它指向项目生成输出文件夹中的 .usqldbpack 包。
-4.  在“数据库名称”中键入名称以创建数据库。 如果 Azure Data Lake Analytics 目标帐户中存在名称相同的数据库，则会创建在数据库项目中定义的所有对象，无需重新创建数据库。
-5.  要部署 U-SQL 数据库，选择“提交”。 系统随即上传所有资源（如程序集和其他文件）。 并提交了一个包含所有 DDL 语句的 U-SQL 作业。
+1.  右键单击 U-SQL 数据库项目，然后选择“部署”****。
+2.  在“部署 U-SQL 数据库”向导中，选择要将数据库部署到的“ADLA 帐户”********。 支持本地帐户和 ADLA 帐户。
+3.  将自动填充“数据库源”****。 它指向项目生成输出文件夹中的 .usqldbpack 包。
+4.  在“数据库名称”中键入名称以创建数据库****。 如果 Azure Data Lake Analytics 目标帐户中存在名称相同的数据库，则会创建在数据库项目中定义的所有对象，无需重新创建数据库。
+5.  要部署 U-SQL 数据库，选择“提交”****。 系统随即上传所有资源（如程序集和其他文件）。 并提交了一个包含所有 DDL 语句的 U-SQL 作业。
 
     ![针对 Visual Studio 的 Data Lake 工具 - 部署 U-SQL 数据库项目](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-deploy-usql-database-project.png)
 

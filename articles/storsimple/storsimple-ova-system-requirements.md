@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure StorSimple 虚拟阵列系统要求
+title: 微软 Azure Stor 简单虚拟阵列系统要求
 description: 了解有关 StorSimple Virtual Array 的软件和网络要求的详细信息
 author: alkohli
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79267542"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298812"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
 
@@ -45,7 +45,7 @@ ms.locfileid: "79267542"
 > 不要将 VMware 工具安装在 StorSimple 虚拟阵列上，这将导致不支持的配置。
 
 ### <a name="virtual-device-requirements"></a>虚拟设备要求
-| 组件 | **要求** |
+| **组件** | **要求** |
 | --- | --- |
 | 虚拟处理器的最小数目（核） |4 |
 | 最小内存 (RAM) |8 GB <br> 对于文件服务器，小于 200 万个文件时为 8 GB，200 万 - 400 万个文件时为 16 GB|
@@ -58,7 +58,7 @@ ms.locfileid: "79267542"
 <sup>2</sup> - 网络要求可能会根据每日数据更改频率而有所不同。 例如，如果设备在一天中需要备份 10 GB 或更多更改，则通过 5 Mbps 连接进行的每日备份可能耗时长达 4.25 小时（如果无法压缩数据或删除重复数据）。
 
 ### <a name="supported-web-browsers"></a>受支持的 Web 浏览器
-| 组件 | **版本** | **其他要求/说明** |
+| **组件** | **版本** | **其他要求/说明** |
 | --- | --- | --- |
 | Microsoft Edge |最新版本 | |
 | Internet Explorer |最新版本 |使用 Internet Explorer 11 测试 |
@@ -67,7 +67,7 @@ ms.locfileid: "79267542"
 ### <a name="supported-storage-clients"></a>受支持的存储客户端
 以下软件要求适用于访问 StorSimple Virtual Array（配置为 iSCSI 服务器）的 iSCSI 发起程序。
 
-| **受支持的操作系统** | **所需版本** | **其他要求/说明** |
+| **支持的操作系统** | **所需版本** | **其他要求/说明** |
 | --- | --- | --- |
 | Windows Server |2008R2 SP1、2012 和 2012R2 |StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。 以下各项只支持 StorSimple iSCSI 卷： <ul><li>Windows 基本磁盘上的简单卷。</li><li>用于格式化卷的 Windows NTFS。</li> |
 
@@ -102,7 +102,7 @@ ms.locfileid: "79267542"
 <sup>1</sup> 无需在公共 Internet 上打开任何入站端口。
 
 > [!IMPORTANT]
-> 确保防火墙不会修改或解密 StorSimple 设备和 Azure 之间的任何 SSL 通信。
+> 确保防火墙不会修改或解密 StorSimple 设备和 Azure 之间的任何 TLS 流量。
 > 
 > 
 

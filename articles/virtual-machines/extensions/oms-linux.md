@@ -15,28 +15,28 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
 ms.openlocfilehash: 9ddac229fc38a91a8b97b24dc2807080b2295758
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250551"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Log Analytics 虚拟机扩展
 
 ## <a name="overview"></a>概述
 
-Azure Monitor 日志提供跨云和本地资产的监视、警报和警报修正功能。 适用于 Linux 的 Log Analytics 虚拟机扩展由 Microsoft 发布和支持。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 本文档详细介绍适用于 Linux 的 Log Analytics 虚拟机扩展支持的平台、配置和部署选项。
+Azure 监视器日志提供跨云和本地资产的监视、警报和警报修正功能。 Linux 的日志分析虚拟机扩展由 Microsoft 发布和支持。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 本文档详细介绍适用于 Linux 的 Log Analytics 虚拟机扩展支持的平台、配置和部署选项。
 
 >[!NOTE]
 >从 Microsoft Operations Management Suite (OMS) 过渡到 Azure Monitor 期间，Windows 或 Linux 的 OMS 代理称为 Windows 或 Linux 的 Log Analytics 代理。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 
-有关受支持的 Linux 发行版的详细信息，请参阅[Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)文章。
+有关支持的 Linux 发行版的详细信息，请参阅 [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)一文。
 
 ### <a name="agent-and-vm-extension-version"></a>代理和 VM 扩展版本
 下表提供每次发布的 Log Analytics VM 扩展和 Log Analytics 代理捆绑包的版本映射。 并附有 Log Analytics 代理捆绑包版本的发行说明链接。 发行说明包括有关可用于给定代理版本的 bug 修补程序和新功能的详细信息。  
@@ -103,7 +103,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 ### <a name="property-values"></a>属性值
 
-| 名称 | 值/示例 |
+| “属性” | 值/示例 |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | 发布者 | Microsoft.EnterpriseCloud.Monitoring |
@@ -115,7 +115,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 部署需要部署后配置的一个或多个虚拟机（例如载入 Azure Monitor 日志）时，模板是理想选择。 可以在[Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)中找到包含 LOG ANALYTICS 代理 VM 扩展的示例资源管理器模板。 
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 在部署需要部署后配置（如加入 Azure 监视器日志）的一个或多个虚拟机时，模板是理想的选择。 包含 Log Analytics 代理 VM 扩展的示例资源管理器模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)中找到。 
 
 虚拟机扩展的 JSON 配置可以嵌套在虚拟机资源内，或放置在资源管理器 JSON 模板的根级别或顶级别。 JSON 的位置会影响资源名称和类型的值。 有关详细信息，请参阅[设置子资源的名称和类型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 
@@ -171,7 +171,7 @@ Azure 安全中心自动预配 Log Analytics 代理并将其连接到 Azure 订�
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
-可以使用 Azure CLI 将 Log Analytics 代理 VM 扩展部署到现有的虚拟机。 将下面的*myWorkspaceKey*值替换为你的工作区密钥，并将*myWorkspaceId*值替换为你的工作区 ID。 可以在 "*高级设置*" 下的 "Azure 门户中的" Log Analytics "工作区中找到这些值。 
+可以使用 Azure CLI 将 Log Analytics 代理 VM 扩展部署到现有的虚拟机。 将下面的 myWorkspaceKey** 值替换为工作区密钥，并将 myWorkspaceId** 值替换为工作区 ID。 这些值可以在 Azure 门户的 Log Analytics 工作区中的“高级设置”** 下找到。 
 
 ```azurecli
 az vm extension set \
@@ -185,7 +185,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 
@@ -210,10 +210,10 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 19 | OMI 包安装失败 | 
 | 20 | SCX 包安装失败 |
 | 51 | VM 的操作系统不支持此扩展 | |
-| 55 | 无法连接到 Azure Monitor 服务或缺少所需的包，或已锁定 dpkg 包管理器| 确保系统具有 Internet 访问权限，或已提供有效 HTTP 代理。 此外，检查工作区 ID 的正确性，并验证是否已安装 curl 和 tar 实用程序。 |
+| 55 | 无法连接到 Azure Monitor 服务或缺少所需的包或 dpkg 包管理器已锁定| 确保系统具有 Internet 访问权限，或已提供有效 HTTP 代理。 此外，检查工作区 ID 的正确性，并验证是否已安装 curl 和 tar 实用程序。 |
 
 有关其他故障排除信息，可查看 [Log Analytics-Agent-for-Linux 故障排除指南](../../azure-monitor/platform/vmext-troubleshoot.md)。
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果本文中的任何一点都需要更多帮助，则可以在[MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上联系 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择"获取支持"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

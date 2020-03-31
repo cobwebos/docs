@@ -16,12 +16,12 @@
       href: sql-data-warehouse-service-capacity-limits.md
     - name: 常见问题解答
       href: sql-data-warehouse-overview-faq.md
-- name: 发行说明
-  items:
-    - name: 最新版本
-      href: release-notes-10-0-10106-0.md
-    - name: 第 2 代区域升级计划
-      href: gen2-migration-schedule.md
+    - name: 发行说明
+      items:
+        - name: 最新版本
+          href: release-notes-10-0-10106-0.md
+        - name: 第 2 代区域升级计划
+          href: gen2-migration-schedule.md
 - name: 快速入门
   expanded: true
   items:

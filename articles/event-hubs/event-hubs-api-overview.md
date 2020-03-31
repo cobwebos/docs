@@ -1,6 +1,6 @@
 ---
 title: Azure 事件中心 API 概述 | Microsoft 文档
-description: 本文概述了使用 Azure 事件中心服务时可用的 Api （运行时和管理）。
+description: 本文概述了使用 Azure 事件中心服务时可用的 API（运行时和管理）。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
 ms.openlocfilehash: 08e10996f633d35ffbf946b61937a0e9a76f7227
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162219"
 ---
 # <a name="available-event-hubs-apis"></a>可用的事件中心 API
@@ -34,10 +34,10 @@ ms.locfileid: "77162219"
 | 语言/平台 | 客户端程序包 | EventProcessorHost 包 | 存储库 |
 | --- | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHub](https://github.com/azure/azure-event-hubs-dotnet) |
-| .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | 不可用 |
+| .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | 空值 |
 | Java | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) | [GitHub](https://github.com/Azure/azure-event-hubs-java) |
-| 节点 | [NPM](https://www.npmjs.com/package/azure-event-hubs) | 不可用 | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
-| C | 不可用 | 不可用 | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
+| 节点 | [NPM](https://www.npmjs.com/package/azure-event-hubs) | 空值 | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
+| C | 空值 | 空值 | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
 
 ### <a name="additional-information"></a>其他信息
 
@@ -47,7 +47,7 @@ ms.locfileid: "77162219"
 
 #### <a name="node"></a>节点
 
-[JavaScript 库](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)目前处于预览阶段，由 Microsoft 员工和外部参与者作为侧的项目进行维护。 包括源代码在内的所有贡献都欢迎并将对其进行审查。
+[JavaScript 库](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)当前处于预览状态，由 Microsoft 员工和外部贡献者作为附带项目进行维护。 包括源代码在内的所有贡献都欢迎并将对其进行审查。
 
 ## <a name="management-apis"></a>管理 API
 
@@ -62,4 +62,4 @@ ms.locfileid: "77162219"
 
 * [事件中心概述](event-hubs-what-is-event-hubs.md)
 * [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题解答](event-hubs-faq.md)
+* [事件中心常见问题](event-hubs-faq.md)

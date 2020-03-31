@@ -1,5 +1,5 @@
 ---
-title: ExpressRoute：将线路从经典部署移动到 Azure 资源管理器
+title: 快速路由：将电路从经典路由移动到 Azure 资源管理器
 description: 桥接经典和资源管理器部署模型的概述。
 services: expressroute
 author: ganesr
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
 ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645899"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型
@@ -57,7 +57,7 @@ ms.locfileid: "75645899"
 * 创建/更新/获取/删除到经典虚拟网络的虚拟网络链接
 * 创建/更新/获取/删除跨订阅连接的虚拟网络链接授权
 
-然而，将 allowClassicOperations 设置为 TRUE 时，无法执行以下经典操作：
+然而，将 allowClassicOperations 设置为 TRUE 时，无法执行以下经典操作****：
 
 * 创建/更新/获取/删除 Azure 专用对等互连、Azure 公共对等互连和 Microsoft 对等互连的边界网关协议 (BGP) 对等互连
 * 删除 ExpressRoute 线路
@@ -87,7 +87,7 @@ ExpressRoute 线路相当于经典部署模型与 Resource Manager 部署模型�
 * 从经典部署模型管理 ExpressRoute 线路的生命周期。
 * 针对经典部署模型的基于角色的访问控制 (RBAC) 支持。 无法对经典部署模型中的线路执行 RBAC 控制。 订阅的任何管理员/共同管理员都可以将虚拟网络链接到线路，也都可以取消此类链接。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 遵循 [将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](expressroute-howto-move-arm.md)中所述的说明。
 
 ## <a name="next-steps"></a>后续步骤
@@ -95,7 +95,7 @@ ExpressRoute 线路相当于经典部署模型与 Resource Manager 部署模型�
 * 有关工作流信息，请参阅 [ExpressRoute 线路预配工作流和线路状态](expressroute-workflows.md)。
 * 配置 ExpressRoute 连接的步骤：
   
-  * [创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)
+  * [创建快速路由电路](expressroute-howto-circuit-arm.md)
   * [配置路由](expressroute-howto-routing-arm.md)
-  * [将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)
+  * [将虚拟网络链接到 ExpressRoute 电路](expressroute-howto-linkvnet-arm.md)
 

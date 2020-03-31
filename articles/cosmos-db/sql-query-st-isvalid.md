@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8fbddbe82ae13585b8259a66dffaeef8024baf5d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349368"
 ---
-# <a name="st_isvalid-azure-cosmos-db"></a>ST_ISVALID （Azure Cosmos DB）
+# <a name="st_isvalid-azure-cosmos-db"></a>ST_ISVALID (Azure Cosmos DB)
  返回一个布尔值，指示指定的 GeoJSON 点、多边形或 LineString 表达式是否有效。  
   
 ## <a name="syntax"></a>语法
@@ -23,7 +23,7 @@ ms.locfileid: "71349368"
 ST_ISVALID(<spatial_expr>)  
 ```  
   
-## <a name="arguments"></a>参数
+## <a name="arguments"></a>自变量
   
 *spatial_expr*  
    是 GeoJSON 点、多边形或 LineString 表达式。  
@@ -44,7 +44,7 @@ ST_ISVALID(<spatial_expr>)
 SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] }) AS b 
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{ "b": false }]  
@@ -53,5 +53,5 @@ SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] }) AS b
 ## <a name="next-steps"></a>后续步骤
 
 - [空间函数 Azure Cosmos DB](sql-query-spatial-functions.md)
-- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB 简介](introduction.md)
+- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
+- [Azure 宇宙 DB 简介](introduction.md)

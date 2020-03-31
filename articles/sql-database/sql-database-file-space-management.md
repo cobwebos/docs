@@ -1,5 +1,5 @@
 ---
-title: 单个/共用数据库文件空间管理
+title: 单一/共用数据库文件空间管理
 description: 本页介绍了如何管理 Azure SQL 数据库中的单一数据库和共用数据库的文件空间，并提供了代码示例来演示如何确定是否需要收缩单一数据库或共用数据库，以及如何执行数据库收缩操作。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 007bbffbd7c4fcad339f88eb78991eb39fb829e6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74420980"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的单一数据库和共用数据库的文件空间
@@ -49,7 +49,7 @@ Azure 门户和以下 API 中显示的大多数存储空间指标仅度量已用
 
 ### <a name="shrinking-data-files"></a>收缩数据文件
 
-SQL 数据库服务不会自动收缩数据文件来回收未使用的分配空间，因为这可能会影响数据库的性能。  但是，客户可遵循[回收未使用的分配空间](#reclaim-unused-allocated-space)中所述的步骤，在其选定的时间通过自助式操作收缩数据文件。
+SQL 数据库服务不会自动收缩数据文件来回收未使用的分配空间，因为这可能会影响数据库的性能。  但是，客户可以通过自助服务在选择的时间通过自助服务收缩数据文件，按照[回收未使用的分配空间](#reclaim-unused-allocated-space)中描述的步骤。
 
 > [!NOTE]
 > 与数据文件不同，SQL 数据库服务会自动收缩日志文件，因为该操作不会影响数据库的性能。
@@ -140,12 +140,12 @@ ORDER BY end_time DESC
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>已分配的，以及已分配但未使用的弹性池数据空间
 
-修改以下示例以返回一个表，该表列出弹性池中每个数据库的已分配空间和未分配的空间。 该表中数据库的排序顺序为：已分配但未使用空间量最大的数据库排在最前，已分配但未使用空间量最小的数据库排在最后。  查询结果以 MB 为单位。  
+修改以下示例来返回一个表，该表列出为弹性池中每个数据库分配的空间，以及已分配但未使用的空间。 该表中数据库的排序顺序为：已分配但未使用空间量最大的数据库排在最前，已分配但未使用空间量最小的数据库排在最后。  查询结果以 MB 为单位。  
 
 将查询结果（确定分配给池中每个数据库的空间）相加，可以确定为弹性池分配的总空间。 分配的弹性池空间不应超过弹性池最大大小。  
 
 > [!IMPORTANT]
-> Azure SQL 数据库仍支持 PowerShell Azure 资源管理器（RM）模块，但所有将来的开发都适用于 Az .Sql 模块。 AzureRM 模块将继续收到 bug 修复，直到至少12月2020。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 有关其兼容性的详细信息，请参阅[新 Azure PowerShell Az Module 简介](/powershell/azure/new-azureps-module-az)。
+> PowerShell Azure 资源管理器 (RM) 模块仍受 Azure SQL 数据库支持，但所有未来的开发都是针对 Az.Sql 模块的。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
 
 PowerShell 脚本需要 SQL Server PowerShell 模块 - 请参阅[下载 PowerShell 模块](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)进行安装。
 
@@ -236,7 +236,7 @@ ALTER DATABASE [db1] SET AUTO_SHRINK ON
 - 有关数据库最大大小的信息，请参阅：
   - [适用于单一数据库的 Azure SQL 数据库基于 vCore 的购买模型限制](sql-database-vcore-resource-limits-single-databases.md)
   - [使用基于 DTU 的购买模型的单一数据库的资源限制](sql-database-dtu-resource-limits-single-databases.md)
-  - [适用于弹性池的 Azure SQL 数据库基于 vCore 的购买模型限制](sql-database-vcore-resource-limits-elastic-pools.md)
+  - [Azure SQL 数据库基于 vCore 的购买模型针对弹性池的限制](sql-database-vcore-resource-limits-elastic-pools.md)
   - [使用基于 DTU 的购买模型的弹性池的资源限制](sql-database-dtu-resource-limits-elastic-pools.md)
 - 有关 `SHRINKDATABASE` 命令的详细信息，请参阅 [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。
 - 有关碎片和重新生成索引的详细信息，请参阅[重新组织和重新生成索引](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)。
