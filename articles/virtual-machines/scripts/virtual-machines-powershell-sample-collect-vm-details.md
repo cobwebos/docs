@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 收集订阅中所有 Vm 的详细信息
-description: 使用 PowerShell 收集订阅中所有 Vm 的详细信息
+title: 使用 PowerShell 收集订阅中所有 VM 的详细信息
+description: 使用 PowerShell 收集订阅中所有 VM 的详细信息
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: v-miegge
@@ -16,23 +16,23 @@ ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
 ms.openlocfilehash: 237081380445f2b2e4168ee3afe9a3ed7544fc89
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900202"
 ---
-# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>使用 PowerShell 收集订阅中所有 Vm 的详细信息
+# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>使用 PowerShell 收集订阅中所有 VM 的详细信息
 
-此脚本创建一个 csv，其中包含提供的订阅中 vm 的 VM 名称、资源组名称、区域、虚拟网络、子网、专用 IP 地址、OS 类型和公共 IP 地址。
+此脚本创建一个 csv，其中包含所提供订阅中 VM 的 VM 名称、资源组名称、区域、虚拟网络、子网、专用 IP 地址、OS 类型和公共 IP 地址。
 
-如果还没有 [Azure 订阅](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free)。
+如果没有[Azure 订阅](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，请先创建[一个免费帐户](https://azure.microsoft.com/free)。然后开始。
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。**** 您还可以通过 访问[https://shell.azure.com/powershell](https://shell.azure.com/powershell)在单独的浏览器选项卡中启动云外壳。 选择 **"复制"** 以复制代码块，将其粘贴到云外壳中，然后按 Enter 以运行它。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -70,7 +70,7 @@ $report | Export-CSV "$home/$reportName"
 ```
 
 ## <a name="script-explanation"></a>脚本说明
-此脚本使用以下命令创建订阅中 Vm 的详细信息的 csv 导出。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建订阅中 VM 详细信息的 csv 导出。 表中的每条命令均链接到特定于命令的文档。
 
 |命令|说明|
 |-|-|

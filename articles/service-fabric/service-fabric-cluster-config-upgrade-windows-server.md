@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 8e7e01dac29cb9ba91c83270dac4e46c73b2089e
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610110"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>升级独立群集的配置 
@@ -17,11 +17,11 @@ ms.locfileid: "75610110"
 对于任何新式系统而言，升级能力是实现产品长期成功的关键所在。 Azure Service Fabric 群集是你拥有的资源。 本文介绍如何升级独立 Service Fabric 群集的配置设置。
 
 ## <a name="customize-cluster-settings-in-the-clusterconfigjson-file"></a>在 ClusterConfig.json 文件中自定义群集设置
-通过“ClusterConfig.json”文件配置独立群集。 若要了解不同设置的详细信息，请参阅[独立 Windows 群集的配置设置](service-fabric-cluster-manifest.md)。
+独立群集通过*ClusterConfig.json*文件进行配置。 若要了解不同设置的详细信息，请参阅[独立 Windows 群集的配置设置](service-fabric-cluster-manifest.md)。
 
-可以在“ClusterConfig.json”中[群集属性](./service-fabric-cluster-manifest.md#cluster-properties)部分下的 `fabricSettings` 部分中添加、更新或删除设置。 
+您可以在 *"群集 Config.json"* 中的`fabricSettings`["群集属性](./service-fabric-cluster-manifest.md#cluster-properties)"部分下添加、更新或删除设置。 
 
-例如，以下 JSON 将向 `fabricSettings` 下的“诊断”部分添加新设置“MaxDiskQuotaInMB”：
+例如，以下 JSON 将向 `fabricSettings` 下的“诊断”部分添加新设置“MaxDiskQuotaInMB”****：
 
 ```json
       {
@@ -50,10 +50,10 @@ TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File
 TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File> -FabricRuntimePackagePath <Path to the .cab file which you want to test the configuration against>
 ```
 
-某些配置无法升级，如终结点、群集名称、节点 IP 等。新的群集配置 JSON 针对旧的群集配置进行了测试，并在出现问题时在 PowerShell 窗口中引发错误。
+某些配置无法升级，例如端点、群集名称、节点 IP 等。新的群集配置 JSON 针对旧群集配置 JSON 进行测试，并在 PowerShell 窗口中引发错误（如果有问题）。
 
 ## <a name="upgrade-the-cluster-configuration"></a>升级群集配置
-若要升级群集配置，请运行 [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)。 配置升级由升级域处理。
+要升级群集配置升级，运行[启动-服务Fabric集群配置升级](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)。 配置升级由升级域处理。
 
 ```powershell
 Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
@@ -75,7 +75,7 @@ Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Confi
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何自定义某些 [Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)。
-* 了解如何[扩展和缩减群集](service-fabric-cluster-scale-up-down.md)。
+* 了解如何[将群集扩展到和外。](service-fabric-cluster-scale-up-down.md)
 * 了解[应用程序升级](service-fabric-application-upgrade.md)。
 
 <!--Image references-->

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 0827311218202de447e5cf27356e00c4da020e94
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61472985"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>在本地调试 Azure Data Lake Analytics 代码
 
 与在 Azure Data Lake Analytics 服务中一样，可以使用针对 Visual Studio 的 Azure Data Lake 工具在本地工作站上运行和调试 Azure Data Lake Analytics 代码。
 
-了解[如何在本地计算机上运行 U-SQL 脚本](data-lake-analytics-data-lake-tools-local-run.md)。
+了解如何[在本地计算机上运行 U-SQL 脚本](data-lake-analytics-data-lake-tools-local-run.md)。
 
 ## <a name="debug-scripts-and-c-assemblies-locally"></a>在本地调试脚本和 C# 程序集
 
@@ -30,26 +30,26 @@ ms.locfileid: "61472985"
 ### <a name="debug-local-code-in-a-code-behind-file"></a>在代码隐藏文件中调试本地代码
 
 1. 在代码隐藏文件中设置断点。
-2. 选择 F5  在本地调试脚本。
+2. 选择 F5**** 在本地调试脚本。
 
 > [!NOTE]
-   > 以下过程仅适用于 Visual Studio 2015。 在旧版 Visual Studio 中，可能需要手动添加 PDB  文件。  
+   > 以下过程仅适用于 Visual Studio 2015。 在旧版 Visual Studio 中，可能需要手动添加 PDB**** 文件。  
    >
    >
 
 ### <a name="debug-local-code-in-a-referenced-c-project"></a>在引用的 C# 项目中调试本地代码
 
-1. 创建 C# 程序集项目，构建该项目以生成输出 DLL  文件。
-2. 使用 U-SQL 语句注册该 DLL  文件：
+1. 创建 C# 程序集项目，构建该项目以生成输出 DLL**** 文件。
+2. 使用 U-SQL 语句注册该 DLL**** 文件：
 
         CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
         
 3. 在 C# 代码中设置断点。
-4. 选择 F5  ，通过在本地引用 C# DLL  文件来调试脚本。
+4. 选择 F5****，通过在本地引用 C# DLL**** 文件来调试脚本。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关更复杂的查询示例，请参阅[使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)。
-- 若要查看作业详细信息，请参阅 [Use Job Browser and Job View for Azure Data Lake Analytics jobs](data-lake-analytics-data-lake-tools-view-jobs.md)（对 Azure Data Lake Analytics 作业使用作业浏览器和作业视图）。
-- 若要使用顶点执行视图，请参阅 [Use the Vertex Execution View in Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)（使用用于 Visual Studio 的 Data Lake 工具中的顶点执行视图）。
+- 要查看作业详细信息，请参阅[使用作业浏览器和作业视图进行 Azure 数据湖分析作业](data-lake-analytics-data-lake-tools-view-jobs.md)。
+- 要使用顶点执行视图，请参阅[在可视化工作室使用数据湖工具中的顶点执行视图](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)。

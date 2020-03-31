@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 网关：删除网关： PowerShell
+title: Azure VPN 网关：删除网关：电源外壳
 description: 在 Resource Manager 部署模型中使用 PowerShell 删除虚拟网络网关。
 services: vpn-gateway
 author: cherylmc
@@ -8,17 +8,17 @@ ms.date: 02/07/2019
 ms.author: cherylmc
 ms.topic: conceptual
 ms.openlocfilehash: f351f14796ec736bd5525f139a518c9a0dd3d19f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162100"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>使用 PowerShell 删除虚拟网络网关
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
-> * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-> * [PowerShell（经典）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+> * [电源外壳](vpn-gateway-delete-vnet-gateway-powershell.md)
+> * [电源外壳（经典）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
 >
 
@@ -38,7 +38,7 @@ ms.locfileid: "77162100"
 
 ### <a name="2-connect-to-your-azure-account"></a>2. 连接到 Azure 帐户。
 
-打开 PowerShell 控制台并连接到你的帐户。 使用下面的示例来帮助连接：
+打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助连接：
 
 ```powershell
 Connect-AzAccount
@@ -56,7 +56,7 @@ Get-AzSubscription
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="S2S"></a>删除站点到站点 VPN 网关
+## <a name="delete-a-site-to-site-vpn-gateway"></a><a name="S2S"></a>删除站点到站点 VPN 网关
 
 若要删除 S2S 配置中的虚拟网络网关，必须先删除与该网关相关的每个资源。 由于存在依赖关系，必须按特定的顺序删除资源。 在以下示例中，必须指定某些值，而其他值是输出结果。 为方便演示，我们在示例中使用了以下特定值：
 
@@ -139,7 +139,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="v2v"></a>删除 VNet 到 VNet VPN 网关
+## <a name="delete-a-vnet-to-vnet-vpn-gateway"></a><a name="v2v"></a>删除 VNet 到 VNet VPN 网关
 
 若要删除 V2V 配置中的虚拟网络网关，必须先删除与该网关相关的每个资源。 由于存在依赖关系，必须按特定的顺序删除资源。 在以下示例中，必须指定某些值，而其他值是输出结果。 为方便演示，我们在示例中使用了以下特定值：
 
@@ -167,7 +167,7 @@ get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$
 get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
 ```
 
-### <a name="3-get-the-list-of-connections-in-both-directions"></a>3. 获取双向连接列表。
+### <a name="3-get-the-list-of-connections-in-both-directions"></a>3. 获取双向连接的列表。
 
 由于这是一种 VNet 到 VNet 配置，因此需要获取两个方向的连接列表。
 
@@ -227,7 +227,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="deletep2s"></a>删除点到站点 VPN 网关
+## <a name="delete-a-point-to-site-vpn-gateway"></a><a name="deletep2s"></a>删除点到站点 VPN 网关
 
 若要删除 P2S 配置中的虚拟网络网关，必须先删除与该网关相关的每个资源。 由于存在依赖关系，必须按特定的顺序删除资源。 在以下示例中，必须指定某些值，而其他值是输出结果。 为方便演示，我们在示例中使用了以下特定值：
 
@@ -286,17 +286,17 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="delete"></a>通过删除资源组来删除 VPN 网关
+## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="delete"></a>通过删除资源组来删除 VPN 网关
 
 如果不关心是否要保留资源组中的任何资源，而只是要从头开始配置，则可以删除整个资源组。 这种方法可以快速删除所有信息。 以下步骤仅适用于 Resource Manager 部署模型。
 
-### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1. 获取订阅中所有资源组的列表。
+### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1. 获取订阅中的所有资源组的列表。
 
 ```powershell
 Get-AzResourceGroup
 ```
 
-### <a name="2-locate-the-resource-group-that-you-want-to-delete"></a>2. 查找要删除的资源组。
+### <a name="2-locate-the-resource-group-that-you-want-to-delete"></a>2. 找到要删除的资源组。
 
 找到想要删除的资源组，并查看该资源组中的资源列表。 在本示例中，资源组的名称为 RG1。 请修改示例以检索所有资源的列表。
 

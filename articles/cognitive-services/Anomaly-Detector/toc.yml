@@ -78,6 +78,16 @@
       href: 'https://arxiv.org/abs/1906.03821'
 - name: 资源
   items:
+    - name: 支持
+      items:
+        - name: 获取支持
+          href: 'https://aka.ms/adsupport'
+        - name: 堆栈溢出
+          href: 'https://aka.ms/adso'
+        - name: MSDN
+          href: 'https://aka.ms/admsdn'
+        - name: 用户之声
+          href: 'https://aka.ms/aduservoice'
     - name: 定价
       href: 'https://aka.ms/adpricing'
     - name: 区域可用性
@@ -90,13 +100,3 @@
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-- name: 支持
-  items:
-    - name: 获取支持
-      href: 'https://aka.ms/adsupport'
-    - name: 堆栈溢出
-      href: 'https://aka.ms/adso'
-    - name: MSDN
-      href: 'https://aka.ms/admsdn'
-    - name: 用户之声
-      href: 'https://aka.ms/aduservoice'

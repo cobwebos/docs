@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 3fec04a1a45f8b154e27a1e5303e44111f4cb421
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71211871"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>通过使用 ASP.NET 注册推送通知的当前用户
@@ -36,19 +36,19 @@ ms.locfileid: "71211871"
 
 1. 在 MainStoryboard_iPhone.storyboard 中，从对象库添加以下组件：
 
-   * **标签**：“Push to User with Notification Hubs”
-   * **标签**：“InstallationId”
-   * **标签**：“User”
-   * **文本字段**：“User”
-   * **标签**：“Password”
-   * **文本字段**：“Password”
-   * **按钮**：“Login”
+   * **标签**：“使用通知中心推送到用户”
+   * **标签**："InstallationId"
+   * **标签**：“用户”
+   * **文本字段**：“用户”
+   * **标签**：“密码”
+   * **文本字段**：“密码”
+   * **按钮**：“登录”
 
      此时，Storyboard 应与下图类似：
 
      ![][0]
 
-2. 在助手编辑器中，创建所有带开关控件的容器并调用它们，连接文本字段与视图控制器（委派），并创建“登录”按钮的“操作”。
+2. 在助手编辑器中，创建所有带开关控件的容器并调用它们，连接文本字段与视图控制器（委派），并创建“**登录**”按钮的“**操作**”。
 
     ![][1]
 
@@ -248,7 +248,7 @@ ms.locfileid: "71211871"
 
     此方法获取一个安装 ID 和用于推送通知的通道并将它与设备类型一起发送到在通知中心创建注册的已经身份验证的 Web API 方法。 此 Web API 已在[使用通知中心通知用户]中定义。
 
-现在客户端应用程序已更新，请返回到 [使用通知中心通知用户] 并更新移动服务以使用通知中心发送通知。
+现在客户端应用程序已更新，请返回到[使用通知中心通知用户]并更新移动服务以使用通知中心发送通知。
 
 <!-- Anchors. -->
 

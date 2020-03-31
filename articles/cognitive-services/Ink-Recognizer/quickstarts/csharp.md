@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 1cf519d8d8c25877b49bf14aefd1c0be3afa8023
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: c24d055f1904453d2f512a278f00e23c6fea1d9b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137878"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371376"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>快速入门：使用墨迹识别器 REST API 和 C# 识别数字墨迹
 
@@ -29,7 +29,7 @@ ms.locfileid: "77137878"
 
 可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502) 上找到此快速入门的源代码。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 任何版本的 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)。
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
@@ -39,7 +39,7 @@ ms.locfileid: "77137878"
         3. 搜索 `Newtonsoft.Json` 并安装该包
 - 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 
-- 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json) 上找到此快速入门的示例墨迹笔划数据。
+- 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-ink-strokes.json) 上找到此快速入门的示例墨迹笔划数据。
 
 ### <a name="create-an-ink-recognizer-resource"></a>创建“墨迹识别器”资源
 
@@ -90,7 +90,7 @@ ms.locfileid: "77137878"
 
 ## <a name="run-the-application-and-view-the-response"></a>运行应用程序并查看响应
 
-运行应用程序。 成功的响应以 JSON 格式返回。 也可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json) 上找到 JSON 响应。
+运行应用程序。 成功的响应以 JSON 格式返回。 也可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-response.json) 上找到 JSON 响应。
 
 
 ## <a name="next-steps"></a>后续步骤

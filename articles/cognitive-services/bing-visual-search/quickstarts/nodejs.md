@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 373d6fa5402ba703cbebe88ad562974ba97f3391
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75379702"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>快速入门：使用必应视觉搜索 REST API 和 Node.js 获取图像见解
 
 使用本快速入门首次调用必应视觉搜索 API 并查看搜索结果。 此简单 JavaScript 应用程序会将一个图像上传到该 API，并显示返回的相关信息。 虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [Node.js](https://nodejs.org/en/download/)
 * JavaScript 请求模块。 可以使用 `npm install request` 命令安装该模块。

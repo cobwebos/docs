@@ -1,36 +1,36 @@
 ---
-title: 模板函数-数组和对象
+title: 模板函数 - 数组和对象
 description: 介绍可在 Azure 资源管理器模板中用来处理数组和对象的函数。
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 1359951c00ba04e641ae84636459a8836924c729
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 0b4bb80f6d7a7cc20a8b2dcc71e890f2ada7c5be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273691"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156369"
 ---
-# <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的数组和对象函数
+# <a name="array-and-object-functions-for-arm-templates"></a>ARM 模板的数组和对象函数
 
-Resource Manager 提供以下用于处理数组和对象的函数。
+资源管理器提供了多个功能，用于在 Azure 资源管理器 （ARM） 模板中处理数组和对象。
 
-* [array](#array)
-* [coalesce](#coalesce)
-* [concat](#concat)
-* [contains](#contains)
-* [createArray](#createarray)
-* [empty](#empty)
-* [first](#first)
-* [intersection](#intersection)
-* [json](#json)
-* [last](#last)
+* [阵 列](#array)
+* [合并](#coalesce)
+* [Concat](#concat)
+* [包含](#contains)
+* [创建Array](#createarray)
+* [空](#empty)
+* [第一](#first)
+* [交集](#intersection)
+* [Json](#json)
+* [最后](#last)
 * [length](#length)
 * [max](#max)
-* [min](#min)
-* [range](#range)
-* [skip](#skip)
-* [take](#take)
-* [union](#union)
+* [分钟](#min)
+* [范围](#range)
+* [跳](#skip)
+* [采取](#take)
+* [联盟](#union)
 
 若要获取由某个值分隔的字符串值数组，请参阅 [split](template-functions-string.md#split)。
 
@@ -42,7 +42,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | convertToArray |是 |int、string、array 或 object |要转换为数组的值。 |
 
@@ -93,16 +93,16 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
-| intOutput | 数组 | [1] |
-| stringOutput | 数组 | ["efgh"] |
-| objectOutput | 数组 | [{"a": "b", "c": "d"}] |
+| intOutput | Array | [1] |
+| stringOutput | Array | ["efgh"] |
+| objectOutput | Array | [{"a": "b", "c": "d"}] |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -119,14 +119,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要测试是否为 null 的第一个值。 |
 | 其他参数 |否 |int、string、array 或 object |要测试是否为 null 的其他值。 |
 
 ### <a name="return-value"></a>返回值
 
-第一个非 null 参数的值，可以是字符串、整数、数组或对象。 如果所有参数都为 null，则为 null。 
+第一个非 null 参数的值，可以是字符串、整数、数组或对象。 如果所有参数都为 null，则为 null。
 
 ### <a name="example"></a>示例
 
@@ -140,7 +140,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
         "objectToTest": {
             "type": "object",
             "defaultValue": {
-                "null1": null, 
+                "null1": null,
                 "null2": null,
                 "string": "default",
                 "int": 1,
@@ -178,18 +178,18 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | stringOutput | String | default |
 | intOutput | Int | 1 |
 | objectOutput | Object | {"first": "default"} |
-| arrayOutput | 数组 | [1] |
+| arrayOutput | Array | [1] |
 | emptyOutput | Bool | True |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -202,16 +202,16 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 `concat(arg1, arg2, arg3, ...)`
 
-合并多个数组并返回串联的数组，或合并多个字符串值并返回串联的字符串。 
+合并多个数组并返回串联的数组，或合并多个字符串值并返回串联的字符串。
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要串联的第一个数组或字符串。 |
 | 其他参数 |否 |数组或字符串 |按顺序排列的串联的其他数组或字符串。 |
 
-此函数可以使用任意数量的参数，并可接受字符串或数组作为参数。 但是，不能同时为参数提供数组和字符串。 数组仅与其他数组串联。
+此函数可以使用任意数量的参数，并可接受字符串或数组作为参数。 但是，不能同时为参数提供数组和字符串。 数组仅与其他数组连接。
 
 ### <a name="return-value"></a>返回值
 
@@ -225,22 +225,22 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": { 
-        "firstArray": { 
-            "type": "array", 
-            "defaultValue": [ 
-                "1-1", 
-                "1-2", 
-                "1-3" 
-            ] 
+    "parameters": {
+        "firstArray": {
+            "type": "array",
+            "defaultValue": [
+                "1-1",
+                "1-2",
+                "1-3"
+            ]
         },
         "secondArray": {
-            "type": "array", 
-            "defaultValue": [ 
-                "2-1", 
+            "type": "array",
+            "defaultValue": [
+                "2-1",
                 "2-2",
-                "2-3" 
-            ] 
+                "2-3"
+            ]
         }
     },
     "resources": [
@@ -256,14 +256,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
-| 返回 | 数组 | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -296,14 +296,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -312,7 +312,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
 ```
 
-## <a name="contains"></a>包含
+## <a name="contains"></a>contains
 
 `contains(container, itemToFind)`
 
@@ -320,7 +320,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | 容器 (container) |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
@@ -384,7 +384,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -396,7 +396,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -413,7 +413,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串、整数、数组或对象 |数组中的第一个值。 |
 | 其他参数 |否 |字符串、整数、数组或对象 |数组中的其他值。 |
@@ -465,17 +465,17 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
-| stringArray | 数组 | ["a", "b", "c"] |
-| intArray | 数组 | [1, 2, 3] |
-| objectArray | 数组 | [{"one": "a", "two": "b", "three": "c"}] |
-| arrayArray | 数组 | [["one", "two", "three"]] |
+| stringArray | Array | ["a", "b", "c"] |
+| intArray | Array | [1, 2, 3] |
+| objectArray | Array | [{"one": "a", "two": "b", "three": "c"}] |
+| arrayArray | Array | [["one", "two", "three"]] |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -484,7 +484,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
 ```
 
-## <a name="empty"></a>空
+## <a name="empty"></a>empty
 
 `empty(itemToTest)`
 
@@ -492,7 +492,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
 
@@ -543,7 +543,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -552,7 +552,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -569,7 +569,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索第一个元素或字符的值。 |
 
@@ -608,7 +608,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -616,7 +616,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -633,7 +633,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于查找通用元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于查找通用元素的第二个值。 |
@@ -686,15 +686,15 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "three": "c"} |
-| arrayOutput | 数组 | ["two", "three"] |
+| arrayOutput | Array | ["two", "three"] |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -711,13 +711,13 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串 |要转换为 JSON 的值。 |
 
 ### <a name="return-value"></a>返回值
 
-指定字符串中的 JSON 对象，或指定 null 时的空对象。
+指定字符串中的 JSON 对象，或指定 null 时的空对象****。
 
 ### <a name="remarks"></a>备注
 
@@ -758,7 +758,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | jsonOutput | Object | {"a": "b"} |
 | nullOutput | Boolean | True |
@@ -767,7 +767,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -784,7 +784,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索最后一个元素或字符的值。 |
 
@@ -823,7 +823,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -831,7 +831,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -840,21 +840,21 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
 ```
 
-## <a name="length"></a>length
+## <a name="length"></a>长度
 
 `length(arg1)`
 
-返回数组中的元素数、字符串中的字符或对象中的根级属性。
+返回数组中的元素数、字符串中的字符数或对象中的根级属性数。
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |数组、字符串或对象 |用于获取元素数的数组，要用于获取字符数的字符串，或用于获取根级别属性数的对象的数组。 |
+| arg1 |是 |数组、字符串或对象 |用于获取元素数的数组、用于获取字符数的字符串，或用于获取根级属性数的对象。 |
 
 ### <a name="return-value"></a>返回值
 
-一个整数。 
+一个整数。
 
 ### <a name="example"></a>示例
 
@@ -910,7 +910,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
@@ -919,7 +919,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -947,7 +947,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
@@ -985,7 +985,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -993,7 +993,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -1010,7 +1010,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
@@ -1048,7 +1048,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -1056,7 +1056,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -1073,10 +1073,10 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| startIndex |是 |int |数组中的第一个整数。 StartIndex 和计数的总和不得大于2147483647。 |
-| 计数 |是 |int |数组中的整数个数。 必须为非负整数，最大为10000。 |
+| startIndex |是 |int |数组中的第一个整数。 起始索引和计数的总和不能大于 2147483647。 |
+| count |是 |int |数组中的整数个数。 必须为最高 10000 的无负整数。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -1112,14 +1112,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
-| rangeOutput | 数组 | [5, 6, 7] |
+| rangeOutput | Array | [5, 6, 7] |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -1136,7 +1136,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |用于跳过的数组或字符串。 |
 | numberToSkip |是 |int |要跳过的元素或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
@@ -1191,15 +1191,15 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
-| arrayOutput | 数组 | ["three"] |
+| arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -1216,7 +1216,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |要从中提取元素的数组或字符串。 |
 | numberToTake |是 |int |要提取的元素或字符数。 如果此值小于或等于 0，则返回空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
@@ -1271,15 +1271,15 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
-| arrayOutput | 数组 | ["one", "two"] |
+| arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -1296,7 +1296,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | Type | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于联接元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于联接元素的第二个值。 |
@@ -1349,15 +1349,15 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | Type | 值 |
+| “属性” | 类型 | “值” |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
-| arrayOutput | 数组 | ["one", "two", "three", "four"] |
+| arrayOutput | Array | ["one", "two", "three", "four"] |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
 ```
 
 要使用 PowerShell 部署此示例模板，请使用：
@@ -1369,7 +1369,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
-* 要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
-* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
+* 要合并多个模板，请参阅[使用 Azure 资源管理器使用链接模板](linked-templates.md)。
+* 要迭代创建资源类型时指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 若要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 

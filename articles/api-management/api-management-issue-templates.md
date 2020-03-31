@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249576"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API 管理中的问题模板
@@ -34,10 +34,10 @@ ms.locfileid: "79249576"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="IssueList"></a>问题列表  
+##  <a name="issue-list"></a><a name="IssueList"></a>问题列表  
  **问题列表**模板可用于自定义开发人员门户中问题列表页的正文。  
   
- ![问题列表开发人员门户](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 问题列表开发人员门户")  
+ ![问题列表（开发人员门户）](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 问题列表（开发人员门户）")  
   
 ### <a name="default-template"></a>默认模板  
   
@@ -91,10 +91,10 @@ ms.locfileid: "79249576"
 </div>
 ```
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控件  
  `Issue list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [分页控制](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>数据模型  
   

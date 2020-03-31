@@ -1,5 +1,5 @@
 ---
-title: 将数据移入/移出 Azure 表
+title: 将数据移入/移入 Azure 表
 description: 了解如何使用 Azure 数据工厂将数据移入和移出 Azure 表存储。
 services: data-factory
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260444"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure 表
@@ -36,15 +36,15 @@ ms.locfileid: "79260444"
 ## <a name="getting-started"></a>入门
 可以使用不同的工具/API 创建包含复制活动的管道，以将数据移入/移出 Azure 表存储。
 
-创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
+创建管道的最简单方法是使用**** 复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-你还可以使用以下工具创建管道： **Visual Studio**、 **Azure PowerShell**、 **AZURE 资源管理器模板**、 **.net API**和**REST API**。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+您还可以使用以下工具创建管道：**可视化工作室****、Azure PowerShell、Azure****资源管理器模板** **、.NET API**和 REST **API**。 有关创建具有复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储： 
 
-1. 创建链接服务可将输入和输出数据存储链接到数据工厂。
-2. 创建数据集以表示复制操作的输入和输出数据。 
-3. 创建包含复制活动的管道，该活动将一个数据集作为输入，将一个数据集作为输出。 
+1. 创建**链接服务**，将输入和输出数据存储链接到数据工厂。
+2. 创建**数据集**以表示复制操作的输入和输出数据。 
+3. 创建具有将数据集作为输入和数据集作为输出的复制活动的**管道**。 
 
 使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。 有关用于向/从 Azure 表存储复制数据的数据工厂实体的 JSON 定义示例，请参阅本文的 [JSON 示例](#json-examples)部分。
 
@@ -60,7 +60,7 @@ ms.locfileid: "79260444"
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **AzureTable** 数据集类型的 **typeProperties** 部分具有以下属性。
 
-| properties | 说明 | 必选 |
+| properties | 描述 | 必选 |
 | --- | --- | --- |
 | tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |是的。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
 
@@ -79,7 +79,7 @@ ms.locfileid: "79260444"
 
 **AzureTableSource** 支持 typeProperties 部分的以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| properties | 描述 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |使用自定义查询读取数据。 |Azure 表查询字符串。 请参阅下一节中的示例。 |不是。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
 | azureTableSourceIgnoreTableNotFound |指示是否存在忽略表异常。 |TRUE<br/>FALSE |否 |
@@ -99,7 +99,7 @@ azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}
 
 **AzureTableSink** 支持 typeProperties 部分的以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| properties | 描述 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | azureTableDefaultPartitionKeyValue |接收器可以使用的默认分区键值。 |字符串值。 |否 |
 | azureTablePartitionKeyName |指定列名称，使用列值作为分区键。 如果未指定，则使用 AzureTableDefaultPartitionKeyValue 作为分区键。 |列名称。 |否 |
@@ -130,14 +130,14 @@ DivisionID 被指定为分区键。
 }
 ```
 ## <a name="json-examples"></a>JSON 示例
-下面的示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示如何将数据复制到 Azure 表存储和 Azure Blob 数据库，以及如何从 Azure 表存储和 Azure Blob 数据库复制数据。 但是，可以从任何源将数据**直接**复制到任何受支持的接收器。 有关详细信息，请参阅 [Move data by using Copy Activity](data-factory-data-movement-activities.md)（使用复制活动移动数据）中的“支持的数据存储和格式”部分。
+以下示例提供了使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道的示例 JSON 定义。 它们演示如何将数据复制到 Azure 表存储和 Azure Blob 数据库，以及如何从 Azure 表存储和 Azure Blob 数据库复制数据。 但是，可以从任何源将数据**直接**复制到任何受支持的接收器。 有关详细信息，请参阅 [Move data by using Copy Activity](data-factory-data-movement-activities.md)（使用复制活动移动数据）中的“支持的数据存储和格式”部分。
 
 ## <a name="example-copy-data-from-azure-table-to-azure-blob"></a>示例：将数据从 Azure 表复制到 Azure Blob
 以下示例显示：
 
-1. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务（用于表和 blob）。
-2. 类型 [AzureTable](data-factory-create-datasets.md) 的输入[数据集](#dataset-properties)。
-3. [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
+1. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)类型的链接服务（用于两个表& blob）。
+2. 类型 [AzureTable](#dataset-properties) 的输入[数据集](data-factory-create-datasets.md)。
+3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输出[数据集](data-factory-create-datasets.md)。
 4. [管道](data-factory-create-pipelines.md)，具有使用 AzureTableSource 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 的复制活动。
 
 此示例按小时将属于 Azure 表中默认分区的数据复制到 blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
@@ -250,7 +250,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 **管道中使用 AzureTableSource 和 BlobSink 的复制活动：**
 
-管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将**源**类型设置为 **AzureTableSource**，将**接收器**类型设置为 **BlobSink**。 使用 **AzureTableSourceQuery** 属性指定的 SQL 查询将每小时从默认分区中选择要复制的数据。
+管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将**源**类型设置为 **AzureTableSource**，将**接收器**类型设置为 **BlobSink**。 使用 ** AzureTableSourceQuery ** 属性指定的 SQL 查询将每小时从默认分区中选择要复制的数据。
 
 ```JSON
 {
@@ -303,8 +303,8 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 以下示例显示：
 
 1. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务（用于表和 blob）
-2. [AzureBlob](data-factory-create-datasets.md)类型的输入[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
-3. [AzureTable](data-factory-create-datasets.md) 类型的输出[数据集](#dataset-properties)。
+2. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输入[数据集](data-factory-create-datasets.md)。
+3. [AzureTable](#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 4. [管道](data-factory-create-pipelines.md)，具有使用 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 和 [AzureTableSink](#copy-activity-properties) 的复制活动。
 
 此示例按小时将时序数据从 Azure blob 复制到 Azure 表。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。

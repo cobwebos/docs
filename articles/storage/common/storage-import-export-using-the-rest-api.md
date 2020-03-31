@@ -9,10 +9,10 @@ ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: 833b8c79fba57b7129092e084381c0671c396496
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978860"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>使用 Azure 导入/导出服务 REST API
@@ -29,7 +29,7 @@ Azure 导入/导出服务是 Azure 资源管理器的资源提供程序，它在
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ImportExport/jobs/<job-name>
 ```
 
-## <a name="versioning"></a>版本控制
+## <a name="versioning"></a>版本管理
 
 对导入/导出服务发出的请求必须指定 `api-version` 参数并将其值设置为 `2016-11-01`。
 

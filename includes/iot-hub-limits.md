@@ -5,15 +5,15 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 34de38e91d47457d215c7ebf65d04ed2dbae5324
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74224405"
 ---
-下表列出了与不同服务层 S1、S2、S3 和 F1 关联的限制。 有关每个层中每个*单位*的成本的信息，请参阅[Azure IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
+下表列出了与不同的服务层 S1、S2、S3 和 F1 关联的限制。 有关每个层中每个*单元*的成本的信息，请参阅 Azure [IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
-| Resource | S1 标准 | S2 标准 | S3 标准 | F1 免费 |
+| 资源 | S1 标准 | S2 标准 | S3 标准 | F1 免费 |
 | --- | --- | --- | --- | --- |
 | 消息/天 |400,000 |6,000,000 |300,000,000 |8,000 |
 | 最大单位数 |200 |200 |10 |1 |
@@ -25,7 +25,7 @@ ms.locfileid: "74224405"
 
 下表列出了适用于 IoT 中心资源的限制。
 
-| Resource | 限制 |
+| 资源 | 限制 |
 | --- | --- |
 | 每个 Azure 订阅的付费 IoT 中心数上限 |100 |
 | 每个 Azure 订阅的免费 IoT 中心数上限 |1 |
@@ -41,9 +41,9 @@ ms.locfileid: "74224405"
 | 每台设备的最大云到设备队列深度 |50 |
 | 反馈消息的最大传送计数 <br/> （响应云到设备消息时） |100 |
 | 反馈消息的最大 TTL <br/> （响应云到设备消息时） |2 天 |
-| [设备孪生的最大大小](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) | 8 KB 用于标记部分，每个所需的和报告的属性部分为 32 KB |
-| 设备克隆字符串密钥的最大长度 | 1 KB |
-| 设备每个字符串值的最大长度 | 4 KB |
+| [设备孪生的最大大小](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) | 有 8 KB 用于标记部分，并且各有 32 KB 分别用于所需的属性部分和报告的属性部分 |
+| 设备孪生字符串键的最大大小 | 1 KB |
+| 设备孪生字符串值的最大大小 | 4 KB |
 | [设备孪生中对象的最大深度](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 10 |
 | 直接方法有效负载的最大大小 | 128 KB |
 | 作业历史记录最长保留期 | 30 天 |
@@ -54,7 +54,7 @@ ms.locfileid: "74224405"
 | 最大设备流数据传输 | 300 MB/天（仅适用于 S1、S2、S3 和 F1） |
 
 > [!NOTE]
-> 如果 Azure 订阅中需要100个以上的付费 IoT 中心，请联系 Microsoft 支持部门。
+> 如果需要 Azure 订阅中有 100 个以上的付费 IoT 中心，请联系 Microsoft 支持部门。
 
 > [!NOTE]
 > 目前，可注册到单个 IoT 中心的设备和模块的总数上限为 1,000,000。 如果想要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。

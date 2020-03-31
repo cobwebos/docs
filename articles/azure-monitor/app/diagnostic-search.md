@@ -4,10 +4,10 @@ description: 搜索和筛选由 Web 应用发送的原始遥测数据。
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275979"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
@@ -20,13 +20,13 @@ ms.locfileid: "79275979"
 
 ### <a name="in-the-azure-portal"></a>在 Azure 门户中
 
-可以从应用程序的 "Application Insights 概述" 选项卡（位于顶部栏中）或在左侧的 "调查" 下打开诊断搜索。
+可以从应用程序的“Application Insights 概览”选项卡（位于顶栏中）或左侧的“调查”下打开诊断搜索。
 
 ![“搜索”选项卡](./media/diagnostic-search/view-custom-events.png)
 
-请访问 "事件类型" 下拉菜单，查看遥测项列表-服务器请求、页面视图、已编码的自定义事件等。 "结果" 列表的顶部是一个摘要图表，显示一段时间内的事件计数。
+转到事件类型的下拉菜单，查看遥测项列表 - 服务器请求、页面视图、编码的自定义事件，等等。 结果列表的上面是摘要图表，显示一段时间内的事件计数。
 
-单击下拉菜单或单击 "刷新" 以获取新的事件。
+单击下拉菜单或“刷新”，获取新的事件。
 
 ### <a name="in-visual-studio"></a>在 Visual Studio 中
 
@@ -52,21 +52,21 @@ ms.locfileid: "79275979"
 
 ## <a name="filter-event-types"></a>筛选事件类型
 
-打开 "事件类型" 下拉菜单，并选择要查看的事件类型。 （如果以后想要还原筛选器，请单击 "重置"。）
+打开事件类型的下拉菜单，选择要查看的事件类型。 （如果以后要还原筛选器，请单击“重置”。）
 
 事件类型包括：
 
-* **跟踪** - [诊断日志](../../azure-monitor/app/asp-net-trace-logs.md)，包括 TrackTrace、log4Net、NLog 和 System.Diagnostic.Trace 调用。
-* **请求** - 服务器应用程序收到的 HTTP 请求，包括页面、脚本、图像、样式文件和数据。 这些事件用于创建请求和响应概述图表。
-* **页面视图** - [由 Web 客户端发送的遥测数据](../../azure-monitor/app/javascript.md)，用于创建页面视图报告。
+* **跟踪** - [诊断日志](../../azure-monitor/app/asp-net-trace-logs.md)，包括跟踪跟踪、日志4Net、NLog 和系统.诊断.跟踪调用。
+* **请求**- 服务器应用程序收到的 HTTP 请求，包括页面、脚本、图像、样式文件和数据。 这些事件用于创建请求和响应概述图表。
+* **网页视图** - [遥测由 Web 客户端发送](../../azure-monitor/app/javascript.md)，用于创建页面视图报表。
 * **自定义事件** - 如果插入了对 TrackEvent() 的调用以便[监视使用情况](../../azure-monitor/app/api-custom-events-metrics.md)，可以在此处搜索这些调用。
-* **异常** - 未捕获到的[服务器中的异常](../../azure-monitor/app/asp-net-exceptions.md)，以及使用 TrackException() 记录的异常。
-* **依赖项** - [发自服务器应用程序的调用](../../azure-monitor/app/asp-net-dependencies.md)，调用对象为 REST API 或数据库等其他服务器，以及[客户端代码](../../azure-monitor/app/javascript.md)中的 AJAX 调用。
+* **异常**-[服务器中未捕获的异常](../../azure-monitor/app/asp-net-exceptions.md)，以及使用 TrackException（） 记录的异常。
+* **从** - [服务器应用程序](../../azure-monitor/app/asp-net-dependencies.md)到其他服务（如 REST API 或数据库）的依赖项调用，以及来自[客户端代码](../../azure-monitor/app/javascript.md)的 AJAX 调用。
 * **可用性** - [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)的结果。
 
 ## <a name="filter-on-property-values"></a>按属性值筛选
 
-可以按事件的属性值筛选事件。 可用的属性取决于所选的事件类型。 单击 "筛选器" 图标 ![“筛选器”图标](./media/diagnostic-search/filter-icon.png) 开始。
+可以按事件的属性值筛选事件。 可用的属性取决于所选的事件类型。 单击筛选器图标 ![筛选器图标](./media/diagnostic-search/filter-icon.png) 即可开始。
 
 不选择特定属性的任何值与选择所有值的效果相同； 这会关闭根据该属性进行筛选的功能。
 
@@ -74,17 +74,17 @@ ms.locfileid: "79275979"
 
 ## <a name="find-events-with-the-same-property"></a>查找具有相同属性的事件
 
-若要查找具有相同属性值的所有项，请在搜索栏中键入它，或在浏览器选项卡中查看属性时单击该复选框。
+若要查找具有相同属性值的所有项，请将其键入搜索栏中，或者在查看筛选器选项卡中的属性时单击复选框。
 
-![单击 "筛选器" 选项卡中属性的复选框](./media/diagnostic-search/filter-property.png)
+![单击筛选器选项卡中属性的复选框](./media/diagnostic-search/filter-property.png)
 
 ## <a name="search-the-data"></a>搜索数据
 
 > [!NOTE]
-> 若要编写更复杂的查询，请打开搜索边栏选项卡顶部的 "[**日志（分析）** ](../../azure-monitor/log-query/get-started-portal.md) "。
+> 若要编写更复杂的查询，请在“搜索”边栏选项卡的顶部打开[**日志（分析）**](../../azure-monitor/log-query/get-started-portal.md)。
 >
 
-可以搜索任何属性值中的关键词。 如果已使用属性值编写[自定义事件](../../azure-monitor/app/api-custom-events-metrics.md)，此方法非常有用。
+可以搜索任何属性值中的关键词。 如果已编写包含属性值的[自定义事件](../../azure-monitor/app/api-custom-events-metrics.md)，可使用此功能。
 
 可以设置时间范围，因为搜索一小段时间内的值可以更快地返回结果。
 
@@ -92,7 +92,7 @@ ms.locfileid: "79275979"
 
 搜索完整单词，而不搜索子字符串。 使用引号将特殊字符引起来。
 
-| String | 找*不*到 | 已找到 |
+| String | *未*找到 | 已找到 |
 | --- | --- | --- |
 | HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |United States|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
@@ -108,7 +108,7 @@ ms.locfileid: "79275979"
 
 ## <a name="sampling"></a>采样
 
-如果应用生成大量遥测数据（并且使用的是 ASP.NET SDK 版本 2.0.0-beta3 或更高版本），自适应采样模块将通过仅发送一小部分事件来自动减少发送到门户的卷。 但是，以组为单位选择或取消选择与同一请求相关的事件，以便可以在相关事件之间浏览。
+如果应用生成大量遥测（且使用的是 ASP.NET SDK 版本 2.0.0-beta3 或更高版本），自适应采样模块将通过仅发送具有代表性的事件部分来自动减少发送到门户的量。 但是，以组为单位选择或取消选择与同一请求相关的事件，以便可以在相关事件之间浏览。
 
 [了解采样](../../azure-monitor/app/sampling.md)。
 
@@ -116,13 +116,13 @@ ms.locfileid: "79275979"
 
 可以使用任何遥测项中的详细信息，在 GitHub 或 Azure DevOps 中创建 Bug。
 
-单击任意遥测项，然后选择 "**创建工作项**"，以跳到端到端事务详细信息视图。
+通过单击任何遥测项转到端到端事务详细信息视图，然后选择“创建工作项”。****
 
 ![单击“新建工作项”、编辑字段，并单击“确定”。](./media/diagnostic-search/work-item.png)
 
 首次执行此操作时，系统将要求配置指向 Azure DevOps 组织和项目的链接。
 
-（还可以在 "工作项" 选项卡上配置链接。）
+（还可以在“工作项”选项卡上配置链接。）
 
 ## <a name="send-more-telemetry-to-application-insights"></a>将更多遥测数据发送到 Application Insights
 
@@ -133,9 +133,9 @@ ms.locfileid: "79275979"
 
 [了解如何向 Application Insights 发送日志和自定义的遥测数据](../../azure-monitor/app/asp-net-trace-logs.md)。
 
-## <a name="questions"></a>问题解答
+## <a name="q--a"></a><a name="questions"></a>问答
 
-### <a name="limits"></a>保留多少数据？
+### <a name="how-much-data-is-retained"></a><a name="limits"></a>保留多少数据？
 
 请参阅[限制摘要](../../azure-monitor/app/pricing.md#limits-summary)。
 
@@ -143,9 +143,9 @@ ms.locfileid: "79275979"
 
 我们不自动记录 POST 数据，但可以使用 [TrackTrace 或日志调用](../../azure-monitor/app/asp-net-trace-logs.md)。 POST 数据放在消息参数中。 无法像筛选属性一样筛选消息，但消息的大小限制更大。
 
-## <a name="add"></a>后续步骤
+## <a name="next-steps"></a><a name="add"></a>后续步骤
 
 * [在 Analytics 中编写复杂查询](../../azure-monitor/log-query/get-started-portal.md)
 * [向 Application Insights 发送日志和自定义的遥测数据](../../azure-monitor/app/asp-net-trace-logs.md)
 * [设置可用性和响应能力测试](../../azure-monitor/app/monitor-web-app-availability.md)
-* [故障排除](../../azure-monitor/app/troubleshoot-faq.md)
+* [疑难解答](../../azure-monitor/app/troubleshoot-faq.md)

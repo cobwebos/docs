@@ -1,163 +1,163 @@
 ---
-title: 适用于 Visual Studio Code 的 Azure 策略扩展
-description: 了解如何使用适用于 Visual Studio Code 的 Azure 策略扩展查找资源管理器别名。
+title: 适用于 Visual Studio Code 的 Azure Policy 扩展
+description: 了解如何使用适用于 Visual Studio Code 的 Azure Policy 扩展来查找资源管理器别名。
 ms.date: 03/07/2020
 ms.topic: how-to
 ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264669"
 ---
-# <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用 Azure Policy extension 进行 Visual Studio Code
+# <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Azure Policy 扩展
 
-> 适用于 Azure 策略扩展版本**0.0.21**和更高版本
+> 适用于 Azure Policy 扩展版本 **0.0.21** 和更高版本
 
-了解如何使用适用于 Visual Studio Code 的 Azure 策略扩展查找[别名](../concepts/definition-structure.md#aliases)以及查看资源和策略。 首先，我们将介绍如何在 Visual Studio Code 中安装 Azure 策略扩展。 接下来，我们将演练如何查找别名。
+了解如何使用适用于 Visual Studio Code 的 Azure Policy 扩展来查找[别名](../concepts/definition-structure.md#aliases)以及查看资源和策略。 首先，本文将介绍如何在 Visual Studio Code 中安装 Azure Policy 扩展。 接下来演练如何查找别名。
 
-可在 Visual Studio Code 支持的所有平台上安装适用于 Visual Studio Code 的 Azure 策略扩展。 此支持包括 Windows、Linux 和 macOS。
+可在 Visual Studio Code 支持的所有平台上安装适用于 Visual Studio Code 的 Azure Policy 扩展。 支持的平台包括 Windows、Linux 和 macOS。
 
 > [!NOTE]
-> 在 Visual Studio Code 的 Azure 策略扩展中查看的策略所做的更改不会同步到 Azure。
+> 在适用于 Visual Studio Code 的 Azure Policy 扩展中查看的、在本地对策略所做的更改不会同步到 Azure。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成本文中的步骤需要以下各项：
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-- [Visual Studio Code](https://code.visualstudio.com)。
+- [视觉工作室代码](https://code.visualstudio.com)。
 
-## <a name="install-azure-policy-extension"></a>安装 Azure 策略扩展
+## <a name="install-azure-policy-extension"></a>安装 Azure Policy 扩展
 
-满足先决条件后，可以按照以下步骤为 Visual Studio Code 安装 Azure 策略扩展：
+满足先决条件后，可遵循以下步骤安装适用于 Visual Studio Code 的 Azure Policy 扩展：
 
 1. 打开 Visual Studio Code。
 
-1. 从菜单栏中转到 "**查看** > **扩展**"。
+1. 从菜单栏转到 **"查看** > **扩展"。**
 
-1. 在搜索框中，输入 " **Azure 策略**"。
+1. 在搜索框中输入 **Azure Policy**。
 
-1. 从搜索结果中选择 " **Azure 策略**"，然后选择 "**安装**"。
+1. 在搜索结果中选择“Azure Policy”，然后选择“安装”。********
 
-1. 如果需要，请选择 "**重新加载**"。
+1. 根据需要选择“重载”。****
 
 ## <a name="set-the-azure-environment"></a>设置 Azure 环境
 
-对于国家云用户，请按照以下步骤设置 Azure 环境：
+国家云用户请先遵循以下步骤设置 Azure 环境：
 
-1. 选择**File\Preferences\Settings**。
+1. 选择“文件”>“首选项”>“设置”。****
 
-1. 搜索以下字符串： _Azure： Cloud_
+1. 搜索以下字符串 _：Azure：云_
 
-1. 从列表中选择 "国家/地区" 云：
+1. 在列表中选择国家云：
 
-   ![为 Visual Studio Code 设置默认的 Azure 云登录](../media/extension-for-vscode/set-default-azure-cloud-sign-in.png)
+   ![设置 Visual Studio Code 的默认 Azure 云登录名](../media/extension-for-vscode/set-default-azure-cloud-sign-in.png)
 
 ## <a name="connect-to-an-azure-account"></a>连接到 Azure 帐户
 
-若要评估资源和查找别名，必须连接到 Azure 帐户。 请按照以下步骤从 Visual Studio Code 连接到 Azure：
+若要评估资源和查找别名，必须连接到 Azure 帐户。 遵循以下步骤从 Visual Studio Code 连接到 Azure：
 
-1. 从 Azure 策略扩展或命令面板登录到 Azure。
+1. 通过 Azure Policy 扩展或命令面板登录到 Azure。
 
-   - Azure 策略扩展
+   - Azure Policy 扩展
 
-     从 Azure 策略扩展中，选择 "**登录到 Azure**"。
+     在 Azure Policy 扩展中，选择“登录到 Azure”。****
 
-     ![Azure 云登录，用于从 Azure 策略扩展 Visual Studio Code](../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png)
+     ![Azure Policy 扩展中 Visual Studio Code 的 Azure 云登录名](../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png)
 
    - 命令面板
 
-     从菜单栏中转到 "**查看** > **命令面板**"，然后输入**Azure：登录**。
+     从菜单栏转到 **"查看** > **命令调色板**"，然后输入**Azure：登录**。
 
-     ![用于从命令面板 Visual Studio Code 的 Azure 云登录](../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png)
+     ![命令面板中 Visual Studio Code 的 Azure 云登录名](../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png)
 
-1. 按照登录说明登录到 Azure。 连接后，Azure 帐户名称将显示在 "Visual Studio Code" 窗口底部的状态栏中。
+1. 按照登录说明登录到 Azure。 连接后，Visual Studio Code 窗口底部的状态栏上会显示 Azure 帐户名称。
 
 ## <a name="select-subscriptions"></a>选择订阅
 
-首次登录时，Azure 策略扩展仅加载默认订阅资源和策略。 若要添加或删除订阅以显示资源和策略，请执行以下步骤：
+首次登录时，Azure Policy 扩展只会加载默认的订阅资源和策略。 若要添加或删除要显示其资源和策略的订阅，请执行以下步骤：
 
-1. 从命令面板或窗口脚注启动 "订阅" 命令。
+1. 通过命令面板或窗口页脚启动订阅命令。
 
    - 命令面板： 
 
-     从菜单栏中转到 "**查看** > **命令面板**"，然后输入**Azure： Select 订阅**。
+     从菜单栏转到 **"查看** > **命令调色板**"，然后输入**Azure：选择订阅**。
 
    - 窗口页脚
 
-     在屏幕底部的窗口页脚中，选择与**Azure： \<帐户\>** 相匹配的段。
+     在屏幕底部的窗口页脚中，选择与“Azure: \<你的帐户\>”匹配的段。****
 
-1. 使用 "筛选器" 框可以按名称快速查找订阅。 然后，选中或删除每个订阅的检查，以设置 Azure 策略扩展显示的订阅。 添加或删除要显示的订阅后，请选择 **"确定"** 。
+1. 使用筛选框按名称快速查找订阅。 然后，选中或清除每个订阅对应的复选框，以设置 Azure Policy 扩展要显示的订阅。 添加或删除要显示的订阅后，选择“确定”。****
 
 ## <a name="search-for-and-view-resources"></a>搜索和查看资源
 
-Azure 策略扩展在 "**资源**" 窗格中按资源提供程序和资源组列出所选订阅中的资源。 Treeview 包含所选订阅中或订阅级别的以下资源分组：
+Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列出所选订阅中的资源。**** 树视图包含所选订阅中或订阅级别的以下资源分组：
 
 - **资源提供程序**
-  - 每个已注册的资源提供程序，具有具有策略别名的资源和相关子资源
+  - 每个已注册的资源提供程序，其中包含具有策略别名的资源和相关子资源
 - **资源组**
-  - 按资源组所在的资源组的所有资源
+  - 按资源所在的资源组列出所有资源
 
-默认情况下，扩展会按具有策略别名的现有资源和资源筛选 "资源提供程序" 部分。 在**设置**中更改此行为 > **扩展** > **Azure 策略**，以查看所有资源提供程序而不进行筛选。
+默认情况下，该扩展将按现有资源以及具有策略别名的资源筛选“资源提供程序”部分。 在 **"设置** > **扩展** > **Azure 策略**"中更改此行为，以查看所有资源提供程序，而无需筛选。
 
-如果客户在单个订阅中有数百或数千个资源，则可能更倾向于查找其资源。 使用 Azure 策略扩展可以搜索特定的资源，步骤如下：
+在单个订阅中包含数百甚至数千个资源的客户可能更倾向于通过搜索来查找其资源。 在 Azure Policy 扩展中可通过以下步骤搜索特定的资源：
 
-1. 从 Azure 策略扩展或命令面板启动搜索界面。
+1. 通过 Azure Policy 扩展或命令面板启动搜索界面。
 
-   - Azure 策略扩展
+   - Azure Policy 扩展
 
-     在 Azure 策略扩展中，将鼠标悬停在 "**资源**" 面板上，选择省略号，然后选择 "**搜索资源**"。
+     在 Azure Policy 扩展中，将鼠标悬停在“资源”面板上，选择省略号图标，然后选择“搜索资源”。********
 
    - 命令面板：
 
-     从菜单栏中转到 "**查看**>**命令面板**"，然后输入**资源： "搜索资源**"。
+     从菜单栏转到 **"查看**>**命令调色板**"，然后输入 **"资源：搜索资源**"。
 
-1. 如果为显示选择了多个订阅，请使用筛选器来选择要搜索的订阅。
+1. 如果已选择显示多个订阅，请使用筛选器来选择要搜索的订阅。
 
-1. 使用筛选器选择要搜索的资源组，该资源组是以前选择的订阅的一部分。
+1. 使用筛选器选择属于前面所选订阅的、要搜索的资源组。
 
-1. 使用筛选器选择要显示的资源。 此筛选器适用于资源名称和资源类型。
+1. 使用筛选器选择要显示的资源。 可对资源名称和资源类型使用筛选器。
 
 ## <a name="discover-aliases-for-resource-properties"></a>发现资源属性的别名
 
-选择资源时，无论是通过搜索界面还是在 treeview 中选择资源，Azure 策略扩展都会打开表示该资源的 JSON 文件及其所有资源管理器属性值。
+选择某个资源时（不管是通过搜索界面选择，还是在树视图中选择），Azure Policy 扩展将会打开表示该资源及其所有资源管理器属性值的 JSON 文件。
 
-打开资源后，将鼠标悬停在资源管理器属性名称或值上会显示 Azure 策略别名（如果存在）。 在此示例中，资源是 `Microsoft.Compute/virtualMachines` 资源类型， **imageReference**属性正在悬停。 悬停显示匹配的别名。
+打开某个资源后，将鼠标悬停在资源管理器属性名称或值上可显示 Azure Policy 别名（如果存在）。 在此示例中，资源的类型是 `Microsoft.Compute/virtualMachines`，鼠标已悬停在 **properties.storageProfile.imageReference.offer** 属性上。 悬停鼠标可显示匹配的别名。
 
-![Azure 策略扩展悬停显示资源管理器属性别名](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
+![在 Azure Policy 扩展中悬停鼠标即可显示资源管理器属性别名](../media/extension-for-vscode/extension-hover-shows-property-alias.png)
 
-## <a name="search-for-and-view-policies-and-assignments"></a>搜索并查看策略和分配
+## <a name="search-for-and-view-policies-and-assignments"></a>搜索和查看策略与分配
 
-Azure 策略扩展会列出策略类型和策略分配，作为选择要在 "**策略**" 窗格中显示的订阅的 treeview。 如果客户在单个订阅中有数百或数千个策略或分配，则可以使用一种可搜索的方式来查找其策略或分配。 使用 Azure 策略扩展可以搜索特定的策略或分配，步骤如下：
+对于选择显示的订阅，Azure Policy 扩展将在“策略”窗格中以树视图的形式列出策略类型和策略分配。**** 在单个订阅中包含数百甚至数千个策略或分配的客户可能更倾向于通过搜索来查找其策略或分配。 在 Azure Policy 扩展中可通过以下步骤搜索特定的策略或分配：
 
-1. 从 Azure 策略扩展或命令面板启动搜索界面。
+1. 通过 Azure Policy 扩展或命令面板启动搜索界面。
 
-   - Azure 策略扩展
+   - Azure Policy 扩展
 
-     在 Azure 策略扩展中，将鼠标悬停在 "**策略**" 面板上，选择省略号，然后选择 "**搜索策略**"。
+     在 Azure Policy 扩展中，将鼠标悬停在“策略”面板上，选择省略号图标，然后选择“搜索策略”。********
 
    - 命令面板：
 
-     从菜单栏中转到 "**查看**>**命令面板**"，然后输入 "**策略：搜索策略**"。
+     从菜单栏转到 **"查看**>**命令调色板**"，然后输入 **"策略：搜索策略**"。
 
-1. 如果为显示选择了多个订阅，请使用筛选器来选择要搜索的订阅。
+1. 如果已选择显示多个订阅，请使用筛选器来选择要搜索的订阅。
 
-1. 使用筛选器可以选择作为以前所选订阅的一部分的搜索的策略类型或分配。
+1. 使用筛选器选择属于前面所选订阅的、要搜索的策略类型或分配。
 
-1. 使用筛选器可以选择要显示的策略。 此筛选器适用于策略定义或策略分配的_displayName_ 。
+1. 使用筛选器选择要显示的策略。 可对策略定义或策略分配的 _displayName_ 使用筛选器。
 
-选择策略或分配时，无论是通过搜索界面还是在 treeview 中选择策略或分配，Azure 策略扩展都将打开表示策略或分配及其所有资源管理器属性值的 JSON。 此扩展可以验证已打开的 Azure 策略 JSON 架构。
+选择策略或分配时（不管是通过搜索界面选择，还是在树视图中选择），Azure Policy 扩展将会打开表示该策略或分配及其所有资源管理器属性值的 JSON。 该扩展可以验证已打开的 Azure Policy JSON 架构。
 
 ## <a name="sign-out"></a>注销
 
-从菜单栏中转到 "**查看** > **命令面板**"，然后输入 " **Azure：注销**"。
+从菜单栏转到 **"查看** > **命令调色板**"，然后输入**Azure：注销**。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
-- 查看[了解策略效果](../concepts/effects.md)。
-- 了解如何以[编程方式创建策略](programmatically-create.md)。
-- 了解如何[修正不合规的资源](remediate-resources.md)。
+- 回顾[了解政策效果](../concepts/effects.md)。
+- 了解如何[以编程方式创建策略](programmatically-create.md)。
+- 了解如何[修复不合规资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

@@ -1,20 +1,20 @@
 ---
 title: 教程：实现 IoT 空间分析 | Microsoft Azure Maps
 description: 将 IoT 中心与 Microsoft Azure Maps 服务 API 集成。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f0367a195ca0aa5f26ff0819b00c50fabae1d271
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cfea9aa7bfcc9a9698bb93bdf54797481b8539ce
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223704"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80333962"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 

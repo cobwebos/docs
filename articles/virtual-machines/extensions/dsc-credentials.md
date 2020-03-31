@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
 ms.openlocfilehash: f7edbd0fd8791829a2d9ffaa4e7c0ee0e561cc5d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73748972"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>将凭据传递给 Azure DSC 扩展处理程序
@@ -60,7 +60,7 @@ configuration Main
 }
 ```
 
-必须将 **node localhost** 包含为配置的一部分。 扩展处理程序会特意查找 **node localhost** 语句。 如果缺少此语句，则以下步骤不起作用。 还必须包含类型强制转换 **[PsCredential]** 。 此特定类型触发扩展对凭据进行加密。
+必须将 **node localhost** 包含为配置的一部分。 扩展处理程序会特意查找 **node localhost** 语句。 如果缺少此语句，则以下步骤不起作用。 还必须包含类型强制转换 **[PsCredential]**。 此特定类型触发扩展对凭据进行加密。
 
 将此脚本发布到 Azure Blob 存储：
 
@@ -83,7 +83,7 @@ $vm | Update-AzVM
 
 运行此代码时会出现输入凭据的提示。 提供凭据后，它短暂地存储在内存中。 使用 **Set-AzVMDscExtension** cmdlet 发布凭据时，会通过 HTTPS 将凭据传输到 VM。 在 VM 中，Azure 使用本地 VM 证书将加密的凭据存储在磁盘上。 若要将凭据传递给 DSC，将在内存中短暂地将其解密，然后将其重新加密。
 
-此过程不同于[使用不带扩展处理程序的安全配置](/powershell/scripting/dsc/pull-server/securemof)。 Azure 环境提供了通过证书安全地传输配置数据的方法。 使用 DSC 扩展处理程序时，无需在 **ConfigurationData** 中提供 **$CertificatePath** 或 / $CertificateID **$Thumbprint** 条目。
+此过程不同于[使用不带扩展处理程序的安全配置](/powershell/scripting/dsc/pull-server/securemof)。 Azure 环境提供了通过证书安全地传输配置数据的方法。 使用 DSC 扩展处理程序时，无需在 **ConfigurationData** 中提供 **$CertificatePath** 或 **$CertificateID**/ **$Thumbprint** 条目。
 
 ## <a name="next-steps"></a>后续步骤
 

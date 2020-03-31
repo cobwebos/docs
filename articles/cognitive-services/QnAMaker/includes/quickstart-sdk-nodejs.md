@@ -4,10 +4,10 @@ description: 本快速入门介绍如何开始使用适用于 Node.js 的 QnA Ma
 ms.topic: quickstart
 ms.date: 01/13/2020
 ms.openlocfilehash: 05e6d2c77a351c22c73f0bdb54daeaf0e03f4a9d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76021091"
 ---
 可以使用适用于 Node.js 的 QnA Maker 客户端库执行以下操作：
@@ -23,7 +23,7 @@ ms.locfileid: "76021091"
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版本的 [Node.js](https://nodejs.org)。

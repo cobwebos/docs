@@ -10,14 +10,16 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 91a63e87e937eab4c02d2b86026aa09472cb15ef
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 2863a086343b0a5d3bc69ae319dbe93d557bcb4a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561081"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80052924"
 ---
 # <a name="what-is-the-qna-maker-service"></a>QnA Maker 服务是什么？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../../includes/cognitive-services-tls-announcement.md)]
 
 QnA Maker 是一个基于云的自然语言处理 (NLP) 服务，它可以轻松地基于数据创建自然对话层。 使用该服务可以基于自定义的信息知识库 (KB)，针对任何给定的自然语言输入查找最适当的回答。
 
