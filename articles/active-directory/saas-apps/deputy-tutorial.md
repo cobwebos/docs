@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33830ce5822b2edee345cf58fc6f2a53d3c863fa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cd021b9547048e9f5218ce4f2b8b110b15d05963
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227606"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048555"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>教程：Azure Active Directory 与 Deputy 的集成
 
@@ -174,7 +174,7 @@ ms.locfileid: "74227606"
 
 ### <a name="configure-deputy-single-sign-on"></a>配置 Deputy 单一登录
 
-1. 导航到以下 URL：[https://(your-subdomain).deputy.com/exec/config/system_config]( https://(your-subdomain).deputy.com/exec/config/system_config)。 转到“安全设置”并单击“编辑”。  
+1. 导航到以下 URL：`https://(your-subdomain).deputy.com/exec/config/system_config`。 转到“安全设置”并单击“编辑”。  
    
     ![配置单一登录](./media/deputy-tutorial/tutorial_deputy_004.png)
 

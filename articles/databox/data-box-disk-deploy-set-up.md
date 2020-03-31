@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ef6f342ec2308897d8c2221250ce92f81ce66863
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1fbd99e8233b068efda4d0fb87e87788f49835cf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514096"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214354"
 ---
 ::: zone target="docs"
 
@@ -40,7 +40,7 @@ ms.locfileid: "76514096"
 
 ::: zone target="docs"
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 
@@ -54,49 +54,49 @@ ms.locfileid: "76514096"
 
  执行以下步骤打开磁盘的包装。
 
-1. Data Box 磁盘在一个小包装箱中寄送。 请打开包装箱，并取出其中的物件。 检查包装中是否包含 1 到 5 块固态硬盘 (SSD)，每块磁盘配有一根 USB 连接线。 检查包装是否有任何改动的痕迹或任何明显的损坏。 
+1. Data Box 磁盘在一个小包装箱中寄送。 请打开包装箱，并取出其中的物件。 检查包装中是否包含 1 到 5 块固态硬盘 (SSD)，每块磁盘配有一根 USB 连接线。 检查包装是否有任何改动的痕迹或任何明显的损坏。
 
     ![Data Box 磁盘发货包装](media/data-box-disk-deploy-set-up/data-box-disk-ship-package1.png)
 
 2. 如果包装箱被改动或有严重损坏，请不要打开包装箱。 联系 Microsoft 支持部门，让他们帮助评估磁盘是否正常，或者是否需要更换磁盘。
-3. 检查包装箱中是否有一个透明套管，其中包含退件用的发货标签（在当前标签的下面）。 如果此标签丢失或损坏，始终可以从 Azure 门户下载并打印新的发货标签。 
+3. 检查包装箱中是否有一个透明套管，其中包含退件用的发货标签（在当前标签的下面）。 如果此标签丢失或损坏，始终可以从 Azure 门户下载并打印新的发货标签。
 
     ![Data Box 磁盘发货标签](media/data-box-disk-deploy-set-up/data-box-disk-package-ship-label.png)
 
 4. 保管好包装箱和泡沫材料，以便在退回磁盘时使用。
 
-## <a name="connect-to-disks-and-get-the-passkey"></a>连接到磁盘并获取支持密钥 
+## <a name="connect-to-disks-and-get-the-passkey"></a>连接到磁盘并获取支持密钥
 
-1. 使用随附的数据线将磁盘连接到运行先决条件部分中所述受支持 OS 的客户端计算机。 
+1. 使用随附的数据线将磁盘连接到运行先决条件部分中所述受支持 OS 的客户端计算机。
 
-    ![Data Box 磁盘连接](media/data-box-disk-deploy-set-up/data-box-disk-connect-unlock.png)    
-    
-2. 在 Azure 门户中，转到“常规”>“设备详细信息”。  使用复制图标复制支持密钥。 此支持密钥用于解锁磁盘。
+    ![Data Box 磁盘连接](media/data-box-disk-deploy-set-up/data-box-disk-connect-unlock.png)
 
-    ![Data Box Disk 解锁支持密钥](media/data-box-disk-deploy-set-up/data-box-disk-get-passkey.png) 
+2. 在 Azure 门户中，导航到你的 Data Box Disk 订单。 通过导航到“常规”>“所有资源”  来搜索它，然后选择你的 Data Box Disk 订单。 使用复制图标复制支持密钥。 此支持密钥用于解锁磁盘。
+
+    ![Data Box Disk 解锁支持密钥](media/data-box-disk-deploy-set-up/data-box-disk-get-passkey.png)
 
 根据是要连接到 Windows 还是 Linux 客户端，解锁磁盘的步骤有所不同。
 
 ## <a name="unlock-disks-on-windows-client"></a>在 Windows 客户端上解锁磁盘
 
 执行以下步骤，以连接并解锁磁盘。
-     
-1. 在 Azure 门户中，转到“常规”>“设备详细信息”。  
-2. 下载对应于 Windows 客户端的 Data Box Disk 工具集。 此工具集包含 3 个工具：Data Box Disk 解锁工具、Data Box Disk 验证工具和 Data Box Disk 拆分复制工具。 
+
+1. 在 Azure 门户中，导航到你的 Data Box Disk 订单。 通过导航到“常规”>“所有资源”  来搜索它，然后选择你的 Data Box Disk 订单。
+2. 下载对应于 Windows 客户端的 Data Box Disk 工具集。 此工具集包含 3 个工具：Data Box Disk 解锁工具、Data Box Disk 验证工具和 Data Box Disk 拆分复制工具。
 
     在此过程中，将仅使用 Data Box Disk 解锁工具。 其他两个工具将在以后使用。
 
     > [!div class="nextstepaction"]
-    > [下载适用于 Windows 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolswin)         
+    > [下载适用于 Windows 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolswin)
 
-3. 在将用于复制数据的同一台计算机上提取工具集。 
+3. 在将用于复制数据的同一台计算机上提取工具集。
 4. 打开命令提示符窗口，或者在同一台计算机上以管理员身份运行 Windows PowerShell。
-5. （可选）若要验证用于解锁磁盘的计算机是否满足操作系统要求，请运行系统检查命令。 下面显示了示例输出。 
+5. （可选）若要验证用于解锁磁盘的计算机是否满足操作系统要求，请运行系统检查命令。 下面显示了示例输出。
 
     ```powershell
     Windows PowerShell
     Copyright (C) Microsoft Corporation. All rights reserved.
-    
+
     PS C:\DataBoxDiskUnlockTool\DiskUnlock> .\DataBoxDiskUnlock.exe /SystemCheck
     Successfully verified that the system can run the tool.
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
@@ -109,50 +109,51 @@ ms.locfileid: "76514096"
     PS C:\DataBoxDiskUnlockTool\DiskUnlock> .\DataBoxDiskUnlock.exe
     Enter the passkey :
     testpasskey1
-    
+
     Following volumes are unlocked and verified.
     Volume drive letters: D:
-    
+
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ```
 
-7. 将来每次重新插入磁盘，都需要重复解锁步骤。 如需 Data Box Disk 解锁工具的帮助，请使用 `help` 命令。   
+7. 将来每次重新插入磁盘，都需要重复解锁步骤。 如需 Data Box Disk 解锁工具的帮助，请使用 `help` 命令。
 
     ```powershell
     PS C:\DataBoxDiskUnlockTool\DiskUnlock> .\DataBoxDiskUnlock.exe /help
     USAGE:
     DataBoxUnlock /PassKey:<passkey_from_Azure_portal>
-    
+
     Example: DataBoxUnlock /PassKey:<your passkey>
     Example: DataBoxUnlock /SystemCheck
     Example: DataBoxUnlock /Help
-    
+
     /PassKey:        Get this passkey from Azure DataBox Disk order. The passkey unlocks your disks.
     /SystemCheck:    This option checks if your system meets the requirements to run the tool.
     /Help:           This option provides help on cmdlet usage and examples.
-    
+
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ```  
-8. 解锁磁盘后，可以查看磁盘的内容。    
+
+8. 解锁磁盘后，可以查看磁盘的内容。
 
     ![Data Box 磁盘内容](media/data-box-disk-deploy-set-up/data-box-disk-content.png)
 
-如果解锁磁盘时遇到任何问题，请参阅如何[排查解锁问题](data-box-disk-troubleshoot-unlock.md)。 
+如果解锁磁盘时遇到任何问题，请参阅如何[排查解锁问题](data-box-disk-troubleshoot-unlock.md)。
 
 ## <a name="unlock-disks-on-linux-client"></a>在 Linux 客户端上解锁磁盘
 
-1. 在 Azure 门户中，转到“常规”>“设备详细信息”。  
+1. 在 Azure 门户中，转到“常规”>“设备详细信息”。 
 2. 下载对应于 Linux 客户端的 Data Box Disk 工具集。  
 
     > [!div class="nextstepaction"]
-    > [下载适用于 Linux 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolslinux) 
+    > [下载适用于 Linux 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolslinux)
 
-3. 在 Linux 客户端上打开终端。 导航到软件下载到的文件夹。 更改文件权限，以便可以执行这些文件。 键入下列命令： 
+3. 在 Linux 客户端上打开终端。 导航到软件下载到的文件夹。 更改文件权限，以便可以执行这些文件。 键入下列命令：
 
     `chmod +x DataBoxDiskUnlock_x86_64` 
-    
+
     `chmod +x DataBoxDiskUnlock_Prep.sh` 
- 
+
     下面显示了示例输出。 运行 chmod 命令后，可以通过运行 `ls` 命令来验证文件权限是否已更改。 
  
     ```
@@ -162,6 +163,7 @@ ms.locfileid: "76514096"
         -rwxrwxr-x. 1 user user 1152664 Aug 10 17:26 DataBoxDiskUnlock_x86_64  
         -rwxrwxr-x. 1 user user 795 Aug 5 23:26 DataBoxDiskUnlock_Prep.sh
     ```
+
 4. 执行脚本，以安装 Data Box Disk 解锁软件所需的所有二进制文件。 使用 `sudo` 以 root 身份运行该命令。 成功安装二进制文件后，终端上会显示相关的说明。
 
     `sudo ./DataBoxDiskUnlock_Prep.sh`
@@ -173,7 +175,7 @@ ms.locfileid: "76514096"
         OS = CentOS Version = 6.9 
         Release = CentOS release 6.9 (Final) 
         Architecture = x64 
-    
+
         The script will install the following packages and dependencies. 
         epel-release 
         dislocker 
@@ -181,7 +183,7 @@ ms.locfileid: "76514096"
         fuse-dislocker 
         Do you wish to continue? y|n :|
     ```
-    
+
  
 5. 键入 `y` 继续安装。 脚本安装的包为： 
    - **epel-release** - 包含以下三个包的存储库。 
@@ -222,12 +224,12 @@ ms.locfileid: "76514096"
 
     键入以下命令。
  
-    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’          
+    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'          
 
     下面显示了示例输出。 
  
     ```
-    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:’qwerqwerqwer’  
+    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:'qwerqwerqwer'  
     
     START: Mon Aug 13 14:25:49 2018 
     Volumes: /dev/sdbl 
@@ -249,10 +251,10 @@ ms.locfileid: "76514096"
     [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Help  
     START: Mon Aug 13 14:29:20 2018 
     USAGE: 
-    sudo DataBoxDiskUnlock /PassKey:’<passkey from Azure_portal>’ 
+    sudo DataBoxDiskUnlock /PassKey:'<passkey from Azure_portal>' 
     
-    Example: sudo DataBoxDiskUnlock /PassKey:’passkey’ 
-    Example: sudo DataBoxDiskUnlock /PassKey:’passkey’ /Volumes:’/dev/sdbl’ 
+    Example: sudo DataBoxDiskUnlock /PassKey:'passkey' 
+    Example: sudo DataBoxDiskUnlock /PassKey:'passkey' /Volumes:'/dev/sdbl' 
     Example: sudo DataBoxDiskUnlock /Help Example: sudo DataBoxDiskUnlock /Clean 
     
     /PassKey: This option takes a passkey as input and unlocks all of your disks. 
@@ -307,7 +309,7 @@ ms.locfileid: "76514096"
     运行 Data Box Disk 解锁工具。 从 Azure 门户中的“常规”>“设备详细信息”  获取密钥，并在此处提供。 （可选）在单引号内指定要解锁的 BitLocker 加密卷列表。
 
     ```
-    sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’
+    sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'
     ```      
 5. 将来每次重新插入磁盘，都需要重复解锁步骤。 如需 Data Box 磁盘解锁工具的帮助，请使用 help 命令。
 

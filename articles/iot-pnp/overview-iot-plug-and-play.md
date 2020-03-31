@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 54a18bb20ab9af3ad794ed678ea3234a712bf5cb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0399e1659fb7cc6a650c6b3c1d0189c8802d4904
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531156"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80064311"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>什么是 IoT 即插即用预览版？
 
@@ -77,7 +77,7 @@ IoT 即插即用适用于两种类型的开发人员：
 
 ## <a name="regional-availability"></a>区域可用性
 
-在公共预览期，IoT 即插即用可在北欧、美国中部和日本东部区域使用。 请确保在这其中的一个区域创建中心。
+在公共预览期间，IoT 即插即用在所有区域中可用。
 
 ## <a name="message-quotas-in-iot-hub"></a>IoT 中心的消息配额
 在公共预览期，IoT 即插即用设备按接口发送单独的消息，这可能会增加[消息配额](../iot-hub/iot-hub-devguide-quotas-throttling.md)涵盖的消息计数。

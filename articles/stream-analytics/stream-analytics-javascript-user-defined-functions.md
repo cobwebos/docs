@@ -1,40 +1,32 @@
 ---
 title: Azure 流分析 JavaScript 用户定义的函数
-description: 在本教程中，将使用 JavaScript 用户定义的函数执行高级查询机制
-author: rodrigoamicrosoft
+description: 本文介绍了流分析中的 JavaScript 用户定义函数。
+author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
-ms.date: 04/01/2018
-ms.openlocfilehash: feb0361b460f5b18b5a8aaa585332e2179023458
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.date: 03/23/2020
+ms.openlocfilehash: 58d750b47f3f6a2bcfbf23399ca249131e7876ae
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851165"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80235390"
 ---
-# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>教程：Azure 流分析 JavaScript 用户定义的函数
+# <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure 流分析中 JavaScript 用户定义的函数
  
 Azure 流分析支持以 JavaScript 编写的用户定义的函数。 利用 JavaScript 提供的丰富 **String**、**RegExp**、**Math**、**Array** 和 **Date** 方法，可以更轻松地创建包含流分析作业的复杂数据转换。
 
-在本教程中，你将了解如何执行以下操作：
+## <a name="overview"></a>概述
 
-> [!div class="checklist"]
-> * 定义 JavaScript 用户定义的函数
-> * 将函数添加到门户
-> * 定义运行函数的查询
-
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-## <a name="javascript-user-defined-functions"></a>JavaScript 用户定义的函数
 JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接的无状态标量函数。 函数的返回值只能是标量（单个）值。 将某个 JavaScript 用户定义的函数添加到作业后，可在查询中的任意位置使用该函数，如同内置标量函数一样。
 
 下面是 JavaScript 用户定义的函数可派上用场的一些情景：
 * 使用 **Regexp_Replace()** 和 **Regexp_Extract()** 等正则表达式函数分析和处理字符串
 * 解码和编码数据，例如，二进制到十六进制的转换
-* 使用 JavaScript **Math** 函数执行数学计算
+* 使用 JavaScript **数学**函数进行数学计算
 * 执行排序、联接、查找和填充等数组操作
 
 使用流分析中的 JavaScript 用户定义的函数无法实现以下目的：
@@ -44,41 +36,34 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 
 尽管函数定义中并不禁止 **Date.GetDate()** 或 **Math.random()** 等函数，但应该避免使用这些函数。 这些函数在每次被调用时**不会**返回相同的结果，并且 Azure 流分析服务不会保留函数调用和返回结果的日记。 当你或流分析服务重新启动某个作业时，如果某个函数针对相同的事件返回不同的结果，将无法保证可重复性。
 
-## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>在 Azure 门户中添加 JavaScript 用户定义的函数
-若要在现有的流分析作业中创建一个简单的 JavaScript 用户定义函数，请执行以下步骤：
+## <a name="add-a-javascript-user-defined-function-to-your-job"></a>向作业中添加 JavaScript 用户定义的函数
 
 > [!NOTE]
 > 这些步骤适用于配置为在云中运行的流分析作业。 如果流分析作业配置为在 Azure IoT Edge 上运行，请改用 Visual Studio 并[使用 C# 编写用户定义的函数](stream-analytics-edge-csharp-udf.md)。
 
-1.  在 Azure 门户中找到流分析作业。
+若要在流分析作业中创建 JavaScript 用户定义的函数，请在“作业拓扑”  下选择“函数”  。 然后，从“+ 添加”  下拉菜单中选择“JavaScript UDF”  。 
 
-2. 在“作业拓扑”标题下，选择“函数”   。 此时会显示一个空白的函数列表。
+![添加 JavaScript UDF](./media/javascript/stream-analytics-jsudf-add.png)
 
-3.  若要新建用户定义函数，请选择“+添加”。 
+然后，你必须提供以下属性并选择“保存”  。
 
-4.  在“新建函数”边栏选项卡中，为“函数类型”选择“JavaScript”。    编辑器中会显示默认函数模板。
+|属性|说明|
+|--------|-----------|
+|函数别名|输入一个名称以在查询中调用函数。|
+|输出类型|JavaScript 用户定义的函数将向流分析查询返回的类型。|
+|函数定义|每次从查询中调用 UDF 时将执行的 JavaScript 函数的实现。|
 
-5.  为“UDF 别名”输入 **hex2Int**，并按如下所示更改函数实现： 
+## <a name="test-and-troubleshoot-javascript-udfs"></a>对 JavaScript UDF 进行测试和故障排除 
 
-    ```javascript
-    // Convert Hex value to integer.
-    function hex2Int(hexValue) {
-        return parseInt(hexValue, 16);
-    }
-    ```
+可在任何浏览器中测试和调试 JavaScript UDF 逻辑。 流分析门户目前不支持调试和测试这些用户定义函数的逻辑。 函数按预期方式运行后，可以将其添加到流分析作业（如上所述），然后直接从查询调用它。 还可以使用[适用于 Visual Studio 的流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)测试包含 JavaScript UDF 的查询逻辑。
 
-6.  选择“保存”。  该函数随即显示在函数列表中。
-7.  选择新的 **hex2Int** 函数并检查函数定义。 所有函数的函数别名带有 **UDF** 前缀。 在流分析查询中调用该函数时，需要*包含该前缀*。 在本例中，调用的是 **UDF.hex2Int**。
-
-## <a name="testing-javascript-udfs"></a>测试 JavaScript UDF 
-可在任何浏览器中测试和调试 JavaScript UDF 逻辑。 流分析门户目前不支持调试和测试这些用户定义函数的逻辑。 函数按预期方式运行后，可以将其添加到流分析作业（如上所述），然后直接从查询调用它。
+JavaScript 运行时错误被视为严重错误，可通过活动日志查看。 要检索日志，请在 Azure 门户中转到作业，然后选择“活动日志”。 
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>在查询中调用 JavaScript 用户定义的函数
 
-1. 在查询编辑器中的“作业拓扑”  标题下，选择“查询”  。
-2.  编辑查询，并调用该用户定义的函数，如下所示：
+可以使用以 **udf** 为前缀的函数别名轻松在查询中调用 JavaScript 函数。 下面是 JavaScript UDF 的一个示例，它将十六进制值转换为在流分析查询中调用的整数。
 
-    ```SQL
+```SQL
     SELECT
         time,
         UDF.hex2Int(offset) AS IntOffset
@@ -86,13 +71,10 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
         output
     FROM
         InputStream
-    ```
-
-3.  若要上传示例数据文件，请右键单击作业输入。
-4.  若要测试查询，请选择“测试”。 
-
+```
 
 ## <a name="supported-javascript-objects"></a>支持的 JavaScript 对象
+
 Azure 流分析 JavaScript 用户定义的函数支持标准的内置 JavaScript 对象。 有关这些对象的列表，请参阅 [Global Objects](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)（全局对象）。
 
 ### <a name="stream-analytics-and-javascript-type-conversion"></a>流分析和 JavaScript 类型转换
@@ -109,9 +91,7 @@ Record | Object
 Array | Array
 Null | Null
 
-
 下面是 JavaScript 到流分析的转换：
-
 
 JavaScript | 流分析
 --- | ---
@@ -123,14 +103,12 @@ Array | Array
 Null、Undefined | Null
 其他任何类型（例如函数或错误） | 不支持（导致运行时错误）
 
-JavaScript 语言区分大小写，JavaScript 代码中对象字段的大小写必须与传入数据中字段的大小写匹配。 请注意，兼容性级别为 1.0 的作业会将 SQL SELECT 语句中的字段转换为小写。 在兼容性级别 1.1 及更高级别下，SELECT 语句中的字段将具有与 SQL 查询中指定的相同的大小写。
-
-## <a name="troubleshooting"></a>故障排除
-JavaScript 运行时错误被视为严重错误，可通过活动日志查看。 要检索日志，请在 Azure 门户中转到作业，然后选择“活动日志”。 
+JavaScript 语言区分大小写，JavaScript 代码中对象字段的大小写必须与传入数据中字段的大小写匹配。 兼容性级别为 1.0 的作业会将 SQL SELECT 语句中的字段转换为小写。 在兼容性级别 1.1 及更高级别下，SELECT 语句中的字段将具有与 SQL 查询中指定的相同的大小写。
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>JavaScript 用户定义的函数的其他模式
 
 ### <a name="write-nested-json-to-output"></a>编写嵌套的 JSON 输出
+
 如果后续处理步骤需要使用流分析作业输出作为输入并且要求采用 JSON 格式，可以编写要输出的 JSON 字符串。 以下示例调用 **JSON.stringify()** 函数封装输入的所有名称/值对，然后将其写入为输出中的单个字符串值。
 
 **JavaScript 用户定义的函数定义：**
@@ -154,19 +132,7 @@ FROM
     input PARTITION BY PARTITIONID
 ```
 
-## <a name="clean-up-resources"></a>清理资源
-
-若不再需要资源组、流式处理作业以及所有相关资源，请将其删除。 删除作业可避免对作业使用的流单元进行计费。 如果计划在将来使用该作业，可以先停止它，等到以后需要时再重启它。 如果不打算继续使用该作业，请按照以下步骤删除本快速入门创建的所有资源：
-
-1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，并单击已创建资源的名称。  
-2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。  
-
-## <a name="get-help"></a>获取帮助
-如需更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
-
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，创建了一个运行简单的 JavaScript 用户定义函数的流分析作业。 若要了解有关流分析的详细信息，请继续阅读实时方案文章：
-
-> [!div class="nextstepaction"]
-> [Azure 流分析中的实时 Twitter 情绪分析](stream-analytics-twitter-sentiment-analysis-trends.md)
+* [机器学习 UDF](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
+* [C# UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)

@@ -31,6 +31,11 @@
     - name: 管理 Azure 自动化数据
       href: automation-managing-data.md
       displayName: backup
+    - name: 故障排除
+      items:
+        - name: 自动化帐户故障排除
+          href: troubleshoot/automation-account.md
+          displayName: troubleshoot
 - name: 过程自动化
   items:
     - name: 混合 Runbook 辅助角色概述

@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 579c1984ee1906519980bbed154921a20ed40b79
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: ef0d79cae11a382bcca0ddb61e1d4a04b5db41e9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466971"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79501883"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>教程：使用数据复制服务将数据复制到 Azure Data Box（预览）
 
@@ -28,9 +28,10 @@ ms.locfileid: "77466971"
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
+>
 > * 将数据复制到 Data Box
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 
@@ -43,9 +44,13 @@ ms.locfileid: "77466971"
 
 连接到 NAS 设备之后，下一步是复制数据。 在开始复制数据之前，请查看以下注意事项：
 
-- 复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)一文中所述的大小限制。
-- 如果 Data Box 上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
-- 如果数据复制服务读取数据时数据正在修改，则可能会出现失败或数据损坏的情况。
+* 复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)一文中所述的大小限制。
+
+* 如果 Data Box 上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
+
+* 如果数据复制服务读取数据时数据正在修改，则可能会出现失败或数据损坏的情况。
+
+* 请确保保留源数据的副本，直到可以确认 Data Box 已将数据传输到 Azure 存储中为止。
 
 若要使用数据复制服务复制数据，需要创建一个作业：
 

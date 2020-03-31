@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: ebde02d222502c58536269243343b21271f19269
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c4c50ba53bc40ad6ae6fc60b3992f9ab992eb268
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168869"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79204556"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>快速入门：在 Azure 机器学习工作室（经典版）中创建第一个数据科学试验
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -130,7 +132,7 @@ ms.locfileid: "77168869"
 
 ## <a name="define-features"></a>定义特征
 
-在机器学习中， *特征* 是用户感兴趣的某些内容的各个可测量属性。 在此处的数据集中，每个行代表一辆汽车，每个列是该汽车的特征。
+在机器学习中，特征  是你感兴趣的某些内容的各个可测量属性。 在此处的数据集中，每个行代表一辆汽车，每个列是该汽车的特征。
 
 若要找到一组理想的特征来创建预测模型，需要针对要解决的问题进行试验，并且具有相关知识。 有些特征比其他特征更适合用于预测目标。 某些特征与其他特征有很强的关联性，可将其删除。 例如，city-mpg（市区油耗）和 highway-mpg（高速公路油耗）密切相关，因此可以保留一个，删除另一个，不会对预测产生明显影响。
 

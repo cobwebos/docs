@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d469d52a6db6c3640d07b46422ffe669a898dde8
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6ecf3bb5999296b2f5f8f5c25616fac8e0278cda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262990"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132526"
 ---
 # <a name="entity-functions"></a>实体函数
 
@@ -41,7 +41,7 @@ ms.locfileid: "76262990"
 * 目标实体的实体 ID  。
 * 操作名称，用于指定要执行的操作的字符串。  例如，`Counter` 实体可以支持 `add`、`get` 或 `reset` 操作。
 * 操作输入，操作的可选输入参数。  例如，add 操作可以采用整数数量作为输入。
-* **计划时间*，这是用于指定操作交付时间的可选参数。 例如，可以可靠地计划一项操作在将来的几天运行。
+* **计划时间**，这是用于指定操作交付时间的可选参数。 例如，可以可靠地计划一项操作在将来的几天运行。
 
 操作可以返回结果值或错误结果，例如 JavaScript 错误或 .NET 异常。 调用操作的业务流程可以观察到此结果或错误。
 
@@ -55,7 +55,7 @@ ms.locfileid: "76262990"
 
 **基于类的语法（仅限 .NET）** ，其中，实体和操作分别由类和方法表示。 此语法可生成更易于阅读的代码，使操作能够以类型安全的方式调用。 基于类的语法是建立基于函数的语法基础之上的一个精简层，因此，在同一应用程序中，这两种变体可以换用。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>示例：基于函数的语法 - C#
 
@@ -109,7 +109,7 @@ public class Counter
 
 有关基于类的语法及其用法的详细信息，请参阅[定义实体类](durable-functions-dotnet-entities.md#defining-entity-classes)。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ### <a name="example-javascript-entity"></a>示例：JavaScript 实体
 
@@ -171,7 +171,7 @@ module.exports = df.entity(function(context) {
 
 若要从普通的 Azure 函数（也称为客户端函数）访问实体，请使用[实体客户端绑定](durable-functions-bindings.md#entity-client)。 以下示例演示一个队列触发的函数使用此绑定来发送实体信号。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 > [!NOTE]
 > 为简单起见，以下示例演示了用于访问实体的松散类型化语法。 通常，我们建议[通过接口访问实体](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)，因为这种方法提供更多的类型检查。
@@ -189,7 +189,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -209,7 +209,7 @@ module.exports = async function (context) {
 
 客户端函数还可以查询实体的状态，如以下示例中所示：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -223,7 +223,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -244,7 +244,7 @@ module.exports = async function (context) {
 
 业务流程协调程序函数可以使用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)中的 API 访问实体。 以下示例代码演示了一个调用 `Counter` 实体并发送其信号的业务流程协调程序函数。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -263,7 +263,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -291,7 +291,7 @@ module.exports = df.orchestrator(function*(context){
 当某个实体函数在执行操作时，可以向其他实体（甚至是自身）发送信号。
 例如，我们可以修改上述 `Counter` 实体示例，以便在计数器达到值 100 时，向某个监视器实体发送“已达到里程碑”信号。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -306,7 +306,7 @@ module.exports = df.orchestrator(function*(context){
         break;
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
     case "add":
@@ -321,7 +321,7 @@ module.exports = df.orchestrator(function*(context){
 
 ---
 
-## <a name="entity-coordination"></a>实体协调（当前仅限 .NET）
+## <a name="entity-coordination-currently-net-only"></a><a name="entity-coordination"></a>实体协调（当前仅限 .NET）
 
 有时可能需要跨多个实体协调操作。 例如，在银行应用程序中，可能会使用实体来代表不同的银行帐户。 将资金从一个帐户转移到另一个帐户时，必须确保源帐户有足够的资金。 还必须确保对源帐户和目标帐户的更新都以事务一致性的方式进行。
 

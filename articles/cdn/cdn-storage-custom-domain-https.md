@@ -1,5 +1,6 @@
 ---
 title: 通过 HTTPS 使用 Azure CDN 自定义域访问存储 Blob
+description: 了解如何添加 Azure CDN 自定义域，并在该域上为自定义 blob 存储终结点启用 HTTPS。
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -14,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e6415c9e8e0ab8743042891a2d0d422dffe37bdb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: be09229136289e343856f1e2ba61cda63730d21f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279119"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80053967"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>教程：通过 HTTPS 使用 Azure CDN 自定义域访问存储 Blob
 

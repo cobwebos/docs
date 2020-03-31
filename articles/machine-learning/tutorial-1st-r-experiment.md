@@ -1,7 +1,7 @@
 ---
-title: 教程：R 中的逻辑回归模型
+title: 教程：使用 R 创建机器学习模型
 titleSuffix: Azure Machine Learning
-description: 在本教程中，我们使用 R 包 azuremlsdk 和 caret 创建一个逻辑回归模型，以预测交通事故中的死亡几率。
+description: 在本教程中，我们将使用 Azure 机器学习 R SDK 创建逻辑回归模型，该模型预测交通事故中的死亡几率。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 09c976f3076ea41a0441ea62a14ba4d45395a1d4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 72488ba339399c526e882ffd11c41410a0b011ea
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648285"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80159070"
 ---
-# <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>教程：通过 Azure 机器学习在 R 中创建逻辑回归模型
+# <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>教程：使用 R 创建机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本教程中，我们将使用 R 和 Azure 机器学习创建逻辑回归模型，该模型预测交通事故中的死亡几率。 完成本教程后，我们将获得 Azure 机器学习 R SDK 的实践知识，继而可以开发更复杂的试验和工作流。
+在本教程中，我们将使用 Azure 机器学习 R SDK 创建逻辑回归模型，该模型预测交通事故中的死亡几率。 你将了解 Azure 机器学习云资源如何与 R 一起工作，提供一个可缩放的环境以用来训练和部署模型。  
 
 将在本教程中执行以下任务：
 > [!div class="checklist"]
@@ -34,7 +34,7 @@ ms.locfileid: "77648285"
 > * 部署预测终结点
 > * 在 R 中测试模型
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 
 ## <a name="create-a-workspace"></a>创建工作区
@@ -49,7 +49,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 > 记下你的工作区和订阅   。 你将需要这些项才能确保在正确的位置创建试验。 
 
 
-## <a name="azure"></a>克隆笔记本文件夹
+## <a name="clone-a-notebook-folder"></a><a name="azure"></a>克隆笔记本文件夹
 
 本示例使用工作区中的云笔记本服务器来实现免安装的预配置体验。 如果你希望控制环境、包和依赖项，请使用[自己的环境](https://azure.github.io/azureml-sdk-for-r/articles/installation.html)。
 
@@ -61,7 +61,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 选择左侧的“笔记本”  。
 
-1. 打开“示例”文件夹  。
+1. 打开“Samples”文件夹  。
 
 1. 打开 R 文件夹  。
 

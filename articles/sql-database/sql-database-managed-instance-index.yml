@@ -3,7 +3,7 @@ documentType: LandingData
 title: SQL 托管实例
 metadata:
   title: 托管实例文档 - 教程和 API 参考
-  meta.description: Learn how to use a managed instance in Azure SQL Database.
+  description: 查找适用于 Azure SQL 数据库托管实例（托管在云中的完全托管 SQL Server 数据库引擎实例）的快速入门、教程和示例。
   services: sql-database
   author: jovanpop-msft
   ms.reviewer: carlrab

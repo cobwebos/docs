@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 9e4025d040783bff1cd85fb46d571e3a89967892
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67089649"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>教程：Azure Active Directory 与 Sprinklr 集成
@@ -132,19 +132,19 @@ ms.locfileid: "67089649"
 
 1. 转到“管理”\>“设置”  。
 
-    ![管理](./media/sprinklr-tutorial/ic782907.png "Administration")
+    ![管理](./media/sprinklr-tutorial/ic782907.png "管理")
 
 1. 从左侧窗格转到“管理合作伙伴”\>“单一登录”  。
 
-    ![管理合作伙伴](./media/sprinklr-tutorial/ic782908.png "Manage Partner")
+    ![管理合作伙伴](./media/sprinklr-tutorial/ic782908.png "管理合作伙伴")
 
 1. 单击“+添加单一登录”  。
 
-    ![单一登录](./media/sprinklr-tutorial/ic782909.png "Single Sign-Ons")
+    ![单一登录](./media/sprinklr-tutorial/ic782909.png "单一登录")
 
 1. 在“单一登录”  页上，执行以下步骤：
 
-    ![单一登录](./media/sprinklr-tutorial/ic782910.png "Single Sign-Ons")
+    ![单一登录](./media/sprinklr-tutorial/ic782910.png "单一登录")
 
     a. 在“名称”文本框中，键入配置名称（例如  ：WAADSSOTest)  。
 
@@ -225,7 +225,7 @@ ms.locfileid: "67089649"
 
 1. 转到“管理”\>“设置”  。
 
-    ![管理](./media/sprinklr-tutorial/ic782907.png "Administration")
+    ![管理](./media/sprinklr-tutorial/ic782907.png "管理")
 
 1. 从左侧窗格转到“管理客户端”\>“用户”  。
 
@@ -237,7 +237,7 @@ ms.locfileid: "67089649"
 
 1. 在“编辑用户”  对话框中，执行以下步骤：
 
-    ![编辑用户](./media/sprinklr-tutorial/ic782916.png "Edit user")
+    ![编辑用户](./media/sprinklr-tutorial/ic782916.png "编辑用户")
 
     a. 在“电子邮件”  、“名字”  和“姓氏”  文本框中，键入要预配的 Azure AD 用户帐户的信息。
 
@@ -254,7 +254,7 @@ ms.locfileid: "67089649"
 
 1. 单击“角色”  ，并执行以下步骤：
 
-    ![合作伙伴角色](./media/sprinklr-tutorial/ic782917.png "Partner Roles")
+    ![合作伙伴角色](./media/sprinklr-tutorial/ic782917.png "合作伙伴角色")
 
     a. 从“全局”  列表中，选择 **ALL_Permissions**。  
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8a1f774aae071a561bdda2d8c349861d640cb287
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 68994f9b79af55b32527eed52bbc4e5866c89538
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572479"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79205160"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>快速入门：配置服务器防火墙 - 门户
 
@@ -22,7 +22,8 @@ ms.locfileid: "73572479"
 
 - 订阅中的 Analysis Services 服务器。 要了解详细信息，请参阅[快速入门：创建服务器 - 门户](analysis-services-create-server.md)或[快速入门：创建服务器 - PowerShell](analysis-services-create-powershell.md)
 - 客户端计算机的一个或多个 IP 地址范围（如果需要）。
-- 请注意，目前不支持从 Power BI Premium 导入方案。
+- 即使启用了“允许从 Power BI 访问”，当前也不支持将 Power BI Premium 连接到 Azure Analysis Services 的某些方案，包括数据导入（刷新）和分页报表。 支持在 Power BI Premium 中使用 Live Connect 这种更常见的方案。 支持所有 Power BI Pro 方案。
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户 
 

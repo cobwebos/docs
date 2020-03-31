@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b04fe3b6451fd7250bc3b05970d49fdb8e7003bd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3182961f928a9befc5a55fb6d58e22c74ba81089
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899291"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79473432"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用功能标志
 
@@ -37,6 +37,8 @@ ms.locfileid: "76899291"
 
 ## <a name="set-up-feature-management"></a>设置功能管理
 
+添加对 `Microsoft.FeatureManagement` NuGet 包的引用以利用 .NET Core 功能管理器。
+    
 .NET Core 功能管理器 `IFeatureManager` 从框架的本机配置系统获取功能标志。 因此，可以使用 .NET Core 支持的任何配置源（包括本地 *appsettings.json* 文件或环境变量）来定义应用程序的功能标志。 `IFeatureManager` 依赖于 .NET Core 依赖项注入。 可以使用标准约定来注册功能管理服务。
 
 ```csharp

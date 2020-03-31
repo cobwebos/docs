@@ -15,20 +15,19 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f4084532ac370880df69d825927240c297dd371
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e812e1b03637a3ecd7a45f02664c4e3547f1aef1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129901"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79138971"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 的单一登录 (SSO) 集成
 
 本教程介绍如何将 GitHub 与 Azure Active Directory (Azure AD) 集成。 将 GitHub 与 Azure AD 集成后，可以：
 
-* 在 Azure AD 中控制谁有权访问 GitHub。
-* 让用户使用其 Azure AD 帐户自动登录到 GitHub。
-* 在一个中心位置（Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 GitHub Enterprise Cloud Organization。
+* 在一个中心位置管理对 GitHub Enterprise Cloud Organization 的访问 - Azure 门户。
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
@@ -45,7 +44,7 @@ ms.locfileid: "79129901"
 
 * GitHub 支持 **SP** 发起的 SSO
 
-* GitHub 支持[**自动**用户预配](github-provisioning-tutorial.md)
+* GitHub 支持[**自动**用户预配（组织邀请）](github-provisioning-tutorial.md)
 * 配置 GitHub 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-github-from-the-gallery"></a>从库中添加 GitHub

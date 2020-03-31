@@ -6,13 +6,13 @@ author: msangapu-msft
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 19544d9ea9a86b6c0ad98debc7361f4579cbc998
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 62e34859775cb8c574d8d463f636ed81dce8ece3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247023"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80045868"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>使用 Docker Compose 配置创建多容器（预览版）应用
 
@@ -96,6 +96,9 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 ```
 
 ## <a name="create-a-docker-compose-app"></a>创建 Docker Compose 应用
+
+> [!NOTE]
+> 目前，Azure 应用服务上的 Docker Compose 的限制为 4,000 个字符。
 
 在 Cloud Shell 终端中，使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建一个多容器 [Web 应用](app-service-linux-intro.md)。 不要忘记将 _\<app_name>_ 替换为唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。
 

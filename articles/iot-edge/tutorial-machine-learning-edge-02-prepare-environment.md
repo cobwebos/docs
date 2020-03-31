@@ -4,16 +4,16 @@ description: 教程：准备环境，以便开发和部署用于在边缘实现�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 1/23/2020
+ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9809a9b4d644a1fa11fe9cce1cbd35b037206b29
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 42c776d4d6c3973e7c222c9c9adf3e5105f6c84f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944292"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79296790"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教程：在 IoT Edge 上设置机器学习环境
 
@@ -189,12 +189,13 @@ Azure IoT 中心是任何 IoT 应用程序的核心，它会处理 IoT 设备和
 
 1. 展开“存储”部分： 
 
-   ![检查 turbofandevicestorage 是否在自定义终结点列表中](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
+   ![检查 turbofanDeviceStorage 是否在自定义终结点列表中](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-   我们看到，**turbofandevicestorage** 包含在自定义终结点列表中。 请注意有关此终结点的以下特征：
+   我们会看到 **turbofanDeviceStorage** 在自定义终结点列表中。 请注意有关此终结点的以下特征：
 
    * 它指向你创建的名为 `devicedata` 的 Blob 存储容器，如“容器名称”所示。 
    * 其“文件名格式”使用分区作为名称中的最后一个元素。  我们发现，对于将在本教程后面部分使用 Azure Notebooks 执行的文件操作，此格式更为方便。
+   * 其状态应为“正常”。 
 
 1. 选择“路由”选项卡  。
 

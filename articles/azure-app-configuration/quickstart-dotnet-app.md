@@ -8,18 +8,18 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 8190265753bddb3038c5403411c4be193dd8075c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c56088a2c51c50c7f9cf1ff1e790d580fdb08d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433624"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245389"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 .NET Framework 应用
 
 在本快速入门中，会将 Azure 应用程序配置合并到基于 .NET Framework 的控制台应用中，以集中存储和管理与代码分离的应用程序设置。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -29,13 +29,15 @@ ms.locfileid: "75433624"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “创建”来添加以下键值对   ：
+6. 选择“配置资源管理器” > “创建” > “键-值”来添加以下键值对    ：
 
     | 密钥 | 值 |
     |---|---|
     | TestApp:Settings:Message | Azure 应用配置的数据 |
 
     暂时将“标签”和“内容类型”保留为空   。
+
+7. 选择“应用”。 
 
 ## <a name="create-a-net-console-app"></a>创建 .NET 控制台应用
 
@@ -92,7 +94,7 @@ ms.locfileid: "75433624"
 
 1. 将名为 ConnectionString 的环境变量设置为应用程序配置存储区的连接字符串  。 如果使用 Windows 命令提示符，请运行以下命令：
 
-    ```CLI
+    ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 

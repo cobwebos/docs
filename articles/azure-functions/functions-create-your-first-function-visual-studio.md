@@ -1,28 +1,30 @@
 ---
-title: 在 Azure 中使用 Visual Studio 创建你的第一个函数
-description: 使用 Visual Studio 创建并发布一个 HTTP 触发的 Azure 函数。
+title: 快速入门：在 Azure 中使用 Visual Studio 创建你的第一个函数
+description: 本快速入门介绍如何使用 Visual Studio 创建并发布 HTTP 触发的 Azure 函数。
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: b343adeed5abeecdf55f71f8bc4298659a106e09
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 13a03ca6820229fc90467236e0c23f236664d73f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198388"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80056549"
 ---
-# <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 创建你的第一个函数
+# <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>快速入门：在 Azure 中使用 Visual Studio 创建你的第一个函数
 
-Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/serverless/)环境中执行代码，无需先创建 VM 或发布 Web 应用程序。
+Azure Functions 用于在无服务器环境中运行代码，无需先创建 VM 或发布 Web 应用程序。
 
-本文介绍如何使用 Visual Studio 2019 在本地创建和测试“hello world”函数，然后将其发布到 Azure。 本快速入门专为 Visual Studio 2019 设计。 使用 Visual Studio 2017 创建 Functions 项目时，必须先安装[最新的 Azure Functions 工具](functions-develop-vs.md#check-your-tools-version)。
+本快速入门介绍如何使用 Visual Studio 2019 在本地创建并测试 HTTP 触发的 C# 函数应用“hello world”，然后将其发布到 Azure。 
 
 ![浏览器中的函数 localhost 响应](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
-## <a name="prerequisites"></a>必备条件
+本快速入门专为 Visual Studio 2019 设计。 
 
-若要完成本教程，必须先安装 [Visual Studio 2019](https://azure.microsoft.com/downloads/)。 确保还安装了“Azure 开发”工作负荷。 
+## <a name="prerequisites"></a>先决条件
+
+若要完成本教程，请先安装 [Visual Studio 2019](https://azure.microsoft.com/downloads/)。 请确保在安装过程中选择“Azure 开发”  工作负载。 若要改为使用 Visual Studio 2017 创建 Azure Functions 项目，则必须先安装[最新的 Azure Functions 工具](functions-develop-vs.md#check-your-tools-version)。
 
 ![安装包含“Azure 开发”工作负载的 Visual Studio](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
@@ -32,19 +34,19 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio 将创建一个项目和一个包含 HTTP 触发器函数类型样本代码的类。 方法中的 `FunctionName` 属性设置函数的名称，默认情况下为 `Function1`。 `HttpTrigger` 属性指定该函数将由某个 HTTP 请求触发。 样本代码发送 HTTP 响应，其中包含请求正文或查询字符串中的值。
+Visual Studio 将创建一个项目和一个包含 HTTP 触发器函数类型样本代码的类。 `FunctionName` 方法属性设置函数的名称，默认情况下为 `Function1`。 `HttpTrigger` 属性指定该函数将由某个 HTTP 请求触发。 样本代码发送 HTTP 响应，其中包含请求正文或查询字符串中的值。
 
-通过将适当的属性应用于方法，可以使用输入和输出绑定来扩展函数的功能。 有关详细信息，请参阅 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)的[触发器和绑定](functions-dotnet-class-library.md#triggers-and-bindings)部分。
+将适当的属性应用于方法，以便使用输入和输出绑定来扩展函数的功能。 有关详细信息，请参阅 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)的[触发器和绑定](functions-dotnet-class-library.md#triggers-and-bindings)部分。
 
 创建函数项目和 HTTP 触发的函数后，可以在本地计算机上对其进行测试。
 
 ## <a name="run-the-function-locally"></a>在本地运行函数
 
-Visual Studio 与 Azure Functions Core Tools 集成，方便你使用完整的 Functions 运行时在本地测试函数。  
+Visual Studio 与 Azure Functions Core Tools 集成，方便你使用完整的 Azure Functions 运行时在本地测试函数。  
 
 [!INCLUDE [functions-run-function-test-local-vs](../../includes/functions-run-function-test-local-vs.md)]
 
-验证该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
+确认该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
 
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
 
@@ -54,19 +56,25 @@ Visual Studio 与 Azure Functions Core Tools 集成，方便你使用完整的 F
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
 
-1. 从“发布”配置文件页复制函数应用的基 URL。 将 URL 的 `localhost:port` 部分（在本地测试函数时使用）替换为新的基 URL。 与前面一样，请确保将查询字符串 `?name=<YOUR_NAME>` 追加到此 URL 并执行请求。
+1. 从“发布”配置文件页复制函数应用的基 URL。  将 URL 的 `localhost:port` 部分（用于在本地测试函数）替换为新的基 URL。 将查询字符串 `?name=<YOUR_NAME>` 追加到此 URL 并运行请求。
 
-    调用 HTTP 触发函数的 URL 应采用以下格式：
+    调用 HTTP 触发的函数的 URL 采用以下格式：
 
-        http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME> 
+    `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
 
-2. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 下面显示了该函数返回的远程GET请求在浏览器中的响应：
+2. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 下图显示了系统在浏览器中对该函数返回的远程 GET 请求的响应：
 
     ![浏览器中的函数响应](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
 
+## <a name="clean-up-resources"></a>清理资源
+
+[!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-你已经使用 Visual Studio 在 Azure 中创建和发布了一个带有简单的 HTTP 触发函数的 C# 函数应用。 若要了解有关以 .NET 类库开发函数的详细信息，请参阅 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)。
+在本快速入门中，你使用了 Visual Studio 在 Azure 中创建和发布了一个带有简单的 HTTP 触发函数的 C# 函数应用。 
 
+请转到下一篇文章，了解如何添加一个绑定到函数的 Azure 存储队列：
 > [!div class="nextstepaction"]
 > [将 Azure 存储队列绑定添加到函数](functions-add-output-binding-storage-queue-vs.md)
+

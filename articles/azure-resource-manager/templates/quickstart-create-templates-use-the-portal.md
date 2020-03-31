@@ -5,16 +5,16 @@ author: mumian
 ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 66f730cae654c6c740e4224cfbb2ba1ae41d8df5
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: dd3d9caa8184b8637b509fc3318851751b211405
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689724"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80131873"
 ---
-# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板
+# <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 ARM 模板
 
-了解如何使用 Azure 门户生成资源管理器模板，以及从门户编辑和部署该模板的过程。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案相关联的概念，请参阅[模板部署概述](overview.md)。
+了解如何使用 Azure 门户生成 Azure 资源管理器 (ARM) 模板，以及从门户编辑和部署该模板的过程。 ARM 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模板部署概述](overview.md)。
 
 ![资源管理器模板快速入门门户图](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -24,7 +24,7 @@ ms.locfileid: "75689724"
 
 ## <a name="generate-a-template-using-the-portal"></a>使用门户生成模板
 
-从头开始创建资源管理器模板不是一项容易的任务，尤其是在不熟悉 Azure 部署和 JSON 格式的情况下。 可以使用 Azure 门户来配置资源（例如 Azure 存储帐户）。 在部署资源之前，可以将配置导出到资源管理器模板中。 可以保存模板，便于将来重复使用。
+从头开始创建 ARM 模板不是一项容易的任务，尤其是在不熟悉 Azure 部署和 JSON 格式的情况下。 可以使用 Azure 门户来配置资源（例如 Azure 存储帐户）。 在部署资源之前，可以将配置导出到模板中。 可以保存模板，便于将来重复使用。
 
 需要有经验的模板开发人员在尝试部署不熟悉的 Azure 资源时，会使用此方法来生成模板。 有关使用门户导出模板的更多信息，请参阅[将资源组导出到模板](../management/manage-resource-groups-portal.md#export-resource-groups-to-templates)。 查找工作模板的另一种方法是 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "75689724"
 
     ![通过门户生成模板](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
-    主窗格会显示该模板。 它是包含六个顶级元素（`schema`、`contentVersion`、`parameters`、`variables`、`resources`、`output`）的 JSON 文件。 有关详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](./template-syntax.md)
+    主窗格会显示该模板。 它是包含六个顶级元素（`schema`、`contentVersion`、`parameters`、`variables`、`resources`、`output`）的 JSON 文件。 有关详细信息，请参阅[了解 ARM 模板的结构和语法](./template-syntax.md)
 
     定义了六个参数。 其中一个名为 **storageAccountName**。 在上一屏幕截图中，第二个突出显示的部分显示如何在模板中引用此参数。 在下一部分，请编辑此模板，以便将生成的名称用于存储帐户。
 

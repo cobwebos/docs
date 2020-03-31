@@ -4,16 +4,16 @@ description: 在本教程中，我们将使用 Azure 机器学习训练机器学
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 2/10/2020
+ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 57630b789233dd23e61398f445b434e4ba08b48e
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650752"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80236029"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>教程：训练和部署 Azure 机器学习模型
 
@@ -62,7 +62,9 @@ Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验
 
 1. 在新帐户的用户页上，从顶部菜单栏中选择“我的项目”。 
 
-1. 在“创建新项目”对话框中提供一个**项目名称**，该名称也会自动构成**项目 ID**。 
+1. 通过选择 **+** 按钮添加新项目。
+
+1. 在“创建新项目”  对话框中，提供项目名称  。 
 
 1. 将“公开”和“自述文件”保留未选中状态，因为项目不需要公开，也不需要附带自述文件。  
 
@@ -73,6 +75,8 @@ Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验
 1. 选择“选择文件”。 
 
 1. 导航到 **C:\source\IoTEdgeAndMlSample\AzureNotebooks**。 选择列表中的所有文件，然后单击“打开”。 
+
+1. 选中“我信任这些文件的内容”  框。
 
 1. 选择“上传”开始上传。上传过程完成后，选择“完成”。  
 
@@ -96,7 +100,7 @@ Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验
 
 * **Test\_FD003.txt：** 此文件包含我们在验证已训练的分类器时用作测试集的数据。 为方便演示，我们已选择为原始竞赛提供的测试数据作为测试集。
 
-* **RUL\_FD003.txt：** 此文件包含 RUL\_FD003.txt 文件中每个设备的最后一个周期的 RUL。 有关数据的详细说明，请参阅 C:\\source\\IoTEdgeAndMlSample\\data\\Turbofan 中的 readme.txt 和 Damage Propagation Modeling.pdf 文件。
+* **RUL\_FD003.txt：** 此文件包含 Test\_FD003.txt 文件中每个设备的最后一个周期的剩余使用寿命 (RUL)。 有关数据的详细说明，请参阅 C:\\source\\IoTEdgeAndMlSample\\data\\Turbofan 中的 readme.txt 和 Damage Propagation Modeling.pdf 文件。
 
 * **Utils.py：** 包含一组用于处理数据的 Python 实用工具函数。 第一个 Notebook 包含函数的详细说明。
 
@@ -110,24 +114,22 @@ Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验
 
     ![选择要运行的第一个 Notebook](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
 
-1. 出现提示时，请在对话框中选择“Python 3.6 内核”，然后选择“设置内核”。 
-
 1. 如果该 Notebook 列为“不受信任”，请单击 Notebook 右上角的“不受信任”小组件。   对话框出现后，选择“信任”。 
 
-1. 在 Notebook 中，向下滚动到接在“设置全局属性”指令后面的、以代码 `AZURE_SUBSCRIPTION_ID =` 开头的单元，并填写 Azure 订阅、设置和资源的值。 
-
-    ![在 Notebook 中设置全局属性](media/tutorial-machine-learning-edge-04-train-model/set-global-properties.png)
-
-1. 选择工具栏上的“运行”来运行该单元。 
+1. 为获得最佳结果，请阅读每个单元的文档，并单独运行它。 在工具栏上选择“运行”  。 稍后，你会发现运行多个单元非常方便。 你可以忽略升级和弃用警告。
 
     运行某个单元时，方括号之间会显示一个星号 ([\*])。 该单元的操作完成后，星号将替换为数字，并可能显示相关的输出。 Notebook 中的单元按顺序生成，每次只能运行一个单元。
 
-    请遵照 Notebook 中的说明操作。 还可以使用“单元”菜单中的运行选项、按 `Ctrl` + `Enter` 来运行单元，以及按 `Shift` + `Enter` 来运行某个单元并转到下一个单元。 
+    还可以使用“单元”菜单中的运行选项、按 `Ctrl` + `Enter` 来运行单元，以及按 `Shift` + `Enter` 来运行某个单元并转到下一个单元。 
 
     > [!TIP]
     > 为使单元操作结果一致，请避免在浏览器的多个标签页中运行同一个 Notebook。
 
-1. 向下滚动到紧接在“创建工作区”概述文本后面的单元，并运行该单元。  在该单元的输出中，查看指示你登录以进行身份验证的链接。 
+1. 在“设置全局属性”指令后面的单元中，填写 Azure 订阅、设置和资源的值。  然后运行该单元。
+
+    ![在 Notebook 中设置全局属性](media/tutorial-machine-learning-edge-04-train-model/set-global-properties.png)
+
+1. 在“工作区详细信息”  之前的单元格中，在运行它后，查找指示你登录以进行身份验证的链接：
 
     ![设备身份验证的登录提示](media/tutorial-machine-learning-edge-04-train-model/sign-in-prompt.png)
 
@@ -135,17 +137,17 @@ Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验
 
     ![确认已对设备上的应用程序进行身份验证](media/tutorial-machine-learning-edge-04-train-model/cross-platform-cli.png)
 
-1. 此时，可以运行剩余的单元。 最好是运行所有单元，以便按顺序运行单元中的代码。 从“单元”菜单中选择“全部运行”。   向上滚动 Notebook，查看单元操作的完成方式。
+1. 在“浏览结果”  之前的单元中，复制运行 ID 中的值，并将其粘贴为“重建运行”  后面的单元中的运行 ID。
 
-    在“浏览数据”部分，可以查看“传感器读数和 RUL”子部分中的单元，其中显示了传感器测量值的散点图。  
+   ![在单元之间复制运行 ID](media/tutorial-machine-learning-edge-04-train-model/automl-id.png)
 
-    ![传感器读数散点图](media/tutorial-machine-learning-edge-04-train-model/sensor-readings.png)
+1. 运行笔记本中的剩余单元。
 
-1. 保存 Notebook，并单击 Notebook 右上角的项目名称返回到项目页，或者在浏览器中返回到项目页。
+1. 保存笔记本并返回到你的项目页面。
 
-1. 打开 **02-turbofan\_deploy\_model.ipynb** 并重复本过程所述的步骤，以运行第二个 Notebook。
+1. 打开 **02-turbofan\_deploy\_model.ipynb** 并运行每个单元。 你将需要在“配置工作区”  后面的单元中进行身份验证。
 
-1. 保存 Notebook，并单击 Notebook 右上角的项目名称返回到项目页，或者在浏览器中返回到项目页。
+1. 保存笔记本并返回到你的项目页面。
 
 ### <a name="verify-success"></a>验证是否成功
 
@@ -161,11 +163,21 @@ Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验
     | ./aml_config/model_config.json | 在 Azure 上的 **turbofanDemo** 机器学习工作区中部署模型所需的配置文件。 |
     | myenv.yml| 提供有关已部署机器学习模型的依赖项的信息。|
 
-1. 在 Azure 门户上验证资源组中是否存在 **turboFanDemo** 机器学习工作区。
+1. 验证是否已创建以下 Azure 资源。 某些资源名称追加了随机字符。
+
+    | Azure 资源 | 名称 |
+    | --- | --- |
+    | 机器学习工作区 | turborfanDemo |
+    | 容器注册表 | turbofandemoxxxxxxxx |
+    | Applications Insights | turbofaninsightxxxxxxxx |
+    | Key Vault | turbofankeyvaultbxxxxxxxx |
+    | 存储 | turbofanstoragexxxxxxxxx |
 
 ### <a name="debugging"></a>调试
 
-可将 Python 语句插入 Notebook 中进行调试（主要是插入 `print()` 命令）。 如果发现存在未定义的变量或对象，请运行首次声明或实例化它们的单元。
+可以在用于调试的 Notebook 中插入 Python 语句（例如 `print()` 命令）来显示值。 如果发现存在未定义的变量或对象，请运行首次声明或实例化它们的单元。
+
+如果需要重做笔记本，则你可能必须删除以前创建的文件和 Azure 资源。
 
 ## <a name="next-steps"></a>后续步骤
 

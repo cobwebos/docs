@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心和 Firebase Cloud Messaging 将推送通知发送到 Android | Microsoft Docs
+title: 使用 Azure 通知中心和 Firebase 将推送通知发送到 Android | Microsoft Docs
 description: 本教程介绍如何使用 Azure 通知中心和 Google Firebase Cloud Messaging 将通知推送到 Android 设备。
 services: notification-hubs
 documentationcenter: android
@@ -18,14 +18,14 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 1af109405118754daa08adf848f1da3f04534455
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e0682a33540cafd8ebab1bb248d462b30ee4dc2a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387501"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127538"
 ---
-# <a name="tutorial-send-push-notifications-to-android-devices-using-google-firebase-cloud-messaging"></a>教程：使用 Google Firebase Cloud Messaging 将推送通知发送到 Android 设备
+# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>教程：使用 Firebase 将推送通知发送到 Android 设备
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -63,7 +63,7 @@ ms.locfileid: "72387501"
 3. 在“配置项目”页上执行以下步骤：  
     1. 输入应用程序的名称。
     2. 指定项目文件的保存位置。 
-    3. 选择“完成”。  
+    3. 选择“完成”  。 
 
         ![配置项目](./media/notification-hubs-android-push-notification-google-fcm-get-started/configure-project.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "72387501"
 
 现在，中心已配置为使用 Firebase Cloud Messaging。 连接字符串还需要将通知发送到设备并注册应用以接收通知。
 
-## <a id="connecting-app"></a>将你的应用连接到通知中心
+## <a name="connect-your-app-to-the-notification-hub"></a><a id="connecting-app"></a>将你的应用连接到通知中心
 
 ### <a name="add-google-play-services-to-the-project"></a>将 Google Play 服务添加到项目
 
@@ -407,7 +407,7 @@ ms.locfileid: "72387501"
     }
     ```
 
-9. `ToastNotify` 方法使用“Hello World”`TextView` 控件持续报告应用状态和通知  。 在 **res** > **layout** > **activity_main.xml** 布局中，为该控件添加以下 ID。
+9. `ToastNotify` 方法使用“Hello World”`TextView` 控件在应用中持续报告状态和通知  。 在 **res** > **layout** > **activity_main.xml** 布局中，为该控件添加以下 ID。
 
     ```java
     android:id="@+id/text_hello"

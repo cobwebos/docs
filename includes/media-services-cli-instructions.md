@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: db431d7815cfcc006563bd6da438154ef77ae6e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ebbac39c8850737ea6f9ef333e45d305a520655
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66814765"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79461208"
 ---
-## <a name="cli-shell"></a>CLI Shell
+## <a name="use-cli-shell"></a>使用 CLI Shell
 
 建议使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) 来执行 CLI 命令。 **Cloud Shell** 是免费的交互式 shell，可以使用它运行本文中的操作步骤。 Cloud Shell 中预安装并配置了常用的 Azure 工具以供你的帐户使用。 它使用户能够灵活选择最适合自己工作方式的 shell 体验。 Linux 用户可以选择 Bash 体验，Windows 用户可以选择 PowerShell。
 
@@ -43,8 +43,8 @@ ms.locfileid: "66814765"
 Linux/Mac 和 Windows OS 上的绝对文件路径
 
 * `@ "/usr/home/mytestfile.json"`
-*   `@"c:\tmp\user\mytestfile.json"`
+*    `@"c:\tmp\user\mytestfile.json"`
 
-如果命令要求提供文件路径，请使用 `{file}`。 例如，`az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`。 <br/> 如果命令将加载指定的文件，请使用 `@{file}`。 例如，`az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`。
+如果命令要求提供文件路径，请使用 `{file}`。 例如，`az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json` 。 <br/> 如果命令将加载指定的文件，请使用 `@{file}`。 例如，`az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json` 。
 
 [上传文件]: ./media/media-services-cli/upload-download-files.png

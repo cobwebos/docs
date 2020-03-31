@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 63c531cc0e600d82df74154adb212be76ba9b4de
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368539"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474418"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教材 - 使用 PowerShell 将 HSM 部署到现有虚拟网络中
 
@@ -38,7 +38,7 @@ Azure 专用 HSM 服务提供供单个客户使用的物理设备，由客户对
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 Azure 专用 HSM 目前在 Azure 门户中不可用，因此与该服务的所有交互将通过命令行或 PowerShell 进行。 本教程将在 Azure Cloud Shell 中使用 PowerShell。 如果不熟悉 PowerShell，请按以下入门说明操作：[Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
@@ -250,15 +250,7 @@ ssh 工具用于连接到虚拟机。 命令将如下所示，但使用在参数
 > [!NOTE]
 > 如果有 Gemalto 设备配置的问题，则应联系 [Gemalto 客户支持](https://safenet.gemalto.com/technical-support/)。
 
-如果只想删除 Azure 中的 HSM 资源，则可使用以下命令，将“$”变量替换为唯一参数：
-
-```powershel
-
-Remove-AzureRmResource -Resourceid ` /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
-
-```
-
-如果已完成此资源组中资源的相关操作，则可使用以下命令将其全部删除：
+如果要删除 Azure 中的 HSM 资源，则可使用以下命令，将“$”变量替换为唯一参数：
 
 ```powershell
 

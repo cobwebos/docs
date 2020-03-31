@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 864a9243a9f737506fd4d8cbc3940d7a86711f20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>教程：Azure Active Directory 与 ScreenSteps 集成
@@ -152,7 +152,7 @@ ms.locfileid: "67091662"
 
 1. “编辑”新的终结点  。
 
-    ![编辑终结点](./media/screensteps-tutorial/ic778528.png "Edit endpoint")
+    ![编辑终结点](./media/screensteps-tutorial/ic778528.png "编辑终结点")
 
 1. 在“编辑单一登录终结点”  部分中，执行以下步骤：
 

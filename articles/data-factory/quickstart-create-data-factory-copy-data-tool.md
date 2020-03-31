@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 06/20/2018
-ms.openlocfilehash: edf03b663383f10168ee5b78a3ad5f1a9fdac288
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/18/2020
+ms.openlocfilehash: 26169755fbe252a4be2626dae50d40c005c7c6db
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440124"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80130940"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>快速入门：使用“复制数据”工具复制数据
 
@@ -35,13 +35,9 @@ ms.locfileid: "75440124"
 
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 转到 [Azure 门户](https://portal.azure.com)。 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
+1. 在 Azure 门户菜单中，选择“创建资源” > “分析” > “数据工厂”：   
 
-    ![在 Azure 门户菜单中，创建资源](./media/quickstart-create-data-factory-copy-data-tool/create-data-factory-resource.png)
-
-1. 选择“分析”，然后选择“数据工厂”   。
-
-   ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory-menu.png)
+    ![新建数据工厂](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. 在“新建数据工厂”  页中，输入 **ADFTutorialDataFactory** 作为**名称**。 
  
@@ -79,11 +75,13 @@ ms.locfileid: "75440124"
 
     a. 单击“+ 创建新连接”，添加一个连接。 
 
-    b. 从库中选择“Azure Blob 存储”   ，然后选择“继续”。
+    b. 选择要创建的用于源连接的链接服务类型。 在本教程中，我们使用“Azure Blob 存储”  。 从库中选择它，然后选择“继续”  。
+    
+    ![选择 Blob](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
 
-    c. 在“新建链接服务(Azure Blob 存储)”  页上，指定链接服务的名称。 从“存储帐户名称”  列表中选择存储帐户，测试连接，然后选择“完成”  。 
+    c. 在“新建链接服务(Azure Blob 存储)”  页上，指定链接服务的名称。 从“存储帐户名称”  列表中选择存储帐户，测试连接，然后选择“创建”  。 
 
-   ![配置 Azure Blob 存储帐户](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
+    ![配置 Azure Blob 存储帐户](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 
     d. 选择新创建的链接服务作为源，然后单击“下一步”。 
 
@@ -111,15 +109,19 @@ ms.locfileid: "75440124"
 
     ![“部署已完成”页](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-1. 应用程序将切换到“监视”选项卡。  可在此选项卡中查看管道的状态。选择“刷新”可刷新列表。  
-    
-1. 在“操作”列中选择“查看活动运行”链接。   该管道只包含一个“复制”类型的活动。  
-    
-1. 若要查看复制操作的详细信息，请选择“操作”列中的“详细信息”（眼镜图像）链接。   有关属性的详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
+1. 应用程序将切换到“监视”选项卡。  可在此选项卡中查看管道的状态。选择“刷新”可刷新列表。  单击“管道名称”  下的链接，查看活动运行详细信息或重新运行管道。 
+   
+    ![刷新管道](./media/quickstart-create-data-factory-copy-data-tool/refresh-pipeline.png)
+
+1. 在“活动运行”页上，选择“活动名称”  列下的  “详细信息”链接（眼镜图标），以获取有关复制操作的更多详细信息。 有关属性的详细信息，请参阅[复制活动概述](copy-activity-overview.md)。 
+
+1. 若要回到“管道运行”视图，请选择痕迹导航菜单中的“所有管道运行”链接  。 若要刷新视图，请选择“刷新”。  
 
 1. 验证 **adftutorial** 容器的 **output** 文件夹中是否创建了 **emp.txt** 文件。 如果 output 文件夹不存在，数据工厂服务会自动创建它。 
 
 1. 切换到左面板的“监视”选项卡上的“创作”选项卡，以便编辑链接服务、数据集和管道。   若要了解如何在数据工厂 UI 中编辑这些实体，请参阅[使用 Azure 门户创建数据工厂](quickstart-create-data-factory-portal.md)。
+
+    ![选择“创作”选项卡](./media/quickstart-create-data-factory-copy-data-tool/select-author.png)
 
 ## <a name="next-steps"></a>后续步骤
 此示例中的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。 若要了解如何在更多方案中使用数据工厂，请完成相关[教程](tutorial-copy-data-portal.md)。 

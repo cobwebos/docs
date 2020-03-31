@@ -3,17 +3,17 @@ title: Azure 队列简介 - Azure 存储
 description: Azure 队列简介
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/07/2019
+ms.date: 03/18/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: cbrooks
-ms.openlocfilehash: 0e8bac8344bec06b58a22b8c9162cd8bd22ee700
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4a2bea77578282d68d86bc1a8cea765aa2cbd555
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750429"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80060849"
 ---
 # <a name="what-are-azure-queues"></a>什么是 Azure 队列？
 
@@ -23,7 +23,7 @@ Azure 队列存储是一项可存储大量消息的服务。 可以使用 HTTP �
 
 队列服务包含以下组件：
 
-![队列概念](./media/storage-queues-introduction/queue1.png)
+![显示存储帐户、队列和消息之间关系的示意图](./media/storage-queues-introduction/queue1.png)
 
 * **URL 格式：** 可使用以下 URL 格式访问队列：
 

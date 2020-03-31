@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 647bdcf5c8c49b5c942419c78155ed4f61c848bb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826880"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215485"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>快速入门：Azure SQL 数据库连接和查询
 
@@ -71,9 +71,9 @@ Microsoft 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连
 
 下表列出了客户端应用程序可以将其与在本地或云中运行的 SQL Server 一起使用的对象关系映射 (ORM) 框架和 Web 框架的示例。 可以在 Linux、Windows 或 Docker 上使用这些框架，并将其用于连接到 SQL 数据库和 Azure SQL 数据仓库。 
 
-| 语言 | 平台 | ORM |
+| 语言 | 平台 | ORM(s) |
 | :-- | :-- | :-- |
-| C# | Windows、Linux、macOS | [实体框架](https://docs.microsoft.com/ef)<br>[实体框架核心](https://docs.microsoft.com/ef/core/index) |
+| C# | Windows、Linux、macOS | [实体框架](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
 | Java | Windows、Linux、macOS |[Hibernate ORM](https://hibernate.org/orm)|
 | PHP | Windows、Linux、macOS | [Laravel (Eloquent)](https://laravel.com/docs/eloquent)<br>[Doctrine](https://www.doctrine-project.org/projects/orm.html) |
 | Node.js | Windows、Linux、macOS | [Sequelize ORM](https://docs.sequelizejs.com) |
@@ -93,8 +93,8 @@ Microsoft 提供或支持的所有驱动程序使用传输层安全性 (TLS) 连
   - [使用 Python 连接到 SQL 数据库](sql-database-connect-query-python.md)
   - [使用 Ruby 连接到 SQL 数据库](sql-database-connect-query-ruby.md)
 - 重试逻辑代码示例：
-  - [使用 ADO.NET 弹性连接到 SQL][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-  - [使用 PHP 弹性连接到 SQL][step-4-connect-resiliently-to-sql-with-php-p42h]
+  - [使用 ADO.NET 实现对 SQL 的弹性连接][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+  - [使用 PHP 实现对 SQL 的弹性连接][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <!-- Link references. -->
 

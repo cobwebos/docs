@@ -24,6 +24,8 @@
           href: cloud-governed-management-for-on-premises.md
         - name: 构建坚实标识基础的四个步骤
           href: four-steps.md
+        - name: 选择混合标识身份验证方法
+          href: choose-ad-authn.md
     - name: Azure AD Connect 和 Connect Health
       items:
         - name: 什么是 Azure AD Connect 和 Connect Health？
@@ -90,7 +92,7 @@
           href: concept-azure-ad-connect-sync-user-and-contacts.md
         - name: 了解影子属性
           href: how-to-connect-syncservice-shadow-attributes.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 安装和升级
       items:
@@ -312,7 +314,9 @@
           href: tshoot-connect-attribute-not-syncing.md
         - name: 安装问题
           href: tshoot-connect-install-issues.md
-- name: 引用
+        - name: UPN 更改
+          href: howto-troubleshoot-upn-changes.md
+- name: 参考
   items:
     - name: 混合标识所需的端口和协议
       href: reference-connect-ports.md

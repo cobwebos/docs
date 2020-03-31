@@ -17,10 +17,10 @@ ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b28390dba009226d493f5bfc6a5270b067f5bba0
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73570474"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>教程：将 Sansan Intacct 与 Azure Active Directory 集成
@@ -84,16 +84,16 @@ ms.locfileid: "73570474"
 
     在“回复 URL”文本框中键入 URL：`https://www.intacct.com/ia/acct/sso_response.phtml` 
 
-1. Sage Intacct 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”  图标以打开“用户属性”对话框..
+1. Sage Intacct 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”  图标以打开“用户属性”对话框.
 
     ![image](common/edit-attribute.png)
 
 1. 除了上述属性，Sage Intacct 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | Name  |  源属性|
+    | 名称  |  源属性|
     | ---------------| --------------- |
     | 公司名称 | **Sage Intacct 公司 ID** |
-    | 名称 | 值应与在“创建 Sage Intact 测试用户部分”  中输入的 Sage Intacct“用户 ID”  相同，本教程的后半部分会对此进行解释 |
+    | name | 值应与在“创建 Sage Intact 测试用户部分”  中输入的 Sage Intacct“用户 ID”  相同，本教程的后半部分会对此进行解释 |
     | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier | 值应与在“创建 Sage Intact 测试用户部分”  中输入的 Sage Intacct“联合 SSO 用户 ID”  相同，本教程的后半部分会对此进行解释 |
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
@@ -154,11 +154,11 @@ ms.locfileid: "73570474"
 
 1. 单击“公司”  选项卡，并单击“公司信息”  。
 
-    ![公司](./media/intacct-tutorial/ic790037.png "公司")
+    ![Company](./media/intacct-tutorial/ic790037.png "Company")
 
 1. 单击“安全性”  选项卡，并单击“编辑”  。
 
-    ![安全](./media/intacct-tutorial/ic790038.png "安全")
+    ![安全性](./media/intacct-tutorial/ic790038.png "安全性")
 
 1. 在“单一登录(SSO)”  部分中，执行以下步骤：
 
@@ -190,11 +190,11 @@ ms.locfileid: "73570474"
 
 1. 单击“添加”  选项卡。
 
-    ![添加](./media/intacct-tutorial/ic790042.png "Add")
+    ![添加](./media/intacct-tutorial/ic790042.png "添加")
 
 1. 在“用户信息”  部分中，执行以下步骤：
 
-    ![用户信息](./media/intacct-tutorial/ic790043.png "User Information")
+    ![用户信息](./media/intacct-tutorial/ic790043.png "用户信息")
 
     a. 在“用户信息”部分中输入要预配的 Azure AD 帐户的**用户 ID**、**姓氏**、**名字**、**电子邮件地址**、**职务**和**电话**  。
 
@@ -209,7 +209,7 @@ ms.locfileid: "73570474"
 
 1. 单击“单一登录”选项卡并确保下方屏幕截图中的“联合 SSO 用户 ID”与 Azure 门户的“用户属性”部分中通过 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` 映射的“源属性”值是相同的     。
 
-    ![用户信息](./media/intacct-tutorial/ic790044.png "User Information")
+    ![用户信息](./media/intacct-tutorial/ic790044.png "用户信息")
 
 > [!NOTE]
 > 若要预配 Azure AD 用户帐户，可以使用任何其他 Sage Intacct 用户帐户创建工具或 Sage Intacct 提供的 API。

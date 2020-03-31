@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9742cfc6d2191f90f9e8ff5d94d52f2c53355377
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: e37779219cb3ab5279e023c506b05abcb427fe86
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207264"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79136545"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-korn-ferry-360"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Korn Ferry 360 的集成
 
@@ -30,7 +30,7 @@ ms.locfileid: "78207264"
 * 让用户使用其 Azure AD 帐户自动登录到 Korn Ferry 360。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,7 +44,7 @@ ms.locfileid: "78207264"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Korn Ferry 360 支持 **SP** 发起的 SSO
-* 配置 Korn Ferry 360 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Korn Ferry 360 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-korn-ferry-360-from-the-gallery"></a>从库中添加 Korn Ferry 360
 
@@ -145,7 +145,7 @@ ms.locfileid: "78207264"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

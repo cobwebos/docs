@@ -5,16 +5,16 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ab12b206d5bb82956a8b607368af44ea0eaca40e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 30b66414e87f642bc72b8723ebff57f2e9009f17
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471032"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239238"
 ---
-# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>教程：排查资源管理器模板部署问题
+# <a name="tutorial-troubleshoot-arm-template-deployments"></a>教程：排查 ARM 模板部署问题
 
-了解如何排查资源管理器模板部署错误。 在本教程中，请先在模板中设置两个错误，然后了解如何使用活动日志和部署历史记录来解决问题。
+了解如何排查 Azure 资源管理器 (ARM) 模板部署错误。 在本教程中，请先在模板中设置两个错误，然后了解如何使用活动日志和部署历史记录来解决问题。
 
 有两种类型的错误与模板部署相关：
 
@@ -35,11 +35,11 @@ ms.locfileid: "75471032"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](use-vs-code-to-create-template.md)。
 
 ## <a name="create-a-problematic-template"></a>创建有问题的模板
 
@@ -128,4 +128,4 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何排查资源管理器模板部署错误。  有关详细信息，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](common-deployment-errors.md)。
+本教程介绍了如何排查 ARM 模板部署错误。  有关详细信息，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](common-deployment-errors.md)。

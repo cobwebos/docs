@@ -5,16 +5,16 @@ author: mumian
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 30b7aeaed0bfc2621cb2c71ab3f5e618771a1c26
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 469948d3d3207dd684d5a9b752e0c448ac7e83a9
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250084"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239264"
 ---
-# <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>教程：使用 Azure 资源管理器模板部署虚拟机扩展
+# <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>教程：使用 ARM 模板部署虚拟机扩展
 
-了解如何使用 [Azure 虚拟机扩展](../../virtual-machines/extensions/features-windows.md)在 Azure VM 上执行部署后配置和自动化任务。 有许多不同的 VM 扩展可与 Azure VM 配合使用。 在本教程中，你将从 Azure 资源管理器模板部署自定义脚本扩展，以便在 Windows VM 上运行 PowerShell 脚本。  此脚本在 VM 上安装 Web 服务器。
+了解如何使用 [Azure 虚拟机扩展](../../virtual-machines/extensions/features-windows.md)在 Azure VM 上执行部署后配置和自动化任务。 有许多不同的 VM 扩展可与 Azure VM 配合使用。 在本教程中，你将从 Azure 资源管理器 (ARM) 模板部署自定义脚本扩展，以便在 Windows VM 上运行 PowerShell 脚本。  此脚本在 VM 上安装 Web 服务器。
 
 本教程涵盖以下任务：
 
@@ -31,14 +31,14 @@ ms.locfileid: "78250084"
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
+* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](use-vs-code-to-create-template.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在资源管理器模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我们还建议每三个月更新一次密码。
+    Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在 ARM 模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我们还建议每三个月更新一次密码。
 
 ## <a name="prepare-a-powershell-script"></a>准备 PowerShell 脚本
 
@@ -52,7 +52,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
-Azure 快速入门模板是资源管理器模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
+Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
 
 1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。  
 1. 在“文件名”框中粘贴以下 URL： https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json 
@@ -107,7 +107,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 ## <a name="deploy-the-template"></a>部署模板
 
-有关部署过程，请参阅“部署模板”部分，文档为[教程：使用依赖的资源创建 Azure 资源管理器模板](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)中使用的。 建议使用为虚拟机管理员帐户生成的密码。 请参阅本文的[先决条件](#prerequisites)部分。
+有关部署过程，请参阅“部署模板”部分，文档为[教程：创建包含依赖资源的 ARM 模板](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)。 建议使用为虚拟机管理员帐户生成的密码。 请参阅本文的[先决条件](#prerequisites)部分。
 
 ## <a name="verify-the-deployment"></a>验证部署
 

@@ -1,14 +1,14 @@
 ---
 title: DoD 影响级别 4 蓝图示例
 description: DoD 影响级别 4 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 02/09/2020
+ms.date: 03/06/2020
 ms.topic: sample
-ms.openlocfilehash: 087b5947f86d33e44cd72754b79acd457674d545
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: c92e24327bc1879b8fea89cf85a50f845e473810
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77154695"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79415302"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>部署 DoD 影响级别 4 蓝图示例
 
@@ -132,7 +132,8 @@ ms.locfileid: "77154695"
 |\[预览\]：DoD 影响级别 4|策略分配|应在对订阅拥有所有者权限的帐户上启用 MFA|有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md)。|
 |\[预览\]：DoD 影响级别 4|策略分配|应在对订阅拥有写入权限的帐户上启用 MFA|有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md)。|
 |\[预览\]：DoD 影响级别 4|策略分配|应为 Azure SQL 数据库启用长期异地冗余备份|有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md)。|
-
+|允许的位置|策略分配|允许的位置|通过此策略，可限制组织在部署资源时可指定的位置。 用于强制执行异地符合性要求。|
+|允许的资源组位置|策略分配 |允许的位置|通过此策略，可限制组织可以创建资源组的位置。 用于强制执行异地符合性要求。|
 
 ## <a name="next-steps"></a>后续步骤
 

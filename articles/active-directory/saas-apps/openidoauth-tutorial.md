@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbf9cde8dd2032e81abe0fb2572c2181d4ba21ee
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f8a2c962c69ead28c4e79b663010eab77a499f5c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160214"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048419"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>从 Azure AD 应用库配置 OpenID/OAuth 应用程序
 
@@ -71,7 +71,7 @@ ms.locfileid: "73160214"
 > [!NOTE]
 > 若要使应用程序可供多个目录中的用户使用，需要一种机制来确定用户在哪个租户中。 单租户应用程序只需在其自身的目录中查找用户。 多租户应用程序需要从 Azure AD 中的所有目录来识别特定用户。
 > 
-> 为此，Azure AD 提供了一个任何多租户应用程序都可以在其中对登录请求进行定向的通用身份验证终结点，而不是提供特定于租户的终结点。 对于 Azure AD 中的所有目录，此终结点为 [https://login.microsoftonline.com/common](https://login.microsoftonline.com/common)。 特定于租户的终结点可能为 [https://login.microsoftonline.com/contoso.onmicrosoft.com](https://login.microsoftonline.com/contoso.onmicrosoft.com)。 
+> 为此，Azure AD 提供了一个任何多租户应用程序都可以在其中对登录请求进行定向的通用身份验证终结点，而不是提供特定于租户的终结点。 对于 Azure AD 中的所有目录，此终结点为 `https://login.microsoftonline.com/common`。 特定于租户的终结点可能为 `https://login.microsoftonline.com/contoso.onmicrosoft.com`。 
 >
 > 在开发应用程序时考虑通用终结点尤为重要。 在登录、注销和令牌验证期间需要使用必要的逻辑来处理多租户。
 
@@ -125,7 +125,7 @@ ms.locfileid: "73160214"
 
 3. 如果用户尚未经过身份验证，Azure AD 的 /authorize 终结点会提示登录。
 
-    ![Authentication](./media/openidoauth-tutorial/authentication.png)
+    ![身份验证](./media/openidoauth-tutorial/authentication.png)
 
 4. 用户登录后，Azure AD 将决定是否要向该用户显示许可页。 此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。
 

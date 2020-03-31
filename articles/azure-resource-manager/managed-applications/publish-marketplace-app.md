@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 73d4ccbda854d631248daef439aa3bd232d42e06
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75649064"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472990"
 ---
-# <a name="azure-managed-applications-in-the-marketplace"></a>市场中的 Azure 托管应用程序
+# <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>教程：在市场中发布 Azure 托管应用程序
 
 供应商可以使用 Azure 托管应用程序向所有 Azure 市场客户提供其解决方案。 这些供应商可以包括托管服务提供商 (MSP)、独立软件供应商 (ISV) 和系统集成商 (SI)。 托管应用程序可减少客户的维护和服务开销。 供应商通过市场出售基础结构和软件。 他们可以将服务和操作支持附加到托管应用程序。 有关详细信息，请参阅[托管应用程序概述](overview.md)。
 

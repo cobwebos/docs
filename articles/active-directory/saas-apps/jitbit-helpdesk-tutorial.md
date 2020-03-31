@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 29addcd62afd193af83196b2d942e9778ff3f031
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67099408"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>教程：Azure Active Directory 与 Jitbit Helpdesk 集成
@@ -137,7 +137,7 @@ ms.locfileid: "67099408"
 
 1. 在顶部工具栏中，单击“管理”  。
 
-    ![管理](./media/jitbit-helpdesk-tutorial/ic777681.png "Administration")
+    ![管理](./media/jitbit-helpdesk-tutorial/ic777681.png "管理")
 
 1. 单击“常规设置”  。
 
@@ -216,7 +216,7 @@ ms.locfileid: "67099408"
 
 1. 在顶部菜单中，单击“管理”。 
 
-    ![管理](./media/jitbit-helpdesk-tutorial/ic777681.png "Administration")
+    ![管理](./media/jitbit-helpdesk-tutorial/ic777681.png "管理")
 
 1. 单击“用户、公司和权限”  。
 

@@ -64,6 +64,14 @@
       href: load-balancer-security-controls.md
 - name: 如何
   items:
+    - name: 虚拟机规模集
+      items:
+        - name: 与现有的 Azure 负载均衡器配合使用 - 门户
+          href: configure-vm-scale-set-portal.md
+        - name: 与现有的 Azure 负载均衡器配合使用 - PowerShell
+          href: configure-vm-scale-set-powershell.md
+        - name: 与现有的 Azure 负载均衡器配合使用 - CLI
+          href: configure-vm-scale-set-cli.md
     - name: 将基本负载均衡器升级到标准负载均衡器
       items:
         - name: 升级基本公共负载均衡器

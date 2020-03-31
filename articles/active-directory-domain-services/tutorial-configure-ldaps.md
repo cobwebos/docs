@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 6db2c907abc495ca3c88e1e73e885043a8f19997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612768"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481528"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置安全 LDAP
 
@@ -32,7 +32,7 @@ ms.locfileid: "77612768"
 
 如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需有以下资源和特权才能完成本教程：
 
@@ -66,9 +66,9 @@ ms.locfileid: "77612768"
 * **使用者名称** - 证书上的使用者名称必须是你的托管域。 例如，如果域名为 aaddscontoso.com，则证书的使用者名称必须是 *.aaddscontoso.com。  
     * 证书的 DNS 名称或使用者备用名称必须是通配符证书，以确保安全 LDAP 在 Azure AD 域服务中正常工作。 域控制器使用随机名称；可以删除或添加域控制器来确保服务保持可用。
 * **密钥用途** - 必须将证书配置用于数字签名和密钥加密。  
-* **证书目的** - 证书必须有效，可用于 SSL 服务器身份验证。
+* **证书目的** - 证书必须对 TLS 服务器身份验证有效。
 
-在本教程中，让我们使用 [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 为安全 LDAP 创建自签名证书。 以**管理员**身份打开 PowerShell 窗口并运行以下命令。 将 *$dnsName* 变量替换为你自己的托管域使用的 DNS 名称，例如 *aaddscontoso.com*：
+有几种工具可用于创建自签名证书，如 OpenSSL、Keytool、MakeCert、[New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 等。在本教程中，让我们使用 [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 为安全 LDAP 创建自签名证书。 以**管理员**身份打开 PowerShell 窗口并运行以下命令。 将 *$dnsName* 变量替换为你自己的托管域使用的 DNS 名称，例如 *aaddscontoso.com*：
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -142,7 +142,7 @@ Thumbprint                                Subject
 1. 由于此证书用于解密数据，因此应小心控制访问权限。 可以通过一个密码来保护证书的使用。 如果未设置正确的密码，则该证书不可应用到服务。
 
     在“安全性”页上，选择“密码”对应的选项来保护 *.PFX* 证书文件。   输入并确认密码，然后选择“下一步”。  下一部分将使用此密码来为 Azure AD DS 托管域启用安全 LDAP。
-1. 在“要导出的文件”页上，指定要将证书导出到的文件名和位置，例如 *C:\Users\accountname\azure-ad-ds.pfx*。 
+1. 在“要导出的文件”页上，指定要将证书导出到的文件名和位置，例如 *C:\Users\accountname\azure-ad-ds.pfx*。  请记下 .PFX  文件的密码和位置，因为在后续步骤中将需要此信息。
 1. 在复查页上，选择“完成”以将证书导出到 *.PFX* 证书文件。  成功导出证书后，会显示确认对话框。
 1. 请将 MMC 保持打开状态，以便在下一部分使用。
 

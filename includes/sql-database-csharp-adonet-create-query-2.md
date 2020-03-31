@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67173028"
 ---
 ## <a name="c-program-example"></a>C# 程序示例
@@ -26,7 +26,7 @@ ms.locfileid: "67173028"
 
 `CREATE TABLE` 语句涉及 **REFERENCES** 关键字，该关键字用于在两个表之间创建外键 (FK) 关系。  如果使用 *tempdb*，请通过一对前导短划线注释掉 `--REFERENCES` 关键字。
 
-ERD 显示两个表之间的关系。 **tabEmployee.DepartmentCode** 子列中的值仅限 **tabDepartment.DepartmentCode** 父列中的值。  
+ERD 显示两个表之间的关系。 **tabEmployee.DepartmentCode** 子列中的值限制为来自 **tabDepartment.DepartmentCode** 父列。  
 
 ![ERD，显示外键](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 

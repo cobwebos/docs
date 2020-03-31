@@ -6,13 +6,13 @@ author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 5a7c4ce6d5868efef4cfb4fbe2183ec8337ff5b6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/13/2020
+ms.openlocfilehash: f40c2b5f7134458b3f8cb492652bebf14388634c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301839"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79477130"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>教程：将机器学习试验代码转换为生产代码
 
@@ -29,7 +29,7 @@ ms.locfileid: "78301839"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 生成 [MLOpsPython 模板](https://github.com/microsoft/MLOpsPython/generate)并使用 `experimentation/Diabetes Ridge Regression Training.ipynb` 和 `experimentation/Diabetes Ridge Regression Scoring.ipynb` 笔记本。 从试验代码转换为生产代码时，这些笔记本将用作示例。
+- 生成 [MLOpsPython 模板](https://github.com/microsoft/MLOpsPython/generate)并使用 `experimentation/Diabetes Ridge Regression Training.ipynb` 和 `experimentation/Diabetes Ridge Regression Scoring.ipynb` 笔记本。 从试验代码转换为生产代码时，这些笔记本将用作示例。 可在 [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation) 找到这些笔记本。
 - 安装 nbconvert。 请仅按照[安装](https://nbconvert.readthedocs.io/en/latest/install.html)页上的“安装 nbconvert”部分中的安装说明进行操作。 
 
 ## <a name="remove-all-nonessential-code"></a>删除所有不必要的代码

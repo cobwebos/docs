@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 62024522fc5211308929153e2614ab6fd95f19b0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67172673"
 ---
-若要正确地清除会话后，调用`close()`。
+若要在会话后进行适当清理，请调用 `close()`。

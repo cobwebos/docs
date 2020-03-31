@@ -1,6 +1,6 @@
 ---
-title: 教程：在 Azure 中使用 SSL 证书保护 Windows Web 服务器
-description: 本教程介绍如何通过 Azure PowerShell 使用 Azure Key Vault 中存储的 SSL 证书来保护运行 IIS Web 服务器的 Windows 虚拟机。
+title: 教程：在 Azure 中使用 TLS/SSL 证书保护 Windows Web 服务器
+description: 本教程介绍如何通过 Azure PowerShell 使用 Azure Key Vault 中存储的 TLS/SSL 证书来保护运行 IIS Web 服务器的 Windows 虚拟机。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,25 +15,25 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6185ad4f0e043329c4e833b97a09922ba0238a82
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5b084f8a226d1cfd5bab2cc81512fb51fa6bf41c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264231"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154281"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>教程：在 Azure 中使用 Key Vault 中存储的 SSL 证书保护 Windows 虚拟机上的 Web 服务器
+# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>教程：在 Azure 中使用 Key Vault 中存储的 TLS/SSL 证书保护 Windows 虚拟机上的 Web 服务器
 
 > [!NOTE]
 > 目前，此文档仅适用于通用化映像。 如果使用专用磁盘尝试此教程，则将收到错误。 
 
-若要保护 Web 服务器，可以使用安全套接字层 (SSL) 证书来加密 Web 流量。 这些 SSL 证书可存储在 Azure Key Vault 中，并可安全部署到 Azure 中的 Windows 虚拟机 (VM)。 本教程介绍如何执行下列操作：
+若要保护 Web 服务器，可以使用传输层安全 (TLS)（以前称为安全套接字层 (SSL)）证书来加密 Web 流量。 这些 TLS/SSL 证书可存储在 Azure Key Vault 中，并可安全部署到 Azure 中的 Windows 虚拟机 (VM)。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建 Azure Key Vault
 > * 生成证书或将其上传到 Key Vault
 > * 创建 VM 并安装 IIS Web 服务器
-> * 将证书注入 VM 并使用 SSL 绑定配置 IIS
+> * 将证书注入 VM 中并为 IIS 配置 TLS 绑定
 
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
@@ -172,13 +172,13 @@ Get-AzPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress
 
 
 ## <a name="next-steps"></a>后续步骤
-本教程已介绍如何使用 Azure Key Vault 中存储的 SSL 证书保护 IIS Web 服务器。 你已了解如何执行以下操作：
+本教程已介绍如何使用 Azure Key Vault 中存储的 TLS/SSL 证书保护 IIS Web 服务器。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure Key Vault
 > * 生成证书或将其上传到 Key Vault
 > * 创建 VM 并安装 IIS Web 服务器
-> * 将证书注入 VM 并使用 SSL 绑定配置 IIS
+> * 将证书注入 VM 中并为 IIS 配置 TLS 绑定
 
 请访问以下链接查看预先生成的虚拟机脚本示例。
 

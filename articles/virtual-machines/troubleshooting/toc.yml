@@ -69,18 +69,24 @@
           href: boot-diagnostics.md
         - name: BitLocker 错误
           href: troubleshoot-bitlocker-boot-error.md
-        - name: 检查文件系统错误
-          href: troubleshoot-check-disk-boot-error.md
         - name: 蓝屏错误
           href: troubleshoot-common-blue-screen-error.md
-        - name: VM 启动时出现停滞
-          href: troubleshoot-vm-boot-configure-update.md
+        - name: 检查文件系统错误
+          href: troubleshoot-check-disk-boot-error.md
+        - name: 关键进程已禁用
+          href: troubleshoot-guide-critical-process-died.md
         - name: 关键服务失败
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: 不是可启动磁盘
+          href: troubleshoot-guide-not-bootable-disk.md
         - name: 重启循环
           href: troubleshoot-reboot-loop.md
         - name: 在更新 Windows 时停滞
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: VM 启动时出现停滞
+          href: troubleshoot-vm-boot-configure-update.md
+        - name: VM 因 Windows 启动管理器而无法启动
+          href: troubleshoot-guide-windows-boot-manager-menu.md
 - name: 无法连接到 VM
   items:
     - name: RDP

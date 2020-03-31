@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 09d7f93c7a1d8ad9e567ecfe0bb3854d9d54f6e0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 383ad5e5063a0a207320a517c34f3b41cc57804a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597739"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067149"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure 文件存储的网络注意事项 
 可以通过两种方式连接到 Azure 文件共享：
@@ -22,7 +22,9 @@ ms.locfileid: "77597739"
 
 本文重点介绍如何在用例要求直接访问 Azure 文件共享而不是使用 Azure 文件同步时配置网络。要详细了解 Azure 文件同步部署的网络注意事项，请参阅[配置 Azure 文件同步代理和防火墙设置](storage-sync-files-firewall-and-proxy.md)。
 
-Azure 文件共享的网络配置是在 Azure 存储帐户中完成的。 存储帐户是代表共享存储池的管理结构，你可以在其中部署多个文件共享以及其他存储资源（例如，Blob 容器或队列）。 存储帐户公开多种设置用于帮助保护对文件共享的网络访问：网络终结点、存储帐户防火墙设置和传输中加密。
+Azure 文件共享的网络配置是在 Azure 存储帐户中完成的。 存储帐户是代表共享存储池的管理结构，你可以在其中部署多个文件共享以及其他存储资源（例如，Blob 容器或队列）。 存储帐户公开多种设置用于帮助保护对文件共享的网络访问：网络终结点、存储帐户防火墙设置和传输中加密。 
+
+在阅读本概念指南之前，我们建议先阅读[规划 Azure 文件存储部署](storage-files-planning.md)。
 
 ## <a name="accessing-your-azure-file-shares"></a>访问 Azure 文件共享
 在存储帐户中部署 Azure 文件共享时，可以通过该存储帐户的公共终结点立即访问该文件共享。 这意味着，已经过身份验证的请求（例如已由用户登录标识授权的请求）可以安全地从 Azure 内部或外部发起。 
@@ -65,6 +67,8 @@ Azure 文件存储支持通过以下机制在本地工作站和服务器与 Azur
 - 结合专用对等互连使用 VPN 或 ExpressRoute 连接，从本地网络安全连接到 Azure 文件共享。
 - 通过将存储帐户防火墙配置为阻止公共终结点上的所有连接，来保护 Azure 文件共享。 默认情况下，创建专用终结点不会阻止连接到公共终结点。
 - 阻止数据从虚拟网络（和对等互连边界）渗出，从而提高虚拟网络的安全性。
+
+若要创建专用终结点，请参阅[配置 Azure 文件存储的专用终结点](storage-files-networking-endpoints.md)。
 
 ### <a name="private-endpoints-and-dns"></a>专用终结点和 DNS
 创建专用终结点时，默认还会创建（或更新现有的）对应于 `privatelink` 子域的专用 DNS 区域。 严格地讲，无需创建专用 DNS 区域即可使用存储帐户的专用终结点，但是，我们强烈建议在一般情况下创建此专用区域，并且明确要求在使用 Active Directory 用户主体装载 Azure 文件共享或者从 FileREST API 访问时要这样做。
@@ -126,7 +130,7 @@ IP4Address : 52.239.194.40
 
 - 修改客户端上的 hosts 文件，使 `storageaccount.file.core.windows.net` 解析为所需的专用终结点专用 IP 地址。 对于生产环境，强烈建议不要这样做，因为需要对装载 Azure 文件共享的每个客户端进行这些更改，而系统不会自动处理对存储帐户或专用终结点所做的更改。
 - 在本地 DNS 服务器中为 `storageaccount.file.core.windows.net` 创建 A 记录。 这种方法的优势在于，本地环境中的客户端能够自动解析存储帐户，而无需配置每个客户端，但是，与修改 hosts 文件一样，此解决方法较不可靠，因为不会反映所做的更改。 尽管此解决方法不太可靠，但在某些环境中，它却是最佳的选择。
-- 将 `core.windows.net` 区域从本地 DNS 服务器转发到 Azure 专用 DNS 区域。 可以通过特殊 IP 地址 (`168.63.129.16`) 访问 Azure 专用 DNS 主机，该 IP 地址只能在链接到 Azure 专用 DNS 区域的虚拟网络内部访问。 若要解决此限制，可以在虚拟网络中运行其他 DNS 服务器，以便将 `core.windows.net` 转发到 Azure 专用 DNS 区域。 为了简化此设置，我们提供了 PowerShell cmdlet 用于在 Azure 虚拟网络中自动部署 DNS 服务器并根据需要对其进行配置。
+- 将 `core.windows.net` 区域从本地 DNS 服务器转发到 Azure 专用 DNS 区域。 可以通过特殊 IP 地址 (`168.63.129.16`) 访问 Azure 专用 DNS 主机，该 IP 地址只能在链接到 Azure 专用 DNS 区域的虚拟网络内部访问。 若要解决此限制，可以在虚拟网络中运行其他 DNS 服务器，以便将 `core.windows.net` 转发到 Azure 专用 DNS 区域。 为了简化此设置，我们提供了 PowerShell cmdlet 用于在 Azure 虚拟网络中自动部署 DNS 服务器并根据需要对其进行配置。 若要了解如何设置 DNS 转发，请参阅[配置 Azure 文件存储的 DNS](storage-files-networking-dns.md)。
 
 ## <a name="storage-account-firewall-settings"></a>存储帐户防火墙设置
 防火墙是一种网络策略，控制允许哪些请求访问存储帐户的公共终结点。 使用存储帐户防火墙，可以仅限特定的 IP 地址、IP 范围或虚拟网络访问存储帐户的公共终结点。 通常，大多数针对存储帐户的防火墙策略仅限一个或多个虚拟网络进行网络访问。 

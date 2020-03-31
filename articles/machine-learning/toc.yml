@@ -95,6 +95,9 @@
     - name: 模型定型
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
+    - name: 分布式训练
+      displayName: 'parallellization, deep learning, deep neural network, dnn'
+      href: concept-distributed-training.md
     - name: 模型管理 (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
@@ -111,6 +114,9 @@
     - name: 自动化机器学习
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
+    - name: 管理 ML 缺陷
+      displayName: 'automl, auto ml, risks'
+      href: concept-manage-ml-pitfalls.md
     - name: 计算实例
       displayName: 'resource, dsvm, Data Science Virtual Machine'
       href: concept-compute-instance.md
@@ -184,39 +190,47 @@
           href: concept-train-model-git-integration.md
     - name: 处理数据
       items:
-        - name: 连接到 Azure 存储中的数据
-          displayName: 'blob, get, fileshare, access storage, mount, download'
-          href: how-to-access-data.md
-        - name: 从数据存储中获取数据
-          displayName: 'data, data set, register, access data'
-          href: how-to-create-register-datasets.md
-        - name: 使用数据集进行训练
-          displayName: 'data, dataset, mount'
-          href: how-to-train-with-datasets.md
-        - name: 将数据导入设计器中
-          displayName: 'designer, data, import, dataset, datastore'
-          href: how-to-designer-import-data.md
-        - name: 检测数据集上的偏移
-          displayName: 'data, dataset'
-          href: how-to-monitor-datasets.md
-        - name: 版本和跟踪数据集
-          displayName: 'data, data set'
-          href: how-to-version-track-datasets.md
         - name: 标记数据
-          displayName: 'data, dataset, labeling'
-          href: how-to-create-labeling-projects.md
-        - name: 标记图像
-          displayName: 'data, dataset, labeling'
-          href: how-to-label-images.md
-        - name: 创建带标签的数据集
-          displayName: 'data, labels, torchvision'
-          href: how-to-use-labeled-dataset.md
-        - name: 使用 Azure 数据工厂进行数据引入
-          displayName: 'data, ingestion, adf'
-          href: how-to-data-ingest-adf.md
-        - name: 用于数据引入的 DevOps
-          displayName: 'data, ingestion, devops'
-          href: how-to-cicd-data-ingestion.md
+          items:
+            - name: 使数据受到标记
+              displayName: 'data, dataset, labeling'
+              href: how-to-create-labeling-projects.md
+            - name: 标记图像
+              displayName: 'data, dataset, labeling'
+              href: how-to-label-images.md
+            - name: 创建带标签的数据集
+              displayName: 'data, labels, torchvision'
+              href: how-to-use-labeled-dataset.md
+        - name: 获取数据
+          items:
+            - name: 使用 Azure 数据工厂进行数据引入
+              displayName: 'data, ingestion, adf'
+              href: how-to-data-ingest-adf.md
+            - name: 用于数据引入的 DevOps
+              displayName: 'data, ingestion, devops'
+              href: how-to-cicd-data-ingestion.md
+            - name: 将数据导入设计器中
+              displayName: 'designer, data, import, dataset, datastore'
+              href: how-to-designer-import-data.md
+        - name: 访问数据
+          items:
+            - name: 连接到 Azure 存储
+              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              href: how-to-access-data.md
+            - name: 从数据存储中获取数据
+              displayName: 'data, data set, register, access data'
+              href: how-to-create-register-datasets.md
+        - name: 管理并使用数据
+          items:
+            - name: 使用数据集进行训练
+              displayName: 'data, dataset, mount'
+              href: how-to-train-with-datasets.md
+            - name: 检测数据集上的偏移
+              displayName: 'data, dataset'
+              href: how-to-monitor-datasets.md
+            - name: 版本和跟踪数据集
+              displayName: 'data, data set'
+              href: how-to-version-track-datasets.md
     - name: 训练模型
       items:
         - name: 将估算器用于 ML
@@ -337,6 +351,7 @@
         - name: 触发管道
           href: how-to-trigger-published-pipeline.md
         - name: 调试管道并排查管道问题
+          displayName: designer
           href: how-to-debug-pipelines.md
         - name: 在 Application Insights 中调试管道
           displayname: 'pipelines, log, monitor'

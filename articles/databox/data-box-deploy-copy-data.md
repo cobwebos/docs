@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 804b46cd5238c189063608d067c0b40fcd3e306d
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 8d72ee529966fe0db8bf496533453c81064a81a5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505672"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79501791"
 ---
 ::: zone target="docs" 
 
@@ -35,12 +35,12 @@ ms.locfileid: "77505672"
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 必备条件
+> * 先决条件
 > * 连接到 Data Box
 > * 将数据复制到 Data Box
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 
@@ -107,22 +107,21 @@ ms.locfileid: "77505672"
 如果使用 Linux 客户端，请使用以下命令装载 SMB 共享。 下面的“vers”参数是 Linux 主机支持的 SMB 版本。 在下面的命令中插入相应版本。 有关 Data Box 支持的 SMB 版本，请参阅 [Linux 客户端支持的文件系统](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
 
     `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
-    
-
 
 ## <a name="copy-data-to-data-box"></a>将数据复制到 Data Box
 
 连接到 Data Box 共享后，下一步是复制数据。 在开始复制数据之前，请查看以下注意事项：
 
-- 确保将数据复制到与适当数据格式对应的共享中。 例如，将块 Blob 数据复制到块 Blob 的共享中。 将 VHD 复制到页 Blob。 如果数据格式与相应的共享类型不匹配，则在后续步骤中，数据将无法上传到 Azure。
--  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)中所述的大小限制。
-- 如果 Data Box 正在上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
-- 我们建议：
-    - 不同时使用 SMB 和 NFS。
-    - 将相同的数据复制到 Azure 上的同一个最终目标。 
-     
+* 确保将数据复制到与适当数据格式对应的共享中。 例如，将块 Blob 数据复制到块 Blob 的共享中。 将 VHD 复制到页 Blob。 如果数据格式与相应的共享类型不匹配，则在后续步骤中，数据将无法上传到 Azure。
+*  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)中所述的大小限制。
+* 如果 Data Box 正在上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
+* 我们建议：
+  * 不同时使用 SMB 和 NFS。
+  * 将相同的数据复制到 Azure 上的同一个最终目标。
+
   在这些情况下，最终的结果不可确定。
-- 始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹  。
+* 始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹  。
+* 请确保保留源数据的副本，直到可以确认 Data Box 已将数据传输到 Azure 存储中为止。
 
 连接到 SMB 共享后，开始数据复制。 可以使用与 SMB 兼容的任何文件复制工具（例如 Robocopy）复制数据。 可以使用 Robocopy 启动多个复制作业。 使用以下命令：
     
@@ -283,7 +282,7 @@ ms.locfileid: "77505672"
 本教程介绍了有关 Azure Data Box 的主题，例如：
 
 > [!div class="checklist"]
-> * 必备条件
+> * 先决条件
 > * 连接到 Data Box
 > * 将数据复制到 Data Box
 

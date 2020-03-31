@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8ba01ea8a443c4f8a3a8e7b911dcc605ee61ea
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 149718dcd325ef6bd6a6754ba100ffdc34be0a07
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967696"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79136408"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SignalFx 集成
 
@@ -30,7 +30,7 @@ ms.locfileid: "78967696"
 * 让用户可以使用其 Azure AD 帐户自动登录到 SignalFx；
 * 在一个位置（Azure 门户）管理帐户。
 
-若要详细了解有关 SaaS 应用程序与 Azure AD 的集成，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)。
+若要详细了解有关 SaaS 应用程序与 Azure AD 的集成，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +46,7 @@ ms.locfileid: "78967696"
 
 * SignalFx 支持 **IDP** 发起的 SSO
 * SignalFx 支持**实时**用户预配
-* 配置 SignalFx 后，可以强制实施会话控制，从而实时保护组织的敏感数据，使其免遭外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 SignalFx 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="step-1-add-the-signalfx-application-in-azure"></a>步骤 1：在 Azure 中添加 SignalFx 应用程序
 
@@ -57,7 +57,7 @@ ms.locfileid: "78967696"
 1. 选择“企业应用程序”，然后选择“所有应用程序”。  
 1. 选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，输入并选择“SignalFx”。  
-    * 该应用程序可能需要几分钟的时间才会添加到租户，请稍等片刻。
+     * 该应用程序可能需要几分钟的时间才会添加到租户，请稍等片刻。
 1. 将 Azure 门户保持打开状态，然后打开新的 Web 选项卡。    
 
 ## <a name="step-2-begin-signalfx-sso-configuration"></a>步骤 2：开始 SignalFx SSO 配置
@@ -175,7 +175,7 @@ ms.locfileid: "78967696"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

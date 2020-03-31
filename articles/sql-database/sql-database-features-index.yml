@@ -3,7 +3,7 @@ documentType: LandingData
 title: 功能
 metadata:
   title: Azure SQL 数据库 - 功能
-  meta.description: Learn about the features in Azure SQL Database.
+  description: 发现 Azure SQL 数据库中用于执行更强大的操作并实现高级方案的数据库功能。
   services: sql-database
   author: jovanpop-msft
   manager: craigg
@@ -12,7 +12,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 02/06/2019
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
 sections:
   - items:
       - type: paragraph

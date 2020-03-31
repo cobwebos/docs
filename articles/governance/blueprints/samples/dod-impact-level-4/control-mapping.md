@@ -1,14 +1,14 @@
 ---
 title: DoD 影响级别 4 蓝图示例控制
 description: DoD 影响级别 4 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
-ms.date: 02/09/2020
+ms.date: 03/06/2020
 ms.topic: sample
-ms.openlocfilehash: 15ab3bc8bf53d54161ecc3b1f0dc138c3ff923c1
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 001c838ed6a19269a6abbcebd59ee2e344b6a296
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77154705"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79415387"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影响级别 4 蓝图示例的控制映射
 
@@ -83,6 +83,20 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 - 应对函数应用禁用远程调试
 - 应禁用 Web 应用程序的远程调试
 
+## <a name="ac-23-data-mining"></a>AC-23 数据挖掘
+
+此蓝图提供的策略定义可帮助你确保正确启用数据安全通知。 此外，此蓝图还确保在 SQL 服务器上配置审核和高级数据安全。
+
+- 应在 SQL 服务器上启用高级数据安全性
+- 应在 SQL 托管实例上启用高级数据安全性
+- 应在 SQL 服务器的“高级数据安全性”设置中将“高级威胁保护类型”设置为“所有”
+- 应在 SQL 托管实例的“高级数据安全性”设置中将“高级威胁保护类型”设置为“所有”
+- 应在 SQL Server 的高级数据安全设置上启用审核
+- 应在 SQL 服务器高级数据安全设置中为管理员和订阅所有者启用电子邮件通知
+- 应在 SQL 托管实例高级数据安全设置中启用“向管理员和订阅所有者发送电子邮件通知”
+- SQL 服务器的“高级数据安全性”设置应包含用于接收安全警报的电子邮件地址
+- SQL 托管实例的“高级数据安全性”设置应包含用于接收安全警报的电子邮件地址
+
 ## <a name="au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>AU-3 (2) 审核记录的内容 | 计划的审核记录内容的集中管理
 
 Azure Monitor 收集的日志数据存储在支持集中配置和管理的 Log Analytics 工作区中。 此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来确保事件被记录下来，这些定义审核并强制在 Azure 虚拟机上部署 Log Analytics 代理。
@@ -123,8 +137,6 @@ Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log A
 为了实现详细的漏洞扫描和监视，我们建议你同时利用 Azure Sentinel 和 Azure 安全中心。
 
 - \[预览\]：应在虚拟机上启用漏洞评估
-- \[预览\]：启用用于 VM 的 Azure Monitor
-- \[预览\]：为 VM 规模集 (VMSS) 启用 Azure Monitor
 - 应对 SQL Server 启用漏洞评估
 - 审核诊断设置
 - 应对 SQL 托管实例启用漏洞评估
@@ -133,6 +145,8 @@ Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log A
 - 应该修复 SQL 数据库中的漏洞
 - 应该通过漏洞评估解决方案修复漏洞
 - 应该修复虚拟机规模集上安全配置中的漏洞
+- \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
+- \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
 
 ## <a name="au-12-audit-generation"></a>AU-12 审核生成
 
@@ -236,6 +250,16 @@ Azure Site Recovery 将在虚拟机上运行的工作负荷从主位置复制到
 - \[预览\]：部署要求以审核未将最短密码长度限制为 14 个字符的 Windows VM
 - \[预览\]：部署要求以审核未存储使用可逆加密的密码的 Windows VM
 
+## <a name="ir-6-2-incident-reporting--vulnerabilities-related-to-incidents"></a>IR-6 (2) 事件报告 | 与事件相关的漏洞
+
+此蓝图提供的策略定义用于审核记录，分析虚拟机、虚拟机规模集和 SQL 服务器上的漏洞评估。 这些见解提供有关已部署资源的安全状态的实时信息，可帮助你指定补救措施的优先级。
+
+- 应该修复虚拟机规模集上安全配置中的漏洞
+- 应该通过漏洞评估解决方案修复漏洞
+- 应该修复计算机上安全配置中的漏洞
+- 应该修复容器安全配置中的漏洞
+- 应该修复 SQL 数据库中的漏洞
+
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 漏洞扫描
 
 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于在 Azure 安全中心内监视操作系统漏洞、SQL 漏洞和虚拟机漏洞，来帮助你管理信息系统漏洞。 Azure 安全中心提供报告功能，使你能够实时洞察已部署的 Azure 资源的安全状态。 此蓝图还会分配策略定义用于审核和强制执行 SQL 服务器上的高级数据安全。 高级数据安全包括漏洞评估和高级威胁防护功能，可帮助你了解已部署资源中的漏洞。
@@ -312,6 +336,30 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 - 应该修复 SQL 数据库中的漏洞
 - 应该通过漏洞评估解决方案修复漏洞
 
+## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) 缺陷修正 | 删除以前版本的软件/固件
+
+此蓝图分配的策略定义可帮助确保你的应用程序使用最新版本的 .NET Framework、HTTP、Java、PHP、Python 和 TLS。 此蓝图分配的一个策略定义还可以确保 Kubernetes 服务升级到其不易受攻击的版本。
+
+- 确保用作 API 应用一部分的“.Net Framework”版本是最新的
+- 确保用作函数应用一部分的“.Net Framework”版本是最新的
+- 确保用作 Web 应用一部分的“.Net Framework”版本是最新的
+- 确保用于运行 API 应用的“HTTP 版本”是最新的
+- 确保用于运行函数应用的“HTTP 版本”是最新的
+- 确保用于运行 Web 应用的“HTTP 版本”是最新的
+- 确保用作 API 应用一部分的“Java 版本”是最新的
+- 确保用作函数应用一部分的“Java 版本”是最新的
+- 确保用作 Web 应用一部分的“Java 版本”是最新的
+- 确保用作 API 应用一部分的“PHP 版本”是最新的
+- 确保用作函数应用一部分的“PHP 版本”是最新的
+- 确保用作 WEB 应用一部分的“PHP 版本”是最新的
+- 确保用作 API 应用一部分的“Python 版本”是最新的
+- 确保用作函数应用一部分的“Python 版本”是最新的
+- 确保用作 Web 应用一部分的“Python 版本”是最新的
+- 应在 API 应用中使用最新的 TLS 版本
+- 应在函数应用中使用最新的 TLS 版本
+- 应在 Web 应用中使用最新的 TLS 版本
+- \[预览\]：Kubernetes 服务应升级到不易受攻击的 Kubernetes 版本
+
 ## <a name="si-3-malicious-code-protection"></a>SI-3 恶意代码防护
 
 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 安全中心中虚拟机上缺失的终结点防护并在 Windows 虚拟机上强制执行 Microsoft 反恶意软件解决方案，从而帮助管理终结点防护，包括恶意代码防护。
@@ -347,6 +395,18 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 - 在 SQL 服务器上部署威胁检测
 - 允许的位置
 - 允许的资源组位置
+
+## <a name="si-4-12-information-system-monitoring--automated-alerts"></a>SI-4 (12) 信息系统监视 | 自动化警报
+
+此蓝图提供的策略定义可帮助你确保正确启用数据安全通知。 此外，此蓝图确保为 Azure 安全中心启用标准定价层级。 请注意，标准定价层为网络和虚拟机启用威胁检测，在 Azure 安全中心提供威胁情报、异常检测和行为分析。
+
+- 应启用向订阅所有者发送高严重性警报的电子邮件通知
+- 应为订阅提供安全联系人电子邮件地址 
+- 应在 SQL 托管实例高级数据安全设置中启用“向管理员和订阅所有者发送电子邮件通知” 
+- 应在 SQL 服务器高级数据安全设置中为管理员和订阅所有者启用电子邮件通知 
+- 应为订阅提供安全联系人电话号码
+- SQL 服务器的“高级数据安全性”设置应包含用于接收安全警报的电子邮件地址
+- 应选择安全中心标准定价层
 
 ## <a name="si-4-18-information-system-monitoring--analyze-traffic--covert-exfiltration"></a>SI-4 (18) 信息系统监视 | 分析流量 / 隐蔽性外泄
 

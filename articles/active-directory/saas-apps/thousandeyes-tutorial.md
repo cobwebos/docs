@@ -17,10 +17,10 @@ ms.date: 10/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd179049f88454c62244cf1819cee08ef78d0633
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72373238"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ThousandEyes 集成
@@ -138,7 +138,7 @@ ms.locfileid: "72373238"
 
 3. 单击“帐户” 
 
-    ![帐户](./media/thousandeyes-tutorial/ic790067.png "Account")
+    ![帐户](./media/thousandeyes-tutorial/ic790067.png "帐户")
 
 4. 单击“安全性和身份验证”  选项卡。
 
@@ -174,7 +174,7 @@ ms.locfileid: "72373238"
 
 3. 单击“帐户”  。
 
-    ![帐户](./media/thousandeyes-tutorial/IC790067.png "Account")
+    ![帐户](./media/thousandeyes-tutorial/IC790067.png "帐户")
 
 4. 单击“帐户和用户”  选项卡。
 

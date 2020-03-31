@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74157678"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>快速入门：从控制台应用广播实时消息
@@ -111,7 +111,7 @@ broadcast
 
 可以启动具有不同客户端名称的多个客户端。
 
-## <a name="usage"> </a> 与第三方服务集成
+## <a name="integration-with-third-party-services"></a><a name="usage"> </a> 与第三方服务集成
 
 Azure SignalR 服务允许第三方服务与系统集成。
 
@@ -122,7 +122,7 @@ Azure SignalR 服务允许第三方服务与系统集成。
 版本 | API 状态 | 门 | 特定
 --- | --- | --- | ---
 `1.0-preview` | 可用 | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
-`1.0` | 可用 | 标准 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
+`1.0` | 可用 | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
 
 适用于每个特定版本的 API 的列表在下表中提供。
 

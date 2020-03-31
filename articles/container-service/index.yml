@@ -3,7 +3,8 @@ documentType: LandingData
 title: 容器服务文档
 metadata:
   title: Azure 容器服务文档 - 教程和 API 参考 | Microsoft 文档
-  meta.description: 'Azure Container Service allows you to deploy production ready Kubernetes, DC/OS, or Docker Swarm clusters. Learn how with quickstarts, tutorials, and samples.'
+  meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
+  description: 使用 Azure 容器服务可以部署已准备好用于生产的 Kubernetes、DC/OS 或 Docker Swarm 群集。 请通过快速入门、教程和示例了解操作方法。
   services: container-service
   author: georgewallace
   manager: gwallace

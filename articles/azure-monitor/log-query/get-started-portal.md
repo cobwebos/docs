@@ -1,60 +1,71 @@
 ---
-title: Azure Monitor Log Analytics 入门 | Microsoft Docs
-description: 本文提供有关在 Azure 门户中使用 Log Analytics 编写查询的教程。
+title: 教程：Log Analytics 查询入门
+description: 本教程介绍如何在 Azure 门户中使用 Log Analytics 编写和管理 Azure Monitor 日志查询。
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 07/19/2019
-ms.openlocfilehash: 1cf1695db50e6aee2a5dae24ed5231fdda7c12de
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.date: 03/17/2020
+ms.openlocfilehash: 29e24166218a6757cded9d1b002321800ab0c073
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360802"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80055440"
 ---
-# <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics 入门
+# <a name="tutorial-get-started-with-log-analytics-queries"></a>教程：Log Analytics 查询入门
 
-> [!NOTE]
-> 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果没有，请使用[演示环境](https://portal.loganalytics.io/demo)，其中包含大量示例数据。
+本教程介绍如何在 Azure 门户中使用 Log Analytics 编写、执行和管理 Azure Monitor 日志查询。 可以使用 Log Analytics 查询来搜索字词、识别趋势、分析模式，以及基于数据提供其他许多见解。 
 
-本教程将介绍如何使用 Azure 门户中的 Log Analytics 来编写 Azure Monitor 日志查询。 具体内容包括：
+本教程将介绍如何使用 Log Analytics 实现以下目的：
 
-- 使用 Log Analytics 编写简单查询
-- 了解数据的架构
-- 筛选、排序和分组结果
-- 应用时间范围
-- 创建图表
-- 保存和加载查询
-- 导出和共享查询
+> [!div class="checklist"]
+> * 了解日志数据的架构
+> * 编写和运行简单的查询，以及修改查询时间范围
+> * 对查询结果进行筛选、排序和分组
+> * 查看、修改和共享查询结果的视觉对象
+> * 保存、加载、导出和复制查询与结果
 
-有关编写日志查询的教程，请参阅 [Azure Monitor 中的日志查询入门](get-started-queries.md)。<br>
-有关日志查询的更多详细信息，请参阅 [Azure Monitor 中的日志查询概述](log-query-overview.md)。
+有关日志查询的详细信息，请参阅 [Azure Monitor 中的日志查询概述](log-query-overview.md)。<br/>
+有关编写日志查询的详细教程，请参阅 [Azure Monitor 中的日志查询入门](get-started-queries.md)。
 
-## <a name="meet-log-analytics"></a>初识 Log Analytics
-Log Analytics 是用来编写和执行 Azure Monitor 日志查询的 Web 工具。 可以通过在 Azure Monitor 菜单中选择“日志”来将其打开。 它将启动并显示一个新的空白查询。
+## <a name="open-log-analytics"></a>打开 Log Analytics
+若要使用 Log Analytics，需要登录到 Azure 帐户。 如果没有 Azure 帐户，可[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-![主页](media/get-started-portal/homepage.png)
+若要完成本教程中的大部分步骤，可以使用[此演示环境](https://portal.loganalytics.io/demo)，其中包含了大量示例数据。 使用演示环境无法保存查询，或将结果固定到仪表板。
 
-## <a name="firewall-requirements"></a>防火墙要求
-若要使用 Log Analytics，浏览器需要访问以下地址。 如果浏览器通过防火墙访问 Azure 门户，则必须允许访问这些地址。
+如果使用 Azure Monitor 来收集至少一个 Azure 资源中的日志数据，则你也可以使用自己的环境。 若要打开 Log Analytics 工作区，请在 Azure Monitor 的左侧导航栏中选择“日志”。  
 
-| URI | IP | 端口 |
-|:---|:---|:---|
-| portal.loganalytics.io | Dynamic | 80,443 |
-| api.loganalytics.io | Dynamic | 80,443 |
-| docs.loganalytics.io | Dynamic | 80,443 |
+## <a name="understand-the-schema"></a>了解架构
+架构是分组到逻辑类别下的表集合。  “演示”架构包含监视解决方案中的多个类别。 例如，**LogManagement** 类别包含 Windows 和 Syslog 事件、性能数据与代理检测信号。
 
-## <a name="basic-queries"></a>基本查询
-查询可用于搜索字词、识别趋势、分析模式，以及基于数据提供其他许多见解。 从基本查询着手：
+架构表显示在 Log Analytics 工作区的“表”选项卡上。  该表包含列，每个列的数据类型按照列名旁边的图标显示。 例如，**Event** 表包含 **Computer** 之类的文本列，以及 **EventCategory** 之类的数字列。
+
+![架构](media/get-started-portal/schema.png)
+
+## <a name="write-and-run-basic-queries"></a>编写和运行基本查询
+
+Log Analytics 在打开时会在**查询编辑器**中显示一个新的空白查询。
+
+![Log Analytics](media/get-started-portal/homepage.png)
+
+### <a name="write-a-query"></a>编写查询
+Azure Monitor 日志查询使用某种版本的 Kusto 查询语言。 查询可以从表名或 [search](/azure/kusto/query/searchoperator) 命令开始。 
+
+以下查询检索 **Event** 表中的所有记录：
 
 ```Kusto
-Event | search "error"
+Event
 ```
 
-此查询在 Event 表中搜索任何属性中包含词语“error”的记录。
+竖线 (|) 字符分隔命令，第一个命令的输出是下一个命令的输入。 可在单个查询中添加任意数目的命令。 以下查询检索 **Event** 表中的记录，然后在这些记录中搜索任何属性中的 **error** 一词：
 
-查询可以从表名或 [search](/azure/kusto/query/searchoperator) 命令开始。 上面的示例从表名 Event 开始，会检索 Event 表中的所有记录。 竖线 (|) 字符分隔命令，因此第一个命令的输出用作后续命令的输入。 可在单个查询中添加任意数目的命令。
+```Kusto
+Event 
+| search "error"
+```
+
+使用单个换行符可使查询更易于阅读。 使用多个换行符可将查询拆分为多个独立的查询。
 
 编写同一查询的另一种方法是：
 
@@ -62,79 +73,68 @@ Event | search "error"
 search in (Event) "error"
 ```
 
-在此示例中，搜索的范围限定为 Event 表，将在该表中搜索包含词语“error”的所有记录。
+在第二个示例中，**search** 命令仅在 **Events** 表的记录中搜索 **error** 一词。
 
-## <a name="running-a-query"></a>运行查询
-通过单击“运行”按钮或按 **Shift+Enter** 来运行查询。 请注意以下详细信息，其中确定了要运行的代码以及返回的数据：
+默认情况下，Log Analytics 会将查询时间范围限制为过去 24 小时。 若要设置不同的时间范围，可将显式的 **TimeGenerated** 筛选器添加到查询，或使用“时间范围”控件。 
 
-- 换行符：单个断点使查询更易于读取。 使用多个换行符会将查询拆分为多个独立的查询。
-- 光标：将光标置于查询中的某个位置可以执行它。 当前查询被视为空行之前的代码。
-- 时间范围 - 默认设置的时间范围为过去 24 小时。 若要使用不同的范围，请使用时间选取器，或者在查询中添加明确的时间范围筛选器。
-
-
-## <a name="understand-the-schema"></a>了解架构
-架构是直观分组到某个逻辑类别下的表集合。 有多个类别来自监视解决方案。 LogManagement 类别包含 Windows 和 Syslog 事件、性能数据和代理检测信号等常见数据。
-
-![架构](media/get-started-portal/schema.png)
-
-在每个表中，数据组织成具有不同数据类型的列。数据类型由列名旁边的图标指示。 例如，屏幕截图中显示的 _Event_ 表包含文本类型的 _Computer_、数字类型的 _EventCategory_ 和日期/时间类型的 _TimeGenerated_ 等列。
-
-## <a name="filter-the-results"></a>筛选结果
-首先获取 _Event_ 表中的所有内容。
-
-```Kusto
-Event
-```
-
-Log Analytics 按以下依据自动限定结果的范围：
-
-- 时间范围：默认情况下，查询限制为过去 24 小时。
-- 结果数：结果数限制为最多 10,000 条记录。
-
-此查询的范围太泛，它返回了过多的结果，因此不太实用。 可以通过表元素或者在查询中显式添加筛选器来筛选结果。 通过表元素筛选结果的方法适用于现有结果集，而在查询本身中添加的筛选器会返回新的筛选结果集，因此可以生成更准确的结果。
-
-### <a name="add-a-filter-to-the-query"></a>将筛选器添加到查询
-每条记录的左侧有一个箭头。 单击此箭头可以打开特定记录的详细信息。
-
-将鼠标悬停在列名上会显示“+”和“-”图标。 若要添加筛选器以便仅返回具有相同值的记录，请单击“+”号。 单击“-”排除具有此值的记录，然后单击“运行”以再次运行查询。
-
-![向查询添加筛选器](media/get-started-portal/add-filter.png)
-
-### <a name="filter-through-the-table-elements"></a>通过表元素筛选
-现在，让我们关注严重性为 _Error_ 的事件。 名为 _EventLevelName_ 的列中指定了严重性。 需要向右滚动才能看到此列。
-
-单击列标题旁边的“筛选”图标，然后在弹出窗口中选择以文本 _error_ 开头的值：
-
-![筛选器](media/get-started-portal/filter.png)
-
-
-## <a name="sort-and-group-results"></a>排序和分组结果
-现在，结果的范围已缩小，只包括过去 24 小时在 SQL Server 中创建的“错误”事件。 但是，结果未进行任何形式的排序。 若要按特定的列（例如 _timestamp_）将结果排序，请单击列标题。 单击一下会按升序排序，再单击一下会按降序排序。
-
-![将列排序](media/get-started-portal/sort-column.png)
-
-还可以按组来组织结果。 若要按特定的列来分组结果，只需将该列标题拖放到其他列的上方即可。 若要创建子组，请同时将其他列拖放到上部栏中。
-
-![组](media/get-started-portal/groups.png)
-
-## <a name="select-columns-to-display"></a>选择要显示的列
-结果表通常包含大量的列。 你可能发现，某些返回的列默认未显示，或者，你可能想要删除显示的某些列。 若要选择要显示的列，请单击“列”按钮：
-
-![选择列](media/get-started-portal/select-columns.png)
-
-
-## <a name="select-a-time-range"></a>选择时间范围
-默认情况下，Log Analytics 应用“过去 24 小时”时间范围。 若要使用不同的范围，请通过时间选取器选择另一个值，然后单击“运行”。 除预设值以外，还可以使用“自定义时间范围”选项来选择查询的绝对范围。
+### <a name="use-the-time-range-control"></a>使用“时间范围”控件
+若要使用“时间范围”控件，请在顶部栏中选择该控件，然后从下拉列表中选择一个值，或选择“自定义”以创建自定义时间范围。  
 
 ![时间选取器](media/get-started-portal/time-picker.png)
 
-选择自定义时间范围时，所选值采用 UTC 格式，这可能不同于你的本地时区。
+- 时间范围值采用 UTC 格式，这可能与你的本地时区不同。
+- 如果查询针对 **TimeGenerated** 显式设置了筛选器，则时间选取器控件将显示“在查询中设置”，并会禁用以防止冲突。 
 
-如果查询显式包含 _TimeGenerated_ 的筛选器，则时间选取器标题中会显示“在查询中设置”。 将禁用手动选择，以防止冲突。
+### <a name="run-a-query"></a>运行查询
+若要运行查询，请将光标放在查询中的某个位置，然后在顶部栏中选择“运行”，或按 **Shift**+**Enter**。  该查询将运行到它找到了空白行为止。
 
+## <a name="filter-results"></a>筛选结果
+Log Analytics 将结果数限制为最多 10,000 条记录。 类似于 `Event` 的常规查询会返回过多的结果，其中一些结果没有作用。 可以通过限制查询中的表元素，或者显式针对结果添加筛选器，来筛选查询结果。 通过表元素进行筛选会返回新的结果集，而显式筛选器将应用于现有的结果集。
 
-## <a name="charts"></a>图表
-除了在表中返回结果以外，还会以可视格式显示查询结果。 使用以下查询作为示例：
+### <a name="filter-by-restricting-table-elements"></a>通过限制表元素进行筛选
+若要通过限制查询中的表元素将 `Event` 查询结果筛选为“Error”事件： 
+
+1. 在查询结果中，选择“EventLevelName”列中包含“Error”的任何记录旁边的下拉箭头。   
+   
+1. 在展开的详细信息中，悬停鼠标并选择“EventLevelName”旁边的“...”，然后选择“包含‘Error’”。    
+   
+   ![向查询添加筛选器](media/get-started-portal/add-filter.png)
+   
+1. 请注意，**查询编辑器**中的查询现已更改为：
+   
+   ```Kusto
+   Event
+   | where EventLevelName == "Error"
+   ```
+   
+1. 选择“运行”以运行新查询。 
+
+### <a name="filter-by-explicitly-filtering-results"></a>通过显式筛选结果进行筛选
+若要通过筛选查询结果将 `Event` 查询结果筛选为“Error”事件： 
+
+1. 在查询结果中，选择列标题“EventLevelName”旁边的“筛选器”图标。   
+   
+1. 在弹出窗口的第一个字段中选择“等于”，然后在下一个字段中输入 *error*。  
+   
+1. 选择“筛选”。 
+   
+   ![“筛选器”](media/get-started-portal/filter.png)
+
+## <a name="sort-group-and-select-columns"></a>排序、分组和选择列
+若要按特定的列（例如“TimeGenerated [UTC]”）对查询结果进行排序，请选择列标题。  再次选择该标题可切换为按升序或降序排序。
+
+![将列排序](media/get-started-portal/sort-column.png)
+
+还可以按组来组织结果。 若要按特定的列对结果进行分组，请将列标题拖放到结果表上方的、带有“将列标题拖放到此处，以按该列分组”标签的栏中。  若要创建子组，请将其他列拖放到上部栏中。 可以在该栏中重新排列组和子组的层次结构与排序方式。
+
+![组](media/get-started-portal/groups.png)
+
+若要在结果中隐藏或显示列，请选择表上方的“列”，然后从下拉列表中选择或取消选择所需的列。 
+
+![选择列](media/get-started-portal/select-columns.png)
+
+## <a name="view-and-modify-charts"></a>查看和修改图表
+还能够以可视格式查看查询结果。 输入以下查询作为示例：
 
 ```Kusto
 Event 
@@ -143,58 +143,65 @@ Event
 | summarize count() by Source 
 ```
 
-默认会在表中显示结果。 单击“图表”可在图形视图中查看结果：
+默认情况下，结果将显示在表中。 选择表上方的“图表”可在图形视图中查看结果。 
 
 ![条形图](media/get-started-portal/bar-chart.png)
 
-在堆积条形图中显示结果。 单击“堆积柱形图”并选择“饼图”可以显示另一个结果视图：
+结果将显示在堆积条形图中。 选择其他选项（例如“堆积柱形图”或“饼图”）可显示结果的其他视图。  
 
 ![饼图](media/get-started-portal/pie-chart.png)
 
 可以通过控件条手动更改视图的不同属性（例如 X 和 Y 轴）或者分组和拆分首选项。
 
-还可以使用 render 运算符在查询本身中设置首选视图。
+还可以使用 [render](/azure/kusto/query/renderoperator) 运算符在查询本身中设置首选视图。
 
-### <a name="smart-diagnostics"></a>智能诊断
-时间图表中，如果数据出现突增或上了一个台阶，则可在图线中看到突出显示的点。 这表示智能诊断已识别到筛选出发生突然变化的属性组合。 单击相应的点可获取有关筛选器的详细信息以及查看筛选器版本。 这有助于识别导致发生变化的原因：
-
-![智能诊断](media/get-started-portal/smart-diagnostics.png)
-
-## <a name="pin-to-dashboard"></a>固定到仪表板
-若要将图表或表固定到某个共享的 Azure 仪表板，请单击图钉图标。 请注意，此图标已移至“Log Analytics”窗口的顶部，与下面的屏幕截图不同。
+## <a name="pin-results-to-a-dashboard"></a>将结果固定到仪表板
+若要将结果表或图表从 Log Analytics 固定到共享的 Azure 仪表板，请在顶部栏上选择“固定到仪表板”。  
 
 ![固定到仪表板](media/get-started-portal/pin-dashboard.png)
 
-在某些情况下，将图表固定到仪表板时，图表会应用特定的简化功能：
+在“固定到另一个仪表板”窗格中，选择或创建要固定到的共享仪表板，然后选择“应用”。   表或图表将显示在所选的 Azure 仪表板上。
 
-- 表列和行：若要将某个表固定到仪表板，该表包含的列数不能超过四个。 只显示前七行。
-- 时间限制：查询自动限制为过去 14 天。
-- Bin 计数限制：如果显示的图表包含许多离散的 Bin，所占比例较少的 Bin 将自动分组到单个“其他”Bin。
+![已固定到仪表板的图表](media/get-started-portal/pin-dashboard2.png)
 
-## <a name="save-queries"></a>保存查询
-创建有用的查询后，可以将其保存，或者与他人共享。 “保存”图标位于顶部栏上。
+固定到共享仪表板的表或图表在以下方面已得到简化： 
 
-可以保存整个查询页，或者将单个查询保存为一个函数。 函数是也可以由其他查询引用的查询。 若要将查询保存为函数，必须提供函数别名，这是当此查询由其他查询引用时，用来调用此查询的名称。
+- 数据限制为过去 14 天的数据。
+- 表最多只显示 4 列和前 7 行。
+- 包含许多离散类别的图表会自动将填充内容不多的类别分组到单个“其他”箱中。 
 
-![保存函数](media/get-started-portal/save-function.png)
+## <a name="save-load-or-export-queries"></a>保存、加载或导出查询
+创建查询后，可以保存查询或结果，或者将其与他人共享。 
 
->[!NOTE]
->保存或编辑已保存的查询时，名称字段支持 `a–z, A–Z, 0-9, -, _, ., <space>, (, ), |` 等字符。
+### <a name="save-queries"></a>保存查询
+若要保存查询：
 
-Log Analytics 查询始终保存到选定的工作区中，并与该工作区的其他用户共享。
+1. 在顶部栏上选择“保存”。 
+   
+1. 在“保存”对话框中，使用字符 a-z、A-Z、0-9、空格、连字符、下划线、句点、括号或竖线为查询指定**名称**。  
+   
+1. 选择是要将查询保存为“查询”还是“函数”。   函数是其他查询可以引用的查询。 
+   
+   若要将查询保存为函数，请提供**函数别名** - 供其他查询用来调用此查询的短名称。
+   
+1. 提供“查询资源管理器”的**类别**以用于查询。 
+   
+1. 选择“保存”。 
+   
+   ![保存函数](media/get-started-portal/save-function.png)
 
-## <a name="load-queries"></a>加载查询
-“查询资源管理器”图标位于右上区域。 其中按类别列出了所有已保存的查询。 在其中还可将特定的查询加入收藏夹，以便将来快速找到它们。 双击某个已保存的查询可将其添加到当前窗口中。
+### <a name="load-queries"></a>加载查询
+若要加载已保存的查询，请选择右上角的“查询资源管理器”。  此时会打开“查询资源管理器”窗格，其中按类别列出了所有查询。  展开类别或者在搜索栏中输入查询名称，然后选择某个查询以将其载入“查询编辑器”。  可以通过选择查询名称旁边的星形图标，将该查询标记为**收藏项目**。
 
 ![查询资源管理器](media/get-started-portal/query-explorer.png)
 
-## <a name="export-and-share-as-link"></a>作为链接导出和共享
-Log Analytics 支持多种导出方法：
+### <a name="export-and-share-queries"></a>导出和共享查询
+若要导出查询，请在顶部栏上选择“导出”，然后从下拉列表中选择“导出到 CSV - 所有列”、“导出到 CSV - 显示的列”或“导出到 Power BI (M 查询)”。    
 
-- Excel：将结果保存为 CSV 文件。
-- Power BI：将结果导出到 Power BI。 有关详细信息，请参阅[将 Azure Monitor 日志数据导入到 Power BI 中](../../azure-monitor/platform/powerbi.md)。
-- 共享链接：可将查询本身作为链接共享，然后，有权访问同一工作区的其他用户可以发送和执行该查询。
+若要共享查询的链接，请在顶部栏上选择“复制链接”，然后选择“复制查询链接”、“复制查询文本”或“复制查询结果”以复制到剪贴板。     可将查询链接发送给有权访问同一工作区的其他人。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[编写 Azure Monitor 日志查询](get-started-queries.md)。
+请继续学习下一篇教程，详细了解如何编写 Azure Monitor 日志查询。
+> [!div class="nextstepaction"]
+> [编写 Azure Monitor 日志查询](get-started-queries.md)

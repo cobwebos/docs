@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 36dada57e587da6e023a83c8ebb6555abe44b9ba
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 42b4eab5f2417f97ab3d37274e6fca1965eca95f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184840"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79457451"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>访问防火墙保护下的 Azure 密钥保管库
 
@@ -52,7 +52,7 @@ ms.locfileid: "78184840"
 | 操作类型 | 终结点：端口 |
 | --- | --- |
 | 密钥保管库控制平面操作<br> （通过 Azure 资源管理器执行） |**全球：**<br> management.azure.com:443<br><br> **Azure China：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> management.microsoftazure.de:443 |
-| Azure Active Directory 图形 API |**全球：**<br> graph.windows.net:443<br><br> **Azure China：**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> graph.windows.net:443<br><br> **Azure Germany：**<br> graph.cloudapi.de:443 |
+| Microsoft Graph API |**全球：**<br> graph.microsoft.com:443<br><br> **Azure China：**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> graph.microsoft.com:443<br><br> **Azure Germany：**<br> graph.cloudapi.de:443 |
 
 ## <a name="key-vault-operations"></a>密钥保管库操作
 

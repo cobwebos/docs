@@ -9,14 +9,16 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
-ms.openlocfilehash: 16e4a7e2f06d2630c970f8daa4428e7a184a79df
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 878b64fe6dd491adbb61c4c74cf4a5fc039858cd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163035"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79371403"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>教程：部署 Azure 数字孪生预览版并配置空间图
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 可以使用 Azure 数字孪生预览服务将人员、地点和设备规整到一个一致的空间系统中。 本系列教程演示如何使用 Azure 数字孪生来检测温度和空气质量达到理想化条件时的房间占用情况。 
 
@@ -36,7 +38,7 @@ ms.locfileid: "77163035"
 
 这些教程使用和修改[介绍如何查找可用房间的快速入门](quickstart-view-occupancy-dotnet.md)所使用的示例，目的是更详细且更深入地探讨相关概念。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有 Azure 帐户，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

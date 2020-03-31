@@ -8,21 +8,15 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 710c5a780841135344d92e93a02f97963b36b09e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 3218a2de890124915d62afa86fd5f3dca1e72b2e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921384"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80063087"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
-使用 Azure 专用链接可以访问如下所述的 Azure PaaS 服务：
- 
- - **Azure 存储**
- - **Azure Cosmos DB**
- - **Azure SQL 数据库**
-
-使用专用链接可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问托管的客户服务和合作伙伴服务。
+使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。
 
 虚拟网络与服务之间的流量将遍历 Microsoft 主干网络。 不再需要向公共 Internet 公开服务。 可以在虚拟网络中创建自己的[专用链接服务](private-link-service-overview.md)，并将其交付给客户。 使用 Azure 专用链接的设置和使用体验在 Azure PaaS、客户自有服务和共享合作伙伴服务中是一致的。
 
@@ -48,16 +42,26 @@ Azure 专用链接提供以下优势：
 
 |场景  |支持的服务  |可用区域 | 状态  |
 |:---------|:-------------------|:-----------------|:--------|
-|客户自有服务的专用链接|标准 Azure 负载均衡器后面的专用链接服务 | 所有公共区域  | GA <br/> [了解详细信息](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
-|Azure PaaS 服务的专用链接   | Azure 存储        |  所有公共区域      | 预览 <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)  |
-|  | Azure Data Lake Storage Gen2        |  所有公共区域      | 预览 <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)  |
-|  |  Azure SQL 数据库         | 所有公共区域      |   预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
-||Azure SQL 数据仓库| 所有公共区域 |预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-||Azure Cosmos DB| 美国中西部、美国西部、美国中北部 |预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
-|  |  Azure Database for PostgreSQL - 单一服务器         | 所有公共区域      |   预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
-|  |  Azure Database for MySQL         | 所有公共区域      |   预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
-|  |  Azure Database for MariaDB         | 所有公共区域      |   预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
-|  |  Azure Key Vault         | 所有公共区域      |   预览   <br/> [了解详细信息](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
+|客户自有服务的专用链接 |标准 Azure 负载均衡器后面的专用链接服务 | 所有公共区域  | GA <br/> [了解详细信息](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+|Azure PaaS 服务的专用链接   | Azure 存储        |  所有公共区域      | GA <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)  |
+|  | Azure Data Lake Storage Gen2        |  所有公共区域      | GA <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)  |
+|  |  Azure SQL 数据库         | 所有公共区域      |   GA <br/> [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
+|  |Azure Synapse Analytics（SQL 数据仓库）| 所有公共区域 |GA <br/> [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
+|  |Azure Cosmos DB|  美国东部、美国东部 2、美国西部、美国西部 2、美国中部、美国中南部、美国中西部、美国中北部、北欧、西欧  |GA <br/> [了解详细信息](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  |  Azure Database for PostgreSQL - 单一服务器         | 所有公共区域      |   GA <br/> [了解详细信息](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  |  Azure Database for MySQL         | 所有公共区域      |   GA <br/> [了解详细信息](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
+|  |  Azure Database for MariaDB         | 所有公共区域      |   GA <br/> [了解详细信息](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
+|  |  Azure Key Vault         | 所有公共区域      |   GA   <br/> [了解详细信息](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
+|  |Azure Kubernetes 服务 - Kubernetes API | 所有公共区域      |   GA   <br/> [了解详细信息](https://docs.microsoft.com/azure/aks/private-clusters)   |
+|  |Azure 搜索 | 美国东部、美国西部 2、美国中南部 |   预览    |
+|  |Azure 容器注册表 | 所有公共区域      |   预览   |
+|  |Azure 应用配置 | 所有公共区域      |   预览   |
+|  |Azure 备份 | 美国东部、美国西部 2、美国中南部     |   预览   |
+|  |Azure 事件中心 | 所有公共区域      |   预览    |
+|  |Azure 服务总线 | 所有公共区域      |   预览   |
+|  |Azure 中继 | 所有公共区域      |   预览   |
+|  |Azure 事件网格| 所有公共区域      |   预览   <br/> [了解详细信息](https://docs.microsoft.com/azure/event-grid/network-security)   |
+|  |Azure Web 应用 | 美国东部、美国西部 2、美国中南部      |   预览   <br/> [了解详细信息](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 
 有关最新通知，请查看 [Azure 虚拟网络更新页](https://azure.microsoft.com/updates/?product=virtual-network)。
 

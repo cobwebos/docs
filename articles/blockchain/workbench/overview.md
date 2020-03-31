@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench 预览版及其功能的概述。
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 88c162539e5d0480d7f938c674b96c2f396774e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387065"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79203638"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>什么是 Azure Blockchain Workbench？
 
@@ -29,7 +29,7 @@ Azure Blockchain Workbench 提供了用于管理区块链应用程序和用户�
 
 可使用 Blockchain Workbench REST API 和基于消息的 API 与现有系统集成。 通过这些 API 提供的接口，可替换或使用多个分布式账本技术、存储和数据库产品/服务。
 
-Blockchain Workbench 可转换发送到其基于消息的 API 的消息，以便按照该区块链本机 API 预期的格式生成事务。  Workbench 可以对事务签名并将其路由到相应区块链。 
+Blockchain Workbench 可转换发送到其基于消息的 API 的消息，以便按照该区块链本机 API 所需的格式生成事务。  Workbench 可以对事务签名并将其路由到相应区块链。 
 
 Workbench 自动将事件发送到服务总线和事件网格，从而向下游使用者发送消息。 开发者可与这些消息传递系统的任意一种集成，以驱动事务并查看结果。
 

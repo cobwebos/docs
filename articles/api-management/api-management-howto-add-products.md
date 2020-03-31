@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
 ms.openlocfilehash: 813117bce4abd3550ac559109c1650ea4a7cff5c
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74538262"
 ---
 # <a name="create-and-publish-a-product"></a>创建和发布产品  
 
 在 Azure API 管理中，产品包含一个或多个 API 以及使用配额和使用条款。 一旦产品发布，开发人员可以订阅该产品，并开始使用产品的 API。  
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建和发布产品
@@ -35,7 +35,7 @@ ms.locfileid: "74538262"
 ## <a name="prerequisites"></a>先决条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
++ 请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 + 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
 ## <a name="create-and-publish-a-product"></a>创建和发布产品
@@ -47,10 +47,10 @@ ms.locfileid: "74538262"
 
     添加产品时，需要提供以下信息： 
 
-    | Name                     | 说明                                                                                                                                                                                                                                                                                                             |
+    | 名称                     | 说明                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | 显示名称             | 要在**开发人员门户**中显示的名称。                                                                                                                                                                                                                                                        |
-    | Name                     | 产品的描述性名称。                                                                                                                                                                                                                                                                                      |
+    | 名称                     | 产品的描述性名称。                                                                                                                                                                                                                                                                                      |
     | 说明              | 可在“说明”  字段中提供有关该产品的详细的信息，例如其用途，它提供访问权的 API 和其他有用的信息。                                                                                                                                               |
     | 状态                    | 如果想要发布该产品，请按“发布”。  在产品中的 API 可调用前，必须先发布该产品。 默认情况下新产品未发布，并仅对“管理员”  组可见。                                                                                      |
     | 需要订阅    | 如果需要用户订阅才能使用该产品，请选中“需要订阅”  。                                                                                                                                                                                                                                   |
@@ -69,11 +69,11 @@ ms.locfileid: "74538262"
 
 通过“访问控制”选项卡为开发人员或来宾设置产品的可见性  。
 
-## <a name="add-apis"> </a>将 API 添加到产品
+## <a name="add-apis-to-a-product"></a><a name="add-apis"> </a>将 API 添加到产品
 
 产品是一个或多个 API 的关联。 可以包含多个 API，并通过开发人员门户将其提供给开发人员。 可以在创建产品期间添加现有的 API。 以后，可以通过产品的“设置”页上或者在创建 API 时将 API 添加到产品。 
 
-开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果你已创建 APIM 实例，则已成为管理员，因此，默认情况下已订阅每个产品。
+开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果创建了 APIM 实例，那么你已是管理员，因此默认情况下订阅了每个产品。
 
 ### <a name="add-an-api-to-an-existing-product"></a>将 API 添加到现有产品
 
@@ -89,7 +89,7 @@ ms.locfileid: "74538262"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建和发布产品

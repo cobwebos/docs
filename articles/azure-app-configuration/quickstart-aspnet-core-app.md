@@ -8,18 +8,18 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: ee50d180c579e117c16f1a956871068f0a46e976
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 537dabe09c41012b9e15998ce3af8198dcfb62d3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498560"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245768"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 ASP.NET Core 应用
 
 在本快速入门中，将使用 Azure 应用程序配置来集中存储和管理 ASP.NET Core 应用程序的应用程序设置。 ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，生成基于键值的单个配置对象。 这些数据源称为配置提供程序  。 由于应用程序配置的 .NET Core 客户端作为配置提供程序实现，因此服务就像是另一个数据源。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -31,7 +31,7 @@ ms.locfileid: "77498560"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “创建”来添加以下键值对   ：
+6. 选择“配置资源管理器” > “创建” > “键-值”来添加以下键值对    ：
 
     | 密钥 | 值 |
     |---|---|
@@ -40,7 +40,7 @@ ms.locfileid: "77498560"
     | TestApp:Settings:FontColor | 黑色 |
     | TestApp:Settings:Message | Azure 应用配置的数据 |
 
-    暂时将“标签”和“内容类型”保留为空   。
+    暂时将“标签”和“内容类型”保留为空   。 选择“应用”。 
 
 ## <a name="create-an-aspnet-core-web-app"></a>创建一个 ASP.NET Core Web 应用
 
@@ -58,44 +58,51 @@ dotnet new mvc --no-https
 
 若要使用机密管理器，请将 `UserSecretsId` 元素添加到 .csproj  文件。
 
-打开 *.csproj* 文件。 添加 `UserSecretsId` 元素，如下所示。 可以使用相同的 GUID，也可以将此值替换为你自己的值。 保存文件。
+1. 打开 *.csproj* 文件。
 
-> [!IMPORTANT]
-> `CreateHostBuilder` 替换 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根据环境选择正确的语法。
+1.  添加 `UserSecretsId` 元素，如下所示。 可以使用相同的 GUID，也可以将此值替换为你自己的值。
 
-#### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-    <PropertyGroup>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
-        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
-    </ItemGroup>
-
-</Project>
-```
-
-#### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk.Web">
+    > [!IMPORTANT]
+    > `CreateHostBuilder` 替换 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根据环境选择正确的语法。
     
-    <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
-    </PropertyGroup>
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+    
+    ```xml
+    <Project Sdk="Microsoft.NET.Sdk.Web">
+    
+        <PropertyGroup>
+            <TargetFramework>netcoreapp2.1</TargetFramework>
+            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+        </PropertyGroup>
+    
+        <ItemGroup>
+            <PackageReference Include="Microsoft.AspNetCore.App" />
+            <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+        </ItemGroup>
+    
+    </Project>
+    ```
+    
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+    
+    ```xml
+    <Project Sdk="Microsoft.NET.Sdk.Web">
+        
+        <PropertyGroup>
+            <TargetFramework>netcoreapp3.1</TargetFramework>
+            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+        </PropertyGroup>
+    
+    </Project>
+    ```
+    ---
 
-</Project>
-```
----
+1. 保存 *.csproj* 文件。
 
-机密管理器工具存储敏感数据，以便用于项目树之外的开发工作。 此方法有助于防止意外共享源代码中的应用密码。 有关机密管理器的详细信息，请参阅[在 ASP.NET Core 开发中安全存储应用机密](https://docs.microsoft.com/aspnet/core/security/app-secrets)
+机密管理器工具存储敏感数据，以便用于项目树之外的开发工作。 此方法有助于防止意外共享源代码中的应用密码。
+
+> [!TIP]
+> 若要详细了解机密管理器，请参阅[在 ASP.NET Core 开发中安全存储应用机密](https://docs.microsoft.com/aspnet/core/security/app-secrets)
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
@@ -113,7 +120,7 @@ dotnet new mvc --no-https
 
 1. 将名为 ConnectionStrings:AppConfig 的机密添加到机密管理器  。
 
-    此机密包含用于访问应用程序配置存储区的连接字符串。 将以下命令中的值替换为应用程序配置存储区的连接字符串。
+    此机密包含用于访问应用程序配置存储区的连接字符串。 将以下命令中的值替换为应用程序配置存储区的连接字符串。 可以在 Azure 门户的“访问密钥”  下找到该连接字符串。
 
     必须在 .csproj 文件所在的同一目录中执行此命令  。
 

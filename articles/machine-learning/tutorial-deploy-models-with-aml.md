@@ -1,7 +1,7 @@
 ---
 title: 图像分类教程：部署模型
 titleSuffix: Azure Machine Learning
-description: 本教程介绍如何通过 Azure 机器学习在 Python Jupyter notebook 中使用 scikit-learn 部署图像分类模型。 本教程是由两个部分构成的系列教程的第二部分。
+description: 本教程（由两部分组成的系列教程的第二部分）介绍如何通过 Azure 机器学习在 Python Jupyter notebook 中使用 scikit-learn 部署图像分类模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,17 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 071a8dd40d87e5df6fc5c65b789bb63b515dc60a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 81e02492f7e79b87e1513a910afe4719908adbbb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116502"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80159060"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教程：在 Azure 容器实例中部署映像分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本教程是由两个部分构成的系列教程的第二部分  。 在[上一个教程](tutorial-train-models-with-aml.md)中，训练了机器学习模型，然后在云中的工作区内注册了模型。  
-
-现在，你已准备好在 [Azure 容器实例](https://docs.microsoft.com/azure/container-instances/)中部署模型作为 Web 服务。 Web 服务是一个映像，在本例中是 Docker 映像。 它用于封装评分逻辑和模型本身。 
+本教程是由两个部分构成的系列教程的第二部分  。 在[上一个教程](tutorial-train-models-with-aml.md)中，训练了机器学习模型，然后在云中的工作区内注册了模型。  现在，你已准备好将模型部署为 Web 服务。 Web 服务是一个映像，在本例中是 Docker 映像。 它用于封装评分逻辑和模型本身。 
 
 在教程的此部分中，你将使用 Azure 机器学习完成以下任务：
 
@@ -38,7 +36,7 @@ ms.locfileid: "77116502"
 >[!NOTE]
 > 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.41 进行测试。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要运行 Notebook，请首先完成以下教程中的模型训练：[教程（第 1 部分）：训练映像分类模型](tutorial-train-models-with-aml.md)。   然后，在克隆的 tutorials/image-classification-mnist-data 文件夹中打开 img-classification-part2-deploy.ipynb 笔记本   。
 
@@ -50,7 +48,7 @@ ms.locfileid: "77116502"
 > 如果要在运行代码时继续阅读，请立即切换到 Jupyter 笔记本。
 > 若要在笔记本中运行单个代码单元，请单击代码单元，然后按 **Shift+Enter**。 或者，通过从顶部工具栏中选择“全部运行”  来运行整个笔记本。
 
-## <a name="start"></a>设置环境
+## <a name="set-up-the-environment"></a><a name="start"></a>设置环境
 
 首先，设置测试环境。
 
@@ -299,7 +297,6 @@ service.wait_for_deployment(show_output=True)
 ```python
 print(service.scoring_uri)
 ```
-
 
 ## <a name="test-the-deployed-service"></a>测试已部署的服务
 

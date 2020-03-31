@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2019
-ms.openlocfilehash: 857cfb4587d7b73a59fafac83dadbef3ad920ebf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/23/2020
+ms.openlocfilehash: c94ac0c27d747da1a98cd9d67ced91a5913147e6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971426"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132685"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板在 Azure Databricks 上运行 Spark 作业
 
 在本快速入门中，将使用 Azure 资源管理器模板创建一个具有 Apache Spark 群集的 Azure Databricks 工作区。 你在群集上运行作业，并使用自定义图表根据人口统计数据生成免费/付费使用的实时报告。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 
@@ -60,6 +60,8 @@ ms.locfileid: "75971426"
 4. 创建工作区需要几分钟时间。 在创建工作区过程中，门户会在右侧显示“正在提交 Azure Databricks 的部署”  磁贴。 可能需要在仪表板上向右滚动才能看到此磁贴。 另外，还会在屏幕顶部附近显示进度条。 你可以查看任一区域来了解进度。
 
    ![Databricks 部署磁贴](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-deployment-tile.png "Databricks 部署磁贴")
+
+   当工作区部署失败时，仍然会在失败状态下创建工作区。 删除失败的工作区，并创建一个解决部署错误的新工作区。 删除失败的工作区时，托管资源组和任何成功部署的资源也将被删除。
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中创建 Spark 群集
 

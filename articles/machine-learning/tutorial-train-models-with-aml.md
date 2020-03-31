@@ -1,7 +1,7 @@
 ---
 title: 图像分类教程：训练模型
 titleSuffix: Azure Machine Learning
-description: 了解如何通过 Azure 机器学习在 Python Jupyter notebook 中使用 scikit-learn 训练图像分类模型。 本教程是由两个部分构成的系列教程的第一部分。
+description: 通过 Azure 机器学习在 Python Jupyter notebook 中使用 scikit-learn 训练图像分类模型。 本教程是第一部分（共两部分）。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5a2ff4d78c1e0e67b390f607da69cc299e2dce4a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 8cf46db06a4a2f8fa86f97dab5a8477cf427c999
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116489"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80159059"
 ---
-# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>教程：使用 Azure 机器学习通过 MNIST 数据和 scikit-learn 训练映像分类模型
+# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>教程：使用 MNIST 数据和 scikit-learn 训练图像分类模型 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本教程中，你将在远程计算资源上训练一个机器学习模型。 将在 Python Jupyter Notebook 中使用 Azure 机器学习的训练和部署工作流。  然后可以将 Notebook 用作模板，使用你自己的数据来定型机器学习。 本教程是由两个部分构成的系列教程的第一部分  。  
@@ -34,12 +34,12 @@ ms.locfileid: "77116489"
 
 你会在[本教程的第二部分](tutorial-deploy-models-with-aml.md)学习如何选择模型并对其进行部署。
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 >[!NOTE]
 > 本文中的代码已使用 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 版本 1.0.65 进行测试。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 在开始本教程之前完成[教程：开始创建第一个 Azure ML 试验](tutorial-1st-experiment-sdk-setup.md)，以执行以下操作：
     * 创建工作区
@@ -57,7 +57,7 @@ ms.locfileid: "77116489"
 > 如果要在运行代码时继续阅读，请立即切换到 Jupyter 笔记本。 
 > 若要在笔记本中运行单个代码单元，请单击代码单元，然后按 **Shift+Enter**。 或者，通过从顶部工具栏中选择“全部运行”  来运行整个笔记本。
 
-## <a name="start"></a>设置开发环境
+## <a name="set-up-your-development-environment"></a><a name="start"></a>设置开发环境
 
 开发工作的所有设置都可以在 Python Notebook 中完成。 安装包括以下操作：
 

@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
 ms.openlocfilehash: 39b8745b65eccd8e4d1b5986490e30be443ad656
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74913513"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Databricks Notebook 活动运行 Databricks Notebook
@@ -223,7 +223,7 @@ ms.locfileid: "74913513"
 
 ## <a name="next-steps"></a>后续步骤
 
-本示例中的管道先触发 Databricks Notebook 活动，然后向其传递参数。 你已了解如何：
+本示例中的管道先触发 Databricks Notebook 活动，然后向其传递参数。 你已了解如何执行以下操作：
 
   - 创建数据工厂。
 

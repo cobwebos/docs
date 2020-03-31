@@ -14,7 +14,8 @@
           href: kubernetes-walkthrough.md
         - name: 使用 Azure 门户
           href: kubernetes-walkthrough-portal.md
-        - name: 使用 Resource Manager 模板
+        - name: 使用 ARM 模板
+          displayName: Resource Manager
           href: kubernetes-walkthrough-rm-template.md
     - name: 开发应用程序
       expanded: true
@@ -73,6 +74,8 @@
       href: concepts-storage.md
     - name: 缩放
       href: concepts-scale.md
+    - name: 节点自动修复
+      href: node-auto-repair.md
     - name: 最佳做法
       items:
         - name: 概述
@@ -123,6 +126,8 @@
           href: upgrade-cluster.md
         - name: 处理节点 OS 更新
           href: node-updates-kured.md
+        - name: 配置 AKS 群集
+          href: cluster-configuration.md
         - name: 将 ACR 与 AKS 群集集成
           href: cluster-container-registry-integration.md
         - name: 创建虚拟节点
@@ -198,7 +203,7 @@
       items:
         - name: 创建服务主体
           href: kubernetes-service-principal.md
-        - name: 使用托管标识（预览版）
+        - name: 使用托管标识
           href: use-managed-identity.md
         - name: 限制对群集配置文件的访问
           href: control-kubeconfig-access.md
@@ -216,6 +221,8 @@
           href: limit-egress-traffic.md
         - name: 实现 Azure Active Directory 集成
           items:
+            - name: 集成 Azure AD（预览版）
+              href: azure-ad-v2.md
             - name: 使用 Azure CLI
               href: azure-ad-integration-cli.md
             - name: 使用 Azure 门户

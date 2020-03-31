@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: c6da4b54dbc982c69e9d3004a5da8f63deffa3e9
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 1ff13d8ef0ca4c6cf499c3245d3ef14370283075
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246016"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066390"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 NAT 网关
 
 本快速入门介绍如何使用 Azure 虚拟网络 NAT 服务。 你将创建一个 NAT 网关，以便为 Azure 中的虚拟机提供出站连接。 
 
->[!NOTE] 
->Azure 虚拟网络 NAT 目前以公共预览版提供，仅在有限的几个[区域](./nat-overview.md#region-availability)中可用。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms)。
+如果愿意，可以使用 [Azure CLI](quickstart-create-nat-gateway-cli.md)、[Azure PowerShell](quickstart-create-nat-gateway-powershell.md) 或部署 [ARM 模板](quickstart-create-nat-gateway-powershell.md)而不是使用门户来执行这些步骤。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -179,6 +178,5 @@ ssh <username>@<ip-address-destination>
 - 有关[使用 Azure CLI 部署 NAT 网关资源](./quickstart-create-nat-gateway-cli.md)的快速入门。
 - 有关[使用 Azure PowerShell 部署 NAT 网关资源](./quickstart-create-nat-gateway-powershell.md)的快速入门。
 - 有关[使用 Azure 门户部署 NAT 网关资源](./quickstart-create-nat-gateway-portal.md)的快速入门。
-- [提供有关公共预览版的反馈](https://aka.ms/natfeedback)。
 > [!div class="nextstepaction"]
 

@@ -9,14 +9,16 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: a3c696a5bfa9286e664f69bd379bac408b7459d6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 91386eaf7753f2aefada2d1423a11b366c3ee924
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863234"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79370893"
 ---
-# <a name="overview-of-azure-digital-twins"></a>Azure 数字孪生概述
+# <a name="overview-of-azure-digital-twins-preview"></a>Azure 数字孪生预览版概述
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Azure 数字孪生预览版是一种 Azure IoT 服务，用于创建物理环境的综合性模型。 它可以创建空间智能图，为人员、空间和设备之间的关系和交互建模。
 

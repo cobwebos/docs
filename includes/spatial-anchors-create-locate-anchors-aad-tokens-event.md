@@ -1,11 +1,11 @@
 ---
 ms.openlocfilehash: 7219a457a2631f9ff6beee06eff34bce0ff5a23f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67172652"
 ---
-像使用访问令牌，如果未设置的 Azure AD 令牌，必须处理 TokenRequired 事件或委托协议实现 tokenRequired 方法。
+与访问令牌一样，如果未设置 Azure AD 令牌，则必须处理 TokenRequired 事件，或在委托协议上实现 tokenRequired 方法。
 
-可以通过将属性设置为事件自变量上以同步方式处理事件。
+可以通过设置事件参数上的属性来同步处理事件。

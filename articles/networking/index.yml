@@ -1,0 +1,342 @@
+### YamlMime:Hub
+title: Azure 网络文档
+summary: 了解各种可用的 Azure 网络服务，这些服务提供与 Azure 中的资源的连接、传送和保护应用程序，并帮助保护网络。
+brand: azure
+metadata:
+  title: Azure 网络文档
+  description: Azure 网络服务可提供与 Azure 中的资源的连接、交付和保护应用程序，并帮助保护网络。
+  ms.service: virtual-network
+  ms.topic: hub-page
+  ms.collection: 
+  author: KumudD
+  ms.author: kumud
+  manager: mtillman
+  ms.date: 03/17/2020
+  ms.openlocfilehash: 5745c6c9a7f380d7e9b1d8d59d56a81581c66e14
+  ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80294317"
+highlightedContent:
+  items:
+  - title: 什么是 Azure 网络？
+    itemType: overview
+    url: networking-overview.md
+  - title: Azure 网络有哪些新增功能？
+    itemType: whats-new
+    url: https://azure.microsoft.com/updates/?category=networking
+  - title: Azure 中的负载均衡选项
+    itemType: architecture
+    url: https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview
+  - title: Azure 中的中心辐射型网络拓扑
+    itemType: architecture
+    url: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+  - title: 对 SQL 数据库服务器进行私密访问
+    itemType: tutorial
+    url: ../private-link/create-private-endpoint-portal.md
+  - title: 使用 Azure 服务在远程工作
+    itemType: concept
+    url: working-remotely-support.md
+conceptualContent:
+  items:
+  - title: 虚拟网络
+    links:
+    - url: ../virtual-network/virtual-networks-overview.md
+      itemType: concept
+      text: 什么是 Azure 虚拟网络？
+    - url: ../virtual-network/tutorial-restrict-network-access-to-resources.md
+      itemType: tutorial
+      text: 限制对资源的网络访问
+    - url: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+      itemType: tutorial
+      text: 连接 Azure 虚拟网络
+    - url: ../virtual-network/diagnose-network-traffic-filter-problem.md
+      itemType: how-to-guide
+      text: 排查网络流量筛选问题
+    footerLink:
+      url: ../virtual-network/index.yml
+      text: 查看详细信息
+  - title: 从本地连接到 Azure - VPN 加密
+    links:
+    - url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+      itemType: overview
+      text: 什么是 Azure VPN 网关？
+    - url: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md
+      itemType: tutorial
+      text: 站点到站点连接
+    - url: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
+      itemType: how-to-guide
+      text: 点到站点连接
+    - url: ../vpn-gateway/vpn-gateway-troubleshoot.md
+      itemType: how-to-guide
+      text: 排查 VPN 网关问题
+    footerLink:
+      url: ../vpn-gateway/index.yml
+      text: 查看详细信息
+  - title: 从本地扩展到 Azure - 专用连接
+    links:
+    - url: ../expressroute/expressroute-introduction.md
+      itemType: concept
+      text: 什么是 Azure ExpressRoute？
+    - url: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md
+      itemType: tutorial
+      text: 创建和修改 ExpressRoute 线路
+    - url: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md
+      itemType: tutorial
+      text: 将虚拟网络链接到 ExpressRoute 线路
+    - url: ../expressroute/expressroute-troubleshooting-network-performance.md
+      itemType: how-to-guide
+      text: 排查网络性能问题
+    footerLink:
+      url: ../expressroute/index.yml
+      text: 查看详细信息
+  - title: DNS
+    links:
+    - url: ../dns/dns-overview.md
+      itemType: overview
+      text: 什么是 Azure DNS？
+    - url: ../private-link/private-endpoint-overview.md
+      itemType: overview
+      text: 什么是 Azure 专用 DNS？
+    - url: ../dns/dns-delegate-domain-azure-dns.md
+      itemType: tutorial
+      text: 托管域和子域
+    - url: ../dns/dns-getstarted-portal.md
+      itemType: tutorial
+      text: 排查 Azure DNS 问题
+    footerLink:
+      url: ../dns/index.yml
+      text: 查看详细信息
+  - title: 网络负载均衡器
+    links:
+    - url: ../load-balancer/load-balancer-overview.md
+      itemType: overview
+      text: 什么是 Azure 负载均衡器？
+    - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
+      itemType: quickstart
+      text: 对传入 VM 的 Internet 流量进行负载均衡
+    - url: ../load-balancer/tutorial-load-balancer-port-forwarding-portal.md
+      itemType: tutorial
+      text: 配置端口转发
+    - url: ../load-balancer/load-balancer-troubleshoot.md
+      itemType: how-to-guide
+      text: 排查 Azure 负载均衡器问题
+    footerLink:
+      url: ../load-balancer/index.yml
+      text: 查看详细信息
+  - title: 基于 DNS 的负载均衡器
+    links:
+    - url: ../traffic-manager/traffic-manager-overview.md
+      itemType: overview
+      text: 什么是 Azure 流量管理器？
+    - url: ../traffic-manager/tutorial-traffic-manager-improve-website-response.md
+      itemType: tutorial
+      text: 路由流量以降低延迟
+    - url: ../traffic-manager/traffic-manager-routing-methods.md
+      itemType: concept
+      text: 流量路由方法
+    - url: ../traffic-manager/traffic-manager-troubleshooting-degraded.md
+      itemType: how-to-guide
+      text: 排查流量管理器的降级状态
+    footerLink:
+      url: ../traffic-manager/index.yml
+      text: 查看详细信息
+  - title: Web 应用程序负载均衡器
+    links:
+    - url: ../application-gateway/overview.md
+      itemType: overview
+      text: 什么是 Azure 应用程序网关？
+    - url: ../application-gateway/quick-create-portal.md
+      itemType: quickstart
+      text: 使用门户定向 Web 流量
+    - url: ../application-gateway/application-gateway-faq.md
+      itemType: concept
+      text: 常见问题
+    - url: ../application-gateway/application-gateway-troubleshooting-502.md
+      itemType: how-to-guide
+      text: 排查“错误的网关”错误
+    footerLink:
+      url: ../application-gateway/index.yml
+      text: 查看详细信息
+  - title: 全局负载均衡器
+    links:
+    - url: ../frontdoor/front-door-overview.md
+      itemType: overview
+      text: 什么是 Azure Front Door 服务？
+    - url: ../frontdoor/front-door-custom-domain.md
+      itemType: how-to-guide
+      text: 将自定义域添加到 Azure Front Door 服务
+    - url: ../frontdoor/front-door-how-to-redirect-https.md
+      itemType: how-to-guide
+      text: HTTP 到 HTTPS 重定向
+    - url: ../frontdoor/front-door-troubleshoot-routing.md
+      itemType: how-to-guide
+      text: 排查路由问题
+    footerLink:
+      url: ../frontdoor/index.yml
+      text: 查看详细信息
+  - title: 监视网络运行状况
+    links:
+    - url: ../network-watcher/network-watcher-monitoring-overview.md
+      itemType: overview
+      text: Azure 网络观察程序是什么？
+    - url: ../network-watcher/traffic-analytics.md
+      itemType: concept
+      text: Azure 中的流量分析
+    - url: ../network-watcher/network-watcher-nsg-flow-logging-portal.md
+      itemType: tutorial
+      text: 记录传入和传出 VM 的网络流量流
+    footerLink:
+      url: ../network-watcher/index.yml
+      text: 查看详细信息
+  - title: 网络防火墙
+    links:
+    - url: ../firewall/overview.md
+      itemType: overview
+      text: 什么是 Azure 防火墙？
+    - url: ../firewall/tutorial-firewall-deploy-portal.md
+      itemType: tutorial
+      text: 部署和配置 Azure 防火墙
+    - url: ../firewall/tutorial-firewall-dnat.md
+      itemType: tutorial
+      text: 使用 Azure 防火墙筛选入站 Internet 流量
+    footerLink:
+      url: ../firewall/index.yml
+      text: 查看详细信息
+  - title: 保护对 Azure VM 的访问
+    links:
+    - url: ../bastion/bastion-overview.md
+      itemType: overview
+      text: 什么是 Azure Bastion？
+    - url: ../bastion/bastion-create-host-portal.md
+      itemType: how-to-guide
+      text: 创建 Azure Bastion 主机
+    - url: ../bastion/troubleshoot.md
+      itemType: how-to-guide
+      text: 排查 Azure Bastion 问题
+    footerLink:
+      url: ../bastion/index.yml
+      text: 查看详细信息
+  - title: 网络安全管理
+    links:
+    - url: ../firewall-manager/overview.md
+      itemType: overview
+      text: 什么是 Azure 防火墙管理器？
+    - url: ../firewall-manager/secured-virtual-hub.md
+      itemType: concept
+      text: 什么是安全虚拟中心？
+    - url: ../firewall-manager/secure-cloud-network.md
+      itemType: tutorial
+      text: 使用 Azure 防火墙管理器保护虚拟 WAN
+    footerLink:
+      url: ../firewall-manager/index.yml
+      text: 查看详细信息
+  - title: Web 应用程序防火墙
+    links:
+    - url: ../web-application-firewall/overview.md
+      itemType: overview
+      text: 什么是 Azure Web 应用程序防火墙？
+    - url: ../web-application-firewall/ag/ag-overview.md
+      itemType: concept
+      text: 应用程序网关上的 WAF
+    - url: ../web-application-firewall/afds/afds-overview.md
+      itemType: concept
+      text: Azure Front Door 服务上的 WAF
+    - url: ../web-application-firewall/cdn/cdn-overview.md
+      itemType: concept
+      text: Azure CDN 上的 WAF
+    - url: ../web-application-firewall/ag/web-application-firewall-troubleshoot.md
+      itemType: how-to-guide
+      text: 排查应用程序网关的 WAF 问题
+    footerLink:
+      url: ../web-application-firewall/index.yml
+      text: 查看详细信息
+  - title: 对服务进行私密访问
+    links:
+    - url: ../private-link/private-link-overview.md
+      itemType: overview
+      text: 什么是 Azure 专用链接？
+    - url: ../private-link/private-endpoint-overview.md
+      itemType: concept
+      text: 什么是 Azure 专用终结点？
+    - url: ../private-link/troubleshoot-private-link-connectivity.md
+      itemType: how-to-guide
+      text: 排查 Azure 专用链接问题
+    footerLink:
+      url: ../private-link/index.yml
+      text: 查看详细信息
+  - title: DDoS 保护
+    links:
+    - url: ../virtual-network/ddos-protection-overview.md
+      itemType: overview
+      text: 什么是 Azure DDoS 防护标准版？
+    - url: ../virtual-network/manage-ddos-protection.md
+      itemType: how-to-guide
+      text: 管理 DDoS 防护
+    - url: ../virtual-network/ddos-protection-partner-onboarding.md
+      itemType: concept
+      text: 登记合作伙伴
+    footerLink:
+      url: https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices
+      text: 查看详细信息
+  - title: 内容分发网络
+    links:
+    - url: ../cdn/cdn-overview.md
+      itemType: overview
+      text: 什么是 Azure 内容分发网络？
+    - url: ../cdn/cdn-create-new-endpoint.md
+      itemType: quickstart
+      text: 创建 CDN 配置文件和终结点
+    - url: ../cdn/cdn-standard-rules-engine-reference.md
+      itemType: concept
+      text: Azure CDN 的标准规则引擎参考
+    - url: ../cdn/cdn-troubleshoot-endpoint.md
+      itemType: how-to-guide
+      text: 排查 Azure CDN 终结点问题
+    footerLink:
+      url: ../cdn/index.yml
+      text: 查看详细信息
+  - title: 自动分支连接
+    links:
+    - url: ../virtual-wan/virtual-wan-about.md
+      itemType: overview
+      text: 什么是 Azure 虚拟 WAN？
+    - url: ../virtual-wan/virtual-wan-global-transit-network-architecture.md
+      itemType: concept
+      text: 全局传输网络体系结构 - Azure 虚拟 WAN
+    - url: ../virtual-wan/virtual-wan-locations-partners.md
+      itemType: concept
+      text: Azure 虚拟 WAN 合作伙伴和位置
+    - url: ../virtual-wan/migrate-from-hub-spoke-topology.md
+      itemType: how-to-guide
+      text: 从中心辐射型拓扑迁移
+    footerLink:
+      url: ../virtual-wan/index.yml
+      text: 查看详细信息
+  - title: 对等互连服务
+    links:
+    - url: ../peering-service/about.md
+      itemType: overview
+      text: 什么是 Azure 对等互连服务？
+    - url: ../internet-peering/overview.md
+      itemType: overview
+      text: 什么是 Internet 对等互连？
+    - url: ../internet-peering/overview-peering-service.md
+      itemType: concept
+      text: Internet 对等互连与Azure 中的对等互连服务
+    footerLink:
+      url: ../peering-service/index.yml
+      text: 查看详细信息
+additionalContent:
+  sections:
+  - items:
+    - title: 适用于 Azure 网络的 Azure PowerShell 命令
+      summary: 了解 Azure 网络 Cmdlet。
+      url: https://docs.microsoft.com/en-us/powershell/module/az.network/?view=azps-3.5.0#networking
+    - title: 适用于 Azure 网络的 Azure CLI 命令
+      summary: 在 CLI 参考中查找 Azure 网络命令。
+      url: https://docs.microsoft.com/en-us/cli/azure/network?view=azure-cli-latest
+    - title: Azure 网络博客
+      summary: 查看有关 Azure 网络的最新博客。
+      url: https://azure.microsoft.com/blog/topics/networking/

@@ -6,20 +6,20 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: f322a240835d86697ae18c984700f22ca7b00145
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882185"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215245"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 
 如今的应用程序需要具备高响应能力并始终联机。 若要实现低延迟和高可用性，需要在靠近用户的数据中心部署这些应用程序的实例。 应用程序需要实时对高峰时段使用情况的巨大变化做出响应，存储不断增加的数据量，并在毫秒内将这些数据提供给用户。
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 只需单击一个按钮，即可通过 Cosmos DB 跨任意数量的全球 Azure 区域弹性且独立地缩放吞吐量和存储。 可以弹性缩放吞吐量和存储，并使用你喜欢的 API 对 SQL、MongoDB、Cassandra、表或 Gremlin 中的数据实现低至个位数毫秒级的快速访问。 Cosmos DB 为吞吐量、延迟、可用性和一致性保证提供综合[服务级别协议](https://aka.ms/acdbsla) (SLA)，这是其他数据库服务无法提供的。
+Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 只需单击一个按钮，即可通过 Cosmos DB 跨任意数量的全球 Azure 区域弹性且独立地缩放吞吐量和存储。 你可以弹性缩放吞吐量和存储，并通过以下常用 API 利用个位数毫秒级的快速数据访问：SQL、MongoDB、Cassandra、表或 Gremlin。 Cosmos DB 为吞吐量、延迟、可用性和一致性保证提供综合[服务级别协议](https://aka.ms/acdbsla) (SLA)，这是其他数据库服务无法提供的。
 
-无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。
+可以在没有 Azure 订阅的情况下[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)（无需支付费用，也无需承诺），或者使用 [Azure Cosmos DB 免费层](optimize-dev-test.md#azure-cosmos-db-free-tier)获取一个每秒的前 400 RU 免费且 5 GB 存储免费的帐户。
 
 > [!div class="nextstepaction"]
 > [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)

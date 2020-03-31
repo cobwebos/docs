@@ -32,11 +32,23 @@
   items:
     - name: Azure 安全基线概述
       href: security-baselines-overview.md
+    - name: Azure Cache for Redis 安全基线
+      href: ../../azure-cache-for-redis/security-baseline.md
     - name: Batch 安全基线
       href: ../../batch/security-baseline.md
-    - name: Key Vault 安全基线
-      href: ../../key-vault/security-baseline.md
+    - name: 容器注册表安全基线
+      href: ../../container-registry/security-baseline.md
+    - name: Cosmos DB 安全基线
+      href: ../../cosmos-db/security-baseline.md
     - name: HDInsight 安全基线
       href: ../../hdinsight/security-baseline.md
+    - name: Key Vault 安全基线
+      href: ../../key-vault/security-baseline.md
+    - name: MariaDB 安全基线
+      href: ../../mariadb/security-baseline.md
+    - name: MySQL 安全基线
+      href: ../../mysql/security-baseline.md
+    - name: PostgreSQL 安全基线
+      href: ../../postgresql/security-baseline.md
     - name: SQL 数据库安全基线
       href: ../../sql-database/security-baseline.md

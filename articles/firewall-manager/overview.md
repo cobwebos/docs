@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 03/13/2020
 ms.author: victorh
-ms.openlocfilehash: 0ba2ce30cee3ff7e3a9f71b4f1b0928fa84e775d
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 149782f627d586e927c828506a7d4f1b5437b987
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443137"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79366268"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>什么是 Azure 防火墙管理器预览版？
 
@@ -80,13 +80,14 @@ Azure 防火墙管理器预览版存在以下已知问题：
 
 |问题  |说明  |缓解操作  |
 |---------|---------|---------|
-|第三方筛选限制|Azure 防火墙 B2V 和 V2V 不支持使用第三方提供程序筛选 V2I 流量。|当前正在调查。|
-|当前不支持流量拆分|当前不支持 Office 365 和 Azure 公共 PaaS 流量拆分。 因此，为 V2I 或 B2I 选择第三方提供程序也会通过合作伙伴服务发送所有 Azure 公共 PaaS 和 Office 365 流量。|当前正在调查中心的流量拆分。
-|每个区域一个安全虚拟中心|在每个区域最多只能使用一个安全虚拟中心|可在一个区域中创建多个虚拟 WAN。|
-|基本策略必须与本地策略位于同一区域中|可在与基本策略相同的区域中创建所有本地策略。 仍可以将在安全中心的某个区域中创建的策略应用于另一个区域。|当前正在调查。|
-|中心之间的通信不适用于安全虚拟中心|目前尚不支持安全虚拟中心之间的通信。|当前正在调查。|
+|第三方筛选限制。|Azure 防火墙 B2V 和 V2V 不支持使用第三方提供程序筛选 V2I 流量。|正在调查|
+|当前不支持流量拆分。|当前不支持 Office 365 和 Azure 公共 PaaS 流量拆分。 因此，为 V2I 或 B2I 选择第三方提供程序也会通过合作伙伴服务发送所有 Azure 公共 PaaS 和 Office 365 流量。|正在调查中心的流量拆分。
+|每个区域一个安全虚拟中心。|在每个区域最多只能使用一个安全虚拟中心。|可在一个区域中创建多个虚拟 WAN。|
+|基本策略必须与本地策略位于同一区域中。|可在与基本策略相同的区域中创建所有本地策略。 仍可以将在安全中心的某个区域中创建的策略应用于另一个区域。|正在调查|
+|中心之间的通信不适用于安全虚拟中心|目前尚不支持安全虚拟中心之间的通信。|正在调查|
 |共享同一虚拟 WAN 的所有安全虚拟中心必须位于同一资源组中。|此行为现在与虚拟 WAN 中心保持一致。|创建多个虚拟 WAN，以允许在不同的资源组中创建安全虚拟中心。|
-|防火墙策略不支持 IP 组|IP 组以公共预览版提供，目前仅支持与传统的防火墙规则配合使用|我们正在修复
+|防火墙策略不支持 IP 组。|IP 组以公共预览版提供，目前仅受传统防火墙规则支持。|正在修复。
+|不支持云解决方案提供程序 (CSP) 订阅。|目前不支持 [CSP 订阅](https://azure.microsoft.com/offers/ms-azr-0145p/)。|正在调查
 
 ## <a name="next-steps"></a>后续步骤
 

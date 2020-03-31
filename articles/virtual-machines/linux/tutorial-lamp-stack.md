@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 3b1f4ef9d4e36c35cc72716125392aaff05eab6d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2a636ae5609d9cb5c81782af5a419a27d7880106
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034474"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154366"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>教程：在 Azure 中的 Linux 虚拟机上安装 LAMP Web 服务器
 
@@ -113,7 +113,7 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程在 Azure 中部署了一台 LAMP 服务器。 你已了解如何：
+本教程在 Azure 中部署了一台 LAMP 服务器。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Ubuntu VM
@@ -122,10 +122,10 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 > * 验证安装和配置
 > * 在 LAMP 服务器上安装 WordPress
 
-转到下一教程，了解如何使用 SSL 证书保护 Web 服务器。
+转到下一教程，了解如何使用 TLS/SSL 证书保护 Web 服务器。
 
 > [!div class="nextstepaction"]
-> [使用 SSL 保护 Web 服务器](tutorial-secure-web-server.md)
+> [使用 TLS 保护 Web 服务器](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png

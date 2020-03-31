@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: f27ad43fabbba92f97a4035b00f72a8a4af4cc5c
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 420d9b48013f5f6debe588667fe1cc0390517e66
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500220"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245372"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入门：使用应用程序配置创建 .NET Core 应用
 
 在本快速入门中，会将 Azure 应用程序配置合并到 .NET Core 控制台应用中，以集中存储和管理与代码分离的应用程序设置。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download) - 也可在 [Azure Cloud Shell](https://shell.azure.com) 中使用。
@@ -27,13 +27,15 @@ ms.locfileid: "77500220"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “创建”来添加以下键值对   ：
+6. 选择“配置资源管理器” > “创建” > “键-值”来添加以下键值对    ：
 
     | 密钥 | 值 |
     |---|---|
     | TestApp:Settings:Message | Azure 应用配置的数据 |
 
     暂时将“标签”和“内容类型”保留为空   。
+
+7. 选择“应用”。 
 
 ## <a name="create-a-net-core-console-app"></a>创建 .NET Core 控制台应用
 
@@ -43,22 +45,22 @@ ms.locfileid: "77500220"
 
 2. 在新文件夹中，运行以下命令以创建新的 ASP.NET Core 控制台应用项目：
 
-    ```CLI
-        dotnet new console
+    ```dotnetcli
+    dotnet new console
     ```
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
 1. 通过运行以下命令，添加对 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 包的引用：
 
-    ```CLI
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
+    ```dotnetcli
+    dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
     ```
 
 2. 运行以下命令，还原项目包：
 
-    ```CLI
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
     ```
 
 3. 打开 *Program.cs*，并添加对 .NET Core 应用程序配置提供程序的引用。
@@ -83,32 +85,34 @@ ms.locfileid: "77500220"
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥  。 在命令行中，运行以下命令并重启命令提示符，以使更改生效：
+1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥  。 在命令行中运行以下命令：
 
-    ```CLI
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```cmd
+    setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 
     如果使用 Windows PowerShell，请运行以下命令：
 
     ```azurepowershell
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
     ```
 
     如果使用 macOS 或 Linux，则请运行以下命令：
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
+    重启命令提示符以使更改生效。 输出环境变量的值以验证其设置是否正确。
+
 2. 运行以下命令以生成控制台应用：
 
-    ```CLI
-        dotnet build
+    ```dotnetcli
+    dotnet build
     ```
 
 3. 生成成功完成后，请运行以下命令以在本地运行应用：
 
-    ```CLI
-        dotnet run
+    ```dotnetcli
+    dotnet run
     ```
 
 ## <a name="clean-up-resources"></a>清理资源

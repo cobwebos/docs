@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: overview
 ms.custom: mvc
-ms.date: 06/29/2018
-ms.openlocfilehash: 2327632fc2a71855874bb8fe45e97af430fa696a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 03/11/2020
+ms.openlocfilehash: 0ba41d63195c906b57046dc6c9fd57c9f08399ab
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791854"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290545"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>概述 - 什么是 Azure 逻辑应用？
 
@@ -36,7 +36,7 @@ ms.locfileid: "74791854"
 
 每个逻辑应用工作流都从触发器开始，在发生特定事件或新的可用数据符合特定条件的情况下触发。 逻辑应用中的连接器提供的许多触发器都包含基本的计划功能，方便你设置工作负荷的运行频率。 对于更复杂的计划或高级重复周期，你可以使用重复触发器作为任何工作流的第一步。 详细了解[基于计划的工作流](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
 
-每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例来运行工作流中的操作。 这些操作也可包括数据转换和流控制，如条件语句、开关语句、循环和分支。 例如，以下逻辑应用通过 Dynamics 365 触发器启动，带有内置的条件“当更新记录时”。 触发器在检测到与此条件匹配的事件时，会触发并运行工作流的操作。 在这里，这些操作包括 XML 转换、数据更新、决策分支和电子邮件通知。
+每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例来运行工作流中的操作。 这些操作也可包括数据转换和工作流控制，如条件语句、开关语句、循环和分支。 例如，以下逻辑应用通过 Dynamics 365 触发器启动，带有内置的条件“当更新记录时”。 触发器在检测到与此条件匹配的事件时，会触发并运行工作流的操作。 在这里，这些操作包括 XML 转换、数据更新、决策分支和电子邮件通知。
 
 ![逻辑应用设计器 - 示例逻辑应用](./media/logic-apps-overview/azure-logic-apps-designer.png)
 
@@ -100,6 +100,18 @@ ms.locfileid: "74791854"
 
 将逻辑应用创建为 Azure 资源管理器模板，以便可以跨多个环境和区域[自动执行逻辑应用部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
 
+### <a name="access-resources-inside-azure-virtual-networks"></a>访问 Azure 虚拟网络中的资源
+
+当你创建[集成服务环境  (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 时，逻辑应用可访问[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)中的受保护资源，例如虚拟机 (VM) 以及其他系统或服务。 ISE 是逻辑应用服务的独立实例，该实例使用专用资源并独立于“全局”多租户逻辑应用服务运行。
+
+在你自己的独立隔离实例中运行逻辑应用有助于降低其他 Azure 租户对应用性能的影响，此影响也称为[“邻近干扰”影响](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)。 ISE 还带来以下好处：
+
+* 你自己的静态 IP 地址，它们不同于多租户服务中的逻辑应用共享的静态 IP 地址。 还可以设置单个公共的、静态的和可预测的出站 IP 地址，以便与目标系统通信。 这样就无需在每个 ISE 的那些目标系统上设置其他防火墙开口。
+
+* 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和响应超时、消息大小和自定义连接器请求的限制。 有关详细信息，请参阅 [Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md)。
+
+当你创建 ISE 时，Azure 会将该 ISE 注入  或部署到 Azure 虚拟网络中。 然后，你可以将该 ISE 用作需要进行访问的逻辑应用和集成帐户的位置。 若要详细了解如何创建 ISE，请参阅[从 Azure 逻辑应用连接到 Azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
+
 ### <a name="built-in-extensibility"></a>内置的扩展性
 
 如果找不到所需的连接器以运行自定义代码，则可通过 [Azure Functions](../azure-functions/functions-overview.md) 根据需要创建和调用自己的代码片段，从而扩展逻辑应用。 创建自己的 [API](../logic-apps/logic-apps-create-api-app.md) 和[自定义连接器](../logic-apps/custom-connector-overview.md)，以便通过逻辑应用对其进行调用。
@@ -114,6 +126,10 @@ ms.locfileid: "74791854"
 * [Enterprise integration with Microsoft Azure Logic Apps](https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK2188)（与 Microsoft Azure 逻辑应用进行企业集成）
 * [Building advanced business processes with Logic Apps](https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK3179)（使用逻辑应用生成高级业务流程）
 
+## <a name="how-does-logic-apps-differ-from-functions-webjobs-and-power-automate"></a>逻辑应用与 Functions、WebJobs 及 Power Automate 的区别在哪里？
+
+所有这些服务都可以用来将不同的系统“粘贴”和连接到一起。 每项服务都有其优点和优势，因此若要快速生成可缩放且功能完备的集成系统，最好的方法是将这些服务的功能组合到一起。 有关详细信息，请参阅[在逻辑应用、Functions、WebJobs 和 Power Automate 之间进行选择](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)。
+
 <a name="logic-app-concepts"></a>
 
 ## <a name="key-terms"></a>关键术语
@@ -127,10 +143,6 @@ ms.locfileid: "74791854"
 * **操作**：操作是在触发器之后发生的所有步骤。 每个操作通常都会映射到由托管连接器、自定义 API 或自定义连接器定义的操作。
 
 * **Enterprise Integration Pack**：对于更高级的集成方案，逻辑应用会包括 BizTalk Server 中的功能。 Enterprise Integration Pack 提供的连接器可以帮助逻辑应用轻松地执行验证、转换等操作。
-
-## <a name="how-does-logic-apps-differ-from-functions-webjobs-and-flow"></a>逻辑应用与 Functions、WebJobs 及 Flow 的区别在哪里？
-
-所有这些服务都可以用来将不同的系统“粘贴”和连接到一起。 每项服务都有其优点和优势，因此若要快速生成可缩放且功能完备的集成系统，最好的方法是将这些服务的功能组合到一起。 有关详细信息，请参阅[在 Flow、逻辑应用、Functions 和 WebJobs 之间进行选择](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)。
 
 ## <a name="get-started"></a>入门
 

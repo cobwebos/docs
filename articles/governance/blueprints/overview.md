@@ -4,10 +4,10 @@ description: 了解如何通过 Azure 蓝图服务在 Azure 环境中创建、�
 ms.date: 11/21/2019
 ms.topic: overview
 ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74321763"
 ---
 # <a name="what-is-azure-blueprints"></a>什么是 Azure 蓝图？
@@ -48,7 +48,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 蓝图由项目组成  。 蓝图目前支持以下资源作为项目：
 
-|资源  | 层次结构选项| Description  |
+|资源  | 层次结构选项| 说明  |
 |---------|---------|---------|
 |资源组 | 订阅 | 创建新资源组以供蓝图中的其他项目使用。  通过这些占位符资源组，可以按照所需方式组织资源，并为包含的策略和角色分配项目以及 Azure 资源管理器模板提供范围限制。 |
 |Azure 资源管理器模板 | 订阅、资源组 | 模板（包括嵌套模板和链接模板）用于构成复杂的环境。 示例环境：SharePoint 场、Azure 自动化状态配置或 Log Analytics 工作区。 |
@@ -122,12 +122,12 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 某些字段存在以下限制：
 
-|Object|字段|允许的字符|最大 Length|
+|Object|字段|允许的字符|最大 长度|
 |-|-|-|-|
-|蓝图|Name|字母、数字、连字符和句点|48|
+|蓝图|名称|字母、数字、连字符和句点|48|
 |蓝图|版本|字母、数字、连字符和句点|20|
-|蓝图分配|Name|字母、数字、连字符和句点|90|
-|蓝图项目|Name|字母、数字、连字符和句点|48|
+|蓝图分配|名称|字母、数字、连字符和句点|90|
+|蓝图项目|名称|字母、数字、连字符和句点|48|
 
 ## <a name="video-overview"></a>视频概述
 

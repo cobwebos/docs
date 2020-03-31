@@ -2,16 +2,16 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/23/2019
+ms.date: 03/06/2020
 ms.author: glenga
-ms.openlocfilehash: 17e298d88f83716063472ce7947ba95f24dba1d1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 69235afc4971d0f2a4e879de12abcb366801f0ad
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172733"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80057048"
 ---
-创建第一个函数以后，即可向这个可以将消息写入存储队列的函数添加输出绑定。
+现在，你已创建了第一个函数，让我们向该函数添加输出绑定，以便将消息写入存储队列。
 
 > [!div class="nextstepaction"]
 > [使用 Functions 将消息添加到 Azure 存储队列](../articles/azure-functions/functions-integrate-storage-queue-output-binding.md)

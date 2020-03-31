@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心向特定 Windows Phone 推送通知 | Microsoft Docs
+title: 使用 Azure 通知中心将推送通知发送到特定 Windows Phone | Microsoft Docs
 description: 本教程介绍如何使用 Azure 通知中心将通知推送到注册到应用程序后端的特定（并非所有）Windows Phone 8 或 Windows Phone 8.1 设备。
 services: notification-hubs
 documentationcenter: windows
@@ -17,14 +17,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 88326b07a96dcc8ce7a72f8709a88c2662f48707
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 72ecb5bdb6bb024c5e4422548dd11888c03e4799
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213389"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80126938"
 ---
-# <a name="tutorial-push-notifications-to-specific-windows-phone-devices-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 Windows Phone 设备推送通知
+# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心将推送通知发送到特定 Windows Phone
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -35,7 +35,7 @@ ms.locfileid: "71213389"
 > [!NOTE]
 > 通知中心 Windows Phone SDK 不支持将 Windows 推送通知服务 (WNS) 与 Windows Phone 8.1 Silverlight 应用配合使用。 若要将 WNS（而不是 MPNS）与 Windows Phone 8.1 Silverlight 应用配合使用，请遵循使用 REST API 的[通知中心 - Windows Phone Silverlight 教程]。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 向移动应用添加类别选择
@@ -45,7 +45,7 @@ ms.locfileid: "71213389"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成[教程：使用 Azure 通知中心向 Windows Phone 应用推送通知](notification-hubs-windows-mobile-push-notifications-mpns.md)。 在本教程中，请更新移动应用程序，以便注册感兴趣的突发新闻类别，只接收这些类别的推送通知。
+在开始本教程之前完成[教程：使用 Azure 通知中心向 Windows Phone 应用推送通知](notification-hubs-windows-mobile-push-notifications-mpns.md)。 在本教程中，请更新移动应用程序，以便注册感兴趣的突发新闻类别，只接收这些类别的推送通知。
 
 ## <a name="add-category-selection-to-the-mobile-app"></a>向移动应用添加类别选择
 

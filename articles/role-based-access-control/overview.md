@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2ef528438591006be6e4cdec508dd15a7fb0a143
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6e3313e3ae201d0b730d8582fed9659d89f0d0c1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379265"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80063058"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>什么是 Azure 资源的基于角色的访问控制 (RBAC)？
 
@@ -102,7 +102,7 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 ## <a name="multiple-role-assignments"></a>多角色分配
 
-如果有多个重叠的角色分配，将会发生什么情况？ RBAC 是一个加法模型，因此，生效的权限是角色分配相加。 请考虑以下示例，其中在订阅范围内向用户授予了“参与者”角色，并且授予了对资源组的“读者”角色。 “参与者”权限与“读者”权限相加实际上是资源组的“参与者”角色。 因此，在这种情况下，“读者”角色分配没有任何影响。
+如果有多个重叠的角色分配，将会发生什么情况？ RBAC 是一个加法模型，因此有效权限是角色分配的总和。 请考虑以下示例，其中在订阅范围内向用户授予了“参与者”角色，并且授予了对资源组的“读者”角色。 “参与者”权限与“读者”权限的和实际上是资源组的“参与者”角色。 因此，在这种情况下，“读者”角色分配没有任何影响。
 
 ![多角色分配](./media/overview/rbac-multiple-roles.png)
 
@@ -126,7 +126,7 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 1. Azure 资源管理器确定 API 调用中的操作是否包含在用户针对此资源拥有的角色中。
 
-1. 如果用户在请求的范围内没有具有该操作的角色，则不授予访问权限。 否则，Azure 资源管理器会检查是否适用拒绝分配。
+1. 如果用户在请求的范围内没有包含该操作的角色，则不授予访问权限。 否则，Azure 资源管理器会检查是否适用拒绝分配。
 
 1. 如果拒绝分配适用，则阻止访问。 否则授予访问权限。
 

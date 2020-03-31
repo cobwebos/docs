@@ -1,5 +1,6 @@
 ---
 title: 什么是 Azure 虚拟网络 NAT？
+titlesuffix: Azure Virtual Network
 description: 虚拟网络 NAT 功能、资源、体系结构和实现的概述。 了解虚拟网络 NAT 的工作原理，以及如何在云中使用 NAT 网关资源。
 services: virtual-network
 documentationcenter: na
@@ -11,16 +12,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359256"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79409892"
 ---
-# <a name="what-is-virtual-network-nat-public-preview"></a>什么是虚拟网络 NAT（公共预览版）？
+# <a name="what-is-virtual-network-nat"></a>什么是虚拟网络 NAT？
 
 虚拟网络 NAT（网络地址转换）简化了虚拟网络的仅限出站 Internet 连接。 在子网中配置后，所有出站连接将使用指定的静态公共 IP 地址。  无需使用负载均衡器或将公共 IP 地址直接附加到虚拟机，即可建立出站连接。 NAT 是完全托管式的，且具有很高的复原能力。
 
@@ -36,10 +37,6 @@ ms.locfileid: "78359256"
 
 
 图：*虚拟网络 NAT*
-
-
->[!NOTE] 
->虚拟网络 NAT 暂时以公共预览版提供。 目前它只能在有限的几个[区域](#region-availability)中使用。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms)。
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>用于仅限出站连接的静态 IP 地址
 
@@ -91,9 +88,9 @@ NAT 一开始就已完全横向扩展。 无需执行纵向或横向扩展操作
 
 NAT 的公共端不会生成 TCP 重置数据包或其他任何流量。  只会发出客户虚拟网络生成的流量。
 
-## <a name="configurable-idle-timeout"></a>可配置的空闲超时
+## <a name="configurable-tcp-idle-timeout"></a>可配置的 TCP 空闲超时
 
-使用的默认空闲超时为 4 分钟，最大可提高到 120 分钟。 流中的任何活动也可以重置空闲计时器，包括 TCP Keepalive。
+使用的默认 TCP 空闲超时为 4 分钟，最大可提高到 120 分钟。 流中的任何活动也可以重置空闲计时器，包括 TCP Keepalive。
 
 ## <a name="regional-or-zone-isolation-with-availability-zones"></a>使用可用性区域实现区域隔离或局部区域隔离
 
@@ -125,48 +122,6 @@ NAT 默认是区域性的。 创建[可用性区域](../availability-zones/az-ov
 
 在保持一般可用性的条件下，NAT 数据路径的可用性至少为 99.9%。
 
-## <a name="region-availability"></a><a name = "region-availability"></a>区域可用性
-
-NAT 目前可在以下区域中使用：
-
-- 西欧
-- 日本东部
-- 美国东部 2
-- 美国西部
-- 美国西部 2
-- 美国中西部
-
-## <a name="public-preview-participation"></a><a name = "enable-preview"></a>公共预览版参与
-
-必须注册订阅才能参与公共预览版的评估。  需要完成包括两个步骤的过程才能参与，下面提供了适用于 Azure CLI 和 Azure PowerShell 的说明。  激活可能需要几分钟才能完成。
-
-### <a name="azure-cli"></a>Azure CLI
-
-1. 注册公共预览版的订阅
-
-    ```azurecli-interactive
-      az feature register --namespace Microsoft.Network --name AllowNatGateway
-    ```
-
-2. 激活注册
-
-    ```azurecli-interactive
-      az provider register --namespace Microsoft.Network
-    ```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-
-1. 注册公共预览版的订阅
-
-    ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowNatGateway
-    ```
-
-2. 激活注册
-
-    ```azurepowershell-interactive
-      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-    ```
 
 ## <a name="pricing"></a>定价
 
@@ -180,7 +135,9 @@ NAT 网关通过两个单独的计量器来计费：
 资源小时数包括 NAT 网关资源的存在持续时间。
 处理的数据包括 NAT 网关资源处理的所有流量。
 
-公共预览版以 50% 的折扣价提供。
+## <a name="availability"></a>可用性
+
+虚拟网络 NAT 和 NAT 网关资源在所有 Azure 公有云[区域](https://azure.microsoft.com/global-infrastructure/regions/)中都可用。
 
 ## <a name="support"></a>支持
 
@@ -188,11 +145,12 @@ NAT 网关通过两个单独的计量器来计费：
 
 ## <a name="feedback"></a>反馈
 
-我们很想知道如何能够改进该服务。 欢迎分享[有关公共预览版的反馈](https://aka.ms/natfeedback)。  同时，请在 [UserVoice for NAT](https://aka.ms/natuservoice) 上，为我们接下来要开发的功能提供建议和投票。
+我们很想知道如何能够改进该服务。 请在 [UserVoice for NAT](https://aka.ms/natuservoice) 上为我们接下来要开发的功能提供建议和投票。
+
 
 ## <a name="limitations"></a>限制
 
-* NAT 与标准 SKU 公共 IP、公共 IP 前缀和负载均衡器资源兼容。   基本资源（例如基本负载均衡器）以及派生自这些资源的任何产品都与 NAT 不兼容。  必须将基本资源放在未配置 NAT 的子网中。
+* NAT 与标准 SKU 公共 IP、公共 IP 前缀和负载均衡器资源兼容。 基本资源（例如基本负载均衡器）以及派生自这些资源的任何产品都与 NAT 不兼容。  必须将基本资源放在未配置 NAT 的子网中。
 * 支持 IPv4 地址系列。  NAT 不会与 IPv6 地址系列交互。  NAT 不能部署在具有 IPv6 前缀的子网中。
 * 使用 NAT 时不支持 NSG 流日志记录。
 * NAT 不能跨多个虚拟网络。
@@ -200,5 +158,5 @@ NAT 网关通过两个单独的计量器来计费：
 ## <a name="next-steps"></a>后续步骤
 
 * 了解 [NAT 网关资源](./nat-gateway-resource.md)。
-* [在 UserVoice 中告诉我们下一步为虚拟网络 NAT 构建什么](https://aka.ms/natuservoice)。
-* [提供有关公共预览版的反馈](https://aka.ms/natfeedback)。
+* [在 UserVoice 中告诉我们接下来想要为虚拟网络 NAT 开发什么功能](https://aka.ms/natuservoice)。
+

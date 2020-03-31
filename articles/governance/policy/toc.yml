@@ -11,14 +11,14 @@
     - name: 分配策略 - 门户
       displayName: 'assign, compliance'
       href: assign-policy-portal.md
-    - name: 分配策略 - PowerShell
+    - name: 分配策略 - Azure PowerShell
       displayName: 'assign, compliance'
       href: assign-policy-powershell.md
     - name: 分配策略 - Azure CLI
       displayName: 'assign, compliance'
       href: assign-policy-azurecli.md
-    - name: 分配策略 - 模板
-      displayName: 'assign, compliance, resource manager, ARM'
+    - name: 分配策略 - ARM 模板
+      displayName: 'assign, compliance, resource manager'
       href: assign-policy-template.md
 - name: 教程
   items:
@@ -81,7 +81,7 @@
     - name: 适用于 Kubernetes 的 Azure Policy
       items:
         - name: 适用于 AKS 的策略
-          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v2'
+          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
           href: ./concepts/rego-for-aks.md
         - name: 适用于 AKS 引擎的策略
           displayName: 'aks, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
@@ -100,9 +100,12 @@
     - name: 为数组属性创作策略
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
-    - name: 创建来宾配置策略
-      displayName: 'powershell, dsc, chef, linux, windows'
+    - name: 在 Windows 上创建 Guest Configuration 策略
+      displayName: 'powershell, dsc, chef, windows'
       href: ./how-to/guest-configuration-create.md
+    - name: 在 Linux 上创建 Guest Configuration 策略
+      displayName: 'powershell, dsc, chef, linux'
+      href: ./how-to/guest-configuration-create-linux.md
     - name: 获取符合性数据
       displayName: 'evaluation, scan, summarize, query, events, log analytics'
       href: ./how-to/get-compliance-data.md
@@ -148,6 +151,12 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: 策略定义
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: 用于 Node 的 Azure SDK
+      items:
+        - name: 策略
+          href: /javascript/api/@azure/arm-policy
+        - name: 策略见解
+          href: /javascript/api/@azure/arm-policyinsights
     - name: 用于 Python 的 Azure SDK
       items:
         - name: 策略
@@ -186,6 +195,8 @@
   items:
     - name: GitHub - Azure Policy 示例
       href: 'https://github.com/Azure/azure-policy'
+    - name: GitHub - 社区策略存储库
+      href: 'https://github.com/Azure/Community-Policy'
     - name: 视频 - Build 2018
       href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
     - name: 治理 YouTube 频道
