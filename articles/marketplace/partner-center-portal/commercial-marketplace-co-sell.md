@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/06/2019
-ms.openlocfilehash: 3b0b38b767495b1a06405f0d41222b73baee8d53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: f290b08d1f625600d03c9540b28c289e9b449471
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277067"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475159"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作伙伴中心中的联合销售选项
 
@@ -22,11 +22,11 @@ ms.locfileid: "80277067"
 
 | **优惠类型** | **合作伙伴中心提供共同销售页面** |
 |    -----------------------    |    -----------------------------  |
-| 软件即服务 （SaaS） |     2020 年 2 月左右一般供货      |
+| 软件即服务 （SaaS） |     2020 年 4 月左右一般供货     |
 | 面向客户互动&电源应用的动态 365      |     目前可用      |
 | Dynamics 365 for Operations     |     目前可用       |
-| Dynamics 365 Business Central      |  2020 年 2 月左右一般供货     |
-| Azure 应用程序     |     2020 年 2 月左右一般供货     |
+| Dynamics 365 Business Central      |  2020 年 4 月左右一般供货    |
+| Azure 应用程序     |     2020 年 4 月左右一般供货     |
 | Azure 虚拟机      |     即将公布       |
 | Azure 容器     |     即将公布       |
 | 咨询服务      |     即将公布       |

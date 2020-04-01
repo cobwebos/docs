@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 1a2a370ac92ea3edf925d97af6f5e721c79d0d2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8674714451f3cc686acb74d6c66ac6800b75936
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529690"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478082"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（来源）
 
@@ -49,7 +49,7 @@ ms.locfileid: "79529690"
 
 下表描述了类型：
 
-|类型|缩放单元|描述|
+|类型|缩放单元|说明|
 |--------|--------|--------|  
 |**标准**|0|默认的流式处理终结点是“标准”类型，可以通过调整 `scaleUnits` 更改为“高级”类型。****|
 |**溢价**|>0|“高级”**** 流式处理终结点适用于高级工作负荷，可提供专用且可缩放的带宽容量。 可以通过调整 `scaleUnits`（流单元）转到“高级”**** 类型。 `scaleUnits` 提供专用的出口容量，可以按照 200 Mbps 的增量购买。 使用高级**** 类型时，每个启用的单元都为应用提供额外的带宽容量。 |
@@ -118,7 +118,7 @@ IP 过滤/G20/自定义主机<sup>1</sup>|是|是
     > [!NOTE]
     > 位于同一数据中心的流式处理终结点不能共享相同的自定义主机名。
 
-    媒体服务当前对自定义域不支持 SSL。
+    目前，媒体服务不支持具有自定义域的 TLS。
 
 - `maxCacheAge` - 替代媒体片段和按需清单上的流式处理终结点设置的默认 max-age HTTP 缓存控制标头。 该值以秒为单位进行设置。
 - `resourceState` -

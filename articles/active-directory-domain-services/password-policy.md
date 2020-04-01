@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 01/21/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc1863ff4200ee4cca94f18e3adfffa7ea42db96
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613199"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475940"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>托管域中的密码和帐户锁定策略
 
@@ -27,12 +27,12 @@ ms.locfileid: "77613199"
 > [!NOTE]
 > 密码策略仅适用于使用资源管理器部署模型创建的 Azure AD DS 托管域。 对于使用经典创建的较旧的托管域，[从经典虚拟网络模型迁移到资源管理器][migrate-from-classic]。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 要完成本文，您需要以下资源和特权：
 
 * 一个有效的 Azure 订阅。
-  * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+  * 如果没有 Azure 订阅，[请创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
   * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
@@ -105,20 +105,20 @@ ms.locfileid: "77613199"
     * 密码复杂性、期限或过期时间等设置仅对在 Azure AD DS 托管域中手动创建的用户进行设置。
     * 帐户锁定设置适用于所有用户，但仅在托管域中生效，而不是在 Azure AD 本身中生效。
 
-    ![创建自定义细粒度密码策略](./media/how-to/custom-fgpp.png)
+    ![创建自定义细粒度密码策略](./media/password-policy/custom-fgpp.png)
 
 1. 取消选中**防止意外删除**。 如果选择了此选项，则无法保存 FGPP。
 1. 在"**直接应用于"** 部分中，选择"**添加**"按钮。 在 **"选择用户或组**"对话框中，选择"**位置**"按钮。
 
-    ![选择要将密码策略应用于](./media/how-to/fgpp-applies-to.png)
+    ![选择要将密码策略应用于](./media/password-policy/fgpp-applies-to.png)
 
 1. 密码策略只能应用于组。 在 **"位置"** 对话框中，展开域名（如*aaddscontoso.com*，然后选择 OU，如**AADDC 用户**。 如果您有一个自定义 OU，其中包含要应用的一组用户，请选择该 OU。
 
-    ![选择组所属的 OU](./media/how-to/fgpp-container.png)
+    ![选择组所属的 OU](./media/password-policy/fgpp-container.png)
 
 1. 键入要应用策略的组的名称，然后选择 **"检查名称"** 以验证该组是否存在。
 
-    ![搜索并选择要应用 FGPP 的组](./media/how-to/fgpp-apply-group.png)
+    ![搜索并选择要应用 FGPP 的组](./media/password-policy/fgpp-apply-group.png)
 
 1. 使用您现在选择的组的名称显示在 **"直接应用于"** 部分中，选择 **"确定"** 以保存自定义密码策略。
 

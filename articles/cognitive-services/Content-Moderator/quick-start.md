@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/13/2020
 ms.author: pafarley
-ms.openlocfilehash: a641893fece37c759480ab31f505b1673f50e2b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973605"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79203539"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入门：尝试在 Web 上使用内容审查器
 
@@ -32,9 +32,23 @@ ms.locfileid: "74973605"
 
 ## <a name="create-a-review-team"></a>创建评审团队
 
-接下来创建评审团队。 在工作方案中，这是将要手动评审服务审查决策的人员组。 暂时只需创建团队名称。 若要邀请同事加入团队，可在此处输入他们的电子邮件地址。
+接下来创建评审团队。 在工作方案中，这是将要手动评审服务审查决策的人员组。 若要创建团队，需要选择一个区域，并提供团队名称和团队 ID    。 若要邀请同事加入团队，可在此处输入他们的电子邮件地址。
 
-![邀请团队成员](images/QuickStart-2-small.png)
+> [!NOTE]
+> 团队名称是评审团队的易记名称  。 此名称将显示在 Azure 门户中。 团队 ID 用于程序化标识评审团队  。
+
+> [!div class="mx-imgBorder"]
+> ![邀请团队成员](images/create-team.png)
+
+如果选择使用客户管理的密钥 (CMK) 加密数据，系统将提示你输入 E0 定价层中内容审查器资源的资源 ID  。 你提供的资源必须是新的。 
+
+> [!div class="mx-imgBorder"]
+> ![使用 CMK 邀请团队成员](images/create-team-cmk.png)
+
+如果尝试重用内容审查器资源，将看到此警告： 
+
+> [!div class="mx-imgBorder"]
+> ![CMK 失败](images/create-team-cmk-fail.png)
 
 ## <a name="upload-sample-content"></a>上传示例内容
 

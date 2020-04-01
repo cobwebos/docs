@@ -4,12 +4,12 @@ description: 了解如何创建专用 Azure 库伯奈斯服务 （AKS） 群集
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: cdefcfe460a97f647afa05947e92fae0c4d07001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87f52c5a749b531e5b0656e0b30ff0fe9c1a57bf
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499301"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398043"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure 库伯奈斯服务群集
 
@@ -80,6 +80,18 @@ API 服务器终结点没有公共 IP 地址。 要管理 API 服务器，您需
 7. 在左侧窗格中，选择**对等互连**。  
 8. 选择 **"添加**"，添加 VM 的虚拟网络，然后创建对等互连。  
 9. 转到具有 VM 的虚拟网络，选择**对等互连**，选择 AKS 虚拟网络，然后创建对等互连。 如果 AKS 虚拟网络上的地址范围和 VM 的虚拟网络冲突，对等互连将失败。 有关详细信息，请参阅[虚拟网络对等互连][virtual-network-peering]。
+
+## <a name="hub-and-spoke-with-custom-dns"></a>中心，并与自定义 DNS 交谈
+
+[集线器和分支体系结构](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)通常用于在 Azure 中部署网络。 在其中许多部署中，分支 VNet 中的 DNS 设置配置为引用中央 DNS 转发器，以允许本地和基于 Azure 的 DNS 解析。 将 AKS 群集部署到此类网络环境中时，必须考虑一些特殊注意事项。
+
+![专用群集集线器和分支](media/private-clusters/aks-private-hub-spoke.png)
+
+1. 默认情况下，在预配专用群集时，在群集托管资源组中创建专用终结点 （1） 和专用 DNS 区域 （2）。 群集使用专用区域中的 A 记录解析专用终结点的 IP 以与 API 服务器通信。
+
+2. 专用 DNS 区域仅链接到群集节点附加到 （3） 的 VNet。 这意味着专用终结点只能由该链接 VNet 中的主机解析。 在 VNet 上未配置自定义 DNS（默认）的情况下，对于 DNS 的主机点 168.63.129.16 时，这一点没有问题，因为 DNS 可以解析由于链接而导致的专用 DNS 区域中的记录。
+
+3. 在包含群集的 VNet 具有自定义 DNS 设置 （4） 的情况下，群集部署将失败，除非专用 DNS 区域链接到包含自定义 DNS 解析器 （5） 的 VNet。 此链接可以在群集预配期间创建专用区域后手动创建，或者在使用 Azure 策略或其他基于事件的部署机制（例如，Azure 事件网格和 Azure 函数）检测到区域创建时通过自动化创建此链接。
 
 ## <a name="dependencies"></a>依赖项  
 

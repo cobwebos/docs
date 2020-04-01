@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/01/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7ca6882aea7225dcb97c9f913267b2543de07fef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a73c1998203a8696b67a5e7eb3af23898239265
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133123"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477621"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境
 
@@ -50,13 +50,13 @@ ms.locfileid: "80133123"
 
 1. 在 ASE 中选择现有的应用服务计划，或遵循以下步骤创建一个新的计划：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 从 Azure 门户左侧菜单中，选择"**创建资源> Web 应用**。
+    a. 从 Azure 门户左侧菜单中，选择"**创建资源> Web 应用**。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 选择订阅。
+    b. 选择订阅。
 
     c. 选择或创建资源组。
 
-    d.单击“下一步”。 输入 Web 应用的名称。
+    d. 输入 Web 应用的名称。
 
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 选择**代码**或**Docker 容器**。
 
@@ -88,7 +88,7 @@ ms.locfileid: "80133123"
 
 ## <a name="ip-addresses"></a>IP 地址
 
-应用服务可以将专用 IP 地址分配给应用。 在配置基于 IP 的 SSL 后，此功能可用，如[将现有自定义 SSL 证书绑定到 Azure 应用服务][ConfigureSSL]中所述。 在 ILB ASE 中，无法添加更多 IP 地址以用于基于 IP 的 SSL。
+应用服务可以将专用 IP 地址分配给应用。 在配置基于 IP 的 SSL 后，此功能可用，如[将现有自定义 TLS/SSL 证书绑定到 Azure 应用服务][ConfigureSSL]中所述。 在 ILB ASE 中，无法添加更多 IP 地址以用于基于 IP 的 SSL。
 
 使用外部 ASE，您可以像在多租户应用服务中一样为应用配置基于 IP 的 SSL。 ASE 中始终有一个备用地址，最多 30 个 IP 地址。 每次使用另一个地址时，都会添加另一个地址，以便地址始终随时可用。 分配另一个 IP 地址需要时间延迟。 这种延迟可防止快速连续添加 IP 地址。
 
@@ -142,7 +142,7 @@ ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 您�
 
 ASE 对于 ASE 中的所有应用都有 1 TB 的存储空间。 默认情况下，隔离定价 SKU 中的应用服务计划限制为 250 GB。 如果您有五个或更多应用服务计划，请注意不要超过 ASE 的 1-TB 限制。 如果您在一个应用服务计划中需要超过 250 GB 的限制，请联系支持人员将应用服务计划限制调整为最多 1 TB。 调整计划限制后，ASE 中的所有应用服务计划仍有 1 TB 的限制。
 
-## <a name="logging"></a>Logging
+## <a name="logging"></a>日志记录
 
 您可以将 ASE 与 Azure 监视器集成，以便将有关 ASE 的日志发送到 Azure 存储、Azure 事件中心或日志分析。 这些项目今天记录：
 
@@ -216,7 +216,7 @@ ASE 对于 ASE 中的所有应用都有 1 TB 的存储空间。 默认情况下�
 
     ![ASE 删除][3]
 
-1. 选择“确定”。
+1. 选择“确定”  。
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png

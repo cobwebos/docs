@@ -3,12 +3,12 @@ title: 更改 Azure Service Fabric 群集设置
 description: 本文介绍可以自定义的结构设置和结构升级策略。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: a4e64a4db70d419a3ef6441545d53abd298c85bb
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8ca40791e625f1ea5904c4e2516e3f211ba551cf
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346794"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477895"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json** 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -55,9 +55,9 @@ ms.locfileid: "80346794"
 | **参数** | **允许的值** | **升级策略** | **指导或简短描述** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int，默认值为 0|Static|BackupRestoreService 的 MinReplicaSetSize |
-|PlacementConstraints|string，默认值为“”|Static|  BackupRestore 服务的 PlacementConstraints |
+|PlacementConstraints|string，默认值为“”|Static|    BackupRestore 服务的 PlacementConstraints |
 |SecretEncryptionCertThumbprint|string，默认值为“”|动态|机密加密 X509 证书指纹 |
-|SecretEncryptionCertX509StoreName|string，默认值为“My”|   动态|    这表示用来加密和解密 X.509 证书存储的凭据名称的证书，备份还原服务用此加密解密存储凭据 |
+|SecretEncryptionCertX509StoreName|字符串，默认值为"我的"|    动态|    这表示用来加密和解密 X.509 证书存储的凭据名称的证书，备份还原服务用此加密解密存储凭据 |
 |TargetReplicaSetSize|int，默认值为 0|Static| The TargetReplicaSetSize for BackupRestoreService |
 
 ## <a name="clustermanager"></a>ClusterManager
@@ -122,8 +122,8 @@ ms.locfileid: "80346794"
 |ApplicationLogsFormatVersion |Int，默认值为 0 | 动态 |用于应用程序日志格式的版本。 支持的值是 0 和 1. 版本 1 比版本 0 包含更多 ETW 事件记录的字段。 |
 |AuditHttpRequests |Bool，默认值为 false | 动态 | 启用或禁用 HTTP 审核。 审核的目的是查看针对群集执行的活动，包含请求发起者。 请注意，这是尽最大努力记录的日志信息；可能会发生跟踪丢失。 不会记录使用“用户”身份验证的 HTTP 请求。 |
 |CaptureHttpTelemetry|Bool，默认值为 true | 动态 | 启用或禁用 HTTP 遥测。 遥测的目的是使 Service Fabric 能够捕获遥测数据，以帮助规划将来的工作和识别问题区域。 遥测不会记录任何个人数据或请求正文。 除非另有配置，否则遥测将捕获所有 HTTP 请求。 |
-|ClusterId |String | 动态 |群集的唯一 ID。 于群集创建时生成。 |
-|ConsumerInstances |String | 动态 |DCA 使用者实例列表。 |
+|ClusterId |字符串 | 动态 |群集的唯一 ID。 于群集创建时生成。 |
+|ConsumerInstances |字符串 | 动态 |DCA 使用者实例列表。 |
 |DiskFullSafetySpaceInMB |Int，默认值为 1024 | 动态 |要避免被 DCA 使用的剩余磁盘空间（以 MB 为单位）。 |
 |EnableCircularTraceSession |Bool，默认值为 false | Static |标志指示是否应使用循环跟踪会话。 |
 |EnablePlatformEventsFileSink |Bool，默认值为 false | Static |启用/禁用向磁盘写入平台事件 |
@@ -131,7 +131,7 @@ ms.locfileid: "80346794"
 |FailuresOnlyHttpTelemetry | Bool，默认值为 false | 动态 | 是否启用 HTTP 遥测捕获；仅捕获失败的请求。 这有助于减少针对遥测生成的事件数。 |
 |HttpTelemetryCapturePercentage | int，默认值为 50 | 动态 | 是否启用 HTTP 遥测捕获；仅捕获随机百分比数目的请求。 这有助于减少针对遥测生成的事件数。 |
 |MaxDiskQuotaInMB |Int，默认值为 65536 | 动态 |Windows Fabric 日志文件的磁盘配额（以 MB 为单位）。 |
-|ProducerInstances |String | 动态 |DCA 生成者实例列表。 |
+|ProducerInstances |字符串 | 动态 |DCA 生成者实例列表。 |
 
 ## <a name="dnsservice"></a>DnsService
 | **参数** | **允许的值** |**升级策略**| **指导或简短描述** |
@@ -147,7 +147,7 @@ ms.locfileid: "80346794"
 | **参数** | **允许的值** | **升级策略** | **指导或简短描述** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int，默认值为 0|Static|EventStore 服务的 MinReplicaSetSize |
-|PlacementConstraints|string，默认值为“”|Static|  EventStore 服务的 PlacementConstraints |
+|PlacementConstraints|string，默认值为“”|Static|    EventStore 服务的 PlacementConstraints |
 |TargetReplicaSetSize|int，默认值为 0|Static| EventStore 服务的 TargetReplicaSetSize |
 
 ## <a name="fabricclient"></a>FabricClient
@@ -270,7 +270,7 @@ ms.locfileid: "80346794"
 |CommonNameNtlmPasswordSecret|SecureString，默认值为 Common::SecureString("")| Static|密码，用于在使用 NTLM 身份验证时用作种子以生成相同密码 |
 |DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |TimeSpan，默认值为 Common::TimeSpan::FromMinutes(5)|动态|指定以秒为单位的时间范围。 在磁盘空间即将耗尽时检查磁盘空间以报告运行状况事件的时间间隔。 |
 |DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan，默认值为 Common::TimeSpan::FromMinutes(15)|动态|指定以秒为单位的时间范围。 在磁盘空间足够时检查磁盘空间以报告运行状况事件的时间间隔。 |
-|EnableImageStoreHealthReporting |bool，默认值为 TRUE |Static|用于确定文件存储服务是否应报告其运行状况的配置。 |
+|EnableImageStoreHealthReporting |bool，默认值为 TRUE    |Static|用于确定文件存储服务是否应报告其运行状况的配置。 |
 |FreeDiskSpaceNotificationSizeInKB|int64，默认值为 25\*1024 |动态|可用磁盘空间的大小，低于此大小可能会出现运行状况警告。 此配置的最小值和 FreeDiskSpaceNotificationThresholdPercentage 配置用于确定是否发送运行状况警告。 |
 |FreeDiskSpaceNotificationThresholdPercentage|double，默认值为 0.02 |动态|可用磁盘空间的百分比，低于此值可能会发生运行状况警告。 此配置的最小值和 FreeDiskSpaceNotificationInMB 配置用于确定是否发送运行状况警告。 |
 |GenerateV1CommonNameAccount| bool，默认值为 TRUE|Static|指定是否要使用用户名 V1 生成算法生成帐户。 从 Service Fabric 6.1 版开始，始终创建具有 v2 生成的帐户。 从/到不支持 V2 生成的版本升级需要 V1 帐户（6.1 版以前）。|
@@ -320,7 +320,7 @@ ms.locfileid: "80346794"
 |MaxPercentDeltaUnhealthyNodes|int，默认值为 10|Static|群集升级运行状况评估策略：为确保群集运行正常，可允许的最高增量不正常节点百分比 |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|int，默认值为 15|Static|群集升级运行状况评估策略：为确保群集运行正常，升级域中可允许的最高增量不正常节点百分比 |
 
-## <a name="hosting"></a>宿主
+## <a name="hosting"></a>Hosting
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短描述** |
 | --- | --- | --- | --- |
@@ -505,7 +505,7 @@ ms.locfileid: "80346794"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短描述** |
 | --- | --- | --- | --- |
-|计数器 |String | 动态 |要收集的性能计数器的逗号分隔列表。 |
+|计数器 |字符串 | 动态 |要收集的性能计数器的逗号分隔列表。 |
 |IsEnabled |Bool，默认值为 true | 动态 |标志指示是否启用本地节点上的性能计数器集合。 |
 |MaxCounterBinaryFileSizeInMB |Int，默认值为 1 | 动态 |每个性能计数器二进制文件的最大大小（以 MB 为单位）。 |
 |NewCounterBinaryFileCreationIntervalInMinutes |Int，默认值为 10 | 动态 |在其之后创建新的性能计数器二进制文件的最大间隔（以秒为单位）。 |
@@ -568,8 +568,8 @@ ms.locfileid: "80346794"
 |TraceCRMReasons |Bool，默认值为 true |动态|指定是否要寻找向操作事件通道移动（CRM 发出的移动）的原因。 |
 |UpgradeDomainConstraintPriority | Int，默认值为 1| 动态|确定升级域约束的优先级：0：硬；1：软；负值：忽略。 |
 |UseMoveCostReports | Bool，默认值为 false | 动态|指示 LB 忽略评分函数的成本元素，从而可能产生大量可优化平衡放置的移动。 |
-|UseSeparateSecondaryLoad | Bool，默认值为 true | 动态|该设置决定是否使用不同的辅助负载。 |
-|使用单独的辅助移动成本|布尔值，默认为 FALSE | 动态|设置确定如果关闭使用分离辅助移动成本，则 PLB 是否应在每个节点上对辅助节点使用不同的移动成本： - 如果关闭一个节点上的辅助节点的辅助移动报告移动成本将导致每个辅助节点（在所有其他节点上）的移动成本过高（ 如果启用"使用独立辅助移动成本"： - 一个节点上的辅助节点的辅助移动报告移动成本将仅对该辅助节点生效（对其他节点的辅助节点没有影响） - 如果发生副本崩溃 - 创建新副本时，在服务上指定默认移动成本级别 - 如果 PLB 移动现有副本 - 移动成本随其使用 |
+|UseSeparateSecondaryLoad | Bool，默认值为 true | 动态|设置，确定是否应将单独的负载用于辅助副本。 |
+|使用单独的辅助移动成本 | Bool，默认值为 false | 动态|设置，确定是否应将单独的移动成本用于辅助副本。 |
 |ValidatePlacementConstraint | Bool，默认值为 true |动态| 指定更新服务的服务说明时，是否验证服务的放置约束表达式。 |
 |ValidatePrimaryPlacementConstraintOnPromote| Bool，默认值为 TRUE |动态|指定在故障转移时是否评估主要首选项的服务 PlacementConstraint 表达式。 |
 |VerboseHealthReportLimit | Int，默认值为 20 | 动态|定义副本进入未放置状态的次数超过多少次后，便报告副本运行状况警告（如果已启用详细运行状况报告）。 |
@@ -685,13 +685,13 @@ ms.locfileid: "80346794"
 |SettingsX509StoreName| string，默认值为“MY”| 动态|结构用于保护配置的 X509 证书存储 |
 |UseClusterCertForIpcServerTlsSecurity|bool，默认值为 FALSE|Static|是否使用群集证书保护 IPC 服务器 TLS 传输单元 |
 |X509Folder|string，默认值为 /var/lib/waagent|Static|X509 证书和私钥所在的文件夹 |
-|TLS1_2_CipherList| 字符串| Static|如果设置为非空字符串;如果设置为非空字符串覆盖 TLS1.2 及以下支持的密码列表。 请参阅检索支持的密码列表和 TLS1.2 强密码列表的"openssl-ciprs"文档："ECDHE-ECDSA-AES256-GCM-SHA384：ECDHE-ECDSA-AES128-GCM-SHA256：ECDHE-RSA-AES256-AES256-GCM-SHA384：ECDHE-RSA-AES-128-GCM-SHA256：ECDHE-ECDSA-AES256-CBC-SHA384：ECDHE-ECDSA-AES1 28-CBC-SHA256：ECDHE-RSA-AES256-CBC-SHA384：ECDHE-RSA-AES128-CBC-SHA256" 仅适用于 Linux。 |
+|TLS1_2_CipherList| 字符串| Static|如果设置为非空字符串;如果设置为非空字符串覆盖 TLS1.2 及以下支持的密码列表。 请参阅检索支持的密码列表和 TLS1.2 强密码列表的"openssl-ciprs"文档："ECDHE-ECDSA-AES256-GCM-SHA384：ECDHE-ECDSA-AES128-GCM-SHA256：ECDHE-RSA-AES256-AES256-GCM-SHA384：ECDHE-AES-S RSA-AES-128-GCM-SHA256：ECDHE-ECDSA-AES256-CBC-SHA384：ECDHE-ECDSA-AES128-CBC-SHA256：ECDHE-RSA-AES256-CBC-SHA384：ECDHE-RSA-AES128-CBC-SHA256 仅适用于 Linux。 |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短描述** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为管理员客户端操作授权的 X509 证书 的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则管理员客户端证书的直接颁发者必须在列表中。 |
+|PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为管理员客户端操作授权的 X509 证书的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则管理员客户端证书的直接颁发者必须在列表中。 |
 
 ## <a name="securityclientaccess"></a>Security/ClientAccess
 
@@ -806,7 +806,7 @@ ms.locfileid: "80346794"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短描述** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为客户端操作授权的 X509 证书 的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则客户端证书的直接颁发者必须在列表中。|
+|PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为客户端操作授权的 X509 证书的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则客户端证书的直接颁发者必须在列表中。|
 
 ## <a name="securityclustercertificateissuerstores"></a>Security/ClusterCertificateIssuerStores
 
@@ -818,7 +818,7 @@ ms.locfileid: "80346794"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短描述** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为群集操作授权的 X509 证书 的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则群集证书的直接颁发者必须在列表中。|
+|PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为群集操作授权的 X509 证书的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则群集证书的直接颁发者必须在列表中。|
 
 ## <a name="securityservercertificateissuerstores"></a>Security/ServerCertificateIssuerStores
 
@@ -830,7 +830,7 @@ ms.locfileid: "80346794"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短描述** |
 | --- | --- | --- | --- |
-|PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为服务器操作授权的 X509 证书 的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则服务器证书的直接颁发者必须在列表中。|
+|PropertyGroup|X509NameMap，默认值为 None|动态|这是“名称”和“值”对的列表。 每个“名称”是为服务器操作授权的 X509 证书的使用者公用名或 DnsName。 对于给定的“名称”，“值”是用于颁发者固定的证书指纹的逗号分隔列表，如果不为空，则服务器证书的直接颁发者必须在列表中。|
 
 ## <a name="setup"></a>设置
 
@@ -838,10 +838,10 @@ ms.locfileid: "80346794"
 | --- | --- | --- | --- |
 |ContainerNetworkName|string，默认值为“”| Static |设置容器网络时要使用的网络名称。|
 |ContainerNetworkSetup|布尔，默认值为 FALSE（Linux），默认值为 TRUE（Windows）| Static |是否设置容器网络。|
-|FabricDataRoot |String | 不允许 |Service Fabric 数据根目录。 Azure 默认位置为 d:\svcfab |
-|FabricLogRoot |String | 不允许 |Service Fabric 日志根目录。 这是放置 SF 日志和跟踪信息的位置。 |
+|FabricDataRoot |字符串 | 不允许 |Service Fabric 数据根目录。 Azure 默认位置为 d:\svcfab |
+|FabricLogRoot |字符串 | 不允许 |Service Fabric 日志根目录。 这是放置 SF 日志和跟踪信息的位置。 |
 |NodesToBeRemoved|string，默认值为“”| 动态 |应在配置升级过程中删除的节点。 （仅适用于独立部署）|
-|ServiceRunAsAccountName |String | 不允许 |运行 Fabric 主机服务的帐户名称。 |
+|ServiceRunAsAccountName |字符串 | 不允许 |运行 Fabric 主机服务的帐户名称。 |
 |SkipContainerNetworkResetOnReboot|bool，默认值为 FALSE|NotAllowed|是否在重启时跳过容器网络重置。|
 |SkipFirewallConfiguration |Bool，默认值为 false | 不允许 |指定是否需要由系统设置防火墙设置。 仅当使用 Windows 防火墙时适用。 如果使用第三方防火墙，则必须打开端口以供系统和应用程序使用 |
 

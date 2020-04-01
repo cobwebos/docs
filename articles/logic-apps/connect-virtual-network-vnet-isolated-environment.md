@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: fedc1f6ce8fbaeaf0d2cae3a1b04169192868e61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6683c1b78b0e7ecba162026708c83843e2c08180
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270688"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478885"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -32,7 +32,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 * 创建 ISE。
 * 为您的 ISE 添加额外的容量。
 
-您还可以使用逻辑应用 REST API 创建 ISE，包括设置客户管理的密钥：
+您还可以使用[示例 Azure 资源管理器快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)或使用逻辑应用 REST API 创建 ISE，包括设置客户管理的密钥：
 
 * [使用逻辑应用 REST API 创建集成服务环境 （ISE）](../logic-apps/create-integration-service-environment-rest-api.md)
 * [设置客户管理的密钥以加密 ISEs 静态数据](../logic-apps/customer-managed-keys-integration-service-environment.md)
@@ -133,7 +133,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    ![提供环境详细信息](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | properties | 必选 | “值” | 描述 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure 订阅名称*> | 用于环境的 Azure 订阅 |
    | **资源组** | 是 | <*Azure 资源组名称*> | 要在其中创建环境的新或现有 Azure 资源组 |

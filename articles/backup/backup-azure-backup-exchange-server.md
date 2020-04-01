@@ -4,12 +4,12 @@ description: 了解如何使用 System Center 2012 R2 DPM 将 Exchange Server �
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 389713767409ff49c6fc83a4d6e8dc3c87272fc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b45efa0623edbec47b8ae12d3a97b1e032626530
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614376"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396409"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 
@@ -49,7 +49,7 @@ ms.locfileid: "77614376"
 4. 选择想要保护的 Exchange Server 数据库，并单击“**下一步**”。
 
    > [!NOTE]
-   > 如果要保护 Exchange 2013，请检查 [Exchange 2013 先决条件](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))。
+   > 如果要保护 Exchange 2013，请检查 [Exchange 2013 先决条件](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)。
    >
    >
 
@@ -62,17 +62,17 @@ ms.locfileid: "77614376"
 
    * 我想要使用磁盘提供短期保护。
    * 我想要使用在线保护。
-6. 单击“下一步”****。
+6. 单击 **“下一步”** 。
 7. 如果想要检查 Exchange Server 数据库的完整性，请选择“**运行 Eseutil 以检查数据完整性**”选项。
 
-    选择此选项后，会在 DPM 服务器上运行备份一致性检查，以免由于在 Exchange Server 上运行 **eseutil** 命令而产生的 I/O 流量。
+    选择此选项后，将在 DPM 服务器上运行备份一致性检查，以避免通过在 Exchange 服务器上运行**esetil**命令生成的 I/O 流量。
 
    > [!NOTE]
    > 要使用此选项，必须将 Ese.dll 和 Eseutil.exe 文件复制到 DPM 服务器上的 C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin 目录。 否则会触发以下错误：  
    > ![eseutil 错误](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 单击“下一步”****。
+8. 单击 **“下一步”** 。
 9. 选择“**复制备份**”的数据库，并单击“**下一步**”。
 
    > [!NOTE]
@@ -91,7 +91,7 @@ ms.locfileid: "77614376"
     ![指定联机备份计划](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > 请注意，在线恢复点基于快速完全恢复点。 因此，必须会在线恢复点安排在针对快速完全恢复点指定的时间之后。
+    > 请注意，在线恢复点基于快速完全恢复点。 因此，必须将在线恢复点安排在针对快速完全恢复点指定的时间之后。
     >
     >
 16. 配置“**Azure 备份**”的保留策略，并单击“**下一步**”。
