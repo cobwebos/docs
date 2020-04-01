@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 6a8cbabfd4e47c50d2c2e6f4a23c50a931e645a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9beb6dbbba1c5855b8bfa97fc02f50aa59225d78
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220640"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474854"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用生成应答 API 和元数据获取答案
 
@@ -46,7 +46,7 @@ QnA Maker 允许您以键和值对的形式将元数据添加到一组问题和�
 发布知识库后，无论是从[QnA Maker 门户](https://www.qnamaker.ai)，还是通过使用[API，](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)都可以获取生成应答终结点的详细信息。
 
 获取终结点详细信息：
-1. 登录到[https://www.qnamaker.ai](https://www.qnamaker.ai)。
+1. 登录到 [https://www.qnamaker.ai](https://www.qnamaker.ai)。
 1. **在"我的知识库"中**，选择 **"查看知识库的代码**"。
     ![我的知识库截图](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. 获取 GenerateAnswer 终结点的详细信息。
@@ -146,8 +146,6 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 以前的 JSON 仅请求的答案为 30% 或高于阈值分数。
 
-支持机器人有[一个](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418)带有此代码的示例。
-
 ## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>在 Node.js 中使用带有自动程序的 QnA 制造商
 
 机器人框架提供访问QnA制造商的属性与[getAnswer API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-)：
@@ -165,8 +163,6 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 ```
 
 以前的 JSON 仅请求的答案为 30% 或高于阈值分数。
-
-支持机器人有[一个](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36)带有此代码的示例。
 
 <a name="metadata-example"></a>
 

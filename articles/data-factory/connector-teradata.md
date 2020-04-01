@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: c7c6cebf0a5c6371893dff52b2e8d7c064a40084
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e1d7cc4bb7762d3ebd29e349467f3e33c0887f9
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257931"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421220"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata Vantage 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -57,7 +57,7 @@ ms.locfileid: "80257931"
 
 Teradata 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为**Teradata**。 | 是 |
 | connectionString | 指定连接到 Teradata 实例所需的信息。 请参阅以下示例。<br/>还可以将密码放在 Azure Key Vault 中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
@@ -67,7 +67,7 @@ Teradata 链接服务支持以下属性：
 
 可以根据自己的情况在连接字符串中设置更多连接属性：
 
-| properties | 描述 | 默认值 |
+| properties | 说明 | 默认值 |
 |:--- |:--- |:--- |
 | CharacterSet | 要用于会话的字符集。 例如，`CharacterSet=UTF16`。<br><br/>此值可以是用户定义的字符集，也可以是以下预定义的字符集之一： <br/>- ASCII<br/>- UTF8<br/>- UTF16<br/>- LATIN1252_0A<br/>- LATIN9_0A<br/>- LATIN1_0A<br/>- Shift-JIS（Windows、兼容 DOS、KANJISJIS_0S）<br/>- EUC（兼容 Unix、KANJIEC_0U）<br/>- IBM Mainframe (KANJIEBCDIC5035_0I)<br/>- KANJI932_1S0<br/>- BIG5 (TCHBIG5_1R0)<br/>- GB (SCHGB2312_1T0)<br/>- SCHINESE936_6R0<br/>- TCHINESE950_8R0<br/>- NetworkKorean (HANGULKSC5601_2R4)<br/>- HANGUL949_7R0<br/>- ARABIC1256_6A0<br/>- CYRILLIC1251_2A0<br/>- HEBREW1255_5A0<br/>- LATIN1250_1A0<br/>- LATIN1254_7A0<br/>- LATIN1258_8A0<br/>- THAI874_4A0 | 默认值为 `ASCII`。 |
 | MaxRespSize |SQL 请求的响应缓冲区的最大大小，以千字节 (KB) 为单位。 例如，`MaxRespSize=‭10485760‬`。<br/><br/>对于 Teradata 数据库版本 16.00 或更高版本，最大值为 7361536。 对于使用较早版本的连接，最大值为 1048576。 | 默认值为 `65536`。 |
@@ -144,7 +144,7 @@ Teradata 链接服务支持以下属性：
 
 从 Teradata 复制数据时，支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 `TeradataTable`。 | 是 |
 | database | Teradata 实例的名称。 | 否（如果指定了活动源中的“query”） |
@@ -198,11 +198,11 @@ Teradata 链接服务支持以下属性：
 
 从 Teradata 复制数据时，复制活动的 **source** 节支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为 `TeradataSource`。 | 是 |
 | query | 使用自定义 SQL 查询读取数据。 示例为 `"SELECT * FROM MyTable"`。<br>启用分区加载时，需要在查询中挂接任何相应的内置分区参数。 有关示例，请参阅[从 Teradata 进行并行复制](#parallel-copy-from-teradata)部分。 | 否（如果指定了数据集中的表） |
-| partitionOptions | 指定用于从 Teradata 加载数据的数据分区选项。 <br>允许值为：**无**（默认）、**哈希**值和**动态范围**。<br>启用分区选项（即不是`None`），从 Teradata 同时加载数据的并行性程度由复制活动上的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 | 否 |
+| partitionOptions | 指定用于从 Teradata 加载数据的数据分区选项。 <br>允许值为：**无**（默认）、**哈希**值和**动态范围**。<br>启用分区选项（即不是`None`），从 Teradata 同时加载数据的并行性程度由复制活动上的[`parallelCopies`](copy-activity-performance-features.md#parallel-copy)设置控制。 | 否 |
 | partitionSettings | 指定数据分区的设置组。 <br>当分区选项不是 `None` 时适用。 | 否 |
 | partitionColumnName | 指定用于并行复制的，由范围分区或哈希分区使用的源列的名称。 如果未指定，系统会自动检测表的主索引并将其用作分区列。 <br>当分区选项是 `Hash` 或 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfHashPartitionCondition` 或 `?AdfRangePartitionColumnName`。 请参阅[从 Teradata 进行并行复制](#parallel-copy-from-teradata)部分中的示例。 | 否 |
 | partitionUpperBound | 要从中复制数据的分区列的最大值。 <br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfRangePartitionUpbound`。 有关示例，请参阅[从 Teradata 进行并行复制](#parallel-copy-from-teradata)部分。 | 否 |
@@ -250,7 +250,7 @@ Teradata 链接服务支持以下属性：
 
 ![分区选项的屏幕截图](./media/connector-teradata/connector-teradata-partition-options.png)
 
-启用分区复制时，数据工厂将对 Teradata 源运行并行查询，以按分区加载数据。 并行度由复制活动上的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Teradata 检索一部分数据。
+启用分区复制时，数据工厂将对 Teradata 源运行并行查询，以按分区加载数据。 并行度由复制活动上的[`parallelCopies`](copy-activity-performance-features.md#parallel-copy)设置控制。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Teradata 检索一部分数据。
 
 建议同时启用并行复制和数据分区，尤其是从 Teradata 加载大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
@@ -298,8 +298,8 @@ Teradata 链接服务支持以下属性：
 | Blob |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
-| Char |String |
-| Clob |String |
+| Char |字符串 |
+| Clob |字符串 |
 | Date |DateTime |
 | Decimal |Decimal |
 | Double |Double |
@@ -330,7 +330,7 @@ Teradata 链接服务支持以下属性：
 | 时间戳 |DateTime |
 | Timestamp With Time Zone |DateTime |
 | VarByte |Byte[] |
-| VarChar |String |
+| VarChar |字符串 |
 | VarGraphic |不支持。 在源查询中应用显式强制转换。 |
 | Xml |不支持。 在源查询中应用显式强制转换。 |
 

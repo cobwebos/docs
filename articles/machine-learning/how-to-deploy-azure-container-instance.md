@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
-ms.openlocfilehash: cb5603c12f06e4f5d5675ca27e171321ecc8827a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d460112394d7c7b7d2da4e8af41c0085b67226ec
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536439"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475471"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -94,7 +94,7 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
-* [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
+* [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
 * [使用应用程序见解监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)

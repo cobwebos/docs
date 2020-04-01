@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 698fab470cdc8b8d04fa4319fd71c31b58d1c5a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066876"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478148"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -106,11 +106,11 @@ ms.locfileid: "80066876"
 > 在某个时间点，只能在 VM 上安装一个扩展版本，在同一资源管理器模板中为同一 VM 指定两次自定义脚本将会失败。
 
 > [!NOTE]
-> 我们可以在 VirtualMachine 资源内部使用此架构，也可以将其用作独立资源。 如果此扩展用作 ARM 模板中的独立资源，则资源的名称必须采用“virtualMachineName/extensionName”格式。 
+> 我们可以在 VirtualMachine 资源内部使用此架构，也可以将其用作独立资源。 如果此扩展用作 ARM 模板中的独立资源，则资源的名称必须采用“virtualMachineName/extensionName”格式。
 
 ### <a name="property-values"></a>属性值
 
-| “属性” | 值/示例 | 数据类型 |
+| 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | 发布者 | Microsoft.Compute | 字符串 |
@@ -146,6 +146,8 @@ ms.locfileid: "80066876"
 公共设置会以明文形式发送到将执行脚本的 VM。  受保护设置使用只有 Azure 和 VM 知道的密钥进行加密。 这些设置会在发送时保存到 VM 中，也就是说，如果设置已加密，则会在 VM 上加密保存。 用于对已加密值解密的证书存储在 VM 上，该证书用于在运行时对设置解密（如必要）。
 
 ####  <a name="property-managedidentity"></a>属性：托管标识
+> [!NOTE]
+> 此属性**必须**仅在受保护设置中指定。
 
 CustomScript（版本 1.10 以后）支持从"fileUris"设置中提供的 URL 下载文件的[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 它允许 CustomScript 访问 Azure 存储专用 Blob 或容器，而无需用户传递 SAS 令牌或存储帐户密钥等机密。
 

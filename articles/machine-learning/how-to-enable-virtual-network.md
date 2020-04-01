@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 01/13/2020
-ms.openlocfilehash: c813e8a27a7f85eccff2c23d9ffdcfa4a1442f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 6e300bbec097201b33f0c576db91c2ca720fb921
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282828"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437314"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源
     - 在“虚拟网络”下，选择“添加现有的虚拟网络”链接。________ 此操作将添加计算资源所在的虚拟网络（参阅步骤 1）。
 
         > [!IMPORTANT]
-        > 存储帐户必须与用于训练或推理的计算实例或群集位于同一虚拟网络中。
+        > 存储帐户必须与用于训练或推理的计算实例或群集位于同一虚拟网络和子网中。
 
     - 选中“允许受信任的 Microsoft 服务访问此存储帐户”复选框。____
 
@@ -180,8 +180,6 @@ Azure 机器学习使用与工作区关联的 Key Vault 实例来存储以下凭
    - 使用存储__的服务标记____.区域名称__的 Azure 存储。 Azure`{RegionName}`区域的名称在哪里。
    - Azure 容器注册表，通过使用 Azure__容器注册.区域名称____的服务标记__。 Azure`{RegionName}`区域的名称在哪里。
    - Azure 机器学习 - 使用 __AzureMachineLearning__ 的服务标记____
-   
-- 对于__计算实例__，还添加以下项：
    - 使用__Azure 资源管理器____的服务标记__，Azure 资源管理器
    - 使用__Azure ActiveDirectory__ __的服务标记__，Azure 活动目录
 
@@ -242,19 +240,19 @@ Azure 机器学习使用与工作区关联的 Key Vault 实例来存储以下凭
 
 要创建机器学习计算群集，请使用以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择你的 Azure 机器学习工作区。
+1. 登录到[Azure 机器学习工作室](https://ml.azure.com/)，然后选择订阅和工作区。
 
-1. 在“应用程序”部分，依次选择“计算”、“添加计算”。____________
+1. 选择左侧的“计算”____。
 
-1. 要将此计算资源配置为使用虚拟网络，请执行以下操作：
+1. 从中心选择__训练群集__，然后选择__+__。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于“网络配置”，请选择“高级”。________
+1. 在 __"新建训练群集"__ 对话框中，展开 __"高级设置"__ 部分。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“资源组”下拉列表中，选择包含虚拟网络的资源组。____
+1. 要将此计算资源配置为使用虚拟网络，请在 __"配置虚拟网络__"部分执行以下操作：
 
-    c. 在“虚拟网络”下拉列表中，选择包含子网的虚拟网络。____
-
-    d.单击“下一步”。 在“子网”下拉列表中，选择要使用的子网。____
+    1. 在“资源组”下拉列表中，选择包含虚拟网络的资源组。____
+    1. 在“虚拟网络”下拉列表中，选择包含子网的虚拟网络。____
+    1. 在“子网”下拉列表中，选择要使用的子网。____
 
    ![机器学习计算的虚拟网络设置](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
@@ -356,29 +354,25 @@ except ComputeTargetException:
 >
 > AKS 实例和 Azure 虚拟网络必须位于同一区域。 如果在虚拟网络中保护工作区使用的 Azure 存储帐户，这些帐户必须与 AKS 实例位于同一虚拟网络中。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，请使用“AzureMachineLearning”作为“源”，确保用于控制虚拟网络的 NSG 包含一条已为 Azure 机器学习启用的入站规则。____****
+> [!WARNING]
+> Azure 机器学习不支持使用启用专用链接的 Azure 库伯奈斯服务。
 
-    [![Azure 机器学习添加计算窗格](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png#lightbox)
+1. 登录到[Azure 机器学习工作室](https://ml.azure.com/)，然后选择订阅和工作区。
 
-1. 选择你的 Azure 机器学习工作区。
+1. 选择左侧的“计算”____。
 
-1. 在“应用程序”部分，依次选择“计算”、“添加计算”。____________
+1. 从中心选择 __"推理"群集__，然后选择__+__。
 
-1. 要将此计算资源配置为使用虚拟网络，请执行以下操作：
+1. 在 __"新建推理群集"__ 对话框中，在 __"网络配置__"下选择 __"高级__"。
 
-    - 对于“网络配置”，请选择“高级”。________
+1. 要使用此计算资源使用虚拟网络，请执行以下操作：
 
-    - 在“资源组”下拉列表中，选择包含虚拟网络的资源组。____
-
-    - 在“虚拟网络”下拉列表中，选择包含子网的虚拟网络。____
-
-    - 在“子网”下拉列表中选择子网。____
-
-    - 在“Kubernetes 服务地址范围”中，输入 Kubernetes 服务地址范围。____ 此地址范围使用无类域间路由 (CIDR) 表示法表示的 IP 范围来定义群集可用的 IP 地址。 此范围不得与任何子网 IP 范围重叠（例如 10.0.0.0/16）。
-
-    - 在“Kubernetes DNS 服务 IP 地址”框中，输入 Kubernetes DNS 服务 IP 地址。____ 此 IP 地址将分配给 Kubernetes DNS 服务。 此 IP 地址必须在 Kubernetes 服务地址范围内（例如 10.0.0.10）。
-
-    - 在“Docker 网桥地址”框中，输入 Docker 网桥地址。____ 此 IP 地址将分配给 Docker 网桥。 此 IP 地址不得在任何子网 IP 范围或 Kubernetes 服务地址范围内（例如 172.17.0.1/16）。
+    1. 在“资源组”下拉列表中，选择包含虚拟网络的资源组。____
+    1. 在“虚拟网络”下拉列表中，选择包含子网的虚拟网络。____
+    1. 在“子网”下拉列表中选择子网。____
+    1. 在“Kubernetes 服务地址范围”中，输入 Kubernetes 服务地址范围。____ 此地址范围使用无类域间路由 (CIDR) 表示法表示的 IP 范围来定义群集可用的 IP 地址。 此范围不得与任何子网 IP 范围重叠（例如 10.0.0.0/16）。
+    1. 在“Kubernetes DNS 服务 IP 地址”框中，输入 Kubernetes DNS 服务 IP 地址。____ 此 IP 地址将分配给 Kubernetes DNS 服务。 此 IP 地址必须在 Kubernetes 服务地址范围内（例如 10.0.0.10）。
+    1. 在“Docker 网桥地址”框中，输入 Docker 网桥地址。____ 此 IP 地址将分配给 Docker 网桥。 此 IP 地址不得在任何子网 IP 范围或 Kubernetes 服务地址范围内（例如 172.17.0.1/16）。
 
    ![Azure 机器学习：机器学习计算虚拟网络设置](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
@@ -445,7 +439,7 @@ except:
     prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
     # Create compute target
-    aks_target = ComputeTarget.create(workspace = ws, name = “myaks”, provisioning_configuration = prov_config)
+    aks_target = ComputeTarget.create(workspace = ws, name = "myaks", provisioning_configuration = prov_config)
     # Wait for the operation to complete
     aks_target.wait_for_completion(show_output = True)
     
@@ -466,7 +460,7 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 
 ```json
 { 
-    "location": “<region>”, 
+    "location": "<region>", 
     "properties": { 
         "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
         "computeType": "AKS", 
@@ -504,7 +498,102 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 
 ## <a name="use-azure-container-registry"></a>使用 Azure 容器注册表
 
-将虚拟网络与 Azure 机器学习一起使用时，__请勿__将工作区的 Azure 容器注册表放在虚拟网络中。 不支持该配置。
+> [!IMPORTANT]
+> Azure 容器注册表 （ACR） 可以放在虚拟网络中，但必须满足以下先决条件：
+>
+> * Azure 机器学习工作区必须是企业版。 有关升级的信息，请参阅[升级到企业版](how-to-manage-workspace.md#upgrade)。
+> * Azure 容器注册表必须是高级版本。 有关升级的详细信息，请参阅更改[SKU](/azure/container-registry/container-registry-skus#changing-skus)。
+> * Azure 容器注册表必须与用于定型或推理的存储帐户和计算目标位于同一虚拟网络和子网中。
+> * Azure 机器学习工作区必须包含[Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)。
+>
+>     当 ACR 位于虚拟网络后面时，Azure 机器学习不能使用它直接生成 Docker 映像。 相反，计算群集用于生成映像。
+
+1. 要查找工作区的 Azure 容器注册表的名称，请使用以下方法之一：
+
+    __Azure 门户__
+
+    从工作区的概述部分，"__注册表__"值链接到 Azure 容器注册表。
+
+    ![工作区的 Azure 容器注册表](./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png)
+
+    __Azure CLI__
+
+    如果已[为 Azure CLI 安装了机器学习扩展](reference-azure-machine-learning-cli.md)，则可以使用 命令`az ml workspace show`显示工作区信息。
+
+    ```azurecli-interactive
+    az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
+    ```
+
+    此命令会返回类似于 `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"` 的值。 字符串的最后一部分是工作区的 Azure 容器注册表的名称。
+
+1. 要限制对虚拟网络的访问，请使用[注册表的"配置网络访问"](../container-registry/container-registry-vnet.md#configure-network-access-for-registry)中的步骤。 添加虚拟网络时，为 Azure 机器学习资源选择虚拟网络和子网。
+
+1. 使用 Azure 机器学习 Python SDK 配置计算群集以生成 Docker 映像。 以下代码段演示如何执行此操作：
+
+    ```python
+    from azureml.core import Workspace
+    # Load workspace from an existing config file
+    ws = Workspace.from_config()
+    # Update the workspace to use an existing compute cluster
+    ws.update(image_build_compute = 'mycomputecluster')
+    ```
+
+    > [!IMPORTANT]
+    > 存储帐户、计算群集和 Azure 容器注册表必须都位于虚拟网络的同一子网中。
+    
+    有关详细信息，请参阅[update（）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none-)方法引用。
+
+1. 如果对 Azure 机器学习工作区使用专用链接，并将工作区的 Azure 容器注册表放在虚拟网络中，则还必须应用以下 Azure 资源管理器模板。 此模板使工作区能够通过专用链路与 ACR 通信。
+
+    ```json
+    {
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "keyVaultArmId": {
+        "type": "string"
+        },
+        "workspaceName": {
+        "type": "string"
+        },
+        "containerRegistryArmId": {
+        "type": "string"
+        },
+        "applicationInsightsArmId": {
+        "type": "string"
+        },
+        "storageAccountArmId": {
+        "type": "string"
+        },
+        "location": {
+        "type": "string"
+        }
+    },
+    "resources": [
+        {
+        "type": "Microsoft.MachineLearningServices/workspaces",
+        "apiVersion": "2019-11-01",
+        "name": "[parameters('workspaceName')]",
+        "location": "[parameters('location')]",
+        "identity": {
+            "type": "SystemAssigned"
+        },
+        "sku": {
+            "tier": "enterprise",
+            "name": "enterprise"
+        },
+        "properties": {
+            "sharedPrivateLinkResources":
+    [{"Name":"Acr","Properties":{"PrivateLinkResourceId":"[concat(parameters('containerRegistryArmId'), '/privateLinkResources/registry')]","GroupId":"registry","RequestMessage":"Approve","Status":"Pending"}}],
+            "keyVault": "[parameters('keyVaultArmId')]",
+            "containerRegistry": "[parameters('containerRegistryArmId')]",
+            "applicationInsights": "[parameters('applicationInsightsArmId')]",
+            "storageAccount": "[parameters('storageAccountArmId')]"
+        }
+        }
+    ]
+    }
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

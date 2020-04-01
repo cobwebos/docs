@@ -1,22 +1,14 @@
 ---
 title: 教程：列表实体 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 获取与项的预定义列表匹配的数据。 列表中的每个项可以有也是完全匹配的同义词
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/12/2020
+ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447787"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79297401"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>教程：使用列表实体从言语中获取文本完全匹配的数据
 
@@ -42,7 +34,7 @@ ms.locfileid: "75447787"
 
 * 数据值是已知的集。
 * 此集不超出此实体类型的最大 LUIS [边界](luis-boundaries.md)。
-* 话语中的文本是同义项或规范名称的完全匹配。 LUIS 不会使用除文本完全匹配项之外的列表。 仅仅有列表实体无法解析词干、复数形式和其他变体。 若要管理变体，请考虑使用带有可选文本语法的[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)。
+* 言语中的文本是同义项或规范名称的不区分大小写的匹配。 LUIS 不会在不匹配的情况下使用该列表。 仅仅有列表实体无法解析词干、复数形式和其他变体。 若要管理变体，请考虑使用带有可选文本语法的[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)。
 
 > [!CAUTION]
 > 如果你不确定是要使用列表实体，还是要使用将短语列表用作描述符的机器学习实体，最佳且最灵活的做法是使用后者。 此方法可让 LUIS 学习和扩展要提取的数据值。

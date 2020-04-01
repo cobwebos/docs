@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b8db3fedc5886e86d5f49739b87b26535665bdbc
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
-ms.translationtype: HT
+ms.openlocfilehash: 999204cf2fc8ce18b42f873b9d34af4e6c08052b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389318"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411495"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>通过 Azure IoT 中心对下游设备进行身份验证
 
@@ -98,10 +98,10 @@ az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {exis
 5. 根据首选语言，查看在 IoT 应用程序中引用 X.509 证书的示例：
 
    * C#：[在 Azure IoT 中心中设置 X.509 安全性](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)
-   * C：[iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample)
+   * C： [iotedge_downstream_device_sample.c](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iotedge_downstream_device_sample)
    * Node.js：[simple_sample_device_x509.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js)
-   * Java： [SendEventX509.java](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py)
-   * Python：[send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/advanced-hub-scenarios/send_message_x509.py)
+   * Java： [SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
+   * Python：[send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
 可以使用[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)来完成相同的设备创建操作。 以下示例使用 X.509 自签名身份验证创建新的 IoT 设备，并分配父设备：
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/12/2018
 ms.author: erhopf
 ms.openlocfilehash: 777b2608cf5f326556dfaea307f4f3e9346213f8
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66482469"
 ---
 1. 启动 Visual Studio 2019。
@@ -21,11 +21,11 @@ ms.locfileid: "66482469"
 
 1. 创建新的 Visual C# .NET Core 控制台应用。 在“新建项目”对话框中，从左侧窗格中展开“已安装” > “Visual C#” > “.NET Core”。     然后，选择“控制台应用(.NET Core)”  。 在项目名称处，输入 helloworld  。
 
-   ![“新建项目”对话框的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-01-new-console-app.png "创建 Visual C# 控制台应用(.NET Core)")
+   ![“新建项目”对话框屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-01-new-console-app.png "创建 Visual C# 控制台应用 (.NET Core)")
 
 1. 安装并引用[语音 SDK NuGet 包](https://aka.ms/csspeech/nuget)。 在解决方案资源管理器中，右键单击该解决方案，并选择“为解决方案管理 NuGet 包”  。
 
-   ![解决方案资源管理器的屏幕截图，其中突出显示了“为解决方案管理 NuGet 包”选项](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-02-manage-nuget-packages.png "为解决方案管理 NuGet 包")
+   ![解决方案资源管理器的屏幕截图，其中突出显示了“为解决方案管理 NuGet 包”](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-02-manage-nuget-packages.png "管理解决方案 NuGet 程序包")
 
 1. 在右上角的“包源”字段中，选择“nuget.org”   。搜索 `Microsoft.CognitiveServices.Speech` 包，并将其安装到“helloworld”项目中  。
 

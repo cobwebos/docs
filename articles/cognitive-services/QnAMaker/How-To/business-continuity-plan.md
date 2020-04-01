@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: f920a789f1ec631c5d70863b10d8364b3eb81b6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2100426923418104c31933bf9d1406a6441d3841
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650463"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410914"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>为 QnA Maker 服务创建业务连续性计划
 
@@ -33,7 +33,7 @@ ms.locfileid: "77650463"
 
 4. 主要和辅助堆栈设置完成后，使用[流量管理器](https://docs.microsoft.com/azure/traffic-manager/)配置两个终结点并设置路由方法。
 
-5. 您需要为流量管理器终结点创建安全套接字层 （SSL） 证书。 在应用服务中[绑定 SSL 证书](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings)。
+5. 您需要为流量管理器终结点创建传输层安全 （TLS），以前称为安全套接字层 （SSL）。 在应用服务中[绑定 TLS/SSL 证书](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings)。
 
 6. 最后，在机器人或应用中使用流量管理器终结点。
 

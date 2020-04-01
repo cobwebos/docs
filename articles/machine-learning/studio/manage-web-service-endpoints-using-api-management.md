@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: cbe01ee9b8edeab349db484cea6c25dca32bf213
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7064101c21c11b48d8616dbeaa2fd9075660fd3b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218029"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473466"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理以管理 Azure 机器学习工作室（经典版）Web 服务
 
@@ -38,15 +38,15 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 可以使用 API 管理实例来管理 Azure 机器学习 Web 服务。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择 **= 创建资源**。
 3. 在搜索框中键入“API 管理”，然后选择“API 管理”资源。
-4. 单击 **“创建”**。
+4. 单击“创建”。 
 5. “名称”值用于创建唯一 URL（本示例使用“demoazureml”）。****
 6. 为服务实例选择**订阅**、**资源组**和**位置**。
 7. 指定“组织名称”的值（本示例使用“demoazureml”）。****
 8. 输入“管理员电子邮件”- 此电子邮件用于接收 API 管理系统发出的通知。****
-9. 单击 **“创建”**。
+9. 单击“创建”。 
 
 创建新服务最多可能需要 30 分钟。
 
@@ -69,7 +69,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 4. 输入“Web API URL 后缀”。 这是客户向服务实例发送请求时使用的 URL 的最后一个部分（本示例使用“azureml-demo”）。
 5. 对于“Web API URL 方案”，请选择“HTTPS”。********
 6. 对于“产品”，请选择“初学者”。********
-7. 单击“保存”。****
+7. 单击“保存”  。
 
 
 ## <a name="add-the-operations"></a>添加操作
@@ -106,7 +106,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`”。****
 4. 输入“显示名称”（本示例使用“BES 提交”）。****
 5. 单击左侧的 **"响应 ADD"，** > **ADD**选择**200 个"确定**"。
-6. 单击“保存”。****
+6. 单击“保存”  。
 
 ### <a name="start-a-batch-execution-job"></a>启动批处理执行作业
 
@@ -115,7 +115,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 3. 对于“HTTP 谓词”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`”。****
 4. 输入“显示名称”（本示例使用“BES 启动”）。****
 6. 单击左侧的 **"响应 ADD"，** > **ADD**选择**200 个"确定**"。
-7. 单击“保存”。****
+7. 单击“保存”  。
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>获取批处理执行作业的状态或结果
 
@@ -124,7 +124,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。****
 4. 输入“显示名称”（本示例使用“BES 状态”）。****
 6. 单击左侧的 **"响应 ADD"，** > **ADD**选择**200 个"确定**"。
-7. 单击“保存”。****
+7. 单击“保存”  。
 
 ### <a name="delete-a-batch-execution-job"></a>删除批处理执行作业
 
@@ -133,7 +133,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 3. 对于“URL 模板”，请键入“`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`”。****
 4. 输入“显示名称”（本示例使用“BES 删除”）。****
 5. 单击左侧的 **"响应 ADD"，** > **ADD**选择**200 个"确定**"。
-6. 单击“保存”。****
+6. 单击“保存”  。
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>从开发人员门户调用操作
 
@@ -217,7 +217,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 ![yes-to-publish](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>测试 Web 服务
-AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行服务）终结点。 RSS 适用于同步执行。 BES 适用于异步作业执行。 若要通过下面的 Python 源示例测试 Web 服务，可能需要下载并安装 Azure SDK for Python（请参阅[如何安装 Python](/azure/python/python-sdk-azure-install)）。
+AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行服务）终结点。 RSS 适用于同步执行。 BES 适用于异步作业执行。 若要通过下面的 Python 源示例测试 Web 服务，可能需要下载并安装 Azure SDK for Python（请参阅[如何安装 Python](/azure/developer/python/azure-sdk-install)）。
 
 还需要下面源示例实验的“工作区”****、“服务”**** 和“api_key”****。 在 Web 服务仪表板中单击实验的“请求/响应”**** 或“批处理执行”****，查找工作区和服务。
 

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 02/14/2020
 ms.author: diberry
-ms.openlocfilehash: 4dca8ef9381096d83cd63a9f9a4449d9c8750933
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: c0ee1abcb99e10d57d05945f45595e5bfd76fa28
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368337"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80155981"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker 中的新增功能
 
@@ -24,6 +24,10 @@ ms.locfileid: "77368337"
 ## <a name="release-notes"></a>发行说明
 
 了解 QnA Maker 的新增功能。
+
+### <a name="march-2020"></a>2020 年 3 月
+
+* 现在，将对此服务的所有 HTTP 请求强制执行 TLS 1.2。 有关详细信息，请参阅 [Azure 认知服务安全性](../cognitive-services-security.md)。
 
 ### <a name="february-2020"></a>2020 年 2 月
 

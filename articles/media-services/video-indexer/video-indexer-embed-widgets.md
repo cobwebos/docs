@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: e475c1bc1878c6b5a0efbbe41f2a3a0fe86bcff2
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
-ms.translationtype: HT
+ms.openlocfilehash: 6ed5c509cf310b743e4ef52f411dfa34e5db09c1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389369"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411613"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在应用中嵌入视频索引器小部件
 
@@ -29,7 +29,7 @@ ms.locfileid: "80389369"
 
 认知见解小组件包括从视频索引过程中提取的所有视觉见解。 认知见解微件支持以下可选 URL 参数：
 
-|“属性”|定义|描述|
+|名称|定义|说明|
 |---|---|---|
 |`widgets` | 用逗号分隔的字符串 | 允许您控制要呈现的见解。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`仅呈现人和关键字 UI 见解。<br/>可用选项：人物、动画人物、关键字、标签、情感、情感、主题、关键帧、脚本、ocr、扬声器、场景和命名实体。|
 |`controls`|用逗号分隔的字符串|允许您控制要呈现的控件。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download`仅呈现搜索选项和下载按钮。<br/>可用选项：搜索、下载、预设、语言。|
@@ -41,7 +41,7 @@ ms.locfileid: "80389369"
 
 您可以使用播放机小部件使用自适应比特率流式传输视频。 播放机小部件支持以下可选 URL 参数。
 
-|“属性”|定义|描述|
+|名称|定义|说明|
 |---|---|---|
 |`t` | 从开始开始的秒数 | 使玩家从指定的时间点开始播放。<br/> 示例：`t=60`。 |
 |`captions` | 语言代码 | 在小部件加载期间以指定语言获取标题，以在 **"字幕"** 菜单上可用。<br/> 示例：`captions=en-US`。 |
@@ -54,9 +54,9 @@ ms.locfileid: "80389369"
 
 您可以使用编辑器小部件创建新项目并管理视频的见解。 编辑器小部件支持以下可选 URL 参数。
 
-|“属性”|定义|描述|
+|名称|定义|说明|
 |---|---|---|
-|`accessToken`<sup>*</sup> | String | 提供对仅用于嵌入小部件的帐户中的视频的访问。<br> 编辑器小部件需要参数`accessToken`。 |
+|`accessToken`<sup>*</sup> | 字符串 | 提供对仅用于嵌入小部件的帐户中的视频的访问。<br> 编辑器小部件需要参数`accessToken`。 |
 |`language` | 语言代码 | 控制玩家语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。 |
 |`locale` | 短语言代码 | 控制见解语言。 默认值为 `en`。<br/>示例：`language=de`。 |
 
@@ -66,16 +66,12 @@ ms.locfileid: "80389369"
 
 1. 登录[视频索引器](https://www.videoindexer.ai/)网站。
 2. 选择要使用的视频。
-3. 选择视频下方显示的 **"嵌入"** 按钮。
-
-    ![视频索引器中的嵌入按钮](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
+3. 选择视频下方显示的**</>** 嵌入按钮 （ ）。
 
     选择 **"嵌入"** 按钮后，可以选择要嵌入应用的小部件。
 4. 选择您想要的小部件类型（**认知见解**、**播放器**或**编辑器**）。
- 
-5. 复制嵌入代码，然后将其添加到应用。
-
-    ![嵌入应用程序代码_视频索引器](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
+5. 复制嵌入代码（显示在"**共享&嵌入"** 对话框中**复制嵌入的代码**）。
+6. 将代码添加到应用。
 
 > [!NOTE]
 > 如果您在共享视频 URL 时出现问题，请将`location`参数添加到链接中。 参数应设置为[存在视频索引器的 Azure 区域](regions.md)。 例如：`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`。
@@ -239,7 +235,7 @@ ms.locfileid: "80389369"
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<YourTitle>` 即可。 （它自定义 HTML<title>值）。
+iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<YourTitle>` 即可。 （它自定义 HTML`<title>`值）。
    
 例如，如果需要为 iframe 窗口提供标题“MyInsights”，则 URL 将如下所示：
 
@@ -257,7 +253,7 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<You
 
 默认情况下，视频索引器播放器已基于视频脚本自动生成隐藏字幕。 使用上传视频时选择的源语言从视频中提取脚本。
 
-如果要使用其他语言进行嵌入，可以将&字幕*<语言代码>添加到嵌入播放器 URL 中。 如果默认情况下希望显示字幕，则可以传递&显示Captions_true。
+如果要使用其他语言进行嵌入，可以添加到`&captions=<Language Code>`嵌入播放器 URL。 如果默认情况下希望显示字幕，则可以传递&显示Captions_true。
 
 然后，嵌入 URL 将如下所示：
 
@@ -271,7 +267,7 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<You
 
 请参阅包含视频索引器 API 和小工具示例[的代码示例](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets)回购：
 
-| 文件/文件夹                       | 描述                                |
+| 文件/文件夹                       | 说明                                |
 |-----------------------------------|--------------------------------------------|
 | `azure-media-player`              | 在自定义 Azure 媒体播放器中加载视频索引器视频。                        |
 | `azure-media-player-vi-insights`  | 使用自定义 Azure 媒体播放器嵌入 VI 见解。                             |

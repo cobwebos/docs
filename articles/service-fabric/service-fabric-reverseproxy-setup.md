@@ -4,12 +4,12 @@ description: 了解如何为 Azure 服务结构应用程序设置和配置反向
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 131440036896d323cbf821d7a220328456e1db36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645440"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476669"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>在 Azure Service Fabric 中设置和配置反向代理
 反向代理是一种可选的 Azure Service Fabric 服务，有助于在 Service Fabric 群集中运行的微服务发现包含 http 终结点的其他服务，并与之通信。 有关详细信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)。 本文介绍如何在群集中设置和配置反向代理。 
@@ -23,7 +23,7 @@ ms.locfileid: "75645440"
 1. 在“步骤 2：群集配置”中，在“节点类型配置”下，选择“启用反向代理”************。
 
    ![在门户上启用反向代理](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. （可选）要配置安全反向代理，需要配置 SSL 证书。 在“步骤 3：安全性”中，在“配置群集安全设置”的“配置类型”下，选择“自定义”****************。 然后，在“反向代理 SSL 证书”下，选择“包括反向代理的 SSL 证书”并输入证书详细信息********。
+2. （可选）要配置安全反向代理，您需要配置 TLS/SSL 证书。 在“步骤 3：安全性”中，在“配置群集安全设置”的“配置类型”下，选择“自定义”****************。 然后，在“反向代理 SSL 证书”下，选择“包括反向代理的 SSL 证书”并输入证书详细信息********。
 
    ![在门户上配置安全反向代理](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "75645440"
         ...
     }
     ```
-3. 要在端口上为反向代理配置 SSL 证书，请将证书添加到**Microsoft**中的***反向代理证书***[属性。](../resource-group-authoring-templates.md)
+3. 要在端口上为反向代理配置 TLS/SSL 证书，请将证书添加到**Microsoft**中的***反向代理证书***[属性。](../resource-group-authoring-templates.md)
 
     ```json
     {

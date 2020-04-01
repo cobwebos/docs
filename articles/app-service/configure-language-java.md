@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2b21061e8a939b91c637ef05bbe6375c0b3f82e8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 2b09a7765cff20fb49ce6ab3d1e7bce2e15f0e9e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383967"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475212"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Windows Java 应用
 
@@ -74,7 +74,7 @@ Azure 应用服务原生支持通过 Azure 门户和 CLI 进行优化和自定�
 
 - [配置应用设置](configure-common.md#configure-app-settings)
 - [设置自定义域](app-service-web-tutorial-custom-domain.md)
-- [配置 SSL 绑定](configure-ssl-bindings.md)
+- [配置 TLS 绑定](configure-ssl-bindings.md)
 - [添加 CDN](../cdn/cdn-add-to-web-app.md)
 - [配置 Kudu 站点](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
 
@@ -183,7 +183,7 @@ public int getServerPort()
 
 ### <a name="configure-tlsssl"></a>配置 TLS/SSL
 
-按照[在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)中的说明上传现有的 SSL 证书，并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
+按照[Azure 应用服务中具有 TLS 绑定的自定义 DNS 名称](configure-ssl-bindings.md)中的说明进行操作，上载现有的 TLS/SSL 证书并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
 
 ### <a name="use-keyvault-references"></a>使用 KeyVault 引用
 

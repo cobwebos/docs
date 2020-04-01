@@ -11,48 +11,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/17/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: fa895a294e26b6c74ab72afa3136feac2b2ec986
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb90858f7e87e31b8b6028a30a6000bbed4d3e4b
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240251"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421091"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>在 Azure 虚拟网络中部署 IPv6 双堆栈应用程序 - CLI（预览）
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli"></a>在 Azure 虚拟网络中部署 IPv6 双堆栈应用程序 - CLI
 
 本文介绍如何在 Azure 中部署一个使用标准负载均衡器的双堆栈 (IPv4 + IPv6) 应用程序，其中包含具有双堆栈子网的双堆栈虚拟网络、采用双重 (IPv4 + IPv6) 前端配置的标准负载均衡器、具有采用双重 IP 配置的 NIC 的 VM、双重网络安全组规则，以及双重公共 IP。
-
-> [!Important]
-> Azure 虚拟网络的 IPv6 双堆栈当前处于公共预览版中。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 如果还没有 Azure 订阅，请现在就创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果你决定在本地安装并使用 Azure CLI，本快速入门要求使用 Azure CLI 2.0.49 或更高版本。 若要查找已安装的版本，请运行 `az --version`。 有关安装或升级信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
-
-## <a name="prerequisites"></a>先决条件
-若要使用 Azure 虚拟网络 IPv6 功能，必须使用 Azure CLI 按如下所示配置订阅：
-
-```azurecli
-az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-功能注册最多需要 30 分钟才能完成。 您可以通过运行以下 Azure CLI 命令来检查注册状态：
-
-```azurecli
-az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-注册完成后，运行以下命令：
-
-```azurecli
-az provider register --namespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -385,10 +361,6 @@ az vm create \
 2. 当“myVirtualNetwork”出现在搜索结果中时，将其选中。**** 此时会启动名为 *dsVnet* 的双堆栈虚拟网络的“概述”页。**** 该双堆栈虚拟网络显示了位于 *dsSubnet* 双堆栈子网中的两个 NIC，这些 NIC 采用 IPv4 和 IPv6 配置。
 
   ![Azure 中的 IPv6 双堆栈虚拟网络](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
-
-> [!NOTE]
-> Azure 虚拟网络的 IPv6 在此预览版本中以只读的 Azure 门户提供。
-
 
 ## <a name="clean-up-resources"></a>清理资源
 

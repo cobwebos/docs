@@ -4,12 +4,12 @@ description: 获取指标警报功能的概述，以及它们在 Azure Monitor �
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: b6d8bc69a407838025c5e78e0a1c773ab457c409
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480226"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397975"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -140,6 +140,10 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 - 指定为单个订阅中的所有虚拟机（在单个 Azure 区域中）
 
 创建监视多个资源的指标预警规则类似于[创建监视单个资源的任何其他指标警报](alerts-metric.md)。 唯一区别是，你将选择要监视的所有资源。 也可以通过 [Azure 资源管理器模板](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)创建这些规则。 您将收到每个受监视资源的单个通知。
+
+> [!NOTE]
+>
+> 在监视多个资源的指标警报规则中，只允许一个条件。
 
 ## <a name="typical-latency"></a>典型延迟
 

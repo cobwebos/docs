@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05da812023e7525b87a3d7ef1ce1940339f99791
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525832"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475484"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>参考： CentOS （Linux） 数据科学虚拟机
 
@@ -49,7 +49,7 @@ Linux DSVM 包含的关键软件组件包括：
 
 Linux DSVM 可大大减轻这种负担。 使用 Linux DSVM 可以快速启动分析项目。 Linux DSVM 可帮助你处理各种语言版本的任务，包括 R、Python、SQL、Java 和 C++。 Eclipse 提供一个易于使用的 IDE 来开发和测试代码。 使用 DSVM 中包含的 Azure SDK，可在适用于 Microsoft 云平台的 Linux 上使用各种服务来生成应用程序。 已预装其他语言，包括 Ruby、Perl、PHP 和 Node.js。
 
-DSVM 映像不会产生软件费用。 只需根据使用该 DSVM 映像预配的虚拟机大小，支付相应的 Azure 硬件使用费。 有关计算费的详细信息，请参阅 Azure 市场中的 [Data Science Virtual Machine for Linux (CentOS) 列表](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/)。
+DSVM 映像不会产生软件费用。 只需根据使用该 DSVM 映像预配的虚拟机大小，支付相应的 Azure 硬件使用费。 有关计算费用的详细信息，请参阅 Azure 应用商店中[用于 Linux 的数据科学虚拟机列表](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu)。
 
 
 ## <a name="machine-learning-server"></a>Machine Learning Server
@@ -176,7 +176,7 @@ systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 SQuirreL SQL 是一个图形 SQL 客户端，可以连接到各种数据库（包括 SQL Server、PostgresSQL 和 MySQL）并运行 SQL 查询。 可以使用桌面图标从图形桌面会话运行 SQuirreL SQL（例如，通过 X2Go 客户端）。 或者，可以在 shell 中使用以下命令运行该客户端：
 
 ```bash
-/usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
+/usr/local/squirrel-sql-3.7/squirrel-sql.sh    /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 ```
 
 首次使用前，需设置驱动程序和数据库别名。 JDBC 驱动程序位于 /usr/share/java/jdbcdrivers 中。
@@ -330,7 +330,7 @@ rattle()
 > [!NOTE]
 > 如果你无权在系统目录（默认目录）中安装包，可能会在 R 控制台窗口中看到一个提示，指出包将安装到个人库中。 如果看到这些提示，请输入 **y**。
 
-1. 选择“执行”****。
+1. 选择 **"执行**"。
 1. 此时会出现一个对话框，提示是否要加载示例气象数据集。 选择“是”以加载示例。****
 1. 选择"**模型"** 选项卡。
 1. 选择“执行”以生成决策树。****

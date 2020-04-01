@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8d32a6434db0fad18b9fe7c2d6e2117795eb651
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264672"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476742"
 ---
 # <a name="deliver-content-to-customers"></a>向客户传送内容
 向客户传送流或视频点播内容时，目标在于向处于不同网络条件下的各种设备传送优质视频。
@@ -82,10 +82,10 @@ ms.locfileid: "76264672"
 若要为用户提供流 URL，必须先创建一个 OnDemandOrigin 定位符。 通过创建定位符，可获得包含要流式传输的内容的资产的基本路径。 但是，为了能够流式传输此内容，需要进一步修改此路径。 要构造流式处理清单文件的完整 URL，必须将定位符的 path 值与清单 (filename.ism) 文件名连接起来。 然后将 **/清单**和适当的格式（如果需要）追加到定位器路径。
 
 > [!NOTE]
-> 也可以通过 SSL 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 请注意，目前，AMS 对自定义域不支持 SSL。  
+> 您还可以通过 TLS 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 请注意，目前 AMS 不支持具有自定义域的 TLS。  
 > 
 
-仅当要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的情况下，才可以通过 SSL 流式传输内容。 如果流式处理 URL 基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”。 包含“origin.mediaservices.windows.net”（旧格式）的流 URL 不支持 SSL。 如果 URL 采用旧格式，并且希望能够通过 SSL 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点的 URL 通过 SSL 流式传输内容。
+仅当从 2014 年 9 月 10 日之后创建提供内容的流式处理终结点时，才能通过 TLS 流式传输。 如果流式处理 URL 基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”。 包含"origin.mediaservices.windows.net"（旧格式）的流式处理 URL 不支持 TLS。 如果您的 URL 采用旧格式，并且希望能够通过 TLS 流式传输，请创建新的流式处理终结点。 使用基于新流式处理终结点的 URL 通过 TLS 流式传输内容。
 
 ## <a name="streaming-url-formats"></a><a id="URLs"/>流式处理 URL 格式
 

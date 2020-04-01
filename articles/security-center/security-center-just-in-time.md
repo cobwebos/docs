@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 4b2b388fb736997010a6cbbdf93b23b77c7ef3a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51985c5fa4b2296e43c0a062d0af84a1bb51e89c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603972"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397757"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>通过及时访问保护管理端口
 
@@ -66,7 +66,7 @@ ms.locfileid: "77603972"
     - 5986 - WinRM
 1. 或者，您可以将自定义端口添加到列表中：
 
-      1. 单击 **“添加”**。 此时会打开“添加端口配置”窗口****。
+      1. 单击 **添加**。 此时会打开“添加端口配置”窗口****。
       1. 对于选择配置的每个端口，无论是默认端口还是自定义端口，都可以自定义下列设置：
             - **协议类型** - 批准某个请求时，此端口允许的协议。
             - **允许的源 IP 地址** - 批准某个请求时，此端口允许的 IP 范围。
@@ -74,10 +74,10 @@ ms.locfileid: "77603972"
 
      1. 单击“确定”。
 
-1. 单击“保存”。****
+1. 单击“保存”  。
 
 > [!NOTE]
->如果为 VM 启用 JIT VM 访问，Azure 安全中心将在与所选端口关联的网络安全组和 Azure 防火墙中为该端口创建“拒绝所有入站流量”规则。 如果为所选端口创建了其他规则，则现有的规则优先于新的“拒绝所有入站流量”规则。 如果所选端口没有现有的规则，则新的“拒绝所有入站流量”规则在网络安全组和 Azure 防火墙中的优先级最高。
+>如果为 VM 启用 JIT VM 访问，Azure 安全中心将在与所选端口关联的网络安全组和 Azure 防火墙中为该端口创建“拒绝所有入站流量”规则。 如果为所选端口创建了其他规则，则现有规则优先于新的"拒绝所有入站流量"规则。 如果所选端口上没有现有规则，则新的"拒绝所有入站流量"规则将在网络安全组和 Azure 防火墙中占据最高优先级。
 
 
 ## <a name="request-jit-access-via-security-center"></a>通过安全中心请求 JIT 访问
@@ -88,7 +88,7 @@ ms.locfileid: "77603972"
 
 1. 在“虚拟机”**** 下，单击要请求访问的 VM。 这会勾选该 VM。
 
-    - “连接详细信息”列中的图标指示是在 NSG 还是 FW 中启用了 JIT****。 如果同时在 NSG 和 FW 中启用了 JIT，只会显示防火墙图标。
+    - “连接详细信息”列中的图标指示是在 NSG 还是 FW 中启用了 JIT****。 如果两者都启用了，则仅显示防火墙图标。
 
     - “连接详细信息”列提供连接 VM 所需的信息，及其打开的端口****。
 
@@ -202,55 +202,39 @@ ms.locfileid: "77603972"
 
 下面的示例可对特定 VM 设置实时 VM 访问策略，并设置以下各项：
 
-1.  关闭端口 22 和 3389。
+1.    关闭端口 22 和 3389。
 
-2.  将每个的最大时间窗口设置为 3 小时，使它们能够按每个批准的请求打开。
-3.  允许请求访问的用户控制源 IP 地址，允许用户对批准的实时访问请求建立成功会话。
+2.    将每个的最大时间窗口设置为 3 小时，使它们能够按每个批准的请求打开。
+3.    允许请求访问的用户控制源 IP 地址，允许用户对批准的实时访问请求建立成功会话。
 
 在 PowerShell 中运行以下命令实现此目的：
 
-1.  分配变量，保存 VM 的实时 VM 访问策略：
+1.    分配变量，保存 VM 的实时 VM 访问策略：
 
-        $JitPolicy = (@{
-         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
-        ports=(@{
-             number=22;
-             protocol="*";
-             allowedSourceAddressPrefix=@("*");
-             maxRequestAccessDuration="PT3H"},
-             @{
-             number=3389;
-             protocol="*";
-             allowedSourceAddressPrefix=@("*");
-             maxRequestAccessDuration="PT3H"})})
+        $JitPolicy = （*id="/订阅/订阅 ID/资源组/资源组/资源组/提供商/微软.计算/虚拟机/VMNAME"端口=（{编号=22;       协议*\";       允许的Source地址前缀\（""）;*       最大请求访问持续时间="PT3H"*，[数字=3389;       协议*\";       允许的Source地址前缀\（""）;*       最大请求访问持续时间="PT3H"*））
 
-2.  将 VM 实时 VM 访问策略插入数组：
+2.    将 VM 实时 VM 访问策略插入数组：
     
-        $JitPolicyArr=@($JitPolicy)
+        $JitPolicyArr_（$JitPolicy）
 
-3.  对所选 VM 配置实时 VM 访问策略：
+3.    对所选 VM 配置实时 VM 访问策略：
     
-        Set-AzJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
+        设置-AzJitNetwork 访问策略 - 金德"基本" - 位置"位置" - 名称"默认" - 资源组名称"资源组" -虚拟机$JitPolicyArr 
 
 ### <a name="request-access-to-a-vm-via-powershell"></a>通过 PowerShell 请求访问 VM
 
 在以下示例中，可以看到对特定 VM 的实时 VM 访问请求，其中请求端口 22 为特定 IP 地址打开，并持续特定时间：
 
 在 PowerShell 中运行以下命令：
-1.  配置 VM 请求访问属性
+1.    配置 VM 请求访问属性
 
-        $JitPolicyVm1 = (@{
-          id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
-        ports=(@{
-           number=22;
-           endTimeUtc="2018-09-17T17:00:00.3658798Z";
-           allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
-2.  在数组中插入 VM 访问请求参数：
+        $JitPolicyVm1 = （*id="/订阅 ID/资源组/资源组/资源组/提供商/微软.计算/虚拟机/VMNAME"端口=（*编号=22;     endTimeUtc="2018-09-17T17：00.3658798Z";     允许来源地址前缀*（"IPV4ADDRESS"）*）
+2.    在数组中插入 VM 访问请求参数：
 
-        $JitPolicyArr=@($JitPolicyVm1)
-3.  发送请求访问权限（使用步骤 1 中获取的资源 ID）
+        $JitPolicyArr=（$JitPolicyVm1）
+3.    发送请求访问权限（使用步骤 1 中获取的资源 ID）
 
-        Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
+        启动-AzJit网络访问策略 - 资源 Id"/订阅/订阅 ID/资源组/资源组/资源组/提供商/微软.安全/位置/位置/jitNetworkAccess策略/默认" -虚拟机$JitPolicyArr
 
 有关详细信息，请参阅[PowerShell cmdlet 文档](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview)。
 
@@ -271,6 +255,7 @@ ms.locfileid: "77603972"
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
+- Microsoft 学习模块[使用 Azure 安全中心保护服务器和 VM 免受暴力攻击和恶意软件攻击](https://docs.microsoft.com/learn/modules/secure-vms-with-azure-security-center/)
 - [设置安全策略](tutorial-security-policy.md)– 了解如何为 Azure 订阅和资源组配置安全策略。
 - [管理安全建议](security-center-recommendations.md)– 了解建议如何帮助保护 Azure 资源。
 - [安全运行状况监视](security-center-monitoring.md) — 了解如何监视 Azure 资源的运行状况。

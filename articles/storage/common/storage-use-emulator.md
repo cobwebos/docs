@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 1f13efeb5c2ebcb8b23dea6f9ae997039972f089
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 997aa9d96f2f52331865fd15d97443d74bb8bc1f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72428315"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398018"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
@@ -179,7 +179,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 若要查看选项列表，请在命令提示符下键入 `/help`。
 
-| 选项 | 描述 | 命令 | 自变量 |
+| 选项 | 说明 | Command | 自变量 |
 | --- | --- | --- | --- |
 | **开始** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-重新处理*：在当前进程中启动仿真器，而不是创建新进程。 |
 | **停止** |停止存储模拟器。 |`AzureStorageEmulator.exe stop` | |
@@ -325,6 +325,6 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 ## <a name="next-steps"></a>后续步骤
 
-* 评估跨平台的、由社区维护的开源存储模拟器 [Azurite](https://github.com/arafato/azurite)。 
+* 评估跨平台的、由社区维护的开源存储模拟器 [Azurite](https://github.com/azure/azurite)。 
 * [使用 .NET 的 Azure 存储示例](../storage-samples-dotnet.md)包含开发应用程序时可使用的多个代码示例的链接。
 * 可使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com)处理云存储帐户和存储模拟器中的资源。

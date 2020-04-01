@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
-ms.author: cherylmc
-ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/26/2020
+ms.author: osamaz
+ms.openlocfilehash: 5304aefaf3ad70bb552b4b0d1b26fcce9867c9c0
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74076666"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397734"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>用于设置和管理路由的路由器配置示例
 本页提供处理 ExpressRoute 时适用于 Cisco IOS XE 和 Juniper MX 系列路由器的接口与路由配置示例。 这些示例仅供指导，不能按原样使用。 可以与供应商合作，以便为网络指定适当的配置。 
@@ -91,6 +91,25 @@ ms.locfileid: "74076666"
     !
     route-map <MS_Prefixes_Inbound> permit 10
      match ip address prefix-list <MS_Prefixes>
+    !
+
+### <a name="5-configuring-bfd"></a>5. 配置 BFD
+
+您将在两个位置配置 BFD。 一个在接口级别，另一个在 BGP 级别。 下面的示例用于 QinQ 接口。 
+
+    interface GigabitEthernet<Interface_Number>.<Number>
+     bfd interval 300 min_rx 300 multiplier 3
+     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+     ip address <IPv4_Address><Subnet_Mask>
+    
+    router bgp <Customer_ASN>
+     bgp log-neighbor-changes
+     neighbor <IP#2_used_by_Azure> remote-as 12076
+     !        
+     address-family ipv4
+      neighbor <IP#2_used_by_Azure> activate
+      neighbor <IP#2_used_by_Azure> fall-over bfd
+     exit-address-family
     !
 
 
@@ -173,7 +192,7 @@ ms.locfileid: "74076666"
     }
 
 
-### <a name="4-route-maps"></a>4. 路线图
+### <a name="4-route-policies"></a>4. 路线政策
 可以使用路由映射和前缀列表来筛选已传播到网络中的前缀。 可以使用以下示例来完成此任务。 确保已设置适当的前缀列表。
 
     policy-options {
@@ -203,6 +222,24 @@ ms.locfileid: "74076666"
         }                                   
     }
 
+### <a name="4-configuring-bfd"></a>4. 配置 BFD
+您将仅在协议 BGP 部分下配置 BFD。
+
+    protocols {
+        bgp { 
+            group <Group_Name> { 
+                peer-as 12076;              
+                neighbor <IP#2_used_by_Azure>;
+                bfd-liveness-detection {
+                       minimum-interval 3000;
+                       multiplier 3;
+                }
+            }                               
+        }                                   
+    }
+
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md) 。
+
+
 

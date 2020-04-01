@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
-ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1a3ff32956e8a8530684ba7f300f06d0c032227
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265878"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421117"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -64,11 +64,11 @@ ms.locfileid: "79265878"
 
 SAP HANA 链接的服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapHana** | 是 |
 | connectionString | 指定使用**基本身份验证**或 **Windows 身份验证**连接到 SAP HANA 时所需的信息。 请参阅以下示例。<br>在连接字符串中，服务器/端口是必需的（默认端口为 30015）。在使用基本身份验证时，用户名和密码是必需的。 有关其他高级设置，请参阅 [SAP HANA ODBC 连接属性](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取密码配置。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
-| userName | 使用 Windows 身份验证时，请指定用户名。 示例： `user@domain.com` | 否 |
+| userName | 使用 Windows 身份验证时，请指定用户名。 示例：`user@domain.com` | 否 |
 | password | 指定用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
@@ -145,7 +145,7 @@ SAP HANA 链接的服务支持以下属性：
 
 支持使用以下属性从 SAP HANA 复制数据：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **：SaphanaTable** | 是 |
 | 架构 | SAP HANA 数据库中架构的名称。 | 否（如果指定了活动源中的“query”） |
@@ -184,11 +184,11 @@ SAP HANA 链接的服务支持以下属性：
 
 若要从 SAP HANA 复制数据，复制活动的 **source** 节支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 必须将复制活动源的类型属性设置为 **：SapHanaSource** | 是 |
 | query | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | 是 |
-| partitionOptions | 指定用于从 SAP HANA 引入数据的数据分区选项。 从[SAP HANA 部分的并行副本](#parallel-copy-from-sap-hana)中了解更多信息。<br>允许值是： **无** （默认）、 **物理分区表**、**萨普哈纳动态范围**。 从[SAP HANA 部分的并行副本](#parallel-copy-from-sap-hana)中了解更多信息。 `PhysicalPartitionsOfTable`只能在从表中复制数据时使用，但不能使用查询。 <br>启用分区选项（即不是`None`），从 SAP HANA 同时加载数据的并行性程度由复制活动上的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 | False |
+| partitionOptions | 指定用于从 SAP HANA 引入数据的数据分区选项。 从[SAP HANA 部分的并行副本](#parallel-copy-from-sap-hana)中了解更多信息。<br>允许值是： **无** （默认）、 **物理分区表**、**萨普哈纳动态范围**。 从[SAP HANA 部分的并行副本](#parallel-copy-from-sap-hana)中了解更多信息。 `PhysicalPartitionsOfTable`只能在从表中复制数据时使用，但不能使用查询。 <br>启用分区选项（即不是`None`），从 SAP HANA 同时加载数据的并行性程度由复制活动上的[`parallelCopies`](copy-activity-performance-features.md#parallel-copy)设置控制。 | False |
 | partitionSettings | 指定数据分区的设置组。<br>当分区选项是 `SapHanaDynamicRange` 时适用。 | False |
 | partitionColumnName | 指定分区将用于并行复制的源列的名称。 如果未指定，则表的索引或主键将自动检测并用作分区列。<br>当分区选项为 `SapHanaDynamicRange`时应用。 如果使用查询检索源数据，请挂钩 `?AdfHanaDynamicRangePartitionCondition`WHERE 子句。 请参阅[SAP HANA 部分的并行副本](#parallel-copy-from-sap-hana)中的示例。 | 使用`SapHanaDynamicRange`分区时为"是"。 |
 | packetSize | 指定网络数据包大小 (KB)，以便将数据拆分成多个块。 如果有大量的数据需要复制，则大多数情况下，提高数据包大小可以提高从 SAP HANA 读取数据的速度。 调整数据包大小时，建议进行性能测试。 | 不是。<br>默认值为 2048 (2MB)。 |
@@ -233,7 +233,7 @@ SAP HANA 链接的服务支持以下属性：
 
 ![分区选项的屏幕截图](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
 
-启用分区副本时，数据工厂会针对 SAP HANA 源运行并行查询，以便按分区检索数据。 并行度由复制活动上的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 例如，如果将设置为`parallelCopies`4，则数据工厂会根据指定的分区选项和设置同时生成和运行四个查询，并且每个查询从 SAP HANA 检索一部分数据。
+启用分区副本时，数据工厂会针对 SAP HANA 源运行并行查询，以便按分区检索数据。 并行度由复制活动上的[`parallelCopies`](copy-activity-performance-features.md#parallel-copy)设置控制。 例如，如果将设置为`parallelCopies`4，则数据工厂会根据指定的分区选项和设置同时生成和运行四个查询，并且每个查询从 SAP HANA 检索一部分数据。
 
 建议使用数据分区启用并行复制，尤其是在从 SAP HANA 中引入大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据写入文件夹时为多个文件（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
@@ -270,31 +270,31 @@ SAP HANA 链接的服务支持以下属性：
 
 | SAP HANA 数据类型 | 数据工厂临时数据类型 |
 | ------------------ | ------------------------------ |
-| ALPHANUM           | String                         |
+| ALPHANUM           | 字符串                         |
 | BIGINT             | Int64                          |
 | BINARY             | Byte[]                         |
-| BINTEXT            | String                         |
+| BINTEXT            | 字符串                         |
 | BLOB               | Byte[]                         |
 | BOOL               | Byte                           |
-| CLOB               | String                         |
+| CLOB               | 字符串                         |
 | DATE               | DateTime                       |
 | DECIMAL            | Decimal                        |
 | DOUBLE             | Double                         |
 | FLOAT              | Double                         |
 | INTEGER            | Int32                          |
-| NCLOB              | String                         |
-| NVARCHAR           | String                         |
+| NCLOB              | 字符串                         |
+| NVARCHAR           | 字符串                         |
 | real               | Single                         |
 | SECONDDATE         | DateTime                       |
-| SHORTTEXT          | String                         |
+| SHORTTEXT          | 字符串                         |
 | SMALLDECIMAL       | Decimal                        |
 | SMALLINT           | Int16                          |
 | STGEOMETRYTYPE     | Byte[]                         |
 | STPOINTTYPE        | Byte[]                         |
-| TEXT               | String                         |
+| TEXT               | 字符串                         |
 | TIME               | TimeSpan                       |
 | TINYINT            | Byte                           |
-| VARCHAR            | String                         |
+| VARCHAR            | 字符串                         |
 | TIMESTAMP          | DateTime                       |
 | VARBINARY          | Byte[]                         |
 

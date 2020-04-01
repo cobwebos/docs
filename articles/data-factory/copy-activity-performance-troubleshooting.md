@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 963b86852a7df557ad7179e444e7c3a2692f57d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a14f4d548053fb7aaf6f450176fdc49bc7b119bf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531446"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421043"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排除复制活动性能的故障
 
@@ -50,7 +50,7 @@ ms.locfileid: "79531446"
 
 复制活动监视视图底部的执行详细信息和持续时间描述了复制活动经历的关键阶段（请参阅本文开头的示例），这对于解决复制性能的疑难问题特别有用。 复制运行的瓶颈是持续时间最长的瓶颈。 请参阅每个阶段定义的下表，了解如何[对 Azure IR 上的复制活动进行故障排除](#troubleshoot-copy-activity-on-azure-ir)，以及如何使用此类信息[对自托管 IR 上的复制活动进行故障排除](#troubleshoot-copy-activity-on-self-hosted-ir)。
 
-| 阶段           | 描述                                                  |
+| 阶段           | 说明                                                  |
 | --------------- | ------------------------------------------------------------ |
 | 队列           | 在集成运行时实际启动复制活动之前已过的时间。 |
 | 预拷贝脚本 | 从 IR 开始开始复制活动到在接收器数据存储中完成执行预复制脚本的复制活动之间的运行时间。 在为数据库接收器配置预复制脚本时应用，例如将数据写入 Azure SQL 数据库时，在复制新数据之前请清理。 |
@@ -88,7 +88,7 @@ ms.locfileid: "79531446"
 
   - 检查复制源和接收器模式： 
 
-    - 如果您的复制模式支持大于 4 个数据集成单元 （DIUs） - 请参阅[本节](copy-activity-performance.md#data-integration-units)的详细信息，通常您可以尝试增加 DIA 以获得更好的性能。 
+    - 如果您的复制模式支持大于 4 个数据集成单元 （DIUs） - 请参阅[本节](copy-activity-performance-features.md#data-integration-units)的详细信息，通常您可以尝试增加 DIA 以获得更好的性能。 
 
     - 否则，请考虑将单个大型数据集拆分为多个较小的数据集，并让这些复制作业同时运行，每个数据处理部分。 您可以使用查找/获取元数据 = 每个内容 = 复制来执行此操作。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)、[将数据从 Amazon S3 迁移到 ADLS Gen2，](solution-template-migration-s3-azure.md)或[使用控制表](solution-template-bulk-copy-with-control-table.md)解决方案模板进行批量复制作为一般示例。
 
@@ -102,7 +102,7 @@ ms.locfileid: "79531446"
 
   - 检查复制源和接收器模式： 
 
-    - 如果您的复制模式支持大于 4 个数据集成单元 （DIUs） - 请参阅[本节](copy-activity-performance.md#data-integration-units)的详细信息，通常您可以尝试增加 DIA 以获得更好的性能。 
+    - 如果您的复制模式支持大于 4 个数据集成单元 （DIUs） - 请参阅[本节](copy-activity-performance-features.md#data-integration-units)的详细信息，通常您可以尝试增加 DIA 以获得更好的性能。 
 
     - 否则，逐渐调整[并行副本](copy-activity-performance-features.md)，注意太多并行副本甚至可能损害性能。
 

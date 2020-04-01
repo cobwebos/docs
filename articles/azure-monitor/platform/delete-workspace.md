@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: ead0ac04fbd2244fce97dd043ebd44f24fb0f67f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054915"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80395789"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>删除和恢复 Azure 日志分析工作区
 
@@ -56,6 +56,17 @@ ms.locfileid: "80054915"
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+### <a name="troubleshooting"></a>疑难解答
+
+您必须具有"日志分析参与者"权限才能删除日志分析工作区。<br>
+如果在创建工作区时收到错误消息"*此工作区名称已在使用*中"，则可能是：
+* 工作区名称不可用，并且由组织中的人员或其他客户使用。
+* 工作区在过去 14 天内被删除，其名称保留为软删除期间。 要重写软删除并立即删除工作区并创建同名的新工作区，请按照以下步骤首先恢复工作区并执行永久删除：<br>
+   1. [恢复](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)工作区。
+   2. [永久删除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)工作区。
+   3. 使用相同的工作区名称创建新工作区。
+
 
 ## <a name="permanent-workspace-delete"></a>永久工作区删除
 软删除方法可能不适合某些方案，如开发和测试，其中需要使用相同的设置和工作区名称重复部署。 在这种情况下，您可以永久删除工作区并"覆盖"软删除周期。 永久工作区删除操作释放工作区名称，您可以使用同一名称创建新工作区。

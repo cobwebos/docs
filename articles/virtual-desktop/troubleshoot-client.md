@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e3a240901ffca2c126e2b61eaee0cf287cc31d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 595762e6e8f22dddff30f1cff8c4bb79e89624b1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127509"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473851"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>排除远程桌面客户端故障
 
@@ -21,21 +21,15 @@ ms.locfileid: "79127509"
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>适用于 Windows 7 或 Windows 10 的远程桌面客户端停止响应或无法打开
 
-使用以下 PowerShell cmdlet 清理带外 （OOB） 客户端注册表。
+从版本 1.2.790 开始，可以从"关于"页或使用命令重置用户数据。
 
-```PowerShell
-Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
+使用以下命令删除用户数据、还原默认设置并取消订阅所有工作区。
 
-#Remove RdClientRadc registry key
-Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
-
-#Remove all files under %appdata%\RdClientRadc
-Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
+```cmd
+msrdcw.exe /reset [/f]
 ```
 
-导航到 **%AppData%*RdClientRadc**并删除所有内容。
-
-卸载并重新安装 Windows 7 和 Windows 10 的远程桌面客户端。
+如果您使用的是早期版本的远程桌面客户端，我们建议您卸载并重新安装该客户端。
 
 ## <a name="web-client-wont-open"></a>Web 客户端无法打开
 

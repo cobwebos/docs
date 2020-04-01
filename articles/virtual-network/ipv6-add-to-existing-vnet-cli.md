@@ -11,21 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/23/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 5dc231febc2e9b605b9e7f603f5d036b8a2c62eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3f9b32ea55f0ceebf08b22ccc7e2ceec0b6227e
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240757"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420803"
 ---
-# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli-preview"></a>将 IPv6 添加到 Azure 虚拟网络中的 IPv4 应用程序 - Azure CLI（预览）
+# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>将 IPv6 添加到 Azure 虚拟网络中的 IPv4 应用程序 - Azure CLI
 
 本文介绍如何通过 Azure CLI，将 IPv6 地址添加到对标准负载均衡器使用 Azure 虚拟网络中 IPv4 公共 IP 地址的应用程序。 就地升级涉及到虚拟网络和子网、采用 IPv4 + IPV6 前端配置的标准负载均衡器、包含采用 IPv4 + IPv6 配置的 NIC 的 VM、网络安全组和公共 IP。
 
-> [!Important]
-> 对 Azure 虚拟网络的 IPv6 支持当前处于公共预览版中。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -33,29 +31,6 @@ ms.locfileid: "80240757"
 
 ## <a name="prerequisites"></a>先决条件
 
-### <a name="register-the-service"></a>注册服务
-
-在 Azure 中部署双堆栈应用程序之前，必须使用以下 Azure CLI 为此预览功能配置订阅：
-
-```azurecli
-az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-功能注册最多需要 30 分钟才能完成。 您可以通过运行以下 Azure CLI 命令来检查注册状态：
-
-```azurecli
-az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-注册完成后，运行以下命令：
-
-```azurecli
-az provider register --namespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>创建标准负载均衡器
 本文假定部署了标准负载均衡器，如[快速入门：创建标准负载均衡器 - Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md)。
 
 ## <a name="create-ipv6-addresses"></a>创建 IPv6 地址
@@ -173,8 +148,6 @@ az network nic ip-config create \
 
   ![Azure 中的 IPv6 双堆栈虚拟网络](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
-> [!NOTE]
-> Azure 虚拟网络的 IPv6 在此预览版本中以只读的 Azure 门户提供。
 
 ## <a name="clean-up-resources"></a>清理资源
 

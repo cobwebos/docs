@@ -7,12 +7,12 @@ ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/15/2020
-ms.openlocfilehash: 759ea9800a0ed051fed887adfb10b06f7a53b72f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 796b37f98fed7e389fa71a15b5e6697a14db1a16
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529197"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397220"
 ---
 # <a name="microsoft-flow-connector-preview-usage-examples"></a>微软流连接器（预览）使用示例
 
@@ -119,7 +119,9 @@ Kusto 查询的结果可用作下一个流操作的输入或条件。
     * 在 *"正文"* 字段中，插入所需的正文，以便查询的可视化结果包含在电子邮件正文中。
     * 要向电子邮件添加附件，请添加附件名称和附件内容。
     
-    ![通过电子邮件发送多个附件](./media/flow-usage/flow-emailmultipleattachments.png)
+    ![通过电子邮件发送多个附件](./media/flow-usage/flow-email-multiple-attachments.png)
+
+    有关创建电子邮件操作的完整说明，请参阅[电子邮件 Kusto 查询结果](flow.md#email-kusto-query-results)。 
 
 结果：
 

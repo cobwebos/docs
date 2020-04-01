@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 2148ce41267627d9d6e0437897a99a8dbdbe0746
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382760"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474042"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的复制中数据
 
-本文介绍如何通过配置主服务器和副本服务器在 Azure Database for MySQL 服务中设置“数据传入复制”。 凭借“数据传入复制”，可以将在本地或虚拟机中运行的主 MySQL 服务器或其他云提供程序托管的数据库服务中的数据同步到 Azure Database for MySQL 服务中的副本。 
+本文介绍如何通过配置主服务器和副本服务器在 MySQL 的 Azure 数据库中设置数据内复制。 本文假定您以前对 MySQL 服务器和数据库有一些经验。
 
-本文假设读者在 MySQL 服务器和数据库方面有一定的经验。
+要在 MySQL 服务的 Azure 数据库中创建副本，数据内复制将同步来自本地主 MySQL 服务器、虚拟机 （VM） 或云数据库服务中的数据。
 
 在执行本文中的步骤之前，请查看数据内复制[的限制和要求](concepts-data-in-replication.md#limitations-and-considerations)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "80382760"
 
    例如，确保主服务器允许端口 3306 上的入站和出站流量，并且主服务器具有公共**IP 地址**、DNS 是可公开访问的，或者具有完全限定的域名 （FQDN）。 
    
-   尝试从工具（如在另一台计算机上托管的 MySQL 命令行或 Azure 门户中可用的[Azure 云外壳](https://docs.microsoft.com/azure/cloud-shell/overview)）进行连接，以测试与主服务器的连接 
+   通过尝试从工具（如在另一台计算机上托管的 MySQL 命令行或 Azure 门户中可用的[Azure 云外壳](https://docs.microsoft.com/azure/cloud-shell/overview)）进行连接，测试与主服务器的连接。
 
 2. 启用二进制日志记录
 
@@ -71,7 +71,7 @@ ms.locfileid: "80382760"
 
 4. 创建新的复制角色并设置权限
 
-   在主服务器上创建一个配置有复制特权的用户帐户。 可以通过 SQL 命令或 MySQL Workbench 等工具实现此目的。 考虑是否打算使用 SSL 进行复制，因为这需要在创建用户时指定。 请参阅 MySQL 文档以了解如何在主服务器上[添加用户帐户](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html)。 
+   在主服务器上创建一个配置有复制特权的用户帐户。 可以通过 SQL 命令或 MySQL Workbench 等工具实现此目的。 考虑是否打算使用 SSL 进行复制，因为这需要在创建用户时指定。 请参阅 MySQL 文档以了解如何在主服务器上[添加用户帐户](https://dev.mysql.com/doc/refman/5.7/en/user-names.html)。 
 
    在以下命令中，创建的新复制角色能够从任何计算机访问主服务器，而不仅仅是从本身托管主服务器的计算机访问主服务器。 可以通过在 create user 命令中指定“syncuser \@\ '%”来实现此目的。 请参阅 MySQL 文档，详细了解如何[指定帐户名称](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 6ea951b542d893b8fef3cdf19a964ce2ef8a034d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 8e44ce594375deeac47f037515d96c57d15c8359
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79415704"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398406"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>管理和响应 Azure 安全中心中的安全警报
 
@@ -73,5 +73,6 @@ ms.locfileid: "79415704"
 
 本文档中已经介绍了如何在安全中心配置安全策略。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
+- [Microsoft 学习模块，介绍如何使用 Azure 安全中心的警报功能来监视和响应威胁](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 * [Azure 安全中心中的安全警报](security-center-alerts-overview.md)。
 * [处理安全事件](security-center-incident.md)

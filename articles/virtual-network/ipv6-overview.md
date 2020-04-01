@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟网络 IPv6 概述（预览版）
+title: Azure 虚拟网络 IPv6 概述
 titlesuffix: Azure Virtual Network
 description: 介绍 Azure 虚拟网络中的 IPv6 以及 IPv6 终结点和数据路径。
 services: virtual-network
@@ -10,24 +10,22 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 12/19/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03b279ead6b1f5d26ae92b63a8780a61dfd711bb
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75780073"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420574"
 ---
-# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Azure 虚拟网络 IPv6 是什么？ （预览版）
+# <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure 虚拟网络 IPv6 是什么？
 
 Azure 虚拟网络 (VNet) IPv6 可让你通过虚拟网络内部的以及与 Internet 之间的 IPv6 和 IPv4 连接，在 Azure 中托管应用程序。 由于公共 IPv4 地址即将耗尽，面向移动应用和物联网 (IoT) 的新网络通常构建在 IPv6 上的基础之上。 甚至是建立了很久的 ISP 和移动网络也正在过渡到 IPv6。 在现有市场和新兴市场中，仅使用 IPv4 的服务可能会处于真正的劣势。 双堆栈 IPv4/IPv6 连接使得 Azure 托管的服务能够通过全球可用的、随时可连接现有 IPv4 和这些新 IPv6 设备与网络的双堆栈服务来弥补这种技术缺口。
 
 借助 Azure 的原始 IPv6 连接，可以轻松为 Azure 中托管的应用程序提供双堆栈 (IPv4/IPv6) Internet 连接。 它可以通过入站和出站发起连接的负载均衡 IPv6 连接简化 VM 的部署。 此功能仍然可用，更多信息[可在此处](../load-balancer/load-balancer-ipv6-overview.md)获取。
 Azure 虚拟网络 IPv6 的功能要全面得多，它可以实现在 Azure 中部署完整的 IPv6 解决方案体系结构。
 
-> [!Important]
-> Azure 虚拟网络的 IPv6 当前处于公共预览版。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 下图描绘了 Azure 中的简单双堆栈 (IPv4/IPv6) 部署：
 
@@ -74,7 +72,7 @@ Azure VNET IPv6 是一个基础功能集，可让客户在 Azure 中托管双堆
 
 ## <a name="limitations"></a>限制
 当前的 Azure 虚拟网络 IPv6 版本存在以下限制：
-- Azure 虚拟网络 （预览） 的 IPv6 在所有全局 Azure 区域中可用，但仅在全局 Azure 中可用，但尚未在政府云中提供。
+- Azure 虚拟网络的 IPv6 在所有全局 Azure 区域中都可用，但仅在全局 Azure 中可用，但尚未在政府云中提供。
 - ExpressRoute 和 VPN 网关不能在启用 IPv6 的 VNET 中使用，直接使用或与"使用远程网关"对等。 
 - Azure 平台（AKS 等）不支持容器的 IPv6 通信。  
 

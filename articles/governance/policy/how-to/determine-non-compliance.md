@@ -4,10 +4,10 @@ description: 有多种可能的原因会导致资源不合规。 了解如何查
 ms.date: 04/26/2019
 ms.topic: how-to
 ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 03/30/2020
 ms.locfileid: "79264630"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
@@ -214,7 +214,7 @@ _视觉差异_可帮助识别资源的更改。 检测到的更改可能与资�
 
 - 查看[Azure 策略示例](../samples/index.md)中的示例。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
-- 回顾[了解政策效果](../concepts/effects.md)。
+- 查看[了解策略效果](../concepts/effects.md)。
 - 了解如何[以编程方式创建策略](programmatically-create.md)。
 - 了解如何[获取合规性数据](get-compliance-data.md)。
 - 了解如何[修复不合规资源](remediate-resources.md)。

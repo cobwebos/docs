@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 381aad5d0a56362d9966ed54b931a8478f2f6bf2
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500605"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410502"
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
 
@@ -22,9 +22,9 @@ ms.locfileid: "77500605"
 
 点到站点 VPN 可使用以下协议之一：
 
-* **OpenVPN® 协议**，一种基于 SSL/TLS 的 VPN 协议。 由于大多数防火墙都会打开 SSL 所用的出站 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 10.13 及更高版本）进行连接。
+* **OpenVPN® 协议**，一种基于 SSL/TLS 的 VPN 协议。 TLS VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 TLS 使用的 TCP 端口 443 出站。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 10.13 及更高版本）进行连接。
 
-* 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 由于大多数防火墙都会打开 SSL 所用的出站 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
+* 安全套接字隧道协议 （SSTP），一种基于 TLS 的专有 VPN 协议。 TLS VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 TLS 使用的 TCP 端口 443 出站。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
 
 * IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（OSX 10.11 和更高版本）。
 
@@ -102,7 +102,7 @@ RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 
 
 **IKEv2**
 
-|**Cipher** | **诚信** | **PRF** | **DH 组** |
+|**Cipher** | **完整性** | **PRF** | **DH 组** |
 |---        | ---           | ---       | ---   |
 |GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_24 |
 |GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_14 |
@@ -124,7 +124,7 @@ RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 
 
 **Ipsec**
 
-|**Cipher** | **诚信** | **PFS 组** |
+|**Cipher** | **完整性** | **PFS 组** |
 |---        | ---           | ---       |
 |GCM_AES256 | GCM_AES256 | GROUP_NONE |
 |GCM_AES256 | GCM_AES256 | GROUP_24 |

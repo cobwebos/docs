@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: 60c3a7f4f12993f475b3d03fd0915971d7673a5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80143100"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398360"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>从 SSTP 过渡到 OpenVPN 协议或 IKEv2
 
@@ -33,7 +33,7 @@ ms.locfileid: "80143100"
 >P2S 的 IKEv2 和 OpenVPN 仅可用于资源管理器部署模型。 它们不可用于经典部署模型。 基本网关 SKU 不支持 IKEv2 或 OpenVPN 协议。 如果使用基本 SKU，则必须删除并重新创建生产 SKU 虚拟网络网关。
 >
 
-## <a name="migrating-from-sspt-to-ikev2-or-openvpn"></a>从 SSPT 迁移到 IKEv2 或 OpenVPN
+## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>从 SSTP 迁移到 IKEv2 或 OpenVPN
 
 在某些情况下，您可能希望支持到 VPN 网关的 128 个并发 P2S 连接，但使用 SSTP。 在这种情况下，您需要迁移到 IKEv2 或 OpenVPN 协议。
 
@@ -96,7 +96,7 @@ ms.locfileid: "80143100"
 
 **IKEv2**
 
-|**Cipher** | **诚信** | **PRF** | **DH 组** |
+|**Cipher** | **完整性** | **PRF** | **DH 组** |
 |---        | ---            | ---        | ---     |
 |GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_24 |
 |GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_14 |
@@ -118,7 +118,7 @@ ms.locfileid: "80143100"
 
 **Ipsec**
 
-|**Cipher** | **诚信** | **PFS 组** |
+|**Cipher** | **完整性** | **PFS 组** |
 |---        | ---            | ---        |
 |GCM_AES256    | GCM_AES256 | GROUP_NONE |
 |GCM_AES256    | GCM_AES256 | GROUP_24 |

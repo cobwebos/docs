@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 3/18/2020
-ms.openlocfilehash: a35a586a519ff78e8b32d986b92bd008b2c6b858
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.date: 3/30/2020
+ms.openlocfilehash: 59b8753007c3b9130c397dda30c571580cbb5326
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067869"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411091"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何在 Azure Database for MySQL 中使用 sys_schema 进行性能优化和数据库维护
 
@@ -60,6 +60,9 @@ IO 是数据库中开销最高的操作。 我们可以通过查询 *sys.user_su
 ## <a name="database-maintenance"></a>数据库维护
 
 ### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
+
+[!IMPORTANT]
+> 查询此视图可能会影响性能。 建议在非高峰工作时间执行此故障排除。
 
 InnoDB 缓冲池驻留在内存中，是 DBMS 与存储之间的主要缓存机制。 InnoDB 缓冲池大小与性能层密切相关，除非选择不同的产品 SKU，否则不能更改。 与操作系统中的内存一样，旧页面将被换出，以便为较新数据留出空间。 若要了解哪些表占用了大部分 InnoDB 缓冲池内存，可以查询 *sys.innodb_buffer_stats_by_table* 视图。
 

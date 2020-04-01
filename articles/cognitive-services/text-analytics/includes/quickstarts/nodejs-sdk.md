@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: ee1e3cbade33f1786e8b93a549d19b87eba189e7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: a0616a8a2cc401b6b4c42c9882c14da2f123c6df
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79203387"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79481868"
 ---
 <a name="HOLTop"></a>
 
@@ -33,9 +33,9 @@ ms.locfileid: "79203387"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版本的 [Node.js](https://nodejs.org/)。
-* 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。 
-    * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 稍后会在本快速入门中执行此操作。
-    * 可以使用免费定价层试用该服务，然后再升级到付费层进行生产。
+* 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。 部署后，单击“转到资源”  。
+    * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
 ## <a name="setting-up"></a>设置
 
@@ -44,7 +44,9 @@ ms.locfileid: "79203387"
 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为应用创建一个新目录并导航到该目录。 
 
 ```console
-mkdir myapp && cd myapp
+mkdir myapp 
+
+cd myapp
 ```
 
 运行 `npm init` 命令以使用 `package.json` 文件创建一个 node 应用程序。 

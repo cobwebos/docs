@@ -1,6 +1,6 @@
 ---
 title: Azure VM 来宾 OS 防火墙配置不正确 | Microsoft Docs
-description: ''
+description: 了解如何使用串行控制台或脱机方法在远程 Azure VM 上诊断和修复配置错误的来宾操作系统防火墙。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 8f04d943e1db49beed13c183fbd06e401546fc03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6f42bdf462ac5261f77bc05c62e50500345fe37
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71153894"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422533"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM 来宾 OS 防火墙配置不正确
 

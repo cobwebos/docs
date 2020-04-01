@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: ea0a9de5dde02b45ae34e3e98e24b31fd01fa713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f782985d975dd137aa2da48d12757685b47e62b1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235826"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421266"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2
 
@@ -33,7 +33,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 由�
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* Azure 订阅。 如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/)。"
 * 其中有数据的 Azure Data Lake Storage Gen1 帐户。
 * 启用了数据存储第 2 代的 Azure 存储帐户。 如果没有存储帐户，请[创建一个帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。
 
@@ -53,7 +53,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 由�
     * **版本**：选择“V2”****.
     * **位置**：选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 
 
-3. 选择 **“创建”**。
+3. 选择“创建”  。
 4. 创建完成后，转到数据工厂。 此时会看到“数据工厂”**** 主页，如下图所示： 
    
    ![数据工厂主页](./media/load-azure-data-lake-storage-gen2-from-gen1/data-factory-home-page.png)
@@ -78,9 +78,9 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 由�
     
 5. 在 **"指定 Azure 数据存储湖存储第 1 代连接"页上**，按照以下步骤操作：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择你的 Data Lake Storage Gen1 作为帐户名称，并指定或验证**租户**。
+   a. 选择你的 Data Lake Storage Gen1 作为帐户名称，并指定或验证**租户**。
   
-   b.保留“数据库类型”设置，即设置为“共享”。 选择 **"测试连接**"以验证设置。 然后选择“完成”****。
+   b. 选择 **"测试连接**"以验证设置。 然后选择“完成”****。
   
    c. 您将看到已创建新连接。 选择“下一步”。
    
@@ -103,9 +103,9 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 由�
 
 9. 在 **"指定 Azure 数据存储湖存储 Gen2"连接**页上，按照以下步骤操作：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 从 **"存储帐户名称**"下拉列表中选择支持数据存储湖存储 Gen2 的帐户。
+   a. 从 **"存储帐户名称**"下拉列表中选择支持数据存储湖存储 Gen2 的帐户。
    
-   b.保留“数据库类型”设置，即设置为“共享”。 选择“完成”**** 以创建连接。 然后选择 **"下一步**"。
+   b. 选择“完成”**** 以创建连接。 然后选择 **"下一步**"。
    
    ![指定 Azure Data Lake Storage Gen2 帐户](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 
@@ -146,7 +146,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 由�
 
 使用概念验证来验证端到端解决方案并测试环境中的复制吞吐量。 主要的概念验证步骤： 
 
-1. 创建一个数据工厂管道，具有单个复制活动，以将数据湖存储 Gen1 复制到数据湖存储 Gen2 中的多个 TB，以获得复制性能基准。 从[数据集成单元 （DIUs）](copy-activity-performance.md#data-integration-units)开始，为 128。 
+1. 创建一个数据工厂管道，具有单个复制活动，以将数据湖存储 Gen1 复制到数据湖存储 Gen2 中的多个 TB，以获得复制性能基准。 从[数据集成单元 （DIUs）](copy-activity-performance-features.md#data-integration-units)开始，为 128。 
 2. 根据步骤 1 中的副本吞吐量，计算整个数据迁移所需的估计时间。 
 3. （可选）创建控制表并定义文件筛选器以对要迁移的文件进行分区。 对文件进行分区的方法是： 
 

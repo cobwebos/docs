@@ -7,14 +7,14 @@ manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 03/31/2020
 ms.author: kfollis
-ms.openlocfilehash: 28a29bbb94f63657a69e873bb8f969e96ee92c76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b68b6ddf19d6b07475e7009b47e162bfb2d0d2f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248484"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478981"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>如何创建 Azure 支持请求
 
@@ -43,7 +43,7 @@ Azure 使您能够创建和管理支持请求（也称为支持票证）。 您�
 
 ### <a name="role-based-access-control"></a>基于角色的访问控制
 
-要创建支持请求，您必须是管理员，或者被分配到订阅级别的["支持请求参与者"](../../role-based-access-control/built-in-roles.md#support-request-contributor)角色。
+要创建支持请求，您必须是[所有者](../../role-based-access-control/built-in-roles.md#owner)、[参与者](../../role-based-access-control/built-in-roles.md#contributor)或分配到订阅级别的["支持请求参与者"](../../role-based-access-control/built-in-roles.md#support-request-contributor)角色。 要创建没有订阅的支持请求（例如 Azure 活动目录 （AAD） 方案），您必须是[管理员](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
 ### <a name="go-to-help--support-from-the-global-header"></a>转到"帮助" 从全局标头获得支持
 

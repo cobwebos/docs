@@ -3,14 +3,14 @@ title: 查询 Azure 更新管理日志
 description: 本文介绍如何在日志分析工作区中查询日志以进行更新管理。
 services: automation
 ms.subservice: update-management
-ms.date: 03/11/2020
+ms.date: 03/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 863016bbeda9b4aec3bf2b4e12830bd30098150f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79216852"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437842"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>在 Azure 监视器日志中查询更新管理记录
 
@@ -26,7 +26,7 @@ ms.locfileid: "79216852"
 
 创建具有 类型的`RequiredUpdate`记录，表示计算机所需的更新。 这些记录的属性在下表中列出：
 
-| properties | 描述 | 
+| properties | 说明 | 
 |----------|-------------|
 | Computer | 报告机的完全限定域名。 |
 | KBID | Windows 更新的知识库文章 ID。 |
@@ -47,7 +47,7 @@ ms.locfileid: "79216852"
 
 `Update`将创建一个记录，该记录表示计算机可用的更新及其安装状态。 这些记录的属性在下表中列出：
 
-| properties | 描述 | 
+| properties | 说明 | 
 |----------|-------------|
 | 批准来源 | 仅适用于 Windows 操作系统。 价值是*微软更新*。 |
 | 已批准 | *真**假* |
@@ -84,7 +84,7 @@ ms.locfileid: "79216852"
 
 将创建具有 类型的`UpdateAgent`记录，该记录提供计算机上的更新代理的详细信息。 这些记录的属性在下表中列出：
 
-| properties | 描述 | 
+| properties | 说明 | 
 |----------|-------------|
 | 最旧缺失的一年年龄需要更新 | | 
 | AutomaticUpdateEnabled | | 
@@ -105,7 +105,7 @@ ms.locfileid: "79216852"
 
 将创建具有 类型的`UpdateRunProgress`记录，该记录按计算机提供计划部署的更新部署状态。 这些记录的属性在下表中列出：
 
-| properties | 描述 | 
+| properties | 说明 | 
 |----------|-------------|
 | Computer | 报告机的完全限定域名。 |
 | 计算机环境 | *Azure* *或非 Azure*。 | 
@@ -137,14 +137,14 @@ ms.locfileid: "79216852"
 
 将创建具有 类型的`UpdateSummary`记录，该记录按计算机提供更新摘要。 这些记录的属性在下表中列出：
 
-| properties | 描述 | 
+| properties | 说明 | 
 |----------|-------------|
 | Computer | 报告机的完全限定域名。 |
 | 计算机环境 | *Azure* *或非 Azure*。 | 
 | CriticalUpdatesMissing | 缺少的关键更新数。 | 
 | ManagementGroupName | 操作管理器管理组或日志分析工作区的名称。 |
 | NETRuntimeVersion | 在 Windows 计算机上安装的 .NET 框架的版本。 |
-| OldestMissingSecurityUpdateBucket | 值为：<br> *最近*<br> *30 天前*<br> *60 天前*<br> *更低版本* | 
+| OldestMissingSecurityUpdateBucket | 值为：<br> *最近*如果值小于 30 天<br> *30 天前*<br> *60 天前*<br> *90 天前*<br> *120 天前*<br> *150 天前*<br> *180 天前*<br> 值大于 180 天时*较旧* | 
 | OldestMissingSecurityUpdateInDays | 检测到的未安装的最早更新的总天数。 |
 | OsVersion | 操作系统的版本。 |
 | OtherUpdatesMissing | 缺少检测到的更新计数。 |

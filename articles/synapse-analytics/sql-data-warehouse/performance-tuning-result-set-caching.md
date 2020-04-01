@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 0c2190c29054301a8e21a9a27eb078802fbc9612
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: da476dc14949ebab1a054a9624d91acb25b9f2b4
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350862"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474476"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用结果集缓存优化性能  
 启用结果集缓存后，SQL Analytics 会自动缓存用户数据库中的查询结果，以便重复使用。  这样，后续的查询执行就能直接从持久性缓存中获取结果，因此无需重新计算。   结果集缓存提高了查询性能，并减少了计算资源的用量。  此外，使用缓存结果集的查询不会占用任何并发槽，因此不会计入现有的并发限制。 出于安全考虑，如果访问方用户的数据访问权限与创建缓存结果的用户相同，则访问方用户只能访问缓存的结果。  
@@ -65,10 +65,10 @@ WHERE request_id  = <'request_id'>;
 - 新查询与生成结果集缓存的上一个查询之间存在完全匹配。
 - 生成缓存结果集的表中没有任何数据或架构更改。
 
-运行此命令以检查所执行的查询的结果缓存是命中还是失误。 如果是缓存命中，则 result_cache_hit 将返回 1。
+运行此命令以检查所执行的查询的结果缓存是命中还是失误。 result_set_cache列返回 1 表示缓存命中，0 表示缓存未命中，负值返回，以说明未使用结果集缓存的原因。 有关详细信息[，请查看 sys.dm_pdw_exec_requests。](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7)
 
 ```sql
-SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests 
+SELECT request_id, command, result_set_cache FROM sys.dm_pdw_exec_requests
 WHERE request_id = <'Your_Query_Request_ID'>
 ```
 

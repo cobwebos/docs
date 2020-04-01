@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282635"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435632"
 ---
 # <a name="protect-your-machines-and-applications"></a>保护计算机和应用程序
 在 Azure 安全中心识别出潜在的安全漏洞时，它会创建建议，指导你完成配置所需控件以强化和保护资源的过程。
@@ -84,18 +84,18 @@ ms.locfileid: "79282635"
 
 
 
-### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>虚拟机缩放集
-安全中心会自动发现你是否有规模集，并会建议你在其上安装 Microsoft Monitoring Agent。
+### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>虚拟机规模集
+安全中心会自动发现您是否具有缩放集，并建议您在其中安装日志分析代理。
 
-若要安装 Microsoft Monitoring Agent，请执行以下操作： 
+要安装日志分析代理： 
 
 1. 选择建议“在虚拟机规模集上安装监视代理”。**** 你会获得未收监视的规模集的列表。
 
-1. 选择不正常的规模集。 按照说明操作，使用现有的已填充工作区或新建的工作区安装监视代理。 确保设置工作区[定价层](security-center-pricing.md)（如果尚未设置）。
+1. 选择不正常的规模集。 按照说明操作，使用现有的已填充工作区或新建的工作区安装监视代理。 如果未设置工作区[定价层](security-center-pricing.md)，请确保设置该层。
 
    ![安装 MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-若要将新规模集设置为自动安装 Microsoft Monitoring Agent，请执行以下操作：
+要设置新的规模集以自动安装日志分析代理，请执行以下规定：
 1. 转到 Azure Policy，单击“定义”。****
 
 1. 搜索策略“为 Windows 虚拟机规模集部署 Log Analytics 代理”，然后单击它。****
@@ -104,7 +104,7 @@ ms.locfileid: "79282635"
 
 1. 设置“范围”和“Log Analytics 工作区”，然后单击“分配”。************
 
-若要将所有现有的规模集设置为安装 Microsoft Monitoring Agent，请在 Azure Policy 中转到“修正”，将现有的策略应用到现有的规模集。****
+如果要将所有现有规模集设置为安装日志分析代理，请在 Azure 策略中转到 **"修正"** 并将现有策略应用于现有规模集。
 
 
 
@@ -195,7 +195,7 @@ ms.locfileid: "79282635"
 
 安全中心扫描 Docker 配置，并提供已评估的所有失败规则列表让你洞察错误配置。 安全中心提供指导来帮助你快速解决这些问题，因此可节省时间。 安全中心持续评估 Docker 配置，并提供其最新状态。
 
-![容器选项卡](./media/security-center-container-recommendations/container-cis-benchmark.png)
+![容器选项卡](./media/security-center-virtual-machine-recommendations/container-cis-benchmark.png)
 
 
 ## <a name="next-steps"></a>后续步骤

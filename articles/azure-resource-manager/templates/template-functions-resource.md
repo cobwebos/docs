@@ -2,13 +2,13 @@
 title: 模板函数 - 资源
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: e9e1d700282652304f0bede5e697ba8625f5a5d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: 641602218aa19b790eb6e7feabdb7b46a520b590
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156287"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478273"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
@@ -170,8 +170,8 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 | Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/domains/listsharedaccesskeys) |
-| Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/topics/listsharedaccesskeys) |
+| Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
+| Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
 | Microsoft.EventHub/namespaces/authorizationRules | [列表键](/rest/api/eventhub/namespaces/listkeys) |
 | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [列表键](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
 | Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [列表键](/rest/api/eventhub/eventhubs/listkeys) |
@@ -896,12 +896,12 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+| sameRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | 字符串 | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
 ## <a name="subscription"></a>订阅
 

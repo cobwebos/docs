@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 513a0f28fc03cbf24e35112245c9756d5ce00783
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954669"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478291"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>为基于 IIS 的多层 Web 应用程序设置灾难恢复
 
 应用程序软件是组织中业务生产力的引擎。 各种 Web 应用程序可在组织中发挥不同的作用。 某些应用程序，例如工资单处理应用程序、财务应用程序和面向客户的网站，对于组织而言可能至关重要。 组织必须不间断地运转这些应用程序以防止工作中断。 更重要的是，使这些应用程序保持连续运行有助于防止组织的品牌形象受到损害。
 
-关键的 Web 应用程序通常设置为多层应用程序，其 Web、数据库和应用程序分别位于不同的层。 除了分散在不同的层以外，应用程序还可以在每个层中使用多个服务器来对流量进行负载均衡。 此外，各个层之间以及 Web 服务器上的映射可以基于静态 IP 地址。 故障转移时，其中的某些映射需要更新，尤其是在 Web 服务器上配置了多个网站时。 如果 Web 应用程序使用 SSL，则必须更新证书绑定。
+关键的 Web 应用程序通常设置为多层应用程序，其 Web、数据库和应用程序分别位于不同的层。 除了分散在不同的层以外，应用程序还可以在每个层中使用多个服务器来对流量进行负载均衡。 此外，各个层之间以及 Web 服务器上的映射可以基于静态 IP 地址。 故障转移时，其中的某些映射需要更新，尤其是在 Web 服务器上配置了多个网站时。 如果 Web 应用程序使用 TLS，则必须更新证书绑定。
 
 不是以复制为基础的传统恢复方法涉及到备份各种配置文件、注册表设置、绑定、自定义组件（COM 或 .NET）、内容和证书。 此外，需要通过一系列手动步骤恢复文件。 传统的文件备份和手动恢复方法非常繁琐、容易出错且没有弹性。 例如，我们经常忘记备份证书。 故障转移后，我们别无他法，只能为服务器购买新证书。
 
@@ -118,22 +118,22 @@ Azure|NA|是
 >
 > 如果将站点绑定设置为“全部取消分配”，则故障转移后不需要更新此绑定。**** 此外，如果与站点关联的 IP 地址在故障转移后未发生未更改，则不需要更新站点绑定。 （能否保留 IP 地址取决于网络体系结构以及分配给主站点和恢复站点的子网。 因此，在组织中不一定能够使用绑定。）
 
-![演示如何设置 SSL 绑定的屏幕截图](./media/site-recovery-iis/sslbinding.png)
+![显示设置 TLS/SSL 绑定的屏幕截图](./media/site-recovery-iis/sslbinding.png)
 
 如果将 IP 地址关联到了某个站点，请使用新 IP 地址更新所有站点绑定。 若要更改站点绑定，请在恢复计划中的“组 3”后面添加 [IIS Web 层更新脚本](https://aka.ms/asr-web-tier-update-runbook-classic)。
 
 #### <a name="update-the-load-balancer-ip-address"></a>更新负载均衡器 IP 地址
 如果使用 ARR 虚拟机，请在“组 4”后面添加 [IIS ARR 故障转移脚本](https://aka.ms/asr-iis-arrtier-failover-script-classic)来更新 IP 地址。
 
-#### <a name="ssl-certificate-binding-for-an-https-connection"></a>用于 HTTPS 连接的 SSL 证书绑定
-网站可与 SSL 证书关联，帮助确保在 Web 服务器与用户浏览器之间实现安全通信。 如果网站有一个 HTTPS 连接，并且将一个 HTTPS 站点绑定关联到了具有 SSL 证书绑定的 IIS 服务器的 IP 地址，则故障转移后，必须使用 IIS 虚拟机的 IP 地址来为证书添加新的站点绑定。
+#### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>用于 HTTPS 连接的 TLS/SSL 证书绑定
+网站可能具有关联的 TLS/SSL 证书，有助于确保 Web 服务器和用户浏览器之间的安全通信。 如果网站具有 HTTPS 连接，并且具有与具有 TLS/SSL 证书绑定的 IIS 服务器 IP 地址绑定的关联 HTTPS 站点，则必须为证书添加新站点绑定，该证书具有 IIS 虚拟机故障转移后的 IP 地址。
 
-可针对以下组件颁发 SSL 证书：
+TLS/SSL 证书可以针对以下组件颁发：
 
 * 网站的完全限定域名。
 * 服务器的名称。
 * 域名的通配符证书。  
-* IP 地址。 如果 SSL 证书是针对 IIS 服务器的 IP 地址颁发的，则需要针对 Azure 站点上 IIS 服务器的 IP 地址颁发另一个 SSL 证书。 需要为此证书创建另一个 SSL 绑定。 因此，我们建议不要使用针对 IP 地址颁发的 SSL 证书。 此选项不太常用，根据新证书颁发机构/浏览器论坛中所述的更改，此选项即将停用。
+* IP 地址。 如果针对 IIS 服务器的 IP 地址颁发的 TLS/SSL 证书，则需要针对 Azure 站点上的 IIS 服务器的 IP 地址颁发另一个 TLS/SSL 证书。 需要为此证书创建其他 TLS 绑定。 因此，我们建议不要使用针对 IP 地址颁发的 TLS/SSL 证书。 此选项不太常用，根据新证书颁发机构/浏览器论坛中所述的更改，此选项即将停用。
 
 #### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>更新 Web 层与应用层之间的依赖关系
 如果存在基于虚拟机 IP 地址的应用程序特定依赖关系，则故障转移后必须更新此依赖关系。

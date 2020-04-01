@@ -3,12 +3,12 @@ title: 恢复服务保管库概述
 description: 恢复服务保管库和 Azure 备份保管库的概述和比较。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6a359287533c9ffdd688b5285b24b9c70fa7b7f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673239"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436964"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
@@ -18,7 +18,7 @@ ms.locfileid: "78673239"
 
 ## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>比较恢复服务保管库和备份保管库
 
-如果仍然使用备份保管库，它们将自动升级到恢复服务保管库。 在 2017 年 11 月 之前，所有备份保管库均已升级到恢复服务保管库。
+如果仍有备份保管库，则它们正在自动升级到恢复服务保管库。 在 2017 年 11 月 之前，所有备份保管库均已升级到恢复服务保管库。
 
 恢复服务保管库基于 Azure 的 Azure 资源管理器模型，而备份保管库则基于 Azure Service Manager 模型。 将备份保管库升级到恢复服务保管库时，备份数据在升级过程中和升级后均会保持不变。 恢复服务保管库提供不适用于备份保管库的功能，例如：
 
@@ -32,11 +32,19 @@ ms.locfileid: "78673239"
 
 - **适用于 IaaS VM 的即时还原**：使用恢复服务保管库时，可以从 IaaS VM 还原文件和文件夹，不需还原整个 VM，从而缩短还原时间。 适用于 IaaS VM 的即时还原可供 Windows 和 Linux VM 使用。 [了解详细信息](backup-instant-restore-capability.md)
 
+## <a name="storage-settings-in-the-recovery-services-vault"></a>恢复服务保管库中的存储设置
+
+恢复服务保管库是用于存储在不同时间创建的备份和恢复点的实体。 恢复服务保管库还包含与受保护虚拟机关联的备份策略。
+
+Azure 备份会自动处理保管库的存储。 了解如何[更改存储设置](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)。
+
+要了解有关存储冗余的更多详细信息，请参阅有关[地理](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)和[本地](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)冗余的这些文章。
+
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>在门户中管理恢复服务保管库
 
 在 Azure 门户中创建和管理恢复服务保管库很容易，因为备份服务可集成到其他 Azure 服务中。 这种集成意味着，可以在目标服务上下文中** 创建和管理恢复服务保管库。 例如，若要查看 VM 的恢复点，请选中该 VM，并在“操作”菜单中单击“备份”。****
 
-![VM 中的恢复服务保管库详细信息](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
+![恢复服务保管库详细信息 VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
 如果 VM 未配置备份，则会提示你配置备份。 如果已配置备份，你将看到有关 VM 的备份信息，包括还原点列表。  
 

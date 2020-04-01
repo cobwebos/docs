@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73748552"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478304"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题
 
@@ -42,16 +42,16 @@ ms.locfileid: "73748552"
     3. 确保从防病毒软件中排除[要从防病毒程序中排除的 Site Recovery 文件夹](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)中列出的文件夹。
     4. 解决网络问题后，遵照[将源计算机注册到配置服务器](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)中的指导原则重试注册。
 
-6. 如果字符串**发布请求： （7） - 找不到无法连接到服务器**，则在同一日志文件中查找字符串**请求：（60） - 无法使用给定的 CA 证书对等证书进行身份验证**。 如果配置服务器证书已过期，或者源计算机不支持 TLS 1.0 或更高版本的 SSL 协议，则可能会发生此错误。 如果防火墙阻止了源计算机与配置服务器之间的 SSL 通信，则也可能会发生此错误。 如果找到了该字符串： 
+6. 如果字符串**发布请求： （7） - 找不到无法连接到服务器**，则在同一日志文件中查找字符串**请求：（60） - 无法使用给定的 CA 证书对等证书进行身份验证**。 出现此错误的原因是配置服务器证书已过期或源计算机不支持 TLS 1.0 或更高版本的协议。 如果防火墙阻止源计算机和配置服务器之间的 TLS 通信，也可能发生此情况。 如果找到了该字符串： 
     1. 若要解决此问题，请在源计算机上使用 Web 浏览器连接到配置服务器 IP 地址。 请使用 URI https:\/\/<配置服务器 IP 地址\>:443/。 确保源计算机可以通过端口 443 访问配置服务器。
     2. 检查是否需要在源计算机上添加或删除任何防火墙规则，使源计算机能够与配置服务器通信。 由于使用的防火墙软件多种多样，我们无法列出全部所需的防火墙配置。 咨询网络管理员来消除任何连接问题。
     3. 确保从防病毒软件中排除[要从防病毒程序中排除的 Site Recovery 文件夹](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)中列出的文件夹。  
     4. 解决问题后，遵照[将源计算机注册到配置服务器](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)中的指导原则重试注册。
 
 7. 在 Linux 上，如果 <INSTALLATION_DIR\>/etc/drscout.conf 中的平台值已损坏，则注册将会失败。 若要识别此问题，请打开 /var/log/ua_install.log 文件。 搜索字符串 **Aborting configuration as VM_PLATFORM value is either null or it is not VmWare/Azure**。 平台应设置为 **VmWare** 或 **Azure**。 如果 drscout.conf 文件已损坏，我们建议[卸载移动代理](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)，然后重新安装移动代理。 如果卸载失败，请完成以下步骤：a. 打开 Installation_Directory/uninstall.sh 文件，并注释掉对 **StopServices** 函数的调用。
-    b.保留“数据库类型”设置，即设置为“共享”。 打开 Installation_Directory/Vx/bin/uninstall.sh 文件，并注释掉对 **stop_services** 函数的调用。
+    b. 打开 Installation_Directory/Vx/bin/uninstall.sh 文件，并注释掉对 **stop_services** 函数的调用。
     c. 打开 Installation_Directory/Fx/uninstall.sh 文件，并注释掉尝试停止 Fx 服务的整个节。
-    d.单击“下一步”。 [卸载](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)移动代理。 成功卸载后，重新启动系统，然后尝试安装移动代理。
+    d. [卸载](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)移动代理。 成功卸载后，重新启动系统，然后尝试安装移动代理。
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>安装失败：加载帐户失败
 

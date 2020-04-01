@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249160"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408494"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了 Azure 监视器监视的不同应用程序和服务。 
@@ -23,7 +23,7 @@ ms.locfileid: "79249160"
 
 Insights 在 Azure Monitor 中为特定的应用程序和服务提供了自定义的监视体验。 它们收集和分析日志和指标。
 
-| 见解 | 描述 |
+| 见解 | 说明 |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | 可扩展应用程序性能管理 （APM） 服务，用于在任何平台上监视实时 Web 应用程序。 |
 | [容器的 Azure 监视器](insights/container-insights-overview.md) | 监视部署到 Azure 容器实例或托管在 Azure 库伯奈斯服务 （AKS） 上托管的托管库伯奈斯群集的容器工作负载的性能。 |
@@ -37,7 +37,7 @@ Insights 在 Azure Monitor 中为特定的应用程序和服务提供了自定�
 
 解决方案基于为特定应用程序或服务自定义的日志查询和视图。 他们只收集和分析日志，并且随着时间的推移被弃用，以获得见解。
 
-| 解决方案 | 描述 |
+| 解决方案 | 说明 |
 |:---|:---|
 | [代理运行状况](insights/solution-agenthealth.md) | 分析日志分析代理的运行状况和配置。 |
 | [警报管理](platform/alert-management-solution.md) | 分析从系统中心运营经理、纳吉奥斯或扎比克斯收集的警报。 |
@@ -172,12 +172,12 @@ Insights 在 Azure Monitor 中为特定的应用程序和服务提供了自定�
 ## <a name="product-integrations"></a>产品集成
 下表中的服务和解决方案将其数据存储在日志分析工作区中，以便可以使用 Azure 监视器收集的其他日志数据对其进行分析。
 
-| 产品/服务 | 描述 |
+| 产品/服务 | 说明 |
 |:---|:---|
 | [Azure 自动化](/azure/automation/) | 管理操作系统更新并跟踪 Windows 和 Linux 计算机上的更改。 请参阅[更改跟踪](../automation/change-tracking.md)和[更新管理](../automation/automation-update-management.md)。 |
 | [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/) | 对文档和电子邮件进行分类并选择性地保护文档和电子邮件。 请参阅[Azure 信息保护的中央报告](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)。 |
 | [Azure 安全中心](/azure/security-center/) | 收集和分析安全事件并执行威胁分析。 请参阅[Azure 安全中心中的数据收集](/azure/security-center/security-center-enable-data-collection) |
-| [Azure 哨兵](/azure/sentinel/) | 连接到不同的来源，包括 Office 365 和 Amazon Web 服务云跟踪。 请参阅[连接数据源](/azure/sentinel/connect-data-sources)。 |
+| [Azure Sentinel](/azure/sentinel/) | 连接到不同的来源，包括 Office 365 和 Amazon Web 服务云跟踪。 请参阅[连接数据源](/azure/sentinel/connect-data-sources)。 |
 | [密钥保管库分析](insights/azure-key-vault.md) | 分析 Azure 密钥保管库审核事件日志。 |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | 创建诊断设置以将日志发送到 Azure 监视器。 请参阅[在 Intune（预览）中将日志数据发送到存储、事件中心或日志分析](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor)。  |
 | 网络  | [网络性能监视器](insights/network-performance-monitor.md)- 监控与服务和应用程序终结点的网络连接和性能。<br>[Azure 应用程序网关](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor)- 分析 Azure 应用程序网关的日志和指标。<br>[流量分析](/azure/network-watcher/traffic-analytics)- 分析网络观察程序网络安全组 （NSG） 流日志，以便深入了解 Azure 云中的流量流。 |
@@ -194,11 +194,11 @@ Insights 在 Azure Monitor 中为特定的应用程序和服务提供了自定�
 ## <a name="other-solutions"></a>其他解决方案
 其他解决方案可用于监视不同的应用程序和服务，但主动开发已经停止，并且可能无法在所有区域可用。 它们由 Azure 日志分析数据引入服务级别协议涵盖。
 
-| 解决方案 | 描述 |
+| 解决方案 | 说明 |
 |:---|:---|
 | [活动目录运行状况检查](insights/ad-assessment.md) | 评估活动目录环境的风险和运行状况。 |
 | [活动目录复制状态](insights/ad-replication-status.md) | 定期监视活动目录环境，以监视任何复制失败。 |
-| [活动日志分析](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | 使用预定义的日志查询和视图分析活动日志条目。 |
+| [活动日志分析](platform/activity-log-view.md#azure-portal) | 查看活动日志条目。 |
 | [DNS 分析（预览）](insights/dns-analytics.md) | 从 DNS 服务器收集、分析和关联 Windows DNS 分析和审核日志以及其他相关数据。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 跨多个部署收集、查看和分析云铸造系统运行状况和性能指标。 |
 | [容器](insights/containers.md) | 查看和管理 Docker 和 Windows 容器主机。 |
@@ -209,7 +209,7 @@ Insights 在 Azure Monitor 中为特定的应用程序和服务提供了自定�
 
 ## <a name="third-party-integration"></a>第三方集成
 
-| 解决方案 | 描述 |
+| 解决方案 | 说明 |
 |:---|:---|
 | [ITSM](platform/itsmc-overview.md) | 使用 IT 服务管理连接器 (ITSMC) 可以连接 Azure 和支持的 IT 服务管理 (ITSM) 产品/服务。  |
 

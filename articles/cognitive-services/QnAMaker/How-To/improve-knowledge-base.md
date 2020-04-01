@@ -2,13 +2,13 @@
 title: 改进知识库 - QnA Maker
 description: 通过积极学习提高知识库的质量。 审核、接受或拒绝，添加而不删除或更改现有问题。
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 8b2176731ce456b70521cc9208435d0b19943ab8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: 1eb0ed42f700c14350a5e4f1eff9b7592cbf8ef6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053072"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474881"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>在知识库中接受主动学习建议的问题
 
@@ -127,7 +127,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP 请求属性|“属性”|类型|目的|
+|HTTP 请求属性|名称|类型|目的|
 |--|--|--|--|
 |URL 路由参数|知识库 ID|字符串|知识库的 GUID。|
 |自定义子域|QnAMaker 资源名称|字符串|资源名称用作 QnA Maker 的自定义子域。 在发布知识库后，"设置"页上提供了此功能。 它被列为 。 `host`|
@@ -203,7 +203,7 @@ JSON 正文的示例如下所示：
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>使用机器人框架 4.x 训练 API 的示例 C# 代码
 
-以下代码说明了如何使用训练 API 将信息发送回 QnA 制造商。 此[完整的代码示例](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-activelearning/csharp_dotnetcore)可在 GitHub 上使用。
+以下代码说明了如何使用训练 API 将信息发送回 QnA 制造商。
 
 ```csharp
 public class FeedbackRecords
@@ -266,7 +266,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 
 ### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>带有 Bot 框架 4.x 的火车 API 的示例 Node.js 代码
 
-以下代码说明了如何使用训练 API 将信息发送回 QnA 制造商。 此[完整的代码示例](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs)可在 GitHub 上使用。
+以下代码说明了如何使用训练 API 将信息发送回 QnA 制造商。
 
 ```javascript
 async callTrain(stepContext){

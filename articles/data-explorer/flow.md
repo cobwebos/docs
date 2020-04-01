@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/15/2020
-ms.openlocfilehash: 7745888dcaa1324d4a9d956e93d0504c8da8c026
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/25/2020
+ms.openlocfilehash: 198b78d5bab15057fdb6c7f6d4e8fff9f77d496e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501771"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397095"
 ---
 # <a name="microsoft-flow-connector-preview"></a>微软流连接器（预览版）
 
@@ -77,7 +77,7 @@ Azure 数据资源管理器流连接器允许 Azure 数据资源管理器使用[
 
 1. 在"生成计划流"页上输入所需信息。
     ![生成计划流](./media/flow/flow-build-scheduled-flow.png)
-1. 选择 **“创建”**。
+1. 选择“创建”  。
 1. 选择 **= 新步骤**。
 1. 在搜索框中，输入"库斯托"。
 
@@ -116,7 +116,7 @@ Azure 数据资源管理器流连接器允许 Azure 数据资源管理器使用[
 ### <a name="run-query-and-list-results"></a>运行查询和列表结果
 
 > [!Note]
-> 如果查询以点开头（表示它是[控件命令](https://docs.microsoft.com/azure/kusto/management/index)），请使用["运行"控件命令并可视化结果](#run-control-command-and-visualize-results)
+> 如果查询以点开头（表示它是[控件命令](https://docs.microsoft.com/azure/kusto/management/index)），请使用["运行"控件命令并可视化结果](#run-control-command-and-visualize-results)。
 
 此操作向 Kusto 群集发送查询。 之后添加的操作会迭代查询结果的每一行。
 
@@ -130,7 +130,7 @@ Azure 数据资源管理器流连接器允许 Azure 数据资源管理器使用[
 ### <a name="run-query-and-visualize-results"></a>运行查询并可视化结果
         
 > [!Note]
-> 如果查询以点开头（表示它是[控件命令](https://docs.microsoft.com/azure/kusto/management/index)），请使用["运行"控件命令并可视化结果](#run-control-command-and-visualize-results)
+> 如果查询以点开头（表示它是[控件命令](https://docs.microsoft.com/azure/kusto/management/index)），请使用["运行"控件命令并可视化结果](#run-control-command-and-visualize-results)。
         
 使用"运行"查询并可视化结果操作，将 Kusto 查询结果可视化为表或图表。 例如，使用此流通过电子邮件接收每日 ICM 报告。 
     
@@ -147,17 +147,21 @@ Azure 数据资源管理器流连接器允许 Azure 数据资源管理器使用[
 
 1. 选择 **" 新步骤**"可向流添加新步骤。
 1. 在搜索字段中，输入 Office 365 并选择**Office 365 Outlook**。
-1. 选择“发送电子邮件”****。
+1. 选择**发送电子邮件 （V2）。**
 1. 输入要发送电子邮件报告的电子邮件地址。
 1. 输入电子邮件的主题。
-1. 在 *"正文"* 字段中，从"动态内容"字段中选择 **"正文**"。
+1. 选择 **"代码"视图**。
+1. 将光标放在 *"正文"* 字段中，然后选择 **"添加动态内容**"。
+1. 选择**正文Html**。
+    ![发送电子邮件](./media/flow/flow-send-email.png)
 1. 选择 **"显示高级选项**"。
 1. 在*附件名称 -1*字段中，选择**附件名称**。
 1. 在 *"附件内容"* 字段中，选择**附件内容**。
+1. 如有必要，添加更多附件。 
 1. 如有必要，设置重要性级别。
-1. 选择“保存”。****
+1. 选择“保存”。 
 
-![发送电子邮件](./media/flow/flow-sendemail.png)
+![发送电子邮件](./media/flow/flow-add-attachments.png)
 
 ## <a name="check-if-your-flow-succeeded"></a>检查您的流是否成功
 

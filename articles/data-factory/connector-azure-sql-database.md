@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 52928b9a4d77a99f3d8b160713c7b4a7cade2d4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f5065a0f4a2a96a747a45f64e00e86f7990bfb8
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238773"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437797"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据
 
@@ -58,7 +58,7 @@ ms.locfileid: "80238773"
 
 Azure SQL 数据库链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | **类型**属性必须设置为**AzureSqlDatabase**。 | 是 |
 | connectionString | 指定连接到**连接String**属性的 Azure SQL 数据库实例所需的信息。 <br/>还可以将密码或服务主体密钥放在 Azure Key Vault 中。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
@@ -143,7 +143,7 @@ Azure SQL 数据库链接服务支持以下属性：
 4. 像通常对 SQL 用户或其他用户所做的那样向服务主体授予所需的权限。 运行以下代码。 有关更多选项，请参阅[本文档](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
 
     ```sql
-    EXEC sp_addrolemember [role name], [your application name];
+    ALTER ROLE [role name] ADD MEMBER [your application name];
     ```
 
 5. 在 Azure 数据工厂中配置 Azure SQL 数据库链接服务。
@@ -190,7 +190,7 @@ Azure SQL 数据库链接服务支持以下属性：
 3. 像通常对 SQL 用户和其他用户所做的那样向数据工厂托管标识授予所需的权限。 运行以下代码。 有关更多选项，请参阅[本文档](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
 
     ```sql
-    EXEC sp_addrolemember [role name], [your Data Factory name];
+    ALTER ROLE [role name] ADD MEMBER [your Data Factory name];
     ```
 
 4. 在 Azure 数据工厂中配置 Azure SQL 数据库链接服务。
@@ -219,7 +219,7 @@ Azure SQL 数据库链接服务支持以下属性：
 
 Azure SQL 数据库数据集支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集**的类型**属性必须设置为**AzureSqlTable**。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -255,7 +255,7 @@ Azure SQL 数据库数据集支持以下属性：
 
 若要从 Azure SQL 数据库复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **AzureSqlSource**。 为了向后兼容，仍然支持“SqlSource”类型。 | 是 |
 | sqlReaderQuery | 此属性使用自定义 SQL 查询来读取数据。 示例为 `select * from MyTable`。 | 否 |
@@ -362,7 +362,7 @@ GO
 
 将数据复制到 Azure SQL 数据库时，复制活动的 **sink** 节支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **AzureSqlSink**。 为了向后兼容，仍然支持“SqlSink”类型。 | 是 |
 | writeBatchSize | 每批要插入到 SQL 表中的行数。**<br/> 允许的值为 **integer**（行数）。 默认情况下，Azure 数据工厂会根据行大小动态确定适当的批大小。 | 否 |
@@ -635,7 +635,7 @@ END
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
-| sql_variant |Object |
+| sql_variant |对象 |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |

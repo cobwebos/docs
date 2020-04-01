@@ -5,12 +5,12 @@ ms.assetid: dabda633-e72f-4dd4-bf1c-6e945da456fd
 ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
-ms.openlocfilehash: 200effab70b369d69b4e89b1901578ecfe1a1b87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 040f84288c66f4506919e775b9ea41324b617cfa
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684104"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437902"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>使用 Azure 流量管理器控制 Azure 应用服务流量
 > [!NOTE]
@@ -18,7 +18,7 @@ ms.locfileid: "74684104"
 > 
 > 
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 可以使用 Azure 流量管理器来控制如何将来自 Web 客户端的请求分发到 Azure 应用服务中的应用。 将应用服务终结点添加到 Azure 流量管理器配置文件时，Azure 流量管理器会跟踪应用服务的状态（正在运行、已停止或已删除），以便确定那些终结点中有哪些应该接收流量。
 
 ## <a name="routing-methods"></a>路由方法
@@ -41,8 +41,9 @@ Azure 流量管理器使用四种不同的路由方法。 下面的列表中介�
 * 在一个配置文件中，只能为每个区域指定一个应用服务终结点。 当选择某个应用作为一个区域的终结点后，该区域中的其余应用对于该配置文件会变为不可选择状态。
 * 在 Azure 流量管理器配置文件中指定的应用服务终结点将出现在配置文件中应用“配置”页面的“域名”部分下，但无法在该位置进行配置。****
 * 在将应用添加到配置文件后，该应用门户页面的仪表板上的“网站 URL”会显示该应用的自定义域 URL（如果已经设置了一个）。**** 否则，它将显示流量管理器配置文件 URL（例如，`contoso.trafficmanager.net`）。 在应用的“配置”页面的“域名”部分下将可以看到应用的直接域名和流量管理器 URL****。
-* 自定义域名将正常工作，但除了将它们添加到应用之外，还必须配置 DNS 映射，使之指向流量管理器 URL。 有关如何为应用服务设置自定义域的信息，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](app-service-web-tutorial-custom-domain.md)。
+* 自定义域名将正常工作，但除了将它们添加到应用之外，还必须配置 DNS 映射，使之指向流量管理器 URL。 有关如何为应用服务应用设置自定义域的信息，请参阅[在 Azure 应用服务中使用流量管理器集成配置自定义域名](configure-domain-traffic-manager.md)。
 * 只能将标准或高级模式下的应用添加到 Azure 流量管理器配置文件。
+* 将应用添加到流量管理器配置文件会导致重新启动应用。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 流量管理器概念及技术方面的概述，请参阅[流量管理器概述](../traffic-manager/traffic-manager-overview.md)。

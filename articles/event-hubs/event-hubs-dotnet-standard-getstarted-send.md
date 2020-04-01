@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 1d399ffec2cd702dcfa39310803bc780b85bfde1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8124e9860ba5703e96f96c90bc0cf37e42baf9c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187466"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398347"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>使用 .NET Core (Microsoft.Azure.EventHubs) 向/从 Azure 事件中心发送/接收事件
 此快速入门演示如何使用**Microsoft.Azure.EventHubs** .NET 核心库向事件中心发送事件并从事件中心接收事件。
 
 > [!WARNING]
-> 本快速入门使用旧 **Microsoft.Azure.EventHubs** 包。 有关使用最新**Azure.消息传递.事件中心**库的快速入门，请参阅[使用 Azure.消息传递.事件中心库发送和接收事件](get-started-dotnet-standard-send-v2.md)。 要将应用程序从使用旧库移动到新库，请参阅[从 Microsoft.Azure.事件中心迁移到 Azure.消息器的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)。
+> 本快速入门使用旧 **Microsoft.Azure.EventHubs** 包。 有关使用最新**Azure.消息传递.事件中心**库的快速入门，请参阅[使用 Azure.消息传递.事件中心库发送和接收事件](get-started-dotnet-standard-send-v2.md)。 要将应用程序从使用旧库移动到新库，请参阅[从 Microsoft.Azure.事件中心迁移到 Azure.消息器的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
 
 ## <a name="prerequisites"></a>先决条件
 如果不熟悉 Azure 事件中心，请在阅读本快速入门之前参阅[事件中心概述](event-hubs-about.md)。 

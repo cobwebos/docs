@@ -17,12 +17,12 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9d2df175fa9d1ed33eb17ae85e01a4fd7a24e728
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8f0d5d948ff54522e951b7b5d18c7018ae6d34a
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77611935"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419807"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft 标识平台身份验证库
 
@@ -53,11 +53,10 @@ Microsoft 标识平台终结点使用两种类型的库：
 
 使用客户端身份验证库获取令牌以调用受保护的 Web API。
 
-| Platform | 库 | 下载 | 源代码 | 示例 | 参考 | 概念文档 | 路线图 |
+| 平台 | 库 | 下载 | 源代码 | 示例 | 参考 | 概念文档 | 路线图 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [单页应用](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [参考](https://azuread.github.io/microsoft-authentication-library-for-js/docs/msal/) | [概念文档](msal-overview.md)| [路线图](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
-|![Angular JS](media/sample-v2-code/logo_angular.png) | MSAL Angular JS | [NPM](https://www.npmjs.com/package/@azure/msal-angularjs) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  |  | |
-![Angular](media/sample-v2-code/logo_angular.png) | MSAL Angular（预览） | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | | | |
+| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [单页应用](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [参考](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [概念文档](msal-overview.md)| [路线图](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
+![Angular](media/sample-v2-code/logo_angular.png) | MSAL Angular | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [角 SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [参考](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [概念文档](msal-overview.md) | [路线图](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 | ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [桌面应用](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[概念文档](msal-overview.md) | [路线图](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
 | ![Python](media/sample-v2-code/logo_python.png) | MSAL Python | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [示例](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [维基](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [路线图](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
 | ![Java](media/sample-v2-code/logo_java.png) | MSAL Java | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | [参考](https://javadoc.io/doc/com.microsoft.azure/msal4j/latest/index.html) | [维基](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | [路线图](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
@@ -68,7 +67,7 @@ Microsoft 标识平台终结点使用两种类型的库：
 
 使用中间件库来保护 Web 应用程序和 Web API。 通过 ASP.NET 或 ASP.NET Core 编写的 Web 应用或 Web API 使用中间件库。
 
-| Platform | 库 | 下载 | 源代码 | 示例 | 参考
+| 平台 | 库 | 下载 | 源代码 | 示例 | 参考
 | --- | --- | --- | --- | --- | --- |
 | ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET 安全性 |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[MVC应用程序](quickstart-v2-aspnet-webapp.md) |[ASP.NET API 参考](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
 | ![.NET](media/sample-v2-code/logo_NET.png)| 适用于 .NET 的 IdentityModel 扩展| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC应用程序](quickstart-v2-aspnet-webapp.md) |[参考](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
@@ -81,7 +80,7 @@ Microsoft 标识平台终结点使用两种类型的库：
 |             | Windows    | Linux      | macOS      | iOS | Android    |
 |-------------|------------|------------|------------|------------|------------|
 | ![JavaScript](media/sample-v2-code/logo_js.png)  |  MSAL.js | MSAL.js | MSAL.js | MSAL.js |  MSAL.js |
-| <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET、ASP.NET Core、MSAL.Net（.NET FW、Core、UWP）| ASP.NET Core、MSAL.Net (.NET Core) | ASP.NET Core、MSAL.Net (MacOS)       | MSAL.Net (Xamarin.iOS) | MSAL.Net (Xamarin.Android)|
+| <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET、ASP.NET Core、MSAL.Net（.NET FW、Core、UWP）| ASP.NET Core、MSAL.Net (.NET Core) | ASP.NET核心，MSAL.Net （macOS）       | MSAL.Net (Xamarin.iOS) | MSAL.Net (Xamarin.Android)|
 | Swift <br> Objective-C |            |            | [适用于 iOS 和 MacOS 的 MSAL](msal-overview.md) | [适用于 iOS 和 MacOS 的 MSAL](msal-overview.md) |            |
 | ![Java](media/sample-v2-code/logo_java.png) Java | msal4j | msal4j | msal4j | | MSAL Android |
 | ![Python](media/sample-v2-code/logo_python.png) Python | MSAL Python | MSAL Python | MSAL Python |
@@ -91,7 +90,7 @@ Microsoft 标识平台终结点使用两种类型的库：
 
 ## <a name="compatible-client-libraries"></a>兼容的客户端库
 
-| Platform | 库名称 | 测试的版本 | 源代码 | 示例 |
+| 平台 | 库名称 | 测试的版本 | 源代码 | 示例 |
 |:---:|:---:|:---:|:---:|:---:|
 |![JavaScript](media/sample-v2-code/logo_js.png)|[Hello.js](https://adodson.com/hello.js/) | 版本 1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[温泉](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
 | ![Java](media/sample-v2-code/logo_java.png) | [Scribe Java](https://github.com/scribejava/scribejava) | [版本 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
@@ -102,7 +101,7 @@ Microsoft 标识平台终结点使用两种类型的库：
 | ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth： 1.3.1<br />omniauth-auth2： 1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 | iOS、macOS 和 Android  | [React Native 应用身份验证](https://github.com/FormidableLabs/react-native-app-auth) | [版本 4.2.0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [React Native 应用身份验证](https://github.com/FormidableLabs/react-native-app-auth) | |
 
-对于任何符合标准的库，都可以使用 Microsoft 标识平台终结点。 了解去哪里寻求支持非常重要：
+对于任何符合标准的库，都可以使用 Microsoft 标识平台终结点。 了解从何处寻求支持非常重要：
 
 * 有关库代码中的问题和新功能请求，请联系库所有者。
 * 有关服务端协议实现中的问题和新功能请求，请联系 Microsoft。

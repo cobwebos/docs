@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 34057f1962338927a252011dccc56ed6a77bec47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f9fb250109a1c9000eae8da0d6337c96f19f0f89
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69636029"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410541"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>如何通过 PHP 使用 Twilio 实现语音和 SMS 功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及应用程序中使用语音和 SMS 的详细信息，请参阅[后续步骤](#NextSteps)部分。
@@ -138,7 +138,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 
 如前所述，此代码使用 Twilio 提供的网站返回 TwiML 响应。 可以改用自己的网站来提供 TwiML 响应；有关详细信息，请参阅[如何从自己的网站提供 TwiML 响应](#howto_provide_twiml_responses)。
 
-* 注意：**** 若要对 SSL 证书验证错误进行故障排除，请参阅 [http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
+* **注意**：要排除 TLS/SSL 证书验证错误，请参阅[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>如何发送短信
 下面演示如何使用 **Services_Twilio** 类发送 SMS 消息。 **From**号码由 Twilio 提供，用于试用帐户发送 SMS 消息。 在运行代码之前，必须验证 Twilio 帐户的**To**编号。

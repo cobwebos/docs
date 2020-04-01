@@ -1,22 +1,14 @@
 ---
 title: 教程：预测意向 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 在本教程中，创建可预测用户意向的自定义应用。 此应用是最简单类型的 LUIS 应用，因为它不从话语文本（例如电子邮件地址或日期）提取各种数据元素。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 89fb76f8c5cc4323e1211524340c0965a7d0716d
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 03/24/2020
+ms.openlocfilehash: c58c96f717de77c065d7f844928714eb4fb3e4db
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262737"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80286738"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>教程：生成 LUIS 应用以确定用户意向
 
@@ -53,7 +45,11 @@ ms.locfileid: "76262737"
 
 ## <a name="create-a-new-intent"></a>创建新意向
 
-1. 在门户中应用的“生成”部分，选择“+ 创建”   。 输入新意向名称 `OrderPizza`，然后选择“完成”  。
+意向用于根据用户的意图（根据自然语言文本确定）对用户言语进行分类。
+
+要对言语进行分类，意向需要使用应根据该意向分类的用户言语的示例。
+
+1. 在“意向”页面的“生成”部分中，选择“+ 创建”以创建新意向    。 输入新意向名称 `OrderPizza`，然后选择“完成”  。
 
     在用户想要订购披萨时，预测 `OrderPizza` 意向。
 

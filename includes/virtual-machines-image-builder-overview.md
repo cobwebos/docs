@@ -5,12 +5,12 @@ ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 00fc3a01e6f42c2704af9dbc807dce193ff2971c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80117163"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419143"
 ---
 标准化虚拟机 （VM） 映像允许组织迁移到云并确保部署的一致性。 映像通常包括预定义的安全和配置设置以及必要的软件。 设置自己的映像管道需要时间、基础结构和设置，但使用 Azure VM 映像生成器，只需提供描述映像的简单配置，将其提交到服务，并生成映像并分发映像即可。
  
@@ -51,7 +51,7 @@ AIB 将支持 Azure 应用商店基础操作系统映像：
 - CentOS 7.6， 7.7
 - SLES 12 SP4
 - SLES 15， SLES 15 SP1
-- 适用于虚拟桌面 （EVD） 的 Windows 10 RS5 企业/专业/企业 
+- Windows 10 RS5 企业/企业多会话/专业
 - Windows 2016
 - 视窗 2019
 
@@ -78,7 +78,7 @@ Azure 映像生成器是一个完全托管的 Azure 服务，由 Azure 资源提
 
 ## <a name="permissions"></a>权限
 
-要允许 Azure VM 映像生成器将映像分发到托管映像或共享映像库，您需要为服务"Azure 虚拟机映像生成器"（应用 ID：cf32a0cc-373c-47c9-9156-0db11f6a6dfc）提供"参与者"权限） 资源组上的 。 
+要允许 Azure VM 映像生成器将映像分发到托管映像或共享映像库，您需要为资源组中的服务"Azure 虚拟机映像生成器"（应用 ID：cf32a0cc-373c-47c9-9156-0db11f6a6dfc）提供"参与者"权限。 
 
 如果使用现有的自定义托管映像或映像版本，则 Azure 映像生成器将需要对这些资源组的最小"读取器"访问权限。
 
