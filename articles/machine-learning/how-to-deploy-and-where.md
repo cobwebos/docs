@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 96d9a0722ae04dc150b639dced34fa290da93630
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0deace98c5be0b2ce2f29abce4c8a804145afdb1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159400"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475626"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -537,9 +537,9 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-### <a name="securing-deployments-with-ssl"></a>使用 SSL 保护部署
+### <a name="securing-deployments-with-tls"></a>使用 TLS 保护部署
 
-若要详细了解如何保护 Web 服务部署，请参阅[使用 SSL 保护 Web 服务](how-to-secure-web-service.md#enable)。
+有关如何保护 Web 服务部署的详细信息，请参阅[启用 TLS 和部署](how-to-secure-web-service.md#enable)。
 
 ### <a name="local-deployment"></a><a id="local"></a>本地部署
 
@@ -576,7 +576,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 下表描述了不同的服务状态：
 
-| Web 服务状态 | 描述 | 最终状态？
+| Web 服务状态 | 说明 | 最终状态？
 | ----- | ----- | ----- |
 | 过渡 | 该服务正在部署中。 | 否 |
 | 不正常 | 该服务已部署，但当前无法访问。  | 否 |
@@ -907,6 +907,24 @@ service_name = 'my-sklearn-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
+注： 默认情况下，支持predict_proba的模型将使用该方法。 要重写此内容以使用预测，可以修改 POST 正文，如下所示：
+```python
+import json
+
+
+input_payload = json.dumps({
+    'data': [
+        [ 0.03807591,  0.05068012,  0.06169621, 0.02187235, -0.0442235,
+         -0.03482076, -0.04340085, -0.00259226, 0.01990842, -0.01764613]
+    ],
+    'method': 'predict'  # If you have a classification model, the default behavior is to run 'predict_proba'.
+})
+
+output = service.run(input_payload)
+
+print(output)
+```
+
 注： 这些依赖项包含在预构建的 sk学习推理容器中：
 
 ```yaml
@@ -1154,7 +1172,7 @@ def run(request):
 
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
-* [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
+* [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的 Azure 机器学习模型](how-to-consume-web-service.md)
 * [使用应用程序见解监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)

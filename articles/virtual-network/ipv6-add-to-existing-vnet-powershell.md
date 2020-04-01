@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/21/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: d08ce1c382d173ac98a0e61e6117ed50b958ba44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c733538a4e730a95008a8ec1e4d50c20d6ce24ec
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76119799"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420760"
 ---
-# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>将 IPv4 应用程序升级到 Azure 虚拟网络中的 IPv6 - PowerShell（预览版）
+# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>在 Azure 虚拟网络中将 IPv4 应用程序升级到 IPv6 - PowerShell
 
 本文介绍如何将 IPv6 连接添加到 Azure 虚拟网络中使用标准负载均衡器和公共 IP 的现有 IPv4 应用程序。 就地升级涉及到：
 - 虚拟网络和子网的 IPv6 地址空间
@@ -28,8 +28,7 @@ ms.locfileid: "76119799"
 - 包含采用 IPv4 + IPv6 配置的 NIC 的 VM
 - IPv6 公共 IP 使负载均衡器具有面向 Internet 的 IPv6 连接
 
-> [!Important]
-> 对 Azure 虚拟网络的 IPv6 支持当前处于公共预览版中。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -37,27 +36,6 @@ ms.locfileid: "76119799"
 
 ## <a name="prerequisites"></a>先决条件
 
-### <a name="register-the-service"></a>注册服务
-
-在 Azure 中部署双堆栈应用程序之前，必须使用以下 Azure PowerShell 配置此预览功能的订阅：
-
-注册如下：
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-功能注册最多需要 30 分钟才能完成。 您可以通过运行以下 Azure PowerShell 命令来检查注册状态：按如下方式检查注册：
-```azurepowershell
-Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-注册完成后，运行以下命令：
-
-```azurepowershell
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>创建标准负载均衡器
 本文假定部署了标准负载均衡器，如[快速入门：创建标准负载均衡器 - Azure PowerShell](../load-balancer/quickstart-create-standard-load-balancer-powershell.md)。
 
 ## <a name="retrieve-the-resource-group"></a>检索资源组
@@ -176,8 +154,7 @@ $NIC_3 | Set-AzNetworkInterface
 
   ![Azure 中的 IPv6 双堆栈虚拟网络](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
-> [!NOTE]
-> Azure 虚拟网络的 IPv6 在此预览版本中以只读的 Azure 门户提供。
+
 
 ## <a name="clean-up-resources"></a>清理资源
 

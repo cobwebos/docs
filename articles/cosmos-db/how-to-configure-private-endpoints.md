@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 944341b1ef88c7e3d64a74536720eb9fb1d17321
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a6a1560e169c51256c198868dc7293a020189f4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80152734"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421424"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>为 Azure 宇宙帐户配置 Azure 专用链接
 
@@ -24,7 +24,7 @@ ms.locfileid: "80152734"
 本文介绍了创建专用终结点的步骤。 它假定您使用的是自动审批方法。
 
 > [!NOTE]
-> 专用终结点支持目前通常仅在支持区域中用于网关连接模式。 对于直接模式，它可作为预览功能提供。
+> 专用终结点支持目前通常仅适用于网关连接模式。 对于直接模式，它可作为预览功能提供。
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>使用 Azure 门户创建专用终结点
 
@@ -38,19 +38,19 @@ ms.locfileid: "80152734"
 
 1. 在 **"创建专用终结点 - 基础知识"** 窗格中，输入或选择以下详细信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详情** | |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选一个择资源组。|
     | **实例详细信息** |  |
-    | “属性” | 输入专用终结点的任何名称。 如果获取此名称，请创建唯一的名称。 |
+    | 名称 | 输入专用终结点的任何名称。 如果获取此名称，请创建唯一的名称。 |
     |区域| 选择要部署专用链接的区域。 在虚拟网络所在的同一位置创建专用终结点。|
     |||
 1. 选择 **"下一步"：资源**。
 1. 在“创建专用终结点 - 资源”中，输入或选择以下信息：****
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择 **"连接到目录中的 Azure 资源**"。 <br/><br/> 然后，您可以选择一个资源来设置专用链接。 或者，您可以使用与其他人共享的资源 ID 或别名连接到其他人的资源。|
     | 订阅| 选择订阅。 |
@@ -62,7 +62,7 @@ ms.locfileid: "80152734"
 1. 选择 **"下一步"：配置**。
 1. 在 **"创建专用终结点 - 配置**"中，输入或选择此信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
     |**网络连接**| |
     | 虚拟网络| 选择虚拟网络。 |
@@ -72,7 +72,7 @@ ms.locfileid: "80152734"
     |专用 DNS 区域 |选择**privatelink.documents.azure.com**。 <br><br/> 将自动确定专用 DNS 区域。 不能使用 Azure 门户来更改它。|
     |||
 
-1. 选择“查看 + 创建”****。 在 **"审核 + 创建"** 页上，Azure 验证配置。
+1. 选择 **"审阅" = 创建**。 在 **"审核 + 创建"** 页上，Azure 验证配置。
 1. 当您看到**验证传递**的消息时，选择 **"创建**"。
 
 在 Azure 门户中批准 Azure Cosmos 帐户的专用链接后，"**防火墙"和"虚拟网络**"窗格中的 **"所有网络"** 选项不可用。
@@ -639,14 +639,9 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 当您使用具有 Azure Cosmos 帐户的专用链接时，以下限制适用：
 
-* Azure Cosmos 帐户和虚拟网络的专用链接支持仅在特定区域提供。 有关受支持区域的列表，请参阅"专用链接"一文的["可用区域](../private-link/private-link-overview.md#availability)"部分。 
-
-  > [!NOTE]
-  > 要创建专用终结点，请确保虚拟网络和 Azure Cosmos 帐户都位于受支持的区域。
-
 * 使用直接模式连接使用与 Azure Cosmos 帐户的专用链接时，只能使用 TCP 协议。 HTTP 协议尚不受支持。
 
-* 专用终结点支持目前通常仅在支持区域中用于网关连接模式。 对于直接模式，它可作为预览功能提供。
+* 专用终结点支持目前通常仅适用于网关连接模式。 对于直接模式，它可作为预览功能提供。
 
 * 当您使用 Azure Cosmos DB 的 MongoDB 帐户 API 时，仅支持服务器版本 3.6 上的帐户（即，使用格式`*.mongo.cosmos.azure.com`中的终结点的帐户）的专用终结点。 服务器版本 3.2 上的帐户不支持专用链接（即，使用终结点的帐户格式`*.documents.azure.com`）。 要使用专用链接，应将旧帐户迁移到新版本。
 

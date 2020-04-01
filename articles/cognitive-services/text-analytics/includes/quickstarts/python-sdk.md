@@ -2,20 +2,20 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 0803a847e9e864b361917df9f1a9c6b059ca2fe9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 617ab4114fd200c0b4306e3c27825bafe06b1764
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79203389"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80240114"
 ---
 <a name="HOLTop"></a>
 
 #### <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
 
-[v3 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-textanalytics/1.0.0b2/azure.ai.textanalytics.html) | [v3 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 包(PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3 参考文档](https://aka.ms/azsdk-python-textanalytics-ref-docs) | [v3 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 包(PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 #### <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
@@ -27,9 +27,9 @@ ms.locfileid: "79203389"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
-* 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。 
-    * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 稍后会在本快速入门中执行此操作。
-    * 可以使用免费定价层试用该服务，然后再升级到付费层进行生产。
+* 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。 部署后，单击“转到资源”  。
+    * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
 ## <a name="setting-up"></a>设置
 

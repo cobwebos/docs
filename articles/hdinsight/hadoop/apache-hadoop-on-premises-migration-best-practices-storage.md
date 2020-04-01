@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: b68e438a01f9f771c16fc712597308089f628f62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f19d4adad675cdf95f59aca0f752f46211b75e8f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409467"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436911"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight
 
@@ -33,7 +33,7 @@ HDInsight 群集可将 Azure 存储中的 blob 容器用作默认文件系统或
 
 可以使用以下格式之一访问存储在 Azure 存储中的数据：
 
-|数据访问格式 |描述 |
+|数据访问格式 |说明 |
 |---|---|
 |`wasb:///`|使用未加密通信访问默认存储。|
 |`wasbs:///`|使用加密通信访问默认存储。|
@@ -52,7 +52,7 @@ Azure 存储[为 Blob 对象提供软删除](../../storage/blobs/storage-blob-so
 
 可以使用以下方法将证书导入 Java 信任存储区：
 
-将 Azure Blob SSL 证书下载到文件
+将 Azure Blob TLS/SSL 证书下载到文件
 
 ```bash
 echo -n | openssl s_client -connect <storage-account>.blob.core.windows.net:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > Azure_Storage.cer
@@ -155,7 +155,7 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 1. 打开 [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) 文件并更改以下值：
 
-    |令牌属性|描述|
+    |令牌属性|说明|
     |---|---|
     |policy_name|要创建的存储策略所用的名称。|
     |storage_account_name|你的存储帐户的名称。|

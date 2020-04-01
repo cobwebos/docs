@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244506"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422501"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -65,7 +65,7 @@ ms.locfileid: "79244506"
 
 Oracle 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为**Oracle**。 | 是 |
 | connectionString | 指定连接到 Oracle 数据库实例所需的信息。 <br/>还可以将密码放在 Azure Key Vault 中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 <br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称**来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>对于高级 Oracle 本机连接选项，您可以选择在 TNSNAMES 中添加条目[。Oracle](http://www.orafaq.com/wiki/Tnsnames.ora)服务器上的 ORA 文件以及 ADF Oracle 链接服务中，选择使用 Oracle 服务名称连接类型并配置相应的服务名称。 | 是 |
@@ -76,7 +76,7 @@ Oracle 链接服务支持以下属性：
 
 可以根据自己的情况在连接字符串中设置更多连接属性：
 
-| properties | 描述 | 允许的值 |
+| properties | 说明 | 允许的值 |
 |:--- |:--- |:--- |
 | ArraySize |连接器在单个网络往返中可以提取的字节数。 例如，`ArraySize=‭10485760‬`。<br/><br/>较大的值可减少在网络中提取数据的次数，从而提高吞吐量。 较小的值会增加响应时间，因为等待服务器传输数据的延迟较小。 | 1 到 4294967296 (4 GB) 之间的一个整数。 默认值为 `60000`。 值 1 不定义字节数，而指示仅为一行数据分配空间。 |
 
@@ -170,7 +170,7 @@ Oracle 链接服务支持以下属性：
 
 若要从/向 Oracle 复制数据，请将数据集的 type 属性设置为 `OracleTable`。 支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 `OracleTable`。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -209,11 +209,11 @@ Oracle 链接服务支持以下属性：
 
 要从 Oracle 复制数据，请将复制活动中的源类型设置为 `OracleSource`。 复制活动的 **source** 节支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为 `OracleSource`。 | 是 |
 | oracleReaderQuery | 使用自定义 SQL 查询读取数据。 示例为 `"SELECT * FROM MyTable"`。<br>启用分区加载时，需要在查询中挂接任何相应的内置分区参数。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
-| partitionOptions | 指定用于从 Oracle 加载数据的数据分区选项。 <br>允许的值是：**无**（默认）、**物理分区表**和**动态范围**。<br>启用分区选项（即不是`None`），从 Oracle 数据库同时加载数据的并行性程度由复制活动上的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 | 否 |
+| partitionOptions | 指定用于从 Oracle 加载数据的数据分区选项。 <br>允许的值是：**无**（默认）、**物理分区表**和**动态范围**。<br>启用分区选项（即不是`None`），从 Oracle 数据库同时加载数据的并行性程度由复制活动上的[`parallelCopies`](copy-activity-performance-features.md#parallel-copy)设置控制。 | 否 |
 | partitionSettings | 指定数据分区的设置组。 <br>当分区选项不是 `None` 时适用。 | 否 |
 | partitionNames | 需要复制的物理分区的列表。 <br>当分区选项是 `PhysicalPartitionsOfTable` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfTabularPartitionName`。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
 | partitionColumnName | 指定并行复制范围分区使用的源列（**整数类型**）的名称。 如果未指定，系统会自动检测表的主键并将其用作分区列。 <br>当分区选项是 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfRangePartitionColumnName`。 有关示例，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。 | 否 |
@@ -256,7 +256,7 @@ Oracle 链接服务支持以下属性：
 
 若要向 Oracle 复制数据，请将复制活动中的接收器类型设置为 `OracleSink`。 复制活动**接收器**部分支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 `OracleSink`。 | 是 |
 | writeBatchSize | 缓冲区大小达到 `writeBatchSize` 时将数据插入 SQL 表。<br/>允许的值为 Integer（行数）。 |否（默认值为 10,000） |
@@ -300,7 +300,7 @@ Oracle 链接服务支持以下属性：
 
 ![分区选项的屏幕截图](./media/connector-oracle/connector-oracle-partition-options.png)
 
-启用分区复制时，数据工厂将对 Oracle 源运行并行查询，以按分区加载数据。 并行度由复制活动上的[`parallelCopies`](copy-activity-performance.md#parallel-copy)设置控制。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Oracle 数据库检索一部分数据。
+启用分区复制时，数据工厂将对 Oracle 源运行并行查询，以按分区加载数据。 并行度由复制活动上的[`parallelCopies`](copy-activity-performance-features.md#parallel-copy)设置控制。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Oracle 数据库检索一部分数据。
 
 建议同时启用并行复制和数据分区，尤其是从 Oracle 数据库加载大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
@@ -350,25 +350,25 @@ Oracle 链接服务支持以下属性：
 |:--- |:--- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>（仅支持 Oracle 10g 和更高版本） |
-| CHAR |String |
-| CLOB |String |
+| CHAR |字符串 |
+| CLOB |字符串 |
 | DATE |DateTime |
 | FLOAT |十进制、字符串（如果精度 > 28） |
 | INTEGER |十进制、字符串（如果精度 > 28） |
-| LONG |String |
+| LONG |字符串 |
 | LONG RAW |Byte[] |
-| NCHAR |String |
-| NCLOB |String |
+| NCHAR |字符串 |
+| NCLOB |字符串 |
 | NUMBER |十进制、字符串（如果精度 > 28） |
-| NVARCHAR2 |String |
+| NVARCHAR2 |字符串 |
 | RAW |Byte[] |
-| ROWID |String |
+| ROWID |字符串 |
 | TIMESTAMP |DateTime |
-| TIMESTAMP WITH LOCAL TIME ZONE |String |
-| TIMESTAMP WITH TIME ZONE |String |
+| TIMESTAMP WITH LOCAL TIME ZONE |字符串 |
+| TIMESTAMP WITH TIME ZONE |字符串 |
 | UNSIGNED INTEGER |Number |
-| VARCHAR2 |String |
-| XML |String |
+| VARCHAR2 |字符串 |
+| XML |字符串 |
 
 > [!NOTE]
 > 不支持数据类型 INTERVAL YEAR TO MONTH 和 INTERVAL DAY TO SECOND。

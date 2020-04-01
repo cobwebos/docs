@@ -3,12 +3,12 @@ title: Azure 迁移设备常见问题解答
 description: 获取有关 Azure 迁移设备的常见问题的解答。
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 2ef7de3b31cb11a71ec9379232fc5ff1022cf666
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336970"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437599"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure 迁移设备：常见问题
 
@@ -94,6 +94,9 @@ Azure 迁移设备收集的数据存储在创建 Azure 迁移项目的 Azure 位
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure 迁移项目是否可以具有多个设备？
 项目可以附加多个设备。 但是，设备只能与一个项目关联。 
+
+## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure 迁移设备/复制设备是否可以连接到同一个 vCenter？
+是的。 您可以将 Azure 迁移设备（用于评估和无代理 VMware 迁移）和复制设备（用于基于代理的 VMware VM 迁移）添加到同一 vCenter 服务器。
 
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>使用设备可以发现多少个 VM 或服务器？

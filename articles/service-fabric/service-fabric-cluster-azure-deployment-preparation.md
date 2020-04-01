@@ -3,12 +3,12 @@ title: 规划 Azure Service Fabric 群集部署
 description: 了解如何规划和准备 Azure 中的生产 Service Fabric 群集部署。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1762a6975448301957579b3437a8af5c89b3accd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78193470"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422284"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
 
@@ -86,6 +86,16 @@ ms.locfileid: "78193470"
             }
         }
     ```
+
+> [!NOTE]
+> 用户应用程序不应在操作系统磁盘上具有任何依赖项/文件/项目，因为操作系统磁盘将在操作系统升级时丢失。
+> 因此，不建议将[修补程序业务流程应用程序](https://github.com/microsoft/Service-Fabric-POA)与临时磁盘一起使用。
+>
+
+> [!NOTE]
+> 现有非临时 VMSS 无法就地升级以使用临时磁盘。
+> 要迁移，用户必须[添加](./virtual-machine-scale-set-scale-node-type-scale-out.md)具有临时磁盘的新节点类型，将工作负载移动到新节点类型&[删除](./service-fabric-how-to-remove-node-type.md)现有节点类型。
+>
 
 有关详细信息和进一步配置选项，请参阅[Azure VM 的临时操作系统磁盘](../virtual-machines/windows/ephemeral-os-disks.md) 
 

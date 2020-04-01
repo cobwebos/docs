@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 13852acb39a420e2f0da84e18bef4df823c1fa78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5136a00421aebaa72998b1dfcdf75feb935851c6
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206259"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435442"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>微软防御者高级威胁防护与 Azure 安全中心
 
@@ -62,7 +62,7 @@ Azure 安全中心正在通过与[Microsoft 防御者高级威胁防护](https:/
 1. 在 **"入职"** 区域中，选择或创建一个工作区，用于存储数据。 <br>
 2. 如果看不到所有工作区，可能是由于缺少权限，请确保已将工作区设置到“Azure 安全标准”层。 有关详细信息，请参阅[升级到安全中心的标准层，以提高安全性](security-center-pricing.md)。
     
-3. 选择 **"添加服务器**"以查看有关如何安装 Microsoft 监视代理的说明。 
+3. 选择 **"添加服务器**"以查看有关如何安装日志分析代理的说明。 
 
 4. 入职后，您可以在 **"计算"和"应用程序**"下监视计算机。
 

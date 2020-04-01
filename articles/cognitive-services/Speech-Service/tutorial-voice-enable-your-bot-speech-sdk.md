@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: dapine
-ms.openlocfilehash: 96d2c2e5e3772575e681d2db079ab0122b7014e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c2d74eb7e46d9909d87a7ccadadd6129a3d48d8
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80348555"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397897"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 启用自动程序
 
@@ -71,7 +71,7 @@ ms.locfileid: "80348555"
    * 输入**资源组**的名称。 我们建议**语音回声机器人教程-资源组**。
    * 从 **"区域**"下拉列表，选择**美国西部**。
 1. 单击“审阅并创建”****。 您应该会看到一个横幅，该横幅读取**验证通过**。
-1. 单击 **“创建”**。 创建资源组可能需要几分钟时间。
+1. 单击“创建”。  创建资源组可能需要几分钟时间。
 1. 与本教程稍后将创建的资源一样，最好将此资源组固定到仪表板以方便访问。 如果要固定此资源组，请单击仪表板右上角的固定图标。
 
 ### <a name="choosing-an-azure-region"></a>选择 Azure 区域
@@ -104,7 +104,7 @@ ms.locfileid: "80348555"
 
 此时，请检查您的资源组 （**语音EchoBot教程-资源组**） 具有语音资源：
 
-| “属性” | 类型  | 位置 |
+| 名称 | 类型  | 位置 |
 |------|-------|----------|
 | 语音回声机器人教程-语音 | 认知服务 | 美国西部 |
 
@@ -121,11 +121,11 @@ ms.locfileid: "80348555"
    * 对于**区域**，选择**美国西部**。
    * 对于**定价层**，请确保选择了**标准 S1。** 这应该是默认值。 如果不是，请确保将**操作系统**设置为**Windows，** 如上所述。
 5. 单击“审阅并创建”****。 您应该会看到一个横幅，该横幅读取**验证通过**。
-6. 单击 **“创建”**。 创建资源组可能需要几分钟时间。
+6. 单击“创建”。  创建资源组可能需要几分钟时间。
 
 此时，请检查您的资源组 （**语音EchoBot教程-资源组**） 有两个资源：
 
-| “属性” | 类型  | 位置 |
+| 名称 | 类型  | 位置 |
 |------|-------|----------|
 | 语音回声机器人教程-应用程序服务计划 | 应用服务计划 | 美国西部 |
 | 语音回声机器人教程-语音 | 认知服务 | 美国西部 |
@@ -207,7 +207,7 @@ ms.locfileid: "80348555"
 1. 默认浏览器应打开并显示一个页面，内容为："您的自动程序已准备就绪！
 1. 此时，请检查 Azure 门户中的资源组**语音EchoBot教程-资源组**，并确认有三种资源：
 
-| “属性” | 类型  | 位置 |
+| 名称 | 类型  | 位置 |
 |------|-------|----------|
 | EchoBot20190805125647 | 应用服务 | 美国西部 |
 | 语音回声机器人教程-应用程序服务计划 | 应用服务计划 | 美国西部 |
@@ -221,7 +221,7 @@ ms.locfileid: "80348555"
 2. 在**Azure 服务**导航中，在 **"设置"** 下单击"**配置**"。
 3. 选择"**常规设置"** 选项卡。
 4. 找到**Web 套接字的**切换，并将其设置为 **"打开**"。
-5. 单击“保存”。****
+5. 单击“保存”  。
 
 > [!TIP]
 > 您可以使用 Azure 应用服务页顶部的控件停止或重新启动服务。 在故障排除时，这可能派上用场。
@@ -248,7 +248,7 @@ ms.locfileid: "80348555"
 
 此时，请在 Azure 门户中检查资源组**语音EchoBot教程-资源组**。 它现在应该显示四个资源：
 
-| “属性” | 类型  | 位置 |
+| 名称 | 类型  | 位置 |
 |------|-------|----------|
 | EchoBot20190805125647 | 应用服务 | 美国西部 |
 | 语音回声机器人教程-应用程序服务计划 | 应用服务计划 | 美国西部 |
@@ -267,11 +267,11 @@ ms.locfileid: "80348555"
    * 查找**更多频道**，找到并单击 **"直线语音**"。
    * 查看标题为 **"配置直线语音**"的页面上的文本，然后展开标记为"认知服务帐户"的下拉菜单。
    * 从菜单中选择您之前创建的语音资源（例如，**语音EchoBotTutorial-语音**），将自动程序与语音订阅键相关联。
-   * 单击“保存”。****
+   * 单击“保存”  。
 
 1. 在 **"机器人管理**"导航中，单击"**设置**"。
    * 选中标记为启用**流式处理终结点**的框。 这是必需的，以启用在自动程序与直线语音通道之间的 Web 套接字上构建的通信协议。
-   * 单击“保存”。****
+   * 单击“保存”  。
 
 > [!TIP]
 > 如果您想了解更多信息，请参阅[将自动程序连接到直线语音](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)。 此页包括其他信息和已知问题。
@@ -336,7 +336,7 @@ Windows 语音助理客户端具有一个简单的 UI，允许您配置与自动
     },
     "replyToId":"67c823b4-4c7a-4828-9d6e-0b84fd052869",
     "serviceUrl":"urn:botframework:websocket:directlinespeech",
-    "speak":"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'><voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Echo: Hello and welcome.</voice></speak>",
+    "speak":"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'><voice name='Microsoft Server Speech Text to Speech Voice (en-US, AriaRUS)'>Echo: Hello and welcome.</voice></speak>",
     "text":"Echo: Hello and welcome.",
     "timestamp":"2019-07-19T20:03:51.1939097Z",
     "type":"message"

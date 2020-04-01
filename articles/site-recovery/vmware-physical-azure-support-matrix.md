@@ -1,16 +1,14 @@
 ---
 title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
-ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.author: raynew
-ms.openlocfilehash: 05e60c5b008746bbfd72dbe7a2e14b18aa563671
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4cf19f4f74ba24951efb806a9f2e3d88fcad7bc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371386"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478429"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -28,10 +26,10 @@ VMware VM 的灾难恢复 | 将本地 VMware VM 复制到 Azure。 可以在 Azu
 
 ## <a name="on-premises-virtualization-servers"></a>本地虚拟化服务器
 
-**服务器** | **要求** | **详细信息**
+**Server** | **要求** | **详细信息**
 --- | --- | ---
 vCenter Server | 版本 6.7、6.5、6.0 或 5.5 | 建议在灾难恢复部署中使用 vCenter 服务器。
-vSphere 主机 | 版本 6.7、6.5、6.0 或 5.5 | 建议 vSphere 主机和 vCenter 服务器与进程服务器位于同一网络。 默认情况下，进程服务器在配置服务器上运行。 [了解详情](vmware-physical-azure-config-process-server-overview.md)。
+vSphere 主机 | 版本 6.7、6.5、6.0 或 5.5 | 建议 vSphere 主机和 vCenter 服务器与进程服务器位于同一网络。 默认情况下，进程服务器在配置服务器上运行。 [了解详细信息](vmware-physical-azure-config-process-server-overview.md)。
 
 
 ## <a name="site-recovery-configuration-server"></a>Site Recovery 配置服务器
@@ -50,10 +48,10 @@ RAM | 16 GB
 磁盘可用空间 | 为保留驱动器提供 600 GB 空间。
 操作系统  | Windows Server 2012 R2，或具有桌面体验的 Windows Server 2016 <br/><br> 如果计划使用此设备的内置主目标进行故障回复，请确保操作系统版本与复制的项相同或为更高版本。|
 操作系统区域设置 | 美国英语
-[PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | 在配置服务器版本 [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 或更高版本中不需要。 
-Windows Server 角色 | 不要启用 Active Directory 域服务、Internet Information Services (IIS) 或 Hyper-V。 
+[PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | 在配置服务器版本 [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 或更高版本中不需要。
+Windows Server 角色 | 不要启用 Active Directory 域服务、Internet Information Services (IIS) 或 Hyper-V。
 组策略| - 阻止访问命令提示符。 <br/> - 阻止访问注册表编辑工具。 <br/> - 信任文件附件的逻辑。 <br/> - 打开脚本执行。 <br/> - [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | 确保：<br/><br/> - 无预先存在的默认网站 <br/> - 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> - 启用[快速CGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)设置  <br/> - 端口 443 上没有预先存在的网站/应用侦听<br/>
+IIS | 确保：<br/><br/> - 无预先存在的默认网站 <br/> - 启用[匿名身份验证](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br/> - 启用[快速CGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))设置  <br/> - 端口 443 上没有预先存在的网站/应用侦听<br/>
 NIC 类型 | VMXNET3（部署为 VMware VM 时）
 IP 地址类型 | Static
 端口 | 443，用于控制通道协调<br/>9443，用于数据传输
@@ -68,24 +66,24 @@ Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。
 **组件** | **详细信息**
 --- | ---
 计算机设置 | 复制到 Azure 的计算机必须满足 [Azure 要求](#azure-vm-requirements)。
-计算机工作负载 | Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。 [了解详情](https://aka.ms/asr_workload)。
+计算机工作负载 | Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。 [了解详细信息](site-recovery-workload.md)。
 Windows Server 2019 | 从[更新汇总 34](https://support.microsoft.com/help/4490016) 开始受支持（移动服务版本 9.22 和更高版本）。
 Windows Server 2016 64 位 | 支持服务器核心、带桌面体验的服务器。
 Windows Server 2012 R2/Windows Server 2012 | 支持。
 Windows Server 2008 R2 SP1 及更高版本。 | 支持。<br/><br/> 在移动服务代理的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版本中，需要在运行 Windows 2008 R2 SP1 或更高版本的计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
-Windows Server 2008 SP2 或更高版本（64 位/32 位） |  仅支持迁移。 [了解详情](migrate-tutorial-windows-server-2008.md)。<br/><br/> 在移动服务代理的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版本中，需要在 Windows 2008 SP2 计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4493730) 和 [SHA-2 更新](hhttps://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
+Windows Server 2008 SP2 或更高版本（64 位/32 位） |  仅支持迁移。 [了解详细信息](migrate-tutorial-windows-server-2008.md)。<br/><br/> 在移动服务代理的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版本中，需要在 Windows 2008 SP2 计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4493730) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)。
 Windows 10、Windows 8.1 和 Windows 8 | 支持。
-包含 SP1 的 Windows 7 64 位 | 从[更新汇总 36](https://support.microsoft.com/help/4503156) 开始受支持（移动服务版本 9.22 和更高版本）。 </br></br> 在移动服务代理的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 中，需要在 Windows 7 SP1 计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
+包含 SP1 的 Windows 7 64 位 | 从[更新汇总 36](https://support.microsoft.com/help/4503156) 开始受支持（移动服务版本 9.22 和更高版本）。 </br></br> 在移动服务代理的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 中，需要在 Windows 7 SP1 计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)。
 Linux | 仅支持 64 位系统。 不支持 32 位系统。<br/><br/>每个 Linux 服务器上应该装有 [Linux Integration Services (LIS) 组件](https://www.microsoft.com/download/details.aspx?id=55106)。 测试故障转移/故障转移后，需要在 Azure 中启动该服务器。 如果缺少 LIS 组件，请确保在启用复制之前安装这些[组件](https://www.microsoft.com/download/details.aspx?id=55106)，使计算机在 Azure 中启动。 <br/><br/> Site Recovery 会协调故障转移，以在 Azure 中运行 Linux 服务器。 但是，Linux 供应商可能会限制仅支持尚未达到使用寿命的分发版本。<br/><br/> 在 Linux 发行版中，仅支持属于分发次要版本/更新的原版内核。<br/><br/> 不支持跨主要 Linux 发行版升级受保护的计算机。 若要升级，请禁用复制，升级操作系统，然后再重新启用复制。<br/><br/> [详细了解](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) Azure 中的 Linux 和开源技术支持。
 Linux 红帽企业 | 5.2 到 5.11</b><br/> 6.1 到 6.10</b> </br> 7.0， 7.1， 7.2， 7.3， 7.4， 7.5， 7.6， [7.7，](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) [8.0，](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)8.1 <br/> 运行红帽企业 Linux 5.2-5.11 & 6.1-6.10 的服务器没有预安装[Linux 集成服务 （LIS） 组件](https://www.microsoft.com/download/details.aspx?id=55106)。 请确保在启用复制之前安装这些[组件](https://www.microsoft.com/download/details.aspx?id=55106)，使计算机在 Azure 中启动。
 Linux：CentOS | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> 7.0 到 7.6<br/> <br/> 8.0 到 8.1<br/><br/> 运行 CentOS 5.2-5.11 和 6.1-6.10 的服务器未预装 [Linux Integration Services (LIS) 组件](https://www.microsoft.com/download/details.aspx?id=55106)。 请确保在启用复制之前安装这些[组件](https://www.microsoft.com/download/details.aspx?id=55106)，使计算机在 Azure 中启动。
 Ubuntu | Ubuntu 14.04 LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8[（查看支持的内核版本）](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4 [（支持的内核版本）](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux 企业服务器 15， 15 SP1 [（查看支持的内核版本）](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3、SUSE Linux Enterprise Server 11 SP4<br/> 不支持将复制计算机从 SUSE Linux Enterprise Server 11 SP3 升级到 SP4。 若要升级，请禁用复制并在升级后重新启用它。
-Oracle Linux | 6.4、 6.5、 6.6， 6.7， 6.8， 6.9， 6.10， 7.0， 7.1， 7.2， 7.3， 7.4， 7.5， 7.6， [7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> 运行红帽兼容内核或牢不可破的企业内核版本 3、4 & 5 （UEK3、 UEK4、 UEK5） 
+Oracle Linux | 6.4、 6.5、 6.6， 6.7， 6.8， 6.9， 6.10， 7.0， 7.1， 7.2， 7.3， 7.4， 7.5， 7.6， [7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> 运行红帽兼容内核或牢不可破的企业内核版本 3、4 & 5 （UEK3、 UEK4、 UEK5）
 
 > [!Note]
-> 对于每个 Windows 版本，Azure Site Recovery 仅支持[长期服务渠道 (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 生成。  目前不支持[半年渠道](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel)版本。
+> 对于每个 Windows 版本，Azure Site Recovery 仅支持[长期服务渠道 (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 生成。  目前不支持[半年渠道](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel)版本。
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu 内核版本
 
@@ -141,7 +139,7 @@ SUSE Linux 企业服务器 15 和 15 SP1 | 9.32 | 支持所有[股票 SUSE 15 �
 多队列块 IO 设备 | 不支持。
 具有 HP CCISS 存储控制器的物理服务器 | 不支持。
 设备/装入点命名约定 | 设备名称或装入点名称应是唯一的。<br/> 请确保两个设备/装入点的名称不仅仅是只区分大小写。 例如，不支持将同一 VM 的两个设备命名为 *device1* 和 *Device1*。
-目录 | 如果运行的移动服务版本低于 9.20（在[更新汇总 31](https://support.microsoft.com/help/4478871/) 中发布），则存在以下限制：<br/><br/> - 这些目录（如果设置为单独的分区/文件系统）必须位于源服务器上的同一 OS 磁盘：/ (root)、/boot、/usr、/usr/local、/var 和 /etc。</br> - /boot 目录应位于磁盘分区上，而不是位于 LVM 卷上。<br/><br/> 从版本 9.20 开始，这些限制不适用。 
+目录 | 如果运行的移动服务版本低于 9.20（在[更新汇总 31](https://support.microsoft.com/help/4478871/) 中发布），则存在以下限制：<br/><br/> - 这些目录（如果设置为单独的分区/文件系统）必须位于源服务器上的同一 OS 磁盘：/ (root)、/boot、/usr、/usr/local、/var 和 /etc。</br> - /boot 目录应位于磁盘分区上，而不是位于 LVM 卷上。<br/><br/> 从版本 9.20 开始，这些限制不适用。
 启动目录 | - 启动磁盘不能采用 GPT 分区格式。 这是一种 Azure 体系结构限制。 支持将 GPT 磁盘作为数据磁盘。<br/><br/> VM 上不支持多个启动磁盘<br/><br/> - 不支持跨多个磁盘的 LVM 卷上的 /boot。<br/> - 无法复制没有启动磁盘的计算机。
 可用空间要求| /root 分区上的 2 GB <br/><br/> 安装文件夹中的 250 MB
 XFSv5 | 支持 XFS 文件系统上的 XFSv5 功能，例如元数据校验和（从移动服务版本 9.10 开始）。<br/> 可使用 xfs_info 实用工具来检查分区的 XFS 超级块。 如果 `ftype` 设置为 1，则表示正在使用 XFSv5 功能。
@@ -212,7 +210,7 @@ Docker 磁盘配置 | 否
 来宾/服务器多路径 (MPIO) | 否
 来宾/服务器 GPT 分区 | 从[更新汇总 37](https://support.microsoft.com/help/4508614/)（移动服务版本 9.25）开始支持五个分区。 以前支持四个。
 ReFS | 出行服务版本 9.23 或更高版本支持可复原文件系统
-来宾/服务器 EFI/UEFI 启动 | - 支持的版本包括 Windows Server 2012 或更高版本、SLES 12 SP4 和 RHEL 8.0（包含移动代理 9.30 及更高版本）<br/> - 不支持安全 UEFI 启动类型。 
+来宾/服务器 EFI/UEFI 启动 | - 支持的版本包括 Windows Server 2012 或更高版本、SLES 12 SP4 和 RHEL 8.0（包含移动代理 9.30 及更高版本）<br/> - 不支持安全 UEFI 启动类型。
 
 ## <a name="replication-channels"></a>复制通道
 
@@ -268,20 +266,20 @@ VM 名称 | 1 到 63 个字符。<br/><br/> 限制为字母、数字和连字符
 
 ## <a name="resource-group-limits"></a>资源组限制
 
-若要了解可以在单个资源组下保护的虚拟机数量，请参阅有关[订阅限制和配额](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)的文章
+要了解可在单个资源组下保护的虚拟机数，请参阅有关[订阅限制和配额](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)的文章。
 
 ## <a name="churn-limits"></a>变动率限制
 
-下表提供了 Azure Site Recovery 限制。 
+下表提供了 Azure Site Recovery 限制。
 - 这些限制基于我们的测试，但不涵盖所有可能的应用 I/O 组合。
 - 实际结果可能因应用程序 I/O 组合而异。
 - 为了获得最佳结果，我们强烈建议[运行部署规划器工具](site-recovery-deployment-planner.md)并通过使用测试性故障转移命令来执行广泛的应用程序测试，以获得应用的真实性能图。
 
 **复制目标** | **平均源磁盘 I/O 大小** |**平均源磁盘数据变动量** | **每天源磁盘数据总改动**
 ---|---|---|---
-标准存储 | 8 KB | 2 MB/秒 | 每个磁盘 168 GB
-高级 P10 或 P15 磁盘 | 8 KB  | 2 MB/秒 | 每个磁盘 168 GB
-高级 P10 或 P15 磁盘 | 16 KB | 4 MB/秒 |  每个磁盘 336 GB
+标准存储 | 8 KB    | 2 MB/秒 | 每个磁盘 168 GB
+高级 P10 或 P15 磁盘 | 8 KB    | 2 MB/秒 | 每个磁盘 168 GB
+高级 P10 或 P15 磁盘 | 16 KB | 4 MB/秒 |    每个磁盘 336 GB
 高级 P10 或 P15 磁盘 | 至少 32 KB | 8 MB/秒 | 每个磁盘 672 GB
 高级 P20、P30、P40 或 P50 磁盘 | 8 KB    | 5 MB/秒 | 每个磁盘 421 GB
 高级 P20、P30、P40 或 P50 磁盘 | 至少 16 KB |20 MB/秒 | 每个磁盘 1684 GB
@@ -310,9 +308,9 @@ VM 上所有磁盘的峰值数据变动量 | 54 MB/秒
 
 **名称** | **说明** | **详细信息**
 --- | --- | ---
-配置服务器 | 在本地安装。<br/> 协调本地 VMware 服务器或物理机与 Azure 之间的通信。 | - [了解](vmware-physical-azure-config-process-server-overview.md)配置服务器。<br/> - [了解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)如何升级到最新版本。<br/> - [了解](vmware-azure-deploy-configuration-server.md)如何设置配置服务器。 
+配置服务器 | 在本地安装。<br/> 协调本地 VMware 服务器或物理机与 Azure 之间的通信。 | - [了解](vmware-physical-azure-config-process-server-overview.md)配置服务器。<br/> - [了解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)如何升级到最新版本。<br/> - [了解](vmware-azure-deploy-configuration-server.md)如何设置配置服务器。
 进程服务器 | 默认安装在配置服务器上。<br/> 接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure。<br/> 随着部署扩大，可以另外添加进程服务器来处理更大的复制流量。 | - [了解](vmware-physical-azure-config-process-server-overview.md)进程服务器。<br/> - [了解](vmware-azure-manage-process-server.md#upgrade-a-process-server)如何升级到最新版本。<br/> - [了解](vmware-physical-large-deployment.md#set-up-a-process-server)如何设置横向扩展进程服务器。
-移动服务 | 在想要复制的 VMware VM 或物理服务器上安装。<br/> 协调本地 VMware 服务器/物理服务器与 Azure 之间的复制。| - [了解](vmware-physical-mobility-service-overview.md)移动服务。<br/> - [了解](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal)如何升级到最新版本。<br/> 
+移动服务 | 在想要复制的 VMware VM 或物理服务器上安装。<br/> 协调本地 VMware 服务器/物理服务器与 Azure 之间的复制。| - [了解](vmware-physical-mobility-service-overview.md)移动服务。<br/> - [了解](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal)如何升级到最新版本。<br/>
 
 
 

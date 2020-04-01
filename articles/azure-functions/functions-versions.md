@@ -3,12 +3,12 @@ title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e90752e89be7e381b06f8a87f76f123f0e4a8e3a
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276551"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422482"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
@@ -18,7 +18,7 @@ Azure Functions 运行时的主版本与运行时所基于的 .NET 版本相关�
 | --------------- | ------------- | ------------ |
 | 3.x | GA | .NET Core 3.1 | 
 | 2.x | GA | .NET Core 2.2 |
-| 1.x | 正式版<sup>2</sup> | .NET Framework 4.6<sup>3</sup> |
+| 1.x | 正式版<sup>2</sup> | .NET 框架 4.7.2<sup>3</sup> |
 
 <sup>1</sup> 生产方案支持正式版。   
 <sup>2</sup> 版本 1.x 处于维护模式。 仅在更高版本中提供增强功能。   
@@ -104,7 +104,7 @@ Azure Functions 版本 3.x 向后高度兼容版本 2.x。  许多应用应该�
 
 Azure 中已发布应用使用的函数运行时版本由[`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version)应用程序设置决定。 支持以下主要运行时版本值：
 
-| “值” | 运行时目标 |
+| 值 | 运行时目标 |
 | ------ | -------- |
 | `~3` | 3.x |
 | `~2` | 2.x |

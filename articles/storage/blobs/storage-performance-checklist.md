@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255426"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473934"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 存储的性能与可伸缩性查检表
 
@@ -267,7 +267,7 @@ Blob 服务支持 HEAD 请求，这些请求可以包含 Blob 属性或元数据
 若要快速上传单个大型 Blob，客户端应用程序可以并行上传其块或页，但需要考虑各个 Blob 的可伸缩性目标并综合考虑存储帐户的情况。 Azure 存储客户端库支持并行上传。 例如，可使用以下属性来指定 .NET 或 Java 中允许的并发请求数。 其他受支持语言的客户端库提供类似的选项。
 
 - 对于 .NET，请设置 [BlobRequestOptions.ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount) 属性。
-- 对于 Java/Android，请调用 [BlobRequestOptions.setConcurrentRequestCount(final Integer concurrentRequestCount)](/java/api/com.microsoft.azure.storage.blob._blob_request_options.setconcurrentrequestcount) 方法。
+- 对于 Java/Android，请调用 [BlobRequestOptions.setConcurrentRequestCount(final Integer concurrentRequestCount)](/java/api/com.microsoft.azure.storage.blob.blobrequestoptions.setconcurrentrequestcount) 方法。
 
 ### <a name="upload-many-blobs-quickly"></a>快速上传多个 Blob
 

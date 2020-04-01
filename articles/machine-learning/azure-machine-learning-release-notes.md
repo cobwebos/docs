@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 70e8bf95022f88dab54fa13769df4b051cf41c92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b55c351927a56afce697d07f41bfbe668144d68d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247140"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475522"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -26,7 +26,7 @@ ms.locfileid: "80247140"
 
 ### <a name="azure-machine-learning-sdk-for-python-v120"></a>适用于 Python v1.2.0 的 Azure 机器学习 SDK
 
-+ **重大更改**
++ **中断性变更**
   + 删除对 python 2.7 的支持
 
 + **Bug 修复与改进**
@@ -61,7 +61,7 @@ ms.locfileid: "80247140"
   + **Python 2.7**
     + 支持 python 2.7 的最后版本
 
-+ **重大更改**
++ **中断性变更**
   + **语义化版本控制 2.0.0**
     + 从版本 1.1 开始，Azure ML Python SDK 采用语义版本 2.0.0。 在[此处](https://semver.org/)了解详细信息。 所有后续版本都将遵循新的编号方案和语义版本控制协定。 
 
@@ -224,7 +224,7 @@ ms.locfileid: "80247140"
 
 ### <a name="azure-machine-learning-sdk-for-python-v110rc0-pre-release"></a>适用于 Python v1.1.0rc0 的 Azure 机器学习 SDK（预发布）
 
-+ **重大更改**
++ **中断性变更**
   + **语义化版本控制 2.0.0**
     + 从版本 1.1 开始，Azure ML Python SDK 采用语义版本 2.0.0。 在[此处](https://semver.org/)了解详细信息。 所有后续版本都将遵循新的编号方案和语义版本控制协定。 
   
@@ -354,7 +354,7 @@ ms.locfileid: "80247140"
 
 ### <a name="azure-machine-learning-sdk-for-python-v1076"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.76
 
-+ **重大更改**
++ **中断性变更**
   + Azureml-Train-AutoML 升级问题
     + 从 azureml-train-automl<1.0.76 升级到 azureml-train-automl>=1.0.76 可能导致安装不完整，从而导致某些 automl 导入失败。 若要解决此问题，可以运行 https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/automl_setup.cmd 中的安装脚本。 如果直接使用 pip，则可以运行：
       + "pip install --upgrade azureml-train-automl"
@@ -455,7 +455,7 @@ ms.locfileid: "80247140"
 
 从工作室访问以下基于 Web 的创作工具：
 
-| 基于 Web 的工具 | 描述 | 版本 |
+| 基于 Web 的工具 | 说明 | 版本 |
 |-|-|-|
 | 笔记本 VM（预览版） | 完全托管的基于云的工作站 | 基本和企业版 |
 | [自动化机器学习](tutorial-first-experiment-automated-ml.md)（预览版） | 没有可用于自动化机器学习模型开发的代码体验 | Enterprise |
@@ -925,7 +925,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 更新了用于创建 `RawDataContext` 的接口，现在只需要数据和 `AutoMLBaseSettings` 对象。
     +  允许 AutoML 用户在预测时删除不够长的训练系列。 - 允许 AutoML 用户在预测时从测试集中删除不在训练集中的粒度。
   + **azure-cli-ml**
-    + 现在，可为 AKS 群集上部署的评分终结点更新 Microsoft 生成的证书和客户证书的 SSL 证书。
+    + 现在，您可以更新为 Microsoft 生成的和客户证书部署在 AKS 群集上评分终结点的 TLS/SSL 证书。
   + **azureml-automl-core**
     + 修复了 AutoML 中的一个问题：不正确删除缺少标签的行。
     + 改进了 AutoML 中的错误日志记录；现在，完整的错误消息始终会写入日志文件。
@@ -956,7 +956,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 支持在数据集 python SDK 中导入 HTTP csv/tsv 文件。
     + 已弃用 Workspace.setup() 方法。 显示给用户的警告消息建议改用 create() 或 get()/from_config()。
     + 添加了 Environment.add_private_pip_wheel()，以便能够将专用自定义 python 包 `whl` 上传到工作区，并安全地使用这些包生成/具体化环境。
-    + 现在，可为 AKS 群集上部署的评分终结点更新 Microsoft 生成的证书和客户证书的 SSL 证书。
+    + 现在，您可以更新为 Microsoft 生成的和客户证书部署在 AKS 群集上评分终结点的 TLS/SSL 证书。
   + **azureml 解释模型**
     + 添加了相应的参数，用于在上传时将模型 ID 添加到解释中。
     + 已将 `is_raw` 标记添加到内存和上传内容中的解释。
@@ -1293,7 +1293,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 将 Jupyter 笔记本作为运行提交。 [API 参考文档](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
     + 通过 azureml-contrib-datadrift 包提供[数据偏移检测器](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class))公共预览版（[示例笔记本](https://aka.ms/azureml-datadrift-example)）。 数据偏移是模型准确度不断下降的主要原因之一。 当为生产环境中的模型提供的数据不同于训练模型所用的数据时，就会发生数据偏移。 AML 数据偏移检测器可帮助客户监视数据偏移，并在检测到偏移时发送警报。
 
-+ **重大更改**
++ **中断性变更**
 
 + **Bug 修复与改进**
   + RunConfiguration 加载和保存操作支持为指定完整文件路径，以便与以前的行为完全后向兼容。
@@ -1521,7 +1521,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 
 ### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Azure 机器学习数据准备 SDK v1.1.0
 
-+ **重大更改**
++ **中断性变更**
   + 数据准备包的概念已弃用，且不再受支持。 可以单独保存数据流，而不是将多个数据流保存在一个包中。
     + 如何指导：[打开和保存数据流笔记本](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
 
@@ -1706,7 +1706,7 @@ Azure 机器学习现已推出正式版。
 > 建议创建一个新工作区来使用 Azure 机器学习计算。 尝试从现有工作区创建 Azure 机器学习计算的用户可能会看到一个错误，但这种可能性很小。 工作区中的现有计算可以继续使用，不受影响。
 
 ### <a name="azure-machine-learning-sdk-for-python-v102"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.2
-+ **重大更改**
++ **中断性变更**
   + 此版本不再支持从 Azure 机器学习创建 VM。 仍可以附加现有的云 VM 或远程本地服务器。
   + 我们还将删除对 BatchAI 的支持，所有这些现在由 Azure 机器学习计算提供支持。
 
@@ -1726,7 +1726,7 @@ Azure 机器学习现已推出正式版。
 <!--+ **Bugs fixed**-->
 
 ### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Azure 机器学习数据准备 SDK v0.5.2
-+ **重大更改**
++ **中断性变更**
   * `SummaryFunction.N` 已重命名为 `SummaryFunction.Count`。
 
 + **错误修复**
@@ -1764,7 +1764,7 @@ Azure 机器学习现已推出正式版。
 
 ### <a name="azure-machine-learning-sdk-for-python-v0180"></a>适用于 Python 的 Azure 机器学习 SDK v0.1.80
 
-+ **重大更改**
++ **中断性变更**
   * azureml.train.widgets 命名空间已移至 azureml.widgets****。
   * azureml.core.compute.AmlCompute 弃用了以下类 - azureml.core.compute.BatchAICompute 和 azureml.core.compute.DSVMCompute******。 后续版本中将删除后一类。 AmlCompute 类现在有一个更简单的定义，只需要 vm_size 和 max_nodes，并在提交作业时自动将集群从 0 扩展到 max_nodes。 我们的[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/training)已更新该信息，并且会提供使用示例。 我们希望你喜欢这种简化以及即将发布的版本中更多令人兴奋的功能！
 
@@ -1805,7 +1805,7 @@ Azure 机器学习的 Azure 门户已做出以下更新：
 
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>适用于 Python 的 Azure 机器学习 SDK v0.1.74
 
-+ **重大更改**
++ **中断性变更**
   * *Workspace.compute_targets、datastores、experiments、images、models 和 webservices 现在是属性而不是方法。** 例如，将 Workspace.compute_targets() 替换为 Workspace.compute_targets****。
   * *Run.get_context* 弃用了 *Run.get_submitted_run*。 后续版本中将删除后一种方法。
   * *PipelineData* 类现在需要使用数据存储对象作为参数而非需要 datastore_name。 类似地，*Pipeline* 接受 default_datastore 而非 default_datastore_name。
@@ -1855,7 +1855,7 @@ Azure 机器学习的 Azure 门户已做出以下更新：
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
-+ **重大更改**
++ **中断性变更**
   * Workspace.experiments、Workspace.models、Workspace.compute_targets、Workspace.images，Workspace.web_services 将返回字典，而以前返回列表。 请参阅 [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API 文档。
 
   * 自动化机器学习从主要指标中删除了规范化的均方误差。

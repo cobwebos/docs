@@ -1,21 +1,15 @@
 ---
-title: 快速入门：将语音合成音频文件，Python - 语音服务
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: chlandsi
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 07/05/2019
-ms.author: chlandsi
-ms.openlocfilehash: df2c3fc2ab6f6c742f56273119923a7e02cf8e43
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.date: 03/20/2020
+ms.author: dapine
+ms.openlocfilehash: 983a3c38c19d60a2ad890255ab2120ea58776436
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383916"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80117033"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,29 +21,31 @@ ms.locfileid: "78383916"
     * Linux：基于 x64 的 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8。
 * 在 Linux 上，请运行以下命令安装所需的包：
 
-  * 在 Ubuntu 上：
+# <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.0 libasound2
-    ```
+```Bash
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.0 libasound2
+```
 
-  * 在 Debian 9 上：
+# <a name="debian-9"></a>[Debian 9](#tab/debian)
 
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+```Bash
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.2 libasound2
+```
 
-  * 在 RHEL/CentOS 8 上：
+# <a name="rhel--centos-8"></a>[RHEL / CentOS 8](#tab/rhel-centos)
 
-    ```sh
-    sudo yum update
-    sudo yum install alsa-lib openssl python3
-    ```
+```Bash
+sudo yum update
+sudo yum install alsa-lib openssl python3
+```
 
 > [!NOTE]
 > 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
+
+---
 
 * 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。
 
@@ -59,7 +55,7 @@ ms.locfileid: "78383916"
 
 此命令从语音 SDK 的 [PyPI](https://pypi.org/) 安装 Python 包：
 
-```sh
+```Bash
 pip install azure-cognitiveservices-speech
 ```
 
@@ -77,7 +73,7 @@ pip install azure-cognitiveservices-speech
 
 可将本快速入门中的[示例代码](#sample-code)复制到源文件 `quickstart.py`，然后在 IDE 或控制台中运行该代码
 
-```sh
+```Bash
 python quickstart.py
 ```
 
@@ -85,8 +81,7 @@ python quickstart.py
 
 ### <a name="sample-code"></a>示例代码
 
-````Python
-
+````python
 import azure.cognitiveservices.speech as speechsdk
 
 # Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
@@ -96,7 +91,7 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_r
 # Creates an audio configuration that points to an audio file.
 # Replace with your own audio filename.
 audio_filename = "helloworld.wav"
-audio_output = speechsdk.AudioOutputConfig(filename=audio_filename)
+audio_output = speechsdk.audio.AudioOutputConfig(filename=audio_filename)
 
 # Creates a synthesizer with the given settings
 speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_output)
@@ -138,14 +133,14 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. 复制 [Python 代码](#sample-code)并将其粘贴到新建的文件，然后保存文件。
 1. 插入语音服务订阅信息。
 1. 如果已选择 Python 解释器，窗口底部的状态栏左侧会显示它。
-   否则，会显示可用 Python 解释器的列表。 打开命令面板 (Ctrl+Shift+P) 并输入 **Python:Select Interpreter**。 选择适当的解释器。
+   否则，会显示可用 Python 解释器的列表。 打开命令面板 (<kbd>Ctrl+Shift+P</kbd>) 并输入 **Python:Select Interpreter**。 选择适当的解释器。
 1. 如果尚未为所选的 Python 解释器安装， 可以从 Visual Studio Code 内部安装语音 SDK Python 包。
-   若要安装语音 SDK 包，请打开终端。 再次启动命令面板 (Ctrl+Shift+P) 并输入 **Terminal:Create New Integrated Terminal** 来打开终端。
+   若要安装语音 SDK 包，请打开终端。 再次启动命令面板 (<kbd>Ctrl+Shift+P</kbd>) 并输入 **Terminal:Create New Integrated Terminal** 来打开终端。
    在打开的终端中，输入命令 `python -m pip install azure-cognitiveservices-speech`，或者输入适用于系统的命令。
 1. 若要运行示例代码，请在编辑器中的某个位置单击右键。 选择“在终端中运行 Python 文件”。 
    文本转换为语音，并保存在指定的音频数据中。
 
-   ```text
+   ```console
    Speech synthesized to [helloworld.wav] for text [Hello world!]
    ```
 

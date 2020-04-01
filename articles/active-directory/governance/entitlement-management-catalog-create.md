@@ -1,5 +1,5 @@
 ---
-title: 创建&管理授权管理中的资源 - Azure AD
+title: 创建&管理授权管理中的资源目录 - Azure AD
 description: 了解如何在 Azure 活动目录授权管理中创建新的资源和访问包容器。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbafb0c506fd34e975efbe08c75c15c8c0b3888e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffa6f2fbdcde41d81e268779c3a0586bd8310792
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128944"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437557"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 授权管理中创建和管理资源目录
 
@@ -137,7 +137,7 @@ ms.locfileid: "80128944"
 
     ![编辑目录设置](./media/entitlement-management-shared/catalog-edit.png)
 
-1. 单击“保存”。****
+1. 单击“保存”  。
 
 ## <a name="delete-a-catalog"></a>删除目录
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8129239f152f6b359b930e56466052da12ef4d42
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616654"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437032"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive
 
@@ -31,7 +31,7 @@ ms.locfileid: "77616654"
 
 ## <a name="jdbc-connection-string"></a>JDBC 连接字符串
 
-JDBC 通过端口 443 连接到 Azure 上的 HDInsight 群集，并使用 SSL 保护通信安全。 公用网关（群集位于其后）会将通信重定向到 HiveServer2 在其上进行实际侦听的端口。 以下连接字符串显示要用于 HDInsight 的格式：
+与 Azure 上的 HDInsight 群集的 JDBC 连接通过端口 443 进行，并且流量使用 TLS/SSL 进行保护。 公用网关（群集位于其后）会将通信重定向到 HiveServer2 在其上进行实际侦听的端口。 以下连接字符串显示要用于 HDInsight 的格式：
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
@@ -83,9 +83,9 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
 5. 在“添加驱动程序”对话框中，添加以下信息：
 
-    |properties | “值” |
+    |properties | 值 |
     |---|---|
-    |“属性”|Hive|
+    |名称|Hive|
     |示例 URL|jdbc：hive2：//localhost：443/默认;传输模式_http;ssl_true;httpPath_/hive2|
     |额外类路径|使用 **"添加**"按钮添加之前下载的所有 jar 文件。|
     |类名|org.apache.hive.jdbc.HiveDriver|
@@ -100,9 +100,9 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
 7. 对 **"添加别名**"对话框使用以下值：
 
-    |properties |“值” |
+    |properties |值 |
     |---|---|
-    |“属性”|Hive on HDInsight|
+    |名称|Hive on HDInsight|
     |驱动程序|使用下拉列表选择**Hive**驱动程序。|
     |代码|jdbc：hive2：//CLUSTERNAME.azurehdinsight.net：443/默认;传输模式_http;ssl_true;httpPath_/hive2。 将**CLUSTERNAME**替换为 HDInsight 群集的名称。|
     |用户名|HDInsight 群集的群集登录帐户名。 默认值为**管理员**。|

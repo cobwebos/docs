@@ -5,19 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 51b800dde140affd222f2bdb341c0fbf3a57d8cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 3/30/2020
+ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530149"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422468"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中配置数据传入复制
 
 本文介绍如何通过配置主服务器和副本服务器在 Azure Database for MariaDB 中设置数据传入复制。 本文假设读者在 MariaDB 服务器和数据库方面有一定的经验。
 
 若要在 Azure Database for MariaDB 服务中创建副本，数据传入复制需同步本地 MariaDB 主服务器、虚拟机 (VM) 或云数据库服务中的数据。
+
+在执行本文中的步骤之前，请查看数据内复制[的限制和要求](concepts-data-in-replication.md#limitations-and-considerations)。
 
 > [!NOTE]
 > 如果主服务器的版本为 10.2 或以上，我们建议使用[全局事务 ID](https://mariadb.com/kb/en/library/gtid/) 设置数据传入复制。
@@ -36,11 +38,21 @@ ms.locfileid: "79530149"
     
     用户帐户不会从主服务器复制到副本服务器。 若要为用户提供副本服务器的访问权限，必须在新建的 Azure Database for MariaDB 服务器上创建所有帐户和对应的特权。
 
+3. 将主服务器的 IP 地址添加到副本的防火墙规则中。 
+
+   使用 [Azure 门户](howto-manage-firewall-portal.md)或 [Azure CLI](howto-manage-firewall-cli.md) 更新防火墙规则。
+
 ## <a name="configure-the-master-server"></a>配置主服务器
 
 以下步骤准备并配置本地、VM 或云数据库服务中托管的 MariaDB 服务器，以实现数据传入复制。 该 MariaDB 服务器是数据传入复制中的主服务器。
 
-1. 启用二进制日志记录。
+1. 在继续操作之前，请查看[主服务器要求](concepts-data-in-replication.md#requirements)。 
+
+   例如，确保主服务器允许端口 3306 上的入站和出站流量，并且主服务器具有公共**IP 地址**、DNS 是可公开访问的，或者具有完全限定的域名 （FQDN）。 
+   
+   通过尝试从工具（如在另一台计算机上托管的 MySQL 命令行或 Azure 门户中可用的[Azure 云外壳](https://docs.microsoft.com/azure/cloud-shell/overview)）进行连接，测试与主服务器的连接。
+
+2. 启用二进制日志记录。
     
     若要查看是否已在主服务器上启用二进制日志记录，请输入以下命令：
 
@@ -52,7 +64,7 @@ ms.locfileid: "79530149"
 
    如果 `log_bin` 返回了值 `OFF`，请编辑 **my.cnf** 文件，使 `log_bin=ON` 启用二进制日志记录。 重启服务器，使更改生效。
 
-2. 配置主服务器设置。
+3. 配置主服务器设置。
 
     数据传入复制要求参数 `lower_case_table_names` 在主服务器与副本服务器之间保持一致。 在 Azure Database for MariaDB 中，`lower_case_table_names` 参数默认设置为 `1`。
 
@@ -60,7 +72,7 @@ ms.locfileid: "79530149"
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-3. 创建新的复制角色并设置权限。
+4. 创建新的复制角色并设置权限。
 
    在主服务器上创建一个配置有复制特权的用户帐户。 可以使用 SQL 命令或 MySQL Workbench 创建帐户。 如果你打算使用 SSL 进行复制，则必须在创建用户帐户时指定此设置。
    
@@ -105,7 +117,7 @@ ms.locfileid: "79530149"
    ![复制从属角色](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. 将主服务器设置为只读模式。
+5. 将主服务器设置为只读模式。
 
    在开始转储数据库之前，必须将服务器置于只读模式。 在只读模式下，主服务器无法处理任何写入事务。 为帮助避免对业务造成影响，请将只读时段安排在非高峰期。
 
@@ -114,7 +126,7 @@ ms.locfileid: "79530149"
    SET GLOBAL read_only = ON;
    ```
 
-5. 获取当前的二进制日志文件名和偏移量。
+6. 获取当前的二进制日志文件名和偏移量。
 
    要确定当前二进制日志文件名称和偏移量，请运行[`show master status`](https://mariadb.com/kb/en/library/show-master-status/)命令 。
     
@@ -127,7 +139,7 @@ ms.locfileid: "79530149"
 
    请记下二进制文件名，因为后面的步骤中需要用到。
    
-6. 获取 GTID 位置（可选，使用 GTID 复制时需要用到）。
+7. 获取 GTID 位置（可选，使用 GTID 复制时需要用到）。
 
    运行该函数[`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/)以获取相应 binlog 文件名和偏移的 GTID 位置。
   
@@ -196,7 +208,7 @@ ms.locfileid: "79530149"
 
        ```sql
        SET @cert = '-----BEGIN CERTIFICATE-----
-       PLACE YOUR PUBLIC KEY CERTIFICATE'S CONTEXT HERE
+       PLACE YOUR PUBLIC KEY CERTIFICATE\'S CONTEXT HERE
        -----END CERTIFICATE-----'
        ```
 

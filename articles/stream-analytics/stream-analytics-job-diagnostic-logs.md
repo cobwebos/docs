@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/19/2019
-ms.openlocfilehash: f318b373f6a6f46ee3a85703c6099c76568580ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/27/2020
+ms.openlocfilehash: cdb6629441becd0a8356debe3360830ff11a7a9d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426158"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398422"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>使用诊断日志对 Azure 流分析进行故障排除
 
@@ -63,7 +63,7 @@ ms.locfileid: "75426158"
 
     ![在边栏选项卡中导航到诊断日志](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  在“诊断设置”中创建“名称”，并选中“发送到 Log Analytics”旁边的复选框************。 然后添加现有的或创建新的“Log Analytics 工作区”****。 选中“日志”下“执行”和“创作”的复选框，以及“指标”下“AllMetrics”的复选框********************。 单击“保存”。**** 建议使用与流分析作业位于同一 Azure 区域中的 Log Analytics 工作区，以防产生额外的成本。
+2.  在“诊断设置”中创建“名称”，并选中“发送到 Log Analytics”旁边的复选框************。 然后添加现有的或创建新的“Log Analytics 工作区”****。 选中“日志”下“执行”和“创作”的复选框，以及“指标”下“AllMetrics”的复选框********************。 单击“保存”  。 建议使用与流分析作业位于同一 Azure 区域中的 Log Analytics 工作区，以防产生额外的成本。
 
     ![诊断日志设置](./media/stream-analytics-job-diagnostic-logs/diagnostic-settings.png)
 
@@ -94,7 +94,7 @@ Azure 流分析捕获两种类别的诊断日志：
 
 所有日志均以 JSON 格式存储。 每个项目均具有以下常见字符串字段：
 
-“属性” | 描述
+名称 | 说明
 ------- | -------
 time | 日志时间戳（采用 UTC）。
 resourceId | 发生操作的资源的 ID，采用大写格式。 其中包括订阅 ID、资源组和作业名称。 例如，**/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**。
@@ -112,7 +112,7 @@ properties | 日志项目的具体详细信息；序列化为 JSON 字符串。 
 
 作业处理数据期间出现的任何错误都在此日志类别中。 这些日志通常创建于读取数据、序列化和写入操作期间。 这些日志不包括连接错误。 连接错误被视为泛型事件。 您可以了解有关各种不同[输入和输出数据错误](https://docs.microsoft.com/azure/stream-analytics/data-errors)的原因。
 
-“属性” | 描述
+名称 | 说明
 ------- | -------
 源 | 发生错误的作业输入或输出的名称。
 消息 | 与错误关联的消息。
@@ -133,7 +133,7 @@ properties | 日志项目的具体详细信息；序列化为 JSON 字符串。 
 
 泛型事件包含其他所有情况。
 
-“属性” | 描述
+名称 | 说明
 -------- | --------
 错误 | （可选）错误信息。 通常情况下，这是异常信息（如果存在）。
 消息| 日志消息。

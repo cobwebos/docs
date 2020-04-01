@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: bc6e43faca47e360daa8214e6b9f6e9df4a2f130
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 23e7f88b23ac7af7470183877eeb1be89e79779c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495389"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80287741"
 ---
-1. 在 LUIS 门户中，在“管理”部分（右上方菜单）的“密钥和终结点”页（左侧菜单）上，选择页面底部的“终结点 URL”。
+1. 在 LUIS 门户中的“Azure 资源”页面（左菜单）上的“预测资源”选项卡的“管理”部分（右上菜单），复制页面底部的“示例查询”     。
 
-    此操作会打开浏览器选项卡，其地址栏中包含终结点 URL。
+    将 URL 粘贴到新的浏览器选项卡中。
 
     该 URL 具有应用 ID、密钥和槽名称。 V3 预测终结点 URL 如下所示：
 
-    `https://REGION.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/APP-ID/slots/SLOT-NAME/predict?subscription-key=YOUR-KEY&<optional-name-value-pairs>&query=UTTERANCE-TEXT.`
+    `https://REGION.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/APP-ID/slots/SLOT-NAME/predict?subscription-key=YOUR-KEY&<optional-name-value-pairs>&query=YOUR_QUERY_HERE`
 

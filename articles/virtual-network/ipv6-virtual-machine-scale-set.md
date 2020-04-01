@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/29/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: b90910614bcd86a54198b1a0961a3378427ea87e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a751fa193c8dd530707f790af0292d536a6f47d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73164986"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420460"
 ---
-# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure-preview"></a>在 Azure 中部署使用 IPv6 的虚拟机缩放集（预览）
+# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>在 Azure 中部署使用 IPv6 的虚拟机规模集
 
-本文介绍如何在 Azure 虚拟网络中部署使用双堆栈外部负载均衡器的双堆栈 (IPv4 + IPv6) 虚拟机规模集。 创建支持 IPv6 的虚拟机规模集的过程，与[此处](ipv6-configure-standard-load-balancer-template-json.md)所述的创建单个 VM 的过程基本相同。 您将从类似于各个 VM 描述的步骤开始：
-1.  创建 IPv4 和 IPv6 公共 IP。
-2.  创建双堆栈负载均衡器。  
-3.  创建网络安全组 (NSG) 规则。  
+本文介绍如何在 Azure 虚拟网络中部署使用双堆栈外部负载均衡器的双堆栈 (IPv4 + IPv6) 虚拟机规模集。 创建支持 IPv6 的虚拟机规模集的过程，与[此处](ipv6-configure-standard-load-balancer-template-json.md)所述的创建单个 VM 的过程基本相同。 首先执行类似于创建单个 VM 的步骤：
+1.    创建 IPv4 和 IPv6 公共 IP。
+2.    创建双堆栈负载均衡器。  
+3.    创建网络安全组 (NSG) 规则。  
 
 只有一个步骤与创建单个 VM 不同，那就是创建使用虚拟机规模集资源的网络接口 (NIC) 配置：networkProfile/networkInterfaceConfigurations。 JSON 结构类似于用于单个 VM 的网络/网络接口对象，增加了使用 **"主"** 将 NIC 和 IPv4 Ip配置设置为主接口：真实属性，如下例所示：
 

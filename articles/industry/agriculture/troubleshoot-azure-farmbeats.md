@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a429a1e454e73a1a9d544e308e5b2d60052d91a9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7a31eece6629558b14b614853addce59642e698b
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349776"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422727"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -38,7 +38,9 @@ ms.locfileid: "80349776"
 **纠正措施**：
 
 1. 转到服务器场节拍 Datahub 资源组。   
+
 2. 选择**事件中心**（数据馈送事件Hub命名空间），然后检查传入消息的数量。
+
 3. 执行下列任一操作：   
    - 如果没有*传入的消息*，请与您的设备合作伙伴联系。  
    - 如果有*传入消息*，请与farmbeatssupport@microsoft.com. 附加 Datahub 和加速器日志和捕获的遥测数据。
@@ -52,6 +54,7 @@ ms.locfileid: "80349776"
 **纠正措施**：
 
 1. 确保合作伙伴注册工作正确 - 您可以通过访问数据库摇曳器、导航到 /合作伙伴 API、执行获取并检查合作伙伴是否已注册来检查此情况。 如果没有，请按照[此处的步骤](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)添加合作伙伴。
+
 2. 确保使用了正确的遥测消息格式：
 
 ```json
@@ -83,9 +86,12 @@ ms.locfileid: "80349776"
 
 1. 在 Datahub Swagger 中，转到合作伙伴 API。
 2. 选择 **"试用** > **它** > **执行**"。
-3. 请注意您感兴趣的传感器合作伙伴的合作伙伴 ID。
-4. 返回合作伙伴 API，然后选择**获取/ID\<>**。
-5. 从步骤 3 中指定合作伙伴 ID，然后选择 **"执行**"。
+
+> [!NOTE]
+> 您感兴趣的传感器合作伙伴的合作伙伴 ID。
+
+3. 返回合作伙伴 API，然后选择**获取/ID\<>**。
+4. 从步骤 3 中指定合作伙伴 ID，然后选择 **"执行**"。
 
    API 响应应具有事件中心连接字符串。
 
@@ -240,7 +246,7 @@ ms.locfileid: "80349776"
 
 ### <a name="collect-azure-data-factory-job-logs-in-datahub"></a>在 Datahub 中收集 Azure 数据工厂作业日志
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在 **"搜索"** 框中，搜索服务器场节拍 Datahub 资源组。
 
     > [!NOTE]
@@ -258,7 +264,7 @@ ms.locfileid: "80349776"
 
 ### <a name="collect-azure-data-factory-job-logs-in-accelerator"></a>在加速器中收集 Azure 数据工厂作业日志
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在 **"搜索"** 框中，搜索服务器场节拍加速器资源组。
 
     > [!NOTE]
@@ -275,7 +281,7 @@ ms.locfileid: "80349776"
 
 ### <a name="collect-datahub-app-service-logs"></a>收集 Datahub 应用服务日志
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在 **"搜索"** 框中，搜索服务器场节拍 Datahub 资源组。
 
     > [!NOTE]
@@ -291,7 +297,7 @@ ms.locfileid: "80349776"
 
 ### <a name="collect-accelerator-app-service-logs"></a>收集加速器应用服务日志
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在 **"搜索"** 框中，搜索服务器场节拍加速器资源组。
 
     > [!NOTE]

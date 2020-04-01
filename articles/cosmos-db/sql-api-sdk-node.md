@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: de1c1b93b813f71b321da0625bc60e0762a859c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70207961"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411272"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -318,7 +318,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ### <a name=""></a><a name="1.11.0"/>1.11.0</a>
 * 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。
 * 现可控制跨分区查询的并行度。
-* Azure Cosmos DB 模拟器运行时，添加了禁用 SSL 验证的选项。
+* 添加了在针对 Azure Cosmos DB 仿真器运行时禁用 TLS 验证的选项。
 * 将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
 * 修复了针对单分区集合的继续标记 bug。 GitHub 问题 #107。
 * 修复了将 0 处理成单个参数时出现的 executeStoredProcedure bug。 GitHub 问题 #155。
@@ -328,7 +328,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * 细微代码清理。
 
 ### <a name=""></a><a name="1.10.1"/>1.10.1</a>
-* 使用 SDK 定位模拟器 (hostname=localhost) 时禁用 SSL 验证。
+* 使用 SDK 定位仿真器（主机名+本地主机）时禁用 TLS 验证。
 * 添加了在存储过程执行期间对启用脚本日志记录的支持。
 
 ### <a name=""></a><a name="1.10.0"/>1.10.0</a>
@@ -474,7 +474,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月**** 发出通知，以便�
 | [1.0.1](#1.0.1) |2015年 5 月 15日 |2020年8月30日 |
 | [1.0.0](#1.0.0) |2015 年 4 月 8 日 |2020年8月30日 |
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>请参阅

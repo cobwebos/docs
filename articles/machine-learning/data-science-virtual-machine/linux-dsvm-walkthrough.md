@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 9857de0470baa35dcc8005e1622e5e593da95751
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d15d53816d916bd28841aae39255685524faa2d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128352"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477871"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 上的 Linux Data Science Virtual Machine 中的数据科学
 
@@ -29,9 +29,9 @@ ms.locfileid: "80128352"
 必须具备以下先决条件，才能使用 Linux DSVM：
 
 * **Azure 订阅**。 若要获取 Azure 订阅，请参阅[立即创建免费的 Azure 帐户](https://azure.microsoft.com/free/)。
-* [**Linux数据科学虚拟机**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 有关预配虚拟机的信息，请参阅[预配 Linux Data Science Virtual Machine](linux-dsvm-intro.md)。
+* [**Linux数据科学虚拟机**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu)。 有关预配虚拟机的信息，请参阅[预配 Linux Data Science Virtual Machine](linux-dsvm-intro.md)。
 * 计算机上安装了 [X2Go](https://wiki.x2go.org/doku.php) 且 XFCE 会话处于打开状态****。 有关详细信息，请参阅[安装和配置 X2Go 客户端](linux-dsvm-intro.md#x2go)。
-* 为获得更流畅的滚动体验，请在 DSVM 的 Firefox Web 浏览器中切换 `about:config` 中的 `gfx.xrender.enabled` 标记。 [了解详情](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 此外，考虑将 `mousewheel.enable_pixel_scrolling` 设置为 `False`。 [了解详情](https://support.mozilla.org/questions/981140)。
+* 为获得更流畅的滚动体验，请在 DSVM 的 Firefox Web 浏览器中切换 `about:config` 中的 `gfx.xrender.enabled` 标记。 [了解详细信息](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 此外，考虑将 `mousewheel.enable_pixel_scrolling` 设置为 `False`。 [了解详细信息](https://support.mozilla.org/questions/981140)。
 * Azure 机器学习帐户****。 如果没有帐户，请在 [Azure 机器学习主页](https://azure.microsoft.com/free/services/machine-learning//)上注册新帐户。
 
 ## <a name="download-the-spambase-dataset"></a>下载 spambase 数据集
@@ -385,7 +385,7 @@ Rattle 使用一个基于选项卡的接口。 大部分选项卡与[团队数�
 
 1. 要加载文件，选择“数据”选项卡****。
 1. 选择 Filename 旁边的选择器，然后选择 spambaseHeaders.data********。
-1. 要加载文件， 选择 **"执行**"。 应看到每列的摘要，包括其标识的数据类型，是输入、目标还是其他类型的变量，以及唯一值的数量。
+1. 要加载文件， 选择“执行”。  应看到每列的摘要，包括其标识的数据类型，是输入、目标还是其他类型的变量，以及唯一值的数量。
 1. Rattle 已经正确将”**spam**“列作为目标。 选择“垃圾邮件”列，然后将“目标数据类型”设置为“类别”************。
 
 要浏览数据：
@@ -398,12 +398,12 @@ Rattle 使用一个基于选项卡的接口。 大部分选项卡与[团队数�
 
 1. 选择”**分布**“。
 1. 对于 word_freq_remove 和 word_freq_you，请选择“直方图”************。
-1. 选择“执行”****。 在一个图形窗口应可以看到两个密度绘图，很明显，电子邮件中单词 you 比 remove 出现更频繁____。
+1. 选择 **"执行**"。 在一个图形窗口应可以看到两个密度绘图，很明显，电子邮件中单词 you 比 remove 出现更频繁____。
 
 “关联”绘图也值得关注****。 若要创建绘图：
 
 1. 对于“类型”，请选择“关联”********。
-1. 选择“执行”****。
+1. 选择 **"执行**"。
 1. Rattle 会发出警告，建议最多使用 40 个变量。 选择”**是**“以查看该绘图。
 
 有一些有趣的关联出现：例如 _，技术_与_惠普_和_实验室_密切相关。 它还与 650 密切关联，因为数据集捐赠者的区号是 650__。
@@ -425,7 +425,7 @@ Rattle 还可以运行群集分析。 让我们来排除某些功能，以使输
 * word_freq_business
 * spam
 
-返回到 **"群集"** 选项卡。选择**K表示**，然后将**群集数**设置为**4**。 选择“执行”****。 结果会显示在输出窗口中。 一个集群有高频率_的乔治_和_hp，_ 可能是一个合法的商业电子邮件。
+返回到 **"群集"** 选项卡。选择**K表示**，然后将**群集数**设置为**4**。 选择 **"执行**"。 结果会显示在输出窗口中。 一个集群有高频率_的乔治_和_hp，_ 可能是一个合法的商业电子邮件。
 
 若要构建基本决策树机器学习模型：
 
@@ -437,7 +437,7 @@ Rattle 还可以运行群集分析。 让我们来排除某些功能，以使输
 Rattle 的一个不错的功能是它能够运行多个计算机学习方法，并快速对它们进行评估。 下面是相关步骤：
 
 1. 对于“类型”，请选择“全部”********。
-1. 选择“执行”****。
+1. 选择 **"执行**"。
 1. Rattle 运行结束后，可以选择 SVM 等任意“类型”值，然后查看结果********。
 1. 您还可以使用 **"评估"** 选项卡比较验证集中模型的性能。例如，"**错误矩阵"** 选择显示验证集中每个模型的混淆矩阵、总体误差和平均类误差。 此外还可以绘制 ROC 曲线，运行区分大小写分析，并执行其他类型的模型评估。
 
@@ -513,9 +513,9 @@ DSVM 已预安装 PostgreSQL。 PostgreSQL 是一个复杂的开源关系数据�
 1. 对于“驱动程序”，选择 PostgreSQL********。
 1. 将 URL 设置为 **jdbc:postgresql://localhost/spam**。
 1. 输入用户名和密码。
-1. 选择“确定”。
+1. 选择“确定”  。
 1. 若要打开“连接”**** 窗口，请双击**垃圾邮件数据库**别名。
-1. 选择“连接”****。
+1. 选择 **"连接**"。
 
 运行一些查询：
 

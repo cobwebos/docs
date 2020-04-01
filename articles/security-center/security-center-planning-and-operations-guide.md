@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 63b947a27c3aa24b42252bf33febd031f7caefbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46994413ba765e18a826eebfe85a38bb65efc749
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282687"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435618"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
 本指南面向计划使用 Azure 安全中心的信息技术 （IT） 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -131,15 +131,15 @@ ms.locfileid: "79282687"
 在配置安全策略之前，请查看每项 [安全建议](https://docs.microsoft.com/azure/security-center/security-center-recommendations)，确定这些策略是否适合各种订阅和资源组。 此外，请务必了解解决安全建议应采取的行动，以及组织中负责采纳新建议并采取必要措施的人员。
 
 ## <a name="data-collection-and-storage"></a>数据收集和存储
-Azure 安全中心使用 Microsoft 监视代理（这是 Azure 监视器服务使用的代理）从虚拟机收集安全数据。 从此代理[收集的数据](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)将存储在日志分析工作区中。
+Azure 安全中心使用日志分析代理（这是 Azure 监视器服务使用的相同代理）从虚拟机收集安全数据。 从此代理[收集的数据](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)将存储在日志分析工作区中。
 
 ### <a name="agent"></a>代理
 
-在安全策略中启用自动预配后，Microsoft Monitoring Agent（适用于 [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) 或 [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)）会安装在所有支持的 Azure VM 和新建的任何 VM 上。 如果 VM 或计算机已安装 Microsoft Monitoring Agent，Azure 安全中心会利用当前的已安装代理。 代理的过程设计为非入侵性，对 VM 性能的影响非常小。
+在安全策略中启用自动预配后，日志分析代理（用于[Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents)或[Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)）将安装在所有受支持的 Azure VM 上，以及创建的任何新 VM 上。 如果 VM 或计算机已安装日志分析代理，Azure 安全中心将利用当前已安装的代理。 代理的过程设计为非入侵性，对 VM 性能的影响非常小。
 
-适用于 Windows 的 Microsoft Monitoring Agent 需要使用 TCP 端口 443。 有关其他详细信息，请参阅[故障排除文章](security-center-troubleshooting-guide.md)。
+Windows 的日志分析代理需要使用 TCP 端口 443。 有关其他详细信息，请参阅[故障排除文章](security-center-troubleshooting-guide.md)。
 
-如需在某个时候禁用数据收集功能，可在安全策略中将其关闭。 但是，由于 Microsoft 监视代理可能由其他 Azure 管理和监视服务使用，因此当您在安全中心关闭数据收集时，代理不会自动卸载。 必要时可手动卸载代理。
+如需在某个时候禁用数据收集功能，可在安全策略中将其关闭。 但是，由于日志分析代理可能由其他 Azure 管理和监视服务使用，因此当您在安全中心关闭数据收集时，不会自动卸载该代理。 必要时可手动卸载代理。
 
 > [!NOTE]
 > 要查找受支持的 VM 的列表，请阅读[Azure 安全中心常见问题 （FAQ）。](faq-vms.md)
@@ -148,7 +148,7 @@ Azure 安全中心使用 Microsoft 监视代理（这是 Azure 监视器服务�
 
 工作区是一种 Azure 资源，用作数据容器。 你或组织中的其他成员可以使用多个工作区，管理收集自所有或部分 IT 基础结构的不同数据集。
 
-通过 Microsoft Monitoring Agent（代表 Azure 安全中心）收集的数据存储在与 Azure 订阅关联的现有 Log Analytics 工作区或新工作区中，具体取决于 VM 的地理位置。
+从日志分析代理（代表 Azure 安全中心）收集的数据将存储在与 Azure 订阅关联的现有日志分析工作区或新工作区中，同时考虑到 VM 的地理位置。
 
 在 Azure 门户中，可浏览查看 Log Analytics 工作区的列表，其中包括 Azure 安全中心创建的任何工作区。 系统会为新工作区创建相关资源组。 二者均遵循此命名约定：
 

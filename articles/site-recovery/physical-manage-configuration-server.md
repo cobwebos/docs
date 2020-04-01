@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 25be48e9caed446be3a86a11143ce3040808065a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294295"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478964"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>为物理服务器灾难恢复管理配置服务器
 
@@ -60,7 +60,7 @@ Site Recovery 门户中提供了配置服务器安装文件的最新版本。 �
 1. 运行统一安装程序安装文件。
 2. 在“开始之前”中，选择“安装配置服务器和进程服务器”。********
 
-    ![开始之前](./media/physical-manage-configuration-server/combined-wiz1.png)
+    ![准备工作](./media/physical-manage-configuration-server/combined-wiz1.png)
 
 3. 在“第三方软件许可证”中单击“我接受”，下载并安装 MySQL。********
 4. 在“Internet 设置”中，指定配置服务器上运行的提供程序如何通过 Internet 连接到 Azure Site Recovery。**** 确保已允许所需的 URL。
@@ -290,8 +290,8 @@ ProxyPassword="Password"
 > [!NOTE]
 > "删除-AzSite恢复Fabric"中的 **-Force**选项可用于强制删除/删除配置服务器。
 
-## <a name="renew-ssl-certificates"></a>续订 SSL 证书
-配置服务器具有一个内置的 Web 服务器，该服务器协调连接到配置服务器的移动服务、进程服务器和主目标服务器的活动。 Web 服务器使用 SSL 证书对客户端进行身份验证。 该证书在三年后到期，并可随时续订。
+## <a name="renew-tlsssl-certificates"></a>续订 TLS/SSL 证书
+配置服务器具有一个内置的 Web 服务器，该服务器协调连接到配置服务器的移动服务、进程服务器和主目标服务器的活动。 Web 服务器使用 TLS/SSL 证书对客户端进行身份验证。 该证书在三年后到期，并可随时续订。
 
 ### <a name="check-expiry"></a>检查有效期
 

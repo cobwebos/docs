@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d1cd4691586b27282d221a19c5fb7a1af034ed6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5c74ac760b5746d37468d692c2a46d5aedbee72
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125163"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436182"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center"></a>Azure 库伯奈斯服务集成安全中心
 
@@ -35,7 +35,7 @@ Azure 库伯奈斯服务 （AKS） 是 Microsoft 用于开发、部署和管理�
 
 将两种服务结合使用可提供：
 
-* **安全建议**- 安全中心标识您的 AKS 资源并对其进行分类：从群集到单个虚拟机。 然后，您可以查看每个资源的安全建议。 有关详细信息，请参阅[建议参考列表中的容器建议](recommendations-reference.md#recs-computeapp)。 
+* **安全建议**- 安全中心标识您的 AKS 资源并对其进行分类：从群集到单个虚拟机。 然后，您可以查看每个资源的安全建议。 有关详细信息，请参阅[建议参考列表中的容器建议](recommendations-reference.md#recs-containers)。 
 
 * **环境强化**- 安全中心不断监控 Kubernetes 群集和 Docker 配置的配置。 然后，它生成反映行业标准的安全建议。
 

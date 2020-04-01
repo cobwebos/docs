@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/08/2019
-ms.openlocfilehash: 0018ae55ab74e691577a34a397c15355587e0fac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663243"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437048"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -20,7 +20,7 @@ ms.locfileid: "77663243"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>解决方案更新
-> 此解决方案已被[Azure Sentinel](../../sentinel/overview.md)中的[Office 365](../../sentinel/connect-office-365.md)通用可用性解决方案和[Azure AD 报告和监视解决方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)所取代。 它们共同提供了以前的 Azure 监视器 Office 365 解决方案的更新版本，并改进了配置体验。 您可以继续使用现有解决方案，直到 2020 年 4 月 30 日。
+> 此解决方案已被[Azure Sentinel](../../sentinel/overview.md)中的[Office 365](../../sentinel/connect-office-365.md)通用可用性解决方案和[Azure AD 报告和监视解决方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)所取代。 它们共同提供了以前的 Azure 监视器 Office 365 解决方案的更新版本，并改进了配置体验。 您可以继续使用现有解决方案，直到 2020 年 7 月 30 日。
 > 
 > Azure Sentinel 是云原生安全信息和事件管理解决方案，用于引入日志并提供其他 SIEM 功能，包括检测、调查、搜索和机器学习驱动的见解。 现在，使用 Azure Sentinel 将为您提供 Office 365 SharePoint 活动和 Exchange 管理日志的引入。
 > 
@@ -53,7 +53,7 @@ ms.locfileid: "77663243"
 > | where TimeGenerated >= ago(1d) 
 > | where OfficeWorkload == "AzureActiveDirectory"                      
 > | where Operation == 'UserLoginFailed'
-> | summarize count() by UserId 
+> | summarize count() by UserId    
 > ```
 > 
 > ```Kusto
@@ -82,10 +82,10 @@ ms.locfileid: "77663243"
 > ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>问：是否需要 Azure Sentinel 来连接 Azure AD 日志？
 > 您可以配置[Azure AD 日志与 Azure 监视器的集成](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)，这与 Azure Sentinel 解决方案无关。 Azure Sentinel 为 Azure AD 日志提供本机连接器和开箱即用内容。 有关详细信息，请参阅以下有关面向安全的内容的问题。
 >
-> ###   <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>问：从 Azure 哨兵和 Azure 监视器连接 Azure AD 日志时有哪些区别？
+> ###    <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>问：从 Azure 哨兵和 Azure 监视器连接 Azure AD 日志时有哪些区别？
 > Azure 哨兵和 Azure 监视器基于相同的[Azure AD 报告和监视解决方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)连接到 Azure AD 日志。 Azure Sentinel 提供一键式本机连接器，用于连接相同的数据并提供监视信息。
 >
-> ###   <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>问：移动到新的 Azure AD 报告和监视表时，我需要更改哪些内容？
+> ###    <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>问：移动到新的 Azure AD 报告和监视表时，我需要更改哪些内容？
 > 使用 Azure AD 数据的所有查询（包括警报中的查询、仪表板以及使用 Office 365 Azure AD 数据创建的任何内容）都必须使用新表重新创建。
 >
 > Azure 哨兵和 Azure AD 提供内置内容，可在移动到 Azure AD 报告和监视解决方案时使用。 有关详细信息，请参阅有关面向安全的开箱即用内容的下一个问题以及如何[将 Azure 监视器工作簿用于 Azure 活动目录报表](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md)。 
@@ -103,7 +103,7 @@ ms.locfileid: "77663243"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>问：Azure Sentinel 是否作为解决方案的一部分提供了其他连接器？
 > 是的，请参阅[Azure Sentinel 连接数据源](../../sentinel/connect-data-sources.md)。
 > 
-> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>问：4月30日会发生什么？ 我需要事先离开吗？
+> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>问：4月30日会发生什么？ 我需要事先离开吗？
 > 
 > - 您将无法从**Office365**解决方案接收数据。 该解决方案将不再在应用商店中可用
 > - 对于 Azure 哨兵客户，日志分析工作区解决方案**Office365**将包含在 Azure 哨兵**安全见解**解决方案中。
@@ -244,11 +244,11 @@ ms.locfileid: "77663243"
 
 仪表板包含下表中的列。 每个列按照指定范围和时间范围内符合该列条件的计数列出了前十个警报。 可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“全部查看”或单击列标题。
 
-| 列 | 描述 |
+| 列 | 说明 |
 |:--|:--|
 | 操作 | 提供所有监视的 Office 365 订阅中的活动用户相关信息。 还能够看到随着时间的推移发生的活动数。
 | Exchange | 显示 Exchange Server 活动的明细，例如 Add-Mailbox 权限或 Set-Mailbox。 |
-| SharePoint | 显示用户在 SharePoint 文档上执行次数最多的一些活动。 从此磁贴向下钻取时，搜索页会显示这些活动的详细信息，例如目标文档和此活动的位置。 比如，对于文件访问事件，将能够看到正在访问的文档、其关联的帐户名以及 IP 地址。 |
+| SharePoint | 显示用户在 SharePoint 文档上执行次数最多的一些活动。 从此磁贴向下钻取时，搜索页会显示这些活动的详细信息，例如目标文档和此活动的位置。 例如，对于文件访问事件，您将能够看到正在访问的文档、其关联的帐户名称和 IP 地址。 |
 | Azure Active Directory | 包含一些最活跃的用户活动，例如重置用户密码和登录尝试。 向下钻取时，将能够看到这些活动的详细信息（例如结果状态）。 如果想要监视 Azure Active Directory 上的可疑活动，这通常很有帮助。 |
 
 
@@ -262,7 +262,7 @@ ms.locfileid: "77663243"
 
 以下属性对于所有 Office 365 记录通用。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | 类型 | *OfficeActivity* |
 | ClientIP | 记录活动时使用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
@@ -273,14 +273,14 @@ ms.locfileid: "77663243"
 | ResultStatus | 指示操作（在 Operation 属性中指定）是成功还是失败。 可能的值有 Succeeded、PartiallySucceeded 或 Failed。 对于 Exchange 管理员活动，值为 True 或 False。 |
 | UserId | 执行使系统记下记录的操作的用户的 UPN（用户主体名称），例如 my_name@my_domain_name。 请注意，还包括系统帐户（例如 SHAREPOINT\system 或 NTAUTHORITY\SYSTEM）执行的活动的记录。 | 
 | UserKey | UserId 属性中标识的用户的备用 ID。  例如，此属性由 SharePoint、OneDrive for Business 和 Exchange 中用户执行的事件的 Passport 唯一 ID (PUID) 进行填充。 此属性还可为其他服务中发生的事件以及系统帐户执行的事件指定与 UserID 属性相同的值|
-| UserType | 执行操作的用户的类型。<br><br>管理员<br>应用程序<br>DcAdmin<br>常规<br>保留<br>服务主体<br>System |
+| UserType | 执行操作的用户的类型。<br><br>管理员<br>应用程序<br>DcAdmin<br>常规<br>保留<br>服务主体<br>系统 |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory Base
 
 以下属性对于所有 Azure Active Directory 记录通用。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -292,7 +292,7 @@ ms.locfileid: "77663243"
 
 Active Directory 用户尝试登录时，将创建这些记录。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -306,7 +306,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Azure Active Directory 对象或向其添加内容时，将创建这些记录。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -315,7 +315,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | ActorContextId | 参与者所属的组织的 GUID。 |
 | ActorIpAddress | 采用 IPV4 或 IPV6 地址格式的参与者 IP 地址。 |
 | InterSystemsId | 跨 Office 365 服务内的组件跟踪操作的 GUID。 |
-| IntraSystemId |   由 Azure Active Directory 生成用于跟踪操作的 GUID。 |
+| IntraSystemId |     由 Azure Active Directory 生成用于跟踪操作的 GUID。 |
 | SupportTicketId | “代表执行”情况下的操作的客户支持票证 ID。 |
 | TargetContextId | 目标用户所属的组织的 GUID。 |
 
@@ -324,13 +324,13 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 基于数据中心安全审核数据创建这些记录。  
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | EffectiveOrganization | 提升/cmdlet 面向的租户的名称。 |
 | ElevationApprovedTime | 提升获得批准时的时间戳。 |
 | ElevationApprover | Microsoft 管理器的名称。 |
 | ElevationDuration | 提升处于活动状态的持续时间。 |
-| ElevationRequestId |  提升请求的唯一标识符。 |
+| ElevationRequestId |     提升请求的唯一标识符。 |
 | ElevationRole | 为其请求提升的角色。 |
 | ElevationTime | 提升的开始时间。 |
 | Start_Time | cmdlet 执行的开始时间。 |
@@ -340,12 +340,12 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 配置时，将创建这些记录。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
-| ExternalAccess |  指定 cmdlet 是由组织中的用户运行、由 Microsoft 数据中心人员或数据中心服务帐户运行，还是由委派的管理员运行。 值 False 标识 cmdlet 由组织中的某人运行。 值 True 表示 cmdlet 由数据中心人员、数据中心服务帐户或委派的管理员运行。 |
-| ModifiedObjectResolvedName |  这是由 cmdlet 修改的对象的用户友好名称。 仅在 cmdlet 修改对象时才记录此信息。 |
+| ExternalAccess |     指定 cmdlet 是由组织中的用户运行、由 Microsoft 数据中心人员或数据中心服务帐户运行，还是由委派的管理员运行。 值 False 标识 cmdlet 由组织中的某人运行。 值 True 表示 cmdlet 由数据中心人员、数据中心服务帐户或委派的管理员运行。 |
+| ModifiedObjectResolvedName |     这是由 cmdlet 修改的对象的用户友好名称。 仅在 cmdlet 修改对象时才记录此信息。 |
 | OrganizationName | 租户的名称。 |
 | OriginatingServer | 从中执行 cmdlet 的服务器的名称。 |
 | 参数 | 与 Operations 属性中标识的 cmdlet 结合使用的所有参数的名称和值。 |
@@ -355,7 +355,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 邮箱或向其添加内容时，将创建这些记录。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -366,7 +366,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | ClientVersion | 电子邮件客户端的版本。 |
 | InternalLogonType | 保留以供内部使用。 |
 | Logon_Type | 表示访问邮箱并执行所记录的操作的用户类型。 |
-| LogonUserDisplayName |    执行操作的用户的用户友好名称。 |
+| LogonUserDisplayName |     执行操作的用户的用户友好名称。 |
 | LogonUserSid | 执行操作的用户的 SID。 |
 | MailboxGuid | 所访问邮箱的 Exchange GUID。 |
 | MailboxOwnerMasterAccountSid | 邮箱所有者帐户的主帐户 SID。 |
@@ -378,7 +378,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 创建邮箱审核项时，将创建这些记录。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -393,7 +393,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 组或向其添加内容时，将创建这些记录。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -412,14 +412,14 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 这些属性对于所有 SharePoint 记录通用。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
 | EventSource | 确定事件在 SharePoint 中发生。 可能的值有 SharePoint 或 ObjectModel。 |
 | ItemType | 访问或修改的对象的类型。 请参阅 ItemType 表，详细了解对象类型。 |
 | MachineDomainInfo | 有关设备同步操作的信息。 仅在此信息出现在请求中时，才对其报告。 |
-| MachineId |   有关设备同步操作的信息。 仅在此信息出现在请求中时，才对其报告。 |
+| MachineId |     有关设备同步操作的信息。 仅在此信息出现在请求中时，才对其报告。 |
 | Site_ | 用户访问的文件或文件夹所在的站点的 GUID。 |
 | Source_Name | 触发已审核操作的实体。 可能的值有 SharePoint 或 ObjectModel。 |
 | UserAgent | 用户客户端或浏览器的相关信息。 此信息由客户端或浏览器提供。 |
@@ -429,12 +429,12 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 对 SharePoint 进行配置更改时，将创建这些记录。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
 | CustomEvent | 自定义事件的可选字符串。 |
-| Event_Data |  自定义事件的可选有效负载。 |
+| Event_Data |     自定义事件的可选有效负载。 |
 | ModifiedProperties | 包含此属性用于管理员事件，例如将用户添加为网站成员或网站集管理员组的成员。 该属性包括已修改的属性的名称（例如网站管理员组）、已修改属性的新值（例如已添加为网站管理员的用户），以及已修改的对象之前的值。 |
 
 
@@ -442,7 +442,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 响应 SharePoint 中的文件操作时，将创建这些记录。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
@@ -452,9 +452,9 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | SharingType | 分配给与其共享资源的用户的共享权限类型。 此用户由 UserSharedWith 参数标识。 |
 | Site_Url | 用户访问的文件或文件夹所在的站点的 URL。 |
 | SourceFileExtension | 用户访问的文件的文件扩展名。 如果所访问的对象是文件夹，则此属性为空。 |
-| SourceFileName |  用户访问的文件或文件夹的名称。 |
+| SourceFileName |     用户访问的文件或文件夹的名称。 |
 | SourceRelativeUrl | 包含用户访问的文件的文件夹 URL。 SiteURL、SourceRelativeURL 和 SourceFileName 参数值的组合与 ObjectID 属性的值相同，即为用户访问的文件的完整路径名称。 |
-| UserSharedWith |  与其共享资源的用户。 |
+| UserSharedWith |     与其共享资源的用户。 |
 
 
 
@@ -463,7 +463,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 下表提供了此解决方案收集的更新记录的示例日志查询。
 
-| 查询 | 描述 |
+| 查询 | 说明 |
 | --- | --- |
 |Office 365 订阅上所有操作的计数 |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint 网站的使用情况|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|

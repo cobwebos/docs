@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: b2b34a6fdf96613c5bc372e585598fabbe43d53d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8767a6ee6218223280ea6219e22540c53d1e89be
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066611"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409123"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台 3.11 的常见先决条件
 
@@ -49,7 +49,7 @@ OpenShift 的安装使用 Ansible 攻略。 Ansible 使用安全外壳 (SSH) 连
 > * 创建一个 Key Vault 用于管理 OpenShift 群集的 SSH 密钥。
 > * 创建一个供 Azure 云提供程序使用的服务主体。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure 
 使用 [az login](/cli/azure/reference-index) 命令登录到 Azure 订阅，按屏幕说明操作，或者单击“试用”使用 Cloud Shell。****
@@ -143,15 +143,15 @@ az ad sp create-for-rbac --name openshiftsp \
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>仅适用于资源管理器模板的先决条件
 
-需要为 SSH 私**钥 （sshPrivateKey）、** Azure AD 客户端密钥 （**aadClientSecret）、** OpenShift 管理员密码 （**开放移位密码**） 和红帽订阅管理器密码或激活密钥 **（rhsmPasswordOr 激活密钥**） 创建秘密。  此外，如果使用自定义 SSL 证书，则需要创建另外六个机密 -**路由缓存文件**、**路由文件**、**路由密钥文件**、**母版文件**、**母版文件**和**主密钥文件**。  这些参数将更详细地解释。
+需要为 SSH 私**钥 （sshPrivateKey）、** Azure AD 客户端密钥 （**aadClientSecret）、** OpenShift 管理员密码 （**开放移位密码**） 和红帽订阅管理器密码或激活密钥 **（rhsmPasswordOr 激活密钥**） 创建秘密。  此外，如果使用自定义 TLS/SSL 证书，则需要创建另外六个机密 -**路由缓存文件**、**路由文件**、**密钥文件、主文件**、**主密钥文件**和**主密钥文件**。 **routingkeyfile**  这些参数将更详细地解释。
 
 模板引用特定的机密名称，因此**必须**使用上面列出的粗体名称（区分大小写）。
 
 ### <a name="custom-certificates"></a>自定义证书
 
-默认情况下，模板将使用 OpenShift Web 控制台和路由域的自签名证书部署 OpenShift 群集。 如果要使用自定义 SSL 证书，可以将"路由证书类型"设置为"自定义"，将"主证书类型"设置为"自定义"。  证书需要以 .pem 格式的 CA、Cert 和 Key 文件。  可以将自定义证书用于其中一个，但不能对另一个证书使用。
+默认情况下，模板将使用 OpenShift Web 控制台和路由域的自签名证书部署 OpenShift 群集。 如果要使用自定义 TLS/SSL 证书，可以将"路由证书类型"设置为"自定义"，将"主证书类型"设置为"自定义"。  证书需要以 .pem 格式的 CA、Cert 和 Key 文件。  可以将自定义证书用于其中一个，但不能对另一个证书使用。
 
-您需要将这些文件存储在密钥保管库机密中。  使用与私钥相同的密钥保管库。  模板无需为机密名称增加 6 个输入，而是硬编码，可为每个 SSL 证书文件使用特定机密名称。  使用下表中的信息存储证书数据。
+您需要将这些文件存储在密钥保管库机密中。  使用与私钥相同的密钥保管库。  模板无需为机密名称增加 6 个输入，而是硬编码，可为每个 TLS/SSL 证书文件使用特定机密名称。  使用下表中的信息存储证书数据。
 
 | 秘密名称      | 证书文件   |
 |------------------|--------------------|

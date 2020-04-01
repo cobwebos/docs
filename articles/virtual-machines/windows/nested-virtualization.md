@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 16f5bed5a2342bb1d120d0d3dc853e0bc44376dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d127d3f9e66b7d2d40aa420e2116fee17d996514
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033121"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437294"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -26,7 +26,7 @@ ms.locfileid: "74033121"
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>创建一个支持嵌套的 Azure VM
 
-创建新的 Windows Server 2016 Azure VM。  为了快速参考，所有 v3 虚拟机都支持嵌套虚拟化。 有关支持嵌套的虚拟机大小的完整列表，请参阅[Azure 计算单位](acu.md)一文。
+创建新的 Windows Server 2016 Azure VM。 有关支持嵌套的虚拟机大小的完整列表，请参阅[Azure 计算单位](acu.md)一文。
 
 请记得选择足以支持来宾虚拟机需求的 VM 大小。 在此示例中，我们将使用 D3_v3 大小的 Azure VM。 
 

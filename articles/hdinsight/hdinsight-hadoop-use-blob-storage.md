@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: e62f6f8df51c6acf4e2ad8e28e431d264c2c99e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a4ae2932f8d294ecf71de0ae405204a1f4d7b4d
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037246"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436944"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
@@ -40,7 +40,7 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 
 ## <a name="access-files-from-within-cluster"></a>从群集中访问文件
 
-可以通过多种方法从 HDInsight 群集访问 Data Lake Storage 中的文件。 URI 方案提供了使用 *wasb:* 前缀的未加密访问和使用 *wasbs* 的 SSL 加密访问。 建议尽量使用 *wasbs* ，即使在访问位于同一 Azure 区域内的数据时也是如此。
+可以通过多种方法从 HDInsight 群集访问 Data Lake Storage 中的文件。 URI 方案提供未加密的访问（带*wasb：* 前缀）和 TLS 加密访问（带*wasb）。* 建议尽量使用 *wasbs* ，即使在访问位于同一 Azure 区域内的数据时也是如此。
 
 * **使用完全限定的名称**。 使用此方法时，需要提供要访问的文件的完整路径。
 
@@ -130,7 +130,7 @@ Microsoft 提供以下用于操作 Azure 存储的工具：
 | --- |:---:|:---:|:---:|
 | [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
-| [Azure 电源外壳](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
+| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [阿兹比贝](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
 
 ## <a name="identify-storage-path-from-ambari"></a>识别来自安巴里的存储路径

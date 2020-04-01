@@ -7,16 +7,16 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 01/22/2020
-ms.openlocfilehash: aaf61ccbb3577036c614aa6196d2af57124550fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8eeff5187d27cb75b9e55eba8311dede8970bc4a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76908548"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435218"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>将静态网站与 Azure CDN 集成
 
-您可以启用[Azure 内容传递网络 （CDN）](../../cdn/cdn-overview.md)从托管在 Azure 存储帐户中的[静态网站](storage-blob-static-website.md)缓存内容。 可以使用 Azure CDN 为静态网站配置自定义域终结点、预配自定义 SSL 证书以及配置自定义重写规则。 配置 Azure CDN 需额外付费，但用户从世界上的任何位置访问你的网站时，其延迟会始终很低。 Azure CDN 还提供使用你自己的证书进行 SSL 加密的功能。 
+您可以启用[Azure 内容传递网络 （CDN）](../../cdn/cdn-overview.md)从托管在 Azure 存储帐户中的[静态网站](storage-blob-static-website.md)缓存内容。 可以使用 Azure CDN 为静态网站配置自定义域终结点、预配自定义 TLS/SSL 证书以及配置自定义重写规则。 配置 Azure CDN 需额外付费，但用户从世界上的任何位置访问你的网站时，其延迟会始终很低。 Azure CDN 还提供带有您自己的证书的 TLS 加密。 
 
 有关 Azure CDN 定价的详细信息，请参阅 [Azure CDN 定价](https://azure.microsoft.com/pricing/details/cdn/)。
 

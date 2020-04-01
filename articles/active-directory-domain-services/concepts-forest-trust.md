@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 8b79e0fb24c15d2e9f16640e90d62f7df5c21f32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74233696"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476438"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>信任关系如何适用于 Azure 活动目录域服务中的资源林
 
@@ -146,7 +146,7 @@ NTLM 身份验证协议依赖于域控制器上的 Net Logon 服务，用于客�
     * 如果是，将身份验证请求传递到信任路径中的下一个域。 此域控制器通过检查用户对自己的安全帐户数据库的凭据来重复此过程。
     * 如果没有，请向客户端发送拒绝登录的消息。
 
-### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>基于 Kerberos 的通过林信任的身份验证请求的处理
+### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>基于 Kerberos 的通过林信任处理身份验证请求
 
 当两个林由林信任连接时，使用 Kerberos V5 或 NTLM 协议进行的身份验证请求可以在林之间路由，以提供对两个林中的资源的访问。
 

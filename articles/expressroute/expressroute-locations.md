@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/25/2020
 ms.author: cherylmc
-ms.openlocfilehash: 41e12a93f333936468cbdfbe7aa6bfa6e0b7e8ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6482040f0d50f08f04ea87384a99af556f694075
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278735"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478791"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -98,7 +98,7 @@ ExpressRoute 位置（有时称为对等位置或 Meet-me 位置）是 Microsoft
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |支持 |支持 |阿姆斯特丹，阿姆斯特丹2，芝加哥，都柏林，法兰克福，伦敦，伦敦2，纽波特，纽约，大阪，巴黎，硅谷，硅谷2，新加坡2，东京，华盛顿特区 |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |支持 |支持 |芝加哥、硅谷、华盛顿特区 |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |支持 |支持 |芝加哥、丹佛、洛杉矶、纽约、硅谷、硅谷2、华盛顿特区、华盛顿特区2 |
-| **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/directcloud/find-a-cloud-service/detail/microsoft-azure)** | 支持 |支持 |阿姆斯特丹2， 法兰克福， 马赛|
+| **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/cloud-exchange/find-a-cloud-service/detail/microsoft-azure)** | 支持 |支持 |阿姆斯特丹2， 法兰克福， 马赛|
 | **[德沃利](https://devoli.com/expressroute)** | 支持 |支持 | 奥克兰、 墨尔本、 悉尼 |
 | **杜德梅纳** |支持 |支持 | 迪拜2 |
 | **eir** |支持 |支持 |都柏林|
@@ -125,7 +125,7 @@ ExpressRoute 位置（有时称为对等位置或 Meet-me 位置）是 Microsoft
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |支持 |支持 |阿姆斯特丹、芝加哥、达拉斯、伦敦、新港（威尔士）、圣保罗、西雅图、硅谷、新加坡、华盛顿特区 |
 | **LG CNS** |支持 |支持 |釜山、首尔 |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |支持 |支持 |开普敦、约翰内斯堡 |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |阿姆斯特丹、亚特兰大、奥克兰、芝加哥、达拉斯、丹佛、迪拜2、都柏林、法兰克福、日内瓦、香港特区、拉斯维加斯、伦敦、伦敦2、洛杉矶、墨尔本、迈阿密、蒙特利尔、纽约、奥斯陆、珀斯、魁北克市、圣安东尼奥、西雅图、硅谷、新加坡、新加坡2， 悉尼， 悉尼2， 东京， 多伦多， 华盛顿特区， 苏黎世 |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |阿姆斯特丹、亚特兰大、奥克兰、芝加哥、达拉斯、丹佛、迪拜2、都柏林、法兰克福、日内瓦、香港特区、拉斯维加斯、伦敦、伦敦2、洛杉矶、墨尔本、迈阿密、蒙特利尔、纽约、奥斯陆、珀斯、魁北克市、圣安东尼奥、西雅图、硅谷、新加坡、新加坡2、悉尼、悉尼2、东京、多伦多、华盛顿特区、苏黎世 |
 | **[Mtn](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |支持 |支持 |London |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |支持 |支持 |达拉斯、洛杉矶、迈阿密、圣保罗、华盛顿特区 |
 | **[下一代数据](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |支持 |支持 |Newport(Wales) |
@@ -241,7 +241,7 @@ Azure 国家云彼此隔离，与全局商业 Azure 隔离。 一个 Azure 云�
 | **[Altice Business](https://golightpath.com/transport)** |Equinix |纽约、华盛顿特区 |
 | **[阿特里亚网络公司](https://www.arteria-net.com/business/service/cloud/sca/)** |Equinix |东京 |
 | **[Axtel](https://alestra.mx/landing/expressrouteazure/)** |Equinix |达拉斯|
-| **[豆场地铁连接](https://www.beanfield.com/business/cloud-connect)** |Megaport |Toronto|
+| **[豆场地铁连接](https://www.beanfield.com/business/cloud-exchange)** |Megaport |Toronto|
 | **[Bezeq International Ltd.](https://www.bezeqint.net/english)** | euNetworks | London |
 | **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | 阿姆斯特丹、法兰克福、伦敦、新加坡、华盛顿特区 |
 | **[BroadBand Tower, Inc.](https://www.bbtower.co.jp/product-service/data-center/network/dcconnect-for-azure/)** | Equinix | 东京 |
@@ -264,7 +264,7 @@ Azure 国家云彼此隔离，与全局商业 Azure 隔离。 一个 Azure 云�
 | **[Gulf Bridge International](https://www.gbiinc.com/microsoft-azure-expressroute/)** | Equinix | 阿姆斯特丹 |
 | **[HSO](https://www.hso.co.uk/products/cloud-direct)** |Equinix | 伦敦、斯劳 |
 | **[IVedha Inc](http://www.ivedha.com/cloud/manage-azure-cloud/express-route-4/)**| Equinix | Toronto |
-| **[巴林卡拉姆电信 B.S.C](http://www.kalaam-telecom.com/en/inbusiness/expressroute.html)**| Level 3 Communications |阿姆斯特丹 |
+| **[巴林卡拉姆电信 B.S.C](http://www.kalaam-telecom.com/azure/)**| Level 3 Communications |阿姆斯特丹 |
 | **LGA Telecom** |Equinix |新加坡|
 | **[Macroview Telecom](http://www.macroview.com/en/scripts/catitem.php?catid=solution&sectionid=expressroute)** |Equinix |香港特别行政区 
 | **[Macquarie Telecom Group](https://macquariegovernment.com/secure-cloud/secure-cloud-exchange/)** | Megaport | 悉尼 |
@@ -296,7 +296,7 @@ Azure 国家云彼此隔离，与全局商业 Azure 隔离。 一个 Azure 云�
 
 ## <a name="connectivity-through-datacenter-providers"></a>通过数据中心提供商进行连接
 
-| **供应商** | **Exchange 阻止的设备** |
+| **提供程序** | **Exchange 阻止的设备** |
 | --- | --- |
 | **[CyrusOne](https://cyrusone.com/enterprise-data-center-services/connectivity-and-interconnection/cloud-connectivity-reaching-amazon-microsoft-google-and-more/microsoft-azure-expressroute/?doing_wp_cron=1498512235.6733090877532958984375)** | 巨型端口，数据包交换 |
 | **[Cyxtera](https://www.cyxtera.com/data-center-services/interconnection)** | 巨型端口，数据包交换 |
@@ -313,7 +313,7 @@ Azure 国家云彼此隔离，与全局商业 Azure 隔离。 一个 Azure 云�
 
 ## <a name="connectivity-through-national-research-and-education-networks-nren"></a>通过国家研究与教育网络实现连接
 
-| **供应商**|
+| **提供程序**|
 | --- |
 | **AARNET**| 
 | **DeIC，通过 GÉANT**|

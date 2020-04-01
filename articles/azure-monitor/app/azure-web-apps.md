@@ -3,12 +3,12 @@ title: 监视 Azure 应用服务性能 | Microsoft Docs
 description: Azure 应用服务的应用程序性能监视。 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 2ec503829d3e6edd7b2b6f6b36314db8a205a8cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297612"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437204"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -28,7 +28,7 @@ ms.locfileid: "80297612"
 
     * 此方法的可自定义性要高得多，但需要[添加 Application Insights SDK NuGet 包中的一个依赖项](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)。 使用此方法还需要自行管理对最新版本的包的更新。
 
-    * 如果需要发出自定义 API 调用来跟踪基于代理的监视在默认情况下不会捕获的事件/依赖项，则需要使用此方法。 有关详细信息，请查看 [自定义事件和指标的 API](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) 一文。
+    * 如果需要发出自定义 API 调用来跟踪基于代理的监视在默认情况下不会捕获的事件/依赖项，则需要使用此方法。 有关详细信息，请查看 [自定义事件和指标的 API](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) 一文。 这也是目前基于 Linux 的工作负载的唯一受支持的选项。
 
 > [!NOTE]
 > 如果检测到基于代理的监视和基于 SDK 的手动检测，则仅遵循手动检测设置。 这是为了防止发送重复数据。 要了解有关此详细信息，请查看下面的[故障排除部分](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)。
@@ -164,7 +164,7 @@ ms.locfileid: "80297612"
 
 ### <a name="application-settings-definitions"></a>应用程序设置定义
 
-|应用设置名称 |  定义 | “值” |
+|应用设置名称 |  定义 | 值 |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | 用于控制运行时监视的主扩展。 | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  （仅限默认模式）已启用基本功能以确保最佳性能。 | `default` 或 `recommended`。 |

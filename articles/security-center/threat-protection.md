@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: e348180eb94c1703ceecf2f2b00ab942ba5ff0ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 395f4b5481fcf2028d6bfe736e58c3174a0c80b2
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536320"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435349"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 安全中心中的威胁保护
 
@@ -73,9 +73,9 @@ Azure 安全中心与 Azure 服务集成，以监视和保护基于 Windows 的�
 
 安全中心使用最常见的Linux审核框架之一的**审核**框架，从Linux计算机收集审计记录。 审核生活在主线内核中。 
 
-* **Linux 审核警报和 Microsoft 监视代理 （MMA） 集成**<a name="linux-auditd"></a>- 审核的系统由内核级子系统组成，负责监视系统调用。 它按指定的规则集筛选它们，并将它们的消息写入套接字。 安全中心在 Microsoft 监视代理 （MMA） 中集成了审核包的功能。 此集成支持在所有支持的 Linux 发行版中收集审核的事件，而无需任何先决条件。  
+* **Linux 审核警报和日志分析代理集成**<a name="linux-auditd"></a>- 审核的系统由一个内核级子系统组成，负责监视系统调用。 它按指定的规则集筛选它们，并将它们的消息写入套接字。 安全中心将审核包的功能集成到日志分析代理中。 此集成支持在所有支持的 Linux 发行版中收集审核的事件，而无需任何先决条件。
 
-    使用 Linux MMA 代理收集、丰富和聚合到事件中审核的记录。 安全中心不断添加新的分析，使用 Linux 信号检测云和本地 Linux 计算机上的恶意行为。 与 Windows 功能类似，这些分析跨越可疑进程、可疑的登录尝试、内核模块加载和其他活动。 这些活动可能表明机器受到攻击或已被入侵。  
+    使用 Linux 代理的日志分析代理收集、丰富和聚合到事件中审核的记录。 安全中心不断添加新的分析，使用 Linux 信号检测云和本地 Linux 计算机上的恶意行为。 与 Windows 功能类似，这些分析跨越可疑进程、可疑的登录尝试、内核模块加载和其他活动。 这些活动可能表明机器受到攻击或已被入侵。  
 
     有关 Linux 警报的列表，请参阅[警报的参考表](alerts-reference.md#alerts-linux)。
 

@@ -3,15 +3,15 @@ title: Azure 上的微焦点开发/测试环境 |微软文档
 description: 使用 Azure 虚拟机 （VM） 上的微焦点解决方案重新托管 IBM z/OS 主机工作负载。
 author: njray
 ms.author: sread
-ms.date: 04/02/2019
+ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d83b4c89d0f37e2217974d6d1ed32ac73d8fa4df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62d3f7cc75a887605cdd3c19ac2e45990e541d5e
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60498893"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410984"
 ---
 # <a name="micro-focus-devtest-environments-on-azure"></a>Azure 上的微焦点开发/测试环境
 
@@ -20,6 +20,9 @@ ms.locfileid: "60498893"
 Micro Focus 与 Microsoft 合作，提供引人注目的大型机迁移和重新托管工具。 您可以在 Azure 和 Microsoft Windows 平台上跨开发、测试和生产方案运行大型机应用程序。
 
 Micro Focus 提供开发重新托管和测试重新托管解决方案，将现有的 COBOL 和 PL/I 业务应用程序扩展到 Azure。
+
+> [!NOTE]
+> 即将推出：有关在 Azure VM 上设置[微焦点企业服务器 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110)的说明。
 
 **后续步骤**
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: dapine
-ms.openlocfilehash: 17b5e21291078f424ee775f21add181859dbbed5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 977c6ec9aa1cd6a8b8a545d123c5308bb8c51651
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131635"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409020"
 ---
 # <a name="text-to-speech-rest-api"></a>文本转语音 REST API
 
@@ -67,7 +67,7 @@ ms.locfileid: "80131635"
 
 下表列出了文本转语音请求的必需和可选标头。
 
-| 标头 | 描述 | 必需/可选 |
+| 标头 | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必选 |
 
@@ -144,7 +144,7 @@ Authorization: Bearer [Base64 access_token]
 
 每个响应的 HTTP 状态代码指示成功或一般错误。
 
-| HTTP 状态代码 | 描述 | 可能的原因 |
+| HTTP 状态代码 | 说明 | 可能的原因 |
 |------------------|-------------|-----------------|
 | 200 | OK | 请求已成功。 |
 | 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |
@@ -167,7 +167,7 @@ Authorization: Bearer [Base64 access_token]
 
 下表列出了文本转语音请求的必需和可选标头。
 
-| 标头 | 描述 | 必需/可选 |
+| 标头 | 说明 | 必需/可选 |
 |--------|-------------|---------------------|
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 必选 |
 | `Content-Type` | 指定所提供的文本的内容类型。 接受的值：`application/ssml+xml`。 | 必选 |
@@ -212,7 +212,7 @@ Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='en-US-JessaRUS'>
+    name='en-US-AriaRUS'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
@@ -227,7 +227,7 @@ Authorization: Bearer [Base64 access_token]
 
 每个响应的 HTTP 状态代码指示成功或一般错误。
 
-| HTTP 状态代码 | 描述 | 可能的原因 |
+| HTTP 状态代码 | 说明 | 可能的原因 |
 |------------------|-------------|-----------------|
 | 200 | OK | 请求成功；响应正文是一个音频文件。 |
 | 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |

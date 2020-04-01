@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: b75b232c048a1ea49256b12ce1b65c4bd87a1cf0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75970783a9408df0a8c128fb9540606e4e4a62f3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535436"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478172"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
 自定义脚本扩展版本 2 在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 
@@ -110,7 +110,7 @@ ms.locfileid: "79535436"
 
 ### <a name="property-values"></a>属性值
 
-| “属性” | 值/示例 | 数据类型 | 
+| 名称 | 值/示例 | 数据类型 | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
 | 发布者 | Microsoft.Compute.Extensions | 字符串 |
@@ -209,6 +209,8 @@ CustomScript 使用以下算法来执行脚本。
  1. 使用 _/bin/sh -c /var/lib/waagent/custom-script/#/script.sh 执行脚本。
 
 ####  <a name="property-managedidentity"></a>属性：托管标识
+> [!NOTE]
+> 此属性**必须**仅在受保护设置中指定。
 
 CustomScript（版本 2.1 以后）支持从"fileUris"设置中提供的 URL 下载文件的[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 它允许 CustomScript 访问 Azure 存储专用 Blob 或容器，而无需用户传递 SAS 令牌或存储帐户密钥等机密。
 
@@ -466,4 +468,3 @@ info:    vm extension get command OK
 
 ## <a name="next-steps"></a>后续步骤
 若要查看代码、当前问题和版本，请参阅 [custom-script-extension-linux 存储库](https://github.com/Azure/custom-script-extension-linux)。
-

@@ -1,22 +1,22 @@
 ---
 title: 配置 Facebook 身份验证
-description: 了解如何将 Facebook 身份验证配置为应用服务应用的标识提供程序。
+description: 了解如何将 Facebook 身份验证配置为应用服务或 Azure 功能应用的标识提供程序。
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.topic: article
 ms.date: 06/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: cd9c8a1bab3616b9b4eb1fe97ee3a9b2307ba77b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 9a2d390a5647ed90284730e9186e981b8e699d10
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671942"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80438021"
 ---
-# <a name="configure-your-app-service-app-to-use-facebook-login"></a>将应用服务应用配置为使用 Facebook 登录
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>将应用服务或 Azure 功能应用配置为使用 Facebook 登录
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-本文演示如何将 Azure 应用服务配置为使用 Facebook 作为身份验证提供程序。
+本文演示如何将 Azure 应用服务或 Azure 功能配置为使用 Facebook 作为身份验证提供程序。
 
 要完成本文中的过程，您需要一个 Facebook 帐户，该帐户具有经过验证的电子邮件地址和手机号码。 若要创建新的 Facebook 帐户，请转到 [facebook.com]。
 
@@ -53,7 +53,7 @@ ms.locfileid: "74671942"
 1. 登录到 Azure[门户]并导航到应用服务应用。
 1. 选择 **"设置** > **身份验证/授权**"，并确保**应用服务身份验证****处于打开。**
 1. 选择**Facebook**，然后粘贴到您以前获得的应用 ID 和应用机密值中。 启用应用程序所需的任何范围。
-1. 选择“确定”。
+1. 选择“确定”  。
 
    ![移动应用 Facebook 设置的屏幕截图][0]
 
@@ -63,7 +63,7 @@ ms.locfileid: "74671942"
    > [!CAUTION]
    > 以这种方式限制访问适用于对应用的所有调用，对于主页公开可用的应用程序来说，这可能是不可取的，就像在许多单页应用程序中一样。 对于此类应用程序，“允许匿名请求(无操作)”**** 可能是首选，因此应用会以手动方式自行启动身份验证。 有关详细信息，请参阅[身份验证流](overview-authentication-authorization.md#authentication-flow)。
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 现在，您已准备好在应用中使用 Facebook 进行身份验证。
 

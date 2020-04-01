@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 4edafc0c07e967acfabf7fdc5b58c481b2cfccc3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb3484d013314897ea2e9157b642d8f2b85dcd60
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436035"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437634"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>在 Azure HDInsight 中创建和配置企业安全包群集
 
@@ -43,7 +43,7 @@ Azure HDInsight 的企业安全包 （ESP） 允许您访问 Azure 中的 Apache
 1. 登录到 Azure 订阅。
 1. 在 **"使用新的 AD 林"页上创建 Azure VM**时，提供以下信息：
 
-    |properties | “值” |
+    |properties | 值 |
     |---|---|
     |订阅|选择要部署资源的订阅。|
     |资源组|选择 **"创建新**"，然后输入名称`OnPremADVRG`|
@@ -70,7 +70,7 @@ Azure HDInsight 的企业安全包 （ESP） 允许您访问 Azure 中的 Apache
     1. 选择 **"下载 RDP 文件**"，然后打开该文件。
     1. 用作`HDIFabrikam\HDIFabrikamAdmin`用户名。
     1. 输入您为管理员帐户选择的密码。
-    1. 选择“确定”。
+    1. 选择“确定”  。
 
 1. 从域控制器**服务器管理器**仪表板，导航到**工具** > **活动目录用户和计算机**。
 
@@ -98,7 +98,7 @@ Azure HDInsight 的企业安全包 （ESP） 允许您访问 Azure 中的 Apache
 
     1. 在`HDIUserGroup`**"组名称**文本"框中输入。
 
-    1. 选择“确定”。
+    1. 选择“确定”  。
 
     ![创建新的活动目录组](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-group.png)
 
@@ -118,11 +118,11 @@ Azure HDInsight 的企业安全包 （ESP） 允许您访问 Azure 中的 Apache
 
 ### <a name="create-an-azure-ad-directory"></a>创建 Azure AD 目录
 
-1. 登录到 Azure 门户。  
+1. 登录到 Azure 门户。
 1. 选择 **"创建资源和**类型`directory`"。 选择**Azure 活动目录** > **创建**。
 1. 在 **"组织名称"** 下，输入`HDIFabrikam`。
 1. 在**初始域名**下，输入`HDIFabrikamoutlook`。
-1. 选择 **“创建”**。
+1. 选择“创建”  。
 
     ![创建 Azure AD 目录](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-directory.png)
 
@@ -140,7 +140,7 @@ Azure HDInsight 的企业安全包 （ESP） 允许您访问 Azure 中的 Apache
 1. 从新的**Azure 活动目录**中，**在"管理**"下，选择**组**。
 1. 选择 **= 新组**。
 1. 在**组名**文本框中，输入`AAD DC Administrators`。
-1. 选择 **“创建”**。
+1. 选择“创建”  。
 
 ## <a name="configure-your-azure-ad-tenant"></a>配置 Azure AD 租户
 
@@ -156,10 +156,10 @@ Azure HDInsight 的企业安全包 （ESP） 允许您访问 Azure 中的 Apache
 
     **标识**
 
-    |properties |描述 |
+    |properties |说明 |
     |---|---|
     |用户名|在文本框中输入 `fabrikamazureadmin`。 从域名下拉列表中，选择`hdifabrikam.com`|
-    |“属性”| 输入 `fabrikamazureadmin`。|
+    |名称| 输入 `fabrikamazureadmin`。|
 
     **密码**
     1. 选择 **"让我创建密码**"。
@@ -176,7 +176,7 @@ Azure HDInsight 的企业安全包 （ESP） 允许您访问 Azure 中的 Apache
 
     ![Azure AD 角色对话框](./media/apache-domain-joined-create-configure-enterprise-security-cluster/azure-ad-add-role-member.png)
 
-1. 选择 **“创建”**。
+1. 选择“创建”  。
 
 1. 然后让新用户登录到 Azure 门户，提示其更改密码。 在配置 Microsoft Azure 活动目录连接之前，您需要执行此操作。
 
@@ -208,20 +208,20 @@ Azure HDInsight 的企业安全包 （ESP） 允许您访问 Azure 中的 Apache
    !["配置完成"页面](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
 
 1. 同步完成后，确认您在 IaaS 目录中创建的用户已同步到 Azure AD。
-   1. 登录到 Azure 门户。  
+   1. 登录到 Azure 门户。
    1. 选择**Azure 活动目录** > **HDIFabrikam** > **用户**。
 
 ### <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识
 
 创建用户分配的托管标识，可用于配置 Azure AD 域服务 （Azure AD DS）。 有关详细信息，请参阅使用[Azure 门户创建、列出、删除或将角色分配给用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
 
-1. 登录到 Azure 门户。  
+1. 登录到 Azure 门户。
 1. 选择 **"创建资源和**类型`managed identity`"。 选择**用户分配的托管标识** > **创建**。
 1. 对于**资源名称**，请输入`HDIFabrikamManagedIdentity`。
 1. 选择订阅。
 1. 在 **"资源组**"下，选择 **"新建"** 并输入`HDIFabrikam-CentralUS`。
 1. 在 **"位置**"下，选择**美国中部**。
-1. 选择 **“创建”**。
+1. 选择“创建”  。
 
 ![创建新的用户分配的托管标识](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0082.png)
 
@@ -247,7 +247,7 @@ Azure HDInsight 的企业安全包 （ESP） 允许您访问 Azure 中的 Apache
     $virtualNetwork | Set-AzVirtualNetwork
     ```
 
-1. 登录到 Azure 门户。  
+1. 登录到 Azure 门户。
 1. 选择 **"创建资源**"，输入`Domain services`，然后选择**Azure AD 域服务** > **创建**。
 1. 在**基础知识**页上：
     1. 在**目录名称**下，选择您创建的 Azure AD 目录 **：HDIFabrikam**。
@@ -261,7 +261,7 @@ Azure HDInsight 的企业安全包 （ESP） 允许您访问 Azure 中的 Apache
 
     !["创建虚拟网络"步骤](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0086.png)
 
-1. 在 **"管理员"组**页上，您应该会看到一条通知，指出已创建名为**AAD DC 管理员的**组来管理此组。 如果需要，可以修改此组的成员身份，但在这种情况下，您无需更改它。 选择“确定”。
+1. 在 **"管理员"组**页上，您应该会看到一条通知，指出已创建名为**AAD DC 管理员的**组来管理此组。 如果需要，可以修改此组的成员身份，但在这种情况下，您无需更改它。 选择“确定”  。
 
     ![查看 Azure AD 管理员组](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0088.png)
 
@@ -291,7 +291,7 @@ Azure HDInsight 的企业安全包 （ESP） 允许您访问 Azure 中的 Apache
     1. 在 **"设置"** 下，选择**DNS 服务器**。
     1. 选择**自定义**。
     1. 在文本框中，输入第一个 IP 地址 *（10.0.0.4*）。
-    1. 选择“保存”。****
+    1. 选择“保存”。 
     1. 重复这些步骤以添加其他 IP 地址 *（10.0.0.5*）。
 
 在我们的方案中，我们将 Azure AD DS 配置为使用 IP 地址 10.0.0.4 和 10.0.0.5，在 Azure AD DS 虚拟网络上设置相同的 IP 地址：
@@ -316,7 +316,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 ```
 
 > [!NOTE]  
-> 任何创建有效的公钥加密标准 （PKCS） \#10 请求的实用程序或应用程序都可用于形成 SSL 证书请求。
+> 任何创建有效的公钥加密标准 （PKCS） \#10 请求的实用程序或应用程序都可用于形成 TLS/SSL 证书请求。
 
 验证证书是否安装在计算机**的个人**存储中：
 
@@ -349,7 +349,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
     1. 在 **"设置"** 下，选择 **"入站安全规则** > **添加**"。
     1. 在 **"添加入站安全规则"** 页上，输入以下属性，然后选择 **"添加**：
 
-        | properties | “值” |
+        | properties | 值 |
         |---|---|
         | 源 | Any |
         | 源端口范围 | * |
@@ -357,8 +357,8 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
         | 目标端口范围 | 636 |
         | 协议 | Any |
         | 操作 | Allow |
-        | 优先度 | \<所需数字> |
-        | “属性” | Port_LDAP_636 |
+        | Priority | \<所需数字> |
+        | 名称 | Port_LDAP_636 |
 
     !["添加入站安全规则"对话框](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
@@ -392,7 +392,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 1. 在**HDIFabrikam-AADDSVNET**虚拟网络上设置自定义 DNS。
     1. 转到 Azure 门户>**资源组** > **，在 PremADVRG** > **HDIFabrikam-AADDSVNET** > **DNS 服务器**上。
     1. 选择 **"自定义"** 并输入*10.0.0.4*和*10.0.0.5*。
-    1. 选择“保存”。****
+    1. 选择“保存”。 
 
         ![为虚拟网络保存自定义 DNS 设置](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
 
@@ -407,7 +407,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
             ![选择群集访问组 HDIUser 组](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
 
-    1. 完成群集配置的其他步骤，并验证**群集摘要**上的详细信息。 选择 **“创建”**。
+    1. 完成群集配置的其他步骤，并验证**群集摘要**上的详细信息。 选择“创建”  。
 
 1. 登录到 在 中`https://CLUSTERNAME.azurehdinsight.net`新创建的群集的 Ambari UI。 使用管理员用户名`hdiadmin@hdifabrikam.com`及其密码。
 

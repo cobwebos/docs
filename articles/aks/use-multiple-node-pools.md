@@ -4,12 +4,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 2045cb9a175bead3abf5b53120b9fe381a17b04b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 607419787bc0bab243d6cc2b8cbaa0ec22921e87
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047723"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422311"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -20,7 +20,7 @@ ms.locfileid: "80047723"
 
 本文介绍如何在 AKS 群集中创建和管理多个节点池。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 您需要 Azure CLI 版本 2.2.0 或更高版本安装和配置。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
@@ -33,8 +33,8 @@ ms.locfileid: "80047723"
 * AKS 群集必须通过标准 SKU 负载均衡器来使用多个节点池，而基本 SKU 负载均衡器并不支持该功能。
 * AKS 群集必须对节点使用虚拟机规模集。
 * 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 Linux 节点池的名称长度必须为 1 到 12 个字符；Windows 节点池的名称长度必须为 1 到 6 个字符。
-* 所有节点池必须驻留在同一虚拟网络和子网中。
-* 在创建群集的过程中创建多个节点池时，节点池使用的所有 Kubernetes 版本都必须与已为控制平面设置的版本相匹配。 此版本可以在使用每个节点池操作预配群集后更新。
+* 所有节点池必须驻留在同一虚拟网络中。
+* 在创建群集的过程中创建多个节点池时，节点池使用的所有 Kubernetes 版本都必须与已为控制平面设置的版本相匹配。 这可以在已使用每节点池操作预配了群集后更新。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
@@ -120,6 +120,29 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 
 > [!TIP]
 > 如果在添加节点池时未指定*VmSize，**则*Standard_DS2_v3 Windows 节点池的默认*大小，Standard_DS2_v2* Linux 节点池。 如果未指定*协调器版本*，则默认为与控制平面相同的版本。
+
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>添加具有唯一子网的节点池（预览）
+
+工作负载可能需要将群集的节点拆分为单独的池，以便进行逻辑隔离。 此隔离可以通过专用于群集中每个节点池的单独子网进行支持。 这可以解决诸如具有非连续虚拟网络地址空间以跨节点池拆分等要求。
+
+#### <a name="limitations"></a>限制
+
+* 分配给节点池的所有子网必须属于同一虚拟网络。
+* 系统 pod 必须有权访问群集中的所有节点，才能通过 coreDNS 提供关键功能，如 DNS 解析。
+* 在预览期间，每个节点池的唯一子网的分配仅限于 Azure CNI。
+* 预览期间不支持将网络策略与每个节点池的唯一子网使用。
+
+要使用专用子网创建节点池，在创建节点池时，将子网资源 ID 作为附加参数传递。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --node-count 3 \
+    --kubernetes-version 1.15.5
+    --vnet-subnet-id <YOUR_SUBNET_RESOURCE_ID>
+```
 
 ## <a name="upgrade-a-node-pool"></a>升级节点池
 
@@ -695,18 +718,22 @@ az group deployment create \
 
 更新 AKS 群集可能需要花费几分钟时间，具体取决于资源管理器模板中定义的节点池设置和操作。
 
-## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>为节点池中的每个节点分配公共 IP
+## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>为节点池为每个节点分配公共 IP（预览）
 
 > [!WARNING]
 > 在预览版中为每个节点分配公共 IP 期间，不能对 AKS 中的标准负载均衡器 SKU 使用此操作，因为负载均衡器规则可能与 VM 预配相冲突。** 由于此限制，此预览功能不支持 Windows 代理池。 在预览版中，如果需要为每个节点分配公共 IP，必须使用基本负载均衡器 SKU。**
 
-AKS 节点无需使用自身的公共 IP 地址进行通信。 但某些情况下，节点池中的节点可能需要自身的公共 IP 地址。 例如，在玩游戏时，控制台需要直接连接到云虚拟机才能尽量减少画面跳跃。 此方案可以通过注册单独的预览功能"节点公共 IP"（预览）来实现。
+AKS 节点无需使用自身的公共 IP 地址进行通信。 但是，方案可能需要节点池中的节点接收其自己的专用公共 IP 地址。 常见方案适用于游戏工作负载，其中控制台需要直接连接到云虚拟机，以尽量减少跃点。 此方案可以通过注册预览功能"节点公共 IP"（预览）在 AKS 上实现。
+
+通过发出以下 Azure CLI 命令注册节点公共 IP 功能。
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-成功注册后，根据[上述](#manage-node-pools-using-a-resource-manager-template)说明部署 Azure 资源管理器模板，并将布尔值属性 `enableNodePublicIP` 添加到 agentPoolProfiles。 将值设置为 `true`；如果未指定，它将默认设置为 `false`。 此属性仅创建时间属性，需要最低 API 版本 2019-06-01。 此属性可同时应用到 Linux 和 Windows 节点池。
+成功注册后，按照[上述](#manage-node-pools-using-a-resource-manager-template)相同的说明部署 Azure 资源管理器模板，并将布尔属性`enableNodePublicIP`添加到代理池配置文件。 将值设置为 `true`；如果未指定，它将默认设置为 `false`。 
+
+此属性仅创建时间属性，需要最低 API 版本 2019-06-01。 此属性可同时应用到 Linux 和 Windows 节点池。
 
 ## <a name="clean-up-resources"></a>清理资源
 

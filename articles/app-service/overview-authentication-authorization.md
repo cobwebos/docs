@@ -1,22 +1,22 @@
 ---
 title: 身份验证和授权
-description: 了解 Azure 应用服务中内置的身份验证和授权支持，并了解它如何保护应用，防止未经授权的访问。
+description: 了解 Azure 应用服务和 Azure 函数中的内置身份验证和授权支持，以及它如何帮助保护应用免受未经授权的访问。
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
-ms.custom: seodec18
-ms.openlocfilehash: 825d113bbe081ba6fb85da19ff6449824db92d10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f16b10f13c945dd7f1ae4fdc3f4e02dcd7c5a018
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475385"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437947"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
+# <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 应用服务和 Azure 函数中的身份验证和授权
 
 > [!NOTE]
-> 目前，Azure 应用服务和 Azure Functions 不支持 AAD V2（包括 MSAL）。 请回头查看是否有更新。
+> 此时，Azure 应用服务和 Azure 函数不支持[Azure 活动目录 v2.0（](../active-directory/develop/v2-overview.md)包括[MSAL）。](../active-directory/develop/msal-overview.md) 请回头查看是否有更新。
 >
 
 Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应用、RESTful API、移动后端和 [Azure Functions](../azure-functions/functions-overview.md) 中编写少量的代码或根本无需编写代码，就能让用户登录和访问数据。 本文介绍应用服务如何帮助简化应用的身份验证和授权。
@@ -24,7 +24,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 安全身份验证和授权需要对联合身份验证、加密、[JSON Web 令牌 (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) 管理、[授权类型](https://oauth.net/2/grant-types/)等安全性方面有深度的了解。 应用服务提供这些实用工具，让你将更多的时间和精力花费在为客户提供业务价值上。
 
 > [!IMPORTANT]
-> 对于 AuthN/AuthO，无需使用应用服务。 可以在所选的 Web 框架中使用捆绑的安全功能，也可以编写自己的实用程序。 但请记住，[Chrome 80 针对 Cookie 对其实现 SameSite 的方式进行了中断性变更](https://www.chromestatus.com/feature/5088147346030592)（发布日期在 2020 年 3 月左右）；自定义远程身份验证或依赖于跨站点 Cookie 发布的其他方案可能会在客户端 Chrome 浏览器更新时中断。 解决方法很复杂，因为需要针对不同的浏览器支持不同的 SameSite 行为。 
+> 您无需使用此功能进行身份验证和授权。 可以在所选的 Web 框架中使用捆绑的安全功能，也可以编写自己的实用程序。 但请记住，[Chrome 80 针对 Cookie 对其实现 SameSite 的方式进行了中断性变更](https://www.chromestatus.com/feature/5088147346030592)（发布日期在 2020 年 3 月左右）；自定义远程身份验证或依赖于跨站点 Cookie 发布的其他方案可能会在客户端 Chrome 浏览器更新时中断。 解决方法很复杂，因为需要针对不同的浏览器支持不同的 SameSite 行为。 
 >
 > 应用服务托管的 ASP.NET Core 2.1 及更高版本已针对此中断性变更进行了修补，并且会相应地处理 Chrome 80 和更低版本的浏览器。 此外，ASP.NET Framework 4.7.2 的相同修补程序会在 2020 年 1 月之前的应用服务实例上部署。 有关详细信息（包括如何了解应用是否已收到修补程序），请参阅 [Azure 应用服务 SameSite Cookie 更新](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)。
 >
@@ -46,11 +46,11 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 此模块独立于应用程序代码运行，使用应用设置进行配置。 不需要任何 SDK、特定语言，或者对应用程序代码进行更改。 
 
-### <a name="user-claims"></a>用户声明
+### <a name="userapplication-claims"></a>用户/应用程序声明
 
-对于所有语言框架，应用服务通过将用户声明注入请求标头，向代码提供这些声明。 对于 ASP.NET 4.6 应用，应用服务会在 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) 中填充经过身份验证的用户声明，使你能够遵循标准的 .NET 代码模式（包括 `[Authorize]` 属性）。 同样，对于 PHP 应用，应用服务会填充 `_SERVER['REMOTE_USER']` 变量。 对于 Java 应用程序，可以从[Tomcat servlet 访问](containers/configure-language-java.md#authenticate-users-easy-auth)声明。
+对于所有语言框架，App Service 通过将传入令牌（无论是来自经过身份验证的最终用户还是客户端应用程序）添加到请求标头中，使代码中的声明可用。 对于 ASP.NET 4.6 应用，应用服务会在 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) 中填充经过身份验证的用户声明，使你能够遵循标准的 .NET 代码模式（包括 `[Authorize]` 属性）。 同样，对于 PHP 应用，应用服务会填充 `_SERVER['REMOTE_USER']` 变量。 对于 Java 应用程序，可以从[Tomcat servlet 访问](containers/configure-language-java.md#authenticate-users-easy-auth)声明。
 
-对于[Azure](../azure-functions/functions-overview.md)`ClaimsPrincipal.Current`函数 ， 不为 .NET 代码提供水合，但仍可以在请求标头中找到用户声明。
+对于[Azure](../azure-functions/functions-overview.md)`ClaimsPrincipal.Current`函数 ，不填充 .NET 代码，但仍可以在请求标头中找到用户声明，或从请求上下文甚至通过`ClaimsPrincipal`绑定参数获取对象。 有关详细信息[，请参阅使用客户端标识](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities)。
 
 有关详细信息，请参阅[访问用户声明](app-service-authentication-how-to.md#access-user-claims)。
 
@@ -63,7 +63,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 通常，必须编写代码才能在应用程序中收集、存储和刷新这些令牌。 使用令牌存储，只需在需要令牌时才[检索令牌](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)；当令牌失效时，可以[告知应用服务刷新令牌](app-service-authentication-how-to.md#refresh-identity-provider-tokens)。 
 
-为经过身份验证的会话缓存的 ID 令牌、访问令牌和刷新令牌，只能由关联的用户访问。  
+ID 令牌、访问令牌和刷新令牌缓存用于经过身份验证的会话，并且仅由关联的用户访问它们。  
 
 如果不需要在应用中使用令牌，可以禁用令牌存储。
 
@@ -93,7 +93,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 - 使用提供程序 SDK：应用程序手动将用户登录到提供程序，然后将身份验证令牌提交给应用服务进行验证。 无浏览器应用通常采用此方案，这可以防止向用户显示提供程序的登录页。 应用程序代码管理登录过程，因此，此流也称为“客户端导向流”或“客户端流”。____ 此方案适用于 REST API、[Azure Functions](../azure-functions/functions-overview.md) 和 JavaScript 浏览器客户端，以及在登录过程中需要更高灵活性的浏览器应用。 它还适用于使用提供程序 SDK 登录用户的本机移动应用。
 
 > [!NOTE]
-> 可以使用服务器导向流，对来自应用服务中受信任浏览器应用的调用，或者来自应用服务或 [Azure Functions](../azure-functions/functions-overview.md) 中另一 REST API 的调用进行身份验证。 有关详细信息，请参阅[在应用服务中自定义身份验证和授权](app-service-authentication-how-to.md)。
+> 可以使用服务器定向流对应用服务或[Azure 函数](../azure-functions/functions-overview.md)中另一个 REST API 的受信任浏览器应用的调用进行身份验证。 有关详细信息，请参阅[在应用服务中自定义身份验证和授权](app-service-authentication-how-to.md)。
 >
 
 下表说明了身份验证流的步骤。

@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务器将 Exchange Server 备份�
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 9e623b1bdce93c340ccd0e61f9f5145e7154beff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78295838"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421338"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 Exchange Server 备份到 Azure
 
@@ -34,7 +34,7 @@ ms.locfileid: "78295838"
 4. 选择想要保护的 Exchange Server 数据库，并单击“**下一步**”。
 
    > [!NOTE]
-   > 如果要保护 Exchange 2013，请检查 [Exchange 2013 先决条件](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))。
+   > 如果要保护 Exchange 2013，请检查 [Exchange 2013 先决条件](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)。
    >
    >
 
@@ -47,17 +47,17 @@ ms.locfileid: "78295838"
 
    * 我想要使用磁盘提供短期保护。
    * 我想要使用在线保护。
-6. 单击“下一步”****。
+6. 单击 **“下一步”** 。
 7. 如果想要检查 Exchange Server 数据库的完整性，请选择“**运行 Eseutil 以检查数据完整性**”选项。
 
     选择此选项后，将在 MABS 上运行备份一致性检查，以避免通过在 Exchange 服务器上运行**esetil**命令生成的 I/O 流量。
 
    > [!NOTE]
-   > 要使用此选项，必须将 Ese.dll 和 Eseutil.exe 文件复制到 MAB 服务器上的 C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin 目录中。 否则会触发以下错误：  
+   > 要使用此选项，必须将 Ese.dll 和 Eseutil.exe 文件复制到 MABS 服务器上的 C：_程序文件\Microsoft Azure 备份_DPM_DPM_bin 目录。 否则会触发以下错误：  
    > ![eseutil 错误](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. 单击“下一步”****。
+8. 单击 **“下一步”** 。
 9. 选择“**复制备份**”的数据库，并单击“**下一步**”。
 
    > [!NOTE]
@@ -66,7 +66,7 @@ ms.locfileid: "78295838"
    >
 10. 配置“**短期备份**”的目标，并单击“**下一步**”。
 11. 检查可用磁盘空间，并单击“**下一步**”。
-12. 选择 MAB 服务器创建初始复制的时间，并单击“下一步”****。
+12. 选择 MABS 服务器创建初始复制的时间，然后单击 **"下一步**"。
 13. 选择一致性检查选项，并单击“**下一步**”。
 14. 选择要备份到 Azure 数据库，并单击“**下一步**”。 例如：
 

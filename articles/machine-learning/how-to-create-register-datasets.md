@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: c78c1d3ce6dae874ace2abfa8b2bbec6d489538a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4025c620aea49dfb26ab203630c121d29d88d9d7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536473"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474535"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -52,7 +52,7 @@ ms.locfileid: "79536473"
  
 如果你使用的是熊猫，没有理由有超过1个vCPU，因为这是它将使用的所有。 您可以通过 Modin 和 Dask/Ray 轻松地并行化到单个 Azure 机器学习计算实例/节点上的多个 vCPU，并在需要时扩展到大型群集，只需更改为`import pandas as pd``import modin.pandas as pd`。 
  
-如果数据无法获得足够的虚拟数据，则有两个选项：使用 Spark 或 Dask 等框架对"内存不足"的数据执行处理，即数据帧通过分区加载到 RAM 分区并进行处理，最终结果是收集在结束。 如果速度太慢，Spark 或 Dask 允许您横向扩展到仍可交互使用的群集。 
+如果数据无法获得足够的虚拟数据，则有两个选项：使用 Spark 或 Dask 等框架对"内存不足"的数据执行处理，即数据帧通过分区加载到 RAM 分区并进行处理，最终结果在末尾收集。 如果速度太慢，Spark 或 Dask 允许您横向扩展到仍可交互使用的群集。 
 
 ## <a name="dataset-types"></a>数据集类型
 
@@ -108,6 +108,7 @@ weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 > 如果您的存储位于虚拟网络或防火墙后面，则仅支持通过 SDK 创建数据集。 要创建数据集，请确保在`validate=False``infer_column_types=False``from_delimited_files()`方法中包括参数和方法。 这将绕过初始验证检查，并确保可以从这些安全文件创建数据集。 
 
 ```Python
+from azureml.core import Dataset
 from azureml.data.dataset_factory import DataType
 
 # create a TabularDataset from a delimited file behind a public web url and convert column "Survived" to boolean
@@ -118,7 +119,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Survived|Pclass|“属性”|Sex|年龄|SibSp|Parch|Ticket|Fare|Cabin|Embarked
+| |PassengerId|Survived|Pclass|名称|Sex|年龄|SibSp|Parch|Ticket|Fare|Cabin|Embarked
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund, Mr. Owen Harris|男|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|女|38.0|1|0|PC 17599|71.2833|C85|C
@@ -260,7 +261,7 @@ diabetes_tabular = Diabetes.get_tabular_dataset()
 
 ![选择数据集](./media/how-to-create-register-datasets/open-datasets-2.png)
 
-选择数据集的注册名称，并（可选）使用可用的筛选器筛选数据。 在本例中，对于公共节假日数据集，可按如下所述进行筛选：将时间段设置为一年，将国家/地区代码设置为仅限 US。 选择 **“创建”**。
+选择数据集的注册名称，并（可选）使用可用的筛选器筛选数据。 在本例中，对于公共节假日数据集，可按如下所述进行筛选：将时间段设置为一年，将国家/地区代码设置为仅限 US。 选择“创建”  。
 
 ![设置数据集参数并创建数据集](./media/how-to-create-register-datasets/open-datasets-3.png)
 

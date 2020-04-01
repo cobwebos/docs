@@ -3,12 +3,12 @@ title: 高级应用程序升级主题
 description: 本文介绍有关升级 Service Fabric 应用程序的一些高级主题。
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 09f3fdf1f26a13c6722eb039e132256f33be38ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845429"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422813"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>服务结构应用程序升级：高级主题
 
@@ -20,9 +20,9 @@ ms.locfileid: "76845429"
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>避免在无状态服务计划停机期间连接中断（预览）
 
-对于计划无状态的实例停机时间（如应用程序/群集升级或节点停用），连接可能会由于公开终结点在关闭后被删除而被删除。
+对于计划无状态的实例停机时间（如应用程序/群集升级或节点停用），由于实例关闭后关闭公开的终结点，连接可能会被删除，从而导致强制连接关闭。
 
-为了避免这种情况，请在服务配置中添加副本*实例关闭延迟持续时间*来配置*请求排空*（预览）功能。 这可确保在延迟计时器开始关闭实例*之前*删除无状态实例通告的终结点。 此延迟使现有请求在实例实际关闭之前正常耗尽。 客户端通过回调函数通知终结点更改，以便他们可以重新解析终结点，并避免向实例发送新请求。
+为了避免这种情况，请在服务配置中添加*实例关闭延迟持续时间*来配置*RequestDrain（* 预览）功能，以便在接收来自群集内其他服务的请求时进行排空，并且使用反向代理或使用具有通知模型的解析 API 来更新终结点。 这可确保在关闭实例*之前*，在延迟开始之前删除无状态实例通告的终结点。 此延迟使现有请求在实例实际关闭之前正常耗尽。 客户端在启动延迟时通过回调函数通知终结点更改，以便他们可以重新解析终结点，并避免向即将关闭的实例发送新请求。
 
 ### <a name="service-configuration"></a>服务配置
 
@@ -50,23 +50,7 @@ ms.locfileid: "76845429"
 
 ### <a name="client-configuration"></a>客户端配置
 
-要在终结点更改时接收通知，客户端可以注册如下所示的回调 （`ServiceManager_ServiceNotificationFilterMatched`） ： 
-
-```csharp
-    var filterDescription = new ServiceNotificationFilterDescription
-    {
-        Name = new Uri(serviceName),
-        MatchNamePrefix = true
-    };
-    fbClient.ServiceManager.ServiceNotificationFilterMatched += ServiceManager_ServiceNotificationFilterMatched;
-    await fbClient.ServiceManager.RegisterServiceNotificationFilterAsync(filterDescription);
-
-private static void ServiceManager_ServiceNotificationFilterMatched(object sender, EventArgs e)
-{
-      // Resolve service to get a new endpoint list
-}
-```
-
+要在终结点更改时接收通知，客户端应注册回调，请参阅[服务通知筛选器描述](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)。
 更改通知表示终结点已更改，客户端应重新解析终结点，并且不要使用不再通告的终结点，因为它们将很快关闭。
 
 ### <a name="optional-upgrade-overrides"></a>可选升级覆盖
@@ -80,6 +64,16 @@ Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManife
 ```
 
 延迟持续时间仅适用于调用的升级实例，并且不会更改各个服务延迟配置。 例如，可以使用它指定 延迟`0`，以便跳过任何预配置的升级延迟。
+
+> [!NOTE]
+> 对于来自 Azure 负载均衡器的请求，不遵循排空请求的设置。 如果呼叫服务使用基于投诉的解析，则不遵循该设置。
+>
+>
+
+> [!NOTE]
+> 当群集代码版本7.1.XXX或以上时，可以使用上述更新 ServiceFabricService cmdlet 在现有服务中配置此功能。
+>
+>
 
 ## <a name="manual-upgrade-mode"></a>手动升级模式
 

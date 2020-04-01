@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c481a2e12d83e865025cd90e59e0eba572ad9a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75771387"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475429"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
 
@@ -60,7 +60,7 @@ Blob 中输出数据的路径遵循以下语法：
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://aka.ms/AMLFree)。
+- 如果没有 Azure 订阅，请先创建[一个免费帐户](https://aka.ms/AMLFree)。"
 
 - 必须安装一个 Azure 机器学习工作区、一个包含脚本的本地目录以及适用于 Python 的 Azure 机器学习 SDK。 若要了解如何安装，请参阅[如何配置开发环境](how-to-configure-environment.md)。
 
@@ -129,11 +129,7 @@ Blob 中输出数据的路径遵循以下语法：
 
    ![编辑服务](././media/how-to-enable-data-collection/EditService.PNG)
 
-1. 在“高级设置”**** 中，选择“启用模型数据收集”****。
-
-    [![选择数据收集](./media/how-to-enable-data-collection/CheckDataCollection.png)](././media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
-
-   还可以选择“启用 AppInsights 诊断”以跟踪服务的运行状况。****
+1. 在 **"高级设置"** 中，选择**启用应用程序见解诊断和数据收集**。
 
 1. 选择“更新”**** 以应用更改。
 
@@ -151,9 +147,7 @@ Blob 中输出数据的路径遵循以下语法：
 
    [![选择"编辑"选项](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-1. 在“高级设置”**** 中，清除“启用模型数据收集”****。
-
-    [![清除数据收集复选框](./media/how-to-enable-data-collection/UncheckDataCollection.png)](././media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+1. 在**高级设置中**，清除**启用应用程序见解诊断和数据收集**。
 
 1. 选择“更新”**** 以应用更改。
 
@@ -213,7 +207,7 @@ Blob 中输出数据的路径遵循以下语法：
 
     [![电源 BI 内容](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. 选择“确定”。 数据将预先加载。
+1. 选择“确定”  。 数据将预先加载。
 
     [![电源 BI 合并文件](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 

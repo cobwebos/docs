@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 03/31/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76dd07a59a9fa7c0d6231a766ff4090c11f9f5bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 957aa77e18ea8f910f258d1dc59de0d093b0eab6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331911"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476644"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问阻止对 Azure AD 的旧身份验证   
 
@@ -92,7 +92,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 ### <a name="block-legacy-authentication"></a>阻止传统身份验证 
 
-在条件访问策略中，可设置与用于访问资源的客户端应用程序绑定的条件。 客户端应用条件使你可以通过为“移动应用和桌面客户端”选择“其他客户端”，将范围缩小到使用旧身份验证的应用程序********。
+在条件访问策略中，可设置与用于访问资源的客户端应用程序绑定的条件。 客户端应用条件使您能够通过在**移动应用和桌面客户端**下选择**Exchange ActiveSync 客户端****和其他客户端**，使用旧版身份验证将范围缩小到应用范围。
 
 ![其他客户端](./media/block-legacy-authentication/01.png)
 

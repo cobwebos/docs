@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259820"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477688"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -53,7 +53,7 @@ ms.locfileid: "79259820"
 
 仅仅是为了让 ASE 保持正常运行，ASE 就需要打开以下端口：
 
-| 用途 | 源 | 目标 |
+| 使用 | 源 | 目标 |
 |-----|------|----|
 | 管理 | 应用服务管理地址 | ASE 子网：454、455 |
 |  ASE 内部通信 | ASE 子网：所有端口 | ASE 子网：所有端口
@@ -69,7 +69,7 @@ ms.locfileid: "79259820"
 
 需要自行考虑的其他端口是应用程序端口：
 
-| 用途 | 端口 |
+| 使用 | 端口 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
@@ -138,7 +138,7 @@ ASE 具有一些需要注意的 IP 地址。 它们分别是：
 
 ### <a name="app-assigned-ip-addresses"></a>应用分配的 IP 地址 ###
 
-使用外部 ASE 时，可将 IP 地址分配到各个应用。 无法使用 ILB ASE 实现这一点。 若要详细了解如何将应用配置为具有自己的 IP 地址，请参阅[在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](../configure-ssl-bindings.md)。
+使用外部 ASE 时，可将 IP 地址分配到各个应用。 无法使用 ILB ASE 实现这一点。 有关如何将应用配置为自己的 IP 地址的详细信息，请参阅[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](../configure-ssl-bindings.md)。
 
 当应用使用其自身的基于 IP 的 SSL 地址时，ASE 将保留两个映射到该 IP 地址的端口。 它们分别用于 HTTP 流量和 HTTPS 流量。 这些端口列在 ASE UI 上的“ IP 地址”部分中。 流量必须能够从 VIP 抵达这些端口，否则无法访问应用。 配置网络安全组 (NSG) 时，请务必牢记此要求。
 
@@ -166,7 +166,7 @@ ASE 具有一些需要注意的 IP 地址。 它们分别是：
 
 不需要添加 DNS 端口，因为发往 DNS 的流量不受 NSG 规则的影响。 这些端口不包括成功使用应用所需的端口。 常规应用访问端口为：
 
-| 用途 | 端口 |
+| 使用 | 端口 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
@@ -200,7 +200,7 @@ ASE 具有一些需要注意的 IP 地址。 它们分别是：
 
 3. 从路由表 UI 中，选择 **"路由** > **添加**"。
 
-4. 将“下一跃点类型”设置为 Internet，将“地址前缀”设置为 0.0.0.0/0。**************** 选择“保存”。****
+4. 将“下一跃点类型”设置为 Internet，将“地址前缀”设置为 0.0.0.0/0。**************** 选择“保存”。 
 
     然后将看到如下内容：
 

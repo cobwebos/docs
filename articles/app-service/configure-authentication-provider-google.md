@@ -1,22 +1,22 @@
 ---
 title: 配置 Google 身份验证
-description: 了解如何将 Google 身份验证配置为应用服务应用的标识提供商。
+description: 了解如何将 Google 身份验证配置为应用服务或 Azure 功能应用的标识提供程序。
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.topic: article
 ms.date: 09/02/2019
-ms.custom: seodec18
-ms.openlocfilehash: 81ce3e393d308323c8d5a3d688c16c9b45e7be9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: bb6b8eebef3247cf2c39ed4b111296e1e0521a74
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74670812"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437975"
 ---
-# <a name="configure-your-app-service-app-to-use-google-login"></a>配置应用服务应用以使用 Google 登录
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>配置应用服务或 Azure 功能应用以使用 Google 登录
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-本主题介绍如何将 Azure 应用服务配置为使用 Google 作为身份验证提供程序。
+本主题介绍如何配置 Azure 应用服务或 Azure 功能以使用 Google 作为身份验证提供程序。
 
 要完成本主题中的过程，必须拥有一个包含已验证电子邮件地址的 Google 帐户。 若要新建一个 Google 帐户，请转到 [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "74670812"
 1. 在 [Azure 门户]中，转到你的应用服务应用。
 1. 选择 **"设置** > **身份验证/授权**"，并确保**应用服务身份验证****处于打开。**
 1. 选择**Google**，然后粘贴到您以前获得的应用 ID 和应用机密值中。 启用应用程序所需的任何范围。
-1. 选择“确定”。
+1. 选择“确定”  。
 
    应用服务提供身份验证，但不限制对网站内容和 API 的授权访问。 有关详细信息，请参阅[授权或拒绝用户](app-service-authentication-how-to.md#authorize-or-deny-users)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "74670812"
     > [!CAUTION]
     > 以这种方式限制访问适用于对应用的所有调用，对于主页公开可用的应用程序来说，这可能是不可取的，就像在许多单页应用程序中一样。 对于此类应用程序，“允许匿名请求(无操作)”**** 可能是首选，因此应用会以手动方式自行启动身份验证。 有关详细信息，请参阅[身份验证流](overview-authentication-authorization.md#authentication-flow)。
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 现在，可以在应用中使用 Google 进行身份验证了。
 
