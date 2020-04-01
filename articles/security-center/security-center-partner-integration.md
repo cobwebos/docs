@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7a1eccd76313c5b3bc74a5b5ebdbcd202ca6841
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245377"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435750"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -36,7 +36,7 @@ ms.locfileid: "79245377"
 目前，集成安全解决方案包括[Qualys](https://www.qualys.com/public-cloud/#azure)和[Rapid7](https://www.rapid7.com/products/insightvm/)和 Microsoft 应用程序网关 Web 应用程序防火墙的漏洞评估。
 
 > [!NOTE]
-> 安全中心不会在合作伙伴虚拟设备上安装 Microsoft 监视代理，因为大多数安全供应商禁止在其设备上运行外部代理。
+> 安全中心不会在合作伙伴虚拟设备上安装日志分析代理，因为大多数安全供应商禁止在其设备上运行外部代理。
 >
 >
 
@@ -47,7 +47,7 @@ ms.locfileid: "79245377"
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>管理集成式 Azure 安全解决方案和其他数据源
 
-1. 登录到 Azure[门户](https://azure.microsoft.com/features/azure-portal/)。
+1. 登录 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)。
 
 2. 在**Microsoft Azure 菜单上**，选择**安全中心**。 此时会打开“安全中心 - 概览”。****
 

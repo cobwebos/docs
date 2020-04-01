@@ -7,12 +7,12 @@ ms.service: event-hubs
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: spelluru
-ms.openlocfilehash: ab85cdb2854de5c147c68afd8e4fe5e17ac2899b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46e6a9ecc2ed09aed1076f12c1f61a966485bdad
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477936"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422770"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure 事件中心的网络安全性 
 本文介绍如何使用以下安全功能与 Azure 事件中心： 
@@ -36,14 +36,14 @@ ms.locfileid: "79477936"
 ## <a name="ip-firewall"></a>IP 防火墙 
 默认情况下，只要请求附带有效的身份验证和授权，事件中心命名空间即可从 Internet 访问。 使用 IP 防火墙，您可以进一步将其限制为[CIDR（无类域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法中的一组 IPv4 地址或 IPv4 地址范围。
 
-此功能在 Azure 事件中心应仅从某些已知站点访问的情况下非常有用。 防火墙规则使您能够配置规则以接受来自特定 IPv4 地址的流量。 例如，如果将事件中心与 [Azure 快速路由] [快速路由]一起使用，则可以创建**防火墙规则**，仅允许来自本地基础结构 IP 地址的流量。 
+此功能在 Azure 事件中心应仅从某些已知站点访问的情况下非常有用。 防火墙规则使您能够配置规则以接受来自特定 IPv4 地址的流量。 例如，如果将事件中心与 Azure[快速路由](/azure/expressroute/expressroute-faqs#supported-services)一起使用 ，则可以创建**防火墙规则**，仅允许来自本地基础结构 IP 地址的流量。 
 
 IP 防火墙规则在事件中心命名空间级别应用。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与事件中心命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 
 有关详细信息，请参阅[如何为事件中心配置 IP 防火墙](event-hubs-ip-filtering.md)
 
 ## <a name="network-service-endpoints"></a>网络服务终结点
-事件中心与 [虚拟网络 （VNet） 服务终结点集成[vnet-sep] 能够安全地访问来自工作负载（如绑定到虚拟网络的虚拟机）的消息传递功能，并且网络流量路径受到保护两端。
+通过将事件中心与[虚拟网络 (VNet) 服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)相集成，可从绑定到虚拟网络的工作负荷（例如虚拟机）安全地访问消息传递功能，同时在两端保护网络流量路径。
 
 一旦配置为至少绑定到一个虚拟网络子网服务终结点，相应的事件中心命名空间将不再接受来自虚拟网络中的经过授权的子网的流量。 从虚拟网络的角度来看，通过将事件中心命名空间绑定到服务终结点，可配置从虚拟网络子网到消息传递服务的独立网络隧道。 
 
@@ -64,7 +64,7 @@ IP 防火墙规则在事件中心命名空间级别应用。 因此，这些规�
 
 虚拟网络规则**** 是一种防火墙安全功能，用于控制是否允许 Azure 事件中心命名空间接受来自特定虚拟网络子网的连接。
 
-将事件中心命名空间绑定到虚拟网络的过程分为两步。 您首先需要在虚拟网络的子网上创建**虚拟网络服务终结点**，并为**Microsoft.EventHub**启用它，如 [服务终结点概述][vnet-sep] 一文中所述。 添加服务终结点后，使用虚拟网络规则将事件中心命名空间绑定到该终结点****。
+将事件中心命名空间绑定到虚拟网络的过程分为两步。 首先需要在虚拟网络的子网上创建**虚拟网络服务终结点**，并为**Microsoft.EventHub**启用它，如[服务终结点概述](../virtual-network/virtual-network-service-endpoints-overview.md)文章中所述。 添加服务终结点后，使用虚拟网络规则将事件中心命名空间绑定到该终结点****。
 
 虚拟网络规则是事件中心命名空间与虚拟网络子网的关联。 存在此规则时，绑定到子网的所有工作负荷都有权访问事件中心命名空间。 事件中心本身永远不会建立出站连接，不需要访问，因此永远不会通过启用此规则被授予对子网的访问权限。
 

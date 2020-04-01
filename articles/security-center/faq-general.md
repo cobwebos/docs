@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54263a8be900ed381d8450b460e5cf9e6117ac54
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661833"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436122"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>常见问题解答 - 有关 Azure 安全中心的一般问题
 
 ## <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 Azure 安全中心通过提高资源安全性的可见性和控制，帮助您预防、检测和响应威胁。 该服务提供订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
 
-安全中心使用 Microsoft Monitoring Agent 来收集和存储数据。 有关详细信息，请参阅[Azure 安全中心中的数据收集](security-center-enable-data-collection.md)。
+安全中心使用日志分析代理收集和存储数据。 有关详细信息，请参阅[Azure 安全中心中的数据收集](security-center-enable-data-collection.md)。
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>如何获取Azure 安全中心？

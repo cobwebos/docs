@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: labrenne
-ms.openlocfilehash: 2cff6a0e48fc7bf58a642f509fcda6b114e002ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95f27d913cd288c186bae1a6375212b072f50bb4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022930"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422437"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>使用共享映像库创建自定义池
 
@@ -38,6 +38,9 @@ ms.locfileid: "77022930"
 * **进行映像版本控制和分组，以便于管理。** 映像分组定义包含的信息涉及创建映像的原因、它适用于哪个 OS，以及映像的用法。 对映像分组可以方便映像的管理。 有关详细信息，请参阅[映像定义](../virtual-machines/windows/shared-image-galleries.md#image-definitions)。
 
 ## <a name="prerequisites"></a>先决条件
+
+> [!NOTE]
+> 您需要使用 Azure AD 进行身份验证。 如果使用共享密钥身份验证，则将出现身份验证错误。  
 
 * **** 一个 Azure Batch 帐户。 若要创建 Batch 帐户，请参阅 Batch 快速入门（使用 [Azure 门户](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md)）。
 
@@ -86,6 +89,9 @@ ms.locfileid: "77022930"
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>使用 Azure CLI 从共享映像创建池
 
 若要使用 Azure CLI 从共享映像创建池，请使用 `az batch pool create` 命令。 在 `--image` 字段中指定共享映像 ID。 确保 OS 类型和 SKU 与通过 `--node-agent-sku-id` 指定的版本匹配
+
+> [!NOTE]
+> 您需要使用 Azure AD 进行身份验证。 如果使用共享密钥身份验证，则将出现身份验证错误。  
 
 ```azurecli
 az batch pool create \
@@ -138,7 +144,7 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
 1. 选择“池”，然后选择“添加”，以便创建新池。********
 1. 在“映像类型”部分，选择“共享映像库”。********
 1. 使用托管映像的相关信息完成剩余部分。
-1. 选择“确定”。
+1. 选择“确定”  。
 
 ![通过门户使用共享映像创建池。](media/batch-sig-images/create-custom-pool.png)
 

@@ -4,12 +4,12 @@ description: 本文介绍如何排查 Azure 备份代理的安装和注册问题
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 24169356600c25e664221af397051bb0fec3e459
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a15f8a4531bc31dab5b99e125454b0d9c4fd4521
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673099"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421279"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -132,6 +132,13 @@ Set-ExecutionPolicy Unrestricted
 
 > [!TIP]
 > 为确保一致地应用所做的更改，请在执行上述步骤后重启服务器。
+
+## <a name="resource-not-provisioned-in-service-stamp"></a>服务戳中未预配的资源
+
+错误 | 可能的原因 | 建议的操作
+--- | --- | ---
+由于内部服务错误"资源未预配在服务戳中"，当前操作失败。 请稍后重试操作。 （ID： 230006） | 受保护服务器已重命名。 | <li> 将服务器重命名回在保管库中注册的原始名称。 <br> <li> 使用新名称将服务器重新注册到保管库。
+
 
 ## <a name="troubleshoot-restore-problems"></a>排查还原问题
 

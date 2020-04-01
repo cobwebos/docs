@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bce92eeed669628fa1b6318abd6b0c13f7e84848
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77188193"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411205"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>将数据从事件中心引入到 Azure 数据资源管理器
 
@@ -20,7 +20,7 @@ ms.locfileid: "77188193"
 > * [门户](ingest-data-event-hub.md)
 > * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
-> * [Azure Resource Manager 模板](data-connection-event-hub-resource-manager.md)
+> * [Azure 资源管理器模板](data-connection-event-hub-resource-manager.md)
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/azure/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本文中，将创建事件中心，从 Azure 数据资源管理器中连接到该事件中心，并查看通过系统的数据流。
 
@@ -33,7 +33,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 Azure[门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-an-event-hub"></a>创建事件中心
 
@@ -41,7 +41,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 若要创建事件中心，请使用以下按钮开始部署。 右键单击并选择“在新窗口中打开”****，以便按本文中的剩余步骤操作。
 
-    [![部署到 Azure](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![“部署到 Azure”](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
     “部署到 Azure”**** 按钮将转到 Azure 门户以填写部署窗体。
 
@@ -92,7 +92,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 1. 将以下命令复制到窗口中，然后选择“运行”**** 将传入的 JSON 数据映射到表 (TestTable) 的列名和数据类型。
 
     ```Kusto
-    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
+    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp", "Properties": {"Path": "$.timeStamp"}},{"column":"Name", "Properties": {"Path":"$.name"}} ,{"column":"Metric", "Properties": {"Path":"$.metric"}}, {"column":"Source", "Properties": {"Path":"$.source"}}]'
     ```
 
 ## <a name="connect-to-the-event-hub"></a>连接到事件中心
@@ -129,7 +129,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
     | 表 | TestTable** | 在“TestDatabase”**** 中创建的表。 |
-    | 数据格式 | *Json* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE、TXT、ORC 和 PARQUET。 |
+    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE、TXT、ORC 和 PARQUET。 |
     | 列映射 | TestMapping** | 在**测试数据库中**创建的[映射](/azure/kusto/management/mappings)，将传入的 JSON 数据映射到**TestTable**的列名称和数据类型。 对于 JSON 或多行 JSON 是必需的，对于其他格式是可选的。|
     | | |
 

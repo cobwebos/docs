@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 0bf70b73098427847c73b4dd962d56d44fe6ee2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 554a4c64700bb189b4b9f085bd7c259312a36b4b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283202"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410931"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>加入 Azure Automation State Configuration 管理的计算机
 
@@ -107,7 +107,7 @@ Azure 自动化状态配置允许您使用 Azure 门户、Azure 资源管理器�
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
-   - 要查找自动化帐户的注册密钥和注册 URL，请参阅[使用注册功能安全地载入](#onboarding-securely-using-registration)（如果本文）。
+   - 要查找自动化帐户的注册密钥和注册 URL，请参阅本文的[注册部分的载入安全](#onboarding-securely-using-registration)版。
 
 3. 如果 PowerShell DSC 本地配置管理器 （LCM） 默认值与您的用例不匹配，或者您希望将仅向 Azure 自动化状态配置报告的计算机板载，请按照步骤 4-7 执行。 否则，直接执行步骤 7。
 

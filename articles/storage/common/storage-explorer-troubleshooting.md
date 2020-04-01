@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db36033ea524603416f16db27f40d5eefb8bf613
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77561674"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437117"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器疑难解答指南
 
@@ -76,7 +76,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 如果存在以下情况之一，则往往会发生证书错误：
 
 - 应用通过透明代理进行连接，这意味着一台服务器（例如公司的服务器）正在截取 HTTPS 流量，对其进行解密，然后使用自签名证书对其进行加密__。
-- 正在运行的应用程序正在向收到的 HTTPS 消息注入自签名 SSL 证书。 注入证书的应用程序示例包括防病毒软件和网络流量检查软件。
+- 正在运行的应用程序正在将自签名 TLS/SSL 证书注入您收到的 HTTPS 消息中。 注入证书的应用程序示例包括防病毒软件和网络流量检查软件。
 
 当存储资源管理器看到自签名或不受信任的证书时，无法再判断收到的 HTTPS 消息是否被更改。 如果拥有自签名证书的副本，可通过执行以下步骤，让存储资源管理器信任它：
 
@@ -323,16 +323,16 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 # <a name="ubuntu-1904"></a>[Ubuntu 19.04](#tab/1904)
 
 1. 下载存储资源管理器。
-2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current)。
+2. 安装[.NET 核心运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current)。
 3. 运行以下命令：
    ```bash
    sudo apt-get install libgconf-2-4 libgnome-keyring0
    ```
 
-# <a name="ubuntu-1804"></a>[乌本图 18.04](#tab/1804)
+# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. 下载存储资源管理器。
-2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current)。
+2. 安装[.NET 核心运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current)。
 3. 运行以下命令：
    ```bash
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
@@ -341,7 +341,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. 下载存储资源管理器。
-2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current)。
+2. 安装[.NET 核心运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current)。
 3. 运行以下命令：
    ```bash
    sudo apt install libgnome-keyring-dev
@@ -350,7 +350,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 # <a name="ubuntu-1404"></a>[Ubuntu 14.04](#tab/1404)
 
 1. 下载存储资源管理器。
-2. 安装 [.NET Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current)。
+2. 安装[.NET 核心运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current)。
 3. 运行以下命令：
    ```bash
    sudo apt install libgnome-keyring-dev
