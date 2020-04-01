@@ -8,22 +8,25 @@ ms.author: edprice
 manager: edprice
 editor: edprice
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 03/30/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: a5426c3cd7552b24739f9a20e01d5a4b42bd383c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3fa5faccf17df17bc4f7cc2d8b023b868fdbe1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68834571"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411198"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>在 Azure 上安装微焦点企业服务器 4.0 和企业开发人员 4.0
 
 本文演示如何在 Azure 上设置[微焦点企业服务器 4.0](https://www.microfocus.com/documentation/enterprise-developer/es30/)和[微焦点企业开发人员 4.0。](https://www.microfocus.com/documentation/enterprise-developer/ed_30/)
 
 Azure 上的常见工作负荷是开发和测试环境。 此方案很常见，因为它非常经济高效且易于部署和拆除。 借助企业服务器，Micro Focus 创建了最大的大型主机重新托管平台之一。 您可以使用 Windows 或 Linux 虚拟机 （VM） 在 Azure 上较便宜的 x86 平台上运行 z/OS 工作负荷。
+
+> [!NOTE]
+> 即将推出：有关在 Azure VM 上设置[微焦点企业服务器 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110)的说明。
 
 此设置使用 Azure 服务器 2016 映像从 Azure 应用商店运行的 Azure VM，并且已安装 Microsoft SQL Server 2017。 此设置也适用于 Azure 堆栈。
 

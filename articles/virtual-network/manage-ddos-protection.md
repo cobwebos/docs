@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 786b21e7571ed173d2da90f587a5b76d8c92a13d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95a70a1d0c4367adb1dd276bff1b1eb20caafc59
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279723"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473375"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 门户管理 Azure DDoS 保护标准
 
@@ -29,7 +29,7 @@ ms.locfileid: "79279723"
 
 在完成本教程中的任何步骤之前，使用分配到[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有“[权限](#permissions)”中所列适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的帐户登录到 Azure 门户 https://portal.azure.com。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
 
 ## <a name="create-a-ddos-protection-plan"></a>创建 DDoS 防护计划
 
@@ -39,12 +39,12 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 
 1. 在 Azure 门户的左上角，选择“创建资源”****。
 2. 搜索 DDoS**。 当“DDoS 防护计划”出现在搜索结果中时，将其选中****。
-3. 选择 **“创建”**。
+3. 选择“创建”  。
 4. 输入或选择自己的值或以下示例值，然后选择“创建”****：
 
-    |设置        |“值”                                              |
+    |设置        |值                                              |
     |---------      |---------                                          |
-    |“属性”           | myDdosProtectionPlan                              |
+    |名称           | myDdosProtectionPlan                              |
     |订阅   | 选择订阅。                         |
     |资源组 | 选择 **"创建新**"并输入*我的资源组* |
     |位置       | 美国东部                                           |
@@ -55,9 +55,9 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 2. 选择 **"网络**"，然后选择**虚拟网络**。
 3. 输入或选择自己的值或以下示例值，接受其余默认值，然后选择“创建”****：
 
-    | 设置         | “值”                                                        |
+    | 设置         | 值                                                        |
     | ---------       | ---------                                                    |
-    | “属性”            | myVirtualNetwork                                             |
+    | 名称            | myVirtualNetwork                                             |
     | 订阅    | 选择订阅。                                    |
     | 资源组  | 选择 **"使用现有**"，然后选择 **"我的资源组**" |
     | 位置        | 美国东部                                                      |
@@ -105,9 +105,9 @@ DDoS 防护计划在订阅中定义一组已启用 DDoS 防护标准的虚拟网
 3. 选择“共享服务”下的“指标”********。
 4. 输入或选择自己的值或输入以下示例值，接受其余默认值，然后选择“确定”****：
 
-    |设置                  |“值”                                                                                               |
+    |设置                  |值                                                                                               |
     |---------                |---------                                                                                           |
-    |“属性”                     | myDdosAlert                                                                                        |
+    |名称                     | myDdosAlert                                                                                        |
     |订阅             | 选择包含希望用于接收警报的公共 IP 地址的订阅。        |
     |资源组           | 选择包含希望用于接收警报的公共 IP 地址的资源组。      |
     |资源                 | 选择包含希望用于接收警报的公共 IP 地址的公共 IP 地址。 DDoS 监视分配给虚拟网络中的资源的公共 IP 地址。 如果虚拟网络中没有任何具有公共 IP 地址的资源，必须首先创建具有公共 IP 地址的资源。 可监视通过[适用于 Azure 服务的虚拟网络](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)中列出的资源管理器部署的所有资源的公共 IP 地址，Azure App Service 环境和 Azure VPN 网关除外。 可快速创建 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机继续本教程的内容。                   |
@@ -202,7 +202,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 - 协议类型 
 - 在缓解期间执行的操作
 
-
+仅当在公共 IP 地址的虚拟网络上启用了 DDoS 保护标准时，攻击分析才起作用。 
 
 ## <a name="validate-ddos-detection"></a>验证 DDoS 检测
 
@@ -230,7 +230,7 @@ Azure 安全中心提供[安全警报](/azure/security-center/security-center-ma
 
 若要使用 DDoS 保护计划，必须将你的帐户分配到[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有下表所列适当操作的[自定义](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 操作                                            | “属性”                                     |
+| 操作                                            | 名称                                     |
 | ---------                                         | -------------                            |
 | Microsoft.Network/ddosProtectionPlans/read        | 读取 DDoS 保护计划              |
 | Microsoft.Network/ddosProtectionPlans/write       | 创建或更新 DDoS 保护计划  |

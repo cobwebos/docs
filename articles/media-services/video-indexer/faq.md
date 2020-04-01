@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 03/30/2020
 ms.author: juliako
-ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd41596b6631bb63e1625325f8bec065b43881cd
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77619880"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421396"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>视频索引器常见问题
 
@@ -175,6 +175,12 @@ Azure 媒体服务的 SLA 涵盖了视频索引器，可在 [SLA](https://azure.
 ### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>我需要多久获取一次新的访问令牌？ 访问令牌何时过期？
 
 访问令牌每隔一小时会过期，因此需要每隔一小时生成一次新的访问令牌。 
+
+### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>视频索引器开发人员门户的登录选项是什么？
+
+您可以使用 Azure AD、微软帐户、Google 帐户或 Facebook 帐户登录。 
+
+使用标识提供商注册电子邮件帐户后，您不能向其他标识提供商使用此电子邮件帐户。
 
 ## <a name="billing-questions"></a>计费问题
 

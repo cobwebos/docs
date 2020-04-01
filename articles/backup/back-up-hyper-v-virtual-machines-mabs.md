@@ -3,12 +3,12 @@ title: 使用 MABS 备份超 V 虚拟机
 description: 本文包含使用 Microsoft Azure 备份服务器 （MABS） 备份和恢复虚拟机的过程。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255062"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420403"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>使用 Azure 备份服务器备份超 V 虚拟机
 
@@ -100,83 +100,6 @@ MABS 使用 VSS 执行备份，如下所示。 对本说明中的步骤进行了
 
     创建保护组后，数据按照所选方法开始初始复制。 初始复制完成后，各个备份按照保护组设置进行。 如果需要恢复备份的数据，请注意以下事项：
 
-## <a name="back-up-virtual-machines-configured-for-live-migration"></a>备份针对实时迁移配置的虚拟机
-
-当虚拟机参与实时迁移时，只要在 Hyper-V 主机上安装 MABS 保护代理，MABS 将继续保护虚拟机。 MABS 保护虚拟机的方式取决于所涉及的实时迁移类型。
-
-**群集内的实时迁移**- 当在群集 MABS 中迁移虚拟机时，MABS 会检测迁移，并从新的群集节点备份虚拟机，而无需用户干预。 由于存储位置未更改，MABS 将继续进行快速完整备份。
-
-**群集外部的实时迁移**- 当虚拟机在独立服务器、不同群集之间迁移或独立服务器和群集之间时，MABS 会检测迁移，无需用户干预即可备份虚拟机。
-
-### <a name="requirements-for-maintaining-protection"></a>维持保护的要求
-
-以下是在实时迁移期间维持保护的要求：
-
-- 虚拟机的 Hyper-V 主机必须位于系统中心 VMM 云中，位于 VMM 服务器上，至少使用 SP1 运行系统中心 2012。
-
-- 必须在所有 Hyper-V 主机上安装 MABS 保护代理。
-
-- MABS 服务器必须连接到 VMM 服务器。 VMM 云中的所有 Hyper-V 主机服务器也必须连接到 MABS 服务器。 这允许 MABS 与 VMM 服务器通信，以便 MABS 可以找出虚拟机当前正在运行的 Hyper-V 主机服务器，并从该 Hyper-V 服务器创建新备份。 如果无法与 Hyper-V 服务器建立连接，则备份将失败，并发出 MABS 保护代理无法访问的消息。
-
-- 所有 MABS 服务器、VMM 服务器和超 V 主机服务器必须位于同一域中。
-
-### <a name="details-about-live-migration"></a>实时迁移的详细信息
-
-在实时迁移期间进行备份时，请注意以下几点：
-
-- 如果实时迁移传输存储，MABS 会对虚拟机执行完全一致性检查，然后继续进行快速完整备份。 当发生存储的实时迁移时，Hyper-V 会重新组织虚拟硬盘 （VHD） 或 VHDX，从而导致 MABS 备份数据大小的一次性峰值。
-
-- 在虚拟机主机上，开启自动装入功能以启用虚拟保护，并禁用 TCP 烟囱卸载。
-
-- MABS 使用端口 6070 作为托管 DPM-VMM 帮助器服务的默认端口。 若要更改注册表，请执行以下操作：
-
-    1. 导航到**HKLM_软件_微软_微软数据保护管理器\配置**。
-    2. 创建一个 32 位 DWORD 值：DpmVmmHelperServicePort，并写入更新的端口号作为注册表项的一部分。
-    3. 打开 ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config```，然后将端口号从 6070 更改为新端口。 例如： ```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
-    4. 重启 DPM-VMM 帮助程序服务，并重启 DPM 服务。
-
-### <a name="set-up-protection-for-live-migration"></a>Set up protection for live migration
-
-若要设置实时迁移保护，请执行以下操作：
-
-1. 设置 MABS 服务器及其存储，并在 VMM 云中的每个 Hyper-V 主机服务器或群集节点上安装 MABS 保护代理。 如果在群集中使用 SMB 存储，请在所有群集节点上安装 MABS 保护代理。
-
-2. 将 VMM 控制台作为客户端组件安装在 MABS 服务器上，以便 MABS 能够与 VMM 服务器进行通信。 控制台的版本应与在 VMM 服务器上运行的控制台版本相同。
-
-3. 将 MABSMachineName$ 帐户指定为 VMM 管理服务器上的只读管理员帐户。
-
-4. 使用`Set-DPMGlobalProperty`PowerShell cmdlet 将所有 Hyper-V 主机服务器连接到所有 MABS 服务器。 cmdlet 接受多个 MABS 服务器名称。 使用以下格式：`Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`。 有关详细信息，请参阅[Set-DPMGlobal属性](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019)。
-
-5. 当在 VMM 中发现 Hyper-V 主机在 VMM 云中运行的所有虚拟机后，设置一个保护组，并添加想要保护的虚拟机。 应在保护组级别启用自动一致性检查，以在虚拟机移动性方案下进行保护。
-
-6. 配置设置后，当虚拟机从一个群集迁移到另一个群集时，所有备份都按预期继续。 你可以验证实时迁移是否按预期启用，如下所示：
-
-   1. 检查 DPM-VMM 帮助程序服务是否正在运行。 如果不是，开始吧。
-
-   2. 打开 Microsoft SQL 服务器管理工作室并连接到承载 MABS 数据库 （DPMDB） 的实例。 在 DPMDB 上，运行以下查询：`SELECT TOP 1000 [PropertyName] ,[PropertyValue] FROM[DPMDB].[dbo].[tbl_DLS_GlobalSetting]`。
-
-      此查询包含名为`KnownVMMServer`的属性。 此值应与你使用 `Set-DPMGlobalProperty` cmdlet 提供的值相同。
-
-   3. 运行以下查询，为特定虚拟机验证 `PhysicalPathXML` 中的 VMMIdentifier ** 参数。 将 `VMName` 替换为虚拟机的名称。
-
-      ```sql
-      select cast(PhysicalPath as XML) from tbl_IM_ProtectedObject where DataSourceId in (select datasourceid from tbl_IM_DataSource   where DataSourceName like '%<VMName>%')
-      ```
-
-   4. 打开此查询返回的 .xml 文件，并验证 *VMMIdentifier* 字段是否具有值。
-
-### <a name="run-manual-migration"></a>运行手动迁移
-
-完成前几节中的步骤，MABS 摘要管理器作业完成后，将启用迁移。 默认情况下，此作业在午夜启动并在每天早晨运行。 如果要运行手动迁移来检查所有内容是否按预期运行，请执行以下操作：
-
-1. 打开 SQL 服务器管理工作室并连接到承载 MABS 数据库的实例。
-
-2. 运行以下查询： `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`。 此查询将返回 **ScheduleID**。 记录此 ID，因为你将在下一个步骤中使用它。
-
-3. 在 SQL Server Management Studio 中，展开“**SQL Server 代理**，然后展开“**作业**”。 右键单击你记录的“**ScheduleID**”，然后选择“**作业开始步骤**”。
-
-作业运行时，备份性能会受到影响。 部署的大小和规模决定着此作业需要多少时间来完成。
-
 ## <a name="back-up-replica-virtual-machines"></a>备份副本虚拟机
 
 如果 MABS 在 Windows Server 2012 R2 或更高版本上运行，则可以备份副本虚拟机。 这样会产生以下有利结果：
@@ -209,7 +132,7 @@ MABS 使用 VSS 执行备份，如下所示。 对本说明中的步骤进行了
 
 3. 在“**操作**”菜单中，单击“**恢复**”打开“恢复”向导。
 
-    你所选择的 VM 和恢复点将出现在“**审查恢复选择**”屏幕中。 单击“下一步”****。
+    你所选择的 VM 和恢复点将出现在“**审查恢复选择**”屏幕中。 单击 **“下一步”** 。
 
 4. 在“**选择恢复类型**”屏幕中，选择想要将数据还原至的位置，然后单击“**下一步**”。
 

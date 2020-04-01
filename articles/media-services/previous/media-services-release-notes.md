@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: a55ef4f814c0d13a6efbeeb8cd9a5565d2869432
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3893c8d19c89b639e0584f203cbcd1adf7e2dee
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183289"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474844"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -32,7 +32,7 @@ ms.locfileid: "78183289"
 ## <a name="known-issues"></a><a id="issues"/>已知问题
 ### <a name="media-services-general-issues"></a><a id="general_issues"/>媒体服务一般问题
 
-| 问题 | 描述 |
+| 问题 | 说明 |
 | --- | --- |
 | REST API 中未提供几种常见的 HTTP 标头。 |如果使用 REST API 来开发媒体服务应用程序，将发现一些常见的 HTTP 标头字段（包括 CLIENT-REQUEST-ID、REQUEST-ID 和 RETURN-CLIENT-REQUEST-ID）不受支持。 未来的更新将增加这些标头。 |
 | 不允许使用百分号编码。 |为流内容构建 URL 时，媒体服务使用 IAssetFile.Name 属性的值（例如，`http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`）。 出于这个原因，不允许使用百分号编码。 Name 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!* '();:@&=+$,/?%#[]"。 此外，文件扩展名中只能含有一个“.”。 |
@@ -344,9 +344,9 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 * 增加了 PlayReady 许可证模板中 BeginDate 和 ExpirationDate 的相对偏移量。
 
 ## <a name="november-2014-release"></a><a id="november_changes_14"></a>2014 年 11 月版本
-* 现可使用媒体服务，通过 SSL 连接插入实时平滑流式处理 (FMP4) 内容。 要通过 SSL 进行摄取，请确保将摄取 URL 更新为 HTTPS。 媒体服务当前对自定义域不支持 SSL。 有关实时传送视频流的详细信息，请参阅[使用 Azure 媒体服务实时传送视频流](https://msdn.microsoft.com/library/azure/dn783466.aspx)。
-* 当前，无法通过 SSL 连接摄取 RTMP 实时流。
-* 仅当要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的情况下，才可通过 SSL 流式传输内容。 如果流式处理 URL 是基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”（新格式）。 包含“origin.mediaservices.windows.net”（旧格式）的流式处理 URL 不支持 SSL。 如果 URL 采用旧格式，并且希望通过 SSL 流式传输内容，请[创建新的流式处理终结点](media-services-portal-manage-streaming-endpoints.md)。 若要通过 SSL 流式传输内容，请使用基于新流式处理终结点的 URL。
+* 现在，您可以使用媒体服务通过 TLS 连接引入实时平滑流式处理 （fMP4） 内容。 要通过 TLS 进行摄录，请确保将引入的 URL 更新为 HTTPS。 目前，媒体服务不支持具有自定义域的 TLS。 有关实时传送视频流的详细信息，请参阅[使用 Azure 媒体服务实时传送视频流](https://msdn.microsoft.com/library/azure/dn783466.aspx)。
+* 目前，您无法通过 TLS 连接引入 RTMP 实时流。
+* 仅当从 TLS 传输内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的时，才能通过 TLS 进行流式传输。 如果流式处理 URL 是基于 2014 年 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”（新格式）。 包含"origin.mediaservices.windows.net"（旧格式）的流式处理 URL 不支持 TLS。 如果您的 URL 采用旧格式，并且希望通过 TLS 流式传输，[请创建新的流式处理终结点](media-services-portal-manage-streaming-endpoints.md)。 要通过 TLS 流式传输内容，请使用基于新流式处理终结点的 URL。
 
 ### <a name="media-services-net-sdk"></a><a id="oct_sdk"></a>媒体服务 .NET SDK
 适用于 .NET 的媒体服务 SDK 扩展当前版本为 2.0.0.3。
@@ -367,7 +367,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 
 适用于 .NET 的媒体服务 SDK 当前版本为 3.0.0.7。
 
-### <a name="breaking-changes"></a><a id="sept_14_breaking_changes"></a>重大更改
+### <a name="breaking-changes"></a><a id="sept_14_breaking_changes"></a>中断性变更
 * 原点重命名为了 [StreamingEndpoint]。
 * 更改了使用 Azure 门户编码和发布 MP4 文件时的默认行为。
 

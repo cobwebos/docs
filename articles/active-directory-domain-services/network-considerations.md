@@ -4,19 +4,18 @@ description: 在运行 Azure 活动目录域服务时，了解用于连接的一
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
-ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 69f8cd0f78a45c6c5e53368edc5902c4b6695701
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264188"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408835"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD 域服务的虚拟网络设计注意事项和配置选项
 
@@ -76,7 +75,7 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 使用以下注
 
 ![使用 VPN 网关进行虚拟网络连接](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 
-有关使用虚拟专用网络的详细信息，请阅读使用[Azure 门户配置 VNet 到 VNet VPN 网关连接](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal)。
+有关使用虚拟专用网络的详细信息，请阅读使用[Azure 门户配置 VNet 到 VNet VPN 网关连接](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)。
 
 ## <a name="name-resolution-when-connecting-virtual-networks"></a>连接虚拟网络时的名称解析
 
@@ -88,7 +87,7 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 使用以下注
 
 Azure AD DS 托管域在部署期间创建一些网络资源。 这些资源是成功操作和管理 Azure AD DS 托管域所必需的，不应手动配置。
 
-| Azure 资源                          | 描述 |
+| Azure 资源                          | 说明 |
 |:----------------------------------------|:---|
 | 网络接口卡                  | Azure AD DS 在 Windows 服务器上作为 Azure VM 运行的两个域控制器 （DC） 上托管托管域。 每个 VM 都有一个虚拟网络接口，可连接到虚拟网络子网。 |
 | 动态标准公共 IP 地址      | Azure AD DS 使用标准的 SKU 公共 IP 地址与同步和管理服务通信。 有关公共 IP 地址的详细信息，请参阅[Azure 中的 IP 地址类型和分配方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)。 |
@@ -97,11 +96,11 @@ Azure AD DS 托管域在部署期间创建一些网络资源。 这些资源是�
 | 负载均衡器规则                     | 当为 TCP 端口 636 上的安全 LDAP 配置 Azure AD DS 托管域时，将创建三个规则并在负载均衡器上使用以分配流量。 |
 
 > [!WARNING]
-> 不要删除 Azure AD DS 创建的任何网络资源。 如果删除任何网络资源，则会发生 Azure AD DS 服务中断。
+> 不要删除或修改 Azure AD DS 创建的任何网络资源，例如手动配置负载均衡器或规则。 如果删除或修改任何网络资源，则可能发生 Azure AD DS 服务中断。
 
 ## <a name="network-security-groups-and-required-ports"></a>网络安全组和所需端口
 
-[网络安全组 （NSG）](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)包含允许或拒绝网络流量到 Azure 虚拟网络中的流量的规则列表。 部署 Azure AD DS 时将创建网络安全组，该 DS 包含一组规则，允许服务提供身份验证和管理功能。 此默认网络安全组与 Azure AD DS 托管域部署到的虚拟网络子网相关联。
+[网络安全组 （NSG）](../virtual-network/virtual-networks-nsg.md)包含允许或拒绝网络流量到 Azure 虚拟网络中的流量的规则列表。 部署 Azure AD DS 时将创建网络安全组，该 DS 包含一组规则，允许服务提供身份验证和管理功能。 此默认网络安全组与 Azure AD DS 托管域部署到的虚拟网络子网相关联。
 
 Azure AD DS 需要以下网络安全组规则才能提供身份验证和管理服务。 不要编辑或删除 Azure AD DS 托管域部署的虚拟网络子网的这些网络安全组规则。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5655a58c3538ac47e8649619b079dc46ee01242
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244961"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473217"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>为 Azure 网络接口添加、更改或删除 IP 地址
 
@@ -28,7 +28,7 @@ ms.locfileid: "79244961"
 
 如果需要创建、更改或删除网络接口，请阅读[管理网络接口](virtual-network-network-interface.md)一文。 如果需要向虚拟机添加网络接口或从中删除网络接口，请阅读[添加或删除网络接口](virtual-network-network-interface-vm.md)一文。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -53,7 +53,7 @@ ms.locfileid: "79244961"
 
    |设置|必需？|详细信息|
    |---|---|---|
-   |“属性”|是|对于网络接口必须是唯一的|
+   |名称|是|对于网络接口必须是唯一的|
    |类型|是|由于要将 IP 配置添加到现有网络接口，并且每个网络接口都必须有一个[主要](#primary) IP 配置，因此，你的唯一选项是“辅助”。****|
    |专用 IP 地址分配方法|是|[**动态**](#dynamic)：Azure 为在其中部署网络接口的子网地址范围分配下一可用地址。 [**静态**](#static)：为在其中部署网络接口的子网地址范围分配未使用的地址。|
    |公共 IP 地址|否|**已禁用：** 该 IP 配置当前没有关联的公共 IP 地址资源。 **已启用：** 选择现有的 IPv4 公共 IP 地址，或新建一个。 若要了解如何创建公共 IP 地址，请参阅[公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)一文。|
@@ -61,7 +61,7 @@ ms.locfileid: "79244961"
 
 **命令**
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
@@ -75,14 +75,14 @@ ms.locfileid: "79244961"
 3. 在“设置”**** 下选择“IP 配置”****。
 4. 从列表中选择想要修改的 IP 配置。
 5. 使用有关[添加 IP 配置](#add-ip-addresses)的步骤 5 中的设置的信息，根据需要更改设置。
-6. 选择“保存”。****
+6. 选择“保存”。 
 
 >[!NOTE]
 >在 Windows 中，如果主要网络接口有多个 IP 配置，并且你更改了主要 IP 配置的专用 IP 地址，则必须手动将主要 IP 地址和辅助 IP 地址重新分配给网络接口（在 Linux 中不需要执行此操作）。 若要手动向操作系统中的网络接口分配 IP 地址，请参阅[将多个 IP 地址分配到虚拟机](virtual-network-multiple-ip-addresses-portal.md#os-config)。 有关在手动向虚拟机操作系统添加 IP 地址的特别注意事项，请参阅[专用](#private) IP 地址。 请不要向虚拟机操作系统添加任何公共 IP 地址。
 
 **命令**
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
@@ -98,7 +98,7 @@ ms.locfileid: "79244961"
 
 **命令**
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
@@ -120,7 +120,7 @@ ms.locfileid: "79244961"
 
 - 必须具有分配给它的 IPv4 或 IPv6 地址。 如果地址是 IPv6，则网络接口只能具有一个辅助 IP 配置。 如果地址是 IPv4，则网络接口可以具有多个分配给它的辅助 IP 配置。 若要详细了解可以向网络接口分配多少专用和公共 IPv4 地址，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)一文。
 - 也可能有一个公共 IPv4 或 IPv6 地址分配给它。 将多个 IPv4 地址分配给网络接口有助于以下情况：
-  - 在单个服务器上使用不同的 IP 地址和 SSL 证书托管多个网站或服务。
+  - 在单个服务器上托管具有不同 IP 地址和 TLS/SSL 证书的多个网站或服务。
   - 虚拟机充当网络虚拟设备，例如防火墙或负载均衡器。
   - 可将任何网络接口的任何专用 IPv4 地址添加到 Azure 负载均衡器后端池。 过去，只能将主要网络接口的主要 IPv4 地址添加到后端池。 若要详细了解如何对多个 IPv4 配置进行负载均衡，请参阅[对多个 IP 配置进行负载均衡](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。 
   - 可以对分配给网络接口的一个 IPv6 地址进行负载均衡。 若要详细了解如何对 IPv6 地址进行负载均衡，请参阅[对 IPv6 地址进行负载均衡](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)一文。

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 3/11/2020
-ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a72d3dc7f7b3fddf66df8111b1e92116a62883a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268699"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474025"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 
@@ -151,7 +151,7 @@ Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层�
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>客户托管的透明数据加密 （BYOK）
 
-如果使用[客户托管的透明数据加密](transparent-data-encryption-byok-azure-sql.md)（BYOK） 和无服务器数据库在密钥删除或吊销时自动暂停，则数据库将保持自动暂停状态。  在这种情况下，下次尝试恢复时，数据库将保持暂停状态，直到大约 10 分钟或更少后其状态转换到无法访问。  一旦数据库变得无法访问，恢复过程与预配计算数据库的过程相同。  如果发生密钥删除或吊销时无服务器数据库处于联机状态，则数据库在大约 10 分钟或更少后也会变得不可访问，其方式与预配计算数据库的方式相同。
+如果使用[客户托管的透明数据加密](transparent-data-encryption-byok-azure-sql.md)（BYOK） 和无服务器数据库在密钥删除或吊销时自动暂停，则数据库将保持自动暂停状态。  在这种情况下，当数据库下次恢复时，数据库将保持联机状态，直到大约 10 分钟或更少后其状态转换到无法访问。  一旦数据库变得无法访问，恢复过程与预配计算数据库的过程相同。  如果发生密钥删除或吊销时无服务器数据库处于联机状态，则数据库在大约 10 分钟或更少后也会变得不可访问，其方式与预配计算数据库的方式相同。
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>载入无服务器计算层
 
@@ -279,7 +279,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 下表列出了用于监视无服务器数据库应用包和用户池的资源使用情况的指标：
 
-|实体|指标|描述|单位|
+|实体|指标|说明|单位|
 |---|---|---|---|
 |应用包|app_cpu_percent|应用使用的 vCore 数相对于应用允许的最大 vCore 数的百分比。|百分比|
 |应用包|app_cpu_billed|报告期内收取的应用计算费用。 在此期间支付的金额是此指标和 vCore 单位价格的乘积。 <br><br>此指标的值是通过将每秒使用的最大 CPU 和内存使用量按时间进行汇总来得到的。 如果使用的量小于按照最小 vCore 数和最小内存量预配的最小量，则按照预配的最小量进行计费。为了比较 CPU 与内存以进行计费，可通过将内存量 (GB) 按照每个 vCore 3 GB 进行重新缩放，将内存归一化为以 vCore 数为单位。|vCore 秒|

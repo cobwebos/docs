@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 260ddccc1a1b0bd4090284025b79e20ff5ce4fdc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162899"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475245"
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒体服务概念 
 
@@ -114,7 +114,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 * 本地实时编码器将多比特率 RTMP 或平滑流（分片 MP4）发送到通道。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出RTMP：Adobe闪存实时编码器，[远程有线广播](media-services-configure-wirecast-live-encoder.md)，泰拉德克，海视和特里卡斯特编码器。 引入的流会直接通过通道，而不会经过任何进一步的转码和编码。 收到请求时，媒体服务会将该流传递给客户。
 * 将单比特率流（采用以下某种格式：RTMP 或平滑流式处理（分片 MP4））发送到能够使用媒体服务执行实时编码的通道。 然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。 收到请求时，媒体服务会将该流传递给客户。
 
-### <a name="channel"></a>Channel
+### <a name="channel"></a>通道
 在媒体服务中，[频道](https://docs.microsoft.com/rest/api/media/operations/channel)负责处理实时传送视频流内容。 通道提供输入终结点（引入 URL），然后要将该终结点提供给实时转码器。 通道从实时转码器接收实时输入流，并通过一个或多个 StreamingEndpoints 使其可用于流式处理。 通道还提供可用于预览的预览终结点（预览 URL），并在进一步处理和传递流之前对流进行验证。
 
 可以在创建通道时获取引入 URL 和预览 URL。 若要获取这些 URL，通道不一定要处于已启动状态。 准备好开始将数据从实时转码器推送到通道时，通道必须已启动。 实时转码器开始引入数据后，可以预览流。
@@ -197,10 +197,10 @@ http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba01
 ### <a name="streaming-urls"></a>流 URL
 将内容流式传输到客户端。 若要为用户提供流 URL，必须先创建一个 OnDemandOrigin 定位符。 通过创建定位符，将提供包含要流式传输的内容的资产的基本路径。 但是，为了能够流式传输该内容，需要进一步修改此路径。 要构造流清单文件的完整 URL，必须将定位符的 Path 值与清单 (filename.ism) 文件名连接起来。 然后，向定位符路径追加 /Manifest 和相应的格式（如果需要）。
 
-也可以通过 SSL 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 目前，AMS 对自定义域不支持 SSL。  
+您还可以通过 TLS 连接流式传输内容。 为此，请确保流 URL 以 HTTPS 开头。 目前，AMS 不支持具有自定义域的 TLS。  
 
 >[!NOTE]
->仅当要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日之后创建的情况下，才可以通过 SSL 流式传输内容。 如果流式处理 URL 基于 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”（新格式）。 包含“origin.mediaservices.windows.net”（旧格式）的流式处理 URL 不支持 SSL。 如果 URL 采用旧格式，并且希望能够通过 SSL 流式传输内容，请创建新的流式处理终结点。 使用基于新流式处理终结点创建的 URL 通过 SSL 流式传输内容。
+>仅当从 2014 年 9 月 10 日之后创建提供内容的流式处理终结点时，才能通过 TLS 流式传输。 如果流式处理 URL 基于 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.windows.net”（新格式）。 包含"origin.mediaservices.windows.net"（旧格式）的流式处理 URL 不支持 TLS。 如果您的 URL 采用旧格式，并且希望能够通过 TLS 流式传输，请创建新的流式处理终结点。 使用基于新流式处理终结点创建的 URL 通过 TLS 流式传输内容。
 
 以下列表描述了流格式并提供了示例：
 

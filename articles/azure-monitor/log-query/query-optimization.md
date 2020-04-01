@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/28/2019
-ms.openlocfilehash: c32731ce2de2b0f886a1e21ee8ccad3996e395eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2019
+ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480260"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411430"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>优化 Azure 监视器中的日志查询
 Azure 监视器日志使用[Azure 数据资源管理器 （ADX）](/azure/data-explorer/)来存储日志数据并运行用于分析该数据的查询。 它为您创建、管理和维护 ADX 群集，并针对日志分析工作负荷对其进行优化。 运行查询时，查询已优化，并路由到存储工作区数据的相应 ADX 群集。 Azure 监视器日志和 Azure 数据资源管理器都使用许多自动查询优化机制。 虽然自动优化可以显著提升，但在某些情况下，您可以显著提高查询性能。 本文介绍了性能注意事项和修复它们的几个技术。
@@ -57,7 +57,7 @@ Azure 监视器日志使用[Azure 数据资源管理器 （ADX）](/azure/data-e
 - 数据检索 – 与检索最新数据相比，检索旧数据将消耗更多时间。
 - 数据处理 – 数据的逻辑和评估。 
 
-除了在查询处理节点中花费的时间之外，Azure 监视器日志会花费额外的时间：对用户进行身份验证，并验证他们是否被允许访问此数据、查找数据存储、分析查询和分配查询处理节点。 此时间不包括在查询总 CPU 时间中。
+除了在查询处理节点中花费的时间之外，Azure 监视器日志还花费额外的时间：对用户进行身份验证，并验证是否允许他们访问此数据、查找数据存储、分析查询和分配查询处理节点。 此时间不包括在查询总 CPU 时间中。
 
 ### <a name="early-filtering-of-records-prior-of-using-high-cpu-functions"></a>在使用高 CPU 功能之前提前筛选记录
 
@@ -155,6 +155,21 @@ Heartbeat
 
 > [!NOTE]
 > 此指示器仅显示来自直接群集的 CPU。 在多区域查询中，它将仅表示其中一个区域。 在多工作区查询中，它可能不包括所有工作区。
+
+### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>避免在字符串解析工作时完全 XML 和 JSON 解析
+完全解析 XML 或 JSON 对象可能会消耗高 CPU 和内存资源。 在许多情况下，当只需要一个或两个参数，而XML或JSON对象很简单时，使用[解析运算符](/azure/kusto/query/parseoperator)或其他[文本解析技术](/azure/azure-monitor/log-query/parse-text)将它们解析为字符串更容易。 随着 XML 或 JSON 对象中记录数量的增加，性能提升将更为显著。 当记录数达到数千万时，这一点至关重要。
+
+例如，以下查询将返回与上述查询完全相同的结果，而不执行完整的 XML 分析。 请注意，它对 XML 文件结构进行了一些假设，例如该文件路径元素在 FileHash 之后出现，并且它们都没有属性。 
+
+```Kusto
+//even more efficient
+SecurityEvent
+| where EventID == 8002 //Only this event have FileHash
+| where EventData !has "%SYSTEM32" //Early removal of unwanted records
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| summarize count() by FileHash, FilePath
+| where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
+```
 
 
 ## <a name="data-used-for-processed-query"></a>用于处理查询的数据

@@ -11,12 +11,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: c7459c4dc700f034feafbf133b831a52b9233d11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df7db30e987c408ff158acfc468010948c821b8d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77020159"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397538"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>使用 Azure Batch CLI 模板和文件传输
 
@@ -28,7 +28,7 @@ ms.locfileid: "77020159"
 
 通过 Azure CLI 扩展，非开发者用户可使用端到端的 Batch。 只需使用 CLI 命令便可创建池、上传输入数据、创建作业和关联的任务，以及下载生成的输出数据。 不需要任何其他代码。 可以直接运行 CLI 命令，也可以将其集成到脚本中。
 
-Batch 模板基于 [Azure CLI 中现有的 Batch 支持](batch-cli-get-started.md#json-files-for-resource-creation)，在创建池、作业、任务和其他项时允许使用 JSON 文件来指定属性值。 Batch 模板添加了以下功能：
+批处理模板基于 JSON 文件的 Azure [CLI](batch-cli-get-started.md#json-files-for-resource-creation)中的现有 Batch 支持，用于在创建池、作业、任务和其他项时指定属性值。 Batch 模板添加了以下功能：
 
 -   可以定义参数。 使用模板时，仅指定参数值以创建项，而在模板正文中指定其他项属性值。 了解 Batch 和 Batch 运行的应用程序的用户可以创建模板、指定池、作业和任务属性值。 不太熟悉 Batch 和/或应用程序的用户只需指定定义的参数的值。
 
@@ -68,7 +68,7 @@ Azure Batch 模板在功能和语法上非常类似于 Azure 资源管理器模�
 
 -   **参数**
 
-    -   允许在正文部分中指定属性值，使用模板时，仅需提供参数值。 例如，池的完整定义应放入正文且仅定义池 id 的一个参数；因此仅需提供一个池 ID 字符串来创建池。
+    -   允许在正文部分中指定属性值，使用模板时，仅需提供参数值。 例如，池的完整定义可以放置在正文中，并且只能为`poolId`中定义一个参数。因此，只需提供池 ID 字符串才能创建池。
         
     -   模板正文可由了解 Batch 和 Batch 运行的应用程序的人进行创建；使用模板时，必须提供仅作者定义的参数值。 因此，没有深入了解 Batch 和/或应用程序的用户可以使用模板。
 

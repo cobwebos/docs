@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bc3d35830d833c0223a400140c53e583d2f6ed37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475419"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474907"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -81,7 +81,7 @@ Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 �
 * 支持应用的基于 IP 的 SSL 需求
 * 为应用设置一个不与其他任何组件共享的专用地址
 
-可以在教程[配置基于 IP 的 SSL][appassignedaddress] 中了解如何为应用设置地址。 
+通过 Azure[应用服务 中添加 TLS/SSL 证书][appassignedaddress]的教程，可以了解如何在应用上设置地址。 
 
 ### <a name="access-restrictions"></a>访问限制 
 

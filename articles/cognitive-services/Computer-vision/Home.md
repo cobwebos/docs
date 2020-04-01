@@ -11,14 +11,16 @@ ms.topic: overview
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: eb338c39ed3b1a095c1ad31e3f695e8d3fec0ed3
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: af49e80766d7ac4bd2d9ed677a2571fb0a5a3189
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565955"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80131753"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 使用 Azure 的计算机视觉服务，开发人员可以访问用于处理图像并返回信息的高级算法，具体取决于你感兴趣的视觉功能。 例如，计算机视觉可以确定图像是否包含成人内容，或者查找图像中的所有人脸。
 
@@ -77,6 +79,6 @@ ms.locfileid: "77565955"
 
 按照快速入门指南操作，完成计算机视觉入门：
 
-- [快速入门：计算机视觉 .NET SDK](quickstarts-sdk/csharp-sdk.md)
-- [快速入门：计算机视觉 Python SDK](quickstarts-sdk/python-sdk.md)
-- [快速入门：计算机视觉 Java SDK](quickstarts-sdk/java-sdk.md)
+- [快速入门：计算机视觉 .NET 客户端库](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+- [快速入门：计算机视觉 Python 客户端库](./quickstarts-sdk/client-library.md?pivots=programming-language-python)
+- [快速入门：计算机视觉 Java 客户端库](./quickstarts-sdk/client-library.md?pivots=programming-language-java)

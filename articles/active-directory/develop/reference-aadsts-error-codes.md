@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 03/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 89240102837b65ed2a09d9f4865ad47ee5d5afa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91d285e2a839a7d6266c5d58f52901a48a7a8c84
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154553"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473175"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -39,7 +39,7 @@ ms.locfileid: "80154553"
 
 ## <a name="aadsts-error-codes"></a>AADSTS 错误代码
 
-| 错误 | 描述 |
+| 错误 | 说明 |
 |---|---|
 | AADSTS16000 | SelectUserAccount - 这是 Azure AD 引发的中断，使得 UI 允许用户从多个有效 SSO 会话中进行选择。 此错误相当常见。如果指定了 `prompt=none`，可能会在应用程序中返回此错误。 |
 | AADSTS16001 | UserAccountSelectionInvalid - 如果用户单击会话选择逻辑已拒绝的某个磁贴，则会出现此错误。 触发此错误时，用户可以从更新的磁贴/会话列表中进行选择或选择另一个帐户进行恢复。 此错误的原因可能是代码缺陷或出现争用状况。 |
@@ -271,6 +271,8 @@ ms.locfileid: "80154553"
 | AADSTS700020 | InteractionRequired - 访问权限授予需要交互。 |
 | AADSTS700022 | InvalidMultipleResourcesScope - 为输入参数范围提供的值无效，因为它包含多个资源。 |
 | AADSTS700023 | InvalidResourcelessScope - 请求访问令牌时，为输入参数范围提供的值无效。 |
+| AADSTS7000222| 无效客户端密钥过期密钥提供 - 提供的客户端密钥已过期。 访问 Azure 门户为应用创建新密钥，或考虑使用证书凭据提高安全性：https://aka.ms/certCreds |
+| AADSTS700005 | 无效授予者，即为"错误租户" - 提供授权代码旨在针对其他租户使用，因此被拒绝。 OAuth2 授权代码必须针对为其收购的同一租户（/公共或 /[租户-ID]（视情况而定）进行兑换 |
 | AADSTS1000000 | UserNotBoundError - 绑定 API 要求 Azure AD 用户同时使用外部 IDP 进行身份验证，但尚未执行此操作。 |
 | AADSTS1000002 | BindCompleteInterruptError - 绑定已成功完成，但必须通知用户。 |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled - 应用程序处于禁用状态。 |

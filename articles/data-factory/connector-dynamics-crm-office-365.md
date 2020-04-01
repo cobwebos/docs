@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: d065439839ba5db479305ae81c61892cb5cf5e70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bbd2e3376f1da3fdf5b10d654a331ce258be5cf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929454"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422089"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
 
@@ -72,7 +72,7 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 和 Dynamics CRM Online
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为 **Dynamics**、**DynamicsCrm** 或 **CommonDataServiceForApps**。 | 是 |
 | deploymentType | Dynamics 实例的部署类型。 Dynamics Online 必须为 **"Online"**。 | 是 |
@@ -169,7 +169,7 @@ Dynamics 链接服务支持以下属性。
 
 与 Dynamics 联机进行对比的其他属性是“hostName”和“port”。**
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为 **Dynamics**、**DynamicsCrm** 或 **CommonDataServiceForApps**。 | 是 |
 | deploymentType | Dynamics 实例的部署类型。 带有 IFD 的本地 Dynamics 必须为 **"OnPremisesWithIfd"**。| 是 |
@@ -215,7 +215,7 @@ Dynamics 链接服务支持以下属性。
 
 支持使用以下属性从/向 Dynamics 复制数据。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **DynamicsEntity**、**DynamicsCrmEntity** 或 **CommonDataServiceForAppsEntity**。 |是 |
 | entityName | 要检索的实体的逻辑名称。 | 源为“No”（如果指定了活动源中的“query”），接收器为“Yes” |
@@ -247,7 +247,7 @@ Dynamics 链接服务支持以下属性。
 
 若要从 Dynamics 复制数据，复制活动的 **source** 节需要支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **DynamicsSource**、**DynamicsCrmSource** 或 **CommonDataServiceForAppsSource**。 | 是 |
 | query | FetchXML 是在 Dynamics（联机和本地）中使用的专属查询语言。 请参阅以下示例。 若要了解详细信息，请参阅[使用 FetchXML 生成查询](https://msdn.microsoft.com/library/gg328332.aspx)。 | 否（如果指定了数据集中的“entityName”） |
@@ -315,7 +315,7 @@ Dynamics 链接服务支持以下属性。
 
 若要将数据复制到 Dynamics，复制活动的 **sink** 节需要支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **DynamicsSink**、**DynamicsCrmSink** 或 **CommonDataServiceForAppsSink**。 | 是 |
 | writeBehavior | 操作的写入行为。<br/>允许的值是 **"Upsert"。** | 是 |
@@ -324,7 +324,7 @@ Dynamics 链接服务支持以下属性。
 | ignoreNullValues | 指示是否忽略 null 值从输入数据（键字段除外）期间写入操作。<br/>允许的值**是真****假**的。<br>- **True**：保留目标中的数据对象时进行更新插入/更新操作保持不变。 插入在执行插入操作时定义的默认值。<br/>- **False**：执行更新插入/更新操作时为 NULL 更新目标对象中的数据。 执行插入操作时插入 NULL 值。 | 否（默认值为 false） |
 
 >[!NOTE]
->"**写入BatchSize"** 的接收器的默认值和 Dynamics 接收器的复制活动"**[并行副本](copy-activity-performance.md#parallel-copy)**"均为 10。 因此，会将 100 条记录同时提交到 Dynamics。
+>"**写入BatchSize"** 的接收器的默认值和 Dynamics 接收器的复制活动"**[并行副本](copy-activity-performance-features.md#parallel-copy)**"均为 10。 因此，会将 100 条记录同时提交到 Dynamics。
 
 对于 Dynamics 365（联机版），存在[每个组织进行 2 次并发批量调用](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations)的限制。 如果超出此限制，则会在执行第一个请求之前引发“服务器忙”错误。 保持“writeBatchSize”小于或等于 10 可避免这种并发调用的限制。
 
@@ -378,16 +378,16 @@ Dynamics 链接服务支持以下属性。
 | AttributeType.DateTime | Datetime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
-| AttributeType.EntityName | String | ✓ | ✓ |
+| AttributeType.EntityName | 字符串 | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | Guid | ✓ | ✓（关联单个目标） |
 | AttributeType.ManagedProperty | Boolean | ✓ | |
-| AttributeType.Memo | String | ✓ | ✓ |
+| AttributeType.Memo | 字符串 | ✓ | ✓ |
 | AttributeType.Money | Decimal | ✓ | ✓ |
 | AttributeType.Owner | Guid | ✓ | |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |
-| AttributeType.String | String | ✓ | ✓ |
+| AttributeType.String | 字符串 | ✓ | ✓ |
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 

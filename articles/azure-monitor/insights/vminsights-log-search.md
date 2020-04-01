@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 71258b04bad9a7aec4e86564d51d1d6f3f8cac76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 61a71539dc034a216689eafd8991df60db96d2a4
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283797"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396928"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>如何从用于 VM 的 Azure Monitor 查询日志
 
@@ -47,7 +47,7 @@ ms.locfileid: "80283797"
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内对以下属性共用相同值的物理网络连接聚合到 VMConnection** 中的一个逻辑记录内。 
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 |方向 |连接方向，值为 *inbound* 或 *outbound* |
 |计算机 |计算机 FQDN |
@@ -59,7 +59,7 @@ ms.locfileid: "80283797"
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 |LinksEstablished |在报告时间范围内建立的物理网络连接数 |
 |LinksTerminated |在报告时间范围内终止的物理网络连接数 |
@@ -70,7 +70,7 @@ ms.locfileid: "80283797"
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 |BytesSent |在报告时间范围内发送的字节总数 |
 |BytesReceived |在报告时间范围内接收的字节总数 |
@@ -98,7 +98,7 @@ ms.locfileid: "80283797"
 
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 |RemoteCountry |托管 RemoteIp 的国家/地区的名称。  例如，*美国* |
 |RemoteLatitude |地理位置的纬度。 例如 *47.68* |
@@ -108,11 +108,11 @@ ms.locfileid: "80283797"
 
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 |MaliciousIp |RemoteIp 地址 |
 |IndicatorThreadType |检测到的威胁标志是以下值之一：Botnet**、C2**、CryptoMining**、Darknet**、DDos**、MaliciousUrl**、Malware**、Phishing**、Proxy**、PUA** 和 Watchlist**。   |
-|描述 |观察到的威胁说明。 |
+|说明 |观察到的威胁说明。 |
 |TLPLevel |交通信号灯协议 (TLP) 级别是以下定义值之一：White**、Green**、Amber** 和 Red**。 |
 |置信度 |值介于 0 和 100** 之间。 |
 |严重性 |值介于 0 和 5** 之间，其中 5** 表示最严重，0** 表示毫不严重。 默认值为 3**。  |
@@ -128,7 +128,7 @@ ms.locfileid: "80283797"
 
 VMBoundPort 中的每个记录按以下字段标识： 
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 |进程 | 标识与端口关联的进程（或进程组）。|
 |Ip | 端口 IP 地址（可以是通配符 IP *0.0.0.0*） |
@@ -156,7 +156,7 @@ VMBoundPort 中的每个记录按以下字段标识：
 
 具有*VMComputer*类型的记录具有具有依赖项代理的服务器的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *洞察力* | 
@@ -218,7 +218,7 @@ VMBoundPort 中的每个记录按以下字段标识：
 
 具有*VMProcess*类型的记录具有具有依赖项代理的服务器上 TCP 连接进程的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *洞察力* | 
@@ -233,7 +233,7 @@ VMBoundPort 中的每个记录按以下字段标识：
 |组 | 进程组名称。 同一组中的进程在逻辑上相关，例如，同一产品或系统组件的一部分。 |
 |StartTime | 进程池启动时间 |
 |第一皮 | 进程池中的第一个 PID |
-|描述 | 进程说明 |
+|说明 | 进程说明 |
 |CompanyName | 公司名称 |
 |InternalName | 内部名称 |
 |ProductName | 产品名称 |
@@ -265,7 +265,7 @@ let Today = now(); VMComputer | extend DaysSinceBoot = Today - BootTime | summar
 ### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>按映像、位置和 SKU 分类的 Azure VM 摘要
 
 ```kusto
-VMComputer | where AzureLocation != "" | summarize by ComputerName, AzureImageOffering, AzureLocation, AzureImageSku
+VMComputer | where AzureLocation != "" | summarize by Computer, AzureImageOffering, AzureLocation, AzureImageSku
 ```
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>列出所有托管计算机的物理内存容量
@@ -283,7 +283,7 @@ VMComputer | summarize arg_max(TimeGenerated, *) by _ResourceId | project Comput
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>在命令行中查找带有“sql”的所有进程
 
 ```kusto
-VMComputer | where CommandLine contains_cs "sql" | summarize arg_max(TimeGenerated, *) by _ResourceId
+VMProcess | where CommandLine contains_cs "sql" | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>按资源名称查找计算机（最新记录）
@@ -307,7 +307,7 @@ VMProcess | where Machine == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summariz
 ### <a name="list-all-computers-running-sql-server"></a>列出所有运行 SQL Server 的计算机
 
 ```kusto
-VMComputer | where AzureResourceName in ((search in (VMProcess) "\*sql\*" | distinct Machine)) | distinct Computer
+VMComputer | where AzureResourceName in ((search in (VMProcess) "*sql*" | distinct Machine)) | distinct Computer
 ```
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>在我的数据中心列出 curl 的所有唯一产品版本
@@ -319,7 +319,7 @@ VMProcess | where ExecutableName == "curl" | distinct ProductVersion
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>创建由运行 CentOS 的所有计算机组成的计算机组
 
 ```kusto
-VMComputer | where OperatingSystemFullName contains_cs "CentOS" | distinct ComputerName
+VMComputer | where OperatingSystemFullName contains_cs "CentOS" | distinct Computer
 ```
 
 ### <a name="bytes-sent-and-received-trends"></a>发送和收到的字节数趋势
@@ -434,7 +434,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 具有*InsightsMetrics*类型的记录具有来自虚拟机来宾操作系统的性能数据。 这些记录的属性在下表中列出：
 
 
-| properties | 描述 |
+| properties | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *洞察力* | 
@@ -442,7 +442,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 |Computer | 计算机 FQDN | 
 |源 | *vm.azm.ms* |
 |命名空间 | 性能计数器的类别 | 
-|“属性” | 性能计数器的名称 |
+|名称 | 性能计数器的名称 |
 |Val | 收集值 | 
 |Tags | 有关记录的相关详细信息。 有关与不同记录类型一起使用的标记，请参阅下表。  |
 |AgentId | 每台计算机代理的唯一标识符 |
@@ -451,7 +451,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 当前收集到*的见解指标*表中的性能计数器列在下表中：
 
-| 命名空间 | “属性” | 描述 | 单位 | Tags |
+| 命名空间 | 名称 | 说明 | 单位 | Tags |
 |:---|:---|:---|:---|:---|
 | Computer    | 检测信号             | 计算机心跳                        | | |
 | 内存      | AvailableMB           | 内存可用字节                    | 字节          | 内存大小MB - 总内存大小|

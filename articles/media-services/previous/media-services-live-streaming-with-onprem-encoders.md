@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251032"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476554"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>使用从本地编码器接收多比特率实时流的频道
 
@@ -112,7 +112,7 @@ ms.locfileid: "79251032"
 
 当创建频道时，可以获取摄取 URL。 若要获取这些 URL，频道不一定要处于“正在运行”**** 状态。 准备好开始将数据推送到频道时，频道必须处于“正在运行”**** 状态。 在频道开始引入数据后，可以通过预览 URL 来预览流。
 
-可以选择通过 SSL 连接引入分片 MP4（平滑流式处理）实时流。 要通过 SSL 进行摄取，请确保将摄取 URL 更新为 HTTPS。 当前，无法通过 SSL 摄取 RTMP。
+您可以选择通过 TLS 连接引入碎片 MP4（平滑流）实时流。 要通过 TLS 进行摄录，请确保将引入的 URL 更新为 HTTPS。 目前，您不能通过 TLS 引入 RTMP。
 
 #### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>关键帧间隔
 当使用本地实时编码器生成多比特率流时，关键帧间隔指定外部编码器使用的帧组 (GOP) 的持续时间。 当频道收到此传入流后，可以通过下列任意格式将实时流传送到客户端播放应用程序：平滑流式处理、Dynamic Adaptive Streaming over HTTP (DASH) 和 HTTP Live Streaming (HLS)。 当执行实时传送视频流时，HLS 始终是动态打包的。 默认情况下，媒体服务根据从实时编码器收到的关键帧间隔自动计算 HLS 段打包比率（每段的片数）。

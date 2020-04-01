@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 242fc115c5b2324c770de480fb19985e8b874893
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 290467d5d20a74f8b8b2c23f6da0dcadfd74cc56
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371261"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411028"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题解答
 
@@ -142,7 +142,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 是的。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>是否始终要将应用程序网关部署在虚拟网络中？
 
@@ -353,11 +353,11 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 
 应用程序网关提供三种日志： 
 
-* **应用程序网关访问日志**：访问日志包含提交到应用程序网关前端的每个请求。 数据包括调用方的 IP、请求的 URL、响应延迟、返回代码和进出字节。访问日志每 300 秒收集一次。 此日志包含每个应用程序网关的一条记录。
+* **应用程序网关访问日志**：访问日志包含提交到应用程序网关前端的每个请求。 数据包括调用方的 IP、请求的 URL、响应延迟、返回代码和进出字节。它包含每个应用程序网关的一条记录。
 * **应用程序网关性能日志**：性能日志捕获每个应用程序网关的性能信息。 信息包括吞吐量（以字节为单位）、服务的请求总数、失败的请求计数，以及正常和不正常的后端实例计数。
 * **应用程序网关防火墙日志**：对于使用 WAF 配置的应用程序网关，防火墙日志包含通过检测模式或预防模式记录的请求。
 
-有关详细信息，请参阅[应用程序网关的后端运行状况、诊断日志和指标](application-gateway-diagnostics.md)。
+所有日志每 60 秒收集一次。 有关详细信息，请参阅[应用程序网关的后端运行状况、诊断日志和指标](application-gateway-diagnostics.md)。
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>如何知道后端池成员是否正常？
 
@@ -403,13 +403,13 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 2. 不要为公共前端 IP 地址创建任何侦听器。 应用程序网关不会侦听公共 IP 地址上的任何流量，但前提是没有为其创建侦听器。
 3. 为应用程序网关子网创建并附加一个[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)，使用以下配置（按优先级顺序排列）：
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 允许的流量来自使用 **GatewayManager** 服务标记的“源”，其“目标”为“任意”****，“目标端口”为 **65200-65535**。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口通过证书身份验证进行保护（锁定）。 如果没有适当的证书，外部实体（包括网关用户管理员）将无法对这些终结点做出任何更改
+    a. 允许的流量来自使用 **GatewayManager** 服务标记的“源”，其“目标”为“任意”****，“目标端口”为 **65200-65535**。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口通过证书身份验证进行保护（锁定）。 如果没有适当的证书，外部实体（包括网关用户管理员）将无法对这些终结点做出任何更改
     
-    b.保留“数据库类型”设置，即设置为“共享”。 允许来自源的流量作为**AzureLoad平衡器**服务标记，目标端口为 **"任意"**
+    b. 允许来自源的流量作为**AzureLoad平衡器**服务标记，目标端口为 **"任意"**
     
     c. 拒绝从源作为**Internet**服务标记的所有入站流量，将目标端口作为**Any**。 在入站规则中为此规则指定最低优先级**
     
-    d.单击“下一步”。 保留默认规则，如允许虚拟网络入站，以便不会阻止对专用 IP 地址的访问
+    d. 保留默认规则，如允许虚拟网络入站，以便不会阻止对专用 IP 地址的访问
     
     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 不能阻止出站 Internet 连接。 否则，您将面临日志记录、指标等问题。
 
