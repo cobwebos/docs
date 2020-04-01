@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fda49ae31d7598497a3128a846a3f4e12e84ffe1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245403"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435912"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>安全中心停用功能（2019年7月）
 
@@ -43,7 +43,7 @@ ms.locfileid: "79245403"
 
 ## <a name="events-dashboard"></a>事件仪表板<a name="menu_events"></a>
 
-安全中心使用 Microsoft 监视代理从您的计算机收集各种与安全相关的配置和事件。 它将这些事件存储在工作区中。 事件[仪表板](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard)允许您查看此数据，并为您提供日志分析的入口点。
+安全中心使用日志分析代理从您的计算机收集各种与安全相关的配置和事件。 它将这些事件存储在工作区中。 事件[仪表板](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard)允许您查看此数据，并为您提供日志分析的入口点。
 
 我们停用了您选择工作区时显示的事件仪表板：
 

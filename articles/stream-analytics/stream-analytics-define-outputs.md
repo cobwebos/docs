@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: e0b4bcac8494f136dde21b03422e12b72cecb8f3
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 4517f85fae278bd8bc15a9586d9dc0202e7dfe56
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366436"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475227"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
@@ -33,7 +33,7 @@ ms.locfileid: "80366436"
 
 下表列出了属性名称及其说明，以配置数据湖存储第 1 代输出。   
 
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 | 用于查询的友好名称，用于将查询输出定向到数据湖存储。 |
 | 订阅 | 包含 Azure 数据湖存储帐户的订阅。 |
@@ -55,7 +55,7 @@ ms.locfileid: "80366436"
 
 下表列出了创建 SQL 数据库输出的属性名称及其说明。
 
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |在查询中使用的友好名称，用于将查询输出定向到此数据库。 |
 | 数据库 | 将输出发送到的数据库的名称。 |
@@ -74,7 +74,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 
 下表列出了用于创建 Blob 或 ADLS Gen2 输出的属性名称及其说明。
 
-| 属性名称       | 描述                                                                      |
+| 属性名称       | 说明                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------|
 | 输出别名        | 查询中使用的友好名称，用于将查询输出定向到此 blob 存储。 |
 | 存储帐户     | 存储帐户的名称（正在向该存储帐户发送输出）。               |
@@ -107,7 +107,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 
 需要使用几个参数才能将事件中心内的数据流配置为输出。
 
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 | 查询中使用的易记名称，用于将查询输出定向到此事件中心。 |
 | 事件中心命名空间 | 一组消息处理实体的容器。 创建新的事件中心后，还创建了事件中心命名空间。 |
@@ -129,7 +129,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 
 下表列出了属性名称及其说明，以配置 Power BI 输出。
 
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |提供用于查询的友好名称，将查询输出定向到此 Power BI 输出。 |
 | 组工作区 |要启用与其他 Power BI 用户共享数据，可以在 Power BI 帐户中选择组，或者如果您不想写入组，请选择 **"我的工作区**"。 更新现有组需要对 Power BI 重新进行身份验证。 |
@@ -156,7 +156,7 @@ Power BI 使用先出 （FIFO） 保留策略。 数据将在表中收集，直�
 从流分析 | 到 Power BI
 -----|-----
 bigint | Int64
-nvarchar(max) | String
+nvarchar(max) | 字符串
 datetime | Datetime
 FLOAT | Double
 记录数组 | 字符串类型、常量值"IRecord"或"IArray"
@@ -167,12 +167,12 @@ FLOAT | Double
 避免查询`SELECT *`，以防止跨行的动态架构更新。 除了潜在的业绩影响外，它还可能导致结果所需要时间的不确定性。 选择需要在 Power BI 仪表板上显示的确切字段。 此外，数据值应与所选数据类型相符。
 
 
-上一个/当前 | Int64 | String | Datetime | Double
+上一个/当前 | Int64 | 字符串 | Datetime | Double
 -----------------|-------|--------|----------|-------
-Int64 | Int64 | String | String | Double
-Double | Double | String | String | Double
-String | String | String | String | String 
-Datetime | String | String |  Datetime | String
+Int64 | Int64 | 字符串 | 字符串 | Double
+Double | Double | 字符串 | 字符串 | Double
+字符串 | 字符串 | 字符串 | 字符串 | 字符串 
+Datetime | 字符串 | 字符串 |  Datetime | 字符串
 
 ## <a name="table-storage"></a>表存储
 
@@ -180,7 +180,7 @@ Datetime | String | String |  Datetime | String
 
 下表列出了用于创建表输出的属性名称及其说明。
 
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |该名称是在查询中使用的友好名称，用于将查询输出定向到此表存储。 |
 | 存储帐户 |存储帐户的名称（正在向该存储帐户发送输出）。 |
@@ -188,7 +188,7 @@ Datetime | String | String |  Datetime | String
 | 表名称 |表的名称。 如果表不存在，则创建该表。 |
 | 分区键 |包含分区键的输出列的名称。 分区键是某个表中分区的唯一标识符，分区键构成了实体主键的第一部分。 它是最大可为 1 KB 的字符串值。 |
 | 行键 |包含行键的输出列的名称。 行键是某个分区中实体的唯一标识符。 行键构成了实体主键的第二部分。 行键是最大可为 1 KB 的字符串值。 |
-| 批大小 |批处理操作的记录数。 默认值 (100) 对大部分作业来说都已足够。 有关修改设置的详细信息，请参阅[表批处理操作规范](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation)。 |
+| 批大小 |批处理操作的记录数。 默认值 (100) 对大部分作业来说都已足够。 有关修改设置的详细信息，请参阅[表批处理操作规范](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation)。 |
 
 ## <a name="service-bus-queues"></a>服务总线队列
 
@@ -198,7 +198,7 @@ Datetime | String | String |  Datetime | String
 
 下表列出了用于创建队列输出的属性名称及其说明。
 
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |该名称是在查询中使用的易记名称，用于将查询输出定向到此服务总线队列。 |
 | 服务总线命名空间 |一组消息处理实体的容器。 |
@@ -219,7 +219,7 @@ Datetime | String | String |  Datetime | String
 
 下表列出了用于创建服务总线主题输出的属性名称及其说明。
 
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |该名称是在查询中使用的易记名称，用于将查询输出定向到此服务总线主题。 |
 | 服务总线命名空间 |一组消息处理实体的容器。 创建新的事件中心后，还创建了 Service Bus 命名空间。 |
@@ -245,7 +245,7 @@ Datetime | String | String |  Datetime | String
 
 下表描述了用于创建 Azure Cosmos DB 输出的属性。
 
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 | 用于在流分析查询中引用此输出的别名。 |
 | 接收器 | Azure Cosmos DB。 |
@@ -263,7 +263,7 @@ Azure 函数是一种无服务器计算服务，可用于按需运行代码，�
 
 Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下可配置属性的 Azure Functions 输出适配器：
 
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
 | 函数应用 |Azure Functions 应用的名称。 |
 | 函数 |Azure Functions 应用中的函数的名称。 |
@@ -273,7 +273,7 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下
 
 Azure 流分析期望从函数应用中针对成功处理的批次提供 HTTP 状态 200。
 
-当 Azure 流分析从 Azure 函数收到 413（“http 请求实体过大”）异常时，它将减小发送到 Azure Functions 的批的大小。 在 Azure Function 代码中，使用此异常以确保 Azure 流分析不会发送过大的批。 另请确保函数中使用的最大批次数和最大批次大小值与在流分析门户中输入的值一致。
+当 Azure 流分析从 Azure 函数收到 413（“http 请求实体过大”）异常时，它将减小发送到 Azure Functions 的批的大小。 在 Azure 函数代码中，使用此异常以确保 Azure 流分析不会发送过大的批。 另请确保函数中使用的最大批次数和最大批次大小值与在流分析门户中输入的值一致。
 
 > [!NOTE]
 > 在测试连接过程中，流分析会将空批发送到 Azure Functions，以测试两者之间的连接是否正常。 确保 Functions 应用处理空批请求，以确保通过连接测试。
@@ -325,7 +325,7 @@ Azure 流分析期望从函数应用中针对成功处理的批次提供 HTTP �
 | 输出类型 | 分区支持 | 分区键  | 输出写入器数目 |
 | --- | --- | --- | --- |
 | Azure Data Lake Store | 是 | 在路径前缀模式中使用 {date} 和 {time} 标记。 选择日期格式，例如 YYYY/MM/DD、DD/MM/YYYY 或 MM-DD-YYYY。 HH 用于时间格式。 | 按照[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
-| Azure SQL 数据库 | 是，但需要启用。 | 基于查询中的 PARTITION BY 子句。 | 如果已启用“继承分区”选项，请遵循[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 若要详细了解在将数据载入 Azure SQL 数据库时如何提高写入吞吐量性能，请参阅[从 Azure 流分析输出到 Azure SQL 数据库](stream-analytics-sql-output-perf.md)。 |
+| Azure SQL Database | 是，但需要启用。 | 基于查询中的 PARTITION BY 子句。 | 如果已启用“继承分区”选项，请遵循[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 若要详细了解在将数据载入 Azure SQL 数据库时如何提高写入吞吐量性能，请参阅[从 Azure 流分析输出到 Azure SQL 数据库](stream-analytics-sql-output-perf.md)。 |
 | Azure Blob 存储 | 是 | 在路径模式中使用事件字段中的 {date} 和 {time} 标记。 选择日期格式，例如 YYYY/MM/DD、DD/MM/YYYY 或 MM-DD-YYYY。 HH 用于时间格式。 可以通过单个自定义事件属性 {fieldname} 或 {datetime:\<specifier>} 对 blob 输出进行分区。 | 按照[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
 | Azure 事件中心 | 是 | 是 | 按分区对齐方式变化。<br /> 如果事件中心输出的分区键与上游（上一个）查询步骤不相符，写入器的数量与事件中心输出中的分区数量相同。 每个写入器使用 [EventHubSender 类](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)将事件发送到特定分区。 <br /> 如果事件中心输出的分区键与上游（上一个）查询步骤不相符，写入器的数量与该上一步骤中的分区数量相同。 每个写入器使用 **EventHubClient** 中的 [SendBatchAsync 类](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)将事件发送到所有输出分区。 |
 | Power BI | 否 | 无 | 不适用。 |
@@ -342,18 +342,18 @@ Azure 流分析使用大小可变的批来处理事件和写入到输出。 通�
 
 下表阐述了输出批处理的一些注意事项：
 
-| 输出类型 | 最大消息大小 | 批大小优化 |
+| 输出类型 |    最大消息大小 | 批大小优化 |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | 请参阅[数据湖存储限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits)。 | 每个写入操作最高 4 MB。 |
-| Azure SQL 数据库 | 可使用最大批计数进行配置。 默认情况下，单个批量插入操作最多可插入 10,000 行，最少可插入 100 行。<br />请参阅 [Azure SQL 限制](../sql-database/sql-database-resource-limits.md)。 |  每个批最初是按照最大批计数批量插入的。 根据 SQL 的可重试错误对半拆分批（直到达到最小批计数）。 |
+| Azure SQL Database | 可使用最大批计数进行配置。 默认情况下，单个批量插入操作最多可插入 10,000 行，最少可插入 100 行。<br />请参阅 [Azure SQL 限制](../sql-database/sql-database-resource-limits.md)。 |  每个批最初是按照最大批计数批量插入的。 根据 SQL 的可重试错误对半拆分批（直到达到最小批计数）。 |
 | Azure Blob 存储 | 请参阅[Azure 存储限制](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)。 | 最大 Blob 块大小为 4 MB。<br />最大 Blob 块计数为 50,000。 |
-| Azure 事件中心  | 每条消息 256 KB 或 1 MB。 <br />请参阅[事件中心限制](../event-hubs/event-hubs-quotas.md)。 |  如果输入/输出分区未对齐，则每个事件将单独打包成不超过最大消息大小的 `EventData`，并在批中发送。 如果使用[自定义元数据属性](#custom-metadata-properties-for-output)，也会发生这种情况。 <br /><br />  如果输入/输出分区已对齐，则多个事件将打包成不超过最大消息大小的单个 `EventData` 实例，然后发送。 |
+| Azure 事件中心    | 每条消息 256 KB 或 1 MB。 <br />请参阅[事件中心限制](../event-hubs/event-hubs-quotas.md)。 |    如果输入/输出分区未对齐，则每个事件将单独打包成不超过最大消息大小的 `EventData`，并在批中发送。 如果使用[自定义元数据属性](#custom-metadata-properties-for-output)，也会发生这种情况。 <br /><br />  如果输入/输出分区已对齐，则多个事件将打包成不超过最大消息大小的单个 `EventData` 实例，然后发送。    |
 | Power BI | 请参阅[Power BI 休息 API 限制](https://msdn.microsoft.com/library/dn950053.aspx)。 |
 | Azure 表存储 | 请参阅[Azure 存储限制](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)。 | 默认为单个事务 100 个实体。 可根据需要将其配置为更小的值。 |
-| Azure 服务总线队列   | 在标准层中为每条消息 256 KB，在高级层中为 1MB。<br /> 请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 | 对每条消息使用单个事件。 |
+| Azure 服务总线队列    | 在标准层中为每条消息 256 KB，在高级层中为 1MB。<br /> 请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 | 对每条消息使用单个事件。 |
 | Azure 服务总线主题 | 在标准层中为每条消息 256 KB，在高级层中为 1MB。<br /> 请参阅[服务总线限制](../service-bus-messaging/service-bus-quotas.md)。 | 对每条消息使用单个事件。 |
-| Azure Cosmos DB   | 请参阅[Azure 宇宙数据库限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits)。 | 批大小和写入频率根据 Azure Cosmos DB 响应动态调整。 <br /> 流分析不会施加预先确定的限制。 |
-| Azure Functions   | | 默认批大小为 262,144 字节 (256 KB)。 <br /> 每批的默认事件计数为 100。 <br /> 批大小是可配置的，可在流分析[输出选项](#azure-functions)中增加或减少。
+| Azure Cosmos DB    | 请参阅[Azure 宇宙数据库限制](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits)。 | 批大小和写入频率根据 Azure Cosmos DB 响应动态调整。 <br /> 流分析不会施加预先确定的限制。 |
+| Azure Functions    | | 默认批大小为 262,144 字节 (256 KB)。 <br /> 每批的默认事件计数为 100。 <br /> 批大小是可配置的，可在流分析[输出选项](#azure-functions)中增加或减少。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 318b3e3f774a4381434fd56154f4c0d95c28c7a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479509"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437524"
 ---
 # <a name="references"></a>参考
 
@@ -33,7 +33,7 @@ FarmBeats API 包含斯瓦格技术文档。 有关所有 API 及其相应请求
 
 下表汇总了 FarmBeats Datahub 中的所有对象和资源：
 
-| 对象和资源 | 描述
+| 对象和资源 | 说明
 --- | ---|
 场 | 服务器场对应于 FarmBeats 系统中感兴趣的物理位置。 每个服务器场都有一个服务器场名称和一个唯一的服务器场 ID。 |
 设备  | 设备对应于服务器场上存在的物理设备。 每个设备都有一个唯一的设备 ID。 设备通常预配到具有服务器场 ID 的服务器场。
@@ -111,7 +111,7 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept:
 
 Azure FarmBeats Datahub API 返回标准 HTTP 错误。 最常见的错误代码如下所示：
 
- |错误代码             | 描述 |
+ |错误代码             | 说明 |
  |---                    | --- |
  |200                    | Success |
  |201                    | 创造（后）成功 |
@@ -162,7 +162,7 @@ Azure FarmBeats API 可以由用户或 Azure 活动目录中的应用注册访�
     - 返回**概述**，然后选择**本地目录中管理应用程序**旁边的链接。
     - 转到**属性**以捕获对象**ID**。
 
-4. 转到[Datahub Swagger，](https://<yourdatahub>.azurewebsites.net/swagger/index.html)执行以下操作：
+4. 转到 Datahub Swagger （https://<yourdatahub>.azurewebsites.net/swagger/index.html），并执行以下操作：
     - 转到**角色分配 API**。
     - 执行 POST 为刚刚创建**的对象 ID**创建**角色分配**对象。
 

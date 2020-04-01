@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 66ea8a93723c117a364a188ec05b050e1ef60564
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76548078"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437018"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>将 Apache Kafka 工作负荷迁移到 Azure HDInsight 4.0
 
@@ -68,7 +68,7 @@ HDInsight 3.6 支持卡夫卡的两个版本：1.0.0 和 1.1.0。 HDInsight 4.0 
 
 若要完成迁移，请执行以下步骤：
 
-1. **部署新的 HDInsight 4.0 群集和客户端用于测试。** 部署新的 HDInsight 4.0 Kafka 群集。 如果可以选择多个 Kafka 群集版本，建议选择最新版本。 部署后，根据需要设置一些参数，并创建与现有环境同名的主题。 此外，根据需要设置 SSL 和自带密钥 (BYOK) 加密。 然后，检查此设置是否可在新群集上正常工作。
+1. **部署新的 HDInsight 4.0 群集和客户端用于测试。** 部署新的 HDInsight 4.0 Kafka 群集。 如果可以选择多个 Kafka 群集版本，建议选择最新版本。 部署后，根据需要设置一些参数，并创建与现有环境同名的主题。 此外，根据需要设置 TLS 并自带密钥 （BYOK） 加密。 然后，检查此设置是否可在新群集上正常工作。
 
     ![部署新的 HDInsight 4.0 群集](./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png)
 

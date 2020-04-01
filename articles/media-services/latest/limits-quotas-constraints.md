@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 5a4f7e31cb17f47e8796ab99c1f8a089339903df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 514c1466bc1a686adfc3e07e1f19bd566e979dc1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74888421"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420876"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中的配额和限制
 
@@ -26,10 +26,10 @@ ms.locfileid: "74888421"
 | --- | --- | 
 | 每个 Azure 媒体服务帐户的资产数 | 1,000,000|
 | 动态清单筛选器|100|
-| 每个作业的 JobInputs | 50（固定）|
-| 每个作业的 JobOutputs | 20（固定） |
-| 转换中的 TransformOutput 数 | 20（固定） |
-| 每个 JobInput 的文件数|10（固定）|
+| 每个作业的作业输入 | 50（固定）|
+| 每个作业的作业输出 | 20（固定） |
+| 变换转换中的输出 | 20（固定） |
+| 每个作业输入的文件|10（固定）|
 | 文件大小| 在某些情况下，支持在媒体服务中处理的最大文件大小存在限制。 <sup>(1)</sup> |
 | 每个媒体服务帐户的作业数 | 500,000 <sup>(2)</sup>（固定）|
 | 每个媒体服务帐户的直播活动数 |5|

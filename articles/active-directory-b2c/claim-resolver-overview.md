@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cba97b84f77bd4e2d4cfd97601fa4f8637105eb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051405"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396066"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -76,7 +76,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {OIDC:Prompt} | `prompt` 查询字符串参数。 | login |
 | [OIDC：重定向Uri] |`redirect_uri` 查询字符串参数。 | https://jwt.ms |
 | {OIDC:Resource} |`resource` 查询字符串参数。 | 空值 |
-| {OIDC:scope} |`scope` 查询字符串参数。 | openid |
+| [OIDC：范围] |`scope` 查询字符串参数。 | openid |
 | [OIDC：用户名]| [资源所有者密码凭据流](ropc-custom.md)用户的用户名。| emily@contoso.com| 
 
 ### <a name="context"></a>上下文
@@ -162,7 +162,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:Scope}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
@@ -175,7 +175,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 ### <a name="dynamic-ui-customization"></a>动态 UI 自定义
 
-Azure AD B2C 使您能够将查询字符串参数传递给 HTML 内容定义终结点，以动态呈现页面内容。 例如，这允许根据从 Web 或移动应用程序传递的自定义参数修改 Azure AD B2C 注册或登录页上的背景图像。 有关详细信息，请参阅[使用 Azure Active Directory B2C 中的自定义策略动态配置 UI](custom-policy-ui-customization.md)。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
+Azure AD B2C 使您能够将查询字符串参数传递给 HTML 内容定义终结点，以动态呈现页面内容。 例如，此功能允许基于从 Web 或移动应用程序传递的自定义参数修改 Azure AD B2C 注册或登录页上的背景图像。 有关详细信息，请参阅[使用 Azure Active Directory B2C 中的自定义策略动态配置 UI](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
 
 以下示例传递名为**campaignId**的查询字符串参数中，其值`Hawaii`为**language**`en-US`，和 表示客户端 ID**的语言**代码和应用：
 

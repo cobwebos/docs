@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c81d2bc499c3d9cae262ef62be2dac2d7280be7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 83a13e0b1bb4d55b889d96e42c8f3f18ce0f2b73
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183833"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408927"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的 SAML 技术配置文件
 
@@ -90,11 +90,32 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 
 **OutputClaims** 元素在 `AttributeStatement` 节下包含 SAML 标识提供者返回的声明列表。 可能需要将策略中定义的声明名称映射到标识提供者中定义的名称。 只要设置了 `DefaultValue` 属性，就还可以包含标识提供者不会返回的声明。
 
-若要将 **Subject** 中的 SAML 断言 **NamedId** 读取为规范化的声明，请将声明 **PartnerClaimType** 设置为 `assertionSubjectName`。 确保 **NameId** 是断言 XML 中的第一个值。 定义多个断言时，Azure AD B2C 会选取上一个声明中的主题值。
+### <a name="subject-name-output-claim"></a>主题名称输出声明
 
-**OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
+要将**主题**中的 SAML 断言**NameId**作为规范化声明，请将声明**合作伙伴声明类型**设置为`SPNameQualifier`属性的值。 如果未显示`SPNameQualifier`该属性，则将声明**合作伙伴索赔类型**设置为`NameQualifier`属性的值。 
 
-以下示例演示 Facebook 标识提供者返回的声明：
+
+SAML 断言： 
+
+```XML
+<saml:Subject>
+  <saml:NameID SPNameQualifier="http://your-idp.com/unique-identifier" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">david@contoso.com</saml:NameID>
+    <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+      <SubjectConfirmationData InResponseTo="_cd37c3f2-6875-4308-a9db-ce2cf187f4d1" NotOnOrAfter="2020-02-15T16:23:23.137Z" Recipient="https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer" />
+    </SubjectConfirmation>
+  </saml:SubjectConfirmation>
+</saml:Subject>
+```
+
+输出声明：
+
+```XML
+<OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="http://your-idp.com/unique-identifier" />
+```
+
+如果`SPNameQualifier`SAML 断言中未同时显示两个或`NameQualifier`属性，则将声明**合作伙伴声明类型**设置为`assertionSubjectName`。 确保 **NameId** 是断言 XML 中的第一个值。 定义多个断言时，Azure AD B2C 会选取上一个声明中的主题值。
+
+下面的示例显示 SAML 标识提供程序返回的声明：
 
 - **颁发者UserId**声明映射到**断言主题名称**声明。
 - **first_name** 声明已映射到 **givenName** 声明。
@@ -119,9 +140,11 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 </OutputClaims>
 ```
 
+**OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
+
 ## <a name="metadata"></a>元数据
 
-| 特性 | 必选 | 描述 |
+| 特性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | PartnerEntity | 是 | SAML 身份提供程序的元数据的 URL。 复制身份提供程序元数据并将其添加到 CDATA 元素 `<![CDATA[Your IDP metadata]]>` |
 | WantsSignedRequests | 否 | 指示技术配置文件是否要求对所有传出身份验证请求进行签名。 可能的值：`true` 或 `false`。 默认值为 `true`。 当该值设置为 `true` 时，需要指定 SamlMessageSigning **** 加密密钥，并对所有传出的身份验证请求进行签名。 如果该值设置为 `false`，则请求中将省略 SigAlg**** 和 Signature**** 参数（查询字符串或 post 参数）。 此元数据还控制元数据的 AuthnRequestsSigned**** 属性，该属性在与身份提供程序共享的 Azure AD B2C 技术配置文件的元数据中输出。 如果技术配置文件元数据中的 **WantsSignedRequests** 的值设置为 `false` 且标识提供者元数据 **WantAuthnRequestsSigned** 设置为 `false` 或未指定，则 Azure AD B2C 不会对请求签名。 |
@@ -141,7 +164,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 
 <**CryptographicKeys**> 元素包含以下属性：
 
-| 特性 |必选 | 描述 |
+| 特性 |必选 | 说明 |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |是 | X509 证书（RSA 密钥集），用于对 SAML 消息进行签名。 Azure AD B2C 使用此密钥对请求进行签名并将其发送给身份提供程序。 |
 | SamlAssertionDecryption |是 | X509 证书（RSA 密钥集），用于解密 SAML 消息。 此证书应由身份提供程序提供。 Azure AD B2C 使用此证书解密身份提供程序发送的数据。 |

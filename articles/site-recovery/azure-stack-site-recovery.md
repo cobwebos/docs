@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure Site Recovery 将 Azure Stack VM 复制到 Azure | Microsoft Docs
 description: 了解如何使用 Azure Site Recovery 服务为 Azure Stack VM 设置到 Azure 的灾难恢复。
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
 ms.topic: conceptual
-ms.service: site-recovery
 ms.date: 08/05/2019
-ms.author: raynew
-ms.openlocfilehash: 15cd729063545914f791de39a075af9084f72bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab35463ca8c3b29e6b4ae8abc781a7081091b214
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426574"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478511"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
-本文介绍如何使用 [Azure Site Recovery 服务](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)设置将 Azure Stack VM 灾难恢复到 Azure。
+本文介绍如何使用 [Azure Site Recovery 服务](site-recovery-overview.md)设置将 Azure Stack VM 灾难恢复到 Azure。
 
 Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该服务可确保在出现预期内和意外中断时，VM 工作负载仍然可用。
 
@@ -45,9 +40,9 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 **位置** | **组件** |**详细信息**
 --- | --- | ---
-**配置服务器** | 在单个 Azure Stack VM 上运行。 | 在每个订阅中设置配置服务器 VM。 此 VM 运行以下 Site Recovery 组件：<br/><br/> - 配置服务器：在本地和 Azure 之间协调通信并管理数据复制。 - 进程服务器：充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure 存储。<br/><br/> 如果要复制的 VM 超出了下述限制，则可设置单独的独立进程服务器。 [了解详情](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale)。
-**移动服务** | 安装在要复制的每个 VM 上。 | 在本文所述步骤中，我们准备了一个帐户，以便复制启用后自动在 VM 上安装移动服务。 如果不想自动安装该服务，则可使用许多其他方法。 [了解详情](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service)。
-**Azure** | 在 Azure 中，你需要一个恢复服务保管库、一个存储帐户和一个虚拟网络。 |  复制的数据存储在存储帐户中。 进行故障转移时，Azure VM 将添加到 Azure 网络。 
+**配置服务器** | 在单个 Azure Stack VM 上运行。 | 在每个订阅中设置配置服务器 VM。 此 VM 运行以下 Site Recovery 组件：<br/><br/> - 配置服务器：在本地和 Azure 之间协调通信并管理数据复制。 - 进程服务器：充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure 存储。<br/><br/> 如果要复制的 VM 超出了下述限制，则可设置单独的独立进程服务器。 [了解详细信息](vmware-azure-set-up-process-server-scale.md)。
+**移动服务** | 安装在要复制的每个 VM 上。 | 在本文所述步骤中，我们准备了一个帐户，以便复制启用后自动在 VM 上安装移动服务。 如果不想自动安装该服务，则可使用许多其他方法。 [了解详细信息](vmware-azure-install-mobility-service.md)。
+**Azure** | 在 Azure 中，你需要一个恢复服务保管库、一个存储帐户和一个虚拟网络。 |  复制的数据存储在存储帐户中。 进行故障转移时，Azure VM 将添加到 Azure 网络。
 
 
 复制按如下方式进行：
@@ -68,8 +63,8 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 **要求** | **详细信息**
 --- | ---
 **Azure 订阅帐户** | 如果没有 Azure 订阅，请创建[一个免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-**Azure 帐户权限** | 使用的 Azure 帐户需以下权限：<br/><br/> - 创建恢复服务保管库<br/><br/> - 在用于方案的资源组和虚拟网络中创建虚拟机<br/><br/> - 向指定的存储帐户进行写入<br/><br/> 请注意：<br/><br/> - 如果创建帐户，则你是自己的订阅的管理员，可以执行所有操作。<br/><br/> - 如果你使用现有订阅并且不是管理员，则需要请求管理员为你分配“所有者”或“参与者”权限。<br/><br/> - 如需更加细化的权限，请查看[此文](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control)。 
-**Azure Stack VM** | 需要租户订阅中的 Azure Stack VM，该 VM 将部署为 Site Recovery 配置服务器。 
+**Azure 帐户权限** | 使用的 Azure 帐户需以下权限：<br/><br/> - 创建恢复服务保管库<br/><br/> - 在用于方案的资源组和虚拟网络中创建虚拟机<br/><br/> - 向指定的存储帐户进行写入<br/><br/> 请注意：<br/><br/> - 如果创建帐户，则你是自己的订阅的管理员，可以执行所有操作。<br/><br/> - 如果你使用现有订阅并且不是管理员，则需要请求管理员为你分配“所有者”或“参与者”权限。<br/><br/> - 如需更加细化的权限，请查看[此文](site-recovery-role-based-linked-access-control.md)。
+**Azure Stack VM** | 需要租户订阅中的 Azure Stack VM，该 VM 将部署为 Site Recovery 配置服务器。
 
 
 ### <a name="prerequisites-for-the-configuration-server"></a>配置服务器的先决条件
@@ -77,7 +72,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 [!INCLUDE [site-recovery-config-server-reqs-physical](../../includes/site-recovery-config-server-reqs-physical.md)]
 
 
- 
+
 ## <a name="step-1-prepare-azure-stack-vms"></a>步骤 1：准备 Azure Stack VM
 
 ### <a name="verify-the-operating-system"></a>验证操作系统
@@ -89,7 +84,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 --- | ---
 **64 位 Windows** | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2（自 SP1 起）
 **Centos** | 5.2 到 5.11、6.1 到 6.9、7.0 到 7.3
-**Ubuntu** | 14.04 LTS 服务器、16.04 LTS 服务器。 查看[支持的内核](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#ubuntu-kernel-versions)
+**Ubuntu** | 14.04 LTS 服务器、16.04 LTS 服务器。 查看[支持的内核](vmware-physical-azure-support-matrix.md#ubuntu-kernel-versions)
 
 ### <a name="prepare-for-mobility-service-installation"></a>准备安装移动服务
 
@@ -109,7 +104,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
     - 若要执行此操作，请运行 wf.msc 打开 Windows 防火墙控制台****。 右键单击**入站规则** > **新规则**。 选择“预定义”，然后从列表中选择“文件和打印机共享”********。 完成向导，选择以允许连接，然后单击“完成”****。
     - 对于域计算机，可使用 GPO 来执行此操作。
 
-    
+
 #### <a name="linux-machines"></a>Linux 计算机
 
 - 确保 Linux 计算机与进程服务器之间已建立网络连接。
@@ -143,7 +138,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>第 2 步：创建保管库并选择复制目标
 
 1. 在 Azure 门户中，选择 **"创建资源** > **管理工具** > **备份和站点恢复**"。
-2. 在“名称”中，输入一个友好名称以标识此保管库。**** 
+2. 在“名称”中，输入一个友好名称以标识此保管库。****
 3. 在“资源”组中，创建或选择资源组****。 我们将使用 contosoRG****。
 4. 在“位置”中，输入 Azure 区域****。 我们将使用“西欧”****。
 5. 要从仪表板快速访问保管库，请选择 **"固定到仪表板** > **创建**"。
@@ -158,7 +153,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 2. 在“入门”中，选择“Site Recovery”****， 然后选择“准备基础结构”****。
 3. 在**保护目标** > **"机器位于何处**"中，选择 **"本地**"。
 4. 在“要将计算机复制到何处?”中，选择“复制到 Azure”********。
-5. 在“计算机是否已虚拟化”中，选择“尚未虚拟化/其他”********。 然后选择 **"确定**"。
+5. 在“计算机是否已虚拟化”中，选择“尚未虚拟化/其他”********。 然后选择“确定”。 
 
     ![保护目标](./media/azure-stack-site-recovery/protection-goal.png)
 
@@ -182,15 +177,15 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 若要安装并注册配置服务器，请与要用于配置服务器的 VM 建立 RDP 连接，然后运行统一安装程序。
 
-开始操作之前，[请务必将时钟与 VM 上的](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)时间服务器同步。 如果时间与当地时间误差超过五分钟，则安装失败。
+开始操作之前，[请务必将时钟与 VM 上的](/windows-server/networking/windows-time-service/windows-time-service-top)时间服务器同步。 如果时间与当地时间误差超过五分钟，则安装失败。
 
 现在来安装配置服务器：
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> 还可通过命令行安装配置服务器。 [了解详情](physical-manage-configuration-server.md#install-from-the-command-line)。
-> 
+> 还可通过命令行安装配置服务器。 [了解详细信息](physical-manage-configuration-server.md#install-from-the-command-line)。
+>
 > 帐户名出现在门户中可能需要 15 分钟或更长时间。 要立即更新，请选择**配置服务器** > ***服务器名称*** > **刷新服务器**。
 
 ## <a name="step-4-set-up-the-target-environment"></a>步骤 4：设置目标环境
@@ -245,13 +240,13 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 10. 在**属性** > **配置属性**中，选择进程服务器将用于在计算机上自动安装移动服务的帐户。
 11. 在**复制设置** > **中 配置复制设置**，检查是否选择了正确的复制策略。
 12. 单击**启用复制**。
-13. 在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度。**************** **完成保护**作业运行后，计算机已准备好进行故障转移。
+13. 跟踪**设置** > **Jobs**作业 > **站点恢复作业**中的**启用保护**作业的进度。 **完成保护**作业运行后，计算机已准备好进行故障转移。
 
 > [!NOTE]
 > 为 VM 启用复制后，Site Recovery 会安装移动服务。
-> 
+>
 > 可能要等 15 分钟或更长时间，更改才会生效并显示在门户中。
-> 
+>
 > 要监视添加的 VM，请查看**配置服务器** > **中上次联系 时**发现的时间。 若要添加 VM 而不想要等待计划的发现，请突出显示配置服务器（不要选择它），然后选择“刷新”。****
 
 
@@ -261,16 +256,16 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 ### <a name="verify-machine-properties"></a>验证计算机属性
 
-运行测试故障转移前，请验证计算机属性，确保其符合 [Azure 要求](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements)。 可按如下方式查看和修改属性：
+运行测试故障转移前，请验证计算机属性，确保其符合 [Azure 要求](vmware-physical-azure-support-matrix.md#azure-vm-requirements)。 可按如下方式查看和修改属性：
 
 1. 在“受保护的项”**** 中，单击“复制的项”****>“虚拟机”。
 2. “复制的项”窗格中具有 VM 信息、运行状况状态和最新可用恢复点的摘要****。 单击“属性”**** 可查看更多详细信息。
 3. 在“计算和网络”中，按需修改设置****。
 
-    - 可修改 Azure 名称、资源组、目标大小、[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)和托管的磁盘设置。
+    - 可修改 Azure 名称、资源组、目标大小、[可用性集](/azure/virtual-machines/windows/tutorial-availability-sets)和托管的磁盘设置。
     - 还可查看和修改网络设置。 其中包括故障转移后 Azure VM 加入的网络/子网，以及将分配给 VM 的 IP 地址。
 1. 在“磁盘”中，可查看关于 VM 上的操作系统和数据磁盘的信息****。
-   
+
 
 ### <a name="run-a-test-failover"></a>运行测试故障转移
 
@@ -288,19 +283,19 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 按如下方式为 VM 运行测试故障转移：
 
 1. 在 **"设置** > **复制项目"中**，单击 VM > **_Test 故障转移**。
-2. 在本演练中，我们将选择使用“最新处理”恢复点****。 
+2. 在本演练中，我们将选择使用“最新处理”恢复点****。
 3. 在“测试故障转移”中，选择目标 Azure 网络****。
 4. 单击“确定”**** 开始故障转移。
 5. 可通过单击 VM 打开其属性来跟踪进度。 或者，可在保管库名称  > “设置” > “作业” >“Site Recovery 作业”中单击“测试故障转移”作业******************。
 6. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户 >“虚拟机”中。**** 检查 VM 大小是否合适、是否已连接到正确的网络且正在运行。
-7. 现在应该能够连接到 Azure 中复制的 VM。 [了解详情](https://docs.microsoft.com/azure/site-recovery/site-recovery-test-failover-to-azure#prepare-to-connect-to-azure-vms-after-failover)。
+7. 现在应该能够连接到 Azure 中复制的 VM。 [了解详细信息](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
 8. 若要删除在测试故障转移期间创建的 Azure VM，请在 VM 上单击“清理测试故障转移”****。 在“说明”中，保存与测试性故障转移相关联的任何观测结果****。
 
 ## <a name="fail-over-and-fail-back"></a>故障转移和故障回复
 
 设置复制后，运行演练以确保一切正常，之后则可按需将计算机故障转移到 Azure。
 
-运行故障转移前，如果要在故障转移后连接 Azure 中的计算机，则可在开始前，[准备进行连接](https://docs.microsoft.com/azure/site-recovery/site-recovery-test-failover-to-azure#prepare-to-connect-to-azure-vms-after-failover)。
+运行故障转移前，如果要在故障转移后连接 Azure 中的计算机，则可在开始前，[准备进行连接](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
 
 然后按如下所述运行故障转移：
 
@@ -308,7 +303,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 1. 在 **"设置** > **复制项目"** 中，单击计算机>**故障转移**。
 2. 选择要使用的恢复点。
 3. 在“测试故障转移”中，选择目标 Azure 网络****。
-4. 选择“在开始故障转移前关闭计算机”****。 选择此设置后，Site Recovery 会在开始故障转移前尝试关闭源计算机。 但即使关机失败，故障转移也仍会继续。 
+4. 选择“在开始故障转移前关闭计算机”****。 选择此设置后，Site Recovery 会在开始故障转移前尝试关闭源计算机。 但即使关机失败，故障转移也仍会继续。
 5. 单击“确定”**** 开始故障转移。 您可以按照 **"作业**"页上的故障转移进度进行操作。
 6. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户 >“虚拟机”中。**** 如果打算在故障转移后进行连接，请检查 VM 大小是否合适、是否已连接到正确的网络且正在运行。
 7. 验证 VM 后，单击“提交”完成故障转移****。 这会删除所有可用的恢复点。
@@ -321,18 +316,18 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 主站点重新启动并运行后，可从 Azure 故障回复到 Azure Stack。 若要进行此操作，需下载 Azure VM VHD，并将其上传到 Azure Stack。
 
-1. 关闭 Azure VM，以便可下载 VHD。 
+1. 关闭 Azure VM，以便可下载 VHD。
 2. 若要开始下载 VHD，请安装 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
 3. 导航到 Azure 门户中的 VM（使用 VM 名称）。
 4. 在“磁盘”中，单击磁盘名称，然后收集设置****。
 
-    - 例如，我们的测试中使用的 VHD URI：可将 https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd 分解，获得用于下载 VHD 的以下输入参数。
+    - 例如，我们的测试中使用的 VHD URI：可将 `https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` 分解，获得用于下载 VHD 的以下输入参数。
         - 存储帐户：502055westcentralus
         - 容器：wahv9b8d2ceb284fb59287
         - VHD 名称：copied-3676553984.vhd
 
 5. 现在请使用 Azure 存储资源管理器下载 VHD。
-6. 按照[这些步骤](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)将 VHD 上传到 Azure Stack。
+6. 按照[这些步骤](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)将 VHD 上传到 Azure Stack。
 7. 在现有 VM 或新 VM 中，附加上传的 VHD。
 8. 检查 OS 磁盘是否正确，并启动 VM。
 

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Front Door 服务的域中的地区筛选 | Microsoft Docs
-description: 本文介绍 Azure Front Door 服务的地区筛选策略
+title: Azure 前门域上的地理筛选 |微软文档
+description: 在本文中，您将了解 Azure 前门的地理筛选策略
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -9,20 +9,20 @@ ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 7ad2d181b6343644205c58ab1d5fe83dc25542d4
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
-ms.translationtype: HT
+ms.openlocfilehash: 2cdde705d0e9f0905d4c33648b5415758d838b06
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846411"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411179"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>什么是 Azure Front Door 的域中的地区筛选？
 
-默认情况下，无论发出请求的用户位于哪里，Azure Front Door 服务都会响应用户请求。 但是，在某些情况下，可能需要按国家/地区限制对 Web 应用程序的访问。 Front Door 上的 Web 应用程序防火墙 (WAF) 服务使你可以使用终结点上特定路径的自定义访问规则来定义策略，以允许或阻止来自指定国家/地区的访问。 
+默认情况下，Azure 前门响应用户请求，而不考虑发出请求的用户的位置。 但是，在某些情况下，可能需要按国家/地区限制对 Web 应用程序的访问。 Front Door 上的 Web 应用程序防火墙 (WAF) 服务使你可以使用终结点上特定路径的自定义访问规则来定义策略，以允许或阻止来自指定国家/地区的访问。 
 
 WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和优先级组成。 在匹配条件中，请定义匹配变量、运算符和匹配值。  就地区筛选规则来说，匹配变量为 REMOTE_ADDR，运算符为 GeoMatch，值为感兴趣的双字母国家/地区代码。 可以将 GeoMatch 条件与 REQUEST_URI 字符串匹配条件组合在一起，创建一个基于路径的地区筛选规则。
 
@@ -62,7 +62,7 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | BW | 博茨瓦纳|
 | BY | 白俄罗斯|
 | BZ | 伯利兹|
-| CA | 加拿大|
+| CA | Canada|
 | CD | 刚果民主共和国|
 | CF | 中非共和国|
 | CH | 瑞士|
@@ -89,7 +89,7 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | FJ | 斐济|
 | FM | 密克罗尼西亚联邦|
 | FR | 法国|
-| GB | 英国|
+| GB | United Kingdom|
 | GE | 格鲁吉亚|
 | GF | 法属圭亚那|
 | GH | 加纳|
@@ -155,7 +155,7 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | NG | 尼日利亚|
 | NI | 尼加拉瓜|
 | NL | 荷兰|
-| 否 | 挪威|
+| 是 | 挪威|
 | NP | 尼泊尔|
 | NR | 瑙鲁|
 | NZ | 新西兰|
@@ -198,7 +198,7 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | TZ | 坦桑尼亚联合共和国|
 | UA | 乌克兰|
 | UG | 乌干达|
-| 美国 | 美国|
+| 美国 | United States|
 | UY | 乌拉圭|
 | UZ | 乌兹别克斯坦|
 | VC | 圣文森特和格林纳丁斯|

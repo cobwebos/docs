@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 87c3a3a904705b9fcb702c4745c4c80a4b447e69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476716"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396384"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -30,7 +30,7 @@ ms.locfileid: "79476716"
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4. 修改扩展名文件
+### <a name="4-modify-the-extensions-file"></a>4. 修改扩展名文件
 
 要配置 UI 自定义，请将**ContentDefinition**及其子元素从基本文件复制到扩展文件。
 
@@ -60,9 +60,9 @@ ms.locfileid: "79476716"
 
 1. 保存扩展文件。
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. 上传并测试更新的自定义策略
+### <a name="5-upload-and-test-your-updated-custom-policy"></a>5. 上传并测试更新的自定义策略
 
-### <a name="51-upload-the-custom-policy"></a>5.1 上传自定义策略
+#### <a name="51-upload-the-custom-policy"></a>5.1 上传自定义策略
 
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录****。
 1. 搜索并选择**Azure AD B2C**。
@@ -70,7 +70,7 @@ ms.locfileid: "79476716"
 1. 选择 **"上载自定义策略**"。
 1. 上传以前已更改的扩展文件。
 
-### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 使用 **"立即运行"** 测试自定义策略
+#### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 使用 **"立即运行"** 测试自定义策略
 
 1. 选择您上载的策略，然后选择 **"立即运行**"。
 1. 现在，应该可以使用电子邮件地址进行注册了。

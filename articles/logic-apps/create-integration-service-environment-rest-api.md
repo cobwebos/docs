@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 2c6e35b1e7d160064998004f87c5b14d0eaeac5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0670331d2338b4b6419ffbff1452b5fbac91029f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127654"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478833"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>使用逻辑应用 REST API 创建集成服务环境 （ISE）
 
 本文演示如何通过逻辑应用 REST API 创建[*集成服务环境*（ISE），](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)用于逻辑应用和集成帐户需要访问[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的方案。 ISE 是一个隔离的环境，它使用专用存储和其他资源，这些资源与"全局"多租户逻辑应用服务分开。 这种分离还减少了其他 Azure 租户可能对应用性能产生的影响。 ISE 还为您提供自己的静态 IP 地址。 这些 IP 地址与公共多租户服务中的逻辑应用共享的静态 IP 地址分开。
 
-要使用 Azure 门户创建 ISE，请参阅[从 Azure 逻辑应用连接到 Azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
+还可以通过使用[示例 Azure 资源管理器快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)或使用[Azure 门户](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)创建 ISE。
 
 > [!IMPORTANT]
 > 在 ISE 中运行的逻辑应用、内置触发器、内置操作和连接器使用不同于基于消耗的定价计划的定价计划。 要了解 ISEs 的定价和计费的工作原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。

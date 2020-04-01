@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 916c828365c8f9f50f408bd6c51182bb6e89605f
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
-ms.translationtype: HT
+ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384188"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398235"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>从传感器合作伙伴获取传感器数据
 
@@ -37,43 +37,44 @@ Azure FarmBeats 可帮助您将来自 IoT 设备和传感器的流式处理数�
  - 客户端机密
  - 事件Hub连接字符串
 
-可以通过以下步骤生成上述信息：（请注意，这些步骤需要在 Azure 上完成，因此您需要访问部署服务器场节拍的 Azure 订阅）
+按照以下步骤生成上述信息：
+
+> [!NOTE]
+> 这些步骤需要在 Azure 上完成才能访问部署服务器场节拍的 Azure 订阅。
 
 1. 登录 https://portal.azure.com/。
 
-2. **如果您在 FarmBeats 版本 1.2.7 或更高版本上，请跳过步骤 2a、2b 和 2c，然后转到步骤 3。** 您可以通过单击 FarmBeats UI 右上角的"设置"图标来检查服务器场节拍版本。
+2. **如果您在 FarmBeats 版本 1.2.7 或更高版本中，请跳过步骤 a、b 和 c，然后转到步骤 3。** 您可以通过选择 FarmBeats UI 右上角的 **"设置"** 图标来检查服务器场节拍版本。
 
-2a. 转到 Azure 活动目录 ->应用注册
+      a.  转到**Azure 活动目录** > **应用注册**
 
-2b. 单击作为服务器场节拍部署的一部分创建的应用注册。 它将具有与服务器场Beats数据中心相同的名称。
+      b. 选择作为服务器场节拍部署的一部分创建**的应用注册**。 它将具有与服务器场Beats数据库相同的名称。
 
-2c. 单击"公开 API" ->单击"添加客户端应用程序"并输入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**并选中"授权范围"。 这将授予 Azure CLI（云外壳）以执行以下步骤的访问权限。
+      c. 选择 **"公开 API>** 选择 **"添加客户端应用程序**"并输入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**并选中**授权范围**。 这将授予 Azure CLI（云外壳）以执行以下步骤的访问权限：
 
 3. 打开 Cloud Shell。 此选项在 Azure 门户右上角的工具栏上可用。
 
     ![Azure 门户工具栏](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-5. 确保环境设置为**PowerShell**。 默认情况下，它设置为 Bash。
+4. 确保环境设置为**PowerShell**。 默认情况下，它设置为 Bash。
 
     ![PowerShell 工具栏设置](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-6. 转到主目录。
+5. 转到主目录。
 
-   ```azurepowershell-interactive 
-
+    ```azurepowershell-interactive 
     cd  
-
     ```
 
-7. 运行以下命令。 这将将脚本下载到您的主目录。
+6. 运行以下命令。 这将将脚本下载到您的主目录。
 
     ```azurepowershell-interactive 
 
-    wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1 
+    wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
 
     ```
 
-8. 运行以下脚本。 该脚本要求从 Azure 活动目录 -> 概述页获取的租户 ID。
+7. 运行以下脚本。 该脚本要求提供租户 ID，可以从**Azure 活动目录** > **概述**页获取该 ID。
 
     ```azurepowershell-interactive 
 
@@ -81,7 +82,7 @@ Azure FarmBeats 可帮助您将来自 IoT 设备和传感器的流式处理数�
 
     ```
 
-9. 按照屏幕上的说明捕获**API 终结点**、**租户 ID、****客户端 ID、****客户端密钥**和**事件Hub连接字符串**的值。
+8. 按照屏幕上的说明捕获**API 终结点**、**租户 ID、****客户端 ID、****客户端密钥**和**事件Hub连接字符串**的值。
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>使用生成的凭据集成设备数据
 
@@ -91,16 +92,16 @@ Azure FarmBeats 可帮助您将来自 IoT 设备和传感器的流式处理数�
  - 客户端 ID
  - 客户端机密
  - 租户 ID
- 
-您需要向设备合作伙伴提供此功能以链接 FarmBeats。 转到设备合作伙伴门户执行相同的操作。 例如，如果您使用的是戴维斯仪器、太溶或佩斯尔仪器（Metos.at）的设备，请转到如下所述的相应页面：
 
-[戴维斯仪器](https://weatherlink.github.io/azure-farmbeats/setup)
+您需要向设备合作伙伴提供此功能以链接 FarmBeats。 转到设备合作伙伴门户执行相同的操作。 例如，如果您使用的是戴维斯仪器、太溶或佩斯尔仪器（Metos.at）的设备，则按照以下说明访问相应的页面：
 
-[太溶](https://app.teralytic.com/)
+1. [戴维斯仪器](https://weatherlink.github.io/azure-farmbeats/setup)
 
-[佩斯尔仪器](https://ng.fieldclimate.com/user-api-services)
+2. [太溶](https://app.teralytic.com/)
 
- 设备提供程序确认集成成功。 确认后，您可以查看 Azure FarmBeats 上的所有设备和传感器。
+3. [佩斯尔仪器](https://ng.fieldclimate.com/user-api-services)
+
+设备提供程序确认集成成功。 确认后，您可以查看 Azure FarmBeats 上的所有设备和传感器。
 
 ## <a name="view-devices-and-sensors"></a>查看设备和传感器
 
@@ -113,7 +114,7 @@ Azure FarmBeats 可帮助您将来自 IoT 设备和传感器的流式处理数�
 - **节点**：一个或多个传感器连接到的设备。
 - **网关**：一个或多个节点连接到的设备。
 
-执行以下步骤。
+执行以下步骤:
 
 1. 在主页上，从菜单中选择 **"设备**"。
   "**设备"** 页显示设备类型、型号、状态、放置在其中的服务器场以及元数据的最后更新日期。 默认情况下，服务器场列设置为*NULL*。 您可以选择将设备分配给服务器场。 有关详细信息，请参阅[分配设备](#assign-devices)。
@@ -123,7 +124,7 @@ Azure FarmBeats 可帮助您将来自 IoT 设备和传感器的流式处理数�
 
 ### <a name="view-sensors"></a>查看传感器
 
-执行以下步骤。
+执行以下步骤:
 
 1. 在主页上，从菜单中选择 **"传感器**"。
   "**传感器"** 页显示有关传感器类型、所连接的服务器场、父设备、端口名称、端口类型和上次更新状态的详细信息。
@@ -147,11 +148,12 @@ Azure FarmBeats 可帮助您将来自 IoT 设备和传感器的流式处理数�
     ![关联设备窗口](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
 
 6. 要将每个设备关联到不同的服务器场，请选择"**分配给服务器场"** 列中的下拉箭头，然后为每个设备行选择一个服务器场。
+
 7. 选择 **"分配"** 以完成设备分配。
 
 ### <a name="visualize-sensor-data"></a>可视化传感器数据
 
-执行以下步骤。
+执行以下步骤:
 
 1. 在主页上，从菜单中选择 **"服务器场**"以查看 **"服务器场"** 页。
 2. 选择要查看传感器数据的**服务器场**。
@@ -161,7 +163,7 @@ Azure FarmBeats 可帮助您将来自 IoT 设备和传感器的流式处理数�
 
 ## <a name="delete-a-sensor"></a>删除传感器
 
-执行以下步骤。
+执行以下步骤:
 
 1. 在主页上，从菜单中选择 **"传感器**"以查看 **"传感器"** 页面。
 2. 选择要删除的设备，并在确认窗口中选择 **"删除**"。
@@ -172,7 +174,7 @@ Azure FarmBeats 可帮助您将来自 IoT 设备和传感器的流式处理数�
 
 ## <a name="delete-devices"></a>删除设备
 
-执行以下步骤。
+执行以下步骤:
 
 1. 在主页上，从菜单中选择 **"设备**"以查看 **"设备"** 页。
 2. 选择要删除的设备，并在确认窗口中选择 **"删除**"。

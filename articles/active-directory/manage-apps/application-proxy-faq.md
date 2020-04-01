@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 8bb77a217546f1abe2c28925e32464b8d61702b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 31587777ba22dd8b4cebf81f0ff98979bb30fade
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481273"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410716"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>活动目录 （Azure AD） 应用程序代理常见问题
 
@@ -113,7 +113,7 @@ ms.locfileid: "79481273"
 
 请参阅[使用 Azure AD 应用程序代理发布远程桌面](application-proxy-integrate-with-remote-desktop-services.md)。
 
-### <a name="can-i-use-kerberos-constrained-delegation-in-the-remote-desktop-gateway-publishing-scenario"></a>我可以在远程桌面网关发布方案中使用 Kerberos 约束委派吗？
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>我可以在远程桌面网关发布方案中使用 Kerberos 受限委派（单登录 - Windows 集成身份验证）吗？
 
 不，不支持此方案。  
 
@@ -121,7 +121,7 @@ ms.locfileid: "79481273"
 
 是的，这是预料之中的。 预身份验证方案需要 ActiveX 控件，第三方浏览器不支持该控件。
 
-### <a name="is-the-remote-desktop-web-client-supported"></a>是否支持远程桌面 Web 客户端？
+### <a name="is-the-remote-desktop-web-client-html5-supported"></a>是否支持远程桌面 Web 客户端 （HTML5）？
 
 否，此方案当前不受支持。 请关注我们的[用户语音](https://aka.ms/aadapuservoice)反馈论坛，了解此功能的更新。
 
@@ -135,6 +135,10 @@ ms.locfileid: "79481273"
 
 请参阅[使用 Azure AD 应用程序代理启用对 SharePoint 的远程访问](application-proxy-integrate-with-sharepoint-server.md)。
 
+### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>我能否使用 SharePoint 移动应用 （iOS/ Android） 访问已发布的 SharePoint 服务器？
+
+[SharePoint 移动应用](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises)当前不支持 Azure 活动目录预身份验证。
+
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>活动目录联合服务 （AD FS） 发布 
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>是否可以使用 Azure AD 应用程序代理作为 AD FS 代理（如 Web 应用程序代理）？
@@ -147,7 +151,7 @@ ms.locfileid: "79481273"
 
 目前，WebSocket 协议支持仍处于公共预览状态，它可能不适用于其他应用程序。 一些客户使用 WebSocket 协议与其他应用程序取得了喜忧参半的成功。 如果您测试此类方案，我们很乐意听到您的结果。 请在 上aadapfeedback@microsoft.com向我们发送您的反馈。
 
-Windows 管理中心 （WAC） 或远程桌面 Web 客户端中的功能（事件日志、PowerShell 和远程桌面服务）目前无法通过 Azure AD 应用程序代理工作。
+Windows 管理中心 （WAC） 或远程桌面 Web 客户端 （HTML5） 中的功能（事件日志、PowerShell 和远程桌面服务）目前无法通过 Azure AD 应用程序代理工作。
 
 ## <a name="link-translation"></a>链接翻译
 

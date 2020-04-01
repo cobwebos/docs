@@ -3,15 +3,15 @@ title: 配置持续部署
 description: 了解如何从 GitHub、Bit Bucket、Azure 存储库或其他存储库将 CI/CD 启用 Azure 应用服务。 选择适合您需求的生成管道。
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
 ms.topic: article
-ms.date: 08/23/2019
+ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: d58eb333c930d2ffac4eb57340ea776338325181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 847de2c2c8916558d542473d9b7c80fd5552dbf7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266034"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437229"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持续部署到 Azure 应用服务
 
@@ -27,11 +27,11 @@ ms.locfileid: "79266034"
 
 对于 Bitbucket 或 GitHub，授权 Azure 应用服务连接到存储库。 您只需使用源代码管理服务授权一次。 
 
-1. 在[Azure 门户](https://portal.azure.com)中，搜索并选择**应用服务**。 
+1. 在[Azure 门户](https://portal.azure.com)中，搜索**应用服务**并选择。
 
    ![搜索应用服务。](media/app-service-continuous-deployment/search-for-app-services.png)
 
-1. 选择要部署的 Web 应用。
+1. 选择要部署的应用服务。
 
    ![选择你的应用。](media/app-service-continuous-deployment/select-your-app.png)
    
@@ -45,13 +45,13 @@ ms.locfileid: "79266034"
 
 ## <a name="enable-continuous-deployment"></a>启用持续部署 
 
-授权源代码管理服务后，请配置应用，以便通过内置[Kudu 应用服务生成服务器](#option-1-use-the-app-service-build-service)或通过[Azure 管道](#option-2-use-azure-pipelines)进行持续部署。 
+授权源代码管理服务后，请配置应用，以便通过内置[Kudu 应用服务](#option-1-kudu-app-service)生成服务器或通过[Azure 管道](#option-2-azure-pipelines)进行持续部署。 
 
-### <a name="option-1-use-the-app-service-build-service"></a>选项 1：使用应用服务生成服务
+### <a name="option-1-kudu-app-service"></a>选项 1：库杜应用服务
 
 您可以使用内置库杜应用服务生成服务器从 GitHub、Bitbucket 或 Azure 存储库持续部署。 
 
-1. 在[Azure 门户](https://portal.azure.com)中，搜索并选择**应用服务**，然后选择要部署的 Web 应用。 
+1. 在[Azure 门户](https://portal.azure.com)中，搜索**应用服务**，然后选择要部署的应用服务。 
    
 1. 在应用页面上，选择左侧菜单中的 **"部署中心**"。
    
@@ -84,15 +84,17 @@ ms.locfileid: "79266034"
    
 1. 配置生成提供程序后，请查看 **"摘要"** 页上的设置，然后选择 **"完成**"。
    
-   所选存储库和分支中的新提交现在连续部署到应用服务应用中。 您可以在 **"部署中心**"页上跟踪提交和部署。
+1. 所选存储库和分支中的新提交现在连续部署到应用服务应用中。 您可以在 **"部署中心**"页上跟踪提交和部署。
    
    ![跟踪部署中心的提交和部署](media/app-service-continuous-deployment/github-finished.png)
 
-### <a name="option-2-use-azure-pipelines"></a>选项 2：使用 Azure 管道 
+### <a name="option-2-azure-pipelines"></a>选项 2：Azure 管道 
 
-如果帐户具有必要的权限，则可以设置 Azure 管道以从 GitHub 或 Azure 存储库存储库持续部署。 有关通过 Azure 管道进行部署的详细信息，请参阅[将 Web 应用部署到 Azure 应用服务](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)。
+如果帐户具有必要的权限，则可以设置 Azure 管道以从 GitHub 或 Azure 存储库持续部署。 有关通过 Azure 管道进行部署的详细信息，请参阅[将 Web 应用部署到 Azure 应用服务](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)。
 
-使 Azure 应用服务在 Azure DevOps 组织中创建连续传递 Azure 管道： 
+#### <a name="prerequisites"></a>先决条件
+
+对于使用 Azure 管道创建连续传递的 Azure 应用服务，Azure DevOps 组织应具有以下权限： 
 
 - Azure 帐户必须具有写入 Azure 活动目录和创建服务的权限。 
   
@@ -100,42 +102,65 @@ ms.locfileid: "79266034"
 
 - 您必须是要使用的 Azure DevOps 项目中的管理员。
 
-要配置 Azure 管道（预览）：
+#### <a name="github--azure-pipelines"></a>GitHub + Azure 管道
 
-1. 在[Azure 门户](https://portal.azure.com)中，搜索并选择**应用服务**，然后选择要部署的 Web 应用。 
+1. 在[Azure 门户](https://portal.azure.com)中，搜索**应用服务**，然后选择要部署的应用服务。 
    
 1. 在应用页面上，选择左侧菜单中的 **"部署中心**"。
+
+1. 在**部署中心**页面上选择**GitHub**作为源代码管理提供程序，然后选择"**继续**"。 对于**GitHub，** 您可以选择 **"更改帐户"** 来更改授权帐户。
+
+    ![源代码管理 (source control)](media/app-service-continuous-deployment/deployment-center-src-control.png)
    
-1. 在 **"生成提供程序"** 页上，选择**Azure 管道（预览），** 然后选择"**继续**"。 
+1. 在**生成提供程序**页上，选择**Azure 管道（预览），** 然后选择"**继续**"。
+
+    ![生成提供程序](media/app-service-continuous-deployment/select-build-provider.png)
    
-1. 在 **"配置"** 页上，在 **"代码"** 部分中：
-   
-   - 对于 GitHub，下拉并选择要连续部署**的组织**、**存储库**和**分支**。
+1. 在 **"配置**"页上，在 **"代码"** 部分中，选择要连续部署**的组织**、**存储库**和**分支**，然后选择"**继续**"。
      
      > [!NOTE]
      > 如果看不到任何存储库，则可能需要在 GitHub 中授权 Azure 应用服务。 浏览到您的 GitHub 存储库，然后转到**设置** > **应用程序** > **授权 OAuth 应用程序**。 选择**Azure 应用服务**，然后选择 **"授予**"。 对于组织存储库，您必须是组织的所有者才能授予权限。
-     
-   - 对于 Azure 存储库，选择要连续部署的**Azure DevOps 组织****、****项目**存储库和**分支**，或配置新的 Azure DevOps 组织。
-     
-     > [!NOTE]
-     > 如果未列出现有的 Azure DevOps 组织，则可能需要将其链接到 Azure 订阅。 有关详细信息，请参阅定义[CD 发行管道](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)。
-     
-1. 选择“继续”****。
-   
-1. 对于 Azure Repos，在 **"生成"** 部分中，指定 Azure 管道应用于运行生成任务的语言框架，然后选择"**继续**"。
-   
-1. 在 **"测试"** 页上，选择是否启用负载测试，然后选择"**继续**"。
-   
-1. 根据您的应用服务计划[定价层](https://azure.microsoft.com/pricing/details/app-service/plans/)，您可能会看到 **"部署到暂存"** 页。 选择是否[启用部署槽](deploy-staging-slots.md)，然后选择"**继续**"。
-   
-   > [!NOTE]
-   > Azure 管道不允许连续传递到生产槽。 此限制可防止意外部署到生产。 设置连续传递到暂存槽，验证那里的更改，然后在准备就绪时交换插槽。
-   
+       
+    在 **"生成"** 部分中，指定 Azure 管道应用于运行生成任务的语言框架 Azure DevOps 组织、项目语言框架，然后选择"**继续**"。
+
+   ![生成提供程序](media/app-service-continuous-deployment/build-configure.png)
+
 1. 配置生成提供程序后，请查看 **"摘要"** 页上的设置，然后选择 **"完成**"。
+
+   ![生成提供程序](media/app-service-continuous-deployment/summary.png)
    
-   所选存储库和分支中的新提交现在连续部署到应用服务应用中。 您可以在 **"部署中心**"页上跟踪提交和部署。
+1. 所选存储库和分支中的新提交现在连续部署到应用服务中。 您可以在 **"部署中心**"页上跟踪提交和部署。
    
    ![跟踪部署中心的提交和部署](media/app-service-continuous-deployment/github-finished.png)
+
+#### <a name="azure-repos--azure-pipelines"></a>Azure 存储库 + Azure 管道
+
+1. 在[Azure 门户](https://portal.azure.com)中，搜索**应用服务**，然后选择要部署的应用服务。 
+   
+1. 在应用页面上，选择左侧菜单中的 **"部署中心**"。
+
+1. 选择**Azure 存储库**作为**部署中心**页上的源代码管理提供程序，然后选择"**继续**"。
+
+    ![源代码管理 (source control)](media/app-service-continuous-deployment/deployment-center-src-control.png)
+
+1. 在**生成提供程序**页上，选择**Azure 管道（预览），** 然后选择"**继续**"。
+
+    ![源代码管理 (source control)](media/app-service-continuous-deployment/azure-pipelines.png)
+
+1. 在 **"配置**"页上，在 **"代码"** 部分中，选择要连续部署**的组织**、**存储库**和**分支**，然后选择"**继续**"。
+
+   > [!NOTE]
+   > 如果未列出现有的 Azure DevOps 组织，则可能需要将其链接到 Azure 订阅。 有关详细信息，请参阅定义[CD 发行管道](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)。
+
+   在 **"生成"** 部分中，指定 Azure 管道应用于运行生成任务的语言框架 Azure DevOps 组织、项目语言框架，然后选择"**继续**"。
+
+   ![生成提供程序](media/app-service-continuous-deployment/build-configure.png)
+
+1. 配置生成提供程序后，请查看 **"摘要"** 页上的设置，然后选择 **"完成**"。  
+     
+   ![生成提供程序](media/app-service-continuous-deployment/summary-azure-pipelines.png)
+
+1. 所选存储库和分支中的新提交现在连续部署到应用服务中。 您可以在 **"部署中心**"页上跟踪提交和部署。
 
 ## <a name="disable-continuous-deployment"></a>禁用持续部署
 

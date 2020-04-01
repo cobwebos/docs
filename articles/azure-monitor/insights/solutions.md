@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: a04ca3768ade6058c59393591c252bc4347a3663
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: c2690ad7cc4dcaa295bfb08b8c0396438ada0807
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275199"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437545"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 监视解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。
@@ -83,11 +83,7 @@ ms.locfileid: "79275199"
 * 如果解决方案需要自动化帐户，则必须将 Log Analytics 工作区和自动化帐户相互链接。 一个 Log Analytics 工作区只能链接到一个自动化帐户，而一个自动化帐户也只能链接到一个 Log Analytics 工作区。
 * 若要进行链接，Log Analytics 工作区和自动化帐户必须位于相同的资源组和区域中。 美国东部区域的工作区以及美国东部 2 区的自动化帐户除外。
 
-### <a name="create-a-link-between-a-log-analytics-workspace-and-automation-account"></a>在 Log Analytics 工作区和自动化帐户之间创建链接
-如何指定 Log Analytics 工作区和自动化帐户取决于解决方案的安装方法。
-
-* 通过 Azure 应用商店安装解决方案时，系统会提示您创建工作区和自动化帐户。 如果工作区与自动化帐户之间尚未建立链接，则系统会创建这种链接。
-* 对于 Azure 市场外的解决方案，必须在安装解决方案之前链接 Log Analytics 工作区和自动化帐户。 为此，可以在 Azure 市场中选择任何解决方案，并选择 Log Analytics 工作区和自动化帐户。 无需实际安装解决方案，因为只要选择了 Log Analytics 工作区和自动化帐户，就会创建链接。 创建链接后，可以对任何解决方案使用该 Log Analytics 工作区和自动化帐户。
+通过 Azure 应用商店安装解决方案时，系统会提示您创建工作区和自动化帐户。 如果工作区与自动化帐户之间尚未建立链接，则系统会创建这种链接。
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>验证 Log Analytics 工作区和自动化帐户之间的链接
 可以使用以下过程验证 Log Analytics 工作区和自动化帐户之间的链接。

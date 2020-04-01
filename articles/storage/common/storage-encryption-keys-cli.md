@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/10/2020
+ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6be15b3fdef94c07e70eba7c4234979b5ac62344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c20fcdf6a725da9d7b053f0ad98efec6aca88f81
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061171"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478210"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>通过 Azure CLI 使用 Azure Key Vault 配置客户管理的密钥
 
@@ -85,6 +85,8 @@ az keyvault key create
     --name <key> \
     --vault-name <key-vault>
 ```
+
+Azure 存储加密仅支持 2048 位 RSA 和 RSA-HSM 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。****
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>配置使用客户管理的密钥进行加密
 

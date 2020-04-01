@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: d2115b1dc7e9f3150e44eb5ee9417e88ebeaa279
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56c31e03eeec0c81207dc402e864eadec2d768bd
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370836"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474061"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>将实验室网络与 Azure 实验室服务中的对等虚拟网络连接 
 本文提供有关将实验室网络与其他网络对等的信息。 
@@ -38,6 +38,8 @@ ms.locfileid: "80370836"
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>在创建实验室帐户时进行配置
 在新的实验室帐户创建期间，可以选择在 **"高级**"选项卡上的**对等虚拟网络**下拉列表中显示的现有虚拟网络。所选虚拟网络连接到实验室帐户下创建的实验室（对等）。 进行此更改后创建的所有实验室中的虚拟机都将有权访问对等式虚拟网络上的资源。 
+
+还有一项规定为实验室提供**虚拟机的地址范围**。 如果提供地址范围，实验室帐户下的所有虚拟机都将在该地址范围内创建。 地址范围应以 CIDR 表示法（例如 10.20.0.0/20）表示，不得与任何现有地址范围重叠。 提供地址范围时，考虑将在实验室中创建的虚拟机数量并提供地址范围以容纳该范围非常重要。 对于给定范围，将显示它可以容纳的实验室数量。
 
 ![选择要对等的 VNet](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 

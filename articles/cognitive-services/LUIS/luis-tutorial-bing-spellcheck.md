@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 51b0d02443df872a7fae13116ea77b13d05055fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1e43cfc55611c432652055db2ac8411d835608b
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74225450"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396814"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用必应拼写检查更正拼写错误的字词
 
@@ -71,7 +71,7 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 
 终结点 URL 具有几个需要正确传递的值。 必应拼写检查 API v7 密钥仅是其中一个。 必须将 spellCheck 参数设置为 true，并且必须将 bing-spell-check-subscription-key 的值设置为密钥值********：
 
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription-key={luisKey}&spellCheck=**true**&bing-spell-check-subscription-key=**{bingKey}**&verbose=true&timezoneOffset=0&q={utterance}`
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription-key={luisKey}&spellCheck=true&bing-spell-check-subscription-key={bingKey}&verbose=true&timezoneOffset=0&q={utterance}`
 
 ## <a name="send-misspelled-utterance-to-luis"></a>将拼写错误的表述发送到 LUIS
 1. 在 Web 浏览器中，复制上面的字符串，并将 `region`、`appId`、`luisKey` 和 `bingKey` 替换为你自己的值。 如果终结点区域与你的发布[区域](luis-reference-regions.md)不同，请务必使用终结点区域。

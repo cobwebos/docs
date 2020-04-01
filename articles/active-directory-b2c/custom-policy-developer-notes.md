@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ee3b5bd3278412949074b77f9d1c53d63a467280
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 403ca480bcf0743d81e375c122c888db96bbf543
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189389"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408716"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>有关 Azure Active Directory B2C 中的自定义策略的开发人员说明
 
@@ -59,68 +59,82 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 自定义策略/标识体验框架功能正在持续而快速地进行开发。 下表是功能和组件可用性的索引。
 
-### <a name="identity-providers-tokens-protocols"></a>标识提供者、令牌、协议
+
+### <a name="protocols-and-authorization-flows"></a>协议和授权流
 
 | Feature | 开发 | 预览 | GA | 说明 |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| IDP-OpenIDConnect |  |  | X | 例如，Google+。  |
-| IDP-OAUTH2 |  |  | X | 例如，Facebook。  |
-| IDP-OAUTH1（推特） |  | X |  | 例如，推特。 |
-| IDP-OAUTH1（前推特） |  |  |  | 不支持 |
-| IDP-SAML |  |   | X | 例如 Salesforce、ADFS。 |
-| IDP-WSFED | X |  |  |  |
-| 信赖方 OAUTH1 |  |  |  | 不支持。 |
-| 信赖方 OAUTH2 |  |  | X |  |
-| 信赖方 OIDC |  |  | X |  |
-| 信赖方 SAML |  |X  |  |  |
-| 信赖方 WSFED | X |  |  |  |
-| 使用基本和证书身份验证的 REST API |  |  | X | 例如 Azure 逻辑应用。 |
+| [OAuth2 授权代码](authorization-code-flow.md) |  |  | X |  |
+| 带有 PKCE 的 OAuth2 授权代码 |  |  | X | 仅限移动应用程序  |
+| [OAuth2 隐式流](implicit-flow-single-page-application.md) |  |  | X |  |
+| [OAuth2 资源所有者密码凭据](ropc-custom.md) |  | X |  |  |
+| [OIDC 连接](openid-connect.md) |  |  | X |  |
+| [SAML2](connect-with-saml-service-providers.md)  |  |X  |  | POST 和重定向绑定。 |
+| OAuth1 |  |  |  | 不支持。 |
+| WSFED | X |  |  |  |
+
+### <a name="identify-providers-federation"></a>确定提供程序联合 
+
+| Feature | 开发 | 预览 | GA | 说明 |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [打开 ID 连接](openid-connect-technical-profile.md) |  |  | X | 例如，Google+。  |
+| [OAuth2](oauth2-technical-profile.md) |  |  | X | 例如，Facebook。  |
+| [OAuth1](oauth1-technical-profile.md) |  | X |  | 例如，推特。 |
+| [SAML2](saml-technical-profile.md) |  |   | X | 例如 Salesforce、ADFS。 |
+| WSFED| X |  |  |  |
+
+
+### <a name="rest-api-integration"></a>REST API 集成
+
+| Feature | 开发 | 预览 | GA | 说明 |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [REST API 与基本 au](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
+| [带有客户端证书 au 的 REST API](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
+| [REST API 与 OAuth2 承载 auth](secure-rest-api.md#oauth2-bearer-authentication) |  | X |  |  |
 
 ### <a name="component-support"></a>组件支持
 
 | Feature | 开发 | 预览 | GA | 说明 |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Azure 多重身份验证 |  |  | X |  |
-| Azure Active Directory 用作本地目录 |  |  | X |  |
+| [电话因素身份验证](phone-factor-technical-profile.md) |  |  | X |  |
+| [Azure MFA 身份验证](multi-factor-auth-technical-profile.md) |  | X |  |  |
+| [一次性密码](one-time-password-technical-profile.md) |  | X |  |  |
+| [Azure 活动目录](active-directory-technical-profile.md)作为本地目录 |  |  | X |  |
 | 用于电子邮件验证的 Azure 电子邮件子系统 |  |  | X |  |
-| 多语言支持|  |  | X |  |
-| 谓词验证 |  |  | X | 例如，密码复杂性。 |
-| 使用第三方电子邮件服务提供程序 |  |X  |  |  |
+| [第三方电子邮件服务提供商](custom-email.md) |  |X  |  |  |
+| [多语言支持](localization.md)|  |  | X |  |
+| [谓词验证](predicates.md) |  |  | X | 例如，密码复杂性。 |
+| [显示控件](display-controls.md) |  |X  |  |  |
 
-### <a name="content-definition"></a>内容定义
+
+### <a name="page-layout-versions"></a>页面布局版本
 
 | Feature | 开发 | 预览 | GA | 说明 |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| 错误页，api.error |  |  | X |  |
-| IDP 选择页，api.idpselections |  |  | X |  |
-| 用于注册的 IDP 选择，api.idpselections.signup |  |  | X |  |
-| 忘记密码，api.localaccountpasswordreset |  |  | X |  |
-| 本地帐户登录，api.localaccountsignin |  |  | X |  |
-| 本地帐户注册，api.localaccountsignup |  |  | X |  |
-| MFA 页，api.phonefactor |  |  | X |  |
-| 自我断言 - 社交帐户注册，api.selfasserted |  |  | X |  |
-| 自我断言配置文件更新，api.selfasserted.profileupdate |  |  | X |  |
-| 统一的注册或登录页，api.signuporsignin，使用参数“disableSignup” |  |  | X |  |
-| JavaScript/页面布局 |  | X |  |  |
+| [2.0.0](page-layout.md#200) |  | X |  |  |
+| [1.2.0](page-layout.md#120) |  | X |  |  |
+| [1.1.0](page-layout.md#110) |  |  | X |  |
+| [1.0.0](page-layout.md#100) |  |  | X |  |
+| [JavaScript 支持](javascript-samples.md) |  | X |  |  |
 
 ### <a name="app-ief-integration"></a>App-IEF 集成
 
 | Feature | 开发 | 预览 | GA | 说明 |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| 查询字符串参数 domain_hint |  |  | X | 作为声明提供时，可以传递给 IDP。 |
-| 查询字符串参数 login_hint |  |  | X | 作为声明提供时，可以传递给 IDP。 |
-| 通过 client_assertion 将 JSON 插入到 UserJourney 中 | X |  |  | 即将弃用。 |
-| 将 JSON 作为 id_token_hint 插入到 UserJourney 中 |  | X |  | 用于传递 JSON 的前向方法。 |
-| 将 IDP 令牌传递给应用程序 |  | X |  | 例如，从 Facebook 到应用。 |
+| 查询字符串参数`domain_hint` |  |  | X | 作为声明提供时，可以传递给 IDP。 |
+| 查询字符串参数`login_hint` |  |  | X | 作为声明提供时，可以传递给 IDP。 |
+| 通过将 JSON 插入到用户旅程中`client_assertion` | X |  |  | 即将弃用。 |
+| 将 JSON 插入到用户旅程中，如`id_token_hint` |  | X |  | 用于传递 JSON 的前向方法。 |
+| [将标识提供程序令牌传递给应用程序](idp-pass-through-custom.md) |  | X |  | 例如，从 Facebook 到应用。 |
 
 ### <a name="session-management"></a>会话管理
 
 | Feature | 开发 | 预览 | GA | 说明 |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| SSO 会话提供程序 |  |  | X |  |
-| 外部登录会话提供程序 |  |  | X |  |
-| SAML SSO 会话提供程序 |  |  | X |  |
-| 默认的 SSO 会话提供程序 |  |  | X |  |
+| [默认 SSO 会话提供程序](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
+| [外部登录会话提供程序](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
+| [SAML SSO 会话提供程序](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
+
 
 ### <a name="security"></a>安全性
 
@@ -128,16 +142,19 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 |-------- | :-----------: | :-------: | :--: | ----- |
 | 策略密钥 - 生成、手动、上传 |  |  | X |  |
 | 策略密钥 - RSA/证书、机密 |  |  | X |  |
-| 策略上传 |  |  | X |  |
+
 
 ### <a name="developer-interface"></a>开发人员接口
 
 | Feature | 开发 | 预览 | GA | 说明 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure 门户-IEF UX |  |  | X |  |
-| Application Insights UserJourney 日志 |  | X |  | 用于开发过程中的故障排除。  |
-| 应用程序见解事件日志（通过业务流程步骤） |  | X |  | 用于监视生产中的用户流。 |
+| 策略上传 |  |  | X |  |
+| [应用程序见解用户旅程日志](troubleshoot-with-application-insights.md) |  | X |  | 用于开发过程中的故障排除。  |
+| [应用程序见解事件日志](application-insights-technical-profile.md) |  | X |  | 用于监视生产中的用户流。 |
+
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[自定义策略及其与用户流的差异](custom-policy-overview.md)。
+- 检查[适用于 Azure AD B2C 的 Microsoft 图形操作](microsoft-graph-operations.md)
+- 详细了解[自定义策略及其与用户流的差异](custom-policy-overview.md)。

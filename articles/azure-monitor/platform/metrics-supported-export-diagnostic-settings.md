@@ -3,14 +3,14 @@ title: Azure 监视器平台指标可通过诊断设置导出
 description: 可在 Azure Monitor 中为每种资源类型使用的指标的列表。
 services: azure-monitor
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6be8cb1b7e74301d16a1174f5ca2b774334dac3f
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661356"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422107"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure 监视器平台指标可通过诊断设置导出
 
@@ -24,7 +24,9 @@ ms.locfileid: "77661356"
 
 ## <a name="change-to-behavior-for-nulls-and-zero-values"></a>更改为 NUL 和零值的行为 
  
-对于可通过诊断设置导出的平台指标，Azure 监视器将"0s"解释为"Nulls"的一些指标。 这在实际的"0"（由资源发出）和解释"0"（Nulls）之间造成了一些混淆。 从**2020 年 4 月 1**日起，通过诊断设置导出的平台指标将不再导出"0s"，除非它们确实由基础资源发出。 请注意：
+对于可通过诊断设置导出的平台指标，Azure 监视器将"0s"解释为"Nulls"的一些指标。 这在实际的"0"（由资源发出）和解释"0"（Nulls）之间造成了一些混淆。 很快将发生更改，通过诊断设置导出的平台指标将不再导出"0s"，除非它们确实由基础资源发出。 更改原定于 2020 年 4 月 1 日举行，但由于 COVID-19 导致优先班次而推迟。 
+
+请注意：
 
 1.  如果删除资源组或特定资源，则来自受影响资源的指标数据将不再发送到诊断设置导出目标。 也就是说，它将不再出现在事件中心、存储帐户和日志分析工作区中。
 2.  此改进将在所有公共云和私有云中提供。
@@ -49,7 +51,7 @@ ms.locfileid: "77661356"
 > 下表底部可能有一个水平滚动条。 如果您认为缺少信息，请检查滚动条是否一直向左。  
 
 
-| 可通过诊断设置导出？  | 发射 NUL |  ResourceType  |  指标  |  指标显示名称  |  单位  |  AggregationType | 
+| 可通过诊断设置导出？  | 已发出 NULL |  ResourceType  |  指标  |  指标显示名称  |  单位  |  AggregationType | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
 | 是]  | 否 |  Microsoft.AnalysisServices/servers  |  CleanerCurrentPrice  |  内存: 清理器当前价格  |  Count  |  平均值 | 
 | 是]  | 否 |  Microsoft.AnalysisServices/servers  |  CleanerMemoryNonshrinkable  |  内存: 不可收缩的清理器内存  |  字节  |  平均值 | 

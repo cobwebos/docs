@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 90eddea839d2f6ae5235ac6a391b40dd667ab401
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6b845eda1df39ccf5e4b2b1d6a615f3bc932b66
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257829"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474935"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 网络服务概述
 
@@ -27,16 +27,16 @@ Azure 中的网络服务提供可以搭配使用或单独使用的各种网络�
 
 ## <a name="connectivity-services"></a><a name="connect"></a>连接服务
  
-本节介绍在 Azure 资源之间提供连接、从本地网络到 Azure 资源的连接以及 Azure - 虚拟网络 （VNet）、虚拟 WAN、ExpressRoute、VPN 网关中的分支到分支连接的服务，虚拟网络 NAT 网关、Azure DNS、Azure 对等服务和 Azure 堡垒。
+本节介绍在 Azure 资源之间提供连接的服务、从本地网络到 Azure 资源的连接，以及 Azure - 虚拟网络 （VNet）、虚拟 WAN、ExpressRoute、VPN 网关、虚拟网络 NAT 网关、Azure DNS、Azure 对等服务和 Azure 堡垒中的分支连接。
 
 |服务|为何使用此类服务？|方案|
 |---|---|---|
 |[虚拟网络](#vnet)|可让 Azure 资源以安全方式彼此通信、与 Internet 通信，以及与本地网络通信。| <p>[筛选网络流量](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[路由网络流量](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[限制对资源的网络访问](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[连接虚拟网络](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
-|[快速路线](#expressroute)|通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。|<p>[创建和修改 ExpressRoute 线路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[创建和修改 ExpressRoute 线路的对等互连](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[将 VNet 链接到 ExpressRoute 线路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[配置和管理 ExpressRoute 线路的路由筛选器](../expressroute/how-to-routefilter-portal.md)</p>|
-|[VPN 网关](#vpngateway)|通过公共 Internet 在 Azure 虚拟网络与本地位置之间发送加密流量。|<p>[站点到站点连接](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[VNet 到 VNet 连接](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[点对点连接](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
+|[ExpressRoute](#expressroute)|通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。|<p>[创建和修改 ExpressRoute 线路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[创建和修改 ExpressRoute 线路的对等互连](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[将 VNet 链接到 ExpressRoute 线路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[配置和管理 ExpressRoute 线路的路由筛选器](../expressroute/how-to-routefilter-portal.md)</p>|
+|[VPN 网关](#vpngateway)|通过公共 Internet 在 Azure 虚拟网络与本地位置之间发送加密流量。|<p>[站点到站点连接](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[VNet 到 VNet 连接](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[点到站点连接](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
 |[虚拟 WAN](#virtualwan)|优化并自动化到 Azure 和通过 Azure 的分支连接。 Azure 区域充当可以选择将分支连接到的中心。|<p>[站点到站点连接](../virtual-wan/virtual-wan-site-to-site-portal.md)，[快速路由连接](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
 |[Azure DNS](#dns)|托管使用 Microsoft Azure 基础结构提供名称解析的 DNS 域。|<p>[在 Azure DNS 中托管域](../dns/dns-delegate-domain-azure-dns.md)</p><p>[为 Web 应用创建 DNS 记录](../dns/dns-web-sites-custom-domain.md)</p> <p>[为流量管理器创建别名记录](../dns/tutorial-alias-tm.md)</p> <p>[为公共 IP 地址创建别名记录](../dns/tutorial-alias-pip.md)</p> <p>[为区域资源记录创建别名记录](../dns/tutorial-alias-rr.md)</p>|
-|[Azure Bastion](#bastion)|直接在 Azure 门户中配置与虚拟机之间通过 SSL 的安全、无缝 RDP/SSH 连接。 通过 Azure 堡垒进行连接时，虚拟机不需要公共 IP 地址|<p>[创建 Azure 堡垒主机](../bastion/bastion-create-host-portal.md)</p><p>[使用 SSH 连接到 Linux VM](../bastion/bastion-connect-vm-ssh.md)</p><p>[使用 RDP 连接到 Windows VM](../bastion/bastion-connect-vm-rdp.md)</p>|
+|[Azure Bastion](#bastion)|通过 TLS 直接在 Azure 门户中配置与虚拟机的安全和无缝 RDP/SSH 连接。 通过 Azure 堡垒进行连接时，虚拟机不需要公共 IP 地址|<p>[创建 Azure Bastion 主机](../bastion/bastion-create-host-portal.md)</p><p>[使用 SSH 连接到 Linux VM](../bastion/bastion-connect-vm-ssh.md)</p><p>[使用 RDP 连接到 Windows VM](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[虚拟网络 NAT 网关](#nat)|创建 NAT 网关，为虚拟机提供出站连接。|<p>[创建 NAT 网关](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
 |[Azure 对等服务（预览）](#azurepeeringservice)|与服务提供商协作，通过公共网络实现最佳、可靠的路由到 Microsoft 云。|<p>[注册 Azure 对等服务](../peering-service/azure-portal.md)</p>|
 ||||
@@ -52,7 +52,7 @@ Azure 虚拟网络 (VNet) 是 Azure 中专用网络的基本构建块。 使用 
 
 有关详细信息，请参阅[什么是 Azure 虚拟网络？](../virtual-network/virtual-networks-overview.md)
 
-### <a name="expressroute"></a><a name="expressroute"></a>快速路线
+### <a name="expressroute"></a><a name="expressroute"></a>ExpressRoute
 使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 此连接是专用连接。 流量不经过 Internet。 使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 Dynamics 365 等 Microsoft 云服务建立连接。  有关详细信息，请参阅[什么是 ExpressRoute？](../expressroute/expressroute-introduction.md)
 
 ![Azure ExpressRoute](./media/networking-overview/expressroute-connection-overview.png)
@@ -74,7 +74,7 @@ Azure Virtual WAN 是一种网络服务，提供到 Azure 并穿过该服务的�
 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 有关详细信息，请参阅[什么是 Azure DNS？](../dns/dns-overview.md)
 
 ### <a name="azure-bastion"></a><a name="bastion"></a>Azure Bastion
-Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在虚拟网络中进行预配。 可通过 SSL 直接在 Azure 门户中实现与虚拟机之间的安全、无缝 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。 有关详细信息，请参阅什么是[Azure 堡垒？](../bastion/bastion-overview.md)
+Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在虚拟网络中进行预配。 它通过 TLS 直接在 Azure 门户中为虚拟机提供安全、无缝的 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。 有关详细信息，请参阅什么是[Azure 堡垒？](../bastion/bastion-overview.md)
 
 ![Azure 堡垒体系结构](./media/networking-overview/architecture.png)
 
@@ -88,11 +88,11 @@ Azure 对等服务增强了客户与 Microsoft 云服务的连接，例如 Offic
 
 ## <a name="application-protection-services"></a><a name="protect"></a>应用程序保护服务
 
-本节介绍 Azure 中有助于保护网络资源的网络服务 - 使用 Azure 中的任何或组合这些网络服务来保护应用程序 - 专用链路、DDoS 保护、防火墙、网络安全组、Web应用程序防火墙和虚拟网络终结点。
+本节介绍 Azure 中有助于保护网络资源的网络服务 - 使用 Azure 中的任何或组合这些网络服务来保护应用程序 - 专用链接、DDoS 保护、防火墙、网络安全组、Web 应用程序防火墙和虚拟网络终结点。
 
 |服务|为何使用此类服务？|方案|
 |---|---|---|
-|[DDOS 保护](#ddosprotection) |应用程序的高可用性，可防止 IP 流量过高|[管理 Azure DDoS 保护](../virtual-network/manage-ddos-protection.md)|
+|[DDoS 保护](#ddosprotection) |应用程序的高可用性，可防止 IP 流量过高|[管理 Azure DDoS 保护](../virtual-network/manage-ddos-protection.md)|
 |[Web 应用程序防火墙](#waf)|<p>[具有应用程序网关的 Azure WAF](../web-application-firewall/ag/ag-overview.md)为公共和专用地址空间中的实体提供区域保护</p><p>[带前门的 Azure WAF](../web-application-firewall/afds/afds-overview.md)可在网络边缘为公共终结点提供保护。</p>|<p>[配置自动程序保护规则](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[配置自定义响应代码](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[配置 IP 限制规则](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[配置速率限制规则](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
 |[Azure 防火墙](#firewall)|Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。|<p>[在 Vnet 中部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[- 在混合网络中部署 Azure 防火墙](../firewall/tutorial-hybrid-ps.md)</p> <p>[使用 Azure 防火墙 DNAT 筛选入站流量](../firewall/tutorial-firewall-dnat.md)</p>|
 |[网络安全组](#nsg)|在 VM/子网中对所有网络流量进行完全粒度的分布式终端节点控制|[使用网络安全组筛选网络流量](../virtual-network/tutorial-filter-network-traffic.md)|
@@ -142,10 +142,10 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 |服务|为何使用此类服务？|方案|
 |---|---|---|
 |[内容交付网络](#cdn)|为用户提供高带宽内容。 CDN 将缓存的内容存储在靠近最终用户的位置的边缘服务器上，以尽量减少延迟|<p>[将 CDN 添加到 Web 应用](../cdn/cdn-add-to-web-app.md)</p> <p>[- 通过 HTTPS 使用 Azure CDN 自定义域访问存储 Blob](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[向 Azure CDN 终结点添加自定义域](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[在 Azure CDN 自定义域上配置 HTTPS](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
-|[Azure Front Door 服务](#frontdoor)|通过优化最佳性能和即时全局故障转移，实现高可用性，使您能够定义、管理和监视 Web 流量的全局路由。|<p>[向 Azure 前门服务添加自定义域](../frontdoor/front-door-custom-domain.md)</p> <p>[在 Front Door 自定义域中配置 HTTPS](../frontdoor/front-door-custom-domain-https.md)</p><p>[设置地理筛选 Web 应用程序防火墙策略](../frontdoor/front-door-tutorial-geo-filtering.md)|
+|[Azure Front Door 服务](#frontdoor)|通过优化最佳性能和即时全局故障转移，实现高可用性，使您能够定义、管理和监视 Web 流量的全局路由。|<p>[将自定义域添加到 Azure Front Door 服务](../frontdoor/front-door-custom-domain.md)</p> <p>[在 Front Door 自定义域中配置 HTTPS](../frontdoor/front-door-custom-domain-https.md)</p><p>[设置地理筛选 Web 应用程序防火墙策略](../frontdoor/front-door-tutorial-geo-filtering.md)|
 |[流量管理器](#trafficmanager)|基于 DNS 将流量分发到全球 Azure 区域中的服务，同时提供高可用性和响应度。|<p> [路由流量以降低延迟](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[将流量路由到优先终结点](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [使用加权的终结点控制流量](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[基于终结点的地理位置路由流量](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [根据用户的子网路由流量](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
-|[负载平衡器](#loadbalancer)|通过将流量路由到不同的可用性区域和你的 VNet 来提供区域负载均衡。 通过在资源中和资源之间路由流量来提供内部负载均衡，以构建区域性应用程序。|<p> [对传入 VM 的 Internet 流量进行负载均衡](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[虚拟网络中 VM 的负载平衡流量](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[通过端口转发将流量发送到特定 VM 上的特定端口](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [配置负载均衡和出站规则](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
-|[应用程序网关](#applicationgateway)|Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。|<p>[使用 Azure 应用程序网关引导 Web 流量](../application-gateway/quick-create-portal.md)</p><p>[配置带有 SSL 终端的应用程序网关](../application-gateway/create-ssl-portal.md)</p><p>[创建支持基于 URL 路径进行重定向的应用程序网关](../application-gateway/create-url-route-portal.md) </p>|
+|[负载均衡器](#loadbalancer)|通过将流量路由到不同的可用性区域和你的 VNet 来提供区域负载均衡。 通过在资源中和资源之间路由流量来提供内部负载均衡，以构建区域性应用程序。|<p> [对传入 VM 的 Internet 流量进行负载均衡](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[虚拟网络中 VM 的负载平衡流量](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[通过端口转发将流量发送到特定 VM 上的特定端口](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [配置负载均衡和出站规则](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
+|[应用程序网关](#applicationgateway)|Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。|<p>[使用 Azure 应用程序网关引导 Web 流量](../application-gateway/quick-create-portal.md)</p><p>[教程：使用 Azure 门户配置具有 TLS 终止的应用程序网关](../application-gateway/create-ssl-portal.md)</p><p>[创建支持基于 URL 路径进行重定向的应用程序网关](../application-gateway/create-url-route-portal.md) </p>|
 |
 
 ### <a name="content-delivery-network"></a><a name="cdn"></a>内容交付网络
@@ -167,7 +167,7 @@ Azure 流量管理器是一种基于 DNS 的流量负载均衡器，可以在全
 
 有关流量管理器的详细信息，请参阅[什么是 Azure 流量管理器？](../traffic-manager/traffic-manager-overview.md)
 
-### <a name="load-balancer"></a><a name="loadbalancer"></a>负载平衡器
+### <a name="load-balancer"></a><a name="loadbalancer"></a>负载均衡器
 Azure 负载均衡器为所有 UDP 和 TCP 协议提供高性能、低延迟的第 4 层负载均衡。 它管理入站和出站连接。 可以配置公共和内部负载均衡终结点。 可以定义规则，以便将入站连接映射到后端池目标，并在其中包含 TCP 和 HTTP 运行状况探测选项来管理服务的可用性。 若要了解有关负载均衡器的详细信息，请参阅[负载均衡器概述](../load-balancer/load-balancer-overview.md)一文。
 
 下图显示了利用外部和内部负载均衡器的面向 Internet 的多层应用程序：

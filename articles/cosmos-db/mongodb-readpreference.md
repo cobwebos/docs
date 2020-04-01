@@ -8,19 +8,19 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 10e6ed556abe8f8c438e5436fbb93c1b70b85d2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445164"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410004"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 全局分发读取
 
 本文介绍如何在 Azure Cosmos DB 的用于 MongoDB 的 API 中使用 [MongoDB 读取首选项](https://docs.mongodb.com/manual/core/read-preference/)设置全局分配读取操作。
 
 ## <a name="prerequisites"></a>先决条件 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。" 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 请参阅此[快速入门](tutorial-global-distribution-mongodb.md)，获取有关在全局分布区中使用 Azure 门户设置 Cosmos 帐户然后连接到它的说明。
@@ -86,7 +86,7 @@ MongoDB 协议提供以下读取首选项模式供客户端使用：
 根据常见的方案，我们建议使用以下设置：
 
 1. 如果需要**低延迟读取**，可以使用 **NEAREST** 读取首选项模式。 此设置会将读取操作定向到最靠近的可用区域。 请注意，如果最靠近的区域是 WRITE 区域，则这些操作会定向到该区域。
-2. 如果需要**读取操作的高可用性和地理分配**（延迟不是一种约束），则可以使用 **SECONDARY PREFERRED** 读取首选项模式。 此设置会将读取操作定向到可用的 READ 区域。 如果没有可用的 READ 区域，请求将定向到 WRITE 区域。
+2. 如果需要**高可用性和读取的地理分布**（延迟不是约束），则使用**初级优先**或**辅助优先**读取首选项模式。 此设置分别将读取操作定向到可用的 WRITE 或 READ 区域。 如果该区域不可用，则根据读取首选项行为将请求定向到下一个可用区域。
 
 示例应用程序中的以下代码片段演示如何在 NodeJS 中配置 NEAREST 读取首选项：
 

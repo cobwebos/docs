@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 22a4177d85cb9dbbaa9ed75e063306484c7b48a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 8e014e7a1c564377582e4503218c4129619daa91
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298965"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410737"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -30,6 +30,7 @@ ms.locfileid: "79298965"
 ### <a name="supported-certificate-content-types"></a>受支持的证书内容类型
 
 - PKCS #12
+- Pem
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -70,7 +71,7 @@ ms.locfileid: "79298965"
 
 ### <a name="property-values"></a>属性值
 
-| “属性” | 值/示例 | 数据类型 |
+| 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | 发布者 | Microsoft.Azure.KeyVault | 字符串 |

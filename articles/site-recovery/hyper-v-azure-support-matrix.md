@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd10468e823201bfa67aaf7c570071bd075ec4ac
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258052"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420828"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -30,7 +30,7 @@ ms.locfileid: "79258052"
 
 ## <a name="on-premises-servers"></a>本地服务器
 
-**服务器** | **要求** | **详细信息**
+**Server** | **要求** | **详细信息**
 --- | --- | ---
 Hyper-V（不使用 Virtual Machine Manager 运行） |  Windows Server 2019、Windows Server 2016 （包括服务器核心安装）、包含最新更新的 Windows Server 2012 R2 | 如果已使用 Azure Site Recovery 配置 Windows Server 2012 R2 和/或 SCVMM 2012 R2 并计划升级 OS，请遵循指南[文档](upgrade-2012R2-to-2016.md)。 
 Hyper-V（使用 Virtual Machine Manager 运行） | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | 如果使用 Virtual Machine Manager，Windows Server 2019 主机应在 Virtual Machine Manager 2019 中托管。 同样，Windows Server 2016 主机应在 Virtual Machine Manager 2016 中托管。<br/><br/> 注意：Windows Server 2019 主机不支持故障回备用位置。
@@ -68,6 +68,7 @@ VM 配置 | 复制到 Azure 的 VM 必须满足[Azure 要求](#azure-vm-requirem
 来宾 VM 网络：静态 IP (Windows) | 是 | 是
 来宾 VM 网络：静态 IP (Linux) | 否 | 否
 来宾 VM 网络：多 NIC | 是 | 是
+Https 代理 | 否 | 否
 
 
 
@@ -163,7 +164,7 @@ FC 磁盘 | 不支持 | 如果不支持，先决条件检查会失败。
 硬盘格式 | VHD <br/><br/> VHDX | 故障转移到 Azure 时，Site Recovery 自动将 VHDX 转换为 VHD。 故障回复到本地时，虚拟机将继续使用 VHDX 格式。
 BitLocker | 不支持 | 为 VM 启用复制之前，必须先禁用 BitLocker。
 VM 名称 | 介于 1 和 63 个字符之间。 限制为字母、数字和连字符。 VM 名称必须以字母或数字开始或结尾。 | 在 Site Recovery 中更新 VM 属性中的值。
-VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基本”的第 2 代 VM（其中包括一个或两个格式化为 VHDX 的数据卷），并且支持的磁盘空间大小小于 300 GB。<br></br>不支持 Linux 第 2 代 VM。 [了解详情](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。|
+VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基本”的第 2 代 VM（其中包括一个或两个格式化为 VHDX 的数据卷），并且支持的磁盘空间大小小于 300 GB。<br></br>不支持 Linux 第 2 代 VM。 [了解详细信息](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。|
 
 ## <a name="recovery-services-vault-actions"></a>恢复服务保管库操作
 

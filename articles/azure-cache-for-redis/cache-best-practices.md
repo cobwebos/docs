@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 71056fd04069b861b37a595b1a4f2a8bba4a01ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75689978"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478606"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>针对 Azure Cache for Redis 的最佳做法 
 遵循这些最佳做法可帮助最大化性能并在 Azure 中经济、高效地利用 Azure Redis 缓存实例。
@@ -67,7 +67,7 @@ ms.locfileid: "75689978"
 若要测试代码在出错的情况下的运行情况，请考虑使用[重启功能](cache-administration.md#reboot)。 重启即可了解连接故障对应用程序的影响。
 
 ## <a name="performance-testing"></a>性能测试
- * **首先使用 `redis-benchmark.exe`** 以在编写自己的性能测试之前感受可能的吞吐量/延迟。  [可在此处找到](https://redis.io/topics/benchmarks) Redis 基准文档。  请注意，该 Redis 基准不支持 SSL，因此在运行测试之前必须[通过门户启用非 SSL 端口](cache-configure.md#access-ports)。  [可在此处找到 Windows 兼容版本的 redis-benchmark.exe](https://github.com/MSOpenTech/redis/releases)
+ * **首先使用 `redis-benchmark.exe`** 以在编写自己的性能测试之前感受可能的吞吐量/延迟。  [可在此处找到](https://redis.io/topics/benchmarks) Redis 基准文档。  请注意，redis-基准测试不支持 TLS，因此在运行测试之前，您必须[通过门户启用非 TLS 端口](cache-configure.md#access-ports)。  [可在此处找到 Windows 兼容版本的 redis-benchmark.exe](https://github.com/MSOpenTech/redis/releases)
  * 用于测试的客户端 VM 应与 Redis 缓存实例**位于同一区域**。
  * **我们建议对客户端使用 Dv2 VM 系列**，因为它们具有更好的硬件，并且会提供最佳结果。
  * 确保所用客户端 VM 的计算和带宽资源 *至少与要测试的缓存相同。** 

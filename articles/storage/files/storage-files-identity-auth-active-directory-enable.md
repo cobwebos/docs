@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: rogarana
-ms.openlocfilehash: deead728812a34c6f432f59666cd22ba79f5409e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: b7820bc3d1b14e87064e4120edcffb6762041db9
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281283"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411484"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>通过 SMB 为 Azure 文件共享启用活动目录身份验证
 
@@ -67,11 +67,7 @@ Azure 文件 AD 身份验证（预览）[在大多数公共区域](https://azure
 
 Azure 文件 AD 身份验证不在：
 - 美国西部
-- 美国西部 2
-- 美国东部
-- 美国东部 2
-- 西欧
-- 北欧
+
 
 ## <a name="workflow-overview"></a>工作流概述
 
@@ -144,11 +140,11 @@ Join-AzStorageAccountForAuth `
 > [!NOTE]
 > 如果您已成功执行上述`Join-AzStorageAccountForAuth`脚本，请访问下一节"3"。 确认功能已启用"。 您无需再次执行以下操作。
 
-#### <a name="a-checking-environment"></a>a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 检查环境
+#### <a name="a-checking-environment"></a>a. 检查环境
 
 首先，它会检查您的环境。 具体来说，它检查是否安装了[Active Directory PowerShell，](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps)以及是否使用管理员权限执行 shell。 然后，它会检查是否安装了[Az.Storage 1.11.1 预览模块](https://www.powershellgallery.com/packages/Az.Storage/1.11.1-preview)，如果没有安装该模块，则安装该模块。 如果这些检查通过，它将检查您的 AD，以查看是否有计算机[帐户](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（默认）[或服务登录帐户](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)已创建 SPN/UPN 为"cifs/您的存储帐户名称-此处.file.core.windows.net"。 如果帐户不存在，它将创建一个，如下 b 节所述。
 
-#### <a name="b-creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>b.保留“数据库类型”设置，即设置为“共享”。 手动创建表示 AD 中的存储帐户的标识
+#### <a name="b-creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>b. 手动创建表示 AD 中的存储帐户的标识
 
 要手动创建此帐户，请使用`New-AzStorageAccountKey -KeyName kerb1`创建存储帐户的新 kerberos 密钥。 然后，使用该 kerberos 密钥作为帐户的密码。 此密钥仅在设置期间使用，不能用于针对存储帐户的任何控制或数据平面操作。
 
@@ -219,4 +215,4 @@ Update-AzStorageAccountADObjectPassword `
 有关 Azure 文件以及如何在 SMB 上使用 AD 的详细信息，请参阅以下资源：
 
 - [基于 Azure 文件的基于身份的 SMB 访问的身份验证支持的概述](storage-files-active-directory-overview.md)
-- [FAQ](storage-files-faq.md)
+- [常见问题解答](storage-files-faq.md)

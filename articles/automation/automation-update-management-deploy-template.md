@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/27/2020
-ms.openlocfilehash: a8b382663b56d7481da876979e33194fb0ac533d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: e69f3d7350d0da9f364983eae0935532b576bd76
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77925795"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411461"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板的板载更新管理解决方案
 
@@ -25,7 +25,7 @@ ms.locfileid: "77925795"
 
 该模板不自动载入一个或多个 Azure 或非 Azure VM。
 
-如果您已在订阅中受支持的区域部署了日志分析工作区和自动化帐户，则它们未链接，并且工作区尚未部署更新管理解决方案，使用此模板成功创建链接并部署更新管理解决方案。 
+如果已在订阅中受支持的区域部署了日志分析工作区和自动化帐户，则它们未链接，并且工作区尚未部署更新管理解决方案，使用此模板成功创建链接并部署更新管理解决方案。 
 
 ## <a name="api-versions"></a>API 版本
 
@@ -56,6 +56,7 @@ JSON 模板为可能用作环境中标准配置的其他参数指定默认值。
 
 * sku - 默认为新的“按 GB”定价层，该层已在 2018 年 4 月的定价模型中发布
 * 数据保留 - 默认为 30 天
+* 容量预留 - 默认值为 100 GB
 
 >[!WARNING]
 >如果在订阅中创建或配置 Log Analytics 工作区，而该订阅已加入 2018 年 4 月的新定价模型，则唯一有效的 Log Analytics 定价层为 **PerGB2018**。
@@ -79,7 +80,7 @@ JSON 模板为可能用作环境中标准配置的其他参数指定默认值。
                 "description": "Workspace name"
             }
         },
-        "pricingTier": {
+        "sku": {
             "type": "string",
             "allowedValues": [
                 "pergb2018",
@@ -168,7 +169,8 @@ JSON 模板为可能用作环境中标准配置的其他参数指定默认值。
             "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": { 
+                "sku": {
+                    "Name": "[parameters('sku')]",
                     "name": "CapacityReservation",
                     "capacityReservationLevel": 100
                 },
@@ -231,13 +233,13 @@ JSON 模板为可能用作环境中标准配置的其他参数指定默认值。
     }
     ```
 
-2. 按要求编辑模板。
+2. 按要求编辑模板。 请考虑创建[资源管理器参数文件](../azure-resource-manager/templates/parameter-files.md)，而不是将参数作为内联值传递。
 
 3. 将此文件保存为"部署UMSolutiontemplate.json"到本地文件夹。
 
 4. 已做好部署此模板的准备。 可以使用 PowerShell 或 Azure CLI。 当您提示您创建工作区和自动化帐户名称时，请提供在所有 Azure 订阅中全局唯一的名称。
 
-    **电源外壳**
+    **PowerShell**
 
     ```powershell
     New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deployUMSolutiontemplate.json

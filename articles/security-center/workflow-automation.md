@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 972b5415b85e82a5afdaf7d85d3a3bcb9e144d4d
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384936"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397917"
 ---
 # <a name="workflow-automation"></a>工作流自动化
 
@@ -96,10 +96,11 @@ ms.locfileid: "80384936"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，您了解了创建逻辑应用、在安全中心中手动运行它们以及自动化其执行。 
+在本文中，您了解了创建逻辑应用、在安全中心中自动执行它们以及手动运行它们。 
 
-有关其他相关材料，请参阅以下文章： 
+有关其他相关材料，请参阅： 
 
+- [关于如何使用工作流自动化自动执行安全响应的 Microsoft 学习模块](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Azure 安全中心的安全建议](security-center-recommendations.md)
 - [Azure 安全中心的安全警报](security-center-alerts-overview.md)
 - [关于 Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)

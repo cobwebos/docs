@@ -1,21 +1,21 @@
 ---
 title: 快速入门：使用适用于 Python 的异常探测器客户端库检测数据异常
 titleSuffix: Azure Cognitive Services
-description: 参考本快速入门使用异常检测器 API 以批处理形式或在流式处理数据时检测数据系列中的异常。
+description: 了解如何使用异常检测器 API 以批或流数据的形式检测数据系列的异常。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 11/19/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 17ca1a7671718b5b96df0add7775fb82d4d97303
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c13657b8f2dae3868c1b9820236585aa930c6be4
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770435"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80239085"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>快速入门：适用于 Node.js 的异常检测器客户端库
 
@@ -28,7 +28,7 @@ ms.locfileid: "75770435"
 
 [参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [包 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector) | [在 GitHub 上查找代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版本的 [Node.js](https://nodejs.org/)

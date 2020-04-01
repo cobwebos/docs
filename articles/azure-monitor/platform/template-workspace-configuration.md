@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 357075caaf91769026deb839e038e5d42fb63a38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60f85a30815bc1bace409b50af6332bb6622d7ca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054690"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477981"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
@@ -48,6 +48,9 @@ ms.locfileid: "80054690"
 
 下面的示例使用本地计算机中的模板创建工作区。 JSON 模板配置为仅需要新工作区的名称和位置。 它使用为其他工作区参数指定的值，如[访问控制模式](design-logs-deployment.md#access-control-mode)、定价层、保留和容量预留级别。
 
+> [!WARNING]
+> 以下模板创建日志分析工作区并配置数据收集。 这可能会更改您的计费设置。 使用[Azure 监视器日志查看管理使用情况和成本](manage-cost-storage.md)，以了解日志分析工作区中收集的数据的计费，然后再将其应用于 Azure 环境。
+
 对于容量预留，通过指定属性`CapacityReservation``capacityReservationLevel`的 SKU 和 GB 的值来定义用于引入数据的选定容量预留。 以下列表详细介绍了配置受支持的值和行为。
 
 - 设置预订限制后，您不能在 31 天内更改为其他 SKU。
@@ -75,7 +78,7 @@ ms.locfileid: "80054690"
               "description": "Specifies the name of the workspace."
             }
         },
-      "pricingTier": {
+      "sku": {
         "type": "string",
         "allowedValues": [
           "pergb2018",
@@ -131,7 +134,7 @@ ms.locfileid: "80054690"
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-          "name": "[parameters('pricingTier')]"
+                    "name": "[parameters('sku')]"
                 },
                 "retentionInDays": 120,
                 "features": {
@@ -145,15 +148,15 @@ ms.locfileid: "80054690"
     }
     ```
 
-> [信息] 容量预留设置，在"sKU"下使用这些属性：
+   >[!NOTE]
+   >对于容量预留设置，请使用"sKU"下的这些属性：
+   >* "名称"："容量保留"，
+   >* "容量保留级别"： 100
 
->   "名称"："容量保留"，
+2. 按要求编辑模板。 请考虑创建[资源管理器参数文件](../../azure-resource-manager/templates/parameter-files.md)，而不是将参数作为内联值传递。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)参考，了解支持的属性和值。 
 
->   "容量保留级别"： 100
-
-
-2. 按要求编辑模板。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)参考，了解支持的属性和值。 
 3. 在本地文件夹中将此文件另存为 **deploylaworkspacetemplate.json**。
+
 4. 已做好部署此模板的准备。 使用 PowerShell 或命令行创建工作区，并在命令中指定工作区名称和位置。 工作区名称必须在所有 Azure 订阅中全局唯一。
 
    * 对于 PowerShell，请在包含模板的文件夹中使用以下命令：
@@ -176,7 +179,7 @@ ms.locfileid: "80054690"
 以下模板示例演示了如何：
 
 1. 向工作区添加解决方案
-2. 创建保存的搜索。 为了确保部署不会意外覆盖保存的搜索，应在"已保存的搜索"资源中添加 eTag 属性，以覆盖和维护已保存搜索的阳萎性。
+2. 创建保存的搜索。 为了确保部署不会意外覆盖已保存的搜索，应在"已保存的搜索"资源中添加 eTag 属性，以覆盖和维护已保存搜索的阳萎性。
 3. 创建计算机组
 4. 从装有 Windows 代理的计算机启用 IIS 日志收集
 5. 从 Linux 计算机中收集逻辑磁盘性能计数器 (% Used Inodes; Free Megabytes; % Used Space; Disk Transfers/sec; Disk Reads/sec; Disk Writes/sec)
@@ -197,7 +200,7 @@ ms.locfileid: "80054690"
         "description": "Workspace name"
       }
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "allowedValues": [
         "PerGB2018",
@@ -306,7 +309,7 @@ ms.locfileid: "80054690"
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('sku')]"
         }
       },
       "resources": [
@@ -605,7 +608,7 @@ ms.locfileid: "80054690"
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').customerId]"
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').sku.name]"
     },

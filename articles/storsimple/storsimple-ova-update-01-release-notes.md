@@ -1,5 +1,5 @@
 ---
-title: StorSimple 虚拟阵列更新发行说明 | Microsoft Docs
+title: StorSimple 虚拟阵列更新 0.2 & 0.1 发行说明
 description: 介绍有关运行更新 0.2 和 0.1 的 StorSimple Virtual Array 待解决的重要问题和解决方案。
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
-ms.openlocfilehash: aad60024187ca180c002f119f4b975e8f69796e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95386f36340aca470769c920e40bbb70e09d34fc
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60629282"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397870"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array 更新 0.2 和 0.1 发行说明
 ## <a name="overview"></a>概述

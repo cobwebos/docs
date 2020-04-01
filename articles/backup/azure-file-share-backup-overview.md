@@ -3,12 +3,12 @@ title: 关于 Azure 文件共享备份
 description: 了解如何在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 0e17b05a3febaa673fb29d45c2bcef25e2996df8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd5bb51b2c7b5c09e9d859b69c3094eb50c205b5
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78386715"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396281"
 ---
 # <a name="about-azure-file-share-backup"></a>关于 Azure 文件共享备份
 
@@ -43,6 +43,15 @@ Azure 文件共享备份是一种基于云的本机备份解决方案，可保�
 6. 可以从源文件共享上可用的快照还原 Azure 文件共享内容（单个文件或完整共享）。 触发操作后，将从元数据存储中检索快照 URL，并将数据从源快照列出并传输到您选择的目标文件共享。
 
 7. 备份和还原作业监视数据推送到 Azure 备份监视服务。 这允许您在单个仪表板中监视文件共享的云备份。 此外，您还可以在备份运行状况受到影响时配置警报或电子邮件通知。 电子邮件通过 Azure 电子邮件服务发送。
+
+## <a name="backup-costs"></a>备份成本
+
+Azure 文件共享备份是基于快照的解决方案，根据[此处](https://azure.microsoft.com/pricing/details/storage/files/)提到的定价详细信息，快照产生的存储费用与 Azure 文件使用情况一起计费。
+
+但是，利用备份解决方案的受保护实例费用根据["为 Azure 文件备份"](https://azure.microsoft.com/pricing/details/backup/)部分中描述的定价模型。 目前，实际价格已仅针对美国中西部进行了更新。 对于其他地区，确切的价格将很快更新与一些区域变化，但使用相同的定价模型。
+
+>[!NOTE]
+>在预览期间，没有"受保护的实例费用"，您将仅根据[此处](https://azure.microsoft.com/pricing/details/storage/files/)提到的定价收取快照费用。
 
 ## <a name="next-steps"></a>后续步骤
 

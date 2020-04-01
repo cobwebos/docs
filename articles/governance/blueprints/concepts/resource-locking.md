@@ -1,18 +1,21 @@
 ---
 title: 了解资源锁定
 description: 了解 Azure 蓝图中的锁定选项，以在分配蓝图时保护资源。
-ms.date: 02/27/2020
+ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86897ae6665f7a339b51aaae5f1c00144d8b7309
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78199693"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437735"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
 仅当存在一个可以维护该一致性的机制时，大规模创建一致的环境才会真正有价值。 本文介绍 Azure 蓝图中的资源锁定的工作原理。 要查看资源锁定和应用_拒绝分配_的示例，请参阅[保护新资源](../tutorials/protect-new-resources.md)教程。
+
+> [!NOTE]
+> Azure 蓝图部署的资源锁仅适用于蓝图分配部署的资源。 现有资源（如资源组中已经存在的资源）没有向它们添加锁。
 
 ## <a name="locking-modes-and-states"></a>锁定模式和状态
 
@@ -21,7 +24,7 @@ ms.locfileid: "78199693"
 
 蓝图分配中工件创建的资源有四种状态：**未锁定**、**只读**、**无法编辑/删除**或**无法删除**。 每种项目类型都可以处于“未锁定”**** 状态。 下表可以用于确定资源的状态：
 
-|“模式”|项目资源类型|状态|描述|
+|“模式”|项目资源类型|状态|说明|
 |-|-|-|-|
 |不锁定|*|未锁定|资源不受蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”**** 或“不要删除”**** 资源组项目的资源。|
 |只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”**** 资源。|

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: dfb133f9aa3dd9b76f8b4ea4c6188cfaf9a67b75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 371c2186d44469a22b138255fb513761a9be4437
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444105"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478217"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>设置实验室，使用 Python 和 Jupyter 笔记本教授数据科学
 
@@ -26,7 +26,7 @@ ms.locfileid: "77444105"
 
 ## <a name="lab-configuration"></a>实验室配置
 
-要设置此实验，需要 Azure 订阅和实验室帐户才能开始。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户。 有关创建新实验室帐户的详细信息，请参阅[设置实验室帐户的教程](tutorial-setup-lab-account.md)。  您还可以使用现有的实验室帐户。
+要设置此实验，需要 Azure 订阅和实验室帐户才能开始。 如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/)。" 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户。 有关创建新实验室帐户的详细信息，请参阅[设置实验室帐户的教程](tutorial-setup-lab-account.md)。  您还可以使用现有的实验室帐户。
 
 ### <a name="lab-account-settings"></a>实验室帐户设置
 
@@ -34,10 +34,10 @@ ms.locfileid: "77444105"
 
 | 实验室帐户设置 | Instructions |
 | ------------------- | ------------ |
-| 市场映像 | 启用[数据科学虚拟机 - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows)映像，以便在实验室帐户中使用。 |
+| 市场映像 | 启用[数据科学虚拟机 - Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)映像，以便在实验室帐户中使用。 |
 
 >[!TIP]
->本文将重点介绍使用 Windows Server 操作系统的模板计算机。  还可以使用[数据科学虚拟机为 Linux （CentOS）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm)或数据科学虚拟机为 Azure 应用商店中的[Linux （Ubuntu）](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu)映像设置数据科学类。
+>本文将重点介绍使用 Windows Server 操作系统的模板计算机。  还可以使用 Azure 应用商店中[针对 Linux （Ubuntu） 映像的数据科学虚拟机](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu)设置包含 Python 和 Jupyter 笔记本的数据科学类。
 
 ### <a name="lab-settings"></a>实验室设置
 
@@ -50,7 +50,7 @@ ms.locfileid: "77444105"
 
 ## <a name="template-machine"></a>模板机
 
-[数据科学虚拟机 - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows)映像提供了此类课程所需的必要深度学习框架和工具。  该图像包括犹太笔记本和视觉工作室代码。  [Jupyter 笔记本](http://jupyter-notebook.readthedocs.io)是一个 Web 应用程序，它允许数据科学家获取原始数据、运行计算并在相同的环境中查看结果。  对于我们的模板计算机，Web 应用程序将在本地运行。  [Visual Studio Code](https://code.visualstudio.com/)是一种 IDE，在编写和测试笔记本时提供了丰富的交互式体验。  有关详细信息，请参阅[在可视化工作室代码中使用 Jupyter 笔记本](https://code.visualstudio.com/docs/python/jupyter-support)。
+[数据科学虚拟机 - Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)映像提供了此类课程所需的必要深度学习框架和工具。  该图像包括犹太笔记本和视觉工作室代码。  [Jupyter 笔记本](http://jupyter-notebook.readthedocs.io)是一个 Web 应用程序，它允许数据科学家获取原始数据、运行计算并在相同的环境中查看结果。  对于我们的模板计算机，Web 应用程序将在本地运行。  [Visual Studio Code](https://code.visualstudio.com/)是一种 IDE，在编写和测试笔记本时提供了丰富的交互式体验。  有关详细信息，请参阅[在可视化工作室代码中使用 Jupyter 笔记本](https://code.visualstudio.com/docs/python/jupyter-support)。
 
 设置类的剩余任务是提供本地笔记本。  有关如何使用 Azure 机器学习示例的说明，请参阅[如何使用 Jupyter 笔记本配置环境](../../machine-learning/how-to-configure-environment.md#jupyter)。  您还可以在模板计算机上提供您自己的笔记本。  发布模板时，笔记本将复制到所有学生计算机。
 

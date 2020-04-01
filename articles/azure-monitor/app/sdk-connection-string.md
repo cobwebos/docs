@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7b049c04913d3415074f46b9d90ec34be874a2da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136700"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410614"
 ---
 # <a name="connection-strings"></a>连接字符串
 
@@ -148,7 +148,7 @@ ms.locfileid: "79136700"
 
 以下 SDK 版本支持连接字符串：
 - .NET 和 .NET 核心 v2.12.0
-- Java v2.5.1
+- Java v2.5.1 和 Java 3.0
 - Javascript v2.3.0
 - NodeJS v1.5.0
 - Python v1.0.0
@@ -161,7 +161,7 @@ ms.locfileid: "79136700"
 
 - 连接字符串： `APPLICATIONINSIGHTS_CONNECTION_STRING`
 
-### <a name="net-sdk-example"></a>.网络 SDK 示例
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 遥测配置.连接字符串：https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
@@ -194,10 +194,10 @@ NetCore 配置.json：
 ```
 
 
-### <a name="java-sdk-example"></a>Java SDK 示例
+# <a name="java"></a>[Java](#tab/java)
 
 
-Java 显式设置：
+Java （v2.5.x） 显式设置：
 ```java
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
@@ -210,7 +210,7 @@ ApplicationInsights.xml
 </ApplicationInsights>
 ```
 
-### <a name="javascript-sdk-example"></a>Javascript SDK 示例
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 重要提示：Javascript 不支持使用环境变量。
 
@@ -239,7 +239,7 @@ appInsights.loadAppInsights();
 appInsights.trackPageView();
 ```
 
-### <a name="node-sdk-example"></a>节点 SDK 示例
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -247,7 +247,7 @@ appInsights.setup("InstrumentationKey=00000000-0000-0000-0000-000000000000;");
 appInsights.start();
 ```
 
-### <a name="python-sdk-example"></a>Python SDK 示例
+# <a name="python"></a>[Python](#tab/python)
 
 我们建议用户设置环境变量。
 

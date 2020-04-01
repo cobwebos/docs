@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: fd044d4f32aefc00e1b04f7060e0fc0dc74fd6c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72882347"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411673"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器处理数据
 
@@ -215,14 +215,14 @@ ms.locfileid: "72882347"
 
 + 你位于“透明代理”之后，这意味着某人（例如 IT 部门）在拦截 HTTPS 流量，将其解密后又使用自签名证书对其加密**。
 
-+ 正在运行的软件（如防病毒软件）在向收到的 HTTPS 消息注入自签名 SSL 证书。
++ 您正在运行软件，如防病毒软件，该软件正在将自签名的 TLS/SSL 证书注入您收到的 HTTPS 消息中。
 
 存储资源管理器在遇到其中一个这样的“自签名证书”时，将再也无法判断收到的 HTTPS 消息是否已被篡改。 但若拥有一份自签名证书的副本，则可让存储资源管理器信任它。 若无法确定谁在注入证书，则可自行尝试通过以下步骤找到它：
 
-1. 安装 Open SSL
+1. 安装 OpenSSL
      - [Windows](https://slproweb.com/products/Win32OpenSSL.html)（任意轻量版本均可）
      - Mac 和 Linux：应包含在操作系统中
-2. 运行 Open SSL
+2. 运行打开 SSL
     - Windows：转到安装目录，然后转到“/bin/”，然后双击“openssl.exe”。********
     - Mac 和 Linux：从终端执行“openssl”****
 3. 执行 `s_client -showcerts -connect microsoft.com:443`

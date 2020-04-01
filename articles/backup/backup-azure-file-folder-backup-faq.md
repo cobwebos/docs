@@ -3,12 +3,12 @@ title: 备份文件和文件夹 - 常见问题
 description: 解决与使用 Azure 备份对文件和文件夹进行备份相关的常见问题。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55819ce7ec5196812d935a21c096c132144d78af
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273418"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421309"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>与对文件和文件夹进行备份相关的常见问题
 
@@ -58,6 +58,10 @@ ms.locfileid: "79273418"
 
 是的。 MARS 代理在准备备份操作时会将消除了重复的数据转换为常规数据。 然后，它将对数据进行优化以便备份、对数据进行加密，然后将已加密的数据发送到保管库。
 
+### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>安装和配置 MARS 代理是否需要管理员权限？
+
+是的，使用 MARS 控制台安装 MARS 代理和配置备份需要用户成为受保护服务器上的本地管理员。
+
 ## <a name="manage-backups"></a>管理备份
 
 ### <a name="what-happens-if-i-rename-a-windows-machine-configured-for-backup"></a>如果我重命名了为备份配置的 Windows 计算机，将会发生什么情况？
@@ -66,7 +70,7 @@ ms.locfileid: "79273418"
 
 * 你需要向备份保管库注册新的计算机名称。
 * 向保管库注册新名称时，第一个操作是“完整”** 备份。
-* 如果需要恢复备份到采用旧服务器名称的保管库的数据，请使用“恢复数据”向导中用于还原到其他位置的选项。 [了解详情](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
+* 如果需要恢复备份到采用旧服务器名称的保管库的数据，请使用“恢复数据”向导中用于还原到其他位置的选项。 [了解详细信息](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>用于备份的最大文件路径长度是多少？
 
@@ -98,7 +102,7 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 1. 默认情况下，暂存文件夹位于`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. 确保暂存文件夹位置的路径与下面所示的注册表键条目的值匹配：
 
-    | 注册表路径 | 注册表项 | “值” |
+    | 注册表路径 | 注册表项 | 值 |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新缓存文件夹位置* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新缓存文件夹位置* |
@@ -113,7 +117,7 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 4. 将整个`\Scratch`文件夹复制到具有足够空间的不同驱动器。 确保复制内容，而不是移动内容。
 5. 使用新移动的暂存文件夹的路径更新以下注册表项。
 
-    | 注册表路径 | 注册表项 | “值” |
+    | 注册表路径 | 注册表项 | 值 |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新的临时文件夹位置* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新的临时文件夹位置* |
@@ -149,7 +153,7 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>是否有办法调整用于备份的带宽量？
 
-是的，可以使用 MARS 代理中的“更改属性”**** 选项来调整带宽和定时。 [了解详情](backup-windows-with-mars-agent.md#enable-network-throttling)。
+是的，可以使用 MARS 代理中的“更改属性”**** 选项来调整带宽和定时。 [了解详细信息](backup-windows-with-mars-agent.md#enable-network-throttling)。
 
 ## <a name="restore"></a>还原
 

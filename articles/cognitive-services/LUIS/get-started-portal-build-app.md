@@ -1,35 +1,27 @@
 ---
 title: 快速入门：在 LUIS 门户中创建新应用
-titleSuffix: Azure Cognitive Services
 description: 本快速入门将创建应用的基本组成部分以及意向和实体，并在 LUIS 门户中使用示例言语进行测试。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 55ba025b9174f727a54ce0cd63da11c8661af91c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.openlocfilehash: f0c8f0c77f832e049dfc494f82e90edb61a8cb2a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381981"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244608"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中创建新应用
 
-本快速入门介绍如何在 LUIS 门户中生成新应用。 首先创建应用的基本部件、**意向**和**实体**。 然后，通过在交互式测试面板中提供用于获取预测的意向的示例用户话语，对应用进行测试。
-
-生成应用是免费的操作，不需要 Azure 订阅。 做好部署应用的准备以后，请参阅[有关如何部署应用的快速入门](get-started-portal-deploy-app.md)。 该快速入门介绍如何创建 Azure 认知服务资源并将其分配到应用。
+本快速入门介绍如何在 LUIS 门户中生成新应用。 首先，创建应用的基本部件、意向和实体   。 然后，通过在交互式测试面板中提供用于获取预测的意向的示例用户话语，对应用进行测试。
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>创建应用
 
-1. 在上下文工具栏中选择“+ 创建”  。
+1. 从上下文工具栏中选择“+ 新建用于对话的应用”，然后选择“+ 新建用于对话的应用”   。
 
-   [![在 LUIS 门户中创建新应用](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > [![在 LUIS 门户中创建新应用](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
 1. 在弹出窗口中使用以下设置配置应用，然后选择“完成”。 
 
@@ -70,7 +62,8 @@ ms.locfileid: "75381981"
 
 就此示例应用程序的 `FindForm` 意向来说，示例话语将包含表格编号。 客户端应用程序需要该表格编号来履行用户的请求，因此必须将其包括在话语中。
 
-[![输入 FindForm 意向的示例言语](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+> [!div class="mx-imgBorder"]
+> [![输入 FindForm 意向的示例言语](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
 将以下 15 个示例话语添加到 `FindForm` 意向。
 
@@ -147,7 +140,8 @@ ms.locfileid: "75381981"
 
    会标记该实体在示例言语中的显示位置。 若要查看原始文本而不是实体名称，请在工具栏中切换“实体视图”。 
 
-   [![标记有实体的所有示例言语](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   > [!div class="mx-imgBorder"]
+   > [![标记有实体的所有示例言语](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>使用交互式测试窗格测试新应用
 
@@ -159,7 +153,10 @@ ms.locfileid: "75381981"
 
    ```Is there a form named hrf-234098```
 
-   ![在测试窗格中测试新言语](./media/get-started-portal-build-app/test-new-utterance.png)
+    选择“检查”  以查看实体预测。
+
+   > [!div class="mx-imgBorder"]
+   > ![在测试窗格中测试新言语](./media/get-started-portal-build-app/test-new-utterance.png)
 
    排名靠前的预测意向为 **FindForm**（正确），其置信度超过 90% (0.977)。 已提取“人力资源表格编号”实体，其值为 hrf-234098。 
 

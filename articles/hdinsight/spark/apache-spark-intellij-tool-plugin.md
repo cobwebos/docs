@@ -1,23 +1,23 @@
 ---
-title: 教程 - Azure Toolkit for IntelliJ：Spark 应用 - HDInsight
-description: 教程 - 使用 Azure Toolkit for IntelliJ 开发以 Scala 编写的 Spark 应用程序，并将其提交到 HDInsight Spark 群集。
+title: 用于 IntelliJ 的 Azure 工具包：Spark 应用 - HDInsight
+description: 使用用于 IntelliJ 的 Azure 工具包开发以 Scala 编写的 Spark 应用程序，并将其提交到 HDInsight Spark 群集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 2631a0906a0f0886bdc106f1afef99860a6fe00b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.openlocfilehash: d80f4cb12c79519818f6eccb2bb565bac472b471
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223584"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397680"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>教程：使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序
+# <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序
 
-本教程演示如何使用 IntelliJ IDE 的 **Azure 工具包**插件在 Azure HDInsight 上开发 Apache Spark 应用程序。 [Azure HDInsight](../hdinsight-overview.md) 是云中托管的开源分析服务，允许你使用 Hadoop、Apache Spark、Apache Hive 和 Apache Kafka 等开源框架。
+本文演示如何使用 IntelliJ IDE 的 Azure**工具包**插件在 Azure HDInsight 上开发 Apache Spark 应用程序。 [Azure HDInsight](../hdinsight-overview.md) 是云中托管的开源分析服务，允许你使用 Hadoop、Apache Spark、Apache Hive 和 Apache Kafka 等开源框架。
 
 可按多种方式使用 **Azure 工具包**插件：
 
@@ -25,7 +25,7 @@ ms.locfileid: "79223584"
 * 访问 Azure HDInsight Spark 群集资源。
 * 本地开发和运行 Scala Spark 应用程序。
 
-在本教程中，你将了解如何执行以下操作：
+在本文中，学习如何：
 > [!div class="checklist"]
 > * 使用 Azure Toolkit for IntelliJ 插件
 > * 开发 Apache Spark 应用程序
@@ -35,7 +35,7 @@ ms.locfileid: "79223584"
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
-* [Oracle Java 开发工具包](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。  本教程使用 Java 版本 8.0.202。
+* [Oracle Java 开发工具包](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。  本文使用 Java 版本 8.0.202。
 
 * IntelliJ IDEA。 本文使用 [IntelliJ IDEA Community 版本2018.3.4](https://www.jetbrains.com/idea/download/)。
 
@@ -77,7 +77,7 @@ ms.locfileid: "79223584"
 
     |  properties   | 说明   |  
     | ----- | ----- |  
-    |项目名称| 输入名称。  本教程使用 `myApp`。|  
+    |项目名称| 输入名称。  本文使用的是 `myApp`。|  
     |项目位置&nbsp;| 输入所需的位置用于保存项目。|
     |项目 SDK| 首次使用 IDEA 时，此字段可能是空白的。  选择“新建...”并导航到 JDK。 |
     |Spark 版本|创建向导集成了适当版本的 Spark SDK 和 Scala SDK。 如果 Spark 群集版本低于 2.0，请选择“Spark 1.x”  。 否则，请选择“Spark 2.x”  。 本示例使用“Spark 2.3.0 (Scala 2.11.8)”。 |
@@ -472,7 +472,7 @@ ms.locfileid: "79223584"
 
 1. 选择“服务”下的“HDInsight 群集”   。
 
-1. 在显示的 HDInsight 群集列表中，选择为本教程创建的群集旁边的“...”。 
+1. 在显示的 HDInsight 群集列表中，选择为本文创建的群集旁边的 **...**
 
 1. 选择“删除”。  请选择“是”。 
 
@@ -480,7 +480,7 @@ ms.locfileid: "79223584"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何使用 Azure Toolkit for IntelliJ 插件开发以 [Scala](https://www.scala-lang.org/) 编写的 Apache Spark 应用程序，并直接从 IntelliJ 集成开发环境 (IDE) 将其提交到 HDInsight Spark 群集。 请转到下一篇文章，了解如何将在 Apache Spark 中注册的数据拉取到 Power BI 等 BI 分析工具中。
+在本文中，您学习了如何使用 IntelliJ 插件的 Azure 工具包来开发用[Scala](https://www.scala-lang.org/)编写的 Apache Spark 应用程序，然后直接从 IntelliJ 集成开发环境 （IDE） 将其提交到 HDInsight Spark 群集。 请转到下一篇文章，了解如何将在 Apache Spark 中注册的数据拉取到 Power BI 等 BI 分析工具中。
 
 > [!div class="nextstepaction"]
 > [使用 Power BI 分析 Apache Spark 数据](apache-spark-use-bi-tools.md)

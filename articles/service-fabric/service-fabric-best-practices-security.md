@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258923"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478756"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
@@ -208,7 +208,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [我们建议您实现众所周知且经过良好测试的行业标准配置，例如 Microsoft 安全基线，而不是自己创建基线](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines);在虚拟机缩放集中预配这些配置的选项是使用 Azure 所需状态配置 （DSC） 扩展处理程序，在 VM 联机时配置 VM，以便它们运行生产软件。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
-[Azure 防火墙是一种托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一个完全有状态的防火墙，作为一种具有内置高可用性和无限制的云可扩展性的服务。](https://docs.microsoft.com/azure/firewall/overview)这使您能够将出站 HTTP/S 流量限制为指定的完整限定域名 （FQDN） 列表（包括通配符）。 此功能不需要 SSL 终止。 建议利用 Windows 更新的 [Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)，并允许到 Microsoft Windows 更新终结点的网络流量流经防火墙。 [使用模板部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/deploy-template)为 Microsoft.网络/azure 防火墙资源模板定义提供了一个示例。 常用于 Service Fabric 应用程序的防火墙规则是为群集虚拟网络启用以下站点：
+[Azure 防火墙是一种托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。它是一个完全有状态的防火墙，作为一种具有内置高可用性和无限制的云可扩展性的服务。](https://docs.microsoft.com/azure/firewall/overview)这使您能够将出站 HTTP/S 流量限制为指定的完整限定域名 （FQDN） 列表（包括通配符）。 此功能不需要 TLS/SSL 终止。 建议利用 Windows 更新的 [Azure 防火墙 FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)，并允许到 Microsoft Windows 更新终结点的网络流量流经防火墙。 [使用模板部署 Azure 防火墙](https://docs.microsoft.com/azure/firewall/deploy-template)为 Microsoft.网络/azure 防火墙资源模板定义提供了一个示例。 常用于 Service Fabric 应用程序的防火墙规则是为群集虚拟网络启用以下站点：
 
 - *download.microsoft.com
 - *servicefabric.azure.com

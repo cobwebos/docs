@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 77a451cb9f6598bbe7013f4215cfa7cab40186bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f2b192765aab4c7cf18c62988ae2f6080b4b17c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037547"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436923"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>将 Apache Beeline 客户端与 Apache Hive 配合使用
 
@@ -65,7 +65,7 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD
 
 ### <a name="over-public-or-private-endpoints"></a>通过公共或专用终结点
 
-使用公共终结点或专用终结点连接到群集时，必须提供群集登录帐户名称（默认`admin`）和密码。 例如，使用 Beeline 从客户端系统连接到 `clustername.azurehdinsight.net` 地址。 此连接通过端口`443`进行，并使用 SSL 进行加密。
+使用公共终结点或专用终结点连接到群集时，必须提供群集登录帐户名称（默认`admin`）和密码。 例如，使用 Beeline 从客户端系统连接到 `clustername.azurehdinsight.net` 地址。 此连接通过端口`443`进行，并使用 TLS/SSL 进行加密。
 
 将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN（例如user@domain.com， 将 `password` 替换为群集登录帐户的密码。
 
@@ -199,7 +199,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
     这些语句执行以下操作：
 
-    |语句 |描述 |
+    |语句 |说明 |
     |---|---|
     |DROP TABLE|如果表存在，则将其删除。|
     |CREATE EXTERNAL TABLE|在蜂巢中创建**外部**表。 外部表只会在 Hive 中存储表定义。 数据将保留在原始位置。|
@@ -262,7 +262,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
     这些语句执行以下操作：
 
-    |语句 |描述 |
+    |语句 |说明 |
     |---|---|
     |创建表（如果不存在）|如果表不存在，则创建该表。 由于不使用**外部**关键字，因此此语句将创建一个内部表。 内部表存储在 Hive 数据仓库中，由 Hive 全权管理。|
     |存储为 ORC|以优化的行纵栏式 (ORC) 格式存储数据。 ORC 格式是高度优化且有效的 Hive 数据存储格式。|

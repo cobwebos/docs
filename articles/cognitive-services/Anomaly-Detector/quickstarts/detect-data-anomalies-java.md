@@ -1,21 +1,21 @@
 ---
 title: 快速入门：使用异常检测器 REST API 和 Java 检测时序数据的异常
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍如何使用异常检测器 API 以批处理形式或在流式处理数据时检测数据系列中的异常。
+description: 了解如何使用异常检测器 API 以批或流数据的形式检测数据系列的异常。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 11/19/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 3bc406b22b7e8a684713385dfd15daed99bcf977
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e7cc969ff2c36415b8fd1cebafa1873f9efd38c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448940"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80239057"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>快速入门：使用异常检测器 REST API 和 Java 检测时序数据的异常
 
@@ -28,7 +28,7 @@ ms.locfileid: "75448940"
 
  虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 可在 [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/java-detect-anomalies.java) 上找到本快速入门的源代码。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [Java&trade; 开发工具包 (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 或更高版本。
 - 异常检测器密钥和终结点

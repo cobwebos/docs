@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka SSL 加密和身份验证 - Azure HDInsight
-description: 设置 SSL 加密，以便在 Kafka 客户端与 Kafka 代理之间以及 Kafka 代理之间进行通信。 设置客户端的 SSL 身份验证。
+title: 阿帕奇卡夫卡TLS加密&认证 - Azure HDInsight
+description: 设置TLS加密，用于卡夫卡客户与卡夫卡经纪人之间以及卡夫卡经纪人之间的通信。 设置客户端的 SSL 身份验证。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,25 +8,25 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4a363caf61046cf39c31ae2d5f35622b7b9109f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 027a66f4b83225f3c776e1bff1d706f6f4dba976
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130002"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436999"
 ---
-# <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>为 Azure HDInsight 中的 Apache Kafka 设置安全套接字层 (SSL) 加密和身份验证
+# <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>在 Azure HDInsight 中为 Apache Kafka 设置 TLS 加密和身份验证
 
-本文介绍如何在 Apache Kafka 客户端与 Apache Kafka 代理之间设置 SSL 加密。 此外还介绍了如何设置客户端的身份验证（有时称为双向 SSL）。
+本文介绍如何在 Apache Kafka 客户端和 Apache Kafka 代理之间设置传输层安全 （TLS） 加密（以前称为安全套接字层 （SSL） 加密。 它还演示如何设置客户端的身份验证（有时称为双向 TLS）。
 
 > [!Important]
-> 有两个客户端可用于 Kafka 应用程序：一个 Java 客户端和一个控制台客户端。 只有 Java 客户端 `ProducerConsumer.java` 可以通过 SSL 来实现生成和使用。 控制台生成方客户端 `console-producer.sh` 不能与 SSL 配合工作。
+> 有两个客户端可用于 Kafka 应用程序：一个 Java 客户端和一个控制台客户端。 只有 Java`ProducerConsumer.java`客户端可以使用 TLS 来生成和使用。 控制台生成器客户端`console-producer.sh`不适用于 TLS。
 
 > [!Note] 
 > HDInsight Kafka 控制台制作器版本 1.1 不支持 SSL。
 ## <a name="apache-kafka-broker-setup"></a>阿帕奇卡夫卡经纪人设置
 
-Kafka SSL 代理设置按以下方式使用四个 HDInsight 群集 VM：
+Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
 
 * 头节点 0 - 证书颁发机构 (CA)
 * 工作器节点 0、1 和 2 - 代理
@@ -119,7 +119,7 @@ Kafka SSL 代理设置按以下方式使用四个 HDInsight 群集 VM：
 
     ```
 
-## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>将 Kafka 配置更新为使用 SSL 并重启代理
+## <a name="update-kafka-configuration-to-use-tls-and-restart-brokers"></a>更新卡夫卡配置以使用 TLS 并重新启动代理
 
 现在，您已经使用密钥库和信任存储为每个 Kafka 代理设置，并导入了正确的证书。 接下来，请使用 Ambari 修改相关的 Kafka 配置属性，然后重启 Kafka 代理。
 
@@ -166,7 +166,7 @@ Kafka SSL 代理设置按以下方式使用四个 HDInsight 群集 VM：
 
 ## <a name="client-setup-without-authentication"></a>客户端设置（不使用身份验证）
 
-如果不需要身份验证，则仅设置 SSL 加密的步骤摘要包括：
+如果不需要身份验证，则仅设置 TLS 加密的步骤摘要包括：
 
 1. 登录到 CA（活动头节点）。
 1. 从 CA 计算机 （wn0） 将 CA 证书复制到客户端计算机。
@@ -219,7 +219,7 @@ Kafka SSL 代理设置按以下方式使用四个 HDInsight 群集 VM：
 ## <a name="client-setup-with-authentication"></a>客户端设置（使用身份验证）
 
 > [!Note]
-> 仅当同时设置了 SSL 加密**和**身份验证时，才需要执行以下步骤。 如果只是设置加密，请参阅[没有身份验证的客户端设置](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)。
+> 仅当同时设置 TLS 加密**和**身份验证时，才需要以下步骤。 如果只是设置加密，请参阅[没有身份验证的客户端设置](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)。
 
 以下四个步骤总结了完成客户端设置所需的任务：
 
@@ -302,7 +302,7 @@ Kafka SSL 代理设置按以下方式使用四个 HDInsight 群集 VM：
 ## <a name="verification"></a>验证
 
 > [!Note]
-> 如果安装了 HDInsight 4.0 和 Kafka 2.1，则可以使用控制台制作者/使用者来验证您的设置。 如果没有，请运行端口 9092 上的 Kafka 生成器并将消息发送到主题，然后在使用 SSL 的端口 9093 上使用 Kafka 使用者。
+> 如果安装了 HDInsight 4.0 和 Kafka 2.1，则可以使用控制台制作者/使用者来验证您的设置。 如果没有，请运行端口 9092 上的 Kafka 生成器并将消息发送到主题，然后在使用 TLS 的端口 9093 上使用 Kafka 使用者。
 
 ### <a name="kafka-21-or-above"></a>卡夫卡 2.1 或以上
 

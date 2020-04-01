@@ -3,21 +3,24 @@ title: 为 Azure 虚拟机上的微焦点企业开发人员 4.0 设置微焦点 
 description: 在 Azure 虚拟机 （VM） 上运行微焦点银行演示应用程序，以了解如何使用微焦点企业服务器和企业开发人员。
 author: sread
 ms.author: sread
-ms.date: 04/02/2019
+ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67621339"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411073"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>为 Azure 上的微焦点企业开发人员 4.0 设置微焦点 CICS 银行演示
 
 在 Azure 上设置微焦点企业服务器 4.0 和企业开发人员 4.0 时，可以测试 IBM z/OS 工作负载的部署。 本文演示如何设置 CICS BankDemo，这是企业开发人员附带的示例应用程序。
 
 CIC 代表客户信息控制系统，这是许多在线大型机应用程序使用的交易平台。 BankDemo 应用程序非常适合了解企业服务器和企业开发人员的操作方式以及如何管理和部署使用绿屏终端完成的实际应用程序。
+
+> [!NOTE]
+> 即将推出：有关在 Azure VM 上设置[微焦点企业服务器 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110)的说明。
 
 ## <a name="prerequisites"></a>先决条件
 

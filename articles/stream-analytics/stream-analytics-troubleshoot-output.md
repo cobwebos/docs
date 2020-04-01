@@ -6,46 +6,38 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 305632a0faa1eb7e217e86d36c5159e557df7aaf
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79254282"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409258"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
 
-本页介绍了输出连接的常见问题以及如何排查和解决这些问题。
+本文介绍了 Azure 流分析输出连接的常见问题、如何排除输出问题以及如何更正问题。 许多故障排除步骤都需要为流分析作业启用诊断日志。 如果未启用诊断日志，请参阅[使用诊断日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md)。
 
 ## <a name="output-not-produced-by-job"></a>不是由作业生成的输出
+
 1.  使用每项输出对应的“测试连接”按钮来验证与输出的连接****。
 
 2.  查看 **"监视器"** 选项卡上的[**监视指标**](stream-analytics-monitoring.md)。由于这些值是聚合的，因此指标将延迟几分钟。
-    - 如果“输入事件数”大于 0，则作业可以读取输入数据。 如果“输入事件”不大于 0，则：
-      - 若要查看数据源是否具有有效数据，请使用[服务总线资源管理器](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)。 如果作业使用事件中心作为输入，则会应用此检查。
-      - 检查以查看数据序列化格式和数据编码是否符合预期。
-      - 如果该作业正在使用事件中心，请检查以查看消息正文是否为 Null**。
+   * 如果输入事件大于 0，则作业能够读取输入数据。 如果输入事件不大于 0，则作业的输入出现问题。 请参阅[排除输入连接故障](stream-analytics-troubleshoot-input.md)，了解如何排除输入连接问题。
+   * 如果数据转换错误大于 0 并爬升，请参阅[Azure 流分析数据错误](data-errors.md)，了解有关数据转换错误的详细信息。
+   * 如果运行时错误大于 0，则作业可以接收数据，但在处理查询时生成错误。 若要查找错误，请转到[审核日志](../azure-resource-manager/management/view-activity-logs.md)并筛选“失败”** 状态。
+   * 如果输入事件大于 0，并且输出事件等于 0，则以下之一为 true：
+      * 查询处理导致生成零个输出事件。
+      * 事件或字段可能格式错误，导致查询处理后输出为零。
+      * 由于连接或身份验证原因，作业无法将数据推送到输出接收器。
 
-    - 如果“数据转换错误数”大于 0 且在不断增加，则可能出现以下情况：
-      - 输出事件不符合目标接收器的架构。
-      - 事件架构可能与查询中事件的已定义/预期架构不匹配。
-      - 事件中某些字段的数据类型可能不符合预期。
-
-    - 如果“运行时错误数”大于 0，则表示作业可以接收数据，但在处理查询时将遇到错误。
-      - 若要查找错误，请转到[审核日志](../azure-resource-manager/management/view-activity-logs.md)并筛选“失败”** 状态。
-
-    - 如果“输入事件数”大于 0 且“输出事件数”等于 0，则会出现以下情况之一：
-      - 查询处理导致生成零个输出事件。
-      - 事件或其字段可能出现格式错误，导致完成查询处理后生成零个输入。
-      - 由于连接或身份验证原因，作业无法将数据推送到输出接收器。
-
-    - 对于前文所述的所有这些错误，操作日志消息会解释其他详细信息（包括发生了什么情况），但如果查询逻辑筛选掉了所有事件，则不提供这些详细信息。 如果处理多个事件时出现错误，流分析会将 10 分钟内类型相同的前 3 个错误消息记录在操作日志中。 随后它将阻止其他的相同错误，并且显示一条“错误发生速度过快，已禁止显示此类错误”的消息。
+   对于前文所述的所有这些错误，操作日志消息会解释其他详细信息（包括发生了什么情况），但如果查询逻辑筛选掉了所有事件，则不提供这些详细信息。 如果处理多个事件生成错误，则每 10 分钟聚合一次错误。
 
 ## <a name="job-output-is-delayed"></a>作业输出延迟
 
 ### <a name="first-output-is-delayed"></a>首次输出延迟
+
 启动流分析作业后，将会读取输入事件，但在某些情况下，生成的输出可能出现延迟。
 
 在时态查询元素中使用较大的时间值可能会导致输出延迟。 为了在较长时间范围内生成正确的输出，流作业首先会尽量从最新的时间（最长 7 天前）读取数据，以填充时间范围。 在此期间，只有在完成待处理输入事件的同步读取之后，才生成输出。 当系统升级流作业，从而重启了作业时，可能会出现此问题。 此类升级通常每隔几个月发生一次。
@@ -69,6 +61,7 @@ ms.locfileid: "79254282"
    - 对于分析函数，输出是针对每个事件生成的，因此不存在延迟。
 
 ### <a name="output-falls-behind"></a>输出拖延
+
 在作业正常运行期间，如果你发现该作业的输出不断拖延（延迟越来越长），可以通过检查以下因素来查明根本原因：
 - 下游接收器是否受限制
 - 上游源是否受限制
@@ -88,11 +81,11 @@ ms.locfileid: "79254282"
 
 * 不能在主键或使用 ALTER INDEX 的唯一约束上设置 IGNORE_DUP_KEY，需删除并重新创建该索引。  
 * 可使用 ALTER INDEX 为唯一索引设置 IGNORE_DUP_KEY 选项，该索引不同于 PRIMARY KEY/UNIQUE 约束，它是使用 CREATE INDEX 或 INDEX 定义创建的。  
+
 * IGNORE_DUP_KEY 不能应用于列存储索引，因为不能对此类索引强制唯一性。  
 
 ## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Azure 流分析将列名小写
 当使用原始兼容性级别 (1.0) 时，Azure 流分析过去常常将列名更改为小写。 此行为已在以后的兼容性级别中修复。 为了保留这种情况，我们建议客户迁移到兼容性级别 1.1 和更高版本。 有关详细信息，请参阅 [Azure 流分析作业的兼容性级别](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)。
-
 
 ## <a name="get-help"></a>获取帮助
 

@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 95a60abef283984d66736358d2d02048f08d700d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246987"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409845"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和调优指南
 
@@ -69,7 +69,7 @@ ms.locfileid: "80246987"
 
 在源转换中的 **"源选项**"下，以下设置可能会影响性能：
 
-* 批处理大小指示 ADF 将数据存储在内存中的集中，而不是逐行存储。 批处理大小是一个可选设置，如果计算节点的大小不正确，则可能会耗尽资源。
+* 批处理大小指示 ADF 将数据存储在 Spark 内存中的集中，而不是逐行存储数据。 批处理大小是一个可选设置，如果计算节点的大小不正确，则可能会耗尽资源。 不设置此属性将使用 Spark 缓存批处理默认值。
 * 设置查询可以允许您在源的行到达数据流进行处理之前对其进行筛选。 这可以加快初始数据采集速度。 如果使用查询，则可以为 Azure SQL DB 添加可选的查询提示，例如"读取未提交"。
 * 未提交读取将在源转换上提供更快的查询结果
 
@@ -77,7 +77,7 @@ ms.locfileid: "80246987"
 
 ### <a name="sink-batch-size"></a>沉分批大小
 
-为避免逐行处理数据流，请在 Azure SQL DB 和 Azure SQL DW 接收器的"设置"选项卡中设置**批处理大小**。 如果设置了批处理大小，ADF 会根据提供的大小处理分批写入数据库。
+为避免逐行处理数据流，请在 Azure SQL DB 和 Azure SQL DW 接收器的"设置"选项卡中设置**批处理大小**。 如果设置了批处理大小，ADF 会根据提供的大小处理分批写入数据库。 不设置此属性将使用 Spark 缓存批处理默认值。
 
 ![接收器](media/data-flow/sink4.png "接收器")
 

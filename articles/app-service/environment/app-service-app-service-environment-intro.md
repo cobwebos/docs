@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd3881617227430488f8dd3f2f3d24072b24b8ce
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687363"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478726"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>应用服务环境 v1 简介
 
@@ -48,7 +48,7 @@ ms.locfileid: "74687363"
 
 应用服务环境由前端计算资源池，以及一到三个工作线程计算资源池组成。
 
-前端池包含负责处理 SSL 终止以及应用服务环境中应用请求的自动负载均衡的计算资源。
+前端池包含负责 TLS 终止以及应用服务环境中应用请求自动负载平衡的计算资源。
 
 每个工作线程池包含分配给[应用服务计划][AppServicePlan]的计算资源，而这些资源又包含一个或多个 Azure 应用服务应用。  由于应用服务环境中可能有多达三个不同的工作线程池，因此可以灵活地为每个工作线程池选择不同的计算资源。  
 

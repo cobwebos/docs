@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
 ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70387792"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>示例：通过文本分析检测语言
@@ -263,7 +263,7 @@ Azure 文本分析 REST API 的[语言检测](https://westcentralus.dev.cognitiv
     }
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文介绍了使用 Azure 认知服务中的文本分析进行语言检测的概念和工作流。 其中解释并演示了以下要点：
 

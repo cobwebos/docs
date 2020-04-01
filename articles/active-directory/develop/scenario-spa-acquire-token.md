@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 393c3a06a2366a7d6947faf8bbfe038d6c5982fc
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160060"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419661"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>单页应用程序：获取令牌以调用 API
 
@@ -42,7 +42,7 @@ ms.locfileid: "77160060"
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>通过弹出窗口获取令牌
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下代码将前面描述的模式与弹出体验的方法结合起来：
 
@@ -76,20 +76,40 @@ MSAL Angular 包装器提供 HTTP 侦听器，后者会自动以无提示方式�
 可以在 `protectedResourceMap` 配置选项中指定 API 的作用域。 `MsalInterceptor` 将在自动获取令牌时请求这些作用域。
 
 ```javascript
-//In app.module.ts
+// app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                protectedResourceMap: {"https://graph.microsoft.com/v1.0/me", ["user.read", "mail.send"]}
-            })]
-         })
-
-providers: [ ProductService, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MsalInterceptor,
-        multi: true
+  declarations: [
+    // ...
+  ],
+  imports: [
+    // ...
+    MsalModule.forRoot({
+      auth: {
+        clientId: 'Enter_the_Application_Id_Here',
+      }
+    },
+    {
+      popUp: !isIE,
+      consentScopes: [
+        'user.read',
+        'openid',
+        'profile',
+      ],
+      protectedResourceMap: [
+        ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+      ]
+    })
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
     }
-   ],
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 以无提示方式获取令牌时，不管是成功还是失败，MSAL Angular 都会提供回叫，可进行订阅。 此外还要记住取消订阅。
@@ -103,7 +123,7 @@ providers: [ ProductService, {
 
 ngOnDestroy() {
    this.broadcastService.getMSALSubject().next(1);
-   if(this.subscription) {
+   if (this.subscription) {
      this.subscription.unsubscribe();
    }
  }
@@ -115,7 +135,7 @@ ngOnDestroy() {
 
 ## <a name="acquire-a-token-with-a-redirect"></a>通过重定向获取令牌
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下模式如前文所述，但显示的是如何使用重定向方法以交互方式获取令牌。 你需注册重定向回叫，如前文所述。
 
@@ -149,16 +169,16 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 - 在应用程序的令牌中包括其他声明。
 - 更改 Azure AD 在令牌中返回的某些声明的行为。
-- 添加和访问应用程序的自定义声明。 
+- 添加和访问应用程序的自定义声明。
 
 若要请求 `IdToken` 中的可选声明，可以将一个字符串化声明对象发送到 `AuthenticationParameters.ts` 类的 `claimsRequest` 字段。
 
 ```javascript
-"optionalClaims":  
+"optionalClaims":
    {
       "idToken": [
             {
-                  "name": "auth_time", 
+                  "name": "auth_time",
                   "essential": true
              }
       ],

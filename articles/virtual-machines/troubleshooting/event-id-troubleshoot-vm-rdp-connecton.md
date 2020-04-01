@@ -1,6 +1,6 @@
 ---
 title: 按事件 ID 排查 Azure VM RDP 连接问题 | Microsoft Docs
-description: ''
+description: 使用事件标识解决阻止远程桌面协议 （RDP） 连接到 Azure 虚拟机 （VM） 的各种问题。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 166648402eec7f8033c090a3f7862a902bae4be6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71154195"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437063"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>按事件 ID 排查 Azure VM RDP 连接问题 
 
@@ -63,7 +63,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **关键词：**     经典 <br />
 **用户：**         不适用 <br />
 **计算机：      计算机**      ** <br />
-**说明：** RD 会话主机服务器无法替换 RD 会话主机服务器在 SSL 连接上进行身份验证使用的过期自签名证书。 相关的状态代码为“访问被拒”。
+**描述：** RD 会话主机服务器未能替换用于 TLS 连接上的 RD 会话主机服务器身份验证的过期自签名证书。 相关的状态代码为“访问被拒”。
 
 **日志名称：**     系统 <br />
 **源：**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
@@ -74,7 +74,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **关键词：**     经典 <br />
 **用户：**         不适用 <br />
 **计算机：      计算机**      ** <br />
-**说明：** RD 会话主机服务器无法创建 RD 会话主机服务器在 SSL 连接上进行身份验证使用的新自签名证书，相关状态代码为“对象已存在”。
+**描述：** RD 会话主机服务器未能创建新的自签名证书，用于 TLS 连接上的 RD 会话主机服务器身份验证，相关状态代码已存在对象。
 
 **日志名称：**     系统 <br />
 **源：**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
@@ -85,7 +85,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **关键词：**     经典 <br />
 **用户：**         不适用 <br />
 **计算机：      计算机**      ** <br />
-**说明：** RD 会话主机服务器无法创建 RD 会话主机服务器在 SSL 连接上进行身份验证使用的新自签名证书。 相关状态代码为“不存在 Keyset”
+**描述：** RD 会话主机服务器未能创建新的自签名证书，用于 TLS 连接上的 RD 会话主机服务器身份验证。 相关状态代码为“不存在 Keyset”
 
 此外可通过运行以下命令检查 SCHANNEL 错误事件 36872 和 36870：
 
@@ -103,7 +103,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **关键 字：**       <br />
 **用户：**          系统 <br />
 **计算机：      计算机**      ** <br />
-**说明：** 尝试访问 SSL 服务器凭据私钥时发生灾难性错误。 加密模块返回的错误代码是 0x8009030D。  <br />
+**描述：** 尝试访问 TLS 服务器凭据私钥时发生致命错误。 加密模块返回的错误代码是 0x8009030D。  <br />
 内部错误状态为 10001。
 
 ### <a name="cause"></a>原因
@@ -186,9 +186,9 @@ Start-Service -Name "SessionEnv"
 
 请尝试再次使用 RDP 访问 VM。
 
-#### <a name="update-secure-sockets-layer-ssl-certificate"></a>更新安全套接字层 (SSL) 证书
+#### <a name="update-tlsssl-certificate"></a>更新 TLS/SSL 证书
 
-如果将 VM 设置为使用 SSL 证书，请运行以下命令以获取指纹。 然后检查它是否与证书的指纹相同：
+如果将 VM 设置为使用 TLS/SSL 证书，则运行以下命令以获取指纹。 然后检查它是否与证书的指纹相同：
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash

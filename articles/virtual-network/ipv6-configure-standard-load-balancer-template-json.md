@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 虚拟网络中部署 IPv6 双堆栈应用程序 - 资源管理器模板（预览）
+title: 在 Azure 虚拟网络中部署 IPv6 双堆栈应用程序 - 资源管理器模板
 titlesuffix: Azure Virtual Network
 description: 本文介绍如何使用 Azure 资源管理器 VM 模板在 Azure 虚拟网络中部署具有标准负载均衡器的 IPv6 双堆栈应用程序。
 services: virtual-network
@@ -10,16 +10,16 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 8f2c6bc7fb7ab0939da20932fd531c158549ce7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f9531b5d1decfd462a82b9d389c5af519591c83
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70012849"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420643"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>在 Azure 虚拟网络中部署 IPv6 双堆栈应用程序 - 模板（预览）
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template"></a>在 Azure 虚拟网络中部署 IPv6 双堆栈应用程序 - 模板
 
 本文提供 IPv6 配置任务的列表，以及适用的 Azure 资源管理器 VM 模板部分。 使用本文所述的模板可以在 Azure 中部署一个使用标准负载均衡器的双堆栈 (IPv4 + IPv6) 应用程序，其中包含具有 IPv4 和 IPv6 子网的双堆栈虚拟网络、采用双重 (IPv4 + IPv6) 前端配置的标准负载均衡器、具有采用双重 IP 配置的 NIC 的 VM、网络安全组，以及公共 IP。 
 

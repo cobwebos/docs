@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 1244fe64d0c23782fdae7a0f92415bada4bef55a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf90120157bf64bd62a3b5ec9d8a6b2c6260e024
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76907651"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398303"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>跨应用程序的多个实例均衡分区负载
 若要缩放事件处理应用程序，可以运行应用程序的多个实例，并让这些实例自行进行负载均衡。 在旧版本中，[EventProcessorHost](event-hubs-event-processor-host.md) 允许在接收检查点事件时，在程序的多个实例与这些事件之间进行负载均衡。 在新版本（5.0 或以上）中，**EventProcessorClient**（.NET 和 Java）或 **EventHubConsumerClient**（Python 和 JavaScript）允许执行相同的操作。 使用事件使开发模型变得更简单。 通过注册事件处理程序来订阅你感兴趣的事件。
@@ -83,6 +83,13 @@ ms.locfileid: "76907651"
 
 执行检查点将事件标记为已处理时，将会根据事件偏移量和序列号在检查点存储中添加或更新某个条目。 用户应确定检查点的更新频率。 每次成功处理事件之后进行更新可能会影响性能和成本，因为这会对底层检查点存储触发写入操作。 另外，为每个事件设置检查点意味着对排队消息传递模式使用服务总线队列可能比使用事件中心更好。 事件中心背后的理念是大规模实现“至少一次”传递。 将下游系统指定为幂等，即可方便地在发生故障或重启（导致多次收到相同的事件）后恢复。
 
+> [!NOTE]
+> 如果在支持与 Azure 上通常可用的版本的存储 Blob SDK 不同的环境中使用 Azure Blob 存储作为检查点存储，则需要使用代码将存储服务 API 版本更改为该环境支持的特定版本。 例如，如果您在[Azure 堆栈中心版本 2002 上运行事件中心](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)，则存储服务的最高可用版本是版本 2017-11-09。 在这种情况下，您需要使用代码将存储服务 API 版本定位到 2017-11-09。 有关如何定位特定存储 API 版本的示例，请参阅 GitHub 上的以下示例： 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js)或[类型脚本](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
+
 ## <a name="thread-safety-and-processor-instances"></a>线程安全性和处理程序实例
 
 默认情况下，事件处理器或使用者是线程安全的，并以同步方式运行。 当事件抵达分区时，将调用处理事件的函数。 后续消息以及对此函数的调用在幕后排队，因为消息泵持续在其他线程上后台运行。 此线程安全性消除了线程安全集合的需要，并显著提高了性能。
@@ -93,4 +100,4 @@ ms.locfileid: "76907651"
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](event-hubs-java-get-started-send.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-node-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)

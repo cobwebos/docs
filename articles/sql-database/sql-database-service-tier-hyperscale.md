@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a9917010b7301bf70c3bebf68c35d82f4839e0f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255829"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409047"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 
@@ -202,11 +202,10 @@ Azure SQL 数据库“超大规模”层级目前已在以下区域提供：
 
 下面是正式版发布之前“超大规模”服务层级的当前限制。  我们正在尽一切努力消除其中的许多限制。
 
-| 问题 | 描述 |
+| 问题 | 说明 |
 | :---- | :--------- |
 | 逻辑服务器的“管理备份”窗格不显示将从 SQL Server 筛选的“超大规模”数据库  | “超大规模”服务层级具有单独的备份管理方法，因此“长期保留”和“时间点备份保留”设置不适用/无效。 相应地，“超大规模”数据库不会显示在“管理备份”窗格中。 |
-| 时点还原 | 将数据库迁移到“超大规模”服务层级后，不支持还原到迁移之前的某个时间点。|
-| 将非“超大规模”数据库还原到“超大规模”数据库，或反之 | 无法将超大规模数据库还原到非超大规模数据库，也无法将非超大规模数据库还原到超大规模数据库。|
+| 时点还原 | 您可以在非超大规模数据库保留期内将超大规模数据库还原到非超大规模数据库。 不能将非超大规模数据库还原到超大规模数据库中。|
 | 如果数据库中的一个或多个数据文件大于 1 TB，迁移将会失败 | 在某些情况下，可以通过将大文件缩小为 1 TB 以下来解决此问题。 如果在迁移过程中迁移正在使用的数据库，请确保没有任何文件大于 1 TB。 使用以下查询来确定数据库文件的大小。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | 托管实例 | 超大规模数据库目前不支持 Azure SQL 数据库托管实例。 |
 | 弹性池 |  超大规模 SQL 数据库目前不支持弹性池。|

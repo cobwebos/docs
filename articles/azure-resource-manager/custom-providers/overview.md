@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: fd21117219ea3db6946e7a1b889d92702af65b58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75650482"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398462"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Azure 自定义资源提供程序概述
 
@@ -53,7 +53,7 @@ Azure 自定义资源提供程序是通过在 Azure 和终结点之间创建协�
 }
 ```
 
-properties | 必选 | 描述
+properties | 必选 | 说明
 ---|---|---
 name | *是的* | 终结点定义的名称。 Azure 会通过其 API 在“/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}”下公开此名称
 routingType | *不* | 确定**终结点的协定类型**。 如果未指定，则会默认为 "Proxy"。
@@ -82,7 +82,7 @@ endpoint | *是的* | 终结点，可向其路由请求。 此项将处理响应
 
 为上述示例添加到 Azure 的 API：
 
-HttpMethod | 示例 URI | 描述
+HttpMethod | 示例 URI | 说明
 ---|---|---
 PUT | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>我的自定义资源/[自定义资源名称]？api版本_2018-09-01预览 | Azure REST API 调用以创建新资源。
 DELETE | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>我的自定义资源/[自定义资源名称]？api版本_2018-09-01预览 | 要删除现有资源的 Azure REST API 调用。
@@ -112,7 +112,7 @@ GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>pro
 
 为上述示例添加到 Azure 的 API：
 
-HttpMethod | 示例 URI | 描述
+HttpMethod | 示例 URI | 说明
 ---|---|---
 POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>我的自定义行动？api版本_2018-09-01预览 | Azure REST API 调用以激活操作。
 

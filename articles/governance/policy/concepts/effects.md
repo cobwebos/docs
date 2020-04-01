@@ -3,12 +3,12 @@ title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，可确定管理和报告合规性的方式。
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 631c941173a500a4159a37c7c31107b9a6eab872
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0330cb5c732921efda3627dec92e486657097d82
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239968"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422458"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -158,7 +158,7 @@ Modify 效果 **details** 属性包含用于定义修正任务所需的权限的
 
 **operation** 属性具有以下选项：
 
-|Operation |描述 |
+|Operation |说明 |
 |-|-|
 |addOrReplace |将定义的标记和值添加到资源，即使该标记已存在并使用不同的值。 |
 |添加 |将定义的标记和值添加到资源。 |
@@ -432,15 +432,15 @@ DeployIfNotExists 效果的 **details** 属性包含用于定义要匹配的相�
 
 ## <a name="enforceopaconstraint"></a>强制实施 OPA 约束
 
-此效果与`Microsoft.Kubernetes.Data`的策略定义*模式*一起使用。 它用于将使用[OPA 约束框架](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework)定义的门卫 v3 准入控制规则[传递给](https://www.openpolicyagent.org/)Azure 上的 Kubernetes 群集。
+此效果与`Microsoft.Kubernetes.Data`的策略定义*模式*一起使用。 它用于将使用[OPA 约束框架](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework)定义的 Gatekeeper v3 准入控制规则传递给[Azure](https://www.openpolicyagent.org/)上的自管理的 Kubernetes 群集。
 
 > [!NOTE]
-> [库伯内斯的 Azure 策略](aks-engine.md)处于预览状态，仅支持内置策略定义。
+> [AKS 引擎的 Azure 策略](aks-engine.md)处于公共预览版，仅支持内置策略定义。
 
 ### <a name="enforceopaconstraint-evaluation"></a>强制OPA约束评估
 
 开放策略代理准入控制器实时评估群集上的任何新请求。
-每隔 15 分钟完成群集的完整扫描，并将结果报告给 Azure 策略。
+每隔 5 分钟完成群集的完整扫描，并将结果报告给 Azure 策略。
 
 ### <a name="enforceopaconstraint-properties"></a>强制OPA约束属性
 
@@ -455,7 +455,7 @@ DeployIfNotExists 效果的 **details** 属性包含用于定义要匹配的相�
 
 ### <a name="enforceopaconstraint-example"></a>强制 OPA 约束示例
 
-示例：网守 v3 准入控制规则，用于在 Kubernetes 中设置容器 CPU 和内存资源限制。
+示例：网守 v3 准入控制规则，用于在 AKS 引擎中设置容器 CPU 和内存资源限制。
 
 ```json
 "if": {
@@ -490,8 +490,8 @@ DeployIfNotExists 效果的 **details** 属性包含用于定义要匹配的相�
 
 此效果与`Microsoft.ContainerService.Data`的策略定义*模式*一起使用。 它用于传递在[Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上使用[Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)到[打开策略代理](https://www.openpolicyagent.org/)（OPA） 定义的门卫 v2 准入控制规则。
 
-> [!IMPORTANT]
-> [库伯内斯的 Azure 策略](rego-for-aks.md)处于预览状态，仅支持内置策略定义。 内置策略属于**库伯奈斯**类别。 **"执行再策略"** 效果和相关**库伯内斯服务**类别策略正在被_弃用_。 相反，请使用更新的[强制OPA约束](#enforceopaconstraint)效果。
+> [!NOTE]
+> [AKS 的 Azure 策略](rego-for-aks.md)处于"有限预览"状态，仅支持内置策略定义
 
 ### <a name="enforceregopolicy-evaluation"></a>执行重新策略评估
 

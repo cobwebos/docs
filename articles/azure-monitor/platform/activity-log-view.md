@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2423d04ead9040cce53d847d24efe75be680d94
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275043"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397304"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>查看和检索 Azure 活动日志事件
 
@@ -39,7 +39,7 @@ ms.locfileid: "79275043"
 ## <a name="categories-in-the-activity-log"></a>活动日志中的类别
 活动日志中的每个事件都有特定的类别，该类别在下表中进行了描述。 有关这些类别的架构的完整详细信息，请参阅 [Azure 活动日志事件架构](activity-log-schema.md)。 
 
-| 类别 | 描述 |
+| 类别 | 说明 |
 |:---|:---|
 | 管理 | 包含对通过资源管理器执行的所有创建、更新、删除和操作的记录。 管理事件的示例包括创建虚拟机__ 和删除网络安全组__。<br><br>用户或应用程序通过资源管理器所进行的每一个操作都会作为特定资源类型上的操作建模。 如果操作类型为 _"写入_"、_删除_或_操作_，则该操作的开始和成功或失败的记录将记录在"管理"类别中。 管理事件还包括任何对订阅中基于角色的访问控制进行的更改。 |
 | 服务运行状况 | 包含对任何发生在 Azure 中的服务运行状况事件的记录。 服务运行状况事件的一个示例是“美国东部的 SQL Azure 正处于故障时间”。__ <br><br>服务健康事件有六个品种：_行动要求_，_辅助恢复_，_事件_，_维护_，_信息_，或_安全_。 仅当订阅中存在会受事件影响的资源时，才会创建这些事件。
@@ -168,35 +168,6 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
-
-
-## <a name="activity-logs-analytics-monitoring-solution"></a>Activity Logs Analytics 监视解决方案
-Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于分析 Log Analytics 工作区中的活动日志记录。
-
-### <a name="prerequisites"></a>先决条件
-必须创建一个诊断设置，以便将订阅的活动日志发送到 Log Analytics 工作区。 请参阅[在 Azure Monitor 的 Log Analytics 工作区中收集 Azure 平台日志](resource-logs-collect-workspace.md)。
-
-### <a name="install-the-solution"></a>安装解决方案
-按照[监视解决方案](../insights/solutions.md#install-a-monitoring-solution)中的过程安装 **Activity Log Analytics** 解决方案。 无需其他配置。
-
-### <a name="use-the-solution"></a>使用解决方案
-单击“活动日志”页顶部的“日志”，打开订阅的 [Activity Log Analytics 监视解决方案](activity-log-collect.md)。******** 或在 Azure 门户的订阅“监视”**** 菜单中访问所有监视解决方案。 在“见解”部分选择“更多”，打开包含解决方案磁贴的“概览”页************。 “Azure 活动日志”磁贴显示工作区中 **AzureActivity** 记录的计数。****
-
-![Azure 活动日志磁贴](media/collect-activity-logs/azure-activity-logs-tile.png)
-
-
-单击“Azure 活动日志”**** 磁贴，打开“Azure 活动日志”**** 视图。 视图包含下表中的可视化部件。 每个部件按照指定时间范围列出了匹配该部件条件的最多 10 个项。 可通过单击部件底部的“查看全部”**** 运行返回所有匹配记录的日志查询。
-
-![Azure 活动日志仪表板](media/collect-activity-logs/activity-log-dash.png)
-
-| 可视化部件 | 描述 |
-| --- | --- |
-| Azure 活动日志条目 | 显示所选日期范围内排名前列的 Azure 活动日志条目记录总数的条形图，并显示前 10 个活动调用方的列表。 单击该条形图可针对 `AzureActivity` 运行日志搜索。 单击某个调用方项，运行日志搜索，为该项返回所有活动日志条目。 |
-| 按状态分类的活动日志 | 为所选日期范围内的 Azure 活动日志状态显示圆环图，并显示一个包含前十个状态记录的列表。 单击该图表可针对 `AzureActivity | summarize AggregatedValue = count() by ActivityStatus` 运行日志查询。 单击某个状态项，运行日志搜索，为该状态记录返回所有活动日志条目。 |
-| 按资源分类的活动日志 | 显示包含活动日志的资源总数，并列出前十个为每个资源显示记录计数的资源。 单击全部区域可针对 `AzureActivity | summarize AggregatedValue = count() by Resource` 运行日志搜索，这会显示解决方案可以使用的所有 Azure 资源。 单击某个资源以运行日志查询，为该资源返回所有活动记录。 |
-| 按资源提供程序分类的活动日志 | 显示生成活动日志的资源提供程序的总数，并列出前十个资源提供程序。 单击总区域可针对 `AzureActivity | summarize AggregatedValue = count() by ResourceProvider` 运行日志查询，这会显示所有 Azure 资源提供程序。 单击某个资源提供程序可以运行日志查询，为该提供程序返回所有活动记录。 |
-
-
 
 
 ## <a name="next-steps"></a>后续步骤

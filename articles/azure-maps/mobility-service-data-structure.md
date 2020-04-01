@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 30696c5dcb3353ea468aa78dbc107dae4d292edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dfc6793bba473c4046863937baa292dde7bf421
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334447"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478704"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Azure 地图移动服务中的数据结构
 
@@ -31,13 +31,13 @@ ms.locfileid: "80334447"
 
 ## <a name="stop-ids"></a>停止指示
 
-中转站可以由两种类型的 ID（[一般传输馈送规范 （GFTS）](https://gtfs.org/) ID 和 Azure 映射停止 ID）来引用。 GFTS ID 称为停止密钥，Azure 映射停止 ID 称为 stopID。 当经常提到中转站时，鼓励您使用 Azure 映射停止 ID。 只要存在物理停止，停止 ID 就越稳定，并且可能保持不变。 GTFS 停止 ID 更新频率更大。 例如，GTFS 停止 ID 可以根据 GTFS 提供程序请求或发布新的 GTFS 版本时更新。 虽然物理停止没有变化，但 GTFS 停止 ID 可能会更改。
+中转站可以由两种类型的 ID（[一般传输馈送规范 （GFTS）](http://gtfs.org/) ID 和 Azure 映射停止 ID）来引用。 GFTS ID 称为停止密钥，Azure 映射停止 ID 称为 stopID。 当经常提到中转站时，鼓励您使用 Azure 映射停止 ID。 只要存在物理停止，停止 ID 就越稳定，并且可能保持不变。 GTFS 停止 ID 更新频率更大。 例如，GTFS 停止 ID 可以根据 GTFS 提供程序请求或发布新的 GTFS 版本时更新。 虽然物理停止没有变化，但 GTFS 停止 ID 可能会更改。
 
 要开始，您可以使用[获取附近的中转 API](https://aka.ms/AzureMapsMobilityNearbyTransit)请求附近的中转站。
 
 ## <a name="line-groups-and-lines"></a>线组和行
 
-移动服务对行和行组使用并行数据模型。 此模型用于更好地处理从[GTFS](https://gtfs.org/)路由和行程数据继承的更改。
+移动服务对行和行组使用并行数据模型。 此模型用于更好地处理从[GTFS](http://gtfs.org/)路由和行程数据继承的更改。
 
 
 ### <a name="line-groups"></a>行组

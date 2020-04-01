@@ -3,12 +3,12 @@ title: Azure Migrate 设备
 description: 提供服务器评估和迁移中使用的 Azure 迁移设备的概述。
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 1bb3372467919f1471fa9577cd60e9cecaf1750d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336946"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437593"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -70,7 +70,7 @@ Azure 迁移设备用于以下方案。
 **支持部署** | 使用 PowerShell 安装脚本部署为专用物理计算机或 VM。
 **项目支持** |  设备可以与单个项目关联。 <br/> 任意数量的设备都可以与单个项目关联。<br/> 
 **发现限制** | 设备可以发现多达 250 台物理服务器。
-**电源外壳脚本** | 从门户将脚本 （AzureMigrate 安装程序.ps1） 下载到压缩文件夹中。 [了解详情](tutorial-assess-physical.md#set-up-the-appliance)。 或者，[直接下载](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 下载大小为 59.7 MB。
+**电源外壳脚本** | 从门户将脚本 （AzureMigrate 安装程序.ps1） 下载到压缩文件夹中。 [了解详细信息](tutorial-assess-physical.md#set-up-the-appliance)。 或者，[直接下载](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 下载大小为 59.7 MB。
 **软件/硬件** |  设备应在具有 Windows Server 2016、32 GB RAM、8 个 vCPU、大约 80 GB 磁盘存储和外部虚拟交换机的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接或通过代理进行 Internet 访问。<br/><br/> 如果在物理计算机上运行设备，请确保它运行 Windows Server 2016，并满足硬件要求。 
 **哈希值** | [验证](deploy-appliance-script.md#verify-file-security)PowerShell 脚本哈希值。
 
@@ -79,14 +79,14 @@ Azure 迁移设备用于以下方案。
 Azure 迁移设备需要连接到 Internet。
 
 - 部署设备时，Azure 迁移对下表中总结的 URL 执行连接检查。
-- 如果您使用的是基于 URL 的代理连接到 Internet，则允许访问这些 URL，确保代理解析在查找 URL 时收到的任何 CNAME 记录。
+- 如果您使用的是基于 URL 的代理连接到互联网，则需要允许访问这些 URL，确保代理解析在查找 URL 时收到的任何 CNAME 记录。
 
-**Url** | **详细信息**  
+**URL** | **详细信息**  
 --- | --- |
 *.portal.azure.com  | 导航到 Azure 门户。
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | 登录到 Azure 订阅。
-*.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备创建活动目录应用，以便与 Azure 迁移通信。
-management.azure.com | 为设备创建活动目录应用，以便与 Azure 迁移服务进行通信。
+*.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备创建 Azure 活动目录 （AD） 应用，以便与 Azure 迁移进行通信。
+management.azure.com | 为设备创建 Azure AD 应用，以便与 Azure 迁移服务进行通信。
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.vault.azure.net | 在 Azure 密钥保管库中管理机密。
 aka.ms/* | 允许访问也称为链接。 用于 Azure 迁移设备更新。
@@ -94,7 +94,7 @@ download.microsoft.com/download | 允许从微软下载下载。
 *.servicebus.windows.net | 设备和 Azure 迁移服务之间的通信。
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | 连接到 Azure 迁移服务 URL。
 *.hypervrecoverymanager.windowsazure.com | **用于无 VMware 无代理迁移**<br/><br/> 连接到 Azure 迁移服务 URL。
-* .blob.core.windows.net |  **用于无 VMware 无代理迁移**<br/><br/>将数据上载到存储以进行迁移。
+\* .blob.core.windows.net |  **用于无 VMware 无代理迁移**<br/><br/>将数据上载到存储以进行迁移。
 
 
 
@@ -144,7 +144,7 @@ IPv6 地址 | vm.Guest.Net
 读取吞吐量（每秒 MB） | net.received.average
 写入吞吐量（每秒 MB） | net.transmitted.average
 **库存路径详细信息** | 
-“属性” | container.GetType().Name
+名称 | container.GetType().Name
 子对象类型 | container.ChildType
 引用详细信息 | container.MoRef
 父级详细信息 | Container.Parent

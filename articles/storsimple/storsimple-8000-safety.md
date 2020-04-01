@@ -1,5 +1,5 @@
 ---
-title: StorSimple 设备的安全性 | Microsoft Docs
+title: 安全安装&操作 StorSimple 8000 系列设备
 description: 描述安全约定、指南和注意事项，并解释如何安全地安装和运行 StorSimple 设备。
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 66b881ab13e27ee457af4fa1bafb82ad14e9674d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c880cd18e7227a728d7e276e72a5ea8c1e421de
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60631603"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396631"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行 StorSimple 设备
 ![警告图标](./media/storsimple-safety/IC740879.png)
@@ -30,7 +30,7 @@ ms.locfileid: "60631603"
 ## <a name="safety-icon-conventions"></a>安全图标约定
 以下是在查看安全预防措施时出现的图标，安装和运行 Microsoft Azure StorSimple 设备时应遵循这些措施。
 
-| 图标 | 描述 |
+| 图标 | 说明 |
 |:--- |:--- |
 | ![危险图标](./media/storsimple-safety/IC740879.png) **DANGER!** |指示如果未能避免危险情况，将导致死亡或重伤。 此警示语仅限于最为极端的情况。 |
 | ![警告图标](./media/storsimple-safety/IC740879.png) **WARNING!** |指示如果未能避免危险情况，可能导致死亡或重伤。 |
@@ -67,7 +67,7 @@ ms.locfileid: "60631603"
 若要降低电气连接温度过高或着火的可能性：
 
 * 使用带电气过载保护的合适电源，以满足技术规格中详述的要求。
-* 请勿使用分叉型电源线（“Y”导线）。
+* 请勿使用分叉电源线（"Y"引线）。
 * 为了符合适用的安全、发射和热要求，不应移除任意盖子，并且所有托架中必须填充插件模块或驱动器挡板。
 * 确保以制造商指定的方式使用设备。 如果未以制造商指定的方式使用本设备，则该设备提供的保护可能会减弱。
 
@@ -96,7 +96,7 @@ ms.locfileid: "60631603"
 
 * 机架应具有安全的配电系统。 它必须为机箱提供过流保护，并且决不能过载安装机箱总数。 应遵循名牌上显示的额定功耗。
 * 配电系统必须在机架中为每个机箱提供可靠的接地。
-* 配电系统的设计必须考虑所有机箱中所有电源的总接地泄漏电流。 请注意，每个机箱中的每个电源在 264 伏，60 Hz 的情况下最大接地泄漏电流为 1.0 mA。 机架可能需要标有“高泄漏电流。 在连接至电源前，接地连接至关重要。”
+* 配电系统的设计必须考虑所有机箱中所有电源的总接地泄漏电流。 请注意，每个机箱中的每个电源在 264 伏，60 Hz 的情况下最大接地泄漏电流为 1.0 mA。 机架可能需要标有"高泄漏电流"的标签。 在连接电源之前，接地（接地）连接至关重要。
 * 当为机架配置机箱时，必须满足 UL 60950-1 和 IEC 60950-1/EN 60950-1 的安全要求。
 
 ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:**

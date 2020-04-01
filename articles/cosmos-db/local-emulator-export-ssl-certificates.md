@@ -1,29 +1,29 @@
 ---
 title: 导出 Azure Cosmos DB 模拟器证书
-description: 以不使用 Windows 证书存储的语言和运行时进行开发时，需要导出并管理 SSL 证书。 本文提供分步说明。
+description: 使用不使用 Windows 证书存储的语言和运行时进行开发时，需要导出和管理 TLS/SSL 证书。 本文提供分步说明。
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 623837b30038ef8524aef1e87aeb5933204925a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4283ea7d500ca038d9f1cade89c772880ece199
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156015"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409069"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>导出 Azure Cosmos DB 模拟器证书供 Java、Python 和 Node.js 使用
 
 [**下载模拟器**](https://aka.ms/cosmosdb-emulator)
 
-为进行开发，Azure Cosmos DB 模拟器提供了一个模拟 Azure Cosmos DB 服务的本地环境（包括使用 SSL 连接）。 本文演介绍了如何导出 SSL 证书以用于不与 Windows 证书存储集成的语言和运行时，例如使用自己的[证书存储](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)的 Java、使用[套接字包装](https://docs.python.org/2/library/ssl.html)的 Python 和使用 [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback) 的 Node.js。 可以在[使用 Azure Cosmos DB 模拟器进行开发和测试](./local-emulator.md)中了解有关模拟器的更多信息。
+Azure Cosmos DB 仿真器提供了一个本地环境，用于模拟 Azure Cosmos DB 服务，用于开发目的，包括使用 TLS 连接。 这篇文章演示如何导出 TLS/SSL 证书，用于不使用 Windows 证书存储的语言和运行时，例如使用其自己的[证书存储](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)的 Java 和使用[套接字包装器](https://docs.python.org/2/library/ssl.html)的 Python 和使用[tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)的 Node.js。 可以在[使用 Azure Cosmos DB 模拟器进行开发和测试](./local-emulator.md)中了解有关模拟器的更多信息。
 
 本教程涵盖以下任务：
 
 > [!div class="checklist"]
 > * 旋转证书
-> * 导出 SSL 证书
+> * 导出 TLS/SSL 证书
 > * 了解了如何在 Java、Python 和 Node.js 中使用证书
 
 ## <a name="certification-rotation"></a>证书旋转
@@ -34,7 +34,7 @@ Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 
 
 ![Azure Cosmos DB 本地模拟器重置数据](./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png)
 
-## <a name="how-to-export-the-azure-cosmos-db-ssl-certificate"></a>如何导出 Azure Cosmos DB SSL 证书
+## <a name="how-to-export-the-azure-cosmos-db-tlsssl-certificate"></a>如何导出 Azure 宇宙 DB TLS/SSL 证书
 
 1. 通过运行 certlm.msc 启动 Windows 证书管理器并导航到“个人”->“证书”文件夹，打开友好名称为 "DocumentDbEmulatorCertificate"**** 的证书。
 
@@ -48,7 +48,7 @@ Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 
 
     ![Azure Cosmos DB 本地模拟器导出步骤 3](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png)
 
-4. 单击“下一步”****。
+4. 单击 **“下一步”** 。
 
     ![Azure Cosmos DB 本地模拟器导出步骤 4](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
 
@@ -74,15 +74,15 @@ Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 
 
 请按照[将证书添加到 Java CA 证书存储](https://docs.microsoft.com/azure/java-add-certificate-ca-store)中的说明将 X.509 证书导入到默认 Java 证书存储。 请记住，需在 ％JAVA_HOME％ 目录中运行 keytool。
 
-安装“CosmosDBEmulatorCertificate”SSL 证书后，应用程序应能连接并使用本地 Azure Cosmos DB 模拟器。 如果继续遇到问题，可能需要遵循[调试 SSL/TLS 连接](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html)一文。 很有可能是该证书未安装到 %JAVA_HOME%/jre/lib/security/cacerts 存储中。 例如，如果安装了多个 Java 版本，应用程序使用的 cacerts 存储可能未更新。
+安装"宇宙DBE仿真器证书"TLS/SSL证书后，应用程序应该能够连接和使用本地 Azure Cosmos DB 仿真器。 如果继续遇到问题，可能需要遵循[调试 SSL/TLS 连接](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html)一文。 很有可能是该证书未安装到 %JAVA_HOME%/jre/lib/security/cacerts 存储中。 例如，如果安装了多个 Java 版本，应用程序使用的 cacerts 存储可能未更新。
 
 ## <a name="how-to-use-the-certificate-in-python"></a>如何在 Python 中使用证书
 
-默认情况下，用于 SQL API 的 [Python SDK（版本 2.0.0 或更高版本）](sql-api-sdk-python.md)在连接到本地仿真器时不会尝试使用 SSL 证书。 但如果要使用 SSL 验证，可以按照 [Python 套接字包装器](https://docs.python.org/2/library/ssl.html)一文中的示例操作。
+默认情况下，SQL API 的[Python SDK（版本 2.0.0 或更高版本）](sql-api-sdk-python.md)在连接到本地仿真器时不会尝试使用 TLS/SSL 证书。 但是，如果要使用 TLS 验证，可以按照[Python 套接字包装器](https://docs.python.org/2/library/ssl.html)文档中的示例进行操作。
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>如何在 Node.js 中使用证书
 
-默认情况下，用于 SQL API 的 [Node.js SDK（版本 1.10.1 或更高版本）](sql-api-sdk-node.md)在连接到本地仿真器时不会尝试使用 SSL 证书。 但如果要使用 SSL 验证，可以按照 [Node.js 文档](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)中的示例操作。
+默认情况下，SQL API 的[Node.js SDK（版本 1.10.1 或更高版本）](sql-api-sdk-node.md)在连接到本地仿真器时不会尝试使用 TLS/SSL 证书。 但是，如果您想要使用 TLS 验证，您可以按照[Node.js 文档中](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)的示例操作。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -90,7 +90,7 @@ Azure Cosmos DB 本地模拟器中的证书在首次运行模拟器时生成。 
 
 > [!div class="checklist"]
 > * 旋转证书
-> * 导出 SSL 证书
+> * 导出 TLS/SSL 证书
 > * 了解了如何在 Java、Python 和 Node.js 中使用证书
 
 现在可以转到“概念”部分详细了解 Azure Cosmos DB。 

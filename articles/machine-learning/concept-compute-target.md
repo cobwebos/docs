@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270415"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398183"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标? 
 
@@ -48,12 +48,14 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 
 托管计算资源是由 Azure 机器学习创建和管理的。 此计算针对机器学习工作负荷进行了优化。 Azure 机器学习计算群集和[计算实例](concept-compute-instance.md)是仅有的托管计算。 将来可能会添加其他托管计算资源。
 
-可以通过以下方法创建 Azure 机器学习计算实例（预览版）或计算群集：
+您可以创建 Azure 机器学习计算实例（预览）或从：
+* Azure 机器学习工作室
+* Azure 门户
+* Python SDK[计算实例](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py)和[Aml 计算](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)类
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* 资源管理器模板
 
-| | Azure 机器学习工作室 | Azure 门户 | SDK 中 IsInRole 中的声明 | 资源管理器模板 | CLI |
-|---| ----- | ----- | ----- | ----- | ----- |
-| 计算实例 | 是 | 是 | 是 | 是 |  |
-| 计算群集 | 是 | 是 | 是 | 是 | 是 |
+您还可以使用[Azure CLI 的机器学习扩展创建](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)计算群集。
 
 创建时，这些计算资源会自动成为工作区的一部分，这与其他类型的计算目标不同。
 

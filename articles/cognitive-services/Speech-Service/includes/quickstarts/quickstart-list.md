@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 1e329e71298d5fc357f0a4cb7562883bfb742c6b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 1bc7d5e4b895f451b1680408f6cd7d17d76019e7
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73986593"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80243659"
 ---
 - [快速入门：识别来自麦克风的语音](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone.md)
 - [快速入门：从文件中识别语音](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-file.md)
@@ -13,3 +13,4 @@ ms.locfileid: "73986593"
 - [快速入门：将文本合成到音频设备](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech.md)
 - [快速入门：将文本合成到文件](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-audio-file.md)
 - [快速入门：识别意向](~/articles/cognitive-services/speech-service/quickstarts/intent-recognition.md)
+- [快速入门：创建自定义语音助手](~/articles/cognitive-services/speech-service/quickstarts/voice-assistants.md)

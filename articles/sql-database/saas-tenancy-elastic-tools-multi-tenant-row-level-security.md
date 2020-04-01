@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a5fe5d6d4076c5d82d33737d05bb95ede0a89c00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cf260620d4e907fdb9190a052155fa22f1c7985
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73822031"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398327"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
 
@@ -253,7 +253,7 @@ GO
 ```
 
 > [!TIP]
-> 在复杂的项目中，可能需要在数百个表中添加谓词，这可能很单调乏味。 可以通过一个帮助程序存储过程来自动生成安全策略，并在架构的所有表中添加谓词。 有关详细信息，请参阅 [Apply Row-Level Security to all tables - helper script](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-to-all-tables-helper-script)（向所有表应用行级安全性 - 帮助器脚本）博客中的文章。
+> 在复杂的项目中，可能需要在数百个表中添加谓词，这可能很单调乏味。 可以通过一个帮助程序存储过程来自动生成安全策略，并在架构的所有表中添加谓词。 有关详细信息，请参阅 [Apply Row-Level Security to all tables - helper script](https://techcommunity.microsoft.com/t5/sql-server/apply-row-level-security-to-all-tables-helper-script/ba-p/384360)（向所有表应用行级安全性 - 帮助器脚本）博客中的文章。
 
 现在，如果再次运行示例应用程序，租户只能看到属于他们的行。 此外，应用程序只能插入当前已连接到分片数据库的租户的行，而不能插入属于其他租户的行。 而且，应用不能更新任何可见行中的 TenantId。 如果应用尝试执行上述任一操作，则会引发 DbUpdateException。
 

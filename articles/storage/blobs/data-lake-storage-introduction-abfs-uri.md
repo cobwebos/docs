@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 04df30c2a97e865d23999df26768b38cb38be607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0f67e0d72ee5710a42b6de744ddae98e20220a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68855560"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437133"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>使用 Azure Data Lake Storage Gen2 URI
 
@@ -27,7 +27,7 @@ Data Lake Storage Gen2 的 URI 语法依赖于存储帐户是否设置为将 Dat
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **方案标识符**：`abfs` 协议用作方案标识符。 可以选择是否使用安全套接字层 (SSL) 连接进行连接。 使用 `abfss` 通过安全套接字层连接进行连接。
+1. **方案标识符**：`abfs` 协议用作方案标识符。 您可以选择连接或不使用传输层安全 （TLS），以前称为安全套接字层 （SSL） 连接。 用于`abfss`连接 TLS 连接。
 
 2. **文件系统**：保存文件和文件夹的父位置。 这与 Azure 存储 Blob 服务中的“容器”相同。
 

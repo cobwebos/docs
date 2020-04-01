@@ -7,22 +7,22 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: fd5308574e84ab6d2e30b9352254683b2d1d6fdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0521f384a333c3054397fb0ec7c2ab907e54f67
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78403563"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411752"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>客户管理的密钥磁盘加密
 
-Azure HDInsight 支持客户管理的关键加密，用于托管磁盘和连接到 HDInsight 群集虚拟机的资源磁盘上的数据。 此功能允许您使用 Azure 密钥保管库来管理保护 HDInsight 群集上静态数据的加密密钥。 
+Azure HDInsight 支持客户管理的关键加密，用于托管磁盘和连接到 HDInsight 群集虚拟机的资源磁盘上的数据。 此功能允许您使用 Azure 密钥保管库来管理保护 HDInsight 群集上静态数据的加密密钥。
 
 通过 Azure 存储服务加密 (SSE) 保护 HDInsight 中的所有托管磁盘。 默认情况下，这些磁盘上的数据使用 Microsoft 托管密钥进行加密。 如果为 HDInsight 启用客户管理的密钥，则可以为 HDInsight 提供加密密钥，以便使用 Azure 密钥保管库使用这些密钥并管理这些密钥。
 
 本文档不解决存储在 Azure 存储帐户中的数据。 有关 Azure 存储加密的详细信息，请参阅[静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)。 群集可能具有一个或多个附加的 Azure 存储帐户，其中加密密钥也可以由 Microsoft 管理或客户管理，但加密服务不同。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 客户管理密钥加密是在群集创建期间处理的一步过程，无需额外费用。 需要做的就是将 HDInsight 注册为 Azure Key Vault 的托管标识，并在创建群集时添加加密密钥。
 
@@ -86,7 +86,7 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
 1. 在 **"添加访问策略"** 页中，提供以下信息：
 
-    |properties |描述|
+    |properties |说明|
     |---|---|
     |密钥权限|选择**获取**、**取消包装键**和**包装键**。|
     |秘密权限|选择**获取**、**设置**和**删除**。|
@@ -94,9 +94,9 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
     ![为 Azure Key Vault 访问策略设置“选择主体”](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. 选择“添加”****。
+1. 选择 **添加** 。
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
     ![保存 Azure 密钥保管库访问策略](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
@@ -146,6 +146,42 @@ az hdinsight rotate-disk-encryption-key \
 --name MyCluster \
 --resource-group MyResourceGroup
 ```
+
+## <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
+
+要使用资源管理器模板使用客户托管密钥，请使用以下更改更新模板：
+
+1. 在**azuredeploy.json**文件中，向资源"对象添加以下属性：
+
+    ```json
+       "diskEncryptionProperties":
+         {
+                 "vaultUri": "[parameters('diskEncryptionVaultUri')]",
+                  "keyName": "[parameters('diskEncryptionKeyName')]",
+                  "keyVersion": "[parameters('diskEncryptionKeyVersion')]",
+                   "msiResourceId": "[parameters('diskEncryptionMsiResourceId')]"
+         }
+
+1. In the **azuredeploy.parameters.json** file, add the following parameters. You can get the values of these parameters from the Key Vault URI and the managed Identity. For example, if you have the following URI and identity values,
+    * Sample key vault URI: https://<KeyVault_Name>.vault.azure.net/keys/clusterkey/<Cluster_Key_Value>
+    * Sample user-assigned managed identity: "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>
+
+    The parameters in the **azuredeploy.parameters.json** file are:
+
+    ```json
+   "diskEncryptionVaultUri": {
+            "value": "https://<KeyVault_Name>.vault.azure.net"
+        },
+        "diskEncryptionKeyName": {
+            "value": "clusterkey"
+        },
+        "diskEncryptionKeyVersion": {
+            "value": "<Cluster_Key_Value>"
+        },
+        "diskEncryptionMsiResourceId": {
+            "value": "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>"
+        }
+    ```
 
 ## <a name="faq-for-customer-managed-key-encryption"></a>客户管理密钥加密常见问题解答
 

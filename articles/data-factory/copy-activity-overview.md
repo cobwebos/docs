@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 39885782b55dca9c73f10990269d912f9b5727fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edb80c604951a140d21e3775eec3f1dc6d55af73
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257965"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421416"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -63,7 +63,7 @@ ms.locfileid: "80257965"
 
 支持复制活动的服务已在 [Azure Integration Runtime 位置](concepts-integration-runtime.md#integration-runtime-location)中所列的区域和地理位置全球发布。 全局可用拓扑可确保高效的数据移动，此类移动通常避免跨区域跃点。 请参阅[各区域推出的产品](https://azure.microsoft.com/regions/#services)，检查数据工厂和数据移动是否可在特定的区域中使用。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -125,7 +125,7 @@ ms.locfileid: "80257965"
 
 #### <a name="syntax-details"></a>语法详细信息
 
-| properties | 描述 | 必需？ |
+| properties | 说明 | 必需？ |
 |:--- |:--- |:--- |
 | type | 对于复制活动，请设置为 `Copy` | 是 |
 | inputs | 指定创建的指向源数据的数据集。 复制活动仅支持单个输入。 | 是 |
@@ -134,10 +134,10 @@ ms.locfileid: "80257965"
 | source | 指定复制源类型以及用于检索数据的相应属性。<br/>有关详细信息，请参阅[受支持的数据存储和格式](#supported-data-stores-and-formats)中所列的连接器文章中的“复制活动属性”部分。 | 是 |
 | 接收器 | 指定复制接收器类型以及用于写入数据的相应属性。<br/>有关详细信息，请参阅[受支持的数据存储和格式](#supported-data-stores-and-formats)中所列的连接器文章中的“复制活动属性”部分。 | 是 |
 | 转换器 | 指定从源到接收器的显式列映射。 当默认复制行为无法满足需求时，此属性适用。<br/>有关详细信息，请参阅[复制活动中的架构映射](copy-activity-schema-and-type-mapping.md)。 | 否 |
-| dataIntegrationUnits | 指定一个度量值，用于表示 [Azure Integration Runtime](concepts-integration-runtime.md) 在复制数据时的算力。 这些单位以前称为云数据移动单位 (DMU)。 <br/>有关详细信息，请参阅[数据集成单位](copy-activity-performance.md#data-integration-units)。 | 否 |
-| parallelCopies | 指定从源读取数据和向接收器写入数据时想要复制活动使用的并行度。<br/>有关详细信息，请参阅[并行复制](copy-activity-performance.md#parallel-copy)。 | 否 |
+| dataIntegrationUnits | 指定一个度量值，用于表示 [Azure Integration Runtime](concepts-integration-runtime.md) 在复制数据时的算力。 这些单位以前称为云数据移动单位 (DMU)。 <br/>有关详细信息，请参阅[数据集成单位](copy-activity-performance-features.md#data-integration-units)。 | 否 |
+| parallelCopies | 指定从源读取数据和向接收器写入数据时想要复制活动使用的并行度。<br/>有关详细信息，请参阅[并行复制](copy-activity-performance-features.md#parallel-copy)。 | 否 |
 | 保护区 | 指定在数据复制期间是否保留元数据/ACL。 <br/>有关详细信息，请参阅[保留元数据](copy-activity-preserve-metadata.md)。 |否 |
-| enableStaging<br/>stagingSettings | 指定是否将临时数据分阶段存储在 Blob 存储中，而不是将数据直接从源复制到接收器。<br/>有关有用的方案和配置详细信息，请参阅[分阶段复制](copy-activity-performance.md#staged-copy)。 | 否 |
+| enableStaging<br/>stagingSettings | 指定是否将临时数据分阶段存储在 Blob 存储中，而不是将数据直接从源复制到接收器。<br/>有关有用的方案和配置详细信息，请参阅[分阶段复制](copy-activity-performance-features.md#staged-copy)。 | 否 |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| 选择将数据从源复制到接收器时如何处理不兼容的行。<br/>有关详细信息，请参阅[容错](copy-activity-fault-tolerance.md)。 | 否 |
 
 ## <a name="monitoring"></a>监视
@@ -196,7 +196,7 @@ ms.locfileid: "80257965"
 
 要以编程方式配置它，请`additionalColumns`在复制活动源中添加该属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
 | 其他列 | 添加要复制到接收器的其他数据列。<br><br>`additionalColumns`数组下的每个对象表示一个额外的列。 定义`name`列名称，并`value`指示该列的数据值。<br><br>允许的数据值包括：<br>- **`$$FILEPATH`**- 保留变量指示将源文件的相对路径存储到数据集中指定的文件夹路径。 应用于基于文件的源。<br>- **表达**<br>- **静态值** | 否 |
 

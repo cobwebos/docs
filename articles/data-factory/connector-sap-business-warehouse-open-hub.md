@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
-ms.openlocfilehash: ad7d171cb115729e174090c1c80915abbde5999f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b905c75e920577e46017caeb456f8237421086b2
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238727"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421210"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复制数据
 
@@ -104,7 +104,7 @@ ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和
 
 SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为 **：SapOpenHub** | 是 |
 | server | SAP BW 实例所驻留的服务器的名称。 | 是 |
@@ -146,7 +146,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从/向 SAP BW Open Hub 复制数据，请将数据集的 type 属性设置为 **SapOpenHubTable**。 支持以下属性。
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SapOpenHubTable**。  | 是 |
 | openHubDestinationName | 要从其复制数据的 Open Hub Destination 的名称。 | 是 |
@@ -180,7 +180,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从 SAP BW Open Hub 复制数据，复制活动的 **source** 节支持以下属性：
 
-| properties | 描述 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **SapOpenHubSource**。 | 是 |
 | excludeLastRequest | 是否排除最后一个请求的记录。 | 否（默认值**为 true）** |
@@ -189,7 +189,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 >[!TIP]
 >如果 Open Hub 表只包含通过单个请求 ID 生成的数据（例如，始终进行完全加载并覆盖表中的现有数据，或者只在测试时运行 DTP 一次），则请记住取消选中“excludeLastRequest”选项，以便复制数据。
 
-要加快数据加载速度，可以设置[`parallelCopies`](copy-activity-performance.md#parallel-copy)复制活动以并行从 SAP BW 开放集线器加载数据。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会并发执行 4 个 RFC 调用，每个 RFC 调用都会从按 DTP 请求 ID 和包 ID 分区的 SAP BW Open Hub 表检索一部分数据。 这适用于唯一 DTP 请求 ID + 包 ID 的数目大于 `parallelCopies` 值的情况。 将数据复制到基于文件的数据存储中时，还建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
+要加快数据加载速度，可以设置[`parallelCopies`](copy-activity-performance-features.md#parallel-copy)复制活动以并行从 SAP BW 开放集线器加载数据。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会并发执行 4 个 RFC 调用，每个 RFC 调用都会从按 DTP 请求 ID 和包 ID 分区的 SAP BW Open Hub 表检索一部分数据。 这适用于唯一 DTP 请求 ID + 包 ID 的数目大于 `parallelCopies` 值的情况。 将数据复制到基于文件的数据存储中时，还建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
 **例子：**
 
@@ -230,14 +230,14 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 | SAP ABAP 类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| C（字符串） | String |
+| C（字符串） | 字符串 |
 | I（整数） | Int32 |
 | F（浮点数） | Double |
-| D（日期） | String |
-| T（时间） | String |
+| D（日期） | 字符串 |
+| T（时间） | 字符串 |
 | P（BCD 打包，货币，小数，Qty） | Decimal |
-| N (Numc) | String |
-| X（二进制，原始） | String |
+| N (Numc) | 字符串 |
+| X（二进制，原始） | 字符串 |
 
 ## <a name="lookup-activity-properties"></a>Lookup 活动属性
 

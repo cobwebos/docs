@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 03/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a0511a19477f3d76baf9c453316c5348cc31397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2b30e8f6bcbe7c0e739455f4942712f68ff8404
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332653"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437456"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure 活动目录 B2C 自定义策略中定义电话因子技术配置文件
 
@@ -24,12 +24,11 @@ ms.locfileid: "80332653"
 
 Azure 活动目录 B2C（Azure AD B2C）支持注册和验证电话号码。 此技术配置文件：
 
-- 提供与用户交互的用户界面。
-- 使用内容定义来控制外观。
-- 支持电话和短信来验证电话号码。
+- 提供用户界面，以便与用户进行交互以验证或注册电话号码。
+- 支持电话呼叫和短信以验证电话号码。
 - 支持多个电话号码。 用户可以选择要验证的一个电话号码。  
-- 如果提供电话号码，则电话因子用户界面要求用户验证电话号码。 如果未提供，则要求用户注册新电话号码。
-- 返回声明，指示用户是否提供了新电话号码。 可以使用此声明来决定是否应将电话号码保留到 Azure AD 用户配置文件。  
+- 返回声明，指示用户是否提供了新电话号码。 可以使用此声明来决定是否应将电话号码保留到 Azure AD B2C 用户配置文件。  
+- 使用[内容定义](contentdefinitions.md)来控制外观。
 
 ## <a name="protocol"></a>协议
 
@@ -44,18 +43,24 @@ Azure 活动目录 B2C（Azure AD B2C）支持注册和验证电话号码。 此
 </TechnicalProfile>
 ```
 
+## <a name="input-claims-transformations"></a>输入声明转换
+
+InputClaims 转换元素可能包含用于修改输入声明或生成新声明的输入声明转换的集合。 以下输入声明转换生成一个`UserId`声明，该声明稍后用于输入声明集合。
+
+```xml
+<InputClaimsTransformations>
+  <InputClaimsTransformation ReferenceId="CreateUserIdForMFA" />
+</InputClaimsTransformations>
+```
+
 ## <a name="input-claims"></a>输入声明
 
 InputClaims 元素必须包含以下声明。 您还可以将索赔的名称映射到电话因子技术配置文件中定义的名称。 
 
-```XML
-<InputClaims>
-  <!--A unique identifier of the user. The partner claim type must be set to `UserId`. -->
-  <InputClaim ClaimTypeReferenceId="userIdForMFA" PartnerClaimType="UserId" />
-  <!--A claim that contains the phone number. If the claim is empty, Azure AD B2C asks the user to enroll a new phone number. Otherwise, it asks the user to verify the phone number. -->
-  <InputClaim ClaimTypeReferenceId="strongAuthenticationPhoneNumber" />
-</InputClaims>
-```
+|  数据类型| 必选 | 说明 |
+| --------- | -------- | ----------- | 
+| 字符串| 是 | 用户的唯一标识符。 声明名称或合作伙伴索赔类型必须设置为`UserId`。 此声明不应包含个人可识别信息。|
+| 字符串| 是 | 声明类型的列表。 每个声明包含一个电话号码。 如果任何输入声明不包含电话号码，将询问用户注册并验证新电话号码。 已验证的电话号码将作为输出声明返回。 如果其中一个输入声明包含电话号码，则要求用户验证它。 如果多个输入声明包含电话号码，则要求用户选择并验证其中一个电话号码。 |
 
 下面的示例演示了使用多个电话号码。 有关详细信息，请参阅[示例策略](https://github.com/azure-ad-b2c/samples/tree/master/policies/mfa-add-secondarymfa)。
 
@@ -67,22 +72,16 @@ InputClaims 元素必须包含以下声明。 您还可以将索赔的名称映�
 </InputClaims>
 ```
 
-InputClaims转换元素可能包含一个输入声明转换元素的集合，这些元素用于修改输入声明或生成新声明，然后再将其呈现到电话因子页。
-
 ## <a name="output-claims"></a>输出声明
 
 "输出索赔"元素包含电话因子技术配置文件返回的声明列表。
 
-```xml
-<OutputClaims>
-  <!-- The verified phone number. The partner claim type must be set to `Verified.OfficePhone`. -->
-  <OutputClaim ClaimTypeReferenceId="Verified.strongAuthenticationPhoneNumber" PartnerClaimType="Verified.OfficePhone" />
-  <!-- Indicates whether the new phone number has been entered by the user. The partner claim type must be set to `newPhoneNumberEntered`. -->
-  <OutputClaim ClaimTypeReferenceId="newPhoneNumberEntered" PartnerClaimType="newPhoneNumberEntered" />
-</OutputClaims>
-```
+|  数据类型| 必选 | 说明 |
+|  -------- | ----------- |----------- |
+| boolean | 是 | 指示用户是否已输入新电话号码。 声明名称或合作伙伴索赔类型必须设置为`newPhoneNumberEntered`|
+| 字符串| 是 | 已验证的电话号码。 声明名称或合作伙伴索赔类型必须设置为`Verified.OfficePhone`。|
 
-OutputClaimsTransformations 元素可能包含用于修改输出声明或生成新输出声明的 OutputClaimsTransformation 元素集合。
+OutputClaims 转换元素可能包含用于修改输出声明或生成新声明的输出声明转换元素的集合。
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
@@ -91,10 +90,12 @@ OutputClaimsTransformations 元素可能包含用于修改输出声明或生成�
 
 ## <a name="metadata"></a>元数据
 
-| 特性 | 必选 | 描述 |
+| 特性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ContentDefinitionReferenceId | 是 | 与此技术配置文件关联的[内容定义](contentdefinitions.md)的标识符。 |
-| 手动电话号码输入允许| 否 | 指定是否允许用户手动输入电话号码。 可能的值：`true`或`false`（默认值）。|
+| 手动电话号码输入允许| 否 | 指定是否允许用户手动输入电话号码。 可能的值：`true` 或 `false`（默认值）。|
+| 设置.身份验证模式 | 否 | 验证电话号码的方法。 可能的值： `sms` `phone`、`mixed`或 （默认值）。|
+| 设置.自动拨号| 否| 指定技术配置文件是自动拨号还是自动发送 SMS。 可能的值：`true` 或 `false`（默认值）。 自动拨号要求将`setting.authenticationMode`元数据设置为`sms`或 。 `phone` 输入声明集合必须具有单个电话号码。 |
 
 ### <a name="ui-elements"></a>UI 元素
 
@@ -103,4 +104,3 @@ OutputClaimsTransformations 元素可能包含用于修改输出声明或生成�
 ## <a name="next-steps"></a>后续步骤
 
 - 使用 MFA 初学者包检查[社交和本地帐户](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccountsWithMfa)。
-

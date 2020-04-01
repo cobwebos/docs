@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 60beccc2f2679a18903b74b84f48afebfb3b69da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45276884d59ac8d1d876e2225ac02bb51c3f74fc
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257745"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437726"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -209,3 +209,7 @@ $fw.ThreatIntelWhitelist.IpAddress = @("ip1", "ip2", …)
 
 Set-AzFirewall -AzureFirewall $fw
 ```
+
+## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>为什么即使 Azure 防火墙上没有任何规则允许该流量，TCP ping 和类似工具也能成功连接到目标 FQDN？
+
+TCP ping 实际上未连接到目标 FQDN。 这是因为 Azure 防火墙的透明代理侦听端口 80/443 上的出站流量。 TCP ping 与防火墙建立连接，然后丢弃数据包并记录连接。 此行为没有任何安全影响。 但是，为了避免混淆，我们正在调查此行为的潜在更改。 

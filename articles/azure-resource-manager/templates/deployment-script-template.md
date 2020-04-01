@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 03/30/2020
 ms.author: jgao
-ms.openlocfilehash: 7ff91545b1b7ab1920f437e0c3a5410270efaac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ef1c3d3fe0fd1ecad95e027b06ce14fd70d4d3f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153244"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437882"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在模板中使用部署脚本（预览）
 
@@ -42,7 +42,7 @@ ms.locfileid: "80153244"
 - **具有参与者角色的用户分配的托管标识到目标资源组**。 此标识用来执行部署脚本。 要在资源组之外执行操作，您需要授予其他权限。 例如，如果要创建新的资源组，请将标识分配给订阅级别。
 
   > [!NOTE]
-  > 部署脚本引擎在后台创建存储帐户和容器实例。  如果订阅尚未注册 Azure 存储帐户 （Microsoft.Storage） 和 Azure 容器实例 （Microsoft.ContainerInstance） 资源，则需要在订阅级别具有参与者角色的用户分配的托管标识供应商。
+  > 部署脚本引擎在后台创建存储帐户和容器实例。  如果订阅尚未注册 Azure 存储帐户 （Microsoft.Storage） 和 Azure 容器实例 （Microsoft.ContainerInstance） 资源提供程序，则需要在订阅级别具有参与者角色的用户分配的托管标识。
 
   要创建标识，请参阅通过使用 Azure 门户 、[或使用 Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)或使用[Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)[创建用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 部署模板时需要此标识 ID。 标识符的格式为：
 
@@ -52,7 +52,7 @@ ms.locfileid: "80153244"
 
   使用以下 CLI 或 PowerShell 脚本通过提供资源组名称和标识名称来获取 ID。
 
-  # <a name="cli"></a>[Cli](#tab/CLI)
+  # <a name="cli"></a>[CLI](#tab/CLI)
 
   ```azurecli-interactive
   echo "Enter the Resource Group name:" &&
@@ -62,7 +62,7 @@ ms.locfileid: "80153244"
   az identity show -g jgaoidentity1008rg -n jgaouami --query id
   ```
 
-  # <a name="powershell"></a>[电源外壳](#tab/PowerShell)
+  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
@@ -101,6 +101,12 @@ ms.locfileid: "80153244"
     "forceUpdateTag": 1,
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
+    "environmentVariables": [
+      {
+        "name": "someSecret",
+        "secureValue": "if this is really a secret, don't put it here... in plain text..."
+      }
+    ],
     "scriptContent": "
       param([string] $name)
       $output = 'Hello {0}' -f $name
@@ -126,6 +132,7 @@ ms.locfileid: "80153244"
 - **forceUpdateTag**： 在模板部署之间更改此值会强制部署脚本重新执行。 使用需要设置为参数的默认值的 newGuid（） 或 utcNow（） 函数。 若要了解详细信息，请参阅[多次运行脚本](#run-script-more-than-once)。
 - **azPowerShellVersion**/**azCliVersion：** 指定要使用的模块版本。 有关受支持的 PowerShell 和 CLI 版本的列表，请参阅[先决条件](#prerequisites)。
 - **参数**：指定参数值。 请以空格分隔这些值。
+- **环境变量**：指定要传递给脚本的环境变量。 有关详细信息，请参阅[开发部署脚本](#develop-deployment-scripts)。
 - **脚本内容**：指定脚本内容。 要运行外部脚本，请使用`primaryScriptUri`。 有关示例，请参阅[使用内联脚本](#use-inline-scripts)[和使用外部脚本](#use-external-scripts)。
 - **主脚本库**：指定具有受支持文件扩展名的主部署脚本的可公开访问的 Url。
 - **支持ScriptUris：** 指定一组可公开访问的 Url 来支持在`ScriptContent`或`PrimaryScriptUri`中调用的文件。
@@ -234,7 +241,7 @@ reference('<ResourceName>').output.text
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>将安全字符串传递给部署脚本
 
-通过在容器实例中设置环境变量，可为容器运行的应用程序或脚本提供动态配置。 部署脚本处理不安全和安全的环境变量的方式与 Azure 容器实例相同。 有关详细信息，请参阅[容器实例中的"设置环境变量](../../container-instances/container-instances-environment-variables.md#secure-values)"。
+在容器实例中设置环境变量（环境变量）允许您提供容器运行的应用程序或脚本的动态配置。 部署脚本处理不安全和安全的环境变量的方式与 Azure 容器实例相同。 有关详细信息，请参阅[容器实例中的"设置环境变量](../../container-instances/container-instances-environment-variables.md#secure-values)"。
 
 ## <a name="debug-deployment-scripts"></a>调试部署脚本
 

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b0b9d62e8761cfb67d0642d8e5a97e7d1f05af12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0a5e89f256b562ce5f702e9ff1388cb4d021bf5
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064453"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437691"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
@@ -18,7 +18,7 @@ ms.locfileid: "80064453"
 
 从物联网 （IoT） 资源（如设备和传感器）中引入历史数据是 FarmBeats 中的常见方案。 为设备和传感器创建元数据，然后以规范格式将历史数据引入 FarmBeats。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 在继续本文之前，请确保您已安装 FarmBeats 并从 IoT 设备收集历史数据。 您还需要启用合作伙伴访问，如以下步骤所述。
 
@@ -37,37 +37,48 @@ ms.locfileid: "80064453"
 > [!NOTE]
 > 您必须是管理员才能执行以下步骤。
 
-1. 下载[zip 文件](https://aka.ms/farmbeatspartnerscriptv2)，并将其提取到您的本地驱动器。 zip 文件内将有一个文件。
+1. 登录 https://portal.azure.com/。
 
-2. 登录到https://portal.azure.com/并转到 Azure**活动目录** > **应用注册**。
+2. **如果您在 FarmBeats 版本 1.2.7 或更高版本中，请跳过步骤 a、b 和 c，然后转到步骤 3。** 您可以通过选择 FarmBeats UI 右上角的 **"设置"** 图标来检查服务器场节拍版本。
 
-3. 选择作为服务器场节拍部署的一部分创建**的应用注册**。 它将具有与您的服务器场节拍数据hub相同的名称。
+      a.  转到**Azure 活动目录** > **应用注册**
 
-4. 选择**公开 API** >**选择添加客户端应用程序**并输入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**并检查**授权范围**。 这将授予 Azure CLI（云外壳）以执行以下步骤的访问权限：
+      b. 选择作为服务器场节拍部署的一部分创建**的应用注册**。 它将具有与服务器场Beats数据库相同的名称。
 
-5. 打开 Cloud Shell。 此选项在 Azure 门户右上角的工具栏上可用。
+      c. 选择 **"公开 API>** 选择 **"添加客户端应用程序**"并输入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**并选中**授权范围**。 这将授予 Azure CLI（云外壳）以执行以下步骤的访问权限：
+
+3. 打开 Cloud Shell。 此选项在 Azure 门户右上角的工具栏上可用。
 
     ![Azure 门户工具栏](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-6. 确保环境设置为**PowerShell**。 默认情况下，它设置为 Bash。
+4. 确保环境设置为**PowerShell**。 默认情况下，它设置为 Bash。
 
     ![PowerShell 工具栏设置](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-7. 从云壳实例中的步骤 1 上载文件。
+5. 转到主目录。
 
-    ![上传工具栏按钮](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+    ```azurepowershell-interactive 
+    cd  
+    ```
 
-8. 转到上载文件的目录。 默认情况下，文件会以用户名上载到主目录。
+6. 运行以下命令。 这将将脚本下载到您的主目录。
 
-9. 运行以下脚本。 该脚本要求使用租户 ID，可以从**Azure 活动目录** > **概述页**获取该 ID。
+    ```azurepowershell-interactive 
 
-    ```azurepowershell-interactive
+    wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
+
+    ```
+
+7. 运行以下脚本。 该脚本要求提供租户 ID，可以从**Azure 活动目录** > **概述**页获取该 ID。
+
+    ```azurepowershell-interactive 
 
     ./generatePartnerCredentials.ps1   
 
     ```
 
-10. 按照屏幕上的说明捕获**API 终结点**、**租户 ID、****客户端 ID、****客户端密钥**和**事件Hub连接字符串**的值。
+8. 按照屏幕上的说明捕获**API 终结点**、**租户 ID、****客户端 ID、****客户端密钥**和**事件Hub连接字符串**的值。
+
 
 ## <a name="create-device-or-sensor-metadata"></a>创建设备或传感器元数据
 
@@ -90,8 +101,8 @@ ms.locfileid: "80064453"
 |          制造商            |         制造商名称    |
 |  产品代码                    |  设备产品代码或型号名称或编号。 例如，环境监视器#6800。  |
 |            端口          |     端口名称和类型，即数字或模拟。
-|     “属性”                 |  名称以标识资源。 例如，型号名称或产品名称。
-      描述     | 提供模型的有意义的描述。
+|     名称                 |  名称以标识资源。 例如，型号名称或产品名称。
+      说明     | 提供模型的有意义的描述。
 |    属性          |    制造商的其他属性。   |
 |    **设备**             |                      |
 |   设备模型 Id     |     关联设备型号的 ID。  |
@@ -99,8 +110,8 @@ ms.locfileid: "80064453"
 |  ReportingInterval        |   报告间隔（以秒为单位）。
 |  位置            |  设备纬度（-90 至 +90）、经度（-180 至 180）和高程（以米为单位）。   
 |父设备 Id       |    此设备连接到的父设备的 ID。 例如，连接到网关的节点。 节点具有父设备 Id 作为网关。  |
-|    “属性”            | 用于标识资源的名称。 设备合作伙伴必须发送与合作伙伴端的设备名称一致的名称。 如果合作伙伴设备名称是用户定义的，则同一用户定义的名称应传播到 FarmBeats。|
-|     描述       |      提供有意义的说明。 |
+|    名称            | 用于标识资源的名称。 设备合作伙伴必须发送与合作伙伴端的设备名称一致的名称。 如果合作伙伴设备名称是用户定义的，则同一用户定义的名称应传播到 FarmBeats。|
+|     说明       |      提供有意义的说明。 |
 |     属性    |  制造商的其他属性。
 |     **传感器模型**        |          |
 |       类型（模拟、数字）          |      传感器的类型，无论是模拟的还是数字的。       |
@@ -108,11 +119,11 @@ ms.locfileid: "80064453"
 |     产品代码| 产品代码或型号名称或编号。 例如，RS-CO2-N01。 |
 |       传感器测量>名称       | 传感器测量值的名称。 仅支持小写。 对于不同深度的测量，请指定深度。 例如，soil_moisture_15cm。 此名称必须与遥测数据一致。  |
 |          传感器测量>数据类型       |遥测数据类型。 目前，支持双精度值。|
-|    传感器测量>类型    |传感器遥测数据的测量类型。 系统定义的类型是环境温度、CO2、深度、电导性、叶湿性、长度、液位、硝酸盐、O2、PH、磷酸盐、点InTime、钾、压力、雨量计、相对湿度、盐度、土壤水分、土壤温度，太阳辐射，状态，时间持续时间，紫外线辐射，紫外线指数，体积，风向，风润，风速，蒸发，PAR。 要添加更多，请参阅 /扩展类型 API。|
-|        传感器测量>单元              | 传感器遥测数据单位。 系统定义的单位为无单位、摄氏度、华氏、开尔文、兰金、 帕斯卡、汞、PSI、米数、厘米、米、英寸、英尺、英里、千米、英里珀小时、英里珀秒、KMPERhour、KMperper秒、米佩尔小时、米佩尔秒、度、瓦尺、千瓦珀平米、毫瓦佩尔平米、米千瓦百万计、体积水含量、百分比、零件百万、微摩尔、微摩尔、百万千瓦、微摩尔、微摩尔、百万计、千里珀珀米、千瓦位、百万计、千米、百万计、千米、百万计、千里尺、百万计、千米、百万计、千米、百万计、千米、百万计、千米、百万计、千兆位、千里珀尔、千兆克、百万元、千兆克、千兆位、千万体、百万计、千米计、千米、百万计、千里尺、百万元、千尺MilliSiemensPerCentiMeter、Centibar、DeciSiemensPerMeter、KiloPascal、体积成分、升、毫升、秒、UnixTimestamp、微摩尔PerMeterSquaredPer秒、英寸PerHour添加更多内容，请参阅/扩展类型 API。|
+|    传感器测量>类型    |传感器遥测数据的测量类型。 系统定义的类型是环境温度、CO2、深度、电导性、叶湿性、长度、液位、硝酸盐、O2、PH、磷酸盐、点InTime、钾、压力、雨量计、相对湿度、盐度、土壤水分、土壤温度、太阳辐射、状态、时间、紫外线辐射、UVIndex、体积、风向、风流、风速、蒸发、PAR。 要添加更多，请参阅 /扩展类型 API。|
+|        传感器测量>单元              | 传感器遥测数据单位。 系统定义的单位是 NoUnit、摄氏度、华氏、开尔文、兰金、帕斯卡、水星、PSI、米数、厘米、米、英寸、英尺、英里、千米、英里珀小时、英里珀秒、KMPer秒、米佩尔小时、米佩尔秒、度、瓦特珀平、千瓦佩尔平米、 MilliWattsPerSquareCentiMeter， MilliJulesPerSquareCentiMeter， 体积水含量， 百分比， 零件百万， 微摩尔， 微摩尔PerLiter， 西门子PerSquareMPerPerPerPerMole， MilliSiemensPercentiMeter， Centibar， deciSiemensPerMeter， KiloPascal， 体积元素， 升， 毫升， 秒， unix时间戳， 微摩尔PerPerPerdper，英寸来添加更多的，参考.|
 |    传感器测量>聚合类型    |  值可以是无、平均值、最大值、最小值或标准偏差。  |
-|          “属性”            | 名称以标识资源。 例如，型号名称或产品名称。  |
-|    描述        | 提供模型的有意义的描述。|
+|          名称            | 名称以标识资源。 例如，型号名称或产品名称。  |
+|    说明        | 提供模型的有意义的描述。|
 |   属性       |  制造商的其他属性。|
 |    **传感器**      |          |
 | HardwareId          |   制造商设置的传感器的唯一 ID。|
@@ -120,8 +131,8 @@ ms.locfileid: "80064453"
 | 位置          |  传感器纬度（-90 至 +90）、经度（-180 至 180）和高程（以米为单位）。|
 |   端口>名称        |  传感器在设备上连接到的端口的名称和类型。 这需要与设备模型中定义的名称相同。|
 |    DeviceID  |    传感器连接到的设备 ID。 |
-| “属性”            |   名称以标识资源。 例如，传感器名称或产品名称、型号或产品代码。|
-|    描述      | 提供有意义的说明。|
+| 名称            |   名称以标识资源。 例如，传感器名称或产品名称、型号或产品代码。|
+|    说明      | 提供有意义的说明。|
 |    属性        |制造商的其他属性。|
 
 有关对象的详细信息，请参阅[斯瓦格](https://aka.ms/FarmBeatsDatahubSwagger)。
@@ -351,11 +362,11 @@ write_client.stop()
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<values>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }
@@ -429,11 +440,11 @@ write_client.stop()
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }

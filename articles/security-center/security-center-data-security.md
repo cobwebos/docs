@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: a25bbd0f14d38a70624dbc58755c0e814753a181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 987cdd76ba533fa0ae4b37c2755fe84a00d14de5
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77604175"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435851"
 ---
 # <a name="azure-security-center-data-security"></a>Azure 安全中心数据安全性
 为了帮助客户防止、检测和应对威胁，Azure 安全中心将收集和处理安全相关的数据，包括配置信息、元数据、事件日志、故障转储文件，等等。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。
@@ -71,8 +71,8 @@ Azure 安全中心收集故障转储文件的临时副本并对其进行分析�
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>管理从虚拟机进行的数据收集
 
-在 Azure 中启用安全中心后，即为每个 Azure 订阅启用了数据收集功能。 还可在 Azure 安全中心的“安全策略”部分，为订阅启用数据收集。 启用数据收集功能后，Azure 安全中心即可在所有受支持的现有 Azure 虚拟机以及任何新创建的虚拟机中预配 Microsoft Monitoring Agent。
-Microsoft Monitoring Agent 扫描各种安全相关配置和事件，并将其收集到 [Windows 事件跟踪](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) 的跟踪中。 另外，在运行计算机的过程中，操作系统会引发事件日志事件。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址、已登录用户、租户 ID。 Microsoft Monitoring Agent 读取事件日志条目和 ETW 跟踪，并将其复制到工作区进行分析。 Microsoft Monitoring Agent 还可将故障转储文件复制到工作区、启用进程创建事件，以及启用命令行审核。
+在 Azure 中启用安全中心后，即为每个 Azure 订阅启用了数据收集功能。 还可在 Azure 安全中心的“安全策略”部分，为订阅启用数据收集。 打开数据收集后，Azure 安全中心在所有现有受支持的 Azure 虚拟机和创建的任何新虚拟机上提供日志分析代理。
+日志分析代理将扫描各种与安全相关的配置，并将其事件扫描到 Windows （ETW）[跟踪的事件](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx)跟踪中。 另外，在运行计算机的过程中，操作系统会引发事件日志事件。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址、已登录用户、租户 ID。 日志分析代理读取事件日志条目和 ETW 跟踪并将其复制到工作区进行分析。 日志分析代理还会将崩溃转储文件复制到工作区，启用进程创建事件，并启用命令行审核。
 
 如果使用 Azure 安全中心免费版，也可以在“安全策略”中从虚拟机禁用数据收集。 标准层上的订阅需启用数据收集。 即使禁用数据收集，也仍会启用 VM 磁盘快照和项目收集。
 

@@ -1,14 +1,14 @@
 ---
 title: 监视管理租户中的委派更改
 description: 了解如何监视从客户租户到管理租户的委派活动。
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 99aa05cb73326e441c0473855c27dc71212cf415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82c41c392210e088c85af510b9698e0140f660e5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79478222"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421905"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>监视管理租户中的委派更改
 
@@ -73,7 +73,7 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 创建具有监视读取器访问权限的新服务主体帐户后，可以使用该帐户查询和报告租户中的委派活动。 
 
-下面的示例使用 Azure PowerShell 查询过去 1 天的活动，并报告任何添加或删除的代表团（或未成功的尝试）。 它查询[租户活动日志](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List)数据，然后构造以下值以报告添加或删除的代表团：
+[此 Azure PowerShell 脚本](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/monitor-delegation-changes)可用于查询过去 1 天的活动，并报告任何添加或删除的代表团（或未成功的尝试）。 它查询[租户活动日志](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List)数据，然后构造以下值以报告添加或删除的代表团：
 
 - **委派资源 Id：** 委派的订阅或资源组的 ID
 - **客户租户 ID**：客户租户 ID

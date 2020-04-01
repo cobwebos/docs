@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 监视 Node.js 服务 | Microsoft Docs
 description: 使用 Application Insights 监视 Node.js 服务的性能并诊断其问题。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 38336e3faf3764233dd94bffbfb24421e054496a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670009"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411584"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 监视 Node.js 服务和应用
 
@@ -16,7 +16,7 @@ ms.locfileid: "77670009"
 
 若要接收、存储和探索监视数据，请将 SDK 包括到代码中，然后在 Azure 中设置相应的 Application Insights 资源。 SDK 会将数据发送到该资源进行进一步的分析和探索。
 
-Node.js SDK 可以自动监视传入和传出的 HTTP 请求、异常和某些系统指标。 从 0.20 版开始，SDK 也可监视某些常用的第三方程序包，例如 MongoDB、MySQL、Redis。 所有与传入 HTTP 请求相关的事件都会进行关联，以加快故障排除速度。
+Node.js SDK 可以自动监视传入和传出的 HTTP 请求、异常和某些系统指标。 从版本 0.20 开始，SDK 还可以监视一些常见的[第三方包](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)，如 MongoDB、MySQL 和 Redis。 所有与传入 HTTP 请求相关的事件都会进行关联，以加快故障排除速度。
 
 可以使用 TelemetryClient API 手动检测和监视应用和系统的其他方面。 本文后面会更详细地介绍 TelemetryClient API。
 
@@ -35,7 +35,7 @@ Node.js SDK 可以自动监视传入和传出的 HTTP 请求、异常和某些�
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a> 设置 Application Insights 资源
 
 
-1. 登录到 Azure[门户][portal]。
+1. 登录 [Azure 门户][portal]。
 2. 选择 **"创建资源** > **开发人员工具** > **应用程序见解**"。 该资源包括用于接收遥测数据的终结点、用于该数据的存储、保存的报告和仪表板、规则和警报配置等。
 
 3. 在资源创建页的“应用程序类型”框中选择“Node.js 应用程序”。******** 应用类型决定了创建的默认仪表板和报告。 （任何 Application Insights 资源都可以收集任何语言和平台的数据。）
