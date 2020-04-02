@@ -7,14 +7,16 @@ ms.prod: kinect-dk
 ms.topic: overview
 ms.date: 06/26/2019
 keywords: azure, kinect, 概述, 开发人员工具包, DK, 设备, 深度, 人体跟踪, 语音, 认知服务, SDK, 固件
-ms.openlocfilehash: 44842a79b18b91d419ed5839a01781a7f11c4c06
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 6b3215ba6761521214ebffa2a100c5a1a030ab4c
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73931769"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421950"
 ---
 # <a name="about-azure-kinect-dk"></a>关于 Azure Kinect DK
+
+ ![Azure Kinect DK](./media/index/device-image.jpg)
 
 Azure Kinect DK 是一款开发人员工具包，配有先进的 AI 传感器，提供复杂的计算机视觉和语音模型。  Kinect 将深度传感器、空间麦克风阵列与视频摄像头和方向传感器整合成一体式的小型设备，提供多种模式、选项和软件开发工具包 (SDK)。 它可在 [Microsoft 在线商店](https://www.microsoft.com/p/azure-kinect-dk/8pp5vxmd9nhq)中购买。
 

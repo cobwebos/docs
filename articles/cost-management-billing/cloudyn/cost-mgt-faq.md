@@ -1,24 +1,26 @@
 ---
-title: 有关 Azure 中 Cloudyn 的常见问题解答 | Microsoft Docs
+title: 有关 Azure 中 Cloudyn 的常见问题解答
 description: 本文提供有关 Cloudyn 的一些常见问题的解答。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
-ms.topic: troubleshooting
+ms.date: 03/12/2020
+ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 5c770d83d59edf0a56184f8eea0bda6b0603893c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: b1ec81ea135079defb390becc025f51cde2dad7f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770079"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411239"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>有关 Cloudyn 的常见问题解答
 
 本文解答有关 Cloudyn 的一些常见问题。 如果你对 Cloudyn 有疑问，可以在[有关 Cloudyn 的常见问题解答](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn)中提出问题。
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>如何解决常见的间接企业设置问题？
 
@@ -58,13 +60,13 @@ ms.locfileid: "76770079"
 
 激活帐户：
 
-1.  在 Cloudyn 门户中，单击右上方的“设置”  ，然后“云帐户”  。
-2.  在“Microsoft Azure 帐户”选项卡上，找到包含**未激活**订阅的帐户。
-3.  在未激活帐户的右侧，单击“编辑”铅笔图标。 
-4.  系统会自动检测租户 ID 和费率 ID。 单击“下一步”。 
-5.  随后将重定向到 Azure 门户。 登录到门户并授权 Cloudyn 收集器访问你的 Azure 数据。
-6.  接下来，将会重定向到 Cloudyn 帐户管理页，订阅中的帐户状态已更新为“活动”。  该订阅显示了一个绿色的勾选标记符号。
-7.  如果有一个或多个订阅未显示绿色勾选标记符号，则表示你无权为订阅创建读取器应用 (CloudynCollector)。 具有更高订阅权限的用户需要重复步骤 3 和 4。  
+1.    在 Cloudyn 门户中，单击右上方的“设置”  ，然后“云帐户”  。
+2.    在“Microsoft Azure 帐户”选项卡上，找到包含**未激活**订阅的帐户。
+3.    在未激活帐户的右侧，单击“编辑”铅笔图标。 
+4.    系统会自动检测租户 ID 和费率 ID。 单击“下一步”。 
+5.    随后将重定向到 Azure 门户。 登录到门户并授权 Cloudyn 收集器访问你的 Azure 数据。
+6.    接下来，将会重定向到 Cloudyn 帐户管理页，订阅中的帐户状态已更新为“活动”。  该订阅显示了一个绿色的勾选标记符号。
+7.    如果有一个或多个订阅未显示绿色勾选标记符号，则表示你无权为订阅创建读取器应用 (CloudynCollector)。 具有更高订阅权限的用户需要重复步骤 3 和 4。  
 
 完成前面的步骤后，在一到两天内即可查看优化器建议。 但是，最长可能需要在五天之后才能显示完整的优化数据。
 
@@ -95,7 +97,7 @@ Cloudyn 用户帐户使用单一登录从 Azure 建立连接。 如果用户错�
 
 如果无法登录到 Cloudyn 门户，请确保使用正确的 URL 登录到 Cloudyn。 使用 [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade)。
 
-避免使用 Cloudyn 直接 URL https://app.cloudyn.com 。
+避免使用 Cloudyn 直接 URL `https://app.cloudyn.com`。
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>如何使用 Azure 凭据激活尚未激活的帐户？
 
