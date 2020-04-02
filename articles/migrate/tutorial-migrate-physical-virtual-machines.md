@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure Migrate 将物理计算机迁移到 
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 908a5915cbb7f5aeb9f641da18024d5dbf497707
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 51ce45b091fe2d8845963953c2c50cd7be618f58
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134940"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80298003"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>将计算机作为物理服务器迁移到 Azure
 
@@ -42,7 +42,7 @@ ms.locfileid: "77134940"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始学习本教程之前，应做好以下准备：
 
@@ -149,7 +149,8 @@ Azure Migrate 服务器迁移使用复制设备将计算机复制到 Azure。 �
     ![下载提供程序](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
 10. 将设备安装程序文件和密钥文件复制到为该设备创建的 Windows Server 2016 计算机。
-11. 如以下过程中所述，运行复制设备安装程序文件。
+11. 如以下过程中所述，运行复制设备安装程序文件。 安装完成后，设备配置向导将自动启动（也可以使用在设备的桌面上创建的 cspsconfigtool.exe 快捷方式，手动启动该向导）。 使用向导的“管理帐户”选项卡可添加要用于移动服务的推送安装的帐户详细信息。 在本教程中，我们将在要复制的计算机上手动安装移动服务，因此请在此步骤中创建一个虚拟帐户，然后继续。
+
 12. 设备已安装并重启后，在“发现计算机”中的“选择配置服务器”内选择新设备，然后单击“完成注册”。    “完成注册”步骤会执行最终的几个任务来准备复制设备。
 
     ![完成注册](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
@@ -223,7 +224,7 @@ Azure Migrate 服务器迁移使用复制设备将计算机复制到 Azure。 �
 2. 在“复制”>“源设置” > “你的计算机是否已虚拟化?”中，选择“未虚化/其他”     。
 3. 在“本地设备”中，选择已设置的 Azure Migrate 设备的名称。 
 4. 在“进程服务器”中，选择复制设备的名称。 
-6. 在“来宾凭据”中，指定用于推送安装移动服务的 VM 管理员帐户。  在本教程中，我们将手动安装移动服务，以便可以添加任何虚构帐户。 然后单击“下一页:  虚拟机”。
+6. 在“来宾凭据”  中，指定将用于手动安装移动服务的虚拟帐户（推送安装在物理服务器迁移中不受支持）。 然后单击“下一页:  虚拟机”。
 
     ![复制 VM](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 
@@ -314,14 +315,19 @@ Azure Migrate 服务器迁移使用复制设备将计算机复制到 Azure。 �
 
 2. 在“复制计算机”中，右键单击该 VM 并选择“迁移”。  
 3. 在“迁移” > “关闭虚拟机并执行计划迁移(不会丢失任何数据)”中，选择“是” > “确定”。    
-    - 默认情况下，Azure Migrate 将关闭本地 VM，并运行按需复制，以同步自上次复制发生以来发生的任何 VM 更改。 这可以确保不会丢失数据。
     - 如果你不想要关闭 VM，请选择“否” 
+
+    注意：对于物理服务器迁移，建议在迁移时段中将应用程序关闭（不要让应用程序接受任何连接），然后启动迁移（服务器需要保持运行，这样，剩余的更改可以在迁移完成前同步）。
+
 4. 随即会针对该 VM 启动一个迁移作业。 在 Azure 通知中跟踪该作业。
 5. 该作业完成后，可以从“虚拟机”页查看和管理该 VM。 
 
 ## <a name="complete-the-migration"></a>完成迁移
 
-1. 完成迁移后，右键单击该 VM 并选择“停止迁移”。  这会停止本地计算机的复制，并清理 VM 的复制状态信息。
+1. 完成迁移后，右键单击该 VM 并选择“停止迁移”。  这样会执行以下操作：
+    - 停止本地计算机的复制。
+    - 从 Azure Migrate 的“复制服务器”  计数中删除该计算机：服务器迁移。
+    - 清除计算机的复制状态信息。
 2. 在已迁移的计算机上安装 Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 代理。
 3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
 4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。

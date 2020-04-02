@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/09/2020
+ms.date: 03/17/2020
 ms.author: juliako
-ms.openlocfilehash: d408a862c18038f64b816bb54fc235d1b9d84179
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
-ms.translationtype: MT
+ms.openlocfilehash: ae049d7486007696d8038eb4e6593cf996df659e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968081"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372606"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒体服务 v3 中的动态打包
 
@@ -28,9 +28,9 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 在媒体服务中，[流式处理终结点](streaming-endpoint-concept.md)表示动态（即时）打包和源服务，该服务可直接将你的实时和按需内容发送到客户端播放器应用。 它使用下一部分中所述的一种常见流式处理媒体协议。 动态打包是所有流式处理终结点（标准或高级）的标准功能。
 
 > [!NOTE]
-> 你可以使用[Azure 门户](https://portal.azure.com/)来管理 V3[实时事件](live-events-outputs-concept.md)，查看 v3[资产](assets-concept.md)，获取有关访问 api 的信息。 对于所有其他管理任务（例如，转换和作业），请使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一个受支持的[sdk](media-services-apis-overview.md#sdks)。
+> 可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理 v3 [直播活动](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)、获取有关访问 API 的信息。 对于其他所有管理任务（例如，转换和作业），请使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
-## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>准备源文件供传输
+## <a name="to-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>准备源文件供传输
 
 若要利用动态打包，需将夹层（源）文件[编码](encoding-concept.md)为一组自适应比特率 MP4（ISO 基本媒体 14496-12）文件。 你需要具备包含媒体服务动态打包所需的编码 MP4 和流式处理配置文件的[资产](assets-concept.md)。 通过此组 MP4 文件，可以使用动态打包通过下述流媒体协议传送视频。
 
@@ -71,11 +71,14 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 |平滑流| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
 |平滑流式处理 2.0（旧清单）|默认情况下，平滑流式处理清单格式包含重复标记（r 标记）。 但是，一些播放器不支持 `r-tag`。 使用这些播放器的客户端可以使用禁用 r 标记的格式：<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
+> [!NOTE]
+> 平滑流式处理要求流中同时存在音频和视频。
+
 ## <a name="on-demand-streaming-workflow"></a>按需流式处理工作流
 
 以下步骤显示了常见的媒体服务流式处理工作流，其中动态打包与 Azure 媒体服务中的标准编码器一起使用。
 
-1. 上传输入文件，如 QuickTime/MOV 或 MXF 文件。 此文件也称为夹层文件或源文件。 有关受支持格式的列表，请参阅 [Media Encoder Standard 支持的格式](media-encoder-standard-formats.md)。
+1. 上传输入文件，如 QuickTime/MOV 或 MXF 文件。 此文件也称为夹层文件或源文件。 有关受支持格式的列表，请参阅[标准编码器支持的格式](media-encoder-standard-formats.md)。
 1. 将夹层文件[编码](#encode-to-adaptive-bitrate-mp4s)为 H.264/AAC MP4 自适应比特率集。
 1. 发布包含自适应比特率 MP4 集的输出资产。 通过创建流式处理定位符进行发布。
 1. 生成针对不同格式（HLS、MPEG-DASH 和平滑流式处理）的 URL。 **流式处理终结点**将负责为所有这些不同格式提供正确的清单和请求。
@@ -92,11 +95,11 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 * [使用内置预设对本地文件进行编码](job-input-from-local-file-how-to.md)。
 * [构建自定义预设，以确定特定方案或设备要求](customize-encoder-presets-how-to.md)。
 
-请参阅 Media Encoder Standard [格式和编解码器](media-encoder-standard-formats.md)的列表。
+请参阅标准编码器[格式和编解码器](media-encoder-standard-formats.md)的列表。
 
 ## <a name="live-streaming-workflow"></a>实时传送视频流工作流
 
-可以将实时事件设置为*传递*（本地实时编码器发送多比特率流）或*实时编码*（本地实时编码器发送单比特率流）。 
+直播活动可以设置为“直通”  （本地实时编码器发送多比特率流）或“实时编码”  （本地实时编码器发送单比特率流）。 
 
 以下是使用动态打包进行实时传送视频流的常用工作流：
 
@@ -123,7 +126,7 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 > [!NOTE]
 > 已使用动态打包测试了高达 4K 的分辨率和高达 60 帧/秒的帧速率。 [高级编码器](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)支持通过旧版 v2 API 编码为 H.265。
 
-## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>动态打包支持的音频编解码器
+## <a name="audio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>动态打包支持的音频编解码器
 
 动态打包支持采用以下协议编码的音频：
 
@@ -243,7 +246,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ### <a name="naming-of-tracks-in-the-manifest"></a>命名清单中的曲目
 
-如果在. ism 文件中指定了音轨名称，媒体服务将在 `AdaptationSet` 中添加 `Label` 元素，以便为特定音轨指定表示信息。Output 划线清单的示例：
+如果在 .ism 文件中指定了音轨名称，则媒体服务会在 `AdaptationSet` 中添加 `Label` 元素，以指定特定音轨的纹理信息。输出 DASH 清单的示例：
 
 ```xml
 <AdaptationSet codecs="mp4a.40.2" contentType="audio" lang="en" mimeType="audio/mp4" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
@@ -265,7 +268,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 #### <a name="smooth-streaming-manifest"></a>平滑流式处理清单
 
-如果正在播放平滑流式处理流，则清单将携带该音轨的 `Accessibility` 和 `Role` 属性中的值。例如，`Role="alternate" Accessibility="description"` 将添加到 `StreamIndex` 元素中，以指示它是音频描述。
+如果正在播放平滑流式处理流，则清单将在该音频轨道的 `Accessibility` 和 `Role` 属性中携带值。例如，`Role="alternate" Accessibility="description"` 将添加到 `StreamIndex` 元素中，以指示它是音频描述。
 
 #### <a name="dash-manifest"></a>DASH 清单
 
@@ -290,7 +293,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ## <a name="dynamic-encryption"></a>动态加密
 
-你可以使用*动态加密*，通过 AES-128 或三个主要数字版权管理（DRM）系统中的任何一个（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）来动态加密你的实时或点播内容。 媒体服务还提供用于向已授权客户端传送 AES 密钥和 DRM 许可证的服务。 有关详细信息，请参阅[动态加密](content-protection-overview.md)。
+可以使用动态加密借助 AES-128 或三种主要数字版权管理 (DRM) 系统中的任何一种对实时或按需内容进行动态加密  ：内容。 媒体服务还提供用于向已授权客户端传送 AES 密钥和 DRM 许可证的服务。 有关详细信息，请参阅[动态加密](content-protection-overview.md)。
 
 > [!NOTE]
 > Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。

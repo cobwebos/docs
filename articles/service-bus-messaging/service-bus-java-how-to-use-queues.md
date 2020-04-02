@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 01/24/2020
+ms.date: 03/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 71afce335910e4d42fb3d67f6d443510a6599b8b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ac6bc8f78bd3d526e68dba3e81825a28a9ac47f7
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918316"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80294129"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>快速入门：通过 Java 使用 Azure 服务总线队列以发送和接收消息
 
@@ -41,9 +41,12 @@ ms.locfileid: "77918316"
 
 
 ## <a name="configure-your-application-to-use-service-bus"></a>配置应用程序以使用服务总线
-在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java]。 如果使用了 Eclipse，则可以安装包含 Azure SDK for Java 的[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]。 然后，可将 Microsoft Azure Libraries for Java 添加到项目  ：
+在生成本示例之前，请确保已安装 [Azure SDK for Java][Azure SDK for Java]。 
+
+如果使用了 Eclipse，则可以安装包含 Azure SDK for Java 的[用于 Eclipse 的 Azure 工具包][Azure Toolkit for Eclipse]。 然后，可将“适用于 Java 的 Microsoft Azure 库”添加到项目  。 有关详细信息，请参阅[安装 Azure Toolkit for IntelliJ](/azure/java/intellij/azure-toolkit-for-intellij-installation)。 
 
 ![将适用于 Java 的 Microsoft Azure 库添加到 Eclipse 项目](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
+
 
 将以下 `import` 语句添加到 Java 文件顶部：
 

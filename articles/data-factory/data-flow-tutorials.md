@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 03/04/2020
-ms.openlocfilehash: bb996b0abc16a3d6171c8f7ab2ac0e64dd0c1075
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.date: 03/24/2020
+ms.openlocfilehash: cc0feff48e7da35535e30c6741994f48750d931a
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096798"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80293500"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>映射数据流视频教程
 
@@ -107,6 +107,8 @@ ms.locfileid: "79096798"
 
 [日志记录和审核](https://www.youtube.com/watch?v=UC__LOyuf8M)
 
+[在运行时动态优化数据流群集大小](https://www.youtube.com/watch?v=jWSkJdtiJNM)
+
 ## <a name="mapping-data-flow-scenarios"></a>映射数据流方案
 
 [模糊查找](http://youtu.be/7gdwExjHBbw)
@@ -148,3 +150,5 @@ ms.locfileid: "79096798"
 [拆分数组和 Case 语句](https://www.youtube.com/watch?v=DHNH8ZO7YjI)
 
 [使用字符串内插和参数的乐趣](https://youtu.be/hb3-cn2CMgM)
+
+[数据流脚本简介：复制、粘贴、代码片段](https://www.youtube.com/watch?v=3_1I4XdoBKQ)

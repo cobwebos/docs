@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: f8ff3dc71727abf9e276cccc951c4d1143f4200d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4e40d26e392219fb751328bc54855d87e80bae19
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583096"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345994"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>教程：使用媒体服务 v3 对视频进行上载、编码和流式传输
 
@@ -72,7 +72,7 @@ ms.locfileid: "73583096"
 6. 创建**流定位符**。
 7. 生成流式处理 URL。
 
-### <a name="a-idstart_using_dotnet-start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />开始结合使用媒体服务 API 与 .NET SDK
+### <a name="start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />开始结合使用媒体服务 API 与 .NET SDK
 
 若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象  。 若要创建对象，必须提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在本文开头克隆的代码中，**GetCredentialsAsync** 函数根据本地配置文件中提供的凭据创建 ServiceClientCredentials 对象。
 
@@ -88,6 +88,8 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 * 创建资产  。
 * 获取资产的[存储中容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)的可写 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)。
+
+    如果使用资产的 [ListContainerSas](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) 函数获取 SAS URL，请注意，该函数将返回多个 SAS URL，因为每个存储帐户有两个存储帐户密钥。 存储帐户有两个密钥，因为它支持存储帐户密钥无缝轮换（例如，使用一个密钥时更改另一个，然后开始使用新密钥并轮换其他密钥）。 第一个 SAS URL 表示存储 key1，第二个表示存储 key2。
 * 使用 SAS URL 将文件上传到存储中的容器中。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -153,7 +155,7 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 ### <a name="get-streaming-urls"></a>获取流式 URL
 
-创建[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)后，可以获取流 URL，如 **GetStreamingURLs** 中所示。 若要生成 URL，需要连接[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)的主机名和**流定位符**路径。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**  。
+创建[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)后，可以获取流 URL，如 **GetStreamingURLs** 中所示。 若要生成 URL，需要连接[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)的主机名和**流定位符**路径。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，此默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**  。
 
 > [!NOTE]
 > 在此方法中，需要指定在创建输出资产的**流定位符**时所用的 locatorName。

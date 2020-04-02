@@ -9,16 +9,21 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4a1952f5ece4c021834fb98f8a09f1a2738e6469
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 929bc0695bda2e64f77f7e9286e06cee787822ba
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789395"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388961"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
 
-本教程介绍如何使用 Azure Site Recovery 将 Amazon Web Services (AWS) 虚拟机 (VM) 迁移到 Azure VM。 将 AWS EC2 实例迁移到 Azure 时，VM 会被视作本地物理计算机。 本教程介绍如何执行下列操作：
+本教程介绍如何使用 Azure Site Recovery 将 Amazon Web Services (AWS) 虚拟机 (VM) 迁移到 Azure VM。 将 AWS EC2 实例迁移到 Azure 时，VM 会被视作本地物理计算机。 在本教程中，你将了解如何执行以下操作：
+
+
+> [!TIP]
+> 现在应使用 Azure Migrate 服务将 AWS VM 迁移到 Azure，而不是使用 Azure Site Recovery 服务。 [了解详细信息](../migrate/tutorial-migrate-physical-virtual-machines.md)。
+
 
 > [!div class="checklist"]
 > * 验证先决条件
@@ -32,11 +37,8 @@ ms.locfileid: "72789395"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 
-> [!NOTE]
-> 现在可以使用 Azure Migrate 服务将 AWS 实例迁移到 Azure。 [了解详细信息](../migrate/tutorial-migrate-physical-virtual-machines.md)。
-
 ## <a name="prerequisites"></a>先决条件
-- 确保要迁移的 VM 运行的是支持的 OS 版本。 支持的版本包括： 
+- 确保要迁移的 VM 运行的是支持的 OS 版本。 受支持的版本包括： 
   - Windows Server 2016 
   - Windows Server 2012 R2
   - Windows Server 2012 
@@ -92,8 +94,8 @@ ms.locfileid: "72789395"
 
 在迁移（故障转移）后创建的 Azure VM 会加入此 Azure 网络。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，选择 **“创建资源”** > **“网络”** >
-    **“虚拟网络”** 。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“创建资源” **** >“网络” **** >
+   “虚拟网络” **** 。
 3. 对于“名称”  ，请输入 **myMigrationNetwork**。
 4. 保留“地址空间”  的默认值（必须输入值）。
 5. 对于“订阅”，请选择要使用的订阅。 
@@ -109,7 +111,7 @@ ms.locfileid: "72789395"
 
 在 Azure 门户的保管库页的“入门”部分选择“Site Recovery”，然后选择“准备基础结构”。    完成以下步骤。
 
-### <a name="1-protection-goal"></a>1:保护目标
+### <a name="1-protection-goal"></a>1：保护目标
 
 在“保护目标”  页上选择以下值：
 
@@ -138,7 +140,7 @@ ms.locfileid: "72789395"
 
     1. 在“准备工作”  下选择“安装配置服务器和进程服务器”  ，然后选择“下一步”  。
     2. 在“第三方软件许可证”  中选择“我接受第三方许可协议”  ，然后选择“下一步”。 
-    3. 在“注册”  中选择“浏览”，然后转到保管库注册密钥文件所在的位置  。 选择“**下一步**”。
+    3. 在“注册”  中选择“浏览”，然后转到保管库注册密钥文件所在的位置  。 选择“**下一页**”。
     4. 在“Internet 设置”  中选择“在不使用代理服务器的情况下连接到 Azure Site Recovery”  ，然后选择“下一步”。 
     5. “先决条件检查”  页运行多个项的检查。 完成后，选择“下一步”  。
     6. 在“MySQL 配置”  中提供所需的密码，然后选择“下一步”  。
@@ -177,7 +179,7 @@ ms.locfileid: "72789395"
 1. 转到 [Azure 门户](https://portal.azure.com)。
 1. 在保管库相应页面的“入门”  下，选择“Site Recovery”  。
 2. 在“适用于本地计算机和 Azure VM”下，选择“步骤 1：   复制应用程序”。 使用以下信息完成向导页面。 完成后，在每个页面上选择“确定”： 
-   - 1:配置源
+   - 1：配置源
 
      |  |  |
      |-----|-----|
