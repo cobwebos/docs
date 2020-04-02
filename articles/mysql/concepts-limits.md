@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bc4694928eceed57692a0d4b0469543c1a8f9678
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 6ca09ab0578fb88e443d6e9e1f920c22457eb042
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532750"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548473"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。 另请参阅适用于 MySQL 数据库引擎的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)。
@@ -57,8 +57,8 @@ ms.locfileid: "79532750"
 
 |**定价层**|**vCore**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|Basic|1|基本层中不可配置|空值|空值|
-|Basic|2|基本层中不可配置|空值|空值|
+|Basic|1|基本层中不可配置|不可用|不可用|
+|Basic|2|基本层中不可配置|不可用|不可用|
 |常规用途|2|0|0|16777216|
 |常规用途|4|0|0|33554432|
 |常规用途|8|0|0|67108864|
@@ -77,8 +77,8 @@ ms.locfileid: "79532750"
 
 |**定价层**|**vCore**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|Basic|1|基本层中不可配置|空值|空值|
-|Basic|2|基本层中不可配置|空值|空值|
+|Basic|1|基本层中不可配置|不可用|不可用|
+|Basic|2|基本层中不可配置|不可用|不可用|
 |常规用途|2|524288|32768|4194304|
 |常规用途|4|524288|32768|8388608|
 |常规用途|8|524288|32768|16777216|
@@ -97,8 +97,8 @@ ms.locfileid: "79532750"
 
 |**定价层**|**vCore**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|Basic|1|基本层中不可配置|空值|空值|
-|Basic|2|基本层中不可配置|空值|空值|
+|Basic|1|基本层中不可配置|不可用|不可用|
+|Basic|2|基本层中不可配置|不可用|不可用|
 |常规用途|2|262144|128|268435455|
 |常规用途|4|262144|128|536870912|
 |常规用途|8|262144|128|1073741824|
@@ -117,8 +117,8 @@ ms.locfileid: "79532750"
 
 |**定价层**|**vCore**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|Basic|1|基本层中不可配置|空值|空值|
-|Basic|2|基本层中不可配置|空值|空值|
+|Basic|1|基本层中不可配置|不可用|不可用|
+|Basic|2|基本层中不可配置|不可用|不可用|
 |常规用途|2|16777216|16384|268435455|
 |常规用途|4|16777216|16384|536870912|
 |常规用途|8|16777216|16384|1073741824|
@@ -137,8 +137,8 @@ ms.locfileid: "79532750"
 
 |**定价层**|**vCore**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|Basic|1|基本层中不可配置|空值|空值|
-|Basic|2|基本层中不可配置|空值|空值|
+|Basic|1|基本层中不可配置|不可用|不可用|
+|Basic|2|基本层中不可配置|不可用|不可用|
 |常规用途|2|16777216|1024|67108864|
 |常规用途|4|16777216|1024|134217728|
 |常规用途|8|16777216|1024|268435456|
@@ -150,6 +150,10 @@ ms.locfileid: "79532750"
 |内存优化|8|16777216|1024|536870912|
 |内存优化|16|16777216|1024|1073741824|
 |内存优化|32|16777216|1024|1073741824|
+
+### <a name="time_zone"></a>time_zone
+
+可以通过从 MySQL 命令行或`mysql.az_load_timezone`MySQL 工作台等工具调用存储过程来填充时区表。 有关如何调用存储过程并设置全局或会话级时区，请参阅[Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或[Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter)文章。
 
 ## <a name="storage-engine-support"></a>存储引擎支持
 

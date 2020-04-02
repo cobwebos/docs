@@ -3,7 +3,7 @@ title: Azure 标识和访问安全最佳实践 | Microsoft 文档
 description: 本文提供一系列有关使用内置 Azure 功能进行标识管理和访问控制的最佳实践。
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: RKarlin
 editor: TomSh
 ms.assetid: 07d8e8a8-47e8-447c-9c06-3a88d2713bc1
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
-ms.author: barclayn
-ms.openlocfilehash: 52ef3a9b1df058d5d2e954b424094f9dbaeba15b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: ffd9919092cdf2481767e58f10ba6525d56ca4a8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73053343"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548460"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -269,7 +269,7 @@ ms.locfileid: "73053343"
 **最佳实践**：要求所有关键管理员帐户无密码（首选），或需要多重身份验证。
 **详细信息**：使用[Microsoft 身份验证器应用](/azure/active-directory/authentication/howto-authentication-phone-sign-in)无需使用密码即可登录到任何 Azure AD 帐户。 与[适用于企业的 Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification)一样，Microsoft 身份验证器使用基于密钥的身份验证来启用绑定到设备并使用生物识别身份验证或 PIN 的用户凭据。
 
-要求对永久分配给一个或多个 Azure AD 管理员角色的所有个人用户进行登录时进行 Azure 多重身份验证：全局管理员、特权角色管理员、交换联机管理员和共享点联机管理员。 [为管理员帐户启用多重身份验证](/azure/active-directory/authentication/howto-mfa-userstates)，并确保管理员帐户用户已注册。
+要求所有永久分配给一个或多个 Azure AD 管理员角色的个人用户在登录时进行 Azure 多重身份验证：全局管理员、特权角色管理员、交换联机管理员和 SharePoint 联机管理员。 [为管理员帐户启用多重身份验证](/azure/active-directory/authentication/howto-mfa-userstates)，并确保管理员帐户用户已注册。
 
 **最佳实践**：对于关键管理员帐户，有一个不允许生产任务的管理员工作站（例如，浏览和电子邮件）。 这将保护您的管理员帐户免受使用浏览和电子邮件的攻击媒介的攻击，并显著降低您发生重大事件的风险。
 **详细信息**：使用管理员工作站。 选择工作站安全级别：

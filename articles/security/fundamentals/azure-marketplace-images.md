@@ -3,7 +3,7 @@ title: 适用于 Azure 市场映像的安全建议 | Microsoft Docs
 description: 本文将提供适用于市场映像的安全建议
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: barbkess
 ms.assetid: ''
 ms.service: security
@@ -11,13 +11,13 @@ ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
-ms.author: barclayn
-ms.openlocfilehash: b82cf957f4bd74cb2c63bfd5a7fe73899b395df6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73795815"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548658"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>适用于 Azure 市场映像的安全建议
 

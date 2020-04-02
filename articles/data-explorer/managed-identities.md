@@ -7,19 +7,19 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9592f5d2666684e0cf5eef687b1e69cfb55066c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 900bf815917a4b7c9841860d663a2183b1ab71b3
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065562"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529675"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>配置 Azure 数据资源管理器群集的托管标识
 
 借助 [Azure Active Directory 中的托管标识](/azure/active-directory/managed-identities-azure-resources/overview)，群集可以轻松访问其他受 AAD 保护的资源（例如 Azure Key Vault）。 标识由 Azure 平台托管，无需预配或轮换任何机密。 本文介绍如何为 Azure 数据资源管理器群集创建托管标识。 托管标识配置当前仅支持[为群集启用客户托管密钥](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)。
 
 > [!Note]
-> 如果在订阅或租户之间迁移了应用，Azure 数据资源管理器的托管标识将不按预期方式运行。 应用需要获取新的标识，这可以通过[禁用](#remove-a-system-assigned-identity)和[重新启用](#add-a-system-assigned-identity)该功能来完成。 还需要更新下游资源的访问策略才能使用新标识。
+> 如果 Azure 数据资源管理器群集跨订阅或租户迁移，则 Azure 数据资源管理器的托管标识不会按预期方式运行。 应用需要获取新的标识，这可以通过[禁用](#disable-a-system-assigned-identity)和[重新启用](#add-a-system-assigned-identity)该功能来完成。 还需要更新下游资源的访问策略才能使用新标识。
 
 ## <a name="add-a-system-assigned-identity"></a>添加系统分配的标识
                                                                                                     
@@ -29,7 +29,7 @@ ms.locfileid: "80065562"
 
 ### <a name="add-a-system-assigned-identity-using-the-azure-portal"></a>使用 Azure 门户添加系统分配的标识
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 #### <a name="new-azure-data-explorer-cluster"></a>新的 Azure 数据资源管理器群集
 
@@ -164,15 +164,15 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 ---
 
-## <a name="remove-a-system-assigned-identity"></a>删除系统分配的标识
+## <a name="disable-a-system-assigned-identity"></a>禁用系统分配的标识
 
 删除系统分配的标识也会将它从 AAD 中删除。 删除群集资源时，也会自动从 AAD 中删除系统分配的标识。 可以通过禁用该功能来删除系统分配的标识。  使用 C#、ARM 模板或 Azure 门户删除系统分配的标识，详情如下。
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-### <a name="remove-a-system-assigned-identity-using-the-azure-portal"></a>使用 Azure 门户删除系统分配的标识
+### <a name="disable-a-system-assigned-identity-using-the-azure-portal"></a>使用 Azure 门户禁用系统分配的标识
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 在门户的左侧窗格中选择 **"设置** > **标识**"。
 1. 在 **"标识**窗格>**系统分配**"选项卡中：
     1. 将 **"状态"** 滑块移动到 **"关闭**"。

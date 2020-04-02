@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: takamath
-ms.openlocfilehash: e2dd642139ae082cc0d0838e61399c549d2d812a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 074d512767769fe434cd4a6d4f4e8e6a88f7ed2a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74970751"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549121"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>在实验室虚拟机上启用浏览器连接 
 DevTest 实验室与[Azure 堡垒](https://docs.microsoft.com/azure/bastion/)集成 ，使您能够通过浏览器连接到虚拟机。 您首先需要在实验室虚拟机上启用浏览器连接。
 
-作为实验室的所有者，您可以通过浏览器启用访问所有实验室虚拟机。 无需额外的客户端、代理或软件。 Azure Bastion 通过 SSL 直接在 Azure 门户中为虚拟机提供安全、无缝的 RDP/SSH 连接。 通过 Azure 堡垒进行连接时，虚拟机不需要公共 IP 地址。 有关详细信息，请参阅什么是[Azure 堡垒？](../bastion/bastion-overview.md)
+作为实验室的所有者，您可以通过浏览器启用访问所有实验室虚拟机。 无需额外的客户端、代理或软件。 Azure 堡垒通过 TLS 直接在 Azure 门户中为虚拟机提供安全、无缝的 RDP/SSH 连接。 通过 Azure 堡垒进行连接时，虚拟机不需要公共 IP 地址。 有关详细信息，请参阅什么是[Azure 堡垒？](../bastion/bastion-overview.md)
 
 
 本文演示如何在实验室虚拟机上启用浏览器连接。
@@ -43,7 +43,7 @@ DevTest 实验室与[Azure 堡垒](https://docs.microsoft.com/azure/bastion/)集
 ## <a name="enable-vm-creation-in-the-subnet"></a>在子网中启用 VM 创建
 现在，通过按照以下步骤启用在此子网中创建 VM： 
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 选择左侧导航菜单上**的所有服务**。 
 1. 从列表中选择**开发人员测试实验室**。 
 1. 从实验室列表中，选择*您的实验室*。 

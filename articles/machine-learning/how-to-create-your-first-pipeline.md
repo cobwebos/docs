@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f62be94c901b383e34608508baa87ea37c893af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0a5bfe921687ad964e9321e3874de37ccf9b98
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283597"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549302"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Azure 机器学习[工作区](how-to-manage-workspace.md)的成员可以看到�
 
 ML 管道使用远程计算目标进行计算，以及存储与该管道关联的中间数据和最终数据。 这些管道可以在支持的 [Azure 存储](https://docs.microsoft.com/azure/storage/)位置读取和写入数据。
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -86,7 +86,7 @@ def_blob_store.upload_files(
     overwrite=True)
 ```
 
-一个管道包含一个或多个步骤。 步骤是在计算目标上运行的单元。 步骤可能会使用数据源，并生成“中间”数据。 步骤可以创建数据，例如模型、包含模型和依赖文件的目录，或临时数据。 然后，此数据可供管道中的其他后续步骤使用。
+一个管道包含一个或多个步骤。 步骤是在计算目标上运行的单元。 步骤可能会消耗数据源并生成"中间"数据。 步骤可以创建数据，例如模型、包含模型和依赖文件的目录，或临时数据。 然后，此数据可供管道中的其他后续步骤使用。
 
 要了解有关将管道连接到数据有关，请参阅[文章"如何访问数据](how-to-access-data.md)[以及如何注册数据集](how-to-create-register-datasets.md)"。 
 
@@ -118,7 +118,7 @@ output_data1 = PipelineData(
 
 如果在某个文件或一组文件中存储了表格数据存储，[TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 可以有效地替代 `DataReference`。 `TabularDataset` 对象支持版本控制、差异分析和汇总统计。 `TabularDataset` 是惰性评估的（类似于 Python 生成器），有效的做法是通过拆分或筛选来划分其子集。 `FileDataset` 类提供类似的惰性评估数据来表示一个或多个文件。 
 
-使用 [from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) 等方法创建 `TabularDataset`。
+使用 [from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) 等方法创建 `TabularDataset`。
 
 ```python
 from azureml.data import TabularDataset
@@ -174,7 +174,7 @@ else:
     print(compute_target.status.serialize())
 ```
 
-### <a name="azure-databricks"></a><a id="databricks"></a>Azure 数据块
+### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
 Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它可以用作 Azure 机器学习管道的计算目标。
 
@@ -389,7 +389,7 @@ pipeline_run1.wait_for_completion()
 * 将每个步骤的 Docker 映像从容器注册表下载到计算目标。
 * 如果在步骤中指定了 `DataReference` 对象，则装载数据存储。 如果不支持装载，则改为将数据复制到计算目标。
 * 运行在步骤定义中指定的计算目标中的步骤。 
-* 创建项目，例如日志、stdout 和 stderr、指标以及步骤指定的输出。 然后上传这些项目并将其保存在用户的默认数据存储中。
+* 创建项目，例如日志、stdout 和 stderr、指标以及步骤指定的输出。 然后上载这些项目并将其保存在用户的默认数据存储中。
 
 ![以管道方式运行实验的图](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 

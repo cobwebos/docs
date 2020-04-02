@@ -10,12 +10,12 @@ ms.date: 02/24/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b0f2ad7566d0204871a9c6441315d6201662d92b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53eca8a0b9e7cc9abb8f89cd56fca5df28f2de0f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616290"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521930"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>授权访问 Azure 存储中的数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "77616290"
 
 下面简要介绍每个授权选项：
 
-- 用于 Blob 和队列的 **Azure Active Directory (Azure AD) 集成**。 Azure AD 提供基于角色的访问控制 (RBAC)，用于精细地控制客户端对存储帐户中资源的访问权限。 有关用于 Blob 和队列的 Azure AD 集成的详细信息，请参阅[使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限](storage-auth-aad.md)。
+- 用于 Blob 和队列的 **Azure Active Directory (Azure AD) 集成**。 Azure AD 提供基于角色的访问控制 （RBAC），用于控制客户端对存储帐户中资源的访问。 有关用于 Blob 和队列的 Azure AD 集成的详细信息，请参阅[使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限](storage-auth-aad.md)。
 
 - **Azure 活动目录域服务 （Azure AD DS）** 对 Azure 文件的身份验证。 Azure 文件支持通过 Azure AD DS 通过服务器消息块 （SMB） 进行基于标识的授权。 可以使用 RBAC 对客户端对存储帐户中的 Azure 文件资源的访问权限进行细粒度控制。 有关使用域服务的 Azure 文件身份验证的详细信息，请参阅我们的[概述](../files/storage-files-active-directory-overview.md)。
 

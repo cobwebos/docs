@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f16f6ef38b221e525340858fc7ba131f8a1bdf5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10fc822f9f36512405dd4e3b5aba6270b53e163f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289571"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549032"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>事件中心的 Azure 安全基线
 
@@ -72,7 +72,7 @@ ms.locfileid: "80289571"
 
 **指南**：在与事件中心关联的虚拟网络上启用 DDoS 保护标准，以防止分布式拒绝服务 （DDoS） 攻击。 使用 Azure 安全中心集成威胁智能拒绝与已知恶意或未使用的 Internet IP 地址的通信。
 
-如何配置 DDoS 保护：https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+如何配置 DDoS 保护：[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](/azure/virtual-network/manage-ddos-protection)
 
 有关 Azure 安全中心集成威胁情报的详细信息：https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
@@ -106,7 +106,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 如何在事件中心为指定的 IP 地址添加防火墙规则：
 
- https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls#add-firewall-for-specified-ip
+ https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
 **Azure 安全中心监视**：尚未可用
 
@@ -140,7 +140,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 
 
-用于网络的 Azure 策略示例：https://docs.microsoft.com/azure/governance/policy/samples/#network
+用于网络的 Azure 策略示例：https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
 
 
@@ -373,10 +373,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 **指南**：当环境中发生可疑或不安全活动时，请使用 Azure 活动目录 （AD） 特权标识管理 （PIM） 生成日志和警报。 使用 Azure AD 风险检测查看有关风险用户行为的警报和报告。 对于其他日志记录，请将 Azure 安全中心风险检测警报发送到 Azure 监视器，并使用操作组配置自定义警报/通知。
 
-
-
 如何部署特权标识管理 （PIM）：https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
-
 
 了解 Azure AD 风险检测：https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
@@ -780,7 +777,7 @@ Microsoft 管理事件中心的基础基础结构，并实施了严格的控制�
 
 - 事件中心应使用虚拟网络服务终结点
 
-事件中心命名空间的 Azure 内置策略：https://docs.microsoft.com/en-\我们/azure/治理/策略/示例/内置策略_事件中心
+事件中心命名空间的 Azure 内置策略：https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
 如何查看可用的 Azure 策略别名：https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -961,7 +958,7 @@ Azure 存储库文档：https://docs.microsoft.com/azure/devops/repos/index?view
 
 **指南**：为 Azure 事件中心配置地理灾难恢复。 当整个 Azure 区域或数据中心（如果未使用可用性区域）遭遇停机时，在不同区域或数据中心中继续进行数据处理就显得至关重要。 因此，地质灾害恢复和异地复制是任何企业的重要功能。 Azure 事件中心支持命名空间级别的异地灾难恢复和异地复制。 
 
-了解 Azure 事件中心的地理灾难恢复：https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones-preview
+了解 Azure 事件中心的地理灾难恢复：https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones
 
 **Azure 安全中心监视**：当前不可用
 

@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 7e8a1793a329a863c9df97ae5ddcbee6cef10e8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4819eaf2a65cf542029cf36f262d0cea5be75f2e
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76964276"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521943"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 
@@ -129,7 +129,7 @@ ms.locfileid: "76964276"
 
 若要使用自己的 Azure-SSIS IR 公共 IP 地址，同时将其加入虚拟网络，请确保它们符合以下要求：
 
-- 应仅提供尚未与其他 Azure 资源关联的两个未使用的 IP 地址。 当我们定期升级你的 Azure-SSIS IR 时，将使用一个额外的 IP 地址。
+- 应仅提供尚未与其他 Azure 资源关联的两个未使用的 IP 地址。 当我们定期升级你的 Azure-SSIS IR 时，将使用一个额外的 IP 地址。 请注意，一个公共 IP 地址不能在活动 Azure-SSIS IR 之间共享。
 
 - 这些 IP 地址应该是标准类型的静态 IP。 有关更多详细信息，请参阅[公共 IP 地址的 SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)。
 
@@ -191,10 +191,55 @@ Azure 批处理管理服务和 Azure-SSIS IR 之间的入站流量无法路由�
 > [!NOTE]
 > 此方法会产生额外的维护成本。 定期检查 IP 范围，并在 UDR 中添加新的 IP 范围，以免中断 Azure-SSIS IR。 我们建议每月检查 IP 范围，因为当服务标记中出现新 IP 时，IP 将再需要一个月生效。 
 
+为了简化 UDR 规则的设置，可以按照 Powershell 脚本运行，为 Azure 批处理管理服务添加 UDR 规则：
+```powershell
+$Location = "[location of your Azure-SSIS IR]"
+$RouteTableResourceGroupName = "[name of Azure resource group that contains your Route Table]"
+$RouteTableResourceName = "[resource name of your Azure Route Table ]"
+$RouteTable = Get-AzRouteTable -ResourceGroupName $RouteTableResourceGroupName -Name $RouteTableResourceName
+$ServiceTags = Get-AzNetworkServiceTag -Location $Location
+$BatchServiceTagName = "BatchNodeManagement." + $Location
+$UdrRulePrefixForBatch = $BatchServiceTagName
+if ($ServiceTags -ne $null)
+{
+    $BatchIPRanges = $ServiceTags.Values | Where-Object { $_.Name -ieq $BatchServiceTagName }
+    if ($BatchIPRanges -ne $null)
+    {
+        Write-Host "Start to add rule for your route table..."
+        for ($i = 0; $i -lt $BatchIPRanges.Properties.AddressPrefixes.Count; $i++)
+        {
+            $UdrRuleName = "$($UdrRulePrefixForBatch)_$($i)"
+            Add-AzRouteConfig -Name $UdrRuleName `
+                -AddressPrefix $BatchIPRanges.Properties.AddressPrefixes[$i] `
+                -NextHopType "Internet" `
+                -RouteTable $RouteTable `
+                | Out-Null
+            Write-Host "Add rule $UdrRuleName to your route table..."
+        }
+        Set-AzRouteTable -RouteTable $RouteTable
+    }
+}
+else
+{
+    Write-Host "Failed to fetch service tags, please confirm that your Location is valid."
+}
+```
+
 对于防火墙设备允许出站流量，您需要允许出站到与 NSG 出站规则中要求相同的端口。
 -   端口 443 的目标为 Azure 云服务。
 
-    如果使用 Azure 防火墙，则可以使用 Azure 云服务标记指定网络规则，否则可能允许目标作为防火墙设备中的所有目标。
+    如果使用 Azure 防火墙，则可以使用 Azure 云服务标记指定网络规则。 对于其他类型的防火墙，您可以简单地允许端口 443 的所有目标，也可以根据 Azure 环境的类型在 FQDN 下方允许：
+    | Azure 环境 | 终结点                                                                                                                                                                                                                                                                                                                                                              |
+    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Azure Public      | <ul><li><b>Azure 数据工厂（管理）</b></li><li style="list-style-type:none"><ul><li>\*.frontend.clouddatahub.net</li></ul></li><li><b>Azure 存储（管理）</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.windows.net</li><li>\*.table.core.windows.net</li></ul></li><li><b>Azure 容器注册表（自定义设置）</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.io</li></ul></li><li><b>事件中心（日志记录）</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>微软日志记录服务（内部使用）</b></li><li style="list-style-type:none"><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
+    | Azure Government  | <ul><li><b>Azure 数据工厂（管理）</b></li><li style="list-style-type:none"><ul><li>\*.frontend.datamovement.azure.us</li></ul></li><li><b>Azure 存储（管理）</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*.table.core.usgovcloudapi.net</li></ul></li><li><b>Azure 容器注册表（自定义设置）</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.us</li></ul></li><li><b>事件中心（日志记录）</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.usgovcloudapi.net</li></ul></li><li><b>微软日志记录服务（内部使用）</b></li><li style="list-style-type:none"><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
+    | Azure 中国世纪互联     | <ul><li><b>Azure 数据工厂（管理）</b></li><li style="list-style-type:none"><ul><li>\*.frontend.datamovement.azure.cn</li></ul></li><li><b>Azure 存储（管理）</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.chinacloudapi.cn</li><li>\*.table.core.chinacloudapi.cn</li></ul></li><li><b>Azure 容器注册表（自定义设置）</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.cn</li></ul></li><li><b>事件中心（日志记录）</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.chinacloudapi.cn</li></ul></li><li><b>微软日志记录服务（内部使用）</b></li><li style="list-style-type:none"><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul>
+
+    对于 Azure 存储、Azure 容器注册表和事件中心的 FQDN，您还可以选择为虚拟网络启用以下服务终结点，以便对这些终结点的网络流量通过 Azure 骨干网，而不是路由到防火墙设备：
+    -  Microsoft.Storage
+    -  Microsoft.ContainerRegistry
+    -  Microsoft.EventHub
+
 
 -   端口 80 的目标为 CRL 下载站点。
 
@@ -219,7 +264,7 @@ Azure 批处理管理服务和 Azure-SSIS IR 之间的入站流量无法路由�
     如果使用 Azure 防火墙，则可以使用存储服务标记指定网络规则，否则可能会允许在防火墙设备中将目标指定为特定的 Azure 文件存储 URL。
 
 > [!NOTE]
-> 对于 Azure SQL 和存储，如果在子网上配置虚拟网络服务终结点，则同一区域中的 Azure-SSIS IR 和 Azure SQL 之间的流量 + 同一区域中的 Azure 存储或配对区域的 Azure 存储将直接路由到 Microsoft Azure 骨干网而不是防火墙设备。
+> 对于 Azure SQL 和存储，如果在子网上配置虚拟网络服务终结点，则同一区域中的 Azure-SSIS IR 和 Azure SQL 之间的流量 + 同一区域中的 Azure 存储或配对区域中的 Azure 存储将直接路由到 Microsoft Azure 骨干网络，而不是防火墙设备。
 
 如果不需要检查 Azure-SSIS IR 的出站流量的功能，只需应用路由来强制所有流量到下一跃点类型**Internet：**
 
@@ -241,7 +286,7 @@ Azure-SSIS IR 需要在与虚拟网络相同的资源组下创建某些网络资
 > [!NOTE]
 > 现在，可为 Azure-SSIS IR 提供自己的静态公共 IP 地址。 在此方案中，我们只会在与静态公共 IP 地址（而不是虚拟网络）相同的资源组下创建 Azure 负载均衡器和网络安全组。
 
-当 Azure-SSIS IR 启动时，将创建这些资源。 当 Azure-SSIS IR 停止时，将删除这些资源。 如果为 Azure-SSIS IR 提供自己的静态公共 IP 地址，则当 Azure-SSIS IR 停止时不会将其删除。 为了避免阻止 Azure-SSIS IR 停止，请不要在其他资源中重复使用这些网络资源。 
+当 Azure-SSIS IR 启动时，将创建这些资源。 当 Azure-SSIS IR 停止时，将删除这些资源。 如果为 Azure-SSIS IR 自带静态公共 IP 地址，则当 Azure-SSIS IR 停止时，将不会删除自己的静态公共 IP 地址。 为了避免阻止 Azure-SSIS IR 停止，请不要在其他资源中重复使用这些网络资源。
 
 确保虚拟网络/静态公共 IP 地址所属的资源组/订阅中没有任何资源锁。 如果配置只读/删除锁，则启动和停止 Azure-SSIS IR 将会失败，或者它会停止响应。
 
@@ -249,6 +294,8 @@ Azure-SSIS IR 需要在与虚拟网络相同的资源组下创建某些网络资
 - Microsoft.Network/LoadBalancers 
 - Microsoft.Network/NetworkSecurityGroups 
 - Microsoft.Network/PublicIPAddresses 
+
+确保订阅的资源配额足以满足上述三个网络资源。 具体而言，对于在虚拟网络中创建的每个 Azure-SSIS IR，您需要为上述三个网络资源中的每一个保留两个免费配额。 当我们定期升级 Azure-SSIS IR 时，将使用额外的一个配额。
 
 ### <a name="faq"></a><a name="faq"></a> 常见问题解答
 
@@ -288,7 +335,7 @@ Azure-SSIS IR 需要在与虚拟网络相同的资源组下创建某些网络资
 
 1. 启动 Microsoft Edge 或 Google Chrome。 目前只有这些 Web 浏览器支持数据工厂 UI。 
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 
 1. 选择**更多服务**。 筛选并选择“虚拟网络”。**** 
 
@@ -318,7 +365,7 @@ Azure-SSIS IR 需要在与虚拟网络相同的资源组下创建某些网络资
 
 1. 启动 Microsoft Edge 或 Google Chrome。 目前只有这些 Web 浏览器支持数据工厂 UI。 
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 
 
 1. 选择**更多服务**。 筛选并选择“虚拟网络(经典)”。**** 
 

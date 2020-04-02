@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 662619e101b45d1dd8b34ea97e31f214b254124a
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73796234"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521886"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>排查虚拟网络对等互连问题
 
@@ -212,7 +212,7 @@ ms.locfileid: "73796234"
 
 若要排查此问题：
 
-1. 登录到 Azure 门户。   
+1. 登录到 Azure 门户。 
 1. 在 Web 应用中选择“网络”，然后选择“VNet 集成”。********
 1. 检查是否可以看到远程虚拟网络。 手动输入远程虚拟网络地址空间（“同步网络”和“添加路由”）。********
 
@@ -234,6 +234,15 @@ ms.locfileid: "73796234"
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>无法对等互连 Databricks 虚拟网络
 
 若要解决此问题，请在“Azure Databricks”下配置虚拟网络对等互连，然后使用“资源 ID”指定目标虚拟网络。******** 有关详细信息，请参阅[将 Databricks 虚拟网络对等互连到远程虚拟网络](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2)。
+
+### <a name="the-remote-virtual-network-lacks-a-gateway"></a>远程虚拟网络缺少网关
+
+当您从不同的租户对等虚拟网络，并且稍后想要配置`Use Remote Gateways`时，将发生此问题。 Azure 门户的一个限制是无法验证另一个租户的虚拟网络中是否存在虚拟网络网关。
+
+有两种方法可以解决此问题：
+
+ * 创建新对等互连时，请删除`Use Remote Gateways`对等互连并激活该选项。
+ * 使用 PowerShell 或 CLI 而不是 Azure 门户`Use Remote Gateways`来启用 。
 
 ## <a name="next-steps"></a>后续步骤
 

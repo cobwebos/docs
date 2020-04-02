@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 1ca03cde57a9496054d0860fbb70bd286caabe46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d52d8e6d0f6e3325b5c5cdc9a2e21654e6a2b621
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79533243"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520722"
 ---
 # <a name="log-analytics-agent-overview"></a>日志分析代理概述
 Azure 日志分析代理是为在任何云、本地计算机以及[系统中心操作管理器](https://docs.microsoft.com/system-center/scom/)监视的虚拟机中进行全面管理而开发的。 Windows 和 Linux 代理将收集的数据从不同来源发送到 Azure 监视器中的日志分析工作区，以及监视解决方案中定义的任何唯一日志或指标。 日志分析代理还支持 Azure 监视器中的见解和其他服务，如[VM 的 Azure 监视器](../insights/vminsights-enable-overview.md)[、Azure 安全中心和](/azure/security-center/)Azure[自动化](../../automation/automation-intro.md)。
@@ -39,7 +39,7 @@ Azure 监视器中的[Azure 诊断扩展](diagnostics-extension-overview.md)还�
 ## <a name="data-collected"></a>收集的数据
 下表列出了可以配置日志分析工作区以便从所有连接的代理收集的数据类型。 有关使用日志分析代理收集其他类型的数据的见解、解决方案和其他解决方案的列表，请参阅[Azure 监视器监视的内容](../monitor-reference.md)。
 
-| 数据源 | 描述 |
+| 数据源 | 说明 |
 | --- | --- |
 | [窗口事件日志](data-sources-windows-events.md) | 发送到 Windows 事件日志记录系统的信息。 |
 | [Syslog](data-sources-syslog.md)                     | 发送到 Linux 事件日志记录系统的信息。 |
@@ -70,7 +70,7 @@ Linux 和 Windows 的代理不仅用于连接到 Azure 监视器，它还支持 
 
 有多种方法可以安装日志分析代理，并根据要求将计算机连接到 Azure 监视器。 下表详细介绍了每种方法，以便用户确定组织中最适用的方法。
 
-|源 | 方法 | 描述|
+|源 | 方法 | 说明|
 |-------|-------------|-------------|
 |Azure VM| [手动从 Azure 门户](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | 指定要从日志分析工作区部署的 VM。 |
 | | 使用 Azure CLI 或使用 Azure 资源管理器模板的[Windows](../../virtual-machines/extensions/oms-windows.md)或[Linux](../../virtual-machines/extensions/oms-linux.md)日志分析 VM 扩展 | 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Azure Monitor 工作区中。 |
@@ -126,7 +126,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 下表重点介绍了要安装代理的受支持 Linux 发行版所需的包。
 
-|所需程序包 |描述 |最低版本 |
+|所需程序包 |说明 |最低版本 |
 |-----------------|------------|----------------|
 |Glibc |    GNU C 库 | 2.5-12 
 |Openssl    | OpenSSL 库 | 1.0.x 或 1.1.x |
@@ -160,19 +160,23 @@ Windows 代理将于 2020 年 5 月 18 日开始专门使用 SHA-2 签名。 此
 
 ![Log Analytics 代理通信示意图](./media/log-analytics-agent/log-analytics-agent-01.png)
 
+下表列出了 Linux 和 Windows 代理与 Azure 监视器日志通信所需的代理和防火墙配置信息。
 
-## <a name="network-firewall-requirements"></a>网络防火墙要求
-下面的信息列出了实现 Linux 和 Windows 代理与 Azure Monitor 日志通信所必需的代理和防火墙配置信息。  
+### <a name="firewall-requirements"></a>防火墙要求
 
 |代理资源|端口 |方向 |绕过 HTTPS 检查|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |端口 443 |出站|是 |  
-|*.oms.opinsights.azure.com |端口 443 |出站|是 |  
-|* .blob.core.windows.net |端口 443 |出站|是 |  
+|*.ods.opinsights.azure.com |端口 443 |入站和出站|是 |  
+|*.oms.opinsights.azure.com |端口 443 |入站和出站|是 |  
+|\* .blob.core.windows.net |端口 443 |入站和出站|是 |
+|* .azure-automation.net |端口 443 |入站和出站|是 |
+|*.azure.com |端口 443|入站和出站|是 |
 
 有关 Azure 政府所需的防火墙信息，请参阅[Azure 政府管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)。 
 
 如果计划使用 Azure 自动化混合 Runbook 辅助角色连接到自动化服务并在自动化服务中注册以在环境中使用 Runbook 或管理解决方案，则必须有权访问端口号和在[为混合 Runbook 工作线程配置网络](../../automation/automation-hybrid-runbook-worker.md#network-planning)中描述的 URL。 
+
+### <a name="proxy-configuration"></a>代理配置
 
 Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log Analytics 网关与 Azure Monitor 进行通信。  并同时支持匿名身份验证和基本身份验证（用户名/密码）。  对于直接连接到服务的 Windows 代理，代理配置在安装过程中指定，或[在部署后](agent-manage.md#update-proxy-settings)从控制面板或使用 PowerShell 指定。  
 
@@ -183,7 +187,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 > [!NOTE]
 > 如果代理服务器无需进行身份验证，Linux 代理仍要求提供伪用户名/密码。 这可以是任何用户名或密码。
 
-|properties| 描述 |
+|properties| 说明 |
 |--------|-------------|
 |协议 | https |
 |user | 用于代理身份验证的可选用户名 |

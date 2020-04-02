@@ -9,14 +9,14 @@ metadata:
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 03/10/2020
+  ms.date: 03/23/2020
   ms.author: dapine
-  ms.openlocfilehash: 8298a2e37520e7920f18b7ffd5b49074098e0243
-  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+  ms.openlocfilehash: c342b797dfe21fe4ffbd1bb9bc112e9726cdec42
+  ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/28/2020
-  ms.locfileid: "79415911"
+  ms.lasthandoff: 04/01/2020
+  ms.locfileid: "80529473"
 landingContent:
 - title: 关于托管
   linkLists:
@@ -44,3 +44,5 @@ landingContent:
       url: regions.md
     - text: 主权云
       url: sovereign-clouds.md
+    - text: 容器常见问题解答
+      url: speech-container-faq.md

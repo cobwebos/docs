@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 33005bc286f7dc2c0ebed74bd9df0309e71346f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73824836"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546318"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>远程监视解决方案加速器概述
 
@@ -125,9 +125,6 @@ ASA 作业将来自已连接设备的遥测数据提供给时序见解以便进�
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
 [Azure 时序见解](https://docs.microsoft.com/azure/time-series-insights/)存储来自连接到解决方案加速器的设备的遥测数据。 通过它还可在解决方案 Web UI 中显示和查询设备遥测数据。
-
-> [!NOTE]
-> 时序见解目前在 Azure 中国云中不可用。 Azure 中国云中的新远程监视解决方案加速器部署使用 Cosmos DB 进行所有存储。
 
 ### <a name="configuration-microservice"></a>配置微服务
 

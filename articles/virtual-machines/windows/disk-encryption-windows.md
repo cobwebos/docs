@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed64ee3d0e024c32be08ed4e010a6933033c3f87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e96f9484c103ebe75e21705b94cf35b9e16c54f
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476512"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529340"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁盘加密方案
 
@@ -131,7 +131,7 @@ Azure 磁盘加密使用 BitLocker 外部密钥保护器来为 Azure 虚拟机 (
 
 下表列出了现有或正在运行的 VM 的资源管理器模板参数：
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 | --- | --- |
 | vmName | 运行加密操作的 VM 的名称。 |
 | KeyVaultName | BitLocker 密钥应上传到的 Key Vault 的名称。 可使用 cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MyKeyVaultResourceGroup"` 获取该名称|
@@ -251,6 +251,8 @@ Azure 磁盘加密不支持以下方案、功能和技术：
 - 临时 OS 磁盘。
 - 加密共享/分布式文件系统，包括但不限于 DFS、GFS、DRDB 和 CephFS。
 - 将加密 VM 移动到其他订阅。
+- 第 2 代 VM（请参阅：[对 Azure 上第 2 代 VM 的支持](generation-2.md#generation-1-vs-generation-2-capabilities)）
+- Lsv2 系列 VM（参见[：Lsv2 系列](../lsv2-series.md)）
 
 ## <a name="next-steps"></a>后续步骤
 

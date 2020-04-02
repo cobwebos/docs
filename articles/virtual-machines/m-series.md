@@ -5,20 +5,20 @@ services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 02/05/2019
-ms.author: lahugh
-ms.openlocfilehash: e8952218675493710cbdd1f92661e9a9c077f34c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.author: jushiman
+ms.openlocfilehash: 3e0552570d5bdb7f812852cd058710b833b7fdd4
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164043"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521341"
 ---
 # <a name="m-series"></a>M 系列
 
-M 系列提供高 vCPU 计数（最多 128 个 vCPU）和大量内存（高达 3.8 TiB）。 它还非常适合从高 vCPU 计数和大量内存中受益的超大型数据库或其他应用程序。 M 系列尺寸基于英特尔® Xeon ® CPU E7-8890 v3 = 2.50GHz
+M 系列提供高 vCPU 计数（最多 128 个 vCPU）和大量内存（高达 3.8 TiB）。 它也非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。 英特尔&reg;至强&reg;CPU E7-8890 v3 = 2.50GHz 和英特尔&reg;至强&reg;白金 8280M 2.7GHz（级联湖）均支持 M 系列尺寸。
 
-M 系列 VM 的功能英特尔®超线程技术
+M 系列 VM 的功能是&reg;英特尔超线程技术。
 
 ACU：160-180
 

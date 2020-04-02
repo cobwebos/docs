@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/18/2019
+ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 13adf6de420b54299d04a226dab81e75cbb9fef2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4e91aa59168deb18375bf86ae77f655ca3dab47
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75975786"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521266"
 ---
 # <a name="manage-storage-account-access-keys"></a>管理存储帐户访问密钥
 
@@ -52,6 +52,8 @@ Microsoft 建议您定期轮换访问密钥，以帮助保护存储帐户的安�
 
 > [!NOTE]
 > Microsoft 建议同一时间在所有应用程序中只使用一个密钥。 如果在某些地方使用密钥 1 并在其他地方使用密钥 2，将无法在没有部分应用程序失去访问的情况下轮转密钥。
+
+要轮换帐户的访问密钥，用户必须是服务管理员，或者必须分配包含**Microsoft 的**RBAC 角色。 包含此操作的某些内置 RBAC 角色是**所有者**、**参与者**和**存储帐户密钥操作员服务角色**。 有关服务管理员角色的详细信息，请参阅[经典订阅管理员角色、Azure RBAC 角色和 Azure AD 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。 有关 Azure 存储的内置 RBAC 角色的详细信息，请参阅[Azure RBAC 的 Azure 内置角色中的](../../role-based-access-control/built-in-roles.md#storage)**存储**部分。
 
 ## <a name="next-steps"></a>后续步骤
 

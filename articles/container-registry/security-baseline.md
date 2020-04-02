@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2970ebf42acb87e93f8b827b3687b219da5867c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9225cfd9793a84f371387d6450a3dfa80ba74de3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80244284"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547538"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure 容器注册表的 Azure 安全基线
 
@@ -68,7 +68,6 @@ Azure 容器注册表的 Azure 安全基线包含有助于改进部署安全状�
 您可以使用 Azure 安全中心"及时网络"访问来配置 NSG，以在有限时间内将终结点暴露到已批准的 IP 地址。 此外，使用 Azure 安全中心自适应网络强化来建议基于实际流量和威胁情报限制端口和源 IP 的 NSG 配置。
 
 如何配置 DDoS 保护：https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
-
 
 如何部署 Azure 防火墙：https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 

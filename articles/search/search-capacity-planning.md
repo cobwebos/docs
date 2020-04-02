@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: e2ba5301b81b1a6f5de696ab4587cd8ff43e3c68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462558"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546260"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>调整 Azure 认知搜索中的容量
 
@@ -27,7 +27,7 @@ ms.locfileid: "77462558"
 
 |||
 |-|-|
-|*“度量值组”* | 为读/写操作（例如在重建或刷新索引时）提供索引存储和 I/O。 每个分区都有总索引的一个共享。 如果分配三个分区，则索引分为三个分区。 |
+|*分区* | 为读/写操作（例如在重建或刷新索引时）提供索引存储和 I/O。 每个分区都有总索引的一个共享。 如果分配三个分区，则索引分为三个分区。 |
 |*副本* | 是搜索服务的实例，主要用于对查询操作进行负载均衡。 每个副本都是索引的一个副本。 如果分配了三个副本，则将有三个索引副本可用于服务查询请求。|
 
 ## <a name="when-to-add-nodes"></a>何时添加节点
@@ -38,7 +38,8 @@ ms.locfileid: "77462558"
 
 通常，搜索应用程序需要比分区更多的副本，尤其是当服务操作偏向查询工作负载时。 [高可用性](#HA)部分将解释原因。
 
-添加更多副本或分区会增加运行服务的成本。 请务必查看[定价计算器](https://azure.microsoft.com/pricing/calculator/)以了解添加更多节点的计费影响。 [下图](#chart)可以帮助您交叉引用特定配置所需的搜索单元数。
+> [!NOTE]
+> 添加更多副本或分区会增加运行服务的成本，并且可能会引入对结果排序方式的细微变化。 请务必查看[定价计算器](https://azure.microsoft.com/pricing/calculator/)以了解添加更多节点的计费影响。 [下图](#chart)可以帮助您交叉引用特定配置所需的搜索单元数。 有关其他副本如何影响查询处理的详细信息，请参阅[排序结果](search-pagination-page-layout.md#ordering-results)。
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>如何分配副本和分区
 
@@ -85,10 +86,10 @@ ms.locfileid: "77462558"
 | **1 个副本** |1 个 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 个副本** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 个副本** |3 SU |6 SU |9 SU |12 SU |18 SU |36 个 SU |
-| **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |空值 |
-| **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |空值 |
-| **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |空值 |
-| **12 副本** |12 SU |24 SU |36 个 SU |空值 |空值 |空值 |
+| **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |不可用 |
+| **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |不可用 |
+| **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |不可用 |
+| **12 副本** |12 SU |24 SU |36 个 SU |不可用 |不可用 |不可用 |
 
 Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请参阅 [Pricing Details](https://azure.microsoft.com/pricing/details/search/)（定价详细信息）。
 

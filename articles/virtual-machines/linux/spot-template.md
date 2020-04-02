@@ -1,25 +1,18 @@
 ---
-title: 使用模板部署 Azure Spot VM（预览）
+title: 使用模板部署 Azure Spot VM
 description: 了解如何使用模板部署 Spot VM 以节省成本。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 0e635fe7ce9b442a9cc8f0fdf614feef5a3a756a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1352761e308aa2e26864654dae65c290df47102b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79082789"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548258"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>使用资源管理器模板部署 Spot VM
 
@@ -29,11 +22,6 @@ ms.locfileid: "79082789"
 
 您可以选择为 VM 设置您愿意每小时支付的最高价格。 Spot VM 的最高价格可以用美元 （USD） 设置，最多使用 5 个小数位。 例如，该值`0.98765`将是每小时 0.98765 美元的最高价格。 如果将最高价格设置为`-1`，则 VM 不会根据价格被逐出。 VM 的价格将是 Spot 的当前价格或标准 VM 的价格，只要容量和配额可用，标准 VM 的价格就更少了。 有关设置最高价格的详细信息，请参阅[现货 VM - 定价](spot-vms.md#pricing)。
 
-> [!IMPORTANT]
-> 竞价实例当前处于公共预览版中。
-> 不建议生产工作负载使用此预览版本。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
 
 ## <a name="use-a-template"></a>使用模板
 

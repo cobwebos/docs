@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b4ec003888d75a582d25feef8ed2ce010fa7996
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368054"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546236"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure 活动目录身份验证管理操作参考指南
 
@@ -101,7 +101,7 @@ Azure AD[操作参考指南](active-directory-ops-guide-intro.md)的这一部分
 
 ![密码哈希同步流](./media/active-directory-ops-guide/active-directory-ops-img5.png)
 
-要更好地了解身份验证选项，请参阅为[Azure Active Directory 混合标识解决方案选择正确的身份验证方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)。
+要更好地了解身份验证选项，请参阅为[Azure Active Directory 混合标识解决方案选择正确的身份验证方法](https://docs.microsoft.com/azure/active-directory/hybrid/choose-ad-authn)。
 
 ### <a name="programmatic-usage-of-credentials"></a>凭据的编程使用
 
@@ -115,7 +115,7 @@ Microsoft 还建议您联系应用程序所有者以了解使用模式（如果�
 
 ### <a name="on-premises-authentication"></a>本地身份验证
 
-使用集成 Windows 身份验证 （IWA） 或无缝单一登录 （SSO） 托管身份验证（具有密码哈希同步或直通身份验证）的联合身份验证是企业网络内部的最佳用户体验。本地域控制器的视线。 它最大限度地减少了凭据提示疲劳，并降低了用户成为网络钓鱼攻击的牺牲品的风险。 如果您已经在使用与小灵通或 PTA 进行云托管身份验证，但用户在本地身份验证时仍需要键入其密码，则应立即[部署无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)。 另一方面，如果您当前与最终迁移到云托管身份验证的计划联合，则应在迁移项目中实现无缝 SSO。
+使用集成 Windows 身份验证 （IWA） 或无缝单一登录 （SSO） 托管身份验证（具有密码哈希同步或直通身份验证）的联合身份验证是企业网络内部使用本地域控制器的视线的最佳用户体验。 它最大限度地减少了凭据提示疲劳，并降低了用户成为网络钓鱼攻击的牺牲品的风险。 如果您已经在使用与小灵通或 PTA 进行云托管身份验证，但用户在本地身份验证时仍需要键入其密码，则应立即[部署无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)。 另一方面，如果您当前与最终迁移到云托管身份验证的计划联合，则应在迁移项目中实现无缝 SSO。
 
 ### <a name="device-trust-access-policies"></a>设备信任访问策略
 
@@ -230,11 +230,11 @@ Azure AD 可以计算每个登录和每个用户的风险。 在访问策略中�
 
 Microsoft Intune 应用程序管理 （MAM） 能够将数据存储加密、PIN、远程存储清理等数据保护控制推送到兼容的客户端移动应用程序（如 Outlook Mobile）。 此外，还可以创建条件访问策略，[以限制](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)从已批准或兼容的应用访问云服务（如 Exchange Online）。
 
-如果您的员工安装支持 MAM 的应用程序（如 Office 移动应用）来访问公司资源（如在线交换或 SharePoint Online），并且您也支持 BYOD（自带设备），我们建议您部署应用程序 MAM 策略来管理个人拥有的设备中的应用程序配置，无需 MDM 注册，然后更新条件访问策略，以仅允许来自支持 MAM 的客户端的访问。
+如果您的员工安装支持 MAM 的应用程序（如 Office 移动应用）来访问公司资源（如在线交换或 SharePoint Online），并且您也支持 BYOD（自带设备），我们建议您部署应用程序 MAM 策略，以便在个人拥有的设备中管理应用程序配置，而无需 MDM 注册，然后更新条件访问策略，仅允许支持 MAM 的客户端进行访问。
 
 ![条件访问授予控制](./media/active-directory-ops-guide/active-directory-ops-img12.png)
 
-如果员工针对公司资源安装支持 MAM 的应用程序，并且访问受限于 Intune 托管设备上，则应考虑部署应用程序 MAM 策略来管理个人设备的应用程序配置，以及更新条件访问策略，以仅允许来自支持 MAM 的客户端进行访问。
+如果员工针对公司资源安装支持 MAM 的应用程序，并且访问受限于 Intune 托管设备上，则应考虑部署应用程序 MAM 策略来管理个人设备的应用程序配置，并更新条件访问策略，以便仅允许来自支持 MAM 的客户端进行访问。
 
 ### <a name="conditional-access-implementation"></a>条件访问实现
 
@@ -277,9 +277,9 @@ Microsoft Intune 应用程序管理 （MAM） 能够将数据存储加密、PIN�
 
 1. 使用[登录活动报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)标识仍在使用旧版身份验证的用户并计划修正：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 升级到支持现代身份验证的客户端到受影响的用户。
+   a. 升级到支持现代身份验证的客户端到受影响的用户。
    
-   b.保留“数据库类型”设置，即设置为“共享”。 计划一个截止时间范围，以锁定以下步骤。
+   b. 计划一个截止时间范围，以锁定以下步骤。
    
    c. 确定哪些旧应用程序对旧版身份验证具有硬依赖性。 请参阅下面的步骤 3。
 
@@ -329,7 +329,7 @@ Microsoft Intune 应用程序管理 （MAM） 能够将数据存储加密、PIN�
 #### <a name="user-settings"></a>用户设置
 
 - **外部用户**- 外部协作可以通过团队、Power BI、在线共享点和 Azure 信息保护等服务在企业中有机地进行。 如果您有用于控制用户启动的外部协作的显式约束，建议使用[Azure AD 授权管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)或控制操作（如通过帮助台）启用外部用户。 如果不想允许为服务进行有机外部协作，则可以[阻止成员完全邀请外部用户](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations)。 或者，您还可以在外部用户邀请中[允许或阻止特定域](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list)。
-- **应用注册**- 启用应用注册时，最终用户可以自行注册应用程序并授予对其数据的权限。 应用注册的典型示例是启用 Outlook 插件的用户，或者启用 Alexa 和 Siri 等语音助理，以便阅读其电子邮件和日历或代表他们发送电子邮件。 如果客户决定关闭应用注册，InfoSec 和 IAM 团队必须参与异常管理（根据业务需求需要的应用注册），因为他们需要向管理员帐户注册应用程序，并且很可能需要设计一个流程来操作流程。
+- **应用注册**- 启用应用注册时，最终用户可以自行注册应用程序并授予对其数据的权限。 应用注册的典型示例是启用 Outlook 插件的用户，或者启用 Alexa 和 Siri 等语音助理，以便阅读其电子邮件和日历或代表他们发送电子邮件。 如果客户决定关闭应用注册，InfoSec 和 IAM 团队必须参与异常管理（根据业务需求需要的应用注册），因为他们需要使用管理员帐户注册应用程序，并且很可能需要设计一个流程来操作流程。
 - **管理门户**- 组织可以锁定 Azure 门户中的 Azure AD 边栏选项卡，以便非管理员无法访问 Azure 门户中的 Azure AD 管理并感到困惑。 转到 Azure AD 管理门户中的用户设置以限制访问：
 
 ![管理门户受限访问](./media/active-directory-ops-guide/active-directory-ops-img13.png)

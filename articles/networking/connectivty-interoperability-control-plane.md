@@ -1,5 +1,5 @@
 ---
-title: Azure 后端连接性功能的互操作性：控制平面分析 | Microsoft Docs
+title: Azure 中的互操作性：控制平面分析
 description: 本文提供了可用于分析 Azure 中 ExpressRoute、站点到站点 VPN 和虚拟网络对等互连之间互操作性的测试设置的控制平面分析。
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 4921e4c4fc0da95250a0171c66d6a69093b10687
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e41bc86533815c394077bf5276d930fe958cd19
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873839"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518271"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Azure 后端连接性功能的互操作性：控制平面分析
+# <a name="interoperability-in-azure--control-plane-analysis"></a>Azure 中的互操作性：控制平面分析
 
 本文介绍了[测试设置][Setup]的控制分析。 你也可以查看测试设置的[测试设置配置][Configuration]和[数据分析][Data-Analysis]。
 
@@ -29,7 +29,7 @@ ms.locfileid: "74873839"
 
 ![1][1]
 
-VNet 的 ExpressRoute 网关的 ASN 不同于 Microsoft Enterprise Edge 路由器 (MSEE) 的 ASN。 ExpressRoute 网关使用专用 ASN（值为 65515），而 MSEE 全局使用公共 ASN（值为 12076）********。 配置 ExpressRoute 对等互连时，由于 MSEE 是对等体，因此使用**12076**作为对等 ASN。 在 Azure 端，MSEE 与 ExpressRoute 网关建立 eBGP 对等互连。 MSEE 为每个 ExpressRoute 对等互连建立的双重 eBGP 对等互连在控制平面级别是透明的。 因此，在查看 ExpressRoute 路由表时，会看到 VNet 的 ExpressRoute 网关 ASN 是 VNet 的前缀。 
+VNet 的 ExpressRoute 网关的 ASN 不同于 Microsoft Enterprise Edge 路由器 (MSEE) 的 ASN。 ExpressRoute 网关使用专用 ASN（值为 65515），而 MSEE 全局使用公共 ASN（值为 12076）********。 配置 ExpressRoute 对等互连时，由于 MSEE 是对等体，因此使用**12076**作为对等 ASN。 在 Azure 端，MSEE 与 ExpressRoute 网关建立 eBGP 对等互连。 MSEE 为每个 ExpressRoute 对等互连建立的双重 eBGP 对等互连在控制平面级别是透明的。 因此，当您查看 ExpressRoute 路由表时，您会看到 VNet 的 ExpressRoute 网关 ASN，用于 VNet 的前缀。 
 
 下图显示了 ExpressRoute 路由表示例： 
 
@@ -45,7 +45,7 @@ VNet 的 ExpressRoute 网关的 ASN 不同于 Microsoft Enterprise Edge 路由�
 
 ## <a name="on-premises-location-1-and-the-branch-vnet-perspective-via-a-site-to-site-vpn"></a>本地位置 1 和分支 VNet 通过站点到站点 VPN 建立连接的透视图
 
-本地位置 1 和分支 VNet 都通过站点到站点 VPN 连接连接到中心 VNet 的 VPN 网关。 它们共享同一个拓扑透视图，如下图所示：
+本地位置 1 和分支 VNet 都通过站点到站点 VPN 连接连接到集线器 VNet 的 VPN 网关。 它们共享同一个拓扑透视图，如下图所示：
 
 ![3][3]
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 55b4750d2c601a4d3c66bcd8235a9718d6daaf9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 207f4aecfb57480293c138c95ed6e8f6562bbc7b
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186979"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529163"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>使用自定义策略在 Azure Active Directory B2C 中配置资源所有者密码凭据流
 
@@ -251,7 +251,7 @@ ms.locfileid: "78186979"
 - 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。
 - 将 `B2C_1A_ROPC_Auth` 替换为资源所有者密码凭据策略的全名。
 
-| 键 | “值” |
+| 键 | 值 |
 | --- | ----- |
 | username | `user-account` |
 | password | `password1` |
@@ -296,7 +296,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 - 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。
 - 将 `B2C_1A_ROPC_Auth` 替换为资源所有者密码凭据策略的全名。
 
-| 键 | “值” |
+| 键 | 值 |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

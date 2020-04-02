@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3d71301534d56ef8eca68951c8c9f9a1570b3a6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d3bcc32dc8f1412a5adbc175a5f8618628bce83
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282250"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547890"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常见问题：Azure 到 Azure 灾难恢复
 
@@ -93,7 +93,7 @@ Site Recovery 不支持将磁盘从复制的 VM 中“热删除”。 如果删�
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Site Recovery 需要建立 Internet 连接？
 
-否，站点恢复不需要互联网连接。 但它确实需要访问站点恢复 URL 和 IP 范围，如[Azure VM 灾难恢复中的网络中](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)所述。
+否，站点恢复不需要互联网连接。 但它确实需要访问站点恢复 URL 和 IP 范围，如[Azure VM 灾难恢复中的网络中](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)所述。
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>是否可以复制具有独立层的单独资源组的应用程序？
 

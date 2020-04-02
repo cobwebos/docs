@@ -3,12 +3,12 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 325f7b3d03435945779c1f42e13681dcfd9604b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 397d6a719f64a49208e651469fab9cf841ccd4ad
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334871"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521351"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -244,7 +244,11 @@ Azure 机器学习计算配额的最新值可在[Azure 机器学习配额页](..
 
 ## <a name="media-services-limits"></a>媒体服务限制
 
-[!INCLUDE [azure-mediaservices-limits](../../../includes/azure-mediaservices-limits.md)]
+[!INCLUDE [azure-mediaservices-limits](../../../includes/media-servieces-limits-quotas-constraints.md)]
+
+### <a name="media-services-v2-legacy"></a>媒体服务 v2（旧版）
+
+有关特定于媒体服务 v2（旧版）的限制，请参阅[媒体服务 v2（旧版）](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations)
 
 ## <a name="mobile-services-limits"></a>移动服务限制
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: dcf9a278bfc0ede844f8eb59e3a256e40a47c57d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282420"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519480"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 导入/导出服务：常见问题解答
 
@@ -72,7 +72,7 @@ ms.locfileid: "80282420"
 一个导入或导出作业在单个作业中只能引用 10 个驱动器。 若要寄送 10 个以上驱动器，应当创建多个作业。 与同一作业关联的驱动器必须放在同一个包裹中一起寄送。
 有关数据容量跨越多个磁盘导入作业时的详细信息和指导，请与 Microsoft 支持部门联系。
 
-### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>上传的 blob 显示状态为“租用已过期”。 我该怎么办？
+### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>上传的 blob 显示状态为“租用已过期”。   应采取何种操作？
 
 你可以忽略“租用已过期”字段。 导入/导出在上传期间对 blob 进行租用，以确保没有其他进程可以并行更新 blob。 “租用已过期”意味着导入/导出不再上传到它，并且 blob 可以供你使用。
 
@@ -99,18 +99,20 @@ ms.locfileid: "80282420"
 > [!NOTE]
 > 印度的数据中心需要信头（送达查兰）上的声明信才能返回驱动器。 要安排所需的输入通行证，还必须与所选运营商预订取件，并与数据中心共享详细信息。
 
-### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>跨国寄送驱动器是否存在限制？
+### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>航运和返回我的驱动器国际是否有任何限制？
 
 请注意，发运的物理介质可能需要穿越国界。 应当负责确保物理介质和数据是遵照适用的法律导入和/或导出的。 在发运物理介质之前，请咨询顾问以验证介质和数据是否可以合法地发运到所确定的数据中心。 这会有助于确保它可以及时到达 Microsoft。
+
+上传完成后，将驱动器返回到国际地址的过程可能比本地运输所需的通常 2-3 天要长。 在 Azure 门户中列出的阶段（打包）中，数据盒团队确保提供正确的文档，以确保货件符合各种国际进出口要求。
 
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>将磁盘传送到数据中心是否有任何特殊要求？
 
 这些要求取决于特定的 Azure 数据中心限制。
 
-- 出于安全原因，有几个站点需要将 Microsoft 数据中心入站 ID 号写入宗地。 在将驱动器或磁盘运送到数据中心之前，请与 Azure DataBox 操作部adbops@microsoft.com（ ） 联系以获得此号码。 如果没有此编号，包将被拒绝。
+- 出于安全原因，有几个站点（如澳大利亚、德国和英国南部）要求在包裹上写入 Microsoft 数据中心入站 ID 号。 在将驱动器或磁盘运送到数据中心之前，请与 Azure DataBox 操作部adbops@microsoft.com（ ） 联系以获得此号码。 如果没有此编号，包将被拒绝。
 - 印度的数据中心需要司机的个人资料，如政府身份证或证明号。 （例如，PAN、AADHAR、DL）、姓名、联系人和车牌号，以获得门进入通行证。 为避免交货延误，请告知您的承运商这些要求。
 
-### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>创建作业时，寄送地址是一个不同于存储帐户位置的位置。 我该怎么办？
+### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>创建作业时，寄送地址是一个不同于存储帐户位置的位置。   应采取何种操作？
 
 某些存储帐户位置映射到备用寄送位置。 此前可用的寄送位置也可临时映射到备用位置。 在寄送驱动器之前，请始终查看在创建作业过程中提供的寄送地址。
 

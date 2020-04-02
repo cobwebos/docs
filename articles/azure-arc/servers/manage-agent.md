@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 758e6123fd09df1e3f8b2e883a729b9fec4328d1
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 8bcf59ee863bb2fd2a3213480372ad215c2fc00d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80367286"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528589"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理和维护连接的计算机代理
 
@@ -61,6 +61,9 @@ Windows 和 Linux 的 Azure 连接计算机代理可以手动或自动升级到�
 ### <a name="linux-agent"></a>Linux 代理
 
 要将 Linux 计算机上的代理更新到最新版本，它涉及两个命令。 一个命令使用存储库中的最新可用包列表更新本地包索引，以及一个用于升级本地包的命令。 
+
+> [!NOTE]
+> 要升级代理，您必须具有*根*访问权限或使用 Sudo 具有提升权限的帐户。
 
 #### <a name="upgrade-ubuntu"></a>升级乌本图
 
@@ -112,20 +115,18 @@ Windows 和 Linux 的 Azure 连接计算机代理可以手动或自动升级到�
 
 ## <a name="remove-the-agent"></a>删除代理
 
-使用以下过程之一使用本节中描述的命令行或设置向导卸载 Windows 或 Linux 代理。 在卸载代理之前，首先通过完成以下步骤断开计算机与 Azure Arc 的服务器（预览）的连接： 
-
-1. 转到 [Azure 门户](https://aka.ms/hybridmachineportal)并打开 Azure Arc for servers（预览版）。
-
-2. 在列表中选择计算机，选择省略号图标 (**...**)，然后选择“删除”。****
+执行以下方法之一，从计算机卸载 Windows 或 Linux 连接的计算机代理。 删除代理不会将计算机与 Arc 注销为服务器（预览），这是当您不再需要在 Azure 中管理计算机时执行的单独过程。
 
 ### <a name="windows-agent"></a>Windows 代理
+
+以下两种方法都删除代理，但它们不会删除计算机上的*C：*程序文件_AzureConnectedMachineAgent 文件夹*。
 
 #### <a name="uninstall-from-control-panel"></a>从控制面板卸载
 
 1. 若要从计算机中卸载 Windows 代理，请执行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 使用拥有管理员权限的帐户登录到计算机。  
-    b.保留“数据库类型”设置，即设置为“共享”。 在“控制面板”中，选择“程序和功能”。********  
+    a. 使用拥有管理员权限的帐户登录到计算机。  
+    b. 在“控制面板”中，选择“程序和功能”。********  
     c. 在“程序和功能”中，依次选择“Azure Connected Machine Agent”、“卸载”、“是”。****************  
 
     >[!NOTE]
@@ -158,6 +159,9 @@ Windows 和 Linux 的 Azure 连接计算机代理可以手动或自动升级到�
 
 ### <a name="linux-agent"></a>Linux 代理
 
+> [!NOTE]
+> 要卸载代理，您必须具有*根*访问权限或使用 Sudo 具有提升权限的帐户。
+
 要卸载 Linux 代理，要使用的命令取决于 Linux 操作系统。
 
 - 对于 Ubuntu，运行以下命令：
@@ -177,3 +181,11 @@ Windows 和 Linux 的 Azure 连接计算机代理可以手动或自动升级到�
     ```bash
     sudo zypper remove azcmagent
     ```
+
+## <a name="unregister-machine"></a>取消注册计算机
+
+如果计划停止使用 Azure 中的支持服务管理计算机，请执行以下步骤，将计算机与 Arc 注销以用于服务器（预览）。 您可以在从机器中删除已连接的计算机代理之前或之后执行这些步骤。
+
+1. 转到 [Azure 门户](https://aka.ms/hybridmachineportal)并打开 Azure Arc for servers（预览版）。
+
+2. 在列表中选择计算机，选择省略号图标 (**...**)，然后选择“删除”。****

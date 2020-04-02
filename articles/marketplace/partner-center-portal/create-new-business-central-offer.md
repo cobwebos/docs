@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 9a167ac1cc9b9ca8cc8951f14f43ba4cf5d10551
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 908d0fb9d494ec048e6b254f91ec1faf56b47c90
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294415"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529402"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>创建新的 Dynamics 365 商业中心产品/服务
 
@@ -120,7 +120,7 @@ ms.locfileid: "80294415"
 > [!NOTE]
 > 报价列表内容（如说明、文档、屏幕截图、使用条款等）不需要以英文表示，只要要约说明以短语开头，"此应用程序仅以 [非英语语言]提供。 提供*有用的链接 URL*以提供产品/服务列表内容中所用语言以外的语言提供内容也是可接受的。
 
-### <a name="name"></a>“属性”
+### <a name="name"></a>名称
 
 您在此处输入的名称将作为产品/服务列表的标题显示给客户。 此字段预填充了创建产品/服务时为 **"产品/服务"别名**输入的文本，但您可以更改此值。 此名称可以注册商标（您可以包括商标或版权符号）。 名称不能超过 50 个字符，不能包含任何表情符号。
 
@@ -128,7 +128,7 @@ ms.locfileid: "80294415"
 
 提供产品/服务的简短说明（最多 100 个字符），可在市场搜索结果中使用。
 
-### <a name="description"></a>描述
+### <a name="description"></a>说明
 
 提供更久的报价说明（最多 3，000 个字符）。 此描述将显示在市场列表概述中的客户。 包括您的产品/服务的价值主张、主要优势、类别和/或行业协会、应用内购买机会以及任何必需的披露。 
 
@@ -267,7 +267,7 @@ ms.locfileid: "80294415"
 
 ### <a name="url-to-app-installation"></a>应用安装 URL
 
-如果选择上面的 **"连接**"，请在此处提供应用安装的 URL。
+如果选择上面的 **"连接**"，请在此处提供应用安装的 URL。 对于不需要安装的已连接服务，请为服务登录页或注册页提供 URL。
 
 ## <a name="test-drive-technical-configuration"></a>试驾技术配置
 

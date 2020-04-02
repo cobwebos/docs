@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 55bfb5030d0a168e7556240212fcd5f3be30a289
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e0f0f311b7ec8adae6ddb25e01046141adadfa4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335370"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548537"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>开始使用 Azure 地图 Android SDK
 
@@ -267,6 +267,29 @@ mapControl.onReady(map -> {
 </center>
 
 [此文档](supported-languages.md)提供了支持的语言和区域视图的完整列表。
+
+## <a name="navigating-the-map"></a>导航地图
+
+地图可以缩放、平移、旋转和倾斜几种不同的方式。 下面详细介绍了导航地图的所有不同方法。
+
+**缩放地图**
+
+- 用两根手指触摸地图，捏在一起缩小或将手指分开以放大。
+- 双击地图可放大一个级别。
+- 用两根手指双击可放大地图一级。
+- 点击两次;第二次点击时，将手指放在地图上，向上拖动以放大或缩小。
+
+**平移地图**
+
+- 触摸地图并朝任意方向拖动。
+
+**旋转地图**
+
+- 用两根手指触摸地图并旋转。
+
+**间距地图**
+
+- 用两根手指触摸地图，然后一起向上或向下拖动。
 
 ## <a name="next-steps"></a>后续步骤
 

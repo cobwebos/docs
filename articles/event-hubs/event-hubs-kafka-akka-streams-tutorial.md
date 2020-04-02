@@ -1,6 +1,6 @@
 ---
 title: 将 Akka Streams 用于 Apache Kafka - Azure 事件中心| Microsoft Docs
-description: 本文提供了有关如何将 Akka Streams 连接到已启用 Apache Kafka 的 Azure 事件中心的信息。
+description: 本文提供有关如何将 Akka 流连接到 Azure 事件中心的信息。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -13,17 +13,17 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 729e78959f93b1aa1563a049a64c553929c4f97e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c53fcc7b4b99e77237ba7ea9219aef4182f2af61
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283627"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521823"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>将 Akka Streams 与适用于 Apache Kafka 的事件中心配合使用
 本教程介绍如何在不更改协议客户端或运行自己的群集的情况下将 Akka 流连接到事件中心。 适用于 Kafka 的 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
 
-在本教程中，你将了解如何执行以下操作：
+在本教程中，你将了解：
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 克隆示例项目
@@ -49,7 +49,7 @@ ms.locfileid: "80283627"
 
 ## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
 
-要从任何事件中心服务进行发送或接收，需要事件中心命名空间。 请参阅[创建已启用 Kafka 的事件中心](event-hubs-create.md)，了解有关获取事件中心 Kafka 终结点的信息。 请确保复制事件中心连接字符串，以供将来使用。
+要从任何事件中心服务进行发送或接收，需要事件中心命名空间。 有关详细信息[，请参阅创建事件中心](event-hubs-create.md)。 请确保复制事件中心连接字符串，以供将来使用。
 
 ## <a name="clone-the-example-project"></a>克隆示例项目
 

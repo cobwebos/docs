@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 24aa3462aef4f719e93d17389ff342084f6c7864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668751"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520742"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题 
 
@@ -76,7 +76,7 @@ ms.locfileid: "77668751"
 | --- | --- |
 | 2 | 提供给 omsadmin 脚本的选项无效。 运行 `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` 获取使用情况。 |
 | 3 | 提供给 omsadmin 脚本的配置无效。 运行 `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` 获取使用情况。 |
-| 4 | 提供给 omsadmin 脚本的代理无效。 验证代理，并参阅我们的[有关使用 HTTP 代理服务器的文档](log-analytics-agent.md#network-firewall-requirements)。 |
+| 4 | 提供给 omsadmin 脚本的代理无效。 验证代理，并参阅我们的[有关使用 HTTP 代理服务器的文档](log-analytics-agent.md#firewall-requirements)。 |
 | 5 | 从 Azure Monitor 收到 403 HTTP 错误。 请参阅完整的 omsadmin 脚本输出了解详细信息。 |
 | 6 | 从 Azure Monitor 收到非 200 HTTP 错误。 请参阅完整的 omsadmin 脚本输出了解详细信息。 |
 | 7 | 无法连接到 Azure Monitor。 请参阅完整的 omsadmin 脚本输出了解详细信息。 |
@@ -157,15 +157,8 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. 请查看[更新代理设置](agent-manage.md#update-proxy-settings)部分，验证是否已将代理正确配置为通过代理服务器进行通信。    
-* 仔细检查下列 Azure Monitor 终结点是否在允许列表中：
 
-    |代理资源| 端口 | 方向 |
-    |------|---------|----------|  
-    |*.ods.opinsights.azure.com | 端口 443| 入站和出站 |  
-    |*.oms.opinsights.azure.com | 端口 443| 入站和出站 |  
-    |* .blob.core.windows.net | 端口 443| 入站和出站 |  
-
-    如果计划使用 Azure 自动化混合 Runbook 辅助角色连接到自动化服务并在自动化服务中注册以在环境中使用 Runbook 或管理解决方案，则必须有权访问端口号和在[为混合 Runbook 工作线程配置网络](../../automation/automation-hybrid-runbook-worker.md#network-planning)中描述的 URL。 
+3. 仔细检查 Azure 监视器[网络防火墙要求](log-analytics-agent.md#firewall-requirements)列表中概述的终结点是否正确添加到允许列表中。 如果使用 Azure 自动化，则上述链接了所需的网络配置步骤。
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>问题：尝试载入时收到 403 错误
 

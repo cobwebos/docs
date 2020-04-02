@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 713a9762206b5083268fd48136cd8077c296c690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6de6f23fe9564b28a5d436ac00999dbb3e9183e1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289288"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548967"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure 认知搜索中的安全性和数据隐私
 
@@ -39,7 +39,7 @@ Azure 认知搜索针对以下标准进行了认证，如 [2018 年 6 月发布�
 
 加密扩展到整个索引管道：从连接到传输到存储在 Azure 认知搜索中的索引数据，都进行了加密。
 
-| 安全层 | 描述 |
+| 安全层 | 说明 |
 |----------------|-------------|
 | 传输中加密 <br>(HTTPS/SSL/TLS) | Azure 认知搜索在 HTTPS 端口 443 上侦听。 与 Azure 服务建立的跨平台连接经过加密。 <br/><br/>所有从客户端到服务的 Azure 认知搜索交互都支持 SSL/TLS 1.2。  请务必为你的服务的 SSL 连接使用 TLSv1.2。|
 | 静态加密 <br>Microsoft 托管的密钥 | 加密在索引过程中完全进行内部化处理，而不会显著影响完成索引所需的时间或索引大小。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。<br><br>在内部，加密基于 [Azure 存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。<br><br> 加密在 Azure 认知搜索内部进行，证书和加密密钥由 Microsoft 进行内部管理，并得到了广泛应用。 无法在门户中或以编程方式打开或关闭加密、管理或替换为自己的密钥，或者查看加密设置。<br><br>静态加密已于 2018 年 1 月 24 日宣布推出并应用于所有区域中的所有服务层级，包括免费层。 对于完全加密，必须删除该日期之前创建的索引并重新生成，以便进行加密。 否则，仅对 1 月 24 日以后添加的新数据进行加密。|
@@ -75,7 +75,7 @@ Azure 认知搜索继承了 Azure 平台的安全安全措施，并提供其自�
 
 ### <a name="restricted-access"></a>受限访问
 
-当您拥有公共服务并且想要限制服务的使用时，您可以在管理 REST API 版本中使用 IP 限制规则：2020-03-13，IpRule 。 [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2020-03-13/createorupdate-service#iprule-) IpRule 允许您通过单独或在一个范围内识别要授予对搜索服务的访问权限的 IP 地址来限制对服务的访问。 
+当您拥有公共服务并且想要限制服务的使用时，您可以在管理 REST API 版本中使用 IP 限制规则：2020-03-13，IpRule 。 [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) IpRule 允许您通过单独或在一个范围内识别要授予对搜索服务的访问权限的 IP 地址来限制对服务的访问。 
 
 ### <a name="private-access"></a>私人访问
 
@@ -105,7 +105,7 @@ Azure 认知搜索[的专用终结点](https://docs.microsoft.com/azure/private-
 
 如果需要对内容进行精细的基于每个用户的控制，可以在查询中生成安全筛选器，返回与给定安全标识关联的文档。 基于身份的访问控制不是预定义的角色和角色分配，而是作为筛选器实现，该*筛选器*根据标识修剪文档和内容的搜索结果。 下表描述了修整未经授权内容的搜索结果的两种方法。
 
-| 方法 | 描述 |
+| 方法 | 说明 |
 |----------|-------------|
 |[基于标识筛选器的安全修整](search-security-trimming-for-azure-search.md)  | 阐述实现用户标识访问控制的基本工作流。 该工作流包括将安全标识符添加到索引，然后解释如何针对该字段进行筛选，以修整受禁内容的结果。 |
 |[Azure Active Directory 标识的安全修整](search-security-trimming-for-azure-search-with-aad.md)  | 此文延伸了前一篇文章的内容，提供了有关从 Azure Active Directory (AAD)（Azure 云平台中的一个[免费服务](https://azure.microsoft.com/free/)）检索标识的步骤。 |

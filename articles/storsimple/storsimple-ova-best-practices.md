@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5da0297dd97c8263bdc47f1d5a3d7d2d1f835e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298835"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544341"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple 虚拟阵列最佳实践
 
@@ -161,8 +161,8 @@ StorSimple 虚拟阵列可与单个存储帐户关联。 此存储帐户可以�
 
 * 相对于已预配分层共享大小的文件大小可能影响分层性能。 使用大型文件可能会导致层数变慢。使用大型文件时，我们建议最大文件小于共享大小的 3%。
 * 虚拟阵列上最多可以创建 16 个卷/共享。 有关在本地固定和分层的卷/共享的大小限制，请始终参阅 [StorSimple 虚拟阵列限制](storsimple-ova-limits.md)。
-* 创建卷时，请将预期的数据使用量以及将来的增长量包含考虑。 稍后将无法扩展卷。
-* 创建卷后，无法缩小 StorSimple 上的卷大小。
+* 创建卷时，请将预期的数据使用量以及将来的增长量包含考虑。 以后无法展开卷或共享。
+* 创建卷/共享后，无法缩小 StorSimple 上的卷/共享大小。
 * 在写入 StorSimple 上的分层卷时，如果卷数据达到特定的阈值（相对于保留给卷的本地空间），IO 将受到限制。 继续写入此卷会让 IO 明显变慢。 尽管可以写入已超过预配容量的分层卷（系统不会主动阻止用户写入超出预配容量的数据），但会看到警报通知，指出已超过订阅量。 在看到该警报后，请务必采取补救措施，例如删除卷数据（目前不支持扩展卷）。
 * 对于灾难恢复用例，可允许的共享/卷数为 16 个，可并行处理的共享/卷数上限也是 16 个，因此共享/卷数并不影响 RPO 和 RTO。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: 120c8c45999e6d4071fc397d6e585d7d2f83aebc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68b880957754439b3b88a0cccff2218a5942f967
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131433"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548813"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>将 Robo 3T 与 Azure Cosmos DB 的 API for MongoDB 配合使用
 
@@ -20,6 +20,9 @@ ms.locfileid: "80131433"
 
 * 下载并安装 [Robo 3T](https://robomongo.org/)
 * 获得 Cosmos DB [连接字符串](connect-mongodb-account.md)信息
+
+> [!NOTE]
+> 目前，Cosmos DB 的 API for MongoDB 支持 Robo 3T v1.2 及更低版本。
 
 ## <a name="connect-using-robo-3t"></a>使用 Robo 3T 进行连接
 

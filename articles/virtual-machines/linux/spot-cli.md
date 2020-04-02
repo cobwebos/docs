@@ -1,27 +1,20 @@
 ---
-title: 使用 CLI 部署 Azure Spot VM（预览）
+title: 使用 CLI 部署 Azure Spot VM
 description: 了解如何使用 CLI 部署 Azure Spot VM 以节省成本。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 110e935671ab1d640b2ff3dc26c203b262e999fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b6a07bfbcf56f3ca78fa4991e7741a3d44c25b9
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77163086"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544354"
 ---
-# <a name="preview-deploy-spot-vms-using-the-azure-cli"></a>预览：使用 Azure CLI 部署 Spot VM
+# <a name="deploy-spot-vms-using-the-azure-cli"></a>使用 Azure CLI 部署 Spot VM
 
 使用[Azure Spot VM](spot-vms.md)使您能够利用我们未使用的容量，从而显著节省成本。 在 Azure 需要返回容量的任何时间点，Azure 基础结构将驱逐 Spot VM。 因此，Spot VM 非常适合处理批处理作业、开发/测试环境、大型计算工作负载等中断的工作负载。
 
@@ -30,12 +23,6 @@ ms.locfileid: "77163086"
 您可以选择为 VM 设置您愿意每小时支付的最高价格。 Spot VM 的最高价格可以用美元 （USD） 设置，最多使用 5 个小数位。 例如，该值`0.98765`将是每小时 0.98765 美元的最高价格。 如果将最高价格设置为`-1`，则 VM 不会根据价格被逐出。 VM 的价格将是 Spot 的当前价格或标准 VM 的价格，只要容量和配额可用，标准 VM 的价格就更少了。 有关设置最高价格的详细信息，请参阅[现货 VM - 定价](spot-vms.md#pricing)。
 
 使用 Azure CLI 使用 Spot 创建 VM 的过程与[快速入门文章中](/azure/virtual-machines/linux/quick-create-cli)详述的过程相同。 只需添加"-优先级点"参数并提供最高价格或`-1`。
-
-> [!IMPORTANT]
-> 竞价实例当前处于公共预览版中。
-> 不建议生产工作负载使用此预览版本。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-
 
 
 ## <a name="install-azure-cli"></a>安装 Azure CLI

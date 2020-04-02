@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: fe132ee6ab90fdae99463f11ecf46f352690b810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43d15a7252819a3e4f7635e37458b75e9b7ecca7
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69984350"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546270"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>使用 Blitzz 将数据从 Oracle 迁移到 Azure Cosmos DB Cassandra API 帐户
 
@@ -36,7 +36,7 @@ Blitzz 的迁移解决方案遵循一步一步的方法迁移复杂的操作工�
 
 * 它具有容错功能，可以保证数据的准确传输，即使系统出现硬件或软件故障。
 
-* 它可以在传输过程中使用各种安全方法（例如 SSL、加密）对数据进行保护。
+* 它使用 TLS/SSL、加密等多种安全方法在传输过程中保护数据。
 
 * 它提供的服务可将以 PL/SQL 编写的复杂业务逻辑转换为 Azure Cosmos DB 中的等效业务逻辑。
 
@@ -44,7 +44,7 @@ Blitzz 的迁移解决方案遵循一步一步的方法迁移复杂的操作工�
 
 本部分介绍如何执行所需步骤，以便设置 Blitzz 并将数据从 Oracle 数据库迁移到 Azure Cosmos DB。
 
-1. 在打算安装 Blitzz 复制器的计算机中，添加安全证书。 该证书是 Blitzz 复制器与指定的 Azure Cosmos DB 帐户建立 SSL 连接所需的。 可以使用以下步骤来添加证书：
+1. 在打算安装 Blitzz 复制器的计算机中，添加安全证书。 Blitzz 副本需要此证书才能与指定的 Azure Cosmos DB 帐户建立 TLS 连接。 可以使用以下步骤来添加证书：
 
    ```bash
    wget https://cacert.omniroot.com/bc2025.crt

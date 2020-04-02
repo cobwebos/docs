@@ -3,7 +3,7 @@ title: Azure 安全服务与技术 | Microsoft Docs
 description: 本文提供了一个包含 Azure 安全服务与技术的特选列表。
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: a5a7f60a-97e2-49b4-a8c5-7c010ff27ef8
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
-ms.author: barclayn
-ms.openlocfilehash: 741e6b9cad20645fdfc085623fd9492a12ac1dfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726564"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549207"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 上可用的安全服务和技术
 
@@ -31,7 +31,7 @@ ms.locfileid: "68726564"
 随着时间推移，此列表会像 Azure 那样不断增长变化。 请务必定期检查此页面，掌握我们最新的与安全相关的服务和技术。
 
 ## <a name="general-azure-security"></a>Azure 常规安全性
-|服务|描述|
+|服务|说明|
 |--------|--------|
 |[Azure&nbsp;安全&nbsp;Center](/azure/security-center/security-center-intro)| 一个云工作负荷保护解决方案，可跨混合云工作负荷提供安全性管理和高级威胁防护。|
 |[Azure Key Vault](/azure/key-vault/key-vault-overview)| 一个安全的机密存储空间，用于存储密码、连接字符串和维持应用正常工作所需的其他信息。 |
@@ -41,7 +41,7 @@ ms.locfileid: "68726564"
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
 
 ## <a name="storage-security"></a>存储安全
-|服务|描述|
+|服务|说明|
 |------|--------|
 | [Azure&nbsp;存储&nbsp;服务&nbsp;加密](/azure/storage/common/storage-service-encryption)|一项安全功能，会自动加密 Azure 存储中的数据。   |
 |[StorSimple 加密混合存储](/azure/storsimple/storsimple-ova-overview)| 一种用于管理本地设备与 Azure 云存储之间的存储任务的集成存储解决方案。|
@@ -54,7 +54,7 @@ ms.locfileid: "68726564"
 <!------>
 
 ## <a name="database-security"></a>数据库安全
-|服务|描述|
+|服务|说明|
 |------|--------|
 | [Azure&nbsp;SQL&nbsp;防火墙](/azure/sql-database/sql-database-firewall-configure)|一项网络访问控制功能，对针对数据库的网络攻击进行防护。 |
 |[Azure&nbsp;SQL&nbsp;单元格&nbsp;级别加密](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| 一种提供粒度级别加密的数据库安全技术。  |
@@ -65,22 +65,22 @@ ms.locfileid: "68726564"
 
 
 ## <a name="identity-and-access-management"></a>标识和访问管理
-|服务|描述|
+|服务|说明|
 |------|--------|
 | [Azure&nbsp;角色&nbsp;基于&nbsp;访问控制](/azure/active-directory/role-based-access-control-configure)|一项访问控制功能，它基于用户在组织内的角色，仅允许用户访问其必须访问的内容。  |
 | [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)|一个基于云的身份验证存储库，它支持基于云的多租户目录和 Azure 中的多标识管理服务。  |
-| [Azure 活动目录 B2C](/azure/active-directory-b2c/active-directory-b2c-overview)|一项标识管理服务，帮助控制客户使用基于 Azure 的应用程序时如何注册、登录和管理其配置文件。   |
-| [Azure 活动目录域服务](/azure/active-directory-domain-services/overview)| Active Directory 域服务基于云的托管版本。 |
+| [Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview)|一项标识管理服务，帮助控制客户使用基于 Azure 的应用程序时如何注册、登录和管理其配置文件。   |
+| [Azure Active Directory 域服务](/azure/active-directory-domain-services/overview)| Active Directory 域服务基于云的托管版本。 |
 | [Azure 多重身份验证](/azure/active-directory/authentication/multi-factor-authentication)| 一项安全性设置，它会采用几种形式的身份验证和验证，再允许访问安全信息。 |
 
 ## <a name="backup-and-disaster-recovery"></a>备份和灾难恢复
-|服务|描述|
+|服务|说明|
 |------|--------|
 | [Azure&nbsp;备份](/azure/backup/backup-introduction-to-azure-backup)| 一项基于 Azure 的服务，用于备份和还原 Azure 云中的数据。 |
 | [Azure&nbsp;&nbsp;站点恢复](/azure/site-recovery/site-recovery-overview)|一项联机服务，它可将在物理计算机和虚拟机 (VM) 上运行的工作负荷从主站点复制到辅助位置，以便在出现故障后恢复服务。 |
 
 ## <a name="networking"></a>网络
-|服务|描述|
+|服务|说明|
 |------|--------|
 | [网络安全&nbsp;&nbsp;组](/azure/virtual-network/virtual-networks-nsg)| 一项基于网络的访问控制功能，它使用 5 元组进行允许或拒绝决策。  |
 | [Azure VPN 网关](/azure/vpn-gateway/vpn-gateway-about-vpngateways)| 一种网络设备，用作 VPN 终结点，以允许跨界访问 Azure 虚拟网络。  |
