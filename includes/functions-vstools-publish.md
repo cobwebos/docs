@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: dee7d778c4a1c1f37ddab7b9d072f83a22acbc60
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8a4fbb3803f2eed4f961792a29a6bf8a327ea208
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80056643"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80502256"
 ---
 1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”  。
 
@@ -44,6 +44,6 @@ ms.locfileid: "80056643"
 
 5. 选择“创建”  ，使用这些设置在 Azure 中创建函数应用及其相关的资源，并部署函数项目代码。 
 
-6. 完成部署后，请记下“站点 URL”  值，这是函数应用在 Azure 中的地址。
+6. 选择“发布”，并且在完成部署后记下“站点 URL”  值，这是函数应用在 Azure 中的地址。
 
     ![发布成功消息](./media/functions-vstools-publish/functions-visual-studio-publish-complete.png)

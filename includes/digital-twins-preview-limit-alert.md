@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 3/11/2020
 ms.custom: include file
-ms.openlocfilehash: 6ec72dfa227d62804e5cbafef0e2d1acf483e84b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: cb36863f0072b031a8c40dd3dc8efcf26a29fb58
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79370368"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80407987"
 ---
 > [!NOTE]
-> Azure 数字孪生预览计划目前已满负荷运行。 因此，不会再添加新客户，并且**此时不能创建更多 Azure 数字孪生资源**。 如果删除了某个位置的实例，则可能会成功创建你的资源并且你可以正常继续使用，但不能保证一定会如此。 请继续返回查看是否有此状态的任何更新。
+> 感谢你关注 Azure 数字孪生预览计划。 由于巨大的需求，预览计划在我们为即将到来的新功能发布做准备时暂时关闭。 因此，你现在可能无法创建新的 Azure 数字孪生资源。 请继续回来查看是否有新的信息。
