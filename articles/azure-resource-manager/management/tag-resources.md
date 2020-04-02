@@ -2,13 +2,13 @@
 title: 为逻辑组织标记资源、资源组和订阅
 description: 演示如何应用标记来整理 Azure 资源以便进行计费和管理。
 ms.topic: conceptual
-ms.date: 03/20/2020
-ms.openlocfilehash: ffc97df0923e26c3abf0eed8e7810f3b1dc61ed2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 76f9f61b3fe7002508bbd884f427efcfee698579
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132232"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548494"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用标记组织 Azure 资源和管理层次结构
 
@@ -20,7 +20,7 @@ ms.locfileid: "80132232"
 
 ## <a name="required-access"></a>所需访问权限
 
-要将标记应用于资源，您必须具有对**Microsoft.Resource/标记**资源类型的写入访问权限。 **"标记参与者"** 角色允许您将标记应用于实体，而无需访问实体本身。
+要将标记应用于资源，您必须具有对**Microsoft.Resource/标记**资源类型的写入访问权限。 ["标记参与者"](../../role-based-access-control/built-in-roles.md#tag-contributor)角色允许您将标记应用于实体，而无需访问实体本身。 目前，标记参与者角色无法通过门户将标记应用于资源或资源组。 它可以通过门户将标记应用于订阅。 它通过 PowerShell 和 REST API 支持所有标记操作。  
 
 ["参与者"](../../role-based-access-control/built-in-roles.md#contributor)角色还授予向任何实体应用标记所需的访问权限。 要将标记仅应用于一种资源类型，请使用该资源的参与者角色。 例如，要将标记应用到虚拟机，请使用[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
 
@@ -28,7 +28,7 @@ ms.locfileid: "80132232"
 
 ### <a name="apply-tags"></a>应用标记
 
-Azure PowerShell 提供了两个用于应用标记的命令 -[新 AzTag](/powershell/module/az.resources/new-aztag)和[Update-AzTag](/powershell/module/az.resources/update-aztag)。 您必须具有 Azure PowerShell 3.6.1 或更高版本才能使用这些命令。
+Azure PowerShell 提供了两个用于应用标记的命令 -[新 AzTag](/powershell/module/az.resources/new-aztag)和[Update-AzTag](/powershell/module/az.resources/update-aztag)。 您必须具有 Az.Resources 模块 1.12.0 或更高版本。 您可以使用 检查您的版本`Get-Module Az.Resources`。 您可以安装该模块或[安装 Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 或更高版本。
 
 **New-AzTag**替换资源、资源组或订阅上的所有标记。 调用命令时，将要标记的实体的资源 ID 传递。
 

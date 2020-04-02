@@ -5,18 +5,23 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
-ms.custom: fasttrack-edit
-ms.openlocfilehash: f16b10f13c945dd7f1ae4fdc3f4e02dcd7c5a018
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: 0fe436b1da551bbc8a0064cb3cfdff864d8f9eb8
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437947"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520694"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 应用服务和 Azure 函数中的身份验证和授权
 
 > [!NOTE]
 > 此时，Azure 应用服务和 Azure 函数不支持[Azure 活动目录 v2.0（](../active-directory/develop/v2-overview.md)包括[MSAL）。](../active-directory/develop/msal-overview.md) 请回头查看是否有更新。
+>
+> [!NOTE]
+> 此时，ASP.NET核心当前不支持使用身份验证/授权功能填充当前用户。
 >
 
 Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应用、RESTful API、移动后端和 [Azure Functions](../azure-functions/functions-overview.md) 中编写少量的代码或根本无需编写代码，就能让用户登录和访问数据。 本文介绍应用服务如何帮助简化应用的身份验证和授权。
@@ -132,11 +137,17 @@ ID 令牌、访问令牌和刷新令牌缓存用于经过身份验证的会话�
 > [!CAUTION]
 > 以这种方式限制访问适用于对应用的所有调用，对于想要主页公开可用的应用程序来说，这可能是不可取的，就像在许多单页应用程序中一样。
 
+> [!NOTE]
+> 身份验证/授权以前称为"简单身份验证"。
+>
+
 ## <a name="more-resources"></a>更多资源
 
 [教程：在 Azure 应用服务 (Windows) 中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)  
 [教程：在适用于 Linux 的 Azure 应用服务中对用户进行端到端身份验证和授权](containers/tutorial-auth-aad.md)  
-[在应用服务中自定义身份验证和授权](app-service-authentication-how-to.md)
+[在应用服务](app-service-authentication-how-to.md)
+[.NET 中自定义 Azure 应用服务 EasyAuth （第三方）](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+的核心集成，[获取使用 .NET Core（第三方）使用的 Azure 应用服务身份验证](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 特定于提供程序的操作方法指南：
 

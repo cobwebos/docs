@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: bd1c2ca182ae8be8425246f691dca805bf38637b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ad7677607d625f673546a6ea29ea58b80a8d1b5
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064031"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546756"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>将数据导入 Azure 机器学习设计器（预览版）
 
@@ -77,7 +77,7 @@ ms.locfileid: "80064031"
 
 设计人员内部识别以下数据类型：
 
-* String
+* 字符串
 * Integer
 * Decimal
 * Boolean

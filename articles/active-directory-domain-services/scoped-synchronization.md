@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 11/26/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 160873fe889d7eccc7efd08b4767854a5b24c484
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613043"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518979"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>配置从 Azure AD 到 Azure 活动目录域服务的作用域同步
 
@@ -42,18 +42,20 @@ ms.locfileid: "77613043"
 
 | 操作 | | |
 |--|--|--|
-| 创建 Azure AD DS 托管域并配置作用域同步 | [Azure 门户](#enable-scoped-synchronization-using-the-azure-portal) | [电源外壳](#enable-scoped-synchronization-using-powershell) |
-| 修改作用域同步 | [Azure 门户](#modify-scoped-synchronization-using-the-azure-portal) | [电源外壳](#modify-scoped-synchronization-using-powershell) |
-| 禁用作用域同步 | [Azure 门户](#disable-scoped-synchronization-using-the-azure-portal) | [电源外壳](#disable-scoped-synchronization-using-powershell) |
+| 创建 Azure AD DS 托管域并配置作用域同步 | [Azure 门户](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| 修改作用域同步 | [Azure 门户](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| 禁用作用域同步 | [Azure 门户](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
-> 更改同步范围会导致 Azure AD DS 托管域重新同步所有数据。
+> 更改同步范围会导致 Azure AD DS 托管域重新同步所有数据。 请注意以下事项：
 > 
 >  * 更改 Azure AD DS 托管域的同步范围时，将发生完全重新同步。
 >  * Azure AD DS 托管域中不再需要的对象将被删除。 托管域中会新建对象。
 >  * 重新同步可能需要很长时间才能完成。 同步时间取决于 Azure AD DS 托管域和 Azure AD 目录中的用户、组和组成员身份等对象的数量。 对于包含数十万个对象的大型目录，重新同步可能需要几天时间才能完成。
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>使用 Azure 门户启用作用域同步
+
+要在 Azure 门户中启用作用域同步，完成以下步骤：
 
 1. 按照[本教程创建和配置 Azure AD DS 实例](tutorial-create-instance-advanced.md)。 完成同步范围以外的所有先决条件和部署步骤。
 1. 选择同步步骤的 **"范围"，** 然后选择 Azure AD 组以同步到 Azure AD DS 实例。
@@ -173,7 +175,7 @@ Write-Output "******************************************************************
 
 ## <a name="enable-scoped-synchronization-using-powershell"></a>使用 PowerShell 启用范围同步
 
-使用 PowerShell 完成这一组步骤。 请参阅[使用 PowerShell 启用 Azure Active Directory 域服务](powershell-create-instance.md)中的说明。 为了配置范围内同步，我们对这篇文章中的几个步骤略作修改。
+使用 PowerShell 完成以下步骤集。 请参阅[使用 PowerShell 启用 Azure Active Directory 域服务](powershell-create-instance.md)中的说明。 为了配置范围内同步，我们对这篇文章中的几个步骤略作修改。
 
 1. 完成本文中的以下任务，以便使用 PowerShell 启用 Azure AD DS。 停止执行步骤以实际创建托管域。 配置创建 Azure AD DS 托管域的作用域同步。
 

@@ -11,15 +11,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0fbe27fb5ed61cc187c679f9cb7420f0b444aa60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f351bba9cd474eab0774efa5ffbd2b24499d105b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77615937"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520956"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -39,8 +39,8 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资
 区域                                        | 可用性？                                 | 支持的版本
 -----------------------------------------------|-----------------------------------------------|-----------------
 [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | 正式版 | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure 政府](https://azure.microsoft.com/overview/clouds/government/)              | 正式版 | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure 中国 21Vianet](https://www.azure.cn/)                                            | 正式版 | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 正式版 | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure 中国世纪互联](https://www.azure.cn/)                                            | 正式版 | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | 正式版 | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 
 版本 2019-11-01 目前正在部署中，可能并非在所有区域都可用。
@@ -451,7 +451,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 可以通过元数据终结点使用以下 API：
 
-数据 | 描述 | 引入的版本
+数据 | 说明 | 引入的版本
 -----|-------------|-----------------------
 attested | 请参阅[证明数据](#attested-data) | 2018-10-01
 identity | Azure 资源的托管标识。 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
@@ -465,7 +465,7 @@ scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
 > [!NOTE]
 > 在元数据终结点中通过实例/计算访问以下类别
 
-数据 | 描述 | 引入的版本
+数据 | 说明 | 引入的版本
 -----|-------------|-----------------------
 azEnvironment | VM 运行时所在的 Azure 环境 | 2018-10-01
 customData | 此功能当前已禁用，我们将在文档可用时更新此文档 | 2019-02-01
@@ -498,7 +498,7 @@ vmSize | [VM 大小](sizes.md) | 2017-04-02
 > [!NOTE]
 > 在元数据终结点中通过实例/网络/接口访问以下类别
 
-数据 | 描述 | 引入的版本
+数据 | 说明 | 引入的版本
 -----|-------------|-----------------------
 ipv4/privateIpAddress | VM 的本地 IPv4 地址 | 2017-04-02
 ipv4/publicIpAddress | VM 的公共 IPv4 地址 | 2017-04-02
@@ -726,8 +726,8 @@ AzurePublicCloud
  区域 | Azure 环境
 ---------|-----------------
 [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | AzurePublicCloud
-[Azure 政府](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
-[Azure 中国 21Vianet](https://azure.microsoft.com/global-infrastructure/china)          | AzureChinaCloud
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
+[Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china)          | AzureChinaCloud
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ### <a name="getting-the-tags-for-the-vm"></a>获取 VM 的标记
@@ -820,7 +820,7 @@ Verification successful
 }
 ```
 
-数据 | 描述
+数据 | 说明
 -----|------------
 nonce | 用户提供了带有请求的可选字符串。 如果请求中未提供 nonce，则返回当前 UTC 时间戳
 计划 | [规划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)其中的 VM 是 Azure 应用商店映像，包含名称、产品和发布者
@@ -840,8 +840,8 @@ sku | VM 映像的特定 SKU，在`2019-11-01`
  云 | 证书
 ---------|-----------------
 [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | *.metadata.azure.com
-[Azure 政府](https://azure.microsoft.com/overview/clouds/government/)              | *.metadata.azure.us
-[Azure 中国 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *.metadata.azure.cn
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *.metadata.azure.us
+[Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china/)         | *.metadata.azure.cn
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | *.metadata.microsoftazure.de
 
 用于签名的证书周围存在已知问题。 证书可能与公共云没有完全匹配`metadata.azure.com`。 因此，认证验证应允许来自任何`.metadata.azure.com`子域的通用名称。
@@ -856,11 +856,15 @@ openssl x509 -noout -issuer -in signer.pem
 openssl x509 -noout -subject -in intermediate.pem
 # Verify the issuer for the intermediate certificate
 openssl x509 -noout -issuer -in intermediate.pem
-# Verify the certificate chain
+# Verify the certificate chain, for Azure China 21Vianet the intermediate certificate will be from DigiCert Global Root CA
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
-如果由于验证期间出现网络限制，导致中间证书无法下载，可以固定中间证书。 但是，Azure 会根据标准的 PKI 做法滚动更新证书。 发生滚动更新时，需要更新固定的证书。 每当规划某项更改来更新中间证书，就会更新 Azure 博客并向 Azure 客户发出通知。 [此处](https://www.microsoft.com/pki/mscorp/cps/default.htm)可找到中间证书。 每个区域的中间证书可能并不相同。
+如果由于验证期间出现网络限制，导致中间证书无法下载，可以固定中间证书。 但是，Azure 会根据标准的 PKI 做法滚动更新证书。 当发生翻转时，需要更新固定的证书。 每当规划某项更改来更新中间证书，就会更新 Azure 博客并向 Azure 客户发出通知。 [此处](https://www.microsoft.com/pki/mscorp/cps/default.htm)可找到中间证书。 每个区域的中间证书可能并不相同。
+
+> [!NOTE]
+> Azure 中国 21Vianet 的中间证书将来自 DigiCert 全局根 CA，而不是巴尔的摩。
+此外，如果将 Azure 中国的中间证书固定为根链权限更改的一部分，则必须更新中间证书。
 
 ### <a name="failover-clustering-in-windows-server"></a>Windows Server 中的故障转移群集
 
@@ -915,7 +919,7 @@ VM 的存储配置文件分为三类 - 映像引用、OS 磁盘和数据磁盘�
 
 图像引用对象包含有关 OS 映像的以下信息：
 
-数据    | 描述
+数据    | 说明
 --------|-----------------
 id      | 资源 ID
 offer   | 提供平台或市场形象
@@ -925,7 +929,7 @@ sku     | 图像斯库
 
 OS 磁盘对象包含有关 VM 使用的 OS 磁盘的以下信息：
 
-数据    | 描述
+数据    | 说明
 --------|-----------------
 缓存 | 缓存要求
 createOption | 有关如何创建 VM 的信息
@@ -940,7 +944,7 @@ vhd     | 虚拟硬盘
 
 数据磁盘阵列包含附加到 VM 的数据磁盘的列表。 每个数据磁盘对象包含以下信息：
 
-数据    | 描述
+数据    | 说明
 --------|-----------------
 缓存 | 缓存要求
 createOption | 有关如何创建 VM 的信息
@@ -1040,7 +1044,7 @@ Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 1. 出现 `400 Bad Request, Required metadata header not specified` 错误。 这是什么意思呢？
    * 实例元数据服务要求将标头 `Metadata: true` 传入请求。 将此标头传入 REST 调用即可访问实例元数据服务。

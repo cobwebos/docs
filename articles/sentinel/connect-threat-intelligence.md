@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 5c79642d287224cd15531701d7cc87ebfd72eb69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eec07a01edc6b126bb7cd3a814912ea5c5b14195
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588036"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529099"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>连接来自威胁情报提供商的数据
 
@@ -42,6 +42,10 @@ Azure Sentinel 允许您导入组织正在使用的威胁指示器，这可以�
 - [MISP 开源威胁情报平台](https://www.misp-project.org/)
     
     有关向客户端提供 MISP 实例将威胁指示器迁移到 Microsoft 图形安全 API 的示例脚本，请参阅[MISP 到 Microsoft 图形安全脚本](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/MISP)。
+
+- [阿诺马利威胁流](https://www.anomali.com/products/threatstream)
+
+    要下载威胁流集成商和扩展，以及将威胁流智能连接到 Microsoft 图形安全 API 的说明，请参阅[威胁流下载](https://ui.threatstream.com/downloads)页面。
 
 - [帕洛阿尔托网络矿梅尔德](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld)
     
@@ -70,9 +74,9 @@ Azure Sentinel 允许您导入组织正在使用的威胁指示器，这可以�
 
 4. 配置使用与 Microsoft 图形安全 tiIndicators API 直接集成的 TIP 产品或应用，通过指定以下内容将指标发送到 Azure Sentinel：
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 已注册应用程序的 ID、机密和租户 ID 的值。
+    a. 已注册应用程序的 ID、机密和租户 ID 的值。
     
-    b.保留“数据库类型”设置，即设置为“共享”。 对于目标产品，请指定 Azure 哨兵。
+    b. 对于目标产品，请指定 Azure 哨兵。
     
     c. 对于操作，请指定警报。
 

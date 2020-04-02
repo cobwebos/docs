@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: c9b25fe7bc47e05972aebb194e9d94c1ea6dd247
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19e4033b462cda9511ee45420bd4c1a76cc36b92
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78298728"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518957"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>使用资源管理器模板将 Windows 服务器虚拟机加入 Azure 活动目录域服务托管域
 
@@ -29,7 +29,7 @@ ms.locfileid: "78298728"
 需有以下资源和特权才能完成本教程：
 
 * 一个有效的 Azure 订阅。
-    * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+    * 如果没有 Azure 订阅，[请创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
@@ -84,7 +84,7 @@ ms.locfileid: "78298728"
 1. 浏览到[快速入门模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)。 选择要**部署到 Azure**的选项。
 1. 在 **"自定义部署"** 页上，输入以下信息以创建 Windows 服务器 VM 并将其加入到 Azure AD DS 托管域：
 
-    | 设置                   | “值” |
+    | 设置                   | 值 |
     |---------------------------|-------|
     | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
     | 资源组            | 选择 VM 的资源组。 |
@@ -117,7 +117,7 @@ ms.locfileid: "78298728"
 1. 浏览到[快速入门模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)。 选择要**部署到 Azure**的选项。
 1. 在 **"自定义部署"** 页上，输入以下信息以将 VM 加入 Azure AD DS 托管域：
 
-    | 设置                   | “值” |
+    | 设置                   | 值 |
     |---------------------------|-------|
     | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
     | 资源组            | 选择具有现有 VM 的资源组。 |

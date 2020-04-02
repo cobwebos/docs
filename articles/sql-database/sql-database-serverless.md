@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 3/11/2020
-ms.openlocfilehash: 8a72d3dc7f7b3fddf66df8111b1e92116a62883a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 00b9da150569db2972289468b1405e5087ee3321
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474025"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549158"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 
@@ -151,7 +151,7 @@ Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层�
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>客户托管的透明数据加密 （BYOK）
 
-如果使用[客户托管的透明数据加密](transparent-data-encryption-byok-azure-sql.md)（BYOK） 和无服务器数据库在密钥删除或吊销时自动暂停，则数据库将保持自动暂停状态。  在这种情况下，当数据库下次恢复时，数据库将保持联机状态，直到大约 10 分钟或更少后其状态转换到无法访问。  一旦数据库变得无法访问，恢复过程与预配计算数据库的过程相同。  如果发生密钥删除或吊销时无服务器数据库处于联机状态，则数据库在大约 10 分钟或更少后也会变得不可访问，其方式与预配计算数据库的方式相同。
+如果使用[客户托管的透明数据加密](transparent-data-encryption-byok-azure-sql.md)（BYOK） 和无服务器数据库在密钥删除或吊销时自动暂停，则数据库将保持自动暂停状态。  在这种情况下，在下次恢复数据库后，数据库在大约 10 分钟内变得无法访问。  一旦数据库变得无法访问，恢复过程与预配计算数据库的过程相同。  如果发生密钥删除或吊销时无服务器数据库处于联机状态，则数据库在大约 10 分钟或更少后也会变得不可访问，其方式与预配计算数据库的方式相同。
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>载入无服务器计算层
 

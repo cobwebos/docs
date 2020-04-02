@@ -15,12 +15,12 @@ ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: ba07a0b0d3be0366179bba14c786fafad8753dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fe3b94463da07304f2c853910ac5d2a6771d070
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280688"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545643"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -34,7 +34,7 @@ ms.locfileid: "80280688"
 
 
 > [!div class="mx-tableFixed"]
-> | 内置角色 | 描述 | ID |
+> | 内置角色 | 说明 | ID |
 > | --- | --- | --- |
 > | **常规** |  |  |
 > | [参与者](#contributor) | 允许管理所有功能（授予对资源的访问权限除外）。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -4644,7 +4644,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 > | Microsoft.ApiManagement/service/managedeployments/action | 更改 API 管理服务的 SKU/单位，以及添加/删除其区域部署 |
 > | Microsoft.ApiManagement/service/read | 读取 API 管理服务实例的元数据 |
 > | Microsoft.ApiManagement/service/restore/action | 从用户提供的存储帐户中的指定容器还原 API 管理服务 |
-> | Microsoft.ApiManagement/service/updatecertificate/action | 上传 API 管理服务的 SSL 证书 |
+> | Microsoft.ApiManagement/service/updatecertificate/action | 上传 API 管理服务的 TLS/SSL 证书 |
 > | Microsoft.ApiManagement/service/updatehostname/action | 设置、更新或删除 API 管理服务的自定义域名 |
 > | Microsoft.ApiManagement/service/write | 创建或更新 API 管理服务实例 |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |

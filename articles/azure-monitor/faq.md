@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: 777e4e1f8fdd05345d949fe8c78b4a5b1953b8b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 306d847c2bc5af72d37dbf8bf472a5bae63e9fd5
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298252"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528501"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 监视器常见问题
 
@@ -177,7 +177,7 @@ WireData
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Azure 监视器代理的防火墙要求是什么？
-有关防火墙要求的详细信息，请参阅[网络防火墙要求](platform/log-analytics-agent.md#network-firewall-requirements)。
+有关防火墙要求的详细信息，请参阅[网络防火墙要求](platform/log-analytics-agent.md#firewall-requirements)。
 
 
 ## <a name="visualizations"></a>可视化效果
@@ -259,7 +259,7 @@ WireData
 
 它是可以在 IIS Web 服务器中使用的桌面应用，用于帮助在 Web 应用中配置 Application Insights。 它不会收集遥测：不配置应用时，可以停止此监视器。 
 
-[了解详情](app/monitor-performance-live-website-now.md#questions)。
+[了解详细信息](app/monitor-performance-live-website-now.md#questions)。
 
 ### <a name="what-telemetry-is-collected-by-application-insights"></a>Application Insights 收集哪些遥测？
 
@@ -305,7 +305,7 @@ WireData
 * 要了解有关如何在应用程序见解中收集 IP 地址和地理位置数据的详细信息，请参阅[本文](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)。
 
 
-可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详情](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
+可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
 
 可以[使用 Power BI](app/export-power-bi.md ) 在映射中显示请求遥测。
 

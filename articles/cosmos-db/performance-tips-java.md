@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 3b7d221c2afc952f40da035c6e2c282b3b932aa5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a20b7d91a927d48a14812110ca714491cd726071
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69616757"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548783"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>适用于 Azure Cosmos DB 和 Java 的性能提示
 
@@ -38,7 +38,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
       网关模式受所有 SDK 平台的支持并已配置为默认设置。  如果应用程序在有严格防火墙限制的企业网络中运行，则网关是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是每次在 Azure Cosmos DB 中读取或写入数据时，网关模式都涉及到额外的网络跃点。 因此，DirectHttps 模式因为网络跃点较少，可以提供更好的性能。 
 
-      Java SDK 使用 HTTPS 作为传输协议。 HTTPS 使用 SSL 进行初始身份验证和加密通信。 使用 Java SDK 时，只需打开 HTTPS 端口 443。 
+      Java SDK 使用 HTTPS 作为传输协议。 HTTPS 使用 TLS 进行初始身份验证和加密流量。 使用 Java SDK 时，只需打开 HTTPS 端口 443。 
 
       ConnectionMode 是在构造 DocumentClient 实例期间使用 ConnectionPolicy 参数配置的。 
 

@@ -1,5 +1,5 @@
 ---
-title: 自动化中安全资产加密
+title: 加密 Azure 自动化中的安全资产
 description: Azure 自动化使用多级加密保护安全资产。 默认情况下，加密使用 Microsoft 管理的密钥完成。 客户可以将其自动化帐户配置为使用客户管理的密钥进行加密。 本文介绍了两种加密模式的详细信息以及如何在两种模式之间切换。
 services: automation
 ms.service: automation
@@ -9,18 +9,18 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 3c21e2fcdde9bffac91af56d49dfa0bf336e8c0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b1d194209122fa71272243c80a2d4c57f6834a1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246232"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547755"
 ---
-# <a name="secure-assets-in-azure-automation"></a>Azure 自动化中的安全资产
+# <a name="encrypt-secure-assets-in-azure-automation"></a>加密 Azure 自动化中的安全资产
 
 Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产在 Azure 自动化中使用多级别的加密进行保护。 基于用于加密的顶级密钥，有两种加密模型：
--   使用 Microsoft 管理的密钥
--   使用客户管理的密钥
+-    使用 Microsoft 管理的密钥
+-    使用客户管理的密钥
 
 ## <a name="microsoft-managed-keys"></a>微软管理的密钥
 
@@ -40,7 +40,7 @@ Azure 自动化中的安全资产包括凭据、证书、连接和加密的变�
 
 新的自动化帐户始终使用 Microsoft 管理的密钥进行加密。 当创建帐户时，无法启用客户管理的密钥。 客户管理的密钥存储在 Azure 密钥保管库中，密钥保管库必须预配访问策略，这些策略向与自动化帐户关联的托管标识授予密钥权限。 托管标识仅在存储帐户创建后可用。
 
-修改用于 Azure 自动化安全资产加密的密钥时，通过启用或禁用客户管理的密钥、更新密钥版本或指定其他密钥，帐户加密密钥的加密将更改Azure 自动化帐户不需要重新加密。
+修改用于 Azure 自动化安全资产加密的密钥时，通过启用或禁用客户管理的密钥、更新密钥版本或指定其他密钥，帐户加密密钥的加密将更改，但 Azure 自动化帐户中的安全资产无需重新加密。
 
 以下三节介绍了为自动化帐户启用客户管理密钥的机制。 
 

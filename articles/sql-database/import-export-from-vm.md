@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: 9f694f3f0ec740d0a4e8dc4e6bf8845c408802c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61a85b2554bbd69541b3081f72525d2b7deed625
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75897840"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529235"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>导入或导出 Azure SQL 数据库但不允许 Azure 服务访问服务器
 
@@ -24,7 +24,7 @@ ms.locfileid: "75897840"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 Azure[门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-the-azure-virtual-machine"></a>创建 Azure 虚拟机
 
@@ -48,7 +48,7 @@ ms.locfileid: "75897840"
 
     ![VM](./media/import-export-from-vm/vm.png)  
 
-2. 选择“连接”****。
+2. 选择 **"连接**"。
 
    此时会显示远程桌面协议文件（.rdp 文件）窗体，其中包含虚拟机的公共 IP 地址和端口号。
 
@@ -61,7 +61,7 @@ ms.locfileid: "75897840"
 
 4. 关闭“连接到虚拟机”窗体。****
 5. 若要连接到 VM，请打开下载的 RDP 文件。
-6. 出现提示时，选择“连接”****。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
+6. 出现提示时，选择“连接”****。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12)。
 
 7. 输入在创建虚拟机时指定的用户名和密码，然后选择“确定”。****
 
@@ -96,7 +96,7 @@ ms.locfileid: "75897840"
 
 4. 在工具栏上选择“添加客户端 IP”，将虚拟机的公共 IP 地址添加到新的服务器级 IP 防火墙规则。**** 服务器级 IP 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-5. 选择“保存”。**** 此时会针对虚拟机的公共 IP 地址创建服务器级 IP 防火墙规则，在 SQL 数据库服务器上打开端口 1433。
+5. 选择“保存”。  此时会针对虚拟机的公共 IP 地址创建服务器级 IP 防火墙规则，在 SQL 数据库服务器上打开端口 1433。
 
 6. 关闭“防火墙设置”页。****
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
-ms.openlocfilehash: d58e11551c2857c269e8985e81f84138f6d389ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b87107545761e10c6fb648e54064fbafbdbacd52
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370811"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546005"
 ---
 # <a name="classroom-lab-setup-guide"></a>课堂实验室设置指南
 
@@ -79,7 +79,7 @@ ms.locfileid: "80370811"
 每个学生都分配了自己的 VM，这些 VM 在实验室的生存期内分配给他们。  他们可以选择：
 
 - 直接保存到 VM。
-- 保存到外部存储库，如 OneDrive、GitHub 等。
+- 保存到外部位置，如 OneDrive、GitHub 等。
 
 要使用 OneDrive，您可以选择为其实验室 VM 上的学生自动配置此功能。  下文提供了这方面的其他信息。
 
@@ -133,7 +133,7 @@ ms.locfileid: "80370811"
         > [!NOTE]
         > 根据已安装的操作系统类型，VM 可能需要几分钟才能启动。  为确保实验室 VM 在预定时间内准备就绪，我们建议您提前 30 分钟启动 VM，以确保 VM 已运行并可供使用。
 
-   - [为用户设置配额](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users)并为[特定用户设置其他配额](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quota-for-a-specific-user)
+   - [为用户设置配额](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users)并为[特定用户设置其他配额](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users)
   
    - [允许在断开连接时自动关闭](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 

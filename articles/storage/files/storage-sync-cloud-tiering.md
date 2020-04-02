@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 11f9097fc4875f0a4300ac56dafe7af9a0b00c97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8a8502b40410df221886cde2fa5f3db15bf3eed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454612"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549175"
 ---
 # <a name="cloud-tiering-overview"></a>云分层概述
 云分层是 Azure 文件同步的一项可选功能，其中经常访问的文件在服务器本地缓存，而所有其他文件根据策略设置分层到 Azure 文件。 当文件分层时，Azure 文件同步文件系统筛选器 (StorageSync.sys) 将本地文件替换为指针或重分析点。 重分析点表示 Azure 文件中的文件 URL。 分层文件在 NTFS 中设置了“脱机”属性和 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性，这样第三方应用程序便能安全地识别分层文件。
@@ -51,7 +51,22 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
 
 <a id="date-tiering-policy"></a>
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>日期分层策略如何与卷可用空间分层策略配合工作？ 
-针对服务器终结点启用云分层时，可以设置卷可用空间策略。 此策略始终优先于其他任何策略，包括日期策略。 （可选）可以针对该卷中的每个服务器终结点启用日期策略，这意味着，只会将在此策略描述的天数范围内访问过的文件（即，读取或写入的文件）保留在本地，并将所有陈旧的文件分层。 请记住，卷可用空间策略始终优先，如果卷中没有足够的可用空间，从而无法将文件保留日期策略描述的天数，则 Azure 文件同步会继续将最冷的文件分层，直到符合卷可用空间百分比要求。
+针对服务器终结点启用云分层时，可以设置卷可用空间策略。 此策略始终优先于其他任何策略，包括日期策略。 或者，您可以为该卷上的每个服务器终结点启用日期策略。 此策略管理仅在此策略描述的天数范围内访问的文件（即读取或写入）的文件保持为本地文件。 未访问的文件与指定的天数，将被分层。 
+
+云分层使用最后一个访问时间来确定应分层哪些文件。 云分层筛选器驱动程序 （storagesync.sys） 跟踪上次访问时间，并在云分层热存储中记录信息。 您可以使用本地 PowerShell cmdlet 查看热存储。
+
+```powershell
+Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
+Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+```
+
+> [!IMPORTANT]
+> 上次访问的时间戳不是 NTFS 跟踪的属性，因此在文件资源管理器中默认不可见。 不要在文件上使用上次修改的时间戳来检查日期策略是否按预期方式工作。 此时间戳仅跟踪写入，不跟踪读取。 使用显示的 cmdlet 获取此评估的最后访问时间戳。
+
+> [!WARNING]
+> 不要打开 NTFS 功能，以跟踪文件和文件夹的最后访问时间戳。 默认情况下，此功能处于关闭状态，因为它对性能影响很大。 Azure 文件同步将自动且非常高效地跟踪上次访问时间，并且不会利用此 NTFS 功能。
+
+请记住，卷可用空间策略始终优先，当卷上没有足够的可用空间来保留日期策略描述的尽可能多的文件时，Azure 文件同步将继续分层最冷的文件，直到满足卷可用空间百分比。
 
 例如，假设基于日期的分层策略指定保留天数为 60 天，卷可用空间策略指定可用空间百分比为 20%。 如果在应用该日期策略之后，卷上的可用空间小于 20%，则卷可用空间策略将会激活，并替代日期策略。 这会导致更多的文件分层，使服务器上保留的数据量可从 60 天数据减少为 45 天数据。 相反，此策略会强制将超出时间范围的文件分层，即使尚未达到可用空间的阈值 – 因此，即使卷是空的，也会将 61 天前的文件分层。
 
@@ -59,7 +74,7 @@ Azure 文件同步系统筛选器生成每个服务器终结点上命名空间�
 ### <a name="how-do-i-determine-the-appropriate-amount-of-volume-free-space"></a>我该如何确定适当的卷可用空间量？
 应在本地保留的数据量由以下几个因素决定：带宽、数据集的访问模式和预算。 如果连接带宽低，建议在本地保留更多数据，以确保用户滞后时间最短。 反之，可以给定时间段内的变动率为依据。 例如，如果确定 1TB 数据集每月大约有 10% 发生变化或获主动访问，建议在本地保留 100GB，以免频繁召回文件。 如果卷为 2TB，建议在本地保留 5%（或 100GB）；也就是说，剩余 95% 是卷可用空间百分比。 不过，建议添加缓冲区，以将变动率更高的时间段考虑在内；也就是说，从较低的卷可用空间百分比入手，以后再根据需要进行调整。 
 
-在本地保留更多数据意味着降低流出费用，因为从 Azure 召回的文件变少；但还必须维护更大的本地存储，这需要自己支付费用。 部署 Azure 文件同步实例后，便可以查看存储帐户的流出情况，以大致判断卷可用空间设置是否适合自己使用。 假设存储帐户仅包含 Azure 文件同步云终结点（即同步共享），那么高流出意味着要从云中召回许多文件，应考虑增加本地缓存。
+在本地保留更多数据意味着降低流出费用，因为从 Azure 召回的文件变少；但还必须维护更大的本地存储，这需要自己支付费用。 部署 Azure 文件同步实例后，可以查看存储帐户的出入口，大致衡量卷可用空间设置是否适合使用。 假设存储帐户仅包含 Azure 文件同步云终结点（即同步共享），那么高流出意味着要从云中召回许多文件，应考虑增加本地缓存。
 
 <a id="how-long-until-my-files-tier"></a>
 ### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>我添加了新的服务器终结点。 要在多长时间后，我的文件会在此服务器上分层？

@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd305d2943d1b12756171748f28d32300081d71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42337fe958a881ee263d16c866dda69f13fe09c1
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443394"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519624"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>配置最终用户如何同意应用程序
 
@@ -143,9 +143,53 @@ Microsoft 建议禁用将来的用户同意操作，以帮助减少您的表面�
     }
     ```
 
+## <a name="configure-risk-based-step-up-consent"></a>配置基于风险的逐步同意
+
+基于风险的介入同意有助于减少用户接触恶意应用程序发出[非法同意请求](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)的风险。 如果 Microsoft 检测到有风险的最终用户同意请求，则请求将需要"逐步"才能进行管理员同意。 默认情况下启用此功能，但仅在启用最终用户同意时才会导致行为更改。
+
+当检测到有风险的同意请求时，同意提示将显示一条消息，指示需要管理员批准。 如果启用[了管理员同意请求工作流](configure-admin-consent-workflow.md)，用户可以直接从同意提示将请求发送给管理员进行进一步审阅。 如果未启用，将显示以下消息：
+
+* **AADSTS90094：**&lt;客户端AppDisplayName&gt;需要权限才能访问组织中只有管理员才能授予的资源。 请让管理员授予访问此应用的权限，否则你将无法使用该应用。
+
+在这种情况下，还将记录审核事件，并记录"应用程序管理"类别、"同意应用程序"的活动类型和"检测到的 Risky 应用程序"的状态原因。
+
+> [!IMPORTANT]
+> 管理员应在批准之前仔细[评估所有同意请求](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent)，尤其是在 Microsoft 检测到风险时。
+
+### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>使用 PowerShell 禁用或重新启用基于风险的逐步同意
+
+您可以使用 Azure AD PowerShell 预览模块[（AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)） 来禁用在 Microsoft 检测到风险的情况下所需的管理员同意的升步，或者如果以前已禁用风险，则重新启用该模块。
+
+这可以使用与上面所示相同的步骤来[使用 PowerShell 配置组所有者同意](#configure-group-owner-consent-using-powershell)，但替换不同的设置值。 步骤有三个差异： 
+
+1. 了解基于风险的升步同意的设置值：
+
+    | 设置       | 类型         | 说明  |
+    | ------------- | ------------ | ------------ |
+    | _阻止用户同意为RiskyApps_   | Boolean |  指示检测到有风险请求时是否将阻止用户同意的标志。 |
+
+2. 在步骤 3 中替换以下值：
+
+    ```powershell
+    $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
+    ```
+3. 在步骤 5 中替换以下之一：
+
+    ```powershell
+    # Disable risk-based step-up consent entirely
+    $riskBasedConsentEnabledValue.Value = "False"
+    ```
+
+    ```powershell
+    # Re-enable risk-based step-up consent, if disabled previously
+    $riskBasedConsentEnabledValue.Value = "True"
+    ```
+
 ## <a name="next-steps"></a>后续步骤
 
 [配置管理员同意工作流](configure-admin-consent-workflow.md)
+
+[了解如何管理对应用程序的同意和评估同意请求](manage-consent-requests.md)
 
 [向应用程序授予租户范围的管理员许可](grant-admin-consent.md)
 

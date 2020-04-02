@@ -7,19 +7,19 @@ ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: c014ed2c25711677617d3bf8ff5d2f0f968a3b14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 180196f2c368207b76811700fd845406098600df
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80301039"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529439"
 ---
 # <a name="configure-customer-managed-keys-using-the-azure-portal"></a>使用 Azure 门户配置客户管理的密钥
 
 > [!div class="op_single_selector"]
 > * [门户](customer-managed-keys-portal.md)
 > * [C#](customer-managed-keys-csharp.md)
-> * [Azure Resource Manager 模板](customer-managed-keys-resource-manager.md)
+> * [Azure 资源管理器模板](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "80301039"
 
     ![保存客户管理的密钥](media/customer-managed-keys-portal/cmk-encryption-setting.png)
 
-通过为 Azure 数据资源管理器群集启用客户管理的密钥，如果群集不存在，则将创建系统分配的标识。 此外，您将向所选密钥保管库上的 Azure 数据资源管理器群集提供所需的视图权限，并获取密钥保管库属性。 
+通过为 Azure 数据资源管理器群集启用客户管理的密钥，如果群集不存在，则将创建系统分配的标识。 此外，您将向所选密钥保管库上的 Azure 数据资源管理器群集提供所需的 get、wrapKey 和取消扭曲密钥权限，并获取密钥保管库属性。 
 
 > [!NOTE]
 > 选择 **"关闭**"以在创建客户管理的密钥后将其删除。

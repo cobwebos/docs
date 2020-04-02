@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d9cff47c61fc08305427b25f949884b1ef089fd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca3a79b0d31cc18b8ff77f02ce4ce3d517d7a638
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289662"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548696"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>MariaDB Azure 数据库的 Azure 安全基线
 
@@ -894,9 +894,9 @@ Azure 存储库文档：https://docs.microsoft.com/azure/devops/repos/index?view
 
 **指南**： MariaDB 服务器的 Azure 数据库当前不支持 Azure 活动目录身份验证以访问数据库。  在创建 Azure Database for MariaDB 服务器时，我们会提供管理员用户的凭据。 可以通过此管理员创建其他 MariaDB 用户。  
 
-对于在 Azure 应用服务上运行的 Azure 虚拟机或 Web 应用程序，用于访问 MariaDB 服务器的 Azure 数据库，请使用 Azure 密钥保管库的托管服务标识来存储和检索 MariaDB 的 Azure 数据库凭据服务器。  确保启用密钥保管库软删除。
+对于在 Azure 应用服务上运行的 Azure 虚拟机或 Web 应用程序，用于访问 MariaDB 服务器的 Azure 数据库，请使用 Azure 密钥保管库的托管服务标识来存储和检索 MariaDB 服务器的 Azure 数据库凭据。  确保启用密钥保管库软删除。
 
-使用托管标识在 Azure 活动目录 （AD） 中为 Azure 服务提供自动托管标识。 托管标识允许您对支持 Azure AD 身份验证的任何服务（包括密钥保管库）进行身份验证，而无需在代码中进行任何凭据。如何配置托管标识：https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vmHow与 Azure 托管标识集成：https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+使用托管标识在 Azure 活动目录 （AD） 中为 Azure 服务提供自动托管标识。 托管标识允许您对支持 Azure AD 身份验证的任何服务（包括密钥保管库）进行身份验证，而无需在代码中进行任何凭据。 如何配置托管标识： https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm. 如何与 Azure 托管标识集成： https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity.
 
 
 

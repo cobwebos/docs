@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/06/2020
+ms.date: 03/31/2020
 ms.author: radeltch
-ms.openlocfilehash: 69dcf91957263cea36f8ff6db6a7af14588998ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 215cfd033a3fe8eb0ad9896c1f45f1e0f788823f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78927224"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521368"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -139,7 +139,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 打开负载均衡器，选择**前端 IP 池**，然后选择“添加”。****
       1. 输入新前端 IP 池的名称（例如 **hana-frontend**）。
       1. 将 **"分配分配"** 设置为**静态**并输入 IP 地址（例如 **，10.0.0.13**）。
-      1. 选择“确定”。
+      1. 选择“确定”  。
       1. 创建新前端 IP 池后，请记下池 IP 地址。
    
    1. 接下来创建后端池：
@@ -150,14 +150,14 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 选择“添加虚拟机”。****
       1. 选择 [虚拟机]。
       1. 选择 SAP HANA 群集的虚拟机及其 IP 地址。
-      1. 选择“添加”****。
+      1. 选择 **添加** 。
    
    1. 接下来创建运行状况探测：
    
       1. 打开负载均衡器，选择**运行状况探测**，然后选择“添加”。****
       1. 输入新运行状况探测的名称（例如 **hana-hp**）。
       1. 选择“TCP”作为协议，并选择端口 625**03**。**** 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。********
-      1. 选择“确定”。
+      1. 选择“确定”  。
    
    1. 接下来，创建负载平衡规则：
    
@@ -167,7 +167,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 选择**HA 端口**。
       1. 将“空闲超时”增大到 30 分钟。****
       1. 确保**启用浮动 IP**。
-      1. 选择“确定”。
+      1. 选择“确定”  。
 
    > [!Note]
    > 当没有公共 IP 地址的 VM 放置在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中时，将没有出站互联网连接，除非执行其他配置以允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅[在 SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
@@ -178,7 +178,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 打开负载均衡器，选择**前端 IP 池**，然后选择“添加”。****
       1. 输入新前端 IP 池的名称（例如 **hana-frontend**）。
       1. 将 **"分配分配"** 设置为**静态**并输入 IP 地址（例如 **，10.0.0.13**）。
-      1. 选择“确定”。
+      1. 选择“确定”  。
       1. 创建新前端 IP 池后，请记下池 IP 地址。
    
    1. 接下来创建后端池：
@@ -188,14 +188,14 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 选择“添加虚拟机”。****
       1. 选择在步骤 3 中创建的可用性集。
       1. 选择 SAP HANA 群集的虚拟机。
-      1. 选择“确定”。
+      1. 选择“确定”  。
    
    1. 接下来创建运行状况探测：
    
       1. 打开负载均衡器，选择**运行状况探测**，然后选择“添加”。****
       1. 输入新运行状况探测的名称（例如 **hana-hp**）。
       1. 选择“TCP”作为协议，并选择端口 625**03**。**** 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。********
-      1. 选择“确定”。
+      1. 选择“确定”  。
    
    1. 对于 SAP HANA 1.0，请创建负载均衡规则：
    
@@ -205,7 +205,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 将“协议”保留设置为“TCP”，输入端口 3**03**15。********
       1. 将“空闲超时”增大到 30 分钟。****
       1. 确保**启用浮动 IP**。
-      1. 选择“确定”。
+      1. 选择“确定”  。
       1. 针对端口 3**03**17 重复上述步骤。
    
    1. 对于 SAP HANA 2.0，请为系统数据库创建负载均衡规则：
@@ -216,7 +216,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 将“协议”保留设置为“TCP”，输入端口 3**03**13。********
       1. 将“空闲超时”增大到 30 分钟。****
       1. 确保**启用浮动 IP**。
-      1. 选择“确定”。
+      1. 选择“确定”  。
       1. 针对端口 3**03**14 重复上述步骤。
    
    1. 对于 SAP HANA 2.0，请先为租户数据库创建负载均衡规则：
@@ -227,7 +227,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 将“协议”保留设置为“TCP”，输入端口 3**03**40。********
       1. 将“空闲超时”增大到 30 分钟。****
       1. 确保**启用浮动 IP**。
-      1. 选择“确定”。
+      1. 选择“确定”  。
       1. 针对端口 3**03**41 和 3**03**42 重复上述步骤。
 
    有关 SAP HANA 所需端口的详细信息，请阅读 [SAP HANA 租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6)指南中的[连接到租户数据库](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html)一章或 [SAP 说明 2388694][2388694]。
@@ -277,16 +277,20 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   创建逻辑卷。 线性卷是使用不带 `-i` 开关的 `lvcreate` 创建的。 我们建议创建条带化卷以获得更好的 I/O 性能，`-i` 参数应是基础物理卷的数量。 在本文档中，两个物理卷用于数据卷，因此 `-i` 开关参数设置为 **2**。 一个物理卷用于日志卷，因此未显式使用 `-i` 开关。 对每个数据、日志或共享卷使用多个物理卷时，请使用 `-i` 开关，并将其设置为基础物理卷的数量。
+   创建逻辑卷。 线性卷是使用不带 `-i` 开关的 `lvcreate` 创建的。 我们建议您创建条带化卷以更好的 I/O 性能，并将条带大小与[SAP HANA VM 存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中记录的值对齐。 参数`-i`应为基础物理卷的数量，`-I`并且参数为条带大小。 在本文档中，两个物理卷用于数据卷，因此 `-i` 开关参数设置为 **2**。 数据卷的条带大小为**256KiB。** 日志卷使用一个物理卷，因此不会显式用于`-i`日志`-I`卷命令或开关。  
 
-   <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
+   > [!IMPORTANT]
+   > 对每个数据、日志或共享卷使用多个物理卷时，请使用 `-i` 开关，并将其设置为基础物理卷的数量。 创建条`-I`带卷时，使用开关指定条带大小。  
+   > 有关建议的存储配置（包括条带大小和磁盘数），请参阅[SAP HANA VM 存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)。  
+
+   <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_shared vg_hana_shared_<b>HN1</b>
    sudo mkfs.xfs /dev/vg_hana_data_<b>HN1</b>/hana_data
    sudo mkfs.xfs /dev/vg_hana_log_<b>HN1</b>/hana_log
    sudo mkfs.xfs /dev/vg_hana_shared_<b>HN1</b>/hana_shared
    </code></pre>
-
+  
    创建装载目录，并复制所有逻辑卷的 UUID：
 
    <pre><code>sudo mkdir -p /hana/data/<b>HN1</b>

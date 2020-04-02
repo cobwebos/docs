@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: dcc2c38238f707a5d43cde03502c589add9461b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 462a44f7766e0ec52ba7156d6de5ae5261e21376
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335931"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547365"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -102,13 +102,13 @@ ms.locfileid: "80335931"
 * **自定义 DNS 服务器设置**：API 管理服务依赖于多项 Azure 服务。 当 API 管理托管在包含自定义 DNS 服务器的 VNET 中时，API 管理需要解析这些 Azure 服务的主机名。 请根据[此](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)指南进行自定义 DNS 安装。 有关参考信息，请参阅下面的端口表和其他网络要求。
 
 > [!IMPORTANT]
-> 如果计划对 VNET 使用自定义 DNS 服务器，应在向其部署 API 管理服务**之前**完成该设置。 否则，需要在每次通过运行[应用网络配置操作](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/ApplyNetworkConfigurationUpdates)更改 DNS 服务器时更新 API 管理服务
+> 如果计划对 VNET 使用自定义 DNS 服务器，应在向其部署 API 管理服务**之前**完成该设置。 否则，需要在每次通过运行[应用网络配置操作](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/ApiManagementService/ApplyNetworkConfigurationUpdates)更改 DNS 服务器时更新 API 管理服务
 
 * **API 管理所需的端口**：可以使用[网络安全组][Network Security Group]控制其中部署了 API 管理的子网的入站和出站流量。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。 在 VNET 中使用 API 管理时，另一个常见的错误配置问题是阻止了这些端口中的一个或多个。
 
 <a name="required-ports"> </a>当 API 管理服务实例托管在 VNET 中时，将使用下表中的端口。
 
-| 源 / 目标端口 | 方向          | 传输协议 |   [服务标记](../virtual-network/security-overview.md#service-tags) <br> 源/目标   | 用途 ( * )                                                 | 虚拟网络类型 |
+| 源 / 目标端口 | 方向          | 传输协议 |   [服务标签](../virtual-network/security-overview.md#service-tags) <br> 源/目标   | 用途 ( * )                                                 | 虚拟网络类型 |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / [80], 443                  | 入站            | TCP                | INTERNET / VIRTUAL_NETWORK            | 客户端与 API 管理的通信                      | 外部             |
 | * / 3443                     | 入站            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure 门户和 Powershell 的管理终结点         | 外部和内部  |
@@ -134,10 +134,12 @@ ms.locfileid: "80335931"
 
 + **指标和运行状况监视**：出站网络连接到 Azure 监视终结点，以便在以下域下解析：
 
++ **区域服务标记**"：允许向外站连接到存储、SQL 和 EventHubs 服务标记的 NSG 规则可以使用与包含 API 管理实例的区域（例如，美国西部区域 API 管理实例的 Storage.WestUS）对应的区域版本。 在多区域部署中，每个区域中的 NSG 应允许对该区域的服务标记的流量。
+
     | Azure 环境 | 终结点                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Public      | <ul><li>gcs.prod.monitoring.core.windows.net（**新**）</li><li>prod.warmpath.msftcloudes.com（**弃用**）</li><li>shoebox2.metrics.microsoftmetrics.com（**新**）</li><li>shoebox2.metrics.nsatc.net（**被弃用**）</li><li>prod3.metrics.microsoftmetrics.com（**新**）</li><li>prod3.metrics.nsatc.net（**被弃用**）</li><li>prod3-black.prod3.metrics.microsoftmetrics.com（**新**）</li><li>prod3-black.prod3.metrics.nsatc.net（**被弃用**）</li><li>prod3-red.prod3.metrics.microsoftmetrics.com（**新**）</li><li>prod3-red.prod3.metrics.nsatc.net（**被弃用**）</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`.warm.ingestion.msftcloudes.com，其中 `East US 2` 是 eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Government   | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com（**新**）</li><li>shoebox2.metrics.nsatc.net（**被弃用**）</li><li>prod3.metrics.microsoftmetrics.com（**新**）</li><li>prod3.metrics.nsatc.net（**被弃用**）</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com（**新**）</li><li>shoebox2.metrics.nsatc.net（**被弃用**）</li><li>prod3.metrics.microsoftmetrics.com（**新**）</li><li>prod3.metrics.nsatc.net（**被弃用**）</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
     | Azure 中国世纪互联     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com（**新**）</li><li>shoebox2.metrics.nsatc.net（**被弃用**）</li><li>prod3.metrics.microsoftmetrics.com（**新**）</li><li>prod3.metrics.nsatc.net（**被弃用**）</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
 
 >[!IMPORTANT]
@@ -164,13 +166,13 @@ ms.locfileid: "80335931"
 ## <a name="troubleshooting"></a><a name="troubleshooting"> </a>疑难解答
 * **初始安装**：如果在某个子网中初始部署 API 管理服务未成功，建议首先在同一子网中部署一个虚拟机。 接下来，在虚拟机中部署远程桌面，并验证是否存在与 Azure 订阅中的以下每个源的连接
     * Azure 存储 Blob
-    * Azure SQL 数据库
+    * Azure SQL Database
     * Azure 存储表
 
   > [!IMPORTANT]
   > 在验证连接后，在将 API 管理部署到子网中之前，请确保删除子网中部署的所有资源。
 
-* **增量更新**：对网络进行更改时，请参阅[NetworkStatus API，](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/networkstatus)以验证 API 管理服务是否未丢失对它所依赖的任何关键资源的访问权限。 连接状态应每 15 分钟更新一次。
+* **增量更新**：对网络进行更改时，请参阅[NetworkStatus API，](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/networkstatus)以验证 API 管理服务是否未丢失对它所依赖的任何关键资源的访问权限。 连接状态应每 15 分钟更新一次。
 
 * **资源导航链接**：部署到资源管理器样式的 vnet 子网中时，API 管理会通过创建一个资源导航链接来保留子网。 如果子网已包含来自其他提供程序的资源，则部署将**失败**。 类似地，将 API 管理服务移动到其他子网中或删除它时，将会删除该资源导航链接。
 
@@ -199,7 +201,7 @@ API 管理的每个附加扩展单元都需要两个 IP 地址。
 
 IP 地址按 Azure**环境**划分。 允许使用**Global**标记的入站请求时，必须与**区域**特定的 IP 地址一起列入白名单。
 
-| **Azure 环境**|   **地区**|  **IP 地址**|
+| **Azure 环境**|   **区域**|  **IP 地址**|
 |-----------------|-------------------------|---------------|
 | Azure Public| 美国中南部（全球）| 104.214.19.224|
 | Azure Public| 美国中北部（全球）| 52.162.110.80|
@@ -251,21 +253,21 @@ IP 地址按 Azure**环境**划分。 允许使用**Global**标记的入站请�
 | Azure 中国世纪互联| 中国东部| 40.126.120.30|
 | Azure 中国世纪互联| 中国北部 2| 40.73.41.178|
 | Azure 中国世纪互联| 中国东部 2| 40.73.104.4|
-| Azure Government | 美国弗吉尼亚州州长（全球）| 52.127.42.160|
-| Azure Government | 美国得克萨斯州（全球）| 52.127.34.192|
-| Azure Government | USGov Virginia| 52.227.222.92|
-| Azure Government | USGov Iowa| 13.73.72.21|
-| Azure Government | US Gov 亚利桑那州| 52.244.32.39|
-| Azure Government | US Gov 德克萨斯州| 52.243.154.118|
-| Azure Government | USDoD 中部| 52.182.32.132|
-| Azure Government | 美国国防部东| 52.181.32.192|
+| Azure Government| 美国弗吉尼亚州州长（全球）| 52.127.42.160|
+| Azure Government| 美国得克萨斯州（全球）| 52.127.34.192|
+| Azure Government| USGov Virginia| 52.227.222.92|
+| Azure Government| USGov Iowa| 13.73.72.21|
+| Azure Government| US Gov 亚利桑那州| 52.244.32.39|
+| Azure Government| US Gov 德克萨斯州| 52.243.154.118|
+| Azure Government| USDoD 中部| 52.182.32.132|
+| Azure Government| 美国国防部东| 52.181.32.192|
 
 ## <a name="related-content"></a><a name="related-content"> </a>相关的内容
 * [使用 Vpn 网关将虚拟网络连接到后端](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
 * [通过不同的部署模型连接虚拟网络](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [如何使用 API 检查器跟踪 Azure API 管理中的调用](api-management-howto-api-inspector.md)
 * [虚拟网络 常见问题](../virtual-network/virtual-networks-faq.md)
-* [服务标签](../virtual-network/security-overview.md#service-tags)
+* [服务标记](../virtual-network/security-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-select.png

@@ -7,26 +7,26 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: f290b08d1f625600d03c9540b28c289e9b449471
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475159"
+ms.locfileid: "80517926"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作伙伴中心中的联合销售选项
 
-在"共同销售"选项卡上提供信息是完全可选的。 它需要实现联合销售就绪和 IP 共同销售就绪状态。 Microsoft 销售团队将使用您提供的信息，在评估解决方案是否适合客户需求时了解有关解决方案的更多信息。 它不能直接提供给客户。 有关详细信息，请参阅通过[Microsoft 销售](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft)。
+在"共同销售"选项卡上提供信息是完全可选的。 它需要实现联合销售就绪和 IP 共同销售就绪状态。 Microsoft 销售团队将使用您提供的信息，在评估解决方案是否适合客户需求时了解有关解决方案的更多信息。 它不能直接提供给客户。 有关详细信息，请参阅通过[Microsoft 销售](https://partner.microsoft.com/membership/sell-with-microsoft)。
 
 合作伙伴中心中的共同销售选项当前可用于某些产品/服务类型。 随着时间的推移，将提供对其他优惠类型的支持。
 
 | **优惠类型** | **合作伙伴中心提供共同销售页面** |
 |    -----------------------    |    -----------------------------  |
-| 软件即服务 （SaaS） |     2020 年 4 月左右一般供货     |
+| 软件即服务 （SaaS） |     2020 年 4 月一般供应      |
 | 面向客户互动&电源应用的动态 365      |     目前可用      |
 | Dynamics 365 for Operations     |     目前可用       |
-| Dynamics 365 Business Central      |  2020 年 4 月左右一般供货    |
-| Azure 应用程序     |     2020 年 4 月左右一般供货     |
+| Dynamics 365 Business Central      |  2020 年 4 月一般供应     |
+| Azure 应用程序     |     2020 年 4 月一般供应     |
 | Azure 虚拟机      |     即将公布       |
 | Azure 容器     |     即将公布       |
 | 咨询服务      |     即将公布       |
@@ -66,8 +66,7 @@ ms.locfileid: "80475159"
 
 | **文档**    | **说明**  |
 | :------------------- | :-------------------|
-| *客户一页* | 客户就绪的产品描述。 Microsoft 销售团队可能会与客户共享此信息，以帮助确定您的产品是否适合您的产品，并确保其准备好客户。 <br> <br> 使用合作伙伴中心中提供的相关模板之一： <br> <ul> <li> 微软 Azure 单页机模板 </li> <li> 微软动态 365 单页机模板 </li> <li> Office 365 单页机模板 </li> <li> Windows 10 单页码模板 </li> </ul>
- |
+| *客户一页* | 客户就绪的产品描述。 Microsoft 销售团队可能会与客户共享此信息，以帮助确定您的产品是否适合您的产品，并确保其准备好客户。 <br> <br> 使用合作伙伴中心中提供的相关模板之一： <br> <ul> <li> 微软 Azure 单页机模板 </li> <li> 微软动态 365 单页机模板 </li> <li> Office 365 单页机模板 </li> <li> Windows 10 单页码模板 </li> </ul> |
 | *客户演示* | 幻灯片平台，以推销您的解决方案及其价值主张。 在确保您的产品/服务已做好客户准备后，Microsoft 销售团队可能会与客户共享演示文稿，以阐明两家公司在部署联合解决方案时带来的价值。 演示文稿应介绍您的解决方案的作用、如何帮助客户、解决方案面向哪些行业以及解决方案与竞争解决方案的比较情况。 <br> <br> 使用合作伙伴中心中可用的模板。|
 | *客户案例研究* | 此信息显示了潜在客户您和 Microsoft 在以前情况下如何成功部署此解决方案。 <br> <br> 使用合作伙伴中心中可用的模板。 |
 | *可验证的客户获胜（可选）* | 部署解决方案后客户成功的具体示例。 |

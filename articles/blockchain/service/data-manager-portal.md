@@ -1,15 +1,15 @@
 ---
 title: 使用 Azure 门户配置区块链数据管理器 - Azure 区块链服务
 description: 使用 Azure 门户创建和管理 Azure 区块链服务的区块链数据管理器。
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.topic: article
-ms.reviewer: chroyal
-ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: beacef0660a253c90afb507618e8a1742f0c9d2d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273158"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529604"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>使用 Azure 门户配置区块链数据管理器
 
@@ -22,7 +22,7 @@ ms.locfileid: "79273158"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 完全[快速入门：使用 Azure 门户或快速入门创建区块链成员](create-member.md)[：使用 Azure CLI 创建 Azure 区块链服务区块链成员](create-member-cli.md)
+* 完整的[快速启动：使用 Azure 门户或快速入门创建区块链成员](create-member.md)[：使用 Azure CLI 创建 Azure 区块链服务区块链成员](create-member-cli.md)。 使用区块链数据管理器时，建议使用 Azure 区块链服务*标准*层。
 * 创建[事件网格主题](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * 了解 [Azure 事件网格中的事件处理程序](../../event-grid/event-handlers.md)
 
@@ -32,22 +32,22 @@ ms.locfileid: "79273158"
 
 出站连接将区块链数据发送到 Azure 事件网格。 创建实例时，可以配置单个出站连接。 区块链数据管理器支持对任意给定的区块链数据管理器实例使用多个事件网格主题出站连接。 可将区块链数据发送到一个或多个目标。 要添加其他目标，只需向实例添加其他出站连接。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 转到要连接到区块链数据管理器的 Azure 区块链服务成员。 选择“区块链数据管理器”****。
-1. 选择“添加”****。
+1. 选择 **添加** 。
 
     ![添加“区块链数据管理器”](./media/data-manager-portal/add-instance.png)
 
     输入以下详细信息：
 
-    设置 | 描述
+    设置 | 说明
     --------|------------
-    “属性” | 为连接的区块链数据管理器输入唯一的名称。 区块链数据管理器名称可以包含小写字母和数字，最大长度为 20 个字符。
+    名称 | 为连接的区块链数据管理器输入唯一的名称。 区块链数据管理器名称可以包含小写字母和数字，最大长度为 20 个字符。
     事务节点 | 选择事务节点。 仅列出具有读取访问权限的事务节点。
     连接名称 | 输入用于发送区块链事务数据的出站连接的唯一名称。
     事件网格终结点 | 在与区块链数据管理器实例相同的订阅中选择事件网格主题。
 
-1. 选择“确定”。
+1. 选择“确定”  。
 
     创建区块链数据管理器实例需要不到一分钟的时间。 部署实例后，它会自动启动。 正在运行的区块链数据管理器实例从事务节点捕获区块链事件，并将数据发送到出站连接。
 
@@ -108,9 +108,9 @@ ms.locfileid: "79273158"
 
     ![创建存储帐户容器](./media/data-manager-portal/create-container.png)
 
-    | 字段 | 描述 |
+    | 字段 | 说明 |
     |-------|-------------|
-    | “属性”  | 为该容器命名。 例如，“smartcontract”** |
+    | 名称  | 为该容器命名。 例如，“smartcontract”** |
     | 公共访问级别 | 选择“专用(没有匿名访问权限)”** |
 
 1. 选择“确定”**** 创建容器。
@@ -138,19 +138,19 @@ ms.locfileid: "79273158"
 
 1. 从实例列表中选择区块链数据管理器实例。
 1. 选择“区块链应用程序”****。
-1. 选择“添加”****。
+1. 选择 **添加** 。
 
     ![添加区块链应用程序](./media/data-manager-portal/add-application.png)
 
     输入区块链应用程序的名称以及智能合同 ABI 和字节码 URL。
 
-    设置 | 描述
+    设置 | 说明
     --------|------------
-    “属性” | 输入要跟踪的区块链应用程序的唯一名称。
+    名称 | 输入要跟踪的区块链应用程序的唯一名称。
     合同 ABI | 合同 ABI 文件的 URL 路径。 有关详细信息，请参阅[创建合同 ABI 和字节码 URL](#create-contract-abi-and-bytecode-url)。
     合同字节码 | 字节码文件的 URL 路径。 有关详细信息，请参阅[创建合同 ABI 和字节码 URL](#create-contract-abi-and-bytecode-url)。
 
-1. 选择“确定”。
+1. 选择“确定”  。
 
     创建应用程序后，应用程序将显示在区块链应用程序的列表中。
 

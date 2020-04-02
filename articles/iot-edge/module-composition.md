@@ -4,16 +4,16 @@ description: 了解部署清单如何声明要部署的模块、如何部署这�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 05/28/2019
+ms.date: 03/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8eb24fe878638853cd8519c08045552a91f0c190
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271390"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545631"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 
@@ -141,7 +141,7 @@ IoT Edge 中心管理模块、IoT 中心与所有叶设备之间的通信。 因
 
 源属性可采用以下任何值：
 
-| 源 | 描述 |
+| 源 | 说明 |
 | ------ | ----------- |
 | `/*` | 所有设备到云的消息，或者来自任何模块或叶设备的孪生更改通知 |
 | `/twinChangeNotifications` | 来自任何模块或叶设备的任何孪生更改（报告属性） |
@@ -177,7 +177,7 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 
 接收器属性可采用以下任何值：
 
-| 接收器 | 描述 |
+| 接收器 | 说明 |
 | ---- | ----------- |
 | `$upstream` | 将消息发送到 IoT 中心 |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | 将消息发送到特定模块的特定输入 |
@@ -252,6 +252,9 @@ IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "env": {
+              "tempLimit": {"value": "100"}
+            },
             "settings": {
               "image": "myacr.azurecr.io/filtermodule:latest",
               "createOptions": "{}"

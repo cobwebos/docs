@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1401cbe1920c7c6df804aadbba1751612ba9cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be12bce8fa29076621bec35228838a4ebdd97433
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126791"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545871"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure 活动目录 B2C 中的自定义策略本地化应用程序的用户界面
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure 活动目录 B2C（Azure AD B2C）中的语言自定义允许您适应不同的语言以满足客户的需求。 Microsoft 提供 36 种语言的翻译，但你也可以为任何语言提供自己的翻译。 即使体验是针对一种语言提供的，也可以自定义页面上的任何文本。 
+Azure 活动目录 B2C（Azure AD B2C）中的语言自定义允许您适应不同的语言以满足客户的需求。 微软提供[36种语言](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)的翻译，但您也可以为任何语言提供自己的翻译。 即使体验是针对一种语言提供的，也可以自定义页面上的任何文本。 
 
 本文将介绍如何在用户旅程的策略中支持多个区域设置或语言。 本地化需要三个步骤：设置受支持语言的显式列表、提供特定于语言的字符串和集合以及编辑页面[的内容定义](contentdefinitions.md)。 
 

@@ -7,12 +7,12 @@ ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/15/2020
-ms.openlocfilehash: 796b37f98fed7e389fa71a15b5e6697a14db1a16
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 1b9d593b0f0895e2ba75fae7ab7e78ea883c8907
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397220"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521696"
 ---
 # <a name="microsoft-flow-connector-preview-usage-examples"></a>微软流连接器（预览）使用示例
 
@@ -24,8 +24,6 @@ Azure 数据资源管理器流连接器允许 Azure 数据资源管理器使用[
 * [将数据推送到 Power BI 数据集](#push-data-to-power-bi-dataset)
 * [条件查询](#conditional-queries)
 * [通过电子邮件发送多个 Azure 数据资源管理器流程图表](#email-multiple-azure-data-explorer-flow-charts)
-* [向不同的联系人发送不同的电子邮件](#send-a-different-email-to-different-contacts)
-* [创建自定义 HTML 表](#create-a-custom-html-table)
 
 ## <a name="microsoft-flow-connector-and-sql"></a>微软流连接器和 SQL
 
@@ -101,23 +99,21 @@ Kusto 查询的结果可用作下一个流操作的输入或条件。
 
 ## <a name="email-multiple-azure-data-explorer-flow-charts"></a>通过电子邮件发送多个 Azure 数据资源管理器流程图表
 
-1. 使用"重复"触发器创建新的 Flow，并定义流的间隔和频率。 
+1. 使用定期触发器创建新的 Flow，并定义流的间隔和频率。 
 1. 添加新步骤，包含一个或多个 Kusto - 运行查询并可视化结果操作。 
 
     ![在流中运行多个查询](./media/flow-usage/flow-severalqueries.png)
 1. 对于每个 Kusto - 运行查询并可视化结果，请定义以下字段：
-    * 群集 URL（在*群集名称*字段中）
+    * 群集 URL
     * 数据库名称
-    * 查询和图表类型（HTML 表格/饼图/时间图表/条形图/输入自定义值）。
+    * 查询和图表类型（HTML 表格、饼图、时间图表、条形图或输入自定义值）。
 
     ![使用多个附件可视化结果](./media/flow-usage/flow-visualizeresultsmultipleattachments.png)
 
-    > [!IMPORTANT]
-    > 在 *"群集名称"* 字段中，输入群集 URL。
-
-1. 添加"发送电子邮件"操作。 
-    * 在 *"正文"* 字段中，插入所需的正文，以便查询的可视化结果包含在电子邮件正文中。
-    * 要向电子邮件添加附件，请添加附件名称和附件内容。
+1. 添加发送电子邮件 （v2） 操作： 
+    1. 在正文部分中，选择代码视图图标。
+    1. 在 **"正文"** 字段中，插入所需的 BodyHtml，以便查询的可视化结果包含在电子邮件正文中。
+    1. 要向电子邮件添加附件，请添加附件名称和附件内容。
     
     ![通过电子邮件发送多个附件](./media/flow-usage/flow-email-multiple-attachments.png)
 
@@ -128,68 +124,6 @@ Kusto 查询的结果可用作下一个流操作的输入或条件。
 [![](./media/flow-usage/flow-resultsmultipleattachments.png "Results of multiple attachments")](./media/flow-usage/flow-resultsmultipleattachments.png#lightbox)
 
 [![](./media/flow-usage/flow-resultsmultipleattachments2.png "Results of multiple attachments")](./media/flow-usage/flow-resultsmultipleattachments2.png#lightbox)
-
-## <a name="send-a-different-email-to-different-contacts"></a>向不同的联系人发送不同的电子邮件
-
-您可以使用 Microsoft Flow 向不同的联系人发送不同的自定义电子邮件。 电子邮件地址和电子邮件内容是 Kusto 查询的结果。
-
-示例：
-
-![使用 Kusto 查询的动态电子邮件](./media/flow-usage/flow-dynamicemailkusto.png)
-
-> [!IMPORTANT]
-> 在 *"群集名称"* 字段中，输入群集 URL。
-
-![流操作中的动态电子邮件](./media/flow-usage/flow-dynamicemail.png)
-
-## <a name="create-a-custom-html-table"></a>创建自定义 HTML 表
-
-您可以使用 Microsoft Flow 创建和使用自定义 HTML 元素，如自定义 HTML 表。
-
-下面的示例演示如何创建自定义 HTML 表。 HTML 表的行将按日志级别着色（与 Azure 数据资源管理器中相同）。
-
-按照以下说明创建类似的流：
-
-1. 创建新的 Kusto - 运行查询和列表结果操作。
-
-    ![列出 HTML 表的结果](./media/flow-usage/flow-listresultforhtmltable.png)
-
-> [!IMPORTANT]
-> 在 *"群集名称"* 字段中，输入群集 URL。
-
-1. 循环查询结果并创建 HTML 表正文： 
-    1. 要创建变量以保存 HTML 字符串，请选择 **"新建步骤"**
-    1. 选择 **"添加操作**"并搜索变量。 
-    1. 选择**变量 - 初始化变量**。 
-    1. 初始化字符串变量，如下所示：
-
-    ![初始化变量](./media/flow-usage/flow-initializevariable.png)
-
-1. 循环对结果：
-    1. 选择“新建步骤”。****
-    1. 选择 **"添加操作**"。
-    1. 搜索变量。 
-    1. 选择**变量 - 追加到字符串变量**。 
-    1. 选择之前初始化的变量名称，并使用查询结果创建 HTML 表行。 
-    选择查询结果时，将自动添加"应用于每个查询结果"。
-
-    在下面的示例中，`if`表达式用于定义每行的样式：
-
-    ```if(equals(items('Apply_to_each')?['Level'], 'Warning'), 'Yellow', if(equals(items('Apply_to_each')?['Level'], 'Error'), 'red', 'white'))```
-
-    [![](./media/flow-usage/flow-createhtmltableloopcontent.png "Create HTML table loop content")](./media/flow-usage/flow-createhtmltableloopcontent.png#lightbox)
-
-1. 创建完整的 HTML 内容： 
-    1. 在"应用于每个操作"之外添加新操作。 
-    在下面的示例中，使用的操作是发送电子邮件。
-    1. 使用上述步骤中的变量定义 HTML 表。 
-    1. 如果要发送电子邮件，请选择 **"显示高级选项**"，并在"是 HTML"下选择"**是**"。
-
-    ![自定义 HTML 表电子邮件](./media/flow-usage/flow-customhtmltablemail.png)
-
-结果：
-
-![自定义 HTML 表电子邮件结果](./media/flow-usage/flow-customhtmltableresult.png)
 
 ## <a name="next-steps"></a>后续步骤
 

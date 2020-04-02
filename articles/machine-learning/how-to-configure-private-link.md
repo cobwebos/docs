@@ -10,16 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: c6593a2746e628c89e20f6ef92a1430bd294e4fe
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fb70600ad245968377cdebd23a7b531e552bb546
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438302"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529317"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>为 Azure 机器学习工作区配置 Azure 专用链接
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>为 Azure 机器学习工作区配置 Azure 专用链接（预览）
 
-在本文档中，您将了解如何将 Azure 私有链接与 Azure 机器学习工作区一起使用。 Azure 专用链接使您能够使用专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，您可以将对工作区的访问限制为仅通过专用 IP 地址进行。 专用链路有助于减少数据渗漏的风险。 要了解有关私有终结点的更多详细信息，请参阅[Azure 专用链接](/azure/private-link/private-link-overview)一文。
+在本文档中，您将了解如何将 Azure 私有链接与 Azure 机器学习工作区一起使用。 此功能目前处于预览状态，在美国东部、美国西部 2、美国中南部区域提供。 
+
+Azure 专用链接使您能够使用专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，您可以将对工作区的访问限制为仅通过专用 IP 地址进行。 专用链路有助于减少数据渗漏的风险。 要了解有关私有终结点的更多详细信息，请参阅[Azure 专用链接](/azure/private-link/private-link-overview)一文。
 
 > [!IMPORTANT]
 > Azure 专用链接不会影响 Azure 控制平面（管理操作），例如删除工作区或管理计算资源。 例如，创建、更新或删除计算目标。 这些操作正常地通过公共互联网执行。

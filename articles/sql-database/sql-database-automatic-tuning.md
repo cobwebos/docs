@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: d4762c86268353ff0464ff3919250cd86f0038d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 7488fd5f8a572788933856f03bb0ad4351885704
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79214099"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518228"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL 数据库中的自动优化
 
@@ -93,3 +93,4 @@ Azure SQL 数据库中可用的自动优化选项包括：
 ## <a name="next-steps"></a>后续步骤
 
 - 要了解自动调优中使用的内置智能，请参阅[人工智能调调 Azure SQL 数据库](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)。
+- 要了解自动调优的工作原理，请参阅 Microsoft [Azure SQL 数据库中自动索引数百万个数据库](https://www.microsoft.com/en-us/research/uploads/prod/2019/02/autoindexing_azuredb.pdf)。

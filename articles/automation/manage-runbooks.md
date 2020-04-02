@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ad8c05b3347ed4741d574a5e6bcc1d928db08411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad2a34691a00f217db6cf6835eefed18c8862d32
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366830"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547920"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
 
@@ -67,7 +67,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 4. 单击**Runbook 文件**并选择要导入的文件。
 5. 如果启用了 **"名称"** 字段，则可以选择更改 Runbook 名称。 名称必须以字母开头，并可以包含字母、数字、下划线和破折号。
 6. 将自动选择 [Runbook 类型](automation-runbook-types.md)，但可以在考虑适用的限制后更改该类型。
-7. 单击 **“创建”**。 新的 runbook 会出现在自动化帐户的 runbook 列表中。
+7. 单击“创建”。  新的 runbook 会出现在自动化帐户的 runbook 列表中。
 8. 必须先[发布 Runbook](#publish-a-runbook)，才能运行它。
 
 > [!NOTE]
@@ -128,6 +128,19 @@ $RGName = "ResourceGroup"
 Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
+
+### <a name="schedule-a-runbook-in-the-azure-portal"></a>在 Azure 门户中安排运行簿
+
+发布 Runbook 后，可以将其安排用于操作。
+
+1. 在 Azure 门户中打开 Runbook。
+2. 在 **"资源**"下选择**计划**。
+3. 选择 **"添加计划**"。
+4. 在"计划运行簿"窗格中，选择**将计划链接到 runbook**。
+5. 在"计划"窗格中选择 **"创建新计划**"。
+6. 在"新建计划"窗格中输入名称、说明和其他参数。 
+7. 创建计划后，突出显示它并单击 **"确定**"。 它现在应该链接到您的 Runbook。
+8. 在邮箱中查找电子邮件，通知您 Runbook 状态。
 
 ## <a name="next-steps"></a>后续步骤
 

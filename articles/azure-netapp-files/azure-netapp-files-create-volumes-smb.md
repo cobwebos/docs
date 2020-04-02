@@ -12,20 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 03/31/2020
 ms.author: b-juche
-ms.openlocfilehash: b2000c3fd3d64793f797e997d8f3c10eaed5d7aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ad9e13667791c38a8bf8be01919bcdbd0032102
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409571"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519588"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
 Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 SMBv3 卷。 如果要创建 NFS 卷，请参阅为[Azure NetApp 文件创建 NFS 卷](azure-netapp-files-create-volumes.md)。 
 
-## <a name="before-you-begin"></a>开始之前 
+## <a name="before-you-begin"></a>在开始之前 
 必须已设置容量池。   
 [设置容量池](azure-netapp-files-set-up-capacity-pool.md)   
 子网必须委派给 Azure NetApp 文件。  
@@ -45,7 +45,7 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
     |    AD Web 服务    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    空值       |    回声回复    |
+    |    ICMPv4             |    不可用       |    回声回复    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -74,6 +74,14 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 
     请参阅设计有关 AD 站点和服务[的站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
     
+* Azure NetApp 文件支持 DES、Kerberos AES 128 和 Kerberos AES 256 加密类型（从最不安全到最安全）。 用于加入活动目录的用户凭据必须启用与为活动目录启用的功能匹配的最高相应帐户选项。   
+
+    例如，如果活动目录仅具有 AES-128 功能，则必须为用户凭据启用 AES-128 帐户选项。 如果您的 Active Directory 具有 AES-256 功能，则必须启用 AES-256 帐户选项（该选项还支持 AES-128）。 如果活动目录没有任何 Kerberos 加密功能，则 Azure NetApp 文件默认使用 DES。  
+
+    您可以在活动目录用户和计算机 MMC 控制台的属性中启用帐户选项：   
+
+    ![活动目录用户和计算机 MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
+
 有关其他 AD 信息，请参阅 Azure NetApp 文件[SMB 常见问题解答](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)。 
 
 ## <a name="decide-which-domain-services-to-use"></a>决定使用哪些域服务 

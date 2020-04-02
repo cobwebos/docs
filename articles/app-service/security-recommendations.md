@@ -1,18 +1,18 @@
 ---
 title: 安全建议
 description: 实施安全建议，履行我们责任分担模型中所述的安全义务。 提高应用的安全性。
-author: barclayn
+author: msmbaldwin
 manager: barbkess
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.author: barclayn
+ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: e3f901fd78436b42729607d38f0ddb533f31cd30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684110"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546703"
 ---
 # <a name="security-recommendations-for-app-service"></a>适用于应用服务的安全建议
 

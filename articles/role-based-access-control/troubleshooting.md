@@ -15,12 +15,12 @@ ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 8aedc78772858815a18425fb1e6cb36a4600f647
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 09d5b7a126a1b8832bfe40e2e25dd4000d5d9155
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385089"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548288"
 ---
 # <a name="troubleshoot-azure-rbac"></a>排除 Azure RBAC 故障
 
@@ -80,7 +80,7 @@ $ras.Count
 
 ## <a name="access-denied-or-permission-errors"></a>访问被拒绝或权限错误
 
-- 如果在尝试创建资源时收到权限错误"具有对象 ID 的客户端无权执行范围操作（代码：授权失败）"，请检查您当前是否当前与已分配了已写入的角色的用户登录对所选作用域中的资源的权限。 例如，若要管理某个资源组中的虚拟机，则你应当在该资源组（或父作用域）中具有[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色。 有关每个内置角色的权限列表，请参阅 [Azure 资源的内置角色](built-in-roles.md)。
+- 如果在尝试创建资源时收到权限错误"具有对象 ID 的客户端无权执行范围操作（代码：授权失败）"，请检查您当前是否当前与已分配了对所选作用域中的资源具有写入权限的角色的用户登录。 例如，若要管理某个资源组中的虚拟机，则你应当在该资源组（或父作用域）中具有[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色。 有关每个内置角色的权限列表，请参阅 [Azure 资源的内置角色](built-in-roles.md)。
 - 如果尝试创建或更新支持票证时收到权限错误“无权创建支持票证”，请检查你当前登录时使用的用户是否分配有具有 `Microsoft.Support/supportTickets/write` 权限的角色，例如[支持请求参与者](built-in-roles.md#support-request-contributor)。
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>具有未知安全主体的角色分配
@@ -179,7 +179,7 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 添加或�
 
 这些项需要对包含网站的整个**资源组**具有**写**访问权限：  
 
-* SSL 证书和绑定（SSL 证书可以在同一资源组和地理位置中的站点之间共享）  
+* TLS/SSL 证书和绑定（TLS/SSL 证书可以在同一资源组中的站点和地理位置之间共享）  
 * 警报规则  
 * 自动缩放设置  
 * Application Insights 组件  

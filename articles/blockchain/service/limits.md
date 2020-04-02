@@ -1,15 +1,15 @@
 ---
 title: Azure 区块链服务限制
 description: Azure 区块链服务中的服务和功能限制概述
-ms.date: 11/22/2019
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.reviewer: janders
-ms.openlocfilehash: f4001ee520f3f3136d1bac5ca047c80526fc92e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: c728e617ac37795988cd596c7cb0c5025aac4ccf
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455659"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529574"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure 区块链服务中的限制
 
@@ -23,6 +23,10 @@ Azure 区块链服务具有服务和功能限制，例如成员可以拥有的�
 |:---|:---:|:---:|
 | Basic | 10 | 1 |
 | Standard | 10 | 2 |
+
+您的联合体网络应至少具有两个 Azure 区块链服务标准层节点。 标准层节点包括两个验证器节点。 满足[伊斯坦布尔拜占庭容错共识](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)需要四个验证节点。
+
+使用基本层用于概念的开发、测试和验证。 对生产级部署使用标准层。 如果您使用的是区块链数据管理器或发送大量私人交易，则还应使用*标准*层。
 
 不支持在成员创建后更改基本和标准之间的定价层。
 

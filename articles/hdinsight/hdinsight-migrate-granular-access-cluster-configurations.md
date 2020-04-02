@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: f1fdb9dffbe06430ea7e3eb9339e23f5239e4e36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb78d84aa0f9a2832b6599edeac9d50e0e226437
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310826"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546340"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>迁移到群集配置的基于角色的细化访问权限
 
@@ -29,7 +29,7 @@ ms.locfileid: "76310826"
 | 角色                                  | 以前                                                                                       | 展望未来       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | 读取器                                | - 读取访问权限，包括机密                                                                   | - 读取访问权限，**不**包括机密 |           |   |   |
-| HDInsight 群集操作员<br>（新角色） | 空值                                                                                              | - 读/写访问权限，包括机密         |   |   |
+| HDInsight 群集操作员<br>（新角色） | 不可用                                                                                              | - 读/写访问权限，包括机密         |   |   |
 | 参与者                           | - 读/写访问权限，包括机密<br>- 创建和管理所有类型的 Azure 资源。     | 没有变化 |
 | “所有者”                                 | - 读/写访问权限，包括机密<br>- 对所有资源的完全访问权限<br>- 将访问权限委托给其他人 | 没有变化 |
 
@@ -131,8 +131,8 @@ ms.locfileid: "76310826"
 
 请更新到 HDInsight SDK for Java [版本 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) 或更高版本。 如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改：
 
-- [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get)**将不再返回敏感参数，** 如存储密钥（核心站点）或 HTTP 凭据（网关）。
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update)现在被弃用了。
+- `ConfigurationsInner.get` 将**不再返回敏感参数**，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
+- `ConfigurationsInner.update` 现已弃用。
 
 ### <a name="sdk-for-go"></a>SDK For Go
 
@@ -185,17 +185,17 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 或者，可以使用 Azure 门户将 HDInsight 群集操作员角色分配添加到用户。 请参阅文档[使用 RBAC 和 Azure 门户管理对 Azure 资源的访问 - 添加角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 ### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>更新 API 请求和/或工具后，为何会出现 403（禁止）响应？
 
 群集配置现在受到精细的基于角色的访问控制，需要拥有 `Microsoft.HDInsight/clusters/configurations/*` 权限才能访问这些配置。 若要获取此权限，请将“HDInsight 群集操作员”、“参与者”或“所有者”角色分配到尝试访问配置的用户或服务主体。
 
-### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>运行 Azure CLI 命令将“HDInsight 群集操作员”角色分配到另一个用户或服务主体时，为何会出现“权限不足，无法完成该操作”？
+### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>为什么在运行 Azure CLI 命令将 HDInsight 群集操作员角色分配给其他用户或服务主体时，还要看到"完成操作的权限不足"？
 
-执行该命令的用户或服务主体除了要有“所有者”角色以外，还需要有足够的 AAD 权限来查找被分配者的对象 ID。 此消息表示 AAD 权限不足。 尝试将 `-–assignee` 参数替换为 `–assignee-object-id`，并提供被分配者的对象 ID 作为参数，而不要提供名称（如果使用托管标识，则提供主体 ID）。 有关详细信息，请参阅 [Azure 角色分配创建文档](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)的“可选参数”部分。
+除了具有所有者角色外，执行该命令的用户或服务主体还需要具有足够的 Azure AD 权限来查找受让人的对象 ID。 此消息指示 Azure AD 权限不足。 尝试将 `-–assignee` 参数替换为 `–assignee-object-id`，并提供被分配者的对象 ID 作为参数，而不要提供名称（如果使用托管标识，则提供主体 ID）。 有关详细信息，请参阅 [Azure 角色分配创建文档](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)的“可选参数”部分。
 
-如果仍然解决不了问题，请联系 AAD 管理员获取适当的权限。
+如果这仍然不起作用，请与 Azure AD 管理员联系以获取正确的权限。
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>如果不采取任何措施，会发生什么情况？
 

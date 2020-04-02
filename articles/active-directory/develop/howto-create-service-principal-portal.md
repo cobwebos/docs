@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/01/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1ee8e90d1d690315b2727a050e0383d7d28dc03
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264110"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546138"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -99,7 +99,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 1. 要查看证书，在左侧窗格中的 **"证书 - 当前用户**"下，请展开 **"个人"** 目录。
 1. 右键单击您创建的证书，选择 **"所有任务->导出**。
-1. 按照证书导出向导操作。  导出私钥，指定证书文件的密码，然后导出到文件。
+1. 按照证书导出向导操作。  不要导出私钥，并将导出到 。CER 文件。
 
 若要上传证书，请执行以下操作：
 
@@ -110,7 +110,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
     ![选择“上传证书”并选择要添加的证书](./media/howto-create-service-principal-portal/upload-cert.png)
 
-1. 选择“添加”****。
+1. 选择 **添加** 。
 
 在应用程序注册门户中向应用程序注册证书后，需要启用客户端应用程序代码来使用证书。
 
@@ -148,7 +148,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 1. 在左侧窗格中，选择“用户设置”****。
 1. 检查“应用注册”**** 设置。 只有管理员可设置此值。 如果设置为“是”，则 Active AD 租户中的任何用户都可以注册应用****。
 
-如果应用注册设置设定为“否”****，则只有具有管理员角色的用户才能注册这些类型的应用程序。 请参阅[可用角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)和[角色权限](../users-groups-roles/directory-assign-admin-roles.md#role-permissions)来了解 Azure AD 中的可用管理员角色以及授予每个角色的具体权限。 如果您的帐户已分配了"用户"角色，但应用注册设置仅限于管理员用户，请让管理员为您分配一个管理员角色，这些角色可以创建和管理应用注册的所有方面，或者允许用户注册应用程序。
+如果应用注册设置设定为“否”****，则只有具有管理员角色的用户才能注册这些类型的应用程序。 请参阅[可用角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)和[角色权限](../users-groups-roles/directory-assign-admin-roles.md#role-permissions)来了解 Azure AD 中的可用管理员角色以及授予每个角色的具体权限。 如果您的帐户已分配了"用户"角色，但应用注册设置仅限于管理员用户，请让管理员为您分配一个管理员角色，该角色可以创建和管理应用注册的所有方面，或者允许用户注册应用。
 
 ### <a name="check-azure-subscription-permissions"></a>检查 Azure 订阅权限
 

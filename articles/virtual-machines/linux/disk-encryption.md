@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: f50115732940eab14db30842be85b47cb4a552e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88d25083a1105023279f3907a4573319fabe087c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299481"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520774"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -68,7 +68,7 @@ ms.locfileid: "79299481"
 
 - 如果为磁盘启用了此功能，则无法禁用它。
     如果需要解决此问题，则必须[将所有数据复制到](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)不使用客户托管密钥的完全不同的托管磁盘。
-- 仅支持大小为 2080 的["软"和"硬"RSA 密钥](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types)，没有其他键或大小。
+- 仅支持大小为 2048 的["软"和"硬"RSA 密钥](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types)，没有其他键或大小。
 - 使用服务器端加密和客户管理的密钥加密的自定义映像创建的磁盘必须使用相同的客户管理密钥进行加密，并且必须在同一订阅中。
 - 使用服务器端加密和客户管理的密钥加密的磁盘创建的快照必须使用相同的客户管理密钥进行加密。
 - 在共享映像库中，无法使用使用服务器端加密和客户管理密钥加密的自定义映像。

@@ -1,15 +1,15 @@
 ---
 title: 使用 Azure CLI 配置区块链数据管理器 - Azure 区块链服务
 description: 使用 Azure CLI 创建和管理 Azure 区块链服务的区块链数据管理器
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.topic: article
-ms.reviewer: chroyal
-ms.openlocfilehash: a8061aad6d6a1513de70e7c2bc57aa109c666611
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: 5ceca96f760ab62ca7f3df9ad26139b9b4a3e5be
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455938"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529589"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>使用 Azure CLI 配置区块链数据管理器
 
@@ -26,7 +26,7 @@ ms.locfileid: "74455938"
 ## <a name="prerequisites"></a>先决条件
 
 * 安装最新的[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)并使用`az login`登录。
-* 完整的[快速入门：使用可视化工作室代码连接到 Azure 区块链服务联盟网络](connect-vscode.md)
+* 完整的[快速入门：使用可视化工作室代码连接到 Azure 区块链服务联盟网络](connect-vscode.md)。 使用区块链数据管理器时，建议使用 Azure 区块链服务*标准*层。
 * 创建[事件网格主题](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
 * 了解 [Azure 事件网格中的事件处理程序](../../event-grid/event-handlers.md)
 
@@ -59,7 +59,7 @@ az resource create \
                    --properties <watcher resource properties>
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |-----------|-------------|
 | resource-group | 资源组名称，用于创建区块链数据管理器实例的位置。 |
 | name | 区块链数据管理器实例的名称。 |
@@ -79,7 +79,7 @@ JSON 配置示例，用于**在美国东部**区域创建区块链管理器实�
 }
 ```
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 |---------|-------------|
 | location | 创建观察程序资源的区域 |
 | properties | 创建观察程序资源时要设置的属性 |
@@ -121,7 +121,7 @@ az resource create \
                    --properties <input resource properties>
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |-----------|-------------|
 | resource-group | 资源组名称，用于创建输入资源。 |
 | name | 输入的名称。 |
@@ -147,7 +147,7 @@ az resource create \
 }
 ```
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 |---------|-------------|
 | location | 创建输入资源的区域。 |
 | 输入类型 | Azure 区块链服务成员的分类帐类型。 目前，**支持以图姆**。 |
@@ -193,7 +193,7 @@ az resource create \
                    --properties <output resource properties>
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |-----------|-------------|
 | resource-group | 要在何处创建输出资源的资源组名称。 |
 | name | 输出的名称。 |
@@ -219,7 +219,7 @@ az resource create \
 }
 ```
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 |---------|-------------|
 | location | 创建输出资源的区域。 |
 | 输出类型 | 输出类型。 目前，**事件网格**受支持。 |
@@ -270,7 +270,7 @@ az resource create \
                    --properties <Application resource properties>
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |-----------|-------------|
 | resource-group | 要在何处创建应用程序资源的资源组名称。 |
 | name | 应用程序的名称。 |
@@ -301,7 +301,7 @@ az resource create \
 }
 ```
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 |---------|-------------|
 | location | 创建应用程序资源的区域。 |
 | 工件类型 | 应用程序类型。 目前，**支持以天智能合约**。 |
@@ -345,7 +345,7 @@ az resource invoke-action \
                           --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/<Watcher name>
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |-----------|-------------|
 | action | 使用**开始**运行观察程序。 |
 | ids | 观察程序资源 ID。 将\<订阅\>ID、\<资源\>组和\<观察程序\>名称替换为观察程序资源的值。|
@@ -370,7 +370,7 @@ az resource invoke-action \
                           --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/<Watcher name>
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |-----------|-------------|
 | action | 使用**停止**停止观察器。 |
 | ids | 观察程序的名称。 将\<订阅\>ID、\<资源\>组和\<观察程序\>名称替换为观察程序资源的值。 |
@@ -396,7 +396,7 @@ az resource delete \
                    --resource-type Microsoft.Blockchain/watchers
 ```
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |-----------|-------------|
 | resource-group | 要删除的观察程序的资源组名称。 |
 | name | 要删除的观察程序的名称。 |

@@ -1,6 +1,6 @@
 ---
 title: 将 Apache Flink 用于 Apache Kafka - Azure事件中心 | Microsoft Docs
-description: 本文提供了有关如何将 Apache Flink 连接到已启用 Apache Kafka 的 Azure 事件中心的信息
+description: 本文提供有关如何将 Apache Flink 连接到 Azure 事件中心的信息
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,19 +10,19 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: db877279bcfa7e132841e342cfc25b66bb3ec384
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ab542e1328bb986f53d31e2eca75007cf1e0c75
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283593"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521803"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>将 Apache Flink 与适用于 Apache Kafka 的 Azure 事件中心配合使用
 本教程介绍如何在不更改协议客户端或运行自己的群集的情况下将 Apache Flink 连接到事件中心。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
 
 使用 Apache Kafka 的主要优势之一是它可连接的框架的生态系统。 事件中心将 Kafka 的灵活性与 Azure 生态系统的可扩展性、一致性和支持相结合。
 
-在本教程中，你将了解如何执行以下操作：
+在本教程中，你将了解：
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 克隆示例项目
@@ -48,7 +48,7 @@ ms.locfileid: "80283593"
 
 ## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
 
-要从任何事件中心服务进行发送或接收，需要事件中心命名空间。 请参阅[创建已启用 Kafka 的事件中心](event-hubs-create.md)，了解有关获取事件中心 Kafka 终结点的信息。 请确保复制事件中心连接字符串，以供将来使用。
+要从任何事件中心服务进行发送或接收，需要事件中心命名空间。 请参阅[创建事件中心](event-hubs-create.md)以提供创建命名空间和事件中心的说明。 请确保复制事件中心连接字符串，以供将来使用。
 
 ## <a name="clone-the-example-project"></a>克隆示例项目
 
@@ -88,11 +88,11 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-制造者现在将开始向主题 `test` 中已启用 Kafka 的事件中心发送事件，并将事件打印到 stdout。
+制作人现在将开始在主题`test`时向事件中心发送事件，并将事件打印到停滞。
 
 ## <a name="run-flink-consumer"></a>运行 Flink 使用者
 
-使用提供的使用者示例，接收来自已启用 Kafka 的事件中心的消息。
+使用提供的使用者示例，从事件中心接收消息。 
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>提供事件中心 Kafka 终结点
 
@@ -136,7 +136,7 @@ mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 
 - [了解事件中心](event-hubs-what-is-event-hubs.md)
 - [用于 Apache Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
-- [如何创建启用 Kafka 的事件中心](event-hubs-create.md)
+- [创建事件中心](event-hubs-create.md)
 - [从 Kafka 应用程序流式传输到事件中心](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [在事件中心镜像 Kafka 代理](event-hubs-kafka-mirror-maker-tutorial.md)
 - [将 Apache Spark 连接到事件中心](event-hubs-kafka-spark-tutorial.md)

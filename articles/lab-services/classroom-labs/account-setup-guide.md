@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
-ms.openlocfilehash: 7b9ef32f16369bbb6c5bb69ef500ec8bb90fde20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88b37ea4ff717689f05afbb41d33a56a8cbb2c22
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370857"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547618"
 ---
 # <a name="lab-account-setup-guide"></a>实验室帐户设置指南
 
@@ -87,10 +87,10 @@ Azure 应用商店提供了数百个映像，您可以启用这些映像，以�
    创建实验室帐户时，您可能会发现熟悉所涉及的 Azure 资源会很有帮助;有关创建这些资源的详细信息和指导，请参阅以下列表：
 
    - [订阅](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#subscription)
-   - [资源组](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#resource-group)
+   -  [资源组](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#resource-group)
    - [实验室帐户](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#lab-account)
    - [课堂实验室](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#classroom-lab)
-   - [选择区域\位置](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regions-or-locations)
+   - [选择区域\位置](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations)
    - [资源命名指南](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#naming)
 
 2. **将用户添加到实验室创建者角色**

@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75548813"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549230"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
 在 Azure 上部署应用程序的过程快速、轻松且经济高效。 将云应用程序部署到生产环境前，请先查看有必要遵照和建议的最佳做法列表，了解最好应如何在应用程序中实现群集安全性。
@@ -32,7 +32,7 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 -   使用 X.509 证书。
 -   配置安全策略。
 -   实现 Reliable Actors 安全配置。
--   为 Azure Service Fabric 配置 SSL。
+-   为 Azure 服务结构配置 TLS。
 -   将 Azure Service Fabric 与网络隔离和安全功能结合使用。
 -   出于安全考虑，配置 Azure Key Vault。
 -   将用户分配到角色。
@@ -118,13 +118,13 @@ Service Fabric Reliable Actors 是执行组件设计模式的实现。 与所有
 [复制器安全配置](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)用于保护复制期间使用的通信通道。 此配置可阻止服务相互窥探复制流量，并确保可用性很高的数据安全。 默认情况下，空的安全配置节会影响复制安全。
 复制器配置用于配置负责使执行组件状态提供程序状态高度可靠的复制器。
 
-## <a name="configure-ssl-for-azure-service-fabric"></a>配置适用于 Azure Service Fabric 的 SSL
-服务器身份验证流程向管理客户端[验证](../../service-fabric/service-fabric-cluster-creation-via-arm.md)群集管理终结点。 然后，管理客户端确定它在与真正的群集通信。 此证书还为 HTTPS 管理 API 和 HTTPS 中的服务结构资源管理器提供[SSL。](../../service-fabric/service-fabric-cluster-creation-via-arm.md)
+## <a name="configure-tls-for-azure-service-fabric"></a>为 Azure 服务交换矩阵配置 TLS
+服务器身份验证流程向管理客户端[验证](../../service-fabric/service-fabric-cluster-creation-via-arm.md)群集管理终结点。 然后，管理客户端确定它在与真正的群集通信。 此证书还为 HTTPS 管理 API 和 HTTPS 中的服务结构资源管理器提供[TLS。](../../service-fabric/service-fabric-cluster-creation-via-arm.md)
 必须获取群集的自定义域名。 从证书颁发机构请求获取证书时，证书的使用者名称必须与用于群集的自定义域名匹配。
 
-若要为应用程序配置 SSL，首先需要获取已由 CA 签名的 SSL 证书。 CA 是受信任的第三方，负责颁发证书，以提高 SSL 安全性。 如果尚无 SSL 证书，需要从销售 SSL 证书的公司购买一个。
+要为应用程序配置 TLS，首先需要获取由 CA 签名的 SSL/TLS 证书。 CA 是受信任的第三方，为 TLS 安全目的颁发证书。 如果您还没有 SSL/TLS 证书，则需要从销售 SSL/TLS 证书的公司获得证书。
 
-该证书必须满足 Azure 中的以下 SSL 证书要求：
+证书必须满足 Azure 中 SSL/TLS 证书的以下要求：
 -   证书必须包含私钥。
 
 -   必须创建适用于密钥交换的证书，并且证书必须可导出到个人信息交换 (.pfx) 文件中。
@@ -135,13 +135,13 @@ Service Fabric Reliable Actors 是执行组件设计模式的实现。 与所有
     - 请求从 CA 获取证书，其中使用者名称与服务的自定义域名匹配。 例如，如果自定义域名为 __contoso__.com****，CA 颁发的证书应包含使用者名称 .contoso.com**** 或 __www__.contoso.com****。
 
     >[!NOTE]
-    >无法从 CA 获取 __cloudapp__.net**** 域的 SSL 证书。
+    >您不能从__CLOUDapp__**.net**域的 CA 获取 SSL/TLS 证书。
 
 -   证书至少必须使用 2,048 位加密。
 
 HTTP 协议不安全，容易受到窥探攻击威胁。 通过 HTTP 传输的数据在 Web 浏览器到 Web 服务器之间或其他终结点之间作为纯文本发送。 攻击者可以拦截和查看通过 HTTP 发送的敏感数据，如信用卡详细信息和帐户登录凭据。 如果数据使用 HTTPS 通过浏览器进行发送或发布，SSL 可确保加密和保护敏感信息，防止其被拦截。
 
-若要详细了解如何使用 SSL 证书，请参阅[为 Azure 应用程序配置 SSL](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)。
+要了解有关使用 SSL/TLS 证书的更多信息，请参阅[在 Azure 中为应用程序配置 TLS。](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>将 Azure Service Fabric 与网络隔离和安全功能结合使用
 将 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)用作示例，设置 nodetype 属性值为 3 的安全群集。 使用此模板和网络安全组控制入站和出站网络流量。

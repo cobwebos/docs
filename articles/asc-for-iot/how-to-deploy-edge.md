@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: b2af392dc4dc848a099b8297bb58e7d4a7104fa6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3aee30e8ad82f9657c3bc9e97a7657a1e8c7989d
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76964033"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548911"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>在 IoT 边缘设备上部署安全模块
 
@@ -96,7 +96,7 @@ ms.locfileid: "76964033"
 1. 在 **"模块孪生设置"** 选项卡上，添加以下配置：
       
     ``` json
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{}
+      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
     ```
 
 1. 选择 **"更新**"。
@@ -131,7 +131,7 @@ ms.locfileid: "76964033"
     }
     ```
     
-1. 选择“保存”。****
+1. 选择“保存”。 
    
 1. 选择“下一步”。
 
@@ -167,7 +167,7 @@ ms.locfileid: "76964033"
    
 1. 验证以下容器是否正在运行：
    
-   | “属性” | IMAGE |
+   | 名称 | IMAGE |
    | --- | --- |
    | azureiot 安全 | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | 边缘Hub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: 2c1cb755b62812336a306994f6820573130815e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288353"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544283"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS 应用程序产品/服务发布指南
 
@@ -25,8 +25,8 @@ SaaS 应用程序在两个 Azure 店面中均提供。下表介绍了当前的�
 
 | 店面选项 | 商品 | 试用/交易 |  
 | --- | --- | --- |  
-| AppSource | 是(与我联系) | 是(PowerBI/Dynamics) |
-| Azure 市场 | 否 | 是(SaaS 应用) |   
+| AppSource | 是 | 是 |
+| Azure 市场 | 否 | 是 |   
 
 **列表**：“列表”发布选项包含“与我联系”产品/服务类型，是在试用级别或交易级别的参与不可行时使用的。 此方法的好处是帮助在市场中发布解决方案的发布者立即开始获取潜在顾客，这些潜在客户可能会产生交易，从而扩大你的业务。  
 **试用/交易**：客户可以选择直接购买，也可以请求试用解决方案。 提供试用体验可以提升客户参与度，让客户在购买前体验解决方案。 借助面向客户的试用体验，发布者能获得更好的店面促销商机，随着参与客户的增多，可获得越来越多的潜在顾客。 试用版必须包含免费支持（至少在试用时间内）。  
@@ -95,7 +95,7 @@ SaaS 应用程序的技术要求非常简单。 发布者只需与要发布的 A
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>使用 Azure Active Directory 启用试用  
 
-Microsoft 使用 Azure AD 对所有应用商店用户进行身份验证，因此，当经过身份验证的用户单击应用商店中的试用版列表并重定向到试用环境时，您可以直接将用户预配到试用版中，而无需附加登录步骤。 身份验证期间应用从 Azure AD 接收的令牌包含有用的客户信息，可使用这些信息在应用内创建用户帐户，这样可以自动获得预配体验并提高转换率。 有关令牌的详细信息，请参阅[示例令牌](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
+Microsoft 使用 Azure AD 对所有应用商店用户进行身份验证，因此，当经过身份验证的用户单击应用商店中的试用版列表并重定向到试用环境时，您可以直接将用户预配到试用版中，而无需执行额外的登录步骤。 身份验证期间应用从 Azure AD 接收的令牌包含有用的客户信息，可使用这些信息在应用内创建用户帐户，这样可以自动获得预配体验并提高转换率。 有关令牌的详细信息，请参阅[示例令牌](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
 
 使用 Azure AD 为应用或试用启用一键式身份验证具有以下影响：  
 * 简化从市场到试用的客户体验。  

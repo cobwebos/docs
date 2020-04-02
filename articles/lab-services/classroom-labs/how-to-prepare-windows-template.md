@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c52a1212d160adce3a0a0638164833bc2907a856
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514997"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521190"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>在 Azure 实验室服务中设置 Windows 模板计算机的指南
 
@@ -185,7 +185,7 @@ Set-ExecutionPolicy default -Force
 3. 从下拉菜单中选择 **"下载**并更新"。
 4. 单击 **"获取更新**"按钮。
 
-您还可以使用 Powershell 更新已安装的 Microsoft 应用商店应用程序。
+您还可以使用 PowerShell 更新已安装的 Microsoft 应用商店应用程序。
 
 ```powershell
 (Get-WmiObject -Namespace "root\cimv2\mdm\dmmap" -Class "MDM_EnterpriseModernAppManagement_AppManagement01").UpdateScanMethod()
@@ -234,3 +234,6 @@ Get-AppxPackage -Name *xbox* | foreach { if (-not $_.NonRemovable) { Remove-Appx
 ## <a name="conclusion"></a>结束语
 
 本文已为您提供可选步骤，用于为有效的类准备 Windows 模板 VM。  步骤包括安装 OneDrive 和安装 Office 365、安装 Windows 更新和安装 Microsoft 应用商店应用的更新。  我们还讨论了如何将更新设置为最适合您的类的计划。  
+
+## <a name="next-steps"></a>后续步骤
+请参阅有关如何控制 Windows 关闭行为以帮助管理成本的文章：[控制 Windows 关闭行为的指南](how-to-windows-shutdown.md)

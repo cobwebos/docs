@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.openlocfilehash: 67b68cc8a1db4a058675dc51fb3805093c455908
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5389c064e137358670aecabe97f1cea38dfbcbf
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276659"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549271"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>在 Azure VM 灾难恢复中排除复制故障
 
@@ -81,7 +81,7 @@ Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将数�
 
 ### <a name="network-connectivity"></a>网络连接
 
-要使站点恢复复制正常工作，需要 VM 提供与特定 URL 或 IP 范围的出站连接。 您可能将 VM 放在防火墙后面，或者使用网络安全组 （NSG） 规则来控制出站连接。 如果是这样，您可能会遇到问题。 若要确保所有 URL 都已连接，请参阅 [Site Recovery URL 的出站连接](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)。
+要使站点恢复复制正常工作，需要 VM 提供与特定 URL 或 IP 范围的出站连接。 您可能将 VM 放在防火墙后面，或者使用网络安全组 （NSG） 规则来控制出站连接。 如果是这样，您可能会遇到问题。 若要确保所有 URL 都已连接，请参阅 [Site Recovery URL 的出站连接](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)。
 
 ## <a name="error-id-153006---no-app-consistent-recovery-point-available-for-the-vm-in-the-past-x-minutes"></a>错误 ID 153006 - 过去"X"分钟中没有可用于 VM 的应用一致性恢复点
 

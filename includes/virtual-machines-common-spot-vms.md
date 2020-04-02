@@ -1,28 +1,23 @@
 ---
 title: include 文件
 description: include 文件
-services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d56964b7415e4ca5903950cd46c02b3c27f62d5e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77179070"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547410"
 ---
 使用 Spot VM 使您能够利用我们未使用的容量，从而显著节省成本。 在 Azure 需要返回容量的任何时间点，Azure 基础结构将驱逐 Spot VM。 因此，Spot VM 非常适合处理批处理作业、开发/测试环境、大型计算工作负载等中断的工作负载。
 
 可用容量的数量可能因大小、区域、一天中的时间等而异。 部署 Spot VM 时，如果可用容量，但这些 VM 没有 SLA，Azure 将分配 VM。 Spot VM 不提供高可用性保证。 在 Azure 需要返回容量的任何时间点，Azure 基础结构将在 30 秒通知后逐出 Spot VM。 
 
-> [!IMPORTANT]
-> 竞价实例当前处于公共预览版中。
-> 不建议生产工作负载使用此预览版本。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
 
 ## <a name="eviction-policy"></a>驱逐政策
 

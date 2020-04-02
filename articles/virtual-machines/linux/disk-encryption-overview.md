@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff1b37c3053ffa91dcb432cd97a7dd6fd71dad1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d058ff5f9863642f73725db3472c942161447f25
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250421"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548439"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 
@@ -32,7 +32,7 @@ Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与�
 
 ## <a name="supported-vms-and-operating-systems"></a>支持的 VM 和操作系统
 
-### <a name="supported-vm-sizes"></a>支持的 VM 大小
+### <a name="supported-vms"></a>支持的 VM
 
 Linux VM 提供了[多种大小](sizes.md)。 Azure 磁盘加密不适用于[基本的 A 系列 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)，也不适用于不符合以下最低内存要求的虚拟机：
 
@@ -44,7 +44,9 @@ Linux VM 提供了[多种大小](sizes.md)。 Azure 磁盘加密不适用于[基
 
 在 Linux 虚拟机上完成 OS 磁盘加密过程后，可将 VM 配置为以更少的内存运行。 
 
-Azure 磁盘加密还可用于使用高级存储的 VM。 
+Azure 磁盘加密还可用于使用高级存储的 VM。
+
+Azure 磁盘加密在第[2 代 VM](generation-2.md#generation-1-vs-generation-2-capabilities)和[Lsv2 系列 VM](../lsv2-series.md)上不可用。 有关更多例外情况，请参阅[Azure 磁盘加密：不受支持的方案](disk-encryption-linux.md#unsupported-scenarios)。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 

@@ -9,16 +9,18 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 680e68d17637d71c1a1e5e8cfa539ee90028ac4e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: c8b63a2676690004d23094b490fea0ef150ab9cb
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478765"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546410"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure 自动化中的凭据资产
 
-自动化凭据资产包含包含安全凭据（如用户名和密码）的对象。 Runbook 和 DSC 配置使用接受[PS凭据](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0)对象的 cmdlet 进行身份验证。 或者，他们可以提取`PSCredential`对象的用户名和密码，以提供给需要身份验证的某些应用程序或服务。 Azure 自动化使用[获取自动化PS凭据](#activities-used-to-access-credentials)活动安全地存储凭据的属性和对 Runbook 或 DSC 配置中属性的访问。
+自动化凭据资产包含包含安全凭据（如用户名和密码）的对象。 Runbook 和 DSC 配置使用接受[PS凭据](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0)对象的 cmdlet 进行身份验证。 或者，他们可以提取`PSCredential`对象的用户名和密码，以提供给需要身份验证的某些应用程序或服务。 
+
+Azure 自动化安全地存储凭据的属性。 通过 Runbook 或 DSC 配置访问属性使用[获取自动化PS凭据](#activities-used-to-access-credentials)活动。
 
 > [!NOTE]
 > Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产使用为每个自动化帐户生成的唯一密钥在 Azure 自动化中加密和存储。 此密钥存储在密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。
@@ -27,11 +29,11 @@ ms.locfileid: "80478765"
 
 ## <a name="azure-powershell-az-cmdlets-used-for-credential-assets"></a>用于凭据资产的 Azure PowerShell Az cmdlet
 
-对于 Azure PowerShell Az 模块，下表中的 cmdlet 用于使用 Windows PowerShell 创建和管理自动化凭据资产。 它们作为[Az.自动化模块](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)的一部分发货，可用于自动化手册和 DSC 配置。 请参阅[Azure 自动化 中的 Az 模块支持](https://docs.microsoft.com/azure/automation/az-modules)。
+作为 Azure PowerShell Az 模块的一部分，下表中的 cmdlet 用于使用 Windows PowerShell 创建和管理自动化凭据资产。 它们在[Az.自动化模块](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)中发货，可用于自动化手册和 DSC 配置。 请参阅[Azure 自动化 中的 Az 模块支持](https://docs.microsoft.com/azure/automation/az-modules)。
 
 | Cmdlet | 说明 |
 |:--- |:--- |
-| [获取阿兹自动化证书](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |检索有关凭据资产的信息。 此 cmdlet 不会返回 PS凭据对象。  |
+| [获取阿兹自动化证书](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |检索有关凭据资产的信息。 此 cmdlet 不会返回对象`PSCredential`。  |
 | [新自动化证书](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |创建新的自动化凭据。 |
 | [删除-阿兹自动化凭据](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |删除自动化凭据。 |
 | [设置-阿兹自动化证书](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |设置现有自动化凭据的属性。 |
@@ -48,7 +50,7 @@ ms.locfileid: "80478765"
 
 对于使用 Azure 自动化创作工具包的本地开发，cmdlet`Get-AutomationPSCredential`是程序集 Azure[自动化创作工具包的](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.9)一部分。 对于使用自动化上下文的 Azure，cmdlet 位于`Orchestrator.AssetManagement.Cmdlets`中。 请参阅[在 Azure 自动化中管理模块](modules.md)。
 
-若要能够检索`PSCredential`代码中的对象，可以[安装 PowerShell ISE 的 Microsoft Azure 自动化 ISE 加载项](https://github.com/azureautomation/azure-automation-ise-addon)。
+若要检索`PSCredential`代码中的对象，可以[安装 PowerShell ISE 的 Microsoft Azure 自动化 ISE 加载项](https://github.com/azureautomation/azure-automation-ise-addon)。
 
 ```azurepowershell
 Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser -Force
@@ -85,6 +87,9 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 2. 在"新建凭据"窗格中，按照命名标准输入适当的凭据名称。 
 3. 在 **"用户名"** 字段中键入您的访问 ID。 
 4. 对于这两个密码字段，请输入您的机密访问密钥。
+
+    ![创建新凭据](../media/credentials/credential-create.png)
+
 5. 如果选中多重身份验证框，则取消选中它。 
 6. 单击 **"创建**"以保存新的凭据资产。
 
@@ -93,8 +98,7 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 
 ### <a name="create-a-new-credential-asset-with-windows-powershell"></a>使用 Windows PowerShell 创建新的凭据资产
 
-下面的示例演示如何创建新的自动化凭据资产。 首先`PSCredential`使用名称和密码创建对象，然后用于创建凭据资产。 或者，`Get-Credential`您可以使用 cmdlet 提示用户输入名称和密码。
-
+下面的示例演示如何创建新的自动化凭据资产。 首先`PSCredential`使用名称和密码创建对象，然后用于创建凭据资产。 相反，`Get-Credential`您可以使用 cmdlet 提示用户键入用户名和密码。
 
 ```powershell
 $user = "MyDomain\MyUser"
@@ -105,7 +109,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 
 ## <a name="using-a-powershell-credential"></a>使用 PowerShell 凭据
 
-Runbook 或 DSC 配置检索具有活动的`Get-AutomationPSCredential`凭据资产。 此活动检索可用于需要`PSCredential`凭据的活动或 cmdlet 的对象。 还可以检索要单独使用的凭据对象的属性。 对象具有用户名和安全密码的属性。 或者，您可以使用[GetNetwork凭据](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0)方法检索表示密码不安全版本的[Network凭据](/dotnet/api/system.net.networkcredential)对象。
+Runbook 或 DSC 配置检索具有活动的`Get-AutomationPSCredential`凭据资产。 此活动检索可用于需要`PSCredential`凭据的活动或 cmdlet 的对象。 还可以检索要单独使用的凭据对象的属性。 该对象具有用户名和安全密码的属性。 或者，您可以使用[GetNetwork凭据](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0)方法检索表示密码不安全版本的[Network凭据](/dotnet/api/system.net.networkcredential)对象。
 
 > [!NOTE]
 > `Get-AzAutomationCredential`不检索可用于身份验证`PSCredential`的对象。 它仅提供有关凭据的信息。 如果需要在 Runbook 中使用凭据，则必须使用`PSCredential``Get-AutomationPSCredential`检索该凭据作为对象。
@@ -142,7 +146,7 @@ Connect-AzAccount -Credential $myPsCred
 
 ![将凭据添加到画布](../media/credentials/credential-add-canvas.png)
 
-下图显示了在图形 Runbook 中使用凭据的示例。 在这种情况下，凭据用于为 Runbook 向 Azure 资源提供身份验证，如在 Azure[自动化中使用 Azure AD 对 Azure](../automation-use-azure-ad.md)进行身份验证中所述。 第一个活动检索有权访问 Azure 订阅的凭据。 然后，帐户连接活动使用此凭据为它之后的任何活动提供身份验证。 此处使用[管道链接](../automation-graphical-authoring-intro.md#links-and-workflow)，因为`Get-AutomationPSCredential`需要单个对象。  
+下图显示了在图形 Runbook 中使用凭据的示例。 在这种情况下，凭据为 Runbook 向 Azure 资源提供身份验证，如在[Azure 自动化中使用 Azure AD 对 Azure](../automation-use-azure-ad.md)进行身份验证中所述。 第一个活动检索有权访问 Azure 订阅的凭据。 然后，帐户连接活动使用此凭据为它之后的任何活动提供身份验证。 此处使用[管道链接](../automation-graphical-authoring-intro.md#links-and-workflow)，因为`Get-AutomationPSCredential`需要单个对象。  
 
 ![将凭据添加到画布](../media/credentials/get-credential.png)
 

@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113272"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549012"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>多租户 SaaS 应用程序与 Azure 认知搜索的设计模式
 多租户应用程序可以为无法看到或共享任何其他租户数据的任意数量的租户，提供相同服务和功能。 本文档讨论的租户隔离策略适用于使用 Azure 认知搜索生成的多租户应用程序。
@@ -51,7 +51,7 @@ Azure 认知搜索中有一些不同的[定价层](https://azure.microsoft.com/p
 
 S3 HD 通过以使用分区扩展索引的能力，换得在单个服务中承载更多索引的能力，允许多个小索引在单个搜索服务中填满并受其管理。
 
-具体而言，S3 服务可以具有 1 到 200 个索引，总共可承载多达 14 亿文档。 另一方面，S3 HD 仅允许各索引最多承载 100 万个文档，但它可以处理每个分区多达 1000 个索引（每个服务多达 3000 个），因此每个分区总文档计数为 2 亿（每个服务多达 6 亿）。
+S3 服务旨在承载固定数量的索引（最大 200 个），并允许每个索引在将新分区添加到服务时水平缩放大小。 将分区添加到 S3 HD 服务会增加服务可以承载的最大索引数。 单个 S3HD 索引的理想最大大小约为 50 - 80 GB，尽管系统对每个索引没有硬大小限制。
 
 ## <a name="considerations-for-multitenant-applications"></a>多租户应用程序注意事项
 多租户应用程序必须在租户之间高效分配资源，同时在各租户之间保持一定程度的隐私。 设计此类应用程序的体系结构时需要了解几个注意事项：

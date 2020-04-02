@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: d0e66cefac496f3a54690b17a1e3de705f39c7fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 861961bb66adc7ed9509eab973516a964cb67492
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337006"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521071"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>通过指标、警报和资源运行状况进行标准负载均衡器诊断
 
@@ -35,7 +35,7 @@ Azure 负载均衡器通过 Azure 门户中的 Azure 指标提供多维指标，
 
 各种标准负载均衡器配置提供以下指标：
 
-| 指标 | 资源类型 | 描述 | 建议的聚合 |
+| 指标 | 资源类型 | 说明 | 建议的聚合 |
 | --- | --- | --- | --- |
 | 数据路径可用性（VIP 可用性）| 公共和内部负载均衡器 | 标准负载均衡器持续运用从区域内部到负载均衡器前端，直到支持 VM 的 SDN 堆栈的数据路径。 只要保留正常实例，这种度量就会遵循应用程序负载均衡的流量所用的相同路径。 此外，还会验证客户使用的数据路径。 度量对于应用程序不可见，且不会干扰其他操作。| 平均值 |
 | 运行状况探测状态（DIP 可用性） | 公共和内部负载均衡器 | 标准负载均衡器使用分布式运行状况探测服务，根据配置设置监视应用程序终结点的运行状况。 此指标提供负载均衡器池中每个实例终结点的聚合视图或按终结点筛选的视图。 可以查看负载均衡器如何根据运行状况探测配置的指示了解应用程序的运行状况。 |  平均值 |
@@ -71,6 +71,21 @@ Azure 门户通过“指标”页公开负载均衡器指标，可在特定资�
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>常见诊断场景和建议的视图
 
+### <a name="configure-alerts-for-multi-dimensional-metrics"></a>为多维指标配置警报 ###
+
+Azure 标准负载均衡器支持多维指标的易于配置的警报。 为特定指标配置自定义阈值以触发严重程度不同的警报，从而提供无接触的资源监视体验。
+
+配置警报：
+1. 转到负载均衡器的警报子刀片
+1. 创建新的警报规则
+    1.  配置警报条件
+    1.  （可选）添加自动修复操作组
+    1.  分配警报严重性、名称和描述，以便做出直观的反应
+
+
+  >[!NOTE]
+  >警报条件配置窗口将显示信号历史记录的时间序列。 可以选择按后端 IP 等维度筛选此时间序列。 这将筛选时间序列图，**但不会**筛选警报本身。 您不能为特定的后端 IP 地址配置警报。
+  
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>数据路径是否已启动并适用于我的负载均衡器 VIP？
 
 VIP 可用性指标描述区域中用于计算 VM 所在主机的数据路径的运行状况。 此指标反映了 Azure 基础结构的运行状况。 使用此指标可以：
@@ -223,7 +238,7 @@ SNAT 使用情况指标指示 Internet 源与后端 VM 或虚拟机规模集之�
  
 下表列出了各种资源运行状况及其说明： 
 
-| 资源运行状况 | 描述 |
+| 资源运行状况 | 说明 |
 | --- | --- |
 | 可用 | 您的标准负载均衡器资源是健康和可用的。 |
 | 不可用 | 您的标准负载均衡器资源不正常。 通过选择 Azure**监视器** > **指标**来诊断运行状况。<br>（*不可用*状态还可能意味着资源未与您的标准负载均衡器连接。 |

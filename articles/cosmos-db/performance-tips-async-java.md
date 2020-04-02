@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 89df941eb6ebaad6e078c278f1ed883db5528c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b892b1f4ff73679ab425d0e97f5361e0f3712252
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152545"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549193"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>适用于 Azure Cosmos DB 和 Async Java 的性能提示
 
@@ -112,7 +112,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
         + **在应用程序中使用多线程进行高效的 TCP 数据传输**- 发出请求后，应用程序应订阅接收另一个线程上的数据。 不这样做会强制进行意外的"半双工"操作，并且后续请求将被阻止等待前一个请求的回复。
 
-        + **在专用线程上执行计算密集型工作负载**- 由于与前面的提示类似的原因，复杂数据处理等操作最好放在单独的线程中。 从另一个数据存储中提取数据的请求（例如，如果线程同时使用 Azure Cosmos DB 和 Spark 数据存储）可能会遇到更高的延迟，建议生成等待其他线程响应的其他线程数据存储。
+        + **在专用线程上执行计算密集型工作负载**- 由于与前面的提示类似的原因，复杂数据处理等操作最好放在单独的线程中。 从另一个数据存储中提取数据的请求（例如，如果线程同时使用 Azure Cosmos DB 和 Spark 数据存储）可能会遇到更高的延迟，建议生成等待其他数据存储响应的其他线程。
 
             + Async Java SDK 中的基础网络 IO 由 Netty 管理，请参阅这些[提示，用于避免阻止 Netty IO 线程的编码模式](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread)。
 
@@ -230,9 +230,9 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     * - nofile 100000
     ```
 
-* **将本机 SSL 实现用于网络**
+* **使用本机 TLS/SSL 实现进行网络**
 
-    Netty 可以直接将 OpenSSL 用于 SSL 实现堆栈，以实现更好的性能。 如果没有此配置，netty 将回退到 Java 的默认 SSL 实现。
+    Netty 可以直接将 OpenSSL 用于 TLS 实现堆栈，以实现更好的性能。 如果没有此配置，网络将回落到 Java 的默认 TLS 实现。
 
     在 Ubuntu 上：
     ```bash

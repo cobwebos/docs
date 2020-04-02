@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3deb87fec8241ad6126314f3f6ce5fb9600ad1fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 477bb5430214b497f90e3cb6d5df69f9fcf4035f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128565"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546162"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD 权利管理是什么？
 
@@ -101,7 +101,7 @@ Azure AD 权利管理可帮助解决这些难题。  要详细了解客户如何
 
 访问包不会替换用于访问分配的其他机制。  它们最适合以下情况：
 
-- 员工需要对特定任务进行限时访问。  例如，您可以使用基于组的许可和动态组来确保所有员工都有 Exchange Online 邮箱，然后针对员工需要其他访问权限的情况（例如从另一个邮件中读取部门资源）使用访问包部门。
+- 员工需要对特定任务进行限时访问。  例如，可以使用基于组的许可和动态组来确保所有员工都有 Exchange Online 邮箱，然后针对员工需要额外访问权限的情况（例如从其他部门读取部门资源）使用访问包。
 - 访问权限需要获得员工经理或其他指定人员的批准。
 - 各部门希望在没有 IT 参与的情况下管理自己的资源访问策略。  
 - 两个或多个组织正在协作一个项目，因此，需要通过 Azure AD B2B 引入一个组织的多个用户来访问另一个组织的资源。
@@ -114,7 +114,7 @@ Azure AD 权利管理可帮助解决这些难题。  要详细了解客户如何
 
 为了更好地理解授权管理及其文档，您可以参考以下术语列表。
 
-| 术语 | 描述 |
+| 术语 | 说明 |
 | --- | --- |
 | 访问包 | 团队或项目需要并受策略管理的一组资源。 访问包始终包含在目录中。 您将为用户需要请求访问的方案创建新的访问包。  |
 | 访问请求 | 访问访问包中资源的请求。 请求通常通过审批工作流。  如果获得批准，请求用户将收到访问包分配。 |
@@ -132,15 +132,16 @@ Azure AD 权利管理可帮助解决这些难题。  要详细了解客户如何
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-专用云（如 Azure 政府、Azure 德国和 Azure 中国 21Vianet）当前不可用。
+专用云（如 Azure 德国和 Azure 中国 21Vianet）当前不可用。
 
 ### <a name="how-many-licenses-must-you-have"></a>必须拥有多少个许可证？
 
-确保你的目录具有的 Azure AD Premium P2 许可证至少与将执行以下任务的员工一样多：
+确保目录至少具有与具有的 Azure AD 高级 P2 许可证数量一样：
 
 - **可以**请求访问包的成员用户。
 - 请求访问包的成员和来宾用户。
 - 批准访问包请求的成员和来宾用户。
+- 直接分配访问包的成员和来宾用户。
 
 对于以下任务，不需要**** 使用 Azure AD Premium P2 许可证：
 

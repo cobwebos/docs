@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份 VMware VM
 description: 本文介绍如何使用 Azure 备份服务器备份 VMware vCenter/ESXi 服务器上运行的 VMware VM。
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 951016d393b095b0329ff18861421402e0e18a1a
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273470"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529505"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -22,7 +22,7 @@ ms.locfileid: "79273470"
 - 将 vCenter 或 ESXi 服务器添加到 Azure 备份服务器。
 - 设置一个包含要备份的 VMware VM 的保护组，指定备份设置，并计划备份。
 
-## <a name="before-you-start"></a>开始之前
+## <a name="before-you-start"></a>准备工作
 
 - 验证您是否正在运行支持备份的 vCenter/ESXi 版本。 请参阅[此处](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)的支持矩阵。
 - 确保已设置 Azure 备份服务器。 如果没有，请在开始之前进行[设置](backup-azure-microsoft-azure-backup.md)。 应运行装有最新更新的 Azure 备份服务器。
@@ -31,7 +31,7 @@ ms.locfileid: "79273470"
 
 默认情况下，Azure 备份服务器通过 HTTPS 来与 VMware 服务器通信。 若要设置 HTTPS 连接，请下载 VMware 证书颁发机构 (CA) 证书，并将其导入到 Azure 备份服务器。
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>在开始之前
 
 - 如果不想使用 HTTPS，可以[对所有 VMware 服务器禁用 HTTPS 证书验证](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)。
 - 通常，你会使用 vSphere Web 客户端从 Azure 备份服务器计算机上的浏览器连接到 vCenter/ESXi 服务器。 首次执行此操作时，连接并不安全，会显示以下消息。
@@ -130,41 +130,52 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 ### <a name="role-permissions"></a>角色权限
 
-| **vCenter 6.5 及更高版本用户帐户的特权**        | **vCenter 6.0 用户帐户的特权**               | **vCenter 5.5 用户帐户的特权** |
-| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
-| Datastore.AllocateSpace                                      |                                                           |                                             |
-| Datastore.Browse datastore                                   | Datastore.AllocateSpace                                   | Network.Assign                              |
-| Datastore.Low-level file operations                          | Global.Manage custom attributes                           | Datastore.AllocateSpace                     |
-| Datastore cluster.Configure a datatstore cluster             | Global.Set custom attribute                               | VirtualMachine.Config.ChangeTracking        |
-| Global.Disable methods                                       | Host.Local operations.Create virtual machine              | VirtualMachine.State.RemoveSnapshot         |
-| Global.Enable methods                                        | Network. Assign network                                   | VirtualMachine.State.CreateSnapshot         |
-| Global.Licenses                                              | Resource. Assign virtual machine to resource pool         | VirtualMachine.Provisioning.DiskRandomRead  |
-| Global.Log event                                             | Virtual machine.Configuration.Add new disk                | VirtualMachine.Interact.PowerOff            |
-| Global.Manage custom attributes                              | Virtual machine.Configuration.Advanced                    | VirtualMachine.Inventory.Create             |
-| Global.Set custom attribute                                  | Virtual machine.Configuration.Disk change tracking        | VirtualMachine.Config.AddNewDisk            |
-| Network.Assign network                                       | Virtual machine.Configuration.Host USB device             | VirtualMachine.Config.HostUSBDevice         |
-| Resource. Assign virtual machine to resource pool            | Virtual machine.Configuration.Query unowned files         | VirtualMachine.Config.AdvancedConfig        |
-| Virtual machine.Configuration.Add new disk                   | Virtual machine.Configuration.Swapfile placement          | VirtualMachine.Config.SwapPlacement         |
-| Virtual machine.Configuration.Advanced                       | Virtual machine.Interaction.Power Off                     | Global.ManageCustomFields                   |
-| Virtual machine.Configuration.Disk change tracking           | Virtual machine.Inventory. 新建                     |                                             |
-| Virtual machine.Configuration.Disk lease                     | Virtual machine.Provisioning.Allow disk access            |                                             |
-| Virtual machine.Configuration.Extend virtual disk            | Virtual machine.Provisioning. Allow read-only disk access |                                             |
-| Virtual machine.Guest Operations.Guest Operation Modifications | Virtual machine.Snapshot management.Create snapshot       |                                             |
-| Virtual machine.Guest Operations.Guest Operation Program Execution | Virtual machine.Snapshot management.Remove Snapshot       |                                             |
-| Virtual machine.Guest Operations.Guest Operation Queries     |                                                           |                                             |
-| Virtual machine .Interaction .Device connection              |                                                           |                                             |
-| Virtual machine .Interaction .Guest operating system management by VIX API |                                                           |                                             |
-| Virtual machine .Inventory.Register                          |                                                           |                                             |
-| Virtual machine .Inventory.Remove                            |                                                           |                                             |
-| Virtual machine .Provisioning.Allow disk access              |                                                           |                                             |
-| Virtual machine .Provisioning.Allow read-only disk access    |                                                           |                                             |
-| Virtual machine .Provisioning.Allow virtual machine download |                                                           |                                             |
-| Virtual machine .Snapshot management. 创建快照        |                                                           |                                             |
-| Virtual machine .Snapshot management.Remove Snapshot         |                                                           |                                             |
-| Virtual machine .Snapshot management.Revert to snapshot      |                                                           |                                             |
-| vApp.Add virtual machine                                     |                                                           |                                             |
-| vApp.Assign resource pool                                    |                                                           |                                             |
-| vApp.Unregister                                              |                                                           |                                             |
+| **vCenter 6.7 用户帐户的权限**              | **vCenter 6.5 用户帐户的权限**             |
+| --------------------------------------------------------- | -------------------------------------------------------- |
+| 数据存储.分配空间                                  | 数据存储.分配空间                                 |
+| 全局.日志事件                                          | 全局.日志事件                                         |
+| 全局.管理自定义属性                           | 全局.管理自定义属性                          |
+| Network.Assign                                            | Network.Assign                                           |
+| Resource. 将虚拟机分配给资源池        | Resource. 将虚拟机分配给资源池       |
+| 虚拟机.配置.添加新磁盘                   | 虚拟机.配置.添加新磁盘                  |
+| 虚拟机.配置。 添加或删除设备       | 虚拟机.配置。 添加或删除设备      |
+| 虚拟机.配置.高级                     | 虚拟机.配置.高级                    |
+| 虚拟机.配置.切换磁盘更改跟踪 | 虚拟机.配置.磁盘更改跟踪       |
+| 虚拟机.配置.配置主机 USB 设备   | 虚拟机.配置.主机 USB 设备            |
+| 虚拟机.配置.查询未拥有文件         | 虚拟机.配置.查询未拥有文件        |
+| 虚拟机.配置.更改交换文件放置位置   | 虚拟机.配置.交换文件放置         |
+| 虚拟机.交互.关闭电源                      | 虚拟机.交互.关闭电源                     |
+| 虚拟机.库存.创建新                       | 虚拟机.库存.创建新                      |
+| 虚拟机.预配.允许磁盘访问            | 虚拟机.预配.允许磁盘访问           |
+| 虚拟机.预配.允许文件访问            | 虚拟机.预配.允许文件访问           |
+| 虚拟机.预配.允许只读磁盘访问  | 虚拟机.预配.允许只读磁盘访问 |
+| 虚拟机.快照管理.创建快照       | 虚拟机.快照管理.创建快照      |
+| 虚拟机.快照管理.删除快照       | 虚拟机.快照管理.删除快照      |
+
+<br>
+
+| **vCenter 6.0 用户帐户的特权**                | **vCenter 5.5 用户帐户的特权** |
+| ---------------------------------------------------------- | ------------------------------------------- |
+| Datastore.AllocateSpace                                    | Network.Assign                              |
+| 全局管理自定义属性                           | Datastore.AllocateSpace                     |
+| 全局设置自定义属性                               | VirtualMachine.Config.ChangeTracking        |
+| 主机.本地操作。创建虚拟机              | VirtualMachine.State.RemoveSnapshot         |
+| Network.  Assign network                                   | VirtualMachine.State.CreateSnapshot         |
+| Resource.  Assign virtual machine to resource pool         | VirtualMachine.Provisioning.DiskRandomRead  |
+| 虚拟机。配置.添加新磁盘                | VirtualMachine.Interact.PowerOff            |
+| 虚拟机。配置.高级                    | VirtualMachine.Inventory.Create             |
+| 虚拟机。配置.磁盘更改跟踪        | VirtualMachine.Config.AddNewDisk            |
+| 虚拟机。配置.主机 USB 设备             | VirtualMachine.Config.HostUSBDevice         |
+| 虚拟机。配置.查询未拥有的文件         | VirtualMachine.Config.AdvancedConfig        |
+| 虚拟机。配置.交换文件放置位置          | VirtualMachine.Config.SwapPlacement         |
+| 虚拟机。交互.关闭电源                     | Global.ManageCustomFields                   |
+| 虚拟机。库存。 新建                     |                                             |
+| 虚拟机。预配.允许磁盘访问            |                                             |
+| 虚拟机。供应。 Allow read-only disk access |                                             |
+| 虚拟机。快照管理。创建快照       |                                             |
+| 虚拟机。快照管理。删除快照       |                                             |
+
+
 
 ## <a name="create-a-vmware-account"></a>创建 VMware 帐户
 

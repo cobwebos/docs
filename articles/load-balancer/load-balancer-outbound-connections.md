@@ -8,17 +8,17 @@ author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 411c06e19b932b441f27a3c7578d847c6dfc1f7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55fa14f367dbf24e951fde8e9075a34499a510b1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336994"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547080"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
 
@@ -40,7 +40,7 @@ Azure 使用源网络地址转换 (SNAT) 来执行此功能。 当多个专用 I
 
 Azure 负载均衡器和相关资源是使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)时显式定义的。  Azure 目前提供三种不同的方法实现 Azure 资源管理器资源的出站连接。 
 
-| SKU | 方案 | 方法 | IP 协议 | 描述 |
+| SKU | 方案 | 方法 | IP 协议 | 说明 |
 | --- | --- | --- | --- | --- |
 | 标准、基本 | [1. 具有实例级公共 IP 地址的 VM（带或不带负载均衡器）](#ilpip) | SNAT，不使用端口伪装 | TCP、UDP、ICMP、ESP | Azure 使用分配实例 NIC 的 IP 配置的公共 IP。 此实例具有所有可用的临时端口。 使用标准负载均衡器时，如果将公共 IP 分配给虚拟机，则不支持[出站规则](load-balancer-outbound-rules-overview.md)。 |
 | 标准、基本 | [2. 与 VM 关联的公共负载均衡器（实例上没有公共 IP 地址）](#lb) | 使用负载均衡器前端进行端口伪装 (PAT) 的 SNAT | TCP、UDP |Azure 与多个专用 IP 地址共享公共负载均衡器前端的公共 IP 地址。 Azure 使用前端的临时端口进行 PAT。 应使用[出站规则](load-balancer-outbound-rules-overview.md)显式定义出站连接。 |

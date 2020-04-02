@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 401019c537cb0eb51fa6002637e170a79210f7d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a7a89b4ff1f6deb94c545e64b4584d7959d573a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617640"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546379"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集中的数据偏移（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "77617640"
 ## <a name="prerequisites"></a>先决条件
 
 若要创建和使用数据集监视器，需要：
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 * [Azure 机器学习工作区](how-to-manage-workspace.md)。
 * [已安装适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包含 azureml-datasets 包。
 * 在数据中的文件路径、文件名或列中指定了带时间戳的结构化（表格）数据。
@@ -61,7 +61,7 @@ ms.locfileid: "77617640"
 
 从概念上讲，在 Azure 机器学习中设置数据集监视器有三种主要方案。
 
-方案 | 描述
+方案 | 说明
 ---|---
 监视模型服务数据与模型训练数据之间的偏移 | 如果服务数据与训练数据之间存在偏移时模型的准确度下降，则此方案的结果可以解释为在代理中监视模型的准确度。
 监视时序数据集与前一个时间段之间的偏移。 | 此方案较为常见，可用于监视涉及到模型生成操作的上游或下游节点的数据集。  目标数据集必须包含一个时间戳列，而基线数据集可以是任意表格数据集，其中包含与目标数据集共有的特征。
@@ -77,7 +77,7 @@ ms.locfileid: "77617640"
 
 #### <a name="python-sdk"></a>Python SDK
 
-类[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)的方法[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)定义数据集的时间戳列。 
+类[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)的方法[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)定义数据集的时间戳列。 
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -104,7 +104,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-有关使用数据集的 `timeseries` 特征的完整示例，请参阅[示例笔记本](https://aka.ms/azureml-tsd-notebook)或[数据集 SDK 文档](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)。
+有关使用数据集的 `timeseries` 特征的完整示例，请参阅[示例笔记本](https://aka.ms/azureml-tsd-notebook)或[数据集 SDK 文档](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)。
 
 #### <a name="azure-machine-learning-studio"></a>Azure 机器学习工作室
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
@@ -129,9 +129,9 @@ dset = dset.register(ws, 'target')
 
 下表包含用于数据集监视器的基本设置。
 
-| 设置 | 描述 | 提示 | 可变 | 
+| 设置 | 说明 | 提示 | 可变 | 
 | ------- | ----------- | ---- | ------- | 
-| “属性” | 数据集监视器的名称。 | | 否 |
+| 名称 | 数据集监视器的名称。 | | 否 |
 | 基线数据集 | 在比较一段时间内的目标数据集时用作基线的表格数据集。 | 基线数据集必须包含与目标数据集共有的特征。 通常，应将基线设置为模型的训练数据集或目标数据集的切片。 | 否 |
 | 目标数据集 | 包含要在其中分析数据偏移的指定时间戳列的表格数据集。 | 目标数据集必须包含与基线数据集共有的特征，并且应该是要将新数据追加到的 `timeseries` 数据集。 可以分析目标数据集中的历史数据，也可以监视新数据。 | 否 | 
 | 频率 | 用于计划管道作业以及分析历史数据（如果运行回填）的频率。 选项包括每日、每周或每月。 | 调整此设置可将数据的可比较大小包含到基线中。 | 否 | 
@@ -142,7 +142,7 @@ dset = dset.register(ws, 'target')
 
 这些设置适用于要创建的计划数据集监视管道。 
 
-| 设置 | 描述 | 提示 | 可变 | 
+| 设置 | 说明 | 提示 | 可变 | 
 | ------- | ----------- | ---- | ------- |
 | 启用 | 在数据集监视管道中启用或禁用计划 | 禁用计划以使用回填设置分析历史数据。 可以在创建数据集监视器后启用此设置。 | 是 | 
 | 延迟 | 数据进入数据集所需的时间（以小时为单位）。 例如，如果数据花费 3 天时间进入数据集封装的 SQL 数据库，则将滞后时间设置为 72。 | 创建数据集监视器后无法更改 | 否 | 
@@ -153,7 +153,7 @@ dset = dset.register(ws, 'target')
 
 这些设置用于针对数据偏移指标的以往数据运行回填。
 
-| 设置 | 描述 | 提示 |
+| 设置 | 说明 | 提示 |
 | ------- | ----------- | ---- |
 | 开始日期 | 回填作业的开始日期。 | | 
 | 结束日期 | 回填作业的结束日期。 | 结束日期不能超过 31 * 从开始日期算起的频率时间单位。 在现有的数据集监视器中，可以回填指标以分析历史数据，或者将指标替换为更新的设置。 |
@@ -239,7 +239,7 @@ monitor = monitor.enable_schedule()
 
 “偏差概述”部分包含数据偏移幅度的顶级见解，并指出应该对哪些特征做进一步的调查。**** 
 
-| 指标 | 描述 | 提示 | 
+| 指标 | 说明 | 提示 | 
 | ------ | ----------- | ---- | 
 | 数据偏移幅度 | 以介于基线与一段时间内的目标数据集之间的百分比表示。 范围为 0 到 100，其中 0 表示数据集相同，100 表示 Azure 机器学习数据偏移功能可以完全区分两个数据集。 | 由于这种幅度是使用机器学习技术生成的，预期度量的精确百分比中存在干扰。 | 
 | 按特征显示的偏移贡献 | 目标数据集中每个特征对度量的偏移幅度的贡献。 |  由于共变偏移，特征的基础分布不一定需要改变即可获得相对较高的特征重要性。 | 
@@ -262,7 +262,7 @@ monitor = monitor.enable_schedule()
 
 将在每个数据集监视器运行中分析数字特征。 Azure 机器学习工作室中显示以下内容。 显示分布的概率密度。
 
-| 指标 | 描述 |  
+| 指标 | 说明 |  
 | ------ | ----------- |  
 | Wasserstein 距离 | 将基线分布转换为目标分布的最小工作量。 |
 | 平均值 | 特征的平均值。 |
@@ -275,7 +275,7 @@ monitor = monitor.enable_schedule()
 
 将在每个数据集监视器运行中分析数字特征。 Azure 机器学习工作室中显示以下内容。 显示分布直方图。
 
-| 指标 | 描述 |  
+| 指标 | 说明 |  
 | ------ | ----------- |  
 | Euclidian 距离 | 基线与目标分布之间的几何距离。 |
 | 唯一值 | 特征的唯一值（基数）数目。 |

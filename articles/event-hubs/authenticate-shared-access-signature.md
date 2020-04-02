@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: d17026dba26b3c1cb846d60967180c29563c425d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74545593"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521321"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 对事件中心资源访问进行身份验证
 使用共享访问签名 (SAS) 可以精细控制向具有共享访问签名的客户端授予的访问权限类型。 下面是可以在 SAS 中设置的一些控制措施： 
@@ -33,7 +33,7 @@ ms.locfileid: "74545593"
 
 
 ## <a name="configuring-for-sas-authentication"></a>配置 SAS 身份验证
-您可以在事件中心命名空间或实体（Kafka 启用的命名空间的事件中心中心中的事件中心实例或 Kafka 主题）配置事件中心共享访问授权规则。 目前不支持在使用者组中配置共享访问授权规则，但你可以使用命名空间或实体中配置的规则来保护对使用者组的访问。 
+您可以在事件中心命名空间或实体（事件中心中心实例或事件中心中的 Kafka 主题）配置事件中心共享访问授权规则。 目前不支持在使用者组中配置共享访问授权规则，但你可以使用命名空间或实体中配置的规则来保护对使用者组的访问。 
 
 下图显示了如何对示例实体应用授权规则。 
 

@@ -3,7 +3,7 @@ title: Microsoft Azure 静态数据加密 | Microsoft Docs
 description: 本文概述了 Microsoft Azure 静态数据加密及其整体功能和一般注意事项。
 services: security
 documentationcenter: na
-author: barclayn
+author: msmbaldwin
 manager: barbkess
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
-ms.author: barclayn
-ms.openlocfilehash: d8aa643dcf9734ac983c9c4c0d53bda24ce4688d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mbaldwin
+ms.openlocfilehash: 42b83963dc4996a7347d57be712451086fa79b26
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125069"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548628"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -248,7 +248,7 @@ Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下
 - 服务器端：默认情况下，所有 Azure 存储服务都使用服务托管的密钥来启用服务器端加密（对应用程序而言是透明的）。 有关详细信息，请参阅[静态数据的 Azure 存储服务加密](../../storage/common/storage-service-encryption.md)。 Azure Blob 存储和 Azure 文件也支持 Azure Key Vault 中客户托管的 RSA 2048 位密钥。 有关详细信息，请参阅 [Azure Key Vault 中使用客户托管密钥的存储服务加密](../../storage/common/storage-encryption-keys-portal.md)。
 - 客户端：Azure Blob、表和队列支持客户端加密。 使用客户端加密时，客户会加密数据并将数据作为加密的 blob 上传。 密钥管理由客户执行。 有关详细信息，请参阅 [Microsoft Azure 存储的客户端加密和 Azure Key Vault](../../storage/common/storage-client-side-encryption.md)。
 
-#### <a name="azure-sql-database"></a>Azure SQL 数据库
+#### <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务器端和客户端加密方案。
 
@@ -295,7 +295,7 @@ Azure SQL 数据库目前支持将静态加密用于 Microsoft 托管的服务�
 | Site Recovery                    | 是                | 是                | -                  |
 | **数据库**                    |                    |                    |                    |
 | 虚拟机上的 SQL Server   | 是                | 是，RSA 2048 位  | 是                |
-| Azure SQL 数据库               | 是                | 是，RSA 2048 位  | 是                |
+| Azure SQL Database               | 是                | 是，RSA 2048 位  | 是                |
 | 玛丽亚DB的 Azure SQL 数据库   | 是                | -                  | -                  |
 | MySQL 的 Azure SQL 数据库     | 是                | 是                | -                  |
 | Azure SQL 数据库，用于后格雷SQL | 是               | 是                | -                  |

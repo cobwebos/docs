@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 05db717f5d3adc2429431503f588f2cc7f79aef6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e00fee8841a2d5a817a00b942bfe0733a80b2cfc
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266775"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546324"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>适用于 Windows VM 的 Azure 磁盘加密 
 
@@ -30,11 +30,13 @@ Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与�
 
 ## <a name="supported-vms-and-operating-systems"></a>支持的 VM 和操作系统
 
-### <a name="supported-vm-sizes"></a>支持的 VM 大小
+### <a name="supported-vms"></a>支持的 VM
 
 Windows VM 的大小有[多种](sizes-general.md)。 Azure 磁盘加密在 [A 系列基本 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) 或内存小于 2 GB 的虚拟机上不可用。
 
 Azure 磁盘加密还可用于使用高级存储的 VM。
+
+Azure 磁盘加密在第[2 代 VM](generation-2.md#generation-1-vs-generation-2-capabilities)和[Lsv2 系列 VM](../lsv2-series.md)上不可用。 有关更多例外情况，请参阅[Azure 磁盘加密：不受支持的方案](disk-encryption-windows.md#unsupported-scenarios)。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -57,7 +59,7 @@ Azure 磁盘加密还可用于使用高级存储的 VM。
 
 ## <a name="group-policy-requirements"></a>组策略要求
 
-Azure 磁盘加密对 Windows VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关“在没有兼容 TPM 的情况下允许 BitLocker”的组策略信息，请参阅 [BitLocker 组策略参考](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
+Azure 磁盘加密对 Windows VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关"允许未兼容 TPM 的 BitLocker"的组策略的信息，请参阅[BitLocker 组策略参考](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
 
 具有自定义组策略的域加入虚拟机上的 BitLocker 策略必须包括以下设置：[配置用户存储的 BitLocker 恢复信息 ->允许 256 位恢复密钥](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密将会失败。 在没有正确策略设置的计算机上，应用新策略，强制更新新策略 (gpupdate.exe /force)，然后可能需要重启。
 

@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368513"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549071"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>轮换 Azure Kubernetes 服务 (AKS) 中的证书
 
@@ -19,7 +19,7 @@ Azure Kubernetes 服务 (AKS) 使用证书对其许多组件进行身份验证�
 
 本文介绍如何轮换 AKS 群集中的证书。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 本文要求运行 Azure CLI 2.0.77 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -32,7 +32,7 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 * 每个 kubelet 还创建一个证书签名请求 (CSR)，该 CSR 由群集 CA 签名，用于从 kubelet 到 API 服务器的通信。
 * etcd 键值存储具有由群集 CA 签名的证书，用于从 etcd 到 API 服务器的通信。
 * etcd 键值存储创建一个 CA，该 CA 对证书进行签名，以便对 AKS 群集中 etcd 副本之间的数据复制进行身份验证和授权。
-* API 聚合器使用群集 CA 颁发证书，以便与其他 API（例如 Open Service Broker for Azure）进行通信。 API 聚合器也可以拥有自己的 CA 来颁发这些证书，但它目前使用群集 CA。
+* API 聚合器使用群集 CA 颁发证书以与其他 API 通信。 API 聚合器也可以拥有自己的 CA 来颁发这些证书，但它目前使用群集 CA。
 * 每个节点都使用服务帐户 (SA) 令牌，该令牌由群集 CA 签名。
 * `kubectl` 客户端具有用于与 AKS 群集通信的证书。
 

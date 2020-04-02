@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: dbc17620cda836ec0ac5c4ebc5a709fb0605c958
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1ad8390bc5db72636c637c2ffb817e34674d0fa
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240037"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548855"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>将 Azure 数据资源管理器群集部署到虚拟网络
 
@@ -45,7 +45,7 @@ Azure 数据资源管理器支持将群集部署到虚拟网络 （VNet） 中�
 
 IP 地址总数：
 
-| 用途 | 地址数 |
+| 使用 | 地址数 |
 | --- | --- |
 | 发动机服务 | 每个实例 1 个 |
 | 数据管理服务 | 2 |
@@ -171,7 +171,7 @@ IP 地址总数：
 | 西欧 | 23.97.212.5 |
 | 印度西部 | 23.99.5.162 |
 | 美国西部 | 23.99.5.162 |
-| 美国西部 2 | 23.99.5.162 |    
+| 美国西部 2 | 23.99.5.162, 104.210.32.14 |    
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure 监视器配置终结点地址
 
@@ -250,7 +250,7 @@ crl3.digicert.com:80
 
 例如，对于**美国西部**区域，必须定义以下 UDR：
 
-| “属性” | 地址前缀 | 下一跃点 |
+| 名称 | 地址前缀 | 下一跃点 |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | Internet |
 | ADX_Monitoring | 23.99.5.162/32 | Internet |

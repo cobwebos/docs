@@ -8,12 +8,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 9b8c3a36dbdd3a14d0bd325c22421033a1765df3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 84b703cceeb130b177b8ab32281ef616b1ec632b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063703"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548826"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>使用 Studio 3T 连接到 Azure Cosmos 帐户
 
@@ -21,9 +21,6 @@ ms.locfileid: "80063703"
 
 * 下载并安装[工作室 3T](https://studio3t.com/)。
 * 获取 Azure Cosmos 帐户的[连接字符串](connect-mongodb-account.md)信息。
-
-> [!NOTE]
-> 目前，Cosmos DB 的 API for MongoDB 支持 Robo 3T v1.2 及更低版本。
 
 ## <a name="create-the-connection-in-studio-3t"></a>在 Studio 3T 中创建连接
 

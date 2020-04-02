@@ -1,30 +1,25 @@
 ---
-title: 创建使用 Azure Spot VM 的比例集（预览）
+title: 创建使用 Azure Spot VM 的比例集
 description: 了解如何创建使用 Spot VM 节省成本的 Azure 虚拟机缩放集。
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.topic: conceptual
-ms.date: 02/11/2020
+ms.topic: article
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162678"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545937"
 ---
-# <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>预览：虚拟机缩放集的 Azure Spot VM 
+# <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>用于虚拟机缩放集的 Azure Spot VM 
 
 在规模集中使用 Azure Spot 使您能够利用我们未使用的容量，从而显著节省成本。 在 Azure 需要返回容量的任何时间点，Azure 基础结构将驱逐 Spot 实例。 因此，Spot 实例非常适合处理批处理作业、开发/测试环境、大型计算工作负载等中断的工作负载。
 
 可用容量的数量可能因大小、区域、一天中的时间等而异。 在规模集中部署 Spot 实例时，Azure 仅在存在可用容量但这些实例没有 SLA 时才会分配实例。 Spot 比例集部署在单个容错域中，并且不提供高可用性保证。
 
-> [!IMPORTANT]
-> 竞价实例当前处于公共预览版中。
-> 不建议生产工作负载使用此预览版本。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
 
 ## <a name="pricing"></a>定价
 
@@ -49,7 +44,7 @@ ms.locfileid: "77162678"
 要在比例集中部署 Spot VM，可以将新的*优先级*标志设置为 *"Spot*"。 缩放集中的所有 VM 都将设置为"Spot"。 要使用 Spot VM 创建比例集，请使用以下方法之一：
 - [Azure 门户](#portal)
 - [Azure CLI](#azure-cli)
-- [Azure 电源外壳](#powershell)
+- [Azure PowerShell](#powershell)
 - [Azure 资源管理器模板](#resource-manager-templates)
 
 ## <a name="portal"></a>门户
@@ -104,7 +99,7 @@ $vmssConfig = New-AzVmssConfig `
 
 要在实例被逐出后将其删除，请将`evictionPolicy`参数更改为`Delete`。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 **问：** 创建后，Spot 实例是否与标准实例相同？
 
@@ -172,6 +167,5 @@ $vmssConfig = New-AzVmssConfig `
 **答：** 您可以在[Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html)`azure-spot`上发布和标记您的问题。 
 
 ## <a name="next-steps"></a>后续步骤
-现在，您已经使用 Spot VM 创建了比例集，请尝试使用 Spot 部署我们的[自动缩放模板](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri)。
 
 有关价格详细信息，请查看[虚拟机规模集定价页](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)。

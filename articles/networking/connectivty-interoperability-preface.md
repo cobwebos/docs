@@ -1,5 +1,5 @@
 ---
-title: Azure 后端连接功能中的互操作性：测试设置 | Microsoft Docs
+title: Azure 中的互操作性 ：测试设置 |微软文档
 description: 本文介绍可用于分析 ExpressRoute、站点到站点 VPN 与 Azure 中虚拟网络对等互连之间的互操作性的测试设置。
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 0cbd4b620a03ed26e95679cf7cb1abef277a9471
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3aec41a145d2c94a45a453393831902069b9c41b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873789"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518192"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Azure 后端连接功能中的互操作性：测试设置
+# <a name="interoperability-in-azure--test-setup"></a>Azure 中的互操作性 ：测试设置
 
 本文介绍可用于分析 Azure 网络服务如何在控制平面级别和数据平面级别进行互操作的测试设置。 下面是 Azure 网络组件的概观：
 

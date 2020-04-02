@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
-ms.openlocfilehash: f1846fae4cbf473df688a2b184c307d72ab2f8d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 746044aa835df52e61c234c8b5ca61164fffbbc5
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721466"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545951"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 表存储操作 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -117,7 +117,7 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 ## <a name="reference-cloudtable-property-of-a-specific-table"></a>引用特定表的 CloudTable 属性
 
 > [!IMPORTANT]
-> 使用 **AzTable** PowerShell 模块时必须使用 CloudTable。 调用 **Get-AzTableTable** 命令来获取对此对象的引用。 如果表尚不存在，则此命令还创建表。
+> 使用 **AzTable** PowerShell 模块时必须使用 CloudTable。 调用**Get-AzStorageTable**命令以获取对此对象的引用。 如果表尚不存在，则此命令还创建表。
 
 若要使用 **AzTable** 对表执行操作，需要引用特定表的 CloudTable 属性。
 

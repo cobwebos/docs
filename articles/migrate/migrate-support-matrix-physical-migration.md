@@ -2,13 +2,14 @@
 title: 支持 Azure 迁移中的物理服务器迁移
 description: 了解对 Azure 迁移中物理服务器迁移的支持。
 ms.topic: conceptual
+ms.custom: fasttrack-edit
 ms.date: 01/07/2020
-ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f8b94ab77a1eef8e771384f5d69da98a1d7ae6c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269544"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520284"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>支持物理服务器迁移矩阵
 
@@ -43,7 +44,7 @@ ms.locfileid: "79269544"
 **网络/存储** | 有关最新[信息，请查看](../site-recovery/vmware-physical-azure-support-matrix.md#network)站点恢复的网络和[存储](../site-recovery/vmware-physical-azure-support-matrix.md#storage)先决条件。 Azure 迁移提供相同的网络/存储要求。
 **Azure 要求** | 有关最新信息，请查看站点恢复的[Azure 网络](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[存储](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)和[计算](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute)要求。 Azure 迁移对物理服务器迁移具有相同的要求。
 **移动服务** | 移动服务代理必须安装在要迁移的每台计算机上。
-**UEFI 启动** | Azure 中的迁移计算机将自动转换为 BIOS 引导 Azure VM。<br/><br/> 操作系统磁盘应最多具有四个分区，并且卷应使用 NTFS 进行格式化。
+**UEFI 启动** | Azure 中的迁移计算机将自动转换为 BIOS 引导 Azure VM。 仅支持运行 Windows Server 2012 和更高版本的服务器。<br/><br/> 操作系统磁盘应最多具有四个分区，并且卷应使用 NTFS 进行格式化。
 **目标磁盘** | 计算机只能迁移到 Azure 中的托管磁盘（标准硬盘、高级 SSD）。
 **磁盘大小** | 2 TB OS 磁盘;8 TB 的数据磁盘。
 **磁盘限制** |  每台计算机最多 63 个磁盘。
@@ -85,7 +86,7 @@ ms.locfileid: "79269544"
 FC 磁盘 | 不支持。 | 如果不支持，检查会失败。
 BitLocker | 不支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。
 VM 名称 | 1 到 63 个字符。<br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
-迁移后连接 - Windows | 要在迁移后连接到运行 Windows 的 Azure VM，请执行：<br/> - 在迁移在本地 VM 上启用 RDP 之前。 确保为**公共**配置文件添加了 TCP 和 UDP 规则，并且所有配置文件都允许在 Windows**防火墙** > **允许应用**中使用 RDP。<br/> 对于站点到站点 VPN 访问，请在**Windows 防火墙** -> **允许的应用和功能**中启用 RDP。 **Domain and Private** 此外，请检查操作系统的 SAN 策略是否设置为**OnlineAll**。 [了解详情](prepare-for-migration.md)。 |
+迁移后连接 - Windows | 要在迁移后连接到运行 Windows 的 Azure VM，请执行：<br/> - 在迁移在本地 VM 上启用 RDP 之前。 确保为**公共**配置文件添加了 TCP 和 UDP 规则，并且所有配置文件都允许在 Windows**防火墙** > **允许应用**中使用 RDP。<br/> 对于站点到站点 VPN 访问，请在**Windows 防火墙** -> **允许的应用和功能**中启用 RDP。 **Domain and Private** 此外，请检查操作系统的 SAN 策略是否设置为**OnlineAll**。 [了解详细信息](prepare-for-migration.md)。 |
 迁移后连接 -Linux | 要使用 SSH 在迁移后连接到 Azure VM，<br/> 在迁移之前，在本地计算机上，检查安全外壳服务是否设置为"开始"，并且防火墙规则是否允许 SSH 连接。<br/> 故障转移后，在 Azure VM 上，允许传入连接到 SSH 端口，用于通过 VM 故障的网络安全组规则以及连接到它的 Azure 子网。 此外，为 VM 添加公共 IP 地址。 |  
 
 

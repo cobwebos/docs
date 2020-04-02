@@ -4,13 +4,15 @@ description: 了解如何将 Microsoft 帐户身份验证配置为应用服务�
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: ea745aa00f8990a2d1232a19780fdc70e2f78996
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: a78208ba592f86400e9b06b15d8a76923dda736f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437964"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519886"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>将应用服务或 Azure 功能应用配置为使用 Microsoft 帐户登录
 

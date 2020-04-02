@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 99517e45892cd7a6167ae83ff3058edae1377b10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 95d943685cf511acb88f9e48d36a9dd43b0a27d2
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80109558"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548003"
 ---
 # <a name="install-and-use-lightingest"></a>安装和使用最亮灯
 
@@ -22,6 +22,9 @@ Lightingest 是一个命令行实用程序，用于将临时数据引入 Azure �
 ## <a name="prerequisites"></a>先决条件
 
 * 最轻 - 作为[Microsoft.Azure.Kusto.Tools NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)的一部分下载它
+
+    ![最亮的下载](media/lightingest/lightingest-download-area.png)
+
 * WinRAR - 从[www.win-rar.com/download.html](http://www.win-rar.com/download.html)下载
 
 ## <a name="install-lightingest"></a>安装最亮灯
@@ -44,20 +47,24 @@ Lightingest 是一个命令行实用程序，用于将临时数据引入 Azure �
     >
     >![命令行帮助](media/lightingest/lightingest-cmd-line-help.png)
 
-1. 输入`LightIngest`后跟将管理引入的 Azure 数据资源管理器群集的连接字符串。
+1. 输入`ingest-`后跟将管理引入的 Azure 数据资源管理器群集的连接字符串。
     将连接字符串括在双引号中，并遵循[Kusto 连接字符串规范](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto)。
 
     例如：
     ```
-    LightIngest "Data Source=https://{Cluster name and region}.kusto.windows.net;AAD Federated Security=True"  -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+    ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 
-* 建议的方法用于`LightIngest`使用 中的`https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`引入终结点。 这样，Azure 数据资源管理器服务可以管理引入负载，并且可以轻松地从瞬态错误中恢复。 但是，您还可以配置为`LightIngest`直接使用引擎终结点 （）。`https://{yourClusterNameAndRegion}.kusto.windows.net`
-* 为了获得最佳的摄入性能，LightIngest 必须了解原始数据大小，因此`LightIngest`可以估计本地文件的未压缩大小。 但是，`LightIngest`如果不首先下载压缩 blob，可能无法正确估计压缩 blob 的原始大小。 因此，在引入压缩的 Blob 时，将`rawSizeBytes`blob 元数据上的属性设置为以字节为单位的未压缩数据大小。
+* 建议的方法是 Lightingest 使用 中的`https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`引入终结点。 这样，Azure 数据资源管理器服务可以管理引入负载，并且可以轻松地从瞬态错误中恢复。 但是，您还可以将"光点"配置为直接与引擎终结点 （）`https://{yourClusterNameAndRegion}.kusto.windows.net`配合使用。
+
+> [!Note]
+> 如果直接使用引擎终结点进行摄取，则不需要包括`ingest-`，但不会有 DM 功能来保护发动机并提高引入成功率。
+
+* 为了获得最佳的摄取性能，LightIngest 了解原始数据大小非常重要，因此 Lightingest 将估计本地文件的未压缩大小。 但是，LightIngest 可能无法在不首先下载压缩 blob 的情况下正确估计压缩 blob 的原始大小。 因此，在引入压缩的 Blob 时，将`rawSizeBytes`blob 元数据上的属性设置为以字节为单位的未压缩数据大小。
 
 ## <a name="general-command-line-arguments"></a>一般命令行参数
 
-|参数名称         |短名称   |类型    |必需 |描述                                |
+|参数名称         |短名称   |类型    |必需 |说明                                |
 |----------------------|-------------|--------|----------|-------------------------------------------|
 |                      |             |字符串  |必需 |[Azure 数据资源管理器连接字符串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto)，指定将处理引入的 Kusto 终结点。 应以双引号括起来 |
 |-数据库             |-db          |字符串  |可选  |目标 Azure 数据资源管理器数据库名称 |
@@ -66,7 +73,7 @@ Lightingest 是一个命令行实用程序，用于将临时数据引入 Azure �
 |-前缀               |             |字符串  |可选  |当要引入的源数据驻留在 Blob 存储上时，此 URL 前缀由所有 Blob 共享，不包括容器名称。 <br>例如，如果数据在 中`MyContainer/Dir1/Dir2`，则前缀应为`Dir1/Dir2`。 建议用双引号括起来 |
 |-模式              |             |字符串  |可选  |选取源文件/blob 的模式。 支持通配符。 例如，`"*.csv"` 。 建议以双引号括起来 |
 |-zipPattern           |             |字符串  |可选  |在选择要引入的 ZIP 存档中的文件时使用的正则表达式。<br>存档中的所有其他文件将被忽略。例如， `"*.csv"`. 建议用双引号括起来 |
-|-格式               |-f           |字符串  |可选  |源数据格式。 必须是[受支持的格式](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#supported-data-formats)之一 |
+|-格式               |-f           |字符串  |可选  |源数据格式。 必须是[受支持的格式](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats)之一 |
 |-引入映射路径 |-映射路径 |字符串  |可选  |引入列映射文件的路径（Json 和 Avro 格式的必需）。 查看[数据映射](https://docs.microsoft.com/azure/kusto/management/mappings) |
 |-引入映射参考  |-映射参考  |字符串  |可选  |预先创建的引入列映射的名称（Json 和 Avro 格式的必需）。 查看[数据映射](https://docs.microsoft.com/azure/kusto/management/mappings) |
 |-创建时间模式  |             |字符串  |可选  |设置后，用于从文件或 Blob 路径中提取创建时间属性。 请参阅[使用创建时间模式参数](#using-creationtimepattern-argument) |
@@ -76,15 +83,21 @@ Lightingest 是一个命令行实用程序，用于将临时数据引入 Azure �
 
 ### <a name="using-creationtimepattern-argument"></a>使用创建时间模式参数
 
-参数`-creationTimePattern`从文件或 blob 路径中提取创建时间属性。 模式不需要反映整个项目路径，只需反映不包含要使用的时间戳的部分。
-参数的值必须包含三个部分：
+参数`-creationTimePattern`从文件或 blob 路径中提取创建时间属性。 该模式不需要反映整个项目路径，只需反映要使用的时间戳的部分。
+
+参数值必须包括：
 * 时间戳前面的常量测试，以单引号括起来
 * 时间戳格式，标准为[.NET 日期时间表示法](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
-* 时间戳之后的常量文本 例如，如果 blob 名称以"历史值 19840101.parquet"结尾（时间戳为年份的四位数字、该月的两位数字和月份当天的两位数字），`-creationTimePattern`则参数的相应值为"历史值"yyymMdd'.parquet"。
+* 时间戳紧随其后的常量文本。 例如，如果 blob 名称以`historicalvalues19840101.parquet`（时间戳为年份的四位数字、该月的两位数字和每月的两位数字）结尾，则参数的`-creationTimePattern`相应值为：
+
+```
+ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
+ -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+```
 
 ### <a name="command-line-arguments-for-advanced-scenarios"></a>高级方案的命令行参数
 
-|参数名称         |短名称   |类型    |必需 |描述                                |
+|参数名称         |短名称   |类型    |必需 |说明                                |
 |----------------------|-------------|--------|----------|-------------------------------------------|
 |-压缩          |-cr          |double  |可选  |压缩比提示。 引入压缩文件/blob 以帮助 Azure 数据资源管理器评估原始数据大小时非常有用。 按压缩大小除以原始大小 |
 |-限制                |-l           |integer |可选  |如果设置，则将引入限制为前 N 个文件 |
@@ -96,7 +109,7 @@ Lightingest 是一个命令行实用程序，用于将临时数据引入 Azure �
 |-dev跟踪           |-跟踪       |字符串  |可选  |如果设置，诊断日志将写入本地目录（默认情况下，`RollingLogs`在当前目录中，或者可以通过设置开关值进行修改） |
 
 ## <a name="blob-metadata-properties"></a>Blob 元数据属性
-当与 Azure Blob`LightIngest`一起使用时，将使用某些 blob 元数据属性来增强引入过程。
+当与 Azure Blob 一起使用时，Lightingest 将使用某些 blob 元数据属性来增强引入过程。
 
 |元数据属性                            | 使用情况                                                                           |
 |---------------------------------------------|---------------------------------------------------------------------------------|

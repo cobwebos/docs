@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 090446d286b38a0bfcbde4ed9e77235050b36417
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70137344"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547700"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Python SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "70137344"
 |**API 文档**|[Python API 参考文档](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**SDK 安装说明**|[Python SDK 安装说明](https://github.com/Azure/azure-cosmos-python)|
 |**参与 SDK**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
-|**入门**|[Python SDK 入门](sql-api-python-application.md)|
+|**开始**|[Python SDK 入门](sql-api-python-application.md)|
 |**当前受支持的平台**|[Python 2.7](https://www.python.org/downloads/) 和 [Python 3.5](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>发行说明
@@ -84,7 +84,7 @@ ms.locfileid: "70137344"
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
 * 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。
-* 添加了一个 Cosmos DB 模拟器运行时禁用 SSL 验证的选项。
+* 添加了一个选项，用于在针对 Cosmos DB 仿真器运行时禁用 TLS 验证。
 * 删除了依赖请求模块精确是 2.10.0 的限制。
 * 将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
 * 添加了在存储过程执行期间对启用脚本日志记录的支持。
@@ -187,7 +187,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月**** 发出通知，以便�
 | 0.9.1-prelease |2014 年 9 月 23 日 |2016 年 2 月 29 日 |
 | 0.9.0-prelease |2014 年 8 月 21 日 |2016 年 2 月 29 日 |
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>请参阅

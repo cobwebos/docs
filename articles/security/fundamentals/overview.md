@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045866"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545974"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -47,7 +47,7 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 ### <a name="features-to-secure-the-azure-platform"></a>保护 Azure 平台的功能
 以下功能是您可以查看的功能，以确保 Azure 平台以安全的方式进行管理。 提供了链接，以便进一步深入探讨 Microsoft 如何解决客户信任问题，包括安全平台、隐私&控制、合规性和透明度。
 
-| [安全平台](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [隐私和控制](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[合 规](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [透明度](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
+| [安全平台](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [隐私和控制](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[合规性](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [透明度](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [安全发展周期](https://www.microsoft.com/sdl/)， 内部审计 | [随时进行数据管理](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) | [信任中心](https://www.microsoft.com/trustcenter/default.aspx) |[Microsoft 如何保护 Azure 服务中的客户数据](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | [强制性安全培训、背景调查](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [控制数据位置](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [通用控制中心](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Microsoft 如何管理 Azure 服务中的数据位置](https://azuredatacentermap.azurewebsites.net/)|
@@ -233,11 +233,11 @@ Microsoft [Azure 应用程序网关](../../application-gateway/overview.md)以�
 
 ![应用程序网关](./media/overview/azure-security-fig2.png)
 
-它使用户能够通过将 CPU 密集型 SSL 终端的负载卸载到应用程序网关（也称为“SSL 卸载”或“SSL 桥接”）来优化 Web 场生产率。 它还提供第 7 层其他路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 Azure 应用程序网关是第 7 层负载均衡器。
+它允许您通过将 CPU 密集型 TLS 端接卸载到应用程序网关（也称为"TLS 卸载"或"TLS 桥接"）来优化 Web 服务器场的工作效率。 它还提供第 7 层其他路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 Azure 应用程序网关是第 7 层负载均衡器。
 
 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。
 
-应用程序网关提供多种应用程序传送控制器 (ADC) 功能，包括 HTTP 负载均衡、基于 cookie 的会话相关性、[安全套接字层 (SSL)](../../application-gateway/tutorial-restrict-web-traffic-powershell.md) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。
+应用程序提供了许多应用程序交付控制器 （ADC） 功能，包括 HTTP 负载平衡、基于 Cookie 的会话关联性[、TLS 卸载](../../application-gateway/tutorial-restrict-web-traffic-powershell.md)、自定义运行状况探测器、对多站点的支持等。
 
 ### <a name="web-application-firewall"></a>Web 应用程序防火墙
 Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gateway/overview.md)的一项功能，它为使用应用程序网关实现标准应用程序传递控制 (ADC) 功能的 Web 应用程序提供保护。 Web 应用程序防火墙通过保护这些应用程序，免受 OWASP 前 10 个常见的 Web 漏洞中的大多数漏洞的威胁，来实现此目的。

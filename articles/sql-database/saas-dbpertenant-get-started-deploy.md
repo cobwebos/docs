@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 31f712f80ee2492e4bbaec99bd093d46f9d04e6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3182daa4ebf3becc824b600d1e487e12b875b275
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823992"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529657"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>部署并探究一个多租户 SaaS 应用，该应用通过“每租户一个数据库”模式使用 SQL 数据库
 
@@ -68,9 +68,9 @@ ms.locfileid: "73823992"
 
 1. 部署应用程序。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“我同意上述条款和条件”。
+    a. 选择“我同意上述条款和条件”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 选择“购买”。****
+    b. 选择“购买”。****
 
 1. 若要监视部署状态，请选择“通知”（搜索框右侧的钟形图标）****。 部署 Wingtip Tickets SaaS 应用大约需要 5 分钟。
 
@@ -126,9 +126,9 @@ Wingtip 应用程序使用  [*Azure 流量管理器*](../traffic-manager/traffi
 
     下表中对前述格式的各部分进行了说明。
 
-    | URL 部分        | 描述       |
+    | URL 部分        | 说明       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Wingtip 应用的事件部分。<br /><br /> **-dpt** 部分将 Wingtip Tickets 的“每租户一个数据库”实现与其他实现区分开来。 例如，单个**“每租户应用”(-sa**) 实现，或多租户数据库** (-mt**) 实现。 |
+    | 事件.翼尖-dpt | Wingtip 应用的事件部分。<br /><br /> **-dpt** 部分将 Wingtip Tickets 的“每租户一个数据库”实现与其他实现区分开来。 例如，单个**“每租户应用”(-sa**) 实现，或多租户数据库** (-mt**) 实现。 |
     | .*&lt;用户&gt;* | 在示例中为 *af1*。 |
     | .trafficmanager.net/ | 流量管理器、基 URL。 |
     | fabrikamjazzclub | 标识名为 Fabrikam Jazz Club 的租户。 |

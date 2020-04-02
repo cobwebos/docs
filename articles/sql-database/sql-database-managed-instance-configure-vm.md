@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
-ms.openlocfilehash: 7273c7b1dbf5eb6c855b95a8661f38bd4bd14af7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b5dce0b43fac7cfd0e974f26451338ca1541f8f
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73839045"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528417"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>快速入门：配置 Azure VM，以便连接到 Azure SQL 数据库托管实例
 
@@ -28,7 +28,7 @@ ms.locfileid: "73839045"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 Azure[门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-new-subnet-in-the-managed-instance-vnet"></a>在托管实例 VNet 中创建新的子网
 
@@ -44,7 +44,7 @@ ms.locfileid: "73839045"
 
 3. 根据此表中的信息填充窗体：
 
-   | 设置| 建议的值 | 描述 |
+   | 设置| 建议的值 | 说明 |
    | ---------------- | ----------------- | ----------- |
    | **名称** | 任何有效的名称|请参阅[命名规则和限制](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称。|
    | **地址范围(CIDR 块)** | 有效的范围 | 默认值适用于本快速入门。|
@@ -73,10 +73,10 @@ ms.locfileid: "73839045"
 
 2. 根据下表中的信息填充窗体：
 
-   | 设置| 建议的值 | 描述 |
+   | 设置| 建议的值 | 说明 |
    | ---------------- | ----------------- | ----------- |
    | **订阅** | 有效的订阅 | 必须是有权在其中创建新资源的订阅。 |
-   | **资源组** |在[创建托管实例](sql-database-managed-instance-get-started.md)快速入门中指定的资源组。|此资源组必须是 VNet 所在的资源组。|
+   |  **资源组** |在[创建托管实例](sql-database-managed-instance-get-started.md)快速入门中指定的资源组。|此资源组必须是 VNet 所在的资源组。|
    | **位置** | 资源组的位置 | 此值基于所选资源组进行填充。 |
    | **虚拟机名称**  | 任何有效的名称 | 请参阅[命名规则和限制](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称。|
    |**管理员用户名**|任何有效的用户名|请参阅[命名规则和限制](/azure/architecture/best-practices/resource-naming)，了解什么是有效的名称。 不要使用“serveradmin”，因为这是保留的服务器级角色。<br>在[连接到 VM](#connect-to-virtual-machine) 时使用此用户名。|
@@ -107,7 +107,7 @@ ms.locfileid: "73839045"
 
     ![VM](./media/sql-database-managed-instance-configure-vm/vm.png)  
 
-2. 选择“连接”****。
+2. 选择 **"连接**"。
 
    此时会显示远程桌面协议文件（.rdp 文件）窗体，其中包含虚拟机的公共 IP 地址和端口号。
 
@@ -120,7 +120,7 @@ ms.locfileid: "73839045"
 
 4. 关闭“连接到虚拟机”窗体。****
 5. 若要连接到 VM，请打开下载的 RDP 文件。
-6. 出现提示时，选择“连接”****。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
+6. 出现提示时，选择“连接”****。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12)。
 
 7. 输入在创建虚拟机时指定的用户名和密码，然后选择“确定”。****
 

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb96cb32c05d2ba3fbd38e72c16540d947436117
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77612515"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519076"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>教程：在 Azure 活动目录域服务（预览）中创建到本地域的出站林信任
 
@@ -23,7 +23,7 @@ ms.locfileid: "77612515"
 
 ![从 Azure AD DS 到本地 AD DS 的林信任图](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-在本教程中，你将了解如何执行以下操作：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 在本地 AD DS 环境中配置 DNS 以支持 Azure AD DS 连接
@@ -31,14 +31,14 @@ ms.locfileid: "77612515"
 > * 在 Azure AD DS 中创建单向出站林信任
 > * 测试和验证身份验证和资源访问的信任关系
 
-如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请先[创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
 需有以下资源和特权才能完成本教程：
 
 * 一个有效的 Azure 订阅。
-    * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+    * 如果没有 Azure 订阅，[请创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 使用资源林创建并在 Azure AD 租户中配置的 Azure 活动目录域服务托管域。
@@ -59,7 +59,7 @@ ms.locfileid: "77612515"
 
 * 使用专用 IP 地址。 不要依赖具有动态 IP 地址分配的 DHCP。
 * 避免重叠的 IP 地址空间，以允许虚拟网络对等互连和路由在 Azure 和本地之间成功通信。
-* Azure 虚拟网络需要网关子网来配置站点到站点 （S2S） VPN 或 ExpressRoute 连接
+* Azure 虚拟网络需要网关子网来配置[Azure 站点到站点 （S2S） VPN][vpn-gateway]或[ExpressRoute][expressroute]连接
 * 创建具有足够 IP 地址的子网以支持您的方案。
 * 确保 Azure AD DS 有自己的子网，不要与应用程序 VM 和服务共享此虚拟网络子网。
 * 对等虚拟网络不是过渡的。
@@ -74,7 +74,7 @@ ms.locfileid: "77612515"
 1. 选择 **"开始" |管理工具 |DNS**
 1. 右选择 DNS 服务器（如*myAD01）* 选择**属性**
 1. 选择**转发器**，然后**编辑**以添加其他转发器。
-1. 添加 Azure AD DS 托管域的 IP 地址，例如*10.0.1.4*和*10.0.1.5*。
+1. 添加 Azure AD DS 托管域的 IP 地址，例如*10.0.2.4*和*10.0.2.5*。
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>在本地域中创建入站林信任
 
@@ -85,10 +85,6 @@ ms.locfileid: "77612515"
 1. 选择 **"开始" |管理工具 |活动目录域和信任**
 1. 右选择域，如*onprem.contoso.com，* 选择**属性**
 1. 选择 **"信任"** 选项卡，然后**选择"新信任"**
-
-   > [!NOTE]
-   > 如果看不到 **"信任"** 菜单选项，请在 *"林"类型的***"属性**"下进行检查。 只有*资源*林才能创建信任。 如果林类型为 *"用户*"，则无法创建信任。 当前无法更改 Azure AD DS 托管域的林类型。 您需要删除托管域并将其重新创建为资源林。
-
 1. 在 Azure AD DS 域名上输入名称，如*aaddscontoso.com*，然后选择 **"下一步"**
 1. 选择创建**林信任**的选项，然后创建**一个单向：传入**信任。
 1. 选择**仅为此域**创建信任。 在下一步中，您将在 Azure 门户中为 Azure AD DS 托管域创建信任。
@@ -104,12 +100,16 @@ ms.locfileid: "77612515"
 
 1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**，然后选择托管域，例如*aaddscontoso.com*
 1. 从 Azure AD DS 托管域左侧的菜单中，选择 **"信任"，** 然后选择 **"添加**信任"。
+
+   > [!NOTE]
+   > 如果看不到 **"信任"** 菜单选项，请在 *"林"类型的***"属性**"下进行检查。 只有*资源*林才能创建信任。 如果林类型为 *"用户*"，则无法创建信任。 当前无法更改 Azure AD DS 托管域的林类型。 您需要删除托管域并将其重新创建为资源林。
+
 1. 输入标识信任的显示名称，然后输入本地受信任的林 DNS 名称，如*onprem.contoso.com*
 1. 提供上一节中为本地 AD DS 域配置入站林信任时使用的信任密码。
-1. 为本地 AD DS 域至少提供两台 DNS 服务器，如*10.0.2.4*和*10.0.2.5*
+1. 为本地 AD DS 域至少提供两台 DNS 服务器，如*10.1.1.4*和*10.1.1.5*
 1. 准备就绪后，**保存**出站林信任
 
-    [在 Azure 门户中创建出站林信任](./media/create-forest-trust/portal-create-outbound-trust.png)
+    ![在 Azure 门户中创建出站林信任](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
 
 ## <a name="validate-resource-authentication"></a>验证资源身份验证
 
@@ -126,11 +126,7 @@ ms.locfileid: "77612515"
 
 应将 Windows 服务器虚拟机连接到 Azure AD DS 资源域。 使用此虚拟机可以测试本地用户可以在虚拟机上进行身份验证。
 
-1. 使用远程桌面和 Azure AD DS 管理员凭据连接到连接到 Azure AD DS 资源林的 Windows 服务器 VM。 如果出现网络级身份验证 （NLA） 错误，请检查所使用的用户帐户不是域用户帐户。
-
-    > [!NOTE]
-    > 要安全地连接到连接到 Azure AD 域服务的 VM，可以在支持的 Azure 区域中使用[Azure 堡垒主机服务](https://docs.microsoft.com/azure/bastion/bastion-overview)。
-
+1. 使用[Azure 堡垒](https://docs.microsoft.com/azure/bastion/bastion-overview)和 Azure AD DS 管理员凭据连接到连接到 Azure AD DS 资源林的 Windows 服务器 VM。
 1. 打开命令提示并使用 该`whoami`命令显示当前经过身份验证的用户的可分辨名称：
 
     ```console
@@ -152,10 +148,7 @@ ms.locfileid: "77612515"
 
 #### <a name="enable-file-and-printer-sharing"></a>启用文件和打印机共享
 
-1. 使用远程桌面和 Azure AD DS 管理员凭据连接到连接到 Azure AD DS 资源林的 Windows 服务器 VM。 如果出现网络级身份验证 （NLA） 错误，请检查所使用的用户帐户不是域用户帐户。
-
-    > [!NOTE]
-    > 要安全地连接到连接到 Azure AD 域服务的 VM，可以在支持的 Azure 区域中使用[Azure 堡垒主机服务](https://docs.microsoft.com/azure/bastion/bastion-overview)。
+1. 使用[Azure 堡垒](https://docs.microsoft.com/azure/bastion/bastion-overview)和 Azure AD DS 管理员凭据连接到连接到 Azure AD DS 资源林的 Windows 服务器 VM。
 
 1. 打开**Windows 设置**，然后搜索并选择**网络和共享中心**。
 1. 选择 **"更改高级共享设置"** 选项。
@@ -221,3 +214,5 @@ ms.locfileid: "77612515"
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
 [howto-change-sku]: change-sku.md
+[vpn-gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+[expressroute]: ../expressroute/expressroute-introduction.md

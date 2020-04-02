@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: afc7a7406831568304c2ebd8d9a6c72b497e04e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a6540b5784a76acfc248fb15feb1aaf39420845
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75972877"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546946"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>使用数据工厂和 Batch 来处理大规模数据集
 > [!NOTE]
@@ -109,13 +109,13 @@ ms.locfileid: "75972877"
 
 1. 在“池”**** 边栏选项卡中，选择工具栏上的“添加”**** 按钮以添加池。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 输入池的 ID（“池 ID”****）。 记下池的 ID。 创建数据工厂解决方案时需要它。
+   a. 输入池的 ID（“池 ID”****）。 记下池的 ID。 创建数据工厂解决方案时需要它。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 为**操作系统系列**设置指定**Windows 服务器 2012 R2。**
+   b. 为**操作系统系列**设置指定**Windows 服务器 2012 R2。**
 
    c. 选择**节点定价层**。
 
-   d.单击“下一步”。 输入 **2** 作为“目标专用”**** 设置的值。
+   d. 输入 **2** 作为“目标专用”**** 设置的值。
 
    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 输入 **2** 作为“每个节点最大任务”**** 设置的值。
 
@@ -178,13 +178,13 @@ public IDictionary<string, string> Execute(
 #### <a name="procedure-create-the-custom-activity"></a>过程：创建自定义活动
 1. 在 Visual Studio 中创建 .NET 类库项目。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 启动 Visual Studio 2012/2013/2015。
+   a. 启动 Visual Studio 2012/2013/2015。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 选择 **"文件** > **新项目** > **"。**
+   b. 选择 **"文件** > **新项目** > **"。**
 
    c. 展开**模板**，然后选择**可视化 C\#**。 在此演练中使用的是 C\#，但也可使用任意 .NET 语言开发自定义活动。
 
-   d.单击“下一步”。 从右侧项目类型列表中选择“类库”****。
+   d. 从右侧项目类型列表中选择“类库”****。
 
    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 对于“名称”****，输入 **MyDotNetActivity**。
 
@@ -430,7 +430,7 @@ public IDictionary<string, string> Execute(
     } while (continuationToken != null);
 
     ```
-   有关详细信息，请参阅 [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) 方法的文档。
+   有关详细信息，请参阅 [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented) 方法的文档。
 
 1. 以逻辑方式通过 blob 集工作的代码在 do-while 循环内运行。 在 **Execute** 方法中，do-while 循环将 blob 列表传递给名为 **Calculate** 的方法。 该方法返回名为 **output** 的字符串变量，它是循环访问段中所有 blob 的结果。
 
@@ -526,9 +526,9 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="step-1-create-the-data-factory"></a>步骤 1：创建数据工厂
 1. 登录到 [Azure 门户](https://portal.azure.com/)之后，请执行以下步骤：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择左侧菜单上的“新建”****。
+   a. 选择左侧菜单上的“新建”****。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 选择“新建”**** 边栏选项卡中的“数据 + 分析”****。
+   b. 选择“新建”**** 边栏选项卡中的“数据 + 分析”****。
 
    c. 选择“数据分析”**** 边栏选项卡中的“数据工厂”****。
 
@@ -569,13 +569,13 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 在 JSON 脚本中：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 将**帐户名称**替换为 Batch 帐户的名称。
+   a. 将**帐户名称**替换为 Batch 帐户的名称。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 将**访问密钥**替换为 Batch 帐户的访问密钥。
+   b. 将**访问密钥**替换为 Batch 帐户的访问密钥。
 
    c. 输入**池名称**属性的池 ID。 对于此属性，可指定池名称或池 ID。
 
-   d.单击“下一步”。 对于 **batchUri** JSON 属性，输入 batch URI。
+   d. 对于 **batchUri** JSON 属性，输入 batch URI。
 
       > [!IMPORTANT]
       > **批处理帐户**边栏选项卡中的 URL 采用以下格式：\<帐户名称\>。\<区域\>.batch.azure.com。 对于 JSON 脚本中的 **batchUri** 属性，需要从 URL 中删除“accountname.”。 示例为 `"batchUri": "https://eastus.batch.azure.com"`。

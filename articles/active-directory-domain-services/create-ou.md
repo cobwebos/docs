@@ -9,33 +9,36 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 7abbdf03e85f425f65a45e6640b82529c2b9c84f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b95a3e32bc2b8df3d02453e42fa9bbc3719134b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614069"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519159"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域中创建组织单位 （OU）
 
 活动目录域服务 （AD DS） 中的组织单位 （O） 允许您以逻辑方式对对象（如用户帐户、服务帐户或计算机帐户）进行分组。 然后，您可以将管理员分配给特定 O，并应用组策略来强制实施目标配置设置。
 
-Azure AD DS 托管域包括两个内置 O - *AADDC 计算机*和*AADDC 用户*。 *AADDC 计算机*OU 包含所有连接到托管域的计算机的计算机对象。 *AADDC 用户*OU 包括从 Azure AD 租户同步的用户和组。 创建和运行使用 Azure AD DS 的工作负载时，可能需要为应用程序创建服务帐户以进行自我身份验证。 要组织这些服务帐户，您通常在 Azure AD DS 托管域中创建自定义 OU，然后在该 OU 中创建服务帐户。
+Azure AD DS 托管域包括以下两个内置 O：
+
+* *AADDC 计算机*- 包含所有已加入托管域的计算机的计算机对象。
+* *AADDC 用户*- 包括从 Azure AD 租户同步的用户和组。
+
+创建和运行使用 Azure AD DS 的工作负载时，可能需要为应用程序创建服务帐户以进行自我身份验证。 要组织这些服务帐户，您通常在 Azure AD DS 托管域中创建自定义 OU，然后在该 OU 中创建服务帐户。
 
 在混合环境中，在本地 AD DS 环境中创建的 O 不会同步到 Azure AD DS。 Azure AD DS 托管域使用平面 OU 结构。 所有用户帐户和组都存储在*AADDC 用户*容器中，尽管从不同的本地域或林同步，即使您已在那里配置了分层 OU 结构也是如此。
 
 本文介绍如何在 Azure AD DS 托管域中创建 OU。
 
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
-
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 要完成本文，您需要以下资源和特权：
 
 * 一个有效的 Azure 订阅。
-    * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+    * 如果没有 Azure 订阅，[请创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
@@ -68,19 +71,19 @@ Azure AD DS 托管域包括两个内置 O - *AADDC 计算机*和*AADDC 用户*�
 1. 要创建和管理 O，请从管理工具列表中选择**活动目录管理中心**。
 1. 在左侧窗格中，选择 Azure AD DS 托管域，如*aaddscontoso.com*。 将显示现有非统组织和资源的列表：
 
-    ![在活动目录管理中心中选择 Azure AD DS 托管域](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
+    ![在活动目录管理中心中选择 Azure AD DS 托管域](./media/create-ou/create-ou-adac-overview.png)
 
 1. "**任务**"窗格显示在活动目录管理中心的右侧。 在域下，如*aaddscontoso.com，* 选择 **"新>组织单位**"。
 
-    ![选择在活动目录管理中心创建新 OU 的选项](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
+    ![选择在活动目录管理中心创建新 OU 的选项](./media/create-ou/create-ou-adac-new-ou.png)
 
 1. 在 **"创建组织单位"** 对话框中，为新 OU 指定**名称**，如*MyCustomOu*。 提供 OU 的简短说明，例如*服务帐户的自定义 OU。* 如果需要，还可以为 OU 设置 **"按管理"** 字段。 要创建自定义 OU，请选择 **"确定**"。
 
-    ![从活动目录管理中心创建自定义 OU](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
+    ![从活动目录管理中心创建自定义 OU](./media/create-ou/create-ou-dialog.png)
 
 1. 回到活动目录管理中心，自定义 OU 现已列出，可供使用：
 
-    ![自定义 OU 可在活动目录管理中心使用](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
+    ![自定义 OU 可在活动目录管理中心使用](./media/create-ou/create-ou-done.png)
 
 ## <a name="next-steps"></a>后续步骤
 

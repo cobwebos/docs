@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: 68a9a7d5f90831bb2e0c9284cb71ae4b92edffad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee2743af2f8499aec04d8b6b733e1ba4c2a82083
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131409"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546080"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 
@@ -80,7 +80,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 |网关  |   HTTPS    |  所有 SDK    |   SQL （443）， 蒙哥DB （10250， 10255， 10256）， 表 （443）， 卡桑德拉 （10350）， 图形 （443）    |
 |直接    |     TCP    |  .NET SDK    | 10000 到 20000 范围内的端口 |
 
-Azure Cosmos DB 通过 HTTPS 提供了简单、开放的 RESTful 编程模型。 此外，它提供高效的 TCP 协议，该协议在其通信模型中也是 RESTful，可通过 .NET 客户端 SDK 获得。 TCP 协议使用 SSL 进行初始身份验证以及加密通信。 为了获得最佳性能，请尽可能使用 TCP 协议。
+Azure Cosmos DB 通过 HTTPS 提供了简单、开放的 RESTful 编程模型。 此外，它提供高效的 TCP 协议，该协议在其通信模型中也是 RESTful，可通过 .NET 客户端 SDK 获得。 TCP 协议使用 TLS 进行初始身份验证和加密流量。 为了获得最佳性能，请尽可能使用 TCP 协议。
 
 对于 SDK V3，在 中创建`CosmosClient`实例时配置连接模式。 `CosmosClientOptions` 请记住，直接模式是默认值。
 

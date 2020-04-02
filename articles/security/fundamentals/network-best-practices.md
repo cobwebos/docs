@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 3ded20f37a394e6adf726ad40c01aa36d41e4e8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299339"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548303"
 ---
 # <a name="azure-best-practices-for-network-security"></a>网络安全的 Azure 最佳实践
 本文讨论了增强网络安全的 Azure 最佳实践的集合。 这些最佳实践衍生自我们的 Azure 网络经验和客户的经验。
@@ -153,12 +153,12 @@ ExpressRoute 连接的位置可能会影响防火墙容量、可扩展性、可�
 - 仅接受安全连接，因此与服务器进行未加密的通信是不可接受的选项。
 - 要求将长时间运行的同一 TCP 连接上多个 HTTP 请求路由到或负载均衡到不同的后端服务器。
 
-**负载均衡选项**：使用 [Azure 应用程序网关](/azure/application-gateway/application-gateway-introduction)，一个 HTTP Web 流量负载均衡器。 应用程序网关支持网关上的端到端 SSL 加密和 [SSL 终止](/azure/application-gateway/application-gateway-introduction)。 然后，Web 服务器可以免受加密和解密开销以及未加密流向后端服务器的流量的负担。
+**负载均衡选项**：使用 [Azure 应用程序网关](/azure/application-gateway/application-gateway-introduction)，一个 HTTP Web 流量负载均衡器。 应用程序网关支持网关的端到端 TLS 加密和[TLS 端接](/azure/application-gateway/application-gateway-introduction)。 然后，Web 服务器可以免受加密和解密开销以及未加密流向后端服务器的流量的负担。
 
 **场景**：需要在位于 Azure 虚拟网络中的服务器之间对来自 Internet 的传入连接进行负载均衡。 也就是说当：
 
 - 具有接受来自 Internet 的传入请求的无状态应用程序时。
-- 不需要粘性会话或 SSL 卸载时。 粘性会话是与应用程序负载均衡一起使用的方法，用于实现服务器关联。
+- 不需要粘性会话或 TLS 卸载。 粘性会话是与应用程序负载均衡一起使用的方法，用于实现服务器关联。
 
 **负载均衡选项**：使用 Azure 门户[创建外部负载均衡器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)，该均衡器将多个 VM 之间的传入请求进行分散，以提供更高级别的可用性。
 

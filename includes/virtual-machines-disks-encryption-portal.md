@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3ba5d74aa245fbcd9d43f2b4398387d7f59e202c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6077db0a09b09f7e4bfb859902da53b173845e55
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299480"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520765"
 ---
 ### <a name="portal"></a>门户
 
@@ -42,7 +42,7 @@ ms.locfileid: "79299480"
 
     !["密钥保管库"资源设置窗格的屏幕截图。 在设置中显示生成/导入按钮。](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
-1. 将**密钥类型**设置为**RSA**和**RSA 密钥大小**设置为**2080**。
+1. 将**密钥类型**设置为**RSA**和**RSA 密钥大小**设置为**2048**。
 1. 根据需要填写其余选择，然后选择 **"创建**"。
 
     ![选择生成/导入按钮后出现的创建键边栏选项卡的屏幕截图](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
@@ -123,7 +123,7 @@ VM 部署过程与标准部署过程类似，唯一的区别是您需要将 VM �
     ![示例 VM 的屏幕截图，打开磁盘边栏选项卡。 OS 磁盘将突出显示，作为要选择的示例磁盘。](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
 
 1. 选择 **"加密****"，然后选择使用客户管理的密钥静态加密**，然后在下拉列表中选择磁盘加密集。
-1. 选择“保存”。****
+1. 选择“保存”。 
 
     ![示例 OS 磁盘的屏幕截图。 加密边栏选项卡处于打开状态，选择了使用客户管理的密钥进行静态加密，以及示例 Azure 密钥保管库。 进行这些选择后，将选择保存按钮。](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
 

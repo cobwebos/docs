@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563aa701c1403a1ef26c6073496e7e59c7c5096c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279242"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521846"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
@@ -40,9 +40,9 @@ WAF 可针对以下 Web 漏洞提供保护：
 
 CRS 3.1 包含下表中所示的 13 个规则组。 每个组包含多个可以禁用的规则。
 
-|规则组|描述|
+|规则组|说明|
 |---|---|
-|**[一般](#general-31)**|常规组|
+|**[常规](#general-31)**|常规组|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|锁定方法（PUT、PATCH）|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-31)**|防范端口和环境扫描程序|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-31)**|防范协议和编码问题|
@@ -60,9 +60,9 @@ CRS 3.1 包含下表中所示的 13 个规则组。 每个组包含多个可以�
 
 CRS 3.0 包含下表中所示的 12 个规则组。 每个组包含多个可以禁用的规则。
 
-|规则组|描述|
+|规则组|说明|
 |---|---|
-|**[一般](#general-30)**|常规组|
+|**[常规](#general-30)**|常规组|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|锁定方法（PUT、PATCH）|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-30)**|防范端口和环境扫描程序|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-30)**|防范协议和编码问题|
@@ -79,7 +79,7 @@ CRS 3.0 包含下表中所示的 12 个规则组。 每个组包含多个可以�
 
 CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可以禁用的规则。
 
-|规则组|描述|
+|规则组|说明|
 |---|---|
 |**[crs_20_protocol_violations](#crs20)**|防范协议违规（例如无效字符，或使用请求正文执行 GET）|
 |**[crs_21_protocol_anomalies](#crs21)**|防范错误的标头信息|
@@ -100,20 +100,20 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-31"></a> <p x-ms-format-detection="none">常规</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |200004|可能的多部分不匹配边界。|
 
 ### <a name="p-x-ms-format-detectionnonerequest-911-method-enforcementp"></a><a name="crs911-31"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |911100|方法不受策略允许|
 
 
 ### <a name="p-x-ms-format-detectionnonerequest-913-scanner-detectionp"></a><a name="crs913-31"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |913100|找到了与安全扫描程序关联的用户代理|
 |913101|找到了与脚本/通用 HTTP 客户端关联的用户代理|
@@ -124,7 +124,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-31"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |920100|无效的 HTTP 请求行|
 |920120|尝试了多部分/表单数据绕过|
@@ -176,7 +176,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-921-protocol-attackp"></a><a name="crs921-31"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |921110|HTTP 请求走私攻击|
 |921120|HTTP 响应拆分攻击|
@@ -190,7 +190,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-930-application-attack-lfip"></a><a name="crs930-31"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |930100|路径遍历攻击 (/../)|
 |930110|路径遍历攻击 (/../)|
@@ -199,7 +199,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-931-application-attack-rfip"></a><a name="crs931-31"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |931100|可能的远程文件包含 (RFI) 攻击 = 使用 IP 地址的 URL 参数|
 |931110|可能的远程文件包含 (RFI) 攻击 = 对 URL 有效负载使用常见 RFI 漏洞参数名使用|
@@ -208,7 +208,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-31"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |932100|远程命令执行：Unix 命令注入|
 |932105|远程命令执行：Unix 命令注入|
@@ -226,7 +226,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-31"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |933100|PHP 注入攻击 = 找到开始/结束标记|
 |933110|PHP 注入攻击 = 找到 PHP 脚本文件上传|
@@ -245,7 +245,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-31"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |941100|检测到通过 libinjection 展开的 XSS 攻击|
 |941101|检测到通过 libinjection 展开的 XSS 攻击|
@@ -277,10 +277,11 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-942-application-attack-sqlip"></a><a name="crs942-31"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |942100|检测到通过 libinjection 展开的 SQL 注入攻击|
 |942110|SQL 注入攻击：检测到常见注入测试|
+|942120|SQL 注入攻击：检测到 SQL 运算符|
 |942130|SQL 注入攻击：检测到 SQL 陶体学。|
 |942140|SQL 注入攻击 = 检测到常用 DB 名称|
 |942150|SQL 注入攻击|
@@ -326,7 +327,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-31"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |943100|可能的会话固定攻击 = 在 HTML 中设置 Cookie 值|
 |943110|可能的会话固定攻击 = 包含域外引用方的 SessionID 参数名称|
@@ -334,7 +335,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-944-application-attack-session-javap"></a><a name="crs944-31"></a> <p x-ms-format-detection="none">REQUEST-944-APPLICATION-ATTACK-SESSION-JAVA</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |944120|可能的有效负载执行和远程命令执行|
 |944130|可疑的 Java 类|
@@ -346,20 +347,20 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-30"></a> <p x-ms-format-detection="none">常规</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |200004|可能的多部分不匹配边界。|
 
 ### <a name="p-x-ms-format-detectionnonerequest-911-method-enforcementp"></a><a name="crs911-30"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |911100|方法不受策略允许|
 
 
 ### <a name="p-x-ms-format-detectionnonerequest-913-scanner-detectionp"></a><a name="crs913-30"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |913100|找到了与安全扫描程序关联的用户代理|
 |913110|找到了与安全扫描程序关联的请求标头|
@@ -369,7 +370,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-30"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |920100|无效的 HTTP 请求行|
 |920130|未能分析请求正文。|
@@ -415,7 +416,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-921-protocol-attackp"></a><a name="crs921-30"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |921100|HTTP 请求走私攻击。|
 |921110|HTTP 请求走私攻击|
@@ -430,7 +431,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-930-application-attack-lfip"></a><a name="crs930-30"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |930100|路径遍历攻击 (/../)|
 |930110|路径遍历攻击 (/../)|
@@ -439,7 +440,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-931-application-attack-rfip"></a><a name="crs931-30"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |931100|可能的远程文件包含 (RFI) 攻击 = 使用 IP 地址的 URL 参数|
 |931110|可能的远程文件包含 (RFI) 攻击 = 对 URL 有效负载使用常见 RFI 漏洞参数名使用|
@@ -448,7 +449,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-30"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |932120|远程命令执行 = 找到 Windows PowerShell 命令|
 |932130|远程命令执行 = 找到 Unix Shell 表达式|
@@ -459,7 +460,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-30"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |933100|PHP 注入攻击 = 找到开始/结束标记|
 |933110|PHP 注入攻击 = 找到 PHP 脚本文件上传|
@@ -475,7 +476,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-30"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |941100|检测到通过 libinjection 展开的 XSS 攻击|
 |941110|XSS 筛选器 - 类别 1 = 脚本标记向量|
@@ -502,7 +503,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-942-application-attack-sqlip"></a><a name="crs942-30"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |942100|检测到通过 libinjection 展开的 SQL 注入攻击|
 |942110|SQL 注入攻击：检测到常见注入测试|
@@ -534,7 +535,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-30"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |943100|可能的会话固定攻击 = 在 HTML 中设置 Cookie 值|
 |943110|可能的会话固定攻击 = 包含域外引用方的 SessionID 参数名称|
@@ -546,7 +547,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="crs_20_protocol_violations"></a><a name="crs20"></a>crs_20_protocol_violations
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |960911|无效的 HTTP 请求行|
 |981227|Apache 错误 = 请求中的 URI 无效。|
@@ -572,7 +573,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="crs_21_protocol_anomalies"></a><a name="crs21"></a>crs_21_protocol_anomalies
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |960008|请求缺少 Host 标头|
 |960007|Host 标头为空|
@@ -585,7 +586,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="crs_23_request_limits"></a><a name="crs23"></a>crs_23_request_limits
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |960209|参数名称太长|
 |960208|参数值太长|
@@ -596,7 +597,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="crs_30_http_policy"></a><a name="crs30"></a>crs_30_http_policy
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |960032|方法不受策略允许|
 |960010|请求内容类型不受策略允许|
@@ -606,7 +607,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="crs_35_bad_robots"></a><a name="crs35"></a>crs_35_bad_robots
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |990002|请求指示安全扫描程序已扫描站点|
 |990901|请求指示安全扫描程序已扫描站点|
@@ -615,7 +616,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="crs_40_generic_attacks"></a><a name="crs40"></a> crs_40_generic_attacks
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |960024|元字符异常检测警报 - 重复的非单词字符|
 |950008|注入未记录的 ColdFusion 标记|
@@ -644,7 +645,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="crs_41_sql_injection_attacks"></a><a name="crs41sql"></a> crs_41_sql_injection_attacks
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |981231|检测到 SQL 注释序列。|
 |981260|识别到 SQL 十六进制编码|
@@ -681,7 +682,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="crs_41_xss_attacks"></a><a name="crs41xss"></a>crs_41_xss_attacks
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |973336|XSS 筛选器 - 类别 1 = 脚本标记向量|
 |973338|XSS 筛选器 - 类别 3 = Javascript URI 向量|
@@ -786,13 +787,13 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 ### <a name="crs_42_tight_security"></a><a name="crs42"></a> crs_42_tight_security
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |950103|路径遍历攻击|
 
 ### <a name="crs_45_trojans"></a><a name="crs45"></a> crs_45_trojans
 
-|RuleId|描述|
+|RuleId|说明|
 |---|---|
 |950110|后门访问|
 |950921|后门访问|

@@ -4,12 +4,12 @@ description: 了解如何在 Azure 自动化中使用 Azure AD 作为对 Azure �
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 77476c67761a950430b39d5baddf2c6efd77f1a2
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 90338a1ffa79e6c2347832cb2e74633db02ec72d
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479443"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548343"
 ---
 # <a name="use-azure-ad-in-azure-automation-to-authenticate-to-azure"></a>在 Azure 自动化中使用 Azure AD 对 Azure 进行身份验证
 
