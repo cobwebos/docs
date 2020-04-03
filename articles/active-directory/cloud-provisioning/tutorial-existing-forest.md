@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa14b45235f2a62f05e84efafc41b899dc531d49
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aa612ad30ae0faa42071613be15c1d91fb96b8f6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74868671"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80332268"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>将现有林和新林与单个 Azure AD 租户集成
 
@@ -43,7 +43,7 @@ ms.locfileid: "74868671"
 
      | 端口号 | 用途 |
      | --- | --- |
-     | **80** | 下载证书吊销列表 (Crl) 的同时验证 SSL 证书 |
+     | **80** | 下载证书吊销列表 (CRL) 的同时验证 TLS/SSL 证书 |
      | **443** | 处理与服务的所有出站通信 |
      | **8080**（可选） | 如果端口 443 不可用，代理将每隔 10 分钟通过端口 8080 报告其状态。 此状态显示在 Azure AD 门户上。 |
      
