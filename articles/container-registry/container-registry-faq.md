@@ -3,14 +3,14 @@ title: 常见问题
 description: 有关 Azure 容器注册表服务的常见问题的解答
 author: sajayantony
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7452b5dd3c952a13a28566914d2fe513689d4751
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78403221"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618795"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
@@ -104,11 +104,12 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 - [如何启用 TLS 1.2？](#how-to-enable-tls-12)
 - [Azure 容器注册表是否支持内容信任？](#does-azure-container-registry-support-content-trust)
 - [在无权管理注册表资源的情况下如何授予提取或推送映像的访问权限？](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
-- [如何为注册表启用自动映像隔离](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [如何为注册表启用自动映像隔离？](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [如何启用匿名拉取访问？](#how-do-i-enable-anonymous-pull-access)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>如何访问 Docker 注册表 HTTP API V2？
 
-ACR 支持 Docker 注册表 HTTP API V2。 可通过 `https://<your registry login server>/v2/` 访问 API。 示例： `https://mycontainerregistry.azurecr.io/v2/`
+ACR 支持 Docker 注册表 HTTP API V2。 可通过 `https://<your registry login server>/v2/` 访问 API。 示例：`https://mycontainerregistry.azurecr.io/v2/`
 
 ### <a name="how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository"></a>如何删除不由存储库中的任何标记引用的所有清单？
 
@@ -251,13 +252,18 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 
 映像隔离目前是 ACR 的预览版功能。 可以启用注册表的隔离模式，使普通用户只能看到已成功通过安全扫描的映像。 有关详细信息，请参阅 [ACR GitHub 存储库](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
 
+### <a name="how-do-i-enable-anonymous-pull-access"></a>如何启用匿名拉取访问？
+
+为匿名（公共）拉取访问设置 Azure 容器注册表目前是预览功能。 要启用公众访问，请在 上https://aka.ms/acr/support/create-ticket打开支持票证。 有关详细信息，请参阅[Azure 反馈论坛](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
+
+
 ## <a name="diagnostics-and-health-checks"></a>诊断和运行状况检查
 
 - [检查运行状况`az acr check-health`](#check-health-with-az-acr-check-health)
 - [Docker 提取失败并出现错误：net/http: 等待连接时取消了请求(等待标头时超过了 Client.Timeout)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [Docker 推送成功，但 Docker 拉拔失败，出现错误：未授权：需要身份验证](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [`az acr login`成功，但 Docker 命令失败，错误：未经授权的身份验证要求](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
-- [启用并获取 docker 守护进程调试日志](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
+- [启用并获取 docker 守护进程调试日志](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [新用户权限在更新后可能不会立即生效](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [未在 REST API 调用中以正确的格式指定身份验证信息](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [为何 Azure 门户不列出我的所有存储库或标记？](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
@@ -323,13 +329,13 @@ unauthorized: authentication required
 
 请确保使用全小写的服务器 URL（例如 `docker push myregistry.azurecr.io/myimage:latest`），即使注册表资源名称是大写的或大小写混合的（例如 `myRegistry`）。
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>启用和获取 Docker 守护程序的调试日志  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>启用和获取 Docker 守护程序的调试日志    
 
 使用 `debug` 选项启动 `dockerd`。 首先创建 Docker 守护程序配置文件 (`/etc/docker/daemon.json`)（如果不存在），并添加 `debug` 选项：
 
 ```json
-{   
-    "debug": true   
+{    
+    "debug": true    
 }
 ```
 
@@ -339,12 +345,12 @@ unauthorized: authentication required
 sudo service docker restart
 ```
 
-可以在 [Docker 文档](https://docs.docker.com/engine/admin/#enable-debugging)中找到详细信息。 
+可以在 [Docker 文档](https://docs.docker.com/engine/admin/#enable-debugging)中找到详细信息。    
 
- * 日志可能在不同的位置生成，具体取决于所用的系统。 例如，对于 Ubuntu 14.04，日志位置为 `/var/log/upstart/docker.log`。   
+ * 日志可能在不同的位置生成，具体取决于所用的系统。 例如，对于 Ubuntu 14.04，日志位置为 `/var/log/upstart/docker.log`。    
 有关详细信息，请参阅 [Docker 文档](https://docs.docker.com/engine/admin/#read-the-logs)。    
 
- * 对于用于 Windows 的 Docker，将在 %LOCALAPPDATA%/docker/ 下生成日志。 但是，此位置不一定包含所有调试信息。   
+ * 对于用于 Windows 的 Docker，将在 %LOCALAPPDATA%/docker/ 下生成日志。 但是，此位置不一定包含所有调试信息。    
 
    若要访问完整的守护程序日志，可能需要执行一些额外的步骤：
 

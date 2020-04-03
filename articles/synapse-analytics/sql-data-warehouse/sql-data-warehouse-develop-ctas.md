@@ -1,6 +1,6 @@
 ---
 title: CREATE TABLE AS SELECT (CTAS)
-description: 用于开发解决方案的 SQL 分析中创建表作为 SELECT （CTAS） 语句的说明和示例。
+description: Synapse SQL 中用于开发解决方案的创建表作为 SELECT （CTAS） 语句的说明和示例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: bb9ff52bd7d2e4cfd1a1df4d780a4c369380284f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e5dc8835a6d5f235cf269edd4e9f069c904e1b7e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350602"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582146"
 ---
-# <a name="create-table-as-select-ctas-in-sql-analytics"></a>在 SQL 分析中创建表作为选择 （CTAS）
+# <a name="create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS)
 
-本文介绍了 SQL Analytics 中用于开发解决方案的创建表作为 SELECT （CTAS） T-SQL 语句。 此外，本文还提供了代码示例。
+本文介绍了 Synapse SQL 中用于开发解决方案的创建表作为 SELECT （CTAS） T-SQL 语句。 此外，本文还提供了代码示例。
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) (CTAS) 语句是所提供的最重要的 T-SQL 功能之一。 CTAS 是根据 SELECT 语句的输出创建新表的并行化操作。 CTAS 是在表中创建和插入数据的最简单快速方法，只需使用一条命令。
+[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) 语句是所提供的最重要的 T-SQL 功能之一。 CTAS 是根据 SELECT 语句的输出创建新表的并行化操作。 CTAS 是在表中创建和插入数据的最简单快速方法，只需使用一条命令。
 
 ## <a name="selectinto-vs-ctas"></a>选择。。。INTO 与 CTAS
 
-CTAS 是 [SELECT...INTO](/sql/t-sql/queries/select-into-clause-transact-sql) 语句的自定义程度更高的版本。
+CTAS 是 [SELECT...INTO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句的自定义程度更高的版本。
 
 下面是一个简单的 SELECT..INTO 示例：
 
@@ -123,7 +123,7 @@ DROP TABLE FactInternetSales_old;
 
 ## <a name="use-ctas-to-work-around-unsupported-features"></a>使用 CTAS 解决不支持的功能
 
-还可以使用 CTAS 来解决下列多种不支持的功能。 此方法通常可以证明是有帮助的，因为不仅代码符合要求，而且在 SQL Analytics 上通常运行得更快。 这种性能提升是完全并行化设计的结果。 方案包括：
+还可以使用 CTAS 来解决下列多种不支持的功能。 此方法通常可以证明是有帮助的，因为不仅代码符合要求，而且它通常会在 Synapse SQL 上运行得更快。 这种性能提升是完全并行化设计的结果。 方案包括：
 
 * UPDATE 中的 ANSI JOIN
 * DELETE 中的 ANSI JOIN
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-SQL Analytics 不支持 ANSI 加入`FROM``UPDATE`语句子句，因此如果不修改它，就无法使用前面的示例。
+Synapse SQL 不支持`FROM``UPDATE`语句子句中的 ANSI 联接，因此如果不修改它，就不能使用前面的示例。
 
 可以使用 CTAS 和隐式联接的组合来替换上述示例：
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>替换 Delete 语句的 ANSI Join
 
-有时，删除数据的最佳方法是使用 CTAS，特别是对于使用 ANSI Join 语法的 `DELETE` 语句。 这是因为 SQL 分析不支持 ANSI 加入`FROM``DELETE`语句子句。 无需删除数据，可以选择要保留的数据。
+有时，删除数据的最佳方法是使用 CTAS，特别是对于使用 ANSI Join 语法的 `DELETE` 语句。 这是因为 Synapse SQL 不支持 ANSI 在`FROM``DELETE`语句子句中的联接。 无需删除数据，可以选择要保留的数据。
 
 下面是转换后的 `DELETE` 语句示例：
 
@@ -412,7 +412,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 可以看出，保持类型一致性并维护 CTAS 上的可为 null 属性是工程最佳做法。 这有助于维护计算的完整性，而且还可确保分区切换能够实现。
 
-CTAS 是 SQL 分析中最重要的语句之一。 请确保全面了解该语句。 请参阅 [CTAS 文档](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)。
+CTAS 是 SynapsE SQL 中最重要的语句之一。 请确保全面了解该语句。 请参阅 [CTAS 文档](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="next-steps"></a>后续步骤
 

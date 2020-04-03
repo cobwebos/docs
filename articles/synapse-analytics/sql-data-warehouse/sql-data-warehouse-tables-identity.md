@@ -1,6 +1,6 @@
 ---
 title: 使用 IDENTITY 创建代理键
-description: 使用 IDENTITY 属性在 SQL Analytics 中的表上创建代理项的建议和示例。
+description: 使用 IDENTITY 属性在 Synapse SQL 池中的表上创建代理项的建议和示例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ab8f4a64f7273f0fa15c20f324e132003d5afe32
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d4a9880ed7ab26d0127026f49c0bc781cfc2a941
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351294"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586329"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>使用 IDENTITY 在 SQL 分析中创建代理密钥
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用 IDENTITY 在 Synapse SQL 池中创建代理项
 
-使用 IDENTITY 属性在 SQL Analytics 中的表上创建代理项的建议和示例。
+使用 IDENTITY 属性在 Synapse SQL 池中的表上创建代理项的建议和示例。
 
 ## <a name="what-is-a-surrogate-key"></a>什么是代理键
 
-基于表的代理键是一个列，其中包含针对每个行的唯一标识符。 此键不是从表数据生成的。 数据建模者喜欢在设计 SQL Analytics 模型时在其表上创建代理项。 可以使用 IDENTITY 属性轻松高效地实现此目标，而不会影响负载性能。  
+基于表的代理键是一个列，其中包含针对每个行的唯一标识符。 此键不是从表数据生成的。 数据建模者想要在设计数据仓库模型时在其表上创建代理键。 可以使用 IDENTITY 属性轻松高效地实现此目标，而不会影响负载性能。  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>创建包含 IDENTITY 列的表
 
-IDENTITY 属性旨在横向扩展到 SQL Analytics 数据库中的所有分布，而不会影响负载性能。 因此，IDENTITY 的实现旨在实现这些目标。
+IDENTITY 属性旨在横向扩展到 Synapse SQL 池中的所有分布，而不会影响负载性能。 因此，IDENTITY 的实现旨在实现这些目标。
 
 在首次使用类似以下语句的语法创建表时，可以将表定义为具有 IDENTITY 属性：
 
@@ -50,7 +50,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>值的分配
 
-IDENTITY 属性不保证分配代理值的顺序，这反映了 SQL Server 和 Azure SQL 数据库的行为。 但是，在 SQL 分析中，缺少保证更为明显。
+IDENTITY 属性不保证分配代理值的顺序，这反映了 SQL Server 和 Azure SQL 数据库的行为。 但是，在 Synapse SQL 池中，缺少保证更为明显。
 
 下面的示例进行了说明：
 
@@ -100,7 +100,7 @@ CREATE TABLE AS SELECT (CTAS) 遵循 SELECT..INTO 中记录的相同 SQL Server 
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>将值显式插入到 IDENTITY 列
 
-SQL 分析`SET IDENTITY_INSERT <your table> ON|OFF`支持语法。 可以使用此语法将值显式插入 IDENTITY 列。
+突触 SQL 池支持`SET IDENTITY_INSERT <your table> ON|OFF`语法。 可以使用此语法将值显式插入 IDENTITY 列。
 
 许多数据建模者喜欢在其维度中为某些行使用预定义的负值。 例如，-1 或“未知成员”行。
 
@@ -161,7 +161,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 在将数据加载到包含 IDENTITY 列的表时，当前无法使用 `CREATE TABLE AS SELECT`。
 >
 
-有关加载数据的详细信息，请参阅为 SQL 分析和[加载最佳实践](guidance-for-loading-data.md)[设计提取、加载和转换 （ELT）。](design-elt-data-loading.md)
+有关加载数据的详细信息，请参阅为[Synapse SQL 池设计提取、加载和转换 （ELT）](design-elt-data-loading.md)和[加载最佳做法](guidance-for-loading-data.md)。
 
 ## <a name="system-views"></a>系统视图
 
@@ -195,7 +195,7 @@ AND     tb.name = 'T1'
 - 当列也同样是分发键时
 - 当表是外部表时
 
-SQL 分析不支持以下相关功能：
+Synapse SQL 池不支持以下相关功能：
 
 - [身份（）](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)

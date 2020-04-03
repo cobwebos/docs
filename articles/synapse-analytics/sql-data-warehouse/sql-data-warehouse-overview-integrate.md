@@ -1,6 +1,6 @@
 ---
 title: 构建集成解决方案
-description: 与使用 SQL Analytics 预配的数据仓库集成的解决方案工具和合作伙伴。
+description: 与 Synapse SQL 池集成的解决方案工具和合作伙伴。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,15 +11,16 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 680e561c08c5113e3d7f26b00422f3696bb133e9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c8e3598e55d3f90ab2b7401380406677f56c0ce3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350223"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586484"
 ---
-# <a name="integrate-other-services-with-a-sql-analytics-data-warehouse"></a>将其他服务与 SQL 分析数据仓库集成 
-Azure 突触分析中的 SQL 分析功能使用户能够与 Azure 中的许多其他服务集成。 使用 SQL Analytics，您可以通过 SQL 池资源创建数据仓库，然后可以使用其他服务，其中一些服务包括：
+# <a name="integrate-other-services-with-a-synapse-sql-pool"></a>将其他服务与 Synapse SQL 池集成
+
+Azure 突触分析中的 Synapse SQL 池功能使用户能够与 Azure 中的许多其他服务集成。 使用 Synapse SQL，您可以通过其 SQL 池资源创建数据仓库，然后可以使用其他服务，其中一些服务包括：
 
 * Power BI
 * Azure 数据工厂

@@ -4,18 +4,18 @@ description: 了解 Azure Monitor 中的操作规则是什么，以及如何配�
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0498325984641641d6dfc9ee6b89f66800b5c7d2
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 6585890395d7656f239ac3098cd374ecd4757842
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546478"
+ms.locfileid: "80618991"
 ---
 # <a name="action-rules-preview"></a>操作规则（预览版）
 
 操作规则可帮助你在任何 Azure 资源管理器范围（Azure 订阅、资源组或目标资源）定义或消除操作。 它们包含各种筛选器，可帮助你将应用范围缩减到要处理的特定警报实例子集。
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4qXeL]
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rBZ2]
 
 ## <a name="why-and-when-should-you-use-action-rules"></a>为何以及何时应使用操作规则？
 
@@ -102,9 +102,9 @@ ms.locfileid: "80546478"
 ### <a name="action-rule-details"></a>操作规则详细信息
 
 最后，配置操作规则的以下详细信息
-* 名称
+* “属性”
 * 该规则要保存到的资源组
-* 说明 
+* 描述 
 
 ## <a name="example-scenarios"></a>示例方案
 
@@ -150,7 +150,7 @@ Contoso [在订阅级别定义了一个指标警报](https://docs.microsoft.com/
 
 在此处，可以通过选中相应的复选框，大规模启用、禁用或删除操作规则。 选择某个操作规则会打开其配置页。 此页可帮助你更新该操作规则的定义，以及启用或禁用该规则。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 结合[“结果数”](alerts-unified-log.md)选项创建的日志警报会使用整个搜索结果生成单个警报实例（可能跨多台计算机）。 在此方案中，如果操作规则使用“警报上下文(有效负载)”筛选器，则只要有匹配项，该规则就会作用于警报实例。**** 在上述方案 2 中，如果生成的日志警报的搜索结果包含 **Computer-01** 和 **Computer-02**，则会消除整个通知。 完全不会为 **Computer-02** 生成通知。
 
@@ -160,7 +160,7 @@ Contoso [在订阅级别定义了一个指标警报](https://docs.microsoft.com/
 
 ![操作规则和日志警报（结果数）](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 
 ### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>在配置操作规则时，我希望看到所有可能重叠的操作规则，以避免收到重复通知。 可以做到这一点吗？
 

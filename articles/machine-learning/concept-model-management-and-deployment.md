@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 40e335ee0377c560b15a588269cbdb39cdebca82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5aaf8adf33d27f8ebb99c8ca3a873d958632a4f
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477351"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616843"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MOPS：使用 Azure 机器学习进行模型管理、部署和监视
 
@@ -24,7 +24,7 @@ ms.locfileid: "79477351"
 
 ## <a name="what-is-mlops"></a>什么是 MLOps？
 
-机器学习操作 （MLOps） 基于提高工作流效率的[DevOps](https://azure.microsoft.com/overview/what-is-devops/)原则和实践。 例如，持续集成、交付和部署。 MOps 将这些主体应用于机器学习过程，目标是：
+机器学习操作 （MLOps） 基于提高工作流效率的[DevOps](https://azure.microsoft.com/overview/what-is-devops/)原则和实践。 例如，持续集成、交付和部署。 MOps 将这些原则应用于机器学习过程，目标是：
 
 * 更快的模型实验和开发
 * 更快地将模型部署到生产中

@@ -5,12 +5,12 @@ author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282245"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617114"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>使用反向代理连接到安全服务
 
@@ -34,7 +34,7 @@ ms.locfileid: "79282245"
 
 ### <a name="service-certificate-validation-options"></a>服务证书验证选项 
 
-- 无：反向代理跳过对代理服务证书的验证，并建立安全连接****。 此选项为默认行为。
+- 无：反向代理跳过对代理服务证书的验证，并建立安全连接****。 这是默认行为。
 在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中，指定值为 **None** 的 **ApplicationCertificateValidationPolicy**。
 
    ```json
@@ -77,7 +77,7 @@ ms.locfileid: "79282245"
 
    若要指定服务公用名称和颁发者指纹，请在 **fabricSettings** 下添加 [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) 节，如下所示。 可在 **parameters** 数组中添加多个证书公用名称和颁发者指纹对。 
 
-   如果连接终结点反向代理后提供的证书的公用名称和颁发者指纹与此处指定的任何值匹配，则建立 SSL 通道。 
+   如果终结点反向代理连接到显示公共名称证书，并且颁发者指纹与此处指定的任何值匹配，则建立 TLS 通道。
    如果与证书详细信息不匹配，则反向代理拒绝客户端请求，并显示 502（网关错误）状态代码。 并且 HTTP 状态行还会显示“无效 SSL 证书”短语。 
 
    ```json
@@ -143,7 +143,7 @@ ms.locfileid: "79282245"
    }
    ```
 
-   如果此配置项中列出了服务器证书的指纹，则反向代理的 SSL 连接成功。 否则将终止连接，拒绝客户端请求，并显示 502（网关错误）。 并且 HTTP 状态行还会显示“无效 SSL 证书”短语。
+   如果服务器证书的指纹列在此配置条目中，则反向代理将继承 TLS 连接。 否则将终止连接，拒绝客户端请求，并显示 502（网关错误）。 并且 HTTP 状态行还会显示“无效 SSL 证书”短语。
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>服务同时公开安全和不安全终结点时的终结点选择逻辑
 Service Fabric 支持为一个服务配置多个终结点。 有关详细信息，请参阅[在服务清单中指定资源](service-fabric-service-manifest-resources.md)。
@@ -173,12 +173,12 @@ Service Fabric 支持为一个服务配置多个终结点。 有关详细信息�
 > 在 **SecureOnlyMode** 下运行时，如果客户端已指定对应于 HTTP（不安全）终结点的 **ListenerName**，则反向代理拒绝请求，并显示 404 (Not Found) HTTP 状态代码。
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>通过反向代理设置客户端证书身份验证
-反向代理和所有客户端证书数据丢失时，SSL 将终止。 若要让服务执行客户端证书身份验证，请在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中指定 **ForwardClientCertificate** 设置。
+TLS 终止发生在反向代理处，并且所有客户端证书数据都丢失。 若要让服务执行客户端证书身份验证，请在 [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) 节中指定 **ForwardClientCertificate** 设置。
 
-1. 如果将 **ForwardClientCertificate** 设置为 **false**，在反向代理与客户端执行 SSL 握手期间，反向代理不会请求客户端证书。
-此选项为默认行为。
+1. 当**转发客户端证书**设置为**false**时，反向代理将不会在 TLS 与客户端握手期间请求客户端证书。
+这是默认行为。
 
-2. 如果将 **ForwardClientCertificate** 设置为 **true**，在反向代理与客户端执行 SSL 握手期间，反向代理会请求客户端的证书。
+2. 当**转发客户端证书**设置为**true**时，反向代理在与客户端的 TLS 握手期间请求客户端的证书。
 然后会转发名为 X-Client-Certificate 的自定义 HTTP 标头中的客户端证书数据****。 标头值是客户端证书的 base64 编码 PEM 格式字符串。 检查证书数据后，服务可以接受/拒绝请求，并显示相应状态代码。
 如果客户端不提供证书，反向代理将转发空标头，并让服务处理该情况。
 

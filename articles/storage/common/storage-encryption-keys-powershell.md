@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/10/2020
+ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 590f129d0ce41c3a8afc80340f26bc31c2fc789a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f24c89a53af5e618d64b78d6001040190c1f339c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478180"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618330"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>通过 PowerShell 使用 Azure Key Vault 配置客户管理的密钥
 
@@ -63,7 +63,7 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
 Set-AzKeyVaultAccessPolicy `
     -VaultName $keyVault.VaultName `
     -ObjectId $storageAccount.Identity.PrincipalId `
-    -PermissionsToKeys wrapkey,unwrapkey,get,recover
+    -PermissionsToKeys wrapkey,unwrapkey,get
 ```
 
 ## <a name="create-a-new-key"></a>新建密钥

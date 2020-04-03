@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d0b32fb2b52d2dbb126053247cff83f05781ba5e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 44dbc03a41cfde94c344ae331b21d7536778050c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350873"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619105"
 ---
 # <a name="best-practices-for-sql-analytics-in-azure-synapse-analytics-formerly-sql-dw"></a>有关 Azure Synapse Analytics 中的 SQL Analytics（前称为 SQL DW）的最佳做法
 
-本文包含一系列最佳做法，可帮助你从 [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) 部署中获得最佳性能。  本文旨在提供一些基本的指导，但也强调了几个重点。  每部分将介绍一个概念，并提供哪里可以阅读深度介绍的详细文章。 主题的顺序按重要性排列。 
+本文包含一系列最佳做法，可帮助你从 [SQL Analytics](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) 部署中获得最佳性能。  本文旨在提供一些基本的指导，但也强调了几个重点。  每部分将介绍一个概念，并提供哪里可以阅读深度介绍的详细文章。 主题的顺序按重要性排列。 
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>使用暂停和缩放来降低成本
 

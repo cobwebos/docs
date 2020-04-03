@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: cef3176c99cd57ae229b602feb3c825081fcfe3e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 906c7728365cc902549bd46c57972e1c90af979c
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548376"
+ms.locfileid: "80607479"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -107,7 +107,7 @@ ms.locfileid: "80548376"
 
 所有父 Runbook 都包含 _WhatIf_ 参数。 设置为 **True** 时，_WhatIf_ 支持详细说明在无 _WhatIf_ 参数的情况下运行时 Runbook 的确切行为，并验证是否以正确 VM 为目标。 仅当 _WhatIf_ 参数设置为 **False** 时，Runbook 才执行其定义的操作。
 
-|Runbook | 参数 | 说明|
+|Runbook | 参数 | 描述|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 从父 runbook 调用。 此 runbook 为 AutoStop 方案按每个资源创建警报。|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> VMList：以逗号分隔的 VM 列表。 例如“vm1, vm2, vm3”__。<br> *WhatIf* 对 runbook 逻辑进行验证但不执行。|
@@ -124,7 +124,7 @@ ms.locfileid: "80548376"
 
 下表列出了在自动化帐户中创建的变量。 仅修改以 External 为前缀的变量****。 修改以 **Internal** 为前缀的变量将导致不利影响。
 
-|变量 | 说明|
+|变量 | 描述|
 |---------|------------|
 |External_AutoStop_Condition | 在触发警报之前配置条件时所需的条件运算符。 可接受的值包括：**GreaterThan**、**GreaterThanOrEqual**、**LessThan** 和 **LessThanOrEqual**。|
 |External_AutoStop_Description | CPU 百分比超过阈值时停止 VM 的警报。|
@@ -140,8 +140,8 @@ ms.locfileid: "80548376"
 |External_Stop_ResourceGroupNames | 指定针对停止操作的一个或多个资源组，使用逗号分隔值。|
 |External_WaitTimeForVMRetrySeconds |在序列启动/停止运行簿的 VM 上执行操作的等待时间（以秒为单位）。<br> 默认值为 2100 秒，支持配置为最大值 10800 或 3 小时。|
 |Internal_AutomationAccountName | 指定自动化帐户的名称。|
-|Internal_AutoSnooze_ARM_WebhookURI | 为经典 VM 的自动停止方案指定 Webhook URI。|
-|Internal_AutoSnooze_WebhookUri | 指定为 AutoStop 方案调用的 Webhook URI。|
+|Internal_AutoSnooze_ARM_WebhookURI | 为 VM 的自动停止方案指定 Webhook URI。|
+|Internal_AutoSnooze_WebhookUri | 为经典 VM 的自动停止方案指定 Webhook URI。|
 |Internal_AzureSubscriptionId | 指定 Azure 订阅 ID。|
 |Internal_ResourceGroupName | 指定自动化帐户资源组名称。|
 
@@ -157,7 +157,7 @@ ms.locfileid: "80548376"
 
 不应启用所有计划，因为这可能会创建重叠的计划操作。 最好确定希望执行哪些优化，然后再进行相应的修改。 请参阅概述部分的示例方案以查看进一步解释。
 
-|计划名称 | 频率 | 说明|
+|计划名称 | 频率 | 描述|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 每隔 8 小时 | 每隔 8 小时运行一次 AutoStop_CreateAlert_Parent Runbook，它将基于 Azure 自动化变量中的 External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames 和 External_ExcludeVMNames 的值依次停止 VM。 或者，可以使用 VMList 参数指定用逗号分隔的 VM 列表。|
 |Scheduled_StopVM | 用户定义，每天 | 每天在指定的时间运行带有 _Stop_ 参数的 Scheduled_Parent Runbook。自动停止所有满足通过资产变量定义的规则 VM。启用相关计划 Scheduled-StartVM****。|

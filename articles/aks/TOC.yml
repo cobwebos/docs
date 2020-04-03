@@ -116,7 +116,7 @@
       href: security-hardened-vm-host-image.md
     - name: Azure Kubernetes 服务诊断概述
       href: concepts-diagnostics.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 群集操作
       items:
@@ -314,10 +314,6 @@
                   maintainContext: true
         - name: 使用 Helm 运行应用程序
           href: kubernetes-helm.md
-        - name: 使用 Open Service Broker for Azure
-          href: integrate-azure.md
-        - name: 将用于 MongoDB 的 Cosmos DB API 与 OSBA 配合使用
-          href: use-cosmosdb-osba-mongo-app.md
         - name: 使用 OpenFaaS
           href: openfaas.md
         - name: 运行 Spark 作业
@@ -368,7 +364,7 @@
           href: deployment-center-launcher.md
         - name: 适用于 Kubernetes 的 GitHub 操作
           href: ../aks/kubernetes-action.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 常见问题
           href: troubleshooting.md

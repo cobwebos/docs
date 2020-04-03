@@ -58,8 +58,6 @@
       href: sql-database-managed-instance-quickstart-guide.md
 - name: 概念
   items:
-    - name: 常见功能文档
-      href: sql-database-paas-index.yml
     - name: 功能比较
       href: sql-database-features.md
     - name: 操作指南
@@ -280,8 +278,6 @@
                   href: sql-database-xevent-code-ring-buffer.md
     - name: 可伸缩性
       items:
-        - name: 可伸缩性文档
-          href: sql-database-scalability-index.yml
         - name: 纵向扩展/缩减
           href: sql-database-scale-resources.md
         - name: 读取横向扩展
@@ -310,8 +306,6 @@
           href: sql-database-elastic-transactions-overview.md
     - name: 数据库功能
       items:
-        - name: 数据库功能文档
-          href: sql-database-features-index.yml
         - name: 多模型功能
           href: sql-database-multi-model-features.md
         - name: 内存中
@@ -685,7 +679,6 @@
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL 托管实例
-  href: sql-database-managed-instance-index.yml
   items:
     - name: 概述
       items:
@@ -848,7 +841,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 连接问题
           href: troubleshoot-connectivity-issues-microsoft-azure-sql-database.md

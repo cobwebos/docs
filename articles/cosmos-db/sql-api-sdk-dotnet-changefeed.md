@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444860"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619440"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 
@@ -45,6 +45,10 @@ ms.locfileid: "75444860"
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="v2-builds"></a>v2 版本
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
+* 添加了一种新的方法和`ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`相应的公共接口`ICheckpointPartitionProcessorFactory`。 这允许接口的`IPartitionProcessor`实现使用内置的检查机制。 新工厂与现有`IPartitionProcessorFactory`工厂类似，只不过其`Create`方法也采用`ILeaseCheckpointer`参数。
+* 只有两种方法中的一个（或`ChangeFeedProcessorBuilder.WithPartitionProcessorFactory``ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`）可用于同`ChangeFeedProcessorBuilder`一实例。
 
 ### <a name="228"></a><a name="2.2.8"/>2.2.8
 * 稳定性和可诊断性改进：
@@ -180,8 +184,9 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 <br/>
 
-| 版本 | 发布日期 | 停用日期 |
+| Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.3.0](#2.3.0) |2020年4月2日 |--- |
 | [2.2.8](#2.2.8) |2019年10月28日 |--- |
 | [2.2.7](#2.2.7) |2019 年 5 月 14 日 |--- |
 | [2.2.6](#2.2.6) |2019 年 1 月 29 日 |--- |

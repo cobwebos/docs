@@ -2,23 +2,23 @@
 title: 使用 Azure 堡垒连接到 Windows 虚拟机规模集 |微软文档
 description: 在本文中，了解如何使用 Azure 堡垒连接到 Azure 虚拟机缩放集。
 services: bastion
-author: cherylmc
+author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: cherylmc
-ms.openlocfilehash: 4f513aaf113ef4bd6e75e5c4b31e0f0252d45f10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: 290a20fcd827841c24983f3bdd54b6db8e154462
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76988084"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619343"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>使用 Azure 堡垒连接到虚拟机规模集
 
 本文演示如何使用 Azure 堡垒在 Azure 虚拟网络中安全无缝地将 RDP 到 Windows 虚拟机缩放集实例。 可以直接从 Azure 门户连接到虚拟机缩放集实例。 使用 Azure 堡垒时，VM 不需要客户端、代理或其他软件。 有关 Azure 堡垒的详细信息，请参阅[概述](bastion-overview.md)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 请确保已为虚拟机缩放集所在的虚拟网络设置了 Azure 堡垒主机。 有关详细信息，请参阅创建[Azure 堡垒主机](bastion-create-host-portal.md)。 在虚拟网络中预配和部署 Bastion 服务后，可以使用它连接到此虚拟网络中的虚拟机规模集实例。 Bastion 假定您正在使用 RDP 连接到 Windows 虚拟机规模集，SSH 连接到 Linux 虚拟机规模集。 有关连接到 Linux VM 的信息，请参阅[连接到 VM - Linux](bastion-connect-vm-ssh.md)。
 

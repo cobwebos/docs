@@ -5,20 +5,20 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: f83faf05eb7099557d5b653e0b24591062c44d11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 514cc25e1959145c65fe60cd3054cec4ed28f44d
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368445"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617425"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
-结合使用 Azure 容器注册表 (ACR) 和 Azure Kubernetes 服务 (AKS) 时，需要建立身份验证机制。 本文提供了在这两个 Azure 服务之间配置身份验证的示例。
+结合使用 Azure 容器注册表 (ACR) 和 Azure Kubernetes 服务 (AKS) 时，需要建立身份验证机制。 本文提供了在这两个 Azure 服务之间配置身份验证的示例。 
 
-可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。
+可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。 此集成将 AcrPull 角色分配给与 AKS 群集关联的服务主体。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 这些示例需要：
 
@@ -33,7 +33,7 @@ ms.locfileid: "79368445"
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
-MYACR=myContainerRegistry
+$MYACR=myContainerRegistry
 
 # Run the following line to create an Azure Container Registry if you do not already have one
 az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
@@ -60,7 +60,7 @@ az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-ac
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
 ```
 
-或者，
+或
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>

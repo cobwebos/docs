@@ -4,12 +4,12 @@ description: 了解如何通过 Azure CLI 创建使用虚拟节点运行 Pod 的
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 31e8b5aceb356ca1415419650a9df3070462bde0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05e32b6b0017e945044bc7593d4d6dbc543a5b64
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475521"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616465"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为通过 Azure CLI 使用虚拟节点
 
@@ -17,9 +17,9 @@ ms.locfileid: "79475521"
 
 本文介绍如何创建和配置虚拟网络资源和 AKS 群集，然后启用虚拟节点。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
-ACI 和 AKS 群集中运行的 Pod 可以借助虚拟节点进行网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用高级** 网络创建的 AKS 群集。 默认情况下，AKS 群集是使用基本** 网络创建的。 本文介绍如何创建虚拟网络和子网，然后部署使用高级网络的 AKS 群集。
+虚拟节点在 Azure 容器实例 （ACI） 中运行的 Pod 和 AKS 群集之间启用网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用高级** 网络创建的 AKS 群集。 默认情况下，AKS 群集是使用基本** 网络创建的。 本文介绍如何创建虚拟网络和子网，然后部署使用高级网络的 AKS 群集。
 
 如果以前没有使用过 ACI，请在订阅中注册服务提供程序。 可以使用 [az provider list][az-provider-list] 命令检查 ACI 提供程序注册的状态，如下面的示例所示：
 
@@ -30,9 +30,9 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 Microsoft.ContainerInstance** 提供程序应报告为“已注册”**，如下面的示例输出所示：
 
 ```output
-Namespace                    RegistrationState
----------------------------  -------------------
-Microsoft.ContainerInstance  Registered
+Namespace                    RegistrationState    RegistrationPolicy
+---------------------------  -------------------  --------------------
+Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
 如果提供程序显示为“未注册”**，请使用 [az provider register][az-provider-register] 注册提供程序，如下面的示例所示：
@@ -155,7 +155,7 @@ az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 ** myAKSCluster 的群集。 将 `<subnetId>` 替换为上一步中获取的 ID，然后将 `<appId>` 和 `<password>` 替换为 
+使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 ** myAKSCluster 的群集。 替换为`<subnetId>`上一步骤中获取的 ID，然后`<appId>``<password>`用上一节中收集的值替换。
 
 ```azurecli-interactive
 az aks create \
@@ -302,7 +302,7 @@ curl -L http://10.241.0.4
 
 如有必要，请转到[https://shell.azure.com](https://shell.azure.com)在浏览器中打开 Azure 云外壳。
 
-首先，删除在虚拟节点上运行的 helloworld 窗格：
+首先，删除在`aci-helloworld`虚拟节点上运行的窗格：
 
 ```console
 kubectl delete -f virtual-node.yaml

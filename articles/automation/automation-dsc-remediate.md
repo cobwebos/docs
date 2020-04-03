@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: a6c7639cb4988eb13dfaa1c151085cda6e53b5d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4ca76f4be9d00e185f8774fc33296d1af1aeece
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68614493"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585503"
 ---
 # <a name="remediate-non-compliant-dsc-servers"></a>修正不符合 DSC 的服务器
 
@@ -40,7 +40,7 @@ Update-DscConfiguration -Wait -Verbose
 目前未为 Linux 服务器提供类似的功能。
 唯一选项是重复注册过程。
 对于 Azure 节点，可以通过门户或 Az 自动化 cmdlet 来纠正偏移。
-有关此过程的详细信息记录在[载入由 Azure Automation State Configuration 管理的计算机](/azure/automation/automation-dsc-onboarding#azure-portal)页中。
+有关此过程的详细信息记录在[载入由 Azure Automation State Configuration 管理的计算机](/azure/automation/automation-dsc-onboarding#onboard-a-vm-using-azure-portal)页中。
 对于混合节点，可以通过提供的 Python 脚本来纠正偏移。
 请参阅[用于 Linux 存储库的 PowerShell DSC](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer) 中的文档。
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 01/21/2020
-ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 06242af6cb00e3adebbc80da722898fb8e348e36
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268777"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585359"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什么是 Azure SQL 数据库托管实例？
 
@@ -67,7 +67,7 @@ ms.locfileid: "79268777"
 | 门户支持 | 是|
 | 内置集成服务 (SSIS) | 否 - SSIS 属于 [Azure 数据工厂 PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | 内置分析服务 (SSAS) | 否 - SSAS 是单独的 [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
-| 内置报表服务 (SSRS) | 否 - 使用 Power BI 或 SSRS IaaS |
+| 内置报表服务 (SSRS) | 否 - 改用[Power BI 分页报表](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi)，或在 Azure VM 上托管 SSRS。 虽然托管实例不能将 SSRS 作为服务运行，但它可以使用 SQL Server 身份验证为外部报告服务器托管 SSRS 2019 目录数据库。 |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
@@ -150,7 +150,7 @@ Azure SQL 数据库提供管理操作，你可以使用这些操作自动部署�
 |部署 |非空子网中另一个硬件代系的第一个实例（例如，包含第 4 代实例的子网中的第一个 5 代实例）|虚拟群集的创建*|90% 的操作可在 4 小时内完成|
 |部署 |在空或非空子网中创建包含 4 个 vCore 的第一个实例|虚拟群集的创建**|90% 的操作可在 4 小时内完成|
 |部署 |在非空子网中创建后续实例（第 2 个、第 3 个 ... 实例）|虚拟群集大小调整|90% 的操作可在 2.5 小时内完成|
-|**更新** |实例属性更改（管理员密码、AAD 登录名、Azure 混合权益标志）|空值|最长 1 分钟|
+|**更新** |实例属性更改（管理员密码、AAD 登录名、Azure 混合权益标志）|不可用|最长 1 分钟|
 |更新 |实例存储纵向缩放（“常规用途”服务层级）|附加数据库文件|90% 的操作可在 5 分钟内完成|
 |更新 |实例存储纵向缩放（“业务关键”服务层级）|- 虚拟群集大小调整<br>- Always On 可用性组种子设定|90% 的操作可在“2.5 小时 + 所有数据库种子设定时间”内完成（220 GB/小时）|
 |更新 |实例计算 (vCore) 纵向缩放（“常规用途”）|- 虚拟群集大小调整<br>- 附加数据库文件|90% 的操作可在 2.5 小时内完成|
@@ -262,7 +262,7 @@ Azure SQL 数据库提供一组可用于保护数据的高级安全功能。
 - **SQL 身份验证**：
 
   此身份验证方法使用用户名和密码。
-- **Azure Active Directory 身份验证**：
+- **Azure 活动目录身份验证**：
 
   此身份验证方法使用由 Azure Active Directory 托管的标识，并且受托管域和集成域支持。 请[尽可能](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode)使用 Active Directory 身份验证（集成安全性）。
 
@@ -320,7 +320,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 
 下表显示了可通过 Transact SQL 访问的几个属性。使用这些属性可以检测应用程序是否正在使用托管实例和检索重要属性。
 
-|properties|“值”|注释|
+|Property|值|注释|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值与 SQL 数据库中的值相同。 此值**并不**表示 SQL 引擎版本 12 (SQL Server 2014)。 托管实例始终运行最新稳定的 SQL 引擎版本，此版本与最新可用的 SQL Server RTM 版本相同或更高。  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|此值与 SQL 数据库中的值相同。|

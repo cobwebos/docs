@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: 6e300bbec097201b33f0c576db91c2ca720fb921
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4d845514965a8d60c636902660ce838926cbf3c9
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437314"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607620"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源
 > 除非有专门的说明，否则可以在机器学习管道和非管道工作流（例如脚本运行）中使用虚拟网络中的存储帐户或计算目标等资源。
 
 > [!WARNING]
-> Microsoft 不支持对虚拟网络中的资源使用 Azure 机器学习设计器或自动化机器学习（通过工作室）。
+> 如果基础存储已启用虚拟网络，Microsoft 不支持使用 Azure 机器学习工作室功能，如自动 ML、数据集、数据标记、设计器和笔记本。
 
 ## <a name="prerequisites"></a>先决条件
 

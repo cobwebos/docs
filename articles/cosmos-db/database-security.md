@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 30991f17970eefe1a140cdd70e1f6b305160349c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 345fc329df1c57cab7dd66c609bf3701fa3a6124
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537323"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619132"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 安全性 - 概述
 
@@ -48,7 +48,7 @@ ms.locfileid: "79537323"
 以下要求看似理所当然，但最近发生的[大规模数据库入侵](https://thehackernews.com/2017/01/mongodb-database-security.html)提醒我们这些要求尽管很简单，但却至关重要：
 
 - 让修补的服务器保持最新状态
-- 按默认启用 HTTPS/SSL 加密
+- 默认情况下 HTTPS/TLS 加密
 - 使用强密码的管理帐户
 
 ## <a name="how-does-azure-cosmos-db-secure-my-database"></a>Azure Cosmos DB 如何保护数据库
@@ -76,7 +76,7 @@ ms.locfileid: "79537323"
 |HTTPS/SSL/TLS 加密|与 Azure Cosmos DB 建立的所有连接都支持 HTTPS。 Azure Cosmos DB 还支持 TLS 1.2。<br>可以在服务器端强制实施最低 TLS 版本。 为此，请联系[azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)。|
 |静态加密|存储在 Azure Cosmos DB 中的所有数据都进行静态加密。 在 [Azure Cosmos DB 静态加密](./database-encryption-at-rest.md)中了解详细信息|
 |修补的服务器|作为一种托管数据库，在 Azure Cosmos DB 中无需管理和修补服务器，系统会自动完成这些操作。|
-|使用强密码的管理帐户|难以相信，我们竟然还要提到这项要求。但与我们的某些竞争产品不同，在 Azure Cosmos DB 中，不带密码的管理帐户是根本不受允许的。<br><br> DocumentDB 中默认融入了基于 SSL 和 HMAC 机密的身份验证安全性。|
+|使用强密码的管理帐户|难以相信，我们竟然还要提到这项要求。但与我们的某些竞争产品不同，在 Azure Cosmos DB 中，不带密码的管理帐户是根本不受允许的。<br><br> 默认情况下，通过 TLS 和 HMAC 基于机密的身份验证提供安全性。|
 |安全和数据保护认证| 有关认证的最新数据列表，请参阅具有所有认证（搜索 Cosmos）的整个 [Azure 符合性站点](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings)以及最新 [Azure 符合性文档](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)。 有关更集中的阅读，请查看 2018 年 4 月 25 日的帖子 [Azure #CosmosDB：安全、私有、合规，包括 SOCS 1/2 类型 2、HITRUST、PCI DSS 级别 1、ISO 27001、HIPAA、FedRAMP High 等。
 
 以下屏幕截图显示如何使用审核日志和活动日志监视帐户：![Azure Cosmos DB 的活动日志](./media/database-security/nosql-database-security-application-logging.png)

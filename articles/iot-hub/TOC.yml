@@ -188,7 +188,7 @@
           href: iot-hub-x509ca-overview.md
         - name: X.509 CA 证书安全性概念
           href: iot-hub-x509ca-concept.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 开发
       items:
@@ -428,12 +428,10 @@
       href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
     - name: C 设备 SDK
       href: 'https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/'
-    - name: Azure IoT Edge
-      href: 'http://azure.github.io/iot-edge/'
     - name: REST（设备）
       href: 'https://docs.microsoft.com/rest/api/iothub/device'
     - name: REST（服务）
-      href: 'https://docs.microsoft.com/rest/api/iothub/service'
+      href: 'https://docs.microsoft.com/rest/api/iothub/service/configuration'
     - name: REST（IoT 中心资源）
       href: 'https://docs.microsoft.com/rest/api/iothub/iothubresource'
     - name: REST（证书）

@@ -4,12 +4,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 607419787bc0bab243d6cc2b8cbaa0ec22921e87
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 87f066ed17e5274439082956803d269bdd5853f5
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422311"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616499"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -41,7 +41,7 @@ ms.locfileid: "80422311"
 若要开始，请创建包含单个节点池的 AKS 群集。 下面的示例使用[az 组创建][az-group-create]命令在*东部*区域创建名为*myResourceGroup*的资源组。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。 *1.15.7* *的 --kubernetes 版本*用于演示如何在以下步骤中更新节点池。 可以指定任何[支持的 Kubernetes 版本][supported-versions]。
 
 > [!NOTE]
-> 使用多个节点池时，**不支持**“基本”负载均衡器 SKU。** 默认情况下，AKS 群集是在 Azure CLI 和 Azure 门户中使用“标准”负载均衡器 SKU 创建的。**
+> 使用多个节点池时，**不支持**“基本”负载均衡器 SKU。** 默认情况下，AKS 群集使用 Azure CLI 和 Azure 门户使用*标准*负载均衡器 SKU 创建。
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -420,7 +420,7 @@ Kubernetes 计划程序能够使用排斥和容许来限制可在节点上运行
 
 有关如何使用 Kubernetes 高级计划功能的详细信息，请参阅[有关 AKS 中的高级计划程序功能的最佳做法][taints-tolerations]
 
-在此示例中，使用 --node-taints 命令对基于 GPU 的节点应用污点。 指定上述 `kubectl get nodes` 命令的输出中显示的基于 GPU 的节点名称。 排斥以“键:值”的形式应用，后接计划选项。** 以下示例使用 *sku=gpu* 对，并定义具有 *NoSchedule* 功能的其他 pod：
+在此示例中，使用 --node-taints 命令对基于 GPU 的节点应用污点。 指定上述 `kubectl get nodes` 命令的输出中显示的基于 GPU 的节点名称。 污点作为*键值*对应用，然后作为计划选项应用。 以下示例使用 *sku=gpu* 对，并定义具有 *NoSchedule* 功能的其他 pod：
 
 ```console
 az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -480,7 +480,7 @@ Events:
   Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
 ```
 
-只能在 *gpunodepool* 中的节点上计划已应用此排斥的 pod。 任何其他 pod 将在 *nodepool1* 节点池中计划。 如果创建额外的节点池，可以使用额外的排斥和容许来限制可在这些节点资源上计划的 pod。
+只有应用了此容忍的窗格才能安排在*gpunodepool*中的节点上。 任何其他 pod 将在 *nodepool1* 节点池中计划。 如果创建额外的节点池，可以使用额外的排斥和容许来限制可在这些节点资源上计划的 pod。
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>为节点池指定污点、标签或标记
 

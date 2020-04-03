@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 9e4c6577f0b8b18aff343ac54b31ff292632f5d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa262b0be3902f6e143a53f8f1302156fc5aede6
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979242"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582985"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>管理在 Azure 安全中心调查中找到的用户数据
 本文提供有关如何管理在 Azure 安全中心调查功能中找到的用户数据的信息。 调查数据存储在[Azure 监视器日志](../log-analytics/log-analytics-overview.md)中，并在安全中心中公开。 管理用户数据包括导出或删除数据的能力。
@@ -26,7 +26,7 @@ ms.locfileid: "75979242"
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>搜索并标识个人数据
-在 Azure 门户中，可以使用安全中心的[调查功能](../security-center/security-center-investigation.md)搜索个人数据。 调查功能在“安全警报”**** 下提供。
+在 Azure 门户中，可以使用安全中心的调查功能搜索个人数据。 调查功能在“安全警报”**** 下提供。
 
 调查功能在“实体”**** 选项卡下显示所有实体、用户信息和数据。
 

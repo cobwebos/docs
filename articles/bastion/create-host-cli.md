@@ -2,17 +2,17 @@
 title: 使用 Azure CLI 创建堡垒主机 |Azure 堡垒
 description: 在本文中，了解如何创建和删除堡垒主机
 services: bastion
-author: cherylmc
+author: mialdrid
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.author: cherylmc
-ms.openlocfilehash: 9e216bf2bb8e2e605723256f0511b9bdb63083b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mialdrid
+ms.openlocfilehash: f98c965ad3b776f3688a716ba28b5367a00c9119
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337566"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619226"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>使用 Azure CLI 创建 Azure 堡垒主机
 
@@ -20,7 +20,7 @@ ms.locfileid: "80337566"
 
 或者，可以使用[Azure 门户](bastion-create-host-portal.md)或使用[Azure PowerShell](bastion-create-host-powershell.md)创建 Azure 堡垒主机。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 

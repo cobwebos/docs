@@ -11,18 +11,18 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f73fbbc42085b3a0cb6ab7dd1c0e32838a166ccf
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 39501cef3bb2f7e4a0e061968520f687cf97ecc5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350638"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584205"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>持续集成和部署数据仓库
 
 本简易教程概述如何将 SQL Server Data Tools (SSDT) 数据库项目集成到 Azure DevOps，并利用 Azure Pipelines 来设置持续集成和部署。 本教程是构建数据仓库的持续集成和部署管道的第二步。 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 - 阅读[源代码管理集成教程](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)
 
@@ -62,7 +62,7 @@ ms.locfileid: "80350638"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 探索[SQL 分析 MPP 体系结构](massively-parallel-processing-mpp-architecture.md)
+- 探索[突触 SQL 池 MPP 体系结构](massively-parallel-processing-mpp-architecture.md)
 - 快速[创建 SQL 池](create-data-warehouse-portal.md)
-- [加载样本数据](load-data-from-azure-blob-storage-using-polybase.md)
+- [加载示例数据](load-data-from-azure-blob-storage-using-polybase.md)
 - 浏览[视频](/azure/sql-data-warehouse/sql-data-warehouse-videos)

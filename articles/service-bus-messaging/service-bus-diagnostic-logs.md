@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c8eba538a7015648611e6054ce85b381dcfc9105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760992"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618730"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>为服务总线启用诊断日志
 
@@ -76,10 +76,10 @@ Azure 服务总线目前支持活动日志和操作日志，这些日志捕获�
 
 | 范围 | Operation|
 |-------| -------- |
-| 命名空间 | <ul> <li> 创建命名空间</li> <li> 更新命名空间 </li> <li> 删除命名空间 </li>  </ul> | 
-| 队列 | <ul> <li> 创建队列</li> <li> 更新队列</li> <li> 删除队列 </li> </ul> | 
-| 主题 | <ul> <li> 创建主题 </li> <li> 更新主题 </li> <li> 删除主题 </li> </ul> |
-| 订阅 | <ul> <li> 创建订阅 </li> <li> 更新订阅 </li> <li> 删除订阅 </li> </ul> |
+| 命名空间 | <ul> <li> 创建命名空间</li> <li> 更新命名空间 </li> <li> 删除命名空间 </li> <li> 更新命名空间共享访问策略 </li> </ul> | 
+| 队列 | <ul> <li> 创建队列</li> <li> 更新队列</li> <li> 删除队列 </li> <li> 自动删除删除队列 </li> </ul> | 
+| 主题 | <ul> <li> 创建主题 </li> <li> 更新主题 </li> <li> 删除主题 </li> <li> 自动删除删除主题 </li> </ul> |
+| 订阅 | <ul> <li> 创建订阅 </li> <li> 更新订阅 </li> <li> 删除订阅 </li> <li> 自动删除删除订阅 </li> </ul> |
 
 > [!NOTE]
 > 目前，不会在操作日志中跟踪“读取”操作。**
@@ -98,9 +98,9 @@ Azure 服务总线目前支持活动日志和操作日志，这些日志捕获�
 
 1. 执行以下操作来配置诊断设置：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“名称”框中，输入诊断设置的名称。****  
+   a. 在“名称”框中，输入诊断设置的名称。****  
 
-   b.保留“数据库类型”设置，即设置为“共享”。 为诊断日志选择以下三个目标之一：  
+   b. 为诊断日志选择以下三个目标之一：  
    - 如果选择“存档到存储帐户”，则需要配置用于存储诊断日志的存储帐户。****  
    - 如果选择“流式传输到事件中心”，则需要配置要将诊断日志流式传输到的事件中心。****
    - 如果选择“发送到 Log Analytics”，则需要指定要将诊断发送到的 Log Analytics 实例。****  
@@ -109,7 +109,7 @@ Azure 服务总线目前支持活动日志和操作日志，这些日志捕获�
 
     ![“诊断设置”窗格](./media/service-bus-diagnostic-logs/image3.png)
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 新设置将在大约 10 分钟后生效。 日志将显示在“诊断日志”窗格中配置的存档目标中。****
 

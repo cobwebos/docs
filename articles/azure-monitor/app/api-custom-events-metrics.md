@@ -3,12 +3,12 @@ title: 用于处理自定义事件和指标的 Application Insights API | Micros
 description: 在设备、桌面应用、网页或服务中插入几行代码，即可跟踪使用情况和诊断问题。
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 4275d3ea3a340f0a4083ab929eb7f7872f3311e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06bd8bd0958afd26e1256a010b08c908c59aaf7d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295033"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585879"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -31,7 +31,7 @@ ms.locfileid: "80295033"
 
 可以[将属性和指标附加到](#properties)其中的大多数遥测调用。
 
-## <a name="before-you-start"></a><a name="prep"></a>开始之前
+## <a name="before-you-start"></a><a name="prep"></a>准备工作
 
 如果还没有 Application Insights SDK 引用：
 
@@ -58,7 +58,7 @@ ms.locfileid: "80295033"
 
 对于[ASP.NET 核心](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected)应用和[.NET/.NET 核心应用的非 HTTP/Worker，](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected)建议从依赖项`TelemetryClient`注入容器获取 的实例，如其各自的文档中所述。
 
-如果使用 Azure 功能 v2+ 或 Azure Web作业 v3+ - 请按照以下文档操作：https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-3
+如果使用 Azure 功能 v2+ 或 Azure Web作业 v3+ - 请按照以下文档操作：https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
 *C#*
 
@@ -113,7 +113,7 @@ telemetry.getContext().getDevice().setId("...");
 
 例如，在游戏应用中，每当用户获胜时会发送事件：
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 appInsights.trackEvent({name:"WinGame"});
@@ -257,7 +257,7 @@ Application Insights 可绘制未附加到特定事件的指标。 例如，可�
 
 发送单一指标值：
 
-*Javascript*
+*JavaScript*
 
  ```javascript
 appInsights.trackMetric("queueLength", 42.0);
@@ -299,7 +299,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-page-views"></a>自定义页面视图
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 appInsights.trackPageView("tab1");
@@ -338,7 +338,7 @@ appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 * 在 [trackPageView](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/API.md#trackpageview) 调用中设置显式持续时间：`appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`。
 * 使用页面视图计时调用 `startTrackPage` 和 `stopTrackPage`。
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 // To start timing a page:
@@ -471,7 +471,7 @@ try {
 }
 ```
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 try
@@ -738,7 +738,7 @@ telemetry.flush();
 
 如果用户登录到应用，可以通过在浏览器代码中设置经过身份验证的用户 ID 来获取更准确的计数：
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 // Called when my app has identified the user.
@@ -792,7 +792,7 @@ appInsights.setAuthenticatedUserContext(validatedId, accountId);
 
 可[对属性、属性值和指标的数目使用一些限制](#limits)。
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 appInsights.trackEvent
@@ -1016,7 +1016,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 [采样](../../azure-monitor/app/api-filtering-sampling.md)是减少从应用发送到门户的数据量的打包解决方案。 它不会影响显示的指标。 且不影响通过在相关项（如异常、请求和页面视图）之间导航来诊断问题。
 
-[了解详情](../../azure-monitor/app/api-filtering-sampling.md)。
+[了解详细信息](../../azure-monitor/app/api-filtering-sampling.md)。
 
 ## <a name="disabling-telemetry"></a>禁用遥测
 
@@ -1114,7 +1114,7 @@ protected void Application_Start()
 }
 ```
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 appInsights.config.instrumentationKey = myKey;

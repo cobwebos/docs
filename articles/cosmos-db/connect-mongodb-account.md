@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e3ab6282a3c61e12dce5dd17bc0859c0d73a7724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cba16d79b6506f9809a76f0128938a68afd15c92
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051720"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617040"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>将 MongoDB 应用程序连接到 Azure Cosmos DB
 
@@ -51,11 +51,11 @@ ms.locfileid: "80051720"
 ## <a name="connection-string-requirements"></a>连接字符串要求
 
 > [!Important]
-> Azure Cosmos DB 具有严格的安全要求和标准。 Azure Cosmos DB 帐户需要通过*SSL*进行身份验证和安全通信。 
+> Azure Cosmos DB 具有严格的安全要求和标准。 Azure Cosmos DB 帐户需要通过*TLS*进行身份验证和安全通信。 
 >
 >
 
-Azure Cosmos DB 支持标准 MongoDB 连接字符串 URI 格式，但要满足几个具体的要求：Azure Cosmos DB 帐户需要通过 SSL 进行身份验证和安全通信。 因此，连接字符串格式为：
+Azure Cosmos DB 支持标准的 MongoDB 连接字符串 URI 格式，具有几个特定要求：Azure Cosmos DB 帐户需要通过 TLS 进行身份验证和安全通信。 因此，连接字符串格式为：
 
     mongodb://username:password@host:port/[database]?ssl=true
 

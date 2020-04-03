@@ -7,18 +7,21 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: e3f8445f68ec959ce1bb0d1ba4029807bd25907a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257421"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617206"
 ---
-# <a name="application-gateway-high-traffic-support"></a>应用程序网关高流量支持 
+# <a name="application-gateway-high-traffic-support"></a>应用程序网关高流量支持
 
-本文介绍了一些建议的指南，以帮助您设置应用程序网关来处理由于高流量方案（如 COVID-19）而导致的额外流量。 您可以将应用程序网关与 Web 应用程序防火墙 （WAF） 一起用于可扩展和安全的方式来管理 Web 应用程序的流量。 
+>[!NOTE]
+> 本文介绍了一些建议的指南，以帮助您设置应用程序网关来处理由于 COVID-19 危机可能导致的高流量而导致的额外流量。
 
-以下建议可帮助您使用 WAF 设置应用程序网关以处理额外的流量。 
+您可以将应用程序网关与 Web 应用程序防火墙 （WAF） 一起用于可扩展和安全的方式来管理 Web 应用程序的流量。
+
+以下建议可帮助您使用 WAF 设置应用程序网关以处理额外的流量。
 
 ## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>使用 v2 SKU 超过 v1 来增强其自动缩放功能和性能优势
 v2 SKU 提供自动缩放，以确保应用程序网关可以随着流量的增加而扩展。 它还提供其他显著的性能优势，例如与 v1 相比，TLS 卸载性能提高 5 倍、部署和更新时间更快、区域冗余等。 有关详细信息，请参阅我们的[v2 文档](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)。 

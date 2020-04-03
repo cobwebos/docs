@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8987cbe6860422ff92119a9f3b13a0a365e6d1a4
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246184"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618324"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
@@ -58,7 +58,7 @@ Azure 时间序列见解支持从 Azure IoT 中心或 Azure 事件中心发送�
 | 数据类型 | 描述 |
 |---|---|
 | **bool** | 具有两种状态之一的数据类型：`true`或`false`。 |
-| **dateTime** | 表示某个时刻，通常以日期和当天的时间表示。 以[ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)格式表示。 |
+| **Datetime** | 表示某个时刻，通常以日期和当天的时间表示。 以[ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)格式表示。 |
 | **双** | 双精度 64 位[IEEE 754](https://ieeexplore.ieee.org/document/8766229)浮点。 |
 | **字符串** | 由 Unicode 字符组成的文本值。          |
 
@@ -91,7 +91,7 @@ Azure 时间序列见解 预览入口限制如下所述。
 
 *  **设备数** × **事件发出频率** × **每个事件的大小**。
 
-默认情况下，时序见解预览可以**以高达每秒 1 兆字节 （MBps） 的速度接收传入数据，每个时间序列见解环境**。
+默认情况下，时序见解预览可以**以高达每秒 1 兆字节 （MBps） 的速度接收传入数据，每个时间序列见解环境**。 [每个中心分区](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits)都有其他限制。
 
 > [!TIP] 
 > * 可按要求提供高达 16 MBps 的摄取速度的环境支持。
@@ -99,7 +99,7 @@ Azure 时间序列见解 预览入口限制如下所述。
  
 * **示例 1：**
 
-    Contoso Shipping 有 100,000 台设备，它们每分钟发出某个事件三次。 事件大小为 200 字节。 他们使用具有四个分区的事件中心作为时间序列见解事件源。
+    Contoso Shipping 有 100,000 台设备，它们每分钟发出某个事件三次。 事件大小为 200 字节。 他们使用具有四个分区的 Iot 中心作为时间序列见解事件源。
 
     * 其时序见解环境的引入速率为 **：100，000 台设备 = 200 字节/事件 * （3/60 事件/秒） = 1 MBps**。
     * 每个分区的引入速率为 0.25 MBps。
@@ -107,11 +107,11 @@ Azure 时间序列见解 预览入口限制如下所述。
 
 * **示例 2：**
 
-    Contoso Fleet Analytics 有 60,000 台设备，它们每秒发出某个事件。 他们使用 IoT 中心 24 分区计数 4 作为时间序列见解事件源。 事件大小为 200 字节。
+    Contoso Fleet Analytics 有 60,000 台设备，它们每秒发出某个事件。 他们使用分区计数为 4 的事件中心作为时间序列见解事件源。 事件大小为 200 字节。
 
-    * 环境引入率是 **：20，000台设备 = 200 字节/事件 = 1 事件/秒 = 4 MBps。**
-    * 每个分区的速率为 1 MBps。
-    * Contoso 队列分析可以通过 Azure 门户向时序见解提交请求，以提高其环境的引入率。
+    * 环境引入率为 **：60，000台设备 = 200 字节/事件 = 1 事件/秒 = 12 MBps。**
+    * 每个分区速率为 3 MBps。
+    * Contoso 队列分析的引入率超过环境和分区限制。 他们可以通过 Azure 门户向时序见解提交请求，以提高其环境的引入率，并创建具有更多分区的事件中心，以在预览限制内。
 
 #### <a name="hub-partitions-and-per-partition-limits"></a>中心分区和每个分区限制
 

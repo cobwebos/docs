@@ -2,23 +2,23 @@
 title: 快速路由：路由筛选器 - 微软对等互连：Azure 门户
 description: 本文介绍如何使用 Azure 门户配置用于 Microsoft 对等互连的路由筛选器。
 services: expressroute
-author: ganesr
+author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 07/01/2019
-ms.author: ganesr
+ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 0b8e06ad5688374e5ab4aaa72d8485e6da797afe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2be9b4e7152c61885b1a41e94ebd328059d437b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74037435"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618564"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>配置用于 Microsoft 对等互连的路由筛选器：Azure 门户
 > [!div class="op_single_selector"]
 > * [Azure 门户](how-to-routefilter-portal.md)
-> * [Azure 电源外壳](how-to-routefilter-powershell.md)
+> * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Azure CLI](how-to-routefilter-cli.md)
 > 
 
@@ -60,7 +60,7 @@ Office 365 服务（如交换联机、SharePoint 在线和 Skype 业务）以及
 
 -  必须将路由筛选器附加到 ExpressRoute 线路。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 开始配置之前，请确保满足以下条件：
 

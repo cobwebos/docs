@@ -2,17 +2,17 @@
 title: Azure 堡垒会话监视和管理 |微软文档
 description: 在本文中，了解如何选择正在进行的会话并强制断开连接或删除它。
 services: bastion
-author: cherylmc
+author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: cherylmc
-ms.openlocfilehash: f56a724174b81966642b2870360014597436eade
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: 6bf80be4868295145fa79ae29d5322181b6131d1
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76981083"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619196"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Azure 堡垒的会话监视和管理
 
