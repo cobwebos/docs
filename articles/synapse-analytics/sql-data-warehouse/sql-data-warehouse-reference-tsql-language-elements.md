@@ -1,6 +1,6 @@
 ---
 title: T-SQL 语言元素
-description: 指向 SQL 分析中支持的 T-SQL 语句文档的链接。
+description: 指向 Synapse SQL 池中支持的 T-SQL 语句文档的链接。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,43 +11,47 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 040a6d519896d71227777168ea9de9612f97ca6e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f27a0a351e4a446dc950ac13f850bd14b2b3c65a
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351418"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586401"
 ---
-# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>SQL 分析中支持的 T-SQL 语言元素
-指向 SQL 分析中支持的 T-SQL 语言元素的文档的链接。
+# <a name="t-sql-language-elements-supported-in-synapse-sql-pool"></a>Synapse SQL 池中支持的 T-SQL 语言元素
+
+指向 Synapse SQL 池中支持的 T-SQL 语言元素的文档的链接。
 
 ## <a name="core-elements"></a>核心元素
+
 * [语法约定](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
 * [对象命名规则](https://msdn.microsoft.com/library/ms175874.aspx)
-* [保留的关键字](https://msdn.microsoft.com/library/ms189822.aspx)
+* [保留关键字](https://msdn.microsoft.com/library/ms189822.aspx)
 * [排序规则](https://msdn.microsoft.com/library/ff848763.aspx)
 * [评论](https://msdn.microsoft.com/library/ms181627.aspx)
 * [常数](https://msdn.microsoft.com/library/ms179899.aspx)
 * [数据类型](https://msdn.microsoft.com/library/ms187752.aspx)
-* [执行](https://msdn.microsoft.com/library/ms188332.aspx)
+* [EXECUTE](https://msdn.microsoft.com/library/ms188332.aspx)
 * [表达 式](https://msdn.microsoft.com/library/ms190286.aspx)
 * [KILL](https://msdn.microsoft.com/library/ms173730.aspx)
 * [IDENTITY 属性解决方法](https://msdn.microsoft.com/library/ms186775.aspx)
 * [PRINT](https://msdn.microsoft.com/library/ms176047.aspx)
-* [使用](https://msdn.microsoft.com/library/ms188366.aspx)
+* [USE](https://msdn.microsoft.com/library/ms188366.aspx)
 
 ## <a name="batches-control-of-flow-and-variables"></a>批、流控制和变量
+
 * [BEGIN...END](https://msdn.microsoft.com/library/ms190487.aspx)
-* [打破](https://msdn.microsoft.com/library/ms181271.aspx)
+* [BREAK](https://msdn.microsoft.com/library/ms181271.aspx)
 * [宣布@local_variable](https://msdn.microsoft.com/library/ms188927.aspx)
 * [如果。。。还](https://msdn.microsoft.com/library/ms182717.aspx)
 * [RAISERROR](https://msdn.microsoft.com/library/ms178592.aspx)
 * [SET@local_variable](https://msdn.microsoft.com/library/ms189484.aspx)
-* [扔](https://msdn.microsoft.com/library/ee677615.aspx)
-* [尝试。。。抓住](https://msdn.microsoft.com/library/ms175976.aspx)
-* [而](https://msdn.microsoft.com/library/ms178642.aspx)
+* [THROW](https://msdn.microsoft.com/library/ee677615.aspx)
+* [TRY...CATCH](https://msdn.microsoft.com/library/ms175976.aspx)
+* [WHILE](https://msdn.microsoft.com/library/ms178642.aspx)
 
 ## <a name="operators"></a>运算符
+
 * [+（加）](https://msdn.microsoft.com/library/ms178565.aspx)
 * [* （串串串）](https://msdn.microsoft.com/library/ms177561.aspx)
 * [-（负）](https://msdn.microsoft.com/library/ms189480.aspx)
@@ -57,6 +61,7 @@ ms.locfileid: "80351418"
 * [模](https://msdn.microsoft.com/library/ms190279.aspx)
 
 ## <a name="wildcard-characters-to-match"></a>要匹配的通配符
+
 * [=（等于）](https://msdn.microsoft.com/library/ms175118.aspx)
 * [>（大于）](https://msdn.microsoft.com/library/ms178590.aspx)
 * [<（小于）](https://msdn.microsoft.com/library/ms179873.aspx)
@@ -64,18 +69,19 @@ ms.locfileid: "80351418"
 * [<=（小于或等于）](https://msdn.microsoft.com/library/ms174978.aspx)
 * [<> （不等于）](https://msdn.microsoft.com/library/ms176020.aspx)
 * [！* （不等于）](https://msdn.microsoft.com/library/ms190296.aspx)
-* [和](https://msdn.microsoft.com/library/ms188372.aspx)
+* [AND](https://msdn.microsoft.com/library/ms188372.aspx)
 * [BETWEEN](https://msdn.microsoft.com/library/ms187922.aspx)
 * [EXISTS](https://msdn.microsoft.com/library/ms188336.aspx)
-* [在](https://msdn.microsoft.com/library/ms177682.aspx)
+* [IN](https://msdn.microsoft.com/library/ms177682.aspx)
 * [为 [非] NULL](https://msdn.microsoft.com/library/ms188795.aspx)
 * [LIKE](https://msdn.microsoft.com/library/ms179859.aspx)
-* [不](https://msdn.microsoft.com/library/ms189455.aspx)
+* [NOT](https://msdn.microsoft.com/library/ms189455.aspx)
 * [或](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>位运算符
+
 * [&（位与）](https://msdn.microsoft.com/library/ms174965.aspx)
-* [|（从位或）](https://msdn.microsoft.com/library/ms186714.aspx)
+* [|（位或）](https://msdn.microsoft.com/library/ms186714.aspx)
 * [* （位独占 OR）](https://msdn.microsoft.com/library/ms190277.aspx)
 * [~（位非）](https://msdn.microsoft.com/library/ms173468.aspx)
 * [^=（位异或等于）](https://msdn.microsoft.com/library/cc627413.aspx)
@@ -83,17 +89,18 @@ ms.locfileid: "80351418"
 * [&=（位与等于）](https://msdn.microsoft.com/library/cc627427.aspx)
 
 ## <a name="functions"></a>函数
+
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)
 * [@@SPID](https://msdn.microsoft.com/library/ms189535.aspx)
 * [@@TRANCOUNT](https://msdn.microsoft.com/library/ms187967.aspx)
 * [@@VERSION](https://msdn.microsoft.com/library/ms177512.aspx)
-* [Abs](https://msdn.microsoft.com/library/ms189800.aspx)
+* [ABS](https://msdn.microsoft.com/library/ms189800.aspx)
 * [ACOS](https://msdn.microsoft.com/library/ms178627.aspx)
-* [Ascii](https://msdn.microsoft.com/library/ms177545.aspx)
-* [阿辛](https://msdn.microsoft.com/library/ms181581.aspx)
-* [阿坦](https://msdn.microsoft.com/library/ms181746.aspx)
+* [ASCII](https://msdn.microsoft.com/library/ms177545.aspx)
+* [ASIN](https://msdn.microsoft.com/library/ms181581.aspx)
+* [ATAN](https://msdn.microsoft.com/library/ms181746.aspx)
 * [ATN2](https://msdn.microsoft.com/library/ms173854.aspx)
 * [BINARY_CHECKSUM](https://msdn.microsoft.com/library/ms173784.aspx)
 * [CASE](https://msdn.microsoft.com/library/ms181765.aspx)
@@ -101,14 +108,14 @@ ms.locfileid: "80351418"
 * [CEILING](https://msdn.microsoft.com/library/ms189818.aspx)
 * [字符](https://msdn.microsoft.com/library/ms187323.aspx)
 * [CHARINDEX](https://msdn.microsoft.com/library/ms186323.aspx)
-* [校验](https://msdn.microsoft.com/library/ms189788.aspx)
-* [合并](https://msdn.microsoft.com/library/ms190349.aspx)
+* [CHECKSUM](https://msdn.microsoft.com/library/ms189788.aspx)
+* [COALESCE](https://msdn.microsoft.com/library/ms190349.aspx)
 * [COL_NAME](https://msdn.microsoft.com/library/ms174974.aspx)
 * [COLLATIONPROPERTY](https://msdn.microsoft.com/library/ms190305.aspx)
 * [CONCAT](https://msdn.microsoft.com/library/hh231515.aspx)
 * [COS](https://msdn.microsoft.com/library/ms188919.aspx)
 * [COT](https://msdn.microsoft.com/library/ms188921.aspx)
-* [计数](https://msdn.microsoft.com/library/ms175997.aspx)
+* [COUNT](https://msdn.microsoft.com/library/ms175997.aspx)
 * [COUNT_BIG](https://msdn.microsoft.com/library/ms190317.aspx)
 * [CUME_DIST](https://msdn.microsoft.com/library/hh231078.aspx)
 * [CURRENT_TIMESTAMP](https://msdn.microsoft.com/library/ms188751.aspx)
@@ -117,7 +124,7 @@ ms.locfileid: "80351418"
 * [DATALENGTH](https://msdn.microsoft.com/library/ms173486.aspx)
 * [DATEADD](https://msdn.microsoft.com/library/ms186819.aspx)
 * [DATEDIFF](https://msdn.microsoft.com/library/ms189794.aspx)
-* [从零件日期](https://msdn.microsoft.com/library/hh213228.aspx)
+* [DATEFROMPARTS](https://msdn.microsoft.com/library/hh213228.aspx)
 * [DATENAME](https://msdn.microsoft.com/library/ms174395.aspx)
 * [DATEPART](https://msdn.microsoft.com/library/ms174420.aspx)
 * [DATETIME2FROMPARTS](https://msdn.microsoft.com/library/hh213312.aspx)
@@ -138,28 +145,28 @@ ms.locfileid: "80351418"
 * [EXP](https://msdn.microsoft.com/library/ms179857.aspx)
 * [FIRST_VALUE](https://msdn.microsoft.com/library/hh213018.aspx)
 * [FLOOR](https://msdn.microsoft.com/library/ms178531.aspx)
-* [获取日期](https://msdn.microsoft.com/library/ms188383.aspx)
+* [GETDATE](https://msdn.microsoft.com/library/ms188383.aspx)
 * [GETUTCDATE](https://msdn.microsoft.com/library/ms178635.aspx)
 * [HAS_DBACCESS](https://msdn.microsoft.com/library/ms187718.aspx)
 * [HASHBYTES](https://msdn.microsoft.com/library/ms174415.aspx)
 * [INDEXPROPERTY](https://msdn.microsoft.com/library/ms187729.aspx)
 * [ISDATE](https://msdn.microsoft.com/library/ms187347.aspx)
 * [ISNULL](https://msdn.microsoft.com/library/ms184325.aspx)
-* [是数字](https://msdn.microsoft.com/library/ms186272.aspx)
+* [ISNUMERIC](https://msdn.microsoft.com/library/ms186272.aspx)
 * [LAG](https://msdn.microsoft.com/library/hh231256.aspx)
 * [LAST_VALUE](https://msdn.microsoft.com/library/hh231517.aspx)
 * [LEAD](https://msdn.microsoft.com/library/hh213125.aspx)
-* [离开](https://msdn.microsoft.com/library/ms177601.aspx)
-* [莱恩](https://msdn.microsoft.com/library/ms190329.aspx)
+* [LEFT](https://msdn.microsoft.com/library/ms177601.aspx)
+* [LEN](https://msdn.microsoft.com/library/ms190329.aspx)
 * [LOG](https://msdn.microsoft.com/library/ms190319.aspx)
-* [日志10](https://msdn.microsoft.com/library/ms175121.aspx)
-* [降低](https://msdn.microsoft.com/library/ms174400.aspx)
+* [LOG10](https://msdn.microsoft.com/library/ms175121.aspx)
+* [LOWER](https://msdn.microsoft.com/library/ms174400.aspx)
 * [LTRIM](https://msdn.microsoft.com/library/ms177827.aspx)
-* [麦克斯](https://msdn.microsoft.com/library/ms187751.aspx)
-* [最小](https://msdn.microsoft.com/library/ms179916.aspx)
+* [MAX](https://msdn.microsoft.com/library/ms187751.aspx)
+* [MIN](https://msdn.microsoft.com/library/ms179916.aspx)
 * [月](https://msdn.microsoft.com/library/ms187813.aspx)
 * [NCHAR](https://msdn.microsoft.com/library/ms182673.aspx)
-* [内蒂尔](https://msdn.microsoft.com/library/ms175126.aspx)
+* [NTILE](https://msdn.microsoft.com/library/ms175126.aspx)
 * [NULLIF](https://msdn.microsoft.com/library/ms177562.aspx)
 * [OBJECT_ID](https://msdn.microsoft.com/library/ms190328.aspx)
 * [OBJECT_NAME](https://msdn.microsoft.com/library/ms186301.aspx)
@@ -176,13 +183,13 @@ ms.locfileid: "80351418"
 * [POWER](https://msdn.microsoft.com/library/ms174276.aspx)
 * [QUOTENAME](https://msdn.microsoft.com/library/ms176114.aspx)
 * [RADIANS](https://msdn.microsoft.com/library/ms189742.aspx)
-* [兰德](https://msdn.microsoft.com/library/ms177610.aspx)
-* [排名](https://msdn.microsoft.com/library/ms176102.aspx)
-* [取代](https://msdn.microsoft.com/library/ms186862.aspx)
+* [RAND](https://msdn.microsoft.com/library/ms177610.aspx)
+* [RANK](https://msdn.microsoft.com/library/ms176102.aspx)
+* [REPLACE](https://msdn.microsoft.com/library/ms186862.aspx)
 * [REPLICATE](https://msdn.microsoft.com/library/ms174383.aspx)
-* [反向](https://msdn.microsoft.com/library/ms180040.aspx)
-* [对](https://msdn.microsoft.com/library/ms177532.aspx)
-* [轮](https://msdn.microsoft.com/library/ms175003.aspx)
+* [REVERSE](https://msdn.microsoft.com/library/ms180040.aspx)
+* [RIGHT](https://msdn.microsoft.com/library/ms177532.aspx)
+* [ROUND](https://msdn.microsoft.com/library/ms175003.aspx)
 * [ROW_NUMBER](https://msdn.microsoft.com/library/ms186734.aspx)
 * [RTRIM](https://msdn.microsoft.com/library/ms178660.aspx)
 * [SCHEMA_ID](https://msdn.microsoft.com/library/ms188797.aspx)
@@ -190,17 +197,17 @@ ms.locfileid: "80351418"
 * [SERVERPROPERTY](https://msdn.microsoft.com/library/ms174396.aspx)
 * [SESSION_USER](https://msdn.microsoft.com/library/ms177587.aspx)
 * [SIGN](https://msdn.microsoft.com/library/ms188420.aspx)
-* [罪](https://msdn.microsoft.com/library/ms188377.aspx)
+* [SIN](https://msdn.microsoft.com/library/ms188377.aspx)
 * [SMALLDATETIMEFROMPARTS](https://msdn.microsoft.com/library/hh213396.aspx)
 * [SOUNDEX](https://msdn.microsoft.com/library/ms187384.aspx)
-* [空间](https://msdn.microsoft.com/library/ms187950.aspx)
+* [SPACE](https://msdn.microsoft.com/library/ms187950.aspx)
 * [SQL_VARIANT_PROPERTY](https://msdn.microsoft.com/library/ms178550.aspx)
 * [SQRT](https://msdn.microsoft.com/library/ms176108.aspx)
-* [广场](https://msdn.microsoft.com/library/ms173569.aspx)
+* [SQUARE](https://msdn.microsoft.com/library/ms173569.aspx)
 * [STATS_DATE](https://msdn.microsoft.com/library/ms190330.aspx)
 * [STDEV](https://msdn.microsoft.com/library/ms190474.aspx)
 * [STDEVP](https://msdn.microsoft.com/library/ms176080.aspx)
-* [Str](https://msdn.microsoft.com/library/ms189527.aspx)
+* [STR](https://msdn.microsoft.com/library/ms189527.aspx)
 * [STUFF](https://msdn.microsoft.com/library/ms188043.aspx)
 * [SUBSTRING](https://msdn.microsoft.com/library/ms187748.aspx)
 * [SUM](https://msdn.microsoft.com/library/ms187810.aspx)
@@ -217,22 +224,25 @@ ms.locfileid: "80351418"
 * [TYPE_ID](https://msdn.microsoft.com/library/ms181628.aspx)
 * [TYPE_NAME](https://msdn.microsoft.com/library/ms189750.aspx)
 * [TYPEPROPERTY](https://msdn.microsoft.com/library/ms188419.aspx)
-* [Unicode](https://msdn.microsoft.com/library/ms180059.aspx)
+* [UNICODE](https://msdn.microsoft.com/library/ms180059.aspx)
 * [UPPER](https://msdn.microsoft.com/library/ms180055.aspx)
 * [用户](https://msdn.microsoft.com/library/ms186738.aspx)
 * [USER_NAME](https://msdn.microsoft.com/library/ms188014.aspx)
-* [无 功](https://msdn.microsoft.com/library/ms186290.aspx)
+* [VAR](https://msdn.microsoft.com/library/ms186290.aspx)
 * [VARP](https://msdn.microsoft.com/library/ms188735.aspx)
-* [年](https://msdn.microsoft.com/library/ms186313.aspx)
+* [YEAR](https://msdn.microsoft.com/library/ms186313.aspx)
 * [XACT_STATE](https://msdn.microsoft.com/library/ms189797.aspx)
 
 ## <a name="transactions"></a>事务
+
 * [交易](https://msdn.microsoft.com/library/mt204031.aspx)
 
 ## <a name="diagnostic-sessions"></a>诊断会话
+
 * [CREATE DIAGNOSTICS SESSION](https://msdn.microsoft.com/library/mt204029.aspx)
 
 ## <a name="procedures"></a>过程
+
 * [sp_addrolemember](https://msdn.microsoft.com/library/ms187750.aspx)
 * [sp_columns](https://msdn.microsoft.com/library/ms176077.aspx)
 * [sp_configure](https://msdn.microsoft.com/library/ms188787.aspx)
@@ -256,6 +266,7 @@ ms.locfileid: "80351418"
 * [sp_unprepare](https://msdn.microsoft.com/library/ff848735.aspx)
 
 ## <a name="set-statements"></a>SET 语句
+
 * [SET ANSI_DEFAULTS](https://msdn.microsoft.com/library/ms188340.aspx)
 * [SET ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
 * [SET ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
@@ -278,5 +289,6 @@ ms.locfileid: "80351418"
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息参考，请参阅[SQL 分析 中的 T-SQL 语句](sql-data-warehouse-reference-tsql-statements.md)，以及 SQL 分析[中的系统视图](sql-data-warehouse-reference-tsql-system-views.md)。
+
+有关详细信息，请参阅[Synapse SQL 池中的 T-SQL 语句](sql-data-warehouse-reference-tsql-statements.md)，以及[Synapse SQL 池中的系统视图](sql-data-warehouse-reference-tsql-system-views.md)。
 

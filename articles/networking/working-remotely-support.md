@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: 78081329b70edff5ed2c728cb2f7c3e562a44e56
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: bcdd938365e50da1f5ae0e830e86692f1b915123
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346291"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618915"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>使用 Azure 网络服务远程工作
 
@@ -29,8 +29,6 @@ ms.locfileid: "80346291"
 
 网络规划人员可以通过记住不同的流量类型需要不同的网络处理优先级以及一些智能负载重定向/分发来帮助缓解瓶颈并缓解网络拥塞。 例如，医生与患者互动的实时远程电敏流量非常重要，并且对延迟/抖动非常敏感。 但是，在存储之间复制相同的流量并不敏感。 以前的流量必须通过最佳网络路径路由，服务质量更高;而通过次优路线路由后续流量是可以接受的。
 
->[!NOTE] 
->在本文快结束时，将列出指向利用不同 Azure 网络功能和生态系统支持远程工作的用户的文章的链接。
 
 
 ## <a name="sharing-our-best-practices---azure-network-is-designed-for-elasticity-and-high-availability"></a>共享我们的最佳实践 - Azure 网络专为弹性和高可用性而设计
@@ -45,17 +43,18 @@ Microsoft 网络旨在满足各种网络流量的要求，并为不同类型的�
 
 ## <a name="enable-employees-to-work-remotely"></a>使员工能够远程工作
 
-Azure VPN 网关同时支持点到站点 （P2S） 和站点到站点 （S2S） VPN 连接。 使用 Azure VPN 网关可以缩放员工的连接以安全地访问 Azure 部署的资源和本地资源。 有关详细信息，请参阅[如何允许用户远程工作](https://go.microsoft.com/fwlink/?linkid=2123770)。 
+Azure VPN 网关同时支持点到站点 （P2S） 和站点到站点 （S2S） VPN 连接。 使用 Azure VPN 网关可以缩放员工的连接以安全地访问 Azure 部署的资源和本地资源。 有关详细信息，请参阅[如何允许用户远程工作](../vpn-gateway/work-remotely-support.md)。 
 
-如果使用安全套接字隧道协议 （SSTP），则并发连接数限制为 128。 为了获得更多的连接，我们建议过渡到 OpenVPN 或 IKEv2。 有关详细信息，请参阅从[SSTP 过渡到 OpenVPN 协议或 IKEv2。](https://go.microsoft.com/fwlink/?linkid=2124112)
+如果使用安全套接字隧道协议 （SSTP），则并发连接数限制为 128。 为了获得更多的连接，我们建议过渡到 OpenVPN 或 IKEv2。 有关详细信息，请参阅从[SSTP 过渡到 OpenVPN 协议或 IKEv2。](../vpn-gateway/ikev2-openvpn-from-sstp.md
+)
 
-要访问部署在 Azure 中的资源，远程开发人员可以使用 Azure Bastion 解决方案，而不是 VPN 连接来获取安全外壳访问（RDP 或 SSH），而无需访问 VM 上的公共 IP。 有关详细信息，请参阅使用[Azure 堡垒 远程工作](https://go.microsoft.com/fwlink/?linkid=2123939)。
+要访问部署在 Azure 中的资源，远程开发人员可以使用 Azure Bastion 解决方案，而不是 VPN 连接来获取安全外壳访问（RDP 或 SSH），而无需访问 VM 上的公共 IP。 有关详细信息，请参阅使用[Azure 堡垒 远程工作](../bastion/work-remotely-support.md)。
 
-聚合大规模 VPN 连接，支持不同本地全球位置、不同区域中心和分支虚拟网络中的资源之间的任意连接，并优化多个家庭宽带网络的利用率您可以使用 Azure 虚拟 WAN。 有关详细信息，请参阅[从家庭需求中努力满足工作需求？这里是 Azure 虚拟 WAN 可以提供帮助的地方](https://go.microsoft.com/fwlink/?linkid=2123769)。
+对于聚合大规模 VPN 连接，支持不同本地全局位置、不同区域中心和分支虚拟网络中的资源之间的任意连接，以及优化多个家庭宽带网络的利用率，您可以使用 Azure 虚拟 WAN。 有关详细信息，请参阅[从家庭需求中努力满足工作需求？这里是 Azure 虚拟 WAN 可以提供帮助的地方](../virtual-wan/work-remotely-support.md)。
 
 支持远程工作人员的另一种方法是部署托管在 Azure 虚拟网络中的虚拟桌面基础结构 （VDI），该基础结构（VDI）通过 Azure 防火墙进行保护。 例如，Windows 虚拟桌面 （WVD） 是在 Azure 中运行的桌面和应用虚拟化服务。 使用 Windows 虚拟桌面，您可以在 Azure 订阅中设置可扩展且灵活的环境，而无需运行任何其他网关服务器。 您只对虚拟网络中的 WVD 虚拟机负责。 有关详细信息，请参阅[Azure 防火墙远程工作支持](../firewall/remote-work-support.md)。 
 
-Azure 还具有一组丰富的生态系统合作伙伴。 我们的合作伙伴 Azure 上的网络虚拟设备还可以帮助扩展 VPN 连接。 有关详细信息，请参阅[远程工作的网络虚拟设备 （NVA） 注意事项](https://go.microsoft.com/fwlink/?linkid=2123771)。
+Azure 还具有一组丰富的生态系统合作伙伴。 我们的合作伙伴 Azure 上的网络虚拟设备还可以帮助扩展 VPN 连接。 有关详细信息，请参阅[远程工作的网络虚拟设备 （NVA） 注意事项](../vpn-gateway/nva-work-remotely-support.md)。
 
 ## <a name="extend-employees-connection-to-access-globally-distributed-resources"></a>扩展员工连接以访问全球分布的资源
 
@@ -71,7 +70,7 @@ Azure 还具有一组丰富的生态系统合作伙伴。 我们的合作伙伴 
 
 ## <a name="scale-customer-connectivity-to-frontend-resources"></a>扩展客户与前端资源的连接
 
-在越来越多的人上网的时候，许多公司网站的客户流量都有所增加。 Azure 应用程序网关可帮助管理此增加的前端工作负荷。 有关详细信息，请参阅[应用程序网关高流量支持](https://go.microsoft.com/fwlink/?linkid=2123940)。
+在越来越多的人上网的时候，许多公司网站的客户流量都有所增加。 Azure 应用程序网关可帮助管理此增加的前端工作负荷。 有关详细信息，请参阅[应用程序网关高流量支持](../application-gateway/high-traffic-support.md)。
 
 ## <a name="microsoft-support-for-multi-cloud-traffic"></a>微软支持多云流量
 
@@ -83,13 +82,13 @@ Azure 还具有一组丰富的生态系统合作伙伴。 我们的合作伙伴 
 
 | **文章** | **上次更新** |
 | --- | --- |
-| [如何使用户能够远程工作](https://go.microsoft.com/fwlink/?linkid=2123770) | 2020年3月23日 |
-| [努力满足家庭需求的工作？这里是 Azure 虚拟 WAN 可以提供帮助的地方](https://go.microsoft.com/fwlink/?linkid=2123769) | 2020年3月23日 |
-| [应用程序网关高流量支持](https://go.microsoft.com/fwlink/?linkid=2123940) | 2020年3月23日 |
-| [远程工作的网络虚拟设备 （NVA） 注意事项](https://go.microsoft.com/fwlink/?linkid=2123771)| 2020年3月23日 |
+| [如何使用户能够远程工作](../vpn-gateway/work-remotely-support.md) | 2020年3月23日 |
+| [努力满足家庭需求的工作？这里是 Azure 虚拟 WAN 可以提供帮助的地方](../virtual-wan/work-remotely-support.md) | 2020年3月23日 |
+| [应用程序网关高流量支持](../application-gateway/high-traffic-support.md) | 2020年3月23日 |
+| [远程工作的网络虚拟设备 （NVA） 注意事项](../vpn-gateway/nva-work-remotely-support.md)| 2020年3月23日 |
 | [从 SSTP 过渡到 OpenVPN 协议或 IKEv2](https://go.microsoft.com/fwlink/?linkid=2124112) | 2020年3月23日 |
-| [使用 Azure 堡垒远程工作](https://go.microsoft.com/fwlink/?linkid=2123939) | 2020年3月23日 |
-| [使用 Azure 快速路由创建混合连接以支持远程用户](https://go.microsoft.com/fwlink/?linkid=2123768) | 2020年3月23日 |
+| [使用 Azure 堡垒远程工作](../bastion/work-remotely-support.md) | 2020年3月23日 |
+| [使用 Azure 快速路由创建混合连接以支持远程用户](../expressroute/work-remotely-support.md) | 2020年3月23日 |
 | [Azure 防火墙远程工作支持](../firewall/remote-work-support.md)|2020年3月25日|
 
 <!--Link References-->

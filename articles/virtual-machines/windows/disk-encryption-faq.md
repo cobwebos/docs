@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea2a66a6b012664a9596a02ea32c1a0b677ee3ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cc6a3d8d736209f762959bca6f8ad379c14203f
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74384266"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582717"
 ---
 # <a name="azure-disk-encryption-for-windows-vms-faq"></a>适用于 Windows VM 的 Azure 磁盘加密常见问题解答
 
@@ -36,7 +36,7 @@ Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell
 
 ## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>哪些 VM 大小和操作系统支持 Azure 磁盘加密？
 
-[Azure 磁盘加密概述](disk-encryption-overview.md)一文列出了支持 Azure 磁盘加密的 [VM 大小](disk-encryption-overview.md#supported-vm-sizes)和 [VM 操作系统](disk-encryption-overview.md#supported-operating-systems)。
+[Azure 磁盘加密概述](disk-encryption-overview.md)一文列出了支持 Azure 磁盘加密的 [VM 大小](disk-encryption-overview.md#supported-vms)和 [VM 操作系统](disk-encryption-overview.md#supported-operating-systems)。
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>是否可以使用 Azure 磁盘加密来加密引导卷和数据卷？
 
@@ -100,7 +100,7 @@ Azure 磁盘加密具有先决条件。 请参阅[使用 Azure AD 的 Azure 磁�
 
 Azure 磁盘加密根据 Windows 版本在 BitLocker 中选择加密方法，如下所示：
 
-| 窗口版本                 | 版本 | 加密方法        |
+| 窗口版本                 | Version | 加密方法        |
 |----------------------------------|--------|--------------------------|
 | Windows 服务器 2012、Windows 10 或更高  | >#1511 |XTS-AES 256 位           |
 | Windows 服务器 2012， Windows 8， 8.1， 10 | < 1511 |AES 256 位 |              |

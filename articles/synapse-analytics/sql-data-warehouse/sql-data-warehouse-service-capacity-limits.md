@@ -1,6 +1,6 @@
 ---
 title: 容量限制 - Azure Synapse Analytics（以前称为 SQL DW）
-description: Azure Synapse 中 SQL Analytics 的各个组件所允许的最大值。
+description: Azure Synapse 中 Synapse SQL 池的各种组件允许的最大值。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a0343dd55149fa3c2c17af1f246595a56e4c6ec2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f35a5da15ca1a672046844282626a6cb7b8ecbdf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350081"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583532"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse Analytics（以前称为 SQL DW）容量限制
 
@@ -31,7 +31,7 @@ Azure Synapse 的各种组件允许的最大值。
 | 数据库连接 |并发打开的最大会话数 |1024<br/><br/>并发打开的会话数因所选 DWU 而异。 DWU600c 及更高版本支持最多 1024 个打开的会话。 DWU500c 及更低版本支持最多 512 个并发打开的会话。 请注意，可并发执行的查询数量是有限制的。 当超出并发限制时，请求将进入内部队列等待处理。 |
 | 数据库连接 |预处理语句的最大内存 |20 MB |
 | [工作负荷管理](resource-classes-for-workload-management.md) |最大并行查询 |128<br/><br/>  最多可执行 128 个并发查询，其余查询将排队。<br/><br/>将用户分配到更高的资源类或降低[数据仓库单位](memory-concurrency-limits.md)设置时，并发查询的数量可能会减少。 某些查询（例如 DMV 查询）始终允许运行，并且不会影响并发查询限制。 有关并发查询执行的更多详细信息，请参阅[并发最大值](memory-concurrency-limits.md)一文。 |
-| [Tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |每 DW100c 399 GB。 因此，在 DWU1000c 时，tempdb 大小为 3.99 TB。 |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |每 DW100c 399 GB。 因此，在 DWU1000c 时，tempdb 大小为 3.99 TB。 |
 ||||
 
 ## <a name="database-objects"></a>数据库对象
@@ -54,7 +54,7 @@ Azure Synapse 的各种组件允许的最大值。
 | 统计信息 |每个统计对象的列数。 |32 |
 | 统计信息 |每个表的列上创建的统计信息条数。 |30,000 |
 | 存储过程 |最大嵌套级数。 |8 |
-| 查看 |每个视图的列数 |1,024 |
+| 视图 |每个视图的列数 |1,024 |
 ||||
 
 ## <a name="loads"></a>加载

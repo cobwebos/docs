@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d121d6c198cb0d92cd098a40096e2f2300f65537
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14f513306b3f0bc0c06a4143e5174c3ecddaef62
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76758983"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617163"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>方案：调用 Web API 的 Web 应用
 
@@ -48,7 +48,7 @@ ms.locfileid: "76758983"
 > [!NOTE]
 > 向 Web 应用添加登录信息是为了保护 Web 应用本身。 该保护是通过使用“中间件”** 库来实现的，而不是使用 Microsoft 身份验证库 (MSAL)。 前面的方案[用于将用户登录的 Web 应用](scenario-web-app-sign-user-overview.md)中涵盖了该主题。
 >
-> 此方案涵盖了如何从 Web 应用调用 Web API。 你必须获取这些 Web API 的访问令牌。 若要获取那些令牌，请使用 MSAL 库。
+> 此方案涵盖了如何从 Web 应用调用 Web API。 你必须获取这些 Web API 的访问令牌。 您可以使用 MSAL 库来获取这些令牌。
 
 此方案的开发涉及以下具体任务：
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7df3c07518a9211bd1abf785e3f4954c41ebffc
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: cf6f53639cff23a9e709b44a1ddf1332df2164b7
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529447"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586050"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁盘加密方案
 
@@ -194,7 +194,7 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为：http
 
 下表列出了现有的或正在运行的 VM 的资源管理器模板参数：
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 | --- | --- |
 | vmName | 运行加密操作的 VM 的名称。 |
 | KeyVaultName | 加密密钥应上传到的 Key Vault 的名称。 可使用 cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` 获取该名称。|
@@ -407,6 +407,8 @@ Azure 磁盘加密不支持以下 Linux 方案、功能和技术：
 - 共享/分布式文件系统的加密，如（但不限于）：DFS、GFS、DRDB 和 CephFS。
 - 将加密的 VM 移动到其他订阅。
 - 内核崩溃转储（转储）。
+- 甲骨文ACFS（ASM集群文件系统）
+- 第 2 代 VM（请参阅：[对 Azure 上第 2 代 VM 的支持](generation-2.md#generation-1-vs-generation-2-capabilities)）
 - Lsv2 系列 VM（参见[：Lsv2 系列](../lsv2-series.md)）
 
 ## <a name="next-steps"></a>后续步骤

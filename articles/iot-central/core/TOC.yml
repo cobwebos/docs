@@ -49,7 +49,7 @@
       href: concepts-get-connected.md
     - name: 连接 IoT Edge 设备
       href: concepts-iot-edge.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 建立连接
       items:
@@ -81,14 +81,10 @@
           href: howto-create-personal-dashboards.md
         - name: 运行作业
           href: howto-run-a-job.md
-        - name: 对设备模板进行版本控制
-          href: howto-version-device-template.md
     - name: 转换
       items:
         - name: 将数据导出到 Azure 中的目标
           href: howto-export-data.md
-        - name: 探索 IoT Central API
-          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
         - name: 根据规则创建 Webhook
           href: howto-create-webhooks.md
         - name: 根据规则连接 Azure Monitor 操作组

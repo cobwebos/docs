@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: f8f5ab99086ee38e2f56247ce31f8ac0e7affc81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6191e67f097b5ab471c5b31eff11a0e570d1c990
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129003"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617027"
 ---
 # <a name="authentication-basics"></a>身份验证基础知识
 
@@ -32,7 +32,7 @@ ms.locfileid: "80129003"
 
 无需创建每个需要维护自身用户名和密码信息的应用（需要在多个应用中添加或删除用户时，这会产生较高的管理负担），而可以让应用将这种责任委托给一个集中式标识提供者。
 
-Azure Active Directory (Azure AD) 是云中的集中式标识提供者。 将身份验证和授权委派给它，可实现条件访问策略（要求用户位于特定位置的条件访问策略、使用多重身份验证）以及允许用户登录一次，然后自动登录登录到共享同一集中目录的所有 Web 应用。 此功能称为单一登录 (SSO)。
+Azure Active Directory (Azure AD) 是云中的集中式标识提供者。 将身份验证和授权委派给它，可以执行条件访问策略（要求用户位于特定位置的条件访问策略、使用多重身份验证，以及允许用户登录一次，然后自动登录到共享同一集中目录的所有 Web 应用）。 此功能称为单一登录 (SSO)。
 
 对于用户位于全球各地，且用户不一定从企业网络登录的应用而言，集中式标识提供者更为重要。 Azure AD 将对用户进行身份验证并提供访问令牌。 [访问令牌](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#access-token)是由授权服务器颁发的安全令牌。 它包含有关用户和令牌用途的应用的信息;可用于访问 Web API 和其他受保护资源。
 

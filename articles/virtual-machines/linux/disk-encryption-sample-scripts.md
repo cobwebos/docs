@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c98da4b41da183f56d80fad1e8c01706d1cfcf23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970514"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585956"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本 
 
@@ -80,7 +80,7 @@ ms.locfileid: "78970514"
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>OS 磁盘加密的先决条件
 
-* VM 必须使用与 [Azure 磁盘加密支持的操作系统](disk-encryption-overview.md#supported-vm-sizes)中列出的 OS 磁盘加密兼容的分发版 
+* VM 必须使用与 [Azure 磁盘加密支持的操作系统](disk-encryption-overview.md#supported-vms)中列出的 OS 磁盘加密兼容的分发版 
 * 必须从 Azure 资源管理器中的市场映像创建 VM。
 * Azure VM，至少具有 4 GB RAM（建议大小为 7 GB）。
 * （针对 RHEL 和 CentOS）禁用 SELinux。 若要禁用 SELinux，请参阅 [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)（SELinux 用户和管理员指南）中针对 VM 的“4.4.2. Disabling SELinux（4.4.2. 禁用 SELinux）”。
@@ -294,7 +294,7 @@ ms.locfileid: "78970514"
    ```bash
     if [ 1 ]; then
    ```
-4. 编辑 /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh 并将其附加在“# Open LUKS device”的后面：
+4. 编辑 /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh 并将其追加到“# Open LUKS device”后面：
 
     ```bash
     MountPoint=/tmp-keydisk-mount

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 22a24d01f606cd3f76a0de950351feb3d964da54
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2db7a25f3f463e9210544354395c9d33a75f633c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478917"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619377"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Azure 机器学习的已知问题和故障排除
 
@@ -48,16 +48,6 @@ ms.locfileid: "80478917"
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
-* **错误消息：未找到 Azureml-数据准备本机的匹配分布**
-
-    Anaconda Python 3.7.4 分发版中的一个 bug 会中断 azureml-sdk 的安装。 此问题在此[GitHub 问题](https://github.com/ContinuumIO/anaconda-issues/issues/11195)中讨论
-    
-    这可以通过使用此命令创建新的 Conda 环境来解决：
-    ```bash
-    conda create -n <env-name> python=3.7.3
-    ```
-    这会使用 Python 3.7.3 创建一个 Conda 环境，而该环境没有 3.7.4 中存在的安装问题。
-
 * **安装包时数据砖块故障**
 
     安装更多包时，Azure Databricks 上的 Azure 机器学习 SDK 安装失败。 某些包（如 `psutil`）可能会导致冲突。 为了避免安装错误，请通过冻结库版本来安装包。 此问题与 Databricks 相关，而与 Azure 机器学习 SDK 无关。 使用其他库时也可能会遇到此问题。 示例：
@@ -89,10 +79,9 @@ ms.locfileid: "80478917"
 
 * **数据块 FailtoSendFeather：** 如果在读取`FailToSendFeather`Azure 数据块群集上的数据时看到错误，请参阅以下解决方案：
     
-        * Upgrade `azureml-sdk[automl]` package to the latest version.
-        * Add `azureml-dataprep` version 1.1.8 or above.
-        * Add `pyarrow` version 0.11 or above.
-        `
+    * 将 `azureml-sdk[automl]` 包升级到最新版本。
+    * 添加 `azureml-dataprep` 版本 1.1.8 或更高版本。
+    * 添加 `pyarrow` 版本 0.11 或更高版本。
 
 ## <a name="create-and-manage-workspaces"></a>创建和管理工作区
 
@@ -113,9 +102,7 @@ ms.locfileid: "80478917"
 
 如果对其他工作负荷（例如数据传输）使用文件共享，则我们建议使用 Blob，以便可以自由使用文件共享来提交运行。 还可以在两个不同的工作区之间拆分工作负荷。
 
-### <a name="datasets-and-data-preparation"></a>数据集和数据准备
-
-下面是 Azure 机器学习数据集的已知问题。
+### <a name="passing-data-as-input"></a>将数据作为输入传递
 
 *  **类型错误：文件未找到：没有此类文件或目录**：如果您提供的文件路径不在文件所在的位置，则会发生此错误。 需确保引用文件的方式与在计算目标上将数据集装载到的位置相一致。 为确保确定性状态，我们建议在将数据集装载到计算目标时使用抽象路径。 例如，在以下代码中，我们将数据集装载到计算目标文件系统的根目录 `/tmp` 下。 
     
@@ -128,8 +115,7 @@ ms.locfileid: "80478917"
 
     如果不包含前导正斜杠“/”，则需要为计算目标上的工作目录添加前缀（例如 `/mnt/batch/.../tmp/dataset`），以指示要将数据集装载到的位置。
 
-### <a name="data-labeling-projects-issues"></a>数据标记项目问题
-
+### <a name="data-labeling-projects"></a>数据标记项目
 
 |问题  |解决方法  |
 |---------|---------|
@@ -138,9 +124,9 @@ ms.locfileid: "80478917"
 |查看映像时，最近添加标签的映像不显示     |   若要加载所有带标签的映像，请选择“第一个”按钮。**** 按下“第一个”按钮会返回到列表的最前面，但会加载所有带标签的数据。****      |
 |在为对象检测提供标记时按 Esc 键会在左上角创建大小为零的标签。 在此状态下提交标签会失败。     |   单击标签旁边的打叉标记来删除该标签。  |
 
-## <a name="azure-machine-learning-designer-issues"></a>Azure 机器学习设计器问题
+## <a name="azure-machine-learning-designer"></a>Azure 机器学习设计器
 
-设计器的已知问题。
+已知问题：
 
 * **较长的计算准备时间**：当您第一次连接到或创建计算目标时，可能需要几分钟甚至更长时间。 
 

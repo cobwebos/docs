@@ -1,6 +1,6 @@
 ---
-title: 将 Contoso 零售数据加载到 SQL 分析数据仓库
-description: 使用 PolyBase 和 T-SQL 命令将 Contoso 零售数据的两个表加载到 Azure SQL 分析中。
+title: 将 Contoso 零售数据加载到 Synapse SQL 数据仓库
+description: 使用 PolyBase 和 T-SQL 命令将 Contoso 零售数据的两个表加载到 Synapse SQL 中。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62105b783577d70ae975cf514304d2c564357641
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7460a59dd2a7a5906a483195929136391657fa50
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351465"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584007"
 ---
-# <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>将 Contoso 零售数据加载到 SQL 分析数据仓库
+# <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>将 Contoso 零售数据加载到 Synapse SQL 数据仓库
 
-在本教程中，您将学习使用 PolyBase 和 T-SQL 命令将 Contoso 零售数据的两个表加载到 SQL Analytics 数据仓库中。 
+在本教程中，您将学习使用 PolyBase 和 T-SQL 命令将 Contoso 零售数据的两个表加载到 Synapse SQL 数据仓库中。
 
 在本教程中，将：
 
@@ -28,13 +28,13 @@ ms.locfileid: "80351465"
 2. 将公共数据载入数据库
 3. 完成加载后执行优化。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
-要运行本教程，您需要一个已具有 SQL Analytics 数据仓库的 Azure 帐户。 如果没有预配数据仓库，请参阅[创建数据仓库并设置服务器级防火墙规则](create-data-warehouse-portal.md)。
+要运行本教程，您需要一个已具有 Synapse SQL 数据仓库的 Azure 帐户。 如果没有预配数据仓库，请参阅[创建数据仓库并设置服务器级防火墙规则](create-data-warehouse-portal.md)。
 
 ## <a name="configure-the-data-source"></a>配置数据源
 
-PolyBase 使用 T-SQL 外部对象来定义外部数据的位置和属性。 外部对象定义存储在 SQL Analytics 数据仓库中。 数据存储在外部。
+PolyBase 使用 T-SQL 外部对象来定义外部数据的位置和属性。 外部对象定义存储在 Synapse SQL 数据仓库中。 数据存储在外部。
 
 ## <a name="create-a-credential"></a>创建凭据
 
@@ -121,7 +121,7 @@ GO
 
 ## <a name="create-the-external-tables"></a>创建外部表
 
-运行以下脚本以创建 DimProduct 和 FactOnlineSales 外部表。 在此处，只需定义列名和数据类型，并以 Azure blob 存储文件的格式将其绑定到这些文件的位置。 定义存储在 SQL Analytics 数据仓库中，数据仍位于 Azure 存储 Blob 中。
+运行以下脚本以创建 DimProduct 和 FactOnlineSales 外部表。 在此处，只需定义列名和数据类型，并以 Azure blob 存储文件的格式将其绑定到这些文件的位置。 定义存储在数据仓库中，数据仍在 Azure 存储 Blob 中。
 
 **LOCATION** 参数是 Azure 存储 Blob 中根文件夹下的文件夹。 每个表位于不同的文件夹中。
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>优化列存储压缩
 
-默认情况下，SQL Analytics 数据仓库将表存储为聚集列存储索引。 加载完成后，某些数据行可能未压缩到列存储中。  有不同的原因会导致发生此问题： 若要了解详细信息，请参阅[管理列存储索引](sql-data-warehouse-tables-index.md)。
+默认情况下，Synapse SQL 数据仓库将表存储为群集列存储索引。 加载完成后，某些数据行可能未压缩到列存储中。  有不同的原因会导致发生此问题： 若要了解详细信息，请参阅[管理列存储索引](sql-data-warehouse-tables-index.md)。
 
 若要在加载后优化查询性能和列存储压缩，请重新生成表，以强制列存储索引压缩所有行。 
 

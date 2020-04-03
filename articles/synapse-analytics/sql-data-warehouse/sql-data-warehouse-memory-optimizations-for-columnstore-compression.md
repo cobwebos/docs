@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a640f2f260c94cd7502aa79badb32bd26abebb11
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 81191fd3b654f612f2621757f3006268276477de
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350320"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586535"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
@@ -89,7 +89,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用*字典*来存储文本模式。 字典最大大小为 16 MB。 行组中每个长字符串列只能有一个字典。
 
-有关列存储内存需求的深入讨论，请参阅视频[SQL 分析扩展：配置和指导](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
+有关列存储内存需求的深入讨论，请参阅视频[突触 SQL 缩放：配置和指导](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>减少内存需求的方法
 
@@ -141,4 +141,4 @@ DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要
 
 ## <a name="next-steps"></a>后续步骤
 
-要找到更多方法来提高 SQL 分析的性能，请参阅[性能概述](cheat-sheet.md)。
+要找到更多方法来提高 Synapse SQL 的性能，请参阅[性能概述](cheat-sheet.md)。

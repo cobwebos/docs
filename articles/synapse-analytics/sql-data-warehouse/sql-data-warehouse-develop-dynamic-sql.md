@@ -1,6 +1,6 @@
 ---
 title: 使用动态 SQL
-description: 有关在开发解决方案时使用 Azure SQL 数据仓库中的动态 SQL 的技巧。
+description: 在 Synapse SQL 池中使用动态 SQL 的开发解决方案的提示。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,19 +11,23 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a44bec72029a50c2ef348bcdda497803e35f586d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 5a285c273a0bc590a9f5b4ade782f2195a361cd6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350556"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619038"
 ---
-# <a name="dynamic-sql-in-sql-data-warehouse"></a>SQL 数据仓库中的动态 SQL
-有关在开发解决方案时使用 Azure SQL 数据仓库中的动态 SQL 的技巧。
+# <a name="dynamic-sql-in-synapse-sql-pool"></a>Synapse SQL 池中的动态 SQL
+本文包括使用 SQL 池中动态 SQL 的开发解决方案的提示。
 
 ## <a name="dynamic-sql-example"></a>动态 SQL 示例
 
-为 SQL 数据仓库开发应用程序代码时，可能需要使用动态 SQL 来帮助提供灵活、通用且模块化的解决方案。 SQL 数据仓库目前不支持 Blob 数据类型。 不支持 blob 数据类型可能会限制字符串的大小，因为 blob 数据类型包括 varchar(max) 和 nvarchar(max) 类型。 如果已在应用程序代码中使用这些类型构建大型字符串，则需要将代码分解成块，并改用 EXEC 语句。
+在为 SQL 池开发应用程序代码时，您可能需要使用动态 SQL 来帮助提供灵活的通用和模块化解决方案。 SQL 池目前不支持 blob 数据类型。 
+
+不支持 blob 数据类型可能会限制字符串的大小，因为 blob 数据类型包括 varchar(max) 和 nvarchar(max) 类型。 
+
+如果在应用程序代码中使用了这些类型的生成大字符串，则需要将代码分解为块，改用 EXEC 语句。
 
 一个简单的示例：
 
@@ -38,7 +42,7 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 如果字符串较短，则可以像平时一样使用 [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql)。
 
 > [!NOTE]
-> 作为动态 SQL 执行的语句仍将遵循所有 TSQL 验证规则。
+> 作为动态 SQL 执行的语句仍将受所有 T-SQL 验证规则的约束。
 > 
 > 
 

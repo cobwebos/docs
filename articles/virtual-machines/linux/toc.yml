@@ -177,6 +177,7 @@
               href: reserved-vm-instance-size-flexibility.md
         - name: 点 VM
           href: spot-vms.md
+          displayName: 'pre-empt, preempt'
         - name: 前几代
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 独立大小
@@ -245,7 +246,7 @@
       href: backup-recovery.md
     - name: 基础结构指南
       href: infrastructure-example.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 创建 VM
       items:
@@ -474,7 +475,7 @@
               href: image-builder-gallery.md
             - name: 更新现有映像
               href: image-builder-gallery-update-image-version.md
-            - name: 故障排除
+            - name: 疑难解答
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: 查找和使用映像
           href: cli-ps-findimage.md
@@ -788,5 +789,5 @@
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
     - name: 常见问题解答
       href: faq.md
-- name: 故障排除
+- name: 疑难解答
   href: ../troubleshooting/index.yml

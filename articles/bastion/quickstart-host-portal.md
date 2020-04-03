@@ -2,17 +2,17 @@
 title: 快速入门：使用专用 IP 地址连接到虚拟机：Azure 堡垒
 description: 在本文中，了解如何从虚拟机创建 Azure Bastion 主机，以及如何使用专用 IP 地址安全地连接。
 services: bastion
-author: cherylmc
+author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.author: cherylmc
-ms.openlocfilehash: 0b4f0a1fa4f9cce05aa544bb24e045209a6d24ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: a420a3253040fff8b767a81f298ede283c1d214b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137452"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619255"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>快速入门：使用专用 IP 地址和 Azure 堡垒连接到虚拟机
 

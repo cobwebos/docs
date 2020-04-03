@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: c1ad8390bc5db72636c637c2ffb817e34674d0fa
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b0530ddada68cc9d07753a3b8ab30bff642e26dd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548855"
+ms.locfileid: "80618664"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>将 Azure 数据资源管理器群集部署到虚拟网络
 
@@ -76,7 +76,7 @@ IP 地址总数：
 | --- | --- | --- | --- |
 | 管理  |[ADX 管理地址](#azure-data-explorer-management-ip-addresses)/Azure 数据资源管理器管理（服务标签） | ADX 子网：443  | TCP  |
 | 运行状况监视  | [ADX 运行状况监控地址](#health-monitoring-addresses)  | ADX 子网：443  | TCP  |
-| ADX 内部通信  | ADX 子网：所有端口  | ADX 子网：所有端口  | All  |
+| ADX 内部通信  | ADX 子网：所有端口  | ADX 子网：所有端口  | 全部  |
 | 允许 Azure 负载均衡器入站（运行状况探测）  | AzureLoadBalancer  | ADX 子网：80，443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>出站 NSG 配置
@@ -90,7 +90,7 @@ IP 地址总数：
 | Azure 监视器配置下载  | ADX 子网  | [Azure 监视器配置终结点地址](#azure-monitor-configuration-endpoint-addresses)：443 | TCP  |
 | 活动目录（如果适用） | ADX 子网 | Azure 活动目录：443 | TCP |
 | 证书颁发机构 | ADX 子网 | 互联网：80 | TCP |
-| 内部通信  | ADX 子网  | ADX 子网：所有端口  | All  |
+| 内部通信  | ADX 子网  | ADX 子网：所有端口  | 全部  |
 | 用于`sql\_request`和`http\_request`插件的端口  | ADX 子网  | 互联网：自定义  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>相关 IP 地址
@@ -106,7 +106,7 @@ IP 地址总数：
 | 巴西南部 | 191.233.25.183 |
 | 加拿大中部 | 40.82.188.208 |
 | 加拿大东部 | 40.80.255.12 |
-| 印度中部 | 40.81.249.251 |
+| 印度中部 | 40.81.249.251, 104.211.98.159 |
 | 美国中部 | 40.67.188.68 |
 | 美国中部 EUAP | 40.89.56.69 |
 | 东亚 | 20.189.74.103 |
@@ -125,12 +125,12 @@ IP 地址总数：
 | 南非西部 | 102.133.0.97 |
 | 美国中南部 | 20.45.3.60 |
 | 东南亚 | 40.119.203.252 |
-| 印度南部 | 40.81.72.110 |
+| 印度南部 | 40.81.72.110, 104.211.224.189 |
 | 英国南部 | 40.81.154.254 |
 | 英国西部 | 40.81.122.39 |
 | 美国中西部 | 52.159.55.120 |
 | 西欧 | 51.145.176.215 |
-| 印度西部 | 40.81.88.112 |
+| 印度西部 | 40.81.88.112, 104.211.160.120 |
 | 美国西部 | 13.64.38.225 |
 | 美国西部 2 | 40.90.219.23 |
 
@@ -250,7 +250,7 @@ crl3.digicert.com:80
 
 例如，对于**美国西部**区域，必须定义以下 UDR：
 
-| 名称 | 地址前缀 | 下一跃点 |
+| “属性” | 地址前缀 | 下一跃点 |
 | --- | --- | --- |
 | ADX_Management | 13.64.38.225/32 | Internet |
 | ADX_Monitoring | 23.99.5.162/32 | Internet |

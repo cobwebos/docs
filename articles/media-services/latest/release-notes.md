@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 1db7009096635fc1279ce8a8358e0d8131209722
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76ef9f92b6b6633982242ccafab1950e0ef5f410
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372589"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582800"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -32,7 +32,7 @@ ms.locfileid: "80372589"
 ## <a name="known-issues"></a>已知问题
 
 > [!NOTE]
-> 您可以使用 Azure[门户](https://portal.azure.com/)管理 v3[实时事件](live-events-outputs-concept.md)、查看 v3[资产](assets-concept.md)、获取有关访问 API 的信息。 对于所有其他管理任务（例如，转换和作业），请使用[REST API](https://aka.ms/ams-v3-rest-ref) [、CLI](https://aka.ms/ams-v3-cli-ref)或受支持的[SDK](media-services-apis-overview.md#sdks)之一。
+> 可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理 v3 [直播活动](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)、获取有关访问 API 的信息。 对于其他所有管理任务（例如，转换和作业），请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
  
@@ -177,7 +177,7 @@ ms.locfileid: "80372589"
 
 添加了包括媒体服务性能改进的更新。
 
-* 更新了处理所支持的最大文件大小。 请参阅[配额和限制](limits-quotas-constraints.md)。
+* 更新了处理所支持的最大文件大小。 请参阅，[配额和限制](limits-quotas-constraints.md)。
 * [编码速度提高](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
 
 ## <a name="april-2019"></a>2019 年 4 月

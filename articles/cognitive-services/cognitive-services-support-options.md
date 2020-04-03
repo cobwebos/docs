@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 692f70e4666416f34a6e3f32fd5804d4aeb63a5b
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: d7ce77404359b32effcc7a5da3f9429e9fdf7005
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477822"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618575"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure 认知服务支持和反馈选项
 
-你是否刚开始探索 Azure 认知服务的功能？ 也许您正在应用程序中实现一项新功能。 或者使用服务后，您有如何改进服务的建议吗？ 以下是您可以获得支持、保持最新状态和提供认知服务反馈的选项。
+你是否刚开始探索 Azure 认知服务的功能？ 也许您正在应用程序中实现一项新功能。 或者使用服务后，您有如何改进服务的建议吗？ 以下是您可以获取支持、保持最新、提供反馈和报告认知服务 Bug 的选项。
 
 ## <a name="get-support"></a>获取支持
 
@@ -81,9 +81,9 @@ ms.locfileid: "80477822"
 
 认知服务发行说明在提供新版本时更新。 说明包含有关新功能、改进和 bug 修复的信息。
 
- - [自定义视觉](custom-vision-service/release-notes.md)
+ - [自定义愿景](custom-vision-service/release-notes.md)
  - [人脸](face/releasenotes.md)
- - [语言理解 (LUIS)](luis/whats-new.md)
+ - [语言理解 (LUIS)](LUIS/whats-new.md)
  - [语音服务](speech-service/releasenotes.md)
  - [语音服务 SDK](speech-service/devices-sdk-release-notes.md)
  - [文本分析](text-analytics/whats-new.md)

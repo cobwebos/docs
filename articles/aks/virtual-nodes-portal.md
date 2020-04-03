@@ -4,12 +4,12 @@ description: 了解如何通过 Azure 门户创建使用虚拟节点运行 Pod �
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: ea93ea4a68fad213fe5bd1dc61abcb2deaef2c9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 696821e12e963292107cad5b22f00a9816a94b25
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473585"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616410"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为使用 Azure 门户中的虚拟节点
 
@@ -17,7 +17,7 @@ ms.locfileid: "79473585"
 
 本文介绍如何创建和配置虚拟网络资源以及启用了虚拟节点的 AKS 群集。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 虚拟节点在 Azure 容器实例 （ACI） 中运行的 Pod 和 AKS 群集之间启用网络通信。 若要提供此通信，应创建虚拟网络子网并分配委派的权限。 虚拟节点仅适用于使用高级** 网络创建的 AKS 群集。 默认情况下，AKS 群集是使用基本** 网络创建的。 本文介绍如何创建虚拟网络和子网，然后部署使用高级网络的 AKS 群集。
 
@@ -30,9 +30,9 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 Microsoft.ContainerInstance** 提供程序应报告为“已注册”**，如下面的示例输出所示：
 
 ```output
-Namespace                    RegistrationState
----------------------------  -------------------
-Microsoft.ContainerInstance  Registered
+Namespace                    RegistrationState    RegistrationPolicy
+---------------------------  -------------------  --------------------
+Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
 如果提供程序显示为“未注册”**，请使用 [az provider register][az-provider-register] 注册提供程序，如下面的示例所示：
@@ -93,7 +93,7 @@ az provider register --namespace Microsoft.ContainerInstance
 
 群集还配置有高级网络。 虚拟节点配置为使用自己的 Azure 虚拟网络子网。 此子网具有委托的权限，可连接 AKS 群集之间的 Azure 资源。 如果还没有委托的子网，Azure 门户将创建并配置 Azure 虚拟网络和子网，以便与虚拟节点配合使用。
 
-选择“查看 + 创建”****。 完成验证后，选择“创建”****。
+选择 **"审阅" = 创建**。 完成验证后，选择“创建”****。
 
 创建 AKS 群集并让其可供使用需要几分钟的时间。
 

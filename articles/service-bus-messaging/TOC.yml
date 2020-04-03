@@ -20,6 +20,7 @@
             - name: Azure CLI
               href: service-bus-quickstart-cli.md
             - name: ARM 模板
+              displayName: Resource Manager
               href: service-bus-resource-manager-namespace-queue.md
         - name: 发送和接收消息
           items:
@@ -108,7 +109,7 @@
           href: service-bus-messaging-security-controls.md
         - name: 网络安全
           href: network-security.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 从 Azure Service Manager（经典）API 迁移到资源管理器 API
       href: deprecate-service-bus-management.md
@@ -209,7 +210,7 @@
           href: private-link-service.md
         - name: 配置客户管理的密钥
           href: configure-customer-managed-key.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 故障排除指南
           href: service-bus-messaging-exceptions.md

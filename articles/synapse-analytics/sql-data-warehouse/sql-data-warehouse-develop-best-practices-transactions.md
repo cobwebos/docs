@@ -1,6 +1,6 @@
 ---
 title: 优化事务
-description: 了解如何在 SQL Analytics 中优化事务代码的性能，同时将长期回滚的风险降至最低。
+description: 了解如何在 Synapse SQL 中优化事务代码的性能，同时将长时间回滚的风险降至最低。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,29 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 700f4717db652d678255aaa9fce6ff8b8ff3b52f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d97a388477c895a4a8632d7ab3d06dc4c8982857
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350583"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582131"
 ---
-# <a name="optimizing-transactions-in-sql-analytics"></a>优化 SQL 分析中的事务
-了解如何在 SQL Analytics 中优化事务代码的性能，同时将长期回滚的风险降至最低。
+# <a name="optimizing-transactions-in-synapse-sql"></a>优化 SynapsE SQL 中的事务
+
+了解如何在 Synapse SQL 中优化事务代码的性能，同时将长时间回滚的风险降至最低。
 
 ## <a name="transactions-and-logging"></a>事务和日志记录
-事务是关系数据库引擎的一个重要组成部分。 SQL 分析在数据修改期间使用事务。 这些事务可以是显式或隐式。 单个 INSERT、UPDATE 和 DELETE 语句都是隐式事务的示例。 显式事务使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 显式事务通常用于多个修改语句需要绑定在单个原子单元的时候。 
 
-SQL 分析使用事务日志向数据库提交更改。 每个分布区都具有其自己的事务日志。 事务日志写入都是自动的。 无需任何配置。 尽管此过程可保证写入，但它确在系统中引入一项开销。 编写事务性高效的代码，可以尽量减少这种影响。 事务性高效的代码大致分为两类。
+事务是关系数据库引擎的一个重要组成部分。 事务在数据修改期间使用。 这些事务可以是显式或隐式。 单个 INSERT、UPDATE 和 DELETE 语句都是隐式事务的示例。 显式事务使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 显式事务通常用于多个修改语句需要绑定在单个原子单元的时候。 
+
+使用事务日志跟踪对数据库的更改。 每个分布区都具有其自己的事务日志。 事务日志写入都是自动的。 无需任何配置。 尽管此过程可保证写入，但它确在系统中引入一项开销。 编写事务性高效的代码，可以尽量减少这种影响。 事务性高效的代码大致分为两类。
 
 * 尽可能使用最少日志记录构造
 * 使用限定范围的批来处理数据，避免单数形式的长时运行事务
 * 对于给定分区的大型修改，采用分区切换模式
 
 ## <a name="minimal-vs-full-logging"></a>最少日志记录与完整日志记录
+
 完整记录的操作使用事务日志来跟踪每个行更改，而最少记录的操作只跟踪扩展分配和元数据更改。 因此，最少日志记录涉及只记录失败或显式请求 (ROLLBACK TRAN) 后回退事务所需的信息。 由于事务日志中跟踪的信息少得多，因此最少记录操作的执行性能优于同样大小的完整记录操作。 此外，事务日志中写入较少，因此生成的日志数据量也更少，并且 I/O 更高效。
 
 事务安全限制仅适用于完整记录的操作。
@@ -41,6 +44,7 @@ SQL 分析使用事务日志向数据库提交更改。 每个分布区都具有
 > 
 
 ## <a name="minimally-logged-operations"></a>最少记录的操作
+
 以下操作可以实现最少记录：
 
 * CREATE TABLE AS SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
@@ -78,14 +82,13 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 值得注意的是，任何更新辅助或非聚集索引的写入都将始终是完整记录的操作。
 
 > [!IMPORTANT]
-> SQL 分析数据库有 60 个分发。 因此，假设所有行均匀分布且处于单个分区中，批在写入到聚集列存储索引时会需有 6,144,000 行（或更多）要按最少记录的方式记入日志。 如果对表进行分区且正插入的行跨越分区边界，则每个分区边界都需 6,144,000 行，假定数据分布很均匀。 每个分布区的每个分区各自必须超过 102,400 行的阈值，从而使插入以最少记录的方式记录到分布区中。
-> 
+> Synapse SQL 池数据库有 60 个分布。 因此，假设所有行均匀分布且处于单个分区中，批在写入到聚集列存储索引时会需有 6,144,000 行（或更多）要按最少记录的方式记入日志。 如果对表进行分区且正插入的行跨越分区边界，则每个分区边界都需 6,144,000 行，假定数据分布很均匀。 每个分布区的每个分区各自必须超过 102,400 行的阈值，从而使插入以最少记录的方式记录到分布区中。
 > 
 
 将数据加载到含聚集索引的非空表通常可以包含完整记录和最少记录的行的组合。 聚集索引是页面的平衡树 (b-tree)。 如果正写入的页面已包含其他事务中的行，则这些写入操作会被完整记录。 但如果该页面为空，则写入到该页面会按最少记录的方式记录。
 
 ## <a name="optimizing-deletes"></a>优化删除
-DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据，`SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](sql-data-warehouse-develop-ctas.md) 创建新表。  创建后，可通过 [RENAME](/sql/t-sql/statements/rename-transact-sql) 操作使用新创建的表将旧表交换出来。
+DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据，`SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](sql-data-warehouse-develop-ctas.md) 创建新表。  创建后，可通过 [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 操作使用新创建的表将旧表交换出来。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -116,7 +119,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>优化更新
-UPDATE 是一个完整记录的操作。  如果需要更新表或分区中的大量行，则使用最低记录的操作（如[CTAS）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)通常效率更高。
+UPDATE 是一个完整记录的操作。  如果需要更新表或分区中的大量行，则使用最低记录的操作（如[CTAS）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)通常效率更高。
 
 在下面的示例中，完整的表更新已转换为 CTAS，以便使最少日志记录成为可能。
 
@@ -177,7 +180,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> 使用 SQL Analytics 工作负载管理功能可以重新创建大型表。 有关详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。
+> 使用 Synapse SQL 池工作负载管理功能，重新创建大型表可以受益匪浅。 有关详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。
 > 
 > 
 
@@ -405,7 +408,8 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>暂停和缩放指南
-SQL Analytics 允许您按需[暂停、恢复和扩展](sql-data-warehouse-manage-compute-overview.md)SQL 池。 当您暂停或扩展 SQL 池时，请务必了解任何在途事务都立即终止;导致回滚任何打开的事务。 如果工作负荷在暂停或缩放操作前已发出数据修改在长时间运行之后仍未完成的指示，则需要撤消此项工作。 此撤消可能会影响暂停或缩放 SQL 池所需的时间。 
+
+Synapse SQL 允许您按需[暂停、恢复和扩展](sql-data-warehouse-manage-compute-overview.md)SQL 池。 当您暂停或扩展 SQL 池时，请务必了解任何在途事务都立即终止;导致回滚任何打开的事务。 如果工作负荷在暂停或缩放操作前已发出数据修改在长时间运行之后仍未完成的指示，则需要撤消此项工作。 此撤消可能会影响暂停或缩放 SQL 池所需的时间。 
 
 > [!IMPORTANT]
 > `UPDATE` 和 `DELETE` 都是完整记录的操作，因此这些撤消/重做操作相比同等最少记录的操作可能要花费更长的时间。 
@@ -414,9 +418,10 @@ SQL Analytics 允许您按需[暂停、恢复和扩展](sql-data-warehouse-manag
 
 最佳方案是让飞行数据修改事务在暂停或缩放 SQL 池之前完成。 但是，此方案不一定始终可行。 若要降低长时间回退的风险，请考虑以下选项之一：
 
-* 使用[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)重写长时间运行的操作
+* 使用[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)重写长时间运行的操作
 * 将该操作分解为多个块；针对行的子集进行操作
 
 ## <a name="next-steps"></a>后续步骤
-请参阅[SQL 分析中的事务](sql-data-warehouse-develop-transactions.md)，了解有关隔离级别和事务限制的更多信息。  有关其他最佳实践的概述，请参阅 [SQL 数据仓库最佳实践](sql-data-warehouse-best-practices.md)。
+
+请参阅[Synapse SQL 中的事务](sql-data-warehouse-develop-transactions.md)，了解有关隔离级别和事务限制的更多内容。  有关其他最佳实践的概述，请参阅 [SQL 数据仓库最佳实践](sql-data-warehouse-best-practices.md)。
 

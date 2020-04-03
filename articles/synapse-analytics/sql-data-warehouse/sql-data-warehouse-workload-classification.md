@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7661981f07799592f9fdfcab3fb402336d48b4d4
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 67f863826a2e9eb1bffcb316754ad5c40a2f2bb1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349981"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583133"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Azure 突触分析工作负荷分类
 
-本文介绍了在 Azure Synaps 中使用 SQL Analytics（SQL Analytics）分配工作负载组的工作负荷分类过程以及对传入请求的重要性。
+本文介绍了分配工作负载组的工作负载分类过程，以及使用 Azure Synapse 中的 Synapse SQL 池对传入请求的重要性。
 
 ## <a name="classification"></a>分类
 
@@ -36,7 +36,7 @@ ms.locfileid: "80349981"
 
 ## <a name="classification-process"></a>分类过程
 
-Azure Synapse 中的 SQL 分析分类今天通过将用户[分配给具有sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)为其分配相应资源类的角色来实现。 使用此功能时，将请求特征化，使之超出资源类登录范围的能力会受到限制。 现在，可以通过 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql) 语法来利用更丰富的分类方法。  使用此语法，SQL Analytics 用户可以通过`workload_group`参数将重要性以及系统资源分配给请求多少。 
+Azure Synapse 中的 Synapse SQL 池的分类今天通过将用户分配给具有相应资源类的角色（使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)）来实现。 使用此功能时，将请求特征化，使之超出资源类登录范围的能力会受到限制。 现在，可以通过 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql) 语法来利用更丰富的分类方法。  使用此语法，Synapse SQL 池用户可以通过`workload_group`参数分配重要性以及将多少系统资源分配给请求。 
 
 > [!NOTE]
 > 分类是按每个请求评估的。 可以不同的方式对单个会话中的多个请求进行分类。
@@ -69,7 +69,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 使用自动创建的系统分类器能够轻松迁移到工作负荷分类。 开始创建具有重要性的新分类器时，使用具有分类优先顺序的资源类角色映射可能会导致错误分类。
 
-请考虑下列方案：
+请参考以下方案：
 
 - 某个现有的数据仓库包含已分配到 largerc 资源类角色的数据库用户 DBAUser。 资源类分配是使用 sp_addrolemember 进行的。
 - 现已使用工作负荷管理更新该数据仓库。
@@ -87,7 +87,7 @@ JOIN    sys.database_principals AS m ON rm.member_principal_id = m.principal_id
 WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','staticrc30','staticrc40','staticrc50','staticrc60','staticrc70','staticrc80');
 
 --for each row returned run
-sp_droprolemember ‘[Resource Class]’, membername
+sp_droprolemember '[Resource Class]', membername
 ```
 
 ## <a name="next-steps"></a>后续步骤

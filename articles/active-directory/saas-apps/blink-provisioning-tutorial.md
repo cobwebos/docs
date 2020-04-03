@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 455036652836c6cfd2055e9a747f30b6dfe41295
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b19052b8a71b582b47308c41d170f50352d643e2
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77059014"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618361"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>教程：为自动用户预配配置闪烁
 
-本教程的目的是演示在 Blink 和 Azure 活动目录 （Azure AD） 中执行的步骤，以将 Azure AD 配置为自动预配和取消将用户和/或组预配到 Blink。
+本教程的目的是演示在 Blink 和 Azure 活动目录 （Azure AD） 中执行的步骤，以将 Azure AD 配置为自动预配和取消向 Blink 预配用户。
 
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
@@ -41,9 +41,9 @@ ms.locfileid: "77059014"
 
 ## <a name="assigning-users-to-blink"></a>将用户分配给闪烁
 
-Azure 活动目录使用称为*分配*的概念来确定哪些用户应接收对选定应用的访问权限。 在自动用户预配的上下文中，只有分配给 Azure AD 中应用程序的用户和/或组才会同步。
+Azure 活动目录使用称为*分配*的概念来确定哪些用户应接收对选定应用的访问权限。 在自动用户预配的上下文中，只有分配给 Azure AD 中应用程序的用户和/或组成员才会同步。
 
-在配置和启用自动用户预配之前，应决定 Azure AD 中的哪些用户和/或组需要访问 Blink。 决定后，您可以按照此处的说明将这些用户和/或组分配给 Blink：
+在配置和启用自动用户预配之前，应决定 Azure AD 中的哪些用户和/或组成员需要访问 Blink。 决定后，您可以按照此处的说明将这些用户和/或组分配给 Blink：
 * [向企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="important-tips-for-assigning-users-to-blink"></a>将用户分配给闪烁的重要提示
@@ -54,7 +54,7 @@ Azure 活动目录使用称为*分配*的概念来确定哪些用户应接收对
 
 ## <a name="setup-blink-for-provisioning"></a>用于预配的设置闪烁
 
-1. 在上记录[支持案例](https://help.joinblink.com/hc/requests/new)或电子邮件**闪烁支持**以support@joinblink.com请求 SCIM 令牌。 .
+1. 在上记录[支持案例](https://support.joinblink.com)或电子邮件**闪烁支持**以support@joinblink.com请求 SCIM 令牌。 .
 
 2.  复制**SCIM 身份验证令牌**。 此值将在 Azure 门户中 Blink 应用程序的预配选项卡中的"机密令牌"字段中输入。
 
@@ -82,14 +82,14 @@ Azure 活动目录使用称为*分配*的概念来确定哪些用户应接收对
 
 ## <a name="configuring-automatic-user-provisioning-to-blink"></a>将自动用户预配配置为闪烁 
 
-本节将指导您完成将 Azure AD 预配服务配置为根据 Azure AD 中的用户和/或组分配在 Blink 中创建、更新和禁用用户和/或组的步骤。
+本节将指导您完成配置 Azure AD 预配服务的步骤，以便根据 Azure AD 中的用户和/或组分配在 Blink 中创建、更新和禁用用户。
 
 > [!TIP]
 > 您也可以选择启用基于 SAML 的单点登录闪烁，按照[闪烁单点登录教程](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial)中提供的说明。 单一登录可以独立于自动用户预配进行配置，尽管这两个功能相互补充
 
 ### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>要在 Azure AD 中配置闪烁的自动用户预配：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 选择**企业应用程序**，然后选择**所有应用程序**。
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择**企业应用程序**，然后选择**所有应用程序**。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -113,7 +113,7 @@ Azure 活动目录使用称为*分配*的概念来确定哪些用户应接收对
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存”。****
+7. 单击“保存”  。
 
 8. 在 **"映射"** 部分下，选择 **"将 Azure 活动目录用户同步到闪烁**"。
 
@@ -137,14 +137,14 @@ Azure 活动目录使用称为*分配*的概念来确定哪些用户应接收对
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 
-此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步********。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用 **"同步详细信息"** 部分监视进度并遵循指向预配活动报告的链接，该报表描述 Azure AD 预配服务在 Blink 上执行的所有操作。
+此操作将开始**在"设置"** 部分中定义的 **"范围**"中定义的所有用户的初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用 **"同步详细信息"** 部分监视进度并遵循指向预配活动报告的链接，该报表描述 Azure AD 预配服务在 Blink 上执行的所有操作。
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什么是使用 Azure 活动目录的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 

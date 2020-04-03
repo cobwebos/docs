@@ -142,7 +142,7 @@
           href: concepts-data-in-replication.md
         - name: 只读副本
           href: concepts-read-replicas.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 管理服务器
       items:
@@ -216,7 +216,7 @@
           href: howto-read-replicas-portal.md
         - name: 使用 Azure CLI、REST API 创建只读副本
           href: howto-read-replicas-cli.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查连接错误
           href: howto-troubleshoot-common-connection-issues.md
@@ -246,6 +246,8 @@
       items:
         - name: Azure 门户
           href: howto-data-encryption-portal.md
+        - name: Azure CLI
+          href: howto-data-encryption-cli.md
     - name: Azure AD 集成
       items:
         - name: 配置 Azure AD 集成

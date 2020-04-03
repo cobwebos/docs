@@ -1,6 +1,6 @@
 ---
 title: 索引表
-description: 用于在 SQL 分析中索引表的建议和示例。
+description: 有关 Synapse SQL 池中索引表的建议和示例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ced965f94808bdc672f694bede5c239178891f97
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d5acc2b69ed521af4fd4777dc9f3496290078379
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351288"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583272"
 ---
-# <a name="indexing-tables-in-sql-analytics"></a>SQL 分析中的索引表
+# <a name="indexing-tables-in-synapse-sql-pool"></a>Synapse SQL 池中的索引表
 
-用于在 SQL 分析中索引表的建议和示例。
+有关 Synapse SQL 池中索引表的建议和示例。
 
 ## <a name="index-types"></a>索引类型
 
-SQL Analytics 提供了多个索引选项，包括[群集列存储索引](/sql/relational-databases/indexes/columnstore-indexes-overview)、[群集索引和非群集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)，以及也称为[堆](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)的非索引选项。  
+Synapse SQL 池提供了多个索引选项，包括[群集列存储索引](/sql/relational-databases/indexes/columnstore-indexes-overview)、[群集索引和非群集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)，以及也称为[堆](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)的非索引选项。  
 
-要创建具有索引的表，请参阅[创建表 （SQL 分析）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)文档。
+要创建具有索引的表，请参阅[创建表（合成 SQL 池）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)文档。
 
 ## <a name="clustered-columnstore-indexes"></a>聚集列存储索引
 
-默认情况下，SQL Analytics 在表上未指定索引选项时创建群集列存储索引。 聚集列存储表提供最高级别的数据压缩，以及最好的总体查询性能。  一般而言，聚集列存储表优于聚集索引或堆表，并且通常是大型表的最佳选择。  出于这些原因，在不确定如何编制表索引时，聚集列存储是最佳起点。  
+默认情况下，Synapse SQL 池在表上未指定索引选项时创建群集列存储索引。 聚集列存储表提供最高级别的数据压缩，以及最好的总体查询性能。  一般而言，聚集列存储表优于聚集索引或堆表，并且通常是大型表的最佳选择。  出于这些原因，在不确定如何编制表索引时，聚集列存储是最佳起点。  
 
 若要创建聚集列存储表，只需在 WITH 子句中指定 CLUSTERED COLUMNSTORE INDEX，或省略 WITH 子句：
 
@@ -52,7 +52,7 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 
 ## <a name="heap-tables"></a>堆表
 
-当您在 SQL Analytics 中临时登陆数据时，您可能会发现使用堆表可以更快地完成整个过程。 这是因为堆的加载速度比索引表还要快，在某些情况下，可以从缓存执行后续读取。  如果加载数据只是在做运行更多转换之前的预备，将表载入堆表会远快于将数据载入聚集列存储表。 此外，将数据载入[临时表](sql-data-warehouse-tables-temporary.md)也比将表载入永久存储更快速。  
+当您暂时将数据在 Synapse SQL 池中登录时，您可能会发现使用堆表可以更快地完成整个过程。 这是因为堆的加载速度比索引表还要快，在某些情况下，可以从缓存执行后续读取。  如果加载数据只是在做运行更多转换之前的预备，将表载入堆表会远快于将数据载入聚集列存储表。 此外，将数据载入[临时表](sql-data-warehouse-tables-temporary.md)也比将表载入永久存储更快速。  
 
 对于包含少于 6000 万行的小型查找表，堆表通常比较适合。  超过 6000 万行后，聚集列存储表开始达到最佳压缩性能。
 
@@ -190,7 +190,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 ### <a name="memory-pressure-when-index-was-built"></a>生成索引时内存有压力
 
-每个压缩行组的行数，与行宽度以及可用于处理行组的内存量直接相关。  当行在内存不足的状态下写入列存储表时，列存储分段质量可能降低。  因此，最佳做法是尽可能让写入到列存储索引表的会话访问最多的内存。  由于内存和并发之间存在权衡，因此有关正确内存分配的指南取决于表每行中的数据、分配给系统的 SQL Analytics 单元以及您可以为会话提供并发槽的数量，即将数据写入表。
+每个压缩行组的行数，与行宽度以及可用于处理行组的内存量直接相关。  当行在内存不足的状态下写入列存储表时，列存储分段质量可能降低。  因此，最佳做法是尽可能让写入到列存储索引表的会话访问最多的内存。  因为内存与并发性之间有所取舍，正确的内存分配指导原则取决于表的每个行中的数据、已分配给系统的数据仓库，以及可以提供给将数据写入表的会话的并发访问槽位数。
 
 ### <a name="high-volume-of-dml-operations"></a>有大量的 DML 操作
 
@@ -204,13 +204,13 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 ### <a name="small-or-trickle-load-operations"></a>小型或渗透负载操作
 
-流入 SQL 分析数据库的小负载有时也称为滴流负载。 它们通常代表系统引入的数据的接近恒定流。 但是，由于此流接近连续状态，因此行的容量并不特别大。 通常数据远低于直接加载到列存储格式所需的阈值。
+流入 Synapse SQL 池的小负载有时也称为滴流负载。 它们通常代表系统引入的数据的接近恒定流。 但是，由于此流接近连续状态，因此行的容量并不特别大。 通常数据远低于直接加载到列存储格式所需的阈值。
 
 在这些情况下，最好先将数据保存到 Azure Blob 存储中，并让它在加载之前累积。 此技术通常称为*微批处理*。
 
 ### <a name="too-many-partitions"></a>过多的分区
 
-另一个考虑因素是分区对聚集列存储表的影响。  在分区之前，SQL Analytics 已经将您的数据划分为 60 个数据库。  进一步分区会分割数据。  如果将分区，则要考虑的是**每个**分区必须至少有 100 万行，使用聚集列存储索引才有益。  如果将表划分为 100 个分区，则表至少需要 60 亿行才能从群集列存储索引（60 个分布*100 个分区 100*个行）中获益。 如果包含 100 个分区的表没有 60 亿行，请减少分区数目，或考虑改用堆表。
+另一个考虑因素是分区对聚集列存储表的影响。  在分区之前，Synapse SQL 池已经将您的数据划分为 60 个数据库。  进一步分区会分割数据。  如果将分区，则要考虑的是**每个**分区必须至少有 100 万行，使用聚集列存储索引才有益。  如果将表划分为 100 个分区，则表至少需要 60 亿行才能从群集列存储索引（60 个分布*100 个分区 100*个行）中获益。 如果包含 100 个分区的表没有 60 亿行，请减少分区数目，或考虑改用堆表。
 
 在表中加载一些数据后，请遵循以下步骤来识别并重建聚集列存储索引质量欠佳的表。
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-在 SQL 分析中重建索引是脱机操作。  有关重建索引的详细信息，请参阅[列存储索引碎片整理](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)中的 ALTER INDEX REBUILD 部分和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)。
+在 Synapse SQL 池中重建索引是脱机操作。  有关重建索引的详细信息，请参阅[列存储索引碎片整理](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)中的 ALTER INDEX REBUILD 部分和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)。
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>步骤 3：验证聚集列存储段质量是否已改善
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-有关使用 CTAS 重新创建分区的更多详细信息，请参阅[在 SQL Analytics 中使用分区](sql-data-warehouse-tables-partition.md)。
+有关使用 CTAS 重新创建分区的更多详细信息，请参阅[在 Synapse SQL 池中使用分区](sql-data-warehouse-tables-partition.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

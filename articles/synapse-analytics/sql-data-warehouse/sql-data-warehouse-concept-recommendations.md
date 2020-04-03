@@ -1,6 +1,6 @@
 ---
-title: SQL 分析建议
-description: 了解 SQL 分析建议及其生成方式
+title: 突触 SQL 建议
+description: 了解 Synapse SQL 建议及其生成方式
 services: synapse-analytics
 author: kevinvngo
 manager: craigg-msft
@@ -11,18 +11,18 @@ ms.date: 02/05/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6d57fdb035e076c75363d23fbf36d39eeb72bb3f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c4bbd98cc28b242be5310fab76521a80de8fcb7c
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350690"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584127"
 ---
-# <a name="sql-analytics-recommendations"></a>SQL 分析建议
+# <a name="synapse-sql-recommendations"></a>突触 SQL 建议
 
-本文介绍了通过 Azure 顾问提供的 SQL 分析建议。  
+本文介绍了通过 Azure Advisor 提供的 Synapse SQL 建议。  
 
-SQL Analytics 提供建议，以确保数据仓库工作负载始终针对性能进行优化。 建议与 Azure [Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations)紧密集成，直接在[Azure 门户](https://aka.ms/Azureadvisor)中为您提供最佳做法。 SQL Analytics 以每日节奏收集活动工作负载的遥测和曲面建议。 下面概述了支持的建议方案以及如何应用建议的操作。
+Synapse SQL 提供建议，以确保数据仓库工作负载始终针对性能进行优化。 建议与 Azure [Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations)紧密集成，直接在[Azure 门户](https://aka.ms/Azureadvisor)中为您提供最佳做法。 Synapse SQL 以每日节奏收集活动工作负载的遥测和曲面建议。 下面概述了支持的建议方案以及如何应用建议的操作。
 
 您可以[查看您的建议](https://aka.ms/Azureadvisor)！ 目前，此功能仅适用于第 2 代数据仓库。 
 

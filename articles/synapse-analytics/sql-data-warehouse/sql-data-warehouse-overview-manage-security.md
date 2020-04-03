@@ -1,7 +1,6 @@
 ---
 title: 保护数据库
-description: 在 SQL 分析的 SQL 池资源中保护数据库和开发解决方案的提示。
-services: synapse-analytics
+description: 保护数据库和在 Synapse SQL 池资源中开发解决方案的提示。
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -12,25 +11,27 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6ae9580803563971764eec4bd18fcc2430cee06d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 46d32fdca615833bd602480ac182585da898ab98
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350200"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586431"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>在 Azure 同步器中保护数据库
+
 > [!div class="op_single_selector"]
-> * [安全性概述](sql-data-warehouse-overview-manage-security.md)
+> * [安全概述](sql-data-warehouse-overview-manage-security.md)
 > * [身份验证](sql-data-warehouse-authentication.md)
 > * [加密（门户）](sql-data-warehouse-encryption-tde.md)
 > * [加密 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 > 
 > 
 
-本文将介绍在 SQL Analytics 中保护您的 SQL 池的基础知识。 特别是，本文将介绍使用使用 SQL 池预配的数据库上的访问、保护数据和监视活动的资源。
+本文将引导您介绍保护 Synapse SQL 池的基础知识。 特别是，本文将介绍使用使用 SQL 池预配的数据库上的访问、保护数据和监视活动的资源。
 
 ## <a name="connection-security"></a>连接安全性
+
 连接安全性是指如何使用防火墙规则和连接加密来限制和保护数据库连接。
 
 服务器和数据库都使用防火墙规则来拒绝未明确白名单的 IP 地址的连接尝试。 若要从应用程序或客户端计算机的公共 IP 地址进行连接，必须先使用 Azure 门户、REST API 或 PowerShell 创建服务器级防火墙规则。 
@@ -42,11 +43,12 @@ Azure 同步分析使用服务器级 IP 防火墙规则。 不支持数据库级
 默认情况下，与 SQL 池的连接是加密的。  将忽略通过修改连接设置禁用加密的操作。
 
 ## <a name="authentication"></a>身份验证
+
 身份验证是指连接到数据库时如何证明身份。 SQL 池当前支持 SQL 服务器身份验证，使用用户名和密码以及 Azure 活动目录。 
 
 在为数据库创建逻辑服务器时，已指定一个包含用户名和密码的“服务器管理员”登录名。 使用这些凭据，可以通过 SQL Server 身份验证以数据库所有者（或“dbo”）的身份在该服务器对任何数据库进行验证。
 
-但是，组织的用户最好使用不同的帐户进行验证。 这样，便可以限制授予应用程序的权限，并在应用程序代码容易受到 SQL 注入攻击的情况下降低恶意活动的风险。 
+但是，组织的用户最好使用不同的帐户进行身份验证。 这样，便可以限制授予应用程序的权限，并在应用程序代码容易受到 SQL 注入攻击的情况下降低恶意活动的风险。 
 
 若要创建 SQL Server 验证的用户，请使用服务器管理员登录名连接到服务器上的 **master** 数据库，并创建新的服务器登录名。  最好在主数据库中创建用户。 在 master 中创建用户以后，用户即可使用 SSMS 之类的工具登录，不需指定数据库名称。  此外，用户还可以使用对象资源管理器查看 SQL Server 上的所有数据库。
 

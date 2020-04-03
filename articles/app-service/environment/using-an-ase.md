@@ -4,24 +4,24 @@ description: 了解如何在应用服务环境中创建、发布和缩放应用�
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 01/01/2020
+ms.date: 3/26/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8a73c1998203a8696b67a5e7eb3af23898239265
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477621"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586137"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境
 
 应用服务环境 （ASE） 是将 Azure 应用服务部署到客户 Azure 虚拟网络实例中的子网。 ASE 包括：
 
-- **前端**：HTTP 或 HTTPS 在应用服务环境中终止的位置。
-- **辅助功能**：托管应用的资源。
-- **数据库**：保存定义环境的信息。
-- **存储**：用于托管客户发布的应用。
+- **前端**：HTTP 或 HTTPS 在应用服务环境中终止的位置
+- **辅助功能**：托管应用的资源
+- **数据库**：保存定义环境的信息
+- **存储**：用于托管客户发布的应用
 
 您可以使用外部或内部虚拟 IP （VIP） 部署 ASE 以进行应用访问。 具有外部 VIP 的部署通常称为外部*ASE。* 具有内部 VIP 的部署称为*ILB ASE，* 因为它使用内部负载均衡器 （ILB）。 若要详细了解 ILB ASE，请参阅[创建和使用 ILB ASE][MakeILBASE]。
 
@@ -120,6 +120,22 @@ ms.locfileid: "80477621"
 
 SCM URL 用于访问 Kudu 控制台或使用 Web 部署发布应用。 有关 Kudu 控制台的信息，请参阅 [Azure 应用服务的 Kudu 控制台][Kudu]。 Kudu 控制台提供 Web UI，可在其中进行调试、上传文件、 编辑文件及执行其他许多操作。
 
+### <a name="dns-configuration"></a>DNS 配置 
+
+使用外部 ASE 时，在 ASE 中创建的应用将注册到 Azure DNS。 使用 ILB ASE，您必须管理自己的 DNS。 
+
+要使用 ILB ASE 配置 DNS，请进行以下处理：
+
+    create a zone for <ASE name>.appserviceenvironment.net
+    create an A record in that zone that points * to the ILB IP address
+    create an A record in that zone that points @ to the ILB IP address
+    create a zone in <ASE name>.appserviceenvironment.net named scm
+    create an A record in the scm zone that points * to the ILB IP address
+
+ASE 默认域后缀的 DNS 设置不会将应用限制为仅由这些名称访问。 您可以在 ILB ASE 中的应用上设置自定义域名，而无需进行任何验证。 如果然后想要创建名为*contoso.net*的区域，则可以这样做并将其指向 ILB IP 地址。 自定义域名适用于应用请求，但不适用于 scm 站点。 scm 站点仅在*&lt;应用程序名称&gt;.scm 上可用&lt;。asename&gt;.appserviceenvironment.net*. . 
+
+名为*的区域。&lt;asename&gt;.appserviceenvironment.net*是全球独一无二的。 在 2019 年 5 月之前，客户能够指定 ILB ASE 的域后缀。 如果要对域后缀使用 *.contoso.com，* 则可以这样做，这将包括 scm 站点。 这种模式存在挑战，包括：管理默认 SSL 证书、缺少 scm 站点的单一登录以及使用通配符证书的要求。 ILB ASE 默认证书升级过程也具有破坏性，并导致应用程序重新启动。 为了解决这些问题，ILB ASE 行为被更改为使用基于 ASE 的名称和 Microsoft 拥有的后缀的域后缀。 对 ILB ASE 行为的更改仅影响 2019 年 5 月之后做出的 ILB ASE。 预先存在的 ILB ASE 仍必须管理 ASE 的默认证书及其 DNS 配置。
+
 ## <a name="publishing"></a>发布
 
 在 ASE 中，与多租户应用服务一样，可以通过以下方法发布：
@@ -132,7 +148,7 @@ SCM URL 用于访问 Kudu 控制台或使用 Web 部署发布应用。 有关 Ku
 
 使用外部 ASE 时，这些发布选项的工作方式都相同。 有关详细信息，请参阅 [Azure 应用服务中的部署][AppDeploy]。
 
-ILB ASE 的发布与 ILB ASE 有很大不同，因为 ILB AsE 的发布终结点只能通过 ILB 提供。 ILB 位于虚拟网络中 ASE 子网内的专用 IP 上。 如果您没有对 ILB 的网络访问权限，则无法在此 ASE 上发布任何应用。 如[创建和使用 ILB ASE][MakeILBASE]中所述，您必须为系统中的应用配置 DNS。 该要求包括 SCM 终结点。 如果终结点定义不正确，则无法发布。 您的 IDA 还必须具有对 ILB 的网络访问权限才能直接发布到 ILB。
+使用 ILB ASE，发布终结点只能通过 ILB 提供。 ILB 位于虚拟网络中 ASE 子网内的专用 IP 上。 如果您没有对 ILB 的网络访问权限，则无法在此 ASE 上发布任何应用。 如[创建和使用 ILB ASE][MakeILBASE]中所述，您必须为系统中的应用配置 DNS。 该要求包括 SCM 终结点。 如果终结点定义不正确，则无法发布。 您的 IDA 还必须具有对 ILB 的网络访问权限才能直接发布到 ILB。
 
 如果没有其他更改，基于 Internet 的 CI 系统（如 GitHub 和 Azure DevOps）将不能与 ILB ASE 配合使用，因为发布终结点无法访问 Internet。 通过在包含 ILB ASE 的虚拟网络中安装自托管发布代理，可以从 Azure DevOps 启用发布到 ILB ASE。 或者，可以利用某个使用提取模型的 CI 系统，例如 Dropbox。
 
@@ -169,7 +185,18 @@ ASE 对于 ASE 中的所有应用都有 1 TB 的存储空间。 默认情况下�
 
 ![ASE 诊断日志设置][4]
 
-如果与日志分析集成，则可以通过从 ASE 门户中选择**日志**并针对**AppService 环境平台日志**创建查询来查看日志。
+如果与日志分析集成，则可以通过从 ASE 门户中选择**日志**并针对**AppService 环境平台日志**创建查询来查看日志。 仅当 ASE 具有将触发该事件的事件时，才会发出日志。 如果您的 ASE 没有此类事件，则没有任何日志。 要快速查看日志分析工作区中的日志示例，请使用 ASE 中的一个应用服务计划执行缩放操作。 然后，您可以针对**AppService 环境平台日志**运行查询以查看这些日志。 
+
+**创建警报**
+
+要针对日志创建警报，请使用 Azure 监视器 按照["创建"中的说明进行查看和管理日志警报][logalerts]。 简单地说：
+
+* 在 ASE 门户中打开"警报"页
+* 选择**新的警报规则**
+* 选择您的资源作为日志分析工作区
+* 使用自定义日志搜索设置您的条件，以使用类似"AppService环境平台日志 |其中结果描述包含"已经开始缩放"或任何您想要的。 根据需要设置阈值。 
+* 根据需要添加或创建操作组。 操作组是定义对警报的响应的位置，例如发送电子邮件或 SMS 消息
+* 命名警报并将其保存。
 
 ## <a name="upgrade-preference"></a>升级首选项
 
@@ -245,3 +272,4 @@ ASE 对于 ASE 中的所有应用都有 1 TB 的存储空间。 默认情况下�
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[logalerts]: ../../azure-monitor/platform/alerts-log.md

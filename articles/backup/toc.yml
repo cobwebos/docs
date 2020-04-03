@@ -15,12 +15,12 @@
       href: quick-backup-vm-powershell.md
     - name: 备份 VM - CLI
       href: quick-backup-vm-cli.md
-    - name: 备份 VM - 资源管理器模板
-      displayName: ARM
+    - name: 备份 VM - ARM 模板
+      displayName: Resource Manager
       href: quick-backup-vm-template.md
 - name: 教程
   items:
-    - name: 大规模备份 Azure VM
+    - name: 备份多个 Azure VM
       href: tutorial-backup-vm-at-scale.md
     - name: 使用 PowerShell 备份 Azure VM
       href: tutorial-backup-azure-vm.md
@@ -58,6 +58,8 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: MARS 代理支持矩阵
           href: backup-support-matrix-mars-agent.md
+        - name: SQL Server 备份支持矩阵
+          href: sql-support-matrix.md
         - name: SAP HANA 备份支持矩阵
           href: sap-hana-backup-support-matrix.md
         - name: Azure Policy 支持的 VM SKU
@@ -164,10 +166,10 @@
           href: backup-azure-manage-mars.md
     - name: Azure 文件共享备份
       items:
+        - name: 概述
+          href: azure-file-share-backup-overview.md
         - name: 通过 Azure 门户
           items:
-            - name: 概述
-              href: azure-file-share-backup-overview.md
             - name: 备份
               href: backup-afs.md
             - name: 还原
@@ -336,6 +338,8 @@
           href: backup-rm-template-samples.md
     - name: 安全性
       items:
+        - name: 概述
+          href: security-overview.md
         - name: 基于角色的访问控制
           href: backup-rbac-rs-vault.md
         - name: 云工作负荷的安全性
@@ -344,7 +348,7 @@
           href: backup-azure-security-feature.md
         - name: 内置安全控件
           href: backup-security-controls.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
@@ -382,6 +386,8 @@
       href: /azure/templates/microsoft.recoveryservices/allversions
 - name: 资源
   items:
+    - name: 合规性
+      href: compliance-offerings.md
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN 论坛

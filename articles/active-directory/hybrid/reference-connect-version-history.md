@@ -8,20 +8,19 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 10/7/2019
+ms.date: 04/01/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afb295ca561bfa69805362182dc60ce908e1f206
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01956c2fee1c15bc86e8d80aa05c70db647bf593
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331138"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616880"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
-
 
 本文旨在帮助你跟踪已发布的版本，并了解最新版本中的具体变化。
 
@@ -49,6 +48,31 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 >
 >请参阅[此文](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)，详细了解如何将 Azure AD Connect 升级到最新版本。
 
+
+## <a name="15180"></a>1.5.18.0
+
+### <a name="release-status"></a>版本状态
+04/02/2020： 发布供下载
+
+### <a name="functional-changes-adsyncautoupgrade"></a>功能更改 ADSync 自动升级 
+
+- 添加了对组对象的 mS-DS-一致性 Guid 功能的支持。 这允许您在 AD 中的林之间移动组或将组重新连接到 Azure AD，其中 AD 组对象 ID 已更改，例如，在灾难后重建 AD 服务器时。 有关详细信息，请参阅[在林之间移动组](how-to-connect-migrate-groups.md)。
+- mS-DS-一致性Guid属性会自动设置在 al 同步组上，您不必执行任何操作来启用此功能。 
+- 已删除 Get-ADSyncRun 配置文件，因为它不再使用。 
+- 更改了尝试使用 AD DS 连接器帐户的企业管理员或域管理员帐户以提供更多上下文时看到的警告。 
+- 添加了一个新的 cmdlet 以从连接器空间中删除对象，将删除旧的 CSDelete.exe 工具，并将其替换为新的"删除-ADSyncCSObject cmdlet"。 删除 ADSyncCSObject cmdlet 将 CsObject 作为输入。 可以使用 Get-ADSyncCSObject cmdlet 检索此对象。
+
+>[!NOTE]
+>旧的 CSDelete.exe 工具已被删除，并替换为新的"删除-ADSyncCSObject"cmdlet 
+
+### <a name="fixed-issues"></a>修复的问题
+
+- 修复了组回写林/OU 选择器中的错误，用于在禁用该功能后重新运行 Azure AD 连接向导。 
+- 引入了一个新的错误页，如果缺少所需的 DCOM 注册表值，则显示该页，该页带有新的帮助链接。 信息也会写入日志文件。 
+- 修复了创建 Azure 活动目录同步帐户的问题，其中启用目录扩展或小灵通可能会失败，因为该帐户在尝试使用之前尚未在所有服务副本中传播。 
+- 修复了同步错误压缩实用程序中未正确处理代理字符的错误。 
+- 修复了自动升级中的一个错误，使服务器处于计划程序挂起状态。 
+
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>版本状态
 2019/12/9：下载版本。 不通过自动升级提供。
@@ -68,7 +92,8 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 2019/11/08：发布供下载。 不通过自动升级提供。
 
 >[!IMPORTANT]
->在此版 Azure AD Connect 中，由于内部架构更改，如果使用 MSOnline PowerShell 管理 ADFS 信任关系配置设置，则必须将 MSOnline PowerShell 模块更新到 1.1.183.57 或更高版本
+>由于此版本的 Azure AD Connect 中的内部架构更改，如果使用 MSOnline PowerShell 管理 AD FS 信任关系配置设置，则必须将 MSOnline PowerShell 模块更新为版本 1.1.183.57 或更高版本
+
 ### <a name="fixed-issues"></a>修复的问题
 
 此版本修复了已加入混合 Azure AD 的现有设备的问题。 此版本包含新的设备同步规则，用于纠正此问题。
@@ -105,10 +130,10 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 - 应通知客户 MIIS_Service 的已弃用 WMI 终结点现已删除。 现在，任何 WMI 操作应通过 PS cmdlet 完成。
 - 通过重置 AZUREADSSOACC 对象中的约束委托来提高安全性
 - 添加/编辑同步规则时，如果在规则中使用的任何属性位于未添加到连接器的连接器架构中，会自动将这些属性添加到连接器。 规则影响的对象类型也是如此。 如果在连接器中添加了任何内容，该连接器将标记为在下一个同步周期完全导入。
-- 在新的 AAD Connect 部署中，不再支持使用企业或域管理员作为连接器帐户。 使用企业或域管理员作为连接器帐户的当前 AAD Connect 部署将不受此版本的影响。
+- 在新的 Azure AD 连接部署中不再支持使用企业或域管理员作为连接器帐户。 使用企业或域管理员作为连接器帐户的当前 AAD Connect 部署将不受此版本的影响。
 - 在同步管理器中，创建/编辑/删除规则时将运行完全同步。 如果完全导入或完全同步操作将要运行，在发生任何规则更改时将弹出通知。
 - 已将密码错误的缓解步骤添加到“连接器 > 属性 > 连接”页
-- 在连接器属性页上添加了同步服务管理器弃用警告。 此警告通知用户应通过 AADC 向导进行更改。
+- 在连接器属性页上添加了同步服务管理器弃用警告。 此警告通知用户应通过 Azure AD 连接向导进行更改。
 - 针对用户密码策略问题添加了新错误。
 - 防止不当配置通过域和 OU 筛选器进行组筛选。 已筛选出输入组的域/OU 时，组筛选将显示一条错误消息，并在问题得到解决之前阻止用户继续操作。
 - 用户无法再在同步服务管理器 UI 中为活动目录域服务或 Windows Azure 活动目录创建连接器。
@@ -139,11 +164,11 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 >[!IMPORTANT]
 >将 Azure AD Connect 从早期版本升级到 1.3.21.0 存在一个已知问题，即，即使 Azure AD Connect 升级成功，O365 门户也不反映已更新版本。
 >
-> 若要解决此问题，需要导入 **AdSync** 模块，然后在 Azure AD Connect 服务器上运行 `Set-ADSyncDirSyncConfiguration` powershell cmdlet。  可以使用以下步骤：
+> 要解决此问题，您需要导入**AdSync**模块，然后在 Azure`Set-ADSyncDirSyncConfiguration` AD 连接服务器上运行 PowerShell cmdlet。  可以使用以下步骤：
 >
->1. 在管理员模式下打开 Powershell
->2. 运行 
->3. 运行 
+>1. 在管理模式下打开 PowerShell。
+>2. 运行 `Import-Module "ADSync"`。
+>3. 运行 `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`。
  
 ### <a name="release-status"></a>版本状态 
 
@@ -151,7 +176,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 ### <a name="fixed-issues"></a>修复的问题 
 
-- 修复了 Microsoft Azure 活动目录连接生成 1.3.20.0 中存在的权限漏洞的提升。  在某些情况下，此漏洞可能允许攻击者在特权帐户的上下文中执行两个 powershell cmdlet，并执行特权操作。  此安全更新通过禁用这些 cmdlet 来解决此问题。 有关详细信息，请参阅[安全更新](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000)。
+- 修复了 Microsoft Azure 活动目录连接生成 1.3.20.0 中存在的权限漏洞的提升。  在某些情况下，此漏洞可能允许攻击者在特权帐户的上下文中执行两个 PowerShell cmdlet，并执行特权操作。  此安全更新通过禁用这些 cmdlet 来解决此问题。 有关详细信息，请参阅[安全更新](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000)。
 
 ## <a name="13200"></a>1.3.20.0 
 
@@ -256,8 +281,8 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 
 
 - 更改了属性写回的功能，以确保托管的语音邮件可按预期方式工作。  在某些情况下，Azure AD 在使用 null 值写回期间，会覆盖 msExchUcVoicemailSettings 属性。  如果未设置云值，Azure AD 现在不再会清除此属性的本地值。
-- 在 Azure AD Connect 向导中添加了诊断，用于调查和识别 Azure AD 连接问题。 也可以使用 Test- AdSyncAzureServiceConnectivity Cmdlet 通过 Powershell 直接运行这些诊断。 
-- 在 Azure AD Connect 向导中添加了诊断，用于调查和识别 AD 连接问题。 也可以在 ADConnectivityTools Powershell 模块中使用 Start-ConnectivityValidation 函数，通过 Powershell 直接运行这些诊断。  有关详细信息，请参阅[什么是 ADConnectivityTool PowerShell 模块？](how-to-connect-adconnectivitytools.md)
+- 在 Azure AD Connect 向导中添加了诊断，用于调查和识别 Azure AD 连接问题。 这些相同的诊断也可以直接通过 PowerShell 使用测试 AdSyncAzure 服务连接 Cmdlet 运行。 
+- 在 Azure AD Connect 向导中添加了诊断，用于调查和识别 AD 连接问题。 这些相同的诊断也可以直接通过 PowerShell 使用 ADConnectivityTools PowerShell 模块中的启动连接验证功能运行。  有关详细信息，请参阅[什么是 ADConnectivityTool PowerShell 模块？](how-to-connect-adconnectivitytools.md)
 - 为混合 Azure Active Directory Join 和设备写回添加了 AD 架构版本预先检查 
 - 已将目录扩展页面属性搜索更改为不区分大小写。
 -   添加了对 TLS 1.2 的完整支持。 此版本支持所要禁用的其他所有协议，安装 Azure AD Connect 的计算机上只会启用 TLS 1.2。  有关详细信息，请参阅[对 Azure AD Connect 强制实施 TLS 1.2](reference-connect-tls-enforcement.md)
@@ -652,7 +677,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="ad-fs-management"></a>AD FS 管理
 #### <a name="fixed-issues"></a>修复的问题
-* AD 准备 powershell 模块中的 Initialize-ADSyncNGCKeysWriteBack cmdlet 对设备注册容器错误地应用 ACL，因此只会继承现有权限。  已对此情况进行更新，以便同步服务帐户具有正确的权限。
+* AD 准备 PowerShell 模块中的初始化 ADSyncNGCKeysWriteBack cmdlet 错误地将 ACL 应用于设备注册容器，因此仅继承现有权限。  已对此情况进行更新，以便同步服务帐户具有正确的权限。
 
 #### <a name="new-features-and-improvements"></a>新增功能和改进
 * 已更新 AAD Connect 验证 ADFS 登录任务，以便它能验证针对 Microsoft Online 的登录名而不只是验证从 ADFS 检索到的令牌。

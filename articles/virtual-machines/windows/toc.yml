@@ -254,6 +254,7 @@
               href: reserved-vm-instance-size-flexibility.md
         - name: 点 VM
           href: spot-vms.md
+          displayName: 'pre-empt, preempt'
         - name: 前几代
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
           displayName: D-series Ds-series A-series Basic
@@ -321,7 +322,7 @@
       href: backup-recovery.md
     - name: 基础结构示例
       href: infrastructure-example.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 创建 VM
       items:
@@ -549,7 +550,7 @@
             - name: ARM 模板参考
               displayName: Azure Resource Manager
               href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: 故障排除
+            - name: 疑难解答
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: 查找和使用映像
           href: cli-ps-findimage.md
@@ -728,7 +729,7 @@
               href: aws-to-azure.md
             - name: 使用 Azure Site Recovery
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-- name: 故障排除
+- name: 疑难解答
   href: ../troubleshooting/index.yml
 - name: 参考
   items:

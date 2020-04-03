@@ -2,17 +2,17 @@
 title: Azure 快速路由：ARP 表 - 故障排除：经典
 description: 此页说明了如何为 ExpressRoute 线路获取 ARP 表 - 经典部署模型。
 services: expressroute
-author: ganesr
+author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 01/30/2017
-ms.author: ganesr
-ms.openlocfilehash: 7c223e3802d499e002b12580b17cb9ee3f1bea97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: a7a24fc6674adca21e01d2502263c9767510469e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74076614"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618621"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>在经典部署模型中获取 ARP 表
 > [!div class="op_single_selector"]

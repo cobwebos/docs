@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 766615a92e616a254cca4b2b3ce1ccde40118275
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9ce87bac6fbcc3833684dc540c542bc14c9b4955
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350250"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586525"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics（前称为 SQL 数据仓库）常见问题解答
 
@@ -29,9 +29,9 @@ Q. Azure SQL 数据仓库有什么变化？
 
 A. Azure Synapse 是 Azure SQL 数据仓库 (SQL DW) 的演进。 我们将同行业领先的数据仓库带到了全新的性能和功能级别。 您可以使用 Azure Synapss 继续在生产中运行现有数据仓库工作负荷，并自动受益于预览版中的新功能。 有关详细信息，请参阅什么是[Azure 突触分析](sql-data-warehouse-overview-what-is.md)。
 
-Q. 什么是 SQL Analytics？
+Q. 什么是 Synapse SQL 池？
 
-A. SQL Analytics 是 Azure Synapse 中正式发布的企业数据仓库功能。 有关详细信息，请参阅[什么是 Azure 突触分析](sql-data-warehouse-overview-what-is.md)。
+A. 突触 SQL 池是指 Azure Synaps 通常可用的企业数据仓库功能。 有关详细信息，请参阅[什么是 Azure 突触分析](sql-data-warehouse-overview-what-is.md)。
 
 Q. Azure Synapse 如何入门？
 
@@ -47,9 +47,9 @@ A. 请访问 [Microsoft 符合性](https://www.microsoft.com/trustcenter/complia
 
 Q. 是否可以连接 Power BI？
 
-A.  能！ 尽管 Power BI 支持使用 Azure 突触直接查询，但它不适用于大量用户或实时数据。 若要进一步优化 Power BI 性能，请考虑在 Azure Analysis Services 或 Analysis Service IaaS 的顶层使用 Power BI。
+A.  能！ 尽管 Power BI 支持使用 Azure Synapse 进行直接查询，但不适合大量用户或实时数据。 若要进一步优化 Power BI 性能，请考虑在 Azure Analysis Services 或 Analysis Service IaaS 的顶层使用 Power BI。
 
-Q. SQL Analytics 容量有哪些限制？
+Q. 什么是 Synapse SQL 池容量限制？
 
 A. 请参阅当前[容量限制](sql-data-warehouse-service-capacity-limits.md)页。 
 
@@ -83,16 +83,15 @@ A. 支持许多功能。 不支持的功能可以在[不支持的表功能](sql-
 
 ## <a name="tooling-and-administration"></a>工具和管理
 
-Q. SQL Analytics 是否支持 REST API？
+Q. Synapse SQL 池是否支持 REST API？
 
-A. 是的。 SQL Analytics 还提供可与 SQL 数据库搭配使用的大多数 REST 功能。 可以在 REST 文档页或 [MSDN](https://msdn.microsoft.com/library/azure/mt163685.aspx) 中找到 API 信息。
-
+A. 是的。 大多数可用于 SQL 数据库的 REST 功能也可用于 Synapse SQL 池。 可以在 REST 文档页或 [MSDN](https://msdn.microsoft.com/library/azure/mt163685.aspx) 中找到 API 信息。
 
 ## <a name="loading"></a>加载
 
 Q. 支持哪些客户端驱动程序？
 
-A. 可在[连接字符串](sql-data-warehouse-connection-strings.md)页面上找到对 SQL 分析的驱动程序支持
+A. 可在[连接字符串](sql-data-warehouse-connection-strings.md)页面上找到对 Synapse SQL 池的驱动程序支持
 
 问：PolyBase 支持哪些文件格式？
 
@@ -108,7 +107,8 @@ A. 可在[连接字符串](sql-data-warehouse-connection-strings.md)页面上找
 
 问：能否连接到 HDI？
 
-答：HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果具有 HDFS 层，则可以将数据加载到 SQL Analytics 数据仓库中。 但是，无法生成 HDI 实例的下推计算。 
+答：HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果具有 HDFS 层，则可以将数据加载到 Synapse SQL 池中。 但是，无法生成 HDI 实例的下推计算。 
 
 ## <a name="next-steps"></a>后续步骤
+
 有关 Azure Synapse 的综合性详细信息，请参阅[概述](sql-data-warehouse-overview-faq.md)页。

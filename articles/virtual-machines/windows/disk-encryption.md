@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 0541b12d73cc5b5f7fdf713c759069e2ecbd8c18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13985b07b4903504fde6b58031a532337d3b1971
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299625"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584598"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -34,7 +34,11 @@ ms.locfileid: "79299625"
 
 ## <a name="customer-managed-keys"></a>客户管理的密钥
 
-您可以选择使用自己的密钥在每个托管磁盘级别管理加密。 使用客户托管密钥的托管磁盘的服务器端加密提供了 Azure 密钥保管库的集成体验。 您可以将[RSA 密钥](../../key-vault/key-vault-hsm-protected-keys.md)导入密钥保管库，或在 Azure 密钥保管库中生成新的 RSA 密钥。 Azure 托管磁盘使用[信封加密](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)以完全透明的方式处理加密和解密。 它使用基于[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 的数据加密密钥 （DEK） 加密数据，而密钥又使用密钥进行保护。 您必须授予对密钥保管库中的托管磁盘的访问权限，才能使用密钥加密和解密 DEK。 这允许您完全控制数据和密钥。 您可以随时禁用密钥或撤消对托管磁盘的访问权限。 还可以使用 Azure 密钥保管库监视审核加密密钥使用情况，以确保只有托管磁盘或其他受信任的 Azure 服务才能访问密钥。
+您可以选择使用自己的密钥在每个托管磁盘级别管理加密。 使用客户托管密钥的托管磁盘的服务器端加密提供了 Azure 密钥保管库的集成体验。 您可以将[RSA 密钥](../../key-vault/key-vault-hsm-protected-keys.md)导入密钥保管库，或在 Azure 密钥保管库中生成新的 RSA 密钥。 
+
+Azure 托管磁盘使用[信封加密](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)以完全透明的方式处理加密和解密。 它使用基于[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 的数据加密密钥 （DEK） 加密数据，而密钥又使用密钥进行保护。 存储服务生成数据加密密钥，并使用 RSA 加密使用客户管理的密钥对其进行加密。 信封加密允许您根据合规性策略定期轮换（更改）密钥，而不会影响 VM。 旋转密钥时，存储服务使用新的客户管理密钥重新加密数据加密密钥。 
+
+您必须授予对密钥保管库中的托管磁盘的访问权限，才能使用密钥加密和解密 DEK。 这允许您完全控制数据和密钥。 您可以随时禁用密钥或撤消对托管磁盘的访问权限。 还可以使用 Azure 密钥保管库监视审核加密密钥使用情况，以确保只有托管磁盘或其他受信任的 Azure 服务才能访问密钥。
 
 对于高级 SSD、标准 SSD 和标准 HDD：当您禁用或删除密钥时，任何使用该密钥的磁盘的 VM 将自动关闭。 在此之后，除非再次启用密钥或您分配新密钥，否则 VM 将不可用。
 
@@ -238,6 +242,32 @@ $VMSS = Add-AzVmssDataDisk -VirtualMachineScaleSet $VMSS -CreateOption Empty -Lu
 $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
 New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMScaleSetName
+```
+
+#### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>更改磁盘加密集的键以旋转引用磁盘加密集的所有资源的密钥
+
+```PowerShell
+$ResourceGroupName="yourResourceGroupName"
+$keyVaultName="yourKeyVaultName"
+$keyName="yourKeyName"
+$diskEncryptionSetName="yourDiskEncryptionSetName"
+
+$keyVault = Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $ResourceGroupName
+
+$keyVaultKey = Get-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName
+
+Update-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName -SourceVaultId $keyVault.ResourceId -KeyUrl $keyVaultKey.Id
+```
+
+#### <a name="find-the-status-of-server-side-encryption-of-a-disk"></a>查找磁盘服务器端加密的状态
+
+```PowerShell
+$ResourceGroupName="yourResourceGroupName"
+$DiskName="yourDiskName"
+
+$disk=Get-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName
+$disk.Encryption.Type
+
 ```
 
 > [!IMPORTANT]

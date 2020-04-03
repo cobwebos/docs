@@ -5,21 +5,21 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ad2a34691a00f217db6cf6835eefed18c8862d32
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 29ac9239b8dc87b1ed12fc8333bf5201fe8fa204
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547920"
+ms.locfileid: "80617124"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
 
-您可以通过[创建新](#create-a-runbook)Runbook 或从文件或[Runbook 库](automation-runbook-gallery.md)[导入现有](#import-a-runbook)Runbook 来将 Runbook 添加到 Azure 自动化。 本文介绍如何通过文件创建和导入 Runbook。 您可以在[Runbook 和 Azure 自动化的模块库中](automation-runbook-gallery.md)获取访问社区 Runbook 和模块的所有详细信息。
+您可以通过[创建新](#creating-a-runbook)Runbook 或从文件或[Runbook 库](automation-runbook-gallery.md)[导入现有](#importing-a-runbook)Runbook 来将 Runbook 添加到 Azure 自动化。 本文介绍如何通过文件创建和导入 Runbook。 您可以在[Runbook 和 Azure 自动化的模块库中](automation-runbook-gallery.md)获取访问社区 Runbook 和模块的所有详细信息。
 
 >[!NOTE]
 >本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](automation-update-azure-modules.md)将模块更新到最新版本。
 
-## <a name="create-a-runbook"></a>创建 runbook
+## <a name="creating-a-runbook"></a>创建运行簿
 
 可以使用其中一个 Azure 门户或 Windows PowerShell 在 Azure 自动化中创建一个新的 Runbook。 一旦创建了 Runbook，便可以利用[了解 PowerShell 工作流](automation-powershell-workflow.md)和 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)中的信息对其进行编辑。
 
@@ -42,9 +42,9 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 -Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
 ```
 
-## <a name="import-a-runbook"></a>导入 Runbook
+## <a name="importing-a-runbook"></a>导入运行簿
 
-您可以通过导入 PowerShell 脚本或 PowerShell 工作流 **（.ps1）、** 导出的图形运行**簿 （.graphrunbook）** 或 Python 2 脚本 **（.py）** 在 Azure 自动化中创建新的 Runbook。  必须指定在导入期间创建的 [Runbook 类型](automation-runbook-types.md)，并考虑以下注意事项。
+您可以通过导入 PowerShell 脚本或 PowerShell 工作流 **（.ps1）、** 导出的图形运行**簿 （.graphrunbook）** 或 Python2 脚本 **（.py）** 在 Azure 自动化中创建新的 Runbook。  必须指定在导入期间创建的 [Runbook 类型](automation-runbook-types.md)，并考虑以下注意事项。
 
 * 不包含工作流的 **.ps1**文件可以导入到[PowerShell 运行簿](automation-runbook-types.md#powershell-runbooks)或[PowerShell 工作流运行簿](automation-runbook-types.md#powershell-workflow-runbooks)中。 如果将其导入 PowerShell 工作流运行簿，则将其转换为工作流。 在这种情况下，注释包含在 Runbook 中，以描述已进行的更改。
 
@@ -68,7 +68,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 5. 如果启用了 **"名称"** 字段，则可以选择更改 Runbook 名称。 名称必须以字母开头，并可以包含字母、数字、下划线和破折号。
 6. 将自动选择 [Runbook 类型](automation-runbook-types.md)，但可以在考虑适用的限制后更改该类型。
 7. 单击“创建”。  新的 runbook 会出现在自动化帐户的 runbook 列表中。
-8. 必须先[发布 Runbook](#publish-a-runbook)，才能运行它。
+8. 必须先[发布 Runbook](#publishing-a-runbook)，才能运行它。
 
 > [!NOTE]
 > 导入图形运行簿或图形 PowerShell 工作流运行簿后，可以将其转换为其他类型。 但是，无法将这些图形运行簿之一转换为文本 Runbook。
@@ -90,9 +90,9 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 -Type PowerShellWorkflow
 ```
 
-## <a name="test-a-runbook"></a>测试 Runbook
+## <a name="testing-a-runbook"></a>测试运行簿
 
-测试 Runbook 时，将执行[草稿版](#publish-a-runbook)，并会完成其所执行的任何操作。 未创建作业历史记录，但"测试输出"窗格中将显示["输出](automation-runbook-output-and-messages.md#output-stream)"和["警告和错误](automation-runbook-output-and-messages.md#message-streams)"流。 仅当`VerbosePreference`变量*（自动化运行簿-输出和消息.md_首选项变量）设置为"继续"时，发送到["详细"流](automation-runbook-output-and-messages.md#message-streams)的消息才会显示在"输出"窗格中。
+测试 Runbook 时，将执行[草稿版](#publishing-a-runbook)，并会完成其所执行的任何操作。 未创建作业历史记录，但"测试输出"窗格中将显示["输出](automation-runbook-output-and-messages.md#output-stream)"和["警告和错误](automation-runbook-output-and-messages.md#message-streams)"流。 仅当["详细首选项"](automation-runbook-output-and-messages.md#preference-variables)变量设置为`Continue`时，发送到["详细"流](automation-runbook-output-and-messages.md#message-streams)的消息才会显示在"输出"窗格中。
 
 即使草稿版正在运行，该 Runbook 也仍会正常执行，并针对环境中的资源执行任何操作。 因此，只能在非生产资源中测试 Runbook。
 
@@ -106,7 +106,7 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 1. 您可以在"输出"窗格下使用按钮在测试时停止或挂起[PowerShell 工作流](automation-runbook-types.md#powershell-workflow-runbooks)或[图形](automation-runbook-types.md#graphical-runbooks)运行簿。 暂停 Runbook 时，该 Runbook 会完成它在被暂停之前正在进行的活动。 暂停 Runbook 后，可以将它停止或重启。
 1. 检查"输出"窗格中的 Runbook 中的输出。
 
-## <a name="publish-a-runbook"></a>发布 Runbook
+## <a name="publishing-a-runbook"></a>发布 Runbook
 
 创建或导入新的 Runbook 时，必须先将其发布，然后才能导入。 Azure 自动化中的每个 Runbook 都有草稿版本和已发布版本。 只有已发布版才能用来运行，只有草稿版才能用来编辑。 已发布版不受对草稿版所做的任何更改的影响。 当草稿版本应可用时，您可以发布它，用草稿版本覆盖当前发布的版本。
 
@@ -129,7 +129,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
 
-### <a name="schedule-a-runbook-in-the-azure-portal"></a>在 Azure 门户中安排运行簿
+## <a name="scheduling-a-runbook-in-the-azure-portal"></a>在 Azure 门户中计划 Runbook
 
 发布 Runbook 后，可以将其安排用于操作。
 

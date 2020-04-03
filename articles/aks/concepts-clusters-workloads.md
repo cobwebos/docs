@@ -4,12 +4,12 @@ description: 了解 Kubernetes 的基本群集和工作负荷组件以及它们�
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019c886aba1c8fe34211e73e4d960b14e79303b9
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259638"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617438"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -65,9 +65,9 @@ AKS 提供单租户控制平面，带有专用 API 服务器、计划程序等�
 
 ![Azure 虚拟机和 Kubernetes 节点的支持资源](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
-节点的 Azure VM 大小定义了 CPU 数量、内存大小以及可用存储的大小和类型（如高性能 SSD 或常规 HDD）。 如果预计需要大量 CPU 和内存或高性能存储的应用程序，则相应地规划节点大小。 还可以纵向扩展 AKS 群集中的节点数以满足需求。
+节点的 Azure VM 大小定义了 CPU 数量、内存大小以及可用存储的大小和类型（如高性能 SSD 或常规 HDD）。 如果预计需要大量 CPU 和内存或高性能存储的应用程序，则相应地规划节点大小。 您还可以横向扩展 AKS 群集中的节点数以满足需求。
 
-在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或纵向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需执行手动配置。 代理节点作为标准虚拟机计费，因此将自动应用您使用的 VM 大小（包括[Azure 预留][reservation-discounts]）的任何折扣。
+在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux 或 Windows Server 2019。 创建 AKS 群集或横向扩展节点数时，Azure 平台将创建请求的 VM 数量并配置它们。 无需执行手动配置。 代理节点作为标准虚拟机计费，因此将自动应用您使用的 VM 大小（包括[Azure 预留][reservation-discounts]）的任何折扣。
 
 如果需要使用不同的主机 OS、容器运行时或包含自定义程序包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果要使用 Moby 以外的容器运行时，可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
 
@@ -96,7 +96,7 @@ kubectl describe node [NODE_NAME]
 
 1. Kubelet 守护程序安装在所有 Kubernetes 代理节点上，用于管理容器的创建和停止使用。 在 AKS 上，此守护程序默认具有逐出规则 *memory.available<750Mi*，也就是说一个节点必须始终具有至少 750 Mi 的可分配内存。  主机低于该可用内存阈值时，kubelet 将终止某个正在运行的 pod，以释放主机上的内存并对其进行保护。 当可用内存下降到 750Mi 阈值以下时，这是一种反应性操作。
 
-2. 第二个值是为 kubelet 守护程序正常运行而预留的内存 (kube-reserved) 的累进率。
+2. 第二个值是库贝莱特守护进程正常运行（kube-保留）的内存保留的递减速率。
     - 前 4 GB 内存的 25%
     - 下一个 4 GB 内存的 20%（最多 8 GB）
     - 下一个 8 GB 内存的 10%（最多 16 GB）
@@ -118,7 +118,7 @@ kubectl describe node [NODE_NAME]
 具有相同配置的节点将统一合并成节点池**。 Kubernetes 群集包含一个或多个节点池。 创建 AKS 群集时会定义初始节点数和大小，从而创建默认节点池**。 AKS 中的此默认节点池包含运行代理节点的基础 VM。
 
 > [!NOTE]
-> 为确保群集可靠运行，应在默认节点池中至少运行 2（两）个节点。
+> 为确保群集可靠运行，应在默认节点池中至少运行 2 个节点。
 
 缩放或升级 AKS 群集时，将对默认节点池执行操作。 还可以选择缩放或升级特定节点池。 对于升级操作，将在节点池中的其他节点上计划正在运行的容器，直到成功升级所有节点。
 

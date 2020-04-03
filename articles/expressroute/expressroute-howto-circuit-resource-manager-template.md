@@ -2,33 +2,32 @@
 title: Azure 快速路由模板：创建快速路由电路
 description: 创建、预配、删除和取消预配 ExpressRoute 线路。
 services: expressroute
-author: cherylmc
+author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 11/13/2019
-ms.author: cherylmc
-ms.reviewer: ganesr
-ms.openlocfilehash: 78da84a462566cca1a2800174849159ace8dd6dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: ac2fb2f884feb0fbe6fbb1731ebe7c8bdad5114b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75981138"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616495"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ExpressRoute 线路
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
-> * [电源外壳](expressroute-howto-circuit-arm.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager 模板](expressroute-howto-circuit-resource-manager-template.md)
+> * [Azure 资源管理器模板](expressroute-howto-circuit-resource-manager-template.md)
 > * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [电源外壳（经典）](expressroute-howto-circuit-classic.md)
 >
 
 了解如何使用 Azure PowerShell 部署 Azure 资源管理器模板，以便创建 ExpressRoute 线路。 有关开发资源管理器模板的详细信息，请参阅[资源管理器文档](/azure/azure-resource-manager/)和[模板参考](/azure/templates/microsoft.network/expressroutecircuits)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 * 确保有权创建新的网络资源。 如果没有适当的权限，请与帐户管理员联系。
@@ -64,7 +63,7 @@ ms.locfileid: "75981138"
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **SKU 层**确定 ExpressRoute 线路是[本地](expressroute-faqs.md#expressroute-local)线路、标准线路还是[高级](expressroute-faqs.md#expressroute-premium)线路。 可以指定“本地”**、“标准”** 或“高级”**。
+   * **SKU 层**确定 ExpressRoute 电路是[本地](expressroute-faqs.md#expressroute-local)电路、标准电路还是[高级](expressroute-faqs.md#expressroute-premium)电路。 您可以指定*本地*、*标准或*高级*。
    * **SKU 系列**确定计费类型。 可以指定“Metereddata”** 以获取数据流量套餐，指定“Unlimiteddata”** 以获取无限制流量套餐。 可以将计费类型从“Metereddata”** 更改为“Unlimiteddata”**，但不能将类型从“Unlimiteddata”** 更改为“Metereddata”**。 “本地”** 线路仅为 Unlimiteddata**。
    * “对等互连位置”**** 是与 Microsoft 建立对等互连的实际位置。
 

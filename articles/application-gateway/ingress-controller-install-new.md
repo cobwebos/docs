@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: a0bc6aef1becd53217be0eeb8c865b5c78a5d69f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239469"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585884"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何安装使用新应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -71,7 +71,7 @@ ms.locfileid: "80239469"
 ## <a name="deploy-components"></a>部署组件
 此步骤将以下组件添加到订阅：
 
-- [Azure 库伯奈斯服务](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+- [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/intro-kubernetes)
 - [应用程序网关](https://docs.microsoft.com/azure/application-gateway/overview)v2
 - 包含 2 个[子网](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)的[虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
 - [公共 IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
@@ -251,9 +251,9 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
    值：
      - `verbosityLevel`：设置 AGIC 日志记录基础结构的详细程度。 有关可能的值，请参阅[日志记录级别](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels)。
-     - `appgw.subscriptionId`：应用程序网关所在的 Azure 订阅 ID。 示例： `a123b234-a3b4-557d-b2df-a0bc12de1234`
-     - `appgw.resourceGroup`：在其中创建应用程序网关的 Azure 资源组的名称。 示例： `app-gw-resource-group`
-     - `appgw.name`：应用程序网关的名称。 示例： `applicationgatewayd0f0`
+     - `appgw.subscriptionId`：应用程序网关所在的 Azure 订阅 ID。 示例：`a123b234-a3b4-557d-b2df-a0bc12de1234`
+     - `appgw.resourceGroup`：在其中创建应用程序网关的 Azure 资源组的名称。 示例：`app-gw-resource-group`
+     - `appgw.name`：应用程序网关的名称。 示例：`applicationgatewayd0f0`
      - `appgw.shared`： 此布尔标志应默认为`false`。 如果需要[共享的应用程序网关](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)，请设置为 `true`。
      - `kubernetes.watchNamespace`：指定 AGIC 应监视的名称空间。 此命名空间可以是单字符串值，也可以是逗号分隔的命名空间列表。
     - `armAuth.type`：可以是 `aadPodIdentity` 或 `servicePrincipal`。
@@ -263,7 +263,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
 
    > [!NOTE]
-   > `identityResourceID` 和 `identityClientID` 是在执行[创建标识](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-new.md#create-an-identity)步骤期间创建的值，可使用以下命令再次获取这些值：
+   > 和`identityResourceID``identityClientID`的值是在[部署组件](ingress-controller-install-new.md#deploy-components)步骤期间创建的，可以使用以下命令再次获取：
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```

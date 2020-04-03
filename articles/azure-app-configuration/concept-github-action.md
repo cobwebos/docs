@@ -1,19 +1,19 @@
 ---
-title: 使用 GitHub 操作与 Azure 应用配置同步
-description: 使用 GitHub 操作在更新 GitHub 存储库时触发应用配置实例的更新
+title: 将 GitHub 存储库同步到应用配置
+description: 使用 GitHub 操作在更新 GitHub 存储库时自动更新应用配置实例。
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 46d4aa4d4d37e9cac928e8d1a9e5e77ca0f30f18
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 602ccddf97938022df3c5903b573608558fe5d35
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384052"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585479"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>使用 GitHub Actions 同步应用配置实例
+# <a name="sync-your-github-repository-to-app-configuration"></a>将 GitHub 存储库同步到应用配置
 
 希望继续使用其现有源代码管理实践的团队可以使用 GitHub 操作自动将其 GitHub 存储库与其应用配置存储同步。 这允许您像通常一样对配置文件进行更改，同时获得应用配置优势，例如： <br>
 &nbsp;&nbsp;&nbsp;&nbsp;• 代码之外的集中配置 <br>
@@ -130,7 +130,7 @@ jobs:
 ## <a name="use-max-depth-to-limit-github-action"></a>使用最大深度限制 GitHub 操作
 嵌套 JSON 属性的默认行为是拼平整个对象。  下面的 JSON 定义此键值对：
 
-| 键 | “值” |
+| 键 | 值 |
 | --- | --- |
 | 对象：内部键：内键 | 内部价值 |
 
@@ -173,7 +173,7 @@ jobs:
 
 给定深度为 2，上述示例现在返回以下键值对：
 
-| 键 | “值” |
+| 键 | 值 |
 | --- | --- |
 | 对象：内部 | {"内键"："内部价值"} |
 
@@ -184,7 +184,7 @@ jobs:
 > 输入指示号不区分大小写。
 
 
-| 输入名称 | 必需？ | “值” |
+| 输入名称 | 必需？ | 值 |
 |----|----|----|
 | 配置文件 | 是 | 存储库中配置文件的相对路径。  Glob 模式受支持，可以包含多个文件。 |
 | format | 是 | 配置文件的文件格式。  有效格式包括：JSON、YAML、属性。 |

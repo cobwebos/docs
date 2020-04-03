@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47fd30fbb6e6836d6edf18ac68164d515f3aeb93
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8ac9ff1f46e1d2d0ddaa313499340b4723c7da07
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350733"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584254"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure 突触分析中资源类的工作负载管理
 
-有关使用资源类在 Azure Synapse 中管理 SQL 分析查询的内存和并发的指南。  
+有关使用资源类管理 Azure Synapse 中 Synapse SQL 池查询的内存和并发的指导。  
 
 ## <a name="what-are-resource-classes"></a>什么是资源类
 
-查询的性能容量由用户的资源类决定。  资源类是 SQL Analytics 中预先确定的资源限制，用于管理计算资源和查询执行的并发性。 资源类可以通过对并发运行的查询数和分配给每个查询的计算资源数设置限制，帮助你配置查询资源。  我们需要在内存和并发性之间进行权衡。
+查询的性能容量由用户的资源类决定。  资源类是 Synapse SQL 池中预先确定的资源限制，用于管理计算资源和查询执行的并发性。 资源类可以通过对并发运行的查询数和分配给每个查询的计算资源数设置限制，帮助你配置查询资源。  我们需要在内存和并发性之间进行权衡。
 
 - 较小的资源类可以减少每个查询的最大内存量，但同时会提高并发性。
 - 较大的资源类可以增加每个查询的最大内存量，但同时会降低并发性。
@@ -82,7 +82,7 @@ ms.locfileid: "80350733"
 
 默认情况下，每个用户都是动态资源类 (**smallrc**) 的成员。
 
-服务管理员的资源类在 smallrc 中是固定的，不可更改。  服务管理员是预配过程中创建的用户。  此上下文中的服务管理员是使用新服务器创建新 SQL Analytics 实例时为"服务器管理员登录"指定的登录名。
+服务管理员的资源类在 smallrc 中是固定的，不可更改。  服务管理员是预配过程中创建的用户。  此上下文中的服务管理员是使用新服务器创建新 Synapse SQL 池时为"服务器管理员登录"指定的登录名。
 
 > [!NOTE]
 > 定义为 Active Directory 管理员的用户或组也是服务管理员。
@@ -594,5 +594,5 @@ GO
 
 ## <a name="next-steps"></a>后续步骤
 
-有关管理数据库用户和安全的详细信息，请参阅 SQL [Analytics 中保护数据库](sql-data-warehouse-overview-manage-security.md)。 有关较大资源类如何改进聚集列存储索引质量的详细信息，请参阅[列存储压缩的内存优化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
+有关管理数据库用户和安全的详细信息，请参阅[在 Synapse SQL 中保护数据库](sql-data-warehouse-overview-manage-security.md)。 有关较大资源类如何改进聚集列存储索引质量的详细信息，请参阅[列存储压缩的内存优化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 

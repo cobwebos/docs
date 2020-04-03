@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: fcdb8af770fa0068e8413d4609a56223a9a20ce2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345897"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582200"
 ---
 # <a name="manage-assets"></a>管理资产
 
@@ -60,7 +60,7 @@ ms.locfileid: "80345897"
 
     **资产容器Sas.listContainerSas**采用一个[列表容器As输入](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput)参数，你设置`expiryTime`。 时间应设置为< 24 小时。
 
-    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput)返回多个 SAS URL，因为每个存储帐户有两个存储帐户密钥。 存储帐户有两个密钥，因为它允许无缝轮换存储帐户密钥（例如，使用另一个密钥更改一个密钥，然后开始使用新密钥并旋转另一个密钥）。 第 1 个 SAS URL 表示存储密钥 1 和第二个存储密钥2。
+    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput)返回多个 SAS URL，因为每个存储帐户有两个存储帐户密钥。 存储帐户有两个密钥，因为它有助于故障转移和存储帐户密钥的无缝轮换。 第一个 SAS URL 表示第一个存储帐户密钥，第二个 SAS URL 表示第二个密钥。
 3. 使用 Azure 存储 API 或 SDK（例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md) 或 [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）将文件上传到资产容器。
 4. 使用媒体服务 v3 API 创建用于处理“输入”资产的转换和作业。 有关详细信息，请参阅[转换和作业](transform-concept.md)。
 5. 从“输出”资产流式传输内容。
@@ -109,7 +109,7 @@ curl -X PUT \
 
 在媒体服务中，[实时输出](https://docs.microsoft.com/rest/api/media/liveoutputs)对象类似于数字录像机，它将捕获您的实时流并将其记录到媒体服务帐户中的资产中。 记录的内容将保存到[资产](https://docs.microsoft.com/rest/api/media/assets)资源定义的容器中。
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 
 * [使用云 DVR](live-event-cloud-dvr.md)
 * [流式传输实时教程](stream-live-tutorial-with-api.md)
@@ -118,7 +118,7 @@ curl -X PUT \
 
 在媒体服务中，在处理视频（例如编码或分析）时，您需要创建一个输出[资产](assets-concept.md)来存储[作业](transforms-jobs-concept.md)的结果。
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 
 * [对视频进行编码](encoding-concept.md)
 * [从本地文件创建作业输入](job-input-from-local-file-how-to.md)
@@ -127,9 +127,9 @@ curl -X PUT \
 
 要发布用于流式处理的资产，您需要创建[流式处理器](streaming-locators-concept.md)。 流式处理器需要知道要发布的资产名称。 
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 
-[教程：使用媒体服务 v3 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
+[教程：使用媒体服务 v3 对视频进行上载、编码和流式传输](stream-files-tutorial-with-api.md)
 
 ## <a name="download-results-of-a-job-from-an-output-asset"></a>从输出资产下载作业结果
 

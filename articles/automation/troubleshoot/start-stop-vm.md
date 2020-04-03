@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73a9680cc570179c47b527a4844488da69193cb3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78851384"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586100"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>排除“在空闲时间启动/停止 VM”解决方案的故障
 
@@ -137,7 +137,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 请查看以下可能问题解决方案列表或要检查的地方：
 
-* 如果使用“在空闲时间启动/停止 VM”解决方案的[序列方案](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags)，必须确保要启动或停止的每个 VM 都有正确标记。 请确保要启动的 VM 有 `sequencestart` 标记，要停止的 VM 有 `sequencestop` 标记。 两个标记都必须有正整数值。 可使用下面示例的查询来查找所有 VM 及其标记和值。
+* 如果使用“在空闲时间启动/停止 VM”解决方案的[序列方案](../automation-solution-vm-management.md)，必须确保要启动或停止的每个 VM 都有正确标记。 请确保要启动的 VM 有 `sequencestart` 标记，要停止的 VM 有 `sequencestop` 标记。 两个标记都必须有正整数值。 可使用下面示例的查询来查找所有 VM 及其标记和值。
 
   ```powershell-interactive
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
@@ -187,7 +187,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 2. 请确保要启动或停止的 VM 的资源组位于 `External_Start_ResourceGroupNames` 或 `External_Stop_ResourceGroupNames` 变量中，具体视情况而定。
 3. 通过执行 `SequencedStartStop_Parent` runbook 来测试更改（其中，将 WHATIF 参数设置为 True，以便于预览更改）。
 
-若要详细了解如何使用解决方案按顺序启动和停止 VM，请参阅[按顺序启动和停止 VM](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags)。
+若要详细了解如何使用解决方案按顺序启动和停止 VM，请参阅[按顺序启动和停止 VM](../automation-solution-vm-management.md)。
 
 ## <a name="scenario-startstop-vm-job-fails-with-403-forbidden-status"></a><a name="403"></a>方案：以 403 禁止状态启动/停止 VM 作业失败
 

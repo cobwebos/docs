@@ -358,7 +358,7 @@
       href: concepts-managed-identity.md
     - name: 配置容器存储库凭据
       href: configure-container-repository-credentials.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 设置开发环境
       items:
@@ -404,8 +404,6 @@
           items:
             - name: 部署来宾可执行文件
               href: service-fabric-deploy-existing-app.md
-            - name: 部署多个来宾可执行文件
-              href: service-fabric-deploy-multiple-apps.md
         - name: 生成容器服务
           items:
             - name: Docker Compose（预览）

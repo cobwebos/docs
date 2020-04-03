@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 03/26/2020
-ms.openlocfilehash: c8743385f8c3c801b2f06e4a30a8672d1d80acc4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 18c926d16319eb8a8736a51d5f10e434b94d0ebe
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422515"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582513"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure 监视器客户管理的关键配置 
 
@@ -50,11 +50,11 @@ Azure 监视器存储访问密钥保管库进行换行和解包操作的频率�
 
 Azure 监视器利用系统分配的托管标识来授予对 Azure 密钥保管库的访问权限。系统分配的托管标识只能与单个 Azure 资源关联。 群集级别支持 Azure 监视器数据存储 （ADX 群集）的标识，这要求 CMK 功能在专用 ADX 群集上传递。 为了在多个工作区上支持 CMK，新的日志分析资源 （*群集*） 充当密钥保管库和日志分析工作区之间的中间标识连接。 此概念符合系统分配的标识约束，并且标识在 ADX 群集和日志分析*群集*资源之间保留，而所有关联的工作区的数据都使用密钥保管库密钥进行保护。 底层 ADX 群集存储使用与*群集*资源\'关联的托管标识通过 Azure 活动目录对 Azure 密钥保管库进行身份验证和访问。
 
-![CMK 概述](media/customer-managed-keys/cmk-overview.png)
-1.  客户密钥库。
-2.  具有对密钥保管库权限的托管标识的客户日志分析*群集*资源 - 在数据存储 （ADX 群集） 级别支持该标识。
-3.  Azure 监视器专用 ADX 群集。
-4.  与*CMK*加密群集资源关联的客户工作区。
+![CMK 概述](media/customer-managed-keys/cmk-overview-8bit.png)
+1.    客户密钥库。
+2.    具有对密钥保管库权限的托管标识的客户日志分析*群集*资源 - 在数据存储 （ADX 群集） 级别支持该标识。
+3.    Azure 监视器专用 ADX 群集。
+4.    与*CMK*加密群集资源关联的客户工作区。
 
 ## <a name="encryption-keys-management"></a>加密密钥管理
 
@@ -210,7 +210,7 @@ Authorization: Bearer <token>
 - 密钥权限：选择"获取"，"包装键"和"取消包装密钥"权限。
 - 选择主体：输入在上一步中响应中返回的主体 ID 值。
 
-![授予密钥保管库权限](media/customer-managed-keys/grant-key-vault-permissions.png)
+![授予密钥保管库权限](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
 需要*Get*权限来验证密钥保管库是否配置为可恢复，以保护密钥和对 Azure 监视器数据的访问。
 

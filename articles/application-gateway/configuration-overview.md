@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: f31c24c96732ec3311ea904fc9c63344e2d14109
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f08cfab8f8de9183e6bee241959f7feabc31c8e3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371244"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585906"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -50,7 +50,7 @@ Azure 还在每个子网中保留五个 IP 地址供内部使用：前四个 IP 
 
 - 对于应用程序网关 v1 SKU，必须允许 TCP 端口 65503-65534 上的传入 Internet 流量，对于目标子网为 **Any** 且源为 **GatewayManager** 服务标记的 v2 SKU，必须允许 TCP 端口 65200-65535 上的传入 Internet 流量。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书的保护（处于锁定状态）。 外部实体（包括这些网关的客户）无法在这些终结点上通信。
 
-- 不能阻止出站 Internet 连接。 NSG 中的默认出站规则允许 Internet 连接。 建议：
+- 不能阻止出站 Internet 连接。 NSG 中的默认出站规则允许 Internet 连接。 我们建议：
 
   - 不要删除默认出站规则。
   - 不要创建拒绝任何出站连接的其他出站规则。
@@ -168,8 +168,6 @@ Azure 还在每个子网中保留五个 IP 地址供内部使用：前四个 IP 
 
 - 如果选择 HTTP，则客户端与应用程序网关之间的流量将不会加密。
 
-- 如果要[TLS 终止](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination)或[端到端 TLS 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)，请选择 HTTPS。 客户端与应用程序网关之间的流量将会加密。 TLS 连接在应用程序网关终止。 如果要进行端到端 TLS 加密，则必须选择 HTTPS 并配置**后端 HTTP**设置。 这可以确保流量在从应用程序网关传输到后端时重新得到加密。
-
 - 如果要[TLS 终止](features.md#secure-sockets-layer-ssltls-termination)或[端到端 TLS 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)，请选择 HTTPS。 客户端与应用程序网关之间的流量将会加密。 TLS 连接在应用程序网关终止。 如果要进行端到端 TLS 加密，则必须选择 HTTPS 并配置**后端 HTTP**设置。 这可以确保流量在从应用程序网关传输到后端时重新得到加密。
 
 
@@ -285,7 +283,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 #### <a name="rewrite-the-http-header-setting"></a>重写 HTTP 标头设置
 
-当请求和响应数据包在客户端和后端池之间移动时，此设置将添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅：
+当请求和响应数据包在客户端和后端池之间移动时，此设置将添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参见:
 
  - [重写 HTTP 标头概述](rewrite-http-headers.md)
  - [配置 HTTP 标头重写](rewrite-http-headers-portal.md)
@@ -296,7 +294,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="cookie-based-affinity"></a>基于 Cookie 的相关性
 
-Azure 应用程序网关使用网关管理的 Cookie 来维护用户会话。 当用户将第一个请求发送到应用程序网关时，它会在响应中设置一个关联 Cookie，其中包含包含会话详细信息的哈希值，以便承载关联 Cookie 的后续请求将路由到同一后端服务器，保持粘性。 
+Azure 应用程序网关使用网关管理的 Cookie 来维护用户会话。 当用户将第一个请求发送到应用程序网关时，它会在响应中设置一个关联 Cookie，其中包含包含会话详细信息的哈希值，以便承载关联 Cookie 的后续请求将路由到同一后端服务器以保持粘性。 
 
 当您希望将用户会话保留在同一服务器上，并且会话状态在服务器上本地保存用于用户会话时，此功能非常有用。 如果应用程序无法处理基于 Cookie 的相关性，则你无法使用此功能。 若要使用此功能，请确保客户端支持 Cookie。
 

@@ -1,6 +1,6 @@
 ---
 title: 安装 Visual Studio 2019
-description: 安装用于 SQL 分析的可视化工作室和 SQL 服务器开发工具 （SSDT）
+description: 安装可视化工作室和 SQL 服务器开发工具 （SSDT） 以用于突触 SQL
 services: synapse-analytics
 ms.custom: vs-azure, azure-synapse
 ms.workload: azure-vs
@@ -12,12 +12,12 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d0a1772706fa838f51322d5f5d5bd1b46eb9144a
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: aa2f903611f52f8f7a8ede0040b592a7dddd0e89
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351625"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584468"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>开始使用视觉工作室 2019
 Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于执行以下操作：
@@ -34,7 +34,7 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于�
 
 ## <a name="unsupported-features-in-ssdt"></a>SSDT 中不支持的功能
 
-有时 SQL 分析的功能版本可能不包括对 SSDT 的支持。 目前不支持以下功能：
+有时，Synapse SQL 的功能版本可能不包括对 SSDT 的支持。 目前不支持以下功能：
 
 - [具体化视图](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)（正在开发）
 - [有序聚集列存储索引](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest#examples--and-)（正在开发）

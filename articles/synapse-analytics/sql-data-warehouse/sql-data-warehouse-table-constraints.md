@@ -1,6 +1,6 @@
 ---
 title: 主键、外键和唯一键
-description: Azure 突触分析中的 SQL 分析中的表约束支持
+description: Azure 突触分析中的 Synapse SQL 池中的表约束支持
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,30 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b9336a5e230e90e1abd7f2d40d431b988385c009
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 881e4f0110e3c0f35301e2ae6be40f2510f42539
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350022"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583499"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-sql-analytics"></a>SQL 分析中的主键、外键和唯一密钥
+# <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Synapse SQL 池中的主键、外键和唯一键
 
-了解 SQL Analytics 中的表约束，包括主键、外键和唯一键。
+了解 Synapse SQL 池中的表约束，包括主键、外键和唯一键。
 
-## <a name="table-constraints"></a>表约束 
-SQL 分析支持以下表约束： 
+## <a name="table-constraints"></a>表约束
+
+突触 SQL 池支持以下表约束： 
 - 仅当同时使用 NONCLUSTERED 和 NOT ENFORCED 时才支持 PRIMARY KEY。    
-- 仅在使用 NOT ENFORCED 时才支持 UNIQUE 约束。   
+- 仅在使用 NOT ENFORCED 时才支持 UNIQUE 约束。
 
-SQL 分析中不支持外键约束。  
+Synapse SQL 池中不支持外键约束。  
 
 ## <a name="remarks"></a>备注
-具有主键和/或唯一键允许 SQL Analytics 引擎为查询生成最佳执行计划。  主键列或唯一约束列中的所有值都应独一无二。 
 
-在 SQL Analytics 中创建具有主键或唯一约束的表后，用户需要确保这些列中的所有值都是唯一的。  违反这一点可能会导致查询返回不准确的结果。  此示例表明，如果主键或唯一约束列包含重复值，查询可能返回不准确的结果。  
+具有主键和/或唯一键允许 Synapse SQL 池引擎为查询生成最佳执行计划。  主键列或唯一约束列中的所有值都应独一无二。
+
+在 Synapse SQL 池中创建具有主键或唯一约束的表后，用户需要确保这些列中的所有值都是唯一的。  违反这一点可能会导致查询返回不准确的结果。  此示例表明，如果主键或唯一约束列包含重复值，查询可能返回不准确的结果。  
 
 ```sql
  -- Create table t1
@@ -158,12 +160,13 @@ a1          total
 ```
 
 ## <a name="examples"></a>示例
-使用主键创建 SQL 分析表： 
+
+使用主键创建 Synapse SQL 池表： 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-创建具有唯一约束的 SQL 分析表：
+创建具有唯一约束的 Synapse SQL 池表：
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -171,4 +174,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>后续步骤
 
-为 SQL Analytics 数据库创建表后，下一步是将数据加载到表中。 有关加载教程，请参阅[将数据加载到 SQL 分析数据库](load-data-wideworldimportersdw.md)。
+为 Synapse SQL 池创建表后，下一步是将数据加载到表中。 有关加载教程，请参阅[将数据加载到 Synapse SQL 池](load-data-wideworldimportersdw.md)。

@@ -11,21 +11,22 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: a5bb048a2368f60a83e70dcd6d1ce663ce70a885
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2113e5ac3563a22c5f2c6b755230b05fb9a2cb35
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350921"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583873"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>使用有序聚集列存储索引优化性能  
 
-当用户查询 SQL Analytics 中的列存储表时，优化程序将检查存储在每个段中的最小值和最大值。  超出查询谓词边界的段不会从磁盘读取到内存。  如果要读取的段的数目及其总大小较小，则查询性能可以更快。   
+当用户查询 Synapse SQL 池中的列存储表时，优化程序将检查存储在每个段中的最小值和最大值。  超出查询谓词边界的段不会从磁盘读取到内存。  如果要读取的段的数目及其总大小较小，则查询性能可以更快。   
 
-## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>有序与无序聚集列存储索引 
-默认情况下，对于创建的每个 SQL Analytics 表，如果没有索引选项，内部组件（索引生成器）都会在表上创建一个非有序的群集列存储索引 （CCI）。  每个列中的数据压缩成单独的 CCI 行组段。  每个段的值范围都有元数据，因此在查询执行期间不会从磁盘读取超出查询谓词边界的段。  CCI 提供最高级别的数据压缩，可减少要读取的段大小，因此查询可以更快地运行。 但是，由于索引生成器在将数据压缩成段之前不会将数据排序，因此可能会出现值范围重叠的段，从而导致查询从磁盘中读取更多的段，需要更长的时间才能完成。  
+## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>有序与无序聚集列存储索引
 
-创建有序 CCI 时，SQL Analytics 引擎在索引生成器将现有数据压缩到索引段之前，通过订单键对内存中的现有数据进行排序。  使用有序数据可以减少段重叠的情况，使查询更有效地消除段，因而可提高性能，因为要从磁盘读取的段数更少。  如果可以一次性在内存中为所有数据排序，则可以避免段重叠的情况。  鉴于 SQL Analytics 表中的数据量很大，这种情况并不经常发生。  
+默认情况下，对于创建的每个没有索引选项的表，内部组件（索引生成器）将创建一个非有序的群集列存储索引 （CCI）。  每个列中的数据压缩成单独的 CCI 行组段。  每个段的值范围都有元数据，因此在查询执行期间不会从磁盘读取超出查询谓词边界的段。  CCI 提供最高级别的数据压缩，可减少要读取的段大小，因此查询可以更快地运行。 但是，由于索引生成器在将数据压缩成段之前不会将数据排序，因此可能会出现值范围重叠的段，从而导致查询从磁盘中读取更多的段，需要更长的时间才能完成。  
+
+创建有序 CCI 时，Synapse SQL 引擎在索引生成器将现有数据压缩到索引段之前，通过订单键对内存中的现有数据进行排序。  使用有序数据可以减少段重叠的情况，使查询更有效地消除段，因而可提高性能，因为要从磁盘读取的段数更少。  如果可以一次性在内存中为所有数据排序，则可以避免段重叠的情况。  由于数据仓库中的大型表，这种情况不经常发生。  
 
 若要检查列的段范围，请结合表名称和列名称运行以下命令：
 
@@ -49,7 +50,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> 在有序 CCI 表中，同一批 DML 或数据加载操作生成的新数据将在该批中排序，而表中的所有数据不会经过全局排序。  用户可以重新生成 (REBUILD) 有序 CCI 来对表中的所有数据进行排序。  在 SQL 分析中，列存储索引 REBUILD 是脱机操作。  对于已分区的表，每次将对一个分区执行重新生成。  重新生成的分区中的数据是“脱机”的，在对该分区完成重新生成之前，这些数据不可用。 
+> 在有序 CCI 表中，同一批 DML 或数据加载操作生成的新数据将在该批中排序，而表中的所有数据不会经过全局排序。  用户可以重新生成 (REBUILD) 有序 CCI 来对表中的所有数据进行排序。  在 Synapse SQL 中，列存储索引 REBUILD 是脱机操作。  对于已分区的表，每次将对一个分区执行重新生成。  重新生成的分区中的数据是“脱机”的，在对该分区完成重新生成之前，这些数据不可用。 
 
 ## <a name="query-performance"></a>查询性能
 
@@ -115,14 +116,15 @@ CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX O
 AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
-- 在将数据加载到 SQL Analytics 表中之前，先按排序键对数据进行排序。
 
+- 在将数据加载到表中之前，先按排序键对数据进行排序。
 
 下面是有序 CCI 表分布示例，该表根据上述建议清除了段重叠情况。 该有序 CCI 表是使用 MAXDOP 1 和 xlargerc，基于 20-GB 的堆表通过 CTAS 在 DWU1000c 数据库中创建的。  CCI 已按照不包含重复项的 BIGINT 列进行排序。  
 
 ![Segment_No_Overlapping](./media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
 ## <a name="create-ordered-cci-on-large-tables"></a>在大型表中创建有序 CCI
+
 创建有序 CCI 是一项脱机操作。  对于不包含分区的表，在有序 CCI 创建过程完成之前，用户无法访问数据。   对于已分区的表，由于引擎将按分区创建有序的 CCI 分区，因此，在尚未进行有序 CCI 创建操作的情况下，用户仍可以访问分区中的数据。   在大型表中创建有序 CCI 的过程中，可以使用此选项来尽量减少停机时间： 
 
 1.    在目标大型表（名为 Table_A）中创建分区。
@@ -135,6 +137,7 @@ OPTION (MAXDOP 1);
 ## <a name="examples"></a>示例
 
 **A. 要检查有序的列和订单序号：**
+
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
 FROM sys.index_columns i 
@@ -143,6 +146,7 @@ WHERE column_store_order_ordinal <>0
 ```
 
 **B. 要更改列序号，请从订单列表中添加或删除列，或从 CCI 更改为有序 CCI：**
+
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
 ORDER (ProductKey, SalesAmount)
@@ -150,4 +154,5 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。

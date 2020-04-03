@@ -1,6 +1,6 @@
 ---
 title: 监视工作负荷 - Azure 门户
-description: 使用 Azure 门户监视 SQL 分析
+description: 使用 Azure 门户监视同步 SQL
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 344e2cd03408b5bd1e966abc8abb72bce6078acc
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 64e61b00ecebec82b465cb13c6df0e323f6c7777
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350331"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586553"
 ---
 # <a name="monitor-workload---azure-portal"></a>监视工作负荷 - Azure 门户
 
-本文介绍如何使用 Azure 门户监视工作负荷。 这包括设置 Azure 监视器日志，以便使用 SQL[分析](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)的日志分析来调查查询执行和工作负载趋势。
+本文介绍如何使用 Azure 门户监视工作负荷。 这包括设置 Azure 监视器日志，以便使用[Synapse SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)的日志分析来调查查询执行和工作负载趋势。
 
 ## <a name="prerequisites"></a>先决条件
 

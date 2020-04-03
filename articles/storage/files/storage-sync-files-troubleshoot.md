@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ebe5ddf72e13b1a66ded7a90976e0b6209a26dfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d46f513fccf9921d4cf47835bc9d5be4c6ffe241
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060970"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607490"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -187,7 +187,7 @@ Set-AzStorageSyncServerEndpoint `
 
 如果存储同步监视器进程 （AzureStorageSyncMonitor.exe） 未运行或服务器无法访问 Azure 文件同步服务，则可能会出现此问题。
 
-在门户中显示为"脱机"的服务器上，查看遥测事件日志中的事件 ID 9301（位于应用程序和服务下\Microsoft_FileSync_事件查看器中的代理），以确定服务器无法访问 Azure 文件同步的原因服务。 
+在门户中显示为"脱机"的服务器上，查看遥测事件日志中的事件 ID 9301（位于应用程序和服务下\Microsoft_FileSync_事件查看器中的代理），以确定服务器无法访问 Azure 文件同步服务的原因。 
 
 - 如果**GetNextJob 的状态为 0**完成，则服务器可以与 Azure 文件同步服务进行通信。 
     - 在服务器上打开任务管理器，并验证存储同步监视器 (AzureStorageSyncMonitor.exe) 进程是否正在运行。 如果该进程未运行，请首先尝试重启服务器。 如果重启服务器无法解决此问题，请升级到最新的 Azure 文件同步[代理版本](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes)。 
@@ -226,7 +226,7 @@ Set-AzStorageSyncServerEndpoint `
 
 ![Azure 门户的屏幕截图](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# <a name="server"></a>[服务器](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 转到服务器的遥测日志（可在事件查看器中通过 `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` 找到）。 事件 9102 对应于已完成的同步会话；有关最新同步状态，请查找 ID 为 9102 的最新事件。 SyncDirection 会告知此会话是上传还是下载。 如果 HResult 为 0，则表示同步会话已成功。 如果 HResult 不为 0，则表示同步期间出错；有关常见错误的列表，请参阅下文。 如果 PerItemErrorCount 大于 0，则表示某些文件或文件夹未正确同步。 有可能 HResult 为 0，但 PerItemErrorCount 大于 0。
 
 下面是成功上传的示例。 为简洁起见，下面只列出了每个 9102 事件中包含的某些值。 
@@ -261,7 +261,7 @@ TransferredFiles: 0, TransferredBytes: 0, FailedToTransferFiles: 0, FailedToTran
 # <a name="portal"></a>[门户](#tab/portal1)
 在同步组中，转到有问题的服务器终结点，并在“同步活动”部分查看当前同步会话中已上传或下载的文件计数。 请注意，此状态会延迟大约 5 分钟，如果同步会话足够小，可在此时间段内完成，则可能不会在门户中报告此会话。 
 
-# <a name="server"></a>[服务器](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 在服务器上的遥测日志中查看最近的 9302 事件（在事件查看器中，转到“应用程序和服务日志\Microsoft\FileSync\Agent\Telemetry”）。 此事件指示当前同步会话的状态。 TotalItemCount 表示要同步多少个文件，AppliedItemCount 表示到目前为止已同步的文件数，PerItemErrorCount 表示同步失败的文件数（请参阅下文了解如何处理此问题）。
 
 ```
@@ -283,7 +283,7 @@ PerItemErrorCount: 1006.
 - “同步活动”字段显示的要同步的剩余文件数很少或者为零。
 - 上传和下载会话的“文件未同步”字段值为 0。
 
-# <a name="server"></a>[服务器](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 查看由每个服务器的遥测事件日志中的 9102 事件标记的已完成同步会话（在事件查看器中，转到 `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`）。 
 
 1. 在任何给定的服务器上，需要确保最近的上传和下载会话已成功完成。 为此，请检查上传和下载操作的 HResult 与 PerItemErrorCount 是否为 0（SyncDirection 字段会指示给定的会话是上传还下载会话）。 请注意，如果未看到最近完成的同步会话，原因有可能是同步会话当前正在进行；如果刚刚添加或修改了大量数据，则这种情况符合预期。
@@ -588,7 +588,7 @@ PerItemErrorCount: 1006.
 | **错误字符串** | CERT_E_UNTRUSTEDROOT |
 | **所需的补救措施** | 是 |
 
-如果组织使用 SSL 终止代理，或恶意实体正在截获服务器与 Azure 文件同步服务之间的通信，则会发生此错误。 如果确定这是预期行为（因为组织使用 SSL 终止代理），请跳过证书验证并改用注册表覆盖。
+如果您的组织正在使用 TLS 终止代理，或者恶意实体正在拦截服务器和 Azure 文件同步服务之间的流量，则可能发生此错误。 如果您确定这是预期的（因为您的组织正在使用 TLS 终止代理），则跳过具有注册表重写的证书验证。
 
 1. 创建 SkipVerifyingPinnedRootCertificate 注册表值。
 
@@ -602,7 +602,7 @@ PerItemErrorCount: 1006.
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-通过设置此注册表值，Azure 文件同步代理将在服务器和云服务之间传输数据时接受本地受信任的任何 SSL 证书。
+通过设置此注册表值，Azure 文件同步代理将在服务器和云服务之间传输数据时接受任何本地受信任的 TLS/SSL 证书。
 
 <a id="-2147012894"></a>**无法与服务建立连接。**  
 
@@ -894,7 +894,7 @@ PerItemErrorCount: 1006.
 4. 选择链接的存储帐户。 如果此链接不起作用，则表示引用的存储帐户已删除。
     ![显示云终结点详细信息窗格（包含存储帐户的链接）的屏幕截图。](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $region = "<Az_Region>"
@@ -975,7 +975,7 @@ if ($storageAccount -eq $null) {
 2. 选择 **"文件**"以查看文件共享列表。
 3. 检查云终结点引用的文件共享是否显示在文件共享列表中（在上述步骤 1 中应已记下此共享名称）。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.AzureFileShareName -and
@@ -998,11 +998,11 @@ if ($fileShare -eq $null) {
 
     如果**Microsoft.StorageSync**或**混合文件同步服务**未显示在列表中，则执行以下步骤：
 
-    - 单击 **“添加”**。
+    - 单击 **添加**。
     - 在“角色”**** 字段中，选择“读者和数据访问”****。
     - 在 **"选择"** 字段中，键入**Microsoft.StorageSync，** 选择该角色并单击"**保存**"。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
 $role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Microsoft.StorageSync" }
 
