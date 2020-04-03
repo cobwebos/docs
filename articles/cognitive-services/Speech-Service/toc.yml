@@ -32,7 +32,7 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: 识别存储在 Blob 存储中的语音
           href: quickstarts/from-blob.md
-    - name: 操作方法指南
+    - name: 操作指南
       items:
         - name: 选择语音识别模式
           href: how-to-choose-recognition-mode.md
@@ -56,7 +56,7 @@
     - name: 自定义
       items:
         - name: 准备自定义语音的数据
-          href: how-to-custom-speech-test-data.md
+          href: how-to-custom-speech-test-and-train.md
         - name: 检查自定义语音数据
           href: how-to-custom-speech-inspect-data.md
         - name: 评估自定义语音准确度
@@ -67,10 +67,6 @@
           href: how-to-custom-speech-deploy-model.md
         - name: 创建用户标记的听录内容
           href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: 自定义关键字命名准则
-          href: speech-devices-sdk-kws-guidelines.md
-        - name: 自定义关键字发现
-          href: speech-devices-sdk-create-kws.md
     - name: 参考
       items:
         - name: 语音 SDK API
@@ -125,7 +121,7 @@
           href: quickstarts/text-to-speech-audio-file.md
         - name: 将语音合成为长格式音频
           href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
-    - name: 操作方法指南
+    - name: 操作指南
       items:
         - name: 通过 SSML 改进合成
           href: speech-synthesis-markup.md
@@ -270,7 +266,7 @@
         - name: 识别语音、意向和实体
           displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
           href: quickstarts/intent-recognition.md
-    - name: 操作方法指南
+    - name: 操作指南
       items:
         - name: '使用 LUIS、C# 识别语音意向'
           href: how-to-recognize-intents-from-speech-csharp.md
@@ -320,7 +316,7 @@
           items:
             - name: 什么是对话听录？
               href: conversation-transcription.md
-        - name: 操作方法指南
+        - name: 操作指南
           items:
             - name: 处理呼叫中心方案
               displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
@@ -398,7 +394,7 @@
               href: quickstart-custom-speech-commands-select-custom-voice.md
             - name: 通过语音 SDK 使用自定义命令
               href: quickstart-custom-speech-commands-speech-sdk.md
-        - name: 操作方法指南
+        - name: 操作指南
           items:
             - name: 从客户端执行命令
               href: how-to-custom-speech-commands-fulfill-sdk.md
@@ -434,7 +430,7 @@
   items:
     - name: “承载”文档
       href: index-hosting.yml
-    - name: 操作方法指南
+    - name: 操作指南
       items:
         - name: 安装和运行语音容器
           displayName: 'containers,install container,run container'
@@ -448,6 +444,10 @@
         - name: Azure 容器实例中的语音容器
           displayName: 'ACI,azure container instances,container instances,containers'
           href: deploy-speech-on-container-instances.md
+    - name: 资源
+      items:
+        - name: 容器常见问题解答
+          href: speech-container-faq.md
 - name: 语音 SDK
   items:
     - name: 概述
@@ -463,7 +463,7 @@
         - name: 安装语音 SDK
           displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
           href: quickstarts/setup-platform.md
-    - name: 操作方法指南
+    - name: 操作指南
       items:
         - name: 启用日志记录
           href: how-to-use-logging.md

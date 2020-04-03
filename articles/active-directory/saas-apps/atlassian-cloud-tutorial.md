@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 03/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a54b096019e9e38bc800ae313016a430062dab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 46c48d6f7d751e6d767921fad21e6213c6b1203b
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74964304"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384018"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>教程：将 Atlassian Cloud 与 Azure Active Directory 集成
 
@@ -31,7 +30,7 @@ ms.locfileid: "74964304"
 * 让用户使用其 Azure AD 帐户自动登录到 Atlassian Cloud。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,7 +46,7 @@ ms.locfileid: "74964304"
 
 * Atlassian Cloud 支持 SP 和 IDP 发起的 SSO 
 * Atlassian Cloud 支持[自动用户预配和取消预配](atlassian-cloud-provisioning-tutorial.md)
-
+* 配置 Atlassian Cloud 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>从库中添加 Atlassian Cloud
 
 要配置 Atlassian Cloud 与 Azure AD 的集成，需要从库中将 Atlassian Cloud 添加到托管 SaaS 应用列表。
@@ -93,7 +92,7 @@ ms.locfileid: "74964304"
     d. 在“中继状态”文本框中，使用以下模式键入 URL：`https://<instancename>.atlassian.net` 
 
     > [!NOTE]
-    > 上面的值不是实际值。 请使用实际标识符和回复 URL 更新这些值。 可以  从“Atlassian Cloud SAML 配置”屏幕获取这些实际值，具体将在本教程的“配置 Atlassian Cloud 单一登录”部分  中进行介绍。
+    > 上面的值不是实际值。 请使用实际标识符和回复 URL 更新这些值。 可以  从“Atlassian Cloud SAML 配置”屏幕获取这些实际值，具体将稍后在本教程的“配置 Atlassian Cloud SSO”  的步骤 7 中进行介绍。
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
@@ -222,8 +221,12 @@ ms.locfileid: "74964304"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [通过 Azure AD 试用 Atlassian Cloud](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何通过高级可见性和控制保护 Atlassian Cloud](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

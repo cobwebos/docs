@@ -1,14 +1,14 @@
 ---
 title: 快速入门：在门户中创建蓝图
 description: 本快速入门介绍如何通过 Azure 门户使用 Azure 蓝图创建、定义和部署项目。
-ms.date: 11/21/2019
+ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: fa9eb8285086e35f8b23798c41a09529d0f49582
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 457f4f9c53f45077129b291c904bc1580b6d965e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357974"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282046"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>快速入门：在门户中定义和分配蓝图
 
@@ -29,6 +29,8 @@ ms.locfileid: "78357974"
    或者，选择“入门”  页上的“创建”  ，直接创建一个蓝图。
 
    ![在“蓝图定义”页中创建蓝图](./media/create-blueprint-portal/create-blueprint-button.png)
+
+1. 从内置蓝图列表顶部的卡中选择“以空白蓝图开始”  。
 
 1. 提供**蓝图名称**，例如 **MyBlueprint**。 （最多使用 48 个字母和数字，但不要包含空格或特殊字符）。 暂时将“蓝图说明”留空  。
 

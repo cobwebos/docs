@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: ca93b4fa85f5ef3ab87d108242e9cbfbd12036ab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 810161268df405d84f6c190d4d7f3b67f2a1def8
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77521857"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366201"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-mongodb-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - MongoDB API
 
@@ -19,6 +19,9 @@ ms.locfileid: "77521857"
 
 > [!NOTE]
 > 目前，你只能使用 PowerShell、CLI 和资源管理器模板为 MongoDB 帐户创建 3.2 版的 Azure Cosmos DB API for MongoDB（即，使用格式为 `*.documents.azure.com` 的终结点的帐户）。 若要创建 3.6 版帐户，请改用 Azure 门户。
+
+> [!NOTE]
+> 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请注意，`Az.CosmosDB` cmdlet 仍处于预览状态，可能会在发布前更改。 请定期检查 `Az.CosmosDB` 是否有更新。
 
 | | |
 |---|---|

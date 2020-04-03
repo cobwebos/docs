@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: sample
 author: peterclu
 ms.author: peterlu
-ms.date: 03/10/2020
-ms.openlocfilehash: 82476b9cc8d92c815df602496ed3dcb33014a4fd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/29/2020
+ms.openlocfilehash: f9a8b0a4c51024d91e517db2f6ae10a4dba62384
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037287"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389335"
 ---
 # <a name="designer-sample-pipelines"></a>设计器示例管道
 
@@ -30,6 +30,8 @@ ms.locfileid: "79037287"
 
 设计器会将示例管道的副本保存到工作室工作区。 你可以编辑管道，以根据自己的需求对其进行改编；还可以保存管道供自己使用。 可以使用这些示例作为起点来快速开始生成项目。
 
+### <a name="open-a-sample-pipeline"></a>打开示例管道
+
 1. 登录到 <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a>，选择要使用的工作区。
 
 1. 选择“设计器”。 
@@ -37,6 +39,31 @@ ms.locfileid: "79037287"
 1. 在“新建管道”部分下选择一个示例管道。 
 
     选择“显示更多示例”查看完整的示例列表。 
+
+### <a name="submit-a-pipeline-run"></a>提交管道运行
+
+若要运行管道，必须首先设置要在其上运行管道的默认计算目标。
+
+1. 在画布右侧的“设置”窗格中，选择“选择计算目标”。  
+
+1. 在出现的对话框中，选择现有的计算目标或创建新的计算目标。 选择“保存”。 
+
+1. 选择画布顶部的“提交”  ，提交管道运行。
+
+运行的完成可能需要一些时间，具体取决于示例管道和计算设置。 默认计算设置中的最小节点大小为 0，这意味着设计器必须在空闲后分配资源。 由于计算资源已分配，因此，重复的管道运行花费的时间会更少。 此外，设计器还对每个模块使用缓存的结果，以便进一步提高效率。
+
+
+### <a name="review-the-results"></a>查看结果
+
+管道运行完毕后，可以查看管道，还可以查看每个模块的输出，了解详细信息。
+
+使用以下步骤查看模块输出：
+
+1. 选择画布中的模块。
+
+1. 在画布右侧的模块详细信息窗格中，选择“输出 + 日志”。  选择图标 ![可视化图标](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png)，查看每个模块的结果。 
+
+从示例着手，了解一些最常见的机器学习方案。
 
 ## <a name="regression-samples"></a>回归示例
 

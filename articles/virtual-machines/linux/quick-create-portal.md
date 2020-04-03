@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 894fa2f3cda798a409db3ee8e9761c1702baf955
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bc1dd56cd024ee65e29f227f4ec11cde436e388d
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
-ms.locfileid: "79216125"
+ms.locfileid: "80294779"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Linux 虚拟机
 
@@ -40,7 +40,7 @@ ms.locfileid: "79216125"
 1. 键入 `ssh-keygen -t rsa -b 2048` 以创建 ssh 密钥。 
 1. 系统将提示你输入用于保存密钥对的文件。 只需按 **Enter** 即可保存到括号中列出的默认位置。 
 1. 系统会要求你输入密码。 你可以为 SSH 密钥键入密码，或按 **Enter** 继续而不键入密码。
-1. `ssh-keygen` 命令会在 `id_rsa` 中生成默认名称为 `~/.ssh directory` 的公钥和私钥。 此命令返回公钥的完整路径。 通过键入 `cat` 使用公钥的此路径以 `cat ~/.ssh/id_rsa.pub` 显示其内容。
+1. `ssh-keygen` 命令会在 `~/.ssh directory` 中生成默认名称为 `id_rsa` 的公钥和私钥。 此命令返回公钥的完整路径。 通过键入 `cat ~/.ssh/id_rsa.pub` 使用公钥的此路径以 `cat` 显示其内容。
 1. 复制此命令的输出，并将其保存到某个位置，以供本文后面使用。 这是你的公钥，在配置登录 VM 所需的管理员帐户时，需要用到它。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
@@ -89,7 +89,7 @@ ms.locfileid: "79216125"
     ssh azureuser@10.111.12.123
     ```
 
-3. 使用创建 SSH 密钥对时使用过的 bash shell（可以通过再次选择 `>_` 或转到 https://shell.azure.com/bash) 重新打开 Cloud Shell），将 SSH 连接命令粘贴到 shell 中以创建 SSH 会话。
+3. 使用创建 SSH 密钥对时使用的同一 bash shell（可以通过再次选择 `>_` 或转到 `https://shell.azure.com/bash` 重新打开 Cloud Shell），将 SSH 连接命令粘贴到 shell 中以创建 SSH 会话。
 
 ## <a name="install-web-server"></a>安装 Web 服务器
 

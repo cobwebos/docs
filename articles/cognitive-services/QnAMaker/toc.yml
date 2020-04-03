@@ -22,6 +22,8 @@
       href: Quickstarts/quickstart-sdk.md
 - name: 教程
   items:
+    - name: 与 Power Virtual Agent 集成
+      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: 使用批处理文件进行测试
       href: Quickstarts/batch-testing.md
 - name: 概念
@@ -59,7 +61,7 @@
     - name: 最佳做法
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 管理 Azure 资源
       items:
@@ -149,7 +151,7 @@
       href: Overview/language-support.md
     - name: 限制
       href: limits.md
-    - name: 故障排除
+    - name: 疑难解答
       href: troubleshooting.md
     - name: 服务配置
       href: reference-app-service.md

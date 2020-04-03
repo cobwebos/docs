@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d2f25f2b786686b8af9bad4ea8ce3c8aea9b589f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77913812"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371464"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>从 Google Maps 迁移 Web 服务
 
@@ -75,7 +75,7 @@ Azure Maps 提供多种方法用于对地址进行地理编码：
 [此处](how-to-search-for-address.md)提供了演示如何使用搜索服务的示例。 请务必查看[搜索最佳做法](how-to-use-best-practices-for-search.md)。
 
 > [!TIP]
-> 可以通过将 `&amp;typeahead=true` 添加到请求 URL，在自动完成模式下使用自由格式的地址地理编码和模糊搜索 API。 这可以让服务器知道输入文本可能是不完整的，搜索将进入预测模式。
+> 可以通过将 `&typeahead=true` 添加到请求 URL，在自动完成模式下使用自由格式的地址地理编码和模糊搜索 API。 这可以让服务器知道输入文本可能是不完整的，搜索将进入预测模式。
 
 ## <a name="reverse-geocode-a-coordinate"></a>对坐标进行反向地理编码
 
@@ -126,7 +126,7 @@ Azure Maps 提供多个搜索 API 用于搜索兴趣点：
 目前，Azure Maps 没有与 Google Maps 中的文本搜索 API 类似的 API。
 
 > [!TIP]
-> 可以通过将 `&amp;typeahead=true` 添加到请求 URL，在自动完成模式下使用 POI 搜索、POI 类别搜索和模糊搜索 API。 这可以让服务器知道输入文本可能是不完整的。API 将在预测模式下执行搜索。
+> 可以通过将 `&typeahead=true` 添加到请求 URL，在自动完成模式下使用 POI 搜索、POI 类别搜索和模糊搜索 API。 这可以让服务器知道输入文本可能是不完整的。API 将在预测模式下执行搜索。
 
 查看[搜索最佳做法](how-to-use-best-practices-for-search.md)文档。
 
@@ -221,6 +221,8 @@ Azure Maps 路线 API 提供 Google Maps 所不能提供的其他许多功能。
 - 指定最大车速。
 
 除此之外，Azure Maps 中的路线服务还支持[计算可达范围](https://docs.microsoft.com/rest/api/maps/route/getrouterange)。 可达范围也称为等时线。 这种计算会生成一个多边形，其中涵盖了在指定的时间内或根据剩余的燃料/电量， 从某个原点朝任意方向可以行进到的区域。
+
+查看[路线规划最佳做法](how-to-use-best-practices-for-routing.md)文档。
 
 ## <a name="retrieve-a-map-image"></a>检索地图图像
 
@@ -437,6 +439,8 @@ Azure Maps 提供距离矩阵 API。 使用此 API 可以计算一组位置之�
 > [!TIP]
 > Azure Maps 路线 API 中提供的所有高级路线选项在 Azure Maps 距离矩阵 API 中均受支持。 高级路线选项包括：货车路线、发动机规格，等等。
 
+查看[路线规划最佳做法](how-to-use-best-practices-for-routing.md)文档。
+
 ## <a name="get-a-time-zone"></a>获取时区
 
 Azure Maps 提供一个 API 用于检索坐标所在的时区。 Azure Maps 时区 API 相当于 Google Maps 中的时区 API：
@@ -476,6 +480,7 @@ Azure Maps 为以下编程语言提供客户端库：
 
 - [有关搜索的最佳做法](how-to-use-best-practices-for-search.md)
 - [搜索地址](how-to-search-for-address.md)
+- [路线规划最佳做法](how-to-use-best-practices-for-routing.md)
 - [Azure Maps REST 服务 API 参考文档](https://docs.microsoft.com/rest/api/maps/)
 
 ## <a name="next-steps"></a>后续步骤
@@ -486,7 +491,10 @@ Azure Maps 为以下编程语言提供客户端库：
 > [有关使用搜索服务的最佳做法](how-to-use-best-practices-for-search.md)
 
 > [!div class="nextstepaction"]
-> [如何使用服务模块 (Web SDK)](how-to-use-services-module.md)
+> [有关使用路由服务的最佳做法](how-to-use-best-practices-for-search.md)
+
+> [!div class="nextstepaction"]
+> [如何使用服务模块 (Web SDK)](how-to-use-best-practices-for-routing.md)
 
 > [!div class="nextstepaction"]
 > [示例代码](https://docs.microsoft.com/samples/browse/?products=azure-maps)

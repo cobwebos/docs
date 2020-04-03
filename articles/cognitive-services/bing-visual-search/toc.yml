@@ -24,17 +24,11 @@
           href: quickstarts/ruby.md
         - name: 使用 Go
           href: quickstarts/go.md
-    - name: SDK 中 IsInRole 中的声明
+    - name: 客户端库
       expanded: true
       items:
-        - name: '使用 C#'
-          href: visual-search-sdk-c-sharp.md
-        - name: 使用 Node.js
-          href: visual-search-sdk-node.md
-        - name: 使用 Python
-          href: visual-search-sdk-python.md
-        - name: 使用 Java
-          href: visual-search-sdk-java.md
+        - name: 必应视觉搜索客户端库
+          href: ./quickstarts/client-libraries.md
 - name: 教程
   items:
     - name: 上传图像
@@ -60,7 +54,7 @@
     - name: 适用于视觉搜索 API 的分析
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 使用令牌获取见解
       href: use-insights-token.md

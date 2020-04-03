@@ -8,12 +8,12 @@ ms.author: babanisa
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a9281ba1e2bf68da2318c32ab7037515697f92a5
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 5e38571cf84537fd722093b96cd277743e8ce80c
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708840"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292153"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>快速入门：使用事件网格将自定义事件路由到 Azure 函数
 
@@ -124,7 +124,7 @@ Azure 事件网格是针对云的事件处理服务。 Azure 函数是受支持�
 ### <a name="azure-powershell"></a>Azure PowerShell
 第二个示例使用 PowerShell，执行的步骤类似。
 
-1. 在 Azure 门户中选择“Cloud Shell”（或者转到 https://shell.azure.com/) 。  在 Cloud Shell 窗口的左上角选择“PowerShell”。  参阅“Azure CLI”部分的示例 **Cloud Shell** 窗口图像。
+1. 在 Azure 门户中选择“Cloud Shell”  （或者转到 `https://shell.azure.com/`）。 在 Cloud Shell 窗口的左上角选择“PowerShell”。  参阅“Azure CLI”部分的示例 **Cloud Shell** 窗口图像。
 2. 设置以下变量。 复制并粘贴每个命令后，更新**主题名称**和**资源组名称**，然后运行该命令：
 
     ```powershell

@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.author: tzvikei
-author: tsikiksr
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 02/04/2020
-ms.openlocfilehash: 96af942ab68d4ae738df56bf94d8410ee5d8cc34
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/04/2020
+ms.openlocfilehash: b5a335a3f215ad5883b1b223245ca9d3f9967c3b
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129662"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366526"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教程：使用 Azure 机器学习中的自动化 ML 创建分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -53,7 +53,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 通过 https://ml.azure.com 处的 Azure 机器学习完成以下试验设置和运行步骤，这是一个综合性的 Web 界面，其中包括了为所有技能级别的数据科学实践者执行数据科学方案所需的机器学习工具。 Internet Explorer 浏览器不支持此界面。
 
-1. 登录到 https://ml.azure.com 处的 Azure 机器学习。
+1. 登录到 [Azure 机器学习](https://ml.azure.com)。
 
 1. 选择创建的订阅和工作区。
 
@@ -201,9 +201,9 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 ### <a name="delete-the-deployment-instance"></a>删除部署实例
 
-若要保留资源组和工作区以便在其他教程和探索中使用，请从 https://ml.azure.com/ 处的 Azure 机器学习中仅删除部署实例。 
+若要保留资源组和工作区以用于其他教程和探索，请仅从 Azure 机器学习 (https:\//ml.azure.com/) 中删除部署实例。 
 
-1. 转到 https://ml.azure.com/ 处的 Azure 机器学习。 导航到你的工作区，然后在“资产”  窗格的左下角选择“终结点”  。 
+1. 转到 [Azure 机器学习](https://ml.azure.com/)。 导航到你的工作区，然后在“资产”  窗格的左下角选择“终结点”  。 
 
 1. 选择要删除的部署，然后选择“删除”。  
 

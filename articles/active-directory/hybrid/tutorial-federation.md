@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51175d192a5afb1f84f8d0ed2de9796f198f82d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a123a85d653415f7b067e0c144c90ed79f2d081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "60296545"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80330998"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>教程：将单个 AD 林环境联合到云中
 
@@ -27,7 +27,7 @@ ms.locfileid: "60296545"
 
 以下教程将引导你使用联合创建混合标识环境。  然后，可以使用此环境进行测试或更熟悉混合标识的工作方式。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 以下是完成本教程所需的先决条件
 - 安装了 [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) 的计算机。  建议在 [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) 或 [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) 计算机上执行此操作。
 - [Azure 订阅](https://azure.microsoft.com/free)
@@ -88,8 +88,8 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 5. 单击“立即安装”  。
 6. 输入许可证密钥并单击“下一步”  。
 7. 勾选“我接受许可条款”，然后单击“下一步”  。
-8. 选择“自定义: 仅安装 Windows (高级)” 
-9. 单击“下一步” 
+8. 选择“自定义:  仅安装 Windows (高级)”
+9. 点击“下一步” 
 10. 安装完成后，重新启动虚拟机，登录并运行 Windows 更新，以确保 VM 是最新的。  安装最新更新。
 
 ## <a name="install-active-directory-pre-requisites"></a>安装 Active Directory 的先决条件
@@ -184,7 +184,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 ```
 
 ## <a name="create-a-certificate-for-ad-fs"></a>创建用于 AD FS 的证书
-现在我们将创建一个用于 AD FS 的 SSL 证书。  这将是一个自签名证书，仅用于测试目的。  Microsoft 不建议在生产环境中使用自签名证书。 请执行以下操作：
+现在，我们将创建一个由 AD FS 使用的 TLS/SSL 证书。  这将是一个自签名证书，仅用于测试目的。  Microsoft 不建议在生产环境中使用自签名证书。 请执行以下操作：
 
 1. 以管理员身份打开 PowerShell ISE。
 2. 运行以下脚本。

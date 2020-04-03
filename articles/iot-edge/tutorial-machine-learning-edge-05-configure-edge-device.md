@@ -8,12 +8,12 @@ ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3a71aa1a713891c773297a3789a9a9f4b36ab258
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: d2bad581c925bb62cbe65a45000f6d3ae35db011
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80236050"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372692"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>教程：配置 IoT Edge 设备
 
@@ -165,7 +165,7 @@ ms.locfileid: "80236050"
 
     * 创建资源组（如果尚不存在）
     * 创建虚拟机
-    * 为端口 22 (SSH)、5671 (AMQP)、5672 (AMPQ) 和 443 (SSL) 添加 VM 的 NSG 例外
+    * 为端口 22 (SSH)、5671 (AMQP)、5672 (AMPQ) 和 443 (TLS) 添加 VM 的 NSG 例外
     * 安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
 
 7. 该脚本会输出 SSH 连接字符串用于连接到 VM。 复制连接字符串供下一步使用。

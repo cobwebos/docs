@@ -1,14 +1,14 @@
 ---
 title: 教程：从蓝图示例到新环境
 description: 在本教程，你将使用蓝图示例创建蓝图定义，用于设置两个资源组并为每个资源组配置角色分配。
-ms.date: 11/21/2019
+ms.date: 03/25/2020
 ms.topic: tutorial
-ms.openlocfilehash: f9cc892ab8feadacbdfd00e55fab9f40d7cb2397
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c4230282223b0a64f6254448fe069bf8f7ab9a15
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321735"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80282012"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>教程：基于蓝图示例创建环境
 
@@ -35,7 +35,7 @@ ms.locfileid: "74321735"
 
 1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。   
 
-1. 在“其他示例”下找到“采用 RBAC 的资源组”蓝图示例，然后选择“使用此示例”。   
+1. 在“其他示例”下找到“采用 RBAC 的资源组”蓝图示例，并选择它。  
 
 1. 输入该蓝图示例的“基本信息”： 
 
@@ -96,16 +96,16 @@ ms.locfileid: "74321735"
 
    - 项目参数
 
-     在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../concepts/parameters.md#dynamic-parameters)，因为它们是在分配蓝图期间定义的。 对于每个项目，请将参数值设置为“值”列中定义的值。  对于 `{Your ID}`，请选择你的 Azure 用户帐户。
+     在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../concepts/parameters.md#dynamic-parameters) ，因为它们是在分配蓝图期间定义的。 对于每个项目，请将参数值设置为“值”列中定义的值。  对于 `{Your ID}`，请选择你的 Azure 用户帐户。
 
      |项目名称|项目类型|参数名称|值|说明|
      |-|-|-|-|-|
-     |ProdRG 资源组|Resource group|Name|ProductionRG|定义第一个资源组的名称。|
-     |ProdRG 资源组|Resource group|位置|美国西部 2|设置第一个资源组的位置。|
+     |ProdRG 资源组|资源组|名称|ProductionRG|定义第一个资源组的名称。|
+     |ProdRG 资源组|资源组|位置|美国西部 2|设置第一个资源组的位置。|
      |参与者|角色分配|用户或组|{你的 ID}|定义要将“参与者”角色授予第一个资源组中的哪个用户或组。 |
-     |PreProdRG 资源组|Resource group|Name|PreProductionRG|定义第二个资源组的名称。|
-     |PreProdRG 资源组|Resource group|位置|美国西部|设置第二个资源组的位置。|
-     |所有者|角色分配|用户或组|{你的 ID}|定义要将“所有者”角色授予第二个资源组中的哪个用户或组。 |
+     |PreProdRG 资源组|资源组|名称|PreProductionRG|定义第二个资源组的名称。|
+     |PreProdRG 资源组|资源组|位置|美国西部|设置第二个资源组的位置。|
+     |“所有者”|角色分配|用户或组|{你的 ID}|定义要将“所有者”角色授予第二个资源组中的哪个用户或组。 |
      |读取者|角色分配|用户或组|{你的 ID}|定义要将“读取者”角色授予第二个资源组中的哪个用户或组。 |
 
 1. 输入所有参数后，选择页面底部的“分配”。 

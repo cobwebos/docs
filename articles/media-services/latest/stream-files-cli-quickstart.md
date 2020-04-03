@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: ''
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: a51b30ad2af29871ed6998e60bb64adf91dfdbbd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 91259e10966173cb701b867f5b3ed362112beef3
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76514368"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382777"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - CLI
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Azure CLI
 
 本教程介绍如何使用 Azure 媒体服务和 Azure CLI 在各种浏览器与设备上轻松编码和流式传输视频。 可以使用 HTTPS、SAS URL 或位于 Azure Blob 存储中的文件路径来指定输入内容。
 
@@ -40,7 +40,7 @@ ms.locfileid: "76514368"
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-```azurecli
+```azurecli-interactive
 az group create -n amsResourceGroup -l westus2
 ```
 
@@ -48,15 +48,15 @@ az group create -n amsResourceGroup -l westus2
 
 本示例创建一个常规用途 v2 标准 LRS 帐户。
 
-若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 选取用于生产的 SKU 时，请考虑使用 `--sku Standard_RAGRS`，以便通过异地复制来确保业务连续性。 有关详细信息，请参阅[存储帐户](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)。
- 
-```azurecli
+若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 选取用于生产的 SKU 时，请考虑使用 `--sku Standard_RAGRS`，以便通过异地复制来确保业务连续性。 有关详细信息，请参阅[存储帐户](/cli/azure/storage/account)。
+
+```azurecli-interactive
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
 ```
 
 ### <a name="create-an-azure-media-services-account"></a>创建 Azure 媒体服务帐户
 
-```azurecli
+```azurecli-interactive
 az ams account create --n amsaccount -g amsResourceGroup --storage-account amsstorageaccount -l westus2
 ```
 
@@ -85,14 +85,13 @@ az ams account create --n amsaccount -g amsResourceGroup --storage-account amsst
 
 以下 Azure CLI 命令将启动默认的**流式处理终结点**。
 
-```azurecli
+```azurecli-interactive
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 ```
 
 响应如下所示：
 
 ```
-az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 {
   "accessControl": null,
   "availabilitySetName": null,
@@ -129,7 +128,7 @@ az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 
 创建一个**转换**，以便配置对视频进行编码或分析的常见任务。 本示例执行自适应比特率编码。 然后，在创建的转换下提交某个作业。 该作业是向媒体服务发出的请求，目的是将转换应用到给定的视频或音频内容输入。
 
-```azurecli
+```azurecli-interactive
 az ams transform create --name testEncodingTransform --preset AdaptiveStreaming --description 'a simple Transform for Adaptive Bitrate Encoding' -g amsResourceGroup -a amsaccount
 ```
 
@@ -161,7 +160,7 @@ az ams transform create --name testEncodingTransform --preset AdaptiveStreaming 
 
 创建一个输出**资产**用作编码作业的输出。
 
-```azurecli
+```azurecli-interactive
 az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
 ```
 
@@ -195,8 +194,8 @@ az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
 
   请注意，我们将“=”添加到了 `output-assets`。
 
-```azurecli
-az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup 
+```azurecli-interactive
+az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup
 ```
 
 响应如下所示：
@@ -238,7 +237,7 @@ az ams job start --name testJob001 --transform-name testEncodingTransform --base
 
 在 5 分钟内检查作业的状态。 该状态应该是“Finished”。 如果作业未完成，请在几分钟后重新检查。 如果作业已完成，请转到下一步骤并创建**流式处理定位符**。
 
-```azurecli
+```azurecli-interactive
 az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n testJob001
 ```
 
@@ -248,7 +247,7 @@ az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n te
 
 ### <a name="create-a-streaming-locator"></a>创建流式处理定位符
 
-```azurecli
+```azurecli-interactive
 az ams streaming-locator create -n testStreamingLocator --asset-name testOutputAssetName --streaming-policy-name Predefined_ClearStreamingOnly  -g amsResourceGroup -a amsaccount 
 ```
 
@@ -274,7 +273,7 @@ az ams streaming-locator create -n testStreamingLocator --asset-name testOutputA
 
 ### <a name="get-streaming-locator-paths"></a>获取流式处理定位符路径
 
-```azurecli
+```azurecli-interactive
 az ams streaming-locator get-paths -a amsaccount -g amsResourceGroup -n testStreamingLocator
 ```
 
@@ -311,13 +310,14 @@ az ams streaming-locator get-paths -a amsaccount -g amsResourceGroup -n testStre
 
 复制 HTTP 实时传送视频流 (HLS) 路径。 在本例中，该值为 `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`。
 
-## <a name="build-the-url"></a>生成 URL 
+## <a name="build-the-url"></a>生成 URL
 
 ### <a name="get-the-streaming-endpoint-host-name"></a>获取流式处理终结点主机名
 
-```azurecli
+```azurecli-interactive
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
+
 复制 `hostName` 值。 在本例中，该值为 `amsaccount-usw22.streaming.media.azure.net`。
 
 ### <a name="assemble-the-url"></a>汇编 URL
@@ -344,13 +344,12 @@ az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 
 如果不再需要你的资源组中的任何一个资源（包括为本教程创建的媒体服务和存储帐户），请删除该资源组。
 
-运行以下 CLI 命令：
+运行此 Azure CLI 命令：
 
-```azurecli
+```azurecli-interactive
 az group delete --name amsResourceGroup
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
 [媒体服务概述](media-services-overview.md)
-

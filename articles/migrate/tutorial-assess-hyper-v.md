@@ -1,22 +1,19 @@
 ---
 title: 使用 Azure Migrate 评估要迁移到 Azure 的 Hyper-V VM | Microsoft Docs
-description: 介绍如何使用 Azure Migrate 评估要迁移到 Azure 的本地 Hyper-V VM。
+description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁移到 Azure 的本地 Hyper-V VM。
 ms.topic: tutorial
-ms.date: 01/23/2020
+ms.date: 03/23/2020
 ms.custom: mvc
-ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cb3c29e01b7917a6d639b6b2a53fc2842efc2172
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222004"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80336776"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估工具评估 Hyper-V VM
 
-本文介绍如何使用“Azure Migrate:服务器评估”工具评估本地 VMware VM。
-
-[Azure Migrate](migrate-services-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。
-
+本文介绍如何使用 [Azure Migrate:服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具评估本地 Hyper-V VM。
 
 
 本教程是演示如何评估 Hyper-V VM 以及将其迁移到 Azure 的教程系列中的第二篇文章。 在本教程中，你将了解如何执行以下操作：
@@ -38,9 +35,9 @@ ms.locfileid: "79222004"
 
 - [完成](tutorial-prepare-hyper-v.md)本教程系列中的第一篇教程。 否则，本教程中的说明不适用。
 - 下面是在第一篇教程中应已完成的操作：
-    - 为 Azure Migrate [设置 Azure 权限](tutorial-prepare-hyper-v.md#prepare-azure)。
-    - [准备](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment)要评估的 Hyper-V 群集、主机和 VM。
-    - [准备部署](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment)用于 Hyper-V VM 发现和评估的 Azure Migrate 设备。
+    - [准备 Azure](tutorial-prepare-hyper-v.md#prepare-azure) 以使用 Azure Migrate。
+    - [准备 Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) 主机和 VM 评估。
+    - [验证](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment)部署用于 Hyper-V 评估的 Azure Migrate 设备所需的内容。
 
 ## <a name="set-up-an-azure-migrate-project"></a>设置 Azure Migrate 项目
 
@@ -52,22 +49,12 @@ ms.locfileid: "79222004"
 
 4. 在“开始”中，单击“添加工具”。  
 5. 在“迁移项目”选项卡中选择你的 Azure 订阅，并创建一个资源组（如果没有）。 
-6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的区域。 
-
-
-    ![创建 Azure Migrate 项目](./media/tutorial-assess-hyper-v/migrate-project.png)
-
-    可以在这些区域中创建 Azure Migrate 项目。
-
-    **地域** | **区域**
-    --- | ---
-    亚洲  | 东南亚
-    欧洲 | 欧洲北部或欧洲西部
-    United Kingdom |  英国南部或英国西部
-    United States | 美国东部、美国西部 2 或美国中西部
+6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的区域。  [查看](migrate-support-matrix.md#supported-geographies)可在其中创建 Azure Migrate 项目的区域。
 
     - 项目区域仅用于存储从本地 VM 中收集的元数据。
     - 迁移 VM 时，可以选择其他 Azure 目标区域。 迁移目标支持所有 Azure 区域。
+
+    ![创建 Azure Migrate 项目](./media/tutorial-assess-hyper-v/migrate-project.png)
 
 7. 单击“下一步”。 
 8. 在“选择评估工具”中，选择“Azure Migrate:   服务器评估” > “下一步”。 
@@ -78,18 +65,13 @@ ms.locfileid: "79222004"
 10. 在“检查 + 添加工具”中检查设置，然后单击“添加工具”。  
 11. 等待几分钟，让 Azure Migrate 项目部署完成。 随后将转到项目页。 如果未看到该项目，可以从 Azure Migrate 仪表板中的“服务器”访问它。 
 
+## <a name="set-up-the-azure-migrate-appliance"></a>设置 Azure Migrate 设备
 
+Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执行 VM 发现并将 VM 元数据和性能数据发送到 Azure Migrate。
+- 可以使用已下载的 Hyper-V VHD 在 Hyper-V VM 上设置设备。 或者，可以使用 PowerShell 安装程序脚本在 VM 或物理计算机上设置设备。
+- 本教程使用 VHD。 若要使用脚本设置设备，请查看[此文](deploy-appliance-script.md)。
 
-
-## <a name="set-up-the-appliance-vm"></a>设置设备 VM
-
-Azure Migrate 服务器评估运行一个轻型 Hyper-V VM 设备。
-
-- 此设备执行 VM 发现，并将 VM 元数据和性能数据发送到“Azure Migrate:两种类型的评估。
-- 若要设置该设备，请执行以下操作：
-    - 从 Azure 门户下载压缩的 Hyper-V VHD。
-    - 创建设备，并检查它是否可以连接到 Azure Migrate 服务器评估。
-    - 完成设备的首次配置，并将其注册到 Azure Migrate 项目。
+创建设备后，请检查它是否可以连接到 Azure Migrate:服务器评估，首次配置该设备，并将其注册到 Azure Migrate 项目。
 
 ### <a name="download-the-vhd"></a>下载 VHD
 
@@ -150,6 +132,9 @@ Azure Migrate 服务器评估运行一个轻型 Hyper-V VM 设备。
 ### <a name="configure-the-appliance"></a>配置设备
 
 首次设置设备。
+
+> [!NOTE]
+> 如果使用 [PowerShell 脚本](deploy-appliance-script.md)而不是下载的 VHD 设置设备，则此过程中的前两个步骤不相关。
 
 1. 在“Hyper-V 管理器”>“虚拟机”中，右键单击该 VM 并选择“连接”。  
 2. 提供设备的语言、时区和密码。

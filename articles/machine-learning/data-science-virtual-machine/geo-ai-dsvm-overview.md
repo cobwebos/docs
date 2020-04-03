@@ -10,16 +10,16 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: f5a094613b8722f96fccd1d1a6df359fa9b0ebd4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 2cefd3c7f85e043497084e2cd2b906bd546ca10d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526055"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282267"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>什么是地理人工智能 Data Science Virtual Machine？
 
-地理人工智能 Data Science Virtual Machine （也称为 Geo AI Data Science VM，或简称 Geo-DSVM）提供 Azure Data Science Virtual Machine (DSVM) 的地理空间分析功能。 具体而言，此 VM 通过在 [DSVM](overview.md) 中添加 ERSI 的市场领先 [ArcGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) 地理信息系统来扩展 AI 和数据科学工具包。
+地理人工智能 Data Science Virtual Machine （也称为 Geo AI Data Science VM，或简称 Geo-DSVM）提供 Azure Data Science Virtual Machine (DSVM) 的地理空间分析功能。 具体而言，此 VM 通过在 [DSVM](overview.md) 中添加 ESRI 的市场领先 [ArcGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) 地理信息系统来扩展 AI 和数据科学工具包。
 
  Geo AI Data Science VM 产品出自于 ESRI 与 Microsoft 之间的合作。 其结果是一个功能强大的环境，可提供以下功能：
 

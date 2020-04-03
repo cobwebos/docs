@@ -1,26 +1,26 @@
 ---
 title: 概述 | Microsoft Azure Maps
 description: 了解 Microsoft Azure Maps 中的服务和功能，以及如何在应用程序中使用这些服务和功能。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/15/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5b1af5c728a14b29ca6e6c18b79b23db9ef010f2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fdac12350db785e6194cd3d057f4d2adfefa5969
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132489"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80335736"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
 Azure Maps 是一系列地理空间服务，它使用全新地图绘制数据为 Web 和移动应用程序提供地理环境。 Azure Maps 具有以下功能：
 
-* REST API，以多种样式和卫星图像呈现地图。
+* REST API，用于以多种样式和卫星图像呈现地图。
 * 搜索服务，用于查找全世界的地址、地点和兴趣点。
 * 各种路线选项，例如地点到地点、多地点、多地点优化、等时线、商务车、受影响的交通，以及路网路线。
 * 交通情况视图和事故视图，适用于需要交通信息的应用程序。

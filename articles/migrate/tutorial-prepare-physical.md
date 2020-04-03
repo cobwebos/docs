@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 42eb603be0152b9e8cfb36d02e8f0602c40afe54
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5f9048b08b3e77a0c8d5ae9a9d10c614a4e0af61
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77031197"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80336686"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>准备评估物理服务器并将其迁移到 Azure
 
@@ -41,10 +41,11 @@ ms.locfileid: "77031197"
 
 需要为 Azure Migrate 部署设置权限。
 
-**任务** | **权限**
---- | ---
-**创建 Azure Migrate 项目** | Azure 帐户需要创建项目的权限。
-**注册 Azure Migrate 设备** | Azure Migrate 使用轻型 Azure Migrate 设备通过 Azure Migrate 服务器评估来发现并评估物理服务器。 此设备发现服务器，并将其元数据和性能数据发送到 Azure Migrate。<br/><br/>在设备注册过程中，以下资源提供程序将注册到在设备中选择的订阅：Microsoft.OffAzure、Microsoft.Migrate 和 Microsoft.KeyVault。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 需要订阅的“参与者”或“所有者”角色才能注册资源提供程序。<br/><br/> 在载入过程中，Azure Migrate 将创建一个 Azure Active Directory (Azure AD) 应用：<br/> AAD 应用用于在代理（在设备上运行）与其各自在 Azure 上运行的服务之间通信（身份验证和授权）。 此应用无权对任何资源进行 ARM 调用，也没有 RBAC 访问权限。
+**任务** | **详细信息** 
+--- | --- 
+**创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能创建项目。 | 
+**注册资源提供程序** | Azure Migrate 使用轻型 Azure Migrate 设备通过 Azure Migrate 服务器评估来发现并评估 Hyper-V VM。<br/><br/> 在设备注册过程中，资源提供程序会注册到在设备中选择的订阅。 [了解详细信息](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 需要订阅的“参与者”或“所有者”角色才能注册资源提供程序。
+**创建 Azure AD 应用** | 注册设备时，Azure Migrate 会创建一个 Azure Active Directory (Azure AD) 应用，用于设备上运行的代理与其在 Azure 上运行的各自服务之间的通信。 [了解详细信息](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> 你需要具有创建 Azure AD 应用的权限（在“应用程序开发人员”角色中提供）。
 
 
 

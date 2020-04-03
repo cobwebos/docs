@@ -6,16 +6,19 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3949894c19d49335063851a1d5f5c03a1f086d44
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f09088fc001fd8c77a330938d261426528b214cd
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74871961"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365741"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---cassandra-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - Cassandra API
 
 下表包含用于 Azure Cosmos DB for Cassandra API 的示例 Azure PowerShell 脚本的链接。
+
+> [!NOTE]
+> 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请注意，`Az.CosmosDB` cmdlet 仍处于预览状态，可能会在发布前更改。 请定期检查 `Az.CosmosDB` 是否有更新。
 
 | | |
 |---|---|

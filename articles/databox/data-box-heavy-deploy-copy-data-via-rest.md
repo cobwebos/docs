@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 43f6404a483cad8377e70591f5454180f0dd07a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9f3ba0a7e9f7cf72b0eade16679d980fe2207f98
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77560331"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80297210"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教程：通过 REST API 将数据复制到 Azure Data Box Blob 存储  
 
@@ -98,7 +98,7 @@ ms.locfileid: "77560331"
  
 ### <a name="import-certificate"></a>导入证书 
 
-通过 HTTPS 访问 Data Box Blob 存储需要设备的 SSL 证书。 客户端应用程序可以使用此证书的方式因应用程序以及操作系统和分发而异。 一些应用程序可以在将证书导入系统的证书存储后访问该证书，而其他应用程序则不使用该机制。
+通过 HTTPS 访问 Data Box Blob 存储需要设备的 TLS/SSL 证书。 客户端应用程序可以使用此证书的方式因应用程序以及操作系统和分发而异。 一些应用程序可以在将证书导入系统的证书存储后访问该证书，而其他应用程序则不使用该机制。
 
 本部分提到了某些应用程序的特定信息。 有关其他应用程序的详细信息，请参阅应用程序和所用操作系统的文档。
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1aed1b0a13482bc932024a9d2a131ec5f1d948ba
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d3d6b33211f6f247d9f30c0f162b388085faabe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78186890"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80332532"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -195,7 +195,7 @@ Azure AD B2C 支持对用户旅程使用 [OpenID Connect 和 OAuth 2.0 协议](p
 * Azure AD B2C 在目录中创建新帐户之后
 * Azure AD B2C 颁发访问令牌之前
 
-若要了解如何对 Azure AD B2C 中的 RESTful API 集成使用自定义策略，请参阅[在 Azure AD B2C 用户旅程中集成 REST API 声明交换](rest-api-claims-exchange-dotnet.md)。
+若要了解如何对 Azure AD B2C 中的 RESTful API 集成使用自定义策略，请参阅[在 Azure AD B2C 自定义策略中集成 REST API 声明交换](custom-policy-rest-api-intro.md)。
 
 ## <a name="protect-customer-identities"></a>保护客户标识
 
