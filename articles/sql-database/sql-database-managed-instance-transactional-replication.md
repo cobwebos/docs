@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 41dd336bdb74fbe745ab48ebd3c168af0492ae2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a048ddefbcd76193436da13cd3ba68b8b6ffb0a
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75691003"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607595"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>对 Azure SQL 数据库中的单一数据库、共用数据库和实例数据库进行事务复制
 
@@ -52,7 +52,7 @@ ms.locfileid: "75691003"
 | 角色 | 单一数据库和共用数据库 | 实例数据库 |
 | :----| :------------- | :--------------- |
 | **发布者** | 否 | 是 | 
-| **经销商** | 否 | 是|
+| **分发服务器** | 否 | 是|
 | **提取订阅服务器** | 否 | 是|
 | **推送订阅服务器**| 是 | 是|
 | &nbsp; | &nbsp; | &nbsp; |
@@ -80,7 +80,7 @@ ms.locfileid: "75691003"
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>实例数据库和本地系统的可支持性矩阵
   实例数据库的复制可支持性矩阵与本地 SQL Server 的相同。 
   
-| **发布者**   | **经销商** | **用户** |
+| **发布者**   | **分发服务器** | **订阅者** |
 | :------------   | :-------------- | :------------- |
 | SQL Server 2019 | SQL Server 2019 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/>  |
 | SQL Server 2017 | SQL Server 2019 <br/>SQL Server 2017 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
@@ -95,7 +95,7 @@ ms.locfileid: "75691003"
 - 连接时，在复制参与者之间使用 SQL 身份验证。 
 - 复制功能使用的工作目录的 Azure 存储帐户共享。 
 - 需要在托管实例子网的安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。 
-- 如果发布服务器/分发服务器位于托管实例上，而订阅服务器位于本地，则需要打开端口 1433（TCP 出站）。
+- 如果发布服务器/分发服务器位于托管实例上且订阅者不在托管实例上，则需要打开端口 1433（TCP 出站）。 您可能还需要将端口 1433`allow_linkedserver_outbound`**目标服务标记**的托管实例 NSG 出站安全规则从`virtualnetwork`更改为`internet`。 
 - 所有类型的复制参与者（发布服务器、分发服务器、拉取订阅服务器和推送订阅服务器）都可以放置在托管实例上，但发布服务器和分发服务器必须同时在云中或同时在本地。
 - 如果发布服务器、分发服务器和/或订阅服务器位于不同的虚拟网络中，则必须在每个实体之间建立 VPN 对等互连，使发布服务器与分发服务器之间存在 VPN 对等互连，并且/或者分发服务器与订阅服务器之间存在 VPN 对等互连。 
 
@@ -195,7 +195,7 @@ ms.locfileid: "75691003"
 - [托管实例和故障转移组的复制](sql-database-managed-instance-transact-sql-information.md#replication)
 - [复制到 SQL 数据库](replication-to-sql-database.md)
 - [复制到托管实例](replication-with-sql-database-managed-instance.md)
-- [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
+- [创建出版物](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
 - [复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
 - [监视（复制）](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)

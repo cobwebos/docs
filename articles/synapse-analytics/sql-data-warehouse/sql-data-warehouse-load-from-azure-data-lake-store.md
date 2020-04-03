@@ -1,6 +1,6 @@
 ---
 title: 教程从 Azure 数据湖存储加载数据
-description: 使用 PolyBase 外部表从 Azure 数据湖存储加载数据以进行 SQL 分析。
+description: 使用 PolyBase 外部表从 Azure 数据湖存储加载数据以进行 Synapse SQL。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,15 @@ ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b9e28f41b251ea526044bf88dc3e79c0374fe369
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7d599ce121b4c53662b91e5aab94130b0f3f4458
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350370"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583943"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>加载 Azure 数据存储中的数据以进行 SQL 分析
+# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>加载 Azure 数据湖存储中的数据，用于 Synapse SQL
+
 本指南概述了如何使用 PolyBase 外部表从 Azure 数据湖存储加载数据。 尽管您可以对数据存储在数据湖存储中的数据运行临时查询，但我们建议导入数据以获得最佳性能。 
 
 > [!NOTE]  
@@ -30,9 +31,9 @@ ms.locfileid: "80350370"
 > * 连接到数据湖存储目录。
 > * 将数据加载到数据仓库中。
 
-如果没有 Azure 订阅，请先[创建一个免费帐户](https://azure.microsoft.com/free/)。"
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 
 若要运行本教程，需要：

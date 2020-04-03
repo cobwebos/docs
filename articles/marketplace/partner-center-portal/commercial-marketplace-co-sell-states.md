@@ -1,26 +1,26 @@
 ---
-title: 共同销售州代码 |Azure 应用商店
-description: 在优惠的"共同销售"页面上提供联系信息时，请使用这些州/省代码。
+title: 共同销售州和省代码 |Azure 应用商店
+description: 在优惠的"共同销售"页面上提供联系信息时，请使用这些州和省代码。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: f87014a599afd6d1c56d175b92d4da1ea49d9470
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277033"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619360"
 ---
-# <a name="co-sell-state-codes"></a>共同销售州代码
+# <a name="co-sell-state-and-province-codes"></a>共同销售州和省代码
 
 如果适用，在[提供优惠共同销售页面的联系信息](commercial-marketplace-co-sell.md#contacts)时，使用这些代码提供州/省信息。
 
-## <a name="stateprovince-table"></a>州/省表
+## <a name="us-states-and-territories"></a>美国各州和地区
 
-|   州/省名称               |   代码    |
+|   州和地区名称          |   代码    |
 |-------------------------------------|-----------|
 | Alabama                             | 美国-阿尔     |
 | 阿拉斯加州                              | 美国-AK     |
@@ -78,7 +78,40 @@ ms.locfileid: "80277033"
 | 北马里亚纳群岛            | 美国MP     |
 | 波多黎各                         | 美国-PR     |
 | 美国本土外小岛屿 | 美-乌姆    |
-|美属维尔京群岛                 | 美国-VI     |
+| 美属维尔京群岛                 | 美国-VI    |
+
+## <a name="canadian-provinces-and-territories"></a>加拿大各省和地区
+
+|   省和地区名称       |   代码    |
+|-------------------------------------|-----------|
+| Alberta                             |  CA-AB    |
+| British Columbia                    |  CA-BC    |
+| 马尼托巴                            |  CA-MB    |
+| 新不伦瑞克                       |  CA-NB    |
+| 纽芬兰-拉布拉多           |  CA-NL    |
+| 新斯科舍                         |  CA-NS    |
+| 安大略                             |  CA-ON    |
+| 爱德华王子岛                |  CA-PE    |
+| 魁北克                              |  CA-QC    |
+| 萨斯喀彻温                        |  CA-SK    |
+| 西北地区               |  CA-NT    |
+| 努勒维特                             |  CA-NU    |
+| 育空                               |  CA-YT    |
+
+
+## <a name="australian-states-and-territories"></a>澳大利亚各州和地区
+
+|   州和地区名称          |   代码    |
+|-------------------------------------|-----------|
+| 新南威尔士州                     |  AU-NSW   |
+| 昆士兰                          |  AU-QLD   |
+| 南澳大利亚                     |  AU-SA    |
+| 塔斯马尼亚岛                            |  AU-TAS   |
+| 维多利亚                            |  AU-VIC   |
+| 西澳大利亚                   |  AU-WA    |
+| 澳大利亚首都直辖区        |  AU-ACT   |
+| 澳北区                  |  AU-NT    |
+
 
 ## <a name="next-steps"></a>后续步骤
 

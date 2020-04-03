@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 7e00d03a8b3ec7ef56935ff7714fd932bc343cd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02d9ce87d45c5f1c9a123aae18f7d710b268f03e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277435"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582256"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure 服务总线输出绑定用于 Azure 函数
 
@@ -86,7 +86,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个服务总线输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数使用计时器触发器，每隔 15 秒发送一条队列消息。
 
@@ -261,7 +261,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 C# 脚本不支持特性。
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支持特性。
 
@@ -275,7 +275,7 @@ Python 不支持属性。
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 下表介绍了您在*函数.json*文件和`ServiceBus`属性中设置的绑定配置属性。
 
@@ -329,7 +329,7 @@ Python 不支持属性。
 
 * 要访问会话 ID，请使用 类型[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)并使用 属性`sessionId`。
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用`context.bindings.<name from function.json>`访问队列或主题。 可以向 `context.binding.<name>` 分配一个字符串、字节数组或 JavaScript 对象（反序列化为 JSON）。
 
@@ -381,8 +381,9 @@ Python 不支持属性。
 }
 ```
 
-|properties  |默认 | 描述 |
+|Property  |默认 | 描述 |
 |---------|---------|---------|
+|prefetchCount|0|获取或设置消息接收方可以同时请求的消息数。|
 |maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
 |autoComplete|true|触发器应立即将消息标记为已完成（自动完成），还是等待函数成功退出以调用完成。|
 |maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。 若要指示运行时一次只处理单个队列或主题消息，请将 `maxConcurrentCalls` 设置为 1。 |

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1809902fb153c5c9c83a9d00b6f817fde975d0fe
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 06fc9edd55aa51c985cbb981fc5a6892d0ca75e5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349910"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583119"
 ---
 # <a name="what-is-workload-management"></a>什么是工作负荷管理？
 
@@ -36,11 +36,12 @@ ms.locfileid: "80349910"
 
 
 ## <a name="workload-management-concepts"></a>工作负荷管理的概念
-过去，对于 Azure Synaps 中的 SQL 分析，您可以通过[资源类](resource-classes-for-workload-management.md)管理查询性能。  使用资源类可以根据角色成员身份将内存分配给查询。  使用资源类的主要难题在于，一旦配置，就会缺少监管，或者无法控制工作负荷。  
+
+过去，对于 Azure Synapse 中的 Synapse SQL 池，您可以通过[资源类](resource-classes-for-workload-management.md)管理查询性能。  使用资源类可以根据角色成员身份将内存分配给查询。  使用资源类的主要难题在于，一旦配置，就会缺少监管，或者无法控制工作负荷。  
 
 例如，如果将一个临时用户角色成员身份授予 smallrc，则允许该用户使用系统上的所有内存。  使用资源类时无法预留资源，也无法确保关键工作负荷有可用的资源。
 
-Azure Synapse 中的 SQL 分析工作负载管理由三个高级概念组成：[工作负载分类](sql-data-warehouse-workload-classification.md)、[工作负载重要性](sql-data-warehouse-workload-importance.md)和[工作负载隔离](sql-data-warehouse-workload-isolation.md)。  这些功能可让你更好地控制工作负荷如何利用系统资源。
+Azure Synapse 中的突触 SQL 池工作负载管理由三个高级概念组成：[工作负载分类](sql-data-warehouse-workload-classification.md)、[工作负载重要性](sql-data-warehouse-workload-importance.md)和[工作负载隔离](sql-data-warehouse-workload-isolation.md)。  这些功能可让你更好地控制工作负荷如何利用系统资源。
 
 工作负荷分类的概念是指将请求分配到工作负荷组并设置重要性级别。  过去，这种分配是使用 [sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class) 通过角色成员身份实现的。  现在可以通过[创建工作负荷分类器](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)来实现。  分类功能提供更丰富的一组选项（例如标签、会话和时间）来对请求进行分类。
 

@@ -1,6 +1,6 @@
 ---
 title: 分布式表设计指南
-description: 在 SQL 分析中设计哈希分布和循环分布式表的建议。
+description: 在 Synapse SQL 池中设计哈希分布和循环分布式表的建议。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,19 +11,21 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 35106e73a3a4a143bf22c72c4fe8ac6798ac5219
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8a93f3ada8e56853b78321bdc7d99a667cee6158
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351337"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583504"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>在 SQL 分析中设计分布式表的指导
-在 SQL 分析中设计哈希分布和循环分布式表的建议。
+# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>在 Synapse SQL 池中设计分布式表的指南
 
-本文假定您熟悉 SQL 分析中的数据分发和数据移动概念。有关详细信息，请参阅[SQL Analytics 大规模并行处理 （MPP） 体系结构](massively-parallel-processing-mpp-architecture.md)。 
+在 Synapse SQL 池中设计哈希分布和循环分布式表的建议。
+
+本文假定您熟悉 Synapse SQL 池中的数据分发和数据移动概念。有关详细信息，请参阅[Azure 突触分析大规模并行处理 （MPP） 体系结构](massively-parallel-processing-mpp-architecture.md)。 
 
 ## <a name="what-is-a-distributed-table"></a>什么是分布式表？
+
 分布式表显示为单个表，但表中的行实际存储在 60 个分布区中。 这些行使用哈希或轮循机制算法进行分布。  
 
 **哈希分布式表**可提高大型事实数据表的查询性能，本文会重点进行介绍。 **轮循机制表**可用于提高加载速度。 这些设计选择对提高查询和加载性能具有重大影响。
@@ -34,15 +36,16 @@ ms.locfileid: "80351337"
 
 - 表有多大？   
 - 表的刷新频率是多少？   
-- 我在 SQL 分析数据库中有事实和维度表吗？   
+- Synapse SQL 池中有事实和维度表吗？   
 
 
 ### <a name="hash-distributed"></a>哈希分布
+
 哈希分布表通过使用确定性的哈希函数将每一行分配给一个[分布区](massively-parallel-processing-mpp-architecture.md#distributions)，实现表行的跨计算节点分布。 
 
 ![分布式表](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "分布式表")  
 
-由于相同的值始终散列到相同的分布，因此 SQL Analytics 内置了行位置的知识。 SQL Analytics 使用此知识将查询期间的数据移动降至最低，从而提高了查询性能。 
+由于相同的值始终哈希处理到相同的分布区，因此，数据仓库本身就具有行位置方面的信息。 在 Synapse SQL 池中，此信息用于最小化查询期间的数据移动，从而提高查询性能。 
 
 哈希分布表适用于星型架构中的大型事实数据表。 它们可以包含大量行，但仍实现高性能。 当然，用户应该了解一些设计注意事项，它们有助于获得分布式系统本应具有的性能。 本文所述的选择合适的分布列就是其中之一。 
 
@@ -52,6 +55,7 @@ ms.locfileid: "80351337"
 - 对表进行频繁的插入、更新和删除操作。 
 
 ### <a name="round-robin-distributed"></a>轮循机制分布
+
 轮循机制分布表将表行均衡分布在所有分布区中。 将行分配到分布区的过程是随机的。 与哈希分布表不同的是，值相等的行不一定分配到相同的分布区。 
 
 因此，系统有时候需要调用数据移动操作，以便在求解查询前更加合理地组织数据。  此附加步骤可能使查询变慢。 例如，联接轮循机制表通常需要对行重新进行数据重组，这会给性能带来影响。
@@ -65,7 +69,7 @@ ms.locfileid: "80351337"
 - 该联接比查询中的其他联接更不重要时
 - 表是临时过渡表时
 
-本教程["加载纽约出租车"数据](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)提供了将数据加载到 SQL Analytics 中的循环过渡表中的示例。
+教程["加载纽约出租车"数据](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)提供了将数据加载到循环过渡表中的示例。
 
 
 ## <a name="choosing-a-distribution-column"></a>选择分布列
@@ -109,7 +113,7 @@ WITH
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>选择能最大程度减少数据移动的分布列
 
-为了获取正确的查询结果，查询可能将数据从一个计算节点移至另一个计算节点。 当查询对分布式表执行联接和聚合操作时，通常会发生数据移动。 选择有助于最小化数据移动的分发列是优化 SQL Analytics 数据库性能的最重要策略之一。
+为了获取正确的查询结果，查询可能将数据从一个计算节点移至另一个计算节点。 当查询对分布式表执行联接和聚合操作时，通常会发生数据移动。 选择有助于最小化数据移动的分布列是优化 Synapse SQL 池性能的最重要策略之一。
 
 若要最大程度减少数据移动，请选择符合以下条件的分布列：
 
@@ -217,7 +221,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 若要创建分布式表，请使用以下语句之一：
 
-- [创建表（SQL 分析）](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [创建表格作为选择（SQL 分析）](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [创建表（合成 SQL 池）](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [以选择身份创建表（同步 SQL 池）](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

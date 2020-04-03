@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 03/31/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fac7074cf85a585c93ece60be9eea8ffb9a6345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6eaa50f57dd8037ef0ad96b69284f565bd3558f
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72895201"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607522"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>无法在 Privileged Identity Management 中管理的角色
 
-使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以管理所有 [Azure AD 角色](../users-groups-roles/directory-assign-admin-roles.md)和所有 [Azure 资源角色](../../role-based-access-control/built-in-roles.md)。 这些角色还包括附加到管理组、订阅、资源组和资源的自定义角色。 然而，有极少角色无法管理。 本文介绍无法在 Privileged Identity Management 中管理的角色。
+Azure 活动目录 （Azure AD） 特权标识管理 （PIM） 使您能够管理所有[Azure AD 角色](../users-groups-roles/directory-assign-admin-roles.md)和所有 Azure[角色](../../role-based-access-control/built-in-roles.md)。 Azure 角色还可以包括附加到管理组、订阅、资源组和资源的自定义角色。 然而，有极少角色无法管理。 本文介绍了在特权身份管理中无法管理的角色。
 
 ## <a name="classic-subscription-administrator-roles"></a>经典订阅管理员角色
 
@@ -37,10 +37,10 @@ ms.locfileid: "72895201"
 
 ## <a name="what-about-office-365-admin-roles"></a>那么 Office 365 管理员角色呢？
 
-Exchange Online 或 SharePoint Online 中的角色（Exchange 管理员和 SharePoint 管理员除外）在 Azure AD 中不表示，因此无法在 Privileged Identity Management 中进行管理。 关于这些 Office 365 服务的详细信息，请参阅 [Office 365 管理员角色](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles)。
+我们支持 Azure AD 角色和管理员门户体验中的所有 Office365 角色，例如 Exchange 管理员和 SharePoint 管理员，但我们不支持 Exchange RBAC 或 SharePoint RBAC 中的特定角色。 关于这些 Office 365 服务的详细信息，请参阅 [Office 365 管理员角色](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles)。
 
 > [!NOTE]
-> SharePoint 管理员具有通过 SharePoint Online 管理中心访问 SharePoint Online 的管理权限，可在 SharePoint Online 中执行几乎所有的任务。 在 Privileged Identity Management 中激活后，符合条件的用户在 SharePoint 中使用此角色可能会发生延迟。
+> 符合 SharePoint 管理员角色的合格用户以及尝试访问 Microsoft 安全和合规性中心的任何角色在激活其角色后可能会遇到长达几个小时的延迟。 我们正在与这些团队合作来解决问题。
 
 ## <a name="next-steps"></a>后续步骤
 

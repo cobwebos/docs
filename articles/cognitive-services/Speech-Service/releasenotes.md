@@ -3,25 +3,57 @@ title: 发行说明 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 不断更新的语音服务功能版本、改进、bug 修复和已知问题的日志。
 services: cognitive-services
-author: brianem
+author: oliversc
 manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: brianem
+ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: cbe9c7cbd0f402e38d1163050d77b055f89948ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bab0a28ba2b75903b6bdf4708e6aa0a98bdc9e5
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219639"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607404"
 ---
 # <a name="release-notes"></a>发行说明
+## <a name="speech-sdk-1110-2020-march-release"></a>语音 SDK 1.11.0：2020-3 月版本
+
+**新功能**
+
+- Linux：添加了对红帽企业 Linux （RHEL）/CentOS 7 x64 的支持，并提供了有关如何为语音 SDK 配置系统[的说明](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7)。
+- Linux：在Linux ARM32和ARM64上增加了对.NET核心C++的支持。 [在此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux)阅读更多内容。 
+- C#，C++：在`UtteranceId``ConversationTranscriptionResult`中添加，在所有中间部分和最终语音识别结果中添加一致的 ID。 [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet)的详细信息[，C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)。
+- Python： 添加了`Language ID`对 的支持。 请参阅[gitHub 存储库](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)中的 speech_sample.py。
+- Windows：为所有 win32 控制台应用程序在 Windows 平台上添加了压缩音频输入格式支持。 详情[请见此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)。 
+- JavaScript：在 NodeJS 中支持语音合成（文本到语音）。 [在此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)了解更多信息。 
+- JavaScript：添加新 API，以便检查所有发送和接收的消息。 [在此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript)了解更多信息。 
+        
+**Bug 修复**
+
+- C#，C++：修复了问题，所以`SendMessageAsync`现在以二进制类型发送二进制消息。 [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_)的详细信息[，C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)。
+- C#，C++：修复了在对象之前`Connection MessageReceived``Recognizer``Connection`释放使用事件可能会导致崩溃的问题。 [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet)的详细信息[，C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived)。
+- Android：麦克风的音频缓冲大小从 800ms 减少到 100ms，以提高延迟。
+- 安卓：修复了Android工作室中x86 Android模拟器[的问题](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563)。
+- JavaScript：使用`fromSubscription`API 为中国区域添加了支持。 详情[请见此处](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#fromsubscription-string--string-)。 
+- JavaScript：为 NodeJS 的连接失败添加更多错误信息。
+        
+**示例**
+
+- 统一：意图识别公共示例是固定的，LUIS json 导入失败。 详情[请见此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369)。
+- Python：为`Language ID`添加的示例。 详情[请见此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py)。
+    
+**Covid19 分桥测试**
+
+由于过去几周远程工作，我们无法执行通常情况下的手动设备验证测试。 例如，在 Linux、iOS 和 macOS 上测试麦克风输入和扬声器输出。 我们尚未进行任何我们认为可能破坏这些平台上的任何内容的更改，我们的自动测试都通过了。 万一我们错过了什么，请让我们知道[GitHub。](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen)<br> 感谢您的继续支持。 与往常一样，请在[GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen)或[堆栈溢出](https://stackoverflow.microsoft.com/questions/tagged/731)上发布问题或反馈。<br>
+保持健康！
+
 ## <a name="speech-sdk-1100-2020-february-release"></a>语音 SDK 1.10.0：2020-2 月版本
 
 **新功能**
+
  - 添加了 Python 包以支持新的 3.8 版 Python。
  - 红帽企业 Linux （RHEL）/CentOS 8 x64 支持（C++、C#、Java、Python）。
    > [!NOTE] 
@@ -33,6 +65,7 @@ ms.locfileid: "79219639"
  - 更新的 19 区域设置的语音识别模型，平均字错误率降低 18.6%（es-ES、es-MX、fr-CA、fr-FR、IT、ja-JP、ko-KR、pt-BR、zh-CN、zh-HK、nb-NO、fi-FL、ru-RU、pl-PL、ca-ES、zh-TW、th-TH、pt-PT、tr-TR）。 新模型在多个域（包括听写、呼叫中心转录和视频索引方案）中带来了显著改进。
 
 **Bug 修复**
+
  - 修复了对话转录器未在 JAVA API 中正确等待的修复错误 
  - Android x86 仿真器修复 Xamarin [GitHub 问题](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363)
  - 添加缺失（获取*设置）属性方法到音频配置
@@ -41,9 +74,11 @@ ms.locfileid: "79219639"
  - 通用 Windows 应用程序中的 ID 生成现在使用适当唯一的 GUID 算法;它以前无意中默认为存根实现，该实现经常在大型交互集上产生冲突。
  
  **示例**
+ 
  - 用于将语音 SDK 与[Unity 麦克风和推送模式流](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone)一起使用的 Unity 示例
 
 **其他更改**
+
  - [为 Linux 更新的 OpenSSL 配置文档](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
 ## <a name="speech-sdk-190-2020-january-release"></a>语音 SDK 1.9.0：2020-1 月版本
@@ -59,13 +94,11 @@ ms.locfileid: "79219639"
 - JavaScript：添加了支持，`FromHost API`以方便使用上置容器和主权云。 参阅[此处](speech-container-howto.md)的文档。
 - JavaScript：我们现在很荣幸`NODE_TLS_REJECT_UNAUTHORIZED`，感谢[来自组织](https://github.com/orgads)的贡献。 详见[此处](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)。
 
-
-**重大更改**
+**中断性变更**
 
 - `OpenSSL` 已更新到版本 1.1.1b，并静态链接到适用于 Linux 的语音 SDK 核心库。 如果未在系统上的 `/usr/lib/ssl` 目录中安装收件箱 `OpenSSL`，这可能会造成中断。 请查看语音 SDK 的[文档](how-to-configure-openssl-linux.md)来解决此问题。
 - 我们已将为 C# `WordLevelTimingResult.Offset` 返回的数据类型从 `int` 更改为 `long`，以便在语音数据超过 2 分钟时能够访问 `WordLevelTimingResults`。
 - `PushAudioInputStream` 和 `PullAudioInputStream` 现在可以根据 `AudioStreamFormat`（创建这两个类时选择性地指定）将 wav 标头信息发送到语音服务。 现在，客户必须使用[支持的音频输入格式](how-to-use-audio-input-streams.md)。 任何其他格式会导致识别结果欠佳，或者导致出现其他问题。 
-
 
 **Bug 修复**
 
@@ -81,13 +114,11 @@ ms.locfileid: "79219639"
 - JavaScript：添加了设置服务属性的支持（版本 1.7 中已添加此项支持）。
 - JavaScript：修复了以下问题：连接错误可能导致 websocket 重新连接尝试连续失败。
 
-
 **示例**
 
 - [在此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo)为 Android 添加了关键字识别示例。
 - 为[此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs)的服务器方案添加了 TTS 示例。
 - [在此处](quickstarts/multi-device-conversation.md)添加了 C# 和 C++的多设备对话快速启动。
-
 
 **其他更改**
 
@@ -104,7 +135,7 @@ ms.locfileid: "79219639"
 - 通过`KeywordRecognizer`NuGet 和 Unity 软件包在 Windows （UWP）、Android 和 iOS 上添加了支持
 - 添加了远程对话 Java API，用于以异步批的方式进行对话听录。
 
-**重大更改**
+**中断性变更**
 
 - 对话听录器功能已移到 `Microsoft.CognitiveServices.Speech.Transcription` 命名空间下。
 - 部分对话听录器方法已移到新的 `Conversation` 类。
@@ -411,7 +442,7 @@ ms.locfileid: "79219639"
 - 支持 iOS 中的 Objective-C。 请查看[适用于 iOS 的 Objective-C 快速入门](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)。
 - 支持浏览器中的 JavaScript。 请查看 [JavaScript 快速入门](quickstart-js-browser.md)。
 
-**重大更改**
+**中断性变更**
 
 - 该版本中推出了大量重大更改。
   有关详细信息，请查看[此页](https://aka.ms/csspeech/breakingchanges_1_0_0)。
@@ -430,7 +461,7 @@ ms.locfileid: "79219639"
 
 - 公开了关于连接错误的更多错误详细信息。
 
-**重大更改**
+**中断性变更**
 
 - 在 Java (Android) 中，`SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` 函数不再需要 path 参数。 现在，在所有受支持的平台上都会自动检测路径。
 - 在 Java 和 C# 中，属性 `EndpointUrl` 的 get 访问器已被删除。
@@ -459,7 +490,7 @@ ms.locfileid: "79219639"
 - 识别结果包含更多字段。 这些字段是识别文本的音频开始和持续时间（时钟周期数）的偏移量和表示识别状态的其他值（例如 `InitialSilenceTimeout`、`InitialBabbleTimeout`）。
 - 支持 AuthorizationToken 用于创建工厂实例。
 
-**重大更改**
+**中断性变更**
 
 - 识别事件：`NoMatch` 事件类型已合并到 `Error` 事件中。
 - C# 中的 SpeechOutputFormat 已重命名为 `OutputFormat` 以与 C++ 保持一致。

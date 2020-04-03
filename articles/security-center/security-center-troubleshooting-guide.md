@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b5a85f8ae1564d724b826c809261e56577f4783a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435531"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585323"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 
@@ -81,7 +81,7 @@ ms.locfileid: "80435531"
 
 “监视状态”**** 定义安全中心无法成功监视那些已针对自动预配初始化的 VM 和计算机的原因。 下表显示了“监视状态”的值、说明和解决步骤。****
 
-| 监视状态 | 说明 | 解决步骤 |
+| 监视状态 | 描述 | 解决步骤 |
 |---|---|---|
 | 代理待安装 | 日志分析代理安装仍在运行。  安装可能需要长达数小时的时间。 | 等待自动安装完成。 |
 | 电源状态为关闭 | VM 已停止。  日志分析代理只能安装在正在运行的 VM 上。 | 重启 VM。 |
@@ -148,7 +148,6 @@ ms.locfileid: "80435531"
 * [Azure 安全中心的警报验证](security-center-alert-validation.md)
 * [Azure 安全中心内的电子邮件通知](security-center-provide-security-contact-details.md)
 * [处理 Azure 安全中心内的安全事件](security-center-incident.md)
-* [调查 Azure 安全中心内的事件和警报](security-center-investigation.md)
 * [Azure 安全中心检测功能](security-center-detection-capabilities.md)
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) - 了解如何监视合作伙伴解决方案的运行状态。
 * [Azure 安全中心常见问题](faq-general.md)解答 - 查找有关使用服务的常见问题

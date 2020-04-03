@@ -4,15 +4,15 @@ description: 了解如何与 Azure 防火墙集成，以保护应用服务环境
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 03/31/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 84fcb9076bbc1e75d46d9a6682c96035576ae09e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3dadb57c6358623974de1a27e1601d99b28fee32
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475436"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584331"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -92,7 +92,7 @@ ASE 还必须允许来自端口 16001 上的负载均衡器代码的入站请求
 
 使用应用程序网关只是系统配置方法的一个例子。 如果遵循此路径，则需要将路由添加到 ASE 子网路由表，以便发送到应用程序网关的回复流量直接通过该路由传送。 
 
-## <a name="logging"></a>Logging 
+## <a name="logging"></a>日志记录 
 
 Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monitor 日志。 若要将应用与支持的任何目标相集成，请转到 Azure 防火墙门户 >“诊断日志”，并为所需目标启用日志。 与 Azure Monitor 日志集成后，可以查看已发送到 Azure 防火墙的任何流量的日志记录。 若要查看被拒绝的流量，请打开 Log Analytics 工作区门户 >“日志”，并输入如下所示的查询 
 
@@ -215,6 +215,8 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 |gmstorageprodsn1.queue.core.windows.net:443 |
 |gmstorageprodsn1.table.core.windows.net:443 |
 |rteventservice.trafficmanager.net:443 |
+|ctldl.windowsupdate.com:80 |
+|ctldl.windowsupdate.com:443 |
 
 #### <a name="wildcard-httphttps-dependencies"></a>通配符 HTTP/HTTPS 依赖项 
 
@@ -225,6 +227,8 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 | \*.update.microsoft.com:443 |
 | \*.windowsupdate.microsoft.com:443 |
 | \*.identity.azure.net:443 |
+| \*.ctldl.windowsupdate.com:80 |
+| \*.ctldl.windowsupdate.com:443 |
 
 #### <a name="linux-dependencies"></a>Linux 依赖项 
 

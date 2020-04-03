@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 2df83e3b62994381895315b2ef100299e40b745e
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 9fa93af72c2869efd7b6d2f1e8b96b0e667f8b16
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366508"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607539"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -78,6 +78,7 @@ ms.locfileid: "80366508"
 
 |问题  |发现日期  |状态  |解决日期  |
 |---------|---------|---------|---------|
+|[未应用于托管实例的资源组的权限](#permissions-on-resource-group-not-applied-to-managed-instance)|2020 年 2 月|具有解决方法||
 |[通过门户限制故障转移组](#limitation-of-manual-failover-via-portal-for-failover-groups)|2020 年 1 月|具有解决方法||
 |[SQL 代理角色需要拥有对非 sysadmin 登录名的显式 EXECUTE 权限](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 12 月|具有解决方法||
 |[重启代理进程可能会中断 SQL 代理作业](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|2019 年 12 月|无解决方法|2020 年 3 月|
@@ -101,6 +102,12 @@ ms.locfileid: "80366508"
 |如果源数据库包含内存中 OLTP 对象，则从业务关键型层还原到通用层的时间点数据库将不会成功。||已解决|2019 年 10 月|
 |使用安全连接的外部（非 Azure）邮件服务器的数据库邮件功能||已解决|2019 年 10 月|
 |托管实例中不支持的包含数据库||已解决|2019 年 8 月|
+
+### <a name="permissions-on-resource-group-not-applied-to-managed-instance"></a>未应用于托管实例的资源组的权限
+
+应用于资源组 （RG） 时的托管实例参与者 RBAC 角色不应用于托管实例，并且不起作用。
+
+**解决方法**：设置订阅级别用户的托管实例参与者角色。
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>通过门户限制故障转移组
 

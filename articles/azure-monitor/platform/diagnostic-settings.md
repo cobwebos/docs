@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: fb2f9ff5af68575d9f9d29e9a6aca83d603395b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ff9e62ed145b7892d2997193dae8e171ae49c98
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672406"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585383"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>创建诊断设置以收集 Azure 中的平台日志和指标
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 本文详细介绍如何创建和配置诊断设置，以将平台日志发送到不同的目标。
@@ -53,7 +53,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
     
         ![诊断设置](media/diagnostic-settings/menu-monitor.png)
 
-    - 对于活动日志，在“Azure Monitor”菜单中，单击“活动日志”，然后单击“诊断设置”。************ 请确保禁用活动日志的任何旧配置。 有关详细信息，请参阅[禁用现有设置](diagnostic-settings-legacy.md#disable-existing-settings)。
+    - 对于活动日志，在“Azure Monitor”菜单中，单击“活动日志”，然后单击“诊断设置”。************ 请确保禁用活动日志的任何旧配置。 有关详细信息，请参阅[禁用现有设置](/azure/azure-monitor/platform/activity-log-collect#collecting-activity-log)。
 
         ![诊断设置](media/diagnostic-settings/menu-activity-log.png)
 
@@ -85,7 +85,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
    >
    > ** 例如：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
 
-6. 单击“保存”。****
+6. 单击“保存”  。
 
 片刻之后，新设置会显示在此资源的设置列表中，生成新的事件数据后，日志会立即流式传输到指定的目标。 请注意，发出事件后可能需要最多 15 分钟的时间该事件才会[出现在 Log Analytics 工作区中](data-ingestion-time.md)。
 

@@ -3,12 +3,12 @@ title: 安全功能概述
 description: 了解 Azure 备份中的安全功能，这些功能可帮助您保护备份数据并满足企业的安全需求。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 91a0f29862b0c9c35e562c143e28ebbc6c39cf94
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80423179"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585816"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 备份中安全功能概述
 
@@ -66,6 +66,8 @@ Azure 备份服务使用 Microsoft Azure 恢复服务 （MARS） 代理从本地
 * 执行关键操作（例如更改密码）时，会添加额外的身份验证层。 使用此验证，确保只有具有有效 Azure 凭据的用户才可执行此类操作。 [详细了解防止攻击的功能](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#prevent-attacks)。
 
 * 已删除的备份数据将从删除之日起再保留 14 天。 这可确保数据在给定时间段内的可恢复性，因此即使发生攻击，也会丢失数据。 此外，还保留了更多的最小恢复点，以防止数据损坏。 [了解有关恢复已删除的备份数据的更多。](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#recover-deleted-backup-data)
+
+* 对于使用 Microsoft Azure 恢复服务 （MARS） 代理备份的数据，密码用于确保数据在上载到 Azure 备份之前进行加密，并且仅在从 Azure 备份下载后解密。 密码详细信息仅对创建密码短语的用户和配置密码短语的代理可用。 不会与服务传输或共享任何内容。 这可确保数据的完整安全性，因为任何无意中公开的数据（如网络上的中间人攻击）在没有密码的情况下无法使用，并且密码不会在网络上发送。
 
 ## <a name="compliance-with-standardized-security-requirements"></a>符合标准化的安全要求
 

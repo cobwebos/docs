@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI�
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 400d5a46ad62f8ac391c573eb64a7eb22dc4062c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f194cb97850fcb24e4789ac0ba39b6f03d99e6e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047990"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617383"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -27,6 +27,7 @@ ms.locfileid: "80047990"
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 * 您可以使用分配给托管标识的系统来访问权限，而不是服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
+* 分配给 AKS 节点池的子网不能是[委派子网](../virtual-network/subnet-delegation-overview.md)。
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>规划群集的 IP 地址
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136528"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582471"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure 活动目录中规划无密码身份验证部署
 
@@ -59,7 +59,7 @@ Microsoft 提供了三个无密码身份验证选项，涵盖许多方案。 这
 | **Web 应用登录**： <br> 从移动或非窗口设备 | **是** | **否** | **否** |
 | **计算机登录**： <br> 非视窗计算机 | **否** | **否** | **否** |
 
-有关为组织选择最佳方法的信息，请参阅[决定无密码方法](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#deciding-a-passwordless-method)。
+有关为组织选择最佳方法的信息，请参阅[决定无密码方法](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -97,7 +97,7 @@ Windows Hello 的先决条件在很大程度上取决于您是在本地配置、
 | --- | --- |
 | **访问** | 无密码登录可从公司网络内外的公司或个人设备获得。 |
 | **审核** | 使用数据可供管理员近乎实时审核。 <br> 使用数据至少每 29 天下载一次到公司系统中，或者使用 SIEM 工具。 |
-| **治理** | 定义和监视用户分配到适当身份验证方法和相关组的生命周期。 |
+| **调控** | 定义和监视用户分配到适当身份验证方法和相关组的生命周期。 |
 | **安全性** | 通过用户和组分配控制对适当身份验证方法的访问。 <br> 只有经过授权的用户才能使用无密码登录。 |
 | **性能** | 记录和监视访问分配传播时间线。 <br> 为了便于使用，测量登录时间。 |
 | **用户体验** | 用户知道移动兼容性。 <br> 用户可以配置身份验证器应用无密码登录。 |
@@ -132,7 +132,7 @@ Microsoft 提供多重身份验证[通信模板](https://aka.ms/mfatemplates)、
 
 微软身份验证器应用程序是从谷歌播放或苹果应用商店免费下载。 [了解有关下载微软身份验证器应用程序的更多内容](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。 让用户下载 Microsoft 身份验证器应用。 并按照说明启用电话登录。 
 
-它将任何 iOS 或 Android 手机转换为强大的无密码凭据。 用户登录到任何平台或浏览器时，将通知通知到他们的手机，将屏幕上显示的号码与手机上的数字匹配，然后使用生物识别或 PIN 进行确认。 [查看有关 Microsoft 身份验证器应用如何工作的详细信息](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in)。 
+它将任何 iOS 或 Android 手机转换为强大的无密码凭据。 用户登录到任何平台或浏览器时，将通知通知到他们的手机，将屏幕上显示的号码与手机上的数字匹配，然后使用生物识别或 PIN 进行确认。 [查看有关 Microsoft 身份验证器应用如何工作的详细信息](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#microsoft-authenticator-app)。
 
 ![使用身份验证器应用登录](./media/howto-authentication-passwordless-deployment/passwordless-dp-sign-in.png)
 
@@ -180,7 +180,7 @@ Microsoft 提供多重身份验证[通信模板](https://aka.ms/mfatemplates)、
 
 ### <a name="enable-windows-10-support"></a>启用 Windows 10 支持
 
-使用 FIDO2 安全密钥启用 Windows 10 登录需要启用 Windows 10 中的凭据提供程序功能。 选择以下之一：
+使用 FIDO2 安全密钥启用 Windows 10 登录需要启用 Windows 10 中的凭据提供程序功能。 选择以下选项之一：
 
 - [使用 Intune 启用凭据提供程序](howto-authentication-passwordless-security-key-windows.md#enable-with-intune)
    - 建议使用 Intune 部署。

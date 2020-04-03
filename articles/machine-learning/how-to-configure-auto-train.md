@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4cf940e38a84ea2eeb1896c8f7c628c8d5734374
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247123"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618541"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -166,7 +166,7 @@ automl_config = AutoMLConfig(task = "classification")
       automl_regressor = AutoMLConfig(
       task='regression',
       experiment_timeout_minutes=60,
-      whitelist_models=['kNN regressor'],
+      whitelist_models=['KNN'],
       primary_metric='r2_score',
       training_data=train_data,
       label_column_name=label,
@@ -245,7 +245,7 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 ### <a name="ensemble-configuration"></a><a name="ensemble"></a> 集成配置
 
-默认情况下启用集成模型，并在自动机器化学习运行中显示为最终的运行迭代次数。 当前支持的集成方法是投票和堆栈。 投票使用加权平均值实现为软投票，堆叠实现使用两层实现，其中第一层具有与投票组相同的模型，第二层模型用于查找第一层的模型。 如果使用 ONNX 模型，或启用了模型可解释性，则会禁用堆栈，并仅使用投票****。
+默认情况下启用集成模型，并在自动机器化学习运行中显示为最终的运行迭代次数。 当前支持的集成方法是投票和堆栈。 投票使用加权平均线实现为软投票，堆叠实现使用两层实现，其中第一层具有与投票组相同的模型，第二层模型用于从第一层找到模型的最佳组合。 如果使用 ONNX 模型，或启用了模型可解释性，则会禁用堆栈，并仅使用投票****。
 
 有多个默认参数可在 `AutoMLConfig` 对象中作为 `kwargs` 提供，以更改默认堆栈集成行为。
 

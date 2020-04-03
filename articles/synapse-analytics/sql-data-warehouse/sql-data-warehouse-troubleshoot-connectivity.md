@@ -1,6 +1,6 @@
 ---
 title: 连接性疑难解答
-description: 在 SQL 分析中排除连接故障。
+description: 在 Synapse SQL 池中排除连接故障。
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 689a2e549c2627c607b6549f164e55a73318f63e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2b0e144220e36de6157101190adb838ae651d7c4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350043"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583329"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>排查连接问题
 
-本文列出了有关连接到 SQL 分析数据库的常见故障排除技术。
+本文列出了有关连接到 Synapse SQL 池的常见故障排除技术。
 - [检查服务可用性](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [检查已暂停的操作或正在缩放的操作](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [检查防火墙设置](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -32,33 +32,33 @@ ms.locfileid: "80350043"
 
 ## <a name="check-service-availability"></a>检查服务可用性
 
-查看服务是否可用。 在 Azure 门户中，转到尝试连接的 SQL 分析数据库。 在左侧 TOC 面板中，单击“诊断并解决问题”。****
+查看服务是否可用。 在 Azure 门户中，转到尝试连接的 Synapse SQL 池。 在左侧 TOC 面板中，单击“诊断并解决问题”。****
 
 ![选择资源运行状况](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-SQL 分析的状态将在此处显示。 如果服务未显示为“可用”，**** 请查看更多的步骤。
+此处将显示 Synapse SQL 池的状态。 如果服务未显示为“可用”，**** 请查看更多的步骤。
 
 ![服务可用](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-如果"资源"运行状况显示 SQL Analytics 实例已暂停或缩放，请按照该指南继续实例。
+如果"资源"运行状况显示 Synapse SQL 池实例已暂停或缩放，请按照该指南继续实例。
 
 ![服务暂停](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) 可以在此处找到有关资源运行状况的其他信息。
 
 ## <a name="check-for-paused-or-scaling-operation"></a>检查暂停的或正在缩放的操作
 
-检查门户以查看 SQL 分析实例是否已暂停或缩放。
+检查门户以查看 Synapse SQL 池实例是否暂停或缩放。
 
 ![服务已暂停](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-如果看到服务已暂停或正在缩放，请查看一下这是否是你的维护计划。 在 SQL 分析*概述*的门户上，您将看到已选择维护计划。
+如果看到服务已暂停或正在缩放，请查看一下这是否是你的维护计划。 在 Synapse SQL 池*概述*的门户上，您将看到当选的维护计划。
 
 ![维护计划概览](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-否则，请与 IT 管理员联系，验证该维护是否为计划的事件。 要恢复 SQL 分析实例，请按照[此处](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)概述的步骤操作。
+否则，请与 IT 管理员联系，验证该维护是否为计划的事件。 要恢复 Synapse SQL 池实例，请按照[此处](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)概述的步骤操作。
 
 ## <a name="check-your-firewall-settings"></a>检查防火墙设置
 
-SQL 分析数据库通过端口 1433 进行通信。如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 在这种情况下，你无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。 可从[此处](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)找到有关防火墙配置的更多信息。
+突触 SQL 池通过端口 1433 进行通信。如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 在这种情况下，你无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。 可从[此处](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)找到有关防火墙配置的更多信息。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>检查 VNet/服务终结点设置
 
@@ -68,7 +68,7 @@ SQL 分析数据库通过端口 1433 进行通信。如果尝试从企业网络�
 
 ### <a name="software"></a>软件
 
-检查以确保您使用最新的工具连接到 SQL 分析数据库：
+检查以确保您使用最新的工具连接到 Synapse SQL 池：
 
 * SSMS
 * Azure Data Studio
@@ -78,7 +78,7 @@ SQL 分析数据库通过端口 1433 进行通信。如果尝试从企业网络�
 
 请进行检查，确保使用最新的驱动程序版本。使用旧版驱动程序可能会导致意外行为，因为旧驱动程序可能不支持新功能。
 
-* [Odbc](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
+* [ODBC](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
 * [JDBC](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
 * [OLE DB](https://docs.microsoft.com/sql/connect/oledb/download-oledb-driver-for-sql-server)
 * [PHP](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server)
@@ -113,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>间歇性连接问题
 
-查看是否遇到服务器上负载过重、有大量排队请求的情况。 您可能需要扩展 SQL 分析实例以获取其他资源。
+查看是否遇到服务器上负载过重、有大量排队请求的情况。 您可能需要扩展 Synapse SQL 池以寻找其他资源。
 
 ## <a name="common-error-messages"></a>常见错误消息
 

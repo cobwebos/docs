@@ -12,20 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 04/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 8f50b2ad34c705c8d3831d8243f136c41d750dc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b21db3e842898e8ce11b560714888b946373300e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60691068"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616435"
 ---
 # <a name="set-up-a-capacity-pool"></a>设置容量池
 
 设置容量池可以在其中创建卷。  
 
-## <a name="before-you-begin"></a>开始之前 
+## <a name="before-you-begin"></a>在开始之前 
 
 必须已经创建了一个 NetApp 帐户。   
 
@@ -47,7 +47,7 @@ ms.locfileid: "60691068"
 
    * **服务级别**   
      此字段显示容量池的目标性能。  
-     指定容量池的服务级别：[**高级**](azure-netapp-files-service-levels.md#Premium)或[**标准**](azure-netapp-files-service-levels.md#Standard)。
+     指定容量池的服务级别：[**超**](azure-netapp-files-service-levels.md#Ultra)容量、[**高级**](azure-netapp-files-service-levels.md#Premium)或[**标准**](azure-netapp-files-service-levels.md#Standard)。
 
    * **大小**     
      指定你购买的容量池的大小。        

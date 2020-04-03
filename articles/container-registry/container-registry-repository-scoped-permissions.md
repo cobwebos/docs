@@ -3,12 +3,12 @@ title: Azure 容器注册表中存储库的权限
 description: 创建具有限定到注册表中特定存储库的权限的令牌，以拉取或推送图像，或执行其他操作
 ms.topic: article
 ms.date: 02/13/2020
-ms.openlocfilehash: 7d390bf4d97561e374c70f184534ac4f98a40611
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9004c45401833d3070266055dd7eb99a2bb43bde
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444265"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618831"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>使用存储库范围权限创建令牌
 
@@ -27,6 +27,7 @@ ms.locfileid: "77444265"
 
 * 此功能仅在**高级**容器注册表中可用。 有关注册表服务层和限制的信息，请参阅[Azure 容器注册表 SKU](container-registry-skus.md)。
 * 当前无法将存储库范围的权限分配给 Azure 活动目录标识，例如服务主体或托管标识。
+* 不能在注册表中为[匿名拉取访问](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)创建范围映射。
 
 ## <a name="concepts"></a>概念
 

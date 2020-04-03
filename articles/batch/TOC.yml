@@ -65,10 +65,12 @@
       href: batch-compute-node-environment-variables.md
     - name: Batch 与 Azure Policy 的集成
       href: batch-integration-policies.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 管理 Batch 帐户
       items:
+        - name: 管理帐户
+          href: batch-manage-account-basics.md
         - name: 使用门户管理 Batch 帐户
           href: batch-account-create-portal.md
         - name: 使用批处理管理 .NET 来管理 Azure Batch 帐户
@@ -83,8 +85,12 @@
           href: batch-aad-auth-management.md
         - name: 使用 Batch 安全地访问 Key Vault
           href: credential-access-key-vault.md
+    - name: 使用应用程序包
+      href: batch-application-packages.md
     - name: 将文件和应用程序复制到池节点
       items:
+        - name: 将应用程序和数据复制到池节点
+          href: batch-applications-to-pool-nodes.md
         - name: 使用应用程序包
           href: batch-application-packages.md
         - name: 创建资源文件

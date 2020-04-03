@@ -12,18 +12,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: a8674714451f3cc686acb74d6c66ac6800b75936
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478082"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582731"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（来源）
 
 在 Microsoft Azure 媒体服务中，[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)表示动态（即时）打包和源服务，该服务可以使用一种常见的流媒体协议 （HLS 或 DASH） 将实时和按需内容直接传递到客户端播放器应用。 此外，**流式处理终结点**为行业领先的 DRM 提供动态（及时）加密。 
 
-用户创建媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认**** 流式处理终结点。 无法删除**默认**流式处理终结点。 可以在帐户下创建更多的流式处理终结点（请参阅[配额和限制](limits-quotas-constraints.md)）。
+用户创建媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认**** 流式处理终结点。 无法删除**默认**流式处理终结点。 可以在帐户下创建更多流式处理终结点（请参阅[配额和限制](limits-quotas-constraints.md)）。
 
 > [!NOTE]
 > 要开始流式传输视频，您需要从中启动流**式处理终结点**，以便从中流式传输视频。
@@ -49,7 +49,7 @@ ms.locfileid: "80478082"
 
 下表描述了类型：
 
-|类型|缩放单元|说明|
+|类型|缩放单元|描述|
 |--------|--------|--------|  
 |**标准**|0|默认的流式处理终结点是“标准”类型，可以通过调整 `scaleUnits` 更改为“高级”类型。****|
 |**溢价**|>0|“高级”**** 流式处理终结点适用于高级工作负荷，可提供专用且可缩放的带宽容量。 可以通过调整 `scaleUnits`（流单元）转到“高级”**** 类型。 `scaleUnits` 提供专用的出口容量，可以按照 200 Mbps 的增量购买。 使用高级**** 类型时，每个启用的单元都为应用提供额外的带宽容量。 |

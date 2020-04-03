@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c868d8c159bca0c8462acde48225dc45003cf84e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350990"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586054"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure 突触分析的内存和并发限制
 查看在 Azure Synapse 分析中分配给各种性能级别和资源类的内存和并发限制。  
@@ -73,7 +73,7 @@ ms.locfileid: "80350990"
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>资源类的并发性最大值
-为了确保每个查询都有足够的资源来高效地执行，Azure Synapse 中的 SQL 分析通过将并发槽分配给每个查询来跟踪资源利用率。 系统将根据重要性和并发槽位将查询置于队列中。 查询将在队列中等待，直到有足够的并发槽位可用。 [重要性](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance)和并发槽位决定了 CPU 优先级。 有关详细信息，请参阅[分析工作负荷](analyze-your-workload.md)。
+为了确保每个查询有足够的资源来高效地执行，通过为每个查询分配并发槽来跟踪资源利用率。 系统将根据重要性和并发槽位将查询置于队列中。 查询将在队列中等待，直到有足够的并发槽位可用。 [重要性](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance)和并发槽位决定了 CPU 优先级。 有关详细信息，请参阅[分析工作负荷](analyze-your-workload.md)。
 
 **静态资源类**
 

@@ -1,6 +1,6 @@
 ---
 title: 使用结果集缓存优化性能
-description: Azure 突触分析中 SQL 分析的结果集缓存功能概述
+description: Azure 突触分析中突触 SQL 池的结果集缓存功能概述
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,26 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: da476dc14949ebab1a054a9624d91acb25b9f2b4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ef5be63b2068297aedf4cf12d914da09b1efed41
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474476"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583824"
 ---
-# <a name="performance-tuning-with-result-set-caching"></a>使用结果集缓存优化性能  
-启用结果集缓存后，SQL Analytics 会自动缓存用户数据库中的查询结果，以便重复使用。  这样，后续的查询执行就能直接从持久性缓存中获取结果，因此无需重新计算。   结果集缓存提高了查询性能，并减少了计算资源的用量。  此外，使用缓存结果集的查询不会占用任何并发槽，因此不会计入现有的并发限制。 出于安全考虑，如果访问方用户的数据访问权限与创建缓存结果的用户相同，则访问方用户只能访问缓存的结果。  
+# <a name="performance-tuning-with-result-set-caching"></a>使用结果集缓存优化性能
+
+启用结果集缓存后，Synapse SQL 池会自动缓存用户数据库中的查询结果，以便重复使用。  这样，后续的查询执行就能直接从持久性缓存中获取结果，因此无需重新计算。   结果集缓存提高了查询性能，并减少了计算资源的用量。  此外，使用缓存结果集的查询不会占用任何并发槽，因此不会计入现有的并发限制。 出于安全考虑，如果访问方用户的数据访问权限与创建缓存结果的用户相同，则访问方用户只能访问缓存的结果。  
 
 ## <a name="key-commands"></a>关键命令
-[对用户数据库启用/禁用结果集缓存](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
 
-[对会话启用/禁用结果集缓存](https://docs.microsoft.com/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)
+[对用户数据库启用/禁用结果集缓存](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-[检查缓存结果集的大小](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest)  
+[对会话启用/禁用结果集缓存](/sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-[清理缓存](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)
+[检查缓存结果集的大小](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
+
+[清理缓存](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="whats-not-cached"></a>不缓存哪些内容  
 
@@ -39,7 +41,7 @@ ms.locfileid: "80474476"
 - 返回行大小大于 64 KB 的数据的查询
 
 > [!IMPORTANT]
-> 创建结果集缓存并从缓存中检索数据的操作发生在 SQL Analytics 实例的控制节点上。
+> 创建结果集缓存并从缓存中检索数据的操作发生在 Synapse SQL 池实例的控制节点上。
 > 当结果集缓存处于打开状态时，运行返回大型结果集（例如，超过 1 百万行）的查询可能会导致控制节点上 CPU 使用率较高，并降低实例上的整体查询响应速度。  这些查询通常在数据浏览或 ETL 操作过程中使用。 若要避免对控制节点造成压力并导致性能问题，用户应在运行此类查询之前关闭数据库的结果集缓存。  
 
 此查询的运行持续时间以针对某个查询执行结果集缓存操作所需的时间为宜：
@@ -76,7 +78,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 每个数据集的结果集缓存的最大大小为 1 TB。  当底层查询数据发生更改时，缓存结果会自动失效。  
 
-缓存逐出由 SQL 分析按照此计划自动管理： 
+缓存逐出计划按照此计划自动管理： 
 - 如果结果集在 48 小时间隔时间内未使用，或者已失效。 
 - 当结果集缓存接近最大大小时。
 
@@ -87,4 +89,5 @@ WHERE request_id = <'Your_Query_Request_ID'>
 暂停数据库不会清空缓存结果集。  
 
 ## <a name="next-steps"></a>后续步骤
+
 有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。 

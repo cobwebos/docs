@@ -1,6 +1,6 @@
 ---
 title: 系统视图
-description: 指向 SQL Analytics 中支持的系统视图的文档的链接。
+description: 指向 Synapse SQL 池中支持的系统视图的文档的链接。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,18 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b3089cfbd0abb4bafe160b07fd75df877d61741b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 1cc6627599a533238aae742b0358c13e1a7eab8a
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350266"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586346"
 ---
-# <a name="system-views-supported-in-sql-analytics"></a>SQL 分析中支持的系统视图
-指向 SQL 分析中支持的 T-SQL 语句文档的链接。
+# <a name="system-views-supported-in-synapse-sql-pool"></a>Synapse SQL 池中支持的系统视图
 
-## <a name="sql-analytics-catalog-views"></a>SQL 分析目录视图
+指向 Synapse SQL 池中支持的 T-SQL 语句文档的链接。
+
+## <a name="synapse-sql-pool-catalog-views"></a>突触 SQL 池目录视图
 * [sys.pdw_column_distribution_properties](https://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](https://msdn.microsoft.com/library/mt203892.aspx)
 * [sys.pdw_index_mappings](https://msdn.microsoft.com/library/mt203912.aspx)
@@ -41,10 +42,11 @@ ms.locfileid: "80350266"
 * [sys.pdw_replicated_table_cache_state](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql)
 * [sys.pdw_table_distribution_properties](https://msdn.microsoft.com/library/mt203896.aspx)
 * [sys.pdw_table_mappings](https://msdn.microsoft.com/library/mt203876.aspx)
-* [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql)
-* [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql)
+* [系统workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql)
+* [系统workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql)
 
 ## <a name="sql-data-warehouse-dynamic-management-views-dmvs"></a>SQL 数据仓库动态管理视图 (DMV)
+
 * [sys.dm_pdw_dms_cores](https://msdn.microsoft.com/library/mt203911.aspx)
 * [sys.dm_pdw_dms_external_work](https://msdn.microsoft.com/library/mt204024.aspx)
 * [sys.dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx)
@@ -65,14 +67,16 @@ ms.locfileid: "80350266"
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 * [sys.dm_workload_management_workload_groups_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql)（预览版）
 
-## <a name="sql-server-dmvs-applicable-to-sql-analytics"></a>适用于 SQL 分析的 SQL 服务器 DMV
-以下 DMV 适用于 SQL 分析，但必须通过连接到**主**数据库来执行。
+## <a name="sql-server-dmvs-applicable-to-synapse-sql-pool"></a>适用于突触 SQL 池的 SQL 服务器 DMV
+
+以下 DMV 适用于 Synapse SQL 池，但必须通过连接到**主**数据库来执行。
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
 * [系统fn_helpcollations（）](https://msdn.microsoft.com/library/ms187963.aspx)
 
 ## <a name="sql-server-catalog-views"></a>SQL Server 目录视图
+
 * [sys.all_columns](https://msdn.microsoft.com/library/ms177522.aspx)
 * [sys.all_objects](https://msdn.microsoft.com/library/ms178618.aspx)
 * [sys.all_parameters](https://msdn.microsoft.com/library/ms190340.aspx)
@@ -83,7 +87,7 @@ ms.locfileid: "80350266"
 * [sys.assembly_types](https://msdn.microsoft.com/library/ms178020.aspx)
 * [sys.certificates](https://msdn.microsoft.com/library/ms189774.aspx)
 * [sys.check_constraints](https://msdn.microsoft.com/library/ms187388.aspx)
-* [sys.列](https://msdn.microsoft.com/library/ms176106.aspx)
+* [sys.columns](https://msdn.microsoft.com/library/ms176106.aspx)
 * [sys.computed_columns](https://msdn.microsoft.com/library/ms188744.aspx)
 * [sys.credentials](https://msdn.microsoft.com/library/ms189745.aspx)
 * [sys.data_spaces](https://msdn.microsoft.com/library/ms190289.aspx)
@@ -106,7 +110,7 @@ ms.locfileid: "80350266"
 * [sys.indexes](https://msdn.microsoft.com/library/ms173760.aspx)
 * [sys.key_constraints](https://msdn.microsoft.com/library/ms174321.aspx)
 * [sys.numbered_procedures](https://msdn.microsoft.com/library/ms179865.aspx)
-* [sys.对象](https://msdn.microsoft.com/library/ms190324.aspx)
+* [sys.objects](https://msdn.microsoft.com/library/ms190324.aspx)
 * [sys.parameters](https://msdn.microsoft.com/library/ms176074.aspx)
 * [sys.partition_functions](https://msdn.microsoft.com/library/ms187381.aspx)
 * [sys.partition_parameters](https://msdn.microsoft.com/library/ms175054.aspx)
@@ -145,17 +149,18 @@ ms.locfileid: "80350266"
 * [sys.types](https://msdn.microsoft.com/library/ms188021.aspx)
 * [sys.views](https://msdn.microsoft.com/library/ms190334.aspx)
 
-## <a name="sql-server-dmvs-available-in-sql-analytics"></a>SQL 服务器 DMV 在 SQL 分析中可用
-SQL 分析公开了许多 SQL Server 动态管理视图 （DMV）。 这些视图在 SQL Analytics 中查询时，将报告在分发上运行的 SQL 数据库的状态。
+## <a name="sql-server-dmvs-available-in-synapse-sql-pool"></a>Sql 服务器 DMV 在 Synapse SQL 池中可用
 
-SQL 分析和并行数据仓库 （PDW） 使用相同的系统视图。 每个 DMV 都有名为 pdw_node_id（它是计算节点的标识符）的列。 
+突触 SQL 池公开了许多 SQL Server 动态管理视图 （DMV）。 这些视图在 Synapse SQL 池中查询时，会报告在分发上运行的 SQL 数据库的状态。
+
+突触 SQL 池和并行数据仓库 （PDW） 使用相同的系统视图。 每个 DMV 都有名为 pdw_node_id（它是计算节点的标识符）的列。 
 
 > [!NOTE]
 > 若要使用这些视图，请在名称中插入“pdw_nodes_”，如下表所示：
 > 
 > 
 
-| SQL 分析中的 DMV 名称 | SQL Server Transact-SQL 文章|
+| Synapse SQL 池中的 DMV 名称 | SQL Server Transact-SQL 文章|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
@@ -211,18 +216,19 @@ SQL 分析和并行数据仓库 （PDW） 使用相同的系统视图。 每个 
 | sys.dm_pdw_nodes_tran_active_transactions |[sys.dm_tran_active_transactions](https://msdn.microsoft.com/library/ms174302.aspx) |
 | sys.dm_pdw_nodes_tran_commit_table |[sys.dm_tran_commit_table](https://msdn.microsoft.com/library/cc645959.aspx) |
 | sys.dm_pdw_nodes_tran_current_snapshot |[sys.dm_tran_current_snapshot](https://msdn.microsoft.com/library/ms184390.aspx) |
-| sys.dm_pdw_nodes_tran_current_transaction |[系统dm_tran_current_transaction](https://msdn.microsoft.com/library/ms186327.aspx) |
+| sys.dm_pdw_nodes_tran_current_transaction |[sys.dm_tran_current_transaction](https://msdn.microsoft.com/library/ms186327.aspx) |
 | sys.dm_pdw_nodes_tran_database_transactions |[sys.dm_tran_database_transactions](https://msdn.microsoft.com/library/ms186957.aspx) |
 | sys.dm_pdw_nodes_tran_locks |[sys.dm_tran_locks](https://msdn.microsoft.com/library/ms190345.aspx) |
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](https://msdn.microsoft.com/library/ms188739.aspx) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](https://msdn.microsoft.com/library/ms188778.aspx) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-analytics"></a>SQL 服务器 2016 PolyBase DMV 在 SQL 分析中可用
-以下 DMV 适用于 SQL 分析，但必须通过连接到**主**数据库来执行。
+## <a name="sql-server-2016-polybase-dmvs-available-in-synapse-sql-pool"></a>SQL 服务器 2016 PolyBase DMV 在 Synapse SQL 池中可用
+
+以下 DMV 适用于 Synapse SQL 池，但必须通过连接到**主**数据库来执行。
 
 * [sys.dm_exec_compute_node_errors](https://msdn.microsoft.com/library/mt146380.aspx)
 * [sys.dm_exec_compute_node_status](https://msdn.microsoft.com/library/mt146382.aspx)
-* [系统dm_exec_compute_nodes](https://msdn.microsoft.com/library/mt130700.aspx)
+* [sys.dm_exec_compute_nodes](https://msdn.microsoft.com/library/mt130700.aspx)
 * [sys.dm_exec_distributed_request_steps](https://msdn.microsoft.com/library/mt130701.aspx)
 * [sys.dm_exec_distributed_requests](https://msdn.microsoft.com/library/mt146385.aspx)
 * [sys.dm_exec_distributed_sql_requests](https://msdn.microsoft.com/library/mt146390.aspx)
@@ -232,15 +238,17 @@ SQL 分析和并行数据仓库 （PDW） 使用相同的系统视图。 每个 
 * [sys.dm_exec_external_work](https://msdn.microsoft.com/library/mt146375.aspx)
 
 ## <a name="sql-server-information_schema-views"></a>SQL Server INFORMATION_SCHEMA 视图
+
 * [CHECK_CONSTRAINTS](https://msdn.microsoft.com/library/ms189772.aspx)
-* [列](https://msdn.microsoft.com/library/ms188348.aspx)
+* [COLUMNS](https://msdn.microsoft.com/library/ms188348.aspx)
 * [参数](https://msdn.microsoft.com/library/ms173796.aspx)
 * [ROUTINES](https://msdn.microsoft.com/library/ms188757.aspx)
 * [SCHEMATA](https://msdn.microsoft.com/library/ms182642.aspx)
-* [表](https://msdn.microsoft.com/library/ms186224.aspx)
+* [TABLES](https://msdn.microsoft.com/library/ms186224.aspx)
 * [VIEW_COLUMN_USAGE](https://msdn.microsoft.com/library/ms190492.aspx)
 * [VIEW_TABLE_USAGE](https://msdn.microsoft.com/library/ms173869.aspx)
-* [视图](https://msdn.microsoft.com/library/ms181381.aspx)
+* [VIEWS](https://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息参考信息，请参阅[SQL 分析 中的 T-SQL 语句](sql-data-warehouse-reference-tsql-statements.md)和[SQL 分析 中的 T-SQL 语言元素](sql-data-warehouse-reference-tsql-language-elements.md)。
+
+有关详细信息，请参阅[Synapse SQL 池中的 T-SQL 语句](sql-data-warehouse-reference-tsql-statements.md)，以及[Synapse SQL 池中的 T-SQL 语言元素](sql-data-warehouse-reference-tsql-language-elements.md)。
