@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 6804834dab81b0774dd29b1ede836492d0dfea4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5db99a9d500b05fa6886dce2f29087920f8a1790
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78384017"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659091"
 ---
 若要创建 Visual Studio 项目以用于通用 Windows 平台 (UWP) 开发，需要设置 Visual Studio 开发选项，创建项目，选择目标体系结构，设置音频捕获，然后安装语音 SDK。
 
@@ -104,4 +104,4 @@ ms.locfileid: "78384017"
 
 1. 在“预览更改”  对话框中，选择“确定”  。
 
-1. 在“接受许可证”  对话框中，查看许可证，然后选择“我接受”  。 包安装开始，安装完成后，“输出”  窗格将显示类似于以下文本的消息：`Successfully installed 'Microsoft.CognitiveServices.Speech 1.10.0' to helloworld`。
+1. 在“接受许可证”  对话框中，查看许可证，然后选择“我接受”  。 包安装开始，安装完成后，“输出”  窗格将显示类似于以下文本的消息：`Successfully installed 'Microsoft.CognitiveServices.Speech 1.11.0' to helloworld`。

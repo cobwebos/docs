@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 6dcbf0ad0f6678d892c5c02446cac09b4325384c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d3525bc7a25550a79ceeb008e3c69c77a56aa0a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283644"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632872"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>使用 Apache Kafka 应用程序中的 Azure 事件中心
 事件中心提供 Kafka 终结点，现有的基于 Kafka 的应用程序可将该终结点用作运行你自己的 Kafka 群集的替代方案。 事件中心支持 [Apache Kafka 协议 1.0 及更高版本](https://kafka.apache.org/documentation/)，并且可与现有 Kafka 应用程序（包括 MirrorMaker）配合使用。  
@@ -94,16 +94,6 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 *   Kafka Stream
 
 ## <a name="next-steps"></a>后续步骤
-
-本文介绍了适用于 Kafka 的事件中心。 若要了解详细信息，请参阅下列链接：
-
-- [如何创建事件中心](event-hubs-create.md)
-- [从 Kafka 应用程序流式传输到事件中心](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [在事件中心镜像 Kafka 代理](event-hubs-kafka-mirror-maker-tutorial.md)
-- [将 Apache Spark 连接到事件中心](event-hubs-kafka-spark-tutorial.md)
-- [将 Apache Flink 连接到事件中心](event-hubs-kafka-flink-tutorial.md)
-- [将卡夫卡连接与事件中心集成](event-hubs-kafka-connect-tutorial.md)
-- [将 Akka 流连接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
-- [了解 GitHub 上的示例](https://github.com/Azure/azure-event-hubs-for-kafka)
+本文介绍了适用于 Kafka 的事件中心。 要了解更多信息，请参阅[Azure 活动中心的 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)。
 
 

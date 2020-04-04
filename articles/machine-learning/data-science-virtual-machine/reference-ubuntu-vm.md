@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 5c184e7f1dc828c3f9ff8d449d29ab3aaa4d1cf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 830668a78929a5e6a7e131ade5c62b81e6d725c3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525815"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631372"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>参考： Ubuntu（Linux） 数据科学虚拟机
 
@@ -239,9 +239,9 @@ VM 上安装有以下 Azure 工具：
 
 ## <a name="azure-machine-learning"></a>Azure 机器学习
 
-Azure 机器学习是完全托管的云服务，允许构建、部署和共享预测分析解决方案。 可以从 Azure 机器学习工作室（经典）中构建实验和模型。 可从 Data Science Virtual Machine 上的 Web 浏览器，通过访问 [Microsoft Azure 机器学习](https://studio.azureml.net)来访问 Azure 机器学习工作室。
+Azure 机器学习是完全托管的云服务，允许构建、部署和共享预测分析解决方案。 您可以在 Azure 机器学习工作室（预览）中构建实验和模型。 可从 Data Science Virtual Machine 上的 Web 浏览器，通过访问 [Microsoft Azure 机器学习](https://ml.azure.com)来访问 Azure 机器学习工作室。
 
-登录到 Azure 机器学习工作室（经典）后，可以使用试验画布来生成机器学习算法的逻辑流。 还可以访问在 Azure 机器学习上托管的 Jupyter 笔记本，并且可以无缝使用 Azure 机器学习工作室（经典）中的试验。 
+登录到 Azure 机器学习工作室后，可以使用实验画布为机器学习算法构建逻辑流。 您还可以访问托管在 Azure 机器学习上并可无缝配合 Azure 机器学习工作室中实验的 Jupyter 笔记本。 
 
 通过将已构建的机器学习模型包装在 Web 服务接口中，来对它们执行操作。 实施机器学习模型使得以任何语言编写的客户端都能从这些模型中调用预测。 有关详细信息，请参阅[机器学习文档](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
@@ -329,7 +329,7 @@ rattle()
 > [!NOTE]
 > 如果无权在系统目录（默认）中安装包，可能会在 R 控制台窗口中看到一个提示，提醒将包安装到个人库中。 如果看到这些提示，请回复 y****。
 
-1. 选择“执行”****。
+1. 选择 **"执行**"。
 1. 此时会显示一个对话框，询问是否要使用示例气象数据集。 选择“是”以加载示例。****
 1. 选择"**模型"** 选项卡。
 1. 选择“执行”以生成决策树。****

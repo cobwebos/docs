@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: a233a9deb58a7c1abc87a622a4f1f2581ee2e477
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2dbbe6bcd4957a108cc3eae4d41816b130cf8f07
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62125791"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633870"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务在 StorSimple 虚拟阵列上管理卷
 
@@ -44,7 +44,7 @@ StorSimple 卷可以是：
 | 分层卷的大小下限                            | 500 GB        |
 | 分层卷的大小上限                            | 5 TB          |
 | 本地固定卷的大小下限                    | 50 GB         |
-| 本地固定卷的大小上限                    | 500 GB        |
+| 本地固定卷的大小上限                    | 200 GB        |
 
 ## <a name="the-volumes-blade"></a>“卷”边栏选项卡
 StorSimple 服务摘要边栏选项卡上的“卷”**** 菜单显示给定 StorSimple 阵列上的存储卷列表，并允许用户管理它们。

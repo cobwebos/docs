@@ -4,12 +4,12 @@ description: 了解如何在 Azure 库伯奈斯服务 （AKS） 中定义自定�
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: fa64294939ea487b3123d1db5ef6c8a5f30fcf72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30b7b6bae92221b268d40977f5b299e9b0b267b0
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129393"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637828"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>使用用户定义的路由自定义群集出口（预览）
 
@@ -360,6 +360,12 @@ CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/32
 
 ```
+
+ 使用 [az aks 获取凭据] [az-aks 获取凭据] 命令`kubectl`进行配置以连接到新创建的 Kubernetes 群集。 
+
+ ```azure-cli
+ az aks get-credentials -g $RG -n $AKS_NAME
+ ```
 
 ### <a name="setup-the-internal-load-balancer"></a>设置内部负载均衡器
 

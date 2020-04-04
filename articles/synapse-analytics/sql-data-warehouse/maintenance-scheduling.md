@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: f193580ca03d4b1805f3c044658a34f468f3f44f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 43fc32e910c51e8b70e15aa49584a18e5b703fca
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346564"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631587"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>使用维护计划管理服务更新和维护
 
-维护计划功能集成了 Azure Synapse 分析中的 Synapse SQL 池（数据仓库）的服务运行状况计划维护通知、资源运行状况检查监视器和维护计划服务。 
+维护计划功能集成了 Azure Synapse 分析中的 Synapse SQL 池（数据仓库）的服务运行状况计划维护通知、资源运行状况检查监视器和维护计划服务。
 
 应使用维护计划选择一个方便接收新功能、升级和修补程序的时间范围。 你将需要选择 7 天内的主要和辅助维护时段，每个时段必须在单独的日期范围内。
 
@@ -48,52 +48,55 @@ ms.locfileid: "80346564"
 
 即使维护计划在所选的区域中不可用，也随时可以查看和编辑维护计划。 当维护计划在您所在区域可用时，已识别的计划将立即在 Synapse SQL 池上处于活动状态。
 
-## <a name="view-a-maintenance-schedule"></a>查看维护计划 
+## <a name="view-a-maintenance-schedule"></a>查看维护计划
 
 默认情况下，所有新创建的数据仓库实例在部署期间都应用了 8 小时主维护和辅助维护窗口。 如上所述，部署完成后，你可以更改此时段。 在未事先通知的情况下，不会在指定的维护时段外进行维护。
 
 要查看已应用于 Synapse SQL 池的维护计划，请完成以下步骤：
 
-1.    登录到 Azure[门户](https://portal.azure.com/)。
-2.    选择要查看的 Synapse SQL 池。 
-3.    选定的 Synapse SQL 池将在概述边栏选项卡上打开。 应用于该数据仓库的维护计划将显示在“维护计划”下方。****
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+2. 选择要查看的 Synapse SQL 池。
+3. 选定的 Synapse SQL 池将在概述边栏选项卡上打开。 应用于该数据仓库的维护计划将显示在“维护计划”下方。****
 
 ![概述边栏选项卡](./media/maintenance-scheduling/clear-overview-blade.PNG)
 
-## <a name="change-a-maintenance-schedule"></a>更改维护计划 
+## <a name="change-a-maintenance-schedule"></a>更改维护计划
 
-可以在任何时间更新或更改维护计划。 如果所选的实例正在经历活动维护周期，将保存设置。 在下一个确定的维护周期，它们将处于活动状态。 [详细了解](../../service-health/resource-health-overview.md)在活动维护事件期间监视数据仓库。 
+可以在任何时间更新或更改维护计划。 如果所选的实例正在经历活动维护周期，将保存设置。 在下一个确定的维护周期，它们将处于活动状态。 [详细了解](../../service-health/resource-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)在活动维护事件期间监视数据仓库。
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>确定主要和辅助时段
 
 主要和辅助时段必须包含不同的日期范围。 例如，主要时段为星期二到星期四，辅助时段为星期六到星期日。
 
 要更改 Synapse SQL 池的维护计划，请完成以下步骤：
-1.    登录到 Azure[门户](https://portal.azure.com/)。
-2.    选择要更新的 Synapse SQL 池。 页面将在概述边栏选项卡上打开。 
-3.    通过选择概览边栏选项卡上的**维护计划摘要**链接，打开页面以进行维护计划设置。 或者，选择左侧资源菜单中的“维护计划”选项。****  
+
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+2. 选择要更新的 Synapse SQL 池。 页面将在概述边栏选项卡上打开。
+通过选择概览边栏选项卡上的**维护计划摘要**链接，打开页面以进行维护计划设置。 或者，选择左侧资源菜单中的“维护计划”选项。****
 
     ![概述边栏选项卡选项](./media/maintenance-scheduling/maintenance-change-option.png)
 
-4. 使用页面顶部的选项确定主要维护时段的首选日期范围。 此选择确定主要时段会出现在工作日还是周末。 所做的选择会更新下拉列表值。 在预览期，某些区域可能尚不支持完整的可用“日期”选项集。****
+3. 使用页面顶部的选项确定主要维护时段的首选日期范围。 此选择确定主要时段会出现在工作日还是周末。 所做的选择会更新下拉列表值。
+在预览期，某些区域可能尚不支持完整的可用“日期”选项集。****
 
    ![维护设置边栏选项卡](./media/maintenance-scheduling/maintenance-settings-page.png)
 
-5. 使用下拉列表框选择首选的主要和辅助维护时段：
+4. 使用下拉列表框选择首选的主要和辅助维护时段：
    - **日期**：在所选时段内执行维护的首选日期。
    - **开始时间**：维护时段的首选开始时间。
    - **时间范围**：时间范围的首选持续时间。
 
-   边栏选项卡底部的“计划摘要”区域将根据所选的值更新。**** 
+   边栏选项卡底部的“计划摘要”区域将根据所选的值更新。****
   
-6. 选择“保存”。**** 此时会显示一条消息，确认新计划现已处于活动状态。 
+5. 选择“保存”。  此时会显示一条消息，确认新计划现已处于活动状态。
 
-   如果要在不支持维护计划的区域中保存计划，则会显示以下消息。 当此功能在所选区域中可用时，设置将会保存并且变为活动状态。    
+   如果要在不支持维护计划的区域中保存计划，则会显示以下消息。 当此功能在所选区域中可用时，设置将会保存并且变为活动状态。
 
    ![有关区域可用性的消息](./media/maintenance-scheduling/maintenance-not-active-toast.png)
 
 ## <a name="next-steps"></a>后续步骤
-- [详细了解](../../azure-monitor/platform/alerts-metric.md)如何使用 Azure Monitor 创建、查看和管理警报。
-- [详细了解](../..//azure-monitor/platform/alerts-log-webhook.md)用于日志警报规则的 Webhook 操作。
-- [深入了解](../..//azure-monitor/platform/action-groups.md)创建和管理操作组。
-- [了解有关](../../service-health/service-health-overview.md)Azure 服务运行状况的更多详细信息。
+
+- [详细了解](../../azure-monitor/platform/alerts-metric.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)如何使用 Azure Monitor 创建、查看和管理警报。
+- [详细了解](../..//azure-monitor/platform/alerts-log-webhook.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)用于日志警报规则的 Webhook 操作。
+- [深入了解](../..//azure-monitor/platform/action-groups.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)创建和管理操作组。
+- [了解有关](../../service-health/service-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)Azure 服务运行状况的更多详细信息。

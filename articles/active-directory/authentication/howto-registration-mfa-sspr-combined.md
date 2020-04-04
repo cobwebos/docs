@@ -4,19 +4,19 @@ description: 启用组合 Azure AD 多重身份验证和自助服务密码重置
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f454b0296a3463d7346c2945b21162e5a38c0eb7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425150"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652512"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>启用组合安全信息注册（预览）
 
@@ -48,7 +48,7 @@ ms.locfileid: "75425150"
 > 从 2019 年 3 月开始，免费/试用 Azure AD 租户中的多重身份验证和 SSPR 用户将不能使用电话呼叫选项。 SMS 消息不受此更改的影响。 电话呼叫选项仍可供付费 Azure AD 租户中的用户使用。
 
 > [!NOTE]
-> 启用合并注册后，通过新体验注册或确认其电话号码或移动应用的用户可以使用它们进行多重身份验证和 SSPR，如果这些方法在多重身份验证和 SSPR 中启用政策。 如果随后禁用此体验，则转到以前的 SSPR 注册页`https://aka.ms/ssprsetup`的用户将需要执行多重身份验证，然后才能访问该页面。
+> 启用合并注册后，通过新体验注册或确认其电话号码或移动应用的用户可以使用它们进行多重身份验证和 SSPR，如果这些方法在多重身份验证和 SSPR 策略中启用。 如果随后禁用此体验，则转到以前的 SSPR 注册页`https://aka.ms/ssprsetup`的用户将需要执行多重身份验证，然后才能访问该页面。
 
 如果在 Internet 资源管理器中配置了站点到区域分配列表，则以下站点必须位于同一区域中：
 

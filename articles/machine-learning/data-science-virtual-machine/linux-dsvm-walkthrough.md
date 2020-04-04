@@ -8,13 +8,13 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
-ms.date: 07/16/2018
-ms.openlocfilehash: 1d15d53816d916bd28841aae39255685524faa2d
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 04/02/2020
+ms.openlocfilehash: 7292064a1df8aa9bfffcd9a19a03f7b332c0615e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477871"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632733"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 上的 Linux Data Science Virtual Machine 中的数据科学
 
@@ -45,16 +45,22 @@ ms.locfileid: "80477871"
 
 若要下载数据，打开终端窗口，然后运行以下命令：
 
-    wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+```bash
+wget --no-check-certificate https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+```
 
 下载的文件没有标头行。 接下来创建另一个具有标头的文件。 运行以下命令来创建具有适当标头的文件：
 
-    echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
+```bash
+echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
+```
 
 然后将两个文件相连接：
 
-    cat spambase.data >> headers
-    mv headers spambaseHeaders.data
+```bash
+cat spambase.data >> headers
+mv headers spambaseHeaders.data
+```
 
 数据集内有多种关于每封电子邮件的统计信息：
 
@@ -71,51 +77,69 @@ ms.locfileid: "80477871"
 
 若要获取本演练中使用的代码示例的副本，请使用 git 克隆 Azure-Machine-Learning-Data-Science 存储库。 Git 已预装在 DSVM 上。 从 git 命令行运行：
 
-    git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
+```bash
+git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
+```
 
 打开终端窗口，在 R 交互式控制台中启动一个新的 R 会话。 此外还可以使用 DSVM 上预安装的 RStudio。
 
 若要导入数据并设置环境：
 
-    data <- read.csv("spambaseHeaders.data")
-    set.seed(123)
+```R
+data <- read.csv("spambaseHeaders.data")
+set.seed(123)
+```
 
 若要查看有关每列的汇总统计信息：
 
-    summary(data)
+```R
+summary(data)
+```
 
 有关数据的不同视图：
 
-    str(data)
+```R
+str(data)
+```
 
 此视图会显示数据集中每个变量的类型以及开始的几个值。
 
 **spam** 列作为一个整数被读取，但实际上它是一个分类变量 （或系数）。 若要设置其类型：
 
-    data$spam <- as.factor(data$spam)
+```R
+data$spam <- as.factor(data$spam)
+```
 
 若要进行一些探索性分析，请使用 [ggplot2](https://ggplot2.tidyverse.org/) 程序包，它是 DSVM 上预安装的适用于 R 的常用绘图库。 根据前面显示的摘要数据，我们已经获得有关感叹号字符的频率的汇总统计信息。 让我们运行以下命令来绘制这些频率：
 
-    library(ggplot2)
-    ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+library(ggplot2)
+ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
 由于零轴会影响绘图的准确性，让我们将其删除：
 
-    email_with_exclamation = data[data$char_freq_exclamation > 0, ]
-    ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+email_with_exclamation = data[data$char_freq_exclamation > 0, ]
+ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
 在 1 上面有看起来很有意思的不寻常密度。 让我们只看该数据：
 
-    ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
 然后按垃圾邮件与非垃圾邮件来拆分它：
 
-    ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
-    geom_density(lty=3) +
-    geom_density(aes(fill=spam, colour=spam), alpha=0.55) +
-    xlab("spam") +
-    ggtitle("Distribution of spam \nby frequency of !") +
-    labs(fill="spam", y="Density")
+```R
+ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
+geom_density(lty=3) +
+geom_density(aes(fill=spam, colour=spam), alpha=0.55) +
+xlab("spam") +
+ggtitle("Distribution of spam \nby frequency of !") +
+labs(fill="spam", y="Density")
+```
 
 这些示例应有助于绘制类似的绘图和探索其他列中的数据。
 
@@ -128,16 +152,20 @@ ms.locfileid: "80477871"
 
 首先，让我们将该数据集拆分为训练集和测试集：
 
-    rnd <- runif(dim(data)[1])
-    trainSet = subset(data, rnd <= 0.7)
-    testSet = subset(data, rnd > 0.7)
+```R
+rnd <- runif(dim(data)[1])
+trainSet = subset(data, rnd <= 0.7)
+testSet = subset(data, rnd > 0.7)
+```
 
 然后创建决策树，将电子邮件分类：
 
-    require(rpart)
-    model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
-    plot(model.rpart)
-    text(model.rpart)
+```R
+require(rpart)
+model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
+plot(model.rpart)
+text(model.rpart)
+```
 
 结果如下：
 
@@ -145,99 +173,37 @@ ms.locfileid: "80477871"
 
 若要确定它对训练集的执行情况，请使用下面的代码：
 
-    trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
-    t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
+```R
+trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
+t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
 若要确定它对测试集的执行情况，请使用下面的代码：
 
-    testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
-    t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
+```R
+testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
+t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
 让我们也尝试一个随机林模型。 随机森林模型训练大量的决策树并输出一个类，该类是来自所有单个决策树的分类模式。 它们提供了更强大的机器学习方法，因为他们会校正决策树模型过拟合 (overfit) 数据集的趋势。
 
-    require(randomForest)
-    trainVars <- setdiff(colnames(data), 'spam')
-    model.rf <- randomForest(x=trainSet[, trainVars], y=trainSet$spam)
+```R
+require(randomForest)
+trainVars <- setdiff(colnames(data), 'spam')
+model.rf <- randomForest(x=trainSet[, trainVars], y=trainSet$spam)
 
-    trainSetPred <- predict(model.rf, newdata = trainSet[, trainVars], type = "class")
-    table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
+trainSetPred <- predict(model.rf, newdata = trainSet[, trainVars], type = "class")
+table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
 
-    testSetPred <- predict(model.rf, newdata = testSet[, trainVars], type = "class")
-    t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
-
-
-## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>将模型部署到 Azure 机器学习工作室（经典版）
-
-[Azure 机器学习工作室（经典版）](https://studio.azureml.net/)是一种云服务，可用来轻松地生成和部署预测分析模型。 Azure 机器学习工作室（经典版）的一个出色功能是能够将任何 R 函数发布为 Web 服务。 Azure 机器学习工作室（经典版） R 程序包使得从 DSVM 上的 R 会话执行部署更加简便直接。
-
-要部署前一部分中的决策树代码，请登录 Azure 机器学习工作室（经典版）。 需要使用工作区 ID 和授权令牌进行登录。 若要查找这些值并使用它们初始化 Azure 机器学习变量，请执行以下步骤：
-
-1. 在左侧菜单中，选择“设置”****。 记下“工作区 ID”的值****。
-
-   ![Azure 机器学习工作室（经典版）工作区 ID](./media/linux-dsvm-walkthrough/workspace-id.png)
-
-1. 选择 **"授权令牌"** 选项卡。请注意**主授权令牌**的值。
-
-   ![Azure 机器学习工作室（经典版）主授权令牌](./media/linux-dsvm-walkthrough/workspace-token.png)
-1. 加载**AzureML**包，然后在 DSVM 上的 R 会话中使用令牌和工作区 ID 设置变量的值：
-
-        if(!require("devtools")) install.packages("devtools")
-        devtools::install_github("RevolutionAnalytics/AzureML")
-        if(!require("AzureML")) install.packages("AzureML")
-        require(AzureML)
-        wsAuth = "<authorization-token>"
-        wsID = "<workspace-id>"
-
-1. 让我们简化模型，使此演示更易实现。 在离根最近的决策树中选取三个变量，然后只使用这三个变量构建新的树：
-
-        colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
-        smallTrainSet <- trainSet[, colNames]
-        smallTestSet <- testSet[, colNames]
-        model.rpart <- rpart(spam ~ ., method = "class", data = smallTrainSet)
-
-1. 我们需要一个预测函数将这些功能作为输入并返回预测值：
-
-        predictSpam <- function(newdata) {
-        predictDF <- predict(model.rpart, newdata = newdata)
-        return(colnames(predictDF)[apply(predictDF, 1, which.max)])
-        }
-
-1. 为此工作区创建设置.json 文件：
-
-        vim ~/.azureml/settings.json
-
-1. 确保将以下内容放在设置中：
-
-         {"workspace":{
-           "id": "<workspace-id>",
-           "authorization_token": "<authorization-token>",
-           "api_endpoint": "https://studioapi.azureml.net",
-           "management_endpoint": "https://management.azureml.net"
-         }
-
-
-1. 使用 publishWebService 函数将 predictSpam 函数发布到 AzureML********：
-
-        ws <- workspace()
-        spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
-
-1. 此函数会采用 predictSpam 函数创建一个名为 spamWebService 并且定义了输入和输出的 web 服务，然后返回有关新的终结点的信息********。
-
-    使用以下命令查看最新发布的 web 服务的详细信息，包括其 API 终结点和访问密钥：
-
-        s<-tail(services(ws, name = "spamWebService"), 1)
-        ep <- endpoints(ws,s)
-        ep
-
-1. 若要尝试测试集的前 10 行：
-
-        consume(ep, smallTestSet[1:10, ])
+testSetPred <- predict(model.rf, newdata = testSet[, trainVars], type = "class")
+t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
 <a name="deep-learning"></a>
 
@@ -268,19 +234,21 @@ ms.locfileid: "80477871"
 
 [XGBoost](https://xgboost.readthedocs.org/en/latest/) 可提供快速、准确的提升树实现。
 
-    require(xgboost)
-    data <- read.csv("spambaseHeaders.data")
-    set.seed(123)
+```R
+require(xgboost)
+data <- read.csv("spambaseHeaders.data")
+set.seed(123)
 
-    rnd <- runif(dim(data)[1])
-    trainSet = subset(data, rnd <= 0.7)
-    testSet = subset(data, rnd > 0.7)
+rnd <- runif(dim(data)[1])
+trainSet = subset(data, rnd <= 0.7)
+testSet = subset(data, rnd > 0.7)
 
-    bst <- xgboost(data = data.matrix(trainSet[,0:57]), label = trainSet$spam, nthread = 2, nrounds = 2, objective = "binary:logistic")
+bst <- xgboost(data = data.matrix(trainSet[,0:57]), label = trainSet$spam, nthread = 2, nrounds = 2, objective = "binary:logistic")
 
-    pred <- predict(bst, data.matrix(testSet[, 0:57]))
-    accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
-    print(paste("test accuracy = ", accuracy))
+pred <- predict(bst, data.matrix(testSet[, 0:57]))
+accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
+print(paste("test accuracy = ", accuracy))
+```
 
 还可以从 Python 或命令行调用 XGBoost。
 
@@ -293,45 +261,52 @@ ms.locfileid: "80477871"
 
 让我们读入部分 spambase 数据集，并使用 scikit-learn 中的支持向量机 (support vector machine) 对电子邮件进行分类：
 
-    import pandas
-    from sklearn import svm
-    data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
-    X = data.ix[:, 0:57]
-    y = data.ix[:, 57]
-    clf = svm.SVC()
-    clf.fit(X, y)
+```Python
+import pandas
+from sklearn import svm
+data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
+X = data.ix[:, 0:57]
+y = data.ix[:, 57]
+clf = svm.SVC()
+clf.fit(X, y)
+```
 
 若要进行预测:
 
-    clf.predict(X.ix[0:20, :])
+```Python
+clf.predict(X.ix[0:20, :])
+```
 
 为演示如何发布 Azure 机器学习终结点，接下来创建更基本的模型。 我们将使用之前发布 R 模型时使用的三个变量：
 
-    X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
-    y = data.ix[:, 57]
-    clf = svm.SVC()
-    clf.fit(X, y)
+```Python
+X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
+y = data.ix[:, 57]
+clf = svm.SVC()
+clf.fit(X, y)
+```
 
 若要将模型发布到 Azure 机器学习：
 
-    # Publish the model.
-    workspace_id = "<workspace-id>"
-    workspace_token = "<workspace-token>"
-    from azureml import services
-    @services.publish(workspace_id, workspace_token)
-    @services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
-    @services.returns(int) # 0 or 1
-    def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
-        inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
-        return clf.predict(inputArray)
+```Python
+# Publish the model.
+workspace_id = "<workspace-id>"
+workspace_token = "<workspace-token>"
+from azureml import services
+@services.publish(workspace_id, workspace_token)
+@services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
+@services.returns(int) # 0 or 1
+def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
+    inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
+    return clf.predict(inputArray)
 
-    # Get some info about the resulting model.
-    predictSpam.service.url
-    predictSpam.service.api_key
+# Get some info about the resulting model.
+predictSpam.service.url
+predictSpam.service.api_key
 
-    # Call the model
-    predictSpam.service(1, 1, 1)
-
+# Call the model
+predictSpam.service(1, 1, 1)
+```
 
 > [!NOTE]
 > 此选项仅适用于 Python 2.7。 Python 3.5 尚不支持。 若要运行，请使用 /anaconda/bin/python2.7****。
@@ -343,14 +318,14 @@ ms.locfileid: "80477871"
 > [!NOTE]
 > 若要在当前内核中从 Jupyter Notebook 使用 Python 包管理器（通过 `pip` 命令），可以在代码单元中使用以下命令：
 >
->   ```python
+>   ```Python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
 > 若要在当前内核中从 Jupyter Notebook 使用 Conda 安装程序（通过 `conda` 命令），可以在代码单元中使用以下命令：
 >
->   ```python
+>   ```Python
 >    import sys
 >    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
 >   ```
@@ -372,9 +347,11 @@ DSVM 上已安装了几个示例 Notebook：
 
 运行以下命令安装和启动 Rattle：
 
-    if(!require("rattle")) install.packages("rattle")
-    require(rattle)
-    rattle()
+```R
+if(!require("rattle")) install.packages("rattle")
+require(rattle)
+rattle()
+```
 
 > [!NOTE]
 > 无需在 DSVM 上安装 Rattle。 但 Rattle 打开时，系统可能会提示安装其他程序包。
@@ -452,48 +429,64 @@ DSVM 已预安装 PostgreSQL。 PostgreSQL 是一个复杂的开源关系数据�
 
 在可以加载数据之前，必须允许来自 localhost 的密码身份验证。 在命令提示符处运行以下命令：
 
-    sudo gedit /var/lib/pgsql/data/pg_hba.conf
+```Bash
+sudo gedit /var/lib/pgsql/data/pg_hba.conf
+```
 
 配置文件的底部附近的几行详细说明了允许的连接数：
 
-    # "local" is only for Unix domain socket connections:
-    local   all             all                                     trust
-    # IPv4 local connections:
-    host    all             all             127.0.0.1/32            ident
-    # IPv6 local connections:
-    host    all             all             ::1/128                 ident
+```
+# "local" is only for Unix domain socket connections:
+local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            ident
+# IPv6 local connections:
+host    all             all             ::1/128                 ident
+```
 
 更改 IPv4 local connections 行，以便使用 md5，而不是 ident，这样我们可以使用用户名和密码登录************：
 
-    # IPv4 local connections:
-    host    all             all             127.0.0.1/32            md5
+```
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+```
 
 然后重启 PostgreSQL 服务：
 
-    sudo systemctl restart postgresql
+```Bash
+sudo systemctl restart postgresql
+```
 
 若要作为内置 postgres 用户启动 psql（PostgreSQL 的交互式终端），请运行以下命令**：
 
-    sudo -u postgres psql
+```Bash
+sudo -u postgres psql
+```
 
 使用登录所用的 Linux 帐户的用户名新建用户帐户。 创建密码：
 
-    CREATE USER <username> WITH CREATEDB;
-    CREATE DATABASE <username>;
-    ALTER USER <username> password '<password>';
-    \quit
+```Bash
+CREATE USER <username> WITH CREATEDB;
+CREATE DATABASE <username>;
+ALTER USER <username> password '<password>';
+\quit
+```
 
 登录 psql：
 
-    psql
+```Bash
+psql
+```
 
 将数据导入新的数据库：
 
-    CREATE DATABASE spam;
-    \c spam
-    CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer);
-    \copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
-    \quit
+```SQL
+CREATE DATABASE spam;
+\c spam
+CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer);
+\copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
+\quit
+```
 
 现在，让我们来浏览数据并使用 Squirrel SQL 运行一些查询 - Squirrel SQL 是一种图形工具，可用于通过 JDBC 驱动程序与数据库交互。
 
@@ -525,11 +518,15 @@ DSVM 已预安装 PostgreSQL。 PostgreSQL 是一个复杂的开源关系数据�
 
 可以运行更多查询来浏览此数据。 例如，在垃圾邮件和非垃圾邮件之间单词 *make* 的频率存在何种差异？
 
-    SELECT avg(word_freq_make), spam from data group by spam;
+```SQL
+SELECT avg(word_freq_make), spam from data group by spam;
+```
 
 或者，经常包含*3d*的电子邮件有哪些特征？
 
-    SELECT * from data order by word_freq_3d desc;
+```SQL
+SELECT * from data order by word_freq_3d desc;
+```
 
 3d 出现率高的电子邮件显然大都是垃圾邮件**。 此信息可能有助于构建预测模型来对电子邮件进行分类。
 
@@ -541,24 +538,32 @@ Azure SQL 数据仓库是一种基于云的向外扩展数据库，可以处理�
 
 若要连接到数据仓库并创建表，请从命令提示符运行以下命令：
 
-    sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
+```Bash
+sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
+```
 
 在 sqlcmd 提示符下，运行以下命令：
 
-    CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
-    GO
+```SQL
+CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
+GO
+```
 
 使用 bcp 复制数据：
 
-    bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
+```bash
+bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
+```
 
 > [!NOTE]
 > 下载的文件包含 Windows 样式的行尾。 bcp 工具需要 Unix 样式的行尾。 使用 -r 标记来区分 bcp。
 
 然后，使用 sqlcmd 进行查询：
 
-    select top 10 spam, char_freq_dollar from spam;
-    GO
+```sql
+select top 10 spam, char_freq_dollar from spam;
+GO
+```
 
 还可以使用 SQuirreL SQL 进行查询。 使用 SQL Server JDBC 驱动程序执行类似于 PostgreSQL 的步骤。 JDBC 驱动程序位于 /usr/share/java/jdbcdrivers/sqljdbc42.jar 文件夹中。
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c4e95164badaf0b255f5ee76d0fec7686c2abf8b
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 4/2/2020
+ms.openlocfilehash: 99b614de87c666d1cb1fb8a34eaafadf6fa82849
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382862"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632549"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 服务器中创建用户
 
@@ -22,6 +22,9 @@ ms.locfileid: "80382862"
 服务器管理员用户可以获得服务器的某些权限，如下所列：SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、RELOAD、PROCESS、REFERENCES、INDEX、ALTER、SHOW DATABASES、CREATE TEMPORARY TABLES、LOCK TABLES、EXECUTE、REPLICATION SLAVE、REPLICATION CLIENT、CREATE VIEW、SHOW VIEW、CREATE ROUTINE、ALTER ROUTINE、CREATE USER、EVENT、TRIGGER
 
 创建 Azure Database for MySQL 服务器后，你可以使用第一个服务器管理员用户帐户来创建其他用户，并授予这些用户管理员访问权限。 此外，服务器管理员帐户还可以用于创建只能访问各个数据库架构的权限较低的用户。
+
+> [!NOTE]
+> 不支持 SUPER 特权和 DBA 角色。 查看限制文章中[的权限](concepts-limits.md#privilege-support)，了解服务中不支持的内容。
 
 ## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>如何在 Azure Database for MySQL 中创建其他管理员用户
 

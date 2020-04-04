@@ -5,15 +5,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 04/03/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: 7c75f0d6f74fe8cf1417e0dc40a5ad01615d7057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3f369928270c77557337bfdb1037cc5174c39f2
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371077"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637966"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的 API for MongoDB 编制索引
 
@@ -35,7 +35,7 @@ Azure Cosmos DB 的蒙戈DB API 利用了 Azure Cosmos DB 的核心索引管理�
 
 `db.coll.createIndex({name:1})`
 
-一个查询将使用多个单字段索引（如果可用）。
+一个查询将使用多个单字段索引（如果可用）。 每个容器最多可以创建 500 个单字段索引。
 
 ### <a name="compound-indexes-36"></a>复合指数 （3.6）
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3bd166572cea23fbb710cd053c28f51e76ba534a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42596ba5470c6062efba4fd1050c1c9745b76e80
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476665"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637334"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用微软图形管理 Azure AD B2C 用户帐户
 
@@ -151,7 +151,7 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 
 ### <a name="code-discussion"></a>代码讨论
 
-示例代码使用[Microsoft 图形 SDK，](https://docs.microsoft.com/graph/sdks/sdks-overview)旨在简化构建访问 Microsoft Graph 的高质量、高效和弹性应用程序。 因此，您不需要直接使用所有 Microsoft 图形 API。
+示例代码使用[Microsoft 图形 SDK，](https://docs.microsoft.com/graph/sdks/sdks-overview)旨在简化构建访问 Microsoft Graph 的高质量、高效和弹性应用程序。
 
 对 Microsoft 图形 API 的任何请求都需要访问令牌进行身份验证。 该解决方案使用[Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet 包，该包提供 Microsoft 身份验证库 （MSAL） 的基于身份验证方案的包装器，以便与 Microsoft 图形 SDK 一起使用。
 

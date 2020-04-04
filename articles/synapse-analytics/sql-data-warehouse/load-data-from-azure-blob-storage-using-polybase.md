@@ -11,18 +11,19 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e17b5be0f4f3d568bd5ec836659c4444b384b2fa
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 741779e8328c38e544b1ad297e59155dab4e8c0d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583749"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633907"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>教程：加载纽约出租车数据集
 
-本教程使用 PolyBase 从全局 Azure Blob 存储帐户加载纽约出租车数据。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 执行以下操作： 
+本教程使用 PolyBase 从全局 Azure Blob 存储帐户加载纽约出租车数据。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) 执行以下操作：
 
 > [!div class="checklist"]
+>
 > * 在 Azure 门户中创建 SQL 池
 > * 在 Azure 门户中设置服务器级防火墙规则
 > * 使用 SSMS 连接到数据仓库
@@ -36,8 +37,7 @@ ms.locfileid: "80583749"
 
 ## <a name="before-you-begin"></a>在开始之前
 
-开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
-
+开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -45,9 +45,9 @@ ms.locfileid: "80583749"
 
 ## <a name="create-a-blank-database"></a>创建空数据库
 
-SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创建的。 数据库在 [Azure 资源组](../../azure-resource-manager/management/overview.md)和 [Azure SQL 逻辑服务器](../../sql-database/sql-database-features.md)中创建。 
+SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创建的。 数据库在 [Azure 资源组](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和 [Azure SQL 逻辑服务器](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中创建。
 
-按照以下步骤创建空白数据库。 
+按照以下步骤创建空白数据库。
 
 1. 选择在 Azure 门户的左上角**创建资源**。
 
@@ -55,23 +55,23 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
     ![创建数据仓库](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
-3. 使用以下信息填写窗体： 
+3. 使用以下信息填写窗体：
 
    | 设置            | 建议的值       | 说明                                                  |
    | ------------------ | --------------------- | ------------------------------------------------------------ |
-   | *名字**            | mySampleDataWarehouse | 如需有效的数据库名称，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
+   | *名字**            | mySampleDataWarehouse | 如需有效的数据库名称，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)（数据库标识符）。 |
    | **订阅**   | 订阅     | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
-   | **资源组** | myResourceGroup       | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
+   | **资源组** | myResourceGroup       | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)（命名规则和限制）。 |
    | **选择源**  | 空白数据库        | 指定创建空白数据库。 请注意，数据仓库是一种数据库。 |
 
     ![创建数据仓库](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
 
-4. 选择“服务器”，为新数据库创建并配置新服务器。**** 使用以下信息填写“新建服务器”窗体：**** 
+4. 选择“服务器”，为新数据库创建并配置新服务器。**** 使用以下信息填写“新建服务器”窗体：****
 
     | 设置                | 建议的值          | 说明                                                  |
     | ---------------------- | ------------------------ | ------------------------------------------------------------ |
-    | **服务器名称**        | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
-    | **服务器管理员登录名** | 任何有效的名称           | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
+    | **服务器名称**        | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)（命名规则和限制）。 |
+    | **服务器管理员登录名** | 任何有效的名称           | 如需有效的登录名，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)（数据库标识符）。 |
     | **密码**           | 任何有效的密码       | 密码必须至少有八个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
     | **位置**           | 任何有效的位置       | 有关区域的信息，请参阅[Azure 区域](https://azure.microsoft.com/regions/)。 |
 
@@ -79,47 +79,47 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
 5. 选择“选择”****。
 
-6. 选择**性能级别**以指定数据仓库是 Gen1 还是 Gen2，以及数据仓库单位的数量。 
+6. 选择**性能级别**以指定数据仓库是 Gen1 还是 Gen2，以及数据仓库单位的数量。
 
-7. 在本教程中，选择 SQL 池**Gen2**。 滑块默认设置为“DW1000c”****。  请尝试上下移动滑块，以查看其工作原理。 
+7. 在本教程中，选择 SQL 池**Gen2**。 滑块默认设置为“DW1000c”****。  请尝试上下移动滑块，以查看其工作原理。
 
     ![配置性能](./media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
 8. 选择“应用”。 
-9. 在预配边栏选项卡中，为空白数据库选择**排序规则**。 对于本教程，请使用默认值。 有关排序规则的详细信息，请参阅[排序规则](/sql/t-sql/statements/collations)
+9. 在预配边栏选项卡中，为空白数据库选择**排序规则**。 对于本教程，请使用默认值。 有关排序规则的详细信息，请参阅[排序规则](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-11. 完成表单后，选择 **"创建**"以预配数据库。 预配需要数分钟。 
+10. 完成表单后，选择 **"创建**"以预配数据库。 预配需要数分钟。
 
-12. 在工具栏上，选择“通知”监视部署过程。 
+11. 在工具栏上，选择“通知”监视部署过程。 
   
      ![通知](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>创建服务器级防火墙规则
 
-服务器级的防火墙，用于防止外部应用程序和工具连接到服务器或服务器上的任何数据库。 要启用连接，可以添加防火墙规则，为特定 IP 地址启用连接。  按照以下步骤为客户端的 IP 地址创建[服务器级防火墙规则](../../sql-database/sql-database-firewall-configure.md)。 
+服务器级的防火墙，用于防止外部应用程序和工具连接到服务器或服务器上的任何数据库。 要启用连接，可以添加防火墙规则，为特定 IP 地址启用连接。  按照以下步骤为客户端的 IP 地址创建[服务器级防火墙规则](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 > [!NOTE]
 > SQL 数据仓库通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。
 
-1. 部署完成后，从左侧菜单中选择**SQL 数据库**，然后在 SQL 数据库页面上选择**我的采样数据库**。 **SQL databases** 此时会打开数据库的概览页，其中显示了完全限定的服务器名称（例如 mynewserver-20180430.database.windows.net），并提供了其他配置的选项****。 
+1. 部署完成后，从左侧菜单中选择**SQL 数据库**，然后在 SQL 数据库页面上选择**我的采样数据库**。 **SQL databases** 此时会打开数据库的概览页，其中显示了完全限定的服务器名称（例如 mynewserver-20180430.database.windows.net），并提供了其他配置的选项****。
 
 2. 在后续的快速入门中，请复制此完全限定的服务器名称，将其用于连接到服务器及其数据库。 然后在服务器名称上选择以打开服务器设置。
 
-    ![查找服务器名称](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png) 
+    ![查找服务器名称](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
 
 3. 选择服务器名称以打开服务器设置。
 
-    ![服务器设置](./media/load-data-from-azure-blob-storage-using-polybase/server-settings.png) 
+    ![服务器设置](./media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
 
-5. 选择“显示防火墙设置”。  此时会打开 SQL 数据库服务器的“防火墙设置”页。  
+4. 选择“显示防火墙设置”。  此时会打开 SQL 数据库服务器的“防火墙设置”页。 
 
-    ![服务器防火墙规则](./media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png) 
+    ![服务器防火墙规则](./media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
 
-4. 在工具栏上选择“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。**** 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
+5. 在工具栏上选择“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。**** 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-5. 选择“保存”。  此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
+6. 选择“保存”。  此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
 
-6. 选择 **"确定"，** 然后关闭 **"防火墙设置"** 页。
+7. 选择 **"确定"，** 然后关闭 **"防火墙设置"** 页。
 
 现在，可使用此 IP 地址连接到 SQL Server 及其数据仓库。 可从 SQL Server Management Studio 或另一种所选工具进行连接。 连接时，请使用之前创建的 ServerAdmin 帐户。  
 
@@ -131,14 +131,14 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 请在 Azure 门户中获取 SQL Server 的完全限定的服务器名称。 稍后，在连接到服务器时，将使用该完全限定的名称。
 
 1. 登录到 Azure[门户](https://portal.azure.com/)。
-2. 从左侧菜单中选择**Azure 同步分析**，并在**Azure 同步分析**页面上选择数据库。 
-3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。   在此示例中，完全限定名称为 mynewserver-20180430.database.windows.net。 
+2. 从左侧菜单中选择**Azure 同步分析**，并在**Azure 同步分析**页面上选择数据库。
+3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。   在此示例中，完全限定名称为 mynewserver-20180430.database.windows.net。
 
     ![连接信息](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
 ## <a name="connect-to-the-server-as-server-admin"></a>以服务器管理员的身份连接到服务器
 
-本部分使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 来建立与 Azure SQL Server 的连接。
+本部分使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) 来建立与 Azure SQL Server 的连接。
 
 1. 打开 SQL Server Management Studio。
 
@@ -154,25 +154,25 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
     ![连接到服务器](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-4. 选择 **"连接**"。 对象资源管理器窗口在 SSMS 中打开。 
+3. 选择 **"连接**"。 对象资源管理器窗口在 SSMS 中打开。
 
-5. 在“对象资源管理器”中，展开“数据库”  。 然后展开“系统数据库”**** 和“master”****，查看 master 数据库中的对象。  展开“mySampleDatabase”****，查看新数据库中的对象。
+4. 在“对象资源管理器”中，展开“数据库”  。 然后展开“系统数据库”**** 和“master”****，查看 master 数据库中的对象。  展开“mySampleDatabase”****，查看新数据库中的对象。
 
-    ![数据库对象](./media/load-data-from-azure-blob-storage-using-polybase/connected.png) 
+    ![数据库对象](./media/load-data-from-azure-blob-storage-using-polybase/connected.png)
 
 ## <a name="create-a-user-for-loading-data"></a>创建用于加载数据的用户
 
-服务器管理员帐户用于执行管理操作，不适合对用户数据运行查询。 加载数据是一种内存密集型操作。 内存最大值是根据[数据仓库单位和](what-is-a-data-warehouse-unit-dwu-cdwu.md)配置[的资源类](resource-classes-for-workload-management.md)定义的。 
+服务器管理员帐户用于执行管理操作，不适合对用户数据运行查询。 加载数据是一种内存密集型操作。 内存最大值根据[配置的数据仓库单位和](what-is-a-data-warehouse-unit-dwu-cdwu.md)[资源类](resource-classes-for-workload-management.md)定义。
 
 最好创建专用于加载数据的登录名和用户。 然后，将加载用户添加到启用相应最大内存分配的[资源类](resource-classes-for-workload-management.md)。
 
-由于当前是以服务器管理员的身份连接的，因此可以创建登录名和用户。 使用以下步骤创建名为 LoaderRC20**** 的登录名和用户。 然后将该用户分配到 staticrc20 **** 资源类。 
+由于当前是以服务器管理员的身份连接的，因此可以创建登录名和用户。 使用以下步骤创建名为 LoaderRC20**** 的登录名和用户。 然后将该用户分配到 staticrc20 **** 资源类。
 
-1.  在 SSMS 中，右选择**主控形状**以显示下拉菜单，然后选择 **"新建查询**"。 “新建查询”窗口随即打开。
+1. 在 SSMS 中，右选择**主控形状**以显示下拉菜单，然后选择 **"新建查询**"。 “新建查询”窗口随即打开。
 
     ![在 Master 中新建查询](./media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
-2. 在查询窗口中，输入以下 T-SQL 命令，创建一个名为 LoaderRC20 的登录名和用户，并将“a123STRONGpassword!”替换为自己的密码。 
+2. 在查询窗口中，输入以下 T-SQL 命令，创建一个名为 LoaderRC20 的登录名和用户，并将“a123STRONGpassword!”替换为自己的密码。
 
     ```sql
     CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
@@ -215,21 +215,21 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
 已准备好开始将数据加载到新的数据仓库。 本教程演示如何使用外部表从 Azure 存储 Blob 加载纽约市出租车数据。 有关将来的参考，要了解如何将数据获取到 Azure Blob 存储或直接从源加载数据，请参阅[加载概述](design-elt-data-loading.md)。
 
-运行以下 SQL 脚本并指定有关要加载的数据的信息。 此信息包括数据所在的位置、数据内容的格式以及数据的表定义。 
+运行以下 SQL 脚本并指定有关要加载的数据的信息。 此信息包括数据所在的位置、数据内容的格式以及数据的表定义。
 
-1. 在前一节中，已经以 LoaderRC20 的身份登录数据仓库。 在 SSMS 中，右键单击 LoaderRC20 连接，然后选择“新建查询”****。  此时会显示一个新的查询窗口。 
+1. 在前一节中，已经以 LoaderRC20 的身份登录数据仓库。 在 SSMS 中，右键单击 LoaderRC20 连接，然后选择“新建查询”****。  此时会显示一个新的查询窗口。
 
     ![新的加载查询窗口](./media/load-data-from-azure-blob-storage-using-polybase/new-loading-query.png)
 
 2. 比较查询窗口和之间的图像。  验证新的查询窗口以 LoaderRC20 的身份运行，并对 MySampleDataWarehouse 数据库执行查询。 使用此查询窗口执行所有加载步骤。
 
-3. 创建 MySampleDataWarehouse 数据库的主密钥。 只需为每个数据库创建主密钥一次。 
+3. 创建 MySampleDataWarehouse 数据库的主密钥。 只需为每个数据库创建主密钥一次。
 
     ```sql
     CREATE MASTER KEY;
     ```
 
-4. 运行以下 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) 语句，定义 Azure Blob 的位置。 这是外部出租车数据的位置。  要运行已追加到查询窗口的命令，请突出显示要运行的命令，然后选择 **"执行**"。
+4. 运行以下 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句，定义 Azure Blob 的位置。 这是外部出租车数据的位置。  要运行已追加到查询窗口的命令，请突出显示要运行的命令，然后选择 **"执行**"。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE NYTPublic
@@ -240,13 +240,13 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
     );
     ```
 
-5. 运行以下 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql) T-SQL 语句，指定外部数据文件的格式设置特征和选项。 此语句指定外部数据存储为文本，且值由管道 ("|") 字符分隔。 使用 Gzip 压缩外部文件。 
+5. 运行以下 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 语句，指定外部数据文件的格式设置特征和选项。 此语句指定外部数据存储为文本，且值由管道 ("|") 字符分隔。 使用 Gzip 压缩外部文件。
 
     ```sql
     CREATE EXTERNAL FILE FORMAT uncompressedcsv
     WITH (
         FORMAT_TYPE = DELIMITEDTEXT,
-        FORMAT_OPTIONS ( 
+        FORMAT_OPTIONS (
             FIELD_TERMINATOR = ',',
             STRING_DELIMITER = '',
             DATE_FORMAT = '',
@@ -254,7 +254,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
         )
     );
     CREATE EXTERNAL FILE FORMAT compressedcsv
-    WITH ( 
+    WITH (
         FORMAT_TYPE = DELIMITEDTEXT,
         FORMAT_OPTIONS ( FIELD_TERMINATOR = '|',
             STRING_DELIMITER = '',
@@ -265,7 +265,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
     );
     ```
 
-6.  运行以下 [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql) 语句，创建外部文件格式的架构。 该架构提供组织即将创建的外部表的方法。
+6. 运行以下 [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句，创建外部文件格式的架构。 该架构提供组织即将创建的外部表的方法。
 
     ```sql
     CREATE SCHEMA ext;
@@ -274,7 +274,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 7. 创建外部表。 表定义存储在数据仓库中，但表引用存储在 Azure Blob 存储中的数据。 运行以下 T-SQL 命令以创建若干外部表，这些表都指向我们之前在外部数据源中定义的 Azure blob。
 
     ```sql
-    CREATE EXTERNAL TABLE [ext].[Date] 
+    CREATE EXTERNAL TABLE [ext].[Date]
     (
         [DateID] int NOT NULL,
         [Date] datetime NULL,
@@ -316,7 +316,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
         FILE_FORMAT = uncompressedcsv,
         REJECT_TYPE = value,
         REJECT_VALUE = 0
-    ); 
+    );
     CREATE EXTERNAL TABLE [ext].[Geography]
     (
         [GeographyID] int NOT NULL,
@@ -333,8 +333,8 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
         DATA_SOURCE = NYTPublic,
         FILE_FORMAT = uncompressedcsv,
         REJECT_TYPE = value,
-        REJECT_VALUE = 0 
-    );      
+        REJECT_VALUE = 0
+    );
     CREATE EXTERNAL TABLE [ext].[HackneyLicense]
     (
         [HackneyLicenseID] int NOT NULL,
@@ -447,14 +447,14 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 > [!NOTE]
 > 本教程直接将数据加载到最终表。 在生产环境中，通常使用 CREATE TABLE AS SELECT 将数据加载到临时表。 数据在临时表中时，可以执行任何必要的转换。 要将临时表中的数据追加到生产表，可以使用 INSERT...SELECT 语句。 有关详细信息，请参阅[将数据插入到生产表](guidance-for-loading-data.md#inserting-data-into-a-production-table)。
 
-下面的脚本使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 语句将数据从 Azure 存储 Blob 加载到数据仓库中的新表。 CTAS 基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。 当选择语句从外部表中选择时，数据将导入到数据仓库中的关系表中。 
+下面的脚本使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 语句将数据从 Azure 存储 Blob 加载到数据仓库中的新表。 CTAS 基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。 当选择语句从外部表中选择时，数据将导入到数据仓库中的关系表中。
 
 1. 运行以下脚本，将数据加载到数据仓库中的新表。
 
     ```sql
     CREATE TABLE [dbo].[Date]
     WITH
-    ( 
+    (
         DISTRIBUTION = ROUND_ROBIN,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -463,7 +463,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
     ;
     CREATE TABLE [dbo].[Geography]
     WITH
-    ( 
+    (
         DISTRIBUTION = ROUND_ROBIN,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -473,7 +473,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
     ;
     CREATE TABLE [dbo].[HackneyLicense]
     WITH
-    ( 
+    (
         DISTRIBUTION = ROUND_ROBIN,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -500,7 +500,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
     ;
     CREATE TABLE [dbo].[Weather]
     WITH
-    ( 
+    (
         DISTRIBUTION = ROUND_ROBIN,
         CLUSTERED COLUMNSTORE INDEX
     )
@@ -518,7 +518,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
     ;
     ```
 
-2. 在加载数据的同时查看数据。 假设要加载几个 GB 的数据，并将其压缩成高性能群集列存储索引。 运行以下使用动态管理视图 (DMV) 的查询以显示负载的状态。 
+2. 在加载数据的同时查看数据。 假设要加载几个 GB 的数据，并将其压缩成高性能群集列存储索引。 运行以下使用动态管理视图 (DMV) 的查询以显示负载的状态。
 
     ```sql
     SELECT
@@ -527,7 +527,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
         r.status,
         count(distinct input_name) as nbr_files,
         sum(s.bytes_processed)/1024/1024/1024.0 as gb_processed
-    FROM 
+    FROM
         sys.dm_pdw_exec_requests r
         INNER JOIN sys.dm_pdw_dms_external_work s
         ON r.request_id = s.request_id
@@ -544,7 +544,7 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
         s.request_id,
         r.status
     ORDER BY
-        nbr_files desc, 
+        nbr_files desc,
         gb_processed desc;
     ```
 
@@ -559,14 +559,17 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
     ![查看已加载的表](./media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
 ## <a name="authenticate-using-managed-identities-to-load-optional"></a>使用托管标识进行身份验证，以便进行加载（可选）
-使用 PolyBase 加载并通过托管标识进行身份验证是最安全的机制，使您能够利用 Azure 存储的虚拟网络服务终结点。 
+
+使用 PolyBase 加载并通过托管标识进行身份验证是最安全的机制，使您能够利用 Azure 存储的虚拟网络服务终结点。
 
 ### <a name="prerequisites"></a>先决条件
-1.    按照此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安装 Azure PowerShell。
-2.    如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户升级到常规用途 v2 帐户。
-3.  **** 必须在 Azure 存储帐户的“防火墙和虚拟网络”设置菜单下**** 启用“允许受信任的 Microsoft 服务访问此存储帐户”。 有关详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
+
+1. 按照此[指南](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)安装 Azure PowerShell。
+2. 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)将该帐户升级到常规用途 v2 帐户。
+3. **** 必须在 Azure 存储帐户的“防火墙和虚拟网络”设置菜单下**** 启用“允许受信任的 Microsoft 服务访问此存储帐户”。 有关详细信息，请参阅此[指南](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions)。
 
 #### <a name="steps"></a>步骤
+
 1. 在 PowerShell 中，**将 SQL 服务器注册**到 Azure 活动目录 （AAD）：
 
    ```powershell
@@ -574,41 +577,42 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
    Select-AzSubscription -SubscriptionId your-subscriptionId
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
    ```
-   
-   1. 按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)创建**常规用途 v2 存储帐户**。
+
+2. 按照此[指南](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)创建**常规用途 v2 存储帐户**。
+
+   > [!NOTE]
+   > 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)将该帐户**升级到 v2** 帐户。
+
+3. 在存储帐户下，导航到**访问控制 （IAM），** 并选择"**添加角色分配**"。 向 SQL 数据库服务器分配“存储 Blob 数据参与者”**** RBAC 角色。
+
+   > [!NOTE]
+   > 只有具有“所有者”特权的成员能够执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+  
+**通过 Polybase 连接到 Azure 存储帐户：**
+
+1. 使用 **IDENTITY = '托管服务标识'** 创建数据库范围的凭据：
+
+   ```SQL
+   CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+   ```
 
    > [!NOTE]
    >
-   > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户**升级到 v2** 帐户。
-   
-1. 在存储帐户下，导航到**访问控制 （IAM），** 并选择"**添加角色分配**"。 向 SQL 数据库服务器分配“存储 Blob 数据参与者”**** RBAC 角色。
+   > * 使用 Azure 存储访问密钥时，不需指定 SECRET，因为此机制在后台使用[托管标识](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+   > * 使用 Azure 存储帐户时，IDENTITY 名称应该为 **'托管服务标识'**，以便通过 PolyBase 进行连接。
 
-   > [!NOTE] 
-   > 只有具有“所有者”特权的成员能够执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
-  
-1. **通过 Polybase 连接到 Azure 存储帐户：**
-  
-   1. 使用 **IDENTITY = '托管服务标识'** 创建数据库范围的凭据：
+2. 创建外部数据源，使用托管服务标识指定数据库范围的凭据。
 
-       ```SQL
-       CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
-       ```
-       > [!NOTE] 
-       > - 使用 Azure 存储访问密钥时，不需指定 SECRET，因为此机制在后台使用[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
-       > - 使用 Azure 存储帐户时，IDENTITY 名称应该为 **'托管服务标识'**，以便通过 PolyBase 进行连接。
-   
-   1. 创建外部数据源，使用托管服务标识指定数据库范围的凭据。
-     
-   1. 使用[外部表](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)进行正常查询。
+3. 使用[外部表](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)进行正常查询。
 
-如果要为 Azure 同步分析设置虚拟网络服务终结点，请参阅以下[文档](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 
+如果要为 Azure 同步分析设置虚拟网络服务终结点，请参阅以下[文档](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-需要为加载到数据仓库中的计算资源和数据付费。 这些需要单独计费。 
+需要为加载到数据仓库中的计算资源和数据付费。 这些需要单独计费。
 
-- 如果想要将数据保留在存储中，可以在不使用数据仓库时暂停计算。 暂停计算后，仅需为数据存储付费，并且随时都可在准备处理数据时恢复计算。
-- 如果不想支付将来的费用，则可以删除数据仓库。 
+* 如果想要将数据保留在存储中，可以在不使用数据仓库时暂停计算。 暂停计算后，仅需为数据存储付费，并且随时都可在准备处理数据时恢复计算。
+* 如果不想支付将来的费用，则可以删除数据仓库。
 
 请按照下列步骤按需清理资源。
 
@@ -624,11 +628,13 @@ SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创�
 
 5. 若要删除资源组，请选择“myResourceGroup”  ，然后选择“删除资源组”  。
 
-## <a name="next-steps"></a>后续步骤 
-在本教程中，已学习了如何创建数据仓库以及用于加载数据的用户。 创建了外部表以定义 Azure 存储 Blob 中存储的数据的结构，然后使用 PolyBase CREATE TABLE AS SELECT 语句将数据加载到数据仓库。 
+## <a name="next-steps"></a>后续步骤
+
+在本教程中，已学习了如何创建数据仓库以及用于加载数据的用户。 创建了外部表以定义 Azure 存储 Blob 中存储的数据的结构，然后使用 PolyBase CREATE TABLE AS SELECT 语句将数据加载到数据仓库。
 
 完成了以下操作：
 > [!div class="checklist"]
+>
 > * 在 Azure 门户中创建数据仓库
 > * 在 Azure 门户中设置服务器级防火墙规则
 > * 使用 SSMS 连接到数据仓库

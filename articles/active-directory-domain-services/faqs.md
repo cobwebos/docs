@@ -8,21 +8,21 @@ ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: a57826c79babded6e616548879a5ec0c223307d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86b68b794928900717bea25623e7eb833c23e86c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78946436"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655351"
 ---
 # <a name="frequently-asked-questions-faqs"></a>常见问题 (FAQ)
 
 此页回答了有关 Azure 活动目录域服务的常见问题。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 * [是否可为单个 Azure AD 目录创建多个托管域？](#can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory)
 * [是否可以在经典虚拟网络中启用 Azure AD 域服务？](#can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network)

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b56375388f6293d27bcd2f2548d8b20205a92b15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256908"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638036"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>如何在 Azure SQL 数据库中使用托管实例
 
@@ -43,6 +43,7 @@ ms.locfileid: "79256908"
 
 - 可以使用[事务复制](replication-with-sql-database-managed-instance.md)在托管实例之间复制数据，或者将数据从本地 SQL Server 复制到托管实例，反之亦然。 详细了解如何使用并配置本指南中的事务复制。
 - [配置威胁检测](sql-database-managed-instance-threat-detection.md) - [威胁检测](sql-database-threat-detection-overview.md)是一项内置的 Azure SQL 数据库功能，用于检测各种潜在的攻击，例如 SQL 注入或者来自可疑位置的访问。 本指南介绍如何为托管实例启用并配置[威胁检测](sql-database-threat-detection-overview.md)。
+- [通过创建警报，](sql-database-managed-instance-alerts.md)您可以在受监视的指标上设置警报，例如 CPU 利用率、存储空间消耗、IOPS 和其他托管实例。 在本指南中，您将了解如何为托管实例启用和配置警报。
 
 ## <a name="next-steps"></a>后续步骤
 

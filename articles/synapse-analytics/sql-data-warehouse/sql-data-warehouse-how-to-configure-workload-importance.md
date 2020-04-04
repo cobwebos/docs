@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 4aa0e7da1e77334a8b9048dab4a461133f220bd1
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 0ab7b8be8780f7edb2734d99587bc7709ced9436
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582452"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633363"
 ---
 # <a name="configure-workload-importance-in-azure-synapse-analytics"></a>在 Azure 突触分析中配置工作负载重要性
 
@@ -24,7 +24,7 @@ ms.locfileid: "80582452"
 
 ## <a name="create-a-workload-classifier-with-importance"></a>创建具有重要性的工作负荷分类器
 
-通常，在数据仓库方案中，用户需要其查询快速运行。  用户可以是需要运行报告的公司高管，也可以是运行即席查询的分析师。 你可以创建一个工作负荷分类器来为查询分配重要性。  下面的示例使用新的 [create workload classifier](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) 语法来创建两个分类器。  Membername 可以是单个用户或组。 单个用户分类优先于角色分类。 若要查找现有数据仓库用户，请运行：
+通常，在数据仓库方案中，用户需要其查询快速运行。  用户可以是需要运行报告的公司高管，也可以是运行即席查询的分析师。 你可以创建一个工作负荷分类器来为查询分配重要性。  下面的示例使用新的 [create workload classifier](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语法来创建两个分类器。 `Membername`可以是单个用户或组。 单个用户分类优先于角色分类。 若要查找现有数据仓库用户，请运行：
 
 ```sql
 Select name from sys.sysusers
@@ -50,6 +50,7 @@ CREATE WORKLOAD CLASSIFIER AdhocClassifier 
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 - 有关工作负荷管理的详细信息，[请参阅工作负荷分类](sql-data-warehouse-workload-classification.md)
 - 有关重要性的详细信息，请参阅[工作负荷重要性](sql-data-warehouse-workload-importance.md)
 

@@ -12,16 +12,16 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: ccc5db828a03c37d3fc4f49b13883ac3eeda2368
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d0a246b111e4ab27a9e595952bb029fa62fe976d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584233"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633669"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>对 Azure 同步分析进行身份验证
 
-了解如何使用 Azure 活动目录 （Azure AD） 或 SQL Server 身份验证对 Azure 突触中的 Synapse SQL poool 进行身份验证。
+了解如何使用 Azure 活动目录 （AAD） 或 SQL Server 身份验证对 Azure 突触中的 SQL 分析进行身份验证。
 
 要连接到 SQL 池，必须传递安全凭据以进行身份验证。 建立连接时，特定的连接设置已配置为建立查询会话的一部分。  
 
@@ -44,12 +44,10 @@ ms.locfileid: "80584233"
 
 > [!NOTE]
 > 不支持使用 Transact-SQL 语句 **USE MyDatabase;** 更改连接的数据库。 有关使用 SSDT 连接到 SQL 池的指导，请参阅[使用 Visual Studio 的查询](sql-data-warehouse-query-visual-studio.md)一文。
-> 
-> 
 
-## <a name="azure-active-directory-azure-ad-authentication"></a>Azure 活动目录 （Azure AD） 身份验证
+## <a name="azure-active-directory-aad-authentication"></a>Azure Active Directory (AAD) 身份验证
 
-[Azure 活动目录](../../active-directory/fundamentals/active-directory-whatis.md)身份验证是使用 Azure 活动目录 （Azure AD） 中的标识连接到 SQL 池的机制。 通过 Azure Active Directory 身份验证，可以在一个中心位置中集中管理数据库用户和其他 Microsoft 服务的标识。 中央 ID 管理提供了管理 Azure 突触用户的单一位置，并简化了权限管理。 
+[Azure 活动目录](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)身份验证是使用 Azure 活动目录 （Azure AD） 中的标识连接到 SQL 池的机制。 通过 Azure Active Directory 身份验证，可以在一个中心位置中集中管理数据库用户和其他 Microsoft 服务的标识。 中央 ID 管理提供了管理 Azure 突触用户的单一位置，并简化了权限管理。
 
 ### <a name="benefits"></a>优点
 
@@ -62,12 +60,10 @@ Azure Active Directory 的优点包括：
 * 通过启用集成的 Windows 身份验证和 Azure Active Directory 支持的其他形式的身份验证来消除存储密码。
 * 使用包含的数据库用户在数据库级别对标识进行身份验证。
 * 支持连接到 SQL 池的应用程序基于令牌的身份验证。
-* 支持通过各种工具（包括 [SQL Server Management Studio](../../sql-database/sql-database-ssms-mfa-authentication.md) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json)）的 Active Directory 通用身份验证进行多重身份验证。
+* 支持通过各种工具（包括 [SQL Server Management Studio](../../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 和 [SQL Server Data Tools](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）的 Active Directory 通用身份验证进行多重身份验证。
 
 > [!NOTE]
-> Azure Active Directory 仍然相对较新，具有某些限制。 若要确保 Azure Active Directory 适用于当前环境，请参阅 [Azure AD 功能和限制](../../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)，尤其是那些需要额外考虑的内容。
-> 
-> 
+> Azure Active Directory 仍然相对较新，具有某些限制。 若要确保 Azure Active Directory 适用于当前环境，请参阅 [Azure AD 功能和限制](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations)，尤其是那些需要额外考虑的内容。
 
 ### <a name="configuration-steps"></a>配置步骤
 
@@ -80,12 +76,12 @@ Azure Active Directory 的优点包括：
 5. 在映射到 Azure AD 标识的数据库中创建包含的数据库用户
 6. 使用 Azure AD 标识连接到 SQL 池
 
-目前，Azure Active Directory 用户不会显示在 SSDT 对象资源管理器中。 解决方法是在 [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx) 中查看这些用户。
+目前，Azure Active Directory 用户不会显示在 SSDT 对象资源管理器中。 解决方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql??toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#azure-ad-features-and-limitations) 中查看这些用户。
 
 ### <a name="find-the-details"></a>查看详细信息
 
-* 对于 Azure SQL 数据库和 Azure 突触 SQL 池，配置和使用 Azure 活动目录身份验证的步骤几乎相同。 按照主题"通过使用 Azure[活动目录身份验证连接到 SQL 数据库或 SQL 池"](../../sql-database/sql-database-aad-authentication.md)中的详细步骤。
-* 创建自定义数据库角色，并向角色添加用户。 然后，向角色授予具体权限。 有关详细信息，请参阅[数据库引擎权限入门](https://msdn.microsoft.com/library/mt667986.aspx)。
+* 在 Azure Synaps 中配置和使用 Azure 活动目录身份验证的步骤几乎相同。 按照主题"通过使用 Azure[活动目录身份验证连接到 SQL 数据库或 SQL 池"](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中的详细步骤。
+* 创建自定义数据库角色，并向角色添加用户。 然后，向角色授予具体权限。 有关详细信息，请参阅[数据库引擎权限入门](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="next-steps"></a>后续步骤
 

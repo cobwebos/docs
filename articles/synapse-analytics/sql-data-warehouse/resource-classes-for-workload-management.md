@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 8ac9ff1f46e1d2d0ddaa313499340b4723c7da07
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 86cc081ef47eb2ac2e8e0a49bc79e8973f34baf1
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584254"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633693"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure 突触分析中资源类的工作负载管理
 
@@ -65,7 +65,7 @@ ms.locfileid: "80584254"
 - largerc
 - xlargerc
 
-每个资源类的内存分配如下所示。 
+每个资源类的内存分配如下所示。
 
 | 服务级别  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
@@ -75,8 +75,6 @@ ms.locfileid: "80584254"
 | DW400c         | 6.25%             | 10%                    | 22%                    | 70%                    |
 | DW500c         | 5%                | 10%                    | 22%                    | 70%                    |
 | DW1000c 到<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
-
-
 
 ### <a name="default-resource-class"></a>默认资源类
 
@@ -285,8 +283,8 @@ IF @DWU IS NULL
 BEGIN
 -- Selecting proper DWU for the current DB if not specified.
 
-SELECT @DWU = 'DW'+ CAST(CASE WHEN Mem> 4 THEN Nodes*500 
-  ELSE Mem*100 
+SELECT @DWU = 'DW'+ CAST(CASE WHEN Mem> 4 THEN Nodes*500
+  ELSE Mem*100
   END AS VARCHAR(10)) +'c'
     FROM (
       SELECT Nodes=count(distinct n.pdw_node_id), Mem=max(i.committed_target_kb/1000/1000/60)
@@ -594,5 +592,4 @@ GO
 
 ## <a name="next-steps"></a>后续步骤
 
-有关管理数据库用户和安全的详细信息，请参阅[在 Synapse SQL 中保护数据库](sql-data-warehouse-overview-manage-security.md)。 有关较大资源类如何改进聚集列存储索引质量的详细信息，请参阅[列存储压缩的内存优化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
-
+有关管理数据库用户和安全的详细信息，请参阅 SQL [Analytics 中保护数据库](sql-data-warehouse-overview-manage-security.md)。 有关较大资源类如何改进聚集列存储索引质量的详细信息，请参阅[列存储压缩的内存优化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。

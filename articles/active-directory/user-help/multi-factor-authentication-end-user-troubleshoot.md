@@ -9,15 +9,15 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: c28b63749cfdbcd16b94cbd3ca7dd4023f46a351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1703853f42b52dccc80fdfadaa09b67e18a19db8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78897728"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632900"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>双重验证和您的工作或学校帐户的常见问题
 
@@ -99,6 +99,8 @@ ms.locfileid: "78897728"
 ## <a name="i-cant-turn-two-factor-verification-off"></a>我无法关闭双因素验证
 
 如果您对工作或学校帐户（例如alain@contoso.com），使用双因素验证，则很可能意味着您的组织已决定必须使用此添加的安全功能。 由于你的组织已决定你必须使用此功能，因此无法单独将其关闭。 但是，如果您对个人帐户（如alain@outlook.com）使用双重验证，则可以打开和关闭该功能。 有关如何控制个人帐户的双因素验证的说明，请参阅[为 Microsoft 帐户打开或关闭双因素验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
+
+如果无法关闭双因素验证，则可能是因为已在组织级别应用了安全默认值。 有关安全默认值的详细信息，请参阅[什么是安全定义？](../fundamentals/concept-fundamentals-security-defaults.md)
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>我找不到问题的解答
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8f2e2081ee31e2ce7b21677bd261ed7eda705334
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de0cf260207747f4acb02a377819a13de8b8ba22
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79486142"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80628424"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -26,9 +26,8 @@ ms.locfileid: "79486142"
 
 ## <a name="portal"></a>门户
 
-要在全局 Azure 门户中创建和配置增量快照，必须使用以下链接： [https://aka.ms/incrementalsnapshots](https://aka.ms/incrementalsnapshots)。 增量快照创建在全局 Azure 门户中尚不可用。
 
-1. 使用提供的链接登录到[Azure 门户](https://aka.ms/incrementalsnapshots)，然后导航到要快照的磁盘。
+1. 登录到[Azure 门户](https://portal.azure.com/)并导航到要快照的磁盘。
 1. 在磁盘上，选择 **"创建快照**"
 
     :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-snapshot-button-incremental.png" alt-text="截图。磁盘的边栏选项卡，突出显示 [创建快照]，因为您必须选择。":::

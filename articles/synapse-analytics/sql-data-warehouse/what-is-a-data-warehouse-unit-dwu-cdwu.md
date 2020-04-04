@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ace4bc2e46d9e1926da18dedb163657d4f343979
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 01a05755fc18a85a95e9c1bec1c470d37af656d1
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586313"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632232"
 ---
 # <a name="data-warehouse-units-dwus"></a>数据仓库单位 (DWU)
 
@@ -24,14 +24,18 @@ ms.locfileid: "80586313"
 
 ## <a name="what-are-data-warehouse-units"></a>什么是数据仓库单位？
 
-[Synapse SQL 池](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)表示正在预配的分析资源的集合。 根据定义，分析资源是 CPU、内存和 IO 的组合。 这三项资源捆绑到称为数据仓库单位 (DWU) 的计算规模单位中。 DWU 表示抽象、规范化的计算资源和性能度量值。 更改服务级别会改变系统可用的 DWU 数量，从而调整系统的性能和成本。
+[Synapse SQL 池](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)表示正在预配的分析资源的集合。 分析资源定义为 CPU、内存和 IO 的组合。 
+
+这三项资源捆绑到称为数据仓库单位 (DWU) 的计算规模单位中。 DWU 表示抽象、规范化的计算资源和性能度量值。 
+
+更改服务级别会改变系统可用的 DWU 数量，从而调整系统的性能和成本。
 
 若要提高性能，可以增加数据仓库单位的数量。 若要降低性能，可以减少数据仓库单位数。 存储和计算成本分别计费，因此更改数据仓库单位数不会影响存储成本。
 
 数据仓库单位性能基于这些工作负荷指标：
 
-- 标准数据仓库查询扫描大量行并执行复杂聚合的速度。 这是一种 I/O 和 CPU 密集型操作。
-- 数据仓库从 Azure 存储 Blob 或 Azure Data Lake 引入数据的速度。 这是一种网络和 CPU 密集型操作。
+- 标准 SQL 池查询可以扫描大量行，然后执行复杂的聚合的速度。 这是一种 I/O 和 CPU 密集型操作。
+- SQL 池从 Azure 存储 Blob 或 Azure 数据湖中引入数据的速度有多快。 这是一种网络和 CPU 密集型操作。
 - [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 命令复制表的速度有多快。 此操作涉及从存储读取数据、将数据分配到设备的节点上，以及重新将数据写入到存储。 这是一种 CPU、IO 和网络密集型操作。
 
 增加 DWU：
@@ -42,7 +46,7 @@ ms.locfileid: "80586313"
 
 ## <a name="service-level-objective"></a>服务级别目标
 
-服务级别目标 (SLO) 是确定数据仓库的成本和性能级别的可伸缩性设置。 第 2 代 SQL 池的服务级别以数据仓库单位 (DWU) 计量，例如 DW2000c。
+服务级别目标 （SLO） 是确定 SQL 池的成本和性能级别的可伸缩性设置。 第 2 代 SQL 池的服务级别以数据仓库单位 (DWU) 计量，例如 DW2000c。
 
 在 T-SQL 中，SERVICE_OBJECTIVE 设置决定了 SQL 池的服务级别。
 
@@ -56,7 +60,7 @@ CREATE DATABASE mySQLDW
 
 ## <a name="capacity-limits"></a>容量限制
 
-每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../../sql-database/sql-database-service-tiers-dtu.md) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
+每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>我需要多少个数据仓库单位？
 
@@ -68,7 +72,9 @@ CREATE DATABASE mySQLDW
 2. 在测试数据加载到系统中时，监视应用程序性能，将所选 DWU 数目与观测到的性能变化进行比较。
 3. 确认峰值活动周期的其他要求。 显示活动中重要峰值和谷值的工作负荷可能需要频繁缩放。
 
-SQL Analytics 是一个向外扩展系统，可预配大量计算和查询大量数据。 要查看其真正的缩放功能（尤其是针对较大的 DWU），建议在缩放的同时对数据集进行缩放，确保可向 CPU 提供足够的数据。 对于规模测试，建议至少使用 1 TB。
+SQL 池是一个横向扩展系统，它可以提供大量的计算和查询量大的数据。 
+
+要查看其真正的缩放功能（尤其是针对较大的 DWU），建议在缩放的同时对数据集进行缩放，确保可向 CPU 提供足够的数据。 对于规模测试，建议至少使用 1 TB。
 
 > [!NOTE]
 >
@@ -107,7 +113,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置****。
 
-3. 单击“保存”  。 此时会显示确认消息。 单击“是”**** 以确认或“否”**** 以取消。
+3. 单击“ **保存**”。 此时会显示确认消息。 单击“是”**** 以确认或“否”**** 以取消。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -172,7 +178,7 @@ DWU 更改可能需要几分钟才能完成。 如果要自动缩放，建议实
     FROM      sys.databases
     ;
     ```
-    
+
 1. 提交以下查询以检查操作状态
 
     ```sql
@@ -182,7 +188,7 @@ DWU 更改可能需要几分钟才能完成。 如果要自动缩放，建议实
     AND       major_resource_id = 'MySQLDW'
     ;
     ```
-    
+
 此 DMV 返回针对 SQL 池的各种管理操作的相关信息，例如操作和操作状态（IN_PROGRESS 或 COMPLETED）。
 
 ## <a name="the-scaling-workflow"></a>缩放工作流

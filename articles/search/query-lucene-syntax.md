@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d35c96657f48905f37c9ebe246d81ebb9545cf27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1392f69bea09996e46ad4c112474f9067ff5a63d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283129"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656918"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 Lucene 查询语法
 
@@ -161,16 +161,17 @@ NOT 运算符为感叹号或减号。 例如：`wifi !luxury` 将搜索包含“
 ##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a>正则表达式搜索  
  正则表达式搜索基于正斜杠“/”之间的内容查找匹配项，如在 [RegExp 类](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)中所记录的那样。  
 
- 例如，若要查找包含“汽车旅馆”或“酒店”的文档，请指定 `/[mh]otel/`。  正则表达式搜索与单个词匹配。   
+ 例如，若要查找包含“汽车旅馆”或“酒店”的文档，请指定 `/[mh]otel/`。 正则表达式搜索与单个词匹配。
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>通配符搜索  
- 可将通常可识别的语法用于多个 (*) 或单个 (?) 字符通配符搜索。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。  
+ 可将通常可识别的语法用于多个 (*) 或单个 (?) 字符通配符搜索。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。
 
- 例如，若要查找前缀为“note”的词（如“notebook”或“notepad”）的文档，请指定“note*”。  
+前缀搜索也使用星号 （`*`） 字符。 例如，返回"笔记本"或`search=note*`"记事本"的查询表达式。 前缀搜索不需要完整的 Lucene 语法。 简单语法支持此方案。
+
+后缀搜索（字符串`*`之前或`?`字符串之前）需要完整的 Lucene 语法和正则表达式（不能使用 * 或 ？ 符号作为搜索的第一个字符）。 给定术语"字母数字"，查询表达式 （`search=/.*numeric.*/`） 将查找匹配项。
 
 > [!NOTE]  
->  不得将 * 或 ?  符号用作搜索的第一个字符。  
->  不对通配符搜索查询执行文本分析。 查询时，通配符查询术语与搜索索引中所分析的字词进行比较并展开。
+> 在查询解析期间，作为前缀、后缀、通配符或正则表达式配制的查询按原样传递给查询树，绕过[词法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)。 仅当索引包含查询指定的格式的字符串时，才会找到匹配项。 在大多数情况下，在索引期间需要一个替代分析器，以保留字符串完整性，以便部分术语和模式匹配成功。 有关详细信息，请参阅[Azure 认知搜索查询中的部分术语搜索](search-query-partial-matching.md)。
 
 ## <a name="see-also"></a>请参阅  
 

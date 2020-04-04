@@ -11,16 +11,17 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 2b0e144220e36de6157101190adb838ae651d7c4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 08fb0a6675d18370482abe9b1d7b9a0d9ee5c364
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583329"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633007"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>排查连接问题
 
-本文列出了有关连接到 Synapse SQL 池的常见故障排除技术。
+本文列出了有关连接到 SQL 分析数据库的常见故障排除技术。
+
 - [检查服务可用性](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [检查已暂停的操作或正在缩放的操作](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [检查防火墙设置](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -54,15 +55,15 @@ ms.locfileid: "80583329"
 
 ![维护计划概览](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-否则，请与 IT 管理员联系，验证该维护是否为计划的事件。 要恢复 Synapse SQL 池实例，请按照[此处](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)概述的步骤操作。
+否则，请与 IT 管理员联系，验证该维护是否为计划的事件。 要恢复 SQL 分析实例，请按照[以下步骤操作](pause-and-resume-compute-portal.md)。
 
 ## <a name="check-your-firewall-settings"></a>检查防火墙设置
 
-突触 SQL 池通过端口 1433 进行通信。如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 在这种情况下，你无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。 可从[此处](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)找到有关防火墙配置的更多信息。
+SQL 分析数据库通过端口 1433 进行通信。如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 在这种情况下，你无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。 可从[此处](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)找到有关防火墙配置的更多信息。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>检查 VNet/服务终结点设置
 
-如果收到 40914 和 40615 错误，请参阅[此处的错误说明和解决方法](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615)。
+如果收到 40914 和 40615 错误，请参阅[此处的错误说明和解决方法](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)。
 
 ## <a name="check-for-the-latest-drivers"></a>检查最新驱动程序
 
@@ -70,22 +71,22 @@ ms.locfileid: "80583329"
 
 检查以确保您使用最新的工具连接到 Synapse SQL 池：
 
-* SSMS
-* Azure Data Studio
-* SQL Server Data Tools (Visual Studio)
+- SSMS
+- Azure Data Studio
+- SQL Server Data Tools (Visual Studio)
 
 ### <a name="drivers"></a>驱动程序
 
 请进行检查，确保使用最新的驱动程序版本。使用旧版驱动程序可能会导致意外行为，因为旧驱动程序可能不支持新功能。
 
-* [ODBC](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
-* [JDBC](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
-* [OLE DB](https://docs.microsoft.com/sql/connect/oledb/download-oledb-driver-for-sql-server)
-* [PHP](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server)
+- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server)
+- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
+- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server)
+- [PHP](/sql/connect/php/download-drivers-php-sql-server)
 
 ## <a name="check-your-connection-string"></a>检查连接字符串
 
-进行检查以确保正确设置了连接字符串。  下面是一些示例。  可在[此处找到有关连接字符串](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings)的更多信息。
+进行检查以确保正确设置了连接字符串。  下面是一些示例。  可在[此处找到有关连接字符串](/sql-data-warehouse/sql-data-warehouse-connection-strings.md)的更多信息。
 
 ADO.NET 连接字符串
 
@@ -117,7 +118,8 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="common-error-messages"></a>常见错误消息
 
-对于 40914 和 40615 错误，请参阅[此处的错误说明和解决方法](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615)。
+对于 40914 和 40615 错误，请参阅[此处的错误说明和解决方法](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)。
 
 ## <a name="still-having-connectivity-issues"></a>仍有连接问题？
-创建[支持票证](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)，以便工程团队可以为您提供支持。
+
+创建[支持票证](/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md)，以便工程团队可以为您提供支持。

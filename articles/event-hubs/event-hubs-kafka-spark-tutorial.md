@@ -6,19 +6,18 @@ documentationcenter: .net
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
-ms.topic: tutorial
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 04/02/2020
 ms.author: shvija
-ms.openlocfilehash: 5bd25604844ce0521b6bac2d637a2d48a6ef089b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.openlocfilehash: 1b292f9b894dac7df6b9634ce1bad627c8d24fe6
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72555736"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632764"
 ---
-# <a name="connect-your-apache-spark-application-with-kafka-enabled-azure-event-hubs"></a>将 Apache Spark 应用程序与启用了 Apache Kafka 的 Azure 事件中心连接
-本教程详细介绍如何将 Spark 应用程序连接到启用了 Kafka 的事件中心进行实时流式处理。 此集成允许在不更改协议客户端或运行自己的 Kafka 或 Zookeeper 群集的情况下进行流式处理。 本教程需要 Apache Spark v2.4+ 和 Apache Kafka v2.0+。
+# <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>将 Apache Spark 应用程序与 Azure 事件中心连接
+本教程将引导您将 Spark 应用程序连接到事件中心，以便进行实时流式传输。 此集成允许在不更改协议客户端或运行自己的 Kafka 或 Zookeeper 群集的情况下进行流式处理。 本教程需要 Apache Spark v2.4+ 和 Apache Kafka v2.0+。
 
 > [!NOTE]
 > [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark/) 上提供了此示例
@@ -44,7 +43,7 @@ ms.locfileid: "72555736"
 
 
 ## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
-要从事件中心服务进行发送和接收，需要使用事件中心命名空间。 请参阅[创建已启用 Kafka 的事件中心](event-hubs-create.md)，了解如何获取事件中心 Kafka 终结点。 获取事件中心连接字符串和完全限定域名 (FQDN) 供以后使用。 有关说明，请参阅[获取事件中心连接字符串](event-hubs-get-connection-string.md)。 
+要从事件中心服务进行发送和接收，需要使用事件中心命名空间。 请参阅[创建事件中心](event-hubs-create.md)以提供创建命名空间和事件中心的说明。 获取事件中心连接字符串和完全限定域名 (FQDN) 供以后使用。 有关说明，请参阅[获取事件中心连接字符串](event-hubs-get-connection-string.md)。 
 
 ## <a name="clone-the-example-project"></a>克隆示例项目
 克隆 Azure 事件中心存储库并导航到 `tutorials/spark` 子文件夹：
@@ -100,24 +99,12 @@ df.writeStream
 
 
 ## <a name="next-steps"></a>后续步骤
+若要详细了解事件中心和适用于 Kafka 的事件中心，请参阅以下文章：  
 
-本教程介绍了如何使用 Spark-Kafka 连接器和适用于 Kafka 的事件中心进行流式处理。 执行了以下步骤： 
-
-> [!div class="checklist"]
-> * 创建事件中心命名空间
-> * 克隆示例项目
-> * 运行 Spark
-> * 从用于 Kafka 的事件中心读取
-> * 写入到用于 Kafka 的事件中心
-
-若要详细了解事件中心和适用于 Kafka 的事件中心，请参阅以下主题：  
-
-- [了解事件中心](event-hubs-what-is-event-hubs.md)
-- [用于 Apache Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
-- [如何创建启用 Kafka 的事件中心](event-hubs-create-kafka-enabled.md)
-- [从 Kafka 应用程序流式传输到事件中心](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [将 Kafka 代理镜像到已启用 Kafka 的事件中心](event-hubs-kafka-mirror-maker-tutorial.md)
-- [将 Apache Flink 连接到已启用 Kafka 的事件中心](event-hubs-kafka-flink-tutorial.md)
-- [将 Kafka Connect 与已启用 Kafka 的事件中心集成](event-hubs-kafka-connect-tutorial.md)
-- [将 Akka Streams 连接到已启用 Kafka 的事件中心](event-hubs-kafka-akka-streams-tutorial.md)
+- [在事件中心镜像 Kafka 代理](event-hubs-kafka-mirror-maker-tutorial.md)
+- [将 Apache Flink 连接到事件中心](event-hubs-kafka-flink-tutorial.md)
+- [将卡夫卡连接与事件中心集成](event-hubs-kafka-connect-tutorial.md)
 - [了解 GitHub 上的示例](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [将 Akka 流连接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure 活动中心 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)
+

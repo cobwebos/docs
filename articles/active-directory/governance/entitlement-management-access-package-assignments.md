@@ -16,16 +16,23 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12e3b86f41e7188778393ab717554907ef5d44ec
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262017"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631746"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 授权管理中查看、添加和删除访问包的分配
 
 在 Azure AD 授权管理中，您可以看到已分配到访问包的人员、策略和状态。 如果访问包具有适当的策略，也可以直接将用户分配给访问包。 本文介绍如何查看、添加和删除访问包的分配。
+
+## <a name="prerequisites"></a>先决条件
+
+要使用 Azure AD 授权管理并将用户分配给访问包，您必须具有以下许可证之一：
+
+- Azure AD Premium P2
+- 企业移动性 + 安全性 (EMS) E5 许可证
 
 ## <a name="view-who-has-an-assignment"></a>查看谁具有分配
 

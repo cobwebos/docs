@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 04/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c90566006868c817d977699c35f2213895f3fe70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1dd2da51cb33582c90ff592e0061b5c1ebf8ee1
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295240"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631820"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>条件访问：需要 MFA 进行 Azure 管理
 
@@ -34,7 +34,7 @@ ms.locfileid: "80295240"
 
 * 紧急访问帐户或不受限帐户，用于防止租户范围的帐户锁定********。 在极少数情况下，所有管理员都被锁定在租户之外，此时可以使用紧急访问管理帐户登录到租户，采取相关步骤来恢复访问权限。
    * 有关详细信息，可参阅[管理 Azure AD 中的紧急访问帐户](../users-groups-roles/directory-emergency-access.md)一文。
-* **服务帐户**和**服务主体**，例如 Azure AD Connect 同步帐户。 服务帐户是非交互性帐户，不绑定到任何特定用户。 此类帐户通常由后端服务使用，允许以编程方式访问应用程序。 应排除服务帐户，因为无法以编程方式完成 MFA。
+* **服务帐户**和**服务主体**，例如 Azure AD Connect 同步帐户。 服务帐户是非交互性帐户，不绑定到任何特定用户。 它们通常由允许以编程方式访问应用程序的后端服务使用，但也用于登录系统以进行管理。 应排除类似这样的服务帐户，因为无法以编程方式完成 MFA。
    * 如果组织在脚本或代码中使用这些帐户，请考虑将其替换为[托管标识](../managed-identities-azure-resources/overview.md)。 作为临时解决方法，可以从基线策略中排除这些特定的帐户。
 
 ## <a name="create-a-conditional-access-policy"></a>创建条件访问策略

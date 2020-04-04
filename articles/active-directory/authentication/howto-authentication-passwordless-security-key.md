@@ -4,19 +4,19 @@ description: 使用 FIDO2 安全密钥（预览）为 Azure AD 启用无密码�
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e088d239a91edeff34ecd1a7dc5be7a9f8628da3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8574fcdff12e61f7039174ed6297d0558a66dc4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129149"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653935"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>启用无密码安全密钥登录（预览）
 
@@ -52,7 +52,7 @@ ms.locfileid: "80129149"
 
 ### <a name="enable-fido2-security-key-method"></a>启用 FIDO2 安全密钥方法
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 浏览到**Azure 活动目录** > **安全** > **身份验证方法** > **身份验证方法策略（预览）。**
 1. 在**FIDO2 安全密钥**的方法下，选择以下选项：
    1. **启用**- 是 或 否
@@ -70,7 +70,7 @@ ms.locfileid: "80129149"
 1. 选择**USB 设备**或 NFC**设备**。
 1. 准备好您的密钥并选择 **"下一步**"。
 1. 将显示一个框，要求用户为您的安全密钥创建/输入 PIN，然后对密钥执行所需的手势，即生物识别或触摸。
-1. 用户将返回到组合注册体验，并要求为密钥提供有意义的名称，以便用户可以标识哪个具有多个名称。 单击“下一步”****。
+1. 用户将返回到组合注册体验，并要求为密钥提供有意义的名称，以便用户可以标识哪个具有多个名称。 单击“下一步”。 
 1. 单击 **"完成"** 以完成此过程。
 
 ## <a name="sign-in-with-passwordless-credential"></a>使用无密码凭据登录

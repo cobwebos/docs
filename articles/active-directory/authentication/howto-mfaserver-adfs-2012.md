@@ -4,19 +4,19 @@ description: 本文介绍如何开始将 Azure 多重身份验证与 Windows Ser
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4b463dad84f2c3ea93fefabdca5141a4b51468c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2777675d915d99b8c0e3c2a123b24ab60d41f672
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848198"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653353"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>将 Azure 多重身份验证服务器配置为与 Windows Server 中的 AD FS 配合使用
 
@@ -51,8 +51,8 @@ ms.locfileid: "74848198"
 
    ![从 MFA 服务器控制台安装 ADFS 适配器](./media/howto-mfaserver-adfs-2012/server.png)
 
-5. 如果显示“Active Directory”窗口，则表示两点。 计算机已加入域，但保护 AD FS 适配器与多重身份验证服务之间通信的 Active Directory 配置并未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动 Active Directory 配置并手动配置设置”复选框。******** 单击“下一步”****。
-6. 如果显示“本地组”窗口，则表示两点。 计算机尚未加入域，且保护 AD FS 适配器与多重身份验证服务之间通信的本地组配置未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动本地组配置并手动配置设置”复选框。******** 单击“下一步”****。
+5. 如果显示“Active Directory”窗口，则表示两点。 计算机已加入域，但保护 AD FS 适配器与多重身份验证服务之间通信的 Active Directory 配置并未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动 Active Directory 配置并手动配置设置”复选框。******** 单击“下一步”。 
+6. 如果显示“本地组”窗口，则表示两点。 计算机尚未加入域，且保护 AD FS 适配器与多重身份验证服务之间通信的本地组配置未完成。 单击“下一步”自动完成此配置，或者选中“跳过自动本地组配置并手动配置设置”复选框。******** 单击“下一步”。 
 7. 在安装向导中单击“下一步”****。 Azure 多重身份验证服务器将创建 PhoneFactor Admins 组，并将 AD FS 服务帐户添加到 PhoneFactor Admins 组。
 8. 在“启动安装程序”**** 页中单击“下一步”****。
 9. 在多重身份验证 AD FS 适配器安装程序中，单击“下一步”****。
@@ -150,7 +150,7 @@ ms.locfileid: "74848198"
 
     ![添加转换声明规则向导](./media/howto-mfaserver-adfs-2012/configurewizard.png)
 
-9. 单击“完成”****。 关闭 AD FS 管理控制台。
+9. 单击“完成”  。 关闭 AD FS 管理控制台。
 
 ## <a name="troubleshooting-logs"></a>故障排除日志
 

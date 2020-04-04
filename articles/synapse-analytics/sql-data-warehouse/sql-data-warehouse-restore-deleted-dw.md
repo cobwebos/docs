@@ -11,18 +11,18 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5f0432cafee07dbed071d24aa8c24ee9b2176967
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 251fdb83e848aaac3a5391320df23149ce1bce33
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350180"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633050"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>使用 Azure 同步分析还原已删除的 SQL 池
 
 在本文中，您将学习使用 Azure 门户或 PowerShell 还原 SQL。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -39,16 +39,16 @@ ms.locfileid: "80350180"
 5. 获取特定的已删除数据仓库。
 6. 还原已删除的数据仓库
     1. 若要将已删除的 SQL 数据仓库还原到另一逻辑服务器，请确保指定另一逻辑服务器名称。  该逻辑服务器也可以位于另一资源组和区域中。
-    1. 要还原到其他订阅，请使用["移动"](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#use-the-portal)按钮将逻辑服务器移动到其他订阅。
-1. 验证已还原的数据仓库是否处于联机状态。
-1. 还原完成后，您可以通过在[恢复后按照配置数据库来配置](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)恢复的数据仓库。
+    1. 要还原到其他订阅，请使用["移动"](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal)按钮将逻辑服务器移动到其他订阅。
+7. 验证已还原的数据仓库是否处于联机状态。
+8. 还原完成后，您可以通过在[恢复后按照配置数据库来配置](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)恢复的数据仓库。
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
 #$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different logical server.
-#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>" 
+#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
 
@@ -71,7 +71,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-a-deleted-database-using-the-azure-portal"></a>通过 Azure 门户还原已删除的数据库
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 导航到承载着已删除数据仓库的 SQL Server。
 3. 在目录中选择 **"已删除的数据库**"图标。
 
@@ -86,5 +86,6 @@ $RestoredDatabase.status
     ![指定数据库名称](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>后续步骤
+
 - [还原现有 SQL 池](sql-data-warehouse-restore-active-paused-dw.md)
 - [从异地备份 SQL 池还原](sql-data-warehouse-restore-from-geo-backup.md)

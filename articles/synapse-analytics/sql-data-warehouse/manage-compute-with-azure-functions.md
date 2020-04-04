@@ -11,18 +11,18 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e0317b3a3e7ab13a78a5d1fe3672d664030436ab
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346639"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631965"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure 函数管理 Azure 突触分析 SQL 池中的计算资源
 
 本教程使用 Azure 函数管理 Azure 突触分析中 SQL 池的计算资源。
 
-为了将 Azure 函数应用与 SQL 池一起使用，您必须创建一个[服务主体帐户](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)，该帐户在与 SQL 池实例相同的订阅下具有参与者访问权限。 
+为了将 Azure 函数应用与 SQL 池一起使用，您必须创建一个[服务主体帐户](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)，该帐户在与 SQL 池实例相同的订阅下具有参与者访问权限。
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署基于计时器的缩放
 
@@ -32,7 +32,7 @@ ms.locfileid: "80346639"
 - SQL 池实例的逻辑服务器的名称
 - SQL 池实例的名称
 - Azure Active Directory 的租户 ID（目录 ID）
-- 订阅 ID 
+- 订阅 ID
 - 服务主体应用程序 ID
 - 服务主体密钥
 
@@ -46,7 +46,7 @@ ms.locfileid: "80346639"
 
 ## <a name="change-the-compute-level"></a>更改计算级别
 
-1. 导航到 Function App 服务。 如果使用默认值部署了模板，该服务的名称应该为 ** DWOperations。 打开 Function App 以后，会看到五个函数部署到 Function App 服务。 
+1. 导航到 Function App 服务。 如果使用默认值部署了模板，该服务的名称应该为 ** DWOperations。 打开 Function App 以后，会看到五个函数部署到 Function App 服务。
 
    ![使用模板部署的函数](./media/manage-compute-with-azure-functions/five-functions.png)
 
@@ -54,23 +54,23 @@ ms.locfileid: "80346639"
 
    ![选择“集成”作为函数](./media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. 目前显示的值应该为 **%ScaleDownTime% 或 **%ScaleUpTime%。 这些值指示计划基于在[应用程序设置](../../azure-functions/functions-how-to-use-azure-function-app-settings.md)中定义的值。 目前可以忽略该值，根据后续步骤将计划更改为首选时间。
+3. 目前显示的值应该为 **%ScaleDownTime% 或 **%ScaleUpTime%。 这些值指示计划基于在[应用程序设置](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中定义的值。 目前可以忽略该值，根据后续步骤将计划更改为首选时间。
 
-4. 在计划区域向 CRON 表达式添加所需时间，此时间反映了你所希望的对 SQL 数据仓库进行纵向扩展的频率。 
+4. 在计划区域向 CRON 表达式添加所需时间，此时间反映了你所希望的对 SQL 数据仓库进行纵向扩展的频率。
 
    ![更改函数计划](./media/manage-compute-with-azure-functions/change-schedule.png)
 
-   `schedule` 的值是 [CRON 表达式](https://en.wikipedia.org/wiki/Cron#CRON_expression)，其中包含以下六个字段： 
+   `schedule` 的值是 [CRON 表达式](https://en.wikipedia.org/wiki/Cron#CRON_expression)，其中包含以下六个字段：
+
    ```json
    {second} {minute} {hour} {day} {month} {day-of-week}
    ```
 
-   例如 *，"0 30 9 + = 1-5"* 将反映每个工作日上午 9：30 的触发器。 有关详细信息，请访问 Azure Functions [计划示例](../../azure-functions/functions-bindings-timer.md#example)。
-
+   例如 *，"0 30 9 + = 1-5"* 将反映每个工作日上午 9：30 的触发器。 有关详细信息，请访问 Azure Functions [计划示例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)。
 
 ## <a name="change-the-time-of-the-scale-operation"></a>更改缩放操作的时间
 
-1. 导航到 Function App 服务。 如果使用默认值部署了模板，该服务的名称应该为 ** DWOperations。 打开 Function App 以后，会看到五个函数部署到 Function App 服务。 
+1. 导航到 Function App 服务。 如果使用默认值部署了模板，该服务的名称应该为 ** DWOperations。 打开 Function App 以后，会看到五个函数部署到 Function App 服务。
 
 2. 选择 ** DWScaleDownTrigger 或 ** DWScaleUpTrigger，具体取决于是否要更改纵向扩展或纵向缩减计算值。 选择函数以后，窗格会显示 ** index.js 文件。
 
@@ -78,7 +78,7 @@ ms.locfileid: "80346639"
 
 3. 将 ** ServiceLevelObjective 的值更改为所需级别，然后点击“保存”。 此值是根据“集成”部分定义的计划，数据仓库实例应缩放到的计算级别。
 
-## <a name="use-pause-or-resume-instead-of-scale"></a>使用暂停或继续而非缩放 
+## <a name="use-pause-or-resume-instead-of-scale"></a>使用暂停或继续而非缩放
 
 目前，默认启用的函数为 ** DWScaleDownTrigger 和 ** DWScaleUpTrigger。 若要改用暂停和继续功能，可以启用 ** DWPauseTrigger 或 ** DWResumeTrigger。
 
@@ -86,15 +86,12 @@ ms.locfileid: "80346639"
 
    ![“函数”窗格](./media/manage-compute-with-azure-functions/functions-pane.png)
 
-
-
 2. 单击要启用的触发器所对应的滑动切换开关。
 
 3. 导航到用于更改计划的各个触发器的“集成”选项卡。**
 
    > [!NOTE]
    > 缩放触发器和暂停/继续触发器之间的功能差异在于发送给队列的消息。 有关详细信息，请参阅[添加新的触发器函数](manage-compute-with-azure-functions.md#add-a-new-trigger-function)。
-
 
 ## <a name="add-a-new-trigger-function"></a>添加新的触发器函数
 
@@ -136,12 +133,11 @@ ms.locfileid: "80346639"
    }
    ```
 
-
 ## <a name="complex-scheduling"></a>复杂的计划
 
 本部分将简要介绍如何才能对暂停、继续和缩放功能进行更复杂的计划。
 
-### <a name="example-1"></a>示例 1：
+### <a name="example-1"></a>示例 1
 
 每日早晨 8 点纵向扩展到 DW600，晚上 8 点纵向缩减到 DW200。
 
@@ -150,7 +146,7 @@ ms.locfileid: "80346639"
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
 | Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
 
-### <a name="example-2"></a>示例 2： 
+### <a name="example-2"></a>示例 2
 
 每日早晨 8 点纵向扩展到 DW1000，下午 4 点纵向缩减到 DW600 一次，晚上 10 点纵向缩减到 DW200。
 
@@ -160,7 +156,7 @@ ms.locfileid: "80346639"
 | Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
 | Function3 | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
 
-### <a name="example-3"></a>示例 3： 
+### <a name="example-3"></a>示例 3
 
 在工作日的早晨 8 点纵向扩展到 DW1000，下午 4 点纵向缩减到 DW600 一次。 周五晚上 11 点暂停，周一早晨 7 点继续。
 
@@ -171,11 +167,8 @@ ms.locfileid: "80346639"
 | Function3 | 0 0 23 * * 5   | `var operation = {"operationType": "PauseDw"}` |
 | Function4 | 0 0 7 * * 0    | `var operation = {"operationType": "ResumeDw"}` |
 
-
-
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure Functions 的[计时器触发器](../../azure-functions/functions-create-scheduled-function.md)。
+详细了解 Azure Functions 的[计时器触发器](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 签出 SQL 池[示例存储库](https://github.com/Microsoft/sql-data-warehouse-samples)。
-

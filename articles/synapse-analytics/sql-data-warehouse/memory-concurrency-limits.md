@@ -11,17 +11,19 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586054"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632680"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure 突触分析的内存和并发限制
+
 查看在 Azure Synapse 分析中分配给各种性能级别和资源类的内存和并发限制。  
 
 ## <a name="data-warehouse-capacity-settings"></a>数据仓库容量设置
+
 以下各表显示了不同性能级别的数据仓库的最大容量。 若要更改性能级别，请参阅[缩放计算 - 门户](quickstart-scale-compute-portal.md)。
 
 ### <a name="service-levels"></a>服务级别
@@ -50,7 +52,8 @@ ms.locfileid: "80586054"
 最高服务级别为 DW30000c，包括 60 个计算节点，每个计算节点有一个分布区。 例如，DW30000c 级别的 600 TB 数据仓库的每个计算节点可以处理大约 10 TB 数据。
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>工作负荷组的并发性最大值
-引入[工作负荷组](sql-data-warehouse-workload-isolation.md)后，并发槽的概念不再适用。  每个请求的资源按百分比分配，在工作负荷组定义中指定。  但是，即使删除了并发槽，每个查询所需的资源量仍有一个最小值，具体取决于服务级别。  下表定义了每个查询所需的最小资源量，具体取决于服务级别和能够实现的相关并发目标。 
+
+引入[工作负荷组](sql-data-warehouse-workload-isolation.md)后，并发槽的概念不再适用。  每个请求的资源按百分比分配，在工作负荷组定义中指定。  但是，即使删除了并发槽，每个查询所需的资源量仍有一个最小值，具体取决于服务级别。  下表定义了每个查询所需的最小资源量，具体取决于服务级别和能够实现的相关并发目标。
 
 |服务级别|最大并行查询|REQUEST_MIN_RESOURCE_GRANT_PERCENT 支持的最小百分比|
 |---|---|---|
@@ -73,7 +76,8 @@ ms.locfileid: "80586054"
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>资源类的并发性最大值
-为了确保每个查询有足够的资源来高效地执行，通过为每个查询分配并发槽来跟踪资源利用率。 系统将根据重要性和并发槽位将查询置于队列中。 查询将在队列中等待，直到有足够的并发槽位可用。 [重要性](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance)和并发槽位决定了 CPU 优先级。 有关详细信息，请参阅[分析工作负荷](analyze-your-workload.md)。
+
+为了确保每个查询都有足够的资源来高效地执行，Azure Synapse 中的 SQL 分析通过将并发槽分配给每个查询来跟踪资源利用率。 系统将根据重要性和并发槽位将查询置于队列中。 查询将在队列中等待，直到有足够的并发槽位可用。 [重要性](sql-data-warehouse-workload-importance.md)和并发槽位决定了 CPU 优先级。 有关详细信息，请参阅[分析工作负荷](analyze-your-workload.md)。
 
 **静态资源类**
 
@@ -121,11 +125,11 @@ ms.locfileid: "80586054"
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-
-当没有足够的并发槽来启动查询执行操作时，系统会根据重要性让查询排队执行。  如果重要性相同，则按“先进先出”原则排队执行查询。  如果查询已完成并且查询数和槽位数低于限制，则 Azure SQL 数据仓库会释放排队的查询。 
+当没有足够的并发槽来启动查询执行操作时，系统会根据重要性让查询排队执行。  如果重要性相同，则按“先进先出”原则排队执行查询。  如果查询已完成并且查询数和槽位数低于限制，则 Azure SQL 数据仓库会释放排队的查询。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解如何利用资源类来进一步优化工作负荷，请查看以下文章：
+
 * [用于工作负荷管理的资源类](resource-classes-for-workload-management.md)
 * [分析工作负荷](analyze-your-workload.md)

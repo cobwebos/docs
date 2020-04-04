@@ -8,12 +8,12 @@ ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 86b399879807e480176ee9a3ca3feaba1ec5dd85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ad9f13bcdf36b67400adb62d58ee260ff256bb3
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250882"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637141"
 ---
 # <a name="storage-analytics"></a>存储分析
 
@@ -26,8 +26,6 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 存储分析针对存储的数据量实施 20 TB 的限制，这与存储帐户的总限制无关。 有关存储帐户限制的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](scalability-targets-standard-account.md)。
 
 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](storage-monitoring-diagnosing-troubleshooting.md)。
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="billing-for-storage-analytics"></a>存储分析计费
 

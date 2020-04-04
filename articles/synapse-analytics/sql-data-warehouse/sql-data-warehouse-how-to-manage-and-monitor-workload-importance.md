@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 114f8d637a927a899807a676fb3e1b45f5c7687c
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 3efd8a776542616a9ceefba331b06406540905a8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585750"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633324"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>管理和监视 Azure 突触分析中的工作负载重要性
 
@@ -24,7 +24,7 @@ ms.locfileid: "80585750"
 
 ## <a name="monitor-importance"></a>监视重要性
 
-使用 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) 动态管理视图中新的“重要性”列监视重要性。
+使用 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 动态管理视图中新的“重要性”列监视重要性。
 以下监视查询显示了查询的提交时间和开始时间。 查看提交时间和开始时间以及重要性，以了解重要性如何影响计划。
 
 ```sql
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-目录视图 [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest) 包含有关创建分类器时使用的参数的信息。  以下查询显示 ExecReportsClassifier 是使用 ```membername``` 参数（值为 ExecutiveReports）创建的：
+目录视图 [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 包含有关创建分类器时使用的参数的信息。  以下查询显示 ExecReportsClassifier 是使用 ```membername``` 参数（值为 ExecutiveReports）创建的：
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
@@ -69,6 +69,7 @@ GO
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 - 有关分类的详细信息，请参阅[工作负荷分类](sql-data-warehouse-workload-classification.md)。
 - 有关重要性的详细信息，请参阅[工作负荷重要性](sql-data-warehouse-workload-importance.md)
 

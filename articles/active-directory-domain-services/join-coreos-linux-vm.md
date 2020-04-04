@@ -8,15 +8,15 @@ ms.assetid: 5db65f30-bf69-4ea3-9ea5-add1db83fdb8
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: b97b542d11e405bab00519c68d2365dada6b6c7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63dfe39b986125abc9cacf6c1a6556876bbd3a99
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78298864"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655196"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>将 CoreOS 虚拟机加入 Azure AD 域服务托管域
 
@@ -29,7 +29,7 @@ ms.locfileid: "78298864"
 需有以下资源和特权才能完成本教程：
 
 * 一个有效的 Azure 订阅。
-    * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+    * 如果没有 Azure 订阅，[请创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
@@ -44,7 +44,7 @@ ms.locfileid: "78298864"
 
 * [Azure 门户](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
-* [Azure 电源外壳](../virtual-machines/linux/quick-create-powershell.md)
+* [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
 创建 VM 时，请注意虚拟网络设置，以确保 VM 能够与 Azure AD DS 托管域通信：
 

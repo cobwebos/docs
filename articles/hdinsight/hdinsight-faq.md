@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a37e1b9bc4a0b953dc727dbab2813dd938ed576
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720344"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652221"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题
 
@@ -135,7 +135,7 @@ Azure HDInsight 群集包含不同类型的虚拟机（或节点）。 每个节
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>如何估算 Hive 元存储数据库的大小？
 
-Hive 元存储用于存储 Hive 服务器使用的数据源的元数据。大小要求在一定程度上取决于 Hive 数据源的数量和复杂性，而不能提前估算。 如 [Hive 元存储最佳做法](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices)中所述，可以从 S2 层着手。该层提供 50 个 DTU 和 250 GB 存储空间；如果遇到瓶颈，可以纵向扩展数据库。
+Hive 元存储用于存储 Hive 服务器使用的数据源的元数据。大小要求在一定程度上取决于 Hive 数据源的数量和复杂性，而不能提前估算。 如[Hive 元存储指南](hdinsight-use-external-metadata-stores.md#hive-metastore-guidelines)中所述，可以从 S2 层开始，该层提供 50 个 DTU 和 250 GB 的存储空间，如果看到瓶颈，则可以扩展数据库。
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>是否支持使用除 Azure SQL 数据库以外的其他任何数据库作为外部元存储？
 
@@ -202,7 +202,7 @@ ktutil: q
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>是否可以在 AAD-DS 安全 LDAP 设置中使用自签名证书并预配 ESP 群集？
 
-建议使用证书颁发机构颁发的证书，但 ESP 上也支持使用自签名证书。 有关详细信息，请参阅：
+建议使用证书颁发机构颁发的证书，但 ESP 上也支持使用自签名证书。 有关详细信息，请参见:
 
 - [启用 Azure Active Directory 域服务](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -279,7 +279,7 @@ done
 
 目前，Blob 存储和 Azure Data Lake Storage Gen1 或 Gen2 没有任何 Ranger 插件。 对于 ESP 群集，应使用 Azure Data Lake Storage，因为至少可以使用 HDFS 工具在文件系统级别手动设置精细权限。 此外，在使用 Azure Data Lake Storage 时，ESP 群集将在群集级别使用 Azure Active Directory 执行某种文件系统访问控制。 
 
-可以使用 Azure 存储资源管理器将数据访问策略分配到用户的安全组。 有关详细信息，请参阅：
+可以使用 Azure 存储资源管理器将数据访问策略分配到用户的安全组。 有关详细信息，请参见:
 
 - [如何设置 Azure AD 用户的权限，以使用 Hive 或其他服务在 Data Lake Storage Gen2 中查询数据？](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2 设置文件和目录级别权限](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)

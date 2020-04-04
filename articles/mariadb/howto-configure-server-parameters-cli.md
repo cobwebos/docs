@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 56975c52b22b90840fb1534187e99f6efa19469e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 3ba06ea592d51eedbe827e1ab6418f65722d579c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527667"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632301"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>使用 Azure CLI 自定义服务器配置参数
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MariaDB 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。
@@ -59,10 +59,10 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 
 ### <a name="populating-the-time-zone-tables"></a>填充时区表
 
-可以通过从 MariaDB 命令行或 MariaDB Workbench 等工具调用 `az_load_timezone` 存储过程，填充服务器上的时区表。
+可以通过从 MariaDB 命令行或 MariaDB Workbench 等工具调用 `mysql.az_load_timezone` 存储过程，填充服务器上的时区表。
 
 > [!NOTE]
-> 如果是从 MariaDB Workbench 中运行 `az_load_timezone` 命令，可能需要先使用 `SET SQL_SAFE_UPDATES=0;` 关闭安全更新模式。
+> 如果是从 MariaDB Workbench 中运行 `mysql.az_load_timezone` 命令，可能需要先使用 `SET SQL_SAFE_UPDATES=0;` 关闭安全更新模式。
 
 ```sql
 CALL mysql.az_load_timezone();

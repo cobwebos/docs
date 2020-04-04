@@ -11,18 +11,20 @@ ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 322f1dfcb709727ddd3a97ea22dbe8243aedca20
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4efd5c63af9f09d41733e8e172270410245977ec
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350351"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633204"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的 REST API
+
 用于在 Azure 同步分析数据仓库中管理计算的 REST API。
 
 ## <a name="scale-compute"></a>缩放计算
-若要更改数据仓库单位，请使用[创建或更新数据库](/rest/api/sql/databases/createorupdate) REST API。 以下示例将托管在服务器 MyServer 上的数据库 MySQLDW 的数据仓库单位设置为 DW1000。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+
+若要更改数据仓库单位，请使用[创建或更新数据库](/rest/api/sql/databases/createorupdate?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API。 以下示例将托管在服务器 MyServer 上的数据库 MySQLDW 的数据仓库单位设置为 DW1000。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```
 PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -37,7 +39,7 @@ Content-Type: application/json; charset=UTF-8
 
 ## <a name="pause-compute"></a>暂停计算
 
-若要暂停数据库，请使用[暂停数据库](/rest/api/sql/databases/pause) REST API。 以下示例将暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+若要暂停数据库，请使用[暂停数据库](/rest/api/sql/databases/pause?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API。 以下示例将暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
@@ -45,7 +47,7 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 
 ## <a name="resume-compute"></a>恢复计算
 
-若要启动数据库，请使用[恢复数据库](/rest/api/sql/databases/resume) REST API。 以下示例将启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。 
+若要启动数据库，请使用[恢复数据库](/rest/api/sql/databases/resume?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API。 以下示例将启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1
@@ -61,7 +63,8 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 ```
 
 ## <a name="get-maintenance-schedule"></a>获取维护计划
-检查已为数据仓库设置的维护计划。 
+
+检查已为数据仓库设置的维护计划。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -69,6 +72,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 ```
 
 ## <a name="set-maintenance-schedule"></a>设置维护计划
+
 在现有数据仓库上设置和更新维护计划。
 
 ```
@@ -93,7 +97,6 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ```
 
-
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅[管理计算](sql-data-warehouse-manage-compute-overview.md)。
 
+有关详细信息，请参阅[管理计算](sql-data-warehouse-manage-compute-overview.md)。

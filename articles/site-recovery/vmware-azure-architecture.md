@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: ccf258594aa68fc9b5d0189c9ada640078e0ba6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77b4dd4c0efbe6d03e64865f18c2c87614aaecb5
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514861"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632526"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 到 Azure 的灾难恢复体系结构
 
@@ -25,7 +25,7 @@ ms.locfileid: "76514861"
 
 **组件** | **要求** | **详细信息**
 --- | --- | ---
-**Azure** | Azure 订阅、用于缓存的 Azure 存储帐户、托管磁盘和 Azure 网络。 | 从本地 VM 复制的数据存储在 Azure 存储中。 运行从本地到 Azure 的故障转移时，将使用复制的数据创建 Azure VM。 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
+**Azure** | Azure 订阅、缓存、托管磁盘和 Azure 网络的 Azure 存储帐户。 | 从本地 VM 复制的数据存储在 Azure 存储中。 运行从本地到 Azure 的故障转移时，将使用复制的数据创建 Azure VM。 创建 Azure VM 后，它们将连接到 Azure 虚拟网络。
 **配置服务器计算机** | 单个本地计算机。 建议将其作为可通过下载的 OVF 模板部署的 VMware VM 来运行。<br/><br/> 计算机运行所有本地 Site Recovery 组件，包括配置服务器、进程服务器和主目标服务器。 | **配置服务器：** 在本地和 Azure 之间协调通信并管理数据复制。<br/><br/> **进程服务器**：默认情况下安装在配置服务器上。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将数据发送到 Azure 存储。 进程服务器还会将 Azure Site Recovery 移动服务安装在要复制的 VM 上，并在本地计算机上执行自动发现。 随着部署扩大，可以另外添加单独的进程服务器来处理更大的复制流量。<br/><br/> **主目标服务器**：默认情况下安装在配置服务器上。 它处理从 Azure 进行故障回复期间产生的复制数据。 对于大型部署，可以另外添加一个单独的主目标服务器用于故障回复。
 **VMware 服务器** | VMware VM 在本地 vSphere ESXi 服务器上托管。 我们建议使用 vCenter 服务器管理主机。 | 在 Site Recovery 部署期间，将 VMware 服务器添加到恢复服务保管库。
 复制的计算机**** | 移动服务将安装在复制的每个 VMware VM 上。 | 建议允许从进程服务器自动安装。 或者，您可以手动安装服务或使用自动部署方法，如配置管理器。
@@ -35,32 +35,40 @@ ms.locfileid: "76514861"
 ![组件](./media/vmware-azure-architecture/arch-enhanced.png)
 
 
-
 ## <a name="replication-process"></a>复制过程
 
 1. 启用 VM 复制时，对 Azure 存储的初始复制将开始（使用指定复制策略）。 注意以下事项：
     - VMware VM 复制是块级的几近不间断行为，使用 VM 上运行的移动服务代理。
     - 应用任何复制策略设置：
         - **RPO 阈值**。 此设置不影响复制。 它有助于监视。 如果当前 RPO 超过指定的阈值限制，将引发事件并可能发送电子邮件。
-        - **恢复点保留期**。 此设置指定在发生中断时想回退的时间长度。 高级存储上的最大保留期为 24 小时。 标准存储上为 72 小时。 
-        - **应用一致的快照**。 获取应用一致的快照的频率可能为每 1 到 12 个小时，具体取决于应用需求。 快照是标准的 Azure Blob 快照。 VM 上运行的移动代理在复制流中请求对应此设置的 VSS 快照和作为应用程序一致点的时间点书签。
+        - **恢复点保留**。 此设置指定在发生中断时想回退的时间长度。 高级存储上的最大保留期为 24 小时。 标准存储上为 72 小时。 
+        - **应用一致的快照**。 应用一致的快照可以每 1 到 12 小时拍摄一次，具体取决于应用需求。 快照是标准的 Azure Blob 快照。 VM 上运行的移动代理在复制流中请求对应此设置的 VSS 快照和作为应用程序一致点的时间点书签。
 
 2. 流量通过 Internet 复制到 Azure 存储公共终结点。 或者，您可以将 Azure ExpressRoute 与[Microsoft 对等互连](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)一起使用。 不支持通过站点到站点虚拟专用网络 (VPN) 将流量从本地站点复制到 Azure。
-3. 完成初始复制后，开始将增量更改复制到 Azure。 对虚拟机的跟踪更改将发送到进程服务器。
+3. 初始复制操作可确保在启用复制时计算机上的整个数据发送到 Azure。 完成初始复制后，开始将增量更改复制到 Azure。 对虚拟机的跟踪更改将发送到进程服务器。
 4. 通信按如下方式发生：
 
     - VM 通过 HTTPS 443 入站端口与本地配置服务器通信，进行复制管理。
     - 配置服务器通过 HTTPS 443 出站端口来与 Azure 协调复制。
     - VM 将复制数据发送到 HTTPS 9443 入站端口上的进程服务器（在配置服务器计算机上运行）。 可以修改此端口。
-    - 进程服务器接收复制数据、优化和加密数据，然后通过 443 出站端口将其发送到 Azure 存储。
+    - 进程服务器接收复制数据、优化和加密数据，然后通过端口 443 出站将其发送到 Azure 存储。
 5. 复制数据首先登陆 Azure 中的缓存存储帐户。 处理这些日志，并将数据存储在 Azure 托管磁盘（称为 asr 种子磁盘）中。 将在此磁盘上创建恢复点。
-
-
-
 
 **VMware 到 Azure 的复制过程**
 
 ![复制过程](./media/vmware-azure-architecture/v2a-architecture-henry.png)
+
+## <a name="resynchronization-process"></a>重新同步过程
+
+1. 有时，在初始复制期间或传输增量更改时，源计算机之间可能会存在网络连接问题，以处理服务器或进程服务器之间到 Azure。 其中任一都可能导致数据传输到 Azure 时暂时失败。
+2. 为了避免数据完整性问题，并最大程度地降低数据传输成本，站点恢复标记了一台用于重新同步的计算机。
+3. 也可以标记计算机以在以下情况下重新同步，以保持源计算机和存储在 Azure 中的数据之间的一致性
+    - 如果机器受到强制关闭
+    - 如果计算机经历配置更改（如磁盘大小调整（将磁盘大小从 2 TB 修改为 4 TB）
+4. 重新同步仅向 Azure 发送增量数据。 通过在源计算机和存储在 Azure 中的数据之间计算数据校验和，最小化本地和 Azure 之间的数据传输。
+5. 默认情况下，重新同步安排为在非工作时间自动运行。 如果你不希望等待默认非工作时间的重新同步，可手动重新同步 VM。 为此，请转到 Azure 门户，选择 VM >**重新同步**。
+6. 如果默认重新同步在办公时间以外失败，并且需要手动干预，则在 Azure 门户中的特定计算机上生成错误。 您可以解决错误并手动触发重新同步。
+7. 完成重新同步后，增量更改的复制将恢复。
 
 ## <a name="failover-and-failback-process"></a>故障转移和故障回复过程
 

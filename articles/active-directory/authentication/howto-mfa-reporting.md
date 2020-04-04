@@ -4,25 +4,25 @@ description: 介绍如何使用 Azure 多重身份验证功能 - 报告。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/30/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b47e6bac031a5f2cffc8734fee976fbf8dadc666
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5d5354f5bca7a4c9ab00066167ad19890536629
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129084"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653610"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
 
 Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，供你和你的组织使用。 下表列出了可用的报告：
 
-| 报表 | 位置 | 描述 |
+| 报表 | 位置 | 说明 |
 |:--- |:--- |:--- |
 | 阻止的用户历史记录 | Azure AD >安全> MFA >阻止/取消阻止用户 | 显示请求阻止或解除阻止用户的历史记录。 |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
@@ -32,7 +32,7 @@ Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，�
 
 ## <a name="view-mfa-reports"></a>查看 MFA 报告
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在左侧，选择**Azure 活动目录** > **安全** > **MFA**。
 3. 选择要查看的报告。
 
@@ -90,7 +90,7 @@ Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，�
       - 电话呼叫转到语音邮件
       - 电话号码格式无效
       - 服务错误
-      - 无法接通用户的电话
+      - 无法到达用户的电话
       - 无法向设备发送移动应用通知
       - 无法发送移动应用通知
       - 用户已拒绝身份验证
@@ -148,7 +148,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 下表可用于使用多重身份验证活动报告的下载版本对多重身份验证进行故障排除。 它们不会直接显示在 Azure 门户中。
 
-| 呼叫结果 | 描述 | 广泛描述 |
+| 呼叫结果 | 说明 | 广泛描述 |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | 已输入 PIN | 用户已输入 PIN。  如果身份验证成功，则他们输入的 PIN 是正确的。 如果拒绝身份验证，则输入了不正确的 PIN 或用户设置为标准模式。 |
 | SUCCESS_NO_PIN | 仅 = 已输入 | 如果用户被设置为“PIN”模式并且身份验证被拒绝，这表示用户没有输入自己的 PIN，而只输入了 #。   如果用户被设置为“标准”模式并且身份验证成功，这表示用户只输入了 #，而这在“标准”模式下是正确的做法。 |

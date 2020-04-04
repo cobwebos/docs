@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/10/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 2d4c8c2c831bd6ef16f60c34a6353f4a742798f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5608683578a796ae0fffff7544a749043e8698fd
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76159459"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656176"
 ---
 | 资源 | 限制 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -38,7 +38,7 @@ ms.locfileid: "76159459"
 <sup>2</sup>单位缓存大小取决于定价层。 要查看定价层及其缩放限制，请参阅[API 管理定价](https://azure.microsoft.com/pricing/details/api-management/)。<br/>
 <sup>3</sup>除非后端显式关闭，否则连接将汇集并重用。<br/>
 <sup>4</sup>此限制是基本、标准和高级层的单位。 开发人员层限制为 1，024。 此限制不适用于"消耗"层。<br/>
-<sup>5</sup>此限制适用于基本、标准和高级层。 在"消费"层中，策略文档大小限制为 4 KiB。<br/>
+<sup>5</sup>此限制适用于基本、标准和高级层。 在"消费"层中，策略文档大小限制为 16 KiB。<br/>
 <sup>6</sup>此资源仅在高级层中可用。<br/>
 <sup>7</sup>此资源仅适用于"消耗"层。<br/>
 <sup>8</sup>仅适用于"消耗"层。 包括最多 2048 字节长的查询字符串。<br/>

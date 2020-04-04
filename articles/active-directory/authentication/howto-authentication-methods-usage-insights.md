@@ -4,19 +4,19 @@ description: Azure AD 自助式密码重置和多重身份验证方法使用情�
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b448e6ce7c8b4522d5e7bdbafb39eccca982fdee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1730939de399cacd13c62988259904ba84ee78ff
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848504"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654148"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>身份验证方法的使用情况和见解（预览版）
 
@@ -65,7 +65,7 @@ ms.locfileid: "74848504"
 
 注册详细信息报告显示每个用户的以下信息：
 
-- “属性”
+- 名称
 - 用户名
 - 注册状态（“全部”、“已注册”、“未注册”）
 - 启用状态（“全部”、“已启用”、“未启用”）
@@ -80,7 +80,7 @@ ms.locfileid: "74848504"
 
 重置详细信息报告显示过去 30 天的注册和重置事件，包括：
 
-- “属性”
+- 名称
 - 用户名
 - 功能（“全部”、“注册”、“重置”）
 - 身份验证方法（“应用通知”、“应用代码”、“电话呼叫”、“呼叫办公电话”、“短信”、“电子邮件”、“安全提问”）
@@ -90,7 +90,7 @@ ms.locfileid: "74848504"
 
 ## <a name="limitations"></a>限制
 
-这些报告中显示的数据最长会延迟 60 分钟。 Azure 门户中的“上次刷新时间”字段显示了数据的新旧程度。
+这些报告中显示的数据最长会延迟 60 分钟。 Azure 门户中存在"上次刷新"字段，用于标识数据最近的情况。
 
 使用情况和见解数据不能取代 Azure 多重身份验证活动报告，也不能取代 Azure AD 登录报告中包含的信息。
 

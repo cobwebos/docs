@@ -2,17 +2,17 @@
 title: Azure 托管磁盘的服务器端加密 - Azure CLI
 description: Azure 存储在将数据保存到存储群集之前会对其进行静态加密，以此保护数据。 您可以依赖 Microsoft 管理的密钥来加密托管磁盘，也可以使用客户管理的密钥使用您自己的密钥管理加密。
 author: roygara
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 912677a10d7098b891a4f6972b61761cd72cf292
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 20aa55f9fc4ea65da1973628aeec313a5367816a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585946"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632058"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 

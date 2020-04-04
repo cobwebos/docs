@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbf7f2945ad6a94c51cfd0c7db1e8c85d739c6ed
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75417803"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631621"
 ---
 # <a name="manage-pre-and-post-scripts"></a>管理预脚本和后脚本
 
@@ -18,7 +18,7 @@ ms.locfileid: "75417803"
 
 ## <a name="runbook-requirements"></a>Runbook 要求
 
-要将 Runbook 用作预脚本或后脚本，必须将 Runbook 导入您的自动化帐户并发布。 要了解有关此过程的更多内容，请参阅[发布 Runbook](manage-runbooks.md#publish-a-runbook)。
+要将 Runbook 用作预脚本或后脚本，必须将 Runbook 导入您的自动化帐户并发布。 要了解有关此过程的更多内容，请参阅[发布 Runbook](manage-runbooks.md#publishing-a-runbook)。
 
 ## <a name="using-a-pre-script-or-post-script"></a>使用预脚本或后脚本
 
@@ -68,7 +68,7 @@ ms.locfileid: "75417803"
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext 属性
 
-|properties  |描述  |
+|properties  |说明  |
 |---------|---------|
 |SoftwareUpdateConfigurationName     | 软件更新配置的名称。        |
 |SoftwareUpdateConfigurationRunId     | 运行的唯一 ID。        |

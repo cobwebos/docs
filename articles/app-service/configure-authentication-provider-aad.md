@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 4b42f0966288e4ee72b689ddce6313a41e91f13e
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: dbbe58df4f1cfe93555b494e525fad18f5b02664
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438037"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632572"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure 功能应用配置为使用 Azure AD 登录名
 
@@ -78,7 +78,7 @@ ms.locfileid: "80438037"
 1. 创建应用注册后，复制“应用程序(客户端) ID”和“目录(租户) ID”供稍后使用。********
 1. 选择“身份验证”****。 在**隐式授予**下，启用**ID 令牌**以允许 App 服务中的 OpenID 连接用户登录。
 1. （可选）选择**品牌**。 在“主页 URL”中，输入应用服务应用的 URL，然后选择“保存”。********
-1. 选择 **"公开 API** > **集**"。 粘贴应用服务应用的 URL，然后选择“保存”。****
+1. 选择 **"公开 API** > **集**"。 对于单租户应用，请粘贴到应用服务应用的 URL 中，然后选择 **"保存**"和"多租户应用"，将粘贴到基于租户验证域的 URL 中，然后选择"**保存**"。
 
    > [!NOTE]
    > 此值是应用注册的“应用程序 ID URI”。**** 如果 Web 应用需要访问云中的 API，则在配置云应用服务资源时，需要提供该 Web 应用的“应用程序 ID URI”。**** 例如，如果你希望云服务显式向该 Web 应用授予访问权限，则可以使用此 URI。

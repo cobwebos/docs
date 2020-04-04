@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bb907ee59891e5a9a1ffc9c8c6eee34d3e71ad2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 18f227c1888e0565eebb640fa61ced56dc994865
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531934"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632341"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。
@@ -147,6 +147,10 @@ ms.locfileid: "79531934"
 |内存优化|8|16777216|1024|536870912|
 |内存优化|16|16777216|1024|1073741824|
 |内存优化|32|16777216|1024|1073741824|
+
+### <a name="time_zone"></a>time_zone
+
+可以通过从 MySQL 命令行或`mysql.az_load_timezone`MySQL 工作台等工具调用存储过程来填充时区表。 有关如何调用存储过程并设置全局或会话级时区，请参阅[Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或[Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter)文章。
 
 ## <a name="storage-engine-support"></a>存储引擎支持
 

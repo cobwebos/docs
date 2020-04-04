@@ -1,17 +1,17 @@
 ---
 title: Azure Kubernetes 服务 (AKS) 中的 HTTP 应用程序路由加载项
-description: 使用 Azure Kubernetes 服务 (AKS) 中的 HTTP 应用程序路由加载项。
+description: 使用 HTTP 应用程序路由加载项访问 Azure 库伯奈斯服务 （AKS） 上部署的应用程序。
 services: container-service
 author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 5794e46f10abec1ceef4c79a881f7f353e729634
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ffc9daaf1b87fc9fb6ebbb0f2787f07282afe5e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595682"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632404"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
@@ -206,7 +206,7 @@ kubectl delete configmaps addon-http-application-routing-nginx-configuration --n
 
 针对群集中剩余的所有 *addon-http-application-routing* 资源重复前面的 `kubectl delete` 步骤。
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
 请使用 [kubectl logs][kubectl-logs] 命令查看 External-DNS 应用程序的应用程序日志。 这些日志应确认已成功创建 A 和 TXT DNS 记录。
 

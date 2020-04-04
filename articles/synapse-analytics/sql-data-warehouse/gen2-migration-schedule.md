@@ -11,12 +11,12 @@ ms.service: synapse-analytics
 ms.topic: article
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4714d5908fffb6f5c1440c3ec512fb8173da4b57
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6f2af826473bfd13f8100796a540d41cbedbb037
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346768"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631565"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>将 SQL 池升级到第 2 代
 
@@ -31,7 +31,7 @@ Microsoft 正在帮助降低运行 SQL 池的入门级成本。  能够处理要
 
 \* 表示该区域的特定时间表当前不可用。
 
-| **地区** | **较低的 Gen2 可用** | **自动升级开始时间** |
+| **区域** | **较低的 Gen2 可用** | **自动升级开始时间** |
 |:--- |:--- |:--- |
 | 加拿大东部 |2020年6月1日 |2020年7月1日 |
 | 中国东部 |\* |\* |
@@ -60,8 +60,8 @@ Microsoft 正在帮助降低运行 SQL 池的入门级成本。  能够处理要
 - [就地升级](upgrade-to-latest-generation.md)- 此选项会将现有第 1 代 SQL 池升级到第 2 代。 当我们重新启动 SQL 池时，升级过程将涉及连接性短暂下降（大约 5 分钟）。  重新启动 SQL 池后，它将完全可用。 如果在升级过程中遇到问题，请打开[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)，并将"Gen2 升级"作为可能的原因。
 - [从还原点升级](sql-data-warehouse-restore-points.md)- 在当前 Gen1 SQL 池上创建用户定义的还原点，然后直接还原到 Gen2 实例。 现有的第 1 代 SQL 池将保持不变。 还原完成后，您的 Gen2 SQL 池将完全可用。  在已还原的 Gen2 实例上运行所有测试和验证过程后，可以删除原始 Gen1 实例。
 
-   - 步骤 1：从 Azure 门户[创建用户定义的还原点](sql-data-warehouse-restore-active-paused-dw.md)。
-   - 步骤 2：从用户定义的还原点还原时，将"性能级别"设置为首选的 Gen2 层。
+  - 步骤 1：从 Azure 门户[创建用户定义的还原点](sql-data-warehouse-restore-active-paused-dw.md)。
+  - 步骤 2：从用户定义的还原点还原时，将"性能级别"设置为首选的 Gen2 层。
 
 升级过程继续在后台升级数据文件时，可能会经历一段时间的性能下降。 性能下降的总时间将根据数据文件的大小而有所不同。
 
@@ -82,13 +82,14 @@ Microsoft 正在帮助降低运行 SQL 池的入门级成本。  能够处理要
 
 **问：升级将如何影响我的自动化脚本？**
 
-- 答：任何引用服务级别目标的自动化脚本都应更改为对应于第 2 代等效项。  详见[此处](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal)。
+- 答：任何引用服务级别目标的自动化脚本都应更改为对应于第 2 代等效项。  详见[此处](upgrade-to-latest-generation.md#upgrade-in-a-supported-region-using-the-azure-portal)。
 
 **问：自升级通常需要多长时间？**
 
-- 答：您可以就地升级或从还原点升级。  
-   - 升级到位将导致 SQL 池暂时暂停和恢复。  SQL 池联机时，后台进程将继续。  
-   - 如果要通过还原点进行升级，则需要更长时间，因为升级将完成整个还原过程。
+- 答：您可以就地升级或从还原点升级。
+
+  - 升级到位将导致 SQL 池暂时暂停和恢复。  SQL 池联机时，后台进程将继续。  
+  - 如果要通过还原点进行升级，则需要更长时间，因为升级将完成整个还原过程。
 
 **问：自动升级需要多长时间？**
 
@@ -100,13 +101,15 @@ Microsoft 正在帮助降低运行 SQL 池的入门级成本。  能够处理要
 
 **问：如果我的背景升级过程似乎卡住了，我该怎么办？**
 
- - 答：启动列存储表的重新索引。 请注意，在此操作期间，为表重新编制索引将处于脱机状态。
+- 答：启动列存储表的重新索引。 请注意，在此操作期间，为表重新编制索引将处于脱机状态。
 
 **问：如果 Gen2 没有第 1 代上的服务级别目标怎么办？**
+
 - 答：如果您在第 1 代上运行 DW600 或 DW1200，建议分别使用 DW500c 或 DW1000c，因为第 2 代提供的内存、资源和性能高于第 1 代。
 
 **问：我可以禁用异地备份吗？**
-- 答：没有。 地理备份是一项企业功能，用于在区域不可用时保留 SQL 池可用性。 若有其他疑虑，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)。
+
+- 答：不是。 地理备份是一项企业功能，用于在区域不可用时保留 SQL 池可用性。 若有其他疑虑，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)。
 
 **问：第 1 代和 Gen2 之间的 T-SQL 语法是否有差异？**
 
@@ -118,13 +121,13 @@ Microsoft 正在帮助降低运行 SQL 池的入门级成本。  能够处理要
 
 **问：升级区域后，我能否创建新的 Gen1 实例？**
 
-- 答：没有。 区域升级后，将禁用新 Gen1 实例的创建。
+- 答：不是。 区域升级后，将禁用新 Gen1 实例的创建。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [升级步骤](upgrade-to-latest-generation.md)
 - [维护时段](maintenance-scheduling.md)
-- [资源运行状况监视器](https://docs.microsoft.com/azure/service-health/resource-health-overview)
+- [资源运行状况监视器](../../service-health/resource-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 - [开始迁移前查看](upgrade-to-latest-generation.md#before-you-begin)
 - [就地升级和从还原点升级](upgrade-to-latest-generation.md)
 - [创建用户定义的还原点](sql-data-warehouse-restore-points.md)

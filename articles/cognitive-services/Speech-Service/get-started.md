@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: f74e3ea3d20ad2666b434e009cf62add6f88d200
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4604bfe7c815f79733f99a1a3727e4c68527e7ec
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219661"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656127"
 ---
-# <a name="try-the-speech-service-for-free"></a>免费试用语音服务
+# <a name="try-the-speech-service-for-free"></a>免费试用语音服务'
 
 在本文中，您可以选择一个选项，以便轻松免费测试语音服务，以便了解该服务可以做什么，并决定它是否适合您的需要。 根据您的情况和用例选择以下两个选项之一：
 
@@ -71,7 +71,7 @@ ms.locfileid: "79219661"
    - 选择将使用资源[的区域](regions.md)。
    - 选择免费 (F0) 或付费 (S0) 定价层。 若要查看每个层的定价和用量配额的完整信息，请选择“查看全部定价详细信息”****。
    - 为此“语音”订阅创建新的资源组或将订阅分配到现有资源组。 资源组有助于使多种 Azure 订阅保持有序状态。
-   - 选择 **“创建”**。 系统随后会将你转到部署概述，并显示部署进度消息。
+   - 选择“创建”  。 系统随后会将你转到部署概述，并显示部署进度消息。
 
 > [!NOTE]
 > 可在一个或多个区域中创建数量不受限的标准层订阅。 但是，只能创建一个免费层订阅。 在免费层上进行的模型部署如果连续 7 天处于未使用状态，则会被系统自动停用。
@@ -97,4 +97,4 @@ ms.locfileid: "79219661"
 
 > [!div class="nextstepaction"]
 > [快速入门：在 C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [语音 SDK 示例中识别语音](speech-sdk.md#get-the-samples)
+> [语音 SDK 示例中识别语音](speech-sdk.md#sample-source-code)

@@ -4,19 +4,19 @@ description: 本地 Azure MFA 服务器分步入门
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c32867313a0adf1967cb55cb78c42cc1b4e5758
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263694"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653126"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure 多重身份验证服务器入门
 
@@ -51,7 +51,7 @@ ms.locfileid: "79263694"
 
 请确保用于 Azure 多重身份验证的服务器满足以下要求：
 
-| Azure 多重身份验证服务器要求 | 描述 |
+| Azure 多重身份验证服务器要求 | 说明 |
 |:--- |:--- |
 | 硬件 |<li>200 MB 硬盘空间</li><li>有 x32 或 x64 功能的处理器</li><li>1 GB 或更大的 RAM</li> |
 | 软件 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008、SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003、SP1、SP2</li><li>Windows 10</li><li>Windows 8.1，所有版本</li><li>Windows 8，所有版本</li><li>Windows 7，所有版本</li><li>Windows Vista，所有版本、SP1、SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 或更高版本（如果要安装用户门户或 Web 服务 SDK）</li> |
@@ -161,7 +161,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 ## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>Azure 多重身份验证服务器如何处理用户数据
 
-如果在本地使用多重身份验证 (MFA) 服务器，用户的数据将存储在本地服务器中。 云中不会持久存储任何用户数据。 当用户执行双步验证时，MFA 服务器会将数据发送到 Azure MFA 云服务，以执行验证。 将这些身份验证请求发送到云服务时，会在请求和日志中发送以下字段，以便在客户的身份验证/使用情况报告中使用。 某些字段是可选的，可以在多重身份验证服务器中启用或禁用。 从 MFA 服务器到 MFA 云服务的通信使用基于出站端口 443 的 SSL/TLS。 这些字段是：
+在本地使用多重身份验证 （MFA） 服务器时，用户的数据将存储在本地服务器中。 云中不会持久存储任何用户数据。 当用户执行双步验证时，MFA 服务器会将数据发送到 Azure MFA 云服务，以执行验证。 将这些身份验证请求发送到云服务时，会在请求和日志中发送以下字段，以便在客户的身份验证/使用情况报告中使用。 某些字段是可选的，可以在多重身份验证服务器中启用或禁用。 从 MFA 服务器到 MFA 云服务的通信使用基于出站端口 443 的 SSL/TLS。 这些字段是：
 
 * 唯一 ID - 用户名或内部 MFA 服务器 ID
 * 名字和姓名（可选）

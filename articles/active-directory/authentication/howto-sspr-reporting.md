@@ -4,19 +4,19 @@ description: 报告 Azure AD 自助密码重置事件
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/01/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27d219f46f82f4a74cb5dee0a6b11b673a4a3509
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 348082ad96a5efa4d8f866c3675044edf7b6f8a8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76155001"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652157"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -44,7 +44,7 @@ ms.locfileid: "76155001"
 在 Azure 门户体验中，我们提供一种改进的方式用于查看密码重置和密码重置注册活动。 请使用以下步骤，查找密码重置和密码重置注册事件：
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧窗格中，选择“所有服务”****。
+2. 在左侧窗格中，选择“所有服务”  。
 3. 在服务列表中搜索**Azure 活动目录**并选择它。
 4. 在“管理”部分中选择“用户”****。
 5. 从“用户”**** 边栏选项卡中选择“审核日志”****。 此时会显示目录中所有用户发生的所有审核事件。 可以筛选此视图，查看所有与密码相关的事件。

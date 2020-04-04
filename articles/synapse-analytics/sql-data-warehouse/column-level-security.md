@@ -1,6 +1,6 @@
 ---
 title: Azure 突触的列级安全性是什么？
-description: 列级安全性允许客户根据用户的执行上下文或组成员身份控制对数据库表列的访问，简化应用程序中安全设计和编码，并允许您对列实施限制访问。
+description: 列级安全性允许客户根据用户的执行上下文或组成员身份控制对数据库表列的访问，简化应用程序中安全设计和编码，并允许您对列访问实施限制。
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,24 +12,23 @@ ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 24ead458232b096a5c69ffe8b45c6298a9da9f75
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 61a3e2eadaf79cdb30a931b31cff709298d0a22c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349093"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631299"
 ---
 # <a name="column-level-security"></a>列级别安全性
 
 列级安全性允许客户根据用户的执行上下文或组成员身份控制对表列的访问。
 
-
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-自发布此视频以来[，行级别安全性](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017)已可用于 Azure 同步。 
+自发布此视频以来[，行级别安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)已可用于 Azure 同步。
 
 列级安全性简化了应用程序中安全性的设计和编码，允许您限制列访问以保护敏感数据。 例如，确保具体用户只能访问表中与其部门相关的特定列。 访问限制逻辑位于数据库层中，而不是在另一个应用层中远离数据。 每次尝试从任何层访问数据时，数据库都会应用访问限制。 通过减少整体安全系统的表面积，此限制使您的安全性更加可靠和可靠。 此外，列级安全性还消除了引入视图以筛选出列以对用户施加访问限制的需要。
 
-您可以使用[GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL 语句实现列级安全性。 借助此机制，SQL 和 Azure Active Directory (AAD) 身份验证同时受支持。
+您可以使用[GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 语句实现列级安全性。 借助此机制，SQL 和 Azure Active Directory (AAD) 身份验证同时受支持。
 
 ![cls](./media/column-level-security/cls.png)
 
@@ -52,6 +51,7 @@ GRANT <permission> [ ,...n ] ON
 ```
 
 ## <a name="example"></a>示例
+
 下面的示例演示如何限制`TestUser`访问`SSN``Membership`表的列：
 
 使用`Membership`用于存储社会保险号的 SSN 列创建表：

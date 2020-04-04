@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b5d326d02587d6b5bd8fd73dcccfefdb13c47d57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26c5c5b31d5f3f9e1a642c0bafb947190e479055
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500918"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632631"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
@@ -33,7 +33,7 @@ ms.locfileid: "79500918"
 
 3. **确保您的节点和自动化工作区具有所需的模块。** 
 
-    如果 Runbook 导入任何模块，请使用[导入模块](../shared-resources/modules.md#import-modules)中列出的步骤验证它们是否可用于您的自动化帐户。 按照[Azure 自动化 中更新 Azure 模块](..//automation-update-azure-modules.md)中的说明将模块更新到最新版本。 有关详细信息，请参阅[故障排除模块](shared-resources.md#modules)。
+    如果 Runbook 导入任何模块，请使用[导入模块](../shared-resources/modules.md#importing-modules)中列出的步骤验证它们是否可用于您的自动化帐户。 按照[Azure 自动化 中更新 Azure 模块](..//automation-update-azure-modules.md)中的说明将模块更新到最新版本。 有关详细信息，请参阅[故障排除模块](shared-resources.md#modules)。
 
 4. **如果 Runbook 挂起或意外失败，请执行操作。**
 
@@ -284,7 +284,7 @@ The job was tried three times but it failed
 
 ### <a name="resolution"></a>解决方法
 
-* 内存限制，网络套接字。 建议在内存限制内工作的方法是拆分多个 Runbook 中的工作负载，处理内存中更少的数据，避免从 Runbook 编写不必要的输出，并考虑将多少个检查点写入 PowerShell 工作流运行簿。 使用清除方法（如`$myVar.clear`）清除变量，并用于`[GC]::Collect`立即运行垃圾回收。 这将减少运行时期间 runbook 的内存占用情况。
+* 内存限制，网络套接字。 建议在内存限制内工作的方法包括：在多个 Runbook 之间拆分工作负载，处理内存中更少的数据，避免从 Runbook 编写不必要的输出，并考虑将多少个检查点写入 PowerShell 工作流 Runbook。 使用清除方法（如`$myVar.clear`）清除变量，并用于`[GC]::Collect`立即运行垃圾回收。 这将减少运行时期间 runbook 的内存占用情况。
 
 * 模块不兼容。 按照["如何更新 Azure 自动化 中的 Azure PowerShell"模块](../automation-update-azure-modules.md)的步骤更新 Azure 模块。
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9b9196cde45686e42d1baf7faedf94bdb73acccc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 902734ddc7195d643c3aedb4054f57723d1a51c2
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367051"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632136"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
@@ -252,7 +252,7 @@ $SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprin
 Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
-签署 Runbook 后，必须将其导入自动化帐户，然后使用签名块进行发布。 若要了解如何导入 Runbook，请参阅[将 Runbook 从文件导入 Azure 自动化](manage-runbooks.md#import-a-runbook)。
+签署 Runbook 后，必须将其导入自动化帐户，然后使用签名块进行发布。 若要了解如何导入 Runbook，请参阅[将 Runbook 从文件导入 Azure 自动化](manage-runbooks.md#importing-a-runbook)。
 
 ## <a name="working-with-signed-runbooks-on-a-linux-hybrid-runbook-worker"></a>在 Linux 混合 Runbook 工作线程上使用签名的 Runbook
 

@@ -1,15 +1,15 @@
 ---
 title: 升级 Azure Kubernetes 服务 (AKS) 群集
-description: 了解如何升级 Azure Kubernetes 服务 (AKS) 群集
+description: 了解如何升级 Azure 库伯奈斯服务 （AKS） 群集以获取最新功能和安全更新。
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 4520297e83f96f95b10ecafd5af52a913dc5f450
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 183e0a85f65d24dc7133307391931bea754a456d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77621978"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632611"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
@@ -17,9 +17,9 @@ ms.locfileid: "77621978"
 
 对于使用多个节点池或 Windows 服务器节点（当前在 AKS 中预览）的 AKS 群集，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
-本文要求运行 Azure CLI 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+本文要求运行 Azure CLI 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 > [!WARNING]
 > AKS 群集升级会触发节点的隔离和排空。 如果可用计算配额较低，则升级可能会失败。 有关详细信息，请参阅[增加配额](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。

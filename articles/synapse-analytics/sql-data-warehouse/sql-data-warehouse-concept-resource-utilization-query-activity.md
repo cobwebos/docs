@@ -11,23 +11,22 @@ ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 0b7accec9fdce1ad81a08aee17b37d655409948b
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: 61c823aee5d8a6755a3bd7971cd7cca952cbb911
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607554"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633619"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>监视 Azure 突触分析中的资源利用率和查询活动
 
-Azure Synapse 分析在 Azure 门户中提供了丰富的监视体验，以显示有关数据仓库工作负荷的见解。 建议使用 Azure 门户来监视数据仓库，因为它提供可配置的保持期、警报、建议，并为指标和日志提供可自定义的图表与仪表板。 该门户还使您能够与其他 Azure 监视服务（如 Azure 监视器 （log） 与日志分析集成，不仅为您的数据仓库提供整体监视体验，还可以为集成监视体验的整个 Azure 分析平台提供整体监控体验。 本文档介绍可用于优化和管理分析平台的监视功能。 
+Azure Synapse 分析在 Azure 门户中提供了丰富的监视体验，以显示有关数据仓库工作负荷的见解。 建议使用 Azure 门户来监视数据仓库，因为它提供可配置的保持期、警报、建议，并为指标和日志提供可自定义的图表与仪表板。 该门户还使您能够与其他 Azure 监视服务（如 Azure 监视器 （log） 与日志分析集成，不仅为您的数据仓库提供整体监视体验，还可以为集成监视体验的整个 Azure 分析平台提供整体监控体验。 本文档介绍使用 SQL Analytics 优化和管理分析平台的监控功能。
 
 ## <a name="resource-utilization"></a>资源利用率
 
-以下指标在 Synapse SQL 的 Azure 门户中可用。 这些指标通过 [Azure Monitor](../../azure-monitor/platform/data-collection.md#metrics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 显示。
+以下指标在 Azure 门户中可用于 SQL 分析。 这些指标通过 [Azure Monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics) 显示。
 
-
-| 标准名称             | 描述                                                  | 聚合类型 |
+| 标准名称             | 说明                                                  | 聚合类型 |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | CPU 百分比          | 数据仓库所有节点的 CPU 利用率      | 平均，最小，最大值    |
 | 数据 IO 百分比      | 数据仓库所有节点的 IO 利用率       | 平均，最小，最大值    |
@@ -55,16 +54,16 @@ Azure Synapse 分析在 Azure 门户中提供了丰富的监视体验，以显�
 
 ## <a name="query-activity"></a>查询活动
 
-对于通过 T-SQL 监视突触 SQL 时的编程体验，该服务提供了一组动态管理视图 （DMV）。 在主动排查和识别工作负荷的性能瓶颈时，这些视图非常有用。
+对于通过 T-SQL 监视 SQL 分析的编程体验，该服务提供了一组动态管理视图 （DMV）。 在主动排查和识别工作负荷的性能瓶颈时，这些视图非常有用。
 
-要查看适用于 Synapse SQL 的 DMV 列表，请参阅[本文档](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs)。 
+要查看 SQL Analytics 提供的 DMV 列表，请参阅[本文档](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs)。
 
 ## <a name="metrics-and-diagnostics-logging"></a>指标和诊断日志记录
 
-指标和日志都可导出到 Azure Monitor（具体而言，是 [Azure Monitor 日志](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)组件），并可通过[日志查询](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)以编程方式访问它们。 Synapse SQL 的日志延迟约为 10-15 分钟。 有关影响延迟的因素的更多详细信息，请访问以下文档。
+指标和日志都可导出到 Azure Monitor（具体而言，是 [Azure Monitor 日志](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)组件），并可通过[日志查询](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)以编程方式访问它们。 SQL 分析的日志延迟约为 10-15 分钟。 有关影响延迟的因素的更多详细信息，请访问以下文档。
 
 ## <a name="next-steps"></a>后续步骤
 
 以下操作方法指南介绍了在监视和管理数据仓库时可以参考的常见方案和用例：
 
-- [使用 DMV 监视数据仓库工作负荷](/sql-data-warehouse/sql-data-warehouse-manage-monitor?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
+- [使用 DMV 监视数据仓库工作负荷](sql-data-warehouse-manage-monitor.md)

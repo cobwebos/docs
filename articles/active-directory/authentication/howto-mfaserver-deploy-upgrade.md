@@ -4,19 +4,19 @@ description: 将 Azure 多重身份验证服务器升级到较新版本的相关
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/12/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 756c45541907c52448805376e1b054180c31fdf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f242b4a7e984ceeb183547cb3a949927f3c91da
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848096"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653103"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升级到最新的 Azure 多重身份验证服务器
 
@@ -102,7 +102,7 @@ ms.locfileid: "74848096"
 
    完成这一步后，便无法在此 AD FS 群集中通过 MFA 服务器进行双重验证，除非完成到第 8 步。
 
-4. 通过运行 Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 脚本，注销 AD FS 适配器的较旧版本。 确保 -Name** 参数（“WindowsAzureMultiFactorAuthentication”或“AzureMFAServerAuthentication”）与第 3 步中显示的名称一致。 这一点适用于同一 AD FS 群集中的所有服务器，因为这些服务器进行了集中配置。
+4. 通过运行 Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 脚本，注销 AD FS 适配器的较旧版本。 确保 *-name*参数（"WindowsAzure 多重身份验证"或"AzureMFAServer 身份验证"）与步骤 3 中显示的名称匹配。 这一点适用于同一 AD FS 群集中的所有服务器，因为这些服务器进行了集中配置。
 5. 通过运行 Register-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 脚本注册新的 AD FS 适配器。 这一点适用于同一 AD FS 群集中的所有服务器，因为这些服务器进行了集中配置。
 6. 在从 AD FS 场中删除的每个服务器上重新启动 AD FS 服务。
 7. 将更新后的服务器重新添加到 AD FS 场，并删除场中的其他服务器。

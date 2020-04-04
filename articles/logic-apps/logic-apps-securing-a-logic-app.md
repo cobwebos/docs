@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: cc349e5851627ee830196982509f91a83198dfe0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4fc4960eb3af8a3d3c9902c9b24505bb5610b709
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349582"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657161"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure 逻辑应用中保护访问和数据
 
@@ -27,7 +27,7 @@ ms.locfileid: "80349582"
 
 ## <a name="access-to-request-based-triggers"></a>对基于请求的触发器的访问
 
-如果逻辑应用使用接收传入调用或请求的基于请求的触发器（例如[请求](../connectors/connectors-native-reqres.md)或 [Webhook](../connectors/connectors-native-webhook.md) 触发器），则你可以限制访问权限，以便只有经过授权的客户端才能调用逻辑应用。 逻辑应用接收到的所有请求都使用安全套接字层 (SSL) 协议进行加密和保护。
+如果逻辑应用使用接收传入调用或请求的基于请求的触发器（例如[请求](../connectors/connectors-native-reqres.md)或 [Webhook](../connectors/connectors-native-webhook.md) 触发器），则你可以限制访问权限，以便只有经过授权的客户端才能调用逻辑应用。 逻辑应用收到的所有请求都使用传输层安全 （TLS）进行加密和保护，以前称为安全套接字层 （SSL） 协议。
 
 以下是可帮助您安全访问此触发器类型的选项：
 
@@ -45,7 +45,7 @@ ms.locfileid: "80349582"
 
 每个 URL 包含下表中所述的 `sp`、`sv` 和 `sig` 查询参数：
 
-| 查询参数 | 描述 |
+| 查询参数 | 说明 |
 |-----------------|-------------|
 | `sp` | 指定允许的 HTTP 方法使用的权限。 |
 | `sv` | 指定用于生成签名的 SAS 版本。 |
@@ -437,7 +437,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 此示例模板包含使用 `securestring` 类型的多个受保护参数定义：
 
-| 参数名称 | 描述 |
+| 参数名称 | 说明 |
 |----------------|-------------|
 | `TemplatePasswordParam` | 一个模板参数，它接受随后要传递到工作流定义的 `basicAuthPasswordParam` 参数的密码 |
 | `TemplateUsernameParam` | 一个模板参数，它接受随后要传递到工作流定义的 `basicAuthUserNameParam` 参数的用户名 |
@@ -613,7 +613,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据用于发出访问这�
 | [客户端证书](#client-certificate-authentication) | Azure API 管理、Azure 应用服务、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API 管理、Azure 应用服务、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
 | [原始](#raw-authentication) | Azure API 管理、Azure 应用服务、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
-| [托管的标识](#managed-identity-authentication) | Azure API 管理、Azure 应用服务、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
+| [托管标识](#managed-identity-authentication) | Azure API 管理、Azure 应用服务、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
 |||
 
 <a name="basic-authentication"></a>
@@ -622,10 +622,10 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据用于发出访问这�
 
 如果[基本](../active-directory-b2c/secure-rest-api.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性 (JSON) | 必选 | “值” | 描述 |
+| 属性（设计器） | 属性 (JSON) | 必选 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | Basic | 要使用的身份验证类型 |
-| **用户** | `username` | 是 | <*用户名*>| 用于对目标服务终结点访问进行身份验证的用户名 |
+| **用户名** | `username` | 是 | <*用户名*>| 用于对目标服务终结点访问进行身份验证的用户名 |
 | **密码** | `password` | 是 | <*密码*> | 用于对目标服务终结点访问进行身份验证的密码 |
 ||||||
 
@@ -653,9 +653,9 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据用于发出访问这�
 
 如果[客户端证书](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性 (JSON) | 必选 | “值” | 描述 |
+| 属性（设计器） | 属性 (JSON) | 必选 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
-| **身份验证** | `type` | 是 | **客户端证书** <br>或 <br>`ClientCertificate` | 安全套接字层 (SSL) 客户端证书使用的身份验证类型。 虽然支持自签名证书，但不支持用于 SSL 的自签名证书。 |
+| **身份验证** | `type` | 是 | **客户端证书** <br>或 <br>`ClientCertificate` | 用于 TLS/SSL 客户端证书的身份验证类型。 虽然支持自签名证书，但不支持 TLS/SSL 的自签名证书。 |
 | **普夫克斯** | `pfx` | 是 | <*编码-pfx-文件内容*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 <p><p>若要将 PFX 文件转换为 base64 编码格式，可以使用 PowerShell 并执行以下步骤： <p>1. 将证书内容保存到变量中： <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. 使用`ToBase64String()`函数转换证书内容，并将该内容保存到文本文件： <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **密码** | `password`| 否 | <*密码换pfx文件*> | 用于访问 PFX 文件的密码 |
 |||||
@@ -684,7 +684,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据用于发出访问这�
 * [通过在 Azure API 管理中使用客户端证书身份验证，提高后端服务的安全性](../api-management/api-management-howto-mutual-certificates.md)
 * [使用客户端证书提高 RESTfuL 服务的安全性](../active-directory-b2c/secure-rest-api.md)
 * [应用程序身份验证的证书凭据](../active-directory/develop/active-directory-certificate-credentials.md)
-* [在 Azure 应用服务的应用程序代码中使用 SSL 证书](../app-service/configure-ssl-certificate-in-code.md)
+* [在 Azure 应用服务中的代码中使用 TLS/SSL 证书](../app-service/configure-ssl-certificate-in-code.md)
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
@@ -692,7 +692,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据用于发出访问这�
 
 如果 [Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md) 选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性 (JSON) | 必选 | “值” | 描述 |
+| 属性（设计器） | 属性 (JSON) | 必选 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 可使用的身份验证类型。 逻辑应用当前遵循 [OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
 | **权威** | `authority` | 否 | <*URL for 授权令牌颁发者*> | 提供身份验证令牌的颁发机构的 URL。 此值默认为 `https://login.windows.net`。 |
@@ -746,7 +746,7 @@ Authorization: OAuth realm="Photos",
 
 在支持原始身份验证的触发器或操作中指定以下属性值：
 
-| 属性（设计器） | 属性 (JSON) | 必选 | “值” | 描述 |
+| 属性（设计器） | 属性 (JSON) | 必选 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | Raw | 要使用的身份验证类型 |
 | **价值** | `value` | 是 | <*授权-标头值*> | 用于身份验证的授权标头值 |
@@ -781,7 +781,7 @@ Authorization: OAuth realm="Photos",
 
 1. 在要使用托管标识的触发器或操作中指定以下属性值：
 
-   | 属性（设计器） | 属性 (JSON) | 必选 | “值” | 描述 |
+   | 属性（设计器） | 属性 (JSON) | 必选 | 值 | 说明 |
    |---------------------|-----------------|----------|-------|-------------|
    | **身份验证** | `type` | 是 | **托管标识** <br>或 <br>`ManagedServiceIdentity` | 要使用的身份验证类型 |
    | **托管标识** | `identity` | 是 | * **系统分配的托管标识** <br>或 <br>`SystemAssigned` <p><p>• <*用户分配的标识名称*> | 要使用的托管标识 |

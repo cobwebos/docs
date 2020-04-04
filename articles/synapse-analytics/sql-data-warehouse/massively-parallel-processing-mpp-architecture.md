@@ -10,21 +10,23 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a42ec523bb1f77c48f7382283a52565c9c9273b6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e321df3f27defdceab31fe3b425a4169928ba3f6
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584500"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631951"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics（以前称为 SQL DW）体系结构 
+# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics（以前称为 SQL DW）体系结构
 
 Azure Synapse 是一种无限制的分析服务，它将企业数据仓库和大数据分析结合在一起。 借助它可以使用无服务器的按需资源或预配资源，任意执行自己定义的大规模数据查询。 Azure Synapse 将这两个世界与统一体验相结合，可进行摄用、准备、管理和服务数据，以满足即时 BI 和机器学习需求。
 
  Azure Synapse 包含四个组件：
-- 突触 SQL：基于 T-SQL 的完整分析 
-    - SQL 池（按 DWU 预配付费） = 一般可用
-    - SQL 随选（按处理的 TB 付费）-（预览）
+
+- SQL 分析：完成基于 T-SQL 的分析
+
+  - SQL 池（按 DWU 预配付费） = 一般可用
+  - SQL 随选（按处理的 TB 付费）-（预览）
 - 火花：深度集成的阿帕奇火花（预览）
 - 数据集成：混合数据集成（预览）
 - 工作室：统一的用户体验。  （预览版）
@@ -37,24 +39,24 @@ Azure Synapse 是一种无限制的分析服务，它将企业数据仓库和大
 
 ![突触 SQL 体系结构](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-突触 SQL 使用基于节点的体系结构。 应用程序将 T-SQL 命令连接到 Control 节点，该节点是 Synapse SQL 池的单个入口点。 控制节点运行 MPP 引擎，该引擎优化用于并行处理的查询，然后将操作传递给计算节点以并行执行其工作。 
+SQL Analytics 使用基于节点的体系结构。 应用程序将 T-SQL 命令连接到、发布给控制节点，该节点是 SQL Analytics 的单一入口点。 控制节点运行 MPP 引擎，该引擎优化用于并行处理的查询，然后将操作传递给计算节点以并行执行其工作。
 
-计算节点将所有用户数据存储在 Azure 存储中并运行并行查询。 数据移动服务 (DMS) 是一项系统级内部服务，它根据需要在节点间移动数据以并行运行查询和返回准确的结果。 
+计算节点将所有用户数据存储在 Azure 存储中并运行并行查询。 数据移动服务 (DMS) 是一项系统级内部服务，它根据需要在节点间移动数据以并行运行查询和返回准确的结果。
 
 使用分离存储和计算时，使用 Synapse SQL 池可以：
 
-* 无论存储需求如何，都可独立计算大小。
-* 无需移动数据，即可在 SQL 池（数据仓库）中增加或减少计算能力。
-* 在保持数据不受影响的情况下暂停计算容量，因此只需为存储付费。
-* 在操作期间恢复计算容量。
+- 无论存储需求如何，都可独立计算大小。
+- 无需移动数据，即可在 SQL 池（数据仓库）中增加或减少计算能力。
+- 在保持数据不受影响的情况下暂停计算容量，因此只需为存储付费。
+- 在操作期间恢复计算容量。
 
 ### <a name="azure-storage"></a>Azure 存储
 
 Synapse SQL 利用 Azure 存储来保证用户数据的安全。  由于数据由 Azure 存储存储存储和管理，因此存储消耗需要单独收费。 将数据分片分到**分布中**，以优化系统的性能。 可选择在定义表时用于分布数据的分片模式。 支持以下分片模式：
 
-* 哈希
-* 循环
-* 复制
+- 哈希
+- 循环
+- 复制
 
 ### <a name="control-node"></a>控制节点
 
@@ -68,27 +70,29 @@ Synapse SQL 利用 Azure 存储来保证用户数据的安全。  由于数据�
 
 ### <a name="data-movement-service"></a>数据移动服务
 
-数据移动服务 (DMS) 是一项数据传输技术，它可协调计算节点间的数据移动。 某些查询需要移动数据以确保并行查询返回准确的结果。 需要移动数据时，DMS 可确保正确的数据到达正确的位置。 
+数据移动服务 (DMS) 是一项数据传输技术，它可协调计算节点间的数据移动。 某些查询需要移动数据以确保并行查询返回准确的结果。 需要移动数据时，DMS 可确保正确的数据到达正确的位置。
 
 ## <a name="distributions"></a>分发
 
-分布区是存储和处理针对分布式数据运行的并行查询的基本单位。 运行查询时，该工作将分为 60 个并行运行的较小查询。 
+分布区是存储和处理针对分布式数据运行的并行查询的基本单位。 SQL Analytics 运行查询时，工作会被分割成 60 个并行运行的小型查询。
 
 每个小型查询各在一个数据分布区上运行。 每个计算节点管理其中一个或多个分布区。 具有最多计算资源的 SQL 池的每个分布区占 1 个计算节点。 具有最小计算资源的 SQL 池的所有分布区占 1 个计算节点。  
 
 ## <a name="hash-distributed-tables"></a>哈希分布表
 
-哈希分布表可为大型表上的联接和聚合提供最高查询性能。 
+哈希分布表可为大型表上的联接和聚合提供最高查询性能。
+
+哈希分布表可为大型表上的联接和聚合提供最高查询性能。
 
 要将数据分片分到哈希分布的表中，哈希函数用于确定将每行分配给一个分布。 在表定义中，可以将一个列指定为分布列。 哈希函数使用分布列中的值将 1 个行分配到 1 个分布区。
 
-下图说明了如何将完整的非分布式表存储为哈希分布表。 
+下图说明了如何将完整的非分布式表存储为哈希分布表。
 
 ![分布式表](./media/massively-parallel-processing-mpp-architecture/hash-distributed-table.png "分布式表")  
 
-* 一个行属于一个分布区。  
-* 通过确定性哈希算法将一个行分配到一个分布区。  
-* 不同大小的表显示，每个分布区的表行的数目各不相同。
+- 一个行属于一个分布区。  
+- 通过确定性哈希算法将一个行分配到一个分布区。  
+- 不同大小的表显示，每个分布区的表行的数目各不相同。
 
 选择分布列时需考虑到性能，例如特异性、数据倾斜，以及在系统上运行的查询类型。
 
@@ -106,8 +110,17 @@ Synapse SQL 利用 Azure 存储来保证用户数据的安全。  由于数据�
 
 下图显示了缓存在每个计算节点上的第一个分布上的复制表。  
 
-![复制表](./media/massively-parallel-processing-mpp-architecture/replicated-table.png "复制表") 
+![复制表](./media/massively-parallel-processing-mpp-architecture/replicated-table.png "复制表")
 
 ## <a name="next-steps"></a>后续步骤
 
-对 Azure Synapse 有了初步的认识后，请学习如何快速[创建 SQL 池](create-data-warehouse-portal.md)和[加载示例数据](load-data-from-azure-blob-storage-using-polybase.md)。 如果不熟悉 Azure，遇到新术语时，[Azure 词汇表](../../azure-glossary-cloud-terminology.md) 可以提供帮助。 或者，查看以下一些其他 Azure Synapse 资源。  
+对 Azure Synapse 有了初步的认识后，请学习如何快速[创建 SQL 池](create-data-warehouse-portal.md)和[加载示例数据](load-data-from-azure-blob-storage-using-polybase.md)。 如果不熟悉 Azure，遇到新术语时，[Azure 词汇表](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 可以提供帮助。 或者，查看以下一些其他 Azure Synapse 资源。  
+
+- [客户成功案例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
+- [博客](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+- [功能请求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+- [视频](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+- [创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)
+- [MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+- [Stackoverflow 论坛](https://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Twitter](https://twitter.com/hashtag/SQLDW)

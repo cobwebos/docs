@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 25c047dc9b2ce08ca39e69c6f106e41c5d9bd0dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b94a97f1286e1273300014e4eef140be412436b
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268413"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637184"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
@@ -25,8 +25,6 @@ ms.locfileid: "79268413"
 
 > [!NOTE]
 >  存储分析日志记录现仅可用于 Blob、队列和表服务。 但是，不支持高级存储帐户。
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="requests-logged-in-logging"></a>在日志记录中记录的请求
 ### <a name="logging-authenticated-requests"></a>记录经过身份验证的请求
@@ -88,7 +86,7 @@ ms.locfileid: "79268413"
 
  下表描述了日志名称中的每个属性：
 
-|特性|描述|
+|特性|说明|
 |---------------|-----------------|
 |`<service-name>`|存储服务的名称 例如：`blob`、`table` 或 `queue`|
 |`YYYY`|用四位数表示的日志年份。 例如： `2011`|
@@ -112,7 +110,7 @@ ms.locfileid: "79268413"
 
  所有日志 Blob 与可用于确定 Blob 包含哪些日志记录数据的元数据一起存储。 下表描述了每个元数据属性：
 
-|特性|描述|
+|特性|说明|
 |---------------|-----------------|
 |`LogType`|描述日志是否包含与读取、写入或删除操作有关的信息。 该值可能包含一种类型，也可能包含所有三种类型的组合并用逗号隔开。<br /><br /> 示例 1：`write`<br /><br /> 示例 2：`read,write`<br /><br /> 示例 3：`read,write,delete`|
 |`StartTime`|日志中条目的最早时间，采用 `YYYY-MM-DDThh:mm:ssZ` 格式。 例如： `2011-07-31T18:21:46Z`|

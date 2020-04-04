@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 8087baf7595bfd2497f97fbff4822b356cd1b146
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 622c0cb8d58dddcdb13c7dc9412ada3f2e2d93e4
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274562"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632989"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 资源管理器资源组
 
@@ -29,15 +29,14 @@ ms.locfileid: "79274562"
 
 ” 资源组存储有关资源的元数据。 因此，当指定资源组的位置时，也就指定了元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
 
-” 资源组存储有关资源的元数据。 当指定资源组的位置时，也就指定了元数据的存储位置。
 
 ## <a name="create-resource-groups"></a>创建资源组
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择**资源组**
 
     ![添加资源组](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
-3. 选择“添加”****。
+3. 选择 **添加** 。
 4. 输入以下值：
 
    - **订阅**：选择 Azure 订阅。 
@@ -46,14 +45,14 @@ ms.locfileid: "79274562"
 
      ![创建资源组](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. 选择**审核和创建**
-6. 选择 **“创建”**。 创建资源组需要几秒钟的时间。
+6. 选择“创建”  。 创建资源组需要几秒钟的时间。
 7. 在顶部菜单中选择“刷新”以刷新资源组列表，然后选择新建的资源组将其打开。**** 或者，选择顶部的“通知”（钟形图标），然后选择“转到资源组”打开新建的资源组********
 
     ![转到资源组](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
 
 ## <a name="list-resource-groups"></a>列出资源组
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 若要列出资源组，请选择“资源组”****
 
     ![浏览资源组](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -62,7 +61,7 @@ ms.locfileid: "79274562"
 
 ## <a name="open-resource-groups"></a>打开资源组
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择**资源组**。
 3. 选择要打开的资源组。
 

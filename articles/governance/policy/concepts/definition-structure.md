@@ -1,14 +1,14 @@
 ---
 title: 策略定义结构的详细信息
 description: 描述如何使用策略定义为组织中的 Azure 资源建立约定。
-ms.date: 02/26/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7cb1ab7d045a0595f6949052ecedba6cd1bf694
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6b1d5c43f290fc2dd953492440670608a15faca
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239994"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638080"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -322,7 +322,7 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
 }
 ```
 
-### <a name="value"></a>“值”
+### <a name="value"></a>值
 
 也可使用 **value** 来形成条件。 **value** 会针对[参数](#parameters)、[支持的模板函数](#policy-functions)或文本来检查条件。
 **value** 可与任何支持的[条件](#conditions)配对。
@@ -361,7 +361,7 @@ Azure 策略为资源建立约定。 策略定义描述资源合规性[条件](#
     "policyRule": {
         "if": {
             "value": "[less(length(field('tags')), 3)]",
-            "equals": true
+            "equals": "true"
         },
         "then": {
             "effect": "deny"
@@ -578,6 +578,9 @@ Azure Policy 支持以下类型的效果：
 - resourceId()
 - variables()
 
+> [!NOTE]
+> 这些函数在**部署中的**模板部署`details.deployment.properties.template`部分仍然可用。
+
 以下函数可用于策略规则，但与 Azure 资源管理器模板中的使用不同：
 
 - `utcNow()`- 与资源管理器模板不同，可以在默认值之外使用。
@@ -593,10 +596,9 @@ Azure Policy 支持以下类型的效果：
   - 从"If 条件"正在评估的资源中返回该字段的值
   - `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
 - `requestContext().apiVersion`
-  - 返回触发策略评估的请求的 API 版本（例如： `2019-09-01`。 这将是 PUT/PATCH 请求中使用的 API 版本，用于评估资源创建/更新。 在现有资源的合规性评估期间，始终使用最新的 API 版本。
+  - 返回触发策略评估的请求的 API 版本（例如： `2019-09-01`。
+    这将是 PUT/PATCH 请求中使用的 API 版本，用于评估资源创建/更新。 在现有资源的合规性评估期间，始终使用最新的 API 版本。
   
-
-
 #### <a name="policy-function-example"></a>策略函数示例
 
 此策略规则示例使用 `resourceGroup` 资源函数获取 **name** 属性，并将该属性与 `concat` 数组和对象函数结合使用以构建 `like` 条件，该条件强制资源名称以资源组名称开头。
@@ -708,8 +710,6 @@ Azure Policy 支持以下类型的效果：
 }
 ```
 
-
-
 有关详细信息，请参阅[评估 [\*] 别名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
 ## <a name="initiatives"></a>计划
@@ -795,7 +795,7 @@ Azure Policy 支持以下类型的效果：
 ## <a name="next-steps"></a>后续步骤
 
 - 查看[Azure 策略示例](../samples/index.md)中的示例。
-- 回顾[了解政策效果](effects.md)。
+- 查看[了解策略效果](effects.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
 - 了解如何[修复不合规资源](../how-to/remediate-resources.md)。

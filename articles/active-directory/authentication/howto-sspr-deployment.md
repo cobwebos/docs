@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 785a8a031a10232a37b235711ba919fdc1df35d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7be99959c2ae420cff667491f68c40dfa0862a9
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77061399"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652392"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset"></a>计划 Azure 活动目录自助服务密码重置
 
@@ -79,7 +79,7 @@ Azure 活动目录是每个用户的许可，这意味着每个用户都需要�
 |教程 |[完成 Azure AD 自助密码重置试点推出](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) |
 | |[启用密码写回](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback) |
 | |[Azure AD 密码从 Windows 10 的登录屏幕重置](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows) |
-| FAQ|[密码管理常见问题](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
+| 常见问题解答|[密码管理常见问题](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
 
 
 ### <a name="solution-architecture"></a>解决方案体系结构
@@ -142,7 +142,7 @@ Microsoft 建议组织启用 SSPR 和多重身份验证的组合注册体验。 
 
 下面是启用 SSPR 所需的设置及其建议值。
 
-| 区域 | 设置 | “值” |
+| 区域 | 设置 | 值 |
 | --- | --- | --- |
 | **SSPR 属性** | 已启用自助式密码重置 | 在试运行环境中为“选定组”/在生产环境中为“全部”******** |
 | **身份验证方法** | 注册所需的身份验证方法数 | 至少比重置所需的数目多 1 个 |
@@ -247,7 +247,7 @@ Microsoft 建议组织启用 SSPR 和多重身份验证的组合注册体验。 
 
 要使支持团队取得成功，您可以根据从用户收到的问题创建常见问题解答。 以下是一些示例：
 
-| 方案| 描述 |
+| 方案| 说明 |
 | - | - |
 | 用户没有任何可用的注册身份验证方法| 用户尝试重置其密码，但没有他们注册的任何身份验证方法可用（例如：他们离开手机在家，无法访问电子邮件） |
 | 用户在办公室或手机上未收到短信或呼叫| 用户尝试通过文本或呼叫验证其身份，但未收到文本/呼叫。 |
@@ -316,7 +316,7 @@ Azure AD 可以通过审核和报告提供有关 SSPR 性能的其他信息。
 
 [使用和见解](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights)使您能够了解 Azure MFA 和 SSPR 等功能的身份验证方法在组织中的工作方式。 此报告功能为您的组织提供了了解注册哪些方法以及如何使用它们的方法的方法。
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 * 请参阅[故障排除自助服务密码重置](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-troubleshoot) 
 

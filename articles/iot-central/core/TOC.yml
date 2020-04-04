@@ -45,7 +45,7 @@
       href: concepts-architecture.md
     - name: 什么是应用程序模板？
       href: concepts-app-templates.md
-    - name: 建立连接
+    - name: 设备连接
       href: concepts-get-connected.md
     - name: 连接 IoT Edge 设备
       href: concepts-iot-edge.md

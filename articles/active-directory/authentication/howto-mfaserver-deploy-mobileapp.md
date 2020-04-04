@@ -4,23 +4,23 @@ description: 将 MFA 服务器配置为使用 Microsoft Authenticator 应用向�
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f62aacf8264eb583c523b6ee785f1908f0241644
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 785c4ccf591ce6a7a50a3d144fb1740121c73ce6
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848147"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653194"
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>使用 Azure 多重身份验证服务器启用移动应用身份验证
 
-Microsoft Authenticator 应用提供一个附加的带外验证选项。 Azure 多重身份验证会将通知推送到用户智能手机或平板电脑上的 Microsoft Authenticator 应用中，而不是在用户登录期间对用户进行自动电话呼叫或向其发送短信。 用户只需在该应用中点击“验证”****（或输入 PIN 码并点击“身份验证”）即可完成登录。
+Microsoft Authenticator 应用提供一个附加的带外验证选项。 Azure 多重身份验证不会在登录期间向用户发送自动电话呼叫或 SMS，而是将通知推送到用户的智能手机或平板电脑上的 Microsoft 身份验证器应用。 用户只需在应用中点击 **"验证**"（或输入 PIN 并点击"身份验证"即可完成其登录。
 
 在电话信号不佳导致接收存在问题时，建议使用移动应用进行双重验证。 将应用用作 OATH 令牌生成器时，它不需要任何网络或 Internet 连接。
 

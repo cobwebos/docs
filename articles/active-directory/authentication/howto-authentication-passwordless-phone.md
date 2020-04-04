@@ -4,19 +4,19 @@ description: 使用 Microsoft 身份验证器应用（预览）为 Azure AD 启�
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c684d6f1fbd8128ae020b6fd29da928b286aa18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 853e7143834a340b870b71ef1a287dab136e2783
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126687"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654055"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft 身份验证器应用启用无密码登录（预览版）
 
@@ -45,7 +45,7 @@ ms.locfileid: "79126687"
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>启用无密码电话登录身份验证方法
 
-1. 登录到 [Azure 门户](https://portal.azure.com)
+1. 登录到 Azure[门户](https://portal.azure.com)
 1. 搜索并选择“Azure Active Directory”**。 选择**安全** > **身份验证方法** > **身份验证方法策略（预览）**
 1. 在**无密码电话登录下**，选择以下选项
    1. **启用**- 是 或 否
@@ -54,7 +54,7 @@ ms.locfileid: "79126687"
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>微软身份验证器应用的用户注册和管理
 
-1. 浏览到[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
+1. 浏览到 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
 1. 尚未登录
 1. 通过单击 **"添加方法**"、选择**身份验证器应用**和单击"**添加"** 添加身份验证器应用
 1. 按照说明在设备上安装和配置 Microsoft 身份验证器应用
@@ -82,7 +82,7 @@ ms.locfileid: "79126687"
 
 ### <a name="ad-fs-integration"></a>AD FS 集成
 
-用户启用 Microsoft Authenticator 无密码凭据后，该用户的身份验证始终默认为发送审批通知。 此逻辑可以防止将混合租户中的用户定向到 ADFS 进行登录验证，且无需用户执行附加的步骤来单击“改用密码”。 此过程还会绕过任何本地条件访问策略和直通身份验证流。 
+用户启用 Microsoft Authenticator 无密码凭据后，该用户的身份验证始终默认为发送审批通知。 此逻辑可防止混合租户中的用户被定向到 ADFS 进行登录验证，而用户无需执行其他步骤单击"改用密码"。 此过程还会绕过任何本地条件访问策略和直通身份验证流。 
 
 如果用户有未应答的无密码电话登录验证待定，并尝试再次登录，则用户可能会被带到 ADFS 输入密码。  
 

@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/01/2020
+ms.date: 04/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01956c2fee1c15bc86e8d80aa05c70db647bf593
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 60dca30496aa17ad7add00ca4eca914cb58fddd7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616880"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655986"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发布历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 ### <a name="functional-changes-adsyncautoupgrade"></a>功能更改 ADSync 自动升级 
 
 - 添加了对组对象的 mS-DS-一致性 Guid 功能的支持。 这允许您在 AD 中的林之间移动组或将组重新连接到 Azure AD，其中 AD 组对象 ID 已更改，例如，在灾难后重建 AD 服务器时。 有关详细信息，请参阅[在林之间移动组](how-to-connect-migrate-groups.md)。
-- mS-DS-一致性Guid属性会自动设置在 al 同步组上，您不必执行任何操作来启用此功能。 
+- mS-DS-一致性Guid属性会自动设置在所有同步的组上，您不必执行任何操作来启用此功能。 
 - 已删除 Get-ADSyncRun 配置文件，因为它不再使用。 
 - 更改了尝试使用 AD DS 连接器帐户的企业管理员或域管理员帐户以提供更多上下文时看到的警告。 
 - 添加了一个新的 cmdlet 以从连接器空间中删除对象，将删除旧的 CSDelete.exe 工具，并将其替换为新的"删除-ADSyncCSObject cmdlet"。 删除 ADSyncCSObject cmdlet 将 CsObject 作为输入。 可以使用 Get-ADSyncCSObject cmdlet 检索此对象。
@@ -521,7 +521,7 @@ Azure AD Connect 版本 1.1.654.0（以及更高版本）中已添加了一项�
 *   删除特定对象上的所有 ACE，特定于 SELF 的 ACE 除外。 当涉及到 SELF 时，我们希望保持默认权限不变。
 *   分配以下特定权限：
 
-类型     | “属性”                          | 访问               | 应用于
+类型     | 名称                          | 访问               | 应用于
 ---------|-------------------------------|----------------------|--------------|
 Allow    | SYSTEM                        | 完全控制         | 此对象  |
 Allow    | 企业管理员             | 完全控制         | 此对象  |

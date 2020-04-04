@@ -10,17 +10,15 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b9ff80275cc89dde0db215856c2e134c4b273020
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c6d33acddb106a3c032c8e21d3111cb428b9a45
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78199727"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631642"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>监视和管理证书创建
 适用于：Azure
-
-已搜索 
 
 本文中概述的方案/操作包括：
 
@@ -88,7 +86,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 ### <a name="request"></a>请求
 GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
-或
+OR
 
 GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
@@ -123,7 +121,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
-或
+OR
 
 GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
@@ -155,7 +153,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
-或
+OR
 
 GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
@@ -194,7 +192,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 ### <a name="request"></a>请求
 GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
-或
+OR
 
 GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
@@ -298,7 +296,7 @@ StatusCode: 403, ReasonPhrase: 'Forbidden'
 ### <a name="request"></a>请求
 PATCH `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
-或
+OR
 
 PATCH `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
@@ -338,7 +336,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 ### <a name="request"></a>请求
 DELETE `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
-或
+OR
 
 DELETE `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
@@ -414,7 +412,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-|元素名称|必选|类型|版本|描述|
+|元素名称|必选|类型|Version|说明|
 |------------------|--------------|----------|-------------|-----------------|
 |x5c|是|array|\<引入版本>|Base 64 字符串数组形式的 X509 证书链。|
 

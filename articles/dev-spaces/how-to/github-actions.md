@@ -1,17 +1,17 @@
 ---
 title: gitHub 操作& Azure 库伯奈斯服务（预览）
 services: azure-dev-spaces
-ms.date: 02/04/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 description: 使用 GitHub 操作和 Azure 开发空间直接在 Azure 库伯奈斯服务中查看和测试从拉取请求中的更改
 keywords: Docker、Kubernetes、Azure、AKS、Azure 库伯奈斯服务、容器、GitHub 操作、Helm、服务网格、服务网格路由、库贝克特尔、k8s
 manager: gwallace
-ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252376"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637946"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>gitHub 操作& Azure 库伯奈斯服务（预览）
 
@@ -101,6 +101,11 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 > 所有这些机密都由 GitHub 操作使用，并在[.github/工作流/bikes.yml][github-action-yaml]中配置。
 
 或者，如果要在 PR 合并后更新主空间，请添加*GATEWAY_HOST*机密，该密名采用 *<MASTER_SPACE>.gateway.<HOST_SUFFIX>，**在此示例中dev.gateway.fedcab0987.eus.azds.io*。 将更改合并到分叉中的主分支后，将运行另一个操作，以在主开发空间中重新生成和运行整个应用程序。 在此示例中，主空间是*开发*。 此操作在[.github/工作流/自行车共享.yml][github-action-bikesharing-yaml]中配置。
+
+此外，如果您希望 PR 中的更改在孙级空间中运行，请更新*MASTER_SPACE*和*HOST*机密。 例如，如果应用程序在*开发*中运行，使用子空间*开发/azureuser1，* 则让 PR 在*dev/azureuser1*的子空间中运行：
+
+* 将*MASTER_SPACE*更新为父空间所需的子空间，在此示例中*为 azureuser1*。
+* 在本*示例中，* 将*HOST*更新为 GRANDPARENT_SPACE *<>.<APP_NAME>.<HOST_SUFFIX>，dev.bikesharingweb.fedcab0987.eus.azds.io *。
 
 ## <a name="create-a-new-branch-for-code-changes"></a>为代码更改创建新分支
 

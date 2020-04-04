@@ -8,15 +8,15 @@ ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: cc1863ff4200ee4cca94f18e3adfffa7ea42db96
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b14fed07c9bd9b5fcb6a5489719481902351fc0d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475940"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654868"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>托管域中的密码和帐户锁定策略
 
@@ -45,6 +45,11 @@ ms.locfileid: "80475940"
 ## <a name="default-password-policy-settings"></a>默认密码策略设置
 
 细粒度密码策略 （FGP） 允许您对域中的不同用户应用密码和帐户锁定策略的特定限制。 例如，要保护特权帐户，您可以应用比常规非特权帐户更严格的帐户锁定设置。 您可以在 Azure AD DS 托管域中创建多个 FGP，并指定优先级顺序以将其应用于用户。
+
+有关密码策略和使用活动目录管理中心的详细信息，请参阅以下文章：
+
+* [了解细粒度密码策略](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
+* [使用 AD 管理中心配置细粒度密码策略](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
 
 策略通过 Azure AD DS 托管域中的组关联分发，所做的任何更改都应用于下一个用户登录。 更改策略不会解锁已锁定的用户帐户。
 

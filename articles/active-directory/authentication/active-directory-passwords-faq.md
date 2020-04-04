@@ -4,19 +4,19 @@ description: 有关 Azure AD 自助密码重置的常见问题解答
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e1cc9dde6bb2b6ae47affaed4c557f3746a681b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae3ace24d6f33702c15a364b913f841d90fd8872
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77061448"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654197"
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -107,9 +107,9 @@ ms.locfileid: "77061448"
   > **答：** 密码重置 UI、短信和语音呼叫实现了相同语言的本地化，这些语言与 Office 365 所支持的语言相同。
   >
   >
-* **问：在自己目录的配置选项卡中设置组织品牌项目后，哪些密码重置体验部分会带有品牌信息？**
+* **问：在目录的配置选项卡中设置组织品牌项时，密码重置体验的哪些部分会获得品牌设置？**
 
-  > **答：** 密码重置门户不但会显示组织徽标，而且支持配置指向某一自定义电子邮件或 URL 的“请与管理员联系”链接。 密码重置发送的任何电子邮件都会在电子邮件正文中包括组织的徽标、颜色、名称，是根据该特定名称的设置自定义的。
+  > **答：** 密码重置门户不但会显示组织徽标，而且支持配置指向某一自定义电子邮件或 URL 的“请与管理员联系”链接。 通过密码重置发送的任何电子邮件都包含您组织的徽标、颜色和名称，并且根据该特定名称的设置进行自定义。
   >
   >
 * **问：如何告知用户可在何处重置密码？**
@@ -124,7 +124,7 @@ ms.locfileid: "77061448"
   >
 * **问：当用户重置密码时，您是否支持解锁本地活动目录帐户？**
 
-  > **答：** 是的。 如果用户重置其密码且已通过 Azure AD Connect 部署密码写回，则当该用户重置其密码时，会自动解锁其帐户。
+  > **答：** 是的。 当用户重置其密码时，如果密码回写已通过 Azure AD Connect 部署，则该用户帐户在重置密码时会自动解锁。
   >
   >
 * **问：如何将密码重置直接集成到用户的桌面登录体验中？**
@@ -266,7 +266,7 @@ ms.locfileid: "77061448"
   > **答：** 密码写回适用于从本地 Active Directory 同步到 Azure AD 的用户帐户，包括联合用户、密码哈希同步用户和传递身份验证用户。
   >
   >
-* **问：密码写回是否会强制实施我的域密码策略？**
+* **问：密码写回是否强制执行我的域的密码策略？**
 
   > **答：** 是的。 密码写回会强制实施密码使用期限、历史记录、复杂性、筛选器以及可能对本地域密码实施的任何其他限制。
   >

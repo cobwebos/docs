@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/06/2020
 tags: connectors
-ms.openlocfilehash: 1578ca030bc8bab971a44e1afcce1d1ab9e1d5e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a3fb9a8a72b384d2af4af38bdc382e541ddf535
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78674107"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656281"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP Webhook 创建和运行基于事件的自动化工作流
 
@@ -36,7 +36,7 @@ HTTP Webhook 操作也基于事件，它会通过将一个回调 URL 注册到�
 例如, Office 365 Outlook 连接器的[**发送审批电子邮件**](connectors-create-api-office365-outlook.md)操作就是遵循此模式的 Webhook 操作示例。 可以使用 Webhook 操作将此模式扩展到任何服务中。
 
 > [!NOTE]
-> 逻辑应用在收到对 HTTP Webhook 触发器或操作的回调时强制实施传输层安全性 (TLS) 1.2。 如果出现 SSL 握手错误，请确保使用 TLS 1.2。 对于传入呼叫，以下是支持的密码套件：
+> 逻辑应用在收到对 HTTP Webhook 触发器或操作的回调时强制实施传输层安全性 (TLS) 1.2。 如果您看到 TLS 握手错误，请确保使用 TLS 1.2。 对于传入呼叫，以下是支持的密码套件：
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -67,7 +67,7 @@ HTTP Webhook 操作也基于事件，它会通过将一个回调 URL 注册到�
 
 此内置触发器调用目标服务上的订阅终结点，并将回调 URL 注册到目标服务。 然后，逻辑应用将等待目标服务向回调 URL`HTTP POST`发送请求。 发生此事件时，触发器将触发请求中的任何数据并传递给工作流。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
 
 1. 在设计器的搜索框中，输入`http webhook`为筛选器。 在“触发器”列表中选择“HTTP Webhook”触发器。********
 
@@ -81,7 +81,7 @@ HTTP Webhook 操作也基于事件，它会通过将一个回调 URL 注册到�
 
    ![输入 HTTP Webhook 触发器参数](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-   | properties | 必选 | 描述 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **订阅 - 方法** | 是 | 订阅目标终结点时使用的方法 |
    | **订阅 - URI** | 是 | 用于订阅目标终结点的 URL |
@@ -107,7 +107,7 @@ HTTP Webhook 操作也基于事件，它会通过将一个回调 URL 注册到�
 
 此内置操作调用目标服务上的订阅终结点，并将回调 URL 注册到目标服务。 然后，逻辑应用暂停并等待目标服务向回调 URL 发送`HTTP POST`请求。 发生此事件时，操作会将请求中的任何数据传递给工作流。 如果操作成功完成，操作将从终结点取消订阅，并且逻辑应用将继续运行剩余的工作流。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
 
    此示例的第一步是使用 HTTP Webhook 触发器。
 
@@ -127,7 +127,7 @@ HTTP Webhook 操作也基于事件，它会通过将一个回调 URL 注册到�
 
    ![输入 HTTP Webhook 操作参数](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
-   | properties | 必选 | 描述 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **订阅 - 方法** | 是 | 订阅目标终结点时使用的方法 |
    | **订阅 - URI** | 是 | 用于订阅目标终结点的 URL |
@@ -162,7 +162,7 @@ HTTP Webhook 操作也基于事件，它会通过将一个回调 URL 注册到�
 | 状态代码 | int | 请求中的状态代码 |
 |||
 
-| 状态代码 | 描述 |
+| 状态代码 | 说明 |
 |-------------|-------------|
 | 200 | OK |
 | 202 | 已接受 |

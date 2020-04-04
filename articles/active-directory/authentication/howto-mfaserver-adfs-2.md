@@ -4,19 +4,19 @@ description: 这是与 Azure Multi-Factor Authentication 相关的页面，介�
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e71c1d28a90af72890b2399d5da24d08885f3cce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c79a42bbd60d7a1857649cffc97ed7f0103fa16
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051214"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653514"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>将 Azure 多重身份验证服务器配置为与 AD FS 2.0 配合使用
 
@@ -35,7 +35,7 @@ ms.locfileid: "80051214"
 
 1. 在 Azure 多重身份验证服务器中，单击左侧菜单中的“IIS 身份验证”**** 图标。
 2. 单击 **"基于窗体"** 选项卡。
-3. 单击 **“添加”**。
+3. 单击 **添加**。
 
    ![MFA 服务器 IIS 身份验证窗口](./media/howto-mfaserver-adfs-2/setup1.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "80051214"
 13. 完成后，单击“确定”返回到“添加基于窗体的网站”对话框。****
 14. 单击 **“确定”** 关闭对话框。
 15. 检测到或输入 URL 和页面变量后，网站数据会显示在基于表单的面板中。
-16. 单击“本机模块”**** 选项卡，并选择服务器、在其下运行 AD FS 代理的网站（例如“默认网站”）或 AD FS 代理应用程序（例如“adfs”下的“ls”），以在所需的级别启用 IIS 插件。
+16. 单击**本机模块**选项卡并选择服务器、AD FS 代理运行下的网站（如"默认网站"），或 AD FS 代理应用程序（如"adfs"下的"ls"），以在所需级别启用 IIS 插件。
 17. 单击屏幕顶部的“启用 IIS 身份验证”**** 框。
 
 此时已启用 IIS 身份验证。
@@ -85,8 +85,8 @@ ms.locfileid: "80051214"
 
 1. 接下来，单击“公司设置”**** 图标，并选择“用户名解析”**** 选项卡。
 2. 选择“使用 LDAP 唯一标识符属性匹配用户名”**** 单选按钮。
-3. 如果用户以“域\用户名”格式输入用户名，服务器在创建 LDAP 查询时则需要能够将域与用户名相剥离。 可以通过注册表设置完成此操作。
-4. 在 64 位服务器上，打开注册表编辑器，并转到 HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor。 如果在 32 位服务器上，请从路径中除去“Wow6432Node”。 创建名为“UsernameCxz_stripPrefixDomain”的 DWORD 注册表项，将值设置为 1。 现在多重身份验证将保护 AD FS 代理。
+3. 如果用户以"域\用户名"格式输入其用户名，则服务器在创建 LDAP 查询时需要能够将域从用户名上剥离。 可以通过注册表设置完成此操作。
+4. 在 64 位服务器上，打开注册表编辑器，并转到 HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor。 如果在 32 位服务器上，请将"Wow6432Node"从路径中取出。 创建称为"UsernameCxz_stripPrefixDomain"的 DWORD 注册表项并将值设置为 1。 现在多重身份验证将保护 AD FS 代理。
 
 确保已将 Active Directory 中的用户导入服务器。 如果要允许内部 IP 地址，请参阅[可信 IP 部分](#trusted-ips)，以便在从这些位置登录网站时不需要两步验证。
 
@@ -98,7 +98,7 @@ ms.locfileid: "80051214"
 
 1. 在 Azure 多重身份验证服务器内，单击左侧菜单中的“IIS 身份验证”**** 图标。
 2. 单击**HTTP**选项卡。
-3. 单击 **“添加”**。
+3. 单击 **添加**。
 4. 在"添加基本 URL"对话框中，在"基本 URL"字段中输入 AD FS`https://sso.domain.com/adfs/ls/auth/integrated`网站的 URL，其中执行 HTTP 身份验证（如 ） 然后，输入应用程序名称（可选）。 应用程序名称将出现在 Azure 多重身份验证报告中，并可能会显示在短信或移动应用身份验证消息中。
 5. 如果需要，请调整空闲超时和会话时间上限。
 6. 如果所有用户均已导入或将导入到该服务器并接受双重验证，请选中“需要 Azure 多重身份验证用户匹配”**** 框。 如果大量用户尚未导入到该服务器并且/或者将免除进行多重身份验证，请使该框处于未选中状态。
@@ -107,7 +107,7 @@ ms.locfileid: "80051214"
    ![不带代理的 AD FS 2.0 直通](./media/howto-mfaserver-adfs-2/noproxy.png)
 
 8. 单击“确定”。
-9. 单击“本机模块”**** 选项卡，并选择服务器、网站（例如“默认网站”）或 AD FS 应用程序（例如“adfs”下的“ls”），以在所需的级别启用 IIS 插件。
+9. 单击**本机模块**选项卡并选择服务器、网站（如"默认网站"）或 AD FS 应用程序（如"adfs"下的"ls"），以在所需级别启用 IIS 插件。
 10. 单击屏幕顶部的“启用 IIS 身份验证”**** 框。
 
 现在，多重身份验证将保护 AD FS。

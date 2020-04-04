@@ -3,12 +3,12 @@ title: 将资源移动到新的订阅或资源组
 description: 使用 Azure 资源管理器将资源移到新的资源组或订阅。
 ms.topic: conceptual
 ms.date: 03/02/2020
-ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248848"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631501"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 
@@ -107,7 +107,7 @@ ms.locfileid: "79248848"
 
 * 步骤 1：如果依赖资源分布在不同的资源组中，则首先将它们移动到一个资源组中。
 * 步骤 2：将资源和从属资源一起从源订阅移动到目标订阅。
-* 步骤 3：可选地将从属资源重新分发到目标订阅中的不同资源组。 
+* 步骤 3：可选地将从属资源重新分发到目标订阅中的不同资源组。
 
 ## <a name="validate-move"></a>验证移动
 
@@ -260,8 +260,9 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 例如，移动某个虚拟机可能需要移动具有三个不同资源提供程序的七个资源类型。 这些资源提供程序和类型为：
 
 * Microsoft.Compute
-   * virtualMachines
-   * disks
+
+  * virtualMachines
+  * disks
 * Microsoft.Network
   * networkInterfaces
   * publicIPAddresses

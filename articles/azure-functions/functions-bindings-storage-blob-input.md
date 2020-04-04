@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: e074d7d74c0c5f020cb8086124634b25012927db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33db9a8d86e02db2076cdb85170d466697930b96
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77202146"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633880"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Blob 存储输入绑定用于 Azure 函数
 
@@ -84,7 +84,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
@@ -154,6 +154,7 @@ module.exports = function(context) {
     {
       "name": "inputblob",
       "type": "blob",
+      "dataType": "binary",
       "path": "samples-workitems/{queueTrigger}",
       "connection": "MyStorageConnectionAppSetting",
       "direction": "in"
@@ -282,7 +283,7 @@ public static void Run(
 
 C# 脚本不支持特性。
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支持特性。
 
@@ -296,16 +297,16 @@ Python 不支持属性。
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 下表介绍了您在*函数.json*文件和`Blob`属性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |**type** | 不适用 | 必须设置为 `blob`。 |
 |direction**** | 不适用 | 必须设置为 `in`。 [用法](#usage)部分中已阐述异常。 |
 |**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
-|**路径** |**BlobPath** | Blob 的路径。 |
+|**path** |**BlobPath** | Blob 的路径。 |
 |**连接** |**连接**| 包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果设置为`connection`"我的存储"，函数运行时将查找名为"AzureWebJobsMyStorage"的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 |不适用 | **访问** | 表示是要读取还是写入。 |
 
@@ -321,7 +322,7 @@ Python 不支持属性。
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用 `context.bindings.<NAME>` 访问 blob 数据，其中 `<NAME>` 与 function.json** 中定义的值匹配。
 

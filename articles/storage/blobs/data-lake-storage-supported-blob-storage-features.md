@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/03/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 215244204aa58cc2fdedc639d48e01b514759694
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b270ce3cd15dbd1e8dd53bd60376a87d6e08f75c
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78196002"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637221"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure 数据湖存储第 2 代中提供的 Blob 存储功能
 
@@ -38,7 +38,7 @@ Blob 存储功能（如[诊断日志记录](../common/storage-analytics-logging.
 |Blob 存储 API|正式发布|[快速入门：Azure Blob 存储客户端库 v12 表示 .NET](storage-quickstart-blobs-dotnet.md)<br>[快速入门：使用 Java v12 SDK 管理 blob](storage-quickstart-blobs-java.md)<br>[快速入门：使用 Python v12 SDK 管理 Blob](storage-quickstart-blobs-python.md)<br>[快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob](storage-quickstart-blobs-nodejs.md)|
 |存档访问层|预览|[Azure Blob 存储：热、冷、存档访问层](storage-blob-storage-tiers.md)|
 |生命周期管理策略|预览|[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)|
-|诊断日志|预览|[Azure 存储分析日志记录](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|诊断日志|正式发布|[Azure 存储分析日志记录](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |更改源|尚不支持|[更改 Azure Blob 存储中的源支持](storage-blob-change-feed.md)|
 |帐户故障转移|尚不支持|[灾难恢复和帐户故障转移](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob 容器 ACL|尚不支持|[Set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|

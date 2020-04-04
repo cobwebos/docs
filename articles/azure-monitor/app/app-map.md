@@ -4,12 +4,12 @@ description: 使用应用程序映射监视复杂的应用程序拓扑
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: dce2fdbe7e0c390309be38d2ebab4c73dbb4ed2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0823dd5d880c778f9b7a231ac14f1cbba1940927
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666269"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657392"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -85,7 +85,7 @@ ms.locfileid: "77666269"
 
 应用程序映射使用**云角色名称**属性来标识映射上的组件。 Application Insights SDK 会自动将云角色名称属性添加到组件发出的遥测数据。 例如，SDK 会将网站名称或服务角色名称添加到云角色名称属性。 但是，在某些情况下，你可能希望替代默认值。 若要替代云角色名称并更改要在应用程序映射上显示的内容，请如下所示进行操作：
 
-### <a name="netnet-core"></a>.NET/.NET Core
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 **按如下所示编写自定义 TelemetryInitializer。**
 
@@ -153,7 +153,26 @@ ASP.NET Web 应用程序的另一种方法是在代码中（例如在 Global.asp
 }
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="java"></a>[Java](#tab/java)
+
+从 Application Insights Java SDK 2.5.0 开始，可以通过将 `<RoleName>` 添加到 `ApplicationInsights.xml` 文件来指定云角色名称，例如
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
+如果你通过 Application Insights Spring Boot 入门版使用 Spring Boot，则唯一需要执行的更改是在 application.properties 文件中为应用程序设置自定义名称。
+
+`spring.application.name=<name-of-app>`
+
+Spring Boot 入门版会自动将云角色名称分配给你为 spring.application.name 属性输入的值。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -174,26 +193,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 });
 ```
 
-### <a name="java"></a>Java
-
-从 Application Insights Java SDK 2.5.0 开始，可以通过将 `<RoleName>` 添加到 `ApplicationInsights.xml` 文件来指定云角色名称，例如
-
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-   <RoleName>** Your role name **</RoleName>
-   ...
-</ApplicationInsights>
-```
-
-如果你通过 Application Insights Spring Boot 入门版使用 Spring Boot，则唯一需要执行的更改是在 application.properties 文件中为应用程序设置自定义名称。
-
-`spring.application.name=<name-of-app>`
-
-Spring Boot 入门版会自动将云角色名称分配给你为 spring.application.name 属性输入的值。
-
-### <a name="clientbrowser-side-javascript"></a>客户端/浏览器端 JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 appInsights.queue.push(() => {
@@ -203,6 +203,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+---
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>了解应用程序映射上下文中的云角色名称
 
@@ -258,7 +259,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 若要解决此问题，需要更改检测，以正确设置云角色名称、依赖项类型和依赖项目标字段。
 
-* 依赖项目标应代表依赖项的逻辑名称。 在许多情况下，它相当于依赖项的服务器或资源名称。 例如，对于 HTTP 依赖项，其目标将设置为主机名。 依赖项目标不应包含会在不同的请求中发生变化的唯一 ID 或参数。
+* 依赖项目标应代表依赖项的逻辑名称。 在许多情况下，它等效于依赖项的服务器或资源名称。 例如，对于 HTTP 依赖项，其目标将设置为主机名。 依赖项目标不应包含会在不同的请求中发生变化的唯一 ID 或参数。
 
 * 依赖项类型应代表依赖项的逻辑类型。 例如，HTTP、 SQL 或 Azure Blob 就是典型的依赖项类型。 它不应包含唯一 ID。
 

@@ -4,19 +4,19 @@ description: 开始使用 Azure MFA 和用户门户。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e68c2a75254d1b387c45e31c5830849c6127756
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1869fac973cd4cd68e1e91be89c25fdf1427f6a5
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051183"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653214"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>适用于 Azure 多重身份验证服务器的用户门户
 
@@ -130,7 +130,7 @@ Web 服务 SDK 必须使用 TLS/SSL 证书进行保护。 也可以使用自签�
 
 Azure 多重身份验证服务器为用户门户提供了多个选项。 下表列出了这些选项及其用途的说明。
 
-| 用户门户设置 | 描述 |
+| 用户门户设置 | 说明 |
 |:--- |:--- |
 | 用户门户 URL | 输入托管门户的 URL。 |
 | 主要身份验证 | 指定在登录门户时要使用的身份验证类型。 Windows、Radius 或 LDAP 身份验证。 |
@@ -162,9 +162,9 @@ Azure 多重身份验证服务器为用户门户提供了多个选项。 下表�
 
 ![注册主要的和备用的电话号码](./media/howto-mfaserver-deploy-userportal/backupphone.png)
 
-如果要求用户在身份验证时使用 PIN 码，此页会提示他们创建 PIN 码。 在输入其电话号码和 PIN 码（如果适用）之后，用户可单击“立即打电话给我进行身份验证”按钮。**** Azure 多重身份验证通过用户的主电话号码执行电话呼叫验证。 用户必须接听电话并输入其 PIN 码（如果适用），并按 # 转到自我注册过程的下一步。
+如果要求用户在身份验证时使用 PIN 码，此页会提示他们创建 PIN 码。 在输入其电话号码和 PIN 码（如果适用）之后，用户可单击“立即打电话给我进行身份验证”按钮。**** Azure 多重身份验证对用户的主电话号码执行电话呼叫验证。 用户必须接听电话并输入其 PIN 码（如果适用），并按 # 转到自我注册过程的下一步。
 
-如果用户选择“短信”验证方法或已预先配置为使用该方法，则该页会提示用户输入其手机号码。 如果要求用户在身份验证时使用 PIN 码，此页还会提示他们输入 PIN 码。  在输入其电话号码和 PIN 码（如果适用）之后，用户可单击“立即发短信给我进行身份验证”按钮。**** Azure 多重身份验证通过用户的手机执行短信验证。 用户将收到包含一次性密码 (OTP) 的短信，然后应使用该 OTP 和 PIN 码（如果适用）回复该短信。
+如果用户选择“短信”验证方法或已预先配置为使用该方法，则该页会提示用户输入其手机号码。 如果要求用户在身份验证时使用 PIN 码，此页还会提示他们输入 PIN 码。  在输入其电话号码和 PIN 码（如果适用）之后，用户可单击“立即发短信给我进行身份验证”按钮。**** Azure 多重身份验证对用户的移动电话执行 SMS 验证。 用户将收到包含一次性密码 (OTP) 的短信，然后应使用该 OTP 和 PIN 码（如果适用）回复该短信。
 
 ![使用 SMS 进行用户门户验证](./media/howto-mfaserver-deploy-userportal/text.png)
 
@@ -175,7 +175,7 @@ Azure 多重身份验证服务器为用户门户提供了多个选项。 下表�
 
 然后，该页会显示激活代码和 URL 以及条形码图片。 如果要求用户在身份验证时使用 PIN 码，此页还会提示他们输入 PIN 码。 用户将激活代码和 URL 输入到 Microsoft 验证器应用中，或使用条形码扫描仪扫描条形码图片，然后单击“激活”按钮。
 
-完成激活后，用户可单击“立即对我进行身份验证”按钮。**** Azure 多重身份验证通过用户的移动应用执行验证。 用户必须输入其 PIN 码（如果适用），并按其移动应用中的“身份验证”按钮，以转到自我注册过程的下一步。
+完成激活后，用户可单击“立即对我进行身份验证”按钮。**** Azure 多重身份验证对用户的移动应用执行验证。 用户必须输入其 PIN 码（如果适用），并按其移动应用中的“身份验证”按钮，以转到自我注册过程的下一步。
 
 如果管理员已将 Azure 多重身份验证服务器配置为收集安全提问和答案，则用户将转到“安全提问”页。 用户必须选择四个安全问题，并提供其所选问题的答案。
 

@@ -4,19 +4,19 @@ description: 了解如何在环境中配置基于证书的身份验证
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b57c4f474b0b9def08005f32f48225d36ea8cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a6c44a8253c81b44d02351b2df9c943d9f358f8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848827"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654339"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
 
@@ -40,7 +40,7 @@ ms.locfileid: "74848827"
 - 必须在 Azure Active Directory 中配置根证书颁发机构和任何中间证书颁发机构。
 - 每个证书颁发机构必须有一个可通过面向 Internet 的 URL 引用的证书吊销列表 (CRL)。
 - 必须在 Azure Active Directory 中至少配置一个证书颁发机构。 可以在[配置证书颁发机构](#step-2-configure-the-certificate-authorities)部分中查找相关步骤。
-- 对于 Exchange ActiveSync 客户端，客户端证书的“使用者可选名称”字段的主体名称或 RFC822 名称必须为 Exchange Online 中用户的可路由电子邮件地址。 Azure Active Directory 会将 RFC822 值映射到目录中的“代理地址”属性。
+- 对于 Exchange ActiveSync 客户端，客户端证书必须在 Exchange 中联机具有用户可路由的电子邮件地址，位于"主体替代名称"字段的主名称或 RFC822 名称值中。 Azure Active Directory 会将 RFC822 值映射到目录中的“代理地址”属性。
 - 客户端设备必须至少可以访问一个颁发客户端证书的证书颁发机构。
 - 用于客户端身份验证的客户端证书必须已颁发给客户端。
 

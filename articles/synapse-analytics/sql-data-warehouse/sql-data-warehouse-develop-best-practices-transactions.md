@@ -11,12 +11,12 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d97a388477c895a4a8632d7ab3d06dc4c8982857
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 0139c581e6660622f1ab6db9f407725816377a6d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582131"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633561"
 ---
 # <a name="optimizing-transactions-in-synapse-sql"></a>优化 SynapsE SQL 中的事务
 
@@ -24,7 +24,7 @@ ms.locfileid: "80582131"
 
 ## <a name="transactions-and-logging"></a>事务和日志记录
 
-事务是关系数据库引擎的一个重要组成部分。 事务在数据修改期间使用。 这些事务可以是显式或隐式。 单个 INSERT、UPDATE 和 DELETE 语句都是隐式事务的示例。 显式事务使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 显式事务通常用于多个修改语句需要绑定在单个原子单元的时候。 
+事务是关系数据库引擎的一个重要组成部分。 事务在数据修改期间使用。 这些事务可以是显式或隐式。 单个 INSERT、UPDATE 和 DELETE 语句都是隐式事务的示例。 显式事务使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 显式事务通常用于多个修改语句需要绑定在单个原子单元的时候。
 
 使用事务日志跟踪对数据库的更改。 每个分布区都具有其自己的事务日志。 事务日志写入都是自动的。 无需任何配置。 尽管此过程可保证写入，但它确在系统中引入一项开销。 编写事务性高效的代码，可以尽量减少这种影响。 事务性高效的代码大致分为两类。
 
@@ -39,9 +39,7 @@ ms.locfileid: "80582131"
 事务安全限制仅适用于完整记录的操作。
 
 > [!NOTE]
-> 最少记录的操作可以参与显式事务。 分配结构中的所有更改都被跟踪，因此实现回滚最少记录的操作变得可能。 
-> 
-> 
+> 最少记录的操作可以参与显式事务。 分配结构中的所有更改都被跟踪，因此实现回滚最少记录的操作变得可能。
 
 ## <a name="minimally-logged-operations"></a>最少记录的操作
 
@@ -64,10 +62,9 @@ ms.locfileid: "80582131"
 
 > [!NOTE]
 > 内部数据移动操作（例如 BROADCAST 和 SHUFFLE）不受事务安全限制影响。
-> 
-> 
 
 ## <a name="minimal-logging-with-bulk-load"></a>带批量加载的最少日志记录
+
 CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定义影响，并且取决于加载方案。 下表说明了什么时候批量操作是完整记录的或最少记录的：  
 
 | 主索引 | 加载方案 | 日志记录模式 |
@@ -83,11 +80,11 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 
 > [!IMPORTANT]
 > Synapse SQL 池数据库有 60 个分布。 因此，假设所有行均匀分布且处于单个分区中，批在写入到聚集列存储索引时会需有 6,144,000 行（或更多）要按最少记录的方式记入日志。 如果对表进行分区且正插入的行跨越分区边界，则每个分区边界都需 6,144,000 行，假定数据分布很均匀。 每个分布区的每个分区各自必须超过 102,400 行的阈值，从而使插入以最少记录的方式记录到分布区中。
-> 
 
 将数据加载到含聚集索引的非空表通常可以包含完整记录和最少记录的行的组合。 聚集索引是页面的平衡树 (b-tree)。 如果正写入的页面已包含其他事务中的行，则这些写入操作会被完整记录。 但如果该页面为空，则写入到该页面会按最少记录的方式记录。
 
 ## <a name="optimizing-deletes"></a>优化删除
+
 DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据，`SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](sql-data-warehouse-develop-ctas.md) 创建新表。  创建后，可通过 [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 操作使用新创建的表将旧表交换出来。
 
 ```sql
@@ -98,7 +95,7 @@ CREATE TABLE [dbo].[FactInternetSales_d]
 WITH
 (    CLUSTERED COLUMNSTORE INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -113,12 +110,13 @@ WHERE    [PromotionKey] = 2
 OPTION (LABEL = 'CTAS : Delete')
 ;
 
---Step 02. Rename the Tables to replace the 
+--Step 02. Rename the Tables to replace the
 RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>优化更新
+
 UPDATE 是一个完整记录的操作。  如果需要更新表或分区中的大量行，则使用最低记录的操作（如[CTAS）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)通常效率更高。
 
 在下面的示例中，完整的表更新已转换为 CTAS，以便使最少日志记录成为可能。
@@ -126,12 +124,12 @@ UPDATE 是一个完整记录的操作。  如果需要更新表或分区中的�
 在此示例中，我们回顾性地向表中的销售额添加折扣金额：
 
 ```sql
---Step 01. Create a new table containing the "Update". 
+--Step 01. Create a new table containing the "Update".
 CREATE TABLE [dbo].[FactInternetSales_u]
 WITH
 (    CLUSTERED INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -140,15 +138,15 @@ WITH
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -165,7 +163,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 OPTION (LABEL = 'CTAS : Update')
@@ -181,10 +179,9 @@ DROP TABLE [dbo].[FactInternetSales_old]
 
 > [!NOTE]
 > 使用 Synapse SQL 池工作负载管理功能，重新创建大型表可以受益匪浅。 有关详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。
-> 
-> 
 
 ## <a name="optimizing-with-partition-switching"></a>使用分区切换进行优化
+
 面对[表分区](sql-data-warehouse-tables-partition.md)内较大规模修改时，分区切换模式非常有用。 如果数据修改非常重要且跨越多个分区，则遍历分区可获得相同的结果。
 
 执行分区切换的步骤如下所示：
@@ -223,11 +220,11 @@ SELECT     s.name                            AS [schema_name]
 FROM        sys.schemas                    AS s
 JOIN        sys.tables                    AS t    ON  s.[schema_id]        = t.[schema_id]
 JOIN        sys.indexes                    AS i    ON     t.[object_id]        = i.[object_id]
-JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id] 
-                                                AND i.[index_id]        = p.[index_id] 
+JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id]
+                                                AND i.[index_id]        = p.[index_id]
 JOIN        sys.partition_schemes        AS h    ON     i.[data_space_id]    = h.[data_space_id]
 JOIN        sys.partition_functions        AS f    ON     h.[function_id]        = f.[function_id]
-LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id] 
+LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id]
                                                 AND r.[boundary_id]        = p.[partition_number]
 WHERE i.[index_id] <= 1
 )
@@ -246,7 +243,7 @@ GO
 下面的代码演示上述步骤，以实现完整的分区切换例程。
 
 ```sql
---Create a partitioned aligned empty table to switch out the data 
+--Create a partitioned aligned empty table to switch out the data
 IF OBJECT_ID('[dbo].[FactInternetSales_out]') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[FactInternetSales_out]
@@ -256,7 +253,7 @@ CREATE TABLE [dbo].[FactInternetSales_out]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
@@ -278,20 +275,20 @@ CREATE TABLE [dbo].[FactInternetSales_in]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -308,7 +305,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 WHERE    OrderDateKey BETWEEN 20020101 AND 20021231
@@ -347,9 +344,10 @@ DROP TABLE #ptn_data
 ```
 
 ## <a name="minimize-logging-with-small-batches"></a>使用小批量尽量减少日志记录
+
 对于大型数据修改操作，将操作划分为区块或批次来界定工作单元很有效。
 
-以下代码是可工作的示例。 批大小已设置为一个简单的数字来突显该方法。 实际中批大小会变得非常大。 
+以下代码是可工作的示例。 批大小已设置为一个简单的数字来突显该方法。 实际中批大小会变得非常大。
 
 ```sql
 SET NO_COUNT ON;
@@ -409,12 +407,10 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>暂停和缩放指南
 
-Synapse SQL 允许您按需[暂停、恢复和扩展](sql-data-warehouse-manage-compute-overview.md)SQL 池。 当您暂停或扩展 SQL 池时，请务必了解任何在途事务都立即终止;导致回滚任何打开的事务。 如果工作负荷在暂停或缩放操作前已发出数据修改在长时间运行之后仍未完成的指示，则需要撤消此项工作。 此撤消可能会影响暂停或缩放 SQL 池所需的时间。 
+Synapse SQL 允许您按需[暂停、恢复和扩展](sql-data-warehouse-manage-compute-overview.md)SQL 池。 当您暂停或扩展 SQL 池时，请务必了解任何在途事务都立即终止;导致回滚任何打开的事务。 如果工作负荷在暂停或缩放操作前已发出数据修改在长时间运行之后仍未完成的指示，则需要撤消此项工作。 此撤消可能会影响暂停或缩放 SQL 池所需的时间。
 
 > [!IMPORTANT]
-> `UPDATE` 和 `DELETE` 都是完整记录的操作，因此这些撤消/重做操作相比同等最少记录的操作可能要花费更长的时间。 
-> 
-> 
+> `UPDATE` 和 `DELETE` 都是完整记录的操作，因此这些撤消/重做操作相比同等最少记录的操作可能要花费更长的时间。
 
 最佳方案是让飞行数据修改事务在暂停或缩放 SQL 池之前完成。 但是，此方案不一定始终可行。 若要降低长时间回退的风险，请考虑以下选项之一：
 
@@ -424,4 +420,3 @@ Synapse SQL 允许您按需[暂停、恢复和扩展](sql-data-warehouse-manage-
 ## <a name="next-steps"></a>后续步骤
 
 请参阅[Synapse SQL 中的事务](sql-data-warehouse-develop-transactions.md)，了解有关隔离级别和事务限制的更多内容。  有关其他最佳实践的概述，请参阅 [SQL 数据仓库最佳实践](sql-data-warehouse-best-practices.md)。
-

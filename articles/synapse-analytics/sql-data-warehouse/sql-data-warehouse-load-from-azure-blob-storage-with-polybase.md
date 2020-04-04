@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7460a59dd2a7a5906a483195929136391657fa50
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: c93dab2f6086b10e1e8d75c4fc3334a95c3fcafa
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584007"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633274"
 ---
 # <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>将 Contoso 零售数据加载到 Synapse SQL 数据仓库
 
@@ -77,41 +77,40 @@ WITH (
 
 ## <a name="create-the-external-data-source"></a>创建外部数据源
 
-使用此["创建外部数据源"](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=sql-server-ver15)命令可存储数据的位置和数据类型。 
+使用此["创建外部数据源"](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)命令可存储数据的位置和数据类型。
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
-WITH 
+WITH
 (  
-    TYPE = Hadoop 
+    TYPE = Hadoop
 ,   LOCATION = 'wasbs://contosoretaildw-tables@contosoretaildw.blob.core.windows.net/'
-); 
+);
 ```
 
 > [!IMPORTANT]
-> 如果选择公开 azure blob 存储容器，请记住，由于是数据所有者，因此在数据离开数据中心时，需要支付数据传出费用。 
-> 
+> 如果选择公开 azure blob 存储容器，请记住，由于是数据所有者，因此在数据离开数据中心时，需要支付数据传出费用。
 
 ## <a name="configure-the-data-format"></a>配置数据格式
 
 数据存储在 Azure Blob 存储中的文本文件内，每个字段以分隔符隔开。 在 SSMS 中运行以下 CREATE EXTERNAL FILE FORMAT 命令，以指定文本文件中数据的格式。 Contoso 数据未压缩，以坚线分隔。
 
 ```sql
-CREATE EXTERNAL FILE FORMAT TextFileFormat 
-WITH 
+CREATE EXTERNAL FILE FORMAT TextFileFormat
+WITH
 (   FORMAT_TYPE = DELIMITEDTEXT
 ,    FORMAT_OPTIONS    (   FIELD_TERMINATOR = '|'
                     ,    STRING_DELIMITER = ''
                     ,    DATE_FORMAT         = 'yyyy-MM-dd HH:mm:ss.fff'
-                    ,    USE_TYPE_DEFAULT = FALSE 
+                    ,    USE_TYPE_DEFAULT = FALSE
                     )
 );
-``` 
+```
 
-## <a name="create-the-external-tables"></a>创建外部表
-指定数据源和文件格式后，可以开始创建外部表。 
+## <a name="create-the-schema-for-the-external-tables"></a>为外部表创建架构
 
-## <a name="create-a-schema-for-the-data"></a>为数据创建架构
+现在，您已经指定了数据源和文件格式，现在可以为外部表创建架构了。
+
 若要创建一个位置用于存储数据库中的 Contoso 数据，请创建架构。
 
 ```sql
@@ -163,7 +162,7 @@ CREATE EXTERNAL TABLE [asb].DimProduct (
 )
 WITH
 (
-    LOCATION='/DimProduct/' 
+    LOCATION='/DimProduct/'
 ,   DATA_SOURCE = AzureStorage_west_public
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE
@@ -172,7 +171,7 @@ WITH
 ;
 
 --FactOnlineSales
-CREATE EXTERNAL TABLE [asb].FactOnlineSales 
+CREATE EXTERNAL TABLE [asb].FactOnlineSales
 (
     [OnlineSalesKey] [int]  NOT NULL,
     [DateKey] [datetime] NOT NULL,
@@ -198,7 +197,7 @@ CREATE EXTERNAL TABLE [asb].FactOnlineSales
 )
 WITH
 (
-    LOCATION='/FactOnlineSales/' 
+    LOCATION='/FactOnlineSales/'
 ,   DATA_SOURCE = AzureStorage_west_public
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE
@@ -208,9 +207,10 @@ WITH
 ```
 
 ## <a name="load-the-data"></a>加载数据
+
 可通过其他方式访问外部数据。  可以直接从外部表查询数据、将数据载入数据仓库中的新表，或者将外部数据添加到现有的数据仓库表。  
 
-###  <a name="create-a-new-schema"></a>创建新架构
+### <a name="create-a-new-schema"></a>创建新架构
 
 CTAS 可创建包含数据的新表。  首先，请创建 contoso 数据的架构。
 
@@ -221,11 +221,11 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>将数据载入新表
 
-若要将 Azure Blob 存储中的数据载入数据仓库表，请使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7) 语句。 使用[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md)加载利用您创建的强类型外部表。 若要将数据载入新表，请对每个表使用一个 CTAS 语句。 
- 
+若要将 Azure Blob 存储中的数据载入数据仓库表，请使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句。 使用[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md)加载利用您创建的强类型外部表。 若要将数据载入新表，请对每个表使用一个 CTAS 语句。
+
 CTAS 将创建新表，并在该表中填充 select 语句的结果。 CTAS 将新表定义为包含与 select 语句结果相同的列和数据类型。 如果选择了外部表中的所有列，新表将是外部表中的列和数据类型的副本。
 
-在此示例中，我们以哈希分布表的形式创建维度表和事实表。 
+在此示例中，我们以哈希分布表的形式创建维度表和事实表。
 
 ```sql
 SELECT GETDATE();
@@ -237,7 +237,7 @@ CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey
 
 ### <a name="track-the-load-progress"></a>跟踪负载进度
 
-可使用动态管理视图 (DMV) 跟踪加载操作的进度。 
+可使用动态管理视图 (DMV) 跟踪加载操作的进度。
 
 ```sql
 -- To see all requests
@@ -254,13 +254,13 @@ SELECT
     r.command,
     s.request_id,
     r.status,
-    count(distinct input_name) as nbr_files, 
+    count(distinct input_name) as nbr_files,
     sum(s.bytes_processed)/1024/1024/1024 as gb_processed
 FROM
     sys.dm_pdw_exec_requests r
     inner join sys.dm_pdw_dms_external_work s
         on r.request_id = s.request_id
-WHERE 
+WHERE
     r.[label] = 'CTAS : Load [cso].[DimProduct]             '
     OR r.[label] = 'CTAS : Load [cso].[FactOnlineSales]        '
 GROUP BY
@@ -276,7 +276,7 @@ ORDER BY
 
 默认情况下，Synapse SQL 数据仓库将表存储为群集列存储索引。 加载完成后，某些数据行可能未压缩到列存储中。  有不同的原因会导致发生此问题： 若要了解详细信息，请参阅[管理列存储索引](sql-data-warehouse-tables-index.md)。
 
-若要在加载后优化查询性能和列存储压缩，请重新生成表，以强制列存储索引压缩所有行。 
+若要在加载后优化查询性能和列存储压缩，请重新生成表，以强制列存储索引压缩所有行。
 
 ```sql
 SELECT GETDATE();
@@ -290,7 +290,7 @@ ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 
 ## <a name="optimize-statistics"></a>优化统计信息
 
-最好是在加载之后马上创建单列统计信息。 如果知道某些列不会在查询谓词中使用，可以不创建有关这些列的统计信息。 如果针对每个列创建单列统计信息，则重新生成所有统计信息可能需要花费很长时间。 
+最好是在加载之后马上创建单列统计信息。 如果知道某些列不会在查询谓词中使用，可以不创建有关这些列的统计信息。 如果针对每个列创建单列统计信息，则重新生成所有统计信息可能需要花费很长时间。
 
 如果决定针对每个表的每个列创建单列统计信息，可以使用 [统计信息](sql-data-warehouse-tables-statistics.md)一文中的存储过程代码示例 `prc_sqldw_create_stats`。
 
@@ -339,6 +339,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ```
 
 ## <a name="achievement-unlocked"></a>大功告成！
+
 您已成功将公共数据加载到数据仓库中。 干得不错！
 
 现在可以开始查询表以探索数据。 运行以下查询，找出每个品牌的总销售额：
@@ -352,5 +353,6 @@ GROUP BY p.[BrandName]
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 要加载完整数据集，运行示例从 Microsoft SQL Server 示例存储库[加载完整的 Contoso 零售数据仓库](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md)。
 有关更多开发提示，请参阅[数据仓库的设计决策和编码技术](sql-data-warehouse-overview-develop.md)。

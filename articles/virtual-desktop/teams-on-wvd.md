@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ea9bfd21e7f3b92c99600a2492a809a0fc051ed9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b9b33076a2c2cea27fea181b760a721488682c9
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159613"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657019"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>在 Windows 虚拟桌面上使用 Microsoft 团队
 
@@ -33,15 +33,25 @@ ms.locfileid: "80159613"
 
 您可以在 Windows 虚拟桌面环境中使用未优化的 Microsoft 团队来利用 Microsoft 团队的完整聊天和协作功能以及音频呼叫。 呼叫中的音频质量将因主机配置而异，因为未优化的呼叫会使用更多主机 CPU。
 
+### <a name="prepare-your-image-for-teams"></a>为团队准备您的形象
+
+要启用按计算机安装的 Teams，在主机上设置以下注册表项：
+
+```shell
+  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams\IsWVDEnvironment]
+  Type: REG_DWORD
+  Value: 0x1
+```
+
 ### <a name="install-microsoft-teams"></a>安装微软团队
 
-要在 Windows 虚拟桌面环境中安装 Microsoft 团队，请执行：
+您可以使用每台计算机安装部署 Teams 桌面应用。 要在 Windows 虚拟桌面环境中安装 Microsoft 团队，请执行：
 
 1. 下载与您的环境相匹配[的团队 MSI 包](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm)。 我们建议在 64 位操作系统上使用 64 位安装程序。
 2. 运行此命令以将 MSI 安装到主机 VM。
 
       ```shell
-      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSER=1
+      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSERS=1
       ```
 
       这将安装团队到程序文件或程序文件 （x86）。 下次登录并启动 Teams 时，应用将要求您提供凭据。
@@ -56,4 +66,4 @@ ms.locfileid: "80159613"
       ```
 
       > [!NOTE]
-      > 如果安装具有 MSI 设置 ALLUSER_1 的团队，将自动更新将被禁用。 我们建议您确保每月至少更新一次 Teams。
+      > 如果安装具有 MSI 设置"ALLUSERS_1"的团队，将自动更新将被禁用。 我们建议您确保每月至少更新一次 Teams。

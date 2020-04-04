@@ -6,16 +6,15 @@ documentationcenter: .net
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
-ms.topic: conceptual
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 04/02/2020
 ms.author: shvija
-ms.openlocfilehash: 3e0339cf4431d3ed36f50b43134803079e30b101
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: fb041ec0d3cd474cca12d5ad55b733337566b9cc
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521743"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632786"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>将 Kafka MirrorMaker 与适用于 Apache Kafka 的事件中心配合使用
 
@@ -27,7 +26,7 @@ ms.locfileid: "80521743"
 > 此示例在[GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)上可用
 
 
-在本教程中，你将了解：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 创建事件中心命名空间
 > * 克隆示例项目
@@ -127,23 +126,11 @@ bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 
 - [在 Azure 容器实例上运行的 Azure 事件中心卡夫卡镜像制造商](https://github.com/djrosanova/EventHubsMirrorMaker)
 
 ## <a name="next-steps"></a>后续步骤
+要了解有关卡夫卡事件中心（Kafka）活动中心的更多详细信息，请参阅以下文章：  
 
-在本教程中，你将了解：
-> [!div class="checklist"]
-> * 创建事件中心命名空间
-> * 克隆示例项目
-> * 设置 Kafka 群集
-> * 配置 Kafka MirrorMaker
-> * 运行 Kafka MirrorMaker
-
-若要详细了解事件中心和适用于 Kafka 的事件中心，请参阅以下主题：  
-
-- [了解事件中心](event-hubs-what-is-event-hubs.md)
-- [用于 Apache Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
-- [如何创建事件中心](event-hubs-create.md)
-- [从 Kafka 应用程序流式传输到事件中心](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [将 Apache Spark 连接到事件中心](event-hubs-kafka-spark-tutorial.md)
 - [将 Apache Flink 连接到事件中心](event-hubs-kafka-flink-tutorial.md)
 - [将卡夫卡连接与事件中心集成](event-hubs-kafka-connect-tutorial.md)
-- [将 Akka 流连接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
 - [了解 GitHub 上的示例](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [将 Akka 流连接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure 活动中心 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d10a642f9309e4bb93368564488fc75be15fa27c
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586080"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631232"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>在 Azure 突触分析中分析工作负荷
 
@@ -68,7 +68,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 * **LocalQueriesConcurrencyResourceType**：位于并发槽框架外部的查询。 DMV 查询和 `SELECT @@VERSION` 等系统函数是本地查询的示例。
 * **UserConcurrencyResourceType**：位于并发槽框架内部的查询。 针对最终用户表的查询代表使用此资源类型的示例。
 * **DmsConcurrencyResourceType**：数据移动操作生成的等待。
-* **BackupConcurrencyResourceType**：此等待表明正在备份数据库。 此资源类型的最大值为 1。 如果同时请求了多个备份，则其他备份会排队。 通常情况下，建议连续快照的最小间隔时间为 10 分钟。 
+* **BackupConcurrencyResourceType**：此等待表明正在备份数据库。 此资源类型的最大值为 1。 如果同时请求了多个备份，则其他备份会排队。 通常情况下，建议连续快照的最小间隔时间为 10 分钟。
 
 可以使用 `sys.dm_pdw_waits` DMV 来查看请求所等待的具体资源。
 

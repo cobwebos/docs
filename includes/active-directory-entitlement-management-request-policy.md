@@ -5,15 +5,15 @@ services: active-directory
 author: msaburnley
 ms.service: active-directory
 ms.topic: include
-ms.date: 11/11/2019
+ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd716be397d9ef6b9d6132cd4470f653f3cea0f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77192871"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655944"
 ---
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
 
@@ -153,7 +153,7 @@ ms.locfileid: "77192871"
 
     其他审批人和请求者可以看到理由。
 
-### <a name="2-stage-approval-preview"></a>2 阶段审批（预览版）
+### <a name="2-stage-approval"></a>2 阶段批准
 
 如果选择了 2 阶段批准，则需要添加第二个审批人。
 
@@ -206,4 +206,4 @@ ms.locfileid: "77192871"
 
     ![访问包 - 策略 - 启用策略设置](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
-1. 单击“下一步”****。
+1. 单击“下一步”。 

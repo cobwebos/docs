@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 719a1985aeb0db7b0cf7f55a10762bf3ebb3e045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8118ecde698b54213547e717d25613c0c3e0d3fd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250187"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631554"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
-在将 Windows 虚拟机 (VM) 从本地上传到 Azure 之前，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 支持采用 VHD 文件格式且具有固定大小磁盘的第 1 代和第 2 代 VM。 VHD 允许的最大大小为 1,023 GB。 
+在将 Windows 虚拟机 (VM) 从本地上传到 Azure 之前，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 支持采用 VHD 文件格式且具有固定大小磁盘的第 1 代和第 2 代 VM。 VHD 允许的最大大小为 2 TB。
 
 在第 1 代 VM 中，可将 VHDX 文件系统转换成 VHD。 还可以将动态扩展磁盘转换为固定大小的磁盘。 但无法更改 VM 的代次。 有关详细信息，请参阅[应在 Hyper-V 中创建第 1 代还是第 2 代 VM？](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)和 [Azure 对第 2 代 VM 的支持（预览版）](generation-2.md)。
 
@@ -235,7 +235,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 
 9. 如果 VM 会成为域的一部分，请检查以下策略，确保未还原以前的设置。 
     
-    | 目标                                     | 策略                                                                                                                                                       | “值”                                                                                    |
+    | 目标                                     | 策略                                                                                                                                                       | 值                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | RDP 已启用                           | 计算机配置\策略\Windows 设置\管理模板\组件\远程桌面服务\远程桌面会话主机\连接         | 允许用户使用远程桌面进行远程连接                                  |
     | NLA 组策略                         | 设置\管理模板\组件\远程桌面服务\远程桌面会话主机\安全性                                                    | 需要完成用户身份验证才能使用 NLA 进行远程访问 |
@@ -275,7 +275,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
    ``` 
 6. 如果 VM 会成为域的一部分，请检查以下 Azure AD 策略，确保未还原以前的设置。 
 
-    | 目标                                 | 策略                                                                                                                                                  | “值”                                   |
+    | 目标                                 | 策略                                                                                                                                                  | 值                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | 启用 Windows 防火墙配置文件 | 计算机配置\策略\Windows 设置\管理模板\网络\网络连接\Windows 防火墙\域配置文件\Windows 防火墙   | 保护所有网络连接         |
     | 启用 RDP                           | 计算机配置\策略\Windows 设置\管理模板\网络\网络连接\Windows 防火墙\域配置文件\Windows 防火墙   | 允许入站远程桌面异常 |
@@ -451,7 +451,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 
     ![系统准备工具](media/prepare-for-upload-vhd-image/syspre.png)
 1. 在 **“关机选项”** 中选择 **“关机”**。
-1. 选择“确定”。
+1. 选择“确定”  。
 1. 当 Sysprep 完成后，关闭 VM。 请勿使用“重启”来关闭 VM。****
 
 现在，VHD 已准备就绪，可以上传了。 有关如何从通用化磁盘创建 VM 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](sa-upload-generalized.md)。
