@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 147f43148c0f804adf70f1a792ba1b8a772fdae4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8da8cd7110cd17d0aadd52cce1263c7c0fcfdf5c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294491"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632171"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -803,16 +803,6 @@ pd.read_sql(queryString, connection)
 ```
 
 ![表中前几行的数据](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
-
-#### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>使用 Azure 机器学习工作室（经典）读取器模块从 HDI 读取数据
-
-可以使用 Azure 机器学习工作室（经典）中的读取器模块访问 Hadoop 群集中的数据库。 插入 HDI 群集和 Azure 存储帐户的凭据，以便能够使用 HDI 群集中的数据库构建机器学习模型。
-
-![读取器模块属性](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
-
-然后即可查看已评分的数据集：
-
-![查看已评分数据集](./media/vm-do-ten-things/AML_Model_Results.PNG)
 
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL 数据仓库和数据库
 Azure SQL 数据仓库是一项弹性数据仓库即服务，具有企业级 SQL Server 体验。

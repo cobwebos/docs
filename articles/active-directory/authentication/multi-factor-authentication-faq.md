@@ -4,19 +4,19 @@ description: 与 Azure 多重身份验证相关的常见问题与解答。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: troubleshooting
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a622245a7431058582131d9ba224ddfb676d8aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 186e5a533bac5d7adac8b0423eff6c05f797c56f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425134"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652132"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
 
@@ -199,15 +199,15 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 
 - 该用户的管理员已在 Azure AD 中为其启用 MFA，但没有为其帐户注册安全信息。
 - 该用户已在 Azure AD 中启用自助密码重置。 以后如果用户忘记了密码，安全信息可帮助他们重置密码。
-- 该用户访问的应用程序配置了一个要求使用 MFA 的条件访问策略，但该应用程序以前未注册 MFA。
+- 用户访问具有条件访问策略以需要 MFA 且以前未注册 MFA 的应用程序。
 - 该用户正在将某个设备注册到 Azure AD（包括 Azure AD Join），并且组织要求使用 MFA 进行设备注册，但该用户以前未注册 MFA。
-- 该用户正在 Windows 10 中生成 Windows Hello for Business（需要 MFA），但以前未注册 MFA。
+- 用户正在 Windows 10 中为企业生成 Windows Hello（这需要 MFA），并且以前尚未注册 MFA。
 - 组织已创建并启用一个 MFA 注册策略，该策略已应用到该用户。
 - 该用户以前已注册 MFA，但选择的验证方法后来被管理员禁用。 因此，该用户必须再次完成 MFA 注册，以选择新的默认验证方法。
 
 ## <a name="errors"></a>错误
 
-**问：如果用户在使用移动应用通知时看到“身份验证请求不适用于已激活的帐户”错误消息，该怎么办？**
+**问：如果用户在使用移动应用通知时看到"身份验证请求不适用于已激活的帐户"错误消息，该怎么办？**
 
 告诉他们按照此过程从移动应用中删除帐户，并重新添加：
 

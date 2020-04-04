@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77211696"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637931"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板部署 Web 应用的指南
 
@@ -109,7 +109,7 @@ Web 应用的名称必须全局唯一。 可以使用某个可能唯一的命名
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果模板包括用于 SSL 绑定的 [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) 资源，且证书存储在 Key Vault 中，则须确保应用服务标识可以访问该证书。
+如果您的模板包含用于 TLS/SSL 绑定的[Microsoft.Web/证书](/azure/templates/microsoft.web/certificates)资源，并且证书存储在密钥保管库中，则必须确保应用服务标识可以访问证书。
 
 在全球版 Azure 中，应用服务服务主体所拥有的 ID 为 abfa0a7c-a6b6-4736-8310-5855508787cd****。 若要为应用服务服务主体授予对 Key Vault 的访问权限，请使用：
 

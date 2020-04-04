@@ -2,18 +2,18 @@
 title: 阿帕奇卡夫卡TLS加密&认证 - Azure HDInsight
 description: 设置TLS加密，用于卡夫卡客户与卡夫卡经纪人之间以及卡夫卡经纪人之间的通信。 设置客户端的 SSL 身份验证。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
+ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.author: hrasheed
-ms.openlocfilehash: 027a66f4b83225f3c776e1bff1d706f6f4dba976
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: b0154401a9233a6ea85a8e8c06ee14fcc918b2b6
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436999"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657081"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>在 Azure HDInsight 中为 Apache Kafka 设置 TLS 加密和身份验证
 
@@ -312,13 +312,13 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1.  启动控制台生成器，并提供作为`client-ssl-auth.properties`生成器的配置文件的路径。
+1. 启动控制台生成器，并提供作为`client-ssl-auth.properties`生成器的配置文件的路径。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9093 --topic topic1 --producer.config ~/ssl/client-ssl-auth.properties
     ```
 
-1.  打开另一个连接到客户端计算机并启动控制台使用者的 ssh 连接`client-ssl-auth.properties`，并为使用者提供作为配置文件的路径。
+1. 打开另一个连接到客户端计算机并启动控制台使用者的 ssh 连接`client-ssl-auth.properties`，并为使用者提供作为配置文件的路径。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
@@ -332,13 +332,13 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE_0>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1.  启动控制台生成器，并提供客户端-ssl-auth.属性的路径，作为生产者的配置文件。
+1. 启动控制台生成器，并提供客户端-ssl-auth.属性的路径，作为生产者的配置文件。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9092 --topic topic1 
     ```
 
-3.  打开另一个连接到客户端计算机并启动控制台使用者的 ssh 连接`client-ssl-auth.properties`，并为使用者提供作为配置文件的路径。
+1. 打开另一个连接到客户端计算机并启动控制台使用者的 ssh 连接`client-ssl-auth.properties`，并为使用者提供作为配置文件的路径。
 
     ```bash
     $ /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning

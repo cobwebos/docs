@@ -4,19 +4,19 @@ description: 微软 Azure 多重身份验证部署规划
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ae58482ced524958ffcdd6094ae57856d088eaf
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263876"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653955"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>规划基于云的 Azure 多重身份验证部署
 
@@ -220,7 +220,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 ### <a name="create-conditional-access-policy"></a>创建条件访问策略
 
-1. 使用全局管理员帐户登录到[Azure 门户](https://portal.azure.com)。
+1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 浏览到**Azure 活动目录** > **安全** > **条件访问**。
 1. 选择“新策略”****。
    ![创建条件访问策略，为试验组中的 Azure 门户用户启用 MFA](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
@@ -240,7 +240,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
     * 单击“选择”。
 1. 跳过“会话”**** 部分。
 1. 将“启用策略”**** 开关设置为“开”****。
-1. 单击 **“创建”**。
+1. 单击“创建”。 
 
 ## <a name="plan-integration-with-on-premises-systems"></a>计划与本地系统的集成
 
@@ -277,7 +277,7 @@ NPS 扩展充当 RADIUS 和基于云的 Azure MFA 之间的适配器，以提供
 
 选择未注册 MFA 的用户尝试进行身份验证时发生的情况。 使用注册表路径`HKLM\Software\Microsoft\AzureMFA`中的`REQUIRE_USER_MATCH`注册表设置来控制功能行为。 此设置具有单个配置选项。
 
-| 键 | “值” | 默认 |
+| 密钥 | 值 | 默认 |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | 真/假 | 未设置（相当于 TRUE） |
 
@@ -347,7 +347,7 @@ Azure MFA 的报告
 
 Azure 多重身份验证通过 Azure 门户提供报告：
 
-| 报表 | 位置 | 描述 |
+| 报表 | 位置 | 说明 |
 | --- | --- | --- |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
 

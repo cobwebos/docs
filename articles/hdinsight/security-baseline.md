@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: eddfcacd01a67fffa8e3e992e021ed1771d25944
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61c2b914671020b822814fc283b5f2641c2e787b
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471330"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657462"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight 的 Azure 安全基线
 
@@ -1316,7 +1316,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 如何在 Azure 密钥保管库中启用软删除：
 
-https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete
 
 **Azure 安全中心监视**：当前不可用
 

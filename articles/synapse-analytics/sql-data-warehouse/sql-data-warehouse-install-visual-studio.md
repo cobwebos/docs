@@ -12,14 +12,15 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: aa2f903611f52f8f7a8ede0040b592a7dddd0e89
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b8e37a15f473e5777fe5412b785a0916bd78f095
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584468"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655912"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>开始使用视觉工作室 2019
+
 Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于执行以下操作：
 
 - 连接、查询和开发应用程序
@@ -30,29 +31,26 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) 是一个工具，可用于�
 - 通过自动化服务器（如 Azure DevOps）设置持续集成和部署管道
 
 ## <a name="install-visual-studio-2019"></a>安装 Visual Studio 2019
+
 请参阅[下载 Visual Studio 2019][] 以下载并安装 Visual Studio **16.3 及更高版本**。 在安装过程中，选择“数据存储和处理”工作负载。 Visual Studio 2019 不再需要单独安装 SSDT。
 
 ## <a name="unsupported-features-in-ssdt"></a>SSDT 中不支持的功能
 
 有时，Synapse SQL 的功能版本可能不包括对 SSDT 的支持。 目前不支持以下功能：
 
-- [具体化视图](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)（正在开发）
-- [有序聚集列存储索引](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest#examples--and-)（正在开发）
-- [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)（正在开发）
-- [工作负荷管理](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-management) - 工作负荷组和分类器（正在开发）
-- [行级安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?view=sql-server-ver15)
+- [具体化视图](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [有序的群集列存储索引](/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#examples--and-)
+- [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [工作负载管理](sql-data-warehouse-workload-management.md)- 工作负载组和分类器
+- [行级安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
   - 在此处提交支持票证[或投票以获得](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security)支持功能。
-- [动态数据屏蔽](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json&view=sql-server-2017#defining-a-dynamic-data-mask)
-  - 在此处提交支持票证[或投票以获得](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)支持功能。 
-- [PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=sql-server-ver15&viewFallbackFrom=azure-sqldw-latest) 函数 
-- [带约束的表](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-table-constraints#table-constraints)不受支持。 对于这些表对象，请将生成操作设为“无”。
+- [动态数据掩码](/sql/relational-databases/security/dynamic-data-masking?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#defining-a-dynamic-data-mask)
+  - 在此处提交支持票证[或投票以获得](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)支持功能。
+- [带约束的表](sql-data-warehouse-table-constraints.md#table-constraints)不受支持。 对于这些表对象，请将生成操作设为“无”。
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，您已经拥有最新版本的 SSDT，就可以[连接到](sql-data-warehouse-query-visual-studio.md)SQL 池了。
-
-
-
 
 <!--Other-->
 

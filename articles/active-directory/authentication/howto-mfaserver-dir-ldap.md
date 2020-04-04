@@ -4,19 +4,19 @@ description: 部署 LDAP 身份验证和 Azure 多重身份验证服务器。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf7a5400fce2fce1b75cbd579830f929fcc0d0dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2df89a764bc9b92a830b13e4216412694bb95523
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454459"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653018"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP 身份验证和 Azure 多重身份验证服务器
 
@@ -40,7 +40,7 @@ ms.locfileid: "79454459"
 
 3. 在"客户端"选项卡上，如果 Azure 多重身份验证 LDAP 服务应绑定到非标准端口以侦听 LDAP 请求，请更改 TCP 端口和 SSL （TLS） 端口。
 4. 如果计划使用从客户端到 Azure 多重身份验证服务器的 LDAPS，则必须在与 MFA 服务器相同的服务器上安装 TLS/SSL 证书。 单击 **"浏览**"SSL （TLS） 证书框旁边，然后选择用于安全连接的证书。
-5. 单击 **“添加”**。
+5. 单击 **添加**。
 6. 在“添加 LDAP 客户端”对话框中，输入向该服务器进行身份验证的设备、服务器或应用程序的 IP 地址以及应用程序名称（可选）。 应用程序名称将出现在 Azure 多重身份验证报告中，并可能会显示在短信或移动应用身份验证消息中。
 7. 如果所有用户均已导入或将导入到该服务器并接受双重验证，请选中“需要 Azure 多重身份验证用户匹配”**** 框。 如果大量用户尚未导入到该服务器并且/或者将免除进行双重验证，请使该框处于未选中状态。 请参阅 MFA 服务器帮助文件，以了解有关此功能的其他信息。
 
@@ -79,5 +79,5 @@ ms.locfileid: "79454459"
 若要配置 LDAP 客户端，请遵循以下准则：
 
 * 将设备、服务器或应用程序配置为通过 LDAP 向 Azure 多重身份验证服务器进行身份验证，就如同它是 LDAP 目录一样。 使用通常用于直接连接到 LDAP 目录的设置（服务器名称或 IP 地址除外，应使用 Azure 多重身份验证服务器的服务器名称或 IP 地址）。
-* 将 LDAP 超时配置为 30-60 秒，以便有时间使用 LDAP 目录验证用户的凭据、执行双重验证、接收其响应，然后对 LDAP 访问请求做出响应。
+* 将 LDAP 超时配置为 30-60 秒，以便有时间使用 LDAP 目录验证用户的凭据、执行第二步验证、接收其响应并响应 LDAP 访问请求。
 * 如果使用 LDAPS，则执行 LDAP 查询的设备或服务器必须信任 Azure 多重身份验证服务器上安装的 TLS/SSL 证书。

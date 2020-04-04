@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 72aefb8de57e27718b14dba6a6d82deb8b63466f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3bbfe26f336a25ee85f2223226d6eb513ae21736
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367272"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632143"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>在 Azure 自动化中编辑文本 Runbook
 
@@ -22,7 +22,7 @@ Azure 自动化中的文本编辑器可以用来编辑 [PowerShell Runbook](auto
 
 该文本编辑器包含的一项功能是将 cmdlet、资产和子 Runbook 的代码插入 Runbook 中。 您可以从可用资源列表中选择，编辑器将适当的代码插入 Runbook，而不是自己键入代码。
 
-Azure 自动化中的每个 Runbook 都有两个版本：草稿版和已发布版。 先对 Runbook 的草稿版进行编辑，然后将其发布，这样便可以执行了。 无法编辑已发布版本。 有关详细信息，请参阅 [发布 runbook](manage-runbooks.md#publish-a-runbook)。
+Azure 自动化中的每个 Runbook 都有两个版本：草稿版和已发布版。 先对 Runbook 的草稿版进行编辑，然后将其发布，这样便可以执行了。 无法编辑已发布版本。 有关详细信息，请参阅 [发布 runbook](manage-runbooks.md#publishing-a-runbook)。
 
 本文提供了使用该编辑器执行不同功能的详细步骤。 这些不适用于[图形运行簿](automation-runbook-types.md#graphical-runbooks)。 要使用这些 Runbook，请参阅[Azure 自动化 中的图形创作](automation-graphical-authoring-intro.md)。
 
@@ -84,7 +84,7 @@ Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automation
 
 ### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>使用 Windows PowerShell 更改 Runbook 的内容
 
-以下示例命令演示了如何使用脚本文件的内容替换 Runbook 的现有内容。 此示例过程与[使用 Windows PowerShell 从脚本文件中导入 runbook](manage-runbooks.md#import-a-runbook) 中的相同。
+以下示例命令演示了如何使用脚本文件的内容替换 Runbook 的现有内容。 此示例过程与[使用 Windows PowerShell 从脚本文件中导入 runbook](manage-runbooks.md#importing-a-runbook) 中的相同。
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"

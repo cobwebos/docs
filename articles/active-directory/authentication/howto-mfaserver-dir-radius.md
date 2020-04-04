@@ -4,19 +4,19 @@ description: 部署 RADIUS 身份验证和 Azure 多重身份验证服务器。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38341613c98bf85df8cb47ccafc3df5709a1fd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 552226c35d4d129f73b96b689871708950b7ffb1
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425203"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652946"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>将 RADIUS 身份验证与 Azure 多重身份验证服务器集成
 
@@ -41,7 +41,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 1. 在 Azure 多重身份验证服务器内，单击左侧菜单中的“RADIUS 身份验证”图标。
 2. 选中“启用 RADIUS 身份验证”**** 复选框。
 3. 在客户端选项卡上，如果 Azure MFA RADIUS 服务需要侦听非标准端口上的 RADIUS 请求，则更改身份验证端口和计帐端口。
-4. 单击 **“添加”**。
+4. 单击 **添加**。
 5. 输入将向 Azure 多重身份验证服务器进行身份验证的设备/服务器的 IP 地址、应用程序名称（可选）和共享机密。
 
    应用程序名称将出现在报告中，并可能会显示在短信或移动应用身份验证消息中。
@@ -77,9 +77,9 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 
 若要配置 RADIUS 客户端，请遵循以下准则：
 
-* 将设备/服务器配置为通过 RADIUS 向 Azure 多重身份验证服务器的 IP 地址进行身份验证，后者充当 RADIUS 服务器。
+* 将设备/服务器配置为通过 RADIUS 对 Azure 多重身份验证服务器的 IP 地址进行身份验证，该地址充当 RADIUS 服务器。
 * 使用之前配置的共享机密。
-* 将 RADIUS 超时配置为 30-60 秒，以便有时间验证用户的凭据、执行双重验证、接收其响应，然后对 RADIUS 访问请求做出响应。
+* 将 RADIUS 超时配置为 30-60 秒，以便有时间验证用户的凭据、执行两步验证、接收其响应，然后响应 RADIUS 访问请求。
 
 ## <a name="next-steps"></a>后续步骤
 

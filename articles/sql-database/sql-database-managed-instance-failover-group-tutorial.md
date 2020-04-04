@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: bf83155e971061f22e5f5fc33d216b58621c9249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f1a56fa6ea38acd8061180407eb47fe416b61e9
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462643"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631703"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>教程：将 SQL 数据库托管实例添加到故障转移组
 
@@ -42,11 +42,11 @@ ms.locfileid: "77462643"
 - Azure 订阅。 如果您还没有[一个免费帐户，请创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 若要完成本教程，请确保准备好以下各项：
 
 - Azure 订阅。 如果您还没有[一个免费帐户，请创建一个免费帐户](https://azure.microsoft.com/free/)。
-- [Azure 电源外壳](/powershell/azureps-cmdlets-docs)
+- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 ---
 
@@ -75,7 +75,7 @@ ms.locfileid: "77462643"
 1. 将剩余设置保留默认值，然后选择“查看 + 创建”检查托管实例设置。**** 
 1. 选择“创建”以创建主托管实例。**** 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 创建资源组和主托管实例。 
 
@@ -382,7 +382,7 @@ ms.locfileid: "77462643"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建 Azure 资源组。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络。  |
@@ -421,19 +421,19 @@ ms.locfileid: "77462643"
 
    下表显示了辅助虚拟网络所需的值：
 
-    | **字段** | “值” |
+    | **字段** | 值 |
     | --- | --- |
     | **名称** |  辅助托管实例要使用的虚拟网络的名称，例如 `vnet-sql-mi-secondary`。 |
     | **地址空间** | 虚拟网络的地址空间，例如 `10.128.0.0/16`。 | 
     | **订阅** | 主托管实例和资源组所在的订阅。 |
-    | **地区** | 将部署辅助托管实例的位置。 |
+    | **区域** | 将部署辅助托管实例的位置。 |
     | **子** | 子网的名称。 默认会提供 `default`。 |
     | **地址范围**| 子网的地址范围。 此范围必须不同于主托管实例的虚拟网络使用的子网地址范围，例如 `10.128.0.0/24`。  |
     | &nbsp; | &nbsp; |
 
     ![辅助虚拟网络值](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 仅当使用 Azure 门户部署托管实例时，才需要执行此步骤。 如果使用 PowerShell，请直接跳到步骤 3。 
 
@@ -460,12 +460,12 @@ ms.locfileid: "77462643"
 
    下表显示了辅助托管实例所需的值：
  
-    | **字段** | “值” |
+    | **字段** | 值 |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **资源组**| 主托管实例所在的资源组。 |
     | **托管实例名称** | 新辅助托管实例的名称，例如 `sql-mi-secondary`  | 
-    | **地区**| 辅助托管实例的位置。  |
+    | **区域**| 辅助托管实例的位置。  |
     | **托管实例管理员登录名** | 要用于新辅助托管实例的登录名，例如 `azureuser`。 |
     | **密码** | 新辅助托管实例的管理员登录名使用的复杂密码。  |
     | &nbsp; | &nbsp; |
@@ -482,7 +482,7 @@ ms.locfileid: "77462643"
 1. 选择“查看 + 创建”以检查辅助托管实例的设置。**** 
 1. 选择“创建”以创建辅助托管实例。**** 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 创建辅助托管实例。 
 
@@ -708,7 +708,7 @@ ms.locfileid: "77462643"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建 Azure 资源组。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络。  |
@@ -752,11 +752,11 @@ ms.locfileid: "77462643"
 
    下表显示了主托管实例的网关所需的值：
  
-    | **字段** | “值” |
+    | **字段** | 值 |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **名称** | 虚拟网络网关的名称，例如 `primary-mi-gateway`。 | 
-    | **地区** | 辅助托管实例所在的区域。 |
+    | **区域** | 主托管实例所在的区域。 |
     | **网关类型** | 选择**VPN**。 |
     | **VPN 类型** | 选择**基于路由** |
     | **Sku**| 保留默认值 `VpnGw1`。 |
@@ -773,7 +773,7 @@ ms.locfileid: "77462643"
 1. 选择“创建”以创建新的虚拟网络网关。**** 
 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 为主托管实例的虚拟网络创建网关。 
 
@@ -810,7 +810,7 @@ ms.locfileid: "77462643"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | 获取资源组中的虚拟网络。 |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | 向虚拟网络添加子网配置。 | 
@@ -834,11 +834,11 @@ ms.locfileid: "77462643"
 
    下表显示了辅助托管实例的网关所需的值：
 
-   | **字段** | “值” |
+   | **字段** | 值 |
    | --- | --- |
    | **订阅** |  辅助托管实例所在的订阅。 |
    | **名称** | 虚拟网络网关的名称，例如 `secondary-mi-gateway`。 | 
-   | **地区** | 辅助托管实例所在的区域。 |
+   | **区域** | 辅助托管实例所在的区域。 |
    | **网关类型** | 选择**VPN**。 |
    | **VPN 类型** | 选择**基于路由** |
    | **Sku**| 保留默认值 `VpnGw1`。 |
@@ -851,7 +851,7 @@ ms.locfileid: "77462643"
    ![辅助网关设置](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 为辅助托管实例的虚拟网络创建网关。 
 
@@ -891,7 +891,7 @@ ms.locfileid: "77462643"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | 获取资源组中的虚拟网络。 |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | 向虚拟网络添加子网配置。 | 
@@ -933,7 +933,7 @@ ms.locfileid: "77462643"
 1. 在“摘要”选项卡上查看双向连接的设置，然后选择“确定”以创建连接。******** 
 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 连接两个网关。 
 
@@ -956,7 +956,7 @@ ms.locfileid: "77462643"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | 创建两个虚拟网络网关之间的连接。   |
 
@@ -984,7 +984,7 @@ ms.locfileid: "77462643"
 1. 故障转移组部署完成后，你将返回到“故障转移组”页。**** 
 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 创建故障转移组。 
 
    ```powershell-interactive
@@ -998,7 +998,7 @@ ms.locfileid: "77462643"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| 创建新的 Azure SQL 数据库托管实例故障转移组。  |
 
@@ -1027,7 +1027,7 @@ ms.locfileid: "77462643"
 1. 转到新的_辅助_托管实例，并再次选择**故障转移**，使主实例故障回主角色。 
 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 测试故障转移。 
 
    ```powershell-interactive
@@ -1064,7 +1064,7 @@ ms.locfileid: "77462643"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | 获取或列出托管实例故障转移组。| 
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | 执行托管实例故障转移组的故障转移。 | 
@@ -1083,7 +1083,7 @@ ms.locfileid: "77462643"
 1. 删除所有剩余资源。 在文本框中键入 `yes` 以确认要删除该资源，然后选择“删除”****。 
 1. 删除资源组，方法是：选择“删除资源组”，键入资源组的名称 `myResourceGroup`，然后选择“删除”********。 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 需要删除资源组两次。 第一次删除资源组将删除托管实例和虚拟群集，但随后会失败，并显示错误消息 `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.`。 再次运行 Remove-AzResourceGroup 命令，删除所有残留资源以及资源组。
 
@@ -1096,7 +1096,7 @@ Write-host "Removing residual resources and resouce group..."
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组。 |
 
@@ -1104,12 +1104,12 @@ Write-host "Removing residual resources and resouce group..."
 
 ## <a name="full-script"></a>完整脚本
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add managed instance to a failover group")]
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建 Azure 资源组。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络。  |

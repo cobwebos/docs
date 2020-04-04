@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: fd389c1e909e6875ead8410b5ca692b82c79e0de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6782d745bfced576fe06019b0d41af86c8c63ed4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063077"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656273"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -22,9 +22,9 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
  专用终结点指定以下属性： 
 
 
-|properties  |描述 |
+|properties  |说明 |
 |---------|---------|
-|“属性”    |    资源组中的唯一名称。      |
+|名称    |    资源组中的唯一名称。      |
 |子网    |  虚拟网络中要部署和分配专用 IP 地址的子网。 有关子网要求，请参阅本文中的“限制”部分。         |
 |专用链接资源    |   用于通过可用类型列表中的资源 ID 或别名建立连接的专用链接资源。 将为发送到此资源的所有流量生成唯一的网络标识符。       |
 |目标子资源   |      要连接的子资源。 每个专用链接资源类型具有不同的选项，可根据偏好做出选择。    |
@@ -53,13 +53,13 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |专用链接资源名称  |资源类型   |子资源  |
 |---------|---------|---------|
 |**专用链接服务**（你自己的服务）   |  Microsoft.Network/privateLinkServices       | empty |
-|**Azure SQL 数据库** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
+|**Azure SQL Database** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        | 
 |**Azure 存储**  | Microsoft.Storage/storageAccounts    |  Blob（blob、blob_secondary）<BR> 表（table、table_secondary）<BR> 队列（queue、queue_secondary）<BR> 文件（file、file_secondary）<BR> Web（web、web_secondary）        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob（blob、blob_secondary）<BR> Data Lake File System Gen2（dfs、dfs_secondary）       |
 |**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | SQL、MongoDB、Cassandra、Gremlin、表|
 |**用于 PostgreSQL - 单一服务器的 Azure 数据库** | Microsoft.DBforPostgreSQL/servers   | 后格雷sqlServer |
-|**MySQL 的 Azure 数据库** | Microsoft.DBforMySQL/servers    | mysqlServer |
+|**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | 马里亚德布拉塞 |
 |**Azure Key Vault** | Microsoft.KeyVault/vaults    | 保管库 |
 |**Azure 库伯奈斯服务 - 库伯内斯 API** | Microsoft.ContainerService/managedClusters | 托管群集 |
@@ -72,7 +72,9 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |**Azure 中继** | Microsoft.Relay/namespaces | namespace |
 |**Azure 事件网格** | Microsoft.EventGrid/topics  | 主题 |
 |**Azure 事件网格** | Microsoft.EventGrid/domains | 域 |
-|**Azure WebApps** | Microsoft.Web/sites    | sites |
+|**Azure WebApps** | Microsoft.Web/sites    | site |
+|**Azure 机器学习** | Microsoft.MachineLearningServices/workspaces  | 工作区 |
+  
  
 ## <a name="network-security-of-private-endpoints"></a>专用终结点的网络安全性 
 使用 Azure 服务的专用终结点时，流量将受到特定专用链接资源的保护。 平台会执行访问控制，以验证网络连接是否仅抵达指定的专用链接资源。 若要访问同一 Azure 服务中的其他资源，需要附加的专用终结点。 
@@ -143,6 +145,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |Azure 事件网格（微软.事件网格/主题）   | 主题 | 主题。[区域].私人链接.事件网格.azure.net|
 |Azure 事件网格（微软.事件网格/域） | 域 | 域。[区域].私人链接.事件网格.azure.net |
 |Azure WebApps（微软.网站/网站） | site | privatelink.azurewebsites.net |
+|Azure 机器学习（微软.机器学习服务/工作区）   | 工作区 | privatelink.api.azureml.ms |
  
 Azure 将在公共 DNS 中创建规范名称 DNS 记录 (CNAME)，以将解析重定向到建议的域名。 可以使用专用终结点的专用 IP 地址替代解析。 
  
@@ -153,7 +156,7 @@ Azure 将在公共 DNS 中创建规范名称 DNS 记录 (CNAME)，以将解析�
 下表列出了使用专用终结点时的已知限制： 
 
 
-|限制 |描述 |缓解操作  |
+|限制 |说明 |缓解操作  |
 |---------|---------|---------|
 |网络安全组 (NSG) 规则和用户定义的路由不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有关联的 NSG，但这些规则不会针对专用终结点处理的流量生效。 必须[禁用网络策略的强制实施](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍会在同一子网中托管的其他工作负荷上强制实施。 任何客户端子网上的路由将使用 /32 前缀，更改默认路由行为需要类似的 UDR  | 对源客户端上的出站流量使用 NSG 规则来控制流量。 使用 /32 前缀部署单个路由以覆盖专用终结点路由。 NSG 流日志和出站连接监视信息仍然受支持，可以使用        |
 

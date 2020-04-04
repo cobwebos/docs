@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: d7ce77404359b32effcc7a5da3f9429e9fdf7005
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 5f9ad827fa947e645f7eb4850f90a73c61a45cd3
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618575"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637108"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure 认知服务支持和反馈选项
 
@@ -81,12 +81,13 @@ ms.locfileid: "80618575"
 
 认知服务发行说明在提供新版本时更新。 说明包含有关新功能、改进和 bug 修复的信息。
 
- - [自定义愿景](custom-vision-service/release-notes.md)
+ - [自定义视觉](custom-vision-service/release-notes.md)
  - [人脸](face/releasenotes.md)
  - [语言理解 (LUIS)](LUIS/whats-new.md)
  - [语音服务](speech-service/releasenotes.md)
  - [语音服务 SDK](speech-service/devices-sdk-release-notes.md)
  - [文本分析](text-analytics/whats-new.md)
+ - [视频索引器](../media-services/video-indexer/release-notes.md)
 
 ### <a name="azure-blog"></a>Azure 博客
 
@@ -132,7 +133,7 @@ Reddit 是一个社区驱动的讨论网站，提供有关[Azure 认知服务](h
 | 个性化体验创建服务                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
 | 语音服务               | https://cognitive.uservoice.com/forums/912208-speech-service |
-| 自定义语音                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
+| 自定义语音识别                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
 | 文本分析                | https://cognitive.uservoice.com/forums/555922-text-analytics |
 | 文本翻译               | https://cognitive.uservoice.com/forums/558796-translator |
 | 视频索引器                 | https://cognitive.uservoice.com/forums/598144-video-indexer |

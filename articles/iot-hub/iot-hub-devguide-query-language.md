@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: ad8b4b39e582d10c2a3b6003bfa07138f4697b71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499184"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632933"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
@@ -457,13 +457,13 @@ GROUP BY <group_by_element>
 
 查询克隆和作业时唯一受支持的函数是：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
 | IS_DEFINED(property) | 返回一个布尔值，指示是否已向属性分配值（包括 `null`）。 |
 
 在路由情况下，支持以下数学函数：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
 | ABS(x) | 返回指定数值表达式的绝对（正）值。 |
 | EXP(x) | 返回指定数值表达式 (e^x) 的指数值。 |
@@ -476,12 +476,12 @@ GROUP BY <group_by_element>
 
 在路由情况下，支持以下检查和强制转换类型的函数：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
 | AS_NUMBER | 将输入字符串转换为数字。 如果输入数字，则为 `noop`；如果字符串不表示数字，则为 `Undefined`。|
 | IS_ARRAY | 返回一个布尔值，指示指定表达式类型是否为数组。 |
 | IS_BOOL | 返回一个布尔值，指示指定表达式的类型是否为布尔表达式。 |
-| IS_DEFINED | 返回一个布尔，它指示属性是否已经分配了值。 |
+| IS_DEFINED | 返回一个布尔，它指示属性是否已经分配了值。 仅当值是基元类型时，才支持此选项。 基元类型包括字符串、布尔、数字或`null`。 不支持日期时间、对象类型和数组。 |
 | IS_NULL | 返回一个布尔值，指示指定表达式的类型是否为 null。 |
 | IS_NUMBER | 返回一个布尔值，指示指定表达式的类型是否为数字。 |
 | IS_OBJECT | 返回一个布尔值，指示指定表达式的类型是否为 JSON 对象。 |
@@ -490,7 +490,7 @@ GROUP BY <group_by_element>
 
 在路由情况下，支持以下字符串函数：
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 | -------- | ----------- |
 | CONCAT(x, y, …) | 返回一个字符串，该字符串是连接两个或多个字符串值的结果。 |
 | LENGTH(x) | 返回指定字符串表达式的字符数。|

@@ -4,19 +4,19 @@ description: 管理员如何更改用户设置，例如，强制用户再次完�
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07845bb5b742b1bcfbb22d260457e9a8e16edab6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25d94fa761980151c420984eb7e8c3254a3509ef
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263707"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653496"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>管理云中 Azure 多重身份验证的用户设置
 
@@ -32,7 +32,7 @@ ms.locfileid: "79263707"
 
 ![从 Azure 门户管理身份验证方法](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，选择**Azure 活动目录** > **用户** > **所有用户**。
 1. 选择要在其上执行操作的用户，然后选择“身份验证方法”。****
    - “重置密码”会重置用户的密码并分配一个必须在下次登录时更改的临时密码。****
@@ -45,7 +45,7 @@ ms.locfileid: "79263707"
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>如何删除用户现有的应用密码
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在左侧，选择**Azure 活动目录** > **用户** > **所有用户**。
 3. 在右侧，选择工具栏上的“多重身份验证”****。 多重身份验证页面将打开。
 4. 选中要管理的用户或用户旁的框。 右侧会显示快速步骤选项列表。

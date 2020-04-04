@@ -7,15 +7,15 @@ ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 2694a5f250b746748a1b42ac4d211aa28ef1ebad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f0d8f73b47b1110e8e05365013bbf07fd94eb6ca
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613689"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655077"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域中管理 DNS
 
@@ -29,12 +29,12 @@ ms.locfileid: "77613689"
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 要完成本文，您需要以下资源和特权：
 
 * 一个有效的 Azure 订阅。
-    * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+    * 如果没有 Azure 订阅，[请创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。

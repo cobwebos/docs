@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 635b65d16ae9a59816506023d323243f043ce7da
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e1d0c5cd850fa0dbacf104d3fcd72d83007df878
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350387"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632255"
 ---
 # <a name="restore-an-existing-sql-pool"></a>还原现有 SQL 池
 
@@ -26,7 +26,7 @@ ms.locfileid: "80350387"
 
 **验证 DTU 容量。** 每个池都由具有默认 DTU 配额的 SQL 服务器（例如myserver.database.windows.net）托管。 验证 SQL Server 的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改](sql-data-warehouse-get-started-create-support-ticket.md)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 1. 确保[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 2. 有一个现有的还原点，需要从该点进行还原。 若要创建新的还原，请参阅[教程：新建用户定义的还原点](sql-data-warehouse-restore-points.md)。
@@ -51,7 +51,7 @@ ms.locfileid: "80350387"
 
 7. 验证还原的 SQL 池是否联机。
 
-8. 还原完成后，可以通过在[恢复后按照配置数据库来配置](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)恢复的 SQL 池。
+8. 还原完成后，可以通过在[恢复后按照配置数据库来配置](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)恢复的 SQL 池。
 
 ```Powershell
 
@@ -89,7 +89,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-an-existing-sql-pool-through-the-azure-portal"></a>通过 Azure 门户还原现有 SQL 池
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 导航到要还原的 SQL 池。
 3. 在“概览”边栏选项卡顶部，选择“还原”****。
 
@@ -100,7 +100,6 @@ $RestoredDatabase.status
     ![自动还原点](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>后续步骤
+
 - [还原已删除的 SQL 池](sql-data-warehouse-restore-deleted-dw.md)
 - [从异地备份 SQL 池还原](sql-data-warehouse-restore-from-geo-backup.md)
-
- 

@@ -1,6 +1,6 @@
 ---
-title: 使用事务
-description: 有关在开发解决方案时实现 Azure SQL 数据仓库中的事务的技巧。
+title: 在 Synapse SQL 池中使用事务
+description: 本文包括在 Synapse SQL 池中实现事务和开发解决方案的提示。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,30 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a14201131eac5ce1efc4020c9ce0f40a80cac8a3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: fdbffba7bee84c32d11f8b60431a35f185d9e637
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351569"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633434"
 ---
-# <a name="using-transactions-in-sql-data-warehouse"></a>使用 SQL 数据仓库中的事务
-有关在开发解决方案时实现 Azure SQL 数据仓库中的事务的技巧。
+# <a name="use-transactions-in-synapse-sql-pool"></a>在 Synapse SQL 池中使用事务
+本文包括在 SQL 池中实现事务和开发解决方案的提示。
 
 ## <a name="what-to-expect"></a>期望
-与预期一样，SQL 数据仓库支持将事务纳入数据仓库工作负载。 但是，为了确保 SQL 数据仓库的性能维持在一定的程度，相比于 SQL Server，其某些功能会受到限制。 本文将突出两者的差异，并列出其他信息。 
+如您所料，SQL 池支持事务作为数据仓库工作负载的一部分。 但是，为了确保 SQL 池保持规模，与 SQL Server 相比，某些功能是有限的。 本文重点介绍了这些差异。 
 
 ## <a name="transaction-isolation-levels"></a>事务隔离级别
-SQL 数据仓库实现 ACID 事务。 事务支持的隔离级别默认为"读取未提交"。  在连接到主数据库时，可以通过打开用户数据库的READ_COMMITTED_SNAPSHOT数据库选项将其更改为"读取共享快照"。  启用后，此数据库中的所有事务都将在"读取"状态下执行，并且在会话级别设置"未执行"将不受遵守。 有关详细信息，请查看[ALTER 数据库设置选项（转算-SQL）。](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
+SQL 池实现 ACID 事务。 事务支持的隔离级别默认为"读取未提交"。  在连接到主数据库时，可以通过打开用户数据库的READ_COMMITTED_SNAPSHOT数据库选项将其更改为"读取共享快照"。  
+
+启用后，此数据库中的所有事务都将在"读取"状态下执行，并且在会话级别设置"未执行"将不受遵守。 有关详细信息，请查看[ALTER 数据库设置选项（转算-SQL）。](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
 
 ## <a name="transaction-size"></a>事务大小
-单个数据修改事务有大小限制。 限制按每个分发进行应用。 因此，通过将限制乘以分发数，可得总分配额。 要预计事务中的最大行数，请将分发上限除以每一行的总大小。 对于可变长度列，考虑采用平均的列长度而不使用最大大小。
+单个数据修改事务有大小限制。 限制按每个分发进行应用。 因此，通过将限制乘以分发数，可得总分配额。 
 
-下表中进行了以下假设：
+要预计事务中的最大行数，请将分发上限除以每一行的总大小。 对于可变长度列，考虑采用平均的列长度而不使用最大大小。
+
+在下表中，已作出两项假设：
 
 * 出现平均数据分布 
 * 平均行长度为 250 个字节
@@ -84,14 +88,17 @@ SQL 数据仓库实现 ACID 事务。 事务支持的隔离级别默认为"读�
 > 
 
 ## <a name="transaction-state"></a>事务状态
-SQL 数据仓库使用 XACT_STATE() 函数（采用值 -2）来报告失败的事务。 此值表示事务已失败并标记为仅可回滚。
+SQL 池使用 XACT_STATE（） 函数使用值 -2 报告失败的事务。 此值表示事务已失败并标记为仅可回滚。
 
 > [!NOTE]
-> XACT_STATE 函数使用 -2 表示失败的事务，以代表 SQL Server 中不同的行为。 SQL Server 使用值 -1 来代表无法提交的事务。 SQL Server 可以容忍事务内的某些错误，而无需将其标记为无法提交。 例如，`SELECT 1/0` 导致错误，但不强制事务进入无法提交状态。 SQL Server 还允许读取无法提交的事务。 但是，SQL 数据仓库不允许执行此操作。 如果 SQL 数据仓库事务内部发生错误，它会自动进入 -2 状态，并且在该语句回退之前，无法执行任何 Select 语句。 因此，必须查看应用程序代码是否使用 XACT_STATE()，你可能需要修改代码。
-> 
-> 
+> XACT_STATE 函数使用 -2 表示失败的事务，以代表 SQL Server 中不同的行为。 SQL Server 使用值 -1 来代表无法提交的事务。 SQL Server 可以容忍事务内的某些错误，而无需将其标记为无法提交。 例如，`SELECT 1/0`会导致错误，但不会强制事务进入不可提交状态。 
 
-例如，在 SQL Server 中，可能会看到如下所示的事务：
+SQL Server 还允许读取无法提交的事务。 但是，SQL 池不允许您执行此操作。 如果 SQL 池事务中发生错误，它将自动进入 -2 状态，在语句回滚之前，您将无法进行任何进一步的选择语句。 
+
+因此，请务必检查应用程序代码是否使用XACT_STATE（），因为您可能需要进行代码修改。
+
+
+例如，在 SQL Server 中，您可能会看到如下所示的事务：
 
 ```sql
 SET NOCOUNT ON;
@@ -131,11 +138,11 @@ SELECT @xact_state AS TransactionState;
 
 前面的代码提供以下错误消息：
 
-Msg 111233, Level 16, State 1, Line 1 111233；当前事务已中止，所有挂起的更改都已回退。 原因：仅回退状态的事务未在 DDL、DML 或 SELECT 语句之前显式回退。
+Msg 111233, Level 16, State 1, Line 1 111233；当前事务已中止，所有挂起的更改都已回退。 此问题的原因是，在 DDL、DML 或 SELECT 语句之前，未显式回滚处于仅回滚状态的事务。
 
 不会获得 ERROR_* 函数的输出值。
 
-在 SQL 数据仓库中，该代码需要稍做更改：
+在 SQL 池中，需要稍微更改代码：
 
 ```sql
 SET NOCOUNT ON;
@@ -177,17 +184,19 @@ SELECT @xact_state AS TransactionState;
 所做的一切改变是事务的 ROLLBACK 必须发生于在 CATCH 块中读取错误信息之前。
 
 ## <a name="error_line-function"></a>Error_Line() 函数
-另外值得注意的是，SQL 数据仓库不实现或支持 ERROR_LINE() 函数。 如果代码中包含此函数，需要将它删除才能符合 SQL 数据仓库的要求。 请在代码中使用查询标签，而不是实现等效的功能。 有关详细信息，请参阅 [LABEL](sql-data-warehouse-develop-label.md) 一文。
+还值得注意的是，SQL 池不实现或支持ERROR_LINE（） 函数。 如果代码中具有此内容，则需要将其删除以符合 SQL 池。 
+
+请在代码中使用查询标签，而不是实现等效的功能。 有关详细信息，请参阅 [LABEL](sql-data-warehouse-develop-label.md) 一文。
 
 ## <a name="using-throw-and-raiserror"></a>使用 THROW 和 RAISERROR
-THROW 是在 SQL 数据仓库中引发异常的新式做法，但也支持 RAISERROR。 不过，有些值得注意的差异。
+THROW 是用于在 SQL 池中引发异常的更现代的实现，但也支持 RAISERROR。 不过，有些值得注意的差异。
 
 * 对于 THROW，用户定义的错误消息数目不能在 100,000 - 150,000 的范围内
 * RAISERROR 错误消息固定为 50,000
 * 不支持 sys.messages
 
 ## <a name="limitations"></a>限制
-SQL 数据仓库有一些与事务相关的其他限制。
+SQL 池确实有一些与事务相关的其他限制。
 
 这些限制如下：
 
@@ -199,5 +208,5 @@ SQL 数据仓库有一些与事务相关的其他限制。
 * 不支持 DDL，例如用户定义的事务内的 CREATE TABLE
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关优化事务的详细信息，请参阅[事务最佳做法](sql-data-warehouse-develop-best-practices-transactions.md)。 若要了解有关其他 SQL 数据仓库最佳做法的信息，请参阅 [SQL 数据仓库最佳做法](sql-data-warehouse-best-practices.md)。
+若要了解有关优化事务的详细信息，请参阅[事务最佳做法](sql-data-warehouse-develop-best-practices-transactions.md)。 要了解其他 SQL 池最佳实践，请参阅[SQL 池最佳实践](sql-data-warehouse-best-practices.md)。
 

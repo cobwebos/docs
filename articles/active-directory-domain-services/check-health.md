@@ -8,15 +8,15 @@ ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: fa1cba2d791cd40a46f8ad182c123a726143faec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 27ab14af25704a4f7fb46aa5e86cdaf881c49442
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614249"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655637"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>检查 Azure 活动目录域服务托管域的运行状况
 
@@ -40,7 +40,7 @@ Azure 活动目录域服务 （Azure AD DS） 运行一些后台任务，以保�
 
 | 状态 | 图标 | 说明 |
 | --- | :----: | --- |
-| 正在运行 | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Azure AD DS 托管域运行正常，没有任何严重或警告警报。 域可能具有信息警报。 |
+| 运行 | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Azure AD DS 托管域运行正常，没有任何严重或警告警报。 域可能具有信息警报。 |
 | 需要注意（警告） | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Azure AD DS 托管域上没有严重警报，但应解决一个或多个警告警报。 |
 | 需要注意（关键） | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Azure AD DS 托管域上存在一个或多个关键警报，必须加以解决。 您可能还有警告和/或信息警报。 |
 | 正在部署 | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | 正在部署 Azure AD DS 域。 |

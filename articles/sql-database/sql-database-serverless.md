@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 3/11/2020
-ms.openlocfilehash: 00b9da150569db2972289468b1405e5087ee3321
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 4/3/2020
+ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549158"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657065"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 
@@ -151,13 +151,13 @@ Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层�
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>客户托管的透明数据加密 （BYOK）
 
-如果使用[客户托管的透明数据加密](transparent-data-encryption-byok-azure-sql.md)（BYOK） 和无服务器数据库在密钥删除或吊销时自动暂停，则数据库将保持自动暂停状态。  在这种情况下，在下次恢复数据库后，数据库在大约 10 分钟内变得无法访问。  一旦数据库变得无法访问，恢复过程与预配计算数据库的过程相同。  如果发生密钥删除或吊销时无服务器数据库处于联机状态，则数据库在大约 10 分钟或更少后也会变得不可访问，其方式与预配计算数据库的方式相同。
+如果使用[客户托管的透明数据加密](transparent-data-encryption-byok-azure-sql.md)（BYOK） 和无服务器数据库在密钥删除或吊销时自动暂停，则数据库将保持自动暂停状态。  在这种情况下，在下次恢复数据库后，数据库在大约 10 分钟内变得无法访问。  一旦数据库变得无法访问，恢复过程与预配计算数据库的过程相同。  如果无服务器数据库在发生密钥删除或吊销时处于联机状态，则数据库在大约 10 分钟内也会以与预配计算数据库相同的方式无法访问。
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>载入无服务器计算层
 
 创建新的数据库，或将现有数据库移动到无服务器计算层中的模式与在预配计算层中创建新的数据库相同，均包含以下两个步骤。
 
-1. 指定服务目标名称。 服务目标规定了服务层、硬件代次和最大 vCore 数。 下表显示了服务目标选项：
+1. 指定服务目标。 服务目标规定了服务层、硬件代次和最大 vCore 数。 下表显示了服务目标选项：
 
    |服务目标名称|服务层|硬件代次|最大 vCore 数|
    |---|---|---|---|
@@ -176,12 +176,12 @@ Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层�
    |参数|可选的值|默认值|
    |---|---|---|---|
    |最小 vCore 数|取决于配置的最大 vCore 数 - 请参阅[资源限制](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)。|0.5 个 vCore|
-   |自动暂停延迟|最少：60分钟（1小时）<br>最多：10080 分钟（7 天）<br>增量： 60 分钟<br>禁用自动暂停：-1|60 分钟|
+   |自动暂停延迟|最少：60分钟（1小时）<br>最多：10080 分钟（7 天）<br>增量： 10 分钟<br>禁用自动暂停：-1|60 分钟|
 
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>在无服务器计算层中创建新数据库 
 
-以下示例在无服务器计算层中创建新数据库。 这些示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
+以下示例在无服务器计算层中创建新数据库。
 
 #### <a name="use-azure-portal"></a>使用 Azure 门户
 
@@ -205,7 +205,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>使用 Transact-SQL (T-SQL)
 
-以下示例在无服务器计算层中创建新数据库。
+使用 T-SQL 时，将应用默认值进行最小 vcore 和自动暂停延迟。
 
 ```sql
 CREATE DATABASE testdb
@@ -216,7 +216,7 @@ CREATE DATABASE testdb
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>将数据库从预配的计算层移到无服务器计算层
 
-以下示例将某个数据库从预配的计算层中移入无服务器计算层。 这些示例显式指定最小 vCore 数、最大 vCore 数和自动暂停延迟。
+以下示例将某个数据库从预配的计算层中移入无服务器计算层。
 
 #### <a name="use-powershell"></a>使用 PowerShell
 
@@ -237,7 +237,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>使用 Transact-SQL (T-SQL)
 
-以下示例将某个数据库从预配的计算层中移入无服务器计算层。
+使用 T-SQL 时，将应用默认值进行最小 vcore 和自动暂停延迟。
 
 ```sql
 ALTER DATABASE testdb 

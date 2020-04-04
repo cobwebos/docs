@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 0a9c32affc50a6d357d4160e00486c896d762e3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75385807"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652078"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>在 .NET 中自定义 Web 角色或辅助角色的生命周期
 在创建辅助角色时，需要扩展 [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) 类，重写该类提供的方法可以响应生命周期事件。 此类对于 Web 角色而言是可选的，因此，必须将它用于响应生命周期事件。
@@ -23,7 +23,7 @@ ms.locfileid: "75385807"
 
 在扩展 **RoleEntryPoint** 时，应该了解方法的以下行为：
 
-* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) 和 [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100)) 方法返回布尔值，因此，可以从这些方法返回 **false**。
+* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))方法返回布尔值，因此可以从此方法返回**false。**
   
    如果代码返回 **false**，则该角色进程将突然终止，而不会运行可能拥有的任何关闭序列。 一般来说，应该避免从 **OnStart** 方法返回 **false**。
 * **RoleEntryPoint** 方法重载中未捕获的任何异常都被视为未处理的异常。

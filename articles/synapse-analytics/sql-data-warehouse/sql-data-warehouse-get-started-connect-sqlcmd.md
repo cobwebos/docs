@@ -1,6 +1,6 @@
 ---
 title: 使用 sqlcmd 连接
-description: 使用 sqlcmd 命令行实用程序连接并查询 Azure SQL 数据仓库。
+description: 使用 sqlcmd 命令行实用程序连接到和查询 Synapse SQL 池。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 118997c39b56254eb47bc24350a0558e0b7620f9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: cfb1b7558f8d7675009a0ebc729cc1a560f03d12
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350509"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633381"
 ---
-# <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>使用 sqlcmd 连接到 SQL 数据仓库
+# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>使用 sqlcmd 连接到 Synapse SQL 池
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure 机器学习](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -28,14 +28,14 @@ ms.locfileid: "80350509"
 > 
 > 
 
-使用[sqlcmd][sqlcmd]命令行实用程序连接到和查询 Azure SQL 数据仓库。  
+使用 [sqlcmd][sqlcmd] 命令行实用程序连接到和查询 SQL 池。  
 
 ## <a name="1-connect"></a>1. 连接
-若要开始使用 [sqlcmd][sqlcmd]，请打开命令提示符并输入 **sqlcmd** ，后跟 SQL 数据仓库数据库的连接字符串。 连接字符串需要以下参数：
+要开始使用 [sqlcmd][sqlcmd]，请打开命令提示符并输入**sqlcmd，** 然后输入 SQL 池数据库的连接字符串。 连接字符串需要以下参数：
 
 * **服务器 (-S)：** 采用 `<`Server Name`>`.database.windows.net 格式的服务器
 * **数据库 (-d)：** 数据库名称。
-* **启用带引号的标识符 (-I)：** 必须启用带引号的标识符才能连接到 SQL 数据仓库实例。
+* **启用报价标识符 （-I）：** 必须启用已引用的标识符才能连接到 SQL 池实例。
 
 若要使用 SQL Server 身份验证，需要添加用户名/密码参数：
 
@@ -84,14 +84,4 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅 [sqlcmd 文档][sqlcmd]，详细了解 sqlcmd 中的可用选项。
-
-<!--Image references-->
-
-<!--Article references-->
-
-<!--MSDN references--> 
-[sqlcmd]: https://msdn.microsoft.com/library/ms162773.aspx
-[Azure portal]: https://portal.azure.com
-
-<!--Other Web references-->
+有关 sqlcmd 中可用选项的详细信息，请参阅[sqlcmd 文档](https://msdn.microsoft.com/library/ms162773.aspx)。

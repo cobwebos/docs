@@ -1,6 +1,6 @@
 ---
 title: 连接字符串
-description: SQL 数据仓库的连接字符串
+description: Synapse SQL 池的连接字符串
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,15 +11,17 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f64c584ea5a32f371f84facc195cd02ef6ffdff0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4c3f73fb763fa28ac826ebb97c3c325a2408542c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350625"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633573"
 ---
-# <a name="connection-strings-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的连接字符串
-用户可以使用多个不同的应用程序协议，例如 [ADO.NET][ADO.NET]、[ODBC][ODBC]、[PHP][PHP] 和 [JDBC][JDBC] 连接到 SQL 数据仓库。 下面是每个协议的连接字符串的一些示例。  可以使用 Azure 门户来生成连接字符串。  若要使用 Azure 门户生成连接字符串，请导航到数据库边栏选项卡，在“概要”** 下单击“显示数据库连接字符串”**。
+# <a name="connection-strings-for-synapse-sql-pool"></a>Synapse SQL 池的连接字符串
+您可以使用多个不同的应用程序协议连接到 SQL 池，例如[，ADO.NET、ODBC、PHP](https://msdn.microsoft.com/library/jj730314.aspx)[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)和[JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)。 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx) 下面是每个协议的连接字符串的一些示例。  可以使用 Azure 门户来生成连接字符串。  
+
+若要使用 Azure 门户生成连接字符串，请导航到数据库边栏选项卡，在“概要”** 下单击“显示数据库连接字符串”**。
 
 ## <a name="sample-adonet-connection-string"></a>示例 ADO.NET 连接字符串
 ```csharp
@@ -47,17 +49,4 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 > 
 
 ## <a name="next-steps"></a>后续步骤
-若要开始使用 Visual Studio 和其他应用程序查询数据仓库，请参阅[使用 Visual Studio 进行查询][Query with Visual Studio]。
-
-<!--Image references-->
-
-<!--Azure.com references-->
-[Query with Visual Studio]:sql-data-warehouse-query-visual-studio.md
-
-<!--MSDN references-->
-[ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
-[ODBC]: https://msdn.microsoft.com/library/jj730314.aspx
-[PHP]: https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396
-[JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
-
-<!--Other references-->
+要开始使用 Visual Studio 和其他应用程序查询 SQL 池，请参阅[使用 Visual Studio 查询](sql-data-warehouse-query-visual-studio.md)。

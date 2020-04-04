@@ -8,15 +8,15 @@ ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 9d983015927d2635f69a327a9c5b168056542519
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a684a669c491e35b5c6b62dd318b4fe61edeb52b
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613867"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655380"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>配置 Azure 活动目录域服务以支持 SharePoint 服务器的用户配置文件同步
 
@@ -24,12 +24,12 @@ SharePoint 服务器包括用于同步用户配置文件的服务。 此功能�
 
 本文介绍如何配置 Azure AD DS 以允许 SharePoint 服务器用户配置文件同步服务。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 要完成本文，您需要以下资源和特权：
 
 * 一个有效的 Azure 订阅。
-    * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+    * 如果没有 Azure 订阅，[请创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。

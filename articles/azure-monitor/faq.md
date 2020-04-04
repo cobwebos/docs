@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: 306d847c2bc5af72d37dbf8bf472a5bae63e9fd5
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528501"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637772"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 监视器常见问题
 
@@ -177,7 +177,7 @@ WireData
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Azure 监视器代理的防火墙要求是什么？
-有关防火墙要求的详细信息，请参阅[网络防火墙要求](platform/log-analytics-agent.md#firewall-requirements)。
+有关防火墙要求的详细信息，请参阅[网络防火墙要求](platform/log-analytics-agent.md#network-requirements)。
 
 
 ## <a name="visualizations"></a>可视化效果
@@ -284,7 +284,7 @@ WireData
 
 * [Azure 诊断](platform/diagnostics-extension-to-application-insights.md)
 * [导入到 Analytics](platform/data-collector-api.md)
-* [日志分析](platform/data-collector-api.md)
+* [Log Analytics](platform/data-collector-api.md)
 * [Logstash](platform/data-collector-api.md)
 
 ### <a name="can-i-filter-out-or-modify-some-telemetry"></a>是否可以筛选或修改某些遥测？
@@ -718,7 +718,7 @@ Azure VM 的概述页基于来宾 VM 中的活动的主机度量值显示图表�
 ## <a name="next-steps"></a>后续步骤
 如果您的问题未在此处回答，您可以参考以下论坛，以查找其他问题和答案。
 
-- [日志分析](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
+- [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
 - [Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 
 有关 Azure 监视器的一般反馈，请访问[反馈论坛](https://feedback.azure.com/forums/34192--general-feedback)。

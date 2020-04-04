@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 94ca609d9dc070e6e2b4dc878ecd8dfaf9331ede
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77648166"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656334"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建、监视和管理 FTP 文件
 
@@ -27,7 +27,7 @@ ms.locfileid: "77648166"
 
 ## <a name="limitations"></a>限制
 
-* FTP 连接器仅支持显式 FTP over SSL (FTPS)，与隐式 FTPS 不兼容。
+* FTP 连接器仅支持 TLS/SSL （FTPS） 的显式 FTP，并且与隐式 FTPS 不兼容。
 
 * 默认情况下，FTP 操作可以读取或写入 *50 MB 或更小*的文件。 若要处理大于 50 MB 的文件，FTP 操作支持[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 **获取文件内容**操作隐式使用分块。
 
@@ -71,7 +71,7 @@ FTP 触发器的工作原理是轮询 FTP 文件系统并查找自上次轮询�
 
 1. 对于空白逻辑应用，在搜索框中，输入`ftp`作为筛选器。 从 **"触发器"** 列表中，选择所需的触发器。
 
-   -或-
+   \- 或 -
 
    对于现有逻辑应用，在要添加操作的最后一步下，选择 **"新建步骤**"，然后选择"**添加操作**"。 在搜索框中，输入 `ftp` 作为筛选器。 从 **"操作"** 列表中，选择所需的操作。
 

@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 04/03/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3d5a4ddf863115747c27efbca1808d51444aac8c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152663"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656168"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的简单查询语法
 
@@ -68,9 +68,15 @@ NOT 运算符是一个减号。 例如，`wifi –luxury` 将搜索包含 `wifi`
 > [!NOTE]  
 >  `searchMode` 选项控制在没有 `+` 或 `|` 运算符的情况下，带有 NOT 运算符的词条是与查询中的其他词条进行 AND 运算还是 OR 运算。 请记住，`searchMode` 可设置为 `any`（默认）或 `all`。 如果使用 `any`，可以以包含更多结果的方式提高查询的查全率，且默认情况下将 `-` 解释为“OR NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条或不包含 `luxury` 词条的文档。 如果使用 `all`，可以以包含更少结果的方式提高查询的精确度，且默认情况下将 - 解释为“AND NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条且不包含“luxury”词条的文档。 这对于 `-` 运算符来说可能是更直观的行为。 因此，如果想要优化搜索精确度（而非查全率），*且*用户在搜索中频繁使用 `-` 运算符，则应考虑使用 `searchMode=all` 而不是 `searchMode=any`。
 
-## <a name="suffix-operator"></a>后缀运算符
+<a name="prefix-search"></a>
 
-后缀运算符是一个星号 `*`。 例如，`lux*` 将搜索包含以 `lux` 开头的词条的文档（忽略大小写）。  
+## <a name="suffix--operator-for-prefix-search"></a>前缀搜索`*`的后缀运算符
+
+后缀运算符是一个星号 `*`。 例如，`cap*` 将搜索包含以 `cap` 开头的词条的文档（忽略大小写）。 
+
+与筛选器类似，前缀查询查找完全匹配。 因此，没有相关性评分（所有结果都会获得 1.0 的搜索分数）。 前缀查询可能很慢，尤其是在索引较大且前缀由少量字符组成时。 
+
+如果要执行后缀查询（在字符串的最后一部分匹配），请使用[通配符搜索](query-lucene-syntax.md#bkmk_wildcard)和完整的 Lucene 语法。
 
 ## <a name="phrase-search-operator"></a>短语搜索运算符
 

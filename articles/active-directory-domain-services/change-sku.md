@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: b65310569e95173b88dd0aa0dfe1dbacd86cc8fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32f8f157abaf5076911c3908a83be4a644e09656
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126706"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655578"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>更改现有 Azure AD 域服务托管域的 SKU
 
@@ -23,12 +23,12 @@ ms.locfileid: "79126706"
 
 本文演示如何使用 Azure 门户更改现有 Azure AD DS 托管域的 SKU。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 要完成本文，您需要以下资源和特权：
 
 * 一个有效的 Azure 订阅。
-    * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+    * 如果没有 Azure 订阅，[请创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。

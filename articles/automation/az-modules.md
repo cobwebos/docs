@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 21fa1c4faa4a080b9b495e1481fdadcd7e8bea10
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a8d6d25a2ba7f0040b13982f14f3d6081ac32f15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619480"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637994"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure 自动化中的 Az 模块支持
 
@@ -18,20 +18,27 @@ Azure 自动化支持在 Runbook 中使用[Azure PowerShell Az 模块](/powershe
 
 ## <a name="considerations"></a>注意事项
 
-在 Azure 自动化中使用汇总 Az 模块时，需要考虑许多事项。 自动化帐户中的更高级别的解决方案可以使用 Runbook 和模块。 编辑 runbook 或升级模块可能会导致 runbook 出现问题。 在导入新的 Az 模块之前，应在单独的自动化帐户中仔细测试所有 Runbook 和解决方案。 对模块的任何修改都会对[开始/停止](automation-solution-vm-management.md)解决方案产生负面影响。 我们不建议在包含任何解决方案的自动化帐户中更改模块和 Runbook。 此行为并非特定于 Az 模块。 在向自动化帐户引入任何更改时，应考虑这一点。
+在 Azure 自动化中使用 Az 模块时，需要考虑以下几点：
 
-在自动化帐户中导入 Az 模块不会自动在 Runbook 使用的 PowerShell 会话中导入该模块。 在以下情况中，模块会导入到 PowerShell 会话中：
+* 自动化帐户中的更高级别解决方案可以使用 Runbook 和模块。 因此，编辑 Runbook 或升级模块可能会导致解决方案出现问题。 在导入新的 Az 模块之前，应在单独的自动化帐户中仔细测试所有 Runbook 和解决方案。 
 
-* 当 Runbook 从模块调用 cmdlet 时
-* 当 Runbook 使用`Import-Module`cmdlet 显式导入模块时
-* 当 Runbook 导入另一个模块时，具体取决于模块
+* 对模块的任何修改都会对[开始/停止](automation-solution-vm-management.md)解决方案产生负面影响。 
+
+* 在自动化帐户中导入 Az 模块不会自动在 Runbook 使用的 PowerShell 会话中导入该模块。 在以下情况中，模块会导入到 PowerShell 会话中：
+
+    * 当 Runbook 从模块调用 cmdlet 时
+    * 当 Runbook 使用`Import-Module`cmdlet 显式导入模块时
+    * 当 Runbook 导入另一个模块时，具体取决于模块
+
+> [!NOTE]
+> 我们不建议在包含任何解决方案的自动化帐户中更改模块和 Runbook。 此规定并非特定于 Az 模块。 在向自动化帐户引入任何更改时，应考虑这一点。
 
 > [!IMPORTANT]
 > 确保自动化帐户中的 Runbook 将 Az 模块或[AzureRM](https://www.powershellgallery.com/packages/AzureRM/6.13.1)模块（但不是两者）导入 PowerShell 会话。 如果 Runbook 在 AzureRM 模块之前导入 Az 模块，则 Runbook 将完成。 但是，引用[Get_SerializationSettings](troubleshoot/runbooks.md#get-serializationsettings) cmdlet 的错误显示在作业流中，cmdlet 可能无法正确执行。 如果 Runbook 在 Az 模块之前导入 AzureRM 模块，则 Runbook 也会完成。 但是，在这种情况下，您在作业流中收到一个错误，指出无法在同一会话中导入 Az 和 AzureRM 或在同一 Runbook 中使用。
 
 ## <a name="migrating-to-az-modules"></a>迁移到 Az 模块
 
-建议您在测试自动化帐户中测试迁移到 Az 模块。 创建此帐户后，可以使用本节中的说明处理模块。
+我们建议您在测试自动化帐户中测试迁移到 Az 模块。 创建帐户后，可以使用本节中的说明处理模块。
 
 ### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>停止并取消计划使用 AzureRM 模块的所有 Runbook
 

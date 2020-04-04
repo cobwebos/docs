@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3c1f0bb715b3c3bf9b3a3350ab11e26834aa84c8
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 6aff60cbc4a4cab557e6e202ea1181d5b20bbd20
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528664"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655871"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
-在 Azure Kubernetes 服务 (AKS) 中管理群集时，应用程序的正常运行时间变得非常重要。 AKS 通过在可用性集中使用多个节点来提供高可用性。 但是，这些多个节点无法保护您的系统免受区域故障的影响。 为了最大化正常运行时间，请提前规划以维持业务连续性并为灾难恢复做好准备。
+在 Azure Kubernetes 服务 (AKS) 中管理群集时，应用程序的正常运行时间变得非常重要。 默认情况下，AKS 在[虚拟机规模集 （VMSS）](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)中使用多个节点来提供高可用性。 但是，这些多个节点无法保护您的系统免受区域故障的影响。 为了最大化正常运行时间，请提前规划以维持业务连续性并为灾难恢复做好准备。
 
 本文重点介绍如何在 AKS 中规划业务连续性和灾难恢复。 学习如何：
 

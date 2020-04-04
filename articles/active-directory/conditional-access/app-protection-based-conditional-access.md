@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9859c884f6a1e22a1ac2bd21106ef51ead23fa41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b282962cc713487b8ee5113b02b8533a1538fff
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080067"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631901"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>如何：需要应用保护策略和经批准的客户端应用才能通过条件访问访问云应用
 
@@ -59,7 +59,7 @@ ms.locfileid: "79080067"
 1. 在 **"访问控制** > **授予"下**，选择以下选项：
    - **需要批准的客户端应用**
    - **需要应用保护策略（预览版）**
-   - “需要某一已选控件”****
+   - ”需要所有已选控件“****
 1. 确认设置，然后将“启用策略”设置为“打开”。********
 1. 选择 **"创建**"以创建并启用策略。
 

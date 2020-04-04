@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9398aceeb7465392e82aeaa5760f6c0504f8e33d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0331419de89775062f1309c5d854cd7325c68e4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159517"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656764"
 ---
-# <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>将批量数据迁移到 Azure 文件与 Azure 数据框同步
+# <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>使用 Azure DataBox 将数据批量迁移到 Azure 文件同步
 您可以通过两种方式将批量数据迁移到 Azure 文件同步：
 
 * **使用 Azure 文件同步上传文件。** 这是最简单的方法。 将文件本地移动到 Windows Server 2012 R2 或更高版本，然后安装 Azure 文件同步代理。 设置同步后，您的文件将从服务器上载。 （我们的客户目前平均上传速度约为每两天 1 TiB。为了确保服务器不会为数据中心使用过多的带宽，您可能需要设置[带宽限制计划](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter)。
@@ -25,7 +25,7 @@ ms.locfileid: "80159517"
 ## <a name="migration-tools"></a>迁移工具
 本文中介绍的过程不仅适用于数据框，也适用于其他脱机迁移工具。 它还适用于阿兹贝贝、Robocopy 等工具，或直接在互联网上工作的合作伙伴工具和服务。 但是，为了克服初始上传难题，请按照本文中的步骤以与 Azure 文件同步兼容的方式使用这些工具。
 
-在某些情况下，在采用 Azure 文件同步之前，需要从一个 Windows 服务器移动到另一个 Windows 服务器。[存储迁移服务](https://aka.ms/storagemigrationservice)（SMS） 可以提供帮助。 无论您是需要迁移到 Azure 文件同步支持的服务器操作系统版本（Windows Server 2012R2 及更高版本），还是由于您为 Azure 文件同步购买了新系统而只需迁移，SMS 具有许多功能和优点，可帮助获取迁移工作进展顺利。
+在某些情况下，在采用 Azure 文件同步之前，需要从一个 Windows 服务器移动到另一个 Windows 服务器。[存储迁移服务](https://aka.ms/storagemigrationservice)（SMS） 可以提供帮助。 无论您是需要迁移到 Azure 文件同步支持的服务器操作系统版本（Windows Server 2012R2 及更高版本），还是由于为 Azure 文件同步购买新系统而只需迁移，SMS 都具有许多功能和优点，可帮助顺利完成迁移。
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>使用工具脱机传输数据的好处
 以下是使用传输工具（如数据框）进行脱机迁移的主要好处：
@@ -53,14 +53,17 @@ ms.locfileid: "80159517"
 |---|---------------------------------------------------------------------------------------|
 | ![步骤 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [订购 Data Box](../../databox/data-box-deploy-ordered.md)。 数据盒系列提供[多种产品](https://azure.microsoft.com/services/storage/databox/data)，以满足您的需求。 收到数据框时，请按照其[文档将数据复制到](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box)数据框中的此 UNC 路径*\\\>\<：<设备\>\<ipAddreStorageAccountName_AzFile共享名称\>*。 此处 *，ShareName*是暂存共享的名称。 将 Data Box 发送回 Azure。 |
 | ![步骤 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | 等待文件显示在您选择的临时暂存共享的 Azure 文件共享中。 *不要启用同步到这些共享。* |
-| ![步骤 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | 为数据框为您创建的每个文件共享创建新的空共享。 此新共享应与数据盒共享位于同一存储帐户中。 [如何创建新的 Azure 文件共享](storage-how-to-create-file-share.md)。 |
-| ![步骤 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [在存储同步服务中创建同步组](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint)。 将空共享作为云终结点引用。 对每个 Data Box 文件共享重复此步骤。 [设置 Azure 文件同步](storage-sync-files-deployment-guide.md)。 |
-| ![步骤 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | [将实时服务器目录添加为服务器终结点](storage-sync-files-deployment-guide.md#create-a-server-endpoint)。 在此过程中，指定将文件移动到 Azure，并引用暂存共享。 您可以根据需要启用或禁用云分层。 在实时服务器上创建服务器终结点时，引用暂存共享。 在 **"添加服务器终结点**"边栏选项卡上，在 **"脱机数据传输** **"下**选择 启用 ，然后选择必须位于与云终结点相同的存储帐户中的暂存共享。 在这里，可用共享列表由存储帐户和尚未同步的共享进行筛选。 |
+| ![步骤 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | <ul><li>为数据框为您创建的每个文件共享创建新的空共享。 此新共享应与数据盒共享位于同一存储帐户中。 [如何创建新的 Azure 文件共享](storage-how-to-create-file-share.md)。</li><li>[在存储同步服务中创建同步组](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint)。 将空共享作为云终结点引用。 对每个 Data Box 文件共享重复此步骤。 [设置 Azure 文件同步](storage-sync-files-deployment-guide.md)。</li></ul> |
+| ![步骤 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [将实时服务器目录添加为服务器终结点](storage-sync-files-deployment-guide.md#create-a-server-endpoint)。 在此过程中，指定将文件移动到 Azure，并引用暂存共享。 您可以根据需要启用或禁用云分层。 在实时服务器上创建服务器终结点时，引用暂存共享。 在 **"添加服务器终结点**"边栏选项卡上，在 **"脱机数据传输** **"下**选择 启用 ，然后选择必须位于与云终结点相同的存储帐户中的暂存共享。 在这里，可用共享列表由存储帐户和尚未同步的共享进行筛选。 下表下面的屏幕截图演示如何在 Azure 门户中的服务器终结点创建期间引用 DataBox 共享。 |
+| ![步骤 5](media/storage-sync-files-offline-data-transfer/bullet_5.png) | 在上一步骤中添加服务器终结点后，数据将自动从正确的源流动。 ["同步共享](#syncing-the-share)"部分将解释数据从 DataBox 共享或 Windows 服务器流的数据时间 |
+| |
 
 ![Azure 门户用户界面的屏幕截图，演示如何在创建新服务器终结点时启用脱机数据传输](media/storage-sync-files-offline-data-transfer/data-box-integration-2-600.png)
 
 ## <a name="syncing-the-share"></a>同步共享
-创建服务器终结点后，同步将启动。 同步过程确定服务器上的每个文件是否也存在于数据盒存放文件的暂存共享中。 如果文件存在，同步进程将从暂存共享复制该文件，而不是从服务器上载该文件。 如果文件不存在在暂存共享中，或者如果本地服务器上有较新版本可用，同步过程将从本地服务器上载该文件。
+创建服务器终结点后，将启动同步。 同步过程确定服务器上的每个文件是否也存在于数据盒存放文件的暂存共享中。 如果文件存在，同步进程将从暂存共享复制该文件，而不是从服务器上载该文件。 如果文件不存在在暂存共享中，或者如果本地服务器上有较新版本可用，同步过程将从本地服务器上载该文件。
+
+同步共享时，同步将从本地服务器上的文件变体合并任何丢失的文件属性、权限或时间戳，将它们与 DataBox 共享中的文件对应方合并。 这可确保每个文件和文件夹到达时，Azure 文件共享中的所有可能的文件保真度都可用。
 
 > [!IMPORTANT]
 > 只能在创建服务器终结点时启用批量迁移模式。 建立服务器终结点后，无法将来自已同步服务器的大宗迁移数据集成到命名空间中。

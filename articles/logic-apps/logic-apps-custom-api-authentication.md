@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191408"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656233"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>提高从 Azure 逻辑应用调用自定义 API 的安全性
 
@@ -179,7 +179,7 @@ ms.locfileid: "77191408"
 
 若要使用 Azure Active Directory 身份验证自动同时部署空白 Web 应用和逻辑应用，请[在此处查看完整模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json)或单击此处的“部署到 Azure”****：
 
-[![部署到 Azure](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
+[![“部署到 Azure”](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
 #### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>第 3 部分：填充逻辑应用中的授权部分
 
@@ -197,7 +197,7 @@ ms.locfileid: "77191408"
 }
 ```
 
-| properties | 必选 | 描述 | 
+| properties | 必选 | 说明 | 
 | -------- | -------- | ----------- | 
 | tenant | 是 | Azure AD 租户的 GUID | 
 | audience | 是 | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
@@ -248,9 +248,9 @@ ms.locfileid: "77191408"
 } 
 ```
 
-| properties | 必选 | 描述 |
+| properties | 必选 | 说明 |
 | -------- | -------- | ----------- |
-| `type` | 是 | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 |
+| `type` | 是 | 身份验证类型。 对于 TLS/SSL 客户端证书，该值`ClientCertificate`必须为 。 |
 | `password` | 否 | 用于访问客户端证书（PFX 文件）的密码 |
 | `pfx` | 是 | 客户端证书（PFX 文件）的 base64 编码内容 |
 ||||
@@ -271,7 +271,7 @@ ms.locfileid: "77191408"
 }
 ```
 
-| properties | 必选 | 描述 | 
+| properties | 必选 | 说明 | 
 | -------- | -------- | ----------- | 
 | type | 是 | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
 | username | 是 | 要用于身份验证的用户名 | 

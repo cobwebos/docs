@@ -1,349 +1,397 @@
 ---
-title: 使用 Azure 站点恢复 f 对移动服务推送安装进行故障排除
+title: 使用 Azure 站点恢复对移动服务推送安装进行故障排除
 description: 使用 Azure 站点恢复启用灾难恢复复制时，排除移动服务安装错误。
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 09/11/2019
-ms.openlocfilehash: 3646499ad2104566cb82f3f26c6b55d05f84dc7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/03/2020
+ms.openlocfilehash: 1afd931249d4dbeda2b4b25f822837e2a564f959
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73953781"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656326"
 ---
-# <a name="troubleshoot-mobility-service-push-installation"></a>故障排除移动服务推送安装 
+# <a name="troubleshoot-mobility-service-push-installation"></a>故障排除移动服务推送安装
 
-安装移动服务是启用复制期间的关键步骤。 此步骤的成功完全取决于满足先决条件并使用支持的配置。 在移动服务安装期间最常遇到的失败是由于：
+移动服务安装是启用复制的关键步骤。 此步骤的成功取决于满足先决条件和使用支持的配置。 在移动服务安装期间，您可能面临的最常见故障是由于：
 
 * [凭据/权限错误](#credentials-check-errorid-95107--95108)
 * [登录失败](#login-failures-errorid-95519-95520-95521-95522)
 * [连接错误](#connectivity-failure-errorid-95117--97118)
 * [文件和打印机共享错误](#file-and-printer-sharing-services-check-errorid-95105--95106)
-* [WMI 故障](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
-* [不支持的操作系统](#unsupported-operating-systems)
-* [不受支持的启动配置](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
-* [VSS 安装失败](#vss-installation-failures)
+* [Windows 管理检测 （WMI） 故障](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
+* [不受支持的操作系统](#unsupported-operating-systems)
+* [不受支持的引导配置](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
+* [卷影复制服务 （VSS） 安装失败](#vss-installation-failures)
 * [GRUB 配置中是设备名称而不是设备 UUID](#enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320)
-* [LVM 卷](#lvm-support-from-920-version)
+* [逻辑卷管理器 （LVM） 卷](#lvm-support-from-920-version)
 * [重启警告](#install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266)
 
-启用复制时，Azure Site Recovery 尝试在虚拟机上推送安装移动服务代理。 其间，配置服务器尝试连接虚拟机并复制代理。 要成功安装，请按照下面给出的分步故障排除指导进行操作。
+启用复制时，Azure 站点恢复将尝试在虚拟机 （VM） 上安装移动服务代理。 作为此过程的一部分，配置服务器尝试与虚拟机连接并复制代理。 要启用成功安装，请遵循分步故障排除指南。
 
 ## <a name="credentials-check-errorid-95107--95108"></a>凭据检查 (ErrorID：95107 & 95108)
 
-* 验证所选用户帐户在启用复制期间是否有效且准确****。
-* Azure Site Recovery 需要具有**管理员特权**的 **ROOT** 帐户或用户帐户来执行推送安装。 否则，系统会在源计算机上阻止推送安装。
-  * 对于 Windows（**错误 95107**），验证该用户帐户是否具有源计算机上的本地或域管理访问权限。
-  * 如果使用的不是域帐户，则需在本地计算机上禁用远程用户访问控制。
-    * 若要禁用远程用户访问控制，请在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System 注册表项下添加一个新 DWORD：LocalAccountTokenFilterPolicy。 将值设置为 1。 若要执行此步骤，从命令提示符处运行以下命令：
+验证启用复制期间选择的用户帐户是否有效且准确。 Azure 站点恢复需要具有**管理员权限**的**根**帐户或用户帐户执行推送安装。 否则，推送安装将在源计算机上被阻止。
 
-         `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
-  * 对于 Linux（**错误 95108**），必须选择根帐户才能成功安装移动代理。 另外，SFTP 服务应处于运行状态。 在 sshd_config 文件中启用 SFTP 子系统和密码身份验证：
-    1. 以 root 身份登录。
-    2. 转到 /etc/ssh/sshd_config 文件中，找到以 PasswordAuthentication 开头的行。
-    3. 取消注释该行，并将值更改为 yes。
-    4. 找到以 Subsystem 开头的行，并取消注释该行。
-    5. 重启 sshd 服务。
+对于 Windows（**错误 95107），** 验证用户帐户在源计算机上具有管理访问权限，以及本地帐户或域帐户。 如果您不使用域帐户，则需要在本地计算机上禁用远程用户访问控制。
 
-如果想要修改所选用户帐户的凭据，请按照[此处](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)提供的说明进行操作。
+* 要手动添加禁用远程用户访问控制的注册表项，请执行：
+
+  * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+  * 添加新`DWORD`：`LocalAccountTokenFilterPolicy`
+  * 将值设置为`1`
+
+* 要添加注册表项，从命令提示符中，运行以下命令：
+
+  `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+
+对于 Linux（**错误 95108），** 您必须选择成功安装移动服务代理的**根**帐户。 此外，应运行 SSH 文件传输协议 （SFTP） 服务。 要在_sshd_config_文件中启用 SFTP 子系统和密码身份验证，请执行以下操作：
+
+1. 以 **root** 身份登录。
+1. 转到 _/etc/ssh/sshd_config文件_，找到以`PasswordAuthentication`开头的行。
+1. 取消注释行，并将值更改为`yes`。
+1. 查找以`Subsystem`开头的行，然后取消注释行。
+1. 重新启动 `sshd` 服务。
+
+如果要修改所选用户帐户的凭据，请按照[这些说明](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)操作。
 
 ## <a name="insufficient-privileges-failure-errorid-95517"></a>权限失败不足（错误 ID： 95517）
 
-如果选择用来安装移动代理的用户没有管理员权限，则配置服务器/横向扩展进程服务器就不得将移动代理软件复制到源计算机。 因此，此错误是拒绝服务故障导致的。 确保用户帐户有管理员权限。
+当选择安装移动代理的用户没有管理员权限时，不允许配置服务器/横向扩展进程服务器将移动代理软件复制到源计算机。 此错误是访问被拒绝失败的结果。 确保用户帐户有管理员权限。
 
-如果想要修改所选用户帐户的凭据，请按照[此处](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)提供的说明进行操作。
+如果要修改所选用户帐户的凭据，请按照[这些说明](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)操作。
 
 ## <a name="insufficient-privileges-failure-errorid-95518"></a>权限失败不足（错误 ID： 95518）
 
-如果在尝试登录到源计算机时无法在主域和工作站之间建立域信任关系，则移动代理安装会失败，出现的错误 ID 为 95518。 因此，请确保用于安装移动代理的用户帐户具有管理员权限，以便通过源计算机的主域进行登录。
+当主域和工作站之间的域信任关系建立在尝试登录到源计算机时失败时，移动代理安装将失败，错误 ID 95518。 确保用于安装移动代理的用户帐户具有通过源计算机的主域登录的管理权限。
 
-如果想要修改所选用户帐户的凭据，请按照[此处](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)提供的说明进行操作。
+如果要修改所选用户帐户的凭据，请按照[这些说明](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)操作。
 
 ## <a name="login-failures-errorid-95519-95520-95521-95522"></a>登录失败（错误 ID： 95519， 95520， 95521， 95522）
 
+本节介绍凭据和登录错误消息。
+
 ### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>用户帐户的凭据已被禁用（ErrorID： 95519）
 
-在“启用复制”期间选择的用户帐户已禁用。 若要启用用户帐户，请参阅[此处](https://aka.ms/enable_login_user)的文章，或者运行以下命令，将文本 *username* 替换为实际的用户名。
+启用复制期间选择的用户帐户已禁用。 要启用用户帐户，请参阅[本文](/powershell/module/Microsoft.PowerShell.LocalAccounts/Enable-LocalUser)或运行以下命令，将文本_用户名_替换为实际用户名。
+
 `net user 'username' /active:yes`
 
-### <a name="credentials-locked-out-due-to-multiple-failed-login-attempts-errorid-95520"></a>凭据由于多次失败的登录尝试而锁定（错误 ID： 95520）
+### <a name="credentials-locked-out-because-of-multiple-failed-login-attempts-errorid-95520"></a>凭据因多次失败的登录尝试而锁定（错误 ID： 95520）
 
 在访问计算机时多次重试失败会导致系统锁定用户帐户。 失败可能是因为：
 
-* 在配置设置过程中提供的凭据不正确，或者
-* 在“启用复制”期间选择的用户帐户错误
+* 配置设置期间提供的凭据不正确。
+* 启用复制期间选择的用户帐户是错误的。
 
-因此，请根据[此处](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)提供的说明修改所选的凭据，然后过一段时间再重试。
+按照[这些说明](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)修改所选凭据，然后重试操作。
 
-### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>源计算机上不支持登录服务器（ErrorID： 95521）
+### <a name="logon-servers-arent-available-on-the-source-machine-errorid-95521"></a>源计算机上不提供登录服务器（ErrorID： 95521）
 
-登录服务器在源计算机上不可用时，会发生此错误。 登录服务器不可用会导致登录请求失败，因此不能安装移动代理。 若要成功进行登录，请确保登录服务器在源计算机上可用，然后启动登录服务。 有关详细说明，请参阅 KB [139410](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available) Err Msg：当前没有可用的登录服务器。
+当登录服务器在源计算机上不可用时，将发生此错误。 如果登录服务器不可用，登录请求将失败，无法安装移动代理。 要成功登录，请确保登录服务器在源计算机上可用，并启动 Netlogon 服务。 有关详细信息，请参阅[Windows 登录方案](/windows-server/security/windows-authentication/windows-logon-scenarios)。
 
 ### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>登录服务未在源计算机上运行（ErrorID： 95522）
 
-登录服务未在源计算机上运行，导致登录请求失败。 因此，无法安装移动代理。 若要解决此问题，请确保登录服务在源计算机上运行，以便成功进行登录。 若要启动登录服务，请通过命令提示符运行命令“net start Logon”，或者从任务管理器启动“NetLogon”服务。
+登录服务未在源计算机上运行，并导致登录请求失败。 无法安装移动代理。 要解决错误，请使用以下方法之一在源计算机上启动`Netlogon`服务：
 
-## <a name="connectivity-failure-errorid-95117--97118"></a>**连接故障（错误 ID： 95117 & 97118）**
+* 要从命令`Netlogon`提示符启动服务，运行命令`net start Netlogon`。
+* 从任务管理器开始`Netlogon`服务。
 
-配置服务器/横向扩展进程服务器尝试连接到源 VM 以安装移动代理。 当源计算机因网络连接问题而无法访问时，会发生此错误。 若要解决问题，
+## <a name="connectivity-failure-errorid-95117--97118"></a>连接故障（错误 ID： 95117 & 97118）
 
-* 请确保你能够从配置服务器对源计算机执行 ping 操作。 如果在启用复制期间选择了横向扩展进程服务器，请确保能够从进程服务器对源计算机执行 ping 操作。
-  * 在源服务器计算机命令行中，使用 Telnet 通过 https 端口 (135) 对配置服务器/横向扩展进程服务器执行 ping 操作（如下所示），查看是否存在任何网络连接问题或防火墙端口阻止问题。
+配置服务器/横向扩展进程服务器尝试连接到源 VM 以安装移动代理。 当源计算机由于网络连接问题而无法访问时，将发生此错误。
 
-     `telnet <CS/ scale-out PS IP address> <135>`
-* 此外，对于Linux VM****，
-  * 检查是否已安装最新的 openssh、openssh-server 和 openssl 包。
+解决该错误：
+
+* 确保可以从配置服务器 ping 源计算机。 如果在启用复制期间选择了横向扩展进程服务器，请确保可以从进程服务器 ping 源计算机。
+
+* 从源服务器计算机命令行中，用于`Telnet`ping HTTPS 端口 135 上的配置服务器或横向扩展进程服务器，如下命令所示。 此命令检查是否有任何网络连接问题或防火墙端口阻塞问题。
+
+  `telnet <CS/ scale-out PS IP address> <135>`
+
+* 此外，对于 Linux VM：
+  * 检查是否安装了最新的 OpenSSH、OpenSSH 服务器和 OpenSSL 软件包。
   * 检查并确保安全外壳 (SSH) 已启用且正在端口 22 上运行。
-  * SFTP 服务应运行。 在 sshd_config 文件中启用 SFTP 子系统和密码身份验证，
-    * 以 root 身份登录。
-    * 转到 /etc/ssh/sshd_config 文件中，找到以 PasswordAuthentication 开头的行。
-    * 取消注释该行，并将值更改为 yes
-    * 找到以 Subsystem 开头的行，并取消注释该行
-    * 重启 sshd 服务。
-* 如果一段时间后没有正确的响应，则连接尝试可能失败，或者由于连接的主机响应失败。已建立的连接会失败。
-* 它可能是与连接性/网络/域相关的问题。 它也可能是由 DNS 名称解析问题或 TCP 端口耗尽问题造成的。 请检查域中是否存在任何此类已知问题。
+  * SFTP 服务应运行。 要在_sshd_config_文件中启用 SFTP 子系统和密码身份验证，请执行以下操作：
+
+    1. 以 **root** 身份登录。
+    1. 转到 _/etc/ssh/sshd_config_文件，找到以`PasswordAuthentication`开头的行。
+    1. 取消注释行，并将值更改为`yes`。
+    1. 查找以`Subsystem`开头的行，然后取消注释行
+    1. 重新启动 `sshd` 服务。
+
+* 如果在一段时间后没有适当的响应，或者由于连接的主机无法响应而已建立的连接失败，则连接尝试可能会失败。
+* 这可能是连接/网络/域相关问题。 这也可能因为 DNS 名称解决了问题或 TCP 端口耗尽问题。 请检查域中是否存在任何此类已知问题。
 
 ## <a name="connectivity-failure-errorid-95523"></a>连接故障（错误 ID： 95523）
 
-在源计算机所在的网络找不到的情况下，或者可能已删除或不再可用的情况下，会发生此错误。 若要解决此错误，唯一的方法是确保网络存在。
+当源计算机所在的网络找不到、可能已删除或不再可用时，将发生此错误。 解决错误的唯一方法是确保网络存在。
 
 ## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>文件和打印机共享服务检查 (ErrorID：95105 & 95106)
 
-进行连接性检查后，验证是否在虚拟机上启用了文件和打印机共享服务。 若要将移动代理复制到源计算机，这些设置是必需的。
+在连接检查后，验证虚拟机上是否已启用文件和打印机共享服务。 这些设置需要将移动代理复制到源计算机。
 
-对于 windows 2008 R2 和以前的版本****，
+对于**Windows 2008 R2 和以前的版本**：
 
 * 若要通过 Windows 防火墙启用文件和打印共享，
-  * 打开“控制面板”->“系统和安全”->“Windows 防火墙”，单击左侧窗格的“高级设置”，再单击控制台树中的“入站规则”。
-  * 找到文件和打印机共享 (NB-Session-In) 以及文件和打印机共享 (SMB-In) 规则。 请依次右键单击每个规则，然后单击“启用规则”****。
-* 若要使用组策略启用文件共享，
-  * 转到开始，键入 type gpmc.msc 并搜索。
-  * 在导航窗格中，打开以下文件夹：本地计算机策略、用户配置、管理模板、Windows 组件和网络共享。
-  * 在详细信息窗格中，双击“防止用户共享其配置文件中的文件”****。 若要禁用组策略设置，并启用用户共享文件的功能，请单击“禁用”。 单击“确定”保存更改。 有关详细信息，请参阅[使用组策略启用或禁用文件共享](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))。
+  1. 打开**控制面板** > **系统和安全** > **窗口防火墙**。 在左侧窗格中，在控制台树中选择 **"输入规则"的"高级设置** > **Inbound Rules**"。
+  1. 找到文件和打印机共享 (NB-Session-In) 以及文件和打印机共享 (SMB-In) 规则。
+  1. 请依次右键单击每个规则，然后单击“启用规则”****。
 
-对于**更高的版本**，请遵照[安装移动服务以对 VMware VM 和物理服务器进行灾难恢复](vmware-azure-install-mobility-service.md)中的说明启用文件和打印机共享。
+* 要使用组策略启用文件共享，可以：
+  1. 转到 **"开始"，** 键入`gpmc.msc`和搜索。
+  1. 在导航窗格中，打开以下文件夹：**本地计算机策略** > **用户配置** > **管理模板** > **Windows 组件** > **网络共享**。
+  1. 在详细信息窗格中，双击“防止用户共享其配置文件中的文件”****。
+
+     要禁用组策略设置，并启用用户共享文件的能力，请选择"**禁用**"。
+
+  1. 选择“确定”**** 保存更改。
+
+  有关详细信息，请参阅[使用组策略启用或禁用文件共享](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))。
+
+要为更高版本的 Windows 或 Linux 启用文件和打印机共享，请按照[安装移动服务中的说明进行 VMware VM 和物理服务器的灾难恢复](vmware-azure-install-mobility-service.md)。
 
 ## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Windows 管理检测 （WMI） 配置检查（错误代码：95103）
 
-进行文件和打印机服务检查后，通过防火墙为专用配置文件、公共配置文件和域配置文件启用 WMI 服务。 若要在源计算机上完成远程执行操作，这些设置是必需的。 若要启用，
+检查文件和打印机服务后，通过防火墙为私有、公共和域配置文件启用 WMI 服务。 若要在源计算机上完成远程执行操作，这些设置是必需的。
 
-* 请转到“控制面板”，单击“安全性”，然后单击“Windows 防火墙”。
-* 单击“更改设置”，然后单击“异常”选项卡。
-* 在异常窗口中，选中 Windows Management Instrumentation (WMI) 复选框，以通过防火墙启用 WMI 流量。 
+要启用 WMI：
 
-还可以在命令提示符处通过防火墙启用 WMI 流量。 使用以下命令 `netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+1. 转到**控制面板** > **安全**并选择**Windows 防火墙**。
+1. 选择 **"更改设置**"，然后选择"**例外"** 选项卡。
+1. 在 **"例外"** 窗口中，选择 Windows 管理检测 （WMI） 的复选框，以启用通过防火墙的 WMI 流量。
+
+还可以通过命令提示符通过防火墙启用 WMI 流量，并具有以下命令：
+
+`netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+
 可以在以下文章中找到其他 WMI 故障排除文章。
 
 * [基本 WMI 测试](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
-* [WMI 故障排除](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
-* [解决 WMI 脚本和 WMI 服务的问题](https://technet.microsoft.com/library/ff406382.aspx#H22)
+* [WMI 故障排除](/windows/win32/wmisdk/wmi-troubleshooting)
+* [解决 WMI 脚本和 WMI 服务的问题](/previous-versions/tn-archive/ff406382(v=msdn.10))
 
-## <a name="unsupported-operating-systems"></a>操作系统不受支持
+## <a name="unsupported-operating-systems"></a>不受支持的操作系统
 
-另一个最常见的失败原因可能是操作系统不受支持。 确保使用的是受支持的操作系统/内核版本，以便成功安装移动服务。 避免使用专用修补程序。
-若要查看 Azure Site Recovery 支持的操作系统和内核版本列表，请参阅我们的[支持矩阵文档](vmware-physical-azure-support-matrix.md#replicated-machines)。
+失败的另一个常见原因可能是操作系统不受支持。 使用受支持的操作系统和内核版本成功安装移动服务。 避免使用专用修补程序。
+
+要查看 Azure 站点恢复支持的操作系统和内核版本的列表，请参阅[支持矩阵文档](vmware-physical-azure-support-matrix.md#replicated-machines)。
 
 ## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>不支持的引导磁盘配置（ErrorID：95309、95310、95311）
 
-### <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>启动和系统分区/卷不是同一个磁盘（ErrorID： 95309）
+### <a name="boot-and-system-partitions--volumes-arent-the-same-disk-errorid-95309"></a>启动和系统分区/卷不是同一个磁盘（ErrorID： 95309）
 
-在版本 9.20 之前，将启动和系统分区/卷置于不同磁盘上是不受支持的配置。 [版本 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) 开始支持此配置。 请使用最新版本来获取此支持。
+在 9.20 版本之前，不同磁盘上的启动和系统分区/卷是不受支持的配置。 从[9.20 版本](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)开始，此配置受支持。
 
-### <a name="the-boot-disk-is-not-available-errorid-95310"></a>引导磁盘不可用（错误 ID： 95310）
+### <a name="the-boot-disk-isnt-available-errorid-95310"></a>引导磁盘不可用（错误 ID： 95310）
 
-无法保护没有启动盘的虚拟机。 这是为了确保在故障转移操作期间顺利恢复虚拟机。 缺少启动盘会导致故障转移后无法启动计算机。 确保虚拟机包含启动盘并重试该操作。 另请注意，不支持同一台计算机上有多个启动盘。
+无法保护没有引导磁盘的虚拟机。 引导磁盘可确保在故障转移操作期间虚拟机顺利恢复。 缺少引导磁盘会导致故障转移后无法启动计算机。 确保虚拟机包含引导磁盘并重试该操作。 此外，不支持同一台计算机上的多个引导磁盘。
 
 ### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>源计算机上存在多个引导磁盘（错误 ID： 95311）
 
-具有多个启动盘的虚拟机不是[支持的配置](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)。
+具有多个引导磁盘的虚拟机不是[受支持的配置](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)。
 
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>多个磁盘上的系统分区（错误 ID： 95313）
 
-在版本 9.20 之前，将根分区或卷置于不同磁盘上是不受支持的配置。 [版本 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) 开始支持此配置。 请使用最新版本来获取此支持。
+在 9.20 版本之前，多个磁盘上的根分区或卷设置是不受支持的配置。 从[9.20 版本](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)开始，此配置受支持。
 
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>启用保护失败，因为 GRUB 配置中提及的设备名称，而不是 UUID（ErrorID：95320）
 
-**可能的原因：** </br>
-GRUB 配置文件（"/引导/grub/menu/menu.lst"、"/引导/grub/grub.cfg"、"/引导/grub2/grub.cfg"或"/等/默认/grub"）可能包含参数**根**的值，并**恢复**为实际设备名称而不是 UUID。 Site Recovery 要求 UUID 方法，因为设备名可能会在 VM 重启时发生更改，由于故障转移时 VM 可能不会出现相同的名称，从而导致问题。 例如： </br>
+### <a name="possible-cause"></a>可能的原因
 
+大统一引导加载程序 （GRUB） 配置文件 _（/boot/grub/menu.lst，_ _/引导/grub/grub.cfg，_ _/引导/grub2/grub.cfg，_ 或 _/etc/默认/grub）_ 可能包含参数**根**的值，并作为实际设备名称**恢复**，而不是通用唯一标识符 （UUID）。 站点恢复要求 UUID 方法，因为设备名称可能会在 VM 重新启动时更改。 例如，VM 在故障转移时可能不会以相同名称联机，从而导致问题。
 
-- 以下行来自 GRUB 文件 /boot/grub2/grub.cfg****。 <br>
-  *linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts*
+例如：
 
+- 以下行来自 GRUB 文件 _/引导/grub2/grub.cfg_：
 
-- 以下行来自 GRUB 文件 **/启动/grub/menu.lst**
-  *内核 /引导/vmlinuz-3.0.101-63 默认**根_/dev/sda2** **恢复_/dev/sda1**初始_静默崩溃内核_256M-：128M 显示 vga_0x314*
+  `linux /boot/vmlinuz-3.12.49-11-default root=/dev/sda2  ${extra_cmdline} resume=/dev/sda1 splash=silent quiet showopts`
 
-如果发现上面的粗体字符串，GRUB 具有参数“root”和“resume”的实际设备名，而不是 UUID。
- 
-**如何修复：**<br>
-设备名应替换为相应的 UUID。<br>
+- 以下行来自 GRUB 文件 _/引导/grub/菜单.lst_：
 
+  `kernel /boot/vmlinuz-3.0.101-63-default root=/dev/sda2 resume=/dev/sda1 splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
-1. 通过执行命令“blkid \<设备名称>”查找设备的 UUID。 例如：<br>
-   ```
+> [!NOTE]
+> GRUB 线路包含参数**root**和**继续**的实际设备名称，而不是 UUID。
+
+### <a name="how-to-fix"></a>如何修复
+
+设备名应替换为相应的 UUID。
+
+1. 通过执行命令`blkid \<device name>`查找设备的 UUID。
+
+   例如：
+
+   ```shell
    blkid /dev/sda1
    /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
-   blkid /dev/sda2 
-   /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+   blkid /dev/sda2
+   /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-2. 现在请将设备名替换为设备 UUID，格式类似于“root=UUID=\<UUID>”。 例如，对于上述在“/boot/grub2/grub.cfg”、“/boot/grub2/grub.cfg”或“/etc/default/grub”文件中提到的 root 和 resume 参数，如果将设备名称替换为 UUID，则文件中的行将类似于： <br>
-   *kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
-3. 再次重启保护
+1. 现在，将设备名称替换为其 UUID 的格式`root=UUID=\<UUID>`，如 。 例如，如果我们将设备名称替换为 UUID，用于根和恢复参数，在文件 _/boot/grub2/grub.cfg、/boot/grub2/grub.cfg_或 _/etc/default/grub_中，文件中的行如下所示： _/boot/grub2/grub.cfg_
 
-## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>安装移动服务完成，警告重新启动（ErrorID： 95265 & 95266）
+   `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
-Site Recovery 移动服务有多个组件，其中一个称为筛选器驱动程序。 筛选器驱动程序只有在系统重启时才会加载到系统内存中。 这意味着筛选器驱动程序修补程序只有在加载新的筛选器驱动程序的时候才能够实现，即只有在系统重启时才能够实现。
+1. 重新启动保护。
 
-**请注意**，这是一个警告，在新代理更新后，现有复制仍会继续进行。 可以选择在需要使用新筛选器驱动程序的时候重新启动，但如果不重新启动，则旧筛选器驱动程序仍可继续使用。 因此，如果在更新后没有重启，则除了筛选器驱动器，**移动服务中的其他增强功能和修复程序的功能均可实现**。 因此，不需在每次升级后重新启动，虽然我们建议你重新启动。 有关何时必须重新启动，请参阅“Azure Site Recovery 中的服务更新”中的[移动代理升级之后重新启动源计算机](https://aka.ms/v2a_asr_reboot)部分。
+## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>安装移动服务，警告重新启动（ErrorID： 95265 & 95266）
+
+站点恢复移动服务具有许多组件，其中一个组件称为筛选器驱动程序。 筛选器驱动程序仅在系统重新启动期间加载到系统内存中。 筛选器驱动程序修复只能在系统重新启动时加载新的筛选器驱动程序时才能实现。
+
+> [!IMPORTANT]
+> 这是一个警告，即使新代理更新后，现有复制也会起作用。 您可以选择随时重新启动，您想要获得新的筛选器驱动程序的好处，但如果不重新启动，旧的筛选器驱动程序将继续工作。 因此，在更新后没有重新启动，除了筛选器驱动程序，**其他增强和修复在移动服务的好处得到实现**。 尽管建议，但每次升级后重新启动并不是强制性的。 有关何时强制重新启动的信息，请设置 Azure 站点恢复中的"服务更新"中的["移动服务升级后重新启动](service-updates-how-to.md#reboot-after-mobility-service-upgrade)"部分。
 
 > [!TIP]
->有关在维护时段计划升级的最佳做法，请参阅“Azure Site Recovery 中的服务更新”中的[最新 OS/内核版本的支持](https://aka.ms/v2a_asr_upgrade_practice)。
+>有关在维护时段内计划升级的最佳做法，请参阅 Azure 站点恢复中服务更新中[的最新操作系统/内核支持](service-updates-how-to.md#support-for-latest-operating-systemskernels)。
 
 ## <a name="lvm-support-from-920-version"></a>版本 9.20 提供的 LVM 支持
 
-在版本 9.20 之前，仅数据磁盘支持 LVM。 /boot 应位于磁盘分区上，而不是位于 LVM 卷上。
+在 9.20 版本之前，仅支持数据磁盘的逻辑卷管理器 （LVM）。 分区`/boot`应位于磁盘分区上，而不是 LVM 卷上。
 
-从[版本 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) 开始，支持[将 OS 磁盘置于 LVM 上](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)。 请使用最新版本来获取此支持。
+从[9.20 版本](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)开始[，LVM 上的 OS 磁盘](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)受支持。
 
 ## <a name="insufficient-space-errorid-95524"></a>空间不足（错误 ID： 95524）
 
-将移动代理复制到源计算机时，需要至少 100 MB 的可用空间。 因此，请确保源计算机有必需的可用空间，然后重试此操作。
+将移动代理复制到源计算机时，至少需要 100 MB 可用空间。 确保源计算机具有所需的可用空间量，然后重试操作。
 
 ## <a name="vss-installation-failures"></a>VSS 安装失败
 
-VSS 安装是移动代理安装的一部分。 在生成应用程序一致恢复点的过程中将使用此服务。 VSS 安装过程可能会由于多种原因而失败。 若要查明确切的错误，请参阅 **c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log**。 以下部分中重点介绍了几个常见的错误和解决方法步骤。
+卷影复制服务 （VSS） 安装是移动代理安装的一部分。 此服务用于生成应用程序一致的恢复点。 VSS 安装过程可能会由于多种原因而失败。 要识别确切的错误，请参阅_C：_程序数据\ASRSetupLogs_ASRUnifiedAgent安装程序.log_。 以下部分将突出显示一些常见错误和解决方法步骤。
 
 ### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>VSS 错误 -2147023170 [0x800706BE] - 退出代码 511
 
-当防病毒软件阻止了 Azure Site Recovery 服务的操作时通常会出现此问题。 若要解决此问题，请执行下列操作：
+当防病毒软件阻止 Azure 站点恢复服务的操作时，最常看到此问题。
 
-1. 排除[此处](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)提到的所有文件夹。
-2. 按照你的防病毒软件提供商发布的指南在 Windows 中取消阻止 DLL 的注册。
+若要解决此问题，请执行下列操作：
+
+1. 查看[防病毒程序中的文件夹排除](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)列表。
+1. 按照防病毒提供商发布的准则取消阻止在 Windows 中注册 DLL。
 
 ### <a name="vss-error-7-0x7---exit-code-511"></a>VSS 错误 7 [0x7] - 退出代码 511
 
-这是一个运行时错误，并且是由于没有足够的内存可用于安装 VSS 导致的。 请确保增大磁盘空间以成功完成此操作。
+此错误是由于内存不足而导致的运行时错误，无法安装 VSS。 增加磁盘空间，以便成功完成此操作。
 
 ### <a name="vss-error--2147023824-0x80070430---exit-code-517"></a>VSS 错误 -2147023824 [0x80070430] - 退出代码 517
 
-当 Azure Site Recovery VSS 提供程序服务[标记为待删除](https://msdn.microsoft.com/library/ms838153.aspx)时会发生此错误。 请尝试通过运行以下命令行手动在源计算机上安装 VSS
+当 Azure Site Recovery VSS 提供程序服务[标记为待删除](/previous-versions/ms838153(v=msdn.10))时会发生此错误。 尝试通过运行以下命令在源计算机上手动安装 VSS：
 
-`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
 ### <a name="vss-error--2147023841-0x8007041f---exit-code-512"></a>VSS 错误 -2147023841 [0x8007041F] - 退出代码 512
 
-当 Azure Site Recovery VSS 提供程序服务数据库[被锁定](https://msdn.microsoft.com/library/ms833798.aspx)时会发生此错误。请尝试通过运行以下命令行手动在源计算机上安装 VSS
+当 Azure 站点恢复 VSS 提供程序服务数据库[被锁定](/previous-versions/ms833798(v=msdn.10))时，将发生此错误。尝试通过从命令提示符运行以下命令，在源计算机上手动安装 VSS：
 
-`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-如果出现故障，请检查是否有任何防病毒程序或其他服务停滞在“正在启动”状态。 这可以保留对数据库服务的锁定。 这将导致安装 VSS 提供程序时出现故障。 请确保没有服务处于“正在启动”状态，然后重试上述操作。
+发生故障时，请检查是否有任何防病毒程序或其他服务处于 **"启动"** 状态。 处于 **"启动"** 状态的进程可以保留数据库服务上的锁。 这将导致安装 VSS 提供程序时出现故障。 确保没有服务处于 **"启动"** 状态，然后重试上述操作。
 
 ### <a name="vss-exit-code-806"></a>VSS 退出代码 806
 
-当用于安装的用户帐户无权执行 CSScript 命令时会发生此错误。 请为用户帐户提供执行此脚本所需的权限，然后重试操作。
+当用于安装的用户帐户没有执行命令的权限时，将发生此`CSScript`错误。 请为用户帐户提供执行此脚本所需的权限，然后重试操作。
 
 ### <a name="other-vss-errors"></a>其他 VSS 错误
 
-请尝试通过运行以下命令行手动在源计算机上安装 VSS 提供程序服务
+尝试通过从命令提示符运行以下命令，在源计算机上手动安装 VSS 提供程序服务：
 
-`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
-
-
+`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
 ## <a name="vss-error---0x8004e00f"></a>VSS 错误 - 0x8004E00F
 
-此错误通常出现在安装移动代理安装的过程中，其原因是 DCOM 出现问题，且 DCOM 处于某种严重状态。
+此错误通常在安装移动代理期间发生，因为移动代理处于`DCOM`中，并且`DCOM`处于严重状态。
 
 使用以下过程确定错误原因。
 
-**检查安装日志**
+### <a name="examine-the-installation-logs"></a>检查安装日志
 
-1. 打开位于 c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log 中的安装日志。
+1. 打开位于_C：\程序数据\ASRSetupLogs_ASRUnifiedAgent安装程序.log_的安装日志。
 2. 如果存在以下错误，则表示出现了此问题：
 
-    正在取消注册现有应用程序... 创建目录对象 获取应用程序的集合 
+    ```Output
+    Unregistering the existing application...
+    Create the catalogue object
+    Get the collection of Applications
 
-    错误：
+    ERROR:
 
-    - 错误代码 -2147164145 [0x8004E00F]
-    - 退出代码： 802
+    - Error code: -2147164145 [0x8004E00F]
+    - Exit code: 802
+    ```
 
 若要解决问题，请执行以下操作：
 
 请联系 [Microsoft Windows 平台团队](https://aka.ms/Windows_Support)，让他们帮助解决 DCOM 问题。
 
-解决 DCOM 问题后，使用以下命令手动重新安装 Azure Site Recovery VSS 提供程序：
- 
-**C：\程序文件 （x86）\微软 Azure 站点恢复\代理>"C：\程序文件 （x86）\微软 Azure 站点恢复\代理\InMageVSSProvider_Install.cmd**
-  
-如果应用程序一致性并不是一项关键的灾难恢复要求，则可以绕过 VSS 提供程序的安装。 
+解决 DCOM 问题时，使用命令提示符中的以下命令手动重新安装 Azure 站点恢复 VSS 提供程序：
+
+`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+如果应用程序一致性对于灾难恢复要求并不重要，您可以绕过 VSS 提供程序安装。
 
 若要绕过 Azure Site Recovery VSS 提供程序的安装，并在安装后手动安装 Azure Site Recovery VSS 提供程序：
 
-1. 安装移动服务。 
-   > [!Note]
-   > 
-   > 安装过程将在执行“安装后的配置”步骤时失败。 
-2. 若要绕过 VSS 的安装：
+1. 安装移动服务。 安装将在步骤中失败：**安装后配置**。
+1. 若要绕过 VSS 的安装：
    1. 打开位于以下位置的 Azure Site Recovery 移动服务安装目录：
-   
-      C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
-   2. 添加以下行，将 Azure Site Recovery VSS 提供程序安装脚本 **nMageVSSProvider_Install** 和 **InMageVSSProvider_Uninstall.cmd** 修改为始终成功：
-    
-      ```     
+
+      _C:\Program Files (x86)\Microsoft Azure Site Recovery\agent_
+
+   1. 修改 Azure 站点恢复 VSS 提供程序安装脚本_InMageVSSProvider_Install_和_InMageVSSProvider_Uninstall.cmd，_ 以便始终通过添加以下行成功：
+
+      ```plaintext
       rem @echo off
       setlocal
       exit /B 0
       ```
 
-3. 手动重新运行移动代理安装。 
-4. 当安装成功并转到下一步骤“配置”时，请删除添加的行。****
-5. 若要安装 VSS 提供程序，请以管理员身份打开命令提示符并运行以下命令：
-   
-    **C:\Program Files (x86)\Microsoft Azure Site Recovery\agent> .\InMageVSSProvider_Install.cmd**
+1. 手动安装移动代理。
+1. 当安装成功并移动到下一步时，**配置**，删除您添加的行。
+1. 要安装 VSS 提供程序，请以管理员身份打开命令提示符并运行以下命令：
 
-9. 确认 ASR VSS 提供程序已在 Windows 服务中作为一个服务安装，并打开“组件服务”MMC 以确认 ASR VSS 提供程序是否已列出。
-10. 如果 VSS 提供程序安装仍旧失败，请使用 CX 来解决 CAPI2 中的权限错误。
+   `"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-## <a name="vss-provider-installation-fails-due-to-the-cluster-service-being-enabled-on-non-cluster-machine"></a>在非群集计算机上启用群集服务导致 VSS 提供程序安装失败
+1. 验证 Azure 站点恢复 VSS 提供程序是否作为服务在 Windows 服务中安装。 打开组件服务 MMC 以确认已列出 VSS 提供程序。
+1. 如果 VSS 提供程序安装继续失败，请与技术支持一起解决加密应用程序编程接口 （CAPI2） 中的权限错误。
 
-此问题会导致在执行 ASAzure Site RecoveryR VSS 提供程序安装步骤期间 Azure Site Recovery 移动代理安装失败，因为 COM+ 的某个问题会阻止安装 VSS 提供程序。
- 
+## <a name="vss-provider-installation-fails-because-the-cluster-service-being-enabled-on-non-cluster-machine"></a>VSS 提供程序安装失败，因为在非群集计算机上启用群集服务
+
+此问题会导致 Azure 站点恢复移动代理安装在 Azure 站点恢复 VSS 提供程序安装期间失败。 失败的原因是存在阻止 VSS 提供程序安装`COM+`的问题。
+
 ### <a name="to-identify-the-issue"></a>识别问题
 
-在配置服务器上的 C:\ProgramData\ASRSetupLogs\UploadedLogs\<日期时间>UA_InstallLogFile.log 日志中，会看到以下异常：
+在位于配置服务器上的日志中 _，C：\程序数据\ASRSetupLogs_上传的\<Logs日期时间>UA_InstallLogFile.log，_ 你会发现以下异常：
 
-COM+ 无法与 Microsoft 分布式事务协调器通信（HRESULT 的例外情况：0x8004E00F）
+```plaintext
+COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Exception from HRESULT: 0x8004E00F)
+```
 
 若要解决问题，请执行以下操作：
 
-1.  确认此计算机是一台非群集计算机，并且未使用群集组件。
-3.  如果未使用组件，请从计算机中删除群集组件。
+1. 验证此计算机是否为非群集计算机，以及未使用群集组件。
+1. 如果未使用组件，请从计算机中删除群集组件。
 
 ## <a name="drivers-are-missing-on-the-source-server"></a>源服务器上缺少驱动程序
 
-如果移动代理安装失败，请检查 C:\ProgramData\ASRSetupLogs 下的日志，以确定某些控制集中是否缺少某些必需的驱动程序。
- 
-若要解决问题，请执行以下操作：
-  
-1. 使用 regedit.msc 之类的注册表编辑器打开注册表。
-2. 打开 HKEY_LOCAL_MACHINE\SYSTEM 节点。
-3. 在 SYSTEM 节点中找到 Control Sets。
-4. 打开每个控制集并确认以下 Windows 驱动程序是否存在：
+如果移动代理安装失败，请检查_C：_ProgramData_ASRSetupLogs_下的日志，以确定某些控制集中是否缺少某些必需的驱动程序。
 
-   - Atapi
-   - Vmbus
-   - Storflt
-   - Storvsc
-   - intelide
- 
-重新安装所有缺少的驱动程序。
+若要解决问题，请执行以下操作：
+
+1. 使用注册表编辑器（如`regedit.msc`）打开注册表。
+1. 打开`HKEY_LOCAL_MACHINE\SYSTEM`节点。
+1. 在节点`SYSTEM`中，找到控制集。
+1. 打开每个控制集并确认以下 Windows 驱动程序是否存在：
+
+   * Atapi
+   * Vmbus
+   * Storflt
+   * Storvsc
+   * 英特尔
+
+1. 重新安装所有缺少的驱动程序。
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解如何](vmware-azure-tutorial.md)为 VMware VM 设置灾难恢复。
+[详细了解如何](vmware-azure-tutorial.md)为 VMware VM 设置灾难恢复。

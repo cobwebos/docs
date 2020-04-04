@@ -4,19 +4,19 @@ description: 了解如何为本地活动目录域服务环境启用 Azure AD 密
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/05/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d00a8b84477226b68913f95c5121bbbdfc2eb09d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263811"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652624"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>启用本地 Azure 活动目录密码保护
 
@@ -26,7 +26,7 @@ ms.locfileid: "79263811"
 
 有关 Azure AD 密码保护在本地环境中的工作方式的详细信息，请参阅[如何为 Windows 服务器活动目录强制实施 Azure AD 密码保护](concept-password-ban-bad-on-premises.md)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 本文介绍如何为本地环境启用 Azure AD 密码保护。 在完成本文之前，请在本地 AD DS 环境中[安装和注册 Azure AD 密码保护代理服务和 DC 代理](howto-password-ban-bad-on-premises-deploy.md)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "79263811"
     当此设置设置为 *"否*"时，所有已部署的 Azure AD 密码保护 DC 代理进入静止模式，所有密码均接受原样。 不执行任何验证活动，也不会生成审核事件。
 
 1. 建议最初将**模式**设置为*审核*。 熟悉该功能及其对组织中用户的影响后，可以将**模式**切换到*强制*。 有关详细信息，请参阅以下有关[操作模式的部分](#modes-of-operation)。
-1. 准备就绪后，选择“保存”。****
+1. 准备就绪后，选择“保存”。 
 
     [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 

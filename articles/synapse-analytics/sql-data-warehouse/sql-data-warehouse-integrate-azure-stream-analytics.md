@@ -11,28 +11,28 @@ ms.date: 2/5/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: feb7b52c84e5e702202bc668cfda676d291ea82e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e281f8a1fb3959256d836134b4c59f5399deb9bd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350439"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633285"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>将 Azure 流分析与 Azure 突触分析一起使用
 
-Azure 流分析是一种完全托管的服务，可以在云中通过流式数据进行低延迟、高度可用、可缩放且复杂的事件处理。 可以阅读 [Azure 流分析简介](../../stream-analytics/stream-analytics-introduction.md)了解基本知识。 然后，可以按照 [Azure 流分析入门](../../stream-analytics/stream-analytics-real-time-fraud-detection.md)教程，了解如何使用流分析创建端到端解决方案。
+Azure 流分析是一种完全托管的服务，可以在云中通过流式数据进行低延迟、高度可用、可缩放且复杂的事件处理。 可以阅读 [Azure 流分析简介](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)了解基本知识。 然后，可以按照 [Azure 流分析入门](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)教程，了解如何使用流分析创建端到端解决方案。
 
 在本文中，您将学习如何将数据仓库用作 Azure 流分析作业的输出接收器。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 流分析作业 - 要创建 Azure 流分析作业，请按照["开始使用 Azure 流分析](../../stream-analytics/stream-analytics-real-time-fraud-detection.md)"教程中的步骤操作：  
+* Azure 流分析作业 - 要创建 Azure 流分析作业，请按照["开始使用 Azure 流分析](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)"教程中的步骤操作：  
 
     1. 创建事件中心输入
     2. 配置并启动事件生成器应用程序
     3. 预配流分析作业
     4. 指定作业输入和查询
-* Azure 同步 SQL 池数据仓库 - 要创建新的数据仓库，请按照["快速入门"中的步骤创建新的数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)。
+* Azure 同步 SQL 池数据仓库 - 要创建新的数据仓库，请按照["快速入门"中的步骤创建新的数据仓库](create-data-warehouse-portal.md)。
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>指定流输出以指向数据仓库
 
@@ -44,7 +44,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 单击"**添加**"按钮，并从下拉菜单中选择**SQL 数据库**。
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
+![选择 SQL 数据库](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
 
 ### <a name="step-3"></a>步骤 3
 
@@ -60,7 +60,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 * *表*：指定数据库中目标表的名称。
 * 单击"**保存"** 按钮
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
+![已完成的 SQL 数据库表单](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
 
 ### <a name="step-4"></a>步骤 4
 
@@ -102,23 +102,23 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 在"流分析"作业的 Azure 门户上，单击作业名称。  单击"***输出详细信息***"窗格中的 ***"测试***"按钮。
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png)当与数据库的连接成功时，您将在门户中看到通知。
+![Outpout 详细信息](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png)上的测试按钮 当与数据库的连接成功时，您将在门户中看到通知。
 
 ### <a name="step-6"></a>步骤 6
 
 单击***作业拓扑***下的 ***"查询"*** 菜单，然后更改查询以将数据插入到您创建的 Stream 输出中。  单击"***测试所选查询***"按钮以测试查询。  查询测试成功时，单击"***保存查询***"按钮。
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
+![保存查询](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>步骤 7
 
 启动 Azure 流分析作业。  单击 ***"概述"*** 菜单上的 ***"开始"*** 按钮。
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
+![启动流分析作业](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
 单击"开始作业"窗格上的 ***"开始"*** 按钮。
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
+![单击“开始”](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 
 ## <a name="next-steps"></a>后续步骤
 

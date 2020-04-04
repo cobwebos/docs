@@ -11,23 +11,22 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 39501cef3bb2f7e4a0e061968520f687cf97ecc5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 20afa3f37bb85fd268962aea03107f0eaeb9bea2
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584205"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633599"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>持续集成和部署数据仓库
 
-本简易教程概述如何将 SQL Server Data Tools (SSDT) 数据库项目集成到 Azure DevOps，并利用 Azure Pipelines 来设置持续集成和部署。 本教程是构建数据仓库的持续集成和部署管道的第二步。 
+本简易教程概述如何将 SQL Server Data Tools (SSDT) 数据库项目集成到 Azure DevOps，并利用 Azure Pipelines 来设置持续集成和部署。 本教程是构建数据仓库的持续集成和部署管道的第二步。
 
 ## <a name="before-you-begin"></a>在开始之前
 
-- 阅读[源代码管理集成教程](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)
+- 阅读[源代码管理集成教程](sql-data-warehouse-source-control-integration.md)
 
 - 设置并连接到 Azure DevOps
-
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>使用 Visual Studio 生成实现持续集成
 
@@ -37,7 +36,7 @@ ms.locfileid: "80584205"
 
 2. 选择源代码存储库 (Azure Repos Git)，然后选择 .NET Desktop 应用模板。
 
-      ![管道设置](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "管道设置") 
+      ![管道设置](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "管道设置")
 
 3. 编辑 YAML 文件，以使用适当的代理池。 YAML 文件应如下所示：
 
@@ -45,10 +44,9 @@ ms.locfileid: "80584205"
 
 现已创建一个简单的环境，在其中，只要签入到源代码管理存储库主分支，就会自动触发数据库项目的成功 Visual Studio 生成。 通过在本地数据库项目中做出更改并将该项更改签入到主分支，来验证自动化是否能够自始至终正常运行。
 
-
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>使用 Azure SQL 数据仓库（或数据库）部署任务实现持续部署
 
-1. 使用 [Azure SQL 数据库部署任务](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops)添加一个新任务，并填写必填字段以连接到目标数据仓库。 当此任务运行时，上一生成过程生成的 DACPAC 将部署到目标数据仓库。 也可使用 [Azure SQL 数据仓库部署任务](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)。 
+1. 使用 [Azure SQL 数据库部署任务](/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)添加一个新任务，并填写必填字段以连接到目标数据仓库。 当此任务运行时，上一生成过程生成的 DACPAC 将部署到目标数据仓库。 也可使用 [Azure SQL 数据仓库部署任务](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)。
 
       ![部署任务](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "部署任务")
 

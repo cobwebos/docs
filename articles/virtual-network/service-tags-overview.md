@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 568fc880711d42941fd9aef2ea19b8ac3123793a
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 7da20a0bf87b33f05ea7f1d457157c5b7ee2ec7b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384239"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631516"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -58,7 +58,7 @@ ms.locfileid: "80384239"
 | **AzureConnectors** | 用于探测/后端连接的 Azure 逻辑应用连接器。 | 入站 | 是 | 是 |
 | **AzureContainerRegistry** | Azure 容器注册表。 | 出站 | 是 | 是 |
 | **AzureCosmosDB** | Azure Cosmos DB。 | 出站 | 是 | 是 |
-| **Azure 数据块** | Azure Databricks。 | 推送、请求和匿名 | 否 | 否 |
+| **Azure 数据块** | Azure 数据块。 | 推送、请求和匿名 | 否 | 否 |
 | **Azure 数据资源管理器管理** | Azure 数据资源管理器管理。 | 入站 | 否 | 否 |
 | **Azure 数据湖** | Azure 数据存储第 1 代。 | 出站 | 否 | 是 |
 | **Azure 空间** | Azure 开发空间。 | 出站 | 否 | 否 |
@@ -79,7 +79,7 @@ ms.locfileid: "80384239"
 | **Azure 网站恢复** | Azure 站点恢复。<br/><br/>*注：* 此标记依赖于**AzureActiveDirectory、AzureKeyVault、****事件Hub、****AzureKeyVault****来宾和混合管理和****存储**标记。 | 出站 | 否 | 否 |
 | **AzureTrafficManager** | Azure 流量管理器探测 IP 地址。<br/><br/>有关流量管理器探测 IP 地址的详细信息，请参阅 [Azure 流量管理器常见问题解答](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 | 入站 | 否 | 是 |  
 | **BatchNodeManagement** | Azure Batch 专用部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
-| **认知服务管理** | Azure 认知服务流量的地址范围。 | 出站 | 否 | 否 |
+| **认知服务管理** | Azure 认知服务流量的地址范围。 | 推送、请求和匿名 | 否 | 否 |
 | **DataFactory**  | Azure 数据工厂 | 推送、请求和匿名 | 否 | 否 |
 | **数据工厂管理** | Azure 数据工厂的管理流量。 | 出站 | 否 | 否 |
 | **Dynamics365 用于营销电子邮件** | Dynamics 365 营销电子邮件服务的地址范围。 | 出站 | 是 | 否 |
@@ -125,7 +125,7 @@ ms.locfileid: "80384239"
 可以编程方式检索最新的服务标记列表和 IP 地址范围详细信息：
 
 - [REST](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
-- [Azure 电源外壳](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
+- [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
 
 > [!NOTE]

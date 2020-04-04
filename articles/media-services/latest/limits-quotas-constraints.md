@@ -11,13 +11,14 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: 2d4f5f83335f6f115362bcf66cf69d7f9de7eaa5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e9855a02a57d71793f3a5d6c5ce01cbfda341b70
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582324"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632209"
 ---
+<!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure 媒体服务配额和限制
 
 本文列出了一些最常见的 Microsoft Azure 媒体服务限制，有时也称为配额限制。

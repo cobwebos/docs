@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 99220fdf5dfb47f235637f83ba9be4ec015758bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f33dc9528d5f7043dda2c6fad207a9a51347a2b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294443"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631480"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>解决 Azure 自动化所需状态配置 （DSC） 的问题
 
@@ -48,7 +48,7 @@ Azure State Configuration 在 PowerShell DSC 基础上构建。 可以在 [Power
 
 ### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. 确保节点和自动化工作区具有所需的模块
 
-DSC 取决于节点上安装的模块。 使用 Azure 自动化状态配置时，请使用导入模块 中列出的步骤将任何必需[的模块](../shared-resources/modules.md#import-modules)导入自动化帐户。 配置还可以依赖于模块的特定版本。 有关详细信息，请参阅[故障排除模块](shared-resources.md#modules)。
+DSC 取决于节点上安装的模块。 使用 Azure 自动化状态配置时，请使用导入模块 中列出的步骤将任何必需[的模块](../shared-resources/modules.md#importing-modules)导入自动化帐户。 配置还可以依赖于模块的特定版本。 有关详细信息，请参阅[故障排除模块](shared-resources.md#modules)。
 
 ## <a name="common-errors-when-working-with-dsc"></a>使用 DSC 时的常见错误
 

@@ -4,19 +4,19 @@ description: 了解如何监视和查看本地活动目录域服务环境的 Azu
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d67d867249286ad1591b441bbe5ea2637971e104
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671654"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652617"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>监视和查看本地 Azure AD 密码保护环境的日志
 
@@ -94,7 +94,7 @@ PasswordChangeErrors            : 0
 PasswordSetErrors               : 1
 ```
 
-可以使用 –Forest、-Domain 和 –DomainController 参数之一来影响 cmdlet 的报告范围。 不指定参数表示使用 –Forest。
+cmdlet 的报告范围可能会使用 _Forest、-Domain 或 _DomainController 参数之一受到影响。 不指定参数表示使用 –Forest。
 
 `Get-AzureADPasswordProtectionSummaryReport` cmdlet 的工作原理是，先查询 DC 代理管理事件日志，再计算所显示的每个结果类别对应的事件总数。 下表包含每个结果与其相应的事件 ID 之间的映射：
 
@@ -117,7 +117,7 @@ PasswordSetErrors               : 1
 > 此 cmdlet 通过打开与每个域控制器的 Powershell 会话进行工作。 若要获得成功，必须在每个域控制器上启用 PowerShell 远程会话支持，并且客户端必须具有足够的权限。 有关 PowerShell 远程会话要求的详细信息，请在 PowerShell 窗口中运行“Get-Help about_Remote_Troubleshooting”。
 
 > [!NOTE]
-> 此 cmdlet 的工作方式是远程查询每个 DC 代理服务的管理事件日志。 如果事件日志包含大量事件，此 cmdlet 可能需要很长时间才能完成。 此外，对大型数据集执行批量网络查询可能会影响域控制器的性能。 因此，在生产环境中应慎用此 cmdlet。
+> 此 cmdlet 的工作原理是远程查询每个 DC 代理服务的管理事件日志。 如果事件日志包含大量事件，此 cmdlet 可能需要很长时间才能完成。 此外，对大型数据集执行批量网络查询可能会影响域控制器的性能。 因此，在生产环境中应慎用此 cmdlet。
 
 ### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>事件 ID 10014（密码更改成功）的示例事件日志消息
 
@@ -235,7 +235,7 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Paramete
 
 DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器对象。**** 目前提供以下性能计数器：
 
-|性能计数器名称 | 描述|
+|性能计数器名称 | 说明|
 | --- | --- |
 |处理的密码数 |此计数器显示自上次重启以来已处理的密码（接受或拒绝）总数。|
 |接受的密码数 |此计数器显示自上次重启以来已接受的密码总数。|
@@ -265,7 +265,7 @@ HeartbeatUTC          : 2/16/2018 8:35:02 AM
 
 每个 DC 代理服务大约每隔一小时更新各种属性。 数据仍可能遇到 Active Directory 复制延迟。
 
-使用 –Forest 或 –Domain 参数可以影响 cmdlet 查询的范围。
+cmdlet 查询的范围可能会使用 _Forest 或 _Domain 参数受到影响。
 
 如果 HeartbeatUTC 值过时，可能会有以下症状：相应域控制器上的 Azure AD 密码保护 DC 代理未运行或已卸载，或者计算机已降级，不再是域控制器。
 
@@ -357,7 +357,7 @@ HeartbeatUTC          : 12/25/2018 6:35:02 AM
 
 每个代理服务大约每小时更新一次各种属性。 数据仍可能遇到 Active Directory 复制延迟。
 
-使用 –Forest 或 –Domain 参数可以影响 cmdlet 查询的范围。
+cmdlet 查询的范围可能会使用 _Forest 或 _Domain 参数受到影响。
 
 如果 HeartbeatUTC 值过时，可能会有以下症状：相应计算机上的 Azure AD 密码保护代理未运行或已卸载。
 

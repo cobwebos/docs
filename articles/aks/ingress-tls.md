@@ -4,12 +4,12 @@ description: 了解如何安装和配置 NGINX 入口控制器，该控制器使
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: 4d0edcac86bebb77495907ec43debf077448b8ac
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: ece117d60ae3d7fd70c0972bb463340c5d38c9e1
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617233"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637268"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建 HTTPS 入口控制器
 
@@ -33,7 +33,7 @@ ms.locfileid: "80617233"
 
 本文使用 Helm 安装 NGINX 入口控制器、cert-manager 和示例 Web 应用。 请确保使用 Helm 的最新版本。 有关升级说明，请参阅[Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅在[Azure 库伯奈斯服务 （AKS） 中使用 Helm 安装应用程序][use-helm]。
 
-本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="create-an-ingress-controller"></a>创建入口控制器
 
@@ -163,7 +163,7 @@ spec:
 若要创建证书颁发者，请使用 `kubectl apply` 命令。
 
 ```console
-kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+kubectl apply -f cluster-issuer.yaml
 ```
 
 ## <a name="run-demo-applications"></a>运行演示应用程序

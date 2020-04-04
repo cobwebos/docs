@@ -6,15 +6,15 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: e7caacf23cb489da6f9f85748ae839bc4babff8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6acf9301367ae2c6947f6935c43f420d3d7cac65
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77917299"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655021"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>将 Azure AD 域服务从经典虚拟网络模型迁移到资源管理器
 
@@ -102,7 +102,7 @@ Azure 活动目录域服务 （AD DS） 支持当前使用经典虚拟网络模�
 1. 在经典虚拟网络和新的资源管理器虚拟网络之间设置虚拟网络对等。
 1. 稍后，根据需要从经典虚拟网络[迁移其他资源][migrate-iaas]。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 在准备然后迁移 Azure AD DS 托管域时，有关身份验证和管理服务可用性的一些注意事项。 Azure AD DS 托管域在迁移期间一段时间内不可用。 依赖 Azure AD DS 的应用程序和服务在迁移期间遇到停机时间。
 

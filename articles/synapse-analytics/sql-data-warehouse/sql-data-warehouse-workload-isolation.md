@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d5acdab9fb6eec585c53cfe0d7149aafa7cdc6f9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c3fcbf69e7dae14ccd2114a14c685b0443f70fef
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350107"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632435"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation-preview"></a>Azure 同步分析工作负荷组隔离（预览）
 
@@ -30,13 +30,13 @@ ms.locfileid: "80350107"
 
 ## <a name="workload-isolation"></a>工作负荷隔离
 
-工作负荷隔离意味着资源保留给工作负荷组专用。  实现工作负荷隔离的方式是在 [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) 语法中将 MIN_PERCENTAGE_RESOURCE 参数配置为大于零。  对于需要遵守严格 SLA 的连续执行工作负荷，隔离可确保资源始终可供工作负荷组使用。 
+工作负荷隔离意味着资源保留给工作负荷组专用。  实现工作负荷隔离的方式是在 [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) 语法中将 MIN_PERCENTAGE_RESOURCE 参数配置为大于零。  对于需要遵守严格 SLA 的连续执行工作负荷，隔离可确保资源始终可供工作负荷组使用。
 
 配置工作负荷隔离会隐式定义有保证的并发度。 例如，将设置为`MIN_PERCENTAGE_RESOURCE`30% 且`REQUEST_MIN_RESOURCE_GRANT_PERCENT`设置为 2% 的工作负载组保证 15 个并发性。  并发性级别得到保证，因为工作负载组中随时保留 15-2% 的资源插槽（无论配置方式如何`REQUEST_*MAX*_RESOURCE_GRANT_PERCENT`）。  如果`REQUEST_MAX_RESOURCE_GRANT_PERCENT`大于`REQUEST_MIN_RESOURCE_GRANT_PERCENT`和`CAP_PERCENTAGE_RESOURCE`大于每个请求`MIN_PERCENTAGE_RESOURCE`添加的其他资源。  如果`REQUEST_MAX_RESOURCE_GRANT_PERCENT``REQUEST_MIN_RESOURCE_GRANT_PERCENT`和 等于`CAP_PERCENTAGE_RESOURCE`且大于`MIN_PERCENTAGE_RESOURCE`，则可能增加并发。  假设使用以下方法来确定有保证的并发度：
 
 [有保证的并发度] = [`MIN_PERCENTAGE_RESOURCE`] / [`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
-> [!NOTE] 
+> [!NOTE]
 > min_percentage_resource 有特定的服务级别最小可行值。  有关更多详细信息，请参阅[有效值](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values)。
 
 如果缺少工作负荷隔离，请求将在资源的[共享池](#shared-pool-resources)中运行。  不保证能够访问共享池中的资源，这种访问权限是根据[重要性](sql-data-warehouse-workload-importance.md)分配的。
@@ -45,7 +45,7 @@ ms.locfileid: "80350107"
 
 用户应避免使用配置 100% 工作负载隔离的工作负载管理解决方案：当在所有工作负载组中配置的min_percentage_resource总和等于 100% 时，可实现 100% 隔离。  此类配置过于苛严，几乎不会给意外错误分类的资源请求留有余地。 有一项预配允许通过未配置隔离的工作负荷组执行一个请求。 分配给此请求的资源在系统 DMV 中显示为零，并从系统保留的资源借用 smallrc 级别的资源授予。
 
-> [!NOTE] 
+> [!NOTE]
 > 为了确保最佳资源利用率，请考虑实施一个利用某种隔离来确保符合 SLA，以与基于[工作负荷重要性](sql-data-warehouse-workload-importance.md)访问的共享资源混合的工作负荷管理解决方案。
 
 ## <a name="workload-containment"></a>工作负荷遏制
@@ -56,21 +56,21 @@ ms.locfileid: "80350107"
 
 [最大并发度] = [`CAP_PERCENTAGE_RESOURCE`] / [`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
-> [!NOTE] 
+> [!NOTE]
 > 创建 MIN_PERCENTAGE_RESOURCE 级别大于零的工作负荷组时，该工作负荷组的有效 CAP_PERCENTAGE_RESOURCE 不会达到 100%。  有关有效的运行时值，请参阅 [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest)。
 
 ## <a name="resources-per-request-definition"></a>每个请求的资源量定义
 
 工作负荷组提供一个机制，用于在 [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) 语法中使用 REQUEST_MIN_RESOURCE_GRANT_PERCENT 和 REQUEST_MAX_RESOURCE_GRANT_PERCENT 参数，定义针对每个请求分配的最小和最大资源量。  在本例中，资源是 CPU 和内存。  配置这些值决定了可用的资源量，以及可在系统上实现的并发度。
 
-> [!NOTE] 
+> [!NOTE]
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT 是一个可选参数，默认值为针对 REQUEST_MIN_RESOURCE_GRANT_PERCENT 指定的相同值。
 
 与选择资源类一样，配置 REQUEST_MIN_RESOURCE_GRANT_PERCENT 可设置请求利用的资源值。  在请求开始执行之前，保证为该请求分配设置值所指定的资源量。  对于从资源类迁移到工作负荷组的客户，首先请考虑遵循[操作指南](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md)文章从资源类映射到工作负荷组。
 
 将 REQUEST_MAX_RESOURCE_GRANT_PERCENT 配置为大于 REQUEST_MIN_RESOURCE_GRANT_PERCENT 的值将允许系统为每个请求分配更多的资源。  在计划请求时，系统会根据共享池中的资源可用性以及系统上的当前负载，确定分配给请求的实际资源（介于 REQUEST_MIN_RESOURCE_GRANT_PERCENT 和 REQUEST_MAX_RESOURCE_GRANT_PERCENT 之间）。  计划查询时，资源必须在资源的[共享池](#shared-pool-resources)中存在。  
 
-> [!NOTE] 
+> [!NOTE]
 > REQUEST_MIN_RESOURCE_GRANT_PERCENT 和 REQUEST_MAX_RESOURCE_GRANT_PERCENT 的有效值取决于有效的 MIN_PERCENTAGE_RESOURCE 和 CAP_PERCENTAGE_RESOURCE 值。  有关有效的运行时值，请参阅 [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest)。
 
 ## <a name="execution-rules"></a>执行规则

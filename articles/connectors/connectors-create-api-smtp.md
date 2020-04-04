@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77647575"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657004"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>使用 Azure 逻辑应用从 SMTP 帐户发送电子邮件
 
@@ -49,14 +49,14 @@ ms.locfileid: "77647575"
 
 1. 出现提示时，提供此连接信息：
 
-   | properties | 必选 | 描述 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **连接名称** | 是 | 到 SMTP 服务器的连接的名称 | 
    | **SMTP 服务器地址** | 是 | SMTP 服务器的地址 | 
    | **用户名** | 是 | SMTP 帐户的用户名 | 
    | **密码** | 是 | SMTP 帐户的密码 | 
    | **SMTP 服务器端口** | 否 | SMTP 服务器上你要使用的特定端口 | 
-   | **启用 SSL？** | 否 | 启用或禁用 SSL 加密。 | 
+   | **启用 SSL？** | 否 | 打开或关闭 TLS/SSL 加密。 | 
    |||| 
 
 1. 为所选操作提供必要的详细信息。 

@@ -1,6 +1,6 @@
 ---
 title: 故障排除 - Azure 自动化混合 Runbook 辅助角色
-description: 本文提供对 Azure 自动化混合 Runbook 辅助角色进行故障排除的信息
+description: 本文提供有关对 Azure 自动化混合 Runbook 工作项进行故障排除的信息。
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 33e3e162892f1e2a148258273160ca26fa9c2efd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2587af0ada18b5c4271e7411783fe60211a3479
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153516"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637861"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>对混合 Runbook 辅助角色进行故障排除
 
@@ -131,7 +131,9 @@ At line:3 char:1
 #### <a name="cause"></a>原因
 
 下面是可能的原因：
+
 * 代理的设置中键入的工作区 ID 或工作区密钥（主键）类型错误。 
+
 * 混合 Runbook 辅助角色无法下载配置，从而导致帐户链接错误。 当 Azure 启用解决方案时，它仅支持某些区域来链接日志分析工作区和自动化帐户。 计算机上也可能设置了不正确的日期和/或时间。 如果时间与当前时间的时间为 +/-15 分钟，则载入失败。
 
 #### <a name="resolution"></a>解决方法
@@ -220,6 +222,35 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 日志存储在**C：_程序数据\微软系统中心\协调器\7.2_SMA_沙盒**的每个混合工作线程上本地存储。 您可以验证**应用程序和服务日志中是否有任何警告或服务日志、Microsoft-SMA_操作****以及应用程序和服务日志\操作管理器**事件日志中是否存在任何警告或错误事件。 这些日志指示影响角色加入 Azure 自动化的连接或其他类型的问题，或在正常操作下遇到的问题。 如果需要更多帮助来排查 Log Analytics 代理问题，请参阅[排查 Log Analytics Windows 代理问题](../../azure-monitor/platform/agent-windows-troubleshoot.md)。
 
 混合工作人员向 Azure 自动化发送[Runbook 输出和消息](../automation-runbook-output-and-messages.md)的方式与在云中运行的 Runbook 作业发送输出和消息的方式相同。 您可以像启用 Runbook 一样启用"详细"和"进度"流。
+
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>方案：协调器.Sandbox.exe 无法通过代理连接到 Office 365
+
+#### <a name="issue"></a>问题
+
+在 Windows 混合 Runbook 工作线程上运行的脚本无法按预期方式连接到协调器沙盒上的 Office 365。 该脚本使用[连接-Msol 服务](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0)进行连接。 
+
+如果调整**协调器.Sandbox.exe.config**来设置代理和旁路列表，沙盒仍然无法正确连接。 具有相同代理和绕过列表设置**的 Powershell_ise.exe.config**文件似乎按预期工作。 服务管理自动化 （SMA） 日志和 PowerShell 日志不提供有关代理的任何信息。
+
+#### <a name="cause"></a>原因
+
+与服务器上的活动目录联合服务 （ADFS） 的连接无法绕过代理。 请记住，PowerShell 沙盒以记录用户身份运行。 但是，协调器沙盒是高度自定义的，可能会忽略**协调器.Sandbox.exe.config**文件设置。 它有用于处理计算机或 MMA 代理设置的特殊代码，但不适用于处理其他自定义代理设置。 
+
+#### <a name="resolution"></a>解决方法
+
+您可以通过迁移脚本来使用 Azure AD 模块而不是 PowerShell cmdlet 的 MSOnline 模块来解决协调器沙盒的问题。 请参阅[从协调器迁移到 Azure 自动化 （Beta）。](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration)
+
+如果要继续使用 MSOnline 模块 cmdlet，请更改脚本以使用[调用命令](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)。 指定 和`ComputerName``Credential`参数的值。 
+
+```powershell
+$Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential
+Invoke-Command -ComputerName $env:COMPUTERNAME -Credential $Credential 
+{ Connect-MsolService … }
+```
+
+此代码更改在指定凭据的上下文中启动一个全新的 PowerShell 会话。 它应使流量能够流经正在验证活动用户的代理服务器。
+
+>[!NOTE]
+>此解决方案使得无需操作沙盒配置文件。 即使您成功地使配置文件与脚本一起工作，每次更新混合 Runbook 工作代理时，该文件也会被擦除。
 
 ### <a name="scenario-hybrid-runbook-worker-not-reporting"></a><a name="corrupt-cache"></a>方案：混合 Runbook 工作人员不报告
 

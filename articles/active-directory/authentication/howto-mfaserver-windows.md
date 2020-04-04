@@ -4,26 +4,26 @@ description: 部署 Windows 身份验证和 Azure 多重身份验证服务器。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faab28a714b1a62e1e34de5b07119aa3018db24e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4abfb970ca322724adb0f8919b7509bc8a641378
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263655"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652800"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 身份验证和 Azure 多重身份验证服务器
 
 使用 Azure 多重身份验证服务器的“Windows 身份验证”部分即可为应用程序启用和配置 Windows 身份验证。 设置 Windows 身份验证之前，请注意以下列表：
 
 * 设置以后，重新启动用于终端服务的 Azure 多重身份验证，使之生效。
-* 如果选中了“需要 Azure 多重身份验证用户匹配”，而你未在用户列表中，则在重新启动后无法登录到计算机。
+* 如果选中"需要 Azure 多重身份验证用户匹配"，而您不在用户列表中，则重新启动后将无法登录到计算机。
 * 受信任 IP 依赖于应用程序是否可以为客户端 IP 提供身份验证。 目前只支持终端服务。  
 
 > [!IMPORTANT]

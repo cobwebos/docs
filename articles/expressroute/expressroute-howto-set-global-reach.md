@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
-ms.openlocfilehash: 76de7a8854a58deb924cbbe3177ad5a7b5fd57a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 587a17659a412d6f894faf5a744a7d9c444935c8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083464"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656746"
 ---
 # <a name="configure-expressroute-global-reach"></a>配置 ExpressRoute Global Reach
 
 本文帮助你使用 PowerShell 配置 ExpressRoute Global Reach。 有关详细信息，请参阅 [ExpressRouteRoute Global Reach](expressroute-global-reach.md)。
 
- ## <a name="before-you-begin"></a>开始之前
+ ## <a name="before-you-begin"></a>在开始之前
 
 在开始配置之前，请确认以下事项：
 
@@ -38,7 +38,7 @@ ms.locfileid: "74083464"
 1. 要启动配置，请登录到 Azure 帐户并选择要使用的订阅。
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. 确定要使用的快速路由电路。 只要两个 ExpressRoute 电路位于支持的国家/地区，并且创建在不同的对等位置，就可以在任意两个 ExpressRoute 电路之间启用 ExpressRoute 全球覆盖。 
+2. 确定要使用的快速路由电路。 您可以在任意两个 ExpressRoute 电路的专用对等互连之间启用 ExpressRoute 全局覆盖，只要它们位于支持的国家/地区，并且创建在不同的对等位置。 
 
    * 如果你的订阅同时拥有这两条线路，则可以选择其中任一条线路来运行以下各部分中的配置。
    * 如果两个线路位于不同的 Azure 订阅中，则你需要获得一个 Azure 订阅的授权。 然后，你在另一个 Azure 订阅中运行配置命令时传入授权密钥。

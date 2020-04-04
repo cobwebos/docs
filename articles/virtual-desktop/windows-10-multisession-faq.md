@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4301aaed0152e07eb2a941b56637239b66c33878
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7ea99e2ee8e2882c211ee17acec70222dc058a8
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127351"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637100"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise 多会话常见问题解答
 
@@ -39,7 +39,7 @@ Windows 10 企业多会话无法在本地生产环境中运行，因为它针对
 
 您可以使用 Windows 10 Windows 10 企业多会话在 Azure 中启动虚拟机 （VM），并通过安装 LOB 应用程序、sysprep/通用化，然后使用 Azure 门户创建映像来自定义它。  
  
-要开始，请使用 Windows 10 Windows 10 企业多会话在 Azure 中创建 VM。 可以直接下载 VHD，而不是在 Azure 中启动 VM。 之后，您将能够使用下载的 VHD 在启用了 Hyper-V 的 Windows 10 PC 上创建新的第 1 代 VM。
+要开始，请使用 Windows 10 企业多会话在 Azure 中创建 VM。 可以直接下载 VHD，而不是在 Azure 中启动 VM。 之后，您将能够使用下载的 VHD 在启用了 Hyper-V 的 Windows 10 PC 上创建新的第 1 代 VM。
 
 通过安装 LOB 应用程序和系统准备映像，根据您的需要自定义映像。 完成自定义后，将映像上载到 Azure，其中包含 VHD。 之后，从 Azure 应用商店获取 Windows 虚拟桌面，并用它来部署具有自定义映像的新主机池。
  
@@ -96,7 +96,7 @@ Windows 10 企业多会话版本 1809 及更高版本受支持，可在 Azure �
 3. 选择“应用商店”。****
 4. 选择**存储应用程序**。
 5. 选择 **"已禁用**"，然后选择 **"确定**"。
-6. 选择“应用”。
+6. 选择“应用”。 
  
 ## <a name="next-steps"></a>后续步骤
 

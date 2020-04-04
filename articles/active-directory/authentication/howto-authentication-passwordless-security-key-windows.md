@@ -4,19 +4,19 @@ description: 了解如何使用 FIDO2 安全密钥（预览）将无密码安全
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/30/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca6ef244a887e75a0d8b9bb663d5325a33cd1e89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b8f5d6aaa96c24eb37eb78d237a489f1d25293c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263902"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653984"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>使用 Azure 活动目录（预览）为 Windows 10 设备启用无密码安全密钥登录
 
@@ -80,7 +80,7 @@ ms.locfileid: "79263902"
 
 要启用使用 Intune 的安全密钥，请完成以下步骤：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 浏览到**微软Intune** > **设备注册** > **Windows注册** > **Windows你好商业** > **属性**。
 1. 在 **"设置"** 下，将 **"使用安全密钥的登录****"设置为"已启用**"。
 
@@ -90,7 +90,7 @@ ms.locfileid: "79263902"
 
 要定位特定设备组以启用凭据提供程序，请通过 Intune 使用以下自定义设置：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 浏览到**微软Intune** > **设备配置文件** > **Profiles** > **创建配置文件**。
 1. 使用以下设置配置新配置文件：
    - 名称：Windows 登录的安全密钥

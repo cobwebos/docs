@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2020
-ms.openlocfilehash: e2e1ddd031041f49107545cd0b3d3de4eaebcd6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: a5244086c185c111762496086f8044f12f52be14
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77472122"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632594"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>在 Azure 数据工厂中排除数据流故障
 
@@ -55,6 +55,18 @@ ms.locfileid: "77472122"
 - **消息**：列名称需要在查询中指定，如果使用 SQL 函数设置别名
 - **原因**：未指定列名称
 - **建议**：如果使用 SQL 函数（如最小值/max（）等，则设置别名。
+
+### <a name="error-code-getcommand-outputasync-failed"></a>错误代码：获取命令输出 Async 失败
+
+- **消息**： 在数据流调试和数据预览期间： 获取命令输出 Async 失败与 ...
+- **原因**：这是后端服务错误。 您可以重试该操作，也可以重新启动调试会话。
+- **建议**：如果重试并重新启动无法解决问题，请联系客户支持。
+
+### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>错误代码：命中意外异常和执行失败
+
+- **消息**：在数据流活动执行期间：命中意外异常并执行失败。
+- **原因**：这是后端服务错误。 您可以重试该操作，也可以重新启动调试会话。
+- **建议**：如果重试并重新启动无法解决问题，请联系客户支持。
 
 ## <a name="general-troubleshooting-guidance"></a>常规故障排除指南
 

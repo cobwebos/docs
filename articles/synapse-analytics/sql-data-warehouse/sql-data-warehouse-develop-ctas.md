@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: e5dc8835a6d5f235cf269edd4e9f069c904e1b7e
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 8e1b75dfc6a979956ff4a2868027bb769bf7c4ed
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582146"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633552"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS)
 
@@ -404,7 +404,7 @@ SELECT
 , [product]
 , [store]
 , [quantity]
-, [price]   
+, [price]
 , ISNULL(CAST([quantity]*[price] AS MONEY),0) AS [amount]
 FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
@@ -417,4 +417,3 @@ CTAS 是 SynapsE SQL 中最重要的语句之一。 请确保全面了解该语�
 ## <a name="next-steps"></a>后续步骤
 
 有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
-

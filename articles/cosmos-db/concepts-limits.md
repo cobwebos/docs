@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: bd384f2b4dd879c30fafd2b765dd9ba0efb12447
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/03/2020
+ms.openlocfilehash: 343e94fe681d398b695e0e24c22544bca470d75a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348394"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652187"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -152,6 +152,9 @@ Cosmos DB 支持使用 [SQL](how-to-sql-query.md) 查询项。 下表描述了�
 | 每个查询的最大 JOIN 数目| 5<sup>*</sup>|
 | 每个查询的最大 UDF 数目| 10<sup>*</sup>|
 | 每个多边形的最大点数目| 4096 |
+| 每个容器的最大包含路径| 500 |
+| 每个容器的最大排除路径| 500 |
+| 复合索引中的最大属性| 8 |
 
 <sup>*</sup>您可以通过联系 Azure 支持来增加这些 SQL 查询限制。
 
@@ -163,7 +166,7 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 
 | 资源 | 默认限制 |
 | --- | --- |
-| 最大 MongoDB 查询内存大小 | 40 MB |
+| 最大 MongoDB 查询内存大小（此限制仅适用于 3.2 服务器版本） | 40 MB |
 | MongoDB 操作的最长执行时间| 30 秒 |
 | 服务器端连接关闭的空闲连接超时* | 30 分钟 |
 

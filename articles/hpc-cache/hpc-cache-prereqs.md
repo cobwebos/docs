@@ -4,14 +4,14 @@ description: 使用 Azure HPC 缓存的先决条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271845"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655658"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
@@ -113,7 +113,7 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 
   确保``rpcinfo``查询返回的所有端口都允许来自 Azure HPC 缓存子网的无限制流量。
 
-  * 除了命令返回的`rpcinfo`端口外，请确保这些常用端口允许入站和出站流量：
+  * 如果无法使用 该`rpcinfo`命令，请确保这些常用端口允许入站和出站流量：
 
     | 协议 | 端口  | 服务  |
     |----------|-------|----------|
@@ -122,6 +122,8 @@ Azure HPC 缓存需要具有以下特性的专用子网：
     | TCP/UDP  | 4045  | 恩洛克姆格 |
     | TCP/UDP  | 4046  | 已安装   |
     | TCP/UDP  | 4047  | status   |
+
+    某些系统对这些服务使用不同的端口号 - 请务必查阅存储系统的文档。这些端口号为这些服务。
 
   * 检查防火墙设置，以确保它们允许所有这些必需端口上的流量。 请务必检查 Azure 中使用的防火墙以及数据中心中的本地防火墙。
 
@@ -132,7 +134,7 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 
   在 NFS 存储目标故障排除文章中了解有关目录列表访问[的更多内容](troubleshoot-nas.md#enable-export-listing)。
 
-* **根访问：** 缓存以用户 ID 0 身份连接到后端系统。 检查存储系统上的这些设置：
+* **根访问**（读/写）：缓存作为用户 ID 0 连接到后端系统。 检查存储系统上的这些设置：
   
   * 启用 `no_root_squash`。 此选项可确保远程根用户可以访问 root 拥有的文件。
 

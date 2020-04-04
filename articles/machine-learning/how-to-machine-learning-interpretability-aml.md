@@ -8,35 +8,47 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
-ms.reviewer: trbye
-ms.date: 10/25/2019
-ms.openlocfilehash: a479982eeac325c9774e3858ec51643e8ba699c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: Luis.Quintanilla
+ms.date: 04/02/2020
+ms.openlocfilehash: 1ff42149ccb629a0a7094e6dfede422d4dd7f61f
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064040"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632032"
 ---
 # <a name="model-interpretability-for-local-and-remote-runs"></a>本地和远程运行的模型可解释性
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何使用 Azure 机器学习 Python SDK 的可解释性包来了解模型做出其预测的原因。 学习如何：
+在此操作指南中，您将了解如何使用 Azure 机器学习 Python SDK 的可解释性包来执行以下任务：
 
-* 解释在本地和远程计算资源上训练的机器学习模型。
-* 在 Azure 运行历史记录中存储本地和全局解释。
-* 在 [Azure 机器学习工作室](https://ml.azure.com)中查看可解释性可视化效果。
-* 使用模型部署评分解释器。
 
-有关详细信息，请参阅 [Azure 机器学习中的模型可解释性](how-to-machine-learning-interpretability.md)。
+* 在本地解释个人计算机上的整个模型行为或单个预测。
 
-## <a name="local-interpretability"></a>本地可解释性
+* 为工程功能启用可解释性技术。
 
-以下示例演示如何在不联系 Azure 服务的情况下在本地使用可解释性包。
+* 解释 Azure 中整个模型和单个预测的行为。
 
-1. 如果需要，请使用 `pip install azureml-interpret` 获取可解释性包。
+ 
+* 使用可视化仪表板与模型说明进行交互。
 
-1. 在本地 Jupyter 笔记本中训练示例模型。
+* 在模型旁边部署评分解释器，以观察推断过程中的说明。
+
+
+
+有关支持的可解释性技术和机器学习模型的详细信息，请参阅 Azure 机器学习和[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)[中的模型可解释性](how-to-machine-learning-interpretability.md)。
+
+## <a name="generate-feature-importance-value-on-your-personal-machine"></a>在个人计算机上生成功能重要性值 
+下面的示例演示如何在不联系 Azure 服务的情况下在个人计算机上使用可解释性包。
+
+1. 安装`azureml-interpret`和`azureml-interpret-contrib`打包。
+    ```bash
+    pip install azureml-interpret
+    pip install azureml-interpret-contrib
+    ```
+
+2. 在本地 Jupyter 笔记本中训练示例模型。
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -56,7 +68,7 @@ ms.locfileid: "80064040"
     model = clf.fit(x_train, y_train)
     ```
 
-1. 在本地调用解释器。
+3. 在本地调用解释器。
    * 若要初始化解释器对象，请将模型和一些训练数据传递给该解释器的构造函数。
    * 若要使解释和可视化效果更具参考性，可以选择传入特征名称和输出类名称（如果执行分类）。
 
@@ -111,9 +123,9 @@ ms.locfileid: "80064040"
                              classes=classes)
     ```
 
-### <a name="overall-global-feature-importance-values"></a>总体的全局特征重要性值
+### <a name="explain-the-entire-model-behavior-global-explanation"></a>解释整个模型行为（全局解释） 
 
-请参阅以下示例来帮助获取全局特征重要性值。
+请参阅以下示例，以帮助您获取聚合（全局）要素重要性值。
 
 ```python
 
@@ -132,9 +144,8 @@ dict(zip(sorted_global_importance_names, sorted_global_importance_values))
 global_explanation.get_feature_importance_dict()
 ```
 
-### <a name="instance-level-local-feature-importance-values"></a>实例级的本地特征重要性值
-
-通过针对单个实例或一组实例调用解释来获取本地特征重要性值。
+### <a name="explain-an-individual-prediction-local-explanation"></a>解释单个预测（本地解释）
+通过调用单个实例或一组实例的说明来获取不同数据点的单个要素重要性值。
 > [!NOTE]
 > `PFIExplainer` 不支持本地解释。
 
@@ -147,67 +158,7 @@ sorted_local_importance_names = local_explanation.get_ranked_local_names()
 sorted_local_importance_values = local_explanation.get_ranked_local_values()
 ```
 
-## <a name="interpretability-for-remote-runs"></a>远程运行的可解释性
-
-以下示例演示如何使用 `ExplanationClient` 类为远程运行启用模型可解释性。 它在概念上类似于本地过程，不过需要：
-
-* 在远程运行中使用 `ExplanationClient` 来上传可解释性上下文。
-* 稍后在本地环境中下载该上下文。
-
-1. 可根据需要使用 `pip install azureml-contrib-interpret` 获取所需的包。
-
-1. 在本地 Jupyter 笔记本中创建训练脚本。 例如，`train_explain.py` 。
-
-    ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
-    from azureml.core.run import Run
-    from interpret.ext.blackbox import TabularExplainer
-
-    run = Run.get_context()
-    client = ExplanationClient.from_run(run)
-
-    # write code to get and split your data into train and test sets here
-    # write code to train your model here 
-
-    # explain predictions on your local machine
-    # "features" and "classes" fields are optional
-    explainer = TabularExplainer(model, 
-                                 x_train, 
-                                 features=feature_names, 
-                                 classes=classes)
-
-    # explain overall model predictions (global explanation)
-    global_explanation = explainer.explain_global(x_test)
-    
-    # uploading global model explanation data for storage or visualization in webUX
-    # the explanation can then be downloaded on any compute
-    # multiple explanations can be uploaded
-    client.upload_model_explanation(global_explanation, comment='global explanation: all features')
-    # or you can only upload the explanation object with the top k feature info
-    #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
-    ```
-
-1. 将 Azure 机器学习计算设置为计算目标，并提交训练运行。 有关说明，请参阅[设置模型训练的计算目标](how-to-set-up-training-targets.md#amlcompute)。 [示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)也可能很有帮助。
-
-1. 下载本地 Jupyter 笔记本中的解释。
-
-    ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
-    
-    client = ExplanationClient.from_run(run)
-    
-    # get model explanation data
-    explanation = client.download_model_explanation()
-    # or only get the top k (e.g., 4) most important features with their importance values
-    explanation = client.download_model_explanation(top_k=4)
-    
-    global_importance_values = explanation.get_ranked_global_values()
-    global_importance_names = explanation.get_ranked_global_names()
-    print('global importance values: {}'.format(global_importance_values))
-    print('global importance names: {}'.format(global_importance_names))
-    ```
-
-## <a name="raw-feature-transformations"></a>原始特征转换
+### <a name="raw-feature-transformations"></a>原始特征转换
 
 可以选择获取原始的未经转换的特征中的解释，而不是工程特征中的解释。 对于此选项，请将特征转换管道传递到 `train_explain.py` 中的解释器。 否则，解释器会根据工程特征提供解释。
 
@@ -281,31 +232,96 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
                                      transformations=transformations)
 ```
 
+## <a name="generate-feature-importance-values-via-remote-runs"></a>通过远程运行生成要素重要性值
+
+以下示例演示如何使用 `ExplanationClient` 类为远程运行启用模型可解释性。 它在概念上类似于本地流程，但您除外：
+
+* 在远程运行中使用 `ExplanationClient` 来上传可解释性上下文。
+* 稍后在本地环境中下载该上下文。
+
+1. 安装`azureml-interpret`和`azureml-interpret-contrib`打包。
+    ```bash
+    pip install azureml-interpret
+    pip install azureml-interpret-contrib
+    ```
+1. 在本地 Jupyter 笔记本中创建训练脚本。 例如，`train_explain.py` 。
+
+    ```python
+    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.core.run import Run
+    from interpret.ext.blackbox import TabularExplainer
+
+    run = Run.get_context()
+    client = ExplanationClient.from_run(run)
+
+    # write code to get and split your data into train and test sets here
+    # write code to train your model here 
+
+    # explain predictions on your local machine
+    # "features" and "classes" fields are optional
+    explainer = TabularExplainer(model, 
+                                 x_train, 
+                                 features=feature_names, 
+                                 classes=classes)
+
+    # explain overall model predictions (global explanation)
+    global_explanation = explainer.explain_global(x_test)
+    
+    # uploading global model explanation data for storage or visualization in webUX
+    # the explanation can then be downloaded on any compute
+    # multiple explanations can be uploaded
+    client.upload_model_explanation(global_explanation, comment='global explanation: all features')
+    # or you can only upload the explanation object with the top k feature info
+    #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
+    ```
+
+1. 将 Azure 机器学习计算设置为计算目标，并提交训练运行。 有关说明，请参阅[设置模型训练的计算目标](how-to-set-up-training-targets.md#amlcompute)。 [示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)也可能很有帮助。
+
+1. 下载本地 Jupyter 笔记本中的解释。
+
+    ```python
+    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    
+    client = ExplanationClient.from_run(run)
+    
+    # get model explanation data
+    explanation = client.download_model_explanation()
+    # or only get the top k (e.g., 4) most important features with their importance values
+    explanation = client.download_model_explanation(top_k=4)
+    
+    global_importance_values = explanation.get_ranked_global_values()
+    global_importance_names = explanation.get_ranked_global_names()
+    print('global importance values: {}'.format(global_importance_values))
+    print('global importance names: {}'.format(global_importance_names))
+    ```
+
+
 ## <a name="visualizations"></a>可视化效果
 
 下载本地 Jupyter 笔记本中的解释后，可以使用可视化仪表板来了解和解释模型。
 
-### <a name="global-visualizations"></a>全局可视化效果
+### <a name="understand-entire-model-behavior-global-explanation"></a>了解整个模型行为（全局解释） 
 
-下图提供了已训练模型的全局视图及其预测和解释。
+以下图提供了已训练模型的总体视图及其预测和说明。
 
-|绘图|描述|
+|绘图|说明|
 |----|-----------|
 |数据浏览| 显示数据集的概述以及预测值。|
-|全局重要性|全局显示排名靠前的 K（可配置的 K）个重要特征。 帮助了解基础模型的全局行为。|
+|全局重要性|聚合具有单个数据点的重要性值，以显示模型的总体顶部 K（可配置 K） 重要要素。 帮助了解基础模型的整体行为。|
 |解释探索|演示要素如何影响模型预测值的变化或预测值的概率。 显示特征交互的影响。|
-|摘要重要性|在所有数据点中使用本地特征重要性值来显示每个特征对预测值的影响分布。|
+|摘要重要性|在所有数据点上使用单个要素重要性值来显示每个要素对预测值的影响分布。 使用此关系图，可以调查要素值对预测值的影响方向。
+|
 
 [![可视化仪表板全局](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
 
-### <a name="local-visualizations"></a>本地可视化效果
+### <a name="understand-individual-predictions-local-explanation"></a>了解单个预测（本地解释） 
 
-可以通过在绘图中选择单个数据点，来加载任何数据点的本地特征重要性绘图。
+通过单击任何整体图中的任何单个数据点，可以加载任何数据点的单个要素重要性图。
 
-|绘图|描述|
+|绘图|说明|
 |----|-----------|
-|本地重要性|全局显示排名靠前的 K（可配置的 K）个重要特征。 帮助演示基础模型对特定数据点的本地行为。|
-|扰动探索|允许更改所选数据点的特征值，并观察对预测值所做的最终更改。|
+|本地重要性|显示单个预测的前 K（可配置 K）重要要素。 帮助演示基础模型对特定数据点的本地行为。|
+|扰动探索（如果分析）|允许更改所选数据点的特征值，并观察对预测值所做的最终更改。|
 |个体条件预期 (ICE)| 允许特征值从最小值更改为最大值。 帮助演示在特征发生更改时数据点的预测如何更改。|
 
 [![可视化仪表板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
@@ -343,14 +359,9 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure 机器学习工作室中的可视化效果
 
-如果已完成[远程可解释性](#interpretability-for-remote-runs)步骤，可以在 [Azure 机器学习工作室](https://ml.azure.com)中查看可视化仪表板。 此仪表板是前面所述的可视化仪表板的简化版本。 它仅支持两个选项卡：
+如果完成[远程可解释性](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)步骤（将生成的解释上载到 Azure 机器学习运行历史记录），则可以在[Azure 机器学习工作室](https://ml.azure.com)中查看可视化仪表板。 此仪表板是上面解释的可视化仪表板的较简单的版本（由于工作室中没有可以执行其实时计算的活动计算，因此禁用了解释探索和 ICE 绘图）。
 
-|绘图|描述|
-|----|-----------|
-|全局重要性|全局显示排名靠前的 K（可配置的 K）个重要特征。 帮助了解基础模型的全局行为。|
-|摘要重要性|在所有数据点中使用本地特征重要性值来显示每个特征对预测值的影响分布。|
-
-如果全局和本地解释均可用，数据将填充在这两个选项卡中。 如果只有全局解释可用，将会禁用“摘要重要性”选项卡。
+如果数据集、全局和本地说明可用，则数据将填充所有选项卡（扰动探索和 ICE 除外）。 如果只有全局说明可用，则禁用"摘要重要性"选项卡和所有本地说明选项卡。
 
 通过以下途径之一访问 Azure 机器学习工作室中的可视化仪表板：
 
@@ -367,7 +378,7 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 ## <a name="interpretability-at-inference-time"></a>推理时的可解释性
 
-可将解释器与原始模型一起部署，并在推断时使用该解释器来提供本地解释信息。 我们还提供了更轻量的评分解释器来改善推断时的解释性能。 部署轻量评分解释器的过程类似于部署模型，包括以下步骤：
+您可以将解释器与原始模型一起部署，并在推理时使用它为新任何新数据点提供单个要素重要性值（本地解释）。 我们还提供了更轻量的评分解释器来改善推断时的解释性能。 部署轻量评分解释器的过程类似于部署模型，包括以下步骤：
 
 1. 创建解释对象。 例如，可以使用 `TabularExplainer`：
 
@@ -385,7 +396,7 @@ ExplanationDashboard(global_explanation, model, x_test)
 1. 使用解释对象创建评分解释器。
 
    ```python
-   from azureml.contrib.interpret.scoring.scoring_explainer import KernelScoringExplainer, save
+   from azureml.interpret.scoring.scoring_explainer import KernelScoringExplainer, save
 
    # create a lightweight explainer at scoring time
    scoring_explainer = KernelScoringExplainer(explainer)
@@ -411,7 +422,7 @@ ExplanationDashboard(global_explanation, model, x_test)
 1. （可选步骤）可以从云检索评分解释器，并测试解释。
 
    ```python
-   from azureml.contrib.interpret.scoring.scoring_explainer import load
+   from azureml.interpret.scoring.scoring_explainer import load
 
    # retrieve the scoring explainer model from cloud"
    scoring_explainer_model = Model(ws, 'my_scoring_explainer')
@@ -559,3 +570,6 @@ ExplanationDashboard(global_explanation, model, x_test)
 ## <a name="next-steps"></a>后续步骤
 
 [详细了解模型可解释性](how-to-machine-learning-interpretability.md)
+
+[查看 Azure 机器学习可解释性示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
+

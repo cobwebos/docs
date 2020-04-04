@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/31/2020
 ms.author: juliako
-ms.openlocfilehash: 654af2c9e57bca9368eb0a5cdf32e692852ba522
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 99aeb5384b317d1b4d291c769b5402e829247b30
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80573261"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656202"
 ---
 > [!NOTE]
 > 对于未修复的资源，请打开一个支持票证，要求增加配额。 不要创建其他 Azure 媒体服务帐户以尝试获取更高的限制。
@@ -26,7 +26,7 @@ ms.locfileid: "80573261"
 | --- | --- | 
 | 每个媒体服务帐户的资产 | 1,000,000|
 
-### <a name="storage-limits"></a>存储限制
+### <a name="storage-media-limits"></a>存储（介质）限制
 
 | 资源 | 默认限制 | 
 | --- | --- | 

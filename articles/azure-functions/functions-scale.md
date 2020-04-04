@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a54d7490fb306bfbc8e1b111e7b7d64c09d2292
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92ac0417e9d8adca168dd68e1721a1c9c890de1c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276603"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656941"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -109,7 +109,7 @@ ms.locfileid: "79276603"
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>确定现有应用程序的托管计划
 
-要确定你的函数应用所使用的托管计划，请在 [Azure 门户](https://portal.azure.com)中参阅函数应用的“概览”选项卡中的“应用服务计划/定价层”********。 对于应用服务计划，还指明了定价层。
+要确定函数应用使用的托管计划，请参阅[Azure 门户](https://portal.azure.com)中的"**概述"** 选项卡中**的应用服务计划**。 要查看定价层，请选择**应用服务计划**的名称，然后从左侧窗格中选择 **"属性**"。
 
 ![在门户中查看缩放计划](./media/functions-scale/function-app-overview-portal.png)
 
@@ -124,7 +124,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ## <a name="storage-account-requirements"></a>存储帐户要求
 
-在任何计划中，函数应用需要一个支持 Azure Blob、队列、文件和表存储的常规 Azure 存储帐户。 这是因为 Functions 依赖 Azure 存储来执行管理触发器和记录函数执行等操作，但某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户，已在创建函数应用时将从现有的“存储帐户”选项中过滤掉****。
+在任何计划中，函数应用需要一个支持 Azure Blob、队列、文件和表存储的常规 Azure 存储帐户。 这是因为 Azure 函数依赖于 Azure 存储来执行诸如管理触发器和日志记录函数执行等操作，但某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户，已在创建函数应用时将从现有的“存储帐户”选项中过滤掉****。
 
 触发器和绑定也可以使用函数应用使用的相同存储帐户来存储应用程序数据。 但是，对于存储密集型操作，应使用单独的存储帐户。  
 
@@ -134,7 +134,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#azure-storage-services)。
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>消费和保费计划如何运作
+## <a name="how-the-consumption-and-premium-plans-work"></a>消费和高级计划的工作原理
 
 在消耗和高级计划中，Azure 函数基础结构会根据其函数触发的事件数添加函数主机的其他实例来扩展 CPU 和内存资源。 消耗计划中的函数主机的每个实例都限制为 1.5 GB 内存和一个 CPU。  主机实例是整个函数应用，这意味着函数应用中的所有函数共享某个实例中的资源并同时缩放。 共享同一消耗计划的函数应用单独缩放。  在高级计划中，计划大小将确定该实例上该计划中所有应用的可用内存和 CPU。  
 
@@ -162,7 +162,7 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 
 函数应用的许多方面会影响其缩放，包括主机配置、运行时占用空间和资源效率。  有关详细信息，请查看[性能注意事项一文的“可扩展”部分](functions-best-practices.md#scalability-best-practices)。 还要注意随着函数应用的扩展，连接是如何实施的。 有关详细信息，请参阅[如何在 Azure Functions 中管理连接](manage-connections.md)。
 
-有关在 Python 和 Node.js 中缩放的其他信息，请参阅[Azure 函数 Python 开发人员指南 - 缩放和并发和并发](functions-reference-python.md#scaling-and-concurrency)和[Azure 函数 Node.js 开发人员指南 - 缩放和并发](functions-reference-node.md#scaling-and-concurrency)。
+有关在 Python 和 Node.js 中缩放的详细信息，请参阅[Azure 函数 Python 开发人员指南 - 缩放和并发和并发](functions-reference-python.md#scaling-and-concurrency)和[Azure 函数 Node.js 开发人员指南 - 缩放和并发](functions-reference-node.md#scaling-and-concurrency)。
 
 ### <a name="billing-model"></a>计费模式
 

@@ -4,19 +4,19 @@ description: 通过更改 Azure 多重身份验证中的用户状态启用 MFA�
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61d7227c57422cfe2228002750ec29bffa385d44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e955a3d10eea0a23154396a44fe6e1fc552a9ccb
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756754"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653479"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>如何要求对用户进行双重验证
 
@@ -44,7 +44,7 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 > [!IMPORTANT]
 > 通过条件访问策略启用 Azure MFA 不会更改用户的状态。 不要惊慌用户显示为禁用。 条件访问不会更改状态。 **如果用户正在使用条件访问策略，则组织不应启用或强制用户。**
 
-| 状态 | 描述 | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
+| 状态 | 说明 | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
 |:---:| --- |:---:|:--:|:--:|
 | 已禁用 | 没有在 Azure MFA 中注册某个新用户的默认状态。 | 否 | 否 | 否 |
 | 已启用 | 用户已加入 Azure MFA 但尚未注册。 在用户下次登录时会提示他们进行注册。 | 不是。  它们继续工作，直到注册过程完成。 | 是的。 会话过期后，会要求进行 Azure MFA 注册。| 是的。 访问令牌过期后，会要求进行 Azure MFA 注册。 |

@@ -4,19 +4,19 @@ description: 如何使用 Windows 登录屏幕上的“忘记了密码”启用�
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a8675756aeef1140dbebd94023d7f7fb4c7af99
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77370065"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652260"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>如何：从 Windows 登录屏幕启用密码重置
 
@@ -97,7 +97,7 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 ![Azure AD 审核日志中的 Windows 7 密码重置示例](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-当用户在 Windows 10 设备的登录屏幕中重置其密码时，系统会创建名为 `defaultuser1` 的权限较低的临时帐户。 使用此帐户可以确保密码重置过程的安全。 帐户本身有一个随机生成的密码，该密码在进行设备登录时不显示，在用户重置其密码后会由系统自动删除。 可能存在多个 `defaultuser` 配置文件，不过可以放心地忽略它们。
+当用户在 Windows 10 设备的登录屏幕中重置其密码时，系统会创建名为 `defaultuser1` 的权限较低的临时帐户。 使用此帐户可以确保密码重置过程的安全。 帐户本身具有随机生成的密码，不会显示设备登录，并且在用户重置密码后将自动删除。 可能存在多个 `defaultuser` 配置文件，不过可以放心地忽略它们。
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7、8、8.1 密码重置
 
@@ -128,8 +128,8 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 #### <a name="silent-installation"></a>无提示安装
 
-- 若要进行无提示安装，请使用命令“msiexec /i SsprWindowsLogon.PROD.msi /qn”
-- 若要进行无提示卸载，请使用命令“msiexec /x SsprWindowsLogon.PROD.msi /qn”
+- 对于静默安装，请使用命令"msiexec /i SsprWindowsLogon.PROD.msi /qn"
+- 对于静默卸载，请使用命令"msiexec /x SsprWindowsLogon.PROD.msi /qn"
 
 #### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>排查 Windows 7、8、8.1 的密码重置问题
 
@@ -141,8 +141,8 @@ Azure AD 审核日志将包含有关密码重置发生的 IP 地址和 ClientTyp
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- 若要启用详细日志记录，请创建 `REG_DWORD: “EnableLogging”` 并将其设置为 1。
-- 若要禁用详细日志记录，请将 `REG_DWORD: “EnableLogging”` 更改为 0。
+- 若要启用详细日志记录，请创建 `REG_DWORD: "EnableLogging"` 并将其设置为 1。
+- 若要禁用详细日志记录，请将 `REG_DWORD: "EnableLogging"` 更改为 0。
 
 ## <a name="what-do-users-see"></a>用户看到什么
 

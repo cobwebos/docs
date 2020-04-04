@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f508cac23d997b7595fcc7a4606608aa2dc15fc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8023c0927c05d3952bd9f3a51e99e85154552fd
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128212"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656373"
 ---
 # <a name="connect-with-the-web-client"></a>使用 Web 客户端进行连接
 
@@ -45,4 +45,4 @@ Web 客户端允许您从 Web 浏览器访问 Windows 虚拟桌面资源，而�
 
 ## <a name="next-steps"></a>后续步骤
 
-要了解有关如何使用 Web 客户端的详细信息，请查看 Web[客户端入门](https://go.microsoft.com/fwlink/?linkid=2120256)。
+要了解有关如何使用 Web 客户端的详细信息，请查看 Web[客户端入门](/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client)。

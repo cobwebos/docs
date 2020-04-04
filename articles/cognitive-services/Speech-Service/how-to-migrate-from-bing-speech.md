@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: b95e16f2d8257bfffcaf2524fe7f8ce6be565689
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b78bdb070cdf1364fe7fbdc75f175be7ce145ff
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80366597"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656449"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>从必应语音迁移到语音服务
 
@@ -25,7 +25,7 @@ ms.locfileid: "80366597"
 
 单个语音服务订阅密钥授予对以下功能的访问权限。 每个功能单独计量，以便仅针对你使用的功能收费。
 
-* [语音到文本](speech-to-text.md)
+* [语音转文本](speech-to-text.md)
 * [自定义语音转文本](https://cris.ai)
 * [文本转语音](text-to-speech.md)
 * [自定义文本转语音声音](how-to-customize-voice-font.md)
@@ -93,4 +93,4 @@ ms.locfileid: "80366597"
 ## <a name="see-also"></a>请参阅
 * [语音服务发行说明](releasenotes.md)
 * [什么是语音服务](overview.md)
-* [语音服务和语音 SDK 文档](speech-sdk.md#get-the-sdk)
+* [语音服务和语音 SDK 文档](speech-sdk.md#get-the-speech-sdk)
