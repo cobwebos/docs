@@ -13,11 +13,13 @@
       href: quick-create-cli.md
     - name: 使用 Azure PowerShell 创建
       href: quick-create-powershell.md
-    - name: 使用模板创建
+    - name: 使用 ARM 模板创建
       items:
         - name: Linux 规模集
+          displayName: 'ARM, resource manager'
           href: quick-create-template-linux.md
         - name: Windows 规模集
+          displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
 - name: 教程
   items:
@@ -174,7 +176,7 @@
           maintainContext: true
     - name: 规模集常见问题解答
       href: virtual-machine-scale-sets-faq.md
-- name: 如何
+- name: 操作方式
   items:
     - name: 规划和设计
       items:

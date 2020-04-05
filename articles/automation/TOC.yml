@@ -15,23 +15,27 @@
     - name: 管理自动化运行方式帐户
       href: manage-runas-account.md
       displayName: certificate renewal
+    - name: 管理基于角色的访问控制
+      href: automation-role-based-access-control.md
+      displayName: RBAC
+    - name: 在 Azure 自动化中使用 Azure AD 以便向 Azure 进行身份验证
+      href: automation-use-azure-ad.md
+    - name: 使用 Azure 自动化管理 Office 365 服务
+      href: manage-office-365.md
     - name: 配置使用 AWS 进行的身份验证
       href: automation-config-aws-account.md
     - name: 加密 Azure 自动化中的安全资产
       href: automation-secure-asset-encryption.md
-    - name: 管理基于角色的访问控制
-      href: automation-role-based-access-control.md
-      displayName: RBAC
     - name: 将自动化帐户移到另一个订阅
       href: how-to/move-account.md
     - name: 自动载入自动化服务
       href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
-    - name: Log Analytics 工作区映射支持的区域
-      href: how-to/region-mappings.md
     - name: 管理 Azure 自动化数据
       href: automation-managing-data.md
       displayName: backup
-    - name: 故障排除
+    - name: Log Analytics 工作区映射支持的区域
+      href: how-to/region-mappings.md
+    - name: 疑难解答
       items:
         - name: 自动化帐户故障排除
           href: troubleshoot/automation-account.md
@@ -56,7 +60,15 @@
     - name: 操作方法指南
       items:
         - name: 在非工作时间启动/停止 VM
-          href: automation-solution-vm-management.md
+          items:
+            - name: 概述
+              href: automation-solution-vm-management.md
+            - name: 启用解决方案
+              href: automation-solution-vm-management-enable.md
+            - name: 配置解决方案
+              href: automation-solution-vm-management-config.md
+            - name: 使用日志查询分析数据
+              href: automation-solution-vm-management-logs.md
         - name: 管理 runbook
           href: manage-runbooks.md
         - name: 创建 Runbook
@@ -124,7 +136,7 @@
               displayName: 'github, vsts, azure devops, personal access token'
             - name: 源代码管理集成 - 传统
               href: source-control-integration-legacy.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 为 Microsoft Azure 自动化建立案例时要收集的数据
           href: troubleshoot/collect-data-microsoft-azure-automation-case.md
@@ -172,7 +184,7 @@
           href: automation-update-management-query-logs.md
         - name: 查看更新评估
           href: automation-view-update-assessments.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 登记
           href: troubleshoot/onboarding.md
@@ -208,7 +220,7 @@
         - name: 查看所跟踪文件的文件内容
           href: change-tracking-file-contents.md
           displayName: 'change tracking, hash'
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 登记
           href: troubleshoot/onboarding.md
@@ -234,7 +246,7 @@
         - name: 排查 VM 上的更改问题
           href: automation-tutorial-troubleshoot-changes.md
           displayName: inventory
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 登记
           href: troubleshoot/onboarding.md
@@ -283,7 +295,7 @@
         - name: 将状态配置报告数据转发到 Azure Monitor 日志
           href: automation-dsc-diagnostics.md
           displayName: DSC
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 登记
           href: troubleshoot/onboarding.md
@@ -317,9 +329,9 @@
       href: shared-resources/credentials.md
     - name: PowerShell 模块
       items:
-        - name: 模块
+        - name: 管理 Azure 自动化中的模块
           href: shared-resources/modules.md
-        - name: 在 Azure 自动化中使用 Az 模块
+        - name: Azure 自动化中的 Az 模块支持
           href: az-modules.md
         - name: 更新 Azure PowerShell 模块
           href: automation-update-azure-modules.md

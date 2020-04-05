@@ -1,80 +1,165 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: 适用于容器的 Azure
+### YamlMime:Hub
+title: 容器服务文档
+summary: 了解如何使用 Azure 容器服务来管理和开发基于云的容器应用程序。
+brand: azure
 metadata:
-  title: 适用于容器的 Azure - 快速入门、教程和 API 参考
-  description: 使用用于容器的快速入门、教程和工具，开始通过 Azure 管理和部署容器应用。
-  keywords: 'Azure, 容器, Docker, API, Kubernetes'
-  author: dlepow
-  ms.author: danlep
-  ms.date: 01/08/2019
-  ms.topic: article
-  ms.prod: azure
-  featureFlags:
-    - clicktale
-  ms.technology: azure
-  ms.devlang: multiple
-  ms.service: multiple
-sections:
-  - items:
-      - type: markdown
-        text: |
-          使用适用于容器的 Azure 工具和服务，开始部署和管理容器应用。 
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何将容器与 Azure 服务配合使用。
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: ../aks/kubernetes-walkthrough.md
-            title: 使用 Azure Kubernetes 服务 (AKS) 创建 Kubernetes 群集
-            image:
-              src: /azure/media/index/ContainerService.svg
-          - href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers'
-            title: 在 Service Fabric 上部署 Windows 容器应用程序
-            image:
-              src: /azure/media/index/Fabric.svg
-          - href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go'
-            title: 使用容器的 Azure Web 应用创建容器化的应用
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
-          - href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli'
-            title: 在 Azure 容器注册表中创建专用 Docker 注册表
-            image:
-              src: /azure/media/index/container-registry.svg
-          - href: 'https://docs.microsoft.com/azure/container-instances/container-instances-quickstart'
-            title: 在 Azure 容器实例中按需运行容器应用
-            image:
-              src: /azure/media/index/containerinstances.svg
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何使用 Azure 服务部署、管理和更新容器应用
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">生成容器并将其部署到 Azure Kubernetes 服务</a>
-          - html: <a href="/azure/service-fabric/service-fabric-host-app-in-a-container">生成 .NET 容器应用并将其部署到 Azure Service Fabric</a>
-          - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">在用于容器的 Web 应用中创建多容器应用</a>
-          - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">使用 Azure 容器注册表任务生成并部署容器映像</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">生成容器并将其部署到 Azure 容器实例</a>
-          - html: <a href="/azure/openshift/tutorial-create-cluster">创建 Azure Red Hat OpenShift 群集</a>
-  - title: 利用 Microsoft Learn 掌握技能
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 通过 Azure 容器实例运行 Docker 容器
-            href: /learn/modules/run-docker-with-azure-container-instances/
-            image:
-              src: /learn/achievements/run-docker-with-azure-container-instances.svg
-              href: /learn/modules/run-docker-with-azure-container-instances/
-          - title: 使用 Azure 容器注册表生成并存储容器映像
-            href: /learn/modules/build-and-store-container-images/
-            image:
-              src: /learn/achievements/build-and-store-container-images.svg
-              href: /learn/modules/build-and-store-container-images/
+  title: Microsoft Azure 容器服务文档 | Microsoft Docs
+  description: 了解如何使用 Azure 容器服务来管理和开发基于云的容器应用程序。
+  ms.topic: hub-page
+  ms.openlocfilehash: 740b95a28e8437defb1929003a74c53cacdcaa70
+  ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/01/2020
+  ms.locfileid: "80478133"
+highlightedContent:
+  items:
+  - itemType: whats-new
+    title: Azure 容器有哪些新增功能？
+    url: https://azure.microsoft.com/updates/?category=containers
+  - itemType: concept
+    title: 使用微服务方法构建应用程序
+    url: /azure/service-fabric/service-fabric-overview-microservices
+  - itemType: concept
+    title: 了解 Kubernetes
+    url: /azure/aks/concepts-clusters-workloads
+conceptualContent:
+  items:
+  - title: 在 Azure 上部署 Kubernetes
+    links:
+    - url: /azure/aks/intro-kubernetes
+      itemType: overview
+      text: 什么是 Azure Kubernetes 服务？
+    - url: /azure/aks/tutorial-kubernetes-prepare-app
+      itemType: tutorial
+      text: 为 AKS 准备应用程序
+    - url: /azure/aks/kubernetes-walkthrough
+      itemType: tutorial
+      text: 创建 AKS 群集 (CLI)
+    footerLink:
+      url: /azure/aks/
+      text: 查看详细信息
+  - title: 测试和开发 AKS 应用程序
+    links:
+    - url: /azure/dev-spaces/about
+      itemType: overview
+      text: Azure Dev Spaces 是什么？
+    - url: /azure/dev-spaces/quickstart-netcore
+      itemType: quickstart
+      text: 运行和调试微服务
+    - url: /azure/dev-spaces/quickstart-team-development
+      itemType: quickstart
+      text: 针对一组微服务与团队进行协作
+    footerLink:
+      url: /azure/dev-spaces/
+      text: 查看详细信息
+  - title: 创建 Web 云应用和移动云应用
+    links:
+    - url: /azure/app-service/overview
+      itemType: overview
+      text: 什么是应用服务？
+    - url: /azure/app-service/app-service-web-tutorial-custom-domain
+      itemType: get-started
+      text: 将自定义域映射到应用
+    - url: /azure/app-service/configure-ssl-bindings
+      itemType: tutorial
+      text: 使用 SSL 绑定确保自定义域安全
+    - url: /azure/app-service/app-service-web-get-started-windows-container
+      itemType: get-started
+      text: 运行自定义 Windows 容器
+    - url: /azure/app-service/quickstart-docker
+      itemType: quickstart
+      text: 运行自定义 Linux 容器
+    - url: /azure/app-service/quickstart-multi-container
+      itemType: quickstart
+      text: 创建 Linux 多容器应用
+    footerLink:
+      url: /azure/app-service/
+      text: 查看详细信息
+  - title: 在 Azure 上运行容器
+    links:
+    - url: /azure/container-instances/container-instances-overview
+      itemType: overview
+      text: 容器实例概述
+    - url: https://docs.microsoft.com/learn/modules/run-docker-with-azure-container-instances/
+      itemType: learn
+      text: 将 Docker 与 Azure 容器实例配合使用来运行容器化的应用
+    - url: /azure/container-instances/container-instances-using-azure-container-registry
+      itemType: how-to-guide
+      text: 从 Azure 容器注册表部署映像
+    - url: /azure/container-registry/container-registry-quick-task-cli
+      itemType: get-started
+      text: 使用 Azure CLI 生成、推送和运行映像
+    footerLink:
+      url: /azure/container-instances/
+      text: 查看详细信息
+  - title: 云计划和计算管理
+    links:
+    - url: /azure/batch/batch-technical-overview
+      itemType: overview
+      text: 什么是 Batch？
+    - url: /azure/batch/quick-create-cli
+      itemType: get-started
+      text: 使用 Azure CLI 运行第一个 Batch 作业
+    - url: /azure/batch/tutorial-parallel-dotnet
+      itemType: tutorial
+      text: 使用 .NET API 通过 Azure Batch 运行并行工作负荷
+    footerLink:
+      url: /azure/batch/
+      text: 查看详细信息
+  - title: 微服务开发和容器业务流程
+    links:
+    - url: /azure/service-fabric/service-fabric-overview
+      itemType: overview
+      text: 什么是 Azure Service Fabric？
+    - url: /azure/service-fabric/service-fabric-quickstart-dotnet
+      itemType: quickstart
+      text: 将 .NET Reliable Services 应用程序部署到 Service Fabric
+    - url: /azure/service-fabric/service-fabric-cluster-creation-for-windows-server
+      itemType: how-to-guide
+      text: 创建在 Windows Server 上运行的独立群集
+    footerLink:
+      url: /azure/service-fabric/
+      text: 查看详细信息
+  - title: 存储和管理容器映像
+    links:
+    - url: /azure/container-registry/container-registry-intro
+      itemType: overview
+      text: 什么是 Azure 容器注册表？
+    - url: /azure/container-registry/container-registry-get-started-azure-cli
+      itemType: get-started
+      text: 使用 Azure CLI 创建专用容器注册表
+    - url: /azure/container-registry/container-registry-quick-task-cli
+      itemType: get-started
+      text: 使用 Azure CLI 生成、推送和运行映像
+    footerLink:
+      url: /azure/container-registry/
+      text: 查看详细信息
+  - title: 托管 OpenShift 服务
+    links:
+    - url: /azure/openshift/intro-openshift
+      itemType: overview
+      text: 什么是 Azure Red Hat OpenShift？
+    - url: /azure/openshift/howto-setup-environment
+      itemType: how-to-guide
+      text: 设置 Azure Red Hat OpenShift 开发环境
+    - url: /azure/openshift/tutorial-create-cluster
+      itemType: tutorial
+      text: 创建 Azure Red Hat OpenShift 群集
+    footerLink:
+      url: /azure/openshift/
+      text: 查看详细信息
+  - title: 无服务器应用程序开发
+    links:
+    - url: /azure/azure-functions/functions-overview
+      itemType: overview
+      text: Azure Functions 简介
+    - url: /azure/azure-functions/functions-create-first-function-vs-code
+      itemType: quickstart
+      text: 创建第一个函数
+    - url: /azure/azure-functions/functions-triggers-bindings
+      itemType: overview
+      text: 与其他 Azure 服务集成
+    footerLink:
+      url: /azure/azure-functions/
+      text: 查看详细信息

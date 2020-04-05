@@ -30,8 +30,10 @@
           href: understand-work-scopes.md
         - name: 从 EA 迁移到 MCA API
           href: migrate-cost-management-api.md
-    - name: 操作方法指南
+    - name: 操作指南
       items:
+        - name: 防止并分析意外费用
+          href: ../manage/getting-started.md
         - name: 向数据分配访问权限
           href: assign-access-acm-data.md
         - name: 将成本分析用于常见任务
@@ -100,7 +102,7 @@
           items:
             - name: 了解成本报表
               href: ../cloudyn/understanding-cost-reports.md
-        - name: 操作方法指南
+        - name: 操作指南
           items:
             - name: 激活 Azure 订阅和帐户
               href: ../cloudyn/activate-subs-accounts.md

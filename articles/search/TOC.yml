@@ -23,6 +23,9 @@
           href: knowledge-store-create-portal.md
         - name: 使用搜索浏览器查询
           href: search-explorer.md
+    - name: ARM 模板
+      displayName: Resource Manager
+      href: search-get-started-arm.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -77,14 +80,6 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST 示例
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
-- name: 培训
-  items:
-    - name: 简介 (Microsoft Learn)
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
-    - name: 将搜索添加到应用 (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
-    - name: 开发人员课程 (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
 - name: 概念
   items:
     - name: 全文搜索
@@ -101,7 +96,7 @@
       href: knowledge-store-projection-overview.md
     - name: 增量扩充
       href: cognitive-search-incremental-indexing-conceptual.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 创建索引和构造
       items:
@@ -233,7 +228,7 @@
           href: search-query-simple-examples.md
         - name: 使用完整的 Lucene 语法
           href: search-query-lucene-examples.md
-        - name: 特殊字符和部分词
+        - name: 部分词和特殊字符
           href: search-query-partial-matching.md
         - name: 从 Power Apps 查询
           href: search-howto-powerapps.md
@@ -245,7 +240,7 @@
               href: query-lucene-syntax.md
             - name: moreLikeThis（预览版）
               href: search-more-like-this.md
-    - name: “筛选器”
+    - name: 筛选器
       items:
         - name: 筛选器概述
           href: search-filters.md
@@ -261,7 +256,7 @@
           href: search-example-adventureworks-multilevel-faceting.md
     - name: 结果
       items:
-        - name: 与页相关的功能
+        - name: 处理结果
           href: search-pagination-page-layout.md
         - name: 相关性调整（计分配置文件）
           href: index-add-scoring-profiles.md
@@ -339,7 +334,7 @@
           href: search-monitor-queries.md
         - name: 搜索流量分析
           href: search-traffic-analytics.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 索引器问题
           href: search-indexer-troubleshooting.md
@@ -460,6 +455,14 @@
           href: 'https://aka.ms/azjobsdemo'
         - name: 搜索用例
           href: 'https://searchsamples.azurewebsites.net/'
+    - name: 培训
+      items:
+        - name: 简介 (Microsoft Learn)
+          href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
+        - name: 将搜索添加到应用 (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
+        - name: 开发人员课程 (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
     - name: 常见问题解答
       href: search-faq-frequently-asked-questions.md
     - name: 定价

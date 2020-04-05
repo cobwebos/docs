@@ -50,7 +50,7 @@
           href: security.md
         - name: 安全基线
           href: security-baseline.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 创建群集和数据库
       items:
@@ -67,7 +67,13 @@
     - name: 引入数据
       items:
         - name: 一键式引入
-          href: ingest-data-one-click.md
+          items:
+            - name: 一键式引入概述
+              href: ingest-data-one-click.md
+            - name: 一键式引入到新表
+              href: one-click-ingestion-new-table.md
+            - name: 一键式引入到现有表
+              href: one-click-ingestion-existing-table.md
         - name: 流式引入
           href: ingest-data-streaming.md
         - name: 使用 LightIngest
@@ -188,6 +194,8 @@
               href: customer-managed-keys-csharp.md
             - name: Azure 资源管理器模板
               href: customer-managed-keys-resource-manager.md
+        - name: 创建 Azure AD 应用
+          href: provision-azure-ad-app.md
     - name: 管理
       items:
         - name: 群集
@@ -208,6 +216,8 @@
                   href: cluster-principal-python.md
                 - name: Azure 资源管理器模板
                   href: cluster-principal-resource-manager.md
+            - name: 管理群集语言扩展
+              href: language-extensions.md
         - name: 数据库
           items:
             - name: 后继数据库
@@ -240,6 +250,8 @@
           href: using-diagnostic-logs.md
         - name: 使用指标来监视群集运行状况
           href: using-metrics.md
+        - name: 使用资源运行状况监视群集运行状况
+          href: monitor-with-resource-health.md
     - name: 与其他工具集成
       items:
         - name: Azure 数据工厂
@@ -264,9 +276,11 @@
           href: connect-from-databricks.md
         - name: 在 Jupyter Notebook 和 Kqlmagic 中分析数据
           href: kqlmagic.md
+        - name: 分析 Azure Notebooks 中的数据
+          href: azure-notebooks.md
         - name: Azure Pipelines
           href: devops.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 创建群集
           href: troubleshoot-create-cluster.md

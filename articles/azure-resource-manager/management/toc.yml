@@ -52,18 +52,24 @@
           href: region-move-support.md
         - name: 服务
           items:
+            - name: Azure IoT 中心
+              href: ../../iot-hub/iot-hub-how-to-clone.md?toc=/azure/azure-resource-manager/toc.json
             - name: Azure VM
               href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
             - name: Azure 存储
               href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
             - name: Azure SQL
               href: ../../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
-            - name: 虚拟网络
-              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: 逻辑应用
+              href: ../../logic-apps/move-logic-app-resources.md?toc=/azure/azure-resource-manager/toc.json
+            - name: 维护控制配置
+              href: ../../virtual-machines/move-region-maintenance-configuration.md?toc=/azure/azure-resource-manager/toc.json
             - name: 网络安全组 (NSG)
               href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
             - name: 公共 IP 地址
               href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: 虚拟网络
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
     - name: Tags
       items:
         - name: 决策指南

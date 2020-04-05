@@ -1,5 +1,5 @@
-- name: 计划程序文档
-  href: index.md
+- name: Azure 计划程序文档
+  href: index.yml
 - name: 概述
   items:
     - name: 什么是 Azure 计划程序？
@@ -14,7 +14,7 @@
   items:
     - name: 概念、术语和实体
       href: scheduler-concepts-terms.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 规划和设计
       items:

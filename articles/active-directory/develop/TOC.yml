@@ -26,6 +26,8 @@
     - name: 单页应用
       displayName: SPA
       items:
+        - name: Angular
+          href: quickstart-v2-angular.md
         - name: JavaScript
           href: quickstart-v2-javascript.md
     - name: Web 应用
@@ -69,6 +71,8 @@
     - name: 单页应用
       displayName: SPA
       items:
+        - name: Angular
+          href: tutorial-v2-angular.md
         - name: JavaScript
           href: tutorial-v2-javascript-spa.md
     - name: Web 应用
@@ -219,8 +223,12 @@
               href: scenario-mobile-app-configuration.md
             - name: 移动平台特定的配置
               items:
+                - name: 适用于 Apple 设备的 Microsoft 企业 SSO 插件
+                  href: apple-sso-plugin.md
                 - name: 适用于 Android 设备的共享设备模式
-                  href: shared-device-mode.md
+                  href: msal-android-shared-devices.md
+                - name: 适用于 iOS 设备的共享设备模式
+                  href: msal-ios-shared-devices.md
                 - name: Xamarin Android
                   href: msal-net-xamarin-android-considerations.md
                 - name: Android 上的系统浏览器
@@ -308,6 +316,17 @@
           href: msal-handling-exceptions.md
         - name: 日志记录
           href: msal-logging.md
+        - name: 共享设备
+          items:
+            - name: 概述 - 共享设备
+              href: msal-shared-devices.md
+              displayName: 'shared device mode, firstline worker, frontline worker'
+            - name: 适用于 iOS 设备的共享设备模式
+              href: msal-ios-shared-devices.md
+              displayName: 'firstline worker, frontline worker'
+            - name: 适用于 Android 设备的共享设备模式
+              href: msal-android-shared-devices.md
+              displayName: 'firstline worker, frontline worker'
         - name: 单一登录
           displayName: SSO
           items:
@@ -433,7 +452,7 @@
       items:
         - name: 概述
           href: authentication-national-cloud.md
-        - name: Authentication
+        - name: 身份验证
           href: msal-national-cloud.md
     - name: 自动用户预配 (SCIM)
       items:
@@ -441,9 +460,9 @@
           href: /azure/active-directory/manage-apps/user-provisioning
         - name: 生成和集成 SCIM 终结点
           href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
-- name: 操作方法指南
+- name: 操作指南
   items:
-    - name: Authentication
+    - name: 身份验证
       items:
         - name: 配置角色声明
           href: active-directory-enterprise-app-role-management.md
@@ -561,7 +580,7 @@
     - name: 身份验证和授权错误代码
       displayName: AADSTS
       href: reference-aadsts-error-codes.md
-    - name: 重大更改
+    - name: 中断性变更
       href: reference-breaking-changes.md
 - name: 资源
   items:

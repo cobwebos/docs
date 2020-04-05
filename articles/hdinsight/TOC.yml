@@ -373,7 +373,7 @@
                   href: ../cosmos-db/lambda-architecture.md
                 - name: 使用 AutoML 运行 Azure ML 工作负荷
                   href: ./spark/apache-spark-run-machine-learning-automl.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 无法创建 Jupyter 笔记本
               href: ./spark/troubleshoot-jupyter-notebook-convert.md
@@ -486,7 +486,7 @@
               items:
                 - name: 使用空边缘节点
                   href: ./hdinsight-apps-use-edge-node.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 常见问题
               href: ./hdinsight-troubleshoot-guide.md
@@ -601,7 +601,7 @@
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
             - name: SSL 加密和身份验证
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 容错域不足
               href: ./kafka/kafka-troubleshoot-insufficient-domains.md
@@ -654,7 +654,7 @@
               href: ./hbase/apache-hbase-phoenix-performance.md
             - name: 在 Azure VNet 中创建 Apache HBase 群集
               href: ./hbase/apache-hbase-provision-vnet.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 排查 Apache HBase 性能问题
               href: ./hbase/troubleshoot-hbase-performance-issues.md
@@ -697,6 +697,10 @@
       items:
         - name: 使用交互式查询分析数据
           href: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
+    - name: 概念
+      items:
+        - name: 网关最佳做法
+          href: ./interactive-query/gateway-best-practices.md
     - name: 如何
       items:
         - name: 开发
@@ -735,7 +739,7 @@
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: 优化 Apache Hive 查询
               href: ./hdinsight-hadoop-optimize-hive-query.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 通过 Apache Hive 设置解决内存不足错误
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
@@ -816,6 +820,8 @@
       items:
         - name: 使用 Apache Storm 写入到存储
           href: ./storm/apache-storm-write-data-lake-store.md
+        - name: Apache Kafka 和 Apache Storm (Java)
+          href: ./hdinsight-apache-storm-with-kafka.md
     - name: 如何
       items:
         - name: 将 Storm 迁移到 Spark
@@ -836,17 +842,13 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: 流式处理管道
               items:
-                - name: Apache Kafka 和 Apache Storm (Java)
-                  href: ./hdinsight-apache-storm-with-kafka.md
-                - name: 事件中心、存储和 Data Lake Storage (Java)
-                  href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
                 - name: '事件中心和 Apache Storm（C# 和 Java）'
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: 管理
           items:
             - name: 监视拓扑
               href: ./storm/apache-storm-deploy-monitor-topology-linux.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: Apache STORM 故障排除
               href: ./storm/apache-troubleshoot-storm.md
@@ -908,7 +910,7 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: 使用防火墙限制出站流量
           href: ./hdinsight-restrict-outbound-traffic.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: ESP 身份验证问题
               href: ./domain-joined/domain-joined-authentication-issues.md

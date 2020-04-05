@@ -29,6 +29,8 @@
       href: quick-onboard-azure-stack.md
 - name: 教程
   items:
+    - name: 规划和操作指南
+      href: security-center-planning-and-operations-guide.md
     - name: 保护资源
       href: tutorial-protect-resources.md
     - name: 响应事件
@@ -71,11 +73,11 @@
           href: security-center-incident.md
         - name: 云智能警报关联（事件）
           href: security-center-alerts-cloud-smart.md
-        - name: 安全警报地图和威胁智能
-          href: security-center-threat-intel.md
+        - name: 威胁报告
+          href: security-center-threat-report.md
         - name: 警报验证（EICAR 测试文件）
           href: security-center-alert-validation.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 升级到高级安全
       href: security-center-onboarding.md
@@ -149,6 +151,8 @@
           href: security-center-sql-service-recommendations.md
         - name: 保护标识和访问权限
           href: security-center-identity-access.md
+        - name: 管理调查用户数据
+          href: security-center-investigation-user-data.md
     - name: 应用云防御措施
       items:
         - name: 管理实时访问
@@ -159,24 +163,6 @@
           href: security-center-file-integrity-monitoring.md
         - name: 自适应网络强化
           href: security-center-adaptive-network-hardening.md
-    - name: 存档
-      items:
-        - name: 应用磁盘加密
-          href: security-center-apply-disk-encryption.md
-        - name: 应用系统更新
-          href: security-center-apply-system-updates.md
-        - name: 安装终结点保护
-          href: security-center-install-endpoint-protection.md
-        - name: 威胁报告
-          href: security-center-threat-report.md
-        - name: 警报置信度分数
-          href: security-center-confidence-score.md
-        - name: 调查
-          href: security-center-investigation.md
-        - name: 管理调查用户数据
-          href: security-center-investigation-user-data.md
-        - name: 规划和操作
-          href: security-center-planning-and-operations-guide.md
 - name: 参考
   items:
     - name: REST API

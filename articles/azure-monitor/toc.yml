@@ -6,7 +6,7 @@
       href: overview.md
     - name: 常见问题解答
       href: faq.md
-    - name: 新增功能？
+    - name: 新增功能
       href: whats-new.md
 - name: 快速入门
   items:
@@ -15,7 +15,7 @@
     - name: 监视虚拟机
       items:
         - name: Azure VM
-          href: learn/quick-collect-azurevm.md
+          href: learn/quick-monitor-azure-vm.md
         - name: Linux 计算机
           href: learn/quick-collect-linux-computer.md
         - name: Windows 计算机
@@ -115,7 +115,7 @@
       href: visualizations.md
     - name: 合作伙伴集成
       href: platform/partners.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 管理 Azure Monitor
       items:
@@ -196,7 +196,7 @@
                 - name: Spring Boot 应用
                   displayname: java
                   href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
-                - name: 故障排除
+                - name: 疑难解答
                   href: app/java-troubleshoot.md
             - name: Node.js
               href: app/nodejs.md
@@ -293,7 +293,7 @@
               href: app/availability-alerts.md
             - name: 性能测试
               href: app/performance-testing.md
-            - name: 故障排除
+            - name: 疑难解答
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
         - name: 分布式跟踪
@@ -303,10 +303,6 @@
             - name: 遥测关联
               href: app/correlation.md
               displayname: 'correlation headers, w3c, distributed tracing, tracing'
-            - name: 本地转发器
-              href: app/opencensus-local-forwarder.md
-            - name: Go
-              href: app/opencensus-go.md
         - name: 实时指标流
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
@@ -453,7 +449,7 @@
                   href: app/separate-resources.md
                 - name: 如何在 Application Insights 中执行...？
                   href: app/how-do-i.md
-        - name: Export
+        - name: 导出
           items:
             - name: 连续导出
               href: app/export-telemetry.md
@@ -488,9 +484,17 @@
             - name: 概述
               displayName: 'Platform logs, Resource logs, Activity log'
               href: platform/platform-logs-overview.md
-            - name: 查看活动日志
-              displayName: Platform logs
-              href: platform/activity-log-view.md
+            - name: 活动日志
+              items:
+                - name: 在 Azure 门户中查看
+                  displayName: 'Platform logs, Activity log'
+                  href: platform/activity-log-view.md
+                - name: 收集和分析
+                  displayName: 'Platform logs, Activity log'
+                  href: platform/activity-log-collect.md
+                - name: 导出（旧版）
+                  displayname: Activity log
+                  href: platform/activity-log-export.md
             - name: 发送到目标
               items:
                 - name: Log Analytics 工作区
@@ -502,20 +506,6 @@
                 - name: 事件中心
                   displayname: 'Resource logs, Activity log, Platform logs'
                   href: platform/resource-logs-stream-event-hubs.md
-            - name: 旧活动日志收集
-              items:
-                - name: 概述
-                  displayName: Resource logs
-                  href: platform/diagnostic-settings-legacy.md
-                - name: 收集和分析
-                  displayname: Activity log
-                  href: platform/activity-log-collect.md
-                - name: 在租户之间收集
-                  displayname: Activity log
-                  href: platform/activity-log-collect-tenants.md
-                - name: Export
-                  displayname: Activity log
-                  href: platform/activity-log-export.md
         - name: 诊断设置
           items:
             - name: 创建诊断设置
@@ -531,6 +521,8 @@
           href: platform/stream-monitoring-data-event-hubs.md
     - name: 监视 VM 和来宾 OS
       items:
+        - name: 监视 Azure 虚拟机
+          href: insights/monitor-vm-azure.md
         - name: 代理
           items:
             - name: 代理概述
@@ -572,7 +564,7 @@
                       href: platform/diagnostics-extension-versions.md
                     - name: JSON Lines 资源日志格式
                       href: platform/diagnostic-logs-append-blobs.md
-                    - name: 故障排除
+                    - name: 疑难解答
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
                   displayname: diagnostics extension
@@ -621,7 +613,7 @@
                       href: platform/data-sources-custom-logs.md
                     - name: 自定义字段
                       href: platform/custom-fields.md
-            - name: 故障排除
+            - name: 疑难解答
               items:
                 - name: Log Analytics VM 扩展
                   displayname: 'troubleshoot, troubleshooting'
@@ -636,12 +628,10 @@
           items:
             - name: 概述
               href: insights/vminsights-overview.md
-            - name: 已知问题
-              href: insights/vminsights-known-issues.md
             - name: 正式版常见问题解答
               href: insights/vminsights-ga-release-faq.md
             - name: 常见问题解答
-              href: 'faq.md#azure-monitor-for-vms-preview'
+              href: 'faq.md#azure-monitor-for-vms'
             - name: 启用监视
               items:
                 - name: 启用监视概述
@@ -654,18 +644,16 @@
                   href: insights/vminsights-enable-at-scale-powershell.md
                 - name: 为混合环境启用
                   href: insights/vminsights-enable-hybrid-cloud.md
-                - name: 与 Operations Manager 集成
-                  href: insights/service-map-scom.md
-            - name: 监视运行状况
-              href: insights/vminsights-health.md
             - name: 映射依赖项
               href: insights/vminsights-maps.md
             - name: 监视性能
               href: insights/vminsights-performance.md
-            - name: 使用工作簿
-              href: insights/vminsights-workbooks.md
             - name: 使用日志查询分析数据
               href: insights/vminsights-log-search.md
+            - name: 通过工作簿实现数据可视化
+              href: insights/vminsights-workbooks.md
+            - name: 创建警报规则
+              href: insights/vminsights-alerts.md
             - name: 升级依赖项代理
               href: insights/vminsights-dependency-agent-maintenance.md
             - name: 禁用监视
@@ -680,6 +668,8 @@
               href: insights/wire-data.md
             - name: 服务映射解决方案
               href: insights/service-map.md
+            - name: 服务映射和 Operations Manager
+              href: insights/service-map-scom.md
         - name: 计算机组
           href: platform/computer-groups.md
     - name: 监视容器
@@ -708,6 +698,8 @@
               href: insights/container-insights-analyze.md
             - name: 监视运行状况
               href: insights/container-insights-health.md
+            - name: 监视 GPU 性能
+              href: insights/container-insights-gpu-monitoring.md
             - name: 查看实时数据
               items:
                 - name: 实时数据（预览版）概述
@@ -736,7 +728,7 @@
               href: insights/container-insights-optout.md
             - name: 禁止监视 Red Hat OpenShift
               href: insights/container-insights-optout-openshift.md
-            - name: 故障排除
+            - name: 疑难解答
               href: insights/container-insights-troubleshoot.md
         - name: Docker 和 Windows 容器监视
           href: insights/containers.md
@@ -896,13 +888,11 @@
                   href: log-query/query-optimization.md
                 - name: 分析文本数据
                   href: log-query/parse-text.md
-        - name: Flow/逻辑应用
+        - name: 逻辑应用
           items:
-            - name: 将 Flow 连接器用于日志
-              href: platform/flow-tutorial.md
-            - name: 将 Flow 连接器用于应用程序
-              href: app/automate-with-flow.md
-            - name: 将逻辑应用用于应用程序
+            - name: Azure Monitor 日志连接器
+              href: platform/logicapp-flow-connector.md
+            - name: Application Insights 连接器
               href: app/automate-with-logic-apps.md
         - name: REST API
           displayname: 'metrics, analyze'
@@ -975,6 +965,8 @@
           href: platform/grafana-plugin.md
     - name: 警报
       items:
+        - name: 排查警报问题
+          href: platform/alerts-troubleshoot.md
         - name: 应用程序警报规则
           items:
             - name: 可用性
@@ -999,7 +991,7 @@
               href: platform/alerts-log-query.md
             - name: Webhook 操作
               href: platform/alerts-log-webhook.md
-            - name: 故障排除
+            - name: 排查日志警报问题
               href: platform/alert-log-troubleshoot.md
         - name: 活动日志警报规则
           items:
@@ -1101,7 +1093,7 @@
               href: platform/autoscale-virtual-machine-scale-sets.md
             - name: 使用 Webhook 和电子邮件通知
               href: platform/autoscale-webhook-email.md
-            - name: 故障排除
+            - name: 疑难解答
               href: platform/autoscale-troubleshoot.md
             - name: 资源日志架构
               href: platform/autoscale-resource-log-schema.md
@@ -1263,8 +1255,6 @@
           href: 'https://azure.microsoft.com/updates/?product=log-analytics'
         - name: SDK 发行说明
           href: app/release-notes.md
-    - name: Windows 分析
-      href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
     - name: 视频

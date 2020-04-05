@@ -53,7 +53,7 @@
           href: tutorial-store-data-sql-server.md
     - name: 4. 边缘机器学习的端到端示例
       items:
-        - name: 介绍
+        - name: 简介
           href: tutorial-machine-learning-edge-01-intro.md
         - name: 设置开发计算机和 Azure 服务
           href: tutorial-machine-learning-edge-02-prepare-environment.md
@@ -107,7 +107,7 @@
       href: production-checklist.md
     - name: IoT Edge 术语表
       href: iot-edge-glossary.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 注册 IoT Edge 设备
       href: how-to-register-device.md
@@ -143,12 +143,18 @@
           href: how-to-auto-provision-x509-certs.md
         - name: 对称密钥证明
           href: how-to-auto-provision-symmetric-keys.md
-    - name: 开发和调试自定义模块
+    - name: 开发自定义模块
       items:
-        - name: Visual Studio 2019
+        - name: 使用 Visual Studio 2019 进行开发
           href: how-to-visual-studio-develop-module.md
-        - name: Visual Studio Code
+        - name: 使用 Visual Studio Code 进行开发
           href: how-to-vs-code-develop-module.md
+        - name: 配置模块 createOptions
+          items:
+            - name: 了解并使用 createOptions
+              href: how-to-use-create-options.md
+            - name: 向模块授予对设备本地存储的访问权限
+              href: how-to-access-host-storage-from-module.md
     - name: 部署模块
       items:
         - name: 部署到单个设备
@@ -183,11 +189,9 @@
           href: deploy-modbus-gateway.md
     - name: 配置代理支持
       href: how-to-configure-proxy-support.md
-    - name: 在边缘存储数据
+    - name: IoT Edge 上的 Azure Blob 存储
       items:
-        - name: 向模块授予对设备本地存储的访问权限
-          href: how-to-access-host-storage-from-module.md
-        - name: IoT Edge 上的 Azure Blob 存储
+        - name: 了解边缘上的 Blob 存储
           href: how-to-store-data-blob.md
         - name: 部署 blob 存储模块
           href: how-to-deploy-blob.md
@@ -199,7 +203,7 @@
           href: how-to-ci-cd.md
         - name: Jenkins 的 IoT Edge 插件
           href: how-to-devops-plugins.md
-    - name: 故障排除
+    - name: 疑难解答
       href: troubleshoot.md
 - name: 资源
   items:

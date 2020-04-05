@@ -103,7 +103,9 @@
       href: concepts-tpm-attestation.md
     - name: 对称密钥证明
       href: concepts-symmetric-key-attestation.md
-- name: 操作方法指南
+    - name: 设备制造商的安全实践
+      href: concepts-device-oem-security-practices.md
+- name: 操作指南
   items:
     - name: 将 MXChip IoT DevKit 连接到 IoT 中心
       href: how-to-connect-mxchip-iot-devkit.md
@@ -151,7 +153,7 @@
       href: how-to-use-sdk-tools.md
     - name: 如何从设备发送更多数据
       href: how-to-send-additional-data.md
-    - name: 故障排除
+    - name: 疑难解答
       href: how-to-troubleshoot-dps.md
     - name: 使用 MQTT 协议与 DPS 通信
       href: iot-dps-mqtt-support.md

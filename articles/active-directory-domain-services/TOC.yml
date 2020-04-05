@@ -93,6 +93,8 @@
           href: security-audit-events.md
         - name: 使用 Azure Monitor 工作簿分析审核事件
           href: use-azure-monitor-workbooks.md
+        - name: 保护对 VM 的远程访问
+          href: secure-remote-vm-access.md
     - name: 将 VM 加入域
       items:
         - name: 通过模板将 Windows Server VM 加入托管域
@@ -111,7 +113,7 @@
           href: deploy-azure-app-proxy.md
         - name: 为 SharePoint Server 启用配置文件同步
           href: deploy-sp-profile-sync.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 常见错误
           href: troubleshoot.md
@@ -143,13 +145,9 @@
       href: faqs.md
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
-    - name: 兼容的第三方软件
-      href: compatible-software.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/active-directory-ds/'
     - name: Azure AD 反馈论坛
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: 联系我们
-      href: contact-us.md
     - name: 使用 Azure CSP 订阅中的 Azure AD 域服务
       href: csp.md

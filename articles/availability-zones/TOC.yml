@@ -85,6 +85,10 @@
           items:
             - name: 创建 Azure Active Directory 域服务实例
               href: ../active-directory-domain-services/tutorial-create-instance.md
+    - name: Edge Zones 文档
+      items:
+        - name: 什么是 Edge Zones？
+          href: ../networking/edge-zones-overview.md
 - name: 灾难恢复
   items:
     - name: 使用 Azure Site Recovery

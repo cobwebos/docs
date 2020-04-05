@@ -1,5 +1,5 @@
-- name: SQL Server Stretch Database 文档
-  href: index.md
+- name: Azure SQL Server Stretch Database 文档
+  href: index.yml
 - name: 概述
   items:
     - name: 什么是 Stretch Database？
@@ -12,7 +12,7 @@
       href: /sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor
     - name: 运行向导
       href: /sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard
-- name: 如何
+- name: 操作方式
   items:
     - name: 启用
       items:

@@ -74,7 +74,9 @@
           href: custom-policy-overview.md
     - name: 用户帐户
       href: user-overview.md
-- name: 操作方法指南
+    - name: 用户配置文件属性
+      href: user-profile-attributes.md
+- name: 操作指南
   items:
     - name: 应用集成
       items:
@@ -231,21 +233,19 @@
               href: direct-signin.md
         - name: 添加自己的业务逻辑
           items:
+            - name: 集成 REST API
+              href: custom-policy-rest-api-intro.md
             - name: 验证用户输入
               href: custom-policy-rest-api-claims-validation.md
               displayName: 'rest claims validation, validate'
             - name: 获取其他声明
               href: custom-policy-rest-api-claims-exchange.md
               displayName: rest claims exchange
-            - name: 添加自己的 RESTful API
-              href: rest-api-claims-exchange-dotnet.md
-            - name: 使用基本身份验证保护 RESTful API
-              href: secure-rest-api-dotnet-basic-auth.md
-            - name: 使用证书身份验证保护 RESTful API
-              href: secure-rest-api-dotnet-certificate-auth.md
+            - name: 保护 REST API
+              href: secure-rest-api.md
         - name: 定义自定义属性
           href: custom-policy-custom-attributes.md
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 使用 Application Insights 收集日志
               href: troubleshoot-with-application-insights.md
@@ -285,7 +285,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: String
+                    - name: 字符串
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md
@@ -309,13 +309,15 @@
                   items:
                     - name: 关于技术配置文件
                       href: technical-profiles-overview.md
+                    - name: 关于验证技术配置文件
+                      href: validation-technical-profile.md
+                    - name: Application Insights
+                      href: application-insights-technical-profile.md
+                    - name: Azure Active Directory
+                      href: active-directory-technical-profile.md
                     - name: Azure 多重身份验证
                       href: multi-factor-auth-technical-profile.md
                       displayName: mfa
-                    - name: 声明解析程序
-                      href: claim-resolver-overview.md
-                    - name: Azure Active Directory
-                      href: active-directory-technical-profile.md
                     - name: 声明转换
                       href: claims-transformation-technical-profile.md
                     - name: JWT 令牌颁发者
@@ -329,6 +331,8 @@
                       displayName: otp
                     - name: OpenID Connect
                       href: openid-connect-technical-profile.md
+                    - name: 电话因素
+                      href: phone-factor-technical-profile.md
                     - name: REST
                       href: restful-technical-profile.md
                     - name: SAML
@@ -340,12 +344,12 @@
                     - name: SSO 会话
                       href: custom-policy-reference-sso.md
                       displayName: single sign-on
-                    - name: 验证
-                      href: validation-technical-profile.md
             - name: UserJourneys
               href: userjourneys.md
             - name: RelyingParty
               href: relyingparty.md
+            - name: 声明解析程序
+              href: claim-resolver-overview.md
     - name: 使用 b2clogin.com
       items:
         - name: b2clogin.com 概述
@@ -389,28 +393,28 @@
           href: user-migration.md
 - name: 参考
   items:
-    - name: Identity Experience Framework 发行说明
-      href: custom-policy-developer-notes.md
+    - name: 计费模式
+      href: billing.md
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
-    - name: 页面布局版本
-      href: page-layout.md
     - name: Cookie 定义
       href: cookie-definitions.md
       displayName: 'cookies, SameSite'
     - name: 错误代码
       href: error-codes.md
+    - name: 扩展应用
+      href: extensions-app.md
+    - name: IEF 发行说明
+      href: custom-policy-developer-notes.md
     - name: Microsoft Graph API 操作
       href: microsoft-graph-operations.md
+    - name: 页面布局版本
+      href: page-layout.md
     - name: 上市区域和数据驻留
       href: data-residency.md
-    - name: 计费模式
-      href: billing.md
     - name: 威胁管理
       href: threat-management.md
       displayName: security
-    - name: 扩展应用
-      href: extensions-app.md
     - name: 用户流版本
       href: user-flow-versions.md
 - name: 资源

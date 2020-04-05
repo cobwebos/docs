@@ -26,7 +26,7 @@
       items:
         - name: 将实验室用于上课
           href: classroom-labs-scenarios.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 管理员指南
       href: administrator-guide.md
@@ -102,6 +102,8 @@
               href: how-to-enable-nested-virtualization-template-vm-using-script.md
         - name: 准备 Windows 模板 VM
           href: how-to-prepare-windows-template.md
+        - name: 控制 Windows 关机行为
+          href: how-to-windows-shutdown.md
         - name: 查看支持信息（讲师）
           href: lab-creator-support-information.md
     - name: 连接到课堂实验室中的 VM（学生）

@@ -92,7 +92,7 @@
           href: concept-azure-ad-connect-sync-user-and-contacts.md
         - name: 了解影子属性
           href: how-to-connect-syncservice-shadow-attributes.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 安装和升级
       items:
@@ -150,6 +150,8 @@
               href: plan-migrate-adfs-password-hash-sync.md
             - name: 从联合身份验证迁移到 PTA
               href: plan-migrate-adfs-pass-through-authentication.md
+            - name: 将组从一个林移到另一个林
+              href: how-to-connect-migrate-groups.md
         - name: 混合标识设计注意事项
           items:
             - name: 混合标识设计注意事项概述
@@ -282,7 +284,7 @@
               href: how-to-connect-sync-service-manager-ui-mvdesigner.md
             - name: Metaverse 搜索
               href: how-to-connect-sync-service-manager-ui-mvsearch.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 什么是 Azure AD Connect 管理员代理？
           href: whatis-aadc-admin-agent.md
