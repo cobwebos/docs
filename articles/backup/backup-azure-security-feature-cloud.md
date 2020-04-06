@@ -3,12 +3,12 @@ title: 有助于保护云工作负荷的安全功能
 description: 了解如何在 Azure 备份中使用安全功能，使备份更加安全。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 57c9fd76ae32aea49f480f2a88d8296538d8052d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7c86e18114513a264a0f9252589533fb7ff2d3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156066"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668740"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>有助于保护使用 Azure 备份的云工作负荷的安全功能
 
@@ -34,7 +34,7 @@ Azure 虚拟机的软删除保护通常可用。
 
 ### <a name="supported-regions"></a>支持的区域
 
-软删除目前支持在美国中西部，东亚，加拿大中部，加拿大东部，法国中部，法国南部，韩国中部，韩国，英国南部，英国西部，澳大利亚东部，澳大利亚东南，北欧，美国西部，美国西部，美国中部，南部东亚、美国中北部、美国中南部、日本东部、日本西部、印度南部、印度中部、印度西部、美国东部2个、瑞士北部、瑞士西部以及所有国家/
+软删除目前支持在美国中西部，东亚，加拿大中部，加拿大东部，法国中部，法国南部，韩国中部，韩国南部，英国南部，英国西部，澳大利亚东部，澳大利亚东南，北欧，美国西部，美国西部2，美国中部，东南亚，北中美国，美国中南部，日本东部，日本西部，印度南部，印度中部，印度西部，美国东部2，瑞士北部，瑞士西部，挪威西部，挪威东部和所有国家地区。
 
 ### <a name="soft-delete-for-vms-using-azure-portal"></a>使用 Azure 门户对 VM 进行软删除
 
@@ -264,7 +264,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>使用客户托管密钥加密的托管磁盘 VM 的备份
 
-Azure 备份还允许您备份使用密钥进行服务器端加密的 Azure VM。 用于加密磁盘的密钥存储在 Azure 密钥保管库中并由您管理。 使用客户管理的密钥的服务器端加密不同于 Azure 磁盘加密，因为 ADE 利用 BitLocker（用于 Windows）和 DM-Crypt（用于 Linux）来执行访客内加密，SSE 对存储服务中的数据进行加密，使您能够使用任何操作系统或VM 的图像。 有关详细信息，请参阅[使用客户托管密钥加密托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)。
+Azure 备份还允许您备份使用密钥进行服务器端加密的 Azure VM。 用于加密磁盘的密钥存储在 Azure 密钥保管库中并由您管理。 使用客户管理的密钥的服务器端加密不同于 Azure 磁盘加密，因为 ADE 利用 BitLocker（用于 Windows）和 DM-Crypt（适用于 Linux）来执行访客内加密，SSE 对存储服务中的数据进行加密，使您能够为 VM 使用任何操作系统或映像。 有关详细信息，请参阅[使用客户托管密钥加密托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)。
 
 ### <a name="backup-of-vms-encrypted-using-ade"></a>使用 ADE 加密的 VM 备份
 

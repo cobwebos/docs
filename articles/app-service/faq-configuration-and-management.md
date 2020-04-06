@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e7070e925d12df82adbc3683da5b10e48c5d4b0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942938"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668120"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
 
@@ -35,14 +35,14 @@ ms.locfileid: "78942938"
 若要了解如何为应用服务 Web 应用购买和设置自定义域，请参阅[在应用服务中配置和配置自定义域名](manage-custom-dns-buy-domain.md)。
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>如何为 Web 应用上传和配置现有 SSL 证书？
+## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>如何为 Web 应用上载和配置现有的 TLS/SSL 证书？
 
-若要了解如何上传和设置现有的自定义 SSL 证书，请参阅[将 SSL 证书添加到应用服务应用](configure-ssl-certificate.md)。
+要了解如何上载和设置现有的自定义 TLS/SSL 证书，请参阅[向应用服务应用添加 TLS/SSL 证书](configure-ssl-certificate.md)。
 
 
-## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>如何在 Azure 中为 Web 应用购买和配置新的 SSL 证书？
+## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>如何为 Web 应用在 Azure 中购买和配置新的 TLS/SSL 证书？
 
-若要了解如何为应用服务 Web 应用购买和设置 SSL 证书，请参阅[将 SSL 证书添加到应用服务应用](configure-ssl-certificate.md)。
+要了解如何为应用服务 Web 应用购买和设置 TLS/SSL 证书，请参阅[向应用服务应用添加 TLS/SSL 证书](configure-ssl-certificate.md)。
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>如何移动 Application Insights 资源？
@@ -63,7 +63,7 @@ ms.locfileid: "78942938"
 2. 在“应用设置”**** 下，添加此设置：
     * 键 = WEBSITE_TIME_ZONE
     * 值 = *所需时区*
-3. 选择“保存”。****
+3. 选择“保存”。 
 
 对于在 Windows 上运行的应用服务，请参阅[默认时区](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)一文中的“时区”**** 列了解接受的值。 对于在 Linux 上运行的应用程序服务，将[TZ 数据库名称](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)设置为时区值。 下面是 TZ 数据库名称的示例：美国/Adak。
 
@@ -84,7 +84,7 @@ ms.locfileid: "78942938"
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>如何获取 Web 应用的保留或专用入站 IP 地址？
 
-若要为针对 Azure 应用网站进行的入站调用设置专用或保留 IP 地址，请安装和配置基于 IP 的 SSL 证书。
+要为向 Azure 应用网站进行的入站呼叫设置专用或预留的 IP 地址，请安装和配置基于 IP 的 TLS/SSL 证书。
 
 请注意，若要将专用或保留 IP 地址用于入站调用，应用服务计划必须处于基本或更高服务计划中。
 
@@ -276,8 +276,8 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 有关应用服务中的身份验证和授权的详细文档，请参阅各种标识提供者登录的文档：
 * [Azure Active Directory](configure-authentication-provider-aad.md)
 * [Facebook](configure-authentication-provider-facebook.md)
-* [谷歌](configure-authentication-provider-google.md)
-* [微软帐户](configure-authentication-provider-microsoft.md)
+* [Google](configure-authentication-provider-google.md)
+* [Microsoft 帐户](configure-authentication-provider-microsoft.md)
 * [Twitter](configure-authentication-provider-twitter.md)
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>如何将默认的 *.azurewebsites.net 域重定向到我的 Azure Web 应用的自定义域？

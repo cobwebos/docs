@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71121952"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668561"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>未使用内部负载均衡器和应用服务环境将应用程序网关的后端服务器证书加入允许列表。
 
-本文排查以下问题：在 Azure 中使用端到端 SSL 期间，在后端结合使用内部负载均衡器 (ILB) 和应用服务环境 (ASE) 创建应用程序网关时，证书未加入允许列表。
+本文针对以下问题：在 Azure 中使用端到端 TLS 时，使用内部负载均衡器 （ILB） 和后端的应用服务环境 （ASE） 一起创建应用程序网关时，证书未列入白名单。
 
 ## <a name="symptoms"></a>症状
 
@@ -68,7 +68,7 @@ ms.locfileid: "71121952"
 
 - 如果使用的是 ILB 的 IP 地址，请清除应用程序网关的“用于应用服务”选项****。
 
-若要降低开销，可在 HTTP 设置中上传 ILB 证书，使探测路径正常工作。 （此步骤仅适用于允许列表操作， 它不会用于 SSL 通信。您可以通过从 HTTPS 上的浏览器访问 ILB 及其 IP 地址，然后以 Base-64 编码的 CER 格式导出 SSL 证书，并在相应的 HTTP 设置上上载证书来检索 ILB 证书。
+若要降低开销，可在 HTTP 设置中上传 ILB 证书，使探测路径正常工作。 （此步骤仅适用于允许列表操作， 它不会用于 TLS 通信。您可以通过从 HTTPS 上的浏览器访问 ILB 及其 IP 地址，然后以 Base-64 编码的 CER 格式导出 TLS/SSL 证书，并在相应的 HTTP 设置上上载证书来检索 ILB 证书。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

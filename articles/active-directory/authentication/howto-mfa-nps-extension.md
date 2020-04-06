@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c251569cfe6a2f27f86421ffe6a446ace52b435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f884f4c0ea3a610f28a8fdbb34b081f0b0a64d08
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051152"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666952"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -78,6 +78,7 @@ NPS 服务器必须能够通过端口 80 和 443 与以下 URL 通信。
 
 - https：\//adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
+- https：\//credentials.azure.com
 
 此外，需要连接到以下 URL 才能[使用提供的 PowerShell 脚本完成适配器的设置](#run-the-powershell-script)
 
@@ -96,7 +97,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 1. 在服务器上，从“服务器管理器快速入门”菜单中打开“添加角色和功能向导”****。
 2. 为安装类型选择“基于角色或基于功能的安装”****。
 3. 选择“网络策略和访问服务”**** 服务器角色。 可能会弹出窗口，以通知运行此角色所需的功能。
-4. 继续完成该向导，直到出现“确认”页。 选择**安装**。
+4. 继续完成该向导，直到出现“确认”页。 选择“安装”  。
 
 既然已为 NPS 指定了服务器，还应配置此服务器以处理来自 VPN 解决方案的传入 RADIUS 请求。
 
@@ -125,7 +126,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
       > [!NOTE]
       > 部署 NPS 扩展时，请根据这些因素评估你的用户可使用哪些方法。 如果你的 RADIUS 客户端支持 PAP，但客户端 UX 没有可用于输入验证码的输入字段，则电话呼叫和移动应用通知是两种受支持的选项。
       >
-      > 此外，如果您的 VPN 客户端 UX 支持输入字段，并且您已配置了网络访问策略 - 身份验证可能会成功，但是网络策略中配置的 RADIUS 属性都不会应用于网络访问设备，像RRAS服务器，也不是VPN客户端。 因此，VPN 客户端可能具有比预期更多的访问权限，或者对无法访问的访问更少。
+      > 此外，如果您的 VPN 客户端 UX 支持输入字段，并且您已配置了网络访问策略 - 身份验证可能会成功，但是网络策略中配置的 RADIUS 属性都不会应用于网络访问设备（如 RRAS 服务器）和 VPN 客户端。 因此，VPN 客户端可能具有比预期更多的访问权限，或者对无法访问的访问更少。
       >
 
 2. 客户端应用程序（VPN、Netscaler 服务器或其他客户端）可以处理的输入方法。 例如，VPN 客户端是否有一些手段允许用户键入通过文本或移动应用收到的验证码？
@@ -200,7 +201,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 1. 在 NPS 服务器上打开**注册表编辑器**。
 1. 导航到 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`。 设置以下键值：
 
-    | 注册表项       | “值” |
+    | 注册表项       | 值 |
     |--------------------|-----------------------------------|
     | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
     | STS_URL            | https://login.microsoftonline.us/ |
@@ -238,7 +239,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 如果你的某些用户未注册 MFA，你可以确定当他们尝试身份验证时要发生什么行为。 使用注册表路径 *HKLM\Software\Microsoft\AzureMFA* 中的注册表设置 *REQUIRE_USER_MATCH* 可以控制功能行为。 此项设置提供单个配置选项：
 
-| 键 | “值” | 默认 |
+| 密钥 | 值 | 默认 |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE/FALSE | 未设置（相当于 TRUE） |
 

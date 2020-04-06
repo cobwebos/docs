@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1392f69bea09996e46ad4c112474f9067ff5a63d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ed7686bbef7dc1342528475226d11b8b8b8fb640
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656918"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668605"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 Lucene 查询语法
 
@@ -104,7 +104,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
 ### <a name="or-operator-or-or-"></a>OR 运算符 `OR` 或 `||`
 
-OR 运算符是一个竖条或管状字符。 例如：`wifi || luxury` 将搜索包含"wifi"或"luxury"（或两者）的文档。 由于 OR 是默认连接运算符，因此也可以省略，这样 `wifi luxury` 等同于 `wifi || luxuery`。
+OR 运算符是一个竖条或管状字符。 例如：`wifi || luxury` 将搜索包含"wifi"或"luxury"（或两者）的文档。 由于 OR 是默认连接运算符，因此也可以省略，这样 `wifi luxury` 等同于 `wifi || luxury`。
 
 ### <a name="and-operator-and--or-"></a>AND 运算符 `AND`、`&&` 或 `+`
 
@@ -162,6 +162,8 @@ NOT 运算符为感叹号或减号。 例如：`wifi !luxury` 将搜索包含“
  正则表达式搜索基于正斜杠“/”之间的内容查找匹配项，如在 [RegExp 类](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)中所记录的那样。  
 
  例如，若要查找包含“汽车旅馆”或“酒店”的文档，请指定 `/[mh]otel/`。 正则表达式搜索与单个词匹配。
+
+某些工具和语言施加了额外的转义字符要求。 对于 JSON，包含前斜杠的字符串将用向后斜杠转出："microsoft.com/azure/"成为`search=/.*microsoft.com\/azure\/.*/`设置`search=/.* <string-placeholder>.*/`正则表达式的位置，并且`microsoft.com\/azure\/`是具有转义向前斜杠的字符串。
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>通配符搜索  
  可将通常可识别的语法用于多个 (*) 或单个 (?) 字符通配符搜索。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。

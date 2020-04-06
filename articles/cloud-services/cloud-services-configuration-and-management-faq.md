@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77656919"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668580"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题解答 (FAQ)
 
@@ -30,11 +30,11 @@ ms.locfileid: "77656919"
 
 **证书**
 
-- [为什么云服务 SSL 证书的证书链不完整？](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
+- [为什么我的云服务 TLS/SSL 证书的证书链不完整？](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
 - [“用于扩展的 Windows Azure 工具加密证书”有何用途？](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [如何在未“通过 RDP 连接”到实例的情况下生成证书签名请求 (CSR)？](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [我的云服务管理证书即将过期。如何续订？](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [如何自动安装主要 SSL 证书 (.pfx) 和中间证书 (.p7b)？](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [如何自动安装主 TLS/SSL 证书 （.pfx） 和中间证书 （.p7b）？](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
 - [“用于 MachineKey 的 Microsoft Azure 服务管理”证书的用途是什么？](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **监视和日志记录**
@@ -55,7 +55,7 @@ ms.locfileid: "77656919"
 - [没有权限的 Microsoft 内部工程师能否通过远程桌面连接到云服务实例？](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
 - [无法使用 RDP 文件将桌面远程到云服务 VM。我得到以下错误：发生了身份验证错误（代码：0x80004005）](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
-**缩放**
+**扩展**
 
 - [无法扩展到 X 个实例以上](#i-cannot-scale-beyond-x-instances)
 - [如何基于内存指标配置自动缩放？](#how-can-i-configure-auto-scale-based-on-memory-metrics)
@@ -75,7 +75,7 @@ ms.locfileid: "77656919"
 
 ## <a name="certificates"></a>证书
 
-### <a name="why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete"></a>为什么云服务 SSL 证书的证书链不完整？
+### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>为什么我的云服务 TLS/SSL 证书的证书链不完整？
     
 建议客户安装完整的证书链（叶证书、中间证书和根证书），而不是仅安装叶证书。 如果仅安装叶证书，将依赖 Windows 通过遍历 CTL 生成证书链。 如果在 Windows 尝试验证证书时，Azure 或 Windows 更新中出现间歇性网络或 DNS 问题，证书可能会被视为无效。 通过安装完整的证书链可避免此问题。 博客[如何安装链接的 SSL 证书](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/)演示了如何执行此操作。
 
@@ -103,7 +103,7 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
 
 **Get-AzurePublishSettingsFile** 将在 Azure 门户的“订阅”**** > “管理证书”**** 中创建新的管理证书。 新证书的名称类似于“YourSubscriptionNam]-[CurrentDate]-credentials”。
 
-### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自动安装主要 SSL 证书 (.pfx) 和中间证书 (.p7b)？
+### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自动安装主 TLS/SSL 证书 （.pfx） 和中间证书 （.p7b）？
 
 可以使用启动脚本 (batch/cmd/PowerShell) 自动执行此任务，并在服务定义文件中注册该启动脚本。 将启动脚本和证书（.p7b 文件）添加到启动脚本同一目录的项目文件夹中。
 
@@ -196,7 +196,7 @@ Windows 10 和 Windows Server 2016 随附了对客户端和服务器端上的 HT
 5. 重启服务器。
 6. 转到“默认网站”，在“绑定”下，使用刚刚创建的自签名证书创建新的 TLS 绑定。******** 
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 
 - [IIS 上的 HTTP/2](https://blogs.iis.net/davidso/http2)
 - [视频：Windows 10 中的 HTTP/2：浏览器、应用和 Web 服务器](https://channel9.msdn.com/Events/Build/2015/3-88)
@@ -311,7 +311,7 @@ SNI 绑定可以使用 PowerShell cmdlet**新 Web 绑定**在云服务角色实�
     
 如[此文](https://technet.microsoft.com/library/ee790567.aspx)所述，$sslFlags 可为以下值之一：
 
-|“值”|含义|
+|值|含义|
 ------|------
 |0|没有 SNI|
 |1|已启用 SNI|

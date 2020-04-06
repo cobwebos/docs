@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 9ad9e13667791c38a8bf8be01919bcdbd0032102
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: c4e7566eeb28bc5709acd60ced9fcdffb7e8a725
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519588"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668006"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -45,7 +45,7 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
     |    AD Web 服务    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    不可用       |    回声回复    |
+    |    ICMPv4             |    空值       |    回声回复    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -74,13 +74,15 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 
     请参阅设计有关 AD 站点和服务[的站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
     
-* Azure NetApp 文件支持 DES、Kerberos AES 128 和 Kerberos AES 256 加密类型（从最不安全到最安全）。 用于加入活动目录的用户凭据必须启用与为活动目录启用的功能匹配的最高相应帐户选项。   
+<!--
+* Azure NetApp Files supports DES, Kerberos AES 128, and Kerberos AES 256 encryption types (from the least secure to the most secure). The user credentials used to join Active Directory must have the highest corresponding account option enabled that matches the capabilities enabled for your Active Directory.   
 
-    例如，如果活动目录仅具有 AES-128 功能，则必须为用户凭据启用 AES-128 帐户选项。 如果您的 Active Directory 具有 AES-256 功能，则必须启用 AES-256 帐户选项（该选项还支持 AES-128）。 如果活动目录没有任何 Kerberos 加密功能，则 Azure NetApp 文件默认使用 DES。  
+    For example, if your Active Directory has only the AES-128 capability, you must enable the AES-128 account option for the user credentials. If your Active Directory has the AES-256 capability, you must enable the AES-256 account option (which also supports AES-128). If your Active Directory does not have any Kerberos encryption capability, Azure NetApp Files uses DES by default.  
 
-    您可以在活动目录用户和计算机 MMC 控制台的属性中启用帐户选项：   
+    You can enable the account options in the properties of the Active Directory Users and Computers MMC console:   
 
-    ![活动目录用户和计算机 MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
+    ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
+-->
 
 有关其他 AD 信息，请参阅 Azure NetApp 文件[SMB 常见问题解答](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)。 
 

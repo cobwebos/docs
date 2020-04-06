@@ -9,12 +9,12 @@ ms.date: 03/06/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 48c8179af4a4b69924fb943ac98918b48d3a2008
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4d247f151240da8c3f0d38bbd22e43e230a1b95
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537357"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668619"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 X.509 证书创建和预配 IoT 边缘设备
 
@@ -73,6 +73,9 @@ Windows：
 
 有关设备预配服务中的注册的详细信息，请参阅[如何管理设备注册](../iot-dps/how-to-manage-enrollments.md)。
 
+   > [!TIP]
+   > 在 Azure CLI 中，您可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)或[注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用**启用边缘**的标志指定设备或设备组是 IoT Edge 设备。
+
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 IoT 中心设备预配服务的实例。
 
 1. 在“设置”下，选择“管理注册”。********
@@ -104,7 +107,7 @@ Windows：
       }
       ```
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 继续安装[IoT 边缘运行时](#install-the-iot-edge-runtime)部分以设置 IoT 边缘设备。
 
@@ -130,7 +133,7 @@ Windows：
 
    如果您使用的是演示证书，请`<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem`上传证书。
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 1. 您的证书现在应列在 **"证书"** 页上。 选择它以打开证书详细信息。
 
@@ -189,7 +192,7 @@ Windows：
       }
       ```
 
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 继续下一节以设置 IoT 边缘设备。
 

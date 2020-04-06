@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 839e13dffc7d15b8cd258dd4b7dda6776223d052
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051743"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666867"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -91,7 +91,10 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 
 使用自己的 HTML 和 CSS 文件自定义 UI 时，可将 UI 内容托管在支持 CORS 的任何公用 HTTPS 终结点上。 例如，[Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)、Web 服务器、CDN、AWS S3 或文件共享系统。
 
-重要的一点是，可以在启用了 CORS 的公共 HTTPS 终结点上托管内容。 在内容中指定绝对 URL 时，必须使用绝对 URL。
+重要的是，在[启用了 CORS](https://enable-cors.org/server.html)的可用 HTTPS 终结点上托管内容。 在内容中指定绝对 URL 时，必须使用绝对 URL。
+
+> [!NOTE]
+> 有关创建 HTML 内容、将内容上载到 Azure Blob 存储以及配置 CORS 的详细信息，请参阅 UI 自定义文章中的[自定义页面内容演练](custom-policy-ui-customization.md#custom-page-content-walkthrough)部分。
 
 ## <a name="get-started-with-custom-html-and-css"></a>自定义 HTML 和 CSS 入门
 
@@ -166,7 +169,7 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 
 首先在公司**品牌**中设置横幅徽标、背景图像和背景颜色。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”**** 筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”****。
 1. 在 **"管理**"下，选择 **"公司品牌**"。
@@ -187,7 +190,7 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 1. 选择要为其启用公司品牌的用户流。 *"登录 v1"* 和 *"配置文件编辑 v1"* 用户流类型**不支持**公司品牌。
 1. 在 **"自定义"** 下，选择**页面布局**，然后选择要打造品牌的布局。 例如，选择 **"统一注册"或"登录"页**。
 1. 对于**页面布局版本（预览），** 请选择版本**1.2.0**或以上。
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 如果要为用户流中的所有页面设置品牌，可以设置用户流中每个页面布局的页面布局版本。
 

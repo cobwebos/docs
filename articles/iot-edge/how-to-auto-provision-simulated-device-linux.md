@@ -4,16 +4,16 @@ description: 使用 Linux VM 上的模拟 TPM 来测试 Azure IoT Edge 的 Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/01/2019
+ms.date: 3/2/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6bb1282212ccff45f179b8750e3ed8aec27d129e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b62f551e2532e0205159358b3618695524ae85c8
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76511053"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666693"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>使用 Linux 虚拟机上的虚拟 TPM 创建和预配 IoT Edge 设备
 
@@ -157,6 +157,9 @@ ms.locfileid: "76511053"
 
 在 DPS 中创建注册时，可以声明“初始设备孪生状态”。**** 在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-monitor.md)。
 
+> [!TIP]
+> 在 Azure CLI 中，您可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)或[注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用**启用边缘**的标志指定设备或设备组是 IoT Edge 设备。
+
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 IoT 中心设备预配服务的实例。
 
 2. 在“设置”下，选择“管理注册”。********
@@ -189,7 +192,7 @@ ms.locfileid: "76511053"
       }
       ```
 
-   7. 选择“保存”。****
+   7. 选择“保存”。 
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。
 

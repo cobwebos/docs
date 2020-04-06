@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: c5972b602d92b2e08fd70850dd1af5c1236e2b1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 97aa446636ea3131246a06f69f74b5868abff608
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234460"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668644"
 ---
 # <a name="connect-to-azure-storage-services"></a>连接到 Azure 存储服务
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "80234460"
 
 ## <a name="supported-data-storage-service-types"></a>支持的数据存储服务类型
 
-数据存储目前支持将连接信息存储到以下矩阵中列出的存储服务。 此时，不支持 Azure 数据仓库。 
+数据存储目前支持将连接信息存储到以下矩阵中列出的存储服务。
 
 | 存储&nbsp;类型 | 身份验证&nbsp;类型 | [Azure&nbsp;&nbsp;机器学习工作室](https://ml.azure.com/) | [Azure&nbsp;&nbsp;机器学习&nbsp;Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;&nbsp;机器学习 CLI](reference-azure-machine-learning-cli.md) | [Azure&nbsp;&nbsp;机器学习&nbsp;休息 API](https://docs.microsoft.com/rest/api/azureml/)
 ---|---|---|---|---|---
@@ -268,7 +268,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Azure 机器学习提供多种方法来使用模型进行评分。 其中一些方法不提供对数据存储的访问权限。 使用下表了解允许在评分期间访问数据存储的方法：
 
-| 方法 | 数据存储访问 | 描述 |
+| 方法 | 数据存储访问 | 说明 |
 | ----- | :-----: | ----- |
 | [成批预测](how-to-use-parallel-run-step.md) | ✔ | 以异步方式对大量数据进行预测。 |
 | [Web 服务](how-to-deploy-and-where.md) | &nbsp; | 将模型部署为 Web 服务。 |

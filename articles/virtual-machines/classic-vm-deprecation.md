@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 764567bffd2a08ebb5beb17e3063998848b3f110
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e56aa5ec073aadc2a16d53c266d33255a34077cb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127334"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668805"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>到 2023 年 3 月 1 日前将 IaaS 资源迁移到 Azure 资源管理器 
 
@@ -45,6 +45,6 @@ ms.locfileid: "79127334"
 
 - 有关详细信息，请参阅有关 Azure[资源管理器迁移的经典问题](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq)
 
-- 有关技术问题和问题，[请联系支持](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)人员。
+- 对于技术问题、问题和订阅白名单[，请联系支持](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 - 对于不属于常见问题解答和反馈的其他问题，请评论如下。

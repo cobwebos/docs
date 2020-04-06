@@ -1,59 +1,69 @@
 ---
-title: 其工作原理 Azure MFA - Azure 活动目录
-description: Azure 多重身份验证可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。
+title: Azure 多重身份验证概述
+description: 了解 Azure 多重身份验证如何帮助保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 04/03/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39948214f5bd080be417ed515bea6bff87d3b303
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c50232abd12c8c0390409bd7bf72833b4f153e02
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77484054"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667358"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>工作原理：Azure 多重身份验证
 
-双重验证的安全性在于它的分层方法。 破坏多因素身份验证系统对于攻击者来说是巨大的挑战。 即使攻击者设法得到用户的密码，如果没有同时占有其他身份验证方法也没有用处。 它需要以下身份验证方法中的两种或多种才能运作：
+多重身份验证是一种过程。在该过程中，系统会在用户登录时提示其输入其他形式的标识，例如在其手机上输入代码或提供指纹扫描。
 
-* 你知道的某样东西（通常为密码）
-* 具有的某样东西（无法轻易复制的可信设备，如电话）
-* 自身的特征（生物辨识系统）
+如果只使用密码对用户进行身份验证，则会留下不安全的矢量，容易受到攻击。 如果密码弱或者已在其他位置公开，那么如何确定是该用户在使用用户名和密码登录，还是攻击者在登录？ 需要另一种形式的身份验证时，会提高安全性，因为攻击者并不容易获取或复制进行多重身份验证所需的额外内容。
 
-<center>
+![不同形式的多重身份验证的概念图](./media/concept-mfa-howitworks/methods.png)
 
-![概念身份验证方法图像](./media/concept-mfa-howitworks/methods.png)</center>
+Azure 多重身份验证需要以下身份验证方法中的两种或更多种才能运作：
 
-Azure 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问，同时满足用户对简单性的需求。 它通过要求第二种形式的身份验证提供额外的安全性，并通过一系列简单的[身份验证方法](concept-authentication-methods.md)提供增强式身份验证。 根据管理员制定的配置决策，用户可能会受到 MFA 的质疑，也可能不会受到 MFA 的质疑。
+* 你知道的某样东西，通常为密码。
+* 你有的某样东西，例如无法轻易复制的可信设备，如电话或硬件密钥。
+* 自身的特征 - 生物识别，如指纹或面部扫描。
 
-## <a name="how-to-get-multi-factor-authentication"></a>如何获取多重身份验证？
+用户只需执行一个步骤即可自行注册自助式密码重置和 Azure 多重身份验证，这样可以简化加入体验。 管理员可以定义能够使用的辅助身份验证形式。 当用户执行自助式密码重置以进一步保护该过程时，也可能需要 Azure 多重身份验证。
 
-多重身份验证属于以下产品/服务的一部分：
+![登录屏幕上使用的身份验证方法](media/concept-authentication-methods/overview-login.png)
 
-* **Azure 活动目录高级**版或**Microsoft 365 业务**版 - 使用条件访问策略使用 Azure 多重身份验证的完全功能使用，以需要多重身份验证。
+Azure 多重身份验证有助于保护对数据和应用程序的访问，同时保持用户的简单性。 它通过要求第二种形式的身份验证提供额外的安全性，并通过一系列简单的[身份验证方法](concept-authentication-methods.md)提供增强式身份验证。 根据管理员制定的配置决策，用户可能会受到 MFA 的质疑，也可能不会受到 MFA 的质疑。
 
-* **Azure AD 免费**或独立**Office 365**许可证 - 使用[安全默认值](../fundamentals/concept-fundamentals-security-defaults.md)需要为用户和管理员进行多重身份验证。
+应用程序或服务无需进行任何更改，即使用 Azure 多重身份验证。 验证提示是 Azure AD 登录事件的一部分，该事件在需要时自动请求和处理 MFA 质询。
 
-* **Azure Active Directory 全局管理员** - 提供 Azure 多重身份验证的部分功能，可用来保护全局管理员帐户。
+## <a name="available-verification-methods"></a>可用的验证方法
 
-> [!NOTE]
-> 自 2018 年 9 月 1 日起，新客户无法再将 Azure 多重身份验证作为独立产品进行购买。 多重身份验证将继续成为 Azure AD Premium 许可证中的可用功能。
+当用户登录到应用程序或服务并收到 MFA 提示时，他们可以选择其注册的其他验证形式之一。 管理员可能需要注册这些 Azure 多重身份验证验证方法，或者用户可以访问自己的["我的配置文件"](https://myprofile.microsoft.com)来编辑或添加验证方法。
 
-## <a name="supportability"></a>可支持性
+以下其他验证形式可用于 Azure 多重身份验证：
 
-由于大多数用户习惯只使用密码进行身份验证，因此，贵组织必须让所有用户了解此过程。 如果用户熟悉该过程，他们就不会在遇到与 MFA 相关的小问题时经常呼叫支持人员。 但是，在某些情况下，需要暂时禁用 MFA。 使用以下指导原则了解如何处理这种情况：
+* Microsoft Authenticator 应用
+* OATH 硬件令牌
+* SMS
+* 语音呼叫
 
-* 请对支持人员进行培训，以处理用户因无法访问其身份验证方法或操作不正确而无法登录的情况。
-   * 使用 Azure MFA 服务的条件访问策略，支持人员可以将用户添加到从需要 MFA 的策略中排除的组。
-* 请考虑使用条件访问命名位置作为最小化两步验证提示的方法。 借助此功能，管理员可以绕过从安全受信任的网络位置登录的用户（如用于新用户加入的网段）的两步验证。
-* 部署[Azure AD 标识保护](../active-directory-identityprotection.md)，并根据风险检测触发两步验证。
+## <a name="how-to-enable-and-use-azure-multi-factor-authentication"></a>如何启用和使用 Azure 多重身份验证
+
+可以为 Azure 多重身份验证启用用户和组，以在登录事件期间提示进行其他验证。 所有 Azure AD 租户都可以使用[安全默认值](../fundamentals/concept-fundamentals-security-defaults.md)，以便快速启用所有用户使用 Microsoft 身份验证器应用。
+
+对于更精细的控件，[条件访问](../conditional-access/overview.md)策略可用于定义需要 MFA 的事件或应用程序。 当用户位于公司网络或已注册的设备上时，这些策略可以允许定期登录事件，但在远程或个人设备上提示其他验证因素。
+
+![有关条件访问如何保护登录过程的概览图](media/tutorial-enable-azure-mfa/conditional-access-overview.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [分步 Azure 多重身份验证部署](howto-mfa-getstarted.md)
+要了解许可，请参阅[Azure 多重身份验证的功能和许可证](concept-mfa-licensing.md)。
+
+要查看 MFA 的运行情况，请在以下教程中为一组测试用户启用 Azure 多重身份验证：
+
+> [!div class="nextstepaction"]
+> [启用 Azure 多重身份验证](tutorial-mfa-applications.md)

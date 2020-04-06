@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cabfc84d2bc0c9d08a457e67c0182d7550f04ceb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75647877"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668887"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>配置一个或多个 Always On 可用性组侦听器 - Resource Manager
 本主题说明如何：
@@ -58,9 +58,13 @@ ms.locfileid: "75647877"
 
 ## <a name="determine-the-load-balancer-sku-required"></a>确定所需的负载均衡器 SKU
 
-[Azure 负载均衡器](../../../load-balancer/load-balancer-overview.md)有 2 个 SKU：基本&标准。 建议使用标准负载均衡器。 如果虚拟机在可用性集中，则可以使用基本负载均衡器。 标准负载均衡器要求所有 VM IP 地址都使用标准 IP 地址。
+[Azure 负载均衡器](../../../load-balancer/load-balancer-overview.md)有 2 个 SKU：基本&标准。 建议使用标准负载均衡器。 如果虚拟机在可用性集中，则可以使用基本负载均衡器。 如果虚拟机位于可用性区域中，则需要标准负载均衡器。 标准负载均衡器要求所有 VM IP 地址都使用标准 IP 地址。
 
 可用性组的当前 [Microsoft 模板](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)使用具有基本 IP 地址的基本负载均衡器。
+
+   > [!NOTE]
+   > 如果使用标准负载均衡器和云见证的 Azure 存储，则需要配置[服务终结点](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。 
+
 
 本文中的示例指定了一个标准负载均衡器。 在示例中，脚本包括了 `-sku Standard`。
 
@@ -226,6 +230,8 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
 * 使用内部负载均衡器只能从同一个虚拟网络中访问侦听器。
 
 * 如果要限制 Azure 网络安全组的访问权限，请确保“允许”规则包含后端 SQL Server VM IP 地址、可用性组侦听器的负载均衡器浮动 IP 地址、群集核心 IP 地址（如适用）。
+
+* 在将具有 Azure 存储的标准负载均衡器用于云见证时创建服务终结点。 有关详细信息，请参阅[从虚拟网络授予访问权限](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。
 
 ## <a name="for-more-information"></a>更多信息
 有关详细信息，请参阅[在 Azure VM 中手动配置 Always On 可用性组](virtual-machines-windows-portal-sql-availability-group-tutorial.md)。

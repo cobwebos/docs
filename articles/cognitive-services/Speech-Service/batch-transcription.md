@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: ee7fbddade055c11f5870aa5a588a2fd02f10a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131600"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668840"
 ---
 # <a name="what-is-batch-transcription"></a>什么是批次转录？
 
@@ -70,7 +70,7 @@ Batch 听录 API 支持以下格式：
 
 对于立体声音频流，在听录期间会拆分左右声道。 对于每个声道，将创建一个 JSON 结果文件。 开发人员可利用为每个言语生成的时间戳创建有序的最终脚本。
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>配置
 
 配置参数以 JSON 形式提供：
 
@@ -304,9 +304,6 @@ Batch 听录 API 支持以下格式：
 ## <a name="sample-code"></a>示例代码
 
 `samples/batch` 子目录内的 [GitHub 示例存储库](https://aka.ms/csspeech/samples)中提供了完整示例。
-
-> [!NOTE]
-> 批处理转录功能通过上述 REST API 公开。 因此，批处理转录可以从几乎任何支持 REST 的编程语言或环境中使用。 下面的示例和 GitHub 中的示例只是具有代表性的，**并不**表示对可以使用 API 的位置的限制。
 
 如要使用自定义声学或语言模型，必须使用订阅信息、服务区域、指向要转录的音频文件的 SAS URI 和模型 ID 来自定义示例代码。
 

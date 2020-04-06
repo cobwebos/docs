@@ -1,6 +1,6 @@
 ---
-title: 自助式密码重置部署 - Azure Active Directory
-description: 有关成功实现 Azure AD 自助式密码重置的策略
+title: Azure 活动目录自助服务密码重置的部署注意事项
+description: 了解成功实现 Azure AD 自助服务密码重置的部署注意事项和策略
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,27 +11,34 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7be99959c2ae420cff667491f68c40dfa0862a9
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: cd5b9e1f2640e68f7c819a49ad34d9c051c582c5
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652392"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667327"
 ---
-# <a name="plan-an-azure-active-directory-self-service-password-reset"></a>计划 Azure 活动目录自助服务密码重置
+# <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>规划 Azure 活动目录自助密码重置部署
 
-> [!NOTE]
-> 此部署计划提供了部署 Azure AD 自助服务密码重置 （SSPR） 的规划指南和最佳实践。 <br>**如果您正在寻找 SSPR 工具以返回您的帐户，请转到[https://aka.ms/sspr](https://aka.ms/sspr)**。
+> [!IMPORTANT]
+> 此部署计划提供了部署 Azure AD 自助服务密码重置 （SSPR） 的指南和最佳实践。
+>
+> **如果您是最终用户，需要返回您的帐户，请转到[https://aka.ms/sspr](https://aka.ms/sspr)**。
 
-[自助服务密码重置 （SSPR）](https://www.youtube.com/watch?v=tnb2Qf4hTP8)是 Azure 活动目录 （AD） 功能，使用户能够重置其密码，而无需联系 IT 人员寻求帮助。 用户可以快速解除自我阻止，并继续工作，无论他们在哪里或一天的时间。 通过允许员工自行解除阻止，您的组织可以减少大多数常见与密码相关的问题的非生产时间和高支持成本。 
+[自助服务密码重置 （SSPR）](https://www.youtube.com/watch?v=tnb2Qf4hTP8)是 Azure 活动目录 （AD） 功能，使用户能够重置其密码，而无需联系 IT 人员寻求帮助。 用户可以快速解除自我阻止，并继续工作，无论他们在哪里或一天的时间。 通过允许员工自行解除阻止，您的组织可以减少大多数常见与密码相关的问题的非生产时间和高支持成本。
 
 SSPR 具有以下关键功能：
 
 * 自助服务允许最终用户重置其过期或未过期的密码，而无需联系管理员或帮助台寻求支持。
-
 * [密码回写](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)允许管理本地密码，并解决通过云的帐户锁定问题。
-
 * 密码管理活动报告使管理员能够深入了解其组织中发生的密码重置和注册活动。
+
+此部署指南演示如何规划然后测试 SSPR 推出。
+
+要快速查看 SSPR 的操作，然后回来了解其他部署注意事项：
+
+> [!div class="nextstepaction"]
+> [启用自助服务密码重置 （SSPR）](tutorial-enable-sspr.md)
 
 ## <a name="learn-about-sspr"></a>了解 SSPR
 
@@ -213,7 +220,7 @@ Microsoft 建议组织启用 SSPR 和多重身份验证的组合注册体验。 
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>具有多个标识管理系统的环境
 
-某些环境具有多个标识管理系统。 预置标识管理器（如 Oracle AM 和 SiteMinder）需要与 AD 同步才能获得密码。 您可以使用 Microsoft 标识管理器 （MIM） 的密码更改通知服务 （PCNS） 等工具执行此操作。 若要查找有关此类较复杂方案的信息，请参阅[在域控制器上部署 MIM 密码更改通知服务](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)一文。
+某些环境具有多个标识管理系统。 本地标识管理器（如 Oracle AM 和 SiteMinder）需要与 AD 同步才能获得密码。 您可以使用 Microsoft 标识管理器 （MIM） 的密码更改通知服务 （PCNS） 等工具执行此操作。 若要查找有关此类较复杂方案的信息，请参阅[在域控制器上部署 MIM 密码更改通知服务](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)一文。
 
 ## <a name="plan-testing-and-support"></a>计划测试和支持
 
@@ -255,7 +262,7 @@ Microsoft 建议组织启用 SSPR 和多重身份验证的组合注册体验。 
 | 用户无法设置新密码| 用户在密码重置流期间完成验证，但无法设置新密码。 |
 | 用户在 Windows 10 设备上看不到重置密码链接| 用户尝试从 Windows 10 锁屏界面重置密码，但设备未加入 Azure AD，或者未启用 Intune 设备策略 |
 
-### <a name="plan-roll-back"></a>计划回滚
+### <a name="plan-rollback"></a>计划回滚
 
 要回滚部署：
 
@@ -295,7 +302,7 @@ Microsoft 建议组织启用 SSPR 和多重身份验证的组合注册体验。 
 1. [本地集成](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)
 
 ### <a name="enable-sspr-in-windows"></a>在 Windows 中启用 SSPR
-对于运行 Windows 7、8、8.1 和 10 的计算机，您可以[允许用户在 Windows 登录屏幕重置密码](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows)
+对于运行 Windows 7、8、8.1 和 10 的计算机，您可以[允许用户在 Windows 登录屏幕重置其密码](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows)
 
 ## <a name="manage-sspr"></a>管理 SSPR
 
@@ -316,7 +323,7 @@ Azure AD 可以通过审核和报告提供有关 SSPR 性能的其他信息。
 
 [使用和见解](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights)使您能够了解 Azure MFA 和 SSPR 等功能的身份验证方法在组织中的工作方式。 此报告功能为您的组织提供了了解注册哪些方法以及如何使用它们的方法的方法。
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 * 请参阅[故障排除自助服务密码重置](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-troubleshoot) 
 
@@ -336,7 +343,7 @@ Azure AD 可以通过审核和报告提供有关 SSPR 性能的其他信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要开始部署 SSPR，请参阅[完成 Azure AD 自助密码重置试验推出](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot)
+* 要开始部署 SSPR，请参阅[启用 Azure AD 自助服务密码重置](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr.md)
 
 * [考虑实施 Azure AD 密码保护](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73242481"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667874"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp 文件网络规划指南
 
@@ -39,10 +39,11 @@ Azure NetApp 文件当前不支持以下功能：
 * 用户定义的路由 （UDR）， 地址前缀为 Azure NetApp 文件子网
 * Azure NetApp 文件界面上的 Azure 策略（例如，自定义命名策略）
 * Azure NetApp 文件流量的负载均衡器
+* Azure 虚拟 WAN 不支持 Azure NetApp 文件
 
 以下网络限制适用于 Azure NetApp 文件：
 
-* 在 VNet 中使用具有 Azure NetApp 文件（包括对等 VNet）的 IP 数不能超过 1000。 我们正在努力提高这一限额，以满足客户规模需求。 在此期间，如果您需要更多 IP，请使用您的用例和要求的限制联系我们的支持团队。
+* 在 VNet 中使用具有 Azure NetApp 文件（包括对等 VNet）的 IP 数不能超过 1000。 我们正在努力提高这一限额，以满足客户规模需求。 
 * 在每个 Azure 虚拟网络 (VNet) 中，只能将一个子网委派给 Azure NetApp 文件。
 
 
@@ -123,8 +124,8 @@ Azure NetApp 文件的委派子网不支持用户定义的路由 （UDR） 和�
 * 本地资源 VM 1 和 VM 2 可以通过站点到站点 VPN 和区域 Vnet 对等互连连接到卷 2 或卷 3。
 * 中心 VNet 中的 VM 3 可以连接到分支 VNet 1 中的卷 2 和分支 VNet 2 中的卷 3。
 * 来自分支 VNet 1 的 VM 4 和分支 VNet 2 的 VM 5 可以连接到中心 VNet 中的卷 1。
-
-分支 VNet 1 中的 VM 4 无法连接到分支 VNet 2 中的卷 3。 此外，分支 VNet2 中的 VM 5 无法连接到分支 VNet 1 中的卷 2。 这是这种情况，因为分支 VNet 不对等，并且_通过 VNet 对等互连不支持传输路由_。
+* 分支 VNet 1 中的 VM 4 无法连接到分支 VNet 2 中的卷 3。 此外，分支 VNet2 中的 VM 5 无法连接到分支 VNet 1 中的卷 2。 这是这种情况，因为分支 VNet 不对等，并且_通过 VNet 对等互连不支持传输路由_。
+* 在上述体系结构中，如果分支 VNET 中也有网关，则通过集线器中的网关连接的 ONF 卷的连接将丢失。 根据设计，将优先选择分支 VNet 中的网关，因此只有通过该网关连接的计算机才能连接到 ANF 卷。
 
 ## <a name="next-steps"></a>后续步骤
 

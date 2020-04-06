@@ -8,29 +8,32 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 3e0e0291ff855b4502224466e17696a4fe668c2a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656000"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666789"
 ---
-# <a name="partial-term-search-in-azure-cognitive-search-queries-wildcard-regex-fuzzy-search-patterns"></a>Azure 认知搜索查询中的部分术语搜索（通配符、正则表达式、模糊搜索、模式）
+# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>具有特殊字符的部分术语搜索和模式 - Azure 认知搜索（通配符、正则表达式、模式）
 
-*部分术语搜索*是指由术语片段组成的查询，例如字符串的第一个、最后或内部部分，或由片段组合组成的模式，通常由特殊字符（如短划线或斜杠）分隔。 常见用例包括查询电话号码、URL、人员或产品代码或复合词的某些部分。
+*部分术语搜索*是指由术语片段组成的查询，例如字符串的第一个、最后一个或内部部分。 *模式*可能是片段的组合，有时具有特殊字符（如破折号或斜杠）是查询的一部分。 常见用例包括查询电话号码、URL、人员或产品代码或复合词的某些部分。
 
-部分搜索可能存在问题，因为索引本身通常不会以有利于部分字符串和模式匹配的方式存储术语。 在索引的文本分析阶段，将丢弃特殊字符，将复合字符串和复合字符串拆分，导致找不到匹配时模式查询失败。 例如，电话号码`+1 (425) 703-6214`（令牌化为`"1"`，、、）`"425"``"703"``"6214"`不会显示在`"3-62"`查询中，因为索引中实际上不存在该内容。 
+如果索引没有模式匹配所需的格式的字词，则部分搜索可能会有问题。 在索引的文本分析阶段，使用默认标准分析器，将丢弃特殊字符，将复合字符串和复合字符串拆分，导致找不到匹配时模式查询失败。 例如，电话号码`+1 (425) 703-6214`（令牌化为`"1"`，、、）`"425"``"703"``"6214"`不会显示在`"3-62"`查询中，因为索引中实际上不存在该内容。 
 
-解决方案是在索引中存储这些字符串的完整版本，以便您可以支持部分搜索方案。 为完整字符串创建附加字段，以及使用内容保留分析器，是解决方案的基础。
+解决方案是调用保留完整字符串（如有必要）包括空格和特殊字符的分析器，以便您可以支持部分术语和模式。 为完整字符串创建附加字段，以及使用内容保留分析器，是解决方案的基础。
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure 认知搜索中的部分搜索是什么
 
-在 Azure 认知搜索中，部分搜索以以下形式提供：
+在 Azure 认知搜索中，部分搜索和模式以以下形式提供：
 
 + [前缀搜索](query-simple-syntax.md#prefix-search)，`search=cap*`如 ，匹配"Cap'n Jack 的海滨旅馆"或"Gacc 资本"。 您可以使用简单的查询语法进行前缀搜索。
-+ [通配符搜索](query-lucene-syntax.md#bkmk_wildcard)或用于搜索嵌入字符串的模式或部分（包括后缀）的[正则表达式](query-lucene-syntax.md#bkmk_regex)。 例如，给定术语"字母数字"，您将使用通配符搜索 （`search=/.*numeric.*/`） 来匹配该术语的后缀查询匹配项。 通配符和正则表达式需要完整的 Lucene 语法。
 
-当客户端应用程序中需要上述任何查询类型时，请按照本文中的步骤操作，以确保索引中存在必要的内容。
++ [通配符搜索](query-lucene-syntax.md#bkmk_wildcard)或用于搜索嵌入字符串的模式或部分（包括后缀）的[正则表达式](query-lucene-syntax.md#bkmk_regex)。 通配符和正则表达式需要完整的 Lucene 语法。 
+
+  部分术语搜索的一些示例包括以下内容。 对于后缀查询，给定术语"字母数字"，您将使用通配符搜索 （）`search=/.*numeric.*/`来查找匹配项。 对于包含字符（如 URL 片段）的部分术语，可能需要添加转义字符。 在 JSON 中，`/`向前斜杠用向后斜杠`\`转出。 因此，URL`search=/.*microsoft.com\/azure\/.*/`片段的语法"microsoft.com/azure/"。
+
+如前所述，上述所有要求索引包含有利于模式匹配的格式的字符串，而标准分析器未提供这种格式。 通过按照本文中的步骤，可以确保存在支持这些方案所需的内容。
 
 ## <a name="solving-partial-search-problems"></a>解决部分搜索问题
 

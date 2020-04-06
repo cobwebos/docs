@@ -1,6 +1,6 @@
 ---
-title: 排查域和 SSL 证书问题
-description: 查找在 Azure 应用服务中配置域或 SSL 证书时可能遇到的常见问题的解决方案。
+title: 排除域和 TLS/SSL 证书的故障
+description: 查找在 Azure 应用服务中配置域或 TLS/SSL 证书时可能会遇到的常见问题的解决方案。
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966981"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668023"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>在 Azure 应用服务中排除域和 TLS/SSL 证书问题
 
-本文列出了为 Azure 应用服务中的 Web 应用配置域或 SSL 证书时可能遇到的常见问题。 此外，还描述了这些问题的可能原因和解决方法。
+本文列出了在 Azure 应用服务中为 Web 应用配置域或 TLS/SSL 证书时可能会遇到的常见问题。 此外，还描述了这些问题的可能原因和解决方法。
 
 如果对本文中的任何内容需要更多帮助，可以联系 [MSDN 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **"获取支持**"。
 
@@ -26,17 +26,17 @@ ms.locfileid: "75966981"
 
 ## <a name="certificate-problems"></a>证书问题
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>无法将 SSL 绑定证书添加到应用 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>无法向应用添加 TLS/SSL 证书绑定 
 
 #### <a name="symptom"></a>症状
 
-添加 SSL 绑定时出现以下错误消息：
+添加 TLS 绑定时，您会收到以下错误消息：
 
 “未能添加 SSL 绑定。 无法设置现有 VIP 的证书，因为另一个 VIP 已使用此证书。”
 
 #### <a name="cause"></a>原因
 
-如果对跨多个应用的同一 IP 地址使用多个基于 IP 的 SSL 绑定，则可能会出现此问题。 例如，应用 A 具有采用旧证书的基于 IP 的 SSL。 应用 B 对同一 IP 地址使用采用新证书的基于 IP 的 SSL。 使用新证书更新应用 SSL 绑定时，此操作将会失败并出现此错误，因为同一个 IP 地址已由另一应用使用。 
+如果对跨多个应用的同一 IP 地址使用多个基于 IP 的 SSL 绑定，则可能会出现此问题。 例如，应用 A 具有采用旧证书的基于 IP 的 SSL。 应用 B 对同一 IP 地址使用采用新证书的基于 IP 的 SSL。 使用新证书更新应用 TLS 绑定时，它将失败，因为同一 IP 地址正用于其他应用。 
 
 #### <a name="solution"></a>解决方案 
 
@@ -51,7 +51,7 @@ ms.locfileid: "75966981"
 
 尝试删除证书时出现以下错误消息：
 
-“无法删除证书，因为它当前正用于 SSL 绑定。 删除证书之前，必须删除 SSL 绑定。”
+无法删除证书，因为它当前正在 TLS/SSL 绑定中使用。 必须先删除 TLS 绑定，然后才能删除证书。
 
 #### <a name="cause"></a>原因
 
@@ -59,7 +59,7 @@ ms.locfileid: "75966981"
 
 #### <a name="solution"></a>解决方案
 
-从应用中删除该证书的 SSL 绑定。 然后尝试删除证书。 如果仍然无法删除证书，请清除 Internet 浏览器缓存，并在新浏览器窗口中重新打开 Azure 门户。 然后尝试删除证书。
+从应用中删除该证书的 TLS 绑定。 然后尝试删除证书。 如果仍然无法删除证书，请清除 Internet 浏览器缓存，并在新浏览器窗口中重新打开 Azure 门户。 然后尝试删除证书。
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>无法购买应用服务证书 
 
@@ -69,7 +69,7 @@ ms.locfileid: "75966981"
 #### <a name="cause-and-solution"></a>原因和解决方法
 此问题可能是由以下任何原因导致的：
 
-- 应用服务计划的层级为“免费”或“共享”。 这些定价层不支持 SSL。 
+- 应用服务计划的层级为“免费”或“共享”。 这些定价层不支持 TLS。 
 
     **解决方案**：将应用的应用服务计划升级到标准版。
 
@@ -88,7 +88,7 @@ ms.locfileid: "75966981"
 
     **解决方法**：如果证书标记为欺诈，并且在 24 小时后未得到解决，请遵循以下步骤：
 
-    1. 登录到 Azure[门户](https://portal.azure.com)。
+    1. 登录 [Azure 门户](https://portal.azure.com)。
     2. 转到“应用服务证书”，选择该证书。****
     3. 选择**证书配置** > **步骤 2：验证** > **域验证**。 此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
 
@@ -165,7 +165,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 ## <a name="domain-problems"></a>域问题
 
-### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>为错误的域购买了 SSL 证书
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>您为错误的域购买了 TLS/SSL 证书
 
 #### <a name="symptom"></a>症状
 
@@ -190,7 +190,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 可以强制同步证书：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 选择“应用服务证书”，然后选择该证书。****
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择“应用服务证书”，然后选择该证书。****
 2. 选择 **"重键"和"同步**"，然后选择 **"同步**"。同步需要一些时间才能完成。 
 3. 完成同步后，会看到以下通知：“已成功使用最新的证书更新了所有资源”。
 
@@ -266,7 +266,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 **购买网站的自定义域后是否必须配置该域？**
 
@@ -306,7 +306,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 **是否可以在订阅中的另一个 Azure 应用服务应用中使用域？**
 
-是的。 在 Azure 门户中访问“自定义域和 SSL”边栏选项卡时，会看到购买的域。 可将应用配置为使用其中的任何域。
+是的。 在 Azure 门户中访问自定义域和 TLS 边栏选项卡时，可以看到已购买的域。 可将应用配置为使用其中的任何域。
 
 **是否可将域从一个订阅转移到另一个订阅？**
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: a2ff4a94c1b2941f645cd7032ef476d33dffdb00
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 440944033e4b6a8fb29cf9ace6ad784b91316526
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656497"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668765"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -69,21 +69,11 @@ ms.locfileid: "80656497"
 
 ## <a name="rest-api"></a>REST API
 
-虽然语音 SDK 涵盖语音服务的许多功能功能，但对于某些方案，您可能需要使用 REST API。 例如，终结点管理仅通过 REST API 公开。
-
-> [!TIP]
-> 依赖 REST API 时，使用 Swagger 编辑器自动生成客户端库。 例如，生成批处理转录客户端库。
-> 1. 复制下面的示例 URL：
->     ```http
->     https://westus.cris.ai/docs/v2.0/swagger
->     ```
-> 1. 导航到<a href="https://editor.swagger.io/" target="_blank">斯瓦格编辑器<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> 1. 选择**文件** > **导入 URL**并粘贴 URL
-> 1. 选择 **"生成客户端**"并选择所需的编程语言
+虽然语音 SDK 涵盖语音服务的许多功能功能，但对于某些方案，您可能需要使用 REST API。
 
 ### <a name="batch-transcription"></a>批量听录
 
-[批处理转录](batch-transcription.md)支持对大量数据的异步语音转录。 批处理转录只能从 REST API 进行。
+[批处理转录](batch-transcription.md)支持对大量数据的异步语音转录。 批处理转录只能从 REST API 进行。 除了将语音音频转换为文本外，批量语音到文本还允许分二化和情绪分析。
 
 ## <a name="customization"></a>自定义
 

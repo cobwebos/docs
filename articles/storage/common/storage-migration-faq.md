@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1445d74e3050ffd6da7c45037df552f4bee9acf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f1137638f9cd4926b712bdd18e681d90adcdc4
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116669"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668547"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>有关 Azure 存储迁移的常见问题
 
@@ -215,7 +215,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 - 在一个存储帐户中从一个共享复制到一个 Blob 容器或复制到不同存储帐户。
 
 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)。
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 如何将存储帐户的辅助位置更改为欧洲区域？****
 
@@ -269,7 +269,7 @@ AzCopy 安装在什么位置？****
 
 **如何使用 HTTPS 自定义域与存储帐户一起使用？例如，如何使"https：\//mystorageaccountname.blob.core.windows.net/images/image.gif"显示为"https：/www.contoso.com/images/image.gif"？\/**
 
-使用自定义域的存储帐户当前不支持 SSL。
+当前，具有自定义域的存储帐户不支持 TLS/SSL。
 但你可以使用非 HTTPS 自定义域。 有关详细信息，请参阅[为 Blob 存储终结点配置自定义域名](../blobs/storage-custom-domain-name.md)。
 
 ## <a name="access-to-storage"></a>访问存储

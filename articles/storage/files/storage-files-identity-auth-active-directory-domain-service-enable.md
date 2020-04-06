@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e2e3c7763a13c8850554b079a426ed4172b74d28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599270"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666856"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>在 Azure 文件上启用 Azure 活动目录域服务身份验证
 
@@ -61,16 +61,16 @@ ms.locfileid: "77599270"
 
 接下来，执行以下操作以授予使用 Azure AD 凭据的 Azure 文件资源的权限：
 
-- 为存储帐户通过 SMB 启用 Azure AD DS 身份验证，以便将存储帐户注册到关联的 Azure AD DS 部署。
-- 将共享的访问权限分配给 Azure AD 标识（用户、组或服务主体）。
-- 通过 SMB 为目录和文件配置 NTFS 权限。
-- 从加入域的 VM 装载 Azure 文件共享。
+1. 为存储帐户通过 SMB 启用 Azure AD DS 身份验证，以便将存储帐户注册到关联的 Azure AD DS 部署。
+2. 将共享的访问权限分配给 Azure AD 标识（用户、组或服务主体）。
+3. 通过 SMB 为目录和文件配置 NTFS 权限。
+4. 从加入域的 VM 装载 Azure 文件共享。
 
 下图说明了用于通过 SMB 对 Azure 文件启用 Azure AD DS 身份验证的端到端工作流。
 
 ![显示通过 SMB 为 Azure 文件启用 Azure AD 的工作流的图表](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>为您的帐户启用 Azure AD DS 身份验证
+## <a name="1-enable-azure-ad-ds-authentication-for-your-account"></a>1. 为您的帐户启用 Azure AD DS 身份验证
 
 要通过 Azure 文件的 SMB 启用 Azure AD DS 身份验证，可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 在存储帐户上设置属性。 将此属性隐式设置"域联接"存储帐户与关联的 Azure AD DS 部署。 然后，对存储帐户中的所有新文件和现有文件共享启用通过 SMB 的 Azure AD DS 身份验证。
 
@@ -83,7 +83,7 @@ ms.locfileid: "77599270"
 1. 在 Azure 门户中，转到现有存储帐户，或[创建存储帐户](../common/storage-account-create.md)。
 1. 在“设置”部分选择“配置”。********
 1. 在**基于身份的文件共享访问**下，将**Azure 活动目录域服务 （AAD DS） 的**切换切换到**启用**。
-1. 选择“保存”。****
+1. 选择“保存”。 
 
 下图演示如何通过存储帐户的 SMB 启用 Azure AD DS 身份验证。
 
@@ -135,11 +135,11 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-现在，您已成功通过 SMB 启用 Azure AD DS 身份验证，并分配了一个自定义角色，该角色提供使用 Azure AD 标识访问 Azure 文件共享的功能。 要授予其他用户对文件共享的访问权限，请按照["分配访问权限"](#assign-access-permissions-to-an-identity)中的说明使用标识并在[SMB 部分上配置 NTFS 权限](#configure-ntfs-permissions-over-smb)。
+现在，您已成功通过 SMB 启用 Azure AD DS 身份验证，并分配了一个自定义角色，该角色提供使用 Azure AD 标识访问 Azure 文件共享的功能。 要授予其他用户对文件共享的访问权限，请按照["分配访问权限"](#2-assign-access-permissions-to-an-identity)中的说明使用标识并在[SMB 部分上配置 NTFS 权限](#3-configure-ntfs-permissions-over-smb)。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure 文件以及如何在 SMB 上使用 Azure AD 的详细信息，请参阅以下资源：
 
 - [基于 Azure 文件的基于身份的 SMB 访问的身份验证支持的概述](storage-files-active-directory-overview.md)
-- [FAQ](storage-files-faq.md)
+- [常见问题解答](storage-files-faq.md)

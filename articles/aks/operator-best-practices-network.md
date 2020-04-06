@@ -1,15 +1,16 @@
 ---
-title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的网络连接
+title: 网络资源的最佳实践
+titleSuffix: Azure Kubernetes Service
 description: 了解 Azure Kubernetes 服务 (AKS) 中虚拟网络资源和连接的群集运算符的最佳实践
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 93659a0891b09c83db9f63fe0756fcf4d7e87f6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8aee9967e09d2ae8bec3ee170756d8d22de0fe4
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594679"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668203"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络连接和安全的最佳做法
 

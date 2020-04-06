@@ -5,13 +5,13 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: 92fa35fbe8e5eef4dbdc8b6c47a9055affd449a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/03/2020
+ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273190"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667003"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的日期
 
@@ -21,7 +21,9 @@ Azure Cosmos DB 通过本机 [JSON](https://www.json.org) 数据模型提供架�
 
 ## <a name="storing-datetimes"></a>存储 DateTime
 
-Azure Cosmos DB 支持 JSON 类型，如字符串、数字、布尔值、null、数组和对象。 它不直接支持 DateTime 类型。 目前，Azure Cosmos DB 不支持日期的本地化。 因此，需要将 DateTime 存储为字符串。 Azure Cosmos DB 中 DateTime 字符串的建议格式为 `YYYY-MM-DDThh:mm:ss.sssZ`，它遵循 ISO 8601 UTC 标准。 建议以 UTC 格式存储 Azure Cosmos DB 中的所有日期。 将日期字符串转换为此格式将允许按字典顺序对日期进行排序。 如果存储非 UTC 日期，则必须在客户端处理相关逻辑。 若要将本地 DateTime 转换为 UTC，偏移量必须已知/存储为 JSON 中的属性，并且客户端可以使用偏移量来计算 UTC DateTime 值。
+Azure Cosmos DB 支持 JSON 类型，如字符串、数字、布尔值、null、数组和对象。 它不直接支持 DateTime 类型。 目前，Azure Cosmos DB 不支持日期的本地化。 因此，需要将 DateTime 存储为字符串。 Azure Cosmos DB 中 DateTime 字符串的建议格式为 `YYYY-MM-DDThh:mm:ss.fffffffZ`，它遵循 ISO 8601 UTC 标准。 建议以 UTC 格式存储 Azure Cosmos DB 中的所有日期。 将日期字符串转换为此格式将允许按字典顺序对日期进行排序。 如果存储非 UTC 日期，则必须在客户端处理相关逻辑。 要将本地日期时间转换为 UTC，偏移量必须已知/存储为 JSON 中的属性，并且客户端可以使用偏移量计算 UTC DateTime 值。
+
+仅当 DateTime 字符串都以 UTC 和相同长度表示时，才支持使用 DateTime 字符串作为筛选器的范围查询。 在 Azure Cosmos DB 中[，GetCurrentDateTime](sql-query-getcurrentdatetime.md)系统函数将以格式返回当前 UTC 日期和时间 ISO 8601 字符串值： `YYYY-MM-DDThh:mm:ss.fffffffZ`。
 
 由于以下原因，大多数应用程序可以使用 DateTime 的默认字符串表示形式：
 
@@ -47,7 +49,7 @@ Azure Cosmos DB 支持 JSON 类型，如字符串、数字、布尔值、null、
         {
             Id = "09152014101",
             OrderDate = DateTime.UtcNow.AddDays(-30),
-            ShipDate = DateTime.UtcNow.AddDays(-14), 
+            ShipDate = DateTime.UtcNow.AddDays(-14),
             Total = 113.39
         });
 ```
@@ -76,7 +78,7 @@ SQL .NET SDK 自动支持通过 LINQ 查询存储在 Azure Cosmos DB 中的数�
 已转换为以下 SQL 语句并在 Azure Cosmos DB 上执行：
 
 ```sql
-    SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
+    SELECT * FROM root WHERE (root["ShipDate"] >= "2014-09-30T23:14:25.7251173Z")
 ```
 
 您可以在[LINQ 中查询 Cosmos DB](sql-query-linq-to-sql.md)中的 LINQ 数据库，了解有关 Azure Cosmos DB 的 SQL 查询语言和 LINQ 提供程序的更多信息。

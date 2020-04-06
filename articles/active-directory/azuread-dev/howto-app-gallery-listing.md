@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 969193b2c0843c4eb217d2bdb9f9ad9a40ccf9af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154961"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666939"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 应用程序库中列出你的应用程序
 
@@ -49,9 +49,9 @@ ms.locfileid: "80154961"
 
 ## <a name="submit-the-request-in-the-portal"></a>在门户中提交请求
 
-测试应用程序集成是否与 Azure AD 配合使用后，请在[应用程序网络门户](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交访问请求。 如果你有 Office 365 帐户，请使用该帐户登录到此门户。 否则，请使用 Microsoft 帐户（如 Outlook 或 Hotmail）登录。
+测试应用程序集成是否与 Azure AD 配合使用后，请在[Microsoft 应用程序网络门户](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交应用程序请求。
 
-如果在登录后出现以下页面，请与 Azure [AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)联系。 提供要用于提交请求的电子邮件帐户。 Azure AD 团队将在 Microsoft 应用程序网络门户中添加帐户。
+如果在登录后出现以下页面，请与 Azure [AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)联系。 提供要用于提交请求的电子邮件帐户。 首选企业电子邮件地址。 [name@yourbusiness.com](mailto:name@yourbusiness.com) Azure AD 团队将在 Microsoft 应用程序网络门户中添加帐户。
 
 ![访问 SharePoint 门户上的请求消息](./media/howto-app-gallery-listing/errorimage.png)
 

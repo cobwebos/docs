@@ -4,16 +4,16 @@ description: 使用 Windows 计算机上的模拟设备通过设备预配服务�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/09/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ee4f01c3ec57b0cf9e3ecf47254b57be95ea051a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc051e2a0ebbdae7c62ff8a249747d118d3c2ce4
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76510934"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668680"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>在 Windows 上使用虚拟 TPM 创建和预配模拟 IoT Edge 设备
 
@@ -59,6 +59,9 @@ DPS 在个人注册和组注册中都支持 IoT Edge 设备的对称密钥证明
 选择要用来创建模拟设备的 SDK 语言，并遵循本文中的步骤，直到创建了个人注册为止。
 
 创建个人注册时，请选择“True”****，将 Windows 开发计算机上的模拟 TPM 设备声明为“IoT Edge设备”****。
+
+> [!TIP]
+> 在 Azure CLI 中，您可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)或[注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用**启用边缘**的标志指定设备或设备组是 IoT Edge 设备。
 
 模拟设备和个人注册指南：
 

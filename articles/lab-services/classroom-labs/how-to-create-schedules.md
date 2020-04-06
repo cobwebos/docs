@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4887b4359451ca5ce85042b4de42d5376bf4a730
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72330554"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667767"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>在 Azure 实验室服务中创建和管理课堂实验室日程安排 
 借助日程安排，可以配置课堂实验室，这样实验室中的 VM 就能在指定时间自动启动和关闭。 可以定义一次性日程安排，也可以定义定期日程安排。 下面的过程逐步介绍了如何创建和管理课堂实验室日程安排： 
@@ -28,6 +28,12 @@ ms.locfileid: "72330554"
 
 ## <a name="set-a-schedule-for-the-lab"></a>为实验室设置计划
 为实验室创建计划事件，这样实验室中的 VM 就会在特定时间自动启动/停止。 此前指定的用户配额是在此计划时间之外为每个用户分配的额外时间。 
+
+> [!NOTE]
+> 在开始之前，以下是计划如何影响实验室虚拟机： 
+>- 模板虚拟机不包括在计划中。 
+>- 仅启动分配的虚拟机。 这意味着，如果最终用户（学生）不声明计算机，则机器将不会在预定时间启动。 
+>- 所有虚拟机（无论是否由用户声明）都根据实验室计划停止。 
 
 1. 切换到“日程安排”**** 页，再选择工具栏上的“添加计划事件”****。 
 
@@ -43,7 +49,7 @@ ms.locfileid: "72330554"
     5. 指定“停止时间”****，这是 VM 将要关闭的时间。 
     6. 指定“时区”****，该时区适用于已指定的启动时间和停止时间。 
     2. 选择希望计划生效的日期。 在下面的示例中，选中的是“星期一到星期四”。 
-    8. 选择“保存”。**** 
+    8. 选择“保存”。  
 
         ![设置重复计划](../media/how-to-create-schedules/set-repeat-schedule.png)
 

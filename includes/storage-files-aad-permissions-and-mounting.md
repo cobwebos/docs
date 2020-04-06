@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 23550c83e76631e44d5036e0a038f01b61a79f1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f71c039aa6666cec1b871a158d84a6f5a2a107c
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79208231"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666809"
 ---
-## <a name="assign-access-permissions-to-an-identity"></a>为标识分配访问权限
+## <a name="2-assign-access-permissions-to-an-identity"></a>2. 向标识分配访问权限
 
-要使用基于标识的身份验证访问 Azure 文件资源，标识（用户、组或服务主体）必须在共享级别具有必要的权限。 此过程类似于指定 Windows 共享权限，其中指定特定用户对文件共享的访问类型。 本部分中的指导演示如何将文件共享的读取、写入或删除权限分配给标识。
+要使用基于标识的身份验证访问 Azure 文件资源，标识（用户、组或服务主体）必须在共享级别具有必要的权限。 此过程类似于指定 Windows 共享权限，其中指定特定用户对文件共享的访问类型。 一般建议是使用共享级别权限对团队或组进行高级访问管理，然后利用 NTFS 权限在目录/文件级别进行精细访问控制。 本部分中的指导演示如何将文件共享的读取、写入或删除权限分配给标识。 
 
 我们引入了三个 Azure 内置角色，用于向用户授予共享级权限：
 
@@ -68,7 +68,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="configure-ntfs-permissions-over-smb"></a>通过 SMB 配置 NTFS 权限 
+## <a name="3-configure-ntfs-permissions-over-smb"></a>3. 通过 SMB 配置 NTFS 权限 
 使用 RBAC 分配共享级别权限后，必须在根目录、目录或文件级别分配正确的 NTFS 权限。 将共享级别权限视为高级网守，用于确定用户是否可以访问共享。 而 NTFS 权限在更精细的级别执行，以确定用户可以在目录或文件级别执行哪些操作。
 
 Azure 文件支持全套 NTFS 基本和高级权限。 您可以通过安装共享，然后使用 Windows 文件资源管理器或运行 Windows [Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)或[Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl)命令来查看和配置 Azure 文件共享中的目录和文件的 NTFS 权限。 
@@ -113,9 +113,9 @@ net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<
 8.  在"安全"选项卡中，选择要授予新添加的用户的所有权限
 9.  单击“应用”****
 
-## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>从加入域的 VM 装载文件共享
+## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. 从加入域的 VM 装载文件共享
 
-以下过程验证文件共享和访问权限是否设置正确，以及可以从加入域的 VM 访问 Azure 文件共享：
+以下过程验证文件共享和访问权限设置是否正确，以及可以从加入域的 VM 访问 Azure 文件共享。 请注意，共享级别 RBAC 角色分配可能需要一些时间才能生效。 
 
 使用已授予权限的 Azure AD 标识登录到 VM，如下图所示。 如果已为 Azure 文件启用 AD 身份验证，请使用 AD 凭据。 对于 Azure AD DS 身份验证，请使用 Azure AD 凭据登录。
 

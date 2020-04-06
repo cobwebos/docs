@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 10/04/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9944308d00c9cfecbd38a6443efb49913148806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 139a2cafe137d000b991cbad8b8567e005ffc728
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535912"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668674"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用对称密钥证明创建和预配 IoT Edge 设备
 
@@ -72,6 +72,9 @@ ms.locfileid: "79535912"
 
    1. 选择“True”，声明该注册适用于 IoT Edge 设备。**** 对于组注册，所有设备必须是 IoT Edge 设备，或者都不是 IoT Edge 设备。
 
+   > [!TIP]
+   > 在 Azure CLI 中，您可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)或[注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用**启用边缘**的标志指定设备或设备组是 IoT Edge 设备。
+
    1. 接受设备预配服务分配策略中有关**如何将设备分配到中心**的默认值，或选择特定于此注册的其他值。
 
    1. 选择要将设备连接到的链接“IoT 中心”。**** 可以选择多个中心，设备将根据所选的分配策略分配到其中的一个中心。
@@ -93,7 +96,7 @@ ms.locfileid: "79535912"
 
    1. 确保“启用项”设置为“启用”。********
 
-   1. 选择“保存”。****
+   1. 选择“保存”。 
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 在安装 IoT Edge 运行时，或者要创建用于组注册的设备密钥时，请确保复制注册的**主密钥**值以供使用。
 
