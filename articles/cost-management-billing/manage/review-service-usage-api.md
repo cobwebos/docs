@@ -3,15 +3,15 @@ title: 使用 REST API 查看 Azure 服务资源使用情况
 description: 了解如何使用 Azure REST API 查看 Azure 服务资源的使用情况。
 author: lleonard-msft
 ms.service: cost-management-billing
-ms.topic: article
-ms.date: 02/12/2020
+ms.topic: reference
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 337523c489089eeae5d669252b61cc61478ae1b3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60a9e17b16f0b539693beb987b4d0610d11a3050
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202839"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521198"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>使用 REST API 查看 Azure 资源使用情况
 
@@ -32,7 +32,9 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-`{subscriptionGuid}` 参数是必需的，应该包含可使用 API 令牌中提供的凭据进行读取的订阅 ID。 `{reportName}`
+`{subscriptionGuid}` 参数是必需的，应该包含可使用 API 令牌中提供的凭据进行读取的订阅 ID。 
+
+`{reportName}` 参数指定报告的名称。 若要获取报告名称列表，可以使用 Reports_List 操作：`/subscriptions/{subscriptionId}/providers/Microsoft.CostManagement/reports`。 查看 [GitHub](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/cost-management/resource-manager/Microsoft.CostManagement/preview/2018-08-01-preview/examples/ReportList.json) 上的示例输出。
 
 以下标头是必需的：
 

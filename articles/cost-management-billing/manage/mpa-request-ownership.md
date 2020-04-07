@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: c4366b272aab160828afca927f6432c98a8fecd7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: da16e0898f08e1cca602ca5927bce82ed32353fe
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79370723"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437863"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>获取 MPA 帐户的 Azure 订阅的计费所有权
 
@@ -139,7 +139,7 @@ ms.locfileid: "79370723"
 
 ### <a name="azure-reservations-transfer"></a>Azure 预留项转移
 
-Azure 预留项不会随订阅自动移动。可以在其他订阅的 EA 中保留预留，或者[取消预留](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)，合作伙伴可以在 CSP 中重新购买。 
+Azure 预留项不会随订阅一起自动移动。 可以在其他订阅的 EA 中保留预留，或者[取消预留](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)，合作伙伴可以在 CSP 中重新购买。 
 
 ### <a name="access-to-azure-services"></a>对 Azure 服务的访问权限
 

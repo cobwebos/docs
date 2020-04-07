@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 6277a7e7dc5891a3bc67c298a31344284c92e31d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 97bd03fb2aa8f5b486ef87a04f260fec43eb81bd
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235632"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396700"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -20,7 +20,7 @@ Azure 预留项可帮助你节省资金，因为它可以承诺多种产品的�
 
 可以提前或每月为预留项付费。 预付和每月预留的总费用相同，选择每月支付不会产生额外的费用。 每月付款适用于 Azure 预留项，而不适用于第三方产品。
 
-可在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)中购买预留。
+可以在 Azure 门户 ([https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)) 中购买预留项。
 
 ## <a name="why-buy-a-reservation"></a>为何购买预留项？
 
@@ -34,6 +34,48 @@ Azure 预留项可帮助你节省资金，因为它可以承诺多种产品的�
 
 有关预留范围工作原理的详细信息，请参阅[范围预留](prepare-buy-reservation.md#scope-reservations)。
 
+## <a name="determine-what-to-purchase"></a>确定要购买的内容 
+
+除 Azure Databricks 以外的所有预留项都是按小时应用的。 请根据一贯的基本用量考虑如何购买预留项。 可以通过分析用量数据或使用预留建议，来确定要购买哪种预留项。 以下位置提供了建议：
+
+- Azure 顾问（仅限 VM）
+- Azure 门户中的预留项购买体验
+- 成本管理 Power BI 应用
+- API 
+
+有关详细信息，请参阅 [确定要购买哪种预留项](determine-reservation-purchase.md) 
+
+## <a name="buying-a-reservation"></a>购买预留项 
+
+可以通过 Azure 门户、API、PowerShell 和 CLI 购买预留项。 
+
+转到 Azure 门户购买预留项 (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) 
+
+有关详细信息，请参阅 [购买预留项](prepare-buy-reservation.md) 
+
+## <a name="how-is-a-reservation-billed"></a>预留如何计费？ 
+
+预留通过与订阅绑定的付款方式付款。 预留成本将从货币承诺余额中扣除（如果可用）。 如果货币承诺余额不足以支付虚拟机预留实例的费用，则还会向你收取所欠费用。 如果你的订阅来自采用即用即付费率的单个计划，将立即从你帐户中的信用卡提前扣取购买费。 每月付款额将显示在发票上，并且每月将从你的信用卡扣费。 如果采用按发票计费的方式，则费用将显示在下一份发票上。 
+
+## <a name="permissions-to-view-and-manage-reservations"></a>预留项的查看和管理权限 
+
+购买预留项的用户，以及用于计收预留项费用的订阅的帐户管理员，将获得预留订单和预留项的“所有者”角色。
+
+可以通过将用户添加到预留订单或预留的角色来委托预留管理。 可以在 Azure 门户中或使用 API 和 PowerShell 分配角色。 
+
+有关详细信息，请参阅 [添加或更改可以管理预留项的用户](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。 
+
+## <a name="get-reservation-details-and-utilization-after-purchase"></a>购买后获取预留项详细信息和利用率
+
+如果你有权查看某个预留项，可以在 Azure 门户中查看该预留项及其用量。 也可以使用 API 获取这些数据。 
+
+有关如何在 Azure 门户中查看预留项的详细信息，请参阅 [在 Azure 门户中查看预留项](view-reservations.md) 
+
+## <a name="manage-reservations-after-purchase"></a>购买后管理预留项 
+
+购买某个 Azure 预留项后，可将该预留项的应用范围更新为不同的订阅、更改可以管理该预留项的人员、将预留项拆分为较小的部分，或更改实例大小灵活性。 
+
+有关详细信息，请参阅 [管理 Azure 资源的预留项](manage-reserved-vm-instance.md) 
 
 ## <a name="flexibility-with-azure-reservations"></a>Azure 预留项的灵活性
 
@@ -54,7 +96,7 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
 - **Azure Database for MySQL** - 预留项仅包含计算费用。 预留容量不包括与 MySQL 数据库服务器关联的软件、网络或存储费用。
 - **Azure Database for PostgreSQL** - 预留项仅包含计算费用。 预留容量不包括与 PostgreSQL 数据库服务器关联的软件、网络或存储费用。
 - **Azure Database for MariaDB** - 预留项仅包含计算费用。 预留容量不包括与 MariaDB 数据库服务器关联的软件、网络或存储费用。
-- **Azure 数据资源管理器** - 预留项涵盖标记费用。 预留项不涵盖与群集关联的计算、网络或存储费用。
+- **Azure 数据资源管理器** - 预留项涵盖标记费用。 预留项不适用于与群集关联的计算、网络或存储费用。
 - **Azure Cache for Redis** - 预留仅包括计算费用。 预留不包括与 Redis 缓存实例相关联的网络或存储费用。
 - **Azure 专用主机** - 专用主机仅包括计算成本。
 - **Azure 磁盘存储预留项** - 预留项仅包括大小为 P30 或更高级别的高级 SSD。 它不涵盖小于 P30 的任何其他磁盘类型或大小。

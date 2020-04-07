@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e27f34572eef7d50c7b140c65cb78c6d0678fa8
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203009"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477610"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -92,11 +92,11 @@ ms.locfileid: "79203009"
 | 预留项购买<sup>7</sup>      |  |
 | 摊销预留项购买<sup>7</sup>      |  |
 
-<sup>**5**</sup> Azure 服务用量基于预留价格和议价。 
+<sup>5</sup> Azure 服务用量基于预留价格和议价。 __
 
-<sup>**6**</sup> 市场购买目前不适用于即用即付、MSDN 和 Visual Studio 套餐。 
+<sup>6</sup> 市场购买目前不适用于 MSDN 和 Visual Studio 套餐。 __
 
-<sup>**7**</sup> 预留购买目前仅适用于企业协议 (EA) 帐户。 
+<sup>7</sup> 预留项购买目前仅适用于企业协议 (EA) 和 Microsoft 客户协议帐户。 __
 
 ## <a name="how-tags-are-used-in-cost-and-usage-data"></a>如何在成本和使用情况数据中使用标记
 

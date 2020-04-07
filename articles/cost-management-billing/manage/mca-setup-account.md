@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 24f7a81b267e858d16ae0805f9c7ab384be3b2fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
+ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200636"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80258050"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>设置 Microsoft 客户协议的计费帐户
 
@@ -24,7 +24,7 @@ ms.locfileid: "77200636"
 若要设置计费帐户，必须将 Azure 订阅的计费从企业协议注册转换到新帐户。 该项设置不会影响订阅中正在运行的 Azure 服务。 但是，它会改变订阅的计费管理方式。
 
 - 应在 [Azure 门户](https://portal.azure.com)而不是 [EA 门户](https://ea.azure.com)中管理 Azure 服务和计费。
-- 你每月会收到一个数字版的费用发票。 可以在“Azure 成本管理 + 计费”页中查看和分析该发票。
+- 你每月会收到一份数字版的费用发票。 可以在“Azure 成本管理 + 计费”页中查看和分析该发票。
 - 需使用新帐户中的计费结构和范围，而不是企业协议注册中的部门和帐户，来管理和组织计费。
 
 在开始设置之前，我们建议做好以下准备工作：
@@ -115,7 +115,7 @@ ms.locfileid: "77200636"
 
 ### <a name="spending-quotas"></a>支出配额
 
-为企业协议注册中的部门设置的支出配额已由新计费帐户中的预算取代。 对于为注册中的部门设置的每个支出配额，将会创建一个预算。 有关预算的详细信息，请参阅[创建和管理 Azure 预算](../cloudyn/manage-budgets.md)。
+为企业协议注册中的部门设置的支出配额已由新计费帐户中的预算取代。 对于为注册中的部门设置的每个支出配额，将会创建一个预算。 有关预算的详细信息，请参阅[教程：创建并管理 Azure 预算](../costs/tutorial-acm-create-budgets.md)。
 
 ### <a name="cost-centers"></a>成本中心
 
@@ -181,7 +181,7 @@ ms.locfileid: "77200636"
 
     - 将在新计费帐户中创建对应于企业协议层次结构的计费层次结构。 有关详细信息，请参阅[了解计费层次结构的变化](#understand-changes-to-your-billing-hierarchy)。
     - 企业协议注册中的管理员有权访问新计费帐户，因此他们可以继续管理组织的计费。
-    - Azure 订阅的计费将转换到新帐户。 **在此转换过程中，Azure 服务不会受到任何影响。它们将保持正常运行，而不会出现任何中断。**
+    - Azure 订阅的计费将转换到新帐户。 在此转换过程中，Azure 服务不会受到任何影响。  它们将保持正常运行，而不会出现任何中断。
     - 如果你购买了 Azure 预留项，它们将移到新的计费帐户，而不会更改权益或条款。
 
 4. 可以在“转换状态”页上监视转换状态。 
@@ -236,7 +236,7 @@ ms.locfileid: "77200636"
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png)
 
-3. 选择为注册创建的计费配置文件。 根据你拥有的访问权限，可能需要选择一个计费帐户。 在该计费帐户中，选择“计费对象信息”，然后选择计费对象信息。
+3. 选择为注册创建的计费配置文件。 根据你拥有的访问权限，可能需要选择一个计费帐户。 在该计费帐户中，选择“计费配置文件”，然后选择计费配置文件。
 
 4. 在左侧选择“访问控制(IAM)”。 
 
@@ -252,7 +252,7 @@ ms.locfileid: "77200636"
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/mca-setup-account/search-cmb.png)。
 
-3. 选择发票科目。 发票科目的名称与其在企业协议注册中的相应部门名称相同。 根据你拥有的访问权限，可能需要选择一个计费帐户。 在计费帐户中，选择“计费对象信息”  ，然后选择“发票科目”  。 从发票科目列表中，选择一个发票科目。
+3. 选择发票科目。 发票科目的名称与其在企业协议注册中的相应部门名称相同。 根据你拥有的访问权限，可能需要选择一个计费帐户。 在计费帐户中，选择“计费配置文件”  ，然后选择“发票科目”  。 从发票科目列表中，选择一个发票科目。
 
    ![显示转换后的发票科目列表的屏幕截图](./media/mca-setup-account/mca-invoice-sections-post-transition.png)
 
